@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="150.0dip" android:layout_height="46.0dip" android:weightSum="3.0"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dtz" android:background="@drawable/bh8" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/vc" android:scaleType="center" android:layout_weight="1.0" />
-    <TextView android:textSize="@dimen/fo" android:textColor="#ff353535" android:gravity="center" android:id="@id/du0" android:background="@drawable/bh7" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <ImageView android:id="@id/du1" android:background="@drawable/bhb" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/va" android:scaleType="center" android:layout_weight="1.0" />
+    <TextView android:id="@id/dlh" style="@style/a4o" />
+    <LinearLayout android:orientation="vertical" android:id="@id/dl8" android:background="@drawable/mj" android:paddingLeft="@dimen/h" android:paddingTop="@dimen/h" android:paddingRight="@dimen/h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn">
+        <TextView android:id="@id/dl9" style="@style/a4m" />
+        <TextView android:id="@id/dlb" android:layout_marginTop="@dimen/d" android:layout_marginBottom="@dimen/jn" style="@style/a4m" />
+        <View style="@style/a4n" />
+        <ImageView android:layout_gravity="center" android:id="@id/dld" android:layout_width="wrap_content" android:layout_height="160.0dip" android:layout_marginTop="@dimen/h" android:layout_marginBottom="@dimen/h" />
+        <View style="@style/a4n" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/dl7" style="@style/a4l" />
+    </LinearLayout>
 </LinearLayout>

@@ -3,129 +3,129 @@ package com.tencent.mm.ui.chatting;
 import android.os.Bundle;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.aq;
-import com.tencent.mm.model.t;
-import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.c.b.r;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.model.at;
+import com.tencent.mm.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.ui.chatting.d.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class x
-  implements aq
+  implements at
 {
-  public a caz;
-  public z zBD;
+  public z GpR;
+  public a cOd;
   
   public x(a parama)
   {
-    AppMethodBeat.i(30904);
-    this.caz = parama;
-    this.zBD = new z();
-    AppMethodBeat.o(30904);
+    AppMethodBeat.i(34778);
+    this.cOd = parama;
+    this.GpR = new z();
+    AppMethodBeat.o(34778);
   }
   
-  private void aM(bi parambi)
+  private void bf(bl parambl)
   {
-    AppMethodBeat.i(30908);
-    if (parambi == null)
+    AppMethodBeat.i(34782);
+    if (parambl == null)
     {
-      AppMethodBeat.o(30908);
+      AppMethodBeat.o(34782);
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(parambi);
-    fd(localArrayList);
-    AppMethodBeat.o(30908);
+    localArrayList.add(parambl);
+    hA(localArrayList);
+    AppMethodBeat.o(34782);
   }
   
-  private void fd(List<bi> paramList)
+  private void hA(List<bl> paramList)
   {
-    AppMethodBeat.i(30909);
-    if ((this.zBD != null) && (this.caz != null)) {
-      this.zBD.a(this.caz.zJz.getContext(), paramList);
-    }
-    AppMethodBeat.o(30909);
-  }
-  
-  public final void J(List<bi> paramList)
-  {
-    AppMethodBeat.i(30906);
-    if (this.caz == null)
+    AppMethodBeat.i(34783);
+    if ((this.GpR != null) && (this.cOd != null))
     {
-      ab.w("MicroMsg.ChattingUIKeywordChecker", "chatting ui is null.");
-      AppMethodBeat.o(30906);
+      this.GpR.a(this.cOd.GzJ.getContext(), paramList);
+      this.GpR.G(this.cOd.eZb(), this.cOd.getTalkerUserName());
+    }
+    AppMethodBeat.o(34783);
+  }
+  
+  public final void V(List<bl> paramList)
+  {
+    AppMethodBeat.i(34780);
+    if (this.cOd == null)
+    {
+      ad.w("MicroMsg.ChattingUIKeywordChecker", "chatting ui is null.");
+      AppMethodBeat.o(34780);
       return;
     }
-    if (t.lA(this.caz.getTalkerUserName()))
+    if (com.tencent.mm.model.w.pF(this.cOd.getTalkerUserName()))
     {
-      AppMethodBeat.o(30906);
+      AppMethodBeat.o(34780);
       return;
     }
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      bi localbi = (bi)paramList.next();
-      if ((localbi.field_talker.equals(this.caz.getTalkerUserName())) && (localbi.isText())) {
-        localArrayList.add(localbi);
+      bl localbl = (bl)paramList.next();
+      if ((localbl.field_talker.equals(this.cOd.getTalkerUserName())) && ((localbl.isText()) || (localbl.eMh()))) {
+        localArrayList.add(localbl);
       }
     }
-    fd(localArrayList);
-    AppMethodBeat.o(30906);
+    hA(localArrayList);
+    AppMethodBeat.o(34780);
   }
   
   public final void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle) {}
   
-  public final void a(bi parambi)
+  public final void a(bl parambl)
   {
-    AppMethodBeat.i(30905);
-    if (this.caz.ay(r.class) == null)
+    AppMethodBeat.i(34779);
+    if (this.cOd.be(com.tencent.mm.ui.chatting.c.b.w.class) == null)
     {
-      ab.w("MicroMsg.ChattingUIKeywordChecker", "chatting ui maybe has exit!");
-      AppMethodBeat.o(30905);
+      ad.w("MicroMsg.ChattingUIKeywordChecker", "chatting ui maybe has exit!");
+      AppMethodBeat.o(34779);
       return;
     }
-    ((r)this.caz.ay(r.class)).dIv();
-    if ((!parambi.field_talker.equals(this.caz.getTalkerUserName())) || (!parambi.isText()))
+    ((com.tencent.mm.ui.chatting.c.b.w)this.cOd.be(com.tencent.mm.ui.chatting.c.b.w.class)).eXQ();
+    if ((!parambl.field_talker.equals(this.cOd.getTalkerUserName())) || ((!parambl.isText()) && (!parambl.eMh())))
     {
-      AppMethodBeat.o(30905);
+      AppMethodBeat.o(34779);
       return;
     }
-    aM(parambi);
-    AppMethodBeat.o(30905);
+    bf(parambl);
+    AppMethodBeat.o(34779);
   }
   
-  public final void atM(String paramString)
+  public final void adu(String paramString)
   {
-    AppMethodBeat.i(30907);
-    if (ah.isNullOrNil(paramString))
+    AppMethodBeat.i(34781);
+    if (ae.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(30907);
+      AppMethodBeat.o(34781);
       return;
     }
-    bi localbi = new bi();
-    localbi.setContent(paramString);
-    localbi.hL(1);
-    aM(localbi);
-    AppMethodBeat.o(30907);
+    bl localbl = new bl();
+    localbl.setContent(paramString);
+    localbl.jV(1);
+    bf(localbl);
+    AppMethodBeat.o(34781);
   }
   
   public final Looper getLooper()
   {
-    AppMethodBeat.i(30910);
+    AppMethodBeat.i(34784);
     Looper localLooper = Looper.getMainLooper();
-    AppMethodBeat.o(30910);
+    AppMethodBeat.o(34784);
     return localLooper;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.x
  * JD-Core Version:    0.7.0.1
  */

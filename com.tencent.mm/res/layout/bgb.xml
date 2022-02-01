@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/f45" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hd">
+        <ImageView android:id="@id/gr5" android:background="@drawable/b8f" android:layout_width="@dimen/w4" android:layout_height="@dimen/w4" android:layout_marginTop="@dimen/he" />
+        <TextView android:textSize="24.0dip" android:textColor="@color/y4" android:gravity="center" android:id="@id/gr6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:text="@string/g_p" />
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/rx" android:gravity="center" android:id="@id/gr8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:text="@string/g_o" />
+        <RelativeLayout android:gravity="center" android:orientation="horizontal" android:id="@id/aa1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="80.0dip">
+            <Button android:textSize="@dimen/i" android:id="@id/f2d" android:padding="@dimen/d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginRight="@dimen/ha" android:text="@string/g_m" style="@style/o6" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

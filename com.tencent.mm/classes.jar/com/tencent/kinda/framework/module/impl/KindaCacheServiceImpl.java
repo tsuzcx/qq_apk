@@ -11,53 +11,53 @@ public class KindaCacheServiceImpl
 {
   public byte[] get(String paramString)
   {
-    AppMethodBeat.i(144512);
+    AppMethodBeat.i(18626);
     paramString = SubCoreKinda.getCore().getCacheStg().get(paramString);
     if (paramString != null)
     {
       if (paramString.field_expire_at < System.currentTimeMillis() / 1000L)
       {
-        AppMethodBeat.o(144512);
+        AppMethodBeat.o(18626);
         return null;
       }
       paramString = paramString.field_value;
-      AppMethodBeat.o(144512);
+      AppMethodBeat.o(18626);
       return paramString;
     }
-    AppMethodBeat.o(144512);
+    AppMethodBeat.o(18626);
     return null;
   }
   
   public boolean getBool(String paramString)
   {
-    AppMethodBeat.i(144515);
+    AppMethodBeat.i(18629);
     paramString = get(paramString);
     if ((paramString != null) && (paramString.length > 0) && (paramString[0] == 1))
     {
-      AppMethodBeat.o(144515);
+      AppMethodBeat.o(18629);
       return true;
     }
-    AppMethodBeat.o(144515);
+    AppMethodBeat.o(18629);
     return false;
   }
   
   public boolean remove(String paramString)
   {
-    AppMethodBeat.i(144513);
+    AppMethodBeat.i(18627);
     paramString = SubCoreKinda.getCore().getCacheStg().get(paramString);
     if (paramString != null)
     {
       boolean bool = SubCoreKinda.getCore().getCacheStg().delete(paramString, new String[0]);
-      AppMethodBeat.o(144513);
+      AppMethodBeat.o(18627);
       return bool;
     }
-    AppMethodBeat.o(144513);
+    AppMethodBeat.o(18627);
     return true;
   }
   
   public void set(String paramString, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(144511);
+    AppMethodBeat.i(18625);
     KindaCacheItem localKindaCacheItem = new KindaCacheItem();
     localKindaCacheItem.field_key = paramString;
     localKindaCacheItem.field_value = paramArrayOfByte;
@@ -65,25 +65,25 @@ public class KindaCacheServiceImpl
     for (localKindaCacheItem.field_expire_at = (System.currentTimeMillis() / 1000L + 315360000L);; localKindaCacheItem.field_expire_at = (System.currentTimeMillis() / 1000L + paramLong))
     {
       SubCoreKinda.getCore().getCacheStg().save(localKindaCacheItem);
-      AppMethodBeat.o(144511);
+      AppMethodBeat.o(18625);
       return;
     }
   }
   
   public void setBool(String paramString, boolean paramBoolean, long paramLong)
   {
-    AppMethodBeat.i(144514);
+    AppMethodBeat.i(18628);
     byte[] arrayOfByte = new byte[1];
     if (paramBoolean) {
       arrayOfByte[0] = 1;
     }
     set(paramString, arrayOfByte, paramLong);
-    AppMethodBeat.o(144514);
+    AppMethodBeat.o(18628);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.KindaCacheServiceImpl
  * JD-Core Version:    0.7.0.1
  */

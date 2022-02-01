@@ -2,17 +2,17 @@ package com.tencent.mm.wear.app.emoji;
 
 final class b
 {
-  com.tencent.mm.g.b abH;
-  boolean abI = false;
+  com.tencent.mm.g.b afi;
+  boolean afj = false;
   int end;
   int start;
   
   public b(a parama, com.tencent.mm.g.b paramb, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.abH = paramb;
+    this.afi = paramb;
     this.start = paramInt1;
     this.end = paramInt2;
-    this.abI = paramBoolean;
+    this.afj = paramBoolean;
   }
 }
 

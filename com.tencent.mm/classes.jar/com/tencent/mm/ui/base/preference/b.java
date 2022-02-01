@@ -16,10 +16,10 @@ final class b
   
   public final void a(RadioButton paramRadioButton)
   {
-    AppMethodBeat.i(107144);
+    AppMethodBeat.i(142521);
     paramRadioButton.setText(this.text);
     paramRadioButton.setId(this.id);
-    AppMethodBeat.o(107144);
+    AppMethodBeat.o(142521);
   }
 }
 

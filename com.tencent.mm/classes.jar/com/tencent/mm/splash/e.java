@@ -5,11 +5,11 @@ import android.content.Intent;
 
 public abstract interface e
 {
+  public abstract boolean Lj();
+  
   public abstract boolean a(Activity paramActivity, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
   
   public abstract boolean a(Activity paramActivity, Runnable paramRunnable);
-  
-  public abstract boolean b(Activity paramActivity, Runnable paramRunnable);
   
   public abstract boolean n(Intent paramIntent);
 }

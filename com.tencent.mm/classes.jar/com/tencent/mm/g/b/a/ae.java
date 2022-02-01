@@ -2,126 +2,73 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Arrays;
 
 public final class ae
   extends a
 {
-  public long cUc;
-  public long cUd;
-  public String cUe;
-  public boolean cUf;
+  private long dFd;
+  private String dHr;
+  private String dKt;
   
-  public ae()
+  public final String PV()
   {
-    this.cUc = 0L;
-    this.cUd = 0L;
-    this.cUe = "";
-  }
-  
-  public ae(String paramString)
-  {
-    AppMethodBeat.i(73303);
-    this.cUc = 0L;
-    this.cUd = 0L;
-    this.cUe = "";
-    if (paramString != null)
-    {
-      paramString = paramString.split(",");
-      if (paramString != null)
-      {
-        if (paramString.length >= 4) {
-          break label117;
-        }
-        String[] arrayOfString = new String[4];
-        Arrays.fill(arrayOfString, 0, 4, "");
-        System.arraycopy(paramString, 0, arrayOfString, 0, paramString.length);
-        paramString = arrayOfString;
-      }
-    }
-    label117:
-    for (;;)
-    {
-      this.cUc = bo.getLong(paramString[0], 0L);
-      bz(bo.getLong(paramString[1], 0L));
-      fz(paramString[2]);
-      this.cUf = a.getBoolean(paramString[3]);
-      AppMethodBeat.o(73303);
-      return;
-    }
-  }
-  
-  private ae bz(long paramLong)
-  {
-    AppMethodBeat.i(73304);
-    this.cUd = paramLong;
-    super.aA("StartTimeStampSec", this.cUd);
-    AppMethodBeat.o(73304);
-    return this;
-  }
-  
-  public final String Ff()
-  {
-    AppMethodBeat.i(73307);
+    AppMethodBeat.i(184163);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cUc);
+    ((StringBuffer)localObject).append(this.dKt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cUd);
+    ((StringBuffer)localObject).append(this.dFd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cUe);
-    ((StringBuffer)localObject).append(",");
-    if (this.cUf) {}
-    for (int i = 1;; i = 0)
-    {
-      ((StringBuffer)localObject).append(i);
-      localObject = ((StringBuffer)localObject).toString();
-      Yp((String)localObject);
-      AppMethodBeat.o(73307);
-      return localObject;
-    }
-  }
-  
-  public final String Fg()
-  {
-    AppMethodBeat.i(73308);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ExptFlag:").append(this.cUc);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StartTimeStampSec:").append(this.cUd);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Roomname:").append(this.cUe);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("hardcodeExptBool:").append(this.cUf);
+    ((StringBuffer)localObject).append(this.dHr);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(73308);
+    ams((String)localObject);
+    AppMethodBeat.o(184163);
     return localObject;
   }
   
-  public final ae Fm()
+  public final String PW()
   {
-    AppMethodBeat.i(73305);
-    ae localae = bz(bo.aox());
-    AppMethodBeat.o(73305);
-    return localae;
+    AppMethodBeat.i(184164);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("Username:").append(this.dKt);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Action:").append(this.dFd);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SessionId:").append(this.dHr);
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(184164);
+    return localObject;
   }
   
-  public final ae fz(String paramString)
+  public final ae de(long paramLong)
   {
-    AppMethodBeat.i(73306);
-    this.cUe = t("Roomname", paramString, true);
-    AppMethodBeat.o(73306);
+    this.dFd = paramLong;
+    return this;
+  }
+  
+  public final ae gR(String paramString)
+  {
+    AppMethodBeat.i(184161);
+    this.dKt = t("Username", paramString, true);
+    AppMethodBeat.o(184161);
+    return this;
+  }
+  
+  public final ae gS(String paramString)
+  {
+    AppMethodBeat.i(184162);
+    this.dHr = t("SessionId", paramString, true);
+    AppMethodBeat.o(184162);
     return this;
   }
   
   public final int getId()
   {
-    return 0;
+    return 19431;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ae
  * JD-Core Version:    0.7.0.1
  */

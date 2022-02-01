@@ -7,52 +7,71 @@ import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.support.v4.view.t;
 import android.view.View;
+import android.view.View.OnApplyWindowInsetsListener;
 import android.view.Window;
+import android.view.WindowInsets;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ah;
+import com.tencent.mm.ui.ak;
 
 @TargetApi(21)
 public final class m
   extends Drawable
 {
-  final Rect fa;
-  private int jaJ;
-  public int jaK;
+  final Rect lQD;
+  private int lQE;
+  public int lQF;
   private final Paint mPaint;
   private final Rect mTempRect;
   
   public m()
   {
-    AppMethodBeat.i(143622);
-    this.fa = new Rect();
+    AppMethodBeat.i(49371);
+    this.lQD = new Rect();
     this.mTempRect = new Rect();
     this.mPaint = new Paint();
-    this.jaJ = 0;
-    this.jaK = 0;
-    AppMethodBeat.o(143622);
+    this.lQE = 0;
+    this.lQF = 0;
+    AppMethodBeat.o(49371);
   }
   
   public static void a(Activity paramActivity, View paramView)
   {
-    AppMethodBeat.i(143623);
+    AppMethodBeat.i(49372);
     if ((paramView == null) || (paramActivity == null))
     {
-      AppMethodBeat.o(143623);
+      AppMethodBeat.o(49372);
       return;
     }
     m localm = new m();
-    View localView = paramActivity.getWindow().getDecorView();
+    final View localView = paramActivity.getWindow().getDecorView();
     paramView.setBackground(localm);
-    m.1 local1 = new m.1(localm, localView);
+    View.OnApplyWindowInsetsListener local1 = new View.OnApplyWindowInsetsListener()
+    {
+      public final WindowInsets onApplyWindowInsets(View paramAnonymousView, WindowInsets paramAnonymousWindowInsets)
+      {
+        AppMethodBeat.i(49370);
+        this.lQG.lQD.set(paramAnonymousWindowInsets.getSystemWindowInsetLeft(), paramAnonymousWindowInsets.getSystemWindowInsetTop(), paramAnonymousWindowInsets.getSystemWindowInsetRight(), paramAnonymousWindowInsets.getSystemWindowInsetBottom());
+        t.W(paramAnonymousView);
+        if (localView == paramAnonymousView)
+        {
+          AppMethodBeat.o(49370);
+          return paramAnonymousWindowInsets;
+        }
+        paramAnonymousView = paramAnonymousView.onApplyWindowInsets(paramAnonymousWindowInsets);
+        AppMethodBeat.o(49370);
+        return paramAnonymousView;
+      }
+    };
     if (localView == paramView) {
-      ah.aB(paramActivity).a(local1);
+      ak.bc(paramActivity).a(local1);
     }
     for (;;)
     {
-      localm.jaJ = 0;
-      localm.jaK = paramActivity.getWindow().getNavigationBarColor();
-      AppMethodBeat.o(143623);
+      localm.lQE = 0;
+      localm.lQF = paramActivity.getWindow().getNavigationBarColor();
+      AppMethodBeat.o(49372);
       return;
       paramView.setOnApplyWindowInsetsListener(local1);
     }
@@ -60,45 +79,45 @@ public final class m
   
   public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(143624);
+    AppMethodBeat.i(49373);
     Rect localRect = getBounds();
     if ((localRect.width() <= 0) || (localRect.height() <= 0))
     {
-      AppMethodBeat.o(143624);
+      AppMethodBeat.o(49373);
       return;
     }
-    int i = Math.min(localRect.top + this.fa.top, localRect.bottom);
-    int j = Math.min(localRect.left + this.fa.left, localRect.right);
-    int k = Math.max(localRect.right - this.fa.right, localRect.left);
-    int m = Math.max(localRect.bottom - this.fa.bottom, localRect.top);
-    if ((this.jaJ != 0) && (this.fa.top > 0))
+    int i = Math.min(localRect.top + this.lQD.top, localRect.bottom);
+    int j = Math.min(localRect.left + this.lQD.left, localRect.right);
+    int k = Math.max(localRect.right - this.lQD.right, localRect.left);
+    int m = Math.max(localRect.bottom - this.lQD.bottom, localRect.top);
+    if ((this.lQE != 0) && (this.lQD.top > 0))
     {
       this.mTempRect.set(j, localRect.top, k, i);
-      this.mPaint.setColor(this.jaJ);
+      this.mPaint.setColor(this.lQE);
       paramCanvas.drawRect(this.mTempRect, this.mPaint);
     }
-    if (this.jaK != 0)
+    if (this.lQF != 0)
     {
-      if (this.fa.left > 0)
+      if (this.lQD.left > 0)
       {
         this.mTempRect.set(localRect.left, i, j, m);
-        this.mPaint.setColor(this.jaK);
+        this.mPaint.setColor(this.lQF);
         paramCanvas.drawRect(this.mTempRect, this.mPaint);
       }
-      if (this.fa.right > 0)
+      if (this.lQD.right > 0)
       {
         this.mTempRect.set(k, i, localRect.right, m);
-        this.mPaint.setColor(this.jaK);
+        this.mPaint.setColor(this.lQF);
         paramCanvas.drawRect(this.mTempRect, this.mPaint);
       }
-      if (this.fa.bottom > 0)
+      if (this.lQD.bottom > 0)
       {
         this.mTempRect.set(j, m, k, localRect.bottom);
-        this.mPaint.setColor(this.jaK);
+        this.mPaint.setColor(this.lQF);
         paramCanvas.drawRect(this.mTempRect, this.mPaint);
       }
     }
-    AppMethodBeat.o(143624);
+    AppMethodBeat.o(49373);
   }
   
   public final int getOpacity()
@@ -112,7 +131,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,136 +1,69 @@
 package com.tencent.mm.app;
 
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.Fragment;
+import android.os.HandlerThread;
+import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bw;
-import com.tencent.mm.model.d.a.4;
-import com.tencent.mm.model.d.b;
-import com.tencent.mm.model.d.b.1;
-import com.tencent.mm.model.d.c.1;
-import com.tencent.mm.model.d.c.a;
-import com.tencent.mm.plugin.sns.b.f;
-import com.tencent.mm.plugin.sns.b.n;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.ui.HomeUI;
-import com.tencent.mm.ui.LauncherUI;
-import com.tencent.mm.ui.MainTabUI;
-import com.tencent.mm.ui.conversation.MainUI;
-import com.tencent.mm.ui.m;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.vending.h.h;
 
 public final class p
 {
-  public static p bYI;
-  public boolean bYJ;
-  public ak bYK;
+  private static p cLy;
+  com.tencent.mm.vending.h.d cLA;
+  HandlerThread cLz;
+  ap handler;
   
-  public p()
+  private p(String paramString)
   {
-    AppMethodBeat.i(15386);
-    this.bYK = new ak(Looper.getMainLooper())
-    {
-      public final void handleMessage(Message paramAnonymousMessage)
-      {
-        AppMethodBeat.i(15385);
-        super.handleMessage(paramAnonymousMessage);
-        Object localObject;
-        if (paramAnonymousMessage.what == -1999)
-        {
-          if (!p.this.bYJ)
-          {
-            paramAnonymousMessage = LauncherUI.getInstance();
-            if ((paramAnonymousMessage != null) && (paramAnonymousMessage.yYV))
-            {
-              paramAnonymousMessage.yYT.getMainTabUI().atp("tab_main");
-              localObject = paramAnonymousMessage.getHomeUI();
-              if (((HomeUI)localObject).yXC) {
-                ((HomeUI)localObject).yXE = true;
-              }
-              localObject = n.raQ;
-              if (localObject != null) {
-                ((f)localObject).cnM();
-              }
-              paramAnonymousMessage = paramAnonymousMessage.yYT.getMainTabUI().zcI.values().iterator();
-              while (paramAnonymousMessage.hasNext())
-              {
-                localObject = (Fragment)paramAnonymousMessage.next();
-                if (!(localObject instanceof MainUI)) {
-                  ((m)localObject).dAH();
-                }
-              }
-            }
-            System.gc();
-            AppMethodBeat.o(15385);
-          }
-        }
-        else if (paramAnonymousMessage.what == -2999)
-        {
-          if (p.this.bYJ)
-          {
-            AppMethodBeat.o(15385);
-            return;
-          }
-          paramAnonymousMessage = LauncherUI.getInstance();
-          if (paramAnonymousMessage != null)
-          {
-            paramAnonymousMessage = paramAnonymousMessage.yYT.getMainTabUI();
-            if (paramAnonymousMessage.zcI.containsKey(Integer.valueOf(0))) {
-              ((m)paramAnonymousMessage.zcI.get(Integer.valueOf(0))).dAH();
-            }
-          }
-          if (g.RJ().QU())
-          {
-            aw.aat();
-            paramAnonymousMessage = bw.pF("plugin.emoji");
-            if (paramAnonymousMessage != null) {
-              paramAnonymousMessage.clearPluginData(0);
-            }
-            paramAnonymousMessage = b.acd();
-            localObject = com.tencent.mm.model.d.a.abX();
-            com.tencent.mm.model.d.c localc = com.tencent.mm.model.d.c.acf();
-            aw.RO().ac(new b.1(paramAnonymousMessage));
-            d.ysn.aj(new a.4((com.tencent.mm.model.d.a)localObject));
-            localc.a(paramAnonymousMessage);
-            localc.a((c.a)localObject);
-            aw.RO().ac(new c.1(localc));
-          }
-          System.gc();
-        }
-        AppMethodBeat.o(15385);
-      }
-    };
-    AppMethodBeat.o(15386);
+    AppMethodBeat.i(19444);
+    this.cLz = new HandlerThread(paramString, 10);
+    this.cLz.start();
+    this.handler = new ap(this.cLz.getLooper());
+    this.cLA = new h(com.tencent.mm.co.d.c(this.handler), paramString);
+    AppMethodBeat.o(19444);
   }
   
-  public static p Bv()
+  public static p KK()
   {
-    AppMethodBeat.i(15387);
-    if (bYI == null) {
-      bYI = new p();
+    AppMethodBeat.i(19443);
+    if (cLy == null) {
+      cLy = new p("initThread");
     }
-    p localp = bYI;
-    AppMethodBeat.o(15387);
+    p localp = cLy;
+    AppMethodBeat.o(19443);
     return localp;
   }
   
-  public final void start()
+  public final void KL()
   {
-    AppMethodBeat.i(153472);
-    this.bYJ = false;
-    this.bYK.removeMessages(-1999);
-    this.bYK.removeMessages(-2999);
-    this.bYK.sendEmptyMessageDelayed(-1999, 3000L);
-    this.bYK.sendEmptyMessageDelayed(-2999, 30000L);
-    AppMethodBeat.o(153472);
+    AppMethodBeat.i(19445);
+    if ((this.cLz == null) || (!this.cLz.isAlive()))
+    {
+      ad.e("MicroMsg.InitThreadController", "setHighPriority failed thread is dead");
+      AppMethodBeat.o(19445);
+      return;
+    }
+    int i = this.cLz.getThreadId();
+    try
+    {
+      if (-8 == Process.getThreadPriority(i))
+      {
+        ad.w("MicroMsg.InitThreadController", "setHighPriority No Need.");
+        AppMethodBeat.o(19445);
+        return;
+      }
+      Process.setThreadPriority(i, -8);
+      ad.i("MicroMsg.InitThreadController", "InitThreadController:%d setHighPriority to %d", new Object[] { Integer.valueOf(i), Integer.valueOf(Process.getThreadPriority(i)) });
+      AppMethodBeat.o(19445);
+      return;
+    }
+    catch (Exception localException)
+    {
+      ad.w("MicroMsg.InitThreadController", "thread:%d setHighPriority failed", new Object[] { Integer.valueOf(i) });
+      ad.printErrStackTrace("MicroMsg.InitThreadController", localException, "", new Object[0]);
+      AppMethodBeat.o(19445);
+    }
   }
 }
 

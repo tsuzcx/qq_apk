@@ -2,8 +2,10 @@ package com.tencent.smtt.sdk;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.smtt.export.external.interfaces.IX5CoreWebViewDB;
 
 public class WebViewDatabase
+  extends x
 {
   private static WebViewDatabase a;
   private Context b;
@@ -17,12 +19,12 @@ public class WebViewDatabase
   {
     try
     {
-      AppMethodBeat.i(65034);
+      AppMethodBeat.i(54355);
       if (a == null) {
         a = new WebViewDatabase(paramContext);
       }
       paramContext = a;
-      AppMethodBeat.o(65034);
+      AppMethodBeat.o(54355);
       return paramContext;
     }
     finally {}
@@ -30,104 +32,98 @@ public class WebViewDatabase
   
   public static WebViewDatabase getInstance(Context paramContext)
   {
-    AppMethodBeat.i(65033);
+    AppMethodBeat.i(54354);
     paramContext = a(paramContext);
-    AppMethodBeat.o(65033);
+    AppMethodBeat.o(54354);
     return paramContext;
   }
   
   public void clearFormData()
   {
-    AppMethodBeat.i(65040);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54361);
+    if (isX5Core())
     {
-      localbz.c().g(this.b);
-      AppMethodBeat.o(65040);
+      getWebViewDBImpl().clearFormData(this.b);
+      AppMethodBeat.o(54361);
       return;
     }
     android.webkit.WebViewDatabase.getInstance(this.b).clearFormData();
-    AppMethodBeat.o(65040);
+    AppMethodBeat.o(54361);
   }
   
   public void clearHttpAuthUsernamePassword()
   {
-    AppMethodBeat.i(65038);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54359);
+    if (isX5Core())
     {
-      localbz.c().e(this.b);
-      AppMethodBeat.o(65038);
+      getWebViewDBImpl().clearHttpAuthUsernamePassword(this.b);
+      AppMethodBeat.o(54359);
       return;
     }
     android.webkit.WebViewDatabase.getInstance(this.b).clearHttpAuthUsernamePassword();
-    AppMethodBeat.o(65038);
+    AppMethodBeat.o(54359);
   }
   
   @Deprecated
   public void clearUsernamePassword()
   {
-    AppMethodBeat.i(65036);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54357);
+    if (isX5Core())
     {
-      localbz.c().c(this.b);
-      AppMethodBeat.o(65036);
+      getWebViewDBImpl().clearUsernamePassword(this.b);
+      AppMethodBeat.o(54357);
       return;
     }
     android.webkit.WebViewDatabase.getInstance(this.b).clearUsernamePassword();
-    AppMethodBeat.o(65036);
+    AppMethodBeat.o(54357);
   }
   
   public boolean hasFormData()
   {
-    AppMethodBeat.i(65039);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54360);
+    if (isX5Core())
     {
-      bool = localbz.c().f(this.b);
-      AppMethodBeat.o(65039);
+      bool = getWebViewDBImpl().hasFormData(this.b);
+      AppMethodBeat.o(54360);
       return bool;
     }
     boolean bool = android.webkit.WebViewDatabase.getInstance(this.b).hasFormData();
-    AppMethodBeat.o(65039);
+    AppMethodBeat.o(54360);
     return bool;
   }
   
   public boolean hasHttpAuthUsernamePassword()
   {
-    AppMethodBeat.i(65037);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54358);
+    if (isX5Core())
     {
-      bool = localbz.c().d(this.b);
-      AppMethodBeat.o(65037);
+      bool = getWebViewDBImpl().hasHttpAuthUsernamePassword(this.b);
+      AppMethodBeat.o(54358);
       return bool;
     }
     boolean bool = android.webkit.WebViewDatabase.getInstance(this.b).hasHttpAuthUsernamePassword();
-    AppMethodBeat.o(65037);
+    AppMethodBeat.o(54358);
     return bool;
   }
   
   @Deprecated
   public boolean hasUsernamePassword()
   {
-    AppMethodBeat.i(65035);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54356);
+    if (isX5Core())
     {
-      bool = localbz.c().b(this.b);
-      AppMethodBeat.o(65035);
+      bool = getWebViewDBImpl().hasUsernamePassword(this.b);
+      AppMethodBeat.o(54356);
       return bool;
     }
     boolean bool = android.webkit.WebViewDatabase.getInstance(this.b).hasUsernamePassword();
-    AppMethodBeat.o(65035);
+    AppMethodBeat.o(54356);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebViewDatabase
  * JD-Core Version:    0.7.0.1
  */

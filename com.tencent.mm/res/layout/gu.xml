@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<LinearLayout style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout style="@style/l0">
-        <EditText android:id="@id/a7h" android:hint="@string/a9d" android:inputType="number" style="@style/ml" />
-        <View style="@style/mh" />
-        <EditText android:id="@id/a7i" android:hint="@string/a9c" style="@style/mk" />
+    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="@dimen/h3" android:layout_marginRight="@dimen/ha">
+        <ImageView android:layout_width="@dimen/hc" android:layout_height="@dimen/hc" android:src="@raw/chatting_backup_computer" />
     </LinearLayout>
+    <ProgressBar android:id="@id/v7" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_marginLeft="40.0dip" android:layout_marginTop="@dimen/jn" android:layout_marginRight="40.0dip" android:progress="20" style="?android:progressBarStyleHorizontal" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha">
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:id="@id/v8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a6j" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha">
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:id="@id/vg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a71" />
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:id="@id/vh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a6z" />
+    </LinearLayout>
+    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
 </LinearLayout>

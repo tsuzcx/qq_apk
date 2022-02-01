@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/gs0" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/grw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_above="@id/grt" android:layout_alignParentTop="true">
+        <ScrollView android:layout_gravity="center|top" android:id="@id/c9_" android:paddingTop="100.0dip" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_gravity="center|top" android:orientation="vertical" android:id="@id/gru" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="27.0dip" android:textColor="@color/y4" android:layout_gravity="left" android:id="@id/grv" android:paddingLeft="20.0dip" android:paddingTop="25.0dip" android:paddingRight="20.0dip" android:paddingBottom="25.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="440.0dip" android:lineSpacingExtra="3.0dip" />
+                <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/grr" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ProgressBar android:layout_gravity="center_vertical" android:id="@id/grz" android:layout_width="40.0dip" android:layout_height="40.0dip" style="@style/a4p" />
+                    <TextView android:textSize="18.0dip" android:textColor="@color/y4" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g_t" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/grx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="20.0dip" android:layout_above="@id/grt" android:layout_alignParentTop="true">
+        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b3u" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/km" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/g_r" />
+    </LinearLayout>
+    <Button android:textSize="@dimen/gx" android:textColor="@color/y4" android:layout_gravity="center" android:id="@id/grt" android:background="@drawable/agm" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="@dimen/i5" android:layout_marginBottom="40.0dip" android:text="@string/g_q" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/gry" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <View android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="15.0dip" />
+        <View android:background="@drawable/app" android:layout_width="fill_parent" android:layout_height="25.0dip" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/grs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <View android:background="@drawable/apq" android:layout_width="fill_parent" android:layout_height="25.0dip" />
+        <View android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="15.0dip" />
+    </LinearLayout>
+</RelativeLayout>

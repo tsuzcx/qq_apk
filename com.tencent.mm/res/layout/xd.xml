@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:id="@id/bng" android:background="@drawable/l8" android:paddingLeft="@dimen/ll" android:paddingTop="@dimen/gs" android:paddingRight="@dimen/gt" android:paddingBottom="@dimen/gs" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/bl_" android:layout_width="@dimen/gv" android:layout_height="@dimen/gv" android:layout_marginLeft="@dimen/ll" android:src="@drawable/b53" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/q5" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="left" android:id="@id/bla" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp" android:text="@string/gd" android:layout_toRightOf="@id/bl_" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</LinearLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/bik" android:visibility="invisible" android:layout_width="@dimen/a0r" android:layout_height="@dimen/a0r" android:layout_marginTop="@dimen/acv" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+    <com.tencent.mm.plugin.emojicapture.ui.editor.EditorItemContainer android:id="@id/bif" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.sticker.ui.view.CaptureStickerHint android:gravity="center" android:orientation="vertical" android:id="@id/bit" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="@id/bik" app:layout_constraintEnd_toEndOf="@id/bik" app:layout_constraintStart_toStartOf="@id/bik" app:layout_constraintTop_toTopOf="@id/bik" />
+    <com.tencent.mm.plugin.emojicapture.ui.editor.text.FontAnimTextView android:id="@id/bj2" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:layout_marginStart="@dimen/a0f" android:layout_marginEnd="@dimen/a0f" app:layout_constraintBottom_toBottomOf="@id/bik" app:layout_constraintEnd_toEndOf="@id/bik" app:layout_constraintStart_toStartOf="@id/bik" />
+</merge>

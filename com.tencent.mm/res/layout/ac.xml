@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:id="@id/kb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="?e1"
+<android.support.v7.widget.FitWindowsLinearLayout android:orientation="vertical" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/la" android:background="@drawable/am" android:paddingLeft="@dimen/gc" android:paddingRight="@dimen/gc" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:id="@id/lb" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/aj" android:contentDescription="@string/ch" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_toRightOf="@id/la">
-        <EditText android:textSize="@dimen/dw" android:id="@id/lc" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="搜索" />
-    </LinearLayout>
-    <ImageButton android:id="@id/ld" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/awo" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <TextView android:ellipsize="end" android:id="@id/gam" android:paddingLeft="?id" android:paddingTop="@dimen/md" android:paddingRight="?id" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:textAlignment="viewStart" style="?android:windowTitleStyle" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" layout="@layout/ak" />
+</android.support.v7.widget.FitWindowsLinearLayout>

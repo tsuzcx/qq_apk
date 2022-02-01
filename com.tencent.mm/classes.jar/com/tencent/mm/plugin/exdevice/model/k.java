@@ -1,67 +1,64 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.h;
-import com.tencent.mm.ah.i;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.aj.d;
-import com.tencent.mm.aj.z;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.t;
-import com.tencent.mm.n.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.j;
+import com.tencent.mm.ak.p;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.u;
+import com.tencent.mm.model.w;
 import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.sns.b.n;
-import com.tencent.mm.protocal.protobuf.baf;
-import com.tencent.mm.protocal.protobuf.bdt;
-import com.tencent.mm.protocal.protobuf.cfj;
-import com.tencent.mm.protocal.protobuf.cw;
-import com.tencent.mm.protocal.protobuf.ir;
-import com.tencent.mm.protocal.protobuf.is;
-import com.tencent.mm.protocal.protobuf.it;
-import com.tencent.mm.protocal.protobuf.iu;
-import com.tencent.mm.protocal.protobuf.iv;
-import com.tencent.mm.protocal.protobuf.wc;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.sns.c.f;
+import com.tencent.mm.plugin.sns.c.o;
+import com.tencent.mm.protocal.protobuf.blv;
+import com.tencent.mm.protocal.protobuf.bqj;
+import com.tencent.mm.protocal.protobuf.cwh;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.ju;
+import com.tencent.mm.protocal.protobuf.jv;
+import com.tencent.mm.protocal.protobuf.jw;
+import com.tencent.mm.protocal.protobuf.jx;
+import com.tencent.mm.protocal.protobuf.jy;
+import com.tencent.mm.protocal.protobuf.zh;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bh;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class k
-  extends m
+  extends n
   implements com.tencent.mm.network.k
 {
-  private f eGj;
-  private com.tencent.mm.ai.b lFp;
-  private String[] lFq;
+  private com.tencent.mm.al.b fUF;
+  private g gbr;
+  private String[] oWb;
   
   public k(String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(19311);
-    this.lFp = null;
-    this.eGj = null;
-    this.lFq = paramArrayOfString;
-    ab.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "NetSceneBatchSearchHardDevice, %s, list = %d", new Object[] { paramString, Integer.valueOf(1) });
+    AppMethodBeat.i(23380);
+    this.fUF = null;
+    this.gbr = null;
+    this.oWb = paramArrayOfString;
+    ad.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "NetSceneBatchSearchHardDevice, %s, list = %d", new Object[] { paramString, Integer.valueOf(1) });
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new it();
-    ((b.a)localObject).fsY = new iu();
+    ((b.a)localObject).gUU = new jw();
+    ((b.a)localObject).gUV = new jx();
     ((b.a)localObject).funcId = 542;
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/batchsearchharddevice";
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.lFp = ((b.a)localObject).ado();
-    localObject = (it)this.lFp.fsV.fta;
+    this.fUF = ((b.a)localObject).atI();
+    localObject = (jw)this.fUF.gUS.gUX;
     LinkedList localLinkedList = new LinkedList();
     int i = 0;
     while (i <= 0)
@@ -69,38 +66,38 @@ public final class k
       String str = paramArrayOfString[0];
       if (str != null)
       {
-        is localis = new is();
-        localis.wuT = str;
-        localLinkedList.add(localis);
-        ab.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "NetSceneBatchSearchHardDevice, item = %s", new Object[] { str });
+        jv localjv = new jv();
+        localjv.CEQ = str;
+        localLinkedList.add(localjv);
+        ad.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "NetSceneBatchSearchHardDevice, item = %s", new Object[] { str });
       }
       i += 1;
     }
-    ((it)localObject).wuU = localLinkedList;
-    if (!bo.isNullOrNil(paramString))
+    ((jw)localObject).CER = localLinkedList;
+    if (!bt.isNullOrNil(paramString))
     {
-      paramArrayOfString = new ir();
-      paramArrayOfString.wuS = paramString;
-      ((it)localObject).wuV = paramArrayOfString;
+      paramArrayOfString = new ju();
+      paramArrayOfString.CEP = paramString;
+      ((jw)localObject).CES = paramArrayOfString;
     }
-    ((it)localObject).wuW = 3;
-    AppMethodBeat.o(19311);
+    ((jw)localObject).CET = 3;
+    AppMethodBeat.o(23380);
   }
   
-  public final iu bpQ()
+  public final jx bZy()
   {
-    if ((this.lFp != null) && (this.lFp.fsW.fta != null)) {
-      return (iu)this.lFp.fsW.fta;
+    if ((this.fUF != null) && (this.fUF.gUT.gUX != null)) {
+      return (jx)this.fUF.gUT.gUX;
     }
     return null;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, g paramg)
   {
-    AppMethodBeat.i(19313);
-    this.eGj = paramf;
-    int i = dispatch(parame, this.lFp, this);
-    AppMethodBeat.o(19313);
+    AppMethodBeat.i(23382);
+    this.gbr = paramg;
+    int i = dispatch(parame, this.fUF, this);
+    AppMethodBeat.o(23382);
     return i;
   }
   
@@ -111,207 +108,207 @@ public final class k
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(19312);
-    ab.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "onGYNetEnd, netId = %d, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((this.lFq != null) && (this.lFq.length == 1)) {
-      ab.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "device mac is  = %s", new Object[] { this.lFq[0] });
+    AppMethodBeat.i(23381);
+    ad.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "onGYNetEnd, netId = %d, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((this.oWb != null) && (this.oWb.length == 1)) {
+      ad.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "device mac is  = %s", new Object[] { this.oWb[0] });
     }
     if (paramq == null)
     {
-      ab.e("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "null == rr");
-      AppMethodBeat.o(19312);
+      ad.e("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "null == rr");
+      AppMethodBeat.o(23381);
       return;
     }
-    if (this.lFp.getType() != paramq.getType())
+    if (this.fUF.getType() != paramq.getType())
     {
-      ab.e("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "mReqResp.getType(%d) != rr.getType(%d)", new Object[] { Integer.valueOf(this.lFp.getType()), Integer.valueOf(paramq.getType()) });
-      AppMethodBeat.o(19312);
+      ad.e("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "mReqResp.getType(%d) != rr.getType(%d)", new Object[] { Integer.valueOf(this.fUF.getType()), Integer.valueOf(paramq.getType()) });
+      AppMethodBeat.o(23381);
       return;
     }
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = bpQ().wuX.iterator();
+      paramq = bZy().CEU.iterator();
       while (paramq.hasNext())
       {
-        paramArrayOfByte = (iv)paramq.next();
-        ab.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "BatchSearchHardDeviceResp, ret = %d, bind ticket = %s, mac = %s, device name = %s", new Object[] { Integer.valueOf(paramArrayOfByte.Ret), paramArrayOfByte.wuY, paramArrayOfByte.wuT, paramArrayOfByte.jJE });
-        if (paramArrayOfByte.wuZ == null)
+        paramArrayOfByte = (jy)paramq.next();
+        ad.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "BatchSearchHardDeviceResp, ret = %d, bind ticket = %s, mac = %s, device name = %s", new Object[] { Integer.valueOf(paramArrayOfByte.Ret), paramArrayOfByte.CEV, paramArrayOfByte.CEQ, paramArrayOfByte.mAU });
+        if (paramArrayOfByte.CEW == null)
         {
-          ab.e("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "null == item.Contact");
+          ad.e("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "null == item.Contact");
         }
         else
         {
-          paramArrayOfByte = paramArrayOfByte.wuZ;
+          paramArrayOfByte = paramArrayOfByte.CEW;
           if (paramArrayOfByte == null)
           {
-            ab.e("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "unable to parse mod contact");
+            ad.e("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "unable to parse mod contact");
           }
           else
           {
-            String str1 = aa.a(paramArrayOfByte.wOT);
-            String str2 = bo.nullAsNil(paramArrayOfByte.xtu);
-            if ((bo.isNullOrNil(str1)) && (bo.isNullOrNil(str2)))
+            String str1 = z.a(paramArrayOfByte.Dby);
+            String str2 = bt.nullAsNil(paramArrayOfByte.DOt);
+            if ((bt.isNullOrNil(str1)) && (bt.isNullOrNil(str2)))
             {
-              ab.e("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "processModContact user is null user:%s enuser:%s", new Object[] { str1, str2 });
+              ad.e("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "processModContact user is null user:%s enuser:%s", new Object[] { str1, str2 });
             }
             else
             {
-              ab.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "processModContact : %s", new Object[] { str1 });
-              aw.aaz();
-              ad localad1 = com.tencent.mm.model.c.YA().arw(str1);
-              if ((localad1 != null) && (str1.equals(localad1.field_encryptUsername)))
+              ad.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "processModContact : %s", new Object[] { str1 });
+              az.arV();
+              com.tencent.mm.storage.af localaf1 = com.tencent.mm.model.c.apM().aHY(str1);
+              if ((localaf1 != null) && (str1.equals(localaf1.field_encryptUsername)))
               {
-                ab.w("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "cat's replace user with stranger");
+                ad.w("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "cat's replace user with stranger");
               }
               else
               {
-                ad localad2 = new ad(str1);
-                localad2.jm(paramArrayOfByte.gwU);
-                localad2.setType(paramArrayOfByte.wNK & paramArrayOfByte.wNL);
+                com.tencent.mm.storage.af localaf2 = new com.tencent.mm.storage.af(str1);
+                localaf2.na(paramArrayOfByte.ijR);
+                localaf2.setType(paramArrayOfByte.Dan & paramArrayOfByte.Dao);
                 label460:
                 long l;
-                if (!bo.isNullOrNil(str2))
+                if (!bt.isNullOrNil(str2))
                 {
-                  localad2.jv(str2);
-                  if (localad1 != null) {
+                  localaf2.nj(str2);
+                  if (localaf1 != null) {
                     break label1024;
                   }
                   l = 0L;
                   label468:
-                  localad2.euF = l;
-                  localad2.jp(aa.a(paramArrayOfByte.xmi));
-                  localad2.jq(aa.a(paramArrayOfByte.wOv));
-                  localad2.jr(aa.a(paramArrayOfByte.wOw));
-                  localad2.hy(paramArrayOfByte.gwP);
-                  localad2.hA(paramArrayOfByte.wNQ);
-                  localad2.jo(aa.a(paramArrayOfByte.xto));
-                  localad2.hB(paramArrayOfByte.wNU);
-                  localad2.hC(paramArrayOfByte.gwT);
-                  localad2.jL(RegionCodeDecoder.aF(paramArrayOfByte.gwY, paramArrayOfByte.gwQ, paramArrayOfByte.gwR));
-                  localad2.jF(paramArrayOfByte.gwS);
-                  localad2.hu(paramArrayOfByte.xpe);
-                  localad2.jK(paramArrayOfByte.xpf);
-                  localad2.setSource(paramArrayOfByte.niK);
-                  localad2.ht(paramArrayOfByte.xpi);
-                  localad2.js(paramArrayOfByte.xph);
-                  if (t.oJ(paramArrayOfByte.xpg)) {
-                    localad2.jJ(paramArrayOfByte.xpg);
+                  localaf2.fId = l;
+                  localaf2.nd(z.a(paramArrayOfByte.DFJ));
+                  localaf2.ne(z.a(paramArrayOfByte.Dbb));
+                  localaf2.nf(z.a(paramArrayOfByte.Dbc));
+                  localaf2.jJ(paramArrayOfByte.ijM);
+                  localaf2.jL(paramArrayOfByte.Dat);
+                  localaf2.nc(z.a(paramArrayOfByte.DOn));
+                  localaf2.jM(paramArrayOfByte.Dax);
+                  localaf2.jN(paramArrayOfByte.ijQ);
+                  localaf2.nA(RegionCodeDecoder.aT(paramArrayOfByte.ijV, paramArrayOfByte.ijN, paramArrayOfByte.ijO));
+                  localaf2.nu(paramArrayOfByte.ijP);
+                  localaf2.jF(paramArrayOfByte.DIV);
+                  localaf2.nz(paramArrayOfByte.DIW);
+                  localaf2.setSource(paramArrayOfByte.rNz);
+                  localaf2.jE(paramArrayOfByte.DIZ);
+                  localaf2.ng(paramArrayOfByte.DIY);
+                  if (w.tu(paramArrayOfByte.DIX)) {
+                    localaf2.ny(paramArrayOfByte.DIX);
                   }
-                  localad2.hE((int)bo.aox());
-                  localad2.jn(aa.a(paramArrayOfByte.xsT));
-                  localad2.jt(aa.a(paramArrayOfByte.xsV));
-                  localad2.ju(aa.a(paramArrayOfByte.xsU));
-                  localad2.jM(paramArrayOfByte.woO);
-                  localad2.jN(paramArrayOfByte.xtD);
-                  if ((localad1 != null) && (!bo.nullAsNil(localad1.dqU).equals(bo.nullAsNil(paramArrayOfByte.xtD))))
+                  localaf2.jO((int)bt.aGK());
+                  localaf2.nb(z.a(paramArrayOfByte.DNT));
+                  localaf2.nh(z.a(paramArrayOfByte.DNV));
+                  localaf2.ni(z.a(paramArrayOfByte.DNU));
+                  localaf2.nB(paramArrayOfByte.Cxw);
+                  localaf2.nC(paramArrayOfByte.DOC);
+                  if ((localaf1 != null) && (!bt.nullAsNil(localaf1.evJ).equals(bt.nullAsNil(paramArrayOfByte.DOC))))
                   {
-                    com.tencent.mm.bc.c.aiT();
-                    com.tencent.mm.bc.c.tW(str1);
+                    com.tencent.mm.be.c.aAc();
+                    com.tencent.mm.be.c.yV(str1);
                   }
-                  aw.aaz();
-                  com.tencent.mm.model.c.YA().arB(str1);
-                  if (!bo.isNullOrNil(localad2.field_username)) {
+                  az.arV();
+                  com.tencent.mm.model.c.apM().aIe(str1);
+                  if (!bt.isNullOrNil(localaf2.field_username)) {
                     break label1036;
                   }
-                  ab.e("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "dkinit dealModContactExtInfo failed invalid contact");
+                  ad.e("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "dkinit dealModContactExtInfo failed invalid contact");
                   label810:
-                  localad2.hw(paramArrayOfByte.DeleteFlag);
-                  if ((paramArrayOfByte.xtz != null) && (paramArrayOfByte.xtz.wpi != null))
+                  localaf2.jH(paramArrayOfByte.DeleteFlag);
+                  if ((paramArrayOfByte.DOy != null) && (paramArrayOfByte.DOy.CxP != null))
                   {
-                    localad2.jO(paramArrayOfByte.xtz.wpi.wvz);
-                    localad2.jP(paramArrayOfByte.xtz.wpi.wvA);
-                    localad2.jQ(paramArrayOfByte.xtz.wpi.wvB);
+                    localaf2.nD(paramArrayOfByte.DOy.CxP.CFE);
+                    localaf2.nE(paramArrayOfByte.DOy.CxP.CFF);
+                    localaf2.nF(paramArrayOfByte.DOy.CxP.CFG);
                   }
-                  if (t.oD(str1)) {
-                    localad2.NG();
+                  if (w.to(str1)) {
+                    localaf2.Zt();
                   }
-                  if (localad2.dwz()) {
-                    localad2.NJ();
+                  if (localaf2.eKB()) {
+                    localaf2.Zw();
                   }
-                  if (bo.isNullOrNil(str2)) {
+                  if (bt.isNullOrNil(str2)) {
                     break label1371;
                   }
-                  aw.aaz();
-                  com.tencent.mm.model.c.YA().c(str2, localad2);
+                  az.arV();
+                  com.tencent.mm.model.c.apM().d(str2, localaf2);
                 }
                 for (;;)
                 {
-                  if ((localad1 == null) || ((localad1.field_type & 0x800) == (localad2.field_type & 0x800))) {
+                  if ((localaf1 == null) || ((localaf1.field_type & 0x800) == (localaf2.field_type & 0x800))) {
                     break label1387;
                   }
-                  if ((localad2.field_type & 0x800) == 0) {
+                  if ((localaf2.field_type & 0x800) == 0) {
                     break label1389;
                   }
-                  aw.aaz();
-                  com.tencent.mm.model.c.YF().arN(localad2.field_username);
+                  az.arV();
+                  com.tencent.mm.model.c.apR().aIt(localaf2.field_username);
                   break;
-                  if ((localad1 == null) || ((int)localad1.euF <= 0)) {
+                  if ((localaf1 == null) || ((int)localaf1.fId <= 0)) {
                     break label460;
                   }
-                  localad2.jv(localad1.field_encryptUsername);
+                  localaf2.nj(localaf1.field_encryptUsername);
                   break label460;
                   label1024:
-                  l = (int)localad1.euF;
+                  l = (int)localaf1.fId;
                   break label468;
                   label1036:
-                  Object localObject1 = localad2.field_username;
-                  Object localObject2 = com.tencent.mm.ah.b.a((String)localObject1, paramArrayOfByte);
-                  o.adg().b((h)localObject2);
-                  localObject2 = paramArrayOfByte.xpk;
-                  if ((!localad2.field_username.endsWith("@chatroom")) && (localObject2 != null))
+                  Object localObject1 = localaf2.field_username;
+                  Object localObject2 = com.tencent.mm.ak.c.a((String)localObject1, paramArrayOfByte);
+                  p.auF().b((i)localObject2);
+                  localObject2 = paramArrayOfByte.DJb;
+                  if ((!localaf2.field_username.endsWith("@chatroom")) && (localObject2 != null))
                   {
-                    ab.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "SnsFlag modcontact " + ((cfj)localObject2).gxa + " " + paramArrayOfByte.wOT);
-                    ab.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "SnsBg modcontact " + ((cfj)localObject2).gxb);
-                    ab.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "SnsBgId modcontact " + ((cfj)localObject2).gxc);
-                    ab.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "SnsBgId modcontact " + ((cfj)localObject2).xPN);
-                    if (n.raR != null) {
-                      n.raR.a(localad2.field_username, (cfj)localObject2);
+                    ad.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "SnsFlag modcontact " + ((cwh)localObject2).ijX + " " + paramArrayOfByte.Dby);
+                    ad.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "SnsBg modcontact " + ((cwh)localObject2).ijY);
+                    ad.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "SnsBgId modcontact " + ((cwh)localObject2).ijZ);
+                    ad.i("MicroMsg.exdevice.NetSceneBatchSearchHardDevice", "SnsBgId modcontact " + ((cwh)localObject2).Eoc);
+                    if (o.wzH != null) {
+                      o.wzH.a(localaf2.field_username, (cwh)localObject2);
                     }
                   }
-                  localObject2 = r.Zn();
+                  localObject2 = u.aqG();
                   if ((localObject2 == null) || (((String)localObject2).equals(localObject1))) {
                     break label810;
                   }
-                  localObject2 = z.afi().rK((String)localObject1);
-                  ((d)localObject2).field_username = ((String)localObject1);
-                  ((d)localObject2).field_brandList = paramArrayOfByte.gwZ;
-                  localObject1 = paramArrayOfByte.xpl;
+                  localObject2 = com.tencent.mm.am.af.awe().wy((String)localObject1);
+                  ((com.tencent.mm.api.c)localObject2).field_username = ((String)localObject1);
+                  ((com.tencent.mm.api.c)localObject2).field_brandList = paramArrayOfByte.ijW;
+                  localObject1 = paramArrayOfByte.DJc;
                   if (localObject1 != null)
                   {
-                    ((d)localObject2).field_brandFlag = ((wc)localObject1).gxd;
-                    ((d)localObject2).field_brandInfo = ((wc)localObject1).gxf;
-                    ((d)localObject2).field_brandIconURL = ((wc)localObject1).gxg;
-                    ((d)localObject2).field_extInfo = ((wc)localObject1).gxe;
-                    ((d)localObject2).field_attrSyncVersion = null;
-                    ((d)localObject2).field_incrementUpdateTime = 0L;
+                    ((com.tencent.mm.api.c)localObject2).field_brandFlag = ((zh)localObject1).ika;
+                    ((com.tencent.mm.api.c)localObject2).field_brandInfo = ((zh)localObject1).ikc;
+                    ((com.tencent.mm.api.c)localObject2).field_brandIconURL = ((zh)localObject1).ikd;
+                    ((com.tencent.mm.api.c)localObject2).field_extInfo = ((zh)localObject1).ikb;
+                    ((com.tencent.mm.api.c)localObject2).field_attrSyncVersion = null;
+                    ((com.tencent.mm.api.c)localObject2).field_incrementUpdateTime = 0L;
                   }
-                  if (!z.afi().e((d)localObject2)) {
-                    z.afi().d((d)localObject2);
+                  if (!com.tencent.mm.am.af.awe().g((com.tencent.mm.api.c)localObject2)) {
+                    com.tencent.mm.am.af.awe().f((com.tencent.mm.api.c)localObject2);
                   }
-                  localad2.hF(((d)localObject2).field_type);
+                  localaf2.jP(((com.tencent.mm.api.c)localObject2).field_type);
                   break label810;
                   label1371:
-                  aw.aaz();
-                  com.tencent.mm.model.c.YA().X(localad2);
+                  az.arV();
+                  com.tencent.mm.model.c.apM().ae(localaf2);
                 }
                 label1387:
                 continue;
                 label1389:
-                aw.aaz();
-                com.tencent.mm.model.c.YF().arO(localad2.field_username);
+                az.arV();
+                com.tencent.mm.model.c.apR().aIu(localaf2.field_username);
               }
             }
           }
         }
       }
     }
-    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(19312);
+    this.gbr.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(23381);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.k
  * JD-Core Version:    0.7.0.1
  */

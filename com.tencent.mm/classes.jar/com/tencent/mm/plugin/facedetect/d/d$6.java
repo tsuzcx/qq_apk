@@ -9,13 +9,13 @@ final class d$6
   
   public final void run()
   {
-    AppMethodBeat.i(316);
-    if (com.tencent.mm.plugin.facedetect.e.a.bvo().mnp)
+    AppMethodBeat.i(103835);
+    if (com.tencent.mm.plugin.facedetect.e.a.cgJ().pUa)
     {
-      this.mkc.mjH.a(com.tencent.mm.plugin.facedetect.e.a.bvo().bvp());
-      com.tencent.mm.plugin.facedetect.e.a.bvo().EC();
+      this.pQN.pQs.b(com.tencent.mm.plugin.facedetect.e.a.cgJ().cgK());
+      com.tencent.mm.plugin.facedetect.e.a.cgJ().Ok();
     }
-    AppMethodBeat.o(316);
+    AppMethodBeat.o(103835);
   }
 }
 

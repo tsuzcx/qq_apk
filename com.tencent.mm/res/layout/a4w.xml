@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameFeedMoreGameEntranceView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="45.0dip">
-        <TextView android:textSize="@dimen/jb" android:textColor="@color/qj" android:id="@id/c3v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jr" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <ImageView android:layout_width="8.0dip" android:layout_height="12.0dip" android:layout_marginRight="@dimen/jr" android:src="@drawable/aht" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <View android:background="@color/pv" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    </com.tencent.mm.plugin.game.ui.GameFeedMoreGameEntranceView>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/b_7" android:background="@color/BW_97" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:src="@raw/finder_feed_retransmission" app:iconColor="@color/FG_1" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c9y" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/to" android:id="@id/b_8" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c9z" />
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/f02" android:background="@drawable/ug" android:padding="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:layout_marginTop="@dimen/c0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:src="@raw/finder_feed_retransmission" app:iconColor="@color/a_r" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/a_r" android:id="@id/f00" android:paddingRight="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cco" />
+    </LinearLayout>
 </FrameLayout>

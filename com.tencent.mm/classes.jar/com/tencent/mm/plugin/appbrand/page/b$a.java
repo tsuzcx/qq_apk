@@ -4,30 +4,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum b$a
 {
-  final int ivb;
-  final int ivc;
+  final int kXG;
+  final int kXH;
   
   static
   {
-    AppMethodBeat.i(87026);
-    iuW = new a("NORMAL", 0, -1, -1);
-    iuX = new a("LBS", 1, 2131301350, 2130837712);
-    iuY = new a("VOICE", 2, 2131301351, 2130837714);
-    iuZ = new a("VIDEO", 3, -1, 2130837713);
-    iva = new a("LOADING", 4, -1, -1);
-    ivd = new a[] { iuW, iuX, iuY, iuZ, iva };
-    AppMethodBeat.o(87026);
+    AppMethodBeat.i(134952);
+    kXB = new a("NORMAL", 0, -1, -1);
+    kXC = new a("LBS", 1, 2131760995, 2131230948);
+    kXD = new a("VOICE", 2, 2131760996, 2131230950);
+    kXE = new a("VIDEO", 3, -1, 2131230949);
+    kXF = new a("LOADING", 4, -1, -1);
+    kXI = new a[] { kXB, kXC, kXD, kXE, kXF };
+    AppMethodBeat.o(134952);
   }
   
   private b$a(int paramInt1, int paramInt2)
   {
-    this.ivb = paramInt1;
-    this.ivc = paramInt2;
+    this.kXG = paramInt1;
+    this.kXH = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.b.a
  * JD-Core Version:    0.7.0.1
  */

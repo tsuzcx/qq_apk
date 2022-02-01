@@ -11,10 +11,10 @@ public class WalletPayUPwdConfirmUI
 {
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(48523);
+    AppMethodBeat.i(72164);
     super.onCreate(paramBundle);
-    a.a(this.nID, false);
-    AppMethodBeat.o(48523);
+    a.a(this.swk, false);
+    AppMethodBeat.o(72164);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -25,7 +25,7 @@ public class WalletPayUPwdConfirmUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pwd.ui.WalletPayUPwdConfirmUI
  * JD-Core Version:    0.7.0.1
  */

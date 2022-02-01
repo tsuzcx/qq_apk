@@ -6,6 +6,7 @@ import com.tencent.recovery.model.RecoveryHandleItem;
 import com.tencent.recovery.report.RecoveryReporter;
 import com.tencent.recovery.service.RecoveryUploadService;
 import com.tencent.recovery.util.Util;
+import com.tencent.recovery.wx.WXRecoveryVersion;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -112,7 +113,7 @@ public class WXRecoveryUploadService
     //   6: aload 6
     //   8: astore 4
     //   10: aload_0
-    //   11: invokestatic 83	com/tencent/recovery/wx/util/WXUtil:iZ	(Landroid/content/Context;)Ljava/lang/String;
+    //   11: invokestatic 83	com/tencent/recovery/wx/util/WXUtil:getWXUserName	(Landroid/content/Context;)Ljava/lang/String;
     //   14: astore 7
     //   16: aload 6
     //   18: astore 4
@@ -183,7 +184,7 @@ public class WXRecoveryUploadService
     //   161: aastore
     //   162: invokestatic 155	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   165: invokevirtual 145	java/lang/String:getBytes	()[B
-    //   168: invokestatic 161	com/tencent/recovery/wx/util/EncryptUtil:w	([B)Ljava/lang/String;
+    //   168: invokestatic 161	com/tencent/recovery/wx/util/EncryptUtil:getMessageDigest	([B)Ljava/lang/String;
     //   171: invokevirtual 164	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   174: astore_1
     //   175: aload 6
@@ -203,7 +204,7 @@ public class WXRecoveryUploadService
     //   205: aload 10
     //   207: aload_1
     //   208: invokevirtual 145	java/lang/String:getBytes	()[B
-    //   211: invokestatic 175	com/tencent/recovery/wx/util/EncryptUtil:a	(Lcom/tencent/recovery/wx/util/PByteArray;[B[B)I
+    //   211: invokestatic 175	com/tencent/recovery/wx/util/EncryptUtil:DESEncrypt	(Lcom/tencent/recovery/wx/util/PByteArray;[B[B)I
     //   214: pop
     //   215: aload 6
     //   217: astore 4
@@ -475,32 +476,32 @@ public class WXRecoveryUploadService
     ((Intent)localObject).setPackage(getPackageName());
     ((Intent)localObject).setAction("com.tecent.mm.intent.action.RECOVERY_STATUS_UPLOAD");
     sendBroadcast((Intent)localObject);
-    localObject = RecoveryReporter.a(this, "HandleStatus", RecoveryHandleItem.class);
+    localObject = RecoveryReporter.getItemList(this, "HandleStatus", RecoveryHandleItem.class);
     boolean bool = uploadData((List)localObject);
     if ((((List)localObject).size() == 0) || (bool)) {
-      RecoveryReporter.bW(this, "HandleStatus");
+      RecoveryReporter.clearReportFile(this, "HandleStatus");
     }
     return bool;
   }
   
   protected boolean uploadData(List<RecoveryHandleItem> paramList)
   {
-    int i = Util.iT(this);
+    int i = Util.getUUID(this);
     JSONArray localJSONArray = new JSONArray();
-    Object localObject1 = "0x27000536";
+    Object localObject1 = WXRecoveryVersion.getBaseClientVersion(this);
     Iterator localIterator = paramList.iterator();
     Object localObject2;
     if (localIterator.hasNext()) {
       localObject2 = (RecoveryHandleItem)localIterator.next();
     }
-    label220:
+    label221:
     for (;;)
     {
       try
       {
-        localJSONArray.put(new JSONObject().put("tag", "RecoveryHandle").put("info", ((RecoveryHandleItem)localObject2).key).put("uin", ((RecoveryHandleItem)localObject2).eAx).put("deviceUUID", i).put("time", Util.oW(((RecoveryHandleItem)localObject2).timestamp)).put("cver", ((RecoveryHandleItem)localObject2).clientVersion).put("processName", ((RecoveryHandleItem)localObject2).processName).put("phoneStatus", ((RecoveryHandleItem)localObject2).Biw));
+        localJSONArray.put(new JSONObject().put("tag", "RecoveryHandle").put("info", ((RecoveryHandleItem)localObject2).key).put("uin", ((RecoveryHandleItem)localObject2).uuid).put("deviceUUID", i).put("time", Util.getTimeFormat(((RecoveryHandleItem)localObject2).timestamp)).put("cver", ((RecoveryHandleItem)localObject2).clientVersion).put("processName", ((RecoveryHandleItem)localObject2).processName).put("phoneStatus", ((RecoveryHandleItem)localObject2).phoneStatus));
         if (compareVersion(((RecoveryHandleItem)localObject2).clientVersion, (String)localObject1) <= 0) {
-          break label220;
+          break label221;
         }
         localObject2 = ((RecoveryHandleItem)localObject2).clientVersion;
         localObject1 = localObject2;

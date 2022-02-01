@@ -1,202 +1,184 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class adf
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String canvasPageXml;
-  public String desc;
-  public int fgB;
-  public String thumbUrl;
-  public String title;
-  public boolean wSv = false;
-  public boolean wSw = false;
-  public boolean wTH = false;
-  public boolean wUX = false;
-  public String wVF;
-  public boolean wVG = false;
-  public int wVH;
-  public boolean wVI = false;
-  public boolean wVJ = false;
-  
-  public final adf MS(int paramInt)
-  {
-    this.wVH = paramInt;
-    this.wVI = true;
-    return this;
-  }
-  
-  public final adf MT(int paramInt)
-  {
-    this.fgB = paramInt;
-    this.wVJ = true;
-    return this;
-  }
-  
-  public final adf aoA(String paramString)
-  {
-    this.title = paramString;
-    this.wSv = true;
-    return this;
-  }
-  
-  public final adf aoB(String paramString)
-  {
-    this.desc = paramString;
-    this.wSw = true;
-    return this;
-  }
-  
-  public final adf aoC(String paramString)
-  {
-    this.wVF = paramString;
-    this.wVG = true;
-    return this;
-  }
-  
-  public final adf aoD(String paramString)
-  {
-    this.thumbUrl = paramString;
-    this.wUX = true;
-    return this;
-  }
-  
-  public final adf aoE(String paramString)
-  {
-    this.canvasPageXml = paramString;
-    this.wTH = true;
-    return this;
-  }
+  public int Cxm;
+  public String DdN;
+  public String DdO;
+  public String DdP;
+  public String DdQ;
+  public String DdR;
+  public int DdS;
+  public int DdT;
+  public String DdU;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(51424);
+    AppMethodBeat.i(104780);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.title != null) {
-        paramVarArgs.e(1, this.title);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.DdN == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BegWord");
+        AppMethodBeat.o(104780);
+        throw paramVarArgs;
       }
-      if (this.desc != null) {
-        paramVarArgs.e(2, this.desc);
+      if (this.DdO == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BegPicUrl");
+        AppMethodBeat.o(104780);
+        throw paramVarArgs;
       }
-      if (this.wVF != null) {
-        paramVarArgs.e(3, this.wVF);
+      if (this.DdP == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ThanksPicUrl");
+        AppMethodBeat.o(104780);
+        throw paramVarArgs;
       }
-      if (this.thumbUrl != null) {
-        paramVarArgs.e(4, this.thumbUrl);
+      if (this.DdN != null) {
+        paramVarArgs.d(1, this.DdN);
       }
-      if (this.wVI == true) {
-        paramVarArgs.aO(5, this.wVH);
+      if (this.DdO != null) {
+        paramVarArgs.d(2, this.DdO);
       }
-      if (this.wVJ == true) {
-        paramVarArgs.aO(6, this.fgB);
+      if (this.DdP != null) {
+        paramVarArgs.d(3, this.DdP);
       }
-      if (this.canvasPageXml != null) {
-        paramVarArgs.e(7, this.canvasPageXml);
+      if (this.DdQ != null) {
+        paramVarArgs.d(4, this.DdQ);
       }
-      AppMethodBeat.o(51424);
+      if (this.DdR != null) {
+        paramVarArgs.d(5, this.DdR);
+      }
+      paramVarArgs.aR(6, this.DdS);
+      paramVarArgs.aR(7, this.DdT);
+      if (this.DdU != null) {
+        paramVarArgs.d(8, this.DdU);
+      }
+      paramVarArgs.aR(9, this.Cxm);
+      AppMethodBeat.o(104780);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.title == null) {
-        break label624;
+      if (this.DdN == null) {
+        break label798;
       }
     }
-    label624:
-    for (int i = e.a.a.b.b.a.f(1, this.title) + 0;; i = 0)
+    label798:
+    for (int i = f.a.a.b.b.a.e(1, this.DdN) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.desc != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.desc);
+      if (this.DdO != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.DdO);
       }
       i = paramInt;
-      if (this.wVF != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.wVF);
+      if (this.DdP != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.DdP);
       }
       paramInt = i;
-      if (this.thumbUrl != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.thumbUrl);
+      if (this.DdQ != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.DdQ);
       }
       i = paramInt;
-      if (this.wVI == true) {
-        i = paramInt + e.a.a.b.b.a.bl(5, this.wVH);
+      if (this.DdR != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.DdR);
       }
+      i = i + f.a.a.b.b.a.bA(6, this.DdS) + f.a.a.b.b.a.bA(7, this.DdT);
       paramInt = i;
-      if (this.wVJ == true) {
-        paramInt = i + e.a.a.b.b.a.bl(6, this.fgB);
+      if (this.DdU != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.DdU);
       }
-      i = paramInt;
-      if (this.canvasPageXml != null) {
-        i = paramInt + e.a.a.b.b.a.f(7, this.canvasPageXml);
-      }
-      AppMethodBeat.o(51424);
-      return i;
+      i = f.a.a.b.b.a.bA(9, this.Cxm);
+      AppMethodBeat.o(104780);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(51424);
+        if (this.DdN == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BegWord");
+          AppMethodBeat.o(104780);
+          throw paramVarArgs;
+        }
+        if (this.DdO == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BegPicUrl");
+          AppMethodBeat.o(104780);
+          throw paramVarArgs;
+        }
+        if (this.DdP == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ThanksPicUrl");
+          AppMethodBeat.o(104780);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(104780);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         adf localadf = (adf)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(51424);
+          AppMethodBeat.o(104780);
           return -1;
         case 1: 
-          localadf.title = locala.CLY.readString();
-          localadf.wSv = true;
-          AppMethodBeat.o(51424);
+          localadf.DdN = locala.KhF.readString();
+          AppMethodBeat.o(104780);
           return 0;
         case 2: 
-          localadf.desc = locala.CLY.readString();
-          localadf.wSw = true;
-          AppMethodBeat.o(51424);
+          localadf.DdO = locala.KhF.readString();
+          AppMethodBeat.o(104780);
           return 0;
         case 3: 
-          localadf.wVF = locala.CLY.readString();
-          localadf.wVG = true;
-          AppMethodBeat.o(51424);
+          localadf.DdP = locala.KhF.readString();
+          AppMethodBeat.o(104780);
           return 0;
         case 4: 
-          localadf.thumbUrl = locala.CLY.readString();
-          localadf.wUX = true;
-          AppMethodBeat.o(51424);
+          localadf.DdQ = locala.KhF.readString();
+          AppMethodBeat.o(104780);
           return 0;
         case 5: 
-          localadf.wVH = locala.CLY.sl();
-          localadf.wVI = true;
-          AppMethodBeat.o(51424);
+          localadf.DdR = locala.KhF.readString();
+          AppMethodBeat.o(104780);
           return 0;
         case 6: 
-          localadf.fgB = locala.CLY.sl();
-          localadf.wVJ = true;
-          AppMethodBeat.o(51424);
+          localadf.DdS = locala.KhF.xS();
+          AppMethodBeat.o(104780);
+          return 0;
+        case 7: 
+          localadf.DdT = locala.KhF.xS();
+          AppMethodBeat.o(104780);
+          return 0;
+        case 8: 
+          localadf.DdU = locala.KhF.readString();
+          AppMethodBeat.o(104780);
           return 0;
         }
-        localadf.canvasPageXml = locala.CLY.readString();
-        localadf.wTH = true;
-        AppMethodBeat.o(51424);
+        localadf.Cxm = locala.KhF.xS();
+        AppMethodBeat.o(104780);
         return 0;
       }
-      AppMethodBeat.o(51424);
+      AppMethodBeat.o(104780);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.adf
  * JD-Core Version:    0.7.0.1
  */

@@ -19,6 +19,7 @@ import com.facebook.LoggingBehavior;
 import com.facebook.internal.ImageDownloader;
 import com.facebook.internal.ImageRequest;
 import com.facebook.internal.ImageRequest.Builder;
+import com.facebook.internal.ImageRequest.Callback;
 import com.facebook.internal.ImageResponse;
 import com.facebook.internal.Logger;
 import com.facebook.internal.Utility;
@@ -48,7 +49,7 @@ public class ProfilePictureView
   private Bitmap imageContents;
   private boolean isCropped;
   private ImageRequest lastRequest;
-  private ProfilePictureView.OnErrorListener onErrorListener;
+  private OnErrorListener onErrorListener;
   private int presetSizeType;
   private String profileId;
   private int queryHeight;
@@ -56,28 +57,28 @@ public class ProfilePictureView
   
   static
   {
-    AppMethodBeat.i(92710);
+    AppMethodBeat.i(40477);
     TAG = ProfilePictureView.class.getSimpleName();
-    AppMethodBeat.o(92710);
+    AppMethodBeat.o(40477);
   }
   
   public ProfilePictureView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(92689);
+    AppMethodBeat.i(40456);
     this.queryHeight = 0;
     this.queryWidth = 0;
     this.isCropped = true;
     this.presetSizeType = -1;
     this.customizedDefaultProfilePicture = null;
     initialize(paramContext);
-    AppMethodBeat.o(92689);
+    AppMethodBeat.o(40456);
   }
   
   public ProfilePictureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(92690);
+    AppMethodBeat.i(40457);
     this.queryHeight = 0;
     this.queryWidth = 0;
     this.isCropped = true;
@@ -85,13 +86,13 @@ public class ProfilePictureView
     this.customizedDefaultProfilePicture = null;
     initialize(paramContext);
     parseAttributes(paramAttributeSet);
-    AppMethodBeat.o(92690);
+    AppMethodBeat.o(40457);
   }
   
   public ProfilePictureView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(92691);
+    AppMethodBeat.i(40458);
     this.queryHeight = 0;
     this.queryWidth = 0;
     this.isCropped = true;
@@ -99,62 +100,62 @@ public class ProfilePictureView
     this.customizedDefaultProfilePicture = null;
     initialize(paramContext);
     parseAttributes(paramAttributeSet);
-    AppMethodBeat.o(92691);
+    AppMethodBeat.o(40458);
   }
   
   private int getPresetSizeInPixels(boolean paramBoolean)
   {
-    int j = 2131428250;
-    AppMethodBeat.i(92708);
+    int j = 2131166063;
+    AppMethodBeat.i(40475);
     int i = j;
     switch (this.presetSizeType)
     {
     default: 
-      AppMethodBeat.o(92708);
+      AppMethodBeat.o(40475);
       return 0;
     case -2: 
-      i = 2131428251;
+      i = 2131166064;
     }
     do
     {
       for (;;)
       {
         i = getResources().getDimensionPixelSize(i);
-        AppMethodBeat.o(92708);
+        AppMethodBeat.o(40475);
         return i;
-        i = 2131428249;
+        i = 2131166062;
       }
       i = j;
     } while (paramBoolean);
-    AppMethodBeat.o(92708);
+    AppMethodBeat.o(40475);
     return 0;
   }
   
   private void initialize(Context paramContext)
   {
-    AppMethodBeat.i(92700);
+    AppMethodBeat.i(40467);
     removeAllViews();
     this.image = new ImageView(paramContext);
     paramContext = new FrameLayout.LayoutParams(-1, -1);
     this.image.setLayoutParams(paramContext);
     this.image.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     addView(this.image);
-    AppMethodBeat.o(92700);
+    AppMethodBeat.o(40467);
   }
   
   private void parseAttributes(AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(92701);
+    AppMethodBeat.i(40468);
     paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.com_facebook_profile_picture_view);
-    setPresetSize(paramAttributeSet.getInt(0, -1));
-    this.isCropped = paramAttributeSet.getBoolean(1, true);
+    setPresetSize(paramAttributeSet.getInt(1, -1));
+    this.isCropped = paramAttributeSet.getBoolean(0, true);
     paramAttributeSet.recycle();
-    AppMethodBeat.o(92701);
+    AppMethodBeat.o(40468);
   }
   
   private void processResponse(ImageResponse paramImageResponse)
   {
-    AppMethodBeat.i(92706);
+    AppMethodBeat.i(40473);
     if (paramImageResponse.getRequest() == this.lastRequest)
     {
       this.lastRequest = null;
@@ -166,11 +167,11 @@ public class ProfilePictureView
         if (paramImageResponse != null)
         {
           paramImageResponse.onError(new FacebookException("Error in downloading profile picture for profileId: " + getProfileId(), localException));
-          AppMethodBeat.o(92706);
+          AppMethodBeat.o(40473);
           return;
         }
         Logger.log(LoggingBehavior.REQUESTS, 6, TAG, localException.toString());
-        AppMethodBeat.o(92706);
+        AppMethodBeat.o(40473);
         return;
       }
       if (localBitmap != null)
@@ -181,78 +182,86 @@ public class ProfilePictureView
         }
       }
     }
-    AppMethodBeat.o(92706);
+    AppMethodBeat.o(40473);
   }
   
   private void refreshImage(boolean paramBoolean)
   {
-    AppMethodBeat.i(92702);
+    AppMethodBeat.i(40469);
     boolean bool = updateImageQueryParameters();
     if ((this.profileId == null) || (this.profileId.length() == 0) || ((this.queryWidth == 0) && (this.queryHeight == 0)))
     {
       setBlankProfilePicture();
-      AppMethodBeat.o(92702);
+      AppMethodBeat.o(40469);
       return;
     }
     if ((bool) || (paramBoolean)) {
       sendImageRequest(true);
     }
-    AppMethodBeat.o(92702);
+    AppMethodBeat.o(40469);
   }
   
   private void sendImageRequest(boolean paramBoolean)
   {
-    AppMethodBeat.i(92705);
-    ImageRequest localImageRequest = new ImageRequest.Builder(getContext(), ImageRequest.getProfilePictureUri(this.profileId, this.queryWidth, this.queryHeight)).setAllowCachedRedirects(paramBoolean).setCallerTag(this).setCallback(new ProfilePictureView.1(this)).build();
+    AppMethodBeat.i(40472);
+    ImageRequest localImageRequest = new ImageRequest.Builder(getContext(), ImageRequest.getProfilePictureUri(this.profileId, this.queryWidth, this.queryHeight)).setAllowCachedRedirects(paramBoolean).setCallerTag(this).setCallback(new ImageRequest.Callback()
+    {
+      public void onCompleted(ImageResponse paramAnonymousImageResponse)
+      {
+        AppMethodBeat.i(40455);
+        ProfilePictureView.access$000(ProfilePictureView.this, paramAnonymousImageResponse);
+        AppMethodBeat.o(40455);
+      }
+    }).build();
     if (this.lastRequest != null) {
       ImageDownloader.cancelRequest(this.lastRequest);
     }
     this.lastRequest = localImageRequest;
     ImageDownloader.downloadAsync(localImageRequest);
-    AppMethodBeat.o(92705);
+    AppMethodBeat.o(40472);
   }
   
   private void setBlankProfilePicture()
   {
-    AppMethodBeat.i(92703);
+    AppMethodBeat.i(40470);
     if (this.lastRequest != null) {
       ImageDownloader.cancelRequest(this.lastRequest);
     }
     if (this.customizedDefaultProfilePicture == null)
     {
       if (isCropped()) {}
-      for (int i = 2130838435;; i = 2130838434)
+      for (int i = 2131231808;; i = 2131231807)
       {
         setImageBitmap(BitmapFactory.decodeResource(getResources(), i));
-        AppMethodBeat.o(92703);
+        AppMethodBeat.o(40470);
         return;
       }
     }
     updateImageQueryParameters();
     setImageBitmap(Bitmap.createScaledBitmap(this.customizedDefaultProfilePicture, this.queryWidth, this.queryHeight, false));
-    AppMethodBeat.o(92703);
+    AppMethodBeat.o(40470);
   }
   
   private void setImageBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(92704);
+    AppMethodBeat.i(40471);
     if ((this.image != null) && (paramBitmap != null))
     {
       this.imageContents = paramBitmap;
       this.image.setImageBitmap(paramBitmap);
     }
-    AppMethodBeat.o(92704);
+    AppMethodBeat.o(40471);
   }
   
   private boolean updateImageQueryParameters()
   {
     boolean bool = false;
-    AppMethodBeat.i(92707);
+    AppMethodBeat.i(40474);
     int j = getHeight();
     int i = getWidth();
     if ((i <= 0) || (j <= 0))
     {
-      AppMethodBeat.o(92707);
+      AppMethodBeat.o(40474);
       return false;
     }
     int k = getPresetSizeInPixels(false);
@@ -271,7 +280,7 @@ public class ProfilePictureView
         }
         this.queryWidth = i;
         this.queryHeight = j;
-        AppMethodBeat.o(92707);
+        AppMethodBeat.o(40474);
         return bool;
       }
     }
@@ -281,7 +290,7 @@ public class ProfilePictureView
     }
   }
   
-  public final ProfilePictureView.OnErrorListener getOnErrorListener()
+  public final OnErrorListener getOnErrorListener()
   {
     return this.onErrorListener;
   }
@@ -303,24 +312,24 @@ public class ProfilePictureView
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(92699);
+    AppMethodBeat.i(40466);
     super.onDetachedFromWindow();
     this.lastRequest = null;
-    AppMethodBeat.o(92699);
+    AppMethodBeat.o(40466);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(92696);
+    AppMethodBeat.i(40463);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     refreshImage(false);
-    AppMethodBeat.o(92696);
+    AppMethodBeat.o(40463);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int m = 1;
-    AppMethodBeat.i(92695);
+    AppMethodBeat.i(40462);
     ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
     int i1 = 0;
     int i2 = View.MeasureSpec.getSize(paramInt2);
@@ -352,11 +361,11 @@ public class ProfilePictureView
       {
         setMeasuredDimension(i, k);
         measureChildren(paramInt1, j);
-        AppMethodBeat.o(92695);
+        AppMethodBeat.o(40462);
         return;
       }
       super.onMeasure(paramInt1, j);
-      AppMethodBeat.o(92695);
+      AppMethodBeat.o(40462);
       return;
       paramInt2 = i;
       i = n;
@@ -365,11 +374,11 @@ public class ProfilePictureView
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(92698);
+    AppMethodBeat.i(40465);
     if (paramParcelable.getClass() != Bundle.class)
     {
       super.onRestoreInstanceState(paramParcelable);
-      AppMethodBeat.o(92698);
+      AppMethodBeat.o(40465);
       return;
     }
     paramParcelable = (Bundle)paramParcelable;
@@ -380,12 +389,12 @@ public class ProfilePictureView
     this.queryWidth = paramParcelable.getInt("ProfilePictureView_width");
     this.queryHeight = paramParcelable.getInt("ProfilePictureView_height");
     refreshImage(true);
-    AppMethodBeat.o(92698);
+    AppMethodBeat.o(40465);
   }
   
   protected Parcelable onSaveInstanceState()
   {
-    AppMethodBeat.i(92697);
+    AppMethodBeat.i(40464);
     Parcelable localParcelable = super.onSaveInstanceState();
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("ProfilePictureView_superState", localParcelable);
@@ -398,17 +407,17 @@ public class ProfilePictureView
     for (boolean bool = true;; bool = false)
     {
       localBundle.putBoolean("ProfilePictureView_refresh", bool);
-      AppMethodBeat.o(92697);
+      AppMethodBeat.o(40464);
       return localBundle;
     }
   }
   
   public final void setCropped(boolean paramBoolean)
   {
-    AppMethodBeat.i(92693);
+    AppMethodBeat.i(40460);
     this.isCropped = paramBoolean;
     refreshImage(false);
-    AppMethodBeat.o(92693);
+    AppMethodBeat.o(40460);
   }
   
   public final void setDefaultProfilePicture(Bitmap paramBitmap)
@@ -416,29 +425,29 @@ public class ProfilePictureView
     this.customizedDefaultProfilePicture = paramBitmap;
   }
   
-  public final void setOnErrorListener(ProfilePictureView.OnErrorListener paramOnErrorListener)
+  public final void setOnErrorListener(OnErrorListener paramOnErrorListener)
   {
     this.onErrorListener = paramOnErrorListener;
   }
   
   public final void setPresetSize(int paramInt)
   {
-    AppMethodBeat.i(92692);
+    AppMethodBeat.i(40459);
     switch (paramInt)
     {
     default: 
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Must use a predefined preset size");
-      AppMethodBeat.o(92692);
+      AppMethodBeat.o(40459);
       throw localIllegalArgumentException;
     }
     this.presetSizeType = paramInt;
     requestLayout();
-    AppMethodBeat.o(92692);
+    AppMethodBeat.o(40459);
   }
   
   public final void setProfileId(String paramString)
   {
-    AppMethodBeat.i(92694);
+    AppMethodBeat.i(40461);
     boolean bool = false;
     if ((Utility.isNullOrEmpty(this.profileId)) || (!this.profileId.equalsIgnoreCase(paramString)))
     {
@@ -447,12 +456,17 @@ public class ProfilePictureView
     }
     this.profileId = paramString;
     refreshImage(bool);
-    AppMethodBeat.o(92694);
+    AppMethodBeat.o(40461);
+  }
+  
+  public static abstract interface OnErrorListener
+  {
+    public abstract void onError(FacebookException paramFacebookException);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.login.widget.ProfilePictureView
  * JD-Core Version:    0.7.0.1
  */

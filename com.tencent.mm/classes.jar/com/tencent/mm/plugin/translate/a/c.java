@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.translate.a;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bf;
+import com.tencent.mm.model.bi;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.clt;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.det;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,47 +18,47 @@ import java.util.Set;
 public final class c
   implements a
 {
-  public ArrayList<c.a> eDb;
-  public int evn;
-  public final d[] toQ;
-  public Queue<c.c> toR;
-  public HashMap<String, Integer> toS;
+  public int fLq;
+  public ArrayList<a> fYf;
+  public final d[] yVG;
+  public Queue<c> yVH;
+  public HashMap<String, Integer> yVI;
   
   private c()
   {
-    AppMethodBeat.i(26063);
-    this.evn = 0;
-    this.eDb = new ArrayList(1);
-    this.toR = new LinkedList();
-    this.toS = new HashMap();
-    this.toQ = new d[1];
-    AppMethodBeat.o(26063);
+    AppMethodBeat.i(29744);
+    this.fLq = 0;
+    this.fYf = new ArrayList(1);
+    this.yVH = new LinkedList();
+    this.yVI = new HashMap();
+    this.yVG = new d[1];
+    AppMethodBeat.o(29744);
   }
   
-  private void b(int paramInt, SparseArray<c.c> paramSparseArray)
+  private void b(int paramInt, SparseArray<c> paramSparseArray)
   {
-    AppMethodBeat.i(26064);
-    Iterator localIterator = this.eDb.iterator();
+    AppMethodBeat.i(29745);
+    Iterator localIterator = this.fYf.iterator();
     while (localIterator.hasNext()) {
-      ((c.a)localIterator.next()).a(paramInt, paramSparseArray);
+      ((a)localIterator.next()).a(paramInt, paramSparseArray);
     }
-    AppMethodBeat.o(26064);
+    AppMethodBeat.o(29745);
   }
   
-  public final void a(int paramInt, SparseArray<c.c> paramSparseArray, LinkedList<clt> paramLinkedList)
+  public final void a(int paramInt, SparseArray<c> paramSparseArray, LinkedList<det> paramLinkedList)
   {
-    AppMethodBeat.i(26067);
-    this.evn -= 1;
+    AppMethodBeat.i(29748);
+    this.fLq -= 1;
     Object localObject;
     int i;
     if ((paramLinkedList == null) || (paramSparseArray.size() != paramLinkedList.size()))
     {
-      ab.d("MicroMsg.TranslateServiceManager", "originals.size() != translatedMsg.size()");
+      ad.d("MicroMsg.TranslateServiceManager", "originals.size() != translatedMsg.size()");
       localObject = new HashMap();
       i = 0;
       while (i < paramSparseArray.size())
       {
-        ((HashMap)localObject).put(((c.c)paramSparseArray.valueAt(i)).id, Integer.valueOf(((c.c)paramSparseArray.valueAt(i)).toU));
+        ((HashMap)localObject).put(((c)paramSparseArray.valueAt(i)).id, Integer.valueOf(((c)paramSparseArray.valueAt(i)).yVK));
         i += 1;
       }
     }
@@ -67,36 +67,36 @@ public final class c
       if (paramLinkedList != null)
       {
         Iterator localIterator = paramLinkedList.iterator();
-        clt localclt;
-        c.c localc;
+        det localdet;
+        c localc;
         for (;;)
         {
           if (!localIterator.hasNext()) {
             break label408;
           }
-          localclt = (clt)localIterator.next();
-          localc = (c.c)paramSparseArray.get(localclt.xVJ);
+          localdet = (det)localIterator.next();
+          localc = (c)paramSparseArray.get(localdet.Ewl);
           if (localc != null) {
             break;
           }
-          ab.w("MicroMsg.TranslateServiceManager", "[onTranslateEnd] message is null! %s %s %s", new Object[] { Integer.valueOf(localclt.xVJ), Integer.valueOf(localclt.Ret), bo.aqg(localclt.xVM) });
+          ad.w("MicroMsg.TranslateServiceManager", "[onTranslateEnd] message is null! %s %s %s", new Object[] { Integer.valueOf(localdet.Ewl), Integer.valueOf(localdet.Ret), bt.aGs(localdet.Ewo) });
         }
-        String str = localclt.xVM;
+        String str = localdet.Ewo;
         paramLinkedList = str;
         if (localc.type == 1)
         {
-          paramLinkedList = bf.ap(str, localc.toV);
-          localc.cKn = bf.ap(localc.cKn, localc.toV);
+          paramLinkedList = bi.aE(str, localc.yVL);
+          localc.dBj = bi.aE(localc.dBj, localc.yVL);
         }
-        localc.cKw = paramLinkedList;
-        localc.ret = localclt.Ret;
-        localc.cID = localclt.xVN;
-        if ((localclt.wYl != null) && (localclt.wYl.getBuffer() != null)) {}
-        for (paramLinkedList = localclt.wYl.getBufferToBytes();; paramLinkedList = null)
+        localc.dBs = paramLinkedList;
+        localc.ret = localdet.Ret;
+        localc.dzt = localdet.Ewp;
+        if ((localdet.DpV != null) && (localdet.DpV.getBuffer() != null)) {}
+        for (paramLinkedList = localdet.DpV.getBufferToBytes();; paramLinkedList = null)
         {
-          localc.dHc = paramLinkedList;
-          localc.cKx = localclt.xVO;
-          this.toS.remove(localc.id);
+          localc.ePe = paramLinkedList;
+          localc.dBt = localdet.Ewq;
+          this.yVI.remove(localc.id);
           if (localObject == null) {
             break;
           }
@@ -107,9 +107,9 @@ public final class c
       i = 0;
       while (i < paramSparseArray.size())
       {
-        paramLinkedList = (c.c)paramSparseArray.valueAt(i);
+        paramLinkedList = (c)paramSparseArray.valueAt(i);
         if (paramLinkedList.type == 1) {
-          paramLinkedList.cKn = bf.ap(paramLinkedList.cKn, paramLinkedList.toV);
+          paramLinkedList.dBj = bi.aE(paramLinkedList.dBj, paramLinkedList.yVL);
         }
         i += 1;
       }
@@ -120,56 +120,119 @@ public final class c
         while (paramLinkedList.hasNext())
         {
           localObject = (Map.Entry)paramLinkedList.next();
-          this.toS.remove(((Map.Entry)localObject).getKey());
-          ab.d("MicroMsg.TranslateServiceManager", "we found missing translate, msgId : %s, clientId : %s", new Object[] { ((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue() });
+          this.yVI.remove(((Map.Entry)localObject).getKey());
+          ad.d("MicroMsg.TranslateServiceManager", "we found missing translate, msgId : %s, clientId : %s", new Object[] { ((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue() });
         }
       }
       b(paramInt, paramSparseArray);
-      cKT();
-      AppMethodBeat.o(26067);
+      dQy();
+      AppMethodBeat.o(29748);
       return;
       localObject = null;
     }
   }
   
-  public final boolean aew(String paramString)
+  public final boolean asP(String paramString)
   {
-    AppMethodBeat.i(26066);
-    boolean bool = this.toS.containsKey(paramString);
-    AppMethodBeat.o(26066);
+    AppMethodBeat.i(29747);
+    boolean bool = this.yVI.containsKey(paramString);
+    AppMethodBeat.o(29747);
     return bool;
   }
   
-  public final void cKT()
+  public final void dQy()
   {
     int i = 0;
-    AppMethodBeat.i(26065);
-    ab.d("MicroMsg.TranslateServiceManager", "current waitings : %s", new Object[] { Integer.valueOf(this.toR.size()) });
-    if (this.toR.size() == 0)
+    AppMethodBeat.i(29746);
+    ad.d("MicroMsg.TranslateServiceManager", "current waitings : %s", new Object[] { Integer.valueOf(this.yVH.size()) });
+    if (this.yVH.size() == 0)
     {
-      AppMethodBeat.o(26065);
+      AppMethodBeat.o(29746);
       return;
     }
-    if (this.evn <= this.toQ.length) {
-      while (i < this.toQ.length)
+    if (this.fLq <= this.yVG.length) {
+      while (i < this.yVG.length)
       {
-        if (this.toQ[i] == null)
+        if (this.yVG[i] == null)
         {
-          this.toQ[i] = new d(i, this);
-          this.toQ[i].init();
+          this.yVG[i] = new d(i, this);
+          this.yVG[i].init();
         }
-        if ((!this.toQ[i].toY) && (this.toQ[i].e(this.toR))) {
-          this.evn += 1;
+        if ((!this.yVG[i].yVO) && (this.yVG[i].e(this.yVH))) {
+          this.fLq += 1;
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(26065);
+    AppMethodBeat.o(29746);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(int paramInt, SparseArray<c.c> paramSparseArray);
+  }
+  
+  public static final class b
+  {
+    public static final c yVJ;
+    
+    static
+    {
+      AppMethodBeat.i(29742);
+      yVJ = new c((byte)0);
+      AppMethodBeat.o(29742);
+    }
+  }
+  
+  public static final class c
+  {
+    private static int yVM = 0;
+    public String dBj;
+    public String dBs;
+    public int dBt;
+    public String dzt;
+    public byte[] ePe;
+    public String id;
+    public int ret;
+    public String source;
+    public int type;
+    public int yVK;
+    public String yVL;
+    
+    public c(String paramString1, String paramString2, int paramInt, String paramString3, byte[] paramArrayOfByte)
+    {
+      AppMethodBeat.i(29743);
+      this.dBj = paramString1;
+      this.id = paramString2;
+      this.type = paramInt;
+      this.source = paramString3;
+      this.ePe = paramArrayOfByte;
+      if (yVM == 2147483647) {
+        yVM = 0;
+      }
+      int i = yVM + 1;
+      yVM = i;
+      this.yVK = i;
+      if (paramInt == 1)
+      {
+        paramInt = bi.uc(paramString1);
+        if (paramInt != -1)
+        {
+          paramString2 = paramString1.substring(0, paramInt).trim();
+          if ((paramString2 != null) && (paramString2.length() > 0))
+          {
+            this.yVL = paramString2;
+            this.dBj = paramString1.substring(paramInt + 1).trim();
+          }
+        }
+      }
+      AppMethodBeat.o(29743);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.translate.a.c
  * JD-Core Version:    0.7.0.1
  */

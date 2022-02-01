@@ -4,238 +4,246 @@ import android.graphics.Bitmap;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class n
   implements i
 {
-  private static ConcurrentHashMap<Bitmap, Integer> fdR;
+  private static ConcurrentHashMap<Bitmap, Integer> gEc;
   private boolean DEBUG;
   public Bitmap bitmap;
-  private ak faV;
-  private boolean fdP;
-  private AtomicInteger fdQ;
-  private boolean fdS;
-  private Runnable fdT;
-  private int fdU;
-  private int fdV;
+  private ap gAC;
+  private boolean gEa;
+  private AtomicInteger gEb;
+  private boolean gEd;
+  private Runnable gEe;
+  private int gEf;
+  private int gEg;
   
   static
   {
-    AppMethodBeat.i(115406);
-    fdR = new ConcurrentHashMap();
-    AppMethodBeat.o(115406);
+    AppMethodBeat.i(156452);
+    gEc = new ConcurrentHashMap();
+    AppMethodBeat.o(156452);
   }
   
   private n(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(115392);
+    AppMethodBeat.i(156438);
     this.bitmap = null;
     this.DEBUG = false;
-    this.faV = new ak(Looper.getMainLooper());
-    this.fdP = false;
-    this.fdQ = new AtomicInteger();
-    this.fdS = true;
-    this.fdT = new n.1(this);
-    this.fdU = 0;
-    this.fdV = 0;
+    this.gAC = new ap(Looper.getMainLooper());
+    this.gEa = false;
+    this.gEb = new AtomicInteger();
+    this.gEd = true;
+    this.gEe = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(156437);
+        n.a(n.this);
+        AppMethodBeat.o(156437);
+      }
+    };
+    this.gEf = 0;
+    this.gEg = 0;
     this.bitmap = paramBitmap;
-    this.fdQ.set(1);
+    this.gEb.set(1);
     if (this.DEBUG) {
-      ab.i("MicroMsg.ReleasableBitmap", "bitmap " + paramBitmap + " " + this.bitmap.hashCode() + " mm: " + hashCode() + " this: " + this + " " + bo.dtY().toString());
+      ad.i("MicroMsg.ReleasableBitmap", "bitmap " + paramBitmap + " " + this.bitmap.hashCode() + " mm: " + hashCode() + " this: " + this + " " + bt.eGN().toString());
     }
-    this.fdP = false;
+    this.gEa = false;
     getAllocationByteCount();
-    AppMethodBeat.o(115392);
+    AppMethodBeat.o(156438);
   }
   
-  private boolean XV()
+  public static n D(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(115399);
-    if (this.DEBUG) {
-      ab.i("MicroMsg.ReleasableBitmap", "recycleImpl~:" + this.fdP + " isMutable:" + this.fdS + " bitmap:" + this.bitmap + " " + hashCode() + " attachCount: " + this.fdQ + bo.dtY().toString());
-    }
-    if ((this.fdP) || (this.fdQ.get() > 0))
-    {
-      AppMethodBeat.o(115399);
-      return false;
-    }
-    this.fdP = true;
-    if (this.DEBUG) {
-      fdR.remove(this.bitmap);
-    }
-    if (this.fdS) {
-      l.XQ().u(this.bitmap);
-    }
-    AppMethodBeat.o(115399);
-    return true;
-  }
-  
-  private final int XW()
-  {
-    AppMethodBeat.i(115400);
-    if ((this.bitmap == null) || (this.bitmap.isRecycled()))
-    {
-      ab.i("MicroMsg.ReleasableBitmap", "getByteCount recycle " + this.fdU + " " + toString());
-      i = this.fdU;
-      AppMethodBeat.o(115400);
-      return i;
-    }
-    this.fdU = this.bitmap.getByteCount();
-    int i = this.fdU;
-    AppMethodBeat.o(115400);
-    return i;
-  }
-  
-  public static n v(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(115393);
+    AppMethodBeat.i(156439);
     if (paramBitmap == null)
     {
-      AppMethodBeat.o(115393);
+      AppMethodBeat.o(156439);
       return null;
     }
     paramBitmap = new n(paramBitmap);
-    AppMethodBeat.o(115393);
+    AppMethodBeat.o(156439);
     return paramBitmap;
   }
   
-  public final void XO()
+  private boolean ape()
   {
-    AppMethodBeat.i(115394);
-    this.fdQ.incrementAndGet();
+    AppMethodBeat.i(156445);
     if (this.DEBUG) {
-      ab.i("MicroMsg.ReleasableBitmap", "addLiveReference, attachCount:" + this.fdQ + " bitmap:" + this.bitmap + " " + this + " " + bo.dtY().toString());
+      ad.i("MicroMsg.ReleasableBitmap", "recycleImpl~:" + this.gEa + " isMutable:" + this.gEd + " bitmap:" + this.bitmap + " " + hashCode() + " attachCount: " + this.gEb + bt.eGN().toString());
     }
-    AppMethodBeat.o(115394);
-  }
-  
-  public final void XP()
-  {
-    AppMethodBeat.i(115395);
-    if (this.DEBUG) {
-      ab.i("MicroMsg.ReleasableBitmap", "removeLiveReference, attachCount:" + this.fdQ + " bitmap:" + this.bitmap + " " + this + " " + bo.dtY().toString());
-    }
-    if (this.fdQ.get() > 0)
+    if ((this.gEa) || (this.gEb.get() > 0))
     {
-      this.fdQ.decrementAndGet();
-      if (this.fdQ.get() < 0)
-      {
-        AppMethodBeat.o(115395);
-        return;
-      }
-      this.faV.removeCallbacks(this.fdT);
-      this.faV.postDelayed(this.fdT, 500L);
+      AppMethodBeat.o(156445);
+      return false;
     }
-    AppMethodBeat.o(115395);
-  }
-  
-  public final Bitmap XS()
-  {
-    this.fdS = false;
-    return this.bitmap;
-  }
-  
-  public final Bitmap XT()
-  {
-    AppMethodBeat.i(115396);
+    this.gEa = true;
     if (this.DEBUG) {
-      ab.i("MicroMsg.ReleasableBitmap", "getBitmapReadOnly " + toString() + " " + bo.dtY().toString());
+      gEc.remove(this.bitmap);
     }
-    Bitmap localBitmap = this.bitmap;
-    AppMethodBeat.o(115396);
-    return localBitmap;
-  }
-  
-  public final boolean XU()
-  {
-    AppMethodBeat.i(115398);
-    this.fdQ.decrementAndGet();
-    if (this.DEBUG) {
-      ab.i("MicroMsg.ReleasableBitmap", "recycle~:" + this.fdP + " isMutable:" + this.fdS + " bitmap:" + this.bitmap + " " + hashCode() + " attachCount: " + this.fdQ + bo.dtY().toString());
+    if (this.gEd) {
+      l.aoZ().C(this.bitmap);
     }
-    XV();
-    AppMethodBeat.o(115398);
+    AppMethodBeat.o(156445);
     return true;
   }
   
-  public final String XX()
+  private final int apf()
   {
-    AppMethodBeat.i(115404);
+    AppMethodBeat.i(156446);
+    if ((this.bitmap == null) || (this.bitmap.isRecycled()))
+    {
+      ad.i("MicroMsg.ReleasableBitmap", "getByteCount recycle " + this.gEf + " " + toString());
+      i = this.gEf;
+      AppMethodBeat.o(156446);
+      return i;
+    }
+    this.gEf = this.bitmap.getByteCount();
+    int i = this.gEf;
+    AppMethodBeat.o(156446);
+    return i;
+  }
+  
+  public final void aoX()
+  {
+    AppMethodBeat.i(156440);
+    this.gEb.incrementAndGet();
+    if (this.DEBUG) {
+      ad.i("MicroMsg.ReleasableBitmap", "addLiveReference, attachCount:" + this.gEb + " bitmap:" + this.bitmap + " " + this + " " + bt.eGN().toString());
+    }
+    AppMethodBeat.o(156440);
+  }
+  
+  public final void aoY()
+  {
+    AppMethodBeat.i(156441);
+    if (this.DEBUG) {
+      ad.i("MicroMsg.ReleasableBitmap", "removeLiveReference, attachCount:" + this.gEb + " bitmap:" + this.bitmap + " " + this + " " + bt.eGN().toString());
+    }
+    if (this.gEb.get() > 0)
+    {
+      this.gEb.decrementAndGet();
+      if (this.gEb.get() < 0)
+      {
+        AppMethodBeat.o(156441);
+        return;
+      }
+      this.gAC.removeCallbacks(this.gEe);
+      this.gAC.postDelayed(this.gEe, 500L);
+    }
+    AppMethodBeat.o(156441);
+  }
+  
+  public final Bitmap apb()
+  {
+    this.gEd = false;
+    return this.bitmap;
+  }
+  
+  public final Bitmap apc()
+  {
+    AppMethodBeat.i(156442);
+    if (this.DEBUG) {
+      ad.i("MicroMsg.ReleasableBitmap", "getBitmapReadOnly " + toString() + " " + bt.eGN().toString());
+    }
+    Bitmap localBitmap = this.bitmap;
+    AppMethodBeat.o(156442);
+    return localBitmap;
+  }
+  
+  public final boolean apd()
+  {
+    AppMethodBeat.i(156444);
+    this.gEb.decrementAndGet();
+    if (this.DEBUG) {
+      ad.i("MicroMsg.ReleasableBitmap", "recycle~:" + this.gEa + " isMutable:" + this.gEd + " bitmap:" + this.bitmap + " " + hashCode() + " attachCount: " + this.gEb + bt.eGN().toString());
+    }
+    ape();
+    AppMethodBeat.o(156444);
+    return true;
+  }
+  
+  public final String apg()
+  {
+    AppMethodBeat.i(156450);
     String str = this + " " + this.bitmap;
-    AppMethodBeat.o(115404);
+    AppMethodBeat.o(156450);
     return str;
   }
   
   protected void finalize()
   {
-    AppMethodBeat.i(115403);
+    AppMethodBeat.i(156449);
     if (this.DEBUG) {
-      ab.i("MicroMsg.ReleasableBitmap", "bitmap finalize " + toString());
+      ad.i("MicroMsg.ReleasableBitmap", "bitmap finalize " + toString());
     }
-    AppMethodBeat.o(115403);
+    AppMethodBeat.o(156449);
   }
   
   public final int getAllocationByteCount()
   {
-    AppMethodBeat.i(115401);
-    if (d.fw(19))
+    AppMethodBeat.i(156447);
+    if (d.lg(19))
     {
-      i = XW();
-      AppMethodBeat.o(115401);
+      i = apf();
+      AppMethodBeat.o(156447);
       return i;
     }
     if ((this.bitmap == null) || (this.bitmap.isRecycled()))
     {
-      ab.i("MicroMsg.ReleasableBitmap", "getAllocationByteCount recycle " + this.fdV + " " + toString());
-      i = this.fdV;
-      AppMethodBeat.o(115401);
+      ad.i("MicroMsg.ReleasableBitmap", "getAllocationByteCount recycle " + this.gEg + " " + toString());
+      i = this.gEg;
+      AppMethodBeat.o(156447);
       return i;
     }
-    this.fdV = this.bitmap.getAllocationByteCount();
-    int i = this.fdV;
-    AppMethodBeat.o(115401);
+    this.gEg = this.bitmap.getAllocationByteCount();
+    int i = this.gEg;
+    AppMethodBeat.o(156447);
     return i;
   }
   
   public final boolean isRecycled()
   {
-    AppMethodBeat.i(115397);
-    if ((this.fdP) || (this.bitmap == null) || (this.bitmap.isRecycled()))
+    AppMethodBeat.i(156443);
+    if ((this.gEa) || (this.bitmap == null) || (this.bitmap.isRecycled()))
     {
-      AppMethodBeat.o(115397);
+      AppMethodBeat.o(156443);
       return true;
     }
-    AppMethodBeat.o(115397);
+    AppMethodBeat.o(156443);
     return false;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(115402);
+    AppMethodBeat.i(156448);
     if (this.DEBUG)
     {
-      String str2 = super.toString() + " code: " + hashCode() + " attachCount: " + this.fdQ;
+      String str2 = super.toString() + " code: " + hashCode() + " attachCount: " + this.gEb;
       str1 = str2;
       if (this.bitmap != null) {
         str1 = str2 + this.bitmap;
       }
-      AppMethodBeat.o(115402);
+      AppMethodBeat.o(156448);
       return str1;
     }
     String str1 = super.toString();
-    AppMethodBeat.o(115402);
+    AppMethodBeat.o(156448);
     return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.n
  * JD-Core Version:    0.7.0.1
  */

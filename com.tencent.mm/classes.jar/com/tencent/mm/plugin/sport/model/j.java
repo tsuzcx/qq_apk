@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.sport.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.y;
+import com.tencent.mm.storage.ConfigFileStorageProxyMMKV;
+import com.tencent.mm.storage.aa;
 
 public final class j
-  extends y
+  extends aa
 {
   public j(String paramString)
   {
@@ -17,79 +18,83 @@ public final class j
     {
       try
       {
-        AppMethodBeat.i(93685);
+        AppMethodBeat.i(149327);
+        if (eKu())
+        {
+          paramLong = this.Ffq.getLong(paramInt, paramLong);
+          AppMethodBeat.o(149327);
+          return paramLong;
+        }
         Object localObject1 = get(paramInt);
         if ((localObject1 instanceof Long))
         {
           paramLong = ((Long)localObject1).longValue();
-          AppMethodBeat.o(93685);
-          return paramLong;
+          AppMethodBeat.o(149327);
+          continue;
         }
-        if ((localObject1 instanceof Integer))
-        {
-          paramLong = ((Integer)localObject1).longValue();
-          AppMethodBeat.o(93685);
+        if (!(localObject2 instanceof Integer)) {
+          break label97;
         }
-        else
+      }
+      finally {}
+      paramLong = ((Integer)localObject2).longValue();
+      AppMethodBeat.o(149327);
+      continue;
+      label97:
+      AppMethodBeat.o(149327);
+    }
+  }
+  
+  public final String getString(int paramInt, String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(149329);
+        Object localObject;
+        if (eKu())
         {
-          AppMethodBeat.o(93685);
+          localObject = this.Ffq;
+          if ((((ConfigFileStorageProxyMMKV)localObject).get(paramInt, paramString) instanceof String))
+          {
+            paramString = (String)((ConfigFileStorageProxyMMKV)localObject).get(paramInt, paramString);
+            AppMethodBeat.o(149329);
+            return paramString;
+          }
+          AppMethodBeat.o(149329);
+          continue;
+        }
+        try
+        {
+          localObject = get(paramInt);
+          if ((localObject instanceof String))
+          {
+            localObject = (String)localObject;
+            AppMethodBeat.o(149329);
+            paramString = (String)localObject;
+          }
+          else
+          {
+            AppMethodBeat.o(149329);
+          }
+        }
+        catch (Exception localException)
+        {
+          AppMethodBeat.o(149329);
         }
       }
       finally {}
     }
   }
   
-  /* Error */
-  public final String getString(int paramInt, String paramString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 37
-    //   4: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: iload_1
-    //   9: invokevirtual 22	com/tencent/mm/plugin/sport/model/j:get	(I)Ljava/lang/Object;
-    //   12: astore_3
-    //   13: aload_3
-    //   14: instanceof 39
-    //   17: ifeq +17 -> 34
-    //   20: aload_3
-    //   21: checkcast 39	java/lang/String
-    //   24: astore_2
-    //   25: ldc 37
-    //   27: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload_2
-    //   33: areturn
-    //   34: ldc 37
-    //   36: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   39: goto -9 -> 30
-    //   42: astore_2
-    //   43: aload_0
-    //   44: monitorexit
-    //   45: aload_2
-    //   46: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	47	0	this	j
-    //   0	47	1	paramInt	int
-    //   0	47	2	paramString	String
-    //   12	9	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	30	42	finally
-    //   34	39	42	finally
-  }
-  
   public final void setString(int paramInt, String paramString)
   {
     try
     {
-      AppMethodBeat.i(93686);
+      AppMethodBeat.i(149328);
       set(paramInt, paramString);
-      AppMethodBeat.o(93686);
+      AppMethodBeat.o(149328);
       return;
     }
     finally
@@ -101,7 +106,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.j
  * JD-Core Version:    0.7.0.1
  */

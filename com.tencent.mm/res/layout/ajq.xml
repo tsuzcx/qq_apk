@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/lj" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="93.0dip" android:layout_height="93.0dip" android:layout_marginTop="42.0dip" android:src="@raw/native_oauth_error_icon" android:scaleType="centerInside" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1" android:layout_marginTop="25.0dip" android:layout_marginRight="@dimen/m1" android:text="@string/e3_" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff888888" android:id="@id/dkz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1" android:layout_marginTop="15.0dip" android:layout_marginRight="@dimen/m1" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/ahm" android:layout_width="fill_parent" android:layout_height="@dimen/cf" android:minHeight="56.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d7m" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginLeft="@dimen/c5" android:src="@raw/icons_outlined_add" app:iconColor="@color/BW_70" />
+    <TextView android:textSize="@dimen/ji" android:textColor="@color/y4" android:id="@id/d7n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/gpu" android:layout_weight="1.0" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginRight="@dimen/c5" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/BW_70" />
 </LinearLayout>

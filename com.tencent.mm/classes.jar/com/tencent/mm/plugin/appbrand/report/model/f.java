@@ -1,27 +1,29 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
 import android.content.Intent;
-import com.tencent.mm.plugin.appbrand.page.bf;
-import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.page.ae;
+import com.tencent.mm.plugin.appbrand.page.by;
 
 public abstract interface f
   extends g
 {
-  public abstract void G(Intent paramIntent);
+  public abstract void H(Intent paramIntent);
   
-  public abstract void a(long paramLong, bf parambf);
+  public abstract void a(long paramLong, by paramby);
   
-  public abstract void a(z paramz);
+  public abstract p bhA();
   
-  public abstract void aHD();
+  public abstract q bhB();
   
-  public abstract h aHE();
+  public abstract void bhC();
   
-  public abstract Intent aHF();
+  public abstract void bhx();
   
-  public abstract o aHG();
+  public abstract h bhy();
   
-  public abstract void aHH();
+  public abstract Intent bhz();
+  
+  public abstract void c(ae paramae);
   
   public abstract void resetSession();
 }

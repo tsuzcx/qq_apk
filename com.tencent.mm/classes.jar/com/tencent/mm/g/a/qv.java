@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.ArrayList;
 
 public final class qv
   extends b
 {
+  public a dww;
+  
   public qv()
   {
     this((byte)0);
@@ -12,13 +16,22 @@ public final class qv
   
   private qv(byte paramByte)
   {
-    this.ymq = false;
+    AppMethodBeat.i(125629);
+    this.dww = new a();
+    this.ESR = false;
     this.callback = null;
+    AppMethodBeat.o(125629);
+  }
+  
+  public static final class a
+  {
+    public ArrayList dwx;
+    public String dwy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.qv
  * JD-Core Version:    0.7.0.1
  */

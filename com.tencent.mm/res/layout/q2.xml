@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" style="@style/ge"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/b1z" android:visibility="gone" android:layout_width="@dimen/a7h" android:layout_height="@dimen/a7h" />
-    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_weight="1.0">
-        <TextView android:textSize="@dimen/fl" android:textColor="@color/ln" android:ellipsize="end" android:id="@id/b20" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" />
-        <TextView android:textSize="@dimen/fl" android:textColor="@color/ln" android:ellipsize="end" android:id="@id/b21" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="msg_content" android:maxLines="1" />
+    <include android:id="@id/akx" android:layout_alignParentTop="true" android:layout_alignParentRight="true" layout="@layout/o7" style="@style/gl" />
+    <TextView android:id="@id/aob" android:visibility="gone" android:text="{user}" android:layout_toLeftOf="@id/akx" style="@style/gu" />
+    <LinearLayout android:id="@id/al9" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/akx" style="@style/gq">
+        <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/ao1" android:layout_marginRight="6.0dip" style="@style/gy" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/gj8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/c0" style="@style/a5o" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.widget.MMNeat7extView android:textColor="@color/iz" android:id="@id/ala" android:background="@drawable/mz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/w9" android:minHeight="@dimen/aa" style="@style/h0" />
+                <TextView android:id="@id/aki" android:layout_marginLeft="0.0dip" style="@style/gf" />
+                <ViewStub android:id="@id/gfa" android:layout="@layout/qp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="@dimen/hk" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

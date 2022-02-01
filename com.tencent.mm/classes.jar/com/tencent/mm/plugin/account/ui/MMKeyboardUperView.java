@@ -10,73 +10,73 @@ public class MMKeyboardUperView
   extends ScrollView
 {
   private int defaultHeight;
-  private View gFj;
-  private Runnable gFk;
-  private Runnable gFl;
+  private View isN;
+  private Runnable isO;
+  private Runnable isP;
   
   public MMKeyboardUperView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(125080);
+    AppMethodBeat.i(128257);
     this.defaultHeight = -1;
-    this.gFk = new Runnable()
+    this.isO = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(125077);
+        AppMethodBeat.i(128254);
         MMKeyboardUperView.this.fullScroll(130);
         MMKeyboardUperView.a(MMKeyboardUperView.this).setVisibility(4);
-        AppMethodBeat.o(125077);
+        AppMethodBeat.o(128254);
       }
     };
-    this.gFl = new Runnable()
+    this.isP = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(125078);
+        AppMethodBeat.i(128255);
         MMKeyboardUperView.a(MMKeyboardUperView.this).setVisibility(0);
-        AppMethodBeat.o(125078);
+        AppMethodBeat.o(128255);
       }
     };
-    AppMethodBeat.o(125080);
+    AppMethodBeat.o(128257);
   }
   
   public MMKeyboardUperView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(125079);
+    AppMethodBeat.i(128256);
     this.defaultHeight = -1;
-    this.gFk = new Runnable()
+    this.isO = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(125077);
+        AppMethodBeat.i(128254);
         MMKeyboardUperView.this.fullScroll(130);
         MMKeyboardUperView.a(MMKeyboardUperView.this).setVisibility(4);
-        AppMethodBeat.o(125077);
+        AppMethodBeat.o(128254);
       }
     };
-    this.gFl = new Runnable()
+    this.isP = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(125078);
+        AppMethodBeat.i(128255);
         MMKeyboardUperView.a(MMKeyboardUperView.this).setVisibility(0);
-        AppMethodBeat.o(125078);
+        AppMethodBeat.o(128255);
       }
     };
-    AppMethodBeat.o(125079);
+    AppMethodBeat.o(128256);
   }
   
   public void setupUperView(View paramView)
   {
-    this.gFj = paramView;
+    this.isN = paramView;
     this.defaultHeight = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.MMKeyboardUperView
  * JD-Core Version:    0.7.0.1
  */

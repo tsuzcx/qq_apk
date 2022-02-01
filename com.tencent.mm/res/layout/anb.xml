@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/m2" android:textColor="@color/tc" android:gravity="center_vertical" android:background="@drawable/l_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/fd" android:maxLength="40"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="horizontal" android:background="@drawable/oc" android:paddingLeft="@dimen/ja" android:paddingTop="@dimen/o" android:paddingRight="@dimen/ja" android:paddingBottom="@dimen/o" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="top" android:id="@id/tm" android:layout_width="@dimen/at" android:layout_height="@dimen/at" android:layout_marginTop="@dimen/ju" android:layout_marginRight="@dimen/ja" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/js" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/aed" android:textColor="@color/a0c" android:id="@id/e3x" android:layout_width="0.0dip" android:maxWidth="140.0dip" android:layout_weight="1.0" style="@style/m3" />
+            <TextView android:textSize="@dimen/aed" android:textColor="@color/a0c" android:gravity="right" android:layout_gravity="right" android:id="@id/giv" android:paddingRight="4.0dip" android:minWidth="65.0dip" style="@style/m1" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/aeb" android:textColor="@color/y4" android:gravity="center|left" android:id="@id/dvh" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="3" android:singleLine="false" android:lineSpacingExtra="2.0dip" android:letterSpacing="0.1" style="@style/m2" />
+    </LinearLayout>
+</LinearLayout>

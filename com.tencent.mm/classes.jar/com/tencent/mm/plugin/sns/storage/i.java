@@ -3,42 +3,42 @@ package com.tencent.mm.plugin.sns.storage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.protocal.protobuf.yk;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public final class i
 {
-  public static void h(Long paramLong)
+  public static void e(Long paramLong)
   {
-    AppMethodBeat.i(37840);
-    g.RL().Ru().set(ac.a.yKn, paramLong);
-    AppMethodBeat.o(37840);
+    AppMethodBeat.i(97449);
+    g.afB().afk().set(ae.a.Fty, paramLong);
+    AppMethodBeat.o(97449);
   }
   
-  public static boolean lS(long paramLong)
+  public static boolean ta(long paramLong)
   {
     int i = 2;
     int j = 0;
-    AppMethodBeat.i(37838);
-    Object localObject = ag.cpf().lZ(paramLong);
+    AppMethodBeat.i(97447);
+    Object localObject = af.dtu().th(paramLong);
     if (localObject == null)
     {
-      AppMethodBeat.o(37838);
+      AppMethodBeat.o(97447);
       return false;
     }
-    String[] arrayOfString = ((String)g.RL().Ru().get(ac.a.yKm, "")).split("&");
+    String[] arrayOfString = ((String)g.afB().afk().get(ae.a.Ftx, "")).split("&");
     boolean bool1;
-    if ((arrayOfString.length > 0) && (bo.getBoolean(arrayOfString[0], false)))
+    if ((arrayOfString.length > 0) && (bt.getBoolean(arrayOfString[0], false)))
     {
       bool1 = true;
-      if ((arrayOfString.length < 2) || (!bo.getBoolean(arrayOfString[1], false))) {
+      if ((arrayOfString.length < 2) || (!bt.getBoolean(arrayOfString[1], false))) {
         break label154;
       }
     }
@@ -49,7 +49,7 @@ public final class i
       localArrayList = new ArrayList();
       while (i < arrayOfString.length)
       {
-        long l = bo.getLong(arrayOfString[i], 0L);
+        long l = bt.getLong(arrayOfString[i], 0L);
         if (l != 0L) {
           localArrayList.add(Long.valueOf(l));
         }
@@ -58,7 +58,7 @@ public final class i
       bool1 = false;
       break;
     }
-    if (((n)localObject).csh().xTS.wNZ == 15) {
+    if (((p)localObject).dxy().Etm.DaB == 15) {
       if (!bool1) {
         bool1 = true;
       }
@@ -75,9 +75,9 @@ public final class i
         ((StringBuilder)localObject).append("&").append(localArrayList.get(i));
         i += 1;
       }
-      AppMethodBeat.o(37838);
+      AppMethodBeat.o(97447);
       return false;
-      if (((n)localObject).csh().xTS.wNZ != 1) {
+      if (((p)localObject).dxy().Etm.DaB != 1) {
         break label313;
       }
       if (bool2) {
@@ -85,28 +85,28 @@ public final class i
       }
       bool2 = true;
     }
-    AppMethodBeat.o(37838);
+    AppMethodBeat.o(97447);
     return false;
     label313:
-    AppMethodBeat.o(37838);
+    AppMethodBeat.o(97447);
     return false;
-    g.RL().Ru().set(ac.a.yKm, ((StringBuilder)localObject).toString());
-    h(Long.valueOf(paramLong));
-    AppMethodBeat.o(37838);
+    g.afB().afk().set(ae.a.Ftx, ((StringBuilder)localObject).toString());
+    e(Long.valueOf(paramLong));
+    AppMethodBeat.o(97447);
     return true;
   }
   
-  public static void lT(long paramLong)
+  public static void tb(long paramLong)
   {
     boolean bool2 = true;
     int j = 0;
-    AppMethodBeat.i(37839);
-    Object localObject = ((String)g.RL().Ru().get(ac.a.yKm, "")).split("&");
+    AppMethodBeat.i(97448);
+    Object localObject = ((String)g.afB().afk().get(ae.a.Ftx, "")).split("&");
     boolean bool1;
-    if ((localObject.length > 0) && (bo.getBoolean(localObject[0], false)))
+    if ((localObject.length > 0) && (bt.getBoolean(localObject[0], false)))
     {
       bool1 = true;
-      if ((localObject.length < 2) || (!bo.getBoolean(localObject[1], false))) {
+      if ((localObject.length < 2) || (!bt.getBoolean(localObject[1], false))) {
         break label133;
       }
     }
@@ -118,7 +118,7 @@ public final class i
       i = 2;
       while (i < localObject.length)
       {
-        long l = bo.getLong(localObject[i], 0L);
+        long l = bt.getLong(localObject[i], 0L);
         if (l != 0L) {
           localArrayList.add(Long.valueOf(l));
         }
@@ -134,7 +134,7 @@ public final class i
     if (localArrayList.size() > 0) {}
     for (localObject = (Long)localArrayList.get(0);; localObject = null)
     {
-      h((Long)localObject);
+      e((Long)localObject);
       localObject = new StringBuilder().append(bool1).append("&").append(bool2);
       i = j;
       while (i < localArrayList.size())
@@ -143,13 +143,13 @@ public final class i
         i += 1;
       }
     }
-    g.RL().Ru().set(ac.a.yKm, ((StringBuilder)localObject).toString());
-    AppMethodBeat.o(37839);
+    g.afB().afk().set(ae.a.Ftx, ((StringBuilder)localObject).toString());
+    AppMethodBeat.o(97448);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.i
  * JD-Core Version:    0.7.0.1
  */

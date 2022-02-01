@@ -7,37 +7,53 @@ import java.util.Set;
 
 public final class i
 {
-  private static Set<n> uSm;
+  private static Set<n> ATO;
+  private static Object lock;
   
   static
   {
-    AppMethodBeat.i(6156);
-    uSm = new HashSet();
-    AppMethodBeat.o(6156);
+    AppMethodBeat.i(78357);
+    lock = new Object();
+    ATO = new HashSet();
+    AppMethodBeat.o(78357);
   }
   
   public static void b(n paramn)
   {
-    AppMethodBeat.i(6154);
-    uSm.add(paramn);
-    AppMethodBeat.o(6154);
+    AppMethodBeat.i(78355);
+    synchronized (lock)
+    {
+      ATO.add(paramn);
+      AppMethodBeat.o(78355);
+      return;
+    }
   }
   
   public static void c(n paramn)
   {
-    AppMethodBeat.i(6155);
-    uSm.remove(paramn);
-    AppMethodBeat.o(6155);
+    AppMethodBeat.i(78356);
+    synchronized (lock)
+    {
+      ATO.remove(paramn);
+      AppMethodBeat.o(78356);
+      return;
+    }
   }
   
-  public static Set<n> dbp()
+  public static Set<n> elk()
   {
-    return uSm;
+    AppMethodBeat.i(175738);
+    synchronized (lock)
+    {
+      HashSet localHashSet = new HashSet(ATO);
+      AppMethodBeat.o(175738);
+      return localHashSet;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.i
  * JD-Core Version:    0.7.0.1
  */

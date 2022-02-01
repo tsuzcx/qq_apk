@@ -9,42 +9,42 @@ import org.json.JSONObject;
 public final class b
   extends a
 {
-  public String czq;
+  public String AAY;
+  public String dpw;
   public String id;
-  public boolean mhc;
-  public String ooD;
-  public String uDT;
+  public boolean pNR;
+  public String teH;
   
   public b(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(48568);
+    AppMethodBeat.i(72209);
     this.id = paramString2;
-    this.ooD = paramString3;
-    this.czq = paramString1;
+    this.teH = paramString3;
+    this.dpw = paramString1;
     HashMap localHashMap = new HashMap();
     localHashMap.put("id", paramString2);
     localHashMap.put("answer", paramString3);
     localHashMap.put("payu_reference", paramString1);
     setRequestData(localHashMap);
-    AppMethodBeat.o(48568);
+    AppMethodBeat.o(72209);
   }
   
-  public final int cTa()
+  public final int ebo()
   {
     return 18;
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(48569);
-    this.mhc = paramJSONObject.optBoolean("verified");
-    this.uDT = paramJSONObject.optString("payu_reference");
-    AppMethodBeat.o(48569);
+    AppMethodBeat.i(72210);
+    this.pNR = paramJSONObject.optBoolean("verified");
+    this.AAY = paramJSONObject.optString("payu_reference");
+    AppMethodBeat.o(72210);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.security_question.model.b
  * JD-Core Version:    0.7.0.1
  */

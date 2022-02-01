@@ -1,8 +1,6 @@
 package com.tencent.mm.plugin.story.ui.view;
 
-import a.f.b.j;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -10,47 +8,59 @@ import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.api.i;
-import com.tencent.mm.plugin.story.model.r;
+import com.tencent.mm.plugin.story.api.m;
+import com.tencent.mm.plugin.story.f.r;
+import d.g.b.k;
+import d.l;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarImageView;", "Landroid/widget/ImageView;", "Lcom/tencent/mm/plugin/story/api/IStoryStatusNotifyListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "hintBgColor", "hintProxy", "Lcom/tencent/mm/plugin/story/api/IStoryHintProxy;", "tagName", "", "withHintBg", "", "getWithHintBg", "()Z", "setWithHintBg", "(Z)V", "bindUsername", "", "userName", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onNotifyStoryStatusChanged", "username", "isRead", "setShowStoryHint", "show", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/CommentAvatarImageView;", "Landroid/widget/ImageView;", "Lcom/tencent/mm/plugin/story/api/IStoryStatusNotifyListener;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "hintBg", "getHintBg", "()I", "setHintBg", "(I)V", "hintProxy", "Lcom/tencent/mm/plugin/story/api/IStoryHintProxy;", "tagName", "", "bindUsername", "", "userName", "onDraw", "canvas", "Landroid/graphics/Canvas;", "onNotifyStoryStatusChanged", "username", "isRead", "", "setShowStoryHint", "show", "plugin-story_release"})
 public final class CommentAvatarImageView
   extends ImageView
-  implements com.tencent.mm.plugin.story.api.l
+  implements m
 {
-  private final int sLr;
-  private boolean sLs;
-  public final i sci;
-  public String smP;
+  private int izx;
+  private final i xLj;
+  private String xXR;
   
   public CommentAvatarImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(110335);
-    AppMethodBeat.o(110335);
+    AppMethodBeat.i(120012);
+    AppMethodBeat.o(120012);
   }
   
   public CommentAvatarImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(110334);
-    this.smP = "";
+    AppMethodBeat.i(120011);
+    this.xXR = "";
     setLayerType(1, null);
-    this.sci = r.swh.fc(paramContext);
-    this.sci.aT((View)this);
-    this.sLr = getResources().getColor(2131690533);
-    AppMethodBeat.o(110334);
+    this.xLj = r.ygg.ge(paramContext);
+    this.xLj.aZ((View)this);
+    AppMethodBeat.o(120011);
   }
   
-  public final void bx(String paramString, boolean paramBoolean)
+  public final void asc(String paramString)
   {
-    AppMethodBeat.i(110333);
-    j.q(paramString, "username");
+    AppMethodBeat.i(120009);
+    k.h(paramString, "userName");
+    this.xLj.eE(paramString, 6);
+    if (!TextUtils.equals((CharSequence)this.xXR, (CharSequence)paramString)) {
+      this.xXR = paramString;
+    }
+    AppMethodBeat.o(120009);
+  }
+  
+  public final void bH(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(120010);
+    k.h(paramString, "username");
     if ((TextUtils.isEmpty((CharSequence)paramString)) || (getContext() == null))
     {
-      AppMethodBeat.o(110333);
+      AppMethodBeat.o(120010);
       return;
     }
-    if (j.e(paramString, this.smP)) {
+    if (k.g(paramString, this.xXR)) {
       if (paramBoolean) {
         break label62;
       }
@@ -59,46 +69,40 @@ public final class CommentAvatarImageView
     for (paramBoolean = true;; paramBoolean = false)
     {
       setShowStoryHint(paramBoolean);
-      AppMethodBeat.o(110333);
+      AppMethodBeat.o(120010);
       return;
     }
   }
   
-  public final boolean getWithHintBg()
+  public final int getHintBg()
   {
-    return this.sLs;
+    return this.izx;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(110331);
-    j.q(paramCanvas, "canvas");
+    AppMethodBeat.i(120007);
+    k.h(paramCanvas, "canvas");
     super.onDraw(paramCanvas);
-    i locali = this.sci;
-    if (this.sLs) {}
-    for (int i = this.sLr;; i = 0)
-    {
-      locali.a(paramCanvas, false, i);
-      AppMethodBeat.o(110331);
-      return;
-    }
+    this.xLj.a(paramCanvas, false, this.izx);
+    AppMethodBeat.o(120007);
+  }
+  
+  public final void setHintBg(int paramInt)
+  {
+    this.izx = paramInt;
   }
   
   public final void setShowStoryHint(boolean paramBoolean)
   {
-    AppMethodBeat.i(110332);
-    this.sci.setShowStoryHint(paramBoolean);
-    AppMethodBeat.o(110332);
-  }
-  
-  public final void setWithHintBg(boolean paramBoolean)
-  {
-    this.sLs = paramBoolean;
+    AppMethodBeat.i(120008);
+    this.xLj.setShowStoryHint(paramBoolean);
+    AppMethodBeat.o(120008);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.CommentAvatarImageView
  * JD-Core Version:    0.7.0.1
  */

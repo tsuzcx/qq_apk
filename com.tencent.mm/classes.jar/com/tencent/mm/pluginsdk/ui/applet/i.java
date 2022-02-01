@@ -1,338 +1,323 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.Display;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
+import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.u;
-import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.tencent.mm.aw.a.b.e;
+import com.tencent.mm.aw.q;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.k;
+import d.l;
+import d.v;
+import java.io.Closeable;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnection;", "Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpClientFactory$ImageHttpUrlConnection;", "url", "", "forceNormal", "", "connectionListener", "Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "(Ljava/lang/String;ZLcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;)V", "mConnection", "Ljava/net/HttpURLConnection;", "mConnectionListener", "requestImageType", "", "closeInputStream", "", "inputStream", "Ljava/io/InputStream;", "disconnect", "forceWebp", "getDataResponse", "Lcom/tencent/mm/modelimage/loader/model/Response;", "getInputStream", "getResponseCode", "newConnection", "onRequest", "onResultError", "responseCode", "onResultSuccess", "response", "Companion", "plugin-biz_release"})
 public final class i
+  implements h.b
 {
-  private Context context;
-  private View gyT;
-  private View jWo;
-  public View.OnClickListener qaq;
-  f screen;
-  ContactListExpandPreference.a sqf;
-  String username;
-  public j vTA;
-  k.b vTB;
-  private View.OnClickListener vTC;
-  private View.OnClickListener vTD;
-  private View.OnClickListener vTE;
-  private k.b vTF;
-  private k.a vTG;
-  private j.a vTH;
-  private String vTw;
-  private HashMap<String, Preference> vTx;
-  private boolean vTy;
-  private boolean vTz;
+  public static final i.a BXW;
+  private final j BXT;
+  private final boolean BXU;
+  private int BXV = -1;
+  private HttpURLConnection mConnection;
+  private String url;
   
-  public i(Context paramContext)
+  static
   {
-    AppMethodBeat.i(79735);
-    this.vTx = new HashMap();
-    this.vTy = false;
-    if (this.vTy) {
-      bool = true;
-    }
-    this.vTz = bool;
-    this.vTB = null;
-    this.qaq = null;
-    this.sqf = null;
-    this.vTE = new i.1(this);
-    this.vTF = new i.2(this);
-    this.vTG = new i.3(this);
-    this.vTH = new j.a()
-    {
-      public final void djN()
-      {
-        AppMethodBeat.i(79734);
-        if (i.this.screen != null) {
-          i.this.screen.notifyDataSetChanged();
-        }
-        AppMethodBeat.o(79734);
-      }
-    };
-    this.context = paramContext;
-    this.vTA = new j(this.context);
-    this.vTA.vTK = this.vTH;
-    AppMethodBeat.o(79735);
+    AppMethodBeat.i(124876);
+    BXW = new i.a((byte)0);
+    AppMethodBeat.o(124876);
   }
   
-  private void LV(int paramInt)
+  public i(String paramString, boolean paramBoolean, j paramj)
   {
-    AppMethodBeat.i(79740);
-    int k = 0;
-    if (this.gyT != null) {
-      k = 1;
+    this.url = paramString;
+    this.BXU = paramBoolean;
+    this.BXT = paramj;
+  }
+  
+  public final void N(InputStream paramInputStream)
+  {
+    AppMethodBeat.i(124871);
+    j localj = this.BXT;
+    if (localj != null) {
+      localj.eyb();
     }
-    Object localObject1;
-    if (this.jWo != null) {
-      if (this.vTy)
-      {
-        localObject1 = this.vTA;
-        if (((j)localObject1).vTP <= ((j)localObject1).vTX) {
-          break label450;
-        }
-        i = 1;
-        if (i == 0) {
-          break label759;
-        }
-      }
-    }
-    label162:
-    label175:
-    label201:
-    label465:
-    label474:
-    label485:
-    label756:
-    label759:
-    for (int i = 1;; i = 0)
+    bt.d((Closeable)paramInputStream);
+    paramInputStream = this.BXT;
+    if (paramInputStream != null)
     {
-      int j = paramInt;
-      if (k != 0)
-      {
-        localObject1 = new ContactListCustomPreference(this.context);
-        ((ContactListCustomPreference)localObject1).setKey(LW(-1));
-        ((ContactListCustomPreference)localObject1).setCustomView(this.gyT);
-        ((ContactListCustomPreference)localObject1).background = 2130838445;
-        ((ContactListCustomPreference)localObject1).qaq = this.vTC;
-        this.screen.a((Preference)localObject1, paramInt);
-        this.vTx.put(((Preference)localObject1).mKey, localObject1);
-        j = paramInt + 1;
+      paramInputStream.eyc();
+      AppMethodBeat.o(124871);
+      return;
+    }
+    AppMethodBeat.o(124871);
+  }
+  
+  public final com.tencent.mm.aw.a.d.b O(InputStream paramInputStream)
+  {
+    Object localObject3 = null;
+    AppMethodBeat.i(124872);
+    Object localObject1 = this.mConnection;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject1 = ((HttpURLConnection)localObject1).getContentType();
+      String str = this.url;
+      localObject2 = this.mConnection;
+      if (localObject2 == null) {
+        break label191;
       }
-      View.OnClickListener localOnClickListener;
-      boolean bool1;
-      boolean bool2;
-      if (this.vTB != null)
-      {
-        localObject1 = this.vTB;
-        if (this.qaq == null) {
-          break label465;
-        }
-        localOnClickListener = this.qaq;
-        if ((this.vTA.efi == null) || (!this.vTA.efi.JP())) {
-          break label474;
-        }
-        bool1 = true;
-        bool2 = this.vTA.dnD();
-        if (!this.vTA.muT) {
-          break label756;
-        }
-        bool1 = this.vTA.vTM;
+      localObject2 = Integer.valueOf(((HttpURLConnection)localObject2).getContentLength());
+      label49:
+      ad.d("MicroMsg.BizImageHttpUrlConnection", "alvinluo getDataResponse contentType: %s, url: %s, contentLength: %s", new Object[] { localObject1, str, localObject2 });
+      localObject1 = this.BXT;
+      if (localObject1 != null) {
+        ((j)localObject1).exZ();
       }
-      for (;;)
+      localObject1 = paramInputStream;
+      if (paramInputStream == null)
       {
-        int i1 = this.vTA.vTQ;
-        if ((!bool2) || (bool1)) {}
-        int m;
-        Object localObject2;
-        Object localObject3;
-        for (paramInt = 2;; paramInt = 1)
-        {
-          m = 0;
-          localObject2 = this.vTA;
-          localObject3 = this.context;
-          if (localObject3 != null) {
-            break label485;
-          }
-          k = 0;
-          n = 0;
-          while ((n < this.vTA.getCount()) && (n < i1 + paramInt))
-          {
-            localObject2 = new ContactListExpandPreference(this.context, 1);
-            ((ContactListExpandPreference)localObject2).setKey(LW(m));
-            localObject3 = ((ContactListExpandPreference)localObject2).vUl;
-            ((k)localObject3).vTA = this.vTA;
-            ((k)localObject3).row = m;
-            ((k)localObject3).index = n;
-            ((ContactListExpandPreference)localObject2).vUl.vUm = k;
-            ((ContactListExpandPreference)localObject2).vUl.efd = bool1;
-            ((ContactListExpandPreference)localObject2).vUl.qaq = localOnClickListener;
-            ((ContactListExpandPreference)localObject2).vUl.vTG = this.vTG;
-            ((ContactListExpandPreference)localObject2).vUl.vUn = ((k.b)localObject1);
-            this.screen.a((Preference)localObject2, j + m);
-            this.vTx.put(((Preference)localObject2).mKey, localObject2);
-            n += k;
-            m += 1;
-          }
-          i = 0;
-          break;
-          localObject1 = this.vTF;
-          break label162;
-          localOnClickListener = this.vTE;
-          break label175;
-          bool1 = false;
-          break label201;
+        paramInputStream = this.mConnection;
+        if (paramInputStream == null) {
+          break label197;
         }
-        Display localDisplay = ((WindowManager)((Context)localObject3).getSystemService("window")).getDefaultDisplay();
-        k = localDisplay.getWidth();
-        int n = localDisplay.getHeight();
-        float f2;
-        if ((k / (((Context)localObject3).getResources().getDimension(2131427802) + ((Context)localObject3).getResources().getDimension(2131427792) * 2.0F) >= 5.0F) && (n > k))
-        {
-          ((j)localObject2).vUd = true;
-          f2 = ((Context)localObject3).getResources().getDimension(2131427792);
-          if (!((j)localObject2).vUd) {
-            break label658;
-          }
+        localObject1 = paramInputStream.getInputStream();
+      }
+      label109:
+      localObject1 = e.p((InputStream)localObject1);
+      localObject2 = this.mConnection;
+      paramInputStream = localObject3;
+      if (localObject2 != null) {
+        paramInputStream = ((HttpURLConnection)localObject2).getContentType();
+      }
+      paramInputStream = new com.tencent.mm.aw.a.d.b((byte[])localObject1, paramInputStream, (byte)0);
+      localObject1 = this.mConnection;
+      if (localObject1 == null) {
+        break label202;
+      }
+    }
+    label191:
+    label197:
+    label202:
+    for (int i = ((HttpURLConnection)localObject1).getContentLength();; i = 0)
+    {
+      paramInputStream.os(i);
+      localObject1 = this.BXT;
+      if (localObject1 != null) {
+        ((j)localObject1).eya();
+      }
+      AppMethodBeat.o(124872);
+      return paramInputStream;
+      localObject1 = null;
+      break;
+      localObject2 = null;
+      break label49;
+      localObject1 = null;
+      break label109;
+    }
+  }
+  
+  public final void UK(int paramInt)
+  {
+    AppMethodBeat.i(124875);
+    j localj = this.BXT;
+    if (localj != null)
+    {
+      localj.UK(paramInt);
+      AppMethodBeat.o(124875);
+      return;
+    }
+    AppMethodBeat.o(124875);
+  }
+  
+  public final void b(com.tencent.mm.aw.a.d.b paramb)
+  {
+    AppMethodBeat.i(124874);
+    k.h(paramb, "response");
+    j localj = this.BXT;
+    if (localj != null)
+    {
+      localj.b(paramb);
+      AppMethodBeat.o(124874);
+      return;
+    }
+    AppMethodBeat.o(124874);
+  }
+  
+  public final void disconnect()
+  {
+    AppMethodBeat.i(124873);
+    try
+    {
+      Object localObject = this.mConnection;
+      if (localObject != null)
+      {
+        localObject = ((HttpURLConnection)localObject).getInputStream();
+        if (localObject != null) {
+          ((InputStream)localObject).close();
         }
-        for (float f1 = ((Context)localObject3).getResources().getDimension(2131427802);; f1 = ((Context)localObject3).getResources().getDimension(2131427800))
-        {
-          n = k / (int)(f1 + 2.0F * f2);
-          ab.i("MicroMsg.ContactsListArchAdapter", "[getWrapColNum] :%s", new Object[] { Integer.valueOf(n) });
-          j.vTJ = n;
-          k = n;
-          if (n != 4) {
-            break;
-          }
-          j.MAX_COUNT = 43;
-          k = n;
-          break;
-          ((j)localObject2).vUd = false;
-          break label562;
-        }
-        if (i != 0)
-        {
-          localObject1 = new ContactListCustomPreference(this.context);
-          ((ContactListCustomPreference)localObject1).setKey(LW(-2));
-          ((ContactListCustomPreference)localObject1).setCustomView(this.jWo);
-          ((ContactListCustomPreference)localObject1).qaq = this.vTD;
-          this.screen.a((Preference)localObject1, j + m);
-          this.vTx.put(((Preference)localObject1).mKey, localObject1);
-        }
-        AppMethodBeat.o(79740);
+      }
+      localObject = this.mConnection;
+      if (localObject != null) {
+        ((HttpURLConnection)localObject).disconnect();
+      }
+      localObject = this.BXT;
+      if (localObject != null)
+      {
+        ((j)localObject).eyd();
+        AppMethodBeat.o(124873);
         return;
       }
+      AppMethodBeat.o(124873);
+      return;
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(124873);
     }
   }
   
-  private static String LW(int paramInt)
+  public final HttpURLConnection exT()
   {
-    AppMethodBeat.i(79742);
-    if (paramInt >= 0)
+    AppMethodBeat.i(124868);
+    Object localObject1 = (CharSequence)this.url;
+    if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      str = "pref_contact_list_row_".concat(String.valueOf(paramInt));
-      AppMethodBeat.o(79742);
-      return str;
+      AppMethodBeat.o(124868);
+      return null;
     }
-    String str = "unkown";
-    if (paramInt == -1) {
-      str = "header";
+    String str = this.url;
+    if (this.BXU)
+    {
+      localObject1 = this.url;
+      if (localObject1 != null) {
+        break label165;
+      }
+    }
+    label165:
+    Object localObject2;
+    for (localObject1 = null;; localObject1 = com.tencent.mm.api.b.l((String)localObject2, false))
+    {
+      this.url = ((String)localObject1);
+      localObject1 = this.BXT;
+      if (localObject1 != null) {
+        ((j)localObject1).dJ(str, this.url);
+      }
+      if (this.BXU)
+      {
+        localObject1 = this.BXT;
+        if (localObject1 != null) {
+          ((j)localObject1).exU();
+        }
+      }
+      localObject1 = this.BXT;
+      if (localObject1 != null) {
+        ((j)localObject1).exV();
+      }
+      localObject1 = new URL(this.url).openConnection();
+      if (localObject1 != null) {
+        break;
+      }
+      localObject1 = new v("null cannot be cast to non-null type java.net.HttpURLConnection");
+      AppMethodBeat.o(124868);
+      throw ((Throwable)localObject1);
+      localObject2 = g.BXQ;
+      localObject2 = Uri.parse((String)localObject1);
+      k.g(localObject2, "Uri.parse(url)");
+      localObject2 = g.c((Uri)localObject2, "tp");
+      ad.d("MicroMsg.BizImageHttpUrlConnection", "alvinluo forceWebp url: %s, temp: %s", new Object[] { localObject1, localObject2 });
+    }
+    this.mConnection = ((HttpURLConnection)localObject1);
+    localObject1 = this.mConnection;
+    if (localObject1 != null) {
+      ((HttpURLConnection)localObject1).setConnectTimeout(15000);
+    }
+    localObject1 = this.mConnection;
+    if (localObject1 != null) {
+      ((HttpURLConnection)localObject1).setReadTimeout(20000);
+    }
+    if ((!this.BXU) && (com.tencent.mm.api.b.dM(this.url)))
+    {
+      ad.v("MicroMsg.BizImageHttpUrlConnection", "alvinluo BizImage get WxPic");
+      this.BXV = 1;
+      localObject1 = this.mConnection;
+      if (localObject1 != null) {
+        ((HttpURLConnection)localObject1).addRequestProperty("Accept", "image/wxpic");
+      }
     }
     for (;;)
     {
-      str = "pref_contact_list_row_".concat(String.valueOf(str));
-      AppMethodBeat.o(79742);
-      return str;
-      if (paramInt == -2) {
-        str = "footer";
+      localObject1 = this.BXT;
+      if (localObject1 != null) {
+        ((j)localObject1).exW();
+      }
+      localObject1 = this.mConnection;
+      AppMethodBeat.o(124868);
+      return localObject1;
+      if (com.tencent.mm.api.b.dK(this.url))
+      {
+        ad.v("MicroMsg.BizImageHttpUrlConnection", "alvinluo BizImage get Webp");
+        this.BXV = 2;
+        localObject1 = this.mConnection;
+        if (localObject1 != null) {
+          ((HttpURLConnection)localObject1).setRequestProperty("Referer", q.om(d.CpK));
+        }
+      }
+      else
+      {
+        ad.v("MicroMsg.BizImageHttpUrlConnection", "alvinluo BizImage get jpeg");
+        this.BXV = 0;
       }
     }
   }
   
-  private void Sl(String paramString)
+  public final InputStream getInputStream()
   {
-    AppMethodBeat.i(79738);
-    this.vTA.setUsername(paramString);
-    this.vTA.vTW = this.vTz;
-    this.vTA.Kc();
-    aPD();
-    AppMethodBeat.o(79738);
-  }
-  
-  private void removeAll()
-  {
-    AppMethodBeat.i(79741);
-    Iterator localIterator = this.vTx.keySet().iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(124870);
+    Object localObject = this.mConnection;
+    if (localObject != null)
     {
-      String str = (String)localIterator.next();
-      this.screen.aty(str);
+      localObject = ((HttpURLConnection)localObject).getInputStream();
+      AppMethodBeat.o(124870);
+      return localObject;
     }
-    this.vTx.clear();
-    AppMethodBeat.o(79741);
+    AppMethodBeat.o(124870);
+    return null;
   }
   
-  public final void a(f paramf, String paramString)
+  public final int getResponseCode()
   {
-    AppMethodBeat.i(79739);
-    if ((paramf == null) || (paramString == null))
+    AppMethodBeat.i(124869);
+    Object localObject = this.BXT;
+    if (localObject != null) {
+      ((j)localObject).aO(this.BXV, this.BXU);
+    }
+    localObject = this.BXT;
+    if (localObject != null) {
+      ((j)localObject).exX();
+    }
+    localObject = this.mConnection;
+    if (localObject != null) {}
+    for (int i = ((HttpURLConnection)localObject).getResponseCode();; i = -1)
     {
-      AppMethodBeat.o(79739);
-      return;
+      localObject = this.BXT;
+      if (localObject != null) {
+        ((j)localObject).exY();
+      }
+      AppMethodBeat.o(124869);
+      return i;
     }
-    this.screen = paramf;
-    this.vTw = paramString;
-    paramf.cl(paramString, true);
-    AppMethodBeat.o(79739);
-  }
-  
-  public final void aPD()
-  {
-    AppMethodBeat.i(79743);
-    if ((this.screen == null) || (this.vTw == null))
-    {
-      AppMethodBeat.o(79743);
-      return;
-    }
-    removeAll();
-    LV(this.screen.indexOf(this.vTw));
-    AppMethodBeat.o(79743);
-  }
-  
-  public final void ah(ArrayList<ad> paramArrayList)
-  {
-    AppMethodBeat.i(79737);
-    Object localObject = paramArrayList;
-    if (paramArrayList == null) {
-      localObject = new ArrayList(0);
-    }
-    this.vTA.ai((ArrayList)localObject);
-    Sl(null);
-    AppMethodBeat.o(79737);
-  }
-  
-  public final void dnB()
-  {
-    boolean bool = false;
-    this.vTy = false;
-    if (this.vTy) {
-      bool = true;
-    }
-    this.vTz = bool;
-  }
-  
-  public final void v(String paramString, List<String> paramList)
-  {
-    AppMethodBeat.i(79736);
-    this.username = paramString;
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList(0);
-    }
-    this.vTA.dj((List)localObject);
-    Sl(paramString);
-    AppMethodBeat.o(79736);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.i
  * JD-Core Version:    0.7.0.1
  */

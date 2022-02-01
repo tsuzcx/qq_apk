@@ -1,123 +1,107 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.m.a;
-import com.tencent.mm.ai.m.b;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.a;
+import com.tencent.mm.al.n.b;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bmw;
-import com.tencent.mm.protocal.protobuf.bwr;
-import com.tencent.mm.protocal.protobuf.bws;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.br;
+import com.tencent.mm.protocal.protobuf.cbe;
+import com.tencent.mm.protocal.protobuf.cmu;
+import com.tencent.mm.protocal.protobuf.cmv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.Map;
 
 public final class w
-  extends m
+  extends n
   implements k
 {
-  private f callback;
-  public long cpO;
+  private g callback;
   public int errCode;
   public int errType;
-  private final long fPZ;
-  private Runnable fQa;
+  private final long hsE;
+  private Runnable hsF;
+  public long msgId;
   public b rr;
   
   public w(float paramFloat1, float paramFloat2, long paramLong)
   {
-    AppMethodBeat.i(78588);
-    this.fPZ = 60000L;
-    this.cpO = -1L;
-    bmw localbmw = new bmw();
-    localbmw.wDh = paramFloat1;
-    localbmw.wDi = paramFloat2;
-    localbmw.wSn = 1;
-    localbmw.wSk = 0;
-    a(localbmw, 1, -10000.0F, -10000.0F);
-    this.cpO = paramLong;
-    AppMethodBeat.o(78588);
-  }
-  
-  public w(bmw parambmw, float paramFloat1, float paramFloat2)
-  {
-    AppMethodBeat.i(78590);
-    this.fPZ = 60000L;
-    this.cpO = -1L;
-    a(parambmw, 0, paramFloat1, paramFloat2);
-    AppMethodBeat.o(78590);
-  }
-  
-  public w(bwr parambwr)
-  {
-    AppMethodBeat.i(78589);
-    this.fPZ = 60000L;
-    this.cpO = -1L;
-    b.a locala = new b.a();
-    locala.fsX = parambwr;
-    locala.fsY = new bws();
-    locala.uri = "/cgi-bin/micromsg-bin/scanstreetview";
-    locala.funcId = 424;
-    locala.reqCmdId = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.ado();
-    AppMethodBeat.o(78589);
-  }
-  
-  private void a(bmw parambmw, int paramInt, float paramFloat1, float paramFloat2)
-  {
-    AppMethodBeat.i(78591);
+    AppMethodBeat.i(150940);
+    this.hsE = 60000L;
+    this.msgId = -1L;
+    cbe localcbe = new cbe();
+    localcbe.COI = paramFloat1;
+    localcbe.COJ = paramFloat2;
+    localcbe.DfH = 1;
+    localcbe.DfE = 0;
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bwr();
-    ((b.a)localObject).fsY = new bws();
+    ((b.a)localObject).gUU = new cmu();
+    ((b.a)localObject).gUV = new cmv();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/scanstreetview";
     ((b.a)localObject).funcId = 424;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (bwr)this.rr.fsV.fta;
-    ((bwr)localObject).xJU = parambmw;
-    ((bwr)localObject).Scene = paramInt;
-    ((bwr)localObject).xJV = paramFloat1;
-    ((bwr)localObject).xJW = paramFloat2;
-    AppMethodBeat.o(78591);
+    this.rr = ((b.a)localObject).atI();
+    localObject = (cmu)this.rr.gUS.gUX;
+    ((cmu)localObject).EhD = localcbe;
+    ((cmu)localObject).Scene = 1;
+    ((cmu)localObject).EhE = -10000.0F;
+    ((cmu)localObject).EhF = -10000.0F;
+    this.msgId = paramLong;
+    AppMethodBeat.o(150940);
   }
   
-  public static String us(String paramString)
+  public w(cmu paramcmu)
   {
-    AppMethodBeat.i(78595);
-    paramString = br.F(paramString, "streetview");
+    AppMethodBeat.i(150941);
+    this.hsE = 60000L;
+    this.msgId = -1L;
+    b.a locala = new b.a();
+    locala.gUU = paramcmu;
+    locala.gUV = new cmv();
+    locala.uri = "/cgi-bin/micromsg-bin/scanstreetview";
+    locala.funcId = 424;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.atI();
+    AppMethodBeat.o(150941);
+  }
+  
+  public static String zf(String paramString)
+  {
+    AppMethodBeat.i(150945);
+    paramString = bw.K(paramString, "streetview");
     if (paramString == null)
     {
-      AppMethodBeat.o(78595);
+      AppMethodBeat.o(150945);
       return null;
     }
     paramString = (String)paramString.get(".streetview.link");
-    AppMethodBeat.o(78595);
+    AppMethodBeat.o(150945);
     return paramString;
   }
   
-  public final bws ajW()
+  public final cmv aBa()
   {
-    if ((this.rr != null) && (this.rr.fsW.fta != null)) {
-      return (bws)this.rr.fsW.fta;
+    if ((this.rr != null) && (this.rr.gUT.gUX != null)) {
+      return (cmv)this.rr.gUT.gUX;
     }
     return null;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(78592);
-    this.callback = paramf;
+    AppMethodBeat.i(150942);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(78592);
+    AppMethodBeat.o(150942);
     return i;
   }
   
@@ -133,8 +117,8 @@ public final class w
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(78594);
-    ab.d("MicroMsg.NetSceneScanStreetView", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
+    AppMethodBeat.i(150944);
+    ad.d("MicroMsg.NetSceneScanStreetView", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
     this.errType = paramInt2;
     this.errCode = paramInt3;
     if (this.callback != null) {
@@ -142,13 +126,13 @@ public final class w
     }
     for (;;)
     {
-      ab.d("MicroMsg.NetSceneScanStreetView", "xml is %s", new Object[] { ajW().wzV });
-      if (this.fQa != null) {
-        this.fQa.run();
+      ad.d("MicroMsg.NetSceneScanStreetView", "xml is %s", new Object[] { aBa().DyQ });
+      if (this.hsF != null) {
+        this.hsF.run();
       }
-      AppMethodBeat.o(78594);
+      AppMethodBeat.o(150944);
       return;
-      ab.e("MicroMsg.NetSceneScanStreetView", "callback null");
+      ad.e("MicroMsg.NetSceneScanStreetView", "callback null");
     }
   }
   
@@ -157,26 +141,26 @@ public final class w
     return 10;
   }
   
-  public final m.b securityVerificationChecked(q paramq)
+  public final n.b securityVerificationChecked(q paramq)
   {
-    AppMethodBeat.i(78593);
-    if (((bwr)((b)paramq).fsV.fta).xJU == null)
+    AppMethodBeat.i(150943);
+    if (((cmu)((b)paramq).gUS.gUX).EhD == null)
     {
-      ab.e("MicroMsg.NetSceneScanStreetView", "req.rImpl.UserPos == null");
-      paramq = m.b.ftv;
-      AppMethodBeat.o(78593);
+      ad.e("MicroMsg.NetSceneScanStreetView", "req.rImpl.UserPos == null");
+      paramq = n.b.gVC;
+      AppMethodBeat.o(150943);
       return paramq;
     }
-    paramq = m.b.ftu;
-    AppMethodBeat.o(78593);
+    paramq = n.b.gVB;
+    AppMethodBeat.o(150943);
     return paramq;
   }
   
-  public final void setSecurityCheckError(m.a parama) {}
+  public final void setSecurityCheckError(n.a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelsimple.w
  * JD-Core Version:    0.7.0.1
  */

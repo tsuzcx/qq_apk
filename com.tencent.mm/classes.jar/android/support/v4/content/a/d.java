@@ -13,7 +13,7 @@ import org.xmlpull.v1.XmlPullParserException;
 
 final class d
 {
-  static Shader.TileMode ac(int paramInt)
+  static Shader.TileMode au(int paramInt)
   {
     switch (paramInt)
     {
@@ -63,31 +63,31 @@ final class d
   
   static final class a
   {
-    final int[] Aq;
-    final float[] Ar;
+    final float[] GM;
+    final int[] mColors;
     
     a(int paramInt1, int paramInt2)
     {
-      this.Aq = new int[] { paramInt1, paramInt2 };
-      this.Ar = new float[] { 0.0F, 1.0F };
+      this.mColors = new int[] { paramInt1, paramInt2 };
+      this.GM = new float[] { 0.0F, 1.0F };
     }
     
     a(int paramInt1, int paramInt2, int paramInt3)
     {
-      this.Aq = new int[] { paramInt1, paramInt2, paramInt3 };
-      this.Ar = new float[] { 0.0F, 0.5F, 1.0F };
+      this.mColors = new int[] { paramInt1, paramInt2, paramInt3 };
+      this.GM = new float[] { 0.0F, 0.5F, 1.0F };
     }
     
     a(List<Integer> paramList, List<Float> paramList1)
     {
       int j = paramList.size();
-      this.Aq = new int[j];
-      this.Ar = new float[j];
+      this.mColors = new int[j];
+      this.GM = new float[j];
       int i = 0;
       while (i < j)
       {
-        this.Aq[i] = ((Integer)paramList.get(i)).intValue();
-        this.Ar[i] = ((Float)paramList1.get(i)).floatValue();
+        this.mColors[i] = ((Integer)paramList.get(i)).intValue();
+        this.GM[i] = ((Float)paramList1.get(i)).floatValue();
         i += 1;
       }
     }

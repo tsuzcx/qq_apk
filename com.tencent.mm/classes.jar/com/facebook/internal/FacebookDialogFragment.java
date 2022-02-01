@@ -18,7 +18,7 @@ public class FacebookDialogFragment
   
   private void onCompleteWebDialog(Bundle paramBundle, FacebookException paramFacebookException)
   {
-    AppMethodBeat.i(96636);
+    AppMethodBeat.i(7660);
     FragmentActivity localFragmentActivity = getActivity();
     paramBundle = NativeProtocol.createProtocolResultIntent(localFragmentActivity.getIntent(), paramBundle, paramFacebookException);
     if (paramFacebookException == null) {}
@@ -26,14 +26,14 @@ public class FacebookDialogFragment
     {
       localFragmentActivity.setResult(i, paramBundle);
       localFragmentActivity.finish();
-      AppMethodBeat.o(96636);
+      AppMethodBeat.o(7660);
       return;
     }
   }
   
   private void onCompleteWebFallbackDialog(Bundle paramBundle)
   {
-    AppMethodBeat.i(96637);
+    AppMethodBeat.i(7661);
     FragmentActivity localFragmentActivity = getActivity();
     Intent localIntent = new Intent();
     Bundle localBundle = paramBundle;
@@ -43,22 +43,22 @@ public class FacebookDialogFragment
     localIntent.putExtras(localBundle);
     localFragmentActivity.setResult(-1, localIntent);
     localFragmentActivity.finish();
-    AppMethodBeat.o(96637);
+    AppMethodBeat.o(7661);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(96634);
+    AppMethodBeat.i(7658);
     super.onConfigurationChanged(paramConfiguration);
     if (((this.dialog instanceof WebDialog)) && (isResumed())) {
       ((WebDialog)this.dialog).resize();
     }
-    AppMethodBeat.o(96634);
+    AppMethodBeat.o(7658);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(96631);
+    AppMethodBeat.i(7655);
     super.onCreate(paramBundle);
     Bundle localBundle;
     String str;
@@ -67,7 +67,7 @@ public class FacebookDialogFragment
       paramBundle = getActivity();
       localBundle = NativeProtocol.getMethodArgumentsFromIntent(paramBundle.getIntent());
       if (localBundle.getBoolean("is_fallback", false)) {
-        break label114;
+        break label117;
       }
       str = localBundle.getString("action");
       localBundle = localBundle.getBundle("params");
@@ -75,61 +75,77 @@ public class FacebookDialogFragment
       {
         Utility.logd("FacebookDialogFragment", "Cannot start a WebDialog with an empty/missing 'actionName'");
         paramBundle.finish();
-        AppMethodBeat.o(96631);
+        AppMethodBeat.o(7655);
         return;
       }
-      paramBundle = new WebDialog.Builder(paramBundle, str, localBundle).setOnCompleteListener(new FacebookDialogFragment.1(this)).build();
+      paramBundle = new WebDialog.Builder(paramBundle, str, localBundle).setOnCompleteListener(new WebDialog.OnCompleteListener()
+      {
+        public void onComplete(Bundle paramAnonymousBundle, FacebookException paramAnonymousFacebookException)
+        {
+          AppMethodBeat.i(7653);
+          FacebookDialogFragment.access$000(FacebookDialogFragment.this, paramAnonymousBundle, paramAnonymousFacebookException);
+          AppMethodBeat.o(7653);
+        }
+      }).build();
     }
     for (;;)
     {
       this.dialog = paramBundle;
-      AppMethodBeat.o(96631);
+      AppMethodBeat.o(7655);
       return;
-      label114:
+      label117:
       str = localBundle.getString("url");
       if (Utility.isNullOrEmpty(str))
       {
         Utility.logd("FacebookDialogFragment", "Cannot start a fallback WebDialog with an empty/missing 'url'");
         paramBundle.finish();
-        AppMethodBeat.o(96631);
+        AppMethodBeat.o(7655);
         return;
       }
       paramBundle = FacebookWebFallbackDialog.newInstance(paramBundle, str, String.format("fb%s://bridge/", new Object[] { FacebookSdk.getApplicationId() }));
-      paramBundle.setOnCompleteListener(new FacebookDialogFragment.2(this));
+      paramBundle.setOnCompleteListener(new WebDialog.OnCompleteListener()
+      {
+        public void onComplete(Bundle paramAnonymousBundle, FacebookException paramAnonymousFacebookException)
+        {
+          AppMethodBeat.i(7654);
+          FacebookDialogFragment.access$100(FacebookDialogFragment.this, paramAnonymousBundle);
+          AppMethodBeat.o(7654);
+        }
+      });
     }
   }
   
   public Dialog onCreateDialog(Bundle paramBundle)
   {
-    AppMethodBeat.i(96632);
+    AppMethodBeat.i(7656);
     if (this.dialog == null)
     {
       onCompleteWebDialog(null, null);
       setShowsDialog(false);
     }
     paramBundle = this.dialog;
-    AppMethodBeat.o(96632);
+    AppMethodBeat.o(7656);
     return paramBundle;
   }
   
   public void onDestroyView()
   {
-    AppMethodBeat.i(96635);
+    AppMethodBeat.i(7659);
     if ((getDialog() != null) && (getRetainInstance())) {
       getDialog().setDismissMessage(null);
     }
     super.onDestroyView();
-    AppMethodBeat.o(96635);
+    AppMethodBeat.o(7659);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(96633);
+    AppMethodBeat.i(7657);
     super.onResume();
     if ((this.dialog instanceof WebDialog)) {
       ((WebDialog)this.dialog).resize();
     }
-    AppMethodBeat.o(96633);
+    AppMethodBeat.o(7657);
   }
   
   public void setDialog(Dialog paramDialog)
@@ -139,7 +155,7 @@ public class FacebookDialogFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.FacebookDialogFragment
  * JD-Core Version:    0.7.0.1
  */

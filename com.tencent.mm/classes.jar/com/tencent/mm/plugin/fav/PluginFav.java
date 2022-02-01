@@ -1,257 +1,504 @@
 package com.tencent.mm.plugin.fav;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.j.a;
-import com.tencent.mm.g.c.gc;
+import com.tencent.mm.app.n.a;
+import com.tencent.mm.g.a.uk;
+import com.tencent.mm.g.c.hf;
+import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.bz;
+import com.tencent.mm.model.cc;
 import com.tencent.mm.plugin.fav.a.aa;
 import com.tencent.mm.plugin.fav.a.ac;
-import com.tencent.mm.plugin.fav.a.ae;
-import com.tencent.mm.plugin.fav.a.ah;
+import com.tencent.mm.plugin.fav.a.af;
+import com.tencent.mm.plugin.fav.a.ai;
 import com.tencent.mm.plugin.fav.a.l;
-import com.tencent.mm.plugin.fav.a.q;
 import com.tencent.mm.plugin.fav.a.s;
 import com.tencent.mm.plugin.fav.a.t;
 import com.tencent.mm.plugin.fav.a.x;
+import com.tencent.mm.plugin.fts.a.i;
+import com.tencent.mm.plugin.fts.a.k;
 import com.tencent.mm.plugin.fts.a.m;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.protocal.protobuf.acg;
-import com.tencent.mm.protocal.protobuf.act;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.protocal.protobuf.age;
+import com.tencent.mm.protocal.protobuf.agr;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.List;
 import java.util.Map;
 
 public class PluginFav
-  extends com.tencent.mm.kernel.b.f
-  implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.bucket.c, ae
+  extends f
+  implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.bucket.c, af
 {
-  private j.a appForegroundListener;
-  private com.tencent.mm.plugin.fav.b.e.b msA;
-  private com.tencent.mm.plugin.fav.b.e.c msB;
-  private com.tencent.mm.plugin.fav.b.b.a msC;
-  private com.tencent.mm.plugin.fav.b.b.b msD;
-  private com.tencent.mm.sdk.b.c msE;
-  private a msq;
-  private x msr;
-  private q mss;
-  private aa mst;
-  private t msu;
-  private s msv;
-  private l msw;
-  private com.tencent.mm.plugin.fav.b.e.e msx;
-  private com.tencent.mm.plugin.fav.b.e.d msy;
-  private com.tencent.mm.plugin.fav.b.e.a msz;
+  private n.a appForegroundListener;
+  private a pYW;
+  private x pYX;
+  private com.tencent.mm.plugin.fav.a.q pYY;
+  private aa pYZ;
+  private t pZa;
+  private s pZb;
+  private l pZc;
+  private final int pZd;
+  private final int pZe;
+  private com.tencent.mm.plugin.fav.b.e.e pZf;
+  private com.tencent.mm.plugin.fav.b.e.d pZg;
+  private com.tencent.mm.plugin.fav.b.e.a pZh;
+  private com.tencent.mm.plugin.fav.b.e.b pZi;
+  private com.tencent.mm.plugin.fav.b.e.c pZj;
+  private com.tencent.mm.plugin.fav.b.b.a pZk;
+  private com.tencent.mm.plugin.fav.b.b.b pZl;
+  private com.tencent.mm.sdk.b.c pZm;
   
   public PluginFav()
   {
-    AppMethodBeat.i(5287);
-    this.msC = new com.tencent.mm.plugin.fav.b.b.a();
-    this.msD = new com.tencent.mm.plugin.fav.b.b.b();
-    this.msE = new PluginFav.4(this);
+    AppMethodBeat.i(101539);
+    this.pZd = 26214400;
+    this.pZe = 25;
+    this.pZk = new com.tencent.mm.plugin.fav.b.b.a();
+    this.pZl = new com.tencent.mm.plugin.fav.b.b.b();
+    this.pZm = new com.tencent.mm.sdk.b.c() {};
     this.appForegroundListener = new PluginFav.5(this);
-    AppMethodBeat.o(5287);
+    AppMethodBeat.o(101539);
   }
   
   private static void checkDir()
   {
-    AppMethodBeat.i(5292);
-    com.tencent.mm.vfs.b localb = new com.tencent.mm.vfs.b(com.tencent.mm.plugin.fav.a.b.bwe());
-    if ((!localb.exists()) || (!localb.isDirectory()))
+    AppMethodBeat.i(101552);
+    com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.fav.a.b.chw());
+    if ((!locale.exists()) || (!locale.isDirectory()))
     {
-      ab.i("MicroMsg.Fav.PluginFav", "fav root dir not exists, try to make it");
-      localb.mkdirs();
+      ad.i("MicroMsg.Fav.PluginFav", "fav root dir not exists, try to make it");
+      locale.mkdirs();
     }
-    localb = new com.tencent.mm.vfs.b(com.tencent.mm.plugin.fav.a.b.bvW());
-    if ((!localb.exists()) || (!localb.isDirectory()))
+    locale = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.fav.a.b.chp());
+    if ((!locale.exists()) || (!locale.isDirectory()))
     {
-      ab.i("MicroMsg.Fav.PluginFav", "fav web dir not exists, try to make it");
-      localb.mkdirs();
+      ad.i("MicroMsg.Fav.PluginFav", "fav web dir not exists, try to make it");
+      locale.mkdirs();
     }
-    localb = new com.tencent.mm.vfs.b(com.tencent.mm.plugin.fav.a.b.bwd());
-    if ((!localb.exists()) || (!localb.isDirectory()))
+    locale = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.fav.a.b.chv());
+    if ((!locale.exists()) || (!locale.isDirectory()))
     {
-      ab.i("MicroMsg.Fav.PluginFav", "fav attach dir not exists, try to make it");
-      localb.mkdirs();
+      ad.i("MicroMsg.Fav.PluginFav", "fav attach dir not exists, try to make it");
+      locale.mkdirs();
     }
-    localb = new com.tencent.mm.vfs.b(com.tencent.mm.plugin.fav.a.b.bwf());
-    if ((!localb.exists()) || (!localb.isDirectory()))
+    locale = new com.tencent.mm.vfs.e(com.tencent.mm.plugin.fav.a.b.chx());
+    if ((!locale.exists()) || (!locale.isDirectory()))
     {
-      ab.i("MicroMsg.Fav.PluginFav", "fav voice dir not exists, try to make it");
-      localb.mkdirs();
+      ad.i("MicroMsg.Fav.PluginFav", "fav voice dir not exists, try to make it");
+      locale.mkdirs();
     }
-    AppMethodBeat.o(5292);
+    AppMethodBeat.o(101552);
   }
   
-  public void checkFavItem(act paramact)
+  public void checkFavItem(agr paramagr)
   {
-    AppMethodBeat.i(5291);
-    al.d(new PluginFav.3(this, new com.tencent.mm.plugin.fav.b.d.a(paramact)));
-    AppMethodBeat.o(5291);
+    AppMethodBeat.i(101543);
+    aq.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(101535);
+        com.tencent.mm.kernel.g.aeS().a(this.pZo, 0);
+        AppMethodBeat.o(101535);
+      }
+    });
+    AppMethodBeat.o(101543);
   }
   
-  public void checkFavItem(List<acg> paramList)
+  public void checkFavItem(List<age> paramList)
   {
-    AppMethodBeat.i(5290);
-    al.d(new PluginFav.2(this, new com.tencent.mm.plugin.fav.b.d.a(paramList)));
-    AppMethodBeat.o(5290);
+    AppMethodBeat.i(101542);
+    aq.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(101534);
+        com.tencent.mm.kernel.g.aeS().a(this.pZo, 0);
+        AppMethodBeat.o(101534);
+      }
+    });
+    AppMethodBeat.o(101542);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg) {}
   
   public com.tencent.mm.plugin.fav.b.e.b getCheckCdnService()
   {
-    return this.msA;
+    return this.pZi;
   }
   
   public com.tencent.mm.plugin.fav.b.e.c getEditService()
   {
-    return this.msB;
+    return this.pZj;
   }
   
   public com.tencent.mm.plugin.fav.b.e.a getFavCdnService()
   {
-    return this.msz;
+    return this.pZh;
   }
   
-  public q getFavCdnStorage()
+  public com.tencent.mm.plugin.fav.a.q getFavCdnStorage()
   {
-    return this.mss;
+    return this.pYY;
   }
   
   public s getFavConfigStorage()
   {
-    return this.msv;
+    return this.pZb;
   }
   
   public t getFavEditInfoStorage()
   {
-    return this.msu;
+    return this.pZa;
   }
   
   public x getFavItemInfoStorage()
   {
-    return this.msr;
+    return this.pYX;
   }
   
   public aa getFavSearchStorage()
   {
-    return this.mst;
+    return this.pYZ;
+  }
+  
+  public int getFavSizeLimit(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(101550);
+    if (paramInt == 2)
+    {
+      paramInt = getImageSizeLimit(paramBoolean);
+      AppMethodBeat.o(101550);
+      return paramInt;
+    }
+    if (paramInt == 4)
+    {
+      paramInt = getVideoSizeLimit(paramBoolean);
+      AppMethodBeat.o(101550);
+      return paramInt;
+    }
+    paramInt = getFileSizeLimit(paramBoolean);
+    AppMethodBeat.o(101550);
+    return paramInt;
+  }
+  
+  public int getFavSizeLimitInMB(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(101551);
+    if (paramInt == 2)
+    {
+      paramInt = getImageSizeLimitInMB(paramBoolean);
+      AppMethodBeat.o(101551);
+      return paramInt;
+    }
+    if (paramInt == 4)
+    {
+      paramInt = getVideoSizeLimitInMB(paramBoolean);
+      AppMethodBeat.o(101551);
+      return paramInt;
+    }
+    paramInt = getFileSizeLimitInMB(paramBoolean);
+    AppMethodBeat.o(101551);
+    return paramInt;
   }
   
   public l getFavTagSetMgr()
   {
-    return this.msw;
+    return this.pZc;
+  }
+  
+  public int getFileSizeLimit(boolean paramBoolean)
+  {
+    AppMethodBeat.i(101544);
+    if (paramBoolean) {
+      try
+      {
+        String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).Zd().getValue("InputLimitFavFileSize");
+        if (bt.isNullOrNil(str)) {
+          ad.i("MicroMsg.Fav.PluginFav", "getFileSizeLimit nullOrNil");
+        }
+        for (;;)
+        {
+          int i = bt.getInt(str, 26214400);
+          AppMethodBeat.o(101544);
+          return i;
+          ad.i("MicroMsg.Fav.PluginFav", "getFileSizeLimit ".concat(String.valueOf(str)));
+        }
+        AppMethodBeat.o(101544);
+      }
+      catch (Throwable localThrowable)
+      {
+        ad.printErrStackTrace("MicroMsg.Fav.PluginFav", localThrowable, "getFileSizeLimit", new Object[0]);
+      }
+    }
+    return 26214400;
+  }
+  
+  public int getFileSizeLimitInMB(boolean paramBoolean)
+  {
+    AppMethodBeat.i(101545);
+    if (paramBoolean) {
+      try
+      {
+        String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).Zd().getValue("InputLimitFavFileSize");
+        if (bt.isNullOrNil(str)) {
+          ad.i("MicroMsg.Fav.PluginFav", "getFileSizeLimitInMB nullOrNil");
+        }
+        for (;;)
+        {
+          int i = bt.getInt(str, 26214400) / 1024 / 1024;
+          AppMethodBeat.o(101545);
+          return i;
+          ad.i("MicroMsg.Fav.PluginFav", "getFileSizeLimitInMB  ".concat(String.valueOf(str)));
+        }
+        AppMethodBeat.o(101545);
+      }
+      catch (Throwable localThrowable)
+      {
+        ad.printErrStackTrace("MicroMsg.Fav.PluginFav", localThrowable, "getFileSizeLimitInMB", new Object[0]);
+      }
+    }
+    return 25;
+  }
+  
+  public int getImageSizeLimit(boolean paramBoolean)
+  {
+    AppMethodBeat.i(101548);
+    if (paramBoolean) {
+      try
+      {
+        String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).Zd().getValue("InputLimitFavImageSize");
+        if (bt.isNullOrNil(str)) {
+          ad.i("MicroMsg.Fav.PluginFav", "getImageSizeLimit nullOrNil");
+        }
+        for (;;)
+        {
+          int i = bt.getInt(str, 26214400);
+          AppMethodBeat.o(101548);
+          return i;
+          ad.i("MicroMsg.Fav.PluginFav", "getImageSizeLimit ".concat(String.valueOf(str)));
+        }
+        AppMethodBeat.o(101548);
+      }
+      catch (Throwable localThrowable)
+      {
+        ad.printErrStackTrace("MicroMsg.Fav.PluginFav", localThrowable, "getImageSizeLimit", new Object[0]);
+      }
+    }
+    return 26214400;
+  }
+  
+  public int getImageSizeLimitInMB(boolean paramBoolean)
+  {
+    AppMethodBeat.i(101549);
+    if (paramBoolean) {
+      try
+      {
+        String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).Zd().getValue("InputLimitFavImageSize");
+        if (bt.isNullOrNil(str)) {
+          ad.i("MicroMsg.Fav.PluginFav", "getImageSizeLimitInMB nullOrNil");
+        }
+        for (;;)
+        {
+          int i = bt.getInt(str, 26214400) / 1024 / 1024;
+          AppMethodBeat.o(101549);
+          return i;
+          ad.i("MicroMsg.Fav.PluginFav", "getImageSizeLimitInMB ".concat(String.valueOf(str)));
+        }
+        AppMethodBeat.o(101549);
+      }
+      catch (Throwable localThrowable)
+      {
+        ad.printErrStackTrace("MicroMsg.Fav.PluginFav", localThrowable, "getImageSizeLimitInMB", new Object[0]);
+      }
+    }
+    return 25;
   }
   
   public com.tencent.mm.plugin.fav.b.e.d getModService()
   {
-    return this.msy;
+    return this.pZg;
   }
   
   public ac getSendService()
   {
-    return this.msx;
+    return this.pZf;
+  }
+  
+  public int getVideoSizeLimit(boolean paramBoolean)
+  {
+    AppMethodBeat.i(101546);
+    if (paramBoolean) {
+      try
+      {
+        String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).Zd().getValue("InputLimitFavVideoSize");
+        if (bt.isNullOrNil(str)) {
+          ad.i("MicroMsg.Fav.PluginFav", "getVideoSizeLimit nullOrNil");
+        }
+        for (;;)
+        {
+          int i = bt.getInt(str, 26214400);
+          AppMethodBeat.o(101546);
+          return i;
+          ad.i("MicroMsg.Fav.PluginFav", "getVideoSizeLimit ".concat(String.valueOf(str)));
+        }
+        AppMethodBeat.o(101546);
+      }
+      catch (Throwable localThrowable)
+      {
+        ad.printErrStackTrace("MicroMsg.Fav.PluginFav", localThrowable, "getVideoSizeLimit", new Object[0]);
+      }
+    }
+    return 26214400;
+  }
+  
+  public int getVideoSizeLimitInMB(boolean paramBoolean)
+  {
+    AppMethodBeat.i(101547);
+    if (paramBoolean) {
+      try
+      {
+        String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).Zd().getValue("InputLimitFavVideoSize");
+        if (bt.isNullOrNil(str)) {
+          ad.i("MicroMsg.Fav.PluginFav", "getVideoSizeLimit nullOrNil");
+        }
+        for (;;)
+        {
+          int i = bt.getInt(str, 26214400) / 1024 / 1024;
+          AppMethodBeat.o(101547);
+          return i;
+          ad.i("MicroMsg.Fav.PluginFav", "getVideoSizeLimit ".concat(String.valueOf(str)));
+        }
+        AppMethodBeat.o(101547);
+      }
+      catch (Throwable localThrowable)
+      {
+        ad.printErrStackTrace("MicroMsg.Fav.PluginFav", localThrowable, "getVideoSizeLimitInMB", new Object[0]);
+      }
+    }
+    return 25;
   }
   
   public void onAccountInitialized(e.c paramc)
   {
-    AppMethodBeat.i(5288);
-    this.msq = new a();
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().a("uploadfavitem", this.msq);
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().a("resendfavitem", this.msq);
-    this.msr = new com.tencent.mm.plugin.fav.b.f.d(gc.HH());
-    this.mss = new com.tencent.mm.plugin.fav.b.f.a(gc.HH());
-    this.mst = new com.tencent.mm.plugin.fav.b.f.e(gc.HH());
-    this.msu = new com.tencent.mm.plugin.fav.b.f.c(gc.HH());
-    this.msv = new com.tencent.mm.plugin.fav.b.f.b(gc.HH());
-    this.msx = new com.tencent.mm.plugin.fav.b.e.e();
-    this.msy = new com.tencent.mm.plugin.fav.b.e.d();
-    this.msz = new com.tencent.mm.plugin.fav.b.e.a();
-    this.msA = new com.tencent.mm.plugin.fav.b.e.b();
-    this.msB = new com.tencent.mm.plugin.fav.b.e.c();
-    this.msw = new l();
-    ((n)com.tencent.mm.kernel.g.G(n.class)).getFTSTaskDaemon().a(-86016, new PluginFav.1(this));
-    this.msE.alive();
-    this.msC.alive();
+    AppMethodBeat.i(101540);
+    this.pYW = new a();
+    ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a("uploadfavitem", this.pYW);
+    ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a("resendfavitem", this.pYW);
+    this.pYX = new com.tencent.mm.plugin.fav.b.f.d(hf.SP());
+    this.pYY = new com.tencent.mm.plugin.fav.b.f.a(hf.SP());
+    this.pYZ = new com.tencent.mm.plugin.fav.b.f.e(hf.SP());
+    this.pZa = new com.tencent.mm.plugin.fav.b.f.c(hf.SP());
+    this.pZb = new com.tencent.mm.plugin.fav.b.f.b(hf.SP());
+    this.pZf = new com.tencent.mm.plugin.fav.b.e.e();
+    this.pZg = new com.tencent.mm.plugin.fav.b.e.d();
+    this.pZh = new com.tencent.mm.plugin.fav.b.e.a();
+    this.pZi = new com.tencent.mm.plugin.fav.b.e.b();
+    this.pZj = new com.tencent.mm.plugin.fav.b.e.c();
+    this.pZc = new l();
+    ad.i("MicroMsg.Fav.PluginFav", "init fav storage");
+    ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSTaskDaemon().a(-86016, new com.tencent.mm.plugin.fts.a.a.a()
+    {
+      public final boolean execute()
+      {
+        AppMethodBeat.i(101533);
+        Object localObject = new com.tencent.mm.plugin.fav.b.a.a();
+        ((n)com.tencent.mm.kernel.g.ad(n.class)).registerIndexStorage((i)localObject);
+        ((i)localObject).create();
+        localObject = new com.tencent.mm.plugin.fav.b.a.b();
+        ((n)com.tencent.mm.kernel.g.ad(n.class)).registerNativeLogic(6, (k)localObject);
+        ((k)localObject).create();
+        AppMethodBeat.o(101533);
+        return true;
+      }
+      
+      public final String getName()
+      {
+        return "InitFTSFavPluginTask";
+      }
+    });
+    this.pZm.alive();
+    this.pZk.alive();
     this.appForegroundListener.alive();
-    this.msD.alive();
+    this.pZl.alive();
     checkDir();
-    AppMethodBeat.o(5288);
+    AppMethodBeat.o(101540);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(5289);
-    this.msE.dead();
-    this.msC.dead();
-    this.msD.dead();
+    AppMethodBeat.i(101541);
+    this.pZm.dead();
+    this.pZk.dead();
+    this.pZl.dead();
     this.appForegroundListener.dead();
-    ah.bwU();
-    ((n)com.tencent.mm.kernel.g.G(n.class)).unregisterIndexStorage(256);
-    ((n)com.tencent.mm.kernel.g.G(n.class)).unregisterNativeLogic(6);
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().b("uploadfavitem", this.msq);
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().b("resendfavitem", this.msq);
-    this.msq = null;
+    ai.cik();
+    ((n)com.tencent.mm.kernel.g.ad(n.class)).unregisterIndexStorage(256);
+    ((n)com.tencent.mm.kernel.g.ad(n.class)).unregisterNativeLogic(6);
+    ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().b("uploadfavitem", this.pYW);
+    ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().b("resendfavitem", this.pYW);
+    this.pYW = null;
     Object localObject;
-    if (this.msx != null)
+    if (this.pZf != null)
     {
-      localObject = this.msx;
-      ab.i("MicroMsg.Fav.FavSendService", "stop");
-      ((com.tencent.mm.plugin.fav.b.e.e)localObject).ET();
-      ((com.tencent.mm.plugin.fav.b.e.e)localObject).ckR.stopTimer();
-      ((com.tencent.mm.plugin.fav.b.e.e)localObject).ckM = 0;
-      com.tencent.mm.kernel.g.Rc().b(401, (com.tencent.mm.ai.f)localObject);
-      this.msx = null;
+      localObject = this.pZf;
+      ad.i("MicroMsg.Fav.FavSendService", "stop");
+      ((com.tencent.mm.plugin.fav.b.e.e)localObject).Oy();
+      ((com.tencent.mm.plugin.fav.b.e.e)localObject).cZK.stopTimer();
+      ((com.tencent.mm.plugin.fav.b.e.e)localObject).cZF = 0;
+      com.tencent.mm.kernel.g.aeS().b(401, (com.tencent.mm.al.g)localObject);
+      this.pZf = null;
     }
-    if (this.msy != null)
+    if (this.pZg != null)
     {
-      localObject = this.msy;
-      ab.i("MicroMsg.Fav.FavModService", "stop");
-      ((com.tencent.mm.plugin.fav.b.e.d)localObject).ET();
-      ((com.tencent.mm.plugin.fav.b.e.d)localObject).ckR.stopTimer();
-      ((com.tencent.mm.plugin.fav.b.e.d)localObject).ckM = 0;
-      com.tencent.mm.kernel.g.Rc().b(426, (com.tencent.mm.ai.f)localObject);
-      this.msy = null;
+      localObject = this.pZg;
+      ad.i("MicroMsg.Fav.FavModService", "stop");
+      ((com.tencent.mm.plugin.fav.b.e.d)localObject).Oy();
+      ((com.tencent.mm.plugin.fav.b.e.d)localObject).cZK.stopTimer();
+      ((com.tencent.mm.plugin.fav.b.e.d)localObject).cZF = 0;
+      com.tencent.mm.kernel.g.aeS().b(426, (com.tencent.mm.al.g)localObject);
+      this.pZg = null;
     }
-    if (this.msz != null)
+    if (this.pZh != null)
     {
-      localObject = this.msz;
-      ((com.tencent.mm.plugin.fav.b.e.a)localObject).ET();
-      ((com.tencent.mm.plugin.fav.b.e.a)localObject).ckR.stopTimer();
-      ((com.tencent.mm.plugin.fav.b.e.a)localObject).ckM = 0;
-      com.tencent.mm.kernel.g.RM();
-      com.tencent.mm.kernel.g.RK().b(((com.tencent.mm.plugin.fav.b.e.a)localObject).fyJ);
-      this.msz = null;
+      localObject = this.pZh;
+      ((com.tencent.mm.plugin.fav.b.e.a)localObject).Oy();
+      ((com.tencent.mm.plugin.fav.b.e.a)localObject).cZK.stopTimer();
+      ((com.tencent.mm.plugin.fav.b.e.a)localObject).cZF = 0;
+      com.tencent.mm.kernel.g.afC();
+      com.tencent.mm.kernel.g.afA().b(((com.tencent.mm.plugin.fav.b.e.a)localObject).haH);
+      this.pZh = null;
     }
-    if (this.msA != null)
+    if (this.pZi != null)
     {
-      localObject = this.msA;
-      ab.i("MicroMsg.Fav.FavCheckCdnService", "stop");
-      ((com.tencent.mm.plugin.fav.b.e.b)localObject).ET();
-      ((com.tencent.mm.plugin.fav.b.e.b)localObject).ckR.stopTimer();
-      com.tencent.mm.kernel.g.Rc().b(404, (com.tencent.mm.ai.f)localObject);
-      com.tencent.mm.kernel.g.RK().b(((com.tencent.mm.plugin.fav.b.e.b)localObject).fyJ);
-      this.msA = null;
+      localObject = this.pZi;
+      ad.i("MicroMsg.Fav.FavCheckCdnService", "stop");
+      ((com.tencent.mm.plugin.fav.b.e.b)localObject).Oy();
+      ((com.tencent.mm.plugin.fav.b.e.b)localObject).cZK.stopTimer();
+      com.tencent.mm.kernel.g.aeS().b(404, (com.tencent.mm.al.g)localObject);
+      com.tencent.mm.kernel.g.afA().b(((com.tencent.mm.plugin.fav.b.e.b)localObject).haH);
+      this.pZi = null;
     }
-    if (this.msB != null)
+    if (this.pZj != null)
     {
-      localObject = this.msB;
-      ab.i("MicroMsg.Fav.FavEditService", "stop");
-      com.tencent.mm.kernel.g.Rc().b(426, (com.tencent.mm.ai.f)localObject);
-      com.tencent.mm.kernel.g.Rc().b(401, (com.tencent.mm.ai.f)localObject);
-      ((com.tencent.mm.plugin.fav.b.e.c)localObject).mvh.clear();
-      this.msB = null;
+      localObject = this.pZj;
+      ad.i("MicroMsg.Fav.FavEditService", "stop");
+      com.tencent.mm.kernel.g.aeS().b(426, (com.tencent.mm.al.g)localObject);
+      com.tencent.mm.kernel.g.aeS().b(401, (com.tencent.mm.al.g)localObject);
+      ((com.tencent.mm.plugin.fav.b.e.c)localObject).qbP.clear();
+      this.pZj = null;
     }
-    this.msr = null;
-    this.mss = null;
-    this.mst = null;
-    this.msu = null;
-    this.msv = null;
-    this.msw = null;
-    AppMethodBeat.o(5289);
+    this.pYX = null;
+    this.pYY = null;
+    this.pYZ = null;
+    this.pZa = null;
+    this.pZb = null;
+    this.pZc = null;
+    ad.i("MicroMsg.Fav.PluginFav", "release fav storage");
+    AppMethodBeat.o(101541);
   }
   
   public void parallelsDependency() {}

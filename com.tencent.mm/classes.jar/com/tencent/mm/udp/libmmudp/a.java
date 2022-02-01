@@ -4,30 +4,43 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a.a yTc;
+  private static a FFx;
   
   static
   {
-    AppMethodBeat.i(96561);
-    yTc = new a.1();
-    AppMethodBeat.o(96561);
+    AppMethodBeat.i(62487);
+    FFx = new a()
+    {
+      public final void loadLibrary(String paramAnonymousString)
+      {
+        AppMethodBeat.i(62485);
+        System.loadLibrary(paramAnonymousString);
+        AppMethodBeat.o(62485);
+      }
+    };
+    AppMethodBeat.o(62487);
   }
   
-  public static void a(a.a parama)
+  public static void a(a parama)
   {
-    yTc = parama;
+    FFx = parama;
   }
   
   public static void loadLibraries()
   {
-    AppMethodBeat.i(96560);
-    yTc.loadLibrary("mmudp");
-    AppMethodBeat.o(96560);
+    AppMethodBeat.i(62486);
+    FFx.loadLibrary("mmudp");
+    AppMethodBeat.o(62486);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void loadLibrary(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.udp.libmmudp.a
  * JD-Core Version:    0.7.0.1
  */

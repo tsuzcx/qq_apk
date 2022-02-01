@@ -3,248 +3,207 @@ package com.tencent.xweb.x5.sdk;
 import android.content.Context;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.ac;
+import com.tencent.xweb.ah;
 import java.util.HashMap;
 import java.util.Map;
 import org.xwalk.core.Log;
 
 public final class d
 {
-  static a BIx;
-  static boolean BIy;
+  static boolean ISA;
+  static a ISz;
   
   static
   {
-    AppMethodBeat.i(4149);
-    ac.initInterface();
-    BIy = false;
-    AppMethodBeat.o(4149);
-  }
-  
-  /* Error */
-  public static void a(Context paramContext, d.a parama)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: sipush 4135
-    //   6: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: getstatic 33	com/tencent/xweb/x5/sdk/d:BIx	Lcom/tencent/xweb/x5/sdk/a;
-    //   12: ifnull +23 -> 35
-    //   15: getstatic 33	com/tencent/xweb/x5/sdk/d:BIx	Lcom/tencent/xweb/x5/sdk/a;
-    //   18: aload_0
-    //   19: aload_1
-    //   20: invokeinterface 37 3 0
-    //   25: sipush 4135
-    //   28: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   31: ldc 2
-    //   33: monitorexit
-    //   34: return
-    //   35: ldc 39
-    //   37: ldc 41
-    //   39: invokestatic 47	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   42: sipush 4135
-    //   45: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   48: goto -17 -> 31
-    //   51: astore_0
-    //   52: ldc 2
-    //   54: monitorexit
-    //   55: aload_0
-    //   56: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	57	0	paramContext	Context
-    //   0	57	1	parama	d.a
-    // Exception table:
-    //   from	to	target	type
-    //   3	31	51	finally
-    //   35	48	51	finally
+    AppMethodBeat.i(157148);
+    ah.initInterface();
+    ISA = false;
+    AppMethodBeat.o(157148);
   }
   
   public static void a(Context paramContext, String paramString, ValueCallback<Boolean> paramValueCallback)
   {
-    AppMethodBeat.i(4142);
-    if (BIx != null)
+    AppMethodBeat.i(157141);
+    if (ISz != null)
     {
-      BIx.a(paramContext, paramString, paramValueCallback);
-      AppMethodBeat.o(4142);
+      ISz.a(paramContext, paramString, paramValueCallback);
+      AppMethodBeat.o(157141);
       return;
     }
     Log.e("TbsDownloader", "canOpenFile: sImp is null");
-    AppMethodBeat.o(4142);
+    AppMethodBeat.o(157141);
   }
   
   public static void a(a parama)
   {
-    BIx = parama;
+    ISz = parama;
   }
   
   public static void a(h paramh)
   {
-    AppMethodBeat.i(4139);
-    if (BIx != null)
+    AppMethodBeat.i(157138);
+    if (ISz != null)
     {
-      BIx.a(paramh);
-      AppMethodBeat.o(4139);
+      ISz.a(paramh);
+      AppMethodBeat.o(157138);
       return;
     }
     Log.e("TbsDownloader", "setTbsListener: sImp is null");
-    AppMethodBeat.o(4139);
+    AppMethodBeat.o(157138);
   }
   
   public static boolean a(Context paramContext, String paramString, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(4141);
-    if (BIx != null)
+    AppMethodBeat.i(157140);
+    if (ISz != null)
     {
-      boolean bool = BIx.a(paramContext, paramString, paramHashMap, paramValueCallback);
-      AppMethodBeat.o(4141);
+      boolean bool = ISz.a(paramContext, paramString, paramHashMap, paramValueCallback);
+      AppMethodBeat.o(157140);
       return bool;
     }
     Log.e("TbsDownloader", "startQbOrMiniQBToLoadUrl: sImp is null");
-    AppMethodBeat.o(4141);
+    AppMethodBeat.o(157140);
     return false;
   }
   
   public static boolean canOpenWebPlus(Context paramContext)
   {
-    AppMethodBeat.i(4145);
-    if (BIx != null)
+    AppMethodBeat.i(157144);
+    if (ISz != null)
     {
-      boolean bool = BIx.canOpenWebPlus(paramContext);
-      AppMethodBeat.o(4145);
+      boolean bool = ISz.canOpenWebPlus(paramContext);
+      AppMethodBeat.o(157144);
       return bool;
     }
     Log.e("TbsDownloader", "canOpenWebPlus: sImp is null");
-    AppMethodBeat.o(4145);
+    AppMethodBeat.o(157144);
     return false;
   }
   
   public static void closeFileReader(Context paramContext)
   {
-    AppMethodBeat.i(4146);
-    if (BIx != null)
+    AppMethodBeat.i(157145);
+    if (ISz != null)
     {
-      BIx.closeFileReader(paramContext);
-      AppMethodBeat.o(4146);
+      ISz.closeFileReader(paramContext);
+      AppMethodBeat.o(157145);
       return;
     }
     Log.e("TbsDownloader", "closeFileReader: sImp is null");
-    AppMethodBeat.o(4146);
+    AppMethodBeat.o(157145);
+  }
+  
+  public static void disableAutoCreateX5Webview()
+  {
+    AppMethodBeat.i(195190);
+    if (ISz != null)
+    {
+      ISz.disableAutoCreateX5Webview();
+      AppMethodBeat.o(195190);
+      return;
+    }
+    Log.e("TbsDownloader", "disableAutoCreateX5Webview: sImp is null");
+    AppMethodBeat.o(195190);
   }
   
   public static void forceSysWebView()
   {
-    AppMethodBeat.i(4147);
-    BIy = true;
-    if (BIx != null)
+    AppMethodBeat.i(157146);
+    ISA = true;
+    if (ISz != null)
     {
-      BIx.forceSysWebView();
-      AppMethodBeat.o(4147);
+      ISz.forceSysWebView();
+      AppMethodBeat.o(157146);
       return;
     }
     Log.e("TbsDownloader", "forceSysWebView: sImp is null");
-    AppMethodBeat.o(4147);
+    AppMethodBeat.o(157146);
   }
   
   public static boolean getTBSInstalling()
   {
-    AppMethodBeat.i(4137);
-    if (BIx != null)
+    AppMethodBeat.i(157136);
+    if (ISz != null)
     {
-      boolean bool = BIx.getTBSInstalling();
-      AppMethodBeat.o(4137);
+      boolean bool = ISz.getTBSInstalling();
+      AppMethodBeat.o(157136);
       return bool;
     }
     Log.e("TbsDownloader", "getTBSInstalling: sImp is null");
-    AppMethodBeat.o(4137);
+    AppMethodBeat.o(157136);
     return false;
   }
   
   public static int getTbsVersion(Context paramContext)
   {
-    AppMethodBeat.i(4138);
-    if (BIx != null)
+    AppMethodBeat.i(157137);
+    if (ISz != null)
     {
-      int i = BIx.getTbsVersion(paramContext);
-      AppMethodBeat.o(4138);
+      int i = ISz.getTbsVersion(paramContext);
+      AppMethodBeat.o(157137);
       return i;
     }
     Log.e("TbsDownloader", "getTbsVersion: sImp is null");
-    AppMethodBeat.o(4138);
+    AppMethodBeat.o(157137);
     return 0;
   }
   
   public static void initTbsSettings(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(4144);
-    if (BIx != null)
+    AppMethodBeat.i(157143);
+    if (ISz != null)
     {
-      BIx.initTbsSettings(paramMap);
-      AppMethodBeat.o(4144);
+      ISz.initTbsSettings(paramMap);
+      AppMethodBeat.o(157143);
       return;
     }
     Log.e("TbsDownloader", "initTbsSettings: sImp is null");
-    AppMethodBeat.o(4144);
-  }
-  
-  public static boolean isTbsCoreInited()
-  {
-    AppMethodBeat.i(4143);
-    if (BIx != null)
-    {
-      boolean bool = BIx.isTbsCoreInited();
-      AppMethodBeat.o(4143);
-      return bool;
-    }
-    Log.e("TbsDownloader", "isTbsCoreInited: sImp is null");
-    AppMethodBeat.o(4143);
-    return false;
+    AppMethodBeat.o(157143);
   }
   
   public static void reset(Context paramContext)
   {
-    AppMethodBeat.i(4136);
-    if (BIx != null)
+    AppMethodBeat.i(157135);
+    if (ISz != null)
     {
-      BIx.reset(paramContext);
-      AppMethodBeat.o(4136);
+      ISz.reset(paramContext);
+      AppMethodBeat.o(157135);
       return;
     }
     Log.e("TbsDownloader", "reset: sImp is null");
-    AppMethodBeat.o(4136);
+    AppMethodBeat.o(157135);
   }
   
   public static void setUploadCode(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(4148);
-    if (BIx != null)
+    AppMethodBeat.i(157147);
+    if (ISz != null)
     {
-      BIx.setUploadCode(paramContext, paramInt);
-      AppMethodBeat.o(4148);
+      ISz.setUploadCode(paramContext, paramInt);
+      AppMethodBeat.o(157147);
       return;
     }
     Log.e("TbsDownloader", "forceSysWebView: sImp is null");
-    AppMethodBeat.o(4148);
+    AppMethodBeat.o(157147);
   }
   
   public static int startMiniQBToLoadUrl(Context paramContext, String paramString, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(4140);
-    if (BIx != null)
+    AppMethodBeat.i(157139);
+    if (ISz != null)
     {
-      int i = BIx.startMiniQBToLoadUrl(paramContext, paramString, paramHashMap, paramValueCallback);
-      AppMethodBeat.o(4140);
+      int i = ISz.startMiniQBToLoadUrl(paramContext, paramString, paramHashMap, paramValueCallback);
+      AppMethodBeat.o(157139);
       return i;
     }
     Log.e("TbsDownloader", "startMiniQBToLoadUrl: sImp is null");
-    AppMethodBeat.o(4140);
+    AppMethodBeat.o(157139);
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.x5.sdk.d
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.service.wallpaper.WallpaperService;
 public abstract class WatchFaceService
   extends WallpaperService
 {
-  private static final String[] Fz = { "charging", "airplane_mode", "connected", "theater_mode", "gps_active", "interruption_filter" };
+  private static final String[] Ho = { "charging", "airplane_mode", "connected", "theater_mode", "gps_active", "interruption_filter" };
 }
 
 

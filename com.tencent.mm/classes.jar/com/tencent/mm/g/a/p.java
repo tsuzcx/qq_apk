@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class p
   extends b
 {
-  public p.a cmL;
-  
   public p()
   {
     this((byte)0);
@@ -15,16 +12,13 @@ public final class p
   
   private p(byte paramByte)
   {
-    AppMethodBeat.i(93725);
-    this.cmL = new p.a();
-    this.ymq = false;
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(93725);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.p
  * JD-Core Version:    0.7.0.1
  */

@@ -6,95 +6,95 @@ import java.nio.ByteBuffer;
 public class e
   extends a
 {
-  public final b aAR;
-  public ByteBuffer aAS;
-  public long aAT;
-  public final int aAU;
+  public ByteBuffer aIq;
+  public final b aWk;
+  public final int aWm;
+  public long timeUs;
   
   public e(int paramInt)
   {
-    AppMethodBeat.i(94739);
-    this.aAR = new b();
-    this.aAU = paramInt;
-    AppMethodBeat.o(94739);
+    AppMethodBeat.i(91850);
+    this.aWk = new b();
+    this.aWm = paramInt;
+    AppMethodBeat.o(91850);
   }
   
-  private ByteBuffer de(int paramInt)
+  private ByteBuffer dP(int paramInt)
   {
-    AppMethodBeat.i(94744);
+    AppMethodBeat.i(91855);
     Object localObject;
-    if (this.aAU == 1)
+    if (this.aWm == 1)
     {
       localObject = ByteBuffer.allocate(paramInt);
-      AppMethodBeat.o(94744);
+      AppMethodBeat.o(91855);
       return localObject;
     }
-    if (this.aAU == 2)
+    if (this.aWm == 2)
     {
       localObject = ByteBuffer.allocateDirect(paramInt);
-      AppMethodBeat.o(94744);
+      AppMethodBeat.o(91855);
       return localObject;
     }
-    if (this.aAS == null) {}
-    for (int i = 0;; i = this.aAS.capacity())
+    if (this.aIq == null) {}
+    for (int i = 0;; i = this.aIq.capacity())
     {
       localObject = new IllegalStateException("Buffer too small (" + i + " < " + paramInt + ")");
-      AppMethodBeat.o(94744);
+      AppMethodBeat.o(91855);
       throw ((Throwable)localObject);
     }
   }
   
   public final void clear()
   {
-    AppMethodBeat.i(94743);
+    AppMethodBeat.i(91854);
     super.clear();
-    if (this.aAS != null) {
-      this.aAS.clear();
+    if (this.aIq != null) {
+      this.aIq.clear();
     }
-    AppMethodBeat.o(94743);
+    AppMethodBeat.o(91854);
   }
   
-  public final void dd(int paramInt)
+  public final void dO(int paramInt)
   {
-    AppMethodBeat.i(94740);
-    if (this.aAS == null)
+    AppMethodBeat.i(91851);
+    if (this.aIq == null)
     {
-      this.aAS = de(paramInt);
-      AppMethodBeat.o(94740);
+      this.aIq = dP(paramInt);
+      AppMethodBeat.o(91851);
       return;
     }
-    int i = this.aAS.capacity();
-    int j = this.aAS.position();
+    int i = this.aIq.capacity();
+    int j = this.aIq.position();
     paramInt = j + paramInt;
     if (i >= paramInt)
     {
-      AppMethodBeat.o(94740);
+      AppMethodBeat.o(91851);
       return;
     }
-    ByteBuffer localByteBuffer = de(paramInt);
+    ByteBuffer localByteBuffer = dP(paramInt);
     if (j > 0)
     {
-      this.aAS.position(0);
-      this.aAS.limit(j);
-      localByteBuffer.put(this.aAS);
+      this.aIq.position(0);
+      this.aIq.limit(j);
+      localByteBuffer.put(this.aIq);
     }
-    this.aAS = localByteBuffer;
-    AppMethodBeat.o(94740);
+    this.aIq = localByteBuffer;
+    AppMethodBeat.o(91851);
   }
   
-  public final boolean nI()
+  public final boolean su()
   {
-    AppMethodBeat.i(94741);
-    boolean bool = dc(1073741824);
-    AppMethodBeat.o(94741);
+    AppMethodBeat.i(91852);
+    boolean bool = dN(1073741824);
+    AppMethodBeat.o(91852);
     return bool;
   }
   
-  public final void nJ()
+  public final void sv()
   {
-    AppMethodBeat.i(94742);
-    this.aAS.flip();
-    AppMethodBeat.o(94742);
+    AppMethodBeat.i(91853);
+    this.aIq.flip();
+    AppMethodBeat.o(91853);
   }
 }
 

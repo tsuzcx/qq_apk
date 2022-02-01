@@ -2,11 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.LinkedList;
 
 public final class ua
   extends b
 {
-  public ua.a cKz;
+  public a dzq;
   
   public ua()
   {
@@ -15,16 +16,21 @@ public final class ua
   
   private ua(byte paramByte)
   {
-    AppMethodBeat.i(105673);
-    this.cKz = new ua.a();
-    this.ymq = false;
+    AppMethodBeat.i(125646);
+    this.dzq = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(105673);
+    AppMethodBeat.o(125646);
+  }
+  
+  public static final class a
+  {
+    public LinkedList<Long> dzr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ua
  * JD-Core Version:    0.7.0.1
  */

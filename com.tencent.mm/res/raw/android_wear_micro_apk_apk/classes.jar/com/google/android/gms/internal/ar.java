@@ -28,40 +28,40 @@ import java.util.Set;
 public final class ar<O extends com.google.android.gms.common.api.b>
   implements r, s, o
 {
-  private final ef<O> HW;
-  private final j MW;
-  private boolean NS;
-  private final Queue<ea> OC = new LinkedList();
-  private final g OD;
-  private final w OE;
-  private final Set<c> OF = new HashSet();
-  private final Map<bd<?>, bi> OG = new HashMap();
-  private final int OH;
-  private final bl OI;
-  private ConnectionResult OJ = null;
+  private final ef<O> JL;
+  private final j OL;
+  private boolean PH;
+  private final Queue<ea> Qr = new LinkedList();
+  private final g Qs;
+  private final w Qt;
+  private final Set<c> Qu = new HashSet();
+  private final Map<bd<?>, bi> Qv = new HashMap();
+  private final int Qw;
+  private final bl Qx;
+  private ConnectionResult Qy = null;
   
   public ar(ad<O> paramad)
   {
     Object localObject;
-    this.MW = localObject.a(aq.a(paramad).getLooper(), this);
-    if ((this.MW instanceof i)) {}
-    for (this.OD = ((i)this.MW).hc();; this.OD = this.MW)
+    this.OL = localObject.a(aq.a(paramad).getLooper(), this);
+    if ((this.OL instanceof i)) {}
+    for (this.Qs = ((i)this.OL).hm();; this.Qs = this.OL)
     {
-      this.HW = localObject.gJ();
-      this.OE = new w();
-      this.OH = localObject.getInstanceId();
-      if (!this.MW.gs()) {
+      this.JL = localObject.gT();
+      this.Qt = new w();
+      this.Qw = localObject.getInstanceId();
+      if (!this.OL.gC()) {
         break;
       }
-      this.OI = localObject.a(aq.b(paramad), aq.a(paramad));
+      this.Qx = localObject.a(aq.b(paramad), aq.a(paramad));
       return;
     }
-    this.OI = null;
+    this.Qx = null;
   }
   
   private void b(ea paramea)
   {
-    paramea.a(this.OE, gs());
+    paramea.a(this.Qt, gC());
     try
     {
       paramea.c(this);
@@ -69,17 +69,17 @@ public final class ar<O extends com.google.android.gms.common.api.b>
     }
     catch (DeadObjectException paramea)
     {
-      bd(1);
-      this.MW.disconnect();
+      bx(1);
+      this.OL.disconnect();
     }
   }
   
-  private void iM()
+  private void iU()
   {
-    iQ();
-    l(ConnectionResult.Hb);
-    iS();
-    Iterator localIterator = this.OG.values().iterator();
+    iZ();
+    m(ConnectionResult.IQ);
+    jb();
+    Iterator localIterator = this.Qv.values().iterator();
     for (;;)
     {
       if (localIterator.hasNext()) {
@@ -91,102 +91,107 @@ public final class ar<O extends com.google.android.gms.common.api.b>
       }
       catch (DeadObjectException localDeadObjectException)
       {
-        bd(1);
-        this.MW.disconnect();
-        while ((this.MW.isConnected()) && (!this.OC.isEmpty())) {
-          b((ea)this.OC.remove());
-        }
-        iU();
+        bx(1);
+        this.OL.disconnect();
+        iW();
+        jd();
         return;
       }
       catch (RemoteException localRemoteException) {}
     }
   }
   
-  private void iN()
+  private void iV()
   {
-    iQ();
-    this.NS = true;
-    this.OE.ir();
-    aq.a(this.OB).sendMessageDelayed(Message.obtain(aq.a(this.OB), 9, this.HW), aq.c(this.OB));
-    aq.a(this.OB).sendMessageDelayed(Message.obtain(aq.a(this.OB), 11, this.HW), aq.d(this.OB));
-    aq.a(this.OB, -1);
+    iZ();
+    this.PH = true;
+    this.Qt.iz();
+    aq.a(this.Qq).sendMessageDelayed(Message.obtain(aq.a(this.Qq), 9, this.JL), aq.c(this.Qq));
+    aq.a(this.Qq).sendMessageDelayed(Message.obtain(aq.a(this.Qq), 11, this.JL), aq.d(this.Qq));
+    aq.a(this.Qq, -1);
   }
   
-  private void iS()
+  private void iW()
   {
-    if (this.NS)
+    while ((this.OL.isConnected()) && (!this.Qr.isEmpty())) {
+      b((ea)this.Qr.remove());
+    }
+  }
+  
+  private void jb()
+  {
+    if (this.PH)
     {
-      aq.a(this.OB).removeMessages(11, this.HW);
-      aq.a(this.OB).removeMessages(9, this.HW);
-      this.NS = false;
+      aq.a(this.Qq).removeMessages(11, this.JL);
+      aq.a(this.Qq).removeMessages(9, this.JL);
+      this.PH = false;
     }
   }
   
-  private void iU()
+  private void jd()
   {
-    aq.a(this.OB).removeMessages(12, this.HW);
-    aq.a(this.OB).sendMessageDelayed(aq.a(this.OB).obtainMessage(12, this.HW), aq.h(this.OB));
+    aq.a(this.Qq).removeMessages(12, this.JL);
+    aq.a(this.Qq).sendMessageDelayed(aq.a(this.Qq).obtainMessage(12, this.JL), aq.h(this.Qq));
   }
   
-  private void l(ConnectionResult paramConnectionResult)
+  private void m(ConnectionResult paramConnectionResult)
   {
-    Iterator localIterator = this.OF.iterator();
+    Iterator localIterator = this.Qu.iterator();
     while (localIterator.hasNext()) {
-      ((c)localIterator.next()).a(this.HW, paramConnectionResult);
+      ((c)localIterator.next()).a(this.JL, paramConnectionResult);
     }
-    this.OF.clear();
+    this.Qu.clear();
   }
   
   public final void a(ConnectionResult paramConnectionResult)
   {
-    d.a(aq.a(this.OB));
-    if (this.OI != null) {
-      this.OI.je();
+    d.a(aq.a(this.Qq));
+    if (this.Qx != null) {
+      this.Qx.jn();
     }
-    iQ();
-    aq.a(this.OB, -1);
-    l(paramConnectionResult);
+    iZ();
+    aq.a(this.Qq, -1);
+    m(paramConnectionResult);
     if (paramConnectionResult.getErrorCode() == 4) {
-      d(aq.iK());
+      d(aq.iS());
     }
     do
     {
       return;
-      if (this.OC.isEmpty())
+      if (this.Qr.isEmpty())
       {
-        this.OJ = paramConnectionResult;
+        this.Qy = paramConnectionResult;
         return;
       }
-      synchronized (aq.iL())
+      synchronized (aq.iT())
       {
-        if ((aq.e(this.OB) != null) && (aq.f(this.OB).contains(this.HW)))
+        if ((aq.e(this.Qq) != null) && (aq.f(this.Qq).contains(this.JL)))
         {
-          aq.e(this.OB).b(paramConnectionResult, this.OH);
+          aq.e(this.Qq).b(paramConnectionResult, this.Qw);
           return;
         }
       }
-    } while (this.OB.c(paramConnectionResult, this.OH));
+    } while (this.Qq.c(paramConnectionResult, this.Qw));
     if (paramConnectionResult.getErrorCode() == 18) {
-      this.NS = true;
+      this.PH = true;
     }
-    if (this.NS)
+    if (this.PH)
     {
-      aq.a(this.OB).sendMessageDelayed(Message.obtain(aq.a(this.OB), 9, this.HW), aq.c(this.OB));
+      aq.a(this.Qq).sendMessageDelayed(Message.obtain(aq.a(this.Qq), 9, this.JL), aq.c(this.Qq));
       return;
     }
-    paramConnectionResult = String.valueOf(this.HW.kk());
+    paramConnectionResult = String.valueOf(this.JL.kt());
     d(new Status(17, String.valueOf(paramConnectionResult).length() + 38 + "API: " + paramConnectionResult + " is not available on this device."));
   }
   
   public final void a(final ConnectionResult paramConnectionResult, a<?> parama, boolean paramBoolean)
   {
-    if (Looper.myLooper() == aq.a(this.OB).getLooper())
+    if (Looper.myLooper() == aq.a(this.Qq).getLooper())
     {
       a(paramConnectionResult);
       return;
     }
-    aq.a(this.OB).post(new Runnable()
+    aq.a(this.Qq).post(new Runnable()
     {
       public final void run()
       {
@@ -197,36 +202,36 @@ public final class ar<O extends com.google.android.gms.common.api.b>
   
   public final void a(c paramc)
   {
-    d.a(aq.a(this.OB));
-    this.OF.add(paramc);
+    d.a(aq.a(this.Qq));
+    this.Qu.add(paramc);
   }
   
   public final void a(ea paramea)
   {
-    d.a(aq.a(this.OB));
-    if (this.MW.isConnected())
+    d.a(aq.a(this.Qq));
+    if (this.OL.isConnected())
     {
       b(paramea);
-      iU();
+      jd();
       return;
     }
-    this.OC.add(paramea);
-    if ((this.OJ != null) && (this.OJ.gl()))
+    this.Qr.add(paramea);
+    if ((this.Qy != null) && (this.Qy.gv()))
     {
-      a(this.OJ);
+      a(this.Qy);
       return;
     }
     connect();
   }
   
-  public final void bd(int paramInt)
+  public final void bx(int paramInt)
   {
-    if (Looper.myLooper() == aq.a(this.OB).getLooper())
+    if (Looper.myLooper() == aq.a(this.Qq).getLooper())
     {
-      iN();
+      iV();
       return;
     }
-    aq.a(this.OB).post(new Runnable()
+    aq.a(this.Qq).post(new Runnable()
     {
       public final void run()
       {
@@ -237,54 +242,54 @@ public final class ar<O extends com.google.android.gms.common.api.b>
   
   public final void connect()
   {
-    d.a(aq.a(this.OB));
-    if ((this.MW.isConnected()) || (this.MW.isConnecting())) {
+    d.a(aq.a(this.Qq));
+    if ((this.OL.isConnected()) || (this.OL.isConnecting())) {
       return;
     }
-    if ((this.MW.gt()) && (aq.i(this.OB) != 0))
+    if ((this.OL.gD()) && (aq.i(this.Qq) != 0))
     {
-      aq.a(this.OB, aq.g(this.OB).d(aq.b(this.OB)));
-      if (aq.i(this.OB) != 0)
+      aq.a(this.Qq, aq.g(this.Qq).d(aq.b(this.Qq)));
+      if (aq.i(this.Qq) != 0)
       {
-        a(new ConnectionResult(aq.i(this.OB), null));
+        a(new ConnectionResult(aq.i(this.Qq), null));
         return;
       }
     }
-    as localas = new as(this.OB, this.MW, this.HW);
-    if (this.MW.gs()) {
-      this.OI.a(localas);
+    as localas = new as(this.Qq, this.OL, this.JL);
+    if (this.OL.gC()) {
+      this.Qx.a(localas);
     }
-    this.MW.a(localas);
+    this.OL.a(localas);
   }
   
   public final void d(Status paramStatus)
   {
-    d.a(aq.a(this.OB));
-    Iterator localIterator = this.OC.iterator();
+    d.a(aq.a(this.Qq));
+    Iterator localIterator = this.Qr.iterator();
     while (localIterator.hasNext()) {
       ((ea)localIterator.next()).i(paramStatus);
     }
-    this.OC.clear();
+    this.Qr.clear();
+  }
+  
+  public final boolean gC()
+  {
+    return this.OL.gC();
   }
   
   public final int getInstanceId()
   {
-    return this.OH;
-  }
-  
-  public final boolean gs()
-  {
-    return this.MW.gs();
+    return this.Qw;
   }
   
   public final void h(Bundle paramBundle)
   {
-    if (Looper.myLooper() == aq.a(this.OB).getLooper())
+    if (Looper.myLooper() == aq.a(this.Qq).getLooper())
     {
-      iM();
+      iU();
       return;
     }
-    aq.a(this.OB).post(new Runnable()
+    aq.a(this.Qq).post(new Runnable()
     {
       public final void run()
       {
@@ -293,43 +298,53 @@ public final class ar<O extends com.google.android.gms.common.api.b>
     });
   }
   
-  public final void iO()
+  public final void iX()
   {
-    d.a(aq.a(this.OB));
-    d(aq.Or);
-    this.OE.iq();
-    Iterator localIterator = this.OG.keySet().iterator();
+    d.a(aq.a(this.Qq));
+    d(aq.Qg);
+    this.Qt.iy();
+    Iterator localIterator = this.Qv.keySet().iterator();
     while (localIterator.hasNext()) {
       a(new ed((bd)localIterator.next(), new com.google.android.gms.b.c()));
     }
-    l(new ConnectionResult(4));
-    this.MW.disconnect();
+    m(new ConnectionResult(4));
+    this.OL.disconnect();
   }
   
-  public final Map<bd<?>, bi> iP()
+  public final Map<bd<?>, bi> iY()
   {
-    return this.OG;
+    return this.Qv;
   }
   
-  public final void iQ()
+  public final void iZ()
   {
-    d.a(aq.a(this.OB));
-    this.OJ = null;
+    d.a(aq.a(this.Qq));
+    this.Qy = null;
   }
   
-  public final ConnectionResult iR()
+  final boolean isConnected()
   {
-    d.a(aq.a(this.OB));
-    return this.OJ;
+    return this.OL.isConnected();
   }
   
-  public final void iT()
+  public final j iw()
   {
-    d.a(aq.a(this.OB));
-    if (this.NS)
+    return this.OL;
+  }
+  
+  public final ConnectionResult ja()
+  {
+    d.a(aq.a(this.Qq));
+    return this.Qy;
+  }
+  
+  public final void jc()
+  {
+    d.a(aq.a(this.Qq));
+    if (this.PH)
     {
-      iS();
-      if (aq.g(this.OB).d(aq.b(this.OB)) != 18) {
+      jb();
+      if (aq.g(this.Qq).d(aq.b(this.Qq)) != 18) {
         break label71;
       }
     }
@@ -337,55 +352,45 @@ public final class ar<O extends com.google.android.gms.common.api.b>
     for (Status localStatus = new Status(8, "Connection timed out while waiting for Google Play services update to complete.");; localStatus = new Status(8, "API failed to connect while resuming due to an unknown error."))
     {
       d(localStatus);
-      this.MW.disconnect();
+      this.OL.disconnect();
       return;
     }
   }
   
-  public final void iV()
+  public final void je()
   {
-    d.a(aq.a(this.OB));
-    if ((this.MW.isConnected()) && (this.OG.size() == 0))
+    d.a(aq.a(this.Qq));
+    if ((this.OL.isConnected()) && (this.Qv.size() == 0))
     {
-      if (this.OE.ip()) {
-        iU();
+      if (this.Qt.ix()) {
+        jd();
       }
     }
     else {
       return;
     }
-    this.MW.disconnect();
+    this.OL.disconnect();
   }
   
-  final cr iW()
+  final cr jf()
   {
-    if (this.OI == null) {
+    if (this.Qx == null) {
       return null;
     }
-    return this.OI.iW();
+    return this.Qx.jf();
   }
   
-  public final j io()
+  public final void l(ConnectionResult paramConnectionResult)
   {
-    return this.MW;
-  }
-  
-  final boolean isConnected()
-  {
-    return this.MW.isConnected();
-  }
-  
-  public final void k(ConnectionResult paramConnectionResult)
-  {
-    d.a(aq.a(this.OB));
-    this.MW.disconnect();
+    d.a(aq.a(this.Qq));
+    this.OL.disconnect();
     a(paramConnectionResult);
   }
   
   public final void resume()
   {
-    d.a(aq.a(this.OB));
-    if (this.NS) {
+    d.a(aq.a(this.Qq));
+    if (this.PH) {
       connect();
     }
   }

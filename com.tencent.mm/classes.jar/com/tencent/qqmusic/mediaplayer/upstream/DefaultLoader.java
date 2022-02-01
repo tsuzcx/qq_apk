@@ -1,8 +1,10 @@
 package com.tencent.qqmusic.mediaplayer.upstream;
 
 import android.os.Handler;
+import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.downstream.IDataSink;
 import com.tencent.qqmusic.mediaplayer.util.Logger;
 import java.io.IOException;
@@ -32,10 +34,47 @@ public abstract class DefaultLoader
   private long upstreamSize = -1L;
   private final UriLoader uriLoader;
   
-  protected DefaultLoader(Looper paramLooper, UriLoader paramUriLoader, Loader.Listener paramListener)
+  protected DefaultLoader(Looper paramLooper, UriLoader paramUriLoader, final Loader.Listener paramListener)
   {
     this.uriLoader = paramUriLoader;
-    this.eventHandler = new Handler(paramLooper, new DefaultLoader.1(this, paramListener));
+    this.eventHandler = new Handler(paramLooper, new Handler.Callback()
+    {
+      public boolean handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(76497);
+        if (paramListener == null)
+        {
+          AppMethodBeat.o(76497);
+          return false;
+        }
+        switch (paramAnonymousMessage.what)
+        {
+        case 1: 
+        default: 
+          DefaultLoader.access$002(DefaultLoader.this, false);
+          Logger.i("DefaultLoader", "[handleMessage] loading = false");
+          switch (paramAnonymousMessage.what)
+          {
+          default: 
+            AppMethodBeat.o(76497);
+            return false;
+          }
+          break;
+        }
+        paramListener.onLoadProgress(paramAnonymousMessage.arg1, paramAnonymousMessage.arg2);
+        AppMethodBeat.o(76497);
+        return true;
+        paramListener.onLoadError((IOException)paramAnonymousMessage.obj);
+        AppMethodBeat.o(76497);
+        return true;
+        paramListener.onLoadCompleted();
+        AppMethodBeat.o(76497);
+        return true;
+        paramListener.onLoadCancelled(DefaultLoader.this.shutdown);
+        AppMethodBeat.o(76497);
+        return true;
+      }
+    });
     this.chunks = new LinkedBlockingQueue(1);
   }
   
@@ -190,7 +229,7 @@ public abstract class DefaultLoader
       try
       {
         if (!loadChunk(localInterruptedException)) {
-          break label93;
+          break label94;
         }
         this.eventHandler.obtainMessage(3).sendToTarget();
       }
@@ -200,7 +239,7 @@ public abstract class DefaultLoader
         this.eventHandler.obtainMessage(4, localIOException).sendToTarget();
       }
       continue;
-      label93:
+      label94:
       this.eventHandler.obtainMessage(5).sendToTarget();
     }
   }
@@ -248,13 +287,62 @@ public abstract class DefaultLoader
     Logger.i("DefaultLoader", "[handleMessage] loading = true");
     this.cancelled = false;
     if (getState() == Thread.State.NEW) {
-      this.uriLoader.startLoading(0, TimeUnit.MILLISECONDS, new DefaultLoader.2(this));
+      this.uriLoader.startLoading(0, TimeUnit.MILLISECONDS, new UriLoader.Callback()
+      {
+        public void onCancelled()
+        {
+          AppMethodBeat.i(76523);
+          DefaultLoader.this.eventHandler.obtainMessage(5).sendToTarget();
+          AppMethodBeat.o(76523);
+        }
+        
+        public void onFailed(Throwable paramAnonymousThrowable)
+        {
+          AppMethodBeat.i(76522);
+          DefaultLoader.this.eventHandler.obtainMessage(4, new IOException("failed to load uri", paramAnonymousThrowable)).sendToTarget();
+          AppMethodBeat.o(76522);
+        }
+        
+        public void onSucceed(StreamingRequest paramAnonymousStreamingRequest)
+        {
+          AppMethodBeat.i(76521);
+          Logger.i("DefaultLoader", "[startLoading] uriLoader.startLoading onSucceed");
+          IDataSource localIDataSource = DefaultLoader.this.createUpStream(paramAnonymousStreamingRequest);
+          try
+          {
+            localIDataSource.open();
+            DefaultLoader.access$202(DefaultLoader.this, localIDataSource.getSize());
+            paramAnonymousStreamingRequest = DefaultLoader.this.createCacheSink(paramAnonymousStreamingRequest);
+          }
+          catch (IOException localIOException1)
+          {
+            try
+            {
+              paramAnonymousStreamingRequest.open();
+              DefaultLoader.access$402(DefaultLoader.this, paramAnonymousStreamingRequest);
+              DefaultLoader.access$502(DefaultLoader.this, localIDataSource);
+              DefaultLoader.this.start();
+              AppMethodBeat.o(76521);
+              return;
+              localIOException1 = localIOException1;
+              DefaultLoader.this.eventHandler.obtainMessage(4, localIOException1).sendToTarget();
+            }
+            catch (IOException localIOException2)
+            {
+              for (;;)
+              {
+                DefaultLoader.this.eventHandler.obtainMessage(4, localIOException2).sendToTarget();
+              }
+            }
+          }
+        }
+      });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.DefaultLoader
  * JD-Core Version:    0.7.0.1
  */

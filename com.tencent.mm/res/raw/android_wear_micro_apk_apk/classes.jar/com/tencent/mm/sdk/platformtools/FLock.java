@@ -2,16 +2,29 @@ package com.tencent.mm.sdk.platformtools;
 
 public class FLock
 {
-  private volatile int WT;
+  private volatile int YV;
+  
+  static
+  {
+    try
+    {
+      System.loadLibrary("wechatcommon");
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      f.a("MicroMsg.FLock", localThrowable, "fail to load so.", new Object[0]);
+    }
+  }
   
   private void free()
   {
     try
     {
-      if (this.WT != -1)
+      if (this.YV != -1)
       {
-        nativeFree(this.WT);
-        this.WT = -1;
+        nativeFree(this.YV);
+        this.YV = -1;
       }
       return;
     }
@@ -22,7 +35,7 @@ public class FLock
     }
   }
   
-  private static native int nativeFree(int paramInt);
+  private static native void nativeFree(int paramInt);
   
   private static native int nativeInit(String paramString);
   
@@ -38,24 +51,24 @@ public class FLock
     {
       try
       {
-        int i = this.WT;
+        int i = this.YV;
         if (i == -1) {
           return;
         }
         try
         {
-          i = nativeUnlock(this.WT);
+          i = nativeUnlock(this.YV);
           switch (i)
           {
           case 9: 
-            throw new IllegalStateException("other err: " + i);
+            throw new IllegalStateException("other err: ".concat(String.valueOf(i)));
           }
         }
         finally
         {
           free();
         }
-        throw new IllegalArgumentException(this.WT + " is not a valid fd.");
+        throw new IllegalArgumentException(this.YV + " is not a valid fd.");
       }
       finally {}
       throw new IllegalStateException("bad operation.");

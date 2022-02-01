@@ -13,10 +13,10 @@ import java.util.concurrent.Executors;
 public abstract class zzb
   extends Service
 {
-  final ExecutorService bfP;
-  private Binder bfQ;
-  private int bfR;
-  private int bfS;
+  final ExecutorService bDO;
+  private Binder bDP;
+  private int bDQ;
+  private int bDR;
   private final Object lock;
   
   public zzb()
@@ -25,36 +25,36 @@ public abstract class zzb
     if (str.length() != 0) {}
     for (str = "Firebase-".concat(str);; str = new String("Firebase-"))
     {
-      this.bfP = Executors.newSingleThreadExecutor(new NamedThreadFactory(str));
+      this.bDO = Executors.newSingleThreadExecutor(new NamedThreadFactory(str));
       this.lock = new Object();
-      this.bfS = 0;
+      this.bDR = 0;
       return;
     }
   }
   
-  private final void h(Intent arg1)
+  private final void g(Intent arg1)
   {
     if (??? != null) {
       WakefulBroadcastReceiver.completeWakefulIntent(???);
     }
     synchronized (this.lock)
     {
-      this.bfS -= 1;
-      if (this.bfS == 0) {
-        stopSelfResult(this.bfR);
+      this.bDR -= 1;
+      if (this.bDR == 0) {
+        stopSelfResult(this.bDQ);
       }
       return;
     }
   }
   
-  protected Intent f(Intent paramIntent)
+  protected Intent e(Intent paramIntent)
   {
     return paramIntent;
   }
   
-  public abstract void g(Intent paramIntent);
+  public abstract void f(Intent paramIntent);
   
-  public boolean i(Intent paramIntent)
+  public boolean h(Intent paramIntent)
   {
     return false;
   }
@@ -64,10 +64,10 @@ public abstract class zzb
     try
     {
       Log.isLoggable("EnhancedIntentService", 3);
-      if (this.bfQ == null) {
-        this.bfQ = new w(this);
+      if (this.bDP == null) {
+        this.bDP = new w(this);
       }
-      paramIntent = this.bfQ;
+      paramIntent = this.bDP;
       return paramIntent;
     }
     finally {}
@@ -77,21 +77,21 @@ public abstract class zzb
   {
     synchronized (this.lock)
     {
-      this.bfR = paramInt2;
-      this.bfS += 1;
-      ??? = f(paramIntent);
+      this.bDQ = paramInt2;
+      this.bDR += 1;
+      ??? = e(paramIntent);
       if (??? == null)
       {
-        h(paramIntent);
+        g(paramIntent);
         return 2;
       }
     }
-    if (i((Intent)???))
+    if (h((Intent)???))
     {
-      h(paramIntent);
+      g(paramIntent);
       return 2;
     }
-    this.bfP.execute(new t(this, (Intent)???, paramIntent));
+    this.bDO.execute(new t(this, (Intent)???, paramIntent));
     return 3;
   }
 }

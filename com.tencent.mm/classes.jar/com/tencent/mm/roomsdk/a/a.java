@@ -1,9 +1,9 @@
 package com.tencent.mm.roomsdk.a;
 
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.n;
 
 public abstract class a
-  extends m
+  extends n
 {
   public abstract com.tencent.mm.roomsdk.a.b.a a(com.tencent.mm.roomsdk.a.b.a parama);
 }

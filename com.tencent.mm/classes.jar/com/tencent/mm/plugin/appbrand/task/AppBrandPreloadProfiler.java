@@ -5,73 +5,79 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.a.a;
+import d.y;
 
 public class AppBrandPreloadProfiler
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandPreloadProfiler> CREATOR;
   public long endTime;
-  public long iJW;
-  public long iJX;
-  public long iJY;
+  public int level;
+  public long lvA;
+  public int lvB;
+  public long lvC;
+  public long lvD;
   public long startTime;
   
   static
   {
-    AppMethodBeat.i(132787);
-    CREATOR = new AppBrandPreloadProfiler.1();
-    AppMethodBeat.o(132787);
+    AppMethodBeat.i(48366);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(48366);
   }
   
   public AppBrandPreloadProfiler()
   {
-    this.iJW = 9223372036854775807L;
-    this.iJX = 9223372036854775807L;
+    this.lvA = 9223372036854775807L;
+    this.lvB = 0;
+    this.lvC = 9223372036854775807L;
     this.startTime = 9223372036854775807L;
     this.endTime = 9223372036854775807L;
-    this.iJY = 9223372036854775807L;
+    this.lvD = 9223372036854775807L;
   }
   
   protected AppBrandPreloadProfiler(Parcel paramParcel)
   {
-    AppMethodBeat.i(132786);
-    this.iJW = 9223372036854775807L;
-    this.iJX = 9223372036854775807L;
+    AppMethodBeat.i(48365);
+    this.lvA = 9223372036854775807L;
+    this.lvB = 0;
+    this.lvC = 9223372036854775807L;
     this.startTime = 9223372036854775807L;
     this.endTime = 9223372036854775807L;
-    this.iJY = 9223372036854775807L;
-    this.iJW = paramParcel.readLong();
-    this.iJX = paramParcel.readLong();
+    this.lvD = 9223372036854775807L;
+    this.lvA = paramParcel.readLong();
+    this.lvC = paramParcel.readLong();
     this.startTime = paramParcel.readLong();
     this.endTime = paramParcel.readLong();
-    this.iJY = paramParcel.readLong();
-    AppMethodBeat.o(132786);
+    this.lvD = paramParcel.readLong();
+    AppMethodBeat.o(48365);
   }
   
-  public final long aLG()
+  static void p(a<y> parama)
   {
-    AppMethodBeat.i(132783);
+    AppMethodBeat.i(196113);
+    parama.invoke();
+    AppMethodBeat.o(196113);
+  }
+  
+  public final long bno()
+  {
+    AppMethodBeat.i(196112);
     long l = SystemClock.elapsedRealtime();
-    this.endTime = l;
-    AppMethodBeat.o(132783);
+    this.lvA = l;
+    AppMethodBeat.o(196112);
     return l;
   }
   
-  public final long aLH()
+  public final long bnp()
   {
-    if ((this.iJY == 9223372036854775807L) || (this.endTime == 9223372036854775807L)) {
-      return 0L;
-    }
-    return this.endTime - this.iJY;
-  }
-  
-  public final long aLI()
-  {
-    if ((this.endTime == 9223372036854775807L) || (this.iJW == 9223372036854775807L)) {
-      return 0L;
-    }
-    return this.endTime - this.iJW;
+    AppMethodBeat.i(48362);
+    long l = SystemClock.elapsedRealtime();
+    this.endTime = l;
+    AppMethodBeat.o(48362);
+    return l;
   }
   
   public int describeContents()
@@ -81,32 +87,32 @@ public class AppBrandPreloadProfiler
   
   public String toString()
   {
-    AppMethodBeat.i(132784);
-    if ((this.iJW == 9223372036854775807L) || (this.iJX == 9223372036854775807L) || (this.startTime == 9223372036854775807L) || (this.endTime == 9223372036854775807L))
+    AppMethodBeat.i(48363);
+    if ((this.lvA == 9223372036854775807L) || (this.lvC == 9223372036854775807L) || (this.startTime == 9223372036854775807L) || (this.endTime == 9223372036854775807L))
     {
-      str = bo.p("[AppBrandPreloadProfiler] in panic req = [%d]ms, process = [%d]ms, start = [%d]ms, end = [%d]ms", new Object[] { Long.valueOf(this.iJW), Long.valueOf(this.iJX), Long.valueOf(this.startTime), Long.valueOf(this.endTime) });
-      AppMethodBeat.o(132784);
+      str = bt.u("[AppBrandPreloadProfiler] in panic req = [%d]ms, process = [%d]ms, start = [%d]ms, end = [%d]ms", new Object[] { Long.valueOf(this.lvA), Long.valueOf(this.lvC), Long.valueOf(this.startTime), Long.valueOf(this.endTime) });
+      AppMethodBeat.o(48363);
       return str;
     }
-    String str = bo.p("[AppBrandPreloadProfiler] process-start costs [%d]ms, trans-thread costs [%d]ms, preload component costs [%d]ms", new Object[] { Long.valueOf(this.iJX - this.iJW), Long.valueOf(this.startTime - this.iJX), Long.valueOf(this.endTime - this.startTime) });
-    AppMethodBeat.o(132784);
+    String str = bt.u("[AppBrandPreloadProfiler] process-start costs [%d]ms, trans-thread costs [%d]ms, preload component costs [%d]ms", new Object[] { Long.valueOf(this.lvC - this.lvA), Long.valueOf(this.startTime - this.lvC), Long.valueOf(this.endTime - this.startTime) });
+    AppMethodBeat.o(48363);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(132785);
-    paramParcel.writeLong(this.iJW);
-    paramParcel.writeLong(this.iJX);
+    AppMethodBeat.i(48364);
+    paramParcel.writeLong(this.lvA);
+    paramParcel.writeLong(this.lvC);
     paramParcel.writeLong(this.startTime);
     paramParcel.writeLong(this.endTime);
-    paramParcel.writeLong(this.iJY);
-    AppMethodBeat.o(132785);
+    paramParcel.writeLong(this.lvD);
+    AppMethodBeat.o(48364);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.AppBrandPreloadProfiler
  * JD-Core Version:    0.7.0.1
  */

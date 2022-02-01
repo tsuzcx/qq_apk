@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class um
   extends b
 {
-  public um.a cKX;
-  public um.b cKY;
+  public a dAe;
   
   public um()
   {
@@ -16,17 +15,21 @@ public final class um
   
   private um(byte paramByte)
   {
-    AppMethodBeat.i(70217);
-    this.cKX = new um.a();
-    this.cKY = new um.b();
-    this.ymq = false;
+    AppMethodBeat.i(186703);
+    this.dAe = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70217);
+    AppMethodBeat.o(186703);
+  }
+  
+  public static final class a
+  {
+    public String dAf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.um
  * JD-Core Version:    0.7.0.1
  */

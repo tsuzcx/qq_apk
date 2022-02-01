@@ -12,14 +12,14 @@ import java.lang.ref.WeakReference;
 
 public final class x
 {
-  private WeakReference<View> Hg;
-  Runnable Hh = null;
-  Runnable Hi = null;
-  int Hj = -1;
+  private WeakReference<View> Oe;
+  Runnable Of = null;
+  Runnable Og = null;
+  int Oh = -1;
   
   x(View paramView)
   {
-    this.Hg = new WeakReference(paramView);
+    this.Oe = new WeakReference(paramView);
   }
   
   private void a(final View paramView, final y paramy)
@@ -30,17 +30,17 @@ public final class x
       {
         public final void onAnimationCancel(Animator paramAnonymousAnimator)
         {
-          paramy.aD(paramView);
+          paramy.aJ(paramView);
         }
         
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          paramy.aC(paramView);
+          paramy.aI(paramView);
         }
         
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
-          paramy.aB(paramView);
+          paramy.aH(paramView);
         }
       });
       return;
@@ -50,7 +50,7 @@ public final class x
   
   public final x a(final aa paramaa)
   {
-    final View localView = (View)this.Hg.get();
+    final View localView = (View)this.Oe.get();
     if ((localView != null) && (Build.VERSION.SDK_INT >= 19))
     {
       ValueAnimator.AnimatorUpdateListener local2 = null;
@@ -59,7 +59,7 @@ public final class x
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
-            paramaa.dJ();
+            paramaa.fb();
           }
         };
       }
@@ -70,7 +70,7 @@ public final class x
   
   public final x a(y paramy)
   {
-    View localView = (View)this.Hg.get();
+    View localView = (View)this.Oe.get();
     if (localView != null)
     {
       if (Build.VERSION.SDK_INT >= 16) {
@@ -85,9 +85,9 @@ public final class x
     return this;
   }
   
-  public final x c(Interpolator paramInterpolator)
+  public final x a(Interpolator paramInterpolator)
   {
-    View localView = (View)this.Hg.get();
+    View localView = (View)this.Oe.get();
     if (localView != null) {
       localView.animate().setInterpolator(paramInterpolator);
     }
@@ -96,7 +96,7 @@ public final class x
   
   public final void cancel()
   {
-    View localView = (View)this.Hg.get();
+    View localView = (View)this.Oe.get();
     if (localView != null) {
       localView.animate().cancel();
     }
@@ -104,7 +104,7 @@ public final class x
   
   public final long getDuration()
   {
-    View localView = (View)this.Hg.get();
+    View localView = (View)this.Oe.get();
     if (localView != null) {
       return localView.animate().getDuration();
     }
@@ -113,7 +113,7 @@ public final class x
   
   public final x h(long paramLong)
   {
-    View localView = (View)this.Hg.get();
+    View localView = (View)this.Oe.get();
     if (localView != null) {
       localView.animate().setDuration(paramLong);
     }
@@ -122,51 +122,51 @@ public final class x
   
   public final x i(long paramLong)
   {
-    View localView = (View)this.Hg.get();
+    View localView = (View)this.Oe.get();
     if (localView != null) {
       localView.animate().setStartDelay(paramLong);
     }
     return this;
   }
   
-  public final x s(float paramFloat)
+  public final void start()
   {
-    View localView = (View)this.Hg.get();
+    View localView = (View)this.Oe.get();
+    if (localView != null) {
+      localView.animate().start();
+    }
+  }
+  
+  public final x w(float paramFloat)
+  {
+    View localView = (View)this.Oe.get();
     if (localView != null) {
       localView.animate().alpha(paramFloat);
     }
     return this;
   }
   
-  public final void start()
+  public final x x(float paramFloat)
   {
-    View localView = (View)this.Hg.get();
-    if (localView != null) {
-      localView.animate().start();
-    }
-  }
-  
-  public final x t(float paramFloat)
-  {
-    View localView = (View)this.Hg.get();
+    View localView = (View)this.Oe.get();
     if (localView != null) {
       localView.animate().translationY(paramFloat);
     }
     return this;
   }
   
-  public final x u(float paramFloat)
+  public final x y(float paramFloat)
   {
-    View localView = (View)this.Hg.get();
+    View localView = (View)this.Oe.get();
     if (localView != null) {
       localView.animate().scaleX(paramFloat);
     }
     return this;
   }
   
-  public final x v(float paramFloat)
+  public final x z(float paramFloat)
   {
-    View localView = (View)this.Hg.get();
+    View localView = (View)this.Oe.get();
     if (localView != null) {
       localView.animate().scaleY(paramFloat);
     }
@@ -176,24 +176,24 @@ public final class x
   static final class a
     implements y
   {
-    x Hn;
-    boolean Ho;
+    x Ol;
+    boolean Om;
     
     a(x paramx)
     {
-      this.Hn = paramx;
+      this.Ol = paramx;
     }
     
-    public final void aB(View paramView)
+    public final void aH(View paramView)
     {
-      this.Ho = false;
-      if (this.Hn.Hj >= 0) {
+      this.Om = false;
+      if (this.Ol.Oh >= 0) {
         paramView.setLayerType(2, null);
       }
-      if (this.Hn.Hh != null)
+      if (this.Ol.Of != null)
       {
-        localObject = this.Hn.Hh;
-        this.Hn.Hh = null;
+        localObject = this.Ol.Of;
+        this.Ol.Of = null;
         ((Runnable)localObject).run();
       }
       Object localObject = paramView.getTag(2113929216);
@@ -201,25 +201,25 @@ public final class x
       for (localObject = (y)localObject;; localObject = null)
       {
         if (localObject != null) {
-          ((y)localObject).aB(paramView);
+          ((y)localObject).aH(paramView);
         }
         return;
       }
     }
     
-    public final void aC(View paramView)
+    public final void aI(View paramView)
     {
-      if (this.Hn.Hj >= 0)
+      if (this.Ol.Oh >= 0)
       {
-        paramView.setLayerType(this.Hn.Hj, null);
-        this.Hn.Hj = -1;
+        paramView.setLayerType(this.Ol.Oh, null);
+        this.Ol.Oh = -1;
       }
-      if ((Build.VERSION.SDK_INT >= 16) || (!this.Ho))
+      if ((Build.VERSION.SDK_INT >= 16) || (!this.Om))
       {
-        if (this.Hn.Hi != null)
+        if (this.Ol.Og != null)
         {
-          localObject = this.Hn.Hi;
-          this.Hn.Hi = null;
+          localObject = this.Ol.Og;
+          this.Ol.Og = null;
           ((Runnable)localObject).run();
         }
         localObject = paramView.getTag(2113929216);
@@ -231,21 +231,21 @@ public final class x
       for (Object localObject = (y)localObject;; localObject = null)
       {
         if (localObject != null) {
-          ((y)localObject).aC(paramView);
+          ((y)localObject).aI(paramView);
         }
-        this.Ho = true;
+        this.Om = true;
         return;
       }
     }
     
-    public final void aD(View paramView)
+    public final void aJ(View paramView)
     {
       Object localObject = paramView.getTag(2113929216);
       if ((localObject instanceof y)) {}
       for (localObject = (y)localObject;; localObject = null)
       {
         if (localObject != null) {
-          ((y)localObject).aD(paramView);
+          ((y)localObject).aJ(paramView);
         }
         return;
       }

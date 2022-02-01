@@ -8,11 +8,11 @@ public abstract class k
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dhU = "username".hashCode();
-  private static final int dif = "token".hashCode();
+  private static final int eme = "username".hashCode();
+  private static final int emp = "token".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dhS = true;
-  private boolean die = true;
+  private boolean emb = true;
+  private boolean emo = true;
   public String field_token;
   public String field_username;
   
@@ -29,7 +29,7 @@ public abstract class k
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dhU != k) {
+      if (eme != k) {
         break label60;
       }
       this.field_username = paramCursor.getString(i);
@@ -40,7 +40,7 @@ public abstract class k
       break label20;
       break;
       label60:
-      if (dif == k) {
+      if (emp == k) {
         this.field_token = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -51,10 +51,10 @@ public abstract class k
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dhS) {
+    if (this.emb) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.die) {
+    if (this.emo) {
       localContentValues.put("token", this.field_token);
     }
     if (this.systemRowid > 0L) {
@@ -65,7 +65,7 @@ public abstract class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.k
  * JD-Core Version:    0.7.0.1
  */

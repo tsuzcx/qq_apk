@@ -13,31 +13,31 @@ public final class a
   
   static
   {
-    AppMethodBeat.i(105575);
+    AppMethodBeat.i(123715);
     c.a locala = new c.a();
-    locala.yrK = new Field[4];
+    locala.EYt = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "key";
-    locala.yrM.put("key", "INTEGER PRIMARY KEY  COLLATE NOCASE ");
+    locala.EYv.put("key", "INTEGER PRIMARY KEY  COLLATE NOCASE ");
     localStringBuilder.append(" key INTEGER PRIMARY KEY  COLLATE NOCASE ");
     localStringBuilder.append(", ");
-    locala.yrL = "key";
+    locala.EYu = "key";
     locala.columns[1] = "mau";
-    locala.yrM.put("mau", "INTEGER");
+    locala.EYv.put("mau", "INTEGER");
     localStringBuilder.append(" mau INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "dau";
-    locala.yrM.put("dau", "INTEGER");
+    locala.EYv.put("dau", "INTEGER");
     localStringBuilder.append(" dau INTEGER");
     localStringBuilder.append(", ");
     locala.columns[3] = "useTime";
-    locala.yrM.put("useTime", "LONG");
+    locala.EYv.put("useTime", "LONG");
     localStringBuilder.append(" useTime LONG");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    AppMethodBeat.o(105575);
+    AppMethodBeat.o(123715);
   }
   
   public final c.a getDBInfo()
@@ -47,7 +47,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.boots.a.a
  * JD-Core Version:    0.7.0.1
  */

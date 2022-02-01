@@ -1,51 +1,62 @@
 package com.tencent.mm.plugin.recordvideo.plugin;
 
-import a.f.b.j;
-import a.l;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView;
-import com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView;
-import com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView.a;
+import com.tencent.mm.g.b.a.dc;
+import com.tencent.mm.g.b.a.dn;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.recordvideo.b.a.a;
+import com.tencent.mm.plugin.recordvideo.b.a.a.a;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
+import com.tencent.mm.pluginsdk.ui.tools.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.ui.am;
+import d.g.b.k;
+import d.l;
+import d.v;
+import java.util.ArrayList;
+import java.util.List;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordFocusPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "captureFocus", "Lcom/tencent/mm/plugin/mmsight/ui/CameraFrontSightView;", "captureTouchView", "Lcom/tencent/mm/plugin/mmsight/ui/MMSightCaptureTouchView;", "startTimeStamp", "", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "onBackPress", "", "onPause", "", "onResume", "release", "Companion", "plugin-recordvideo_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordAlbumPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/widget/ImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/ImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "enable", "", "scene", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/widget/ImageView;", "setView", "(Landroid/widget/ImageView;)V", "checkOnClickByScene", "", "initConfig", "config", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onClick", "v", "Landroid/view/View;", "setVisibility", "visibility", "Companion", "plugin-recordvideo_release"})
 public final class u
-  implements q
+  implements View.OnClickListener, t
 {
-  public static final u.a qcX;
-  private final CameraFrontSightView lyh;
-  private final MMSightCaptureTouchView lyi;
-  private long startTimeStamp;
-  private View view;
+  public static final a vkT;
+  public boolean enable;
+  private ImageView qkg;
+  public int scene;
+  private d vjo;
   
   static
   {
-    AppMethodBeat.i(150721);
-    qcX = new u.a((byte)0);
-    AppMethodBeat.o(150721);
+    AppMethodBeat.i(75612);
+    vkT = new a((byte)0);
+    AppMethodBeat.o(75612);
   }
   
-  public u(View paramView, d paramd)
+  public u(ImageView paramImageView, d paramd)
   {
-    AppMethodBeat.i(150720);
-    this.view = paramView;
-    paramView = this.view.findViewById(2131823535);
-    j.p(paramView, "view.findViewById(R.id.capture_focus_frame)");
-    this.lyh = ((CameraFrontSightView)paramView);
-    paramView = this.view.findViewById(2131823536);
-    j.p(paramView, "view.findViewById(R.id.capture_touch_view)");
-    this.lyi = ((MMSightCaptureTouchView)paramView);
-    this.startTimeStamp = bo.yB();
-    int i = a.fromDPToPix(this.view.getContext(), 120);
-    this.lyh.eI(i, i);
-    this.lyi.setTouchCallback((MMSightCaptureTouchView.a)new u.1(this, paramd));
-    AppMethodBeat.o(150720);
+    AppMethodBeat.i(75611);
+    this.qkg = paramImageView;
+    this.vjo = paramd;
+    this.qkg.setOnClickListener((View.OnClickListener)this);
+    this.qkg.setImageDrawable(am.i(this.qkg.getContext(), 2131690348, -1));
+    this.enable = true;
+    AppMethodBeat.o(75611);
   }
   
-  public final boolean cgq()
+  public final void apt() {}
+  
+  public final boolean dia()
   {
     return false;
   }
@@ -55,6 +66,113 @@ public final class u
     return null;
   }
   
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    ArrayList localArrayList2 = null;
+    AppMethodBeat.i(75610);
+    ad.i("MicroMsg.RecordAlbumPlugin", "onActivityResult requestCode:" + paramInt1 + " resultCode:" + paramInt2 + " data:" + paramIntent);
+    if ((paramInt1 == 1000) && (paramInt2 == -1))
+    {
+      Bundle localBundle = new Bundle();
+      if (paramIntent != null) {}
+      for (ArrayList localArrayList1 = paramIntent.getStringArrayListExtra("key_select_video_list");; localArrayList1 = null)
+      {
+        if (paramIntent != null) {
+          localArrayList2 = paramIntent.getStringArrayListExtra("key_select_image_list");
+        }
+        paramIntent = com.tencent.mm.plugin.recordvideo.activity.a.b.vcN;
+        localBundle.putInt("PARAM_ROUTER_INT", com.tencent.mm.plugin.recordvideo.activity.a.b.a.c(-1, (List)localArrayList2, (List)localArrayList1));
+        localBundle.putStringArrayList("PARAM_VIDEO_LIST", localArrayList1);
+        localBundle.putStringArrayList("PARAM_PHOTO_LIST", localArrayList2);
+        this.vjo.a(d.c.vnB, localBundle);
+        AppMethodBeat.o(75610);
+        return;
+      }
+    }
+    AppMethodBeat.o(75610);
+  }
+  
+  public final void onClick(View paramView)
+  {
+    boolean bool1 = false;
+    AppMethodBeat.i(75608);
+    ad.i("MicroMsg.RecordAlbumPlugin", "click RecordAlbumPlugin");
+    paramView = new Intent();
+    Object localObject;
+    switch (this.scene)
+    {
+    default: 
+      paramView.putExtra("album_business_tag", "album_business_media");
+      localObject = this.qkg.getContext();
+      if (localObject == null)
+      {
+        paramView = new v("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(75608);
+        throw paramView;
+      }
+      break;
+    case 3: 
+      paramView.putExtra("key_edit_video_max_time_length", ((a.a)a.vhg.ajp()).vhq);
+      paramView.putExtra("key_edit_text_color", "#0E9CE6");
+      boolean bool2 = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(com.tencent.mm.plugin.expt.a.b.a.pqP, false);
+      localObject = g.afB();
+      k.g(localObject, "storage()");
+      if ((((e)localObject).afk().getInt(ae.a.FsS, 0) == 1) || (bool2)) {}
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0) {
+          bool1 = true;
+        }
+        paramView.putExtra("key_can_select_video_and_pic", bool1);
+        if (!((a.a)a.vhg.ajp()).vhm) {
+          break label295;
+        }
+        localObject = this.qkg.getContext();
+        if (localObject != null) {
+          break;
+        }
+        paramView = new v("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(75608);
+        throw paramView;
+      }
+      q.a((Activity)localObject, 1000, 9, 22, 3, paramView);
+      paramView = com.tencent.mm.plugin.recordvideo.d.b.vpp;
+      com.tencent.mm.plugin.recordvideo.d.b.diy().fo(0L);
+    }
+    for (;;)
+    {
+      paramView = com.tencent.mm.plugin.recordvideo.d.b.vpp;
+      com.tencent.mm.plugin.recordvideo.d.b.Kp(4);
+      paramView = com.tencent.mm.plugin.recordvideo.d.b.vpp;
+      com.tencent.mm.plugin.recordvideo.d.b.diz().Ri();
+      AppMethodBeat.o(75608);
+      return;
+      label295:
+      localObject = this.qkg.getContext();
+      if (localObject == null)
+      {
+        paramView = new v("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(75608);
+        throw paramView;
+      }
+      q.a((Activity)localObject, 1000, 1, 22, 2, paramView);
+      break;
+      paramView.putExtra("album_business_tag", "album_business_media");
+      localObject = this.qkg.getContext();
+      if (localObject == null)
+      {
+        paramView = new v("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(75608);
+        throw paramView;
+      }
+      q.a((Activity)localObject, 1000, 9, 25, 3, paramView);
+      continue;
+      q.a((Activity)localObject, 1000, 1, 23, 3, paramView);
+    }
+  }
+  
+  public final void onDetach() {}
+  
   public final void onPause() {}
   
   public final void onResume() {}
@@ -63,11 +181,21 @@ public final class u
   
   public final void reset() {}
   
-  public final void setVisibility(int paramInt) {}
+  public final void setVisibility(int paramInt)
+  {
+    AppMethodBeat.i(75609);
+    if (this.enable) {
+      this.qkg.setVisibility(paramInt);
+    }
+    AppMethodBeat.o(75609);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordAlbumPlugin$Companion;", "", "()V", "MEDIA_REQUEST_CODE", "", "TAG", "", "plugin-recordvideo_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.u
  * JD-Core Version:    0.7.0.1
  */

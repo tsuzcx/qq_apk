@@ -6,86 +6,37 @@ import com.tencent.mm.plugin.report.a;
 public final class av
   extends a
 {
-  private long cVK = 0L;
-  private long cVL = 0L;
-  private long cVM = 0L;
-  private long cVN = 0L;
+  public long dMW = 0L;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(108852);
+    AppMethodBeat.i(149907);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cVK);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVL);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVM);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVN);
+    ((StringBuffer)localObject).append(this.dMW);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(108852);
+    ams((String)localObject);
+    AppMethodBeat.o(149907);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(108853);
+    AppMethodBeat.i(149908);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ExposeViewId:").append(this.cVK);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickClearCount:").append(this.cVL);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickRenewCount:").append(this.cVM);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IfDeleteVideo:").append(this.cVN);
+    ((StringBuffer)localObject).append("ClickScene:").append(this.dMW);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(108853);
+    AppMethodBeat.o(149908);
     return localObject;
-  }
-  
-  public final long Fx()
-  {
-    return this.cVL;
-  }
-  
-  public final long Fy()
-  {
-    return this.cVM;
-  }
-  
-  public final av ck(long paramLong)
-  {
-    this.cVK = paramLong;
-    return this;
-  }
-  
-  public final av cl(long paramLong)
-  {
-    this.cVL = paramLong;
-    return this;
-  }
-  
-  public final av cm(long paramLong)
-  {
-    this.cVM = paramLong;
-    return this;
-  }
-  
-  public final av cn(long paramLong)
-  {
-    this.cVN = paramLong;
-    return this;
   }
   
   public final int getId()
   {
-    return 16913;
+    return 16722;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.av
  * JD-Core Version:    0.7.0.1
  */

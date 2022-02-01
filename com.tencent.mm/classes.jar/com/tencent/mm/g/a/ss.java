@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ss
   extends b
 {
-  public ss.a cJn;
-  public ss.b cJo;
+  public a dyh;
+  public b dyi;
   
   public ss()
   {
@@ -16,17 +16,29 @@ public final class ss
   
   private ss(byte paramByte)
   {
-    AppMethodBeat.i(61711);
-    this.cJn = new ss.a();
-    this.cJo = new ss.b();
-    this.ymq = false;
+    AppMethodBeat.i(153185);
+    this.dyh = new a();
+    this.dyi = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(61711);
+    AppMethodBeat.o(153185);
+  }
+  
+  public static final class a
+  {
+    public boolean dyj;
+  }
+  
+  public static final class b
+  {
+    public boolean dyk;
+    public boolean dyl;
+    public boolean dym;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.ss
  * JD-Core Version:    0.7.0.1
  */

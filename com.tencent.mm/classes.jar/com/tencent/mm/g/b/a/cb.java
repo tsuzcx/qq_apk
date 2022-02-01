@@ -6,187 +6,91 @@ import com.tencent.mm.plugin.report.a;
 public final class cb
   extends a
 {
-  public long cRG = 0L;
-  private String cSd = "";
-  private String cZA = "";
-  public long cZB = 0L;
-  public a cZY;
-  public b cZZ;
-  public long daa = 0L;
-  public long dab = 0L;
-  public long dac = 0L;
-  public long dad = 0L;
-  public long dae = 0L;
+  private String dHu;
+  public int dJu;
+  private String dKt;
+  public long dQC;
+  private String dQD;
+  public int dQE;
+  public long dQF;
+  public int dQG;
   
-  public final String Ff()
+  public final String PV()
   {
-    int j = -1;
-    AppMethodBeat.i(128654);
+    AppMethodBeat.i(196674);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cSd);
+    ((StringBuffer)localObject).append(this.dJu);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cZA);
+    ((StringBuffer)localObject).append(this.dQC);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cZB);
+    ((StringBuffer)localObject).append(this.dKt);
     ((StringBuffer)localObject).append(",");
-    if (this.cZY != null) {}
-    for (int i = this.cZY.value;; i = -1)
-    {
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      i = j;
-      if (this.cZZ != null) {
-        i = this.cZZ.value;
-      }
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.daa);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dab);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dac);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dad);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.cRG);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dae);
-      localObject = ((StringBuffer)localObject).toString();
-      Yp((String)localObject);
-      AppMethodBeat.o(128654);
-      return localObject;
-    }
+    ((StringBuffer)localObject).append(this.dQD);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dHu);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dQE);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dQF);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dQG);
+    localObject = ((StringBuffer)localObject).toString();
+    ams((String)localObject);
+    AppMethodBeat.o(196674);
+    return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(128655);
+    AppMethodBeat.i(196675);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SessionId:").append(this.cSd);
+    ((StringBuffer)localObject).append("Scene:").append(this.dJu);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppId:").append(this.cZA);
+    ((StringBuffer)localObject).append("PatTime:").append(this.dQC);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppVersion:").append(this.cZB);
+    ((StringBuffer)localObject).append("Username:").append(this.dKt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppState:").append(this.cZY);
+    ((StringBuffer)localObject).append("PattedUserName:").append(this.dQD);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppType:").append(this.cZZ);
+    ((StringBuffer)localObject).append("ChatroomName:").append(this.dHu);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isPreload:").append(this.daa);
+    ((StringBuffer)localObject).append("ErrorCode:").append(this.dQE);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PreloadKey:").append(this.dab);
+    ((StringBuffer)localObject).append("TimeInterval:").append(this.dQF);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PreloadValue:").append(this.dac);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isDownloadCode:").append(this.dad);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Scene:").append(this.cRG);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("hasSplashScreen:").append(this.dae);
+    ((StringBuffer)localObject).append("IsHitLocalFrequency:").append(this.dQG);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(128655);
+    AppMethodBeat.o(196675);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16602;
+    return 19878;
   }
   
-  public final cb ha(String paramString)
+  public final cb iL(String paramString)
   {
-    AppMethodBeat.i(128652);
-    this.cSd = t("SessionId", paramString, true);
-    AppMethodBeat.o(128652);
+    AppMethodBeat.i(196671);
+    this.dKt = t("Username", paramString, true);
+    AppMethodBeat.o(196671);
     return this;
   }
   
-  public final cb hb(String paramString)
+  public final cb iM(String paramString)
   {
-    AppMethodBeat.i(128653);
-    this.cZA = t("AppId", paramString, true);
-    AppMethodBeat.o(128653);
+    AppMethodBeat.i(196672);
+    this.dQD = t("PattedUserName", paramString, true);
+    AppMethodBeat.o(196672);
     return this;
   }
   
-  public static enum a
+  public final cb iN(String paramString)
   {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(128648);
-      daf = new a("release", 0, 1);
-      dag = new a("debug", 1, 2);
-      dah = new a("test", 2, 3);
-      dai = new a[] { daf, dag, dah };
-      AppMethodBeat.o(128648);
-    }
-    
-    private a(int paramInt)
-    {
-      this.value = paramInt;
-    }
-    
-    public static a gN(int paramInt)
-    {
-      switch (paramInt)
-      {
-      default: 
-        return null;
-      case 1: 
-        return daf;
-      case 2: 
-        return dag;
-      }
-      return dah;
-    }
-  }
-  
-  public static enum b
-  {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(128651);
-      daj = new b("undefined", 0, 0);
-      dak = new b("normal", 1, 1000);
-      dal = new b("plugin", 2, 1001);
-      dam = new b("wxstore", 3, 1002);
-      dan = new b("merchant", 4, 1003);
-      dao = new b("wagame", 5, 1004);
-      dap = new b("gift", 6, 1005);
-      daq = new b[] { daj, dak, dal, dam, dan, dao, dap };
-      AppMethodBeat.o(128651);
-    }
-    
-    private b(int paramInt)
-    {
-      this.value = paramInt;
-    }
-    
-    public static b gO(int paramInt)
-    {
-      switch (paramInt)
-      {
-      default: 
-        return null;
-      case 0: 
-        return daj;
-      case 1000: 
-        return dak;
-      case 1001: 
-        return dal;
-      case 1002: 
-        return dam;
-      case 1003: 
-        return dan;
-      case 1004: 
-        return dao;
-      }
-      return dap;
-    }
+    AppMethodBeat.i(196673);
+    this.dHu = t("ChatroomName", paramString, true);
+    AppMethodBeat.o(196673);
+    return this;
   }
 }
 

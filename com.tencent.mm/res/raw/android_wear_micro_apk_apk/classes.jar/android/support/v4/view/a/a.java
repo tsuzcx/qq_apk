@@ -5,36 +5,17 @@ import android.view.accessibility.AccessibilityEvent;
 
 public final class a
 {
-  private static final d mq = new d();
-  
-  static
-  {
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      mq = new c();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      mq = new b();
-      return;
-    }
-  }
-  
   @Deprecated
-  public static aa a(AccessibilityEvent paramAccessibilityEvent)
+  public static i a(AccessibilityEvent paramAccessibilityEvent)
   {
-    return new aa(paramAccessibilityEvent);
+    return new i(paramAccessibilityEvent);
   }
   
   public static void a(AccessibilityEvent paramAccessibilityEvent, int paramInt)
   {
-    mq.a(paramAccessibilityEvent, paramInt);
-  }
-  
-  public static int b(AccessibilityEvent paramAccessibilityEvent)
-  {
-    return mq.b(paramAccessibilityEvent);
+    if (Build.VERSION.SDK_INT >= 19) {
+      paramAccessibilityEvent.setContentChangeTypes(paramInt);
+    }
   }
 }
 

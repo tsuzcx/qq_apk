@@ -1,10 +1,9 @@
 package com.tencent.matrix.a.b;
 
 import android.os.Environment;
-import com.tencent.matrix.e.b;
-import com.tencent.matrix.e.c.a;
-import com.tencent.matrix.g.d;
-import com.tencent.mrs.b.a.a;
+import android.os.SystemClock;
+import com.tencent.c.a.a.a;
+import com.tencent.matrix.report.d.a;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,96 +15,75 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class f
-  extends com.tencent.matrix.e.c
+  extends com.tencent.matrix.report.d
 {
-  final Map<String, d> bMY = new HashMap();
-  final Map<String, c> bMZ = new HashMap();
-  final int bNa;
-  private final int bNb;
-  private final int bNc;
-  final a bNd;
-  final Runnable bNe;
-  final e bNf;
+  final a cuA;
+  final Runnable cuB;
+  final e cuC;
+  final Map<String, d> cuv = new HashMap();
+  final Map<String, c> cuw = new HashMap();
+  final int cux;
+  private final int cuy;
+  private final int cuz;
   
-  public f(c.a parama, com.tencent.matrix.a.a.a parama1, a parama2)
+  public f(d.a parama, com.tencent.matrix.a.a.a parama1, a parama2)
   {
     super(parama);
-    this.bNa = parama1.bMc.get(a.a.BaJ.name(), 120000);
-    this.bNb = parama1.bMc.get(a.a.BaL.name(), 600000);
-    this.bNc = parama1.bMc.get(a.a.BaK.name(), 20);
-    this.bNd = parama2;
-    this.bNe = new Runnable()
+    this.cux = parama1.cty.get(a.a.Ihu.name(), 120000);
+    this.cuy = parama1.cty.get(a.a.Ihw.name(), 600000);
+    this.cuz = parama1.cty.get(a.a.Ihv.name(), 20);
+    this.cuA = parama2;
+    this.cuB = new Runnable()
     {
       public final void run()
       {
-        Iterator localIterator = f.this.bMZ.entrySet().iterator();
+        Iterator localIterator = f.this.cuw.entrySet().iterator();
         while (localIterator.hasNext()) {
-          ((f.c)((Map.Entry)localIterator.next()).getValue()).yQ();
+          ((f.c)((Map.Entry)localIterator.next()).getValue()).GW();
         }
         f.a(f.this);
       }
     };
-    if (parama1.yG())
+    if (parama1.GO())
     {
-      this.bNf = new e();
+      this.cuC = new e();
       return;
     }
-    this.bNf = null;
+    this.cuC = null;
   }
   
-  private static JSONObject a(c paramc, long paramLong)
+  private void GU()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("wakeLockTag", paramc.tag);
-      localJSONObject.put("subTag", "wakeLock");
-      localJSONObject.put("timeFrame", paramLong);
-      localJSONObject.put("acquireCnt", paramc.bNl);
-      localJSONObject.put("acquireCntWhenScreenOff", paramc.bNm);
-      localJSONObject.put("statisticalHoldTime", paramc.bNj);
-      localJSONObject.put("stackHistory", paramc.bNn);
-      return localJSONObject;
-    }
-    catch (JSONException paramc)
-    {
-      com.tencent.matrix.g.c.e("Matrix.WakeLockDetector", "json content error: %s", new Object[] { paramc });
-    }
-    return localJSONObject;
-  }
-  
-  private void yO()
-  {
-    Iterator localIterator = this.bMY.entrySet().iterator();
-    long l = System.currentTimeMillis();
+    Iterator localIterator = this.cuv.entrySet().iterator();
+    long l = SystemClock.uptimeMillis();
     for (;;)
     {
       if (localIterator.hasNext())
       {
         d locald = (d)((Map.Entry)localIterator.next()).getValue();
-        if (l - locald.bNs >= this.bNa)
+        if (l - locald.cuQ >= this.cux)
         {
           String str = String.format("%s:%d", new Object[] { locald.tag, Integer.valueOf(1) });
-          if (cA(str))
+          if (cX(str))
           {
             com.tencent.matrix.g.c.v("Matrix.WakeLockDetector", "detectWakeLockOnceHoldTime issue already published: %s", new Object[] { str });
           }
           else
           {
-            b localb = new b(1);
-            localb.key = str;
+            com.tencent.matrix.report.c localc = new com.tencent.matrix.report.c(1);
+            localc.key = str;
             JSONObject localJSONObject = new JSONObject();
             try
             {
               localJSONObject.put("subTag", "wakeLock");
               localJSONObject.put("wakeLockTag", locald.tag);
               localJSONObject.put("flags", locald.flags);
-              localJSONObject.put("holdTime", l - locald.bNs);
-              localJSONObject.put("stackHistory", locald.bNn);
-              com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "detected lock once too long, token:%s, tag:%s", new Object[] { locald.bNr, locald.tag });
-              localb.bOx = localJSONObject;
-              b(localb);
-              cz(str);
+              localJSONObject.put("holdTime", l - locald.cuQ);
+              localJSONObject.put("stackHistory", locald.cuK);
+              com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "detected lock once too long, token:%s, tag:%s", new Object[] { locald.cuO, locald.tag });
+              localc.cwV = localJSONObject;
+              b(localc);
+              cW(str);
             }
             catch (JSONException localJSONException)
             {
@@ -120,85 +98,110 @@ public final class f
     }
   }
   
-  private void yP()
+  private void GV()
   {
-    Iterator localIterator = this.bMZ.entrySet().iterator();
+    Iterator localIterator = this.cuw.entrySet().iterator();
     long l1 = System.currentTimeMillis();
     while (localIterator.hasNext())
     {
       Object localObject1 = (Map.Entry)localIterator.next();
       String str = (String)((Map.Entry)localObject1).getKey();
       localObject1 = (c)((Map.Entry)localObject1).getValue();
-      long l2 = l1 - ((c)localObject1).bNi;
-      int i = (int)(l2 / 3600000L) + 1;
-      int j = ((c)localObject1).bNm / i;
-      long l3 = ((c)localObject1).bNk / i;
-      if (j > this.bNc / 2)
+      long l2 = l1 - ((c)localObject1).cuF;
+      int j = (int)(l2 / 3600000L) + 1;
+      int i = j;
+      if (j <= 0) {
+        i = 1;
+      }
+      j = ((c)localObject1).cuJ / i;
+      long l3 = ((c)localObject1).cuH / i;
+      if (j > this.cuz / 2)
       {
         localObject2 = String.format("%s:%d", new Object[] { str, Integer.valueOf(2) });
-        if (!cA((String)localObject2)) {
-          break label225;
+        if (!cX((String)localObject2)) {
+          break label233;
         }
         com.tencent.matrix.g.c.v("Matrix.WakeLockDetector", "detectWakeLockAggregation issue already published: %s", new Object[] { localObject2 });
       }
       for (;;)
       {
-        if (l3 < this.bNb) {
-          break label267;
+        if (l3 < this.cuy) {
+          break label275;
         }
         str = String.format("%s:%d", new Object[] { str, Integer.valueOf(3) });
-        if (!cA(str)) {
-          break label269;
+        if (!cX(str)) {
+          break label277;
         }
         com.tencent.matrix.g.c.v("Matrix.WakeLockDetector", "detectWakeLockAggregation issue already published: %s", new Object[] { str });
         break;
-        label225:
-        b localb = new b(2);
-        localb.key = ((String)localObject2);
-        localb.bOx = a((c)localObject1, l2);
-        b(localb);
-        cz((String)localObject2);
+        label233:
+        com.tencent.matrix.report.c localc = new com.tencent.matrix.report.c(2);
+        localc.key = ((String)localObject2);
+        localc.cwV = a((c)localObject1, l2);
+        b(localc);
+        cW((String)localObject2);
       }
-      label267:
+      label275:
       continue;
-      label269:
-      Object localObject2 = new b(3);
-      ((b)localObject2).key = str;
-      ((b)localObject2).bOx = a((c)localObject1, l2);
-      b((b)localObject2);
-      cz(str);
+      label277:
+      Object localObject2 = new com.tencent.matrix.report.c(3);
+      ((com.tencent.matrix.report.c)localObject2).key = str;
+      ((com.tencent.matrix.report.c)localObject2).cwV = a((c)localObject1, l2);
+      b((com.tencent.matrix.report.c)localObject2);
+      cW(str);
     }
   }
   
-  final void yN()
+  private static JSONObject a(c paramc, long paramLong)
   {
-    yO();
-    yP();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("wakeLockTag", paramc.tag);
+      localJSONObject.put("subTag", "wakeLock");
+      localJSONObject.put("timeFrame", paramLong);
+      localJSONObject.put("acquireCnt", paramc.cuI);
+      localJSONObject.put("acquireCntWhenScreenOff", paramc.cuJ);
+      localJSONObject.put("statisticalHoldTime", paramc.cuG);
+      localJSONObject.put("stackHistory", paramc.cuK);
+      return localJSONObject;
+    }
+    catch (JSONException paramc)
+    {
+      com.tencent.matrix.g.c.e("Matrix.WakeLockDetector", "json content error: %s", new Object[] { paramc });
+    }
+    return localJSONObject;
+  }
+  
+  final void GT()
+  {
+    GU();
+    GV();
   }
   
   public static abstract interface a
   {
-    public abstract void e(Runnable paramRunnable, long paramLong);
+    public abstract void d(Runnable paramRunnable, long paramLong);
     
     public abstract boolean isScreenOn();
   }
   
   static final class b
   {
-    final Vector<String> bNh = new Vector();
+    final Vector<String> cuE = new Vector();
     
-    final void cy(String paramString)
+    final void cU(String paramString)
     {
-      this.bNh.add(paramString);
+      this.cuE.add(paramString);
     }
     
     public final String toString()
     {
       StringBuilder localStringBuilder = new StringBuilder();
       int i = 0;
-      while (i < this.bNh.size())
+      while (i < this.cuE.size())
       {
-        localStringBuilder.append((String)this.bNh.get(i)).append("\t\t");
+        localStringBuilder.append((String)this.cuE.get(i)).append("\t\t");
         i += 1;
       }
       return localStringBuilder.toString();
@@ -207,78 +210,80 @@ public final class f
   
   static final class c
   {
-    final long bNi;
-    long bNj;
-    long bNk;
-    int bNl;
-    int bNm;
-    f.b bNn;
-    final Map<String, Boolean> bNo;
-    long bNp;
-    boolean bNq;
+    final long cuF;
+    long cuG;
+    long cuH;
+    int cuI;
+    int cuJ;
+    f.b cuK;
+    final Map<String, Boolean> cuL;
+    long cuM;
+    boolean cuN;
     final String tag;
     
     c(String paramString)
     {
       this.tag = paramString;
-      this.bNj = 0L;
-      this.bNk = 0L;
-      this.bNl = 0;
-      this.bNm = 0;
-      this.bNp = -1L;
-      this.bNn = new f.b();
-      this.bNi = System.currentTimeMillis();
-      this.bNo = new HashMap();
+      this.cuG = 0L;
+      this.cuH = 0L;
+      this.cuI = 0;
+      this.cuJ = 0;
+      this.cuM = -1L;
+      this.cuK = new f.b();
+      this.cuF = System.currentTimeMillis();
+      this.cuL = new HashMap();
     }
     
-    final void yQ()
+    final void GW()
     {
-      if (this.bNp < 0L) {
+      if (this.cuM < 0L) {
         return;
       }
-      long l = System.currentTimeMillis();
-      this.bNj += l - this.bNp;
-      if (!this.bNq) {
-        this.bNk += l - this.bNp;
+      long l = SystemClock.uptimeMillis();
+      this.cuG += l - this.cuM;
+      if (!this.cuN) {
+        this.cuH += l - this.cuM;
       }
-      this.bNp = l;
+      this.cuM = l;
     }
   }
   
   static final class d
   {
-    f.b bNn;
-    final String bNr;
-    final long bNs;
+    f.b cuK;
+    final String cuO;
+    final long cuP;
+    final long cuQ;
     final int flags;
     final String tag;
     
     d(String paramString1, String paramString2, int paramInt, long paramLong)
     {
-      this.bNr = paramString1;
+      this.cuO = paramString1;
       this.tag = paramString2;
       this.flags = paramInt;
-      this.bNs = paramLong;
-      this.bNn = new f.b();
+      this.cuP = paramLong;
+      this.cuQ = SystemClock.uptimeMillis();
+      this.cuK = new f.b();
     }
   }
   
   static final class e
   {
-    private final String bMo;
-    int bNt;
-    final StringBuilder bNu;
+    private final String ctL;
+    int cuR;
+    final StringBuilder cuS;
     
     e()
     {
-      String str = d.formatTime("yyyy-MM-dd", System.currentTimeMillis());
-      this.bMo = String.format("%s/com.tencent.matrix/wakelock-detector-record/%s/wakelocks-%s", new Object[] { Environment.getExternalStorageDirectory().getAbsolutePath(), com.tencent.matrix.a.c.a.getPackageName(), str });
-      this.bNu = new StringBuilder();
-      com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "WakeLockInfoRecorder path:%s", new Object[] { this.bMo });
+      String str = com.tencent.matrix.g.d.formatTime("yyyy-MM-dd", System.currentTimeMillis());
+      this.ctL = String.format("%s/com.tencent.matrix/wakelock-detector-record/%s/wakelocks-%s", new Object[] { Environment.getExternalStorageDirectory().getAbsolutePath(), com.tencent.matrix.a.d.a.getPackageName(), str });
+      this.cuS = new StringBuilder();
+      com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "WakeLockInfoRecorder path:%s", new Object[] { this.ctL });
     }
     
     /* Error */
-    private void yS()
+    private void GY()
     {
       // Byte code:
       //   0: aconst_null
@@ -292,7 +297,7 @@ public final class f
       //   9: new 41	java/io/File
       //   12: dup
       //   13: aload_0
-      //   14: getfield 58	com/tencent/matrix/a/b/f$e:bMo	Ljava/lang/String;
+      //   14: getfield 58	com/tencent/matrix/a/b/f$e:ctL	Ljava/lang/String;
       //   17: invokespecial 82	java/io/File:<init>	(Ljava/lang/String;)V
       //   20: astore 5
       //   22: aload_2
@@ -330,7 +335,7 @@ public final class f
       //   85: invokespecial 111	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
       //   88: astore_2
       //   89: aload_0
-      //   90: getfield 63	com/tencent/matrix/a/b/f$e:bNu	Ljava/lang/StringBuilder;
+      //   90: getfield 63	com/tencent/matrix/a/b/f$e:cuS	Ljava/lang/StringBuilder;
       //   93: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   96: astore_1
       //   97: aload_2
@@ -461,20 +466,20 @@ public final class f
       //   89	111	216	java/io/FileNotFoundException
     }
     
-    final void yR()
+    final void GX()
     {
-      if (this.bNt >= 10)
+      if (this.cuR >= 10)
       {
-        yS();
-        this.bNt = 0;
-        this.bNu.delete(0, this.bNu.length());
+        GY();
+        this.cuR = 0;
+        this.cuS.delete(0, this.cuS.length());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.a.b.f
  * JD-Core Version:    0.7.0.1
  */

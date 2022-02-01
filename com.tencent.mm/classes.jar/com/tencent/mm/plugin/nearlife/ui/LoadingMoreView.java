@@ -15,29 +15,29 @@ public class LoadingMoreView
   extends LinearLayout
 {
   private Context context;
-  private ImageView cxy;
-  protected LinearLayout krq;
+  private ImageView dnd;
+  protected LinearLayout nwJ;
   
   public LoadingMoreView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(22967);
+    AppMethodBeat.i(26591);
     this.context = paramContext;
-    paramContext = LayoutInflater.from(this.context).inflate(2130969981, this, true);
-    this.cxy = ((ImageView)findViewById(2131825416));
-    this.krq = ((LinearLayout)paramContext.findViewById(2131822311));
-    this.krq.setVisibility(0);
+    paramContext = LayoutInflater.from(this.context).inflate(2131494582, this, true);
+    this.dnd = ((ImageView)findViewById(2131301409));
+    this.nwJ = ((LinearLayout)paramContext.findViewById(2131301504));
+    this.nwJ.setVisibility(0);
     paramContext = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
     paramContext.setDuration(1000L);
     paramContext.setRepeatCount(-1);
     paramContext.setInterpolator(new LinearInterpolator());
-    this.cxy.startAnimation(paramContext);
-    AppMethodBeat.o(22967);
+    this.dnd.startAnimation(paramContext);
+    AppMethodBeat.o(26591);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.LoadingMoreView
  * JD-Core Version:    0.7.0.1
  */

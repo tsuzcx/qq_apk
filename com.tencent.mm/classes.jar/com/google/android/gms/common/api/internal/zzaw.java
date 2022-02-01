@@ -17,9 +17,9 @@ final class zzaw
   
   public final boolean isConnected()
   {
-    AppMethodBeat.i(60809);
+    AppMethodBeat.i(11301);
     boolean bool = this.zzit.isConnected();
-    AppMethodBeat.o(60809);
+    AppMethodBeat.o(11301);
     return bool;
   }
 }

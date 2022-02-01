@@ -8,20 +8,20 @@ class LinearLayoutManager$SavedState
   implements Parcelable
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator() {};
-  int sK;
-  int sL;
-  boolean sM;
+  int uA;
+  int uB;
+  boolean uC;
   
   public LinearLayoutManager$SavedState() {}
   
   LinearLayoutManager$SavedState(Parcel paramParcel)
   {
-    this.sK = paramParcel.readInt();
-    this.sL = paramParcel.readInt();
+    this.uA = paramParcel.readInt();
+    this.uB = paramParcel.readInt();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.sM = bool;
+      this.uC = bool;
       return;
       bool = false;
     }
@@ -29,14 +29,9 @@ class LinearLayoutManager$SavedState
   
   public LinearLayoutManager$SavedState(SavedState paramSavedState)
   {
-    this.sK = paramSavedState.sK;
-    this.sL = paramSavedState.sL;
-    this.sM = paramSavedState.sM;
-  }
-  
-  final boolean cX()
-  {
-    return this.sK >= 0;
+    this.uA = paramSavedState.uA;
+    this.uB = paramSavedState.uB;
+    this.uC = paramSavedState.uC;
   }
   
   public int describeContents()
@@ -44,11 +39,16 @@ class LinearLayoutManager$SavedState
     return 0;
   }
   
+  final boolean dg()
+  {
+    return this.uA >= 0;
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.sK);
-    paramParcel.writeInt(this.sL);
-    if (this.sM) {}
+    paramParcel.writeInt(this.uA);
+    paramParcel.writeInt(this.uB);
+    if (this.uC) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);

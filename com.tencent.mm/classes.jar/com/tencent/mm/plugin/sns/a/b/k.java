@@ -1,251 +1,239 @@
 package com.tencent.mm.plugin.sns.a.b;
 
+import android.database.Cursor;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsns.d;
-import com.tencent.mm.modelstat.p;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.sns.b.c;
-import com.tencent.mm.plugin.sns.storage.a;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.cih;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.al.n;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.storage.s;
+import com.tencent.mm.protocal.protobuf.bkf;
+import com.tencent.mm.protocal.protobuf.cuz;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ExecutorService;
 
 public final class k
+  implements com.tencent.mm.al.g
 {
-  public static void a(k.a parama, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong, int paramInt3, int paramInt4)
+  public static int wyB = 20480;
+  public static int wyC = 30720;
+  public static int wyD = 51200;
+  public static int wyE = 60;
+  public static int wyF = 1800;
+  public static int wyG = 43200;
+  private Random random;
+  private int wyA;
+  private long wyH;
+  private cuz wyI;
+  private boolean wyJ;
+  private long wyK;
+  private int wyL;
+  
+  public k()
   {
-    AppMethodBeat.i(35782);
-    d locald = new d();
-    locald.k("20source_publishid", paramString1 + ",");
-    locald.k("21uxinfo", paramString2 + ",");
-    locald.k("22clienttime", bo.aoy() + ",");
-    locald.k("23video_statu", ",");
-    locald.k("24source_type", paramInt1 + ",");
-    locald.k("25scene", paramInt2 + ",");
-    locald.k("26action_type", k.a.a(parama) + ",");
-    locald.k("27scene_chatname", paramString4 + ",");
-    locald.k("28scene_username", paramString3 + ",");
-    locald.k("29curr_publishid", paramString5 + ",");
-    locald.k("30curr_msgid", paramLong + ",");
-    locald.k("31curr_favid", paramInt3 + ",");
-    locald.k("32elapsed_time", "0,");
-    locald.k("33load_time", "0,");
-    locald.k("34is_load_complete", "0,");
-    locald.k("35destination", "0,");
-    locald.k("36chatroom_membercount", paramInt4 + ",");
-    f.a(paramString5, locald);
-    ab.i("MicroMsg.SnsVideoStatistic", "report snsad_video_action: " + locald.Fg());
-    h.qsU.e(12990, new Object[] { locald });
-    AppMethodBeat.o(35782);
+    AppMethodBeat.i(95031);
+    this.wyA = 0;
+    this.wyH = 0L;
+    this.random = new Random(System.currentTimeMillis());
+    this.wyI = new cuz();
+    this.wyJ = false;
+    this.wyK = 0L;
+    this.wyL = 0;
+    AppMethodBeat.o(95031);
   }
   
-  public static void a(k.b paramb, k.a parama, n paramn, int paramInt)
+  private void drA()
   {
-    int i = 2;
-    AppMethodBeat.i(35781);
-    TimeLineObject localTimeLineObject = paramn.csh();
-    Object localObject = localTimeLineObject.xTS.wOa;
-    if ((localObject != null) && (!((List)localObject).isEmpty()) && (((localTimeLineObject.xTS.wNZ == 15) && (paramn.Ex(32))) || (localTimeLineObject.xTS.wNZ == 18)))
+    AppMethodBeat.i(95035);
+    af.dth().execute(new Runnable()
     {
-      ((List)localObject).get(0);
-      if ((paramn.Ex(32)) && (localTimeLineObject.xTS.wNZ == 15)) {
-        if (paramInt != 2) {
-          break label539;
-        }
-      }
-    }
-    label539:
-    for (paramn = paramn.cse();; paramn = paramn.csd())
-    {
-      if (paramn != null) {
-        localTimeLineObject.xTX.fiU = paramn.cFe;
-      }
-      localTimeLineObject.xTX.fiV = localTimeLineObject.Id;
-      paramn = new d();
-      paramn.k("20source_publishid", localTimeLineObject.xTX.fiV + ",");
-      paramn.k("21uxinfo", localTimeLineObject.xTX.fiU + ",");
-      paramn.k("22clienttime", bo.aoy() + ",");
-      paramn.k("23video_statu", ",");
-      localObject = new StringBuilder();
-      paramInt = i;
-      if (localTimeLineObject.xTS.wNZ == 15) {
-        paramInt = 1;
-      }
-      paramn.k("24source_type", paramInt + ",");
-      paramn.k("25scene", paramb.value + ",");
-      paramn.k("26action_type", k.a.a(parama) + ",");
-      paramn.k("27scene_chatname", ",");
-      paramn.k("28scene_username", localTimeLineObject.jJA + ",");
-      paramn.k("29curr_publishid", localTimeLineObject.Id + ",");
-      paramn.k("30curr_msgid", "0,");
-      paramn.k("31curr_favid", "0,");
-      paramn.k("32elapsed_time", "0,");
-      paramn.k("33load_time", "0,");
-      paramn.k("34is_load_complete", "0,");
-      paramn.k("35destination", "0,");
-      paramn.k("36chatroom_membercount", "0,");
-      p.a(localTimeLineObject.rHA, paramn);
-      ab.i("MicroMsg.SnsVideoStatistic", "report snsad_video_action: " + paramn.Fg());
-      ((c)g.E(c.class)).e(12990, new Object[] { paramn });
-      AppMethodBeat.o(35781);
-      return;
-    }
-  }
-  
-  public static void a(k.c paramc, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong, int paramInt3, int paramInt4, int paramInt5)
-  {
-    AppMethodBeat.i(35784);
-    d locald = new d();
-    locald.k("20source_publishid", paramString1 + ",");
-    locald.k("21uxinfo", paramString2 + ",");
-    locald.k("22clienttime", bo.aoy() + ",");
-    locald.k("23video_statu", "3,");
-    locald.k("24source_type", paramInt1 + ",");
-    locald.k("25scene", paramInt2 + ",");
-    locald.k("26action_type", paramc.value + ",");
-    locald.k("27scene_chatname", paramString4 + ",");
-    locald.k("28scene_username", paramString3 + ",");
-    locald.k("29curr_publishid", paramString5 + ",");
-    locald.k("30curr_msgid", paramLong + ",");
-    locald.k("31curr_favid", paramInt3 + ",");
-    locald.k("32chatroom_membercount", paramInt4 + ",");
-    locald.k("33chatroom_toMemberCount", paramInt5 + ",");
-    ab.i("MicroMsg.SnsVideoStatistic", "report snsad_video_spread: " + locald.Fg());
-    f.a(paramString5, locald);
-    h.qsU.e(12991, new Object[] { locald });
-    AppMethodBeat.o(35784);
-  }
-  
-  public static void a(k.d paramd, k.c paramc, k.e parame, int paramInt1, n paramn, int paramInt2)
-  {
-    int i = 2;
-    AppMethodBeat.i(35783);
-    TimeLineObject localTimeLineObject = paramn.csh();
-    Object localObject = localTimeLineObject.xTS.wOa;
-    if ((localObject != null) && (!((List)localObject).isEmpty()) && (((localTimeLineObject.xTS.wNZ == 15) && (paramn.Ex(32))) || (localTimeLineObject.xTS.wNZ == 18)))
-    {
-      ((List)localObject).get(0);
-      if ((paramn.Ex(32)) && (localTimeLineObject.xTS.wNZ == 15)) {
-        if (paramInt2 != 2) {
-          break label575;
-        }
-      }
-    }
-    label575:
-    for (localObject = paramn.cse();; localObject = paramn.csd())
-    {
-      if (localObject != null) {
-        localTimeLineObject.xTX.fiU = paramn.csd().cFe;
-      }
-      localTimeLineObject.xTX.fiV = localTimeLineObject.Id;
-      paramn = new d();
-      paramn.k("20source_publishid", localTimeLineObject.xTX.fiV + ",");
-      paramn.k("21uxinfo", localTimeLineObject.xTX.fiU + ",");
-      paramn.k("22clienttime", bo.aoy() + ",");
-      paramn.k("23video_statu", k.e.a(parame) + ",");
-      parame = new StringBuilder();
-      paramInt2 = i;
-      if (localTimeLineObject.xTS.wNZ == 15) {
-        paramInt2 = 1;
-      }
-      paramn.k("24source_type", paramInt2 + ",");
-      paramn.k("25scene", paramd.value + ",");
-      paramn.k("26action_type", paramc.value + ",");
-      paramn.k("27scene_chatname", ",");
-      paramn.k("28scene_username", localTimeLineObject.jJA + ",");
-      paramn.k("29curr_publishid", localTimeLineObject.Id + ",");
-      paramn.k("30curr_msgid", "0,");
-      paramn.k("31curr_favid", "0,");
-      paramn.k("32chatroom_membercount", "0,");
-      paramn.k("33chatroom_toMemberCount", paramInt1 + ",");
-      p.a(localTimeLineObject.rHA, paramn);
-      ab.i("MicroMsg.SnsVideoStatistic", "report snsad_video_spread: " + paramn.Fg());
-      h.qsU.e(12991, new Object[] { paramn });
-      AppMethodBeat.o(35783);
-      return;
-    }
-  }
-  
-  public static void a(n paramn, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    int i = 2;
-    AppMethodBeat.i(35780);
-    TimeLineObject localTimeLineObject = paramn.csh();
-    Object localObject = localTimeLineObject.xTS.wOa;
-    if ((localObject != null) && (!((List)localObject).isEmpty()) && (((localTimeLineObject.xTS.wNZ == 15) && (paramn.Ex(32))) || (localTimeLineObject.xTS.wNZ == 18)))
-    {
-      ((List)localObject).get(0);
-      if ((paramn.Ex(32)) && (localTimeLineObject.xTS.wNZ == 15))
+      public final void run()
       {
-        if (paramInt != 2) {
-          break label501;
-        }
-        paramn = paramn.cse();
-        localTimeLineObject.xTX.fiU = paramn.cFe;
-        localTimeLineObject.xTX.fiV = localTimeLineObject.Id;
+        AppMethodBeat.i(95029);
+        k.e(k.this);
+        AppMethodBeat.o(95029);
       }
-      paramn = new d();
-      paramn.k("20source_publishid", localTimeLineObject.xTX.fiV + ",");
-      paramn.k("21uxinfo", localTimeLineObject.xTX.fiU + ",");
-      paramn.k("22clienttime", bo.aoy() + ",");
-      localObject = new StringBuilder();
-      if (localTimeLineObject.xTS.wNZ != 15) {
-        break label509;
-      }
-      paramInt = 1;
-      label263:
-      paramn.k("23souce_type", paramInt + ",");
-      localObject = new StringBuilder();
-      if (!paramBoolean1) {
-        break label514;
-      }
-      paramInt = 6;
-      label299:
-      paramn.k("24scene", paramInt + ",");
-      paramn.k("25scene_chatname", ",");
-      paramn.k("26scene_username", localTimeLineObject.jJA + ",");
-      paramn.k("27curr_publishid", localTimeLineObject.Id + ",");
-      paramn.k("28curr_msgid", ",");
-      paramn.k("29curr_favid", "0,");
-      localObject = new StringBuilder();
-      if (!paramBoolean2) {
-        break label535;
-      }
-    }
-    label514:
-    label535:
-    for (paramInt = 1;; paramInt = 0)
+    });
+    AppMethodBeat.o(95035);
+  }
+  
+  private void drz()
+  {
+    AppMethodBeat.i(95034);
+    af.dth().execute(new Runnable()
     {
-      paramn.k("30isdownload", paramInt + ",");
-      paramn.k("31chatroom_membercount", "0,");
-      p.a(localTimeLineObject.rHA, paramn);
-      ab.i("MicroMsg.SnsVideoStatistic", "report snsad_video_exposure: " + paramn.Fg());
-      h.qsU.e(12989, new Object[] { paramn });
-      AppMethodBeat.o(35780);
-      return;
-      label501:
-      paramn = paramn.csd();
-      break;
-      label509:
-      paramInt = 2;
-      break label263;
-      paramInt = i;
-      if (localTimeLineObject.xTS.wNZ != 15) {
-        break label299;
+      public final void run()
+      {
+        AppMethodBeat.i(95028);
+        if ((System.currentTimeMillis() - k.b(k.this) >= 60000L) || (k.a(k.this).CwS.size() > 1000))
+        {
+          if ((k.a(k.this) != null) && (k.a(k.this).CwS.size() > 0)) {
+            k.d(k.this);
+          }
+          k.a(k.this, 0L);
+        }
+        AppMethodBeat.o(95028);
       }
-      paramInt = 1;
-      break label299;
+    });
+    AppMethodBeat.o(95034);
+  }
+  
+  public static String t(Object... paramVarArgs)
+  {
+    AppMethodBeat.i(95036);
+    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+      ad.w("MicroMsg.SnsLogMgr", "vals is null, use '' as value");
     }
+    StringBuilder localStringBuilder;
+    for (paramVarArgs = "";; paramVarArgs = localStringBuilder.toString())
+    {
+      AppMethodBeat.o(95036);
+      return paramVarArgs;
+      localStringBuilder = new StringBuilder();
+      int j = paramVarArgs.length - 1;
+      int i = 0;
+      while (i < j)
+      {
+        localStringBuilder.append(String.valueOf(paramVarArgs[i])).append(',');
+        i += 1;
+      }
+      localStringBuilder.append(String.valueOf(paramVarArgs[j]));
+    }
+  }
+  
+  public final void dry()
+  {
+    AppMethodBeat.i(95033);
+    if (!af.wGN)
+    {
+      AppMethodBeat.o(95033);
+      return;
+    }
+    com.tencent.mm.kernel.g.afC();
+    int k = ((Integer)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fin, Integer.valueOf(0))).intValue();
+    com.tencent.mm.kernel.g.afC();
+    int j = ((Integer)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fim, Integer.valueOf(-1))).intValue();
+    if (j <= wyG)
+    {
+      i = j;
+      if (j >= 0) {}
+    }
+    else
+    {
+      i = wyF;
+      j = wyE;
+      i = this.random.nextInt(i - j + 1) + wyE;
+    }
+    if (System.currentTimeMillis() / 1000L - k > i) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      drz();
+      ad.d("MicroMsg.SnsLogMgr", "pass report ");
+      AppMethodBeat.o(95033);
+      return;
+    }
+    Object localObject = af.dtn();
+    ad.i("MicroMsg.SnsKvReportStg", " getLast ".concat(String.valueOf("select rowid from SnsReportKv order by rowid desc  limit 1")));
+    localObject = ((s)localObject).gPa.a("select rowid from SnsReportKv order by rowid desc  limit 1", null, 2);
+    if (((Cursor)localObject).moveToFirst()) {}
+    for (i = ((Cursor)localObject).getInt(0);; i = 0)
+    {
+      ((Cursor)localObject).close();
+      this.wyA = i;
+      drA();
+      drz();
+      AppMethodBeat.o(95033);
+      return;
+    }
+  }
+  
+  public final void f(final int paramInt, final Object... paramVarArgs)
+  {
+    AppMethodBeat.i(95032);
+    af.dth().execute(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(95026);
+        bkf localbkf = new bkf();
+        localbkf.DIc = paramInt;
+        localbkf.DIj = ((int)(System.currentTimeMillis() / 1000L));
+        localbkf.mAK = 1;
+        String str = k.t(paramVarArgs);
+        localbkf.DId = new b(str.getBytes());
+        k.a(k.this).CwS.add(localbkf);
+        ad.i("MicroMsg.SnsLogMgr", "snsadlog " + paramInt + " " + str);
+        if (k.b(k.this) == 0L) {
+          k.a(k.this, System.currentTimeMillis());
+        }
+        AppMethodBeat.o(95026);
+      }
+    });
+    if (this.wyJ)
+    {
+      AppMethodBeat.o(95032);
+      return;
+    }
+    this.wyJ = true;
+    com.tencent.e.h.Iye.q(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(95027);
+        af.dth().execute(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(179066);
+            k.c(k.this);
+            k.this.dry();
+            AppMethodBeat.o(179066);
+          }
+        });
+        AppMethodBeat.o(95027);
+      }
+    }, 2000L);
+    AppMethodBeat.o(95032);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  {
+    AppMethodBeat.i(95037);
+    if ((paramn.getType() == 1802) && ((paramn instanceof g)))
+    {
+      paramString = (g)paramn;
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        com.tencent.mm.kernel.g.afC();
+        com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fin, Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
+        drA();
+        AppMethodBeat.o(95037);
+        return;
+      }
+      Object localObject = paramString.lEL;
+      paramString = af.dtn();
+      paramn = new cuz();
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        bkf localbkf = (bkf)((Iterator)localObject).next();
+        paramn.CwS.add(localbkf);
+      }
+      paramString.a(paramn);
+    }
+    AppMethodBeat.o(95037);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.a.b.k
  * JD-Core Version:    0.7.0.1
  */

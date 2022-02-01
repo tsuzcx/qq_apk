@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<ScrollView android:background="@color/a_r" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView android:id="@id/a05" android:layout_width="100.0dip" android:layout_height="100.0dip" android:scaleType="centerCrop" />
-        <ImageView android:id="@id/li" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/shortvideo_play_btn" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36.0dip">
+            <ImageView android:id="@id/cu9" android:layout_width="@dimen/i3" android:layout_height="@dimen/i3" android:src="@raw/room_manager_icon" />
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:layout_width="wrap_content" android:layout_marginTop="@dimen/hu" android:text="@string/eqg" android:layout_below="@id/cu9" android:layout_centerHorizontal="true" style="@style/s3" />
+        </LinearLayout>
+        <TextView android:textSize="12.0sp" android:textColor="@color/km" android:gravity="left" android:id="@id/dkj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/hu" android:layout_marginTop="@dimen/hd" android:text="@string/eqf" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/km" android:gravity="left" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/hu" android:layout_marginTop="@dimen/hu" android:text="@string/eqc" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/km" android:gravity="left" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/hu" android:layout_marginTop="@dimen/hu" android:text="@string/eqd" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/km" android:gravity="left" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/hu" android:layout_marginTop="@dimen/hu" android:text="@string/eqe" />
+        <View android:background="#ffd8d8d8" android:paddingLeft="@dimen/a" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/hd" android:layout_marginBottom="@dimen/hd" />
+        <GridView android:gravity="center" android:id="@id/dki" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:verticalSpacing="@dimen/h" android:numColumns="4" />
+    </LinearLayout>
+</ScrollView>

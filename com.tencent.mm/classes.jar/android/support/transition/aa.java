@@ -1,21 +1,23 @@
 package android.support.transition;
 
-import android.view.View;
+import android.os.Build.VERSION;
 import android.view.ViewGroup;
 
-public final class aa
+final class aa
 {
-  ViewGroup sq;
-  Runnable sr;
-  
-  static aa B(View paramView)
+  static void c(ViewGroup paramViewGroup, boolean paramBoolean)
   {
-    return (aa)paramView.getTag(2131820682);
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      ac.c(paramViewGroup, paramBoolean);
+      return;
+    }
+    ab.c(paramViewGroup, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.transition.aa
  * JD-Core Version:    0.7.0.1
  */

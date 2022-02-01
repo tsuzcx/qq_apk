@@ -11,8 +11,8 @@ public final class bz
   {
     int i = c.b(paramParcel);
     c.c(paramParcel, 1, paramzzb.versionCode);
-    c.a(paramParcel, 2, paramzzb.PW);
-    c.a(paramParcel, 3, paramzzb.PX, paramInt);
+    c.a(paramParcel, 2, paramzzb.RL);
+    c.a(paramParcel, 3, paramzzb.RM, paramInt);
     c.v(paramParcel, i);
   }
 }

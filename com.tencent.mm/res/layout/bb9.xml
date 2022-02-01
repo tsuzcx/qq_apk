@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.story.ui.view.CommentItemView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip" android:transformPivotX="24.0dip" android:transformPivotY="24.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/fvj" android:background="@drawable/acp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_alignParentStart="true">
+            <com.tencent.mm.plugin.story.ui.view.CommentAvatarImageView android:id="@id/fvx" android:padding="3.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginTop="1.0dip" android:layout_marginStart="1.0dip" android:layout_marginEnd="1.0dip" />
+            <LinearLayout android:orientation="vertical" android:id="@id/fw1" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="8.0dip" android:layout_marginEnd="16.0dip" android:layout_toEndOf="@id/fvx">
+                <TextView android:textStyle="bold" android:textColor="@color/a_u" android:ellipsize="end" android:id="@id/fw7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+                <TextView android:textStyle="bold" android:textColor="@color/a_u" android:id="@id/fw0" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/gx" android:layout_gravity="bottom" android:id="@id/fw3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_marginStart="12.0dip" android:layout_marginEnd="12.0dip" android:layout_alignParentEnd="true" />
+    </LinearLayout>
+    <View android:id="@id/fvy" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+</com.tencent.mm.plugin.story.ui.view.CommentItemView>

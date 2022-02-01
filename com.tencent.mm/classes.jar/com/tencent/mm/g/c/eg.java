@@ -8,19 +8,30 @@ public abstract class eg
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dMN = "originMD5".hashCode();
-  private static final int dMO = "resultFile".hashCode();
-  private static final int dMP = "fromLang".hashCode();
-  private static final int dMQ = "toLang".hashCode();
+  private static final int eSp = "sceneFlag".hashCode();
+  private static final int eSq = "msgTypeFlag".hashCode();
+  private static final int eSr = "msgState".hashCode();
+  private static final int ejR;
+  private static final int elJ = "appId".hashCode();
+  private static final int enM = "packageName".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dMJ = true;
-  private boolean dMK = true;
-  private boolean dML = true;
-  private boolean dMM = true;
-  public String field_fromLang;
-  public String field_originMD5;
-  public String field_resultFile;
-  public String field_toLang;
+  private boolean eSm = true;
+  private boolean eSn = true;
+  private boolean eSo = true;
+  private boolean ejO = true;
+  private boolean els = true;
+  private boolean enq = true;
+  public String field_appId;
+  public int field_msgState;
+  public int field_msgTypeFlag;
+  public String field_packageName;
+  public int field_sceneFlag;
+  public int field_status;
+  
+  static
+  {
+    ejR = "status".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -35,11 +46,11 @@ public abstract class eg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dMN != k) {
+      if (elJ != k) {
         break label65;
       }
-      this.field_originMD5 = paramCursor.getString(i);
-      this.dMJ = true;
+      this.field_appId = paramCursor.getString(i);
+      this.els = true;
     }
     for (;;)
     {
@@ -47,12 +58,16 @@ public abstract class eg
       break label20;
       break;
       label65:
-      if (dMO == k) {
-        this.field_resultFile = paramCursor.getString(i);
-      } else if (dMP == k) {
-        this.field_fromLang = paramCursor.getString(i);
-      } else if (dMQ == k) {
-        this.field_toLang = paramCursor.getString(i);
+      if (enM == k) {
+        this.field_packageName = paramCursor.getString(i);
+      } else if (ejR == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (eSp == k) {
+        this.field_sceneFlag = paramCursor.getInt(i);
+      } else if (eSq == k) {
+        this.field_msgTypeFlag = paramCursor.getInt(i);
+      } else if (eSr == k) {
+        this.field_msgState = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -62,17 +77,23 @@ public abstract class eg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dMJ) {
-      localContentValues.put("originMD5", this.field_originMD5);
+    if (this.els) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.dMK) {
-      localContentValues.put("resultFile", this.field_resultFile);
+    if (this.enq) {
+      localContentValues.put("packageName", this.field_packageName);
     }
-    if (this.dML) {
-      localContentValues.put("fromLang", this.field_fromLang);
+    if (this.ejO) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.dMM) {
-      localContentValues.put("toLang", this.field_toLang);
+    if (this.eSm) {
+      localContentValues.put("sceneFlag", Integer.valueOf(this.field_sceneFlag));
+    }
+    if (this.eSn) {
+      localContentValues.put("msgTypeFlag", Integer.valueOf(this.field_msgTypeFlag));
+    }
+    if (this.eSo) {
+      localContentValues.put("msgState", Integer.valueOf(this.field_msgState));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -82,7 +103,7 @@ public abstract class eg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.eg
  * JD-Core Version:    0.7.0.1
  */

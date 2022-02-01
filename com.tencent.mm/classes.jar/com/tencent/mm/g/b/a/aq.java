@@ -6,60 +6,37 @@ import com.tencent.mm.plugin.report.a;
 public final class aq
   extends a
 {
-  private String cUZ = "";
-  public long cVa = 0L;
-  public long cVb = 0L;
+  public long dMF = 0L;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(108837);
+    AppMethodBeat.i(63299);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cUZ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVa);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVb);
+    ((StringBuffer)localObject).append(this.dMF);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(108837);
+    ams((String)localObject);
+    AppMethodBeat.o(63299);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(108838);
+    AppMethodBeat.i(63300);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("UserName:").append(this.cUZ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.cVa);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasUnreadStoryTips:").append(this.cVb);
+    ((StringBuffer)localObject).append("reportScene:").append(this.dMF);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(108838);
+    AppMethodBeat.o(63300);
     return localObject;
-  }
-  
-  public final aq fX(String paramString)
-  {
-    AppMethodBeat.i(108836);
-    this.cUZ = t("UserName", paramString, true);
-    AppMethodBeat.o(108836);
-    return this;
   }
   
   public final int getId()
   {
-    return 16656;
-  }
-  
-  public final String getUserName()
-  {
-    return this.cUZ;
+    return 18526;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.aq
  * JD-Core Version:    0.7.0.1
  */

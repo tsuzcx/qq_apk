@@ -6,57 +6,57 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.y;
 
 public final class b
 {
   private final String TAG;
-  public TextView kvS;
-  public View ldP;
-  public String ldX;
-  public ImageView ldY;
-  public ImageView ldZ;
+  public View iIW;
   public Context mContext;
+  public TextView nBl;
+  public String otH;
+  public ImageView otI;
+  public ImageView otJ;
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(52719);
+    AppMethodBeat.i(108295);
     this.TAG = "MicroMsg.emoji.BaseEmojiStoreItemViewHolder";
     this.mContext = paramContext;
-    this.ldP = w.hM(this.mContext).inflate(2130969402, null);
-    bkA();
-    AppMethodBeat.o(52719);
+    this.iIW = y.js(this.mContext).inflate(2131493814, null);
+    bUp();
+    AppMethodBeat.o(108295);
   }
   
   public b(Context paramContext, View paramView)
   {
-    AppMethodBeat.i(52720);
+    AppMethodBeat.i(108296);
     this.TAG = "MicroMsg.emoji.BaseEmojiStoreItemViewHolder";
     this.mContext = paramContext;
-    this.ldP = paramView;
-    bkA();
-    AppMethodBeat.o(52720);
+    this.iIW = paramView;
+    bUp();
+    AppMethodBeat.o(108296);
   }
   
-  private void bkA()
+  private void bUp()
   {
-    AppMethodBeat.i(52721);
-    if (this.ldP == null)
+    AppMethodBeat.i(108297);
+    if (this.iIW == null)
     {
-      ab.w("MicroMsg.emoji.BaseEmojiStoreItemViewHolder", "initView failed. root is null.");
-      AppMethodBeat.o(52721);
+      ad.w("MicroMsg.emoji.BaseEmojiStoreItemViewHolder", "initView failed. root is null.");
+      AppMethodBeat.o(108297);
       return;
     }
-    this.ldY = ((ImageView)this.ldP.findViewById(2131823589));
-    this.kvS = ((TextView)this.ldP.findViewById(2131823680));
-    this.ldZ = ((ImageView)this.ldP.findViewById(2131823674));
-    AppMethodBeat.o(52721);
+    this.otI = ((ImageView)this.iIW.findViewById(2131301154));
+    this.nBl = ((TextView)this.iIW.findViewById(2131301198));
+    this.otJ = ((ImageView)this.iIW.findViewById(2131301152));
+    AppMethodBeat.o(108297);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.b
  * JD-Core Version:    0.7.0.1
  */

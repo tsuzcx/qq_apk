@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/qp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckedTextView android:gravity="center_vertical" android:layout_gravity="left" android:id="@id/gh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/f31" android:singleLine="true" android:drawableLeft="?android:listChoiceIndicatorMultiple" />
+    <TextView android:id="@id/e3i" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="@string/uw" style="@style/o6" />
+</LinearLayout>

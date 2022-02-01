@@ -3,65 +3,77 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class dax
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String ygS;
+  public String gHT;
+  public String tag;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(96344);
+    AppMethodBeat.i(114082);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.ygS != null) {
-        paramVarArgs.e(1, this.ygS);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.tag != null) {
+        paramVarArgs.d(1, this.tag);
       }
-      AppMethodBeat.o(96344);
+      if (this.gHT != null) {
+        paramVarArgs.d(2, this.gHT);
+      }
+      AppMethodBeat.o(114082);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ygS == null) {
-        break label213;
+      if (this.tag == null) {
+        break label274;
       }
     }
-    label213:
-    for (paramInt = e.a.a.b.b.a.f(1, this.ygS) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(1, this.tag) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(96344);
-      return paramInt;
+      int i = paramInt;
+      if (this.gHT != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.gHT);
+      }
+      AppMethodBeat.o(114082);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(96344);
+        AppMethodBeat.o(114082);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         dax localdax = (dax)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(96344);
+          AppMethodBeat.o(114082);
           return -1;
+        case 1: 
+          localdax.tag = locala.KhF.readString();
+          AppMethodBeat.o(114082);
+          return 0;
         }
-        localdax.ygS = locala.CLY.readString();
-        AppMethodBeat.o(96344);
+        localdax.gHT = locala.KhF.readString();
+        AppMethodBeat.o(114082);
         return 0;
       }
-      AppMethodBeat.o(96344);
+      AppMethodBeat.o(114082);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dax
  * JD-Core Version:    0.7.0.1
  */

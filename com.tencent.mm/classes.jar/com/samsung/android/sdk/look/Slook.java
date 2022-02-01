@@ -26,7 +26,7 @@ public final class Slook
   
   private void insertLog(Context paramContext)
   {
-    AppMethodBeat.i(117191);
+    AppMethodBeat.i(76233);
     int i = -1;
     try
     {
@@ -46,13 +46,13 @@ public final class Slook
       if (paramContext.checkCallingOrSelfPermission("com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY") != 0)
       {
         paramContext = new SecurityException();
-        AppMethodBeat.o(117191);
+        AppMethodBeat.o(76233);
         throw paramContext;
       }
     }
     else
     {
-      AppMethodBeat.o(117191);
+      AppMethodBeat.o(76233);
       return;
     }
     localContentValues = new ContentValues();
@@ -65,24 +65,24 @@ public final class Slook
     ((Intent)localObject).putExtra("data", localContentValues);
     ((Intent)localObject).setPackage("com.samsung.android.providers.context");
     paramContext.sendBroadcast((Intent)localObject);
-    AppMethodBeat.o(117191);
+    AppMethodBeat.o(76233);
   }
   
   public final int getVersionCode()
   {
-    AppMethodBeat.i(117188);
+    AppMethodBeat.i(76230);
     int i;
     if (mVersionCode != -1)
     {
       i = mVersionCode;
-      AppMethodBeat.o(117188);
+      AppMethodBeat.o(76230);
       return i;
     }
     try
     {
       mVersionCode = SystemProperties.getInt("ro.slook.ver", 0);
       i = mVersionCode;
-      AppMethodBeat.o(117188);
+      AppMethodBeat.o(76230);
       return i;
     }
     catch (Exception localException)
@@ -101,56 +101,56 @@ public final class Slook
   
   public final void initialize(Context paramContext)
   {
-    AppMethodBeat.i(117189);
+    AppMethodBeat.i(76231);
     if (!SsdkVendorCheck.isSamsungDevice())
     {
       paramContext = new SsdkUnsupportedException("This device is not samsung product.", 0);
-      AppMethodBeat.o(117189);
+      AppMethodBeat.o(76231);
       throw paramContext;
     }
     if (getVersionCode() <= 0)
     {
       paramContext = new SsdkUnsupportedException("This device is not supported.", 1);
-      AppMethodBeat.o(117189);
+      AppMethodBeat.o(76231);
       throw paramContext;
     }
     try
     {
       insertLog(paramContext);
-      AppMethodBeat.o(117189);
+      AppMethodBeat.o(76231);
       return;
     }
     catch (SecurityException paramContext)
     {
       paramContext = new SecurityException("com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY permission is required.");
-      AppMethodBeat.o(117189);
+      AppMethodBeat.o(76231);
       throw paramContext;
     }
   }
   
   public final boolean isFeatureEnabled(int paramInt)
   {
-    AppMethodBeat.i(117190);
+    AppMethodBeat.i(76232);
     switch (paramInt)
     {
     default: 
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("The type(" + paramInt + ") is not supported.");
-      AppMethodBeat.o(117190);
+      AppMethodBeat.o(76232);
       throw localIllegalArgumentException;
     }
     if (getVersionCode() > 0)
     {
       boolean bool = SlookImpl.isFeatureEnabled(paramInt);
-      AppMethodBeat.o(117190);
+      AppMethodBeat.o(76232);
       return bool;
     }
-    AppMethodBeat.o(117190);
+    AppMethodBeat.o(76232);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.samsung.android.sdk.look.Slook
  * JD-Core Version:    0.7.0.1
  */

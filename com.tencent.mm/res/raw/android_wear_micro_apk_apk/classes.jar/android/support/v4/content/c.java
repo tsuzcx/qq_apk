@@ -9,12 +9,12 @@ import java.util.HashMap;
 final class c
   implements b
 {
-  private final String fO;
-  private final HashMap<String, File> fP = new HashMap();
+  private final String hL;
+  private final HashMap<String, File> hM = new HashMap();
   
-  public c(String paramString)
+  c(String paramString)
   {
-    this.fO = paramString;
+    this.hL = paramString;
   }
   
   public final File a(Uri paramUri)
@@ -23,9 +23,9 @@ final class c
     int i = ((String)localObject2).indexOf('/', 1);
     Object localObject1 = Uri.decode(((String)localObject2).substring(1, i));
     localObject2 = Uri.decode(((String)localObject2).substring(i + 1));
-    localObject1 = (File)this.fP.get(localObject1);
+    localObject1 = (File)this.hM.get(localObject1);
     if (localObject1 == null) {
-      throw new IllegalArgumentException("Unable to find configured root for " + paramUri);
+      throw new IllegalArgumentException("Unable to find configured root for ".concat(String.valueOf(paramUri)));
     }
     paramUri = new File((File)localObject1, (String)localObject2);
     try
@@ -37,12 +37,12 @@ final class c
     }
     catch (IOException localIOException)
     {
-      throw new IllegalArgumentException("Failed to resolve canonical path for " + paramUri);
+      throw new IllegalArgumentException("Failed to resolve canonical path for ".concat(String.valueOf(paramUri)));
     }
     return localObject2;
   }
   
-  public final void a(String paramString, File paramFile)
+  final void a(String paramString, File paramFile)
   {
     if (TextUtils.isEmpty(paramString)) {
       throw new IllegalArgumentException("Name must not be empty");
@@ -50,12 +50,12 @@ final class c
     try
     {
       File localFile = paramFile.getCanonicalFile();
-      this.fP.put(paramString, localFile);
+      this.hM.put(paramString, localFile);
       return;
     }
     catch (IOException paramString)
     {
-      throw new IllegalArgumentException("Failed to resolve canonical path for " + paramFile, paramString);
+      throw new IllegalArgumentException("Failed to resolve canonical path for ".concat(String.valueOf(paramFile)), paramString);
     }
   }
 }

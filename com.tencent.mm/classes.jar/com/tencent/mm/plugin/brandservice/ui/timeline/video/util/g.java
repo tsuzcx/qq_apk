@@ -1,328 +1,292 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
-import a.f.b.j;
-import a.l;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.brandservice.ui.timeline.video.b;
-import com.tencent.mm.protocal.protobuf.dz;
-import com.tencent.mm.protocal.protobuf.ea;
-import com.tencent.mm.protocal.protobuf.ec;
-import com.tencent.mm.protocal.protobuf.ed;
-import com.tencent.mm.protocal.protobuf.ur;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ai.x;
+import com.tencent.mm.g.a.ry;
+import com.tencent.mm.g.a.ry.a;
+import com.tencent.mm.g.a.sb;
+import com.tencent.mm.model.w;
+import com.tencent.mm.model.y;
+import com.tencent.mm.model.y.b;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
+import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
+import com.tencent.mm.protocal.protobuf.bol;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.k;
+import d.l;
+import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.Map;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/MPDataReportHelper;", "", "()V", "TAG", "", "commentExposureMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/protocal/protobuf/CommentExposure;", "Lkotlin/collections/HashMap;", "getCommentExposureMap", "()Ljava/util/HashMap;", "setCommentExposureMap", "(Ljava/util/HashMap;)V", "controller", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "enterTimeInMs", "", "getEnterTimeInMs", "()J", "setEnterTimeInMs", "(J)V", "addCommReportItem", "", "key", "value", "items", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppMsgCommReportItem;", "init", "logReportData", "kv", "", "onCommentExposure", "comment", "Lcom/tencent/mm/protocal/protobuf/BizComment;", "onDestroy", "report10380", "actionType", "sharePageType", "report10945", "report17537", "eventType", "plugin-brandservice_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoMsgTransmit;", "", "()V", "TAG", "", "doSendAppMsg", "", "data", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable;", "", "toUser", "msgInfo", "Lcom/tencent/mm/message/MPMsgInfo;", "appendText", "controller", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Landroid/os/Bundle;", "transmitBizVideoMsg", "context", "Landroid/content/Context;", "msg", "IPCInvoke_SendAppMsg", "plugin-brandservice_release"})
 public final class g
 {
-  private final String TAG;
-  private b jXn;
-  private HashMap<String, ur> kin;
-  private long kio;
+  private static final String TAG = "MicroMsg.BizVideoMsgTransmit";
+  public static final g nlc;
   
-  public g()
+  static
   {
-    AppMethodBeat.i(15329);
-    this.TAG = "MicroMsg.MPDataReportHelper";
-    this.kin = new HashMap();
-    this.kio = System.currentTimeMillis();
-    AppMethodBeat.o(15329);
+    AppMethodBeat.i(7300);
+    nlc = new g();
+    TAG = "MicroMsg.BizVideoMsgTransmit";
+    AppMethodBeat.o(7300);
   }
   
-  private static void a(String paramString1, String paramString2, LinkedList<ec> paramLinkedList)
+  public static void a(Context paramContext, x paramx, com.tencent.mm.plugin.brandservice.ui.timeline.video.b paramb)
   {
-    AppMethodBeat.i(15328);
-    ec localec = new ec();
-    localec.key = paramString1;
-    localec.fnF = paramString2;
-    paramLinkedList.add(localec);
-    AppMethodBeat.o(15328);
-  }
-  
-  private final void aZO()
-  {
-    AppMethodBeat.i(152964);
-    Object localObject1 = new ea();
-    dz localdz = new dz();
-    localdz.type = 1;
-    Object localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
-    }
-    int i = ((b)localObject2).scene;
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("scene", String.valueOf(i), (LinkedList)localObject2);
-    localObject2 = at.gU(ah.getContext());
-    Object localObject3 = localdz.wnb;
-    j.p(localObject3, "reportData.item");
-    a("netType", (String)localObject2, (LinkedList)localObject3);
-    long l = this.kio;
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("StartTimeMs", String.valueOf(l), (LinkedList)localObject2);
-    l = System.currentTimeMillis();
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("EndTimeMs", String.valueOf(l), (LinkedList)localObject2);
-    localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
-    }
-    i = ((b)localObject2).fgh;
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("ItemShowType", String.valueOf(i), (LinkedList)localObject2);
-    localObject2 = new StringBuilder();
-    localObject3 = this.jXn;
-    if (localObject3 == null) {
-      j.ays("controller");
-    }
-    localObject2 = ((b)localObject3).kfx;
-    localObject3 = localdz.wnb;
-    j.p(localObject3, "reportData.item");
-    a("SessionId", (String)localObject2, (LinkedList)localObject3);
-    localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
-    }
-    i = ((b)localObject2).kfv;
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("EnterId", String.valueOf(i), (LinkedList)localObject2);
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("NativePage", "1", (LinkedList)localObject2);
-    localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
-    }
-    localObject2 = ((b)localObject2).url;
-    localObject3 = localdz.wnb;
-    j.p(localObject3, "reportData.item");
-    a("#AppMsgUrl#", (String)localObject2, (LinkedList)localObject3);
-    ((ea)localObject1).wpY.add(localdz);
-    localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
-    }
-    ((b)localObject2).a((ea)localObject1);
-    localObject1 = localdz.wnb;
-    j.p(localObject1, "reportData.item");
-    b(10945, (LinkedList)localObject1);
-    AppMethodBeat.o(152964);
-  }
-  
-  private final void b(int paramInt, LinkedList<ec> paramLinkedList)
-  {
-    AppMethodBeat.i(15327);
-    if ((ab.getLogLevel() <= 0) && (!bo.es((List)paramLinkedList)))
+    Object localObject1 = null;
+    AppMethodBeat.i(7297);
+    k.h(paramContext, "context");
+    k.h(paramx, "msg");
+    k.h(paramb, "controller");
+    HashMap localHashMap = new HashMap();
+    Object localObject2;
+    if (paramb.bFy())
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      paramLinkedList = paramLinkedList.iterator();
-      while (paramLinkedList.hasNext())
+      localObject2 = (Map)localHashMap;
+      paramx = paramb.niO;
+      if (paramx != null)
       {
-        ec localec = (ec)paramLinkedList.next();
-        localStringBuilder.append(localec.key).append(":").append(localec.fnF).append("  ");
+        paramx = paramx.gKD;
+        paramx = bt.nullAsNil(paramx);
+        k.g(paramx, "Util.nullAsNil(controlle…aliciousTitleInfo?.cover)");
+        ((Map)localObject2).put("img_url", paramx);
+        localObject2 = (Map)localHashMap;
+        paramx = paramb.niO;
+        if (paramx == null) {
+          break label339;
+        }
+        paramx = paramx.gKF;
+        label106:
+        paramx = bt.nullAsNil(paramx);
+        k.g(paramx, "Util.nullAsNil(controlle…liciousTitleInfo?.digest)");
+        ((Map)localObject2).put("desc", paramx);
+        localObject2 = (Map)localHashMap;
+        bol localbol = paramb.niO;
+        paramx = (x)localObject1;
+        if (localbol != null) {
+          paramx = localbol.title;
+        }
+        paramx = bt.nullAsNil(paramx);
+        k.g(paramx, "Util.nullAsNil(controlle…aliciousTitleInfo?.title)");
+        ((Map)localObject2).put("title", paramx);
       }
-      ab.v(this.TAG, paramInt + ", " + localStringBuilder);
     }
-    AppMethodBeat.o(15327);
-  }
-  
-  public final void a(b paramb)
-  {
-    AppMethodBeat.i(152963);
-    j.q(paramb, "controller");
-    this.jXn = paramb;
-    AppMethodBeat.o(152963);
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(152966);
-    if (this.kin.size() > 0)
+    for (;;)
     {
-      Object localObject1 = new LinkedList();
-      Object localObject2 = this.kin.entrySet().iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        Object localObject3 = ((Iterator)localObject2).next();
-        j.p(localObject3, "it.next()");
-        localObject3 = ((Map.Entry)localObject3).getValue();
-        j.p(localObject3, "entry.value");
-        ((LinkedList)localObject1).add((ur)localObject3);
-      }
-      localObject2 = new ed();
-      ((ed)localObject2).wpZ = ((LinkedList)localObject1);
-      localObject1 = this.jXn;
+      paramx = (Map)localHashMap;
+      localObject1 = paramb.url;
       if (localObject1 == null) {
-        j.ays("controller");
+        k.fvU();
       }
-      ((b)localObject1).a((ed)localObject2);
-      this.kin.clear();
+      paramx.put("url", localObject1);
+      ad.i(TAG, "transmitBizVideoMsg, img_url=%s, desc=%s, title=%s, url=%s", new Object[] { localHashMap.get("img_url"), localHashMap.get("desc"), localHashMap.get("title"), paramb.url });
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(157L, 5L, 1L, false);
+      paramx = new Intent();
+      paramx.putExtra("Select_Conv_Type", 3);
+      paramx.putExtra("scene_from", 2);
+      paramx.putExtra("mutil_select_is_ret", true);
+      paramx.putExtra("webview_params", (Serializable)localHashMap);
+      paramx.putExtra("Retr_Msg_Type", 2);
+      com.tencent.mm.bs.d.c(paramContext, ".ui.transmit.SelectConversationUI", paramx, 2);
+      AppMethodBeat.o(7297);
+      return;
+      paramx = null;
+      break;
+      label339:
+      paramx = null;
+      break label106;
+      localObject1 = (Map)localHashMap;
+      localObject2 = bt.nullAsNil(paramx.gKx.gKD);
+      k.g(localObject2, "Util.nullAsNil(msg.item.cover)");
+      ((Map)localObject1).put("img_url", localObject2);
+      localObject1 = (Map)localHashMap;
+      localObject2 = bt.nullAsNil(paramx.gKx.gKF);
+      k.g(localObject2, "Util.nullAsNil(msg.item.digest)");
+      ((Map)localObject1).put("desc", localObject2);
+      localObject1 = (Map)localHashMap;
+      paramx = bt.nullAsNil(paramx.gKx.title);
+      k.g(paramx, "Util.nullAsNil(msg.item.title)");
+      ((Map)localObject1).put("title", paramx);
     }
-    aZO();
-    AppMethodBeat.o(152966);
   }
   
-  public final void sK(int paramInt)
+  public static void a(String paramString1, x paramx, String paramString2, com.tencent.mm.plugin.brandservice.ui.timeline.video.b paramb, com.tencent.mm.ipcinvoker.d<Bundle> paramd)
   {
-    AppMethodBeat.i(15326);
-    Object localObject1 = new ea();
-    dz localdz = new dz();
-    localdz.type = 2;
-    Object localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
+    Object localObject = null;
+    AppMethodBeat.i(7298);
+    k.h(paramString1, "toUser");
+    k.h(paramx, "msgInfo");
+    k.h(paramb, "controller");
+    k.h(paramd, "callback");
+    AppMsgDataParcelable localAppMsgDataParcelable = new AppMsgDataParcelable();
+    localAppMsgDataParcelable.toUser = paramString1;
+    localAppMsgDataParcelable.url = paramb.url;
+    localAppMsgDataParcelable.kkB = paramString2;
+    localAppMsgDataParcelable.niI = paramx;
+    int i;
+    if (paramb.bFy())
+    {
+      i = 1;
+      localAppMsgDataParcelable.nkz = i;
+      paramString1 = paramb.niO;
+      if (paramString1 == null) {
+        break label178;
+      }
+      paramString1 = paramString1.title;
+      label101:
+      localAppMsgDataParcelable.nkA = paramString1;
+      paramString1 = paramb.niO;
+      if (paramString1 == null) {
+        break label183;
+      }
     }
-    localObject2 = ((b)localObject2).fgl;
-    Object localObject3 = localdz.wnb;
-    j.p(localObject3, "reportData.item");
-    a("Vid", (String)localObject2, (LinkedList)localObject3);
-    localObject2 = at.gU(ah.getContext());
-    localObject3 = localdz.wnb;
-    j.p(localObject3, "reportData.item");
-    a("Network", (String)localObject2, (LinkedList)localObject3);
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("SharePageType", "2", (LinkedList)localObject2);
-    localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
+    label178:
+    label183:
+    for (paramString1 = paramString1.gKF;; paramString1 = null)
+    {
+      localAppMsgDataParcelable.nkB = paramString1;
+      paramx = paramb.niO;
+      paramString1 = localObject;
+      if (paramx != null) {
+        paramString1 = paramx.gKD;
+      }
+      localAppMsgDataParcelable.nkC = paramString1;
+      com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", (Parcelable)localAppMsgDataParcelable, a.class, paramd);
+      AppMethodBeat.o(7298);
+      return;
+      i = 0;
+      break;
+      paramString1 = null;
+      break label101;
     }
-    localObject2 = ((b)localObject2).url;
-    localObject3 = localdz.wnb;
-    j.p(localObject3, "reportData.item");
-    a("ContentUrl", (String)localObject2, (LinkedList)localObject3);
-    localObject2 = new StringBuilder();
-    localObject3 = this.jXn;
-    if (localObject3 == null) {
-      j.ays("controller");
-    }
-    localObject2 = ((b)localObject3).kfx;
-    localObject3 = localdz.wnb;
-    j.p(localObject3, "reportData.item");
-    a("SessionId", (String)localObject2, (LinkedList)localObject3);
-    localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
-    }
-    int i = ((b)localObject2).kfv;
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("EnterId", String.valueOf(i), (LinkedList)localObject2);
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("NativePage", "1", (LinkedList)localObject2);
-    localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
-    }
-    localObject2 = ((b)localObject2).url;
-    localObject3 = localdz.wnb;
-    j.p(localObject3, "reportData.item");
-    a("#AppMsgUrl#", (String)localObject2, (LinkedList)localObject3);
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("ActionType", String.valueOf(paramInt), (LinkedList)localObject2);
-    ((ea)localObject1).wpY.add(localdz);
-    localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
-    }
-    ((b)localObject2).a((ea)localObject1);
-    localObject1 = localdz.wnb;
-    j.p(localObject1, "reportData.item");
-    b(10380, (LinkedList)localObject1);
-    AppMethodBeat.o(15326);
   }
   
-  public final void sL(int paramInt)
+  public static boolean c(AppMsgDataParcelable paramAppMsgDataParcelable)
   {
-    AppMethodBeat.i(152965);
-    Object localObject1 = new ea();
-    dz localdz = new dz();
-    localdz.type = 3;
-    Object localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
+    AppMethodBeat.i(7299);
+    k.h(paramAppMsgDataParcelable, "data");
+    Object localObject1 = paramAppMsgDataParcelable.niI;
+    if (localObject1 == null)
+    {
+      ad.w(TAG, "doSendAppMsg msgInfo is null");
+      AppMethodBeat.o(7299);
+      return false;
     }
-    localObject2 = ((b)localObject2).url;
-    Object localObject3 = localdz.wnb;
-    j.p(localObject3, "reportData.item");
-    a("#AppMsgUrl#", (String)localObject2, (LinkedList)localObject3);
-    localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
+    int i;
+    Object localObject2;
+    Object localObject3;
+    if (paramAppMsgDataParcelable.nkz == 1)
+    {
+      i = 1;
+      localObject2 = new WXWebpageObject();
+      ((WXWebpageObject)localObject2).webpageUrl = paramAppMsgDataParcelable.url;
+      localObject3 = new WXMediaMessage();
+      ((WXMediaMessage)localObject3).mediaObject = ((WXMediaMessage.IMediaObject)localObject2);
+      if (i == 0) {
+        break label644;
+      }
+      ((WXMediaMessage)localObject3).title = paramAppMsgDataParcelable.nkA;
+      ((WXMediaMessage)localObject3).description = paramAppMsgDataParcelable.nkB;
+      label108:
+      localObject2 = new ry();
+      ((ry)localObject2).dxx.doG = ((WXMediaMessage)localObject3);
+      ((ry)localObject2).dxx.toUser = paramAppMsgDataParcelable.toUser;
+      ((ry)localObject2).dxx.dxy = 2;
+      if (!bt.isNullOrNil(((x)localObject1).dfT)) {
+        break label673;
+      }
+      ((ry)localObject2).dxx.dxz = ((x)localObject1).SI();
+      ((ry)localObject2).dxx.dxA = com.tencent.mm.model.v.sh(((x)localObject1).SI());
     }
-    localObject2 = ((b)localObject2).fgl;
-    localObject3 = localdz.wnb;
-    j.p(localObject3, "reportData.item");
-    a("VideoId", (String)localObject2, (LinkedList)localObject3);
-    localObject2 = new StringBuilder();
-    localObject3 = this.jXn;
-    if (localObject3 == null) {
-      j.ays("controller");
+    for (;;)
+    {
+      try
+      {
+        ((ry)localObject2).dxx.dxC = paramAppMsgDataParcelable.url;
+        ((ry)localObject2).dxx.dxF = bt.nullAsNil(((x)localObject1).gKw);
+        localObject3 = y.tD(((ry)localObject2).dxx.dxF);
+        localb = y.arz().E((String)localObject3, true);
+        if (localb == null) {
+          k.fvU();
+        }
+        localb.m("sendAppMsgScene", Integer.valueOf(2));
+        localb.m("preChatName", ((x)localObject1).SI());
+        localb.m("preMsgIndex", Integer.valueOf(((x)localObject1).gKu));
+        localb.m("prePublishId", ((x)localObject1).gKw);
+        localb.m("preUsername", ((x)localObject1).SI());
+        int j = ((x)localObject1).gKx.type;
+        if (j != -1)
+        {
+          localb.m("_DATA_CENTER_ITEM_SHOW_TYPE", Integer.valueOf(j));
+          localb.m("_tmpl_webview_transfer_scene", Integer.valueOf(11));
+        }
+        if (((x)localObject1).gKx.type == 5)
+        {
+          localb.m("_DATA_CENTER_VID", ((x)localObject1).gKx.gGC);
+          localb.m("_DATA_CENTER_FUNC_FLAG", Integer.valueOf(((x)localObject1).gGB));
+          localb.m("_DATA_CENTER_PUB_TIME", Integer.valueOf((int)((x)localObject1).gKx.time));
+          localb.m("_DATA_CENTER__DULATION", Integer.valueOf(((x)localObject1).gKx.gKH));
+          localb.m("_DATA_CENTER_VIDEO_WIDTH", Integer.valueOf(((x)localObject1).gKx.videoWidth));
+          localb.m("_DATA_CENTER_VIDEO_HEIGHT", Integer.valueOf(((x)localObject1).gKx.videoHeight));
+          if (i == 0) {
+            continue;
+          }
+          localb.m("_DATA_CENTER_COVER_URL", paramAppMsgDataParcelable.nkC);
+          localb.m("_DATA_CENTER_DESC", paramAppMsgDataParcelable.nkB);
+        }
+        ((ry)localObject2).dxx.sessionId = ((String)localObject3);
+        ((ry)localObject2).dxx.dxD = paramAppMsgDataParcelable.url;
+      }
+      catch (Exception localException)
+      {
+        y.b localb;
+        boolean bool;
+        label644:
+        label673:
+        ad.e(TAG, "init bunddata failed : %s", new Object[] { localException.getMessage() });
+        continue;
+      }
+      bool = a.ESL.l((com.tencent.mm.sdk.b.b)localObject2);
+      if (!bt.isNullOrNil(paramAppMsgDataParcelable.kkB))
+      {
+        localObject1 = new sb();
+        ((sb)localObject1).dxJ.dxK = paramAppMsgDataParcelable.toUser;
+        ((sb)localObject1).dxJ.content = paramAppMsgDataParcelable.kkB;
+        ((sb)localObject1).dxJ.type = w.tq(paramAppMsgDataParcelable.toUser);
+        ((sb)localObject1).dxJ.flags = 0;
+        a.ESL.l((com.tencent.mm.sdk.b.b)localObject1);
+      }
+      AppMethodBeat.o(7299);
+      return bool;
+      i = 0;
+      break;
+      ((WXMediaMessage)localObject3).title = ((x)localObject1).gKx.title;
+      ((WXMediaMessage)localObject3).description = ((x)localObject1).gKx.gKF;
+      break label108;
+      ((ry)localObject2).dxx.dxz = ((x)localObject1).dfT;
+      ((ry)localObject2).dxx.dxA = ((x)localObject1).gKv;
+      continue;
+      localb.m("_DATA_CENTER_COVER_URL", ((x)localObject1).gKx.gKD);
+      localb.m("_DATA_CENTER_DESC", ((x)localObject1).gKx.gKF);
     }
-    localObject2 = ((b)localObject3).kfx;
-    localObject3 = localdz.wnb;
-    j.p(localObject3, "reportData.item");
-    a("SessionId", (String)localObject2, (LinkedList)localObject3);
-    localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
-    }
-    int i = ((b)localObject2).kfv;
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("EnterId", String.valueOf(i), (LinkedList)localObject2);
-    localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
-    }
-    i = ((b)localObject2).scene;
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("Scene", String.valueOf(i), (LinkedList)localObject2);
-    localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
-    }
-    i = ((b)localObject2).kbN;
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("SubScene", String.valueOf(i), (LinkedList)localObject2);
-    long l = System.currentTimeMillis();
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("ClientId", String.valueOf(l), (LinkedList)localObject2);
-    localObject2 = localdz.wnb;
-    j.p(localObject2, "reportData.item");
-    a("EventType", String.valueOf(paramInt), (LinkedList)localObject2);
-    ((ea)localObject1).wpY.add(localdz);
-    localObject2 = this.jXn;
-    if (localObject2 == null) {
-      j.ays("controller");
-    }
-    ((b)localObject2).a((ea)localObject1);
-    localObject1 = localdz.wnb;
-    j.p(localObject1, "reportData.item");
-    b(17537, (LinkedList)localObject1);
-    AppMethodBeat.o(152965);
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoMsgTransmit$IPCInvoke_SendAppMsg;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-brandservice_release"})
+  static final class a
+    implements com.tencent.mm.ipcinvoker.b<AppMsgDataParcelable, Bundle>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.video.util.g
  * JD-Core Version:    0.7.0.1
  */

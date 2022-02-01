@@ -8,143 +8,143 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class VoiceHeaderPreference
   extends Preference
 {
-  private MMActivity cmc;
-  private TextView gLI;
-  private ImageView iQd;
+  private ImageView fxT;
+  private TextView hJf;
+  private MMActivity imP;
   private String mTitle;
-  private int mml;
-  private Button mmm;
-  private View mmn;
-  private View.OnClickListener mmo;
-  private String mmp;
-  private String mmq;
+  private int pSW;
+  private Button pSX;
+  private View pSY;
+  private View.OnClickListener pSZ;
+  private String pTa;
+  private String pTb;
   private TextView titleTv;
   
   public VoiceHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(26185);
-    this.cmc = ((MMActivity)paramContext);
-    AppMethodBeat.o(26185);
+    AppMethodBeat.i(29867);
+    this.imP = ((MMActivity)paramContext);
+    AppMethodBeat.o(29867);
   }
   
   public VoiceHeaderPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(26186);
+    AppMethodBeat.i(29868);
     this.mTitle = "";
-    this.mml = 255;
-    this.mmo = null;
-    this.mmp = "";
-    this.mmq = "";
-    this.cmc = ((MMActivity)paramContext);
-    setLayoutResource(2130971095);
-    AppMethodBeat.o(26186);
+    this.pSW = 255;
+    this.pSZ = null;
+    this.pTa = "";
+    this.pTb = "";
+    this.imP = ((MMActivity)paramContext);
+    setLayoutResource(2131495865);
+    AppMethodBeat.o(29868);
   }
   
-  public final void a(View.OnClickListener paramOnClickListener)
+  public final void c(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(26188);
-    this.mmo = paramOnClickListener;
-    if ((this.mmm == null) || (this.mmn == null))
+    AppMethodBeat.i(29870);
+    this.pSZ = paramOnClickListener;
+    if ((this.pSX == null) || (this.pSY == null))
     {
-      AppMethodBeat.o(26188);
+      AppMethodBeat.o(29870);
       return;
     }
-    if ((this.mmm != null) && (this.mmo != null))
+    if ((this.pSX != null) && (this.pSZ != null))
     {
-      this.mmm.setOnClickListener(paramOnClickListener);
-      this.mmm.setVisibility(0);
-      this.mmn.setVisibility(0);
-      AppMethodBeat.o(26188);
+      this.pSX.setOnClickListener(paramOnClickListener);
+      this.pSX.setVisibility(0);
+      this.pSY.setVisibility(0);
+      AppMethodBeat.o(29870);
       return;
     }
-    this.mmm.setVisibility(8);
-    this.mmn.setVisibility(8);
-    AppMethodBeat.o(26188);
+    this.pSX.setVisibility(8);
+    this.pSY.setVisibility(8);
+    AppMethodBeat.o(29870);
   }
   
-  public final void en(String paramString1, String paramString2)
+  public final void fK(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(26187);
-    this.mmp = paramString1;
-    this.mmq = paramString2;
+    AppMethodBeat.i(29869);
+    this.pTa = paramString1;
+    this.pTb = paramString2;
     if (this.titleTv != null)
     {
-      if (bo.isNullOrNil(this.mmp)) {
+      if (bt.isNullOrNil(this.pTa)) {
         break label95;
       }
-      this.titleTv.setText(this.mmp);
+      this.titleTv.setText(this.pTa);
       this.titleTv.setVisibility(0);
     }
-    while (this.gLI != null) {
-      if (!bo.isNullOrNil(this.mmq))
+    while (this.hJf != null) {
+      if (!bt.isNullOrNil(this.pTb))
       {
-        this.gLI.setText(this.mmq);
-        this.gLI.setVisibility(0);
-        AppMethodBeat.o(26187);
+        this.hJf.setText(this.pTb);
+        this.hJf.setVisibility(0);
+        AppMethodBeat.o(29869);
         return;
         label95:
         this.titleTv.setVisibility(8);
       }
       else
       {
-        this.gLI.setVisibility(8);
+        this.hJf.setVisibility(8);
       }
     }
-    AppMethodBeat.o(26187);
+    AppMethodBeat.o(29869);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(26189);
+    AppMethodBeat.i(29871);
     super.onBindView(paramView);
-    this.iQd = ((ImageView)paramView.findViewById(2131823888));
-    this.titleTv = ((TextView)paramView.findViewById(2131828763));
-    this.gLI = ((TextView)paramView.findViewById(2131823889));
-    this.mmm = ((Button)paramView.findViewById(2131823890));
-    this.mmn = paramView.findViewById(2131823908);
-    if (!bo.isNullOrNil(this.mmp))
+    this.fxT = ((ImageView)paramView.findViewById(2131306513));
+    this.titleTv = ((TextView)paramView.findViewById(2131306514));
+    this.hJf = ((TextView)paramView.findViewById(2131306516));
+    this.pSX = ((Button)paramView.findViewById(2131304179));
+    this.pSY = paramView.findViewById(2131297656);
+    if (!bt.isNullOrNil(this.pTa))
     {
-      this.titleTv.setText(this.mmp);
+      this.titleTv.setText(this.pTa);
       this.titleTv.setVisibility(0);
-      if (bo.isNullOrNil(this.mmq)) {
+      if (bt.isNullOrNil(this.pTb)) {
         break label191;
       }
-      this.gLI.setText(this.mmq);
-      this.gLI.setVisibility(0);
+      this.hJf.setText(this.pTb);
+      this.hJf.setVisibility(0);
     }
     for (;;)
     {
-      if ((this.mmm == null) || (this.mmo == null)) {
+      if ((this.pSX == null) || (this.pSZ == null)) {
         break label203;
       }
-      this.mmm.setOnClickListener(this.mmo);
-      this.mmm.setVisibility(0);
-      this.mmn.setVisibility(0);
-      AppMethodBeat.o(26189);
+      this.pSX.setOnClickListener(this.pSZ);
+      this.pSX.setVisibility(0);
+      this.pSY.setVisibility(0);
+      AppMethodBeat.o(29871);
       return;
       this.titleTv.setVisibility(8);
       break;
       label191:
-      this.gLI.setVisibility(8);
+      this.hJf.setVisibility(8);
     }
     label203:
-    this.mmm.setVisibility(8);
-    this.mmn.setVisibility(8);
-    AppMethodBeat.o(26189);
+    this.pSX.setVisibility(8);
+    this.pSY.setVisibility(8);
+    AppMethodBeat.o(29871);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.VoiceHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -3,14 +3,14 @@ package com.tencent.tinker.a.b.a;
 public final class h
   extends a
 {
-  public short[] Bqr;
+  public short[] ICm;
   
   public h(int paramInt)
   {
     if (paramInt < 0) {
       throw new IllegalArgumentException("initSize < 0");
     }
-    this.Bqr = new short[paramInt];
+    this.ICm = new short[paramInt];
   }
   
   public final void a(short paramShort1, short paramShort2, short paramShort3)
@@ -20,23 +20,23 @@ public final class h
     c(paramShort3);
   }
   
-  public final void c(short paramShort)
-  {
-    int i = this.afg;
-    if (this.Bqr.length - i <= 0)
-    {
-      short[] arrayOfShort = new short[this.Bqr.length + (this.Bqr.length >> 1)];
-      System.arraycopy(this.Bqr, 0, arrayOfShort, 0, i);
-      this.Bqr = arrayOfShort;
-    }
-    this.Bqr[this.afg] = paramShort;
-    dWs();
-  }
-  
-  public final void c(short paramShort1, short paramShort2)
+  public final void b(short paramShort1, short paramShort2)
   {
     c(paramShort1);
     c(paramShort2);
+  }
+  
+  public final void c(short paramShort)
+  {
+    int i = this.amn;
+    if (this.ICm.length - i <= 0)
+    {
+      short[] arrayOfShort = new short[this.ICm.length + (this.ICm.length >> 1)];
+      System.arraycopy(this.ICm, 0, arrayOfShort, 0, i);
+      this.ICm = arrayOfShort;
+    }
+    this.ICm[this.amn] = paramShort;
+    foX();
   }
   
   public final void writeInt(int paramInt)

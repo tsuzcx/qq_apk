@@ -4,56 +4,105 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.h;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.y;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.loader.j.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.vfs.i;
 
 public final class ay
+  extends c
 {
-  public static SharedPreferences aaF()
+  public static ay gNa;
+  public static final String gNb;
+  
+  static
   {
-    AppMethodBeat.i(58105);
-    SharedPreferences localSharedPreferences = ah.getContext().getSharedPreferences("auth_info_key_prefs", h.Mp());
-    if (!localSharedPreferences.getBoolean("key_auth_info_prefs_created", false))
-    {
-      e.qrI.idkeyStat(148L, 12L, 1L, true);
-      Object localObject = new y(ac.eQv + "autoauth.cfg");
-      if ((!((y)localObject).yxb) && (((y)localObject).get(3) != null))
-      {
-        localEditor = localSharedPreferences.edit();
-        localEditor.putBoolean("key_auth_info_prefs_created", true);
-        localEditor.putInt("key_auth_update_version", ((Integer)((y)localObject).get(1)).intValue());
-        localEditor.putInt("_auth_uin", ((Integer)((y)localObject).get(2)).intValue());
-        localEditor.putString("_auth_key", (String)((y)localObject).get(3));
-        localEditor.putString("server_id", (String)((y)localObject).get(4));
-        ab.i("MicroMsg.MMReqRespAuthComm", "summerauth auth_info_key_prefs not exit! use autoauthcfg now commit[%b] create[%b], ver[%d], uin[%d], aak[%s], sid[%s]", new Object[] { Boolean.valueOf(localEditor.commit()), Boolean.valueOf(localSharedPreferences.getBoolean("key_auth_info_prefs_created", false)), Integer.valueOf(localSharedPreferences.getInt("key_auth_update_version", 0)), Integer.valueOf(localSharedPreferences.getInt("_auth_uin", 0)), localSharedPreferences.getString("_auth_key", ""), localSharedPreferences.getString("server_id", "") });
-        e.qrI.idkeyStat(148L, 51L, 1L, true);
-        AppMethodBeat.o(58105);
-        return localSharedPreferences;
-      }
-      localObject = ah.getContext().getSharedPreferences("auto_auth_key_prefs", h.Mp());
-      SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-      if (bo.isNullOrNil(((SharedPreferences)localObject).getString("_auth_key", ""))) {
-        break label525;
-      }
-      localEditor.putBoolean("key_auth_info_prefs_created", true);
-      localEditor.putInt("key_auth_update_version", ((SharedPreferences)localObject).getInt("key_auth_update_version", 0));
-      localEditor.putInt("_auth_uin", ((SharedPreferences)localObject).getInt("_auth_uin", 0));
-      localEditor.putString("_auth_key", ((SharedPreferences)localObject).getString("_auth_key", ""));
-      localEditor.putString("server_id", ah.getContext().getSharedPreferences("server_id_prefs", h.Mp()).getString("server_id", ""));
-      ab.i("MicroMsg.MMReqRespAuthComm", "summerauth auth_info_key_prefs not exit! use oldAAKsp now commit[%b] create[%b], ver[%d], uin[%d], aak[%s], sid[%s]", new Object[] { Boolean.valueOf(localEditor.commit()), Boolean.valueOf(localSharedPreferences.getBoolean("key_auth_info_prefs_created", false)), Integer.valueOf(localSharedPreferences.getInt("key_auth_update_version", 0)), Integer.valueOf(localSharedPreferences.getInt("_auth_uin", 0)), localSharedPreferences.getString("_auth_key", ""), localSharedPreferences.getString("server_id", "") });
+    AppMethodBeat.i(132238);
+    gNa = new ay(c.gmh);
+    gNb = b.ahZ() + "last_avatar_dir";
+    AppMethodBeat.o(132238);
+  }
+  
+  private ay(c paramc)
+  {
+    super(paramc.ajf());
+    AppMethodBeat.i(132233);
+    AppMethodBeat.o(132233);
+  }
+  
+  public final void aD(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(132234);
+    ad.i("MicroMsg.LastLoginInfo", "save key : %s value : %s", new Object[] { paramString1, paramString2 });
+    this.sp.edit().putString(paramString1, paramString2).commit();
+    if (paramString1.equals("login_weixin_username")) {
+      aj.getContext().getSharedPreferences("notify_key_pref_no_account", com.tencent.mm.compatible.util.g.XN()).edit().putString("login_weixin_username", paramString2).commit();
     }
-    for (;;)
+    AppMethodBeat.o(132234);
+  }
+  
+  public final String arN()
+  {
+    AppMethodBeat.i(132236);
+    String str = ao("last_avatar_path", "");
+    AppMethodBeat.o(132236);
+    return str;
+  }
+  
+  public final void g(String paramString1, int paramInt, String paramString2)
+  {
+    AppMethodBeat.i(132235);
+    int i = 0;
+    if (paramInt != 0)
     {
-      AppMethodBeat.o(58105);
-      return localSharedPreferences;
-      label525:
-      ab.i("MicroMsg.MMReqRespAuthComm", "summerauth auth_info_key_prefs not exit! neither autoauthcfg nor oldAAKsp existed just install! stack[%s]", new Object[] { bo.dtY() });
+      i = 1;
+      aD("last_login_bind_qq", String.valueOf(paramInt));
     }
+    paramInt = i;
+    if (!bt.isNullOrNil(paramString2))
+    {
+      paramInt = i | 0x2;
+      aD("last_login_bind_email", String.valueOf(paramString2));
+    }
+    i = paramInt;
+    if (!bt.isNullOrNil(paramString1))
+    {
+      i = paramInt | 0x4;
+      aD("last_login_bind_mobile", paramString1);
+    }
+    aD("last_bind_info", String.valueOf(i));
+    AppMethodBeat.o(132235);
+  }
+  
+  public final void ua(String paramString)
+  {
+    AppMethodBeat.i(132237);
+    ad.i("MicroMsg.LastLoginInfo", "Save last avatar: ".concat(String.valueOf(paramString)));
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(132237);
+      return;
+    }
+    String str = paramString.substring(paramString.lastIndexOf('/') + 1);
+    if (bt.isNullOrNil(str))
+    {
+      AppMethodBeat.o(132237);
+      return;
+    }
+    str = gNb + "/" + str;
+    i.aMF(gNb);
+    ad.i("MicroMsg.LastLoginInfo", "delete old avatar path[%s], ret[%b]", new Object[] { str, Boolean.valueOf(i.deleteFile(str)) });
+    i.lC(paramString, str);
+    aD("last_avatar_path", str);
+    if (com.tencent.mm.kernel.g.afw()) {
+      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fte, str);
+    }
+    AppMethodBeat.o(132237);
   }
 }
 

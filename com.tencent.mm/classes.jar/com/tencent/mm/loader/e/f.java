@@ -1,15 +1,24 @@
 package com.tencent.mm.loader.e;
 
+import com.tencent.mm.loader.e.b.g;
 import com.tencent.mm.loader.f.d;
+import com.tencent.mm.loader.h.a.a;
 
 public final class f<T, R>
   implements d<T, R>
 {
-  private d<T, R> eOz = null;
+  private d<T, R> gkc = null;
+  
+  public final void a(a<T> parama, g<?> paramg, R paramR)
+  {
+    if (this.gkc != null) {
+      this.gkc.a(parama, paramg, paramR);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.e.f
  * JD-Core Version:    0.7.0.1
  */

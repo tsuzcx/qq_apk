@@ -26,9 +26,9 @@ public class MMGIFException
   public MMGIFException(int paramInt)
   {
     super("MicroMsg.GIF.MMGIFException".concat(String.valueOf(paramInt)));
-    AppMethodBeat.i(62407);
+    AppMethodBeat.i(104641);
     this.errorCode = paramInt;
-    AppMethodBeat.o(62407);
+    AppMethodBeat.o(104641);
   }
   
   public int getErrorCode()
@@ -38,7 +38,7 @@ public class MMGIFException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.MMGIFException
  * JD-Core Version:    0.7.0.1
  */

@@ -8,20 +8,20 @@ import java.util.concurrent.FutureTask;
 final class bv
   extends bn<com.google.android.gms.wearable.f>
 {
-  private final List<FutureTask<Boolean>> TW;
+  private final List<FutureTask<Boolean>> VL;
   
   bv(h<com.google.android.gms.wearable.f> paramh, List<FutureTask<Boolean>> paramList)
   {
     super(paramh);
-    this.TW = paramList;
+    this.VL = paramList;
   }
   
   public final void a(zzci paramzzci)
   {
-    B(new f(bj.bF(paramzzci.statusCode), paramzzci.Tw));
+    K(new f(bj.ca(paramzzci.statusCode), paramzzci.Vl));
     if (paramzzci.statusCode != 0)
     {
-      paramzzci = this.TW.iterator();
+      paramzzci = this.VL.iterator();
       while (paramzzci.hasNext()) {
         ((FutureTask)paramzzci.next()).cancel(true);
       }

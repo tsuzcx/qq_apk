@@ -1,88 +1,128 @@
 package com.tencent.mm.plugin.appbrand.widget.f;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.content.Context;
-import android.os.Looper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewPropertyAnimator;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.TextView;
+import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.report.service.h;
+import java.util.ArrayList;
 
 public final class a
-  extends FrameLayout
-  implements View.OnClickListener, f
 {
-  private TextView jbI;
-  private final Runnable juc;
-  private ViewPropertyAnimator jud;
-  ViewPropertyAnimator jue;
-  private final ak mHandler;
-  
-  public a(Context paramContext)
+  public static void G(int paramInt, long paramLong)
   {
-    super(paramContext);
-    AppMethodBeat.i(87527);
-    this.juc = new a.1(this);
-    this.mHandler = new ak(Looper.getMainLooper());
-    LayoutInflater.from(paramContext).inflate(2130968738, this, true);
-    this.jbI = ((TextView)findViewById(2131820680));
-    setOnClickListener(this);
-    AppMethodBeat.o(87527);
+    AppMethodBeat.i(73438);
+    int i;
+    if (paramLong <= 500000L) {
+      i = 0;
+    }
+    for (;;)
+    {
+      h.vKh.idkeyStat(paramInt, i, 1L, false);
+      AppMethodBeat.o(73438);
+      return;
+      if (paramLong <= 1000000L) {
+        i = 1;
+      } else if (paramLong <= 2000000L) {
+        i = 2;
+      } else if (paramLong <= 3000000L) {
+        i = 3;
+      } else if (paramLong <= 4000000L) {
+        i = 4;
+      } else if (paramLong <= 5000000L) {
+        i = 5;
+      } else {
+        i = 6;
+      }
+    }
   }
   
-  public final void FX(String paramString)
+  public static void H(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(87528);
-    this.jbI.setText(paramString);
-    this.mHandler.removeCallbacks(this.juc);
-    this.mHandler.postDelayed(this.juc, juo);
-    if ((getAlpha() == 1.0F) || (this.jud != null))
+    AppMethodBeat.i(73439);
+    int i;
+    if (paramLong <= 20000000L) {
+      i = 0;
+    }
+    for (;;)
     {
-      AppMethodBeat.o(87528);
+      h.vKh.idkeyStat(paramInt, i, 1L, false);
+      AppMethodBeat.o(73439);
+      return;
+      if (paramLong <= 25000000L) {
+        i = 1;
+      } else if (paramLong <= 30000000L) {
+        i = 2;
+      } else if (paramLong <= 35000000L) {
+        i = 3;
+      } else if (paramLong <= 40000000L) {
+        i = 4;
+      } else if (paramLong <= 50000000L) {
+        i = 5;
+      } else if (paramLong <= 60000000L) {
+        i = 6;
+      } else if (paramLong <= 70000000L) {
+        i = 7;
+      } else if (paramLong <= 80000000L) {
+        i = 8;
+      } else {
+        i = 9;
+      }
+    }
+  }
+  
+  public static void d(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
+  {
+    AppMethodBeat.i(73437);
+    if ((paramLong1 <= 0L) || (paramLong2 <= 0L) || (paramInt2 <= 0))
+    {
+      AppMethodBeat.o(73437);
       return;
     }
-    setVisibility(0);
-    animate().cancel();
-    paramString = animate();
-    this.jud = paramString;
-    paramString.alpha(1.0F).setListener(new AnimatorListenerAdapter()
+    ArrayList localArrayList = new ArrayList();
+    IDKey localIDKey = new IDKey();
+    localIDKey.SetID(703);
+    int i;
+    if (paramInt1 == 1)
     {
-      public final void onAnimationCancel(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(87524);
-        a.a(a.this);
-        AppMethodBeat.o(87524);
+      i = 3;
+      localIDKey.SetKey(i);
+      localIDKey.SetValue(paramLong1);
+      localArrayList.add(localIDKey);
+      localIDKey = new IDKey();
+      localIDKey.SetID(703);
+      if (paramInt1 != 1) {
+        break label196;
       }
-      
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(87523);
-        a.a(a.this);
-        AppMethodBeat.o(87523);
+      i = 4;
+      label108:
+      localIDKey.SetKey(i);
+      localIDKey.SetValue(paramLong2);
+      localArrayList.add(localIDKey);
+      localIDKey = new IDKey();
+      localIDKey.SetID(703);
+      if (paramInt1 != 1) {
+        break label202;
       }
-    }).start();
-    setVisibility(0);
-    AppMethodBeat.o(87528);
+    }
+    label196:
+    label202:
+    for (paramInt1 = 5;; paramInt1 = 2)
+    {
+      localIDKey.SetKey(paramInt1);
+      localIDKey.SetValue(paramInt2);
+      localArrayList.add(localIDKey);
+      h.vKh.b(localArrayList, false);
+      AppMethodBeat.o(73437);
+      return;
+      i = 0;
+      break;
+      i = 1;
+      break label108;
+    }
   }
-  
-  public final void a(FrameLayout paramFrameLayout)
-  {
-    AppMethodBeat.i(87529);
-    paramFrameLayout.addView(this, new FrameLayout.LayoutParams(-2, -2, 17));
-    AppMethodBeat.o(87529);
-  }
-  
-  public final void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.f.a
  * JD-Core Version:    0.7.0.1
  */

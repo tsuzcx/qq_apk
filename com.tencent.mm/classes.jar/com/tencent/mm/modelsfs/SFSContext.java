@@ -3,14 +3,7 @@ package com.tencent.mm.modelsfs;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -19,11 +12,11 @@ import java.util.Set;
 
 public class SFSContext
 {
-  long mNativePtr;
+  public long mNativePtr;
   
   private SFSContext(Builder paramBuilder)
   {
-    AppMethodBeat.i(93231);
+    AppMethodBeat.i(156021);
     Iterator localIterator = paramBuilder.mConf.entrySet().iterator();
     while (localIterator.hasNext())
     {
@@ -42,26 +35,26 @@ public class SFSContext
     if (l == 0L)
     {
       paramBuilder = new RuntimeException(nativeErrorMessage());
-      AppMethodBeat.o(93231);
+      AppMethodBeat.o(156021);
       throw paramBuilder;
     }
     this.mNativePtr = l;
-    AppMethodBeat.o(93231);
+    AppMethodBeat.o(156021);
   }
   
-  static native int nativeClear(long paramLong);
+  private static native int nativeClear(long paramLong);
   
-  static native String nativeErrorMessage();
+  public static native String nativeErrorMessage();
   
   private static native boolean nativeExists(long paramLong, String paramString);
   
   private static native long nativeInit(String paramString);
   
-  private static native int nativeList(long paramLong, String paramString, List<FileEntry> paramList);
+  private static native int nativeList(long paramLong, String paramString, List<SFSContext.FileEntry> paramList);
   
-  private static native long nativeOpenRead(long paramLong, String paramString);
+  public static native long nativeOpenRead(long paramLong, String paramString);
   
-  private static native long nativeOpenWrite(long paramLong, String paramString);
+  public static native long nativeOpenWrite(long paramLong, String paramString);
   
   private static native void nativeRelease(long paramLong);
   
@@ -71,193 +64,28 @@ public class SFSContext
   
   private static native void nativeSetStringConf(int paramInt, String paramString);
   
-  private static native FileEntry nativeStat(long paramLong, String paramString);
+  private static native SFSContext.FileEntry nativeStat(long paramLong, String paramString);
   
-  static native Statistics nativeStatistics(long paramLong);
+  private static native SFSContext.Statistics nativeStatistics(long paramLong);
   
-  private static native boolean nativeUnlink(long paramLong, String paramString);
-  
-  public final OutputStream aU(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(93235);
-    if (this.mNativePtr == 0L)
-    {
-      paramString1 = new IllegalArgumentException("Reuse already released SFSContext.");
-      AppMethodBeat.o(93235);
-      throw paramString1;
-    }
-    long l = nativeOpenWrite(this.mNativePtr, paramString1);
-    if (l == 0L)
-    {
-      paramString1 = new IOException(paramString1 + ": " + nativeErrorMessage());
-      AppMethodBeat.o(93235);
-      throw paramString1;
-    }
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      paramString1 = new e(l, paramString2);
-      AppMethodBeat.o(93235);
-      return paramString1;
-    }
-    paramString1 = new SFSOutputStream(l);
-    AppMethodBeat.o(93235);
-    return paramString1;
-  }
-  
-  public final boolean exists(String paramString)
-  {
-    AppMethodBeat.i(93237);
-    if (this.mNativePtr == 0L)
-    {
-      paramString = new IllegalArgumentException("Reuse already released SFSContext.");
-      AppMethodBeat.o(93237);
-      throw paramString;
-    }
-    String str = paramString;
-    if (f.ue(paramString))
-    {
-      f.ug(paramString);
-      str = f.uf(paramString);
-    }
-    boolean bool = nativeExists(this.mNativePtr, str);
-    AppMethodBeat.o(93237);
-    return bool;
-  }
+  public static native boolean nativeUnlink(long paramLong, String paramString);
   
   protected void finalize()
   {
-    AppMethodBeat.i(93240);
+    AppMethodBeat.i(156023);
     if (this.mNativePtr != 0L) {
       release();
     }
     super.finalize();
-    AppMethodBeat.o(93240);
-  }
-  
-  public final InputStream openRead(String paramString)
-  {
-    AppMethodBeat.i(93233);
-    if (this.mNativePtr == 0L)
-    {
-      paramString = new IllegalArgumentException("Reuse already released SFSContext.");
-      AppMethodBeat.o(93233);
-      throw paramString;
-    }
-    long l1;
-    if (f.ue(paramString))
-    {
-      l1 = f.ug(paramString);
-      paramString = f.uf(paramString);
-    }
-    for (;;)
-    {
-      long l2 = nativeOpenRead(this.mNativePtr, paramString);
-      if (l2 == 0L)
-      {
-        paramString = new FileNotFoundException(paramString + ": " + nativeErrorMessage());
-        AppMethodBeat.o(93233);
-        throw paramString;
-      }
-      if (l1 != 0L)
-      {
-        paramString = new d(l2, l1);
-        AppMethodBeat.o(93233);
-        return paramString;
-      }
-      paramString = new SFSInputStream(l2);
-      AppMethodBeat.o(93233);
-      return paramString;
-      l1 = 0L;
-    }
-  }
-  
-  public final OutputStream qC(String paramString)
-  {
-    AppMethodBeat.i(93234);
-    if (this.mNativePtr == 0L)
-    {
-      paramString = new IllegalArgumentException("Reuse already released SFSContext.");
-      AppMethodBeat.o(93234);
-      throw paramString;
-    }
-    String str2 = "";
-    String str1 = paramString;
-    if (f.ue(paramString))
-    {
-      str2 = f.uh(paramString);
-      str1 = f.uf(paramString);
-    }
-    paramString = aU(str1, str2);
-    AppMethodBeat.o(93234);
-    return paramString;
-  }
-  
-  public final boolean qD(String paramString)
-  {
-    AppMethodBeat.i(93239);
-    if (this.mNativePtr == 0L)
-    {
-      paramString = new IllegalArgumentException("Reuse already released SFSContext.");
-      AppMethodBeat.o(93239);
-      throw paramString;
-    }
-    String str = paramString;
-    if (f.ue(paramString))
-    {
-      f.ug(paramString);
-      str = f.uf(paramString);
-    }
-    boolean bool = nativeUnlink(this.mNativePtr, str);
-    AppMethodBeat.o(93239);
-    return bool;
+    AppMethodBeat.o(156023);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(93232);
+    AppMethodBeat.i(156022);
     nativeRelease(this.mNativePtr);
     this.mNativePtr = 0L;
-    AppMethodBeat.o(93232);
-  }
-  
-  public final List<FileEntry> ui(String paramString)
-  {
-    AppMethodBeat.i(93236);
-    if (this.mNativePtr == 0L)
-    {
-      paramString = new IllegalArgumentException("Reuse already released SFSContext.");
-      AppMethodBeat.o(93236);
-      throw paramString;
-    }
-    ArrayList localArrayList = new ArrayList();
-    if (nativeList(this.mNativePtr, paramString, localArrayList) != 0)
-    {
-      paramString = new IOException(nativeErrorMessage());
-      AppMethodBeat.o(93236);
-      throw paramString;
-    }
-    AppMethodBeat.o(93236);
-    return localArrayList;
-  }
-  
-  public final FileEntry uj(String paramString)
-  {
-    AppMethodBeat.i(93238);
-    if (this.mNativePtr == 0L)
-    {
-      paramString = new IllegalArgumentException("Reuse already released SFSContext.");
-      AppMethodBeat.o(93238);
-      throw paramString;
-    }
-    String str = paramString;
-    if (f.ue(paramString))
-    {
-      f.ug(paramString);
-      str = f.uf(paramString);
-    }
-    paramString = nativeStat(this.mNativePtr, str);
-    AppMethodBeat.o(93238);
-    return paramString;
+    AppMethodBeat.o(156022);
   }
   
   public static class Builder
@@ -269,14 +97,14 @@ public class SFSContext
     
     static
     {
-      AppMethodBeat.i(93229);
+      AppMethodBeat.i(156019);
       CREATOR = new Parcelable.Creator()
       {
         public final SFSContext.Builder createFromParcel(Parcel paramAnonymousParcel)
         {
-          AppMethodBeat.i(93211);
+          AppMethodBeat.i(156001);
           paramAnonymousParcel = new SFSContext.Builder(paramAnonymousParcel, null);
-          AppMethodBeat.o(93211);
+          AppMethodBeat.o(156001);
           return paramAnonymousParcel;
         }
         
@@ -285,20 +113,20 @@ public class SFSContext
           return new SFSContext.Builder[paramAnonymousInt];
         }
       };
-      AppMethodBeat.o(93229);
+      AppMethodBeat.o(156019);
     }
     
     public Builder()
     {
-      AppMethodBeat.i(93225);
+      AppMethodBeat.i(156015);
       this.mName = null;
       this.mConf = new HashMap();
-      AppMethodBeat.o(93225);
+      AppMethodBeat.o(156015);
     }
     
     private Builder(Parcel paramParcel)
     {
-      AppMethodBeat.i(93228);
+      AppMethodBeat.i(156018);
       this.mName = paramParcel.readString();
       this.mConf = new HashMap();
       paramParcel = paramParcel.readArray(Builder.class.getClassLoader());
@@ -313,14 +141,14 @@ public class SFSContext
           i += 1;
         }
       }
-      AppMethodBeat.o(93228);
+      AppMethodBeat.o(156018);
     }
     
     public SFSContext create()
     {
-      AppMethodBeat.i(93226);
+      AppMethodBeat.i(156016);
       SFSContext localSFSContext = new SFSContext(this, (byte)0);
-      AppMethodBeat.o(93226);
+      AppMethodBeat.o(156016);
       return localSFSContext;
     }
     
@@ -331,69 +159,69 @@ public class SFSContext
     
     public Builder setBlockFileMaxSize(int paramInt)
     {
-      AppMethodBeat.i(93219);
+      AppMethodBeat.i(156009);
       this.mConf.put(Integer.valueOf(4), Integer.valueOf(paramInt));
-      AppMethodBeat.o(93219);
+      AppMethodBeat.o(156009);
       return this;
     }
     
     public Builder setBlockFilePrefix(String paramString)
     {
-      AppMethodBeat.i(93215);
+      AppMethodBeat.i(156005);
       this.mConf.put(Integer.valueOf(2), paramString);
-      AppMethodBeat.o(93215);
+      AppMethodBeat.o(156005);
       return this;
     }
     
     public Builder setBlockSizeArray(int[] paramArrayOfInt)
     {
-      AppMethodBeat.i(93218);
+      AppMethodBeat.i(156008);
       this.mConf.put(Integer.valueOf(5), paramArrayOfInt);
-      AppMethodBeat.o(93218);
+      AppMethodBeat.o(156008);
       return this;
     }
     
     public Builder setConnectionPool(int paramInt)
     {
-      AppMethodBeat.i(93220);
+      AppMethodBeat.i(156010);
       this.mConf.put(Integer.valueOf(7), Integer.valueOf(paramInt));
-      AppMethodBeat.o(93220);
+      AppMethodBeat.o(156010);
       return this;
     }
     
     public Builder setDBDirectory(String paramString)
     {
-      AppMethodBeat.i(93224);
+      AppMethodBeat.i(156014);
       String str = paramString;
       if (paramString.endsWith("/")) {
         str = paramString.substring(0, paramString.length() - 1);
       }
       this.mConf.put(Integer.valueOf(1), str + "/%s.index");
-      AppMethodBeat.o(93224);
+      AppMethodBeat.o(156014);
       return this;
     }
     
     public Builder setIOMode(int paramInt)
     {
-      AppMethodBeat.i(93217);
+      AppMethodBeat.i(156007);
       this.mConf.put(Integer.valueOf(9), Integer.valueOf(paramInt));
-      AppMethodBeat.o(93217);
+      AppMethodBeat.o(156007);
       return this;
     }
     
     public Builder setIndexDBPath(String paramString)
     {
-      AppMethodBeat.i(93214);
+      AppMethodBeat.i(156004);
       this.mConf.put(Integer.valueOf(1), paramString);
-      AppMethodBeat.o(93214);
+      AppMethodBeat.o(156004);
       return this;
     }
     
     public Builder setMaxConcurrentIO(int paramInt)
     {
-      AppMethodBeat.i(93221);
+      AppMethodBeat.i(156011);
       this.mConf.put(Integer.valueOf(10), Integer.valueOf(paramInt));
-      AppMethodBeat.o(93221);
+      AppMethodBeat.o(156011);
       return this;
     }
     
@@ -405,36 +233,36 @@ public class SFSContext
     
     public Builder setOverflowPrefix(String paramString)
     {
-      AppMethodBeat.i(93216);
+      AppMethodBeat.i(156006);
       this.mConf.put(Integer.valueOf(3), paramString);
-      AppMethodBeat.o(93216);
+      AppMethodBeat.o(156006);
       return this;
     }
     
     public Builder setStoragePath(String paramString)
     {
-      AppMethodBeat.i(93223);
+      AppMethodBeat.i(156013);
       String str = paramString;
       if (paramString.endsWith("/")) {
         str = paramString.substring(0, paramString.length() - 1);
       }
       this.mConf.put(Integer.valueOf(2), str + "/%s.block");
       this.mConf.put(Integer.valueOf(3), str + "/%s/");
-      AppMethodBeat.o(93223);
+      AppMethodBeat.o(156013);
       return this;
     }
     
     public Builder setSyncMode(int paramInt)
     {
-      AppMethodBeat.i(93222);
+      AppMethodBeat.i(156012);
       this.mConf.put(Integer.valueOf(11), Integer.valueOf(paramInt));
-      AppMethodBeat.o(93222);
+      AppMethodBeat.o(156012);
       return this;
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(93227);
+      AppMethodBeat.i(156017);
       paramParcel.writeString(this.mName);
       Object[] arrayOfObject = new Object[12];
       Iterator localIterator = this.mConf.entrySet().iterator();
@@ -447,83 +275,13 @@ public class SFSContext
         }
       }
       paramParcel.writeArray(arrayOfObject);
-      AppMethodBeat.o(93227);
-    }
-  }
-  
-  public static class FileEntry
-  {
-    public String name;
-    public long size;
-    public long timestamp;
-  }
-  
-  public static class Statistics
-    implements Serializable
-  {
-    private static final long serialVersionUID = 1L;
-    public BlockFile[] blockFiles;
-    public long blockSizeEmpty;
-    public long blockSizeUsed;
-    public BlockType[] blockTypes;
-    public long overflowActualSize;
-    public long totalActualSize;
-    
-    public String toString()
-    {
-      int k = 0;
-      AppMethodBeat.i(93230);
-      Object localObject1 = new StringBuilder(4096);
-      ((StringBuilder)localObject1).append("Total:\n\tActualSize: ").append(this.totalActualSize).append('\n').append("\tUsedBlockSize: ").append(this.blockSizeUsed).append('\n').append("\tEmptyBlockSize: ").append(this.blockSizeEmpty).append('\n').append("\tOverflowSize: ").append(this.overflowActualSize).append('\n');
-      int i = 0;
-      int j;
-      Object localObject2;
-      for (;;)
-      {
-        j = k;
-        if (i >= this.blockTypes.length) {
-          break;
-        }
-        localObject2 = this.blockTypes[i];
-        ((StringBuilder)localObject1).append("BlockType: ").append(((BlockType)localObject2).blockSize).append('\n').append("\tUsedCount: ").append(((BlockType)localObject2).usedCount).append('\n').append("\tEmptyCount: ").append(((BlockType)localObject2).emptyCount).append('\n').append("\tActualSize: ").append(((BlockType)localObject2).actualSize).append('\n');
-        i += 1;
-      }
-      while (j < this.blockFiles.length)
-      {
-        localObject2 = this.blockFiles[j];
-        ((StringBuilder)localObject1).append("BlockFile: ").append(j).append('\n').append("\tFileSize: ").append(((BlockFile)localObject2).fileSize).append('\n').append("\tUsedBlockCount: ").append(((BlockFile)localObject2).blockCount).append('\n').append("\tEmptyBlockCount: ").append(((BlockFile)localObject2).emptyCount).append('\n').append("\tTimestamp: ").append(((BlockFile)localObject2).timestamp).append('\n').append("\tDeleted: ").append(((BlockFile)localObject2).deleted).append('\n');
-        j += 1;
-      }
-      localObject1 = ((StringBuilder)localObject1).toString();
-      AppMethodBeat.o(93230);
-      return localObject1;
-    }
-    
-    public static class BlockFile
-      implements Serializable
-    {
-      private static final long serialVersionUID = 1L;
-      public int blockCount;
-      public boolean deleted;
-      public int emptyCount;
-      public long fileSize;
-      public long timestamp;
-    }
-    
-    public static class BlockType
-      implements Serializable
-    {
-      private static final long serialVersionUID = 1L;
-      public long actualSize;
-      public int blockSize;
-      public int emptyCount;
-      public int usedCount;
+      AppMethodBeat.o(156017);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsfs.SFSContext
  * JD-Core Version:    0.7.0.1
  */

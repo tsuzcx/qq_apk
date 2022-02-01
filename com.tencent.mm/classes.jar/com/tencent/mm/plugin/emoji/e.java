@@ -1,54 +1,53 @@
 package com.tencent.mm.plugin.emoji;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.as.a;
 import com.tencent.mm.kernel.api.bucket.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.t;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class e
-  extends q
+  extends t
   implements b
 {
-  private static e ldp;
+  private static e osY;
   
   private e()
   {
-    super(a.class);
+    super(com.tencent.mm.av.a.class);
   }
   
-  public static e bki()
+  public static e bTX()
   {
     try
     {
-      AppMethodBeat.i(62315);
-      if (ldp == null) {
-        ldp = new e();
+      AppMethodBeat.i(104543);
+      if (osY == null) {
+        osY = new e();
       }
-      e locale = ldp;
-      AppMethodBeat.o(62315);
+      e locale = osY;
+      AppMethodBeat.o(104543);
       return locale;
     }
     finally {}
   }
   
-  public static String bkj()
+  public static String bTY()
   {
-    AppMethodBeat.i(62317);
-    String str = g.RL().eHR + "emoji/";
-    AppMethodBeat.o(62317);
-    return str;
+    AppMethodBeat.i(104545);
+    Object localObject = com.tencent.mm.emoji.d.a.fSR;
+    localObject = com.tencent.mm.emoji.d.a.acD();
+    AppMethodBeat.o(104545);
+    return localObject;
   }
   
-  public final List<String> RR()
+  public final List<String> afI()
   {
-    AppMethodBeat.i(62316);
+    AppMethodBeat.i(104544);
     LinkedList localLinkedList = new LinkedList();
     Collections.addAll(localLinkedList, new String[] { "emoji/" });
-    AppMethodBeat.o(62316);
+    AppMethodBeat.o(104544);
     return localLinkedList;
   }
 }

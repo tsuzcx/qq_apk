@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="179.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/h8h" android:layout_width="fill_parent" android:layout_height="104.0dip">
+        <ImageView android:id="@id/h8k" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:background="@drawable/c3y" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_alignParentBottom="true">
+            <TextView android:textSize="12.0dip" android:textColor="@color/aj" android:id="@id/h8n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="播放" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+            <TextView android:textSize="11.25dip" android:textColor="@color/aj" android:id="@id/h8m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="11:01" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+            <ImageView android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@raw/biz_finder_play_icon" android:layout_toLeftOf="@id/h8m" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <TextView android:textSize="15.0dip" android:textColor="@color/fd" android:ellipsize="end" android:id="@id/h8l" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:maxLines="2" />
+</LinearLayout>

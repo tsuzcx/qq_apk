@@ -1,10 +1,16 @@
 package com.tencent.mm.plugin.game.luggage;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 
 public class GameLuggageEntrance
@@ -12,18 +18,61 @@ public class GameLuggageEntrance
 {
   public int getLayoutId()
   {
-    return 2130970060;
+    return 2131494674;
   }
   
-  public void onCreate(Bundle paramBundle)
+  public void onCreate(final Bundle paramBundle)
   {
-    AppMethodBeat.i(135801);
+    AppMethodBeat.i(82979);
     super.onCreate(paramBundle);
-    paramBundle = (EditText)findViewById(2131825860);
-    ((Button)findViewById(2131825861)).setOnClickListener(new GameLuggageEntrance.1(this, paramBundle));
-    ((Button)findViewById(2131825862)).setOnClickListener(new GameLuggageEntrance.2(this));
-    setBackBtn(new GameLuggageEntrance.3(this));
-    AppMethodBeat.o(135801);
+    paramBundle = (EditText)findViewById(2131299266);
+    ((Button)findViewById(2131301236)).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(82976);
+        Object localObject = paramBundle.getText().toString();
+        if (!bt.isNullOrNil((String)localObject))
+        {
+          new Bundle().putString("rawUrl", (String)localObject);
+          paramAnonymousView = new Intent(GameLuggageEntrance.this, LuggageGameWebViewUI.class);
+          paramAnonymousView.putExtra("rawUrl", (String)localObject);
+          localObject = GameLuggageEntrance.this;
+          paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.adn(), "com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((GameLuggageEntrance)localObject).startActivity((Intent)paramAnonymousView.lS(0));
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        }
+        AppMethodBeat.o(82976);
+      }
+    });
+    ((Button)findViewById(2131301240)).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(82977);
+        new Bundle().putString("rawUrl", "https://game.weixin.qq.com/cgi-bin/h5/static/centerbox/index_v6.html?wechat_pkgid=index_v6&abt=21");
+        Object localObject = new Intent(GameLuggageEntrance.this, LuggageGameWebViewUI.class);
+        ((Intent)localObject).putExtra("rawUrl", "https://game.weixin.qq.com/cgi-bin/h5/static/centerbox/index_v6.html?wechat_pkgid=index_v6&abt=21");
+        paramAnonymousView = GameLuggageEntrance.this;
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/game/luggage/GameLuggageEntrance$2", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(82977);
+      }
+    });
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(82978);
+        GameLuggageEntrance.this.finish();
+        AppMethodBeat.o(82978);
+        return false;
+      }
+    });
+    AppMethodBeat.o(82979);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -34,7 +83,7 @@ public class GameLuggageEntrance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.GameLuggageEntrance
  * JD-Core Version:    0.7.0.1
  */

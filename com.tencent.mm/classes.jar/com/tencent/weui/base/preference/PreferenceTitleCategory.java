@@ -17,32 +17,32 @@ public class PreferenceTitleCategory
   public PreferenceTitleCategory(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(113258);
-    if (getLayoutResource() != 2130970239) {
-      setLayoutResource(2130970237);
+    AppMethodBeat.i(159995);
+    if (getLayoutResource() != 2131494867) {
+      setLayoutResource(2131494864);
     }
-    AppMethodBeat.o(113258);
+    AppMethodBeat.o(159995);
   }
   
   protected void onBindView(View paramView)
   {
-    AppMethodBeat.i(113259);
+    AppMethodBeat.i(159996);
     super.onBindView(paramView);
     paramView = (TextView)paramView.findViewById(16908310);
     if (paramView == null)
     {
-      AppMethodBeat.o(113259);
+      AppMethodBeat.o(159996);
       return;
     }
     if ((getTitle() == null) || (getTitle().length() <= 0))
     {
       paramView.setVisibility(8);
-      AppMethodBeat.o(113259);
+      AppMethodBeat.o(159996);
       return;
     }
     paramView.setVisibility(0);
     paramView.setText(getTitle());
-    AppMethodBeat.o(113259);
+    AppMethodBeat.o(159996);
   }
 }
 

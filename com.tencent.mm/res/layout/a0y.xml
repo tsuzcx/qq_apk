@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:background="@drawable/rm" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginLeft="2.0dip" />
-        <TextView android:textSize="8.0dip" android:textStyle="bold" android:textColor="@android:color/darker_gray" android:gravity="left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="Matrix" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/bo4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@color/ke" android:scaleType="centerCrop" />
+        <ImageView android:background="@drawable/p6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/fcq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="64.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:src="@drawable/b6d" android:contentDescription="@string/brb" />
+        <TextView android:textSize="@dimen/jv" android:textColor="@color/s5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/btr" />
     </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip">
-        <TextView android:textSize="8.0dip" android:textColor="@android:color/darker_gray" android:gravity="left" android:paddingLeft="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="40.0dip" android:text="200 ms" />
-        <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="@android:color/holo_green_dark" android:id="@id/bxf" android:paddingLeft="3.0dip" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="60.0dip" android:text="60.00 FPS" />
+    <LinearLayout android:background="@null" style="@style/qp">
+        <com.tencent.mm.ui.base.MMPullDownView android:id="@id/el8" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ListView android:id="@id/bp5" android:background="@null" android:scrollbars="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a7c" android:cacheColorHint="#00000000" android:divider="@drawable/rh" android:dividerHeight="0.0dip" android:headerDividersEnabled="false" android:footerDividersEnabled="false" android:overScrollHeader="@null" android:overScrollFooter="@android:color/transparent" />
+        </com.tencent.mm.ui.base.MMPullDownView>
+        <RelativeLayout android:id="@id/e55" android:padding="@dimen/jn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/i" android:textColor="@color/km" android:gravity="center" android:background="@null" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/btq" android:layout_centerInParent="true" />
+        </RelativeLayout>
     </LinearLayout>
-    <view android:id="@id/bxg" android:layout_width="fill_parent" android:layout_height="160.0dip" android:layout_marginLeft="2.0dip" class="com.tencent.matrix.trace.view.FloatFrameView$LineChartView" />
-</LinearLayout>
+    <com.tencent.mm.plugin.exdevice.ui.ExdeviceRankChampionInfoView android:id="@id/ahu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+</RelativeLayout>

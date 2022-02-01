@@ -6,11 +6,11 @@ public enum AppGroupCreationContent$AppGroupPrivacy
 {
   static
   {
-    AppMethodBeat.i(97326);
+    AppMethodBeat.i(8350);
     Open = new AppGroupPrivacy("Open", 0);
     Closed = new AppGroupPrivacy("Closed", 1);
     $VALUES = new AppGroupPrivacy[] { Open, Closed };
-    AppMethodBeat.o(97326);
+    AppMethodBeat.o(8350);
   }
   
   private AppGroupCreationContent$AppGroupPrivacy() {}

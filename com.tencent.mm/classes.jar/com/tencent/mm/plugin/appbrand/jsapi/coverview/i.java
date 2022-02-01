@@ -2,53 +2,37 @@ package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.c;
-import com.tencent.mm.plugin.appbrand.jsapi.s.b;
-import com.tencent.mm.plugin.appbrand.widget.c.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.jsapi.base.b;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.e.a;
 import org.json.JSONObject;
 
 public final class i
-  extends c
+  extends b
 {
-  private static final int CTRL_INDEX = 254;
-  public static final String NAME = "updateImageView";
+  private static final int CTRL_INDEX = 255;
+  public static final String NAME = "removeImageView";
   
-  public final boolean c(com.tencent.mm.plugin.appbrand.jsapi.e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final int A(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(126315);
-    ab.d("MicroMsg.JsApiUpdateImageView", "onUpdateView(viewId : %s, %s)", new Object[] { Integer.valueOf(paramInt), paramJSONObject });
-    if (!(paramView instanceof CoverViewContainer))
-    {
-      ab.w("MicroMsg.JsApiUpdateImageView", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(126315);
-      return false;
-    }
-    a locala = (a)((CoverViewContainer)paramView).aa(a.class);
-    if (locala == null)
-    {
-      ab.w("MicroMsg.JsApiUpdateImageView", "the target view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(126315);
-      return false;
-    }
-    com.tencent.mm.plugin.appbrand.jsapi.s.e.b(paramView, paramJSONObject.optJSONObject("style"));
-    b.a(parame, locala, paramJSONObject);
-    boolean bool = super.c(parame, paramInt, paramView, paramJSONObject);
-    AppMethodBeat.o(126315);
-    return bool;
+    AppMethodBeat.i(137536);
+    int i = paramJSONObject.getInt("viewId");
+    AppMethodBeat.o(137536);
+    return i;
   }
   
-  public final int w(JSONObject paramJSONObject)
+  public final boolean b(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(126314);
-    int i = paramJSONObject.getInt("viewId");
-    AppMethodBeat.o(126314);
-    return i;
+    AppMethodBeat.i(137537);
+    parame.aOg().ro(paramInt);
+    boolean bool = super.b(parame, paramInt, paramView, paramJSONObject);
+    AppMethodBeat.o(137537);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.i
  * JD-Core Version:    0.7.0.1
  */

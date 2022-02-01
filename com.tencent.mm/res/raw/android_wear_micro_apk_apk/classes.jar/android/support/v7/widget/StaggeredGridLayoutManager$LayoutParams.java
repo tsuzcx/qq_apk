@@ -8,8 +8,8 @@ import android.view.ViewGroup.MarginLayoutParams;
 public class StaggeredGridLayoutManager$LayoutParams
   extends RecyclerView.LayoutParams
 {
-  ar vN;
-  boolean vO;
+  ar xC;
+  boolean xD;
   
   public StaggeredGridLayoutManager$LayoutParams()
   {
@@ -31,12 +31,12 @@ public class StaggeredGridLayoutManager$LayoutParams
     super(paramMarginLayoutParams);
   }
   
-  public final int cM()
+  public final int cU()
   {
-    if (this.vN == null) {
+    if (this.xC == null) {
       return -1;
     }
-    return this.vN.ac;
+    return this.xC.bL;
   }
 }
 

@@ -11,14 +11,14 @@ final class WalletSelectAddrUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(16977);
+    AppMethodBeat.i(21020);
     paramDialogInterface.dismiss();
-    AppMethodBeat.o(16977);
+    AppMethodBeat.o(21020);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.WalletSelectAddrUI.2
  * JD-Core Version:    0.7.0.1
  */

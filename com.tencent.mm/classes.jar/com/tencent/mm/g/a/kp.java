@@ -2,12 +2,13 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.storage.bl;
 
 public final class kp
   extends b
 {
-  public kp.a cAA;
-  public kp.b cAB;
+  public a dpf;
+  public b dpg;
   
   public kp()
   {
@@ -16,12 +17,26 @@ public final class kp
   
   private kp(byte paramByte)
   {
-    AppMethodBeat.i(128343);
-    this.cAA = new kp.a();
-    this.cAB = new kp.b();
-    this.ymq = false;
+    AppMethodBeat.i(55664);
+    this.dpf = new a();
+    this.dpg = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(128343);
+    AppMethodBeat.o(55664);
+  }
+  
+  public static final class a
+  {
+    public String aSt;
+    public bl dbD;
+    public int doZ = 0;
+    public boolean dph = false;
+  }
+  
+  public static final class b
+  {
+    public String dld;
+    public String dpi;
   }
 }
 

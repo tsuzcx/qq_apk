@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.media.record;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class i
 {
-  public static String oP(int paramInt)
+  public static String te(int paramInt)
   {
-    AppMethodBeat.i(105640);
+    AppMethodBeat.i(146329);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("errType:" + paramInt + ", err:");
     switch (paramInt)
@@ -23,7 +23,7 @@ public final class i
     for (;;)
     {
       localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(105640);
+      AppMethodBeat.o(146329);
       return localObject;
       ((StringBuilder)localObject).append("error PCM record callback");
       continue;
@@ -69,10 +69,10 @@ public final class i
     }
   }
   
-  public static int oQ(int paramInt)
+  public static int tf(int paramInt)
   {
-    AppMethodBeat.i(105641);
-    ab.i("MicroMsg.Record.RecordErrorHandler", "getErrIdKey errType:%d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(146330);
+    ad.i("MicroMsg.Record.RecordErrorHandler", "getErrIdKey errType:%d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     case 10: 
@@ -81,76 +81,76 @@ public final class i
     case 13: 
     case 14: 
     default: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 0;
     case 1: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 3;
     case 2: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 4;
     case 3: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 5;
     case 4: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 6;
     case 5: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 7;
     case 6: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 8;
     case 7: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 9;
     case 8: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 10;
     case 9: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 11;
     case 15: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 15;
     case 16: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 16;
     case 17: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 17;
     case 18: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 18;
     case 19: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 19;
     case 20: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 20;
     case 21: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 21;
     case 22: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 22;
     case 23: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 23;
     case 24: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 24;
     case 25: 
-      AppMethodBeat.o(105641);
+      AppMethodBeat.o(146330);
       return 25;
     }
-    AppMethodBeat.o(105641);
+    AppMethodBeat.o(146330);
     return 26;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.i
  * JD-Core Version:    0.7.0.1
  */

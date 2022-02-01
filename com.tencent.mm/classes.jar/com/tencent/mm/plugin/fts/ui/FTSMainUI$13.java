@@ -1,62 +1,27 @@
 package com.tencent.mm.plugin.fts.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.websearch.api.m;
-import org.json.JSONObject;
+import com.tencent.mm.al.q;
 
 final class FTSMainUI$13
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  FTSMainUI$13(FTSMainUI paramFTSMainUI) {}
+  FTSMainUI$13(FTSMainUI paramFTSMainUI, com.tencent.mm.plugin.messenger.a.g paramg, com.tencent.mm.al.g paramg1) {}
   
-  public final void onClick(View paramView)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(61882);
-    try
-    {
-      if (paramView.getTag() != null)
-      {
-        i = ((JSONObject)paramView.getTag()).optInt("businessType");
-        if (i != 0) {
-          break label147;
-        }
-        paramView = ((TextView)paramView).getText().toString();
-        if (!paramView.equals(this.mYi.getString(2131302999))) {
-          break label104;
-        }
-        i = 2;
-        if (i != 0)
-        {
-          paramView = this.mYi;
-          ((m)g.E(m.class)).a(paramView, new FTSMainUI.11(paramView, i));
-        }
-        AppMethodBeat.o(61882);
-      }
-    }
-    catch (Exception localException)
-    {
-      label147:
-      for (;;)
-      {
-        int i = 0;
-        continue;
-        label104:
-        if (paramView.equals(this.mYi.getString(2131303003))) {
-          i = 8;
-        } else if (paramView.equals(this.mYi.getString(2131303000))) {
-          i = 1;
-        }
-      }
-    }
+    AppMethodBeat.i(111976);
+    com.tencent.mm.kernel.g.aeS().a(this.rtq);
+    com.tencent.mm.kernel.g.aeS().b(106, this.ruL);
+    FTSMainUI.g(this.ruJ);
+    AppMethodBeat.o(111976);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSMainUI.13
  * JD-Core Version:    0.7.0.1
  */

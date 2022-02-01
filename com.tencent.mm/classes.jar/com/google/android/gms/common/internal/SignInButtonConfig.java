@@ -29,9 +29,9 @@ public class SignInButtonConfig
   
   static
   {
-    AppMethodBeat.i(61374);
+    AppMethodBeat.i(11866);
     CREATOR = new SignInButtonConfigCreator();
-    AppMethodBeat.o(61374);
+    AppMethodBeat.o(11866);
   }
   
   @SafeParcelable.Constructor
@@ -66,19 +66,19 @@ public class SignInButtonConfig
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(61373);
+    AppMethodBeat.i(11865);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     SafeParcelWriter.writeInt(paramParcel, 2, getButtonSize());
     SafeParcelWriter.writeInt(paramParcel, 3, getColorScheme());
     SafeParcelWriter.writeTypedArray(paramParcel, 4, getScopes(), paramInt, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(61373);
+    AppMethodBeat.o(11865);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.SignInButtonConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceSmallCategory />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:persistent="false" android:title="@string/ef8" android:key="settings_specail_scene_sound" android:dependency="settings_new_msg_notification" android:defaultValue="true" />
-    <CheckBoxPreference android:persistent="false" android:title="@string/eef" android:key="settings_specail_scene_shake" android:dependency="settings_new_msg_notification" android:defaultValue="true" android:layout="@layout/ahl" />
-    <PreferenceSmallCategory />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/ef9" android:key="room_openim_about" android:layout="@layout/ah2" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.facedetect.ui.FaceHeaderPreference android:key="settings_faceprint_header" />
+    <PreferenceCategory />
+    <PreferenceCategory />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="settings_faceprint_title" android:summary="@string/f60" android:title="@string/f5z" />
+    <SummaryBelowPreference android:key="settings_faceprint_create" android:title="@string/f62" />
+    <Preference android:key="settings_faceeprint_reset" android:layout="@layout/aop" android:title="@string/f65" />
+    <Preference android:key="settings_faceprint_unlock" android:layout="@layout/aop" android:title="@string/f66" />
+    <PreferenceCategory />
 </PreferenceScreen>

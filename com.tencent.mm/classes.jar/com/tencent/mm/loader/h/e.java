@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 
 public final class e<T>
 {
-  private e<?> eQg;
-  private T value;
+  private e<?> glJ;
+  public T value;
   
   public e() {}
   
@@ -14,9 +14,9 @@ public final class e<T>
     this.value = paramT;
   }
   
-  public final e Uc()
+  public final e ahN()
   {
-    return this.eQg;
+    return this.glJ;
   }
   
   public final T getValue()
@@ -42,7 +42,7 @@ public final class e<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.h.e
  * JD-Core Version:    0.7.0.1
  */

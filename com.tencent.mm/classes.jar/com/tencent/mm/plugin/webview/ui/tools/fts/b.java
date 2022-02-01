@@ -7,96 +7,89 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
   extends a
 {
-  public b(Context paramContext, View paramView1, View paramView2, View paramView3, View paramView4, View paramView5, final View paramView6, View paramView7, View paramView8, View paramView9)
+  public b(Context paramContext, View paramView1, View paramView2, View paramView3, View paramView4, View paramView5, View paramView6, View paramView7, View paramView8, View paramView9)
   {
     super(paramContext, paramView1, paramView2, paramView3, paramView4, paramView5, paramView6, paramView7, paramView8, paramView9);
-    AppMethodBeat.i(8581);
-    paramView2.getViewTreeObserver().addOnPreDrawListener(new b.1(this, paramView2));
-    paramView6.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
-    {
-      public final boolean onPreDraw()
-      {
-        AppMethodBeat.i(8574);
-        paramView6.getViewTreeObserver().removeOnPreDrawListener(this);
-        b.this.vlx = ((int)paramView6.getX());
-        AppMethodBeat.o(8574);
-        return true;
-      }
-    });
-    AppMethodBeat.o(8581);
   }
   
-  private void dfV()
+  private void epU()
   {
-    AppMethodBeat.i(8585);
-    this.vlA.setAlpha(0.0F);
-    this.vlz.setPadding(this.vly, 0, 0, 0);
-    int i = this.vlv;
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.vlz.getLayoutParams();
-    localLayoutParams.leftMargin = (this.vlv - i);
-    localLayoutParams.rightMargin = (this.vlv - i);
-    localLayoutParams.width = (i * 2 + (int)this.vlI[2][0]);
-    this.vlz.setLayoutParams(localLayoutParams);
-    this.vlz.post(new b.4(this));
-    AppMethodBeat.o(8585);
+    AppMethodBeat.i(80750);
+    this.BlG.setPadding(this.BlF, 0, 0, 0);
+    int i = this.tRT;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.BlG.getLayoutParams();
+    localLayoutParams.leftMargin = (this.tRT - i);
+    localLayoutParams.rightMargin = (this.tRT - i);
+    localLayoutParams.width = (i * 2 + (int)this.BlO[2][0]);
+    this.BlG.setLayoutParams(localLayoutParams);
+    this.BlG.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(80743);
+        b.this.BlG.setY(b.this.BlO[0][1]);
+        b.this.BlG.setX(b.this.BlO[1][1]);
+        AppMethodBeat.o(80743);
+      }
+    });
+    AppMethodBeat.o(80750);
   }
   
   public final void a(a.b paramb, boolean paramBoolean)
   {
-    AppMethodBeat.i(8583);
-    if (paramb == this.vlJ)
+    AppMethodBeat.i(80748);
+    if (paramb == this.BlQ)
     {
-      AppMethodBeat.o(8583);
+      AppMethodBeat.o(80748);
       return;
     }
-    switch (b.6.vlS[paramb.ordinal()])
+    switch (4.Bma[paramb.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(8583);
+      AppMethodBeat.o(80748);
       return;
-      dfT();
-      AppMethodBeat.o(8583);
+      epS();
+      AppMethodBeat.o(80748);
       return;
       if (paramBoolean)
       {
-        dfU();
-        AppMethodBeat.o(8583);
+        epT();
+        AppMethodBeat.o(80748);
         return;
       }
-      dfV();
+      epU();
     }
   }
   
   public final void b(a.b paramb)
   {
-    AppMethodBeat.i(8582);
+    AppMethodBeat.i(80747);
     a(paramb, true);
-    AppMethodBeat.o(8582);
+    AppMethodBeat.o(80747);
   }
   
-  protected final void dfT()
+  protected final void epS()
   {
-    AppMethodBeat.i(8584);
+    AppMethodBeat.i(80749);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.vlI[0][0] - this.vlw >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.vlN);
+    if (this.BlO[0][0] - this.BlD >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.BlU);
     }
     for (;;)
     {
-      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.vlH, "alpha", new float[] { 0.0F, 1.0F });
-      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.vlA, "alpha", new float[] { 0.0F, 1.0F });
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.BlN, "alpha", new float[] { 0.0F, 1.0F });
       AnimatorSet localAnimatorSet = new AnimatorSet();
-      localAnimatorSet.playTogether(new Animator[] { localValueAnimator, localObjectAnimator2, localObjectAnimator1 });
+      localAnimatorSet.playTogether(new Animator[] { localValueAnimator, localObjectAnimator });
+      localAnimatorSet.setInterpolator(new DecelerateInterpolator());
       localAnimatorSet.setDuration(300L);
       localAnimatorSet.addListener(new Animator.AnimatorListener()
       {
@@ -107,59 +100,86 @@ public final class b
         
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(8576);
+          AppMethodBeat.i(80742);
           b.this.isAnimating = false;
-          if (b.this.vlK != null) {
-            b.this.vlK.onAnimationEnd();
+          if (b.this.BlR != null) {
+            b.this.BlR.onAnimationEnd();
           }
-          AppMethodBeat.o(8576);
+          AppMethodBeat.o(80742);
         }
         
         public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
         
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(8575);
+          AppMethodBeat.i(80741);
           b.this.isAnimating = true;
-          if (b.this.vlK != null) {
-            b.this.vlK.onAnimationStart();
+          if (b.this.BlR != null) {
+            b.this.BlR.onAnimationStart();
           }
-          b.this.vlA.setVisibility(0);
-          AppMethodBeat.o(8575);
+          AppMethodBeat.o(80741);
         }
       });
       localAnimatorSet.start();
-      AppMethodBeat.o(8584);
+      AppMethodBeat.o(80749);
       return;
-      localValueAnimator.addUpdateListener(this.vlO);
+      localValueAnimator.addUpdateListener(this.BlV);
     }
   }
   
-  protected final void dfU()
+  protected final void epT()
   {
-    AppMethodBeat.i(8586);
+    AppMethodBeat.i(80751);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.vlI[0][0] - this.vlw >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.vlL);
+    if (this.BlO[0][0] - this.BlD >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.BlS);
     }
     for (;;)
     {
-      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.vlH, "alpha", new float[] { 1.0F, 0.0F });
-      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.vlA, "alpha", new float[] { 1.0F, 0.0F });
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.BlN, "alpha", new float[] { 1.0F, 0.0F });
       AnimatorSet localAnimatorSet = new AnimatorSet();
-      localAnimatorSet.playTogether(new Animator[] { localValueAnimator, localObjectAnimator2, localObjectAnimator1 });
+      localAnimatorSet.playTogether(new Animator[] { localValueAnimator, localObjectAnimator });
+      localAnimatorSet.setInterpolator(new DecelerateInterpolator());
       localAnimatorSet.setDuration(300L);
-      localAnimatorSet.addListener(new b.5(this));
+      localAnimatorSet.addListener(new Animator.AnimatorListener()
+      {
+        public final void onAnimationCancel(Animator paramAnonymousAnimator)
+        {
+          b.this.isAnimating = false;
+        }
+        
+        public final void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(80745);
+          b.this.isAnimating = false;
+          if (b.this.BlR != null) {
+            b.this.BlR.onAnimationEnd();
+          }
+          AppMethodBeat.o(80745);
+        }
+        
+        public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
+        
+        public final void onAnimationStart(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(80744);
+          b.this.isAnimating = true;
+          if (b.this.BlR != null) {
+            b.this.BlR.onAnimationStart();
+          }
+          AppMethodBeat.o(80744);
+        }
+      });
       localAnimatorSet.start();
-      AppMethodBeat.o(8586);
+      AppMethodBeat.o(80751);
       return;
-      localValueAnimator.addUpdateListener(this.vlM);
+      localValueAnimator.addUpdateListener(this.BlT);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.b
  * JD-Core Version:    0.7.0.1
  */

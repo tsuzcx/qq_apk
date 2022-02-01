@@ -1,21 +1,36 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.MMActivity;
 
 final class ak$3
-  implements DialogInterface.OnCancelListener
+  extends x.a
 {
   ak$3(ak paramak) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void Je(int paramInt)
   {
-    this.rLM.rIM = null;
+    AppMethodBeat.i(98158);
+    ad.d("MicroMsg.PicWidget", "I click");
+    if (paramInt < 0)
+    {
+      this.xqH.dzZ();
+      AppMethodBeat.o(98158);
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.setClass(this.xqH.imP, SnsUploadBrowseUI.class);
+    localIntent.putExtra("sns_gallery_position", paramInt);
+    localIntent.putExtra("sns_gallery_temp_paths", this.xqH.xqA.xqL);
+    this.xqH.imP.startActivityForResult(localIntent, 7);
+    AppMethodBeat.o(98158);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ak.3
  * JD-Core Version:    0.7.0.1
  */

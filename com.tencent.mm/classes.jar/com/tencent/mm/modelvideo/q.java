@@ -1,18 +1,18 @@
 package com.tencent.mm.modelvideo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class q
 {
-  private String fXq;
-  private boolean fXr;
+  private String hAb;
+  private boolean hAc;
   private long time;
   
   public q(String paramString)
   {
-    AppMethodBeat.i(50781);
+    AppMethodBeat.i(126946);
     String str = paramString;
     if (paramString.endsWith("\n")) {
       str = paramString.substring(0, paramString.length() - 1);
@@ -21,50 +21,50 @@ public final class q
     try
     {
       if (paramString.length > 0) {
-        this.fXq = paramString[0];
+        this.hAb = paramString[0];
       }
       if (paramString.length > 1) {
-        this.time = bo.getLong(paramString[1], 0L);
+        this.time = bt.getLong(paramString[1], 0L);
       }
       if (paramString.length > 2) {
-        this.fXr = paramString[2].equals("1");
+        this.hAc = paramString[2].equals("1");
       }
-      AppMethodBeat.o(50781);
+      AppMethodBeat.o(126946);
       return;
     }
     catch (Exception paramString)
     {
-      if (this.fXq == null) {
-        this.fXq = "";
+      if (this.hAb == null) {
+        this.hAb = "";
       }
-      this.fXr = false;
+      this.hAc = false;
       this.time = 0L;
-      ab.e("MicroMsg.VideoContent", "VoiceContent parse failed.");
-      AppMethodBeat.o(50781);
+      ad.e("MicroMsg.VideoContent", "VoiceContent parse failed.");
+      AppMethodBeat.o(126946);
     }
   }
   
-  public static String d(String paramString, long paramLong, boolean paramBoolean)
+  public static String b(String paramString, long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(50780);
+    AppMethodBeat.i(126945);
     paramString = new StringBuilder().append(paramString).append(":").append(paramLong).append(":");
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
       paramString = i + "\n";
-      AppMethodBeat.o(50780);
+      AppMethodBeat.o(126945);
       return paramString;
     }
   }
   
-  public final String alM()
+  public final String aCQ()
   {
-    return this.fXq;
+    return this.hAb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.modelvideo.q
  * JD-Core Version:    0.7.0.1
  */

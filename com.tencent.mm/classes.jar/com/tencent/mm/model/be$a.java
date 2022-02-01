@@ -1,25 +1,51 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.ac;
+import com.tencent.mm.protocal.l;
+import com.tencent.mm.protocal.l.b;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.bcp;
+import com.tencent.mm.sdk.platformtools.bt;
 
-public enum be$a
+public final class be$a
+  extends l.d
+  implements l.b
 {
-  static
+  public bcp gNA;
+  
+  public be$a()
   {
-    AppMethodBeat.i(16329);
-    fms = new a("NO_INIT", 0);
-    fmt = new a("SET_MOBILE", 1);
-    fmu = new a("SUCC", 2);
-    fmv = new a("SUCC_UNLOAD", 3);
-    fmw = new a[] { fms, fmt, fmu, fmv };
-    AppMethodBeat.o(16329);
+    AppMethodBeat.i(20365);
+    this.gNA = new bcp();
+    AppMethodBeat.o(20365);
   }
   
-  private be$a() {}
+  public final int getCmdId()
+  {
+    return 0;
+  }
+  
+  public final int getFuncId()
+  {
+    return 618;
+  }
+  
+  public final byte[] toProtoBuf()
+  {
+    AppMethodBeat.i(20366);
+    setRsaInfo(ac.eBY());
+    this.gNA.CFU = new SKBuiltinBuffer_t().setBuffer(bt.eGG());
+    this.gNA.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.gNA.toByteArray();
+    AppMethodBeat.o(20366);
+    return arrayOfByte;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.model.be.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,297 +1,465 @@
 package com.tencent.mm.emoji.a;
 
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.a.a;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.plugin.gif.MMWXGFJNI;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.cc.a;
+import com.tencent.mm.cc.a.b;
+import com.tencent.mm.emoji.a.a.z;
+import com.tencent.mm.emoji.sync.EmojiUpdateReceiver;
+import com.tencent.mm.kernel.d;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.protocal.protobuf.EmotionDetail;
+import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
+import com.tencent.mm.protocal.protobuf.PersonalDesigner;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.aw;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.storage.emotion.EmojiInfo.a;
+import com.tencent.mm.storage.emotion.c;
+import com.tencent.mm.storage.emotion.f;
+import com.tencent.mm.storage.emotion.k;
+import com.tencent.mm.storage.emotion.l;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public final class h
 {
-  private static boolean ewY = false;
-  private static boolean ewZ = false;
-  private static boolean exa = false;
-  private static boolean exb = false;
-  private static boolean exc = false;
-  private static boolean exd = false;
+  private static h fMI;
+  private boolean fMJ;
+  private boolean fMK;
+  public boolean fML;
+  private boolean fMM;
+  private boolean fMN;
+  public ArrayList<EmojiGroupInfo> fMO;
+  public HashMap<String, ArrayList<EmojiInfo>> fMP;
+  private HashMap<String, PersonalDesigner> fMQ;
+  public String fMR;
   
-  public static boolean OH()
+  private h()
   {
-    AppMethodBeat.i(62250);
-    if ((com.tencent.mm.m.g.Nq().getInt("EmotionRewardOption", 0) & 0x1) == 1)
+    AppMethodBeat.i(104442);
+    this.fMJ = true;
+    this.fMK = true;
+    this.fML = true;
+    this.fMM = true;
+    this.fMN = true;
+    this.fMO = new ArrayList();
+    this.fMP = new HashMap();
+    this.fMQ = new HashMap();
+    if (aj.cbe())
     {
-      AppMethodBeat.o(62250);
-      return false;
+      this.fMR = ((String)g.afB().afk().get(-29414086, z.abS()));
+      AppMethodBeat.o(104442);
+      return;
     }
-    AppMethodBeat.o(62250);
-    return true;
+    a.eCL();
+    a.b localb = a.EMi;
+    this.fMR = a.b.cC(-29414086, z.abS());
+    AppMethodBeat.o(104442);
   }
   
-  public static boolean OI()
+  public static h abj()
   {
-    AppMethodBeat.i(62251);
-    if ((com.tencent.mm.m.g.Nq().getInt("EmotionRewardOption", 0) & 0x2) == 2)
+    try
     {
-      AppMethodBeat.o(62251);
-      return false;
-    }
-    AppMethodBeat.o(62251);
-    return true;
-  }
-  
-  public static boolean OJ()
-  {
-    AppMethodBeat.i(62252);
-    if ((com.tencent.mm.m.g.Nq().getInt("EmotionRewardOption", 0) & 0x4) == 4)
-    {
-      AppMethodBeat.o(62252);
-      return true;
-    }
-    AppMethodBeat.o(62252);
-    return false;
-  }
-  
-  public static int OK()
-  {
-    AppMethodBeat.i(62253);
-    int i = bo.getInt(com.tencent.mm.m.g.Nq().getValue("CustomEmojiMaxSize"), 300);
-    AppMethodBeat.o(62253);
-    return i;
-  }
-  
-  public static int OL()
-  {
-    AppMethodBeat.i(62254);
-    int i = bo.getInt(com.tencent.mm.m.g.Nq().getValue("CustomEmojiMaxSize"), 300);
-    AppMethodBeat.o(62254);
-    return i;
-  }
-  
-  public static String OM()
-  {
-    AppMethodBeat.i(62255);
-    String str = com.tencent.mm.m.g.Nq().getValue("C2CEmojiNotAutoDownloadTimeRange");
-    AppMethodBeat.o(62255);
-    return str;
-  }
-  
-  public static String ON()
-  {
-    AppMethodBeat.i(62256);
-    String str = com.tencent.mm.m.g.Nq().getValue("EmotionPanelConfigName");
-    AppMethodBeat.o(62256);
-    return str;
-  }
-  
-  public static boolean OO()
-  {
-    AppMethodBeat.i(62257);
-    if (!ewY)
-    {
-      int i = com.tencent.mm.m.g.Nq().getInt("EnableEmoticonExternUrl", 0);
-      int j = MMWXGFJNI.getErrorCode();
-      if ((i & 0x1) != 1) {
-        break label138;
+      AppMethodBeat.i(104441);
+      if (fMI == null) {
+        fMI = new h();
       }
-      if ((OV()) || (OW())) {
-        break label131;
-      }
-      exb = true;
-      if (j < 0)
+      h localh = fMI;
+      AppMethodBeat.o(104441);
+      return localh;
+    }
+    finally {}
+  }
+  
+  public final ArrayList<EmojiInfo> abk()
+  {
+    AppMethodBeat.i(104444);
+    if ((!this.fMP.containsKey("download_custom")) || (this.fMJ))
+    {
+      if (((com.tencent.mm.kernel.b.h)g.afy().aeZ()).agu())
       {
-        exb = false;
-        switch (j)
+        localObject = (ArrayList)aw.eLx().FyY.vc(true);
+        this.fMP.put("download_custom", localObject);
+      }
+    }
+    else
+    {
+      this.fMJ = false;
+      localObject = (ArrayList)this.fMP.get("download_custom");
+      AppMethodBeat.o(104444);
+      return localObject;
+    }
+    Object localObject = new UnsupportedOperationException("need get from main process");
+    AppMethodBeat.o(104444);
+    throw ((Throwable)localObject);
+  }
+  
+  public final ArrayList<EmojiGroupInfo> abl()
+  {
+    AppMethodBeat.i(104446);
+    if (this.fMM) {
+      if (!((com.tencent.mm.kernel.b.h)g.afy().aeZ()).agu()) {
+        break label57;
+      }
+    }
+    ArrayList localArrayList;
+    for (this.fMO = aw.eLx().FyZ.eNn();; this.fMO = localArrayList)
+    {
+      this.fMM = false;
+      localArrayList = this.fMO;
+      AppMethodBeat.o(104446);
+      return localArrayList;
+      label57:
+      localArrayList = new ArrayList();
+      Object localObject = a.call(a.getUri(), "getEmojiGroupInfoList", null, null);
+      if (localObject != null)
+      {
+        ((Bundle)localObject).setClassLoader(EmojiGroupInfo.class.getClassLoader());
+        if (((Bundle)localObject).containsKey("data"))
         {
+          localObject = ((Bundle)localObject).getParcelableArrayList("data");
+          if (localObject != null)
+          {
+            localArrayList.addAll((Collection)localObject);
+            ad.i("MicroMsg.EmojiStorageCache", "[getEmojiGroupInfoListExport] size: %s", new Object[] { Integer.valueOf(((List)localObject).size()) });
+          }
         }
       }
     }
-    for (;;)
-    {
-      ewY = true;
-      ab.i("MicroMsg.emoji.EmotionDynamicConfigMgr", "isEnableHevcDownload:%b", new Object[] { Boolean.valueOf(exb) });
-      boolean bool = exb;
-      AppMethodBeat.o(62257);
-      return bool;
-      label131:
-      exb = false;
-      break;
-      label138:
-      exb = false;
-      break;
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(711L, 5L, 1L, false);
-      continue;
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(711L, 6L, 1L, false);
-      continue;
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(711L, 7L, 1L, false);
-      continue;
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(711L, 8L, 1L, false);
-      continue;
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(711L, 9L, 1L, false);
-      continue;
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(711L, 10L, 1L, false);
-    }
   }
   
-  public static boolean OP()
+  public final ArrayList<EmojiInfo> di(boolean paramBoolean)
   {
-    AppMethodBeat.i(62258);
-    int j;
-    if (!ewZ)
+    AppMethodBeat.i(104443);
+    ad.d("MicroMsg.EmojiStorageCache", "onlySuccessEmoji: %s.", new Object[] { Boolean.valueOf(paramBoolean) });
+    Object localObject3;
+    Object localObject4;
+    Object localObject2;
+    Object localObject1;
+    if ((!this.fMP.containsKey("custom")) || (this.fMK))
     {
-      int i = com.tencent.mm.m.g.Nq().getInt("EnableEmoticonExternUrl", 0);
-      j = MMWXGFJNI.getErrorCode();
-      if ((i & 0x2) != 2) {
-        break label115;
+      ad.i("MicroMsg.EmojiStorageCache", "getAllCustomEmoji: %s", new Object[] { Boolean.valueOf(this.fMK) });
+      if (!((com.tencent.mm.kernel.b.h)g.afy().aeZ()).agu()) {
+        break label276;
       }
-      if ((OV()) || (OW())) {
-        break label103;
+      localObject3 = aw.eLx().FyY;
+      localObject4 = new ArrayList();
+      localObject2 = ((f)localObject3).aS(EmojiGroupInfo.LBO, false);
+      localObject1 = localObject2;
+      if (((List)localObject2).size() < 2)
+      {
+        ((f)localObject3).init(aj.getContext());
+        localObject1 = ((f)localObject3).aS(EmojiGroupInfo.LBO, false);
+        com.tencent.mm.plugin.report.service.h.vKh.dB(1062, 0);
       }
-      exc = true;
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(711L, 1L, 1L, false);
+      ((List)localObject4).addAll(((f)localObject3).aS(EmojiGroupInfo.LBP, false));
+      ((List)localObject4).addAll((Collection)localObject1);
+      localObject1 = (ArrayList)localObject4;
     }
     for (;;)
     {
-      if (j < 0) {
-        exc = false;
+      this.fMP.put("custom", localObject1);
+      this.fMK = false;
+      localObject1 = (ArrayList)this.fMP.get("custom");
+      if ((localObject1 == null) || (!paramBoolean)) {
+        break label386;
       }
-      ewZ = true;
-      ab.i("MicroMsg.emoji.EmotionDynamicConfigMgr", "isEnableHevcDecode:%b", new Object[] { Boolean.valueOf(exc) });
-      boolean bool = exc;
-      AppMethodBeat.o(62258);
-      return bool;
-      label103:
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(711L, 0L, 1L, false);
-      label115:
-      exc = false;
-    }
-  }
-  
-  public static boolean OQ()
-  {
-    AppMethodBeat.i(62259);
-    if (!exa) {
-      if ((com.tencent.mm.m.g.Nq().getInt("EnableEmoticonExternUrl", 0) & 0x4) != 4) {
-        break label65;
+      localObject2 = new ArrayList();
+      localObject3 = ((ArrayList)localObject1).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (EmojiInfo)((Iterator)localObject3).next();
+        if (EmojiInfo.a.FBv != ((EmojiInfo)localObject4).fZV()) {
+          ((ArrayList)localObject2).add(localObject4);
+        }
+      }
+      label276:
+      localObject2 = new ArrayList();
+      localObject3 = a.call(a.getUri(), "getAllCustomEmoji", null, null);
+      localObject1 = localObject2;
+      if (localObject3 != null)
+      {
+        ((Bundle)localObject3).setClassLoader(EmojiInfo.class.getClassLoader());
+        localObject1 = localObject2;
+        if (((Bundle)localObject3).containsKey("data"))
+        {
+          localObject3 = ((Bundle)localObject3).getParcelableArrayList("data");
+          localObject1 = localObject2;
+          if (localObject3 != null)
+          {
+            ((ArrayList)localObject2).addAll((Collection)localObject3);
+            ad.i("MicroMsg.EmojiStorageCache", "[getAllCustomEmojiExport] size:%s", new Object[] { Integer.valueOf(((List)localObject3).size()) });
+            localObject1 = localObject2;
+          }
+        }
       }
     }
-    label65:
-    for (exd = true;; exd = false)
-    {
-      exa = true;
-      ab.i("MicroMsg.emoji.EmotionDynamicConfigMgr", "isEnableHevcUpload:%b", new Object[] { Boolean.valueOf(exd) });
-      boolean bool = exd;
-      AppMethodBeat.o(62259);
-      return bool;
-    }
+    ((ArrayList)localObject1).removeAll((Collection)localObject2);
+    label386:
+    AppMethodBeat.o(104443);
+    return localObject1;
   }
   
-  public static boolean OR()
+  public final ArrayList<EmojiInfo> dj(boolean paramBoolean)
   {
-    AppMethodBeat.i(62260);
-    if ((com.tencent.mm.m.g.Nq().getInt("ShowEmoticonCameraEntrance", 3) & 0x1) > 0)
+    AppMethodBeat.i(104447);
+    ad.i("MicroMsg.EmojiStorageCache", "getCaptureEmoji: needUpdateCaptureEmoji %s withFailed %s.", new Object[] { Boolean.valueOf(this.fMN), Boolean.valueOf(paramBoolean) });
+    Object localObject2;
+    if ((!this.fMP.containsKey("capture")) || (this.fMN))
     {
-      AppMethodBeat.o(62260);
-      return true;
+      if (((com.tencent.mm.kernel.b.h)g.afy().aeZ()).agu())
+      {
+        localObject1 = (ArrayList)aw.eLx().FyY.vd(false);
+        ad.i("MicroMsg.EmojiStorageCache", "getCaptureEmoji: %s size %s", new Object[] { Boolean.valueOf(this.fMN), Integer.valueOf(((ArrayList)localObject1).size()) });
+        this.fMP.put("capture", localObject1);
+      }
     }
-    AppMethodBeat.o(62260);
-    return false;
+    else
+    {
+      this.fMN = false;
+      localObject2 = (ArrayList)this.fMP.get("capture");
+      if (!paramBoolean) {
+        break label308;
+      }
+      if (localObject2 != null) {
+        break label299;
+      }
+    }
+    Object localObject3;
+    label299:
+    for (int i = 0;; i = ((ArrayList)localObject2).size())
+    {
+      ad.d("MicroMsg.EmojiStorageCache", "getCaptureEmoji list size: %s.", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(104447);
+      return localObject2;
+      localObject2 = new ArrayList();
+      localObject3 = a.call(a.getUri(), "getCaptureEmoji", null, null);
+      localObject1 = localObject2;
+      if (localObject3 == null) {
+        break;
+      }
+      ((Bundle)localObject3).setClassLoader(EmojiInfo.class.getClassLoader());
+      localObject1 = localObject2;
+      if (!((Bundle)localObject3).containsKey("key_data")) {
+        break;
+      }
+      localObject3 = ((Bundle)localObject3).getParcelableArrayList("key_data");
+      localObject1 = localObject2;
+      if (localObject3 == null) {
+        break;
+      }
+      ((ArrayList)localObject2).addAll((Collection)localObject3);
+      ad.i("MicroMsg.EmojiStorageCache", "[getCaptureEmojiExport] size:%s", new Object[] { Integer.valueOf(((List)localObject3).size()) });
+      localObject1 = localObject2;
+      break;
+    }
+    label308:
+    Object localObject1 = new ArrayList();
+    if (localObject2 != null)
+    {
+      localObject2 = ((ArrayList)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (EmojiInfo)((Iterator)localObject2).next();
+        if (((EmojiInfo)localObject3).fZV() == EmojiInfo.a.FBv) {
+          ((ArrayList)localObject1).add(localObject3);
+        }
+      }
+    }
+    ad.d("MicroMsg.EmojiStorageCache", "getCaptureEmoji result size: %s.", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
+    AppMethodBeat.o(104447);
+    return localObject1;
   }
   
-  public static boolean OS()
+  public final void dk(boolean paramBoolean)
   {
-    AppMethodBeat.i(62261);
-    if ((com.tencent.mm.m.g.Nq().getInt("ShowEmoticonCameraEntrance", 3) & 0x2) > 0)
+    AppMethodBeat.i(104448);
+    this.fMK = true;
+    ad.i("MicroMsg.EmojiStorageCache", "setNeedUpdateAllCustomEmoji %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
     {
-      AppMethodBeat.o(62261);
-      return true;
+      Intent localIntent = new Intent();
+      localIntent.setAction(EmojiUpdateReceiver.ACTION);
+      localIntent.putExtra(EmojiUpdateReceiver.fSj, EmojiUpdateReceiver.fSk);
+      aj.getContext().sendBroadcast(localIntent);
     }
-    AppMethodBeat.o(62261);
-    return false;
+    AppMethodBeat.o(104448);
   }
   
-  public static boolean OT()
+  public final void dl(boolean paramBoolean)
   {
-    AppMethodBeat.i(62263);
-    if (com.tencent.mm.kernel.g.RL().Ru().getInt(ac.a.yLN, 1) == 0)
+    AppMethodBeat.i(104449);
+    this.fMJ = true;
+    ad.i("MicroMsg.EmojiStorageCache", "setNeedUpdateAllCustomEmoji %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
     {
-      AppMethodBeat.o(62263);
-      return true;
+      Intent localIntent = new Intent();
+      localIntent.setAction(EmojiUpdateReceiver.ACTION);
+      localIntent.putExtra(EmojiUpdateReceiver.fSj, EmojiUpdateReceiver.fSl);
+      aj.getContext().sendBroadcast(localIntent);
     }
-    AppMethodBeat.o(62263);
-    return false;
+    AppMethodBeat.o(104449);
   }
   
-  public static boolean OU()
+  public final void dm(boolean paramBoolean)
   {
-    AppMethodBeat.i(62264);
-    if (com.tencent.mm.m.g.Nq().getInt("ForbiddenEmotionSpringFestivalMsgTail", 0) > 0)
+    AppMethodBeat.i(104450);
+    this.fMM = true;
+    ad.i("MicroMsg.EmojiStorageCache", "setNeedUpdateGroupInfo: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
     {
-      AppMethodBeat.o(62264);
-      return false;
+      Intent localIntent = new Intent();
+      localIntent.setAction(EmojiUpdateReceiver.ACTION);
+      localIntent.putExtra(EmojiUpdateReceiver.fSj, EmojiUpdateReceiver.fSn);
+      aj.getContext().sendBroadcast(localIntent);
     }
-    AppMethodBeat.o(62264);
+    AppMethodBeat.o(104450);
+  }
+  
+  public final void dn(boolean paramBoolean)
+  {
+    AppMethodBeat.i(104451);
+    this.fMN = true;
+    if (paramBoolean)
+    {
+      String str = EmojiUpdateReceiver.fSo;
+      Intent localIntent = new Intent();
+      localIntent.setAction(EmojiUpdateReceiver.ACTION);
+      localIntent.putExtra(EmojiUpdateReceiver.fSj, str);
+      aj.getContext().sendBroadcast(localIntent);
+    }
+    AppMethodBeat.o(104451);
+  }
+  
+  public final boolean l(EmojiInfo paramEmojiInfo)
+  {
+    AppMethodBeat.i(104452);
+    Iterator localIterator2;
+    do
+    {
+      Iterator localIterator1 = this.fMP.values().iterator();
+      while (!localIterator2.hasNext())
+      {
+        if (!localIterator1.hasNext()) {
+          break;
+        }
+        localIterator2 = ((ArrayList)localIterator1.next()).iterator();
+      }
+    } while (!((EmojiInfo)localIterator2.next()).JS().equals(paramEmojiInfo.JS()));
+    AppMethodBeat.o(104452);
     return true;
-  }
-  
-  private static boolean OV()
-  {
-    boolean bool = true;
-    AppMethodBeat.i(62265);
-    PackageManager localPackageManager = ah.getContext().getPackageManager();
-    try
-    {
-      localPackageManager.getPackageInfo("com.google.android.wearable.app.cn", 1);
-      AppMethodBeat.o(62265);
-      return bool;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      for (;;)
-      {
-        bool = false;
-      }
-    }
-  }
-  
-  private static boolean OW()
-  {
-    boolean bool = true;
-    AppMethodBeat.i(62266);
-    PackageManager localPackageManager = ah.getContext().getPackageManager();
-    try
-    {
-      localPackageManager.getPackageInfo("com.google.android.wearable.app", 1);
-      AppMethodBeat.o(62266);
-      return bool;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      for (;;)
-      {
-        bool = false;
-      }
-    }
-  }
-  
-  public static boolean isSpringFestivalEnable()
-  {
-    AppMethodBeat.i(62262);
-    ((a)com.tencent.mm.kernel.g.E(a.class)).a(a.a.lVd, 0);
-    com.tencent.mm.m.g.Nq().getInt("EmotionSpringFestivalPendantSwitch", 0);
-    AppMethodBeat.o(62262);
+    AppMethodBeat.o(104452);
     return false;
+  }
+  
+  public final ArrayList<EmojiInfo> pU(String paramString)
+  {
+    AppMethodBeat.i(104445);
+    if (this.fML)
+    {
+      this.fMP.clear();
+      this.fML = false;
+    }
+    Object localObject1;
+    if (!this.fMP.containsKey(paramString))
+    {
+      if (!((com.tencent.mm.kernel.b.h)g.afy().aeZ()).agu()) {
+        break label95;
+      }
+      localObject1 = (ArrayList)aw.eLx().FyY.TC(paramString);
+    }
+    for (;;)
+    {
+      this.fMP.put(paramString, localObject1);
+      paramString = (ArrayList)this.fMP.get(paramString);
+      AppMethodBeat.o(104445);
+      return paramString;
+      label95:
+      ArrayList localArrayList = new ArrayList();
+      Object localObject2 = a.call(a.getUri(), "getEmojiListByGroupId", String.valueOf(paramString), null);
+      localObject1 = localArrayList;
+      if (localObject2 != null)
+      {
+        ((Bundle)localObject2).setClassLoader(EmojiInfo.class.getClassLoader());
+        localObject1 = localArrayList;
+        if (((Bundle)localObject2).containsKey("data"))
+        {
+          localObject2 = ((Bundle)localObject2).getParcelableArrayList("data");
+          localObject1 = localArrayList;
+          if (localObject2 != null)
+          {
+            localArrayList.addAll((Collection)localObject2);
+            ad.i("MicroMsg.EmojiStorageCache", "[getEmojiListByGroupIdExport] size%s", new Object[] { Integer.valueOf(((List)localObject2).size()) });
+            localObject1 = localArrayList;
+          }
+        }
+      }
+    }
+  }
+  
+  public final PersonalDesigner pV(String paramString)
+  {
+    Object localObject1 = null;
+    AppMethodBeat.i(183920);
+    if (!this.fMQ.containsKey(paramString))
+    {
+      if (!((com.tencent.mm.kernel.b.h)g.afy().aeZ()).agu()) {
+        break label125;
+      }
+      localObject1 = aw.eLx().Fzc.aJE(paramString);
+      if (localObject1 == null) {
+        break label175;
+      }
+    }
+    label125:
+    Object localObject2;
+    label175:
+    for (localObject1 = ((k)localObject1).field_content;; localObject2 = null) {
+      for (;;)
+      {
+        Object localObject3;
+        if (localObject1 != null) {
+          localObject3 = new GetEmotionDetailResponse();
+        }
+        try
+        {
+          ((GetEmotionDetailResponse)localObject3).parseFrom((byte[])localObject1);
+          if ((((GetEmotionDetailResponse)localObject3).EmotionDetail != null) && (((GetEmotionDetailResponse)localObject3).EmotionDetail.PersonalDesigner != null)) {
+            this.fMQ.put(paramString, ((GetEmotionDetailResponse)localObject3).EmotionDetail.PersonalDesigner);
+          }
+          paramString = (PersonalDesigner)this.fMQ.get(paramString);
+          AppMethodBeat.o(183920);
+          return paramString;
+          localObject3 = a.call(a.getUri(), "getDesignerInfo", paramString, null);
+          if (((Bundle)localObject3).containsKey("buffer")) {
+            localObject1 = ((Bundle)localObject3).getByteArray("buffer");
+          }
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            ad.printErrStackTrace("MicroMsg.EmojiStorageCache", localException, "", new Object[0]);
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.a.h
  * JD-Core Version:    0.7.0.1
  */

@@ -2,71 +2,71 @@ package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.bf;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.bi;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
 {
-  public static void a(bf parambf)
+  public static void a(bi parambi)
   {
-    AppMethodBeat.i(73360);
-    if (parambf == null)
+    AppMethodBeat.i(121880);
+    if (parambi == null)
     {
-      AppMethodBeat.o(73360);
+      AppMethodBeat.o(121880);
       return;
     }
     Object localObject = null;
     try
     {
-      parambf = parambf.toByteArray();
-      b.v("hell_astackd_mmkv_key", parambf);
-      AppMethodBeat.o(73360);
+      parambi = parambi.toByteArray();
+      b.o("hell_astackd_mmkv_key", parambi);
+      AppMethodBeat.o(121880);
       return;
     }
-    catch (Exception parambf)
+    catch (Exception parambi)
     {
       for (;;)
       {
-        ab.printErrStackTrace("ActivityStackDao", parambf, "ActivityStackDao write", new Object[0]);
-        parambf = localObject;
+        ad.printErrStackTrace("ActivityStackDao", parambi, "ActivityStackDao write", new Object[0]);
+        parambi = localObject;
       }
     }
   }
   
-  public static bf brA()
+  public static bi cbE()
   {
-    AppMethodBeat.i(73359);
-    bf localbf2 = brB();
-    bf localbf1 = localbf2;
-    if (localbf2 == null)
+    AppMethodBeat.i(121879);
+    bi localbi2 = cbF();
+    bi localbi1 = localbi2;
+    if (localbi2 == null)
     {
-      localbf1 = new bf();
-      a(localbf1);
+      localbi1 = new bi();
+      a(localbi1);
     }
-    AppMethodBeat.o(73359);
-    return localbf1;
+    AppMethodBeat.o(121879);
+    return localbi1;
   }
   
-  private static bf brB()
+  private static bi cbF()
   {
-    AppMethodBeat.i(73361);
+    AppMethodBeat.i(121881);
     byte[] arrayOfByte = b.getBytes("hell_astackd_mmkv_key");
     if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
-      AppMethodBeat.o(73361);
+      AppMethodBeat.o(121881);
       return null;
     }
-    bf localbf = new bf();
+    bi localbi = new bi();
     try
     {
-      localbf.parseFrom(arrayOfByte);
-      AppMethodBeat.o(73361);
-      return localbf;
+      localbi.parseFrom(arrayOfByte);
+      AppMethodBeat.o(121881);
+      return localbi;
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace("ActivityStackDao", localException, "ActivityStackDao read", new Object[0]);
-      AppMethodBeat.o(73361);
+      ad.printErrStackTrace("ActivityStackDao", localException, "ActivityStackDao read", new Object[0]);
+      AppMethodBeat.o(121881);
     }
     return null;
   }

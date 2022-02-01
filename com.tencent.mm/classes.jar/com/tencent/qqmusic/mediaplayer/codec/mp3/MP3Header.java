@@ -23,15 +23,17 @@ class MP3Header
   
   MP3Header()
   {
-    AppMethodBeat.i(128578);
+    AppMethodBeat.i(114320);
     int[] arrayOfInt2 = { 0, 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 };
-    int[] arrayOfInt3 = { 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 };
-    int[] arrayOfInt1 = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 };
-    this.bitrate = new int[][][] { { arrayOfInt2, { 0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 }, arrayOfInt3 }, { { 0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 }, arrayOfInt1, { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 } } };
-    arrayOfInt1 = new int[] { 0, 0, 0, 0 };
-    arrayOfInt2 = new int[] { 44100, 48000, 32000, 0 };
-    this.samplingRate = new int[][] { { 11025, 12000, 8000, 0 }, arrayOfInt1, { 22050, 24000, 16000, 0 }, arrayOfInt2 };
-    AppMethodBeat.o(128578);
+    int[] arrayOfInt3 = { 0, 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 };
+    int[] arrayOfInt4 = { 0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 };
+    int[] arrayOfInt1 = { 0, 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 };
+    this.bitrate = new int[][][] { { arrayOfInt2, arrayOfInt3, arrayOfInt4 }, { arrayOfInt1, { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 }, { 0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 } } };
+    arrayOfInt1 = new int[] { 11025, 12000, 8000, 0 };
+    arrayOfInt2 = new int[] { 0, 0, 0, 0 };
+    arrayOfInt3 = new int[] { 44100, 48000, 32000, 0 };
+    this.samplingRate = new int[][] { arrayOfInt1, arrayOfInt2, { 22050, 24000, 16000, 0 }, arrayOfInt3 };
+    AppMethodBeat.o(114320);
   }
   
   protected void decode(int paramInt)
@@ -103,7 +105,7 @@ class MP3Header
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.codec.mp3.MP3Header
  * JD-Core Version:    0.7.0.1
  */

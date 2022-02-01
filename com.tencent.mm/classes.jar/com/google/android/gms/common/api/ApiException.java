@@ -11,18 +11,18 @@ public class ApiException
   
   public int getStatusCode()
   {
-    AppMethodBeat.i(89442);
+    AppMethodBeat.i(4464);
     int i = this.mStatus.getStatusCode();
-    AppMethodBeat.o(89442);
+    AppMethodBeat.o(4464);
     return i;
   }
   
   @Deprecated
   public String getStatusMessage()
   {
-    AppMethodBeat.i(89443);
+    AppMethodBeat.i(4465);
     String str = this.mStatus.getStatusMessage();
-    AppMethodBeat.o(89443);
+    AppMethodBeat.o(4465);
     return str;
   }
 }

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/qm"
+<LinearLayout android:gravity="center|left" android:orientation="vertical" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView style="@style/qn" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include layout="@layout/ap8" />
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <include layout="@layout/auv" />
-        </LinearLayout>
-        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/qq" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/wb" android:id="@id/gam" android:layout_width="73.0dip" android:layout_height="wrap_content" android:layout_marginLeft="1.0dip" android:singleLine="true" style="@style/lw" />
+        <TextView android:textColor="@color/wc" android:id="@id/c3a" android:singleLine="true" style="@style/lz" />
     </LinearLayout>
+    <TextView android:textColor="@color/wc" android:id="@id/f9x" android:layout_marginLeft="79.0dip" android:singleLine="true" style="@style/lz" />
+    <TextView android:textColor="@color/wc" android:id="@id/g80" android:layout_marginLeft="79.0dip" android:singleLine="true" style="@style/lz" />
 </LinearLayout>

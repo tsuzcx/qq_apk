@@ -3,84 +3,107 @@ package com.tencent.mm.plugin.game.luggage.c.a;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import com.tencent.luggage.d.c;
 import com.tencent.luggage.d.k;
 import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.fav.ui.c;
+import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.plugin.webview.luggage.FavUrlTask;
-import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.plugin.webview.luggage.jsapi.au;
-import com.tencent.mm.protocal.protobuf.bcz;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.webview.luggage.f;
+import com.tencent.mm.plugin.webview.luggage.jsapi.ax;
+import com.tencent.mm.protocal.protobuf.bpp;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.widget.snackbar.a.b;
+import org.json.JSONObject;
 
 public final class g
   extends a
 {
-  private a.b nkf;
+  private a.b rPQ;
   
   public g()
   {
     super(4);
-    AppMethodBeat.i(135906);
-    this.nkf = new g.2(this);
-    AppMethodBeat.o(135906);
+    AppMethodBeat.i(83111);
+    this.rPQ = new a.b()
+    {
+      public final void aXO()
+      {
+        AppMethodBeat.i(83110);
+        FavUrlTask localFavUrlTask = new FavUrlTask();
+        localFavUrlTask.actionType = 2;
+        AppBrandMainProcessService.a(localFavUrlTask);
+        AppMethodBeat.o(83110);
+      }
+    };
+    AppMethodBeat.o(83111);
   }
   
-  public final void a(Context paramContext, e parame, bcz parambcz)
+  public final void a(Context paramContext, f paramf, bpp parambpp)
   {
-    AppMethodBeat.i(135907);
-    parambcz = new Bundle();
-    parambcz.putLong("msg_id", parame.bzu.getLong("msg_id", -9223372036854775808L));
-    parambcz.putString("sns_local_id", parame.bzu.getString("sns_local_id"));
-    parambcz.putInt("news_svr_id", parame.bzu.getInt("news_svr_id", 0));
-    parambcz.putString("news_svr_tweetid", parame.bzu.getString("news_svr_tweetid"));
-    parambcz.putInt("message_index", parame.bzu.getInt("message_index", 0));
-    Object localObject = parame.getUrl();
-    String str = parame.daZ();
-    parambcz.putString("rawUrl", str);
-    if ((!bo.isNullOrNil(str)) && (str.endsWith("#rd")))
+    AppMethodBeat.i(83112);
+    parambpp = new Bundle();
+    parambpp.putLong("msg_id", paramf.mParams.getLong("msg_id", -9223372036854775808L));
+    parambpp.putString("sns_local_id", paramf.mParams.getString("sns_local_id"));
+    parambpp.putInt("news_svr_id", paramf.mParams.getInt("news_svr_id", 0));
+    parambpp.putString("news_svr_tweetid", paramf.mParams.getString("news_svr_tweetid"));
+    parambpp.putInt("message_index", paramf.mParams.getInt("message_index", 0));
+    Object localObject = paramf.getUrl();
+    String str = paramf.bEx();
+    parambpp.putString("rawUrl", str);
+    if ((!bt.isNullOrNil(str)) && (str.endsWith("#rd")))
     {
       str = str.substring(0, str.length() - 3);
-      if ((!bo.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
+      if ((!bt.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
       {
-        parambcz.putString("rawUrl", (String)localObject);
-        parambcz.putLong("msg_id", -9223372036854775808L);
+        parambpp.putString("rawUrl", (String)localObject);
+        parambpp.putLong("msg_id", -9223372036854775808L);
       }
     }
     for (;;)
     {
-      parambcz.putString("preChatName", parame.bzu.getString("preChatName"));
-      parambcz.putInt("preMsgIndex", parame.bzu.getInt("preMsgIndex", 0));
-      parambcz.putString("prePublishId", parame.bzu.getString("prePublishId"));
-      parambcz.putString("preUsername", parame.bzu.getString("preUsername"));
+      parambpp.putString("preChatName", paramf.mParams.getString("preChatName"));
+      parambpp.putInt("preMsgIndex", paramf.mParams.getInt("preMsgIndex", 0));
+      parambpp.putString("prePublishId", paramf.mParams.getString("prePublishId"));
+      parambpp.putString("preUsername", paramf.mParams.getString("preUsername"));
       localObject = new FavUrlTask();
       ((FavUrlTask)localObject).actionType = 1;
-      ((FavUrlTask)localObject).mEJ = parambcz;
+      ((FavUrlTask)localObject).dow = parambpp;
       AppBrandMainProcessService.b((MainProcessTask)localObject);
-      if (!((FavUrlTask)localObject).uRc) {
+      if (!((FavUrlTask)localObject).ASK) {
         break;
       }
-      au.JS(1);
-      parame.bzs.a(new g.1(this));
-      AppMethodBeat.o(135907);
-      return;
-      if ((!bo.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
+      ax.SL(1);
+      paramf.caI.a(new c()
       {
-        parambcz.putString("rawUrl", (String)localObject);
-        parambcz.putLong("msg_id", -9223372036854775808L);
-        parambcz.putString("sns_local_id", "");
+        public final JSONObject AM()
+        {
+          return null;
+        }
+        
+        public final String name()
+        {
+          return "menu:share:appmessage";
+        }
+      });
+      AppMethodBeat.o(83112);
+      return;
+      if ((!bt.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
+      {
+        parambpp.putString("rawUrl", (String)localObject);
+        parambpp.putLong("msg_id", -9223372036854775808L);
+        parambpp.putString("sns_local_id", "");
       }
     }
-    c.a(((FavUrlTask)localObject).ret, (Activity)paramContext, this.nkf);
-    AppMethodBeat.o(135907);
+    e.a(((FavUrlTask)localObject).ret, (Activity)paramContext, this.rPQ);
+    AppMethodBeat.o(83112);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.c.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,40 @@
 package com.tencent.mm.plugin.f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.g;
-import com.tencent.mm.at.o;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.aw.e;
+import com.tencent.mm.aw.g;
+import com.tencent.mm.aw.o;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class d
   extends a
 {
-  protected final List<com.tencent.mm.plugin.f.b.a> Q(bi parambi)
+  protected final List<com.tencent.mm.plugin.f.b.a> ac(bl parambl)
   {
-    AppMethodBeat.i(18621);
-    if (parambi == null)
+    AppMethodBeat.i(22730);
+    if (parambl == null)
     {
-      AppMethodBeat.o(18621);
+      AppMethodBeat.o(22730);
       return null;
     }
-    com.tencent.mm.at.e locale = o.ahC().w(parambi);
-    if ((locale == null) || (locale.fDL == 0L))
+    e locale = o.ayF().I(parambl);
+    if ((locale == null) || (locale.deI == 0L))
     {
-      ab.w("MicroMsg.ImageMsgHandler", "%s can not get imgInfo", new Object[] { bau() });
-      AppMethodBeat.o(18621);
+      ad.w("MicroMsg.ImageMsgHandler", "%s can not get imgInfo", new Object[] { info() });
+      AppMethodBeat.o(22730);
       return null;
     }
-    String str2 = o.ahC().q(locale.fDM, "", "");
-    long l7 = com.tencent.mm.vfs.e.avI(str2);
-    String str1 = o.ahC().q(locale.fDO, "", "");
-    long l8 = com.tencent.mm.vfs.e.avI(str1);
-    Object localObject7 = o.ahC().q(locale.fDO, "", "") + "hd";
-    long l9 = com.tencent.mm.vfs.e.avI((String)localObject7);
+    String str2 = o.ayF().p(locale.hgj, "", "");
+    long l7 = i.aMN(str2);
+    String str1 = o.ayF().p(locale.hgl, "", "");
+    long l8 = i.aMN(str1);
+    Object localObject7 = o.ayF().p(locale.hgl, "", "") + "hd";
+    long l9 = i.aMN((String)localObject7);
     Object localObject4 = null;
     Object localObject5 = null;
     Object localObject6 = null;
@@ -45,9 +47,9 @@ public final class d
     Object localObject1 = localObject6;
     Object localObject2 = localObject5;
     Object localObject3 = localObject4;
-    if (locale.ahh())
+    if (locale.ayi())
     {
-      locale = o.ahC().lv(locale.fDW);
+      locale = o.ayF().od(locale.hgu);
       l3 = l1;
       l4 = l2;
       l5 = l6;
@@ -56,24 +58,24 @@ public final class d
       localObject3 = localObject4;
       if (locale != null)
       {
-        localObject4 = o.ahC().q(locale.fDM, "", "");
-        if (!bo.isEqual((String)localObject4, str2)) {
-          l1 = com.tencent.mm.vfs.e.avI((String)localObject4);
+        localObject4 = o.ayF().p(locale.hgj, "", "");
+        if (!bt.kU((String)localObject4, str2)) {
+          l1 = i.aMN((String)localObject4);
         }
-        localObject5 = o.ahC().q(locale.fDO, "", "");
-        if (!bo.isEqual((String)localObject5, str1)) {
-          l2 = com.tencent.mm.vfs.e.avI((String)localObject5);
+        localObject5 = o.ayF().p(locale.hgl, "", "");
+        if (!bt.kU((String)localObject5, str1)) {
+          l2 = i.aMN((String)localObject5);
         }
-        localObject6 = o.ahC().q(locale.fDO, "", "") + "hd";
+        localObject6 = o.ayF().p(locale.hgl, "", "") + "hd";
         l3 = l1;
         l4 = l2;
         l5 = l6;
         localObject1 = localObject6;
         localObject2 = localObject5;
         localObject3 = localObject4;
-        if (!bo.isEqual((String)localObject6, (String)localObject7))
+        if (!bt.kU((String)localObject6, (String)localObject7))
         {
-          l5 = com.tencent.mm.vfs.e.avI((String)localObject6);
+          l5 = i.aMN((String)localObject6);
           localObject3 = localObject4;
           localObject2 = localObject5;
           localObject1 = localObject6;
@@ -82,53 +84,53 @@ public final class d
         }
       }
     }
-    localObject4 = R(parambi);
+    localObject4 = ad(parambl);
     ((com.tencent.mm.plugin.f.b.a)localObject4).field_msgSubType = 20;
-    ((com.tencent.mm.plugin.f.b.a)localObject4).field_path = Hw(str2);
+    ((com.tencent.mm.plugin.f.b.a)localObject4).field_path = aUM(str2);
     ((com.tencent.mm.plugin.f.b.a)localObject4).field_size = l7;
-    localObject5 = R(parambi);
+    localObject5 = ad(parambl);
     ((com.tencent.mm.plugin.f.b.a)localObject5).field_msgSubType = 21;
-    ((com.tencent.mm.plugin.f.b.a)localObject5).field_path = Hw(str1);
+    ((com.tencent.mm.plugin.f.b.a)localObject5).field_path = aUM(str1);
     ((com.tencent.mm.plugin.f.b.a)localObject5).field_size = l8;
-    localObject6 = R(parambi);
+    localObject6 = ad(parambl);
     ((com.tencent.mm.plugin.f.b.a)localObject6).field_msgSubType = 22;
-    ((com.tencent.mm.plugin.f.b.a)localObject6).field_path = Hw((String)localObject7);
+    ((com.tencent.mm.plugin.f.b.a)localObject6).field_path = aUM((String)localObject7);
     ((com.tencent.mm.plugin.f.b.a)localObject6).field_size = l9;
-    localObject7 = R(parambi);
+    localObject7 = ad(parambl);
     ((com.tencent.mm.plugin.f.b.a)localObject7).field_msgSubType = 23;
-    ((com.tencent.mm.plugin.f.b.a)localObject7).field_path = Hw((String)localObject3);
+    ((com.tencent.mm.plugin.f.b.a)localObject7).field_path = aUM((String)localObject3);
     ((com.tencent.mm.plugin.f.b.a)localObject7).field_size = l3;
-    localObject3 = R(parambi);
+    localObject3 = ad(parambl);
     ((com.tencent.mm.plugin.f.b.a)localObject3).field_msgSubType = 24;
-    ((com.tencent.mm.plugin.f.b.a)localObject3).field_path = Hw(localObject2);
+    ((com.tencent.mm.plugin.f.b.a)localObject3).field_path = aUM(localObject2);
     ((com.tencent.mm.plugin.f.b.a)localObject3).field_size = l4;
-    parambi = R(parambi);
-    parambi.field_msgSubType = 25;
-    parambi.field_path = Hw((String)localObject1);
-    parambi.field_size = l5;
-    ab.i("MicroMsg.ImageMsgHandler", "%s create image wx file index bigItem[%s] thumb[%s][%s] hd[%s %s %s]", new Object[] { bau(), localObject4, localObject5, localObject6, localObject7, localObject3, parambi });
+    parambl = ad(parambl);
+    parambl.field_msgSubType = 25;
+    parambl.field_path = aUM((String)localObject1);
+    parambl.field_size = l5;
+    ad.i("MicroMsg.ImageMsgHandler", "%s create image wx file index bigItem[%s] thumb[%s][%s] hd[%s %s %s]", new Object[] { info(), localObject4, localObject5, localObject6, localObject7, localObject3, parambl });
     localObject1 = new ArrayList();
     ((List)localObject1).add(localObject4);
     ((List)localObject1).add(localObject5);
     ((List)localObject1).add(localObject6);
     ((List)localObject1).add(localObject7);
     ((List)localObject1).add(localObject3);
-    ((List)localObject1).add(parambi);
-    AppMethodBeat.o(18621);
+    ((List)localObject1).add(parambl);
+    AppMethodBeat.o(22730);
     return localObject1;
   }
   
-  protected final String bau()
+  protected final String info()
   {
-    AppMethodBeat.i(18622);
+    AppMethodBeat.i(22731);
     String str = "image_" + hashCode();
-    AppMethodBeat.o(18622);
+    AppMethodBeat.o(22731);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.f.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@raw/multitalk_mute_action_on" />
-    <item android:state_checked="false" android:drawable="@raw/multitalk_mute_action" />
-</selector>
+    <solid android:color="#f25a5a5a" />
+    <corners android:radius="2.0dip" android:topLeftRadius="16.0dip" android:topRightRadius="16.0dip" android:bottomLeftRadius="0.0dip" android:bottomRightRadius="0.0dip" />
+</shape>

@@ -21,16 +21,16 @@ public class Co64
   
   public void parse(Parsable paramParsable, Box paramBox)
   {
-    AppMethodBeat.i(128488);
+    AppMethodBeat.i(114262);
     super.parse(paramParsable, paramBox);
     this.entryCount = paramParsable.readInt();
     this.chunkOffset = paramParsable.readLongArray(this.entryCount);
-    AppMethodBeat.o(128488);
+    AppMethodBeat.o(114262);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.mpeg4.boxes.Co64
  * JD-Core Version:    0.7.0.1
  */

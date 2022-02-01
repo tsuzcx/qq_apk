@@ -30,9 +30,9 @@ public final class zzfe
   
   static
   {
-    AppMethodBeat.i(71312);
+    AppMethodBeat.i(101295);
     CREATOR = new zzff();
-    AppMethodBeat.o(71312);
+    AppMethodBeat.o(101295);
   }
   
   @SafeParcelable.Constructor
@@ -66,7 +66,7 @@ public final class zzfe
   
   public final String toString()
   {
-    AppMethodBeat.i(71311);
+    AppMethodBeat.i(101294);
     int i = this.zzeh;
     String str = this.zzcl;
     if (this.data == null) {}
@@ -74,26 +74,26 @@ public final class zzfe
     {
       localObject = String.valueOf(localObject);
       localObject = String.valueOf(str).length() + 43 + String.valueOf(localObject).length() + "MessageEventParcelable[" + i + "," + str + ", size=" + (String)localObject + "]";
-      AppMethodBeat.o(71311);
+      AppMethodBeat.o(101294);
       return localObject;
     }
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(71310);
+    AppMethodBeat.i(101293);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 2, getRequestId());
     SafeParcelWriter.writeString(paramParcel, 3, getPath(), false);
     SafeParcelWriter.writeByteArray(paramParcel, 4, getData(), false);
     SafeParcelWriter.writeString(paramParcel, 5, getSourceNodeId(), false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(71310);
+    AppMethodBeat.o(101293);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzfe
  * JD-Core Version:    0.7.0.1
  */

@@ -5,38 +5,38 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.o;
 import android.support.v7.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class AppBrandDesktopView$j
   extends GridLayoutManager
 {
   public AppBrandDesktopView$j(AppBrandDesktopView paramAppBrandDesktopView, int paramInt)
   {
-    super(paramInt, (byte)0);
+    super(paramInt, 1);
   }
   
-  public final void a(RecyclerView paramRecyclerView, int paramInt)
+  public final void a(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(133856);
-    paramRecyclerView = new AppBrandDesktopView.i(this.jfg, AppBrandDesktopView.j(this.jfg));
-    paramRecyclerView.ajQ = paramInt;
+    AppMethodBeat.i(49600);
+    paramRecyclerView = new AppBrandDesktopView.i(this.lVl, AppBrandDesktopView.i(this.lVl));
+    paramRecyclerView.ard = paramInt;
     a(paramRecyclerView);
-    AppMethodBeat.o(133856);
+    AppMethodBeat.o(49600);
   }
   
   public final void c(RecyclerView.o paramo, RecyclerView.s params)
   {
-    AppMethodBeat.i(133855);
+    AppMethodBeat.i(49599);
     try
     {
       super.c(paramo, params);
-      AppMethodBeat.o(133855);
+      AppMethodBeat.o(49599);
       return;
     }
     catch (IndexOutOfBoundsException paramo)
     {
-      ab.e("MicroMsg.AppBrandDesktopView", "[onLayoutChildren] IndexOutOfBoundsException!!");
-      AppMethodBeat.o(133855);
+      ad.e("MicroMsg.AppBrandDesktopView", "[onLayoutChildren] IndexOutOfBoundsException!!");
+      AppMethodBeat.o(49599);
     }
   }
 }

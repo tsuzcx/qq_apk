@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/f40" android:background="@color/a_8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout android:id="@id/h26" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="48.0dip">
+        <FrameLayout android:id="@id/f42" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <FrameLayout android:id="@id/b39" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="containerFrameLayout">
+                <include layout="@layout/bm_" />
+                <com.tencent.mm.plugin.webview.ui.tools.LogoWebViewWrapper android:id="@id/d6d" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <FrameLayout android:id="@id/d6e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="containerFrameLayout" />
+                </com.tencent.mm.plugin.webview.ui.tools.LogoWebViewWrapper>
+            </FrameLayout>
+            <FrameLayout android:id="@id/evm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="refreshFrameLayout">
+                <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/f" android:layout_marginBottom="@dimen/f" android:src="@raw/webview_refresh_icon" />
+                    <TextView android:textSize="18.0sp" android:textColor="@color/s5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h9l" style="@style/pw" />
+                </LinearLayout>
+            </FrameLayout>
+            <com.tencent.mm.ui.base.MMFalseProgressBar android:layout_gravity="center|left|top" android:id="@id/h1k" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:progressDrawable="@drawable/a3b" android:contentDescription="progressBar" />
+        </FrameLayout>
+        <include layout="@layout/blv" />
+    </com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/f93" android:background="@drawable/ac3" android:paddingLeft="48.0dip" android:paddingRight="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginLeft="14.0dip">
+            <com.tencent.mm.plugin.websearch.ui.widget.SOSEditTextView android:id="@id/fqo" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/fqp" android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="48.0dip" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="48.0dip">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageButton android:id="@id/u4" android:background="@null" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/ac0" android:contentDescription="@string/gh" />
+            <ImageButton android:id="@id/aay" android:background="@null" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/ac1" android:contentDescription="@string/gh" />
+        </FrameLayout>
+        <View android:layout_gravity="center_vertical" android:background="#ffe1e1e1" android:layout_width="2.0px" android:layout_height="22.0dip" />
+    </LinearLayout>
+</RelativeLayout>

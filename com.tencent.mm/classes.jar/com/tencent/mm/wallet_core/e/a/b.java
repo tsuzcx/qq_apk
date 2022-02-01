@@ -1,9 +1,9 @@
 package com.tencent.mm.wallet_core.e.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.wallet_core.c.w;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.wallet_core.c.y;
 import java.util.HashMap;
 import org.json.JSONObject;
 
@@ -12,30 +12,30 @@ public final class b
 {
   public b()
   {
-    AppMethodBeat.i(49160);
+    AppMethodBeat.i(72877);
     setRequestData(new HashMap());
-    AppMethodBeat.o(49160);
+    AppMethodBeat.o(72877);
   }
   
-  public final int cTa()
+  public final int ebo()
   {
     return 28;
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(49161);
-    ab.d("Micromsg.NetScenePayUTimeSeed", " errCode: " + paramInt + " errMsg :" + paramString);
+    AppMethodBeat.i(72878);
+    ad.d("Micromsg.NetScenePayUTimeSeed", " errCode: " + paramInt + " errMsg :" + paramString);
     paramString = paramJSONObject.optString("time_stamp");
-    if (!bo.isNullOrNil(paramString)) {
-      w.setTimeStamp(paramString);
+    if (!bt.isNullOrNil(paramString)) {
+      y.setTimeStamp(paramString);
     }
-    AppMethodBeat.o(49161);
+    AppMethodBeat.o(72878);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.wallet_core.e.a.b
  * JD-Core Version:    0.7.0.1
  */

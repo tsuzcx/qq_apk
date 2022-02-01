@@ -9,43 +9,43 @@ final class FragmentState
   implements Parcelable
 {
   public static final Parcelable.Creator<FragmentState> CREATOR = new Parcelable.Creator() {};
-  Bundle aK;
-  final Bundle aN;
-  final boolean aT;
-  final int ac;
-  final int bd;
-  final int be;
-  final String bf;
-  final boolean bg;
-  final boolean bh;
-  final boolean bi;
-  final String dp;
-  Fragment dq;
+  final int bL;
+  final boolean cD;
+  final int cO;
+  final int cP;
+  final String cQ;
+  final boolean cR;
+  final boolean cS;
+  final boolean cT;
+  Bundle ct;
+  final Bundle cx;
+  final String fe;
+  Fragment ff;
   
-  public FragmentState(Parcel paramParcel)
+  FragmentState(Parcel paramParcel)
   {
-    this.dp = paramParcel.readString();
-    this.ac = paramParcel.readInt();
+    this.fe = paramParcel.readString();
+    this.bL = paramParcel.readInt();
     if (paramParcel.readInt() != 0)
     {
       bool1 = true;
-      this.aT = bool1;
-      this.bd = paramParcel.readInt();
-      this.be = paramParcel.readInt();
-      this.bf = paramParcel.readString();
+      this.cD = bool1;
+      this.cO = paramParcel.readInt();
+      this.cP = paramParcel.readInt();
+      this.cQ = paramParcel.readString();
       if (paramParcel.readInt() == 0) {
         break label124;
       }
       bool1 = true;
       label69:
-      this.bi = bool1;
+      this.cT = bool1;
       if (paramParcel.readInt() == 0) {
         break label129;
       }
       bool1 = true;
       label83:
-      this.bh = bool1;
-      this.aN = paramParcel.readBundle();
+      this.cS = bool1;
+      this.cx = paramParcel.readBundle();
       if (paramParcel.readInt() == 0) {
         break label134;
       }
@@ -54,8 +54,8 @@ final class FragmentState
     label134:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.bg = bool1;
-      this.aK = paramParcel.readBundle();
+      this.cR = bool1;
+      this.ct = paramParcel.readBundle();
       return;
       bool1 = false;
       break;
@@ -67,18 +67,18 @@ final class FragmentState
     }
   }
   
-  public FragmentState(Fragment paramFragment)
+  FragmentState(Fragment paramFragment)
   {
-    this.dp = paramFragment.getClass().getName();
-    this.ac = paramFragment.ac;
-    this.aT = paramFragment.aT;
-    this.bd = paramFragment.bd;
-    this.be = paramFragment.be;
-    this.bf = paramFragment.bf;
-    this.bi = paramFragment.bi;
-    this.bh = paramFragment.bh;
-    this.aN = paramFragment.aN;
-    this.bg = paramFragment.bg;
+    this.fe = paramFragment.getClass().getName();
+    this.bL = paramFragment.bL;
+    this.cD = paramFragment.cD;
+    this.cO = paramFragment.cO;
+    this.cP = paramFragment.cP;
+    this.cQ = paramFragment.cQ;
+    this.cT = paramFragment.cT;
+    this.cS = paramFragment.cS;
+    this.cx = paramFragment.cx;
+    this.cR = paramFragment.cR;
   }
   
   public final int describeContents()
@@ -89,29 +89,29 @@ final class FragmentState
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    paramParcel.writeString(this.dp);
-    paramParcel.writeInt(this.ac);
-    if (this.aT)
+    paramParcel.writeString(this.fe);
+    paramParcel.writeInt(this.bL);
+    if (this.cD)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.bd);
-      paramParcel.writeInt(this.be);
-      paramParcel.writeString(this.bf);
-      if (!this.bi) {
+      paramParcel.writeInt(this.cO);
+      paramParcel.writeInt(this.cP);
+      paramParcel.writeString(this.cQ);
+      if (!this.cT) {
         break label120;
       }
       paramInt = 1;
       label65:
       paramParcel.writeInt(paramInt);
-      if (!this.bh) {
+      if (!this.cS) {
         break label125;
       }
       paramInt = 1;
       label79:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeBundle(this.aN);
-      if (!this.bg) {
+      paramParcel.writeBundle(this.cx);
+      if (!this.cR) {
         break label130;
       }
     }
@@ -119,7 +119,7 @@ final class FragmentState
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeBundle(this.aK);
+      paramParcel.writeBundle(this.ct);
       return;
       paramInt = 0;
       break;

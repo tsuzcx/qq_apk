@@ -1,86 +1,85 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.tools.u;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.service.i;
+import com.tencent.mm.plugin.webview.c.d;
+import com.tencent.mm.plugin.webview.c.f;
+import d.g.b.k;
+import d.y;
+import org.json.JSONObject;
 
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiInvokeMiniProgramAPI;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "binderID", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "getBinderID", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;)I", "handleMsg", "", "env", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class e
-  implements b
+  extends com.tencent.mm.plugin.webview.c.c.a
 {
-  private MMWebView foJ;
-  private d vmp;
+  private static final int Bpa = 295;
+  public static final e Bpf;
+  private static final String dAn = "invokeMiniProgramAPI";
   
-  public e(MMWebView paramMMWebView, d paramd)
+  static
   {
-    this.foJ = paramMMWebView;
-    this.vmp = paramd;
+    AppMethodBeat.i(175672);
+    Bpf = new e();
+    Bpa = 295;
+    dAn = "invokeMiniProgramAPI";
+    AppMethodBeat.o(175672);
   }
   
-  public final boolean ait(String paramString)
+  public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
   {
-    Object localObject = null;
-    AppMethodBeat.i(9019);
-    if (this.foJ != null) {
-      this.foJ.evaluateJavascript("javascript:WeixinJSBridge._continueSetResult()", null);
-    }
-    paramString = paramString.substring(27);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(188901);
+    k.h(paramd, "env");
+    k.h(paraml, "msg");
+    i locali = (i)g.ab(i.class);
+    if (locali != null)
     {
-      ab.e("MicroMsg.JsApiResultHandler", "SetResultHandler handleUrl fail, value is null");
-      AppMethodBeat.o(9019);
-      return false;
+      String str = paraml.ASh.optString("name");
+      Object localObject = paraml.ASh.opt("arg");
+      locali.a(paramd.ARd.getBinderID(), str, localObject);
     }
-    int i = paramString.indexOf("&");
-    if (i <= 0)
+    for (;;)
     {
-      ab.e("MicroMsg.JsApiResultHandler", "SetResultHandler, handleUrl fail, invalid splitorIdx = %d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(9019);
-      return false;
-    }
-    String str = paramString.substring(0, i);
-    try
-    {
-      paramString = Base64.decode(paramString.substring(i + 1), 0);
-      if (paramString == null)
-      {
-        paramString = localObject;
-        ab.i("MicroMsg.JsApiResultHandler", "SetResultHandler, scene = %s, result = %s", new Object[] { str, paramString });
-        this.vmp.keep_setReturnValue(str, paramString);
-        AppMethodBeat.o(9019);
-        return true;
-      }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.JsApiResultHandler", "SetResultHandler decodeBase64 failed");
-        paramString = null;
-        continue;
-        paramString = new String(paramString);
-      }
+      paramd.ARd.h(paraml.ASg, dAn + ":ok", null);
+      AppMethodBeat.o(188901);
+      return true;
+      ((d.g.a.a)a.Bpg).invoke();
     }
   }
   
-  public final boolean aiz(String paramString)
+  public final int ekB()
   {
-    AppMethodBeat.i(9018);
-    if (bo.isNullOrNil(paramString))
+    return Bpa;
+  }
+  
+  public final String ekC()
+  {
+    return dAn;
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  static final class a
+    extends d.g.b.l
+    implements d.g.a.a<y>
+  {
+    public static final a Bpg;
+    
+    static
     {
-      AppMethodBeat.o(9018);
-      return false;
+      AppMethodBeat.i(175670);
+      Bpg = new a();
+      AppMethodBeat.o(175670);
     }
-    boolean bool = u.x(paramString, "weixin://private/setresult/");
-    AppMethodBeat.o(9018);
-    return bool;
+    
+    a()
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.e
  * JD-Core Version:    0.7.0.1
  */

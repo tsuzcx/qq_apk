@@ -29,7 +29,7 @@ public class NativeDialogParameters
 {
   private static Bundle create(ShareCameraEffectContent paramShareCameraEffectContent, Bundle paramBundle, boolean paramBoolean)
   {
-    AppMethodBeat.i(97148);
+    AppMethodBeat.i(8172);
     Bundle localBundle = createBaseParameters(paramShareCameraEffectContent, paramBoolean);
     Utility.putNonEmptyString(localBundle, "effect_id", paramShareCameraEffectContent.getEffectId());
     if (paramBundle != null) {
@@ -41,20 +41,20 @@ public class NativeDialogParameters
       if (paramShareCameraEffectContent != null) {
         Utility.putNonEmptyString(localBundle, "effect_arguments", paramShareCameraEffectContent.toString());
       }
-      AppMethodBeat.o(97148);
+      AppMethodBeat.o(8172);
       return localBundle;
     }
     catch (JSONException paramShareCameraEffectContent)
     {
       paramShareCameraEffectContent = new FacebookException("Unable to create a JSON Object from the provided CameraEffectArguments: " + paramShareCameraEffectContent.getMessage());
-      AppMethodBeat.o(97148);
+      AppMethodBeat.o(8172);
       throw paramShareCameraEffectContent;
     }
   }
   
   private static Bundle create(ShareLinkContent paramShareLinkContent, boolean paramBoolean)
   {
-    AppMethodBeat.i(97149);
+    AppMethodBeat.i(8173);
     Bundle localBundle = createBaseParameters(paramShareLinkContent, paramBoolean);
     Utility.putNonEmptyString(localBundle, "TITLE", paramShareLinkContent.getContentTitle());
     Utility.putNonEmptyString(localBundle, "DESCRIPTION", paramShareLinkContent.getContentDescription());
@@ -62,96 +62,96 @@ public class NativeDialogParameters
     Utility.putNonEmptyString(localBundle, "QUOTE", paramShareLinkContent.getQuote());
     Utility.putUri(localBundle, "MESSENGER_LINK", paramShareLinkContent.getContentUrl());
     Utility.putUri(localBundle, "TARGET_DISPLAY", paramShareLinkContent.getContentUrl());
-    AppMethodBeat.o(97149);
+    AppMethodBeat.o(8173);
     return localBundle;
   }
   
   private static Bundle create(ShareMediaContent paramShareMediaContent, List<Bundle> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(97152);
+    AppMethodBeat.i(8176);
     paramShareMediaContent = createBaseParameters(paramShareMediaContent, paramBoolean);
     paramShareMediaContent.putParcelableArrayList("MEDIA", new ArrayList(paramList));
-    AppMethodBeat.o(97152);
+    AppMethodBeat.o(8176);
     return paramShareMediaContent;
   }
   
   private static Bundle create(ShareMessengerGenericTemplateContent paramShareMessengerGenericTemplateContent, boolean paramBoolean)
   {
-    AppMethodBeat.i(97154);
+    AppMethodBeat.i(8178);
     Bundle localBundle = createBaseParameters(paramShareMessengerGenericTemplateContent, paramBoolean);
     try
     {
       MessengerShareContentUtility.addGenericTemplateContent(localBundle, paramShareMessengerGenericTemplateContent);
-      AppMethodBeat.o(97154);
+      AppMethodBeat.o(8178);
       return localBundle;
     }
     catch (JSONException paramShareMessengerGenericTemplateContent)
     {
       paramShareMessengerGenericTemplateContent = new FacebookException("Unable to create a JSON Object from the provided ShareMessengerGenericTemplateContent: " + paramShareMessengerGenericTemplateContent.getMessage());
-      AppMethodBeat.o(97154);
+      AppMethodBeat.o(8178);
       throw paramShareMessengerGenericTemplateContent;
     }
   }
   
   private static Bundle create(ShareMessengerMediaTemplateContent paramShareMessengerMediaTemplateContent, boolean paramBoolean)
   {
-    AppMethodBeat.i(97156);
+    AppMethodBeat.i(8180);
     Bundle localBundle = createBaseParameters(paramShareMessengerMediaTemplateContent, paramBoolean);
     try
     {
       MessengerShareContentUtility.addMediaTemplateContent(localBundle, paramShareMessengerMediaTemplateContent);
-      AppMethodBeat.o(97156);
+      AppMethodBeat.o(8180);
       return localBundle;
     }
     catch (JSONException paramShareMessengerMediaTemplateContent)
     {
       paramShareMessengerMediaTemplateContent = new FacebookException("Unable to create a JSON Object from the provided ShareMessengerMediaTemplateContent: " + paramShareMessengerMediaTemplateContent.getMessage());
-      AppMethodBeat.o(97156);
+      AppMethodBeat.o(8180);
       throw paramShareMessengerMediaTemplateContent;
     }
   }
   
   private static Bundle create(ShareMessengerOpenGraphMusicTemplateContent paramShareMessengerOpenGraphMusicTemplateContent, boolean paramBoolean)
   {
-    AppMethodBeat.i(97155);
+    AppMethodBeat.i(8179);
     Bundle localBundle = createBaseParameters(paramShareMessengerOpenGraphMusicTemplateContent, paramBoolean);
     try
     {
       MessengerShareContentUtility.addOpenGraphMusicTemplateContent(localBundle, paramShareMessengerOpenGraphMusicTemplateContent);
-      AppMethodBeat.o(97155);
+      AppMethodBeat.o(8179);
       return localBundle;
     }
     catch (JSONException paramShareMessengerOpenGraphMusicTemplateContent)
     {
       paramShareMessengerOpenGraphMusicTemplateContent = new FacebookException("Unable to create a JSON Object from the provided ShareMessengerOpenGraphMusicTemplateContent: " + paramShareMessengerOpenGraphMusicTemplateContent.getMessage());
-      AppMethodBeat.o(97155);
+      AppMethodBeat.o(8179);
       throw paramShareMessengerOpenGraphMusicTemplateContent;
     }
   }
   
   private static Bundle create(ShareOpenGraphContent paramShareOpenGraphContent, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(97153);
+    AppMethodBeat.i(8177);
     Bundle localBundle = createBaseParameters(paramShareOpenGraphContent, paramBoolean);
     Utility.putNonEmptyString(localBundle, "PREVIEW_PROPERTY_NAME", (String)ShareInternalUtility.getFieldNameAndNamespaceFromFullName(paramShareOpenGraphContent.getPreviewPropertyName()).second);
     Utility.putNonEmptyString(localBundle, "ACTION_TYPE", paramShareOpenGraphContent.getAction().getActionType());
     Utility.putNonEmptyString(localBundle, "ACTION", paramJSONObject.toString());
-    AppMethodBeat.o(97153);
+    AppMethodBeat.o(8177);
     return localBundle;
   }
   
   private static Bundle create(SharePhotoContent paramSharePhotoContent, List<String> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(97150);
+    AppMethodBeat.i(8174);
     paramSharePhotoContent = createBaseParameters(paramSharePhotoContent, paramBoolean);
     paramSharePhotoContent.putStringArrayList("PHOTOS", new ArrayList(paramList));
-    AppMethodBeat.o(97150);
+    AppMethodBeat.o(8174);
     return paramSharePhotoContent;
   }
   
   private static Bundle create(ShareStoryContent paramShareStoryContent, Bundle paramBundle1, Bundle paramBundle2, boolean paramBoolean)
   {
-    AppMethodBeat.i(97157);
+    AppMethodBeat.i(8181);
     Bundle localBundle = createBaseParameters(paramShareStoryContent, paramBoolean);
     if (paramBundle1 != null) {
       localBundle.putParcelable("bg_asset", paramBundle1);
@@ -164,24 +164,24 @@ public class NativeDialogParameters
       localBundle.putStringArrayList("top_background_color_list", new ArrayList(paramBundle1));
     }
     Utility.putNonEmptyString(localBundle, "content_url", paramShareStoryContent.getAttributionLink());
-    AppMethodBeat.o(97157);
+    AppMethodBeat.o(8181);
     return localBundle;
   }
   
   private static Bundle create(ShareVideoContent paramShareVideoContent, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(97151);
+    AppMethodBeat.i(8175);
     Bundle localBundle = createBaseParameters(paramShareVideoContent, paramBoolean);
     Utility.putNonEmptyString(localBundle, "TITLE", paramShareVideoContent.getContentTitle());
     Utility.putNonEmptyString(localBundle, "DESCRIPTION", paramShareVideoContent.getContentDescription());
     Utility.putNonEmptyString(localBundle, "VIDEO", paramString);
-    AppMethodBeat.o(97151);
+    AppMethodBeat.o(8175);
     return localBundle;
   }
   
   public static Bundle create(UUID paramUUID, ShareContent paramShareContent, boolean paramBoolean)
   {
-    AppMethodBeat.i(97147);
+    AppMethodBeat.i(8171);
     Validate.notNull(paramShareContent, "shareContent");
     Validate.notNull(paramUUID, "callId");
     Bundle localBundle = null;
@@ -190,7 +190,7 @@ public class NativeDialogParameters
     }
     for (;;)
     {
-      AppMethodBeat.o(97147);
+      AppMethodBeat.o(8171);
       return localBundle;
       if ((paramShareContent instanceof SharePhotoContent))
       {
@@ -212,7 +212,7 @@ public class NativeDialogParameters
         catch (JSONException paramUUID)
         {
           paramUUID = new FacebookException("Unable to create a JSON Object from the provided ShareOpenGraphContent: " + paramUUID.getMessage());
-          AppMethodBeat.o(97147);
+          AppMethodBeat.o(8171);
           throw paramUUID;
         }
       }
@@ -248,7 +248,7 @@ public class NativeDialogParameters
   
   private static Bundle createBaseParameters(ShareContent paramShareContent, boolean paramBoolean)
   {
-    AppMethodBeat.i(97158);
+    AppMethodBeat.i(8182);
     Bundle localBundle = new Bundle();
     Utility.putUri(localBundle, "LINK", paramShareContent.getContentUrl());
     Utility.putNonEmptyString(localBundle, "PLACE", paramShareContent.getPlaceId());
@@ -263,13 +263,13 @@ public class NativeDialogParameters
     if (paramShareContent != null) {
       Utility.putNonEmptyString(localBundle, "HASHTAG", paramShareContent.getHashtag());
     }
-    AppMethodBeat.o(97158);
+    AppMethodBeat.o(8182);
     return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.share.internal.NativeDialogParameters
  * JD-Core Version:    0.7.0.1
  */

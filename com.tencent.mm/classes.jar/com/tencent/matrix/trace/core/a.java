@@ -1,149 +1,340 @@
 package com.tencent.matrix.trace.core;
 
-import android.os.Build.VERSION;
 import android.os.Looper;
-import android.os.MessageQueue;
 import android.os.MessageQueue.IdleHandler;
+import android.os.SystemClock;
 import android.util.Printer;
 import com.tencent.matrix.g.c;
-import java.lang.reflect.Field;
+import com.tencent.matrix.g.f;
 import java.util.HashSet;
+import java.util.Objects;
 
 public final class a
   implements MessageQueue.IdleHandler
 {
-  private static Printer bRh;
-  public static Printer bRi = null;
-  private static final a bRj = new a();
-  private static final HashSet<a> listeners = new HashSet();
+  private static final a cBR = new a();
+  private static boolean cBS = false;
+  private b cBO;
+  private Looper cBP;
+  private long cBQ = 0L;
+  public final HashSet<a> listeners = new HashSet();
   
   private a()
   {
-    zs();
-    if (Build.VERSION.SDK_INT >= 23)
+    this(Looper.getMainLooper());
+  }
+  
+  public a(Looper paramLooper)
+  {
+    Objects.requireNonNull(paramLooper);
+    this.cBP = paramLooper;
+    HT();
+    c(paramLooper);
+  }
+  
+  private void HT()
+  {
+    Object localObject1 = null;
+    for (;;)
     {
-      Looper.getMainLooper().getQueue().addIdleHandler(this);
-      return;
+      try
+      {
+        Printer localPrinter;
+        if (!cBS)
+        {
+          localPrinter = (Printer)f.a(this.cBP.getClass(), "mLogging", this.cBP);
+          localObject1 = localPrinter;
+        }
+        b localb;
+        Looper localLooper;
+        Object localObject3 = null;
+      }
+      catch (Exception localException2)
+      {
+        localException2 = localException2;
+        cBS = true;
+        if (this.cBO != null) {
+          c.w("Matrix.LooperMonitor", "maybe thread:%s printer[%s] was replace other[%s]!", new Object[] { this.cBP.getThread().getName(), this.cBO, localObject1 });
+        }
+        localLooper = this.cBP;
+        localb = new b(localObject1);
+        this.cBO = localb;
+        localLooper.setMessageLogging(localb);
+        if (localObject1 != null) {
+          c.i("Matrix.LooperMonitor", "reset printer, originPrinter[%s] in %s", new Object[] { localObject1, this.cBP.getThread().getName() });
+        }
+      }
+      finally {}
     }
-    ((MessageQueue)e(Looper.getMainLooper(), "mQueue")).addIdleHandler(this);
   }
   
   public static void a(a parama)
   {
-    synchronized (listeners)
+    a locala = cBR;
+    synchronized (locala.listeners)
     {
-      listeners.add(parama);
+      locala.listeners.add(parama);
       return;
     }
   }
   
-  public static void b(a parama)
+  /* Error */
+  private void b(Looper paramLooper)
   {
-    if (parama == null) {
-      return;
-    }
-    synchronized (listeners)
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: getstatic 154	android/os/Build$VERSION:SDK_INT	I
+    //   5: bipush 23
+    //   7: if_icmplt +14 -> 21
+    //   10: aload_1
+    //   11: invokevirtual 158	android/os/Looper:getQueue	()Landroid/os/MessageQueue;
+    //   14: aload_0
+    //   15: invokevirtual 164	android/os/MessageQueue:removeIdleHandler	(Landroid/os/MessageQueue$IdleHandler;)V
+    //   18: aload_0
+    //   19: monitorexit
+    //   20: return
+    //   21: aload_1
+    //   22: invokevirtual 72	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   25: ldc 166
+    //   27: aload_1
+    //   28: invokestatic 79	com/tencent/matrix/g/f:a	(Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   31: checkcast 160	android/os/MessageQueue
+    //   34: aload_0
+    //   35: invokevirtual 164	android/os/MessageQueue:removeIdleHandler	(Landroid/os/MessageQueue$IdleHandler;)V
+    //   38: goto -20 -> 18
+    //   41: astore_1
+    //   42: goto -24 -> 18
+    //   45: astore_1
+    //   46: aload_0
+    //   47: monitorexit
+    //   48: aload_1
+    //   49: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	50	0	this	a
+    //   0	50	1	paramLooper	Looper
+    // Exception table:
+    //   from	to	target	type
+    //   21	38	41	java/lang/Exception
+    //   2	18	45	finally
+    //   21	38	45	finally
+  }
+  
+  static void b(a parama)
+  {
+    a locala = cBR;
+    synchronized (locala.listeners)
     {
-      listeners.remove(parama);
+      locala.listeners.remove(parama);
       return;
     }
   }
   
-  private static <T> T e(Object paramObject, String paramString)
+  /* Error */
+  private void c(Looper paramLooper)
   {
-    try
-    {
-      paramString = paramObject.getClass().getDeclaredField(paramString);
-      paramString.setAccessible(true);
-      paramObject = paramString.get(paramObject);
-      return paramObject;
-    }
-    catch (Exception paramObject)
-    {
-      c.e("Matrix.LooperMonitor", paramObject.toString(), new Object[0]);
-    }
-    return null;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: getstatic 154	android/os/Build$VERSION:SDK_INT	I
+    //   5: bipush 23
+    //   7: if_icmplt +14 -> 21
+    //   10: aload_1
+    //   11: invokevirtual 158	android/os/Looper:getQueue	()Landroid/os/MessageQueue;
+    //   14: aload_0
+    //   15: invokevirtual 172	android/os/MessageQueue:addIdleHandler	(Landroid/os/MessageQueue$IdleHandler;)V
+    //   18: aload_0
+    //   19: monitorexit
+    //   20: return
+    //   21: aload_1
+    //   22: invokevirtual 72	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   25: ldc 166
+    //   27: aload_1
+    //   28: invokestatic 79	com/tencent/matrix/g/f:a	(Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   31: checkcast 160	android/os/MessageQueue
+    //   34: aload_0
+    //   35: invokevirtual 172	android/os/MessageQueue:addIdleHandler	(Landroid/os/MessageQueue$IdleHandler;)V
+    //   38: goto -20 -> 18
+    //   41: astore_1
+    //   42: goto -24 -> 18
+    //   45: astore_1
+    //   46: aload_0
+    //   47: monitorexit
+    //   48: aload_1
+    //   49: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	50	0	this	a
+    //   0	50	1	paramLooper	Looper
+    // Exception table:
+    //   from	to	target	type
+    //   21	38	41	java/lang/Exception
+    //   2	18	45	finally
+    //   21	38	45	finally
   }
   
-  private static void zs()
+  /* Error */
+  public final void onRelease()
   {
-    Object localObject = (Printer)e(Looper.getMainLooper(), "mLogging");
-    if ((localObject == bRh) && (bRh != null)) {
-      return;
-    }
-    if (bRh != null) {
-      c.w("Matrix.LooperMonitor", "[resetPrinter] maybe looper printer was replace other!", new Object[0]);
-    }
-    Looper localLooper = Looper.getMainLooper();
-    localObject = new Printer()
-    {
-      boolean bRg = false;
-      boolean bRk = false;
-      
-      public final void println(String paramAnonymousString)
-      {
-        boolean bool2 = true;
-        if (this.bRl != null) {
-          this.bRl.println(paramAnonymousString);
-        }
-        if (!this.bRk)
-        {
-          if ((paramAnonymousString.charAt(0) != '>') && (paramAnonymousString.charAt(0) != '<')) {
-            break label119;
-          }
-          bool1 = true;
-          this.bRg = bool1;
-          this.bRk = true;
-          if (!this.bRg) {
-            c.e("Matrix.LooperMonitor", "[println] Printer is inValid! x:%s", new Object[] { paramAnonymousString });
-          }
-        }
-        if (this.bRg) {
-          if (paramAnonymousString.charAt(0) != '>') {
-            break label124;
-          }
-        }
-        label119:
-        label124:
-        for (boolean bool1 = bool2;; bool1 = false)
-        {
-          a.bj(bool1);
-          if (a.bRi != null) {
-            a.bRi.println(paramAnonymousString);
-          }
-          return;
-          bool1 = false;
-          break;
-        }
-      }
-    };
-    bRh = (Printer)localObject;
-    localLooper.setMessageLogging((Printer)localObject);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 83	com/tencent/matrix/trace/core/a:cBO	Lcom/tencent/matrix/trace/core/a$b;
+    //   6: ifnull +85 -> 91
+    //   9: aload_0
+    //   10: getfield 50	com/tencent/matrix/trace/core/a:listeners	Ljava/util/HashSet;
+    //   13: astore_1
+    //   14: aload_1
+    //   15: monitorenter
+    //   16: aload_0
+    //   17: getfield 50	com/tencent/matrix/trace/core/a:listeners	Ljava/util/HashSet;
+    //   20: invokevirtual 176	java/util/HashSet:clear	()V
+    //   23: aload_1
+    //   24: monitorexit
+    //   25: ldc 85
+    //   27: ldc 178
+    //   29: iconst_2
+    //   30: anewarray 4	java/lang/Object
+    //   33: dup
+    //   34: iconst_0
+    //   35: aload_0
+    //   36: getfield 60	com/tencent/matrix/trace/core/a:cBP	Landroid/os/Looper;
+    //   39: invokevirtual 91	android/os/Looper:getThread	()Ljava/lang/Thread;
+    //   42: invokevirtual 97	java/lang/Thread:getName	()Ljava/lang/String;
+    //   45: aastore
+    //   46: dup
+    //   47: iconst_1
+    //   48: aload_0
+    //   49: getfield 83	com/tencent/matrix/trace/core/a:cBO	Lcom/tencent/matrix/trace/core/a$b;
+    //   52: getfield 182	com/tencent/matrix/trace/core/a$b:cBU	Landroid/util/Printer;
+    //   55: aastore
+    //   56: invokestatic 185	com/tencent/matrix/g/c:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   59: aload_0
+    //   60: getfield 60	com/tencent/matrix/trace/core/a:cBP	Landroid/os/Looper;
+    //   63: aload_0
+    //   64: getfield 83	com/tencent/matrix/trace/core/a:cBO	Lcom/tencent/matrix/trace/core/a$b;
+    //   67: getfield 182	com/tencent/matrix/trace/core/a$b:cBU	Landroid/util/Printer;
+    //   70: invokevirtual 110	android/os/Looper:setMessageLogging	(Landroid/util/Printer;)V
+    //   73: aload_0
+    //   74: aload_0
+    //   75: getfield 60	com/tencent/matrix/trace/core/a:cBP	Landroid/os/Looper;
+    //   78: invokespecial 187	com/tencent/matrix/trace/core/a:b	(Landroid/os/Looper;)V
+    //   81: aload_0
+    //   82: aconst_null
+    //   83: putfield 60	com/tencent/matrix/trace/core/a:cBP	Landroid/os/Looper;
+    //   86: aload_0
+    //   87: aconst_null
+    //   88: putfield 83	com/tencent/matrix/trace/core/a:cBO	Lcom/tencent/matrix/trace/core/a$b;
+    //   91: aload_0
+    //   92: monitorexit
+    //   93: return
+    //   94: astore_2
+    //   95: aload_1
+    //   96: monitorexit
+    //   97: aload_2
+    //   98: athrow
+    //   99: astore_1
+    //   100: aload_0
+    //   101: monitorexit
+    //   102: aload_1
+    //   103: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	104	0	this	a
+    //   99	4	1	localObject1	Object
+    //   94	4	2	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   16	25	94	finally
+    //   95	97	94	finally
+    //   2	16	99	finally
+    //   25	91	99	finally
+    //   97	99	99	finally
   }
   
   public final boolean queueIdle()
   {
-    zs();
+    if (SystemClock.uptimeMillis() - this.cBQ >= 60000L)
+    {
+      HT();
+      this.cBQ = SystemClock.uptimeMillis();
+    }
     return true;
   }
   
   public static abstract class a
   {
-    boolean bRm = false;
+    boolean cBT = false;
     
-    void dispatchEnd()
+    public void cV(String paramString)
     {
-      this.bRm = false;
+      this.cBT = true;
+      dispatchStart();
     }
     
-    void dispatchStart()
-    {
-      this.bRm = true;
-    }
+    public void dispatchEnd() {}
     
-    boolean isValid()
+    public void dispatchStart() {}
+    
+    public boolean isValid()
     {
       return false;
+    }
+  }
+  
+  final class b
+    implements Printer
+  {
+    boolean cBN = false;
+    public Printer cBU;
+    boolean cBV = false;
+    
+    b(Printer paramPrinter)
+    {
+      this.cBU = paramPrinter;
+    }
+    
+    public final void println(String paramString)
+    {
+      boolean bool2 = true;
+      if (this.cBU != null)
+      {
+        this.cBU.println(paramString);
+        if (this.cBU == this) {
+          throw new RuntimeException("Matrix.LooperMonitor origin == this");
+        }
+      }
+      if (!this.cBV)
+      {
+        if ((paramString.charAt(0) != '>') && (paramString.charAt(0) != '<')) {
+          break label131;
+        }
+        bool1 = true;
+        this.cBN = bool1;
+        this.cBV = true;
+        if (!this.cBN) {
+          c.e("Matrix.LooperMonitor", "[println] Printer is inValid! x:%s", new Object[] { paramString });
+        }
+      }
+      a locala;
+      if (this.cBN)
+      {
+        locala = a.this;
+        if (paramString.charAt(0) != '>') {
+          break label136;
+        }
+      }
+      label131:
+      label136:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        a.a(locala, bool1, paramString);
+        return;
+        bool1 = false;
+        break;
+      }
     }
   }
 }

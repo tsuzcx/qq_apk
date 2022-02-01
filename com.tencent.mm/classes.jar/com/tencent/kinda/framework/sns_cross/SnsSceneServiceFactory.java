@@ -1,21 +1,29 @@
 package com.tencent.kinda.framework.sns_cross;
 
+import android.content.Context;
+import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.wallet.PayInfo;
 
 public class SnsSceneServiceFactory
 {
   public static ISnsUseCaseCallback createCallback(int paramInt)
   {
-    AppMethodBeat.i(144604);
+    AppMethodBeat.i(18716);
     Object localObject;
     switch (paramInt)
     {
     default: 
-      localObject = new SnsSceneServiceFactory.1();
+      localObject = new ISnsUseCaseCallback()
+      {
+        public final void call(ITransmitKvData paramAnonymousITransmitKvData) {}
+        
+        public final void setData(Context paramAnonymousContext, PayInfo paramAnonymousPayInfo) {}
+      };
     }
     for (;;)
     {
-      AppMethodBeat.o(144604);
+      AppMethodBeat.o(18716);
       return localObject;
       localObject = new TransferNormalUseCaseCallback();
       continue;
@@ -29,7 +37,7 @@ public class SnsSceneServiceFactory
   
   public static ISnsSceneService createService(int paramInt)
   {
-    AppMethodBeat.i(144603);
+    AppMethodBeat.i(18715);
     Object localObject;
     switch (paramInt)
     {
@@ -38,7 +46,7 @@ public class SnsSceneServiceFactory
     }
     for (;;)
     {
-      AppMethodBeat.o(144603);
+      AppMethodBeat.o(18715);
       return localObject;
       localObject = new QRCodeRewardServiceImpl();
       continue;
@@ -52,7 +60,7 @@ public class SnsSceneServiceFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.SnsSceneServiceFactory
  * JD-Core Version:    0.7.0.1
  */

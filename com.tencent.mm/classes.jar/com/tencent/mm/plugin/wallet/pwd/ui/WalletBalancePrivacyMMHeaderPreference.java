@@ -7,11 +7,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.c;
-import com.tencent.mm.at.o;
-import com.tencent.mm.at.p;
-import com.tencent.mm.at.p.a;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.aw.c;
+import com.tencent.mm.aw.o;
+import com.tencent.mm.aw.p;
+import com.tencent.mm.aw.p.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,61 +20,70 @@ import java.util.Map;
 public class WalletBalancePrivacyMMHeaderPreference
   extends Preference
 {
-  String cDz;
-  private int tYn;
-  Map<String, p.a> tYo;
+  String dub;
+  private int kYl;
   String title;
+  Map<String, p.a> vxB;
   
   public WalletBalancePrivacyMMHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(46209);
-    this.tYo = new HashMap();
-    AppMethodBeat.o(46209);
+    AppMethodBeat.i(69588);
+    this.vxB = new HashMap();
+    AppMethodBeat.o(69588);
   }
   
   public WalletBalancePrivacyMMHeaderPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(46208);
-    this.tYo = new HashMap();
-    AppMethodBeat.o(46208);
+    AppMethodBeat.i(69587);
+    this.vxB = new HashMap();
+    AppMethodBeat.o(69587);
   }
   
-  public final void es()
+  public final void fK()
   {
-    this.tYn = 2131230766;
+    this.kYl = 2131689519;
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(46210);
+    AppMethodBeat.i(69589);
     super.onBindView(paramView);
-    Object localObject = (ImageView)paramView.findViewById(2131828961);
-    paramView = (TextView)paramView.findViewById(2131828962);
-    if (bo.isNullOrNil(this.cDz)) {
-      if (!bo.hl(this.tYn, 0)) {
-        ((ImageView)localObject).setImageResource(this.tYn);
+    Object localObject = (ImageView)paramView.findViewById(2131297104);
+    paramView = (TextView)paramView.findViewById(2131297105);
+    if (bt.isNullOrNil(this.dub)) {
+      if (!bt.iY(this.kYl, 0)) {
+        ((ImageView)localObject).setImageResource(this.kYl);
       }
     }
     for (;;)
     {
-      if (!bo.isNullOrNil(this.title)) {
+      if (!bt.isNullOrNil(this.title)) {
         paramView.setText(this.title);
       }
-      AppMethodBeat.o(46210);
+      AppMethodBeat.o(69589);
       return;
-      o.ahB();
-      Bitmap localBitmap = c.lK(this.cDz);
+      o.ayE();
+      Bitmap localBitmap = c.pT(this.dub);
       if (localBitmap != null)
       {
         ((ImageView)localObject).setImageBitmap(localBitmap);
       }
-      else if (!bo.isNullOrNil(this.cDz))
+      else if (!bt.isNullOrNil(this.dub))
       {
-        localObject = new WalletBalancePrivacyMMHeaderPreference.1(this, (ImageView)localObject);
-        this.tYo.put(this.cDz, localObject);
-        o.ahF().a(this.cDz, (p.a)localObject);
+        localObject = new p.a()
+        {
+          public final void a(String paramAnonymousString1, Bitmap paramAnonymousBitmap, String paramAnonymousString2)
+          {
+            AppMethodBeat.i(69586);
+            ad.i("MicroMsg.WalletBalancePrivacyMMHeaderPreference", "alvinluo icon url: %s", new Object[] { paramAnonymousString1 });
+            this.vxC.setImageBitmap(paramAnonymousBitmap);
+            AppMethodBeat.o(69586);
+          }
+        };
+        this.vxB.put(this.dub, localObject);
+        o.ayI().a(this.dub, (p.a)localObject);
       }
     }
   }

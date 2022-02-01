@@ -3,41 +3,59 @@ package com.tencent.mm.plugin.webview.luggage.ipc;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bh;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONObject;
 
 public class d
   implements c
 {
-  public final void a(Context paramContext, Bundle paramBundle, a parama)
+  public final void a(Context paramContext, Bundle paramBundle, final a parama)
   {
-    AppMethodBeat.i(6254);
+    AppMethodBeat.i(78494);
     String str = paramBundle.getString("jsapi_name");
     paramBundle = paramBundle.getString("data");
     if (str == null)
     {
-      ab.e("MicroMsg.JsApiMMActivityTask", "jsapi is null");
-      parama.o(new Bundle());
-      AppMethodBeat.o(6254);
+      ad.e("MicroMsg.JsApiMMActivityTask", "jsapi is null");
+      parama.q(new Bundle());
+      AppMethodBeat.o(78494);
       return;
     }
     try
     {
-      ((bh)Class.forName(str).newInstance()).a(paramContext, paramBundle, new d.1(this, parama));
-      AppMethodBeat.o(6254);
+      ((bn)Class.forName(str).newInstance()).a(paramContext, paramBundle, new bn.a()
+      {
+        public final void f(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
+        {
+          AppMethodBeat.i(78493);
+          Bundle localBundle = new Bundle();
+          localBundle.putString("err_msg", paramAnonymousString);
+          if (paramAnonymousJSONObject != null) {}
+          for (paramAnonymousString = paramAnonymousJSONObject.toString();; paramAnonymousString = "")
+          {
+            localBundle.putString("data", paramAnonymousString);
+            parama.q(localBundle);
+            AppMethodBeat.o(78493);
+            return;
+          }
+        }
+      });
+      AppMethodBeat.o(78494);
       return;
     }
     catch (Exception paramContext)
     {
-      ab.printErrStackTrace("MicroMsg.JsApiMMActivityTask", paramContext, "", new Object[0]);
-      parama.o(new Bundle());
-      AppMethodBeat.o(6254);
+      ad.printErrStackTrace("MicroMsg.JsApiMMActivityTask", paramContext, "", new Object[0]);
+      parama.q(new Bundle());
+      AppMethodBeat.o(78494);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.ipc.d
  * JD-Core Version:    0.7.0.1
  */

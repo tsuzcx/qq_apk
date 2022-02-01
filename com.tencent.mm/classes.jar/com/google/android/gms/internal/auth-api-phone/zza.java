@@ -24,16 +24,16 @@ public class zza
   
   protected final Parcel obtainAndWriteInterfaceToken()
   {
-    AppMethodBeat.i(80424);
+    AppMethodBeat.i(931);
     Parcel localParcel = Parcel.obtain();
     localParcel.writeInterfaceToken(this.zzb);
-    AppMethodBeat.o(80424);
+    AppMethodBeat.o(931);
     return localParcel;
   }
   
   protected final void transactAndReadExceptionReturnVoid(int paramInt, Parcel paramParcel)
   {
-    AppMethodBeat.i(80425);
+    AppMethodBeat.i(932);
     Parcel localParcel = Parcel.obtain();
     try
     {
@@ -45,13 +45,13 @@ public class zza
     {
       paramParcel.recycle();
       localParcel.recycle();
-      AppMethodBeat.o(80425);
+      AppMethodBeat.o(932);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.internal.auth-api-phone.zza
  * JD-Core Version:    0.7.0.1
  */

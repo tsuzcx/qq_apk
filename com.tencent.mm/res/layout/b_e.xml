@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ib" android:background="@drawable/bla" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/i_"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/fvg" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_alignParentLeft="true" />
-    <TextView android:textSize="13.0sp" android:textColor="#ff888888" android:ellipsize="end" android:id="@id/fvh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginRight="14.0dip" android:text="由**小程序提供" android:layout_toRightOf="@id/fvg" />
-    <TextView android:textSize="13.0sp" android:textColor="#ff576b95" android:id="@id/fvi" android:paddingLeft="13.0dip" android:paddingRight="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="调试" android:layout_toLeftOf="@id/fvj" />
-    <TextView android:textSize="13.0sp" android:textColor="#ff576b95" android:id="@id/fvj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gef" android:layout_alignParentRight="true" />
-</RelativeLayout>
+    <com.tencent.mm.plugin.sns.ui.SnsLikesTextView android:gravity="center_vertical" android:id="@id/i_" android:paddingLeft="@dimen/jn" android:paddingTop="@dimen/d" android:paddingRight="@dimen/jn" android:paddingBottom="@dimen/d" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <View android:gravity="center" android:id="@id/id" android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:orientation="vertical" android:id="@id/hf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

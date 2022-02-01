@@ -6,17 +6,17 @@ import android.webkit.WebResourceResponse;
 
 public abstract class l
 {
+  public abstract String Bm();
+  
   public abstract WebResourceResponse a(WebResourceRequest paramWebResourceRequest, Bundle paramBundle);
   
-  public abstract void bE(String paramString);
+  public abstract void bU(String paramString);
   
-  public abstract void bF(String paramString);
-  
-  public abstract String ux();
+  public abstract void bV(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.d.l
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public final class a
 {
-  public static final void ah(int paramInt1, int paramInt2)
+  public static final void ak(int paramInt1, int paramInt2)
   {
     switch (paramInt2)
     {
@@ -16,8 +16,8 @@ public final class a
     for (;;)
     {
       k localk = new k();
-      localk.Vv = 13195;
-      localk.VA = String.format("%d,%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      localk.Xq = 13195;
+      localk.Xv = String.format("%d,%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       try
       {
         m(localk.toByteArray());
@@ -40,11 +40,11 @@ public final class a
     }
   }
   
-  public static final void bK(int paramInt)
+  public static final void cg(int paramInt)
   {
     k localk = new k();
-    localk.Vv = 13193;
-    localk.VA = String.valueOf(paramInt);
+    localk.Xq = 13193;
+    localk.Xv = String.valueOf(paramInt);
     try
     {
       m(localk.toByteArray());
@@ -53,16 +53,16 @@ public final class a
     catch (IOException localIOException) {}
   }
   
-  public static final void bL(int paramInt)
+  public static final void ch(int paramInt)
   {
-    ah(paramInt, 0);
+    ak(paramInt, 0);
   }
   
-  public static final void bM(int paramInt)
+  public static final void ci(int paramInt)
   {
     k localk = new k();
-    localk.Vv = 13194;
-    localk.VA = String.format("%d", new Object[] { Integer.valueOf(paramInt) });
+    localk.Xq = 13194;
+    localk.Xv = String.format("%d", new Object[] { Integer.valueOf(paramInt) });
     try
     {
       m(localk.toByteArray());
@@ -71,11 +71,11 @@ public final class a
     catch (IOException localIOException) {}
   }
   
-  public static final void bN(int paramInt)
+  public static final void cj(int paramInt)
   {
     k localk = new k();
-    localk.Vv = 13196;
-    localk.VA = String.format("%d", new Object[] { Integer.valueOf(paramInt) });
+    localk.Xq = 13196;
+    localk.Xv = String.format("%d", new Object[] { Integer.valueOf(paramInt) });
     try
     {
       m(localk.toByteArray());
@@ -88,7 +88,7 @@ public final class a
   {
     b localb = new b((byte)0);
     localb.data = paramArrayOfByte;
-    h.mc().a(localb);
+    h.mP().a(localb);
   }
 }
 

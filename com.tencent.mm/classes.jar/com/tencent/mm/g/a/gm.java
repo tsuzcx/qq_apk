@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class gm
   extends b
 {
-  public gm.a cvt;
-  public gm.b cvu;
+  public a djG;
   
   public gm()
   {
@@ -16,17 +15,21 @@ public final class gm
   
   private gm(byte paramByte)
   {
-    AppMethodBeat.i(113283);
-    this.cvt = new gm.a();
-    this.cvu = new gm.b();
-    this.ymq = false;
+    AppMethodBeat.i(133846);
+    this.djG = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(113283);
+    AppMethodBeat.o(133846);
+  }
+  
+  public static final class a
+  {
+    public String url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.gm
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,9 @@ public class b
   
   static
   {
-    AppMethodBeat.i(91458);
+    AppMethodBeat.i(116653);
     SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "WidgetSafeMode") };
-    AppMethodBeat.o(91458);
+    AppMethodBeat.o(116653);
   }
   
   public b(e parame)

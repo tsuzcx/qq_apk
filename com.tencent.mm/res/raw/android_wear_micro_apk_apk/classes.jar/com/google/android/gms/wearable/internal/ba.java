@@ -7,23 +7,23 @@ import com.google.android.gms.wearable.w;
 public final class ba
   implements w
 {
-  private final Status HS;
-  private final t TM;
+  private final Status JH;
+  private final t VB;
   
   public ba(Status paramStatus, t paramt)
   {
-    this.HS = paramStatus;
-    this.TM = paramt;
+    this.JH = paramStatus;
+    this.VB = paramt;
   }
   
-  public final Status gC()
+  public final Status gM()
   {
-    return this.HS;
+    return this.JH;
   }
   
-  public final t kz()
+  public final t kI()
   {
-    return this.TM;
+    return this.VB;
   }
 }
 

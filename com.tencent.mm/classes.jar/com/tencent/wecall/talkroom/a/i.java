@@ -1,56 +1,58 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.b.a.a.ad;
-import com.tencent.pb.common.b.a.a.g;
+import com.tencent.pb.common.b.a.a.a.ae;
+import com.tencent.pb.common.b.a.a.a.g;
 import com.tencent.pb.common.b.d;
+import com.tencent.pb.common.c.b;
+import com.tencent.wecall.talkroom.model.c;
 
 public final class i
   extends d
 {
   public i(String paramString, int paramInt1, long paramLong, int paramInt2)
   {
-    AppMethodBeat.i(128023);
-    com.tencent.pb.common.c.c.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneRejectVoiceGroup" });
+    AppMethodBeat.i(62526);
+    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneRejectVoiceGroup" });
     a.g localg = new a.g();
     try
     {
       localg.groupId = paramString;
-      localg.twP = paramInt1;
-      localg.twQ = paramLong;
-      localg.aXG = paramInt2;
+      localg.zkT = paramInt1;
+      localg.zkU = paramLong;
+      localg.bvJ = paramInt2;
       this.mNetType = 3;
-      this.Bda = com.tencent.wecall.talkroom.model.c.dXv().axs(paramString);
+      this.IjW = c.fpJ().aOs(paramString);
       c(181, localg);
-      AppMethodBeat.o(128023);
+      AppMethodBeat.o(62526);
       return;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        com.tencent.pb.common.c.c.w(this.TAG2, new Object[] { "NetSceneRejectVoiceGroup constructor", paramString });
+        b.w(this.TAG2, new Object[] { "NetSceneRejectVoiceGroup constructor", paramString });
       }
     }
   }
   
-  public final Object ck(byte[] paramArrayOfByte)
+  public final Object cC(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(128024);
-    com.tencent.pb.common.c.c.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
+    AppMethodBeat.i(62527);
+    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
     if (paramArrayOfByte != null) {}
     for (;;)
     {
       try
       {
-        paramArrayOfByte = (a.ad)e.a(new a.ad(), paramArrayOfByte, paramArrayOfByte.length);
-        AppMethodBeat.o(128024);
+        paramArrayOfByte = (a.ae)e.a(new a.ae(), paramArrayOfByte, paramArrayOfByte.length);
+        AppMethodBeat.o(62527);
         return paramArrayOfByte;
       }
       catch (Exception paramArrayOfByte)
       {
-        com.tencent.pb.common.c.c.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte.getMessage() });
+        b.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte.getMessage() });
         paramArrayOfByte = null;
         continue;
       }
@@ -58,7 +60,7 @@ public final class i
     }
   }
   
-  public final String dTD()
+  public final String flk()
   {
     return "CsCmd.Cmd_V_CSRejectEnterVoiceRoomReq";
   }
@@ -70,7 +72,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.i
  * JD-Core Version:    0.7.0.1
  */

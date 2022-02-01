@@ -11,14 +11,14 @@ final class c$12
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(85133);
-    this.BIO.dZY();
-    AppMethodBeat.o(85133);
+    AppMethodBeat.i(154163);
+    this.IST.fsQ();
+    AppMethodBeat.o(154163);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.xweb.xwalk.c.12
  * JD-Core Version:    0.7.0.1
  */

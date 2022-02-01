@@ -4,84 +4,84 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.e;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.cg.e;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class b
   extends a
 {
-  private static final int jpM;
-  private static final int jpN;
+  private static final int mfF;
+  private static final int mfG;
   
   static
   {
-    AppMethodBeat.i(134306);
-    jpM = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 48);
-    jpN = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 43);
-    AppMethodBeat.o(134306);
+    AppMethodBeat.i(49928);
+    mfF = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 48);
+    mfG = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 43);
+    AppMethodBeat.o(49928);
   }
   
-  private int aRI()
+  private int btZ()
   {
-    AppMethodBeat.i(134300);
-    c localc = this.jpK;
-    if (localc.jqf <= 1) {
-      localc.jqf = c.aMu()[0];
+    AppMethodBeat.i(49922);
+    c localc = this.mfD;
+    if (localc.mfX <= 1) {
+      localc.mfX = c.bug()[0];
     }
-    int i = localc.jqf;
-    AppMethodBeat.o(134300);
+    int i = localc.mfX;
+    AppMethodBeat.o(49922);
     return i;
   }
   
-  public final int aRF()
+  public final int btW()
   {
-    AppMethodBeat.i(134301);
-    int i = this.jpK.aRy().aRA();
-    AppMethodBeat.o(134301);
+    AppMethodBeat.i(49923);
+    int i = this.mfD.btP().btR();
+    AppMethodBeat.o(49923);
     return i;
   }
   
-  public final int aRG()
+  public final int btX()
   {
-    AppMethodBeat.i(134302);
-    int i = aRH();
+    AppMethodBeat.i(49924);
+    int i = btY();
     int j = getRowCount();
-    AppMethodBeat.o(134302);
+    AppMethodBeat.o(49924);
     return i * j;
   }
   
-  public final int aRH()
+  public final int btY()
   {
-    AppMethodBeat.i(134304);
-    if (this.jpK.jqa)
+    AppMethodBeat.i(49926);
+    if (this.mfD.mfS)
     {
-      AppMethodBeat.o(134304);
+      AppMethodBeat.o(49926);
       return 7;
     }
-    int i = aRI() / jpN;
-    AppMethodBeat.o(134304);
+    int i = btZ() / mfG;
+    AppMethodBeat.o(49926);
     return i;
   }
   
   public final int getPageCount()
   {
-    AppMethodBeat.i(134303);
-    if (aRG() <= 0)
+    AppMethodBeat.i(49925);
+    if (btX() <= 0)
     {
-      AppMethodBeat.o(134303);
+      AppMethodBeat.o(49925);
       return 0;
     }
-    int i = aRF();
-    int j = aRG();
+    int i = btW();
+    int j = btX();
     i = (int)Math.ceil(i / j);
-    AppMethodBeat.o(134303);
+    AppMethodBeat.o(49925);
     return i;
   }
   
   public final int getRowCount()
   {
     int i = 3;
-    int j = this.jpK.jqe / jpM;
+    int j = this.mfD.mfW / mfF;
     if (j > 3) {}
     for (;;)
     {
@@ -96,68 +96,68 @@ public final class b
   
   public final int getRowSpacing()
   {
-    AppMethodBeat.i(134305);
-    int i = (this.jpK.jqe - jpM * getRowCount()) / (getRowCount() + 1);
-    AppMethodBeat.o(134305);
+    AppMethodBeat.i(49927);
+    int i = (this.mfD.mfW - mfF * getRowCount()) / (getRowCount() + 1);
+    AppMethodBeat.o(49927);
     return i;
   }
   
-  public final View qE(int paramInt)
+  public final View vg(int paramInt)
   {
-    AppMethodBeat.i(134299);
-    Object localObject1 = this.jpJ;
-    Object localObject2 = this.jpK;
+    AppMethodBeat.i(49921);
+    Object localObject1 = this.mfC;
+    Object localObject2 = this.mfD;
     d locald = new d();
     locald.mIndex = paramInt;
-    locald.jqg = this;
+    locald.mfY = this;
     locald.mContext = ((Context)localObject1);
-    locald.jpK = ((c)localObject2);
-    if ((locald.mContext == null) || (locald.jqg == null))
+    locald.mfD = ((c)localObject2);
+    if ((locald.mContext == null) || (locald.mfY == null))
     {
-      AppMethodBeat.o(134299);
+      AppMethodBeat.o(49921);
       return null;
     }
-    localObject1 = View.inflate(locald.mContext, 2130968778, null);
+    localObject1 = View.inflate(locald.mContext, 2131493107, null);
     if ((localObject1 instanceof AppBrandSmileyGrid))
     {
-      ((AppBrandSmileyGrid)localObject1).setPanelManager(locald.jpK);
+      ((AppBrandSmileyGrid)localObject1).setPanelManager(locald.mfD);
       localObject2 = (AppBrandSmileyGrid)localObject1;
       paramInt = locald.mIndex;
-      int i = locald.jqg.aRF();
-      int j = locald.jqg.aRG();
-      int k = locald.jqg.aRH();
-      int m = locald.jqg.getRowCount();
-      int n = locald.jqg.getRowSpacing();
+      int i = locald.mfY.btW();
+      int j = locald.mfY.btX();
+      int k = locald.mfY.btY();
+      int m = locald.mfY.getRowCount();
+      int n = locald.mfY.getRowSpacing();
       ((AppBrandSmileyGrid)localObject2).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
       ((AppBrandSmileyGrid)localObject2).setBackgroundResource(0);
       ((AppBrandSmileyGrid)localObject2).setStretchMode(2);
-      ((AppBrandSmileyGrid)localObject2).setOnItemClickListener(((AppBrandSmileyGrid)localObject2).amh);
-      ((AppBrandSmileyGrid)localObject2).jpR = paramInt;
-      ((AppBrandSmileyGrid)localObject2).jpP = i;
-      ((AppBrandSmileyGrid)localObject2).jpQ = j;
-      ((AppBrandSmileyGrid)localObject2).jpS = n;
-      ((AppBrandSmileyGrid)localObject2).jpT = k;
-      ((AppBrandSmileyGrid)localObject2).jpU = m;
+      ((AppBrandSmileyGrid)localObject2).setOnItemClickListener(((AppBrandSmileyGrid)localObject2).atG);
+      ((AppBrandSmileyGrid)localObject2).mfK = paramInt;
+      ((AppBrandSmileyGrid)localObject2).mfI = i;
+      ((AppBrandSmileyGrid)localObject2).mfJ = j;
+      ((AppBrandSmileyGrid)localObject2).mfL = n;
+      ((AppBrandSmileyGrid)localObject2).mfM = k;
+      ((AppBrandSmileyGrid)localObject2).mfN = m;
       ((AppBrandSmileyGrid)localObject2).setNumColumns(k);
       i = ((AppBrandSmileyGrid)localObject2).getRowSpacing();
-      j = com.tencent.mm.cb.a.fromDPToPix(((AppBrandSmileyGrid)localObject2).getContext(), 6);
-      k = com.tencent.mm.cb.a.fromDPToPix(((AppBrandSmileyGrid)localObject2).getContext(), 6);
+      j = com.tencent.mm.cd.a.fromDPToPix(((AppBrandSmileyGrid)localObject2).getContext(), 6);
+      k = com.tencent.mm.cd.a.fromDPToPix(((AppBrandSmileyGrid)localObject2).getContext(), 6);
       paramInt = i;
       if (i == 0) {
-        paramInt = com.tencent.mm.cb.a.fromDPToPix(((AppBrandSmileyGrid)localObject2).getContext(), 6);
+        paramInt = com.tencent.mm.cd.a.fromDPToPix(((AppBrandSmileyGrid)localObject2).getContext(), 6);
       }
       ((AppBrandSmileyGrid)localObject2).setPadding(j, paramInt, k, 0);
-      ((AppBrandSmileyGrid)localObject2).jpO = new AppBrandSmileyGrid.a((AppBrandSmileyGrid)localObject2, (byte)0);
-      ((AppBrandSmileyGrid)localObject2).setAdapter(((AppBrandSmileyGrid)localObject2).jpO);
-      ((AppBrandSmileyGrid)localObject2).jpO.notifyDataSetChanged();
+      ((AppBrandSmileyGrid)localObject2).mfH = new AppBrandSmileyGrid.a((AppBrandSmileyGrid)localObject2, (byte)0);
+      ((AppBrandSmileyGrid)localObject2).setAdapter(((AppBrandSmileyGrid)localObject2).mfH);
+      ((AppBrandSmileyGrid)localObject2).mfH.notifyDataSetChanged();
     }
-    AppMethodBeat.o(134299);
+    AppMethodBeat.o(49921);
     return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.panel.b
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ public class XWalkPreferences
   
   static
   {
-    AppMethodBeat.i(85742);
+    AppMethodBeat.i(154837);
     setValueStringbooleanMethod = new ReflectMethod(null, "setValue", new Class[0]);
     setValueStringintMethod = new ReflectMethod(null, "setValue", new Class[0]);
     setValueStringStringMethod = new ReflectMethod(null, "setValue", new Class[0]);
@@ -35,17 +35,17 @@ public class XWalkPreferences
     getBooleanValueStringMethod = new ReflectMethod(null, "getBooleanValue", new Class[0]);
     getIntegerValueStringMethod = new ReflectMethod(null, "getIntegerValue", new Class[0]);
     getStringValueStringMethod = new ReflectMethod(null, "getStringValue", new Class[0]);
-    AppMethodBeat.o(85742);
+    AppMethodBeat.o(154837);
   }
   
   public static boolean getBooleanValue(String paramString)
   {
-    AppMethodBeat.i(85738);
+    AppMethodBeat.i(154833);
     reflectionInit();
     try
     {
       boolean bool = ((Boolean)getBooleanValueStringMethod.invoke(new Object[] { paramString })).booleanValue();
-      AppMethodBeat.o(85738);
+      AppMethodBeat.o(154833);
       return bool;
     }
     catch (UnsupportedOperationException paramString)
@@ -53,23 +53,23 @@ public class XWalkPreferences
       if (coreWrapper == null)
       {
         paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85738);
+        AppMethodBeat.o(154833);
         throw paramString;
       }
       XWalkCoreWrapper.handleRuntimeError(paramString);
-      AppMethodBeat.o(85738);
+      AppMethodBeat.o(154833);
     }
     return false;
   }
   
   public static int getIntegerValue(String paramString)
   {
-    AppMethodBeat.i(85739);
+    AppMethodBeat.i(154834);
     reflectionInit();
     try
     {
       int i = ((Integer)getIntegerValueStringMethod.invoke(new Object[] { paramString })).intValue();
-      AppMethodBeat.o(85739);
+      AppMethodBeat.o(154834);
       return i;
     }
     catch (UnsupportedOperationException paramString)
@@ -77,23 +77,23 @@ public class XWalkPreferences
       if (coreWrapper == null)
       {
         paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85739);
+        AppMethodBeat.o(154834);
         throw paramString;
       }
       XWalkCoreWrapper.handleRuntimeError(paramString);
-      AppMethodBeat.o(85739);
+      AppMethodBeat.o(154834);
     }
     return 0;
   }
   
   public static String getStringValue(String paramString)
   {
-    AppMethodBeat.i(85740);
+    AppMethodBeat.i(154835);
     reflectionInit();
     try
     {
       paramString = (String)getStringValueStringMethod.invoke(new Object[] { paramString });
-      AppMethodBeat.o(85740);
+      AppMethodBeat.o(154835);
       return paramString;
     }
     catch (UnsupportedOperationException paramString)
@@ -101,23 +101,23 @@ public class XWalkPreferences
       if (coreWrapper == null)
       {
         paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85740);
+        AppMethodBeat.o(154835);
         throw paramString;
       }
       XWalkCoreWrapper.handleRuntimeError(paramString);
-      AppMethodBeat.o(85740);
+      AppMethodBeat.o(154835);
     }
     return null;
   }
   
   public static boolean getValue(String paramString)
   {
-    AppMethodBeat.i(85737);
+    AppMethodBeat.i(154832);
     reflectionInit();
     try
     {
       boolean bool = ((Boolean)getValueStringMethod.invoke(new Object[] { paramString })).booleanValue();
-      AppMethodBeat.o(85737);
+      AppMethodBeat.o(154832);
       return bool;
     }
     catch (UnsupportedOperationException paramString)
@@ -125,21 +125,21 @@ public class XWalkPreferences
       if (coreWrapper == null)
       {
         paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85737);
+        AppMethodBeat.o(154832);
         throw paramString;
       }
       XWalkCoreWrapper.handleRuntimeError(paramString);
-      AppMethodBeat.o(85737);
+      AppMethodBeat.o(154832);
     }
     return false;
   }
   
   static void reflectionInit()
   {
-    AppMethodBeat.i(85741);
+    AppMethodBeat.i(154836);
     if (coreWrapper != null)
     {
-      AppMethodBeat.o(85741);
+      AppMethodBeat.o(154836);
       return;
     }
     XWalkCoreWrapper.initEmbeddedMode();
@@ -148,7 +148,7 @@ public class XWalkPreferences
     if (localObject == null)
     {
       XWalkCoreWrapper.reserveReflectClass(XWalkPreferences.class);
-      AppMethodBeat.o(85741);
+      AppMethodBeat.o(154836);
       return;
     }
     localObject = coreWrapper.getBridgeClass("XWalkPreferencesBridge");
@@ -159,17 +159,17 @@ public class XWalkPreferences
     getBooleanValueStringMethod.init(null, (Class)localObject, "getBooleanValue", new Class[] { String.class });
     getIntegerValueStringMethod.init(null, (Class)localObject, "getIntegerValue", new Class[] { String.class });
     getStringValueStringMethod.init(null, (Class)localObject, "getStringValue", new Class[] { String.class });
-    AppMethodBeat.o(85741);
+    AppMethodBeat.o(154836);
   }
   
   public static void setValue(String paramString, int paramInt)
   {
-    AppMethodBeat.i(85735);
+    AppMethodBeat.i(154830);
     reflectionInit();
     try
     {
       setValueStringintMethod.invoke(new Object[] { paramString, Integer.valueOf(paramInt) });
-      AppMethodBeat.o(85735);
+      AppMethodBeat.o(154830);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -178,22 +178,22 @@ public class XWalkPreferences
       {
         setValueStringintMethod.setArguments(new Object[] { paramString, Integer.valueOf(paramInt) });
         XWalkCoreWrapper.reserveReflectMethod(setValueStringintMethod);
-        AppMethodBeat.o(85735);
+        AppMethodBeat.o(154830);
         return;
       }
       XWalkCoreWrapper.handleRuntimeError(localUnsupportedOperationException);
-      AppMethodBeat.o(85735);
+      AppMethodBeat.o(154830);
     }
   }
   
   public static void setValue(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(85736);
+    AppMethodBeat.i(154831);
     reflectionInit();
     try
     {
       setValueStringStringMethod.invoke(new Object[] { paramString1, paramString2 });
-      AppMethodBeat.o(85736);
+      AppMethodBeat.o(154831);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -202,22 +202,22 @@ public class XWalkPreferences
       {
         setValueStringStringMethod.setArguments(new Object[] { paramString1, paramString2 });
         XWalkCoreWrapper.reserveReflectMethod(setValueStringStringMethod);
-        AppMethodBeat.o(85736);
+        AppMethodBeat.o(154831);
         return;
       }
       XWalkCoreWrapper.handleRuntimeError(localUnsupportedOperationException);
-      AppMethodBeat.o(85736);
+      AppMethodBeat.o(154831);
     }
   }
   
   public static void setValue(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(85734);
+    AppMethodBeat.i(154829);
     reflectionInit();
     try
     {
       setValueStringbooleanMethod.invoke(new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(85734);
+      AppMethodBeat.o(154829);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -226,17 +226,17 @@ public class XWalkPreferences
       {
         setValueStringbooleanMethod.setArguments(new Object[] { paramString, Boolean.valueOf(paramBoolean) });
         XWalkCoreWrapper.reserveReflectMethod(setValueStringbooleanMethod);
-        AppMethodBeat.o(85734);
+        AppMethodBeat.o(154829);
         return;
       }
       XWalkCoreWrapper.handleRuntimeError(localUnsupportedOperationException);
-      AppMethodBeat.o(85734);
+      AppMethodBeat.o(154829);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkPreferences
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ public class StoreBannerEmojiView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(62508);
+    AppMethodBeat.i(104744);
     Object localObject = getContext();
     int[] arrayOfInt = new int[2];
     if ((localObject instanceof Activity))
@@ -46,19 +46,19 @@ public class StoreBannerEmojiView
         break;
       }
       super.onMeasure(paramInt1, paramInt2);
-      AppMethodBeat.o(62508);
+      AppMethodBeat.o(104744);
       return;
       localObject = ((WindowManager)((Context)localObject).getSystemService("window")).getDefaultDisplay();
       arrayOfInt[0] = ((Display)localObject).getWidth();
       arrayOfInt[1] = ((Display)localObject).getHeight();
     }
     setMeasuredDimension(i, j);
-    AppMethodBeat.o(62508);
+    AppMethodBeat.o(104744);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.emoji.StoreBannerEmojiView
  * JD-Core Version:    0.7.0.1
  */

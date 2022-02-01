@@ -6,55 +6,37 @@ import com.tencent.mm.plugin.report.a;
 public final class br
   extends a
 {
-  public long cRG = 0L;
-  public long cRH = 0L;
-  private String cYQ = "";
+  public long dMW = 0L;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(77614);
+    AppMethodBeat.i(149926);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cRG);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cRH);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cYQ);
+    ((StringBuffer)localObject).append(this.dMW);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(77614);
+    ams((String)localObject);
+    AppMethodBeat.o(149926);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(77615);
+    AppMethodBeat.i(149927);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Scene:").append(this.cRG);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Action:").append(this.cRH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OrderId:").append(this.cYQ);
+    ((StringBuffer)localObject).append("ClickScene:").append(this.dMW);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(77615);
+    AppMethodBeat.o(149927);
     return localObject;
-  }
-  
-  public final br gQ(String paramString)
-  {
-    AppMethodBeat.i(138575);
-    this.cYQ = t("OrderId", paramString, true);
-    AppMethodBeat.o(138575);
-    return this;
   }
   
   public final int getId()
   {
-    return 17072;
+    return 16867;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.br
  * JD-Core Version:    0.7.0.1
  */

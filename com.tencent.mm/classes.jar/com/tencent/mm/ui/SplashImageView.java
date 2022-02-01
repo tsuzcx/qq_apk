@@ -1,59 +1,68 @@
 package com.tencent.mm.ui;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.chatting.ao;
+import com.tencent.mm.ui.chatting.ap;
 
 public class SplashImageView
   extends ImageView
 {
+  private ap FSu;
   private boolean hasDrawed;
-  private ao zfl;
   
   public SplashImageView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(29908);
-    setImageResource(2130840935);
-    AppMethodBeat.o(29908);
+    AppMethodBeat.i(33760);
+    cUb();
+    AppMethodBeat.o(33760);
   }
   
   public SplashImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(29909);
-    setImageResource(2130840935);
-    AppMethodBeat.o(29909);
+    AppMethodBeat.i(33761);
+    cUb();
+    AppMethodBeat.o(33761);
   }
   
   public SplashImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(29910);
-    setImageResource(2130840935);
-    AppMethodBeat.o(29910);
+    AppMethodBeat.i(33762);
+    cUb();
+    AppMethodBeat.o(33762);
+  }
+  
+  private void cUb()
+  {
+    AppMethodBeat.i(33763);
+    setBackgroundDrawable(getResources().getDrawable(2131234439));
+    AppMethodBeat.o(33763);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(29911);
+    AppMethodBeat.i(33764);
     super.onDraw(paramCanvas);
+    setBackgroundDrawable(getResources().getDrawable(2131234439));
     if (!this.hasDrawed)
     {
       this.hasDrawed = true;
-      if (this.zfl != null) {
-        this.zfl.bEm();
+      if (this.FSu != null) {
+        this.FSu.cAy();
       }
     }
-    AppMethodBeat.o(29911);
+    AppMethodBeat.o(33764);
   }
   
-  public void setOnDrawListener(ao paramao)
+  public void setOnDrawListener(ap paramap)
   {
-    this.zfl = paramao;
+    this.FSu = paramap;
   }
 }
 

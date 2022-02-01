@@ -1,71 +1,69 @@
 package com.tencent.mm.plugin.readerapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.k;
-import com.tencent.mm.g.a.ag;
-import com.tencent.mm.g.a.ag.a;
+import com.tencent.mm.g.a.aj;
+import com.tencent.mm.g.a.aj.a;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.r;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.protobuf.bmq;
+import com.tencent.mm.protocal.protobuf.cau;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
 
 final class a
-  extends c<ag>
+  extends c<aj>
 {
   a()
   {
-    AppMethodBeat.i(76752);
-    this.__eventId = ag.class.getName().hashCode();
-    AppMethodBeat.o(76752);
+    AppMethodBeat.i(161674);
+    this.__eventId = aj.class.getName().hashCode();
+    AppMethodBeat.o(161674);
   }
   
-  private boolean a(ag paramag)
+  private boolean a(aj paramaj)
   {
-    AppMethodBeat.i(76753);
-    if (!(paramag instanceof ag))
+    AppMethodBeat.i(102659);
+    if (!(paramaj instanceof aj))
     {
-      ab.f("MicroMsg.ReaderAppBindQQ.EventListener", "not bind qq event");
-      AppMethodBeat.o(76753);
+      ad.f("MicroMsg.ReaderAppBindQQ.EventListener", "not bind qq event");
+      AppMethodBeat.o(102659);
       return false;
     }
-    if (paramag.cno.cnq == 0) {}
+    if (paramaj.dcf.dch == 0) {}
     try
     {
-      int i = r.Zy() | 0x40000;
-      com.tencent.mm.kernel.g.RL().Ru().set(34, Integer.valueOf(i));
-      paramag = new bmq();
-      paramag.wmt = 262144;
-      paramag.xBb = 1;
-      ((j)com.tencent.mm.kernel.g.E(j.class)).Yz().c(new j.a(39, paramag));
-      ((j)com.tencent.mm.kernel.g.E(j.class)).Yz().c(new k("", "", "", "", "", "", "", "", i, "", ""));
+      int i = u.aqS() | 0x40000;
+      com.tencent.mm.kernel.g.afB().afk().set(34, Integer.valueOf(i));
+      paramaj = new cau();
+      paramaj.CuI = 262144;
+      paramaj.DXj = 1;
+      ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new j.a(39, paramaj));
+      ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new com.tencent.mm.bb.k("", "", "", "", "", "", "", "", i, "", ""));
       g.b(new g.a()
       {
-        public final void cfi() {}
+        public final void dfw() {}
       });
-      i = r.Zt();
-      com.tencent.mm.kernel.g.RL().Ru().set(40, Integer.valueOf(i & 0xFFFFFFDF));
-      ((j)com.tencent.mm.kernel.g.E(j.class)).Yz().c(new com.tencent.mm.az.g(21, 2));
-      ab.d("MicroMsg.ReaderAppBindQQ.EventListener", "doClearReaderAppWeiboHelper succ ");
-      AppMethodBeat.o(76753);
+      i = u.aqM();
+      com.tencent.mm.kernel.g.afB().afk().set(40, Integer.valueOf(i & 0xFFFFFFDF));
+      ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new com.tencent.mm.bb.g(21, 2));
+      ad.d("MicroMsg.ReaderAppBindQQ.EventListener", "doClearReaderAppWeiboHelper succ ");
+      AppMethodBeat.o(102659);
       return false;
     }
-    catch (Exception paramag)
+    catch (Exception paramaj)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.ReaderAppBindQQ.EventListener", paramag, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ReaderAppBindQQ.EventListener", paramaj, "", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.readerapp.c.a
  * JD-Core Version:    0.7.0.1
  */

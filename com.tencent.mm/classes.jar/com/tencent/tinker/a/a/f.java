@@ -4,33 +4,33 @@ import com.tencent.tinker.a.a.b.c;
 import com.tencent.tinker.a.a.b.e;
 
 public final class f
-  extends t.a.a<f>
+  extends s.a.a<f>
 {
-  public int BoI;
-  public int BoL;
-  public int BoM;
-  public int BoN;
-  public int BoO;
-  public int BoP;
-  public int BoQ;
-  public int BoR;
+  public int IAD;
+  public int IAG;
+  public int IAH;
+  public int IAI;
+  public int IAJ;
+  public int IAK;
+  public int IAL;
+  public int IAM;
   
   public f(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
   {
     super(paramInt1);
-    this.BoL = paramInt2;
-    this.BoI = paramInt3;
-    this.BoM = paramInt4;
-    this.BoN = paramInt5;
-    this.BoO = paramInt6;
-    this.BoP = paramInt7;
-    this.BoQ = paramInt8;
-    this.BoR = paramInt9;
+    this.IAG = paramInt2;
+    this.IAD = paramInt3;
+    this.IAH = paramInt4;
+    this.IAI = paramInt5;
+    this.IAJ = paramInt6;
+    this.IAK = paramInt7;
+    this.IAL = paramInt8;
+    this.IAM = paramInt9;
   }
   
   private int a(f paramf)
   {
-    int i = c.ip(this.BoL, paramf.BoL);
+    int i = c.ks(this.IAG, paramf.IAG);
     if (i != 0) {}
     int j;
     do
@@ -46,25 +46,25 @@ public final class f
               do
               {
                 return i;
-                j = c.iq(this.BoI, paramf.BoI);
+                j = c.kt(this.IAD, paramf.IAD);
                 i = j;
               } while (j != 0);
-              j = c.ip(this.BoM, paramf.BoM);
+              j = c.ks(this.IAH, paramf.IAH);
               i = j;
             } while (j != 0);
-            j = c.iq(this.BoN, paramf.BoN);
+            j = c.kt(this.IAI, paramf.IAI);
             i = j;
           } while (j != 0);
-          j = c.ip(this.BoO, paramf.BoO);
+          j = c.ks(this.IAJ, paramf.IAJ);
           i = j;
         } while (j != 0);
-        j = c.iq(this.BoP, paramf.BoP);
+        j = c.kt(this.IAK, paramf.IAK);
         i = j;
       } while (j != 0);
-      j = c.iq(this.BoQ, paramf.BoQ);
+      j = c.kt(this.IAL, paramf.IAL);
       i = j;
     } while (j != 0);
-    return c.iq(this.BoR, paramf.BoR);
+    return c.kt(this.IAM, paramf.IAM);
   }
   
   public final boolean equals(Object paramObject)
@@ -78,12 +78,12 @@ public final class f
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.BoL), Integer.valueOf(this.BoI), Integer.valueOf(this.BoM), Integer.valueOf(this.BoN), Integer.valueOf(this.BoO), Integer.valueOf(this.BoP), Integer.valueOf(this.BoQ), Integer.valueOf(this.BoR) });
+    return e.hash(new Object[] { Integer.valueOf(this.IAG), Integer.valueOf(this.IAD), Integer.valueOf(this.IAH), Integer.valueOf(this.IAI), Integer.valueOf(this.IAJ), Integer.valueOf(this.IAK), Integer.valueOf(this.IAL), Integer.valueOf(this.IAM) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.a.a.f
  * JD-Core Version:    0.7.0.1
  */

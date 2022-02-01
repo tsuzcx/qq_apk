@@ -10,7 +10,7 @@ public enum ShareDialogFeature
   
   static
   {
-    AppMethodBeat.i(97242);
+    AppMethodBeat.i(8266);
     SHARE_DIALOG = new ShareDialogFeature("SHARE_DIALOG", 0, 20130618);
     PHOTOS = new ShareDialogFeature("PHOTOS", 1, 20140204);
     VIDEO = new ShareDialogFeature("VIDEO", 2, 20141028);
@@ -18,7 +18,7 @@ public enum ShareDialogFeature
     HASHTAG = new ShareDialogFeature("HASHTAG", 4, 20160327);
     LINK_SHARE_QUOTES = new ShareDialogFeature("LINK_SHARE_QUOTES", 5, 20160327);
     $VALUES = new ShareDialogFeature[] { SHARE_DIALOG, PHOTOS, VIDEO, MULTIMEDIA, HASHTAG, LINK_SHARE_QUOTES };
-    AppMethodBeat.o(97242);
+    AppMethodBeat.o(8266);
   }
   
   private ShareDialogFeature(int paramInt)
@@ -38,7 +38,7 @@ public enum ShareDialogFeature
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.share.internal.ShareDialogFeature
  * JD-Core Version:    0.7.0.1
  */

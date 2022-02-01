@@ -4,6 +4,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class k$a
   extends Binder
@@ -14,7 +15,7 @@ public abstract class k$a
     attachInterface(this, "com.tencent.mm.plugin.exdevice.service.IBTOnStateChange_AIDL");
   }
   
-  public static k w(IBinder paramIBinder)
+  public static k y(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -23,7 +24,7 @@ public abstract class k$a
     if ((localIInterface != null) && ((localIInterface instanceof k))) {
       return (k)localIInterface;
     }
-    return new k.a.a(paramIBinder);
+    return new a(paramIBinder);
   }
   
   public IBinder asBinder()
@@ -42,14 +43,55 @@ public abstract class k$a
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IBTOnStateChange_AIDL");
-    a(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readLong());
+    b(paramParcel1.readLong(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readLong());
     paramParcel2.writeNoException();
     return true;
+  }
+  
+  static final class a
+    implements k
+  {
+    private IBinder mRemote;
+    
+    a(IBinder paramIBinder)
+    {
+      this.mRemote = paramIBinder;
+    }
+    
+    public final IBinder asBinder()
+    {
+      return this.mRemote;
+    }
+    
+    public final void b(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2)
+    {
+      AppMethodBeat.i(23681);
+      Parcel localParcel1 = Parcel.obtain();
+      Parcel localParcel2 = Parcel.obtain();
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IBTOnStateChange_AIDL");
+        localParcel1.writeLong(paramLong1);
+        localParcel1.writeInt(paramInt1);
+        localParcel1.writeInt(paramInt2);
+        localParcel1.writeInt(paramInt3);
+        localParcel1.writeLong(paramLong2);
+        this.mRemote.transact(1, localParcel1, localParcel2, 0);
+        localParcel2.readException();
+        return;
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+        AppMethodBeat.o(23681);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.k.a
  * JD-Core Version:    0.7.0.1
  */

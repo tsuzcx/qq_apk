@@ -1,12 +1,42 @@
 package com.tencent.mm.plugin.appbrand.jsapi.p;
 
-import a.l;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.MenuItem;
+import com.tencent.luggage.h.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.aa.g;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.bb;
+import com.tencent.mm.plugin.appbrand.page.bh;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.widget.a.e;
+import com.tencent.mm.ui.widget.a.e.b;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/AppBrandJsApiReporterKt;", "", "()V", "getPermissionValue", "", "info", "Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiInfo;", "plugin-appbrand-integration_release"})
-public class b {}
+public final class b
+  extends a<q>
+{
+  private static final int CTRL_INDEX = 107;
+  private static final String NAME = "showActionSheet";
+  public static a khr;
+  
+  public static abstract interface a
+  {
+    public abstract void rT(int paramInt);
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p.b
  * JD-Core Version:    0.7.0.1
  */

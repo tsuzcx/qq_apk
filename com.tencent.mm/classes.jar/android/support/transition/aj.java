@@ -1,41 +1,46 @@
 package android.support.transition;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.animation.TimeInterpolator;
 import android.view.View;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 final class aj
+  extends ai
 {
-  static Animator a(View paramView, ah paramah, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, TimeInterpolator paramTimeInterpolator)
+  private static Method AY;
+  private static boolean AZ;
+  
+  public final void b(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    float f1 = paramView.getTranslationX();
-    float f2 = paramView.getTranslationY();
-    Object localObject = (int[])paramah.view.getTag(2131820684);
-    if (localObject != null)
+    if (!AZ) {}
+    try
     {
-      paramFloat1 = localObject[0] - paramInt1 + f1;
-      paramFloat2 = localObject[1] - paramInt2 + f2;
+      Method localMethod = View.class.getDeclaredMethod("setLeftTopRightBottom", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE });
+      AY = localMethod;
+      localMethod.setAccessible(true);
+      label54:
+      AZ = true;
+      if (AY != null) {}
+      try
+      {
+        AY.invoke(paramView, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+        return;
+      }
+      catch (InvocationTargetException paramView)
+      {
+        throw new RuntimeException(paramView.getCause());
+      }
+      catch (IllegalAccessException paramView) {}
     }
-    int i = Math.round(paramFloat1 - f1);
-    int j = Math.round(paramFloat2 - f2);
-    paramView.setTranslationX(paramFloat1);
-    paramView.setTranslationY(paramFloat2);
-    if ((paramFloat1 == paramFloat3) && (paramFloat2 == paramFloat4)) {
-      return null;
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      break label54;
     }
-    localObject = ObjectAnimator.ofPropertyValuesHolder(paramView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat(View.TRANSLATION_X, new float[] { paramFloat1, paramFloat3 }), PropertyValuesHolder.ofFloat(View.TRANSLATION_Y, new float[] { paramFloat2, paramFloat4 }) });
-    paramView = new aj.a(paramView, paramah.view, paramInt1 + i, paramInt2 + j, f1, f2, (byte)0);
-    ((ObjectAnimator)localObject).addListener(paramView);
-    a.a((Animator)localObject, paramView);
-    ((ObjectAnimator)localObject).setInterpolator(paramTimeInterpolator);
-    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.transition.aj
  * JD-Core Version:    0.7.0.1
  */

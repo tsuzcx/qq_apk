@@ -1,144 +1,126 @@
 package com.tencent.mm.model;
 
-import android.content.Intent;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.d;
-import com.tencent.mm.aj.d.b;
-import com.tencent.mm.aj.d.b.a;
-import com.tencent.mm.aj.e;
-import com.tencent.mm.aj.z;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.bxf;
-import com.tencent.mm.protocal.protobuf.bxh;
-import com.tencent.mm.protocal.protobuf.cfj;
-import com.tencent.mm.protocal.protobuf.wc;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.ui.e.b;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import com.tencent.mm.am.f;
+import com.tencent.mm.api.c;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bl;
+import junit.framework.Assert;
 
 public final class j
-  implements com.tencent.mm.api.j
 {
-  public final void a(Intent paramIntent, bxf parambxf, int paramInt)
+  public static int a(String paramString, final long paramLong, bi.a parama)
   {
-    AppMethodBeat.i(11233);
-    String str = aa.a(parambxf.wOT);
-    paramIntent.putExtra("Contact_User", str);
-    paramIntent.putExtra("Contact_Nick", aa.a(parambxf.xmi));
-    paramIntent.putExtra("Contact_PyInitial", aa.a(parambxf.wOv));
-    paramIntent.putExtra("Contact_QuanPin", aa.a(parambxf.wOw));
-    paramIntent.putExtra("Contact_Alias", parambxf.gwU);
-    paramIntent.putExtra("Contact_Sex", parambxf.gwP);
-    paramIntent.putExtra("Contact_VUser_Info", parambxf.xpf);
-    paramIntent.putExtra("Contact_VUser_Info_Flag", parambxf.xpe);
-    paramIntent.putExtra("Contact_KWeibo_flag", parambxf.xpi);
-    paramIntent.putExtra("Contact_KWeibo", parambxf.xpg);
-    paramIntent.putExtra("Contact_KWeiboNick", parambxf.xph);
-    paramIntent.putExtra("Contact_Scene", paramInt);
-    paramIntent.putExtra("Contact_KHideExpose", true);
-    paramIntent.putExtra("Contact_RegionCode", RegionCodeDecoder.aF(parambxf.gwY, parambxf.gwQ, parambxf.gwR));
-    paramIntent.putExtra("Contact_Signature", parambxf.gwS);
-    paramIntent.putExtra("Contact_BrandList", parambxf.gwZ);
-    paramIntent.putExtra("Contact_KSnsIFlag", parambxf.xpk.gxa);
-    paramIntent.putExtra("Contact_KSnsBgId", parambxf.xpk.gxc);
-    paramIntent.putExtra("Contact_KSnsBgUrl", parambxf.xpk.gxb);
-    paramIntent.putExtra(e.b.yUZ, parambxf.wYu);
-    ab.i("MicroMsg.BizInfoLogicImp", "[tomys] anti, content: %s", new Object[] { parambxf.wYu });
-    paramIntent = new d();
-    paramIntent.field_username = str;
-    paramIntent.field_brandList = parambxf.gwZ;
-    parambxf = parambxf.xpl;
-    if (parambxf != null)
+    AppMethodBeat.i(123960);
+    ad.d("MicroMsg.BizConversationLogic", "deleteMsgByBizChatId %s", new Object[] { Long.valueOf(paramLong) });
+    g.afE().ax(new Runnable()
     {
-      paramIntent.field_brandFlag = parambxf.gxd;
-      paramIntent.field_brandInfo = parambxf.gxf;
-      paramIntent.field_extInfo = parambxf.gxe;
-      paramIntent.field_brandIconURL = parambxf.gxg;
-    }
-    if (!z.afi().e(paramIntent)) {
-      z.afi().d(paramIntent);
-    }
-    AppMethodBeat.o(11233);
-  }
-  
-  public final void a(Intent paramIntent, bxh parambxh, int paramInt)
-  {
-    AppMethodBeat.i(11232);
-    String str = aa.a(parambxh.wOT);
-    paramIntent.putExtra("Contact_User", str);
-    paramIntent.putExtra("Contact_Nick", aa.a(parambxh.xmi));
-    paramIntent.putExtra("Contact_PyInitial", aa.a(parambxh.wOv));
-    paramIntent.putExtra("Contact_QuanPin", aa.a(parambxh.wOw));
-    paramIntent.putExtra("Contact_Alias", parambxh.gwU);
-    paramIntent.putExtra("Contact_Sex", parambxh.gwP);
-    paramIntent.putExtra("Contact_VUser_Info", parambxh.xpf);
-    paramIntent.putExtra("Contact_VUser_Info_Flag", parambxh.xpe);
-    paramIntent.putExtra("Contact_KWeibo_flag", parambxh.xpi);
-    paramIntent.putExtra("Contact_KWeibo", parambxh.xpg);
-    paramIntent.putExtra("Contact_KWeiboNick", parambxh.xph);
-    paramIntent.putExtra("Contact_Scene", paramInt);
-    paramIntent.putExtra("Contact_KHideExpose", true);
-    paramIntent.putExtra("Contact_RegionCode", RegionCodeDecoder.aF(parambxh.gwY, parambxh.gwQ, parambxh.gwR));
-    paramIntent.putExtra("Contact_Signature", parambxh.gwS);
-    paramIntent.putExtra("Contact_BrandList", parambxh.gwZ);
-    paramIntent.putExtra("Contact_KSnsIFlag", parambxh.xpk.gxa);
-    paramIntent.putExtra("Contact_KSnsBgId", parambxh.xpk.gxc);
-    paramIntent.putExtra("Contact_KSnsBgUrl", parambxh.xpk.gxb);
-    paramIntent.putExtra("Contact_BIZ_KF_WORKER_ID", parambxh.xKi);
-    paramIntent.putExtra(e.b.yUZ, parambxh.wYu);
-    paramIntent.putExtra("Contact_BIZ_PopupInfoMsg", parambxh.xKj);
-    ab.i("MicroMsg.BizInfoLogicImp", "[tomys] anti, content: %s", new Object[] { parambxh.wYu });
-    paramIntent = new d();
-    paramIntent.field_username = str;
-    paramIntent.field_brandList = parambxh.gwZ;
-    paramIntent.field_kfWorkerId = parambxh.xKi;
-    parambxh = parambxh.xpl;
-    if (parambxh != null)
-    {
-      paramIntent.field_brandFlag = parambxh.gxd;
-      paramIntent.field_brandInfo = parambxh.gxf;
-      paramIntent.field_extInfo = parambxh.gxe;
-      paramIntent.field_brandIconURL = parambxh.gxg;
-    }
-    if (!z.afi().e(paramIntent)) {
-      z.afi().d(paramIntent);
-    }
-    AppMethodBeat.o(11232);
-  }
-  
-  public final boolean dk(String paramString)
-  {
-    AppMethodBeat.i(11230);
-    if (z.afi().rK(paramString).aea())
-    {
-      AppMethodBeat.o(11230);
-      return true;
-    }
-    AppMethodBeat.o(11230);
-    return false;
-  }
-  
-  public final ArrayList<String> dl(String paramString)
-  {
-    AppMethodBeat.i(11231);
-    try
-    {
-      paramString = z.afi().rK(paramString).cU(false);
-      if ((paramString.fvE == null) && (paramString.fvc != null)) {
-        paramString.fvE = d.b.a.rD(paramString.fvc.optString("AcctTransferInfo"));
+      public final void run()
+      {
+        AppMethodBeat.i(123957);
+        Cursor localCursor = ((com.tencent.mm.am.p)g.ab(com.tencent.mm.am.p.class)).apP().bX(this.fHA, paramLong);
+        if (localCursor.moveToFirst()) {
+          while ((!localCursor.isAfterLast()) && ((this.gMc == null) || (!this.gMc.Vt())))
+          {
+            bl localbl = new bl();
+            localbl.convertFrom(localCursor);
+            bi.v(localbl);
+            localCursor.moveToNext();
+          }
+        }
+        localCursor.close();
+        ((com.tencent.mm.am.p)g.ab(com.tencent.mm.am.p.class)).apP().bW(this.fHA, paramLong);
+        aq.f(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(123956);
+            if (j.1.this.gMc != null) {
+              j.1.this.gMc.Vu();
+            }
+            AppMethodBeat.o(123956);
+          }
+        });
+        AppMethodBeat.o(123957);
       }
-      paramString = paramString.fvE.fvG;
-      AppMethodBeat.o(11231);
-      return paramString;
-    }
-    catch (Exception paramString)
+      
+      public final String toString()
+      {
+        AppMethodBeat.i(123958);
+        String str = super.toString() + "|deleteMsgByTalker";
+        AppMethodBeat.o(123958);
+        return str;
+      }
+    });
+    AppMethodBeat.o(123960);
+    return 0;
+  }
+  
+  public static void rI(String paramString)
+  {
+    AppMethodBeat.i(123959);
+    if (!bt.isNullOrNil(paramString)) {}
+    Object localObject;
+    for (boolean bool = true;; bool = false)
     {
-      paramString = new ArrayList();
-      AppMethodBeat.o(11231);
+      Assert.assertTrue(bool);
+      localObject = ((k)g.ab(k.class)).apM().aHY(paramString);
+      if ((localObject != null) && (!bt.isNullOrNil(((au)localObject).field_username))) {
+        break;
+      }
+      AppMethodBeat.o(123959);
+      return;
     }
-    return paramString;
+    ((af)localObject).setType(((au)localObject).field_type | 0x800);
+    w.z((af)localObject);
+    if ((((k)g.ab(k.class)).apR().aIn(paramString) == null) && (((af)localObject).eKB()))
+    {
+      if (!f.wI(paramString)) {
+        break label254;
+      }
+      if (((k)g.ab(k.class)).apR().aIn("officialaccounts") == null)
+      {
+        localObject = new am("officialaccounts");
+        ((am)localObject).eLf();
+        ((k)g.ab(k.class)).apR().e((am)localObject);
+      }
+      localObject = new am(paramString);
+      ((am)localObject).kS(System.currentTimeMillis());
+      ((am)localObject).nN("officialaccounts");
+      ((k)g.ab(k.class)).apR().e((am)localObject);
+    }
+    for (;;)
+    {
+      ad.i("MicroMsg.BizConversationLogic", "setPlacedTop username = ".concat(String.valueOf(paramString)));
+      ((k)g.ab(k.class)).apR().aIt(paramString);
+      AppMethodBeat.o(123959);
+      return;
+      label254:
+      if (f.wK(paramString))
+      {
+        localObject = f.ei(paramString);
+        if (((k)g.ab(k.class)).apR().aIn(((c)localObject).field_enterpriseFather) == null)
+        {
+          localam = new am(((c)localObject).field_enterpriseFather);
+          localam.eLf();
+          ((k)g.ab(k.class)).apR().e(localam);
+        }
+        am localam = new am(paramString);
+        localam.kS(System.currentTimeMillis());
+        localam.nN(((c)localObject).Jm());
+        ((k)g.ab(k.class)).apR().e(localam);
+      }
+    }
   }
 }
 

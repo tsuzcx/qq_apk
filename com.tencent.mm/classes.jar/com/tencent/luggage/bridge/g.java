@@ -5,28 +5,28 @@ import org.json.JSONObject;
 
 public final class g
 {
-  private JSONObject bxK;
-  private String bxW;
-  int bxX;
-  boolean bxY;
+  private JSONObject bZb;
+  private String bZn;
+  int bZo;
+  boolean bZp;
   
   g(m paramm)
   {
-    AppMethodBeat.i(90723);
-    paramm = paramm.tS();
-    this.bxW = paramm.getString("method");
-    this.bxK = paramm.optJSONObject("data");
-    if (this.bxK == null) {
-      this.bxK = new JSONObject();
+    AppMethodBeat.i(140323);
+    paramm = paramm.AG();
+    this.bZn = paramm.getString("method");
+    this.bZb = paramm.optJSONObject("data");
+    if (this.bZb == null) {
+      this.bZb = new JSONObject();
     }
-    this.bxX = paramm.optInt("callbackId", 0);
-    this.bxY = paramm.optBoolean("keepCallback", false);
-    AppMethodBeat.o(90723);
+    this.bZo = paramm.optInt("callbackId", 0);
+    this.bZp = paramm.optBoolean("keepCallback", false);
+    AppMethodBeat.o(140323);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.bridge.g
  * JD-Core Version:    0.7.0.1
  */

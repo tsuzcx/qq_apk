@@ -51,7 +51,7 @@ class LoginLogger
   
   LoginLogger(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(96857);
+    AppMethodBeat.i(7881);
     this.applicationId = paramString;
     this.appEventsLogger = AppEventsLogger.newLogger(paramContext, paramString);
     try
@@ -64,18 +64,18 @@ class LoginLogger
           this.facebookVersion = paramContext.versionName;
         }
       }
-      AppMethodBeat.o(96857);
+      AppMethodBeat.o(7881);
       return;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      AppMethodBeat.o(96857);
+      AppMethodBeat.o(7881);
     }
   }
   
   static Bundle newAuthorizationLoggingBundle(String paramString)
   {
-    AppMethodBeat.i(96858);
+    AppMethodBeat.i(7882);
     Bundle localBundle = new Bundle();
     localBundle.putLong("1_timestamp_ms", System.currentTimeMillis());
     localBundle.putString("0_auth_logger_id", paramString);
@@ -84,7 +84,7 @@ class LoginLogger
     localBundle.putString("5_error_message", "");
     localBundle.putString("4_error_code", "");
     localBundle.putString("6_extras", "");
-    AppMethodBeat.o(96858);
+    AppMethodBeat.o(7882);
     return localBundle;
   }
   
@@ -95,7 +95,7 @@ class LoginLogger
   
   public void logAuthorizationMethodComplete(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(96862);
+    AppMethodBeat.i(7886);
     paramString1 = newAuthorizationLoggingBundle(paramString1);
     if (paramString3 != null) {
       paramString1.putString("2_result", paramString3);
@@ -111,30 +111,30 @@ class LoginLogger
     }
     paramString1.putString("3_method", paramString2);
     this.appEventsLogger.logSdkEvent("fb_mobile_login_method_complete", null, paramString1);
-    AppMethodBeat.o(96862);
+    AppMethodBeat.o(7886);
   }
   
   public void logAuthorizationMethodNotTried(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(96863);
+    AppMethodBeat.i(7887);
     paramString1 = newAuthorizationLoggingBundle(paramString1);
     paramString1.putString("3_method", paramString2);
     this.appEventsLogger.logSdkEvent("fb_mobile_login_method_not_tried", null, paramString1);
-    AppMethodBeat.o(96863);
+    AppMethodBeat.o(7887);
   }
   
   public void logAuthorizationMethodStart(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(96861);
+    AppMethodBeat.i(7885);
     paramString1 = newAuthorizationLoggingBundle(paramString1);
     paramString1.putString("3_method", paramString2);
     this.appEventsLogger.logSdkEvent("fb_mobile_login_method_start", null, paramString1);
-    AppMethodBeat.o(96861);
+    AppMethodBeat.o(7885);
   }
   
   public void logCompleteLogin(String paramString, Map<String, String> paramMap1, LoginClient.Result.Code paramCode, Map<String, String> paramMap2, Exception paramException)
   {
-    AppMethodBeat.i(96860);
+    AppMethodBeat.i(7884);
     Bundle localBundle = newAuthorizationLoggingBundle(paramString);
     if (paramCode != null) {
       localBundle.putString("2_result", paramCode.getLoggingValue());
@@ -149,11 +149,11 @@ class LoginLogger
       if (paramMap2 != null)
       {
         if (paramString != null) {
-          break label184;
+          break label186;
         }
         paramString = new JSONObject();
       }
-      label184:
+      label186:
       for (;;)
       {
         try
@@ -175,7 +175,7 @@ class LoginLogger
         {
           localBundle.putString("6_extras", paramMap1.toString());
           this.appEventsLogger.logSdkEvent("fb_mobile_login_complete", null, localBundle);
-          AppMethodBeat.o(96860);
+          AppMethodBeat.o(7884);
           return;
           paramMap1 = paramString;
         }
@@ -185,43 +185,43 @@ class LoginLogger
   
   public void logLoginStatusError(String paramString, Exception paramException)
   {
-    AppMethodBeat.i(96867);
+    AppMethodBeat.i(7891);
     paramString = newAuthorizationLoggingBundle(paramString);
     paramString.putString("2_result", LoginClient.Result.Code.ERROR.getLoggingValue());
     paramString.putString("5_error_message", paramException.toString());
     this.appEventsLogger.logSdkEvent("fb_mobile_login_status_complete", null, paramString);
-    AppMethodBeat.o(96867);
+    AppMethodBeat.o(7891);
   }
   
   public void logLoginStatusFailure(String paramString)
   {
-    AppMethodBeat.i(96866);
+    AppMethodBeat.i(7890);
     paramString = newAuthorizationLoggingBundle(paramString);
     paramString.putString("2_result", "failure");
     this.appEventsLogger.logSdkEvent("fb_mobile_login_status_complete", null, paramString);
-    AppMethodBeat.o(96866);
+    AppMethodBeat.o(7890);
   }
   
   public void logLoginStatusStart(String paramString)
   {
-    AppMethodBeat.i(96864);
+    AppMethodBeat.i(7888);
     paramString = newAuthorizationLoggingBundle(paramString);
     this.appEventsLogger.logSdkEvent("fb_mobile_login_status_start", null, paramString);
-    AppMethodBeat.o(96864);
+    AppMethodBeat.o(7888);
   }
   
   public void logLoginStatusSuccess(String paramString)
   {
-    AppMethodBeat.i(96865);
+    AppMethodBeat.i(7889);
     paramString = newAuthorizationLoggingBundle(paramString);
     paramString.putString("2_result", LoginClient.Result.Code.SUCCESS.getLoggingValue());
     this.appEventsLogger.logSdkEvent("fb_mobile_login_status_complete", null, paramString);
-    AppMethodBeat.o(96865);
+    AppMethodBeat.o(7889);
   }
   
   public void logStartLogin(LoginClient.Request paramRequest)
   {
-    AppMethodBeat.i(96859);
+    AppMethodBeat.i(7883);
     Bundle localBundle = newAuthorizationLoggingBundle(paramRequest.getAuthId());
     try
     {
@@ -242,30 +242,30 @@ class LoginLogger
       break label116;
     }
     this.appEventsLogger.logSdkEvent("fb_mobile_login_start", null, localBundle);
-    AppMethodBeat.o(96859);
+    AppMethodBeat.o(7883);
   }
   
   public void logUnexpectedError(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(96868);
+    AppMethodBeat.i(7892);
     logUnexpectedError(paramString1, paramString2, "");
-    AppMethodBeat.o(96868);
+    AppMethodBeat.o(7892);
   }
   
   public void logUnexpectedError(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(96869);
+    AppMethodBeat.i(7893);
     Bundle localBundle = newAuthorizationLoggingBundle("");
     localBundle.putString("2_result", LoginClient.Result.Code.ERROR.getLoggingValue());
     localBundle.putString("5_error_message", paramString2);
     localBundle.putString("3_method", paramString3);
     this.appEventsLogger.logSdkEvent(paramString1, null, localBundle);
-    AppMethodBeat.o(96869);
+    AppMethodBeat.o(7893);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.login.LoginLogger
  * JD-Core Version:    0.7.0.1
  */

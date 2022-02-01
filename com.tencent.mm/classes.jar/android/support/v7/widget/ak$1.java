@@ -12,25 +12,25 @@ final class ak$1
     super(paramContext);
   }
   
-  protected final void a(View paramView, RecyclerView.r.a parama)
+  protected final float a(DisplayMetrics paramDisplayMetrics)
   {
-    paramView = this.ahD.a(this.ahD.adt.getLayoutManager(), paramView);
+    return 100.0F / paramDisplayMetrics.densityDpi;
+  }
+  
+  protected final void a(View paramView, RecyclerView.s params, RecyclerView.r.a parama)
+  {
+    paramView = this.aoK.a(this.aoK.akA.getLayoutManager(), paramView);
     int i = paramView[0];
     int j = paramView[1];
-    int k = bL(Math.max(Math.abs(i), Math.abs(j)));
+    int k = cd(Math.max(Math.abs(i), Math.abs(j)));
     if (k > 0) {
-      parama.a(i, j, k, this.LP);
+      parama.a(i, j, k, this.SS);
     }
   }
   
-  protected final int bM(int paramInt)
+  protected final int ce(int paramInt)
   {
-    return Math.min(100, super.bM(paramInt));
-  }
-  
-  protected final float c(DisplayMetrics paramDisplayMetrics)
-  {
-    return 100.0F / paramDisplayMetrics.densityDpi;
+    return Math.min(100, super.ce(paramInt));
   }
 }
 

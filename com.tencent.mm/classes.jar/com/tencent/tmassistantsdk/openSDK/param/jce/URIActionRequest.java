@@ -19,21 +19,21 @@ public final class URIActionRequest
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76013);
+    AppMethodBeat.i(102259);
     this.uri = paramJceInputStream.readString(0, true);
-    AppMethodBeat.o(76013);
+    AppMethodBeat.o(102259);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76012);
+    AppMethodBeat.i(102258);
     paramJceOutputStream.write(this.uri, 0);
-    AppMethodBeat.o(76012);
+    AppMethodBeat.o(102258);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.URIActionRequest
  * JD-Core Version:    0.7.0.1
  */

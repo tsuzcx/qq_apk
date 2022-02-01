@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.emojicapture.e;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
 final class a$1
   implements Runnable
 {
-  public static final 1 lvT;
+  public static final 1 oMo;
   
   static
   {
-    AppMethodBeat.i(2737);
-    lvT = new 1();
-    AppMethodBeat.o(2737);
+    AppMethodBeat.i(316);
+    oMo = new 1();
+    AppMethodBeat.o(316);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(2736);
-    ab.i("MicroMsg.CapturePresenter", "proxy connected");
-    AppMethodBeat.o(2736);
+    AppMethodBeat.i(315);
+    ad.i("MicroMsg.CapturePresenter", "proxy connected");
+    AppMethodBeat.o(315);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.e.a.1
  * JD-Core Version:    0.7.0.1
  */

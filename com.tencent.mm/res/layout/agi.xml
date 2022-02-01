@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/n_" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/cz" android:visibility="gone" android:layout_width="@dimen/i5" android:layout_height="wrap_content" android:layout_marginRight="@dimen/lb" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/lg" />
-    <TextView android:id="@id/dei" android:visibility="gone" android:drawableLeft="@raw/card_photoicon" android:drawablePadding="@dimen/ne" android:layout_toRightOf="@id/cz" style="@style/lj" />
-    <TextView android:textColor="@color/tc" android:gravity="center|left" android:id="@id/dej" android:visibility="gone" android:layout_marginTop="@dimen/n_" android:layout_toRightOf="@id/cz" android:layout_below="@id/dei" style="@style/lj" />
+    <RelativeLayout android:id="@id/czm" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ft" android:background="@color/a6a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/f2" />
+        <ListView android:id="@id/f2" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/n3" />
+        <com.tencent.mm.plugin.ipcall.ui.IPCallAddressScrollbar android:id="@id/fl" android:layout_width="@dimen/nq" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/fs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="15.0dip" android:textColor="@color/c3" android:gravity="center" android:id="@id/fr" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/d5_" android:layout_weight="0.5" />
+            <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="0.5" />
+        </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

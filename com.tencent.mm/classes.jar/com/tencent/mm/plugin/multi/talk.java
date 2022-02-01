@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.multi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.c.c;
-import com.tencent.pb.common.c.d;
+import com.tencent.pb.common.a.a;
+import com.tencent.pb.common.c.b;
 import com.tencent.wecall.talkroom.model.i;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -10,6 +10,7 @@ public class talk
 {
   public static int VOICE_FRAME_DURATION;
   public static int VOICE_SAMPLERATE;
+  public static int tOi;
   public byte[] field_capInfo = null;
   public int field_localImgHeight = 0;
   public int field_localImgWidth = 0;
@@ -20,24 +21,25 @@ public class talk
   
   static
   {
-    AppMethodBeat.i(127740);
+    AppMethodBeat.i(62794);
     VOICE_SAMPLERATE = 8000;
     VOICE_FRAME_DURATION = 20;
+    tOi = 9;
     try
     {
-      if ((com.tencent.pb.common.a.a.BcB) && (com.tencent.pb.common.a.a.BcS))
+      if ((a.Ijx) && (a.IjO))
       {
-        com.tencent.pb.common.c.a.q("stlport_shared", d.tFk);
-        com.tencent.pb.common.c.a.q("wechatxlog", d.tFk);
-        com.tencent.pb.common.c.a.q("voipMain", d.tFk);
+        System.loadLibrary("stlport_shared");
+        System.loadLibrary("wechatxlog");
+        System.loadLibrary("voipMain");
       }
-      AppMethodBeat.o(127740);
+      AppMethodBeat.o(62794);
       return;
     }
     catch (Throwable localThrowable)
     {
-      c.w("loadLibrary: ", new Object[] { localThrowable });
-      AppMethodBeat.o(127740);
+      b.w("loadLibrary: ", new Object[] { localThrowable });
+      AppMethodBeat.o(62794);
     }
   }
   
@@ -49,7 +51,9 @@ public class talk
   
   public native void OnMembersChanged(int[] paramArrayOfInt);
   
-  public native int Open(a parama, i parami, int paramInt1, int paramInt2, int paramInt3, long paramLong, int[] paramArrayOfInt1, short[] paramArrayOfShort1, int paramInt4, int[] paramArrayOfInt2, byte[] paramArrayOfByte1, boolean paramBoolean, int paramInt5, int[] paramArrayOfInt3, short[] paramArrayOfShort2, int paramInt6, int paramInt7, int paramInt8, byte[] paramArrayOfByte2, int[] paramArrayOfInt4, int paramInt9);
+  public native int Open(a parama, i parami, int paramInt1, int paramInt2, int paramInt3, long paramLong, String[] paramArrayOfString1, short[] paramArrayOfShort1, int paramInt4, int[] paramArrayOfInt1, byte[] paramArrayOfByte1, boolean paramBoolean, int paramInt5, String[] paramArrayOfString2, short[] paramArrayOfShort2, int paramInt6, int paramInt7, int paramInt8, byte[] paramArrayOfByte2, int[] paramArrayOfInt2, int paramInt9, int paramInt10);
+  
+  public native int Redirect(String[] paramArrayOfString1, short[] paramArrayOfShort1, String[] paramArrayOfString2, short[] paramArrayOfShort2, int paramInt);
   
   public native int SendAudio(byte[] paramArrayOfByte, short paramShort, int paramInt);
   
@@ -71,9 +75,9 @@ public class talk
   
   public final int setAppCmd(int paramInt)
   {
-    AppMethodBeat.i(127739);
+    AppMethodBeat.i(62793);
     paramInt = setAppCmd(paramInt, new byte[] { 5 }, 1);
-    AppMethodBeat.o(127739);
+    AppMethodBeat.o(62793);
     return paramInt;
   }
   
@@ -104,7 +108,7 @@ public class talk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.multi.talk
  * JD-Core Version:    0.7.0.1
  */

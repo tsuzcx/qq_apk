@@ -10,6 +10,7 @@ import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ScaleDrawable;
 import android.os.Build.VERSION;
+import android.support.v4.graphics.drawable.a;
 import android.support.v4.graphics.drawable.f;
 import android.support.v7.d.a.c;
 import java.lang.reflect.Field;
@@ -17,21 +18,21 @@ import java.lang.reflect.Method;
 
 public final class x
 {
-  public static final Rect acL = new Rect();
-  private static Class<?> acM;
+  public static final Rect ajS = new Rect();
+  private static Class<?> ajT;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 18) {}
     try
     {
-      acM = Class.forName("android.graphics.Insets");
+      ajT = Class.forName("android.graphics.Insets");
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException) {}
   }
   
-  public static PorterDuff.Mode c(int paramInt, PorterDuff.Mode paramMode)
+  public static PorterDuff.Mode a(int paramInt, PorterDuff.Mode paramMode)
   {
     switch (paramInt)
     {
@@ -59,34 +60,30 @@ public final class x
     return PorterDuff.Mode.ADD;
   }
   
-  public static Rect m(Drawable paramDrawable)
+  public static Rect r(Drawable paramDrawable)
   {
-    Object localObject1;
-    if (acM != null) {
-      localObject1 = paramDrawable;
-    }
+    if (ajT != null) {}
     for (;;)
     {
-      Object localObject2;
+      Object localObject;
+      Rect localRect;
       int j;
       String str;
       int i;
       try
       {
-        if ((paramDrawable instanceof f)) {
-          localObject1 = ((f)paramDrawable).cU();
+        paramDrawable = a.j(paramDrawable);
+        localObject = paramDrawable.getClass().getMethod("getOpticalInsets", new Class[0]).invoke(paramDrawable, new Object[0]);
+        if (localObject == null) {
+          break label207;
         }
-        localObject2 = localObject1.getClass().getMethod("getOpticalInsets", new Class[0]).invoke(localObject1, new Object[0]);
-        if (localObject2 == null) {
-          break label223;
-        }
-        localObject1 = new Rect();
-        Field[] arrayOfField = acM.getFields();
+        localRect = new Rect();
+        Field[] arrayOfField = ajT.getFields();
         int k = arrayOfField.length;
         j = 0;
-        paramDrawable = (Drawable)localObject1;
+        paramDrawable = localRect;
         if (j >= k) {
-          break label227;
+          break label211;
         }
         paramDrawable = arrayOfField[j];
         str = paramDrawable.getName();
@@ -95,7 +92,7 @@ public final class x
         {
         case 3317767: 
           if (!str.equals("left")) {
-            break label271;
+            break label255;
           }
           i = 0;
         }
@@ -104,40 +101,40 @@ public final class x
       if (str.equals("top"))
       {
         i = 1;
-        break label271;
+        break label255;
         if (str.equals("right"))
         {
           i = 2;
-          break label271;
+          break label255;
           if (str.equals("bottom"))
           {
             i = 3;
-            break label271;
-            ((Rect)localObject1).left = paramDrawable.getInt(localObject2);
-            break label304;
-            label223:
-            paramDrawable = acL;
-            label227:
+            break label255;
+            localRect.left = paramDrawable.getInt(localObject);
+            break label288;
+            label207:
+            paramDrawable = ajS;
+            label211:
             return paramDrawable;
-            ((Rect)localObject1).top = paramDrawable.getInt(localObject2);
-            break label304;
-            ((Rect)localObject1).right = paramDrawable.getInt(localObject2);
-            break label304;
-            ((Rect)localObject1).bottom = paramDrawable.getInt(localObject2);
-            break label304;
+            localRect.top = paramDrawable.getInt(localObject);
+            break label288;
+            localRect.right = paramDrawable.getInt(localObject);
+            break label288;
+            localRect.bottom = paramDrawable.getInt(localObject);
+            break label288;
           }
         }
       }
-      label271:
+      label255:
       switch (i)
       {
       }
-      label304:
+      label288:
       j += 1;
     }
   }
   
-  static void n(Drawable paramDrawable)
+  static void s(Drawable paramDrawable)
   {
     int[] arrayOfInt;
     if ((Build.VERSION.SDK_INT == 21) && ("android.graphics.drawable.VectorDrawable".equals(paramDrawable.getClass().getName())))
@@ -146,7 +143,7 @@ public final class x
       if ((arrayOfInt != null) && (arrayOfInt.length != 0)) {
         break label52;
       }
-      paramDrawable.setState(av.dP);
+      paramDrawable.setState(av.gZ);
     }
     for (;;)
     {
@@ -157,7 +154,7 @@ public final class x
     }
   }
   
-  public static boolean o(Drawable paramDrawable)
+  public static boolean t(Drawable paramDrawable)
   {
     for (;;)
     {
@@ -181,7 +178,7 @@ public final class x
         int i = 0;
         while (i < j)
         {
-          if (!o(paramDrawable[i])) {
+          if (!t(paramDrawable[i])) {
             return false;
           }
           i += 1;
@@ -189,7 +186,7 @@ public final class x
       }
       if ((paramDrawable instanceof f))
       {
-        paramDrawable = ((f)paramDrawable).cU();
+        paramDrawable = ((f)paramDrawable).dZ();
       }
       else if ((paramDrawable instanceof c))
       {

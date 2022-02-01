@@ -1,32 +1,13 @@
 package com.tencent.mm.plugin.appbrand.game;
 
-import com.tencent.luggage.game.e.a.a.a.a;
-import com.tencent.luggage.sdk.b.a.c.e;
-import com.tencent.magicbrush.MBRuntime;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
-public final class b
-  extends com.tencent.mm.plugin.appbrand.service.c
+public abstract interface b
+  extends com.tencent.luggage.game.d.a.a.b
 {
-  public b()
-  {
-    super(new a.a());
-    AppMethodBeat.i(143109);
-    AppMethodBeat.o(143109);
-  }
-  
-  public final MBRuntime aAr()
-  {
-    e locale = this.bEO;
-    if ((locale instanceof a)) {
-      return ((a)locale).bBi.bzF.bzI;
-    }
-    return null;
-  }
+  public abstract com.tencent.mm.plugin.appbrand.report.b aWx();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.b
  * JD-Core Version:    0.7.0.1
  */

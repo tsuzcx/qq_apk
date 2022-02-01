@@ -8,15 +8,15 @@ public final class b
   extends j<a>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] goC;
+  private static final String[] iaF;
   private e db;
   
   static
   {
-    AppMethodBeat.i(41751);
+    AppMethodBeat.i(64646);
     SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "HoneyPayMsgRecord") };
-    goC = new String[] { "*", "rowid" };
-    AppMethodBeat.o(41751);
+    iaF = new String[] { "*", "rowid" };
+    AppMethodBeat.o(64646);
   }
   
   public b(e parame)
@@ -27,7 +27,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.model.b
  * JD-Core Version:    0.7.0.1
  */

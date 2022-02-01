@@ -27,22 +27,22 @@ public class GoogleSignInOptions
   implements e, ReflectedParcelable
 {
   public static final Parcelable.Creator<GoogleSignInOptions> CREATOR = new c();
-  private static Comparator<Scope> GB = new Comparator() {};
-  public static final Scope GC = new Scope("profile");
-  public static final Scope GD = new Scope("email");
-  public static final Scope GE = new Scope("openid");
-  public static final Scope GF = new Scope("https://www.googleapis.com/auth/games");
-  public static final GoogleSignInOptions GG = new a().gf().gg().gh();
-  public static final GoogleSignInOptions GH = new a().a(GF, new Scope[0]).gh();
-  private final ArrayList<Scope> GI;
-  private Account GJ;
-  private boolean GK;
-  private final boolean GL;
-  private final boolean GM;
-  private String GN;
-  private String GO;
-  private ArrayList<zzg> GP;
-  private Map<Integer, zzg> GQ;
+  private static Comparator<Scope> Iq = new Comparator() {};
+  public static final Scope Ir = new Scope("profile");
+  public static final Scope Is = new Scope("email");
+  public static final Scope It = new Scope("openid");
+  public static final Scope Iu = new Scope("https://www.googleapis.com/auth/games");
+  public static final GoogleSignInOptions Iv = new a().gp().gq().gr();
+  public static final GoogleSignInOptions Iw = new a().a(Iu, new Scope[0]).gr();
+  private final boolean IA;
+  private final boolean IB;
+  private String IC;
+  private String ID;
+  private ArrayList<zzg> IE;
+  private Map<Integer, zzg> IF;
+  private final ArrayList<Scope> Ix;
+  private Account Iy;
+  private boolean Iz;
   final int versionCode;
   
   GoogleSignInOptions(int paramInt, ArrayList<Scope> paramArrayList, Account paramAccount, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString1, String paramString2, ArrayList<zzg> paramArrayList1)
@@ -53,15 +53,15 @@ public class GoogleSignInOptions
   private GoogleSignInOptions(int paramInt, ArrayList<Scope> paramArrayList, Account paramAccount, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString1, String paramString2, Map<Integer, zzg> paramMap)
   {
     this.versionCode = paramInt;
-    this.GI = paramArrayList;
-    this.GJ = paramAccount;
-    this.GK = paramBoolean1;
-    this.GL = paramBoolean2;
-    this.GM = paramBoolean3;
-    this.GN = paramString1;
-    this.GO = paramString2;
-    this.GP = new ArrayList(paramMap.values());
-    this.GQ = paramMap;
+    this.Ix = paramArrayList;
+    this.Iy = paramAccount;
+    this.Iz = paramBoolean1;
+    this.IA = paramBoolean2;
+    this.IB = paramBoolean3;
+    this.IC = paramString1;
+    this.ID = paramString2;
+    this.IE = new ArrayList(paramMap.values());
+    this.IF = paramMap;
   }
   
   public static GoogleSignInOptions h(String paramString)
@@ -110,31 +110,31 @@ public class GoogleSignInOptions
       try
       {
         paramObject = (GoogleSignInOptions)paramObject;
-        if ((this.GP.size() > 0) || (paramObject.GP.size() > 0) || (this.GI.size() != paramObject.fW().size()) || (!this.GI.containsAll(paramObject.fW()))) {
+        if ((this.IE.size() > 0) || (paramObject.IE.size() > 0) || (this.Ix.size() != paramObject.gh().size()) || (!this.Ix.containsAll(paramObject.gh()))) {
           continue;
         }
-        if (this.GJ == null)
+        if (this.Iy == null)
         {
-          if (paramObject.GJ != null) {
+          if (paramObject.Iy != null) {
             continue;
           }
           label76:
-          if (!TextUtils.isEmpty(this.GN)) {
+          if (!TextUtils.isEmpty(this.IC)) {
             break label148;
           }
-          if (!TextUtils.isEmpty(paramObject.GN)) {
+          if (!TextUtils.isEmpty(paramObject.IC)) {
             continue;
           }
         }
-        while ((this.GM == paramObject.GM) && (this.GK == paramObject.GK) && (this.GL == paramObject.GL))
+        while ((this.IB == paramObject.IB) && (this.Iz == paramObject.Iz) && (this.IA == paramObject.IA))
         {
           return true;
-          if (!this.GJ.equals(paramObject.GJ)) {
+          if (!this.Iy.equals(paramObject.Iy)) {
             break;
           }
           break label76;
           label148:
-          boolean bool = this.GN.equals(paramObject.GN);
+          boolean bool = this.IC.equals(paramObject.IC);
           if (!bool) {
             break;
           }
@@ -145,55 +145,55 @@ public class GoogleSignInOptions
     }
   }
   
-  public final ArrayList<Scope> fW()
+  public final ArrayList<Scope> gh()
   {
-    return new ArrayList(this.GI);
+    return new ArrayList(this.Ix);
   }
   
-  public final Account fX()
+  public final Account gi()
   {
-    return this.GJ;
+    return this.Iy;
   }
   
-  public final boolean fY()
+  public final boolean gj()
   {
-    return this.GK;
+    return this.Iz;
   }
   
-  public final boolean fZ()
+  public final boolean gk()
   {
-    return this.GL;
+    return this.IA;
   }
   
-  public final boolean ga()
+  public final boolean gl()
   {
-    return this.GM;
+    return this.IB;
   }
   
-  public final String gb()
+  public final String gm()
   {
-    return this.GN;
+    return this.IC;
   }
   
-  public final String gd()
+  public final String gn()
   {
-    return this.GO;
+    return this.ID;
   }
   
-  public final ArrayList<zzg> ge()
+  public final ArrayList<zzg> go()
   {
-    return this.GP;
+    return this.IE;
   }
   
   public int hashCode()
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.GI.iterator();
+    Iterator localIterator = this.Ix.iterator();
     while (localIterator.hasNext()) {
-      localArrayList.add(((Scope)localIterator.next()).gE());
+      localArrayList.add(((Scope)localIterator.next()).gO());
     }
     Collections.sort(localArrayList);
-    return new b().r(localArrayList).r(this.GJ).r(this.GN).u(this.GM).u(this.GK).u(this.GL).gi();
+    return new b().A(localArrayList).A(this.Iy).A(this.IC).x(this.IB).x(this.Iz).x(this.IA).gs();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

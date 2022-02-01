@@ -1,32 +1,31 @@
 package kotlinx.coroutines;
 
-import a.c.e.b;
-import a.f.a.b;
-import a.l;
-import a.y;
-import java.util.concurrent.CancellationException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.d.f;
+import d.d.g;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/Job;", "Lkotlin/coroutines/CoroutineContext$Element;", "children", "Lkotlin/sequences/Sequence;", "getChildren", "()Lkotlin/sequences/Sequence;", "isActive", "", "()Z", "isCancelled", "isCompleted", "onJoin", "Lkotlinx/coroutines/selects/SelectClause0;", "getOnJoin", "()Lkotlinx/coroutines/selects/SelectClause0;", "attachChild", "Lkotlinx/coroutines/ChildHandle;", "child", "Lkotlinx/coroutines/ChildJob;", "cancel", "", "cause", "", "cancel0", "getCancellationException", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "invokeOnCompletion", "Lkotlinx/coroutines/DisposableHandle;", "onCancelling", "invokeImmediately", "handler", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "Lkotlinx/coroutines/CompletionHandler;", "join", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "plus", "other", "start", "Key", "kotlinx-coroutines-core"})
-public abstract interface bc
-  extends e.b
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/GlobalScope;", "Lkotlinx/coroutines/CoroutineScope;", "()V", "coroutineContext", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "kotlinx-coroutines-core"})
+public final class bc
+  implements ad
 {
-  public static final bc.b CIk = bc.b.CIl;
+  public static final bc Kem;
   
-  public abstract ap a(boolean paramBoolean1, boolean paramBoolean2, b<? super Throwable, y> paramb);
+  static
+  {
+    AppMethodBeat.i(118184);
+    Kem = new bc();
+    AppMethodBeat.o(118184);
+  }
   
-  public abstract m a(o paramo);
-  
-  public abstract CancellationException epQ();
-  
-  public abstract boolean isActive();
-  
-  public abstract boolean start();
-  
-  public abstract boolean y(Throwable paramThrowable);
+  public final f fKB()
+  {
+    return (f)g.JgF;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.bc
  * JD-Core Version:    0.7.0.1
  */

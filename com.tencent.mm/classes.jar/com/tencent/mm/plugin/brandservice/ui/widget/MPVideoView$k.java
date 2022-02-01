@@ -1,32 +1,26 @@
 package com.tencent.mm.plugin.brandservice.ui.widget;
 
-import a.l;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.video.d.e;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "visible", "", "onVisibilityChanged"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class MPVideoView$k
-  implements d.e
+  implements View.OnClickListener
 {
   MPVideoView$k(MPVideoView paramMPVideoView) {}
   
-  public final void onVisibilityChanged(boolean paramBoolean)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(153018);
-    MPVideoView.C(this.kjR);
-    MPVideoView.c localc = MPVideoView.m(this.kjR);
-    if (localc != null)
-    {
-      localc.fP(paramBoolean);
-      AppMethodBeat.o(153018);
-      return;
-    }
-    AppMethodBeat.o(153018);
+    AppMethodBeat.i(7494);
+    this.noy.p(false, MPVideoView.y(this.noy));
+    AppMethodBeat.o(7494);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.widget.MPVideoView.k
  * JD-Core Version:    0.7.0.1
  */

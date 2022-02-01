@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ea
   extends b
 {
-  public ea.a crQ;
+  public a dgx;
   
   public ea()
   {
@@ -15,16 +15,27 @@ public final class ea
   
   private ea(byte paramByte)
   {
-    AppMethodBeat.i(70162);
-    this.crQ = new ea.a();
-    this.ymq = false;
+    AppMethodBeat.i(115992);
+    this.dgx = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70162);
+    AppMethodBeat.o(115992);
+  }
+  
+  public static final class a
+  {
+    public double dgA = 0.0D;
+    public double dgB = 0.0D;
+    public String dgC;
+    public int dgD = 0;
+    public String dgv;
+    public int dgy = 0;
+    public int dgz = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ea
  * JD-Core Version:    0.7.0.1
  */

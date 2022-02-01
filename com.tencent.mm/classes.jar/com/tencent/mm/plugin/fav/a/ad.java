@@ -1,21 +1,23 @@
 package com.tencent.mm.plugin.fav.a;
 
 import android.content.Intent;
-import com.tencent.mm.g.a.cm;
+import com.tencent.mm.g.a.cs;
 import com.tencent.mm.kernel.c.a;
 
 public abstract interface ad
   extends a
 {
-  public abstract boolean a(cm paramcm, int paramInt, String paramString);
+  public abstract boolean a(cs paramcs, int paramInt, String paramString);
   
-  public abstract boolean a(cm paramcm, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11);
+  public abstract boolean a(cs paramcs, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11);
   
-  public abstract boolean a(cm paramcm, long paramLong);
+  public abstract boolean a(cs paramcs, long paramLong);
   
-  public abstract boolean a(cm paramcm, Intent paramIntent);
+  public abstract boolean a(cs paramcs, Intent paramIntent);
   
-  public abstract boolean a(cm paramcm, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7);
+  public abstract boolean a(cs paramcs, String paramString1, String paramString2, String paramString3);
+  
+  public abstract boolean a(cs paramcs, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7);
 }
 
 

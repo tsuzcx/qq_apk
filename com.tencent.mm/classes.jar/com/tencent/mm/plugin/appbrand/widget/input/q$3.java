@@ -11,15 +11,15 @@ final class q$3
   
   public final boolean onLongClick(View paramView)
   {
-    AppMethodBeat.i(123700);
-    boolean bool = this.jmB.aOP();
-    AppMethodBeat.o(123700);
+    AppMethodBeat.i(136434);
+    boolean bool = this.mcr.brm();
+    AppMethodBeat.o(136434);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.q.3
  * JD-Core Version:    0.7.0.1
  */

@@ -14,9 +14,9 @@ public class zzb
   
   protected zzb(String paramString)
   {
-    AppMethodBeat.i(70668);
+    AppMethodBeat.i(100651);
     attachInterface(this, paramString);
-    AppMethodBeat.o(70668);
+    AppMethodBeat.o(100651);
   }
   
   public IBinder asBinder()
@@ -31,22 +31,22 @@ public class zzb
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    AppMethodBeat.i(70669);
+    AppMethodBeat.i(100652);
     if (paramInt1 > 16777215) {}
     for (boolean bool = super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2); bool; bool = false)
     {
-      AppMethodBeat.o(70669);
+      AppMethodBeat.o(100652);
       return true;
       paramParcel1.enforceInterface(getInterfaceDescriptor());
     }
     bool = dispatchTransaction(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    AppMethodBeat.o(70669);
+    AppMethodBeat.o(100652);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.internal.wearable.zzb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
-import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
+import com.tencent.mm.g.a.gs;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.ui.widget.snackbar.a.b;
 
 final class NoteEditorUI$18
-  implements Runnable
+  implements a.b
 {
   NoteEditorUI$18(NoteEditorUI paramNoteEditorUI) {}
   
-  public final void run()
+  public final void aXO()
   {
-    AppMethodBeat.i(27014);
-    WXRTEditText localWXRTEditText = NoteEditorUI.j(this.vCx).diT();
-    if (localWXRTEditText != null) {
-      localWXRTEditText.clearFocus();
-    }
-    AppMethodBeat.o(27014);
+    AppMethodBeat.i(30709);
+    gs localgs = new gs();
+    localgs.dkc.type = 35;
+    a.ESL.l(localgs);
+    AppMethodBeat.o(30709);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.NoteEditorUI.18
  * JD-Core Version:    0.7.0.1
  */

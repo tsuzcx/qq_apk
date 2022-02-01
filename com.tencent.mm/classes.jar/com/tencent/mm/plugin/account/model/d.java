@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.account.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.jk;
-import com.tencent.mm.protocal.protobuf.jl;
+import com.tencent.mm.protocal.protobuf.kq;
+import com.tencent.mm.protocal.protobuf.kr;
 
 public final class d
-  extends m
+  extends n
   implements k
 {
-  public static int gAM = 1;
-  public static int gAN = 2;
-  private f callback;
+  public static int iog = 1;
+  public static int ioh = 2;
+  private g callback;
   private b rr;
   
   public d(int paramInt, String paramString)
   {
-    AppMethodBeat.i(124676);
+    AppMethodBeat.i(127829);
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new jk();
-    ((b.a)localObject).fsY = new jl();
+    ((b.a)localObject).gUU = new kq();
+    ((b.a)localObject).gUV = new kr();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/bindemail";
     ((b.a)localObject).funcId = 256;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (jk)this.rr.fsV.fta;
-    ((jk)localObject).OpCode = paramInt;
-    ((jk)localObject).wvs = paramString;
-    AppMethodBeat.o(124676);
+    this.rr = ((b.a)localObject).atI();
+    localObject = (kq)this.rr.gUS.gUX;
+    ((kq)localObject).OpCode = paramInt;
+    ((kq)localObject).CFx = paramString;
+    AppMethodBeat.o(127829);
   }
   
-  public final int Ac()
+  public final int JJ()
   {
-    return ((jk)this.rr.fsV.fta).OpCode;
+    return ((kq)this.rr.gUS.gUX).OpCode;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(124677);
-    this.callback = paramf;
+    AppMethodBeat.i(127830);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(124677);
+    AppMethodBeat.o(127830);
     return i;
   }
   
@@ -59,15 +59,15 @@ public final class d
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(124678);
+    AppMethodBeat.i(127831);
     updateDispatchId(paramInt1);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(124678);
+    AppMethodBeat.o(127831);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.model.d
  * JD-Core Version:    0.7.0.1
  */

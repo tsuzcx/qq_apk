@@ -6,41 +6,41 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class k
 {
   private static final String FORMAT;
-  int bsY = -2;
-  public int fTA = 0;
-  public int fTB = 0;
-  public int fTC = 0;
-  public int fTD = 0;
-  public int fTE = 0;
-  public int fTF = 0;
-  public int fTG = 0;
-  public int fTH = 0;
-  public int fTI = 0;
-  public int fTJ = 0;
-  public int fTK = 0;
-  public int fTL = 0;
-  public int fTM = 0;
-  public int fTN = 0;
-  public int fTO = 0;
-  public int fTP = 0;
-  public int fTQ = 0;
-  public int fTR = 0;
-  public int fTS = 0;
-  public int fTT = 0;
-  public int fTU = 0;
-  public int fTV = 0;
-  public int fTt = 0;
-  public int fTu = 0;
-  public int fTv = 0;
-  public int fTw = 0;
-  public int fTx = 0;
-  public int fTy = 0;
-  public int fTz = 0;
+  int dtM = -2;
+  public long hwA = 0L;
+  public long hwB = 0L;
+  public long hwC = 0L;
+  public long hwD = 0L;
+  public long hwE = 0L;
+  public int hwc = 0;
+  public int hwd = 0;
+  public long hwe = 0L;
+  public int hwf = 0;
+  public long hwg = 0L;
+  public int hwh = 0;
+  public long hwi = 0L;
+  public int hwj = 0;
+  public long hwk = 0L;
+  public long hwl = 0L;
+  public long hwm = 0L;
+  public long hwn = 0L;
+  public long hwo = 0L;
+  public int hwp = 0;
+  public long hwq = 0L;
+  public int hwr = 0;
+  public long hws = 0L;
+  public int hwt = 0;
+  public long hwu = 0L;
+  public int hwv = 0;
+  public long hww = 0L;
+  public long hwx = 0L;
+  public long hwy = 0L;
+  public long hwz = 0L;
   public int id = 0;
   
   static
   {
-    AppMethodBeat.i(78742);
+    AppMethodBeat.i(151086);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("NetStatInfo:");
     localStringBuilder.append("[mobile in=%dB/%dB/%dB, out=%dB/%dB/%dB]");
@@ -50,56 +50,56 @@ public final class k
     localStringBuilder.append("[voice in=%d/%dB, out=%d/%dB]");
     localStringBuilder.append("[video in=%d/%dB, out=%d/%dB]");
     FORMAT = localStringBuilder.toString();
-    AppMethodBeat.o(78742);
+    AppMethodBeat.o(151086);
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(78740);
+    AppMethodBeat.i(151084);
     this.id = paramCursor.getInt(0);
-    this.fTt = paramCursor.getInt(1);
-    this.fTu = paramCursor.getInt(2);
-    this.fTv = paramCursor.getInt(3);
-    this.fTw = paramCursor.getInt(4);
-    this.fTx = paramCursor.getInt(5);
-    this.fTy = paramCursor.getInt(6);
-    this.fTz = paramCursor.getInt(7);
-    this.fTA = paramCursor.getInt(8);
-    this.fTB = paramCursor.getInt(9);
-    this.fTC = paramCursor.getInt(10);
-    this.fTD = paramCursor.getInt(11);
-    this.fTE = paramCursor.getInt(12);
-    this.fTF = paramCursor.getInt(13);
-    this.fTG = paramCursor.getInt(14);
-    this.fTH = paramCursor.getInt(15);
-    this.fTI = paramCursor.getInt(16);
-    this.fTJ = paramCursor.getInt(17);
-    this.fTK = paramCursor.getInt(18);
-    this.fTL = paramCursor.getInt(19);
-    this.fTM = paramCursor.getInt(20);
-    this.fTN = paramCursor.getInt(21);
-    this.fTO = paramCursor.getInt(22);
-    this.fTP = paramCursor.getInt(23);
-    this.fTQ = paramCursor.getInt(24);
-    this.fTR = paramCursor.getInt(25);
-    this.fTS = paramCursor.getInt(26);
-    this.fTT = paramCursor.getInt(27);
-    this.fTU = paramCursor.getInt(28);
-    this.fTV = paramCursor.getInt(29);
-    AppMethodBeat.o(78740);
+    this.hwc = paramCursor.getInt(1);
+    this.hwd = paramCursor.getInt(2);
+    this.hwe = paramCursor.getLong(3);
+    this.hwf = paramCursor.getInt(4);
+    this.hwg = paramCursor.getLong(5);
+    this.hwh = paramCursor.getInt(6);
+    this.hwi = paramCursor.getLong(7);
+    this.hwj = paramCursor.getInt(8);
+    this.hwk = paramCursor.getLong(9);
+    this.hwl = paramCursor.getLong(10);
+    this.hwm = paramCursor.getLong(11);
+    this.hwn = paramCursor.getLong(12);
+    this.hwo = paramCursor.getLong(13);
+    this.hwp = paramCursor.getInt(14);
+    this.hwq = paramCursor.getLong(15);
+    this.hwr = paramCursor.getInt(16);
+    this.hws = paramCursor.getLong(17);
+    this.hwt = paramCursor.getInt(18);
+    this.hwu = paramCursor.getLong(19);
+    this.hwv = paramCursor.getInt(20);
+    this.hww = paramCursor.getLong(21);
+    this.hwx = paramCursor.getLong(22);
+    this.hwy = paramCursor.getLong(23);
+    this.hwz = paramCursor.getLong(24);
+    this.hwA = paramCursor.getLong(25);
+    this.hwB = paramCursor.getLong(26);
+    this.hwC = paramCursor.getLong(27);
+    this.hwD = paramCursor.getLong(28);
+    this.hwE = paramCursor.getLong(29);
+    AppMethodBeat.o(151084);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(78741);
-    String str = String.format(FORMAT, new Object[] { Integer.valueOf(this.fTC), Integer.valueOf(this.fTS), Integer.valueOf(this.fTE), Integer.valueOf(this.fTO), Integer.valueOf(this.fTU), Integer.valueOf(this.fTQ), Integer.valueOf(this.fTD), Integer.valueOf(this.fTT), Integer.valueOf(this.fTF), Integer.valueOf(this.fTP), Integer.valueOf(this.fTV), Integer.valueOf(this.fTR), Integer.valueOf(this.fTu), Integer.valueOf(this.fTv), Integer.valueOf(this.fTG), Integer.valueOf(this.fTH), Integer.valueOf(this.fTw), Integer.valueOf(this.fTx), Integer.valueOf(this.fTI), Integer.valueOf(this.fTJ), Integer.valueOf(this.fTy), Integer.valueOf(this.fTz), Integer.valueOf(this.fTK), Integer.valueOf(this.fTL), Integer.valueOf(this.fTA), Integer.valueOf(this.fTB), Integer.valueOf(this.fTM), Integer.valueOf(this.fTN) });
-    AppMethodBeat.o(78741);
+    AppMethodBeat.i(151085);
+    String str = String.format(FORMAT, new Object[] { Long.valueOf(this.hwl), Long.valueOf(this.hwB), Long.valueOf(this.hwn), Long.valueOf(this.hwx), Long.valueOf(this.hwD), Long.valueOf(this.hwz), Long.valueOf(this.hwm), Long.valueOf(this.hwC), Long.valueOf(this.hwo), Long.valueOf(this.hwy), Long.valueOf(this.hwE), Long.valueOf(this.hwA), Integer.valueOf(this.hwd), Long.valueOf(this.hwe), Integer.valueOf(this.hwp), Long.valueOf(this.hwq), Integer.valueOf(this.hwf), Long.valueOf(this.hwg), Integer.valueOf(this.hwr), Long.valueOf(this.hws), Integer.valueOf(this.hwh), Long.valueOf(this.hwi), Integer.valueOf(this.hwt), Long.valueOf(this.hwu), Integer.valueOf(this.hwj), Long.valueOf(this.hwk), Integer.valueOf(this.hwv), Long.valueOf(this.hww) });
+    AppMethodBeat.o(151085);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelstat.k
  * JD-Core Version:    0.7.0.1
  */

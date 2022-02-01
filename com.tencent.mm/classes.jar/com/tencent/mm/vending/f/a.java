@@ -4,56 +4,56 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a AOq = null;
+  private static a HPV = null;
   
   public static void a(a parama)
   {
-    AOq = parama;
+    HPV = parama;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(126141);
-    if (AOq != null) {
-      AOq.d(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.i(74938);
+    if (HPV != null) {
+      HPV.d(paramString1, paramString2, paramVarArgs);
     }
-    AppMethodBeat.o(126141);
+    AppMethodBeat.o(74938);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(126138);
-    if (AOq != null) {
-      AOq.e(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.i(74935);
+    if (HPV != null) {
+      HPV.e(paramString1, paramString2, paramVarArgs);
     }
-    AppMethodBeat.o(126138);
+    AppMethodBeat.o(74935);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(126140);
-    if (AOq != null) {
-      AOq.i(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.i(74937);
+    if (HPV != null) {
+      HPV.i(paramString1, paramString2, paramVarArgs);
     }
-    AppMethodBeat.o(126140);
+    AppMethodBeat.o(74937);
   }
   
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(126142);
-    if (AOq != null) {
-      AOq.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    AppMethodBeat.i(74939);
+    if (HPV != null) {
+      HPV.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
-    AppMethodBeat.o(126142);
+    AppMethodBeat.o(74939);
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(126139);
-    if (AOq != null) {
-      AOq.w(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.i(74936);
+    if (HPV != null) {
+      HPV.w(paramString1, paramString2, paramVarArgs);
     }
-    AppMethodBeat.o(126139);
+    AppMethodBeat.o(74936);
   }
   
   public static abstract interface a

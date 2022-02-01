@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.fts.a;
 
 import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.plugin.fts.a.a.i;
-import com.tencent.mm.plugin.fts.a.a.l;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 
 public abstract class b
   implements k
 {
-  public boolean bRJ;
+  private boolean cCu;
   
   public b()
   {
-    ab.i("MicroMsg.FTS.BaseFTS5SearchLogic", "Create %s", new Object[] { getName() });
+    ad.i("MicroMsg.FTS.BaseFTS5SearchLogic", "Create %s", new Object[] { getName() });
   }
   
-  protected abstract boolean Pp();
-  
-  public a a(i parami)
+  public a a(j paramj)
   {
     return null;
   }
   
-  public void a(String paramString, l paraml, int paramInt, HashMap<String, String> paramHashMap) {}
+  public void a(String paramString, m paramm, int paramInt, HashMap<String, String> paramHashMap) {}
   
-  public void addSOSHistory(String paramString) {}
+  protected abstract boolean acO();
+  
+  public void addSOSHistory(String paramString1, String paramString2) {}
   
   public final void create()
   {
     try
     {
-      ab.i("MicroMsg.FTS.BaseFTS5SearchLogic", "OnCreate %s | isCreated =%b", new Object[] { getName(), Boolean.valueOf(this.bRJ) });
-      if ((!this.bRJ) && (onCreate()))
+      ad.i("MicroMsg.FTS.BaseFTS5SearchLogic", "OnCreate %s | isCreated =%b", new Object[] { getName(), Boolean.valueOf(this.cCu) });
+      if ((!this.cCu) && (onCreate()))
       {
-        ab.i("MicroMsg.FTS.BaseFTS5SearchLogic", "SetCreated");
-        this.bRJ = true;
+        ad.i("MicroMsg.FTS.BaseFTS5SearchLogic", "SetCreated");
+        this.cCu = true;
       }
       return;
     }
@@ -52,24 +52,24 @@ public abstract class b
   
   public final void destroy()
   {
-    ab.i("MicroMsg.FTS.BaseFTS5SearchLogic", "OnDestroy %s | isCreated %b", new Object[] { getName(), Boolean.valueOf(this.bRJ) });
-    if ((this.bRJ) && (Pp()))
+    ad.i("MicroMsg.FTS.BaseFTS5SearchLogic", "OnDestroy %s | isCreated %b", new Object[] { getName(), Boolean.valueOf(this.cCu) });
+    if ((this.cCu) && (acO()))
     {
-      ab.i("MicroMsg.FTS.BaseFTS5SearchLogic", "SetDestroyed");
-      this.bRJ = false;
+      ad.i("MicroMsg.FTS.BaseFTS5SearchLogic", "SetDestroyed");
+      this.cCu = false;
     }
   }
   
   public final boolean isCreated()
   {
-    return this.bRJ;
+    return this.cCu;
   }
   
   protected abstract boolean onCreate();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,74 @@
 package com.tencent.mm.plugin.appbrand.jsapi.m;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.pluginsdk.wallet.WalletJsapiData;
-import com.tencent.mm.pluginsdk.wallet.h;
-import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.k;
+import d.l;
 import org.json.JSONObject;
 
-public enum a
-  implements b
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/EventOnNewPerformanceMetric;", "", "()V", "endTime", "", "getEndTime", "()J", "setEndTime", "(J)V", "extraInfo", "Lorg/json/JSONObject;", "name", "", "getName", "()Ljava/lang/String;", "setName", "(Ljava/lang/String;)V", "startTime", "getStartTime", "setStartTime", "dispatch", "", "receiver", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "putExtraInfo", "value", "Companion", "plugin-appbrand-integration_release"})
+public final class a
 {
+  @Deprecated
+  public static final a kgm;
+  public long endTime;
+  private final JSONObject kgl;
+  private String name;
+  public long startTime;
+  
   static
   {
-    AppMethodBeat.i(131410);
-    hWj = new a("INSTANCE");
-    hWk = new a[] { hWj };
-    AppMethodBeat.o(131410);
+    AppMethodBeat.i(162176);
+    kgm = new a((byte)0);
+    AppMethodBeat.o(162176);
   }
   
-  private a() {}
-  
-  public final void a(MMActivity paramMMActivity, JSONObject paramJSONObject, b.b paramb)
+  public a()
   {
-    AppMethodBeat.i(131409);
-    paramb = new a.5(this, paramb);
-    paramJSONObject = new WalletJsapiData(paramJSONObject);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("appId", paramJSONObject.appId);
-    localIntent.putExtra("timeStamp", paramJSONObject.timeStamp);
-    localIntent.putExtra("nonceStr", paramJSONObject.nonceStr);
-    localIntent.putExtra("packageExt", paramJSONObject.packageExt);
-    localIntent.putExtra("signtype", paramJSONObject.signType);
-    localIntent.putExtra("paySignature", paramJSONObject.cCB);
-    localIntent.putExtra("url", paramJSONObject.url);
-    localIntent.putExtra("scene", 1);
-    paramMMActivity.mmSetOnActivityResultCallback(paramb);
-    d.a(paramMMActivity, "wallet_core", ".ui.WalletCheckPwdUI", localIntent, 0xFFFF & hashCode(), false);
-    AppMethodBeat.o(131409);
+    AppMethodBeat.i(162175);
+    this.name = "";
+    this.kgl = new JSONObject();
+    AppMethodBeat.o(162175);
   }
   
-  public final boolean a(MMActivity paramMMActivity, AppBrandStatObject paramAppBrandStatObject, JSONObject paramJSONObject, b.a parama, PString paramPString)
+  public final void c(q paramq)
   {
-    AppMethodBeat.i(131408);
-    paramJSONObject = new WalletJsapiData(paramJSONObject);
-    if (paramAppBrandStatObject != null)
-    {
-      paramJSONObject.cqj = WalletJsapiData.hi(paramAppBrandStatObject.scene, paramAppBrandStatObject.cIZ);
-      paramJSONObject.wgH = WalletJsapiData.hh(paramAppBrandStatObject.scene, paramAppBrandStatObject.cIZ);
-    }
-    paramJSONObject.cCD = 46;
-    paramPString.value = paramJSONObject.packageExt;
-    paramAppBrandStatObject = new a.1(this, parama);
-    boolean bool = h.a(paramMMActivity, paramJSONObject, hashCode() & 0xFFFF, paramAppBrandStatObject);
-    AppMethodBeat.o(131408);
-    return bool;
+    AppMethodBeat.i(162174);
+    k.h(paramq, "receiver");
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("name", this.name);
+    localJSONObject.put("startTime", this.startTime);
+    localJSONObject.put("endTime", this.endTime);
+    localJSONObject.put("extraInfo", this.kgl);
+    ad.i("MicroMsg.AppBrand.EventOnNewPerformanceMetric", "dispatch ".concat(String.valueOf(localJSONObject)));
+    paramq.bR("onNewPerformanceMetric", localJSONObject.toString());
+    AppMethodBeat.o(162174);
   }
+  
+  public final void setName(String paramString)
+  {
+    AppMethodBeat.i(162172);
+    k.h(paramString, "<set-?>");
+    this.name = paramString;
+    AppMethodBeat.o(162172);
+  }
+  
+  public final void t(String paramString, Object paramObject)
+  {
+    AppMethodBeat.i(162173);
+    k.h(paramString, "name");
+    k.h(paramObject, "value");
+    this.kgl.put(paramString, paramObject);
+    AppMethodBeat.o(162173);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/EventOnNewPerformanceMetric$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.m.a
  * JD-Core Version:    0.7.0.1
  */

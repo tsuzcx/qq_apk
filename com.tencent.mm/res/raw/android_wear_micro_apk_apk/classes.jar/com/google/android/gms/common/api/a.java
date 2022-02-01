@@ -4,44 +4,44 @@ import com.google.android.gms.common.internal.d;
 
 public final class a<O extends b>
 {
-  private final f<?, O> Hn;
-  private final m<?, O> Ho;
-  private final k<?> Hp;
-  private final n<?> Hq;
+  private final f<?, O> Jc;
+  private final m<?, O> Jd;
+  private final k<?> Je;
+  private final n<?> Jf;
   private final String mName;
   
   public <C extends j> a(String paramString, f<C, O> paramf, k<C> paramk)
   {
-    d.e(paramf, "Cannot construct an Api with a null ClientBuilder");
-    d.e(paramk, "Cannot construct an Api with a null ClientKey");
+    d.g(paramf, "Cannot construct an Api with a null ClientBuilder");
+    d.g(paramk, "Cannot construct an Api with a null ClientKey");
     this.mName = paramString;
-    this.Hn = paramf;
-    this.Ho = null;
-    this.Hp = paramk;
-    this.Hq = null;
+    this.Jc = paramf;
+    this.Jd = null;
+    this.Je = paramk;
+    this.Jf = null;
+  }
+  
+  public final f<?, O> gA()
+  {
+    if (this.Jc != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      d.a(bool, "This API was constructed with a SimpleClientBuilder. Use getSimpleClientBuilder");
+      return this.Jc;
+    }
+  }
+  
+  public final h<?> gB()
+  {
+    if (this.Je != null) {
+      return this.Je;
+    }
+    throw new IllegalStateException("This API was constructed with null client keys. This should not be possible.");
   }
   
   public final String getName()
   {
     return this.mName;
-  }
-  
-  public final f<?, O> gq()
-  {
-    if (this.Hn != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      d.a(bool, "This API was constructed with a SimpleClientBuilder. Use getSimpleClientBuilder");
-      return this.Hn;
-    }
-  }
-  
-  public final h<?> gr()
-  {
-    if (this.Hp != null) {
-      return this.Hp;
-    }
-    throw new IllegalStateException("This API was constructed with null client keys. This should not be possible.");
   }
 }
 

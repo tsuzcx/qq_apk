@@ -7,26 +7,23 @@ import java.lang.ref.WeakReference;
 
 public abstract class o
 {
-  private final Object gN;
-  private final IBinder gO;
-  WeakReference<n> gP;
+  private final Object iL;
+  private final IBinder iM = new Binder();
+  WeakReference<n> iN;
   
   public o()
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
-      this.gN = new y(new q(this));
-      this.gO = null;
+      this.iL = new y(new q(this));
       return;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.gN = new v(new p(this));
-      this.gO = new Binder();
+      this.iL = new v(new p(this));
       return;
     }
-    this.gN = null;
-    this.gO = new Binder();
+    this.iL = null;
   }
 }
 

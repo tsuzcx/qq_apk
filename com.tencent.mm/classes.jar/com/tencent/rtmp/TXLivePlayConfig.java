@@ -12,6 +12,7 @@ public class TXLivePlayConfig
   int mConnectRetryInterval = 3;
   boolean mEnableAec = false;
   boolean mEnableMessage = false;
+  boolean mEnableMetaData = false;
   boolean mEnableNearestIP = true;
   protected Map<String, String> mHeaders;
   float mMaxAutoAdjustCacheTime = 5.0F;
@@ -30,6 +31,7 @@ public class TXLivePlayConfig
     this.mAutoAdjustCacheTime = paramBoolean;
   }
   
+  @Deprecated
   public void setCacheFolderPath(String paramString)
   {
     this.mCacheFolderPath = paramString;
@@ -55,11 +57,18 @@ public class TXLivePlayConfig
     this.mEnableMessage = paramBoolean;
   }
   
+  public void setEnableMetaData(boolean paramBoolean)
+  {
+    this.mEnableMetaData = paramBoolean;
+  }
+  
+  @Deprecated
   public void setEnableNearestIP(boolean paramBoolean)
   {
     this.mEnableNearestIP = paramBoolean;
   }
   
+  @Deprecated
   public void setHeaders(Map<String, String> paramMap)
   {
     this.mHeaders = paramMap;
@@ -70,6 +79,7 @@ public class TXLivePlayConfig
     this.mMaxAutoAdjustCacheTime = paramFloat;
   }
   
+  @Deprecated
   public void setMaxCacheItems(int paramInt)
   {
     this.mMaxCacheItems = paramInt;
@@ -80,6 +90,7 @@ public class TXLivePlayConfig
     this.mMinAutoAdjustCacheTime = paramFloat;
   }
   
+  @Deprecated
   public void setRtmpChannelType(int paramInt)
   {
     this.mRtmpChannelType = paramInt;
@@ -92,7 +103,7 @@ public class TXLivePlayConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.rtmp.TXLivePlayConfig
  * JD-Core Version:    0.7.0.1
  */

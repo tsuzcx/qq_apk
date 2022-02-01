@@ -27,7 +27,7 @@ public class FlexBoxAttr
   protected Wrap flexWrap;
   protected float height;
   protected float heightPercent;
-  private FlexBoxAttr.IFlexBoxChange iFlexBoxChange;
+  private IFlexBoxChange iFlexBoxChange;
   protected Justify justifyContent;
   protected float left;
   protected float leftPercent;
@@ -64,42 +64,42 @@ public class FlexBoxAttr
   
   public FlexBoxAttr()
   {
-    AppMethodBeat.i(145150);
+    AppMethodBeat.i(19330);
     this.yogaNode = new YogaNode();
     this.width = 1.0E+021F;
     this.height = 1.0E+021F;
     applyNodeDefaultParam();
-    AppMethodBeat.o(145150);
+    AppMethodBeat.o(19330);
   }
   
-  public FlexBoxAttr(FlexBoxAttr.IFlexBoxChange paramIFlexBoxChange)
+  public FlexBoxAttr(IFlexBoxChange paramIFlexBoxChange)
   {
-    AppMethodBeat.i(145151);
+    AppMethodBeat.i(19331);
     this.yogaNode = new YogaNode();
     this.width = 1.0E+021F;
     this.height = 1.0E+021F;
     this.iFlexBoxChange = paramIFlexBoxChange;
     applyNodeDefaultParam();
-    AppMethodBeat.o(145151);
+    AppMethodBeat.o(19331);
   }
   
   private void applyNodeDefaultParam()
   {
-    AppMethodBeat.i(145152);
+    AppMethodBeat.i(19332);
     this.yogaNode = new YogaNode();
     this.yogaNode.reset();
-    AppMethodBeat.o(145152);
+    AppMethodBeat.o(19332);
   }
   
   public static boolean isUndefined(float paramFloat)
   {
-    AppMethodBeat.i(145149);
+    AppMethodBeat.i(19329);
     if ((Float.compare(paramFloat, 1.0E+009F) >= 0) || (Float.compare(paramFloat, -1.0E+009F) <= 0))
     {
-      AppMethodBeat.o(145149);
+      AppMethodBeat.o(19329);
       return true;
     }
-    AppMethodBeat.o(145149);
+    AppMethodBeat.o(19329);
     return false;
   }
   
@@ -160,15 +160,15 @@ public class FlexBoxAttr
   
   public float getHeight()
   {
-    AppMethodBeat.i(145156);
+    AppMethodBeat.i(19336);
     if (isUndefined(this.height))
     {
       f = MMKViewUtil.pxToDp(KindaContext.get(), this.yogaNode.getLayoutHeight());
-      AppMethodBeat.o(145156);
+      AppMethodBeat.o(19336);
       return f;
     }
     float f = this.height;
-    AppMethodBeat.o(145156);
+    AppMethodBeat.o(19336);
     return f;
   }
   
@@ -329,15 +329,15 @@ public class FlexBoxAttr
   
   public float getWidth()
   {
-    AppMethodBeat.i(145154);
+    AppMethodBeat.i(19334);
     if (isUndefined(this.width))
     {
       f = MMKViewUtil.pxToDp(KindaContext.get(), this.yogaNode.getLayoutWidth());
-      AppMethodBeat.o(145154);
+      AppMethodBeat.o(19334);
       return f;
     }
     float f = this.width;
-    AppMethodBeat.o(145154);
+    AppMethodBeat.o(19334);
     return f;
   }
   
@@ -353,40 +353,40 @@ public class FlexBoxAttr
   
   public void setAlignContent(Align paramAlign)
   {
-    AppMethodBeat.i(145177);
+    AppMethodBeat.i(19357);
     this.alignContent = paramAlign;
     node().setAlignContent(ViewStyleMapper.mapYGAlign(paramAlign));
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145177);
+    AppMethodBeat.o(19357);
   }
   
   public void setAlignItems(Align paramAlign)
   {
-    AppMethodBeat.i(145176);
+    AppMethodBeat.i(19356);
     this.alignItems = paramAlign;
     node().setAlignItems(ViewStyleMapper.mapYGAlign(paramAlign));
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145176);
+    AppMethodBeat.o(19356);
   }
   
   public void setAlignSelf(Align paramAlign)
   {
-    AppMethodBeat.i(145159);
+    AppMethodBeat.i(19339);
     this.alignSelf = paramAlign;
     node().setAlignSelf(ViewStyleMapper.mapYGAlign(paramAlign));
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145159);
+    AppMethodBeat.o(19339);
   }
   
   public void setAspectRatio(float paramFloat)
   {
-    AppMethodBeat.i(145170);
+    AppMethodBeat.i(19350);
     this.aspectRatio = paramFloat;
     if (this.aspectRatio > 0.0F)
     {
@@ -395,35 +395,35 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145170);
+    AppMethodBeat.o(19350);
   }
   
   public void setBottom(float paramFloat)
   {
-    AppMethodBeat.i(145165);
+    AppMethodBeat.i(19345);
     this.bottom = paramFloat;
     paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
     node().setPosition(YogaEdge.BOTTOM, paramFloat);
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145165);
+    AppMethodBeat.o(19345);
   }
   
   public void setBottomPercent(float paramFloat)
   {
-    AppMethodBeat.i(145189);
+    AppMethodBeat.i(19369);
     this.bottomPercent = paramFloat;
     node().setPositionPercent(YogaEdge.BOTTOM, paramFloat);
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145189);
+    AppMethodBeat.o(19369);
   }
   
   public void setFlexBasis(float paramFloat)
   {
-    AppMethodBeat.i(145160);
+    AppMethodBeat.i(19340);
     this.flexBasis = paramFloat;
     if (this.flexBasis > 0.0F)
     {
@@ -433,23 +433,23 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145160);
+    AppMethodBeat.o(19340);
   }
   
   public void setFlexDirection(FlexDirection paramFlexDirection)
   {
-    AppMethodBeat.i(145173);
+    AppMethodBeat.i(19353);
     this.flexDirection = paramFlexDirection;
     node().setFlexDirection(ViewStyleMapper.mapFlexDirection(paramFlexDirection));
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145173);
+    AppMethodBeat.o(19353);
   }
   
   public void setFlexGrow(float paramFloat)
   {
-    AppMethodBeat.i(145171);
+    AppMethodBeat.i(19351);
     this.flexGrow = paramFloat;
     if (this.flexGrow > 0.0F)
     {
@@ -458,12 +458,12 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145171);
+    AppMethodBeat.o(19351);
   }
   
   public void setFlexShrink(float paramFloat)
   {
-    AppMethodBeat.i(145172);
+    AppMethodBeat.i(19352);
     this.flexShrink = paramFloat;
     if (this.flexShrink > 0.0F)
     {
@@ -472,23 +472,23 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145172);
+    AppMethodBeat.o(19352);
   }
   
   public void setFlexWrap(Wrap paramWrap)
   {
-    AppMethodBeat.i(145175);
+    AppMethodBeat.i(19355);
     this.flexWrap = paramWrap;
     node().setWrap(ViewStyleMapper.mapYGWrap(paramWrap));
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145175);
+    AppMethodBeat.o(19355);
   }
   
   public void setHeight(float paramFloat)
   {
-    AppMethodBeat.i(145155);
+    AppMethodBeat.i(19335);
     this.height = paramFloat;
     if (paramFloat > 0.0F)
     {
@@ -498,12 +498,12 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145155);
+    AppMethodBeat.o(19335);
   }
   
   public void setHeightPercent(float paramFloat)
   {
-    AppMethodBeat.i(145158);
+    AppMethodBeat.i(19338);
     this.heightPercent = paramFloat;
     if (paramFloat > 0.0F)
     {
@@ -512,46 +512,46 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145158);
+    AppMethodBeat.o(19338);
   }
   
   public void setJustifyContent(Justify paramJustify)
   {
-    AppMethodBeat.i(145174);
+    AppMethodBeat.i(19354);
     this.justifyContent = paramJustify;
     node().setJustifyContent(ViewStyleMapper.mapJustifyContent(paramJustify));
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145174);
+    AppMethodBeat.o(19354);
   }
   
   public void setLeft(float paramFloat)
   {
-    AppMethodBeat.i(145162);
+    AppMethodBeat.i(19342);
     this.left = paramFloat;
     paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
     node().setPosition(YogaEdge.LEFT, paramFloat);
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145162);
+    AppMethodBeat.o(19342);
   }
   
   public void setLeftPercent(float paramFloat)
   {
-    AppMethodBeat.i(145186);
+    AppMethodBeat.i(19366);
     this.leftPercent = paramFloat;
     node().setPositionPercent(YogaEdge.LEFT, paramFloat);
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145186);
+    AppMethodBeat.o(19366);
   }
   
   public void setMarginBottom(float paramFloat)
   {
-    AppMethodBeat.i(145181);
+    AppMethodBeat.i(19361);
     this.marginBottom = paramFloat;
     if (this.marginBottom > 0.0F)
     {
@@ -561,23 +561,23 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145181);
+    AppMethodBeat.o(19361);
   }
   
   public void setMarginBottomPercent(float paramFloat)
   {
-    AppMethodBeat.i(145193);
+    AppMethodBeat.i(19373);
     this.marginBottomPercent = paramFloat;
     node().setMarginPercent(YogaEdge.BOTTOM, paramFloat);
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145193);
+    AppMethodBeat.o(19373);
   }
   
   public void setMarginLeft(float paramFloat)
   {
-    AppMethodBeat.i(145178);
+    AppMethodBeat.i(19358);
     this.marginLeft = paramFloat;
     if (this.marginLeft > 0.0F)
     {
@@ -587,23 +587,23 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145178);
+    AppMethodBeat.o(19358);
   }
   
   public void setMarginLeftPercent(float paramFloat)
   {
-    AppMethodBeat.i(145190);
+    AppMethodBeat.i(19370);
     this.marginLeftPercent = paramFloat;
     node().setMarginPercent(YogaEdge.LEFT, paramFloat);
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145190);
+    AppMethodBeat.o(19370);
   }
   
   public void setMarginRight(float paramFloat)
   {
-    AppMethodBeat.i(145180);
+    AppMethodBeat.i(19360);
     this.marginRight = paramFloat;
     if (this.marginRight > 0.0F)
     {
@@ -613,23 +613,23 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145180);
+    AppMethodBeat.o(19360);
   }
   
   public void setMarginRightPercent(float paramFloat)
   {
-    AppMethodBeat.i(145192);
+    AppMethodBeat.i(19372);
     this.marginRightPercent = paramFloat;
     node().setMarginPercent(YogaEdge.RIGHT, paramFloat);
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145192);
+    AppMethodBeat.o(19372);
   }
   
   public void setMarginTop(float paramFloat)
   {
-    AppMethodBeat.i(145179);
+    AppMethodBeat.i(19359);
     this.marginTop = paramFloat;
     if (this.marginTop > 0.0F)
     {
@@ -639,23 +639,23 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145179);
+    AppMethodBeat.o(19359);
   }
   
   public void setMarginTopPercent(float paramFloat)
   {
-    AppMethodBeat.i(145191);
+    AppMethodBeat.i(19371);
     this.marginTopPercent = paramFloat;
     node().setMarginPercent(YogaEdge.TOP, paramFloat);
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145191);
+    AppMethodBeat.o(19371);
   }
   
   public void setMaxHeight(float paramFloat)
   {
-    AppMethodBeat.i(145169);
+    AppMethodBeat.i(19349);
     this.maxHeight = paramFloat;
     if (this.maxHeight > 0.0F)
     {
@@ -665,12 +665,12 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145169);
+    AppMethodBeat.o(19349);
   }
   
   public void setMaxWidth(float paramFloat)
   {
-    AppMethodBeat.i(145167);
+    AppMethodBeat.i(19347);
     this.maxWidth = paramFloat;
     if (this.maxWidth > 0.0F)
     {
@@ -680,12 +680,12 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145167);
+    AppMethodBeat.o(19347);
   }
   
   public void setMinHeight(float paramFloat)
   {
-    AppMethodBeat.i(145168);
+    AppMethodBeat.i(19348);
     this.minHeight = paramFloat;
     if (this.minHeight > 0.0F)
     {
@@ -695,12 +695,12 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145168);
+    AppMethodBeat.o(19348);
   }
   
   public void setMinWidth(float paramFloat)
   {
-    AppMethodBeat.i(145166);
+    AppMethodBeat.i(19346);
     this.minWidth = paramFloat;
     if (this.minWidth > 0.0F)
     {
@@ -710,12 +710,12 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145166);
+    AppMethodBeat.o(19346);
   }
   
   public void setPaddingBottom(float paramFloat)
   {
-    AppMethodBeat.i(145185);
+    AppMethodBeat.i(19365);
     this.paddingBottom = paramFloat;
     if (this.paddingBottom > 0.0F)
     {
@@ -725,12 +725,12 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145185);
+    AppMethodBeat.o(19365);
   }
   
   public void setPaddingBottomPercent(float paramFloat)
   {
-    AppMethodBeat.i(145197);
+    AppMethodBeat.i(19377);
     this.paddingBottomPercent = paramFloat;
     if (this.paddingBottom > 0.0F)
     {
@@ -739,12 +739,12 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145197);
+    AppMethodBeat.o(19377);
   }
   
   public void setPaddingLeft(float paramFloat)
   {
-    AppMethodBeat.i(145182);
+    AppMethodBeat.i(19362);
     this.paddingLeft = paramFloat;
     if (this.paddingLeft > 0.0F)
     {
@@ -754,12 +754,12 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145182);
+    AppMethodBeat.o(19362);
   }
   
   public void setPaddingLeftPercent(float paramFloat)
   {
-    AppMethodBeat.i(145194);
+    AppMethodBeat.i(19374);
     this.paddingLeftPercent = paramFloat;
     if (this.paddingLeft > 0.0F)
     {
@@ -768,12 +768,12 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145194);
+    AppMethodBeat.o(19374);
   }
   
   public void setPaddingRight(float paramFloat)
   {
-    AppMethodBeat.i(145184);
+    AppMethodBeat.i(19364);
     this.paddingRight = paramFloat;
     if (this.paddingRight > 0.0F)
     {
@@ -783,12 +783,12 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145184);
+    AppMethodBeat.o(19364);
   }
   
   public void setPaddingRightPercent(float paramFloat)
   {
-    AppMethodBeat.i(145196);
+    AppMethodBeat.i(19376);
     this.paddingRightPercent = paramFloat;
     if (this.paddingRight > 0.0F)
     {
@@ -797,12 +797,12 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145196);
+    AppMethodBeat.o(19376);
   }
   
   public void setPaddingTop(float paramFloat)
   {
-    AppMethodBeat.i(145183);
+    AppMethodBeat.i(19363);
     this.paddingTop = paramFloat;
     if (this.paddingTop > 0.0F)
     {
@@ -812,12 +812,12 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145183);
+    AppMethodBeat.o(19363);
   }
   
   public void setPaddingTopPercent(float paramFloat)
   {
-    AppMethodBeat.i(145195);
+    AppMethodBeat.i(19375);
     this.paddingTopPercent = paramFloat;
     if (this.paddingTop > 0.0F)
     {
@@ -826,41 +826,41 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145195);
+    AppMethodBeat.o(19375);
   }
   
   public void setPositionType(PositionType paramPositionType)
   {
-    AppMethodBeat.i(145161);
+    AppMethodBeat.i(19341);
     this.positionType = paramPositionType;
     node().setPositionType(ViewStyleMapper.mapPositionType(paramPositionType));
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145161);
+    AppMethodBeat.o(19341);
   }
   
   public void setRight(float paramFloat)
   {
-    AppMethodBeat.i(145164);
+    AppMethodBeat.i(19344);
     this.right = paramFloat;
     paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
     node().setPosition(YogaEdge.RIGHT, paramFloat);
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145164);
+    AppMethodBeat.o(19344);
   }
   
   public void setRightPercent(float paramFloat)
   {
-    AppMethodBeat.i(145188);
+    AppMethodBeat.i(19368);
     this.rightPercent = paramFloat;
     node().setPositionPercent(YogaEdge.RIGHT, paramFloat);
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145188);
+    AppMethodBeat.o(19368);
   }
   
   public void setTestId(String paramString)
@@ -870,25 +870,25 @@ public class FlexBoxAttr
   
   public void setTop(float paramFloat)
   {
-    AppMethodBeat.i(145163);
+    AppMethodBeat.i(19343);
     this.top = paramFloat;
     paramFloat = MMKViewUtil.dpToPx(KindaContext.get(), paramFloat);
     node().setPosition(YogaEdge.TOP, paramFloat);
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145163);
+    AppMethodBeat.o(19343);
   }
   
   public void setTopPercent(float paramFloat)
   {
-    AppMethodBeat.i(145187);
+    AppMethodBeat.i(19367);
     this.topPercent = paramFloat;
     node().setPositionPercent(YogaEdge.TOP, paramFloat);
     if (this.iFlexBoxChange != null) {
       this.iFlexBoxChange.onChange();
     }
-    AppMethodBeat.o(145187);
+    AppMethodBeat.o(19367);
   }
   
   public void setVisibility(int paramInt)
@@ -898,7 +898,7 @@ public class FlexBoxAttr
   
   public void setWidth(float paramFloat)
   {
-    AppMethodBeat.i(145153);
+    AppMethodBeat.i(19333);
     this.width = paramFloat;
     if (paramFloat > 0.0F)
     {
@@ -908,12 +908,12 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145153);
+    AppMethodBeat.o(19333);
   }
   
   public void setWidthPercent(float paramFloat)
   {
-    AppMethodBeat.i(145157);
+    AppMethodBeat.i(19337);
     this.widthPercent = paramFloat;
     if (paramFloat > 0.0F)
     {
@@ -922,17 +922,22 @@ public class FlexBoxAttr
         this.iFlexBoxChange.onChange();
       }
     }
-    AppMethodBeat.o(145157);
+    AppMethodBeat.o(19337);
   }
   
   public void setYogaNode(YogaNode paramYogaNode)
   {
     this.yogaNode = paramYogaNode;
   }
+  
+  public static abstract interface IFlexBoxChange
+  {
+    public abstract void onChange();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.tools.FlexBoxAttr
  * JD-Core Version:    0.7.0.1
  */

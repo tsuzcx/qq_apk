@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/b3_" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:padding="@dimen/c0" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/rf" android:gravity="center" android:id="@id/b3a" android:layout_width="fill_parent" android:layout_height="56.0dip" />
-</FrameLayout>
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:id="@id/cqf" android:layout_width="0.0dip" android:layout_height="@dimen/cd" android:layout_marginTop="@dimen/c5" android:text="@string/cmm" android:layout_weight="1.0" style="@style/q0" />
+                <View android:layout_width="@dimen/c5" android:layout_height="wrap_content" />
+                <Button android:id="@id/ehi" android:layout_width="0.0dip" android:layout_height="@dimen/cd" android:layout_marginTop="@dimen/c5" android:text="@string/cmn" android:layout_weight="1.0" style="@style/q0" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:id="@id/ehk" android:layout_width="0.0dip" android:layout_height="@dimen/cd" android:layout_marginTop="@dimen/c5" android:text="@string/cmp" android:layout_weight="1.0" style="@style/q0" />
+                <View android:layout_width="@dimen/c5" android:layout_height="wrap_content" />
+                <Button android:id="@id/ehj" android:layout_width="0.0dip" android:layout_height="@dimen/cd" android:layout_marginTop="@dimen/c5" android:text="@string/cmo" android:layout_weight="1.0" style="@style/q0" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/gx" android:textColor="@color/y4" android:id="@id/cqt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

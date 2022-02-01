@@ -1,419 +1,236 @@
 package com.tencent.mm.media.c;
 
-import a.f.b.j;
-import a.l;
-import a.y;
-import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
-import android.view.Surface;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.i.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import android.media.MediaFormat;
+import com.tencent.mm.compatible.deviceinfo.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.a.m;
+import d.g.b.k;
+import d.l;
+import d.y;
 import java.nio.ByteBuffer;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/decoder/MediaCodecTransDecoder;", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "startTimeMs", "", "endTimeMs", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "decodeSurface", "Landroid/view/Surface;", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(JJLcom/tencent/mm/media/extractor/MediaExtractorWrapper;Landroid/view/Surface;Lkotlin/jvm/functions/Function1;)V", "TAG", "", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "sawInputEOS", "", "drainDecoder", "inputDecoder", "sendDecoderEOS", "startDecode", "Companion", "plugin-mediaeditor_release"})
-public final class e
-  extends b
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/decoder/IAudioDecoder;", "", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "audioId", "", "startTimeMs", "", "endTimeMs", "frameDecodeCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "pcmData", "pts", "", "frameDecodeEndCallback", "Lkotlin/Function0;", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;Ljava/lang/String;JJLkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;)V", "aacSampleRate", "", "getAacSampleRate", "()I", "setAacSampleRate", "(I)V", "audioChannelCount", "getAudioChannelCount", "setAudioChannelCount", "getAudioId", "()Ljava/lang/String;", "setAudioId", "(Ljava/lang/String;)V", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "getBufferInfo", "()Landroid/media/MediaCodec$BufferInfo;", "setBufferInfo", "(Landroid/media/MediaCodec$BufferInfo;)V", "decodeFrame", "", "getDecodeFrame", "()Z", "setDecodeFrame", "(Z)V", "decodeStartTick", "getDecodeStartTick", "()J", "setDecodeStartTick", "(J)V", "decoder", "Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "getDecoder", "()Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "setDecoder", "(Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;)V", "decoderStop", "getDecoderStop", "setDecoderStop", "getEndTimeMs", "setEndTimeMs", "getFrameDecodeCallback", "()Lkotlin/jvm/functions/Function2;", "setFrameDecodeCallback", "(Lkotlin/jvm/functions/Function2;)V", "getFrameDecodeEndCallback", "()Lkotlin/jvm/functions/Function0;", "setFrameDecodeEndCallback", "(Lkotlin/jvm/functions/Function0;)V", "mMediaFormat", "Landroid/media/MediaFormat;", "getMMediaFormat", "()Landroid/media/MediaFormat;", "setMMediaFormat", "(Landroid/media/MediaFormat;)V", "getMediaExtractorWrapper", "()Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "setMediaExtractorWrapper", "(Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;)V", "mime", "getMime", "setMime", "getStartTimeMs", "setStartTimeMs", "stopLock", "Ljava/lang/Object;", "getStopLock", "()Ljava/lang/Object;", "totalDecodeTime", "getTotalDecodeTime", "setTotalDecodeTime", "getChannelCount", "getMediaFormat", "getSampleRate", "processDecodeBuffer", "byteBuffer", "Ljava/nio/ByteBuffer;", "setOnDecodeEndCallback", "callback", "setOnFrameDecodeCallback", "startDecoder", "stopDecoder", "Companion", "plugin-mediaeditor_release"})
+public abstract class e
 {
-  public static final a eSs;
-  private final String TAG;
-  private MediaCodec.BufferInfo eRL;
-  private volatile boolean eSr;
+  private static final int gnR = 2048;
+  private static final int gnS = 4096;
+  public static final e.a gnT = new e.a((byte)0);
+  MediaCodec.BufferInfo bufferInfo;
+  long bxw;
+  String cTr;
+  MediaFormat gmG;
+  z gnF;
+  protected volatile boolean gnG;
+  private int gnH;
+  int gnI;
+  long gnJ;
+  private long gnK;
+  private boolean gnL;
+  com.tencent.mm.media.e.a gnN;
+  long gnO;
+  public m<? super byte[], ? super Long, y> gnP;
+  public d.g.a.a<y> gnQ;
+  private String mime;
+  final Object stopLock;
   
-  static
+  public e(com.tencent.mm.media.e.a parama, String paramString, long paramLong1, long paramLong2, m<? super byte[], ? super Long, y> paramm, d.g.a.a<y> parama1)
   {
-    AppMethodBeat.i(12866);
-    eSs = new a((byte)0);
-    AppMethodBeat.o(12866);
+    this.gnN = parama;
+    this.cTr = paramString;
+    this.bxw = paramLong1;
+    this.gnO = paramLong2;
+    this.gnP = paramm;
+    this.gnQ = parama1;
+    this.stopLock = new Object();
+    this.bufferInfo = new MediaCodec.BufferInfo();
+    this.mime = "";
+    parama = this.gnN;
+    if (parama != null)
+    {
+      this.gmG = parama.grb;
+      ad.i("MicroMsg.IAudioDecoder", "create MediaCodecAACDecoder, audioId:" + this.cTr + ", startTimeMs:" + this.bxw + ", endTimeMs:" + this.gnO + ", mediaFormat:" + this.gmG);
+      if (this.gmG != null)
+      {
+        paramString = this.gmG;
+        if (paramString == null) {
+          k.fvU();
+        }
+        this.gnH = paramString.getInteger("channel-count");
+        paramString = this.gmG;
+        if (paramString != null) {
+          paramString.setInteger("max-input-size", this.gnH * 16384);
+        }
+        paramString = this.gmG;
+        if (paramString == null) {
+          k.fvU();
+        }
+        this.gnI = paramString.getInteger("sample-rate");
+        paramString = this.gmG;
+        if (paramString == null) {
+          k.fvU();
+        }
+        paramString = paramString.getString("mime");
+        k.g(paramString, "mMediaFormat!!.getString(MediaFormat.KEY_MIME)");
+        this.mime = paramString;
+        paramString = this.gmG;
+        if ((paramString != null) && (paramString.containsKey("encoder-delay") == true))
+        {
+          paramString = this.gmG;
+          if (paramString != null) {
+            paramString.setInteger("encoder-delay", 0);
+          }
+        }
+        paramString = this.gmG;
+        if ((paramString != null) && (paramString.containsKey("encoder-padding") == true))
+        {
+          paramString = this.gmG;
+          if (paramString != null) {
+            paramString.setInteger("encoder-padding", 0);
+          }
+        }
+        parama.ajN();
+        if (this.bxw >= 0L) {
+          parama.seek(this.bxw * 1000L);
+        }
+        this.gnF = z.pl(this.mime);
+        parama = this.gnF;
+        if (parama != null) {
+          parama.a(this.gmG, null, 0);
+        }
+      }
+    }
   }
   
-  public e(long paramLong1, long paramLong2, com.tencent.mm.media.e.a parama, Surface paramSurface, a.f.a.b<? super b, y> paramb)
+  public void ajs()
   {
-    super(paramLong1, paramLong2, parama, paramSurface);
-    AppMethodBeat.i(12865);
-    this.eRL = new MediaCodec.BufferInfo();
-    this.TAG = "MicroMsg.MediaCodecTransDecoder";
-    try
+    ad.l("MicroMsg.IAudioDecoder", "stop decoder", new Object[0]);
+    synchronized (this.stopLock)
     {
-      this.mediaFormat = parama.eUT;
-      this.eRD = MediaCodec.createDecoderByType(parama.UV());
-      parama = this.eRD;
-      if (parama == null) {
-        j.ebi();
+      ad.i("MicroMsg.IAudioDecoder", "stopDecoder in lock");
+      try
+      {
+        if (!this.gnG)
+        {
+          this.gnG = true;
+          localObject2 = this.gnF;
+          if (localObject2 != null) {
+            ((z)localObject2).stop();
+          }
+          localObject2 = this.gnF;
+          if (localObject2 != null) {
+            ((z)localObject2).release();
+          }
+          localObject2 = this.gnQ;
+          if (localObject2 != null) {
+            ((d.g.a.a)localObject2).invoke();
+          }
+          ad.i("MicroMsg.IAudioDecoder", hashCode() + " total decode used " + this.gnK);
+        }
       }
-      parama.configure(this.mediaFormat, paramSurface, null, 0);
-      parama = this.eRD;
-      if (parama == null) {
-        j.ebi();
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Object localObject2;
+          ad.printErrStackTrace("MicroMsg.IAudioDecoder", (Throwable)localException, "stopDecoder error", new Object[0]);
+        }
       }
-      parama.start();
-      paramb.S(this);
-      AppMethodBeat.o(12865);
+      localObject2 = y.JfV;
       return;
     }
-    catch (Exception parama)
-    {
-      ab.printErrStackTrace(this.TAG, (Throwable)parama, "create decoder error:" + parama.getMessage(), new Object[0]);
-      parama = (Throwable)new IllegalStateException("init decoder error");
-      AppMethodBeat.o(12865);
-      throw parama;
-    }
   }
   
-  private final boolean UD()
+  protected final void e(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
-    AppMethodBeat.i(12863);
-    long l1;
-    Object localObject2;
-    try
+    k.h(paramBufferInfo, "bufferInfo");
+    if (paramByteBuffer != null)
     {
-      synchronized (this.eRY)
-      {
-        if (this.eRZ) {
-          ab.i(this.TAG, "inputDecoder already finished");
-        }
-        y localy = y.BMg;
-        ab.i(this.TAG, "inputDecoder");
-        l1 = bo.yB();
-        ??? = this.eRD;
-        if (??? == null) {
-          j.ebi();
-        }
-        ??? = ((MediaCodec)???).getInputBuffers();
-        if (??? == null)
-        {
-          AppMethodBeat.o(12863);
-          return false;
-        }
-      }
-      j = 0;
-    }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace(this.TAG, (Throwable)localException, "inputDecoder error", new Object[0]);
-      if (this.eSb)
-      {
-        localObject2 = c.eZC;
-        c.Wv();
-      }
-      AppMethodBeat.o(12863);
-      return true;
-    }
-    Object localObject4 = this.eRD;
-    if (localObject4 == null) {
-      j.ebi();
-    }
-    int i = ((MediaCodec)localObject4).dequeueInputBuffer(60000L);
-    while ((i < 0) && (j < 15))
-    {
-      if (UE())
-      {
-        AppMethodBeat.o(12863);
-        return true;
-      }
-      localObject4 = this.eRD;
-      if (localObject4 == null) {
-        j.ebi();
-      }
-      i = ((MediaCodec)localObject4).dequeueInputBuffer(60000L);
-      j += 1;
-    }
-    this.eSr = false;
-    int k;
-    long l2;
-    if (i >= 0)
-    {
-      localObject2 = localObject2[i];
-      ((ByteBuffer)localObject2).clear();
-      localObject4 = this.eRM;
-      if (localObject4 == null) {
-        j.ebi();
-      }
-      j.p(localObject2, "inputBuffer");
-      if (!((com.tencent.mm.media.e.a)localObject4).g((ByteBuffer)localObject2))
-      {
-        ab.i(this.TAG, "read sample end");
-        AppMethodBeat.o(12863);
-        return true;
-      }
-      k = this.eRM.sampleSize;
-      ((ByteBuffer)localObject2).position(0);
-      l2 = this.eRM.getSampleTime();
-      ab.i(this.TAG, "sampleTime : " + l2 + " us");
-      if ((k < 0) || (l2 >= this.eRN * 1000L))
-      {
-        this.eSr = true;
-        ab.i(this.TAG, "sawInputEOS");
-      }
-      localObject2 = this.eRD;
-      if (localObject2 == null) {
-        j.ebi();
-      }
-      if (!this.eSr) {
-        break label498;
-      }
-    }
-    label498:
-    for (int j = 4;; j = 0)
-    {
-      ((MediaCodec)localObject2).queueInputBuffer(i, 0, k, l2, j);
-      for (;;)
-      {
-        bool = UE();
-        ab.i(this.TAG, "inputDecoder cost " + bo.av(l1));
-        if (!bool) {
-          break;
-        }
-        ab.i(this.TAG, "drainDecoder eos");
-        AppMethodBeat.o(12863);
-        return true;
-        ab.w(this.TAG, "input buffer not available");
-      }
-      boolean bool = this.eSr;
-      AppMethodBeat.o(12863);
-      return bool;
-    }
-  }
-  
-  private final boolean UE()
-  {
-    AppMethodBeat.i(12864);
-    int i;
-    label92:
-    Object localObject2;
-    for (;;)
-    {
-      try
-      {
-        ab.i(this.TAG, "drainDecoder");
-        synchronized (this.eRY)
-        {
-          if (this.eRZ) {
-            ab.i(this.TAG, "drainDecoder already finished");
-          }
-          y localy = y.BMg;
-          ??? = this.eRD;
-          if (??? == null) {
-            j.ebi();
-          }
-          i = ((MediaCodec)???).dequeueOutputBuffer(this.eRL, 100L);
-          if (i == -1)
-          {
-            ab.i(this.TAG, "no output from decoder available, break");
-            AppMethodBeat.o(12864);
-            return false;
-          }
-        }
-        if (i != -3) {
-          break label177;
-        }
-      }
-      catch (Exception localException1)
-      {
-        ab.printErrStackTrace(this.TAG, (Throwable)localException1, "drainDecoder error", new Object[0]);
-        if (this.eSb)
-        {
-          localObject2 = c.eZC;
-          c.Wv();
-        }
-        AppMethodBeat.o(12864);
-        return false;
-      }
-      ab.i(this.TAG, "decoder output buffers changed");
-      continue;
-      label177:
-      if (i == -2)
-      {
-        localObject2 = this.eRD;
-        if (localObject2 == null) {
-          j.ebi();
-        }
-        this.mediaFormat = ((MediaCodec)localObject2).getOutputFormat();
-        ab.i(this.TAG, "decoder output format changed: " + this.mediaFormat);
-        localObject2 = this.mediaFormat;
-        if (localObject2 != null)
-        {
-          a.f.a.b localb = this.eRV;
-          if (localb != null) {
-            localb.S(localObject2);
-          }
-        }
-      }
-      else
-      {
-        if (i >= 0) {
-          break;
-        }
-        ab.w(this.TAG, "unexpected result from decoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
-      }
-    }
-    long l = this.eRL.presentationTimeUs;
-    ab.i(this.TAG, "presentationTimeUs : ".concat(String.valueOf(l)));
-    if ((l < this.aZw * 1000L) && ((this.eRL.flags & 0x4) == 0))
-    {
-      localObject2 = this.eRD;
-      if (localObject2 == null) {
-        j.ebi();
-      }
-      ((MediaCodec)localObject2).releaseOutputBuffer(i, false);
-      ab.i(this.TAG, "decoder pts: " + l + ", not reach start: " + this.aZw * 1000L);
-      AppMethodBeat.o(12864);
-      return false;
-    }
-    if (this.eRL.size != 0)
-    {
-      a(this.eRL);
-      localObject2 = this.eRD;
-      if (localObject2 == null) {
-        j.ebi();
-      }
-      if (this.eSg == null) {
-        break label634;
-      }
-    }
-    label558:
-    label634:
-    for (boolean bool = true;; bool = false)
-    {
-      ((MediaCodec)localObject2).releaseOutputBuffer(i, bool);
-      if ((this.eRN * 1000L != 1L) && (l >= this.eRN * 1000L))
-      {
-        ab.e(this.TAG, "exceed endTimeMs");
-        AppMethodBeat.o(12864);
-        return true;
-      }
-      i = this.eRL.flags;
-      if ((i & 0x4) != 0) {}
-      try
-      {
-        localObject2 = this.eRD;
-        if (localObject2 == null) {
-          j.ebi();
-        }
-        ((MediaCodec)localObject2).stop();
-        localObject2 = this.eRD;
-        if (localObject2 == null) {
-          j.ebi();
-        }
-        ((MediaCodec)localObject2).release();
-      }
-      catch (Exception localException2)
-      {
-        break label558;
-      }
-      AppMethodBeat.o(12864);
-      return true;
-      AppMethodBeat.o(12864);
-      return false;
-      localObject2 = this.eRD;
-      if (localObject2 == null) {
-        j.ebi();
-      }
-      ((MediaCodec)localObject2).releaseOutputBuffer(i, false);
-      localObject2 = this.eRD;
-      if (localObject2 == null) {
-        j.ebi();
-      }
-      i = ((MediaCodec)localObject2).dequeueOutputBuffer(this.eRL, 100L);
-      if (i < 0) {
-        break label92;
-      }
-      break;
-    }
-  }
-  
-  public final void startDecode()
-  {
-    AppMethodBeat.i(12862);
-    while (!UD()) {}
-    ab.i(this.TAG, "inputDecoder end");
-    try
-    {
+      paramByteBuffer.position(paramBufferInfo.offset);
+      paramByteBuffer.limit(paramBufferInfo.offset + paramBufferInfo.size);
+      byte[] arrayOfByte = new byte[paramByteBuffer.remaining()];
+      paramByteBuffer.position(0);
+      paramByteBuffer.get(arrayOfByte);
       int i;
-      synchronized (this.eRY)
+      label187:
+      int j;
+      int k;
+      if (arrayOfByte.length == 0)
       {
-        if (this.eRZ) {
-          ab.i(this.TAG, "drainDecoder already finished");
+        i = 1;
+        if (i != 0) {
+          return;
         }
-        Object localObject3 = y.BMg;
-        ab.i(this.TAG, "sendDecoderEOS");
-        ??? = this.eRD;
-        if (??? == null) {
-          j.ebi();
+        ad.i("MicroMsg.IAudioDecoder", "decoder pcmData size:" + arrayOfByte.length + ", pts:" + paramBufferInfo.presentationTimeUs + ", audioId:" + this.cTr);
+        long l = bt.aS(this.gnJ);
+        this.gnK += l;
+        ad.i("MicroMsg.IAudioDecoder", hashCode() + " decode frame cost " + l);
+        this.gnL = true;
+        if (this.gnH != 1) {
+          break label363;
         }
-        ??? = ((MediaCodec)???).getInputBuffers();
-        localObject3 = this.eRD;
-        if (localObject3 == null) {
-          j.ebi();
+        i = gnR;
+        if (arrayOfByte.length <= i) {
+          break label377;
         }
-        i = ((MediaCodec)localObject3).dequeueInputBuffer(60000L);
-        if (i < 0) {
-          if (!UE())
-          {
-            localObject3 = this.eRD;
-            if (localObject3 == null) {
-              j.ebi();
-            }
-            i = ((MediaCodec)localObject3).dequeueInputBuffer(60000L);
-          }
+        j = arrayOfByte.length;
+        k = 0;
+        label202:
+        if (j <= 0) {
+          return;
+        }
+        if (j <= i) {
+          break label370;
         }
       }
-      Object localObject2;
-      com.tencent.mm.media.e.a locala;
-      long l;
-      return;
-    }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace(this.TAG, (Throwable)localException, "sendDecoderEOS error", new Object[0]);
-      for (;;)
+      label363:
+      label370:
+      for (int m = i;; m = j)
       {
-        pJ();
-        localObject2 = this.eRU;
-        if (localObject2 == null) {
-          break;
+        paramByteBuffer = new byte[m];
+        System.arraycopy(arrayOfByte, k, paramByteBuffer, 0, m);
+        int n = j - m;
+        int i1 = k + m;
+        ad.i("MicroMsg.IAudioDecoder", "split ret pcmData, leftSize:" + n + ", sizeOffset:" + i1 + ", maxBufferSize:" + i + ", copySize:" + m + ", data.size:" + paramByteBuffer.length);
+        m localm = this.gnP;
+        j = n;
+        k = i1;
+        if (localm == null) {
+          break label202;
         }
-        ((a.f.a.a)localObject2).invoke();
-        AppMethodBeat.o(12862);
-        return;
-        if (i >= 0)
-        {
-          localObject2 = localObject2[i];
-          ((ByteBuffer)localObject2).clear();
-          locala = this.eRM;
-          if (locala == null) {
-            j.ebi();
-          }
-          j.p(localObject2, "inputBuffer");
-          locala.g((ByteBuffer)localObject2);
-          ((ByteBuffer)localObject2).position(0);
-          localObject2 = this.eRM;
-          if (localObject2 == null) {
-            j.ebi();
-          }
-          l = ((com.tencent.mm.media.e.a)localObject2).getSampleTime();
-          if (i >= 0)
-          {
-            localObject2 = this.eRD;
-            if (localObject2 == null) {
-              j.ebi();
-            }
-            ((MediaCodec)localObject2).queueInputBuffer(i, 0, 0, l, 4);
-          }
-        }
-        UE();
+        localm.n(paramByteBuffer, Long.valueOf(paramBufferInfo.presentationTimeUs));
+        j = n;
+        k = i1;
+        break label202;
+        i = 0;
+        break;
+        i = gnS;
+        break label187;
       }
-      AppMethodBeat.o(12862);
+      label377:
+      paramByteBuffer = this.gnP;
+      if (paramByteBuffer != null) {
+        paramByteBuffer.n(arrayOfByte, Long.valueOf(paramBufferInfo.presentationTimeUs));
+      }
     }
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/decoder/MediaCodecTransDecoder$Companion;", "", "()V", "DECODE_TIMEOUT", "", "TIMEOUT", "plugin-mediaeditor_release"})
-  public static final class a {}
+  public int getChannelCount()
+  {
+    return this.gnH;
+  }
+  
+  public int getSampleRate()
+  {
+    return this.gnI;
+  }
+  
+  public abstract void startDecoder();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.media.c.e
  * JD-Core Version:    0.7.0.1
  */

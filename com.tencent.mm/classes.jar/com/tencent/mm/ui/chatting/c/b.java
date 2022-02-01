@@ -10,92 +10,111 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.ag;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.bv;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.aw.o;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.g.c.y;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.bi;
+import com.tencent.mm.model.by;
 import com.tencent.mm.opensdk.modelmsg.WXAppExtendObject;
 import com.tencent.mm.opensdk.modelmsg.WXFileObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.pluginsdk.model.app.ai;
-import com.tencent.mm.pluginsdk.model.app.al;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.pluginsdk.model.app.l;
-import com.tencent.mm.pluginsdk.model.app.m;
-import com.tencent.mm.pluginsdk.model.app.p;
-import com.tencent.mm.pluginsdk.r;
-import com.tencent.mm.pluginsdk.r.a;
+import com.tencent.mm.pluginsdk.model.app.am;
+import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.pluginsdk.model.app.j;
+import com.tencent.mm.pluginsdk.model.app.n;
+import com.tencent.mm.pluginsdk.model.app.q;
+import com.tencent.mm.pluginsdk.p;
+import com.tencent.mm.pluginsdk.p.a;
+import com.tencent.mm.pluginsdk.t;
+import com.tencent.mm.pluginsdk.ui.tools.r;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.u;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.an;
+import com.tencent.mm.ui.chatting.ao;
 import com.tencent.mm.ui.chatting.ar;
+import com.tencent.mm.ui.chatting.as;
 import com.tencent.mm.vfs.e;
 import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-@com.tencent.mm.ui.chatting.c.a.a(dJy=com.tencent.mm.ui.chatting.c.b.b.class)
+@com.tencent.mm.ui.chatting.c.a.a(eYT=com.tencent.mm.ui.chatting.c.b.b.class)
 public class b
   extends a
   implements com.tencent.mm.ui.chatting.c.b.b
 {
-  private com.tencent.mm.plugin.wallet.a qlj;
-  private com.tencent.mm.ui.chatting.aq zDW;
-  private final k.a zDX;
-  private final k.a zDY;
+  private ar Gsr;
+  private final k.a Gss;
+  private final k.a Gst;
+  private com.tencent.mm.plugin.wallet.a vCr;
   
   public b()
   {
-    AppMethodBeat.i(31181);
-    this.qlj = null;
-    this.zDW = null;
-    this.zDX = new b.1(this);
-    this.zDY = new b.2(this);
-    AppMethodBeat.o(31181);
+    AppMethodBeat.i(35072);
+    this.vCr = null;
+    this.Gsr = null;
+    this.Gss = new k.a()
+    {
+      public final void a(String paramAnonymousString, com.tencent.mm.sdk.e.m paramAnonymousm)
+      {
+        AppMethodBeat.i(35069);
+        ad.v("MicroMsg.ChattingUI.AppMsgComponent", "app attach info watcher notify");
+        ((com.tencent.mm.ui.chatting.c.b.i)b.this.cOd.be(com.tencent.mm.ui.chatting.c.b.i.class)).eWj();
+        AppMethodBeat.o(35069);
+      }
+    };
+    this.Gst = new k.a()
+    {
+      public final void a(String paramAnonymousString, com.tencent.mm.sdk.e.m paramAnonymousm)
+      {
+        AppMethodBeat.i(35070);
+        ad.v("MicroMsg.ChattingUI.AppMsgComponent", "app info watcher notify");
+        ((com.tencent.mm.ui.chatting.c.b.i)b.this.cOd.be(com.tencent.mm.ui.chatting.c.b.i.class)).eWj();
+        AppMethodBeat.o(35070);
+      }
+    };
+    AppMethodBeat.o(35072);
   }
   
-  private boolean a(bi parambi, f paramf)
+  private boolean a(bl parambl, com.tencent.mm.pluginsdk.model.app.g paramg)
   {
-    AppMethodBeat.i(31186);
-    if ((!parambi.field_talker.endsWith("@qqim")) || (!paramf.field_packageName.equals("com.tencent.mobileqq")))
+    AppMethodBeat.i(35077);
+    if ((!parambl.field_talker.endsWith("@qqim")) || (!paramg.field_packageName.equals("com.tencent.mobileqq")))
     {
-      AppMethodBeat.o(31186);
+      AppMethodBeat.o(35077);
       return false;
     }
-    ab.d("MicroMsg.ChattingUI.AppMsgComponent", "jacks open QQ");
-    parambi = new Intent("android.intent.action.MAIN", null);
-    parambi.addCategory("android.intent.category.LAUNCHER");
-    parambi.addFlags(268435456);
-    parambi.setClassName("com.tencent.mobileqq", aO(this.caz.zJz.getContext(), "com.tencent.mobileqq"));
-    parambi.putExtra("platformId", "wechat");
-    aw.aaz();
-    paramf = com.tencent.mm.model.c.Ru().get(9, null);
+    ad.d("MicroMsg.ChattingUI.AppMsgComponent", "jacks open QQ");
+    parambl = new Intent("android.intent.action.MAIN", null);
+    parambl.addCategory("android.intent.category.LAUNCHER");
+    parambl.addFlags(268435456);
+    parambl.setClassName("com.tencent.mobileqq", aW(this.cOd.GzJ.getContext(), "com.tencent.mobileqq"));
+    parambl.putExtra("platformId", "wechat");
+    az.arV();
+    paramg = com.tencent.mm.model.c.afk().get(9, null);
     int i;
-    if ((paramf != null) && ((paramf instanceof Integer))) {
-      i = ((Integer)paramf).intValue();
+    if ((paramg != null) && ((paramg instanceof Integer))) {
+      i = ((Integer)paramg).intValue();
     }
     for (;;)
     {
       if (i != 0) {}
       try
       {
-        paramf = String.valueOf(i).getBytes("utf-8");
+        paramg = String.valueOf(i).getBytes("utf-8");
         byte[] arrayOfByte = "asdfghjkl;'".getBytes("utf-8");
         int k = arrayOfByte.length;
         int j = 0;
@@ -103,41 +122,45 @@ public class b
         while (j < k)
         {
           int m = arrayOfByte[j];
-          if (i >= paramf.length) {
+          if (i >= paramg.length) {
             break;
           }
-          paramf[i] = ((byte)(m ^ paramf[i]));
+          paramg[i] = ((byte)(m ^ paramg[i]));
           j += 1;
           i += 1;
         }
-        parambi.putExtra("tencent_gif", paramf);
-        label229:
+        parambl.putExtra("tencent_gif", paramg);
+        label284:
         i = 0;
       }
-      catch (UnsupportedEncodingException paramf)
+      catch (UnsupportedEncodingException paramg)
       {
         try
         {
           for (;;)
           {
-            this.caz.zJz.startActivity(parambi);
-            AppMethodBeat.o(31186);
+            paramg = this.cOd.GzJ;
+            parambl = new com.tencent.mm.hellhoundlib.b.a().bd(parambl);
+            com.tencent.mm.hellhoundlib.a.a.a(paramg, parambl.adn(), "com/tencent/mm/ui/chatting/component/AppMsgComponent", "dealOpenQQ", "(Lcom/tencent/mm/storage/MsgInfo;Lcom/tencent/mm/pluginsdk/model/app/AppInfo;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramg.startActivity((Intent)parambl.lS(0));
+            com.tencent.mm.hellhoundlib.a.a.a(paramg, "com/tencent/mm/ui/chatting/component/AppMsgComponent", "dealOpenQQ", "(Lcom/tencent/mm/storage/MsgInfo;Lcom/tencent/mm/pluginsdk/model/app/AppInfo;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            AppMethodBeat.o(35077);
             return true;
-            paramf = paramf;
-            ab.printErrStackTrace("MicroMsg.ChattingUI.AppMsgComponent", paramf, "", new Object[0]);
+            paramg = paramg;
+            ad.printErrStackTrace("MicroMsg.ChattingUI.AppMsgComponent", paramg, "", new Object[0]);
           }
         }
-        catch (Exception parambi)
+        catch (Exception parambl)
         {
-          break label229;
+          break label284;
         }
       }
     }
   }
   
-  private static String aO(Context paramContext, String paramString)
+  private static String aW(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(31187);
+    AppMethodBeat.i(35078);
     paramContext = paramContext.getPackageManager();
     try
     {
@@ -147,7 +170,7 @@ public class b
       localIntent.setPackage(paramString.packageName);
       paramContext = (ResolveInfo)paramContext.queryIntentActivities(localIntent, 0).iterator().next();
       if (paramContext == null) {
-        break label98;
+        break label96;
       }
       paramContext = paramContext.activityInfo.name;
     }
@@ -155,46 +178,46 @@ public class b
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.ChattingUI.AppMsgComponent", paramContext, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ChattingUI.AppMsgComponent", paramContext, "", new Object[0]);
         paramContext = null;
       }
     }
-    AppMethodBeat.o(31187);
+    AppMethodBeat.o(35078);
     return paramContext;
   }
   
-  private void dHr()
+  private void eWy()
   {
-    AppMethodBeat.i(31182);
-    if (this.zDW != null) {
-      com.tencent.mm.ui.chatting.aq.b(this.zDW);
+    AppMethodBeat.i(35073);
+    if (this.Gsr != null) {
+      ar.b(this.Gsr);
     }
-    if (aw.RG())
+    if (az.afw())
     {
-      al.aUJ().remove(this.zDX);
-      al.cac().remove(this.zDY);
+      ap.bxS().remove(this.Gss);
+      ap.cZQ().remove(this.Gst);
     }
-    AppMethodBeat.o(31182);
+    AppMethodBeat.o(35073);
   }
   
-  private void t(f paramf)
+  private void u(com.tencent.mm.pluginsdk.model.app.g paramg)
   {
-    AppMethodBeat.i(31184);
-    if ((paramf == null) || (bo.isNullOrNil(paramf.field_appId)))
+    AppMethodBeat.i(35075);
+    if ((paramg == null) || (bt.isNullOrNil(paramg.field_appId)))
     {
-      ab.e("MicroMsg.ChattingUI.AppMsgComponent", "jumpServiceH5 error args");
-      AppMethodBeat.o(31184);
+      ad.e("MicroMsg.ChattingUI.AppMsgComponent", "jumpServiceH5 error args");
+      AppMethodBeat.o(35075);
       return;
     }
-    if (bo.isNullOrNil(paramf.dkd))
+    if (bt.isNullOrNil(paramg.eoA))
     {
-      ab.e("MicroMsg.ChattingUI.AppMsgComponent", "ForwardUrl is null");
-      AppMethodBeat.o(31184);
+      ad.e("MicroMsg.ChattingUI.AppMsgComponent", "ForwardUrl is null");
+      AppMethodBeat.o(35075);
       return;
     }
-    Object localObject1 = this.caz.zJz.getContext().getSharedPreferences(ah.dsP(), 0);
-    this.caz.zJz.getContext();
-    Object localObject2 = aa.f((SharedPreferences)localObject1);
+    Object localObject1 = this.cOd.GzJ.getContext().getSharedPreferences(com.tencent.mm.sdk.platformtools.aj.eFD(), 0);
+    this.cOd.GzJ.getContext();
+    Object localObject2 = ac.f((SharedPreferences)localObject1);
     localObject1 = localObject2;
     if ("language_default".equalsIgnoreCase((String)localObject2))
     {
@@ -203,299 +226,322 @@ public class b
         localObject1 = Locale.getDefault().toString();
       }
     }
-    if (com.tencent.mm.model.t.lA(this.caz.getTalkerUserName()))
+    if (com.tencent.mm.model.w.pF(this.cOd.getTalkerUserName()))
     {
-      aw.aaz();
-      localObject2 = com.tencent.mm.model.c.YJ().oU(this.caz.getTalkerUserName());
+      az.arV();
+      localObject2 = com.tencent.mm.model.c.apV().tH(this.cOd.getTalkerUserName());
       if (localObject2 == null) {}
     }
-    for (int i = ((u)localObject2).afx().size();; i = 1)
+    for (int i = ((com.tencent.mm.storage.w)localObject2).awt().size();; i = 1)
     {
       localObject2 = new Intent();
       Bundle localBundle = new Bundle();
-      localBundle.putString("jsapi_args_appid", paramf.field_appId);
+      localBundle.putString("jsapi_args_appid", paramg.field_appId);
       localBundle.putBoolean("isFromService", true);
       ((Intent)localObject2).putExtra("forceHideShare", true);
-      localBundle.putString("sendAppMsgToUserName", this.caz.txj.field_username);
+      localBundle.putString("sendAppMsgToUserName", this.cOd.zgX.field_username);
       ((Intent)localObject2).putExtra("jsapiargs", localBundle);
       ((Intent)localObject2).putExtra("show_bottom", false);
-      ((Intent)localObject2).putExtra("rawUrl", String.format("%s&wxchatmembers=%s&lang=%s", new Object[] { paramf.dkd, Integer.valueOf(i), localObject1 }));
-      com.tencent.mm.bq.d.b(this.caz.zJz.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject2);
-      AppMethodBeat.o(31184);
+      ((Intent)localObject2).putExtra("rawUrl", String.format("%s&wxchatmembers=%s&lang=%s", new Object[] { paramg.eoA, Integer.valueOf(i), localObject1 }));
+      com.tencent.mm.bs.d.b(this.cOd.GzJ.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject2);
+      AppMethodBeat.o(35075);
       return;
     }
   }
   
-  public final void a(com.tencent.mm.pluginsdk.ui.tools.o paramo)
+  public final void a(r paramr)
   {
-    AppMethodBeat.i(31188);
-    bv.abc().c(38, new Object[] { Integer.valueOf(1) });
-    Object localObject = paramo.filePath;
-    paramo = new WXMediaMessage(new WXFileObject((String)localObject));
-    localObject = new com.tencent.mm.vfs.b((String)localObject);
-    paramo.title = ((com.tencent.mm.vfs.b)localObject).getName();
-    paramo.description = bo.hk(((com.tencent.mm.vfs.b)localObject).length());
-    localObject = new f();
-    ((f)localObject).field_appId = "wx4310bbd51be7d979";
-    al.cac().get((com.tencent.mm.sdk.e.c)localObject, new String[0]);
-    l.a(paramo, ((f)localObject).field_appId, ((f)localObject).field_appName, this.caz.getTalkerUserName(), 2, null);
-    AppMethodBeat.o(31188);
+    AppMethodBeat.i(35079);
+    by.asD().d(38, new Object[] { Integer.valueOf(1) });
+    Object localObject = paramr.filePath;
+    paramr = new WXMediaMessage(new WXFileObject((String)localObject));
+    localObject = new e((String)localObject);
+    paramr.title = ((e)localObject).getName();
+    paramr.description = bt.mK(((e)localObject).length());
+    localObject = new com.tencent.mm.pluginsdk.model.app.g();
+    ((com.tencent.mm.pluginsdk.model.app.g)localObject).field_appId = "wx4310bbd51be7d979";
+    ap.cZQ().get((com.tencent.mm.sdk.e.c)localObject, new String[0]);
+    com.tencent.mm.pluginsdk.model.app.m.a(paramr, ((com.tencent.mm.pluginsdk.model.app.g)localObject).field_appId, ((com.tencent.mm.pluginsdk.model.app.g)localObject).field_appName, this.cOd.getTalkerUserName(), 2, null);
+    AppMethodBeat.o(35079);
   }
   
-  public final void a(bi parambi, ai paramai)
+  public final void a(bl parambl, am paramam)
   {
-    AppMethodBeat.i(31185);
-    Object localObject1 = parambi.field_content;
+    AppMethodBeat.i(35076);
+    Object localObject1 = parambl.field_content;
     Object localObject2;
-    if (parambi.field_isSend == 0)
+    if (parambl.field_isSend == 0)
     {
-      localObject2 = this.caz;
-      int i = parambi.field_isSend;
-      if ((!((com.tencent.mm.ui.chatting.c.b.d)((com.tencent.mm.ui.chatting.d.a)localObject2).ay(com.tencent.mm.ui.chatting.c.b.d.class)).dHw()) && (((com.tencent.mm.ui.chatting.d.a)localObject2).dJF()) && (localObject1 != null) && (i == 0)) {
-        localObject1 = bf.pv((String)localObject1);
+      localObject2 = this.cOd;
+      int i = parambl.field_isSend;
+      if ((!((com.tencent.mm.ui.chatting.c.b.d)((com.tencent.mm.ui.chatting.d.a)localObject2).be(com.tencent.mm.ui.chatting.c.b.d.class)).eWD()) && (((com.tencent.mm.ui.chatting.d.a)localObject2).eZa()) && (localObject1 != null) && (i == 0)) {
+        localObject1 = bi.ug((String)localObject1);
       }
     }
     for (;;)
     {
-      localObject2 = j.b.mY((String)localObject1);
-      f localf = com.tencent.mm.pluginsdk.model.app.g.ca(((j.b)localObject2).appId, true);
-      if ((localf != null) && (p.u(this.caz.zJz.getContext(), localf.field_packageName)))
+      localObject2 = k.b.rx((String)localObject1);
+      com.tencent.mm.pluginsdk.model.app.g localg = com.tencent.mm.pluginsdk.model.app.h.j(((k.b)localObject2).appId, true, false);
+      if ((localg != null) && (q.t(this.cOd.GzJ.getContext(), localg.field_packageName)))
       {
-        if (localf.field_status == 3)
+        if (localg.field_status == 3)
         {
-          ab.e("MicroMsg.ChattingUI.AppMsgComponent", "requestAppShow fail, app is in blacklist, packageName = " + localf.field_packageName);
-          AppMethodBeat.o(31185);
+          ad.e("MicroMsg.ChattingUI.AppMsgComponent", "requestAppShow fail, app is in blacklist, packageName = " + localg.field_packageName);
+          AppMethodBeat.o(35076);
           return;
         }
-        if (!p.b(this.caz.zJz.getContext(), localf))
+        if (!q.b(this.cOd.GzJ.getContext(), localg))
         {
-          ab.e("MicroMsg.ChattingUI.AppMsgComponent", "The app %s signature is incorrect.", new Object[] { localf.field_appName });
-          Toast.makeText(this.caz.zJz.getContext(), this.caz.zJz.getMMResources().getString(2131300385, new Object[] { com.tencent.mm.pluginsdk.model.app.g.b(this.caz.zJz.getContext(), localf, null) }), 1).show();
-          AppMethodBeat.o(31185);
+          ad.e("MicroMsg.ChattingUI.AppMsgComponent", "The app %s signature is incorrect.", new Object[] { localg.field_appName });
+          Toast.makeText(this.cOd.GzJ.getContext(), this.cOd.GzJ.getMMResources().getString(2131759894, new Object[] { com.tencent.mm.pluginsdk.model.app.h.a(this.cOd.GzJ.getContext(), localg, null) }), 1).show();
+          AppMethodBeat.o(35076);
           return;
         }
-        if (a(parambi, localf))
+        if (a(parambl, localg))
         {
-          AppMethodBeat.o(31185);
+          AppMethodBeat.o(35076);
           return;
         }
         WXAppExtendObject localWXAppExtendObject = new WXAppExtendObject();
-        localWXAppExtendObject.extInfo = ((j.b)localObject2).extInfo;
-        if ((((j.b)localObject2).cmN != null) && (((j.b)localObject2).cmN.length() > 0))
+        localWXAppExtendObject.extInfo = ((k.b)localObject2).extInfo;
+        if ((((k.b)localObject2).dbA != null) && (((k.b)localObject2).dbA.length() > 0))
         {
-          localObject1 = al.aUJ().alo(((j.b)localObject2).cmN);
+          localObject1 = ap.bxS().aAL(((k.b)localObject2).dbA);
           if (localObject1 != null) {
-            break label472;
+            break label547;
           }
         }
-        label472:
-        for (localObject1 = null;; localObject1 = ((com.tencent.mm.pluginsdk.model.app.b)localObject1).field_fileFullPath)
+        label547:
+        for (localObject1 = null;; localObject1 = ((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath)
         {
           localWXAppExtendObject.filePath = ((String)localObject1);
+          if (com.tencent.mm.vfs.i.eK(localWXAppExtendObject.filePath))
+          {
+            localObject1 = com.tencent.mm.sdk.platformtools.m.a(this.cOd.GzJ.getContext(), new e(localWXAppExtendObject.filePath));
+            if (localObject1 != null)
+            {
+              this.cOd.GzJ.getContext().grantUriPermission(localg.field_packageName, (Uri)localObject1, 1);
+              localWXAppExtendObject.filePath = ((Uri)localObject1).toString();
+            }
+          }
           localObject1 = new WXMediaMessage();
-          ((WXMediaMessage)localObject1).sdkVer = 620954624;
+          ((WXMediaMessage)localObject1).sdkVer = 637927424;
           ((WXMediaMessage)localObject1).mediaObject = localWXAppExtendObject;
-          ((WXMediaMessage)localObject1).title = ((j.b)localObject2).title;
-          ((WXMediaMessage)localObject1).description = ((j.b)localObject2).description;
-          ((WXMediaMessage)localObject1).messageAction = ((j.b)localObject2).messageAction;
-          ((WXMediaMessage)localObject1).messageExt = ((j.b)localObject2).messageExt;
-          ((WXMediaMessage)localObject1).thumbData = e.i(com.tencent.mm.at.o.ahC().te(parambi.field_imgPath), 0, -1);
-          new ar(this.caz.zJz.getContext()).a(localf.field_packageName, (WXMediaMessage)localObject1, localf.field_appId, localf.field_openId, paramai);
-          AppMethodBeat.o(31185);
+          ((WXMediaMessage)localObject1).title = ((k.b)localObject2).title;
+          ((WXMediaMessage)localObject1).description = ((k.b)localObject2).description;
+          ((WXMediaMessage)localObject1).messageAction = ((k.b)localObject2).messageAction;
+          ((WXMediaMessage)localObject1).messageExt = ((k.b)localObject2).messageExt;
+          ((WXMediaMessage)localObject1).thumbData = com.tencent.mm.vfs.i.aR(o.ayF().yg(parambl.field_imgPath), 0, -1);
+          new as(this.cOd.GzJ.getContext()).a(localg.field_packageName, (WXMediaMessage)localObject1, localg.field_appId, localg.field_openId, paramam);
+          AppMethodBeat.o(35076);
           return;
         }
       }
-      parambi = p.C(this.caz.zJz.getContext(), ((j.b)localObject2).appId, "message");
-      paramai = new Intent();
-      paramai.putExtra("rawUrl", parambi);
-      com.tencent.mm.bq.d.b(this.caz.zJz.getContext(), "webview", ".ui.tools.WebViewUI", paramai);
-      AppMethodBeat.o(31185);
+      parambl = q.K(this.cOd.GzJ.getContext(), ((k.b)localObject2).appId, "message");
+      paramam = new Intent();
+      paramam.putExtra("rawUrl", parambl);
+      com.tencent.mm.bs.d.b(this.cOd.GzJ.getContext(), "webview", ".ui.tools.WebViewUI", paramam);
+      AppMethodBeat.o(35076);
       return;
     }
   }
   
-  public final void dCa()
+  public final void eQC()
   {
-    AppMethodBeat.i(31190);
-    this.qlj = com.tencent.mm.plugin.wallet.a.dC(this.caz.txj.field_username, 1);
-    this.qlj.bs(1, this.caz.txj.field_username);
-    al.aUJ().add(this.zDX);
-    al.cac().add(this.zDY);
-    if (this.zDW == null) {
-      this.zDW = new com.tencent.mm.ui.chatting.aq(this.caz);
+    AppMethodBeat.i(35081);
+    this.vCr = com.tencent.mm.plugin.wallet.a.eK(this.cOd.zgX.field_username, 1);
+    this.vCr.ce(1, this.cOd.zgX.field_username);
+    ap.bxS().add(this.Gss);
+    ap.cZQ().add(this.Gst);
+    if (this.Gsr == null) {
+      this.Gsr = new ar(this.cOd);
     }
-    com.tencent.mm.ui.chatting.aq.a(this.zDW);
-    AppMethodBeat.o(31190);
+    ar.a(this.Gsr);
+    AppMethodBeat.o(35081);
   }
   
-  public final void dCc()
+  public final void eQE()
   {
-    AppMethodBeat.i(31191);
-    an.clear();
-    AppMethodBeat.o(31191);
+    AppMethodBeat.i(35082);
+    ao.clear();
+    AppMethodBeat.o(35082);
   }
   
-  public final void dCd()
+  public final void eQF()
   {
-    AppMethodBeat.i(31192);
-    dHr();
-    AppMethodBeat.o(31192);
+    AppMethodBeat.i(35083);
+    eWy();
+    AppMethodBeat.o(35083);
   }
   
-  public final void dHq()
+  public final void eWx()
   {
-    AppMethodBeat.i(31193);
-    super.dHq();
-    dHr();
-    AppMethodBeat.o(31193);
+    AppMethodBeat.i(35084);
+    super.eWx();
+    eWy();
+    AppMethodBeat.o(35084);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(31189);
+    AppMethodBeat.i(35080);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(31189);
+      AppMethodBeat.o(35080);
       return;
       if (paramInt2 == -1)
       {
         long l = paramIntent.getLongExtra("App_MsgId", 0L);
-        aw.aaz();
-        a(com.tencent.mm.model.c.YC().kB(l), null);
+        az.arV();
+        a(com.tencent.mm.model.c.apO().rm(l), null);
       }
-      AppMethodBeat.o(31189);
+      AppMethodBeat.o(35080);
       return;
       if ((paramInt2 == -1) && (paramIntent != null))
       {
         String str1 = paramIntent.getStringExtra("service_app_package_name");
         String str2 = paramIntent.getStringExtra("service_app_openid");
         paramIntent = paramIntent.getStringExtra("service_app_appid");
-        if (this.zDW != null) {}
+        if (this.Gsr != null) {}
         for (boolean bool = true;; bool = false)
         {
-          ab.i("MicroMsg.ChattingUI.AppMsgComponent", "request send wx msg, wxmessage[%b], package[%s], appId[%s], openId[%s]", new Object[] { Boolean.valueOf(bool), str1, paramIntent, str2 });
-          if (!bo.isNullOrNil(paramIntent)) {
+          ad.i("MicroMsg.ChattingUI.AppMsgComponent", "request send wx msg, wxmessage[%b], package[%s], appId[%s], openId[%s]", new Object[] { Boolean.valueOf(bool), str1, paramIntent, str2 });
+          if (!bt.isNullOrNil(paramIntent)) {
             break;
           }
-          ab.e("MicroMsg.ChattingUI.AppMsgComponent", "REQUEST_CODE_SERVICE_APP openId is null");
-          AppMethodBeat.o(31189);
+          ad.e("MicroMsg.ChattingUI.AppMsgComponent", "REQUEST_CODE_SERVICE_APP openId is null");
+          AppMethodBeat.o(35080);
           return;
         }
-        if ((this.zDW == null) || (bo.isNullOrNil(str1)))
+        if ((this.Gsr == null) || (bt.isNullOrNil(str1)))
         {
-          t(com.tencent.mm.pluginsdk.model.app.g.ca(paramIntent, true));
-          AppMethodBeat.o(31189);
+          u(com.tencent.mm.pluginsdk.model.app.h.j(paramIntent, true, false));
+          AppMethodBeat.o(35080);
           return;
         }
-        if (bo.isNullOrNil(str2))
+        if (bt.isNullOrNil(str2))
         {
-          al.cae().xB(paramIntent);
-          ab.e("MicroMsg.ChattingUI.AppMsgComponent", "request send wx msg fail, openId is null, go get it");
-          AppMethodBeat.o(31189);
+          ap.cZS().xe(paramIntent);
+          ad.e("MicroMsg.ChattingUI.AppMsgComponent", "request send wx msg fail, openId is null, go get it");
+          AppMethodBeat.o(35080);
           return;
         }
-        bool = this.zDW.iz(str1, str2);
-        ab.d("MicroMsg.ChattingUI.AppMsgComponent", "request send wx msg success = %b", new Object[] { Boolean.valueOf(bool) });
+        bool = this.Gsr.lp(str1, str2);
+        ad.d("MicroMsg.ChattingUI.AppMsgComponent", "request send wx msg success = %b", new Object[] { Boolean.valueOf(bool) });
         if (!bool) {
-          t(com.tencent.mm.pluginsdk.model.app.g.ca(paramIntent, true));
+          u(com.tencent.mm.pluginsdk.model.app.h.j(paramIntent, true, false));
         }
       }
     }
   }
   
-  public final void s(f paramf)
+  public final void t(com.tencent.mm.pluginsdk.model.app.g paramg)
   {
-    AppMethodBeat.i(31183);
-    if (paramf == null)
+    AppMethodBeat.i(35074);
+    if (paramg == null)
     {
-      ab.e("MicroMsg.ChattingUI.AppMsgComponent", "onAppSelected, info is null, %s", new Object[] { bo.dtY() });
-      AppMethodBeat.o(31183);
+      ad.e("MicroMsg.ChattingUI.AppMsgComponent", "onAppSelected, info is null, %s", new Object[] { bt.eGN() });
+      AppMethodBeat.o(35074);
       return;
     }
-    if ((paramf != null) && (f.vKX.equals(paramf.field_appId)) && (this.qlj != null)) {
-      this.qlj.bs(2, this.caz.txj.field_username);
+    if ((paramg != null) && (com.tencent.mm.pluginsdk.model.app.g.BPE.equals(paramg.field_appId)) && (this.vCr != null)) {
+      this.vCr.ce(2, this.cOd.zgX.field_username);
     }
-    if (paramf.dlw())
+    if (paramg.evD())
     {
-      if ((paramf == null) || (!paramf.dlw()))
+      if ((paramg == null) || (!paramg.evD()))
       {
-        ab.e("MicroMsg.ChattingUI.AppMsgComponent", "serviceAppSelect not service app");
-        AppMethodBeat.o(31183);
+        ad.e("MicroMsg.ChattingUI.AppMsgComponent", "serviceAppSelect not service app");
+        AppMethodBeat.o(35074);
         return;
       }
-      if ((this.caz.txj == null) || (bo.isNullOrNil(this.caz.txj.field_username)))
+      if ((this.cOd.zgX == null) || (bt.isNullOrNil(this.cOd.zgX.field_username)))
       {
-        ab.e("MicroMsg.ChattingUI.AppMsgComponent", "serviceAppSelect talker is null");
-        AppMethodBeat.o(31183);
+        ad.e("MicroMsg.ChattingUI.AppMsgComponent", "serviceAppSelect talker is null");
+        AppMethodBeat.o(35074);
         return;
       }
-      ab.i("MicroMsg.ChattingUI.AppMsgComponent", "serviceApp, jumpType[%d], package[%s], appid[%s]", new Object[] { Integer.valueOf(paramf.dke), paramf.field_packageName, paramf.field_appId });
-      if ((paramf.dke == 2) && (!bo.isNullOrNil(paramf.dkd)))
+      ad.i("MicroMsg.ChattingUI.AppMsgComponent", "serviceApp, jumpType[%d], package[%s], appid[%s]", new Object[] { Integer.valueOf(paramg.eoB), paramg.field_packageName, paramg.field_appId });
+      if ((paramg.eoB == 2) && (!bt.isNullOrNil(paramg.eoA)))
       {
-        t(paramf);
-        AppMethodBeat.o(31183);
+        u(paramg);
+        AppMethodBeat.o(35074);
         return;
       }
-      if (paramf.dke == 3)
+      if (paramg.eoB == 3)
       {
-        if (bo.isNullOrNil(paramf.field_openId))
+        if (bt.isNullOrNil(paramg.field_openId))
         {
-          al.cae().xB(paramf.field_appId);
-          ab.e("MicroMsg.ChattingUI.AppMsgComponent", "JUMP 3RD APP fail, openId is null, go get it");
-          AppMethodBeat.o(31183);
+          ap.cZS().xe(paramg.field_appId);
+          ad.e("MicroMsg.ChattingUI.AppMsgComponent", "JUMP 3RD APP fail, openId is null, go get it");
+          AppMethodBeat.o(35074);
           return;
         }
-        if ((this.zDW == null) || (bo.isNullOrNil(paramf.field_packageName)))
+        if ((this.Gsr == null) || (bt.isNullOrNil(paramg.field_packageName)))
         {
-          ab.e("MicroMsg.ChattingUI.AppMsgComponent", "JUMP 3RD APP fail");
-          t(paramf);
-          AppMethodBeat.o(31183);
+          ad.e("MicroMsg.ChattingUI.AppMsgComponent", "JUMP 3RD APP fail");
+          u(paramg);
+          AppMethodBeat.o(35074);
           return;
         }
-        boolean bool = this.zDW.iz(paramf.field_packageName, paramf.field_openId);
-        ab.i("MicroMsg.ChattingUI.AppMsgComponent", "JUMP 3RD APP success[%s]", new Object[] { Boolean.valueOf(bool) });
+        boolean bool = this.Gsr.lp(paramg.field_packageName, paramg.field_openId);
+        ad.i("MicroMsg.ChattingUI.AppMsgComponent", "JUMP 3RD APP success[%s]", new Object[] { Boolean.valueOf(bool) });
         if (!bool) {
-          t(paramf);
+          u(paramg);
         }
-        AppMethodBeat.o(31183);
+        AppMethodBeat.o(35074);
         return;
       }
-      if (paramf.dke == 1)
+      if (paramg.eoB == 1)
       {
-        ab.i("MicroMsg.ChattingUI.AppMsgComponent", "JUMP NATIVE ForwardUrl[%s]", new Object[] { paramf.dkd });
-        r.a.vJD.a(this.caz.zJz.getContext(), paramf.dkd, false, new b.3(this));
+        ad.i("MicroMsg.ChattingUI.AppMsgComponent", "JUMP NATIVE ForwardUrl[%s]", new Object[] { paramg.eoA });
+        p.a.BNw.a(this.cOd.GzJ.getContext(), paramg.eoA, false, new t()
+        {
+          public final Object euS()
+          {
+            return b.this.cOd.zgX.field_username;
+          }
+          
+          public final Object euT()
+          {
+            AppMethodBeat.i(35071);
+            com.tencent.mm.plugin.wallet.a locala = b.a(b.this);
+            AppMethodBeat.o(35071);
+            return locala;
+          }
+        });
       }
-      AppMethodBeat.o(31183);
+      AppMethodBeat.o(35074);
       return;
     }
-    if (paramf.field_status == 3)
+    if (paramg.field_status == 3)
     {
-      ab.e("MicroMsg.ChattingUI.AppMsgComponent", "onAppSeleted fail, app is in blacklist, packageName = " + paramf.field_packageName);
-      AppMethodBeat.o(31183);
+      ad.e("MicroMsg.ChattingUI.AppMsgComponent", "onAppSeleted fail, app is in blacklist, packageName = " + paramg.field_packageName);
+      AppMethodBeat.o(35074);
       return;
     }
-    if ((!this.zDW.iz(paramf.field_packageName, paramf.field_openId)) && (paramf.field_status == 5))
+    if ((!this.Gsr.lp(paramg.field_packageName, paramg.field_openId)) && (paramg.field_status == 5))
     {
-      ab.d("MicroMsg.ChattingUI.AppMsgComponent", "SuggestionApp appSuggestionIntroUrl = %s", new Object[] { paramf.djR });
-      if (bo.isNullOrNil(paramf.djR))
+      ad.d("MicroMsg.ChattingUI.AppMsgComponent", "SuggestionApp appSuggestionIntroUrl = %s", new Object[] { paramg.eoo });
+      if (bt.isNullOrNil(paramg.eoo))
       {
-        AppMethodBeat.o(31183);
+        AppMethodBeat.o(35074);
         return;
       }
       Intent localIntent = new Intent();
-      localIntent.putExtra("rawUrl", paramf.djR);
-      com.tencent.mm.bq.d.b(this.caz.zJz.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+      localIntent.putExtra("rawUrl", paramg.eoo);
+      com.tencent.mm.bs.d.b(this.cOd.GzJ.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
     }
-    AppMethodBeat.o(31183);
+    AppMethodBeat.o(35074);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.b
  * JD-Core Version:    0.7.0.1
  */

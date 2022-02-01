@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/bfe" android:layout_width="@dimen/hc" android:layout_height="@dimen/hc" android:layout_marginTop="@dimen/h3" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+    <TextView android:ellipsize="end" android:id="@id/bfg" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hd" android:layout_marginTop="@dimen/i_" android:layout_marginRight="@dimen/hd" android:layout_marginBottom="@dimen/hk" android:maxLines="1" android:layout_below="@id/bfe" android:layout_centerHorizontal="true" style="@style/ok" />
+    <TextView android:id="@id/bfb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/bfg" android:layout_centerHorizontal="true" style="@style/le" />
+    <Button android:id="@id/bf3" android:layout_marginLeft="@dimen/hd" android:layout_marginTop="@dimen/he" android:layout_marginRight="@dimen/hd" android:layout_marginBottom="@dimen/h" android:minWidth="220.0dip" android:text="@string/h85" android:layout_below="@id/bfb" android:layout_centerHorizontal="true" style="@style/o6" />
+    <TextView android:id="@id/bff" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginTop="@dimen/he" android:text="@string/h8c" android:layout_below="@id/bfb" android:layout_centerHorizontal="true" style="@style/le" />
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/tq" android:id="@id/bep" android:paddingLeft="@dimen/js" android:paddingRight="@dimen/js" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i_" android:text="@string/h83" android:layout_below="@id/bff" android:layout_centerHorizontal="true" />
+</RelativeLayout>

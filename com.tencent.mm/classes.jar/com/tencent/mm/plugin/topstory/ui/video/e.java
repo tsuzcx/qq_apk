@@ -1,9 +1,11 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
+import android.support.v4.e.o;
 import android.support.v7.widget.RecyclerView.a;
 import android.view.View;
-import com.tencent.mm.protocal.protobuf.ckx;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.ddb;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,94 +13,94 @@ import java.util.Map;
 public abstract class e
   extends RecyclerView.a<h>
 {
-  protected android.support.v4.e.n<View> thJ = new android.support.v4.e.n();
-  protected android.support.v4.e.n<View> thK = new android.support.v4.e.n();
-  public Map<ckx, h> thL = new HashMap();
-  public b thM;
+  protected o<View> yOj = new o();
+  protected o<View> yOk = new o();
+  public Map<String, WeakReference<h>> yOl = new HashMap();
+  public b yOm;
   
   public e(b paramb)
   {
-    this.thM = paramb;
+    this.yOm = paramb;
   }
   
-  public int GD(int paramInt)
+  public int Pl(int paramInt)
   {
     return 1;
   }
   
-  public final boolean GE(int paramInt)
+  public final boolean Pm(int paramInt)
   {
-    return paramInt < this.thJ.size();
+    return paramInt < this.yOj.size();
   }
   
-  public final boolean GF(int paramInt)
+  public final boolean Pn(int paramInt)
   {
-    return paramInt >= this.thJ.size() + this.thM.cJs().cKc();
+    return paramInt >= this.yOj.size() + this.yOm.dOT().dPF();
   }
   
   public final void addHeaderView(View paramView)
   {
-    this.thJ.put(this.thJ.size() + 100000, paramView);
+    this.yOj.put(this.yOj.size() + 100000, paramView);
   }
   
-  public final h b(ckx paramckx)
+  public final h b(ddb paramddb)
   {
-    if (this.thL.containsKey(paramckx))
+    if ((paramddb != null) && (this.yOl.containsKey(paramddb.rNP)) && (this.yOl.get(paramddb.rNP) != null))
     {
-      h localh = (h)this.thL.get(paramckx);
-      if ((localh != null) && (localh.tfm != null) && (localh.tfm == paramckx)) {
+      h localh = (h)((WeakReference)this.yOl.get(paramddb.rNP)).get();
+      if ((localh != null) && (localh.yLU != null) && (localh.yLU == paramddb)) {
         return localh;
       }
-      this.thL.remove(paramckx);
-      ab.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "getViewHolderByVideoInfo not match");
+      this.yOl.remove(paramddb.rNP);
+      ad.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "getViewHolderByVideoInfo not match");
     }
     return null;
   }
   
-  public final void cJy()
+  public final void dOZ()
   {
-    this.thK.clear();
+    this.yOk.clear();
   }
   
-  public final void eo(View paramView)
+  public final void fc(View paramView)
   {
-    this.thK.put(this.thK.size() + 200000, paramView);
+    this.yOk.put(this.yOk.size() + 200000, paramView);
   }
   
   public final int getFootersCount()
   {
-    return this.thK.size();
+    return this.yOk.size();
   }
   
   public final int getHeadersCount()
   {
-    return this.thJ.size();
+    return this.yOj.size();
   }
   
   public final int getItemCount()
   {
-    return this.thM.cJs().cKc() + this.thJ.size() + this.thK.size();
+    return this.yOm.dOT().dPF() + this.yOj.size() + this.yOk.size();
   }
   
   public final int getItemViewType(int paramInt)
   {
-    if (GE(paramInt)) {
-      return this.thJ.keyAt(paramInt);
+    if (Pm(paramInt)) {
+      return this.yOj.keyAt(paramInt);
     }
-    if (GF(paramInt)) {
-      return this.thK.keyAt(paramInt - this.thJ.size() - this.thM.cJs().cKc());
+    if (Pn(paramInt)) {
+      return this.yOk.keyAt(paramInt - this.yOj.size() - this.yOm.dOT().dPF());
     }
-    return GD(paramInt);
+    return Pl(paramInt);
   }
   
-  protected void l(List<ckx> paramList, boolean paramBoolean)
+  protected void m(List<ddb> paramList, boolean paramBoolean)
   {
-    ab.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "callbackToSuccess %d %b", new Object[] { Integer.valueOf(paramList.size()), Boolean.valueOf(paramBoolean) });
+    ad.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "callbackToSuccess %d %b", new Object[] { Integer.valueOf(paramList.size()), Boolean.valueOf(paramBoolean) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.e
  * JD-Core Version:    0.7.0.1
  */

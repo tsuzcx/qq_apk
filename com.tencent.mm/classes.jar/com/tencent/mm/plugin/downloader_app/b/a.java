@@ -1,96 +1,99 @@
 package com.tencent.mm.plugin.downloader_app.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Map;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class a
 {
-  public String appId;
-  public String appName;
-  public int cvQ;
-  public String downloadUrl;
-  public String extInfo;
-  public int fileType;
-  public boolean kYZ;
-  public int kZA;
-  public int kZB;
-  public int kZy;
-  public int kZz;
-  public String laB;
-  public long laC;
-  public String laD;
-  public String packageName;
-  public int scene;
-  
-  public static a I(Map<String, Object> paramMap)
+  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(35547);
-    a locala = new a();
-    if (paramMap == null)
-    {
-      AppMethodBeat.o(35547);
-      return locala;
-    }
-    locala.appName = ((String)paramMap.get("task_name"));
-    locala.downloadUrl = ((String)paramMap.get("task_url"));
-    locala.laB = ((String)paramMap.get("alternative_url"));
-    locala.laC = bo.getLong((String)paramMap.get("task_size"), 0L);
-    locala.laD = ((String)paramMap.get("file_md5"));
-    locala.extInfo = ((String)paramMap.get("extInfo"));
-    locala.fileType = bo.getInt((String)paramMap.get("fileType"), 0);
-    locala.appId = ((String)paramMap.get("appid"));
-    locala.packageName = ((String)paramMap.get("package_name"));
-    locala.scene = bo.getInt((String)paramMap.get("scene"), 1000);
-    locala.cvQ = bo.getInt((String)paramMap.get("downloader_type"), 1);
-    locala.kZB = bo.getInt((String)paramMap.get("download_type"), 1);
-    locala.kZy = bo.getInt((String)paramMap.get("uiarea"), 0);
-    locala.kZz = bo.getInt((String)paramMap.get("notice_id"), 0);
-    locala.kZA = bo.getInt((String)paramMap.get("ssid"), 0);
-    AppMethodBeat.o(35547);
-    return locala;
+    AppMethodBeat.i(8921);
+    ad.d("MicroMsg.DownloadReporter", "kv16099, sceneId = %d, areaId = %d, positionId = %d, actionId = %d, appId = %s,noticeId = %s, extInfo = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, paramString2, paramString3 });
+    h.vKh.f(16099, new Object[] { Integer.valueOf(aUu()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, paramString2, paramString3 });
+    AppMethodBeat.o(8921);
   }
   
-  public static a Y(JSONObject paramJSONObject)
+  public static int aUu()
   {
-    AppMethodBeat.i(35546);
-    a locala = new a();
-    locala.appName = paramJSONObject.optString("task_name");
-    locala.downloadUrl = paramJSONObject.optString("task_url");
-    locala.laB = paramJSONObject.optString("alternative_url");
-    locala.laC = paramJSONObject.optLong("task_size");
-    locala.laD = paramJSONObject.optString("file_md5");
-    locala.extInfo = paramJSONObject.optString("extInfo");
-    locala.fileType = bo.getInt(paramJSONObject.optString("fileType"), 0);
-    locala.appId = paramJSONObject.optString("appid");
-    locala.packageName = paramJSONObject.optString("packageName");
-    locala.scene = paramJSONObject.optInt("scene", 1000);
-    locala.cvQ = paramJSONObject.optInt("downloader_type", 1);
-    locala.kYZ = paramJSONObject.optBoolean("download_in_wifi", false);
-    locala.kZB = paramJSONObject.optInt("download_type", 1);
-    locala.kZy = paramJSONObject.optInt("uiarea");
-    locala.kZz = paramJSONObject.optInt("notice_id");
-    locala.kZA = paramJSONObject.optInt("ssid");
-    AppMethodBeat.o(35546);
-    return locala;
+    AppMethodBeat.i(8922);
+    if (ay.isWifi(aj.getContext()))
+    {
+      AppMethodBeat.o(8922);
+      return 0;
+    }
+    if (ay.is4G(aj.getContext()))
+    {
+      AppMethodBeat.o(8922);
+      return 4;
+    }
+    if (ay.is3G(aj.getContext()))
+    {
+      AppMethodBeat.o(8922);
+      return 3;
+    }
+    if (ay.is2G(aj.getContext()))
+    {
+      AppMethodBeat.o(8922);
+      return 2;
+    }
+    AppMethodBeat.o(8922);
+    return 1;
   }
   
-  public final boolean isValid()
+  public static String eP(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(35548);
-    if (!bo.isNullOrNil(this.downloadUrl))
+    AppMethodBeat.i(8923);
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      AppMethodBeat.o(35548);
-      return true;
+      localJSONObject.put(paramString1, paramString2);
+      label21:
+      paramString1 = "";
+      try
+      {
+        paramString2 = URLEncoder.encode(localJSONObject.toString(), "utf-8");
+        paramString1 = paramString2;
+      }
+      catch (UnsupportedEncodingException paramString2)
+      {
+        label36:
+        break label36;
+      }
+      AppMethodBeat.o(8923);
+      return paramString1;
     }
-    AppMethodBeat.o(35548);
-    return false;
+    catch (JSONException paramString1)
+    {
+      break label21;
+    }
+  }
+  
+  public static int zU(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 3: 
+    case 5: 
+    default: 
+      return 0;
+    case 2: 
+      return 1002;
+    case 4: 
+      return 1003;
+    }
+    return 1004;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.b.a
  * JD-Core Version:    0.7.0.1
  */

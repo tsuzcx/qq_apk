@@ -8,11 +8,12 @@ import android.widget.BaseAdapter;
 import android.widget.Gallery.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.x;
+import com.tencent.mm.compatible.util.Exif;
+import com.tencent.mm.platformtools.u;
 import com.tencent.mm.plugin.gif.MMAnimateView;
-import com.tencent.mm.plugin.gif.f;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.r;
+import com.tencent.mm.plugin.gif.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.t;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 
 final class ShowImageUI$a
@@ -37,29 +38,40 @@ final class ShowImageUI$a
     return paramInt;
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public final View getView(int paramInt, final View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(34995);
-    if (r.aoY(this.imagePath))
+    AppMethodBeat.i(39191);
+    if (t.aFm(this.imagePath))
     {
       localObject = paramViewGroup.getContext();
       paramViewGroup = this.imagePath;
-      new f(paramViewGroup);
+      new com.tencent.mm.plugin.gif.f(paramViewGroup);
       if ((paramView == null) || (!(paramView instanceof MMAnimateView))) {}
       for (paramView = new MMAnimateView((Context)localObject);; paramView = (MMAnimateView)paramView)
       {
-        paramView.eL(paramViewGroup, paramViewGroup);
-        paramView.a(paramViewGroup, new ShowImageUI.a.1(this, paramView));
+        paramView.gD(paramViewGroup, paramViewGroup);
+        paramView.a(paramViewGroup, new k()
+        {
+          public final void invalidate()
+          {
+            AppMethodBeat.i(39190);
+            paramView.invalidate();
+            AppMethodBeat.o(39190);
+          }
+        });
         paramView.stop();
         paramView.start();
-        AppMethodBeat.o(34995);
+        AppMethodBeat.o(39191);
         return paramView;
       }
     }
-    Object localObject = x.wx(this.imagePath);
+    Object localObject = u.BA(this.imagePath);
+    paramInt = Exif.fromFile(this.imagePath).getOrientationInDegree();
+    ad.d("MicroMsg.ShowImageUI", "imagePath : %s degree : %d", new Object[] { this.imagePath, Integer.valueOf(paramInt) });
+    localObject = com.tencent.mm.sdk.platformtools.f.a((Bitmap)localObject, paramInt);
     if (localObject == null)
     {
-      ab.w("MicroMsg.ShowImageUI", "get image fail");
+      ad.w("MicroMsg.ShowImageUI", "get image fail");
       if (paramView != null)
       {
         localObject = paramView;
@@ -67,32 +79,32 @@ final class ShowImageUI$a
       }
       else
       {
-        localObject = View.inflate(paramViewGroup.getContext(), 2130970737, null);
+        localObject = View.inflate(paramViewGroup.getContext(), 2131495442, null);
       }
-      ((ImageView)((View)localObject).findViewById(2131822243)).setImageResource(2131231253);
+      ((ImageView)((View)localObject).findViewById(2131300943)).setImageResource(2131690066);
       ((View)localObject).setLayoutParams(new Gallery.LayoutParams(-1, -1));
-      AppMethodBeat.o(34995);
+      AppMethodBeat.o(39191);
       return localObject;
     }
     paramViewGroup = paramViewGroup.getContext();
     if ((paramView == null) || (!(paramView instanceof MultiTouchImageView))) {
-      paramView = new MultiTouchImageView(paramViewGroup, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+      paramView = new MultiTouchImageView(paramViewGroup, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), (byte)0);
     }
     for (;;)
     {
       paramView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
       paramView.setImageBitmap((Bitmap)localObject);
       paramView.setMaxZoomDoubleTab(true);
-      AppMethodBeat.o(34995);
+      AppMethodBeat.o(39191);
       return paramView;
       paramView = (MultiTouchImageView)paramView;
-      paramView.cb(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
+      paramView.cH(((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ShowImageUI.a
  * JD-Core Version:    0.7.0.1
  */

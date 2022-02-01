@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class tk
   extends b
 {
-  public tk.a cJR;
+  public a dyM;
   
   public tk()
   {
@@ -15,16 +15,22 @@ public final class tk
   
   private tk(byte paramByte)
   {
-    AppMethodBeat.i(15807);
-    this.cJR = new tk.a();
-    this.ymq = false;
+    AppMethodBeat.i(125638);
+    this.dyM = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15807);
+    AppMethodBeat.o(125638);
+  }
+  
+  public static final class a
+  {
+    public String dgg;
+    public String dpC;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.tk
  * JD-Core Version:    0.7.0.1
  */

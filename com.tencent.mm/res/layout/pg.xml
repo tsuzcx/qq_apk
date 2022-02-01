@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/go"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/azw" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/radio_off" />
-    <TextView android:textSize="@dimen/m2" android:textColor="#ff636363" android:id="@id/rc" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    <include layout="@layout/o5" style="@style/gk" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/al7" android:background="@drawable/l8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="0.0dip" style="@style/gp">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/ap0" android:background="@raw/voip_voicecall" style="@style/h3" />
+        <TextView android:id="@id/ap1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bq" android:includeFontPadding="false" style="@style/yo" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/ao1" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="@dimen/jn" android:src="@drawable/afx" />
 </LinearLayout>

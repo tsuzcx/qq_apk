@@ -27,7 +27,7 @@ public class FlacSeekTable
   
   private static int binarySearchFloor(long[] paramArrayOfLong, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(128527);
+    AppMethodBeat.i(114280);
     int j = Arrays.binarySearch(paramArrayOfLong, paramLong);
     int i;
     if (j < 0) {
@@ -36,21 +36,21 @@ public class FlacSeekTable
     while (paramBoolean2)
     {
       i = Math.max(0, i);
-      AppMethodBeat.o(128527);
+      AppMethodBeat.o(114280);
       return i;
       i = j;
       if (!paramBoolean1) {
         i = j - 1;
       }
     }
-    AppMethodBeat.o(128527);
+    AppMethodBeat.o(114280);
     return i;
   }
   
   private static boolean seekToFirstFrame(Parsable paramParsable)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(128526);
+    AppMethodBeat.i(114279);
     byte[] arrayOfByte1 = new byte[1];
     byte[] arrayOfByte2 = new byte[3];
     int i = 0;
@@ -73,7 +73,7 @@ public class FlacSeekTable
           }
         }
       }
-      AppMethodBeat.o(128526);
+      AppMethodBeat.o(114279);
       return bool1;
       label93:
       paramParsable.readBytes(arrayOfByte1, 0, 1);
@@ -87,7 +87,7 @@ public class FlacSeekTable
   
   private static boolean seekToFlac(Parsable paramParsable)
   {
-    AppMethodBeat.i(128524);
+    AppMethodBeat.i(114277);
     byte[] arrayOfByte = new byte[4];
     paramParsable.readBytes(arrayOfByte, 0, 4);
     if ((arrayOfByte[0] == 73) && (arrayOfByte[1] == 68) && (arrayOfByte[2] == 51))
@@ -98,16 +98,16 @@ public class FlacSeekTable
     }
     if ((arrayOfByte[0] == 102) && (arrayOfByte[1] == 76) && (arrayOfByte[2] == 97) && (arrayOfByte[3] == 67))
     {
-      AppMethodBeat.o(128524);
+      AppMethodBeat.o(114277);
       return true;
     }
-    AppMethodBeat.o(128524);
+    AppMethodBeat.o(114277);
     return false;
   }
   
-  private static boolean walkThrough(Parsable paramParsable, FlacSeekTable.BlockHandler... paramVarArgs)
+  private static boolean walkThrough(Parsable paramParsable, BlockHandler... paramVarArgs)
   {
-    AppMethodBeat.i(128525);
+    AppMethodBeat.i(114278);
     byte[] arrayOfByte1 = new byte[1];
     byte[] arrayOfByte2 = new byte[3];
     HashSet localHashSet = new HashSet();
@@ -122,7 +122,7 @@ public class FlacSeekTable
       {
         if (i < k)
         {
-          FlacSeekTable.BlockHandler localBlockHandler = paramVarArgs[i];
+          BlockHandler localBlockHandler = paramVarArgs[i];
           bool = localBlockHandler.handle(paramParsable, j & 0x7F);
           if (bool) {
             localHashSet.add(Integer.valueOf(localBlockHandler.hashCode()));
@@ -146,67 +146,132 @@ public class FlacSeekTable
     label166:
     if (localHashSet.size() == paramVarArgs.length)
     {
-      AppMethodBeat.o(128525);
+      AppMethodBeat.o(114278);
       return true;
     }
-    AppMethodBeat.o(128525);
+    AppMethodBeat.o(114278);
     return false;
   }
   
   public long[] getOffsetRangeOfSample(int paramInt)
   {
-    AppMethodBeat.i(128521);
+    AppMethodBeat.i(114274);
     paramInt = binarySearchFloor(this.sampleNumbers, paramInt, true, true);
     if (paramInt + 1 >= this.offsets.length)
     {
       l1 = this.firstFrameOffset;
       l2 = this.offsets[paramInt];
-      AppMethodBeat.o(128521);
+      AppMethodBeat.o(114274);
       return new long[] { l1 + l2, -1L };
     }
     long l1 = this.firstFrameOffset;
     long l2 = this.offsets[paramInt];
     long l3 = this.firstFrameOffset;
     long l4 = this.offsets[(paramInt + 1)];
-    AppMethodBeat.o(128521);
+    AppMethodBeat.o(114274);
     return new long[] { l1 + l2, l3 + l4 };
   }
   
   public void parse(IDataSource paramIDataSource)
   {
-    AppMethodBeat.i(128522);
+    AppMethodBeat.i(114275);
     ParsableInputStreamWrapper localParsableInputStreamWrapper = new ParsableInputStreamWrapper(paramIDataSource);
     if (!seekToFlac(localParsableInputStreamWrapper))
     {
-      AppMethodBeat.o(128522);
+      AppMethodBeat.o(114275);
       return;
     }
     if (this.sampleRate == 0)
     {
-      paramIDataSource = new FlacSeekTable.BlockHandler[2];
-      paramIDataSource[0] = new FlacSeekTable.SeektableHandler(this);
-      paramIDataSource[1] = new FlacSeekTable.StreamInfoHandler(this);
+      paramIDataSource = new BlockHandler[2];
+      paramIDataSource[0] = new SeektableHandler();
+      paramIDataSource[1] = new StreamInfoHandler();
     }
     while (!walkThrough(localParsableInputStreamWrapper, paramIDataSource))
     {
       paramIDataSource = new InvalidBoxException("lack one or more critical BLOCK(s) to create seek table!");
-      AppMethodBeat.o(128522);
+      AppMethodBeat.o(114275);
       throw paramIDataSource;
-      paramIDataSource = new FlacSeekTable.BlockHandler[1];
-      paramIDataSource[0] = new FlacSeekTable.SeektableHandler(this);
+      paramIDataSource = new BlockHandler[1];
+      paramIDataSource[0] = new SeektableHandler();
     }
-    AppMethodBeat.o(128522);
+    AppMethodBeat.o(114275);
   }
   
   public long seek(long paramLong)
   {
-    AppMethodBeat.i(128523);
+    AppMethodBeat.i(114276);
     int i = (int)(Math.round(paramLong / 1000.0D) * this.sampleRate);
     i = binarySearchFloor(this.sampleNumbers, i, true, true);
     paramLong = this.firstFrameOffset;
     long l = this.offsets[i];
-    AppMethodBeat.o(128523);
+    AppMethodBeat.o(114276);
     return l + paramLong;
+  }
+  
+  static abstract interface BlockHandler
+  {
+    public abstract boolean handle(Parsable paramParsable, int paramInt);
+  }
+  
+  class SeektableHandler
+    implements FlacSeekTable.BlockHandler
+  {
+    SeektableHandler() {}
+    
+    public boolean handle(Parsable paramParsable, int paramInt)
+    {
+      int i = 0;
+      AppMethodBeat.i(114272);
+      if (paramInt != 3)
+      {
+        AppMethodBeat.o(114272);
+        return false;
+      }
+      byte[] arrayOfByte = new byte[3];
+      paramParsable.readBytes(arrayOfByte, 0, 3);
+      int j = BytesUtil.from(arrayOfByte) / 18;
+      FlacSeekTable.access$002(FlacSeekTable.this, new long[j]);
+      FlacSeekTable.access$102(FlacSeekTable.this, new long[j]);
+      paramInt = i;
+      while (paramInt < j)
+      {
+        FlacSeekTable.this.sampleNumbers[paramInt] = paramParsable.readLong();
+        FlacSeekTable.this.offsets[paramInt] = paramParsable.readLong();
+        paramParsable.skip(2L);
+        paramInt += 1;
+      }
+      if (!FlacSeekTable.access$200(paramParsable))
+      {
+        paramParsable = new InvalidBoxException("can't find audio frame!");
+        AppMethodBeat.o(114272);
+        throw paramParsable;
+      }
+      FlacSeekTable.access$302(FlacSeekTable.this, paramParsable.tell() - 2L);
+      AppMethodBeat.o(114272);
+      return true;
+    }
+  }
+  
+  class StreamInfoHandler
+    implements FlacSeekTable.BlockHandler
+  {
+    StreamInfoHandler() {}
+    
+    public boolean handle(Parsable paramParsable, int paramInt)
+    {
+      AppMethodBeat.i(114282);
+      if (paramInt != 0)
+      {
+        AppMethodBeat.o(114282);
+        return false;
+      }
+      paramParsable.skip(13L);
+      paramParsable.readBytes(new byte[3], 0, 3);
+      paramParsable.skip(21L);
+      AppMethodBeat.o(114282);
+      return true;
+    }
   }
 }
 

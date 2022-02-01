@@ -11,9 +11,9 @@ public class DefaultDrawActionArg
   
   static
   {
-    AppMethodBeat.i(103317);
-    CREATOR = new DefaultDrawActionArg.1();
-    AppMethodBeat.o(103317);
+    AppMethodBeat.i(145000);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145000);
   }
   
   public DefaultDrawActionArg() {}

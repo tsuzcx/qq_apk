@@ -9,21 +9,23 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class a
 {
-  private Map<Class, b> YA = new ConcurrentHashMap();
-  private byte[] YB = new byte[0];
-  private com.tencent.mm.vending.a.a<Object> YC = new com.tencent.mm.vending.a.a()
+  private com.tencent.mm.vending.e.b abY = new com.tencent.mm.vending.e.b();
+  private com.tencent.mm.vending.e.b<com.tencent.mm.vending.a.c> abZ = new com.tencent.mm.vending.e.b();
+  private Map<Class, b> aca = new ConcurrentHashMap();
+  private byte[] acb = new byte[0];
+  private com.tencent.mm.vending.a.a<Object> acc = new com.tencent.mm.vending.a.a()
   {
-    protected final Object b(Class<?> paramAnonymousClass)
+    protected final Object h(Class<?> paramAnonymousClass)
     {
       b localb = (b)a.a(a.this).get(paramAnonymousClass);
       Object localObject;
       if (localb != null)
       {
         b.a(localb, true);
-        localObject = localb.lu();
+        localObject = localb.mb();
         b.a(localb, false);
         if (b.a(localb)) {
-          b.a(localb, J(paramAnonymousClass));
+          b.a(localb, S(paramAnonymousClass));
         }
       }
       else
@@ -33,49 +35,47 @@ public abstract class a
       return localObject;
     }
   };
-  private AtomicBoolean YD = new AtomicBoolean(false);
-  private boolean YE = false;
-  private Map<Class, com.tencent.mm.vending.b.c<Object>> YF = new HashMap();
-  private com.tencent.mm.vending.d.a YG;
-  private Context YH;
-  private com.tencent.mm.vending.e.b Yy = new com.tencent.mm.vending.e.b();
-  private com.tencent.mm.vending.e.b<com.tencent.mm.vending.a.c> Yz = new com.tencent.mm.vending.e.b();
+  private AtomicBoolean acd = new AtomicBoolean(false);
+  private volatile boolean ace = false;
+  private Map<Class, com.tencent.mm.vending.b.c<Object>> acf = new HashMap();
+  private com.tencent.mm.vending.d.a acg;
+  private Context ach;
   
   public a()
   {
-    this.Yz.a(this.YC);
-    this.YC.a(new com.tencent.mm.vending.a.b() {});
+    this.abZ.a(this.acc);
+    this.acc.a(new com.tencent.mm.vending.a.b() {});
   }
   
-  public final void a(Intent paramIntent)
+  public final void c(Intent paramIntent)
   {
-    this.YG = com.tencent.mm.vending.d.a.b(paramIntent);
+    this.acg = com.tencent.mm.vending.d.a.d(paramIntent);
   }
   
-  final void lt()
+  final void ma()
   {
-    synchronized (this.YB)
+    synchronized (this.acb)
     {
-      this.YE = true;
-      this.YB.notify();
+      this.ace = true;
+      this.acb.notify();
       return;
     }
   }
   
   protected final void onCreate()
   {
-    this.YD.set(true);
+    this.acd.set(true);
   }
   
   protected final void onDestroy()
   {
-    this.Yy.lw();
-    this.Yz.lw();
+    this.abY.md();
+    this.abZ.md();
   }
   
   public final void setContext(Context paramContext)
   {
-    this.YH = paramContext;
+    this.ach = paramContext;
   }
 }
 

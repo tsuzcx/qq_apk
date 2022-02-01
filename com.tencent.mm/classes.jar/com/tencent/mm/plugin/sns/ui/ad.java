@@ -1,154 +1,192 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.Intent;
-import android.os.Bundle;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.Spanned;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.t;
-import com.tencent.mm.modelsns.b;
-import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ax;
-import com.tencent.mm.plugin.sns.model.ay;
-import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.bap;
-import com.tencent.mm.protocal.protobuf.cfm;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.e.j;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.kiss.widget.textview.PLSysTextView;
+import com.tencent.mm.kiss.widget.textview.SysTextView;
+import com.tencent.mm.pluginsdk.ui.span.f;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class ad
-  implements y
+  implements View.OnTouchListener
 {
-  private String appName = "";
-  private MMActivity cmc;
-  private String cwc = "";
-  private int rGd;
-  private b rGj = null;
-  private boolean rHD = false;
-  private boolean rHE = false;
-  private WXMediaMessage rHF = null;
-  private String rIT = "";
-  private boolean rIU = false;
+  private static p xoB;
+  private static TextView xoC;
   
-  public ad(MMActivity paramMMActivity, boolean paramBoolean)
+  public static void dzp()
   {
-    this.cmc = paramMMActivity;
-    this.rIU = paramBoolean;
+    AppMethodBeat.i(97958);
+    if (xoB != null)
+    {
+      xoB.setIsPressed(false);
+      xoC.invalidate();
+      xoC = null;
+      xoB = null;
+    }
+    AppMethodBeat.o(97958);
   }
   
-  public final void V(Bundle paramBundle)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(38358);
-    this.rGj = b.w(this.cmc.getIntent());
-    this.rIT = this.cmc.getIntent().getStringExtra(e.j.yVi);
-    this.cwc = bo.bf(this.cmc.getIntent().getStringExtra("Ksnsupload_appid"), "");
-    this.appName = bo.bf(this.cmc.getIntent().getStringExtra("Ksnsupload_appname"), "");
-    this.rHD = this.cmc.getIntent().getBooleanExtra("KThrid_app", false);
-    this.rHE = this.cmc.getIntent().getBooleanExtra("KSnsAction", false);
-    this.rGd = this.cmc.getIntent().getIntExtra("Ksnsupload_source", 0);
-    paramBundle = this.cmc.getIntent().getBundleExtra("Ksnsupload_timeline");
-    if (paramBundle != null) {
-      this.rHF = new SendMessageToWX.Req(paramBundle).message;
-    }
-    AppMethodBeat.o(38358);
-  }
-  
-  public final void W(Bundle paramBundle) {}
-  
-  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bap parambap, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
-  {
-    AppMethodBeat.i(38359);
-    if (this.cmc.isFinishing())
+    AppMethodBeat.i(97957);
+    TextView localTextView = (TextView)paramView;
+    localTextView.getTag();
+    CharSequence localCharSequence = localTextView.getText();
+    Object localObject = localTextView.getLayout();
+    paramView = (View)localObject;
+    if (localObject == null)
     {
-      AppMethodBeat.o(38359);
-      return false;
-    }
-    paramString2 = new ay(2);
-    paramPInt.value = paramString2.ayi;
-    if (paramInt3 > a.raX) {
-      paramString2.DS(2);
-    }
-    paramPInt = new LinkedList();
-    if (paramList1 != null)
-    {
-      new LinkedList();
-      List localList = t.aac();
-      paramList1 = paramList1.iterator();
-      while (paramList1.hasNext())
-      {
-        String str = (String)paramList1.next();
-        if (!localList.contains(str))
-        {
-          cfm localcfm = new cfm();
-          localcfm.jJA = str;
-          paramPInt.add(localcfm);
-        }
+      paramView = (View)localObject;
+      if ((localTextView instanceof SysTextView)) {
+        paramView = ((SysTextView)localTextView).getTvLayout();
       }
     }
-    if (paramBoolean) {
-      paramString2.DX(1);
+    int i;
+    if (((localCharSequence instanceof Spannable)) && (paramView != null))
+    {
+      localObject = (Spannable)localCharSequence;
+      i = paramMotionEvent.getAction();
+      paramView = localTextView.getLayout();
+      if ((paramView != null) || (!(localTextView instanceof SysTextView))) {
+        break label642;
+      }
+      paramView = ((SysTextView)localTextView).getTvLayout();
     }
+    label642:
     for (;;)
     {
-      if (parami != null) {
-        paramString2.go(parami.token, parami.xsy);
-      }
-      paramString2.DW(this.rGd);
-      if (this.rHD) {
-        paramString2.DW(5);
-      }
-      if ((this.rHE) && (this.rHF != null))
+      localTextView.invalidate();
+      if ((localTextView != null) && (localObject != null) && (f.a(localTextView, (Spanned)localObject)))
       {
-        paramString2.aaM(this.rHF.mediaTagName);
-        paramString2.aj(this.cwc, this.rHF.messageExt, this.rHF.messageAction);
+        AppMethodBeat.o(97957);
+        return false;
       }
-      paramString2.g(null, null, null, paramInt4, paramInt5);
-      paramString2.aaL(paramString1).a(parambap).av(paramPInt).DU(paramInt1).DV(paramInt2).dc(paramList2);
-      paramInt1 = paramString2.commit();
-      if (this.rGj != null)
+      if ((i == 1) || (i == 0) || (i == 2))
       {
-        this.rGj.lX(paramInt1);
-        g.roZ.c(this.rGj);
+        int j = (int)paramMotionEvent.getX();
+        i = (int)paramMotionEvent.getY();
+        int k;
+        if ((localTextView instanceof PLSysTextView))
+        {
+          if (j >= ((PLSysTextView)localTextView).getHorizontalDrawOffset())
+          {
+            k = paramView.getWidth();
+            if (j <= ((PLSysTextView)localTextView).getHorizontalDrawOffset() + k) {}
+          }
+          else
+          {
+            AppMethodBeat.o(97957);
+            return false;
+          }
+          if (i >= ((PLSysTextView)localTextView).getVerticalDrawOffset())
+          {
+            k = paramView.getHeight();
+            if (i <= ((PLSysTextView)localTextView).getVerticalDrawOffset() + k) {}
+          }
+          else
+          {
+            AppMethodBeat.o(97957);
+            return false;
+          }
+        }
+        else if ((localTextView instanceof TextView))
+        {
+          if ((j < localTextView.getTotalPaddingLeft()) || (j > paramView.getWidth() + localTextView.getTotalPaddingLeft()))
+          {
+            AppMethodBeat.o(97957);
+            return false;
+          }
+          if ((i < localTextView.getTotalPaddingTop()) || (i > paramView.getHeight() + localTextView.getTotalPaddingTop()))
+          {
+            AppMethodBeat.o(97957);
+            return false;
+          }
+        }
+        if ((localTextView instanceof PLSysTextView))
+        {
+          j -= ((PLSysTextView)localTextView).getHorizontalDrawOffset();
+          i -= ((PLSysTextView)localTextView).getVerticalDrawOffset();
+          k = localTextView.getScrollX();
+          j = paramView.getOffsetForHorizontal(paramView.getLineForVertical(i + localTextView.getScrollY()), j + k);
+          i = paramMotionEvent.getAction();
+          paramView = (p[])((Spannable)localObject).getSpans(j, j, p.class);
+          j = paramView.length - 1;
+          com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.MMOnTouchListener", " action span Len: " + paramView.length);
+          if ((localTextView.getLayout() == null) && ((localTextView instanceof SysTextView))) {
+            ((SysTextView)localTextView).getTvLayout();
+          }
+          if (paramView.length == 0) {
+            break label617;
+          }
+          if (i != 1) {
+            break label570;
+          }
+          paramView[j].onClick(localTextView);
+          new ap().postDelayed(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(97956);
+              ad.dzp();
+              AppMethodBeat.o(97956);
+            }
+          }, 300L);
+          i = 1;
+        }
+        for (;;)
+        {
+          if (i == 0) {
+            break label625;
+          }
+          AppMethodBeat.o(97957);
+          return true;
+          if ((localTextView instanceof TextView))
+          {
+            j -= localTextView.getTotalPaddingLeft();
+            i -= localTextView.getTotalPaddingTop();
+            break;
+          }
+          j -= localTextView.getPaddingLeft();
+          i -= localTextView.getPaddingTop();
+          break;
+          label570:
+          if ((i == 0) || (i == 2) || (i == 3))
+          {
+            dzp();
+            xoB = paramView[j];
+            xoC = localTextView;
+            paramView[j].setIsPressed(true);
+            localTextView.invalidate();
+            i = 1;
+            continue;
+            label617:
+            dzp();
+          }
+          else
+          {
+            i = 0;
+          }
+        }
       }
-      this.cmc.setResult(-1);
-      ag.cpb().cnP();
-      this.cmc.finish();
-      AppMethodBeat.o(38359);
-      return true;
-      paramString2.DX(0);
+      label625:
+      dzp();
+      AppMethodBeat.o(97957);
+      return false;
+      AppMethodBeat.o(97957);
+      return false;
     }
-  }
-  
-  public final boolean ctu()
-  {
-    return this.rIU;
-  }
-  
-  public final View ctv()
-  {
-    return null;
-  }
-  
-  public final boolean ctw()
-  {
-    return false;
-  }
-  
-  public final boolean j(int paramInt, Intent paramIntent)
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ad
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 
 public final class v
 {
-  public static int d(ViewGroup paramViewGroup)
+  public static int b(ViewGroup paramViewGroup)
   {
     if (Build.VERSION.SDK_INT >= 18) {
       return paramViewGroup.getLayoutMode();
@@ -15,7 +15,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.view.v
  * JD-Core Version:    0.7.0.1
  */

@@ -23,9 +23,9 @@ public abstract class DataLayerView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected abstract int cqG();
+  protected abstract int dvF();
   
-  protected abstract int cqH();
+  protected abstract int dvG();
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
@@ -57,11 +57,11 @@ public abstract class DataLayerView
     {
       setMeasuredDimension(paramInt1, paramInt2);
       return;
-      paramInt1 = cqH();
+      paramInt1 = dvG();
       break;
       paramInt1 = getSuggestedMinimumWidth();
       break;
-      paramInt2 = cqG();
+      paramInt2 = dvF();
       continue;
       paramInt2 = getSuggestedMinimumHeight();
     }
@@ -74,7 +74,7 @@ public abstract class DataLayerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.baseview.DataLayerView
  * JD-Core Version:    0.7.0.1
  */

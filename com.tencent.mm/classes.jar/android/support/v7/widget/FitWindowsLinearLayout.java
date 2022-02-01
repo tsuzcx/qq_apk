@@ -9,7 +9,7 @@ public class FitWindowsLinearLayout
   extends LinearLayout
   implements aa
 {
-  private aa.a adC;
+  private aa.a akJ;
   
   public FitWindowsLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -18,20 +18,20 @@ public class FitWindowsLinearLayout
   
   protected boolean fitSystemWindows(Rect paramRect)
   {
-    if (this.adC != null) {
-      this.adC.f(paramRect);
+    if (this.akJ != null) {
+      this.akJ.f(paramRect);
     }
     return super.fitSystemWindows(paramRect);
   }
   
   public void setOnFitSystemWindowsListener(aa.a parama)
   {
-    this.adC = parama;
+    this.akJ = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v7.widget.FitWindowsLinearLayout
  * JD-Core Version:    0.7.0.1
  */

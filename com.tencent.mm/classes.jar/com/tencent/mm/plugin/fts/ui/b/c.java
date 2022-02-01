@@ -11,9 +11,9 @@ public final class c
 {
   public final e a(Context paramContext, e.b paramb, int paramInt)
   {
-    AppMethodBeat.i(62042);
+    AppMethodBeat.i(112135);
     paramContext = new com.tencent.mm.plugin.fts.ui.d.c(paramContext, paramb, paramInt);
-    AppMethodBeat.o(62042);
+    AppMethodBeat.o(112135);
     return paramContext;
   }
   
@@ -29,7 +29,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.b.c
  * JD-Core Version:    0.7.0.1
  */

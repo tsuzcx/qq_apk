@@ -12,9 +12,9 @@ import java.util.Set;
 
 class ClassesInfoCache
 {
-  static ClassesInfoCache bY = new ClassesInfoCache();
-  private final Map<Class, CallbackInfo> bZ = new HashMap();
-  private final Map<Class, Boolean> ca = new HashMap();
+  static ClassesInfoCache cb = new ClassesInfoCache();
+  private final Map<Class, CallbackInfo> cc = new HashMap();
+  private final Map<Class, Boolean> cd = new HashMap();
   
   private CallbackInfo a(Class paramClass, Method[] paramArrayOfMethod)
   {
@@ -22,9 +22,9 @@ class ClassesInfoCache
     HashMap localHashMap = new HashMap();
     if (localObject1 != null)
     {
-      localObject1 = f((Class)localObject1);
+      localObject1 = c((Class)localObject1);
       if (localObject1 != null) {
-        localHashMap.putAll(((CallbackInfo)localObject1).cc);
+        localHashMap.putAll(((CallbackInfo)localObject1).cf);
       }
     }
     localObject1 = paramClass.getInterfaces();
@@ -34,7 +34,7 @@ class ClassesInfoCache
     Object localObject3;
     while (i < j)
     {
-      localObject2 = f(localObject1[i]).cc.entrySet().iterator();
+      localObject2 = c(localObject1[i]).cf.entrySet().iterator();
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (Map.Entry)((Iterator)localObject2).next();
@@ -65,7 +65,7 @@ class ClassesInfoCache
         break;
       }
       throw new IllegalArgumentException("invalid parameter type. Must be one and instanceof LifecycleOwner");
-      paramArrayOfMethod = e(paramClass);
+      paramArrayOfMethod = b(paramClass);
     }
     label339:
     label379:
@@ -93,8 +93,8 @@ class ClassesInfoCache
         j += 1;
         break;
         paramArrayOfMethod = new CallbackInfo(localHashMap);
-        this.bZ.put(paramClass, paramArrayOfMethod);
-        this.ca.put(paramClass, Boolean.valueOf(bool));
+        this.cc.put(paramClass, paramArrayOfMethod);
+        this.cd.put(paramClass, Boolean.valueOf(bool));
         return paramArrayOfMethod;
       }
     }
@@ -113,7 +113,7 @@ class ClassesInfoCache
     }
   }
   
-  private static Method[] e(Class paramClass)
+  private static Method[] b(Class paramClass)
   {
     try
     {
@@ -126,12 +126,12 @@ class ClassesInfoCache
     }
   }
   
-  final boolean d(Class paramClass)
+  final boolean a(Class paramClass)
   {
-    if (this.ca.containsKey(paramClass)) {
-      return ((Boolean)this.ca.get(paramClass)).booleanValue();
+    if (this.cd.containsKey(paramClass)) {
+      return ((Boolean)this.cd.get(paramClass)).booleanValue();
     }
-    Method[] arrayOfMethod = e(paramClass);
+    Method[] arrayOfMethod = b(paramClass);
     int j = arrayOfMethod.length;
     int i = 0;
     while (i < j)
@@ -143,13 +143,13 @@ class ClassesInfoCache
       }
       i += 1;
     }
-    this.ca.put(paramClass, Boolean.FALSE);
+    this.cd.put(paramClass, Boolean.FALSE);
     return false;
   }
   
-  final CallbackInfo f(Class paramClass)
+  final CallbackInfo c(Class paramClass)
   {
-    CallbackInfo localCallbackInfo = (CallbackInfo)this.bZ.get(paramClass);
+    CallbackInfo localCallbackInfo = (CallbackInfo)this.cc.get(paramClass);
     if (localCallbackInfo != null) {
       return localCallbackInfo;
     }
@@ -158,24 +158,24 @@ class ClassesInfoCache
   
   static class CallbackInfo
   {
-    final Map<Lifecycle.Event, List<ClassesInfoCache.MethodReference>> cb;
-    final Map<ClassesInfoCache.MethodReference, Lifecycle.Event> cc;
+    final Map<Lifecycle.Event, List<ClassesInfoCache.MethodReference>> ce;
+    final Map<ClassesInfoCache.MethodReference, Lifecycle.Event> cf;
     
     CallbackInfo(Map<ClassesInfoCache.MethodReference, Lifecycle.Event> paramMap)
     {
-      this.cc = paramMap;
-      this.cb = new HashMap();
+      this.cf = paramMap;
+      this.ce = new HashMap();
       Iterator localIterator = paramMap.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         Lifecycle.Event localEvent = (Lifecycle.Event)localEntry.getValue();
-        List localList = (List)this.cb.get(localEvent);
+        List localList = (List)this.ce.get(localEvent);
         paramMap = localList;
         if (localList == null)
         {
           paramMap = new ArrayList();
-          this.cb.put(localEvent, paramMap);
+          this.ce.put(localEvent, paramMap);
         }
         paramMap.add(localEntry.getKey());
       }
@@ -194,7 +194,7 @@ class ClassesInfoCache
           ClassesInfoCache.MethodReference localMethodReference = (ClassesInfoCache.MethodReference)paramList.get(i);
           try
           {
-            switch (localMethodReference.cd)
+            switch (localMethodReference.cg)
             {
             case 0: 
               localMethodReference.mMethod.invoke(paramObject, new Object[0]);
@@ -222,12 +222,12 @@ class ClassesInfoCache
   
   static class MethodReference
   {
-    final int cd;
+    final int cg;
     final Method mMethod;
     
     MethodReference(int paramInt, Method paramMethod)
     {
-      this.cd = paramInt;
+      this.cg = paramInt;
       this.mMethod = paramMethod;
       this.mMethod.setAccessible(true);
     }
@@ -242,13 +242,13 @@ class ClassesInfoCache
           return false;
         }
         paramObject = (MethodReference)paramObject;
-      } while ((this.cd == paramObject.cd) && (this.mMethod.getName().equals(paramObject.mMethod.getName())));
+      } while ((this.cg == paramObject.cg) && (this.mMethod.getName().equals(paramObject.mMethod.getName())));
       return false;
     }
     
     public int hashCode()
     {
-      return this.cd * 31 + this.mMethod.getName().hashCode();
+      return this.cg * 31 + this.mMethod.getName().hashCode();
     }
   }
 }

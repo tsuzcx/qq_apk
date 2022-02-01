@@ -5,9 +5,11 @@ import java.util.List;
 
 public abstract interface a
 {
-  public abstract int dTo();
+  public abstract int fkV();
   
-  public abstract List<c> dTp();
+  public abstract List<c> fkW();
+  
+  public abstract int getEllipsisCount(int paramInt);
   
   public abstract int getLineBaseline(int paramInt);
   
@@ -29,7 +31,7 @@ public abstract interface a
   
   public abstract float getPrimaryHorizontal(int paramInt);
   
-  public abstract int ii(int paramInt1, int paramInt2);
+  public abstract int kf(int paramInt1, int paramInt2);
 }
 
 

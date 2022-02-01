@@ -8,24 +8,24 @@ import android.annotation.TargetApi;
 public class u
   implements Animator.AnimatorListener
 {
-  private boolean DD;
+  private boolean Fs;
   
-  public void eZ() {}
-  
-  public final boolean fs()
+  public final boolean fB()
   {
-    return this.DD;
+    return this.Fs;
   }
+  
+  public void fp() {}
   
   public void onAnimationCancel(Animator paramAnimator)
   {
-    this.DD = true;
+    this.Fs = true;
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!this.DD) {
-      eZ();
+    if (!this.Fs) {
+      fp();
     }
   }
   
@@ -33,7 +33,7 @@ public class u
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    this.DD = false;
+    this.Fs = false;
   }
 }
 

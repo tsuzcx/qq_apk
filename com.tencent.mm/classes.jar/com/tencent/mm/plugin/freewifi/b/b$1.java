@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.freewifi.b;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class b$1
   implements Runnable
@@ -13,19 +13,19 @@ final class b$1
   
   public final void run()
   {
-    AppMethodBeat.i(20668);
+    AppMethodBeat.i(24745);
     Intent localIntent = new Intent();
-    localIntent.putExtra("free_wifi_ap_key", this.mJv);
-    localIntent.putExtra("free_wifi_sessionkey", m.bAg());
+    localIntent.putExtra("free_wifi_ap_key", this.rgB);
+    localIntent.putExtra("free_wifi_sessionkey", m.cvu());
     localIntent.putExtra("free_wifi_source", 6);
     localIntent.addFlags(67108864);
-    d.b(ah.getContext(), "freewifi", ".ui.FreeWifiEntryUI", localIntent);
-    AppMethodBeat.o(20668);
+    d.b(aj.getContext(), "freewifi", ".ui.FreeWifiEntryUI", localIntent);
+    AppMethodBeat.o(24745);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.b.b.1
  * JD-Core Version:    0.7.0.1
  */

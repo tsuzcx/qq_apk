@@ -10,17 +10,17 @@ public class KindaPayServiceModule
 {
   public void configModule()
   {
-    AppMethodBeat.i(144594);
+    AppMethodBeat.i(18706);
     registerView("kMoneyInputText", MMMoneyInputText.class);
     registerNativeModule("TenpayCgi", TenpayCgiImpl.class);
-    AppMethodBeat.o(144594);
+    AppMethodBeat.o(18706);
   }
   
   public void onAppCreate() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.kinda.framework.module.pay.KindaPayServiceModule
  * JD-Core Version:    0.7.0.1
  */

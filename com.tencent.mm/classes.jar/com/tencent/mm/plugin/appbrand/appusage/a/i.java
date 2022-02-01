@@ -1,97 +1,97 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a;
-import com.tencent.mm.ai.b.a;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.c;
+import com.tencent.mm.plugin.appbrand.aa.l.a;
 import com.tencent.mm.plugin.appbrand.report.AppBrandRecommendStatObj;
-import com.tencent.mm.plugin.appbrand.t.e;
-import com.tencent.mm.protocal.protobuf.bkg;
-import com.tencent.mm.protocal.protobuf.brb;
-import com.tencent.mm.protocal.protobuf.brc;
-import com.tencent.mm.protocal.protobuf.bsh;
-import com.tencent.mm.protocal.protobuf.bsj;
-import com.tencent.mm.protocal.protobuf.dp;
-import com.tencent.mm.protocal.protobuf.ts;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.plugin.appbrand.utils.e;
+import com.tencent.mm.protocal.protobuf.bxv;
+import com.tencent.mm.protocal.protobuf.cga;
+import com.tencent.mm.protocal.protobuf.cgb;
+import com.tencent.mm.protocal.protobuf.chl;
+import com.tencent.mm.protocal.protobuf.chn;
+import com.tencent.mm.protocal.protobuf.ec;
+import com.tencent.mm.protocal.protobuf.wq;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
 
 public class i
-  extends a<brc>
+  extends c<cgb>
 {
   public i(int paramInt, long paramLong1, long paramLong2, AppBrandRecommendStatObj paramAppBrandRecommendStatObj)
   {
-    AppMethodBeat.i(129755);
-    this.rr = a(paramInt, paramLong1, paramLong2, paramAppBrandRecommendStatObj).ado();
-    AppMethodBeat.o(129755);
+    AppMethodBeat.i(44686);
+    this.rr = a(paramInt, paramLong1, paramLong2, paramAppBrandRecommendStatObj).atI();
+    AppMethodBeat.o(44686);
   }
   
   static b.a a(int paramInt, long paramLong1, long paramLong2, AppBrandRecommendStatObj paramAppBrandRecommendStatObj)
   {
-    AppMethodBeat.i(129756);
-    ab.i("MicroMsg.Recommend.CgiRTReportRecommdClick", "clickType:%d, page_stay_time:%d, app_stay_time:%d, recommendStatObj:%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramAppBrandRecommendStatObj.toString() });
+    AppMethodBeat.i(44687);
+    ad.i("MicroMsg.Recommend.CgiRTReportRecommdClick", "clickType:%d, page_stay_time:%d, app_stay_time:%d, recommendStatObj:%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramAppBrandRecommendStatObj.toString() });
     b.a locala = new b.a();
-    brb localbrb = new brb();
-    Object localObject = new bsj();
-    bsh localbsh = new bsh();
-    ((bsj)localObject).bqN = paramAppBrandRecommendStatObj.sessionId;
-    ts localts = new ts();
-    localts.wMo = at.getNetTypeString(ah.getContext());
-    localts.longitude = paramAppBrandRecommendStatObj.cAH;
-    localts.latitude = paramAppBrandRecommendStatObj.cyV;
-    localbrb.xEO = ((bsj)localObject);
-    localbrb.xEP = localbsh;
-    localbsh.type = paramInt;
+    cga localcga = new cga();
+    Object localObject = new chn();
+    chl localchl = new chl();
+    ((chn)localObject).bTj = paramAppBrandRecommendStatObj.sessionId;
+    wq localwq = new wq();
+    localwq.CYL = ay.getNetTypeString(aj.getContext());
+    localwq.longitude = paramAppBrandRecommendStatObj.dqQ;
+    localwq.latitude = paramAppBrandRecommendStatObj.dpb;
+    localcga.EbO = ((chn)localObject);
+    localcga.EbP = localchl;
+    localchl.type = paramInt;
     if (paramInt == 1)
     {
-      localObject = new bkg();
-      ((bkg)localObject).username = paramAppBrandRecommendStatObj.username;
-      ((bkg)localObject).iFH = paramAppBrandRecommendStatObj.iFH;
-      ((bkg)localObject).fBA = System.currentTimeMillis();
-      ((bkg)localObject).iFI = paramAppBrandRecommendStatObj.iFI;
-      ((bkg)localObject).cwc = paramAppBrandRecommendStatObj.cwc;
-      ((bkg)localObject).iFM = paramAppBrandRecommendStatObj.iFM;
-      ((bkg)localObject).position = paramAppBrandRecommendStatObj.position;
-      ((bkg)localObject).xyI = ((int)paramLong1);
-      ((bkg)localObject).wpE = ((int)paramLong2);
-      localbsh.xFI = ((bkg)localObject);
+      localObject = new bxv();
+      ((bxv)localObject).username = paramAppBrandRecommendStatObj.username;
+      ((bxv)localObject).lpv = paramAppBrandRecommendStatObj.lpv;
+      ((bxv)localObject).hea = System.currentTimeMillis();
+      ((bxv)localObject).lpw = paramAppBrandRecommendStatObj.lpw;
+      ((bxv)localObject).dlB = paramAppBrandRecommendStatObj.dlB;
+      ((bxv)localObject).lpA = paramAppBrandRecommendStatObj.lpA;
+      ((bxv)localObject).position = paramAppBrandRecommendStatObj.position;
+      ((bxv)localObject).DUo = ((int)paramLong1);
+      ((bxv)localObject).Cyr = ((int)paramLong2);
+      localchl.EcS = ((bxv)localObject);
     }
     for (;;)
     {
-      locala.fsX = localbrb;
-      locala.fsY = new brc();
+      locala.gUU = localcga;
+      locala.gUV = new cgb();
       locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/rtreportrecommdclick";
       locala.funcId = 2799;
-      AppMethodBeat.o(129756);
+      AppMethodBeat.o(44687);
       return locala;
-      localObject = new dp();
-      ((dp)localObject).username = paramAppBrandRecommendStatObj.username;
-      ((dp)localObject).fBA = System.currentTimeMillis();
-      ((dp)localObject).iFI = paramAppBrandRecommendStatObj.iFI;
-      ((dp)localObject).cwc = paramAppBrandRecommendStatObj.cwc;
-      ((dp)localObject).iFM = paramAppBrandRecommendStatObj.iFM;
-      ((dp)localObject).position = paramAppBrandRecommendStatObj.position;
-      ((dp)localObject).wpE = ((int)paramLong2);
-      localbsh.xFJ = ((dp)localObject);
+      localObject = new ec();
+      ((ec)localObject).username = paramAppBrandRecommendStatObj.username;
+      ((ec)localObject).hea = System.currentTimeMillis();
+      ((ec)localObject).lpw = paramAppBrandRecommendStatObj.lpw;
+      ((ec)localObject).dlB = paramAppBrandRecommendStatObj.dlB;
+      ((ec)localObject).lpA = paramAppBrandRecommendStatObj.lpA;
+      ((ec)localObject).position = paramAppBrandRecommendStatObj.position;
+      ((ec)localObject).Cyr = ((int)paramLong2);
+      localchl.EcT = ((ec)localObject);
     }
   }
   
   public static void b(int paramInt, long paramLong1, long paramLong2, AppBrandRecommendStatObj paramAppBrandRecommendStatObj)
   {
-    AppMethodBeat.i(129757);
+    AppMethodBeat.i(44688);
     if (paramAppBrandRecommendStatObj == null)
     {
-      AppMethodBeat.o(129757);
+      AppMethodBeat.o(44688);
       return;
     }
-    e.aNS().ac(new i.1(paramInt, paramLong1, paramLong2, paramAppBrandRecommendStatObj));
-    AppMethodBeat.o(129757);
+    e.bqm().postToWorker(new i.1(paramInt, paramLong1, paramLong2, paramAppBrandRecommendStatObj));
+    AppMethodBeat.o(44688);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.i
  * JD-Core Version:    0.7.0.1
  */

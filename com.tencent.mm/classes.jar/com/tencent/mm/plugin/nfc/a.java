@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.nfc;
 
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class a
-  implements at
+  implements aw
 {
   public final void clearPluginData(int paramInt) {}
   
-  public final HashMap<Integer, h.d> getBaseDBFactories()
+  public final HashMap<Integer, h.b> getBaseDBFactories()
   {
     return null;
   }
@@ -22,7 +22,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.nfc.a
  * JD-Core Version:    0.7.0.1
  */

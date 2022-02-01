@@ -5,120 +5,157 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bb.l;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.model.az;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.pluginsdk.p;
+import com.tencent.mm.pluginsdk.p.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.ab;
 import java.lang.ref.WeakReference;
 
 public final class a
   extends com.tencent.mm.pluginsdk.ui.b.b
 {
-  b Amd;
-  private d Ame;
-  a Amf;
-  int aug;
-  private View jIo;
+  b Hgo;
+  private d Hgp;
+  a Hgq;
+  int aOQ;
+  private View pf;
   
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(34632);
-    this.aug = 0;
-    this.jIo = null;
+    AppMethodBeat.i(38759);
+    this.aOQ = 0;
+    this.pf = null;
     if (this.view != null)
     {
-      this.jIo = this.view.findViewById(2131821112);
-      this.Ame = new d();
-      this.Ame.Amj = this.jIo;
-      this.Ame.Amk = ((Button)this.view.findViewById(2131821113));
-      this.Ame.Amk.setOnClickListener(new a.1(this));
-      this.jIo.setOnClickListener(new View.OnClickListener()
+      this.pf = this.view.findViewById(2131296508);
+      this.Hgp = new d();
+      this.Hgp.Hgu = this.pf;
+      this.Hgp.Hgv = ((Button)this.view.findViewById(2131296429));
+      this.Hgp.Hgv.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(34629);
-          if ((a.this.Amd != null) && (a.this.Amf != null))
+          AppMethodBeat.i(38755);
+          if ((a.this.Hgo != null) && (a.this.Hgq != null))
           {
-            paramAnonymousView = a.this.Amd.QF(a.this.aug);
-            a.this.Amf.iA(paramAnonymousView.Ami.id, paramAnonymousView.Ami.url);
+            paramAnonymousView = a.this.Hgo.ZW(a.this.aOQ);
+            a.this.Hgq.axa(paramAnonymousView.Hgt.id);
           }
-          AppMethodBeat.o(34629);
+          AppMethodBeat.o(38755);
+        }
+      });
+      this.pf.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(38756);
+          if ((a.this.Hgo != null) && (a.this.Hgq != null))
+          {
+            paramAnonymousView = a.this.Hgo.ZW(a.this.aOQ);
+            a.this.Hgq.lt(paramAnonymousView.Hgt.id, paramAnonymousView.Hgt.url);
+          }
+          AppMethodBeat.o(38756);
         }
       });
     }
-    AppMethodBeat.o(34632);
+    AppMethodBeat.o(38759);
   }
   
-  public final boolean aMK()
+  public final boolean boZ()
   {
-    AppMethodBeat.i(34635);
-    this.Amd = new b((Context)this.vUD.get());
-    this.Amf = new a.3(this);
-    com.tencent.mm.pluginsdk.h.a.a locala = com.tencent.mm.pluginsdk.h.a.a.fV(ah.getContext());
-    if (this.Amd != null)
+    AppMethodBeat.i(38762);
+    this.Hgo = new b((Context)this.BZM.get());
+    this.Hgq = new a()
+    {
+      public final void axa(String paramAnonymousString)
+      {
+        AppMethodBeat.i(38758);
+        com.tencent.mm.pluginsdk.i.a.a.ewQ();
+        az.arV();
+        com.tencent.mm.model.c.apL().c(new l(3, paramAnonymousString));
+        AppMethodBeat.o(38758);
+      }
+      
+      public final void lt(String paramAnonymousString1, String paramAnonymousString2)
+      {
+        AppMethodBeat.i(38757);
+        com.tencent.mm.pluginsdk.i.a.a.ewQ();
+        az.arV();
+        com.tencent.mm.model.c.apL().c(new l(2, paramAnonymousString1));
+        ad.d("MicroMsg.ADBanner", "jump to ".concat(String.valueOf(paramAnonymousString2)));
+        p.a.BNw.a((Context)a.this.BZM.get(), paramAnonymousString2, true);
+        AppMethodBeat.o(38757);
+      }
+    };
+    com.tencent.mm.pluginsdk.i.a.a locala = com.tencent.mm.pluginsdk.i.a.a.hh(aj.getContext());
+    if (this.Hgo != null)
     {
       if (locala != null)
       {
-        this.Amd.Amh = locala;
-        this.Amd.Ku();
-        if ((this.Amd != null) && (this.Amd.getCount() > 0) && (this.Amd.QF(0).a(this.Ame) == 0)) {}
+        this.Hgo.Hgs = locala;
+        this.Hgo.Wd();
+        if ((this.Hgo != null) && (this.Hgo.getCount() > 0) && (this.Hgo.ZW(0).a(this.Hgp) == 0)) {}
         for (int i = 1; i != 0; i = 0)
         {
-          ab.i("MicroMsg.ADBanner", "refreshAndReturnIsVisible[true]");
+          ad.i("MicroMsg.ADBanner", "refreshAndReturnIsVisible[true]");
           setVisibility(0);
-          AppMethodBeat.o(34635);
+          AppMethodBeat.o(38762);
           return true;
         }
       }
       setVisibility(8);
     }
     setVisibility(8);
-    AppMethodBeat.o(34635);
+    AppMethodBeat.o(38762);
     return false;
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(34633);
-    if (g.RJ().QU())
+    AppMethodBeat.i(38760);
+    if (g.afz().aeI())
     {
-      aw.aaz();
-      com.tencent.mm.model.c.Ru().b(this.Amd);
+      az.arV();
+      com.tencent.mm.model.c.afk().b(this.Hgo);
     }
-    AppMethodBeat.o(34633);
+    AppMethodBeat.o(38760);
   }
   
   public final int getLayoutId()
   {
-    return 2130968645;
+    return 2131492953;
   }
   
   public final void release()
   {
-    this.Amd = null;
+    this.Hgo = null;
   }
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(34634);
-    if (this.jIo != null) {
-      this.jIo.setVisibility(paramInt);
+    AppMethodBeat.i(38761);
+    if (this.pf != null) {
+      this.pf.setVisibility(paramInt);
     }
-    AppMethodBeat.o(34634);
+    AppMethodBeat.o(38761);
   }
   
   public static abstract interface a
   {
-    public abstract void ahA(String paramString);
+    public abstract void axa(String paramString);
     
-    public abstract void iA(String paramString1, String paramString2);
+    public abstract void lt(String paramString1, String paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.a
  * JD-Core Version:    0.7.0.1
  */

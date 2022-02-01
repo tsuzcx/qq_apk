@@ -1,68 +1,39 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
-import com.tenpay.android.wechat.TenpaySecureEditText;
+import android.content.ComponentName;
+import android.content.Intent;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.wallet_core.c.l.a;
 
-final class RemittanceBusiUI$a
+public abstract class RemittanceBusiUI$a<InputType>
+  implements l.a<InputType>
 {
-  private View jIo;
-  private float marginTop;
-  private float qoO;
-  private float qoP;
-  private TenpaySecureEditText qoQ;
-  private TextView qoR;
-  private RelativeLayout qoS;
+  public RemittanceBusiUI$a(RemittanceBusiUI paramRemittanceBusiUI) {}
   
-  RemittanceBusiUI$a(RemittanceBusiUI paramRemittanceBusiUI, int paramInt1, int paramInt2, float paramFloat)
+  public void djE() {}
+  
+  public final int djF()
   {
-    AppMethodBeat.i(44930);
-    this.qoO = paramInt1;
-    this.qoP = paramInt2;
-    this.marginTop = paramFloat;
-    AppMethodBeat.o(44930);
+    return 1072;
   }
   
-  final void update()
+  public void djH() {}
+  
+  public final void djL()
   {
-    AppMethodBeat.i(44931);
-    RemittanceBusiUI.a(this.qoF).setTextSize(1, this.qoP);
-    RemittanceBusiUI.b(this.qoF).setTextSize(1, this.qoO);
-    if (this.qoR == null) {
-      this.qoR = ((TextView)RemittanceBusiUI.c(this.qoF).findViewById(2131820696));
-    }
-    if (this.qoR != null) {
-      this.qoR.setTextSize(this.qoO);
-    }
-    if (this.qoQ == null) {
-      this.qoQ = ((TenpaySecureEditText)RemittanceBusiUI.c(this.qoF).findViewById(2131820689));
-    }
-    if (this.qoQ != null) {
-      this.qoQ.setTextSize(this.qoP);
-    }
-    if (this.jIo == null) {
-      this.jIo = this.qoQ.findViewById(2131829383);
-    }
-    if (this.jIo != null) {
-      this.jIo.setMinimumHeight(BackwardSupportUtil.b.b(this.qoF, RemittanceBusiUI.d(this.qoF).qoP));
-    }
-    if (this.qoS == null) {
-      this.qoS = ((RelativeLayout)this.qoF.findViewById(2131827221));
-    }
-    if (this.qoS != null) {
-      ((LinearLayout.LayoutParams)this.qoS.getLayoutParams()).topMargin = BackwardSupportUtil.b.b(this.qoF, this.marginTop);
-    }
-    AppMethodBeat.o(44931);
+    Object localObject = new Intent();
+    ((Intent)localObject).setComponent(new ComponentName(aj.getPackageName(), "com.tencent.mm.ui.LauncherUI"));
+    ((Intent)localObject).addFlags(67108864);
+    RemittanceBusiUI localRemittanceBusiUI = this.vFO;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(localRemittanceBusiUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/remittance/ui/RemittanceBusiUI$IRemitBusiJumpItemCallback", "onExit", "(Ljava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localRemittanceBusiUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(localRemittanceBusiUI, "com/tencent/mm/plugin/remittance/ui/RemittanceBusiUI$IRemitBusiJumpItemCallback", "onExit", "(Ljava/lang/Object;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceBusiUI.a
  * JD-Core Version:    0.7.0.1
  */

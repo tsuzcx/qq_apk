@@ -1,217 +1,121 @@
 package com.tencent.smtt.sdk;
 
 import android.content.Context;
-import android.os.ParcelFileDescriptor;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.export.external.libwebp;
-import com.tencent.smtt.library_loader.Linker;
-import com.tencent.smtt.sandbox.ChildProcessService;
-import com.tencent.smtt.sandbox.SandboxListener;
-import java.io.File;
-import java.io.FileDescriptor;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.smtt.export.external.DexLoader;
 
-public class q
+class q
 {
-  private static Linker a;
-  private static ChildProcessService b;
-  private static String c;
-  private static String d;
-  private static SandboxListener e;
-  private static Map<String, String> f;
-  private static String g;
-  private static String h;
+  private DexLoader a = null;
+  private Object b = null;
   
-  static
+  public q(DexLoader paramDexLoader)
   {
-    AppMethodBeat.i(139057);
-    a = null;
-    b = null;
-    c = "sandbox_crash_record0";
-    d = "sandbox_crash_record1";
-    e = null;
-    f = new HashMap();
-    g = "/data/data/com.tencent.mm/app_tbs/core_share/";
-    h = "/data/data/com.tbs.default/app_tbs/core_share/";
-    AppMethodBeat.o(139057);
+    this.a = paramDexLoader;
   }
   
-  public static ParcelFileDescriptor a()
+  public Object a(Context paramContext, Object paramObject, Bundle paramBundle)
   {
-    AppMethodBeat.i(139047);
-    if (b != null)
-    {
-      ParcelFileDescriptor localParcelFileDescriptor = b.getFdByFileName(c);
-      AppMethodBeat.o(139047);
-      return localParcelFileDescriptor;
+    AppMethodBeat.i(54370);
+    if (this.a != null) {
+      this.b = this.a.newInstance("com.tencent.tbs.cache.TbsVideoCacheTaskProxy", new Class[] { Context.class, Object.class, Bundle.class }, new Object[] { paramContext, paramObject, paramBundle });
     }
-    AppMethodBeat.o(139047);
-    return null;
-  }
-  
-  public static String a(String paramString)
-  {
-    AppMethodBeat.i(139053);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(139053);
-      return paramString;
-    }
-    Iterator localIterator = f.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      paramString = paramString.replace(String.format("[anon:libc_malloc:%s]", new Object[] { f.get(str) }), g + str);
-    }
-    paramString = paramString.replace("[anon:libc_malloc]", h + "libmttwebview.so");
-    AppMethodBeat.o(139053);
-    return paramString;
-  }
-  
-  public static String a(String paramString, ParcelFileDescriptor paramParcelFileDescriptor)
-  {
-    AppMethodBeat.i(139051);
-    int i = paramParcelFileDescriptor.getFd();
-    Object localObject;
-    if (i == -1) {
-      localObject = paramParcelFileDescriptor.getFileDescriptor();
-    }
-    label107:
-    for (;;)
-    {
-      try
-      {
-        localObject = FileDescriptor.class.getDeclaredMethod("getInt$", new Class[0]).invoke(localObject, new Object[0]);
-        if (!(localObject instanceof Integer)) {
-          break label107;
-        }
-        int j = ((Integer)localObject).intValue();
-        i = j;
-        long l = paramParcelFileDescriptor.getStatSize();
-        paramParcelFileDescriptor = a.loadLibraryByFd(paramParcelFileDescriptor, l, paramString, i);
-        f.put(paramString, paramParcelFileDescriptor.substring(2));
-        AppMethodBeat.o(139051);
-        return paramParcelFileDescriptor;
-      }
-      catch (Throwable localThrowable) {}
-    }
-  }
-  
-  public static void a(ChildProcessService paramChildProcessService)
-  {
-    b = paramChildProcessService;
-  }
-  
-  public static void a(SandboxListener paramSandboxListener)
-  {
-    e = paramSandboxListener;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    AppMethodBeat.i(139056);
-    String str = b(paramContext);
-    try
-    {
-      libwebp.loadWepLibraryIfNeed(paramContext, str);
-      System.load(str + File.separator + "libmttwebview.so");
-      AppMethodBeat.o(139056);
-      return true;
-    }
-    catch (Throwable paramContext)
-    {
-      AppMethodBeat.o(139056);
-    }
-    return false;
-  }
-  
-  public static boolean a(Context paramContext, ParcelFileDescriptor[] paramArrayOfParcelFileDescriptor)
-  {
-    AppMethodBeat.i(139054);
-    try
-    {
-      a("libwebp_base.so", paramArrayOfParcelFileDescriptor[0]);
-      a("libmttwebview.so", paramArrayOfParcelFileDescriptor[1]);
-      AppMethodBeat.o(139054);
-      return true;
-    }
-    catch (Throwable paramContext)
-    {
-      AppMethodBeat.o(139054);
-    }
-    return false;
-  }
-  
-  public static ParcelFileDescriptor b()
-  {
-    AppMethodBeat.i(139048);
-    if (b != null)
-    {
-      ParcelFileDescriptor localParcelFileDescriptor = b.getFdByFileName(d);
-      AppMethodBeat.o(139048);
-      return localParcelFileDescriptor;
-    }
-    AppMethodBeat.o(139048);
-    return null;
-  }
-  
-  private static String b(Context paramContext)
-  {
-    AppMethodBeat.i(139055);
-    paramContext = ao.a().q(paramContext).getAbsolutePath();
-    AppMethodBeat.o(139055);
+    paramContext = this.b;
+    AppMethodBeat.o(54370);
     return paramContext;
   }
   
-  public static void c()
+  public void a()
   {
-    AppMethodBeat.i(139049);
-    ParcelFileDescriptor localParcelFileDescriptor1 = a();
-    ParcelFileDescriptor localParcelFileDescriptor2 = b();
-    if (e != null) {
-      e.setCrashRecordFileDescriptor(localParcelFileDescriptor1, localParcelFileDescriptor2);
+    AppMethodBeat.i(54371);
+    if (this.a != null) {
+      this.a.invokeMethod(this.b, "com.tencent.tbs.cache.TbsVideoCacheTaskProxy", "pauseTask", new Class[0], new Object[0]);
     }
-    AppMethodBeat.o(139049);
+    AppMethodBeat.o(54371);
   }
   
-  public static void d()
+  public void a(boolean paramBoolean)
   {
-    try
-    {
-      AppMethodBeat.i(139050);
-      Linker localLinker = Linker.getInstance();
-      localLinker.disableSharedRelros();
-      localLinker.prepareLibraryLoad();
-      a = localLinker;
-      AppMethodBeat.o(139050);
-      return;
+    AppMethodBeat.i(54374);
+    if (this.a != null) {
+      this.a.invokeMethod(this.b, "com.tencent.tbs.cache.TbsVideoCacheTaskProxy", "removeTask", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    AppMethodBeat.o(54374);
   }
   
-  public static void e()
+  public void b()
   {
-    AppMethodBeat.i(139052);
-    Iterator localIterator = f.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      new StringBuilder("@TbsLinker -- loaded library : ").append(str).append(", start_address: ").append((String)f.get(str));
+    AppMethodBeat.i(54372);
+    if (this.a != null) {
+      this.a.invokeMethod(this.b, "com.tencent.tbs.cache.TbsVideoCacheTaskProxy", "resumeTask", new Class[0], new Object[0]);
     }
-    AppMethodBeat.o(139052);
+    AppMethodBeat.o(54372);
+  }
+  
+  public void c()
+  {
+    AppMethodBeat.i(54373);
+    if (this.a != null) {
+      this.a.invokeMethod(this.b, "com.tencent.tbs.cache.TbsVideoCacheTaskProxy", "stopTask", new Class[0], new Object[0]);
+    }
+    AppMethodBeat.o(54373);
+  }
+  
+  public long d()
+  {
+    AppMethodBeat.i(54375);
+    if (this.a != null)
+    {
+      Object localObject = this.a.invokeMethod(this.b, "com.tencent.tbs.cache.TbsVideoCacheTaskProxy", "getContentLength", new Class[0], new Object[0]);
+      if ((localObject instanceof Long))
+      {
+        long l = ((Long)localObject).longValue();
+        AppMethodBeat.o(54375);
+        return l;
+      }
+    }
+    AppMethodBeat.o(54375);
+    return 0L;
+  }
+  
+  public int e()
+  {
+    AppMethodBeat.i(54376);
+    if (this.a != null)
+    {
+      Object localObject = this.a.invokeMethod(this.b, "com.tencent.tbs.cache.TbsVideoCacheTaskProxy", "getDownloadedSize", new Class[0], new Object[0]);
+      if ((localObject instanceof Integer))
+      {
+        int i = ((Integer)localObject).intValue();
+        AppMethodBeat.o(54376);
+        return i;
+      }
+    }
+    AppMethodBeat.o(54376);
+    return 0;
+  }
+  
+  public int f()
+  {
+    AppMethodBeat.i(54377);
+    if (this.a != null)
+    {
+      Object localObject = this.a.invokeMethod(this.b, "com.tencent.tbs.cache.TbsVideoCacheTaskProxy", "getProgress", new Class[0], new Object[0]);
+      if ((localObject instanceof Integer))
+      {
+        int i = ((Integer)localObject).intValue();
+        AppMethodBeat.o(54377);
+        return i;
+      }
+    }
+    AppMethodBeat.o(54377);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.q
  * JD-Core Version:    0.7.0.1
  */

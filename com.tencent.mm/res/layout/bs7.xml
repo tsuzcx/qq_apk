@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/hi6" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/hnd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:layout_alignParentTop="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hnc" android:layout_width="@dimen/c9" android:layout_height="@dimen/c9" android:src="@raw/icons_verify_back" android:layout_marginStart="@dimen/c5" android:layout_alignParentStart="true" app:iconColor="@color/BW_100_Alpha_0_8" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/hnb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/hnd">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hn8" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:layout_marginTop="@dimen/cd" android:src="@raw/icons_need_verify" android:layout_centerHorizontal="true" app:iconColor="@color/BW_50" />
+        <TextView android:textSize="22.0dip" android:textColor="@color/y4" android:gravity="center_horizontal" android:id="@id/hna" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_" android:text="@string/hm5" android:layout_below="@id/hn8" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:gravity="center_horizontal" android:id="@id/hn7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c_" android:layout_marginTop="@dimen/c5" android:layout_marginRight="@dimen/c_" android:text="@string/hm6" android:layout_below="@id/hna" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/hn6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/hnb">
+        <Button android:textSize="17.0dip" android:id="@id/hn_" android:layout_width="@dimen/c2" android:layout_height="@dimen/cb" android:layout_marginBottom="@dimen/bt" android:text="@string/hm7" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/o7" />
+    </RelativeLayout>
+</RelativeLayout>

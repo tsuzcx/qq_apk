@@ -2,20 +2,22 @@ package com.tencent.mm.plugin.backup.f;
 
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.bf;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.model.bi;
+import com.tencent.mm.plugin.backup.h.b;
 import com.tencent.mm.plugin.backup.h.c;
 import com.tencent.mm.plugin.backup.i.u;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.gx;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.cmf;
+import com.tencent.mm.protocal.protobuf.hu;
 import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.sdk.platformtools.af;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.storage.bl;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.HashMap<Ljava.lang.Long;Lcom.tencent.mm.plugin.backup.f.h.a;>;
@@ -29,21 +31,21 @@ import org.xmlpull.v1.XmlSerializer;
 public final class d
   implements l
 {
-  private static String a(com.tencent.mm.at.e parame, bi parambi)
+  private static String a(com.tencent.mm.aw.e parame, bl parambl)
   {
-    AppMethodBeat.i(17455);
+    AppMethodBeat.i(21514);
     StringWriter localStringWriter = new StringWriter();
     XmlSerializer localXmlSerializer;
     try
     {
       localXmlSerializer = XmlPullParserFactory.newInstance().newSerializer();
       localXmlSerializer.setOutput(localStringWriter);
-      if (c.lA(parambi.field_talker)) {
-        localStringWriter.write(bf.pu(parambi.field_content) + ":\n");
+      if (c.pF(parambl.field_talker)) {
+        localStringWriter.write(bi.uf(parambl.field_content) + ":\n");
       }
       localXmlSerializer.startTag(null, "msg");
       localXmlSerializer.startTag(null, "img");
-      Map localMap = br.F(parame.fDX, "msg");
+      Map localMap = bw.K(parame.hgv, "msg");
       if (localMap != null)
       {
         if (localMap.get(".msg.img.$aeskey") == null) {
@@ -82,13 +84,13 @@ public final class d
         if (localMap.get(".msg.img.$cdnmidimgurl") == null) {
           localXmlSerializer.attribute(null, "cdnmidimgurl", "");
         }
-        if (bo.getLong((String)localMap.get(".msg.img.$length"), 0L) == 0L) {
-          localXmlSerializer.attribute(null, "length", com.tencent.mm.vfs.e.avI(com.tencent.mm.plugin.backup.h.d.aUK().aUL().aUH().q(parame.fDM, "", "")));
+        if (bt.getLong((String)localMap.get(".msg.img.$length"), 0L) == 0L) {
+          localXmlSerializer.attribute(null, "length", com.tencent.mm.vfs.i.aMN(com.tencent.mm.plugin.backup.h.d.bxT().bxU().bxQ().p(parame.hgj, "", "")));
         }
-        if ((parambi.field_isSend != 1) || (parame.fDP == 1))
+        if ((parambl.field_isSend != 1) || (parame.hgm == 1))
         {
           localXmlSerializer.attribute(null, "cdnbigimgurl", (String)localMap.get(".msg.img.$cdnbigimgurl"));
-          localXmlSerializer.attribute(null, "hdlength", bo.getLong((String)localMap.get(".msg.img.$hdlength"), 0L));
+          localXmlSerializer.attribute(null, "hdlength", bt.getLong((String)localMap.get(".msg.img.$hdlength"), 0L));
         }
         localMap.remove(".msg.img.$cdnbigimgurl");
         localMap.remove(".msg.img.$hdlength");
@@ -98,9 +100,9 @@ public final class d
         parame = localMap.keySet().iterator();
         while (parame.hasNext())
         {
-          parambi = (String)parame.next();
-          if (parambi.startsWith(".msg.img.$")) {
-            localXmlSerializer.attribute(null, parambi.substring(10), (String)localMap.get(parambi));
+          parambl = (String)parame.next();
+          if (parambl.startsWith(".msg.img.$")) {
+            localXmlSerializer.attribute(null, parambl.substring(10), (String)localMap.get(parambl));
           }
         }
       }
@@ -108,8 +110,8 @@ public final class d
     }
     catch (Exception parame)
     {
-      ab.e("MicroMsg.BackupItemImg", "packetImg xml error: " + parame.toString());
-      AppMethodBeat.o(17455);
+      ad.e("MicroMsg.BackupItemImg", "packetImg xml error: " + parame.toString());
+      AppMethodBeat.o(21514);
       return null;
     }
     localXmlSerializer.endTag(null, "msg");
@@ -117,72 +119,72 @@ public final class d
     localStringWriter.flush();
     localStringWriter.close();
     parame = localStringWriter.getBuffer().toString();
-    ab.d("MicroMsg.BackupItemImg", "parseContent xml:%s", new Object[] { parame });
-    AppMethodBeat.o(17455);
+    ad.d("MicroMsg.BackupItemImg", "parseContent xml:%s", new Object[] { parame });
+    AppMethodBeat.o(21514);
     return parame;
   }
   
-  public final int a(gx paramgx, boolean paramBoolean1, bi parambi, String paramString, LinkedList<u> paramLinkedList, HashMap<Long, h.a> paramHashMap, boolean paramBoolean2, long paramLong)
+  public final int a(hu paramhu, boolean paramBoolean1, bl parambl, String paramString, LinkedList<u> paramLinkedList, HashMap<Long, h.a> paramHashMap, boolean paramBoolean2, long paramLong)
   {
-    AppMethodBeat.i(17454);
+    AppMethodBeat.i(21513);
     int j;
-    if (bo.isNullOrNil(parambi.field_content))
+    if (bt.isNullOrNil(parambl.field_content))
     {
       j = 0;
-      if (parambi.field_isSend == 1)
+      if (parambl.field_isSend == 1)
       {
-        paramString = com.tencent.mm.plugin.backup.h.d.aUK().aUL().aUH().gT(parambi.field_msgId);
-        if (paramString.fDL != 0L) {
-          break label973;
+        paramString = com.tencent.mm.plugin.backup.h.d.bxT().bxU().bxQ().ms(parambl.field_msgId);
+        if (paramString.deI != 0L) {
+          break label981;
         }
       }
-      paramString = com.tencent.mm.plugin.backup.h.d.aUK().aUL().aUH().gS(parambi.field_msgSvrId);
+      paramString = com.tencent.mm.plugin.backup.h.d.bxT().bxU().bxQ().mr(parambl.field_msgSvrId);
     }
     label312:
     label572:
-    label973:
+    label981:
     for (;;)
     {
-      paramHashMap = com.tencent.mm.plugin.backup.h.d.aUK().aUL().aUH().J(parambi.field_imgPath, true);
+      paramHashMap = com.tencent.mm.plugin.backup.h.d.bxT().bxU().bxQ().Q(parambl.field_imgPath, true);
       int i = j;
-      if (com.tencent.mm.vfs.e.cN(paramHashMap)) {
-        i = j + i.a(new i.a(paramHashMap, paramgx, paramLinkedList, 1, paramBoolean1, "_thumb", paramBoolean2));
+      if (com.tencent.mm.vfs.i.eK(paramHashMap)) {
+        i = j + i.a(new i.a(paramHashMap, paramhu, paramLinkedList, 1, paramBoolean1, "_thumb", paramBoolean2));
       }
       Object localObject1;
       int k;
-      if (parambi.field_isSend == 1)
+      if (parambl.field_isSend == 1)
       {
         localObject2 = "";
-        str = com.tencent.mm.plugin.backup.h.d.aUK().aUL().aUH().q(paramString.fDM, "", "");
+        str = com.tencent.mm.plugin.backup.h.d.bxT().bxU().bxQ().p(paramString.hgj, "", "");
         localObject1 = localObject2;
         k = i;
         paramHashMap = paramString;
-        if (paramString.ahh())
+        if (paramString.ayi())
         {
-          paramHashMap = com.tencent.mm.plugin.backup.h.d.aUK().aUL().aUH().lv(paramString.fDW);
+          paramHashMap = com.tencent.mm.plugin.backup.h.d.bxT().bxU().bxQ().od(paramString.hgu);
           if (paramHashMap == null) {
             break label477;
           }
-          localObject1 = com.tencent.mm.plugin.backup.h.d.aUK().aUL().aUH().q(paramHashMap.fDM, "", "");
-          ab.d("MicroMsg.BackupItemImg", "packet hd bigImgPath " + (String)localObject1 + " " + com.tencent.mm.vfs.e.avI((String)localObject1));
-          com.tencent.mm.vfs.e.avI((String)localObject1);
-          if (com.tencent.mm.vfs.e.cN((String)localObject1)) {
-            k = i + i.a(new i.a((String)localObject1, paramgx, paramLinkedList, 3, paramBoolean1, "_hd", paramBoolean2));
+          localObject1 = com.tencent.mm.plugin.backup.h.d.bxT().bxU().bxQ().p(paramHashMap.hgj, "", "");
+          ad.d("MicroMsg.BackupItemImg", "packet hd bigImgPath " + (String)localObject1 + " " + com.tencent.mm.vfs.i.aMN((String)localObject1));
+          com.tencent.mm.vfs.i.aMN((String)localObject1);
+          if (com.tencent.mm.vfs.i.eK((String)localObject1)) {
+            k = i + i.a(new i.a((String)localObject1, paramhu, paramLinkedList, 3, paramBoolean1, "_hd", paramBoolean2));
           }
         }
         else
         {
-          com.tencent.mm.vfs.e.avI(str);
+          com.tencent.mm.vfs.i.aMN(str);
           j = k;
           localObject2 = paramHashMap;
-          if (!bo.isNullOrNil(str))
+          if (!bt.isNullOrNil(str))
           {
             j = k;
             localObject2 = paramHashMap;
             if (!str.equals(localObject1))
             {
-              ab.d("MicroMsg.BackupItemImg", "bigImgPath " + str + " " + com.tencent.mm.vfs.e.avI(str));
-              j = k + i.a(new i.a(str, paramgx, paramLinkedList, 2, paramBoolean1, paramBoolean2, null));
+              ad.d("MicroMsg.BackupItemImg", "bigImgPath " + str + " " + com.tencent.mm.vfs.i.aMN(str));
+              j = k + i.a(new i.a(str, paramhu, paramLinkedList, 2, paramBoolean1, paramBoolean2, null));
               localObject2 = paramHashMap;
             }
           }
@@ -191,33 +193,33 @@ public final class d
       label477:
       do
       {
-        parambi = a((com.tencent.mm.at.e)localObject2, parambi);
-        if (parambi != null) {
-          break label940;
+        parambl = a((com.tencent.mm.aw.e)localObject2, parambl);
+        if (parambl != null) {
+          break label948;
         }
-        AppMethodBeat.o(17454);
+        AppMethodBeat.o(21513);
         return j;
-        j = parambi.field_content.getBytes().length;
+        j = parambl.field_content.getBytes().length;
         break;
-        ab.e("MicroMsg.BackupItemImg", "packet img.hasHdImg but hdbigImgPath has no file, hdbigImgPath:%s", new Object[] { localObject1 });
+        ad.e("MicroMsg.BackupItemImg", "packet img.hasHdImg but hdbigImgPath has no file, hdbigImgPath:%s", new Object[] { localObject1 });
         k = i;
         break label312;
-        ab.e("MicroMsg.BackupItemImg", "packet img.hasHdImg but img is null");
+        ad.e("MicroMsg.BackupItemImg", "packet img.hasHdImg but img is null");
         localObject1 = localObject2;
         k = i;
         break label312;
         j = i;
         localObject2 = paramString;
-      } while (!paramString.ahg());
-      String str = com.tencent.mm.plugin.backup.h.d.aUK().aUL().aUH().q(paramString.fDM, "", "");
+      } while (!paramString.ayh());
+      String str = com.tencent.mm.plugin.backup.h.d.bxT().bxU().bxQ().p(paramString.hgj, "", "");
       Object localObject2 = "";
-      if (paramString.ahh())
+      if (paramString.ayi())
       {
-        localObject1 = com.tencent.mm.plugin.backup.h.d.aUK().aUL().aUH().lv(paramString.fDW);
+        localObject1 = com.tencent.mm.plugin.backup.h.d.bxT().bxU().bxQ().od(paramString.hgu);
         if (localObject1 != null)
         {
           if (localObject1 != null) {
-            ab.i("MicroMsg.BackupItemImg", "packet receive img hdinfo, offset[%d], totalLen[%d], compressType[%d], path:%s", new Object[] { Integer.valueOf(((com.tencent.mm.at.e)localObject1).offset), Integer.valueOf(((com.tencent.mm.at.e)localObject1).fsd), Integer.valueOf(((com.tencent.mm.at.e)localObject1).fDP), ((com.tencent.mm.at.e)localObject1).fDM });
+            ad.i("MicroMsg.BackupItemImg", "packet receive img hdinfo, offset[%d], totalLen[%d], compressType[%d], path:%s", new Object[] { Integer.valueOf(((com.tencent.mm.aw.e)localObject1).offset), Integer.valueOf(((com.tencent.mm.aw.e)localObject1).gTY), Integer.valueOf(((com.tencent.mm.aw.e)localObject1).hgm), ((com.tencent.mm.aw.e)localObject1).hgj });
           }
           paramHashMap = (HashMap<Long, h.a>)localObject2;
           k = i;
@@ -225,19 +227,19 @@ public final class d
           {
             paramHashMap = (HashMap<Long, h.a>)localObject2;
             k = i;
-            if (((com.tencent.mm.at.e)localObject1).fDP == 1)
+            if (((com.tencent.mm.aw.e)localObject1).hgm == 1)
             {
-              if ((localObject1.equals(paramString)) || (((com.tencent.mm.at.e)localObject1).offset != ((com.tencent.mm.at.e)localObject1).fsd)) {
-                break label921;
+              if ((localObject1.equals(paramString)) || (((com.tencent.mm.aw.e)localObject1).gTY <= 0) || (((com.tencent.mm.aw.e)localObject1).offset != ((com.tencent.mm.aw.e)localObject1).gTY)) {
+                break label929;
               }
-              localObject1 = com.tencent.mm.plugin.backup.h.d.aUK().aUL().aUH().q(((com.tencent.mm.at.e)localObject1).fDM, "", "");
-              ab.d("MicroMsg.BackupItemImg", "packet hdPath:%s, fileLen[%d]", new Object[] { localObject1, Long.valueOf(com.tencent.mm.vfs.e.avI((String)localObject1)) });
+              localObject1 = com.tencent.mm.plugin.backup.h.d.bxT().bxU().bxQ().p(((com.tencent.mm.aw.e)localObject1).hgj, "", "");
+              ad.d("MicroMsg.BackupItemImg", "packet hdPath:%s, fileLen[%d]", new Object[] { localObject1, Long.valueOf(com.tencent.mm.vfs.i.aMN((String)localObject1)) });
               paramHashMap = (HashMap<Long, h.a>)localObject1;
               k = i;
-              if (com.tencent.mm.vfs.e.cN((String)localObject1))
+              if (com.tencent.mm.vfs.i.eK((String)localObject1))
               {
-                k = i + i.a(new i.a((String)localObject1, paramgx, paramLinkedList, 3, paramBoolean1, "_hd", paramBoolean2));
-                com.tencent.mm.vfs.e.avI((String)localObject1);
+                k = i + i.a(new i.a((String)localObject1, paramhu, paramLinkedList, 3, paramBoolean1, "_hd", paramBoolean2));
+                com.tencent.mm.vfs.i.aMN((String)localObject1);
                 paramHashMap = (HashMap<Long, h.a>)localObject1;
               }
             }
@@ -248,13 +250,13 @@ public final class d
       {
         j = k;
         localObject2 = paramString;
-        if (!com.tencent.mm.vfs.e.cN(str)) {
+        if (!com.tencent.mm.vfs.i.eK(str)) {
           break;
         }
-        com.tencent.mm.vfs.e.avI(str);
+        com.tencent.mm.vfs.i.aMN(str);
         j = k;
         localObject2 = paramString;
-        if (bo.isNullOrNil(str)) {
+        if (bt.isNullOrNil(str)) {
           break;
         }
         j = k;
@@ -262,8 +264,8 @@ public final class d
         if (str.equals(paramHashMap)) {
           break;
         }
-        ab.d("MicroMsg.BackupItemImg", "bigImgPath " + str + " " + com.tencent.mm.vfs.e.avI(str));
-        j = k + i.a(new i.a(str, paramgx, paramLinkedList, 2, paramBoolean1, paramBoolean2, null));
+        ad.d("MicroMsg.BackupItemImg", "bigImgPath " + str + " " + com.tencent.mm.vfs.i.aMN(str));
+        j = k + i.a(new i.a(str, paramhu, paramLinkedList, 2, paramBoolean1, paramBoolean2, null));
         localObject2 = paramString;
         break;
         localObject1 = null;
@@ -272,170 +274,177 @@ public final class d
         paramHashMap = (HashMap<Long, h.a>)localObject2;
         k = i;
       }
-      paramgx.woR = new bwc().aoF(parambi);
-      i = parambi.length();
-      AppMethodBeat.o(17454);
+      paramhu.Cxz = new cmf().aEE(parambl);
+      i = parambl.length();
+      AppMethodBeat.o(21513);
       return j + i;
     }
   }
   
-  public final int a(String paramString, gx paramgx, bi parambi)
+  public final int a(String paramString, hu paramhu, bl parambl)
   {
-    AppMethodBeat.i(17456);
-    if ((paramgx == null) || (paramgx.woR == null))
+    AppMethodBeat.i(21515);
+    if ((paramhu == null) || (paramhu.Cxz == null))
     {
-      ab.e("MicroMsg.BackupItemImg", "recover bakitem or bakitem content is null");
-      AppMethodBeat.o(17456);
+      ad.e("MicroMsg.BackupItemImg", "recover bakitem/Content is null");
+      AppMethodBeat.o(21515);
       return 0;
     }
-    String str1 = new String(bo.bf(paramgx.woR.xJE, ""));
-    ab.d("MicroMsg.BackupItemImg", "recover msg:" + paramgx.pIG + " " + str1);
+    String str1 = bt.by(paramhu.Cxz.Ehn, "");
+    long l1 = paramhu.uKZ;
     int i;
     int j;
-    label118:
+    label80:
     Object localObject1;
-    label129:
-    com.tencent.mm.at.g localg;
-    if (paramgx.wtq == null)
+    label91:
+    com.tencent.mm.aw.g localg;
+    if (paramhu.CCV == null)
     {
       i = 0;
-      j = paramgx.wts;
-      if (paramgx.wtp != null) {
-        break label605;
+      j = paramhu.CCX;
+      if (paramhu.CCU != null) {
+        break label590;
       }
       paramString = "";
-      if (paramgx.wto != null) {
-        break label616;
+      if (paramhu.CCT != null) {
+        break label601;
       }
       localObject1 = "";
-      ab.d("MicroMsg.BackupItemImg", "recover backupItemImg:, buf:%d, BufferType:%d, MediaType%s, ids:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramString, localObject1 });
+      ad.d("MicroMsg.BackupItemImg", "recover, msgId:%d, content:%s, backupItemImg buf:%d, BufferType:%d, MediaType%s, ids:%s", new Object[] { Long.valueOf(l1), str1, Integer.valueOf(i), Integer.valueOf(j), paramString, localObject1 });
       paramString = null;
-      parambi.setContent(str1);
-      localg = com.tencent.mm.plugin.backup.h.d.aUK().aUL().aUH();
-      if (parambi.field_isSend != 1) {
-        break label628;
+      if (str1 != null) {
+        parambl.setContent(str1);
       }
-      if (parambi.field_msgId != 0L) {
-        paramString = localg.gT(parambi.field_msgId);
+      localg = com.tencent.mm.plugin.backup.h.d.bxT().bxU().bxQ();
+      if (parambl.field_isSend != 1) {
+        break label613;
       }
-      if ((paramString != null) && (paramString.fDL != 0L)) {
-        break label1227;
+      if (parambl.field_msgId != 0L) {
+        paramString = localg.ms(parambl.field_msgId);
       }
-      paramString = localg.gS(parambi.field_msgSvrId);
+      if ((paramString != null) && (paramString.deI != 0L)) {
+        break label1265;
+      }
+      paramString = localg.mr(parambl.field_msgSvrId);
     }
-    label694:
-    label1211:
-    label1227:
+    label217:
+    label613:
+    label1131:
+    label1265:
     for (;;)
     {
-      label236:
-      localObject1 = br.F(str1, "msg");
-      long l1 = 0L;
+      localObject1 = bw.K(str1, "msg");
+      l1 = 0L;
       long l2;
       if (localObject1 != null)
       {
-        l2 = bo.getLong((String)((Map)localObject1).get(".msg.img.$hdlength"), 0L);
+        l2 = bt.getLong((String)((Map)localObject1).get(".msg.img.$hdlength"), 0L);
         l1 = l2;
         if (l2 > 0L) {
           i = 1;
         }
       }
-      for (;;)
+      for (long l3 = l2;; l3 = l1)
       {
-        Object localObject3 = bo.bf(com.tencent.mm.plugin.backup.b.g.a(paramgx, 3), "");
-        if ((paramgx.wts == 3) && (paramgx.wtq != null)) {
-          com.tencent.mm.plugin.backup.b.g.b(com.tencent.mm.plugin.backup.b.g.Gh((String)localObject3), (String)localObject3, paramgx.wtq.getBufferToBytes());
+        Object localObject3 = bt.by(com.tencent.mm.plugin.backup.b.g.a(paramhu, 3), "");
+        if ((paramhu.CCX == 3) && (paramhu.CCV != null)) {
+          com.tencent.mm.plugin.backup.b.g.a(com.tencent.mm.plugin.backup.b.g.Oi((String)localObject3), (String)localObject3, paramhu.CCV.getBufferToBytes());
         }
-        localObject1 = bo.bf(com.tencent.mm.plugin.backup.b.g.a(paramgx, 2), "");
-        if ((paramgx.wts == 2) && (paramgx.wtq != null)) {
-          com.tencent.mm.plugin.backup.b.g.b(com.tencent.mm.plugin.backup.b.g.Gh((String)localObject1), (String)localObject1, paramgx.wtq.getBufferToBytes());
+        localObject1 = bt.by(com.tencent.mm.plugin.backup.b.g.a(paramhu, 2), "");
+        if ((paramhu.CCX == 2) && (paramhu.CCV != null)) {
+          com.tencent.mm.plugin.backup.b.g.a(com.tencent.mm.plugin.backup.b.g.Oi((String)localObject1), (String)localObject1, paramhu.CCV.getBufferToBytes());
         }
-        ab.d("MicroMsg.BackupItemImg", "hdName %s, imgName:%s", new Object[] { localObject3, localObject1 });
-        if (bo.isNullOrNil((String)localObject1))
+        ad.d("MicroMsg.BackupItemImg", "hdName:%s, imgName:%s", new Object[] { localObject3, localObject1 });
+        if (bt.isNullOrNil((String)localObject1))
         {
-          ab.e("MicroMsg.BackupItemImg", "imgName is null, imgName = hdName");
+          ad.d("MicroMsg.BackupItemImg", "imgName is null, imgName = hdName");
           localObject1 = localObject3;
         }
         for (;;)
         {
-          Object localObject2 = com.tencent.mm.plugin.backup.b.g.b(paramgx, 1);
-          Object localObject4;
+          Object localObject2 = com.tencent.mm.plugin.backup.b.g.b(paramhu, 1);
+          Object localObject5;
           if (localObject2 == null)
           {
-            ab.i("MicroMsg.BackupItemImg", "getThumbBuf is null and read from mediapath");
-            localObject2 = com.tencent.mm.plugin.backup.b.g.Gh((String)localObject1) + (String)localObject1;
-            str2 = com.tencent.mm.a.g.w((bo.aoy() + " ").getBytes());
-            localObject4 = com.tencent.mm.plugin.backup.b.g.Gh(str2);
-            str3 = (String)localObject4 + str2;
-            localObject4 = new com.tencent.mm.vfs.b((String)localObject4);
-            if (!((com.tencent.mm.vfs.b)localObject4).exists()) {
-              ((com.tencent.mm.vfs.b)localObject4).mkdirs();
+            ad.d("MicroMsg.BackupItemImg", "getThumbBuf is null and read from mediapath");
+            localObject2 = com.tencent.mm.plugin.backup.b.g.Oi((String)localObject1) + (String)localObject1;
+            localObject4 = com.tencent.mm.b.g.getMessageDigest((bt.eGO() + " ").getBytes());
+            localObject5 = com.tencent.mm.plugin.backup.b.g.Oi((String)localObject4);
+            str2 = (String)localObject5 + (String)localObject4;
+            localObject5 = new com.tencent.mm.vfs.e((String)localObject5);
+            if (!((com.tencent.mm.vfs.e)localObject5).exists()) {
+              ((com.tencent.mm.vfs.e)localObject5).mkdirs();
             }
-            j = ad.api(str3);
+            j = af.aFv(str2);
             if (j > 0)
             {
-              if (ad.a((String)localObject2, Bitmap.CompressFormat.JPEG, str3, j)) {
-                break label694;
+              if (af.a((String)localObject2, Bitmap.CompressFormat.JPEG, str2, j)) {
+                break label679;
               }
-              ab.e("MicroMsg.BackupItemImg", "createLongPictureThumbNail failed");
-              AppMethodBeat.o(17456);
+              ad.e("MicroMsg.BackupItemImg", "createLongPictureThumbNail failed");
+              AppMethodBeat.o(21515);
               return -1;
-              i = paramgx.wtq.getILen();
+              i = paramhu.CCV.getILen();
               break;
-              label605:
-              paramString = paramgx.wtp.toString();
-              break label118;
-              label616:
-              localObject1 = paramgx.wto.toString();
-              break label129;
-              label628:
-              paramString = localg.gS(parambi.field_msgSvrId);
-              break label236;
+              paramString = paramhu.CCU.toString();
+              break label80;
+              localObject1 = paramhu.CCT.toString();
+              break label91;
+              paramString = localg.mr(parambl.field_msgSvrId);
+              break label217;
             }
-            if (!com.tencent.mm.sdk.platformtools.d.a((String)localObject2, 120, 120, Bitmap.CompressFormat.JPEG, 90, str3))
+            if (!f.a((String)localObject2, 120, 120, Bitmap.CompressFormat.JPEG, 90, str2))
             {
-              ab.e("MicroMsg.BackupItemImg", "createThumbNail failed");
-              AppMethodBeat.o(17456);
+              ad.e("MicroMsg.BackupItemImg", "createThumbNail failed");
+              AppMethodBeat.o(21515);
               return -1;
             }
-            ab.d("MicroMsg.BackupItemImg", "insert: thumbName = ".concat(String.valueOf(str2)));
-            localObject2 = com.tencent.mm.vfs.e.i(str3, 0, -1);
-          }
-          while (localObject2 == null)
-          {
-            ab.e("MicroMsg.BackupItemImg", "img buf is null");
-            AppMethodBeat.o(17456);
+            ad.d("MicroMsg.BackupItemImg", "insert: thumbName = ".concat(String.valueOf(localObject4)));
+            localObject4 = com.tencent.mm.vfs.i.aR(str2, 0, -1);
+            localObject2 = localObject4;
+            if (localObject4 != null) {
+              break label736;
+            }
+            ad.e("MicroMsg.BackupItemImg", "img buf is null");
+            AppMethodBeat.o(21515);
             return -1;
-            ab.i("MicroMsg.BackupItemImg", "getThumbBuf len:%d", new Object[] { Integer.valueOf(localObject2.length) });
           }
-          String str2 = localg.q((String)localObject3, "", "");
-          String str3 = localg.q((String)localObject1, "", "");
-          l1 = 0L;
-          long l3;
-          if (paramString.fDL == 0L)
+          ad.d("MicroMsg.BackupItemImg", "getThumbBuf len:%d", new Object[] { Integer.valueOf(localObject2.length) });
+          Object localObject4 = localg.p((String)localObject3, "", "");
+          String str2 = localg.p((String)localObject1, "", "");
+          l2 = 0L;
+          boolean bool;
+          if (paramString.deI == 0L)
           {
-            j = com.tencent.mm.plugin.backup.b.g.c(paramgx, 2);
+            j = com.tencent.mm.plugin.backup.b.g.c(paramhu, 2);
             if (i != 0)
             {
-              i = com.tencent.mm.plugin.backup.b.g.c(paramgx, 3);
-              l3 = localg.a((byte[])localObject2, paramgx.pIG, true, (String)localObject3, i, str1, new PString(), new PInt(), new PInt());
-              l1 = l3;
-              if (!com.tencent.mm.plugin.backup.b.g.b(paramgx, 3, str2))
+              i = com.tencent.mm.plugin.backup.b.g.c(paramhu, 3);
+              l1 = localg.a((byte[])localObject2, paramhu.uKZ, true, (String)localObject3, i, str1, new PString(), new PInt(), new PInt());
+              if (((String)localObject3).equals(localObject1))
               {
-                ab.e("MicroMsg.BackupItemImg", "writeItem BACKUPITEM_IMAGE_HD failed:%s", new Object[] { str2 });
-                l1 = l3;
-                if (j == l2) {
-                  if (com.tencent.mm.plugin.backup.b.g.b(paramgx, 3, str3))
-                  {
-                    ab.i("MicroMsg.BackupItemImg", "writeItem, try take img for hd img success:%s", new Object[] { str3 });
-                    l1 = l3;
-                    i = 0;
-                    if (j > 0) {
-                      break label1211;
-                    }
-                    j = com.tencent.mm.plugin.backup.b.g.c(paramgx, 3);
-                  }
+                bool = com.tencent.mm.plugin.backup.b.g.a(paramhu, (String)localObject4);
+                l2 = l1;
+                if (bool) {
+                  break label1177;
                 }
+                if (j != l3) {
+                  break label1155;
+                }
+                if (!((String)localObject3).equals(localObject1)) {
+                  break label1119;
+                }
+                bool = com.tencent.mm.plugin.backup.b.g.a(paramhu, str2);
+                label888:
+                if (!bool) {
+                  break label1131;
+                }
+                ad.i("MicroMsg.BackupItemImg", "writeItem, try take img for hd img success:%s", new Object[] { str2 });
+                i = 0;
+                if (j > 0) {
+                  break label1249;
+                }
+                j = com.tencent.mm.plugin.backup.b.g.c(paramhu, 3);
               }
             }
           }
@@ -443,45 +452,52 @@ public final class d
           {
             paramString = new PString();
             localObject3 = new PInt();
-            localObject4 = new PInt();
-            l2 = localg.a((byte[])localObject2, paramgx.pIG, false, (String)localObject1, j, str1, paramString, (PInt)localObject3, (PInt)localObject4);
-            if ((i != 0) && (!com.tencent.mm.plugin.backup.b.g.b(paramgx, 2, str3))) {
-              ab.e("MicroMsg.BackupItemImg", "writeItem BACKUPITEM_IMAGE failed:%s", new Object[] { str2 });
+            localObject5 = new PInt();
+            l2 = localg.a((byte[])localObject2, paramhu.uKZ, false, (String)localObject1, j, str1, paramString, (PInt)localObject3, (PInt)localObject5);
+            if ((i != 0) && (!com.tencent.mm.plugin.backup.b.g.b(paramhu, 2, str2))) {
+              ad.e("MicroMsg.BackupItemImg", "writeItem BACKUPITEM_IMAGE failed:%s", new Object[] { localObject4 });
             }
             if (l2 > 0L)
             {
-              parambi.kk(paramString.value);
-              parambi.hW(((PInt)localObject3).value);
-              parambi.hX(((PInt)localObject4).value);
+              parambl.nZ(paramString.value);
+              parambl.kh(((PInt)localObject3).value);
+              parambl.ki(((PInt)localObject5).value);
               if (l1 > 0L)
               {
-                paramString = com.tencent.mm.plugin.backup.h.d.aUK().aUL().aUH().b(Long.valueOf(l2));
-                paramString.lr((int)l1);
-                com.tencent.mm.plugin.backup.h.d.aUK().aUL().aUH().a(Long.valueOf(l2), paramString);
+                paramString = com.tencent.mm.plugin.backup.h.d.bxT().bxU().bxQ().b(Long.valueOf(l2));
+                paramString.nY((int)l1);
+                com.tencent.mm.plugin.backup.h.d.bxT().bxU().bxQ().a(Long.valueOf(l2), paramString);
               }
             }
             for (;;)
             {
-              c.l(parambi);
-              AppMethodBeat.o(17456);
+              c.u(parambl);
+              AppMethodBeat.o(21515);
               return 0;
-              ab.e("MicroMsg.BackupItemImg", "writeItem, try take img for hd img failed:%s", new Object[] { str3 });
-              l1 = l3;
-              i = 1;
+              bool = com.tencent.mm.plugin.backup.b.g.b(paramhu, 3, (String)localObject4);
               break;
-              AppMethodBeat.o(17456);
+              bool = com.tencent.mm.plugin.backup.b.g.b(paramhu, 3, str2);
+              break label888;
+              ad.e("MicroMsg.BackupItemImg", "writeItem, try take img for hd img failed:%s", new Object[] { str2 });
+              i = 1;
+              break label914;
+              ad.e("MicroMsg.BackupItemImg", "writeItem BACKUPITEM_IMAGE_HD failed:%s", new Object[] { localObject4 });
+              l2 = l1;
+              l1 = l2;
+              i = 1;
+              break label914;
+              AppMethodBeat.o(21515);
               return -1;
-              paramgx = paramString.fDO;
-              if ((paramgx != null) && (paramgx.startsWith("THUMBNAIL_DIRPATH://"))) {
-                parambi.kk(paramgx);
+              paramhu = paramString.hgl;
+              if ((paramhu != null) && (paramhu.startsWith("THUMBNAIL_DIRPATH://"))) {
+                parambl.nZ(paramhu);
               } else {
-                parambi.kk("THUMBNAIL://" + paramString.fDL);
+                parambl.nZ("THUMBNAIL://" + paramString.deI);
               }
             }
           }
         }
         i = 0;
-        l2 = l1;
       }
     }
   }

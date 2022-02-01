@@ -1,13 +1,16 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
+import java.util.List;
+
 public final class j
-  extends l
+  extends p
 {
-  public String rrW;
-  public String rrX;
-  public int rrY;
-  public int rrZ;
-  public int rsa;
+  public List<String> wVB;
+  
+  public j(List<String> paramList)
+  {
+    this.wVB = paramList;
+  }
 }
 
 

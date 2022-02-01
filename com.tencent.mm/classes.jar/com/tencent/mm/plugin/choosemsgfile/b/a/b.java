@@ -1,25 +1,26 @@
 package com.tencent.mm.plugin.choosemsgfile.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public final class b
 {
-  private static final ThreadPoolExecutor iGX;
+  private static final ThreadPoolExecutor nLr;
   
   static
   {
-    AppMethodBeat.i(54254);
-    iGX = new ThreadPoolExecutor(0, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
-    AppMethodBeat.o(54254);
+    AppMethodBeat.i(123226);
+    nLr = new ThreadPoolExecutor(0, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
+    AppMethodBeat.o(123226);
   }
   
   public static void a(com.tencent.mm.plugin.choosemsgfile.b.b.a parama, a parama1, com.tencent.mm.vending.e.b paramb)
   {
-    AppMethodBeat.i(54253);
-    com.tencent.luggage.g.d.i("MicroMsg.MsgFileMgr", "sumbit() item:%s", new Object[] { parama });
+    AppMethodBeat.i(123225);
+    ad.i("MicroMsg.MsgFileMgr", "sumbit() item:%s", new Object[] { parama });
     Object localObject = null;
     switch (parama.getType())
     {
@@ -28,9 +29,9 @@ public final class b
     }
     while (parama == null)
     {
-      com.tencent.luggage.g.d.e("MicroMsg.MsgFileMgr", "downloadTask is null, return");
-      parama1.bgc();
-      AppMethodBeat.o(54253);
+      ad.e("MicroMsg.MsgFileMgr", "downloadTask is null, return");
+      parama1.bNo();
+      AppMethodBeat.o(123225);
       return;
       parama = new e(parama, parama1, paramb);
       continue;
@@ -42,20 +43,20 @@ public final class b
     }
     if (!parama.checkValid())
     {
-      com.tencent.luggage.g.d.e("MicroMsg.MsgFileMgr", "downloadTask is invalid, return");
-      parama1.bge();
-      AppMethodBeat.o(54253);
+      ad.e("MicroMsg.MsgFileMgr", "downloadTask is invalid, return");
+      parama1.bNq();
+      AppMethodBeat.o(123225);
       return;
     }
-    if (!parama.bgf()) {
-      iGX.submit(parama);
+    if (!parama.bNr()) {
+      nLr.submit(parama);
     }
-    AppMethodBeat.o(54253);
+    AppMethodBeat.o(123225);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.a.b
  * JD-Core Version:    0.7.0.1
  */

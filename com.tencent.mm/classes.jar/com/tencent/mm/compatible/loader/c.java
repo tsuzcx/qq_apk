@@ -5,43 +5,43 @@ import java.lang.reflect.Field;
 
 public final class c<T>
 {
+  private Field bEQ;
   private String classname;
-  private Field erN;
+  private boolean fFP;
   private String fieldName;
-  private boolean inited;
   private Object obj;
   
   public c(Object paramObject, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(51926);
+    AppMethodBeat.i(157479);
     if (paramObject == null)
     {
       paramObject = new IllegalArgumentException("obj cannot be null");
-      AppMethodBeat.o(51926);
+      AppMethodBeat.o(157479);
       throw paramObject;
     }
     this.obj = paramObject;
     this.fieldName = paramString1;
     this.classname = paramString2;
-    AppMethodBeat.o(51926);
+    AppMethodBeat.o(157479);
   }
   
   private void prepare()
   {
-    AppMethodBeat.i(51927);
-    if (this.inited)
+    AppMethodBeat.i(157480);
+    if (this.fFP)
     {
-      AppMethodBeat.o(51927);
+      AppMethodBeat.o(157480);
       return;
     }
-    this.inited = true;
+    this.fFP = true;
     Class localClass = this.obj.getClass();
     while (localClass != null) {
       try
       {
         Field localField1 = localClass.getDeclaredField(this.fieldName);
         localField1.setAccessible(true);
-        this.erN = localField1;
+        this.bEQ = localField1;
         return;
       }
       catch (Exception localException1)
@@ -62,7 +62,7 @@ public final class c<T>
                   continue;
                 }
                 localField2.setAccessible(true);
-                this.erN = localField2;
+                this.bEQ = localField2;
               }
             }
           }
@@ -79,62 +79,62 @@ public final class c<T>
       finally
       {
         localClass.getSuperclass();
-        AppMethodBeat.o(51927);
+        AppMethodBeat.o(157480);
       }
     }
-    AppMethodBeat.o(51927);
+    AppMethodBeat.o(157480);
   }
   
-  public final boolean Mb()
+  public final boolean Xz()
   {
-    AppMethodBeat.i(51930);
+    AppMethodBeat.i(157483);
     prepare();
-    if (this.erN != null)
+    if (this.bEQ != null)
     {
-      AppMethodBeat.o(51930);
+      AppMethodBeat.o(157483);
       return true;
     }
-    AppMethodBeat.o(51930);
+    AppMethodBeat.o(157483);
     return false;
   }
   
   public final T get()
   {
-    AppMethodBeat.i(51928);
+    AppMethodBeat.i(157481);
     prepare();
     Object localObject;
-    if (this.erN == null)
+    if (this.bEQ == null)
     {
       localObject = new NoSuchFieldException();
-      AppMethodBeat.o(51928);
+      AppMethodBeat.o(157481);
       throw ((Throwable)localObject);
     }
     try
     {
-      localObject = this.erN.get(this.obj);
-      AppMethodBeat.o(51928);
+      localObject = this.bEQ.get(this.obj);
+      AppMethodBeat.o(157481);
       return localObject;
     }
     catch (ClassCastException localClassCastException)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("unable to cast object");
-      AppMethodBeat.o(51928);
+      AppMethodBeat.o(157481);
       throw localIllegalArgumentException;
     }
   }
   
   public final void set(T paramT)
   {
-    AppMethodBeat.i(51929);
+    AppMethodBeat.i(157482);
     prepare();
-    if (this.erN == null)
+    if (this.bEQ == null)
     {
       paramT = new NoSuchFieldException();
-      AppMethodBeat.o(51929);
+      AppMethodBeat.o(157482);
       throw paramT;
     }
-    this.erN.set(this.obj, paramT);
-    AppMethodBeat.o(51929);
+    this.bEQ.set(this.obj, paramT);
+    AppMethodBeat.o(157482);
   }
 }
 

@@ -8,6 +8,8 @@ public abstract interface g
   
   public abstract void add(k.a parama, Looper paramLooper);
   
+  public abstract void add(String paramString, k.a parama);
+  
   public abstract void doNotify(String paramString);
   
   public abstract void remove(k.a parama);

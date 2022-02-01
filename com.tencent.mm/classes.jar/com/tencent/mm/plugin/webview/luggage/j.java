@@ -4,6 +4,8 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -11,75 +13,90 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.xweb.WebView;
 
 public class j
   extends FrameLayout
 {
-  View Qz;
-  View ixK;
-  FrameLayout ixL;
-  FrameLayout ixM;
-  private boolean ixN;
-  private boolean ixO;
-  private boolean ixP;
-  private boolean ixQ;
-  private boolean ixR;
-  private int ixS;
-  private int ixT;
-  private ObjectAnimator ixV;
+  private int Ao;
+  private boolean ldA;
+  private boolean ldB;
+  private boolean ldC;
+  private int ldD;
+  private int ldE;
+  private ObjectAnimator ldG;
+  protected View ldv;
+  protected FrameLayout ldw;
+  protected FrameLayout ldx;
+  private boolean ldy;
+  private boolean ldz;
+  protected View mContentView;
   private int mTouchSlop;
-  private int tW;
   
   public j(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(6158);
-    this.ixN = true;
-    this.ixO = false;
-    this.ixP = false;
-    this.ixQ = false;
-    this.ixR = false;
-    this.ixV = null;
+    AppMethodBeat.i(78359);
+    this.ldy = true;
+    this.ldz = false;
+    this.ldA = false;
+    this.ldB = false;
+    this.ldC = false;
+    this.ldG = null;
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    AppMethodBeat.o(6158);
+    AppMethodBeat.o(78359);
   }
   
-  private void aJD()
+  private boolean Cl()
   {
-    AppMethodBeat.i(6161);
-    pe(0);
-    this.ixQ = false;
-    this.ixP = false;
-    this.ixR = false;
-    AppMethodBeat.o(6161);
+    AppMethodBeat.i(78365);
+    ad.d("MicroMsg.AppBrandPullDownView", "canOverScroll, scrollY = %d, topY = %d", new Object[] { Integer.valueOf(this.mContentView.getScrollY()), Integer.valueOf(this.mContentView.getTop()) });
+    if ((this.mContentView instanceof WebView))
+    {
+      if (((WebView)this.mContentView).getWebScrollY() == 0)
+      {
+        AppMethodBeat.o(78365);
+        return true;
+      }
+      AppMethodBeat.o(78365);
+      return false;
+    }
+    if ((this.mContentView instanceof RecyclerView))
+    {
+      if ((((LinearLayoutManager)((RecyclerView)this.mContentView).getLayoutManager()).jO() == 0) && (this.mContentView.getScrollY() == 0))
+      {
+        AppMethodBeat.o(78365);
+        return true;
+      }
+      AppMethodBeat.o(78365);
+      return false;
+    }
+    if (this.mContentView.getScrollY() == 0)
+    {
+      AppMethodBeat.o(78365);
+      return true;
+    }
+    AppMethodBeat.o(78365);
+    return false;
   }
   
-  private int getMaxOverScrollDistance()
+  private void tx(int paramInt)
   {
-    AppMethodBeat.i(6164);
-    int i = getHeight();
-    AppMethodBeat.o(6164);
-    return i;
-  }
-  
-  private void pe(int paramInt)
-  {
-    AppMethodBeat.i(6167);
-    int i = (int)this.ixM.getTranslationY();
+    AppMethodBeat.i(78369);
+    int i = (int)this.ldx.getTranslationY();
     if (i == paramInt)
     {
-      AppMethodBeat.o(6167);
+      AppMethodBeat.o(78369);
       return;
     }
-    ab.i("MicroMsg.AppBrandPullDownView", "fastScrollTo from = %s, to = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
-    if (this.ixV != null) {
-      this.ixV.cancel();
+    ad.i("MicroMsg.AppBrandPullDownView", "fastScrollTo from = %s, to = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+    if (this.ldG != null) {
+      this.ldG.cancel();
     }
     long l = (Math.abs(i - paramInt) / getStayHeight() * 250.0F);
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.ixM, "translationY", new float[] { i, paramInt });
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this.ldx, "translationY", new float[] { i, paramInt });
     localObjectAnimator.setDuration(Math.min(l, 250L));
     localObjectAnimator.setInterpolator(new DecelerateInterpolator());
     localObjectAnimator.start();
@@ -87,71 +104,87 @@ public class j
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        AppMethodBeat.i(6157);
-        ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        AppMethodBeat.o(6157);
+        AppMethodBeat.i(78358);
+        float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+        j.this.tw((int)f);
+        AppMethodBeat.o(78358);
       }
     });
-    this.ixV = localObjectAnimator;
-    AppMethodBeat.o(6167);
+    this.ldG = localObjectAnimator;
+    AppMethodBeat.o(78369);
   }
   
-  private boolean vq()
+  protected void bkk()
   {
-    AppMethodBeat.i(6163);
-    if ((this.Qz instanceof WebView))
-    {
-      if (((WebView)this.Qz).getWebScrollY() == 0)
-      {
-        AppMethodBeat.o(6163);
-        return true;
-      }
-      AppMethodBeat.o(6163);
-      return false;
-    }
-    if (this.Qz.getScrollY() == 0)
-    {
-      AppMethodBeat.o(6163);
-      return true;
-    }
-    AppMethodBeat.o(6163);
-    return false;
+    AppMethodBeat.i(78363);
+    tx(0);
+    this.ldB = false;
+    this.ldA = false;
+    this.ldC = false;
+    AppMethodBeat.o(78363);
+  }
+  
+  protected void bkl() {}
+  
+  protected int getMaxOverScrollDistance()
+  {
+    AppMethodBeat.i(78366);
+    int i = getHeight();
+    AppMethodBeat.o(78366);
+    return i;
   }
   
   protected int getOpenHeight()
   {
-    AppMethodBeat.i(6165);
-    int i = this.ixK.getHeight();
-    AppMethodBeat.o(6165);
+    AppMethodBeat.i(78367);
+    int i = this.ldv.getHeight();
+    AppMethodBeat.o(78367);
     return i;
   }
   
   protected int getStayHeight()
   {
-    AppMethodBeat.i(6166);
-    int i = this.ixK.getHeight();
-    AppMethodBeat.o(6166);
+    AppMethodBeat.i(78368);
+    int i = this.ldv.getHeight();
+    AppMethodBeat.o(78368);
     return i;
+  }
+  
+  public void j(View paramView1, View paramView2)
+  {
+    AppMethodBeat.i(78360);
+    removeAllViews();
+    this.ldv = paramView1;
+    this.ldw = new FrameLayout(getContext());
+    this.ldw.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    this.ldw.addView(paramView1);
+    this.mContentView = paramView2;
+    this.ldx = new FrameLayout(getContext());
+    this.ldx.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+    this.ldx.addView(paramView2);
+    addView(this.ldw);
+    addView(this.ldx);
+    AppMethodBeat.o(78360);
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(6159);
-    if (this.ixN)
+    AppMethodBeat.i(78361);
+    if (this.ldy)
     {
-      boolean bool = this.ixR;
-      AppMethodBeat.o(6159);
+      boolean bool = this.ldC;
+      AppMethodBeat.o(78361);
       return bool;
     }
     int i = paramMotionEvent.getAction();
     if ((i == 3) || (i == 1))
     {
-      AppMethodBeat.o(6159);
+      AppMethodBeat.o(78361);
       return false;
     }
-    if (this.ixQ)
+    if (this.ldB)
     {
-      AppMethodBeat.o(6159);
+      AppMethodBeat.o(78361);
       return true;
     }
     switch (i)
@@ -165,49 +198,49 @@ public class j
       {
         for (;;)
         {
-          AppMethodBeat.o(6159);
+          AppMethodBeat.o(78361);
           return false;
-          if (vq())
+          if (Cl())
           {
-            this.ixS = ((int)paramMotionEvent.getX());
-            this.ixT = ((int)paramMotionEvent.getY());
-            this.tW = ((int)paramMotionEvent.getY());
+            this.ldD = ((int)paramMotionEvent.getX());
+            this.ldE = ((int)paramMotionEvent.getY());
+            this.Ao = ((int)paramMotionEvent.getY());
           }
         }
-      } while (!vq());
+      } while (!Cl());
       i = (int)paramMotionEvent.getX();
       k = (int)paramMotionEvent.getY();
-      j = this.ixS;
-      k -= this.ixT;
+      j = this.ldD;
+      k -= this.ldE;
     } while ((Math.abs(k) <= this.mTouchSlop) || (Math.abs(k) <= Math.abs(i - j)) || (k <= 0));
-    this.ixQ = true;
-    AppMethodBeat.o(6159);
+    this.ldB = true;
+    AppMethodBeat.o(78361);
     return true;
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(6160);
-    if (this.ixN)
+    AppMethodBeat.i(78362);
+    if (this.ldy)
     {
-      if (this.ixR) {
-        aJD();
+      if (this.ldC) {
+        bkk();
       }
-      boolean bool = this.ixR;
-      AppMethodBeat.o(6160);
+      boolean bool = this.ldC;
+      AppMethodBeat.o(78362);
       return bool;
     }
     switch (paramMotionEvent.getAction())
     {
     default: 
-      AppMethodBeat.o(6160);
+      AppMethodBeat.o(78362);
       return false;
     case 0: 
-      this.tW = ((int)paramMotionEvent.getY());
-      AppMethodBeat.o(6160);
+      this.Ao = ((int)paramMotionEvent.getY());
+      AppMethodBeat.o(78362);
       return true;
     case 2: 
-      int k = (int)paramMotionEvent.getY() - this.tW;
+      int k = (int)paramMotionEvent.getY() - this.Ao;
       int i = k >> 1;
       int j = getMaxOverScrollDistance();
       if (i > j) {
@@ -216,42 +249,46 @@ public class j
       for (;;)
       {
         j = i;
-        if (this.ixP) {
+        if (this.ldA) {
           j = i + getStayHeight();
         }
         i = Math.max(j, 0);
-        ab.d("MicroMsg.AppBrandPullDownView", "real diff: %d, calc diff: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
-        i = Math.min(getMaxOverScrollDistance(), i);
-        this.ixM.setTranslationY(i);
-        AppMethodBeat.o(6160);
+        ad.d("MicroMsg.AppBrandPullDownView", "real diff: %d, calc diff: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
+        j = Math.min(getMaxOverScrollDistance(), i);
+        this.ldx.setTranslationY(j);
+        tw(i);
+        AppMethodBeat.o(78362);
         return true;
       }
     }
-    if ((this.ixM.getTranslationY() > getOpenHeight()) && (this.ixO))
+    if ((this.ldx.getTranslationY() > getOpenHeight()) && (this.ldz))
     {
-      pe(getStayHeight());
-      this.ixQ = true;
-      this.ixP = true;
-      this.ixR = true;
+      tx(getStayHeight());
+      if (!this.ldA) {
+        bkl();
+      }
+      this.ldB = true;
+      this.ldA = true;
+      this.ldC = true;
     }
     for (;;)
     {
-      AppMethodBeat.o(6160);
+      AppMethodBeat.o(78362);
       return true;
-      aJD();
+      bkk();
     }
   }
   
   public void setNeedStay(boolean paramBoolean)
   {
-    this.ixO = paramBoolean;
+    this.ldz = paramBoolean;
   }
   
   public void setPullDownBackgroundColor(int paramInt)
   {
-    AppMethodBeat.i(6162);
-    this.ixL.setBackgroundColor(paramInt);
-    AppMethodBeat.o(6162);
+    AppMethodBeat.i(78364);
+    this.ldw.setBackgroundColor(paramInt);
+    AppMethodBeat.o(78364);
   }
   
   public void setPullDownEnabled(boolean paramBoolean)
@@ -259,14 +296,16 @@ public class j
     if (!paramBoolean) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
-      this.ixN = paramBoolean;
+      this.ldy = paramBoolean;
       return;
     }
   }
+  
+  protected void tw(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.j
  * JD-Core Version:    0.7.0.1
  */

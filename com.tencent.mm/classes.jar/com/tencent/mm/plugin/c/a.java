@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.c;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.cg.h.d;
 import com.tencent.mm.kernel.b.c;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storagebase.h;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,54 +13,60 @@ import java.util.regex.Pattern;
 public final class a
   implements com.tencent.mm.kernel.api.a, com.tencent.mm.kernel.api.e, c
 {
-  private static final HashMap<Integer, h.d> baseDBFactories;
-  private static a gNu;
-  private com.tencent.mm.storage.g gNv;
+  private static final HashMap<Integer, h.b> baseDBFactories;
+  private static a iBc;
+  private com.tencent.mm.storage.g iBd;
   
   static
   {
-    AppMethodBeat.i(79051);
+    AppMethodBeat.i(151424);
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("AddContactAntispamTicket".hashCode()), new a.1());
-    AppMethodBeat.o(79051);
+    localHashMap.put(Integer.valueOf("AddContactAntispamTicket".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return com.tencent.mm.storage.g.SQL_CREATE;
+      }
+    });
+    AppMethodBeat.o(151424);
   }
   
-  public static a asD()
+  public static a aLf()
   {
     try
     {
-      AppMethodBeat.i(79047);
-      if (gNu == null) {
-        gNu = new a();
+      AppMethodBeat.i(151420);
+      if (iBc == null) {
+        iBc = new a();
       }
-      a locala = gNu;
-      AppMethodBeat.o(79047);
+      a locala = iBc;
+      AppMethodBeat.o(151420);
       return locala;
     }
     finally {}
   }
   
-  public static boolean v(CharSequence paramCharSequence)
+  public static boolean z(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(79049);
-    if ((bo.aa(paramCharSequence)) || (!com.tencent.mm.kernel.g.RJ().eHg))
+    AppMethodBeat.i(151422);
+    if ((bt.ai(paramCharSequence)) || (!com.tencent.mm.kernel.g.afz().gcn))
     {
-      AppMethodBeat.o(79049);
+      AppMethodBeat.o(151422);
       return false;
     }
     try
     {
-      String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("ClipProtectPattern");
-      if (!bo.isNullOrNil(str))
+      String str = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).Zd().getValue("ClipProtectPattern");
+      if (!bt.isNullOrNil(str))
       {
         str = new String(Base64.decode(str, 0));
-        if (!bo.isNullOrNil(str))
+        if (!bt.isNullOrNil(str))
         {
           boolean bool = Pattern.compile(str).matcher(paramCharSequence).matches();
           if (bool)
           {
-            AppMethodBeat.o(79049);
+            AppMethodBeat.o(151422);
             return true;
           }
         }
@@ -68,21 +74,21 @@ public final class a
     }
     catch (Exception paramCharSequence)
     {
-      AppMethodBeat.o(79049);
+      AppMethodBeat.o(151422);
     }
     return false;
   }
   
-  public final com.tencent.mm.storage.g Zb()
+  public final com.tencent.mm.storage.g aqn()
   {
-    AppMethodBeat.i(79048);
-    com.tencent.mm.kernel.g.RJ().QQ();
-    com.tencent.mm.storage.g localg = this.gNv;
-    AppMethodBeat.o(79048);
+    AppMethodBeat.i(151421);
+    com.tencent.mm.kernel.g.afz().aeD();
+    com.tencent.mm.storage.g localg = this.iBd;
+    AppMethodBeat.o(151421);
     return localg;
   }
   
-  public final HashMap<Integer, h.d> collectDatabaseFactory()
+  public final HashMap<Integer, h.b> collectDatabaseFactory()
   {
     return baseDBFactories;
   }
@@ -91,14 +97,14 @@ public final class a
   
   public final void onDataBaseOpened(h paramh1, h paramh2)
   {
-    AppMethodBeat.i(79050);
-    this.gNv = new com.tencent.mm.storage.g(paramh1);
-    AppMethodBeat.o(79050);
+    AppMethodBeat.i(151423);
+    this.iBd = new com.tencent.mm.storage.g(paramh1);
+    AppMethodBeat.o(151423);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.c.a
  * JD-Core Version:    0.7.0.1
  */

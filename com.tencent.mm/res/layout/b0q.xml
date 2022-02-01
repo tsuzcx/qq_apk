@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp" android:layout_marginBottom="@dimen/dp"
+<LinearLayout android:orientation="horizontal" android:background="@color/a0k" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center" android:id="@id/f12" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" android:layout_marginEnd="@dimen/lb" style="@style/a02" />
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/a6q" android:layout_gravity="center" android:id="@id/f13" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ey2" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/a8v" android:paddingLeft="15.0dip" android:paddingTop="20.0dip" android:paddingRight="15.0dip" android:paddingBottom="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:gravity="center_horizontal" android:id="@id/ta" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/aq9" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/y4" android:id="@id/e3t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="nickname" android:singleLine="true" android:layout_weight="1.0" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/y4" android:id="@id/g_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="12:00" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:id="@id/gam" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="36.0dip" android:text="title" android:singleLine="true" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

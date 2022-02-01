@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class cw
   extends b
 {
-  public cw.a cqo;
-  
   public cw()
   {
     this((byte)0);
@@ -15,11 +12,8 @@ public final class cw
   
   private cw(byte paramByte)
   {
-    AppMethodBeat.i(62219);
-    this.cqo = new cw.a();
-    this.ymq = false;
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(62219);
   }
 }
 

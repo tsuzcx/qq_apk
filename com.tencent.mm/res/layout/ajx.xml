@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:background="@drawable/a53" android:layout_width="fill_parent" android:layout_height="@dimen/n9">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dli" android:layout_width="@dimen/nd" android:layout_height="@dimen/nd" android:layout_marginLeft="28.0dip" android:layout_marginRight="24.0dip" android:contentDescription="@string/sg" app:iconColor="@color/a3h" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/a3h" android:id="@id/dlj" android:layout_width="0.0dip" android:text="@string/a8s" android:layout_weight="1.0" style="@style/lg" />
-    </LinearLayout>
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="@dimen/a9j" android:baselineAligned="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/cus" android:layout_width="@dimen/a9n" android:layout_height="@dimen/a9j">
+        <ImageView android:id="@id/g75" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/btc" />
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyAutoScrollItem android:scrollbarStyle="insideOverlay" android:id="@id/k4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/k7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bpl" android:scaleType="fitXY" />
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bpk" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <ImageView android:layout_gravity="bottom" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d" android:layout_marginBottom="3.0dip" android:src="@drawable/btb" />
+    <RelativeLayout android:id="@id/cut" android:layout_width="@dimen/a9n" android:layout_height="@dimen/a9j" android:layout_marginLeft="@dimen/d">
+        <ImageView android:id="@id/g76" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/btc" />
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyAutoScrollItem android:scrollbarStyle="insideOverlay" android:id="@id/k5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/k8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bpl" android:scaleType="fitXY" />
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bpk" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/cuu" android:layout_width="@dimen/a9n" android:layout_height="@dimen/a9j" android:layout_marginLeft="@dimen/d">
+        <ImageView android:id="@id/g77" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/btc" />
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyAutoScrollItem android:scrollbarStyle="insideOverlay" android:id="@id/k6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/k9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bpl" android:scaleType="fitXY" />
+            <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bpk" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>

@@ -11,14 +11,14 @@ final class CardGiftImageUI$3
   
   public final void onCreateMMMenu(l paraml)
   {
-    AppMethodBeat.i(88395);
-    paraml.e(0, this.kuL.getString(2131302871));
-    AppMethodBeat.o(88395);
+    AppMethodBeat.i(113320);
+    paraml.c(0, this.nAb.getString(2131762783));
+    AppMethodBeat.o(113320);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardGiftImageUI.3
  * JD-Core Version:    0.7.0.1
  */

@@ -7,16 +7,16 @@ import oicq.wlogin_sdk.tools.util;
 public final class ag
   extends a
 {
-  public int CNS = 0;
+  public int KjA = 0;
   
   public ag()
   {
-    this.CMD = 324;
+    this.Kik = 324;
   }
   
   public final byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5)
   {
-    AppMethodBeat.i(96474);
+    AppMethodBeat.i(88113);
     int m;
     int k;
     if (paramArrayOfByte1 != null)
@@ -48,7 +48,7 @@ public final class ag
         j = k + 1;
       }
       byte[] arrayOfByte = new byte[i + 2];
-      util.O(arrayOfByte, 0, j);
+      util.W(arrayOfByte, 0, j);
       if (paramArrayOfByte1 != null) {
         System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 2, paramArrayOfByte1.length);
       }
@@ -70,12 +70,12 @@ public final class ag
           System.arraycopy(paramArrayOfByte4, 0, arrayOfByte, j, paramArrayOfByte4.length);
         }
         paramArrayOfByte1 = d.a(arrayOfByte, arrayOfByte.length, paramArrayOfByte5);
-        this.CNS = paramArrayOfByte1.length;
-        super.Wr(this.CMD);
-        super.ab(paramArrayOfByte1, paramArrayOfByte1.length);
-        super.ere();
-        paramArrayOfByte1 = super.era();
-        AppMethodBeat.o(96474);
+        this.KjA = paramArrayOfByte1.length;
+        super.agp(this.Kik);
+        super.af(paramArrayOfByte1, paramArrayOfByte1.length);
+        super.fMH();
+        paramArrayOfByte1 = super.fMD();
+        AppMethodBeat.o(88113);
         return paramArrayOfByte1;
       }
       k = 0;

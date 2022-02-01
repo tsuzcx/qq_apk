@@ -22,12 +22,12 @@ public enum SQLiteLintOwnDatabase
   
   static
   {
-    AppMethodBeat.i(94093);
+    AppMethodBeat.i(52937);
     INSTANCE = new SQLiteLintOwnDatabase("INSTANCE", 0);
     $VALUES = new SQLiteLintOwnDatabase[] { INSTANCE };
     ROOT_PATH = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
     sOwnDbDirectory = "";
-    AppMethodBeat.o(94093);
+    AppMethodBeat.o(52937);
   }
   
   private SQLiteLintOwnDatabase() {}
@@ -35,7 +35,7 @@ public enum SQLiteLintOwnDatabase
   private void onCreate(SQLiteDatabase paramSQLiteDatabase)
   {
     int i = 0;
-    AppMethodBeat.i(94089);
+    AppMethodBeat.i(52933);
     SLog.i("SQLiteLint.SQLiteLintOwnDatabase", "onCreate", new Object[0]);
     paramSQLiteDatabase.execSQL(IssueStorage.DB_VERSION_1_CREATE_SQL);
     while (i < IssueStorage.DB_VERSION_1_CREATE_INDEX.length)
@@ -43,14 +43,14 @@ public enum SQLiteLintOwnDatabase
       paramSQLiteDatabase.execSQL(IssueStorage.DB_VERSION_1_CREATE_INDEX[i]);
       i += 1;
     }
-    AppMethodBeat.o(94089);
+    AppMethodBeat.o(52933);
   }
   
   private void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt)
   {
-    AppMethodBeat.i(94090);
+    AppMethodBeat.i(52934);
     SLog.i("SQLiteLint.SQLiteLintOwnDatabase", "onUpgrade oldVersion=%d, newVersion=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1) });
-    AppMethodBeat.o(94090);
+    AppMethodBeat.o(52934);
   }
   
   /* Error */
@@ -186,25 +186,25 @@ public enum SQLiteLintOwnDatabase
   
   public static void setOwnDbDirectory(Context paramContext)
   {
-    AppMethodBeat.i(94092);
+    AppMethodBeat.i(52936);
     if (!SQLiteLintUtil.isNullOrNil(sOwnDbDirectory))
     {
-      AppMethodBeat.o(94092);
+      AppMethodBeat.o(52936);
       return;
     }
     sOwnDbDirectory = String.format("%s/SQLiteLint-%s/%s/", new Object[] { ROOT_PATH, paramContext.getPackageManager(), "database" });
-    AppMethodBeat.o(94092);
+    AppMethodBeat.o(52936);
   }
   
   public final void closeDatabase()
   {
     try
     {
-      AppMethodBeat.i(94088);
+      AppMethodBeat.i(52932);
       if (this.mIsInitializing)
       {
         IllegalStateException localIllegalStateException = new IllegalStateException("Closed during initialization");
-        AppMethodBeat.o(94088);
+        AppMethodBeat.o(52932);
         throw localIllegalStateException;
       }
     }
@@ -214,12 +214,12 @@ public enum SQLiteLintOwnDatabase
       this.mDatabase.close();
       this.mDatabase = null;
     }
-    AppMethodBeat.o(94088);
+    AppMethodBeat.o(52932);
   }
   
   public final SQLiteDatabase getDatabase()
   {
-    AppMethodBeat.i(94087);
+    AppMethodBeat.i(52931);
     if ((this.mDatabase == null) || (!this.mDatabase.isOpen())) {}
     try
     {
@@ -227,18 +227,18 @@ public enum SQLiteLintOwnDatabase
         this.mDatabase = openOrCreateDatabase();
       }
       SQLiteDatabase localSQLiteDatabase = this.mDatabase;
-      AppMethodBeat.o(94087);
+      AppMethodBeat.o(52931);
       return localSQLiteDatabase;
     }
     finally
     {
-      AppMethodBeat.o(94087);
+      AppMethodBeat.o(52931);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.persistence.SQLiteLintOwnDatabase
  * JD-Core Version:    0.7.0.1
  */

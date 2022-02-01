@@ -1,68 +1,53 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import a.f.b.j;
-import a.l;
-import a.v;
+import android.content.Context;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.f.b;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/MediaConstants;", "", "Capture", "MediaEnum", "MediaType", "SourceType", "plugin-appbrand-integration_release"})
-public abstract interface m
+public final class m
+  extends a
 {
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/MediaConstants$MediaEnum$Parser;", "", "()V", "parse", "", "json", "Lorg/json/JSONObject;", "field", "", "default", "enums", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/MediaConstants$MediaEnum;", "(Lorg/json/JSONObject;Ljava/lang/String;Ljava/lang/String;[Lcom/tencent/mm/plugin/appbrand/jsapi/media/MediaConstants$MediaEnum;)I", "plugin-appbrand-integration_release"})
-  public static final class b$b
+  public static final int CTRL_INDEX = 217;
+  public static final String NAME = "saveImageToPhotosAlbum";
+  
+  final boolean In(String paramString)
   {
-    static
+    AppMethodBeat.i(139881);
+    boolean bool = bt.nullAsNil(paramString).toLowerCase().contains("image");
+    AppMethodBeat.o(139881);
+    return bool;
+  }
+  
+  final String Io(String paramString)
+  {
+    AppMethodBeat.i(139882);
+    paramString = b.ahd(paramString);
+    AppMethodBeat.o(139882);
+    return paramString;
+  }
+  
+  final void Ip(String paramString)
+  {
+    AppMethodBeat.i(139883);
+    aq.f(new Runnable()
     {
-      AppMethodBeat.i(143834);
-      hSF = new b();
-      AppMethodBeat.o(143834);
-    }
-    
-    public static int a(JSONObject paramJSONObject, String paramString1, String paramString2, m.b[] paramArrayOfb)
-    {
-      AppMethodBeat.i(143833);
-      j.q(paramJSONObject, "json");
-      j.q(paramString1, "field");
-      j.q(paramString2, "default");
-      j.q(paramArrayOfb, "enums");
-      paramJSONObject = paramJSONObject.optString(paramString1, paramString2);
-      int k = paramArrayOfb.length;
-      int i = 0;
-      int j = 0;
-      if (j < k)
+      public final void run()
       {
-        paramString1 = paramArrayOfb[j];
-        j.p(paramJSONObject, "value");
-        paramString2 = (CharSequence)paramJSONObject;
-        String str = paramString1.getName();
-        if (str == null)
-        {
-          paramJSONObject = new v("null cannot be cast to non-null type java.lang.String");
-          AppMethodBeat.o(143833);
-          throw paramJSONObject;
-        }
-        str = str.toLowerCase();
-        j.p(str, "(this as java.lang.String).toLowerCase()");
-        if (!a.l.m.a(paramString2, (CharSequence)str, false)) {
-          break label154;
-        }
-        i = paramString1.aDR() | i;
+        AppMethodBeat.i(139880);
+        Toast.makeText(aj.getContext(), aj.getContext().getString(2131757969, new Object[] { b.eAT() }), 1).show();
+        AppMethodBeat.o(139880);
       }
-      label154:
-      for (;;)
-      {
-        j += 1;
-        break;
-        AppMethodBeat.o(143833);
-        return i;
-      }
-    }
+    });
+    AppMethodBeat.o(139883);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.m
  * JD-Core Version:    0.7.0.1
  */

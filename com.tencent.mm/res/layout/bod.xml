@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/cg"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/h8u" android:background="@color/a7c" android:focusable="false" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@drawable/aq8" android:scaleType="centerCrop" android:layout_centerVertical="true" android:contentDescription="@string/a1d" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5">
+        <TextView android:textSize="@dimen/i" android:textColor="@color/km" android:id="@id/h8x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:text="@string/hh1" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:shrinkColumns="0" android:layout_toLeftOf="@id/h8x" android:layout_centerVertical="true" xmlns:app="http://schemas.android.com/apk/res-auto">
+            <TableRow>
+                <TextView android:textSize="@dimen/i" android:textColor="@color/y4" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/h8v" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" android:includeFontPadding="false" />
+                <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:gravity="center_vertical" android:id="@id/h8w" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ci" android:includeFontPadding="false" />
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+</LinearLayout>

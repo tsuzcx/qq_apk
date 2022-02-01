@@ -1,15 +1,56 @@
 package android.arch.a.a;
 
-import java.util.HashMap;
+import java.util.concurrent.Executor;
 
-public final class a<K, V>
-  extends b<K, V>
+public class a
+  extends c
 {
-  private HashMap<K, e<K, V>> a = new HashMap();
-  
-  public final boolean contains(K paramK)
+  private static volatile a a;
+  private static final Executor d = new Executor()
   {
-    return this.a.containsKey(paramK);
+    public final void execute(Runnable paramAnonymousRunnable)
+    {
+      a.a().b(paramAnonymousRunnable);
+    }
+  };
+  private static final Executor e = new Executor()
+  {
+    public final void execute(Runnable paramAnonymousRunnable)
+    {
+      a.a().a(paramAnonymousRunnable);
+    }
+  };
+  private c b = this.c;
+  private c c = new b();
+  
+  public static a a()
+  {
+    if (a != null) {
+      return a;
+    }
+    try
+    {
+      if (a == null) {
+        a = new a();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public final void a(Runnable paramRunnable)
+  {
+    this.b.a(paramRunnable);
+  }
+  
+  public final void b(Runnable paramRunnable)
+  {
+    this.b.b(paramRunnable);
+  }
+  
+  public final boolean b()
+  {
+    return this.b.b();
   }
 }
 

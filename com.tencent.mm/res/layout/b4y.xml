@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:background="@drawable/b0w" style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/kx" android:textColor="@color/w_" android:textColorHint="#4d000000" android:id="@id/lh" android:background="@drawable/b9d" android:padding="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" android:maxLength="128" android:inputType="text" android:textCursorDrawable="@null" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fdc" android:background="#fff6f6f6" android:layout_width="fill_parent" android:layout_height="@dimen/aat" android:layout_marginTop="@dimen/l2">
-        <ImageView android:id="@id/fdd" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/dp" android:src="@raw/actionbar_icon_dark_add" />
-        <TextView android:textSize="@dimen/m2" android:textColor="#ff0c4f8e" android:id="@id/fde" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/cpi" android:background="#fff6f6f6" android:paddingLeft="@dimen/dp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp">
-            <TextView android:textSize="@dimen/m2" android:textColor="#80000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:text="地址信息" />
-            <TextView android:textSize="@dimen/m2" android:textColor="#ff0c4f8e" android:id="@id/fdf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="更换" android:layout_toLeftOf="@id/fdg" />
-            <TextView android:textSize="@dimen/m2" android:textColor="#ff0c4f8e" android:id="@id/fdg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dp" android:text="删除" android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <TextView android:textSize="@dimen/m2" android:textColor="#e6000000" android:id="@id/e6d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:layout_marginTop="@dimen/dp" />
-        <TextView android:textSize="@dimen/m2" android:textColor="#e6000000" android:id="@id/e6e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:layout_marginTop="@dimen/dl" android:layout_marginRight="@dimen/dl" android:layout_marginBottom="@dimen/dp" />
-    </LinearLayout>
+    <GridView android:gravity="center" android:id="@id/fem" android:paddingTop="5.0dip" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:horizontalSpacing="5.0dip" android:verticalSpacing="5.0dip" android:numColumns="3" />
 </LinearLayout>

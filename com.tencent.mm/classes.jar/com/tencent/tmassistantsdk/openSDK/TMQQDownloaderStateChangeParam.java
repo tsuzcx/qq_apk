@@ -25,7 +25,7 @@ public class TMQQDownloaderStateChangeParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.TMQQDownloaderStateChangeParam
  * JD-Core Version:    0.7.0.1
  */

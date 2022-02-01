@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bs.b;
+import com.tencent.mm.bu.b;
 
 public final class c
   extends a
@@ -14,42 +14,42 @@ public final class c
     super(paramContext, paramb);
   }
   
-  protected final boolean dQR()
+  protected final boolean fiM()
   {
     return false;
   }
   
-  public final boolean dQS()
+  public final boolean fiN()
   {
     return false;
   }
   
   public final Rect getAliveRect()
   {
-    AppMethodBeat.i(116421);
+    AppMethodBeat.i(9399);
     if (super.getAliveRect().isEmpty())
     {
       localRect = getBoardRect();
-      AppMethodBeat.o(116421);
+      AppMethodBeat.o(9399);
       return localRect;
     }
     Rect localRect = super.getAliveRect();
-    AppMethodBeat.o(116421);
+    AppMethodBeat.o(9399);
     return localRect;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(116422);
+    AppMethodBeat.i(9400);
     paramCanvas.drawColor(0);
-    paramCanvas.setMatrix(this.ccT);
+    paramCanvas.setMatrix(this.cRA);
     getPresenter().onDraw(paramCanvas);
-    AppMethodBeat.o(116422);
+    AppMethodBeat.o(9400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.b.c
  * JD-Core Version:    0.7.0.1
  */

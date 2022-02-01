@@ -1,91 +1,105 @@
 package com.tencent.mm.plugin.webview.luggage.c;
 
+import android.os.Bundle;
 import android.os.Looper;
 import android.webkit.URLUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
-import com.tencent.mm.plugin.webview.model.am;
+import com.tencent.mm.plugin.webview.model.an;
 import com.tencent.mm.plugin.webview.modeltools.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public final class b
 {
-  public static JSONObject BJ(String paramString)
+  public static JSONObject HG(String paramString)
   {
-    AppMethodBeat.i(6505);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(78767);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(6505);
+      AppMethodBeat.o(78767);
       return null;
     }
     try
     {
       paramString = new JSONObject(paramString);
-      AppMethodBeat.o(6505);
+      AppMethodBeat.o(78767);
       return paramString;
     }
     catch (Exception paramString)
     {
-      ab.e("MicroMsg.LuggageWebViewUtil", paramString.getMessage());
-      AppMethodBeat.o(6505);
+      ad.e("MicroMsg.LuggageWebViewUtil", paramString.getMessage());
+      AppMethodBeat.o(78767);
     }
     return null;
   }
   
-  public static boolean Fl(String paramString)
+  public static boolean Ng(String paramString)
   {
-    AppMethodBeat.i(153129);
-    if ((!bo.isNullOrNil(paramString)) && ((URLUtil.isHttpsUrl(paramString)) || (URLUtil.isHttpUrl(paramString))))
+    AppMethodBeat.i(78769);
+    if ((!bt.isNullOrNil(paramString)) && ((URLUtil.isHttpsUrl(paramString)) || (URLUtil.isHttpUrl(paramString))))
     {
-      AppMethodBeat.o(153129);
+      AppMethodBeat.o(78769);
       return true;
     }
-    AppMethodBeat.o(153129);
+    AppMethodBeat.o(78769);
     return false;
   }
   
-  public static WebViewJSSDKFileItem agY(String paramString)
+  public static WebViewJSSDKFileItem awq(String paramString)
   {
-    AppMethodBeat.i(6506);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(78768);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.e("MicroMsg.LuggageWebViewUtil", "get by local id error, local id is null or nil");
-      AppMethodBeat.o(6506);
+      ad.e("MicroMsg.LuggageWebViewUtil", "get by local id error, local id is null or nil");
+      AppMethodBeat.o(78768);
       return null;
     }
-    if (ah.brt())
+    if (aj.cbv())
     {
-      paramString = g.dcE().ahh(paramString);
-      AppMethodBeat.o(6506);
+      paramString = g.emF().awC(paramString);
+      AppMethodBeat.o(78768);
       return paramString;
     }
-    paramString = (WebViewJSSDKFileItem)f.a("com.tencent.mm", new IPCString(paramString), b.a.class);
-    AppMethodBeat.o(6506);
+    paramString = (WebViewJSSDKFileItem)h.a("com.tencent.mm", new IPCString(paramString), b.class);
+    AppMethodBeat.o(78768);
     return paramString;
   }
   
   public static void runOnUiThread(Runnable paramRunnable)
   {
-    AppMethodBeat.i(6504);
+    AppMethodBeat.i(78766);
     if (Thread.currentThread() != Looper.getMainLooper().getThread())
     {
-      al.d(paramRunnable);
-      AppMethodBeat.o(6504);
+      aq.f(paramRunnable);
+      AppMethodBeat.o(78766);
       return;
     }
     paramRunnable.run();
-    AppMethodBeat.o(6504);
+    AppMethodBeat.o(78766);
   }
+  
+  public static class a
+    implements k<Bundle, Bundle>
+  {}
+  
+  static class b
+    implements k<IPCString, WebViewJSSDKFileItem>
+  {}
+  
+  public static class c
+    implements k<Bundle, Bundle>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.c.b
  * JD-Core Version:    0.7.0.1
  */

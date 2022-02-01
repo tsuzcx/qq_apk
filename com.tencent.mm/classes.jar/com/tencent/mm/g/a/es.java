@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class es
   extends b
 {
-  public es.a csz;
+  public a dhk;
+  public b dhl;
   
   public es()
   {
@@ -15,16 +16,29 @@ public final class es
   
   private es(byte paramByte)
   {
-    AppMethodBeat.i(15764);
-    this.csz = new es.a();
-    this.ymq = false;
+    AppMethodBeat.i(116010);
+    this.dhk = new a();
+    this.dhl = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15764);
+    AppMethodBeat.o(116010);
+  }
+  
+  public static final class a
+  {
+    public String cLR;
+    public boolean clear;
+    public int direction;
+  }
+  
+  public static final class b
+  {
+    public boolean dfO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.es
  * JD-Core Version:    0.7.0.1
  */

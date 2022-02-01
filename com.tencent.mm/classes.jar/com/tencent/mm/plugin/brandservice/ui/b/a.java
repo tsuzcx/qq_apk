@@ -1,116 +1,137 @@
 package com.tencent.mm.plugin.brandservice.ui.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.v;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.brandservice.ui.timeline.offenread.d;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.plugin.brandservice.b.h;
+import com.tencent.mm.plugin.brandservice.ui.timeline.offenread.e;
+import com.tencent.mm.plugin.expt.a.b;
+import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.s;
 
 public final class a
 {
-  public static int kiQ = 180;
-  private static long kiR = 43200000L;
-  private static long kiS = 0L;
-  private static boolean kiT = false;
+  public static int nmA;
+  private static long nmB;
+  private static long nmC;
+  private static boolean nmD;
   
-  public static boolean a(com.tencent.mm.storage.q paramq, com.tencent.mm.af.q paramq1)
+  static
   {
-    AppMethodBeat.i(152661);
-    if (paramq == null)
+    AppMethodBeat.i(6235);
+    h localh = h.mSY;
+    nmA = h.bCl();
+    nmB = 43200000L;
+    nmC = 0L;
+    nmD = false;
+    AppMethodBeat.o(6235);
+  }
+  
+  public static boolean a(s params, v paramv)
+  {
+    AppMethodBeat.i(6233);
+    if (params == null)
     {
-      AppMethodBeat.o(152661);
+      AppMethodBeat.o(6233);
       return false;
     }
-    paramq.ywB = d.GO(paramq.field_talker);
-    if ((paramq1 != null) && ((paramq1.type == 5) || (paramq1.type == 7) || (paramq1.type == 8)))
+    params.Feq = e.Pp(params.field_talker);
+    if ((paramv != null) && ((paramv.type == 5) || (paramv.type == 7) || (paramv.type == 10) || (paramv.type == 8)))
     {
-      AppMethodBeat.o(152661);
+      AppMethodBeat.o(6233);
       return true;
     }
-    if (paramq.dvZ())
+    if (params.eJT())
     {
-      AppMethodBeat.o(152661);
+      ad.d("MicroMsg.BizTimeLineConfigUtil", "biz flag %d return true, bizClientMsgId:%s", new Object[] { Integer.valueOf(params.field_bitFlag), params.field_bizClientMsgId });
+      AppMethodBeat.o(6233);
       return true;
     }
-    if ((sM(2)) && (paramq.ywB))
+    if ((yF(2)) && (params.Feq))
     {
-      AppMethodBeat.o(152661);
+      AppMethodBeat.o(6233);
       return true;
     }
-    if (sM(1))
+    if (yF(1))
     {
-      paramq = ((j)g.E(j.class)).YA().arw(paramq.field_talker);
-      if ((paramq != null) && (paramq.Oa()))
+      params = ((k)g.ab(k.class)).apM().aHY(params.field_talker);
+      if ((params != null) && (params.ZS()))
       {
-        AppMethodBeat.o(152661);
+        AppMethodBeat.o(6233);
         return true;
       }
     }
-    AppMethodBeat.o(152661);
+    AppMethodBeat.o(6233);
     return false;
   }
   
-  public static long aZU()
+  public static long bGs()
   {
-    if (kiR <= 0L) {
-      kiR = 43200000L;
+    if (nmB <= 0L) {
+      nmB = 43200000L;
     }
-    return kiR;
+    return nmB;
   }
   
-  public static void aZV()
+  public static void bGt()
   {
-    AppMethodBeat.i(152662);
-    if (((com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lWe, 0) == 1) {}
+    AppMethodBeat.i(6234);
+    if (((b)g.ab(b.class)).a(b.a.pqY, 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      kiT = bool;
-      if (as.eu("brandService", 1).decodeInt("BizTimeLineShowDigest", 0) == 1)
+      nmD = bool;
+      if (ax.aFD("brandService").decodeInt("BizTimeLineShowDigest", 0) == 1)
       {
-        ab.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest force show");
-        kiT = true;
+        ad.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest force show");
+        nmD = true;
       }
-      ab.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest: %b", new Object[] { Boolean.valueOf(kiT) });
-      AppMethodBeat.o(152662);
+      ad.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest: %b", new Object[] { Boolean.valueOf(nmD) });
+      AppMethodBeat.o(6234);
       return;
     }
   }
   
-  public static boolean aZW()
+  public static boolean bGu()
   {
-    return kiT;
+    return nmD;
   }
   
-  public static boolean f(com.tencent.mm.storage.q paramq)
+  public static boolean bGv()
   {
-    AppMethodBeat.i(14446);
-    boolean bool = a(paramq, null);
-    AppMethodBeat.o(14446);
+    return true;
+  }
+  
+  public static boolean f(s params)
+  {
+    AppMethodBeat.i(6232);
+    boolean bool = a(params, null);
+    AppMethodBeat.o(6232);
     return bool;
   }
   
-  public static void ic(long paramLong)
+  public static void nK(long paramLong)
   {
-    kiR = paramLong;
+    nmB = paramLong;
   }
   
-  public static void id(long paramLong)
+  public static void nL(long paramLong)
   {
-    kiS = paramLong;
+    nmC = paramLong;
   }
   
-  public static boolean sM(int paramInt)
+  public static boolean yF(int paramInt)
   {
-    return (kiS & paramInt) != 0L;
+    return (nmC & paramInt) != 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.b.a
  * JD-Core Version:    0.7.0.1
  */

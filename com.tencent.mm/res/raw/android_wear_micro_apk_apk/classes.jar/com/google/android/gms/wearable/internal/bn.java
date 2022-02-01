@@ -5,20 +5,20 @@ import com.google.android.gms.internal.h;
 abstract class bn<T>
   extends a
 {
-  private h<T> TV;
+  private h<T> VK;
   
   public bn(h<T> paramh)
   {
-    this.TV = paramh;
+    this.VK = paramh;
   }
   
-  public final void B(T paramT)
+  public final void K(T paramT)
   {
-    h localh = this.TV;
+    h localh = this.VK;
     if (localh != null)
     {
-      localh.x(paramT);
-      this.TV = null;
+      localh.G(paramT);
+      this.VK = null;
     }
   }
 }

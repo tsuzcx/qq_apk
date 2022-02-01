@@ -1,55 +1,56 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
-import android.content.Context;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.sortview.a;
-import com.tencent.mm.ui.base.sortview.a.a;
-import com.tencent.mm.ui.base.sortview.a.b;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.a.j;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.n.d;
 
 public final class e
-  extends a
 {
-  private static a.b jTh;
-  int Fb;
-  long jTl;
-  String jTm;
-  String jUF;
+  final Activity djj;
+  com.tencent.mm.ui.tools.m mUW;
+  String mUt;
   
-  public e(long paramLong, int paramInt, String paramString)
+  public e(Activity paramActivity, String paramString)
   {
-    super(2, null);
-    this.jTl = paramLong;
-    this.jTm = paramString;
-    this.Fb = paramInt;
+    this.djj = paramActivity;
+    this.mUt = paramString;
   }
   
-  public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
+  public final boolean d(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jUF = "";
-  }
-  
-  public final a.b aWu()
-  {
-    AppMethodBeat.i(14019);
-    if (jTh == null) {
-      jTh = new e.1(this);
+    AppMethodBeat.i(192940);
+    switch (paramInt1)
+    {
+    default: 
+      AppMethodBeat.o(192940);
+      return false;
     }
-    a.b localb = jTh;
-    AppMethodBeat.o(14019);
-    return localb;
-  }
-  
-  public final a.a aWv()
-  {
-    AppMethodBeat.i(14020);
-    e.a locala = new e.a();
-    AppMethodBeat.o(14020);
-    return locala;
+    if ((paramInt2 == -1) && (paramIntent != null))
+    {
+      String str1 = paramIntent.getStringExtra("be_send_card_name");
+      String str2 = paramIntent.getStringExtra("received_card_name");
+      boolean bool = paramIntent.getBooleanExtra("Is_Chatroom", false);
+      paramIntent = paramIntent.getStringExtra("custom_send_text");
+      j.cOB().q(str1, str2, bool);
+      j.cOB().hm(paramIntent, str2);
+      com.tencent.mm.ui.widget.snackbar.b.n(this.djj, this.djj.getString(2131760233));
+    }
+    AppMethodBeat.o(192940);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.e
  * JD-Core Version:    0.7.0.1
  */

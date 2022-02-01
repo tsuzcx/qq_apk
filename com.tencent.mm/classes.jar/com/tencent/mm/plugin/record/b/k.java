@@ -2,58 +2,58 @@ package com.tencent.mm.plugin.record.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.record.a.f;
-import com.tencent.mm.pluginsdk.model.app.ak.a;
-import com.tencent.mm.pluginsdk.model.app.al;
+import com.tencent.mm.pluginsdk.model.app.ao.a;
+import com.tencent.mm.pluginsdk.model.app.ap;
 import com.tencent.mm.protocal.b.a.c;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.afy;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class k
   implements f
 {
-  public final boolean c(String paramString1, long paramLong, String paramString2)
+  public final boolean f(String paramString1, long paramLong, String paramString2)
   {
-    AppMethodBeat.i(154671);
-    Object localObject = n.XS(paramString1);
+    AppMethodBeat.i(27805);
+    Object localObject = n.alt(paramString1);
     if (localObject == null)
     {
-      ab.w("MicroMsg.RecordMsgHelpService", "get record msg data error, empty");
-      AppMethodBeat.o(154671);
+      ad.w("MicroMsg.RecordMsgHelpService", "get record msg data error, empty");
+      AppMethodBeat.o(27805);
       return false;
     }
     paramString1 = null;
-    Iterator localIterator = ((c)localObject).fjy.iterator();
+    Iterator localIterator = ((c)localObject).gKs.iterator();
     if (localIterator.hasNext())
     {
-      localObject = (aca)localIterator.next();
-      if (!((aca)localObject).mBq.equals(paramString2)) {
-        break label99;
+      localObject = (afy)localIterator.next();
+      if (!((afy)localObject).dkb.equals(paramString2)) {
+        break label102;
       }
       paramString1 = (String)localObject;
     }
-    label99:
+    label102:
     for (;;)
     {
       break;
       boolean bool = n.b(paramString1, paramLong, true);
-      AppMethodBeat.o(154671);
+      AppMethodBeat.o(27805);
       return bool;
     }
   }
   
-  public final void kW(long paramLong)
+  public final void rN(long paramLong)
   {
-    AppMethodBeat.i(24167);
-    al.dlN();
-    ak.a.kW(paramLong);
-    AppMethodBeat.o(24167);
+    AppMethodBeat.i(27804);
+    ap.evT();
+    ao.a.rN(paramLong);
+    AppMethodBeat.o(27804);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.k
  * JD-Core Version:    0.7.0.1
  */

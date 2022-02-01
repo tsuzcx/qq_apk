@@ -4,8 +4,8 @@ import android.util.Log;
 
 public final class a
 {
-  private static a Btn;
-  private static a Bto;
+  private static a IFi;
+  private static a IFj;
   
   static
   {
@@ -49,40 +49,40 @@ public final class a
         String.format(paramAnonymousString2, paramAnonymousVarArgs);
       }
     };
-    Btn = local1;
-    Bto = local1;
+    IFi = local1;
+    IFj = local1;
   }
   
   public static void a(a parama)
   {
-    Bto = parama;
+    IFj = parama;
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (Bto != null) {
-      Bto.e(paramString1, paramString2, paramVarArgs);
+    if (IFj != null) {
+      IFj.e(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (Bto != null) {
-      Bto.i(paramString1, paramString2, paramVarArgs);
+    if (IFj != null) {
+      IFj.i(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    if (Bto != null) {
-      Bto.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    if (IFj != null) {
+      IFj.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (Bto != null) {
-      Bto.w(paramString1, paramString2, paramVarArgs);
+    if (IFj != null) {
+      IFj.w(paramString1, paramString2, paramVarArgs);
     }
   }
   

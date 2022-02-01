@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ra
   extends b
 {
-  public ra.a cHy;
+  public a dwD;
+  public b dwE;
   
   public ra()
   {
@@ -15,16 +16,21 @@ public final class ra
   
   private ra(byte paramByte)
   {
-    AppMethodBeat.i(40558);
-    this.cHy = new ra.a();
-    this.ymq = false;
+    AppMethodBeat.i(93326);
+    this.dwD = new a();
+    this.dwE = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(40558);
+    AppMethodBeat.o(93326);
   }
+  
+  public static final class a {}
+  
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.ra
  * JD-Core Version:    0.7.0.1
  */

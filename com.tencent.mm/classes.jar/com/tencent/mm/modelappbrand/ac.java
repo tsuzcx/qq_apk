@@ -10,72 +10,72 @@ import java.util.Map;
 public final class ac
   implements ab
 {
-  private f fqi;
-  protected Map<String, m> fqj;
+  private h gRN;
+  protected Map<String, o> gRO;
   
   public ac(ab paramab)
   {
-    AppMethodBeat.i(70644);
-    this.fqj = new HashMap();
+    AppMethodBeat.i(76393);
+    this.gRO = new HashMap();
     if (paramab == null)
     {
-      AppMethodBeat.o(70644);
+      AppMethodBeat.o(76393);
       return;
     }
-    this.fqi = paramab.acz();
+    this.gRN = paramab.atX();
     a(paramab);
-    AppMethodBeat.o(70644);
+    AppMethodBeat.o(76393);
   }
   
-  public ac(f paramf)
+  public ac(h paramh)
   {
-    AppMethodBeat.i(70643);
-    this.fqj = new HashMap();
-    this.fqi = paramf;
-    AppMethodBeat.o(70643);
+    AppMethodBeat.i(76392);
+    this.gRO = new HashMap();
+    this.gRN = paramh;
+    AppMethodBeat.o(76392);
   }
   
   private void a(ab paramab)
   {
-    AppMethodBeat.i(70645);
-    paramab = paramab.acA().iterator();
+    AppMethodBeat.i(76394);
+    paramab = paramab.atY().iterator();
     while (paramab.hasNext()) {
-      a((m)paramab.next());
+      a((o)paramab.next());
     }
-    AppMethodBeat.o(70645);
+    AppMethodBeat.o(76394);
   }
   
-  public final void a(m paramm)
+  public final void a(o paramo)
   {
-    AppMethodBeat.i(70647);
-    this.fqj.put(paramm.getName(), paramm);
-    AppMethodBeat.o(70647);
+    AppMethodBeat.i(76396);
+    this.gRO.put(paramo.getName(), paramo);
+    AppMethodBeat.o(76396);
   }
   
-  public final List<m> acA()
+  public final h atX()
   {
-    AppMethodBeat.i(70648);
-    ArrayList localArrayList = new ArrayList(this.fqj.values());
-    AppMethodBeat.o(70648);
+    return this.gRN;
+  }
+  
+  public final List<o> atY()
+  {
+    AppMethodBeat.i(76397);
+    ArrayList localArrayList = new ArrayList(this.gRO.values());
+    AppMethodBeat.o(76397);
     return localArrayList;
   }
   
-  public final f acz()
+  public final <T> T vi(String paramString)
   {
-    return this.fqi;
-  }
-  
-  public final <T> T qs(String paramString)
-  {
-    AppMethodBeat.i(70646);
-    paramString = this.fqj.get(paramString);
-    AppMethodBeat.o(70646);
+    AppMethodBeat.i(76395);
+    paramString = this.gRO.get(paramString);
+    AppMethodBeat.o(76395);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.ac
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class nj
   extends b
 {
-  public nj.a cDJ;
-  public nj.b cDK;
+  public a dsw;
   
   public nj()
   {
@@ -16,12 +15,16 @@ public final class nj
   
   private nj(byte paramByte)
   {
-    AppMethodBeat.i(77560);
-    this.cDJ = new nj.a();
-    this.cDK = new nj.b();
-    this.ymq = false;
+    AppMethodBeat.i(19823);
+    this.dsw = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77560);
+    AppMethodBeat.o(19823);
+  }
+  
+  public static final class a
+  {
+    public String talker;
   }
 }
 

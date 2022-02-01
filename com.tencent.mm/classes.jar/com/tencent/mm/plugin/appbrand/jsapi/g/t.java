@@ -1,46 +1,51 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g;
 
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.jsapi.base.b;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.f;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.g;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
 public final class t
-  extends a
+  extends b
 {
-  public static final int CTRL_INDEX = 526;
-  public static final String NAME = "setMapIndoorFloor";
+  public static final int CTRL_INDEX = 3;
+  public static final String NAME = "removeMap";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final int A(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(93871);
-    super.a(paramc, paramJSONObject, paramInt);
+    AppMethodBeat.i(143687);
+    int i = f.Q(paramJSONObject);
+    AppMethodBeat.o(143687);
+    return i;
+  }
+  
+  public final boolean b(com.tencent.mm.plugin.appbrand.jsapi.e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(143688);
     if (paramJSONObject == null)
     {
-      ab.e("MicroMsg.JsApiSetMapIndoorFloor", "data is null");
-      paramc.h(paramInt, j("fail:invalid data", null));
-      AppMethodBeat.o(93871);
-      return;
+      ad.e("MicroMsg.JsApiRemoveMap", "data is null");
+      AppMethodBeat.o(143688);
+      return false;
     }
-    ab.i("MicroMsg.JsApiSetMapIndoorFloor", "data:%s", new Object[] { paramJSONObject });
-    b localb = f(paramc, paramJSONObject);
-    if (localb == null)
+    com.tencent.mm.plugin.appbrand.jsapi.g.a.e.rO(6);
+    if (g.cV(parame.getAppId(), f.i(parame, paramJSONObject))) {
+      com.tencent.mm.plugin.appbrand.jsapi.g.a.e.rO(7);
+    }
+    for (;;)
     {
-      ab.e("MicroMsg.JsApiSetMapIndoorFloor", "mapView is null, return");
-      paramc.h(paramInt, j("fail:mapview is null", null));
-      AppMethodBeat.o(93871);
-      return;
+      AppMethodBeat.o(143688);
+      return true;
+      com.tencent.mm.plugin.appbrand.jsapi.g.a.e.rO(8);
     }
-    localb.ck(paramJSONObject.optString("buildingId"), paramJSONObject.optString("floorName"));
-    a(paramc, paramInt, j("ok", null), true, localb.aDx());
-    AppMethodBeat.o(93871);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.t
  * JD-Core Version:    0.7.0.1
  */

@@ -28,15 +28,15 @@ public class DummyUriLoader
   
   public void startLoading(int paramInt, TimeUnit paramTimeUnit, UriLoader.Callback paramCallback)
   {
-    AppMethodBeat.i(104580);
+    AppMethodBeat.i(76496);
     if (this.uri == null)
     {
       paramCallback.onSucceed(null);
-      AppMethodBeat.o(104580);
+      AppMethodBeat.o(76496);
       return;
     }
     paramCallback.onSucceed(new StreamingRequest(this.uri, null));
-    AppMethodBeat.o(104580);
+    AppMethodBeat.o(76496);
   }
 }
 

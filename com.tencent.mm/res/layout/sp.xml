@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="right" android:orientation="horizontal" android:paddingLeft="@dimen/hj" android:paddingRight="@dimen/ha" android:paddingBottom="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:gravity="center" android:layout_width="fill_parent" android:layout_height="120.0dip" android:layout_marginTop="40.0dip" android:src="@raw/fix_tools_recover" />
-        <LinearLayout android:orientation="vertical" android:id="@id/b_g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip">
-            <TextView android:textSize="18.0dip" android:textColor="@color/h6" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip" android:text="@string/b5z" />
-            <Button android:id="@id/b_h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ft" android:layout_marginTop="32.0dip" android:layout_marginRight="@dimen/ft" android:text="@string/b60" style="@style/nq" />
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/b_i" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip">
-            <TextView android:textSize="18.0dip" android:textColor="@color/h6" android:gravity="center" android:id="@id/b_j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip" />
-            <ProgressBar android:id="@id/ou" android:paddingLeft="40.0dip" android:paddingRight="40.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:progress="0" style="@style/na" />
-            <Button android:id="@id/azb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ft" android:layout_marginTop="32.0dip" android:layout_marginRight="@dimen/ft" android:text="@string/b62" style="@style/nt" />
-        </LinearLayout>
-    </LinearLayout>
-</ScrollView>
+    <Button android:textSize="@dimen/ia" android:textColor="@color/h1" android:id="@id/ayf" android:background="@drawable/bo" android:layout_width="wrap_content" android:minWidth="@dimen/ar" android:text="@string/b39" style="@style/of" />
+    <Button android:textSize="@dimen/ia" android:textColor="@color/fu" android:id="@id/aye" android:background="@drawable/bo" android:layout_width="wrap_content" android:minWidth="@dimen/ar" android:text="@string/b3c" style="@style/of" />
+</LinearLayout>

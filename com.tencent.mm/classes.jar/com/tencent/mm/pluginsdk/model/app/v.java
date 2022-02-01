@@ -1,21 +1,15 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-final class v
-{
-  public String appId;
-  public byte[] data;
-  public int fPp;
-  
-  public v(String paramString, int paramInt, byte[] paramArrayOfByte)
-  {
-    this.appId = paramString;
-    this.fPp = paramInt;
-    this.data = paramArrayOfByte;
-  }
-}
+import android.os.Bundle;
+import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.type.IPCBoolean;
+
+public class v
+  implements b<Bundle, IPCBoolean>
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.v
  * JD-Core Version:    0.7.0.1
  */

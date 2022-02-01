@@ -1,48 +1,87 @@
 package com.tencent.mm.plugin.appbrand.jsapi.b;
 
-import android.content.Context;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.canvas.widget.AppBrandDrawableView;
-import com.tencent.mm.plugin.appbrand.jsapi.base.a;
+import com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg;
+import com.tencent.mm.plugin.appbrand.canvas.widget.a;
+import com.tencent.mm.plugin.appbrand.canvas.widget.a.a;
+import com.tencent.mm.plugin.appbrand.jsapi.base.c;
+import com.tencent.mm.plugin.appbrand.jsapi.base.g;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public final class f
-  extends a
+public class f
+  extends c<e>
 {
-  public static final int CTRL_INDEX = 67;
-  public static final String NAME = "insertCanvas";
+  public static final int CTRL_INDEX = 69;
+  public static final String NAME = "drawCanvas";
   
-  public final View a(com.tencent.mm.plugin.appbrand.jsapi.e parame, JSONObject paramJSONObject)
+  public final int A(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(103853);
-    paramJSONObject = parame.getContext();
-    AppBrandDrawableView localAppBrandDrawableView = new AppBrandDrawableView(paramJSONObject);
-    localAppBrandDrawableView.getDrawContext().heH = ((com.tencent.mm.plugin.appbrand.canvas.e)parame.q(com.tencent.mm.plugin.appbrand.canvas.e.class));
-    localAppBrandDrawableView.getDrawContext().bDN = parame;
-    localAppBrandDrawableView.setContentDescription(paramJSONObject.getString(2131296550));
-    parame = new CoverViewContainer(paramJSONObject, localAppBrandDrawableView);
-    AppMethodBeat.o(103853);
-    return parame;
-  }
-  
-  public final boolean aCc()
-  {
-    return true;
-  }
-  
-  public final boolean aCd()
-  {
-    return true;
-  }
-  
-  public final int w(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(103854);
+    AppMethodBeat.i(145537);
     int i = paramJSONObject.getInt("canvasId");
-    AppMethodBeat.o(103854);
+    AppMethodBeat.o(145537);
     return i;
+  }
+  
+  public final boolean aYw()
+  {
+    return true;
+  }
+  
+  public final boolean b(e parame, int paramInt, View paramView, JSONObject paramJSONObject, final g paramg)
+  {
+    AppMethodBeat.i(145538);
+    if (!(paramView instanceof CoverViewContainer))
+    {
+      ad.i("MicroMsg.JsApiDrawCanvas", "drawCanvas failed, view is not a instance of CoverViewContainer.(%s)", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(145538);
+      return false;
+    }
+    Object localObject = (View)((CoverViewContainer)paramView).ax(View.class);
+    ad.d("MicroMsg.JsApiDrawCanvas", "drawCanvas(id : %s)", new Object[] { Integer.valueOf(paramInt) });
+    if (!(localObject instanceof a))
+    {
+      ad.i("MicroMsg.JsApiDrawCanvas", "drawCanvas failed, view is not a instance of AppBrandDrawableView.(%s)", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(145538);
+      return false;
+    }
+    long l = System.currentTimeMillis();
+    JSONArray localJSONArray = paramJSONObject.optJSONArray("actions");
+    boolean bool = paramJSONObject.optBoolean("reserve");
+    localObject = (a)localObject;
+    if (bool) {
+      ((a)localObject).b(localJSONArray, new a.a()
+      {
+        public final void a(DrawCanvasArg paramAnonymousDrawCanvasArg)
+        {
+          AppMethodBeat.i(145535);
+          paramg.HQ(f.this.e("ok", null));
+          AppMethodBeat.o(145535);
+        }
+      });
+    }
+    for (;;)
+    {
+      ((a)localObject).aSM();
+      ad.v("MicroMsg.JsApiDrawCanvas", "post drawCanvas cost : %sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      bool = super.b(parame, paramInt, paramView, paramJSONObject, paramg);
+      AppMethodBeat.o(145538);
+      return bool;
+      ((a)localObject).a(localJSONArray, new a.a()
+      {
+        public final void a(DrawCanvasArg paramAnonymousDrawCanvasArg)
+        {
+          AppMethodBeat.i(145536);
+          paramg.HQ(f.this.e("ok", null));
+          AppMethodBeat.o(145536);
+        }
+      });
+    }
   }
 }
 

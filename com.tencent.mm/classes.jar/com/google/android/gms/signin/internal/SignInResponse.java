@@ -27,16 +27,16 @@ public class SignInResponse
   
   static
   {
-    AppMethodBeat.i(61704);
+    AppMethodBeat.i(12196);
     CREATOR = new SignInResponseCreator();
-    AppMethodBeat.o(61704);
+    AppMethodBeat.o(12196);
   }
   
   public SignInResponse(int paramInt)
   {
     this(new ConnectionResult(paramInt, null), null);
-    AppMethodBeat.i(61702);
-    AppMethodBeat.o(61702);
+    AppMethodBeat.i(12194);
+    AppMethodBeat.o(12194);
   }
   
   @SafeParcelable.Constructor
@@ -64,13 +64,13 @@ public class SignInResponse
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(61703);
+    AppMethodBeat.i(12195);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     SafeParcelWriter.writeParcelable(paramParcel, 2, getConnectionResult(), paramInt, false);
     SafeParcelWriter.writeParcelable(paramParcel, 3, getResolveAccountResponse(), paramInt, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(61703);
+    AppMethodBeat.o(12195);
   }
 }
 

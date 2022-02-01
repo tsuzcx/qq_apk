@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/bdu" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
-</RelativeLayout>
+<android.support.constraint.ConstraintLayout android:background="?d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="18.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/chj" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_begin="24.0dip" />
+    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/chi" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_end="28.0dip" />
+    <View android:id="@id/b1_" android:layout_width="0.5dip" android:layout_height="18.0dip" app:layout_constraintBottom_toBottomOf="@id/chi" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="@id/chj" style="@style/hp" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/fx" android:gravity="center" android:id="@id/azz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:text="@string/b4d" android:singleLine="false" app:layout_constraintBottom_toBottomOf="@id/chi" app:layout_constraintRight_toLeftOf="@id/b1_" app:layout_constraintTop_toTopOf="@id/chj" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/fx" android:gravity="center" android:id="@id/azq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:text="@string/b4k" android:singleLine="false" app:layout_constraintBottom_toBottomOf="@id/chi" app:layout_constraintLeft_toRightOf="@id/b1_" app:layout_constraintTop_toTopOf="@id/chj" />
+    <View android:id="@id/b00" android:layout_width="0.0dip" android:layout_height="0.5dip" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" style="@style/hp" />
+</android.support.constraint.ConstraintLayout>

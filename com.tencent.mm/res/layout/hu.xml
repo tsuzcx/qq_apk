@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/he" />
-    <LinearLayout android:orientation="vertical" android:background="@drawable/jp" android:paddingBottom="@dimen/ug" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/h7" />
-        <TextView android:textSize="@dimen/a9m" android:textColor="@color/rs" android:gravity="left" android:id="@id/a07" android:paddingTop="@dimen/ug" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ug" android:layout_marginRight="@dimen/ug" android:text="@string/a_p" />
-    </LinearLayout>
+    <ScrollView android:scrollbars="none" style="@style/ny">
+        <LinearLayout android:gravity="center_horizontal" android:paddingLeft="@dimen/bp" android:paddingTop="@dimen/he" android:paddingRight="@dimen/bp" android:paddingBottom="@dimen/he" style="@style/ld">
+            <ImageView android:id="@id/fdi" android:paddingBottom="@dimen/he" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/mobile_unbind_icon" />
+            <TextView android:textSize="@dimen/a" android:textColor="@color/y4" android:gravity="center" android:id="@id/fdg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ha" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/nn" />
+            <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:gravity="center" android:id="@id/fdf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/he" android:maxLines="4" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/nn" />
+            <Button android:id="@id/fde" android:layout_marginBottom="@dimen/ha" style="@style/o6" />
+            <Button android:id="@id/fdh" android:layout_marginBottom="@dimen/jv" style="@style/oc" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

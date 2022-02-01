@@ -6,81 +6,81 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.mapsdk.raster.model.Marker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class d
   extends LinearLayout
   implements h
 {
   private Context context;
-  private ImageView hPH;
-  double hPI;
-  double hPJ;
-  double hPK;
-  double hPL;
-  float hPM;
-  float hPN;
-  private float hPO;
-  boolean hPP;
-  Marker hPb;
+  Marker jUM;
+  double jVA;
+  float jVB;
+  float jVC;
+  private float jVD;
+  boolean jVE;
+  private ImageView jVw;
+  double jVx;
+  double jVy;
+  double jVz;
   
   public d(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(51235);
-    this.hPI = -1.0D;
-    this.hPJ = -1.0D;
-    this.hPK = -1.0D;
-    this.hPL = -1.0D;
-    this.hPM = 900.0F;
-    this.hPN = 900.0F;
-    this.hPO = 0.0F;
+    AppMethodBeat.i(146555);
+    this.jVx = -1.0D;
+    this.jVy = -1.0D;
+    this.jVz = -1.0D;
+    this.jVA = -1.0D;
+    this.jVB = 900.0F;
+    this.jVC = 900.0F;
+    this.jVD = 0.0F;
     this.context = paramContext;
-    this.hPH = ((ImageView)View.inflate(this.context, 2130969298, this).findViewById(2131823362));
-    this.hPH.requestFocus();
-    AppMethodBeat.o(51235);
+    this.jVw = ((ImageView)View.inflate(this.context, 2131493686, this).findViewById(2131306053));
+    this.jVw.requestFocus();
+    AppMethodBeat.o(146555);
   }
   
-  private void au(float paramFloat)
+  private void at(float paramFloat)
   {
-    AppMethodBeat.i(51237);
-    if (this.hPb != null)
+    AppMethodBeat.i(146557);
+    if (this.jUM != null)
     {
-      ab.v("MicroMsg.AppbrandMapLocationPoint", "updateRotation rotation:%f", new Object[] { Float.valueOf(paramFloat) });
-      this.hPb.setRotation(paramFloat);
+      ad.v("MicroMsg.AppbrandMapLocationPoint", "updateRotation rotation:%f", new Object[] { Float.valueOf(paramFloat) });
+      this.jUM.setRotation(paramFloat);
     }
-    AppMethodBeat.o(51237);
+    AppMethodBeat.o(146557);
   }
   
   private float getHeading()
   {
-    if (this.hPP) {
-      return this.hPM;
+    if (this.jVE) {
+      return this.jVB;
     }
-    return this.hPO;
+    return this.jVD;
   }
   
-  public final void N(float paramFloat1, float paramFloat2)
+  public final void D(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(51236);
-    this.hPO = paramFloat2;
-    au(getHeading());
-    AppMethodBeat.o(51236);
+    AppMethodBeat.i(146556);
+    this.jVD = paramFloat2;
+    at(getHeading());
+    AppMethodBeat.o(146556);
   }
   
   public final double getLatitude()
   {
-    return this.hPI;
+    return this.jVx;
   }
   
   public final double getLongitude()
   {
-    return this.hPJ;
+    return this.jVy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.a.d
  * JD-Core Version:    0.7.0.1
  */

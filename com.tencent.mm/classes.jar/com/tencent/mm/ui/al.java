@@ -1,93 +1,67 @@
 package com.tencent.mm.ui;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.content.res.Resources.Theme;
-import android.util.DisplayMetrics;
-import android.util.SparseIntArray;
-import android.util.TypedValue;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class al
 {
-  private static float density;
-  private static float scale;
-  private static SparseIntArray yiK;
-  
-  static
+  public static Bitmap c(Bitmap paramBitmap, float paramFloat)
   {
-    AppMethodBeat.i(112487);
-    density = -1.0F;
-    scale = 0.0F;
-    yiK = new SparseIntArray();
-    AppMethodBeat.o(112487);
+    AppMethodBeat.i(159110);
+    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
+    {
+      an.e("WeUIBitmapUtil", "getRoundedCornerBitmap in bitmap is null", new Object[0]);
+      AppMethodBeat.o(159110);
+      return null;
+    }
+    Bitmap localBitmap = j(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+    if (localBitmap == null)
+    {
+      AppMethodBeat.o(159110);
+      return null;
+    }
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint();
+    Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    RectF localRectF = new RectF(localRect);
+    localPaint.setAntiAlias(true);
+    localPaint.setDither(true);
+    localPaint.setFilterBitmap(true);
+    localCanvas.drawARGB(0, 0, 0, 0);
+    localPaint.setColor(-4144960);
+    localCanvas.drawRoundRect(localRectF, paramFloat, paramFloat, localPaint);
+    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+    localCanvas.drawBitmap(paramBitmap, localRect, localRect, localPaint);
+    an.i("WeUIBitmapUtil", "getRoundedCornerBitmap bitmap recycle %s", new Object[] { paramBitmap });
+    paramBitmap.recycle();
+    AppMethodBeat.o(159110);
+    return localBitmap;
   }
   
-  public static int ap(Context paramContext, int paramInt)
+  private static Bitmap j(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
   {
-    AppMethodBeat.i(112483);
-    if (paramContext == null)
+    AppMethodBeat.i(159111);
+    Object localObject = null;
+    try
     {
-      ak.e("WeUIResHelper", "get dimension pixel size, resId %d, but context is null".concat(String.valueOf(paramInt)), new Object[0]);
-      AppMethodBeat.o(112483);
-      return 0;
+      paramConfig = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
+      AppMethodBeat.o(159111);
+      return paramConfig;
     }
-    int j = yiK.get(paramInt, 0);
-    int i = j;
-    if (j == 0)
+    catch (Throwable paramConfig)
     {
-      i = paramContext.getResources().getDimensionPixelSize(paramInt);
-      yiK.put(paramInt, i);
-    }
-    AppMethodBeat.o(112483);
-    return i;
-  }
-  
-  public static float dr(Context paramContext)
-  {
-    AppMethodBeat.i(112485);
-    if (scale == 0.0F) {
-      if (paramContext != null) {
-        break label32;
+      for (;;)
+      {
+        paramConfig = localObject;
       }
     }
-    label32:
-    for (scale = 1.0F;; scale = paramContext.getSharedPreferences("com.tencent.mm_preferences", 0).getFloat("text_size_scale_key", 1.0F))
-    {
-      float f = scale;
-      AppMethodBeat.o(112485);
-      return f;
-    }
-  }
-  
-  public static int fromDPToPix(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(112482);
-    paramInt = Math.round(getDensity(paramContext) * paramInt);
-    AppMethodBeat.o(112482);
-    return paramInt;
-  }
-  
-  public static float getDensity(Context paramContext)
-  {
-    AppMethodBeat.i(112484);
-    if ((paramContext != null) && (density < 0.0F)) {
-      density = paramContext.getResources().getDisplayMetrics().density;
-    }
-    float f = density;
-    AppMethodBeat.o(112484);
-    return f;
-  }
-  
-  public static int hX(Context paramContext)
-  {
-    AppMethodBeat.i(112486);
-    TypedValue localTypedValue = new TypedValue();
-    paramContext.getTheme().resolveAttribute(2130771970, localTypedValue, true);
-    int i = localTypedValue.data;
-    AppMethodBeat.o(112486);
-    return i;
   }
 }
 

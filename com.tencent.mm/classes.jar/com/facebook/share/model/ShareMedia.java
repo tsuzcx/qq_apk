@@ -2,6 +2,8 @@ package com.facebook.share.model;
 
 import android.os.Bundle;
 import android.os.Parcel;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class ShareMedia
   implements ShareModel
@@ -13,9 +15,9 @@ public abstract class ShareMedia
     this.params = paramParcel.readBundle();
   }
   
-  protected ShareMedia(ShareMedia.Builder paramBuilder)
+  protected ShareMedia(Builder paramBuilder)
   {
-    this.params = new Bundle(ShareMedia.Builder.access$000(paramBuilder));
+    this.params = new Bundle(paramBuilder.params);
   }
   
   public int describeContents()
@@ -35,10 +37,57 @@ public abstract class ShareMedia
   {
     paramParcel.writeBundle(this.params);
   }
+  
+  public static abstract class Builder<M extends ShareMedia, B extends Builder>
+    implements ShareModelBuilder<M, B>
+  {
+    private Bundle params = new Bundle();
+    
+    static List<ShareMedia> readListFrom(Parcel paramParcel)
+    {
+      paramParcel = paramParcel.readParcelableArray(ShareMedia.class.getClassLoader());
+      ArrayList localArrayList = new ArrayList(paramParcel.length);
+      int j = paramParcel.length;
+      int i = 0;
+      while (i < j)
+      {
+        localArrayList.add((ShareMedia)paramParcel[i]);
+        i += 1;
+      }
+      return localArrayList;
+    }
+    
+    static void writeListTo(Parcel paramParcel, int paramInt, List<ShareMedia> paramList)
+    {
+      paramParcel.writeParcelableArray((ShareMedia[])paramList.toArray(), paramInt);
+    }
+    
+    public B readFrom(M paramM)
+    {
+      if (paramM == null) {
+        return this;
+      }
+      return setParameters(paramM.getParameters());
+    }
+    
+    @Deprecated
+    public B setParameter(String paramString1, String paramString2)
+    {
+      this.params.putString(paramString1, paramString2);
+      return this;
+    }
+    
+    @Deprecated
+    public B setParameters(Bundle paramBundle)
+    {
+      this.params.putAll(paramBundle);
+      return this;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.share.model.ShareMedia
  * JD-Core Version:    0.7.0.1
  */

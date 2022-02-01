@@ -3,23 +3,30 @@ package com.tencent.mm.plugin.downloader_app.ui;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
+import android.os.Bundle;
 import android.util.AttributeSet;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.downloader.c.a.a.f;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.plugin.downloader_app.api.c;
+import com.tencent.mm.plugin.downloader_app.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.ap;
 
 public class BottomEntranceView
   extends RelativeLayout
 {
-  private f lbN;
-  private TextView lbO;
-  private int lbP;
-  private int lbQ;
+  private f oiO;
+  private TextView oiP;
+  private int oiQ;
+  private int oiR;
   
   public BottomEntranceView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,43 +35,65 @@ public class BottomEntranceView
   
   private int getDisplayHeight()
   {
-    AppMethodBeat.i(136213);
-    int i = am.hQ(getContext()).y;
-    AppMethodBeat.o(136213);
+    AppMethodBeat.i(8975);
+    int i = ap.cf(getContext()).y;
+    AppMethodBeat.o(8975);
     return i;
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(136211);
+    AppMethodBeat.i(8973);
     super.onFinishInflate();
-    this.lbO = ((TextView)findViewById(2131823426));
-    this.lbQ = (getDisplayHeight() - am.di(getContext()) - am.getStatusBarHeight(getContext()) - am.fx(getContext()));
-    this.lbP = getResources().getDimensionPixelSize(2131428132);
-    ab.d("MicroMsg.BottomEntranceView", "mContentH = %d", new Object[] { Integer.valueOf(this.lbQ) });
-    getViewTreeObserver().addOnGlobalLayoutListener(new BottomEntranceView.1(this));
-    setOnClickListener(new BottomEntranceView.2(this));
-    AppMethodBeat.o(136211);
+    this.oiP = ((TextView)findViewById(2131299510));
+    this.oiR = (getDisplayHeight() - ap.dL(getContext()) - ap.iX(getContext()) - ap.eb(getContext()));
+    this.oiQ = getResources().getDimensionPixelSize(2131165922);
+    ad.d("MicroMsg.BottomEntranceView", "mContentH = %d", new Object[] { Integer.valueOf(this.oiR) });
+    getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+    {
+      public final void onGlobalLayout()
+      {
+        AppMethodBeat.i(8971);
+        BottomEntranceView.a(BottomEntranceView.this);
+        AppMethodBeat.o(8971);
+      }
+    });
+    setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(8972);
+        if ((BottomEntranceView.b(BottomEntranceView.this) != null) && (!bt.isNullOrNil(BottomEntranceView.b(BottomEntranceView.this).ntj)))
+        {
+          paramAnonymousView = new Bundle();
+          paramAnonymousView.putString("rawUrl", BottomEntranceView.b(BottomEntranceView.this).ntj);
+          ((c)g.ab(c.class)).e(BottomEntranceView.this.getContext(), paramAnonymousView);
+          a.a(10, 1005, 1, 40, "", "", "");
+        }
+        AppMethodBeat.o(8972);
+      }
+    });
+    AppMethodBeat.o(8973);
   }
   
   public void setData(f paramf)
   {
-    AppMethodBeat.i(136212);
-    if ((paramf == null) || (bo.isNullOrNil(paramf.desc)) || (bo.isNullOrNil(paramf.knV)))
+    AppMethodBeat.i(8974);
+    if ((paramf == null) || (bt.isNullOrNil(paramf.desc)) || (bt.isNullOrNil(paramf.ntj)))
     {
       setVisibility(8);
-      AppMethodBeat.o(136212);
+      AppMethodBeat.o(8974);
       return;
     }
-    this.lbN = paramf;
+    this.oiO = paramf;
     setVisibility(0);
-    this.lbO.setText(this.lbN.desc);
-    AppMethodBeat.o(136212);
+    this.oiP.setText(this.oiO.desc);
+    AppMethodBeat.o(8974);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.BottomEntranceView
  * JD-Core Version:    0.7.0.1
  */

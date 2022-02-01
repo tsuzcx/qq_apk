@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ar
   extends b
 {
-  public ar.a cnX;
-  public b cnY;
+  public a dcN;
   
   public ar()
   {
@@ -16,22 +16,22 @@ public final class ar
   
   private ar(byte paramByte)
   {
-    AppMethodBeat.i(56553);
-    this.cnX = new ar.a();
-    this.cnY = new b();
-    this.ymq = false;
+    AppMethodBeat.i(115969);
+    this.dcN = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(56553);
+    AppMethodBeat.o(115969);
   }
   
-  public static final class b
+  public static final class a
   {
-    public boolean cmX;
+    public Activity activity;
+    public String dcO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ar
  * JD-Core Version:    0.7.0.1
  */

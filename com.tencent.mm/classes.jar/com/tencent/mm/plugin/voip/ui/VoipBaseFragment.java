@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.voip.ui;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -16,12 +15,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.media.f.d;
 import com.tencent.mm.plugin.voip.video.CaptureView;
 import com.tencent.mm.plugin.voip.video.OpenGlRender;
-import com.tencent.mm.sdk.g.a.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 import java.lang.ref.WeakReference;
 
 public abstract class VoipBaseFragment
@@ -29,24 +31,24 @@ public abstract class VoipBaseFragment
 {
   protected static int mScreenHeight;
   protected static int mScreenWidth;
-  protected static final int[] tCt = { -1, 2131304719, 2131304745, 2131304744 };
-  static int tCy = -1;
-  protected String eaX;
-  protected ak iMP;
+  protected static final int[] zrr = { -1, 2131764901, 2131764928, 2131764927 };
+  static int zrv = -1;
+  protected String flk;
+  protected ap iDu;
   protected int mStatus = -1;
-  protected VoipBaseFragment.c tCA = new VoipBaseFragment.c();
-  private a tCB;
-  private VoipBaseFragment.b tCC;
-  protected WeakReference<c> tCc;
-  protected long tCd = -1L;
-  protected RelativeLayout tCu;
-  protected ImageView tCv;
-  protected ImageView tCw;
-  protected int tCx = 4096;
-  protected VoipBaseFragment.d tCz;
-  protected boolean txk;
+  protected RelativeLayout vHU;
+  protected boolean zgY;
+  protected WeakReference<c> zrd;
+  protected long zre = -1L;
+  protected ImageView zrs;
+  protected ImageView zrt;
+  protected int zru = 4096;
+  protected d zrw;
+  protected c zrx = new c();
+  private VoipBaseFragment.a zry;
+  private VoipBaseFragment.b zrz;
   
-  protected static void ai(View paramView, int paramInt)
+  protected static void as(View paramView, int paramInt)
   {
     if (paramView == null) {
       return;
@@ -56,91 +58,82 @@ public abstract class VoipBaseFragment
     paramView.setLayoutParams(localLayoutParams);
   }
   
-  protected static String ha(long paramLong)
+  protected static String mz(long paramLong)
   {
     return String.format("%02d:%02d", new Object[] { Long.valueOf(paramLong / 60L), Long.valueOf(paramLong % 60L) });
   }
   
-  public abstract void HF(int paramInt);
+  public void Qv(int paramInt) {}
   
-  public abstract void a(SurfaceTexture paramSurfaceTexture, int paramInt);
+  public void Qw(int paramInt) {}
   
-  public final void a(VoipBaseFragment.d paramd)
+  @Deprecated
+  public void a(SurfaceTexture paramSurfaceTexture, d paramd) {}
+  
+  public final void a(d paramd)
   {
-    this.tCz = paramd;
+    this.zrw = paramd;
   }
   
-  public abstract void a(CaptureView paramCaptureView);
+  @Deprecated
+  public void a(CaptureView paramCaptureView) {}
   
-  public abstract void a(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  protected abstract void atj(String paramString);
   
-  protected abstract void aeH(String paramString);
+  @Deprecated
+  public void b(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
   
-  public abstract void cNc();
+  public void dVN() {}
   
-  public abstract void cOQ();
+  public void dVO() {}
   
-  public abstract OpenGlRender cOU();
+  protected abstract void dVQ();
   
-  protected abstract void cOV();
+  public abstract void dVR();
   
-  public abstract void cOW();
+  @Deprecated
+  public void dVY() {}
   
-  protected final void cOX()
+  @Deprecated
+  public OpenGlRender dVZ()
   {
-    if ((this.eaX == null) || (this.tCv.getVisibility() == 0)) {
+    return null;
+  }
+  
+  protected final void dWa()
+  {
+    if ((this.flk == null) || (this.zrs.getVisibility() == 0)) {
       return;
     }
-    this.tCv.setVisibility(0);
-    this.tCB = new a();
-    com.tencent.mm.sdk.g.d.post(this.tCB, "VoipBaseFragment_blurbitmap");
+    this.zrs.setVisibility(0);
+    this.zry = new VoipBaseFragment.a(this);
+    h.Iye.aP(this.zry);
   }
   
-  protected final void cOY()
+  protected final void dWb()
   {
-    this.tCw.setVisibility(0);
-    this.tCC = new VoipBaseFragment.b(this);
-    com.tencent.mm.sdk.g.d.post(this.tCC, "VoipBaseFragment_blurtransparentbitmap");
+    this.zrt.setVisibility(0);
+    this.zrz = new VoipBaseFragment.b(this);
+    h.Iye.aP(this.zrz);
   }
   
-  public abstract void f(int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  @Deprecated
+  public void e(int paramInt1, int paramInt2, byte[] paramArrayOfByte) {}
   
-  public abstract OpenGlRender getFilterData();
+  @Deprecated
+  public void hP(int paramInt1, int paramInt2) {}
   
-  public abstract void gj(int paramInt1, int paramInt2);
-  
-  public void gl(int paramInt1, int paramInt2)
+  public void hS(int paramInt1, int paramInt2)
   {
-    ab.b("MicroMsg.VoipBaseFragment", "newState: " + com.tencent.mm.plugin.voip.a.b.HN(paramInt2) + ", action: " + com.tencent.mm.plugin.voip.a.b.HN(paramInt1) + ", lastStatus: " + com.tencent.mm.plugin.voip.a.b.HN(tCy), new Object[0]);
-    if ((tCy != this.mStatus) && (paramInt2 != this.mStatus)) {
-      tCy = this.mStatus;
+    ad.m("MicroMsg.VoipBaseFragment", "newState: " + com.tencent.mm.plugin.voip.b.i.QI(paramInt2) + ", action: " + com.tencent.mm.plugin.voip.b.i.QI(paramInt1) + ", lastStatus: " + com.tencent.mm.plugin.voip.b.i.QI(zrv), new Object[0]);
+    if ((zrv != this.mStatus) && (paramInt2 != this.mStatus)) {
+      zrv = this.mStatus;
     }
-    this.tCx = paramInt1;
+    this.zru = paramInt1;
     this.mStatus = paramInt2;
   }
   
-  protected abstract void gm(int paramInt1, int paramInt2);
-  
-  protected final void j(TextView paramTextView)
-  {
-    if (paramTextView == null)
-    {
-      ab.e("MicroMsg.VoipBaseFragment", "TextView is null or text is null");
-      return;
-    }
-    paramTextView.setText(2131304744);
-    int i = getResources().getDisplayMetrics().widthPixels;
-    int j = getResources().getDisplayMetrics().heightPixels;
-    paramTextView.measure(View.MeasureSpec.makeMeasureSpec(i, -2147483648), View.MeasureSpec.makeMeasureSpec(j, -2147483648));
-    paramTextView.setWidth(paramTextView.getMeasuredWidth());
-  }
-  
-  protected abstract void mZ(boolean paramBoolean);
-  
-  public final void ng(long paramLong)
-  {
-    this.tCd = paramLong;
-  }
+  protected abstract void hT(int paramInt1, int paramInt2);
   
   public void onAttach(Activity paramActivity)
   {
@@ -166,20 +159,20 @@ public abstract class VoipBaseFragment
   {
     super.onCreate(paramBundle);
     paramBundle = getArguments();
-    this.eaX = paramBundle.getString("key_username");
-    this.txk = paramBundle.getBoolean("key_isoutcall");
+    this.flk = paramBundle.getString("key_username");
+    this.zgY = paramBundle.getBoolean("key_isoutcall");
     if (-1 == this.mStatus) {
       this.mStatus = paramBundle.getInt("key_status");
     }
-    this.iMP = new ak();
+    this.iDu = new ap();
   }
   
   public void onDetach()
   {
-    if (this.iMP != null) {
-      this.iMP.removeCallbacksAndMessages(null);
+    if (this.iDu != null) {
+      this.iDu.removeCallbacksAndMessages(null);
     }
-    this.tCz = null;
+    this.zrw = null;
     super.onDetach();
   }
   
@@ -188,103 +181,145 @@ public abstract class VoipBaseFragment
     super.onStop();
   }
   
-  public abstract void requestRender();
+  protected abstract void rJ(boolean paramBoolean);
   
-  public abstract void setHWDecMode(int paramInt);
+  @Deprecated
+  public void releaseSurfaceTexture() {}
+  
+  @Deprecated
+  public void requestRender() {}
+  
+  @Deprecated
+  public void setHWDecMode(int paramInt) {}
   
   public abstract void setMute(boolean paramBoolean);
   
-  public abstract void setVoipBeauty(int paramInt);
+  public abstract void setVoicePlayDevice(int paramInt);
+  
+  @Deprecated
+  public void setVoipBeauty(int paramInt) {}
   
   public final void setVoipUIListener(c paramc)
   {
-    this.tCc = new WeakReference(paramc);
+    this.zrd = new WeakReference(paramc);
+  }
+  
+  protected final void t(TextView paramTextView)
+  {
+    if (paramTextView == null)
+    {
+      ad.e("MicroMsg.VoipBaseFragment", "TextView is null or text is null");
+      return;
+    }
+    paramTextView.setText(2131764927);
+    int i = getResources().getDisplayMetrics().widthPixels;
+    int j = getResources().getDisplayMetrics().heightPixels;
+    paramTextView.measure(View.MeasureSpec.makeMeasureSpec(i, -2147483648), View.MeasureSpec.makeMeasureSpec(j, -2147483648));
+    paramTextView.setWidth(paramTextView.getMeasuredWidth());
+  }
+  
+  public final void un(long paramLong)
+  {
+    this.zre = paramLong;
   }
   
   public void uninit()
   {
-    ab.d("MicroMsg.VoipBaseFragment", "uninit");
-    this.tCA.cOZ();
-    VoipBaseFragment.c localc = this.tCA;
-    ab.d("MicroMsg.DynamicTextWrap", "uninit");
-    localc.cOZ();
-    localc.bAz = null;
-    if (this.tCB != null)
+    ad.d("MicroMsg.VoipBaseFragment", "uninit");
+    this.zrx.dWc();
+    c localc = this.zrx;
+    ad.d("MicroMsg.DynamicTextWrap", "uninit");
+    localc.dWc();
+    localc.cbR = null;
+    if (this.zry != null)
     {
-      com.tencent.mm.sdk.g.d.ysm.remove(this.tCB);
-      this.tCB = null;
+      this.zry.cancel();
+      this.zry = null;
     }
-    if (this.tCC != null)
+    if (this.zrz != null)
     {
-      com.tencent.mm.sdk.g.d.ysm.remove(this.tCC);
-      this.tCC = null;
+      this.zrz.cancel();
+      this.zrz = null;
     }
   }
   
-  public final class a
-    implements Runnable
+  protected static final class c
   {
-    public a() {}
+    TextView Tu;
+    av cbR;
+    int[] zrD;
+    private int zrE;
+    int zrF;
     
-    public final void run()
+    protected c()
     {
-      AppMethodBeat.i(4845);
-      ab.i("MicroMsg.VoipBaseFragment", "try load blur bitmap,timestamp: " + System.currentTimeMillis());
-      Bitmap localBitmap2 = com.tencent.mm.ah.b.b(VoipBaseFragment.this.eaX, false, -1);
-      if ((localBitmap2 == null) || (VoipBaseFragment.this.tCu == null))
+      AppMethodBeat.i(115371);
+      this.cbR = new av(new av.a()
       {
-        AppMethodBeat.o(4845);
-        return;
-      }
-      int i = 0;
-      while (((VoipBaseFragment.this.tCu.getHeight() == 0) || (VoipBaseFragment.this.tCu.getWidth() == 0)) && (i < 10)) {
-        try
+        public final boolean onTimerExpired()
         {
-          Thread.sleep(300L);
-          i += 1;
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          ab.e("MicroMsg.VoipBaseFragment", "wait voip initialize interrupted");
-          AppMethodBeat.o(4845);
-          return;
-        }
-      }
-      Bitmap localBitmap1 = localBitmap2;
-      if (localBitmap2.getHeight() <= localBitmap2.getWidth())
-      {
-        localBitmap1 = localBitmap2;
-        if (localBitmap2.getHeight() / 5 > 0)
-        {
-          localBitmap1 = localBitmap2;
-          if ((int)(localBitmap2.getHeight() * 0.6D) > 0) {
-            localBitmap1 = Bitmap.createBitmap(localBitmap2, localBitmap2.getWidth() / 5, localBitmap2.getHeight() / 5, (int)(localBitmap2.getHeight() * 0.6D), (int)(localBitmap2.getHeight() * 0.6D), null, false);
+          AppMethodBeat.i(115370);
+          int i = VoipBaseFragment.c.this.zrD[(VoipBaseFragment.c.this.zrF % VoipBaseFragment.c.this.zrD.length)];
+          if (VoipBaseFragment.c.this.Tu != null)
+          {
+            if (-1 != i) {
+              break label78;
+            }
+            VoipBaseFragment.c.this.Tu.setText(null);
+          }
+          for (;;)
+          {
+            VoipBaseFragment.c localc = VoipBaseFragment.c.this;
+            localc.zrF += 1;
+            AppMethodBeat.o(115370);
+            return true;
+            label78:
+            VoipBaseFragment.c.this.Tu.setText(i);
           }
         }
-      }
-      float f = 1.0F * VoipBaseFragment.this.tCu.getHeight() / VoipBaseFragment.this.tCu.getWidth();
-      i = (int)(localBitmap1.getHeight() / f);
-      localBitmap1 = com.tencent.mm.sdk.platformtools.d.a(localBitmap1, localBitmap1.getHeight(), i, true, false);
-      if (localBitmap1 == null)
-      {
-        ab.e("MicroMsg.VoipBaseFragment", "extract Thumb Nail for blur background failed");
-        AppMethodBeat.o(4845);
-        return;
-      }
-      try
-      {
-        localBitmap1 = com.tencent.mm.sdk.platformtools.d.g(localBitmap1, 20);
-        ab.i("MicroMsg.VoipBaseFragment", "blur ok, timestamp: " + System.currentTimeMillis());
-        VoipBaseFragment.this.iMP.post(new VoipBaseFragment.a.1(this, localBitmap1));
-        AppMethodBeat.o(4845);
-        return;
-      }
-      catch (Exception localException)
-      {
-        ab.e("MicroMsg.VoipBaseFragment", "fastblur failed: " + localException.getMessage());
-        AppMethodBeat.o(4845);
-      }
+      }, true);
+      AppMethodBeat.o(115371);
     }
+    
+    public final void a(TextView paramTextView, int[] paramArrayOfInt)
+    {
+      AppMethodBeat.i(115372);
+      if ((paramArrayOfInt == null) || (paramTextView == null))
+      {
+        ad.e("MicroMsg.DynamicTextWrap", "textList or tv is null");
+        AppMethodBeat.o(115372);
+        return;
+      }
+      dWc();
+      this.zrF = 0;
+      this.zrD = paramArrayOfInt;
+      this.Tu = paramTextView;
+      this.zrE = 500;
+      if (this.cbR != null)
+      {
+        paramArrayOfInt = this.cbR;
+        long l = this.zrE;
+        paramArrayOfInt.av(l, l);
+      }
+      ad.l("MicroMsg.DynamicTextWrap", "start textview:".concat(String.valueOf(paramTextView)), new Object[0]);
+      AppMethodBeat.o(115372);
+    }
+    
+    public final void dWc()
+    {
+      AppMethodBeat.i(115373);
+      if (this.cbR != null) {
+        this.cbR.stopTimer();
+      }
+      ad.l("MicroMsg.DynamicTextWrap", "stop textview: " + this.Tu, new Object[0]);
+      this.Tu = null;
+      AppMethodBeat.o(115373);
+    }
+  }
+  
+  public static abstract interface d
+  {
+    public abstract void ao(boolean paramBoolean1, boolean paramBoolean2);
   }
 }
 

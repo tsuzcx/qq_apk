@@ -1,51 +1,22 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.SharedPreferences;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.m.k.c;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 
-public final class ah
+public abstract interface ah
 {
-  private static k.c gSi;
-  private static k.c gSj;
-  
-  static
+  public static final ah iHQ = new ah()
   {
-    AppMethodBeat.i(129165);
-    gSi = new ah.1();
-    gSj = new ah.2();
-    AppMethodBeat.o(129165);
-  }
-  
-  public static k.c aun()
-  {
-    return gSi;
-  }
-  
-  public static k.c auo()
-  {
-    return gSj;
-  }
-  
-  private static Boolean aup()
-  {
-    AppMethodBeat.i(129162);
-    Object localObject = com.tencent.mm.sdk.platformtools.ah.dsR().getString("appbrandgame_open_wcwss", "");
-    if ((localObject != null) && (((String)localObject).equalsIgnoreCase("wcwss")))
+    public final Boolean b(AppBrandInitConfigWC paramAnonymousAppBrandInitConfigWC)
     {
-      localObject = Boolean.TRUE;
-      AppMethodBeat.o(129162);
-      return localObject;
+      return null;
     }
-    if ((localObject != null) && (((String)localObject).equalsIgnoreCase("websocket")))
-    {
-      localObject = Boolean.FALSE;
-      AppMethodBeat.o(129162);
-      return localObject;
-    }
-    AppMethodBeat.o(129162);
-    return null;
-  }
+    
+    public final void c(AppBrandInitConfigWC paramAnonymousAppBrandInitConfigWC) {}
+  };
+  
+  public abstract Boolean b(AppBrandInitConfigWC paramAppBrandInitConfigWC);
+  
+  public abstract void c(AppBrandInitConfigWC paramAppBrandInitConfigWC);
 }
 
 

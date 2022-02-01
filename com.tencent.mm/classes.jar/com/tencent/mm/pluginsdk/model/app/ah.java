@@ -1,495 +1,555 @@
 package com.tencent.mm.pluginsdk.model.app;
 
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.m.b;
-import com.tencent.mm.at.o;
-import com.tencent.mm.g.a.nw;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.ai.l;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.b;
+import com.tencent.mm.ao.f;
+import com.tencent.mm.chatroom.d.aa;
+import com.tencent.mm.g.a.o.a;
+import com.tencent.mm.g.a.yf;
+import com.tencent.mm.g.a.yf.a;
+import com.tencent.mm.g.a.yg;
+import com.tencent.mm.g.a.yg.a;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.t;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.l.a.a;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.bk;
+import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
+import com.tencent.mm.model.y.b;
+import com.tencent.mm.modelvideo.s;
+import com.tencent.mm.plugin.groupsolitaire.PluginGroupSolitaire;
+import com.tencent.mm.plugin.groupsolitaire.b.d.1;
+import com.tencent.mm.plugin.groupsolitaire.b.d.3;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cnt;
-import com.tencent.mm.protocal.protobuf.cnu;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
-import java.util.Map;
+import com.tencent.mm.protocal.protobuf.cos;
+import com.tencent.mm.protocal.protobuf.cot;
+import com.tencent.mm.protocal.protobuf.cxg;
+import com.tencent.mm.protocal.protobuf.cxi;
+import com.tencent.mm.protocal.protobuf.czj;
+import com.tencent.mm.protocal.protobuf.ek;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.ar;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bl;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Locale;
+import junit.framework.Assert;
 
 public final class ah
-  extends m
-  implements k
+  extends n
+  implements com.tencent.mm.network.k
 {
-  com.tencent.mm.ai.f callback;
-  j.b cmR;
-  String cpW;
-  int eDB;
-  com.tencent.mm.i.d eDC;
-  com.tencent.mm.sdk.b.c eDE;
-  private boolean eDz;
-  boolean fFG;
-  String fFo;
-  private g.a fFy;
-  private String fgy;
-  private boolean pDi;
-  b pYg;
-  long pYi;
-  int retCode;
-  private com.tencent.mm.ai.b rr;
+  a BQo;
+  private com.tencent.mm.g.a.o BQp;
+  long BQq;
+  private String bXk;
+  com.tencent.mm.al.g callback;
+  bl drF;
+  int dvY;
+  String hhN;
+  private g.a hhW;
+  String mSessionId;
+  long msgId;
+  private com.tencent.mm.al.b rr;
   long startTime;
-  String toUser;
-  private long vLL;
+  private yf wFo;
+  yg wFp;
+  
+  public ah(long paramLong, String paramString, int paramInt, a parama)
+  {
+    this(paramLong, paramString, null);
+    AppMethodBeat.i(31054);
+    this.dvY = paramInt;
+    this.BQo = parama;
+    ad.i("MicroMsg.NetSceneSendAppMsg", "NetSceneSendAppMsg directShare[%d]", new Object[] { Integer.valueOf(paramInt) });
+    if (this.BQo != null) {
+      ad.i("MicroMsg.NetSceneSendAppMsg", "NetSceneSendAppMsg tokenValid[%d], pkgName[%s]", new Object[] { Integer.valueOf(this.BQo.BPv), this.BQo.dvP });
+    }
+    AppMethodBeat.o(31054);
+  }
   
   public ah(long paramLong, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(27380);
-    this.pYg = null;
-    this.cmR = null;
-    this.pYi = -1L;
-    this.fgy = null;
-    this.pDi = true;
-    this.fFG = true;
-    this.retCode = 0;
+    AppMethodBeat.i(31053);
+    this.drF = null;
+    this.msgId = 0L;
+    this.dvY = 0;
     this.startTime = 0L;
-    this.vLL = -1L;
-    this.fFo = "";
-    this.fFy = new ah.1(this);
-    this.eDz = false;
-    this.eDB = 0;
-    this.eDE = new ah.2(this);
-    this.pYi = paramLong;
-    this.fgy = paramString1;
-    this.cpW = paramString2;
-    paramString2 = new b.a();
-    paramString2.fsX = new cnt();
-    paramString2.fsY = new cnu();
-    paramString2.uri = "/cgi-bin/micromsg-bin/uploadappattach";
-    paramString2.funcId = 220;
-    paramString2.reqCmdId = 105;
-    paramString2.respCmdId = 1000000105;
-    this.rr = paramString2.ado();
-    ab.i("MicroMsg.NetSceneUploadAppAttach", "summerbig new NetSceneUploadAppAttach rowid[%d], emoticonmd5[%s], stack[%s]", new Object[] { Long.valueOf(paramLong), paramString1, bo.dtY() });
-    AppMethodBeat.o(27380);
+    this.hhN = "";
+    this.BQq = 0L;
+    this.hhW = new ah.1(this);
+    this.msgId = paramLong;
+    this.mSessionId = paramString1;
+    this.bXk = paramString2;
+    b.a locala = new b.a();
+    locala.gUU = new cos();
+    locala.gUV = new cot();
+    locala.uri = "/cgi-bin/micromsg-bin/sendappmsg";
+    locala.funcId = 222;
+    locala.reqCmdId = 107;
+    locala.respCmdId = 1000000107;
+    this.rr = locala.atI();
+    ad.i("MicroMsg.NetSceneSendAppMsg", "summersafecdn NetSceneSendAppMsg msgid[%d], sessionid[%s], signature[%s], stack[%s]", new Object[] { Long.valueOf(paramLong), paramString1, bt.aGs(paramString2), bt.eGN() });
+    AppMethodBeat.o(31053);
   }
   
-  final void d(com.tencent.mm.i.d paramd)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(27383);
-    if (this.pYg.field_type != 2L)
-    {
-      AppMethodBeat.o(27383);
-      return;
+    AppMethodBeat.i(31055);
+    this.callback = paramg;
+    if (this.startTime == 0L) {
+      this.startTime = bt.eGO();
     }
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.abU().me("100131");
-    if (localc.isValid()) {
-      this.eDB = com.tencent.mm.platformtools.ah.getInt((String)localc.dvN().get("needUploadData"), 1);
-    }
-    if ((this.eDz) || (this.eDB == 0))
+    az.arV();
+    this.drF = com.tencent.mm.model.c.apO().rm(this.msgId);
+    if ((this.drF == null) || (this.drF.field_msgId != this.msgId))
     {
-      AppMethodBeat.o(27383);
-      return;
-    }
-    this.eDC = paramd;
-    this.eDz = true;
-    paramd = new nw();
-    com.tencent.mm.sdk.b.a.ymk.c(this.eDE);
-    paramd.cEv.filePath = this.pYg.field_fileFullPath;
-    com.tencent.mm.sdk.b.a.ymk.l(paramd);
-    AppMethodBeat.o(27383);
-  }
-  
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ai.f paramf)
-  {
-    AppMethodBeat.i(27381);
-    this.callback = paramf;
-    this.pYg = new b();
-    if ((!al.aUJ().get(this.pYi, this.pYg)) || (this.pYg == null))
-    {
-      ab.e("MicroMsg.NetSceneUploadAppAttach", com.tencent.mm.compatible.util.g.Ml() + " summerbig get info failed rowid:" + this.pYi);
-      this.retCode = (-10000 - com.tencent.mm.compatible.util.g.getLine());
-      this.pYg = null;
-      AppMethodBeat.o(27381);
+      AppMethodBeat.o(31055);
       return -1;
     }
-    if (this.pYg.field_status != 101L)
+    paramg = k.b.rx(this.drF.field_content);
+    Object localObject1;
+    if (paramg == null)
     {
-      ab.e("MicroMsg.NetSceneUploadAppAttach", com.tencent.mm.compatible.util.g.Ml() + " summerbig get field_status failed rowid:" + this.pYi + " status:" + this.pYg.field_status);
-      AppMethodBeat.o(27381);
-      return -1;
-    }
-    if (this.startTime == 0L)
-    {
-      this.startTime = bo.aoy();
-      this.vLL = this.pYg.field_offset;
-    }
-    ab.i("MicroMsg.NetSceneUploadAppAttach", "summerbig doScene rowid[%d], fileFullPath[%s], totalLen[%d],isUpload[%b], isUseCdn[%b], type[%d]", new Object[] { Long.valueOf(this.pYi), this.pYg.field_fileFullPath, Long.valueOf(this.pYg.field_totalLen), Boolean.valueOf(this.pYg.field_isUpload), Integer.valueOf(this.pYg.field_isUseCdn), Long.valueOf(this.pYg.field_type) });
-    if (bo.isNullOrNil(this.pYg.field_appId))
-    {
-      ab.e("MicroMsg.NetSceneUploadAppAttach", "summerbig doScene checkArgs : appId is null");
-      if ((this.pYg.field_type != 8L) && (this.pYg.field_type != 6L))
+      localObject1 = ar.aIF(this.drF.field_content);
+      if (bt.isNullOrNil(((ar)localObject1).Fys))
       {
-        this.retCode = (-10000 - com.tencent.mm.compatible.util.g.getLine());
-        AppMethodBeat.o(27381);
+        paramg = new k.b();
+        paramg.gHg = ((ar)localObject1).md5;
+        paramg.type = 8;
+        ad.i("MicroMsg.NetSceneSendAppMsg", "create new content. loss appid");
+      }
+    }
+    for (;;)
+    {
+      localObject1 = "content != null [[" + this.drF.field_content + "]]";
+      if (paramg != null) {}
+      for (boolean bool = true;; bool = false)
+      {
+        Assert.assertTrue((String)localObject1, bool);
+        if (paramg != null) {
+          break label223;
+        }
+        this.drF = null;
+        AppMethodBeat.o(31055);
         return -1;
+        paramg = k.b.rx(((ar)localObject1).Fys);
+        break;
       }
-    }
-    if ((this.pYg.field_type == 8L) || (this.pYg.field_type == 9L))
-    {
-      ab.i("MicroMsg.NetSceneUploadAppAttach", "summerbig cdntra cdn not support Emoji or voiceremind now type:%d", new Object[] { Long.valueOf(this.pYg.field_type) });
-      i = 0;
-    }
-    while (i != 0)
-    {
-      ab.d("MicroMsg.NetSceneUploadAppAttach", "summerbig doScene cdntra use cdn return -1 for onGYNetEnd client rowid:%d", new Object[] { Long.valueOf(this.pYi) });
-      AppMethodBeat.o(27381);
-      return 0;
-      com.tencent.mm.al.f.afO();
-      if ((!com.tencent.mm.al.b.lc(4)) && (this.pYg.field_isUseCdn != 1))
+      label223:
+      localObject1 = "";
+      Object localObject2;
+      if (this.drF.cjN())
       {
-        com.tencent.mm.al.f.afO();
-        ab.w("MicroMsg.NetSceneUploadAppAttach", "summerbig cdntra not use cdn flag:%b getCdnInfo:%d", new Object[] { Boolean.valueOf(com.tencent.mm.al.b.lc(4)), Integer.valueOf(this.pYg.field_isUseCdn) });
-        i = 0;
+        localObject2 = com.tencent.mm.modelvideo.u.Ae(this.drF.field_imgPath);
+        if (localObject2 != null) {
+          localObject1 = ((s)localObject2).hAq.gJA;
+        }
       }
-      else
+      for (;;)
       {
-        aw.aaz();
-        bi localbi = com.tencent.mm.model.c.YC().kB(this.pYg.field_msgInfoId);
-        if (localbi.field_msgId != this.pYg.field_msgInfoId)
+        localObject2 = com.tencent.mm.model.y.arz().tB(this.mSessionId);
+        if ((localObject2 != null) && (((y.b)localObject2).containsKey("_tmpl_webview_transfer_scene")))
         {
-          ab.w("MicroMsg.NetSceneUploadAppAttach", "summerbig cdntra read msg info failed msgId[%d], rowid[%d], createtime[%d], len[%d], status[%d], upload[%b], useCdn[%d], mediaId[%s]", new Object[] { Long.valueOf(this.pYg.field_msgInfoId), Long.valueOf(this.pYg.systemRowid), Long.valueOf(this.pYg.field_createTime), Long.valueOf(this.pYg.field_totalLen), Long.valueOf(this.pYg.field_status), Boolean.valueOf(this.pYg.field_isUpload), Integer.valueOf(this.pYg.field_isUseCdn), this.pYg.field_mediaId });
-          this.toUser = null;
+          this.wFp = new yg();
+          this.wFp.dEL.dEM = ((y.b)localObject2).getInt("_tmpl_webview_transfer_scene", -1);
+        }
+        if ((paramg.type == 8) || (paramg.type == 9))
+        {
+          ad.i("MicroMsg.NetSceneSendAppMsg", "cdntra cdn not support Emoji or voiceremind now type:%d", new Object[] { Integer.valueOf(paramg.type) });
           i = 0;
         }
-        else
+        for (;;)
         {
-          this.toUser = localbi.field_talker;
-          paramf = "";
-          if (!bo.isNullOrNil(localbi.field_imgPath)) {
-            paramf = o.ahC().te(localbi.field_imgPath);
+          if (i == 0) {
+            break label1017;
           }
-          int k = com.tencent.mm.a.e.cM(paramf);
-          int m = com.tencent.mm.a.e.cM(this.pYg.field_fileFullPath);
-          if (k >= 262144)
+          ad.d("MicroMsg.NetSceneSendAppMsg", "cdntra use cdn return -1 for onGYNetEnd clientId:%s", new Object[] { this.hhN });
+          AppMethodBeat.o(31055);
+          return 0;
+          if (bt.isNullOrNil(this.drF.field_imgPath)) {
+            break label2375;
+          }
+          localObject1 = com.tencent.mm.aw.o.ayF().yg(this.drF.field_imgPath);
+          break;
+          if (bt.isNullOrNil((String)localObject1))
           {
-            ab.w("MicroMsg.NetSceneUploadAppAttach", "summerbig cdntra thumb[%s][%d] Too Big Not Use CDN TRANS", new Object[] { paramf, Integer.valueOf(k) });
+            ad.i("MicroMsg.NetSceneSendAppMsg", "cdntra cdn not support no thumb msg type:%d", new Object[] { Integer.valueOf(paramg.type) });
             i = 0;
           }
           else
           {
-            this.fFo = com.tencent.mm.al.c.a("upattach", this.pYg.field_createTime, localbi.field_talker, this.pYi);
-            ab.w("MicroMsg.NetSceneUploadAppAttach", "summerbig cdntra genClientId field_createTime[%d], useCdnTransClientId[%s]", new Object[] { Long.valueOf(this.pYg.field_createTime), this.fFo });
-            if (bo.isNullOrNil(this.fFo))
+            this.BQq = ((int)com.tencent.mm.vfs.i.aMN((String)localObject1));
+            if ((paramg.type == 33) || (paramg.type == 36) || (paramg.type == 46) || (paramg.type == 44) || (paramg.type == 48)) {}
+            for (i = 1;; i = 0)
             {
-              ab.w("MicroMsg.NetSceneUploadAppAttach", "summerbig cdntra genClientId failed not use cdn rowid:%d", new Object[] { Long.valueOf(this.pYi) });
+              if ((i != 0) || (this.BQq < 262144L)) {
+                break label571;
+              }
+              ad.w("MicroMsg.NetSceneSendAppMsg", "cdntra thumb[%s][%d] Too Big Not Use CDN TRANS", new Object[] { localObject1, Long.valueOf(this.BQq) });
+              i = 0;
+              break;
+            }
+            label571:
+            ad.i("MicroMsg.NetSceneSendAppMsg", "cdntra content.type:%d  thumbPath:%s,  thumbLength:%d ", new Object[] { Integer.valueOf(paramg.type), localObject1, Long.valueOf(this.BQq) });
+            if (!bt.isNullOrNil(paramg.dbA))
+            {
+              ad.w("MicroMsg.NetSceneSendAppMsg", "cdntra attach has been upload by cdn msgid:%d", new Object[] { Long.valueOf(this.msgId) });
               i = 0;
             }
             else
             {
-              com.tencent.mm.i.g localg = new com.tencent.mm.i.g();
-              i = 0;
-              String str = localbi.field_content;
-              localObject = str;
-              int j;
-              if (t.lA(localbi.field_talker))
+              if (i == 0)
               {
-                j = bf.pt(localbi.field_content);
-                localObject = str;
-                if (j != -1) {
-                  localObject = (localbi.field_content + " ").substring(j + 2).trim();
-                }
-              }
-              this.cmR = j.b.mY(bo.apU((String)localObject));
-              label1099:
-              label1108:
-              boolean bool;
-              if (this.cmR != null)
-              {
-                ab.d("MicroMsg.NetSceneUploadAppAttach", "summerbig cdntra amc.cdnAttachUrl[%s], amc.aesKey[%s], amc.filemd5[%s], amc.type[%d]", new Object[] { this.cmR.fgL, bo.aqg(this.cmR.ewj), this.cmR.filemd5, Integer.valueOf(this.cmR.type) });
-                localg.field_fileId = this.cmR.fgL;
-                localg.field_aesKey = this.cmR.ewj;
-                localg.field_filemd5 = this.cmR.filemd5;
-                if ((this.cmR.fgA != 0) || (this.cmR.fgw > 26214400))
+                f.awL();
+                if (!com.tencent.mm.ao.b.nL(4))
                 {
-                  i = 1;
-                  if (i == 0) {
-                    break label1534;
-                  }
-                  j = com.tencent.mm.i.a.ecH;
-                  localg.field_appType = 0;
-                  localg.edp = this.fFy;
-                  localg.field_mediaId = this.fFo;
-                  localg.field_fullpath = this.pYg.field_fileFullPath;
-                  localg.field_thumbpath = paramf;
-                  localg.field_fileType = j;
-                  if (i == 0) {
-                    break label1542;
-                  }
-                  localObject = bo.nullAsNil(this.pYg.field_signature);
-                  label1173:
-                  localg.field_svr_signature = ((String)localObject);
-                  if (i == 0) {
-                    break label1549;
-                  }
-                  bool = bo.isNullOrNil(this.pYg.field_signature);
-                  label1196:
-                  localg.field_onlycheckexist = bool;
-                  localg.field_fake_bigfile_signature_aeskey = this.pYg.field_fakeAeskey;
-                  localg.field_fake_bigfile_signature = this.pYg.field_fakeSignature;
-                  localg.field_talker = localbi.field_talker;
-                  localg.field_priority = com.tencent.mm.i.a.ecF;
-                  localg.field_totalLen = m;
-                  localg.field_needStorage = false;
-                  localg.field_isStreamMedia = false;
-                  localg.field_enable_hitcheck = this.fFG;
-                  if (!t.lA(localbi.field_talker)) {
-                    break label1555;
-                  }
-                }
-              }
-              label1542:
-              label1549:
-              label1555:
-              for (i = 1;; i = 0)
-              {
-                localg.field_chattype = i;
-                localg.field_force_aeskeycdn = false;
-                localg.field_trysafecdn = true;
-                localg.field_bzScene = 0;
-                ab.i("MicroMsg.NetSceneUploadAppAttach", "summerbig cdntra checkUseCdn msgId:%d file[%s][%d] thumb[%s][%d], useCdnTransClientId[%s], fileType[%d], enable_hitcheck[%b], onlycheckexist[%b] force_aeskeycdn[%b] trysafecdn[%b] aeskey[%s], md5[%s], signature[%s], faeskey[%s], fsignature[%s]", new Object[] { Long.valueOf(this.pYg.field_msgInfoId), localg.field_fullpath, Integer.valueOf(m), paramf, Integer.valueOf(k), this.fFo, Integer.valueOf(localg.field_fileType), Boolean.valueOf(localg.field_enable_hitcheck), Boolean.valueOf(localg.field_onlycheckexist), Boolean.valueOf(localg.field_force_aeskeycdn), Boolean.valueOf(localg.field_trysafecdn), bo.aqg(localg.field_aesKey), localg.field_filemd5, bo.aqg(localg.field_svr_signature), bo.aqg(localg.field_fake_bigfile_signature_aeskey), bo.aqg(localg.field_fake_bigfile_signature) });
-                if (com.tencent.mm.al.f.afO().e(localg)) {
-                  break label1560;
-                }
-                ab.e("MicroMsg.NetSceneUploadAppAttach", "summerbig cdntra addSendTask failed.");
-                this.fFo = "";
-                i = 0;
-                break;
-                i = 0;
-                break label1099;
-                ab.i("MicroMsg.NetSceneUploadAppAttach", "summerbig cdntra parse content xml failed");
-                break label1099;
-                label1534:
-                j = com.tencent.mm.i.a.MediaType_FILE;
-                break label1108;
-                localObject = "";
-                break label1173;
-                bool = false;
-                break label1196;
-              }
-              label1560:
-              if (this.pYg.field_isUseCdn != 1)
-              {
-                this.pYg.field_isUseCdn = 1;
-                bool = al.aUJ().a(this.pYg, new String[0]);
-                if (!bool)
-                {
-                  ab.e("MicroMsg.NetSceneUploadAppAttach", "summerbig checkUseCdn update info ret:".concat(String.valueOf(bool)));
-                  this.retCode = (-10000 - com.tencent.mm.compatible.util.g.getLine());
-                  this.callback.onSceneEnd(3, -1, "", this);
+                  f.awL();
+                  ad.w("MicroMsg.NetSceneSendAppMsg", "cdntra not use cdn flag:%b ", new Object[] { Boolean.valueOf(com.tencent.mm.ao.b.nL(4)) });
                   i = 0;
                   continue;
                 }
               }
-              ab.i("MicroMsg.NetSceneUploadAppAttach", "summerbig checkUseCdn ret true useCdnTransClientId[%s]", new Object[] { this.fFo });
-              i = 1;
+              this.hhN = com.tencent.mm.ao.c.a("upappmsg", this.drF.field_createTime, this.drF.field_talker, this.drF.field_msgId);
+              if (bt.isNullOrNil(this.hhN))
+              {
+                ad.w("MicroMsg.NetSceneSendAppMsg", "cdntra genClientId failed not use cdn msgid:%d", new Object[] { Long.valueOf(this.drF.field_msgId) });
+                i = 0;
+              }
+              else
+              {
+                localObject2 = paramg.apw();
+                if (((com.tencent.mm.sdk.platformtools.h.DEBUG) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED)) && ((((com.tencent.mm.i.g)localObject2).fnH != null) || (!bt.isNullOrNil(((com.tencent.mm.i.g)localObject2).field_mediaId)) || (!bt.isNullOrNil(((com.tencent.mm.i.g)localObject2).field_thumbpath)) || (!bt.isNullOrNil(((com.tencent.mm.i.g)localObject2).field_talker))))
+                {
+                  parame = new RuntimeException("Do not fill reserved fields!");
+                  AppMethodBeat.o(31055);
+                  throw parame;
+                }
+                ((com.tencent.mm.i.g)localObject2).fnH = this.hhW;
+                ((com.tencent.mm.i.g)localObject2).field_mediaId = this.hhN;
+                ((com.tencent.mm.i.g)localObject2).field_thumbpath = ((String)localObject1);
+                ((com.tencent.mm.i.g)localObject2).field_talker = this.drF.field_talker;
+                ad.i("MicroMsg.NetSceneSendAppMsg", "summersafecdn cdntra checkUseCdn content.type[%d], thumb[%s], useCdnTransClientId[%s], fileType[%d], enable_hitcheck[%b], onlycheckexist[%b], force_aeskeycdn[%b], trysafecdn[%b]", new Object[] { Integer.valueOf(paramg.type), localObject1, this.hhN, Integer.valueOf(((com.tencent.mm.i.g)localObject2).field_fileType), Boolean.valueOf(((com.tencent.mm.i.g)localObject2).field_enable_hitcheck), Boolean.valueOf(((com.tencent.mm.i.g)localObject2).field_onlycheckexist), Boolean.valueOf(((com.tencent.mm.i.g)localObject2).field_force_aeskeycdn), Boolean.valueOf(((com.tencent.mm.i.g)localObject2).field_trysafecdn) });
+                if (!f.awL().e((com.tencent.mm.i.g)localObject2))
+                {
+                  ad.e("MicroMsg.NetSceneSendAppMsg", "cdntra addSendTask failed.");
+                  this.hhN = "";
+                  i = 0;
+                }
+                else
+                {
+                  i = 1;
+                }
+              }
             }
           }
         }
+        label1017:
+        cos localcos = (cos)this.rr.gUS.gUX;
+        ek localek = new ek();
+        localek.hnC = paramg.appId;
+        localek.CyF = (this.drF.field_talker + this.drF.field_msgId + "T" + this.drF.field_createTime);
+        localek.gKr = k.b.a(paramg, null, null, 0, 0);
+        localek.CreateTime = ((int)bt.aGK());
+        localek.sdP = this.drF.field_talker;
+        localek.sdQ = com.tencent.mm.model.u.aqG();
+        localek.mBH = paramg.type;
+        localek.CyE = paramg.sdkVer;
+        localek.rNz = paramg.gHh;
+        localObject2 = a.a.Wh().o(this.drF);
+        y.b localb;
+        String str;
+        cxi localcxi;
+        if (!bt.isNullOrNil((String)localObject2))
+        {
+          localek.CxC = ((String)localObject2);
+          localek.CyI = paramg.dxC;
+          localek.CyJ = paramg.dxD;
+          localek.CyK = paramg.dxE;
+          if (this.BQo != null)
+          {
+            localek.CyL = this.BQo.BPv;
+            localek.rZy = this.BQo.dvP;
+          }
+          localb = com.tencent.mm.model.y.arz().tC(this.mSessionId);
+          if (localb != null)
+          {
+            this.wFo = new yf();
+            this.wFo.dEv.url = paramg.url;
+            this.wFo.dEv.dEw = localb.getString("prePublishId", "");
+            this.wFo.dEv.dEy = localb.getString("preUsername", "");
+            this.wFo.dEv.dEz = localb.getString("preChatName", "");
+            this.wFo.dEv.dEA = localb.getInt("preMsgIndex", 0);
+            this.wFo.dEv.dEE = localb.getInt("sendAppMsgScene", 0);
+            this.wFo.dEv.dEF = localb.getInt("getA8KeyScene", 0);
+            this.wFo.dEv.dEG = localb.getString("referUrl", null);
+            this.wFo.dEv.dEH = localb.getString("adExtStr", null);
+            this.wFo.dEv.dEB = this.drF.field_talker;
+            this.wFo.dEv.dEI = paramg.title;
+            this.wFo.dEv.dEK = paramg.description;
+            az.arV();
+            localObject2 = com.tencent.mm.model.c.apM().aHY(this.drF.field_talker);
+            if (localObject2 != null) {
+              this.wFo.dEv.dEC = ((af)localObject2).ZW();
+            }
+            this.wFo.dEv.dED = com.tencent.mm.model.q.rY(this.drF.field_talker);
+            str = "";
+            localObject2 = str;
+            if (paramg.dxG != null)
+            {
+              localcxi = new cxi();
+              localObject2 = Base64.decode(paramg.dxG, 0);
+            }
+          }
+        }
+        try
+        {
+          localcxi.parseFrom((byte[])localObject2);
+          localObject2 = str;
+          if (localcxi.Epv != null) {
+            localObject2 = localcxi.Epv.rVL;
+          }
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            int j;
+            Object localObject3 = str;
+          }
+        }
+        localcos.EiK = String.format(Locale.US, "prePublishId=%s&preUserName=%s&preChatName=%s&preChatType=%d&getA8KeyScene=%d&sourceAppId=%s", new Object[] { this.wFo.dEv.dEw, this.wFo.dEv.dEy, this.wFo.dEv.dEz, Integer.valueOf(x.aw(this.wFo.dEv.dEy, this.wFo.dEv.dEz)), Integer.valueOf(this.wFo.dEv.dEF), localObject2 });
+        if ((localb != null) && (paramg.type == 33))
+        {
+          this.BQp = new com.tencent.mm.g.a.o();
+          i = localb.getInt("fromScene", 1);
+          this.BQp.dbr.scene = i;
+          j = localb.getInt("appservicetype", 0);
+          this.BQp.dbr.cfd = j;
+          localObject2 = localb.getString("preChatName", "");
+          if (2 == i)
+          {
+            str = localb.getString("preUsername", "");
+            this.BQp.dbr.dbt = ((String)localObject2 + ":" + str);
+            label1866:
+            localObject2 = this.drF.field_talker;
+            bool = localb.getBoolean("moreRetrAction", false);
+            if (!((String)localObject2).endsWith("@chatroom")) {
+              break label2331;
+            }
+            localObject2 = this.BQp.dbr;
+            if (!bool) {
+              break label2326;
+            }
+            i = 5;
+            label1913:
+            ((o.a)localObject2).action = i;
+            this.BQp.dbr.dbs = (paramg.gJQ + 1);
+            this.BQp.dbr.dbu = paramg.gJD;
+            this.BQp.dbr.dbj = paramg.gJE;
+            this.BQp.dbr.appId = paramg.gJF;
+            this.BQp.dbr.actionTime = bt.aGK();
+            this.BQp.dbr.dbw = 1;
+          }
+        }
+        else
+        {
+          ad.d("MicroMsg.NetSceneSendAppMsg", "SnsPostOperationFields: ShareUrlOriginal=%s, ShareUrlOpen=%s, JsAppId=%s", new Object[] { paramg.dxC, paramg.dxD, paramg.dxE });
+          if (!bt.isNullOrNil((String)localObject1))
+          {
+            localObject2 = com.tencent.mm.vfs.i.aR((String)localObject1, 0, -1);
+            if (!bt.cw((byte[])localObject2)) {
+              localek.CyG = new SKBuiltinBuffer_t().setBuffer((byte[])localObject2);
+            }
+          }
+          if (localek.CyG == null) {
+            break label2361;
+          }
+        }
+        label2326:
+        label2331:
+        label2361:
+        for (int i = localek.CyG.getILen();; i = -1)
+        {
+          ad.d("MicroMsg.NetSceneSendAppMsg", "doScene thumbFile:[%s] thumbdata:%d", new Object[] { localObject1, Integer.valueOf(i) });
+          localcos.EiI = localek;
+          if ((paramg.gHi != 0) || (paramg.gHe > 26214400)) {
+            localcos.CAG = com.tencent.mm.i.a.fmX;
+          }
+          localcos.Md5 = paramg.filemd5;
+          localcos.ijP = this.bXk;
+          localcos.EiM = this.dvY;
+          if (((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).ifAddTicketByActionFlag(this.drF.field_talker)) {
+            localcos.COT = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aIi(this.drF.field_talker);
+          }
+          ad.i("MicroMsg.NetSceneSendAppMsg", "summersafecdn file md5[%s], signature[%s], type[%d], fromScene[%s]", new Object[] { localcos.Md5, bt.aGs(localcos.ijP), Integer.valueOf(localcos.CAG), localcos.EiK });
+          i = dispatch(parame, this.rr, this);
+          AppMethodBeat.o(31055);
+          return i;
+          localek.CxC = bk.SM();
+          break;
+          this.BQp.dbr.dbt = ((String)localObject2);
+          break label1866;
+          i = 2;
+          break label1913;
+          localObject2 = this.BQp.dbr;
+          if (bool) {}
+          for (i = 4;; i = 1)
+          {
+            ((o.a)localObject2).action = i;
+            break;
+          }
+        }
+        label2375:
+        localObject1 = "";
       }
     }
-    if (this.pYg.field_netTimes > 3200L)
-    {
-      l.kX(this.pYg.systemRowid);
-      ab.e("MicroMsg.NetSceneUploadAppAttach", com.tencent.mm.compatible.util.g.Ml() + " summerbig doScene info.field_netTimes > DOSCENE_LIMIT SET ERROR! rowid:" + this.pYi);
-      AppMethodBeat.o(27381);
-      return -1;
-    }
-    paramf = this.pYg;
-    paramf.field_netTimes += 1L;
-    if (bo.isNullOrNil(this.pYg.field_clientAppDataId))
-    {
-      ab.e("MicroMsg.NetSceneUploadAppAttach", "summerbig doScene checkArgs : clientAppDataId is null");
-      this.retCode = (-10000 - com.tencent.mm.compatible.util.g.getLine());
-      AppMethodBeat.o(27381);
-      return -1;
-    }
-    if ((this.pYg.field_totalLen <= 0L) || (this.pYg.field_totalLen > 26214400L))
-    {
-      ab.e("MicroMsg.NetSceneUploadAppAttach", "summerbig doScene checkArgs : totalLen is invalid, totalLen = " + this.pYg.field_totalLen);
-      this.retCode = (-10000 - com.tencent.mm.compatible.util.g.getLine());
-      if (this.pYg.field_totalLen > 26214400L) {
-        l.kX(this.pYg.systemRowid);
-      }
-      AppMethodBeat.o(27381);
-      return -1;
-    }
-    if (bo.isNullOrNil(this.pYg.field_fileFullPath))
-    {
-      ab.e("MicroMsg.NetSceneUploadAppAttach", "summerbig doScene checkArgs : fileFullPath is null");
-      this.retCode = (-10000 - com.tencent.mm.compatible.util.g.getLine());
-      AppMethodBeat.o(27381);
-      return -1;
-    }
-    if (com.tencent.mm.a.e.cM(this.pYg.field_fileFullPath) > 26214400)
-    {
-      ab.e("MicroMsg.NetSceneUploadAppAttach", "summerbig doScene doScene : file is too large");
-      l.kX(this.pYg.systemRowid);
-      AppMethodBeat.o(27381);
-      return -1;
-    }
-    if (bo.isNullOrNil(this.fgy)) {}
-    for (paramf = com.tencent.mm.a.e.j(this.pYg.field_fileFullPath, (int)this.pYg.field_offset, 8192); bo.ce(paramf); paramf = com.tencent.mm.a.e.j(this.pYg.field_fileFullPath, (int)this.pYg.field_offset, 32768))
-    {
-      ab.e("MicroMsg.NetSceneUploadAppAttach", "summerbig doScene doScene : data is null");
-      this.retCode = (-10000 - com.tencent.mm.compatible.util.g.getLine());
-      AppMethodBeat.o(27381);
-      return -1;
-    }
-    Object localObject = (cnt)this.rr.fsV.fta;
-    ((cnt)localObject).fKw = this.pYg.field_appId;
-    ((cnt)localObject).wpR = ((int)this.pYg.field_sdkVer);
-    ((cnt)localObject).xWD = this.pYg.field_clientAppDataId;
-    ((cnt)localObject).jKs = ((int)this.pYg.field_type);
-    ((cnt)localObject).jJA = r.Zn();
-    ((cnt)localObject).pIx = ((int)this.pYg.field_totalLen);
-    ((cnt)localObject).pIy = ((int)this.pYg.field_offset);
-    if ((this.fgy != null) && (this.pDi))
-    {
-      ((cnt)localObject).wQr = this.fgy;
-      ((cnt)localObject).pIx = ((int)this.pYg.field_totalLen);
-      ((cnt)localObject).pIz = 0;
-      ((cnt)localObject).pIA = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
-      this.pDi = false;
-      i = dispatch(parame, this.rr, this);
-      AppMethodBeat.o(27381);
-      return i;
-    }
-    ((cnt)localObject).pIz = paramf.length;
-    ((cnt)localObject).pIA = new SKBuiltinBuffer_t().setBuffer(paramf);
-    if (this.fgy != null) {
-      ((cnt)localObject).wQr = this.fgy;
-    }
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(27381);
-    return i;
   }
   
   public final int getType()
   {
-    return 220;
+    return 222;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(27382);
-    ab.d("MicroMsg.NetSceneUploadAppAttach", "onGYNetEnd : errType = " + paramInt2 + ", errCode = " + paramInt3);
-    if ((paramInt2 == 3) && (paramInt3 == -1) && (!bo.isNullOrNil(this.fFo)))
+    AppMethodBeat.i(31056);
+    ad.i("MicroMsg.NetSceneSendAppMsg", "summersafecdn cdntra onGYNetEnd [%d,%d,%s] msgId:%d, oldContent[%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(this.msgId), this.drF.field_content });
+    paramArrayOfByte = (cot)((com.tencent.mm.al.b)paramq).gUT.gUX;
+    cos localcos = (cos)((com.tencent.mm.al.b)paramq).gUS.gUX;
+    if ((paramArrayOfByte != null) && ((paramInt2 == 4) || ((paramInt2 == 0) && (paramInt3 == 0)))) {
+      ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).setEnSendMsgActionFlag(paramArrayOfByte.COU);
+    }
+    if ((paramInt2 == 3) && (paramInt3 == -1) && (!bt.isNullOrNil(this.hhN)))
     {
-      ab.w("MicroMsg.NetSceneUploadAppAttach", "cdntra using cdn trans,  wait cdn service callback! clientid:%s", new Object[] { this.fFo });
-      AppMethodBeat.o(27382);
+      ad.w("MicroMsg.NetSceneSendAppMsg", "cdntra using cdn trans,  wait cdn service callback! clientid:%s", new Object[] { this.hhN });
+      AppMethodBeat.o(31056);
       return;
     }
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ab.e("MicroMsg.NetSceneUploadAppAttach", "onGYNetEnd : errType = " + paramInt2 + ", errCode = " + paramInt3);
-      this.retCode = (-10000 - com.tencent.mm.compatible.util.g.getLine());
+      this.drF.setStatus(5);
+      com.tencent.mm.plugin.report.e.vIY.idkeyStat(111L, 34L, 1L, true);
+      az.arV();
+      com.tencent.mm.model.c.apO().a(this.drF.field_msgId, this.drF);
+      ad.e("MicroMsg.NetSceneSendAppMsg", "send app msg failed, err=" + paramInt2 + "," + paramInt3 + ", msgId " + this.drF.field_msgId);
       if (paramInt2 == 4) {
-        com.tencent.mm.plugin.report.service.h.qsU.e(10420, new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(1), Long.valueOf(this.startTime), Long.valueOf(bo.aoy()), Integer.valueOf(com.tencent.mm.al.c.cb(com.tencent.mm.sdk.platformtools.ah.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_FILE), Long.valueOf(this.pYg.field_totalLen - this.vLL) });
+        com.tencent.mm.plugin.report.service.h.vKh.f(10420, new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(1), Long.valueOf(this.startTime), Long.valueOf(bt.eGO()), Integer.valueOf(com.tencent.mm.ao.c.cu(aj.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_THUMBIMAGE), Integer.valueOf(0) });
       }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(27382);
+      AppMethodBeat.o(31056);
       return;
     }
-    paramString = (cnu)((com.tencent.mm.ai.b)paramq).fsW.fta;
-    if ((paramString.fKw != null) && (this.fgy == null) && ((!paramString.fKw.equals(this.pYg.field_appId)) || (!paramString.xWD.equals(this.pYg.field_clientAppDataId))))
+    this.drF.setStatus(2);
+    this.drF.kX(paramArrayOfByte.uKZ);
+    az.arV();
+    com.tencent.mm.model.c.apO().a(this.drF.field_msgId, this.drF);
+    com.tencent.mm.modelstat.b.huc.b(this.drF, l.r(this.drF));
+    if ((this.wFo != null) && (!bt.isNullOrNil(this.wFo.dEv.url)))
     {
-      ab.e("MicroMsg.NetSceneUploadAppAttach", "argument is not consistent");
-      this.retCode = (-10000 - com.tencent.mm.compatible.util.g.getLine());
-      this.callback.onSceneEnd(3, -1, "", this);
-      AppMethodBeat.o(27382);
-      return;
+      this.wFo.dEv.dEx = ("msg_" + Long.toString(paramArrayOfByte.uKZ));
+      com.tencent.mm.sdk.b.a.ESL.l(this.wFo);
     }
-    if ((paramString.pIx < 0) || (paramString.pIx != this.pYg.field_totalLen) || (paramString.pIy < 0) || (paramString.pIy > this.pYg.field_totalLen))
-    {
-      ab.e("MicroMsg.NetSceneUploadAppAttach", "dataLen, startPos or totalLen is incorrect");
-      this.retCode = (-10000 - com.tencent.mm.compatible.util.g.getLine());
-      this.callback.onSceneEnd(3, -1, "", this);
-      AppMethodBeat.o(27382);
-      return;
+    if ((this.wFp != null) && (this.wFp.dEL.dEM != -1)) {
+      com.tencent.mm.sdk.b.a.ESL.l(this.wFp);
     }
-    this.pYg.field_offset = paramString.pIy;
-    paramq = this.pYg;
-    if (l.alt(paramString.fKz)) {}
-    for (paramString = paramString.fKz;; paramString = "")
+    k.b localb = k.b.rx(this.drF.field_content);
+    if ((localb != null) && ("wx4310bbd51be7d979".equals(localb.appId))) {
+      if ((bt.isNullOrNil(this.drF.field_talker)) || (!w.pF(this.drF.field_talker))) {
+        break label967;
+      }
+    }
+    label967:
+    for (paramInt1 = 1;; paramInt1 = 0)
     {
-      paramq.field_mediaSvrId = paramString;
-      if (this.pYg.field_status != 105L) {
+      paramq = "";
+      try
+      {
+        paramArrayOfByte = URLEncoder.encode(localb.description, "UTF-8");
+        paramq = paramArrayOfByte;
+      }
+      catch (UnsupportedEncodingException paramArrayOfByte)
+      {
+        for (;;)
+        {
+          ad.printErrStackTrace("MicroMsg.NetSceneSendAppMsg", paramArrayOfByte, "", new Object[0]);
+          continue;
+          paramInt1 = 1;
+          continue;
+          paramq = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ad(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
+          paramArrayOfByte = this.drF;
+          if ((paramArrayOfByte == null) || (paramArrayOfByte.field_msgSvrId <= 0L)) {}
+          for (;;)
+          {
+            paramq = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ad(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
+            paramArrayOfByte = this.drF;
+            if ((paramArrayOfByte == null) || (paramArrayOfByte.field_msgSvrId <= 0L)) {
+              break;
+            }
+            com.tencent.e.h.Iye.aP(new d.3(paramq, paramArrayOfByte));
+            break;
+            com.tencent.e.h.Iye.f(new d.1(paramq, paramArrayOfByte), "GroupSolitaireReport");
+          }
+          ((com.tencent.mm.plugin.msgquote.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.msgquote.a.class)).handleQuoteMsgSendResuld(this.drF.field_msgId, this.drF.field_msgSvrId);
+        }
+      }
+      paramArrayOfByte = new StringBuilder("1,");
+      if (paramInt1 == 0) {
         break;
       }
-      ab.w("MicroMsg.NetSceneUploadAppAttach", "onGYNetEnd STATUS PAUSE [" + this.pYg.field_mediaSvrId + "," + this.pYg.field_offset + "] ");
-      this.callback.onSceneEnd(paramInt2, -1, "", this);
-      AppMethodBeat.o(27382);
-      return;
-    }
-    if (this.pYg.field_offset == this.pYg.field_totalLen)
-    {
-      if (bo.isNullOrNil(this.pYg.field_mediaSvrId))
+      paramInt1 = 2;
+      paramq = paramInt1 + ",," + paramq;
+      ad.i("MicroMsg.NetSceneSendAppMsg", "androidSystemShareFixed(13717) %s", new Object[] { paramq });
+      com.tencent.mm.plugin.report.service.h.vKh.kvStat(13717, paramq);
+      if (localb != null) {}
+      switch (localb.type)
       {
-        ab.e("MicroMsg.NetSceneUploadAppAttach", "finish upload but mediaid == null!");
-        this.retCode = (-10000 - com.tencent.mm.compatible.util.g.getLine());
-        this.callback.onSceneEnd(3, -1, "", this);
-        l.kX(this.pYg.systemRowid);
-        AppMethodBeat.o(27382);
+      default: 
+        if ((localb != null) && (w.sm(this.drF.field_talker)))
+        {
+          paramq = (com.tencent.mm.ai.a)localb.ao(com.tencent.mm.ai.a.class);
+          if ((paramq != null) && (paramq.gFM)) {
+            com.tencent.mm.chatroom.d.y.a(this.drF, localb);
+          }
+          if (aa.UU()) {
+            ((com.tencent.mm.chatroom.plugin.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.chatroom.plugin.a.class)).handleGroupToolByReceiverAppMsg(this.drF);
+          }
+        }
+        if (this.BQp != null)
+        {
+          this.BQp.dbr.dbv = ("msg_" + this.drF.field_msgSvrId);
+          com.tencent.mm.sdk.b.a.ESL.l(this.BQp);
+        }
+        if (localcos.EiI.CyG != null) {
+          com.tencent.mm.plugin.report.service.h.vKh.f(10420, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(this.startTime), Long.valueOf(bt.eGO()), Integer.valueOf(com.tencent.mm.ao.c.cu(aj.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_THUMBIMAGE), Integer.valueOf(localcos.EiI.CyG.getILen()) });
+        }
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+        AppMethodBeat.o(31056);
         return;
       }
-      this.pYg.field_status = 199L;
-      com.tencent.mm.plugin.report.service.h.qsU.e(10420, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(this.startTime), Long.valueOf(bo.aoy()), Integer.valueOf(com.tencent.mm.al.c.cb(com.tencent.mm.sdk.platformtools.ah.getContext())), Integer.valueOf(com.tencent.mm.i.a.MediaType_FILE), Long.valueOf(this.pYg.field_totalLen - this.vLL) });
     }
-    boolean bool = al.aUJ().a(this.pYg, new String[0]);
-    if (!bool)
-    {
-      ab.e("MicroMsg.NetSceneUploadAppAttach", "onGYNetEnd update info ret:".concat(String.valueOf(bool)));
-      this.retCode = (-10000 - com.tencent.mm.compatible.util.g.getLine());
-      d(null);
-      this.callback.onSceneEnd(3, -1, "", this);
-      AppMethodBeat.o(27382);
-      return;
-    }
-    if (this.pYg.field_status == 199L)
-    {
-      this.callback.onSceneEnd(0, 0, "", this);
-      AppMethodBeat.o(27382);
-      return;
-    }
-    if (doScene(dispatcher(), this.callback) < 0)
-    {
-      ab.e("MicroMsg.NetSceneUploadAppAttach", "onGYNetEnd : doScene fail");
-      this.callback.onSceneEnd(3, -1, "", this);
-    }
-    AppMethodBeat.o(27382);
   }
   
-  public final int securityLimitCount()
+  public final n.b securityVerificationChecked(com.tencent.mm.network.q paramq)
   {
-    return 3200;
-  }
-  
-  public final m.b securityVerificationChecked(q paramq)
-  {
-    return m.b.ftu;
+    return n.b.gVB;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.ah
  * JD-Core Version:    0.7.0.1
  */

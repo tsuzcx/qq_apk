@@ -3,65 +3,65 @@ package com.tencent.mm.plugin.masssend.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int bVp;
+  public int begin;
   public int end;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(22735);
+    AppMethodBeat.i(26357);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.bVp);
-      paramVarArgs.aO(2, this.end);
-      AppMethodBeat.o(22735);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.begin);
+      paramVarArgs.aR(2, this.end);
+      AppMethodBeat.o(26357);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.bl(1, this.bVp);
-      int i = e.a.a.b.b.a.bl(2, this.end);
-      AppMethodBeat.o(22735);
+      paramInt = f.a.a.b.b.a.bA(1, this.begin);
+      int i = f.a.a.b.b.a.bA(2, this.end);
+      AppMethodBeat.o(26357);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      AppMethodBeat.o(22735);
+      AppMethodBeat.o(26357);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       d locald = (d)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(22735);
+        AppMethodBeat.o(26357);
         return -1;
       case 1: 
-        locald.bVp = locala.CLY.sl();
-        AppMethodBeat.o(22735);
+        locald.begin = locala.KhF.xS();
+        AppMethodBeat.o(26357);
         return 0;
       }
-      locald.end = locala.CLY.sl();
-      AppMethodBeat.o(22735);
+      locald.end = locala.KhF.xS();
+      AppMethodBeat.o(26357);
       return 0;
     }
-    AppMethodBeat.o(22735);
+    AppMethodBeat.o(26357);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.a.d
  * JD-Core Version:    0.7.0.1
  */

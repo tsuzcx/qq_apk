@@ -16,9 +16,9 @@ import java.util.List;
 public final class b
   extends ShareTinkerInternals
 {
-  private static String Btp = null;
+  private static String IFk = null;
   
-  private static String c(Context paramContext, Class<? extends Service> paramClass)
+  private static String f(Context paramContext, Class<? extends Service> paramClass)
   {
     PackageManager localPackageManager = paramContext.getPackageManager();
     paramContext = new ComponentName(paramContext, paramClass);
@@ -31,9 +31,9 @@ public final class b
     return null;
   }
   
-  public static void jp(Context paramContext)
+  public static void kJ(Context paramContext)
   {
-    String str = jr(paramContext);
+    String str = kL(paramContext);
     if (str == null) {}
     for (;;)
     {
@@ -53,10 +53,10 @@ public final class b
     }
   }
   
-  public static boolean jq(Context paramContext)
+  public static boolean kK(Context paramContext)
   {
     Object localObject = (ActivityManager)paramContext.getSystemService("activity");
-    paramContext = jr(paramContext);
+    paramContext = kL(paramContext);
     if (paramContext == null) {
       return false;
     }
@@ -88,23 +88,23 @@ public final class b
     return false;
   }
   
-  private static String jr(Context paramContext)
+  private static String kL(Context paramContext)
   {
-    if (Btp != null) {
-      return Btp;
+    if (IFk != null) {
+      return IFk;
     }
-    paramContext = c(paramContext, TinkerPatchService.class);
+    paramContext = f(paramContext, TinkerPatchService.class);
     if (paramContext == null) {
       return null;
     }
-    Btp = paramContext;
+    IFk = paramContext;
     return paramContext;
   }
   
-  public static boolean js(Context paramContext)
+  public static boolean kM(Context paramContext)
   {
-    String str = aI(paramContext);
-    paramContext = jr(paramContext);
+    String str = getProcessName(paramContext);
+    paramContext = kL(paramContext);
     if ((paramContext == null) || (paramContext.length() == 0)) {
       return false;
     }
@@ -113,7 +113,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.lib.f.b
  * JD-Core Version:    0.7.0.1
  */

@@ -10,42 +10,42 @@ import com.google.android.gms.common.internal.d;
 public final class n
   implements r, s
 {
-  public final a<?> HU;
-  private final boolean MH;
-  private o MI;
+  public final a<?> JJ;
+  private final boolean Ow;
+  private o Ox;
   
   public n(a<?> parama, boolean paramBoolean)
   {
-    this.HU = parama;
-    this.MH = paramBoolean;
+    this.JJ = parama;
+    this.Ow = paramBoolean;
   }
   
-  private void ij()
+  private void ir()
   {
-    d.e(this.MI, "Callbacks must be attached to a ClientConnectionHelper instance before connecting the client.");
+    d.g(this.Ox, "Callbacks must be attached to a ClientConnectionHelper instance before connecting the client.");
   }
   
   public final void a(ConnectionResult paramConnectionResult)
   {
-    ij();
-    this.MI.a(paramConnectionResult, this.HU, this.MH);
+    ir();
+    this.Ox.a(paramConnectionResult, this.JJ, this.Ow);
   }
   
   public final void a(o paramo)
   {
-    this.MI = paramo;
+    this.Ox = paramo;
   }
   
-  public final void bd(int paramInt)
+  public final void bx(int paramInt)
   {
-    ij();
-    this.MI.bd(paramInt);
+    ir();
+    this.Ox.bx(paramInt);
   }
   
   public final void h(Bundle paramBundle)
   {
-    ij();
-    this.MI.h(paramBundle);
+    ir();
+    this.Ox.h(paramBundle);
   }
 }
 

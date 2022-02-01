@@ -5,14 +5,14 @@ import android.os.Bundle;
 
 public final class a
 {
-  Bundle ZW = null;
+  Bundle adw = null;
   
   private a(Intent paramIntent)
   {
-    this.ZW = paramIntent.getExtras();
+    this.adw = paramIntent.getExtras();
   }
   
-  public static final a b(Intent paramIntent)
+  public static final a d(Intent paramIntent)
   {
     return new a(paramIntent);
   }

@@ -43,7 +43,7 @@ public final class SlookAirButtonFrequentContactAdapter
   
   public SlookAirButtonFrequentContactAdapter(View paramView, Bundle paramBundle)
   {
-    AppMethodBeat.i(117235);
+    AppMethodBeat.i(76277);
     this.IS_PRIVATE = "is_private";
     this.EXTRA_CONDITION = "extra_condition";
     this.mData = new ArrayList();
@@ -56,12 +56,12 @@ public final class SlookAirButtonFrequentContactAdapter
     if ((paramView == null) && (paramBundle == null))
     {
       paramView = new IllegalArgumentException("You should set the View and Bundle in Param");
-      AppMethodBeat.o(117235);
+      AppMethodBeat.o(76277);
       throw paramView;
     }
     if (!isSupport(1))
     {
-      AppMethodBeat.o(117235);
+      AppMethodBeat.o(76277);
       return;
     }
     if (paramBundle != null)
@@ -103,20 +103,20 @@ public final class SlookAirButtonFrequentContactAdapter
         this.mContext = paramView.getContext();
         setEmptyText(SlookResourceManager.getText(this.mContext, 0));
       }
-      AppMethodBeat.o(117235);
+      AppMethodBeat.o(76277);
       return;
     }
   }
   
   private boolean isSupport(int paramInt)
   {
-    AppMethodBeat.i(117241);
+    AppMethodBeat.i(76283);
     if (this.mSlook.isFeatureEnabled(1))
     {
-      AppMethodBeat.o(117241);
+      AppMethodBeat.o(76283);
       return true;
     }
-    AppMethodBeat.o(117241);
+    AppMethodBeat.o(76283);
     return false;
   }
   
@@ -128,10 +128,10 @@ public final class SlookAirButtonFrequentContactAdapter
     {
       try
       {
-        AppMethodBeat.i(117240);
+        AppMethodBeat.i(76282);
         if ((!this.mNeedUpdate) || (this.mIsShowing))
         {
-          AppMethodBeat.o(117240);
+          AppMethodBeat.o(76282);
           return;
         }
         this.mNeedUpdate = false;
@@ -146,7 +146,7 @@ public final class SlookAirButtonFrequentContactAdapter
           if (localObject1 != null) {
             break;
           }
-          AppMethodBeat.o(117240);
+          AppMethodBeat.o(76282);
         }
         else
         {
@@ -188,18 +188,18 @@ public final class SlookAirButtonFrequentContactAdapter
           if (localObject3 != null) {
             localObject3.close();
           }
-          AppMethodBeat.o(117240);
+          AppMethodBeat.o(76282);
         }
         localObject3.close();
         try
         {
           label342:
           this.mCount = this.mData.size();
-          AppMethodBeat.o(117240);
+          AppMethodBeat.o(76282);
         }
         catch (NoSuchMethodError localNoSuchMethodError)
         {
-          AppMethodBeat.o(117240);
+          AppMethodBeat.o(76282);
         }
       }
       break;
@@ -215,7 +215,7 @@ public final class SlookAirButtonFrequentContactAdapter
   
   public final SlookAirButtonAdapter.AirButtonItem getItem(int paramInt)
   {
-    AppMethodBeat.i(117239);
+    AppMethodBeat.i(76281);
     Bundle localBundle = (Bundle)this.mData.get(paramInt);
     String str1 = localBundle.getString("display_name");
     String str2 = localBundle.getString("data");
@@ -226,43 +226,43 @@ public final class SlookAirButtonFrequentContactAdapter
     for (localObject = this.mContext.getResources().getDrawable(paramInt);; localObject = new BitmapDrawable(this.mContext.getResources(), BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length)))
     {
       localObject = new SlookAirButtonAdapter.AirButtonItem((Drawable)localObject, str1, str2, localBundle);
-      AppMethodBeat.o(117239);
+      AppMethodBeat.o(76281);
       return localObject;
     }
   }
   
   public final void onDismiss(View paramView)
   {
-    AppMethodBeat.i(117238);
+    AppMethodBeat.i(76280);
     this.mIsShowing = false;
     this.mNeedUpdate = true;
     this.mData.clear();
     super.onDismiss(paramView);
-    AppMethodBeat.o(117238);
+    AppMethodBeat.o(76280);
   }
   
   public final void onHide(View paramView)
   {
-    AppMethodBeat.i(117237);
+    AppMethodBeat.i(76279);
     this.mIsShowing = false;
     this.mNeedUpdate = true;
     this.mData.clear();
     super.onHide(paramView);
-    AppMethodBeat.o(117237);
+    AppMethodBeat.o(76279);
   }
   
   public final void onShow(View paramView)
   {
-    AppMethodBeat.i(117236);
+    AppMethodBeat.i(76278);
     updateData();
     this.mIsShowing = true;
     super.onShow(paramView);
-    AppMethodBeat.o(117236);
+    AppMethodBeat.o(76278);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.samsung.android.sdk.look.airbutton.SlookAirButtonFrequentContactAdapter
  * JD-Core Version:    0.7.0.1
  */

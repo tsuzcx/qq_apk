@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
-import a.l;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -8,14 +7,15 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.widget.MMNeat7extView;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoErrMsgPreference;", "Lcom/tencent/mm/ui/base/preference/Preference;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bindView", "", "value", "", "errMsg", "getErrMsg", "()Ljava/lang/String;", "setErrMsg", "(Ljava/lang/String;)V", "errMsgTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "onBindView", "", "view", "Landroid/view/View;", "setText", "app_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoErrMsgPreference;", "Lcom/tencent/mm/ui/base/preference/Preference;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bindView", "", "value", "", "errMsg", "getErrMsg", "()Ljava/lang/String;", "setErrMsg", "(Ljava/lang/String;)V", "errMsgTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "onBindView", "", "view", "Landroid/view/View;", "setText", "app_release"})
 public final class NewBizInfoErrMsgPreference
   extends Preference
 {
   private String errMsg = "";
-  private boolean lJS;
-  private MMNeat7extView pDu;
+  private boolean paC;
+  private MMNeat7extView uFx;
   
   public NewBizInfoErrMsgPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,47 +27,47 @@ public final class NewBizInfoErrMsgPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private final void ccQ()
+  private final void ddi()
   {
-    AppMethodBeat.i(154026);
-    MMNeat7extView localMMNeat7extView = this.pDu;
+    AppMethodBeat.i(39609);
+    MMNeat7extView localMMNeat7extView = this.uFx;
     if (localMMNeat7extView == null) {
-      a.f.b.j.ays("errMsgTv");
+      d.g.b.k.aPZ("errMsgTv");
     }
-    localMMNeat7extView.af((CharSequence)com.tencent.mm.pluginsdk.ui.d.j.g(localMMNeat7extView.getContext(), (CharSequence)this.errMsg, (int)localMMNeat7extView.getTextSize()));
-    AppMethodBeat.o(154026);
+    localMMNeat7extView.aq((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.f(localMMNeat7extView.getContext(), (CharSequence)this.errMsg, (int)localMMNeat7extView.getTextSize()));
+    AppMethodBeat.o(39609);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(154025);
-    a.f.b.j.q(paramView, "view");
+    AppMethodBeat.i(39608);
+    d.g.b.k.h(paramView, "view");
     super.onBindView(paramView);
-    paramView = paramView.findViewById(2131823039);
+    paramView = paramView.findViewById(2131297289);
     MMNeat7extView localMMNeat7extView = (MMNeat7extView)paramView;
     localMMNeat7extView.setTextSize(1, 16.0F);
-    localMMNeat7extView.setTextColor(localMMNeat7extView.getResources().getColor(2131690156));
-    a.f.b.j.p(paramView, "view.findViewById<MMNeat…ey_text_color))\n        }");
-    this.pDu = ((MMNeat7extView)paramView);
-    this.lJS = true;
-    ccQ();
-    AppMethodBeat.o(154025);
+    localMMNeat7extView.setTextColor(localMMNeat7extView.getResources().getColor(2131100479));
+    d.g.b.k.g(paramView, "view.findViewById<MMNeat…ey_text_color))\n        }");
+    this.uFx = ((MMNeat7extView)paramView);
+    this.paC = true;
+    ddi();
+    AppMethodBeat.o(39608);
   }
   
   public final void setErrMsg(String paramString)
   {
-    AppMethodBeat.i(154027);
-    a.f.b.j.q(paramString, "value");
+    AppMethodBeat.i(39610);
+    d.g.b.k.h(paramString, "value");
     this.errMsg = paramString;
-    if (this.lJS) {
-      ccQ();
+    if (this.paC) {
+      ddi();
     }
-    AppMethodBeat.o(154027);
+    AppMethodBeat.o(39610);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoErrMsgPreference
  * JD-Core Version:    0.7.0.1
  */

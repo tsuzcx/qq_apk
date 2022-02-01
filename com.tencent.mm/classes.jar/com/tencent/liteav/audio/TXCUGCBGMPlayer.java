@@ -1,7 +1,7 @@
 package com.tencent.liteav.audio;
 
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.b;
+import com.tencent.liteav.basic.util.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
@@ -24,26 +24,26 @@ public class TXCUGCBGMPlayer
   private long mStartTimeMS = 0L;
   private Thread mThread = null;
   private float mVolume = 1.0F;
-  private WeakReference<e> mWeakListener = null;
+  private WeakReference<f> mWeakListener = null;
   
   static
   {
-    AppMethodBeat.i(66725);
-    b.f();
-    AppMethodBeat.o(66725);
+    AppMethodBeat.i(16297);
+    d.f();
+    AppMethodBeat.o(16297);
   }
   
   public static long getDurationMS(String paramString)
   {
-    AppMethodBeat.i(66720);
+    AppMethodBeat.i(16292);
     long l = nativeGetDurationMS(paramString);
-    AppMethodBeat.o(66720);
+    AppMethodBeat.o(16292);
     return l;
   }
   
   public static TXCUGCBGMPlayer getInstance()
   {
-    AppMethodBeat.i(66709);
+    AppMethodBeat.i(16281);
     if (instance == null) {}
     try
     {
@@ -51,12 +51,12 @@ public class TXCUGCBGMPlayer
         instance = new TXCUGCBGMPlayer();
       }
       TXCUGCBGMPlayer localTXCUGCBGMPlayer = instance;
-      AppMethodBeat.o(66709);
+      AppMethodBeat.o(16281);
       return localTXCUGCBGMPlayer;
     }
     finally
     {
-      AppMethodBeat.o(66709);
+      AppMethodBeat.o(16281);
     }
   }
   
@@ -94,102 +94,102 @@ public class TXCUGCBGMPlayer
   
   private void onPlayEnd(int paramInt)
   {
-    AppMethodBeat.i(66722);
-    e locale = null;
+    AppMethodBeat.i(16294);
+    f localf = null;
     try
     {
       if (this.mWeakListener != null) {
-        locale = (e)this.mWeakListener.get();
+        localf = (f)this.mWeakListener.get();
       }
-      if (locale != null) {
-        locale.onPlayEnd(paramInt);
+      if (localf != null) {
+        localf.onPlayEnd(paramInt);
       }
-      AppMethodBeat.o(66722);
+      AppMethodBeat.o(16294);
       return;
     }
     finally
     {
-      AppMethodBeat.o(66722);
+      AppMethodBeat.o(16294);
     }
   }
   
   private void onPlayProgress(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(66723);
-    e locale = null;
+    AppMethodBeat.i(16295);
+    f localf = null;
     try
     {
       if (this.mWeakListener != null) {
-        locale = (e)this.mWeakListener.get();
+        localf = (f)this.mWeakListener.get();
       }
-      if (locale != null) {
-        locale.onPlayProgress(paramLong1, paramLong2);
+      if (localf != null) {
+        localf.onPlayProgress(paramLong1, paramLong2);
       }
-      AppMethodBeat.o(66723);
+      AppMethodBeat.o(16295);
       return;
     }
     finally
     {
-      AppMethodBeat.o(66723);
+      AppMethodBeat.o(16295);
     }
   }
   
   private void onPlayStart()
   {
-    AppMethodBeat.i(66721);
-    e locale = null;
+    AppMethodBeat.i(16293);
+    f localf = null;
     try
     {
       if (this.mWeakListener != null) {
-        locale = (e)this.mWeakListener.get();
+        localf = (f)this.mWeakListener.get();
       }
-      if (locale != null) {
-        locale.onPlayStart();
+      if (localf != null) {
+        localf.onPlayStart();
       }
-      AppMethodBeat.o(66721);
+      AppMethodBeat.o(16293);
       return;
     }
     finally
     {
-      AppMethodBeat.o(66721);
+      AppMethodBeat.o(16293);
     }
   }
   
   public long getCurPosition()
   {
-    AppMethodBeat.i(66719);
+    AppMethodBeat.i(16291);
     long l = nativeGetCurPosition();
     TXCLog.i("AudioCenter:TXCUGCBGMPlayer", "getCurPosition:".concat(String.valueOf(l)));
-    AppMethodBeat.o(66719);
+    AppMethodBeat.o(16291);
     return l;
   }
   
   public void pause()
   {
-    AppMethodBeat.i(66713);
+    AppMethodBeat.i(16285);
     TXCLog.i("AudioCenter:TXCUGCBGMPlayer", "pause");
     this.mIsPause = true;
     nativePause();
-    AppMethodBeat.o(66713);
+    AppMethodBeat.o(16285);
   }
   
   public void playFromTime(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(66717);
+    AppMethodBeat.i(16289);
     TXCLog.i("AudioCenter:TXCUGCBGMPlayer", "playFromTime:" + paramLong1 + ", " + paramLong2);
     this.mStartTimeMS = paramLong1;
     this.mEndTimeMS = paramLong2;
     nativePlayFromTime(paramLong1, paramLong2);
-    AppMethodBeat.o(66717);
+    AppMethodBeat.o(16289);
   }
   
   public void resume()
   {
-    AppMethodBeat.i(66714);
+    AppMethodBeat.i(16286);
     TXCLog.i("AudioCenter:TXCUGCBGMPlayer", "resume");
     this.mIsPause = false;
     nativeResume();
-    AppMethodBeat.o(66714);
+    AppMethodBeat.o(16286);
   }
   
   /* Error */
@@ -198,295 +198,295 @@ public class TXCUGCBGMPlayer
     // Byte code:
     //   0: iconst_3
     //   1: istore_2
-    //   2: ldc 196
-    //   4: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: invokestatic 201	java/lang/System:currentTimeMillis	()J
-    //   10: lstore 6
-    //   12: aload_0
-    //   13: invokespecial 202	com/tencent/liteav/audio/TXCUGCBGMPlayer:onPlayStart	()V
-    //   16: aload_0
-    //   17: getfield 63	com/tencent/liteav/audio/TXCUGCBGMPlayer:mFilePath	Ljava/lang/String;
-    //   20: ifnull +13 -> 33
-    //   23: aload_0
-    //   24: getfield 63	com/tencent/liteav/audio/TXCUGCBGMPlayer:mFilePath	Ljava/lang/String;
-    //   27: invokevirtual 205	java/lang/String:isEmpty	()Z
-    //   30: ifeq +102 -> 132
-    //   33: ldc 21
-    //   35: new 165	java/lang/StringBuilder
-    //   38: dup
-    //   39: ldc 207
-    //   41: invokespecial 170	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   44: aload_0
-    //   45: getfield 63	com/tencent/liteav/audio/TXCUGCBGMPlayer:mFilePath	Ljava/lang/String;
-    //   48: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   51: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   54: invokestatic 210	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   57: bipush 254
-    //   59: istore_1
-    //   60: aconst_null
-    //   61: astore 8
-    //   63: aload 8
-    //   65: ifnull +23 -> 88
-    //   68: aload 8
-    //   70: invokevirtual 214	android/media/AudioTrack:pause	()V
-    //   73: aload 8
-    //   75: invokevirtual 217	android/media/AudioTrack:flush	()V
-    //   78: aload 8
-    //   80: invokevirtual 220	android/media/AudioTrack:stop	()V
-    //   83: aload 8
-    //   85: invokevirtual 223	android/media/AudioTrack:release	()V
-    //   88: ldc 21
-    //   90: new 165	java/lang/StringBuilder
-    //   93: dup
-    //   94: ldc 225
-    //   96: invokespecial 170	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   99: invokestatic 201	java/lang/System:currentTimeMillis	()J
-    //   102: lload 6
-    //   104: lsub
-    //   105: invokevirtual 174	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   108: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   111: invokestatic 156	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   114: aload_0
-    //   115: getfield 65	com/tencent/liteav/audio/TXCUGCBGMPlayer:mIsRunning	Z
-    //   118: ifeq +8 -> 126
-    //   121: aload_0
-    //   122: iload_1
-    //   123: invokespecial 226	com/tencent/liteav/audio/TXCUGCBGMPlayer:onPlayEnd	(I)V
-    //   126: ldc 196
-    //   128: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   131: return
-    //   132: aload_0
-    //   133: aload_0
-    //   134: getfield 73	com/tencent/liteav/audio/TXCUGCBGMPlayer:mVolume	F
-    //   137: invokespecial 228	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeSetVolume	(F)V
-    //   140: aload_0
-    //   141: aload_0
-    //   142: getfield 75	com/tencent/liteav/audio/TXCUGCBGMPlayer:mSpeedRate	F
-    //   145: invokespecial 230	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeSetSpeedRate	(F)V
-    //   148: aload_0
-    //   149: aload_0
-    //   150: getfield 77	com/tencent/liteav/audio/TXCUGCBGMPlayer:mStartTimeMS	J
-    //   153: aload_0
-    //   154: getfield 79	com/tencent/liteav/audio/TXCUGCBGMPlayer:mEndTimeMS	J
-    //   157: invokespecial 185	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativePlayFromTime	(JJ)V
-    //   160: aload_0
-    //   161: aload_0
-    //   162: getfield 81	com/tencent/liteav/audio/TXCUGCBGMPlayer:mSeekBytes	J
-    //   165: invokespecial 232	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeSeekBytes	(J)V
-    //   168: aload_0
-    //   169: aload_0
-    //   170: getfield 63	com/tencent/liteav/audio/TXCUGCBGMPlayer:mFilePath	Ljava/lang/String;
-    //   173: invokespecial 234	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeStartPlay	(Ljava/lang/String;)Z
-    //   176: ifne +11 -> 187
-    //   179: iconst_m1
-    //   180: istore_1
-    //   181: aconst_null
-    //   182: astore 8
-    //   184: goto -121 -> 63
-    //   187: aload_0
-    //   188: getfield 69	com/tencent/liteav/audio/TXCUGCBGMPlayer:mIsPause	Z
-    //   191: ifeq +224 -> 415
-    //   194: aload_0
-    //   195: invokespecial 161	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativePause	()V
-    //   198: ldc 21
-    //   200: new 165	java/lang/StringBuilder
-    //   203: dup
-    //   204: ldc 236
-    //   206: invokespecial 170	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   209: aload_0
-    //   210: getfield 63	com/tencent/liteav/audio/TXCUGCBGMPlayer:mFilePath	Ljava/lang/String;
-    //   213: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   216: ldc 238
-    //   218: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   221: aload_0
-    //   222: getfield 73	com/tencent/liteav/audio/TXCUGCBGMPlayer:mVolume	F
-    //   225: invokevirtual 241	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   228: ldc 243
-    //   230: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: aload_0
-    //   234: getfield 75	com/tencent/liteav/audio/TXCUGCBGMPlayer:mSpeedRate	F
-    //   237: invokevirtual 241	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
-    //   240: ldc 245
-    //   242: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   245: aload_0
-    //   246: getfield 77	com/tencent/liteav/audio/TXCUGCBGMPlayer:mStartTimeMS	J
-    //   249: invokevirtual 174	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   252: ldc 247
-    //   254: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   257: aload_0
-    //   258: getfield 79	com/tencent/liteav/audio/TXCUGCBGMPlayer:mEndTimeMS	J
-    //   261: invokevirtual 174	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   264: ldc 249
-    //   266: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   269: aload_0
-    //   270: getfield 81	com/tencent/liteav/audio/TXCUGCBGMPlayer:mSeekBytes	J
-    //   273: invokevirtual 174	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   276: ldc 251
-    //   278: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   281: aload_0
-    //   282: getfield 69	com/tencent/liteav/audio/TXCUGCBGMPlayer:mIsPause	Z
-    //   285: invokevirtual 254	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   288: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   291: invokestatic 156	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   294: aload_0
-    //   295: invokespecial 256	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeGetSampleRate	()I
-    //   298: istore_3
-    //   299: aload_0
-    //   300: invokespecial 258	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeGetChannels	()I
-    //   303: istore 4
-    //   305: aload_0
-    //   306: invokespecial 260	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeGetBitsPerChannel	()I
-    //   309: istore 5
-    //   311: iload 4
-    //   313: iconst_1
-    //   314: if_icmpne +244 -> 558
-    //   317: iconst_2
-    //   318: istore_1
-    //   319: iload 5
-    //   321: bipush 8
-    //   323: if_icmpne +230 -> 553
-    //   326: new 212	android/media/AudioTrack
-    //   329: dup
-    //   330: iconst_3
-    //   331: iload_3
-    //   332: iload_1
-    //   333: iload_2
-    //   334: iload_3
-    //   335: iload_1
-    //   336: iload_2
-    //   337: invokestatic 264	android/media/AudioTrack:getMinBufferSize	(III)I
-    //   340: iconst_1
-    //   341: invokespecial 267	android/media/AudioTrack:<init>	(IIIIII)V
-    //   344: astore 8
-    //   346: aload 8
-    //   348: invokevirtual 270	android/media/AudioTrack:play	()V
-    //   351: iload 4
-    //   353: sipush 2048
-    //   356: imul
-    //   357: iconst_2
+    //   2: sipush 16296
+    //   5: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: invokestatic 190	java/lang/System:currentTimeMillis	()J
+    //   11: lstore 6
+    //   13: aload_0
+    //   14: invokespecial 191	com/tencent/liteav/audio/TXCUGCBGMPlayer:onPlayStart	()V
+    //   17: aload_0
+    //   18: getfield 62	com/tencent/liteav/audio/TXCUGCBGMPlayer:mFilePath	Ljava/lang/String;
+    //   21: ifnull +13 -> 34
+    //   24: aload_0
+    //   25: getfield 62	com/tencent/liteav/audio/TXCUGCBGMPlayer:mFilePath	Ljava/lang/String;
+    //   28: invokevirtual 194	java/lang/String:isEmpty	()Z
+    //   31: ifeq +103 -> 134
+    //   34: ldc 21
+    //   36: new 156	java/lang/StringBuilder
+    //   39: dup
+    //   40: ldc 196
+    //   42: invokespecial 161	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   45: aload_0
+    //   46: getfield 62	com/tencent/liteav/audio/TXCUGCBGMPlayer:mFilePath	Ljava/lang/String;
+    //   49: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: invokestatic 199	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   58: bipush 254
+    //   60: istore_1
+    //   61: aconst_null
+    //   62: astore 8
+    //   64: aload 8
+    //   66: ifnull +23 -> 89
+    //   69: aload 8
+    //   71: invokevirtual 203	android/media/AudioTrack:pause	()V
+    //   74: aload 8
+    //   76: invokevirtual 206	android/media/AudioTrack:flush	()V
+    //   79: aload 8
+    //   81: invokevirtual 209	android/media/AudioTrack:stop	()V
+    //   84: aload 8
+    //   86: invokevirtual 212	android/media/AudioTrack:release	()V
+    //   89: ldc 21
+    //   91: new 156	java/lang/StringBuilder
+    //   94: dup
+    //   95: ldc 214
+    //   97: invokespecial 161	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   100: invokestatic 190	java/lang/System:currentTimeMillis	()J
+    //   103: lload 6
+    //   105: lsub
+    //   106: invokevirtual 165	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   109: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   112: invokestatic 149	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   115: aload_0
+    //   116: getfield 64	com/tencent/liteav/audio/TXCUGCBGMPlayer:mIsRunning	Z
+    //   119: ifeq +8 -> 127
+    //   122: aload_0
+    //   123: iload_1
+    //   124: invokespecial 215	com/tencent/liteav/audio/TXCUGCBGMPlayer:onPlayEnd	(I)V
+    //   127: sipush 16296
+    //   130: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   133: return
+    //   134: aload_0
+    //   135: aload_0
+    //   136: getfield 72	com/tencent/liteav/audio/TXCUGCBGMPlayer:mVolume	F
+    //   139: invokespecial 217	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeSetVolume	(F)V
+    //   142: aload_0
+    //   143: aload_0
+    //   144: getfield 74	com/tencent/liteav/audio/TXCUGCBGMPlayer:mSpeedRate	F
+    //   147: invokespecial 219	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeSetSpeedRate	(F)V
+    //   150: aload_0
+    //   151: aload_0
+    //   152: getfield 76	com/tencent/liteav/audio/TXCUGCBGMPlayer:mStartTimeMS	J
+    //   155: aload_0
+    //   156: getfield 78	com/tencent/liteav/audio/TXCUGCBGMPlayer:mEndTimeMS	J
+    //   159: invokespecial 176	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativePlayFromTime	(JJ)V
+    //   162: aload_0
+    //   163: aload_0
+    //   164: getfield 80	com/tencent/liteav/audio/TXCUGCBGMPlayer:mSeekBytes	J
+    //   167: invokespecial 221	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeSeekBytes	(J)V
+    //   170: aload_0
+    //   171: aload_0
+    //   172: getfield 62	com/tencent/liteav/audio/TXCUGCBGMPlayer:mFilePath	Ljava/lang/String;
+    //   175: invokespecial 223	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeStartPlay	(Ljava/lang/String;)Z
+    //   178: ifne +11 -> 189
+    //   181: iconst_m1
+    //   182: istore_1
+    //   183: aconst_null
+    //   184: astore 8
+    //   186: goto -122 -> 64
+    //   189: aload_0
+    //   190: getfield 68	com/tencent/liteav/audio/TXCUGCBGMPlayer:mIsPause	Z
+    //   193: ifeq +224 -> 417
+    //   196: aload_0
+    //   197: invokespecial 153	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativePause	()V
+    //   200: ldc 21
+    //   202: new 156	java/lang/StringBuilder
+    //   205: dup
+    //   206: ldc 225
+    //   208: invokespecial 161	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   211: aload_0
+    //   212: getfield 62	com/tencent/liteav/audio/TXCUGCBGMPlayer:mFilePath	Ljava/lang/String;
+    //   215: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: ldc 227
+    //   220: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: aload_0
+    //   224: getfield 72	com/tencent/liteav/audio/TXCUGCBGMPlayer:mVolume	F
+    //   227: invokevirtual 230	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   230: ldc 232
+    //   232: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   235: aload_0
+    //   236: getfield 74	com/tencent/liteav/audio/TXCUGCBGMPlayer:mSpeedRate	F
+    //   239: invokevirtual 230	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
+    //   242: ldc 234
+    //   244: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: aload_0
+    //   248: getfield 76	com/tencent/liteav/audio/TXCUGCBGMPlayer:mStartTimeMS	J
+    //   251: invokevirtual 165	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   254: ldc 236
+    //   256: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   259: aload_0
+    //   260: getfield 78	com/tencent/liteav/audio/TXCUGCBGMPlayer:mEndTimeMS	J
+    //   263: invokevirtual 165	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   266: ldc 238
+    //   268: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: aload_0
+    //   272: getfield 80	com/tencent/liteav/audio/TXCUGCBGMPlayer:mSeekBytes	J
+    //   275: invokevirtual 165	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   278: ldc 240
+    //   280: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   283: aload_0
+    //   284: getfield 68	com/tencent/liteav/audio/TXCUGCBGMPlayer:mIsPause	Z
+    //   287: invokevirtual 243	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   290: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   293: invokestatic 149	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   296: aload_0
+    //   297: invokespecial 245	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeGetSampleRate	()I
+    //   300: istore_3
+    //   301: aload_0
+    //   302: invokespecial 247	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeGetChannels	()I
+    //   305: istore 4
+    //   307: aload_0
+    //   308: invokespecial 249	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeGetBitsPerChannel	()I
+    //   311: istore 5
+    //   313: iload 4
+    //   315: iconst_1
+    //   316: if_icmpne +244 -> 560
+    //   319: iconst_2
+    //   320: istore_1
+    //   321: iload 5
+    //   323: bipush 8
+    //   325: if_icmpne +230 -> 555
+    //   328: new 201	android/media/AudioTrack
+    //   331: dup
+    //   332: iconst_3
+    //   333: iload_3
+    //   334: iload_1
+    //   335: iload_2
+    //   336: iload_3
+    //   337: iload_1
+    //   338: iload_2
+    //   339: invokestatic 253	android/media/AudioTrack:getMinBufferSize	(III)I
+    //   342: iconst_1
+    //   343: invokespecial 256	android/media/AudioTrack:<init>	(IIIIII)V
+    //   346: astore 8
+    //   348: aload 8
+    //   350: invokevirtual 259	android/media/AudioTrack:play	()V
+    //   353: iload 4
+    //   355: sipush 2048
     //   358: imul
-    //   359: istore_1
-    //   360: iload_1
-    //   361: newarray byte
-    //   363: astore 9
-    //   365: aload_0
-    //   366: getfield 65	com/tencent/liteav/audio/TXCUGCBGMPlayer:mIsRunning	Z
-    //   369: ifeq +179 -> 548
-    //   372: invokestatic 275	java/lang/Thread:interrupted	()Z
-    //   375: ifne +173 -> 548
-    //   378: aload_0
-    //   379: aload 9
-    //   381: iload_1
-    //   382: invokespecial 277	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeRead	([BI)I
-    //   385: istore_2
-    //   386: iload_2
-    //   387: ifge +106 -> 493
-    //   390: ldc 21
-    //   392: ldc_w 279
-    //   395: invokestatic 156	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   398: aload_0
-    //   399: aload_0
-    //   400: invokespecial 281	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeGetCurDurationMS	()J
-    //   403: aload_0
-    //   404: invokespecial 281	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeGetCurDurationMS	()J
-    //   407: invokespecial 282	com/tencent/liteav/audio/TXCUGCBGMPlayer:onPlayProgress	(JJ)V
-    //   410: iconst_0
-    //   411: istore_1
-    //   412: goto -349 -> 63
-    //   415: aload_0
-    //   416: invokespecial 190	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeResume	()V
-    //   419: goto -221 -> 198
-    //   422: astore 8
-    //   424: ldc 21
-    //   426: new 165	java/lang/StringBuilder
-    //   429: dup
-    //   430: ldc_w 284
-    //   433: invokespecial 170	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   436: aload 8
-    //   438: invokevirtual 287	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   441: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   444: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   447: invokestatic 210	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   450: bipush 253
-    //   452: istore_1
-    //   453: aconst_null
-    //   454: astore 8
-    //   456: goto -393 -> 63
-    //   459: astore 9
-    //   461: ldc 21
-    //   463: new 165	java/lang/StringBuilder
-    //   466: dup
-    //   467: ldc_w 289
-    //   470: invokespecial 170	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   473: aload 9
-    //   475: invokevirtual 287	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   478: invokevirtual 179	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   481: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   484: invokestatic 210	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   487: bipush 252
-    //   489: istore_1
-    //   490: goto -427 -> 63
-    //   493: iload_2
-    //   494: ifne +24 -> 518
-    //   497: aload_0
-    //   498: getfield 69	com/tencent/liteav/audio/TXCUGCBGMPlayer:mIsPause	Z
-    //   501: ifeq -136 -> 365
-    //   504: ldc2_w 290
-    //   507: invokestatic 294	java/lang/Thread:sleep	(J)V
-    //   510: goto -145 -> 365
-    //   513: astore 10
-    //   515: goto -150 -> 365
-    //   518: aload 8
-    //   520: aload 9
-    //   522: iconst_0
-    //   523: iload_2
-    //   524: invokevirtual 298	android/media/AudioTrack:write	([BII)I
-    //   527: pop
-    //   528: aload_0
-    //   529: aload_0
-    //   530: invokespecial 300	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeGetCurPtsMS	()J
-    //   533: aload_0
-    //   534: invokespecial 281	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeGetCurDurationMS	()J
-    //   537: invokespecial 282	com/tencent/liteav/audio/TXCUGCBGMPlayer:onPlayProgress	(JJ)V
-    //   540: goto -175 -> 365
-    //   543: astore 8
-    //   545: goto -457 -> 88
-    //   548: iconst_0
-    //   549: istore_1
-    //   550: goto -487 -> 63
-    //   553: iconst_2
-    //   554: istore_2
-    //   555: goto -229 -> 326
-    //   558: iconst_3
-    //   559: istore_1
-    //   560: goto -241 -> 319
+    //   359: iconst_2
+    //   360: imul
+    //   361: istore_1
+    //   362: iload_1
+    //   363: newarray byte
+    //   365: astore 9
+    //   367: aload_0
+    //   368: getfield 64	com/tencent/liteav/audio/TXCUGCBGMPlayer:mIsRunning	Z
+    //   371: ifeq +179 -> 550
+    //   374: invokestatic 264	java/lang/Thread:interrupted	()Z
+    //   377: ifne +173 -> 550
+    //   380: aload_0
+    //   381: aload 9
+    //   383: iload_1
+    //   384: invokespecial 266	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeRead	([BI)I
+    //   387: istore_2
+    //   388: iload_2
+    //   389: ifge +106 -> 495
+    //   392: ldc 21
+    //   394: ldc_w 268
+    //   397: invokestatic 149	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   400: aload_0
+    //   401: aload_0
+    //   402: invokespecial 270	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeGetCurDurationMS	()J
+    //   405: aload_0
+    //   406: invokespecial 270	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeGetCurDurationMS	()J
+    //   409: invokespecial 271	com/tencent/liteav/audio/TXCUGCBGMPlayer:onPlayProgress	(JJ)V
+    //   412: iconst_0
+    //   413: istore_1
+    //   414: goto -350 -> 64
+    //   417: aload_0
+    //   418: invokespecial 180	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeResume	()V
+    //   421: goto -221 -> 200
+    //   424: astore 8
+    //   426: ldc 21
+    //   428: new 156	java/lang/StringBuilder
+    //   431: dup
+    //   432: ldc_w 273
+    //   435: invokespecial 161	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   438: aload 8
+    //   440: invokevirtual 276	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   443: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   446: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   449: invokestatic 199	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   452: bipush 253
+    //   454: istore_1
+    //   455: aconst_null
+    //   456: astore 8
+    //   458: goto -394 -> 64
+    //   461: astore 9
+    //   463: ldc 21
+    //   465: new 156	java/lang/StringBuilder
+    //   468: dup
+    //   469: ldc_w 278
+    //   472: invokespecial 161	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   475: aload 9
+    //   477: invokevirtual 276	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   480: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   483: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   486: invokestatic 199	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   489: bipush 252
+    //   491: istore_1
+    //   492: goto -428 -> 64
+    //   495: iload_2
+    //   496: ifne +24 -> 520
+    //   499: aload_0
+    //   500: getfield 68	com/tencent/liteav/audio/TXCUGCBGMPlayer:mIsPause	Z
+    //   503: ifeq -136 -> 367
+    //   506: ldc2_w 279
+    //   509: invokestatic 283	java/lang/Thread:sleep	(J)V
+    //   512: goto -145 -> 367
+    //   515: astore 10
+    //   517: goto -150 -> 367
+    //   520: aload 8
+    //   522: aload 9
+    //   524: iconst_0
+    //   525: iload_2
+    //   526: invokevirtual 287	android/media/AudioTrack:write	([BII)I
+    //   529: pop
+    //   530: aload_0
+    //   531: aload_0
+    //   532: invokespecial 289	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeGetCurPtsMS	()J
+    //   535: aload_0
+    //   536: invokespecial 270	com/tencent/liteav/audio/TXCUGCBGMPlayer:nativeGetCurDurationMS	()J
+    //   539: invokespecial 271	com/tencent/liteav/audio/TXCUGCBGMPlayer:onPlayProgress	(JJ)V
+    //   542: goto -175 -> 367
+    //   545: astore 8
+    //   547: goto -458 -> 89
+    //   550: iconst_0
+    //   551: istore_1
+    //   552: goto -488 -> 64
+    //   555: iconst_2
+    //   556: istore_2
+    //   557: goto -229 -> 328
+    //   560: iconst_3
+    //   561: istore_1
+    //   562: goto -241 -> 321
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	563	0	this	TXCUGCBGMPlayer
-    //   59	501	1	i	int
-    //   1	554	2	j	int
-    //   298	37	3	k	int
-    //   303	54	4	m	int
-    //   309	15	5	n	int
-    //   10	93	6	l	long
-    //   61	286	8	localAudioTrack	android.media.AudioTrack
-    //   422	15	8	localException1	java.lang.Exception
-    //   454	65	8	localObject	Object
-    //   543	1	8	localException2	java.lang.Exception
-    //   363	17	9	arrayOfByte	byte[]
-    //   459	62	9	localException3	java.lang.Exception
-    //   513	1	10	localInterruptedException	InterruptedException
+    //   0	565	0	this	TXCUGCBGMPlayer
+    //   60	502	1	i	int
+    //   1	556	2	j	int
+    //   300	37	3	k	int
+    //   305	54	4	m	int
+    //   311	15	5	n	int
+    //   11	93	6	l	long
+    //   62	287	8	localAudioTrack	android.media.AudioTrack
+    //   424	15	8	localException1	java.lang.Exception
+    //   456	65	8	localObject	Object
+    //   545	1	8	localException2	java.lang.Exception
+    //   365	17	9	arrayOfByte	byte[]
+    //   461	62	9	localException3	java.lang.Exception
+    //   515	1	10	localInterruptedException	InterruptedException
     // Exception table:
     //   from	to	target	type
-    //   326	346	422	java/lang/Exception
-    //   346	351	459	java/lang/Exception
-    //   504	510	513	java/lang/InterruptedException
-    //   68	88	543	java/lang/Exception
+    //   328	348	424	java/lang/Exception
+    //   348	353	461	java/lang/Exception
+    //   506	512	515	java/lang/InterruptedException
+    //   69	89	545	java/lang/Exception
   }
   
   public void seekBytes(long paramLong)
   {
-    AppMethodBeat.i(66718);
+    AppMethodBeat.i(16290);
     TXCLog.i("AudioCenter:TXCUGCBGMPlayer", "seekBytes:".concat(String.valueOf(paramLong)));
     long l = paramLong;
     if (paramLong < 0L)
@@ -496,19 +496,19 @@ public class TXCUGCBGMPlayer
     }
     this.mSeekBytes = l;
     nativeSeekBytes(l);
-    AppMethodBeat.o(66718);
+    AppMethodBeat.o(16290);
   }
   
-  public void setOnPlayListener(e parame)
+  public void setOnPlayListener(f paramf)
   {
     try
     {
-      AppMethodBeat.i(66710);
-      if (parame == null) {
+      AppMethodBeat.i(16282);
+      if (paramf == null) {
         this.mWeakListener = null;
       }
-      this.mWeakListener = new WeakReference(parame);
-      AppMethodBeat.o(66710);
+      this.mWeakListener = new WeakReference(paramf);
+      AppMethodBeat.o(16282);
       return;
     }
     finally {}
@@ -516,28 +516,28 @@ public class TXCUGCBGMPlayer
   
   public void setSpeedRate(float paramFloat)
   {
-    AppMethodBeat.i(66716);
+    AppMethodBeat.i(16288);
     TXCLog.i("AudioCenter:TXCUGCBGMPlayer", "setSpeedRate:".concat(String.valueOf(paramFloat)));
     this.mSpeedRate = paramFloat;
     nativeSetSpeedRate(paramFloat);
-    AppMethodBeat.o(66716);
+    AppMethodBeat.o(16288);
   }
   
   public void setVolume(float paramFloat)
   {
-    AppMethodBeat.i(66715);
+    AppMethodBeat.i(16287);
     this.mVolume = paramFloat;
     nativeSetVolume(paramFloat);
-    AppMethodBeat.o(66715);
+    AppMethodBeat.o(16287);
   }
   
   public void startPlay(String paramString)
   {
-    AppMethodBeat.i(66711);
+    AppMethodBeat.i(16283);
     TXCLog.i("AudioCenter:TXCUGCBGMPlayer", "startPlay:".concat(String.valueOf(paramString)));
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      AppMethodBeat.o(66711);
+      AppMethodBeat.o(16283);
       return;
     }
     if (this.mIsRunning)
@@ -551,12 +551,12 @@ public class TXCUGCBGMPlayer
     this.mIsRunning = true;
     this.mThread = new Thread(this, "UGCBGMPlayer");
     this.mThread.start();
-    AppMethodBeat.o(66711);
+    AppMethodBeat.o(16283);
   }
   
   public void stopPlay()
   {
-    AppMethodBeat.i(66712);
+    AppMethodBeat.i(16284);
     TXCLog.i("AudioCenter:TXCUGCBGMPlayer", "stopPlay");
     this.mIsRunning = false;
     long l = System.currentTimeMillis();
@@ -570,12 +570,12 @@ public class TXCUGCBGMPlayer
       {
         nativeStopPlay();
         TXCLog.i("AudioCenter:TXCUGCBGMPlayer", "stopBGMPlay cost(MS): " + (System.currentTimeMillis() - l));
-        AppMethodBeat.o(66712);
+        AppMethodBeat.o(16284);
         return;
       }
       finally
       {
-        AppMethodBeat.o(66712);
+        AppMethodBeat.o(16284);
       }
     }
     catch (InterruptedException localInterruptedException)
@@ -586,7 +586,7 @@ public class TXCUGCBGMPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.TXCUGCBGMPlayer
  * JD-Core Version:    0.7.0.1
  */

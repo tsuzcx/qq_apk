@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
-import com.tencent.mm.protocal.protobuf.axt;
+import com.tencent.mm.protocal.protobuf.biz;
 
 public abstract interface JsApiAuthorize$AuthorizeTask$a
 {
-  public abstract void Q(int paramInt, String paramString);
+  public abstract void a(biz parambiz);
   
-  public abstract void a(axt paramaxt);
+  public abstract void ac(int paramInt, String paramString);
   
   public abstract void onSuccess();
 }

@@ -20,14 +20,14 @@ public class StatusCallback
   @KeepForSdk
   public void onResult(Status paramStatus)
   {
-    AppMethodBeat.i(60662);
+    AppMethodBeat.i(11154);
     this.mResultHolder.setResult(paramStatus);
-    AppMethodBeat.o(60662);
+    AppMethodBeat.o(11154);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.StatusCallback
  * JD-Core Version:    0.7.0.1
  */

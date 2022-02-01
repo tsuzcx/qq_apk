@@ -9,38 +9,40 @@ public class SnsAdClick
   implements Parcelable
 {
   public static final Parcelable.Creator<SnsAdClick> CREATOR;
-  public long cIo;
-  public int cpt;
-  public long fQA;
-  public int fQs;
-  public int fQt;
-  public int fQu;
-  public int fQv;
-  public int fQw;
-  public long fQx;
-  public long fQy;
-  public int fQz;
+  public int dep;
+  public long dze;
+  public int hsW;
+  public int hsX;
+  public int hsY;
+  public int hsZ;
+  public int hta;
+  public long htb;
+  public long htc;
+  public int htd;
+  public long hte;
+  public long htf;
   public long startTime;
   
   static
   {
-    AppMethodBeat.i(94456);
-    CREATOR = new SnsAdClick.1();
-    AppMethodBeat.o(94456);
+    AppMethodBeat.i(125655);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(125655);
   }
   
   public SnsAdClick()
   {
-    this.fQs = 0;
-    this.fQt = 0;
-    this.fQu = 0;
+    this.hsW = 0;
+    this.hsX = 0;
+    this.hsY = 0;
     this.startTime = 0L;
-    this.fQv = 0;
-    this.fQw = 0;
-    this.fQx = 0L;
-    this.fQy = 0L;
-    this.fQz = 0;
-    this.fQA = 0L;
+    this.hsZ = 0;
+    this.hta = 0;
+    this.htb = 0L;
+    this.htc = 0L;
+    this.htd = 0;
+    this.hte = 0L;
+    this.htf = 0L;
   }
   
   public SnsAdClick(int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4)
@@ -55,27 +57,28 @@ public class SnsAdClick
   
   private SnsAdClick(int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(94454);
-    this.fQs = 0;
-    this.fQt = 0;
-    this.fQu = 0;
+    AppMethodBeat.i(125653);
+    this.hsW = 0;
+    this.hsX = 0;
+    this.hsY = 0;
     this.startTime = 0L;
-    this.fQv = 0;
-    this.fQw = 0;
-    this.fQx = 0L;
-    this.fQy = 0L;
-    this.fQz = 0;
-    this.fQA = 0L;
-    this.cpt = paramInt1;
-    this.fQs = paramInt2;
-    this.cIo = paramLong;
-    this.fQt = paramInt3;
-    this.fQu = paramInt4;
-    this.fQv = 0;
-    this.fQw = 0;
-    this.fQz = paramInt5;
+    this.hsZ = 0;
+    this.hta = 0;
+    this.htb = 0L;
+    this.htc = 0L;
+    this.htd = 0;
+    this.hte = 0L;
+    this.htf = 0L;
+    this.dep = paramInt1;
+    this.hsW = paramInt2;
+    this.dze = paramLong;
+    this.hsX = paramInt3;
+    this.hsY = paramInt4;
+    this.hsZ = 0;
+    this.hta = 0;
+    this.htd = paramInt5;
     this.startTime = System.currentTimeMillis();
-    AppMethodBeat.o(94454);
+    AppMethodBeat.o(125653);
   }
   
   public SnsAdClick(int paramInt, long paramLong)
@@ -90,23 +93,24 @@ public class SnsAdClick
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(94455);
-    paramParcel.writeInt(this.cpt);
-    paramParcel.writeInt(this.fQs);
-    paramParcel.writeLong(this.cIo);
-    paramParcel.writeInt(this.fQt);
-    paramParcel.writeInt(this.fQu);
-    paramParcel.writeInt(this.fQv);
-    paramParcel.writeInt(this.fQw);
+    AppMethodBeat.i(125654);
+    paramParcel.writeInt(this.dep);
+    paramParcel.writeInt(this.hsW);
+    paramParcel.writeLong(this.dze);
+    paramParcel.writeInt(this.hsX);
+    paramParcel.writeInt(this.hsY);
+    paramParcel.writeInt(this.hsZ);
+    paramParcel.writeInt(this.hta);
     paramParcel.writeLong(this.startTime);
-    paramParcel.writeLong(this.fQy);
-    paramParcel.writeLong(this.fQA);
-    AppMethodBeat.o(94455);
+    paramParcel.writeLong(this.htc);
+    paramParcel.writeLong(this.hte);
+    paramParcel.writeLong(this.htf);
+    AppMethodBeat.o(125654);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsns.SnsAdClick
  * JD-Core Version:    0.7.0.1
  */

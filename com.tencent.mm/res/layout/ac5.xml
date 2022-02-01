@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/d58" android:background="@drawable/b8d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ll">
-        <com.tencent.mm.plugin.sns.ui.MaskTextView android:textSize="@dimen/ko" android:textColor="@color/h6" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/d59" android:paddingLeft="@dimen/n_" android:paddingTop="@dimen/lb" android:paddingRight="@dimen/n_" android:paddingBottom="@dimen/lb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:drawableRight="@drawable/b_g" />
-        <View android:gravity="center" android:id="@id/d5_" android:background="#ffd6d6d6" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <LinearLayout android:gravity="left" android:orientation="horizontal" android:id="@id/d5a" android:paddingLeft="@dimen/n_" android:paddingTop="@dimen/dl" android:paddingRight="3.0dip" android:paddingBottom="@dimen/lb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
+    <View android:background="#ffefeff4" android:layout_width="2.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/hu" />
+    <TextView android:textSize="@dimen/jv" android:textStyle="bold" android:textColor="@color/rk" android:ellipsize="end" android:id="@id/cea" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/jv" android:textColor="@color/rk" android:ellipsize="end" android:id="@id/ceb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="0.0" />
 </LinearLayout>

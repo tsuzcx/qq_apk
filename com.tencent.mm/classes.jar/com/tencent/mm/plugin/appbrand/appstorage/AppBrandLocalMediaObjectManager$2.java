@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.g;
 
 final class AppBrandLocalMediaObjectManager$2
-  implements FileFilter
+  implements g
 {
-  public final boolean accept(File paramFile)
+  public final boolean accept(e parame)
   {
-    AppMethodBeat.i(105343);
-    if ((paramFile.exists()) && (!paramFile.isDirectory()) && (!bo.isNullOrNil(paramFile.getName())) && (paramFile.getName().startsWith("tmp_")))
+    AppMethodBeat.i(175561);
+    if ((parame.exists()) && (!parame.isDirectory()) && (!bt.isNullOrNil(parame.getName())) && (parame.getName().startsWith("tmp_")))
     {
-      AppMethodBeat.o(105343);
+      AppMethodBeat.o(175561);
       return true;
     }
-    AppMethodBeat.o(105343);
+    AppMethodBeat.o(175561);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager.2
  * JD-Core Version:    0.7.0.1
  */

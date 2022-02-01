@@ -1,79 +1,98 @@
 package com.tencent.mm.ba;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
 
 public final class e
-  extends com.tencent.mm.bv.a
+  extends a
 {
-  public String fMx;
-  public String lang;
+  public String dre;
+  public LinkedList<String> hom;
+  public String url;
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public e(Map<String, String> paramMap, bl parambl)
   {
-    AppMethodBeat.i(78442);
-    if (paramInt == 0)
+    super(paramMap, parambl);
+    AppMethodBeat.i(101787);
+    this.hom = new LinkedList();
+    AppMethodBeat.o(101787);
+  }
+  
+  protected final boolean aqx()
+  {
+    AppMethodBeat.i(101788);
+    if (this.values == null)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.fMx != null) {
-        paramVarArgs.e(1, this.fMx);
-      }
-      if (this.lang != null) {
-        paramVarArgs.e(2, this.lang);
-      }
-      AppMethodBeat.o(78442);
-      return 0;
+      ad.e("MicroMsg.DelChatroomMemberNewXmlMsg", "[parseXml] values == null ");
+      AppMethodBeat.o(101788);
+      return false;
     }
-    if (paramInt == 1) {
-      if (this.fMx == null) {
-        break label274;
-      }
-    }
-    label274:
-    for (paramInt = e.a.a.b.b.a.f(1, this.fMx) + 0;; paramInt = 0)
+    ad.i("MicroMsg.DelChatroomMemberNewXmlMsg", "[parseXml] type:%s, values size:%s", new Object[] { bt.nullAsNil(this.TYPE), Integer.valueOf(this.values.size()) });
+    Object localObject1;
+    int i;
+    if ((!bt.isNullOrNil(this.TYPE)) && (this.TYPE.equalsIgnoreCase("delchatroommember")))
     {
-      int i = paramInt;
-      if (this.lang != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.lang);
-      }
-      AppMethodBeat.o(78442);
-      return i;
-      if (paramInt == 2)
+      this.url = bt.nullAsNil((String)this.values.get(".sysmsg.delchatroommember.url"));
+      this.dre = bt.nullAsNil((String)this.values.get(".sysmsg.delchatroommember.link.qrcode"));
+      this.hom.add(this.values.get(".sysmsg.delchatroommember.link.memberlist.username"));
+      localObject1 = this.values.keySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+        localObject2 = (String)((Iterator)localObject1).next();
+        if (((String)localObject2).startsWith(".sysmsg.delchatroommember.link.memberlist.username#")) {
+          this.hom.add(this.values.get(localObject2));
+        }
+      }
+      localObject1 = new StringBuilder();
+      Object localObject2 = this.values.keySet().iterator();
+      i = 0;
+      while (((Iterator)localObject2).hasNext())
+      {
+        String str = (String)((Iterator)localObject2).next();
+        if (str.startsWith(hnV))
+        {
+          if (((StringBuilder)localObject1).length() > 0) {
+            ((StringBuilder)localObject1).insert(0, (String)this.values.get(str));
+          } else {
+            ((StringBuilder)localObject1).append((String)this.values.get(str));
           }
         }
-        AppMethodBeat.o(78442);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-        e locale = (e)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        else
         {
-        default: 
-          AppMethodBeat.o(78442);
-          return -1;
-        case 1: 
-          locale.fMx = locala.CLY.readString();
-          AppMethodBeat.o(78442);
-          return 0;
+          if (!str.startsWith(".sysmsg.delchatroommember.link.text")) {
+            break label498;
+          }
+          ((StringBuilder)localObject1).append((String)this.values.get(str));
+          this.hnZ.add(this.values.get(str));
+          i = ((String)this.values.get(str)).length();
         }
-        locale.lang = locala.CLY.readString();
-        AppMethodBeat.o(78442);
-        return 0;
       }
-      AppMethodBeat.o(78442);
-      return -1;
+    }
+    label498:
+    for (;;)
+    {
+      break;
+      this.hoa.addFirst(Integer.valueOf(((StringBuilder)localObject1).length() - i));
+      this.hob.add(Integer.valueOf(((StringBuilder)localObject1).length()));
+      this.hnX = ((StringBuilder)localObject1).toString();
+      ad.i("MicroMsg.DelChatroomMemberNewXmlMsg", "[parseXml] url:%s, qrcode:%s, members size :%s", new Object[] { this.url, this.dre, Integer.valueOf(this.hom.size()) });
+      AppMethodBeat.o(101788);
+      return true;
+      ad.e("MicroMsg.DelChatroomMemberNewXmlMsg", "[parseXml] type err :%s", new Object[] { bt.nullAsNil(this.TYPE) });
+      AppMethodBeat.o(101788);
+      return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ba.e
  * JD-Core Version:    0.7.0.1
  */

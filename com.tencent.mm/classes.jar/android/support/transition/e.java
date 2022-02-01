@@ -1,62 +1,157 @@
 package android.support.transition;
 
-import android.graphics.Rect;
+import android.annotation.SuppressLint;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.support.v4.view.t;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.FrameLayout;
 
-public final class e
-  extends bb
+@SuppressLint({"ViewConstructor"})
+final class e
+  extends View
+  implements g
 {
-  private float rt = 3.0F;
-  
-  private static float b(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  private final Matrix mMatrix = new Matrix();
+  final View mView;
+  ViewGroup yi;
+  View yj;
+  int yk;
+  private int yl;
+  private int ym;
+  Matrix yn;
+  private final ViewTreeObserver.OnPreDrawListener yo = new ViewTreeObserver.OnPreDrawListener()
   {
-    paramFloat1 = paramFloat3 - paramFloat1;
-    paramFloat2 = paramFloat4 - paramFloat2;
-    return (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
+    public final boolean onPreDraw()
+    {
+      e.this.yn = e.this.mView.getMatrix();
+      t.W(e.this);
+      if ((e.this.yi != null) && (e.this.yj != null))
+      {
+        e.this.yi.endViewTransition(e.this.yj);
+        t.W(e.this.yi);
+        e.this.yi = null;
+        e.this.yj = null;
+      }
+      return true;
+    }
+  };
+  
+  private e(View paramView)
+  {
+    super(paramView.getContext());
+    this.mView = paramView;
+    setLayerType(2, null);
   }
   
-  public final long a(ViewGroup paramViewGroup, Transition paramTransition, ah paramah1, ah paramah2)
+  static void D(View paramView)
   {
-    if ((paramah1 == null) && (paramah2 == null)) {
-      return 0L;
-    }
-    int i;
-    int m;
-    int n;
-    int j;
-    if ((paramah2 == null) || (e(paramah1) == 0))
+    paramView = E(paramView);
+    if (paramView != null)
     {
-      i = -1;
-      m = bb.a(paramah1, 0);
-      n = bb.a(paramah1, 1);
-      paramah1 = paramTransition.getEpicenter();
-      if (paramah1 == null) {
-        break label145;
+      paramView.yk -= 1;
+      if (paramView.yk <= 0)
+      {
+        Object localObject = paramView.getParent();
+        if ((localObject instanceof ViewGroup))
+        {
+          localObject = (ViewGroup)localObject;
+          ((ViewGroup)localObject).endViewTransition(paramView);
+          ((ViewGroup)localObject).removeView(paramView);
+        }
       }
-      j = paramah1.centerX();
     }
-    for (int k = paramah1.centerY();; k = Math.round(paramah1[1] + paramViewGroup.getHeight() / 2 + paramViewGroup.getTranslationY()))
+  }
+  
+  private static e E(View paramView)
+  {
+    return (e)paramView.getTag(2131300585);
+  }
+  
+  static g a(View paramView, ViewGroup paramViewGroup)
+  {
+    e locale2 = E(paramView);
+    e locale1 = locale2;
+    if (locale2 == null)
     {
-      float f = b(m, n, j, k) / b(0.0F, 0.0F, paramViewGroup.getWidth(), paramViewGroup.getHeight());
-      long l2 = paramTransition.mDuration;
-      long l1 = l2;
-      if (l2 < 0L) {
-        l1 = 300L;
+      if (!(paramViewGroup instanceof FrameLayout))
+      {
+        paramViewGroup = paramViewGroup.getParent();
+        if ((paramViewGroup instanceof ViewGroup)) {}
       }
-      return Math.round((float)(l1 * i) / this.rt * f);
-      i = 1;
-      paramah1 = paramah2;
-      break;
-      label145:
-      paramah1 = new int[2];
-      paramViewGroup.getLocationOnScreen(paramah1);
-      j = Math.round(paramah1[0] + paramViewGroup.getWidth() / 2 + paramViewGroup.getTranslationX());
+      for (paramViewGroup = null;; paramViewGroup = (FrameLayout)paramViewGroup)
+      {
+        if (paramViewGroup != null) {
+          break label54;
+        }
+        return null;
+        paramViewGroup = (ViewGroup)paramViewGroup;
+        break;
+      }
+      label54:
+      locale1 = new e(paramView);
+      paramViewGroup.addView(locale1);
+    }
+    locale1.yk += 1;
+    return locale1;
+  }
+  
+  public final void a(ViewGroup paramViewGroup, View paramView)
+  {
+    this.yi = paramViewGroup;
+    this.yj = paramView;
+  }
+  
+  protected final void onAttachedToWindow()
+  {
+    super.onAttachedToWindow();
+    this.mView.setTag(2131300585, this);
+    int[] arrayOfInt1 = new int[2];
+    int[] arrayOfInt2 = new int[2];
+    getLocationOnScreen(arrayOfInt1);
+    this.mView.getLocationOnScreen(arrayOfInt2);
+    arrayOfInt2[0] = ((int)(arrayOfInt2[0] - this.mView.getTranslationX()));
+    arrayOfInt2[1] = ((int)(arrayOfInt2[1] - this.mView.getTranslationY()));
+    this.yl = (arrayOfInt2[0] - arrayOfInt1[0]);
+    this.ym = (arrayOfInt2[1] - arrayOfInt1[1]);
+    this.mView.getViewTreeObserver().addOnPreDrawListener(this.yo);
+    this.mView.setVisibility(4);
+  }
+  
+  protected final void onDetachedFromWindow()
+  {
+    this.mView.getViewTreeObserver().removeOnPreDrawListener(this.yo);
+    this.mView.setVisibility(0);
+    this.mView.setTag(2131300585, null);
+    super.onDetachedFromWindow();
+  }
+  
+  protected final void onDraw(Canvas paramCanvas)
+  {
+    this.mMatrix.set(this.yn);
+    this.mMatrix.postTranslate(this.yl, this.ym);
+    paramCanvas.setMatrix(this.mMatrix);
+    this.mView.draw(paramCanvas);
+  }
+  
+  public final void setVisibility(int paramInt)
+  {
+    super.setVisibility(paramInt);
+    View localView = this.mView;
+    if (paramInt == 0) {}
+    for (paramInt = 4;; paramInt = 0)
+    {
+      localView.setVisibility(paramInt);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.e
  * JD-Core Version:    0.7.0.1
  */

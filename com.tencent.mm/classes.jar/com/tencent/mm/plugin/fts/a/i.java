@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.fts.a;
 public abstract interface i
   extends Comparable<i>
 {
-  public abstract String co(String paramString, int paramInt);
-  
   public abstract void create();
   
   public abstract void destroy();
+  
+  public abstract String di(String paramString, int paramInt);
   
   public abstract String getName();
   
@@ -17,7 +17,7 @@ public abstract interface i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.i
  * JD-Core Version:    0.7.0.1
  */

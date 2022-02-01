@@ -1,88 +1,89 @@
 package com.tencent.mm.ui.chatting.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.at.d.a;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.n;
+import com.tencent.mm.aw.d.a;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.HashSet;
 
 public final class l
   implements d.a
 {
-  private static l zNP;
-  HashSet<Long> zNQ;
-  d.a zNR;
+  private static l GEk;
+  HashSet<Long> GEl;
+  d.a GEm;
   
   private l()
   {
-    AppMethodBeat.i(32399);
-    this.zNQ = new HashSet();
-    AppMethodBeat.o(32399);
+    AppMethodBeat.i(36338);
+    this.GEl = new HashSet();
+    AppMethodBeat.o(36338);
   }
   
-  public static l dKQ()
+  public static l fad()
   {
-    AppMethodBeat.i(32400);
-    if (zNP == null) {
-      zNP = new l();
+    AppMethodBeat.i(36339);
+    if (GEk == null) {
+      GEk = new l();
     }
-    l locall = zNP;
-    AppMethodBeat.o(32400);
+    l locall = GEk;
+    AppMethodBeat.o(36339);
     return locall;
   }
   
   public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject)
   {
-    AppMethodBeat.i(32404);
-    if (this.zNR != null) {
-      this.zNR.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject);
+    AppMethodBeat.i(36343);
+    if (this.GEm != null) {
+      this.GEm.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject);
     }
-    this.zNQ.remove(Long.valueOf(paramLong2));
-    AppMethodBeat.o(32404);
+    this.GEl.remove(Long.valueOf(paramLong2));
+    AppMethodBeat.o(36343);
   }
   
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, m paramm)
+  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, n paramn)
   {
-    AppMethodBeat.i(32402);
-    if (this.zNR != null) {
-      this.zNR.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject, paramInt3, paramInt4, paramm);
+    AppMethodBeat.i(36341);
+    if (this.GEm != null) {
+      this.GEm.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject, paramInt3, paramInt4, paramn);
     }
-    AppMethodBeat.o(32402);
+    AppMethodBeat.o(36341);
   }
   
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, String paramString, m paramm)
+  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, String paramString, n paramn)
   {
-    AppMethodBeat.i(32403);
-    if (this.zNR != null) {
-      this.zNR.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject, paramInt3, paramInt4, paramString, paramm);
+    AppMethodBeat.i(36342);
+    if (this.GEm != null) {
+      this.GEm.a(paramLong1, paramLong2, paramInt1, paramInt2, paramObject, paramInt3, paramInt4, paramString, paramn);
     }
     for (;;)
     {
-      this.zNQ.remove(Long.valueOf(paramLong2));
-      AppMethodBeat.o(32403);
+      this.GEl.remove(Long.valueOf(paramLong2));
+      AppMethodBeat.o(36342);
       return;
-      aw.aaz();
-      paramObject = com.tencent.mm.model.c.YC().kB(paramLong2);
-      ab.i("MicroMsg.ImageHDDownloadAndSaveMgr", "[oreh download_and_save] hdImg end at background, msgLocalId:%d", new Object[] { Long.valueOf(paramObject.field_msgId) });
-      c.b(ah.getContext(), paramObject, false);
+      az.arV();
+      paramObject = c.apO().rm(paramLong2);
+      ad.i("MicroMsg.ImageHDDownloadAndSaveMgr", "[oreh download_and_save] hdImg end at background, msgLocalId:%d", new Object[] { Long.valueOf(paramObject.field_msgId) });
+      b.d(aj.getContext(), paramObject, false);
     }
   }
   
-  public final boolean oO(long paramLong)
+  public final boolean wQ(long paramLong)
   {
-    AppMethodBeat.i(32401);
-    boolean bool = this.zNQ.contains(Long.valueOf(paramLong));
-    AppMethodBeat.o(32401);
+    AppMethodBeat.i(36340);
+    boolean bool = this.GEl.contains(Long.valueOf(paramLong));
+    AppMethodBeat.o(36340);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.l
  * JD-Core Version:    0.7.0.1
  */

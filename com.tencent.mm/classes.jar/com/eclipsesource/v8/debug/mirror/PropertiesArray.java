@@ -12,14 +12,14 @@ public class PropertiesArray
   
   PropertiesArray(V8Array paramV8Array)
   {
-    AppMethodBeat.i(74893);
+    AppMethodBeat.i(61516);
     this.v8Array = paramV8Array.twin();
-    AppMethodBeat.o(74893);
+    AppMethodBeat.o(61516);
   }
   
   public PropertyMirror getProperty(int paramInt)
   {
-    AppMethodBeat.i(74894);
+    AppMethodBeat.i(61517);
     V8Object localV8Object = this.v8Array.getObject(paramInt);
     try
     {
@@ -29,30 +29,30 @@ public class PropertiesArray
     finally
     {
       localV8Object.release();
-      AppMethodBeat.o(74894);
+      AppMethodBeat.o(61517);
     }
   }
   
   public int length()
   {
-    AppMethodBeat.i(74896);
+    AppMethodBeat.i(61519);
     int i = this.v8Array.length();
-    AppMethodBeat.o(74896);
+    AppMethodBeat.o(61519);
     return i;
   }
   
   public void release()
   {
-    AppMethodBeat.i(74895);
+    AppMethodBeat.i(61518);
     if (!this.v8Array.isReleased()) {
       this.v8Array.release();
     }
-    AppMethodBeat.o(74895);
+    AppMethodBeat.o(61518);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.debug.mirror.PropertiesArray
  * JD-Core Version:    0.7.0.1
  */

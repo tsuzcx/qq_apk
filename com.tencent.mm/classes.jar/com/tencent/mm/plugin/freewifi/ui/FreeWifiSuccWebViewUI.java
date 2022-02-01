@@ -8,134 +8,157 @@ import android.net.Uri.Builder;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.compatible.e.ac;
-import com.tencent.mm.compatible.e.x;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.y;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.freewifi.k;
 import com.tencent.mm.plugin.freewifi.k.a;
 import com.tencent.mm.plugin.freewifi.k.b;
+import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.ui.q.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.ui.r.b;
 
 public class FreeWifiSuccWebViewUI
   extends WebViewUI
-  implements f
+  implements g
 {
-  private int cCy;
-  private String cvr;
-  private String cwc;
-  private String mLh;
-  private boolean mOK = false;
-  private int mOy;
-  private String mOz;
+  private int channel;
+  private String dkB;
+  private String dlB;
+  private String ril;
+  private boolean rlC = false;
+  private int rlq;
+  private String rlr;
   private String signature;
   
-  public final void aMf()
+  public final void bol()
   {
-    AppMethodBeat.i(21101);
-    super.aMf();
-    AppMethodBeat.o(21101);
+    AppMethodBeat.i(25161);
+    super.bol();
+    AppMethodBeat.o(25161);
   }
   
   public void finish()
   {
-    AppMethodBeat.i(21102);
+    AppMethodBeat.i(25162);
     super.finish();
-    AppMethodBeat.o(21102);
+    AppMethodBeat.o(25162);
   }
   
   public void initView()
   {
-    AppMethodBeat.i(21104);
+    AppMethodBeat.i(25164);
     super.initView();
     setBackBtnVisible(false);
-    addTextOptionMenu(0, getString(2131300159), new FreeWifiSuccWebViewUI.1(this), null, q.b.zbD);
-    AppMethodBeat.o(21104);
+    addTextOptionMenu(0, getString(2131759631), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(25157);
+        FreeWifiSuccWebViewUI.this.finish();
+        FreeWifiSuccWebViewUI.a(FreeWifiSuccWebViewUI.this);
+        AppMethodBeat.o(25157);
+        return true;
+      }
+    }, null, r.b.FOG);
+    AppMethodBeat.o(25164);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(21103);
+    AppMethodBeat.i(25163);
     super.onBackPressed();
-    AppMethodBeat.o(21103);
+    AppMethodBeat.o(25163);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(21099);
+    AppMethodBeat.i(25159);
     com.tencent.mm.plugin.freewifi.j.userName = "";
     com.tencent.mm.plugin.freewifi.j.type = 0;
     String str = getIntent().getStringExtra("free_wifi_qinghuai_url");
-    ab.i("MicroMsg.FreeWifi.FreeWifiSuccWebViewUI", "qinghuaiUrl=%s", new Object[] { str });
+    ad.i("MicroMsg.FreeWifi.FreeWifiSuccWebViewUI", "qinghuaiUrl=%s", new Object[] { str });
     getIntent().putExtra("rawUrl", str);
     getIntent().putExtra("showShare", false);
     super.onCreate(paramBundle);
-    this.cwc = getIntent().getStringExtra("free_wifi_appid");
-    this.mLh = getIntent().getStringExtra("free_wifi_app_nickname");
-    this.cvr = getIntent().getStringExtra("free_wifi_app_username");
-    this.mOy = getIntent().getIntExtra("free_wifi_finish_actioncode", 0);
-    this.mOz = getIntent().getStringExtra("free_wifi_finish_url");
+    this.dlB = getIntent().getStringExtra("free_wifi_appid");
+    this.ril = getIntent().getStringExtra("free_wifi_app_nickname");
+    this.dkB = getIntent().getStringExtra("free_wifi_app_username");
+    this.rlq = getIntent().getIntExtra("free_wifi_finish_actioncode", 0);
+    this.rlr = getIntent().getStringExtra("free_wifi_finish_url");
     this.signature = getIntent().getStringExtra("free_wifi_signature");
-    this.cCy = com.tencent.mm.plugin.freewifi.m.X(getIntent());
-    if (this.cCy == 10)
+    this.channel = m.al(getIntent());
+    if (this.channel == 10)
     {
-      paramBundle = ac.erz.ere;
-      str = ac.bH(getContext());
-      if ((!com.tencent.mm.plugin.freewifi.m.isEmpty(paramBundle)) && (!com.tencent.mm.plugin.freewifi.m.isEmpty(str))) {
-        this.mOz = Uri.parse(this.mOz).buildUpon().appendQueryParameter("manufacturer", str).appendQueryParameter("manufacturerUsername", paramBundle).toString();
+      paramBundle = ae.fFB.fEN;
+      str = ae.bW(getContext());
+      if ((!m.dq(paramBundle)) && (!m.dq(str))) {
+        this.rlr = Uri.parse(this.rlr).buildUpon().appendQueryParameter("manufacturer", str).appendQueryParameter("manufacturerUsername", paramBundle).toString();
       }
     }
-    ab.i("MicroMsg.FreeWifi.FreeWifiSuccWebViewUI", "get from intent, appid = %s, appNickName = %s, appUserName = %s, finishActionCode = %d, finishUrl = %s, signature = %s", new Object[] { this.cwc, this.mLh, this.cvr, Integer.valueOf(this.mOy), this.mOz, this.signature });
-    paramBundle = k.bAc();
-    str = com.tencent.mm.plugin.freewifi.m.Oy("MicroMsg.FreeWifi.FreeWifiSuccWebViewUI");
-    paramBundle.ssid = at.gX(ah.getContext());
-    paramBundle.bssid = at.gY(ah.getContext());
-    paramBundle.coY = str;
-    paramBundle.coX = getIntent().getStringExtra("free_wifi_ap_key");
-    paramBundle.mIC = this.cwc;
-    paramBundle.kMp = com.tencent.mm.plugin.freewifi.m.U(getIntent());
-    paramBundle.mIE = com.tencent.mm.plugin.freewifi.m.W(getIntent());
-    paramBundle.mIF = k.b.mIR.mJq;
-    paramBundle.mIG = k.b.mIR.name;
-    paramBundle.cCy = com.tencent.mm.plugin.freewifi.m.X(getIntent());
-    paramBundle.mIH = this.cvr;
-    paramBundle.bAe().bAd();
-    AppMethodBeat.o(21099);
+    ad.i("MicroMsg.FreeWifi.FreeWifiSuccWebViewUI", "get from intent, appid = %s, appNickName = %s, appUserName = %s, finishActionCode = %d, finishUrl = %s, signature = %s", new Object[] { this.dlB, this.ril, this.dkB, Integer.valueOf(this.rlq), this.rlr, this.signature });
+    paramBundle = k.cvq();
+    str = m.aaw("MicroMsg.FreeWifi.FreeWifiSuccWebViewUI");
+    paramBundle.ssid = ay.iA(aj.getContext());
+    paramBundle.bssid = ay.iB(aj.getContext());
+    paramBundle.ddV = str;
+    paramBundle.ddU = getIntent().getStringExtra("free_wifi_ap_key");
+    paramBundle.rfK = this.dlB;
+    paramBundle.nSA = m.ai(getIntent());
+    paramBundle.rfL = m.ak(getIntent());
+    paramBundle.rfM = k.b.rfY.rgx;
+    paramBundle.rfN = k.b.rfY.name;
+    paramBundle.channel = m.al(getIntent());
+    paramBundle.rfO = this.dkB;
+    paramBundle.cvs().cvr();
+    AppMethodBeat.o(25159);
   }
   
   @TargetApi(11)
   public void onDestroy()
   {
-    AppMethodBeat.i(21100);
+    AppMethodBeat.i(25160);
     super.onDestroy();
-    aw.Rc().b(1703, this);
-    AppMethodBeat.o(21100);
+    az.aeS().b(1703, this);
+    AppMethodBeat.o(25160);
   }
   
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
-    AppMethodBeat.i(21105);
+    AppMethodBeat.i(25165);
     String str = (String)paramMenu.getItem(0).getTitle();
-    if (!getString(2131300159).equals(str)) {
-      addTextOptionMenu(0, getString(2131300159), new FreeWifiSuccWebViewUI.2(this), null, q.b.zbD);
+    if (!getString(2131759631).equals(str)) {
+      addTextOptionMenu(0, getString(2131759631), new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(25158);
+          FreeWifiSuccWebViewUI.this.finish();
+          FreeWifiSuccWebViewUI.a(FreeWifiSuccWebViewUI.this);
+          AppMethodBeat.o(25158);
+          return true;
+        }
+      }, null, r.b.FOG);
     }
     boolean bool = super.onPrepareOptionsMenu(paramMenu);
-    AppMethodBeat.o(21105);
+    AppMethodBeat.o(25165);
     return bool;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(21106);
-    ab.i("MicroMsg.FreeWifi.FreeWifiSuccWebViewUI", "onSceneEnd, scnee type = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramm.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    aw.Rc().b(1703, this);
-    AppMethodBeat.o(21106);
+    AppMethodBeat.i(25166);
+    ad.i("MicroMsg.FreeWifi.FreeWifiSuccWebViewUI", "onSceneEnd, scnee type = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    az.aeS().b(1703, this);
+    AppMethodBeat.o(25166);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -146,7 +169,7 @@ public class FreeWifiSuccWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiSuccWebViewUI
  * JD-Core Version:    0.7.0.1
  */

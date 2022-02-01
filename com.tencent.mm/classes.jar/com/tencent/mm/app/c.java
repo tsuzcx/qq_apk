@@ -1,81 +1,61 @@
 package com.tencent.mm.app;
 
-import android.content.Context;
-import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.d;
-import com.tencent.mm.ah.d.a;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.compatible.g.a;
-import com.tencent.mm.pluginsdk.ui.i;
-import com.tencent.mm.pluginsdk.ui.i.a;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.bbom.PluginBigBallOfMud;
+import com.tencent.mm.plugin.report.PluginReport;
+import com.tencent.mm.plugin.zero.PluginZero;
+import com.tencent.mm.plugin.zero.a.d;
+import com.tencent.mm.sdk.platformtools.ad;
 
-final class c
-  implements i.a
+public final class c
+  extends i
 {
-  private volatile Bitmap bXF = null;
-  d bXG;
-  
-  public final Bitmap AY()
+  public c()
   {
-    AppMethodBeat.i(15370);
-    if (this.bXF == null) {}
-    try
-    {
-      if (this.bXF == null) {
-        this.bXF = a.decodeResource(ah.getContext().getResources(), 2131231207);
-      }
-      Bitmap localBitmap = this.bXF;
-      AppMethodBeat.o(15370);
-      return localBitmap;
-    }
-    finally
-    {
-      AppMethodBeat.o(15370);
-    }
+    com.tencent.mm.plugin.appbrand.a.a.iJa = true;
   }
   
-  public final void a(i parami)
+  public final void Kv()
   {
-    AppMethodBeat.i(15368);
-    if ((parami instanceof d.a)) {
-      o.acQ().a((d.a)parami);
-    }
-    AppMethodBeat.o(15368);
+    AppMethodBeat.i(160069);
+    super.Kv();
+    ad.i("MicroMsg.AppBrandProcessIsolateBootStep", "helloWeChat()");
+    AppMethodBeat.o(160069);
   }
   
-  public final Bitmap b(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public final void Kw()
   {
-    AppMethodBeat.i(15372);
-    paramString = b.d(paramString, paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(15372);
-    return paramString;
-  }
-  
-  public final Bitmap dt(String paramString)
-  {
-    AppMethodBeat.i(15369);
-    paramString = b.b(paramString, false, -1);
-    AppMethodBeat.o(15369);
-    return paramString;
-  }
-  
-  public final Bitmap du(String paramString)
-  {
-    AppMethodBeat.i(15371);
-    if (this.bXG == null) {
-      this.bXG = o.acQ();
-    }
-    paramString = d.qY(paramString);
-    AppMethodBeat.o(15371);
-    return paramString;
+    AppMethodBeat.i(160070);
+    ad.i("MicroMsg.AppBrandProcessIsolateBootStep", "installPlugins()");
+    g.afx().gcN = d.class;
+    ah(PluginZero.class);
+    ah(PluginReport.class);
+    ah(PluginBigBallOfMud.class);
+    qY("com.tencent.mm.plugin.bbom.PluginBigBallOfMudAsync");
+    qY("com.tencent.mm.ipcinvoker.wx_extension.PluginIPC");
+    qY("com.tencent.mm.plugin.abtest.PluginABTest");
+    qY("com.tencent.mm.plugin.expt.PluginExpt");
+    qY("com.tencent.mm.plugin.hardcoder.PluginHardcoder");
+    qY("com.tencent.mm.plugin.brandservice.PluginBrandService");
+    qY("com.tencent.mm.plugin.expansions.PluginExpansions");
+    qZ("com.tencent.mm.plugin.performance.PluginPerformance");
+    qZ("com.tencent.mm.plugin.appbrand.app.PluginAppBrand");
+    qZ("com.tencent.mm.plugin.handoff.PluginHandOff");
+    qZ("com.tencent.mm.plugin.choosemsgfile.PluginChooseMsgFile");
+    qZ("com.tencent.mm.plugin.ball.PluginBall");
+    qZ("com.tencent.mm.plugin.game.PluginGame");
+    qZ("com.tencent.mm.plugin.music.PluginMusic");
+    qZ("com.tencent.mm.plugin.recordvideo.appcamera.PluginMMSight");
+    qZ("com.tencent.mm.plugin.normsg.PluginNormsg");
+    qZ("com.tencent.mm.plugin.trafficmonitor.PluginTrafficMonitor");
+    qZ("com.tencent.mm.plugin.crashfix.PluginSystemCrashFix");
+    AppMethodBeat.o(160070);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.app.c
  * JD-Core Version:    0.7.0.1
  */

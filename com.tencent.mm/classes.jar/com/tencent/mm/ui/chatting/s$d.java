@@ -3,54 +3,52 @@ package com.tencent.mm.ui.chatting;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ag;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.aj;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.s;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.u;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.chatting.c.b.d;
 import com.tencent.mm.ui.chatting.c.b.f;
-import com.tencent.mm.ui.chatting.c.b.o;
+import com.tencent.mm.ui.chatting.c.b.q;
 import com.tencent.mm.ui.chatting.d.a;
-import com.tencent.mm.ui.chatting.viewitems.az;
+import com.tencent.mm.ui.chatting.viewitems.bi;
 
 public final class s$d
   implements View.OnLongClickListener
 {
-  private a zzP;
+  private a Gob;
   
   public s$d(a parama)
   {
-    this.zzP = parama;
+    this.Gob = parama;
   }
   
   public final boolean onLongClick(View paramView)
   {
-    AppMethodBeat.i(30720);
-    if (((o)this.zzP.ay(o.class)).dIg().doA())
+    AppMethodBeat.i(34594);
+    if (((q)this.Gob.be(q.class)).eXs().ezp())
     {
-      ab.w("changelcai", "ChattingUI isScrolling!!!");
-      AppMethodBeat.o(30720);
+      ad.w("changelcai", "ChattingUI isScrolling!!!");
+      AppMethodBeat.o(34594);
       return true;
     }
-    Object localObject3 = (az)paramView.getTag();
-    o localo = (o)this.zzP.ay(o.class);
-    String str = localo.dIg().getLastText();
-    int i = localo.dIg().getSelectionStart();
+    Object localObject3 = (bi)paramView.getTag();
+    q localq = (q)this.Gob.be(q.class);
+    String str = localq.eXs().getLastText();
+    int i = localq.eXs().getSelectionStart();
     if (i < 0) {
       i = 0;
     }
     for (;;)
     {
-      if ((((az)localObject3).userName.equals(r.Zn())) || (((az)localObject3).userName.equals("notifymessage")))
+      if (((localObject3 != null) && (u.aqG().equals(((bi)localObject3).userName))) || (((bi)localObject3).userName.equals("notifymessage")) || (((bi)localObject3).userName.equals("appbrand_notify_message")))
       {
-        AppMethodBeat.o(30720);
+        AppMethodBeat.o(34594);
         return true;
         if (i > str.length()) {
           i = str.length();
@@ -58,62 +56,76 @@ public final class s$d
       }
       else
       {
-        if (((o)this.zzP.ay(o.class)).dIg().getIsVoiceInputPanleShow())
+        if (((q)this.Gob.be(q.class)).eXs().getIsVoiceInputPanleShow())
         {
-          ab.i("MicroMsg.ChattingListAvatarListener", "ChatFooter VoiceInputPanel Show NOW!!!");
-          AppMethodBeat.o(30720);
+          ad.i("MicroMsg.ChattingListAvatarListener", "ChatFooter VoiceInputPanel Show NOW!!!");
+          AppMethodBeat.o(34594);
           return true;
         }
-        Object localObject1 = (d)this.zzP.ay(d.class);
+        Object localObject1 = (d)this.Gob.be(d.class);
         Object localObject2;
-        if ((t.lA(this.zzP.getTalkerUserName())) || (((d)localObject1).dHw()))
+        if ((com.tencent.mm.model.w.pF(this.Gob.getTalkerUserName())) || (((d)localObject1).eWD()))
         {
-          h.qsU.e(10976, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
-          aw.aaz();
-          localObject2 = c.YJ().oU(((az)localObject3).chatroomName);
-          if (((d)localObject1).dHw())
+          h.vKh.f(10976, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
+          az.arV();
+          localObject2 = c.apV().tH(((bi)localObject3).chatroomName);
+          if (((d)localObject1).eWD())
           {
-            localObject1 = ((f)this.zzP.ay(f.class)).atS(((az)localObject3).userName);
+            localObject1 = ((f)this.Gob.be(f.class)).aKG(((bi)localObject3).userName);
             localObject2 = new StringBuffer(str);
             ((StringBuffer)localObject2).insert(i, "@" + localObject1 + ' ');
-            localo.dIg().u(((StringBuffer)localObject2).toString(), i + ((CharSequence)localObject1).length() + 2, true);
-            localObject2 = localo.dIg();
-            str = ((az)localObject3).chatroomName;
-            localObject3 = ((az)localObject3).userName;
+            localq.eXs().w(((StringBuffer)localObject2).toString(), i + ((CharSequence)localObject1).length() + 2, true);
+            localObject2 = localq.eXs();
+            str = ((bi)localObject3).chatroomName;
+            localObject3 = ((bi)localObject3).userName;
             if (localObject1 != null) {
-              break label482;
+              break label495;
             }
             localObject1 = null;
-            ((ChatFooter)localObject2).aA(str, (String)localObject3, (String)localObject1);
-            localo.dIg().setMode(1);
-            paramView.postDelayed(new s.d.1(this), 2000L);
+            ((ChatFooter)localObject2).aN(str, (String)localObject3, (String)localObject1);
+            localq.eXs().setMode(1);
+            paramView.postDelayed(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(34592);
+                AppMethodBeat.o(34592);
+              }
+            }, 2000L);
           }
         }
-        label482:
-        while ((!t.nT(this.zzP.getTalkerUserName())) || (this.zzP.getTalkerUserName().contains("@"))) {
+        label495:
+        while ((!com.tencent.mm.model.w.sD(this.Gob.getTalkerUserName())) || (this.Gob.getTalkerUserName().contains("@"))) {
           for (;;)
           {
-            AppMethodBeat.o(30720);
+            AppMethodBeat.o(34594);
             return true;
-            localObject2 = AtSomeoneUI.a((u)localObject2, ((az)localObject3).userName);
+            localObject2 = AtSomeoneUI.a((com.tencent.mm.storage.w)localObject2, ((bi)localObject3).userName);
             localObject1 = localObject2;
-            if (bo.aa((CharSequence)localObject2))
+            if (bt.ai((CharSequence)localObject2))
             {
-              localObject1 = s.nC(((az)localObject3).userName);
+              localObject1 = v.sf(((bi)localObject3).userName);
               continue;
               localObject1 = ((CharSequence)localObject1).toString();
             }
           }
         }
-        h.qsU.e(10976, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(1) });
-        if ((((d)localObject1).dHv()) && (!((d)localObject1).dHw())) {}
-        for (localObject1 = ((f)this.zzP.ay(f.class)).atS(((az)localObject3).userName);; localObject1 = s.nC(((az)localObject3).userName))
+        h.vKh.f(10976, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(1) });
+        if ((((d)localObject1).eWC()) && (!((d)localObject1).eWD())) {}
+        for (localObject1 = ((f)this.Gob.be(f.class)).aKG(((bi)localObject3).userName);; localObject1 = v.sf(((bi)localObject3).userName))
         {
           localObject2 = new StringBuffer(str);
           ((StringBuffer)localObject2).insert(i, (CharSequence)localObject1);
-          localo.dIg().u(((StringBuffer)localObject2).toString(), ((CharSequence)localObject1).length() + i, true);
-          localo.dIg().setMode(1);
-          paramView.postDelayed(new s.d.2(this), 2000L);
+          localq.eXs().w(((StringBuffer)localObject2).toString(), ((CharSequence)localObject1).length() + i, true);
+          localq.eXs().setMode(1);
+          paramView.postDelayed(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(34593);
+              AppMethodBeat.o(34593);
+            }
+          }, 2000L);
           break;
         }
       }
@@ -122,7 +134,7 @@ public final class s$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.s.d
  * JD-Core Version:    0.7.0.1
  */

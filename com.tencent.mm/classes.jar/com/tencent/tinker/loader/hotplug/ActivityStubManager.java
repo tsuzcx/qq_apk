@@ -5,24 +5,38 @@ import java.util.Map;
 
 public class ActivityStubManager
 {
-  private static Map<String, String> Bua = new HashMap();
-  private static final int[] Bub = { 10, 3 };
-  private static final int[] Buc = { 10, 3 };
-  private static final int[] Bud = { 10, 3 };
-  private static final int[] Bue = { 10, 3 };
-  private static final int[] Buf = { 0, 0 };
-  private static final int[] Bug = { 0, 0 };
-  private static final int[] Buh = { 0, 0 };
-  private static final int[] Bui = { 0, 0 };
+  private static final int[] NEXT_SINGLEINSTANCE_STUB_IDX_SLOTS = { 0, 0 };
+  private static final int[] NEXT_SINGLETASK_STUB_IDX_SLOTS;
+  private static final int[] NEXT_SINGLETOP_STUB_IDX_SLOTS;
+  private static final int[] NEXT_STANDARD_STUB_IDX_SLOTS;
+  private static final int NOTRANSPARENT_SLOT_INDEX = 0;
+  private static final int[] SINGLEINSTANCE_STUB_COUNT_SLOTS;
+  private static final int[] SINGLETASK_STUB_COUNT_SLOTS;
+  private static final int[] SINGLETOP_STUB_COUNT_SLOTS;
+  private static final int[] STANDARD_STUB_COUNT_SLOTS;
+  private static final String TAG = "Tinker.ActivityStubManager";
+  private static final int TRANSPARENT_SLOT_INDEX = 1;
+  private static Map<String, String> sTargetToStubClassNameMap = new HashMap();
+  
+  static
+  {
+    STANDARD_STUB_COUNT_SLOTS = new int[] { 10, 3 };
+    SINGLETOP_STUB_COUNT_SLOTS = new int[] { 10, 3 };
+    SINGLETASK_STUB_COUNT_SLOTS = new int[] { 10, 3 };
+    SINGLEINSTANCE_STUB_COUNT_SLOTS = new int[] { 10, 3 };
+    NEXT_STANDARD_STUB_IDX_SLOTS = new int[] { 0, 0 };
+    NEXT_SINGLETOP_STUB_IDX_SLOTS = new int[] { 0, 0 };
+    NEXT_SINGLETASK_STUB_IDX_SLOTS = new int[] { 0, 0 };
+  }
   
   private ActivityStubManager()
   {
     throw new UnsupportedOperationException();
   }
   
-  public static String y(String paramString, int paramInt, boolean paramBoolean)
+  public static String assignStub(String paramString, int paramInt, boolean paramBoolean)
   {
-    String str = (String)Bua.get(paramString);
+    String str = (String)sTargetToStubClassNameMap.get(paramString);
     if (str != null) {
       return str;
     }
@@ -33,9 +47,9 @@ public class ActivityStubManager
     switch (paramInt)
     {
     default: 
-      str = ActivityStubs.Buk;
-      arrayOfInt2 = Buf;
-      arrayOfInt1 = Bub;
+      str = ActivityStubs.STARDARD_STUB_CLASSNAME_FORMAT;
+      arrayOfInt2 = NEXT_STANDARD_STUB_IDX_SLOTS;
+      arrayOfInt1 = STANDARD_STUB_COUNT_SLOTS;
       if (paramBoolean)
       {
         str = str + "_T";
@@ -53,19 +67,19 @@ public class ActivityStubManager
     for (paramInt = 0;; paramInt = i)
     {
       str = String.format(str, new Object[] { Integer.valueOf(paramInt) });
-      Bua.put(paramString, str);
+      sTargetToStubClassNameMap.put(paramString, str);
       return str;
-      str = ActivityStubs.Bul;
-      arrayOfInt2 = Bug;
-      arrayOfInt1 = Buc;
+      str = ActivityStubs.SINGLETOP_STUB_CLASSNAME_FORMAT;
+      arrayOfInt2 = NEXT_SINGLETOP_STUB_IDX_SLOTS;
+      arrayOfInt1 = SINGLETOP_STUB_COUNT_SLOTS;
       break;
-      str = ActivityStubs.Bum;
-      arrayOfInt2 = Buh;
-      arrayOfInt1 = Bud;
+      str = ActivityStubs.SINGLETASK_STUB_CLASSNAME_FORMAT;
+      arrayOfInt2 = NEXT_SINGLETASK_STUB_IDX_SLOTS;
+      arrayOfInt1 = SINGLETASK_STUB_COUNT_SLOTS;
       break;
-      str = ActivityStubs.Bun;
-      arrayOfInt2 = Bui;
-      arrayOfInt1 = Bue;
+      str = ActivityStubs.SINGLEINSTANCE_STUB_CLASSNAME_FORMAT;
+      arrayOfInt2 = NEXT_SINGLEINSTANCE_STUB_IDX_SLOTS;
+      arrayOfInt1 = SINGLEINSTANCE_STUB_COUNT_SLOTS;
       break;
       paramInt = 0;
       break label91;

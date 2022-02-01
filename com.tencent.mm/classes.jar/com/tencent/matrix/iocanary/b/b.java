@@ -1,22 +1,23 @@
 package com.tencent.matrix.iocanary.b;
 
-import com.tencent.matrix.e.c.a;
 import com.tencent.matrix.iocanary.c.a;
+import com.tencent.matrix.report.d;
+import com.tencent.matrix.report.d.a;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class b
-  extends com.tencent.matrix.e.c
+  extends d
   implements InvocationHandler
 {
-  private final Object bNI;
+  private final Object cvX;
   
-  public b(c.a parama, Object paramObject)
+  public b(d.a parama, Object paramObject)
   {
     super(parama);
-    this.bNI = paramObject;
+    this.cvX = paramObject;
   }
   
   public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
@@ -35,22 +36,22 @@ public final class b
         return null;
       }
       paramObject = a.getThrowableStack((Throwable)paramArrayOfObject[1]);
-      if (cA(paramObject)) {
+      if (cX(paramObject)) {
         com.tencent.matrix.g.c.d("Matrix.CloseGuardInvocationHandler", "close leak issue already published; key:%s", new Object[] { paramObject });
       }
       for (;;)
       {
         return null;
-        paramMethod = new com.tencent.matrix.e.b(4);
+        paramMethod = new com.tencent.matrix.report.c(4);
         paramMethod.key = paramObject;
         paramArrayOfObject = new JSONObject();
         try
         {
           paramArrayOfObject.put("stack", paramObject);
-          paramMethod.bOx = paramArrayOfObject;
+          paramMethod.cwV = paramArrayOfObject;
           b(paramMethod);
-          com.tencent.matrix.g.c.d("Matrix.CloseGuardInvocationHandler", "close leak issue publish, key:%s", new Object[] { paramObject });
-          cz(paramObject);
+          com.tencent.matrix.g.c.i("Matrix.CloseGuardInvocationHandler", "close leak issue publish, key:%s", new Object[] { paramObject });
+          cW(paramObject);
         }
         catch (JSONException localJSONException)
         {
@@ -61,12 +62,12 @@ public final class b
         }
       }
     }
-    return paramMethod.invoke(this.bNI, paramArrayOfObject);
+    return paramMethod.invoke(this.cvX, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.iocanary.b.b
  * JD-Core Version:    0.7.0.1
  */

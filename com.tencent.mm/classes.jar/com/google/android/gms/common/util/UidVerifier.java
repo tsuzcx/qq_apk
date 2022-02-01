@@ -15,10 +15,10 @@ public final class UidVerifier
 {
   public static boolean isGooglePlayServicesUid(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(90276);
+    AppMethodBeat.i(5297);
     if (!uidHasPackageName(paramContext, paramInt, "com.google.android.gms"))
     {
-      AppMethodBeat.o(90276);
+      AppMethodBeat.o(5297);
       return false;
     }
     Object localObject = paramContext.getPackageManager();
@@ -26,13 +26,13 @@ public final class UidVerifier
     {
       localObject = ((PackageManager)localObject).getPackageInfo("com.google.android.gms", 64);
       boolean bool = GoogleSignatureVerifier.getInstance(paramContext).isGooglePublicSignedPackage((PackageInfo)localObject);
-      AppMethodBeat.o(90276);
+      AppMethodBeat.o(5297);
       return bool;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
       Log.isLoggable("UidVerifier", 3);
-      AppMethodBeat.o(90276);
+      AppMethodBeat.o(5297);
     }
     return false;
   }
@@ -40,9 +40,9 @@ public final class UidVerifier
   @TargetApi(19)
   public static boolean uidHasPackageName(Context paramContext, int paramInt, String paramString)
   {
-    AppMethodBeat.i(90277);
+    AppMethodBeat.i(5298);
     boolean bool = Wrappers.packageManager(paramContext).uidHasPackageName(paramInt, paramString);
-    AppMethodBeat.o(90277);
+    AppMethodBeat.o(5298);
     return bool;
   }
 }

@@ -14,9 +14,9 @@ public class zze
   
   protected zze(String paramString)
   {
-    AppMethodBeat.i(77117);
+    AppMethodBeat.i(10776);
     attachInterface(this, paramString);
-    AppMethodBeat.o(77117);
+    AppMethodBeat.o(10776);
   }
   
   public IBinder asBinder()
@@ -31,16 +31,16 @@ public class zze
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    AppMethodBeat.i(77118);
+    AppMethodBeat.i(10777);
     if (paramInt1 > 16777215) {}
     for (boolean bool = super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2); bool; bool = false)
     {
-      AppMethodBeat.o(77118);
+      AppMethodBeat.o(10777);
       return true;
       paramParcel1.enforceInterface(getInterfaceDescriptor());
     }
     bool = dispatchTransaction(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    AppMethodBeat.o(77118);
+    AppMethodBeat.o(10777);
     return bool;
   }
 }

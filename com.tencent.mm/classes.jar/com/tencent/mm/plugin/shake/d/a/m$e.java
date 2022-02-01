@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.shake.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.Map;
 
 public final class m$e
 {
-  public String cCC;
+  public String dta;
   public String link;
   public String thumbUrl;
   public String title;
   
-  public static e Zi(String paramString)
+  public static e ani(String paramString)
   {
-    AppMethodBeat.i(24675);
-    Map localMap = br.F(paramString, "h5url");
+    AppMethodBeat.i(28345);
+    Map localMap = bw.K(paramString, "h5url");
     if (localMap != null) {}
     for (;;)
     {
       try
       {
         paramString = new e();
-        paramString.title = bo.nullAsNil((String)localMap.get(".h5url.title"));
-        paramString.thumbUrl = bo.nullAsNil((String)localMap.get(".h5url.thumburl"));
-        paramString.link = bo.nullAsNil((String)localMap.get(".h5url.link"));
-        paramString.cCC = bo.nullAsNil((String)localMap.get(".h5url.username"));
-        AppMethodBeat.o(24675);
+        paramString.title = bt.nullAsNil((String)localMap.get(".h5url.title"));
+        paramString.thumbUrl = bt.nullAsNil((String)localMap.get(".h5url.thumburl"));
+        paramString.link = bt.nullAsNil((String)localMap.get(".h5url.link"));
+        paramString.dta = bt.nullAsNil((String)localMap.get(".h5url.username"));
+        AppMethodBeat.o(28345);
         return paramString;
       }
       catch (Exception paramString)
       {
-        ab.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
         paramString = null;
         continue;
       }
@@ -42,7 +42,7 @@ public final class m$e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.m.e
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class lv
   extends b
 {
-  public lv.a cBR;
+  public a dqM;
   
   public lv()
   {
@@ -15,16 +15,23 @@ public final class lv
   
   private lv(byte paramByte)
   {
-    AppMethodBeat.i(70200);
-    this.cBR = new lv.a();
-    this.ymq = false;
+    AppMethodBeat.i(116461);
+    this.dqM = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70200);
+    AppMethodBeat.o(116461);
+  }
+  
+  public static final class a
+  {
+    public String chatroomName;
+    public int dqN;
+    public boolean dqx = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.lv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,41 @@
 package com.tencent.mm.media.i;
 
-import a.l;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.graphics.SurfaceTexture;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.l;
+import javax.microedition.khronos.opengles.GL10;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/util/VideoConfigUtil;", "", "()V", "Companion", "plugin-mediaeditor_release"})
-public final class d
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/render/SurfaceTextureRenderer;", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "renderOutputType", "", "(I)V", "onDrawFrame", "", "gl", "Ljavax/microedition/khronos/opengles/GL10;", "plugin-mediaeditor_release"})
+public abstract class d
+  extends a
 {
-  private static final int eZD = 1;
-  private static int eZE;
-  private static int eZF;
-  public static final d.a eZG;
-  
-  static
+  public d(int paramInt)
   {
-    AppMethodBeat.i(13181);
-    eZG = new d.a((byte)0);
-    eZD = 1;
-    eZE = 2;
-    eZF = 3;
-    AppMethodBeat.o(13181);
+    super(0, 0, 0, 0, paramInt, 2);
+  }
+  
+  public void onDrawFrame(GL10 paramGL10)
+  {
+    try
+    {
+      SurfaceTexture localSurfaceTexture = this.surfaceTexture;
+      if (localSurfaceTexture != null) {
+        localSurfaceTexture.updateTexImage();
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.Media.AbsSurfaceRenderer", (Throwable)localException, "updateTexImage error", new Object[0]);
+      }
+      super.onDrawFrame(paramGL10);
+    }
+    if (this.guA)
+    {
+      this.guA = false;
+      return;
+    }
   }
 }
 

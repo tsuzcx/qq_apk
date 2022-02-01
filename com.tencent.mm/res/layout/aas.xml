@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cvn" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:id="@id/cvo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fpo" android:layout_weight="1.0" />
-        <TextView android:textSize="17.0dip" android:textColor="#ff888888" android:id="@id/cvp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="\ 123123123" />
-        <View android:background="@drawable/bmq" android:layout_width="13.0dip" android:layout_height="13.0dip" android:layout_marginLeft="4.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/amv" android:paddingTop="@dimen/i_" android:paddingBottom="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/can" android:layout_width="@dimen/i2" android:layout_height="@dimen/i2" android:layout_marginRight="@dimen/jn" />
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/cao" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/jn" android:singleLine="true" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:ellipsize="end" android:id="@id/cap" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
     </LinearLayout>
-    <View android:id="@id/cvq" android:background="#ffd8d8d8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/cvn" />
-</RelativeLayout>
+</LinearLayout>

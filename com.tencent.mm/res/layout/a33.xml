@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j5"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/x" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/hg" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hg" android:minHeight="48.0dip">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/jp" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:src="@raw/fts_websearch_relevant_icon" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/w_" android:id="@id/k6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/c2v" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/hm" android:layout_marginRight="12.0dip" android:src="@raw/arrow_right" />
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/e4" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ix">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:src="@raw/app_attach_file_icon_voice" style="@style/iv" />
+                <TextView android:layout_gravity="center_vertical" android:id="@id/bwa" android:layout_marginLeft="@dimen/dz" android:text="{title}" style="@style/j2" />
+            </LinearLayout>
+            <include layout="@layout/a2x" />
+            <include layout="@layout/a2w" />
+        </LinearLayout>
+        <include layout="@layout/a2u" />
     </LinearLayout>
-</RelativeLayout>
+</FrameLayout>

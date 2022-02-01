@@ -14,23 +14,23 @@ public class JsError
   
   public String getMessage()
   {
-    AppMethodBeat.i(63927);
+    AppMethodBeat.i(54872);
     String str = this.a.getMessage();
-    AppMethodBeat.o(63927);
+    AppMethodBeat.o(54872);
     return str;
   }
   
   public String getStack()
   {
-    AppMethodBeat.i(63928);
+    AppMethodBeat.i(54873);
     String str = this.a.getStack();
-    AppMethodBeat.o(63928);
+    AppMethodBeat.o(54873);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.JsError
  * JD-Core Version:    0.7.0.1
  */

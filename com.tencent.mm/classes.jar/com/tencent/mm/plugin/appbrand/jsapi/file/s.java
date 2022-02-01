@@ -1,55 +1,69 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
-import com.tencent.mm.plugin.appbrand.appstorage.o.a;
+import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class s
   extends a
 {
-  private static final int CTRL_INDEX = 115;
-  private static final String NAME = "getSavedFileList";
+  private static final int CTRL_INDEX = 116;
+  private static final String NAME = "getSavedFileInfo";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(final c paramc, final JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(102789);
-    Object localObject = paramc.wX().awJ();
-    paramJSONObject = new JSONArray();
-    if ((localObject != null) && (((List)localObject).size() > 0))
+    AppMethodBeat.i(128879);
+    paramJSONObject = paramJSONObject.optString("filePath", "");
+    if (bt.isNullOrNil(paramJSONObject))
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        o.a locala = (o.a)((Iterator)localObject).next();
-        try
-        {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("filePath", locala.getFileName());
-          localJSONObject.put("size", locala.awE());
-          localJSONObject.put("createTime", TimeUnit.MILLISECONDS.toSeconds(locala.lastModified()));
-          paramJSONObject.put(localJSONObject);
-        }
-        catch (Exception localException) {}
-      }
+      paramc.h(paramInt, e("fail:invalid data", null));
+      AppMethodBeat.o(128879);
+      return;
     }
-    localObject = new HashMap(1);
-    ((Map)localObject).put("fileList", paramJSONObject);
-    paramc.h(paramInt, j("ok", (Map)localObject));
-    AppMethodBeat.o(102789);
+    e.jQn.execute(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(128878);
+        if (!paramc.isRunning())
+        {
+          AppMethodBeat.o(128878);
+          return;
+        }
+        com.tencent.mm.vfs.e locale = paramc.Ee().EP(paramJSONObject);
+        if (locale == null)
+        {
+          paramc.h(paramInt, s.this.e(String.format(Locale.US, "fail no such file \"%s\"", new Object[] { paramJSONObject }), null));
+          AppMethodBeat.o(128878);
+          return;
+        }
+        HashMap localHashMap = new HashMap(3);
+        localHashMap.put("size", Long.valueOf(locale.length()));
+        localHashMap.put("createTime", Long.valueOf(TimeUnit.MILLISECONDS.toSeconds(locale.lastModified())));
+        paramc.h(paramInt, s.this.k("ok", localHashMap));
+        AppMethodBeat.o(128878);
+      }
+    });
+    AppMethodBeat.o(128879);
+  }
+  
+  public final boolean aXA()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.s
  * JD-Core Version:    0.7.0.1
  */

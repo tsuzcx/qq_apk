@@ -1,103 +1,103 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.aj.d;
-import com.tencent.mm.g.a.nk;
-import com.tencent.mm.g.a.nk.a;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.am.f;
+import com.tencent.mm.g.a.ox;
+import com.tencent.mm.g.a.ox.a;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.address.d.b;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 
 public final class k
-  extends c<nk>
-  implements com.tencent.mm.ai.f
+  extends com.tencent.mm.sdk.b.c<ox>
+  implements g
 {
-  private nk gKQ;
-  private d gKR;
+  private com.tencent.mm.api.c iyA;
+  private ox iyz;
   
   public k()
   {
-    AppMethodBeat.i(16751);
-    this.__eventId = nk.class.getName().hashCode();
-    AppMethodBeat.o(16751);
+    AppMethodBeat.i(161286);
+    this.__eventId = ox.class.getName().hashCode();
+    AppMethodBeat.o(161286);
   }
   
-  private void F(int paramInt, boolean paramBoolean)
+  private void G(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(16754);
-    ab.d("MicroMsg.RcptGetAddrEventListener", "setResult errCode[%s], isAccept[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    this.gKQ.cDN.errCode = paramInt;
+    AppMethodBeat.i(20795);
+    ad.d("MicroMsg.RcptGetAddrEventListener", "setResult errCode[%s], isAccept[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    this.iyz.dup.errCode = paramInt;
     if (paramInt != 0) {
-      this.gKQ.cDN.cDO = false;
+      this.iyz.dup.duq = false;
     }
     for (;;)
     {
-      if (this.gKQ.callback != null) {
-        this.gKQ.callback.run();
+      if (this.iyz.callback != null) {
+        this.iyz.callback.run();
       }
-      aw.Rc().b(417, this);
-      AppMethodBeat.o(16754);
+      az.aeS().b(417, this);
+      AppMethodBeat.o(20795);
       return;
       if (!paramBoolean)
       {
-        com.tencent.mm.aj.f.i(this.gKR);
-        this.gKQ.cDN.cDO = false;
+        f.k(this.iyA);
+        this.iyz.dup.duq = false;
       }
       else
       {
-        com.tencent.mm.aj.f.h(this.gKR);
-        this.gKQ.cDN.cDO = true;
-        com.tencent.mm.plugin.address.a.a.asl();
-        Object localObject = com.tencent.mm.plugin.address.a.a.asn().gKU;
-        if (((com.tencent.mm.plugin.address.d.a)localObject).gLc.size() > 0)
+        f.j(this.iyA);
+        this.iyz.dup.duq = true;
+        com.tencent.mm.plugin.address.a.a.aKO();
+        Object localObject = com.tencent.mm.plugin.address.a.a.aKQ().iyD;
+        if (((com.tencent.mm.plugin.address.d.a)localObject).iyM.size() > 0)
         {
-          localObject = (b)((com.tencent.mm.plugin.address.d.a)localObject).gLc.getFirst();
-          this.gKQ.cDN.cDP = ((b)localObject).gLl;
-          this.gKQ.cDN.userName = ((b)localObject).gLj;
-          this.gKQ.cDN.cDQ = ((b)localObject).gLk;
-          this.gKQ.cDN.cDR = ((b)localObject).gLh;
-          this.gKQ.cDN.cDS = ((b)localObject).gLe;
-          this.gKQ.cDN.cDT = ((b)localObject).gLf;
-          this.gKQ.cDN.cDU = ((b)localObject).gLg;
-          this.gKQ.cDN.cDV = ((b)localObject).gLi;
+          localObject = (b)((com.tencent.mm.plugin.address.d.a)localObject).iyM.getFirst();
+          this.iyz.dup.dur = ((b)localObject).iyV;
+          this.iyz.dup.userName = ((b)localObject).iyT;
+          this.iyz.dup.dus = ((b)localObject).iyU;
+          this.iyz.dup.dut = ((b)localObject).iyR;
+          this.iyz.dup.duu = ((b)localObject).iyO;
+          this.iyz.dup.duv = ((b)localObject).iyP;
+          this.iyz.dup.duw = ((b)localObject).iyQ;
+          this.iyz.dup.dux = ((b)localObject).iyS;
         }
       }
     }
   }
   
-  private boolean a(nk paramnk)
+  private boolean a(ox paramox)
   {
-    AppMethodBeat.i(16752);
-    if ((paramnk instanceof nk))
+    AppMethodBeat.i(20793);
+    if ((paramox instanceof ox))
     {
-      this.gKQ = paramnk;
-      aw.Rc().a(417, this);
-      paramnk = new e(this.gKQ.cDM.url, this.gKQ.cDM.appId, 1);
-      aw.Rc().a(paramnk, 0);
+      this.iyz = paramox;
+      az.aeS().a(417, this);
+      paramox = new e(this.iyz.duo.url, this.iyz.duo.appId, 1);
+      az.aeS().a(paramox, 0);
     }
-    AppMethodBeat.o(16752);
+    AppMethodBeat.o(20793);
     return true;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(16753);
-    ab.d("MicroMsg.RcptGetAddrEventListener", "onSceneEnd errType[%s], errCode[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if ((paramm instanceof e))
+    AppMethodBeat.i(20794);
+    ad.d("MicroMsg.RcptGetAddrEventListener", "onSceneEnd errType[%s], errCode[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if ((paramn instanceof e))
     {
       if (paramInt2 == 0)
       {
-        F(paramInt2, true);
-        AppMethodBeat.o(16753);
+        G(paramInt2, true);
+        AppMethodBeat.o(20794);
         return;
       }
-      F(paramInt2, false);
+      G(paramInt2, false);
     }
-    AppMethodBeat.o(16753);
+    AppMethodBeat.o(20794);
   }
 }
 

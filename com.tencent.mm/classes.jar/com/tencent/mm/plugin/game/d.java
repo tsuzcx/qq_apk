@@ -1,84 +1,63 @@
 package com.tencent.mm.plugin.game;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.model.b;
-import com.tencent.mm.plugin.game.model.q;
-import com.tencent.mm.plugin.game.model.t;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.game.model.r;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class d
   implements c, com.tencent.mm.plugin.game.api.d
 {
-  private b niq;
-  private t nir;
-  private q nis;
+  private b rNm;
+  private r rNn;
   
-  public final b bEP()
+  public final b cBb()
   {
-    AppMethodBeat.i(111169);
-    g.RJ().QQ();
-    if (this.niq == null) {
-      this.niq = new b();
+    AppMethodBeat.i(40843);
+    g.afz().aeD();
+    if (this.rNm == null) {
+      this.rNm = new b();
     }
-    b localb = this.niq;
-    AppMethodBeat.o(111169);
+    b localb = this.rNm;
+    AppMethodBeat.o(40843);
     return localb;
   }
   
-  public final t bEQ()
+  public final r cBc()
   {
-    AppMethodBeat.i(111170);
-    g.RJ().QQ();
-    if (this.nir == null) {
-      this.nir = new t();
+    AppMethodBeat.i(40845);
+    g.afz().aeD();
+    if (this.rNn == null) {
+      this.rNn = new r();
     }
-    t localt = this.nir;
-    AppMethodBeat.o(111170);
-    return localt;
-  }
-  
-  public final q bER()
-  {
-    AppMethodBeat.i(111171);
-    g.RJ().QQ();
-    if (this.nis == null) {
-      this.nis = new q();
-    }
-    q localq = this.nis;
-    AppMethodBeat.o(111171);
-    return localq;
+    r localr = this.rNn;
+    AppMethodBeat.o(40845);
+    return localr;
   }
   
   public final void onAccountInitialized(e.c paramc)
   {
-    AppMethodBeat.i(111167);
-    ab.i("MicroMsg.GameService", "GameService onAccountInitialized");
-    this.niq = new b();
-    this.nir = new t();
-    this.nis = new q();
-    AppMethodBeat.o(111167);
+    AppMethodBeat.i(40841);
+    ad.i("MicroMsg.GameService", "GameService onAccountInitialized");
+    this.rNm = new b();
+    this.rNn = new r();
+    AppMethodBeat.o(40841);
   }
   
   public final void onAccountRelease()
   {
-    AppMethodBeat.i(111168);
-    ab.i("MicroMsg.GameService", "GameService onAccountRelease");
-    if (this.nir != null)
-    {
-      t localt = this.nir;
-      g.Rc().b(1223, localt);
-    }
-    AppMethodBeat.o(111168);
+    AppMethodBeat.i(40842);
+    ad.i("MicroMsg.GameService", "GameService onAccountRelease");
+    AppMethodBeat.o(40842);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d
  * JD-Core Version:    0.7.0.1
  */

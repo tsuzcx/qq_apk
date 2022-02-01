@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/a13" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="56.0dip">
-        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/fie" android:background="@color/a3x" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:id="@id/fif" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
-        <ImageView android:id="@id/fig" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@raw/wallet_drag_icon" />
-    </LinearLayout>
-    <View android:background="#ffe2e2e2" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <RelativeLayout android:id="@id/fik" android:padding="@dimen/afs" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.sight.decode.ui.SightPlayAutoSizeImageView android:id="@id/fio" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/fip" android:background="@drawable/byq" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <TextView android:textSize="@dimen/jv" android:textColor="@color/a_u" android:gravity="center" android:id="@id/fin" android:background="@drawable/byt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="-8.0dip" android:text="@string/fhw" android:layout_alignBottom="@id/fip" android:layout_centerHorizontal="true" />
+        <View android:id="@id/feq" android:background="@color/a2p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/fip" android:layout_alignTop="@id/fip" android:layout_alignRight="@id/fip" android:layout_alignBottom="@id/fip" />
+    </RelativeLayout>
+    <ImageView android:id="@id/fi_" android:visibility="gone" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" android:src="@raw/sight_box_delete" />
+</FrameLayout>

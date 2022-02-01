@@ -5,7 +5,7 @@ import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.datareport.TXCDRExtInfo;
 import com.tencent.liteav.basic.datareport.a;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
-import com.tencent.liteav.basic.util.b;
+import com.tencent.liteav.basic.util.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -38,53 +38,53 @@ public class j
   
   public j(Context paramContext)
   {
-    AppMethodBeat.i(67573);
+    AppMethodBeat.i(15423);
     this.w = true;
     this.a = paramContext.getApplicationContext();
-    this.b = b.b(this.a);
+    this.b = d.b(this.a);
     this.d = "Android";
     i.a().a(this.a);
     a();
-    AppMethodBeat.o(67573);
+    AppMethodBeat.o(15423);
   }
   
   private boolean b(String paramString)
   {
-    AppMethodBeat.i(67579);
+    AppMethodBeat.i(15429);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(67579);
+      AppMethodBeat.o(15429);
       return true;
     }
-    AppMethodBeat.o(67579);
+    AppMethodBeat.o(15429);
     return false;
   }
   
   private boolean c(String paramString)
   {
-    AppMethodBeat.i(67580);
+    AppMethodBeat.i(15430);
     boolean bool = Pattern.compile("[0-9]*").matcher(paramString).matches();
-    AppMethodBeat.o(67580);
+    AppMethodBeat.o(15430);
     return bool;
   }
   
   private void e()
   {
-    AppMethodBeat.i(67574);
+    AppMethodBeat.i(15424);
     long l1 = this.p;
     long l2 = this.q;
     a();
     this.n = l1;
     this.o = l2;
-    AppMethodBeat.o(67574);
+    AppMethodBeat.o(15424);
   }
   
   private void f()
   {
-    AppMethodBeat.i(67578);
+    AppMethodBeat.i(15428);
     if ((this.f == 0L) || (b(this.b)) || (b(this.e)))
     {
-      AppMethodBeat.o(67578);
+      AppMethodBeat.o(15428);
       return;
     }
     String str1 = TXCCommonUtil.getStreamIDByStreamUrl(this.e);
@@ -141,15 +141,15 @@ public class j
     else
     {
       if (this.v <= 0L) {
-        break label607;
+        break label610;
       }
       if (this.r != 0L) {
-        break label577;
+        break label580;
       }
       f1 = 0.0F;
-      label492:
+      label494:
       if (this.s != 0L) {
-        break label592;
+        break label595;
       }
       f3 = 0.0F;
     }
@@ -158,17 +158,17 @@ public class j
       if ((this.w) && (!b(this.c)) && (this.k != -1L)) {
         i.a().a(this.c, this.g, l5, this.k, f2, f1, f3);
       }
-      AppMethodBeat.o(67578);
+      AppMethodBeat.o(15428);
       return;
       f2 = (float)this.m * 60000.0F / (float)l5;
       break;
-      label577:
+      label580:
       f1 = (float)this.r / (float)this.v;
-      break label492;
-      label592:
+      break label494;
+      label595:
       f3 = (float)this.s / (float)this.v;
       continue;
-      label607:
+      label610:
       f1 = 0.0F;
     }
   }
@@ -231,12 +231,12 @@ public class j
   public void a(boolean paramBoolean, String paramString)
   {
     int i1 = 0;
-    AppMethodBeat.i(67577);
+    AppMethodBeat.i(15427);
     this.h = paramString;
     if (paramBoolean)
     {
       this.g = 1L;
-      AppMethodBeat.o(67577);
+      AppMethodBeat.o(15427);
       return;
     }
     if (paramString != null)
@@ -255,7 +255,7 @@ public class j
           if (!c(paramString[i1]))
           {
             this.g = 3L;
-            AppMethodBeat.o(67577);
+            AppMethodBeat.o(15427);
             return;
           }
           i1 += 1;
@@ -263,15 +263,15 @@ public class j
         this.g = 2L;
       }
     }
-    AppMethodBeat.o(67577);
+    AppMethodBeat.o(15427);
   }
   
   public void b()
   {
-    AppMethodBeat.i(67575);
+    AppMethodBeat.i(15425);
     this.f = System.currentTimeMillis();
     this.c = i.a().b();
-    AppMethodBeat.o(67575);
+    AppMethodBeat.o(15425);
   }
   
   public void b(long paramLong1, long paramLong2)
@@ -289,10 +289,10 @@ public class j
   
   public void c()
   {
-    AppMethodBeat.i(67576);
+    AppMethodBeat.i(15426);
     f();
     e();
-    AppMethodBeat.o(67576);
+    AppMethodBeat.o(15426);
   }
   
   public void d()
@@ -302,7 +302,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.j
  * JD-Core Version:    0.7.0.1
  */

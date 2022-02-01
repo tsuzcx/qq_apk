@@ -9,14 +9,14 @@ public class BaseApi$FieldCollection<Parent>
   
   protected BaseApi$FieldCollection(Parent paramParent, BaseApi.BaseApiaryOptions<?>.Collector paramBaseApiaryOptions)
   {
-    AppMethodBeat.i(61431);
+    AppMethodBeat.i(11923);
     Object localObject = paramParent;
     if (paramParent == null) {
       localObject = this;
     }
     this.zzwc = localObject;
     this.zzvw = paramBaseApiaryOptions;
-    AppMethodBeat.o(61431);
+    AppMethodBeat.o(11923);
   }
   
   protected BaseApi.BaseApiaryOptions<?>.Collector getCollector()
@@ -31,7 +31,7 @@ public class BaseApi$FieldCollection<Parent>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.gms.common.server.BaseApi.FieldCollection
  * JD-Core Version:    0.7.0.1
  */

@@ -11,53 +11,53 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class c
 {
-  private static volatile c eED;
-  Map<String, List<e>> eEE;
+  private static volatile c fZG;
+  Map<String, List<e>> fZH;
   
   private c()
   {
-    AppMethodBeat.i(114074);
-    this.eEE = new ConcurrentHashMap();
-    AppMethodBeat.o(114074);
+    AppMethodBeat.i(158785);
+    this.fZH = new ConcurrentHashMap();
+    AppMethodBeat.o(158785);
   }
   
-  public static c PT()
+  public static c adD()
   {
-    AppMethodBeat.i(114073);
-    if (eED == null) {}
+    AppMethodBeat.i(158784);
+    if (fZG == null) {}
     try
     {
-      if (eED == null) {
-        eED = new c();
+      if (fZG == null) {
+        fZG = new c();
       }
-      c localc = eED;
-      AppMethodBeat.o(114073);
+      c localc = fZG;
+      AppMethodBeat.o(158784);
       return localc;
     }
     finally
     {
-      AppMethodBeat.o(114073);
+      AppMethodBeat.o(158784);
     }
   }
   
   public final boolean a(String paramString, e parame)
   {
-    AppMethodBeat.i(114076);
+    AppMethodBeat.i(158787);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(114076);
+      AppMethodBeat.o(158787);
       return false;
     }
-    List localList = (List)this.eEE.get(paramString);
+    List localList = (List)this.fZH.get(paramString);
     Object localObject = localList;
     if (localList == null)
     {
       localObject = new LinkedList();
-      this.eEE.put(paramString, localObject);
+      this.fZH.put(paramString, localObject);
     }
     if (((List)localObject).contains(parame))
     {
-      AppMethodBeat.o(114076);
+      AppMethodBeat.o(158787);
       return false;
     }
     try
@@ -67,19 +67,19 @@ public class c
     }
     finally
     {
-      AppMethodBeat.o(114076);
+      AppMethodBeat.o(158787);
     }
   }
   
   public final boolean b(String paramString, e parame)
   {
-    AppMethodBeat.i(114077);
+    AppMethodBeat.i(158788);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(114077);
+      AppMethodBeat.o(158788);
       return false;
     }
-    List localList = (List)this.eEE.get(paramString);
+    List localList = (List)this.fZH.get(paramString);
     if (localList != null) {}
     for (;;)
     {
@@ -87,31 +87,31 @@ public class c
       {
         bool = localList.remove(parame);
         if (localList.isEmpty()) {
-          this.eEE.remove(paramString);
+          this.fZH.remove(paramString);
         }
-        AppMethodBeat.o(114077);
+        AppMethodBeat.o(158788);
         return bool;
       }
       finally
       {
-        AppMethodBeat.o(114077);
+        AppMethodBeat.o(158788);
       }
       boolean bool = false;
     }
   }
   
-  public final boolean l(String paramString, Bundle paramBundle)
+  public final boolean m(String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(114075);
+    AppMethodBeat.i(158786);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(114075);
+      AppMethodBeat.o(158786);
       return false;
     }
-    paramString = (List)this.eEE.get(paramString);
+    paramString = (List)this.fZH.get(paramString);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      AppMethodBeat.o(114075);
+      AppMethodBeat.o(158786);
       return true;
     }
     try
@@ -119,20 +119,20 @@ public class c
       ArrayList localArrayList = new ArrayList(paramString);
       paramString = localArrayList.iterator();
       while (paramString.hasNext()) {
-        ((e)paramString.next()).ad(paramBundle);
+        ((e)paramString.next()).bf(paramBundle);
       }
-      AppMethodBeat.o(114075);
+      AppMethodBeat.o(158786);
     }
     finally
     {
-      AppMethodBeat.o(114075);
+      AppMethodBeat.o(158786);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.d.c
  * JD-Core Version:    0.7.0.1
  */

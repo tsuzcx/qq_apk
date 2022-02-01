@@ -1,51 +1,40 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.g.c.fa;
-import com.tencent.mm.sdk.e.j;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.g.c.fw;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class by
-  extends j<fa>
+  extends fw
 {
-  public static final String[] SQL_CREATE;
-  public h fnw;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(59018);
-    SQL_CREATE = new String[] { j.getCreateSQLs(bx.info, "TablesVersion") };
-    AppMethodBeat.o(59018);
+    AppMethodBeat.i(133308);
+    c.a locala = new c.a();
+    locala.EYt = new Field[2];
+    locala.columns = new String[3];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "tableHash";
+    locala.EYv.put("tableHash", "INTEGER PRIMARY KEY ");
+    localStringBuilder.append(" tableHash INTEGER PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.EYu = "tableHash";
+    locala.columns[1] = "tableSQLMD5";
+    locala.EYv.put("tableSQLMD5", "TEXT");
+    localStringBuilder.append(" tableSQLMD5 TEXT");
+    locala.columns[2] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(133308);
   }
   
-  public by(h paramh)
+  public final c.a getDBInfo()
   {
-    super(paramh, bx.info, "TablesVersion", fa.INDEX_CREATE);
-    this.fnw = paramh;
-  }
-  
-  public final ConcurrentHashMap<Integer, String> dyQ()
-  {
-    AppMethodBeat.i(59017);
-    Cursor localCursor = this.fnw.a("select * from TablesVersion", new String[0], 0);
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(59017);
-      return localConcurrentHashMap;
-    }
-    try
-    {
-      if (localCursor.moveToNext()) {}
-      return localConcurrentHashMap1;
-    }
-    finally
-    {
-      localCursor.close();
-      AppMethodBeat.o(59017);
-    }
+    return info;
   }
 }
 

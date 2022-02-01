@@ -7,17 +7,17 @@ public final class h
 {
   public h()
   {
-    this.mBq = "";
-    this.vxr = "";
-    this.cBD = "";
+    this.dkb = "";
+    this.omI = "";
+    this.drZ = "";
     this.type = -1;
   }
   
-  public final String dhQ()
+  public final String esC()
   {
-    AppMethodBeat.i(26682);
-    String str = super.dhQ();
-    AppMethodBeat.o(26682);
+    AppMethodBeat.i(30375);
+    String str = super.esC();
+    AppMethodBeat.o(30375);
     return str;
   }
   
@@ -28,7 +28,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.a.h
  * JD-Core Version:    0.7.0.1
  */

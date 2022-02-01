@@ -2,32 +2,31 @@ package com.tencent.mm.storage.emotion;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.g;
-import com.tencent.mm.cg.g.a;
-import com.tencent.mm.protocal.protobuf.GetEmotionRewardResponse;
+import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.io.IOException;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storagebase.g;
+import com.tencent.mm.storagebase.g.a;
 
 public final class l
   extends j<k>
   implements g.a
 {
   public static final String[] SQL_CREATE;
-  public e db;
+  private e db;
   
   static
   {
-    AppMethodBeat.i(62861);
-    SQL_CREATE = new String[] { j.getCreateSQLs(k.info, "EmotionRewardInfo") };
-    AppMethodBeat.o(62861);
+    AppMethodBeat.i(105117);
+    SQL_CREATE = new String[] { j.getCreateSQLs(k.info, "EmotionDetailInfo") };
+    AppMethodBeat.o(105117);
   }
   
   public l(e parame)
   {
-    super(parame, k.info, "EmotionRewardInfo", null);
+    super(parame, k.info, "EmotionDetailInfo", null);
     this.db = parame;
   }
   
@@ -37,46 +36,74 @@ public final class l
     return 0;
   }
   
-  public final GetEmotionRewardResponse asX(String paramString)
+  public final void a(String paramString1, GetEmotionDetailResponse paramGetEmotionDetailResponse, String paramString2)
   {
-    Object localObject = null;
-    AppMethodBeat.i(62860);
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.w("MicroMsg.emoji.EmotionRewardInfoStorage", "getEmotionRewardResponseByPID failed. productID is null.");
-      AppMethodBeat.o(62860);
-      return null;
-    }
-    Cursor localCursor = this.db.a("EmotionRewardInfo", new String[] { "content" }, "productID=?", new String[] { paramString }, null, null, null, 2);
-    paramString = localObject;
-    if (localCursor != null)
-    {
-      paramString = localObject;
-      if (!localCursor.moveToFirst()) {}
+    AppMethodBeat.i(183930);
+    if ((bt.isNullOrNil(paramString1)) || (paramGetEmotionDetailResponse == null)) {
+      ad.w("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionRewardResponseWithPID failed. productId or response is null.");
     }
     try
     {
-      paramString = new GetEmotionRewardResponse();
-      paramString.parseFrom(localCursor.getBlob(0));
-      if (localCursor != null) {
-        localCursor.close();
-      }
-      AppMethodBeat.o(62860);
-      return paramString;
-    }
-    catch (IOException paramString)
-    {
-      for (;;)
+      k localk = new k();
+      localk.field_productID = paramString1;
+      localk.field_content = paramGetEmotionDetailResponse.toByteArray();
+      localk.field_lan = paramString2;
+      paramGetEmotionDetailResponse = localk.convertTo();
+      if (this.db.replace("EmotionDetailInfo", "productID", paramGetEmotionDetailResponse) > 0L)
       {
-        ab.e("MicroMsg.emoji.EmotionRewardInfoStorage", "exception:%s", new Object[] { bo.l(paramString) });
-        paramString = localObject;
+        ad.i("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionDetailResponseWithPID success. ProductId:%s", new Object[] { paramString1 });
+        AppMethodBeat.o(183930);
+        return;
+      }
+      ad.i("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionDetailResponseWithPID failed. ProductId:%s", new Object[] { paramString1 });
+      AppMethodBeat.o(183930);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      ad.e("MicroMsg.emoji.EmotionDetailInfoStorage", "saveEmotionRewardResponseWithPID exception:%s", new Object[] { bt.m(paramString1) });
+      AppMethodBeat.o(183930);
+    }
+  }
+  
+  public final k aJE(String paramString)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(105116);
+    if (bt.isNullOrNil(paramString))
+    {
+      ad.w("MicroMsg.emoji.EmotionDetailInfoStorage", "getEmotionDetailRespnseByPID failed. productID is null.");
+      AppMethodBeat.o(105116);
+      return null;
+    }
+    Cursor localCursor = this.db.a("EmotionDetailInfo", new String[] { "content", "lan" }, "productID=?", new String[] { paramString }, null, null, null, 2);
+    Object localObject1 = localObject2;
+    if (localCursor != null)
+    {
+      localObject1 = localObject2;
+      if (localCursor.moveToFirst())
+      {
+        localObject1 = new k();
+        ((k)localObject1).field_content = localCursor.getBlob(0);
+        ((k)localObject1).field_lan = localCursor.getString(1);
+        ((k)localObject1).field_productID = paramString;
       }
     }
+    if (localCursor != null) {
+      localCursor.close();
+    }
+    AppMethodBeat.o(105116);
+    return localObject1;
+  }
+  
+  public final String getTableName()
+  {
+    return "EmotionDetailInfo";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.l
  * JD-Core Version:    0.7.0.1
  */

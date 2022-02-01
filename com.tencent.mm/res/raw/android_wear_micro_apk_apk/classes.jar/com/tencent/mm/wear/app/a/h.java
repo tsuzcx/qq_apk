@@ -2,13 +2,13 @@ package com.tencent.mm.wear.app.a;
 
 public final class h
 {
-  public int aaO;
-  public int aaw = 0;
+  public int adX = 0;
+  public int aep;
   public byte[] data;
   
   public final String toString()
   {
-    return String.format("code=%d, funId=%d", new Object[] { Integer.valueOf(this.aaw), Integer.valueOf(this.aaO) });
+    return String.format("code=%d, funId=%d", new Object[] { Integer.valueOf(this.adX), Integer.valueOf(this.aep) });
   }
 }
 

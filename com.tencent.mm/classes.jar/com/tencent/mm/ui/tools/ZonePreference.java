@@ -7,17 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.RegionCodeDecoder.Region;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ZonePreference
   extends Preference
 {
-  RegionCodeDecoder.Region Ayo;
-  private CharSequence Ayp;
-  private TextView Ayq;
+  RegionCodeDecoder.Region Huv;
+  private CharSequence Huw;
+  private TextView Hux;
   
   public ZonePreference(Context paramContext)
   {
@@ -32,78 +32,78 @@ public class ZonePreference
   public ZonePreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(35008);
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(35008);
+    AppMethodBeat.i(39205);
+    setLayoutResource(2131494804);
+    AppMethodBeat.o(39205);
   }
   
-  private void dOd()
+  private void fee()
   {
-    AppMethodBeat.i(35011);
-    if (this.Ayq == null)
+    AppMethodBeat.i(39208);
+    if (this.Hux == null)
     {
-      AppMethodBeat.o(35011);
+      AppMethodBeat.o(39208);
       return;
     }
-    if ((this.Ayp != null) && (!ah.isNullOrNil(this.Ayp.toString()))) {
-      this.Ayq.setVisibility(0);
+    if ((this.Huw != null) && (!bt.isNullOrNil(this.Huw.toString()))) {
+      this.Hux.setVisibility(0);
     }
     for (;;)
     {
-      this.Ayq.setText(this.Ayp);
-      AppMethodBeat.o(35011);
+      this.Hux.setText(this.Huw);
+      AppMethodBeat.o(39208);
       return;
-      this.Ayq.setVisibility(8);
+      this.Hux.setVisibility(8);
     }
   }
   
   public final void a(RegionCodeDecoder.Region paramRegion)
   {
-    AppMethodBeat.i(35009);
-    if ((paramRegion == null) || (ah.isNullOrNil(paramRegion.getName())) || (ah.isNullOrNil(paramRegion.getCode())))
+    AppMethodBeat.i(39206);
+    if ((paramRegion == null) || (bt.isNullOrNil(paramRegion.getName())) || (bt.isNullOrNil(paramRegion.getCode())))
     {
-      ab.e("MicroMsg.ZonePreference", "setZoneItem item = null");
-      AppMethodBeat.o(35009);
+      ad.e("MicroMsg.ZonePreference", "setZoneItem item = null");
+      AppMethodBeat.o(39206);
       return;
     }
     setKey(paramRegion.getCode() + paramRegion.isCity());
-    this.Ayo = paramRegion;
-    AppMethodBeat.o(35009);
+    this.Huv = paramRegion;
+    AppMethodBeat.o(39206);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(35013);
+    AppMethodBeat.i(39210);
     super.onBindView(paramView);
-    if (this.Ayo == null)
+    if (this.Huv == null)
     {
-      AppMethodBeat.o(35013);
+      AppMethodBeat.o(39210);
       return;
     }
-    ((TextView)paramView.findViewById(2131826226)).setText(this.Ayo.getName());
-    this.Ayq = ((TextView)paramView.findViewById(2131826229));
-    dOd();
-    AppMethodBeat.o(35013);
+    ((TextView)paramView.findViewById(2131307140)).setText(this.Huv.getName());
+    this.Hux = ((TextView)paramView.findViewById(2131305556));
+    fee();
+    AppMethodBeat.o(39210);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(35012);
+    AppMethodBeat.i(39209);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130970222, localViewGroup);
-    AppMethodBeat.o(35012);
+    localLayoutInflater.inflate(2131494849, localViewGroup);
+    AppMethodBeat.o(39209);
     return paramViewGroup;
   }
   
   public final void setSummary(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(35010);
-    this.Ayp = paramCharSequence;
-    dOd();
-    AppMethodBeat.o(35010);
+    AppMethodBeat.i(39207);
+    this.Huw = paramCharSequence;
+    fee();
+    AppMethodBeat.o(39207);
   }
 }
 

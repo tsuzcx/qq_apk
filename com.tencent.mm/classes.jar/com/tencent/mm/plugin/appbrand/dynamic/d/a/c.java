@@ -1,115 +1,131 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d.a;
 
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ab.b.b.a;
 import com.tencent.mm.modelappbrand.u;
-import com.tencent.mm.plugin.appbrand.dynamic.h.d;
-import com.tencent.mm.plugin.appbrand.s.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.z.b.b.a;
+import com.tencent.mm.plugin.appbrand.aa.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class c
-  implements com.tencent.mm.z.c.b
+  implements com.tencent.mm.ab.c.b
 {
-  private Handler byg;
-  public String equ;
-  public com.tencent.mm.plugin.appbrand.dynamic.i.a hpf;
-  private ae<String, JSONObject> hpg;
+  private ap bZx;
+  public String fDK;
+  public com.tencent.mm.plugin.appbrand.dynamic.i.a jmn;
+  private ag<String, JSONObject> jmo;
   
   public c()
   {
-    AppMethodBeat.i(10871);
-    HandlerThread localHandlerThread = new HandlerThread("JsApiExecutor-Thread:" + hashCode());
-    localHandlerThread.start();
-    this.byg = new Handler(localHandlerThread.getLooper());
-    this.hpg = new c.1(this);
-    AppMethodBeat.o(10871);
+    AppMethodBeat.i(121351);
+    this.bZx = new ap("JsApiExecutor-Thread:" + hashCode());
+    this.jmo = new c.1(this);
+    AppMethodBeat.o(121351);
   }
   
-  final JSONObject Bi(String paramString)
+  final JSONObject Hg(String paramString)
   {
-    AppMethodBeat.i(10875);
-    paramString = (JSONObject)this.hpg.get(paramString);
-    AppMethodBeat.o(10875);
+    AppMethodBeat.i(121355);
+    paramString = (JSONObject)this.jmo.get(paramString);
+    AppMethodBeat.o(121355);
     return paramString;
   }
   
-  public final String U(String paramString1, String paramString2)
+  public final String a(final com.tencent.mm.ab.c.a parama, final com.tencent.mm.ab.d.a parama1, final com.tencent.mm.ab.b.b paramb, final String paramString, final b.a parama2)
   {
-    AppMethodBeat.i(10876);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errMsg", paramString1 + ":" + paramString2);
-    paramString1 = new JSONObject(localHashMap).toString();
-    AppMethodBeat.o(10876);
-    return paramString1;
-  }
-  
-  public final String a(com.tencent.mm.z.c.a parama, com.tencent.mm.z.d.a parama1, com.tencent.mm.z.b.b paramb, String paramString, b.a parama2)
-  {
-    AppMethodBeat.i(10873);
-    String str = paramb.name;
-    if (!parama1.jy(paramb.index))
+    AppMethodBeat.i(121353);
+    final String str = paramb.name;
+    if (!parama1.mb(paramb.index))
     {
       u.i("MicroMsg.DefaultJsApiExecutor", "JsApiFunc(%s) no permission.", new Object[] { str });
-      parama = U(str, "fail:access denied");
-      AppMethodBeat.o(10873);
+      parama = al(str, "fail:access denied");
+      AppMethodBeat.o(121353);
       return parama;
     }
-    parama1 = n.hH(System.nanoTime());
-    boolean bool = d.zP(str);
+    parama1 = m.no(System.nanoTime());
+    final boolean bool = com.tencent.mm.plugin.appbrand.dynamic.h.d.FD(str);
     com.tencent.mm.plugin.appbrand.collector.c.c("jsapi_draw_canvas", parama1, "start_jsapi_invoke", bool);
-    com.tencent.mm.plugin.appbrand.collector.c.bI(parama1, "after_draw_actions");
+    com.tencent.mm.plugin.appbrand.collector.c.co(parama1, "after_draw_actions");
     if ((paramb instanceof b))
     {
-      parama1 = Bi(paramString);
+      parama1 = Hg(paramString);
       if (parama1 == null)
       {
-        parama = U(str, "fail:invalid data");
-        AppMethodBeat.o(10873);
+        parama = al(str, "fail:invalid data");
+        AppMethodBeat.o(121353);
         return parama;
       }
     }
     for (parama = paramb.a(parama, parama1, parama2);; parama = "")
     {
-      if (this.hpf != null) {
-        this.hpf.Bo(str);
+      if (this.jmn != null) {
+        this.jmn.Hm(str);
       }
-      AppMethodBeat.o(10873);
+      AppMethodBeat.o(121353);
       return parama;
-      this.byg.post(new c.2(this, parama1, bool, paramString, parama2, str, paramb, parama));
+      this.bZx.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(121350);
+          com.tencent.mm.plugin.appbrand.collector.c.k(parama1, "parse_json_start", bool);
+          JSONObject localJSONObject = c.this.Hg(paramString);
+          if (localJSONObject == null)
+          {
+            parama2.bl(c.this.al(str, "fail:invalid data"));
+            AppMethodBeat.o(121350);
+            return;
+          }
+          Bundle localBundle = new Bundle();
+          localBundle.putString("rawJsapiData", paramString);
+          com.tencent.mm.plugin.appbrand.collector.c.k(parama1, "parse_json_end", bool);
+          com.tencent.mm.plugin.appbrand.dynamic.h.d.a(parama1, paramString, localJSONObject);
+          paramb.a(parama, localJSONObject, localBundle, parama2);
+          AppMethodBeat.o(121350);
+        }
+      });
     }
   }
   
-  public final String mh(String paramString)
+  public final String al(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(10872);
-    ab.i("MicroMsg.DefaultJsApiExecutor", "JsApiFunc(%s) do not exist.", new Object[] { paramString });
-    paramString = U(paramString, "fail:not supported");
-    AppMethodBeat.o(10872);
-    return paramString;
+    AppMethodBeat.i(121356);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errMsg", paramString1 + ":" + paramString2);
+    paramString1 = new JSONObject(localHashMap).toString();
+    AppMethodBeat.o(121356);
+    return paramString1;
   }
   
   public final void quit()
   {
-    AppMethodBeat.i(10874);
-    this.byg.getLooper().quit();
-    if (this.hpf != null) {
-      this.hpf.IE();
+    AppMethodBeat.i(121354);
+    this.bZx.getSerial().IzX.quit();
+    if (this.jmn != null) {
+      this.jmn.report();
     }
-    com.tencent.mm.plugin.appbrand.dynamic.d.b.a.Bk(this.equ);
-    u.v("MicroMsg.DefaultJsApiExecutor", "cache perf hit %d, miss %d, hit rate  " + (float)(this.hpg.hitCount() * 1.0D / (this.hpg.hitCount() + this.hpg.missCount())), new Object[] { Integer.valueOf(this.hpg.hitCount()), Integer.valueOf(this.hpg.missCount()) });
-    AppMethodBeat.o(10874);
+    com.tencent.mm.plugin.appbrand.dynamic.d.b.a.Hi(this.fDK);
+    u.v("MicroMsg.DefaultJsApiExecutor", "cache perf hit %d, miss %d, hit rate  " + (float)(this.jmo.hitCount() * 1.0D / (this.jmo.hitCount() + this.jmo.missCount())), new Object[] { Integer.valueOf(this.jmo.hitCount()), Integer.valueOf(this.jmo.missCount()) });
+    AppMethodBeat.o(121354);
+  }
+  
+  public final String qx(String paramString)
+  {
+    AppMethodBeat.i(121352);
+    ad.i("MicroMsg.DefaultJsApiExecutor", "JsApiFunc(%s) do not exist.", new Object[] { paramString });
+    paramString = al(paramString, "fail:not supported");
+    AppMethodBeat.o(121352);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.a.c
  * JD-Core Version:    0.7.0.1
  */

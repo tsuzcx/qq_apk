@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/a6q" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.view.HardTouchableLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/asw" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:id="@id/ahh" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
-    <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/cpw" />
-</LinearLayout>
+    <ImageView android:id="@id/c9h" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.finder.view.FinderMediaBanner android:layout_gravity="center" android:id="@id/dlz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/at6" android:layout_width="@dimen/a6u" android:layout_height="@dimen/a6t" android:layout_marginTop="50.0dip" android:layout_marginBottom="22.0dip" android:src="@raw/media_preview_btn_close" android:layout_marginStart="12.0dip" />
+</com.tencent.mm.view.HardTouchableLayout>

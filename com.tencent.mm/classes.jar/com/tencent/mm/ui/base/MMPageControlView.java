@@ -12,103 +12,103 @@ import java.util.Map;
 public class MMPageControlView
   extends LinearLayout
 {
+  protected int FYA;
   protected Context context;
   protected int count;
-  protected ImageView cuM;
+  protected ImageView djK;
   protected Map<Integer, ImageView> map;
-  protected int zlb;
   
   public MMPageControlView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(106701);
+    AppMethodBeat.i(142054);
     this.map = new HashMap();
-    this.zlb = 2130970284;
+    this.FYA = 2131494916;
     this.context = paramContext;
-    AppMethodBeat.o(106701);
+    AppMethodBeat.o(142054);
   }
   
   public MMPageControlView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(106702);
+    AppMethodBeat.i(142055);
     this.map = new HashMap();
-    this.zlb = 2130970284;
+    this.FYA = 2131494916;
     this.context = paramContext;
-    AppMethodBeat.o(106702);
+    AppMethodBeat.o(142055);
   }
   
-  protected void Eg(int paramInt)
+  protected void MK(int paramInt)
   {
-    AppMethodBeat.i(106703);
+    AppMethodBeat.i(142056);
     removeAllViews();
     if (paramInt >= this.count)
     {
-      AppMethodBeat.o(106703);
+      AppMethodBeat.o(142056);
       return;
     }
     int j = this.count;
     int i = 0;
     if (i < j)
     {
-      this.cuM = null;
+      this.djK = null;
       if (paramInt == i)
       {
         if (this.map.size() > i) {
-          this.cuM = ((ImageView)this.map.get(Integer.valueOf(i)));
+          this.djK = ((ImageView)this.map.get(Integer.valueOf(i)));
         }
-        if (this.cuM == null)
+        if (this.djK == null)
         {
-          this.cuM = ((ImageView)View.inflate(this.context, this.zlb, null).findViewById(2131826286));
-          this.map.put(Integer.valueOf(i), this.cuM);
+          this.djK = ((ImageView)View.inflate(this.context, this.FYA, null).findViewById(2131302343));
+          this.map.put(Integer.valueOf(i), this.djK);
         }
-        this.cuM.setSelected(true);
+        this.djK.setSelected(true);
       }
       for (;;)
       {
         if (i == 0) {
-          this.cuM.setPadding(0, 0, 0, 0);
+          this.djK.setPadding(0, 0, 0, 0);
         }
-        addView(this.cuM);
+        addView(this.djK);
         i += 1;
         break;
         if (this.map.size() > i) {
-          this.cuM = ((ImageView)this.map.get(Integer.valueOf(i)));
+          this.djK = ((ImageView)this.map.get(Integer.valueOf(i)));
         }
-        if (this.cuM == null)
+        if (this.djK == null)
         {
-          this.cuM = ((ImageView)View.inflate(this.context, this.zlb, null).findViewById(2131826286));
-          this.map.put(Integer.valueOf(i), this.cuM);
+          this.djK = ((ImageView)View.inflate(this.context, this.FYA, null).findViewById(2131302343));
+          this.map.put(Integer.valueOf(i), this.djK);
         }
-        this.cuM.setSelected(false);
+        this.djK.setSelected(false);
       }
     }
-    AppMethodBeat.o(106703);
+    AppMethodBeat.o(142056);
   }
   
-  public final void hy(int paramInt1, int paramInt2)
+  public final void jl(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106699);
+    AppMethodBeat.i(142052);
     this.count = paramInt1;
-    Eg(paramInt2);
-    AppMethodBeat.o(106699);
+    MK(paramInt2);
+    AppMethodBeat.o(142052);
   }
   
   public void setIndicatorLayoutRes(int paramInt)
   {
-    this.zlb = paramInt;
+    this.FYA = paramInt;
   }
   
   public void setPage(int paramInt)
   {
-    AppMethodBeat.i(106700);
-    Eg(paramInt);
-    AppMethodBeat.o(106700);
+    AppMethodBeat.i(142053);
+    MK(paramInt);
+    AppMethodBeat.o(142053);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMPageControlView
  * JD-Core Version:    0.7.0.1
  */

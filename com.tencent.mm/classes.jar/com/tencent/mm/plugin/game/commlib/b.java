@@ -1,84 +1,85 @@
 package com.tencent.mm.plugin.game.commlib;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.vfs.i;
 
 public class b
-  implements f
+  implements com.tencent.mm.al.g
 {
-  private static b niU;
-  private boolean fpN = false;
+  private static b rOn;
+  private boolean fOm = false;
   
-  public static b bFj()
+  public static b cBq()
   {
-    AppMethodBeat.i(59399);
-    if (niU == null) {}
+    AppMethodBeat.i(89930);
+    if (rOn == null) {}
     try
     {
-      if (niU == null) {
-        niU = new b();
+      if (rOn == null) {
+        rOn = new b();
       }
-      b localb = niU;
-      AppMethodBeat.o(59399);
+      b localb = rOn;
+      AppMethodBeat.o(89930);
       return localb;
     }
     finally
     {
-      AppMethodBeat.o(59399);
+      AppMethodBeat.o(89930);
     }
   }
   
   private void release()
   {
-    AppMethodBeat.i(59401);
-    this.fpN = false;
-    g.Rc().b(1311, this);
-    AppMethodBeat.o(59401);
+    AppMethodBeat.i(89932);
+    this.fOm = false;
+    com.tencent.mm.kernel.g.aeS().b(1311, this);
+    AppMethodBeat.o(89932);
   }
   
-  public final void hZ(boolean paramBoolean)
+  public final void lL(boolean paramBoolean)
   {
     for (;;)
     {
       int i;
       try
       {
-        AppMethodBeat.i(59400);
+        AppMethodBeat.i(89931);
         if (paramBoolean)
         {
           i = 1;
           if (i == 0)
           {
-            if (!com.tencent.mm.vfs.e.cN(a.niS))
+            if (!i.eK(a.cBj()))
             {
               i = 1;
-              break label158;
+              break label174;
             }
           }
           else
           {
-            if (!this.fpN)
+            if (!this.fOm)
             {
-              ab.i("MicroMsg.GameConfigUpdater", "Game config start update. force update(%b)", new Object[] { Boolean.valueOf(paramBoolean) });
+              ad.i("MicroMsg.GameConfigUpdater", "Game config start update. force update(%b)", new Object[] { Boolean.valueOf(paramBoolean) });
               release();
-              this.fpN = true;
-              g.Rc().a(1311, this);
+              this.fOm = true;
+              com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fqf, Long.valueOf(0L));
+              com.tencent.mm.kernel.g.aeS().a(1311, this);
               c localc = new c();
-              g.Rc().a(localc, 0);
+              com.tencent.mm.kernel.g.aeS().a(localc, 0);
             }
-            AppMethodBeat.o(59400);
+            AppMethodBeat.o(89931);
           }
         }
         else
         {
-          long l = bo.gz(bo.c((Long)g.RL().Ru().get(ac.a.yxK, Long.valueOf(0L))));
+          long l = bt.lZ(bt.f((Long)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fge, Long.valueOf(0L))));
           if (l > 86400L)
           {
             i = 1;
@@ -90,35 +91,35 @@ public class b
         i = 0;
       }
       finally {}
-      label158:
+      label174:
       if (i == 0) {}
     }
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(59402);
-    if (paramm.getType() == 1311)
+    AppMethodBeat.i(89933);
+    if (paramn.getType() == 1311)
     {
-      ab.i("MicroMsg.GameConfigUpdater", "getGameCenterGlobalSetting sceneEnd, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if (g.RJ().QU()) {
+      ad.i("MicroMsg.GameConfigUpdater", "getGameCenterGlobalSetting sceneEnd, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      if (com.tencent.mm.kernel.g.afz().aeI()) {
         break label67;
       }
-      ab.w("MicroMsg.GameConfigUpdater", "account not init.");
+      ad.w("MicroMsg.GameConfigUpdater", "account not init.");
     }
     for (;;)
     {
       release();
-      AppMethodBeat.o(59402);
+      AppMethodBeat.o(89933);
       return;
       label67:
-      g.RL().Ru().set(ac.a.yxK, Long.valueOf(bo.aox()));
+      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fge, Long.valueOf(bt.aGK()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.commlib.b
  * JD-Core Version:    0.7.0.1
  */

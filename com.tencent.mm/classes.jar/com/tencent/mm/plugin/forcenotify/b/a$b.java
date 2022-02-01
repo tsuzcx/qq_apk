@@ -1,13 +1,28 @@
 package com.tencent.mm.plugin.forcenotify.b;
 
-import a.l;
-import com.tencent.mm.g.a.jw;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap;
+import d.g.a.a;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/forcenotify/core/BaseForceNotifyService$manualAuthEventIListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/ManualAuthEvent;", "callback", "", "event", "plugin-force-notify_release"})
-public final class a$b
-  extends c<jw>
-{}
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "invoke"})
+final class a$b
+  extends d.g.b.l
+  implements a<ap>
+{
+  public static final b reo;
+  
+  static
+  {
+    AppMethodBeat.i(185651);
+    reo = new b();
+    AppMethodBeat.o(185651);
+  }
+  
+  a$b()
+  {
+    super(0);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar

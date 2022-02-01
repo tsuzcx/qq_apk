@@ -14,27 +14,41 @@ public final class AppGroupCreationContent
   
   static
   {
-    AppMethodBeat.i(97334);
-    CREATOR = new AppGroupCreationContent.1();
-    AppMethodBeat.o(97334);
+    AppMethodBeat.i(8358);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final AppGroupCreationContent createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(8345);
+        paramAnonymousParcel = new AppGroupCreationContent(paramAnonymousParcel);
+        AppMethodBeat.o(8345);
+        return paramAnonymousParcel;
+      }
+      
+      public final AppGroupCreationContent[] newArray(int paramAnonymousInt)
+      {
+        return new AppGroupCreationContent[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(8358);
   }
   
   AppGroupCreationContent(Parcel paramParcel)
   {
-    AppMethodBeat.i(97332);
+    AppMethodBeat.i(8356);
     this.name = paramParcel.readString();
     this.description = paramParcel.readString();
     this.privacy = ((AppGroupCreationContent.AppGroupPrivacy)paramParcel.readSerializable());
-    AppMethodBeat.o(97332);
+    AppMethodBeat.o(8356);
   }
   
-  private AppGroupCreationContent(AppGroupCreationContent.Builder paramBuilder)
+  private AppGroupCreationContent(Builder paramBuilder)
   {
-    AppMethodBeat.i(97331);
-    this.name = AppGroupCreationContent.Builder.access$000(paramBuilder);
-    this.description = AppGroupCreationContent.Builder.access$100(paramBuilder);
-    this.privacy = AppGroupCreationContent.Builder.access$200(paramBuilder);
-    AppMethodBeat.o(97331);
+    AppMethodBeat.i(8355);
+    this.name = paramBuilder.name;
+    this.description = paramBuilder.description;
+    this.privacy = paramBuilder.privacy;
+    AppMethodBeat.o(8355);
   }
   
   public final int describeContents()
@@ -59,16 +73,63 @@ public final class AppGroupCreationContent
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(97333);
+    AppMethodBeat.i(8357);
     paramParcel.writeString(this.name);
     paramParcel.writeString(this.description);
     paramParcel.writeSerializable(this.privacy);
-    AppMethodBeat.o(97333);
+    AppMethodBeat.o(8357);
+  }
+  
+  public static class Builder
+    implements ShareModelBuilder<AppGroupCreationContent, Builder>
+  {
+    private String description;
+    private String name;
+    private AppGroupCreationContent.AppGroupPrivacy privacy;
+    
+    public AppGroupCreationContent build()
+    {
+      AppMethodBeat.i(8351);
+      AppGroupCreationContent localAppGroupCreationContent = new AppGroupCreationContent(this, null);
+      AppMethodBeat.o(8351);
+      return localAppGroupCreationContent;
+    }
+    
+    public Builder readFrom(AppGroupCreationContent paramAppGroupCreationContent)
+    {
+      AppMethodBeat.i(8352);
+      if (paramAppGroupCreationContent == null)
+      {
+        AppMethodBeat.o(8352);
+        return this;
+      }
+      paramAppGroupCreationContent = setName(paramAppGroupCreationContent.getName()).setDescription(paramAppGroupCreationContent.getDescription()).setAppGroupPrivacy(paramAppGroupCreationContent.getAppGroupPrivacy());
+      AppMethodBeat.o(8352);
+      return paramAppGroupCreationContent;
+    }
+    
+    public Builder setAppGroupPrivacy(AppGroupCreationContent.AppGroupPrivacy paramAppGroupPrivacy)
+    {
+      this.privacy = paramAppGroupPrivacy;
+      return this;
+    }
+    
+    public Builder setDescription(String paramString)
+    {
+      this.description = paramString;
+      return this;
+    }
+    
+    public Builder setName(String paramString)
+    {
+      this.name = paramString;
+      return this;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.share.model.AppGroupCreationContent
  * JD-Core Version:    0.7.0.1
  */

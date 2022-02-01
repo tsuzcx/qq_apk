@@ -1,118 +1,93 @@
 package com.tencent.mm.plugin.sns.model;
 
-import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.memory.n;
-import com.tencent.mm.plugin.sns.storage.s;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.sdk.g.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.d;
-import com.tencent.mm.vfs.e;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.btw;
+import com.tencent.mm.protocal.protobuf.btx;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 
 public final class i
-  extends h<String, Integer, Boolean>
+  extends n
+  implements k
 {
-  private n feU;
-  private String key;
-  private String ohe;
-  private int rel;
-  private String rem;
-  private List<bcs> ren;
+  public com.tencent.mm.al.g callback;
+  private final int gIu;
+  private b rr;
   
-  public i(String paramString1, String paramString2, List<bcs> paramList)
+  public i()
   {
-    AppMethodBeat.i(36231);
-    this.key = "";
-    this.feU = null;
-    ag.cpc().rdJ.add(paramString1);
-    this.ohe = paramString2;
-    this.rem = ag.getAccSnsPath();
-    this.rel = ag.cpn();
-    this.ren = paramList;
-    this.key = paramString1;
-    AppMethodBeat.o(36231);
+    AppMethodBeat.i(95561);
+    Object localObject = new b.a();
+    ((b.a)localObject).gUU = new btw();
+    ((b.a)localObject).gUV = new btx();
+    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/oauth_checkgrant";
+    ((b.a)localObject).funcId = 2842;
+    this.gIu = -1216949095;
+    this.rr = ((b.a)localObject).atI();
+    localObject = (btw)this.rr.gUS.gUX;
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afz();
+    ((btw)localObject).DRr = a.getUin();
+    ((btw)localObject).DRd = -1216949095;
+    ad.i("MicroMsg.NetSceneOauthCheckGrant", "init useruin:%d, bizuin:%d", new Object[] { Integer.valueOf(((btw)localObject).DRr), Integer.valueOf(((btw)localObject).DRd) });
+    AppMethodBeat.o(95561);
   }
   
-  private boolean b(String paramString1, String paramString2, List<bcs> paramList)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(36233);
-    ab.i("MicroMsg.MutiImageLoader", "makeMutilMedia " + paramString1 + " " + paramString2);
-    LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = paramList.iterator();
-    int i = 0;
-    String str1;
-    String str3;
-    String str2;
-    if (localIterator.hasNext())
+    AppMethodBeat.i(95562);
+    this.callback = paramg;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(95562);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 2842;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(95563);
+    ad.i("MicroMsg.NetSceneOauthCheckGrant", "onGYNetEnd netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    ae.a locala;
+    if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      bcs localbcs = (bcs)localIterator.next();
-      str1 = com.tencent.mm.plugin.sns.data.i.f(localbcs);
-      str3 = com.tencent.mm.plugin.sns.data.i.e(localbcs);
-      str2 = ao.gl(this.rem, localbcs.Id);
-      if (!e.cN(str2 + str1)) {
-        if (!e.cN(str2 + str3))
-        {
-          paramList = com.tencent.mm.plugin.sns.data.i.l(localbcs);
-          if (e.cN(str2 + paramList)) {
-            break label439;
-          }
-          paramList = com.tencent.mm.plugin.sns.data.i.m(localbcs);
-        }
-      }
-    }
-    label439:
-    for (;;)
-    {
-      s.a(str2, paramList, str3, ag.cpo());
-      s.b(str2, str3, str1, ag.cpn());
-      paramList = com.tencent.mm.plugin.sns.data.i.ZH(str2 + str1);
-      if (paramList == null)
+      paramq = (btx)((b)paramq).gUT.gUX;
+      ad.i("MicroMsg.NetSceneOauthCheckGrant", "onGYNetEnd bizUin:%d, status:%d", new Object[] { Integer.valueOf(this.gIu), Integer.valueOf(paramq.status) });
+      if (this.gIu == -1216949095)
       {
-        e.deleteFile(str2 + str1);
-        ab.e("MicroMsg.MutiImageLoader", "userThumb decode fail !! ".concat(String.valueOf(str1)));
-        AppMethodBeat.o(36233);
-        return false;
-      }
-      localLinkedList.add(paramList);
-      ab.i("MicroMsg.MutiImageLoader", "getbitmap from bm " + paramList + " " + str2 + str1);
-      i += 1;
-      if (i >= 4) {
-        try
-        {
-          paramString1 = ao.gl(this.rem, paramString1);
-          e.um(paramString1);
-          d.a(com.tencent.mm.plugin.sns.data.i.o(localLinkedList, this.rel), 100, Bitmap.CompressFormat.JPEG, paramString1 + paramString2, false);
-          AppMethodBeat.o(36233);
-          return true;
-        }
-        catch (IOException paramString1)
-        {
-          ab.printErrStackTrace("MicroMsg.MutiImageLoader", paramString1, "makeMutilMedia failed: ".concat(String.valueOf(paramString2)), new Object[0]);
-          AppMethodBeat.o(36233);
-          return false;
+        com.tencent.mm.kernel.g.afC();
+        paramArrayOfByte = com.tencent.mm.kernel.g.afB().afk();
+        locala = ae.a.Fit;
+        if (paramq.status != 1) {
+          break label180;
         }
       }
-      break;
     }
-  }
-  
-  public final a cjN()
-  {
-    AppMethodBeat.i(36232);
-    a locala = ag.coQ();
-    AppMethodBeat.o(36232);
-    return locala;
+    label180:
+    for (boolean bool = true;; bool = false)
+    {
+      paramArrayOfByte.set(locala, Boolean.valueOf(bool));
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(95563);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.i
  * JD-Core Version:    0.7.0.1
  */

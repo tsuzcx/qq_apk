@@ -8,28 +8,28 @@ public abstract class cz
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dGh = "loan_jump_url".hashCode();
-  private static final int dGi = "red_dot_index".hashCode();
-  private static final int dGj = "is_show_entry".hashCode();
-  private static final int dGk = "tips".hashCode();
-  private static final int dGl = "is_overdue".hashCode();
-  private static final int dGm = "available_otb".hashCode();
-  private static final int dkj = "title".hashCode();
+  private static final int eKA;
+  private static final int eKB = "appusername".hashCode();
+  private static final int eKG = "step".hashCode();
+  private static final int eme;
+  private static final int exX = "sort".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dGb = true;
-  private boolean dGc = true;
-  private boolean dGd = true;
-  private boolean dGe = true;
-  private boolean dGf = true;
-  private boolean dGg = true;
-  private boolean dkg = true;
-  public String field_available_otb;
-  public int field_is_overdue;
-  public int field_is_show_entry;
-  public String field_loan_jump_url;
-  public int field_red_dot_index;
-  public String field_tips;
-  public String field_title;
+  private boolean eKF = true;
+  private boolean eKx = true;
+  private boolean eKy = true;
+  private boolean emb = true;
+  private boolean exx = true;
+  public String field_appusername;
+  public String field_rankID;
+  public int field_sort;
+  public int field_step;
+  public String field_username;
+  
+  static
+  {
+    eKA = "rankID".hashCode();
+    eme = "username".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -44,30 +44,25 @@ public abstract class cz
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dkj != k) {
-        break label65;
+      if (eKB != k) {
+        break label60;
       }
-      this.field_title = paramCursor.getString(i);
-      this.dkg = true;
+      this.field_appusername = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (dGh == k) {
-        this.field_loan_jump_url = paramCursor.getString(i);
-      } else if (dGi == k) {
-        this.field_red_dot_index = paramCursor.getInt(i);
-      } else if (dGj == k) {
-        this.field_is_show_entry = paramCursor.getInt(i);
-      } else if (dGk == k) {
-        this.field_tips = paramCursor.getString(i);
-      } else if (dGl == k) {
-        this.field_is_overdue = paramCursor.getInt(i);
-      } else if (dGm == k) {
-        this.field_available_otb = paramCursor.getString(i);
+      label60:
+      if (eKA == k) {
+        this.field_rankID = paramCursor.getString(i);
+      } else if (eme == k) {
+        this.field_username = paramCursor.getString(i);
+      } else if (eKG == k) {
+        this.field_step = paramCursor.getInt(i);
+      } else if (exX == k) {
+        this.field_sort = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -77,26 +72,20 @@ public abstract class cz
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dkg) {
-      localContentValues.put("title", this.field_title);
+    if (this.eKy) {
+      localContentValues.put("appusername", this.field_appusername);
     }
-    if (this.dGb) {
-      localContentValues.put("loan_jump_url", this.field_loan_jump_url);
+    if (this.eKx) {
+      localContentValues.put("rankID", this.field_rankID);
     }
-    if (this.dGc) {
-      localContentValues.put("red_dot_index", Integer.valueOf(this.field_red_dot_index));
+    if (this.emb) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.dGd) {
-      localContentValues.put("is_show_entry", Integer.valueOf(this.field_is_show_entry));
+    if (this.eKF) {
+      localContentValues.put("step", Integer.valueOf(this.field_step));
     }
-    if (this.dGe) {
-      localContentValues.put("tips", this.field_tips);
-    }
-    if (this.dGf) {
-      localContentValues.put("is_overdue", Integer.valueOf(this.field_is_overdue));
-    }
-    if (this.dGg) {
-      localContentValues.put("available_otb", this.field_available_otb);
+    if (this.exx) {
+      localContentValues.put("sort", Integer.valueOf(this.field_sort));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -106,7 +95,7 @@ public abstract class cz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.cz
  * JD-Core Version:    0.7.0.1
  */

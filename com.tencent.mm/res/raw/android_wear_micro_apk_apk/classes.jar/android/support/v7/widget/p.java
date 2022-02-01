@@ -12,21 +12,16 @@ import android.view.animation.LinearInterpolator;
 public abstract class p
   extends ai
 {
-  protected final DecelerateInterpolator qf = new DecelerateInterpolator();
-  protected final LinearInterpolator sN = new LinearInterpolator();
-  protected PointF sO;
-  private final float sP = a(paramContext.getResources().getDisplayMetrics());
-  protected int sQ = 0;
-  protected int sR = 0;
+  protected final DecelerateInterpolator rT = new DecelerateInterpolator();
+  protected final LinearInterpolator uD = new LinearInterpolator();
+  protected PointF uE;
+  private final float uF = a(paramContext.getResources().getDisplayMetrics());
+  protected int uG = 0;
+  protected int uH = 0;
   
   public p(Context paramContext) {}
   
-  private int ai(int paramInt)
-  {
-    return (int)Math.ceil(Math.abs(paramInt) * this.sP);
-  }
-  
-  private static int z(int paramInt1, int paramInt2)
+  private static int A(int paramInt1, int paramInt2)
   {
     int i = paramInt1 - paramInt2;
     paramInt2 = i;
@@ -34,6 +29,11 @@ public abstract class p
       paramInt2 = 0;
     }
     return paramInt2;
+  }
+  
+  private int au(int paramInt)
+  {
+    return (int)Math.ceil(Math.abs(paramInt) * this.uF);
   }
   
   protected float a(DisplayMetrics paramDisplayMetrics)
@@ -49,25 +49,25 @@ public abstract class p
     do
     {
       return;
-      this.sQ = z(this.sQ, paramInt1);
-      this.sR = z(this.sR, paramInt2);
-    } while ((this.sQ != 0) || (this.sR != 0));
-    PointF localPointF = ah(dW());
+      this.uG = A(this.uG, paramInt1);
+      this.uH = A(this.uH, paramInt2);
+    } while ((this.uG != 0) || (this.uH != 0));
+    PointF localPointF = at(ek());
     if ((localPointF == null) || ((localPointF.x == 0.0F) && (localPointF.y == 0.0F)))
     {
       Log.e("LinearSmoothScroller", "To support smooth scrolling, you should override \nLayoutManager#computeScrollVectorForPosition.\nFalling back to instant scroll");
-      paramaj.ax(dW());
+      paramaj.aJ(ek());
       stop();
       return;
     }
     double d = Math.sqrt(localPointF.x * localPointF.x + localPointF.y * localPointF.y);
     localPointF.x = ((float)(localPointF.x / d));
     localPointF.y = ((float)(localPointF.y / d));
-    this.sO = localPointF;
-    this.sQ = ((int)(localPointF.x * 10000.0F));
-    this.sR = ((int)(localPointF.y * 10000.0F));
-    paramInt1 = ai(10000);
-    paramaj.a((int)(this.sQ * 1.2F), (int)(this.sR * 1.2F), (int)(paramInt1 * 1.2F), this.sN);
+    this.uE = localPointF;
+    this.uG = ((int)(localPointF.x * 10000.0F));
+    this.uH = ((int)(localPointF.y * 10000.0F));
+    paramInt1 = au(10000);
+    paramaj.a((int)(this.uG * 1.2F), (int)(this.uH * 1.2F), (int)(paramInt1 * 1.2F), this.uD);
   }
   
   protected final void a(View paramView, aj paramaj)
@@ -75,35 +75,35 @@ public abstract class p
     int k = 0;
     ab localab;
     int j;
-    if ((this.sO == null) || (this.sO.x == 0.0F))
+    if ((this.uE == null) || (this.uE.x == 0.0F))
     {
       i = 0;
-      localab = df();
-      if (localab.cP()) {
+      localab = jdMethod_do();
+      if (localab.cX()) {
         break label151;
       }
       j = 0;
       label41:
-      if ((this.sO != null) && (this.sO.y != 0.0F)) {
+      if ((this.uE != null) && (this.uE.y != 0.0F)) {
         break label206;
       }
       i = 0;
       label62:
-      localab = df();
-      if (localab.cQ()) {
+      localab = jdMethod_do();
+      if (localab.cY()) {
         break label228;
       }
     }
     label151:
     RecyclerView.LayoutParams localLayoutParams;
-    for (int i = k;; i = b(ab.as(paramView) - localLayoutParams.topMargin, ab.au(paramView) + localLayoutParams.bottomMargin, localab.getPaddingTop(), localab.getHeight() - localab.getPaddingBottom(), i))
+    for (int i = k;; i = b(ab.az(paramView) - localLayoutParams.topMargin, ab.aB(paramView) + localLayoutParams.bottomMargin, localab.getPaddingTop(), localab.getHeight() - localab.getPaddingBottom(), i))
     {
-      k = (int)Math.ceil(ai((int)Math.sqrt(j * j + i * i)) / 0.3356D);
+      k = (int)Math.ceil(au((int)Math.sqrt(j * j + i * i)) / 0.3356D);
       if (k > 0) {
-        paramaj.a(-j, -i, k, this.qf);
+        paramaj.a(-j, -i, k, this.rT);
       }
       return;
-      if (this.sO.x > 0.0F)
+      if (this.uE.x > 0.0F)
       {
         i = 1;
         break;
@@ -111,10 +111,10 @@ public abstract class p
       i = -1;
       break;
       localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-      j = b(ab.ar(paramView) - localLayoutParams.leftMargin, ab.at(paramView) + localLayoutParams.rightMargin, localab.getPaddingLeft(), localab.getWidth() - localab.getPaddingRight(), i);
+      j = b(ab.ay(paramView) - localLayoutParams.leftMargin, ab.aA(paramView) + localLayoutParams.rightMargin, localab.getPaddingLeft(), localab.getWidth() - localab.getPaddingRight(), i);
       break label41;
       label206:
-      if (this.sO.y > 0.0F)
+      if (this.uE.y > 0.0F)
       {
         i = 1;
         break label62;
@@ -126,7 +126,7 @@ public abstract class p
     }
   }
   
-  public abstract PointF ah(int paramInt);
+  public abstract PointF at(int paramInt);
   
   public int b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
@@ -154,9 +154,9 @@ public abstract class p
   
   protected final void onStop()
   {
-    this.sR = 0;
-    this.sQ = 0;
-    this.sO = null;
+    this.uH = 0;
+    this.uG = 0;
+    this.uE = null;
   }
 }
 

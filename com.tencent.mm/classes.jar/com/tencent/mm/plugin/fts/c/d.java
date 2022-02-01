@@ -5,94 +5,84 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.h;
 import com.tencent.mm.plugin.fts.a.i;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.wcdb.database.SQLiteStatement;
 
 public final class d
   implements i
 {
-  private boolean bRJ;
-  public h mQr;
-  public SQLiteStatement mQs;
-  public SQLiteStatement mQt;
-  private boolean mVI;
-  public SQLiteStatement mVJ;
+  private boolean aJO;
+  private boolean cCu;
+  public h rni;
+  public SQLiteStatement rnk;
   
   public d()
   {
-    AppMethodBeat.i(136835);
-    ab.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "Create %s", new Object[] { "FTS5SOSHistoryStorage" });
-    AppMethodBeat.o(136835);
-  }
-  
-  public final String co(String paramString, int paramInt)
-  {
-    return null;
+    AppMethodBeat.i(52808);
+    ad.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "Create %s", new Object[] { "FTS5SOSHistoryStorage" });
+    AppMethodBeat.o(52808);
   }
   
   public final void create()
   {
-    AppMethodBeat.i(136836);
-    ab.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "OnCreate %s | isCreated =%b", new Object[] { "FTS5SOSHistoryStorage", Boolean.valueOf(this.bRJ) });
+    AppMethodBeat.i(52809);
+    ad.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "OnCreate %s | isCreated =%b", new Object[] { "FTS5SOSHistoryStorage", Boolean.valueOf(this.cCu) });
     int i;
-    if (!this.bRJ)
+    if (!this.cCu)
     {
-      if (((n)g.G(n.class)).isFTSContextReady()) {
+      if (((n)g.ad(n.class)).isFTSContextReady()) {
         break label85;
       }
-      ab.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "Create Fail!");
+      ad.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "Create Fail!");
       i = 0;
       if (i != 0)
       {
-        ab.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "SetCreated");
-        this.bRJ = true;
+        ad.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "SetCreated");
+        this.cCu = true;
       }
     }
-    AppMethodBeat.o(136836);
+    AppMethodBeat.o(52809);
     return;
     label85:
-    this.mQr = ((n)g.G(n.class)).getFTSIndexDB();
-    ab.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "Create Success!");
-    if ((this.mQr.OS("FTS5IndexSOSHistory")) && (this.mQr.OS("FTS5MetaSOSHistory"))) {
-      ab.d("MicroMsg.FTS.FTS5SOSHistoryStorage", "Table Exist, Not Need To Create");
+    this.rni = ((n)g.ad(n.class)).getFTSIndexDB();
+    ad.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "Create Success!");
+    if ((this.rni.aaQ("FTS5MetaSOSHistory")) && (this.rni.fH(-109, 2))) {
+      ad.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "Table Exist, Not Need To Create");
     }
     for (;;)
     {
-      String str1 = String.format("INSERT INTO %s (content) VALUES (?);", new Object[] { "FTS5IndexSOSHistory" });
-      this.mQs = this.mQr.compileStatement(str1);
-      str1 = String.format("INSERT INTO %s (docid, history, timestamp) VALUES (last_insert_rowid(), ?, ?);", new Object[] { "FTS5MetaSOSHistory" });
-      this.mQt = this.mQr.compileStatement(str1);
-      str1 = String.format("UPDATE %s SET timestamp=? WHERE docid = ?", new Object[] { "FTS5MetaSOSHistory" });
-      this.mVJ = this.mQr.compileStatement(str1);
+      String str1 = String.format("INSERT OR REPLACE INTO %s (key, timestamp, content) VALUES (?, ?, ?);", new Object[] { "FTS5MetaSOSHistory" });
+      this.rnk = this.rni.compileStatement(str1);
       i = 1;
       break;
-      ab.d("MicroMsg.FTS.FTS5SOSHistoryStorage", "Table Not Exist, Need To Create");
+      ad.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "Table Not Exist, Need To Create");
       str1 = String.format("DROP TABLE IF EXISTS %s;", new Object[] { "FTS5IndexSOSHistory" });
       String str2 = String.format("DROP TABLE IF EXISTS %s;", new Object[] { "FTS5MetaSOSHistory" });
-      this.mQr.execSQL(str1);
-      this.mQr.execSQL(str2);
-      str1 = String.format("CREATE VIRTUAL TABLE %s USING fts5(content, tokenize='mmSimple', prefix='1 2 3 4 5');", new Object[] { "FTS5IndexSOSHistory" });
-      this.mQr.execSQL(str1);
-      str1 = String.format("CREATE TABLE IF NOT EXISTS %s (docid INTEGER PRIMARY KEY, history TEXT, timestamp INTEGER);", new Object[] { "FTS5MetaSOSHistory" });
-      this.mQr.execSQL(str1);
-      this.mQr.execSQL(String.format("CREATE INDEX IF NOT EXISTS SOSHistory_history ON %s(history);", new Object[] { "FTS5MetaSOSHistory" }));
-      this.mQr.execSQL(String.format("CREATE INDEX IF NOT EXISTS SOSHistory_timestamp ON %s(timestamp);", new Object[] { "FTS5MetaSOSHistory" }));
+      this.rni.execSQL(str1);
+      this.rni.execSQL(str2);
+      str1 = String.format("CREATE TABLE IF NOT EXISTS %s (key TEXT PRIMARY KEY, timestamp INTEGER, content TEXT);", new Object[] { "FTS5MetaSOSHistory" });
+      this.rni.execSQL(str1);
+      this.rni.execSQL(String.format("CREATE INDEX IF NOT EXISTS SOSHistory_timestamp ON %s(timestamp);", new Object[] { "FTS5MetaSOSHistory" }));
+      this.rni.U(-109L, 2L);
     }
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(136837);
-    ab.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "OnDestroy %s | isDestroyed %b | isCreated %b", new Object[] { "FTS5SOSHistoryStorage", Boolean.valueOf(this.mVI), Boolean.valueOf(this.bRJ) });
-    if ((!this.mVI) && (this.bRJ))
+    AppMethodBeat.i(52810);
+    ad.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "OnDestroy %s | isDestroyed %b | isCreated %b", new Object[] { "FTS5SOSHistoryStorage", Boolean.valueOf(this.aJO), Boolean.valueOf(this.cCu) });
+    if ((!this.aJO) && (this.cCu))
     {
-      this.mQs.close();
-      this.mVJ.close();
-      this.mQt.close();
-      ab.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "SetDestroyed");
-      this.mVI = true;
+      this.rnk.close();
+      ad.i("MicroMsg.FTS.FTS5SOSHistoryStorage", "SetDestroyed");
+      this.aJO = true;
     }
-    AppMethodBeat.o(136837);
+    AppMethodBeat.o(52810);
+  }
+  
+  public final String di(String paramString, int paramInt)
+  {
+    return null;
   }
   
   public final String getName()
@@ -112,7 +102,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.c.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,36 @@
 package android.support.v4.app;
 
-import android.animation.Animator;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-final class w
+class w
+  implements Animation.AnimationListener
 {
-  public final Animation db;
-  public final Animator dc;
+  private final Animation.AnimationListener eK;
   
-  private w(Animator paramAnimator)
+  private w(Animation.AnimationListener paramAnimationListener)
   {
-    this.db = null;
-    this.dc = paramAnimator;
-    if (paramAnimator == null) {
-      throw new IllegalStateException("Animator cannot be null");
+    this.eK = paramAnimationListener;
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (this.eK != null) {
+      this.eK.onAnimationEnd(paramAnimation);
     }
   }
   
-  private w(Animation paramAnimation)
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    this.db = paramAnimation;
-    this.dc = null;
-    if (paramAnimation == null) {
-      throw new IllegalStateException("Animation cannot be null");
+    if (this.eK != null) {
+      this.eK.onAnimationRepeat(paramAnimation);
+    }
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (this.eK != null) {
+      this.eK.onAnimationStart(paramAnimation);
     }
   }
 }

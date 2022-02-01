@@ -14,9 +14,9 @@ public final class ExpandedMenuView
   extends ListView
   implements h.b, p, AdapterView.OnItemClickListener
 {
-  private static final int[] VO = { 16842964, 16843049 };
-  private int VP;
-  private h eq;
+  private static final int[] acT = { 16842964, 16843049 };
+  private h XT;
+  private int acU;
   
   public ExpandedMenuView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,29 +27,29 @@ public final class ExpandedMenuView
   {
     super(paramContext, paramAttributeSet);
     setOnItemClickListener(this);
-    paramContext = az.a(paramContext, paramAttributeSet, VO, paramInt, 0);
+    paramContext = az.a(paramContext, paramAttributeSet, acT, paramInt, 0);
     if (paramContext.hasValue(0)) {
       setBackgroundDrawable(paramContext.getDrawable(0));
     }
     if (paramContext.hasValue(1)) {
       setDivider(paramContext.getDrawable(1));
     }
-    paramContext.aoo.recycle();
+    paramContext.avP.recycle();
   }
   
   public final void a(h paramh)
   {
-    this.eq = paramh;
+    this.XT = paramh;
   }
   
   public final boolean f(j paramj)
   {
-    return this.eq.a(paramj, null, 0);
+    return this.XT.a(paramj, null, 0);
   }
   
   public final int getWindowAnimations()
   {
-    return this.VP;
+    return this.acU;
   }
   
   protected final void onDetachedFromWindow()

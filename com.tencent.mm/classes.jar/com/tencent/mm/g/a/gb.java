@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class gb
   extends b
 {
-  public gb.b cuA;
-  public gb.a cuz;
+  public a diZ;
   
   public gb()
   {
@@ -16,12 +15,21 @@ public final class gb
   
   private gb(byte paramByte)
   {
-    AppMethodBeat.i(73666);
-    this.cuz = new gb.a();
-    this.cuA = new gb.b();
-    this.ymq = false;
+    AppMethodBeat.i(116027);
+    this.diZ = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(73666);
+    AppMethodBeat.o(116027);
+  }
+  
+  public static final class a
+  {
+    public int dja;
+    public int djb;
+    public int djc;
+    public int djd;
+    public String fileName;
+    public int result;
   }
 }
 

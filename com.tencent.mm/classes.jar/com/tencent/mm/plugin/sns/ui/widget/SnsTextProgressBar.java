@@ -7,23 +7,23 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.sns.i.a;
 
 public class SnsTextProgressBar
   extends ProgressBar
 {
-  private int ieq;
+  private int EI;
   private Context mContext;
   private Paint mPaint;
   private String mText;
-  private String snr;
-  private int ym;
+  private int mTextSize;
+  private String xYH;
   
   public SnsTextProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(40525);
+    AppMethodBeat.i(100565);
     this.mContext = paramContext;
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, i.a.SnsTextProgressBar, 0, 0);
     try
@@ -34,16 +34,16 @@ public class SnsTextProgressBar
     finally
     {
       paramContext.recycle();
-      AppMethodBeat.o(40525);
+      AppMethodBeat.o(100565);
     }
   }
   
   private void setText(int paramInt)
   {
-    AppMethodBeat.i(40529);
-    this.ym = paramInt;
+    AppMethodBeat.i(100569);
+    this.EI = paramInt;
     this.mText = (String.valueOf(paramInt) + "%");
-    AppMethodBeat.o(40529);
+    AppMethodBeat.o(100569);
   }
   
   /* Error */
@@ -68,10 +68,10 @@ public class SnsTextProgressBar
     //   27: iconst_1
     //   28: invokevirtual 105	android/graphics/Paint:setAntiAlias	(Z)V
     //   31: aload_0
-    //   32: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:snr	Ljava/lang/String;
+    //   32: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:xYH	Ljava/lang/String;
     //   35: ifnull +13 -> 48
     //   38: aload_0
-    //   39: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:snr	Ljava/lang/String;
+    //   39: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:xYH	Ljava/lang/String;
     //   42: invokevirtual 111	java/lang/String:length	()I
     //   45: ifgt +118 -> 163
     //   48: aload_0
@@ -87,7 +87,7 @@ public class SnsTextProgressBar
     //   71: aload_0
     //   72: getfield 101	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:mPaint	Landroid/graphics/Paint;
     //   75: aload_0
-    //   76: getfield 127	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:ieq	I
+    //   76: getfield 127	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:mTextSize	I
     //   79: i2f
     //   80: invokevirtual 130	android/graphics/Paint:setTextSize	(F)V
     //   83: new 132	android/graphics/Rect
@@ -136,7 +136,7 @@ public class SnsTextProgressBar
     //   161: monitorexit
     //   162: return
     //   163: aload_0
-    //   164: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:snr	Ljava/lang/String;
+    //   164: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:xYH	Ljava/lang/String;
     //   167: invokestatic 161	android/graphics/Color:parseColor	(Ljava/lang/String;)I
     //   170: istore 4
     //   172: goto -110 -> 62
@@ -163,27 +163,27 @@ public class SnsTextProgressBar
   
   public void setPaintColor(String paramString)
   {
-    this.snr = paramString;
+    this.xYH = paramString;
   }
   
   public void setProgress(int paramInt)
   {
-    AppMethodBeat.i(40526);
+    AppMethodBeat.i(100566);
     setText(paramInt);
     super.setProgress(paramInt);
-    AppMethodBeat.o(40526);
+    AppMethodBeat.o(100566);
   }
   
   public void setTextSize(int paramInt)
   {
-    AppMethodBeat.i(40528);
-    this.ieq = a.fromDPToPix(this.mContext, paramInt);
-    AppMethodBeat.o(40528);
+    AppMethodBeat.i(100568);
+    this.mTextSize = a.fromDPToPix(this.mContext, paramInt);
+    AppMethodBeat.o(100568);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsTextProgressBar
  * JD-Core Version:    0.7.0.1
  */

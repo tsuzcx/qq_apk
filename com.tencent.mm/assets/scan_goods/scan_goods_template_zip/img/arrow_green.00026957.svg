@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="24px" viewBox="0 0 12 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>3.Icons/Outlined/arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M7.58750873,12.4298916 L6.52684856,13.4905518 L0.747951526,7.71165473 C0.357826227,7.32152943 0.354365786,6.69247179 0.747951526,6.29888605 L6.52684856,0.519989014 L7.58750873,1.58064919 L2.16288753,7.00527039 L7.58750873,12.4298916 Z" id="path-1"></path>
+    </defs>
+    <g id="3.Icons/Outlined/arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(2.000000, 5.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="图标颜色" fill-opacity="1" fill="#07c160" transform="translate(4.020784, 7.005270) rotate(-180.000000) translate(-4.020784, -7.005270) " xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>

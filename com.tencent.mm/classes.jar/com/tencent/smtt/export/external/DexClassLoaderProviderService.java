@@ -19,26 +19,26 @@ public class DexClassLoaderProviderService
   
   public void onCreate()
   {
-    AppMethodBeat.i(63752);
+    AppMethodBeat.i(53132);
     super.onCreate();
     DexClassLoaderProvider.setForceLoadDexFlag(true, this);
-    AppMethodBeat.o(63752);
+    AppMethodBeat.o(53132);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(63754);
+    AppMethodBeat.i(53134);
     System.exit(0);
-    AppMethodBeat.o(63754);
+    AppMethodBeat.o(53134);
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(63753);
+    AppMethodBeat.i(53133);
     new StringBuilder("DexClassLoaderProviderService -- onStartCommand(").append(paramIntent).append(")");
     if (paramIntent == null)
     {
-      AppMethodBeat.o(63753);
+      AppMethodBeat.o(53133);
       return 1;
     }
     try
@@ -46,7 +46,7 @@ public class DexClassLoaderProviderService
       Object localObject1 = paramIntent.getStringArrayListExtra("dex2oat");
       if (localObject1 == null)
       {
-        AppMethodBeat.o(63753);
+        AppMethodBeat.o(53133);
         return 1;
       }
       Object localObject2 = (String)((ArrayList)localObject1).get(0);
@@ -66,13 +66,13 @@ public class DexClassLoaderProviderService
       label164:
       break label164;
     }
-    AppMethodBeat.o(63753);
+    AppMethodBeat.o(53133);
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.export.external.DexClassLoaderProviderService
  * JD-Core Version:    0.7.0.1
  */

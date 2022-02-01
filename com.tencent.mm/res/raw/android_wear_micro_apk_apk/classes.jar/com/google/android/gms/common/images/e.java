@@ -7,8 +7,8 @@ import android.graphics.drawable.BitmapDrawable;
 
 public abstract class e
 {
-  final f IQ;
-  protected int IR;
+  final f KF;
+  protected int KG;
   
   final void a(Context paramContext, Bitmap paramBitmap)
   {
@@ -16,20 +16,20 @@ public abstract class e
       throw new IllegalArgumentException("null reference");
     }
     new BitmapDrawable(paramContext.getResources(), paramBitmap);
-    gT();
+    hd();
   }
   
-  final void f(Context paramContext)
+  final void g(Context paramContext)
   {
-    if (this.IR != 0)
+    if (this.KG != 0)
     {
-      int i = this.IR;
+      int i = this.KG;
       paramContext.getResources().getDrawable(i);
     }
-    gT();
+    hd();
   }
   
-  protected abstract void gT();
+  protected abstract void hd();
 }
 
 

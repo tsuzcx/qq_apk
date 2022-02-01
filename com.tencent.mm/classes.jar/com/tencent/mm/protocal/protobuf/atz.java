@@ -1,103 +1,132 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
+import java.util.LinkedList;
 
 public final class atz
-  extends com.tencent.mm.bv.a
+  extends cld
 {
-  public String cDz;
-  public String url;
-  public String xiQ;
-  public String xiR;
+  public String Dbd;
+  public int DtY;
+  public int ntx;
+  public String nty;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(48863);
+    AppMethodBeat.i(104372);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.xiQ != null) {
-        paramVarArgs.e(1, this.xiQ);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(104372);
+        throw paramVarArgs;
       }
-      if (this.xiR != null) {
-        paramVarArgs.e(2, this.xiR);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.kX(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.url != null) {
-        paramVarArgs.e(3, this.url);
+      paramVarArgs.aR(2, this.ntx);
+      if (this.nty != null) {
+        paramVarArgs.d(3, this.nty);
       }
-      if (this.cDz != null) {
-        paramVarArgs.e(4, this.cDz);
+      if (this.Dbd != null) {
+        paramVarArgs.d(4, this.Dbd);
       }
-      AppMethodBeat.o(48863);
+      paramVarArgs.aR(5, this.DtY);
+      AppMethodBeat.o(104372);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xiQ == null) {
-        break label394;
+      if (this.BaseResponse == null) {
+        break label566;
       }
     }
-    label394:
-    for (int i = e.a.a.b.b.a.f(1, this.xiQ) + 0;; i = 0)
+    label566:
+    for (paramInt = f.a.a.a.kW(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt + f.a.a.b.b.a.bA(2, this.ntx);
       paramInt = i;
-      if (this.xiR != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.xiR);
+      if (this.nty != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.nty);
       }
       i = paramInt;
-      if (this.url != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.url);
+      if (this.Dbd != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.Dbd);
       }
-      paramInt = i;
-      if (this.cDz != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.cDz);
-      }
-      AppMethodBeat.o(48863);
-      return paramInt;
+      paramInt = f.a.a.b.b.a.bA(5, this.DtY);
+      AppMethodBeat.o(104372);
+      return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = cld.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cld.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(48863);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(104372);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(104372);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         atz localatz = (atz)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(48863);
+          AppMethodBeat.o(104372);
           return -1;
         case 1: 
-          localatz.xiQ = locala.CLY.readString();
-          AppMethodBeat.o(48863);
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cld.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localatz.BaseResponse = ((BaseResponse)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(104372);
           return 0;
         case 2: 
-          localatz.xiR = locala.CLY.readString();
-          AppMethodBeat.o(48863);
+          localatz.ntx = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(104372);
           return 0;
         case 3: 
-          localatz.url = locala.CLY.readString();
-          AppMethodBeat.o(48863);
+          localatz.nty = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(104372);
+          return 0;
+        case 4: 
+          localatz.Dbd = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(104372);
           return 0;
         }
-        localatz.cDz = locala.CLY.readString();
-        AppMethodBeat.o(48863);
+        localatz.DtY = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(104372);
         return 0;
       }
-      AppMethodBeat.o(48863);
+      AppMethodBeat.o(104372);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.atz
  * JD-Core Version:    0.7.0.1
  */

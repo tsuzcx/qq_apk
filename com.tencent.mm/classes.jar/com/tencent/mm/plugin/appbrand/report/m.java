@@ -1,48 +1,169 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import a.f.b.j;
-import a.l;
-import android.content.Context;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.r.d;
-import com.tencent.mm.plugin.appbrand.jsapi.r.d.a;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.g.b.a.gi;
+import com.tencent.mm.plugin.appbrand.jsapi.aa.e.a.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/report/ReportUtilKt;", "", "()V", "getNetworkTypeForReport", "", "context", "Landroid/content/Context;", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandVideoCastReportHelper;", "Lcom/tencent/mm/plugin/appbrand/jsapi/xwebplugin/video/cast/IVideoCastReportHelper;", "Lcom/tencent/luggage/base/ICustomize;", "()V", "appId", "", "isInFullScreen", "", "()Z", "setInFullScreen", "(Z)V", "pagePath", "videoPath", "baseStruct", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppVideoCastStruct;", "caseId", "", "doReport", "", "isConnectSuccess", "deviceName", "manufactureName", "deviceCount", "getFullscreenStatusListener", "Lcom/tencent/mm/plugin/appbrand/platform/window/FullscreenStatusListener;", "setAppId", "setPagePath", "setVideoPath", "path", "Companion", "plugin-appbrand-integration_release"})
 public final class m
+  implements com.tencent.luggage.a.b, c
 {
-  public static final m iGe;
+  public static final m.a lpP;
+  private String appId = "";
+  private String dbu = "";
+  boolean lpO;
+  private String videoPath = "";
   
   static
   {
-    AppMethodBeat.i(134943);
-    iGe = new m();
-    AppMethodBeat.o(134943);
+    AppMethodBeat.i(51023);
+    lpP = new m.a((byte)0);
+    AppMethodBeat.o(51023);
   }
   
-  public static final String da(Context paramContext)
+  public final void JU(String paramString)
   {
-    AppMethodBeat.i(134942);
-    Context localContext = paramContext;
-    if (paramContext == null) {
-      localContext = ah.getContext();
-    }
-    paramContext = d.cM(localContext);
-    switch (n.bLo[paramContext.ordinal()])
+    AppMethodBeat.i(51017);
+    k.h(paramString, "pagePath");
+    this.dbu = paramString;
+    AppMethodBeat.o(51017);
+  }
+  
+  public final void a(final boolean paramBoolean, final String paramString1, final String paramString2, final int paramInt)
+  {
+    AppMethodBeat.i(51022);
+    k.h(paramString1, "deviceName");
+    k.h(paramString2, "manufactureName");
+    h.Iye.aP((Runnable)new d(this, paramInt, paramBoolean, paramString1, paramString2));
+    AppMethodBeat.o(51022);
+  }
+  
+  public final com.tencent.mm.plugin.appbrand.s.a.b bfn()
+  {
+    AppMethodBeat.i(175211);
+    com.tencent.mm.plugin.appbrand.s.a.b localb = (com.tencent.mm.plugin.appbrand.s.a.b)new m.e(this);
+    AppMethodBeat.o(175211);
+    return localb;
+  }
+  
+  public final void ea(final int paramInt1, final int paramInt2)
+  {
+    AppMethodBeat.i(51021);
+    h.Iye.aP((Runnable)new c(this, paramInt2, paramInt1));
+    AppMethodBeat.o(51021);
+  }
+  
+  public final void setAppId(String paramString)
+  {
+    AppMethodBeat.i(51018);
+    k.h(paramString, "appId");
+    this.appId = paramString;
+    AppMethodBeat.o(51018);
+  }
+  
+  public final void setVideoPath(String paramString)
+  {
+    AppMethodBeat.i(51016);
+    k.h(paramString, "path");
+    this.videoPath = paramString;
+    AppMethodBeat.o(51016);
+  }
+  
+  public final void sw(final int paramInt)
+  {
+    AppMethodBeat.i(51020);
+    h.Iye.aP((Runnable)new b(this, paramInt));
+    AppMethodBeat.o(51020);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  static final class b
+    implements Runnable
+  {
+    b(m paramm, int paramInt) {}
+    
+    public final void run()
     {
-    default: 
-      paramContext = paramContext.value;
-      j.p(paramContext, "type.value");
-      AppMethodBeat.o(134942);
-      return paramContext;
+      AppMethodBeat.i(51013);
+      try
+      {
+        m.a(this.lpQ, paramInt).aBj();
+        AppMethodBeat.o(51013);
+        return;
+      }
+      catch (Exception localException)
+      {
+        ad.d("AppBrandVideoCastReportHelperWC", "catch: " + localException.getMessage());
+        AppMethodBeat.o(51013);
+      }
     }
-    AppMethodBeat.o(134942);
-    return "offline";
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  static final class c
+    implements Runnable
+  {
+    c(m paramm, int paramInt1, int paramInt2) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(51014);
+      try
+      {
+        gi localgi = m.a(this.lpQ, paramInt2);
+        localgi.kd(paramInt1);
+        localgi.aBj();
+        AppMethodBeat.o(51014);
+        return;
+      }
+      catch (Exception localException)
+      {
+        ad.d("AppBrandVideoCastReportHelperWC", "catch: " + localException.getMessage());
+        AppMethodBeat.o(51014);
+      }
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  static final class d
+    implements Runnable
+  {
+    d(m paramm, int paramInt, boolean paramBoolean, String paramString1, String paramString2) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(51015);
+      try
+      {
+        gi localgi = m.a(this.lpQ, paramInt);
+        if (paramBoolean) {}
+        for (long l = 1L;; l = 0L)
+        {
+          localgi.ke(l);
+          localgi.lZ(paramString1);
+          localgi.ma(paramString2);
+          localgi.aBj();
+          AppMethodBeat.o(51015);
+          return;
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        ad.d("AppBrandVideoCastReportHelperWC", "catch: " + localException.getMessage());
+        AppMethodBeat.o(51015);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.m
  * JD-Core Version:    0.7.0.1
  */

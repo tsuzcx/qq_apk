@@ -12,23 +12,24 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 
 public class WebSearchWebVideoViewControlBar
   extends WebSearchVideoPlayerSeekBar
 {
-  private static int uLy = -1;
-  private ImageView icZ;
-  private ImageView idc;
-  private FrameLayout idd;
-  private ImageView ide;
-  public ap idk;
-  public ap idl;
-  public boolean idm;
-  protected RelativeLayout kRz;
-  private ImageView uLw;
-  private WebSearchWebVideoViewControlBar.a uLx;
+  private static int AIe = -1;
+  private ImageView AIc;
+  private a AId;
+  public av krU;
+  public av ktE;
+  public boolean ktF;
+  private ImageView ktt;
+  private ImageView ktw;
+  private FrameLayout ktx;
+  private ImageView kty;
+  protected RelativeLayout nXS;
   
   public WebSearchWebVideoViewControlBar(Context paramContext)
   {
@@ -45,140 +46,142 @@ public class WebSearchWebVideoViewControlBar
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void aFl()
+  private void bdX()
   {
-    AppMethodBeat.i(73847);
-    if (this.idm)
+    AppMethodBeat.i(110262);
+    if (this.ktF)
     {
-      this.icZ.setImageResource(2131231387);
-      this.icZ.setVisibility(8);
-      this.uLw.setVisibility(0);
-      AppMethodBeat.o(73847);
+      this.ktt.setImageResource(2131690269);
+      this.ktt.setVisibility(8);
+      this.AIc.setVisibility(0);
+      AppMethodBeat.o(110262);
       return;
     }
-    this.uLw.setVisibility(8);
-    this.icZ.setVisibility(0);
-    this.icZ.setImageResource(2130838938);
-    AppMethodBeat.o(73847);
+    this.AIc.setVisibility(8);
+    this.ktt.setVisibility(0);
+    this.ktt.setImageResource(2131232467);
+    AppMethodBeat.o(110262);
   }
   
-  private void aFt()
+  private void bea()
   {
-    AppMethodBeat.i(73853);
-    if (this.idm) {}
-    for (float f = getResources().getDimensionPixelSize(2131428433);; f = getResources().getDimensionPixelSize(2131428431))
+    AppMethodBeat.i(110268);
+    if (this.ktF) {}
+    for (float f = getResources().getDimensionPixelSize(2131166392);; f = getResources().getDimensionPixelSize(2131166390))
     {
-      this.qTG.setTextSize(0, f);
-      this.qTH.setTextSize(0, f);
-      AppMethodBeat.o(73853);
-      return;
-    }
-  }
-  
-  private void aFu()
-  {
-    AppMethodBeat.i(73854);
-    ViewGroup.LayoutParams localLayoutParams = this.kRz.getLayoutParams();
-    if (this.idm) {}
-    for (localLayoutParams.height = getResources().getDimensionPixelSize(2131428432);; localLayoutParams.height = getResources().getDimensionPixelSize(2131428430))
-    {
-      this.kRz.setLayoutParams(localLayoutParams);
-      AppMethodBeat.o(73854);
+      this.kti.setTextSize(0, f);
+      this.ktj.setTextSize(0, f);
+      AppMethodBeat.o(110268);
       return;
     }
   }
   
-  private void cZX()
+  private void beb()
   {
-    AppMethodBeat.i(73841);
-    if (!this.idm)
+    AppMethodBeat.i(110269);
+    ViewGroup.LayoutParams localLayoutParams = this.nXS.getLayoutParams();
+    if (this.ktF) {}
+    for (localLayoutParams.height = getResources().getDimensionPixelSize(2131166391);; localLayoutParams.height = getResources().getDimensionPixelSize(2131166389))
     {
-      if (this.cvm)
+      this.nXS.setLayoutParams(localLayoutParams);
+      AppMethodBeat.o(110269);
+      return;
+    }
+  }
+  
+  private void eiu()
+  {
+    AppMethodBeat.i(110256);
+    if (!this.ktF)
+    {
+      if (this.dkr)
       {
-        this.qTF.setImageResource(2130838926);
-        AppMethodBeat.o(73841);
+        this.kth.setImageResource(2131232464);
+        AppMethodBeat.o(110256);
         return;
       }
-      this.qTF.setImageResource(2130838940);
-      AppMethodBeat.o(73841);
+      this.kth.setImageResource(2131232469);
+      AppMethodBeat.o(110256);
       return;
     }
-    if (this.cvm)
+    if (this.dkr)
     {
-      this.qTF.setImageResource(2130838926);
-      AppMethodBeat.o(73841);
+      this.kth.setImageResource(2131232464);
+      AppMethodBeat.o(110256);
       return;
     }
-    this.qTF.setImageResource(2130838940);
-    AppMethodBeat.o(73841);
+    this.kth.setImageResource(2131232469);
+    AppMethodBeat.o(110256);
   }
   
-  public final void Ef(int paramInt)
+  public final void Zx()
   {
-    AppMethodBeat.i(73858);
-    seek((int)Math.ceil(this.uLx.cZZ() * 1.0D / 1000.0D));
-    AppMethodBeat.o(73858);
+    AppMethodBeat.i(110257);
+    this.kty.setImageResource(2131232472);
+    AppMethodBeat.o(110257);
   }
   
-  public final void NK()
+  public final void bGT()
   {
-    AppMethodBeat.i(73842);
-    this.ide.setImageResource(2130838943);
-    AppMethodBeat.o(73842);
-  }
-  
-  public final void aDh()
-  {
-    AppMethodBeat.i(73851);
-    this.idm = false;
-    aFr();
-    AppMethodBeat.o(73851);
-  }
-  
-  public final void aFn()
-  {
-    AppMethodBeat.i(73849);
-    if (this.idk != null)
-    {
-      this.idk.stopTimer();
-      this.idk.ag(2000L, 2000L);
+    AppMethodBeat.i(110263);
+    if (this.ktE != null) {
+      this.ktE.stopTimer();
     }
-    AppMethodBeat.o(73849);
+    AppMethodBeat.o(110263);
   }
   
-  public final void aFr()
+  public final void bah()
   {
-    AppMethodBeat.i(73852);
-    aFu();
-    aFl();
-    cZX();
-    aFt();
-    AppMethodBeat.o(73852);
+    AppMethodBeat.i(110266);
+    this.ktF = false;
+    bdY();
+    AppMethodBeat.o(110266);
   }
   
-  public final boolean aFx()
+  public final void bcH()
   {
-    AppMethodBeat.i(73855);
-    if (this.uLx == null)
+    AppMethodBeat.i(110264);
+    if (this.ktE != null)
     {
-      ab.i("MicroMsg.FtsWebVideoViewControlBar", "updateMiddleBar mStatePorter null");
-      AppMethodBeat.o(73855);
+      this.ktE.stopTimer();
+      this.ktE.av(2000L, 2000L);
+    }
+    AppMethodBeat.o(110264);
+  }
+  
+  public final void bdY()
+  {
+    AppMethodBeat.i(110267);
+    beb();
+    bdX();
+    eiu();
+    bea();
+    AppMethodBeat.o(110267);
+  }
+  
+  public final boolean bec()
+  {
+    AppMethodBeat.i(110270);
+    if (this.AId == null)
+    {
+      ad.i("MicroMsg.FtsWebVideoViewControlBar", "updateMiddleBar mStatePorter null");
+      AppMethodBeat.o(110270);
       return false;
     }
-    int k = this.uLx.aEV();
-    int m = this.uLx.aEW();
+    int k = this.AId.bcl();
+    int m = this.AId.bcm();
     if ((k < 0) || (m < 0))
     {
-      AppMethodBeat.o(73855);
+      AppMethodBeat.o(110270);
       return false;
     }
-    int j = this.idd.getWidth();
+    int j = this.ktx.getWidth();
     if (j <= 0)
     {
-      AppMethodBeat.o(73855);
+      AppMethodBeat.o(110270);
       return true;
     }
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.idc.getLayoutParams();
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.ktw.getLayoutParams();
     int i = j;
     if (m != 0) {
       i = (int)(j * (1.0F - k / m));
@@ -186,147 +189,164 @@ public class WebSearchWebVideoViewControlBar
     if (i > 0) {}
     for (;;)
     {
-      localLayoutParams.rightMargin = (i + uLy);
-      this.idc.setLayoutParams(localLayoutParams);
+      localLayoutParams.rightMargin = (i + AIe);
+      this.ktw.setLayoutParams(localLayoutParams);
       if ((k < m) || (m == 0)) {
         break;
       }
-      AppMethodBeat.o(73855);
+      AppMethodBeat.o(110270);
       return false;
       i = 0;
     }
-    AppMethodBeat.o(73855);
+    AppMethodBeat.o(110270);
     return true;
   }
   
-  public final void baj()
+  public final void dPU()
   {
-    AppMethodBeat.i(73848);
-    if (this.idk != null) {
-      this.idk.stopTimer();
-    }
-    AppMethodBeat.o(73848);
+    AppMethodBeat.i(110271);
+    this.kth.setVisibility(8);
+    AppMethodBeat.o(110271);
   }
   
-  public final void cKo()
+  public final void dPV()
   {
-    AppMethodBeat.i(73856);
-    this.qTF.setVisibility(8);
-    AppMethodBeat.o(73856);
+    AppMethodBeat.i(110272);
+    this.kth.setVisibility(0);
+    AppMethodBeat.o(110272);
   }
   
-  public final void cKp()
+  public final void eiv()
   {
-    AppMethodBeat.i(73857);
-    this.qTF.setVisibility(0);
-    AppMethodBeat.o(73857);
-  }
-  
-  public final void cZY()
-  {
-    AppMethodBeat.i(73843);
-    this.ide.setImageResource(2130838939);
-    AppMethodBeat.o(73843);
+    AppMethodBeat.i(110258);
+    this.kty.setImageResource(2131232468);
+    AppMethodBeat.o(110258);
   }
   
   public int getBarPointWidth()
   {
-    AppMethodBeat.i(73840);
-    int i = this.qTE.getWidth();
-    AppMethodBeat.o(73840);
+    AppMethodBeat.i(110255);
+    int i = this.ktg.getWidth();
+    AppMethodBeat.o(110255);
     return i;
   }
   
   protected ImageView getExitFullscreenIv()
   {
-    return this.uLw;
+    return this.AIc;
   }
   
   public int getLayoutId()
   {
-    return 2130969681;
+    return 2131494227;
   }
   
   public final void init()
   {
-    AppMethodBeat.i(73838);
+    AppMethodBeat.i(110253);
     super.init();
-    this.icZ = ((ImageView)this.contentView.findViewById(2131821468));
-    this.ide = ((ImageView)this.contentView.findViewById(2131824414));
-    this.idc = ((ImageView)this.contentView.findViewById(2131821462));
-    this.idd = ((FrameLayout)this.contentView.findViewById(2131821460));
-    this.kRz = ((RelativeLayout)findViewById(2131821003));
-    this.uLw = ((ImageView)this.contentView.findViewById(2131821456));
-    if (uLy < 0) {
-      uLy = getResources().getDimensionPixelSize(2131428434);
+    this.ktt = ((ImageView)this.contentView.findViewById(2131300325));
+    this.kty = ((ImageView)this.contentView.findViewById(2131306482));
+    this.ktw = ((ImageView)this.contentView.findViewById(2131303303));
+    this.ktx = ((FrameLayout)this.contentView.findViewById(2131303306));
+    this.nXS = ((RelativeLayout)findViewById(2131304239));
+    this.AIc = ((ImageView)this.contentView.findViewById(2131299599));
+    if (AIe < 0) {
+      AIe = getResources().getDimensionPixelSize(2131166393);
     }
-    AppMethodBeat.o(73838);
+    AppMethodBeat.o(110253);
   }
   
-  public final void oj(boolean paramBoolean)
+  public final void sa(int paramInt)
   {
-    AppMethodBeat.i(73850);
-    if (getVisibility() == 0) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      setVisibility(8);
-      AppMethodBeat.o(73850);
-      return;
-    }
-    setVisibility(0);
-    if (!paramBoolean) {
-      cKp();
-    }
-    for (;;)
-    {
-      if (this.idk == null) {
-        this.idk = new ap(new WebSearchWebVideoViewControlBar.1(this), false);
-      }
-      this.idk.stopTimer();
-      this.idk.ag(2000L, 2000L);
-      AppMethodBeat.o(73850);
-      return;
-      cKo();
-    }
+    AppMethodBeat.i(110273);
+    seek((int)Math.ceil(this.AId.eiw() * 1.0D / 1000.0D));
+    AppMethodBeat.o(110273);
   }
   
   public void setEnterFullScreenBtnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(73845);
-    this.icZ.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(73845);
+    AppMethodBeat.i(110260);
+    this.ktt.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(110260);
   }
   
   public void setExitFullScreenBtnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(73846);
-    this.uLw.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(73846);
+    AppMethodBeat.i(110261);
+    this.AIc.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(110261);
   }
   
   public void setIsPlay(boolean paramBoolean)
   {
-    AppMethodBeat.i(73839);
-    this.cvm = paramBoolean;
-    cZX();
-    AppMethodBeat.o(73839);
+    AppMethodBeat.i(110254);
+    this.dkr = paramBoolean;
+    eiu();
+    AppMethodBeat.o(110254);
   }
   
   public void setMuteBtnOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(73844);
-    this.ide.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(73844);
+    AppMethodBeat.i(110259);
+    this.kty.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(110259);
   }
   
-  public void setStatePorter(WebSearchWebVideoViewControlBar.a parama)
+  public void setStatePorter(a parama)
   {
-    this.uLx = parama;
+    this.AId = parama;
+  }
+  
+  public final void td(boolean paramBoolean)
+  {
+    AppMethodBeat.i(110265);
+    if (getVisibility() == 0) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      setVisibility(8);
+      AppMethodBeat.o(110265);
+      return;
+    }
+    setVisibility(0);
+    if (!paramBoolean) {
+      dPV();
+    }
+    for (;;)
+    {
+      if (this.ktE == null) {
+        this.ktE = new av(new av.a()
+        {
+          public final boolean onTimerExpired()
+          {
+            AppMethodBeat.i(110251);
+            WebSearchWebVideoViewControlBar.this.setVisibility(8);
+            WebSearchWebVideoViewControlBar.a(WebSearchWebVideoViewControlBar.this).stopTimer();
+            AppMethodBeat.o(110251);
+            return false;
+          }
+        }, false);
+      }
+      this.ktE.stopTimer();
+      this.ktE.av(2000L, 2000L);
+      AppMethodBeat.o(110265);
+      return;
+      dPU();
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract int bcl();
+    
+    public abstract int bcm();
+    
+    public abstract int eiw();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.ui.WebSearchWebVideoViewControlBar
  * JD-Core Version:    0.7.0.1
  */

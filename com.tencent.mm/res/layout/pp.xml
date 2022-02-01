@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/b1b" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@null" android:paddingLeft="@dimen/ha" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/ha" android:paddingBottom="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/i9"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:textColor="@color/y4" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/gam" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" style="@style/m3" />
+        <TextView android:textSize="@dimen/jv" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/g_w" android:layout_width="fill_parent" android:layout_height="0.0dip" android:singleLine="true" android:layout_weight="1.0" style="@style/m2" />
+    </LinearLayout>
+    <Button android:layout_gravity="center|right" android:id="@id/ben" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rr" style="@style/o8" />
+</LinearLayout>

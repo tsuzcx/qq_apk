@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="80.0dip" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/a3w" />
+        <View android:id="@id/frs" android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginStart="52.0dip" />
+    </LinearLayout>
 </FrameLayout>

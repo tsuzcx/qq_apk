@@ -29,23 +29,23 @@ public class IssueStorage
   
   static
   {
-    AppMethodBeat.i(94077);
+    AppMethodBeat.i(52921);
     DB_VERSION_1_CREATE_SQL = String.format("CREATE TABLE IF NOT EXISTS %s (%s TEXT PRIMARY KEY NOT NULL, %s TEXT NOT NULL, %s INTEGER, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s TEXT, %s INTEGER)", new Object[] { "Issue", "id", "dbPath", "level", "desc", "detail", "advice", "createTime", "extInfo", "sqlTimeCost" });
     DB_VERSION_1_CREATE_INDEX = new String[] { String.format("CREATE INDEX IF NOT EXISTS %s ON %s(%s)", new Object[] { "DbLabel_Index", "Issue", "dbPath" }), String.format("CREATE INDEX IF NOT EXISTS %s ON %s(%s,%s)", new Object[] { "DbLabel_CreateTime_Index", "Issue", "dbPath", "createTime" }) };
-    AppMethodBeat.o(94077);
+    AppMethodBeat.o(52921);
   }
   
   public static void clearData()
   {
-    AppMethodBeat.i(94074);
+    AppMethodBeat.i(52918);
     String str = String.format("delete from %s", new Object[] { "Issue" });
     SQLiteLintDbHelper.INSTANCE.getDatabase().execSQL(str);
-    AppMethodBeat.o(94074);
+    AppMethodBeat.o(52918);
   }
   
   private static boolean doInsertIssue(SQLiteLintIssue paramSQLiteLintIssue)
   {
-    AppMethodBeat.i(94070);
+    AppMethodBeat.i(52914);
     SQLiteStatement localSQLiteStatement = getInsertAllSqlStatement();
     localSQLiteStatement.bindString(1, paramSQLiteLintIssue.id);
     localSQLiteStatement.bindString(2, paramSQLiteLintIssue.dbPath);
@@ -61,16 +61,16 @@ public class IssueStorage
     if (l == -1L)
     {
       SLog.e("SQLiteLint.IssueStorage", "addIssue failed", new Object[0]);
-      AppMethodBeat.o(94070);
+      AppMethodBeat.o(52914);
       return false;
     }
-    AppMethodBeat.o(94070);
+    AppMethodBeat.o(52914);
     return true;
   }
   
   public static List<String> getDbPathList()
   {
-    AppMethodBeat.i(94072);
+    AppMethodBeat.i(52916);
     ArrayList localArrayList = new ArrayList();
     Object localObject = String.format("SELECT DISTINCT(%s) FROM %s", new Object[] { "dbPath", "Issue" });
     localObject = SQLiteLintDbHelper.INSTANCE.getDatabase().rawQuery((String)localObject, null);
@@ -82,32 +82,32 @@ public class IssueStorage
     finally
     {
       ((Cursor)localObject).close();
-      AppMethodBeat.o(94072);
+      AppMethodBeat.o(52916);
     }
   }
   
   private static SQLiteStatement getInsertAllSqlStatement()
   {
-    AppMethodBeat.i(94075);
+    AppMethodBeat.i(52919);
     if (sInsertAllSqlStatement == null) {
       sInsertAllSqlStatement = SQLiteLintDbHelper.INSTANCE.getDatabase().compileStatement(String.format("INSERT INTO %s VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)", new Object[] { "Issue" }));
     }
     SQLiteStatement localSQLiteStatement = sInsertAllSqlStatement;
-    AppMethodBeat.o(94075);
+    AppMethodBeat.o(52919);
     return localSQLiteStatement;
   }
   
   public static List<SQLiteLintIssue> getIssueListByDb(String paramString)
   {
-    AppMethodBeat.i(94071);
+    AppMethodBeat.i(52915);
     ArrayList localArrayList = new ArrayList();
     if (SQLiteLintUtil.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(94071);
+      AppMethodBeat.o(52915);
       return localArrayList;
     }
-    paramString = String.format("SELECT * FROM %s where %s='%s' ORDER BY %s DESC", new Object[] { "Issue", "dbPath", paramString, "createTime" });
-    paramString = SQLiteLintDbHelper.INSTANCE.getDatabase().rawQuery(paramString, null);
+    String str = String.format("SELECT * FROM %s where %s=? ORDER BY %s DESC", new Object[] { "Issue", "dbPath", "createTime" });
+    paramString = SQLiteLintDbHelper.INSTANCE.getDatabase().rawQuery(str, new String[] { paramString });
     try
     {
       if (paramString.moveToNext()) {}
@@ -116,13 +116,13 @@ public class IssueStorage
     finally
     {
       paramString.close();
-      AppMethodBeat.o(94071);
+      AppMethodBeat.o(52915);
     }
   }
   
   public static long getLastRowId()
   {
-    AppMethodBeat.i(94073);
+    AppMethodBeat.i(52917);
     Object localObject1 = String.format("SELECT rowid FROM %s order by rowid desc limit 1", new Object[] { "Issue" });
     localObject1 = SQLiteLintDbHelper.INSTANCE.getDatabase().rawQuery((String)localObject1, null);
     if (localObject1 != null) {}
@@ -139,7 +139,7 @@ public class IssueStorage
     finally
     {
       ((Cursor)localObject1).close();
-      AppMethodBeat.o(94073);
+      AppMethodBeat.o(52917);
     }
   }
   
@@ -212,7 +212,7 @@ public class IssueStorage
   
   private static SQLiteLintIssue issueConvertFromCursor(Cursor paramCursor)
   {
-    AppMethodBeat.i(94076);
+    AppMethodBeat.i(52920);
     SQLiteLintIssue localSQLiteLintIssue = new SQLiteLintIssue();
     localSQLiteLintIssue.id = paramCursor.getString(paramCursor.getColumnIndex("id"));
     localSQLiteLintIssue.dbPath = paramCursor.getString(paramCursor.getColumnIndex("dbPath"));
@@ -223,27 +223,27 @@ public class IssueStorage
     localSQLiteLintIssue.createTime = paramCursor.getLong(paramCursor.getColumnIndex("createTime"));
     localSQLiteLintIssue.extInfo = paramCursor.getString(paramCursor.getColumnIndex("extInfo"));
     localSQLiteLintIssue.sqlTimeCost = paramCursor.getLong(paramCursor.getColumnIndex("sqlTimeCost"));
-    AppMethodBeat.o(94076);
+    AppMethodBeat.o(52920);
     return localSQLiteLintIssue;
   }
   
   public static boolean saveIssue(SQLiteLintIssue paramSQLiteLintIssue)
   {
-    AppMethodBeat.i(94067);
+    AppMethodBeat.i(52911);
     if (hasIssue(paramSQLiteLintIssue.id))
     {
       SLog.i("SQLiteLint.IssueStorage", "saveIssue already recorded id=%s", new Object[] { paramSQLiteLintIssue.id });
-      AppMethodBeat.o(94067);
+      AppMethodBeat.o(52911);
       return false;
     }
     boolean bool = doInsertIssue(paramSQLiteLintIssue);
-    AppMethodBeat.o(94067);
+    AppMethodBeat.o(52911);
     return bool;
   }
   
   public static void saveIssues(List<SQLiteLintIssue> paramList)
   {
-    AppMethodBeat.i(94068);
+    AppMethodBeat.i(52912);
     SQLiteLintDbHelper.INSTANCE.getDatabase().beginTransaction();
     int i = 0;
     try
@@ -259,13 +259,13 @@ public class IssueStorage
     finally
     {
       SQLiteLintDbHelper.INSTANCE.getDatabase().endTransaction();
-      AppMethodBeat.o(94068);
+      AppMethodBeat.o(52912);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.persistence.IssueStorage
  * JD-Core Version:    0.7.0.1
  */

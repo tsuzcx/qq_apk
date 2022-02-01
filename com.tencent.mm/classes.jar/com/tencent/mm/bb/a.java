@@ -1,113 +1,122 @@
 package com.tencent.mm.bb;
 
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.aor;
-import com.tencent.mm.protocal.protobuf.aos;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.plugin.messenger.foundation.a.a.g.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
+import com.tencent.mm.protocal.protobuf.bxa;
+import com.tencent.mm.protocal.protobuf.bxb;
+import com.tencent.mm.protocal.protobuf.bxc;
+import com.tencent.mm.protocal.protobuf.xd;
+import com.tencent.mm.protocal.protobuf.xe;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class a
-  extends m
-  implements k
+  implements com.tencent.mm.plugin.messenger.foundation.a.a.g
 {
-  private f callback;
-  public String fMS;
-  public String fMT;
-  public byte[] fMU;
-  private final b rr;
+  SparseArray<LinkedList<g.a>> hop;
   
   public a()
   {
-    this(r.Zn(), bo.g((Integer)g.RL().Ru().get(66561, null)), 0);
-    AppMethodBeat.i(78520);
-    AppMethodBeat.o(78520);
+    AppMethodBeat.i(116837);
+    this.hop = new SparseArray();
+    AppMethodBeat.o(116837);
   }
   
-  public a(String paramString, int paramInt)
+  public final void a(int paramInt, g.a parama)
   {
-    this(paramString, paramInt, 0);
-  }
-  
-  public a(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(78521);
-    this.callback = null;
-    this.fMS = null;
-    this.fMT = null;
-    this.fMU = null;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new aor();
-    ((b.a)localObject).fsY = new aos();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getqrcode";
-    ((b.a)localObject).funcId = 168;
-    ((b.a)localObject).reqCmdId = 67;
-    ((b.a)localObject).respCmdId = 1000000067;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (aor)this.rr.fsV.fta;
-    ((aor)localObject).wOT = aa.wA(paramString);
-    ((aor)localObject).xez = paramInt1;
-    ((aor)localObject).OpCode = paramInt2;
-    ab.i("MicroMsg.NetSceneGetQRCode", "username:%s, style:%d, opcode:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(78521);
-  }
-  
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
-  {
-    AppMethodBeat.i(78522);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(78522);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 168;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(78523);
-    ab.d("MicroMsg.NetSceneGetQRCode", "onGYNetEnd errType:" + paramInt2 + " errCode" + paramInt3);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      paramArrayOfByte = (aor)this.rr.fsV.fta;
-      paramq = (aos)this.rr.fsW.fta;
-      paramArrayOfByte = aa.a(paramArrayOfByte.wOT);
-      this.fMU = aa.a(paramq.xeA, new byte[0]);
-      this.fMS = paramq.xeB;
-      ab.i("MicroMsg.NetSceneGetQRCode", "expiredWording:%s, revokeId:%s, revokeWording:%s", new Object[] { this.fMS, paramq.xeC, paramq.xeD });
-      if (r.Zn().equals(paramArrayOfByte))
-      {
-        paramArrayOfByte = paramq.xeC;
-        String str = (String)g.RL().Ru().get(66563, "");
-        if ((paramArrayOfByte != null) && (!str.equals(paramArrayOfByte)))
-        {
-          g.RL().Ru().set(66563, paramArrayOfByte);
-          this.fMT = paramq.xeD;
-        }
-        g.RL().Ru().set(66561, Integer.valueOf(paramq.xez));
-      }
+    AppMethodBeat.i(116839);
+    if (this.hop.indexOfKey(paramInt) < 0) {
+      this.hop.put(paramInt, new LinkedList());
     }
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(78523);
+    ((LinkedList)this.hop.get(paramInt)).add(parama);
+    AppMethodBeat.o(116839);
+  }
+  
+  public final void a(final j.b paramb)
+  {
+    AppMethodBeat.i(116838);
+    if ((com.tencent.mm.kernel.g.afA().gcy == null) || (com.tencent.mm.kernel.g.afA().gcy.gVH == null))
+    {
+      AppMethodBeat.o(116838);
+      return;
+    }
+    Object localObject = new ArrayList(1);
+    ((ArrayList)localObject).add(paramb);
+    localObject = new b((List)localObject);
+    com.tencent.mm.kernel.g.afC();
+    ((b)localObject).doScene(com.tencent.mm.kernel.g.afA().gcy.gVH, new com.tencent.mm.al.g()
+    {
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+      {
+        paramAnonymousInt1 = -1;
+        AppMethodBeat.i(116836);
+        if (paramAnonymousn.getType() != 681)
+        {
+          AppMethodBeat.o(116836);
+          return;
+        }
+        if (((b)paramAnonymousn).hos == null)
+        {
+          AppMethodBeat.o(116836);
+          return;
+        }
+        ((b)paramAnonymousn).hos.getReqObjImp();
+        paramAnonymousString = ((b.c)((b)paramAnonymousn).hos.getRespObj()).hox;
+        paramAnonymousInt2 = ((xd)((b.b)((b)paramAnonymousn).hos.getReqObj()).how.DQS.mAL.getLast()).CYY;
+        if ((paramAnonymousString == null) || (paramAnonymousString.DTv == null) || (paramAnonymousString.DTv.DpH == null))
+        {
+          paramAnonymousString = (List)a.this.hop.get(paramAnonymousInt2);
+          if (paramAnonymousString != null)
+          {
+            paramAnonymousString = paramAnonymousString.iterator();
+            while (paramAnonymousString.hasNext()) {
+              ((g.a)paramAnonymousString.next()).a(-1, paramb);
+            }
+          }
+          AppMethodBeat.o(116836);
+          return;
+        }
+        if (paramAnonymousString.DTv.DpH.size() > 0) {
+          paramAnonymousInt1 = ((Integer)paramAnonymousString.DTv.DpH.getLast()).intValue();
+        }
+        if (paramAnonymousString.DTv.DTw.size() > 0) {
+          paramAnonymousString.DTv.DTw.getLast();
+        }
+        if (paramAnonymousString.DTv.DTw.size() > 0) {
+          paramAnonymousString.DTv.DTw.getLast();
+        }
+        paramAnonymousString = (List)a.this.hop.get(paramAnonymousInt2);
+        if (paramAnonymousString != null)
+        {
+          paramAnonymousString = paramAnonymousString.iterator();
+          while (paramAnonymousString.hasNext()) {
+            ((g.a)paramAnonymousString.next()).a(paramAnonymousInt1, paramb);
+          }
+        }
+        AppMethodBeat.o(116836);
+      }
+    });
+    AppMethodBeat.o(116838);
+  }
+  
+  public final void b(int paramInt, g.a parama)
+  {
+    AppMethodBeat.i(116840);
+    if (this.hop.indexOfKey(paramInt) >= 0) {
+      ((LinkedList)this.hop.get(paramInt)).remove(parama);
+    }
+    AppMethodBeat.o(116840);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.bb.a
  * JD-Core Version:    0.7.0.1
  */

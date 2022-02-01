@@ -4,18 +4,18 @@ import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.remittance.ui.RemittanceAdapterUI;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.wallet_core.d;
 
 public class a
-  extends c
+  extends d
 {
-  public c a(Activity paramActivity, Bundle paramBundle)
+  public d a(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(44422);
-    ab.d("MicroMsg.RemittanceProcess", "start Process : RemittanceProcess");
+    AppMethodBeat.i(67333);
+    ad.d("MicroMsg.RemittanceProcess", "start Process : RemittanceProcess");
     b(paramActivity, RemittanceAdapterUI.class, paramBundle);
-    AppMethodBeat.o(44422);
+    AppMethodBeat.o(67333);
     return this;
   }
   
@@ -23,14 +23,9 @@ public class a
   
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(44423);
-    super.aO(paramActivity);
-    AppMethodBeat.o(44423);
-  }
-  
-  public final String bzC()
-  {
-    return "RemittanceProcess";
+    AppMethodBeat.i(67334);
+    super.bq(paramActivity);
+    AppMethodBeat.o(67334);
   }
   
   public final boolean c(Activity paramActivity, Bundle paramBundle)
@@ -38,16 +33,21 @@ public class a
     return false;
   }
   
-  public final void e(Activity paramActivity, int paramInt)
+  public final String cuB()
   {
-    AppMethodBeat.i(44424);
-    B(paramActivity);
-    AppMethodBeat.o(44424);
+    return "RemittanceProcess";
+  }
+  
+  public final void g(Activity paramActivity, int paramInt)
+  {
+    AppMethodBeat.i(67335);
+    P(paramActivity);
+    AppMethodBeat.o(67335);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.a.a
  * JD-Core Version:    0.7.0.1
  */

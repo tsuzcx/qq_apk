@@ -30,27 +30,27 @@ public final class b
   extends e
   implements DialogInterface
 {
-  public final AlertController Or = new AlertController(getContext(), this, getWindow());
+  final AlertController Vw = new AlertController(getContext(), this, getWindow());
   
   protected b(Context paramContext, int paramInt)
   {
-    super(paramContext, n(paramContext, paramInt));
+    super(paramContext, o(paramContext, paramInt));
   }
   
-  static int n(Context paramContext, int paramInt)
+  static int o(Context paramContext, int paramInt)
   {
     if ((paramInt >>> 24 & 0xFF) > 0) {
       return paramInt;
     }
     TypedValue localTypedValue = new TypedValue();
-    paramContext.getTheme().resolveAttribute(2130772219, localTypedValue, true);
+    paramContext.getTheme().resolveAttribute(2130968644, localTypedValue, true);
     return localTypedValue.resourceId;
   }
   
   protected final void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    AlertController localAlertController = this.Or;
+    AlertController localAlertController = this.Vw;
     int i;
     Object localObject4;
     Object localObject3;
@@ -70,15 +70,15 @@ public final class b
     label577:
     label583:
     int n;
-    if ((localAlertController.NB != 0) && (localAlertController.NH == 1))
+    if ((localAlertController.UF != 0) && (localAlertController.UL == 1))
     {
-      i = localAlertController.NB;
-      localAlertController.MZ.setContentView(i);
-      paramBundle = localAlertController.Na.findViewById(2131820932);
-      localObject4 = paramBundle.findViewById(2131820941);
-      localObject3 = paramBundle.findViewById(2131820933);
-      localObject2 = paramBundle.findViewById(2131820930);
-      localObject1 = (ViewGroup)paramBundle.findViewById(2131820939);
+      i = localAlertController.UF;
+      localAlertController.Ua.setContentView(i);
+      paramBundle = localAlertController.Ub.findViewById(2131303138);
+      localObject4 = paramBundle.findViewById(2131305990);
+      localObject3 = paramBundle.findViewById(2131298742);
+      localObject2 = paramBundle.findViewById(2131297633);
+      localObject1 = (ViewGroup)paramBundle.findViewById(2131298901);
       if (localAlertController.mView == null) {
         break label1011;
       }
@@ -87,59 +87,59 @@ public final class b
         break label1047;
       }
       i = 1;
-      if ((i == 0) || (!AlertController.aS(paramBundle))) {
-        localAlertController.Na.setFlags(131072, 131072);
+      if ((i == 0) || (!AlertController.aY(paramBundle))) {
+        localAlertController.Ub.setFlags(131072, 131072);
       }
       if (i == 0) {
         break label1052;
       }
-      Object localObject5 = (FrameLayout)localAlertController.Na.findViewById(2131820940);
+      Object localObject5 = (FrameLayout)localAlertController.Ub.findViewById(2131298900);
       ((FrameLayout)localObject5).addView(paramBundle, new ViewGroup.LayoutParams(-1, -1));
-      if (localAlertController.Ni) {
-        ((FrameLayout)localObject5).setPadding(localAlertController.Ne, localAlertController.Nf, localAlertController.Ng, localAlertController.Nh);
+      if (localAlertController.Uj) {
+        ((FrameLayout)localObject5).setPadding(localAlertController.Uf, localAlertController.Ug, localAlertController.Uh, localAlertController.Ui);
       }
       if (localAlertController.mListView != null) {
         ((LinearLayoutCompat.LayoutParams)((ViewGroup)localObject1).getLayoutParams()).weight = 0.0F;
       }
-      View localView = ((ViewGroup)localObject1).findViewById(2131820941);
-      localObject5 = ((ViewGroup)localObject1).findViewById(2131820933);
-      paramBundle = ((ViewGroup)localObject1).findViewById(2131820930);
-      localObject4 = AlertController.c(localView, (View)localObject4);
-      localObject3 = AlertController.c((View)localObject5, (View)localObject3);
-      paramBundle = AlertController.c(paramBundle, (View)localObject2);
-      localAlertController.Nv = ((NestedScrollView)localAlertController.Na.findViewById(2131820935));
-      localAlertController.Nv.setFocusable(false);
-      localAlertController.Nv.setNestedScrollingEnabled(false);
-      localAlertController.fc = ((TextView)((ViewGroup)localObject3).findViewById(16908299));
-      if (localAlertController.fc != null)
+      View localView = ((ViewGroup)localObject1).findViewById(2131305990);
+      localObject5 = ((ViewGroup)localObject1).findViewById(2131298742);
+      paramBundle = ((ViewGroup)localObject1).findViewById(2131297633);
+      localObject4 = AlertController.d(localView, (View)localObject4);
+      localObject3 = AlertController.d((View)localObject5, (View)localObject3);
+      paramBundle = AlertController.d(paramBundle, (View)localObject2);
+      localAlertController.Uw = ((NestedScrollView)localAlertController.Ub.findViewById(2131304370));
+      localAlertController.Uw.setFocusable(false);
+      localAlertController.Uw.setNestedScrollingEnabled(false);
+      localAlertController.UB = ((TextView)((ViewGroup)localObject3).findViewById(16908299));
+      if (localAlertController.UB != null)
       {
-        if (localAlertController.Nc == null) {
+        if (localAlertController.Ud == null) {
           break label1062;
         }
-        localAlertController.fc.setText(localAlertController.Nc);
+        localAlertController.UB.setText(localAlertController.Ud);
       }
       i = 0;
-      localAlertController.Nj = ((Button)paramBundle.findViewById(16908313));
-      localAlertController.Nj.setOnClickListener(localAlertController.NI);
-      if ((!TextUtils.isEmpty(localAlertController.Nk)) || (localAlertController.Nm != null)) {
+      localAlertController.Uk = ((Button)paramBundle.findViewById(16908313));
+      localAlertController.Uk.setOnClickListener(localAlertController.UM);
+      if ((!TextUtils.isEmpty(localAlertController.Ul)) || (localAlertController.Un != null)) {
         break label1156;
       }
-      localAlertController.Nj.setVisibility(8);
-      localAlertController.Nn = ((Button)paramBundle.findViewById(16908314));
-      localAlertController.Nn.setOnClickListener(localAlertController.NI);
-      if ((!TextUtils.isEmpty(localAlertController.No)) || (localAlertController.Nq != null)) {
+      localAlertController.Uk.setVisibility(8);
+      localAlertController.Uo = ((Button)paramBundle.findViewById(16908314));
+      localAlertController.Uo.setOnClickListener(localAlertController.UM);
+      if ((!TextUtils.isEmpty(localAlertController.Up)) || (localAlertController.Ur != null)) {
         break label1227;
       }
-      localAlertController.Nn.setVisibility(8);
-      localAlertController.Nr = ((Button)paramBundle.findViewById(16908315));
-      localAlertController.Nr.setOnClickListener(localAlertController.NI);
-      if ((!TextUtils.isEmpty(localAlertController.Ns)) || (localAlertController.Nu != null)) {
+      localAlertController.Uo.setVisibility(8);
+      localAlertController.Us = ((Button)paramBundle.findViewById(16908315));
+      localAlertController.Us.setOnClickListener(localAlertController.UM);
+      if ((!TextUtils.isEmpty(localAlertController.Ut)) || (localAlertController.Uv != null)) {
         break label1300;
       }
-      localAlertController.Nr.setVisibility(8);
+      localAlertController.Us.setVisibility(8);
       localObject2 = localAlertController.mContext;
       localObject5 = new TypedValue();
-      ((Context)localObject2).getTheme().resolveAttribute(2130772218, (TypedValue)localObject5, true);
+      ((Context)localObject2).getTheme().resolveAttribute(2130968642, (TypedValue)localObject5, true);
       if (((TypedValue)localObject5).data == 0) {
         break label1373;
       }
@@ -149,7 +149,7 @@ public final class b
         if (i != 1) {
           break label1378;
         }
-        AlertController.a(localAlertController.Nj);
+        AlertController.a(localAlertController.Uk);
       }
       if (i == 0) {
         break label1410;
@@ -158,12 +158,12 @@ public final class b
       if (i == 0) {
         paramBundle.setVisibility(8);
       }
-      if (localAlertController.Ny == null) {
+      if (localAlertController.UC == null) {
         break label1415;
       }
       localObject2 = new ViewGroup.LayoutParams(-1, -2);
-      ((ViewGroup)localObject4).addView(localAlertController.Ny, 0, (ViewGroup.LayoutParams)localObject2);
-      localAlertController.Na.findViewById(2131820942).setVisibility(8);
+      ((ViewGroup)localObject4).addView(localAlertController.UC, 0, (ViewGroup.LayoutParams)localObject2);
+      localAlertController.Ub.findViewById(2131305944).setVisibility(8);
       label642:
       if ((localObject1 == null) || (((ViewGroup)localObject1).getVisibility() == 8)) {
         break label1633;
@@ -182,7 +182,7 @@ public final class b
       label692:
       if ((j == 0) && (localObject3 != null))
       {
-        paramBundle = ((ViewGroup)localObject3).findViewById(2131820937);
+        paramBundle = ((ViewGroup)localObject3).findViewById(2131305713);
         if (paramBundle != null) {
           paramBundle.setVisibility(0);
         }
@@ -190,12 +190,12 @@ public final class b
       if (k == 0) {
         break label1649;
       }
-      if (localAlertController.Nv != null) {
-        localAlertController.Nv.setClipToPadding(true);
+      if (localAlertController.Uw != null) {
+        localAlertController.Uw.setClipToPadding(true);
       }
       paramBundle = null;
-      if ((localAlertController.Nc != null) || (localAlertController.mListView != null)) {
-        paramBundle = ((ViewGroup)localObject4).findViewById(2131820944);
+      if ((localAlertController.Ud != null) || (localAlertController.mListView != null)) {
+        paramBundle = ((ViewGroup)localObject4).findViewById(2131305903);
       }
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
@@ -241,12 +241,12 @@ public final class b
           j = 2;
           label886:
           i |= j;
-          localObject1 = localAlertController.Na.findViewById(2131820934);
-          localObject2 = localAlertController.Na.findViewById(2131820938);
+          localObject1 = localAlertController.Ub.findViewById(2131304369);
+          localObject2 = localAlertController.Ub.findViewById(2131304368);
           if (Build.VERSION.SDK_INT < 23) {
             break label1712;
           }
-          t.u(paramBundle, i);
+          t.w(paramBundle, i);
           if (localObject1 != null) {
             ((ViewGroup)localObject3).removeView((View)localObject1);
           }
@@ -259,10 +259,10 @@ public final class b
     for (;;)
     {
       paramBundle = localAlertController.mListView;
-      if ((paramBundle != null) && (localAlertController.xw != null))
+      if ((paramBundle != null) && (localAlertController.DP != null))
       {
-        paramBundle.setAdapter(localAlertController.xw);
-        i = localAlertController.Nz;
+        paramBundle.setAdapter(localAlertController.DP);
+        i = localAlertController.UD;
         if (i >= 0)
         {
           paramBundle.setItemChecked(i, true);
@@ -270,12 +270,12 @@ public final class b
         }
       }
       return;
-      i = localAlertController.NA;
+      i = localAlertController.UE;
       break;
       label1011:
-      if (localAlertController.Nd != 0)
+      if (localAlertController.Ue != 0)
       {
-        paramBundle = LayoutInflater.from(localAlertController.mContext).inflate(localAlertController.Nd, (ViewGroup)localObject1, false);
+        paramBundle = LayoutInflater.from(localAlertController.mContext).inflate(localAlertController.Ue, (ViewGroup)localObject1, false);
         break label103;
       }
       paramBundle = null;
@@ -287,12 +287,12 @@ public final class b
       ((ViewGroup)localObject1).setVisibility(8);
       break label219;
       label1062:
-      localAlertController.fc.setVisibility(8);
-      localAlertController.Nv.removeView(localAlertController.fc);
+      localAlertController.UB.setVisibility(8);
+      localAlertController.Uw.removeView(localAlertController.UB);
       if (localAlertController.mListView != null)
       {
-        localObject2 = (ViewGroup)localAlertController.Nv.getParent();
-        i = ((ViewGroup)localObject2).indexOfChild(localAlertController.Nv);
+        localObject2 = (ViewGroup)localAlertController.Uw.getParent();
+        i = ((ViewGroup)localObject2).indexOfChild(localAlertController.Uw);
         ((ViewGroup)localObject2).removeViewAt(i);
         ((ViewGroup)localObject2).addView(localAlertController.mListView, i, new ViewGroup.LayoutParams(-1, -1));
         break label350;
@@ -300,33 +300,33 @@ public final class b
       ((ViewGroup)localObject3).setVisibility(8);
       break label350;
       label1156:
-      localAlertController.Nj.setText(localAlertController.Nk);
-      if (localAlertController.Nm != null)
+      localAlertController.Uk.setText(localAlertController.Ul);
+      if (localAlertController.Un != null)
       {
-        localAlertController.Nm.setBounds(0, 0, localAlertController.Nb, localAlertController.Nb);
-        localAlertController.Nj.setCompoundDrawables(localAlertController.Nm, null, null, null);
+        localAlertController.Un.setBounds(0, 0, localAlertController.Uc, localAlertController.Uc);
+        localAlertController.Uk.setCompoundDrawables(localAlertController.Un, null, null, null);
       }
-      localAlertController.Nj.setVisibility(0);
+      localAlertController.Uk.setVisibility(0);
       i = 1;
       break label408;
       label1227:
-      localAlertController.Nn.setText(localAlertController.No);
-      if (localAlertController.Nq != null)
+      localAlertController.Uo.setText(localAlertController.Up);
+      if (localAlertController.Ur != null)
       {
-        localAlertController.Nq.setBounds(0, 0, localAlertController.Nb, localAlertController.Nb);
-        localAlertController.Nn.setCompoundDrawables(localAlertController.Nq, null, null, null);
+        localAlertController.Ur.setBounds(0, 0, localAlertController.Uc, localAlertController.Uc);
+        localAlertController.Uo.setCompoundDrawables(localAlertController.Ur, null, null, null);
       }
-      localAlertController.Nn.setVisibility(0);
+      localAlertController.Uo.setVisibility(0);
       i |= 0x2;
       break label464;
       label1300:
-      localAlertController.Nr.setText(localAlertController.Ns);
-      if (localAlertController.Nm != null)
+      localAlertController.Us.setText(localAlertController.Ut);
+      if (localAlertController.Un != null)
       {
-        localAlertController.Nm.setBounds(0, 0, localAlertController.Nb, localAlertController.Nb);
-        localAlertController.Nj.setCompoundDrawables(localAlertController.Nm, null, null, null);
+        localAlertController.Un.setBounds(0, 0, localAlertController.Uc, localAlertController.Uc);
+        localAlertController.Uk.setCompoundDrawables(localAlertController.Un, null, null, null);
       }
-      localAlertController.Nr.setVisibility(0);
+      localAlertController.Us.setVisibility(0);
       i |= 0x4;
       break label520;
       label1373:
@@ -335,47 +335,47 @@ public final class b
       label1378:
       if (i == 2)
       {
-        AlertController.a(localAlertController.Nn);
+        AlertController.a(localAlertController.Uo);
         break label577;
       }
       if (i != 4) {
         break label577;
       }
-      AlertController.a(localAlertController.Nr);
+      AlertController.a(localAlertController.Us);
       break label577;
       label1410:
       i = 0;
       break label583;
       label1415:
-      localAlertController.me = ((ImageView)localAlertController.Na.findViewById(16908294));
-      if (!TextUtils.isEmpty(localAlertController.Cv)) {
+      localAlertController.Uz = ((ImageView)localAlertController.Ub.findViewById(16908294));
+      if (!TextUtils.isEmpty(localAlertController.Eo)) {
         i = 1;
       }
       for (;;)
       {
-        if ((i != 0) && (localAlertController.NG))
+        if ((i != 0) && (localAlertController.UK))
         {
-          localAlertController.Nx = ((TextView)localAlertController.Na.findViewById(2131820943));
-          localAlertController.Nx.setText(localAlertController.Cv);
-          if (localAlertController.Nw != 0)
+          localAlertController.UA = ((TextView)localAlertController.Ub.findViewById(2131296631));
+          localAlertController.UA.setText(localAlertController.Eo);
+          if (localAlertController.Ux != 0)
           {
-            localAlertController.me.setImageResource(localAlertController.Nw);
+            localAlertController.Uz.setImageResource(localAlertController.Ux);
             break;
             i = 0;
             continue;
           }
-          if (localAlertController.la != null)
+          if (localAlertController.Uy != null)
           {
-            localAlertController.me.setImageDrawable(localAlertController.la);
+            localAlertController.Uz.setImageDrawable(localAlertController.Uy);
             break;
           }
-          localAlertController.Nx.setPadding(localAlertController.me.getPaddingLeft(), localAlertController.me.getPaddingTop(), localAlertController.me.getPaddingRight(), localAlertController.me.getPaddingBottom());
-          localAlertController.me.setVisibility(8);
+          localAlertController.UA.setPadding(localAlertController.Uz.getPaddingLeft(), localAlertController.Uz.getPaddingTop(), localAlertController.Uz.getPaddingRight(), localAlertController.Uz.getPaddingBottom());
+          localAlertController.Uz.setVisibility(8);
           break;
         }
       }
-      localAlertController.Na.findViewById(2131820942).setVisibility(8);
-      localAlertController.me.setVisibility(8);
+      localAlertController.Ub.findViewById(2131305944).setVisibility(8);
+      localAlertController.Uz.setVisibility(8);
       ((ViewGroup)localObject4).setVisibility(8);
       break label642;
       label1633:
@@ -391,20 +391,20 @@ public final class b
       if (localObject3 == null) {
         break label777;
       }
-      paramBundle = ((ViewGroup)localObject3).findViewById(2131820936);
+      paramBundle = ((ViewGroup)localObject3).findViewById(2131305714);
       if (paramBundle == null) {
         break label777;
       }
       paramBundle.setVisibility(0);
       break label777;
       label1675:
-      m = paramBundle.Op;
+      m = paramBundle.Vu;
       break label823;
       label1684:
-      n = paramBundle.Oq;
+      n = paramBundle.Vv;
       break label839;
       label1693:
-      paramBundle = localAlertController.Nv;
+      paramBundle = localAlertController.Uw;
       break label869;
       label1702:
       i = 0;
@@ -434,10 +434,10 @@ public final class b
         }
       }
       if ((paramBundle != null) || (localObject1 != null)) {
-        if (localAlertController.Nc != null)
+        if (localAlertController.Ud != null)
         {
-          localAlertController.Nv.setOnScrollChangeListener(new AlertController.2(localAlertController, paramBundle, (View)localObject1));
-          localAlertController.Nv.post(new AlertController.3(localAlertController, paramBundle, (View)localObject1));
+          localAlertController.Uw.setOnScrollChangeListener(new AlertController.2(localAlertController, paramBundle, (View)localObject1));
+          localAlertController.Uw.post(new AlertController.3(localAlertController, paramBundle, (View)localObject1));
         }
         else if (localAlertController.mListView != null)
         {
@@ -459,8 +459,8 @@ public final class b
   
   public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AlertController localAlertController = this.Or;
-    if ((localAlertController.Nv != null) && (localAlertController.Nv.executeKeyEvent(paramKeyEvent))) {}
+    AlertController localAlertController = this.Vw;
+    if ((localAlertController.Uw != null) && (localAlertController.Uw.executeKeyEvent(paramKeyEvent))) {}
     for (int i = 1; i != 0; i = 0) {
       return true;
     }
@@ -469,8 +469,8 @@ public final class b
   
   public final boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    AlertController localAlertController = this.Or;
-    if ((localAlertController.Nv != null) && (localAlertController.Nv.executeKeyEvent(paramKeyEvent))) {}
+    AlertController localAlertController = this.Vw;
+    if ((localAlertController.Uw != null) && (localAlertController.Uw.executeKeyEvent(paramKeyEvent))) {}
     for (int i = 1; i != 0; i = 0) {
       return true;
     }
@@ -480,76 +480,76 @@ public final class b
   public final void setTitle(CharSequence paramCharSequence)
   {
     super.setTitle(paramCharSequence);
-    this.Or.setTitle(paramCharSequence);
+    this.Vw.setTitle(paramCharSequence);
   }
   
   public static final class a
   {
-    public final AlertController.a Os;
+    public final AlertController.a Vx;
     private final int mTheme;
     
     public a(Context paramContext)
     {
-      this(paramContext, b.n(paramContext, 0));
+      this(paramContext, b.o(paramContext, 0));
     }
     
     private a(Context paramContext, int paramInt)
     {
-      this.Os = new AlertController.a(new ContextThemeWrapper(paramContext, b.n(paramContext, paramInt)));
+      this.Vx = new AlertController.a(new ContextThemeWrapper(paramContext, b.o(paramContext, paramInt)));
       this.mTheme = paramInt;
     }
     
-    public final b eA()
+    public final b fS()
     {
-      b localb = new b(this.Os.mContext, this.mTheme);
-      AlertController.a locala = this.Os;
-      AlertController localAlertController = localb.Or;
+      b localb = new b(this.Vx.mContext, this.mTheme);
+      AlertController.a locala = this.Vx;
+      AlertController localAlertController = localb.Vw;
       Object localObject;
       AlertController.RecycleListView localRecycleListView;
       label294:
       label335:
       label367:
       int i;
-      if (locala.Ny != null)
+      if (locala.UC != null)
       {
-        localAlertController.Ny = locala.Ny;
-        if (locala.Nc != null)
+        localAlertController.UC = locala.UC;
+        if (locala.Ud != null)
         {
-          localObject = locala.Nc;
-          localAlertController.Nc = ((CharSequence)localObject);
-          if (localAlertController.fc != null) {
-            localAlertController.fc.setText((CharSequence)localObject);
+          localObject = locala.Ud;
+          localAlertController.Ud = ((CharSequence)localObject);
+          if (localAlertController.UB != null) {
+            localAlertController.UB.setText((CharSequence)localObject);
           }
         }
-        if ((locala.NN != null) || (locala.NO != null)) {
-          localAlertController.a(-1, locala.NN, locala.NP, null, locala.NO);
+        if ((locala.US != null) || (locala.UT != null)) {
+          localAlertController.a(-1, locala.US, locala.UU, null, locala.UT);
         }
-        if ((locala.NQ != null) || (locala.NR != null)) {
-          localAlertController.a(-2, locala.NQ, locala.NS, null, locala.NR);
+        if ((locala.UV != null) || (locala.UW != null)) {
+          localAlertController.a(-2, locala.UV, locala.UX, null, locala.UW);
         }
-        if ((locala.NT != null) || (locala.NU != null)) {
-          localAlertController.a(-3, locala.NT, locala.NV, null, locala.NU);
+        if ((locala.UY != null) || (locala.UZ != null)) {
+          localAlertController.a(-3, locala.UY, locala.Va, null, locala.UZ);
         }
-        if ((locala.NZ != null) || (locala.Js != null) || (locala.xw != null))
+        if ((locala.Ve != null) || (locala.Qs != null) || (locala.DP != null))
         {
-          localRecycleListView = (AlertController.RecycleListView)locala.mInflater.inflate(localAlertController.NC, null);
-          if (!locala.Oc) {
+          localRecycleListView = (AlertController.RecycleListView)locala.mInflater.inflate(localAlertController.UG, null);
+          if (!locala.Vh) {
             break label732;
           }
-          if (locala.Js != null) {
+          if (locala.Qs != null) {
             break label704;
           }
-          localObject = new AlertController.a.1(locala, locala.mContext, localAlertController.ND, locala.NZ, localRecycleListView);
-          localAlertController.xw = ((ListAdapter)localObject);
-          localAlertController.Nz = locala.Nz;
-          if (locala.Oa == null) {
+          localObject = new AlertController.a.1(locala, locala.mContext, localAlertController.UH, locala.Ve, localRecycleListView);
+          localAlertController.DP = ((ListAdapter)localObject);
+          localAlertController.UD = locala.UD;
+          if (locala.Vf == null) {
             break label848;
           }
           localRecycleListView.setOnItemClickListener(new AlertController.a.3(locala, localAlertController));
-          if (locala.Oh != null) {
-            localRecycleListView.setOnItemSelectedListener(locala.Oh);
+          if (locala.Vm != null) {
+            localRecycleListView.setOnItemSelectedListener(locala.Vm);
           }
-          if (!locala.Od) {
+          if (!locala.Vi) {
             break label877;
           }
           localRecycleListView.setChoiceMode(1);
@@ -558,112 +558,112 @@ public final class b
         if (locala.mView == null) {
           break label919;
         }
-        if (!locala.Ni) {
+        if (!locala.Uj) {
           break label894;
         }
         localObject = locala.mView;
-        i = locala.Ne;
-        int j = locala.Nf;
-        int k = locala.Ng;
-        int m = locala.Nh;
+        i = locala.Uf;
+        int j = locala.Ug;
+        int k = locala.Uh;
+        int m = locala.Ui;
         localAlertController.mView = ((View)localObject);
-        localAlertController.Nd = 0;
-        localAlertController.Ni = true;
-        localAlertController.Ne = i;
-        localAlertController.Nf = j;
-        localAlertController.Ng = k;
-        localAlertController.Nh = m;
+        localAlertController.Ue = 0;
+        localAlertController.Uj = true;
+        localAlertController.Uf = i;
+        localAlertController.Ug = j;
+        localAlertController.Uh = k;
+        localAlertController.Ui = m;
       }
       for (;;)
       {
-        localb.setCancelable(this.Os.mCancelable);
-        if (this.Os.mCancelable) {
+        localb.setCancelable(this.Vx.mCancelable);
+        if (this.Vx.mCancelable) {
           localb.setCanceledOnTouchOutside(true);
         }
-        localb.setOnCancelListener(this.Os.NW);
-        localb.setOnDismissListener(this.Os.NX);
-        if (this.Os.NY != null) {
-          localb.setOnKeyListener(this.Os.NY);
+        localb.setOnCancelListener(this.Vx.Vb);
+        localb.setOnDismissListener(this.Vx.Vc);
+        if (this.Vx.Vd != null) {
+          localb.setOnKeyListener(this.Vx.Vd);
         }
         return localb;
-        if (locala.Cv != null) {
-          localAlertController.setTitle(locala.Cv);
+        if (locala.Eo != null) {
+          localAlertController.setTitle(locala.Eo);
         }
-        if (locala.la != null)
+        if (locala.Uy != null)
         {
-          localObject = locala.la;
-          localAlertController.la = ((Drawable)localObject);
-          localAlertController.Nw = 0;
-          if (localAlertController.me != null)
+          localObject = locala.Uy;
+          localAlertController.Uy = ((Drawable)localObject);
+          localAlertController.Ux = 0;
+          if (localAlertController.Uz != null)
           {
             if (localObject == null) {
               break label691;
             }
-            localAlertController.me.setVisibility(0);
-            localAlertController.me.setImageDrawable((Drawable)localObject);
+            localAlertController.Uz.setVisibility(0);
+            localAlertController.Uz.setImageDrawable((Drawable)localObject);
           }
         }
         for (;;)
         {
-          if (locala.Nw != 0) {
-            localAlertController.setIcon(locala.Nw);
+          if (locala.Ux != 0) {
+            localAlertController.setIcon(locala.Ux);
           }
-          if (locala.NM == 0) {
+          if (locala.UR == 0) {
             break;
           }
-          i = locala.NM;
+          i = locala.UR;
           localObject = new TypedValue();
           localAlertController.mContext.getTheme().resolveAttribute(i, (TypedValue)localObject, true);
           localAlertController.setIcon(((TypedValue)localObject).resourceId);
           break;
           label691:
-          localAlertController.me.setVisibility(8);
+          localAlertController.Uz.setVisibility(8);
         }
         label704:
-        localObject = new AlertController.a.2(locala, locala.mContext, locala.Js, localRecycleListView, localAlertController);
+        localObject = new AlertController.a.2(locala, locala.mContext, locala.Qs, localRecycleListView, localAlertController);
         break label294;
         label732:
-        if (locala.Od) {}
-        for (i = localAlertController.NE;; i = localAlertController.NF)
+        if (locala.Vi) {}
+        for (i = localAlertController.UI;; i = localAlertController.UJ)
         {
-          if (locala.Js == null) {
+          if (locala.Qs == null) {
             break label807;
           }
-          localObject = new SimpleCursorAdapter(locala.mContext, i, locala.Js, new String[] { locala.Of }, new int[] { 16908308 });
+          localObject = new SimpleCursorAdapter(locala.mContext, i, locala.Qs, new String[] { locala.Vk }, new int[] { 16908308 });
           break;
         }
         label807:
-        if (locala.xw != null)
+        if (locala.DP != null)
         {
-          localObject = locala.xw;
+          localObject = locala.DP;
           break label294;
         }
-        localObject = new AlertController.c(locala.mContext, i, locala.NZ);
+        localObject = new AlertController.c(locala.mContext, i, locala.Ve);
         break label294;
         label848:
-        if (locala.Oe == null) {
+        if (locala.Vj == null) {
           break label335;
         }
         localRecycleListView.setOnItemClickListener(new AlertController.a.4(locala, localRecycleListView, localAlertController));
         break label335;
         label877:
-        if (!locala.Oc) {
+        if (!locala.Vh) {
           break label367;
         }
         localRecycleListView.setChoiceMode(2);
         break label367;
         label894:
         localAlertController.mView = locala.mView;
-        localAlertController.Nd = 0;
-        localAlertController.Ni = false;
+        localAlertController.Ue = 0;
+        localAlertController.Uj = false;
         continue;
         label919:
-        if (locala.Nd != 0)
+        if (locala.Ue != 0)
         {
-          i = locala.Nd;
+          i = locala.Ue;
           localAlertController.mView = null;
-          localAlertController.Nd = i;
-          localAlertController.Ni = false;
+          localAlertController.Ue = i;
+          localAlertController.Uj = false;
         }
       }
     }

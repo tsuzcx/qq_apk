@@ -1,10 +1,11 @@
 package com.tencent.tinker.a.a;
 
+import com.tencent.tinker.a.a.b.a;
 import com.tencent.tinker.a.a.b.c;
 import java.util.Arrays;
 
 public final class k
-  extends t.a.a<k>
+  extends s.a.a<k>
 {
   public byte[] data;
   
@@ -16,7 +17,7 @@ public final class k
   
   public final int b(k paramk)
   {
-    return c.o(this.data, paramk.data);
+    return c.p(this.data, paramk.data);
   }
   
   public final boolean equals(Object paramObject)

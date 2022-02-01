@@ -12,28 +12,28 @@ public class MMGallery
   public MMGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(106613);
+    AppMethodBeat.i(141958);
     setStaticTransformationsEnabled(true);
-    AppMethodBeat.o(106613);
+    AppMethodBeat.o(141958);
   }
   
   public MMGallery(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(106614);
+    AppMethodBeat.i(141959);
     setStaticTransformationsEnabled(true);
-    AppMethodBeat.o(106614);
+    AppMethodBeat.o(141959);
   }
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(106615);
+    AppMethodBeat.i(141960);
     if (paramFloat1 > 0.0F) {
       onKeyDown(21, null);
     }
     for (;;)
     {
-      AppMethodBeat.o(106615);
+      AppMethodBeat.o(141960);
       return true;
       onKeyDown(22, null);
     }

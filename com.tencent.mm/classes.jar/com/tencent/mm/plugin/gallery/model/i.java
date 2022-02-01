@@ -4,13 +4,18 @@ import java.util.LinkedList;
 
 public abstract interface i
 {
-  public abstract LinkedList<GalleryItem.MediaItem> a(String paramString, int paramInt, i.d paramd, long paramLong);
+  public abstract LinkedList<GalleryItem.MediaItem> a(String paramString, int paramInt, c paramc, long paramLong);
   
-  public abstract LinkedList<GalleryItem.AlbumItem> bDJ();
+  public abstract LinkedList<GalleryItem.AlbumItem> cyR();
   
-  public abstract void bDK();
+  public abstract void cyT();
   
-  public abstract void bDM();
+  public abstract void cyU();
+  
+  public static abstract interface a
+  {
+    public abstract void ah(LinkedList<GalleryItem.AlbumItem> paramLinkedList);
+  }
   
   public static abstract interface b
   {
@@ -19,12 +24,12 @@ public abstract interface i
   
   public static abstract interface c
   {
-    public abstract void c(LinkedList<GalleryItem.MediaItem> paramLinkedList, long paramLong);
+    public abstract void b(LinkedList<GalleryItem.MediaItem> paramLinkedList, long paramLong, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.i
  * JD-Core Version:    0.7.0.1
  */

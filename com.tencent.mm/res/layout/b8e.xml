@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <ScrollView android:id="@id/iv" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0" android:overScrollMode="never">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:orientation="vertical" android:id="@id/fhq" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/l2">
-                    <ImageView android:layout_gravity="left" android:id="@id/fhr" android:background="@raw/actionbar_icon_close_black" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="@dimen/dv" android:layout_marginTop="@dimen/l5" />
-                </LinearLayout>
-                <TextView android:textSize="@dimen/kq" android:textColor="#ff353535" android:gravity="center_horizontal" android:id="@id/cj6" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="44.0dip" android:layout_marginRight="@dimen/l2" android:text="@string/g0u" style="@style/w2" />
-                <TextView android:textSize="@dimen/kh" android:textColor="@color/h6" android:gravity="center_horizontal" android:id="@id/fhs" android:layout_marginLeft="69.0dip" android:layout_marginTop="18.0dip" android:layout_marginRight="69.0dip" android:layout_marginBottom="69.0dip" android:text="@string/g0n" style="@style/w2" />
-            </LinearLayout>
-            <com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView android:id="@id/cj9" android:layout_marginLeft="47.0dip" android:layout_marginRight="47.0dip" wallet:format="g5" style="@style/p7" />
-            <TextView android:id="@id/dra" android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2" android:text="@string/g0w" style="@style/w2" />
-            <TextView android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/fq8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/l2" android:text="@string/g0r" android:drawableLeft="@drawable/amg" android:drawablePadding="5.0dip" />
-            <TextView android:id="@id/fq9" android:visibility="gone" android:layout_width="fill_parent" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/l2" android:text="@string/rc" style="@style/oz" />
-        </LinearLayout>
-    </ScrollView>
-    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/b1e" />
+<LinearLayout android:gravity="center" android:orientation="vertical" android:paddingTop="@dimen/hu" android:paddingBottom="@dimen/hu" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:gravity="center_horizontal" android:id="@id/f_j" android:src="@drawable/aq9" style="@style/s2" />
+    <TextView android:id="@id/f_l" android:layout_marginTop="@dimen/d" style="@style/s3" />
+    <TextView android:textColor="#fffd8f44" android:id="@id/f_m" android:visibility="gone" style="@style/s3" />
 </LinearLayout>

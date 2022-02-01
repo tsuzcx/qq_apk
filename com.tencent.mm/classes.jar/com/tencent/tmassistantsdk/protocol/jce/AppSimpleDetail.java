@@ -47,7 +47,7 @@ public final class AppSimpleDetail
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76033);
+    AppMethodBeat.i(102279);
     this.appId = paramJceInputStream.read(this.appId, 0, false);
     this.apkId = paramJceInputStream.read(this.apkId, 1, false);
     this.appName = paramJceInputStream.readString(2, false);
@@ -68,12 +68,12 @@ public final class AppSimpleDetail
     this.diffApkMd5 = paramJceInputStream.readString(11, false);
     this.diffFileSize = paramJceInputStream.read(this.diffFileSize, 12, false);
     this.channelId = paramJceInputStream.readString(13, false);
-    AppMethodBeat.o(76033);
+    AppMethodBeat.o(102279);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76032);
+    AppMethodBeat.i(102278);
     paramJceOutputStream.write(this.appId, 0);
     paramJceOutputStream.write(this.apkId, 1);
     if (this.appName != null) {
@@ -106,12 +106,12 @@ public final class AppSimpleDetail
     if (this.channelId != null) {
       paramJceOutputStream.write(this.channelId, 13);
     }
-    AppMethodBeat.o(76032);
+    AppMethodBeat.o(102278);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.AppSimpleDetail
  * JD-Core Version:    0.7.0.1
  */

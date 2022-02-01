@@ -1,25 +1,23 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsUserUI$8
-  implements MenuItem.OnMenuItemClickListener
+  implements DialogInterface.OnClickListener
 {
   SnsUserUI$8(SnsUserUI paramSnsUserUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(145671);
-    this.sce.finish();
-    AppMethodBeat.o(145671);
-    return true;
+    AppMethodBeat.i(99635);
+    AppMethodBeat.o(99635);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUserUI.8
  * JD-Core Version:    0.7.0.1
  */

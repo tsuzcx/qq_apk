@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:gravity="center" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/ng"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.MMImageView android:layout_gravity="center" android:id="@id/zx" android:background="@drawable/smiley_item_bg2" android:padding="@dimen/n_" android:layout_width="46.0dip" android:layout_height="46.0dip" android:scaleType="fitCenter" />
-</FrameLayout>
+    <RelativeLayout android:id="@id/b46" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/c9h" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/glu" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/y0" android:gravity="right" android:id="@id/g98" android:padding="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:layout_below="@id/glu" android:layout_alignParentRight="true" />
+        <ImageView android:id="@id/fih" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <TextView android:textColor="@color/a_u" android:gravity="center" android:id="@id/gag" android:padding="@dimen/ha" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/he" android:text="@string/fh5" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/goh" android:background="@color/k8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+        <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/fia" android:visibility="gone" android:layout_width="@dimen/act" android:layout_height="@dimen/act" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/gog" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/b6u" android:scaleType="center" android:layout_centerInParent="true" />
+        <include layout="@layout/b6e" />
+    </RelativeLayout>
+</LinearLayout>

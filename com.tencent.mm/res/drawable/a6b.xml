@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/a4f" />
-</shape>
+    <item android:state_enabled="false" android:drawable="@drawable/bs9" />
+    <item android:state_pressed="true" android:drawable="@drawable/bs9" />
+    <item android:drawable="@drawable/bs8" />
+</selector>

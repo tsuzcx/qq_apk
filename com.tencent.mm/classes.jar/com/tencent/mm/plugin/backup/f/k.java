@@ -10,80 +10,80 @@ public final class k
   extends a
 {
   private static String END = "img";
-  private static String jDG = "icon_";
-  private static String jDH = "iphone";
-  private static String jDI = "android";
-  private static String jDJ = "s60v3";
-  private static String jDK = "s60v5";
-  private static k jDL;
-  private Map<String, k.a> jDM;
+  private static String mva = "icon_";
+  private static String mvb = "iphone";
+  private static String mvc = "android";
+  private static String mvd = "s60v3";
+  private static String mve = "s60v5";
+  private static k mvf;
+  private Map<String, a> mvg;
   
   public k()
   {
-    AppMethodBeat.i(17475);
-    this.jDM = null;
-    aTV();
-    AppMethodBeat.o(17475);
+    AppMethodBeat.i(21534);
+    this.mvg = null;
+    bxc();
+    AppMethodBeat.o(21534);
   }
   
-  public static k.a Gr(String paramString)
+  public static a Os(String paramString)
   {
-    AppMethodBeat.i(17473);
-    if (jDL == null) {
-      jDL = new k();
+    AppMethodBeat.i(21532);
+    if (mvf == null) {
+      mvf = new k();
     }
-    Object localObject = jDL;
-    if (((k)localObject).jDM == null) {
-      ((k)localObject).aTV();
+    Object localObject = mvf;
+    if (((k)localObject).mvg == null) {
+      ((k)localObject).bxc();
     }
-    localObject = ((k)localObject).jDM.values().iterator();
+    localObject = ((k)localObject).mvg.values().iterator();
     while (((Iterator)localObject).hasNext())
     {
-      k.a locala = (k.a)((Iterator)localObject).next();
-      if ((locala.jDO != null) && (locala.jDO.equals(paramString)))
+      a locala = (a)((Iterator)localObject).next();
+      if ((locala.mvi != null) && (locala.mvi.equals(paramString)))
       {
-        AppMethodBeat.o(17473);
+        AppMethodBeat.o(21532);
         return locala;
       }
     }
-    AppMethodBeat.o(17473);
+    AppMethodBeat.o(21532);
     return null;
   }
   
-  public static k.a Gs(String paramString)
+  public static a Ot(String paramString)
   {
-    AppMethodBeat.i(17474);
-    if (jDL == null)
+    AppMethodBeat.i(21533);
+    if (mvf == null)
     {
       localk = new k();
-      jDL = localk;
+      mvf = localk;
       a(localk);
     }
-    k localk = jDL;
-    if (localk.jDM == null) {
-      localk.aTV();
+    k localk = mvf;
+    if (localk.mvg == null) {
+      localk.bxc();
     }
-    paramString = (k.a)localk.jDM.get(paramString);
-    AppMethodBeat.o(17474);
+    paramString = (a)localk.mvg.get(paramString);
+    AppMethodBeat.o(21533);
     return paramString;
   }
   
   /* Error */
-  private void aTV()
+  private void bxc()
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore_2
     //   2: iconst_0
     //   3: istore_1
-    //   4: sipush 17476
-    //   7: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   4: sipush 21535
+    //   7: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_0
     //   11: new 113	java/util/HashMap
     //   14: dup
     //   15: invokespecial 114	java/util/HashMap:<init>	()V
-    //   18: putfield 56	com/tencent/mm/plugin/backup/f/k:jDM	Ljava/util/Map;
-    //   21: invokestatic 120	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
+    //   18: putfield 57	com/tencent/mm/plugin/backup/f/k:mvg	Ljava/util/Map;
+    //   21: invokestatic 120	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   24: invokevirtual 126	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   27: astore_3
     //   28: aload_3
@@ -113,7 +113,7 @@ public final class k
     //   77: aload_3
     //   78: astore 6
     //   80: aload 7
-    //   82: getstatic 24	com/tencent/mm/plugin/backup/f/k:jDG	Ljava/lang/String;
+    //   82: getstatic 25	com/tencent/mm/plugin/backup/f/k:mva	Ljava/lang/String;
     //   85: invokevirtual 154	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   88: ifeq -34 -> 54
     //   91: aload 4
@@ -138,7 +138,7 @@ public final class k
     //   130: aload_3
     //   131: astore 6
     //   133: aload 8
-    //   135: getstatic 28	com/tencent/mm/plugin/backup/f/k:END	Ljava/lang/String;
+    //   135: getstatic 29	com/tencent/mm/plugin/backup/f/k:END	Ljava/lang/String;
     //   138: invokevirtual 154	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   141: ifne +314 -> 455
     //   144: aload 4
@@ -174,7 +174,7 @@ public final class k
     //   198: aload_3
     //   199: astore 6
     //   201: aload 8
-    //   203: getstatic 32	com/tencent/mm/plugin/backup/f/k:jDH	Ljava/lang/String;
+    //   203: getstatic 33	com/tencent/mm/plugin/backup/f/k:mvb	Ljava/lang/String;
     //   206: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   209: ifeq +109 -> 318
     //   212: aload 4
@@ -183,15 +183,15 @@ public final class k
     //   217: astore 6
     //   219: aload 7
     //   221: aload 9
-    //   223: putfield 92	com/tencent/mm/plugin/backup/f/k$a:jDO	Ljava/lang/String;
+    //   223: putfield 93	com/tencent/mm/plugin/backup/f/k$a:mvi	Ljava/lang/String;
     //   226: aload 4
     //   228: astore 5
     //   230: aload_3
     //   231: astore 6
     //   233: aload_0
-    //   234: getfield 56	com/tencent/mm/plugin/backup/f/k:jDM	Ljava/util/Map;
+    //   234: getfield 57	com/tencent/mm/plugin/backup/f/k:mvg	Ljava/util/Map;
     //   237: aload 7
-    //   239: getfield 176	com/tencent/mm/plugin/backup/f/k$a:jDN	Ljava/lang/String;
+    //   239: getfield 176	com/tencent/mm/plugin/backup/f/k$a:mvh	Ljava/lang/String;
     //   242: aload 7
     //   244: invokeinterface 180 3 0
     //   249: pop
@@ -206,7 +206,7 @@ public final class k
     //   266: ldc 184
     //   268: iconst_0
     //   269: anewarray 186	java/lang/Object
-    //   272: invokestatic 192	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   272: invokestatic 192	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   275: aload 4
     //   277: ifnull +8 -> 285
     //   280: aload 4
@@ -224,16 +224,16 @@ public final class k
     //   301: iload_2
     //   302: invokestatic 203	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   305: invokevirtual 207	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   308: invokestatic 211	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   311: sipush 17476
-    //   314: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   308: invokestatic 211	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   311: sipush 21535
+    //   314: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   317: return
     //   318: aload 4
     //   320: astore 5
     //   322: aload_3
     //   323: astore 6
     //   325: aload 8
-    //   327: getstatic 36	com/tencent/mm/plugin/backup/f/k:jDI	Ljava/lang/String;
+    //   327: getstatic 37	com/tencent/mm/plugin/backup/f/k:mvc	Ljava/lang/String;
     //   330: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   333: ifeq +52 -> 385
     //   336: aload 4
@@ -242,7 +242,7 @@ public final class k
     //   341: astore 6
     //   343: aload 7
     //   345: aload 9
-    //   347: putfield 176	com/tencent/mm/plugin/backup/f/k$a:jDN	Ljava/lang/String;
+    //   347: putfield 176	com/tencent/mm/plugin/backup/f/k$a:mvh	Ljava/lang/String;
     //   350: goto -124 -> 226
     //   353: astore 4
     //   355: aload 6
@@ -255,8 +255,8 @@ public final class k
     //   369: ifnull +7 -> 376
     //   372: aload_3
     //   373: invokevirtual 198	java/io/InputStream:close	()V
-    //   376: sipush 17476
-    //   379: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   376: sipush 21535
+    //   379: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   382: aload 4
     //   384: athrow
     //   385: aload 4
@@ -264,7 +264,7 @@ public final class k
     //   389: aload_3
     //   390: astore 6
     //   392: aload 8
-    //   394: getstatic 40	com/tencent/mm/plugin/backup/f/k:jDJ	Ljava/lang/String;
+    //   394: getstatic 41	com/tencent/mm/plugin/backup/f/k:mvd	Ljava/lang/String;
     //   397: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   400: ifeq +20 -> 420
     //   403: aload 4
@@ -273,14 +273,14 @@ public final class k
     //   408: astore 6
     //   410: aload 7
     //   412: aload 9
-    //   414: putfield 214	com/tencent/mm/plugin/backup/f/k$a:jDP	Ljava/lang/String;
+    //   414: putfield 214	com/tencent/mm/plugin/backup/f/k$a:mvj	Ljava/lang/String;
     //   417: goto -191 -> 226
     //   420: aload 4
     //   422: astore 5
     //   424: aload_3
     //   425: astore 6
     //   427: aload 8
-    //   429: getstatic 44	com/tencent/mm/plugin/backup/f/k:jDK	Ljava/lang/String;
+    //   429: getstatic 45	com/tencent/mm/plugin/backup/f/k:mve	Ljava/lang/String;
     //   432: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   435: ifeq -209 -> 226
     //   438: aload 4
@@ -289,7 +289,7 @@ public final class k
     //   443: astore 6
     //   445: aload 7
     //   447: aload 9
-    //   449: putfield 217	com/tencent/mm/plugin/backup/f/k$a:jDQ	Ljava/lang/String;
+    //   449: putfield 217	com/tencent/mm/plugin/backup/f/k$a:mvk	Ljava/lang/String;
     //   452: goto -226 -> 226
     //   455: aload 4
     //   457: astore 5
@@ -304,7 +304,7 @@ public final class k
     //   472: aload 7
     //   474: invokevirtual 222	com/tencent/mm/plugin/backup/f/k$a:toString	()Ljava/lang/String;
     //   477: aastore
-    //   478: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   478: invokestatic 225	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   481: iload_1
     //   482: iconst_1
     //   483: iadd
@@ -430,9 +430,35 @@ public final class k
     //   35	54	554	java/io/IOException
   }
   
-  public final void aSG()
+  public final void bvO()
   {
-    jDL = null;
+    mvf = null;
+  }
+  
+  public static final class a
+  {
+    public String mvh = "";
+    public String mvi = "";
+    public String mvj = "";
+    public String mvk = "";
+    
+    public a() {}
+    
+    public a(String paramString1, String paramString2, String paramString3, String paramString4)
+    {
+      this.mvh = paramString1;
+      this.mvi = paramString2;
+      this.mvj = paramString3;
+      this.mvk = paramString4;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(21531);
+      String str = this.mvh + " " + this.mvi + " " + this.mvj + " " + this.mvk;
+      AppMethodBeat.o(21531);
+      return str;
+    }
   }
 }
 

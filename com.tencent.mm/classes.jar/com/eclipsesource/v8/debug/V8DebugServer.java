@@ -7,6 +7,7 @@ import com.eclipsesource.v8.V8Array;
 import com.eclipsesource.v8.V8Object;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.ServerSocket;
@@ -48,12 +49,12 @@ public class V8DebugServer
   
   static
   {
-    AppMethodBeat.i(74946);
+    AppMethodBeat.i(61569);
     DEBUG_OBJECT_NAME = "__j2v8_Debug";
     PROTOCOL_CHARSET = Charset.forName("UTF-8");
     PROTOCOL_EOL_BYTES = "\r\n".getBytes(PROTOCOL_CHARSET);
     PROTOCOL_CONTENT_LENGTH_BYTES = "Content-Length:".getBytes(PROTOCOL_CHARSET);
-    AppMethodBeat.o(74946);
+    AppMethodBeat.o(61569);
   }
   
   /* Error */
@@ -61,96 +62,96 @@ public class V8DebugServer
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 122	java/lang/Object:<init>	()V
-    //   4: ldc 123
-    //   6: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   1: invokespecial 125	java/lang/Object:<init>	()V
+    //   4: ldc 126
+    //   6: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
     //   10: new 4	java/lang/Object
     //   13: dup
-    //   14: invokespecial 122	java/lang/Object:<init>	()V
-    //   17: putfield 125	com/eclipsesource/v8/debug/V8DebugServer:clientLock	Ljava/lang/Object;
+    //   14: invokespecial 125	java/lang/Object:<init>	()V
+    //   17: putfield 128	com/eclipsesource/v8/debug/V8DebugServer:clientLock	Ljava/lang/Object;
     //   20: aload_0
     //   21: iconst_0
-    //   22: putfield 127	com/eclipsesource/v8/debug/V8DebugServer:traceCommunication	Z
+    //   22: putfield 130	com/eclipsesource/v8/debug/V8DebugServer:traceCommunication	Z
     //   25: aload_0
-    //   26: new 129	java/util/LinkedList
+    //   26: new 132	java/util/LinkedList
     //   29: dup
-    //   30: invokespecial 130	java/util/LinkedList:<init>	()V
-    //   33: putfield 132	com/eclipsesource/v8/debug/V8DebugServer:requests	Ljava/util/List;
+    //   30: invokespecial 133	java/util/LinkedList:<init>	()V
+    //   33: putfield 135	com/eclipsesource/v8/debug/V8DebugServer:requests	Ljava/util/List;
     //   36: aload_0
     //   37: aload_1
-    //   38: putfield 134	com/eclipsesource/v8/debug/V8DebugServer:runtime	Lcom/eclipsesource/v8/V8;
+    //   38: putfield 137	com/eclipsesource/v8/debug/V8DebugServer:runtime	Lcom/eclipsesource/v8/V8;
     //   41: aload_0
     //   42: iload_3
-    //   43: putfield 136	com/eclipsesource/v8/debug/V8DebugServer:waitForConnection	Z
+    //   43: putfield 139	com/eclipsesource/v8/debug/V8DebugServer:waitForConnection	Z
     //   46: aload_1
-    //   47: getstatic 92	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
-    //   50: invokevirtual 142	com/eclipsesource/v8/V8:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
+    //   47: getstatic 95	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
+    //   50: invokevirtual 145	com/eclipsesource/v8/V8:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
     //   53: astore 4
     //   55: aload 4
     //   57: ifnonnull +17 -> 74
-    //   60: getstatic 148	java/lang/System:err	Ljava/io/PrintStream;
-    //   63: ldc 150
-    //   65: invokevirtual 156	java/io/PrintStream:println	(Ljava/lang/String;)V
-    //   68: ldc 123
-    //   70: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   60: getstatic 151	java/lang/System:err	Ljava/io/PrintStream;
+    //   63: ldc 153
+    //   65: invokevirtual 159	java/io/PrintStream:println	(Ljava/lang/String;)V
+    //   68: ldc 126
+    //   70: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   73: return
     //   74: aload_0
     //   75: aload 4
-    //   77: ldc 58
-    //   79: invokevirtual 159	com/eclipsesource/v8/V8Object:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
-    //   82: putfield 161	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
+    //   77: ldc 61
+    //   79: invokevirtual 162	com/eclipsesource/v8/V8Object:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
+    //   82: putfield 164	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
     //   85: aload 4
-    //   87: invokevirtual 164	com/eclipsesource/v8/V8Object:release	()V
+    //   87: invokevirtual 167	com/eclipsesource/v8/V8Object:release	()V
     //   90: aload_1
-    //   91: new 166	java/lang/StringBuilder
+    //   91: new 169	java/lang/StringBuilder
     //   94: dup
-    //   95: ldc 168
-    //   97: invokespecial 170	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   100: getstatic 92	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
-    //   103: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: ldc 176
-    //   108: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   111: getstatic 92	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
-    //   114: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: ldc 178
-    //   119: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: getstatic 92	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
-    //   125: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: ldc 180
-    //   130: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: getstatic 92	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
-    //   136: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   139: ldc 182
-    //   141: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   144: getstatic 92	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
-    //   147: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   150: ldc 184
-    //   152: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   155: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   158: invokevirtual 191	com/eclipsesource/v8/V8:executeVoidScript	(Ljava/lang/String;)V
+    //   95: ldc 171
+    //   97: invokespecial 173	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   100: getstatic 95	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
+    //   103: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: ldc 179
+    //   108: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   111: getstatic 95	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
+    //   114: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: ldc 181
+    //   119: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: getstatic 95	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
+    //   125: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: ldc 183
+    //   130: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: getstatic 95	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
+    //   136: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: ldc 185
+    //   141: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   144: getstatic 95	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
+    //   147: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: ldc 187
+    //   152: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: invokevirtual 191	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   158: invokevirtual 194	com/eclipsesource/v8/V8:executeVoidScript	(Ljava/lang/String;)V
     //   161: aload_0
-    //   162: new 193	java/net/ServerSocket
+    //   162: new 196	java/net/ServerSocket
     //   165: dup
     //   166: iload_2
-    //   167: invokespecial 195	java/net/ServerSocket:<init>	(I)V
-    //   170: putfield 197	com/eclipsesource/v8/debug/V8DebugServer:server	Ljava/net/ServerSocket;
-    //   173: ldc 123
-    //   175: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   167: invokespecial 198	java/net/ServerSocket:<init>	(I)V
+    //   170: putfield 200	com/eclipsesource/v8/debug/V8DebugServer:server	Ljava/net/ServerSocket;
+    //   173: ldc 126
+    //   175: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   178: return
     //   179: astore_1
     //   180: aload 4
-    //   182: invokevirtual 164	com/eclipsesource/v8/V8Object:release	()V
-    //   185: ldc 123
-    //   187: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   182: invokevirtual 167	com/eclipsesource/v8/V8Object:release	()V
+    //   185: ldc 126
+    //   187: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   190: aload_1
     //   191: athrow
     //   192: astore_1
     //   193: aload_0
     //   194: aload_1
-    //   195: invokevirtual 201	com/eclipsesource/v8/debug/V8DebugServer:logError	(Ljava/lang/Throwable;)V
-    //   198: ldc 123
-    //   200: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   195: invokevirtual 204	com/eclipsesource/v8/debug/V8DebugServer:logError	(Ljava/lang/Throwable;)V
+    //   198: ldc 126
+    //   200: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   203: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -167,22 +168,22 @@ public class V8DebugServer
   
   public static void configureV8ForDebugging()
   {
-    AppMethodBeat.i(74929);
+    AppMethodBeat.i(61552);
     try
     {
       V8.setFlags("-expose-debug-as=" + DEBUG_OBJECT_NAME);
-      AppMethodBeat.o(74929);
+      AppMethodBeat.o(61552);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(74929);
+      AppMethodBeat.o(61552);
     }
   }
   
   private void enterBreakLoop(V8Object paramV8Object1, V8Object paramV8Object2)
   {
-    AppMethodBeat.i(74940);
+    AppMethodBeat.i(61563);
     V8Array localV8Array1;
     try
     {
@@ -244,7 +245,7 @@ public class V8DebugServer
           break label156;
           paramV8Object1 = finally;
           localV8Array1.release();
-          AppMethodBeat.o(74940);
+          AppMethodBeat.o(61563);
           throw paramV8Object1;
         }
         finally
@@ -254,30 +255,30 @@ public class V8DebugServer
         paramV8Object1 = finally;
         this.stoppedStateDcp.release();
       }
-      AppMethodBeat.o(74940);
+      AppMethodBeat.o(61563);
     }
     label233:
     localV8Array1.release();
     if (paramV8Object1 != null) {
       paramV8Object1.release();
     }
-    AppMethodBeat.o(74940);
+    AppMethodBeat.o(61563);
     throw paramV8Object2;
     label259:
     this.stoppedStateDcp.release();
     this.stoppedStateDcp = null;
-    AppMethodBeat.o(74940);
+    AppMethodBeat.o(61563);
   }
   
   private boolean isConnected()
   {
-    AppMethodBeat.i(74936);
+    AppMethodBeat.i(61559);
     synchronized (this.clientLock)
     {
       if ((this.server != null) && (this.client != null) && (this.client.isConnected()))
       {
         bool = true;
-        AppMethodBeat.o(74936);
+        AppMethodBeat.o(61559);
         return bool;
       }
       boolean bool = false;
@@ -286,7 +287,7 @@ public class V8DebugServer
   
   private void processRequest(String paramString)
   {
-    AppMethodBeat.i(74938);
+    AppMethodBeat.i(61561);
     if (this.traceCommunication) {
       System.out.println("Got message: \n" + paramString.substring(0, Math.min(paramString.length(), 1000)));
     }
@@ -310,7 +311,7 @@ public class V8DebugServer
         System.out.println("Returning response: \n" + ((String)localObject).substring(0, Math.min(((String)localObject).length(), 1000)));
       }
       sendJson((String)localObject);
-      AppMethodBeat.o(74938);
+      AppMethodBeat.o(61561);
       return;
     }
   }
@@ -318,10 +319,10 @@ public class V8DebugServer
   private void sendCompileEvent(V8Object paramV8Object)
   {
     V8Object localV8Object1 = null;
-    AppMethodBeat.i(74941);
+    AppMethodBeat.i(61564);
     if (!isConnected())
     {
-      AppMethodBeat.o(74941);
+      AppMethodBeat.o(61564);
       return;
     }
     int i = paramV8Object.getInteger("type_");
@@ -358,27 +359,27 @@ public class V8DebugServer
       if (paramV8Object != null) {
         paramV8Object.release();
       }
-      AppMethodBeat.o(74941);
+      AppMethodBeat.o(61564);
     }
-    AppMethodBeat.o(74941);
+    AppMethodBeat.o(61564);
   }
   
   private void sendJson(String paramString)
   {
-    AppMethodBeat.i(74934);
+    AppMethodBeat.i(61557);
     sendMessage("", paramString.replace("\\/", "/"));
-    AppMethodBeat.o(74934);
+    AppMethodBeat.o(61557);
   }
   
   private void sendMessage(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(74935);
+    AppMethodBeat.i(61558);
     synchronized (this.clientLock)
     {
       if (!isConnected())
       {
         paramString1 = new IOException("There is no connected client.");
-        AppMethodBeat.o(74935);
+        AppMethodBeat.o(61558);
         throw paramString1;
       }
     }
@@ -393,63 +394,63 @@ public class V8DebugServer
     if (paramString2.length > 0) {
       this.client.getOutputStream().write(paramString2);
     }
-    AppMethodBeat.o(74935);
+    AppMethodBeat.o(61558);
   }
   
   /* Error */
   private void setupEventHandler()
   {
     // Byte code:
-    //   0: ldc_w 430
-    //   3: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 8	com/eclipsesource/v8/debug/V8DebugServer$EventHandler
+    //   0: ldc_w 433
+    //   3: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 11	com/eclipsesource/v8/debug/V8DebugServer$EventHandler
     //   9: dup
     //   10: aload_0
     //   11: aconst_null
-    //   12: invokespecial 433	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:<init>	(Lcom/eclipsesource/v8/debug/V8DebugServer;Lcom/eclipsesource/v8/debug/V8DebugServer$1;)V
+    //   12: invokespecial 436	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:<init>	(Lcom/eclipsesource/v8/debug/V8DebugServer;Lcom/eclipsesource/v8/debug/V8DebugServer$1;)V
     //   15: astore_1
     //   16: aload_0
-    //   17: getfield 161	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
+    //   17: getfield 164	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
     //   20: aload_1
-    //   21: ldc 13
-    //   23: invokevirtual 437	com/eclipsesource/v8/V8Object:registerJavaMethod	(Lcom/eclipsesource/v8/JavaVoidCallback;Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
+    //   21: ldc 16
+    //   23: invokevirtual 440	com/eclipsesource/v8/V8Object:registerJavaMethod	(Lcom/eclipsesource/v8/JavaVoidCallback;Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
     //   26: pop
     //   27: aload_0
-    //   28: getfield 161	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
-    //   31: ldc 13
-    //   33: invokevirtual 159	com/eclipsesource/v8/V8Object:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
-    //   36: checkcast 439	com/eclipsesource/v8/V8Function
+    //   28: getfield 164	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
+    //   31: ldc 16
+    //   33: invokevirtual 162	com/eclipsesource/v8/V8Object:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
+    //   36: checkcast 442	com/eclipsesource/v8/V8Function
     //   39: astore_1
-    //   40: new 263	com/eclipsesource/v8/V8Array
+    //   40: new 266	com/eclipsesource/v8/V8Array
     //   43: dup
     //   44: aload_0
-    //   45: getfield 134	com/eclipsesource/v8/debug/V8DebugServer:runtime	Lcom/eclipsesource/v8/V8;
-    //   48: invokespecial 266	com/eclipsesource/v8/V8Array:<init>	(Lcom/eclipsesource/v8/V8;)V
+    //   45: getfield 137	com/eclipsesource/v8/debug/V8DebugServer:runtime	Lcom/eclipsesource/v8/V8;
+    //   48: invokespecial 269	com/eclipsesource/v8/V8Array:<init>	(Lcom/eclipsesource/v8/V8;)V
     //   51: aload_1
-    //   52: invokevirtual 297	com/eclipsesource/v8/V8Array:push	(Lcom/eclipsesource/v8/V8Value;)Lcom/eclipsesource/v8/V8Array;
+    //   52: invokevirtual 300	com/eclipsesource/v8/V8Array:push	(Lcom/eclipsesource/v8/V8Value;)Lcom/eclipsesource/v8/V8Array;
     //   55: astore_2
     //   56: aload_0
-    //   57: getfield 161	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
-    //   60: ldc 55
+    //   57: getfield 164	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
+    //   60: ldc 58
     //   62: aload_2
-    //   63: invokevirtual 361	com/eclipsesource/v8/V8Object:executeFunction	(Ljava/lang/String;Lcom/eclipsesource/v8/V8Array;)Ljava/lang/Object;
+    //   63: invokevirtual 364	com/eclipsesource/v8/V8Object:executeFunction	(Ljava/lang/String;Lcom/eclipsesource/v8/V8Array;)Ljava/lang/Object;
     //   66: pop
     //   67: aload_1
     //   68: ifnull +14 -> 82
     //   71: aload_1
-    //   72: invokevirtual 442	com/eclipsesource/v8/V8Function:isReleased	()Z
+    //   72: invokevirtual 445	com/eclipsesource/v8/V8Function:isReleased	()Z
     //   75: ifne +7 -> 82
     //   78: aload_1
-    //   79: invokevirtual 443	com/eclipsesource/v8/V8Function:release	()V
+    //   79: invokevirtual 446	com/eclipsesource/v8/V8Function:release	()V
     //   82: aload_2
     //   83: ifnull +64 -> 147
     //   86: aload_2
-    //   87: invokevirtual 444	com/eclipsesource/v8/V8Array:isReleased	()Z
+    //   87: invokevirtual 447	com/eclipsesource/v8/V8Array:isReleased	()Z
     //   90: ifne +57 -> 147
     //   93: aload_2
-    //   94: invokevirtual 279	com/eclipsesource/v8/V8Array:release	()V
-    //   97: ldc_w 430
-    //   100: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   94: invokevirtual 282	com/eclipsesource/v8/V8Array:release	()V
+    //   97: ldc_w 433
+    //   100: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   103: return
     //   104: astore_1
     //   105: aconst_null
@@ -459,23 +460,23 @@ public class V8DebugServer
     //   109: aload_3
     //   110: ifnull +14 -> 124
     //   113: aload_3
-    //   114: invokevirtual 442	com/eclipsesource/v8/V8Function:isReleased	()Z
+    //   114: invokevirtual 445	com/eclipsesource/v8/V8Function:isReleased	()Z
     //   117: ifne +7 -> 124
     //   120: aload_3
-    //   121: invokevirtual 443	com/eclipsesource/v8/V8Function:release	()V
+    //   121: invokevirtual 446	com/eclipsesource/v8/V8Function:release	()V
     //   124: aload_2
     //   125: ifnull +14 -> 139
     //   128: aload_2
-    //   129: invokevirtual 444	com/eclipsesource/v8/V8Array:isReleased	()Z
+    //   129: invokevirtual 447	com/eclipsesource/v8/V8Array:isReleased	()Z
     //   132: ifne +7 -> 139
     //   135: aload_2
-    //   136: invokevirtual 279	com/eclipsesource/v8/V8Array:release	()V
-    //   139: ldc_w 430
-    //   142: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   136: invokevirtual 282	com/eclipsesource/v8/V8Array:release	()V
+    //   139: ldc_w 433
+    //   142: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   145: aload_1
     //   146: athrow
-    //   147: ldc_w 430
-    //   150: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   147: ldc_w 433
+    //   150: invokestatic 118	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   153: return
     //   154: astore 4
     //   156: aconst_null
@@ -510,14 +511,14 @@ public class V8DebugServer
   
   public int getPort()
   {
-    AppMethodBeat.i(74931);
+    AppMethodBeat.i(61554);
     if ((this.server != null) && (this.server.isBound()))
     {
       int i = this.server.getLocalPort();
-      AppMethodBeat.o(74931);
+      AppMethodBeat.o(61554);
       return i;
     }
-    AppMethodBeat.o(74931);
+    AppMethodBeat.o(61554);
     return -1;
   }
   
@@ -525,10 +526,10 @@ public class V8DebugServer
   
   public void processRequests(long paramLong)
   {
-    AppMethodBeat.i(74937);
+    AppMethodBeat.i(61560);
     if (this.server == null)
     {
-      AppMethodBeat.o(74937);
+      AppMethodBeat.o(61560);
       return;
     }
     long l = System.currentTimeMillis();
@@ -557,7 +558,7 @@ public class V8DebugServer
             i += 1;
             continue;
             localObject = finally;
-            AppMethodBeat.o(74937);
+            AppMethodBeat.o(61560);
             throw localObject;
           }
           catch (Exception localException)
@@ -573,7 +574,7 @@ public class V8DebugServer
         Thread.sleep(10L);
       }
     } while ((paramLong > 0L) && (l + paramLong > System.currentTimeMillis()));
-    AppMethodBeat.o(74937);
+    AppMethodBeat.o(61560);
   }
   
   public void setTraceCommunication(boolean paramBoolean)
@@ -583,14 +584,14 @@ public class V8DebugServer
   
   public void start()
   {
-    AppMethodBeat.i(74932);
+    AppMethodBeat.i(61555);
     if (this.server == null)
     {
-      AppMethodBeat.o(74932);
+      AppMethodBeat.o(61555);
       return;
     }
     boolean bool = this.waitForConnection;
-    ??? = new Thread(new V8DebugServer.ClientLoop(this, null), "J2V8 Debugger Server");
+    ??? = new Thread(new ClientLoop(null), "J2V8 Debugger Server");
     ((Thread)???).setDaemon(true);
     ((Thread)???).start();
     setupEventHandler();
@@ -615,20 +616,20 @@ public class V8DebugServer
       try
       {
         processRequests(100L);
-        AppMethodBeat.o(74932);
+        AppMethodBeat.o(61555);
         return;
       }
       catch (InterruptedException localInterruptedException1) {}
       localObject2 = finally;
-      AppMethodBeat.o(74932);
+      AppMethodBeat.o(61555);
       throw localObject2;
     }
-    AppMethodBeat.o(74932);
+    AppMethodBeat.o(61555);
   }
   
   public void stop()
   {
-    AppMethodBeat.i(74933);
+    AppMethodBeat.i(61556);
     for (;;)
     {
       try
@@ -662,8 +663,255 @@ public class V8DebugServer
           this.stoppedStateDcp.release();
           this.stoppedStateDcp = null;
         }
-        AppMethodBeat.o(74933);
+        AppMethodBeat.o(61556);
         return;
+      }
+    }
+  }
+  
+  class ClientLoop
+    implements Runnable
+  {
+    private int from;
+    
+    private ClientLoop() {}
+    
+    private int indexOf(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2)
+    {
+      int j = paramArrayOfByte1.length;
+      while (paramInt1 < paramInt2)
+      {
+        int i = 0;
+        while (i <= j)
+        {
+          if (i == j) {
+            return paramInt1;
+          }
+          if ((paramInt1 + i >= paramInt2) || (paramArrayOfByte2[(paramInt1 + i)] != paramArrayOfByte1[i])) {
+            break;
+          }
+          i += 1;
+        }
+        paramInt1 += 1;
+      }
+      return -1;
+    }
+    
+    private byte[] join(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(61549);
+      byte[] arrayOfByte = new byte[paramArrayOfByte1.length + paramInt2];
+      System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 0, paramArrayOfByte1.length);
+      System.arraycopy(paramArrayOfByte2, paramInt1, arrayOfByte, paramArrayOfByte1.length, paramInt2);
+      AppMethodBeat.o(61549);
+      return arrayOfByte;
+    }
+    
+    private void processClientRequests()
+    {
+      AppMethodBeat.i(61546);
+      byte[] arrayOfByte1 = new byte[0];
+      byte[] arrayOfByte2 = new byte[4096];
+      for (;;)
+      {
+        int j;
+        int k;
+        int m;
+        Object localObject2;
+        boolean bool2;
+        synchronized (V8DebugServer.this.clientLock)
+        {
+          InputStream localInputStream = V8DebugServer.this.client.getInputStream();
+          j = -1;
+          ??? = arrayOfByte1;
+          bool1 = false;
+          i = 0;
+          k = localInputStream.read(arrayOfByte2, i, 4096 - i);
+          if (k <= 0) {
+            break;
+          }
+          m = i + k;
+          this.from = 0;
+          localObject2 = ???;
+          k = j;
+          i = k;
+          if (k < 0)
+          {
+            i = readContentLength(arrayOfByte2, m);
+            j = i;
+            ??? = localObject2;
+            bool2 = bool1;
+            if (i < 0) {}
+          }
+          else
+          {
+            bool2 = bool1;
+            if (!bool1)
+            {
+              bool1 = skipToolInfo(arrayOfByte2, m);
+              j = i;
+              ??? = localObject2;
+              bool2 = bool1;
+              if (bool1) {
+                bool2 = bool1;
+              }
+            }
+            else
+            {
+              j = Math.min(i - localObject2.length, m - this.from);
+              localObject2 = join((byte[])localObject2, arrayOfByte2, this.from, j);
+              this.from = (j + this.from);
+              j = i;
+              ??? = localObject2;
+              if (localObject2.length == i) {
+                localObject2 = new String((byte[])localObject2, V8DebugServer.PROTOCOL_CHARSET);
+              }
+            }
+          }
+        }
+        synchronized (V8DebugServer.this.requests)
+        {
+          V8DebugServer.this.requests.add(localObject2);
+          j = -1;
+          ??? = arrayOfByte1;
+          bool2 = false;
+          k = j;
+          localObject2 = ???;
+          bool1 = bool2;
+          if (this.from < m) {
+            continue;
+          }
+          if (this.from < m)
+          {
+            System.arraycopy(arrayOfByte2, this.from, arrayOfByte2, 0, m - this.from);
+            i = m - this.from;
+            bool1 = bool2;
+            continue;
+            localObject3 = finally;
+            AppMethodBeat.o(61546);
+            throw localObject3;
+          }
+        }
+        int i = 0;
+        boolean bool1 = bool2;
+      }
+      AppMethodBeat.o(61546);
+    }
+    
+    private int readContentLength(byte[] paramArrayOfByte, int paramInt)
+    {
+      AppMethodBeat.i(61547);
+      int i = indexOf(V8DebugServer.PROTOCOL_CONTENT_LENGTH_BYTES, paramArrayOfByte, this.from, paramInt);
+      if (i < 0)
+      {
+        AppMethodBeat.o(61547);
+        return -1;
+      }
+      i += V8DebugServer.PROTOCOL_CONTENT_LENGTH_BYTES.length;
+      paramInt = indexOf(V8DebugServer.PROTOCOL_EOL_BYTES, paramArrayOfByte, i, paramInt);
+      if (paramInt < 0)
+      {
+        AppMethodBeat.o(61547);
+        return -1;
+      }
+      String str = new String(paramArrayOfByte, i, paramInt - i, V8DebugServer.PROTOCOL_CHARSET);
+      try
+      {
+        i = Integer.parseInt(str.trim());
+        this.from = (V8DebugServer.PROTOCOL_EOL_BYTES.length + paramInt);
+        AppMethodBeat.o(61547);
+        return i;
+      }
+      catch (Exception localException)
+      {
+        paramArrayOfByte = new IOException("Invalid content length header: '" + str + "' in message" + new String(paramArrayOfByte, V8DebugServer.PROTOCOL_CHARSET));
+        AppMethodBeat.o(61547);
+        throw paramArrayOfByte;
+      }
+    }
+    
+    private boolean skipToolInfo(byte[] paramArrayOfByte, int paramInt)
+    {
+      AppMethodBeat.i(61548);
+      paramInt = indexOf(V8DebugServer.PROTOCOL_EOL_BYTES, paramArrayOfByte, this.from, paramInt);
+      if (paramInt < 0)
+      {
+        AppMethodBeat.o(61548);
+        return false;
+      }
+      this.from = (paramInt + V8DebugServer.PROTOCOL_EOL_BYTES.length);
+      AppMethodBeat.o(61548);
+      return true;
+    }
+    
+    private void startHandshake()
+    {
+      AppMethodBeat.i(61545);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("V8-Version: ");
+      localStringBuilder.append("4.10.253");
+      localStringBuilder.append("\r\n");
+      localStringBuilder.append("Protocol-Version: ");
+      localStringBuilder.append("1");
+      localStringBuilder.append("\r\n");
+      localStringBuilder.append("Embedding-Host: ");
+      localStringBuilder.append("j2v8 ");
+      localStringBuilder.append("4.0.0");
+      localStringBuilder.append("\r\n");
+      localStringBuilder.append("Type: ");
+      localStringBuilder.append("connect");
+      localStringBuilder.append("\r\n");
+      V8DebugServer.access$1000(V8DebugServer.this, localStringBuilder.toString(), "");
+      AppMethodBeat.o(61545);
+    }
+    
+    public void run()
+    {
+      AppMethodBeat.i(61544);
+      for (;;)
+      {
+        try
+        {
+          localSocket1 = V8DebugServer.this.server.accept();
+          localSocket1.setTcpNoDelay(true);
+        }
+        catch (Exception localException)
+        {
+          synchronized (V8DebugServer.this.clientLock)
+          {
+            Socket localSocket1;
+            V8DebugServer.access$802(V8DebugServer.this, localSocket1);
+            V8DebugServer.access$902(V8DebugServer.this, false);
+            V8DebugServer.this.clientLock.notifyAll();
+            startHandshake();
+            processClientRequests();
+            continue;
+            localException = localException;
+            synchronized (V8DebugServer.this.clientLock)
+            {
+              Socket localSocket2 = V8DebugServer.this.client;
+              if (localSocket2 == null) {}
+            }
+          }
+        }
+        try
+        {
+          V8DebugServer.this.client.close();
+          label105:
+          V8DebugServer.access$802(V8DebugServer.this, null);
+          V8DebugServer.this.logError(localException);
+          continue;
+          localObject2 = finally;
+          AppMethodBeat.o(61544);
+          throw localObject2;
+          localObject3 = finally;
+          AppMethodBeat.o(61544);
+          throw localObject3;
+        }
+        catch (IOException localIOException)
+        {
+          break label105;
+        }
       }
     }
   }
@@ -675,11 +923,11 @@ public class V8DebugServer
     
     private void safeRelease(Releasable paramReleasable)
     {
-      AppMethodBeat.i(74928);
+      AppMethodBeat.i(61551);
       if (paramReleasable != null) {
         paramReleasable.release();
       }
-      AppMethodBeat.o(74928);
+      AppMethodBeat.o(61551);
     }
     
     /* Error */
@@ -891,7 +1139,7 @@ public class V8DebugServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.debug.V8DebugServer
  * JD-Core Version:    0.7.0.1
  */

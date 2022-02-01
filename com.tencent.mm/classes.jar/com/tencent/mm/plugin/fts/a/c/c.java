@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.fts.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.a.a.l;
+import com.tencent.mm.plugin.fts.a.a.m;
 import java.util.Comparator;
 
 public final class c
-  implements Comparator<l>
+  implements Comparator<m>
 {
-  public static final c mTu;
+  public static final c rqo;
   
   static
   {
-    AppMethodBeat.i(114293);
-    mTu = new c();
-    AppMethodBeat.o(114293);
+    AppMethodBeat.i(131729);
+    rqo = new c();
+    AppMethodBeat.o(131729);
   }
 }
 

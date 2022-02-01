@@ -1,38 +1,44 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.text.TextUtils;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.h.d;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.plugin.a.c;
+import com.tencent.mm.plugin.appbrand.aa.l.a;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObject;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalVideoObject;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import com.tencent.mm.plugin.appbrand.s.m;
 import com.tencent.mm.plugin.mmsight.SightCaptureResult;
 import com.tencent.mm.plugin.mmsight.SightParams;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.pluginsdk.model.j;
-import com.tencent.mm.pluginsdk.ui.tools.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.q;
+import com.tencent.mm.pluginsdk.ui.tools.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.s;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.base.t;
-import com.tencent.mm.ui.tools.l;
-import java.io.File;
+import com.tencent.mm.ui.widget.a.e.b;
+import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -41,53 +47,53 @@ import org.json.JSONStringer;
 final class JsApiChooseMedia$a
   extends AppBrandProxyUIProcessTask
 {
-  private p ehb;
-  int hQK;
-  private DialogInterface.OnCancelListener hQL;
-  private JsApiChooseMedia.ChooseResult hRa;
-  private JsApiChooseMedia.ChooseRequest hRb;
-  private String hRc;
-  private l hRd;
-  private String mVideoFilePath;
+  private p ftP;
+  int jWF;
+  private DialogInterface.OnCancelListener jWJ;
+  private JsApiChooseMedia.ChooseResult jWZ;
+  private JsApiChooseMedia.ChooseRequest jXa;
+  private String jXb;
+  private String jXc;
+  private com.tencent.mm.ui.tools.l jXd;
   
   private JsApiChooseMedia$a()
   {
-    AppMethodBeat.i(131178);
-    this.hRa = new JsApiChooseMedia.ChooseResult();
-    AppMethodBeat.o(131178);
+    AppMethodBeat.i(46453);
+    this.jWZ = new JsApiChooseMedia.ChooseResult();
+    AppMethodBeat.o(46453);
   }
   
-  private static String Co(String paramString)
+  private static String Ir(String paramString)
   {
-    AppMethodBeat.i(131186);
-    String str = com.tencent.mm.compatible.util.e.esr + "microMsg." + System.currentTimeMillis() + ".jpg";
+    AppMethodBeat.i(46461);
+    String str = com.tencent.mm.loader.j.b.ais() + "microMsg." + System.currentTimeMillis() + ".jpg";
     Bitmap localBitmap;
     try
     {
       localBitmap = MMBitmapFactory.decodeFile(paramString);
       if (localBitmap == null)
       {
-        ab.e("MicroMsg.JsApiChooseMedia", "doCompressImage, decode bmp return null");
-        AppMethodBeat.o(131186);
+        ad.e("MicroMsg.JsApiChooseMedia", "doCompressImage, decode bmp return null");
+        AppMethodBeat.o(46461);
         return null;
       }
     }
     catch (OutOfMemoryError paramString)
     {
-      ab.e("MicroMsg.JsApiChooseMedia", "doCompressImage, decode bmp oom");
-      AppMethodBeat.o(131186);
+      ad.e("MicroMsg.JsApiChooseMedia", "doCompressImage, decode bmp oom");
+      AppMethodBeat.o(46461);
       return null;
     }
-    long l = bo.aoy();
-    int i = q.b(localBitmap, 70, str);
-    ab.i("MicroMsg.JsApiChooseMedia", "doCompressImage, ret = %d, cost = %d, %s (%d) -> %s (%d)", new Object[] { Integer.valueOf(i), Long.valueOf(bo.aoy() - l), paramString, Long.valueOf(new File(paramString).length()), str, Long.valueOf(new File(str).length()) });
+    long l = bt.eGO();
+    int i = s.c(localBitmap, 70, str);
+    ad.i("MicroMsg.JsApiChooseMedia", "doCompressImage, ret = %d, cost = %d, %s (%d) -> %s (%d)", new Object[] { Integer.valueOf(i), Long.valueOf(bt.eGO() - l), paramString, Long.valueOf(i.aMN(paramString)), str, Long.valueOf(i.aMN(str)) });
     if (i == 1) {}
     try
     {
-      com.tencent.mm.plugin.appbrand.h.b.bZ(paramString, str);
+      com.tencent.mm.plugin.appbrand.m.b.cH(paramString, str);
       if (i == 1)
       {
-        AppMethodBeat.o(131186);
+        AppMethodBeat.o(46461);
         return str;
       }
     }
@@ -95,27 +101,27 @@ final class JsApiChooseMedia$a
     {
       for (;;)
       {
-        ab.e("MicroMsg.JsApiChooseMedia", "doCompressImage, duplicateExif e = %s", new Object[] { localException });
+        ad.e("MicroMsg.JsApiChooseMedia", "doCompressImage, duplicateExif e = %s", new Object[] { localException });
       }
-      AppMethodBeat.o(131186);
+      AppMethodBeat.o(46461);
     }
     return paramString;
   }
   
-  private AppBrandLocalVideoObject Cr(String paramString)
+  private AppBrandLocalVideoObject Iu(String paramString)
   {
-    AppMethodBeat.i(131187);
+    AppMethodBeat.i(46462);
     boolean bool;
     try
     {
-      bool = c.wE(paramString);
-      ab.i("MicroMsg.JsApiChooseMedia", "checkRemux, isMp4 = %b", new Object[] { Boolean.valueOf(bool) });
+      bool = com.tencent.mm.plugin.a.c.BH(paramString);
+      ad.i("MicroMsg.JsApiChooseMedia", "checkRemux, isMp4 = %b", new Object[] { Boolean.valueOf(bool) });
       i = -10000;
       if (!bool) {
-        break label497;
+        break label499;
       }
-      i = SightVideoJNI.shouldRemuxing(paramString, 660, 500, 26214400, 300000.0D, 1000000);
-      ab.i("MicroMsg.JsApiChooseMedia", "checkRemux, ret = %d", new Object[] { Integer.valueOf(i) });
+      i = SightVideoJNI.shouldRemuxingVFS(paramString, 660, 500, 26214400, 300000.0D, 1000000);
+      ad.i("MicroMsg.JsApiChooseMedia", "checkRemux, ret = %d", new Object[] { Integer.valueOf(i) });
     }
     catch (Exception localException1)
     {
@@ -123,16 +129,16 @@ final class JsApiChooseMedia$a
       {
         for (;;)
         {
-          localObject = new MediaMetadataRetriever();
+          localObject = new d();
           ((MediaMetadataRetriever)localObject).setDataSource(paramString);
           if (localObject != null) {
             break;
           }
-          ab.e("MicroMsg.JsApiChooseMedia", "addVideoItem, null meta data");
-          AppMethodBeat.o(131187);
+          ad.e("MicroMsg.JsApiChooseMedia", "addVideoItem, null meta data");
+          AppMethodBeat.o(46462);
           return null;
           i = 1;
-          break label510;
+          break label512;
           i = 1;
           continue;
           i = -50006;
@@ -140,169 +146,102 @@ final class JsApiChooseMedia$a
           i = -50002;
           continue;
           localObject = new int[2];
-          j.c(paramString, (int[])localObject);
+          com.tencent.mm.pluginsdk.model.l.d(paramString, (int[])localObject);
           i = localObject[0];
           j = localObject[1];
-          localObject = com.tencent.mm.compatible.util.e.esr + "microMsg." + System.currentTimeMillis() + ".mp4";
-          ab.i("MicroMsg.JsApiChooseMedia", "remuxIfNeed [%s] to [%s], result %d, resolution:[%d, %d]", new Object[] { paramString, localObject, Integer.valueOf(SightVideoJNI.remuxing(paramString, (String)localObject, i, j, com.tencent.mm.plugin.sight.base.b.qSq, com.tencent.mm.plugin.sight.base.b.qSp, 8, 2, 25.0F, com.tencent.mm.plugin.sight.base.b.qSr, null, 0, false, 0, 51)), Integer.valueOf(i), Integer.valueOf(j) });
+          localObject = com.tencent.mm.loader.j.b.ais() + "microMsg." + System.currentTimeMillis() + ".mp4";
+          ad.i("MicroMsg.JsApiChooseMedia", "remuxIfNeed [%s] to [%s], result %d, resolution:[%d, %d]", new Object[] { paramString, localObject, Integer.valueOf(SightVideoJNI.remuxingVFS(paramString, (String)localObject, i, j, com.tencent.mm.plugin.sight.base.c.wrb, com.tencent.mm.plugin.sight.base.c.wra, 8, 2, 25.0F, com.tencent.mm.plugin.sight.base.c.wrc, null, 0, false, 0, 51)), Integer.valueOf(i), Integer.valueOf(j) });
           paramString = (String)localObject;
           continue;
           localException1 = localException1;
-          ab.e("MicroMsg.JsApiChooseMedia", "addVideoItem, remux failed, exp = %s", new Object[] { bo.l(localException1) });
+          ad.e("MicroMsg.JsApiChooseMedia", "addVideoItem, remux failed, exp = %s", new Object[] { bt.m(localException1) });
         }
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          ab.e("MicroMsg.JsApiChooseMedia", "addVideoItem, MetaDataRetriever setDataSource failed, e = %s", new Object[] { localException2 });
+          ad.e("MicroMsg.JsApiChooseMedia", "addVideoItem, MetaDataRetriever setDataSource failed, e = %s", new Object[] { localException2 });
           localAppBrandLocalVideoObject = null;
         }
-        i = bo.getInt(localAppBrandLocalVideoObject.extractMetadata(18), 0);
-        j = bo.getInt(localAppBrandLocalVideoObject.extractMetadata(19), 0);
-        k = bo.getInt(localAppBrandLocalVideoObject.extractMetadata(9), 0);
+        i = bt.getInt(localAppBrandLocalVideoObject.extractMetadata(18), 0);
+        j = bt.getInt(localAppBrandLocalVideoObject.extractMetadata(19), 0);
+        k = bt.getInt(localAppBrandLocalVideoObject.extractMetadata(9), 0);
         localAppBrandLocalVideoObject.release();
-        localAppBrandLocalVideoObject = AppBrandLocalMediaObjectManager.bv(this.hRb.appId, paramString);
+        localAppBrandLocalVideoObject = AppBrandLocalMediaObjectManager.fT(this.jXa.appId, paramString);
         if (localAppBrandLocalVideoObject != null) {
-          break label436;
+          break label437;
         }
-        ab.e("MicroMsg.JsApiChooseMedia", "attachVideo error, return null");
-        AppMethodBeat.o(131187);
+        ad.e("MicroMsg.JsApiChooseMedia", "attachVideo error, return null");
+        AppMethodBeat.o(46462);
         return null;
         localAppBrandLocalVideoObject.duration = ((k + 500) / 1000);
         localAppBrandLocalVideoObject.width = i;
         localAppBrandLocalVideoObject.height = j;
-        localAppBrandLocalVideoObject.size = com.tencent.mm.a.e.cM(paramString);
-        ab.i("MicroMsg.JsApiChooseMedia", "addVideoItem, return %s", new Object[] { localAppBrandLocalVideoObject });
-        AppMethodBeat.o(131187);
+        localAppBrandLocalVideoObject.size = ((int)i.aMN(paramString));
+        ad.i("MicroMsg.JsApiChooseMedia", "addVideoItem, return %s", new Object[] { localAppBrandLocalVideoObject });
+        AppMethodBeat.o(46462);
         return localAppBrandLocalVideoObject;
       }
     }
-    int i = com.tencent.mm.a.e.cM(paramString);
-    ab.i("MicroMsg.JsApiChooseMedia", "fileLength = %d", new Object[] { Integer.valueOf(i) });
+    int i = (int)i.aMN(paramString);
+    ad.i("MicroMsg.JsApiChooseMedia", "fileLength = %d", new Object[] { Integer.valueOf(i) });
     if (i > 26214400) {
       i = -1;
     }
     for (;;)
     {
-      ab.e("MicroMsg.JsApiChooseMedia", "unknown check type");
+      ad.e("MicroMsg.JsApiChooseMedia", "unknown check type");
       i = -50001;
       if (i != -50006) {}
       Object localObject;
       int j;
       AppBrandLocalVideoObject localAppBrandLocalVideoObject;
       int k;
-      label436:
-      label497:
+      label437:
+      label499:
       if ((i == -1) || (!bool)) {
         break;
       }
-      label510:
+      label512:
       switch (i)
       {
       }
     }
   }
   
-  private static boolean Cs(String paramString)
+  private static boolean Iv(String paramString)
   {
-    AppMethodBeat.i(131188);
+    AppMethodBeat.i(46463);
     if (!TextUtils.isEmpty(paramString))
     {
-      File localFile = new File(paramString);
-      ab.i("MicroMsg.JsApiChooseMedia", "thumbFilePath:%s", new Object[] { paramString });
-      if (localFile.exists())
+      com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(paramString);
+      ad.i("MicroMsg.JsApiChooseMedia", "thumbFilePath:%s", new Object[] { paramString });
+      if (locale.exists())
       {
-        ab.i("MicroMsg.JsApiChooseMedia", "video thumb file is exist");
-        AppMethodBeat.o(131188);
+        ad.i("MicroMsg.JsApiChooseMedia", "video thumb file is exist");
+        AppMethodBeat.o(46463);
         return true;
       }
-      ab.e("MicroMsg.JsApiChooseMedia", "video thumb file is not exist");
-      AppMethodBeat.o(131188);
+      ad.e("MicroMsg.JsApiChooseMedia", "video thumb file is not exist");
+      AppMethodBeat.o(46463);
       return false;
     }
-    ab.e("MicroMsg.JsApiChooseMedia", "video thumb file path is null");
-    AppMethodBeat.o(131188);
+    ad.e("MicroMsg.JsApiChooseMedia", "video thumb file path is null");
+    AppMethodBeat.o(46463);
     return false;
-  }
-  
-  private void aDK()
-  {
-    int i = 0;
-    AppMethodBeat.i(131181);
-    ab.i("MicroMsg.JsApiChooseMedia", "chooseMediaFromCamera");
-    if ((this.hRb.hQY) && (this.hRb.hQX)) {}
-    for (;;)
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("KEY_SIGHT_PARAMS", og(i));
-      n.a(aBf(), 7, localIntent, 3, i);
-      AppMethodBeat.o(131181);
-      return;
-      if (this.hRb.hQY) {
-        i = 1;
-      } else if (this.hRb.hQX) {
-        i = 2;
-      }
-    }
-  }
-  
-  private void aDL()
-  {
-    int i = 3;
-    boolean bool = true;
-    AppMethodBeat.i(131183);
-    ab.i("MicroMsg.JsApiChooseMedia", "chooseMediaFromAlbum");
-    Intent localIntent;
-    if ((this.hRb.hQX) && (this.hRb.hQY))
-    {
-      localIntent = new Intent();
-      localIntent.putExtra("key_can_select_video_and_pic", true);
-      if (this.hRb.hQF) {
-        break label133;
-      }
-    }
-    for (;;)
-    {
-      localIntent.putExtra("key_send_raw_image", bool);
-      n.a(aBf(), 8, this.hRb.count, this.hQK, i, localIntent);
-      AppMethodBeat.o(131183);
-      return;
-      if (this.hRb.hQX)
-      {
-        i = 1;
-        break;
-      }
-      if (!this.hRb.hQY) {
-        break;
-      }
-      i = 2;
-      break;
-      label133:
-      bool = false;
-    }
-  }
-  
-  private void aDM()
-  {
-    AppMethodBeat.i(131185);
-    this.hQL = new JsApiChooseMedia.a.8(this);
-    MMActivity localMMActivity = aBf();
-    ah.getResources().getString(2131297087);
-    this.ehb = h.b(localMMActivity, ah.getResources().getString(2131296594), true, this.hQL);
-    AppMethodBeat.o(131185);
   }
   
   private static String b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(131190);
-    if (bo.isNullOrNil(paramString1))
+    AppMethodBeat.i(46465);
+    if (bt.isNullOrNil(paramString1))
     {
-      ab.e("MicroMsg.JsApiChooseMedia", "parseVideoItemToJson localId is null");
-      AppMethodBeat.o(131190);
+      ad.e("MicroMsg.JsApiChooseMedia", "parseVideoItemToJson localId is null");
+      AppMethodBeat.o(46465);
       return "";
     }
-    ab.i("MicroMsg.JsApiChooseMedia", "parseVideoItemToJson()");
+    ad.i("MicroMsg.JsApiChooseMedia", "parseVideoItemToJson()");
     JSONStringer localJSONStringer = new JSONStringer();
     try
     {
@@ -323,27 +262,27 @@ final class JsApiChooseMedia$a
       localJSONStringer.endObject();
       localJSONStringer.endArray();
       paramString1 = localJSONStringer.toString();
-      AppMethodBeat.o(131190);
+      AppMethodBeat.o(46465);
       return paramString1;
     }
     catch (Exception paramString1)
     {
-      ab.printErrStackTrace("MicroMsg.JsApiChooseMedia", paramString1, "", new Object[0]);
-      AppMethodBeat.o(131190);
+      ad.printErrStackTrace("MicroMsg.JsApiChooseMedia", paramString1, "", new Object[0]);
+      AppMethodBeat.o(46465);
     }
     return "";
   }
   
   private static String b(ArrayList<String> paramArrayList, ArrayList<Long> paramArrayList1)
   {
-    AppMethodBeat.i(131189);
+    AppMethodBeat.i(46464);
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
-      ab.e("MicroMsg.JsApiChooseMedia", "parseImageItemToJson localIds is null");
-      AppMethodBeat.o(131189);
+      ad.e("MicroMsg.JsApiChooseMedia", "parseImageItemToJson localIds is null");
+      AppMethodBeat.o(46464);
       return "";
     }
-    ab.i("MicroMsg.JsApiChooseMedia", "parseImageItemToJson()");
+    ad.i("MicroMsg.JsApiChooseMedia", "parseImageItemToJson()");
     JSONStringer localJSONStringer = new JSONStringer();
     try
     {
@@ -363,51 +302,129 @@ final class JsApiChooseMedia$a
       }
       localJSONStringer.endArray();
       paramArrayList = localJSONStringer.toString();
-      AppMethodBeat.o(131189);
+      AppMethodBeat.o(46464);
       return paramArrayList;
     }
     catch (Exception paramArrayList)
     {
-      ab.printErrStackTrace("MicroMsg.JsApiChooseMedia", paramArrayList, "", new Object[0]);
-      AppMethodBeat.o(131189);
+      ad.printErrStackTrace("MicroMsg.JsApiChooseMedia", paramArrayList, "", new Object[0]);
+      AppMethodBeat.o(46464);
     }
     return "";
   }
   
-  private SightParams og(int paramInt)
+  private void baK()
   {
-    AppMethodBeat.i(131182);
+    int i = 0;
+    AppMethodBeat.i(46456);
+    ad.i("MicroMsg.JsApiChooseMedia", "chooseMediaFromCamera");
+    if ((this.jXa.jWX) && (this.jXa.jWW)) {}
+    for (;;)
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("KEY_SIGHT_PARAMS", rQ(i));
+      q.a(aXi(), 7, localIntent, 3, i);
+      AppMethodBeat.o(46456);
+      return;
+      if (this.jXa.jWX) {
+        i = 1;
+      } else if (this.jXa.jWW) {
+        i = 2;
+      }
+    }
+  }
+  
+  private void baL()
+  {
+    int i = 3;
+    boolean bool = true;
+    AppMethodBeat.i(46458);
+    ad.i("MicroMsg.JsApiChooseMedia", "chooseMediaFromAlbum");
+    Intent localIntent;
+    if ((this.jXa.jWW) && (this.jXa.jWX))
+    {
+      localIntent = new Intent();
+      localIntent.putExtra("key_can_select_video_and_pic", true);
+      if (this.jXa.jWy) {
+        break label143;
+      }
+    }
+    for (;;)
+    {
+      localIntent.putExtra("key_send_raw_image", bool);
+      localIntent.putExtra("gallery_report_tag", 16);
+      q.a(aXi(), 8, this.jXa.count, this.jWF, i, localIntent);
+      AppMethodBeat.o(46458);
+      return;
+      if (this.jXa.jWW)
+      {
+        i = 1;
+        break;
+      }
+      if (!this.jXa.jWX) {
+        break;
+      }
+      i = 2;
+      break;
+      label143:
+      bool = false;
+    }
+  }
+  
+  private void baM()
+  {
+    AppMethodBeat.i(46460);
+    this.jWJ = new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(46452);
+        ad.e("MicroMsg.JsApiChooseMedia", "cancel show the progress dialog and finish progress");
+        JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).bRZ = 0;
+        JsApiChooseMedia.a.m(JsApiChooseMedia.a.this, JsApiChooseMedia.a.a(JsApiChooseMedia.a.this));
+        AppMethodBeat.o(46452);
+      }
+    };
+    MMActivity localMMActivity = aXi();
+    aj.getResources().getString(2131755906);
+    this.ftP = h.b(localMMActivity, aj.getResources().getString(2131755359), true, this.jWJ);
+    AppMethodBeat.o(46460);
+  }
+  
+  private SightParams rQ(int paramInt)
+  {
+    AppMethodBeat.i(46457);
     String str1 = "microMsg_" + System.currentTimeMillis();
-    this.mVideoFilePath = (com.tencent.mm.compatible.util.e.esr + "microMsg." + str1 + ".mp4");
-    this.hRc = (com.tencent.mm.compatible.util.e.esr + "microMsg." + str1 + ".jpeg");
-    int j = this.hRb.maxDuration;
+    this.jXb = i.k(com.tencent.mm.loader.j.b.ais() + "microMsg." + str1 + ".mp4", false);
+    this.jXc = i.k(com.tencent.mm.loader.j.b.ais() + "microMsg." + str1 + ".jpeg", true);
+    int j = this.jXa.maxDuration;
     SightParams localSightParams = new SightParams(3, 1);
-    if (this.hRb.isFront) {}
+    if (this.jXa.isFront) {}
     for (int i = 1;; i = 2)
     {
-      localSightParams.oFP = i;
+      localSightParams.tAY = i;
       localSightParams.mode = paramInt;
-      if (localSightParams.fcu == null) {
-        localSightParams.fcu = new VideoTransPara();
+      if (localSightParams.gCB == null) {
+        localSightParams.gCB = new VideoTransPara();
       }
-      localSightParams.fcu.duration = j;
-      localSightParams.oFW = false;
-      String str2 = com.tencent.mm.compatible.util.e.esr + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" });
-      localSightParams.q(str1, this.mVideoFilePath, this.hRc, str2);
-      AppMethodBeat.o(131182);
+      localSightParams.gCB.duration = j;
+      localSightParams.tBf = false;
+      String str2 = com.tencent.mm.loader.j.b.ais() + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" });
+      localSightParams.p(str1, this.jXb, this.jXc, str2);
+      AppMethodBeat.o(46457);
       return localSightParams;
     }
   }
   
   public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
   {
-    AppMethodBeat.i(131179);
-    this.hRb = ((JsApiChooseMedia.ChooseRequest)paramProcessRequest);
-    if ((this.hRb.hQF & this.hRb.hQG))
+    AppMethodBeat.i(46454);
+    this.jXa = ((JsApiChooseMedia.ChooseRequest)paramProcessRequest);
+    if ((this.jXa.jWy & this.jXa.jWz))
     {
       i = 8;
-      this.hQK = i;
-      if (bo.hg(aBf()) <= 200L) {
+      this.jWF = i;
+      if (bt.iJ(aXi()) <= 200L) {
         break label199;
       }
     }
@@ -416,76 +433,122 @@ final class JsApiChooseMedia$a
     {
       if (i == 0)
       {
-        ab.e("MicroMsg.JsApiChooseMedia", "memory is not enough!");
-        t.makeText(aBf(), ah.getResources().getString(2131296593), 1).show();
+        ad.e("MicroMsg.JsApiChooseMedia", "memory is not enough!");
+        t.makeText(aXi(), aj.getResources().getString(2131755358), 1).show();
       }
-      ab.i("MicroMsg.JsApiChooseMedia", "goVideo");
-      aBf().mmSetOnActivityResultCallback(this);
-      if ((!this.hRb.hQV) || (!this.hRb.hQW)) {
+      ad.i("MicroMsg.JsApiChooseMedia", "goVideo");
+      aXi().mmSetOnActivityResultCallback(this);
+      if ((!this.jXa.jWU) || (!this.jXa.jWV)) {
         break label204;
       }
-      this.hRd = new l(aBf());
-      this.hRd.b(null, new JsApiChooseMedia.a.1(this), new JsApiChooseMedia.a.2(this));
-      this.hRd.setOnCancelListener(new JsApiChooseMedia.a.3(this));
-      this.hRd.cwt();
-      AppMethodBeat.o(131179);
+      this.jXd = new com.tencent.mm.ui.tools.l(aXi());
+      this.jXd.a(new e.b()
+      {
+        public final void onDismiss()
+        {
+          AppMethodBeat.i(160599);
+          ad.e("MicroMsg.JsApiChooseMedia", "cancel chooseMedia, and finish process!");
+          JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).bRZ = 0;
+          JsApiChooseMedia.a.a(JsApiChooseMedia.a.this, JsApiChooseMedia.a.a(JsApiChooseMedia.a.this));
+          AppMethodBeat.o(160599);
+        }
+      });
+      this.jXd.a(null, new View.OnCreateContextMenuListener()new n.d
+      {
+        public final void onCreateContextMenu(ContextMenu paramAnonymousContextMenu, View paramAnonymousView, ContextMenu.ContextMenuInfo paramAnonymousContextMenuInfo)
+        {
+          AppMethodBeat.i(46443);
+          paramAnonymousContextMenu.add(0, 1, 0, JsApiChooseMedia.a.b(JsApiChooseMedia.a.this).getString(2131755747));
+          paramAnonymousContextMenu.add(0, 2, 1, JsApiChooseMedia.a.c(JsApiChooseMedia.a.this).getString(2131755754));
+          AppMethodBeat.o(46443);
+        }
+      }, new n.d()new e.b
+      {
+        public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(46444);
+          switch (paramAnonymousMenuItem.getItemId())
+          {
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(46444);
+            return;
+            JsApiChooseMedia.a.d(JsApiChooseMedia.a.this);
+            AppMethodBeat.o(46444);
+            return;
+            JsApiChooseMedia.a.e(JsApiChooseMedia.a.this);
+          }
+        }
+      }, new e.b()
+      {
+        public final void onDismiss()
+        {
+          AppMethodBeat.i(46445);
+          ad.e("MicroMsg.JsApiChooseMedia", "cancel chooseMedia, and finish process!");
+          JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).bRZ = 0;
+          JsApiChooseMedia.a.b(JsApiChooseMedia.a.this, JsApiChooseMedia.a.a(JsApiChooseMedia.a.this));
+          AppMethodBeat.o(46445);
+        }
+      });
+      AppMethodBeat.o(46454);
       return;
       i = 7;
       break;
     }
     label204:
-    if (this.hRb.hQV)
+    if (this.jXa.jWU)
     {
-      aDL();
-      AppMethodBeat.o(131179);
+      baL();
+      AppMethodBeat.o(46454);
       return;
     }
-    if (this.hRb.hQW)
+    if (this.jXa.jWV)
     {
-      aDK();
-      AppMethodBeat.o(131179);
+      baK();
+      AppMethodBeat.o(46454);
       return;
     }
-    this.hRa.bpE = -2;
-    ab.e("MicroMsg.JsApiChooseMedia", "parameter is invalid, fail and finish process");
-    a(this.hRa);
-    AppMethodBeat.o(131179);
+    this.jWZ.bRZ = -2;
+    ad.e("MicroMsg.JsApiChooseMedia", "parameter is invalid, fail and finish process");
+    b(this.jWZ);
+    AppMethodBeat.o(46454);
   }
   
-  public final void aBl()
+  public final void aXp()
   {
-    AppMethodBeat.i(131180);
-    super.aBl();
-    if (this.ehb != null)
+    AppMethodBeat.i(46455);
+    super.aXp();
+    if (this.ftP != null)
     {
-      this.ehb.dismiss();
-      this.ehb = null;
+      this.ftP.dismiss();
+      this.ftP = null;
     }
-    if (this.hRd != null)
+    if (this.jXd != null)
     {
-      this.hRd.dismiss();
-      this.hRd = null;
+      this.jXd.dismiss();
+      this.jXd = null;
     }
-    AppMethodBeat.o(131180);
+    AppMethodBeat.o(46455);
   }
   
   public final void c(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(131184);
+    AppMethodBeat.i(46459);
     if (paramInt2 == 0)
     {
-      ab.e("MicroMsg.JsApiChooseMedia", "mmOnActivityResult resultCode is canceled");
-      this.hRa.bpE = 0;
-      a(this.hRa);
-      AppMethodBeat.o(131184);
+      ad.e("MicroMsg.JsApiChooseMedia", "mmOnActivityResult resultCode is canceled");
+      this.jWZ.bRZ = 0;
+      b(this.jWZ);
+      AppMethodBeat.o(46459);
       return;
     }
     if (-1 != paramInt2)
     {
-      ab.e("MicroMsg.JsApiChooseMedia", "mmOnActivityResult resultCode is not RESULT_OK");
-      this.hRa.bpE = -2;
-      a(this.hRa);
-      AppMethodBeat.o(131184);
+      ad.e("MicroMsg.JsApiChooseMedia", "mmOnActivityResult resultCode is not RESULT_OK");
+      this.jWZ.bRZ = -2;
+      b(this.jWZ);
+      AppMethodBeat.o(46459);
       return;
     }
     switch (paramInt1)
@@ -493,24 +556,55 @@ final class JsApiChooseMedia$a
     }
     for (;;)
     {
-      this.hRa.bpE = -2;
-      a(this.hRa);
-      AppMethodBeat.o(131184);
+      this.jWZ.bRZ = -2;
+      b(this.jWZ);
+      AppMethodBeat.o(46459);
       return;
-      ab.i("MicroMsg.JsApiChooseMedia", "REQUEST_CODE_TAKE_MEDIA_LOCAL");
+      ad.i("MicroMsg.JsApiChooseMedia", "REQUEST_CODE_TAKE_MEDIA_LOCAL");
       Object localObject = paramIntent.getStringArrayListExtra("key_select_video_list");
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
-        this.mVideoFilePath = ((String)((ArrayList)localObject).get(0));
-        if (bo.isNullOrNil(this.mVideoFilePath))
+        this.jXb = i.k((String)((ArrayList)localObject).get(0), false);
+        if (bt.isNullOrNil(this.jXb))
         {
-          ab.e("MicroMsg.JsApiChooseMedia", "take media local, mVideoFilePath is  null, fail");
+          ad.e("MicroMsg.JsApiChooseMedia", "take media local, mVideoFilePath is  null, fail");
         }
         else
         {
-          aDM();
-          com.tencent.mm.plugin.appbrand.t.e.aNS().ac(new JsApiChooseMedia.a.4(this));
-          AppMethodBeat.o(131184);
+          baM();
+          com.tencent.mm.plugin.appbrand.utils.e.bqm().postToWorker(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(46446);
+              if (new com.tencent.mm.vfs.e(JsApiChooseMedia.a.f(JsApiChooseMedia.a.this)).exists())
+              {
+                ad.i("MicroMsg.JsApiChooseMedia", "take media local, the mVideoFilePath file exist, success");
+                JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).bRZ = -1;
+                JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).type = "video";
+                AppBrandLocalVideoObject localAppBrandLocalVideoObject = JsApiChooseMedia.a.a(JsApiChooseMedia.a.this, JsApiChooseMedia.a.f(JsApiChooseMedia.a.this));
+                if (localAppBrandLocalVideoObject == null)
+                {
+                  ad.e("MicroMsg.JsApiChooseMedia", "addVideoItem fail ,mVideoFilePath is %s", new Object[] { JsApiChooseMedia.a.f(JsApiChooseMedia.a.this) });
+                  JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).bRZ = -2;
+                  JsApiChooseMedia.a.c(JsApiChooseMedia.a.this, JsApiChooseMedia.a.a(JsApiChooseMedia.a.this));
+                  AppMethodBeat.o(46446);
+                  return;
+                }
+                JsApiChooseMedia.a.b(JsApiChooseMedia.a.this, JsApiChooseMedia.a.f(JsApiChooseMedia.a.this));
+                String str = JsApiChooseMedia.a.g(JsApiChooseMedia.a.this);
+                JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).jWY = JsApiChooseMedia.a.c(localAppBrandLocalVideoObject.diQ, str, localAppBrandLocalVideoObject.duration, localAppBrandLocalVideoObject.height, localAppBrandLocalVideoObject.width, localAppBrandLocalVideoObject.size);
+                JsApiChooseMedia.a.d(JsApiChooseMedia.a.this, JsApiChooseMedia.a.a(JsApiChooseMedia.a.this));
+                AppMethodBeat.o(46446);
+                return;
+              }
+              ad.e("MicroMsg.JsApiChooseMedia", "take media local, mVideoFilePath is %s, the file not exist, fail", new Object[] { JsApiChooseMedia.a.f(JsApiChooseMedia.a.this) });
+              JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).bRZ = -2;
+              JsApiChooseMedia.a.e(JsApiChooseMedia.a.this, JsApiChooseMedia.a.a(JsApiChooseMedia.a.this));
+              AppMethodBeat.o(46446);
+            }
+          });
+          AppMethodBeat.o(46459);
         }
       }
       else
@@ -518,168 +612,217 @@ final class JsApiChooseMedia$a
         localObject = paramIntent.getStringArrayListExtra("CropImage_OutputPath_List");
         if ((localObject == null) || (((List)localObject).size() == 0))
         {
-          ab.e("MicroMsg.JsApiChooseMedia", "chosen is null,  fail");
-          this.hRa.bpE = -2;
-          a(this.hRa);
-          AppMethodBeat.o(131184);
+          ad.e("MicroMsg.JsApiChooseMedia", "chosen is null,  fail");
+          this.jWZ.bRZ = -2;
+          b(this.jWZ);
+          AppMethodBeat.o(46459);
           return;
         }
         boolean bool = paramIntent.getBooleanExtra("CropImage_Compress_Img", false);
-        final int i = this.hRb.hQF;
-        if (!this.hRb.hQG)
+        final int i = this.jXa.jWy;
+        if (!this.jXa.jWz)
         {
           paramInt1 = 1;
-          if (((paramInt1 & i) == 0) && (!(this.hRb.hQF & this.hRb.hQG & bool))) {
-            break label432;
+          if (((paramInt1 & i) == 0) && (!(this.jXa.jWy & this.jXa.jWz & bool))) {
+            break label436;
           }
         }
-        label432:
+        label436:
         for (i = 1;; i = 0)
         {
-          ab.i("MicroMsg.JsApiChooseMedia", "onActivityResult, fromCamera = %b, canCompress = %b, canOriginal = %b, CropImageUI.KCompressImg = %b, doCompress = %b", new Object[] { Boolean.FALSE, Boolean.valueOf(this.hRb.hQF), Boolean.valueOf(this.hRb.hQG), Boolean.valueOf(bool), Boolean.valueOf(i) });
+          ad.i("MicroMsg.JsApiChooseMedia", "onActivityResult, fromCamera = %b, canCompress = %b, canOriginal = %b, CropImageUI.KCompressImg = %b, doCompress = %b", new Object[] { Boolean.FALSE, Boolean.valueOf(this.jXa.jWy), Boolean.valueOf(this.jXa.jWz), Boolean.valueOf(bool), Boolean.valueOf(i) });
           if (i != 0) {
-            aDM();
+            baM();
           }
-          m.aNS().ac(new Runnable()
+          com.tencent.mm.plugin.appbrand.aa.l.bqm().postToWorker(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(131173);
-              ArrayList localArrayList1 = new ArrayList(this.hQN.size());
-              ArrayList localArrayList2 = new ArrayList(this.hQN.size());
-              Iterator localIterator = this.hQN.iterator();
+              AppMethodBeat.i(46448);
+              final ArrayList localArrayList1 = new ArrayList(this.jWL.size());
+              final ArrayList localArrayList2 = new ArrayList(this.jWL.size());
+              Iterator localIterator = this.jWL.iterator();
               while (localIterator.hasNext())
               {
                 Object localObject2 = (String)localIterator.next();
                 Object localObject1 = localObject2;
                 if (i) {
-                  localObject1 = JsApiChooseMedia.a.access$1500((String)localObject2);
+                  localObject1 = JsApiChooseMedia.a.Iw((String)localObject2);
                 }
-                localObject2 = AppBrandLocalMediaObjectManager.j(JsApiChooseMedia.a.h(JsApiChooseMedia.a.this).appId, (String)localObject1, i | false);
+                localObject2 = AppBrandLocalMediaObjectManager.h(JsApiChooseMedia.a.h(JsApiChooseMedia.a.this).appId, (String)localObject1, i | false);
                 if (localObject2 != null)
                 {
-                  localArrayList1.add(Long.valueOf(((AppBrandLocalMediaObject)localObject2).gmb));
-                  localArrayList2.add(((AppBrandLocalMediaObject)localObject2).ctV);
+                  localArrayList1.add(Long.valueOf(((AppBrandLocalMediaObject)localObject2).hWY));
+                  localArrayList2.add(((AppBrandLocalMediaObject)localObject2).diQ);
                 }
                 else
                 {
-                  ab.e("MicroMsg.JsApiChooseMedia", "handle image from album, get null obj from path: %s", new Object[] { localObject1 });
+                  ad.e("MicroMsg.JsApiChooseMedia", "handle image from album, get null obj from path: %s", new Object[] { localObject1 });
                 }
               }
               if (localArrayList2.size() == 0)
               {
-                ab.e("MicroMsg.JsApiChooseMedia", "handle image from album, get null obj");
-                JsApiChooseMedia.a.e(JsApiChooseMedia.a.this).bpE = -2;
-                JsApiChooseMedia.a.e(JsApiChooseMedia.a.this, JsApiChooseMedia.a.e(JsApiChooseMedia.a.this));
-                AppMethodBeat.o(131173);
+                ad.e("MicroMsg.JsApiChooseMedia", "handle image from album, get null obj");
+                JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).bRZ = -2;
+                JsApiChooseMedia.a.f(JsApiChooseMedia.a.this, JsApiChooseMedia.a.a(JsApiChooseMedia.a.this));
+                AppMethodBeat.o(46448);
                 return;
               }
-              al.d(new JsApiChooseMedia.a.5.1(this, localArrayList2, localArrayList1));
-              AppMethodBeat.o(131173);
+              aq.f(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(46447);
+                  ad.i("MicroMsg.JsApiChooseMedia", "handle image from album is ok");
+                  JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).bRZ = -1;
+                  JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).type = "image";
+                  JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).jWY = JsApiChooseMedia.a.c(localArrayList2, localArrayList1);
+                  JsApiChooseMedia.a.g(JsApiChooseMedia.a.this, JsApiChooseMedia.a.a(JsApiChooseMedia.a.this));
+                  AppMethodBeat.o(46447);
+                }
+              });
+              AppMethodBeat.o(46448);
             }
           });
-          AppMethodBeat.o(131184);
+          AppMethodBeat.o(46459);
           return;
           paramInt1 = 0;
           break;
         }
-        ab.i("MicroMsg.JsApiChooseMedia", "REQUEST_CODE_TAKE_MEDIA_CAMERA");
+        ad.i("MicroMsg.JsApiChooseMedia", "REQUEST_CODE_TAKE_MEDIA_CAMERA");
         if (paramIntent != null)
         {
-          ab.i("MicroMsg.JsApiChooseMedia", "data is valid!");
+          ad.i("MicroMsg.JsApiChooseMedia", "data is valid!");
           localObject = (SightCaptureResult)paramIntent.getParcelableExtra("key_req_result");
           if (localObject == null)
           {
-            ab.e("MicroMsg.JsApiChooseMedia", "sight capture result is null!");
-            this.hRa.bpE = -2;
-            a(this.hRa);
-            AppMethodBeat.o(131184);
+            ad.e("MicroMsg.JsApiChooseMedia", "sight capture result is null!");
+            this.jWZ.bRZ = -2;
+            b(this.jWZ);
+            AppMethodBeat.o(46459);
             return;
           }
-          if (((SightCaptureResult)localObject).oFG)
+          if (((SightCaptureResult)localObject).tAP)
           {
-            localObject = ((SightCaptureResult)localObject).oFO;
-            if (bo.isNullOrNil((String)localObject))
+            localObject = i.k(((SightCaptureResult)localObject).tAX, false);
+            if (bt.isNullOrNil((String)localObject))
             {
-              ab.e("MicroMsg.JsApiChooseMedia", "picture_picturePath file is not exist! path:%s", new Object[] { localObject });
-              this.hRa.bpE = -2;
-              a(this.hRa);
-              AppMethodBeat.o(131184);
+              ad.e("MicroMsg.JsApiChooseMedia", "picture_picturePath file is not exist! path:%s", new Object[] { localObject });
+              this.jWZ.bRZ = -2;
+              b(this.jWZ);
+              AppMethodBeat.o(46459);
               return;
             }
             bool = paramIntent.getBooleanExtra("CropImage_Compress_Img", false);
-            int j = this.hRb.hQF;
-            if (!this.hRb.hQG)
+            final int j = this.jXa.jWy;
+            if (!this.jXa.jWz)
             {
               paramInt1 = 1;
-              if (((paramInt1 & j) == 0) && (!(this.hRb.hQF & this.hRb.hQG & bool))) {
-                break label733;
+              if (((paramInt1 & j) == 0) && (!(this.jXa.jWy & this.jXa.jWz & bool))) {
+                break label741;
               }
             }
-            label733:
+            label741:
             for (j = 1;; j = 0)
             {
-              ab.d("MicroMsg.JsApiChooseMedia", "onActivityResult, fromCamera = %b, canCompress = %b, canOriginal = %b, CropImageUI.KCompressImg = %b, doCompress = %b", new Object[] { Boolean.TRUE, Boolean.valueOf(this.hRb.hQF), Boolean.valueOf(this.hRb.hQG), Boolean.valueOf(bool), Boolean.valueOf(j) });
+              ad.d("MicroMsg.JsApiChooseMedia", "onActivityResult, fromCamera = %b, canCompress = %b, canOriginal = %b, CropImageUI.KCompressImg = %b, doCompress = %b", new Object[] { Boolean.TRUE, Boolean.valueOf(this.jXa.jWy), Boolean.valueOf(this.jXa.jWz), Boolean.valueOf(bool), Boolean.valueOf(j) });
               if (j != 0) {
-                aDM();
+                baM();
               }
-              m.aNS().ac(new JsApiChooseMedia.a.6(this, j, (String)localObject));
-              AppMethodBeat.o(131184);
+              com.tencent.mm.plugin.appbrand.aa.l.bqm().postToWorker(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(46450);
+                  if (j) {}
+                  for (Object localObject = JsApiChooseMedia.a.Iw(this.val$filePath);; localObject = this.val$filePath)
+                  {
+                    final ArrayList localArrayList1 = new ArrayList();
+                    final ArrayList localArrayList2 = new ArrayList();
+                    localObject = AppBrandLocalMediaObjectManager.h(JsApiChooseMedia.a.h(JsApiChooseMedia.a.this).appId, (String)localObject, j | true);
+                    if (localObject == null) {
+                      break;
+                    }
+                    localArrayList1.add(Long.valueOf(((AppBrandLocalMediaObject)localObject).hWY));
+                    localArrayList2.add(((AppBrandLocalMediaObject)localObject).diQ);
+                    aq.f(new Runnable()
+                    {
+                      public final void run()
+                      {
+                        AppMethodBeat.i(46449);
+                        ad.i("MicroMsg.JsApiChooseMedia", "handle image from album is ok");
+                        JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).bRZ = -1;
+                        JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).type = "image";
+                        JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).jWY = JsApiChooseMedia.a.c(localArrayList2, localArrayList1);
+                        JsApiChooseMedia.a.h(JsApiChooseMedia.a.this, JsApiChooseMedia.a.a(JsApiChooseMedia.a.this));
+                        AppMethodBeat.o(46449);
+                      }
+                    });
+                    AppMethodBeat.o(46450);
+                    return;
+                  }
+                  ad.e("MicroMsg.JsApiChooseMedia", "handle image from mm-sight camera, get null obj from path: %s", new Object[] { this.val$filePath });
+                  JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).bRZ = -2;
+                  JsApiChooseMedia.a.i(JsApiChooseMedia.a.this, JsApiChooseMedia.a.a(JsApiChooseMedia.a.this));
+                  AppMethodBeat.o(46450);
+                }
+              });
+              AppMethodBeat.o(46459);
               return;
               paramInt1 = 0;
               break;
             }
           }
-          this.mVideoFilePath = ((SightCaptureResult)localObject).oFI;
-          if (bo.isNullOrNil(this.mVideoFilePath))
+          this.jXb = i.k(((SightCaptureResult)localObject).tAR, false);
+          if (bt.isNullOrNil(this.jXb))
           {
-            ab.e("MicroMsg.JsApiChooseMedia", "mVideoFilePath is null");
+            ad.e("MicroMsg.JsApiChooseMedia", "mVideoFilePath is null");
           }
           else
           {
-            ab.i("MicroMsg.JsApiChooseMedia", "mVideoFilePath:%s", new Object[] { this.mVideoFilePath });
-            if ((!Cs(this.hRc)) && (Cs(((SightCaptureResult)localObject).oFJ))) {
-              this.hRc = ((SightCaptureResult)localObject).oFJ;
+            ad.i("MicroMsg.JsApiChooseMedia", "mVideoFilePath:%s", new Object[] { this.jXb });
+            if ((!Iv(this.jXc)) && (Iv(((SightCaptureResult)localObject).tAS))) {
+              this.jXc = i.k(((SightCaptureResult)localObject).tAS, true);
             }
-            aDM();
-            m.aNS().ac(new Runnable()
+            baM();
+            com.tencent.mm.plugin.appbrand.aa.l.bqm().postToWorker(new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(131176);
-                if (new File(JsApiChooseMedia.a.f(JsApiChooseMedia.a.this)).exists())
+                AppMethodBeat.i(46451);
+                if (new com.tencent.mm.vfs.e(JsApiChooseMedia.a.f(JsApiChooseMedia.a.this)).exists())
                 {
-                  ab.i("MicroMsg.JsApiChooseMedia", "take media camera, the mVideoFilePath file exist, success");
-                  JsApiChooseMedia.a.e(JsApiChooseMedia.a.this).bpE = -1;
-                  JsApiChooseMedia.a.e(JsApiChooseMedia.a.this).type = "video";
+                  ad.i("MicroMsg.JsApiChooseMedia", "take media camera, the mVideoFilePath file exist, success");
+                  JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).bRZ = -1;
+                  JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).type = "video";
                   AppBrandLocalVideoObject localAppBrandLocalVideoObject = JsApiChooseMedia.a.a(JsApiChooseMedia.a.this, JsApiChooseMedia.a.f(JsApiChooseMedia.a.this));
                   if (localAppBrandLocalVideoObject == null)
                   {
-                    ab.e("MicroMsg.JsApiChooseMedia", "addVideoItem fail ,mVideoFilePath is %s", new Object[] { JsApiChooseMedia.a.f(JsApiChooseMedia.a.this) });
-                    JsApiChooseMedia.a.e(JsApiChooseMedia.a.this).bpE = -2;
-                    JsApiChooseMedia.a.i(JsApiChooseMedia.a.this, JsApiChooseMedia.a.e(JsApiChooseMedia.a.this));
-                    AppMethodBeat.o(131176);
+                    ad.e("MicroMsg.JsApiChooseMedia", "addVideoItem fail ,mVideoFilePath is %s", new Object[] { JsApiChooseMedia.a.f(JsApiChooseMedia.a.this) });
+                    JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).bRZ = -2;
+                    JsApiChooseMedia.a.j(JsApiChooseMedia.a.this, JsApiChooseMedia.a.a(JsApiChooseMedia.a.this));
+                    AppMethodBeat.o(46451);
                     return;
                   }
                   JsApiChooseMedia.a.b(JsApiChooseMedia.a.this, JsApiChooseMedia.a.f(JsApiChooseMedia.a.this));
                   String str = JsApiChooseMedia.a.g(JsApiChooseMedia.a.this);
-                  JsApiChooseMedia.a.e(JsApiChooseMedia.a.this).hQZ = JsApiChooseMedia.a.c(localAppBrandLocalVideoObject.ctV, str, localAppBrandLocalVideoObject.duration, localAppBrandLocalVideoObject.height, localAppBrandLocalVideoObject.width, localAppBrandLocalVideoObject.size);
-                  JsApiChooseMedia.a.j(JsApiChooseMedia.a.this, JsApiChooseMedia.a.e(JsApiChooseMedia.a.this));
-                  AppMethodBeat.o(131176);
+                  JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).jWY = JsApiChooseMedia.a.c(localAppBrandLocalVideoObject.diQ, str, localAppBrandLocalVideoObject.duration, localAppBrandLocalVideoObject.height, localAppBrandLocalVideoObject.width, localAppBrandLocalVideoObject.size);
+                  JsApiChooseMedia.a.k(JsApiChooseMedia.a.this, JsApiChooseMedia.a.a(JsApiChooseMedia.a.this));
+                  AppMethodBeat.o(46451);
                   return;
                 }
-                ab.e("MicroMsg.JsApiChooseMedia", "take media camera, mVideoFilePath is %s, the file not exist, fail", new Object[] { JsApiChooseMedia.a.f(JsApiChooseMedia.a.this) });
-                JsApiChooseMedia.a.e(JsApiChooseMedia.a.this).bpE = -2;
-                JsApiChooseMedia.a.k(JsApiChooseMedia.a.this, JsApiChooseMedia.a.e(JsApiChooseMedia.a.this));
-                AppMethodBeat.o(131176);
+                ad.e("MicroMsg.JsApiChooseMedia", "take media camera, mVideoFilePath is %s, the file not exist, fail", new Object[] { JsApiChooseMedia.a.f(JsApiChooseMedia.a.this) });
+                JsApiChooseMedia.a.a(JsApiChooseMedia.a.this).bRZ = -2;
+                JsApiChooseMedia.a.l(JsApiChooseMedia.a.this, JsApiChooseMedia.a.a(JsApiChooseMedia.a.this));
+                AppMethodBeat.o(46451);
               }
             });
-            AppMethodBeat.o(131184);
+            AppMethodBeat.o(46459);
           }
         }
         else
         {
-          ab.e("MicroMsg.JsApiChooseMedia", "data is null!");
+          ad.e("MicroMsg.JsApiChooseMedia", "data is null!");
         }
       }
     }
@@ -687,7 +830,7 @@ final class JsApiChooseMedia$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.JsApiChooseMedia.a
  * JD-Core Version:    0.7.0.1
  */

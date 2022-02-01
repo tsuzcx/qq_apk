@@ -13,148 +13,148 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements d
 {
-  private static int iek;
-  private static int iel;
-  private int GF;
-  private int Xj;
-  private int Xr;
-  private StaticLayout eLR;
-  private SpannableString iem;
-  private int ien;
-  private int ieo;
-  private int iep;
-  private int ieq;
-  private int ier;
-  private float ies;
+  private static int krk;
+  private static int krl;
+  private int aeo;
+  private int aew;
+  private StaticLayout ggW;
+  private SpannableString krm;
+  private int krn;
+  private int kro;
+  private int krp;
+  private int krq;
+  private float krr;
   private Context mContext;
+  private int mTextColor;
+  private int mTextSize;
   
   public a(Context paramContext, SpannableString paramSpannableString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(126593);
-    this.iep = -1;
-    this.GF = -1;
+    AppMethodBeat.i(137851);
+    this.krp = -1;
+    this.mTextColor = -1;
     this.mContext = paramContext;
-    this.iem = paramSpannableString;
-    this.ieq = b.F(this.mContext, b.iet);
-    this.GF = paramInt1;
-    this.ies = 3.0F;
-    this.ier = paramInt2;
+    this.krm = paramSpannableString;
+    this.mTextSize = b.F(this.mContext, b.krs);
+    this.mTextColor = paramInt1;
+    this.krr = 3.0F;
+    this.krq = paramInt2;
     paramContext = new TextPaint();
     paramContext.setAntiAlias(true);
-    paramContext.setColor(this.GF);
-    paramContext.setTextSize(this.ieq);
+    paramContext.setColor(this.mTextColor);
+    paramContext.setTextSize(this.mTextSize);
     paramSpannableString = paramContext.getFontMetrics();
-    this.Xr = ((int)Math.ceil(paramSpannableString.descent - paramSpannableString.top) + 2);
-    this.eLR = new StaticLayout(this.iem, paramContext, (int)Layout.getDesiredWidth(this.iem, 0, this.iem.length(), paramContext) + 1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
-    this.Xj = this.eLR.getWidth();
-    AppMethodBeat.o(126593);
+    this.aew = ((int)Math.ceil(paramSpannableString.descent - paramSpannableString.top) + 2);
+    this.ggW = new StaticLayout(this.krm, paramContext, (int)Layout.getDesiredWidth(this.krm, 0, this.krm.length(), paramContext) + 1, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
+    this.aeo = this.ggW.getWidth();
+    AppMethodBeat.o(137851);
   }
   
   public final boolean a(d paramd)
   {
-    AppMethodBeat.i(126596);
-    if (paramd.getWidth() + paramd.getCurrX() > iek)
+    AppMethodBeat.i(137854);
+    if (paramd.getWidth() + paramd.getCurrX() > krk)
     {
-      AppMethodBeat.o(126596);
+      AppMethodBeat.o(137854);
       return true;
     }
-    if (this.iep < 0) {
-      this.iep = b.F(this.mContext, 20);
+    if (this.krp < 0) {
+      this.krp = b.F(this.mContext, 20);
     }
-    if (paramd.aFI() >= this.ies)
+    if (paramd.bdp() >= this.krr)
     {
-      if ((paramd.aFI() == this.ies) && (iek - (paramd.getCurrX() + paramd.getWidth()) < this.iep))
+      if ((paramd.bdp() == this.krr) && (krk - (paramd.getCurrX() + paramd.getWidth()) < this.krp))
       {
-        AppMethodBeat.o(126596);
+        AppMethodBeat.o(137854);
         return true;
       }
-      AppMethodBeat.o(126596);
+      AppMethodBeat.o(137854);
       return false;
     }
-    if ((paramd.getCurrX() + paramd.getWidth()) / (paramd.aFI() * b.aFL()) * this.ies * b.aFL() > iek - this.iep * 1.5D)
+    if ((paramd.getCurrX() + paramd.getWidth()) / (paramd.bdp() * b.bds()) * this.krr * b.bds() > krk - this.krp * 1.5D)
     {
-      AppMethodBeat.o(126596);
+      AppMethodBeat.o(137854);
       return true;
     }
-    AppMethodBeat.o(126596);
+    AppMethodBeat.o(137854);
     return false;
-  }
-  
-  public final float aFI()
-  {
-    return this.ies;
-  }
-  
-  public final boolean aFJ()
-  {
-    AppMethodBeat.i(126595);
-    if ((this.ien < 0) && (Math.abs(this.ien) > this.Xj))
-    {
-      AppMethodBeat.o(126595);
-      return true;
-    }
-    AppMethodBeat.o(126595);
-    return false;
-  }
-  
-  public final int aFK()
-  {
-    return this.ier;
   }
   
   public final void b(Canvas paramCanvas, boolean paramBoolean)
   {
-    AppMethodBeat.i(126594);
+    AppMethodBeat.i(137852);
     int i = paramCanvas.getWidth();
     int j = paramCanvas.getHeight();
-    if ((i != iek) || (j != iel))
+    if ((i != krk) || (j != krl))
     {
-      iek = i;
-      iel = j;
+      krk = i;
+      krl = j;
     }
     paramCanvas.save();
-    paramCanvas.translate(this.ien, this.ieo);
-    this.eLR.draw(paramCanvas);
+    paramCanvas.translate(this.krn, this.kro);
+    this.ggW.draw(paramCanvas);
     paramCanvas.restore();
     if (!paramBoolean) {
-      this.ien = ((int)(this.ien - b.aFL() * this.ies));
+      this.krn = ((int)(this.krn - b.bds() * this.krr));
     }
-    AppMethodBeat.o(126594);
+    AppMethodBeat.o(137852);
   }
   
-  public final void dl(int paramInt1, int paramInt2)
+  public final float bdp()
   {
-    this.ien = paramInt1;
-    this.ieo = paramInt2;
+    return this.krr;
+  }
+  
+  public final boolean bdq()
+  {
+    AppMethodBeat.i(137853);
+    if ((this.krn < 0) && (Math.abs(this.krn) > this.aeo))
+    {
+      AppMethodBeat.o(137853);
+      return true;
+    }
+    AppMethodBeat.o(137853);
+    return false;
+  }
+  
+  public final int bdr()
+  {
+    return this.krq;
+  }
+  
+  public final void dS(int paramInt1, int paramInt2)
+  {
+    this.krn = paramInt1;
+    this.kro = paramInt2;
   }
   
   public final int getCurrX()
   {
-    return this.ien;
+    return this.krn;
   }
   
   public final int getWidth()
   {
-    return this.Xj;
+    return this.aeo;
   }
   
-  public final boolean oo(int paramInt)
+  public final boolean sh(int paramInt)
   {
-    if (paramInt < this.ier) {}
-    while (paramInt - this.ier > b.ieu) {
+    if (paramInt < this.krq) {}
+    while (paramInt - this.krq > b.krt) {
       return false;
     }
     return true;
   }
   
-  public final boolean op(int paramInt)
+  public final boolean si(int paramInt)
   {
-    return paramInt - this.ier > b.ieu;
+    return paramInt - this.krq > b.krt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.danmu.a
  * JD-Core Version:    0.7.0.1
  */

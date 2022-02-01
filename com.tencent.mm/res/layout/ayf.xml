@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:id="@id/en1" android:background="@color/a_r" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <HorizontalScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true">
+        <LinearLayout android:id="@id/eon" android:background="@color/a_r" android:layout_width="384.0dip" android:layout_height="384.0dip">
+            <RelativeLayout android:background="@color/a_r" android:layout_width="384.0dip" android:layout_height="384.0dip">
+                <ImageView android:id="@id/b4u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginTop="7.0dip" android:src="@drawable/bvw" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+                <ImageView android:id="@id/b4v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_marginRight="7.0dip" android:src="@drawable/bvw" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+                <View android:background="@color/a4" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/b4v" android:layout_toRightOf="@id/b4u" android:layout_alignParentTop="true" android:alpha="0.3" />
+                <View android:background="@color/a4" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginLeft="8.0dip" android:layout_marginTop="5.0dip" android:layout_below="@id/b4u" android:layout_alignParentLeft="true" android:alpha="0.3" />
+                <View android:background="@color/a4" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_marginRight="8.0dip" android:layout_below="@id/b4v" android:layout_alignParentRight="true" android:alpha="0.3" />
+                <RelativeLayout android:id="@id/eo6" android:layout_width="160.0dip" android:layout_height="160.0dip" android:layout_marginTop="60.0dip" android:layout_centerHorizontal="true">
+                    <ImageView android:id="@id/eo5" android:layout_width="160.0dip" android:layout_height="160.0dip" />
+                </RelativeLayout>
+                <TextView android:textSize="20.0dip" android:textColor="@color/y4" android:gravity="center_horizontal" android:id="@id/eo7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="20.0dip" android:layout_below="@id/eo6" android:layout_centerHorizontal="true" />
+                <ImageView android:background="@drawable/bvv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/a_u" android:id="@id/eo8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="19.0dip" android:text="" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+</ScrollView>

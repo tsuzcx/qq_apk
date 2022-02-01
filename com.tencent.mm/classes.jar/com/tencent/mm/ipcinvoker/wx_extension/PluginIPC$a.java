@@ -2,52 +2,52 @@ package com.tencent.mm.ipcinvoker.wx_extension;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.h.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class PluginIPC$a
   implements a
 {
-  static final a eEQ;
+  static final a fZR;
   
   static
   {
-    AppMethodBeat.i(126207);
-    eEQ = new a();
-    AppMethodBeat.o(126207);
+    AppMethodBeat.i(146421);
+    fZR = new a();
+    AppMethodBeat.o(146421);
   }
   
-  public final void a(int paramInt, String paramString1, String paramString2, Object... paramVarArgs)
+  public final void b(int paramInt, String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(126206);
+    AppMethodBeat.i(146420);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(126206);
+      AppMethodBeat.o(146420);
       return;
-      ab.v(paramString1, paramString2, paramVarArgs);
-      AppMethodBeat.o(126206);
+      ad.v(paramString1, paramString2, paramVarArgs);
+      AppMethodBeat.o(146420);
       return;
-      ab.d(paramString1, paramString2, paramVarArgs);
-      AppMethodBeat.o(126206);
+      ad.d(paramString1, paramString2, paramVarArgs);
+      AppMethodBeat.o(146420);
       return;
-      ab.i(paramString1, paramString2, paramVarArgs);
-      AppMethodBeat.o(126206);
+      ad.i(paramString1, paramString2, paramVarArgs);
+      AppMethodBeat.o(146420);
       return;
-      ab.w(paramString1, paramString2, paramVarArgs);
-      AppMethodBeat.o(126206);
+      ad.w(paramString1, paramString2, paramVarArgs);
+      AppMethodBeat.o(146420);
       return;
-      ab.e(paramString1, paramString2, paramVarArgs);
-      AppMethodBeat.o(126206);
+      ad.e(paramString1, paramString2, paramVarArgs);
+      AppMethodBeat.o(146420);
       return;
-      ab.e(paramString1, paramString2, paramVarArgs);
+      ad.e(paramString1, paramString2, paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.PluginIPC.a
  * JD-Core Version:    0.7.0.1
  */

@@ -8,96 +8,96 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AutoScrollTextView
   extends LinearLayout
 {
-  private int lrL;
-  private TextView nEA;
-  private TextView nEz;
-  private ap nvk;
-  private ArrayList<String> nwF;
-  private Animation nwM;
-  private Animation nwN;
+  private int oIf;
+  private av seP;
+  private ArrayList<String> sgg;
+  private Animation sgn;
+  private Animation sgo;
+  private TextView soI;
+  private TextView soJ;
   
   public AutoScrollTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(112366);
-    this.nwF = new ArrayList();
-    this.lrL = 0;
-    this.nvk = new ap(new ap.a()
+    AppMethodBeat.i(42571);
+    this.sgg = new ArrayList();
+    this.oIf = 0;
+    this.seP = new av(new av.a()
     {
       public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(112365);
+        AppMethodBeat.i(42570);
         AutoScrollTextView.a(AutoScrollTextView.this);
-        AppMethodBeat.o(112365);
+        AppMethodBeat.o(42570);
         return true;
       }
     }, true);
-    this.nEz = new TextView(paramContext, paramAttributeSet);
-    this.nEz.setVisibility(8);
-    this.nEA = new TextView(paramContext, paramAttributeSet);
-    this.nEA.setVisibility(8);
-    addView(this.nEz);
-    addView(this.nEA);
+    this.soI = new TextView(paramContext, paramAttributeSet);
+    this.soI.setVisibility(8);
+    this.soJ = new TextView(paramContext, paramAttributeSet);
+    this.soJ.setVisibility(8);
+    addView(this.soI);
+    addView(this.soJ);
     setOrientation(1);
     setGravity(17);
     setPadding(0, 0, 0, 0);
-    this.nwM = AnimationUtils.loadAnimation(paramContext, 2131034261);
-    this.nwN = AnimationUtils.loadAnimation(paramContext, 2131034269);
-    AppMethodBeat.o(112366);
+    this.sgn = AnimationUtils.loadAnimation(paramContext, 2130772139);
+    this.sgo = AnimationUtils.loadAnimation(paramContext, 2130772147);
+    AppMethodBeat.o(42571);
   }
   
-  private void b(TextView paramTextView, String paramString)
+  private void c(TextView paramTextView, String paramString)
   {
-    AppMethodBeat.i(112368);
-    paramTextView.setText(new SpannableString(j.b(getContext(), paramString, paramTextView.getTextSize())));
-    AppMethodBeat.o(112368);
+    AppMethodBeat.i(42573);
+    paramTextView.setText(new SpannableString(k.b(getContext(), paramString, paramTextView.getTextSize())));
+    AppMethodBeat.o(42573);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(112369);
+    AppMethodBeat.i(42574);
     super.onDetachedFromWindow();
-    this.nvk.stopTimer();
-    AppMethodBeat.o(112369);
+    this.seP.stopTimer();
+    AppMethodBeat.o(42574);
   }
   
   public void setText(List<String> paramList)
   {
-    AppMethodBeat.i(112367);
-    this.nwF.clear();
-    this.nvk.stopTimer();
+    AppMethodBeat.i(42572);
+    this.sgg.clear();
+    this.seP.stopTimer();
     if ((paramList == null) || (paramList.size() == 0))
     {
-      this.nEz.setVisibility(8);
-      this.nEA.setVisibility(8);
-      AppMethodBeat.o(112367);
+      this.soI.setVisibility(8);
+      this.soJ.setVisibility(8);
+      AppMethodBeat.o(42572);
       return;
     }
-    this.nwF.addAll(paramList);
-    b(this.nEz, (String)this.nwF.get(0));
-    this.nEz.setVisibility(0);
-    this.lrL = 0;
-    if (this.nwF.size() == 1)
+    this.sgg.addAll(paramList);
+    c(this.soI, (String)this.sgg.get(0));
+    this.soI.setVisibility(0);
+    this.oIf = 0;
+    if (this.sgg.size() == 1)
     {
-      AppMethodBeat.o(112367);
+      AppMethodBeat.o(42572);
       return;
     }
-    this.nvk.ag(5000L, 5000L);
-    AppMethodBeat.o(112367);
+    this.seP.av(5000L, 5000L);
+    AppMethodBeat.o(42572);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.AutoScrollTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.af;
 
 public abstract class ProfileItemView
   extends FrameLayout
 {
-  public ad lpe;
+  public af oFt;
   
   public ProfileItemView(Context paramContext)
   {
@@ -28,13 +28,13 @@ public abstract class ProfileItemView
     init();
   }
   
-  public boolean S(ad paramad)
+  public boolean Z(af paramaf)
   {
-    this.lpe = paramad;
-    return ccG();
+    this.oFt = paramaf;
+    return dcY();
   }
   
-  public abstract boolean ccG();
+  public abstract boolean dcY();
   
   public abstract int getLayout();
   

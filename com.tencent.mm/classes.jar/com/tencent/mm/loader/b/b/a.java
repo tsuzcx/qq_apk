@@ -1,34 +1,36 @@
 package com.tencent.mm.loader.b.b;
 
-import a.f.b.j;
-import a.l;
 import android.graphics.Bitmap;
-import com.tencent.mm.loader.h.e;
 import com.tencent.mm.memory.a.b;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/loader/cache/memory/DefaultBitmapMemoryCache;", "T", "Lcom/tencent/mm/loader/cache/memory/IMemoryCache;", "Landroid/graphics/Bitmap;", "()V", "defaultImageMemoryCache", "Lcom/tencent/mm/memory/cache/BitmapResource;", "clear", "", "get", "Lcom/tencent/mm/loader/model/Resource;", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "head", "Lcom/tencent/mm/loader/impr/transcoder/HeadResourceTranscoder;", "put", "value", "remove", "Companion", "libimageloader_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/cache/memory/DefaultBitmapMemoryCache;", "T", "Lcom/tencent/mm/loader/cache/memory/IMemoryCache;", "Landroid/graphics/Bitmap;", "()V", "defaultImageMemoryCache", "Lcom/tencent/mm/memory/cache/BitmapResource;", "clear", "", "get", "Lcom/tencent/mm/loader/model/Resource;", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "head", "Lcom/tencent/mm/loader/impr/transcoder/HeadResourceTranscoder;", "put", "value", "remove", "Companion", "libimageloader_release"})
 public final class a<T>
-  extends d<T, Bitmap>
+  extends e<T, Bitmap>
 {
   private static final String TAG = "MicroMsg.Loader.DefaultImageMemoryCacheListener";
-  private static final int eNq = 50;
-  public static final a.a eNr = new a.a((byte)0);
-  private final b<Bitmap> eNp = new b(eNq, getClass());
+  private static final int giH = 50;
+  public static final a giI = new a((byte)0);
+  private final b<Bitmap> giG = new b(giH, getClass());
   
-  public final e<Bitmap> a(com.tencent.mm.loader.h.a.a<T> parama, com.tencent.mm.loader.e.c.a<Bitmap> parama1)
+  public final com.tencent.mm.loader.h.e<Bitmap> a(com.tencent.mm.loader.h.a.a<T> parama, com.tencent.mm.loader.e.c.a<Bitmap> parama1)
   {
-    j.q(parama, "url");
+    k.h(parama, "url");
     parama = b(parama, parama1);
-    parama = (Bitmap)this.eNp.get(parama);
+    parama = (Bitmap)this.giG.get(parama);
     if (parama != null) {
-      return new e(parama);
+      return new com.tencent.mm.loader.h.e(parama);
     }
     return null;
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/cache/memory/DefaultBitmapMemoryCache$Companion;", "", "()V", "MAX_DEFAULT_BITMAP_SIZE", "", "getMAX_DEFAULT_BITMAP_SIZE", "()I", "TAG", "", "libimageloader_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.b.b.a
  * JD-Core Version:    0.7.0.1
  */

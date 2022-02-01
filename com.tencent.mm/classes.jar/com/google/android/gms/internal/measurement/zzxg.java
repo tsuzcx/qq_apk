@@ -12,37 +12,37 @@ final class zzxg
   public zzxg(Throwable paramThrowable, ReferenceQueue<Throwable> paramReferenceQueue)
   {
     super(paramThrowable, null);
-    AppMethodBeat.i(3541);
+    AppMethodBeat.i(40331);
     if (paramThrowable == null)
     {
       paramThrowable = new NullPointerException("The referent cannot be null");
-      AppMethodBeat.o(3541);
+      AppMethodBeat.o(40331);
       throw paramThrowable;
     }
     this.zzboc = System.identityHashCode(paramThrowable);
-    AppMethodBeat.o(3541);
+    AppMethodBeat.o(40331);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(3542);
+    AppMethodBeat.i(40332);
     if ((paramObject == null) || (paramObject.getClass() != getClass()))
     {
-      AppMethodBeat.o(3542);
+      AppMethodBeat.o(40332);
       return false;
     }
     if (this == paramObject)
     {
-      AppMethodBeat.o(3542);
+      AppMethodBeat.o(40332);
       return true;
     }
     paramObject = (zzxg)paramObject;
     if ((this.zzboc == paramObject.zzboc) && (get() == paramObject.get()))
     {
-      AppMethodBeat.o(3542);
+      AppMethodBeat.o(40332);
       return true;
     }
-    AppMethodBeat.o(3542);
+    AppMethodBeat.o(40332);
     return false;
   }
   
@@ -53,7 +53,7 @@ final class zzxg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzxg
  * JD-Core Version:    0.7.0.1
  */

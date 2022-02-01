@@ -2,14 +2,14 @@ package com.tencent.luggage.c.a;
 
 import android.content.Context;
 import com.tencent.luggage.a.b;
-import com.tencent.mm.plugin.appbrand.widget.b.k;
+import com.tencent.mm.plugin.appbrand.widget.dialog.k;
 
 public abstract interface a
   extends b
 {
   public abstract void a(k paramk);
   
-  public abstract k an(Context paramContext);
+  public abstract k at(Context paramContext);
 }
 
 

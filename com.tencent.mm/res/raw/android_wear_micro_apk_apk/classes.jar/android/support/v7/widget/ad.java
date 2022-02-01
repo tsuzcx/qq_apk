@@ -2,9 +2,9 @@ package android.support.v7.widget;
 
 public abstract class ad
 {
-  public void ap(int paramInt) {}
+  public void aB(int paramInt) {}
   
-  public void aq(int paramInt) {}
+  public void aC(int paramInt) {}
 }
 
 

@@ -11,7 +11,7 @@ public abstract interface l
   
   public abstract Uri getUri();
   
-  public abstract Map<String, m> kv();
+  public abstract Map<String, m> kE();
 }
 
 

@@ -24,7 +24,7 @@ public class AppBrandPageFullScreenView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.AppBrandPageFullScreenView
  * JD-Core Version:    0.7.0.1
  */

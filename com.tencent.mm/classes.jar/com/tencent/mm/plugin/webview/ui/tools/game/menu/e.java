@@ -28,30 +28,43 @@ public final class e
   
   private e(Context paramContext, byte paramByte)
   {
-    super(paramContext, 2131493289);
-    AppMethodBeat.i(8836);
-    eS();
+    super(paramContext, 2131820966);
+    AppMethodBeat.i(80990);
+    gl();
     this.mContext = paramContext;
-    AppMethodBeat.o(8836);
+    AppMethodBeat.o(80990);
+  }
+  
+  private boolean aov()
+  {
+    AppMethodBeat.i(80997);
+    DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
+    if (localDisplayMetrics.widthPixels > localDisplayMetrics.heightPixels)
+    {
+      AppMethodBeat.o(80997);
+      return true;
+    }
+    AppMethodBeat.o(80997);
+    return false;
   }
   
   private View b(int paramInt, View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(8841);
+    AppMethodBeat.i(80995);
     Object localObject1 = getWindow();
     Object localObject2;
     View localView;
-    if (isLandscape())
+    if (aov())
     {
       ((Window)localObject1).setGravity(5);
-      ((Window)localObject1).setWindowAnimations(2131493543);
+      ((Window)localObject1).setWindowAnimations(2131821249);
       ((Window)localObject1).getDecorView().setPadding(0, 0, 0, 0);
       localObject2 = ((Window)localObject1).getAttributes();
       ((WindowManager.LayoutParams)localObject2).width = -1;
       ((WindowManager.LayoutParams)localObject2).height = -1;
       ((Window)localObject1).setAttributes((WindowManager.LayoutParams)localObject2);
-      localObject2 = (ViewGroup)LayoutInflater.from(this.mContext).inflate(2130969789, null);
-      localView = ((ViewGroup)localObject2).findViewById(2131823374);
+      localObject2 = (ViewGroup)LayoutInflater.from(this.mContext).inflate(2131494348, null);
+      localView = ((ViewGroup)localObject2).findViewById(2131306045);
       localObject1 = paramView;
       if (paramInt != 0)
       {
@@ -60,41 +73,41 @@ public final class e
           localObject1 = getLayoutInflater().inflate(paramInt, (ViewGroup)localObject2, false);
         }
       }
-      if (!isLandscape()) {
-        break label203;
+      if (!aov()) {
+        break label201;
       }
-      paramView = (FrameLayout)((ViewGroup)localObject2).findViewById(2131824697);
-      label142:
+      paramView = (FrameLayout)((ViewGroup)localObject2).findViewById(2131302250);
+      label141:
       paramView.setVisibility(0);
       if (paramLayoutParams != null) {
-        break label217;
+        break label215;
       }
       paramView.addView((View)localObject1);
     }
     for (;;)
     {
-      if (dgg()) {
+      if (eqd()) {
         localView.setOnClickListener(new e.1(this));
       }
-      AppMethodBeat.o(8841);
+      AppMethodBeat.o(80995);
       return localObject2;
       ((Window)localObject1).setGravity(80);
-      ((Window)localObject1).setWindowAnimations(2131493119);
+      ((Window)localObject1).setWindowAnimations(2131820789);
       break;
-      label203:
-      paramView = (FrameLayout)((ViewGroup)localObject2).findViewById(2131824696);
-      break label142;
-      label217:
+      label201:
+      paramView = (FrameLayout)((ViewGroup)localObject2).findViewById(2131302249);
+      break label141;
+      label215:
       paramView.addView((View)localObject1, paramLayoutParams);
     }
   }
   
-  private boolean dgg()
+  private boolean eqd()
   {
-    AppMethodBeat.i(8842);
+    AppMethodBeat.i(80996);
     if (Build.VERSION.SDK_INT < 11)
     {
-      AppMethodBeat.o(8842);
+      AppMethodBeat.o(80996);
       return true;
     }
     TypedValue localTypedValue = new TypedValue();
@@ -102,56 +115,43 @@ public final class e
     {
       if (localTypedValue.data != 0)
       {
-        AppMethodBeat.o(8842);
+        AppMethodBeat.o(80996);
         return true;
       }
-      AppMethodBeat.o(8842);
+      AppMethodBeat.o(80996);
       return false;
     }
-    AppMethodBeat.o(8842);
-    return false;
-  }
-  
-  private boolean isLandscape()
-  {
-    AppMethodBeat.i(8843);
-    DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
-    if (localDisplayMetrics.widthPixels > localDisplayMetrics.heightPixels)
-    {
-      AppMethodBeat.o(8843);
-      return true;
-    }
-    AppMethodBeat.o(8843);
+    AppMethodBeat.o(80996);
     return false;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(8838);
+    AppMethodBeat.i(80992);
     super.onCreate(paramBundle);
     getWindow().setLayout(-1, -1);
-    AppMethodBeat.o(8838);
+    AppMethodBeat.o(80992);
   }
   
   public final void setContentView(int paramInt)
   {
-    AppMethodBeat.i(8837);
+    AppMethodBeat.i(80991);
     super.setContentView(b(paramInt, null, null));
-    AppMethodBeat.o(8837);
+    AppMethodBeat.o(80991);
   }
   
   public final void setContentView(View paramView)
   {
-    AppMethodBeat.i(8839);
+    AppMethodBeat.i(80993);
     super.setContentView(b(0, paramView, null));
-    AppMethodBeat.o(8839);
+    AppMethodBeat.o(80993);
   }
   
   public final void setContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(8840);
+    AppMethodBeat.i(80994);
     super.setContentView(b(0, paramView, paramLayoutParams));
-    AppMethodBeat.o(8840);
+    AppMethodBeat.o(80994);
   }
 }
 

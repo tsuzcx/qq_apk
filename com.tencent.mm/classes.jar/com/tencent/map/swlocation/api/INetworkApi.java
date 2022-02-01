@@ -1,6 +1,6 @@
 package com.tencent.map.swlocation.api;
 
-import com.b.a.a.q;
+import com.c.a.a.q;
 
 public abstract interface INetworkApi
   extends q
@@ -12,7 +12,7 @@ public abstract interface INetworkApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.swlocation.api.INetworkApi
  * JD-Core Version:    0.7.0.1
  */

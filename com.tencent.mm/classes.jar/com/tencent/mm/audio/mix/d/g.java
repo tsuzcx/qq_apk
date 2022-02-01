@@ -7,36 +7,36 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class g
   implements ThreadFactory
 {
-  private final ThreadGroup cfU;
-  private final AtomicInteger cfV;
-  private final String cfW;
+  private final ThreadGroup cUS;
+  private final AtomicInteger cUT;
+  private final String cUU;
   
   public g()
   {
-    AppMethodBeat.i(137074);
-    this.cfV = new AtomicInteger(1);
-    this.cfW = "audio_mix_thread#";
-    this.cfU = new ThreadGroup("AUDIO_MIX_THREAD_POOL_GROUP");
-    AppMethodBeat.o(137074);
+    AppMethodBeat.i(136822);
+    this.cUT = new AtomicInteger(1);
+    this.cUU = "audio_mix_thread#";
+    this.cUS = new ThreadGroup("AUDIO_MIX_THREAD_POOL_GROUP");
+    AppMethodBeat.o(136822);
   }
   
   public final Thread newThread(Runnable paramRunnable)
   {
-    AppMethodBeat.i(137075);
-    paramRunnable = new Thread(this.cfU, paramRunnable, "audio_mix_thread#" + this.cfV.getAndIncrement(), 0L);
+    AppMethodBeat.i(136823);
+    paramRunnable = new Thread(this.cUS, paramRunnable, "audio_mix_thread#" + this.cUT.getAndIncrement(), 0L);
     if (paramRunnable.isDaemon()) {
       paramRunnable.setDaemon(false);
     }
     if (paramRunnable.getPriority() != 5) {
       paramRunnable.setPriority(5);
     }
-    AppMethodBeat.o(137075);
+    AppMethodBeat.o(136823);
     return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.audio.mix.d.g
  * JD-Core Version:    0.7.0.1
  */

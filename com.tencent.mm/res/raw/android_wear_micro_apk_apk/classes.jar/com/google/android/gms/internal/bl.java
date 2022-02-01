@@ -18,66 +18,66 @@ public final class bl
   extends cv
   implements r, s
 {
-  private static f<? extends cr, cs> Pj = cp.Qu;
-  private Set<Scope> GR;
-  private final f<? extends cr, cs> Hn;
-  private x Kf;
-  private cr NA;
-  private final boolean Pk;
-  private bm Pl;
+  private static f<? extends cr, cs> QY = cp.Sj;
+  private Set<Scope> IG;
+  private final f<? extends cr, cs> Jc;
+  private x LU;
+  private cr Pp;
+  private final boolean QZ;
+  private bm Ra;
+  private final Handler dG;
   private final Context mContext;
-  private final Handler mHandler;
   
   public bl(Context paramContext, Handler paramHandler)
   {
     this.mContext = paramContext;
-    this.mHandler = paramHandler;
-    this.Hn = Pj;
-    this.Pk = true;
+    this.dG = paramHandler;
+    this.Jc = QY;
+    this.QZ = true;
   }
   
   public bl(Context paramContext, Handler paramHandler, x paramx, f<? extends cr, cs> paramf)
   {
     this.mContext = paramContext;
-    this.mHandler = paramHandler;
-    this.Kf = paramx;
-    this.GR = paramx.hn();
-    this.Hn = paramf;
-    this.Pk = false;
+    this.dG = paramHandler;
+    this.LU = paramx;
+    this.IG = paramx.hx();
+    this.Jc = paramf;
+    this.QZ = false;
   }
   
   public final void a(ConnectionResult paramConnectionResult)
   {
-    this.Pl.k(paramConnectionResult);
+    this.Ra.l(paramConnectionResult);
   }
   
   public final void a(bm parambm)
   {
-    if (this.NA != null) {
-      this.NA.disconnect();
+    if (this.Pp != null) {
+      this.Pp.disconnect();
     }
-    if (this.Pk)
+    if (this.QZ)
     {
-      localObject = c.c(this.mContext).gk();
+      localObject = c.c(this.mContext).gu();
       if (localObject != null) {
         break label128;
       }
     }
     label128:
-    for (Object localObject = new HashSet();; localObject = new HashSet(((GoogleSignInOptions)localObject).fW()))
+    for (Object localObject = new HashSet();; localObject = new HashSet(((GoogleSignInOptions)localObject).gh()))
     {
-      this.GR = ((Set)localObject);
-      this.Kf = new x(null, this.GR, null, 0, null, null, null, cs.Qz);
-      this.NA = ((cr)this.Hn.a(this.mContext, this.mHandler.getLooper(), this.Kf, this.Kf.hs(), this, this));
-      this.Pl = parambm;
-      this.NA.connect();
+      this.IG = ((Set)localObject);
+      this.LU = new x(null, this.IG, null, 0, null, null, null, cs.So);
+      this.Pp = ((cr)this.Jc.a(this.mContext, this.dG.getLooper(), this.LU, this.LU.hC(), this, this));
+      this.Ra = parambm;
+      this.Pp.connect();
       return;
     }
   }
   
   public final void a(final zzbaw paramzzbaw)
   {
-    this.mHandler.post(new Runnable()
+    this.dG.post(new Runnable()
     {
       public final void run()
       {
@@ -86,24 +86,24 @@ public final class bl
     });
   }
   
-  public final void bd(int paramInt)
+  public final void bx(int paramInt)
   {
-    this.NA.disconnect();
+    this.Pp.disconnect();
   }
   
   public final void h(Bundle paramBundle)
   {
-    this.NA.a(this);
+    this.Pp.a(this);
   }
   
-  public final cr iW()
+  public final cr jf()
   {
-    return this.NA;
+    return this.Pp;
   }
   
-  public final void je()
+  public final void jn()
   {
-    this.NA.disconnect();
+    this.Pp.disconnect();
   }
 }
 

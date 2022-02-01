@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.wenote.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.f;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.b.f;
+import com.tencent.mm.model.az;
 
 public final class i
 {
-  private static final f<Integer, com.tencent.mm.protocal.b.a.c> eka;
+  private static final f<Integer, com.tencent.mm.protocal.b.a.c> fwL;
   
   static
   {
-    AppMethodBeat.i(26648);
-    eka = new com.tencent.mm.memory.a.c(32);
-    AppMethodBeat.o(26648);
+    AppMethodBeat.i(30341);
+    fwL = new com.tencent.mm.memory.a.c(32);
+    AppMethodBeat.o(30341);
   }
   
-  public static String YW()
+  public static String aqi()
   {
-    AppMethodBeat.i(26647);
-    aw.aaz();
-    String str = com.tencent.mm.model.c.YW();
-    AppMethodBeat.o(26647);
+    AppMethodBeat.i(30340);
+    az.arV();
+    String str = com.tencent.mm.model.c.aqi();
+    AppMethodBeat.o(30340);
     return str;
   }
 }

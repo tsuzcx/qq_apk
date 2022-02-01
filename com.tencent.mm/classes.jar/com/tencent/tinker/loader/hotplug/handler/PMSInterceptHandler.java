@@ -10,7 +10,9 @@ import java.lang.reflect.Method;
 public class PMSInterceptHandler
   implements ServiceBinderInterceptor.BinderInvocationHandler
 {
-  private static Object d(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  private static final String TAG = "Tinker.PMSIntrcptHndlr";
+  
+  private Object handleGetActivityInfo(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
     Class[] arrayOfClass = paramMethod.getExceptionTypes();
     for (;;)
@@ -20,7 +22,7 @@ public class PMSInterceptHandler
       {
         paramObject = paramMethod.invoke(paramObject, paramArrayOfObject);
         if (paramObject == null) {
-          break label141;
+          break label145;
         }
         return paramObject;
       }
@@ -49,7 +51,7 @@ public class PMSInterceptHandler
           new StringBuilder("locate componentName field of ").append(paramMethod.getName()).append(" done at idx: ").append(i);
           paramObject = (ComponentName)paramArrayOfObject[i];
           if (paramObject != null) {
-            return IncrementComponentManager.awY(paramObject.getClassName());
+            return IncrementComponentManager.queryActivityInfo(paramObject.getClassName());
           }
           new StringBuilder("failed to locate componentName field of ").append(paramMethod.getName()).append(", notice any crashes or mistakes after resolve works.");
           return null;
@@ -59,7 +61,7 @@ public class PMSInterceptHandler
       {
         paramObject = null;
         continue;
-        label141:
+        label145:
         i = 0;
         continue;
       }
@@ -67,7 +69,7 @@ public class PMSInterceptHandler
     }
   }
   
-  private static Object e(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  private Object handleResolveIntent(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
     Class[] arrayOfClass = paramMethod.getExceptionTypes();
     for (;;)
@@ -77,7 +79,7 @@ public class PMSInterceptHandler
       {
         paramObject = paramMethod.invoke(paramObject, paramArrayOfObject);
         if (paramObject == null) {
-          break label138;
+          break label142;
         }
         return paramObject;
       }
@@ -106,7 +108,7 @@ public class PMSInterceptHandler
           new StringBuilder("locate intent field of ").append(paramMethod.getName()).append(" done at idx: ").append(i);
           paramObject = (Intent)paramArrayOfObject[i];
           if (paramObject != null) {
-            return IncrementComponentManager.ba(paramObject);
+            return IncrementComponentManager.resolveIntent(paramObject);
           }
           new StringBuilder("failed to locate intent field of ").append(paramMethod.getName()).append(", notice any crashes or mistakes after resolve works.");
           return null;
@@ -116,7 +118,7 @@ public class PMSInterceptHandler
       {
         paramObject = null;
         continue;
-        label138:
+        label142:
         i = 0;
         continue;
       }
@@ -124,14 +126,14 @@ public class PMSInterceptHandler
     }
   }
   
-  public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
     String str = paramMethod.getName();
     if ("getActivityInfo".equals(str)) {
-      return d(paramObject, paramMethod, paramArrayOfObject);
+      return handleGetActivityInfo(paramObject, paramMethod, paramArrayOfObject);
     }
     if ("resolveIntent".equals(str)) {
-      return e(paramObject, paramMethod, paramArrayOfObject);
+      return handleResolveIntent(paramObject, paramMethod, paramArrayOfObject);
     }
     return paramMethod.invoke(paramObject, paramArrayOfObject);
   }

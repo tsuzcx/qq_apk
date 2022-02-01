@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:id="@id/crq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/lb" />
-</LinearLayout>
+    <com.tencent.mm.plugin.game.ui.tab.GameTabWidget android:id="@id/g41" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/g41">
+        <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/eki" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a4p" />
+    </FrameLayout>
+</RelativeLayout>

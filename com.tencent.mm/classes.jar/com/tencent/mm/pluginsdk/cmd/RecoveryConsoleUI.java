@@ -19,50 +19,50 @@ public class RecoveryConsoleUI
   extends MMActivity
   implements AdapterView.OnItemClickListener
 {
-  List<Map<String, String>> lee;
-  List<b.a> vJI;
-  SimpleAdapter vJJ;
-  ListView xx;
+  List<b.a> BND;
+  SimpleAdapter BNE;
+  ListView DQ;
+  List<Map<String, String>> otO;
   
   public int getLayoutId()
   {
-    return 2130970245;
+    return 2131494873;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(79197);
+    AppMethodBeat.i(151618);
     super.onCreate(paramBundle);
     setTitle("Recovery Console");
-    this.vJI = b.dkW();
-    this.lee = new ArrayList(this.vJI.size());
-    paramBundle = this.vJI.iterator();
+    this.BND = b.euU();
+    this.otO = new ArrayList(this.BND.size());
+    paramBundle = this.BND.iterator();
     while (paramBundle.hasNext())
     {
       b.a locala = (b.a)paramBundle.next();
       HashMap localHashMap = new HashMap();
-      localHashMap.put("title", getString(locala.vJN));
-      this.lee.add(localHashMap);
+      localHashMap.put("title", getString(locala.lms));
+      this.otO.add(localHashMap);
     }
-    this.vJJ = new SimpleAdapter(this, this.lee, 2130970179, new String[] { "title" }, new int[] { 16908310 });
-    this.xx = ((ListView)findViewById(16908298));
-    this.xx.setAdapter(this.vJJ);
-    this.xx.setOnItemClickListener(this);
-    AppMethodBeat.o(79197);
+    this.BNE = new SimpleAdapter(this, this.otO, 2131494804, new String[] { "title" }, new int[] { 16908310 });
+    this.DQ = ((ListView)findViewById(16908298));
+    this.DQ.setAdapter(this.BNE);
+    this.DQ.setOnItemClickListener(this);
+    AppMethodBeat.o(151618);
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(79198);
-    paramAdapterView = (b.a)this.vJI.get(paramInt);
-    if (paramAdapterView.vJO != null)
+    AppMethodBeat.i(151619);
+    paramAdapterView = (b.a)this.BND.get(paramInt);
+    if (paramAdapterView.BNI != null)
     {
-      paramAdapterView.vJO.a(this, paramAdapterView.cNu.split(" +"), "");
-      AppMethodBeat.o(79198);
+      paramAdapterView.BNI.a(this, paramAdapterView.dEs.split(" +"), "");
+      AppMethodBeat.o(151619);
       return;
     }
-    b.B(this, paramAdapterView.cNu, "");
-    AppMethodBeat.o(79198);
+    b.J(this, paramAdapterView.dEs, "");
+    AppMethodBeat.o(151619);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

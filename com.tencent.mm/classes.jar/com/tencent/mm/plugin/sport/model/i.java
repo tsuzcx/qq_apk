@@ -6,17 +6,17 @@ import android.os.Bundle;
 public final class i
   extends MatrixCursor
 {
-  private Bundle mEJ;
+  private Bundle dow;
   
   public i(String[] paramArrayOfString, Bundle paramBundle)
   {
     super(paramArrayOfString);
-    this.mEJ = paramBundle;
+    this.dow = paramBundle;
   }
   
   public final Bundle getExtras()
   {
-    return this.mEJ;
+    return this.dow;
   }
 }
 

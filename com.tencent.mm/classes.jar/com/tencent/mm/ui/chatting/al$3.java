@@ -13,17 +13,17 @@ final class al$3
   
   public final void onCreateMMMenu(l paraml)
   {
-    AppMethodBeat.i(31012);
-    Iterator localIterator = this.zCo.iterator();
+    AppMethodBeat.i(34898);
+    Iterator localIterator = this.GqG.iterator();
     while (localIterator.hasNext()) {
       paraml.add((String)localIterator.next());
     }
-    AppMethodBeat.o(31012);
+    AppMethodBeat.o(34898);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.al.3
  * JD-Core Version:    0.7.0.1
  */

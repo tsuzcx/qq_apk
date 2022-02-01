@@ -2,12 +2,12 @@ package com.tencent.mm.memory;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class m
   extends l
 {
-  private static int fdO = -1;
+  private static int gDZ = -1;
   
   /* Error */
   private static Bitmap b(java.io.InputStream paramInputStream, android.graphics.Rect paramRect, android.graphics.BitmapFactory.Options paramOptions)
@@ -15,7 +15,7 @@ public final class m
     // Byte code:
     //   0: ldc 19
     //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 31	com/tencent/mm/memory/h:fdJ	Lcom/tencent/mm/memory/h;
+    //   5: getstatic 31	com/tencent/mm/memory/h:gDU	Lcom/tencent/mm/memory/h;
     //   8: invokevirtual 35	com/tencent/mm/memory/h:acquire	()Ljava/lang/Object;
     //   11: checkcast 37	java/nio/ByteBuffer
     //   14: astore_3
@@ -70,10 +70,10 @@ public final class m
     //   106: aload_1
     //   107: invokevirtual 83	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   110: aastore
-    //   111: invokestatic 89	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   111: invokestatic 89	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   114: aload_0
     //   115: ifnull +11 -> 126
-    //   118: getstatic 31	com/tencent/mm/memory/h:fdJ	Lcom/tencent/mm/memory/h;
+    //   118: getstatic 31	com/tencent/mm/memory/h:gDU	Lcom/tencent/mm/memory/h;
     //   121: aload_0
     //   122: invokevirtual 93	com/tencent/mm/memory/h:release	(Ljava/lang/Object;)Z
     //   125: pop
@@ -90,7 +90,7 @@ public final class m
     //   143: aload 4
     //   145: getfield 99	android/graphics/BitmapFactory$Options:outMimeType	Ljava/lang/String;
     //   148: aastore
-    //   149: invokestatic 101	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   149: invokestatic 101	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   152: aload 4
     //   154: iconst_1
     //   155: putfield 104	android/graphics/BitmapFactory$Options:inDither	Z
@@ -106,12 +106,12 @@ public final class m
     //   176: aload 4
     //   178: iconst_0
     //   179: putfield 52	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   182: invokestatic 118	com/tencent/mm/sdk/platformtools/d:dsm	()V
+    //   182: invokestatic 118	com/tencent/mm/sdk/platformtools/f:eFa	()V
     //   185: aload_0
-    //   186: invokestatic 122	com/tencent/mm/memory/m:p	(Ljava/io/InputStream;)Ljava/io/InputStream;
+    //   186: invokestatic 122	com/tencent/mm/memory/m:s	(Ljava/io/InputStream;)Ljava/io/InputStream;
     //   189: astore_0
     //   190: aload_0
-    //   191: invokestatic 126	com/tencent/mm/memory/m:q	(Ljava/io/InputStream;)V
+    //   191: invokestatic 126	com/tencent/mm/memory/m:t	(Ljava/io/InputStream;)V
     //   194: aload_0
     //   195: aload_1
     //   196: aload 4
@@ -119,7 +119,7 @@ public final class m
     //   201: astore_0
     //   202: aload_3
     //   203: ifnull +11 -> 214
-    //   206: getstatic 31	com/tencent/mm/memory/h:fdJ	Lcom/tencent/mm/memory/h;
+    //   206: getstatic 31	com/tencent/mm/memory/h:gDU	Lcom/tencent/mm/memory/h;
     //   209: aload_3
     //   210: invokevirtual 93	com/tencent/mm/memory/h:release	(Ljava/lang/Object;)Z
     //   213: pop
@@ -132,7 +132,7 @@ public final class m
     //   223: astore_0
     //   224: aload_0
     //   225: ifnull +11 -> 236
-    //   228: getstatic 31	com/tencent/mm/memory/h:fdJ	Lcom/tencent/mm/memory/h;
+    //   228: getstatic 31	com/tencent/mm/memory/h:gDU	Lcom/tencent/mm/memory/h;
     //   231: aload_0
     //   232: invokevirtual 93	com/tencent/mm/memory/h:release	(Ljava/lang/Object;)Z
     //   235: pop
@@ -193,10 +193,10 @@ public final class m
     //   22: istore 4
     //   24: iload_3
     //   25: istore 5
-    //   27: getstatic 142	com/tencent/mm/memory/g:fdI	Lcom/tencent/mm/memory/g;
+    //   27: getstatic 142	com/tencent/mm/memory/g:gDT	Lcom/tencent/mm/memory/g;
     //   30: iload_3
     //   31: invokestatic 148	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   34: invokevirtual 151	com/tencent/mm/memory/g:b	(Ljava/lang/Integer;)Ljava/lang/Object;
+    //   34: invokevirtual 151	com/tencent/mm/memory/g:c	(Ljava/lang/Integer;)Ljava/lang/Object;
     //   37: checkcast 152	[B
     //   40: astore 6
     //   42: aload 6
@@ -234,14 +234,14 @@ public final class m
     //   98: invokestatic 164	com/tencent/mm/graphics/MMBitmapFactory:pinBitmap	(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
     //   101: astore_1
     //   102: aload_0
-    //   103: invokestatic 169	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
+    //   103: invokestatic 170	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   106: iload_3
     //   107: ifle +16 -> 123
     //   110: aload 6
     //   112: ifnull +11 -> 123
-    //   115: getstatic 142	com/tencent/mm/memory/g:fdI	Lcom/tencent/mm/memory/g;
+    //   115: getstatic 142	com/tencent/mm/memory/g:gDT	Lcom/tencent/mm/memory/g;
     //   118: aload 6
-    //   120: invokevirtual 173	com/tencent/mm/memory/g:O	([B)V
+    //   120: invokevirtual 174	com/tencent/mm/memory/g:k	([B)V
     //   123: ldc 130
     //   125: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   128: aload_1
@@ -254,11 +254,11 @@ public final class m
     //   139: iload_3
     //   140: aload_1
     //   141: aload_2
-    //   142: invokestatic 179	com/tencent/mm/graphics/a:a	([BILandroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   142: invokestatic 180	com/tencent/mm/graphics/b:a	([BILandroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   145: astore_1
     //   146: goto -56 -> 90
     //   149: aload_0
-    //   150: invokestatic 169	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
+    //   150: invokestatic 170	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   153: ldc 130
     //   155: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   158: aconst_null
@@ -273,7 +273,7 @@ public final class m
     //   171: iload_3
     //   172: istore 4
     //   174: ldc 75
-    //   176: ldc 181
+    //   176: ldc 182
     //   178: iconst_1
     //   179: anewarray 79	java/lang/Object
     //   182: dup
@@ -281,16 +281,16 @@ public final class m
     //   184: aload_1
     //   185: invokevirtual 83	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   188: aastore
-    //   189: invokestatic 89	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   189: invokestatic 89	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   192: aload_0
-    //   193: invokestatic 169	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
+    //   193: invokestatic 170	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   196: iload_3
     //   197: ifle -44 -> 153
     //   200: aload 6
     //   202: ifnull -49 -> 153
-    //   205: getstatic 142	com/tencent/mm/memory/g:fdI	Lcom/tencent/mm/memory/g;
+    //   205: getstatic 142	com/tencent/mm/memory/g:gDT	Lcom/tencent/mm/memory/g;
     //   208: aload 6
-    //   210: invokevirtual 173	com/tencent/mm/memory/g:O	([B)V
+    //   210: invokevirtual 174	com/tencent/mm/memory/g:k	([B)V
     //   213: goto -60 -> 153
     //   216: astore_1
     //   217: aconst_null
@@ -298,14 +298,14 @@ public final class m
     //   220: iload 5
     //   222: istore_3
     //   223: aload_0
-    //   224: invokestatic 169	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
+    //   224: invokestatic 170	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
     //   227: iload_3
     //   228: ifle +16 -> 244
     //   231: aload 7
     //   233: ifnull +11 -> 244
-    //   236: getstatic 142	com/tencent/mm/memory/g:fdI	Lcom/tencent/mm/memory/g;
+    //   236: getstatic 142	com/tencent/mm/memory/g:gDT	Lcom/tencent/mm/memory/g;
     //   239: aload 7
-    //   241: invokevirtual 173	com/tencent/mm/memory/g:O	([B)V
+    //   241: invokevirtual 174	com/tencent/mm/memory/g:k	([B)V
     //   244: ldc 130
     //   246: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   249: aload_1
@@ -352,25 +352,46 @@ public final class m
     //   137	146	270	java/lang/Exception
   }
   
+  public final void C(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(156436);
+    if (paramBitmap != null) {}
+    try
+    {
+      if (!paramBitmap.isRecycled())
+      {
+        ad.i("MicroMsg.PurgeableBitmapFactory", "bitmap recycle %s", new Object[] { paramBitmap.toString() });
+        paramBitmap.recycle();
+      }
+      AppMethodBeat.o(156436);
+      return;
+    }
+    catch (Exception paramBitmap)
+    {
+      ad.e("MicroMsg.PurgeableBitmapFactory", "recycle error: %s", new Object[] { paramBitmap.getMessage() });
+      AppMethodBeat.o(156436);
+    }
+  }
+  
   /* Error */
   public final Bitmap a(java.lang.String paramString, android.graphics.BitmapFactory.Options paramOptions)
   {
     // Byte code:
-    //   0: ldc 183
+    //   0: ldc 203
     //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 189	com/tencent/mm/vfs/e:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   6: invokestatic 209	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   9: astore_3
     //   10: aload_3
     //   11: astore_1
     //   12: aload_3
     //   13: aconst_null
     //   14: aload_2
-    //   15: invokestatic 191	com/tencent/mm/memory/m:b	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   15: invokestatic 211	com/tencent/mm/memory/m:b	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   18: astore_2
     //   19: aload_3
-    //   20: invokestatic 169	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   23: ldc 183
+    //   20: invokestatic 170	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   23: ldc 203
     //   25: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: aload_2
     //   29: areturn
@@ -380,7 +401,7 @@ public final class m
     //   33: aload_3
     //   34: astore_1
     //   35: ldc 75
-    //   37: ldc 193
+    //   37: ldc 213
     //   39: iconst_1
     //   40: anewarray 79	java/lang/Object
     //   43: dup
@@ -388,10 +409,10 @@ public final class m
     //   45: aload_2
     //   46: invokevirtual 83	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   49: aastore
-    //   50: invokestatic 89	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   50: invokestatic 89	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   53: aload_3
-    //   54: invokestatic 169	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   57: ldc 183
+    //   54: invokestatic 170	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   57: ldc 203
     //   59: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   62: aconst_null
     //   63: areturn
@@ -399,8 +420,8 @@ public final class m
     //   65: aconst_null
     //   66: astore_1
     //   67: aload_1
-    //   68: invokestatic 169	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   71: ldc 183
+    //   68: invokestatic 170	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   71: ldc 203
     //   73: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   76: aload_2
     //   77: athrow
@@ -427,21 +448,21 @@ public final class m
   public final Bitmap a(java.lang.String paramString, android.graphics.Rect paramRect, android.graphics.BitmapFactory.Options paramOptions)
   {
     // Byte code:
-    //   0: ldc 195
+    //   0: ldc 215
     //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 189	com/tencent/mm/vfs/e:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   6: invokestatic 209	com/tencent/mm/vfs/i:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   9: astore 4
     //   11: aload 4
     //   13: astore_1
     //   14: aload 4
     //   16: aload_2
     //   17: aload_3
-    //   18: invokestatic 191	com/tencent/mm/memory/m:b	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   18: invokestatic 211	com/tencent/mm/memory/m:b	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   21: astore_2
     //   22: aload 4
-    //   24: invokestatic 169	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   27: ldc 195
+    //   24: invokestatic 170	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   27: ldc 215
     //   29: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   32: aload_2
     //   33: areturn
@@ -451,7 +472,7 @@ public final class m
     //   38: aload 4
     //   40: astore_1
     //   41: ldc 75
-    //   43: ldc 193
+    //   43: ldc 213
     //   45: iconst_1
     //   46: anewarray 79	java/lang/Object
     //   49: dup
@@ -459,10 +480,10 @@ public final class m
     //   51: aload_2
     //   52: invokevirtual 83	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   55: aastore
-    //   56: invokestatic 89	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   56: invokestatic 89	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   59: aload 4
-    //   61: invokestatic 169	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   64: ldc 195
+    //   61: invokestatic 170	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   64: ldc 215
     //   66: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   69: aconst_null
     //   70: areturn
@@ -470,8 +491,8 @@ public final class m
     //   72: aconst_null
     //   73: astore_1
     //   74: aload_1
-    //   75: invokestatic 169	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   78: ldc 195
+    //   75: invokestatic 170	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   78: ldc 215
     //   80: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   83: aload_2
     //   84: athrow
@@ -494,31 +515,10 @@ public final class m
     //   41	59	85	finally
     //   14	22	89	java/lang/Exception
   }
-  
-  public final void u(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(115390);
-    if (paramBitmap != null) {}
-    try
-    {
-      if (!paramBitmap.isRecycled())
-      {
-        ab.i("MicroMsg.PurgeableBitmapFactory", "bitmap recycle %s", new Object[] { paramBitmap.toString() });
-        paramBitmap.recycle();
-      }
-      AppMethodBeat.o(115390);
-      return;
-    }
-    catch (Exception paramBitmap)
-    {
-      ab.e("MicroMsg.PurgeableBitmapFactory", "recycle error: %s", new Object[] { paramBitmap.getMessage() });
-      AppMethodBeat.o(115390);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.m
  * JD-Core Version:    0.7.0.1
  */

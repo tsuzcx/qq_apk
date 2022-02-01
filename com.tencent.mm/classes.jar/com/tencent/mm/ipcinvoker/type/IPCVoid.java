@@ -9,14 +9,14 @@ public class IPCVoid
   implements Parcelable
 {
   public static final Parcelable.Creator<IPCVoid> CREATOR;
-  public static final IPCVoid eER;
+  public static final IPCVoid fZS;
   
   static
   {
-    AppMethodBeat.i(114165);
-    eER = new IPCVoid();
-    CREATOR = new IPCVoid.1();
-    AppMethodBeat.o(114165);
+    AppMethodBeat.i(158876);
+    fZS = new IPCVoid();
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(158876);
   }
   
   public int describeContents()
@@ -28,7 +28,7 @@ public class IPCVoid
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.type.IPCVoid
  * JD-Core Version:    0.7.0.1
  */

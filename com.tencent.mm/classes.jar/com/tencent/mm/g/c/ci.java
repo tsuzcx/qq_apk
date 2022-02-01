@@ -8,22 +8,19 @@ public abstract class ci
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dCW = "rankID".hashCode();
-  private static final int dCX = "appusername".hashCode();
-  private static final int dCY = "liketips".hashCode();
-  private static final int dhU = "username".hashCode();
-  private static final int dxs = "timestamp".hashCode();
+  private static final int eFV = "protocolNumber".hashCode();
+  private static final int eFW = "logContent".hashCode();
+  private static final int ekU = "createTime".hashCode();
+  private static final int exb = "id".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dCT = true;
-  private boolean dCU = true;
-  private boolean dCV = true;
-  private boolean dhS = true;
-  private boolean dxi = true;
-  public String field_appusername;
-  public String field_liketips;
-  public String field_rankID;
-  public int field_timestamp;
-  public String field_username;
+  private boolean eFT = true;
+  private boolean eFU = true;
+  private boolean ekx = true;
+  private boolean ewY = true;
+  public long field_createTime;
+  public String field_id;
+  public String field_logContent;
+  public int field_protocolNumber;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -38,25 +35,24 @@ public abstract class ci
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dCW != k) {
-        break label60;
+      if (exb != k) {
+        break label65;
       }
-      this.field_rankID = paramCursor.getString(i);
+      this.field_id = paramCursor.getString(i);
+      this.ewY = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (dCX == k) {
-        this.field_appusername = paramCursor.getString(i);
-      } else if (dhU == k) {
-        this.field_username = paramCursor.getString(i);
-      } else if (dxs == k) {
-        this.field_timestamp = paramCursor.getInt(i);
-      } else if (dCY == k) {
-        this.field_liketips = paramCursor.getString(i);
+      label65:
+      if (eFV == k) {
+        this.field_protocolNumber = paramCursor.getInt(i);
+      } else if (eFW == k) {
+        this.field_logContent = paramCursor.getString(i);
+      } else if (ekU == k) {
+        this.field_createTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -66,23 +62,17 @@ public abstract class ci
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dCT) {
-      localContentValues.put("rankID", this.field_rankID);
+    if (this.ewY) {
+      localContentValues.put("id", this.field_id);
     }
-    if (this.dCU) {
-      localContentValues.put("appusername", this.field_appusername);
+    if (this.eFT) {
+      localContentValues.put("protocolNumber", Integer.valueOf(this.field_protocolNumber));
     }
-    if (this.dhS) {
-      localContentValues.put("username", this.field_username);
+    if (this.eFU) {
+      localContentValues.put("logContent", this.field_logContent);
     }
-    if (this.dxi) {
-      localContentValues.put("timestamp", Integer.valueOf(this.field_timestamp));
-    }
-    if (this.field_liketips == null) {
-      this.field_liketips = "";
-    }
-    if (this.dCV) {
-      localContentValues.put("liketips", this.field_liketips);
+    if (this.ekx) {
+      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -92,7 +82,7 @@ public abstract class ci
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.ci
  * JD-Core Version:    0.7.0.1
  */

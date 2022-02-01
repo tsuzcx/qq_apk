@@ -14,11 +14,11 @@ final class zzg<TResult>
   
   public zzg(Executor paramExecutor, OnCanceledListener paramOnCanceledListener)
   {
-    AppMethodBeat.i(57390);
+    AppMethodBeat.i(13389);
     this.mLock = new Object();
     this.zzafk = paramExecutor;
     this.zzafq = paramOnCanceledListener;
-    AppMethodBeat.o(57390);
+    AppMethodBeat.o(13389);
   }
   
   public final void cancel()
@@ -32,17 +32,17 @@ final class zzg<TResult>
   
   public final void onComplete(Task arg1)
   {
-    AppMethodBeat.i(57391);
+    AppMethodBeat.i(13390);
     if (???.isCanceled()) {}
     synchronized (this.mLock)
     {
       if (this.zzafq == null)
       {
-        AppMethodBeat.o(57391);
+        AppMethodBeat.o(13390);
         return;
       }
       this.zzafk.execute(new zzh(this));
-      AppMethodBeat.o(57391);
+      AppMethodBeat.o(13390);
       return;
     }
   }

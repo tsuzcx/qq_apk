@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:focusable="false" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/du" android:textColor="@color/h6" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/abo" android:background="@drawable/l_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l2" android:layout_marginBottom="@dimen/l2" android:singleLine="true" />
-    <Button android:textSize="@dimen/m2" android:textColor="@color/a6q" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/abn" android:background="@drawable/gu" android:visibility="gone" android:layout_width="141.0dip" android:layout_height="35.0dip" android:text="@string/ah8" android:maxLines="3" />
-    <View android:id="@id/abp" android:background="@drawable/m2" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/dv" android:layout_marginTop="@dimen/l2" android:layout_marginRight="@dimen/dv" android:layerType="software" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ip" />
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ih" />
+    <LinearLayout android:id="@id/fjo" android:background="@drawable/mg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" layout="@layout/io" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/za" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:id="@id/edg" android:background="@color/ip" android:layout_width="fill_parent" android:layout_height="@dimen/vy" android:scaleType="centerCrop" />
+            <ImageView android:id="@id/edh" android:background="@drawable/gh" android:layout_width="fill_parent" android:layout_height="@dimen/vy" />
+        </FrameLayout>
+    </LinearLayout>
 </LinearLayout>

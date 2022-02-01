@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:id="@id/cz" style="@style/ls" />
-    <com.tencent.mm.ui.base.MMClearEditText android:id="@id/lh" android:imeOptions="actionDone" style="@style/lq" />
-</merge>
+<ScrollView android:background="@color/s8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip">
+                <TextView android:textSize="15.0dip" android:textColor="@color/y4" android:id="@id/cml" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36.0dip" android:text="" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/y4" android:id="@id/cmm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="28.0dip" android:text="" />
+                <TextView android:textSize="13.0dip" android:textColor="@color/y0" android:id="@id/cmd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="28.0dip" android:text="" />
+                <TextView android:textSize="13.0dip" android:textColor="@color/to" android:id="@id/cmc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="36.0dip">
+                    <TextView android:textSize="15.0dip" android:textColor="@color/y4" android:gravity="right" android:id="@id/cme" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+                    <ImageView android:id="@id/cmb" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/aq8" />
+                </LinearLayout>
+            </LinearLayout>
+            <FrameLayout android:background="@drawable/xs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:minHeight="120.0dip">
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/cmh" android:background="@color/a7c" android:visibility="visible" android:layout_width="112.0dip" android:layout_height="102.0dip" android:layout_marginRight="16.0dip" android:scaleType="centerCrop" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                </RelativeLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cmg" android:background="@color/a7c" android:paddingLeft="20.0dip" android:paddingTop="16.0dip" android:paddingBottom="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@raw/honey_pay_bank_logo" android:scaleType="centerCrop" />
+                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip">
+                        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/cmf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+                        <TextView android:textSize="13.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/cmi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d20" android:alpha="0.5" />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+            <View android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="24.0dip" />
+            <TextView android:textSize="17.0dip" android:textColor="@drawable/xj" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/cmj" android:paddingTop="20.0dip" android:paddingBottom="25.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/d1z" />
+        </LinearLayout>
+        <TextView android:textSize="13.0dip" android:textColor="@color/FG_2" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/cmk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="24.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="25.0dip" android:text="" />
+    </LinearLayout>
+</ScrollView>

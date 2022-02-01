@@ -3,48 +3,46 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class r
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandWxaPkgManifestRecordPkgPathIndex ON AppBrandWxaPkgManifestRecord(pkgPath)" };
-  private static final int dfV = "startTime".hashCode();
-  private static final int dfW = "endTime".hashCode();
-  private static final int dgM;
-  private static final int dhB = "appId".hashCode();
-  private static final int diB = "version".hashCode();
-  private static final int diC = "versionMd5".hashCode();
-  private static final int diD = "versionState".hashCode();
-  private static final int diE = "pkgPath".hashCode();
-  private static final int diF;
-  private static final int diG;
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandPrefetchWxaAttrsMarkTableAppIdIndex ON AppBrandPrefetchWxaAttrsMarkTable(appId)" };
+  private static final int elJ = "appId".hashCode();
+  private static final int emH = "prefetchUpdateTime".hashCode();
+  private static final int eme = "username".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dfO = true;
-  private boolean dfP = true;
-  private boolean dgp = true;
-  private boolean dhk = true;
-  private boolean diA = true;
-  private boolean div = true;
-  private boolean diw = true;
-  private boolean dix = true;
-  private boolean diy = true;
-  private boolean diz = true;
+  private boolean els = true;
+  private boolean emG = true;
+  private boolean emb = true;
   public String field_appId;
-  public long field_createTime;
-  public int field_debugType;
-  public String field_downloadURL;
-  public long field_endTime;
-  public String field_pkgPath;
-  public long field_startTime;
-  public int field_version;
-  public String field_versionMd5;
-  public int field_versionState;
+  public long field_prefetchUpdateTime;
+  public String field_username;
   
-  static
+  public static c.a So()
   {
-    dgM = "createTime".hashCode();
-    diF = "debugType".hashCode();
-    diG = "downloadURL".hashCode();
+    c.a locala = new c.a();
+    locala.EYt = new Field[3];
+    locala.columns = new String[4];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "username";
+    locala.EYv.put("username", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" username TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.EYu = "username";
+    locala.columns[1] = "appId";
+    locala.EYv.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "prefetchUpdateTime";
+    locala.EYv.put("prefetchUpdateTime", "LONG");
+    localStringBuilder.append(" prefetchUpdateTime LONG");
+    locala.columns[3] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -60,35 +58,22 @@ public abstract class r
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dhB != k) {
-        break label60;
+      if (eme != k) {
+        break label65;
       }
-      this.field_appId = paramCursor.getString(i);
+      this.field_username = paramCursor.getString(i);
+      this.emb = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (diB == k) {
-        this.field_version = paramCursor.getInt(i);
-      } else if (diC == k) {
-        this.field_versionMd5 = paramCursor.getString(i);
-      } else if (diD == k) {
-        this.field_versionState = paramCursor.getInt(i);
-      } else if (diE == k) {
-        this.field_pkgPath = paramCursor.getString(i);
-      } else if (dgM == k) {
-        this.field_createTime = paramCursor.getLong(i);
-      } else if (diF == k) {
-        this.field_debugType = paramCursor.getInt(i);
-      } else if (diG == k) {
-        this.field_downloadURL = paramCursor.getString(i);
-      } else if (dfV == k) {
-        this.field_startTime = paramCursor.getLong(i);
-      } else if (dfW == k) {
-        this.field_endTime = paramCursor.getLong(i);
+      label65:
+      if (elJ == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (emH == k) {
+        this.field_prefetchUpdateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -98,35 +83,14 @@ public abstract class r
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dhk) {
+    if (this.emb) {
+      localContentValues.put("username", this.field_username);
+    }
+    if (this.els) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.div) {
-      localContentValues.put("version", Integer.valueOf(this.field_version));
-    }
-    if (this.diw) {
-      localContentValues.put("versionMd5", this.field_versionMd5);
-    }
-    if (this.dix) {
-      localContentValues.put("versionState", Integer.valueOf(this.field_versionState));
-    }
-    if (this.diy) {
-      localContentValues.put("pkgPath", this.field_pkgPath);
-    }
-    if (this.dgp) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
-    }
-    if (this.diz) {
-      localContentValues.put("debugType", Integer.valueOf(this.field_debugType));
-    }
-    if (this.diA) {
-      localContentValues.put("downloadURL", this.field_downloadURL);
-    }
-    if (this.dfO) {
-      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
-    }
-    if (this.dfP) {
-      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
+    if (this.emG) {
+      localContentValues.put("prefetchUpdateTime", Long.valueOf(this.field_prefetchUpdateTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -136,7 +100,7 @@ public abstract class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.r
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<android.support.v4.widget.NestedScrollView android:orientation="vertical" android:id="@id/a5t" android:background="@drawable/c4c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:id="@id/de" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="金额" />
-        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="17.0dip" android:gravity="right" android:id="@id/d8" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="元" />
+    <LinearLayout android:gravity="bottom" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/a5w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ImageView android:id="@id/bba" android:visibility="gone" style="@style/hp" />
+        <android.support.v7.widget.RecyclerView android:gravity="center" android:id="@id/a5u" android:paddingRight="@dimen/c0" android:paddingBottom="@dimen/c5" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="always" />
+        <ImageView android:id="@id/dn1" android:visibility="gone" android:layout_marginLeft="@dimen/c0" style="@style/hp" />
+        <android.support.v7.widget.RecyclerView android:gravity="center" android:id="@id/a5v" android:paddingTop="@dimen/c5" android:paddingRight="@dimen/c0" android:paddingBottom="@dimen/c_" android:visibility="gone" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="always" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/a5s" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="vertical" android:id="@id/a5p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:background="@color/b" android:layout_width="fill_parent" android:layout_height="@dimen/ci" />
+            <ImageView android:id="@id/bdj" style="@style/hp" />
+            <TextView android:textSize="@dimen/td" android:textColor="@color/FG_0" android:gravity="center" android:background="@drawable/ajy" android:layout_width="fill_parent" android:layout_height="@dimen/ce" android:text="@string/ai4" />
+        </LinearLayout>
     </LinearLayout>
-</merge>
+</android.support.v4.widget.NestedScrollView>

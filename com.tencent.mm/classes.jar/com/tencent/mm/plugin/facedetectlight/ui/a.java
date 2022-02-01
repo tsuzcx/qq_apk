@@ -6,36 +6,36 @@ import android.view.ViewGroup;
 
 public abstract class a
 {
+  protected ViewGroup Bf;
   public String TAG = "FaceReflectBaseUI";
-  protected com.tencent.mm.plugin.facedetectlight.ui.container.a mrz;
-  protected ViewGroup uR;
+  protected com.tencent.mm.plugin.facedetectlight.ui.container.a pYb;
   
   public a(ViewGroup paramViewGroup, com.tencent.mm.plugin.facedetectlight.ui.container.a parama)
   {
-    this.uR = paramViewGroup;
-    this.mrz = parama;
+    this.Bf = paramViewGroup;
+    this.pYb = parama;
     this.TAG = getClass().getSimpleName();
-    LayoutInflater.from(this.uR.getContext()).inflate(bvM(), this.uR, true);
+    LayoutInflater.from(this.Bf.getContext()).inflate(chg(), this.Bf, true);
     initView();
   }
   
-  public abstract int bvM();
+  public abstract int chg();
   
   public final View findViewById(int paramInt)
   {
-    return this.uR.findViewById(paramInt);
+    return this.Bf.findViewById(paramInt);
   }
   
   public abstract void initView();
   
   public final void setVisibility(int paramInt)
   {
-    this.uR.setVisibility(paramInt);
+    this.Bf.setVisibility(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectlight.ui.a
  * JD-Core Version:    0.7.0.1
  */

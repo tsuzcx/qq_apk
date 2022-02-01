@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.wallet.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.pt;
+import com.tencent.mm.g.a.rk;
 import com.tencent.mm.sdk.b.c;
 
 public final class r
-  extends c<pt>
+  extends c<rk>
 {
   public r()
   {
-    AppMethodBeat.i(45846);
-    this.__eventId = pt.class.getName().hashCode();
-    AppMethodBeat.o(45846);
+    AppMethodBeat.i(160863);
+    this.__eventId = rk.class.getName().hashCode();
+    AppMethodBeat.o(160863);
   }
 }
 

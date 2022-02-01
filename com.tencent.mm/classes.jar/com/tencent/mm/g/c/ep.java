@@ -8,55 +8,71 @@ public abstract class ep
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dOV = "newerIds".hashCode();
-  private static final int dOW = "bgId".hashCode();
-  private static final int dOX = "bgUrl".hashCode();
-  private static final int dOY = "older_bgId".hashCode();
-  private static final int dOZ = "local_flag".hashCode();
-  private static final int dPa = "istyle".hashCode();
-  private static final int dPb = "iFlag".hashCode();
-  private static final int dPc = "icount".hashCode();
-  private static final int dPd = "faultS".hashCode();
-  private static final int dPe = "snsBgId".hashCode();
-  private static final int dPf = "snsuser".hashCode();
-  private static final int dPg = "adsession".hashCode();
-  private static final int dPh = "lastFirstPageRequestErrCode".hashCode();
-  private static final int dPi = "lastFirstPageRequestErrType".hashCode();
-  private static final int dgK = "userName".hashCode();
-  private static final int dtX = "md5".hashCode();
+  private static final int eSX;
+  private static final int eSY;
+  private static final int eSZ;
+  private static final int eTa;
+  private static final int eTb;
+  private static final int eTc;
+  private static final int eTd;
+  private static final int eTe;
+  private static final int eTf = "cmdSequence".hashCode();
+  private static final int elJ = "appId".hashCode();
+  private static final int elq;
+  private static final int emV = "version".hashCode();
+  private static final int eng;
+  private static final int enh;
+  private static final int enk;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dOH = true;
-  private boolean dOI = true;
-  private boolean dOJ = true;
-  private boolean dOK = true;
-  private boolean dOL = true;
-  private boolean dOM = true;
-  private boolean dON = true;
-  private boolean dOO = true;
-  private boolean dOP = true;
-  private boolean dOQ = true;
-  private boolean dOR = true;
-  private boolean dOS = true;
-  private boolean dOT = true;
-  private boolean dOU = true;
-  private boolean dgn = true;
-  private boolean dtk = true;
-  public byte[] field_adsession;
-  public String field_bgId;
-  public String field_bgUrl;
-  public byte[] field_faultS;
-  public int field_iFlag;
-  public int field_icount;
-  public int field_istyle;
-  public int field_lastFirstPageRequestErrCode;
-  public int field_lastFirstPageRequestErrType;
-  public int field_local_flag;
-  public String field_md5;
-  public String field_newerIds;
-  public String field_older_bgId;
-  public long field_snsBgId;
-  public byte[] field_snsuser;
-  public String field_userName;
+  private static final int type_HASHCODE = "type".hashCode();
+  private boolean __hadSettype = true;
+  private boolean eSO = true;
+  private boolean eSP = true;
+  private boolean eSQ = true;
+  private boolean eSR = true;
+  private boolean eSS = true;
+  private boolean eST = true;
+  private boolean eSU = true;
+  private boolean eSV = true;
+  private boolean eSW = true;
+  private boolean elo = true;
+  private boolean els = true;
+  private boolean emQ = true;
+  private boolean ena = true;
+  private boolean enb = true;
+  private boolean enf = true;
+  public String field_appId;
+  public long field_cmdSequence;
+  public boolean field_firstTimeTried;
+  public long field_lastRetryTime;
+  public int field_networkType;
+  public String field_packageKey;
+  public int field_packageType;
+  public String field_pkgMd5;
+  public int field_reportId;
+  public int field_retriedCount;
+  public long field_retryInterval;
+  public int field_retryTimes;
+  public int field_scene;
+  public boolean field_splitDownloadURLCgi;
+  public int field_type;
+  public int field_version;
+  
+  static
+  {
+    eSX = "retryTimes".hashCode();
+    eSY = "retriedCount".hashCode();
+    eSZ = "retryInterval".hashCode();
+    eTa = "networkType".hashCode();
+    eTb = "pkgMd5".hashCode();
+    enh = "packageKey".hashCode();
+    eng = "packageType".hashCode();
+    eTc = "lastRetryTime".hashCode();
+    eTd = "firstTimeTried".hashCode();
+    enk = "reportId".hashCode();
+    eTe = "splitDownloadURLCgi".hashCode();
+    elq = "scene".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -64,57 +80,99 @@ public abstract class ep
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dgK != k) {
-        break label65;
+      if (elJ != k) {
+        break label60;
       }
-      this.field_userName = paramCursor.getString(i);
-      this.dgn = true;
+      this.field_appId = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (dtX == k) {
-        this.field_md5 = paramCursor.getString(i);
-      } else if (dOV == k) {
-        this.field_newerIds = paramCursor.getString(i);
-      } else if (dOW == k) {
-        this.field_bgId = paramCursor.getString(i);
-      } else if (dOX == k) {
-        this.field_bgUrl = paramCursor.getString(i);
-      } else if (dOY == k) {
-        this.field_older_bgId = paramCursor.getString(i);
-      } else if (dOZ == k) {
-        this.field_local_flag = paramCursor.getInt(i);
-      } else if (dPa == k) {
-        this.field_istyle = paramCursor.getInt(i);
-      } else if (dPb == k) {
-        this.field_iFlag = paramCursor.getInt(i);
-      } else if (dPc == k) {
-        this.field_icount = paramCursor.getInt(i);
-      } else if (dPd == k) {
-        this.field_faultS = paramCursor.getBlob(i);
-      } else if (dPe == k) {
-        this.field_snsBgId = paramCursor.getLong(i);
-      } else if (dPf == k) {
-        this.field_snsuser = paramCursor.getBlob(i);
-      } else if (dPg == k) {
-        this.field_adsession = paramCursor.getBlob(i);
-      } else if (dPh == k) {
-        this.field_lastFirstPageRequestErrCode = paramCursor.getInt(i);
-      } else if (dPi == k) {
-        this.field_lastFirstPageRequestErrType = paramCursor.getInt(i);
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
+      label60:
+      if (emV == k)
+      {
+        this.field_version = paramCursor.getInt(i);
+      }
+      else if (type_HASHCODE == k)
+      {
+        this.field_type = paramCursor.getInt(i);
+      }
+      else if (eSX == k)
+      {
+        this.field_retryTimes = paramCursor.getInt(i);
+      }
+      else if (eSY == k)
+      {
+        this.field_retriedCount = paramCursor.getInt(i);
+      }
+      else if (eSZ == k)
+      {
+        this.field_retryInterval = paramCursor.getLong(i);
+      }
+      else if (eTa == k)
+      {
+        this.field_networkType = paramCursor.getInt(i);
+      }
+      else if (eTb == k)
+      {
+        this.field_pkgMd5 = paramCursor.getString(i);
+      }
+      else if (enh == k)
+      {
+        this.field_packageKey = paramCursor.getString(i);
+      }
+      else if (eng == k)
+      {
+        this.field_packageType = paramCursor.getInt(i);
+      }
+      else if (eTc == k)
+      {
+        this.field_lastRetryTime = paramCursor.getLong(i);
+      }
+      else
+      {
+        boolean bool;
+        if (eTd == k)
+        {
+          if (paramCursor.getInt(i) != 0) {}
+          for (bool = true;; bool = false)
+          {
+            this.field_firstTimeTried = bool;
+            break;
+          }
+        }
+        if (enk == k)
+        {
+          this.field_reportId = paramCursor.getInt(i);
+        }
+        else
+        {
+          if (eTe == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_splitDownloadURLCgi = bool;
+              break;
+            }
+          }
+          if (elq == k) {
+            this.field_scene = paramCursor.getInt(i);
+          } else if (eTf == k) {
+            this.field_cmdSequence = paramCursor.getLong(i);
+          } else if (rowid_HASHCODE == k) {
+            this.systemRowid = paramCursor.getLong(i);
+          }
+        }
       }
     }
   }
@@ -122,56 +180,53 @@ public abstract class ep
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.field_userName == null) {
-      this.field_userName = "";
+    if (this.els) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.dgn) {
-      localContentValues.put("userName", this.field_userName);
+    if (this.emQ) {
+      localContentValues.put("version", Integer.valueOf(this.field_version));
     }
-    if (this.dtk) {
-      localContentValues.put("md5", this.field_md5);
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.dOH) {
-      localContentValues.put("newerIds", this.field_newerIds);
+    if (this.eSO) {
+      localContentValues.put("retryTimes", Integer.valueOf(this.field_retryTimes));
     }
-    if (this.dOI) {
-      localContentValues.put("bgId", this.field_bgId);
+    if (this.eSP) {
+      localContentValues.put("retriedCount", Integer.valueOf(this.field_retriedCount));
     }
-    if (this.dOJ) {
-      localContentValues.put("bgUrl", this.field_bgUrl);
+    if (this.eSQ) {
+      localContentValues.put("retryInterval", Long.valueOf(this.field_retryInterval));
     }
-    if (this.dOK) {
-      localContentValues.put("older_bgId", this.field_older_bgId);
+    if (this.eSR) {
+      localContentValues.put("networkType", Integer.valueOf(this.field_networkType));
     }
-    if (this.dOL) {
-      localContentValues.put("local_flag", Integer.valueOf(this.field_local_flag));
+    if (this.eSS) {
+      localContentValues.put("pkgMd5", this.field_pkgMd5);
     }
-    if (this.dOM) {
-      localContentValues.put("istyle", Integer.valueOf(this.field_istyle));
+    if (this.enb) {
+      localContentValues.put("packageKey", this.field_packageKey);
     }
-    if (this.dON) {
-      localContentValues.put("iFlag", Integer.valueOf(this.field_iFlag));
+    if (this.ena) {
+      localContentValues.put("packageType", Integer.valueOf(this.field_packageType));
     }
-    if (this.dOO) {
-      localContentValues.put("icount", Integer.valueOf(this.field_icount));
+    if (this.eST) {
+      localContentValues.put("lastRetryTime", Long.valueOf(this.field_lastRetryTime));
     }
-    if (this.dOP) {
-      localContentValues.put("faultS", this.field_faultS);
+    if (this.eSU) {
+      localContentValues.put("firstTimeTried", Boolean.valueOf(this.field_firstTimeTried));
     }
-    if (this.dOQ) {
-      localContentValues.put("snsBgId", Long.valueOf(this.field_snsBgId));
+    if (this.enf) {
+      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
     }
-    if (this.dOR) {
-      localContentValues.put("snsuser", this.field_snsuser);
+    if (this.eSV) {
+      localContentValues.put("splitDownloadURLCgi", Boolean.valueOf(this.field_splitDownloadURLCgi));
     }
-    if (this.dOS) {
-      localContentValues.put("adsession", this.field_adsession);
+    if (this.elo) {
+      localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.dOT) {
-      localContentValues.put("lastFirstPageRequestErrCode", Integer.valueOf(this.field_lastFirstPageRequestErrCode));
-    }
-    if (this.dOU) {
-      localContentValues.put("lastFirstPageRequestErrType", Integer.valueOf(this.field_lastFirstPageRequestErrType));
+    if (this.eSW) {
+      localContentValues.put("cmdSequence", Long.valueOf(this.field_cmdSequence));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -181,7 +236,7 @@ public abstract class ep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.ep
  * JD-Core Version:    0.7.0.1
  */

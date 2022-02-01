@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/asj" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" style="@style/n3" />
+    <LinearLayout android:id="@id/bma" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <TextView android:textColor="@color/s5" android:gravity="center" android:id="@id/bm5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd" android:text="@string/az0" />
+    </LinearLayout>
+    <View android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <RelativeLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="@dimen/cd">
+        <Button android:id="@id/b95" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci" android:text="@string/bep" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/oa" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jx" android:layout_width="@dimen/cf" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci">
+            <CheckBox android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/jv" android:background="@drawable/a2r" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/ao" android:layout_height="@dimen/ao" android:layout_centerVertical="true" />
+            <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textColor="@color/s5" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/ju" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:text="@string/fx" android:maxLines="1" android:layout_centerVertical="true" />
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textColor="@color/s5" android:gravity="center" android:id="@id/b_2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:layout_toLeftOf="@id/b95" android:layout_toRightOf="@id/jx" android:layout_centerVertical="true" />
+        <View android:id="@id/jw" android:layout_width="@dimen/ch" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</LinearLayout>

@@ -11,10 +11,10 @@ final class FacebookFriendUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(124808);
-    this.gDg.hideVKB();
-    this.gDg.finish();
-    AppMethodBeat.o(124808);
+    AppMethodBeat.i(127959);
+    this.iqA.hideVKB();
+    this.iqA.finish();
+    AppMethodBeat.o(127959);
     return true;
   }
 }

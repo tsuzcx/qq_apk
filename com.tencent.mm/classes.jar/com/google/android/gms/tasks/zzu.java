@@ -28,29 +28,29 @@ final class zzu<TResult>
   
   zzu()
   {
-    AppMethodBeat.i(57417);
+    AppMethodBeat.i(13416);
     this.mLock = new Object();
     this.zzage = new zzr();
-    AppMethodBeat.o(57417);
+    AppMethodBeat.o(13416);
   }
   
   @GuardedBy("mLock")
   private final void zzdq()
   {
-    AppMethodBeat.i(57443);
+    AppMethodBeat.i(13442);
     Preconditions.checkState(this.zzagf, "Task is not yet complete");
-    AppMethodBeat.o(57443);
+    AppMethodBeat.o(13442);
   }
   
   @GuardedBy("mLock")
   private final void zzdr()
   {
-    AppMethodBeat.i(57444);
+    AppMethodBeat.i(13443);
     if (!this.zzagf) {}
     for (boolean bool = true;; bool = false)
     {
       Preconditions.checkState(bool, "Task is already complete");
-      AppMethodBeat.o(57444);
+      AppMethodBeat.o(13443);
       return;
     }
   }
@@ -58,177 +58,177 @@ final class zzu<TResult>
   @GuardedBy("mLock")
   private final void zzds()
   {
-    AppMethodBeat.i(57445);
+    AppMethodBeat.i(13444);
     if (this.zzfi)
     {
       CancellationException localCancellationException = new CancellationException("Task is already canceled.");
-      AppMethodBeat.o(57445);
+      AppMethodBeat.o(13444);
       throw localCancellationException;
     }
-    AppMethodBeat.o(57445);
+    AppMethodBeat.o(13444);
   }
   
   private final void zzdt()
   {
-    AppMethodBeat.i(57446);
+    AppMethodBeat.i(13445);
     synchronized (this.mLock)
     {
       if (!this.zzagf)
       {
-        AppMethodBeat.o(57446);
+        AppMethodBeat.o(13445);
         return;
       }
       this.zzage.zza(this);
-      AppMethodBeat.o(57446);
+      AppMethodBeat.o(13445);
       return;
     }
   }
   
   public final Task<TResult> addOnCanceledListener(Activity paramActivity, OnCanceledListener paramOnCanceledListener)
   {
-    AppMethodBeat.i(57434);
+    AppMethodBeat.i(13433);
     paramOnCanceledListener = new zzg(TaskExecutors.MAIN_THREAD, paramOnCanceledListener);
     this.zzage.zza(paramOnCanceledListener);
     zza.zze(paramActivity).zzb(paramOnCanceledListener);
     zzdt();
-    AppMethodBeat.o(57434);
+    AppMethodBeat.o(13433);
     return this;
   }
   
   public final Task<TResult> addOnCanceledListener(OnCanceledListener paramOnCanceledListener)
   {
-    AppMethodBeat.i(57432);
+    AppMethodBeat.i(13431);
     paramOnCanceledListener = addOnCanceledListener(TaskExecutors.MAIN_THREAD, paramOnCanceledListener);
-    AppMethodBeat.o(57432);
+    AppMethodBeat.o(13431);
     return paramOnCanceledListener;
   }
   
   public final Task<TResult> addOnCanceledListener(Executor paramExecutor, OnCanceledListener paramOnCanceledListener)
   {
-    AppMethodBeat.i(57433);
+    AppMethodBeat.i(13432);
     this.zzage.zza(new zzg(paramExecutor, paramOnCanceledListener));
     zzdt();
-    AppMethodBeat.o(57433);
+    AppMethodBeat.o(13432);
     return this;
   }
   
   public final Task<TResult> addOnCompleteListener(Activity paramActivity, OnCompleteListener<TResult> paramOnCompleteListener)
   {
-    AppMethodBeat.i(57428);
+    AppMethodBeat.i(13427);
     paramOnCompleteListener = new zzi(TaskExecutors.MAIN_THREAD, paramOnCompleteListener);
     this.zzage.zza(paramOnCompleteListener);
     zza.zze(paramActivity).zzb(paramOnCompleteListener);
     zzdt();
-    AppMethodBeat.o(57428);
+    AppMethodBeat.o(13427);
     return this;
   }
   
   public final Task<TResult> addOnCompleteListener(OnCompleteListener<TResult> paramOnCompleteListener)
   {
-    AppMethodBeat.i(57426);
+    AppMethodBeat.i(13425);
     paramOnCompleteListener = addOnCompleteListener(TaskExecutors.MAIN_THREAD, paramOnCompleteListener);
-    AppMethodBeat.o(57426);
+    AppMethodBeat.o(13425);
     return paramOnCompleteListener;
   }
   
   public final Task<TResult> addOnCompleteListener(Executor paramExecutor, OnCompleteListener<TResult> paramOnCompleteListener)
   {
-    AppMethodBeat.i(57427);
+    AppMethodBeat.i(13426);
     this.zzage.zza(new zzi(paramExecutor, paramOnCompleteListener));
     zzdt();
-    AppMethodBeat.o(57427);
+    AppMethodBeat.o(13426);
     return this;
   }
   
   public final Task<TResult> addOnFailureListener(Activity paramActivity, OnFailureListener paramOnFailureListener)
   {
-    AppMethodBeat.i(57425);
+    AppMethodBeat.i(13424);
     paramOnFailureListener = new zzk(TaskExecutors.MAIN_THREAD, paramOnFailureListener);
     this.zzage.zza(paramOnFailureListener);
     zza.zze(paramActivity).zzb(paramOnFailureListener);
     zzdt();
-    AppMethodBeat.o(57425);
+    AppMethodBeat.o(13424);
     return this;
   }
   
   public final Task<TResult> addOnFailureListener(OnFailureListener paramOnFailureListener)
   {
-    AppMethodBeat.i(57423);
+    AppMethodBeat.i(13422);
     paramOnFailureListener = addOnFailureListener(TaskExecutors.MAIN_THREAD, paramOnFailureListener);
-    AppMethodBeat.o(57423);
+    AppMethodBeat.o(13422);
     return paramOnFailureListener;
   }
   
   public final Task<TResult> addOnFailureListener(Executor paramExecutor, OnFailureListener paramOnFailureListener)
   {
-    AppMethodBeat.i(57424);
+    AppMethodBeat.i(13423);
     this.zzage.zza(new zzk(paramExecutor, paramOnFailureListener));
     zzdt();
-    AppMethodBeat.o(57424);
+    AppMethodBeat.o(13423);
     return this;
   }
   
   public final Task<TResult> addOnSuccessListener(Activity paramActivity, OnSuccessListener<? super TResult> paramOnSuccessListener)
   {
-    AppMethodBeat.i(57422);
+    AppMethodBeat.i(13421);
     paramOnSuccessListener = new zzm(TaskExecutors.MAIN_THREAD, paramOnSuccessListener);
     this.zzage.zza(paramOnSuccessListener);
     zza.zze(paramActivity).zzb(paramOnSuccessListener);
     zzdt();
-    AppMethodBeat.o(57422);
+    AppMethodBeat.o(13421);
     return this;
   }
   
   public final Task<TResult> addOnSuccessListener(OnSuccessListener<? super TResult> paramOnSuccessListener)
   {
-    AppMethodBeat.i(57420);
+    AppMethodBeat.i(13419);
     paramOnSuccessListener = addOnSuccessListener(TaskExecutors.MAIN_THREAD, paramOnSuccessListener);
-    AppMethodBeat.o(57420);
+    AppMethodBeat.o(13419);
     return paramOnSuccessListener;
   }
   
   public final Task<TResult> addOnSuccessListener(Executor paramExecutor, OnSuccessListener<? super TResult> paramOnSuccessListener)
   {
-    AppMethodBeat.i(57421);
+    AppMethodBeat.i(13420);
     this.zzage.zza(new zzm(paramExecutor, paramOnSuccessListener));
     zzdt();
-    AppMethodBeat.o(57421);
+    AppMethodBeat.o(13420);
     return this;
   }
   
   public final <TContinuationResult> Task<TContinuationResult> continueWith(Continuation<TResult, TContinuationResult> paramContinuation)
   {
-    AppMethodBeat.i(57429);
+    AppMethodBeat.i(13428);
     paramContinuation = continueWith(TaskExecutors.MAIN_THREAD, paramContinuation);
-    AppMethodBeat.o(57429);
+    AppMethodBeat.o(13428);
     return paramContinuation;
   }
   
   public final <TContinuationResult> Task<TContinuationResult> continueWith(Executor paramExecutor, Continuation<TResult, TContinuationResult> paramContinuation)
   {
-    AppMethodBeat.i(57430);
+    AppMethodBeat.i(13429);
     zzu localzzu = new zzu();
     this.zzage.zza(new zzc(paramExecutor, paramContinuation, localzzu));
     zzdt();
-    AppMethodBeat.o(57430);
+    AppMethodBeat.o(13429);
     return localzzu;
   }
   
   public final <TContinuationResult> Task<TContinuationResult> continueWithTask(Continuation<TResult, Task<TContinuationResult>> paramContinuation)
   {
-    AppMethodBeat.i(57431);
+    AppMethodBeat.i(13430);
     paramContinuation = continueWithTask(TaskExecutors.MAIN_THREAD, paramContinuation);
-    AppMethodBeat.o(57431);
+    AppMethodBeat.o(13430);
     return paramContinuation;
   }
   
   public final <TContinuationResult> Task<TContinuationResult> continueWithTask(Executor paramExecutor, Continuation<TResult, Task<TContinuationResult>> paramContinuation)
   {
-    AppMethodBeat.i(57435);
+    AppMethodBeat.i(13434);
     zzu localzzu = new zzu();
     this.zzage.zza(new zze(paramExecutor, paramContinuation, localzzu));
     zzdt();
-    AppMethodBeat.o(57435);
+    AppMethodBeat.o(13434);
     return localzzu;
   }
   
@@ -243,7 +243,7 @@ final class zzu<TResult>
   
   public final TResult getResult()
   {
-    AppMethodBeat.i(57418);
+    AppMethodBeat.i(13417);
     synchronized (this.mLock)
     {
       zzdq();
@@ -251,18 +251,18 @@ final class zzu<TResult>
       if (this.zzagh != null)
       {
         RuntimeExecutionException localRuntimeExecutionException = new RuntimeExecutionException(this.zzagh);
-        AppMethodBeat.o(57418);
+        AppMethodBeat.o(13417);
         throw localRuntimeExecutionException;
       }
     }
     Object localObject3 = this.zzagg;
-    AppMethodBeat.o(57418);
+    AppMethodBeat.o(13417);
     return localObject3;
   }
   
   public final <X extends Throwable> TResult getResult(Class<X> paramClass)
   {
-    AppMethodBeat.i(57419);
+    AppMethodBeat.i(13418);
     synchronized (this.mLock)
     {
       zzdq();
@@ -270,18 +270,18 @@ final class zzu<TResult>
       if (paramClass.isInstance(this.zzagh))
       {
         paramClass = (Throwable)paramClass.cast(this.zzagh);
-        AppMethodBeat.o(57419);
+        AppMethodBeat.o(13418);
         throw paramClass;
       }
     }
     if (this.zzagh != null)
     {
       paramClass = new RuntimeExecutionException(this.zzagh);
-      AppMethodBeat.o(57419);
+      AppMethodBeat.o(13418);
       throw paramClass;
     }
     paramClass = this.zzagg;
-    AppMethodBeat.o(57419);
+    AppMethodBeat.o(13418);
     return paramClass;
   }
   
@@ -317,25 +317,25 @@ final class zzu<TResult>
   
   public final <TContinuationResult> Task<TContinuationResult> onSuccessTask(SuccessContinuation<TResult, TContinuationResult> paramSuccessContinuation)
   {
-    AppMethodBeat.i(57437);
+    AppMethodBeat.i(13436);
     paramSuccessContinuation = onSuccessTask(TaskExecutors.MAIN_THREAD, paramSuccessContinuation);
-    AppMethodBeat.o(57437);
+    AppMethodBeat.o(13436);
     return paramSuccessContinuation;
   }
   
   public final <TContinuationResult> Task<TContinuationResult> onSuccessTask(Executor paramExecutor, SuccessContinuation<TResult, TContinuationResult> paramSuccessContinuation)
   {
-    AppMethodBeat.i(57436);
+    AppMethodBeat.i(13435);
     zzu localzzu = new zzu();
     this.zzage.zza(new zzo(paramExecutor, paramSuccessContinuation, localzzu));
     zzdt();
-    AppMethodBeat.o(57436);
+    AppMethodBeat.o(13435);
     return localzzu;
   }
   
   public final void setException(Exception paramException)
   {
-    AppMethodBeat.i(57440);
+    AppMethodBeat.i(13439);
     Preconditions.checkNotNull(paramException, "Exception must not be null");
     synchronized (this.mLock)
     {
@@ -343,76 +343,76 @@ final class zzu<TResult>
       this.zzagf = true;
       this.zzagh = paramException;
       this.zzage.zza(this);
-      AppMethodBeat.o(57440);
+      AppMethodBeat.o(13439);
       return;
     }
   }
   
   public final void setResult(TResult paramTResult)
   {
-    AppMethodBeat.i(57438);
+    AppMethodBeat.i(13437);
     synchronized (this.mLock)
     {
       zzdr();
       this.zzagf = true;
       this.zzagg = paramTResult;
       this.zzage.zza(this);
-      AppMethodBeat.o(57438);
+      AppMethodBeat.o(13437);
       return;
     }
   }
   
   public final boolean trySetException(Exception paramException)
   {
-    AppMethodBeat.i(57441);
+    AppMethodBeat.i(13440);
     Preconditions.checkNotNull(paramException, "Exception must not be null");
     synchronized (this.mLock)
     {
       if (this.zzagf)
       {
-        AppMethodBeat.o(57441);
+        AppMethodBeat.o(13440);
         return false;
       }
       this.zzagf = true;
       this.zzagh = paramException;
       this.zzage.zza(this);
-      AppMethodBeat.o(57441);
+      AppMethodBeat.o(13440);
       return true;
     }
   }
   
   public final boolean trySetResult(TResult paramTResult)
   {
-    AppMethodBeat.i(57439);
+    AppMethodBeat.i(13438);
     synchronized (this.mLock)
     {
       if (this.zzagf)
       {
-        AppMethodBeat.o(57439);
+        AppMethodBeat.o(13438);
         return false;
       }
       this.zzagf = true;
       this.zzagg = paramTResult;
       this.zzage.zza(this);
-      AppMethodBeat.o(57439);
+      AppMethodBeat.o(13438);
       return true;
     }
   }
   
   public final boolean zzdp()
   {
-    AppMethodBeat.i(57442);
+    AppMethodBeat.i(13441);
     synchronized (this.mLock)
     {
       if (this.zzagf)
       {
-        AppMethodBeat.o(57442);
+        AppMethodBeat.o(13441);
         return false;
       }
       this.zzagf = true;
       this.zzfi = true;
       this.zzage.zza(this);
-      AppMethodBeat.o(57442);
+      AppMethodBeat.o(13441);
       return true;
     }
   }
@@ -425,28 +425,28 @@ final class zzu<TResult>
     private zza(LifecycleFragment paramLifecycleFragment)
     {
       super();
-      AppMethodBeat.i(57414);
+      AppMethodBeat.i(13413);
       this.zzagi = new ArrayList();
       this.mLifecycleFragment.addCallback("TaskOnStopCallback", this);
-      AppMethodBeat.o(57414);
+      AppMethodBeat.o(13413);
     }
     
     public static zza zze(Activity paramActivity)
     {
-      AppMethodBeat.i(57413);
+      AppMethodBeat.i(13412);
       LifecycleFragment localLifecycleFragment = getFragment(paramActivity);
       zza localzza = (zza)localLifecycleFragment.getCallbackOrNull("TaskOnStopCallback", zza.class);
       paramActivity = localzza;
       if (localzza == null) {
         paramActivity = new zza(localLifecycleFragment);
       }
-      AppMethodBeat.o(57413);
+      AppMethodBeat.o(13412);
       return paramActivity;
     }
     
     public void onStop()
     {
-      AppMethodBeat.i(57416);
+      AppMethodBeat.i(13415);
       synchronized (this.zzagi)
       {
         Iterator localIterator = this.zzagi.iterator();
@@ -459,16 +459,16 @@ final class zzu<TResult>
         }
       }
       this.zzagi.clear();
-      AppMethodBeat.o(57416);
+      AppMethodBeat.o(13415);
     }
     
     public final <T> void zzb(zzq<T> paramzzq)
     {
-      AppMethodBeat.i(57415);
+      AppMethodBeat.i(13414);
       synchronized (this.zzagi)
       {
         this.zzagi.add(new WeakReference(paramzzq));
-        AppMethodBeat.o(57415);
+        AppMethodBeat.o(13414);
         return;
       }
     }

@@ -13,9 +13,9 @@ public class IPCLong
   
   static
   {
-    AppMethodBeat.i(114159);
-    CREATOR = new IPCLong.1();
-    AppMethodBeat.o(114159);
+    AppMethodBeat.i(158870);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(158870);
   }
   
   public IPCLong() {}
@@ -32,10 +32,10 @@ public class IPCLong
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(114158);
+    AppMethodBeat.i(158869);
     if (paramObject == this)
     {
-      AppMethodBeat.o(114158);
+      AppMethodBeat.o(158869);
       return true;
     }
     if ((paramObject instanceof IPCLong))
@@ -43,40 +43,40 @@ public class IPCLong
       paramObject = (IPCLong)paramObject;
       if (this.value == paramObject.value)
       {
-        AppMethodBeat.o(114158);
+        AppMethodBeat.o(158869);
         return true;
       }
-      AppMethodBeat.o(114158);
+      AppMethodBeat.o(158869);
       return false;
     }
     if ((paramObject instanceof Long))
     {
       boolean bool = paramObject.equals(Long.valueOf(this.value));
-      AppMethodBeat.o(114158);
+      AppMethodBeat.o(158869);
       return bool;
     }
-    AppMethodBeat.o(114158);
+    AppMethodBeat.o(158869);
     return false;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(114157);
+    AppMethodBeat.i(158868);
     String str = Long.toString(this.value);
-    AppMethodBeat.o(114157);
+    AppMethodBeat.o(158868);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(114156);
+    AppMethodBeat.i(158867);
     paramParcel.writeLong(this.value);
-    AppMethodBeat.o(114156);
+    AppMethodBeat.o(158867);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.type.IPCLong
  * JD-Core Version:    0.7.0.1
  */

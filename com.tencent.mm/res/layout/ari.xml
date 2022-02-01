@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="#ff353535" android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="21.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="7.0dip" />
-    <TextView android:textSize="@dimen/ef" android:textColor="#ff888888" android:id="@id/sz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="21.0dip" android:text="信息由小程序服务方提供，可能由于信息提供方与时间存在数值差异" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/b3q" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="186.0dip" android:minHeight="186.0dip">
+        <ImageView android:id="@id/cn1" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@drawable/aw7" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/a_u" android:gravity="center" android:id="@id/dui" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="40.0dip" />
+    </LinearLayout>
 </LinearLayout>

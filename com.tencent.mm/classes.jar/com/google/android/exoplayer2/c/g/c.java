@@ -1,86 +1,160 @@
 package com.google.android.exoplayer2.c.g;
 
+import com.google.android.exoplayer2.c.e;
 import com.google.android.exoplayer2.c.f;
-import com.google.android.exoplayer2.i.a;
+import com.google.android.exoplayer2.c.g;
+import com.google.android.exoplayer2.c.h;
+import com.google.android.exoplayer2.c.k;
+import com.google.android.exoplayer2.c.l.a;
+import com.google.android.exoplayer2.i.l;
 import com.google.android.exoplayer2.i.m;
 import com.google.android.exoplayer2.i.x;
-import com.google.android.exoplayer2.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-final class c
+public final class c
+  implements e
 {
-  public static b m(f paramf)
+  public static final h aXh;
+  private static final int bfm;
+  private final long bfn;
+  private boolean bfq;
+  private final d bfy;
+  private final m bfz;
+  
+  static
   {
-    AppMethodBeat.i(95191);
-    a.checkNotNull(paramf);
-    m localm = new m(16);
-    if (c.a.a(paramf, localm).id != x.aS("RIFF"))
+    AppMethodBeat.i(92209);
+    aXh = new h()
     {
-      AppMethodBeat.o(95191);
-      return null;
-    }
-    paramf.b(localm.data, 0, 4);
-    localm.setPosition(0);
-    if (localm.readInt() != x.aS("WAVE"))
+      public final e[] sK()
+      {
+        AppMethodBeat.i(92203);
+        c localc = new c();
+        AppMethodBeat.o(92203);
+        return new e[] { localc };
+      }
+    };
+    bfm = x.aY("ID3");
+    AppMethodBeat.o(92209);
+  }
+  
+  public c()
+  {
+    this(0L);
+  }
+  
+  public c(long paramLong)
+  {
+    AppMethodBeat.i(92204);
+    this.bfn = paramLong;
+    this.bfy = new d();
+    this.bfz = new m(200);
+    AppMethodBeat.o(92204);
+  }
+  
+  public final int a(f paramf, k paramk)
+  {
+    AppMethodBeat.i(92208);
+    int i = paramf.read(this.bfz.data, 0, 200);
+    if (i == -1)
     {
-      AppMethodBeat.o(95191);
-      return null;
+      AppMethodBeat.o(92208);
+      return -1;
     }
-    c.a locala;
+    this.bfz.setPosition(0);
+    this.bfz.fk(i);
+    if (!this.bfq)
+    {
+      this.bfy.timeUs = this.bfn;
+      this.bfq = true;
+    }
+    this.bfy.t(this.bfz);
+    AppMethodBeat.o(92208);
+    return 0;
+  }
+  
+  public final void a(g paramg)
+  {
+    AppMethodBeat.i(92206);
+    this.bfy.a(paramg, new v.d(0, 1));
+    paramg.sL();
+    paramg.a(new l.a(-9223372036854775807L));
+    AppMethodBeat.o(92206);
+  }
+  
+  public final boolean a(f paramf)
+  {
+    AppMethodBeat.i(92205);
+    m localm = new m(10);
+    l locall = new l(localm.data);
+    int i = 0;
     for (;;)
     {
-      locala = c.a.a(paramf, localm);
-      if (locala.id == x.aS("fmt ")) {
-        break;
-      }
-      paramf.dh((int)locala.size);
-    }
-    if (locala.size >= 16L) {}
-    int i;
-    int j;
-    int k;
-    int m;
-    int n;
-    int i1;
-    for (boolean bool = true;; bool = false)
-    {
-      a.checkState(bool);
-      paramf.b(localm.data, 0, 16);
+      paramf.b(localm.data, 0, 10);
       localm.setPosition(0);
-      i = localm.qN();
-      j = localm.qN();
-      k = localm.qU();
-      m = localm.qU();
-      n = localm.qN();
-      i1 = localm.qN();
-      i2 = j * i1 / 8;
-      if (n == i2) {
+      if (localm.vL() != bfm) {
         break;
       }
-      paramf = new o("Expected block alignment: " + i2 + "; got: " + n);
-      AppMethodBeat.o(95191);
-      throw paramf;
+      localm.fl(3);
+      j = localm.vP();
+      i += j + 10;
+      paramf.dS(j);
     }
-    int i2 = x.es(i1);
-    if (i2 == 0)
+    paramf.sI();
+    paramf.dS(i);
+    int k = 0;
+    int j = 0;
+    int m = i;
+    for (;;)
     {
-      AppMethodBeat.o(95191);
-      return null;
+      paramf.b(localm.data, 0, 2);
+      localm.setPosition(0);
+      if ((localm.readUnsignedShort() & 0xFFF6) != 65520)
+      {
+        paramf.sI();
+        m += 1;
+        if (m - i >= 8192)
+        {
+          AppMethodBeat.o(92205);
+          return false;
+        }
+        paramf.dS(m);
+        k = 0;
+        j = 0;
+      }
+      else
+      {
+        k += 1;
+        if ((k >= 4) && (j > 188))
+        {
+          AppMethodBeat.o(92205);
+          return true;
+        }
+        paramf.b(localm.data, 0, 4);
+        locall.setPosition(14);
+        int n = locall.eo(13);
+        if (n <= 6)
+        {
+          AppMethodBeat.o(92205);
+          return false;
+        }
+        paramf.dS(n - 6);
+        j += n;
+      }
     }
-    if ((i != 1) && (i != 65534))
-    {
-      AppMethodBeat.o(95191);
-      return null;
-    }
-    paramf.dh((int)locala.size - 16);
-    paramf = new b(j, k, m, n, i1, i2);
-    AppMethodBeat.o(95191);
-    return paramf;
+  }
+  
+  public final void f(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(92207);
+    this.bfq = false;
+    this.bfy.ta();
+    AppMethodBeat.o(92207);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.c.g.c
  * JD-Core Version:    0.7.0.1
  */

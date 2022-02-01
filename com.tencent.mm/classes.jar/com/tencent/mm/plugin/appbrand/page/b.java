@@ -4,163 +4,227 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.e;
-import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.g.c;
 import com.tencent.mm.plugin.appbrand.page.a.c.a;
 import com.tencent.mm.plugin.appbrand.page.a.f;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.f.a;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class b
   extends f
 {
-  private static final b iuR;
-  private static final HashMap<i, b> iuS;
-  private final i bAb;
-  private Drawable iuT;
-  private CharSequence iuU;
+  private static final b kXv;
+  private static final HashMap<AppBrandRuntime, b> kXw;
+  private final AppBrandRuntime iIE;
+  private Drawable kXx;
+  private CharSequence kXy;
+  private int kXz;
   
   static
   {
-    AppMethodBeat.i(87036);
-    iuR = new b()
+    AppMethodBeat.i(134964);
+    kXv = new b()
     {
       public final c.a a(b.a paramAnonymousa)
       {
-        return iAl;
+        return lgA;
       }
       
       public final Context getContext()
       {
-        AppMethodBeat.i(87022);
-        Context localContext = ah.getContext();
-        AppMethodBeat.o(87022);
+        AppMethodBeat.i(134948);
+        Context localContext = aj.getContext();
+        AppMethodBeat.o(134948);
         return localContext;
       }
     };
-    iuS = new HashMap();
-    AppMethodBeat.o(87036);
+    kXw = new HashMap();
+    AppMethodBeat.o(134964);
   }
   
-  private b(i parami)
+  private b(final AppBrandRuntime paramAppBrandRuntime)
   {
-    AppMethodBeat.i(87029);
-    this.bAb = parami;
-    if (parami == null)
+    AppMethodBeat.i(134955);
+    this.iIE = paramAppBrandRuntime;
+    if (paramAppBrandRuntime == null)
     {
-      AppMethodBeat.o(87029);
+      AppMethodBeat.o(134955);
       return;
     }
-    e.a(parami.mAppId, new b.2(this, parami));
-    AppMethodBeat.o(87029);
+    g.a(paramAppBrandRuntime.mAppId, new g.c()
+    {
+      public final void onDestroy()
+      {
+        AppMethodBeat.i(134949);
+        b localb = (b)b.biV().remove(paramAppBrandRuntime);
+        if (localb != null) {
+          localb.lgF.clear();
+        }
+        AppMethodBeat.o(134949);
+      }
+    });
+    AppMethodBeat.o(134955);
   }
   
-  public static b E(i parami)
+  private void a(Drawable paramDrawable, aa paramaa)
   {
-    AppMethodBeat.i(87028);
-    if ((parami == null) || (parami.mFinished))
+    AppMethodBeat.i(134958);
+    if (paramaa == null)
     {
-      parami = iuR;
-      AppMethodBeat.o(87028);
-      return parami;
+      AppMethodBeat.o(134958);
+      return;
     }
-    b localb2 = (b)iuS.get(parami);
+    if (this.iIE.Du() == null)
+    {
+      AppMethodBeat.o(134958);
+      return;
+    }
+    paramaa.bjH().getCapsuleBar().bkL().setLogo(paramDrawable);
+    AppMethodBeat.o(134958);
+  }
+  
+  private static void a(CharSequence paramCharSequence, aa paramaa)
+  {
+    AppMethodBeat.i(134961);
+    if (paramaa == null)
+    {
+      AppMethodBeat.o(134961);
+      return;
+    }
+    paramaa.B(paramCharSequence);
+    AppMethodBeat.o(134961);
+  }
+  
+  public static b ai(AppBrandRuntime paramAppBrandRuntime)
+  {
+    AppMethodBeat.i(134954);
+    if ((paramAppBrandRuntime == null) || (paramAppBrandRuntime.isDestroyed()))
+    {
+      paramAppBrandRuntime = kXv;
+      AppMethodBeat.o(134954);
+      return paramAppBrandRuntime;
+    }
+    b localb2 = (b)kXw.get(paramAppBrandRuntime);
     b localb1 = localb2;
     if (localb2 == null)
     {
-      localb1 = new b(parami);
-      iuS.put(parami, localb1);
+      localb1 = new b(paramAppBrandRuntime);
+      kXw.put(paramAppBrandRuntime, localb1);
     }
-    AppMethodBeat.o(87028);
+    AppMethodBeat.o(134954);
     return localb1;
   }
   
-  private static void a(Drawable paramDrawable, v paramv)
+  private static void b(int paramInt, aa paramaa)
   {
-    AppMethodBeat.i(87032);
-    if (paramv == null)
+    AppMethodBeat.i(134962);
+    if (paramaa == null)
     {
-      AppMethodBeat.o(87032);
+      AppMethodBeat.o(134962);
       return;
     }
-    paramv.getActionBar().getCapsuleBar().aKe().setLogo(paramDrawable);
-    AppMethodBeat.o(87032);
+    paramaa.tt(paramInt);
+    AppMethodBeat.o(134962);
   }
   
-  private static void a(CharSequence paramCharSequence, v paramv)
+  static void g(aa paramaa)
   {
-    AppMethodBeat.i(87034);
-    if (paramv == null)
+    AppMethodBeat.i(134953);
+    if (paramaa == null)
     {
-      AppMethodBeat.o(87034);
+      AppMethodBeat.o(134953);
       return;
     }
-    paramv.x(paramCharSequence);
-    AppMethodBeat.o(87034);
+    b localb = ai(paramaa.getRuntime());
+    localb.a(localb.kXx, paramaa);
+    a(localb.kXy, paramaa);
+    b(localb.kXz, paramaa);
+    AppMethodBeat.o(134953);
   }
   
-  static void c(v paramv)
+  public final void A(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(87027);
-    if (paramv == null)
+    AppMethodBeat.i(134959);
+    this.kXy = paramCharSequence;
+    if (this.iIE.Du() == null)
     {
-      AppMethodBeat.o(87027);
+      AppMethodBeat.o(134959);
       return;
     }
-    b localb = E(paramv.getRuntime());
-    a(localb.iuT, paramv);
-    a(localb.iuU, paramv);
-    AppMethodBeat.o(87027);
+    a(this.kXy, this.iIE.Du().getCurrentPageView());
+    AppMethodBeat.o(134959);
+  }
+  
+  public final void L(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(160931);
+    this.iIE.i(paramRunnable, 0L);
+    AppMethodBeat.o(160931);
   }
   
   public c.a a(b.a parama)
   {
-    AppMethodBeat.i(87035);
-    int i = parama.ivb;
-    int j = parama.ivc;
-    parama = super.aKe();
-    parama.setLogo(j);
-    parama.pp(i);
-    AppMethodBeat.o(87035);
-    return parama;
+    AppMethodBeat.i(134963);
+    int i = parama.kXG;
+    int j = parama.kXH;
+    c.a locala = super.bkL();
+    locala.setLogo(j);
+    locala.tC(i);
+    locala.setStatus(parama.ordinal());
+    AppMethodBeat.o(134963);
+    return locala;
   }
   
   public Context getContext()
   {
-    AppMethodBeat.i(87030);
+    AppMethodBeat.i(134956);
     try
     {
-      Context localContext = this.bAb.atj().getCurrentPage().getCurrentPageView().getActionBar().getContext();
-      AppMethodBeat.o(87030);
+      Context localContext = this.iIE.aLK().getCurrentPage().getCurrentPageView().bjH().getContext();
+      AppMethodBeat.o(134956);
       return localContext;
     }
     catch (NullPointerException localNullPointerException)
     {
-      Activity localActivity = this.bAb.getContext();
-      AppMethodBeat.o(87030);
+      Activity localActivity = a.iV(this.iIE.mContext);
+      AppMethodBeat.o(134956);
       return localActivity;
     }
   }
   
-  public final void p(Drawable paramDrawable)
+  public final void tp(int paramInt)
   {
-    AppMethodBeat.i(87031);
-    this.iuT = paramDrawable;
-    a(this.iuT, this.bAb.ws().getCurrentPageView());
-    AppMethodBeat.o(87031);
+    AppMethodBeat.i(134960);
+    this.kXz = paramInt;
+    if (this.iIE.Du() == null)
+    {
+      AppMethodBeat.o(134960);
+      return;
+    }
+    b(paramInt, this.iIE.Du().getCurrentPageView());
+    AppMethodBeat.o(134960);
   }
   
-  public final void w(CharSequence paramCharSequence)
+  public final void x(Drawable paramDrawable)
   {
-    AppMethodBeat.i(87033);
-    this.iuU = paramCharSequence;
-    a(this.iuU, this.bAb.ws().getCurrentPageView());
-    AppMethodBeat.o(87033);
+    AppMethodBeat.i(134957);
+    this.kXx = paramDrawable;
+    if (this.iIE.Du() == null)
+    {
+      AppMethodBeat.o(134957);
+      return;
+    }
+    a(this.kXx, this.iIE.Du().getCurrentPageView());
+    AppMethodBeat.o(134957);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.b
  * JD-Core Version:    0.7.0.1
  */

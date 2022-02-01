@@ -4,58 +4,58 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.e;
-import com.tencent.mm.bs.b;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.api.g;
+import com.tencent.mm.bu.b;
+import com.tencent.mm.sdk.platformtools.f;
 
 public final class c
   extends a
 {
-  private Bitmap ATQ;
-  private Bitmap ATR;
+  private Bitmap Iae;
+  private Bitmap Iaf;
   
   public c(Context paramContext, b paramb)
   {
     super(paramContext, paramb);
   }
   
-  protected final boolean RM(int paramInt)
-  {
-    AppMethodBeat.i(116447);
-    boolean bool = super.RM(paramInt);
-    switch (c.1.whp[RL(paramInt).ordinal()])
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(116447);
-      return bool;
-      bool = false;
-    }
-  }
-  
-  protected final Bitmap a(e parame, boolean paramBoolean)
+  protected final Bitmap a(g paramg, boolean paramBoolean)
   {
     Bitmap localBitmap = null;
-    if (parame == e.bWb)
+    if (paramg == g.cJx)
     {
       if (paramBoolean) {
-        localBitmap = this.ATR;
+        localBitmap = this.Iaf;
       }
     }
     else {
       return localBitmap;
     }
-    return this.ATQ;
+    return this.Iae;
   }
   
-  protected final void dQV()
+  protected final boolean abl(int paramInt)
   {
-    AppMethodBeat.i(116446);
-    super.dQV();
-    this.ATQ = d.u(getResources().getDrawable(2131231205));
-    this.ATR = d.u(getResources().getDrawable(2131231204));
-    AppMethodBeat.o(116446);
+    AppMethodBeat.i(9426);
+    boolean bool = super.abl(paramInt);
+    switch (1.Cpr[abk(paramInt).ordinal()])
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(9426);
+      return bool;
+      bool = false;
+    }
+  }
+  
+  protected final void fiT()
+  {
+    AppMethodBeat.i(9425);
+    super.fiT();
+    this.Iae = f.B(getResources().getDrawable(2131690010));
+    this.Iaf = f.B(getResources().getDrawable(2131690009));
+    AppMethodBeat.o(9425);
   }
 }
 

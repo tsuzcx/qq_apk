@@ -16,16 +16,16 @@ class AppEventCollection
   
   public AppEventCollection()
   {
-    AppMethodBeat.i(71877);
+    AppMethodBeat.i(17313);
     this.stateMap = new HashMap();
-    AppMethodBeat.o(71877);
+    AppMethodBeat.o(17313);
   }
   
   private SessionEventsState getSessionEventsState(AccessTokenAppIdPair paramAccessTokenAppIdPair)
   {
     try
     {
-      AppMethodBeat.i(71883);
+      AppMethodBeat.i(17319);
       SessionEventsState localSessionEventsState = (SessionEventsState)this.stateMap.get(paramAccessTokenAppIdPair);
       Object localObject = localSessionEventsState;
       if (localSessionEventsState == null)
@@ -34,7 +34,7 @@ class AppEventCollection
         localObject = new SessionEventsState(AttributionIdentifiers.getAttributionIdentifiers((Context)localObject), AppEventsLogger.getAnonymousAppDeviceGUID((Context)localObject));
       }
       this.stateMap.put(paramAccessTokenAppIdPair, localObject);
-      AppMethodBeat.o(71883);
+      AppMethodBeat.o(17319);
       return localObject;
     }
     finally {}
@@ -44,9 +44,9 @@ class AppEventCollection
   {
     try
     {
-      AppMethodBeat.i(71879);
+      AppMethodBeat.i(17315);
       getSessionEventsState(paramAccessTokenAppIdPair).addEvent(paramAppEvent);
-      AppMethodBeat.o(71879);
+      AppMethodBeat.o(17315);
       return;
     }
     finally
@@ -62,10 +62,10 @@ class AppEventCollection
     {
       try
       {
-        AppMethodBeat.i(71878);
+        AppMethodBeat.i(17314);
         if (paramPersistedEvents == null)
         {
-          AppMethodBeat.o(71878);
+          AppMethodBeat.o(17314);
           return;
         }
         Iterator localIterator = paramPersistedEvents.keySet().iterator();
@@ -80,7 +80,7 @@ class AppEventCollection
         }
         else
         {
-          AppMethodBeat.o(71878);
+          AppMethodBeat.o(17314);
         }
       }
       finally {}
@@ -91,9 +91,9 @@ class AppEventCollection
   {
     try
     {
-      AppMethodBeat.i(71881);
+      AppMethodBeat.i(17317);
       paramAccessTokenAppIdPair = (SessionEventsState)this.stateMap.get(paramAccessTokenAppIdPair);
-      AppMethodBeat.o(71881);
+      AppMethodBeat.o(17317);
       return paramAccessTokenAppIdPair;
     }
     finally
@@ -107,10 +107,10 @@ class AppEventCollection
   {
     try
     {
-      AppMethodBeat.i(71882);
+      AppMethodBeat.i(17318);
       Iterator localIterator = this.stateMap.values().iterator();
       for (int i = 0; localIterator.hasNext(); i = ((SessionEventsState)localIterator.next()).getAccumulatedEventCount() + i) {}
-      AppMethodBeat.o(71882);
+      AppMethodBeat.o(17318);
       return i;
     }
     finally {}
@@ -120,9 +120,9 @@ class AppEventCollection
   {
     try
     {
-      AppMethodBeat.i(71880);
+      AppMethodBeat.i(17316);
       Set localSet = this.stateMap.keySet();
-      AppMethodBeat.o(71880);
+      AppMethodBeat.o(17316);
       return localSet;
     }
     finally
@@ -134,7 +134,7 @@ class AppEventCollection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.AppEventCollection
  * JD-Core Version:    0.7.0.1
  */

@@ -16,20 +16,20 @@ public class UserRecoverableAuthException
   
   public Intent getIntent()
   {
-    AppMethodBeat.i(76961);
+    AppMethodBeat.i(10620);
     if (this.mIntent == null)
     {
-      AppMethodBeat.o(76961);
+      AppMethodBeat.o(10620);
       return null;
     }
     Intent localIntent = new Intent(this.mIntent);
-    AppMethodBeat.o(76961);
+    AppMethodBeat.o(10620);
     return localIntent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.auth.UserRecoverableAuthException
  * JD-Core Version:    0.7.0.1
  */

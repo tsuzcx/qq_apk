@@ -5,7 +5,7 @@ public final class w
 {
   public w()
   {
-    this.CMD = 288;
+    this.Kik = 288;
   }
 }
 

@@ -7,45 +7,45 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.List;
 
 public final class SelectScanModeGrid$a
   extends BaseAdapter
 {
   private Context context;
-  private List<SelectScanModeGrid.b> itemList;
-  int qBf;
+  private List<SelectScanModeGrid.b> hGT;
+  int vVD;
   
   public SelectScanModeGrid$a(Context paramContext, List<SelectScanModeGrid.b> paramList)
   {
-    AppMethodBeat.i(81327);
-    this.qBf = -1;
+    AppMethodBeat.i(51981);
+    this.vVD = -1;
     this.context = paramContext;
-    this.itemList = paramList;
-    ab.d("MicroMsg.scanner.SelectScanModeGroupAdapter", "<init> list size = " + this.itemList.size());
-    AppMethodBeat.o(81327);
+    this.hGT = paramList;
+    ad.d("MicroMsg.scanner.SelectScanModeGroupAdapter", "<init> list size = " + this.hGT.size());
+    AppMethodBeat.o(51981);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(81328);
-    int i = this.itemList.size();
-    AppMethodBeat.o(81328);
+    AppMethodBeat.i(51982);
+    int i = this.hGT.size();
+    AppMethodBeat.o(51982);
     return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(81329);
-    if ((paramInt < 0) || (paramInt >= this.itemList.size()))
+    AppMethodBeat.i(51983);
+    if ((paramInt < 0) || (paramInt >= this.hGT.size()))
     {
-      ab.e("MicroMsg.scanner.SelectScanModeGroupAdapter", "getItem fail, invalid position = ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(81329);
+      ad.e("MicroMsg.scanner.SelectScanModeGroupAdapter", "getItem fail, invalid position = ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(51983);
       return null;
     }
-    Object localObject = this.itemList.get(paramInt);
-    AppMethodBeat.o(81329);
+    Object localObject = this.hGT.get(paramInt);
+    AppMethodBeat.o(51983);
     return localObject;
   }
   
@@ -56,15 +56,15 @@ public final class SelectScanModeGrid$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(81330);
-    SelectScanModeGrid.a.a locala;
+    AppMethodBeat.i(51984);
+    a locala;
     if (paramView == null)
     {
-      paramView = View.inflate(this.context, 2130970662, null);
-      locala = new SelectScanModeGrid.a.a();
-      locala.qBg = ((TextView)paramView.findViewById(2131827551));
-      locala.pvK = ((TextView)paramView.findViewById(2131827552));
-      locala.qBh = ((ImageView)paramView.findViewById(2131827553));
+      paramView = View.inflate(this.context, 2131495357, null);
+      locala = new a();
+      locala.vVE = ((TextView)paramView.findViewById(2131304532));
+      locala.mWt = ((TextView)paramView.findViewById(2131304537));
+      locala.vVF = ((ImageView)paramView.findViewById(2131304536));
       paramView.setTag(locala);
     }
     while (paramInt == paramViewGroup.getChildCount())
@@ -72,40 +72,47 @@ public final class SelectScanModeGrid$a
       paramViewGroup = (SelectScanModeGrid.b)getItem(paramInt);
       if (paramViewGroup == null)
       {
-        ab.e("MicroMsg.scanner.SelectScanModeGroupAdapter", "getView fail, item is null");
-        AppMethodBeat.o(81330);
+        ad.e("MicroMsg.scanner.SelectScanModeGroupAdapter", "getView fail, item is null");
+        AppMethodBeat.o(51984);
         return paramView;
-        locala = (SelectScanModeGrid.a.a)paramView.getTag();
+        locala = (a)paramView.getTag();
       }
       else
       {
-        locala.pvK.setText(paramViewGroup.title);
-        if (paramInt != this.qBf) {
+        locala.mWt.setText(paramViewGroup.title);
+        if (paramInt != this.vVD) {
           break label188;
         }
-        locala.qBg.setBackgroundResource(paramViewGroup.qBj);
-        paramViewGroup.qBl = locala.qBg;
-        if (!paramViewGroup.qBm) {
+        locala.vVE.setBackgroundResource(paramViewGroup.vVH);
+        paramViewGroup.vVJ = locala.vVE;
+        if (!paramViewGroup.vVK) {
           break label203;
         }
-        locala.qBh.setVisibility(0);
+        locala.vVF.setVisibility(0);
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(81330);
+      AppMethodBeat.o(51984);
       return paramView;
       label188:
-      locala.qBg.setBackgroundResource(paramViewGroup.qBi);
+      locala.vVE.setBackgroundResource(paramViewGroup.vVG);
       break;
       label203:
-      locala.qBh.setVisibility(4);
+      locala.vVF.setVisibility(4);
     }
+  }
+  
+  static final class a
+  {
+    public TextView mWt;
+    public TextView vVE;
+    public ImageView vVF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.SelectScanModeGrid.a
  * JD-Core Version:    0.7.0.1
  */

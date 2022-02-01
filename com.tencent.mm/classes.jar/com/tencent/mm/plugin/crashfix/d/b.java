@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.crashfix.d;
 
-import java.util.List;
-
-public final class b
+public abstract interface b
 {
-  public static List<a> kTc;
+  public abstract boolean bPL();
+  
+  public abstract boolean zM(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.crashfix.d.b
  * JD-Core Version:    0.7.0.1
  */

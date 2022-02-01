@@ -51,18 +51,18 @@ public class GoogleCloudMessaging
   
   static
   {
-    AppMethodBeat.i(69976);
+    AppMethodBeat.i(3652);
     zzaf = new AtomicInteger(1);
-    AppMethodBeat.o(69976);
+    AppMethodBeat.o(3652);
   }
   
   public GoogleCloudMessaging()
   {
-    AppMethodBeat.i(69962);
+    AppMethodBeat.i(3638);
     this.zzae = Collections.synchronizedMap(new a());
     this.zzag = new LinkedBlockingQueue();
     this.zzah = new Messenger(new zzf(this, Looper.getMainLooper()));
-    AppMethodBeat.o(69962);
+    AppMethodBeat.o(3638);
   }
   
   @Deprecated
@@ -70,7 +70,7 @@ public class GoogleCloudMessaging
   {
     try
     {
-      AppMethodBeat.i(69960);
+      AppMethodBeat.i(3636);
       if (zzac == null)
       {
         zze(paramContext);
@@ -79,7 +79,7 @@ public class GoogleCloudMessaging
         localGoogleCloudMessaging.zzk = paramContext.getApplicationContext();
       }
       paramContext = zzac;
-      AppMethodBeat.o(69960);
+      AppMethodBeat.o(3636);
       return paramContext;
     }
     finally {}
@@ -88,17 +88,17 @@ public class GoogleCloudMessaging
   @Deprecated
   private final Intent zzd(Bundle paramBundle, boolean paramBoolean)
   {
-    AppMethodBeat.i(69970);
+    AppMethodBeat.i(3646);
     if (Looper.getMainLooper() == Looper.myLooper())
     {
       paramBundle = new IOException("MAIN_THREAD");
-      AppMethodBeat.o(69970);
+      AppMethodBeat.o(3646);
       throw paramBundle;
     }
     if (zzf(this.zzk) < 0)
     {
       paramBundle = new IOException("Google Play Services missing");
-      AppMethodBeat.o(69970);
+      AppMethodBeat.o(3646);
       throw paramBundle;
     }
     Object localObject;
@@ -113,7 +113,7 @@ public class GoogleCloudMessaging
       ((Intent)localObject).putExtras(paramBundle);
       ((Intent)localObject).putExtra("google.messenger", this.zzah);
       if (!paramBoolean) {
-        break label197;
+        break label201;
       }
       this.zzk.sendBroadcast((Intent)localObject);
     }
@@ -122,14 +122,14 @@ public class GoogleCloudMessaging
       try
       {
         paramBundle = (Intent)this.zzag.poll(30000L, TimeUnit.MILLISECONDS);
-        AppMethodBeat.o(69970);
+        AppMethodBeat.o(3646);
         return paramBundle;
       }
       catch (InterruptedException paramBundle)
       {
-        label197:
+        label201:
         paramBundle = new IOException(paramBundle.getMessage());
-        AppMethodBeat.o(69970);
+        AppMethodBeat.o(3646);
         throw paramBundle;
       }
       localObject = "com.google.android.c2dm.intent.REGISTER";
@@ -145,12 +145,12 @@ public class GoogleCloudMessaging
     Object localObject1;
     try
     {
-      AppMethodBeat.i(69969);
+      AppMethodBeat.i(3645);
       localObject1 = zzaf.zzl(this.zzk);
       if (localObject1 == null)
       {
         paramVarArgs = new IOException("SERVICE_NOT_AVAILABLE");
-        AppMethodBeat.o(69969);
+        AppMethodBeat.o(3645);
         throw paramVarArgs;
       }
     }
@@ -158,7 +158,7 @@ public class GoogleCloudMessaging
     if ((paramVarArgs == null) || (paramVarArgs.length == 0))
     {
       paramVarArgs = new IllegalArgumentException("No senderIds");
-      AppMethodBeat.o(69969);
+      AppMethodBeat.o(3645);
       throw paramVarArgs;
     }
     Object localObject2 = new StringBuilder(paramVarArgs[0]);
@@ -174,7 +174,7 @@ public class GoogleCloudMessaging
     {
       ((Bundle)localObject2).putString("legacy.sender", paramVarArgs);
       paramVarArgs = InstanceID.getInstance(this.zzk).getToken(paramVarArgs, "GCM", (Bundle)localObject2);
-      AppMethodBeat.o(69969);
+      AppMethodBeat.o(3645);
     }
     for (;;)
     {
@@ -184,30 +184,30 @@ public class GoogleCloudMessaging
       if (localObject1 == null)
       {
         paramVarArgs = new IOException("SERVICE_NOT_AVAILABLE");
-        AppMethodBeat.o(69969);
+        AppMethodBeat.o(3645);
         throw paramVarArgs;
       }
       paramVarArgs = ((Intent)localObject1).getStringExtra("registration_id");
       if (paramVarArgs == null) {
         break;
       }
-      AppMethodBeat.o(69969);
+      AppMethodBeat.o(3645);
     }
     paramVarArgs = ((Intent)localObject1).getStringExtra("error");
     if (paramVarArgs != null)
     {
       paramVarArgs = new IOException(paramVarArgs);
-      AppMethodBeat.o(69969);
+      AppMethodBeat.o(3645);
       throw paramVarArgs;
     }
     paramVarArgs = new IOException("SERVICE_NOT_AVAILABLE");
-    AppMethodBeat.o(69969);
+    AppMethodBeat.o(3645);
     throw paramVarArgs;
   }
   
   private final boolean zzd(Intent paramIntent)
   {
-    AppMethodBeat.i(69966);
+    AppMethodBeat.i(3642);
     Object localObject2 = paramIntent.getStringExtra("In-Reply-To");
     Object localObject1 = localObject2;
     if (localObject2 == null)
@@ -225,27 +225,27 @@ public class GoogleCloudMessaging
         localObject2 = Message.obtain();
         ((Message)localObject2).obj = paramIntent;
         boolean bool = ((Handler)localObject1).sendMessage((Message)localObject2);
-        AppMethodBeat.o(69966);
+        AppMethodBeat.o(3642);
         return bool;
       }
     }
-    AppMethodBeat.o(69966);
+    AppMethodBeat.o(3642);
     return false;
   }
   
   static void zze(Context paramContext)
   {
-    AppMethodBeat.i(69961);
+    AppMethodBeat.i(3637);
     paramContext = paramContext.getPackageName();
     new StringBuilder(String.valueOf(paramContext).length() + 48).append("GCM SDK is deprecated, ").append(paramContext).append(" should update to use FCM");
-    AppMethodBeat.o(69961);
+    AppMethodBeat.o(3637);
   }
   
   private final void zze(Intent paramIntent)
   {
     try
     {
-      AppMethodBeat.i(69972);
+      AppMethodBeat.i(3648);
       if (this.zzad == null)
       {
         Intent localIntent = new Intent();
@@ -253,7 +253,7 @@ public class GoogleCloudMessaging
         this.zzad = PendingIntent.getBroadcast(this.zzk, 0, localIntent, 0);
       }
       paramIntent.putExtra("app", this.zzad);
-      AppMethodBeat.o(69972);
+      AppMethodBeat.o(3648);
       return;
     }
     finally {}
@@ -261,7 +261,7 @@ public class GoogleCloudMessaging
   
   public static int zzf(Context paramContext)
   {
-    AppMethodBeat.i(69974);
+    AppMethodBeat.i(3650);
     String str = zzaf.zzl(paramContext);
     if (str != null) {
       try
@@ -270,13 +270,13 @@ public class GoogleCloudMessaging
         if (paramContext != null)
         {
           int i = paramContext.versionCode;
-          AppMethodBeat.o(69974);
+          AppMethodBeat.o(3650);
           return i;
         }
       }
       catch (PackageManager.NameNotFoundException paramContext) {}
     }
-    AppMethodBeat.o(69974);
+    AppMethodBeat.o(3650);
     return -1;
   }
   
@@ -284,13 +284,13 @@ public class GoogleCloudMessaging
   {
     try
     {
-      AppMethodBeat.i(69973);
+      AppMethodBeat.i(3649);
       if (this.zzad != null)
       {
         this.zzad.cancel();
         this.zzad = null;
       }
-      AppMethodBeat.o(69973);
+      AppMethodBeat.o(3649);
       return;
     }
     finally {}
@@ -299,29 +299,29 @@ public class GoogleCloudMessaging
   @Deprecated
   public void close()
   {
-    AppMethodBeat.i(69963);
+    AppMethodBeat.i(3639);
     zzac = null;
     zzd.zzj = null;
     zzg();
-    AppMethodBeat.o(69963);
+    AppMethodBeat.o(3639);
   }
   
   @Deprecated
   public String getMessageType(Intent paramIntent)
   {
-    AppMethodBeat.i(69971);
+    AppMethodBeat.i(3647);
     if (!"com.google.android.c2dm.intent.RECEIVE".equals(paramIntent.getAction()))
     {
-      AppMethodBeat.o(69971);
+      AppMethodBeat.o(3647);
       return null;
     }
     paramIntent = paramIntent.getStringExtra("message_type");
     if (paramIntent != null)
     {
-      AppMethodBeat.o(69971);
+      AppMethodBeat.o(3647);
       return paramIntent;
     }
-    AppMethodBeat.o(69971);
+    AppMethodBeat.o(3647);
     return "gcm";
   }
   
@@ -330,9 +330,9 @@ public class GoogleCloudMessaging
   {
     try
     {
-      AppMethodBeat.i(69968);
+      AppMethodBeat.i(3644);
       paramVarArgs = zzd(zzaf.zzk(this.zzk), paramVarArgs);
-      AppMethodBeat.o(69968);
+      AppMethodBeat.o(3644);
       return paramVarArgs;
     }
     finally
@@ -345,18 +345,18 @@ public class GoogleCloudMessaging
   @Deprecated
   public void send(String paramString1, String paramString2, long paramLong, Bundle paramBundle)
   {
-    AppMethodBeat.i(69965);
+    AppMethodBeat.i(3641);
     if (paramString1 == null)
     {
       paramString1 = new IllegalArgumentException("Missing 'to'");
-      AppMethodBeat.o(69965);
+      AppMethodBeat.o(3641);
       throw paramString1;
     }
     Object localObject1 = zzaf.zzl(this.zzk);
     if (localObject1 == null)
     {
       paramString1 = new IOException("SERVICE_NOT_AVAILABLE");
-      AppMethodBeat.o(69965);
+      AppMethodBeat.o(3641);
       throw paramString1;
     }
     Object localObject2 = new Intent("com.google.android.gcm.intent.SEND");
@@ -396,11 +396,11 @@ public class GoogleCloudMessaging
         ((Bundle)localObject1).putString("google.to", paramString1);
         ((Bundle)localObject1).putString("google.message_id", paramString2);
         InstanceID.getInstance(this.zzk).zze("GCM", "upstream", (Bundle)localObject1);
-        AppMethodBeat.o(69965);
+        AppMethodBeat.o(3641);
         return;
       }
       this.zzk.sendOrderedBroadcast((Intent)localObject2, "com.google.android.gtalkservice.permission.GTALK_SERVICE");
-      AppMethodBeat.o(69965);
+      AppMethodBeat.o(3641);
       return;
     }
   }
@@ -408,9 +408,9 @@ public class GoogleCloudMessaging
   @Deprecated
   public void send(String paramString1, String paramString2, Bundle paramBundle)
   {
-    AppMethodBeat.i(69964);
+    AppMethodBeat.i(3640);
     send(paramString1, paramString2, -1L, paramBundle);
-    AppMethodBeat.o(69964);
+    AppMethodBeat.o(3640);
   }
   
   @Deprecated
@@ -418,22 +418,22 @@ public class GoogleCloudMessaging
   {
     try
     {
-      AppMethodBeat.i(69967);
+      AppMethodBeat.i(3643);
       if (Looper.getMainLooper() == Looper.myLooper())
       {
         IOException localIOException = new IOException("MAIN_THREAD");
-        AppMethodBeat.o(69967);
+        AppMethodBeat.o(3643);
         throw localIOException;
       }
     }
     finally {}
     InstanceID.getInstance(this.zzk).deleteInstanceID();
-    AppMethodBeat.o(69967);
+    AppMethodBeat.o(3643);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.gcm.GoogleCloudMessaging
  * JD-Core Version:    0.7.0.1
  */

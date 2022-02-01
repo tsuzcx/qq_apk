@@ -30,20 +30,20 @@ public final class BackgroundDetector
   
   static
   {
-    AppMethodBeat.i(89469);
+    AppMethodBeat.i(4491);
     zzem = new BackgroundDetector();
-    AppMethodBeat.o(89469);
+    AppMethodBeat.o(4491);
   }
   
   @KeepForSdk
   private BackgroundDetector()
   {
-    AppMethodBeat.i(89460);
+    AppMethodBeat.i(4482);
     this.zzen = new AtomicBoolean();
     this.zzeo = new AtomicBoolean();
     this.zzep = new ArrayList();
     this.zzeq = false;
-    AppMethodBeat.o(89460);
+    AppMethodBeat.o(4482);
   }
   
   @KeepForSdk
@@ -55,7 +55,7 @@ public final class BackgroundDetector
   @KeepForSdk
   public static void initialize(Application paramApplication)
   {
-    AppMethodBeat.i(89461);
+    AppMethodBeat.i(4483);
     synchronized (zzem)
     {
       if (!zzem.zzeq)
@@ -64,14 +64,14 @@ public final class BackgroundDetector
         paramApplication.registerComponentCallbacks(zzem);
         zzem.zzeq = true;
       }
-      AppMethodBeat.o(89461);
+      AppMethodBeat.o(4483);
       return;
     }
   }
   
   private final void onBackgroundStateChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(89468);
+    AppMethodBeat.i(4490);
     synchronized (zzem)
     {
       ArrayList localArrayList = (ArrayList)this.zzep;
@@ -84,17 +84,17 @@ public final class BackgroundDetector
         ((BackgroundStateChangeListener)localObject2).onBackgroundStateChanged(paramBoolean);
       }
     }
-    AppMethodBeat.o(89468);
+    AppMethodBeat.o(4490);
   }
   
   @KeepForSdk
   public final void addListener(BackgroundStateChangeListener paramBackgroundStateChangeListener)
   {
-    AppMethodBeat.i(89464);
+    AppMethodBeat.i(4486);
     synchronized (zzem)
     {
       this.zzep.add(paramBackgroundStateChangeListener);
-      AppMethodBeat.o(89464);
+      AppMethodBeat.o(4486);
       return;
     }
   }
@@ -102,21 +102,21 @@ public final class BackgroundDetector
   @KeepForSdk
   public final boolean isInBackground()
   {
-    AppMethodBeat.i(89463);
+    AppMethodBeat.i(4485);
     boolean bool = this.zzen.get();
-    AppMethodBeat.o(89463);
+    AppMethodBeat.o(4485);
     return bool;
   }
   
   public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(89465);
+    AppMethodBeat.i(4487);
     boolean bool = this.zzen.compareAndSet(true, false);
     this.zzeo.set(true);
     if (bool) {
       onBackgroundStateChanged(false);
     }
-    AppMethodBeat.o(89465);
+    AppMethodBeat.o(4487);
   }
   
   public final void onActivityDestroyed(Activity paramActivity) {}
@@ -125,13 +125,13 @@ public final class BackgroundDetector
   
   public final void onActivityResumed(Activity paramActivity)
   {
-    AppMethodBeat.i(89466);
+    AppMethodBeat.i(4488);
     boolean bool = this.zzen.compareAndSet(true, false);
     this.zzeo.set(true);
     if (bool) {
       onBackgroundStateChanged(false);
     }
-    AppMethodBeat.o(89466);
+    AppMethodBeat.o(4488);
   }
   
   public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
@@ -146,24 +146,24 @@ public final class BackgroundDetector
   
   public final void onTrimMemory(int paramInt)
   {
-    AppMethodBeat.i(89467);
+    AppMethodBeat.i(4489);
     if ((paramInt == 20) && (this.zzen.compareAndSet(false, true)))
     {
       this.zzeo.set(true);
       onBackgroundStateChanged(true);
     }
-    AppMethodBeat.o(89467);
+    AppMethodBeat.o(4489);
   }
   
   @TargetApi(16)
   @KeepForSdk
   public final boolean readCurrentStateIfPossible(boolean paramBoolean)
   {
-    AppMethodBeat.i(89462);
+    AppMethodBeat.i(4484);
     if (!this.zzeo.get())
     {
       if (!PlatformVersion.isAtLeastJellyBean()) {
-        break label73;
+        break label75;
       }
       ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = new ActivityManager.RunningAppProcessInfo();
       ActivityManager.getMyMemoryState(localRunningAppProcessInfo);
@@ -172,10 +172,10 @@ public final class BackgroundDetector
       }
     }
     paramBoolean = isInBackground();
-    AppMethodBeat.o(89462);
+    AppMethodBeat.o(4484);
     return paramBoolean;
-    label73:
-    AppMethodBeat.o(89462);
+    label75:
+    AppMethodBeat.o(4484);
     return paramBoolean;
   }
   

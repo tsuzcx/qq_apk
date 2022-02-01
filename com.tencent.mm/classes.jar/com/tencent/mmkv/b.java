@@ -6,14 +6,14 @@ public enum b
 {
   static
   {
-    AppMethodBeat.i(124048);
-    AZP = new b("LevelDebug", 0);
-    AZQ = new b("LevelInfo", 1);
-    AZR = new b("LevelWarning", 2);
-    AZS = new b("LevelError", 3);
-    AZT = new b("LevelNone", 4);
-    AZU = new b[] { AZP, AZQ, AZR, AZS, AZT };
-    AppMethodBeat.o(124048);
+    AppMethodBeat.i(13539);
+    IgK = new b("LevelDebug", 0);
+    IgL = new b("LevelInfo", 1);
+    IgM = new b("LevelWarning", 2);
+    IgN = new b("LevelError", 3);
+    IgO = new b("LevelNone", 4);
+    IgP = new b[] { IgK, IgL, IgM, IgN, IgO };
+    AppMethodBeat.o(13539);
   }
   
   private b() {}

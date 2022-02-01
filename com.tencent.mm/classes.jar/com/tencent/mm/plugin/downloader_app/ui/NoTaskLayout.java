@@ -2,14 +2,17 @@ package com.tencent.mm.plugin.downloader_app.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.c.a.a.f;
+import com.tencent.mm.plugin.downloader_app.b;
 
 public class NoTaskLayout
   extends RelativeLayout
 {
-  private BottomEntranceView lco;
+  private ImageView lyK;
+  private BottomEntranceView oju;
   
   public NoTaskLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -18,22 +21,24 @@ public class NoTaskLayout
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(136253);
+    AppMethodBeat.i(9019);
     super.onFinishInflate();
-    this.lco = ((BottomEntranceView)findViewById(2131826551));
-    AppMethodBeat.o(136253);
+    this.lyK = ((ImageView)findViewById(2131300976));
+    this.oju = ((BottomEntranceView)findViewById(2131297447));
+    b.e(this.lyK, "download_non_task");
+    AppMethodBeat.o(9019);
   }
   
   public void setData(f paramf)
   {
-    AppMethodBeat.i(136254);
-    this.lco.setData(paramf);
-    AppMethodBeat.o(136254);
+    AppMethodBeat.i(9020);
+    this.oju.setData(paramf);
+    AppMethodBeat.o(9020);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.NoTaskLayout
  * JD-Core Version:    0.7.0.1
  */

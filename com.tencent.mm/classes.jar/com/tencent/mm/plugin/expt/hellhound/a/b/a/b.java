@@ -1,416 +1,748 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.a;
 
-import a.l;
-import a.l.m;
-import a.v;
 import android.app.Activity;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.hellhound.a.b.b.e;
-import com.tencent.mm.protocal.protobuf.ava;
-import com.tencent.mm.protocal.protobuf.bki;
-import com.tencent.mm.protocal.protobuf.bzy;
-import com.tencent.mm.protocal.protobuf.bzz;
-import com.tencent.mm.protocal.protobuf.caa;
-import com.tencent.mm.protocal.protobuf.cab;
-import com.tencent.mm.protocal.protobuf.cad;
-import com.tencent.mm.protocal.protobuf.cae;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.ad;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/expt/hellhound/ext/session/config/HellKSessionConfig;", "", "()V", "Companion", "plugin-expt_release"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FeedFlowMonitor;", "", "()V", "TAG", "", "mDetailMonitor", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderDetailMonitor;", "mFavMonitor", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFavMonitor;", "mLbsMonitor", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderLbsMonitor;", "mLikedMonitor", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderLikeMonitor;", "mProfileMonitor", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderProfileMonitor;", "mRelMonitor", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFeedRelMonitor;", "mSearchMonitor", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderSearchMonitor;", "mTimelineMonitor", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderTimelineMonitor;", "mTopicMonitor", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderTopicMonitor;", "action", "", "actionId", "", "pageName", "doAction", "monitor", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/IFeedFlowMonitor;", "free", "activity", "Landroid/app/Activity;", "report", "startMonitor", "stopMonitor", "plugin-expt_release"})
 public final class b
 {
-  private static final List<e> maR;
-  public static final b.a maS;
+  private static m KFg;
+  private static c KFh;
+  private static n KFi;
+  private static i KFj;
+  private static k KFk;
+  private static l KFl;
+  private static e KFm;
+  private static d KFn;
+  private static h KFo;
+  public static final b KFp;
   
   static
   {
-    AppMethodBeat.i(152508);
-    maS = new b.a((byte)0);
-    maR = a.a.j.listOf(new e[] { new e("999", "MainUI", (List)a.a.j.V(new String[] { "ChattingUIFragment", "ChattingUI" })), new e("998", "MainUI", (List)a.a.j.V(new String[] { "BizConversationUI" })), new e("104", "MainUI", (List)a.a.j.V(new String[] { "BizTimeLineUI" })), new e("105", "MainUI", (List)a.a.j.V(new String[] { "AppBrandLaunchProxyUI", "AppBrandUI", "AppBrandUI1", "AppBrandUI2", "AppBrandUI3", "AppBrandUI4" })), new e("105", "MainUI", (List)a.a.j.V(new String[] { "AppBrandUI", "AppBrandUI1", "AppBrandUI2", "AppBrandUI3", "AppBrandUI4" })), new e("105", "LauncherUI", (List)a.a.j.V(new String[] { "AppBrandLaunchProxyUI", "AppBrandUI", "AppBrandUI1", "AppBrandUI2", "AppBrandUI3", "AppBrandUI4" })), new e("105", "LauncherUI", (List)a.a.j.V(new String[] { "AppBrandUI", "AppBrandUI1", "AppBrandUI2", "AppBrandUI3", "AppBrandUI4" })), new e("105", "MainUI", (List)a.a.j.V(new String[] { "AppBrandLauncherUI" })), new e("105", "LauncherUI", (List)a.a.j.V(new String[] { "AppBrandLauncherUI" })), new e("113", "MainUI", (List)a.a.j.V(new String[] { "ReaderAppUI" })), new e("114", "AddressUIFragment", (List)a.a.j.V(new String[] { "FTSMainUI" })), new e("115", "AddressUIFragment", (List)a.a.j.V(new String[] { "AddMoreFriendsUI" })), new e("116", "AddressUIFragment", (List)a.a.j.V(new String[] { "FMessageConversationUI" })), new e("117", "AddressUIFragment", (List)a.a.j.V(new String[] { "ChatroomContactUI" })), new e("118", "AddressUIFragment", (List)a.a.j.V(new String[] { "ContactLabelManagerUI" })), new e("106", "MainUI", (List)a.a.j.V(new String[] { "FTSMainUI" })), new e("107", "MainUI", (List)a.a.j.V(new String[] { "SelectContactUI" })), new e("108", "MainUI", (List)a.a.j.V(new String[] { "AddMoreFriendsUI" })), new e("109", "MainUI", (List)a.a.j.V(new String[] { "BaseScanUI" })), new e("110", "MainUI", (List)a.a.j.V(new String[] { "WalletOfflineEntranceUI" })), new e("119", "AddressUIFragment", (List)a.a.j.V(new String[] { "BrandServiceIndexUI" })), new e("120", "AddressUIFragment", (List)a.a.j.V(new String[] { "EnterpriseBizContactListUI" })), new e("121", "AddressUIFragment", (List)a.a.j.V(new String[] { "OpenIMAddressUI" })), new e("122", "AddressUIFragment", (List)a.a.j.V(new String[] { "ContactInfoUI" })), new e("123", "FindMoreFriendsUI", (List)a.a.j.V(new String[] { "SnsTimeLineUI" })), new e("124", "FindMoreFriendsUI", (List)a.a.j.V(new String[] { "BaseScanUI" })), new e("125", "FindMoreFriendsUI", (List)a.a.j.V(new String[] { "ShakeReportUI" })), new e("126", "FindMoreFriendsUI", (List)a.a.j.V(new String[] { "TopStoryHomeUI" })), new e("127", "FindMoreFriendsUI", (List)a.a.j.V(new String[] { "FTSSOSHomeWebViewUI" })), new e("128", "FindMoreFriendsUI", (List)a.a.j.V(new String[] { "NearbyFriendsIntroUI", "NearbyFriendsUI", "NearbyPersonalInfoUI", "NearbyFriendShowSayHiUI" })), new e("129", "FindMoreFriendsUI", (List)a.a.j.V(new String[] { "BottleBeachUI" })), new e("130", "FindMoreFriendsUI", (List)a.a.j.V(new String[] { "AppBrandPluginUI" })), new e("131", "FindMoreFriendsUI", (List)a.a.j.V(new String[] { "WebViewUI", "1", "jd_store" })), new e("132", "FindMoreFriendsUI", (List)a.a.j.V(new String[] { "GameWebViewUI" })), new e("132", "FindMoreFriendsUI", (List)a.a.j.V(new String[] { "GameCenterUI" })), new e("132", "FindMoreFriendsUI", (List)a.a.j.V(new String[] { "LuggageGameWebViewUI" })), new e("133", "FindMoreFriendsUI", (List)a.a.j.V(new String[] { "AppBrandLauncherUI" })), new e("134", "MoreTabUI", (List)a.a.j.V(new String[] { "SettingsPersonalInfoUI" })), new e("135", "MoreTabUI", (List)a.a.j.V(new String[] { "MallIndexUI" })), new e("136", "MoreTabUI", (List)a.a.j.V(new String[] { "FavoriteIndexUI" })), new e("137", "MoreTabUI", (List)a.a.j.V(new String[] { "SnsUserUI", "AlbumUI" })), new e("138", "MoreTabUI", (List)a.a.j.V(new String[] { "CardHomePageNewUI", "CardHomePageUI", "CardIndexUI", "CardInvalidCardUI", "CardViewUI", "ShareCardListUI" })), new e("139", "MoreTabUI", (List)a.a.j.V(new String[] { "EmojiStoreV2UI" })), new e("140", "MoreTabUI", (List)a.a.j.V(new String[] { "SettingsUI" })), new e("141", "MoreTabUI", (List)a.a.j.V(new String[] { "StoryCaptureUI" })), new e("142", "MoreTabUI", (List)a.a.j.V(new String[] { "StoryGalleryView", "StoryVideoView" })) });
-    AppMethodBeat.o(152508);
+    AppMethodBeat.i(205095);
+    KFp = new b();
+    AppMethodBeat.o(205095);
   }
   
-  public static final boolean MA(String paramString)
+  private static void a(int paramInt, o paramo)
   {
-    AppMethodBeat.i(152519);
-    a.f.b.j.q(paramString, "sid");
-    boolean bool = a.f.b.j.e("131", paramString);
-    AppMethodBeat.o(152519);
-    return bool;
-  }
-  
-  public static final List<cae> MB(String paramString)
-  {
-    AppMethodBeat.i(152520);
-    if (paramString != null) {
-      if (((CharSequence)paramString).length() != 0) {
-        break label36;
-      }
-    }
-    label36:
-    for (int i = 1; i != 0; i = 0)
+    AppMethodBeat.i(205094);
+    switch (paramInt)
     {
-      AppMethodBeat.o(152520);
-      return null;
     }
-    a.f.b.j.p(c.bsb(), "HellSessionCloudConfig.getInstance()");
-    Object localObject1 = c.bsc();
-    if (localObject1 == null)
+    do
     {
-      AppMethodBeat.o(152520);
-      return null;
-    }
-    if ((((bzz)localObject1).xLC != null) && (a.f.b.j.e(paramString, ((bzz)localObject1).xLC.sid)))
-    {
-      paramString = (List)((bzz)localObject1).xLC.xLz;
-      AppMethodBeat.o(152520);
-      return paramString;
-    }
-    Object localObject2 = ((bzz)localObject1).xLA.iterator();
-    Object localObject3;
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (cab)((Iterator)localObject2).next();
-      if (a.f.b.j.e(paramString, ((cab)localObject3).sid))
+      AppMethodBeat.o(205094);
+      return;
+      if (paramo != null)
       {
-        paramString = (List)((cab)localObject3).xLz;
-        AppMethodBeat.o(152520);
-        return paramString;
+        paramo.cdL();
+        AppMethodBeat.o(205094);
+        return;
       }
-    }
-    localObject2 = ((bzz)localObject1).xLB.iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (bzy)((Iterator)localObject2).next();
-      if (a.f.b.j.e(paramString, ((bzy)localObject3).sid))
+      AppMethodBeat.o(205094);
+      return;
+      if (paramo != null)
       {
-        paramString = (List)((bzy)localObject3).xLz;
-        AppMethodBeat.o(152520);
-        return paramString;
+        paramo.ccd();
+        AppMethodBeat.o(205094);
+        return;
       }
-    }
-    localObject1 = ((bzz)localObject1).xLD.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (cad)((Iterator)localObject1).next();
-      if (a.f.b.j.e(paramString, ((cad)localObject2).sid))
+      AppMethodBeat.o(205094);
+      return;
+      if (paramo != null)
       {
-        paramString = (List)((cad)localObject2).xLz;
-        AppMethodBeat.o(152520);
-        return paramString;
+        paramo.report();
+        AppMethodBeat.o(205094);
+        return;
       }
-    }
-    AppMethodBeat.o(152520);
-    return null;
+      AppMethodBeat.o(205094);
+      return;
+    } while (paramo == null);
+    paramo.free();
+    AppMethodBeat.o(205094);
   }
   
-  public static final String Mv(String paramString)
+  public static void aUU(String paramString)
   {
-    AppMethodBeat.i(152510);
-    paramString = b.a.Mv(paramString);
-    AppMethodBeat.o(152510);
-    return paramString;
-  }
-  
-  public static final boolean Mw(String paramString)
-  {
-    AppMethodBeat.i(152515);
-    boolean bool = b.a.Mw(paramString);
-    AppMethodBeat.o(152515);
-    return bool;
-  }
-  
-  public static final boolean Mx(String paramString)
-  {
-    AppMethodBeat.i(152516);
-    if (paramString == null)
+    AppMethodBeat.i(205092);
+    d.g.b.k.h(paramString, "pageName");
+    switch (paramString.hashCode())
     {
-      AppMethodBeat.o(152516);
-      return false;
     }
-    boolean bool = a.f.b.j.e("105", b.a.Mv(paramString));
-    AppMethodBeat.o(152516);
-    return bool;
-  }
-  
-  public static final boolean My(String paramString)
-  {
-    AppMethodBeat.i(152517);
-    if (paramString != null)
+    do
     {
-      paramString = b.a.Mv(paramString);
-      if ((a.f.b.j.e("999", paramString)) || (b.a.Mw(paramString)))
-      {
-        AppMethodBeat.o(152517);
-        return true;
-      }
-    }
-    AppMethodBeat.o(152517);
-    return false;
-  }
-  
-  public static final boolean Mz(String paramString)
-  {
-    AppMethodBeat.i(152518);
-    if (paramString != null)
-    {
-      paramString = b.a.Mv(paramString);
-      if ((a.f.b.j.e("104", paramString)) || (a.f.b.j.e("998", paramString)))
-      {
-        AppMethodBeat.o(152518);
-        return true;
-      }
-    }
-    AppMethodBeat.o(152518);
-    return false;
-  }
-  
-  public static final String a(Activity paramActivity, String paramString1, String paramString2, List<String> paramList)
-  {
-    AppMethodBeat.i(152509);
-    ab.w("HellKSessionConfig", "HABBYGE-MALI, getSessionId: " + paramString1 + ", " + paramString2);
-    a.f.b.j.p(c.bsb(), "HellSessionCloudConfig.getInstance()");
-    Object localObject1 = c.bsc();
-    if (localObject1 == null)
-    {
-      paramActivity = b.a.a(paramString1, paramString2, paramList);
-      AppMethodBeat.o(152509);
-      return paramActivity;
-    }
-    if (((bzz)localObject1).eht)
-    {
-      ab.e("HellKSessionConfig", "habbyge-mali, getSidId, sessionCloud.isDel ture");
-      AppMethodBeat.o(152509);
-      return null;
-    }
-    if (((a.f.b.j.e("ChattingUI", paramString2)) || (a.f.b.j.e("ChattingUIFragment", paramString2))) && ((a.f.b.j.e("MainUI", paramString1)) || (TextUtils.isEmpty((CharSequence)paramString1))))
-    {
-      ab.i("HellKSessionConfig", "habbyge-mali, getSidId, SESSION_ID_CHAT_VIRTUAL");
-      AppMethodBeat.o(152509);
-      return "999";
-    }
-    if ((a.f.b.j.e("WebViewUI", paramString2)) && (a.f.b.j.e("FindMoreFriendsUI", paramString1)) && (((bzz)localObject1).xLC != null) && (paramList != null) && (paramList.size() >= 2) && (a.f.b.j.e(((bzz)localObject1).xLC.xLE, (String)paramList.get(0))) && (a.f.b.j.e(((bzz)localObject1).xLC.xLF, (String)paramList.get(1))))
-    {
-      ab.i("HellKSessionConfig", "habbyge-mali, getSidId, SESSION_ID_WebViewUI_jd_store");
-      AppMethodBeat.o(152509);
-      return "131";
-    }
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      Object localObject2 = ((bzz)localObject1).xLA.iterator();
-      Object localObject3;
-      Object localObject4;
-      String str;
-      do
-      {
-        while (!((Iterator)localObject4).hasNext())
-        {
-          do
-          {
-            if (!((Iterator)localObject2).hasNext()) {
-              break;
-            }
-            localObject3 = (cab)((Iterator)localObject2).next();
-          } while ((localObject3 == null) || (!a.f.b.j.e(((cab)localObject3).xLx, paramString1)));
-          localObject4 = ((cab)localObject3).xkf;
-          a.f.b.j.p(localObject4, "config.pageName");
-          localObject4 = m.b((CharSequence)localObject4, new String[] { "," }).iterator();
-        }
-        str = (String)((Iterator)localObject4).next();
-        if (str == null)
-        {
-          paramActivity = new v("null cannot be cast to non-null type kotlin.CharSequence");
-          AppMethodBeat.o(152509);
-          throw paramActivity;
-        }
-      } while (!a.f.b.j.e(m.trim((CharSequence)str).toString(), paramString2));
-      ab.i("HellKSessionConfig", "habbyge-mali, getSidId, config.sid: " + ((cab)localObject3).sid);
-      paramActivity = ((cab)localObject3).sid;
-      AppMethodBeat.o(152509);
-      return paramActivity;
-      localObject1 = ((bzz)localObject1).xLD.iterator();
       do
       {
         do
         {
-          while (!((Iterator)localObject3).hasNext())
+          do
           {
             do
             {
-              if (!((Iterator)localObject1).hasNext()) {
-                break;
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          AppMethodBeat.o(205092);
+                          return;
+                        } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderFavTimelineUI"));
+                        paramString = KFn;
+                        if (paramString == null) {
+                          break;
+                        }
+                        paramString.a(3, "com.tencent.mm.plugin.finder.feed.ui.FinderFavTimelineUI", null);
+                        AppMethodBeat.o(205092);
+                        return;
+                      } while (!paramString.equals("com.tencent.mm.plugin.finder.search.FinderFeedSearchUI"));
+                      paramString = KFl;
+                      if (paramString == null) {
+                        break label449;
+                      }
+                      paramString.a(3, "com.tencent.mm.plugin.finder.search.FinderFeedSearchUI", null);
+                      AppMethodBeat.o(205092);
+                      return;
+                    } while (!paramString.equals("com.tencent.mm.plugin.finder.ui.FinderMsgFeedDetailUI"));
+                    paramString = KFh;
+                    if (paramString == null) {
+                      break label461;
+                    }
+                    paramString.a(3, "com.tencent.mm.plugin.finder.ui.FinderMsgFeedDetailUI", null);
+                    AppMethodBeat.o(205092);
+                    return;
+                  } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderTopicTimelineUI"));
+                  paramString = KFi;
+                  if (paramString == null) {
+                    break label467;
+                  }
+                  paramString.a(3, "com.tencent.mm.plugin.finder.feed.ui.FinderTopicTimelineUI", null);
+                  AppMethodBeat.o(205092);
+                  return;
+                } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderProfileTimeLineUI"));
+                paramString = KFk;
+                if (paramString == null) {
+                  break;
+                }
+                paramString.a(3, "com.tencent.mm.plugin.finder.feed.ui.FinderProfileTimeLineUI", null);
+                AppMethodBeat.o(205092);
+                return;
+              } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderFeedRelTimelineUI"));
+              paramString = KFm;
+              if (paramString == null) {
+                break label443;
               }
-              localObject2 = (cad)((Iterator)localObject1).next();
-            } while ((localObject2 == null) || (((cad)localObject2).xLG.isEmpty()) || ((a.f.b.j.e(((cad)localObject2).xLx, paramString1) ^ true)));
-            localObject3 = ((cad)localObject2).xkf;
-            a.f.b.j.p(localObject3, "config.pageName");
-            localObject3 = m.b((CharSequence)localObject3, new String[] { "," }).iterator();
+              paramString.a(3, "com.tencent.mm.plugin.finder.search.FinderFeedSearchUI", null);
+              AppMethodBeat.o(205092);
+              return;
+            } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderTimelineUI"));
+            m localm = KFg;
+            if (localm == null) {
+              break;
+            }
+            localm.a(3, paramString, null);
+            AppMethodBeat.o(205092);
+            return;
+          } while (!paramString.equals("com.tencent.mm.plugin.finder.ui.FinderShareFeedDetailUI"));
+          paramString = KFh;
+          if (paramString == null) {
+            break label455;
           }
-          localObject4 = (String)((Iterator)localObject3).next();
-          if (localObject4 == null)
+          paramString.a(3, "com.tencent.mm.plugin.finder.ui.FinderShareFeedDetailUI", null);
+          AppMethodBeat.o(205092);
+          return;
+        } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderLiveAnchorUI"));
+        paramString = KFo;
+      } while (paramString == null);
+      paramString.a(3, "com.tencent.mm.plugin.finder.feed.ui.FinderLiveAnchorUI", null);
+      AppMethodBeat.o(205092);
+      return;
+    } while (!paramString.equals("com.tencent.mm.plugin.finder.ui.FinderLikedFeedUI"));
+    paramString = KFj;
+    if (paramString != null)
+    {
+      paramString.a(3, "com.tencent.mm.plugin.finder.ui.FinderLikedFeedUI", null);
+      AppMethodBeat.o(205092);
+      return;
+      AppMethodBeat.o(205092);
+      return;
+      AppMethodBeat.o(205092);
+      return;
+      AppMethodBeat.o(205092);
+      return;
+    }
+    AppMethodBeat.o(205092);
+    return;
+    label443:
+    AppMethodBeat.o(205092);
+    return;
+    label449:
+    AppMethodBeat.o(205092);
+    return;
+    label455:
+    AppMethodBeat.o(205092);
+    return;
+    label461:
+    AppMethodBeat.o(205092);
+    return;
+    label467:
+    AppMethodBeat.o(205092);
+  }
+  
+  public static void bw(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(205093);
+    d.g.b.k.h(paramString, "pageName");
+    switch (paramString.hashCode())
+    {
+    }
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          AppMethodBeat.o(205093);
+          return;
+          if (paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderFavTimelineUI"))
           {
-            paramActivity = new v("null cannot be cast to non-null type kotlin.CharSequence");
-            AppMethodBeat.o(152509);
-            throw paramActivity;
+            a(paramInt, (o)KFn);
+            if (paramInt == 2)
+            {
+              KFn = null;
+              AppMethodBeat.o(205093);
+              return;
+              if (paramString.equals("com.tencent.mm.plugin.finder.search.FinderFeedSearchUI"))
+              {
+                a(paramInt, (o)KFl);
+                if (paramInt == 2)
+                {
+                  KFl = null;
+                  AppMethodBeat.o(205093);
+                  return;
+                  if (paramString.equals("com.tencent.mm.plugin.finder.ui.FinderMsgFeedDetailUI"))
+                  {
+                    a(paramInt, (o)KFh);
+                    if (paramInt == 2)
+                    {
+                      KFh = null;
+                      AppMethodBeat.o(205093);
+                      return;
+                      if (paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderTopicTimelineUI"))
+                      {
+                        a(paramInt, (o)KFi);
+                        if (paramInt == 2)
+                        {
+                          KFi = null;
+                          AppMethodBeat.o(205093);
+                          return;
+                          if (paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderProfileTimeLineUI"))
+                          {
+                            a(paramInt, (o)KFk);
+                            if (paramInt == 2)
+                            {
+                              KFk = null;
+                              AppMethodBeat.o(205093);
+                              return;
+                              if (paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderFeedRelTimelineUI"))
+                              {
+                                a(paramInt, (o)KFm);
+                                if (paramInt == 2)
+                                {
+                                  KFm = null;
+                                  AppMethodBeat.o(205093);
+                                  return;
+                                  if (paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderTimelineUI"))
+                                  {
+                                    a(paramInt, (o)KFg);
+                                    if (paramInt == 2)
+                                    {
+                                      KFg = null;
+                                      AppMethodBeat.o(205093);
+                                      return;
+                                      if (paramString.equals("com.tencent.mm.plugin.finder.ui.FinderShareFeedDetailUI"))
+                                      {
+                                        a(paramInt, (o)KFh);
+                                        if (paramInt == 2)
+                                        {
+                                          KFh = null;
+                                          AppMethodBeat.o(205093);
+                                          return;
+                                          if (paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderLiveAnchorUI"))
+                                          {
+                                            a(paramInt, (o)KFo);
+                                            if (paramInt == 2) {
+                                              KFo = null;
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
-        } while (!a.f.b.j.e(m.trim((CharSequence)localObject4).toString(), paramString2));
-        ab.i("HellKSessionConfig", "habbyge-mali, getSidId params, config.sid " + ((cad)localObject2).sid);
-      } while (!a.a(paramActivity, (cad)localObject2));
-      paramActivity = ((cad)localObject2).sid;
-      AppMethodBeat.o(152509);
-      return paramActivity;
-    }
-    ab.i("HellKSessionConfig", "habbyge-mali, getSidId by cloud config is NULL，continue dignose session id By local logic !!!");
-    paramActivity = b.a.a(paramString1, paramString2, paramList);
-    AppMethodBeat.o(152509);
-    return paramActivity;
+        }
+      } while (!paramString.equals("com.tencent.mm.plugin.finder.ui.FinderLikedFeedUI"));
+      a(paramInt, (o)KFj);
+    } while (paramInt != 2);
+    KFj = null;
+    AppMethodBeat.o(205093);
   }
   
-  public static final void a(ava paramava)
+  public static void c(String paramString, Activity paramActivity)
   {
-    AppMethodBeat.i(152511);
-    if (paramava != null)
+    AppMethodBeat.i(205089);
+    d.g.b.k.h(paramString, "pageName");
+    d.g.b.k.h(paramActivity, "activity");
+    ad.d("HABBYGE-MALI.FeedFlowMonitor", "startMonitor: page=" + paramString + ", activity=" + paramActivity.getClass().getName());
+    switch (paramString.hashCode())
     {
-      ab.i("HellKSessionConfig", "HABBYGE-MALI, befor, sessionList.length: " + paramava.xkk.size());
-      paramava = paramava.xkk;
-      a.f.b.j.p(paramava, "hellSession.sessions");
-      Object localObject1 = (Iterable)paramava;
-      paramava = (Collection)new ArrayList();
-      localObject1 = ((Iterable)localObject1).iterator();
-      Object localObject2;
-      Object localObject3;
-      label230:
-      while (((Iterator)localObject1).hasNext())
+    }
+    do
+    {
+      do
       {
-        localObject2 = ((Iterator)localObject1).next();
-        localObject3 = (bki)localObject2;
-        String str = ((bki)localObject3).czq;
-        a.f.b.j.p(str, "it.session");
-        str = b.a.Mv(str);
-        ab.i("HellKSessionConfig", "HABBYGE-MALI, handleChatting, sessionId: " + str + ", " + ((bki)localObject3).czq);
-        if ((a.f.b.j.e(str, "999")) && ((((bki)localObject3).xyL == 0) || (((bki)localObject3).xyL == 1) || (((bki)localObject3).xyL == 2) || (((bki)localObject3).xyL == 4) || (((bki)localObject3).xyL == 5))) {}
-        for (int i = 1;; i = 0)
+        do
         {
-          if (i == 0) {
-            break label230;
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          AppMethodBeat.o(205089);
+                          return;
+                        } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderFavTimelineUI"));
+                        if (KFn == null) {
+                          KFn = new d();
+                        }
+                        localObject = KFn;
+                        if (localObject == null) {
+                          break;
+                        }
+                        ((d)localObject).a(0, paramString, paramActivity);
+                        AppMethodBeat.o(205089);
+                        return;
+                      } while (!paramString.equals("com.tencent.mm.plugin.finder.search.FinderFeedSearchUI"));
+                      if (KFl == null) {
+                        KFl = new l();
+                      }
+                      localObject = KFl;
+                      if (localObject == null) {
+                        break label644;
+                      }
+                      ((l)localObject).a(0, paramString, paramActivity);
+                      AppMethodBeat.o(205089);
+                      return;
+                    } while (!paramString.equals("com.tencent.mm.plugin.finder.ui.FinderMsgFeedDetailUI"));
+                    if (KFh == null) {
+                      KFh = new c();
+                    }
+                    localObject = KFh;
+                    if (localObject == null) {
+                      break label656;
+                    }
+                    ((c)localObject).a(0, paramString, paramActivity);
+                    AppMethodBeat.o(205089);
+                    return;
+                  } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderTopicTimelineUI"));
+                  if (KFi == null) {
+                    KFi = new n();
+                  }
+                  localObject = KFi;
+                  if (localObject == null) {
+                    break label662;
+                  }
+                  ((n)localObject).a(0, paramString, paramActivity);
+                  AppMethodBeat.o(205089);
+                  return;
+                } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderProfileTimeLineUI"));
+                if (KFk == null) {
+                  KFk = new k();
+                }
+                localObject = KFk;
+                if (localObject == null) {
+                  break;
+                }
+                ((k)localObject).a(0, paramString, paramActivity);
+                AppMethodBeat.o(205089);
+                return;
+              } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderFeedRelTimelineUI"));
+              if (KFm == null) {
+                KFm = new e();
+              }
+              localObject = KFm;
+              if (localObject == null) {
+                break label638;
+              }
+              ((e)localObject).a(0, paramString, paramActivity);
+              AppMethodBeat.o(205089);
+              return;
+            } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderTimelineUI"));
+            if (KFg == null) {
+              KFg = new m();
+            }
+            localObject = KFg;
+            if (localObject == null) {
+              break;
+            }
+            ((m)localObject).a(0, paramString, paramActivity);
+            AppMethodBeat.o(205089);
+            return;
+          } while (!paramString.equals("com.tencent.mm.plugin.finder.ui.FinderShareFeedDetailUI"));
+          if (KFh == null) {
+            KFh = new c();
           }
-          paramava.add(localObject2);
-          break;
+          localObject = KFh;
+          if (localObject == null) {
+            break label650;
+          }
+          ((c)localObject).a(0, paramString, paramActivity);
+          AppMethodBeat.o(205089);
+          return;
+        } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderLiveAnchorUI"));
+        if (KFo == null) {
+          KFo = new h();
         }
-      }
-      localObject1 = a.a.j.m((Iterable)paramava);
-      if (localObject1 == null)
+        localObject = KFo;
+      } while (localObject == null);
+      ((h)localObject).a(0, paramString, paramActivity);
+      AppMethodBeat.o(205089);
+      return;
+    } while (!paramString.equals("com.tencent.mm.plugin.finder.ui.FinderLikedFeedUI"));
+    if (KFj == null) {
+      KFj = new i();
+    }
+    Object localObject = KFj;
+    if (localObject != null)
+    {
+      ((i)localObject).a(0, paramString, paramActivity);
+      AppMethodBeat.o(205089);
+      return;
+      AppMethodBeat.o(205089);
+      return;
+      AppMethodBeat.o(205089);
+      return;
+      AppMethodBeat.o(205089);
+      return;
+    }
+    AppMethodBeat.o(205089);
+    return;
+    label638:
+    AppMethodBeat.o(205089);
+    return;
+    label644:
+    AppMethodBeat.o(205089);
+    return;
+    label650:
+    AppMethodBeat.o(205089);
+    return;
+    label656:
+    AppMethodBeat.o(205089);
+    return;
+    label662:
+    AppMethodBeat.o(205089);
+  }
+  
+  public static void d(String paramString, Activity paramActivity)
+  {
+    AppMethodBeat.i(205090);
+    d.g.b.k.h(paramString, "pageName");
+    d.g.b.k.h(paramActivity, "activity");
+    switch (paramString.hashCode())
+    {
+    }
+    do
+    {
+      do
       {
-        AppMethodBeat.o(152511);
-        return;
-      }
-      ab.i("HellKSessionConfig", "HABBYGE-MALI, after, sessionList.size: " + ((List)localObject1).size());
-      paramava = null;
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (bki)((Iterator)localObject1).next();
-        localObject3 = b.a.MC(((bki)localObject2).czq);
-        if (localObject3 != null) {
-          paramava = "_" + ((com.tencent.mm.vending.j.c)localObject3).get(1);
-        }
-        ab.i("HellKSessionConfig", "HABBYGE-MALI, handleChatting, session, Start: " + ((bki)localObject2).czq + ", " + paramava);
-        ((bki)localObject2).czq = b.a.vs(((bki)localObject2).xyL);
-        if ((a.f.b.j.e(((bki)localObject2).czq, "-1") ^ true))
+        do
         {
-          localObject3 = ((bki)localObject2).czq;
-          ((bki)localObject2).czq = ((String)localObject3 + paramava);
-        }
-        ab.i("HellKSessionConfig", "HABBYGE-MALI, handleChatting, session, End: " + ((bki)localObject2).czq);
-      }
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          AppMethodBeat.o(205090);
+                          return;
+                        } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderFavTimelineUI"));
+                        paramString = KFn;
+                        if (paramString == null) {
+                          break;
+                        }
+                        paramString.a(1, "com.tencent.mm.plugin.finder.feed.ui.FinderFavTimelineUI", paramActivity);
+                        AppMethodBeat.o(205090);
+                        return;
+                      } while (!paramString.equals("com.tencent.mm.plugin.finder.search.FinderFeedSearchUI"));
+                      paramString = KFl;
+                      if (paramString == null) {
+                        break label458;
+                      }
+                      paramString.a(1, "com.tencent.mm.plugin.finder.search.FinderFeedSearchUI", paramActivity);
+                      AppMethodBeat.o(205090);
+                      return;
+                    } while (!paramString.equals("com.tencent.mm.plugin.finder.ui.FinderMsgFeedDetailUI"));
+                    paramString = KFh;
+                    if (paramString == null) {
+                      break label470;
+                    }
+                    paramString.a(1, "com.tencent.mm.plugin.finder.ui.FinderMsgFeedDetailUI", paramActivity);
+                    AppMethodBeat.o(205090);
+                    return;
+                  } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderTopicTimelineUI"));
+                  paramString = KFi;
+                  if (paramString == null) {
+                    break label476;
+                  }
+                  paramString.a(1, "com.tencent.mm.plugin.finder.feed.ui.FinderTopicTimelineUI", paramActivity);
+                  AppMethodBeat.o(205090);
+                  return;
+                } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderProfileTimeLineUI"));
+                paramString = KFk;
+                if (paramString == null) {
+                  break;
+                }
+                paramString.a(1, "com.tencent.mm.plugin.finder.feed.ui.FinderProfileTimeLineUI", paramActivity);
+                AppMethodBeat.o(205090);
+                return;
+              } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderFeedRelTimelineUI"));
+              paramString = KFm;
+              if (paramString == null) {
+                break label452;
+              }
+              paramString.a(1, "com.tencent.mm.plugin.finder.feed.ui.FinderFeedRelTimelineUI", paramActivity);
+              AppMethodBeat.o(205090);
+              return;
+            } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderTimelineUI"));
+            paramString = KFg;
+            if (paramString == null) {
+              break;
+            }
+            paramString.a(1, "com.tencent.mm.plugin.finder.feed.ui.FinderTimelineUI", paramActivity);
+            AppMethodBeat.o(205090);
+            return;
+          } while (!paramString.equals("com.tencent.mm.plugin.finder.ui.FinderShareFeedDetailUI"));
+          paramString = KFh;
+          if (paramString == null) {
+            break label464;
+          }
+          paramString.a(1, "com.tencent.mm.plugin.finder.ui.FinderShareFeedDetailUI", paramActivity);
+          AppMethodBeat.o(205090);
+          return;
+        } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderLiveAnchorUI"));
+        paramString = KFo;
+      } while (paramString == null);
+      paramString.a(1, "com.tencent.mm.plugin.finder.feed.ui.FinderLiveAnchorUI", paramActivity);
+      AppMethodBeat.o(205090);
+      return;
+    } while (!paramString.equals("com.tencent.mm.plugin.finder.ui.FinderLikedFeedUI"));
+    paramString = KFj;
+    if (paramString != null)
+    {
+      paramString.a(1, "com.tencent.mm.plugin.finder.ui.FinderLikedFeedUI", paramActivity);
+      AppMethodBeat.o(205090);
+      return;
+      AppMethodBeat.o(205090);
+      return;
+      AppMethodBeat.o(205090);
+      return;
+      AppMethodBeat.o(205090);
+      return;
     }
-    AppMethodBeat.o(152511);
+    AppMethodBeat.o(205090);
+    return;
+    label452:
+    AppMethodBeat.o(205090);
+    return;
+    label458:
+    AppMethodBeat.o(205090);
+    return;
+    label464:
+    AppMethodBeat.o(205090);
+    return;
+    label470:
+    AppMethodBeat.o(205090);
+    return;
+    label476:
+    AppMethodBeat.o(205090);
   }
   
-  public static final void b(bki parambki)
+  public static void e(String paramString, Activity paramActivity)
   {
-    AppMethodBeat.i(152512);
-    if (parambki != null)
+    AppMethodBeat.i(205091);
+    d.g.b.k.h(paramString, "pageName");
+    d.g.b.k.h(paramActivity, "activity");
+    switch (paramString.hashCode())
     {
-      com.tencent.mm.vending.j.c localc = b.a.MC(parambki.czq);
-      if (localc == null)
+    }
+    do
+    {
+      do
       {
-        AppMethodBeat.o(152512);
-        return;
-      }
-      if (!(a.f.b.j.e("999", localc.get(0)) ^ true))
-      {
-        String str = b.a.vs(parambki.xyL);
-        parambki.czq = (str + "_" + localc.get(1));
-      }
-    }
-    AppMethodBeat.o(152512);
-  }
-  
-  public static final String c(bki parambki)
-  {
-    AppMethodBeat.i(152513);
-    if (parambki == null)
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          AppMethodBeat.o(205091);
+                          return;
+                        } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderFavTimelineUI"));
+                        paramString = KFn;
+                        if (paramString == null) {
+                          break;
+                        }
+                        paramString.a(2, "com.tencent.mm.plugin.finder.feed.ui.FinderFavTimelineUI", paramActivity);
+                        AppMethodBeat.o(205091);
+                        return;
+                      } while (!paramString.equals("com.tencent.mm.plugin.finder.search.FinderFeedSearchUI"));
+                      paramString = KFl;
+                      if (paramString == null) {
+                        break label457;
+                      }
+                      paramString.a(2, "com.tencent.mm.plugin.finder.search.FinderFeedSearchUI", paramActivity);
+                      AppMethodBeat.o(205091);
+                      return;
+                    } while (!paramString.equals("com.tencent.mm.plugin.finder.ui.FinderMsgFeedDetailUI"));
+                    paramString = KFh;
+                    if (paramString == null) {
+                      break label469;
+                    }
+                    paramString.a(2, "com.tencent.mm.plugin.finder.ui.FinderMsgFeedDetailUI", paramActivity);
+                    AppMethodBeat.o(205091);
+                    return;
+                  } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderTopicTimelineUI"));
+                  paramString = KFi;
+                  if (paramString == null) {
+                    break label475;
+                  }
+                  paramString.a(2, "com.tencent.mm.plugin.finder.feed.ui.FinderTopicTimelineUI", paramActivity);
+                  AppMethodBeat.o(205091);
+                  return;
+                } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderProfileTimeLineUI"));
+                paramString = KFk;
+                if (paramString == null) {
+                  break;
+                }
+                paramString.a(2, "com.tencent.mm.plugin.finder.feed.ui.FinderProfileTimeLineUI", paramActivity);
+                AppMethodBeat.o(205091);
+                return;
+              } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderFeedRelTimelineUI"));
+              paramString = KFm;
+              if (paramString == null) {
+                break label451;
+              }
+              paramString.a(2, "com.tencent.mm.plugin.finder.feed.ui.FinderFeedRelTimelineUI", paramActivity);
+              AppMethodBeat.o(205091);
+              return;
+            } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderTimelineUI"));
+            m localm = KFg;
+            if (localm == null) {
+              break;
+            }
+            localm.a(2, paramString, paramActivity);
+            AppMethodBeat.o(205091);
+            return;
+          } while (!paramString.equals("com.tencent.mm.plugin.finder.ui.FinderShareFeedDetailUI"));
+          paramString = KFh;
+          if (paramString == null) {
+            break label463;
+          }
+          paramString.a(2, "com.tencent.mm.plugin.finder.ui.FinderShareFeedDetailUI", paramActivity);
+          AppMethodBeat.o(205091);
+          return;
+        } while (!paramString.equals("com.tencent.mm.plugin.finder.feed.ui.FinderLiveAnchorUI"));
+        paramString = KFo;
+      } while (paramString == null);
+      paramString.a(2, "com.tencent.mm.plugin.finder.feed.ui.FinderLiveAnchorUI", paramActivity);
+      AppMethodBeat.o(205091);
+      return;
+    } while (!paramString.equals("com.tencent.mm.plugin.finder.ui.FinderLikedFeedUI"));
+    paramString = KFj;
+    if (paramString != null)
     {
-      AppMethodBeat.o(152513);
-      return null;
+      paramString.a(2, "com.tencent.mm.plugin.finder.ui.FinderLikedFeedUI", paramActivity);
+      AppMethodBeat.o(205091);
+      return;
+      AppMethodBeat.o(205091);
+      return;
+      AppMethodBeat.o(205091);
+      return;
+      AppMethodBeat.o(205091);
+      return;
     }
-    com.tencent.mm.vending.j.c localc = b.a.MC(parambki.czq);
-    if (localc == null)
-    {
-      parambki = parambki.czq;
-      AppMethodBeat.o(152513);
-      return parambki;
-    }
-    if ((a.f.b.j.e("999", localc.get(0)) ^ true))
-    {
-      parambki = parambki.czq;
-      AppMethodBeat.o(152513);
-      return parambki;
-    }
-    parambki = b.a.vs(parambki.xyL);
-    parambki = parambki + "_" + localc.get(1);
-    AppMethodBeat.o(152513);
-    return parambki;
-  }
-  
-  public static final String d(bki parambki)
-  {
-    AppMethodBeat.i(152514);
-    if (parambki == null)
-    {
-      AppMethodBeat.o(152514);
-      return null;
-    }
-    com.tencent.mm.vending.j.c localc = b.a.MC(parambki.czq);
-    if (localc == null)
-    {
-      parambki = parambki.czq;
-      AppMethodBeat.o(152514);
-      return parambki;
-    }
-    if ((a.f.b.j.e("999", localc.get(0)) ^ true))
-    {
-      parambki = parambki.czq;
-      a.f.b.j.p(parambki, "pageSession.session");
-      parambki = b.a.Mv(parambki);
-      AppMethodBeat.o(152514);
-      return parambki;
-    }
-    parambki = b.a.vs(parambki.xyL);
-    AppMethodBeat.o(152514);
-    return parambki;
+    AppMethodBeat.o(205091);
+    return;
+    label451:
+    AppMethodBeat.o(205091);
+    return;
+    label457:
+    AppMethodBeat.o(205091);
+    return;
+    label463:
+    AppMethodBeat.o(205091);
+    return;
+    label469:
+    AppMethodBeat.o(205091);
+    return;
+    label475:
+    AppMethodBeat.o(205091);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.b.a.b
  * JD-Core Version:    0.7.0.1
  */

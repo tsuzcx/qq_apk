@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#00000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/ax7" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_alignParentBottom="true">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16.0dip" android:textColor="@color/y4" android:id="@id/ab0" android:paddingLeft="16.0dip" android:paddingTop="16.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r5" android:layout_alignParentStart="true" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/a_u" android:gravity="center" android:id="@id/eg9" android:background="@drawable/afb" android:layout_width="58.0dip" android:layout_height="32.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="20.0dip" android:text="@string/wc" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/a72" android:id="@id/atn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:layout_marginRight="16.0dip" android:text="@string/g2y" android:layout_toLeftOf="@id/eg9" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/a72" android:id="@id/atm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="23.0dip" android:text="0" android:layout_toLeftOf="@id/atn" />
+        </RelativeLayout>
+        <LinearLayout android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.plugin.sns.ui.SnsEditText android:textSize="17.0dip" android:textColor="@color/y4" android:gravity="top" android:id="@id/axy" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/g30" android:maxLines="4" android:minLines="4" android:singleLine="false" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/x5" style="@style/lp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

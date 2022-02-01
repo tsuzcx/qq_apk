@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class gq
   extends b
 {
-  public gq.a cvC;
-  public gq.b cvD;
+  public a djX;
   
   public gq()
   {
@@ -16,17 +15,21 @@ public final class gq
   
   private gq(byte paramByte)
   {
-    AppMethodBeat.i(15776);
-    this.cvC = new gq.a();
-    this.cvD = new gq.b();
-    this.ymq = false;
+    AppMethodBeat.i(127404);
+    this.djX = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15776);
+    AppMethodBeat.o(127404);
+  }
+  
+  public static final class a
+  {
+    public byte[] djY;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.gq
  * JD-Core Version:    0.7.0.1
  */

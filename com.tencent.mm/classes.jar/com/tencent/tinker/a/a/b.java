@@ -4,24 +4,24 @@ import com.tencent.tinker.a.a.b.c;
 import java.util.Arrays;
 
 public final class b
-  extends t.a.a<b>
+  extends s.a.a<b>
 {
-  public int[] Box;
+  public int[] IAs;
   
   public b(int paramInt, int[] paramArrayOfInt)
   {
     super(paramInt);
-    this.Box = paramArrayOfInt;
+    this.IAs = paramArrayOfInt;
   }
   
   private int a(b paramb)
   {
     int k = 0;
-    int m = this.Box.length;
-    int i = paramb.Box.length;
+    int m = this.IAs.length;
+    int i = paramb.IAs.length;
     if (m != i)
     {
-      i = c.ip(m, i);
+      i = c.ks(m, i);
       return i;
     }
     int j = 0;
@@ -31,8 +31,8 @@ public final class b
       if (j >= m) {
         break;
       }
-      if (this.Box[j] != paramb.Box[j]) {
-        return c.ip(this.Box[j], paramb.Box[j]);
+      if (this.IAs[j] != paramb.IAs[j]) {
+        return c.ks(this.IAs[j], paramb.IAs[j]);
       }
       j += 1;
     }
@@ -49,7 +49,7 @@ public final class b
   
   public final int hashCode()
   {
-    return Arrays.hashCode(this.Box);
+    return Arrays.hashCode(this.IAs);
   }
 }
 

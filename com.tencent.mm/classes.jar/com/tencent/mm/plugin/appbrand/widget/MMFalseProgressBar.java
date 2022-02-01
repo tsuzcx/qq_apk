@@ -2,23 +2,24 @@ package com.tencent.mm.plugin.appbrand.widget;
 
 import android.content.Context;
 import android.os.Looper;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ay;
 
 public class MMFalseProgressBar
   extends ProgressBar
 {
-  private float Tb;
-  private float jaD;
-  private float jaE;
-  private float jaF;
-  private float jaG;
-  private boolean jaH;
-  private ak mHandler;
+  private float aae;
+  private float lQA;
+  private boolean lQB;
+  private float lQx;
+  private float lQy;
+  private float lQz;
+  private ap mHandler;
   private boolean mIsStart;
   
   public MMFalseProgressBar(Context paramContext, AttributeSet paramAttributeSet)
@@ -29,26 +30,50 @@ public class MMFalseProgressBar
   public MMFalseProgressBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(87444);
+    AppMethodBeat.i(135398);
     this.mIsStart = false;
-    this.Tb = 0.0F;
-    this.jaH = true;
-    this.mHandler = new MMFalseProgressBar.1(this, Looper.getMainLooper());
-    setMax(1000);
-    if (at.ha(ah.getContext()))
+    this.aae = 0.0F;
+    this.lQB = true;
+    this.mHandler = new ap(Looper.getMainLooper())
     {
-      this.jaD = 4.0F;
-      this.jaE = 1.0F;
-      this.jaF = 0.3F;
-      this.jaG = 50.0F;
-      AppMethodBeat.o(87444);
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(135397);
+        switch (paramAnonymousMessage.what)
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(135397);
+          return;
+          MMFalseProgressBar.a(MMFalseProgressBar.this);
+          AppMethodBeat.o(135397);
+          return;
+          MMFalseProgressBar.b(MMFalseProgressBar.this);
+          AppMethodBeat.o(135397);
+          return;
+          MMFalseProgressBar.c(MMFalseProgressBar.this);
+          AppMethodBeat.o(135397);
+          return;
+          MMFalseProgressBar.d(MMFalseProgressBar.this);
+        }
+      }
+    };
+    setMax(1000);
+    if (ay.iD(aj.getContext()))
+    {
+      this.lQx = 4.0F;
+      this.lQy = 1.0F;
+      this.lQz = 0.3F;
+      this.lQA = 50.0F;
+      AppMethodBeat.o(135398);
       return;
     }
-    this.jaD = 2.0F;
-    this.jaE = 0.5F;
-    this.jaF = 0.15F;
-    this.jaG = 50.0F;
-    AppMethodBeat.o(87444);
+    this.lQx = 2.0F;
+    this.lQy = 0.5F;
+    this.lQz = 0.15F;
+    this.lQA = 50.0F;
+    AppMethodBeat.o(135398);
   }
 }
 

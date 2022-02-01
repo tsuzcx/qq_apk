@@ -4,19 +4,19 @@ import android.graphics.Bitmap;
 
 public final class e
 {
-  public int ada;
-  public String adf;
-  public String adg;
-  public String adh;
-  public Bitmap adi;
-  public int adj;
-  public boolean adk;
-  public boolean adl;
-  public byte[] adm;
+  public int agB;
+  public String agG;
+  public String agH;
+  public String agI;
+  public Bitmap agJ;
+  public int agK;
+  public boolean agL;
+  public boolean agM;
+  public byte[] agN;
   
   public final String toString()
   {
-    return "NotificationItem [notificationId=" + this.ada + ", talker=" + this.adf + ", vibrate=" + this.adk + "]";
+    return "NotificationItem [notificationId=" + this.agB + ", talker=" + this.agG + ", vibrate=" + this.agL + "]";
   }
 }
 

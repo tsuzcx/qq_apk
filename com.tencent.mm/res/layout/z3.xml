@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" style="@style/q1"
+<LinearLayout android:orientation="vertical" android:id="@id/cip" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <EditText android:textSize="18.0dip" android:id="@id/bep" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" style="@style/mu" />
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/amv" android:paddingTop="@dimen/i_" android:paddingBottom="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/b_z" android:layout_width="@dimen/a0y" android:layout_height="@dimen/a0y" android:src="@drawable/aq8" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:id="@id/eic" android:padding="@dimen/d" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/m3" />
+            <TextView android:id="@id/ba0" android:padding="@dimen/d" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/m2" />
         </LinearLayout>
-    </ScrollView>
-    <TextView android:textColor="@color/h6" android:gravity="right" android:id="@id/bsi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/gd" />
+    </LinearLayout>
+    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/f1r" android:padding="@dimen/hk" android:paddingBottom="@dimen/i_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableLeft="@drawable/bx5" style="@style/m2" />
 </LinearLayout>

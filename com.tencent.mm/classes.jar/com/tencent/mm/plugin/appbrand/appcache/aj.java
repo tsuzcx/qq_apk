@@ -1,111 +1,69 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.plugin.appbrand.task.h;
-import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.bor;
-import com.tencent.mm.protocal.protobuf.czn;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.g.c.en;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
-public enum aj
+public final class aj
+  extends en
 {
-  public static void a(int paramInt, bor parambor)
+  static final String[] iLd;
+  static final c.a iMP;
+  
+  static
   {
-    AppMethodBeat.i(129421);
-    czn localczn;
-    if (parambor != null)
+    int i = 0;
+    AppMethodBeat.i(44328);
+    iLd = new String[] { "appId", "version" };
+    Object localObject1 = new c.a();
+    ((c.a)localObject1).EYt = new Field[4];
+    ((c.a)localObject1).columns = new String[5];
+    Object localObject2 = new StringBuilder();
+    ((c.a)localObject1).columns[0] = "appId";
+    ((c.a)localObject1).EYv.put("appId", "TEXT");
+    ((StringBuilder)localObject2).append(" appId TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[1] = "version";
+    ((c.a)localObject1).EYv.put("version", "INTEGER");
+    ((StringBuilder)localObject2).append(" version INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[2] = "hit";
+    ((c.a)localObject1).EYv.put("hit", "INTEGER");
+    ((StringBuilder)localObject2).append(" hit INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[3] = "hitTimeMS";
+    ((c.a)localObject1).EYv.put("hitTimeMS", "LONG");
+    ((StringBuilder)localObject2).append(" hitTimeMS LONG");
+    ((c.a)localObject1).columns[4] = "rowid";
+    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
+    iMP = (c.a)localObject1;
+    localObject1 = " PRIMARY KEY (";
+    localObject2 = iLd;
+    int j = localObject2.length;
+    while (i < j)
     {
-      localczn = new czn();
-      localczn.url = parambor.url;
-      localczn.cqq = parambor.cqq;
-      localczn.version = parambor.version;
-      localczn.xCO = parambor.xCO;
-      if (!parambor.xCN) {
-        break label85;
-      }
+      localObject3 = localObject2[i];
+      localObject1 = (String)localObject1 + ", " + (String)localObject3;
+      i += 1;
     }
-    label85:
-    for (int i = 1;; i = 0)
-    {
-      localczn.ygm = i;
-      localczn.cyc = parambor.cyc;
-      a(paramInt, localczn, aj.a.gVw);
-      AppMethodBeat.o(129421);
-      return;
-    }
+    localObject1 = ((String)localObject1).replaceFirst(",", "");
+    localObject1 = (String)localObject1 + " )";
+    localObject2 = new StringBuilder();
+    Object localObject3 = iMP;
+    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
+    AppMethodBeat.o(44328);
   }
   
-  private static void a(int paramInt, czn paramczn, aj.a parama)
+  public final c.a getDBInfo()
   {
-    AppMethodBeat.i(129420);
-    if (g.auM() != null)
-    {
-      PInt localPInt = new PInt();
-      g.auM().a(paramczn, localPInt);
-      boolean bool;
-      if (g.auM().av("@LibraryAppId", 0) == paramczn.version) {
-        if (as.p(true, true).first == as.a.gWw)
-        {
-          bool = true;
-          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WxaCommLibVersionChecker", "onResp, requestUsingLibVersion %d, needDownload = %b, version = %d, forceUpdate = %d, md5 = %s, url = %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool), Integer.valueOf(paramczn.version), Integer.valueOf(paramczn.xCO), paramczn.cqq, paramczn.url });
-          if (bool)
-          {
-            if ((paramInt <= 0) || (bo.isNullOrNil(paramczn.cyc))) {
-              break label271;
-            }
-            t.gUT.H(paramInt, paramczn.cyc);
-          }
-        }
-      }
-      for (;;)
-      {
-        t.gUT.dF(true);
-        aa localaa = new aa();
-        localaa.field_key = "@LibraryAppId";
-        localaa.field_version = paramczn.version;
-        if (!g.auR().get(localaa, new String[] { "key", "version" }))
-        {
-          localaa.field_updateTime = bo.aox();
-          localaa.field_scene = (parama.ordinal() + 1);
-          g.auR().insert(localaa);
-        }
-        if ((paramczn.xCO > 0) && (localPInt.value > 0)) {
-          h.pA(2);
-        }
-        AppMethodBeat.o(129420);
-        return;
-        bool = false;
-        break;
-        bool = false;
-        break;
-        label271:
-        t.gUT.H(-1, null);
-      }
-    }
-    com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WxaCommLibVersionChecker", "onResp, null storage");
-    AppMethodBeat.o(129420);
-  }
-  
-  public static void a(czn paramczn)
-  {
-    AppMethodBeat.i(129422);
-    a(-1, paramczn, aj.a.gVv);
-    AppMethodBeat.o(129422);
-  }
-  
-  public static void dJ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(129419);
-    d.post(new aj.1(paramBoolean), "WxaCommLibVersionChecker");
-    AppMethodBeat.o(129419);
+    return iMP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.aj
  * JD-Core Version:    0.7.0.1
  */

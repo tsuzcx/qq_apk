@@ -5,7 +5,7 @@ import com.google.android.search.verification.client.SearchActionVerificationCli
 import com.google.android.search.verification.client.SearchActionVerificationClientService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.account.model.VoiceActionService;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class VoiceActionActivity
   extends SearchActionVerificationClientActivity
@@ -16,17 +16,17 @@ public class VoiceActionActivity
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final Class<? extends SearchActionVerificationClientService> rx()
+  public final Class<? extends SearchActionVerificationClientService> wx()
   {
-    AppMethodBeat.i(125632);
-    ab.d("MicroMsg.VoiceActionActivity", "getServiceClass");
-    AppMethodBeat.o(125632);
+    AppMethodBeat.i(128793);
+    ad.d("MicroMsg.VoiceActionActivity", "getServiceClass");
+    AppMethodBeat.o(128793);
     return VoiceActionService.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.VoiceActionActivity
  * JD-Core Version:    0.7.0.1
  */

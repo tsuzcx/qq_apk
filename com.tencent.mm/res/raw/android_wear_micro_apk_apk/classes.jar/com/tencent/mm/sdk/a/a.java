@@ -12,25 +12,25 @@ import junit.framework.Assert;
 
 public final class a
 {
-  public static a WJ = new a();
-  private b WI = new b();
-  private final HashMap<Integer, LinkedList<e>> WK = new HashMap();
-  private final HashMap<Integer, c> WL = new HashMap();
+  public static a YM = new a();
+  private b YL = new b();
+  private final HashMap<Integer, LinkedList<e>> YN = new HashMap();
+  private final HashMap<Integer, c> YO = new HashMap();
   
   private void a(LinkedList<e> paramLinkedList, d paramd)
   {
-    if (paramd.lc()) {
+    if (paramd.lo()) {
       Collections.sort(paramLinkedList, new Comparator() {});
     }
     e[] arrayOfe = new e[paramLinkedList.size()];
     paramLinkedList.toArray(arrayOfe);
     int j = arrayOfe.length;
     int i = 0;
-    while ((i < j) && ((!arrayOfe[i].b(paramd)) || (!paramd.lc()))) {
+    while ((i < j) && ((!arrayOfe[i].b(paramd)) || (!paramd.lo()))) {
       i += 1;
     }
-    if (paramd.WP != null) {
-      paramd.WP.run();
+    if (paramd.YK != null) {
+      paramd.YK.run();
     }
   }
   
@@ -38,12 +38,12 @@ public final class a
   {
     Assert.assertNotNull("EventPoolImpl.asyncPublish event", paramd);
     Assert.assertNotNull("EventPoolImpl.asyncPublish looper", paramLooper);
-    f.d("MicroMsg.EventCenter", "publish %s(%d)", new Object[] { paramd, Integer.valueOf(paramd.lb()) });
+    f.e("MicroMsg.EventCenter", "publish %s(%d)", new Object[] { paramd, Integer.valueOf(paramd.ln()) });
     new j(paramLooper).post(new Runnable()
     {
       public final void run()
       {
-        a.WJ.a(paramd);
+        a.YM.a(paramd);
       }
     });
   }
@@ -53,20 +53,20 @@ public final class a
     boolean bool1 = false;
     boolean bool2 = true;
     Assert.assertNotNull("EventPoolImpl.publish", paramd);
-    f.d("MicroMsg.EventCenter", "publish %s(%d)", new Object[] { paramd, Integer.valueOf(paramd.lb()) });
+    f.e("MicroMsg.EventCenter", "publish %s(%d)", new Object[] { paramd, Integer.valueOf(paramd.ln()) });
     LinkedList localLinkedList = null;
     for (;;)
     {
       try
       {
-        int i = paramd.lb();
-        Object localObject = (LinkedList)this.WK.get(Integer.valueOf(i));
+        int i = paramd.ln();
+        Object localObject = (LinkedList)this.YN.get(Integer.valueOf(i));
         if (localObject != null)
         {
           localLinkedList = new LinkedList((Collection)localObject);
           bool1 = true;
         }
-        localObject = (c)this.WL.get(Integer.valueOf(i));
+        localObject = (c)this.YO.get(Integer.valueOf(i));
         if (localObject != null)
         {
           bool1 = bool2;
@@ -77,7 +77,7 @@ public final class a
             a(localLinkedList, paramd);
           }
           if (localObject != null) {
-            ((c)localObject).a(com.tencent.mm.vending.f.b.P(paramd));
+            ((c)localObject).a(com.tencent.mm.vending.g.b.Y(paramd));
           }
           return bool1;
         }
@@ -92,20 +92,20 @@ public final class a
     try
     {
       Assert.assertNotNull("EventPoolImpl.add", parame);
-      f.d("MicroMsg.EventCenter", "addListener %s(%d)", new Object[] { parame, Integer.valueOf(parame.lb()) });
-      Object localObject2 = (LinkedList)this.WK.get(Integer.valueOf(parame.lb()));
+      f.e("MicroMsg.EventCenter", "addListener %s(%d)", new Object[] { parame, Integer.valueOf(parame.ln()) });
+      Object localObject2 = (LinkedList)this.YN.get(Integer.valueOf(parame.ln()));
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject2 = this.WK;
-        int i = parame.lb();
+        localObject2 = this.YN;
+        int i = parame.ln();
         localObject1 = new LinkedList();
         ((HashMap)localObject2).put(Integer.valueOf(i), localObject1);
       }
       if (((LinkedList)localObject1).contains(parame)) {
         return true;
       }
-      com.tencent.mm.sdk.platformtools.b.D(parame);
+      com.tencent.mm.sdk.platformtools.b.M(parame);
       boolean bool = ((LinkedList)localObject1).add(parame);
       return bool;
     }
@@ -121,17 +121,17 @@ public final class a
       try
       {
         Assert.assertNotNull("EventPoolImpl.remove", parame);
-        f.d("MicroMsg.EventCenter", "removeListener %s(%d)", new Object[] { parame, Integer.valueOf(parame.lb()) });
-        Object localObject = (LinkedList)this.WK.get(Integer.valueOf(parame.lb()));
+        f.e("MicroMsg.EventCenter", "removeListener %s(%d)", new Object[] { parame, Integer.valueOf(parame.ln()) });
+        Object localObject = (LinkedList)this.YN.get(Integer.valueOf(parame.ln()));
         if (localObject != null) {
           bool = ((LinkedList)localObject).remove(parame);
         }
-        localObject = (c)this.WL.get(Integer.valueOf(parame.lb()));
+        localObject = (c)this.YO.get(Integer.valueOf(parame.ln()));
         if (localObject != null)
         {
           ((c)localObject).c(parame);
           bool = true;
-          com.tencent.mm.sdk.platformtools.b.E(parame);
+          com.tencent.mm.sdk.platformtools.b.N(parame);
           return bool;
         }
       }

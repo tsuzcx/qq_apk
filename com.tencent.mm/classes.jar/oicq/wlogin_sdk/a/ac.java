@@ -5,7 +5,7 @@ public final class ac
 {
   public ac()
   {
-    this.CMD = 310;
+    this.Kik = 310;
   }
 }
 

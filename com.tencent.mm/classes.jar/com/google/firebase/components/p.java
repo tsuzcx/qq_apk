@@ -6,46 +6,46 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class p<T>
   implements a<T>
 {
-  private static final Object beL;
-  private volatile Object beM;
-  private volatile a<T> beN;
+  private static final Object bCL;
+  private volatile Object bCM;
+  private volatile a<T> bCN;
   
   static
   {
-    AppMethodBeat.i(10628);
-    beL = new Object();
-    AppMethodBeat.o(10628);
+    AppMethodBeat.i(4095);
+    bCL = new Object();
+    AppMethodBeat.o(4095);
   }
   
   p(d<T> paramd, b paramb)
   {
-    AppMethodBeat.i(10625);
-    this.beM = beL;
-    this.beN = new q(paramd, paramb);
-    AppMethodBeat.o(10625);
+    AppMethodBeat.i(4092);
+    this.bCM = bCL;
+    this.bCN = new q(paramd, paramb);
+    AppMethodBeat.o(4092);
   }
   
   public final T get()
   {
-    AppMethodBeat.i(10626);
-    Object localObject3 = this.beM;
+    AppMethodBeat.i(4093);
+    Object localObject3 = this.bCM;
     Object localObject1 = localObject3;
-    if (localObject3 == beL) {}
+    if (localObject3 == bCL) {}
     try
     {
-      localObject3 = this.beM;
+      localObject3 = this.bCM;
       localObject1 = localObject3;
-      if (localObject3 == beL)
+      if (localObject3 == bCL)
       {
-        localObject1 = this.beN.get();
-        this.beM = localObject1;
-        this.beN = null;
+        localObject1 = this.bCN.get();
+        this.bCM = localObject1;
+        this.bCN = null;
       }
       return localObject1;
     }
     finally
     {
-      AppMethodBeat.o(10626);
+      AppMethodBeat.o(4093);
     }
   }
 }

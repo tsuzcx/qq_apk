@@ -1,212 +1,274 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.database.Cursor;
-import android.os.StatFs;
-import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ca;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.plugin.appbrand.config.q;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.appstorage.m;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.e;
+import java.io.Closeable;
+import java.io.InputStream;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 
-public final class x
+final class x
+  implements q, Closeable
 {
-  private static final byte[] gTS = new byte[0];
+  final String appId;
+  final WxaPkgWrappingInfo iMC;
+  private final Map<String, WxaPkg> iMD;
   
-  public static x.b a(long paramLong, x.a parama)
+  x(String paramString, WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
   {
-    AppMethodBeat.i(129404);
-    if (paramLong <= 0L)
+    AppMethodBeat.i(178521);
+    this.iMD = new HashMap();
+    this.appId = paramString;
+    this.iMC = paramWxaPkgWrappingInfo;
+    this.iMC.Ep(paramString);
+    AppMethodBeat.o(178521);
+  }
+  
+  private WxaPkg DV(String paramString)
+  {
+    AppMethodBeat.i(134677);
+    for (;;)
     {
-      parama = x.b.gVd;
-      AppMethodBeat.o(129404);
-      return parama;
-    }
-    Object localObject1 = new StatFs(ap.avQ());
-    int i = ((StatFs)localObject1).getAvailableBlocks();
-    long l = ((StatFs)localObject1).getBlockSize() * i;
-    if ((l < 0L) || (l > paramLong))
-    {
-      parama = x.b.gVd;
-      AppMethodBeat.o(129404);
-      return parama;
-    }
-    localObject1 = (ad)g.w(ad.class);
-    if (localObject1 == null)
-    {
-      ab.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy %d, lruStorage NULL", new Object[] { Long.valueOf(paramLong) });
-      parama = x.b.gVf;
-      AppMethodBeat.o(129404);
-      return parama;
-    }
-    Object localObject4 = String.format(Locale.US, " %s, %s ASC", new Object[] { "hit", "hitTimeMS" });
-    Object localObject3 = new LinkedList();
-    synchronized (gTS)
-    {
-      localObject4 = ((ad)localObject1).db.a("PkgUsageLRURecord", new String[] { "appId", "type" }, null, null, null, null, (String)localObject4, 2);
-      if (localObject4 == null)
+      synchronized (this.iMD)
       {
-        parama = x.b.gVf;
-        AppMethodBeat.o(129404);
-        return parama;
-      }
-      if (!((Cursor)localObject4).moveToFirst())
-      {
-        ((Cursor)localObject4).close();
-        parama = x.b.gVf;
-        AppMethodBeat.o(129404);
-        return parama;
-      }
-      try
-      {
-        boolean bool;
-        do
+        WxaPkg localWxaPkg = (WxaPkg)this.iMD.get(paramString);
+        if (localWxaPkg != null)
         {
-          ((LinkedList)localObject3).add(Pair.create(((Cursor)localObject4).getString(0), Integer.valueOf(((Cursor)localObject4).getInt(1))));
-          bool = ((Cursor)localObject4).moveToNext();
-        } while (bool);
-        ((Cursor)localObject4).close();
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          ab.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy, read from cursor e = %s", new Object[] { localException });
-          ((Cursor)localObject4).close();
+          paramString = localWxaPkg;
+          if (paramString != null) {
+            paramString.aPe();
+          }
+          AppMethodBeat.o(134677);
+          return paramString;
         }
-        parama = finally;
-        AppMethodBeat.o(129404);
-        throw parama;
-      }
-      finally
-      {
-        ((Cursor)localObject4).close();
-        AppMethodBeat.o(129404);
-      }
-      ??? = g.auM();
-      if (??? == null)
-      {
-        ab.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy %d, pkgStorage NULL", new Object[] { Long.valueOf(paramLong) });
-        parama = x.b.gVf;
-        AppMethodBeat.o(129404);
-        return parama;
-      }
-    }
-    a(parama);
-    localObject3 = ((LinkedList)localObject3).iterator();
-    l = 0L;
-    i = 0;
-    while (((Iterator)localObject3).hasNext())
-    {
-      localObject4 = (Pair)((Iterator)localObject3).next();
-      Iterator localIterator = ((ay)???).a((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue(), ay.a.gWX, new String[] { "pkgPath" }).iterator();
-      while (localIterator.hasNext())
-      {
-        at localat = (at)localIterator.next();
-        l = com.tencent.mm.vfs.e.avI(localat.field_pkgPath) + l;
-        com.tencent.mm.vfs.e.deleteFile(localat.field_pkgPath);
-        i += 1;
-        ((ad)localObject1).an((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue());
-        a(parama);
-        if (l >= paramLong)
+        if ("__APP__".equals(paramString))
         {
-          parama = new ca();
-          parama.cZU = 3L;
-          parama.cZX = i;
-          if (r.avy()) {}
-          for (paramLong = 1L;; paramLong = 0L)
+          localObject = this.iMC.pkgPath;
+          label70:
+          if (!bt.isNullOrNil((String)localObject)) {
+            break label148;
+          }
+          paramString = localWxaPkg;
+        }
+      }
+      Object localObject = this.iMC.iOT.iterator();
+      for (;;)
+      {
+        if (((Iterator)localObject).hasNext())
+        {
+          ModulePkgInfo localModulePkgInfo = (ModulePkgInfo)((Iterator)localObject).next();
+          if (paramString.equals(localModulePkgInfo.name))
           {
-            parama.cZS = paramLong;
-            parama.ake();
-            parama = x.b.gVe;
-            AppMethodBeat.o(129404);
-            return parama;
+            localObject = localModulePkgInfo.pkgPath;
+            break label70;
+            label148:
+            localObject = new WxaPkg((String)localObject);
+            this.iMD.put(paramString, localObject);
+            paramString = (String)localObject;
+            break;
           }
         }
       }
+      localObject = null;
     }
-    parama = x.b.gVf;
-    AppMethodBeat.o(129404);
-    return parama;
   }
   
-  private static void a(x.a parama)
+  public final WxaPkg DO(String paramString)
   {
-    AppMethodBeat.i(129405);
-    if ((parama != null) && (parama.avg()))
+    AppMethodBeat.i(134674);
+    if (bt.isNullOrNil(paramString))
     {
-      parama = new InterruptedException();
-      AppMethodBeat.o(129405);
-      throw parama;
+      AppMethodBeat.o(134674);
+      return null;
     }
-    AppMethodBeat.o(129405);
-  }
-  
-  public static void ao(String arg0, int paramInt)
-  {
-    AppMethodBeat.i(129402);
-    if (bo.isNullOrNil(???))
+    paramString = m.EV(paramString);
+    Object localObject = this.iMC.iOT.iterator();
+    ModulePkgInfo localModulePkgInfo;
+    do
     {
-      AppMethodBeat.o(129402);
-      return;
-    }
-    String str = q.Aq(???);
-    if (bo.isNullOrNil(str))
-    {
-      AppMethodBeat.o(129402);
-      return;
-    }
-    ad localad = (ad)g.w(ad.class);
-    if (localad == null)
-    {
-      AppMethodBeat.o(129402);
-      return;
-    }
-    synchronized (gTS)
-    {
-      ac localac = new ac();
-      localac.field_appId = str;
-      localac.field_type = paramInt;
-      if (localad.get(localac, ac.gUa))
-      {
-        localac.field_hit += 1;
-        localac.field_hitTimeMS = bo.aoy();
-        localad.update(localac, ac.gUa);
-        AppMethodBeat.o(129402);
-        return;
+      if (!((Iterator)localObject).hasNext()) {
+        break;
       }
-      localac.field_hit = 1;
-      localac.field_hitTimeMS = bo.aoy();
-      localad.insert(localac);
+      localModulePkgInfo = (ModulePkgInfo)((Iterator)localObject).next();
+    } while (!paramString.startsWith(localModulePkgInfo.name));
+    for (paramString = localModulePkgInfo.name;; paramString = null)
+    {
+      localObject = paramString;
+      if (bt.isNullOrNil(paramString)) {
+        localObject = "__APP__";
+      }
+      paramString = DV((String)localObject);
+      AppMethodBeat.o(134674);
+      return paramString;
     }
   }
   
-  public static x.b hp(long paramLong)
+  public final InputStream DP(String paramString)
   {
-    AppMethodBeat.i(129403);
-    try
+    AppMethodBeat.i(178524);
+    WxaPkg localWxaPkg = DO(paramString);
+    int i;
+    int j;
+    if ((paramString.startsWith("/__plugin__/")) && (localWxaPkg != null))
     {
-      x.b localb1 = a(paramLong, x.a.gVc);
-      AppMethodBeat.o(129403);
-      return localb1;
+      Object localObject = localWxaPkg.DM(paramString);
+      if (localObject != null)
+      {
+        AppMethodBeat.o(178524);
+        return localObject;
+      }
+      localObject = "/__plugin__/".substring(1, 11);
+      String[] arrayOfString = paramString.split("/");
+      i = 0;
+      if (i >= arrayOfString.length) {
+        break label177;
+      }
+      if ((arrayOfString[i].equalsIgnoreCase((String)localObject)) && (i + 1 < arrayOfString.length))
+      {
+        String str = arrayOfString[(i + 1)];
+        if (!bt.isNullOrNil(str))
+        {
+          j = paramString.indexOf(str);
+          i = str.length();
+        }
+      }
     }
-    catch (InterruptedException localInterruptedException)
+    for (;;)
     {
-      ab.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimOffSize with dummy check, get interrupted, e = %s", new Object[] { localInterruptedException });
-      x.b localb2 = x.b.gVf;
-      AppMethodBeat.o(129403);
-      return localb2;
+      paramString = localWxaPkg.DM(paramString.substring(i + j));
+      AppMethodBeat.o(178524);
+      return paramString;
+      i += 1;
+      break;
+      if (localWxaPkg == null)
+      {
+        AppMethodBeat.o(178524);
+        return null;
+      }
+      paramString = localWxaPkg.DM(paramString);
+      AppMethodBeat.o(178524);
+      return paramString;
+      label177:
+      i = -1;
+      j = -1;
     }
+  }
+  
+  public final q.a DQ(String paramString)
+  {
+    AppMethodBeat.i(178523);
+    WxaPkg localWxaPkg = DO(paramString);
+    if (localWxaPkg == null) {}
+    for (paramString = null; paramString != null; paramString = localWxaPkg.openReadPartialInfo(paramString))
+    {
+      q.a locala = new q.a();
+      locala.iLN = this.appId;
+      locala.aAS = this.iMC.pkgVersion();
+      locala.iLO = this.iMC.checksumMd5();
+      locala.iLP = localWxaPkg;
+      locala.iLQ = com.tencent.mm.vfs.q.B(localWxaPkg.fGL.fhU());
+      locala.fileName = paramString.fileName;
+      locala.iLR = paramString.iLR;
+      locala.iLS = paramString.iLS;
+      AppMethodBeat.o(178523);
+      return locala;
+    }
+    AppMethodBeat.o(178523);
+    return null;
+  }
+  
+  public final boolean DR(String paramString)
+  {
+    AppMethodBeat.i(178525);
+    if (DQ(paramString) != null)
+    {
+      AppMethodBeat.o(178525);
+      return true;
+    }
+    AppMethodBeat.o(178525);
+    return false;
+  }
+  
+  public final List<String> aPA()
+  {
+    AppMethodBeat.i(194462);
+    LinkedList localLinkedList = new LinkedList();
+    synchronized (this.iMD)
+    {
+      Iterator localIterator = this.iMD.values().iterator();
+      while (localIterator.hasNext())
+      {
+        WxaPkg localWxaPkg = (WxaPkg)localIterator.next();
+        if (localWxaPkg != null) {
+          localLinkedList.addAll(new LinkedList(localWxaPkg.iLy.keySet()));
+        }
+      }
+    }
+    AppMethodBeat.o(194462);
+    return localList;
+  }
+  
+  public final List<WxaPkg.Info> aPx()
+  {
+    AppMethodBeat.i(134675);
+    Object localObject = DV("__APP__");
+    if (localObject == null)
+    {
+      AppMethodBeat.o(134675);
+      return null;
+    }
+    localObject = ((WxaPkg)localObject).aQg();
+    AppMethodBeat.o(134675);
+    return localObject;
+  }
+  
+  public final void aPy()
+  {
+    AppMethodBeat.i(178526);
+    this.iMC.Ep(this.appId);
+    synchronized (this.iMD)
+    {
+      DV("__APP__");
+      Iterator localIterator = this.iMC.iOT.iterator();
+      if (localIterator.hasNext()) {
+        DV(((ModulePkgInfo)localIterator.next()).name);
+      }
+    }
+    AppMethodBeat.o(178526);
+  }
+  
+  public final List<ModulePkgInfo> aPz()
+  {
+    AppMethodBeat.i(178527);
+    LinkedList localLinkedList = new LinkedList(this.iMC.iOT);
+    AppMethodBeat.o(178527);
+    return localLinkedList;
+  }
+  
+  public final void close()
+  {
+    AppMethodBeat.i(134678);
+    synchronized (this.iMD)
+    {
+      Collection localCollection = this.iMD.values();
+      this.iMD.clear();
+      ??? = localCollection.iterator();
+      if (((Iterator)???).hasNext()) {
+        ((WxaPkg)((Iterator)???).next()).close();
+      }
+    }
+    AppMethodBeat.o(134678);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.x
  * JD-Core Version:    0.7.0.1
  */

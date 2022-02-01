@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.a.a;
 import com.tencent.mm.sdk.b.b;
 
 public final class pv
   extends b
 {
-  public pv.a cGp;
+  public a dvv;
   
   public pv()
   {
@@ -15,16 +17,22 @@ public final class pv
   
   private pv(byte paramByte)
   {
-    AppMethodBeat.i(56573);
-    this.cGp = new pv.a();
-    this.ymq = false;
+    AppMethodBeat.i(19827);
+    this.dvv = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(56573);
+    AppMethodBeat.o(19827);
+  }
+  
+  public static final class a
+  {
+    public a dvw;
+    public EditText dvx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.pv
  * JD-Core Version:    0.7.0.1
  */

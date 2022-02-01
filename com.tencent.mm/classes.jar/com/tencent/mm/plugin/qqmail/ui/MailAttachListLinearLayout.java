@@ -14,29 +14,29 @@ public class MailAttachListLinearLayout
   extends LinearLayout
 {
   Context context;
-  List<String> pNL;
+  List<String> uPX;
   
   public MailAttachListLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(68378);
-    this.pNL = new ArrayList();
+    AppMethodBeat.i(123105);
+    this.uPX = new ArrayList();
     this.context = paramContext;
-    AppMethodBeat.o(68378);
+    AppMethodBeat.o(123105);
   }
   
-  static String fQ(String paramString1, String paramString2)
+  static String ia(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(68379);
+    AppMethodBeat.i(123106);
     if ((paramString1 == null) || (paramString1.length() == 0) || (paramString2.length() == 0))
     {
-      AppMethodBeat.o(68379);
+      AppMethodBeat.o(123106);
       return null;
     }
     int k = paramString1.indexOf(paramString2);
     if (k == -1)
     {
-      AppMethodBeat.o(68379);
+      AppMethodBeat.o(123106);
       return null;
     }
     int j = paramString1.indexOf("&", k);
@@ -45,13 +45,13 @@ public class MailAttachListLinearLayout
       i = paramString1.length();
     }
     paramString1 = paramString1.substring(k + paramString2.length() + 1, i);
-    AppMethodBeat.o(68379);
+    AppMethodBeat.o(123106);
     return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailAttachListLinearLayout
  * JD-Core Version:    0.7.0.1
  */

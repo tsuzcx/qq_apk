@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class rg
   extends b
 {
-  public rg.a cHN;
+  public a dwP;
   
   public rg()
   {
@@ -15,11 +15,16 @@ public final class rg
   
   private rg(byte paramByte)
   {
-    AppMethodBeat.i(35551);
-    this.cHN = new rg.a();
-    this.ymq = false;
+    AppMethodBeat.i(102633);
+    this.dwP = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(35551);
+    AppMethodBeat.o(102633);
+  }
+  
+  public static final class a
+  {
+    public long msgId;
   }
 }
 

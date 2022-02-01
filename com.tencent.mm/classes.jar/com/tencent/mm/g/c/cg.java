@@ -8,16 +8,16 @@ public abstract class cg
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dCh = "championUrl".hashCode();
-  private static final int dCi = "championMotto".hashCode();
-  private static final int dhU = "username".hashCode();
+  private static final int enN = "modifyTime".hashCode();
+  private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dCf = true;
-  private boolean dCg = true;
-  private boolean dhS = true;
-  public String field_championMotto;
-  public String field_championUrl;
-  public String field_username;
+  private static final int value_HASHCODE = "value".hashCode();
+  private boolean __hadSetkey = true;
+  private boolean __hadSetvalue = true;
+  private boolean enr = true;
+  public String field_key;
+  public long field_modifyTime;
+  public String field_value;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,21 +32,22 @@ public abstract class cg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dhU != k) {
-        break label60;
+      if (key_HASHCODE != k) {
+        break label65;
       }
-      this.field_username = paramCursor.getString(i);
+      this.field_key = paramCursor.getString(i);
+      this.__hadSetkey = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (dCh == k) {
-        this.field_championUrl = paramCursor.getString(i);
-      } else if (dCi == k) {
-        this.field_championMotto = paramCursor.getString(i);
+      label65:
+      if (value_HASHCODE == k) {
+        this.field_value = paramCursor.getString(i);
+      } else if (enN == k) {
+        this.field_modifyTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -56,14 +57,14 @@ public abstract class cg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dhS) {
-      localContentValues.put("username", this.field_username);
+    if (this.__hadSetkey) {
+      localContentValues.put("key", this.field_key);
     }
-    if (this.dCf) {
-      localContentValues.put("championUrl", this.field_championUrl);
+    if (this.__hadSetvalue) {
+      localContentValues.put("value", this.field_value);
     }
-    if (this.dCg) {
-      localContentValues.put("championMotto", this.field_championMotto);
+    if (this.enr) {
+      localContentValues.put("modifyTime", Long.valueOf(this.field_modifyTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -73,7 +74,7 @@ public abstract class cg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.cg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,107 @@
 package com.tencent.mm.plugin.emoji.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.j.a;
-import com.tencent.mm.plugin.emoji.c.a;
-import com.tencent.mm.plugin.emoji.c.b;
-import com.tencent.mm.plugin.emoji.c.d;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.plugin.emoji.model.k;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.aw;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.storage.emotion.f;
+import com.tencent.mm.ui.widget.a.f.c;
+import java.util.ArrayList;
 
-public final class c
+public class c
 {
-  public static j.a appForegroundListener;
-  public final com.tencent.mm.sdk.b.c checkLanguageChangeIListener;
-  public com.tencent.mm.sdk.b.c lfA;
-  public a lfo;
-  public b lfp;
-  public d lfq;
-  public com.tencent.mm.plugin.emoji.c.c lfr;
-  public com.tencent.mm.sdk.b.c lfs;
-  public com.tencent.mm.sdk.b.c lft;
-  public com.tencent.mm.sdk.b.c lfu;
-  public com.tencent.mm.sdk.b.c lfv;
-  public com.tencent.mm.sdk.b.c lfw;
-  public com.tencent.mm.sdk.b.c lfx;
-  public com.tencent.mm.sdk.b.c lfy;
-  public com.tencent.mm.sdk.b.c lfz;
-  
-  static
-  {
-    AppMethodBeat.i(139669);
-    appForegroundListener = new c.6();
-    AppMethodBeat.o(139669);
-  }
+  public static c ovk;
+  public ArrayList<String> ovl;
+  public boolean ovm;
+  public boolean ovn;
   
   public c()
   {
-    AppMethodBeat.i(52848);
-    this.lfo = new a();
-    this.lfp = new b();
-    this.lfq = new d();
-    this.lfr = new com.tencent.mm.plugin.emoji.c.c();
-    this.lfs = new c.1(this);
-    this.lft = new c.4(this);
-    this.lfu = new c.5(this);
-    this.lfv = new c.7(this);
-    this.lfw = new c.8(this);
-    this.checkLanguageChangeIListener = new c.9(this);
-    this.lfx = new c.10(this);
-    this.lfy = new c.11(this);
-    this.lfz = new c.2(this);
-    this.lfA = new c.3(this);
-    AppMethodBeat.o(52848);
+    AppMethodBeat.i(108415);
+    this.ovl = new ArrayList();
+    this.ovm = true;
+    this.ovn = false;
+    AppMethodBeat.o(108415);
+  }
+  
+  public static void b(EmojiInfo paramEmojiInfo, boolean paramBoolean)
+  {
+    AppMethodBeat.i(108417);
+    if (paramEmojiInfo != null)
+    {
+      paramEmojiInfo.field_reserved4 = 0;
+      k.getEmojiStorageMgr().FyY.M(paramEmojiInfo);
+      k.bUY().u(paramEmojiInfo);
+      if (paramBoolean)
+      {
+        h.vKh.idkeyStat(231L, 0L, 1L, false);
+        AppMethodBeat.o(108417);
+        return;
+      }
+      h.vKh.idkeyStat(231L, 1L, 1L, false);
+    }
+    AppMethodBeat.o(108417);
+  }
+  
+  private static boolean bUA()
+  {
+    AppMethodBeat.i(108419);
+    if ((ay.is3G(aj.getContext())) || (ay.is4G(aj.getContext())) || (ay.is2G(aj.getContext())))
+    {
+      AppMethodBeat.o(108419);
+      return true;
+    }
+    AppMethodBeat.o(108419);
+    return false;
+  }
+  
+  public static c bUz()
+  {
+    AppMethodBeat.i(108416);
+    if (ovk == null) {}
+    try
+    {
+      ovk = new c();
+      c localc = ovk;
+      AppMethodBeat.o(108416);
+      return localc;
+    }
+    finally
+    {
+      AppMethodBeat.o(108416);
+    }
+  }
+  
+  private void c(EmojiInfo paramEmojiInfo, boolean paramBoolean)
+  {
+    AppMethodBeat.i(108418);
+    if (this.ovl == null) {
+      this.ovl = new ArrayList();
+    }
+    this.ovl.add(paramEmojiInfo.field_groupId);
+    paramEmojiInfo = new com.tencent.mm.plugin.emoji.f.g(paramEmojiInfo.field_groupId);
+    com.tencent.mm.kernel.g.afA().gcy.a(paramEmojiInfo, 0);
+    if (paramBoolean)
+    {
+      h.vKh.idkeyStat(231L, 3L, 1L, false);
+      AppMethodBeat.o(108418);
+      return;
+    }
+    h.vKh.idkeyStat(231L, 2L, 1L, false);
+    AppMethodBeat.o(108418);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e.c
  * JD-Core Version:    0.7.0.1
  */

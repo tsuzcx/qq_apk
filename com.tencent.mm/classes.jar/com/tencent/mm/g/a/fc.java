@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class fc
   extends b
 {
-  public fc.a csK;
+  public a dhC;
   
   public fc()
   {
@@ -15,16 +15,21 @@ public final class fc
   
   private fc(byte paramByte)
   {
-    AppMethodBeat.i(70179);
-    this.csK = new fc.a();
-    this.ymq = false;
+    AppMethodBeat.i(116012);
+    this.dhC = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70179);
+    AppMethodBeat.o(116012);
+  }
+  
+  public static final class a
+  {
+    public boolean dfN = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.fc
  * JD-Core Version:    0.7.0.1
  */

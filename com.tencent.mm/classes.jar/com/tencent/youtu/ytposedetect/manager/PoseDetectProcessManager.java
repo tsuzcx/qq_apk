@@ -5,7 +5,7 @@ import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
 import android.hardware.Camera.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.youtu.ytcommon.tools.CameraSetting;
+import com.tencent.youtu.ytcommon.tools.YTCameraSetting;
 import com.tencent.youtu.ytcommon.tools.YTException;
 import com.tencent.youtu.ytcommon.tools.YTLogger;
 import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectResult;
@@ -23,42 +23,43 @@ public class PoseDetectProcessManager
   
   private void setCamera(Context paramContext, Camera paramCamera, int paramInt)
   {
-    AppMethodBeat.i(117786);
+    AppMethodBeat.i(62520);
     this.mCamera = paramCamera;
     this.mCameraParameters = paramCamera.getParameters();
     this.mDesiredPreviewHeight = this.mCameraParameters.getPreviewSize().height;
     this.mDesiredPreviewWidth = this.mCameraParameters.getPreviewSize().width;
-    AppMethodBeat.o(117786);
+    YTLogger.i("FaceDetectProcess", "[PoseDetectProcessManager.setCamera] mDesiredPreviewWidth: " + this.mDesiredPreviewWidth + " mDesiredPreviewHeight: " + this.mDesiredPreviewHeight);
+    AppMethodBeat.o(62520);
   }
   
   public void clearAll()
   {
-    AppMethodBeat.i(117781);
+    AppMethodBeat.i(62515);
     restoreCamera();
-    AppMethodBeat.o(117781);
+    AppMethodBeat.o(62515);
   }
   
   protected void finalize()
   {
-    AppMethodBeat.i(117785);
+    AppMethodBeat.i(62519);
     super.finalize();
-    AppMethodBeat.o(117785);
+    AppMethodBeat.o(62519);
   }
   
   public void initAll() {}
   
-  public int poseDetect(float[] paramArrayOfFloat, int paramInt, byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, float paramFloat3)
+  public int poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt, byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    AppMethodBeat.i(117784);
-    int i = CameraSetting.getRotateTag(this.mCameraRotate);
-    paramInt = YTPoseDetectJNIInterface.poseDetect(paramArrayOfFloat, paramInt, paramArrayOfByte, this.mDesiredPreviewWidth, this.mDesiredPreviewHeight, i, paramFloat1, paramFloat2, paramFloat3);
-    AppMethodBeat.o(117784);
+    AppMethodBeat.i(62518);
+    int i = YTCameraSetting.getRotateTag(this.mCameraRotate, 1);
+    paramInt = YTPoseDetectJNIInterface.poseDetect(paramArrayOfFloat1, paramArrayOfFloat2, paramInt, paramArrayOfByte, this.mDesiredPreviewWidth, this.mDesiredPreviewHeight, i, paramFloat1, paramFloat2, paramFloat3);
+    AppMethodBeat.o(62518);
     return paramInt;
   }
   
   public void restoreCamera()
   {
-    AppMethodBeat.i(117787);
+    AppMethodBeat.i(62521);
     if (this.mCamera != null) {
       try
       {
@@ -75,39 +76,40 @@ public class PoseDetectProcessManager
       {
         this.mCamera = null;
         this.mCameraParameters = null;
-        AppMethodBeat.o(117787);
+        AppMethodBeat.o(62521);
       }
     }
-    AppMethodBeat.o(117787);
+    AppMethodBeat.o(62521);
   }
   
   public void start(Context paramContext, Camera paramCamera, int paramInt, YTPoseDetectInterface.PoseDetectResult paramPoseDetectResult)
   {
-    AppMethodBeat.i(117782);
+    AppMethodBeat.i(62516);
     if (this.mIsDetecting) {
       YTLogger.w("FaceDetectProcess", "Restart FaceDetect process. YTPoseDetectInterface.stop() should be called before the next start, or maybe camera's parameter may be setting wrong.");
     }
     setCamera(paramContext, paramCamera, paramInt);
-    this.mCameraRotate = CameraSetting.getVideoRotate(paramContext, paramInt);
+    this.mCameraRotate = YTCameraSetting.getVideoRotate(paramContext, paramInt);
     this.mIsDetecting = true;
     paramPoseDetectResult.onSuccess();
-    AppMethodBeat.o(117782);
+    AppMethodBeat.o(62516);
   }
   
   public void stop()
   {
-    AppMethodBeat.i(117783);
+    AppMethodBeat.i(62517);
     if (this.mIsDetecting)
     {
       this.mIsDetecting = false;
       restoreCamera();
+      YTPoseDetectJNIInterface.resetDetect();
     }
-    AppMethodBeat.o(117783);
+    AppMethodBeat.o(62517);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.youtu.ytposedetect.manager.PoseDetectProcessManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,140 +1,140 @@
 package com.tencent.mm.plugin.game.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.t;
+import com.tencent.mm.g.c.y;
 import com.tencent.mm.plugin.s.a.a.a;
-import com.tencent.mm.pluginsdk.model.app.e;
 import com.tencent.mm.pluginsdk.model.app.f;
 import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.model.app.h;
+import com.tencent.mm.pluginsdk.model.app.j;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class d
 {
-  private static boolean a(f paramf1, f paramf2)
+  private static boolean a(g paramg1, g paramg2)
   {
-    AppMethodBeat.i(112324);
-    if ((paramf1 == null) || (bo.isNullOrNil(paramf1.field_appIconUrl)))
+    AppMethodBeat.i(42528);
+    if ((paramg1 == null) || (bt.isNullOrNil(paramg1.field_appIconUrl)))
     {
-      AppMethodBeat.o(112324);
+      AppMethodBeat.o(42528);
       return true;
     }
-    if ((paramf2 == null) || (bo.isNullOrNil(paramf2.field_appIconUrl)))
+    if ((paramg2 == null) || (bt.isNullOrNil(paramg2.field_appIconUrl)))
     {
-      AppMethodBeat.o(112324);
+      AppMethodBeat.o(42528);
       return false;
     }
-    if (!paramf1.field_appIconUrl.equals(paramf2.field_appIconUrl))
+    if (!paramg1.field_appIconUrl.equals(paramg2.field_appIconUrl))
     {
-      AppMethodBeat.o(112324);
+      AppMethodBeat.o(42528);
       return true;
     }
-    AppMethodBeat.o(112324);
+    AppMethodBeat.o(42528);
     return false;
   }
   
-  public static void ag(LinkedList<? extends f> paramLinkedList)
+  public static void av(LinkedList<? extends g> paramLinkedList)
   {
-    AppMethodBeat.i(112325);
+    AppMethodBeat.i(42529);
     if (paramLinkedList == null)
     {
-      ab.e("MicroMsg.GameDataUtil", "Null appInfos");
-      AppMethodBeat.o(112325);
+      ad.e("MicroMsg.GameDataUtil", "Null appInfos");
+      AppMethodBeat.o(42529);
       return;
     }
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext()) {
-      c((f)paramLinkedList.next());
+      c((g)paramLinkedList.next());
     }
-    AppMethodBeat.o(112325);
+    AppMethodBeat.o(42529);
   }
   
-  public static void c(f paramf)
+  public static void c(g paramg)
   {
-    AppMethodBeat.i(112323);
-    if (paramf == null)
+    AppMethodBeat.i(42527);
+    if (paramg == null)
     {
-      ab.e("MicroMsg.GameDataUtil", "Null appInfo");
-      AppMethodBeat.o(112323);
+      ad.e("MicroMsg.GameDataUtil", "Null appInfo");
+      AppMethodBeat.o(42527);
       return;
     }
-    if (bo.isNullOrNil(paramf.field_appId))
+    if (bt.isNullOrNil(paramg.field_appId))
     {
-      ab.e("MicroMsg.GameDataUtil", "Invalid appId");
-      AppMethodBeat.o(112323);
+      ad.e("MicroMsg.GameDataUtil", "Invalid appId");
+      AppMethodBeat.o(42527);
       return;
     }
-    String str1 = paramf.field_appId;
-    f localf = g.ca(str1, true);
-    if (localf == null)
+    String str1 = paramg.field_appId;
+    g localg = h.j(str1, true, false);
+    if (localg == null)
     {
-      localf = new f();
-      localf.field_appId = str1;
+      localg = new g();
+      localg.field_appId = str1;
     }
     for (boolean bool2 = true;; bool2 = false)
     {
-      String str2 = aa.dsG();
+      String str2 = ac.eFu();
       boolean bool1;
       if (str2.equals("zh_CN"))
       {
-        localf.field_appName = paramf.field_appName;
-        localf.field_appType = paramf.field_appType;
-        localf.field_packageName = paramf.field_packageName;
-        localf.iV(paramf.djJ);
-        localf.iY(paramf.djO);
-        localf.ho(paramf.djS);
-        localf.iZ(paramf.djP);
-        localf.je(paramf.djV);
-        localf.jf(paramf.djW);
-        localf.jc(paramf.djT);
-        localf.jd(paramf.djU);
-        localf.hp(paramf.djY);
-        if (!bo.isNullOrNil(paramf.djM)) {
-          localf.iW(paramf.djM);
+        localg.field_appName = paramg.field_appName;
+        localg.field_appType = paramg.field_appType;
+        localg.field_packageName = paramg.field_packageName;
+        localg.mJ(paramg.eog);
+        localg.mM(paramg.eol);
+        localg.jz(paramg.eop);
+        localg.mN(paramg.eom);
+        localg.mS(paramg.eos);
+        localg.mT(paramg.eot);
+        localg.mQ(paramg.eoq);
+        localg.mR(paramg.eor);
+        localg.jA(paramg.eov);
+        if (!bt.isNullOrNil(paramg.eoj)) {
+          localg.mK(paramg.eoj);
         }
         if (!bool2) {
-          break label307;
+          break label308;
         }
-        bool1 = com.tencent.mm.plugin.s.a.cac().p(localf);
-        a.a.caj().WF(str1);
+        bool1 = com.tencent.mm.plugin.s.a.cZQ().q(localg);
+        a.a.cZX().ajZ(str1);
       }
       for (;;)
       {
-        ab.i("MicroMsg.GameDataUtil", "Saving AppInfo, appId: %s, insert?: %s, return: %s", new Object[] { str1, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-        AppMethodBeat.o(112323);
+        ad.i("MicroMsg.GameDataUtil", "Saving AppInfo, appId: %s, insert?: %s, return: %s", new Object[] { str1, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+        AppMethodBeat.o(42527);
         return;
         if ((str2.equals("zh_TW")) || (str2.equals("zh_HK")))
         {
-          localf.field_appName_tw = paramf.field_appName;
+          localg.field_appName_tw = paramg.field_appName;
           break;
         }
-        localf.field_appName_en = paramf.field_appName;
+        localg.field_appName_en = paramg.field_appName;
         break;
-        label307:
-        if (localf.field_appVersion < paramf.field_appVersion)
+        label308:
+        if (localg.field_appVersion < paramg.field_appVersion)
         {
-          ab.i("MicroMsg.GameDataUtil", "oldVersion = %s, newVersion = %s", new Object[] { Integer.valueOf(localf.field_appVersion), Integer.valueOf(paramf.field_appVersion) });
-          bool1 = com.tencent.mm.plugin.s.a.cac().a(localf, new String[0]);
-          a.a.caj().WF(str1);
+          ad.i("MicroMsg.GameDataUtil", "oldVersion = %s, newVersion = %s", new Object[] { Integer.valueOf(localg.field_appVersion), Integer.valueOf(paramg.field_appVersion) });
+          bool1 = com.tencent.mm.plugin.s.a.cZQ().a(localg, new String[0]);
+          a.a.cZX().ajZ(str1);
         }
-        else if (a(localf, paramf))
+        else if (a(localg, paramg))
         {
-          ab.i("MicroMsg.GameDataUtil", "oldIcon = %s, newIcon = %s", new Object[] { localf.field_appIconUrl, paramf.field_appIconUrl });
-          localf.field_appIconUrl = paramf.field_appIconUrl;
-          bool1 = com.tencent.mm.plugin.s.a.cac().a(localf, new String[0]);
-          com.tencent.mm.plugin.s.a.caa().el(str1, 1);
-          com.tencent.mm.plugin.s.a.caa().el(str1, 2);
-          com.tencent.mm.plugin.s.a.caa().el(str1, 3);
-          com.tencent.mm.plugin.s.a.caa().el(str1, 4);
-          com.tencent.mm.plugin.s.a.caa().el(str1, 5);
+          ad.i("MicroMsg.GameDataUtil", "oldIcon = %s, newIcon = %s", new Object[] { localg.field_appIconUrl, paramg.field_appIconUrl });
+          localg.field_appIconUrl = paramg.field_appIconUrl;
+          bool1 = com.tencent.mm.plugin.s.a.cZQ().a(localg, new String[0]);
+          com.tencent.mm.plugin.s.a.cZO().fu(str1, 1);
+          com.tencent.mm.plugin.s.a.cZO().fu(str1, 2);
+          com.tencent.mm.plugin.s.a.cZO().fu(str1, 3);
+          com.tencent.mm.plugin.s.a.cZO().fu(str1, 4);
+          com.tencent.mm.plugin.s.a.cZO().fu(str1, 5);
         }
         else
         {
-          bool1 = com.tencent.mm.plugin.s.a.cac().a(localf, new String[0]);
+          bool1 = com.tencent.mm.plugin.s.a.cZQ().a(localg, new String[0]);
         }
       }
     }
@@ -142,7 +142,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.f.d
  * JD-Core Version:    0.7.0.1
  */

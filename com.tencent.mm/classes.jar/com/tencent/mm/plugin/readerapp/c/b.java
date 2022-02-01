@@ -1,72 +1,59 @@
 package com.tencent.mm.plugin.readerapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cm;
-import com.tencent.mm.model.bl;
-import com.tencent.mm.model.r;
-import com.tencent.mm.pluginsdk.model.p;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.acq;
-import com.tencent.mm.protocal.protobuf.acw;
-import com.tencent.mm.protocal.protobuf.adf;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.g.a.cs;
+import com.tencent.mm.model.bo;
+import com.tencent.mm.model.u;
+import com.tencent.mm.protocal.protobuf.afy;
+import com.tencent.mm.protocal.protobuf.ago;
+import com.tencent.mm.protocal.protobuf.agu;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 
 public final class b
 {
-  public static boolean a(cm paramcm, bl parambl)
+  public static boolean a(cs paramcs, bo parambo)
   {
-    AppMethodBeat.i(141043);
-    if ((paramcm == null) || (parambl == null))
+    AppMethodBeat.i(102661);
+    if ((paramcs == null) || (parambo == null))
     {
-      ab.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or readerAppInfo is null");
-      if (paramcm != null) {
-        paramcm.cpR.cpX = 2131299713;
+      ad.w("MicroMsg.Sns.GetFavDataSource", "fill favorite event fail, event is null or readerAppInfo is null");
+      if (paramcs != null) {
+        paramcs.deQ.deV = 2131758885;
       }
-      AppMethodBeat.o(141043);
+      AppMethodBeat.o(102661);
       return false;
     }
-    acq localacq = new acq();
-    acw localacw = new acw();
-    aca localaca = new aca();
-    localacw.aon("newsapp");
-    localacw.aoo(r.Zn());
-    localacw.aoo(r.Zn());
-    localacw.MR(1);
-    localacw.nI(parambl.fno);
-    localacw.aor(parambl.fnt);
-    localacw.aou(parambl.getUrl());
-    localacw.aov("newsapp");
-    localaca.anI(String.valueOf(parambl.fnt));
-    Object localObject = p.aln(parambl.aaZ());
-    if (e.cN((String)localObject)) {
-      localaca.anF((String)localObject);
-    }
-    for (;;)
-    {
-      localaca.MI(5);
-      localaca.anq(parambl.getTitle());
-      localaca.anr(parambl.getDigest());
-      localaca.py(true);
-      localacq.a(localacw);
-      localacq.wVc.add(localaca);
-      paramcm.cpR.desc = parambl.getTitle();
-      paramcm.cpR.cpT = localacq;
-      paramcm.cpR.type = 5;
-      AppMethodBeat.o(141043);
-      return true;
-      localaca.pz(true);
-      localaca.anz(parambl.aaZ());
-      localObject = new adf();
-      ((adf)localObject).aoD(parambl.aaZ());
-      localacq.b((adf)localObject);
-    }
+    ago localago = new ago();
+    agu localagu = new agu();
+    afy localafy = new afy();
+    localagu.aEl("newsapp");
+    localagu.aEm(u.aqG());
+    localagu.aEm(u.aqG());
+    localagu.VM(1);
+    localagu.vv(parambo.gOP);
+    localagu.aEp(parambo.gOU);
+    localagu.aEs(parambo.getUrl());
+    localagu.aEt("newsapp");
+    localafy.aDr(parambo.getUrl());
+    localafy.aDl(parambo.getTitle());
+    localafy.aDm(parambo.getDigest());
+    localafy.aDu(parambo.asu());
+    localafy.uw(true);
+    localafy.ux(true);
+    localafy.VD(5);
+    localago.a(localagu);
+    localago.mVb.add(localafy);
+    paramcs.deQ.desc = parambo.getTitle();
+    paramcs.deQ.deS = localago;
+    paramcs.deQ.type = 5;
+    AppMethodBeat.o(102661);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.readerapp.c.b
  * JD-Core Version:    0.7.0.1
  */

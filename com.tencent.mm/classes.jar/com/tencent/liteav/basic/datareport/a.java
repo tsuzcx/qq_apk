@@ -82,12 +82,15 @@ public class a
   public static int ay;
   public static int az;
   public static String b = "str_stream_url";
-  public static int bA = 1556;
-  public static int bB = 1557;
-  public static int bC = 1;
-  public static int bD = 1;
-  public static int bE = 2;
-  public static int bF = 3;
+  public static int bA = 1553;
+  public static int bB = 1554;
+  public static int bC = 1555;
+  public static int bD = 1556;
+  public static int bE = 1557;
+  public static int bF = 1;
+  public static int bG = 1;
+  public static int bH = 2;
+  public static int bI = 3;
   public static int ba;
   public static int bb;
   public static int bc;
@@ -234,22 +237,22 @@ public class a
     bm = 1052;
     bn = 1053;
     bo = 1054;
-    bp = 1997;
-    bq = 1998;
-    br = 1999;
-    bs = 1301;
-    bt = 1501;
-    bu = 1502;
-    bv = 1551;
-    bw = 1552;
-    bx = 1553;
-    by = 1554;
-    bz = 1555;
+    bp = 1055;
+    bq = 1056;
+    br = 1099;
+    bs = 1997;
+    bt = 1998;
+    bu = 1999;
+    bv = 1301;
+    bw = 1501;
+    bx = 1502;
+    by = 1551;
+    bz = 1552;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.datareport.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,47 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.protocal.protobuf.va;
-import com.tencent.mm.protocal.protobuf.vb;
+import com.tencent.mm.al.c;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.expt.a.b;
+import com.tencent.mm.protocal.protobuf.yc;
+import com.tencent.mm.protocal.protobuf.yd;
 
 public final class a
-  extends com.tencent.mm.ai.a<vb>
+  extends c<yd>
 {
   public a(String paramString)
   {
-    AppMethodBeat.i(42270);
-    va localva = new va();
-    localva.materialId = paramString;
-    paramString = new b.a();
-    paramString.fsX = localva;
-    paramString.fsY = new vb();
-    paramString.funcId = 2968;
-    paramString.uri = "/cgi-bin/mmpay-bin/ftfhb/confirmshowsource";
-    this.rr = paramString.ado();
-    AppMethodBeat.o(42270);
+    AppMethodBeat.i(65161);
+    yc localyc = new yc();
+    localyc.Daf = paramString;
+    paramString = new com.tencent.mm.al.b.a();
+    paramString.gUU = localyc;
+    paramString.gUV = new yd();
+    int i;
+    if (((b)g.ab(b.class)).a(com.tencent.mm.plugin.expt.a.b.a.pwj, 1) == 1)
+    {
+      i = 1;
+      if (i == 0) {
+        break label105;
+      }
+      paramString.funcId = 479;
+    }
+    for (paramString.uri = "/cgi-bin/micromsg-bin/confirmshowsourcenew";; paramString.uri = "/cgi-bin/mmpay-bin/ftfhb/confirmshowsource")
+    {
+      this.rr = paramString.atI();
+      AppMethodBeat.o(65161);
+      return;
+      i = 0;
+      break;
+      label105:
+      paramString.funcId = 2968;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.a
  * JD-Core Version:    0.7.0.1
  */

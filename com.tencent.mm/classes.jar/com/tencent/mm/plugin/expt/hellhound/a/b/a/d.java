@@ -1,138 +1,164 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.a;
 
+import android.app.Activity;
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bkh;
-import com.tencent.mm.protocal.protobuf.cag;
-import com.tencent.mm.protocal.protobuf.cah;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.expt.hellhound.core.a.a.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.k;
+import d.l;
+import java.lang.ref.WeakReference;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFavMonitor;", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/IFeedFlowMonitor;", "()V", "mActivityRef", "Ljava/lang/ref/WeakReference;", "Landroid/app/Activity;", "mFeedFlowCallback", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FeedFlowCallback;", "mFeedMonitor", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/FeedMonitor;", "mListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFavMonitor$mListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFavMonitor$mListener$1;", "mSmoothListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFavMonitor$mSmoothListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFavMonitor$mSmoothListener$1;", "convertState", "", "scrollState", "free", "", "monitor", "cmd", "aName", "", "activity", "report", "startMonitor", "stopMonitor", "Companion", "plugin-expt_release"})
 public final class d
+  implements o
 {
-  private static d maW;
-  public final c maX;
+  public static final a KFu;
+  private final a KFq;
+  private final b KFs;
+  private final c KFt;
+  private WeakReference<Activity> mActivityRef;
+  private com.tencent.mm.plugin.expt.hellhound.a.a.a pGv;
   
-  private d()
+  static
   {
-    AppMethodBeat.i(152370);
-    this.maX = new d.1(this);
-    AppMethodBeat.o(152370);
+    AppMethodBeat.i(205105);
+    KFu = new a((byte)0);
+    AppMethodBeat.o(205105);
   }
   
-  public static boolean bsd()
+  public d()
   {
-    AppMethodBeat.i(152372);
-    cag localcag = com.tencent.mm.plugin.expt.hellhound.a.b.b.d.bst();
-    if (localcag == null)
+    AppMethodBeat.i(205104);
+    this.KFq = new a();
+    this.pGv = new com.tencent.mm.plugin.expt.hellhound.a.a.a(9, "18260", "1009");
+    this.KFs = new b(this);
+    this.KFt = new c(this);
+    AppMethodBeat.o(205104);
+  }
+  
+  public final void a(int paramInt, String paramString, Activity paramActivity)
+  {
+    AppMethodBeat.i(205099);
+    k.h(paramString, "aName");
+    ad.i("HABBYGE-MALI.FinderFavMonitor", "monitor: %d, %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    switch (paramInt)
     {
-      AppMethodBeat.o(152372);
-      return true;
     }
-    boolean bool = localcag.eht;
-    AppMethodBeat.o(152372);
-    return bool;
-  }
-  
-  public static d bsf()
-  {
-    AppMethodBeat.i(152371);
-    if (maW == null) {}
-    try
+    for (;;)
     {
-      if (maW == null) {
-        maW = new d();
+      AppMethodBeat.o(205099);
+      return;
+      if (paramActivity != null) {
+        this.mActivityRef = new WeakReference(paramActivity);
       }
-      d locald = maW;
-      AppMethodBeat.o(152371);
-      return locald;
-    }
-    finally
-    {
-      AppMethodBeat.o(152371);
+      c.cbD().l(732, paramString);
+      AppMethodBeat.o(205099);
+      return;
+      c.cbD().l(733, paramString);
+      AppMethodBeat.o(205099);
+      return;
+      c.cbD().l(734, paramString);
+      AppMethodBeat.o(205099);
+      return;
+      c.cbD().l(735, paramString);
     }
   }
   
-  public static cag bsg()
+  public final void ccd()
   {
-    AppMethodBeat.i(156440);
-    cag localcag = com.tencent.mm.plugin.expt.hellhound.a.b.b.d.bst();
-    AppMethodBeat.o(156440);
-    return localcag;
+    AppMethodBeat.i(205101);
+    this.KFq.ccd();
+    this.pGv.a(1, null);
+    AppMethodBeat.o(205101);
   }
   
-  private static List<cah> parse(String paramString)
+  public final void cdL()
   {
-    AppMethodBeat.i(152373);
-    int k;
-    try
+    AppMethodBeat.i(205100);
+    com.tencent.mm.plugin.expt.hellhound.a.a.a locala;
+    if (this.mActivityRef != null)
     {
-      paramString = new JSONObject(paramString);
-      paramString = paramString.optJSONArray("sessionUBAConfigs");
-      if (paramString != null)
+      locala = this.pGv;
+      localObject = this.mActivityRef;
+      if (localObject == null) {
+        break label67;
+      }
+    }
+    label67:
+    for (Object localObject = (Activity)((WeakReference)localObject).get();; localObject = null)
+    {
+      locala.a(0, (Activity)localObject);
+      this.KFq.a((com.tencent.mm.plugin.expt.hellhound.a.a.d)this.KFs, (p)this.KFt);
+      AppMethodBeat.o(205100);
+      return;
+    }
+  }
+  
+  public final void free()
+  {
+    AppMethodBeat.i(205102);
+    this.pGv.a(2, null);
+    WeakReference localWeakReference = this.mActivityRef;
+    if (localWeakReference != null) {
+      localWeakReference.clear();
+    }
+    this.mActivityRef = null;
+    AppMethodBeat.o(205102);
+  }
+  
+  public final void report()
+  {
+    AppMethodBeat.i(205103);
+    this.pGv.a(3, null);
+    AppMethodBeat.o(205103);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFavMonitor$Companion;", "", "()V", "TAG", "", "plugin-expt_release"})
+  public static final class a {}
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFavMonitor$mListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/feed/IFeedOnScrollListener;", "onScroll", "", "listView", "Landroid/view/ViewGroup;", "firstVisibleItem", "", "visibleItemCount", "totalItemCount", "dx", "dy", "onScrollStateChanged", "scrollState", "plugin-expt_release"})
+  public static final class b
+    implements com.tencent.mm.plugin.expt.hellhound.a.a.d
+  {
+    public final void a(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3)
+    {
+      AppMethodBeat.i(205097);
+      Object localObject = d.b(this.KFv);
+      if (localObject != null) {}
+      for (localObject = (Activity)((WeakReference)localObject).get(); (localObject == null) || (((Activity)localObject).isFinishing()) || (((Activity)localObject).isDestroyed()); localObject = null)
       {
-        k = paramString.length();
-        if (k > 0) {}
+        ad.m("HABBYGE-MALI.FinderFavMonitor", "onScroll, is NULL or finishing", new Object[0]);
+        AppMethodBeat.o(205097);
+        return;
       }
-      else
-      {
-        AppMethodBeat.o(152373);
-        return null;
-      }
+      d.a(this.KFv).a((Activity)localObject, paramViewGroup, paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(205097);
     }
-    catch (JSONException paramString)
+    
+    public final void k(ViewGroup paramViewGroup, int paramInt)
     {
-      ab.printErrStackTrace("HellSessionUBACloudConfig", paramString, "HellSessionUBACloudConfig parse crash", new Object[0]);
-      AppMethodBeat.o(152373);
-      return null;
+      AppMethodBeat.i(205096);
+      d.a(this.KFv).g(paramViewGroup, d.agT(paramInt));
+      AppMethodBeat.o(205096);
     }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < k)
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/FinderFavMonitor$mSmoothListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/IFinderSmoothListener;", "scrollToPosition", "", "postion2Zero", "", "smoothScrollToPosition", "position", "", "plugin-expt_release"})
+  public static final class c
+    implements p
+  {
+    public final void yx(boolean paramBoolean)
     {
-      Object localObject = paramString.optJSONObject(i);
-      if (localObject != null)
-      {
-        cah localcah = new cah();
-        localcah.xkf = ((JSONObject)localObject).optString("pageName");
-        localObject = ((JSONObject)localObject).optJSONArray("businessParams");
-        if (localObject != null)
-        {
-          int m = ((JSONArray)localObject).length();
-          if (m > 0)
-          {
-            int j = 0;
-            while (j < m)
-            {
-              JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(j);
-              if (localJSONObject != null)
-              {
-                bkh localbkh = new bkh();
-                localbkh.className = localJSONObject.optString("className");
-                localbkh.dataPath = localJSONObject.optString("dataPath");
-                localbkh.action = localJSONObject.optString("action");
-                localcah.xLP.add(localbkh);
-              }
-              j += 1;
-            }
-          }
-        }
-        localArrayList.add(localcah);
-      }
-      i += 1;
+      AppMethodBeat.i(205098);
+      d.a(this.KFv).kc(paramBoolean);
+      AppMethodBeat.o(205098);
     }
-    AppMethodBeat.o(152373);
-    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.b.a.d
  * JD-Core Version:    0.7.0.1
  */

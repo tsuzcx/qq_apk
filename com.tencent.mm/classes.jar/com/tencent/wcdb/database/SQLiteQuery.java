@@ -19,7 +19,7 @@ public final class SQLiteQuery
   final int fillWindow(com.tencent.wcdb.CursorWindow paramCursorWindow, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     // Byte code:
-    //   0: sipush 12583
+    //   0: sipush 3269
     //   3: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: invokevirtual 31	com/tencent/wcdb/database/SQLiteQuery:acquireReference	()V
@@ -45,7 +45,7 @@ public final class SQLiteQuery
     //   44: invokevirtual 59	com/tencent/wcdb/CursorWindow:releaseReference	()V
     //   47: aload_0
     //   48: invokevirtual 60	com/tencent/wcdb/database/SQLiteQuery:releaseReference	()V
-    //   51: sipush 12583
+    //   51: sipush 3269
     //   54: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   57: iload_2
     //   58: ireturn
@@ -68,21 +68,21 @@ public final class SQLiteQuery
     //   98: aload_0
     //   99: aload 5
     //   101: invokevirtual 92	com/tencent/wcdb/database/SQLiteQuery:checkCorruption	(Lcom/tencent/wcdb/database/SQLiteException;)V
-    //   104: sipush 12583
+    //   104: sipush 3269
     //   107: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   110: aload 5
     //   112: athrow
     //   113: astore 5
     //   115: aload_1
     //   116: invokevirtual 59	com/tencent/wcdb/CursorWindow:releaseReference	()V
-    //   119: sipush 12583
+    //   119: sipush 3269
     //   122: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   125: aload 5
     //   127: athrow
     //   128: astore_1
     //   129: aload_0
     //   130: invokevirtual 60	com/tencent/wcdb/database/SQLiteQuery:releaseReference	()V
-    //   133: sipush 12583
+    //   133: sipush 3269
     //   136: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   139: aload_1
     //   140: athrow
@@ -107,9 +107,9 @@ public final class SQLiteQuery
   
   public final String toString()
   {
-    AppMethodBeat.i(12584);
+    AppMethodBeat.i(3270);
     String str = "SQLiteQuery: " + getSql();
-    AppMethodBeat.o(12584);
+    AppMethodBeat.o(3270);
     return str;
   }
 }

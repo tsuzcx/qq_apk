@@ -4,7 +4,7 @@ import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.u;
 
 public final class k
-  extends f
+  extends g
 {
   public k(u paramu, Orders paramOrders)
   {
@@ -13,17 +13,17 @@ public final class k
   
   public final int getFuncId()
   {
-    return 2892;
+    return 2824;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/univerify";
+    return "/cgi-bin/mmpay-bin/tenpay/tax_verify";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.d.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,97 +1,97 @@
 package com.tencent.mm.plugin.webview.stub;
 
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.c;
 
-public abstract interface b
-  extends IInterface
+public class b
+  extends f.a
 {
-  public abstract boolean dcU();
-  
-  public abstract boolean getResult();
-  
-  public abstract int getRet();
-  
-  public abstract int getType();
-  
-  public static abstract class a
-    extends Binder
-    implements b
+  public final boolean Tj(int paramInt)
   {
-    public a()
-    {
-      attachInterface(this, "com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-    }
-    
-    public static b E(IBinder paramIBinder)
-    {
-      if (paramIBinder == null) {
-        return null;
-      }
-      IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-      if ((localIInterface != null) && ((localIInterface instanceof b))) {
-        return (b)localIInterface;
-      }
-      return new b.a.a(paramIBinder);
-    }
-    
-    public IBinder asBinder()
-    {
-      return this;
-    }
-    
-    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-    {
-      int j = 0;
-      int i = 0;
-      boolean bool;
-      switch (paramInt1)
-      {
-      default: 
-        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-      case 1598968902: 
-        paramParcel2.writeString("com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-        return true;
-      case 1: 
-        paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-        bool = dcU();
-        paramParcel2.writeNoException();
-        paramInt1 = i;
-        if (bool) {
-          paramInt1 = 1;
-        }
-        paramParcel2.writeInt(paramInt1);
-        return true;
-      case 2: 
-        paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-        bool = getResult();
-        paramParcel2.writeNoException();
-        paramInt1 = j;
-        if (bool) {
-          paramInt1 = 1;
-        }
-        paramParcel2.writeInt(paramInt1);
-        return true;
-      case 3: 
-        paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-        paramInt1 = getRet();
-        paramParcel2.writeNoException();
-        paramParcel2.writeInt(paramInt1);
-        return true;
-      }
-      paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.FavUrl_Result_AIDL");
-      paramInt1 = getType();
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    }
+    return false;
   }
+  
+  public final boolean a(d paramd)
+  {
+    return false;
+  }
+  
+  public boolean a(String paramString1, String paramString2, Bundle paramBundle, boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public final void axu(String paramString) {}
+  
+  public final void ay(Bundle paramBundle) {}
+  
+  public final void az(Bundle paramBundle) {}
+  
+  public String dvR()
+  {
+    return null;
+  }
+  
+  public final void e(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
+  
+  public final void ekt() {}
+  
+  public final void eku() {}
+  
+  public final String ene()
+  {
+    return null;
+  }
+  
+  public final int enf()
+  {
+    return 0;
+  }
+  
+  public final String eng()
+  {
+    return null;
+  }
+  
+  public final Bundle ev(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(189767);
+    paramString1 = c.aDg(null);
+    AppMethodBeat.o(189767);
+    return paramString1;
+  }
+  
+  public boolean f(int paramInt, Bundle paramBundle)
+  {
+    return false;
+  }
+  
+  public String getCurrentUrl()
+  {
+    return null;
+  }
+  
+  public Bundle j(int paramInt, Bundle paramBundle)
+  {
+    return null;
+  }
+  
+  public final void kd(String paramString1, String paramString2) {}
+  
+  public final void ke(String paramString1, String paramString2) {}
+  
+  public final void t(int paramInt, Bundle paramBundle) {}
+  
+  public final void to(boolean paramBoolean) {}
+  
+  public final void tp(boolean paramBoolean) {}
+  
+  public final void tq(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.stub.b
  * JD-Core Version:    0.7.0.1
  */

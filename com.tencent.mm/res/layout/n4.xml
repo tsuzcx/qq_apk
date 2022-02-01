@@ -1,20 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout style="@style/gf"
+<RelativeLayout style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/ap9" android:layout_alignParentLeft="true" layout="@layout/m0" style="@style/gb" />
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/ap9" android:layout_alignTop="@id/ap9" style="@style/gg">
-        <TextView android:id="@id/ox" android:visibility="gone" style="@style/gl" />
-        <TextView android:id="@id/aty" android:visibility="gone" android:text="@string/aqs" android:layout_below="@id/ox" android:layout_alignLeft="@id/ox" style="@style/gj" />
-        <com.tencent.mm.ui.base.AnimImageView android:orientation="horizontal" android:id="@id/atz" android:background="@drawable/j1" android:layout_width="100.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/eg" android:layout_below="@id/aty" android:layout_alignLeft="@id/ox" />
-        <FrameLayout android:id="@id/au0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/atz" android:layout_alignLeft="@id/ox">
-            <FrameLayout android:id="@id/au1" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <TextView android:id="@id/au2" android:background="@drawable/j1" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/eg" android:drawableLeft="@raw/chatfrom_voice_playing" />
-                <com.tencent.mm.ui.base.AnimImageView android:id="@id/au3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/eg" />
-                <TextView android:layout_gravity="center_vertical" android:id="@id/oy" android:layout_marginLeft="29.0dip" android:layout_alignLeft="@id/au2" style="@style/gv" />
-            </FrameLayout>
-        </FrameLayout>
-        <ViewStub android:id="@id/aqv" android:layout="@layout/o7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="@dimen/lb" android:layout_below="@id/au0" android:layout_alignLeft="@id/ox" />
-        <ImageView android:id="@id/au4" android:background="@null" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="@dimen/gc" android:src="@drawable/a66" android:layout_toRightOf="@id/au0" android:layout_alignTop="@id/au0" android:layout_alignBottom="@id/au0" />
-        <TextView android:id="@id/apb" android:visibility="gone" android:layout_marginRight="5.0dip" android:text="@string/alv" android:layout_below="@id/au0" android:layout_alignRight="@id/au0" style="@style/g8" />
-    </RelativeLayout>
+    <ListView android:id="@id/dmu" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" style="@style/n3" />
 </RelativeLayout>

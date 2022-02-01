@@ -8,123 +8,139 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvoiceaddr.ui.b;
 import com.tencent.mm.modelvoiceaddr.ui.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.tools.q;
+import com.tencent.mm.ui.tools.r;
 
 @a(3)
 public class EnterpriseBizSearchUI
   extends MMActivity
-  implements b.a, EnterpriseBizContactListView.b
+  implements b.a, EnterpriseBizContactListView.c
 {
-  private b jTZ;
-  private String jUE;
-  private EnterpriseBizContactListView jUe;
+  private b mUp;
+  private EnterpriseBizContactListView mUu;
+  private String mVj;
+  
+  public final boolean BX(String paramString)
+  {
+    AppMethodBeat.i(5747);
+    hideVKB();
+    AppMethodBeat.o(5747);
+    return true;
+  }
+  
+  public final void BY(String paramString)
+  {
+    AppMethodBeat.i(5746);
+    ad.i("MicroMsg.EnterpriseBizSearchUI", "search biz, key word : %s", new Object[] { paramString });
+    this.mUu.aKo(paramString);
+    AppMethodBeat.o(5746);
+  }
   
   public final void a(boolean paramBoolean, String[] paramArrayOfString, long paramLong, int paramInt) {}
   
-  public final boolean aWA()
+  public final void aEh()
   {
-    AppMethodBeat.i(14014);
+    AppMethodBeat.i(5748);
     hideVKB();
-    AppMethodBeat.o(14014);
+    AppMethodBeat.o(5748);
+  }
+  
+  public final void aIj()
+  {
+    AppMethodBeat.i(5745);
+    finish();
+    AppMethodBeat.o(5745);
+  }
+  
+  public final void aIk() {}
+  
+  public final void aIl() {}
+  
+  public final void aIm() {}
+  
+  public final boolean bCz()
+  {
+    AppMethodBeat.i(5752);
+    hideVKB();
+    AppMethodBeat.o(5752);
     return false;
   }
   
-  public final void anc()
-  {
-    AppMethodBeat.i(14010);
-    hideVKB();
-    AppMethodBeat.o(14010);
-  }
-  
-  public final void apN()
-  {
-    AppMethodBeat.i(14007);
-    finish();
-    AppMethodBeat.o(14007);
-  }
-  
-  public final void apO() {}
-  
-  public final void apP() {}
-  
-  public final void apQ() {}
-  
   public int getLayoutId()
   {
-    return 2130969432;
+    return 2131493844;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(14006);
-    if (bo.isNullOrNil(this.jUE))
+    AppMethodBeat.i(5744);
+    if (bt.isNullOrNil(this.mVj))
     {
-      this.jUE = getIntent().getStringExtra("enterprise_biz_name");
-      if (bo.isNullOrNil(this.jUE)) {
+      this.mVj = getIntent().getStringExtra("enterprise_biz_name");
+      if (bt.isNullOrNil(this.mVj)) {
         finish();
       }
     }
-    this.jUe = ((EnterpriseBizContactListView)findViewById(2131821952));
-    this.jUe.setFatherBizName(this.jUE);
-    this.jUe.setExcludeBizChat(true);
-    this.jUe.refresh();
-    this.jUe.setMode(1);
-    this.jUe.aWB();
-    this.jUe.dES();
-    this.jUe.qM(false);
-    this.jUe.setOnTouchListener(this);
-    ((TextView)this.jUe.getNoResultView()).setText(2131299321);
-    this.jTZ = new b();
-    this.jTZ.ru(true);
-    this.jTZ.a(this);
-    this.jTZ.gcJ = false;
-    AppMethodBeat.o(14006);
+    this.mUu = ((EnterpriseBizContactListView)findViewById(2131305113));
+    this.mUu.setFatherBizName(this.mVj);
+    this.mUu.setExcludeBizChat(true);
+    this.mUu.refresh();
+    this.mUu.setMode(1);
+    this.mUu.bCA();
+    this.mUu.eTK();
+    this.mUu.vU(false);
+    this.mUu.setOnTouchListener(this);
+    ((TextView)this.mUu.getNoResultView()).setText(2131758448);
+    this.mUp = new b();
+    this.mUp.wH(true);
+    this.mUp.a(this);
+    this.mUp.hFB = false;
+    AppMethodBeat.o(5744);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(14003);
+    AppMethodBeat.i(5742);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(14003);
+    AppMethodBeat.o(5742);
   }
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
-    AppMethodBeat.i(14012);
-    this.jTZ.a(this, paramMenu);
-    AppMethodBeat.o(14012);
+    AppMethodBeat.i(5750);
+    this.mUp.a(this, paramMenu);
+    AppMethodBeat.o(5750);
     return true;
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(14004);
+    AppMethodBeat.i(5743);
     super.onDestroy();
-    if (this.jUe != null) {
+    if (this.mUu != null) {
       EnterpriseBizContactListView.release();
     }
-    AppMethodBeat.o(14004);
+    AppMethodBeat.o(5743);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(14011);
+    AppMethodBeat.i(5749);
     super.onPause();
-    this.jTZ.cancel();
-    this.jTZ.clearFocus();
-    AppMethodBeat.o(14011);
+    this.mUp.cancel();
+    this.mUp.clearFocus();
+    AppMethodBeat.o(5749);
   }
   
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
-    AppMethodBeat.i(14013);
-    this.jTZ.a(this, paramMenu);
-    AppMethodBeat.o(14013);
+    AppMethodBeat.i(5751);
+    this.mUp.a(this, paramMenu);
+    AppMethodBeat.o(5751);
     return true;
   }
   
@@ -133,26 +149,10 @@ public class EnterpriseBizSearchUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  public final boolean wR(String paramString)
-  {
-    AppMethodBeat.i(14009);
-    hideVKB();
-    AppMethodBeat.o(14009);
-    return true;
-  }
-  
-  public final void wS(String paramString)
-  {
-    AppMethodBeat.i(14008);
-    ab.i("MicroMsg.EnterpriseBizSearchUI", "search biz, key word : %s", new Object[] { paramString });
-    this.jUe.atB(paramString);
-    AppMethodBeat.o(14008);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.EnterpriseBizSearchUI
  * JD-Core Version:    0.7.0.1
  */

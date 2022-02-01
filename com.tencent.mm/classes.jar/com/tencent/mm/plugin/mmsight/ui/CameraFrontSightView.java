@@ -8,116 +8,116 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
 import org.xwalk.core.Log;
 
 public class CameraFrontSightView
   extends View
 {
-  private int jas;
+  private int lQm;
   public int mHeight;
   private Paint mPaint;
   public int mWidth;
-  private boolean oNm;
-  private boolean oNn;
-  private boolean oNo;
-  private boolean oNp;
-  private long oNq;
-  private int oNr;
-  private int oNs;
-  private ViewGroup.LayoutParams oNt;
+  private int tIA;
+  private int tIB;
+  private ViewGroup.LayoutParams tIC;
+  private boolean tIv;
+  private boolean tIw;
+  private boolean tIx;
+  private boolean tIy;
+  private long tIz;
   
   public CameraFrontSightView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(55068);
+    AppMethodBeat.i(94503);
     this.mPaint = new Paint();
-    this.oNm = false;
-    this.oNn = false;
-    this.oNo = false;
-    this.oNp = false;
-    this.oNq = 0L;
-    AppMethodBeat.o(55068);
+    this.tIv = false;
+    this.tIw = false;
+    this.tIx = false;
+    this.tIy = false;
+    this.tIz = 0L;
+    AppMethodBeat.o(94503);
   }
   
   public CameraFrontSightView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(55067);
+    AppMethodBeat.i(94502);
     this.mPaint = new Paint();
-    this.oNm = false;
-    this.oNn = false;
-    this.oNo = false;
-    this.oNp = false;
-    this.oNq = 0L;
-    AppMethodBeat.o(55067);
+    this.tIv = false;
+    this.tIw = false;
+    this.tIx = false;
+    this.tIy = false;
+    this.tIz = 0L;
+    AppMethodBeat.o(94502);
   }
   
-  public final void Z(float paramFloat1, float paramFloat2)
+  public final void Q(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(55071);
+    AppMethodBeat.i(94506);
     Object localObject = getLayoutParams();
     if (!(localObject instanceof ViewGroup.MarginLayoutParams))
     {
       Log.e("MicroMsg.CameraFrontSightView", "LayoutParams is not MarginLayoutParams! use doAimation()");
-      AppMethodBeat.o(55071);
+      AppMethodBeat.o(94506);
       return;
     }
     localObject = (ViewGroup.MarginLayoutParams)localObject;
     ((ViewGroup.MarginLayoutParams)localObject).leftMargin = ((int)paramFloat1 - this.mWidth / 2);
     ((ViewGroup.MarginLayoutParams)localObject).topMargin = ((int)paramFloat2 - this.mHeight / 2);
     setLayoutParams((ViewGroup.LayoutParams)localObject);
-    bRM();
-    AppMethodBeat.o(55071);
+    cQG();
+    AppMethodBeat.o(94506);
   }
   
-  public final void bRM()
+  public final void cQG()
   {
-    AppMethodBeat.i(55070);
+    AppMethodBeat.i(94505);
     setVisibility(0);
-    this.oNm = true;
-    this.oNn = false;
-    this.oNo = false;
-    this.oNp = false;
-    this.oNq = System.currentTimeMillis();
+    this.tIv = true;
+    this.tIw = false;
+    this.tIx = false;
+    this.tIy = false;
+    this.tIz = System.currentTimeMillis();
     invalidate();
-    AppMethodBeat.o(55070);
+    AppMethodBeat.o(94505);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(55072);
-    paramCanvas.translate(this.oNr / 2, this.oNs / 2);
-    long l = System.currentTimeMillis() - this.oNq;
+    AppMethodBeat.i(94507);
+    paramCanvas.translate(this.tIA / 2, this.tIB / 2);
+    long l = System.currentTimeMillis() - this.tIz;
     if (l > 200L)
     {
-      this.oNm = false;
-      this.oNn = true;
+      this.tIv = false;
+      this.tIw = true;
     }
     if (l > 800L)
     {
-      this.oNn = false;
-      this.oNo = true;
+      this.tIw = false;
+      this.tIx = true;
     }
     if (l > 1100L)
     {
-      this.oNo = false;
-      this.oNp = true;
+      this.tIx = false;
+      this.tIy = true;
     }
     if (l > 1300L)
     {
-      this.oNp = false;
+      this.tIy = false;
       setVisibility(8);
-      AppMethodBeat.o(55072);
+      AppMethodBeat.o(94507);
       return;
     }
     float f;
-    if (this.oNm)
+    if (this.tIv)
     {
       f = (float)(200L - l) / 200.0F + 1.0F;
-      paramCanvas.scale(f, f, this.oNr / 2, this.oNs / 2);
+      paramCanvas.scale(f, f, this.tIA / 2, this.tIB / 2);
       this.mPaint.setAlpha((int)((2.0F - f) * 255.0F));
-      if (!this.oNn) {
+      if (!this.tIw) {
         break label491;
       }
       f = (float)((l - 200L) % 200L) / 200.0F * 2.0F;
@@ -131,21 +131,21 @@ public class CameraFrontSightView
     }
     for (;;)
     {
-      if (this.oNp)
+      if (this.tIy)
       {
         f = (float)(l - 1100L) / 200.0F;
         this.mPaint.setAlpha((int)((1.0F - f) * 255.0F));
       }
-      paramCanvas.drawLine(0.0F, 0.0F, this.oNr, 0.0F, this.mPaint);
-      paramCanvas.drawLine(0.0F, 0.0F, 0.0F, this.oNs, this.mPaint);
-      paramCanvas.drawLine(this.oNr, 0.0F, this.oNr, this.oNs, this.mPaint);
-      paramCanvas.drawLine(0.0F, this.oNs, this.oNr, this.oNs, this.mPaint);
-      paramCanvas.drawLine(0.0F, this.oNs / 2, this.oNr / 10, this.oNs / 2, this.mPaint);
-      paramCanvas.drawLine(this.oNr, this.oNs / 2, this.oNr * 9 / 10, this.oNs / 2, this.mPaint);
-      paramCanvas.drawLine(this.oNr / 2, 0.0F, this.oNr / 2, this.oNs / 10, this.mPaint);
-      paramCanvas.drawLine(this.oNr / 2, this.oNs, this.oNr / 2, this.oNs * 9 / 10, this.mPaint);
+      paramCanvas.drawLine(0.0F, 0.0F, this.tIA, 0.0F, this.mPaint);
+      paramCanvas.drawLine(0.0F, 0.0F, 0.0F, this.tIB, this.mPaint);
+      paramCanvas.drawLine(this.tIA, 0.0F, this.tIA, this.tIB, this.mPaint);
+      paramCanvas.drawLine(0.0F, this.tIB, this.tIA, this.tIB, this.mPaint);
+      paramCanvas.drawLine(0.0F, this.tIB / 2, this.tIA / 10, this.tIB / 2, this.mPaint);
+      paramCanvas.drawLine(this.tIA, this.tIB / 2, this.tIA * 9 / 10, this.tIB / 2, this.mPaint);
+      paramCanvas.drawLine(this.tIA / 2, 0.0F, this.tIA / 2, this.tIB / 10, this.mPaint);
+      paramCanvas.drawLine(this.tIA / 2, this.tIB, this.tIA / 2, this.tIB * 9 / 10, this.mPaint);
       invalidate();
-      AppMethodBeat.o(55072);
+      AppMethodBeat.o(94507);
       return;
       paramCanvas.scale(1.0F, 1.0F);
       break;
@@ -157,23 +157,32 @@ public class CameraFrontSightView
     }
   }
   
-  public final void eI(int paramInt1, int paramInt2)
+  public final void ge(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(55069);
-    this.oNt = getLayoutParams();
-    if (this.oNt != null)
+    AppMethodBeat.i(94504);
+    this.tIC = getLayoutParams();
+    if (this.tIC != null)
     {
-      this.oNt.width = paramInt1;
-      this.oNt.height = paramInt2;
+      this.tIC.width = paramInt1;
+      this.tIC.height = paramInt2;
     }
     this.mWidth = paramInt1;
     this.mHeight = paramInt2;
-    this.oNr = (this.mWidth / 2);
-    this.oNs = (this.mHeight / 2);
-    this.jas = a.fromDPToPix(getContext(), 1);
+    this.tIA = (this.mWidth / 2);
+    this.tIB = (this.mHeight / 2);
+    this.lQm = a.fromDPToPix(getContext(), 1);
     this.mPaint.setColor(-12206054);
-    this.mPaint.setStrokeWidth(this.jas);
-    AppMethodBeat.o(55069);
+    this.mPaint.setStrokeWidth(this.lQm);
+    AppMethodBeat.o(94504);
+  }
+  
+  public void setFocusColor(int paramInt)
+  {
+    AppMethodBeat.i(205852);
+    if (paramInt != 0) {
+      this.mPaint.setColor(paramInt);
+    }
+    AppMethodBeat.o(205852);
   }
 }
 

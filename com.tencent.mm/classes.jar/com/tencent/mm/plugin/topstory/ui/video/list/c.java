@@ -10,146 +10,146 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.a;
 import com.tencent.mm.plugin.topstory.ui.video.b;
-import com.tencent.mm.plugin.topstory.ui.widget.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.topstory.ui.widget.f;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
-  extends e
+  extends f
 {
-  private aj agR;
-  private aj agS;
-  b thM;
+  private aj anY;
+  private aj anZ;
+  b yOm;
   
   public c(b paramb)
   {
-    this.thM = paramb;
+    this.yOm = paramb;
   }
   
   private int a(View paramView, aj paramaj)
   {
-    AppMethodBeat.i(2019);
-    int i = paramaj.bh(paramView);
-    int j = this.thM.cJp();
-    AppMethodBeat.o(2019);
+    AppMethodBeat.i(126413);
+    int i = paramaj.bn(paramView);
+    int j = this.yOm.dOS();
+    AppMethodBeat.o(126413);
     return i - j;
   }
   
   private static View a(RecyclerView.i parami, aj paramaj)
   {
     Object localObject = null;
-    AppMethodBeat.i(2020);
+    AppMethodBeat.i(126414);
     int n = parami.getChildCount();
     if (n == 0)
     {
-      AppMethodBeat.o(2020);
+      AppMethodBeat.o(126414);
       return null;
     }
     int j;
     int k;
     if (parami.getClipToPadding())
     {
-      j = paramaj.iI() + (paramaj.iK() - a.tfs) / 2;
+      j = paramaj.kd() + (paramaj.kf() - a.yMb) / 2;
       int i = 2147483647;
       k = 0;
-      label57:
+      label55:
       if (k >= n) {
-        break label126;
+        break label124;
       }
       View localView = parami.getChildAt(k);
-      int m = Math.abs(paramaj.bh(localView) + paramaj.bl(localView) / 2 - j);
+      int m = Math.abs(paramaj.bn(localView) + paramaj.br(localView) / 2 - j);
       if (m >= i) {
-        break label135;
+        break label132;
       }
       localObject = localView;
       i = m;
     }
-    label135:
+    label132:
     for (;;)
     {
       k += 1;
-      break label57;
+      break label55;
       j = paramaj.getEnd() / 2;
       break;
-      label126:
-      AppMethodBeat.o(2020);
+      label124:
+      AppMethodBeat.o(126414);
       return localObject;
     }
   }
   
   private aj b(RecyclerView.i parami)
   {
-    AppMethodBeat.i(2021);
-    if ((this.agR == null) || (this.agR.getLayoutManager() != parami)) {
-      this.agR = aj.e(parami);
+    AppMethodBeat.i(126415);
+    if ((this.anY == null) || (this.anY.getLayoutManager() != parami)) {
+      this.anY = aj.e(parami);
     }
-    parami = this.agR;
-    AppMethodBeat.o(2021);
+    parami = this.anY;
+    AppMethodBeat.o(126415);
     return parami;
   }
   
   private aj c(RecyclerView.i parami)
   {
-    AppMethodBeat.i(2022);
-    if ((this.agS == null) || (this.agS.getLayoutManager() != parami)) {
-      this.agS = aj.d(parami);
+    AppMethodBeat.i(126416);
+    if ((this.anZ == null) || (this.anZ.getLayoutManager() != parami)) {
+      this.anZ = aj.d(parami);
     }
-    parami = this.agS;
-    AppMethodBeat.o(2022);
+    parami = this.anZ;
+    AppMethodBeat.o(126416);
     return parami;
   }
   
   public final int a(RecyclerView.i parami, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(2017);
+    AppMethodBeat.i(126411);
     if ((Math.abs(paramInt2) <= 500) || (Math.abs(paramInt1) >= Math.abs(paramInt2)))
     {
-      AppMethodBeat.o(2017);
+      AppMethodBeat.o(126411);
       return -1;
     }
     int j = parami.getItemCount();
     if (j == 0)
     {
-      AppMethodBeat.o(2017);
+      AppMethodBeat.o(126411);
       return -1;
     }
-    int i = this.thM.cJk() + 1;
+    int i = this.yOm.dOM() + 1;
     if (i == -1)
     {
-      AppMethodBeat.o(2017);
+      AppMethodBeat.o(126411);
       return -1;
     }
     boolean bool;
-    if (parami.ij()) {
+    if (parami.jE()) {
       if (paramInt1 > 0)
       {
         bool = true;
         if (!(parami instanceof RecyclerView.r.b)) {
-          break label268;
+          break label263;
         }
-        parami = ((RecyclerView.r.b)parami).bI(j - 1);
+        parami = ((RecyclerView.r.b)parami).bZ(j - 1);
         if (parami == null) {
-          break label268;
+          break label263;
         }
         if ((parami.x >= 0.0F) && (parami.y >= 0.0F)) {
-          break label242;
+          break label237;
         }
         paramInt1 = 1;
       }
     }
     for (;;)
     {
-      label140:
+      label136:
       if (paramInt1 != 0)
       {
         if (bool) {
-          break label260;
+          break label255;
         }
         paramInt1 = i + 1;
       }
       for (;;)
       {
-        ab.i("MicroMsg.TopStory.TopStoryVideoPagerSnapHelper", "findTargetSnapPosition velocityY: %d centerPosition: %d forwardDirection: %b result: %d currentPlayPos: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(this.thM.cJk() + 1) });
-        AppMethodBeat.o(2017);
+        ad.i("MicroMsg.TopStory.TopStoryVideoPagerSnapHelper", "findTargetSnapPosition velocityY: %d centerPosition: %d forwardDirection: %b result: %d currentPlayPos: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(this.yOm.dOM() + 1) });
+        AppMethodBeat.o(126411);
         return paramInt1;
         bool = false;
         break;
@@ -160,79 +160,79 @@ public final class c
         }
         bool = false;
         break;
-        label242:
+        label237:
         paramInt1 = 0;
-        break label140;
+        break label136;
         if (bool) {
           paramInt1 = i + 1;
         } else {
-          label260:
+          label255:
           paramInt1 = i - 1;
         }
       }
-      label268:
+      label263:
       paramInt1 = 0;
     }
   }
   
   public final View a(RecyclerView.i parami)
   {
-    AppMethodBeat.i(2016);
-    if (parami.ik())
+    AppMethodBeat.i(126410);
+    if (parami.jF())
     {
       parami = a(parami, b(parami));
-      AppMethodBeat.o(2016);
+      AppMethodBeat.o(126410);
       return parami;
     }
-    if (parami.ij())
+    if (parami.jE())
     {
       parami = a(parami, c(parami));
-      AppMethodBeat.o(2016);
+      AppMethodBeat.o(126410);
       return parami;
     }
-    AppMethodBeat.o(2016);
+    AppMethodBeat.o(126410);
     return null;
   }
   
   public final int[] a(RecyclerView.i parami, View paramView)
   {
-    AppMethodBeat.i(2015);
+    AppMethodBeat.i(126409);
     int[] arrayOfInt = new int[2];
-    if (parami.ij())
+    if (parami.jE())
     {
       arrayOfInt[0] = a(paramView, c(parami));
-      if (!parami.ik()) {
-        break label65;
+      if (!parami.jF()) {
+        break label63;
       }
       arrayOfInt[1] = a(paramView, b(parami));
     }
     for (;;)
     {
-      AppMethodBeat.o(2015);
+      AppMethodBeat.o(126409);
       return arrayOfInt;
       arrayOfInt[0] = 0;
       break;
-      label65:
+      label63:
       arrayOfInt[1] = 0;
     }
   }
   
   public final ae f(RecyclerView.i parami)
   {
-    AppMethodBeat.i(2018);
+    AppMethodBeat.i(126412);
     if (!(parami instanceof RecyclerView.r.b))
     {
-      AppMethodBeat.o(2018);
+      AppMethodBeat.o(126412);
       return null;
     }
-    parami = new c.1(this, this.adt.getContext());
-    AppMethodBeat.o(2018);
+    parami = new c.1(this, this.akA.getContext());
+    AppMethodBeat.o(126412);
     return parami;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.list.c
  * JD-Core Version:    0.7.0.1
  */

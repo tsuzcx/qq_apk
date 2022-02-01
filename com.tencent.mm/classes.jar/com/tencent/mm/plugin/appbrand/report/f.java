@@ -1,52 +1,54 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import a.l;
-import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.report.model.b;
+import com.tencent.mm.sdk.platformtools.bt;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandServiceTypeCache;", "", "()V", "TAG", "", "serviceTypeMap", "Landroid/util/SparseIntArray;", "addServiceTypeMap", "", "appId", "serviceType", "", "getServiceTypeMap", "default", "plugin-appbrand-integration_release"})
 public final class f
+  extends b
 {
-  private static final SparseIntArray iFS;
-  public static final f iFT;
+  private volatile long lpo = 0L;
+  private volatile boolean lpp = false;
+  public volatile String lpq;
   
-  static
+  public f(int paramInt)
   {
-    AppMethodBeat.i(134937);
-    iFT = new f();
-    iFS = new SparseIntArray();
-    AppMethodBeat.o(134937);
+    super(paramInt);
   }
   
-  public static final int EE(String paramString)
+  public final void Mr(String paramString)
   {
-    AppMethodBeat.i(134936);
-    if (paramString != null)
+    AppMethodBeat.i(196073);
+    super.onForeground();
+    this.lpo = 0L;
+    if (paramString.startsWith("__wx__"))
     {
-      int i = iFS.get(paramString.hashCode(), -1);
-      ab.d("MicroMsg.AppBrandServiceTypeCache", "getServiceTypeMap appId: " + paramString + ", ret " + i);
-      AppMethodBeat.o(134936);
-      return i;
+      this.lpp = false;
+      this.lpq = null;
     }
-    AppMethodBeat.o(134936);
-    return -1;
+    AppMethodBeat.o(196073);
   }
   
-  public static final void br(String paramString, int paramInt)
+  public final void Ms(String paramString)
   {
-    AppMethodBeat.i(134934);
-    if (paramString != null)
-    {
-      ab.d("MicroMsg.AppBrandServiceTypeCache", "addServiceTypeMap appId: " + paramString + ", serviceType: " + paramInt);
-      iFS.put(paramString.hashCode(), paramInt);
+    AppMethodBeat.i(196074);
+    this.lpo = (bt.eGO() - this.lqD.lqd.getStartTime());
+    this.lpq = paramString;
+    this.lpp = true;
+    AppMethodBeat.o(196074);
+  }
+  
+  public final long bmh()
+  {
+    if (this.lpp) {
+      return this.lqD.lqh - this.lpo;
     }
-    AppMethodBeat.o(134934);
+    return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.f
  * JD-Core Version:    0.7.0.1
  */

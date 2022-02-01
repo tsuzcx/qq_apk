@@ -13,14 +13,14 @@ final class c$1
   
   public final void onViewDetachedFromWindow(View paramView)
   {
-    AppMethodBeat.i(151573);
-    this.ghB.anW();
-    AppMethodBeat.o(151573);
+    AppMethodBeat.i(151348);
+    this.hPy.aFE();
+    AppMethodBeat.o(151348);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.particles.c.1
  * JD-Core Version:    0.7.0.1
  */

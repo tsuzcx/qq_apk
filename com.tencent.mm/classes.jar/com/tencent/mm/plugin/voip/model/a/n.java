@@ -1,71 +1,79 @@
 package com.tencent.mm.plugin.voip.model.a;
 
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
 import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
+import com.tencent.mm.network.k;
 import com.tencent.mm.plugin.voip.model.l;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.plugin.voip.model.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public abstract class n<REQ, RESP>
-  extends m
-  implements com.tencent.mm.network.k
+  extends com.tencent.mm.al.n
+  implements k
 {
-  f callback;
-  private f mKW;
+  com.tencent.mm.al.g callback;
+  private com.tencent.mm.al.g ria;
   protected b rr;
-  protected com.tencent.mm.plugin.voip.model.k tvE = l.cMn();
+  protected l zjH = m.dTs();
   
-  public abstract f cOp();
+  public abstract com.tencent.mm.al.g dVg();
   
-  public int cOq()
+  public int dVh()
   {
     return 0;
   }
   
-  public final void cOs()
+  public final void dVj()
   {
-    ab.i("MicroMsg.VoipNetSceneBase", "netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " is started.");
-    g.Rc().a(this, 0);
+    ad.i("MicroMsg.VoipNetSceneBase", "netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " is started.");
+    com.tencent.mm.kernel.g.aeS().a(this, 0);
   }
   
-  public final <RESP> RESP cOt()
+  public final <RESP> RESP dVk()
   {
-    return this.rr.fsW.fta;
+    return this.rr.gUT.gUX;
   }
   
-  public final <REQ> REQ cOu()
+  public final <REQ> REQ dVl()
   {
-    return this.rr.fsV.fta;
+    return this.rr.gUS.gUX;
   }
   
-  public int doScene(e parame, f paramf)
+  public int doScene(e parame, com.tencent.mm.al.g paramg)
   {
-    int i = cOq();
+    int i = dVh();
     if (i != 0) {
       return i;
     }
-    this.mKW = paramf;
-    this.callback = cOp();
+    this.ria = paramg;
+    this.callback = dVg();
     return dispatch(parame, this.rr, this);
   }
   
-  public void gk(int paramInt1, int paramInt2) {}
+  public void hR(int paramInt1, int paramInt2) {}
   
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public void onGYNetEnd(int paramInt1, final int paramInt2, final int paramInt3, final String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
-    gk(paramInt2, paramInt3);
-    if (this.mKW != null) {
-      this.mKW.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    hR(paramInt2, paramInt3);
+    if (this.ria != null) {
+      this.ria.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     if (this.callback != null) {
-      al.d(new n.1(this, paramInt2, paramInt3, paramString));
+      aq.f(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(115258);
+          if (n.this.callback != null) {
+            n.this.callback.onSceneEnd(paramInt2, paramInt3, paramString, n.this);
+          }
+          AppMethodBeat.o(115258);
+        }
+      });
     }
   }
 }

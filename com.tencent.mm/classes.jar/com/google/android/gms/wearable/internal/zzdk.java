@@ -24,9 +24,9 @@ public final class zzdk
   
   static
   {
-    AppMethodBeat.i(71212);
+    AppMethodBeat.i(101195);
     CREATOR = new zzdl();
-    AppMethodBeat.o(71212);
+    AppMethodBeat.o(101195);
   }
   
   @SafeParcelable.Constructor
@@ -38,17 +38,17 @@ public final class zzdk
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(71211);
+    AppMethodBeat.i(101194);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 2, this.statusCode);
     SafeParcelWriter.writeParcelable(paramParcel, 3, this.zzdq, paramInt, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(71211);
+    AppMethodBeat.o(101194);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzdk
  * JD-Core Version:    0.7.0.1
  */

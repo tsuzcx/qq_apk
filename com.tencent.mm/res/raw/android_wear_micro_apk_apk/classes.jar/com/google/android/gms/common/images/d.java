@@ -15,17 +15,17 @@ import java.util.concurrent.CountDownLatch;
 final class d
   implements Runnable
 {
-  private final Uri IG;
-  private final Bitmap IK;
-  private final CountDownLatch IL;
-  private boolean IM;
+  private final CountDownLatch KA;
+  private boolean KB;
+  private final Uri Kv;
+  private final Bitmap Kz;
   
   public d(ImageManager paramImageManager, Uri paramUri, Bitmap paramBitmap, boolean paramBoolean, CountDownLatch paramCountDownLatch)
   {
-    this.IG = paramUri;
-    this.IK = paramBitmap;
-    this.IM = paramBoolean;
-    this.IL = paramCountDownLatch;
+    this.Kv = paramUri;
+    this.Kz = paramBitmap;
+    this.KB = paramBoolean;
+    this.KA = paramCountDownLatch;
   }
   
   private void a(ImageManager.ImageReceiver paramImageReceiver, boolean paramBoolean)
@@ -37,19 +37,19 @@ final class d
     {
       e locale = (e)paramImageReceiver.get(i);
       if (paramBoolean) {
-        locale.a(ImageManager.b(this.II), this.IK);
+        locale.a(ImageManager.b(this.Kx), this.Kz);
       }
       for (;;)
       {
         if (!(locale instanceof g)) {
-          ImageManager.a(this.II).remove(locale);
+          ImageManager.a(this.Kx).remove(locale);
         }
         i += 1;
         break;
-        ImageManager.d(this.II).put(this.IG, Long.valueOf(SystemClock.elapsedRealtime()));
-        Context localContext = ImageManager.b(this.II);
-        ImageManager.c(this.II);
-        locale.f(localContext);
+        ImageManager.d(this.Kx).put(this.Kv, Long.valueOf(SystemClock.elapsedRealtime()));
+        Context localContext = ImageManager.b(this.Kx);
+        ImageManager.c(this.Kx);
+        locale.g(localContext);
       }
     }
   }
@@ -64,32 +64,32 @@ final class d
       throw new IllegalStateException("OnBitmapLoadedRunnable must be executed in the main thread");
     }
     boolean bool;
-    if (this.IK != null) {
+    if (this.Kz != null) {
       bool = true;
     }
-    while (ImageManager.h(this.II) != null) {
-      if (this.IM)
+    while (ImageManager.h(this.Kx) != null) {
+      if (this.KB)
       {
-        ImageManager.h(this.II).evictAll();
+        ImageManager.h(this.Kx).evictAll();
         System.gc();
-        this.IM = false;
-        ImageManager.g(this.II).post(this);
+        this.KB = false;
+        ImageManager.g(this.Kx).post(this);
         return;
         bool = false;
       }
       else if (bool)
       {
-        ImageManager.h(this.II).put(new f(this.IG), this.IK);
+        ImageManager.h(this.Kx).put(new f(this.Kv), this.Kz);
       }
     }
-    ??? = (ImageManager.ImageReceiver)ImageManager.e(this.II).remove(this.IG);
+    ??? = (ImageManager.ImageReceiver)ImageManager.e(this.Kx).remove(this.Kv);
     if (??? != null) {
       a((ImageManager.ImageReceiver)???, bool);
     }
-    this.IL.countDown();
-    synchronized (ImageManager.gR())
+    this.KA.countDown();
+    synchronized (ImageManager.hb())
     {
-      ImageManager.gS().remove(this.IG);
+      ImageManager.hc().remove(this.Kv);
       return;
     }
   }

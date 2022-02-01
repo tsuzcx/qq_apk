@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:gravity="bottom|center" android:id="@id/grg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:gravity="bottom|center" android:layout_gravity="center" android:id="@id/gra" android:background="@drawable/aga" android:visibility="gone" android:layout_width="@dimen/ak6" android:layout_height="@dimen/ak6" android:minWidth="160.0dip">
+            <RelativeLayout android:id="@id/gua" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:layout_centerHorizontal="true">
+                <ImageView android:id="@id/dnu" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@raw/voice_rcd_hint_new" />
+                <ImageView android:id="@id/gub" android:background="@raw/amp1" android:layout_width="40.0dip" android:layout_height="67.0dip" android:layout_alignBottom="@id/dnu" android:layout_toEndOf="@id/dnu" />
+            </RelativeLayout>
+            <TextView android:textSize="@dimen/adz" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center" android:id="@id/grj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="35.0dip" android:text="@string/aqs" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/grc" android:background="@drawable/aga" android:visibility="gone" android:layout_width="@dimen/ak6" android:layout_height="@dimen/ak6" android:minWidth="160.0dip">
+            <ImageView android:id="@id/grd" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="30.0dip" android:src="@raw/rcd_cancel_icon" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/adz" android:textColor="@color/a_u" android:gravity="center" android:id="@id/gre" android:background="@drawable/b00" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:text="@string/aqt" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/gq3" android:layout_width="fill_parent" android:layout_height="@dimen/akg">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gq2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/akf" android:layout_alignParentBottom="true">
+                <FrameLayout android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/gps" android:background="@drawable/agb" android:layout_width="@dimen/akb" android:layout_height="@dimen/akb">
+                        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gpt" android:layout_width="@dimen/akd" android:layout_height="@dimen/akc" android:src="@raw/voice2txt_cancel_img" app:iconColor="@color/ff" />
+                        <TextView android:textSize="@dimen/ake" android:textColor="@color/a7v" android:id="@id/gpu" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g8z" />
+                    </LinearLayout>
+                </FrameLayout>
+                <FrameLayout android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/gq4" android:background="@drawable/agb" android:layout_width="@dimen/akb" android:layout_height="@dimen/akb">
+                        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gq5" android:layout_width="@dimen/akd" android:layout_height="@dimen/akc" android:src="@raw/voice2txt_trans_chs_img" app:iconColor="@color/ff" />
+                        <TextView android:textSize="@dimen/ake" android:textColor="@color/a7v" android:id="@id/gq6" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g93" />
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+            <RelativeLayout android:id="@id/gpw" android:layout_width="@dimen/ak6" android:layout_height="@dimen/ak6" android:minWidth="160.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+                <RelativeLayout android:id="@id/gpr" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <RelativeLayout android:id="@id/gq7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_centerHorizontal="true">
+                        <ImageView android:id="@id/gq1" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@raw/voice_rcd_hint_new" />
+                        <ImageView android:id="@id/gq8" android:background="@raw/amp1" android:layout_width="40.0dip" android:layout_height="67.0dip" android:layout_alignBottom="@id/gq1" android:layout_toEndOf="@id/gq1" />
+                    </RelativeLayout>
+                    <ImageView android:gravity="center" android:id="@id/gpv" android:padding="0.0dip" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="40.0dip" android:src="@raw/count_down_0" android:layout_centerHorizontal="true" />
+                </RelativeLayout>
+                <TextView android:textSize="@dimen/aka" android:textColor="@color/a7t" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/gq0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ak9" android:text="@string/g92" android:singleLine="true" android:layout_alignParentBottom="true" />
+                <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/gpx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ak7" android:layout_alignParentBottom="true">
+                    <ImageView android:layout_width="@dimen/ak5" android:layout_height="@dimen/ak5" android:src="@raw/voice2txt_hint_cancel" />
+                    <TextView android:textSize="@dimen/ak_" android:textColor="@color/a7t" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/gpz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g92" android:singleLine="true" android:layout_marginStart="@dimen/ak8" android:layout_marginEnd="@dimen/ak8" />
+                    <ImageView android:id="@id/gpy" android:layout_width="@dimen/ak5" android:layout_height="@dimen/ak5" android:src="@raw/voice2txt_hint_trans_chs" />
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </FrameLayout>
+    <RelativeLayout android:gravity="center" android:orientation="vertical" android:id="@id/grf" android:background="@drawable/aga" android:visibility="gone" android:layout_width="@dimen/ak6" android:layout_height="@dimen/ak6">
+        <ProgressBar android:layout_gravity="center" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="30.0dip" style="@style/a4p" />
+        <TextView android:textSize="@dimen/ak_" android:textColor="@color/a7t" android:ellipsize="end" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="35.0dip" android:text="@string/edq" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_marginStart="@dimen/ak8" android:layout_marginEnd="@dimen/ak8" />
+    </RelativeLayout>
+    <RelativeLayout android:gravity="center" android:id="@id/grh" android:background="@drawable/aga" android:visibility="gone" android:layout_width="@dimen/ak6" android:layout_height="@dimen/ak6">
+        <ImageView android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="30.0dip" android:src="@raw/voice_to_short" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="15.0dip" android:textColor="@color/a_u" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="35.0dip" android:text="@string/ara" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</LinearLayout>

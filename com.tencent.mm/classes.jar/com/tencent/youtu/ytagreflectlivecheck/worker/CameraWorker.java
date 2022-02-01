@@ -21,14 +21,14 @@ public class CameraWorker
   
   public void cleanup()
   {
-    AppMethodBeat.i(123200);
+    AppMethodBeat.i(43411);
     if (this.mCamera != null) {}
     try
     {
       this.mCamera.setParameters(this.mCameraParameters);
       this.mCamera = null;
       this.mIsCameraOpened = false;
-      AppMethodBeat.o(123200);
+      AppMethodBeat.o(43411);
       return;
     }
     catch (Exception localException)
@@ -52,34 +52,34 @@ public class CameraWorker
   
   public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    AppMethodBeat.i(123199);
+    AppMethodBeat.i(43410);
     if ((this.mPreviewCallback != null) && (this.mIsCameraOpened)) {
       try
       {
         this.mPreviewCallback.onPreviewFrame(paramArrayOfByte, paramCamera);
-        AppMethodBeat.o(123199);
+        AppMethodBeat.o(43410);
         return;
       }
       catch (Exception paramArrayOfByte)
       {
         YTException.report(paramArrayOfByte);
-        AppMethodBeat.o(123199);
+        AppMethodBeat.o(43410);
         return;
       }
     }
     YTLogger.w("YoutuLightLiveCheck", "[YTAGReflectLiveCheckInterface.onPreviewFrame] ---callback is nil, or mIsCameraOpened: " + this.mIsCameraOpened);
-    AppMethodBeat.o(123199);
+    AppMethodBeat.o(43410);
   }
   
   public void setCamera(Camera paramCamera)
   {
-    AppMethodBeat.i(123198);
+    AppMethodBeat.i(43409);
     this.mCamera = paramCamera;
     this.mCameraParameters = paramCamera.getParameters();
     mDesiredPreviewHeight = this.mCameraParameters.getPreviewSize().height;
     mDesiredPreviewWidth = this.mCameraParameters.getPreviewSize().width;
     this.mIsCameraOpened = true;
-    AppMethodBeat.o(123198);
+    AppMethodBeat.o(43409);
   }
   
   public void setCameraPreviewCallback(Camera.PreviewCallback paramPreviewCallback)

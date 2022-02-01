@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class uc
   extends b
 {
-  public uc.a cKD;
+  public a dzu;
   
   public uc()
   {
@@ -15,16 +15,21 @@ public final class uc
   
   private uc(byte paramByte)
   {
-    AppMethodBeat.i(15809);
-    this.cKD = new uc.a();
-    this.ymq = false;
+    AppMethodBeat.i(94817);
+    this.dzu = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15809);
+    AppMethodBeat.o(94817);
+  }
+  
+  public static final class a
+  {
+    public String mediaId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.uc
  * JD-Core Version:    0.7.0.1
  */

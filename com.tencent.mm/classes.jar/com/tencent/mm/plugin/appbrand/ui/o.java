@@ -1,166 +1,180 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.Display;
+import android.content.res.Resources;
+import android.graphics.drawable.GradientDrawable;
+import android.util.DisplayMetrics;
+import android.util.SparseArray;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.f.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.af;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.appbrand.aa.l;
+import com.tencent.mm.plugin.appbrand.widget.b;
+import com.tencent.mm.ui.statusbar.c.a;
 
-public enum o
+@SuppressLint({"ViewConstructor"})
+public final class o
+  extends LinearLayout
+  implements c.a
 {
-  @Deprecated
-  public static void a(Window paramWindow)
+  public final com.tencent.luggage.sdk.d.c chU;
+  private final a[] lDh;
+  private final SparseArray<b> lDi;
+  private final SparseArray<b> lDj;
+  private int lDk;
+  
+  public o(Context paramContext, com.tencent.luggage.sdk.d.c paramc)
   {
-    AppMethodBeat.i(87384);
-    af.a(paramWindow);
-    AppMethodBeat.o(87384);
+    super(paramContext);
+    AppMethodBeat.i(147701);
+    this.chU = paramc;
+    this.lDi = new SparseArray();
+    this.lDj = new SparseArray();
+    this.lDh = new a[4];
+    setClickable(false);
+    int i = getContext().getResources().getDisplayMetrics().widthPixels;
+    int j = a.fromDPToPix(getContext(), 10);
+    int k = a.fromDPToPix(getContext(), 4);
+    paramContext = new FrameLayout.LayoutParams(i * 3 / 5, -2);
+    paramContext.gravity = 53;
+    setLayoutParams(paramContext);
+    boD();
+    setPadding(j, j, j, j);
+    setOrientation(1);
+    paramContext = new GradientDrawable();
+    paramContext.setCornerRadius(k);
+    paramContext.setColor(-652403418);
+    setBackground(paramContext);
+    paramContext = new LinearLayout.LayoutParams(-1, -2);
+    paramc = new LinearLayout.LayoutParams(-1, 2);
+    TextView localTextView = new TextView(getContext());
+    View localView = new View(getContext());
+    localTextView.setTextColor(-1);
+    localTextView.setLayoutParams(paramContext);
+    localTextView.setTextSize(1, 14.0F);
+    localTextView.setText(getContext().getString(2131755562));
+    addView(localTextView);
+    paramc.setMargins(0, a.fromDPToPix(getContext(), 10), 0, 0);
+    localView.setLayoutParams(paramc);
+    localView.setBackgroundColor(1728053247);
+    addView(localView);
+    boE();
+    com.tencent.mm.ui.statusbar.c.bj((Activity)getContext()).a(this);
+    AppMethodBeat.o(147701);
   }
   
-  @Deprecated
-  public static boolean a(Window paramWindow, boolean paramBoolean)
+  private void boD()
   {
-    AppMethodBeat.i(87385);
-    paramBoolean = af.a(paramWindow, paramBoolean);
-    AppMethodBeat.o(87385);
-    return paramBoolean;
-  }
-  
-  public static int[] aMu()
-  {
-    AppMethodBeat.i(87383);
-    Display localDisplay = ((WindowManager)ah.getContext().getSystemService("window")).getDefaultDisplay();
-    int i = localDisplay.getWidth();
-    int j = localDisplay.getHeight();
-    AppMethodBeat.o(87383);
-    return new int[] { i, j };
-  }
-  
-  private static int b(Window paramWindow, boolean paramBoolean)
-  {
-    AppMethodBeat.i(87390);
-    int i = paramWindow.getDecorView().getSystemUiVisibility();
-    int j;
-    if (paramBoolean)
+    AppMethodBeat.i(147702);
+    if ((getLayoutParams() != null) && ((getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
     {
-      j = i | 0x400 | 0x100;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 20) {
-        i = j | 0x200 | 0x2;
+      ((ViewGroup.MarginLayoutParams)getLayoutParams()).topMargin = (b.dL(getContext()) + this.lDk);
+      requestLayout();
+    }
+    AppMethodBeat.o(147702);
+  }
+  
+  private void boE()
+  {
+    AppMethodBeat.i(147703);
+    int i = 0;
+    while (i < 4)
+    {
+      a locala = new a(getContext());
+      locala.setText(getContext().getString(com.tencent.mm.plugin.appbrand.performance.d.lhN[i]));
+      this.lDh[i] = locala;
+      addView(locala);
+      i += 1;
+    }
+    AppMethodBeat.o(147703);
+  }
+  
+  public final void ar(final int paramInt, final String paramString)
+  {
+    AppMethodBeat.i(147704);
+    l.runOnUiThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(147692);
+        o.a(o.this, paramInt, paramString);
+        AppMethodBeat.o(147692);
       }
-      j = i | 0x4;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 19) {
-        i = j | 0x1000;
+    });
+    AppMethodBeat.o(147704);
+  }
+  
+  public final void dV(final String paramString1, final String paramString2)
+  {
+    AppMethodBeat.i(147705);
+    l.runOnUiThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(147693);
+        o.a(o.this, paramString1, paramString2);
+        AppMethodBeat.o(147693);
       }
-    }
-    for (;;)
+    });
+    AppMethodBeat.o(147705);
+  }
+  
+  public final void sG(int paramInt)
+  {
+    AppMethodBeat.i(147706);
+    this.lDk = paramInt;
+    boD();
+    AppMethodBeat.o(147706);
+  }
+  
+  @SuppressLint({"AppCompatCustomView"})
+  final class a
+    extends TextView
+  {
+    public a(Context paramContext)
     {
-      ab.i("MicroMsg.AppBrandUIUtil", "hy: setting ui visibility: %d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(87390);
-      return i;
-      j = i & 0xFFFFFBFF & 0xFFFFFEFF;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 20) {
-        i = j & 0xFFFFFDFF & 0xFFFFFFFD;
-      }
-      j = i & 0xFFFFFFFB;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 19) {
-        i = j & 0xFFFFEFFF;
-      }
+      super();
+      AppMethodBeat.i(147694);
+      this$1 = new LinearLayout.LayoutParams(-1, -2);
+      int i = a.fromDPToPix(getContext(), 5);
+      o.this.setMargins(0, i, 0, i);
+      setLayoutParams(o.this);
+      setTextSize(1, 12.0F);
+      setTextColor(getContext().getResources().getColor(2131100212));
+      AppMethodBeat.o(147694);
     }
   }
   
-  public static boolean b(Window paramWindow)
+  @SuppressLint({"AppCompatCustomView"})
+  final class b
+    extends TextView
   {
-    AppMethodBeat.i(87386);
-    if ((paramWindow == null) || (paramWindow.getDecorView() == null))
+    private String mTitle;
+    private String mValue;
+    
+    public b(Context paramContext)
     {
-      AppMethodBeat.o(87386);
-      return false;
+      super();
+      AppMethodBeat.i(147696);
+      setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+      setTextSize(1, 12.0F);
+      setTextColor(getContext().getResources().getColor(2131099674));
+      AppMethodBeat.o(147696);
     }
-    if ((Build.VERSION.SDK_INT >= 23) && ((paramWindow.getDecorView().getSystemUiVisibility() & 0x2000) != 0))
+    
+    private void update()
     {
-      AppMethodBeat.o(87386);
-      return true;
+      AppMethodBeat.i(147697);
+      setText(String.format("%s: %s", new Object[] { this.mTitle, this.mValue }));
+      AppMethodBeat.o(147697);
     }
-    AppMethodBeat.o(87386);
-    return false;
-  }
-  
-  public static void c(Window paramWindow, boolean paramBoolean)
-  {
-    AppMethodBeat.i(87392);
-    if (paramBoolean)
-    {
-      i = b(paramWindow, true);
-      paramWindow.getDecorView().setSystemUiVisibility(i);
-      paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new o.1(paramWindow));
-      paramWindow.addFlags(1024);
-      AppMethodBeat.o(87392);
-      return;
-    }
-    int i = b(paramWindow, false);
-    paramWindow.getDecorView().setSystemUiVisibility(i);
-    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(null);
-    paramWindow.clearFlags(1024);
-    AppMethodBeat.o(87392);
-  }
-  
-  public static boolean cy(View paramView)
-  {
-    AppMethodBeat.i(87389);
-    if (Build.VERSION.SDK_INT < 24)
-    {
-      AppMethodBeat.o(87389);
-      return false;
-    }
-    if (paramView == null)
-    {
-      AppMethodBeat.o(87389);
-      return false;
-    }
-    paramView = a.hr(paramView.getContext());
-    if ((paramView != null) && (paramView.isInMultiWindowMode()))
-    {
-      AppMethodBeat.o(87389);
-      return true;
-    }
-    AppMethodBeat.o(87389);
-    return false;
-  }
-  
-  public static void de(Context paramContext)
-  {
-    AppMethodBeat.i(141711);
-    Activity localActivity = a.hr(paramContext);
-    if ((localActivity != null) && (localActivity.getWindow() != null))
-    {
-      c(localActivity.getWindow(), true);
-      AppMethodBeat.o(141711);
-      return;
-    }
-    ab.w("MicroMsg.AppBrandUIUtil", "configFullScreen with context(%s), get NULL activity", new Object[] { paramContext });
-    AppMethodBeat.o(141711);
-  }
-  
-  public static boolean u(Activity paramActivity)
-  {
-    AppMethodBeat.i(87387);
-    if ((Build.VERSION.SDK_INT >= 24) && (paramActivity != null) && (paramActivity.isInMultiWindowMode()))
-    {
-      AppMethodBeat.o(87387);
-      return true;
-    }
-    AppMethodBeat.o(87387);
-    return false;
   }
 }
 

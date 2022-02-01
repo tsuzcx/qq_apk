@@ -1,26 +1,26 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ChatFooter$24
-  implements View.OnClickListener
+  implements Runnable
 {
   ChatFooter$24(ChatFooter paramChatFooter) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    AppMethodBeat.i(155434);
-    if (ChatFooter.ao(this.vXU) != null) {
-      ChatFooter.ao(this.vXU).pu(false);
+    AppMethodBeat.i(191290);
+    if (ChatFooter.ax(this.Cff) != null)
+    {
+      ChatFooter.ax(this.Cff).destroy();
+      ChatFooter.ax(this.Cff).setVisibility(8);
     }
-    AppMethodBeat.o(155434);
+    AppMethodBeat.o(191290);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.ChatFooter.24
  * JD-Core Version:    0.7.0.1
  */

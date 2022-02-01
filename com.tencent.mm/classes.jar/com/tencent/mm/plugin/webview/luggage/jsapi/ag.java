@@ -1,81 +1,96 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.n.a;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import org.json.JSONException;
+import com.tencent.mm.plugin.appbrand.service.n;
+import com.tencent.mm.plugin.webview.luggage.c.b;
+import com.tencent.mm.plugin.webview.luggage.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public class ag
-  extends bh
+  extends bo<f>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama)
+  public final void a(Context paramContext, String paramString, bn.a parama)
   {
-    AppMethodBeat.i(6338);
-    try
+    int j = 1;
+    AppMethodBeat.i(78578);
+    ad.i("MicroMsg.JsApiLaunchMiniProgram", "invoke");
+    JSONObject localJSONObject = b.HG(paramString);
+    if (localJSONObject == null)
     {
-      paramString = new JSONObject(paramString);
-      paramString = paramString.optString("username");
-      if (bo.isNullOrNil(paramString))
+      ad.e("MicroMsg.JsApiLaunchMiniProgram", "data is null");
+      parama.f("fail_null_data", null);
+      AppMethodBeat.o(78578);
+      return;
+    }
+    String str2 = localJSONObject.optString("targetAppId");
+    String str3 = localJSONObject.optString("currentUrl");
+    String str1 = localJSONObject.optString("preVerifyAppId");
+    paramString = str1;
+    if (bt.isNullOrNil(str1)) {
+      paramString = localJSONObject.optString("referrerAppId");
+    }
+    if (bt.isNullOrNil(str2))
+    {
+      parama.f("invalid_targetAppId", null);
+      AppMethodBeat.o(78578);
+      return;
+    }
+    if (bt.isNullOrNil(paramString))
+    {
+      parama.f("invalid_referrerAppId", null);
+      AppMethodBeat.o(78578);
+      return;
+    }
+    str1 = bt.nullAsNil(localJSONObject.optString("envVersion"));
+    int i = -1;
+    switch (str1.hashCode())
+    {
+    default: 
+      switch (i)
       {
-        parama.c("param_err", null);
-        AppMethodBeat.o(6338);
-        return;
       }
+      break;
     }
-    catch (JSONException paramContext)
+    for (j = 0;; j = 2)
     {
-      ab.e("MicroMsg.JsApiOpenBizChat", "parase json fail");
-      parama.c("fail", null);
-      AppMethodBeat.o(6338);
+      str1 = localJSONObject.optString("path");
+      ((n)g.ab(n.class)).b(paramContext, str3, paramString, str2, j, str1, 0);
+      parama.f(null, null);
+      AppMethodBeat.o(78578);
       return;
+      if (!str1.equals("develop")) {
+        break;
+      }
+      i = 0;
+      break;
+      if (!str1.equals("trial")) {
+        break;
+      }
+      i = 1;
+      break;
     }
-    Object localObject = ((j)g.E(j.class)).YA().arw(paramString);
-    if ((localObject == null) || (!((ad)localObject).dwz()))
-    {
-      parama.c("not biz username", null);
-      AppMethodBeat.o(6338);
-      return;
-    }
-    if (!a.je(((aq)localObject).field_type))
-    {
-      parama.c("open_biz_chat", null);
-      AppMethodBeat.o(6338);
-      return;
-    }
-    localObject = new Intent();
-    ((Intent)localObject).putExtra("Chat_User", paramString);
-    ((Intent)localObject).putExtra("finish_direct", true);
-    d.f(paramContext, ".ui.chatting.ChattingUI", (Intent)localObject);
-    parama.c(null, null);
-    AppMethodBeat.o(6338);
   }
   
-  public final void b(a.a parama) {}
+  public final void b(a<f>.a parama) {}
   
-  public final int bjL()
+  public final int bQV()
   {
-    return 1;
+    return 2;
   }
   
   public final String name()
   {
-    return "openBizChat";
+    return "launchMiniProgram";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.ag
  * JD-Core Version:    0.7.0.1
  */

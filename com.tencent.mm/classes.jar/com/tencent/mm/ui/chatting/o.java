@@ -1,33 +1,89 @@
 package com.tencent.mm.ui.chatting;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.chatting.c.b.h;
+import com.tencent.mm.ui.chatting.c.b.i;
 import com.tencent.mm.ui.chatting.d.a;
-import com.tencent.mm.ui.q.b;
+import com.tencent.mm.ui.r.b;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public final class o
 {
-  public a caz;
-  public long[] zyE;
+  public long[] Gne;
+  public a cOd;
   
-  public o(a parama, long[] paramArrayOfLong)
+  public o(final a parama, long[] paramArrayOfLong)
   {
-    AppMethodBeat.i(30622);
-    this.zyE = null;
-    this.caz = parama;
-    this.zyE = paramArrayOfLong;
-    this.caz.zJz.removeAllOptionMenu();
-    this.caz.zJz.addTextOptionMenu(2, this.caz.zJz.getMMResources().getString(2131297676), new o.1(this), null, q.b.zby);
-    parama = (h)this.caz.ay(h.class);
-    parama.c(new o.2(this, parama));
-    AppMethodBeat.o(30622);
+    AppMethodBeat.i(34486);
+    this.Gne = null;
+    this.cOd = parama;
+    this.Gne = paramArrayOfLong;
+    this.cOd.GzJ.removeAllOptionMenu();
+    this.cOd.GzJ.addTextOptionMenu(2, this.cOd.GzJ.getMMResources().getString(2131756588), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(34484);
+        paramAnonymousMenuItem = new Intent();
+        Object localObject2 = ((i)o.this.cOd.be(i.class)).eWg();
+        if (localObject2 != null)
+        {
+          Object localObject1 = new ArrayList();
+          localObject2 = ((Set)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            Long localLong = (Long)((Iterator)localObject2).next();
+            if (localLong != null) {
+              ((List)localObject1).add(localLong);
+            }
+          }
+          localObject2 = new long[((List)localObject1).size()];
+          localObject1 = ((List)localObject1).iterator();
+          int i = 0;
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2[i] = ((Long)((Iterator)localObject1).next()).longValue();
+            i += 1;
+          }
+          paramAnonymousMenuItem.putExtra("k_outside_expose_proof_item_list", (long[])localObject2);
+          o.this.cOd.GzJ.getContext().setResult(-1, paramAnonymousMenuItem);
+        }
+        for (;;)
+        {
+          paramAnonymousMenuItem.putExtra("k_is_group_chat", o.this.cOd.eZb());
+          o.this.cOd.GzJ.eUW();
+          AppMethodBeat.o(34484);
+          return false;
+          o.this.cOd.GzJ.getContext().setResult(0, paramAnonymousMenuItem);
+        }
+      }
+    }, null, r.b.FOB);
+    parama = (i)this.cOd.be(i.class);
+    parama.g(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(34485);
+        parama.wA(((Long)paramAnonymousView.getTag()).longValue());
+        AppMethodBeat.o(34485);
+      }
+    });
+    AppMethodBeat.o(34486);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.o
  * JD-Core Version:    0.7.0.1
  */

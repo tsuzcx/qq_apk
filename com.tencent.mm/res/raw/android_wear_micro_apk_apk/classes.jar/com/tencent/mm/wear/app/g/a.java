@@ -11,18 +11,18 @@ public abstract class a
 {
   public a()
   {
-    d.e("MicroMsg.BaseWorkerTask", "Create %s", new Object[] { getName() });
+    d.d("MicroMsg.BaseWorkerTask", "Create %s", new Object[] { getName() });
   }
   
-  public static void nG()
+  public static void ou()
   {
-    com.tencent.mm.wear.a.b.a.aiT.post(new Runnable()
+    com.tencent.mm.wear.a.b.a.amv.post(new Runnable()
     {
       public final void run()
       {
         Intent localIntent = new Intent(MMApplication.getContext(), ConfirmationActivity.class);
         localIntent.setFlags(268435456);
-        if (this.aiL) {
+        if (this.amn) {
           localIntent.putExtra("animation_type", 1);
         }
         for (;;)
@@ -42,7 +42,7 @@ public abstract class a
   public void run()
   {
     long l1 = System.currentTimeMillis();
-    d.e("MicroMsg.BaseWorkerTask", "start to execute %s", new Object[] { getName() });
+    d.d("MicroMsg.BaseWorkerTask", "start to execute %s", new Object[] { getName() });
     execute();
     long l2 = System.currentTimeMillis();
     d.c("MicroMsg.BaseWorkerTask", "end to execute %s | use time %d", new Object[] { getName(), Long.valueOf(l2 - l1) });

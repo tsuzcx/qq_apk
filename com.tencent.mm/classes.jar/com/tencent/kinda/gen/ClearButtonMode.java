@@ -6,13 +6,13 @@ public enum ClearButtonMode
 {
   static
   {
-    AppMethodBeat.i(141168);
+    AppMethodBeat.i(135662);
     NEVER = new ClearButtonMode("NEVER", 0);
     WHILEEDITING = new ClearButtonMode("WHILEEDITING", 1);
     UNLESSEDITING = new ClearButtonMode("UNLESSEDITING", 2);
     ALWAYS = new ClearButtonMode("ALWAYS", 3);
     $VALUES = new ClearButtonMode[] { NEVER, WHILEEDITING, UNLESSEDITING, ALWAYS };
-    AppMethodBeat.o(141168);
+    AppMethodBeat.o(135662);
   }
   
   private ClearButtonMode() {}

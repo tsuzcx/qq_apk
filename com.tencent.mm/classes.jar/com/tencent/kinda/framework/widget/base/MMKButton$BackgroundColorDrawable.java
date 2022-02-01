@@ -18,25 +18,25 @@ class MMKButton$BackgroundColorDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(144842);
+    AppMethodBeat.i(18993);
     paramCanvas.drawColor(this.color);
-    AppMethodBeat.o(144842);
+    AppMethodBeat.o(18993);
   }
   
   public int getOpacity()
   {
-    AppMethodBeat.i(144843);
+    AppMethodBeat.i(18994);
     if (this.color == 0)
     {
-      AppMethodBeat.o(144843);
+      AppMethodBeat.o(18994);
       return -2;
     }
     if (Color.alpha(this.color) > 0)
     {
-      AppMethodBeat.o(144843);
+      AppMethodBeat.o(18994);
       return -3;
     }
-    AppMethodBeat.o(144843);
+    AppMethodBeat.o(18994);
     return -1;
   }
   
@@ -46,7 +46,7 @@ class MMKButton$BackgroundColorDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKButton.BackgroundColorDrawable
  * JD-Core Version:    0.7.0.1
  */

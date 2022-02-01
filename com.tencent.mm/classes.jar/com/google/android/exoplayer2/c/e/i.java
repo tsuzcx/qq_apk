@@ -5,73 +5,73 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i
 {
-  private final int aJm;
-  int aJn;
-  int aJo;
+  private final int beF;
+  int beG;
+  int beH;
   private final byte[] data;
   
   public i(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(95051);
+    AppMethodBeat.i(92167);
     this.data = paramArrayOfByte;
-    this.aJm = paramArrayOfByte.length;
-    AppMethodBeat.o(95051);
+    this.beF = paramArrayOfByte.length;
+    AppMethodBeat.o(92167);
   }
   
-  private void ok()
+  private void sW()
   {
-    AppMethodBeat.i(95055);
-    if ((this.aJn >= 0) && ((this.aJn < this.aJm) || ((this.aJn == this.aJm) && (this.aJo == 0)))) {}
+    AppMethodBeat.i(92171);
+    if ((this.beG >= 0) && ((this.beG < this.beF) || ((this.beG == this.beF) && (this.beH == 0)))) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      AppMethodBeat.o(95055);
+      AppMethodBeat.o(92171);
       return;
     }
   }
   
-  public final int dD(int paramInt)
+  public final int eo(int paramInt)
   {
-    AppMethodBeat.i(95053);
-    int k = this.aJn;
-    int j = Math.min(paramInt, 8 - this.aJo);
+    AppMethodBeat.i(92169);
+    int k = this.beG;
+    int j = Math.min(paramInt, 8 - this.beH);
     byte[] arrayOfByte = this.data;
     int i = k + 1;
-    k = (arrayOfByte[k] & 0xFF) >> this.aJo & 255 >> 8 - j;
+    k = (arrayOfByte[k] & 0xFF) >> this.beH & 255 >> 8 - j;
     while (j < paramInt)
     {
       k |= (this.data[i] & 0xFF) << j;
       j += 8;
       i += 1;
     }
-    dE(paramInt);
-    AppMethodBeat.o(95053);
+    ep(paramInt);
+    AppMethodBeat.o(92169);
     return k & -1 >>> 32 - paramInt;
   }
   
-  public final void dE(int paramInt)
+  public final void ep(int paramInt)
   {
-    AppMethodBeat.i(95054);
+    AppMethodBeat.i(92170);
     int i = paramInt / 8;
-    this.aJn += i;
-    this.aJo = (paramInt - i * 8 + this.aJo);
-    if (this.aJo > 7)
+    this.beG += i;
+    this.beH = (paramInt - i * 8 + this.beH);
+    if (this.beH > 7)
     {
-      this.aJn += 1;
-      this.aJo -= 8;
+      this.beG += 1;
+      this.beH -= 8;
     }
-    ok();
-    AppMethodBeat.o(95054);
+    sW();
+    AppMethodBeat.o(92170);
   }
   
-  public final boolean oj()
+  public final boolean sV()
   {
-    AppMethodBeat.i(95052);
-    if (((this.data[this.aJn] & 0xFF) >> this.aJo & 0x1) == 1) {}
+    AppMethodBeat.i(92168);
+    if (((this.data[this.beG] & 0xFF) >> this.beH & 0x1) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      dE(1);
-      AppMethodBeat.o(95052);
+      ep(1);
+      AppMethodBeat.o(92168);
       return bool;
     }
   }

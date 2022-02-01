@@ -1,45 +1,164 @@
 package com.tencent.mm.plugin.music.model.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.f;
-import com.tencent.mm.ipcinvoker.i;
+import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.type.IPCBoolean;
+import com.tencent.mm.ipcinvoker.type.IPCInteger;
+import com.tencent.mm.ipcinvoker.type.IPCLong;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.music.model.e.d;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 
 public final class a
 {
-  public static final class a
-    implements i<IPCString, IPCVoid>
+  public static final class b
+    implements k<IPCVoid, IPCString>
   {
-    private static IPCVoid c(IPCString paramIPCString)
+    private static IPCString bhM()
     {
-      AppMethodBeat.i(104935);
+      AppMethodBeat.i(63068);
       try
       {
-        ab.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc deletePieceMusicInfo Task, musicId:%s", new Object[] { paramIPCString });
-        paramIPCString = paramIPCString.value;
-        d locald = com.tencent.mm.plugin.music.model.e.bVO();
-        ab.i("MicroMsg.Music.PieceMusicInfoStorage", "deletePieceMusicInfo raw=%d musicId=%s", new Object[] { Integer.valueOf(locald.db.delete("PieceMusicInfo", "musicId=?", new String[] { paramIPCString })), paramIPCString });
-        locald.pax.remove(paramIPCString);
-        paramIPCString = new IPCVoid();
-        AppMethodBeat.o(104935);
-        return paramIPCString;
+        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getAccPath task");
+        IPCString localIPCString1 = new IPCString(g.afB().gcW);
+        AppMethodBeat.o(63068);
+        return localIPCString1;
       }
-      catch (Exception paramIPCString)
+      catch (Exception localException)
+      {
+        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc getAccPath task", new Object[0]);
+        IPCString localIPCString2 = new IPCString("");
+        AppMethodBeat.o(63068);
+        return localIPCString2;
+      }
+    }
+  }
+  
+  public static final class c
+    implements k<IPCVoid, IPCLong>
+  {
+    private static IPCLong cVs()
+    {
+      AppMethodBeat.i(63070);
+      try
+      {
+        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getLastScanMusicPieceFileTime task");
+        IPCLong localIPCLong1 = new IPCLong(((Long)g.afB().afk().get(ae.a.Fop, Long.valueOf(0L))).longValue());
+        AppMethodBeat.o(63070);
+        return localIPCLong1;
+      }
+      catch (Exception localException)
+      {
+        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc getLastScanMusicPieceFileTime task", new Object[0]);
+        IPCLong localIPCLong2 = new IPCLong(0L);
+        AppMethodBeat.o(63070);
+        return localIPCLong2;
+      }
+    }
+  }
+  
+  public static final class f
+    implements k<IPCInteger, IPCInteger>
+  {
+    private static IPCInteger a(IPCInteger paramIPCInteger)
+    {
+      AppMethodBeat.i(63076);
+      try
+      {
+        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc getRemovePlayingAudioPlayerGroupCount task");
+        int i = paramIPCInteger.value;
+        IPCInteger localIPCInteger = new IPCInteger(((Integer)g.afB().afk().get(ae.a.Fot, Integer.valueOf(i))).intValue());
+        AppMethodBeat.o(63076);
+        return localIPCInteger;
+      }
+      catch (Exception localException)
+      {
+        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc getRemovePlayingAudioPlayerGroupCount task", new Object[0]);
+        paramIPCInteger = new IPCInteger(paramIPCInteger.value);
+        AppMethodBeat.o(63076);
+      }
+      return paramIPCInteger;
+    }
+  }
+  
+  public static final class g
+    implements k<IPCVoid, IPCBoolean>
+  {
+    private static IPCBoolean cVt()
+    {
+      AppMethodBeat.i(63078);
+      try
+      {
+        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc isSupportMixAudioByCP task");
+        IPCBoolean localIPCBoolean1 = new IPCBoolean(((Boolean)g.afB().afk().get(ae.a.Fov, Boolean.FALSE)).booleanValue());
+        AppMethodBeat.o(63078);
+        return localIPCBoolean1;
+      }
+      catch (Exception localException)
+      {
+        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc isSupportMixAudioByCP task", new Object[0]);
+        IPCBoolean localIPCBoolean2 = new IPCBoolean(false);
+        AppMethodBeat.o(63078);
+        return localIPCBoolean2;
+      }
+    }
+  }
+  
+  public static final class h
+    implements k<IPCLong, IPCVoid>
+  {
+    private static IPCVoid a(IPCLong paramIPCLong)
+    {
+      AppMethodBeat.i(63080);
+      try
+      {
+        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc setLastScanMusicPieceFileTime task");
+        long l = paramIPCLong.value;
+        g.afB().afk().set(ae.a.Fop, Long.valueOf(l));
+        paramIPCLong = new IPCVoid();
+        AppMethodBeat.o(63080);
+        return paramIPCLong;
+      }
+      catch (Exception paramIPCLong)
       {
         for (;;)
         {
-          ab.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCString, "ipc deletePieceMusicInfo task", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCLong, "ipc setLastScanMusicPieceFileTime task", new Object[0]);
         }
+      }
+    }
+  }
+  
+  public static final class j
+    implements k<IPCVoid, IPCBoolean>
+  {
+    private static IPCBoolean cVt()
+    {
+      AppMethodBeat.i(63084);
+      try
+      {
+        ad.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc showAudioToast");
+        IPCBoolean localIPCBoolean1 = new IPCBoolean(((Boolean)g.afB().afk().get(ae.a.Fou, Boolean.FALSE)).booleanValue());
+        AppMethodBeat.o(63084);
+        return localIPCBoolean1;
+      }
+      catch (Exception localException)
+      {
+        ad.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", localException, "ipc showAudioToast task", new Object[0]);
+        IPCBoolean localIPCBoolean2 = new IPCBoolean(false);
+        AppMethodBeat.o(63084);
+        return localIPCBoolean2;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.a.a
  * JD-Core Version:    0.7.0.1
  */

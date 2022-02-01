@@ -22,52 +22,13 @@ final class a
   
   a()
   {
-    AppMethodBeat.i(96513);
+    AppMethodBeat.i(88152);
     this.header = true;
     this.random = new Random();
-    AppMethodBeat.o(96513);
+    AppMethodBeat.o(88152);
   }
   
-  private byte[] encipher(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(96514);
-    int i = 16;
-    try
-    {
-      long l2 = z(paramArrayOfByte, 0);
-      long l1 = z(paramArrayOfByte, 4);
-      long l4 = z(this.key, 0);
-      long l5 = z(this.key, 4);
-      long l6 = z(this.key, 8);
-      long l7 = z(this.key, 12);
-      long l3 = 0L;
-      for (;;)
-      {
-        if (i <= 0)
-        {
-          paramArrayOfByte = new ByteArrayOutputStream(8);
-          DataOutputStream localDataOutputStream = new DataOutputStream(paramArrayOfByte);
-          localDataOutputStream.writeInt((int)l2);
-          localDataOutputStream.writeInt((int)l1);
-          localDataOutputStream.close();
-          paramArrayOfByte = paramArrayOfByte.toByteArray();
-          AppMethodBeat.o(96514);
-          return paramArrayOfByte;
-        }
-        l3 = l3 + 2654435769L & 0xFFFFFFFF;
-        l2 = l2 + ((l1 << 4) + l4 ^ l1 + l3 ^ (l1 >>> 5) + l5) & 0xFFFFFFFF;
-        l1 = l1 + ((l2 << 4) + l6 ^ l2 + l3 ^ (l2 >>> 5) + l7) & 0xFFFFFFFF;
-        i -= 1;
-      }
-      return null;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      AppMethodBeat.o(96514);
-    }
-  }
-  
-  private static long z(byte[] paramArrayOfByte, int paramInt)
+  private static long C(byte[] paramArrayOfByte, int paramInt)
   {
     long l = 0L;
     int i = paramInt;
@@ -81,23 +42,62 @@ final class a
     }
   }
   
-  final boolean E(byte[] paramArrayOfByte, int paramInt)
+  private byte[] encipher(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(96517);
+    AppMethodBeat.i(88153);
+    int i = 16;
+    try
+    {
+      long l2 = C(paramArrayOfByte, 0);
+      long l1 = C(paramArrayOfByte, 4);
+      long l4 = C(this.key, 0);
+      long l5 = C(this.key, 4);
+      long l6 = C(this.key, 8);
+      long l7 = C(this.key, 12);
+      long l3 = 0L;
+      for (;;)
+      {
+        if (i <= 0)
+        {
+          paramArrayOfByte = new ByteArrayOutputStream(8);
+          DataOutputStream localDataOutputStream = new DataOutputStream(paramArrayOfByte);
+          localDataOutputStream.writeInt((int)l2);
+          localDataOutputStream.writeInt((int)l1);
+          localDataOutputStream.close();
+          paramArrayOfByte = paramArrayOfByte.toByteArray();
+          AppMethodBeat.o(88153);
+          return paramArrayOfByte;
+        }
+        l3 = l3 + 2654435769L & 0xFFFFFFFF;
+        l2 = l2 + ((l1 << 4) + l4 ^ l1 + l3 ^ (l1 >>> 5) + l5) & 0xFFFFFFFF;
+        l1 = l1 + ((l2 << 4) + l6 ^ l2 + l3 ^ (l2 >>> 5) + l7) & 0xFFFFFFFF;
+        i -= 1;
+      }
+      return null;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      AppMethodBeat.o(88153);
+    }
+  }
+  
+  final boolean I(byte[] paramArrayOfByte, int paramInt)
+  {
+    AppMethodBeat.i(88156);
     for (this.pos = 0;; this.pos += 1)
     {
       if (this.pos >= 8)
       {
-        this.prePlain = al(this.prePlain);
+        this.prePlain = aA(this.prePlain);
         if (this.prePlain != null) {
           break;
         }
-        AppMethodBeat.o(96517);
+        AppMethodBeat.o(88156);
         return false;
       }
       if (this.contextStart + this.pos >= paramInt)
       {
-        AppMethodBeat.o(96517);
+        AppMethodBeat.o(88156);
         return true;
       }
       byte[] arrayOfByte = this.prePlain;
@@ -107,22 +107,22 @@ final class a
     this.contextStart += 8;
     this.crypt += 8;
     this.pos = 0;
-    AppMethodBeat.o(96517);
+    AppMethodBeat.o(88156);
     return true;
   }
   
-  final byte[] al(byte[] paramArrayOfByte)
+  final byte[] aA(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(96515);
+    AppMethodBeat.i(88154);
     int i = 16;
     try
     {
-      long l1 = z(paramArrayOfByte, 0);
-      long l3 = z(paramArrayOfByte, 4);
-      long l4 = z(this.key, 0);
-      long l5 = z(this.key, 4);
-      long l6 = z(this.key, 8);
-      long l7 = z(this.key, 12);
+      long l1 = C(paramArrayOfByte, 0);
+      long l3 = C(paramArrayOfByte, 4);
+      long l4 = C(this.key, 0);
+      long l5 = C(this.key, 4);
+      long l6 = C(this.key, 8);
+      long l7 = C(this.key, 12);
       long l2 = 3816266640L;
       for (;;)
       {
@@ -134,7 +134,7 @@ final class a
           localDataOutputStream.writeInt((int)l3);
           localDataOutputStream.close();
           paramArrayOfByte = paramArrayOfByte.toByteArray();
-          AppMethodBeat.o(96515);
+          AppMethodBeat.o(88154);
           return paramArrayOfByte;
         }
         l3 = l3 - ((l1 << 4) + l6 ^ l1 + l2 ^ (l1 >>> 5) + l7) & 0xFFFFFFFF;
@@ -146,13 +146,13 @@ final class a
     }
     catch (IOException paramArrayOfByte)
     {
-      AppMethodBeat.o(96515);
+      AppMethodBeat.o(88154);
     }
   }
   
   final void encrypt8Bytes()
   {
-    AppMethodBeat.i(96516);
+    AppMethodBeat.i(88155);
     this.pos = 0;
     if (this.pos >= 8) {
       System.arraycopy(encipher(this.plain), 0, this.out, this.crypt, 8);
@@ -166,7 +166,7 @@ final class a
         this.crypt += 8;
         this.pos = 0;
         this.header = false;
-        AppMethodBeat.o(96516);
+        AppMethodBeat.o(88155);
         return;
         if (this.header)
         {

@@ -16,12 +16,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.ArrayList;
 
 public abstract class FragmentActivitySupport
   extends Fragment
 {
+  private byte _hellAccFlag_;
   public boolean hasDestory = false;
   public boolean isCurrentActivity;
   private FragmentActivity mActivity;
@@ -285,19 +286,27 @@ public abstract class FragmentActivitySupport
   
   public void startActivity(Intent paramIntent)
   {
-    FragmentActivity localFragmentActivity = thisActivity();
-    if (localFragmentActivity == null)
+    Object localObject = thisActivity();
+    if (localObject == null)
     {
-      ah.getContext().startActivity(paramIntent);
+      localObject = aj.getContext();
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramIntent.adn(), "com/tencent/mm/ui/FragmentActivitySupport", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      ((Context)localObject).startActivity((Intent)paramIntent.lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/ui/FragmentActivitySupport", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       return;
     }
-    localFragmentActivity.startActivityFromFragment(this, paramIntent, -1);
+    ((FragmentActivity)localObject).startActivityFromFragment(this, paramIntent, -1);
   }
   
   public void startFragment(Class<?> paramClass, Intent paramIntent)
   {
-    if (this.isCurrentActivity) {
-      startActivity(paramIntent);
+    if (this.isCurrentActivity)
+    {
+      paramClass = new com.tencent.mm.hellhoundlib.b.a().bd(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramClass.adn(), "com/tencent/mm/ui/FragmentActivitySupport", "startFragment", "(Ljava/lang/Class;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramClass.lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/FragmentActivitySupport", "startFragment", "(Ljava/lang/Class;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
   }
   

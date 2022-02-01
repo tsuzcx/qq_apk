@@ -7,137 +7,137 @@ import java.util.List;
 
 public final class h
 {
-  public static final String ASy;
-  public static final String CPA;
-  public static final String CPB;
-  public static final String CPC;
-  public static final String CPD;
-  public static final String CPE;
-  public static final String CPF;
-  public static final String CPG;
-  public static final String CPH;
-  public static final String CPI;
-  public static final String CPJ;
-  public static final String CPK;
-  public static final String CPL;
-  public static final String CPM;
-  public static final String CPN;
-  public static final String CPO;
-  public static final String CPP;
-  public static final String CPQ;
-  public static final String CPR;
-  public static final String CPS;
-  public static final String CPT;
-  public static final String CPU;
-  public static final String CPV;
-  public static final String CPW;
-  public static final String CPX;
-  public static final String CPY;
-  public static final String CPZ;
-  public static final String CPw;
-  public static final String CPx;
-  public static final String CPy;
-  public static final String CPz;
-  public static final boolean CQA;
-  public static final boolean CQB;
-  public static final boolean CQC;
-  public static final boolean CQD;
-  public static final boolean CQE;
-  public static final boolean CQF;
-  public static final boolean CQG;
-  public static final boolean CQH;
-  public static final boolean CQI;
-  public static final boolean CQJ;
-  public static final String CQa;
-  public static final String CQb;
-  public static final String CQc;
-  public static final String CQd;
-  public static final String CQe;
-  public static final String CQf;
-  public static final String CQg;
-  public static final String CQh;
-  public static final float CQi;
-  public static final int CQj;
-  public static final boolean CQk;
-  public static final boolean CQl;
-  public static final boolean CQm;
-  public static final boolean CQn;
-  public static final boolean CQo;
-  public static final boolean CQp;
-  public static final boolean CQq;
-  public static final boolean CQr;
-  public static final boolean CQs;
-  public static final boolean CQt;
-  public static final boolean CQu;
-  public static final boolean CQv;
-  public static final boolean CQw;
-  public static final boolean CQx;
-  public static final boolean CQy;
-  public static final boolean CQz;
-  public static final String LINE_SEPARATOR;
-  public static final String bsq;
-  public static final String whE;
-  public static final String whF;
+  public static final String CpH;
+  public static final String CpI;
+  public static final String Kdb;
+  public static final String KlA;
+  public static final String KlB;
+  public static final String KlC;
+  public static final String KlD;
+  public static final String KlE;
+  public static final String KlF;
+  public static final String KlG;
+  public static final String KlH;
+  public static final String KlI;
+  public static final String KlJ;
+  public static final String KlK;
+  public static final String KlL;
+  public static final String KlM;
+  public static final String KlN;
+  public static final String KlO;
+  public static final String KlP;
+  public static final String KlQ;
+  public static final String KlR;
+  public static final String KlS;
+  public static final String KlT;
+  public static final String KlU;
+  public static final String KlV;
+  public static final String KlW;
+  public static final String KlX;
+  public static final String KlY;
+  public static final String KlZ;
+  public static final String Kln;
+  public static final String Klo;
+  public static final String Klp;
+  public static final String Klq;
+  public static final String Klr;
+  public static final String Kls;
+  public static final String Klt;
+  public static final String Klu;
+  public static final String Klv;
+  public static final String Klw;
+  public static final String Klx;
+  public static final String Kly;
+  public static final String Klz;
+  public static final boolean KmA;
+  public static final boolean KmB;
+  public static final float Kma;
+  public static final int Kmb;
+  public static final boolean Kmc;
+  public static final boolean Kmd;
+  public static final boolean Kme;
+  public static final boolean Kmf;
+  public static final boolean Kmg;
+  public static final boolean Kmh;
+  public static final boolean Kmi;
+  public static final boolean Kmj;
+  public static final boolean Kmk;
+  public static final boolean Kml;
+  public static final boolean Kmm;
+  public static final boolean Kmn;
+  public static final boolean Kmo;
+  public static final boolean Kmp;
+  public static final boolean Kmq;
+  public static final boolean Kmr;
+  public static final boolean Kms;
+  public static final boolean Kmt;
+  public static final boolean Kmu;
+  public static final boolean Kmv;
+  public static final boolean Kmw;
+  public static final boolean Kmx;
+  public static final boolean Kmy;
+  public static final boolean Kmz;
+  public static final String bUL;
   
   static
   {
     boolean bool2 = false;
-    AppMethodBeat.i(116964);
-    CPw = getSystemProperty("awt.toolkit");
-    CPx = getSystemProperty("file.encoding");
-    ASy = getSystemProperty("file.separator");
-    CPy = getSystemProperty("java.awt.fonts");
-    CPz = getSystemProperty("java.awt.graphicsenv");
-    CPA = getSystemProperty("java.awt.headless");
-    CPB = getSystemProperty("java.awt.printerjob");
-    CPC = getSystemProperty("java.class.path");
-    CPD = getSystemProperty("java.class.version");
-    CPE = getSystemProperty("java.compiler");
-    CPF = getSystemProperty("java.endorsed.dirs");
-    CPG = getSystemProperty("java.ext.dirs");
-    CPH = getSystemProperty("java.home");
-    CPI = getSystemProperty("java.io.tmpdir");
-    CPJ = getSystemProperty("java.library.path");
-    CPK = getSystemProperty("java.runtime.name");
-    CPL = getSystemProperty("java.runtime.version");
-    CPM = getSystemProperty("java.specification.name");
-    CPN = getSystemProperty("java.specification.vendor");
-    CPO = getSystemProperty("java.specification.version");
-    CPP = getSystemProperty("java.util.prefs.PreferencesFactory");
-    CPQ = getSystemProperty("java.vendor");
-    CPR = getSystemProperty("java.vendor.url");
-    CPS = getSystemProperty("java.version");
-    CPT = getSystemProperty("java.vm.info");
-    CPU = getSystemProperty("java.vm.name");
-    CPV = getSystemProperty("java.vm.specification.name");
-    CPW = getSystemProperty("java.vm.specification.vendor");
-    CPX = getSystemProperty("java.vm.specification.version");
-    CPY = getSystemProperty("java.vm.vendor");
-    CPZ = getSystemProperty("java.vm.version");
-    LINE_SEPARATOR = getSystemProperty("line.separator");
-    CQa = getSystemProperty("os.arch");
-    whE = getSystemProperty("os.name");
-    whF = getSystemProperty("os.version");
-    CQb = getSystemProperty("path.separator");
+    AppMethodBeat.i(40756);
+    Kln = getSystemProperty("awt.toolkit");
+    Klo = getSystemProperty("file.encoding");
+    Klp = getSystemProperty("file.separator");
+    Klq = getSystemProperty("java.awt.fonts");
+    Klr = getSystemProperty("java.awt.graphicsenv");
+    Kls = getSystemProperty("java.awt.headless");
+    Klt = getSystemProperty("java.awt.printerjob");
+    Klu = getSystemProperty("java.class.path");
+    Klv = getSystemProperty("java.class.version");
+    Klw = getSystemProperty("java.compiler");
+    Klx = getSystemProperty("java.endorsed.dirs");
+    Kly = getSystemProperty("java.ext.dirs");
+    Klz = getSystemProperty("java.home");
+    KlA = getSystemProperty("java.io.tmpdir");
+    KlB = getSystemProperty("java.library.path");
+    KlC = getSystemProperty("java.runtime.name");
+    KlD = getSystemProperty("java.runtime.version");
+    KlE = getSystemProperty("java.specification.name");
+    KlF = getSystemProperty("java.specification.vendor");
+    KlG = getSystemProperty("java.specification.version");
+    KlH = getSystemProperty("java.util.prefs.PreferencesFactory");
+    KlI = getSystemProperty("java.vendor");
+    KlJ = getSystemProperty("java.vendor.url");
+    KlK = getSystemProperty("java.version");
+    KlL = getSystemProperty("java.vm.info");
+    KlM = getSystemProperty("java.vm.name");
+    KlN = getSystemProperty("java.vm.specification.name");
+    KlO = getSystemProperty("java.vm.specification.vendor");
+    KlP = getSystemProperty("java.vm.specification.version");
+    KlQ = getSystemProperty("java.vm.vendor");
+    KlR = getSystemProperty("java.vm.version");
+    Kdb = getSystemProperty("line.separator");
+    KlS = getSystemProperty("os.arch");
+    CpH = getSystemProperty("os.name");
+    CpI = getSystemProperty("os.version");
+    KlT = getSystemProperty("path.separator");
     int i;
     if (getSystemProperty("user.country") == null)
     {
       localObject = getSystemProperty("user.region");
-      CQc = (String)localObject;
-      CQd = getSystemProperty("user.dir");
-      CQe = getSystemProperty("user.home");
-      CQf = getSystemProperty("user.language");
-      bsq = getSystemProperty("user.name");
-      CQg = getSystemProperty("user.timezone");
-      if (CPS == null) {
+      KlU = (String)localObject;
+      KlV = getSystemProperty("user.dir");
+      KlW = getSystemProperty("user.home");
+      KlX = getSystemProperty("user.language");
+      bUL = getSystemProperty("user.name");
+      KlY = getSystemProperty("user.timezone");
+      if (KlK == null) {
         break label776;
       }
       i = 0;
       label366:
-      if (i >= CPS.length()) {
+      if (i >= KlK.length()) {
         break label776;
       }
-      j = CPS.charAt(i);
+      j = KlK.charAt(i);
       if ((j < 48) || (j > 57)) {
         break label769;
       }
@@ -145,57 +145,57 @@ public final class h
     boolean bool1;
     label769:
     label776:
-    for (Object localObject = CPS.substring(i);; localObject = null)
+    for (Object localObject = KlK.substring(i);; localObject = null)
     {
-      CQh = (String)localObject;
-      CQi = P(azM(CPS));
-      localObject = azM(CPS);
+      KlZ = (String)localObject;
+      Kma = S(aRx(KlK));
+      localObject = aRx(KlK);
       if (localObject != null) {
         break label782;
       }
       j = 0;
-      CQj = j;
-      CQk = azK("1.1");
-      CQl = azK("1.2");
-      CQm = azK("1.3");
-      CQn = azK("1.4");
-      CQo = azK("1.5");
-      CQp = azK("1.6");
-      CQq = azK("1.7");
-      CQr = azL("AIX");
-      CQs = azL("HP-UX");
-      CQt = azL("Irix");
-      if ((!azL("Linux")) && (!azL("LINUX"))) {
+      Kmb = j;
+      Kmc = aRv("1.1");
+      Kmd = aRv("1.2");
+      Kme = aRv("1.3");
+      Kmf = aRv("1.4");
+      Kmg = aRv("1.5");
+      Kmh = aRv("1.6");
+      Kmi = aRv("1.7");
+      Kmj = aRw("AIX");
+      Kmk = aRw("HP-UX");
+      Kml = aRw("Irix");
+      if ((!aRw("Linux")) && (!aRw("LINUX"))) {
         break label832;
       }
       bool1 = true;
       label551:
-      CQu = bool1;
-      CQv = azL("Mac");
-      CQw = azL("Mac OS X");
-      CQx = azL("OS/2");
-      CQy = azL("Solaris");
-      CQz = azL("SunOS");
-      if ((!CQr) && (!CQs) && (!CQt) && (!CQu) && (!CQw) && (!CQy))
+      Kmm = bool1;
+      Kmn = aRw("Mac");
+      Kmo = aRw("Mac OS X");
+      Kmp = aRw("OS/2");
+      Kmq = aRw("Solaris");
+      Kmr = aRw("SunOS");
+      if ((!Kmj) && (!Kmk) && (!Kml) && (!Kmm) && (!Kmo) && (!Kmq))
       {
         bool1 = bool2;
-        if (!CQz) {}
+        if (!Kmr) {}
       }
       else
       {
         bool1 = true;
       }
-      CQA = bool1;
-      CQB = azL("Windows");
-      CQC = jG("Windows", "5.0");
-      CQD = jG("Windows 9", "4.0");
-      CQE = jG("Windows 9", "4.1");
-      CQF = jG("Windows", "4.9");
-      CQG = azL("Windows NT");
-      CQH = jG("Windows", "5.1");
-      CQI = jG("Windows", "6.0");
-      CQJ = jG("Windows", "6.1");
-      AppMethodBeat.o(116964);
+      Kms = bool1;
+      Kmt = aRw("Windows");
+      Kmu = mM("Windows", "5.0");
+      Kmv = mM("Windows 9", "4.0");
+      Kmw = mM("Windows 9", "4.1");
+      Kmx = mM("Windows", "4.9");
+      Kmy = aRw("Windows NT");
+      Kmz = mM("Windows", "5.1");
+      KmA = mM("Windows", "6.0");
+      KmB = mM("Windows", "6.1");
+      AppMethodBeat.o(40756);
       return;
       localObject = getSystemProperty("user.country");
       break;
@@ -223,20 +223,20 @@ public final class h
     }
   }
   
-  private static float P(int[] paramArrayOfInt)
+  private static float S(int[] paramArrayOfInt)
   {
     int i = 1;
-    AppMethodBeat.i(116963);
+    AppMethodBeat.i(40755);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0))
     {
-      AppMethodBeat.o(116963);
+      AppMethodBeat.o(40755);
       return 0.0F;
     }
     float f;
     if (paramArrayOfInt.length == 1)
     {
       f = paramArrayOfInt[0];
-      AppMethodBeat.o(116963);
+      AppMethodBeat.o(40755);
       return f;
     }
     StringBuffer localStringBuffer = new StringBuffer();
@@ -250,51 +250,51 @@ public final class h
     try
     {
       f = Float.parseFloat(localStringBuffer.toString());
-      AppMethodBeat.o(116963);
+      AppMethodBeat.o(40755);
       return f;
     }
     catch (Exception paramArrayOfInt)
     {
-      AppMethodBeat.o(116963);
+      AppMethodBeat.o(40755);
     }
     return 0.0F;
   }
   
-  private static boolean azK(String paramString)
+  private static boolean aRv(String paramString)
   {
-    AppMethodBeat.i(116958);
-    String str = CQh;
+    AppMethodBeat.i(40750);
+    String str = KlZ;
     if (str == null)
     {
-      AppMethodBeat.o(116958);
+      AppMethodBeat.o(40750);
       return false;
     }
     boolean bool = str.startsWith(paramString);
-    AppMethodBeat.o(116958);
+    AppMethodBeat.o(40750);
     return bool;
   }
   
-  private static boolean azL(String paramString)
+  private static boolean aRw(String paramString)
   {
-    AppMethodBeat.i(116960);
-    String str = whE;
+    AppMethodBeat.i(40752);
+    String str = CpH;
     if (str == null)
     {
-      AppMethodBeat.o(116960);
+      AppMethodBeat.o(40752);
       return false;
     }
     boolean bool = str.startsWith(paramString);
-    AppMethodBeat.o(116960);
+    AppMethodBeat.o(40752);
     return bool;
   }
   
-  private static int[] azM(String paramString)
+  private static int[] aRx(String paramString)
   {
-    AppMethodBeat.i(116962);
+    AppMethodBeat.i(40754);
     if (paramString == null)
     {
-      paramString = a.bgZ;
-      AppMethodBeat.o(116962);
+      paramString = a.bIT;
+      AppMethodBeat.o(40754);
       return paramString;
     }
     if (paramString == null) {
@@ -434,55 +434,50 @@ public final class h
     {
       paramString = new int[j];
       System.arraycopy(localObject, 0, paramString, 0, j);
-      AppMethodBeat.o(116962);
+      AppMethodBeat.o(40754);
       return paramString;
     }
   }
   
-  public static boolean erq()
-  {
-    return CQi >= 1.5F;
-  }
-  
   private static String getSystemProperty(String paramString)
   {
-    AppMethodBeat.i(116961);
+    AppMethodBeat.i(40753);
     try
     {
       String str = System.getProperty(paramString);
-      AppMethodBeat.o(116961);
+      AppMethodBeat.o(40753);
       return str;
     }
     catch (SecurityException localSecurityException)
     {
       System.err.println("Caught a SecurityException reading the system property '" + paramString + "'; the SystemUtils property value will default to null.");
-      AppMethodBeat.o(116961);
+      AppMethodBeat.o(40753);
     }
     return null;
   }
   
-  private static boolean jG(String paramString1, String paramString2)
+  private static boolean mM(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(116959);
-    String str1 = whE;
-    String str2 = whF;
+    AppMethodBeat.i(40751);
+    String str1 = CpH;
+    String str2 = CpI;
     if ((str1 == null) || (str2 == null))
     {
-      AppMethodBeat.o(116959);
+      AppMethodBeat.o(40751);
       return false;
     }
     if ((str1.startsWith(paramString1)) && (str2.startsWith(paramString2)))
     {
-      AppMethodBeat.o(116959);
+      AppMethodBeat.o(40751);
       return true;
     }
-    AppMethodBeat.o(116959);
+    AppMethodBeat.o(40751);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     org.apache.commons.b.h
  * JD-Core Version:    0.7.0.1
  */

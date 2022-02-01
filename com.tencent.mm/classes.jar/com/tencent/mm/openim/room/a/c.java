@@ -5,29 +5,29 @@ import com.tencent.mm.hardcoder.WXHardCoderJNI;
 
 public final class c
 {
-  private int eey = 0;
-  public int eez;
+  private int foU = 0;
+  public int foV;
   
-  public final void mD(int paramInt)
+  public final void ps(int paramInt)
   {
-    this.eey |= paramInt;
+    this.foU |= paramInt;
   }
   
-  final void mE(int paramInt)
+  final void pt(int paramInt)
   {
-    AppMethodBeat.i(78980);
-    this.eey &= (paramInt ^ 0xFFFFFFFF);
-    if (this.eey == 0)
+    AppMethodBeat.i(151324);
+    this.foU &= (paramInt ^ 0xFFFFFFFF);
+    if (this.foU == 0)
     {
-      WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcUpdateChatroomEnable, this.eez);
-      this.eez = 0;
+      WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcUpdateChatroomEnable, this.foV);
+      this.foV = 0;
     }
-    AppMethodBeat.o(78980);
+    AppMethodBeat.o(151324);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.room.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -8,22 +8,27 @@ public abstract class fv
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dJr = "appid".hashCode();
-  private static final int dWA = "pkgVersion".hashCode();
-  private static final int dWx = "jsExceptionCount".hashCode();
-  private static final int dWy = "crashCount".hashCode();
-  private static final int dWz = "beginTimestamp".hashCode();
+  private static final int eZv = "contactLabels".hashCode();
+  private static final int eZw = "conDescription".hashCode();
+  private static final int eZx = "conPhone".hashCode();
+  private static final int euX;
+  private static final int evh = "encryptUsername".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dJp = true;
-  private boolean dWt = true;
-  private boolean dWu = true;
-  private boolean dWv = true;
-  private boolean dWw = true;
-  public String field_appid;
-  public long field_beginTimestamp;
-  public int field_crashCount;
-  public int field_jsExceptionCount;
-  public int field_pkgVersion;
+  private boolean eZs = true;
+  private boolean eZt = true;
+  private boolean eZu = true;
+  private boolean euF = true;
+  private boolean euP = true;
+  public String field_conDescription;
+  public String field_conPhone;
+  public String field_conRemark;
+  public String field_contactLabels;
+  public String field_encryptUsername;
+  
+  static
+  {
+    euX = "conRemark".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -38,11 +43,11 @@ public abstract class fv
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dJr != k) {
+      if (evh != k) {
         break label65;
       }
-      this.field_appid = paramCursor.getString(i);
-      this.dJp = true;
+      this.field_encryptUsername = paramCursor.getString(i);
+      this.euP = true;
     }
     for (;;)
     {
@@ -50,14 +55,14 @@ public abstract class fv
       break label20;
       break;
       label65:
-      if (dWx == k) {
-        this.field_jsExceptionCount = paramCursor.getInt(i);
-      } else if (dWy == k) {
-        this.field_crashCount = paramCursor.getInt(i);
-      } else if (dWz == k) {
-        this.field_beginTimestamp = paramCursor.getLong(i);
-      } else if (dWA == k) {
-        this.field_pkgVersion = paramCursor.getInt(i);
+      if (euX == k) {
+        this.field_conRemark = paramCursor.getString(i);
+      } else if (eZv == k) {
+        this.field_contactLabels = paramCursor.getString(i);
+      } else if (eZw == k) {
+        this.field_conDescription = paramCursor.getString(i);
+      } else if (eZx == k) {
+        this.field_conPhone = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -67,20 +72,35 @@ public abstract class fv
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dJp) {
-      localContentValues.put("appid", this.field_appid);
+    if (this.field_encryptUsername == null) {
+      this.field_encryptUsername = "";
     }
-    if (this.dWt) {
-      localContentValues.put("jsExceptionCount", Integer.valueOf(this.field_jsExceptionCount));
+    if (this.euP) {
+      localContentValues.put("encryptUsername", this.field_encryptUsername);
     }
-    if (this.dWu) {
-      localContentValues.put("crashCount", Integer.valueOf(this.field_crashCount));
+    if (this.field_conRemark == null) {
+      this.field_conRemark = "";
     }
-    if (this.dWv) {
-      localContentValues.put("beginTimestamp", Long.valueOf(this.field_beginTimestamp));
+    if (this.euF) {
+      localContentValues.put("conRemark", this.field_conRemark);
     }
-    if (this.dWw) {
-      localContentValues.put("pkgVersion", Integer.valueOf(this.field_pkgVersion));
+    if (this.field_contactLabels == null) {
+      this.field_contactLabels = "";
+    }
+    if (this.eZs) {
+      localContentValues.put("contactLabels", this.field_contactLabels);
+    }
+    if (this.field_conDescription == null) {
+      this.field_conDescription = "";
+    }
+    if (this.eZt) {
+      localContentValues.put("conDescription", this.field_conDescription);
+    }
+    if (this.field_conPhone == null) {
+      this.field_conPhone = "";
+    }
+    if (this.eZu) {
+      localContentValues.put("conPhone", this.field_conPhone);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -90,7 +110,7 @@ public abstract class fv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.fv
  * JD-Core Version:    0.7.0.1
  */

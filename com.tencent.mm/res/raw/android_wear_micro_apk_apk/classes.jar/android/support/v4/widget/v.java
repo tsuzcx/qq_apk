@@ -5,40 +5,46 @@ import android.widget.TextView;
 
 public final class v
 {
-  static final ab qB = new ab();
+  static final ac sp = new ac();
   
   static
   {
+    if (Build.VERSION.SDK_INT >= 27) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      sp = new ab();
+      return;
+    }
     if (Build.VERSION.SDK_INT >= 26)
     {
-      qB = new aa();
+      sp = new aa();
       return;
     }
     if (Build.VERSION.SDK_INT >= 23)
     {
-      qB = new z();
+      sp = new z();
       return;
     }
     if (Build.VERSION.SDK_INT >= 18)
     {
-      qB = new y();
+      sp = new y();
       return;
     }
     if (Build.VERSION.SDK_INT >= 17)
     {
-      qB = new x();
+      sp = new x();
       return;
     }
     if (Build.VERSION.SDK_INT >= 16)
     {
-      qB = new w();
+      sp = new w();
       return;
     }
   }
   
   public static void a(TextView paramTextView, int paramInt)
   {
-    qB.a(paramTextView, paramInt);
+    sp.a(paramTextView, paramInt);
   }
 }
 

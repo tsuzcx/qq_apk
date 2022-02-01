@@ -1,42 +1,32 @@
 package kotlinx.coroutines;
 
-import a.f.a.b;
-import a.l;
-import a.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.d.f.b;
+import d.d.f.c;
+import java.io.Closeable;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/InvokeOnCompletion;", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/Job;", "job", "handler", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "(Lkotlinx/coroutines/Job;Lkotlin/jvm/functions/Function1;)V", "invoke", "toString", "", "kotlinx-coroutines-core"})
-final class bb
-  extends bf<bc>
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "Lkotlinx/coroutines/CoroutineDispatcher;", "Ljava/io/Closeable;", "()V", "executor", "Ljava/util/concurrent/Executor;", "getExecutor", "()Ljava/util/concurrent/Executor;", "close", "", "Key", "kotlinx-coroutines-core"})
+public abstract class bb
+  extends y
+  implements Closeable
 {
-  private final b<Throwable, y> CIh;
+  public static final a Kek = new a((byte)0);
   
-  public bb(bc parambc, b<? super Throwable, y> paramb)
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/ExecutorCoroutineDispatcher$Key;", "Lkotlin/coroutines/AbstractCoroutineContextKey;", "Lkotlinx/coroutines/CoroutineDispatcher;", "Lkotlinx/coroutines/ExecutorCoroutineDispatcher;", "()V", "kotlinx-coroutines-core"})
+  public static final class a
+    extends d.d.b<y, bb>
   {
-    super(parambc);
-    AppMethodBeat.i(118381);
-    this.CIh = paramb;
-    AppMethodBeat.o(118381);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118380);
-    String str = "InvokeOnCompletion[" + af.ea(this) + '@' + af.dZ(this) + ']';
-    AppMethodBeat.o(118380);
-    return str;
-  }
-  
-  public final void v(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118378);
-    this.CIh.S(paramThrowable);
-    AppMethodBeat.o(118378);
+    private a()
+    {
+      super((d.g.a.b)1.Kel);
+      AppMethodBeat.i(190060);
+      AppMethodBeat.o(190060);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bb
  * JD-Core Version:    0.7.0.1
  */

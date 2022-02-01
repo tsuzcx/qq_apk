@@ -12,8 +12,8 @@ import android.view.LayoutInflater;
 public final class d
   extends ContextWrapper
 {
-  public int TD;
-  private Configuration TE;
+  public int aaG;
+  private Configuration aaH;
   private LayoutInflater mInflater;
   private Resources mResources;
   private Resources.Theme mTheme;
@@ -26,10 +26,16 @@ public final class d
   public d(Context paramContext, int paramInt)
   {
     super(paramContext);
-    this.TD = paramInt;
+    this.aaG = paramInt;
   }
   
-  private void fB()
+  public d(Context paramContext, Resources.Theme paramTheme)
+  {
+    super(paramContext);
+    this.mTheme = paramTheme;
+  }
+  
+  private void gX()
   {
     if (this.mTheme == null) {}
     for (int i = 1;; i = 0)
@@ -42,7 +48,7 @@ public final class d
           this.mTheme.setTo(localTheme);
         }
       }
-      this.mTheme.applyStyle(this.TD, true);
+      this.mTheme.applyStyle(this.aaG, true);
       return;
     }
   }
@@ -61,7 +67,7 @@ public final class d
   {
     if (this.mResources == null)
     {
-      if (this.TE != null) {
+      if (this.aaH != null) {
         break label27;
       }
       this.mResources = super.getResources();
@@ -71,7 +77,7 @@ public final class d
       return this.mResources;
       label27:
       if (Build.VERSION.SDK_INT >= 17) {
-        this.mResources = createConfigurationContext(this.TE).getResources();
+        this.mResources = createConfigurationContext(this.aaH).getResources();
       }
     }
   }
@@ -93,19 +99,19 @@ public final class d
     if (this.mTheme != null) {
       return this.mTheme;
     }
-    if (this.TD == 0) {
-      this.TD = 2131493669;
+    if (this.aaG == 0) {
+      this.aaG = 2131821426;
     }
-    fB();
+    gX();
     return this.mTheme;
   }
   
   public final void setTheme(int paramInt)
   {
-    if (this.TD != paramInt)
+    if (this.aaG != paramInt)
     {
-      this.TD = paramInt;
-      fB();
+      this.aaG = paramInt;
+      gX();
     }
   }
 }

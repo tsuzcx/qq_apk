@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.address.e;
 import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.j.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -11,12 +11,12 @@ public final class e
 {
   public static String a(b paramb)
   {
-    AppMethodBeat.i(17014);
+    AppMethodBeat.i(21057);
     JSONObject localJSONObject = new JSONObject();
     if (paramb == null)
     {
       paramb = localJSONObject.toString();
-      AppMethodBeat.o(17014);
+      AppMethodBeat.o(21057);
       return paramb;
     }
     try
@@ -24,7 +24,7 @@ public final class e
       localJSONObject.put("type", paramb.type);
       if ((paramb.type != null) && (paramb.type.equals("1")))
       {
-        localJSONObject.put("title", paramb.nLn);
+        localJSONObject.put("title", paramb.szf);
         localJSONObject.put("taxNumber", "");
         localJSONObject.put("companyAddress", "");
         localJSONObject.put("telephone", "");
@@ -34,36 +34,36 @@ public final class e
       for (;;)
       {
         paramb = localJSONObject.toString();
-        AppMethodBeat.o(17014);
+        AppMethodBeat.o(21057);
         return paramb;
         localJSONObject.put("title", paramb.title);
-        if (paramb.nLo == null) {
+        if (paramb.szg == null) {
           break;
         }
-        localJSONObject.put("taxNumber", paramb.nLo);
-        if (paramb.nLu == null) {
+        localJSONObject.put("taxNumber", paramb.szg);
+        if (paramb.szm == null) {
           break label268;
         }
-        localJSONObject.put("companyAddress", paramb.nLu);
-        if (paramb.nLs == null) {
+        localJSONObject.put("companyAddress", paramb.szm);
+        if (paramb.szk == null) {
           break label280;
         }
-        localJSONObject.put("telephone", paramb.nLs);
-        if (paramb.nLq == null) {
+        localJSONObject.put("telephone", paramb.szk);
+        if (paramb.szi == null) {
           break label292;
         }
-        localJSONObject.put("bankName", paramb.nLq);
-        if (paramb.nLp == null) {
+        localJSONObject.put("bankName", paramb.szi);
+        if (paramb.szh == null) {
           break label304;
         }
-        localJSONObject.put("bankAccount", paramb.nLp);
+        localJSONObject.put("bankAccount", paramb.szh);
       }
     }
     catch (JSONException paramb)
     {
       for (;;)
       {
-        ab.e("MicroMsg.InvoiceUtil", "put json value error : %s", new Object[] { Log.getStackTraceString(paramb) });
+        ad.e("MicroMsg.InvoiceUtil", "put json value error : %s", new Object[] { Log.getStackTraceString(paramb) });
         continue;
         localJSONObject.put("taxNumber", "");
         continue;
@@ -84,7 +84,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.address.e.e
  * JD-Core Version:    0.7.0.1
  */

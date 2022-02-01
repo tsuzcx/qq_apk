@@ -15,9 +15,9 @@ public class SetGlobalCompositeOperationActionArg
   
   static
   {
-    AppMethodBeat.i(103505);
-    CREATOR = new SetGlobalCompositeOperationActionArg.1();
-    AppMethodBeat.o(103505);
+    AppMethodBeat.i(145188);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145188);
   }
   
   public SetGlobalCompositeOperationActionArg() {}
@@ -34,63 +34,63 @@ public class SetGlobalCompositeOperationActionArg
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(103503);
+    AppMethodBeat.i(145186);
     if (this == paramObject)
     {
-      AppMethodBeat.o(103503);
+      AppMethodBeat.o(145186);
       return true;
     }
     if (!(paramObject instanceof SetGlobalCompositeOperationActionArg))
     {
-      AppMethodBeat.o(103503);
+      AppMethodBeat.o(145186);
       return false;
     }
     if (!super.equals(paramObject))
     {
-      AppMethodBeat.o(103503);
+      AppMethodBeat.o(145186);
       return false;
     }
     paramObject = (SetGlobalCompositeOperationActionArg)paramObject;
     boolean bool = Objects.equals(this.type, paramObject.type);
-    AppMethodBeat.o(103503);
+    AppMethodBeat.o(145186);
     return bool;
   }
   
   public final void h(Parcel paramParcel)
   {
-    AppMethodBeat.i(103500);
+    AppMethodBeat.i(145183);
     super.h(paramParcel);
     this.type = paramParcel.readString();
-    AppMethodBeat.o(103500);
+    AppMethodBeat.o(145183);
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(103504);
+    AppMethodBeat.i(145187);
     int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.type });
-    AppMethodBeat.o(103504);
+    AppMethodBeat.o(145187);
     return i;
   }
   
-  public final void p(JSONObject paramJSONObject)
+  public final void parse(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(103501);
-    super.p(paramJSONObject);
+    AppMethodBeat.i(145184);
+    super.parse(paramJSONObject);
     this.type = paramJSONObject.optJSONArray("data").optString(0);
-    AppMethodBeat.o(103501);
+    AppMethodBeat.o(145184);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(103502);
+    AppMethodBeat.i(145185);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.type);
-    AppMethodBeat.o(103502);
+    AppMethodBeat.o(145185);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetGlobalCompositeOperationActionArg
  * JD-Core Version:    0.7.0.1
  */

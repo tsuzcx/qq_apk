@@ -3,60 +3,53 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public abstract class ey
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dPB = "storyId".hashCode();
-  private static final int dQC = "cacheSize".hashCode();
-  private static final int dkC = "url".hashCode();
-  private static final int doK = "filePath".hashCode();
-  private static final int dye = "totalSize".hashCode();
+  private static final int eKE = "score".hashCode();
+  private static final int eVg;
+  private static final int eVh;
+  private static final int eVi;
+  private static final int eVj;
+  private static final int eVk;
+  private static final int eVl;
+  private static final int ejK = "chatroom".hashCode();
+  private static final int ept;
+  private static final int erC;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dPv = true;
-  private boolean dQB = true;
-  private boolean dky = true;
-  private boolean doC = true;
-  private boolean dxD = true;
-  public int field_cacheSize;
-  public String field_filePath;
-  public long field_storyId;
-  public int field_totalSize;
-  public String field_url;
+  private boolean eKD = true;
+  private boolean eVa = true;
+  private boolean eVb = true;
+  private boolean eVc = true;
+  private boolean eVd = true;
+  private boolean eVe = true;
+  private boolean eVf = true;
+  private boolean ejG = true;
+  private boolean epe = true;
+  private boolean ery = true;
+  public String field_chatroom;
+  public String field_daySec;
+  public int field_disRedDotCount;
+  public int field_enterCount;
+  public int field_isMute;
+  public String field_nickname;
+  public float field_score;
+  public int field_sendCount;
+  public long field_stayTime;
+  public int field_unReadCount;
   
-  public static c.a Hm()
+  static
   {
-    c.a locala = new c.a();
-    locala.yrK = new Field[5];
-    locala.columns = new String[6];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "storyId";
-    locala.yrM.put("storyId", "LONG PRIMARY KEY ");
-    localStringBuilder.append(" storyId LONG PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "storyId";
-    locala.columns[1] = "url";
-    locala.yrM.put("url", "TEXT");
-    localStringBuilder.append(" url TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "filePath";
-    locala.yrM.put("filePath", "TEXT");
-    localStringBuilder.append(" filePath TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "totalSize";
-    locala.yrM.put("totalSize", "INTEGER");
-    localStringBuilder.append(" totalSize INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "cacheSize";
-    locala.yrM.put("cacheSize", "INTEGER");
-    localStringBuilder.append(" cacheSize INTEGER");
-    locala.columns[5] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    eVg = "daySec".hashCode();
+    erC = "nickname".hashCode();
+    eVh = "isMute".hashCode();
+    ept = "unReadCount".hashCode();
+    eVi = "sendCount".hashCode();
+    eVj = "enterCount".hashCode();
+    eVk = "disRedDotCount".hashCode();
+    eVl = "stayTime".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -72,26 +65,35 @@ public abstract class ey
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dPB != k) {
-        break label65;
+      if (ejK != k) {
+        break label60;
       }
-      this.field_storyId = paramCursor.getLong(i);
-      this.dPv = true;
+      this.field_chatroom = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (dkC == k) {
-        this.field_url = paramCursor.getString(i);
-      } else if (doK == k) {
-        this.field_filePath = paramCursor.getString(i);
-      } else if (dye == k) {
-        this.field_totalSize = paramCursor.getInt(i);
-      } else if (dQC == k) {
-        this.field_cacheSize = paramCursor.getInt(i);
+      label60:
+      if (eVg == k) {
+        this.field_daySec = paramCursor.getString(i);
+      } else if (erC == k) {
+        this.field_nickname = paramCursor.getString(i);
+      } else if (eVh == k) {
+        this.field_isMute = paramCursor.getInt(i);
+      } else if (ept == k) {
+        this.field_unReadCount = paramCursor.getInt(i);
+      } else if (eVi == k) {
+        this.field_sendCount = paramCursor.getInt(i);
+      } else if (eVj == k) {
+        this.field_enterCount = paramCursor.getInt(i);
+      } else if (eVk == k) {
+        this.field_disRedDotCount = paramCursor.getInt(i);
+      } else if (eVl == k) {
+        this.field_stayTime = paramCursor.getLong(i);
+      } else if (eKE == k) {
+        this.field_score = paramCursor.getFloat(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -101,20 +103,35 @@ public abstract class ey
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dPv) {
-      localContentValues.put("storyId", Long.valueOf(this.field_storyId));
+    if (this.ejG) {
+      localContentValues.put("chatroom", this.field_chatroom);
     }
-    if (this.dky) {
-      localContentValues.put("url", this.field_url);
+    if (this.eVa) {
+      localContentValues.put("daySec", this.field_daySec);
     }
-    if (this.doC) {
-      localContentValues.put("filePath", this.field_filePath);
+    if (this.ery) {
+      localContentValues.put("nickname", this.field_nickname);
     }
-    if (this.dxD) {
-      localContentValues.put("totalSize", Integer.valueOf(this.field_totalSize));
+    if (this.eVb) {
+      localContentValues.put("isMute", Integer.valueOf(this.field_isMute));
     }
-    if (this.dQB) {
-      localContentValues.put("cacheSize", Integer.valueOf(this.field_cacheSize));
+    if (this.epe) {
+      localContentValues.put("unReadCount", Integer.valueOf(this.field_unReadCount));
+    }
+    if (this.eVc) {
+      localContentValues.put("sendCount", Integer.valueOf(this.field_sendCount));
+    }
+    if (this.eVd) {
+      localContentValues.put("enterCount", Integer.valueOf(this.field_enterCount));
+    }
+    if (this.eVe) {
+      localContentValues.put("disRedDotCount", Integer.valueOf(this.field_disRedDotCount));
+    }
+    if (this.eVf) {
+      localContentValues.put("stayTime", Long.valueOf(this.field_stayTime));
+    }
+    if (this.eKD) {
+      localContentValues.put("score", Float.valueOf(this.field_score));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -124,7 +141,7 @@ public abstract class ey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.ey
  * JD-Core Version:    0.7.0.1
  */

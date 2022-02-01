@@ -2,15 +2,17 @@ package com.tencent.mm.plugin.wallet_index.ui;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.compatible.e.ac;
-import com.tencent.mm.compatible.e.t;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.t;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet.b.a;
@@ -21,62 +23,79 @@ import com.tencent.mm.ui.base.h;
 
 public class WalletOpenFingerprintPayRedirectUI
   extends AutoLoginActivity
-  implements f
+  implements com.tencent.mm.al.g
 {
-  private boolean PA = false;
-  private Dialog gKM = null;
+  private boolean WE = false;
+  private Dialog tipDialog = null;
   
-  private void a(int paramInt, boolean paramBoolean, String paramString)
+  private void c(int paramInt, boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(48296);
-    com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WalletOpenFingerprintPayRedirectUI", "hy: redirect to open fingerprint failed. errCode: %d", new Object[] { Integer.valueOf(paramInt) });
-    if ((this.gKM != null) && (this.gKM.isShowing()))
+    AppMethodBeat.i(71937);
+    com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.WalletOpenFingerprintPayRedirectUI", "hy: redirect to open fingerprint failed. errCode: %d", new Object[] { Integer.valueOf(paramInt) });
+    if ((this.tipDialog != null) && (this.tipDialog.isShowing()))
     {
-      this.gKM.dismiss();
-      this.gKM = null;
+      this.tipDialog.dismiss();
+      this.tipDialog = null;
     }
     if (paramBoolean)
     {
-      h.a(this, paramString, "", false, new WalletOpenFingerprintPayRedirectUI.2(this));
-      AppMethodBeat.o(48296);
+      h.a(this, paramString, "", false, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(71932);
+          WalletOpenFingerprintPayRedirectUI.this.finish();
+          AppMethodBeat.o(71932);
+        }
+      });
+      AppMethodBeat.o(71937);
       return;
     }
     finish();
-    AppMethodBeat.o(48296);
+    AppMethodBeat.o(71937);
   }
   
-  public final boolean O(Intent paramIntent)
+  public final boolean Z(Intent paramIntent)
   {
     return true;
   }
   
   public final void a(AutoLoginActivity.a parama, Intent paramIntent)
   {
-    AppMethodBeat.i(48295);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletOpenFingerprintPayRedirectUI", "postLogin, loginResult = ".concat(String.valueOf(parama)));
-    switch (3.jLR[parama.ordinal()])
+    AppMethodBeat.i(71936);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOpenFingerprintPayRedirectUI", "postLogin, loginResult = ".concat(String.valueOf(parama)));
+    switch (WalletOpenFingerprintPayRedirectUI.3.mKE[parama.ordinal()])
     {
     default: 
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WalletOpenFingerprintPayRedirectUI", "postLogin, unknown login result = ".concat(String.valueOf(parama)));
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.WalletOpenFingerprintPayRedirectUI", "postLogin, unknown login result = ".concat(String.valueOf(parama)));
     }
     for (;;)
     {
-      a(2, true, getString(2131304785));
-      AppMethodBeat.o(48295);
+      c(2, true, getString(2131764968));
+      AppMethodBeat.o(71936);
       return;
-      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletOpenFingerprintPayRedirectUI", "hy: login ok.");
-      com.tencent.mm.kernel.g.RM();
-      com.tencent.mm.kernel.g.RK().eHt.a(new com.tencent.mm.plugin.wallet_core.c.ab(null, 19), 0);
-      if (this.gKM != null)
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOpenFingerprintPayRedirectUI", "hy: login ok.");
+      com.tencent.mm.kernel.g.afC();
+      com.tencent.mm.kernel.g.afA().gcy.a(new com.tencent.mm.plugin.wallet_core.c.ad(null, 19), 0);
+      if (this.tipDialog != null)
       {
-        this.gKM.dismiss();
-        this.gKM = null;
+        this.tipDialog.dismiss();
+        this.tipDialog = null;
       }
-      this.gKM = com.tencent.mm.wallet_core.ui.g.b(this, true, new WalletOpenFingerprintPayRedirectUI.1(this));
-      AppMethodBeat.o(48295);
+      this.tipDialog = com.tencent.mm.wallet_core.ui.g.b(this, true, new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(71931);
+          WalletOpenFingerprintPayRedirectUI.a(WalletOpenFingerprintPayRedirectUI.this);
+          WalletOpenFingerprintPayRedirectUI.a(WalletOpenFingerprintPayRedirectUI.this, "");
+          AppMethodBeat.o(71931);
+        }
+      });
+      AppMethodBeat.o(71936);
       return;
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WalletOpenFingerprintPayRedirectUI", "postLogin fail, loginResult = ".concat(String.valueOf(parama)));
-      a(1, false, "");
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.WalletOpenFingerprintPayRedirectUI", "postLogin fail, loginResult = ".concat(String.valueOf(parama)));
+      c(1, false, "");
     }
   }
   
@@ -87,76 +106,76 @@ public class WalletOpenFingerprintPayRedirectUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(48293);
+    AppMethodBeat.i(71934);
     super.onCreate(paramBundle);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RK().eHt.a(385, this);
-    AppMethodBeat.o(48293);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a(385, this);
+    AppMethodBeat.o(71934);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(48294);
+    AppMethodBeat.i(71935);
     super.onDestroy();
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RK().eHt.b(385, this);
-    AppMethodBeat.o(48294);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.b(385, this);
+    AppMethodBeat.o(71935);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(48298);
-    if ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.ab))
+    AppMethodBeat.i(71939);
+    if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.ad))
     {
-      if (!this.PA)
+      if (!this.WE)
       {
-        this.PA = true;
+        this.WE = true;
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletOpenFingerprintPayRedirectUI", "hy: bind query ok. start judge.");
-          s.cRG();
-          paramString = s.cRH();
-          if ((paramString == null) || (!paramString.cUl()))
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOpenFingerprintPayRedirectUI", "hy: bind query ok. start judge.");
+          s.dZT();
+          paramString = s.dZU();
+          if ((paramString == null) || (!paramString.ecF()))
           {
-            com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletOpenFingerprintPayRedirectUI", "hy: not open wechat payment. hint bind bankcard");
-            a(5, true, getString(2131305077));
-            AppMethodBeat.o(48298);
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletOpenFingerprintPayRedirectUI", "hy: not open wechat payment. hint bind bankcard");
+            c(5, true, getString(2131765269));
+            AppMethodBeat.o(71939);
             return;
           }
-          if ((!a.cST()) || (ac.ery.eqC != 1))
+          if ((!a.ebg()) || (ae.fFA.fDS != 1))
           {
-            com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WalletOpenFingerprintPayRedirectUI", "hy: not support wechat fp pay or not allow");
-            a(6, true, getString(2131305079));
-            AppMethodBeat.o(48298);
+            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.WalletOpenFingerprintPayRedirectUI", "hy: not support wechat fp pay or not allow");
+            c(6, true, getString(2131765271));
+            AppMethodBeat.o(71939);
             return;
           }
           paramString = new Intent();
           paramString.putExtra("key_is_from_system", true);
           d.b(this, "wallet", ".pwd.ui.WalletPasswordSettingUI", paramString);
           finish();
-          AppMethodBeat.o(48298);
+          AppMethodBeat.o(71939);
           return;
         }
-        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WalletOpenFingerprintPayRedirectUI", "hy: bind query failed. inform fail.");
-        a(3, true, getString(2131304785));
-        AppMethodBeat.o(48298);
+        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.WalletOpenFingerprintPayRedirectUI", "hy: bind query failed. inform fail.");
+        c(3, true, getString(2131764968));
+        AppMethodBeat.o(71939);
         return;
       }
-      com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.WalletOpenFingerprintPayRedirectUI", "hy: is already handled");
+      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.WalletOpenFingerprintPayRedirectUI", "hy: is already handled");
     }
-    AppMethodBeat.o(48298);
+    AppMethodBeat.o(71939);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(48297);
+    AppMethodBeat.i(71938);
     super.onStop();
-    if ((this.gKM != null) && (this.gKM.isShowing()))
+    if ((this.tipDialog != null) && (this.tipDialog.isShowing()))
     {
-      this.gKM.dismiss();
-      this.gKM = null;
+      this.tipDialog.dismiss();
+      this.tipDialog = null;
     }
-    AppMethodBeat.o(48297);
+    AppMethodBeat.o(71938);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -167,7 +186,7 @@ public class WalletOpenFingerprintPayRedirectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.ui.WalletOpenFingerprintPayRedirectUI
  * JD-Core Version:    0.7.0.1
  */

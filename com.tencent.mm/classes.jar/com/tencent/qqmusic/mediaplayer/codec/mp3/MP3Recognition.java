@@ -10,35 +10,35 @@ public class MP3Recognition
 {
   public AudioFormat.AudioType getAudioType(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(128576);
+    AppMethodBeat.i(114332);
     if (MP3FileCheck.isMp3File(paramString))
     {
       paramString = AudioFormat.AudioType.MP3;
-      AppMethodBeat.o(128576);
+      AppMethodBeat.o(114332);
       return paramString;
     }
     paramString = AudioFormat.AudioType.UNSUPPORT;
-    AppMethodBeat.o(128576);
+    AppMethodBeat.o(114332);
     return paramString;
   }
   
   public AudioFormat.AudioType guessAudioType(String paramString)
   {
-    AppMethodBeat.i(128577);
+    AppMethodBeat.i(114333);
     if ((!TextUtils.isEmpty(paramString)) && ((paramString.toLowerCase().endsWith(".mp3")) || (paramString.endsWith(".mp3.tmp")) || (paramString.endsWith(".mp3.mqcc")) || (paramString.endsWith(".ofl")) || (paramString.endsWith(".efe"))))
     {
       paramString = AudioFormat.AudioType.MP3;
-      AppMethodBeat.o(128577);
+      AppMethodBeat.o(114333);
       return paramString;
     }
     paramString = AudioFormat.AudioType.UNSUPPORT;
-    AppMethodBeat.o(128577);
+    AppMethodBeat.o(114333);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.codec.mp3.MP3Recognition
  * JD-Core Version:    0.7.0.1
  */

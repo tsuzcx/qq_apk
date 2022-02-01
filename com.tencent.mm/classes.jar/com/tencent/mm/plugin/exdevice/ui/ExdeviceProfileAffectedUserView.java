@@ -5,68 +5,99 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.model.u;
 import com.tencent.mm.ui.base.MMHorList;
 import java.util.ArrayList;
 
 public class ExdeviceProfileAffectedUserView
   extends LinearLayout
 {
-  private String ikj;
-  private ExdeviceProfileAffectedUserView.a lNA;
-  private ArrayList<String> lNB;
-  private TextView lNy;
-  private MMHorList lNz;
+  private String kGt;
+  private TextView pej;
+  private MMHorList pek;
+  private ExdeviceProfileAffectedUserView.a pel;
+  private ArrayList<String> pem;
   
   public ExdeviceProfileAffectedUserView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(20018);
-    paramAttributeSet = LayoutInflater.from(paramContext).inflate(2130969461, this, true);
-    this.lNy = ((TextView)paramAttributeSet.findViewById(2131823791));
-    this.lNz = ((MMHorList)paramAttributeSet.findViewById(2131823792));
-    this.lNz.setCenterInParent(true);
+    AppMethodBeat.i(24088);
+    paramAttributeSet = LayoutInflater.from(paramContext).inflate(2131493873, this, true);
+    this.pej = ((TextView)paramAttributeSet.findViewById(2131303446));
+    this.pek = ((MMHorList)paramAttributeSet.findViewById(2131303445));
+    this.pek.setCenterInParent(true);
     int i = a.fromDPToPix(paramContext, 44);
-    this.lNz.setOverScrollEnabled(true);
-    this.lNz.setItemWidth(i);
-    this.lNz.setCenterInParent(true);
-    this.lNA = new ExdeviceProfileAffectedUserView.a(this, (byte)0);
-    this.lNz.setAdapter(this.lNA);
-    this.lNz.setOnItemClickListener(new ExdeviceProfileAffectedUserView.1(this, paramContext));
-    this.lNy.setOnClickListener(new ExdeviceProfileAffectedUserView.2(this));
-    setOnClickListener(new ExdeviceProfileAffectedUserView.3(this));
+    this.pek.setOverScrollEnabled(true);
+    this.pek.setItemWidth(i);
+    this.pek.setCenterInParent(true);
+    this.pel = new ExdeviceProfileAffectedUserView.a(this, (byte)0);
+    this.pek.setAdapter(this.pel);
+    this.pek.setOnItemClickListener(new ExdeviceProfileAffectedUserView.1(this, paramContext));
+    this.pej.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(24080);
+        paramAnonymousView = u.aqG();
+        if ((paramAnonymousView != null) && (paramAnonymousView.equals(ExdeviceProfileAffectedUserView.a(ExdeviceProfileAffectedUserView.this))))
+        {
+          paramAnonymousView = ExdeviceProfileAffectedUserView.b(ExdeviceProfileAffectedUserView.this);
+          if (ExdeviceProfileAffectedUserView.b(ExdeviceProfileAffectedUserView.this).getVisibility() != 0) {
+            break label64;
+          }
+        }
+        label64:
+        for (int i = 8;; i = 0)
+        {
+          paramAnonymousView.setVisibility(i);
+          AppMethodBeat.o(24080);
+          return;
+        }
+      }
+    });
+    setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(24081);
+        ExdeviceProfileAffectedUserView.c(ExdeviceProfileAffectedUserView.this).performClick();
+        AppMethodBeat.o(24081);
+      }
+    });
     setVisibility(8);
-    AppMethodBeat.o(20018);
+    AppMethodBeat.o(24088);
   }
   
   public void setAffectedUserInfo(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(20019);
-    this.lNB = paramArrayList;
-    if ((this.lNB == null) || (this.lNB.size() == 0))
+    AppMethodBeat.i(24089);
+    this.pem = paramArrayList;
+    if ((this.pem == null) || (this.pem.size() == 0))
     {
-      this.lNy.setText("");
+      this.pej.setText("");
       setVisibility(8);
-      AppMethodBeat.o(20019);
+      AppMethodBeat.o(24089);
       return;
     }
     setVisibility(0);
-    this.lNy.setText(getResources().getString(2131299442, new Object[] { Integer.valueOf(this.lNB.size()) }));
-    this.lNA.notifyDataSetChanged();
-    AppMethodBeat.o(20019);
+    this.pej.setText(getResources().getString(2131758572, new Object[] { Integer.valueOf(this.pem.size()) }));
+    this.pel.notifyDataSetChanged();
+    AppMethodBeat.o(24089);
   }
   
   public void setUsername(String paramString)
   {
-    this.ikj = paramString;
+    this.kGt = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceProfileAffectedUserView
  * JD-Core Version:    0.7.0.1
  */

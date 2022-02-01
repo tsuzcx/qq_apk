@@ -16,15 +16,15 @@ public class TestMeasure
   
   public String result()
   {
-    AppMethodBeat.i(144459);
+    AppMethodBeat.i(18567);
     String str = String.format("result valMeasure:%s valLayout:%s total:%s", new Object[] { Long.valueOf(this.valMeasure), Long.valueOf(this.valLayout), Long.valueOf(this.valLayout + this.valMeasure) });
-    AppMethodBeat.o(144459);
+    AppMethodBeat.o(18567);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.kinda.framework.app.TestMeasure
  * JD-Core Version:    0.7.0.1
  */

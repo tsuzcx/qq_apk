@@ -15,28 +15,28 @@ public abstract class KSizeCallback
     
     static
     {
-      AppMethodBeat.i(141392);
+      AppMethodBeat.i(135904);
       if (!KSizeCallback.class.desiredAssertionStatus()) {}
       for (boolean bool = true;; bool = false)
       {
         $assertionsDisabled = bool;
-        AppMethodBeat.o(141392);
+        AppMethodBeat.o(135904);
         return;
       }
     }
     
     private CppProxy(long paramLong)
     {
-      AppMethodBeat.i(141388);
+      AppMethodBeat.i(135900);
       this.destroyed = new AtomicBoolean(false);
       if (paramLong == 0L)
       {
         RuntimeException localRuntimeException = new RuntimeException("nativeRef is zero");
-        AppMethodBeat.o(141388);
+        AppMethodBeat.o(135900);
         throw localRuntimeException;
       }
       this.nativeRef = paramLong;
-      AppMethodBeat.o(141388);
+      AppMethodBeat.o(135900);
     }
     
     private native void nativeDestroy(long paramLong);
@@ -45,39 +45,39 @@ public abstract class KSizeCallback
     
     public final KSize call()
     {
-      AppMethodBeat.i(141391);
+      AppMethodBeat.i(135903);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         localObject = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(141391);
+        AppMethodBeat.o(135903);
         throw ((Throwable)localObject);
       }
       Object localObject = native_call(this.nativeRef);
-      AppMethodBeat.o(141391);
+      AppMethodBeat.o(135903);
       return localObject;
     }
     
     public final void destroy()
     {
-      AppMethodBeat.i(141389);
+      AppMethodBeat.i(135901);
       if (!this.destroyed.getAndSet(true)) {
         nativeDestroy(this.nativeRef);
       }
-      AppMethodBeat.o(141389);
+      AppMethodBeat.o(135901);
     }
     
     protected final void finalize()
     {
-      AppMethodBeat.i(141390);
+      AppMethodBeat.i(135902);
       destroy();
       super.finalize();
-      AppMethodBeat.o(141390);
+      AppMethodBeat.o(135902);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.gen.KSizeCallback
  * JD-Core Version:    0.7.0.1
  */

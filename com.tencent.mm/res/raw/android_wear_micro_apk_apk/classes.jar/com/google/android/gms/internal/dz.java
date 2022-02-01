@@ -2,20 +2,20 @@ package com.google.android.gms.internal;
 
 public final class dz
 {
-  static final int RD = 11;
-  static final int RE = 12;
-  static final int RF = 16;
-  static final int RG = 26;
-  public static final int[] RH = new int[0];
-  public static final long[] RI = new long[0];
-  public static final float[] RJ = new float[0];
-  public static final double[] RK = new double[0];
-  public static final boolean[] RL = new boolean[0];
-  public static final String[] RM = new String[0];
-  public static final byte[][] RN = new byte[0][];
-  public static final byte[] RO = new byte[0];
+  public static final boolean[] TA = new boolean[0];
+  public static final String[] TB = new String[0];
+  public static final byte[][] TC = new byte[0][];
+  public static final byte[] TD = new byte[0];
+  static final int Ts = 11;
+  static final int Tt = 12;
+  static final int Tu = 16;
+  static final int Tv = 26;
+  public static final int[] Tw = new int[0];
+  public static final long[] Tx = new long[0];
+  public static final float[] Ty = new float[0];
+  public static final double[] Tz = new double[0];
   
-  public static int ad(int paramInt1, int paramInt2)
+  public static int af(int paramInt1, int paramInt2)
   {
     return paramInt1 << 3 | paramInt2;
   }
@@ -24,22 +24,22 @@ public final class dz
   {
     int i = 1;
     int j = paramdn.getPosition();
-    paramdn.bq(paramInt);
-    while (paramdn.jQ() == paramInt)
+    paramdn.bK(paramInt);
+    while (paramdn.jZ() == paramInt)
     {
-      paramdn.bq(paramInt);
+      paramdn.bK(paramInt);
       i += 1;
     }
-    paramdn.bt(j);
+    paramdn.bN(j);
     return i;
   }
   
-  static int bD(int paramInt)
+  static int bY(int paramInt)
   {
     return paramInt & 0x7;
   }
   
-  public static int bE(int paramInt)
+  public static int bZ(int paramInt)
   {
     return paramInt >>> 3;
   }

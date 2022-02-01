@@ -2,12 +2,14 @@ package com.tencent.mm.plugin.wear.model.f;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.plugin.wear.model.a;
+import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.f;
-import com.tencent.mm.protocal.protobuf.cws;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.protocal.protobuf.dqw;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.io.IOException;
 import java.util.List;
 
@@ -21,28 +23,28 @@ public final class e
   
   protected final void send()
   {
-    AppMethodBeat.i(26443);
-    int i = ((j)com.tencent.mm.kernel.g.E(j.class)).bPQ().bQb().size();
-    cws localcws = new cws();
-    localcws.nuk = a.cYy().uGE.agb(com.tencent.mm.model.r.Zn()).id;
-    localcws.Title = ah.getContext().getString(2131297005);
-    localcws.ntu = ah.getContext().getString(2131301895, new Object[] { Integer.valueOf(i) });
+    AppMethodBeat.i(30125);
+    int i = ((k)com.tencent.mm.kernel.g.ab(k.class)).cOI().cOT().size();
+    dqw localdqw = new dqw();
+    localdqw.sdO = a.egT().auM(u.aqG()).id;
+    localdqw.Title = aj.getContext().getString(2131755822);
+    localdqw.gKr = aj.getContext().getString(2131761657, new Object[] { Integer.valueOf(i) });
     try
     {
-      a.cYy();
-      com.tencent.mm.plugin.wear.model.e.r.a(20005, localcws.toByteArray(), true);
-      AppMethodBeat.o(26443);
+      a.egZ();
+      r.a(20005, localdqw.toByteArray(), true);
+      AppMethodBeat.o(30125);
       return;
     }
     catch (IOException localIOException)
     {
-      AppMethodBeat.o(26443);
+      AppMethodBeat.o(30125);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.e
  * JD-Core Version:    0.7.0.1
  */

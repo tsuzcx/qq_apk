@@ -7,25 +7,25 @@ import java.util.LinkedList;
 public final class e
   extends i
 {
-  private final d aVg;
+  private final d btj;
   
   public e(d paramd)
   {
-    this.aVg = paramd;
+    this.btj = paramd;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(95616);
-    d locald = this.aVg;
+    AppMethodBeat.i(92784);
+    d locald = this.btj;
     clear();
-    locald.aVd.add(this);
-    AppMethodBeat.o(95616);
+    locald.btg.add(this);
+    AppMethodBeat.o(92784);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.f.a.e
  * JD-Core Version:    0.7.0.1
  */

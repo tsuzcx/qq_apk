@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/dnw" android:background="@color/a6q" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<ScrollView android:orientation="vertical" android:background="@color/BW_97" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/dnx" layout="@layout/akm" />
-    <android.support.v7.widget.RecyclerView android:scrollbarStyle="outsideOverlay" android:id="@id/dny" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/dnx" android:layout_alignParentTop="true" android:windowSoftInputMode="adjustResize" />
-    <RelativeLayout android:orientation="horizontal" android:id="@id/dnz" android:background="#00000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
-        <RelativeLayout android:orientation="horizontal" android:background="#86222222" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentTop="true" />
-    </RelativeLayout>
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:background="@color/BW_97" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyEnvelopeTouchRecyclerView android:layout_gravity="center_vertical" android:id="@id/d3i" android:visibility="visible" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" android:layout_centerVertical="true" android:overScrollMode="never" />
+        <TextView android:textSize="@dimen/jo" android:textColor="@color/tq" android:layout_gravity="center_horizontal" android:id="@id/d3h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="16.0dip" android:text="" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/d3g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="15.0dip" android:textColor="@color/fe" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="108.0dip" android:text="@string/dho" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

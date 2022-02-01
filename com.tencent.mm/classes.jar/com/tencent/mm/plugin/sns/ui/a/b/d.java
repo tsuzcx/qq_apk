@@ -4,88 +4,91 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.an.a;
-import com.tencent.mm.plugin.sns.storage.l;
-import com.tencent.mm.plugin.sns.storage.m;
+import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.am.a;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.protocal.protobuf.abx;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.sns.storage.p;
+import com.tencent.mm.protocal.protobuf.afv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
 
 public final class d
   extends a
 {
-  public boolean ctJ;
+  public boolean diE;
   public String userName;
   
   public d(String paramString, boolean paramBoolean)
   {
-    super(new n());
-    AppMethodBeat.i(39956);
+    super(new p());
+    AppMethodBeat.i(99846);
     this.userName = paramString;
-    this.ctJ = paramBoolean;
-    dQd();
-    AppMethodBeat.o(39956);
+    this.diE = paramBoolean;
+    fgY();
+    AppMethodBeat.o(99846);
   }
   
-  public final Cursor cwQ()
+  public final String C(long paramLong, String paramString)
   {
-    AppMethodBeat.i(39957);
-    init();
-    g.RM();
-    Object localObject = (String)g.RL().Ru().get(2, null);
-    if (this.userName.equals(localObject)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ab.d("MicroMsg.SnsUserPageVending", "prepareCursorAsynchronous");
-      localObject = ag.cpf().e(this.userName, bool, cwN());
-      AppMethodBeat.o(39957);
-      return localObject;
-    }
-  }
-  
-  public final String w(long paramLong, String paramString)
-  {
-    AppMethodBeat.i(39958);
-    ab.d("MicroMsg.SnsUserPageVending", "updateLitmitSeq %s %s", new Object[] { Integer.valueOf(ag.coV().cpD()), paramString });
-    Object localObject = i.lr(ag.cpf().a(paramLong, ag.coV().aaB(this.userName), this.userName, this.ctJ));
-    if (this.rKW.equals("")) {
+    AppMethodBeat.i(179326);
+    ad.d("MicroMsg.SnsUserPageVending", "updateLitmitSeq %s %s", new Object[] { Integer.valueOf(af.dtk().dtX()), paramString });
+    Object localObject = com.tencent.mm.plugin.sns.data.q.su(af.dtu().a(paramLong, af.dtk().aoJ(this.userName), this.userName, this.diE));
+    if (this.xrA.equals("")) {
       paramString = (String)localObject;
     }
     for (;;)
     {
-      localObject = ag.cpj().abz(this.userName).csy();
-      if (((abx)localObject).wSq != 0L) {
+      localObject = af.dty().apP(this.userName).dxP();
+      if (((afv)localObject).DfN != 0L) {
         break;
       }
-      AppMethodBeat.o(39958);
+      AppMethodBeat.o(179326);
       return paramString;
       paramString = (String)localObject;
-      if (((String)localObject).compareTo(this.rKW) >= 0) {
-        paramString = this.rKW;
+      if (((String)localObject).compareTo(this.xrA) >= 0) {
+        paramString = this.xrA;
       }
     }
-    localObject = i.lr(((abx)localObject).wSq);
+    localObject = com.tencent.mm.plugin.sns.data.q.su(((afv)localObject).DfN);
     if (paramString.equals(""))
     {
-      AppMethodBeat.o(39958);
+      AppMethodBeat.o(179326);
       return localObject;
     }
     if (((String)localObject).compareTo(paramString) > 0)
     {
-      AppMethodBeat.o(39958);
+      AppMethodBeat.o(179326);
       return localObject;
     }
-    AppMethodBeat.o(39958);
+    AppMethodBeat.o(179326);
     return paramString;
+  }
+  
+  public final Cursor dDi()
+  {
+    AppMethodBeat.i(99847);
+    init();
+    g.afC();
+    Object localObject = (String)g.afB().afk().get(2, null);
+    if (this.userName.equals(localObject)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ad.d("MicroMsg.SnsUserPageVending", "prepareCursorAsynchronous");
+      localObject = af.dtu().g(this.userName, bool, dDf());
+      AppMethodBeat.o(99847);
+      return localObject;
+    }
+  }
+  
+  public final String tr(long paramLong)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.a.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,30 @@
 package com.tencent.mm.plugin.voip_cs.ui;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.voip_cs.b.a.a;
-import com.tencent.mm.plugin.voip_cs.b.c;
-import com.tencent.mm.plugin.voip_cs.b.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
 
 final class VoipCSMainUI$4
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
   VoipCSMainUI$4(VoipCSMainUI paramVoipCSMainUI) {}
   
-  public final void onReceive(Context paramContext, Intent paramIntent)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(135392);
-    paramContext = paramIntent.getAction();
-    paramIntent = (PowerManager)ah.getContext().getSystemService("power");
-    if (("android.intent.action.USER_PRESENT".equals(paramContext)) && (paramIntent.isScreenOn()))
-    {
-      ab.d("MicroMsg.voipcs.VoipCSMainUI", "on user present home");
-      VoipCSMainUI.e(this.tLK).cvo = false;
-      AppMethodBeat.o(135392);
-      return;
-    }
-    if ("android.intent.action.SCREEN_ON".equals(paramContext))
-    {
-      ab.d("MicroMsg.voipcs.VoipCSMainUI", "screen on...");
-      VoipCSMainUI.e(this.tLK).cvo = false;
-      if ((!VoipCSMainUI.f(this.tLK).cOm()) && (c.cQn().tKO == 2))
-      {
-        VoipCSMainUI.f(this.tLK).cQw();
-        AppMethodBeat.o(135392);
-      }
-    }
-    else if ("android.intent.action.SCREEN_OFF".equals(paramContext))
-    {
-      ab.d("MicroMsg.voipcs.VoipCSMainUI", "screen off...");
-      VoipCSMainUI.e(this.tLK).cvo = true;
-      if (!VoipCSMainUI.f(this.tLK).cOm()) {
-        VoipCSMainUI.f(this.tLK).stopRing();
-      }
-    }
-    AppMethodBeat.o(135392);
+    AppMethodBeat.i(190835);
+    paramDialogInterface = this.zDO;
+    Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/voip_cs/ui/VoipCSMainUI$12", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/plugin/voip_cs/ui/VoipCSMainUI$12", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(190835);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.ui.VoipCSMainUI.4
  * JD-Core Version:    0.7.0.1
  */

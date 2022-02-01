@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/lp" android:background="@drawable/a0v" android:layout_width="fill_parent" android:layout_height="@dimen/uv" android:layout_marginBottom="20.0dip"
+<LinearLayout android:gravity="center_horizontal" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/jp" android:layout_width="@dimen/uu" android:layout_height="@dimen/uu" android:layout_marginTop="10.0dip" android:scaleType="fitCenter" />
-    <TextView android:textSize="@dimen/uw" android:textColor="@color/hg" android:gravity="center" android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:maxLines="2" />
+    <LinearLayout android:gravity="center|left" android:id="@id/fo9" android:background="@drawable/vp" android:paddingLeft="12.0dip" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip">
+        <ImageView android:id="@id/foa" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ac7" android:scaleType="fitCenter" />
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/a_u" android:id="@id/fof" android:paddingLeft="8.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fog" />
+    </LinearLayout>
 </LinearLayout>

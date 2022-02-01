@@ -9,137 +9,137 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ContactMoreInfoPreference
   extends Preference
 {
-  private TextView kvS;
-  private ImageView pyN;
-  private ImageView pyO;
-  private ImageView pyP;
-  private ImageView pyQ;
-  private ImageView pyR;
-  private ImageView pyS;
-  private int pyT;
-  private int pyU;
-  private int pyV;
-  private int pyW;
-  private int pyX;
-  private int pyY;
+  private TextView nBl;
+  private ImageView uAA;
+  private ImageView uAB;
+  private int uAC;
+  private int uAD;
+  private int uAE;
+  private int uAF;
+  private int uAG;
+  private int uAH;
+  private ImageView uAw;
+  private ImageView uAx;
+  private ImageView uAy;
+  private ImageView uAz;
   
   public ContactMoreInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.pyT = 8;
-    this.pyU = 8;
-    this.pyV = 8;
-    this.pyW = 8;
-    this.pyX = 8;
-    this.pyY = 8;
+    this.uAC = 8;
+    this.uAD = 8;
+    this.uAE = 8;
+    this.uAF = 8;
+    this.uAG = 8;
+    this.uAH = 8;
   }
   
   public ContactMoreInfoPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(23398);
-    this.pyT = 8;
-    this.pyU = 8;
-    this.pyV = 8;
-    this.pyW = 8;
-    this.pyX = 8;
-    this.pyY = 8;
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(23398);
+    AppMethodBeat.i(27018);
+    this.uAC = 8;
+    this.uAD = 8;
+    this.uAE = 8;
+    this.uAF = 8;
+    this.uAG = 8;
+    this.uAH = 8;
+    setLayoutResource(2131494804);
+    AppMethodBeat.o(27018);
   }
   
-  private void bJ()
+  private void cE()
   {
-    AppMethodBeat.i(23405);
-    if (this.pyN != null) {
-      this.pyN.setVisibility(this.pyT);
+    AppMethodBeat.i(27025);
+    if (this.uAw != null) {
+      this.uAw.setVisibility(this.uAC);
     }
-    if (this.pyO != null) {
-      this.pyO.setVisibility(this.pyU);
+    if (this.uAx != null) {
+      this.uAx.setVisibility(this.uAD);
     }
-    if (this.pyP != null) {
-      this.pyP.setVisibility(this.pyV);
+    if (this.uAy != null) {
+      this.uAy.setVisibility(this.uAE);
     }
-    if (this.pyQ != null) {
-      this.pyQ.setVisibility(this.pyW);
+    if (this.uAz != null) {
+      this.uAz.setVisibility(this.uAF);
     }
-    if (this.pyR != null) {
-      this.pyR.setVisibility(this.pyX);
+    if (this.uAA != null) {
+      this.uAA.setVisibility(this.uAG);
     }
-    if (this.kvS != null)
+    if (this.nBl != null)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.kvS.getLayoutParams();
-      localLayoutParams.width = a.ao(this.mContext, 2131427664);
-      this.kvS.setLayoutParams(localLayoutParams);
+      ViewGroup.LayoutParams localLayoutParams = this.nBl.getLayoutParams();
+      localLayoutParams.width = a.ao(this.mContext, 2131165370);
+      this.nBl.setLayoutParams(localLayoutParams);
     }
-    if (this.pyS != null) {
-      this.pyS.setVisibility(this.pyY);
+    if (this.uAB != null) {
+      this.uAB.setVisibility(this.uAH);
     }
-    AppMethodBeat.o(23405);
+    AppMethodBeat.o(27025);
   }
   
-  public final void BA(int paramInt)
+  public final void Jl(int paramInt)
   {
-    AppMethodBeat.i(23403);
-    this.pyX = paramInt;
-    bJ();
-    AppMethodBeat.o(23403);
+    AppMethodBeat.i(27021);
+    this.uAD = paramInt;
+    cE();
+    AppMethodBeat.o(27021);
   }
   
-  public final void BB(int paramInt)
+  public final void Jm(int paramInt)
   {
-    AppMethodBeat.i(23404);
-    this.pyY = paramInt;
-    bJ();
-    AppMethodBeat.o(23404);
+    AppMethodBeat.i(27022);
+    this.uAE = paramInt;
+    cE();
+    AppMethodBeat.o(27022);
   }
   
-  public final void By(int paramInt)
+  public final void Jn(int paramInt)
   {
-    AppMethodBeat.i(23401);
-    this.pyU = paramInt;
-    bJ();
-    AppMethodBeat.o(23401);
+    AppMethodBeat.i(27023);
+    this.uAG = paramInt;
+    cE();
+    AppMethodBeat.o(27023);
   }
   
-  public final void Bz(int paramInt)
+  public final void Jo(int paramInt)
   {
-    AppMethodBeat.i(23402);
-    this.pyV = paramInt;
-    bJ();
-    AppMethodBeat.o(23402);
+    AppMethodBeat.i(27024);
+    this.uAH = paramInt;
+    cE();
+    AppMethodBeat.o(27024);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(23400);
-    this.pyN = ((ImageView)paramView.findViewById(2131826219));
-    this.pyO = ((ImageView)paramView.findViewById(2131826220));
-    this.pyP = ((ImageView)paramView.findViewById(2131826221));
-    this.pyQ = ((ImageView)paramView.findViewById(2131826222));
-    this.pyR = ((ImageView)paramView.findViewById(2131826223));
-    this.pyS = ((ImageView)paramView.findViewById(2131826224));
-    this.kvS = ((TextView)paramView.findViewById(2131820680));
-    bJ();
+    AppMethodBeat.i(27020);
+    this.uAw = ((ImageView)paramView.findViewById(2131300953));
+    this.uAx = ((ImageView)paramView.findViewById(2131300958));
+    this.uAy = ((ImageView)paramView.findViewById(2131300949));
+    this.uAz = ((ImageView)paramView.findViewById(2131300927));
+    this.uAA = ((ImageView)paramView.findViewById(2131300937));
+    this.uAB = ((ImageView)paramView.findViewById(2131300967));
+    this.nBl = ((TextView)paramView.findViewById(2131305902));
+    cE();
     super.onBindView(paramView);
-    AppMethodBeat.o(23400);
+    AppMethodBeat.o(27020);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(23399);
+    AppMethodBeat.i(27019);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130970209, localViewGroup);
-    AppMethodBeat.o(23399);
+    localLayoutInflater.inflate(2131494836, localViewGroup);
+    AppMethodBeat.o(27019);
     return paramViewGroup;
   }
 }

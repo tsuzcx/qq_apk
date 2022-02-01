@@ -7,11 +7,11 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class bj
 {
-  private static final ExecutorService Oq = new ThreadPoolExecutor(0, 4, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue(), new ce("GAC_Transform"));
+  private static final ExecutorService Qf = new ThreadPoolExecutor(0, 4, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue(), new ce("GAC_Transform"));
   
-  public static ExecutorService iG()
+  public static ExecutorService iO()
   {
-    return Oq;
+    return Qf;
   }
 }
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/ts" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/a_r" android:paddingLeft="@dimen/hj" android:paddingTop="@dimen/i_" android:paddingRight="@dimen/hj" android:paddingBottom="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/ia" android:id="@id/dmo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ju" android:text="@string/g4x" />
+        <TextView android:textSize="@dimen/jo" android:textColor="@color/s4" android:id="@id/fe3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f6j" />
+        <TextView android:textSize="@dimen/jo" android:textColor="@color/s4" android:id="@id/fe5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f6m" />
+        <TextView android:textSize="@dimen/jo" android:textColor="@color/s4" android:id="@id/fe4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f6k" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center|top" android:orientation="vertical" android:id="@id/g_v" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/hv">
+        <ProgressBar android:id="@id/eki" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a4p" />
+        <TextView android:textColor="@color/s4" android:gravity="center" android:id="@id/ga1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/dbu" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/d2l" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp">
+        <android.support.v7.widget.RecyclerView android:id="@id/gi_" android:background="@color/xo" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/n3" />
+        <com.tencent.mm.ui.base.RealAlphabetScrollBar android:id="@id/gia" android:layout_width="@dimen/nq" android:layout_height="fill_parent" android:layout_marginTop="@dimen/i_" android:layout_marginBottom="@dimen/i_" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/a4z" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <View android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:background="@color/xo" android:paddingLeft="@dimen/hj" android:paddingRight="@dimen/hj" android:layout_width="fill_parent" android:layout_height="@dimen/ho">
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gi9" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                    <CheckBox android:gravity="center" android:id="@id/aq8" android:background="@drawable/a2r" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/ao" android:layout_height="@dimen/ao" />
+                    <TextView android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/jn" android:text="@string/g50" />
+                </LinearLayout>
+                <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                <TextView android:enabled="false" android:gravity="center" android:id="@id/gi8" android:text="@string/g4y" style="@style/q2" />
+                <TextView android:enabled="false" android:gravity="center" android:id="@id/gi7" android:layout_marginLeft="@dimen/jn" android:text="@string/g4v" style="@style/oa" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

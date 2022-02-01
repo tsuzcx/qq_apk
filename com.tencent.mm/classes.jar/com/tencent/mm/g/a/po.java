@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class po
   extends b
 {
-  public po.a cGe;
+  public a dvp;
   
   public po()
   {
@@ -15,16 +15,21 @@ public final class po
   
   private po(byte paramByte)
   {
-    AppMethodBeat.i(76726);
-    this.cGe = new po.a();
-    this.ymq = false;
+    AppMethodBeat.i(149882);
+    this.dvp = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(76726);
+    AppMethodBeat.o(149882);
+  }
+  
+  public static final class a
+  {
+    public int state = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.po
  * JD-Core Version:    0.7.0.1
  */

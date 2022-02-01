@@ -5,7 +5,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.v4.b.q;
+import android.support.v4.b.r;
 import android.text.TextUtils;
 import android.util.Log;
 import com.google.android.gms.common.util.g;
@@ -14,7 +14,7 @@ import com.google.android.gms.internal.ch;
 
 public final class z
 {
-  private static final q<String, String> JU = new q();
+  private static final r<String, String> LJ = new r();
   
   private static String a(Context paramContext, String paramString1, String paramString2)
   {
@@ -22,7 +22,7 @@ public final class z
     paramString1 = e(paramContext, paramString1);
     paramContext = paramString1;
     if (paramString1 == null) {
-      paramContext = localResources.getString(com.google.android.gms.d.Gb);
+      paramContext = localResources.getString(com.google.android.gms.d.HQ);
     }
     return String.format(localResources.getConfiguration().locale, paramContext, new Object[] { paramString2 });
   }
@@ -44,11 +44,11 @@ public final class z
     case 18: 
       return null;
     case 1: 
-      return localResources.getString(com.google.android.gms.d.FZ);
+      return localResources.getString(com.google.android.gms.d.HO);
     case 3: 
-      return localResources.getString(com.google.android.gms.d.FW);
+      return localResources.getString(com.google.android.gms.d.HL);
     case 2: 
-      return localResources.getString(com.google.android.gms.d.Gf);
+      return localResources.getString(com.google.android.gms.d.HU);
     case 9: 
       Log.e("GoogleApiAvailability", "Google Play services is invalid. Cannot recover.");
       return null;
@@ -85,7 +85,7 @@ public final class z
     {
       String str2 = str1;
       if (str1 == null) {
-        str2 = paramContext.getResources().getString(com.google.android.gms.d.Ga);
+        str2 = paramContext.getResources().getString(com.google.android.gms.d.HP);
       }
       return str2;
     }
@@ -94,7 +94,7 @@ public final class z
   public static String e(Context paramContext, int paramInt)
   {
     Resources localResources = paramContext.getResources();
-    String str = g(paramContext);
+    String str = h(paramContext);
     switch (paramInt)
     {
     case 4: 
@@ -108,20 +108,20 @@ public final class z
     case 15: 
     case 19: 
     default: 
-      return localResources.getString(com.google.android.gms.d.Gb, new Object[] { str });
+      return localResources.getString(com.google.android.gms.d.HQ, new Object[] { str });
     case 1: 
-      return localResources.getString(com.google.android.gms.d.FY, new Object[] { str });
+      return localResources.getString(com.google.android.gms.d.HN, new Object[] { str });
     case 3: 
-      return localResources.getString(com.google.android.gms.d.FV, new Object[] { str });
+      return localResources.getString(com.google.android.gms.d.HK, new Object[] { str });
     case 18: 
-      return localResources.getString(com.google.android.gms.d.Gg, new Object[] { str });
+      return localResources.getString(com.google.android.gms.d.HV, new Object[] { str });
     case 2: 
-      if (g.j(paramContext)) {
-        return localResources.getString(com.google.android.gms.d.Gh);
+      if (g.k(paramContext)) {
+        return localResources.getString(com.google.android.gms.d.HW);
       }
-      return localResources.getString(com.google.android.gms.d.Ge, new Object[] { str });
+      return localResources.getString(com.google.android.gms.d.HT, new Object[] { str });
     case 9: 
-      return localResources.getString(com.google.android.gms.d.Gc, new Object[] { str });
+      return localResources.getString(com.google.android.gms.d.HR, new Object[] { str });
     case 7: 
       return a(paramContext, "common_google_play_services_network_error_text", str);
     case 5: 
@@ -137,13 +137,13 @@ public final class z
   private static String e(Context paramContext, String paramString)
   {
     int i;
-    synchronized (JU)
+    synchronized (LJ)
     {
-      String str = (String)JU.get(paramString);
+      String str = (String)LJ.get(paramString);
       if (str != null) {
         return str;
       }
-      paramContext = com.google.android.gms.common.d.e(paramContext);
+      paramContext = com.google.android.gms.common.d.f(paramContext);
       if (paramContext == null) {
         return null;
       }
@@ -171,32 +171,16 @@ public final class z
         return null;
       }
     }
-    JU.put(paramString, paramContext);
+    LJ.put(paramString, paramContext);
     return paramContext;
   }
   
   public static String f(Context paramContext, int paramInt)
   {
     if (paramInt == 6) {
-      return a(paramContext, "common_google_play_services_resolution_required_text", g(paramContext));
+      return a(paramContext, "common_google_play_services_resolution_required_text", h(paramContext));
     }
     return e(paramContext, paramInt);
-  }
-  
-  private static String g(Context paramContext)
-  {
-    String str2 = paramContext.getApplicationInfo().name;
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str2 = paramContext.getPackageName();
-    }
-    try
-    {
-      str1 = ch.u(paramContext).q(paramContext.getPackageName()).toString();
-      return str1;
-    }
-    catch (PackageManager.NameNotFoundException paramContext) {}
-    return str2;
   }
   
   public static String g(Context paramContext, int paramInt)
@@ -207,11 +191,27 @@ public final class z
     default: 
       return paramContext.getString(17039370);
     case 1: 
-      return paramContext.getString(com.google.android.gms.d.FX);
+      return paramContext.getString(com.google.android.gms.d.HM);
     case 3: 
-      return paramContext.getString(com.google.android.gms.d.FU);
+      return paramContext.getString(com.google.android.gms.d.HJ);
     }
-    return paramContext.getString(com.google.android.gms.d.Gd);
+    return paramContext.getString(com.google.android.gms.d.HS);
+  }
+  
+  private static String h(Context paramContext)
+  {
+    String str2 = paramContext.getApplicationInfo().name;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str2 = paramContext.getPackageName();
+    }
+    try
+    {
+      str1 = ch.v(paramContext).q(paramContext.getPackageName()).toString();
+      return str1;
+    }
+    catch (PackageManager.NameNotFoundException paramContext) {}
+    return str2;
   }
 }
 

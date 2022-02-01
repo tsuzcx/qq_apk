@@ -8,8 +8,8 @@ import com.tencent.mm.plugin.fav.a.p;
 import com.tencent.mm.plugin.fav.a.q;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,33 +20,33 @@ public final class a
   extends j<c>
   implements q
 {
-  private List<p> aTm;
   private e db;
+  private List<p> listeners;
   
   public a(e parame)
   {
     super(parame, c.info, "FavCdnInfo", null);
-    AppMethodBeat.i(5404);
-    this.aTm = new CopyOnWriteArrayList();
+    AppMethodBeat.i(101664);
+    this.listeners = new CopyOnWriteArrayList();
     this.db = parame;
-    AppMethodBeat.o(5404);
+    AppMethodBeat.o(101664);
   }
   
-  public final c NP(String paramString)
+  public final c Yk(String paramString)
   {
     Object localObject = null;
-    AppMethodBeat.i(5409);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(101669);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.e("MicroMsg.FavCdnStorage", "md5 null");
-      AppMethodBeat.o(5409);
+      ad.e("MicroMsg.FavCdnStorage", "md5 null");
+      AppMethodBeat.o(101669);
       return null;
     }
     paramString = "select * from FavCdnInfo where dataId = '" + paramString + "'";
     Cursor localCursor = this.db.a(paramString, null, 2);
     if (localCursor == null)
     {
-      AppMethodBeat.o(5409);
+      AppMethodBeat.o(101669);
       return null;
     }
     paramString = localObject;
@@ -56,82 +56,82 @@ public final class a
       paramString.convertFrom(localCursor);
     }
     localCursor.close();
-    AppMethodBeat.o(5409);
+    AppMethodBeat.o(101669);
     return paramString;
   }
   
   public final void a(p paramp)
   {
-    AppMethodBeat.i(5402);
+    AppMethodBeat.i(101662);
     if (paramp != null) {
-      this.aTm.add(paramp);
+      this.listeners.add(paramp);
     }
-    AppMethodBeat.o(5402);
+    AppMethodBeat.o(101662);
   }
   
   public final boolean a(c paramc, String... paramVarArgs)
   {
-    AppMethodBeat.i(5407);
+    AppMethodBeat.i(101667);
     if (super.update(paramc, paramVarArgs))
     {
-      paramVarArgs = this.aTm.iterator();
+      paramVarArgs = this.listeners.iterator();
       while (paramVarArgs.hasNext())
       {
         p localp = (p)paramVarArgs.next();
         if (localp != null) {
-          localp.d(paramc);
+          localp.e(paramc);
         }
       }
-      AppMethodBeat.o(5407);
+      AppMethodBeat.o(101667);
       return true;
     }
-    AppMethodBeat.o(5407);
+    AppMethodBeat.o(101667);
     return false;
   }
   
   public final void b(p paramp)
   {
-    AppMethodBeat.i(5403);
+    AppMethodBeat.i(101663);
     if (paramp != null) {
-      this.aTm.remove(paramp);
+      this.listeners.remove(paramp);
     }
-    AppMethodBeat.o(5403);
+    AppMethodBeat.o(101663);
   }
   
   public final boolean b(c paramc, String... paramVarArgs)
   {
-    AppMethodBeat.i(5408);
+    AppMethodBeat.i(101668);
     if (super.delete(paramc, paramVarArgs))
     {
-      paramVarArgs = this.aTm.iterator();
+      paramVarArgs = this.listeners.iterator();
       while (paramVarArgs.hasNext())
       {
         p localp = (p)paramVarArgs.next();
         if (localp != null) {
-          localp.d(paramc);
+          localp.e(paramc);
         }
       }
-      AppMethodBeat.o(5408);
+      AppMethodBeat.o(101668);
       return true;
     }
-    AppMethodBeat.o(5408);
+    AppMethodBeat.o(101668);
     return false;
   }
   
-  public final LinkedList<c> bwD()
+  public final LinkedList<c> chT()
   {
-    AppMethodBeat.i(5411);
+    AppMethodBeat.i(101671);
     Object localObject = "select * from FavCdnInfo where status = 1 order by modifyTime desc " + " limit 1";
     localObject = this.db.a((String)localObject, null, 2);
     if (localObject == null)
     {
-      AppMethodBeat.o(5411);
+      AppMethodBeat.o(101671);
       return null;
     }
     if (!((Cursor)localObject).moveToFirst())
     {
       ((Cursor)localObject).close();
-      AppMethodBeat.o(5411);
+      AppMethodBeat.o(101671);
       return null;
     }
     LinkedList localLinkedList = new LinkedList();
@@ -142,54 +142,54 @@ public final class a
       localLinkedList.add(localc);
     } while (((Cursor)localObject).moveToNext());
     ((Cursor)localObject).close();
-    AppMethodBeat.o(5411);
+    AppMethodBeat.o(101671);
     return localLinkedList;
   }
   
-  public final Cursor bwE()
+  public final Cursor chU()
   {
-    AppMethodBeat.i(5416);
+    AppMethodBeat.i(101676);
     Cursor localCursor = this.db.rawQuery("select * from FavCdnInfo where type = 0 and status = 1", null);
-    AppMethodBeat.o(5416);
+    AppMethodBeat.o(101676);
     return localCursor;
   }
   
-  public final Cursor bwF()
+  public final Cursor chV()
   {
-    AppMethodBeat.i(5417);
+    AppMethodBeat.i(101677);
     Cursor localCursor = this.db.rawQuery("select * from FavCdnInfo where type = 1 and status = 1", null);
-    AppMethodBeat.o(5417);
+    AppMethodBeat.o(101677);
     return localCursor;
   }
   
-  public final boolean e(c paramc)
+  public final boolean f(c paramc)
   {
-    AppMethodBeat.i(5406);
+    AppMethodBeat.i(101666);
     if (paramc == null)
     {
-      AppMethodBeat.o(5406);
+      AppMethodBeat.o(101666);
       return false;
     }
     if (super.insert(paramc))
     {
-      Iterator localIterator = this.aTm.iterator();
+      Iterator localIterator = this.listeners.iterator();
       while (localIterator.hasNext())
       {
         p localp = (p)localIterator.next();
         if (localp != null) {
-          localp.d(paramc);
+          localp.e(paramc);
         }
       }
-      AppMethodBeat.o(5406);
+      AppMethodBeat.o(101666);
       return true;
     }
-    AppMethodBeat.o(5406);
+    AppMethodBeat.o(101666);
     return false;
   }
   
-  public final List<c> jW(long paramLong)
+  public final List<c> pN(long paramLong)
   {
-    AppMethodBeat.i(5412);
+    AppMethodBeat.i(101672);
     ArrayList localArrayList = new ArrayList();
     Object localObject = "select * from FavCdnInfo where favLocalId = ".concat(String.valueOf(paramLong));
     localObject = this.db.a((String)localObject, null, 2);
@@ -203,14 +203,14 @@ public final class a
       }
       ((Cursor)localObject).close();
     }
-    ab.v("MicroMsg.FavCdnStorage", "getInfos size:%d", new Object[] { Integer.valueOf(localArrayList.size()) });
-    AppMethodBeat.o(5412);
+    ad.v("MicroMsg.FavCdnStorage", "getInfos size:%d", new Object[] { Integer.valueOf(localArrayList.size()) });
+    AppMethodBeat.o(101672);
     return localArrayList;
   }
   
-  public final List<c> jX(long paramLong)
+  public final List<c> pO(long paramLong)
   {
-    AppMethodBeat.i(5413);
+    AppMethodBeat.i(101673);
     LinkedList localLinkedList = new LinkedList();
     Object localObject = "select * from FavCdnInfo where favLocalId = " + paramLong + " and type = 0 and status = 3";
     localObject = this.db.a((String)localObject, null, 2);
@@ -225,50 +225,50 @@ public final class a
     if (localObject != null) {
       ((Cursor)localObject).close();
     }
-    ab.v("MicroMsg.FavCdnStorage", "getUploadedInfos size:%d", new Object[] { Integer.valueOf(localLinkedList.size()) });
-    AppMethodBeat.o(5413);
+    ad.v("MicroMsg.FavCdnStorage", "getUploadedInfos size:%d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+    AppMethodBeat.o(101673);
     return localLinkedList;
   }
   
-  public final void jY(long paramLong)
+  public final void pP(long paramLong)
   {
-    AppMethodBeat.i(5414);
+    AppMethodBeat.i(101674);
     String str = String.format("delete from %s where %s = %d and %s = %d", new Object[] { "FavCdnInfo", "favLocalId", Long.valueOf(paramLong), "type", Integer.valueOf(0) });
     this.db.execSQL("FavCdnInfo", str);
-    AppMethodBeat.o(5414);
+    AppMethodBeat.o(101674);
   }
   
-  public final boolean jZ(long paramLong)
+  public final boolean pQ(long paramLong)
   {
-    AppMethodBeat.i(5418);
+    AppMethodBeat.i(101678);
     c localc = new c();
     localc.field_favLocalId = paramLong;
     boolean bool = b(localc, new String[] { "favLocalId" });
-    AppMethodBeat.o(5418);
+    AppMethodBeat.o(101678);
     return bool;
   }
   
   public final void startAll()
   {
-    AppMethodBeat.i(5405);
+    AppMethodBeat.i(101665);
     this.db.execSQL("FavCdnInfo", "update FavCdnInfo set status = 1 where status <> 3");
-    AppMethodBeat.o(5405);
+    AppMethodBeat.o(101665);
   }
   
-  public final int t(long paramLong, int paramInt)
+  public final int x(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(5415);
+    AppMethodBeat.i(101675);
     Object localObject = "select status from FavCdnInfo where favLocalId = " + paramLong + " and type = " + paramInt;
     localObject = this.db.a((String)localObject, null, 2);
     if (localObject == null)
     {
-      AppMethodBeat.o(5415);
+      AppMethodBeat.o(101675);
       return 3;
     }
     if (!((Cursor)localObject).moveToFirst())
     {
       ((Cursor)localObject).close();
-      AppMethodBeat.o(5415);
+      AppMethodBeat.o(101675);
       return 3;
     }
     paramInt = 1;
@@ -283,7 +283,7 @@ public final class a
       if (i1 == 1)
       {
         ((Cursor)localObject).close();
-        AppMethodBeat.o(5415);
+        AppMethodBeat.o(101675);
         return 1;
       }
       k = j;
@@ -305,35 +305,35 @@ public final class a
     ((Cursor)localObject).close();
     if (m != 0)
     {
-      AppMethodBeat.o(5415);
+      AppMethodBeat.o(101675);
       return 2;
     }
     if (k != 0)
     {
-      AppMethodBeat.o(5415);
+      AppMethodBeat.o(101675);
       return 4;
     }
     if (n != 0)
     {
-      AppMethodBeat.o(5415);
+      AppMethodBeat.o(101675);
       return 3;
     }
-    AppMethodBeat.o(5415);
+    AppMethodBeat.o(101675);
     return 0;
   }
   
-  public final void x(g paramg)
+  public final void y(g paramg)
   {
-    AppMethodBeat.i(5410);
-    long l = bo.aoy();
+    AppMethodBeat.i(101670);
+    long l = bt.eGO();
     paramg = "update FavCdnInfo set status = 1,modifyTime = " + l + " where favLocalId = " + paramg.field_localId + " and type = 0 and status <> 3";
     this.db.execSQL("FavCdnInfo", paramg);
-    AppMethodBeat.o(5410);
+    AppMethodBeat.o(101670);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.b.f.a
  * JD-Core Version:    0.7.0.1
  */

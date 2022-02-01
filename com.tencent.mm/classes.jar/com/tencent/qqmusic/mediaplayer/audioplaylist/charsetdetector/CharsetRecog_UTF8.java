@@ -13,7 +13,7 @@ class CharsetRecog_UTF8
   CharsetMatch match(CharsetDetector paramCharsetDetector)
   {
     int i4 = 0;
-    AppMethodBeat.i(104765);
+    AppMethodBeat.i(76644);
     byte[] arrayOfByte = paramCharsetDetector.fRawInput;
     if ((paramCharsetDetector.fRawLength >= 3) && ((arrayOfByte[0] & 0xFF) == 239) && ((arrayOfByte[1] & 0xFF) == 187) && ((arrayOfByte[2] & 0xFF) == 191)) {}
     for (int m = 1;; m = 0)
@@ -89,7 +89,7 @@ class CharsetRecog_UTF8
           }
           while (i == 0)
           {
-            AppMethodBeat.o(104765);
+            AppMethodBeat.o(76644);
             return null;
             if ((m != 0) && (n > i1 * 10))
             {
@@ -116,7 +116,7 @@ class CharsetRecog_UTF8
             }
           }
           paramCharsetDetector = new CharsetMatch(paramCharsetDetector, this, i);
-          AppMethodBeat.o(104765);
+          AppMethodBeat.o(76644);
           return paramCharsetDetector;
         }
         else
@@ -134,7 +134,7 @@ class CharsetRecog_UTF8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector.CharsetRecog_UTF8
  * JD-Core Version:    0.7.0.1
  */

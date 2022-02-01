@@ -19,13 +19,13 @@ import android.widget.ProgressBar;
 
 class j
 {
-  private static final int[] VO = { 16843067, 16843068 };
-  private final ProgressBar aaH;
-  Bitmap aaI;
+  private static final int[] acT = { 16843067, 16843068 };
+  private final ProgressBar ahN;
+  Bitmap ahO;
   
   j(ProgressBar paramProgressBar)
   {
-    this.aaH = paramProgressBar;
+    this.ahN = paramProgressBar;
   }
   
   private Drawable b(Drawable paramDrawable, boolean paramBoolean)
@@ -33,11 +33,11 @@ class j
     int j = 0;
     if ((paramDrawable instanceof f))
     {
-      localObject1 = ((f)paramDrawable).cU();
+      localObject1 = ((f)paramDrawable).dZ();
       if (localObject1 != null)
       {
         localObject1 = b((Drawable)localObject1, paramBoolean);
-        ((f)paramDrawable).g((Drawable)localObject1);
+        ((f)paramDrawable).l((Drawable)localObject1);
       }
     }
     do
@@ -73,8 +73,8 @@ class j
     } while (!(paramDrawable instanceof BitmapDrawable));
     paramDrawable = (BitmapDrawable)paramDrawable;
     Object localObject2 = paramDrawable.getBitmap();
-    if (this.aaI == null) {
-      this.aaI = ((Bitmap)localObject2);
+    if (this.ahO == null) {
+      this.ahO = ((Bitmap)localObject2);
     }
     Object localObject1 = new ShapeDrawable(new RoundRectShape(new float[] { 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F, 5.0F }, null, null));
     localObject2 = new BitmapShader((Bitmap)localObject2, Shader.TileMode.REPEAT, Shader.TileMode.CLAMP);
@@ -88,11 +88,11 @@ class j
   
   void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    az localaz = az.a(this.aaH.getContext(), paramAttributeSet, VO, paramInt, 0);
-    Object localObject = localaz.cH(0);
+    az localaz = az.a(this.ahN.getContext(), paramAttributeSet, acT, paramInt, 0);
+    Object localObject = localaz.db(0);
     if (localObject != null)
     {
-      ProgressBar localProgressBar = this.aaH;
+      ProgressBar localProgressBar = this.ahN;
       paramAttributeSet = (AttributeSet)localObject;
       if ((localObject instanceof AnimationDrawable))
       {
@@ -112,11 +112,11 @@ class j
       }
       localProgressBar.setIndeterminateDrawable(paramAttributeSet);
     }
-    paramAttributeSet = localaz.cH(1);
+    paramAttributeSet = localaz.db(1);
     if (paramAttributeSet != null) {
-      this.aaH.setProgressDrawable(b(paramAttributeSet, false));
+      this.ahN.setProgressDrawable(b(paramAttributeSet, false));
     }
-    localaz.aoo.recycle();
+    localaz.avP.recycle();
   }
 }
 

@@ -18,7 +18,7 @@ public final class e
     if (paramAsset == null) {
       throw new IllegalArgumentException("asset is null");
     }
-    if (paramAsset.kp() == null) {
+    if (paramAsset.ky() == null) {
       throw new IllegalArgumentException("invalid asset");
     }
     if (paramAsset.getData() != null) {

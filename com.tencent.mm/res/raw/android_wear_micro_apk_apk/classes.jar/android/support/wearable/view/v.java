@@ -13,26 +13,26 @@ final class v
   extends Drawable
   implements Drawable.Callback
 {
-  private int BB;
-  private ColorFilter BC;
-  private boolean BD = true;
-  private boolean BE = true;
-  private int BF;
-  private PorterDuff.Mode BG;
-  private int DE = 2;
-  private int DF = 2;
-  private float DG = 1.0F;
-  private float DH = 1.0F;
-  private int DI;
-  private int DJ;
-  private final Rect DK = new Rect();
-  private float DL = 1.0F;
-  private int DM;
-  private int DN;
-  private float DO;
-  private float DP;
-  private Drawable gh;
-  private int nT = 255;
+  private int Dq;
+  private ColorFilter Dr;
+  private boolean Ds = true;
+  private boolean Dt = true;
+  private int Du;
+  private PorterDuff.Mode Dv;
+  private float FA = 1.0F;
+  private int FB;
+  private int FC;
+  private float FD;
+  private float FE;
+  private int Ft = 2;
+  private int Fu = 2;
+  private float Fv = 1.0F;
+  private float Fw = 1.0F;
+  private int Fx;
+  private int Fy;
+  private final Rect Fz = new Rect();
+  private Drawable ie;
+  private int pH = 255;
   
   public v()
   {
@@ -58,283 +58,283 @@ final class v
     return paramInt;
   }
   
-  private void a(Rect paramRect)
+  private void b(Rect paramRect)
   {
-    if (this.gh != null)
+    if (this.ie != null)
     {
-      int i = this.gh.getIntrinsicWidth();
-      int j = this.gh.getIntrinsicHeight();
+      int i = this.ie.getIntrinsicWidth();
+      int j = this.ie.getIntrinsicHeight();
       if ((i != -1) && (j != -1)) {
-        this.gh.setBounds(paramRect.left, paramRect.top, i + paramRect.left, j + paramRect.top);
+        this.ie.setBounds(paramRect.left, paramRect.top, i + paramRect.left, j + paramRect.top);
       }
     }
     else
     {
       return;
     }
-    this.gh.setBounds(paramRect);
+    this.ie.setBounds(paramRect);
   }
   
-  private void ft()
+  private void fC()
   {
-    if (this.gh == null) {}
-    while ((this.DK.width() == 0) || (this.DK.height() == 0)) {
+    if (this.ie == null) {}
+    while ((this.Fz.width() == 0) || (this.Fz.height() == 0)) {
       return;
     }
-    this.DM = this.gh.getIntrinsicWidth();
-    this.DN = this.gh.getIntrinsicHeight();
-    if ((this.DM == -1) || (this.DN == -1))
+    this.FB = this.ie.getIntrinsicWidth();
+    this.FC = this.ie.getIntrinsicHeight();
+    if ((this.FB == -1) || (this.FC == -1))
     {
-      this.DM = this.DK.width();
-      this.DN = this.DK.height();
-      this.DL = 1.0F;
-      this.DO = 0.0F;
-      this.DP = 0.0F;
-      this.DI = 0;
-      this.DJ = 0;
+      this.FB = this.Fz.width();
+      this.FC = this.Fz.height();
+      this.FA = 1.0F;
+      this.FD = 0.0F;
+      this.FE = 0.0F;
+      this.Fx = 0;
+      this.Fy = 0;
       return;
     }
-    this.DO = (this.DK.width() * 0.2F);
-    this.DP = (this.DK.height() * 0.2F);
-    float f1 = this.DK.width() + this.DE * this.DO;
-    float f2 = this.DK.height() + this.DF * this.DP;
-    this.DL = Math.max(f1 / this.DM, f2 / this.DN);
-    float f3 = this.DM * this.DL;
-    float f4 = this.DN;
-    float f5 = this.DL;
+    this.FD = (this.Fz.width() * 0.2F);
+    this.FE = (this.Fz.height() * 0.2F);
+    float f1 = this.Fz.width() + this.Ft * this.FD;
+    float f2 = this.Fz.height() + this.Fu * this.FE;
+    this.FA = Math.max(f1 / this.FB, f2 / this.FC);
+    float f3 = this.FB * this.FA;
+    float f4 = this.FC;
+    float f5 = this.FA;
     if (f3 > f1)
     {
-      this.DI = ((int)((f3 - f1) / 2.0F));
-      this.DJ = 0;
+      this.Fx = ((int)((f3 - f1) / 2.0F));
+      this.Fy = 0;
       return;
     }
-    this.DJ = ((int)((f4 * f5 - f2) / 2.0F));
-    this.DI = 0;
+    this.Fy = ((int)((f4 * f5 - f2) / 2.0F));
+    this.Fx = 0;
   }
   
-  public final void V(int paramInt1, int paramInt2)
+  public final void X(int paramInt1, int paramInt2)
   {
     paramInt1 = Math.max(0, paramInt1 - 1);
     paramInt2 = Math.max(0, paramInt2 - 1);
-    if ((paramInt1 != this.DE) || (paramInt2 != this.DF))
+    if ((paramInt1 != this.Ft) || (paramInt2 != this.Fu))
     {
-      this.DE = paramInt1;
-      this.DF = paramInt2;
-      this.DG = a(this.DG, this.DE);
-      this.DH = a(this.DH, this.DF);
-      ft();
+      this.Ft = paramInt1;
+      this.Fu = paramInt2;
+      this.Fv = a(this.Fv, this.Ft);
+      this.Fw = a(this.Fw, this.Fu);
+      fC();
       invalidateSelf();
     }
   }
   
   public final void clearColorFilter()
   {
-    if (this.BG != null)
+    if (this.Dv != null)
     {
-      this.BG = null;
-      if (this.gh != null) {
-        this.gh.clearColorFilter();
+      this.Dv = null;
+      if (this.ie != null) {
+        this.ie.clearColorFilter();
       }
-    }
-  }
-  
-  public final void d(float paramFloat1, float paramFloat2)
-  {
-    if ((this.DG != paramFloat1) || (this.DH != paramFloat2))
-    {
-      this.DG = a(paramFloat1, this.DE);
-      this.DH = a(paramFloat2, this.DF);
-      invalidateSelf();
     }
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    if (this.gh != null)
+    if (this.ie != null)
     {
       paramCanvas.save();
       paramCanvas.clipRect(getBounds());
-      float f1 = this.DI;
-      float f2 = this.DG;
-      float f3 = this.DO;
-      float f4 = this.DJ;
-      float f5 = this.DH;
-      float f6 = this.DP;
+      float f1 = this.Fx;
+      float f2 = this.Fv;
+      float f3 = this.FD;
+      float f4 = this.Fy;
+      float f5 = this.Fw;
+      float f6 = this.FE;
       paramCanvas.translate(-(f1 + f2 * f3), -(f4 + f5 * f6));
-      paramCanvas.scale(this.DL, this.DL);
-      this.gh.draw(paramCanvas);
+      paramCanvas.scale(this.FA, this.FA);
+      this.ie.draw(paramCanvas);
       paramCanvas.restore();
+    }
+  }
+  
+  public final void e(float paramFloat1, float paramFloat2)
+  {
+    if ((this.Fv != paramFloat1) || (this.Fw != paramFloat2))
+    {
+      this.Fv = a(paramFloat1, this.Ft);
+      this.Fw = a(paramFloat2, this.Fu);
+      invalidateSelf();
     }
   }
   
   public final int getAlpha()
   {
-    return this.nT;
+    return this.pH;
   }
   
   public final int getChangingConfigurations()
   {
-    return this.BB;
+    return this.Dq;
   }
   
   public final int getOpacity()
   {
-    if (this.gh != null) {
-      return this.gh.getOpacity();
+    if (this.ie != null) {
+      return this.ie.getOpacity();
     }
     return 0;
   }
   
   public final void invalidateDrawable(Drawable paramDrawable)
   {
-    if ((paramDrawable == this.gh) && (getCallback() != null)) {
+    if ((paramDrawable == this.ie) && (getCallback() != null)) {
       getCallback().invalidateDrawable(this);
     }
   }
   
   public final boolean isStateful()
   {
-    if (this.gh != null) {
-      return this.gh.isStateful();
+    if (this.ie != null) {
+      return this.ie.isStateful();
     }
     return false;
   }
   
   public final void jumpToCurrentState()
   {
-    if (this.gh != null) {
-      this.gh.jumpToCurrentState();
+    if (this.ie != null) {
+      this.ie.jumpToCurrentState();
     }
   }
   
   protected final void onBoundsChange(Rect paramRect)
   {
-    this.DK.set(paramRect);
-    a(paramRect);
-    ft();
+    this.Fz.set(paramRect);
+    b(paramRect);
+    fC();
     invalidateSelf();
   }
   
   protected final boolean onLevelChange(int paramInt)
   {
-    if (this.gh != null) {
-      return this.gh.setLevel(paramInt);
+    if (this.ie != null) {
+      return this.ie.setLevel(paramInt);
     }
     return false;
   }
   
   protected final boolean onStateChange(int[] paramArrayOfInt)
   {
-    if (this.gh != null) {
-      return this.gh.setState(paramArrayOfInt);
+    if (this.ie != null) {
+      return this.ie.setState(paramArrayOfInt);
     }
     return false;
   }
   
   public final void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
   {
-    if ((paramDrawable == this.gh) && (getCallback() != null)) {
+    if ((paramDrawable == this.ie) && (getCallback() != null)) {
       getCallback().scheduleDrawable(this, paramRunnable, paramLong);
     }
   }
   
   public final void setAlpha(int paramInt)
   {
-    if (this.nT != paramInt)
+    if (this.pH != paramInt)
     {
-      this.nT = paramInt;
-      if (this.gh != null) {
-        this.gh.setAlpha(paramInt);
+      this.pH = paramInt;
+      if (this.ie != null) {
+        this.ie.setAlpha(paramInt);
       }
     }
   }
   
   public final void setChangingConfigurations(int paramInt)
   {
-    if (this.BB != paramInt)
+    if (this.Dq != paramInt)
     {
-      this.BB = paramInt;
-      if (this.gh != null) {
-        this.gh.setChangingConfigurations(paramInt);
+      this.Dq = paramInt;
+      if (this.ie != null) {
+        this.ie.setChangingConfigurations(paramInt);
       }
     }
   }
   
   public final void setColorFilter(int paramInt, PorterDuff.Mode paramMode)
   {
-    if ((this.BF != paramInt) || (this.BG != paramMode))
+    if ((this.Du != paramInt) || (this.Dv != paramMode))
     {
-      this.BF = paramInt;
-      this.BG = paramMode;
-      if (this.gh != null) {
-        this.gh.setColorFilter(paramInt, paramMode);
+      this.Du = paramInt;
+      this.Dv = paramMode;
+      if (this.ie != null) {
+        this.ie.setColorFilter(paramInt, paramMode);
       }
     }
   }
   
   public final void setColorFilter(ColorFilter paramColorFilter)
   {
-    if (this.BC != paramColorFilter)
+    if (this.Dr != paramColorFilter)
     {
-      this.BC = paramColorFilter;
-      if (this.gh != null) {
-        this.gh.setColorFilter(paramColorFilter);
+      this.Dr = paramColorFilter;
+      if (this.ie != null) {
+        this.ie.setColorFilter(paramColorFilter);
       }
     }
   }
   
   public final void setDither(boolean paramBoolean)
   {
-    if (this.BE != paramBoolean)
+    if (this.Dt != paramBoolean)
     {
-      this.BE = paramBoolean;
-      if (this.gh != null) {
-        this.gh.setDither(paramBoolean);
+      this.Dt = paramBoolean;
+      if (this.ie != null) {
+        this.ie.setDither(paramBoolean);
       }
     }
   }
   
   public final void setDrawable(Drawable paramDrawable)
   {
-    if (this.gh == paramDrawable) {}
+    if (this.ie == paramDrawable) {}
     do
     {
       return;
-      if (this.gh != null) {
-        this.gh.setCallback(null);
+      if (this.ie != null) {
+        this.ie.setCallback(null);
       }
-      this.gh = paramDrawable;
-    } while (this.gh == null);
-    this.gh.setAlpha(getAlpha());
-    a(getBounds());
-    this.gh.setCallback(this);
-    if (this.BC != null) {
-      this.gh.setColorFilter(this.BC);
+      this.ie = paramDrawable;
+    } while (this.ie == null);
+    this.ie.setAlpha(getAlpha());
+    b(getBounds());
+    this.ie.setCallback(this);
+    if (this.Dr != null) {
+      this.ie.setColorFilter(this.Dr);
     }
-    if (this.BG != null) {
-      this.gh.setColorFilter(this.BF, this.BG);
+    if (this.Dv != null) {
+      this.ie.setColorFilter(this.Du, this.Dv);
     }
-    this.gh.setDither(this.BE);
-    this.gh.setFilterBitmap(this.BD);
-    this.gh.setState(getState());
-    ft();
+    this.ie.setDither(this.Dt);
+    this.ie.setFilterBitmap(this.Ds);
+    this.ie.setState(getState());
+    fC();
     invalidateSelf();
   }
   
   public final void setFilterBitmap(boolean paramBoolean)
   {
-    if (this.BD != paramBoolean)
+    if (this.Ds != paramBoolean)
     {
-      this.BD = paramBoolean;
-      if (this.gh != null) {
-        this.gh.setFilterBitmap(paramBoolean);
+      this.Ds = paramBoolean;
+      if (this.ie != null) {
+        this.ie.setFilterBitmap(paramBoolean);
       }
     }
   }
   
   public final void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
   {
-    if ((paramDrawable == this.gh) && (getCallback() != null)) {
+    if ((paramDrawable == this.ie) && (getCallback() != null)) {
       getCallback().unscheduleDrawable(this, paramRunnable);
     }
   }

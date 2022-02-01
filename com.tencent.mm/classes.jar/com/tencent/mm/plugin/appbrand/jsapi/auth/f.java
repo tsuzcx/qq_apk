@@ -1,75 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
-import android.app.Activity;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.plugin.appbrand.widget.b.c.c;
-import com.tencent.mm.protocal.protobuf.bwv;
-import com.tencent.mm.ui.MMActivity;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import org.json.JSONObject;
+import d.l;
 
-public abstract class f
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<h>
-{
-  protected static MMActivity a(h paramh)
-  {
-    if ((paramh instanceof r)) {}
-    for (paramh = ((r)paramh).X(Activity.class); (paramh == null) || (!(paramh instanceof MMActivity)); paramh = paramh.getContext()) {
-      return null;
-    }
-    return (MMActivity)paramh;
-  }
-  
-  protected static <T> LinkedList<T> j(ArrayList<T> paramArrayList)
-  {
-    if (paramArrayList == null) {
-      return null;
-    }
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.addAll(paramArrayList);
-    return localLinkedList;
-  }
-  
-  protected static LinkedList<c.c> x(LinkedList<bwv> paramLinkedList)
-  {
-    LinkedList localLinkedList = new LinkedList();
-    paramLinkedList = paramLinkedList.iterator();
-    while (paramLinkedList.hasNext())
-    {
-      bwv localbwv = (bwv)paramLinkedList.next();
-      c.c localc = new c.c();
-      localc.scope = localbwv.wAh;
-      localc.desc = localbwv.Desc;
-      localc.state = localbwv.xJY;
-      localLinkedList.add(localc);
-    }
-    return localLinkedList;
-  }
-  
-  public void a(h paramh, JSONObject paramJSONObject, int paramInt)
-  {
-    if (!paramJSONObject.optBoolean("requestInQueue", true))
-    {
-      a.x(paramh.getRuntime()).a(this, paramh, paramJSONObject, paramInt);
-      return;
-    }
-    c.y(paramh.getRuntime()).a(this, paramh, paramJSONObject, paramInt);
-  }
-  
-  protected abstract void a(h paramh, JSONObject paramJSONObject, int paramInt, d paramd);
-  
-  final void b(h paramh, int paramInt, String paramString)
-  {
-    paramh.h(paramInt, j(paramString, null));
-  }
-}
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthHelper;", "Lcom/tencent/mm/plugin/appbrand/jsapi/ConstantsAppBrandJsApiMsg;", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthConstants;", "Lcom/tencent/mm/wxaprotocol/ConstantsWxaProtocol;", "windowAndroid", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "getWindowAndroid", "(Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;)Lcom/tencent/mm/plugin/appbrand/platform/window/WindowAndroid;", "setUserInfoListData", "", "context", "Landroid/content/Context;", "bitmap", "Landroid/graphics/Bitmap;", "userNickName", "", "scope", "dialog", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/AppBrandRequestDialog;", "bridge", "_Var", "Lcom/tencent/mm/vending/pipeline/Mario;", "pipeable", "Lcom/tencent/mm/vending/pipeline/Pipeable;", "fill", "Lcom/tencent/mm/protocal/protobuf/WxaExternalInfo;", "service", "notNullContext", "runCgi", "R", "Lcom/tencent/mm/protocal/protobuf/ResponseProtoBuf;", "url", "request", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "clazz", "Ljava/lang/Class;", "toByteString", "Lcom/tencent/mm/protobuf/ByteString;", "ApiInvokeInterruptCallbackException", "ComponentInterruptedException", "luggage-wechat-full-sdk_release"})
+public abstract interface f {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.f
  * JD-Core Version:    0.7.0.1
  */

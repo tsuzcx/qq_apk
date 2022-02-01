@@ -1,43 +1,34 @@
 package com.tencent.mm.plugin.recharge.ui;
 
+import android.content.Intent;
+import android.provider.ContactsContract.Contacts;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet.a.q;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class PhoneRechargeUI$16
-  implements b.a
+  implements View.OnClickListener
 {
   PhoneRechargeUI$16(PhoneRechargeUI paramPhoneRechargeUI) {}
   
-  public final void a(q paramq)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(44270);
-    if (paramq == null)
+    AppMethodBeat.i(67178);
+    if (b.a(this.uYi.getContext(), "android.permission.READ_CONTACTS", 48, null, null))
     {
-      ab.e("MicroMsg.PhoneRechargeUI", "hy: no product item");
-      AppMethodBeat.o(44270);
-      return;
-    }
-    if (!PhoneRechargeUI.a(this.pWp, paramq.tTY, paramq.fjP))
-    {
-      if (!bo.isNullOrNil(paramq.url))
-      {
-        paramq = PhoneRechargeUI.b(this.pWp, paramq.url);
-        PhoneRechargeUI.c(this.pWp, paramq);
-        AppMethodBeat.o(44270);
-        return;
-      }
-      if (PhoneRechargeUI.a(this.pWp, paramq)) {
-        PhoneRechargeUI.d(this.pWp, paramq.id);
+      paramView = new Intent("android.intent.action.PICK", ContactsContract.Contacts.CONTENT_URI);
+      if (bt.T(this.uYi, paramView)) {
+        this.uYi.startActivityForResult(paramView, 1);
       }
     }
-    AppMethodBeat.o(44270);
+    AppMethodBeat.o(67178);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.PhoneRechargeUI.16
  * JD-Core Version:    0.7.0.1
  */

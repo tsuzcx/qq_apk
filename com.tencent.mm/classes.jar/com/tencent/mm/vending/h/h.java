@@ -7,68 +7,68 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class h
   extends d
 {
-  public a APc;
-  Looper b;
-  public String c;
+  public a HQU;
+  Looper mLooper;
+  public String mType;
   
   public h(Handler paramHandler, String paramString)
   {
     this(new b(paramHandler), paramString);
-    AppMethodBeat.i(126118);
-    AppMethodBeat.o(126118);
+    AppMethodBeat.i(74915);
+    AppMethodBeat.o(74915);
   }
   
   private h(Looper paramLooper, a parama, String paramString)
   {
-    this.b = paramLooper;
-    this.APc = parama;
-    this.c = paramString;
+    this.mLooper = paramLooper;
+    this.HQU = parama;
+    this.mType = paramString;
   }
   
   public h(Looper paramLooper, String paramString)
   {
     this(new Handler(paramLooper), paramString);
-    AppMethodBeat.i(126120);
-    AppMethodBeat.o(126120);
+    AppMethodBeat.i(74917);
+    AppMethodBeat.o(74917);
   }
   
   public h(a parama, String paramString)
   {
     this(parama.getLooper(), parama, paramString);
-    AppMethodBeat.i(126119);
-    AppMethodBeat.o(126119);
+    AppMethodBeat.i(74916);
+    AppMethodBeat.o(74916);
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(126121);
-    this.APc.dU();
-    AppMethodBeat.o(126121);
+    AppMethodBeat.i(74918);
+    this.HQU.fm();
+    AppMethodBeat.o(74918);
+  }
+  
+  public final void f(Runnable paramRunnable, long paramLong)
+  {
+    AppMethodBeat.i(74920);
+    if (paramLong >= 0L)
+    {
+      this.HQU.c(paramRunnable, paramLong);
+      AppMethodBeat.o(74920);
+      return;
+    }
+    this.HQU.post(paramRunnable);
+    AppMethodBeat.o(74920);
   }
   
   public final String getType()
   {
-    return this.c;
+    return this.mType;
   }
   
-  public final void n(Runnable paramRunnable, long paramLong)
+  public final void v(Runnable paramRunnable)
   {
-    AppMethodBeat.i(126123);
-    if (paramLong >= 0L)
-    {
-      this.APc.d(paramRunnable, paramLong);
-      AppMethodBeat.o(126123);
-      return;
-    }
-    this.APc.post(paramRunnable);
-    AppMethodBeat.o(126123);
-  }
-  
-  public final void o(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(126122);
-    this.APc.post(paramRunnable);
-    AppMethodBeat.o(126122);
+    AppMethodBeat.i(74919);
+    this.HQU.post(paramRunnable);
+    AppMethodBeat.o(74919);
   }
 }
 

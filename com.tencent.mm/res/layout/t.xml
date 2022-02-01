@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.view.menu.ListMenuItemView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="196.0dip"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/k5" android:background="@drawable/a1" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" />
-    <LinearLayout android:id="@id/k6" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="?eq" style="@style/u">
-        <TextView android:textAppearance="?ei" android:layout_gravity="center_vertical" android:id="@id/cz" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/z" />
-        <Space android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
-        <TextView android:textAppearance="?ej" android:layout_gravity="center_vertical" android:id="@id/k7" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/w" />
-        <ImageView android:layout_gravity="center" android:id="@id/k8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" style="@style/x" />
-    </LinearLayout>
-</android.support.v7.view.menu.ListMenuItemView>
+    <View android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="80.0dip" />
+</FrameLayout>

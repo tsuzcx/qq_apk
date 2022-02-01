@@ -1,6 +1,6 @@
 package com.tencent.mm.audio.mix.e;
 
-import com.tencent.mm.audio.mix.a.d;
+import com.tencent.mm.audio.mix.a.e;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
@@ -10,24 +10,24 @@ public abstract class f
 {
   protected int MAX_VALUE = 32767;
   protected int MIN_VALUE = -32768;
-  protected short[][] cgQ = (short[][])Array.newInstance(Short.TYPE, new int[] { 1, 1 });
-  protected int cgR = 1;
-  protected int cgS = 1;
-  protected short[] cgT = new short[1];
-  protected int cgU = 1;
-  protected com.tencent.mm.audio.mix.a.b cgV;
+  protected short[][] cVN = (short[][])Array.newInstance(Short.TYPE, new int[] { 1, 1 });
+  protected int cVO = 1;
+  protected int cVP = 1;
+  protected short[] cVQ = new short[1];
+  protected int cVR = 1;
+  protected com.tencent.mm.audio.mix.a.b cVS;
   
-  private byte[] DV()
+  private byte[] NE()
   {
-    if (this.cgV != null) {
-      return this.cgV.cem;
+    if (this.cVS != null) {
+      return this.cVS.cTk;
     }
     return null;
   }
   
-  protected abstract byte[] D(int paramInt1, int paramInt2, int paramInt3);
+  protected abstract byte[] G(int paramInt1, int paramInt2, int paramInt3);
   
-  public final boolean a(com.tencent.mm.audio.mix.a.b paramb, List<d> paramList)
+  public final boolean a(com.tencent.mm.audio.mix.a.b paramb, List<e> paramList)
   {
     if ((paramList == null) || (paramList.size() == 0))
     {
@@ -38,10 +38,10 @@ public abstract class f
     int i = 0;
     while (i < paramList.size())
     {
-      localObject1[i] = ((d)paramList.get(i)).cem;
+      localObject1[i] = ((e)paramList.get(i)).cTk;
       i += 1;
     }
-    this.cgV = paramb;
+    this.cVS = paramb;
     if (localObject1.length == 0) {
       localObject1 = null;
     }
@@ -56,7 +56,7 @@ public abstract class f
       }
       else if (localObject1.length == 1)
       {
-        byte[] arrayOfByte = DV();
+        byte[] arrayOfByte = NE();
         if (arrayOfByte != null)
         {
           localObject1 = arrayOfByte;
@@ -87,42 +87,42 @@ public abstract class f
         label232:
         int k = localObject1.length;
         int m = localObject2.length / 2;
-        if ((k != this.cgR) || (m != this.cgS))
+        if ((k != this.cVO) || (m != this.cVP))
         {
-          this.cgQ = ((short[][])Array.newInstance(Short.TYPE, new int[] { k, m }));
-          this.cgR = k;
-          this.cgS = m;
+          this.cVN = ((short[][])Array.newInstance(Short.TYPE, new int[] { k, m }));
+          this.cVO = k;
+          this.cVP = m;
         }
         i = 0;
         while (i < k)
         {
-          Arrays.fill(this.cgQ[i], 0, m - 1, (short)0);
+          Arrays.fill(this.cVN[i], 0, m - 1, (short)0);
           int j = 0;
           while (j < m)
           {
-            this.cgQ[i][j] = ((short)(localObject1[i][(j * 2)] & 0xFF | (localObject1[i][(j * 2 + 1)] & 0xFF) << 8));
+            this.cVN[i][j] = ((short)(localObject1[i][(j * 2)] & 0xFF | (localObject1[i][(j * 2 + 1)] & 0xFF) << 8));
             j += 1;
           }
           i += 1;
         }
-        if (this.cgU != m)
+        if (this.cVR != m)
         {
-          this.cgU = m;
-          this.cgT = new short[m];
+          this.cVR = m;
+          this.cVQ = new short[m];
         }
-        Arrays.fill(this.cgT, 0, m - 1, (short)0);
-        localObject1 = D(k, m, localObject2.length);
+        Arrays.fill(this.cVQ, 0, m - 1, (short)0);
+        localObject1 = G(k, m, localObject2.length);
       }
     }
-    paramb.cem = ((byte[])localObject1);
-    paramb.channels = ((d)paramList.get(0)).channels;
-    paramb.sampleRate = ((d)paramList.get(0)).sampleRate;
+    paramb.cTk = ((byte[])localObject1);
+    paramb.channels = ((e)paramList.get(0)).channels;
+    paramb.sampleRate = ((e)paramList.get(0)).sampleRate;
     return true;
   }
   
-  protected final byte[] bR(int paramInt1, int paramInt2)
+  protected final byte[] cg(int paramInt1, int paramInt2)
   {
-    byte[] arrayOfByte2 = DV();
+    byte[] arrayOfByte2 = NE();
     byte[] arrayOfByte1;
     if (arrayOfByte2 != null)
     {
@@ -136,14 +136,14 @@ public abstract class f
     paramInt1 = 0;
     while (paramInt1 < paramInt2)
     {
-      arrayOfByte1[(paramInt1 * 2)] = ((byte)(this.cgT[paramInt1] & 0xFF));
-      arrayOfByte1[(paramInt1 * 2 + 1)] = ((byte)((this.cgT[paramInt1] & 0xFF00) >> 8));
+      arrayOfByte1[(paramInt1 * 2)] = ((byte)(this.cVQ[paramInt1] & 0xFF));
+      arrayOfByte1[(paramInt1 * 2 + 1)] = ((byte)((this.cVQ[paramInt1] & 0xFF00) >> 8));
       paramInt1 += 1;
     }
     return arrayOfByte1;
   }
   
-  protected final short gt(int paramInt)
+  protected final short hS(int paramInt)
   {
     if (paramInt > this.MAX_VALUE) {
       return (short)this.MAX_VALUE;
@@ -156,7 +156,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.e.f
  * JD-Core Version:    0.7.0.1
  */

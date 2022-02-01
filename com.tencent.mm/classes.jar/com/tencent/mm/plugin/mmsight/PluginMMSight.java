@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.mmsight;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.api.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class PluginMMSight
   extends f
@@ -13,15 +13,17 @@ public class PluginMMSight
 {
   public void execute(g paramg)
   {
-    AppMethodBeat.i(76426);
+    AppMethodBeat.i(89314);
     if (paramg != null) {
-      ab.i("MicroMsg.PluginMMSight", "execute, process: %s", new Object[] { paramg.mProcessName });
+      ad.i("MicroMsg.PluginMMSight", "execute, process: %s", new Object[] { paramg.mProcessName });
     }
-    com.tencent.mm.plugin.mmsight.api.b.oGi = new b.a();
-    com.tencent.mm.plugin.mmsight.api.MMSightRecordView.oGh = new com.tencent.mm.plugin.api.recordView.e();
-    com.tencent.mm.plugin.mmsight.api.a.oGf = new com.tencent.mm.plugin.api.a();
-    pin(new q(e.class));
-    AppMethodBeat.o(76426);
+    com.tencent.mm.plugin.mmsight.api.b.tBr = new b.a();
+    com.tencent.mm.plugin.mmsight.api.MMSightRecordView.tBq = new com.tencent.mm.plugin.api.recordView.e();
+    com.tencent.mm.plugin.mmsight.api.a.tBo = new com.tencent.mm.plugin.api.a();
+    if ((paramg != null) && (paramg.agu())) {
+      pin(new t(e.class));
+    }
+    AppMethodBeat.o(89314);
   }
   
   public String name()
@@ -31,7 +33,7 @@ public class PluginMMSight
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.PluginMMSight
  * JD-Core Version:    0.7.0.1
  */

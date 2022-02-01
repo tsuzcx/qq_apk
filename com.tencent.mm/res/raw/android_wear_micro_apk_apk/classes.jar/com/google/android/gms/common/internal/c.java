@@ -5,19 +5,19 @@ import java.util.List;
 
 public final class c
 {
-  private final List<String> IZ;
-  private final Object Ja;
+  private final List<String> KO;
+  private final Object KP;
   
   private c(Object paramObject)
   {
-    this.Ja = d.u(paramObject);
-    this.IZ = new ArrayList();
+    this.KP = d.D(paramObject);
+    this.KO = new ArrayList();
   }
   
   public final c a(String paramString, Object paramObject)
   {
-    List localList = this.IZ;
-    paramString = (String)d.u(paramString);
+    List localList = this.KO;
+    paramString = (String)d.D(paramString);
     paramObject = String.valueOf(String.valueOf(paramObject));
     localList.add(String.valueOf(paramString).length() + 1 + String.valueOf(paramObject).length() + paramString + "=" + paramObject);
     return this;
@@ -25,12 +25,12 @@ public final class c
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(100).append(this.Ja.getClass().getSimpleName()).append('{');
-    int j = this.IZ.size();
+    StringBuilder localStringBuilder = new StringBuilder(100).append(this.KP.getClass().getSimpleName()).append('{');
+    int j = this.KO.size();
     int i = 0;
     while (i < j)
     {
-      localStringBuilder.append((String)this.IZ.get(i));
+      localStringBuilder.append((String)this.KO.get(i));
       if (i < j - 1) {
         localStringBuilder.append(", ");
       }

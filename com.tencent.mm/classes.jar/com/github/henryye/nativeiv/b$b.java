@@ -1,6 +1,5 @@
 package com.github.henryye.nativeiv;
 
-import android.graphics.Bitmap.Config;
 import com.github.henryye.nativeiv.bitmap.BitmapType;
 import com.github.henryye.nativeiv.bitmap.IBitmap;
 import com.github.henryye.nativeiv.bitmap.NativeBitmapStruct;
@@ -12,16 +11,16 @@ import java.io.InputStream;
 final class b$b
   implements IBitmap<NativeBitmapStruct>
 {
-  public final void decodeInputStream(InputStream paramInputStream, Bitmap.Config paramConfig, c paramc)
+  public final void decodeInputStream(InputStream paramInputStream, ImageDecodeConfig paramImageDecodeConfig, c paramc)
   {
-    AppMethodBeat.i(115746);
+    AppMethodBeat.i(127333);
     if (paramInputStream == null)
     {
       paramInputStream = new IOException("Null input stream");
-      AppMethodBeat.o(115746);
+      AppMethodBeat.o(127333);
       throw paramInputStream;
     }
-    AppMethodBeat.o(115746);
+    AppMethodBeat.o(127333);
   }
   
   public final long getDecodeTime()

@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.game.commlib.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.IOException;
 
 public final class b
@@ -14,9 +14,9 @@ public final class b
   
   static
   {
-    AppMethodBeat.i(59420);
+    AppMethodBeat.i(89952);
     SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "PBCache") };
-    AppMethodBeat.o(59420);
+    AppMethodBeat.o(89952);
   }
   
   public b(e parame)
@@ -24,12 +24,12 @@ public final class b
     super(parame, a.info, "PBCache", null);
   }
   
-  public final byte[] PN(String paramString)
+  public final byte[] abW(String paramString)
   {
-    AppMethodBeat.i(59418);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(89950);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(59418);
+      AppMethodBeat.o(89950);
       return null;
     }
     a locala = new a();
@@ -37,55 +37,72 @@ public final class b
     if (super.get(locala, new String[0]))
     {
       paramString = locala.field_value;
-      AppMethodBeat.o(59418);
+      AppMethodBeat.o(89950);
       return paramString;
     }
-    AppMethodBeat.o(59418);
+    AppMethodBeat.o(89950);
     return null;
   }
   
-  public final boolean b(String paramString, com.tencent.mm.bv.a parama)
+  public final void abX(String paramString)
   {
-    AppMethodBeat.i(59419);
-    if ((bo.isNullOrNil(paramString)) || (parama == null))
+    AppMethodBeat.i(184540);
+    a locala = new a();
+    locala.field_key = paramString;
+    super.delete(locala, new String[0]);
+    AppMethodBeat.o(184540);
+  }
+  
+  public final boolean b(String paramString, com.tencent.mm.bx.a parama)
+  {
+    AppMethodBeat.i(89951);
+    if ((bt.isNullOrNil(paramString)) || (parama == null))
     {
-      AppMethodBeat.o(59419);
+      AppMethodBeat.o(89951);
       return false;
     }
     try
     {
       parama = parama.toByteArray();
-      if ((parama == null) || (parama.length == 0))
-      {
-        AppMethodBeat.o(59419);
-        return false;
-      }
+      boolean bool = q(paramString, parama);
+      AppMethodBeat.o(89951);
+      return bool;
     }
     catch (IOException paramString)
     {
-      ab.e("MicroMsg.PBCacheStorage", "Saving Failed: %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(59419);
+      ad.e("MicroMsg.PBCacheStorage", "Saving Failed: %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(89951);
+    }
+    return false;
+  }
+  
+  public final boolean q(String paramString, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(184539);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    {
+      AppMethodBeat.o(184539);
       return false;
     }
     a locala = new a();
     locala.field_key = paramString;
     if (super.get(locala, new String[0])) {
-      locala.field_value = parama;
+      locala.field_value = paramArrayOfByte;
     }
     for (boolean bool = super.update(locala, new String[0]);; bool = super.insert(locala))
     {
       if (!bool) {
-        ab.e("MicroMsg.PBCacheStorage", "Saving cache failed (update or insert)");
+        ad.e("MicroMsg.PBCacheStorage", "Saving cache failed (update or insert)");
       }
-      AppMethodBeat.o(59419);
+      AppMethodBeat.o(184539);
       return bool;
-      locala.field_value = parama;
+      locala.field_value = paramArrayOfByte;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.commlib.b.b
  * JD-Core Version:    0.7.0.1
  */

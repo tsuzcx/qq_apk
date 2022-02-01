@@ -1,158 +1,61 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
-import com.tencent.luggage.sdk.d.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.page.z;
-import com.tencent.mm.plugin.appbrand.report.AppBrandIDKeyBatchReport;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.e;
-import com.tencent.mm.protocal.protobuf.czw;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.report.p;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class l
 {
-  private static final l iHH;
-  public String appId;
-  public int cJb;
-  public String cJc;
-  public int cmE;
-  public String cmF;
-  public String cmG;
-  public String cpW;
-  public int iFX;
-  private final boolean iHd;
-  public String iHi;
-  public int iHn;
-  private final h ioE;
-  public int scene;
+  private String dbt;
+  public a lrA;
+  public l.b lrw;
+  public int lrx;
+  public String lry;
+  private long lrz;
   
-  static
+  public final void report()
   {
-    AppMethodBeat.i(132649);
-    iHH = new l(true, h.iGQ);
-    AppMethodBeat.o(132649);
-  }
-  
-  private l(boolean paramBoolean, h paramh)
-  {
-    this.iHd = paramBoolean;
-    this.ioE = paramh;
-  }
-  
-  private static String EL(String paramString)
-  {
-    AppMethodBeat.i(143518);
-    String str = paramString;
-    if (bo.nullAsNil(paramString).length() > 1024) {
-      str = paramString.substring(0, 1024);
-    }
-    AppMethodBeat.o(143518);
-    return str;
-  }
-  
-  private void IE()
-  {
-    AppMethodBeat.i(132647);
-    if (this.iHd)
+    AppMethodBeat.i(48149);
+    if ((this.lrw == null) || (this.lrA == null))
     {
-      AppMethodBeat.o(132647);
+      AppMethodBeat.o(48149);
       return;
     }
-    this.cmG = EL(this.cmG);
-    this.iHi = EL(this.iHi);
-    czw localczw = new czw();
-    localczw.jKs = 1;
-    localczw.fKw = this.appId;
-    localczw.ygx = this.cmG;
-    localczw.qsk = 0;
-    localczw.lGW = ((int)bo.aox());
-    localczw.qsl = 1;
-    localczw.ygy = "";
-    localczw.ygz = this.cmE;
-    localczw.wqN = this.cpW;
-    localczw.ygA = e.cZ(ah.getContext());
-    localczw.uPv = this.scene;
-    localczw.ygB = this.iFX;
-    localczw.ygC = this.cmF;
-    localczw.iHi = this.iHi;
-    localczw.cJb = this.cJb;
-    localczw.cJc = this.cJc;
-    localczw.iHn = this.iHn;
-    AppBrandIDKeyBatchReport.a(localczw);
-    ab.i("MicroMsg.AppBrand.Report.kv_14004", "report " + toString());
-    AppMethodBeat.o(132647);
-  }
-  
-  public static l aLq()
-  {
-    return iHH;
-  }
-  
-  public static l b(o paramo, String paramString, h paramh)
-  {
-    AppMethodBeat.i(132645);
-    paramh = new l(false, paramh);
-    try
-    {
-      paramh.cpW = paramString;
-      paramh.appId = paramo.mAppId;
-      paramString = paramo.wS().bDh;
-      paramh.scene = paramString.scene;
-      paramh.cmF = paramString.cmF;
-      paramh.cJb = paramString.cJb;
-      paramh.cJc = paramString.cJc;
-      paramh.iFX = paramString.iFX;
-      paramh.cmE = (paramo.atS().gXd + 1);
-      AppMethodBeat.o(132645);
-      return paramh;
-    }
-    catch (Exception paramo)
-    {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.AppBrand.Report.kv_14004", paramo, "Kv_14004 protect the npe", new Object[0]);
-      }
-    }
-  }
-  
-  public final void m(z paramz)
-  {
-    AppMethodBeat.i(132646);
-    this.cmG = paramz.iuB;
-    paramz = this.ioE.h(paramz);
-    if ((paramz != null) && (paramz.iGT != null))
-    {
-      paramz = paramz.iGT.path;
-      this.iHi = paramz;
-      if (!this.ioE.EH(this.cmG)) {
-        break label86;
-      }
-    }
-    label86:
-    for (int i = 1;; i = 0)
-    {
-      this.iHn = i;
-      IE();
-      AppMethodBeat.o(132646);
-      return;
-      paramz = null;
-      break;
-    }
+    ad.i("MicroMsg.AppBrand.kv_13917", "report " + toString());
+    this.lrz = bt.eGO();
+    h.vKh.f(13917, p.k(new Object[] { Integer.valueOf(this.lrw.value), Integer.valueOf(this.lrx), this.lry, Long.valueOf(this.lrz), this.dbt, Integer.valueOf(this.lrA.value) }));
+    AppMethodBeat.o(48149);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(132648);
-    String str = "kv_14004{appId='" + this.appId + '\'' + ", sessionId='" + this.cpW + '\'' + ", scene=" + this.scene + ", sceneNote='" + this.cmF + '\'' + ", preScene=" + this.cJb + ", preSceneNote='" + this.cJc + '\'' + ", pagePath='" + this.cmG + '\'' + ", usedState=" + this.iFX + ", appState=" + this.cmE + ", referPagePath='" + this.iHi + '\'' + ", isEntrance=" + this.iHn + '}';
-    AppMethodBeat.o(132648);
+    AppMethodBeat.i(48148);
+    String str = "kv_13917{scene=" + this.lrw.value + ", appCount=" + this.lrx + ", nearbyListId='" + this.lry + '\'' + ", clickTime=" + this.lrz + ", sceneNote='" + this.dbt + '\'' + ", openType=" + this.lrA.value + '}';
+    AppMethodBeat.o(48148);
     return str;
+  }
+  
+  public static enum a
+  {
+    public final int value;
+    
+    static
+    {
+      AppMethodBeat.i(48144);
+      lrB = new a("NEARBY_H5", 0, 1);
+      lrC = new a("EMPTY_PAGE", 1, 2);
+      lrD = new a("LBS_NOT_ALLOW", 2, 3);
+      lrE = new a("NEARBY_MINI_PROGRAM", 3, 4);
+      lrF = new a[] { lrB, lrC, lrD, lrE };
+      AppMethodBeat.o(48144);
+    }
+    
+    private a(int paramInt)
+    {
+      this.value = paramInt;
+    }
   }
 }
 

@@ -2,41 +2,41 @@ package com.tencent.mm.app;
 
 import android.content.res.Configuration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.loader.e;
+import com.tencent.mm.compatible.loader.d;
 import com.tencent.mm.f.a;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class TMAssistantProfile
-  extends e
+  extends d
 {
-  public static final String bXW;
+  public static final String cLt;
   
   static
   {
-    AppMethodBeat.i(15404);
-    bXW = ah.getPackageName() + ":TMAssistantDownloadSDKService";
-    AppMethodBeat.o(15404);
+    AppMethodBeat.i(19479);
+    cLt = aj.getPackageName() + ":TMAssistantDownloadSDKService";
+    AppMethodBeat.o(19479);
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration) {}
   
   public final void onCreate()
   {
-    AppMethodBeat.i(15403);
-    a.bp(ah.getContext());
-    m.dw(bXW);
-    s.By();
-    AppMethodBeat.o(15403);
+    AppMethodBeat.i(19478);
+    a.bD(aj.getContext());
+    s.eA(cLt);
+    aa.KV();
+    AppMethodBeat.o(19478);
   }
   
   public String toString()
   {
-    return bXW;
+    return cLt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.app.TMAssistantProfile
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class u
     paramView.setLayerPaint(paramPaint);
   }
   
-  public final int i(View paramView)
+  public final int j(View paramView)
   {
     return paramView.getLayoutDirection();
   }

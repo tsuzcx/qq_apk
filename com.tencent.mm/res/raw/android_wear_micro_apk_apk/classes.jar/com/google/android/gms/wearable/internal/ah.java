@@ -32,7 +32,7 @@ public abstract class ah
       return true;
     }
     paramParcel1.enforceInterface("com.google.android.gms.wearable.internal.IChannelStreamCallbacks");
-    ae(paramParcel1.readInt(), paramParcel1.readInt());
+    ag(paramParcel1.readInt(), paramParcel1.readInt());
     paramParcel2.writeNoException();
     return true;
   }

@@ -1,124 +1,96 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.net.Uri;
+import android.os.Bundle;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.e;
+import com.tencent.luggage.d.g;
+import com.tencent.luggage.d.h;
+import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.j;
-import com.tencent.mm.plugin.webview.fts.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import org.json.JSONException;
+import com.tencent.mm.plugin.webview.luggage.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public class ak
-  extends bi<com.tencent.mm.plugin.webview.luggage.e>
+  extends bo<f>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama) {}
+  public final void a(Context paramContext, String paramString, bn.a parama) {}
   
-  public final void b(a<com.tencent.mm.plugin.webview.luggage.e>.a parama)
+  public final void b(final a<f>.a parama)
   {
-    int j = 1;
-    i = 0;
-    AppMethodBeat.i(153124);
-    ab.i("MicroMsg.JsApiOpenWeAppPage", "invokeInOwn %s", new Object[] { parama.byF.bxK });
-    String str3 = parama.byF.bxK.optString("userName");
-    String str2 = parama.byF.bxK.optString("relativeURL");
-    String str1 = str2;
-    if (str2.contains("render_data")) {
-      str1 = str2;
-    }
-    try
+    int i = 1;
+    AppMethodBeat.i(78588);
+    ad.i("MicroMsg.JsApiOpenCustomWebView", "invokeInOwn");
+    final String str1 = parama.bZV.bZb.optString("url");
+    if (bt.isNullOrNil(str1))
     {
-      new StringBuilder();
-      str1 = str2;
-      localObject = new JSONObject(Uri.parse(str2).getQueryParameter("widgetData"));
-      str1 = str2;
-      ((JSONObject)localObject).remove("render_data");
-      str1 = str2;
-      str2 = str2.replaceAll("(widgetData=.*&)|(widgetData=.*$)", "&");
-      str1 = str2;
-      str2 = str2 + "&widgetData=" + ((JSONObject)localObject).toString();
-      str1 = str2;
+      parama.a("invalid_url", null);
+      AppMethodBeat.o(78588);
+      return;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        Object localObject;
-        int m;
-        int n;
-        int i1;
-        int k;
-        AppBrandStatObject localAppBrandStatObject;
-        String str4;
-        String str5;
-        String str6;
-        ab.printErrStackTrace("MicroMsg.JsApiOpenWeAppPage", localJSONException, "", new Object[0]);
-        continue;
-        if (i1 == 3)
-        {
-          localAppBrandStatObject.scene = 1005;
-        }
-        else if (i1 == 16)
-        {
-          localAppBrandStatObject.scene = 1042;
-        }
-        else if (i1 == 20)
-        {
-          localAppBrandStatObject.scene = 1053;
-        }
-        else
-        {
-          localAppBrandStatObject.scene = 1000;
-          continue;
-          continue;
-          i = k;
-        }
+    ad.i("MicroMsg.JsApiOpenCustomWebView", "url: %s", new Object[] { str1 });
+    String str2 = parama.bZV.bZb.optString("orientation");
+    if (!bt.isNullOrNil(str2)) {
+      if (str2.equals("horizontal")) {
+        i = 0;
       }
     }
-    m = parama.byF.bxK.optInt("appVersion", 0);
-    str2 = parama.byF.bxK.optString("searchId");
-    localObject = parama.byF.bxK.optString("docId");
-    n = parama.byF.bxK.optInt("position", 1);
-    i1 = parama.byF.bxK.optInt("scene", 1000);
-    k = parama.byF.bxK.optInt("debugMode", 0);
-    if (k < 0) {
-      if (com.tencent.mm.plugin.webview.modeltools.g.dcC().uIS != null)
+    for (;;)
+    {
+      boolean bool1 = parama.bZV.bZb.optBoolean("fullscreen");
+      final boolean bool2 = parama.bZV.bZb.optString("finish_recent_webview").equals("1");
+      boolean bool3 = parama.bZV.bZb.optString("disable_swipe_back").equals("1");
+      str2 = parama.bZV.bZb.optString("username");
+      final Bundle localBundle = new Bundle();
+      localBundle.putString("rawUrl", str1);
+      localBundle.putInt("screen_orientation", i);
+      localBundle.putBoolean("show_full_screen", bool1);
+      localBundle.putBoolean("disable_swipe_back", bool3);
+      localBundle.putString("shortcut_user_name", str2);
+      localBundle.putString("game_hv_menu_appid", bt.nullAsNil(parama.bZV.bZb.optString("gameAppid")));
+      localBundle.putBoolean("from_find_more_friend", ((f)parama.bZU).mParams.getBoolean("from_find_more_friend", false));
+      aq.f(new Runnable()
       {
-        i = j;
-        localAppBrandStatObject = new AppBrandStatObject();
-        if ((i1 == 201) || (i1 == 14) || (i1 == 22))
+        public final void run()
         {
-          localAppBrandStatObject.scene = 1006;
-          str4 = parama.byF.bxK.optString("statSessionId");
-          str5 = parama.byF.bxK.optString("statKeywordId");
-          str6 = parama.byF.bxK.optString("subScene");
-          localAppBrandStatObject.cmF = (str4 + ":" + str5 + ":" + str2 + ":" + (String)localObject + ":" + n + ":" + str6);
-          ((j)com.tencent.mm.kernel.g.E(j.class)).a(((com.tencent.mm.plugin.webview.luggage.e)parama.byE).mContext, str3, null, i, m, str1, localAppBrandStatObject);
-          parama.a("", null);
-          AppMethodBeat.o(153124);
-          return;
+          AppMethodBeat.i(78587);
+          if (bool2)
+          {
+            ((f)parama.bZU).bZZ.Bb().i(str1, localBundle);
+            AppMethodBeat.o(78587);
+            return;
+          }
+          ((f)parama.bZU).bZZ.Bb().h(str1, localBundle);
+          AppMethodBeat.o(78587);
         }
+      });
+      parama.a("", null);
+      AppMethodBeat.o(78588);
+      return;
+      if (!str2.equals("vertical")) {
+        i = -1;
       }
     }
   }
   
-  public final int bjL()
+  public final int bQV()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "openWeAppPage";
+    return "openCustomWebview";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.ak
  * JD-Core Version:    0.7.0.1
  */

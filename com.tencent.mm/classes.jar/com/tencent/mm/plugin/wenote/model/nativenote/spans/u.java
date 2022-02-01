@@ -6,61 +6,61 @@ import java.util.ArrayList;
 
 public final class u
 {
-  public static final b vBC;
-  public static final j vBD;
-  public static final c vBE;
-  public static final l vBF;
-  public static final h vBG;
-  public static final ArrayList<t> vBH;
+  public static final b BEU;
+  public static final j BEV;
+  public static final c BEW;
+  public static final l BEX;
+  public static final h BEY;
+  public static final ArrayList<t> oqH;
   
   static
   {
-    AppMethodBeat.i(26975);
-    vBC = new b();
-    vBD = new j();
-    vBE = new c();
-    vBF = new l();
-    vBG = new h();
+    AppMethodBeat.i(30669);
+    BEU = new b();
+    BEV = new j();
+    BEW = new c();
+    BEX = new l();
+    BEY = new h();
     ArrayList localArrayList = new ArrayList();
-    vBH = localArrayList;
-    localArrayList.add(vBC);
-    vBH.add(vBE);
-    vBH.add(vBF);
-    vBH.add(vBD);
-    AppMethodBeat.o(26975);
+    oqH = localArrayList;
+    localArrayList.add(BEU);
+    oqH.add(BEW);
+    oqH.add(BEX);
+    oqH.add(BEV);
+    AppMethodBeat.o(30669);
   }
   
   private static void a(WXRTEditText paramWXRTEditText, o paramo, t... paramVarArgs)
   {
-    AppMethodBeat.i(26974);
+    AppMethodBeat.i(30668);
     int j = paramVarArgs.length;
     int i = 0;
     while (i < j)
     {
       if (paramo == paramVarArgs[i])
       {
-        AppMethodBeat.o(26974);
+        AppMethodBeat.o(30668);
         return;
       }
       i += 1;
     }
     paramo.a(paramWXRTEditText, null, null);
-    AppMethodBeat.o(26974);
+    AppMethodBeat.o(30668);
   }
   
   public static void a(WXRTEditText paramWXRTEditText, t... paramVarArgs)
   {
-    AppMethodBeat.i(26973);
-    a(paramWXRTEditText, vBG, paramVarArgs);
-    a(paramWXRTEditText, vBE, paramVarArgs);
-    a(paramWXRTEditText, vBF, paramVarArgs);
-    a(paramWXRTEditText, vBD, paramVarArgs);
-    AppMethodBeat.o(26973);
+    AppMethodBeat.i(30667);
+    a(paramWXRTEditText, BEY, paramVarArgs);
+    a(paramWXRTEditText, BEW, paramVarArgs);
+    a(paramWXRTEditText, BEX, paramVarArgs);
+    a(paramWXRTEditText, BEV, paramVarArgs);
+    AppMethodBeat.o(30667);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.spans.u
  * JD-Core Version:    0.7.0.1
  */

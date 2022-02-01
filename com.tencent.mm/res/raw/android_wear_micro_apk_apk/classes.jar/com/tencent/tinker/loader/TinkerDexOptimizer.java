@@ -22,7 +22,7 @@ public final class TinkerDexOptimizer
       if (!paramCollection.hasNext()) {
         break;
       }
-    } while (new TinkerDexOptimizer.OptimizeWorker((File)paramCollection.next(), paramFile, true, paramString, paramResultCallback).oe());
+    } while (new TinkerDexOptimizer.OptimizeWorker((File)paramCollection.next(), paramFile, true, paramString, paramResultCallback).oR());
     boolean bool1 = false;
     return bool1;
   }

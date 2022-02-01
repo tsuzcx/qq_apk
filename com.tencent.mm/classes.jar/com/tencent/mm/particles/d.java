@@ -2,10 +2,10 @@ package com.tencent.mm.particles;
 
 public final class d
 {
-  public final int ghC;
-  public final int ghD;
-  public final int ghE;
-  public final int ghF;
+  public final int hPA;
+  public final int hPB;
+  public final int hPC;
+  public final int hPz;
   
   public d(int paramInt1, int paramInt2)
   {
@@ -14,25 +14,25 @@ public final class d
   
   private d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.ghC = paramInt1;
-    this.ghD = paramInt2;
-    this.ghE = paramInt3;
-    this.ghF = paramInt4;
+    this.hPz = paramInt1;
+    this.hPA = paramInt2;
+    this.hPB = paramInt3;
+    this.hPC = paramInt4;
   }
   
   protected final float ak(float paramFloat)
   {
-    return this.ghC + (this.ghE - this.ghC) * paramFloat;
+    return this.hPz + (this.hPB - this.hPz) * paramFloat;
   }
   
   protected final float al(float paramFloat)
   {
-    return this.ghD + (this.ghF - this.ghD) * paramFloat;
+    return this.hPA + (this.hPC - this.hPA) * paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.particles.d
  * JD-Core Version:    0.7.0.1
  */

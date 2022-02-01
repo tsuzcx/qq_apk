@@ -6,7 +6,7 @@ import android.os.Build.VERSION;
 import android.util.Log;
 import com.tencent.tinker.loader.a.b;
 import com.tencent.tinker.loader.a.h;
-import dalvik.system.PathClassLoader;
+import dalvik.system.BaseDexClassLoader;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -21,21 +21,21 @@ import java.util.regex.Pattern;
 
 public class SystemClassLoaderAdder
 {
-  private static int aku = 0;
+  private static int anU = 0;
   
   @SuppressLint({"NewApi"})
-  public static void a(Application paramApplication, PathClassLoader paramPathClassLoader, File paramFile, List<File> paramList)
+  public static void a(Application paramApplication, BaseDexClassLoader paramBaseDexClassLoader, File paramFile, List<File> paramList, boolean paramBoolean)
   {
     Log.i("Tinker.ClassLoaderAdder", "installDexes dexOptDir: " + paramFile.getAbsolutePath() + ", dex size:" + paramList.size());
     if (!paramList.isEmpty())
     {
-      List localList = n(paramList);
-      paramList = paramPathClassLoader;
+      List localList = m(paramList);
+      paramList = paramBaseDexClassLoader;
       if (Build.VERSION.SDK_INT >= 24)
       {
-        paramList = paramPathClassLoader;
-        if (!m(localList)) {
-          paramList = AndroidNClassLoader.a(paramPathClassLoader, paramApplication);
+        paramList = paramBaseDexClassLoader;
+        if (!paramBoolean) {
+          paramList = AndroidNClassLoader.a(paramBaseDexClassLoader, paramApplication);
         }
       }
       if (Build.VERSION.SDK_INT >= 23) {
@@ -43,11 +43,11 @@ public class SystemClassLoaderAdder
       }
       for (;;)
       {
-        aku = localList.size();
-        Log.i("Tinker.ClassLoaderAdder", "after loaded classloader: " + paramList + ", dex size:" + aku);
-        boolean bool = ((Boolean)h.a(Class.forName("com.tencent.tinker.loader.TinkerTestDexLoad", true, paramList), "isPatch").get(null)).booleanValue();
-        Log.w("Tinker.ClassLoaderAdder", "checkDexInstall result:" + bool);
-        if (bool) {
+        anU = localList.size();
+        Log.i("Tinker.ClassLoaderAdder", "after loaded classloader: " + paramList + ", dex size:" + anU);
+        paramBoolean = ((Boolean)h.a(Class.forName("com.tencent.tinker.loader.TinkerTestDexLoad", true, paramList), "isPatch").get(null)).booleanValue();
+        Log.w("Tinker.ClassLoaderAdder", "checkDexInstall result:".concat(String.valueOf(paramBoolean)));
+        if (paramBoolean) {
           break;
         }
         a(paramList);
@@ -65,42 +65,26 @@ public class SystemClassLoaderAdder
   
   public static void a(ClassLoader paramClassLoader)
   {
-    if (aku <= 0) {
+    if (anU <= 0) {
       return;
     }
     if (Build.VERSION.SDK_INT >= 14)
     {
-      h.a(h.a(paramClassLoader, "pathList").get(paramClassLoader), "dexElements", aku);
+      h.a(h.d(paramClassLoader, "pathList").get(paramClassLoader), "dexElements", anU);
       return;
     }
-    h.a(paramClassLoader, "mPaths", aku);
-    h.a(paramClassLoader, "mFiles", aku);
-    h.a(paramClassLoader, "mZips", aku);
+    h.a(paramClassLoader, "mPaths", anU);
+    h.a(paramClassLoader, "mFiles", anU);
+    h.a(paramClassLoader, "mZips", anU);
     try
     {
-      h.a(paramClassLoader, "mDexs", aku);
+      h.a(paramClassLoader, "mDexs", anU);
       return;
     }
     catch (Exception paramClassLoader) {}
   }
   
-  private static boolean m(List<File> paramList)
-  {
-    if (!paramList.isEmpty())
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        File localFile = (File)paramList.next();
-        if ((localFile != null) && (localFile.getName().startsWith("changed_classes.dex"))) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-  
-  private static List<File> n(List<File> paramList)
+  private static List<File> m(List<File> paramList)
   {
     paramList = new ArrayList(paramList);
     HashMap localHashMap = new HashMap();
@@ -108,7 +92,7 @@ public class SystemClassLoaderAdder
     while (localIterator.hasNext())
     {
       String str = ((File)localIterator.next()).getName();
-      localHashMap.put(str, Boolean.valueOf(b.alU.matcher(str).matches()));
+      localHashMap.put(str, Boolean.valueOf(b.apu.matcher(str).matches()));
     }
     Collections.sort(paramList, new Comparator() {});
     return paramList;

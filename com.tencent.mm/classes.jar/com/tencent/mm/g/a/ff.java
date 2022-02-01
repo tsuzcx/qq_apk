@@ -1,14 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ff
   extends b
 {
-  public ff.a csR;
-  public ff.b csS;
-  
   public ff()
   {
     this((byte)0);
@@ -16,12 +12,8 @@ public final class ff
   
   private ff(byte paramByte)
   {
-    AppMethodBeat.i(15770);
-    this.csR = new ff.a();
-    this.csS = new ff.b();
-    this.ymq = false;
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15770);
   }
 }
 

@@ -11,7 +11,7 @@ final class e
   
   public final void getOutline(View paramView, Outline paramOutline)
   {
-    paramOutline.setOval(0, 0, CircularButton.a(this.By), CircularButton.a(this.By));
+    paramOutline.setOval(0, 0, CircularButton.a(this.Dn), CircularButton.a(this.Dn));
   }
 }
 

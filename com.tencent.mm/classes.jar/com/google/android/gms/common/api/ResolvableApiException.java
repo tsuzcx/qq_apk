@@ -14,17 +14,17 @@ public class ResolvableApiException
   
   public PendingIntent getResolution()
   {
-    AppMethodBeat.i(89446);
+    AppMethodBeat.i(4468);
     PendingIntent localPendingIntent = this.mStatus.getResolution();
-    AppMethodBeat.o(89446);
+    AppMethodBeat.o(4468);
     return localPendingIntent;
   }
   
   public void startResolutionForResult(Activity paramActivity, int paramInt)
   {
-    AppMethodBeat.i(89445);
+    AppMethodBeat.i(4467);
     this.mStatus.startResolutionForResult(paramActivity, paramInt);
-    AppMethodBeat.o(89445);
+    AppMethodBeat.o(4467);
   }
 }
 

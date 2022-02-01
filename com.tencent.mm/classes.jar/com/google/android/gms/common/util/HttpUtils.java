@@ -19,29 +19,29 @@ public class HttpUtils
   
   static
   {
-    AppMethodBeat.i(90217);
+    AppMethodBeat.i(5239);
     zzaab = Pattern.compile("^(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(\\.(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}$");
     zzaac = Pattern.compile("^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$");
     zzaad = Pattern.compile("^((?:[0-9A-Fa-f]{1,4}(?::[0-9A-Fa-f]{1,4})*)?)::((?:[0-9A-Fa-f]{1,4}(?::[0-9A-Fa-f]{1,4})*)?)$");
-    AppMethodBeat.o(90217);
+    AppMethodBeat.o(5239);
   }
   
   private static String decode(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(90212);
+    AppMethodBeat.i(5234);
     if (paramString2 != null) {}
     for (;;)
     {
       try
       {
         paramString1 = URLDecoder.decode(paramString1, paramString2);
-        AppMethodBeat.o(90212);
+        AppMethodBeat.o(5234);
         return paramString1;
       }
       catch (UnsupportedEncodingException paramString1)
       {
         paramString1 = new IllegalArgumentException(paramString1);
-        AppMethodBeat.o(90212);
+        AppMethodBeat.o(5234);
         throw paramString1;
       }
       paramString2 = "ISO-8859-1";
@@ -50,43 +50,43 @@ public class HttpUtils
   
   public static boolean isIPv4Address(String paramString)
   {
-    AppMethodBeat.i(90213);
+    AppMethodBeat.i(5235);
     boolean bool = zzaab.matcher(paramString).matches();
-    AppMethodBeat.o(90213);
+    AppMethodBeat.o(5235);
     return bool;
   }
   
   public static boolean isIPv6Address(String paramString)
   {
-    AppMethodBeat.i(90216);
+    AppMethodBeat.i(5238);
     if ((isIPv6StdAddress(paramString)) || (isIPv6HexCompressedAddress(paramString)))
     {
-      AppMethodBeat.o(90216);
+      AppMethodBeat.o(5238);
       return true;
     }
-    AppMethodBeat.o(90216);
+    AppMethodBeat.o(5238);
     return false;
   }
   
   public static boolean isIPv6HexCompressedAddress(String paramString)
   {
-    AppMethodBeat.i(90215);
+    AppMethodBeat.i(5237);
     boolean bool = zzaad.matcher(paramString).matches();
-    AppMethodBeat.o(90215);
+    AppMethodBeat.o(5237);
     return bool;
   }
   
   public static boolean isIPv6StdAddress(String paramString)
   {
-    AppMethodBeat.i(90214);
+    AppMethodBeat.i(5236);
     boolean bool = zzaac.matcher(paramString).matches();
-    AppMethodBeat.o(90214);
+    AppMethodBeat.o(5236);
     return bool;
   }
   
   public static Map<String, String> parse(URI paramURI, String paramString)
   {
-    AppMethodBeat.i(90211);
+    AppMethodBeat.i(5233);
     Object localObject1 = Collections.emptyMap();
     Object localObject2 = paramURI.getRawQuery();
     paramURI = (URI)localObject1;
@@ -104,7 +104,7 @@ public class HttpUtils
           if ((arrayOfString.length == 0) || (arrayOfString.length > 2))
           {
             paramURI = new IllegalArgumentException("bad parameter");
-            AppMethodBeat.o(90211);
+            AppMethodBeat.o(5233);
             throw paramURI;
           }
           String str = decode(arrayOfString[0], paramString);
@@ -117,13 +117,13 @@ public class HttpUtils
         paramURI = (URI)localObject1;
       }
     }
-    AppMethodBeat.o(90211);
+    AppMethodBeat.o(5233);
     return paramURI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.common.util.HttpUtils
  * JD-Core Version:    0.7.0.1
  */

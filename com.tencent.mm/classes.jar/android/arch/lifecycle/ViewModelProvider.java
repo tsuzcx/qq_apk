@@ -7,12 +7,12 @@ import java.util.HashMap;
 
 public class ViewModelProvider
 {
-  private final Factory du;
+  private final Factory dx;
   private final ViewModelStore mViewModelStore;
   
   public ViewModelProvider(ViewModelStore paramViewModelStore, Factory paramFactory)
   {
-    this.du = paramFactory;
+    this.dx = paramFactory;
     this.mViewModelStore = paramViewModelStore;
   }
   
@@ -32,11 +32,11 @@ public class ViewModelProvider
   
   public <T extends ViewModel> T get(String paramString, Class<T> paramClass)
   {
-    ViewModel localViewModel = (ViewModel)this.mViewModelStore.dw.get(paramString);
+    ViewModel localViewModel = (ViewModel)this.mViewModelStore.dz.get(paramString);
     if (paramClass.isInstance(localViewModel)) {
       return localViewModel;
     }
-    paramClass = this.du.create(paramClass);
+    paramClass = this.dx.create(paramClass);
     this.mViewModelStore.a(paramString, paramClass);
     return paramClass;
   }
@@ -44,20 +44,20 @@ public class ViewModelProvider
   public static class AndroidViewModelFactory
     extends ViewModelProvider.NewInstanceFactory
   {
-    private static AndroidViewModelFactory dv;
-    private Application bX;
+    private static AndroidViewModelFactory dy;
+    private Application ca;
     
     public AndroidViewModelFactory(Application paramApplication)
     {
-      this.bX = paramApplication;
+      this.ca = paramApplication;
     }
     
     public static AndroidViewModelFactory getInstance(Application paramApplication)
     {
-      if (dv == null) {
-        dv = new AndroidViewModelFactory(paramApplication);
+      if (dy == null) {
+        dy = new AndroidViewModelFactory(paramApplication);
       }
-      return dv;
+      return dy;
     }
     
     public <T extends ViewModel> T create(Class<T> paramClass)
@@ -65,7 +65,7 @@ public class ViewModelProvider
       if (AndroidViewModel.class.isAssignableFrom(paramClass)) {
         try
         {
-          ViewModel localViewModel = (ViewModel)paramClass.getConstructor(new Class[] { Application.class }).newInstance(new Object[] { this.bX });
+          ViewModel localViewModel = (ViewModel)paramClass.getConstructor(new Class[] { Application.class }).newInstance(new Object[] { this.ca });
           return localViewModel;
         }
         catch (NoSuchMethodException localNoSuchMethodException)

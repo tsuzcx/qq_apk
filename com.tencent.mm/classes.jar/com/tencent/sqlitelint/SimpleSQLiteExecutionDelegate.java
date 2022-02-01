@@ -13,59 +13,59 @@ public final class SimpleSQLiteExecutionDelegate
   
   static
   {
-    AppMethodBeat.i(94035);
+    AppMethodBeat.i(52879);
     if (!SimpleSQLiteExecutionDelegate.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(94035);
+      AppMethodBeat.o(52879);
       return;
     }
   }
   
   public SimpleSQLiteExecutionDelegate(SQLiteDatabase paramSQLiteDatabase)
   {
-    AppMethodBeat.i(94032);
+    AppMethodBeat.i(52876);
     if ((!$assertionsDisabled) && (paramSQLiteDatabase == null))
     {
       paramSQLiteDatabase = new AssertionError();
-      AppMethodBeat.o(94032);
+      AppMethodBeat.o(52876);
       throw paramSQLiteDatabase;
     }
     this.mDb = paramSQLiteDatabase;
-    AppMethodBeat.o(94032);
+    AppMethodBeat.o(52876);
   }
   
   public final void execSQL(String paramString)
   {
-    AppMethodBeat.i(94034);
+    AppMethodBeat.i(52878);
     if (!this.mDb.isOpen())
     {
       SLog.w("SQLiteLint.SimpleSQLiteExecutionDelegate", "rawQuery db close", new Object[0]);
-      AppMethodBeat.o(94034);
+      AppMethodBeat.o(52878);
       return;
     }
     this.mDb.execSQL(paramString);
-    AppMethodBeat.o(94034);
+    AppMethodBeat.o(52878);
   }
   
   public final Cursor rawQuery(String paramString, String... paramVarArgs)
   {
-    AppMethodBeat.i(94033);
+    AppMethodBeat.i(52877);
     if (!this.mDb.isOpen())
     {
       SLog.w("SQLiteLint.SimpleSQLiteExecutionDelegate", "rawQuery db close", new Object[0]);
-      AppMethodBeat.o(94033);
+      AppMethodBeat.o(52877);
       return null;
     }
     paramString = this.mDb.rawQuery(paramString, paramVarArgs);
-    AppMethodBeat.o(94033);
+    AppMethodBeat.o(52877);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.sqlitelint.SimpleSQLiteExecutionDelegate
  * JD-Core Version:    0.7.0.1
  */

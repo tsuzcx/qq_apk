@@ -20,25 +20,25 @@ public class Logger
   
   static
   {
-    AppMethodBeat.i(72422);
+    AppMethodBeat.i(17858);
     stringsToReplace = new HashMap();
-    AppMethodBeat.o(72422);
+    AppMethodBeat.o(17858);
   }
   
   public Logger(LoggingBehavior paramLoggingBehavior, String paramString)
   {
-    AppMethodBeat.i(72412);
+    AppMethodBeat.i(17848);
     this.priority = 3;
     Validate.notNullOrEmpty(paramString, "tag");
     this.behavior = paramLoggingBehavior;
     this.tag = "FacebookSDK.".concat(String.valueOf(paramString));
     this.contents = new StringBuilder();
-    AppMethodBeat.o(72412);
+    AppMethodBeat.o(17848);
   }
   
   public static void log(LoggingBehavior paramLoggingBehavior, int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(72410);
+    AppMethodBeat.i(17846);
     if (FacebookSdk.isLoggingBehaviorEnabled(paramLoggingBehavior))
     {
       String str = replaceStrings(paramString2);
@@ -51,43 +51,43 @@ public class Logger
         new Exception();
       }
     }
-    AppMethodBeat.o(72410);
+    AppMethodBeat.o(17846);
   }
   
   public static void log(LoggingBehavior paramLoggingBehavior, int paramInt, String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72409);
+    AppMethodBeat.i(17845);
     if (FacebookSdk.isLoggingBehaviorEnabled(paramLoggingBehavior)) {
       log(paramLoggingBehavior, paramInt, paramString1, String.format(paramString2, paramVarArgs));
     }
-    AppMethodBeat.o(72409);
+    AppMethodBeat.o(17845);
   }
   
   public static void log(LoggingBehavior paramLoggingBehavior, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(72407);
+    AppMethodBeat.i(17843);
     log(paramLoggingBehavior, 3, paramString1, paramString2);
-    AppMethodBeat.o(72407);
+    AppMethodBeat.o(17843);
   }
   
   public static void log(LoggingBehavior paramLoggingBehavior, String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72408);
+    AppMethodBeat.i(17844);
     if (FacebookSdk.isLoggingBehaviorEnabled(paramLoggingBehavior)) {
       log(paramLoggingBehavior, 3, paramString1, String.format(paramString2, paramVarArgs));
     }
-    AppMethodBeat.o(72408);
+    AppMethodBeat.o(17844);
   }
   
   public static void registerAccessToken(String paramString)
   {
     try
     {
-      AppMethodBeat.i(72406);
+      AppMethodBeat.i(17842);
       if (!FacebookSdk.isLoggingBehaviorEnabled(LoggingBehavior.INCLUDE_ACCESS_TOKENS)) {
         registerStringToReplace(paramString, "ACCESS_TOKEN_REMOVED");
       }
-      AppMethodBeat.o(72406);
+      AppMethodBeat.o(17842);
       return;
     }
     finally {}
@@ -97,9 +97,9 @@ public class Logger
   {
     try
     {
-      AppMethodBeat.i(72405);
+      AppMethodBeat.i(17841);
       stringsToReplace.put(paramString1, paramString2);
-      AppMethodBeat.o(72405);
+      AppMethodBeat.o(17841);
       return;
     }
     finally
@@ -113,14 +113,14 @@ public class Logger
   {
     try
     {
-      AppMethodBeat.i(72411);
+      AppMethodBeat.i(17847);
       Iterator localIterator = stringsToReplace.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         paramString = paramString.replace((CharSequence)localEntry.getKey(), (CharSequence)localEntry.getValue());
       }
-      AppMethodBeat.o(72411);
+      AppMethodBeat.o(17847);
       return paramString;
     }
     finally {}
@@ -128,51 +128,51 @@ public class Logger
   
   private boolean shouldLog()
   {
-    AppMethodBeat.i(72421);
+    AppMethodBeat.i(17857);
     boolean bool = FacebookSdk.isLoggingBehaviorEnabled(this.behavior);
-    AppMethodBeat.o(72421);
+    AppMethodBeat.o(17857);
     return bool;
   }
   
   public void append(String paramString)
   {
-    AppMethodBeat.i(72418);
+    AppMethodBeat.i(17854);
     if (shouldLog()) {
       this.contents.append(paramString);
     }
-    AppMethodBeat.o(72418);
+    AppMethodBeat.o(17854);
   }
   
   public void append(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72419);
+    AppMethodBeat.i(17855);
     if (shouldLog()) {
       this.contents.append(String.format(paramString, paramVarArgs));
     }
-    AppMethodBeat.o(72419);
+    AppMethodBeat.o(17855);
   }
   
   public void append(StringBuilder paramStringBuilder)
   {
-    AppMethodBeat.i(72417);
+    AppMethodBeat.i(17853);
     if (shouldLog()) {
       this.contents.append(paramStringBuilder);
     }
-    AppMethodBeat.o(72417);
+    AppMethodBeat.o(17853);
   }
   
   public void appendKeyValue(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(72420);
+    AppMethodBeat.i(17856);
     append("  %s:\t%s\n", new Object[] { paramString, paramObject });
-    AppMethodBeat.o(72420);
+    AppMethodBeat.o(17856);
   }
   
   public String getContents()
   {
-    AppMethodBeat.i(72414);
+    AppMethodBeat.i(17850);
     String str = replaceStrings(this.contents.toString());
-    AppMethodBeat.o(72414);
+    AppMethodBeat.o(17850);
     return str;
   }
   
@@ -183,30 +183,30 @@ public class Logger
   
   public void log()
   {
-    AppMethodBeat.i(72415);
+    AppMethodBeat.i(17851);
     logString(this.contents.toString());
     this.contents = new StringBuilder();
-    AppMethodBeat.o(72415);
+    AppMethodBeat.o(17851);
   }
   
   public void logString(String paramString)
   {
-    AppMethodBeat.i(72416);
+    AppMethodBeat.i(17852);
     log(this.behavior, this.priority, this.tag, paramString);
-    AppMethodBeat.o(72416);
+    AppMethodBeat.o(17852);
   }
   
   public void setPriority(int paramInt)
   {
-    AppMethodBeat.i(72413);
+    AppMethodBeat.i(17849);
     Validate.oneOf(Integer.valueOf(paramInt), "value", new Object[] { Integer.valueOf(7), Integer.valueOf(3), Integer.valueOf(6), Integer.valueOf(4), Integer.valueOf(2), Integer.valueOf(5) });
     this.priority = paramInt;
-    AppMethodBeat.o(72413);
+    AppMethodBeat.o(17849);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.Logger
  * JD-Core Version:    0.7.0.1
  */

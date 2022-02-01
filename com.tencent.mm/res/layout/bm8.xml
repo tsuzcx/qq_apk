@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/f40" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/h1z" android:background="@drawable/ajz" android:paddingLeft="6.0dip" android:paddingTop="6.0dip" android:paddingRight="6.0dip" android:paddingBottom="6.0dip" style="@style/m4">
+        <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.MMEditText android:textColor="@color/y4" android:layout_gravity="bottom" android:id="@id/h20" android:background="@drawable/bm7" android:layout_width="0.0dip" android:layout_marginTop="8.0dip" android:maxHeight="@dimen/ab" android:minHeight="@dimen/ad" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/aio" style="@style/lp" />
+            <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/h25" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/mo" android:contentDescription="@string/apz" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/h24" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginStart="6.0dip">
+            <Button android:textColor="#1a000000" android:id="@id/h23" android:background="@drawable/a_8" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:layout_width="wrap_content" android:layout_height="@dimen/ag" android:layout_marginBottom="8.0dip" android:minWidth="@dimen/ai" android:text="@string/awt" />
+            <Button android:textColor="@color/a_x" android:id="@id/h22" android:background="@drawable/ik" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/ag" android:layout_marginBottom="8.0dip" android:minWidth="@dimen/ai" android:text="@string/awt" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

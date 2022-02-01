@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
+<LinearLayout style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@android:id/title" android:layout_width="73.0dip" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:singleLine="true" style="@style/lg" />
-    <RadioGroup android:orientation="horizontal" android:id="@id/de2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <EditText android:id="@id/g6w" android:layout_height="130.0dip" android:layout_margin="10.0dip" style="@style/n_" />
+    <TextView android:textColor="@color/y4" android:gravity="right" android:id="@id/fsr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
 </LinearLayout>

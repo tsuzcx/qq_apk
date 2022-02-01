@@ -8,352 +8,374 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.a.a;
-import com.tencent.mm.at.o;
+import com.tencent.mm.aw.a.a;
+import com.tencent.mm.aw.o;
 import com.tencent.mm.plugin.topstory.ui.d;
 import com.tencent.mm.plugin.topstory.ui.video.g;
-import com.tencent.mm.protocal.protobuf.ccp;
-import com.tencent.mm.protocal.protobuf.ckx;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.ctk;
+import com.tencent.mm.protocal.protobuf.ddb;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public class f
   extends g
 {
-  public TextView naO;
-  public TextView naP;
-  public TextView qzL;
+  public TextView snE;
   public TextView titleTv;
-  public ImageView tiu;
-  private ckx tjR;
-  public View tkA;
-  public View tkB;
-  public View tkC;
-  public View tkD;
-  public ImageView tkE;
-  public ImageView tkF;
-  public View tkG;
-  ap tkH;
-  private f.a tkI;
-  private boolean tkp;
-  public View tkt;
-  public View tku;
-  public ImageView tkv;
-  public TextView tkw;
-  public View tkx;
-  public View tky;
-  public View tkz;
+  private ddb yLY;
+  public ImageView yOU;
+  public View yQY;
+  public View yQZ;
+  public ImageView yRa;
+  public TextView yRb;
+  public View yRc;
+  public View yRd;
+  public View yRe;
+  public View yRf;
+  public View yRg;
+  public View yRh;
+  public View yRi;
+  public TextView yRj;
+  public TextView yRk;
+  public ImageView yRl;
+  public ImageView yRm;
+  public View yRn;
+  av yRo;
+  private a yRp;
+  private boolean yRq;
   
   public f(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final boolean Pk()
+  public final void bGT()
   {
-    AppMethodBeat.i(141941);
+    AppMethodBeat.i(126311);
+    if (this.yRo != null) {
+      this.yRo.stopTimer();
+    }
+    AppMethodBeat.o(126311);
+  }
+  
+  public final boolean bcB()
+  {
+    AppMethodBeat.i(126309);
     if (getVisibility() == 0)
     {
-      AppMethodBeat.o(141941);
+      AppMethodBeat.o(126309);
       return true;
     }
-    AppMethodBeat.o(141941);
+    AppMethodBeat.o(126309);
     return false;
   }
   
-  public final void aFn()
+  public final void bcH()
   {
-    AppMethodBeat.i(1931);
-    if (this.tkH != null)
+    AppMethodBeat.i(126312);
+    if (this.yRo != null)
     {
-      this.tkH.stopTimer();
-      this.tkH.ag(2000L, 2000L);
+      this.yRo.stopTimer();
+      this.yRo.av(2000L, 2000L);
     }
-    AppMethodBeat.o(1931);
+    AppMethodBeat.o(126312);
   }
   
-  public final void aFy()
+  public final void bdT()
   {
-    AppMethodBeat.i(1942);
-    super.aFy();
-    if ((this.tkI != null) && (this.tjR != null)) {
-      this.tkI.a(this.tjR, this.mPosition, getVideoTotalTime());
+    AppMethodBeat.i(126321);
+    super.bdT();
+    if ((this.yRp != null) && (this.yLY != null)) {
+      this.yRp.b(this.yLY, this.mPosition, getVideoTotalTime());
     }
-    AppMethodBeat.o(1942);
+    AppMethodBeat.o(126321);
   }
   
-  public final void baj()
+  public final void dPU()
   {
-    AppMethodBeat.i(1930);
-    if (this.tkH != null) {
-      this.tkH.stopTimer();
-    }
-    AppMethodBeat.o(1930);
+    AppMethodBeat.i(126319);
+    this.kth.setVisibility(8);
+    AppMethodBeat.o(126319);
   }
   
-  public final void cKo()
+  public final void dPV()
   {
-    AppMethodBeat.i(1940);
-    this.qTF.setVisibility(8);
-    AppMethodBeat.o(1940);
-  }
-  
-  public final void cKp()
-  {
-    AppMethodBeat.i(1941);
-    this.qTF.setVisibility(0);
-    AppMethodBeat.o(1941);
+    AppMethodBeat.i(126320);
+    this.kth.setVisibility(0);
+    AppMethodBeat.o(126320);
   }
   
   public int getBarPointWidth()
   {
-    AppMethodBeat.i(1932);
-    int i = this.qTE.getWidth();
-    AppMethodBeat.o(1932);
+    AppMethodBeat.i(126313);
+    int i = this.ktg.getWidth();
+    AppMethodBeat.o(126313);
     return i;
   }
   
   public int getLayoutId()
   {
-    return 2130971014;
+    return 2131495778;
   }
   
   public View getWowView()
   {
-    return this.tku;
+    return this.yQZ;
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(156795);
+    AppMethodBeat.i(202283);
     setVisibility(8);
-    AppMethodBeat.o(156795);
-  }
-  
-  public final void i(ckx paramckx)
-  {
-    AppMethodBeat.i(1927);
-    if ((paramckx.xVl & 0x80) > 0)
-    {
-      this.tku.setVisibility(0);
-      if (paramckx.xVp)
-      {
-        this.tkv.setImageResource(2131232125);
-        this.tkw.setTextColor(getResources().getColor(2131690603));
-        AppMethodBeat.o(1927);
-        return;
-      }
-      this.tkv.setImageResource(2131232126);
-      this.tkw.setTextColor(getResources().getColor(2131690709));
-      AppMethodBeat.o(1927);
-      return;
-    }
-    this.tku.setVisibility(8);
-    AppMethodBeat.o(1927);
+    AppMethodBeat.o(202283);
   }
   
   public void init()
   {
-    AppMethodBeat.i(1926);
+    AppMethodBeat.i(126305);
     super.init();
-    this.tkx = this.contentView.findViewById(2131828558);
-    this.tkt = this.contentView.findViewById(2131828545);
-    this.tku = this.contentView.findViewById(2131828542);
-    this.tkv = ((ImageView)this.contentView.findViewById(2131828543));
-    this.tkw = ((TextView)this.contentView.findViewById(2131828544));
-    this.tky = this.contentView.findViewById(2131828547);
-    this.tkz = this.contentView.findViewById(2131828557);
-    this.tkA = this.contentView.findViewById(2131828549);
-    this.tkB = this.contentView.findViewById(2131828550);
-    this.tkC = this.contentView.findViewById(2131828551);
-    this.tkD = this.contentView.findViewById(2131828554);
-    this.naO = ((TextView)this.contentView.findViewById(2131828553));
-    this.naP = ((TextView)this.contentView.findViewById(2131828556));
-    this.tkE = ((ImageView)this.contentView.findViewById(2131828552));
-    this.tkF = ((ImageView)this.contentView.findViewById(2131828555));
-    this.tiu = ((ImageView)this.contentView.findViewById(2131828540));
-    this.qzL = ((TextView)this.contentView.findViewById(2131821550));
-    this.tkG = this.contentView.findViewById(2131828541);
-    this.titleTv = ((TextView)this.contentView.findViewById(2131821212));
-    AppMethodBeat.o(1926);
+    this.yRc = this.contentView.findViewById(2131298748);
+    this.yQY = this.contentView.findViewById(2131304744);
+    this.yQZ = this.contentView.findViewById(2131307019);
+    this.yRa = ((ImageView)this.contentView.findViewById(2131307018));
+    this.yRb = ((TextView)this.contentView.findViewById(2131307017));
+    this.yRd = this.contentView.findViewById(2131303530);
+    this.yRe = this.contentView.findViewById(2131303529);
+    this.yRf = this.contentView.findViewById(2131305623);
+    this.yRg = this.contentView.findViewById(2131297472);
+    this.yRh = this.contentView.findViewById(2131305612);
+    this.yRi = this.contentView.findViewById(2131305616);
+    this.yRj = ((TextView)this.contentView.findViewById(2131305613));
+    this.yRk = ((TextView)this.contentView.findViewById(2131305617));
+    this.yRl = ((ImageView)this.contentView.findViewById(2131305611));
+    this.yRm = ((ImageView)this.contentView.findViewById(2131305615));
+    this.yOU = ((ImageView)this.contentView.findViewById(2131305130));
+    this.snE = ((TextView)this.contentView.findViewById(2131305134));
+    this.yRn = this.contentView.findViewById(2131305129);
+    this.titleTv = ((TextView)this.contentView.findViewById(2131305948));
+    AppMethodBeat.o(126305);
   }
   
-  public void j(ckx paramckx)
+  public final void l(ddb paramddb)
   {
-    AppMethodBeat.i(141939);
-    this.tjR = paramckx;
-    this.tkt.setVisibility(0);
-    float f = getResources().getDimensionPixelSize(2131428433);
-    this.qTG.setTextSize(0, f);
-    this.qTH.setTextSize(0, f);
-    Object localObject = this.tkz.getLayoutParams();
-    ((ViewGroup.LayoutParams)localObject).height = getResources().getDimensionPixelSize(2131428432);
-    this.tkz.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    if (paramckx.wVo.size() > 0)
+    AppMethodBeat.i(126306);
+    if ((paramddb.EuW & 0x80) > 0)
     {
-      if (this.tkA != null) {
-        this.tkA.setVisibility(0);
-      }
-      this.tkB.setVisibility(0);
-      localObject = (ccp)paramckx.wVo.get(0);
-      this.tkC.setTag(localObject);
-      this.naO.setText(((ccp)localObject).cyA);
-      this.naO.setVisibility(0);
-      this.tkC.setVisibility(0);
-      this.tkE.setVisibility(8);
-      if (!bo.isNullOrNil(((ccp)localObject).cDz))
+      this.yQZ.setVisibility(0);
+      if (paramddb.Evb)
       {
-        o.ahG().a(((ccp)localObject).cDz, this.tkE, d.tfE);
-        this.tkE.setVisibility(0);
+        this.yRa.setImageResource(2131691329);
+        this.yRb.setTextColor(getResources().getColor(2131101051));
       }
-      if (paramckx.wVo.size() > 1)
+      for (;;)
       {
-        localObject = (ccp)paramckx.wVo.get(1);
-        this.tkD.setTag(localObject);
-        this.naP.setText(((ccp)localObject).cyA);
-        this.naP.setVisibility(0);
-        this.tkD.setVisibility(0);
-        this.tkF.setVisibility(8);
-        if (!bo.isNullOrNil(((ccp)localObject).cDz))
+        this.yRb.setText(d.Pe(paramddb.Evg));
+        AppMethodBeat.o(126306);
+        return;
+        this.yRa.setImageResource(2131691330);
+        this.yRb.setTextColor(getResources().getColor(2131101182));
+      }
+    }
+    this.yQZ.setVisibility(8);
+    AppMethodBeat.o(126306);
+  }
+  
+  public void m(ddb paramddb)
+  {
+    AppMethodBeat.i(126307);
+    this.yLY = paramddb;
+    this.yQY.setVisibility(0);
+    float f = getResources().getDimensionPixelSize(2131166392);
+    this.kti.setTextSize(0, f);
+    this.ktj.setTextSize(0, f);
+    Object localObject = this.yRe.getLayoutParams();
+    ((ViewGroup.LayoutParams)localObject).height = getResources().getDimensionPixelSize(2131166391);
+    this.yRe.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    if (paramddb.rNO.size() > 0)
+    {
+      if (this.yRf != null) {
+        this.yRf.setVisibility(0);
+      }
+      this.yRg.setVisibility(0);
+      localObject = (ctk)paramddb.rNO.get(0);
+      this.yRh.setTag(localObject);
+      this.yRj.setText(((ctk)localObject).doh);
+      this.yRj.setVisibility(0);
+      this.yRh.setVisibility(0);
+      this.yRl.setVisibility(8);
+      if (!bt.isNullOrNil(((ctk)localObject).dub))
+      {
+        o.ayJ().a(((ctk)localObject).dub, this.yRl, d.yMn);
+        this.yRl.setVisibility(0);
+      }
+      if (paramddb.rNO.size() > 1)
+      {
+        localObject = (ctk)paramddb.rNO.get(1);
+        this.yRi.setTag(localObject);
+        this.yRk.setText(((ctk)localObject).doh);
+        this.yRk.setVisibility(0);
+        this.yRi.setVisibility(0);
+        this.yRm.setVisibility(8);
+        if (!bt.isNullOrNil(((ctk)localObject).dub))
         {
-          o.ahG().a(((ccp)localObject).cDz, this.tkF, d.tfE);
-          this.tkF.setVisibility(0);
+          o.ayJ().a(((ctk)localObject).dub, this.yRm, d.yMn);
+          this.yRm.setVisibility(0);
         }
-        i(paramckx);
-        if (this.tkp) {
-          this.tkB.setVisibility(8);
+        l(paramddb);
+        if (this.yRq) {
+          this.yRg.setVisibility(8);
         }
-        if ((this.tkG != null) && (this.qzL != null) && (this.tiu != null))
+        if ((this.yRn != null) && (this.snE != null) && (this.yOU != null))
         {
-          this.tkG.setVisibility(8);
-          this.qzL.setVisibility(8);
-          this.tiu.setVisibility(8);
-          if (!bo.isNullOrNil(paramckx.source))
+          this.yRn.setVisibility(8);
+          this.snE.setVisibility(8);
+          this.yOU.setVisibility(8);
+          if (!bt.isNullOrNil(paramddb.source))
           {
-            this.qzL.setText(paramckx.source);
-            this.qzL.setVisibility(0);
-            if (!bo.isNullOrNil(paramckx.puE)) {
-              this.tkG.setVisibility(0);
+            this.snE.setText(paramddb.source);
+            this.snE.setVisibility(0);
+            if (!bt.isNullOrNil(paramddb.kqB)) {
+              this.yRn.setVisibility(0);
             }
-            if (bo.isNullOrNil(paramckx.xVg)) {
-              break label526;
+            if (bt.isNullOrNil(paramddb.EuS)) {
+              break label527;
             }
-            o.ahG().a(paramckx.xVg, this.tiu, d.tfD);
+            o.ayJ().a(paramddb.EuS, this.yOU, d.yMm);
           }
         }
       }
     }
     for (;;)
     {
-      this.tiu.setVisibility(0);
+      this.yOU.setVisibility(0);
       if (this.titleTv != null) {
-        this.titleTv.setText(paramckx.title);
+        this.titleTv.setText(paramddb.title);
       }
-      AppMethodBeat.o(141939);
+      AppMethodBeat.o(126307);
       return;
-      this.tkD.setVisibility(8);
-      this.naP.setVisibility(8);
+      this.yRi.setVisibility(8);
+      this.yRk.setVisibility(8);
       break;
-      if (this.tkA != null) {
-        this.tkA.setVisibility(8);
+      if (this.yRf != null) {
+        this.yRf.setVisibility(8);
       }
-      this.tkB.setVisibility(8);
+      this.yRg.setVisibility(8);
       break;
-      label526:
-      this.tiu.setImageResource(2130838493);
+      label527:
+      this.yOU.setImageResource(2131231875);
     }
   }
   
-  public void setOnUpdateProgressLenListener(f.a parama)
+  public void setOnUpdateProgressLenListener(a parama)
   {
-    this.tkI = parama;
+    this.yRp = parama;
   }
   
   public void setOnlyFS(boolean paramBoolean)
   {
-    this.tkp = paramBoolean;
+    this.yRq = paramBoolean;
   }
   
   public void setShareBtnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(1935);
-    this.tkt.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(1935);
+    AppMethodBeat.i(126314);
+    this.yQY.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(126314);
   }
   
   public void setSourceItemClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(1938);
-    if (this.qzL != null) {
-      this.qzL.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.i(126317);
+    if (this.snE != null) {
+      this.snE.setOnClickListener(paramOnClickListener);
     }
-    if (this.tiu != null) {
-      this.tiu.setOnClickListener(paramOnClickListener);
+    if (this.yOU != null) {
+      this.yOU.setOnClickListener(paramOnClickListener);
     }
-    if (this.tkG != null) {
-      this.tkG.setOnClickListener(paramOnClickListener);
+    if (this.yRn != null) {
+      this.yRn.setOnClickListener(paramOnClickListener);
     }
-    AppMethodBeat.o(1938);
+    AppMethodBeat.o(126317);
   }
   
   public void setTagBtnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(1936);
-    this.tkC.setOnClickListener(paramOnClickListener);
-    this.tkD.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(1936);
+    AppMethodBeat.i(126315);
+    this.yRh.setOnClickListener(paramOnClickListener);
+    this.yRi.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(126315);
   }
   
   public void setTitleClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(1939);
+    AppMethodBeat.i(126318);
     this.titleTv.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(1939);
+    AppMethodBeat.o(126318);
   }
   
   public void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(1943);
+    AppMethodBeat.i(126322);
     super.setVisibility(paramInt);
     if ((paramInt == 8) || (paramInt == 4))
     {
-      if (this.tkI != null)
+      if (this.yRp != null)
       {
-        this.tkI.cKn();
-        AppMethodBeat.o(1943);
+        this.yRp.dPT();
+        AppMethodBeat.o(126322);
       }
     }
-    else if ((paramInt == 0) && (this.tkI != null)) {
-      this.tkI.cKm();
+    else if ((paramInt == 0) && (this.yRp != null)) {
+      this.yRp.dPS();
     }
-    AppMethodBeat.o(1943);
+    AppMethodBeat.o(126322);
   }
   
   public void setWowBtnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(1937);
-    this.tku.setVisibility(0);
-    this.tku.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(1937);
+    AppMethodBeat.i(126316);
+    this.yQZ.setVisibility(0);
+    this.yQZ.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(126316);
   }
   
   public final void show()
   {
-    AppMethodBeat.i(1929);
+    AppMethodBeat.i(126310);
     setVisibility(0);
-    cKp();
-    if (this.tkH == null) {
-      this.tkH = new ap(new f.1(this), false);
+    dPV();
+    if (this.yRo == null) {
+      this.yRo = new av(new av.a()
+      {
+        public final boolean onTimerExpired()
+        {
+          AppMethodBeat.i(126304);
+          f.this.setVisibility(8);
+          f.a(f.this).stopTimer();
+          AppMethodBeat.o(126304);
+          return false;
+        }
+      }, false);
     }
-    this.tkH.stopTimer();
-    this.tkH.ag(2000L, 2000L);
-    AppMethodBeat.o(1929);
+    this.yRo.stopTimer();
+    this.yRo.av(2000L, 2000L);
+    AppMethodBeat.o(126310);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void b(ddb paramddb, int paramInt1, int paramInt2);
+    
+    public abstract void dPS();
+    
+    public abstract void dPT();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.f
  * JD-Core Version:    0.7.0.1
  */

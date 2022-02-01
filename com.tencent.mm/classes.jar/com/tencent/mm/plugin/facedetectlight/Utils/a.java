@@ -2,66 +2,99 @@ package com.tencent.mm.plugin.facedetectlight.Utils;
 
 import android.content.Context;
 import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class a
 {
-  private SensorManager bmB;
-  private a.a mru;
-  private boolean mrv = false;
+  private boolean mHasStarted = false;
+  private SensorManager mSensorManager;
+  private a pXY;
   
-  public final void bvJ()
+  public final void che()
   {
-    AppMethodBeat.i(141845);
-    if (this.mrv)
+    AppMethodBeat.i(104273);
+    if (this.mHasStarted)
     {
-      AppMethodBeat.o(141845);
+      AppMethodBeat.o(104273);
       return;
     }
-    this.mrv = true;
-    new StringBuilder("lightSensor has started:").append(this.mrv);
-    this.bmB = ((SensorManager)ah.getContext().getSystemService("sensor"));
-    Sensor localSensor = this.bmB.getDefaultSensor(5);
+    this.mHasStarted = true;
+    new StringBuilder("lightSensor has started:").append(this.mHasStarted);
+    this.mSensorManager = ((SensorManager)aj.getContext().getSystemService("sensor"));
+    Sensor localSensor = this.mSensorManager.getDefaultSensor(5);
     if (localSensor != null)
     {
-      this.mru = new a.a(this, (byte)0);
-      this.bmB.registerListener(this.mru, localSensor, 3);
+      this.pXY = new a((byte)0);
+      this.mSensorManager.registerListener(this.pXY, localSensor, 3);
     }
-    AppMethodBeat.o(141845);
+    AppMethodBeat.o(104273);
   }
   
-  public final float bvK()
+  public final float getLux()
   {
-    AppMethodBeat.i(752);
-    if (this.mru != null)
+    AppMethodBeat.i(104274);
+    if (this.pXY != null)
     {
-      new StringBuilder("Light lux: ").append(a.a.a(this.mru));
-      float f = a.a.a(this.mru);
-      AppMethodBeat.o(752);
+      new StringBuilder("Light lux: ").append(a.a(this.pXY));
+      float f = a.a(this.pXY);
+      AppMethodBeat.o(104274);
       return f;
     }
-    AppMethodBeat.o(752);
+    AppMethodBeat.o(104274);
     return -1.0F;
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(753);
-    if ((!this.mrv) || (this.bmB == null))
+    AppMethodBeat.i(104275);
+    if ((!this.mHasStarted) || (this.mSensorManager == null))
     {
-      AppMethodBeat.o(753);
+      AppMethodBeat.o(104275);
       return;
     }
-    this.mrv = false;
-    this.bmB.unregisterListener(this.mru);
-    AppMethodBeat.o(753);
+    this.mHasStarted = false;
+    this.mSensorManager.unregisterListener(this.pXY);
+    AppMethodBeat.o(104275);
+  }
+  
+  final class a
+    implements SensorEventListener
+  {
+    private float lux;
+    
+    private a() {}
+    
+    public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+    
+    public final void onSensorChanged(SensorEvent paramSensorEvent)
+    {
+      AppMethodBeat.i(104271);
+      if (paramSensorEvent.sensor.getType() == 5) {
+        this.lux = paramSensorEvent.values[0];
+      }
+      AppMethodBeat.o(104271);
+    }
+  }
+  
+  public static final class b
+  {
+    private static a pYa;
+    
+    static
+    {
+      AppMethodBeat.i(104272);
+      pYa = new a((byte)0);
+      AppMethodBeat.o(104272);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectlight.Utils.a
  * JD-Core Version:    0.7.0.1
  */

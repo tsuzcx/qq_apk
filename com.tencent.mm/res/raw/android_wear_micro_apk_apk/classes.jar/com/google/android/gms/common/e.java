@@ -3,46 +3,46 @@ package com.google.android.gms.common;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.j;
-import android.support.v4.app.s;
+import android.support.v4.app.k;
+import android.support.v4.app.t;
 import com.google.android.gms.common.internal.d;
 
 public final class e
-  extends j
+  extends k
 {
-  private DialogInterface.OnCancelListener Hg = null;
-  private Dialog aD = null;
+  private DialogInterface.OnCancelListener IV = null;
+  private Dialog cm = null;
   
   public static e b(Dialog paramDialog, DialogInterface.OnCancelListener paramOnCancelListener)
   {
     e locale = new e();
-    paramDialog = (Dialog)d.e(paramDialog, "Cannot display null dialog");
+    paramDialog = (Dialog)d.g(paramDialog, "Cannot display null dialog");
     paramDialog.setOnCancelListener(null);
     paramDialog.setOnDismissListener(null);
-    locale.aD = paramDialog;
+    locale.cm = paramDialog;
     if (paramOnCancelListener != null) {
-      locale.Hg = paramOnCancelListener;
+      locale.IV = paramOnCancelListener;
     }
     return locale;
   }
   
-  public final void a(s params, String paramString)
+  public final Dialog G()
   {
-    super.a(params, paramString);
+    if (this.cm == null) {
+      F();
+    }
+    return this.cm;
   }
   
-  public final Dialog m()
+  public final void a(t paramt, String paramString)
   {
-    if (this.aD == null) {
-      l();
-    }
-    return this.aD;
+    super.a(paramt, paramString);
   }
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.Hg != null) {
-      this.Hg.onCancel(paramDialogInterface);
+    if (this.IV != null) {
+      this.IV.onCancel(paramDialogInterface);
     }
   }
 }

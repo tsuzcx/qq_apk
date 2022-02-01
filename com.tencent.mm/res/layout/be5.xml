@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="77.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/bei" android:layout_width="16.0dip" android:layout_height="8.0dip" android:src="@raw/top_story_popupwindow_down" android:layout_alignParentTop="true" />
+    <RelativeLayout android:id="@id/ax5" android:background="@drawable/af1" android:layout_width="336.0dip" android:layout_height="61.0dip" android:layout_below="@id/bei" android:layout_centerHorizontal="true">
+        <CheckBox android:textColor="#ff949494" android:id="@id/apj" android:padding="0.0dip" android:focusable="false" android:clickable="false" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="32.0dip" android:checked="true" android:drawablePadding="0.0dip" android:layout_centerVertical="true" style="@style/lj" />
+        <TextView android:textSize="15.0dip" android:textColor="#ffaeaeae" android:id="@id/g_i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/g3t" android:layout_toRightOf="@id/apj" android:layout_centerVertical="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/asv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/g_i">
+            <TextView android:textSize="15.0dip" android:textColor="@color/a_u" android:id="@id/g_j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/g3u" />
+            <ImageView android:layout_width="7.0dip" android:layout_height="13.0dip" android:layout_marginLeft="9.0dip" android:src="@raw/top_story_arrow_right_white" />
+        </LinearLayout>
+    </RelativeLayout>
+    <ImageView android:id="@id/gio" android:layout_width="16.0dip" android:layout_height="8.0dip" android:src="@raw/top_story_popupwindow_up" android:layout_below="@id/ax5" />
+</RelativeLayout>

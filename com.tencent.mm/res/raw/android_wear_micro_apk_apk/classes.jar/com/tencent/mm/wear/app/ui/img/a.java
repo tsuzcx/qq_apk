@@ -11,21 +11,21 @@ import java.io.IOException;
 final class a
   extends com.tencent.mm.wear.app.g.a
 {
-  e aaS;
+  e aet;
   
   private a(DetailImgUI paramDetailImgUI) {}
   
   public final void cancel()
   {
-    if (this.aaS != null) {
-      this.aaS.cancel();
+    if (this.aet != null) {
+      this.aet.cancel();
     }
   }
   
   protected final void execute()
   {
-    Object localObject1 = DetailImgUI.j(DetailImgUI.b(this.aga));
-    File localFile = new File(com.tencent.mm.wear.app.b.h.mm(), (String)localObject1);
+    Object localObject1 = DetailImgUI.m(DetailImgUI.b(this.ajC));
+    File localFile = new File(com.tencent.mm.wear.app.b.h.mY(), (String)localObject1);
     Object localObject2 = null;
     if (localFile.exists()) {
       localObject1 = c.a(localFile);
@@ -33,24 +33,24 @@ final class a
     for (;;)
     {
       if ((localObject1 != null) && (c.a(localFile, (byte[])localObject1))) {
-        DetailImgUI.a(this.aga, com.tencent.mm.wear.a.f.b.c((byte[])localObject1, MMActivity.nc() * 2, MMActivity.nb() * 2));
+        DetailImgUI.a(this.ajC, com.tencent.mm.wear.a.f.b.c((byte[])localObject1, MMActivity.nP() * 2, MMActivity.nO() * 2));
       }
-      com.tencent.mm.wear.a.b.a.aiT.post(new b(this.aga, (byte)0));
+      com.tencent.mm.wear.a.b.a.amv.post(new b(this.ajC, (byte)0));
       return;
-      this.aaS = new e(com.tencent.mm.wear.app.b.h.mb().lS());
-      this.aaS.setTimeout(29000L);
+      this.aet = new e(com.tencent.mm.wear.app.b.h.mO().mF());
+      this.aet.setTimeout(29000L);
       localObject1 = new com.tencent.mm.wear.app.a.g();
-      ((com.tencent.mm.wear.app.a.g)localObject1).aaO = 11007;
+      ((com.tencent.mm.wear.app.a.g)localObject1).aep = 11007;
       Object localObject3 = new q();
-      ((q)localObject3).VO = DetailImgUI.b(this.aga);
-      ((q)localObject3).VS = true;
+      ((q)localObject3).XJ = DetailImgUI.b(this.ajC);
+      ((q)localObject3).XN = true;
       try
       {
         ((com.tencent.mm.wear.app.a.g)localObject1).data = ((q)localObject3).toByteArray();
         label169:
-        com.tencent.mm.wear.app.a.h localh = this.aaS.a((com.tencent.mm.wear.app.a.g)localObject1);
+        com.tencent.mm.wear.app.a.h localh = this.aet.a((com.tencent.mm.wear.app.a.g)localObject1);
         localObject1 = localObject2;
-        if (localh.aaw != 0) {
+        if (localh.adX != 0) {
           continue;
         }
         localObject1 = localObject2;
@@ -63,10 +63,10 @@ final class a
           ((r)localObject3).h(localh.data);
           label219:
           localObject1 = localObject2;
-          if (((r)localObject3).Vn == null) {
+          if (((r)localObject3).Xi == null) {
             continue;
           }
-          localObject1 = ((r)localObject3).Vn.toByteArray();
+          localObject1 = ((r)localObject3).Xi.toByteArray();
         }
         catch (IOException localIOException1)
         {

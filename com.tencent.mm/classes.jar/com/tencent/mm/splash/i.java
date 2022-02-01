@@ -4,79 +4,80 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import java.util.ArrayList;
 
 final class i
-  extends Activity
+  extends HellActivity
 {
-  public String yvL;
+  public String FbM;
   
   protected final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(114883);
+    AppMethodBeat.i(40677);
     if (paramInt1 == 100)
     {
       if (paramInt2 != -100)
       {
         onBackPressed();
-        AppMethodBeat.o(114883);
+        AppMethodBeat.o(40677);
       }
     }
     else
     {
       finish();
-      h.c("WxSplash.SplashHackActivity", "unknown request code.", new Object[0]);
+      h.b("WxSplash.SplashHackActivity", "unknown request code.", new Object[0]);
     }
-    AppMethodBeat.o(114883);
+    AppMethodBeat.o(40677);
   }
   
-  protected final void onCreate(Bundle paramBundle)
+  public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(114878);
+    AppMethodBeat.i(40672);
     super.onCreate(paramBundle);
-    h.c("WxSplash.SplashHackActivity", "onCreate", new Object[0]);
+    h.b("WxSplash.SplashHackActivity", "onCreate", new Object[0]);
     setVisible(false);
-    paramBundle = new Intent(this, h.dvA());
+    paramBundle = new Intent(this, h.eIq());
     paramBundle.putExtra("hashcode", hashCode());
     startActivityForResult(paramBundle, 100);
-    AppMethodBeat.o(114878);
+    AppMethodBeat.o(40672);
   }
   
-  protected final void onDestroy()
+  public final void onDestroy()
   {
-    AppMethodBeat.i(114882);
-    h.c("WxSplash.SplashHackActivity", "onDestroy", new Object[0]);
-    h.yvj.remove(this);
+    AppMethodBeat.i(40676);
+    h.b("WxSplash.SplashHackActivity", "onDestroy", new Object[0]);
+    h.Fbm.remove(this);
     setVisible(true);
-    h.yvj.remove(this);
+    h.Fbm.remove(this);
     super.onDestroy();
-    AppMethodBeat.o(114882);
+    AppMethodBeat.o(40676);
   }
   
-  protected final void onNewIntent(Intent paramIntent)
+  public final void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(114879);
-    h.c("WxSplash.SplashHackActivity", "onNewIntent.", new Object[0]);
-    if ((h.yvn != null) && (h.yvn.n(paramIntent))) {
+    AppMethodBeat.i(40673);
+    h.b("WxSplash.SplashHackActivity", "onNewIntent.", new Object[0]);
+    if ((h.Fbp != null) && (h.Fbp.n(paramIntent))) {
       finish();
     }
-    AppMethodBeat.o(114879);
+    AppMethodBeat.o(40673);
   }
   
-  protected final void onPause()
+  public final void onPause()
   {
-    AppMethodBeat.i(114881);
-    h.c("WxSplash.SplashHackActivity", "onPause", new Object[0]);
+    AppMethodBeat.i(40675);
+    h.b("WxSplash.SplashHackActivity", "onPause", new Object[0]);
     super.onPause();
-    AppMethodBeat.o(114881);
+    AppMethodBeat.o(40675);
   }
   
-  protected final void onResume()
+  public final void onResume()
   {
-    AppMethodBeat.i(114880);
+    AppMethodBeat.i(40674);
     super.onResume();
-    h.c("WxSplash.SplashHackActivity", "onResume", new Object[0]);
-    AppMethodBeat.o(114880);
+    h.b("WxSplash.SplashHackActivity", "onResume", new Object[0]);
+    AppMethodBeat.o(40674);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

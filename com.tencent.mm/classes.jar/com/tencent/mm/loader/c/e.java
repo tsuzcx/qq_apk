@@ -1,255 +1,113 @@
 package com.tencent.mm.loader.c;
 
-import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import com.tencent.mm.loader.d.b;
-import com.tencent.mm.loader.e.c.a;
-import com.tencent.mm.modelsfs.SFSContext;
-import com.tencent.mm.sdk.platformtools.ak;
+import android.view.animation.Animation;
+import d.g.b.k;
+import d.l;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "", "builder", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$Builder;", "(Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$Builder;)V", "defaultAnimation", "Landroid/view/animation/Animation;", "getDefaultAnimation", "()Landroid/view/animation/Animation;", "defaultBackgroudColorId", "", "getDefaultBackgroudColorId", "()I", "defaultBackgroundDrawable", "Landroid/graphics/drawable/Drawable;", "defaultBackgroundResId", "getDefaultBackgroundResId", "defaultDrawable", "defaultResId", "getDefaultResId", "fullPath", "", "isCacheInMemory", "", "()Z", "isRound", "isSaveOnDisk", "loadFrom", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$LoadFrom;", "getLoadFrom", "()Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$LoadFrom;", "maxImageHeight", "getMaxImageHeight", "maxImageWidth", "getMaxImageWidth", "showEmptyImage", "getDefaultBackgroundDrawable", "resources", "Landroid/content/res/Resources;", "getfullPath", "Builder", "Companion", "LoadFrom", "libimageloader_release"})
 public final class e
 {
-  public static boolean DEBUG = true;
-  public static final e.b eNJ = e.b.eOn;
-  private final float alpha;
-  private final String cqq;
-  private final int density;
-  private final boolean eNK;
-  private final boolean eNL;
-  private final boolean eNM;
-  private final boolean eNN;
-  private final String eNO;
-  private final String eNP;
-  private final String eNQ;
-  private final e.b eNR;
-  private final int eNS;
-  private final int eNT;
-  private final boolean eNU;
-  private final boolean eNV;
-  private final boolean eNW;
-  private final boolean eNX;
-  private final int eNY;
-  private final Drawable eNZ;
-  private final int eOa;
-  private final Drawable eOb;
-  private final String eOc;
-  private final SFSContext eOd;
-  private final boolean eOe;
-  private final boolean eOf;
-  private final boolean eOg;
-  private final b eOh;
-  private final Object[] eOi;
-  private final ak handler;
+  private static boolean DEBUG;
+  private static final e.c gjB = e.c.gjQ;
+  public static final b gjC = new b((byte)0);
+  public final int KBD;
+  public final int gin;
+  public final Animation gio;
+  public final Drawable gip;
+  private final boolean gjA;
+  public final boolean gjr;
+  public final boolean gjs;
+  public final String gjt;
+  public final e.c gju;
+  public final int gjv;
+  public final int gjw;
+  private final int gjx;
+  private final Drawable gjy;
+  public final boolean gjz;
   
   private e(a parama)
   {
-    this.eNK = parama.eNK;
-    this.eNM = parama.eNM;
-    this.eNL = parama.eNL;
-    this.eNN = parama.eNN;
-    this.eNO = parama.eNO;
-    this.eNP = parama.eNP;
-    this.eNQ = parama.eNQ;
-    this.eNR = parama.eNR;
-    this.eNS = parama.eNS;
-    this.eNT = parama.eNT;
-    this.eNU = parama.eNU;
-    this.cqq = parama.cqq;
-    this.density = parama.density;
-    this.alpha = parama.alpha;
-    this.eNV = parama.eNV;
-    this.eNW = parama.eNW;
-    this.eNX = parama.eNX;
-    this.eNY = parama.eNY;
-    this.eNZ = parama.eNZ;
-    this.eOa = parama.eOa;
-    this.eOb = parama.eOb;
-    this.eOe = parama.eOe;
-    this.eOf = parama.eOf;
-    this.eOg = parama.eOg;
-    this.eOd = parama.eOd;
-    this.handler = parama.handler;
-    this.eOi = parama.eOi;
-    this.eOh = parama.eOh;
-    this.eOc = parama.eOc;
+    this.gjr = parama.gjD;
+    this.gjs = parama.gjE;
+    this.gjt = parama.gjF;
+    this.gju = parama.gjG;
+    this.gjv = parama.gjH;
+    this.gjw = parama.gjI;
+    this.gjx = parama.gjJ;
+    this.gjy = parama.gjK;
+    this.gio = parama.gjO;
+    this.gin = parama.gjL;
+    this.KBD = parama.KBE;
+    this.gip = parama.gjM;
+    this.gjA = parama.gjN;
+    this.gjz = parama.gjP;
   }
   
-  public static e To()
-  {
-    return new a().TI();
-  }
-  
-  public final boolean TA()
-  {
-    return this.eNU;
-  }
-  
-  public final String TB()
-  {
-    return this.cqq;
-  }
-  
-  public final SFSContext TC()
-  {
-    return this.eOd;
-  }
-  
-  public final Object[] TD()
-  {
-    if (this.eOi == null) {
-      return new Object[0];
-    }
-    return this.eOi;
-  }
-  
-  public final boolean TE()
-  {
-    return this.eNX;
-  }
-  
-  public final boolean Tp()
-  {
-    return this.eNK;
-  }
-  
-  public final boolean Tq()
-  {
-    return this.eNM;
-  }
-  
-  public final boolean Tr()
-  {
-    return this.eNL;
-  }
-  
-  public final String Ts()
-  {
-    return this.eNO;
-  }
-  
-  public final String Tt()
-  {
-    return this.eNP;
-  }
-  
-  public final String Tu()
-  {
-    return this.eNQ;
-  }
-  
-  public final e.b Tv()
-  {
-    return this.eNR;
-  }
-  
-  public final int Tw()
-  {
-    return this.eNS;
-  }
-  
-  public final int Tx()
-  {
-    return this.eNT;
-  }
-  
-  public final boolean Ty()
-  {
-    return this.eNV;
-  }
-  
-  public final int Tz()
-  {
-    return this.eOa;
-  }
-  
-  public final Drawable f(Resources paramResources)
-  {
-    if (this.eOa != 0) {
-      return paramResources.getDrawable(this.eOa);
-    }
-    return this.eOb;
-  }
-  
-  public final float getAlpha()
-  {
-    return this.alpha;
-  }
-  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$Builder;", "", "()V", "_animation", "Landroid/view/animation/Animation;", "get_animation", "()Landroid/view/animation/Animation;", "set_animation", "(Landroid/view/animation/Animation;)V", "_cacheInMemory", "", "get_cacheInMemory", "()Z", "set_cacheInMemory", "(Z)V", "_defaultBackgroudColorId", "", "get_defaultBackgroudColorId", "()I", "set_defaultBackgroudColorId", "(I)V", "_defaultBackgroudDrawable", "Landroid/graphics/drawable/Drawable;", "get_defaultBackgroudDrawable", "()Landroid/graphics/drawable/Drawable;", "set_defaultBackgroudDrawable", "(Landroid/graphics/drawable/Drawable;)V", "_defaultBackgroudResId", "get_defaultBackgroudResId", "set_defaultBackgroudResId", "_defaultDrawable", "get_defaultDrawable", "set_defaultDrawable", "_defualtResId", "get_defualtResId", "set_defualtResId", "_fullPath", "", "get_fullPath", "()Ljava/lang/String;", "set_fullPath", "(Ljava/lang/String;)V", "_isRound", "get_isRound", "set_isRound", "_loadFrom", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$LoadFrom;", "get_loadFrom", "()Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$LoadFrom;", "set_loadFrom", "(Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$LoadFrom;)V", "_maxImageHeight", "get_maxImageHeight", "set_maxImageHeight", "_maxImageWidth", "get_maxImageWidth", "set_maxImageWidth", "_saveOnDisk", "get_saveOnDisk", "set_saveOnDisk", "_showEmptyImage", "get_showEmptyImage", "build", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "setAnimation", "animation", "setCacheInMemory", "setDefaultBackgroudColor", "_resId", "setDefaultBackgroudDrawable", "_drawable", "setDefaultBackgroudResId", "setDefaultDrawable", "setDefaultResId", "setFullPath", "_path", "setIsRound", "setLoadFrom", "setMaxDisplayHeight", "_maxDisplayHeight", "setMaxDisplayWidth", "_maxDisplayWidth", "setSaveOnDisk", "libimageloader_release"})
   public static final class a
   {
-    float alpha = 0.0F;
-    String cqq = "";
-    int density = 0;
-    boolean eNK = true;
-    boolean eNL = false;
-    boolean eNM = false;
-    boolean eNN = true;
-    String eNO = "";
-    String eNP = "";
-    String eNQ = "";
-    e.b eNR = e.eNJ;
-    int eNS = 0;
-    int eNT = 0;
-    boolean eNU = false;
-    boolean eNV = false;
-    boolean eNW = false;
-    boolean eNX = false;
-    int eNY = 0;
-    Drawable eNZ = null;
-    int eOa = 0;
-    Drawable eOb = null;
-    String eOc = null;
-    SFSContext eOd = null;
-    boolean eOe = true;
-    boolean eOf = false;
-    boolean eOg = true;
-    b eOh = null;
-    Object[] eOi = null;
-    private a eOj = null;
-    private boolean eOk = false;
-    private float eOl = 0.0F;
-    private boolean eOm = false;
-    ak handler = null;
+    public int KBE;
+    public boolean gjD = true;
+    public boolean gjE;
+    String gjF = "";
+    e.c gjG;
+    public int gjH;
+    public int gjI;
+    public int gjJ;
+    Drawable gjK;
+    int gjL;
+    Drawable gjM;
+    final boolean gjN;
+    public Animation gjO;
+    public boolean gjP;
     
-    public final a TF()
+    public a()
     {
-      this.eNK = true;
+      e.b localb = e.gjC;
+      this.gjG = e.ahq();
+      this.gjN = true;
+    }
+    
+    public final a a(e.c paramc)
+    {
+      k.h(paramc, "_loadFrom");
+      this.gjG = paramc;
       return this;
     }
     
-    public final a TG()
-    {
-      this.eNM = true;
-      return this;
-    }
-    
-    public final a TH()
-    {
-      this.eOa = 2130838904;
-      return this;
-    }
-    
-    public final e TI()
+    public final e ahr()
     {
       return new e(this, (byte)0);
     }
     
-    public final a jV(int paramInt)
+    public final a rf(String paramString)
     {
-      this.eNS = paramInt;
+      k.h(paramString, "_path");
+      this.gjF = paramString;
       return this;
     }
     
-    public final a jW(int paramInt)
+    public final a w(Drawable paramDrawable)
     {
-      this.eNT = paramInt;
+      k.h(paramDrawable, "_drawable");
+      this.gjM = paramDrawable;
       return this;
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$Companion;", "", "()V", "DEBUG", "", "getDEBUG", "()Z", "setDEBUG", "(Z)V", "DEFAULT_LOAD_FROM", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$LoadFrom;", "getDEFAULT_LOAD_FROM", "()Lcom/tencent/mm/loader/cfg/ImageLoaderOptions$LoadFrom;", "createSimpleOption", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "libimageloader_release"})
+  public static final class b
+  {
+    public static e ahs()
+    {
+      return new e.a().ahr();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.c.e
  * JD-Core Version:    0.7.0.1
  */

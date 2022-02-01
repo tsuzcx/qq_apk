@@ -2,52 +2,52 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg.a;
 
 import android.graphics.Paint.Style;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
-import com.tencent.mm.plugin.appbrand.s.g;
 
 public final class i
   extends b
 {
-  public static final i hfB;
+  public static final i iZM;
   
   static
   {
-    AppMethodBeat.i(103649);
-    hfB = new i();
-    AppMethodBeat.o(103649);
+    AppMethodBeat.i(145332);
+    iZM = new i();
+    AppMethodBeat.o(145332);
   }
   
-  public static i ayg()
+  public static i aSZ()
   {
-    return hfB;
+    return iZM;
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(103647);
+    AppMethodBeat.i(145330);
     parama.reset();
     parama.release();
     parama.setStyle(Paint.Style.STROKE);
     parama.setAntiAlias(true);
-    parama.setStrokeWidth(g.pO(1));
+    parama.setStrokeWidth(g.um(1));
     super.a(parama);
-    AppMethodBeat.o(103647);
+    AppMethodBeat.o(145330);
   }
   
-  public final a axZ()
+  public final a aSS()
   {
-    AppMethodBeat.i(103648);
+    AppMethodBeat.i(145331);
     a locala = new a();
     locala.setStyle(Paint.Style.STROKE);
     locala.setAntiAlias(true);
-    locala.setStrokeWidth(g.pO(1));
-    AppMethodBeat.o(103648);
+    locala.setStrokeWidth(g.um(1));
+    AppMethodBeat.o(145331);
     return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.a.i
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class gy
   extends b
 {
-  public gy.a cvT;
-  public gy.b cvU;
+  public a dkz;
   
   public gy()
   {
@@ -16,17 +15,23 @@ public final class gy
   
   private gy(byte paramByte)
   {
-    AppMethodBeat.i(54941);
-    this.cvT = new gy.a();
-    this.cvU = new gy.b();
-    this.ymq = false;
+    AppMethodBeat.i(168880);
+    this.dkz = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(54941);
+    AppMethodBeat.o(168880);
+  }
+  
+  public static final class a
+  {
+    public int aBE;
+    public long id;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.gy
  * JD-Core Version:    0.7.0.1
  */

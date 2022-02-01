@@ -4,36 +4,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum b
 {
-  public final int jqw;
+  public final int mgo;
   
   static
   {
-    AppMethodBeat.i(77448);
-    jqr = new b("DONE", 0, 6);
-    jqs = new b("SEARCH", 1, 3);
-    jqt = new b("NEXT", 2, 5);
-    jqu = new b("GO", 3, 2);
-    jqv = new b("SEND", 4, 4);
-    jqx = new b[] { jqr, jqs, jqt, jqu, jqv };
-    AppMethodBeat.o(77448);
+    AppMethodBeat.i(131524);
+    mgj = new b("DONE", 0, 6);
+    mgk = new b("SEARCH", 1, 3);
+    mgl = new b("NEXT", 2, 5);
+    mgm = new b("GO", 3, 2);
+    mgn = new b("SEND", 4, 4);
+    mgp = new b[] { mgj, mgk, mgl, mgm, mgn };
+    AppMethodBeat.o(131524);
   }
   
   private b(int paramInt)
   {
-    this.jqw = paramInt;
+    this.mgo = paramInt;
   }
   
-  public static b FP(String paramString)
+  public static b NM(String paramString)
   {
-    AppMethodBeat.i(77447);
-    paramString = (b)d.g(paramString, b.class);
-    AppMethodBeat.o(77447);
+    AppMethodBeat.i(131523);
+    paramString = (b)d.h(paramString, b.class);
+    AppMethodBeat.o(131523);
     return paramString;
   }
   
-  public static b aRP()
+  public static b buh()
   {
-    return jqr;
+    return mgj;
   }
 }
 

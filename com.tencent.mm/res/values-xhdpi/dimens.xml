@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ni">10.0dip</dimen>
+    <dimen name="yx">90.0dip</dimen>
+    <dimen name="z5">280.0dip</dimen>
+    <dimen name="a6y">40.0dip</dimen>
+    <dimen name="a6z">52.0dip</dimen>
+    <dimen name="a70">50.0dip</dimen>
+    <dimen name="a71">20.0dip</dimen>
+    <dimen name="a72">25.0dip</dimen>
+    <dimen name="a73">8.0dip</dimen>
+    <dimen name="a74">16.0dip</dimen>
+    <dimen name="a78">39.0dip</dimen>
+    <dimen name="a7b">37.0dip</dimen>
+    <dimen name="a7c">24.0dip</dimen>
+    <dimen name="a7d">14.0dip</dimen>
+    <dimen name="a7e">12.0dip</dimen>
+    <dimen name="a9w">70.0dip</dimen>
+    <dimen name="ai3">100.0dip</dimen>
+</resources>

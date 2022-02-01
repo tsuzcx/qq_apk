@@ -11,52 +11,52 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.widget.MMTextView;
 import java.util.ArrayList;
 
 public final class b
   extends BaseAdapter
 {
-  String gvn;
+  String iil;
   private Context mContext;
-  ArrayList<String> nZb;
-  SparseArray<SpannableString> nZc;
+  ArrayList<String> sNa;
+  SparseArray<SpannableString> sNb;
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(22653);
-    this.nZb = new ArrayList();
-    this.nZc = new SparseArray();
+    AppMethodBeat.i(26275);
+    this.sNa = new ArrayList();
+    this.sNb = new SparseArray();
     this.mContext = paramContext;
-    AppMethodBeat.o(22653);
+    AppMethodBeat.o(26275);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(22654);
-    if (this.nZb == null)
+    AppMethodBeat.i(26276);
+    if (this.sNa == null)
     {
-      AppMethodBeat.o(22654);
+      AppMethodBeat.o(26276);
       return 0;
     }
-    int i = this.nZb.size();
-    AppMethodBeat.o(22654);
+    int i = this.sNa.size();
+    AppMethodBeat.o(26276);
     return i;
   }
   
   public final String getItem(int paramInt)
   {
-    AppMethodBeat.i(22655);
-    if ((this.nZb == null) || (paramInt >= getCount()))
+    AppMethodBeat.i(26277);
+    if ((this.sNa == null) || (paramInt >= getCount()))
     {
-      AppMethodBeat.o(22655);
+      AppMethodBeat.o(26277);
       return null;
     }
-    String str = (String)this.nZb.get(paramInt);
-    AppMethodBeat.o(22655);
+    String str = (String)this.sNa.get(paramInt);
+    AppMethodBeat.o(26277);
     return str;
   }
   
@@ -67,20 +67,20 @@ public final class b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(22656);
+    AppMethodBeat.i(26278);
     MMTextView localMMTextView;
     String str;
     int i;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(2130969258, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.mContext).inflate(2131493646, paramViewGroup, false);
       paramViewGroup = new c(paramView);
       paramView.setTag(paramViewGroup);
-      localMMTextView = paramViewGroup.nZC;
-      str = bo.bf(getItem(paramInt), "");
-      i = (int)paramViewGroup.nZC.getTextSize();
+      localMMTextView = paramViewGroup.sNB;
+      str = bt.by(getItem(paramInt), "");
+      i = (int)paramViewGroup.sNB.getTextSize();
       paramInt = str.hashCode();
-      paramViewGroup = (SpannableString)this.nZc.get(paramInt);
+      paramViewGroup = (SpannableString)this.sNb.get(paramInt);
       if (paramViewGroup == null) {
         break label121;
       }
@@ -88,30 +88,30 @@ public final class b
     for (;;)
     {
       localMMTextView.setText(paramViewGroup);
-      AppMethodBeat.o(22656);
+      AppMethodBeat.o(26278);
       return paramView;
       paramViewGroup = (c)paramView.getTag();
       break;
       label121:
-      paramViewGroup = new SpannableString(j.b(this.mContext, str, i));
-      i = str.indexOf(this.gvn);
+      paramViewGroup = new SpannableString(k.b(this.mContext, str, i));
+      i = str.indexOf(this.iil);
       if (i == -1)
       {
-        ab.w("MicroMsg.Label.ContactLabelSearchAdapter", "hight light %s error.", new Object[] { str });
+        ad.w("MicroMsg.Label.ContactLabelSearchAdapter", "hight light %s error.", new Object[] { str });
       }
       else
       {
-        int j = this.gvn.length() + i;
-        paramViewGroup.setSpan(new ForegroundColorSpan(this.mContext.getResources().getColor(2131690701)), i, j, 33);
+        int j = this.iil.length() + i;
+        paramViewGroup.setSpan(new ForegroundColorSpan(this.mContext.getResources().getColor(2131101171)), i, j, 33);
         paramViewGroup.setSpan(new StyleSpan(1), i, j, 33);
-        this.nZc.put(paramInt, paramViewGroup);
+        this.sNb.put(paramInt, paramViewGroup);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.b
  * JD-Core Version:    0.7.0.1
  */

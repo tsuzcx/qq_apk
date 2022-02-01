@@ -9,9 +9,9 @@ import java.lang.annotation.Target;
 @Target({java.lang.annotation.ElementType.FIELD})
 public @interface i
 {
-  String duo();
+  String eHf();
   
-  int dup() default 0;
+  int eHg() default 0;
 }
 
 

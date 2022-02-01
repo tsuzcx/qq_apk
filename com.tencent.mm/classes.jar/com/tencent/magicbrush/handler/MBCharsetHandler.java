@@ -13,16 +13,16 @@ public class MBCharsetHandler
   @Keep
   static String decode(byte[] paramArrayOfByte, String paramString)
   {
-    AppMethodBeat.i(115897);
+    AppMethodBeat.i(139997);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      AppMethodBeat.o(115897);
+      AppMethodBeat.o(139997);
       return null;
     }
     try
     {
       paramArrayOfByte = new String(paramArrayOfByte, paramString);
-      AppMethodBeat.o(115897);
+      AppMethodBeat.o(139997);
       return paramArrayOfByte;
     }
     catch (UnsupportedEncodingException paramArrayOfByte)
@@ -39,16 +39,16 @@ public class MBCharsetHandler
   public static byte[] encode(String paramString1, String paramString2)
   {
     Object localObject = null;
-    AppMethodBeat.i(115896);
+    AppMethodBeat.i(139996);
     if (paramString1 == null)
     {
-      AppMethodBeat.o(115896);
+      AppMethodBeat.o(139996);
       return null;
     }
     try
     {
       paramString1 = paramString1.getBytes(paramString2);
-      AppMethodBeat.o(115896);
+      AppMethodBeat.o(139996);
       return paramString1;
     }
     catch (UnsupportedEncodingException paramString1)
@@ -63,7 +63,7 @@ public class MBCharsetHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.magicbrush.handler.MBCharsetHandler
  * JD-Core Version:    0.7.0.1
  */

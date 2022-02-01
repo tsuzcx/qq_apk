@@ -1,87 +1,79 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
 
 public final class cxl
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String Username;
-  public long xCj;
+  public String Epy;
+  public String Name;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28748);
+    AppMethodBeat.i(152696);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.Username == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Username");
-        AppMethodBeat.o(28748);
-        throw paramVarArgs;
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.Name != null) {
+        paramVarArgs.d(1, this.Name);
       }
-      if (this.Username != null) {
-        paramVarArgs.e(1, this.Username);
+      if (this.Epy != null) {
+        paramVarArgs.d(2, this.Epy);
       }
-      paramVarArgs.am(2, this.xCj);
-      AppMethodBeat.o(28748);
+      AppMethodBeat.o(152696);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Username == null) {
-        break label318;
+      if (this.Name == null) {
+        break label274;
       }
     }
-    label318:
-    for (paramInt = e.a.a.b.b.a.f(1, this.Username) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = f.a.a.b.b.a.e(1, this.Name) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.p(2, this.xCj);
-      AppMethodBeat.o(28748);
-      return paramInt + i;
+      int i = paramInt;
+      if (this.Epy != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.Epy);
+      }
+      AppMethodBeat.o(152696);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        if (this.Username == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Username");
-          AppMethodBeat.o(28748);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(28748);
+        AppMethodBeat.o(152696);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         cxl localcxl = (cxl)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(28748);
+          AppMethodBeat.o(152696);
           return -1;
         case 1: 
-          localcxl.Username = locala.CLY.readString();
-          AppMethodBeat.o(28748);
+          localcxl.Name = locala.KhF.readString();
+          AppMethodBeat.o(152696);
           return 0;
         }
-        localcxl.xCj = locala.CLY.sm();
-        AppMethodBeat.o(28748);
+        localcxl.Epy = locala.KhF.readString();
+        AppMethodBeat.o(152696);
         return 0;
       }
-      AppMethodBeat.o(28748);
+      AppMethodBeat.o(152696);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cxl
  * JD-Core Version:    0.7.0.1
  */

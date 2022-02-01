@@ -22,8 +22,8 @@ public class FacebookException
   public FacebookException(String paramString, Object... paramVarArgs)
   {
     this(String.format(paramString, paramVarArgs));
-    AppMethodBeat.i(71579);
-    AppMethodBeat.o(71579);
+    AppMethodBeat.i(17015);
+    AppMethodBeat.o(17015);
   }
   
   public FacebookException(Throwable paramThrowable)
@@ -33,15 +33,15 @@ public class FacebookException
   
   public String toString()
   {
-    AppMethodBeat.i(71580);
+    AppMethodBeat.i(17016);
     String str = getMessage();
-    AppMethodBeat.o(71580);
+    AppMethodBeat.o(17016);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.FacebookException
  * JD-Core Version:    0.7.0.1
  */

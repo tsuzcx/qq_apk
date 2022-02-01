@@ -24,11 +24,11 @@ public final class d
   {
     if ((getBitmap() != null) && (!getBitmap().isRecycled()))
     {
-      com.tencent.mm.wear.a.c.d.e("MicroMsg.MMImageLoader", "draw canvas", new Object[0]);
+      com.tencent.mm.wear.a.c.d.d("MicroMsg.MMImageLoader", "draw canvas", new Object[0]);
       super.draw(paramCanvas);
       return;
     }
-    com.tencent.mm.wear.a.c.d.e("MicroMsg.MMImageLoader", "draw canvas null", new Object[0]);
+    com.tencent.mm.wear.a.c.d.d("MicroMsg.MMImageLoader", "draw canvas null", new Object[0]);
   }
 }
 

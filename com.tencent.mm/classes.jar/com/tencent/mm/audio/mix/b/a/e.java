@@ -7,30 +7,30 @@ import com.tencent.mm.audio.mix.d.i;
 public final class e
   extends i
 {
-  private f ceI;
+  private f cTH;
   
   public e(f paramf, String paramString)
   {
     super(paramString);
-    this.ceI = paramf;
+    this.cTH = paramf;
   }
   
   public final void run()
   {
-    AppMethodBeat.i(137007);
-    if (this.ceI != null)
+    AppMethodBeat.i(136755);
+    if (this.cTH != null)
     {
-      this.ceI.Dh();
-      this.ceI.end();
+      this.cTH.MQ();
+      this.cTH.end();
     }
-    this.ceI = null;
+    this.cTH = null;
     h.b(this);
-    AppMethodBeat.o(137007);
+    AppMethodBeat.o(136755);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.b.a.e
  * JD-Core Version:    0.7.0.1
  */

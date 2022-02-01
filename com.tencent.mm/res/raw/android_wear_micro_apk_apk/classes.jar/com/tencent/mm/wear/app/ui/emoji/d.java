@@ -12,8 +12,8 @@ import java.util.LinkedList;
 public final class d
   extends BaseAdapter
 {
-  private LinkedList<e> afF;
-  private boolean afG;
+  private LinkedList<e> ajh;
+  private boolean aji;
   private Context context;
   
   /* Error */
@@ -26,7 +26,7 @@ public final class d
     //   5: new 18	java/util/LinkedList
     //   8: dup
     //   9: invokespecial 19	java/util/LinkedList:<init>	()V
-    //   12: putfield 21	com/tencent/mm/wear/app/ui/emoji/d:afF	Ljava/util/LinkedList;
+    //   12: putfield 21	com/tencent/mm/wear/app/ui/emoji/d:ajh	Ljava/util/LinkedList;
     //   15: aload_0
     //   16: aload_1
     //   17: putfield 23	com/tencent/mm/wear/app/ui/emoji/d:context	Landroid/content/Context;
@@ -39,7 +39,7 @@ public final class d
     //   34: ifnull +168 -> 202
     //   37: aload_0
     //   38: iconst_1
-    //   39: putfield 39	com/tencent/mm/wear/app/ui/emoji/d:afG	Z
+    //   39: putfield 39	com/tencent/mm/wear/app/ui/emoji/d:aji	Z
     //   42: new 41	com/tencent/mm/wear/app/ui/emoji/e
     //   45: dup
     //   46: aload_0
@@ -47,20 +47,20 @@ public final class d
     //   50: astore_3
     //   51: aload_3
     //   52: ldc 45
-    //   54: putfield 49	com/tencent/mm/wear/app/ui/emoji/e:afH	I
+    //   54: putfield 49	com/tencent/mm/wear/app/ui/emoji/e:ajj	I
     //   57: aload_3
     //   58: aload_1
     //   59: ldc 50
     //   61: invokevirtual 54	android/content/Context:getString	(I)Ljava/lang/String;
-    //   64: putfield 58	com/tencent/mm/wear/app/ui/emoji/e:afI	Ljava/lang/String;
+    //   64: putfield 58	com/tencent/mm/wear/app/ui/emoji/e:ajk	Ljava/lang/String;
     //   67: aload_3
     //   68: ldc 60
-    //   70: putfield 63	com/tencent/mm/wear/app/ui/emoji/e:afs	Ljava/lang/String;
+    //   70: putfield 63	com/tencent/mm/wear/app/ui/emoji/e:aiU	Ljava/lang/String;
     //   73: aload_3
     //   74: ldc 64
-    //   76: putfield 67	com/tencent/mm/wear/app/ui/emoji/e:afJ	I
+    //   76: putfield 67	com/tencent/mm/wear/app/ui/emoji/e:ajl	I
     //   79: aload_0
-    //   80: getfield 21	com/tencent/mm/wear/app/ui/emoji/d:afF	Ljava/util/LinkedList;
+    //   80: getfield 21	com/tencent/mm/wear/app/ui/emoji/d:ajh	Ljava/util/LinkedList;
     //   83: aload_3
     //   84: invokevirtual 71	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   87: pop
@@ -100,25 +100,25 @@ public final class d
     //   152: iload_2
     //   153: iconst_0
     //   154: invokevirtual 95	android/content/res/TypedArray:getResourceId	(II)I
-    //   157: putfield 49	com/tencent/mm/wear/app/ui/emoji/e:afH	I
+    //   157: putfield 49	com/tencent/mm/wear/app/ui/emoji/e:ajj	I
     //   160: aload_1
     //   161: aload 5
     //   163: iload_2
     //   164: aaload
-    //   165: putfield 58	com/tencent/mm/wear/app/ui/emoji/e:afI	Ljava/lang/String;
+    //   165: putfield 58	com/tencent/mm/wear/app/ui/emoji/e:ajk	Ljava/lang/String;
     //   168: aload_1
     //   169: aload 6
     //   171: iload_2
     //   172: aaload
-    //   173: putfield 63	com/tencent/mm/wear/app/ui/emoji/e:afs	Ljava/lang/String;
+    //   173: putfield 63	com/tencent/mm/wear/app/ui/emoji/e:aiU	Ljava/lang/String;
     //   176: aload_1
     //   177: aload_3
     //   178: iload_2
     //   179: iconst_0
     //   180: invokevirtual 95	android/content/res/TypedArray:getResourceId	(II)I
-    //   183: putfield 67	com/tencent/mm/wear/app/ui/emoji/e:afJ	I
+    //   183: putfield 67	com/tencent/mm/wear/app/ui/emoji/e:ajl	I
     //   186: aload_0
-    //   187: getfield 21	com/tencent/mm/wear/app/ui/emoji/d:afF	Ljava/util/LinkedList;
+    //   187: getfield 21	com/tencent/mm/wear/app/ui/emoji/d:ajh	Ljava/util/LinkedList;
     //   190: aload_1
     //   191: invokevirtual 71	java/util/LinkedList:add	(Ljava/lang/Object;)Z
     //   194: pop
@@ -129,7 +129,7 @@ public final class d
     //   199: goto -66 -> 133
     //   202: aload_0
     //   203: iconst_0
-    //   204: putfield 39	com/tencent/mm/wear/app/ui/emoji/d:afG	Z
+    //   204: putfield 39	com/tencent/mm/wear/app/ui/emoji/d:aji	Z
     //   207: goto -119 -> 88
     //   210: aload 4
     //   212: ifnull +8 -> 220
@@ -177,14 +177,14 @@ public final class d
     //   133	195	261	finally
   }
   
-  public final e bX(int paramInt)
+  public final e ct(int paramInt)
   {
-    return (e)this.afF.get(paramInt);
+    return (e)this.ajh.get(paramInt);
   }
   
   public final int getCount()
   {
-    return this.afF.size();
+    return this.ajh.size();
   }
   
   public final long getItemId(int paramInt)
@@ -202,11 +202,11 @@ public final class d
     }
     for (paramView = (View)localObject;; paramView = new f(paramViewGroup))
     {
-      localObject = (e)this.afF.get(paramInt);
-      paramView.aeA.setImageResource(((e)localObject).afH);
-      paramView.afL.setText(((e)localObject).afI);
-      if (((e)localObject).afJ > 0) {
-        paramView.afM.setBackgroundResource(((e)localObject).afJ);
+      localObject = (e)this.ajh.get(paramInt);
+      paramView.aic.setImageResource(((e)localObject).ajj);
+      paramView.ajn.setText(((e)localObject).ajk);
+      if (((e)localObject).ajl > 0) {
+        paramView.ajo.setBackgroundResource(((e)localObject).ajl);
       }
       paramView.position = paramInt;
       return paramViewGroup;
@@ -214,9 +214,9 @@ public final class d
     }
   }
   
-  public final boolean nn()
+  public final boolean oa()
   {
-    return this.afG;
+    return this.aji;
   }
 }
 

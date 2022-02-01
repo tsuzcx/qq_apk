@@ -9,12 +9,12 @@ final class zzen
   
   public final void run()
   {
-    AppMethodBeat.i(68697);
+    AppMethodBeat.i(1220);
     this.zzafk.zzgd();
     if (zzgg.isMainThread())
     {
       this.zzafk.zzgd().zzc(this);
-      AppMethodBeat.o(68697);
+      AppMethodBeat.o(1220);
       return;
     }
     boolean bool = this.zzafl.zzef();
@@ -22,12 +22,12 @@ final class zzen
     if (bool) {
       this.zzafl.run();
     }
-    AppMethodBeat.o(68697);
+    AppMethodBeat.o(1220);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzen
  * JD-Core Version:    0.7.0.1
  */

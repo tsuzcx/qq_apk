@@ -6,11 +6,11 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.plugin.remittance.model.p;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.remittance.model.q;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.remittance.model.r;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.t;
 import com.tencent.mm.wallet_core.ui.e;
@@ -19,115 +19,115 @@ import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 public class RemittanceHKUI
   extends RemittanceBaseUI
 {
-  private int qqL;
-  private String qqM;
-  private String qqN;
-  private String qqO;
+  private int vHW;
+  private String vHX;
+  private String vHY;
+  private String vHZ;
   
-  public final void Yl(String paramString)
+  public final void amn(String paramString)
   {
-    AppMethodBeat.i(142225);
-    ab.d("MicroMsg.RemittanceHKUI", "do scene gen pay");
+    AppMethodBeat.i(68205);
+    ad.d("MicroMsg.RemittanceHKUI", "do scene gen pay");
     int i = 0;
     if (this.mPayScene == 33) {
       i = 1;
     }
-    doSceneProgress(new q(Math.round(this.qlk * 100.0D), this.eaX, this.kEW, this.qlH, this.mDesc, this.qlp, this.qqL, i), true);
-    AppMethodBeat.o(142225);
+    doSceneProgress(new r(Math.round(this.vzp * 100.0D), this.flk, this.nLX, this.vCP, this.mDesc, this.vCx, this.vHW, i), true);
+    AppMethodBeat.o(68205);
   }
   
-  public final void chf()
+  public final void djW()
   {
-    AppMethodBeat.i(45079);
-    ab.d("MicroMsg.RemittanceHKUI", "do scene cancel");
+    AppMethodBeat.i(68208);
+    ad.d("MicroMsg.RemittanceHKUI", "do scene cancel");
     if (this.mPayScene == 33) {}
     for (int i = 1;; i = 0)
     {
-      doSceneProgress(new p(this.eaX, this.qlp, this.qqL, this.qlk * 100L, i), false);
-      AppMethodBeat.o(45079);
+      doSceneProgress(new q(this.flk, this.vCx, this.vHW, this.vzp * 100L, i), false);
+      AppMethodBeat.o(68208);
       return;
     }
   }
   
-  public final void chh()
+  public final void djY()
   {
-    AppMethodBeat.i(45077);
-    t.makeText(getContext(), getString(2131302600, new Object[] { this.qqM }), 0).show();
-    AppMethodBeat.o(45077);
+    AppMethodBeat.i(68206);
+    t.makeText(getContext(), getString(2131762506, new Object[] { this.vHX }), 0).show();
+    AppMethodBeat.o(68206);
   }
   
-  public final void chk()
+  public final void dkb()
   {
-    AppMethodBeat.i(45078);
-    if (!bo.isNullOrNil(this.qqN))
+    AppMethodBeat.i(68207);
+    if (!bt.isNullOrNil(this.vHY))
     {
-      TextView localTextView = (TextView)findViewById(2131821672);
-      localTextView.setText(this.qqN);
+      TextView localTextView = (TextView)findViewById(2131297186);
+      localTextView.setText(this.vHY);
       localTextView.setOnClickListener(new RemittanceHKUI.1(this));
     }
-    AppMethodBeat.o(45078);
+    AppMethodBeat.o(68207);
   }
   
-  protected final void chp() {}
+  protected final void dkg() {}
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(45081);
+    AppMethodBeat.i(68210);
     if ((paramInt1 == 4) && (paramInt2 == -1)) {
       finish();
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(45081);
+    AppMethodBeat.o(68210);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(45074);
+    AppMethodBeat.i(68203);
     super.onCreate(paramBundle);
     addSceneEndListener(1529);
     addSceneEndListener(1257);
-    this.qqL = getIntent().getIntExtra("hk_currency", 0);
-    this.qqM = getIntent().getStringExtra("hk_currencyuint");
-    this.qqN = getIntent().getStringExtra("hk_notice");
-    this.qqO = getIntent().getStringExtra("hk_notice_url");
-    this.kRl.setTitleText(this.qqM);
-    this.qly.setText(this.qqM);
-    AppMethodBeat.o(45074);
+    this.vHW = getIntent().getIntExtra("hk_currency", 0);
+    this.vHX = getIntent().getStringExtra("hk_currencyuint");
+    this.vHY = getIntent().getStringExtra("hk_notice");
+    this.vHZ = getIntent().getStringExtra("hk_notice_url");
+    this.nXA.setTitleText(this.vHX);
+    this.vCG.setText(this.vHX);
+    AppMethodBeat.o(68203);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(45075);
+    AppMethodBeat.i(68204);
     super.onDestroy();
     removeSceneEndListener(1529);
     removeSceneEndListener(1257);
-    AppMethodBeat.o(45075);
+    AppMethodBeat.o(68204);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm, boolean paramBoolean)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn, boolean paramBoolean)
   {
-    AppMethodBeat.i(45080);
-    if ((paramm instanceof q))
+    AppMethodBeat.i(68209);
+    if ((paramn instanceof r))
     {
-      paramm = (q)paramm;
+      paramn = (r)paramn;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (!bo.isNullOrNil(paramm.qjt))
+        if (!bt.isNullOrNil(paramn.vAu))
         {
-          e.a(getContext(), paramm.qjt, false, 4);
-          AppMethodBeat.o(45080);
+          e.a(getContext(), paramn.vAu, false, 4);
+          AppMethodBeat.o(68209);
           return;
         }
-        ab.e("MicroMsg.RemittanceHKUI", "empty payurl");
-        AppMethodBeat.o(45080);
+        ad.e("MicroMsg.RemittanceHKUI", "empty payurl");
+        AppMethodBeat.o(68209);
         return;
       }
-      h.b(getContext(), paramString, "", false);
-      AppMethodBeat.o(45080);
+      h.c(getContext(), paramString, "", false);
+      AppMethodBeat.o(68209);
       return;
     }
-    super.onSceneEnd(paramInt1, paramInt2, paramString, paramm, paramBoolean);
-    AppMethodBeat.o(45080);
+    super.onSceneEnd(paramInt1, paramInt2, paramString, paramn, paramBoolean);
+    AppMethodBeat.o(68209);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -138,7 +138,7 @@ public class RemittanceHKUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceHKUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mm.network;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.InputStream;
 import java.net.Inet4Address;
 import java.net.InetAddress;
@@ -12,276 +12,299 @@ import java.util.List;
 
 public final class b
 {
-  static a gdm;
+  static a hKL;
   
-  public static int a(v paramv)
+  public static v AX(String paramString)
   {
-    AppMethodBeat.i(58458);
+    AppMethodBeat.i(202268);
+    paramString = a(paramString, null);
+    AppMethodBeat.o(202268);
+    return paramString;
+  }
+  
+  public static x AY(String paramString)
+  {
+    AppMethodBeat.i(132664);
+    b localb = new b(paramString);
+    paramString = new x(paramString, localb.hKM);
+    paramString.hLT = localb.ip;
+    if (1 == localb.hKM)
+    {
+      paramString.setRequestProperty("Host", localb.host);
+      paramString.setRequestProperty("X-Online-Host", localb.host);
+    }
+    AppMethodBeat.o(132664);
+    return paramString;
+  }
+  
+  public static y AZ(String paramString)
+  {
+    AppMethodBeat.i(132666);
+    paramString = new y(paramString);
+    AppMethodBeat.o(132666);
+    return paramString;
+  }
+  
+  public static int a(w paramw)
+  {
+    AppMethodBeat.i(132665);
     try
     {
-      int i = paramv.getResponseCode();
+      int i = paramw.getResponseCode();
       if (i != 200)
       {
-        AppMethodBeat.o(58458);
+        AppMethodBeat.o(132665);
         return -1;
       }
-      AppMethodBeat.o(58458);
+      AppMethodBeat.o(132665);
       return 0;
     }
-    catch (Exception paramv)
+    catch (Exception paramw)
     {
-      ab.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bo.l(paramv) });
-      AppMethodBeat.o(58458);
+      ad.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bt.m(paramw) });
+      AppMethodBeat.o(132665);
     }
     return -3;
   }
   
   public static int a(String paramString, boolean paramBoolean, List<String> paramList)
   {
-    AppMethodBeat.i(58454);
-    if ((gdm == null) || (gdm.Rg() == null))
+    AppMethodBeat.i(132659);
+    if ((hKL == null) || (hKL.aeW() == null))
     {
-      AppMethodBeat.o(58454);
+      AppMethodBeat.o(132659);
       return -1;
     }
-    int i = gdm.Rg().a(paramString, paramBoolean, paramList);
-    AppMethodBeat.o(58454);
+    int i = hKL.aeW().a(paramString, paramBoolean, paramList);
+    AppMethodBeat.o(132659);
     return i;
-  }
-  
-  public static int a(boolean paramBoolean, List<String> paramList, String paramString)
-  {
-    AppMethodBeat.i(58453);
-    if (gdm == null)
-    {
-      AppMethodBeat.o(58453);
-      return -1;
-    }
-    try
-    {
-      int i = gdm.Rg().a(paramString, paramBoolean, paramList);
-      AppMethodBeat.o(58453);
-      return i;
-    }
-    catch (Exception paramList)
-    {
-      ab.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bo.l(paramList) });
-      AppMethodBeat.o(58453);
-    }
-    return -1;
   }
   
   public static v a(String paramString, b paramb)
   {
-    AppMethodBeat.i(58457);
+    AppMethodBeat.i(132663);
     b localb = paramb;
     if (paramb == null) {
       localb = new b(paramString);
     }
-    ab.i("MicroMsg.GprsSetting", "hy: url redirect host: %s, url: %s, ip: %s, dns_type: %d", new Object[] { localb.host, localb.url, localb.ip, Integer.valueOf(localb.gdn) });
-    paramString = new v(localb.url, localb.gdn);
-    paramString.gek = localb.ip;
-    if (1 == localb.gdn)
+    ad.i("MicroMsg.GprsSetting", "hy: url redirect host: %s, url: %s, ip: %s, dns_type: %d", new Object[] { localb.host, localb.url, localb.ip, Integer.valueOf(localb.hKM) });
+    paramString = new v(localb.url, localb.hKM);
+    paramString.hLM = localb.ip;
+    if (1 == localb.hKM)
     {
       paramString.setRequestProperty("Host", localb.host);
       paramString.setRequestProperty("X-Online-Host", localb.host);
     }
-    AppMethodBeat.o(58457);
+    AppMethodBeat.o(132663);
     return paramString;
   }
   
   public static void a(a parama)
   {
-    AppMethodBeat.i(58452);
-    ab.i("MicroMsg.GprsSetting", "sethostimpl %b, [%s]", new Object[] { Boolean.FALSE, bo.dtY() });
-    gdm = parama;
-    AppMethodBeat.o(58452);
+    AppMethodBeat.i(132657);
+    ad.i("MicroMsg.GprsSetting", "sethostimpl %b, [%s]", new Object[] { Boolean.FALSE, bt.eGN() });
+    hKL = parama;
+    AppMethodBeat.o(132657);
+  }
+  
+  public static int b(boolean paramBoolean, List<String> paramList, String paramString)
+  {
+    AppMethodBeat.i(132658);
+    if (hKL == null)
+    {
+      AppMethodBeat.o(132658);
+      return -1;
+    }
+    try
+    {
+      int i = hKL.aeW().a(paramString, paramBoolean, paramList);
+      AppMethodBeat.o(132658);
+      return i;
+    }
+    catch (Exception paramList)
+    {
+      ad.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bt.m(paramList) });
+      AppMethodBeat.o(132658);
+    }
+    return -1;
   }
   
   public static void reportFailIp(String paramString)
   {
-    AppMethodBeat.i(58455);
-    if ((gdm != null) && (gdm.Rg() != null)) {
-      gdm.Rg().reportFailIp(paramString);
+    AppMethodBeat.i(132660);
+    if ((hKL != null) && (hKL.aeW() != null)) {
+      hKL.aeW().reportFailIp(paramString);
     }
-    AppMethodBeat.o(58455);
+    AppMethodBeat.o(132660);
   }
   
-  public static w wb(String paramString)
+  public static InputStream v(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(58459);
-    paramString = new w(paramString);
-    AppMethodBeat.o(58459);
-    return paramString;
-  }
-  
-  public static InputStream x(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(58456);
+    AppMethodBeat.i(132661);
     paramString = a(paramString, null);
     paramString.setConnectTimeout(paramInt1);
     paramString.setReadTimeout(paramInt2);
     paramString.setRequestMethod("GET");
     if (a(paramString) != 0)
     {
-      AppMethodBeat.o(58456);
+      AppMethodBeat.o(132661);
       return null;
     }
     paramString = paramString.getInputStream();
-    AppMethodBeat.o(58456);
+    AppMethodBeat.o(132661);
     return paramString;
   }
   
   public static abstract interface a
   {
-    public abstract e Rg();
+    public abstract e aeW();
   }
   
   public static final class b
   {
-    public int gdn;
-    private ArrayList<String> gdo;
-    public String gdp;
-    public boolean gdq;
-    private boolean gdr;
+    public int hKM;
+    private ArrayList<String> hKN;
+    public String hKO;
+    public boolean hKP;
+    private boolean hKQ;
     public String host;
     public String ip;
     public URL url;
     
     public b(String paramString)
     {
-      AppMethodBeat.i(58450);
+      AppMethodBeat.i(132654);
       this.host = null;
       this.url = null;
       this.ip = "";
-      this.gdn = 0;
-      this.gdo = new ArrayList();
-      this.gdq = false;
-      this.gdr = false;
-      this.gdp = paramString;
+      this.hKM = 0;
+      this.hKN = new ArrayList();
+      this.hKP = false;
+      this.hKQ = false;
+      this.hKO = paramString;
       try
       {
         this.url = new URL(paramString);
         this.host = this.url.getHost();
         Object localObject = new ArrayList();
-        if ((b.gdm == null) || (b.gdm.Rg() == null))
+        if ((b.hKL == null) || (b.hKL.aeW() == null))
         {
-          if (b.gdm == null) {}
-          for (paramString = "-1";; paramString = b.gdm.Rg())
+          if (b.hKL == null) {}
+          for (paramString = "-1";; paramString = b.hKL.aeW())
           {
-            ab.e("MicroMsg.GprsSetting", "UrlRedirct ERR:AUTOAUTH NULL:%s  [%s]", new Object[] { paramString, bo.dtY() });
-            AppMethodBeat.o(58450);
+            ad.e("MicroMsg.GprsSetting", "UrlRedirct ERR:AUTOAUTH NULL:%s  [%s]", new Object[] { paramString, bt.eGN() });
+            AppMethodBeat.o(132654);
             return;
           }
         }
-        this.gdn = b.gdm.Rg().getHostByName(this.host, (List)localObject);
-        ab.d("MicroMsg.GprsSetting", "[Arth.302] dnsType:%d  host:%s url:%s", new Object[] { Integer.valueOf(this.gdn), this.host, paramString });
+        this.hKM = b.hKL.aeW().getHostByName(this.host, (List)localObject);
+        ad.d("MicroMsg.GprsSetting", "[Arth.302] dnsType:%d  host:%s url:%s", new Object[] { Integer.valueOf(this.hKM), this.host, paramString });
         if (((ArrayList)localObject).size() <= 0)
         {
-          this.gdn = 0;
-          AppMethodBeat.o(58450);
+          this.hKM = 0;
+          AppMethodBeat.o(132654);
           return;
         }
-        int i = this.gdn;
+        int i = this.hKM;
         if (1 != i)
         {
-          AppMethodBeat.o(58450);
+          AppMethodBeat.o(132654);
           return;
         }
         String str = (String)((ArrayList)localObject).remove(0);
         this.ip = str;
         localObject = str;
-        if (wc(str)) {
+        if (Ba(str)) {
           localObject = "[" + str + "]";
         }
         this.url = new URL(paramString.replaceFirst(this.host, (String)localObject));
-        AppMethodBeat.o(58450);
+        AppMethodBeat.o(132654);
         return;
       }
       catch (Exception paramString)
       {
-        ab.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bo.l(paramString) });
-        AppMethodBeat.o(58450);
+        ad.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bt.m(paramString) });
+        AppMethodBeat.o(132654);
       }
     }
     
     public b(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(58451);
+      AppMethodBeat.i(132655);
       this.host = null;
       this.url = null;
       this.ip = "";
-      this.gdn = 0;
-      this.gdo = new ArrayList();
-      this.gdq = false;
-      this.gdr = false;
-      this.gdq = paramBoolean;
-      this.gdp = paramString;
+      this.hKM = 0;
+      this.hKN = new ArrayList();
+      this.hKP = false;
+      this.hKQ = false;
+      this.hKP = paramBoolean;
+      this.hKO = paramString;
       try
       {
         this.url = new URL(paramString);
         this.host = this.url.getHost();
-        if ((b.gdm == null) || (b.gdm.Rg() == null))
+        if ((b.hKL == null) || (b.hKL.aeW() == null))
         {
-          if (b.gdm == null) {}
-          for (paramString = "-1";; paramString = b.gdm.Rg())
+          if (b.hKL == null) {}
+          for (paramString = "-1";; paramString = b.hKL.aeW())
           {
-            ab.e("MicroMsg.GprsSetting", "UrlRedirct ERR:AUTOAUTH NULL:%s  [%s]", new Object[] { paramString, bo.dtY() });
-            AppMethodBeat.o(58451);
+            ad.e("MicroMsg.GprsSetting", "UrlRedirct ERR:AUTOAUTH NULL:%s  [%s]", new Object[] { paramString, bt.eGN() });
+            AppMethodBeat.o(132655);
             return;
           }
         }
-        this.gdn = b.gdm.Rg().a(this.host, paramBoolean, this.gdo);
-        ab.d("MicroMsg.GprsSetting", "[Arth.302] dnsType:%d  host:%s url:%s ips:%s", new Object[] { Integer.valueOf(this.gdn), this.host, paramString, this.gdo });
-        if (this.gdo.size() <= 0)
+        this.hKM = b.hKL.aeW().a(this.host, paramBoolean, this.hKN);
+        ad.d("MicroMsg.GprsSetting", "[Arth.302] dnsType:%d  host:%s url:%s ips:%s", new Object[] { Integer.valueOf(this.hKM), this.host, paramString, this.hKN });
+        if (this.hKN.size() <= 0)
         {
-          this.gdn = 0;
-          AppMethodBeat.o(58451);
+          this.hKM = 0;
+          AppMethodBeat.o(132655);
           return;
         }
-        int i = this.gdn;
+        int i = this.hKM;
         if (1 != i)
         {
-          AppMethodBeat.o(58451);
+          AppMethodBeat.o(132655);
           return;
         }
-        this.ip = ((String)this.gdo.remove(0));
-        if (wc(this.ip)) {
+        this.ip = ((String)this.hKN.remove(0));
+        if (Ba(this.ip)) {
           this.ip = ("[" + this.ip + "]");
         }
         this.url = new URL(paramString.replaceFirst(this.host, this.ip));
-        AppMethodBeat.o(58451);
+        AppMethodBeat.o(132655);
         return;
       }
       catch (Exception paramString)
       {
-        ab.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bo.l(paramString) });
-        AppMethodBeat.o(58451);
+        ad.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bt.m(paramString) });
+        AppMethodBeat.o(132655);
       }
     }
     
-    private static boolean wc(String paramString)
+    private static boolean Ba(String paramString)
     {
-      AppMethodBeat.i(146147);
+      AppMethodBeat.i(132656);
       try
       {
         if (!(InetAddress.getByName(paramString) instanceof Inet4Address))
         {
-          AppMethodBeat.o(146147);
+          AppMethodBeat.o(132656);
           return true;
         }
-        AppMethodBeat.o(146147);
+        AppMethodBeat.o(132656);
         return false;
       }
       catch (Exception localException)
       {
-        ab.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bo.l(localException) });
+        ad.e("MicroMsg.GprsSetting", "exception:%s", new Object[] { bt.m(localException) });
         if (!paramString.contains("."))
         {
-          AppMethodBeat.o(146147);
+          AppMethodBeat.o(132656);
           return true;
         }
-        AppMethodBeat.o(146147);
+        AppMethodBeat.o(132656);
       }
       return false;
     }
@@ -289,7 +312,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.network.b
  * JD-Core Version:    0.7.0.1
  */

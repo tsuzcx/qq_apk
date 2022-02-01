@@ -12,14 +12,19 @@ final class MultiTalkMainUI$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(54123);
-    this.oVe.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
-    AppMethodBeat.o(54123);
+    AppMethodBeat.i(114657);
+    paramDialogInterface = this.tQz;
+    Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/multitalk/ui/MultiTalkMainUI$5", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/plugin/multitalk/ui/MultiTalkMainUI$5", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(114657);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.MultiTalkMainUI.6
  * JD-Core Version:    0.7.0.1
  */

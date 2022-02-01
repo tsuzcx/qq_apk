@@ -9,8 +9,8 @@ public class UInt8Array
   public UInt8Array(ArrayBuffer paramArrayBuffer)
   {
     this(paramArrayBuffer.getByteBuffer());
-    AppMethodBeat.i(75076);
-    AppMethodBeat.o(75076);
+    AppMethodBeat.i(61700);
+    AppMethodBeat.o(61700);
   }
   
   public UInt8Array(ByteBuffer paramByteBuffer)
@@ -20,9 +20,9 @@ public class UInt8Array
   
   public short get(int paramInt)
   {
-    AppMethodBeat.i(75077);
+    AppMethodBeat.i(61701);
     short s = (short)(this.buffer.get(paramInt) & 0xFF);
-    AppMethodBeat.o(75077);
+    AppMethodBeat.o(61701);
     return s;
   }
   
@@ -33,22 +33,22 @@ public class UInt8Array
   
   public int length()
   {
-    AppMethodBeat.i(75078);
+    AppMethodBeat.i(61702);
     int i = this.buffer.limit();
-    AppMethodBeat.o(75078);
+    AppMethodBeat.o(61702);
     return i;
   }
   
   public void put(int paramInt, short paramShort)
   {
-    AppMethodBeat.i(75079);
+    AppMethodBeat.i(61703);
     this.buffer.put(paramInt, (byte)(paramShort & 0xFF));
-    AppMethodBeat.o(75079);
+    AppMethodBeat.o(61703);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.utils.typedarrays.UInt8Array
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.fts.a;
 
 import android.database.Cursor;
-import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.af;
 import java.util.List;
 
 public abstract interface j
 {
-  public abstract ad OT(String paramString);
+  public abstract af aaR(String paramString);
   
-  public abstract boolean OU(String paramString);
+  public abstract boolean aaS(String paramString);
   
-  public abstract long OV(String paramString);
+  public abstract long aaT(String paramString);
   
-  public abstract List<String> OW(String paramString);
+  public abstract List<String> aaU(String paramString);
   
   public abstract Cursor i(String paramString, String[] paramArrayOfString);
   
@@ -20,7 +20,7 @@ public abstract interface j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.j
  * JD-Core Version:    0.7.0.1
  */

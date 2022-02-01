@@ -7,60 +7,60 @@ import java.util.Date;
 
 public class a
 {
-  private static a AoA;
-  private long Aox;
-  private long Aoy;
-  private long Aoz;
+  private static a HiW;
+  private long HiT;
+  private long HiU;
+  private long HiV;
   
   private a()
   {
-    AppMethodBeat.i(107324);
+    AppMethodBeat.i(142754);
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.set(7, 1);
     localCalendar.set(11, 0);
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
-    this.Aoy = localCalendar.getTimeInMillis();
+    this.HiU = localCalendar.getTimeInMillis();
     localCalendar = Calendar.getInstance();
     localCalendar.set(5, 1);
     localCalendar.set(11, 0);
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
-    this.Aoz = localCalendar.getTimeInMillis();
-    this.Aox = Calendar.getInstance().getTimeInMillis();
-    AppMethodBeat.o(107324);
+    this.HiV = localCalendar.getTimeInMillis();
+    this.HiT = Calendar.getInstance().getTimeInMillis();
+    AppMethodBeat.o(142754);
   }
   
   private static long c(Date paramDate)
   {
-    AppMethodBeat.i(107327);
+    AppMethodBeat.i(142757);
     long l = paramDate.getYear() * 100 + paramDate.getMonth();
-    AppMethodBeat.o(107327);
+    AppMethodBeat.o(142757);
     return l;
   }
   
-  public static a dNj()
+  public static a fcX()
   {
-    AppMethodBeat.i(107323);
-    if (AoA == null) {}
+    AppMethodBeat.i(142753);
+    if (HiW == null) {}
     try
     {
-      AoA = new a();
-      a locala = AoA;
-      AppMethodBeat.o(107323);
+      HiW = new a();
+      a locala = HiW;
+      AppMethodBeat.o(142753);
       return locala;
     }
     finally
     {
-      AppMethodBeat.o(107323);
+      AppMethodBeat.o(142753);
     }
   }
   
-  public static long oS(long paramLong)
+  public static long wV(long paramLong)
   {
-    AppMethodBeat.i(107326);
+    AppMethodBeat.i(142756);
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.setTimeInMillis(paramLong);
     localCalendar.set(5, 1);
@@ -69,51 +69,51 @@ public class a
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
     paramLong = localCalendar.getTimeInMillis();
-    AppMethodBeat.o(107326);
+    AppMethodBeat.o(142756);
     return paramLong;
   }
   
   public final String a(Date paramDate, Context paramContext)
   {
-    AppMethodBeat.i(107328);
-    if (paramDate.getTime() >= this.Aoy)
+    AppMethodBeat.i(142758);
+    if (paramDate.getTime() >= this.HiU)
     {
-      paramDate = paramContext.getString(2131304286);
-      AppMethodBeat.o(107328);
+      paramDate = paramContext.getString(2131764412);
+      AppMethodBeat.o(142758);
       return paramDate;
     }
-    if (paramDate.getTime() >= this.Aoz)
+    if (paramDate.getTime() >= this.HiV)
     {
-      paramDate = paramContext.getString(2131304285);
-      AppMethodBeat.o(107328);
+      paramDate = paramContext.getString(2131764411);
+      AppMethodBeat.o(142758);
       return paramDate;
     }
-    paramDate = String.format("%d/%d", new Object[] { Integer.valueOf(paramDate.getYear() + 1900), Integer.valueOf(paramDate.getMonth() + 1) });
-    AppMethodBeat.o(107328);
+    paramDate = paramDate.getYear() + 1900 + "/" + (paramDate.getMonth() + 1);
+    AppMethodBeat.o(142758);
     return paramDate;
   }
   
   public final long b(Date paramDate)
   {
-    AppMethodBeat.i(107325);
-    if (paramDate.getTime() >= this.Aoy)
+    AppMethodBeat.i(142755);
+    if (paramDate.getTime() >= this.HiU)
     {
-      AppMethodBeat.o(107325);
+      AppMethodBeat.o(142755);
       return 9223372036854775807L;
     }
-    if (paramDate.getTime() >= this.Aoz)
+    if (paramDate.getTime() >= this.HiV)
     {
-      AppMethodBeat.o(107325);
+      AppMethodBeat.o(142755);
       return 9223372036854775806L;
     }
     long l = c(paramDate);
-    AppMethodBeat.o(107325);
+    AppMethodBeat.o(142755);
     return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,53 +3,72 @@ package com.tencent.mm.plugin.appbrand.ui.banner;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class AppBrandStickyBannerLogic$b
 {
-  static final Set<f> bLQ;
+  static final Set<f> csT;
   
   static
   {
-    AppMethodBeat.i(133298);
-    bLQ = new HashSet();
-    AppMethodBeat.o(133298);
+    AppMethodBeat.i(49017);
+    csT = new HashSet();
+    AppMethodBeat.o(49017);
   }
   
-  public static void M(Intent paramIntent)
+  public static void Q(Intent paramIntent)
   {
-    AppMethodBeat.i(133289);
-    if ((paramIntent == null) || (!g.RG()))
+    AppMethodBeat.i(49008);
+    if ((paramIntent == null) || (!g.afw()))
     {
-      AppMethodBeat.o(133289);
+      AppMethodBeat.o(49008);
       return;
     }
-    g.RO().ac(new AppBrandStickyBannerLogic.b.1(paramIntent));
-    AppMethodBeat.o(133289);
+    g.afE().ax(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(49007);
+        if (b.P(this.val$intent)) {
+          AppBrandStickyBannerLogic.b.access$100();
+        }
+        AppMethodBeat.o(49007);
+      }
+    });
+    AppMethodBeat.o(49008);
   }
   
-  static void aMH()
+  static void b(AppBrandStickyBannerLogic.OperateTask paramOperateTask)
   {
-    AppMethodBeat.i(133291);
-    AppBrandStickyBannerLogic.access$200();
-    AppMethodBeat.o(133291);
+    AppMethodBeat.i(49009);
+    if (b.a(paramOperateTask)) {
+      bpc();
+    }
+    AppMethodBeat.o(49009);
   }
   
-  public static boolean aMM()
+  static void boW()
   {
-    AppMethodBeat.i(133295);
+    AppMethodBeat.i(49010);
     AppBrandStickyBannerLogic.access$200();
-    AppMethodBeat.o(133295);
+    AppMethodBeat.o(49010);
+  }
+  
+  public static boolean bpb()
+  {
+    AppMethodBeat.i(49014);
+    AppBrandStickyBannerLogic.access$200();
+    AppMethodBeat.o(49014);
     return false;
   }
   
-  private static void aMN()
+  private static void bpc()
   {
-    AppMethodBeat.i(133292);
-    ??? = BannerModel.aMP();
+    AppMethodBeat.i(49011);
+    ??? = BannerModel.bpe();
     String str1;
     if (??? == null)
     {
@@ -59,70 +78,61 @@ public final class AppBrandStickyBannerLogic$b
       }
     }
     label82:
-    for (int i = -1;; i = ((BannerModel)???).hcr)
+    for (int i = -1;; i = ((BannerModel)???).gXn)
     {
-      synchronized (bLQ)
+      synchronized (csT)
       {
-        Iterator localIterator = bLQ.iterator();
+        Iterator localIterator = csT.iterator();
         if (!localIterator.hasNext()) {
           break label90;
         }
-        ((f)localIterator.next()).bf(str1, i);
+        ((f)localIterator.next()).bv(str1, i);
       }
       String str2 = ((BannerModel)???).appId;
       break;
     }
     label90:
-    AppMethodBeat.o(133292);
+    AppMethodBeat.o(49011);
   }
   
-  public static void aMO()
+  public static void bpd()
   {
-    AppMethodBeat.i(133296);
+    AppMethodBeat.i(49015);
     AppBrandStickyBannerLogic.access$200();
-    AppMethodBeat.o(133296);
-  }
-  
-  static void b(AppBrandStickyBannerLogic.OperateTask paramOperateTask)
-  {
-    AppMethodBeat.i(133290);
-    if (b.a(paramOperateTask)) {
-      aMN();
-    }
-    AppMethodBeat.o(133290);
+    AppMethodBeat.o(49015);
   }
   
   public static void c(f paramf)
   {
-    AppMethodBeat.i(133294);
+    AppMethodBeat.i(49013);
     if (paramf != null) {
-      synchronized (bLQ)
+      synchronized (csT)
       {
-        bLQ.remove(paramf);
-        AppMethodBeat.o(133294);
+        csT.remove(paramf);
+        AppMethodBeat.o(49013);
         return;
       }
     }
-    AppMethodBeat.o(133294);
+    AppMethodBeat.o(49013);
   }
   
   public static void d(f paramf)
   {
-    AppMethodBeat.i(133293);
+    AppMethodBeat.i(49012);
     if (paramf != null) {
-      synchronized (bLQ)
+      synchronized (csT)
       {
-        bLQ.add(paramf);
-        AppMethodBeat.o(133293);
+        csT.add(paramf);
+        AppMethodBeat.o(49012);
         return;
       }
     }
-    AppMethodBeat.o(133293);
+    AppMethodBeat.o(49012);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.banner.AppBrandStickyBannerLogic.b
  * JD-Core Version:    0.7.0.1
  */

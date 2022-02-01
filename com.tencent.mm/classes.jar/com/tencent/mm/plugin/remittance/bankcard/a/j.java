@@ -1,72 +1,72 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bet;
-import com.tencent.mm.protocal.protobuf.beu;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.brm;
+import com.tencent.mm.protocal.protobuf.brn;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class j
   extends b
 {
   private final String TAG;
-  private f callback;
-  public String hKa;
-  public String qfK;
-  public beu qfS;
-  private com.tencent.mm.ai.b rr;
+  private g callback;
+  public String iaz;
+  private com.tencent.mm.al.b rr;
+  public String vud;
+  public brn vul;
   
   public j(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(44467);
+    AppMethodBeat.i(67376);
     this.TAG = "MicroMsg.NetSceneBankRemitModifyExplain";
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bet();
-    ((b.a)localObject).fsY = new beu();
+    ((b.a)localObject).gUU = new brm();
+    ((b.a)localObject).gUV = new brn();
     ((b.a)localObject).funcId = 1590;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/modifyexplain_tsbc";
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (bet)this.rr.fsV.fta;
-    ((bet)localObject).qgu = paramString1;
-    ((bet)localObject).qgx = paramString2;
-    this.qfK = paramString1;
-    this.hKa = paramString2;
-    AppMethodBeat.o(44467);
+    this.rr = ((b.a)localObject).atI();
+    localObject = (brm)this.rr.gUS.gUX;
+    ((brm)localObject).vuN = paramString1;
+    ((brm)localObject).vuQ = paramString2;
+    this.vud = paramString1;
+    this.iaz = paramString2;
+    AppMethodBeat.o(67376);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    AppMethodBeat.i(44469);
-    ab.i("MicroMsg.NetSceneBankRemitModifyExplain", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.qfS = ((beu)((com.tencent.mm.ai.b)paramq).fsW.fta);
-    ab.i("MicroMsg.NetSceneBankRemitModifyExplain", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.qfS.cnK), this.qfS.kNv });
+    AppMethodBeat.i(67378);
+    ad.i("MicroMsg.NetSceneBankRemitModifyExplain", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.vul = ((brn)((com.tencent.mm.al.b)paramq).gUT.gUX);
+    ad.i("MicroMsg.NetSceneBankRemitModifyExplain", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.vul.dcG), this.vul.nTK });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
-    AppMethodBeat.o(44469);
+    AppMethodBeat.o(67378);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(44468);
-    this.callback = paramf;
+    AppMethodBeat.i(67377);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(44468);
+    AppMethodBeat.o(67377);
     return i;
   }
   
   public final void e(q paramq)
   {
-    paramq = (beu)((com.tencent.mm.ai.b)paramq).fsW.fta;
-    this.AXb = paramq.cnK;
-    this.AXc = paramq.kNv;
+    paramq = (brn)((com.tencent.mm.al.b)paramq).gUT.gUX;
+    this.IdO = paramq.dcG;
+    this.IdP = paramq.nTK;
   }
   
   public final int getType()
@@ -76,7 +76,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.a.j
  * JD-Core Version:    0.7.0.1
  */

@@ -35,7 +35,7 @@ public class MessageInfo
   
   public MessageInfo(XWalkExternalExtension paramXWalkExternalExtension, int paramInt, String paramString)
   {
-    AppMethodBeat.i(86132);
+    AppMethodBeat.i(155246);
     this.TAG = "MessageInfo";
     this.mExtension = paramXWalkExternalExtension;
     this.mInstanceId = paramInt;
@@ -53,13 +53,13 @@ public class MessageInfo
           this.mArgs.remove(0);
           this.mArgs.remove(0);
         }
-        AppMethodBeat.o(86132);
+        AppMethodBeat.o(155246);
         return;
       }
       catch (JSONException paramXWalkExternalExtension)
       {
         Log.e(this.TAG, paramXWalkExternalExtension.toString());
-        AppMethodBeat.o(86132);
+        AppMethodBeat.o(155246);
         return;
       }
     }
@@ -82,26 +82,26 @@ public class MessageInfo
         }
         this.mObjectId = this.mArgs.getString(0);
         this.mArgs = this.mArgs.getJSONArray(1);
-        AppMethodBeat.o(86132);
+        AppMethodBeat.o(155246);
         return;
       }
     }
     catch (JSONException paramXWalkExternalExtension)
     {
       Log.e(this.TAG, paramXWalkExternalExtension.toString());
-      AppMethodBeat.o(86132);
+      AppMethodBeat.o(155246);
       return;
     }
     this.mJsName = paramString;
     this.mArgs.put(0, paramXWalkExternalExtension.getString("name"));
     this.mArgs.put(1, paramXWalkExternalExtension.getJSONArray("args"));
     label337:
-    AppMethodBeat.o(86132);
+    AppMethodBeat.o(155246);
   }
   
   public MessageInfo(XWalkExternalExtension paramXWalkExternalExtension, int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(86133);
+    AppMethodBeat.i(155247);
     this.TAG = "MessageInfo";
     this.mExtension = paramXWalkExternalExtension;
     this.mInstanceId = paramInt;
@@ -127,19 +127,19 @@ public class MessageInfo
       this.mObjectId = new String(paramArrayOfByte, j, paramInt);
       paramInt = j + i;
       this.mBinaryArgs = ByteBuffer.wrap(paramArrayOfByte, paramInt, paramArrayOfByte.length - paramInt);
-      AppMethodBeat.o(86133);
+      AppMethodBeat.o(155247);
       return;
     }
     catch (IndexOutOfBoundsException paramXWalkExternalExtension)
     {
       Log.e(this.TAG, paramXWalkExternalExtension.toString());
-      AppMethodBeat.o(86133);
+      AppMethodBeat.o(155247);
       return;
     }
     catch (NullPointerException paramXWalkExternalExtension)
     {
       Log.e(this.TAG, paramXWalkExternalExtension.toString());
-      AppMethodBeat.o(86133);
+      AppMethodBeat.o(155247);
     }
   }
   
@@ -175,9 +175,9 @@ public class MessageInfo
   
   public ExtensionInstanceHelper getInstanceHelper()
   {
-    AppMethodBeat.i(86135);
+    AppMethodBeat.i(155249);
     ExtensionInstanceHelper localExtensionInstanceHelper = this.mExtension.getInstanceHelper(this.mInstanceId);
-    AppMethodBeat.o(86135);
+    AppMethodBeat.o(155249);
     return localExtensionInstanceHelper;
   }
   
@@ -199,7 +199,7 @@ public class MessageInfo
   public void postResult(JSONArray paramJSONArray)
   {
     int i = 0;
-    AppMethodBeat.i(86134);
+    AppMethodBeat.i(155248);
     try
     {
       JSONArray localJSONArray = new JSONArray();
@@ -211,21 +211,21 @@ public class MessageInfo
       }
       Log.w(this.TAG, "postResult: " + localJSONArray.toString());
       this.mExtension.postMessage(this.mInstanceId, localJSONArray.toString());
-      AppMethodBeat.o(86134);
+      AppMethodBeat.o(155248);
       return;
     }
     catch (JSONException paramJSONArray)
     {
       Log.e(this.TAG, paramJSONArray.toString());
-      AppMethodBeat.o(86134);
+      AppMethodBeat.o(155248);
     }
   }
   
   public void postResult(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(86136);
+    AppMethodBeat.i(155250);
     this.mExtension.postBinaryMessage(this.mInstanceId, paramArrayOfByte);
-    AppMethodBeat.o(86136);
+    AppMethodBeat.o(155250);
   }
   
   public void setArgs(JSONArray paramJSONArray)

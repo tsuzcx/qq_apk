@@ -4,13 +4,13 @@ import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.a.a;
-import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.aw.a.a;
+import com.tencent.mm.aw.a.a.c.a;
 import com.tencent.mm.plugin.wxpaysdk.api.ResendMsgInfo;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.widget.MMNeat7extView;
-import com.tencent.mm.ui.widget.b.e.a;
-import com.tencent.mm.ui.widget.b.e.c;
+import com.tencent.mm.ui.widget.a.f.a;
+import com.tencent.mm.ui.widget.a.f.c;
 
 public final class d
 {
@@ -21,35 +21,44 @@ public final class d
     this.mContext = paramContext;
   }
   
-  public final void a(ResendMsgInfo paramResendMsgInfo, e.c paramc)
+  public final void a(ResendMsgInfo paramResendMsgInfo, final f.c paramc)
   {
-    AppMethodBeat.i(142139);
+    AppMethodBeat.i(67942);
     if (paramResendMsgInfo == null)
     {
-      ab.i("MicroMsg.RemindCollectionDialog", "init() resendMsgInfo == null");
-      AppMethodBeat.o(142139);
+      ad.i("MicroMsg.RemindCollectionDialog", "init() resendMsgInfo == null");
+      AppMethodBeat.o(67942);
       return;
     }
-    Object localObject1 = View.inflate(this.mContext, 2130970563, null);
-    Object localObject2 = (ImageView)((View)localObject1).findViewById(2131827177);
-    MMNeat7extView localMMNeat7extView = (MMNeat7extView)((View)localObject1).findViewById(2131820946);
-    a locala = a.ahM();
-    String str = paramResendMsgInfo.vIO;
+    View localView = View.inflate(this.mContext, 2131495246, null);
+    Object localObject = (ImageView)localView.findViewById(2131303986);
+    MMNeat7extView localMMNeat7extView = (MMNeat7extView)localView.findViewById(2131298739);
+    a locala = a.ayO();
+    String str = paramResendMsgInfo.BLA;
     c.a locala1 = new c.a();
-    locala1.eNY = 2130840145;
-    locala.a(str, (ImageView)localObject2, locala1.ahY());
-    localMMNeat7extView.af(paramResendMsgInfo.description);
-    localObject2 = new e.a(this.mContext);
-    localObject1 = ((e.a)localObject2).aj(paramResendMsgInfo.title).fv((View)localObject1);
-    ((e.a)localObject1).AHt = paramResendMsgInfo.opC;
-    ((e.a)localObject1).AHs = paramResendMsgInfo.opD;
-    ((e.a)localObject2).c(new d.1(this, paramc)).show();
-    AppMethodBeat.o(142139);
+    locala1.hkf = 2131233833;
+    locala.a(str, (ImageView)localObject, locala1.azc());
+    localMMNeat7extView.aq(paramResendMsgInfo.description);
+    localObject = new f.a(this.mContext);
+    ((f.a)localObject).au(paramResendMsgInfo.title).gu(localView).aMt(paramResendMsgInfo.tfH).aMs(paramResendMsgInfo.tfI);
+    ((f.a)localObject).c(new f.c()
+    {
+      public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
+      {
+        AppMethodBeat.i(67941);
+        ad.i("MicroMsg.RemindCollectionDialog", "onDialogClick() bOk:%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        if (paramc != null) {
+          paramc.d(paramAnonymousBoolean, paramAnonymousString);
+        }
+        AppMethodBeat.o(67941);
+      }
+    }).show();
+    AppMethodBeat.o(67942);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.d
  * JD-Core Version:    0.7.0.1
  */

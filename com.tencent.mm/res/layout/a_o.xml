@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:orientation="horizontal" android:id="@id/b43" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="@dimen/o6" android:textColor="@color/h6" android:textColorHint="#ffb2b2b2" android:gravity="right" android:id="@id/d8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="70.0dip" android:singleLine="true" android:textAlignment="viewEnd" />
-</LinearLayout>
+    <ImageView android:layout_gravity="right" android:id="@id/dvv" android:layout_width="375.0dip" android:layout_height="104.0dip" android:scaleType="fitXY" />
+    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/fy" android:layout_marginRight="140.0dip">
+        <TextView android:textSize="@dimen/gp" android:textStyle="bold" android:textColor="@color/qn" android:id="@id/dvu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:textSize="@dimen/gp" android:textStyle="bold" android:textColor="@color/qn" android:ellipsize="end" android:id="@id/dvw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g3" android:singleLine="true" android:layout_toRightOf="@id/dvu" />
+        <com.tencent.mm.plugin.game.widget.EllipsizingTextView android:textSize="@dimen/gp" android:textColor="@color/qk" android:id="@id/dvt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g3" android:layout_below="@id/dvu" />
+    </RelativeLayout>
+</FrameLayout>

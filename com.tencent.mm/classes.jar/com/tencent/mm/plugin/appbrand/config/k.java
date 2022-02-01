@@ -1,51 +1,33 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.protocal.protobuf.dac;
-import com.tencent.mm.protocal.protobuf.jc;
-import com.tencent.mm.protocal.protobuf.jd;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
 
-public final class k
-  extends a<jd>
+public class k
+  implements j
 {
-  k(List<String> paramList, k.a parama)
+  public String appId = "appId";
+  public String dfM = "appName";
+  public String hGe = "";
+  public int jdL = 5;
+  public boolean jdM;
+  public boolean jdN;
+  public boolean jdO;
+  public boolean jdP;
+  public int jdQ = 5;
+  public int jdR = 60;
+  public volatile WxaPkgWrappingInfo jdS = null;
+  public int jdT = 1;
+  public boolean jdU = false;
+  
+  public final int aTG()
   {
-    AppMethodBeat.i(129850);
-    ab.i("MicroMsg.AppBrand.CgiBatchWxaAttrSync", "create sync request, list_size %d, scene %s(%d)", new Object[] { Integer.valueOf(paramList.size()), parama.name(), Integer.valueOf(parama.intValue) });
-    jc localjc = new jc();
-    localjc.Scene = parama.intValue;
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      parama = (String)paramList.next();
-      if (!bo.isNullOrNil(parama))
-      {
-        dac localdac = new dac();
-        localdac.xTl = parama;
-        localdac.wxN = g.auF().Ai(parama);
-        localjc.wuG.add(localdac);
-      }
-    }
-    paramList = new b.a();
-    paramList.fsX = localjc;
-    paramList.fsY = new jd();
-    paramList.funcId = 1192;
-    paramList.uri = "/cgi-bin/mmbiz-bin/wxaattr/batchwxaattrsync";
-    this.rr = paramList.ado();
-    AppMethodBeat.o(129850);
+    return this.jdS.iOQ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.k
  * JD-Core Version:    0.7.0.1
  */

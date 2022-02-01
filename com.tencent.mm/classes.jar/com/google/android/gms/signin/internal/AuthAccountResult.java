@@ -29,9 +29,9 @@ public class AuthAccountResult
   
   static
   {
-    AppMethodBeat.i(61653);
+    AppMethodBeat.i(12145);
     CREATOR = new AuthAccountResultCreator();
-    AppMethodBeat.o(61653);
+    AppMethodBeat.o(12145);
   }
   
   public AuthAccountResult()
@@ -72,13 +72,13 @@ public class AuthAccountResult
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(61652);
+    AppMethodBeat.i(12144);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     SafeParcelWriter.writeInt(paramParcel, 2, getConnectionResultCode());
     SafeParcelWriter.writeParcelable(paramParcel, 3, getRawAuthResolutionIntent(), paramInt, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(61652);
+    AppMethodBeat.o(12144);
   }
 }
 

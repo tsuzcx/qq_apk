@@ -20,42 +20,42 @@ public final class ObjectDataBuffer<T>
   public ObjectDataBuffer()
   {
     super(null);
-    AppMethodBeat.i(61139);
+    AppMethodBeat.i(11631);
     this.zzoe = new HashSet();
     this.zzob = new ArrayList();
     this.zzog = new ArrayList();
     this.zzof = new DataBufferObserverSet();
     zzcl();
-    AppMethodBeat.o(61139);
+    AppMethodBeat.o(11631);
   }
   
   public ObjectDataBuffer(ArrayList<T> paramArrayList)
   {
     super(null);
-    AppMethodBeat.i(61141);
+    AppMethodBeat.i(11633);
     this.zzoe = new HashSet();
     this.zzob = new ArrayList();
     this.zzog = paramArrayList;
     this.zzof = new DataBufferObserverSet();
     zzcl();
-    AppMethodBeat.o(61141);
+    AppMethodBeat.o(11633);
   }
   
   public ObjectDataBuffer(T... paramVarArgs)
   {
     super(null);
-    AppMethodBeat.i(61140);
+    AppMethodBeat.i(11632);
     this.zzoe = new HashSet();
     this.zzob = new ArrayList();
     this.zzog = new ArrayList(Arrays.asList(paramVarArgs));
     this.zzof = new DataBufferObserverSet();
     zzcl();
-    AppMethodBeat.o(61140);
+    AppMethodBeat.o(11632);
   }
   
   private final void zzcl()
   {
-    AppMethodBeat.i(61161);
+    AppMethodBeat.i(11653);
     this.zzob.clear();
     int i = 0;
     int j = this.zzog.size();
@@ -66,13 +66,13 @@ public final class ObjectDataBuffer<T>
       }
       i += 1;
     }
-    AppMethodBeat.o(61161);
+    AppMethodBeat.o(11653);
   }
   
   public final void add(T paramT)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(61144);
+    AppMethodBeat.i(11636);
     int i = this.zzog.size();
     this.zzog.add(paramT);
     zzcl();
@@ -80,17 +80,17 @@ public final class ObjectDataBuffer<T>
     if (this.zzof.hasObservers())
     {
       if (this.zzoe.contains(Integer.valueOf(i))) {
-        break label130;
+        break label132;
       }
       bool1 = true;
       Asserts.checkState(bool1);
       j = this.zzob.size();
       if (j <= 0) {
-        break label136;
+        break label138;
       }
     }
-    label130:
-    label136:
+    label132:
+    label138:
     for (boolean bool1 = true;; bool1 = false)
     {
       Asserts.checkState(bool1);
@@ -100,7 +100,7 @@ public final class ObjectDataBuffer<T>
       }
       Asserts.checkState(bool1);
       this.zzof.onDataRangeInserted(j - 1, 1);
-      AppMethodBeat.o(61144);
+      AppMethodBeat.o(11636);
       return;
       bool1 = false;
       break;
@@ -109,14 +109,14 @@ public final class ObjectDataBuffer<T>
   
   public final void addObserver(DataBufferObserver paramDataBufferObserver)
   {
-    AppMethodBeat.i(61142);
+    AppMethodBeat.i(11634);
     this.zzof.addObserver(paramDataBufferObserver);
-    AppMethodBeat.o(61142);
+    AppMethodBeat.o(11634);
   }
   
   public final void filterOut(T paramT)
   {
-    AppMethodBeat.i(61156);
+    AppMethodBeat.i(11648);
     int i2 = this.zzog.size();
     int n = 0;
     int k = -1;
@@ -128,14 +128,14 @@ public final class ObjectDataBuffer<T>
     {
       j = i;
       if (this.zzoe.contains(Integer.valueOf(n))) {
-        break label204;
+        break label206;
       }
       i += 1;
       if (paramT.equals(this.zzog.get(n)))
       {
         this.zzoe.add(Integer.valueOf(n));
         if (!this.zzof.hasObservers()) {
-          break label212;
+          break label214;
         }
         if (m < 0)
         {
@@ -170,15 +170,15 @@ public final class ObjectDataBuffer<T>
         if (m >= 0) {
           this.zzof.onDataRangeRemoved(m, k);
         }
-        AppMethodBeat.o(61156);
+        AppMethodBeat.o(11648);
       }
       else
       {
-        label204:
+        label206:
         i = j;
         j = i1;
         continue;
-        label212:
+        label214:
         j = 1;
       }
     }
@@ -186,7 +186,7 @@ public final class ObjectDataBuffer<T>
   
   public final void filterOutRaw(int paramInt)
   {
-    AppMethodBeat.i(61157);
+    AppMethodBeat.i(11649);
     boolean bool = this.zzoe.add(Integer.valueOf(paramInt));
     int i;
     if ((this.zzof.hasObservers()) && (bool))
@@ -203,7 +203,7 @@ public final class ObjectDataBuffer<T>
       if (i >= 0) {
         this.zzof.onDataRangeRemoved(i, 1);
       }
-      AppMethodBeat.o(61157);
+      AppMethodBeat.o(11649);
       return;
       i += 1;
       break;
@@ -213,18 +213,18 @@ public final class ObjectDataBuffer<T>
   
   public final T get(int paramInt)
   {
-    AppMethodBeat.i(61148);
+    AppMethodBeat.i(11640);
     Object localObject = this.zzog.get(getRawPosition(paramInt));
-    AppMethodBeat.o(61148);
+    AppMethodBeat.o(11640);
     return localObject;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(61147);
+    AppMethodBeat.i(11639);
     int i = this.zzog.size();
     int j = this.zzoe.size();
-    AppMethodBeat.o(61147);
+    AppMethodBeat.o(11639);
     return i - j;
   }
   
@@ -235,7 +235,7 @@ public final class ObjectDataBuffer<T>
   
   public final int getPositionFromRawPosition(int paramInt)
   {
-    AppMethodBeat.i(61152);
+    AppMethodBeat.i(11644);
     int j = -1;
     int i = 0;
     while (i <= paramInt)
@@ -247,43 +247,43 @@ public final class ObjectDataBuffer<T>
       i += 1;
       j = k;
     }
-    AppMethodBeat.o(61152);
+    AppMethodBeat.o(11644);
     return j;
   }
   
   public final T getRaw(int paramInt)
   {
-    AppMethodBeat.i(61150);
+    AppMethodBeat.i(11642);
     Object localObject = this.zzog.get(paramInt);
-    AppMethodBeat.o(61150);
+    AppMethodBeat.o(11642);
     return localObject;
   }
   
   public final int getRawCount()
   {
-    AppMethodBeat.i(61149);
+    AppMethodBeat.i(11641);
     int i = this.zzog.size();
-    AppMethodBeat.o(61149);
+    AppMethodBeat.o(11641);
     return i;
   }
   
   public final int getRawPosition(int paramInt)
   {
-    AppMethodBeat.i(61151);
+    AppMethodBeat.i(11643);
     if ((paramInt < 0) || (paramInt >= getCount()))
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException(53 + "Position " + paramInt + " is out of bounds for this buffer");
-      AppMethodBeat.o(61151);
+      AppMethodBeat.o(11643);
       throw localIllegalArgumentException;
     }
     paramInt = ((Integer)this.zzob.get(paramInt)).intValue();
-    AppMethodBeat.o(61151);
+    AppMethodBeat.o(11643);
     return paramInt;
   }
   
   public final void insertRaw(int paramInt, T paramT)
   {
-    AppMethodBeat.i(61145);
+    AppMethodBeat.i(11637);
     this.zzog.add(paramInt, paramT);
     paramT = new HashSet(this.zzoe.size());
     Object localObject = this.zzoe.iterator();
@@ -311,23 +311,23 @@ public final class ObjectDataBuffer<T>
     if (this.zzof.hasObservers()) {
       this.zzof.onDataRangeInserted(i, 1);
     }
-    AppMethodBeat.o(61145);
+    AppMethodBeat.o(11637);
   }
   
   public final boolean isRawPositionFiltered(int paramInt)
   {
-    AppMethodBeat.i(61153);
+    AppMethodBeat.i(11645);
     boolean bool = this.zzoe.contains(Integer.valueOf(paramInt));
-    AppMethodBeat.o(61153);
+    AppMethodBeat.o(11645);
     return bool;
   }
   
   public final void notifyChanged(T paramT)
   {
-    AppMethodBeat.i(61160);
+    AppMethodBeat.i(11652);
     if (!this.zzof.hasObservers())
     {
-      AppMethodBeat.o(61160);
+      AppMethodBeat.o(11652);
       return;
     }
     int j = this.zzob.size();
@@ -339,26 +339,26 @@ public final class ObjectDataBuffer<T>
       }
       i += 1;
     }
-    AppMethodBeat.o(61160);
+    AppMethodBeat.o(11652);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(61154);
+    AppMethodBeat.i(11646);
     this.zzof.clear();
-    AppMethodBeat.o(61154);
+    AppMethodBeat.o(11646);
   }
   
   public final void removeObserver(DataBufferObserver paramDataBufferObserver)
   {
-    AppMethodBeat.i(61143);
+    AppMethodBeat.i(11635);
     this.zzof.removeObserver(paramDataBufferObserver);
-    AppMethodBeat.o(61143);
+    AppMethodBeat.o(11635);
   }
   
   public final void removeRaw(int paramInt)
   {
-    AppMethodBeat.i(61155);
+    AppMethodBeat.i(11647);
     this.zzog.remove(paramInt);
     boolean bool = this.zzoe.remove(Integer.valueOf(paramInt));
     Object localObject1 = new HashSet(this.zzoe.size());
@@ -387,12 +387,12 @@ public final class ObjectDataBuffer<T>
     if ((!bool) && (this.zzof.hasObservers())) {
       this.zzof.onDataRangeRemoved(i, 1);
     }
-    AppMethodBeat.o(61155);
+    AppMethodBeat.o(11647);
   }
   
   public final boolean setRaw(int paramInt, T paramT)
   {
-    AppMethodBeat.i(61146);
+    AppMethodBeat.i(11638);
     this.zzog.set(paramInt, paramT);
     boolean bool;
     int j;
@@ -416,7 +416,7 @@ public final class ObjectDataBuffer<T>
       }
       else
       {
-        AppMethodBeat.o(61146);
+        AppMethodBeat.o(11638);
         return bool;
         bool = false;
         break;
@@ -427,7 +427,7 @@ public final class ObjectDataBuffer<T>
   
   public final void unfilter(T paramT)
   {
-    AppMethodBeat.i(61158);
+    AppMethodBeat.i(11650);
     int i2 = this.zzog.size();
     int n = 0;
     int k = -1;
@@ -441,7 +441,7 @@ public final class ObjectDataBuffer<T>
         i += 1;
         j = i;
         if (m < 0) {
-          break label256;
+          break label258;
         }
         zzcl();
         this.zzof.onDataRangeInserted(m, k);
@@ -495,11 +495,11 @@ public final class ObjectDataBuffer<T>
             if (m >= 0) {
               this.zzof.onDataRangeInserted(m, k);
             }
-            AppMethodBeat.o(61158);
+            AppMethodBeat.o(11650);
             return;
           }
         }
-        label256:
+        label258:
         i = j;
         j = i1;
         continue;
@@ -510,12 +510,12 @@ public final class ObjectDataBuffer<T>
   
   public final void unfilterRaw(int paramInt)
   {
-    AppMethodBeat.i(61159);
+    AppMethodBeat.i(11651);
     boolean bool = this.zzoe.remove(Integer.valueOf(paramInt));
     zzcl();
     if ((!this.zzof.hasObservers()) || (!bool))
     {
-      AppMethodBeat.o(61159);
+      AppMethodBeat.o(11651);
       return;
     }
     int i = 0;
@@ -528,7 +528,7 @@ public final class ObjectDataBuffer<T>
       if (i >= 0) {
         this.zzof.onDataRangeInserted(i, 1);
       }
-      AppMethodBeat.o(61159);
+      AppMethodBeat.o(11651);
       return;
       i += 1;
       break;
@@ -538,7 +538,7 @@ public final class ObjectDataBuffer<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.data.ObjectDataBuffer
  * JD-Core Version:    0.7.0.1
  */

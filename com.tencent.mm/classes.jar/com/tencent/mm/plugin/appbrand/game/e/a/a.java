@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.game.e.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,31 +13,31 @@ public final class a
   public static final int CTRL_INDEX = 667;
   public static final String NAME = "onGameRecorderStateChange";
   
-  final void d(r paramr)
+  final void d(q paramq)
   {
-    AppMethodBeat.i(143150);
-    i(paramr);
-    ab.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch pause");
-    paramr = new HashMap(1);
-    paramr.put("state", "pause");
-    w(paramr).aBz();
-    AppMethodBeat.o(143150);
+    AppMethodBeat.i(45136);
+    g(paramq);
+    ad.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch pause");
+    paramq = new HashMap(1);
+    paramq.put("state", "pause");
+    B(paramq).aXQ();
+    AppMethodBeat.o(45136);
   }
   
-  final void e(r paramr)
+  final void e(q paramq)
   {
-    AppMethodBeat.i(143151);
-    i(paramr);
-    ab.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch resume");
-    paramr = new HashMap(1);
-    paramr.put("state", "resume");
-    w(paramr).aBz();
-    AppMethodBeat.o(143151);
+    AppMethodBeat.i(45137);
+    g(paramq);
+    ad.i("MicroMsg.OnGameRecorderStateChangeEvent", "hy: dispatch resume");
+    paramq = new HashMap(1);
+    paramq.put("state", "resume");
+    B(paramq).aXQ();
+    AppMethodBeat.o(45137);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.e.a.a
  * JD-Core Version:    0.7.0.1
  */

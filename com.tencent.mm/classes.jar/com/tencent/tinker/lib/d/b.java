@@ -15,7 +15,7 @@ import java.util.List;
 public class b
   implements d
 {
-  private static boolean BsE = false;
+  private static boolean IEB = false;
   protected final Context context;
   
   public b(Context paramContext)
@@ -30,14 +30,8 @@ public class b
   
   public void a(File paramFile1, File paramFile2, String paramString, int paramInt)
   {
-    com.tencent.tinker.lib.f.a.i("Tinker.DefaultPatchReporter", "patchReporter onPatchTypeExtractFail: file extract fail type: %s, path: %s, extractTo: %s, filename: %s", new Object[] { ShareTinkerInternals.Th(paramInt), paramFile1.getPath(), paramFile2.getPath(), paramString });
-    com.tencent.tinker.lib.e.a.jo(this.context).ai(paramFile1);
-  }
-  
-  public void a(File paramFile, String paramString1, String paramString2)
-  {
-    com.tencent.tinker.lib.f.a.i("Tinker.DefaultPatchReporter", "patchReporter onPatchInfoCorrupted: patch info is corrupted. old: %s, new: %s", new Object[] { paramString1, paramString2 });
-    com.tencent.tinker.lib.e.a.jo(this.context).bIo();
+    com.tencent.tinker.lib.f.a.i("Tinker.DefaultPatchReporter", "patchReporter onPatchTypeExtractFail: file extract fail type: %s, path: %s, extractTo: %s, filename: %s", new Object[] { ShareTinkerInternals.getTypeString(paramInt), paramFile1.getPath(), paramFile2.getPath(), paramString });
+    com.tencent.tinker.lib.e.a.kI(this.context).X(paramFile1);
   }
   
   public void a(File paramFile, Throwable paramThrowable)
@@ -45,8 +39,8 @@ public class b
     com.tencent.tinker.lib.f.a.i("Tinker.DefaultPatchReporter", "patchReporter onPatchException: patch exception path: %s, throwable: %s", new Object[] { paramFile.getAbsolutePath(), paramThrowable.getMessage() });
     com.tencent.tinker.lib.f.a.e("Tinker.DefaultPatchReporter", "tinker patch exception, welcome to submit issue to us: https://github.com/Tencent/tinker/issues", new Object[0]);
     com.tencent.tinker.lib.f.a.printErrStackTrace("Tinker.DefaultPatchReporter", paramThrowable, "tinker patch exception", new Object[0]);
-    com.tencent.tinker.lib.e.a.jo(this.context).tinkerFlags = 0;
-    com.tencent.tinker.lib.e.a.jo(this.context).ai(paramFile);
+    com.tencent.tinker.lib.e.a.kI(this.context).tinkerFlags = 0;
+    com.tencent.tinker.lib.e.a.kI(this.context).X(paramFile);
   }
   
   public void a(File paramFile, List<File> paramList, Throwable paramThrowable)
@@ -55,41 +49,41 @@ public class b
     com.tencent.tinker.lib.f.a.printErrStackTrace("Tinker.DefaultPatchReporter", paramThrowable, "onPatchDexOptFail:", new Object[0]);
     if ((paramThrowable.getMessage().contains("checkDexOptExist failed")) || (paramThrowable.getMessage().contains("checkDexOptFormat failed")))
     {
-      BsE = true;
+      IEB = true;
       paramFile = paramList.iterator();
     }
     while (paramFile.hasNext())
     {
-      SharePatchFileUtil.aq((File)paramFile.next());
+      SharePatchFileUtil.safeDeleteFile((File)paramFile.next());
       continue;
-      com.tencent.tinker.lib.e.a.jo(this.context).ai(paramFile);
+      com.tencent.tinker.lib.e.a.kI(this.context).X(paramFile);
     }
   }
   
   public void a(File paramFile, boolean paramBoolean, long paramLong)
   {
     com.tencent.tinker.lib.f.a.i("Tinker.DefaultPatchReporter", "patchReporter onPatchResult: patch all result path: %s, success: %b, cost: %d", new Object[] { paramFile.getAbsolutePath(), Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) });
-    if (!BsE)
+    if (!IEB)
     {
-      paramFile = c.jt(this.context);
-      if (paramFile.Btr) {
+      paramFile = c.kN(this.context);
+      if (paramFile.IFm) {
         break label65;
       }
       com.tencent.tinker.lib.f.a.w("Tinker.UpgradePatchRetry", "onPatchServiceResult retry disabled, just return", new Object[0]);
     }
     label65:
-    while (!paramFile.Btt.exists()) {
+    while (!paramFile.IFo.exists()) {
       return;
     }
-    SharePatchFileUtil.aq(paramFile.Btt);
+    SharePatchFileUtil.safeDeleteFile(paramFile.IFo);
   }
   
-  public void ac(Intent paramIntent)
+  public void aq(Intent paramIntent)
   {
     com.tencent.tinker.lib.f.a.i("Tinker.DefaultPatchReporter", "patchReporter onPatchServiceStart: patch service start", new Object[0]);
-    BsE = false;
-    c localc = c.jt(this.context);
-    if (!localc.Btr)
+    IEB = false;
+    c localc = c.kN(this.context);
+    if (!localc.IFm)
     {
       com.tencent.tinker.lib.f.a.w("Tinker.UpgradePatchRetry", "onPatchServiceStart retry disabled, just return", new Object[0]);
       return;
@@ -99,58 +93,64 @@ public class b
       com.tencent.tinker.lib.f.a.e("Tinker.UpgradePatchRetry", "onPatchServiceStart intent is null, just return", new Object[0]);
       return;
     }
-    paramIntent = TinkerPatchService.aZ(paramIntent);
+    paramIntent = TinkerPatchService.bt(paramIntent);
     if (paramIntent == null)
     {
       com.tencent.tinker.lib.f.a.w("Tinker.UpgradePatchRetry", "onPatchServiceStart patch path is null, just return", new Object[0]);
       return;
     }
     File localFile = new File(paramIntent);
-    String str = SharePatchFileUtil.q(localFile);
+    String str = SharePatchFileUtil.getMD5(localFile);
     if (str == null)
     {
       com.tencent.tinker.lib.f.a.w("Tinker.UpgradePatchRetry", "onPatchServiceStart patch md5 is null, just return", new Object[0]);
       return;
     }
-    if (localc.Bts.exists())
+    if (localc.IFn.exists())
     {
-      paramIntent = c.a.ak(localc.Bts);
-      if ((paramIntent.cqq == null) || (paramIntent.Btv == null) || (!str.equals(paramIntent.cqq)))
+      paramIntent = c.a.Z(localc.IFn);
+      if ((paramIntent.md5 == null) || (paramIntent.IFp == null) || (!str.equals(paramIntent.md5)))
       {
-        localc.aj(localFile);
-        paramIntent.cqq = str;
-        paramIntent.Btv = "1";
+        localc.Y(localFile);
+        paramIntent.md5 = str;
+        paramIntent.IFp = "1";
       }
     }
     for (;;)
     {
-      c.a.a(localc.Bts, paramIntent);
+      c.a.a(localc.IFn, paramIntent);
       return;
-      int i = Integer.parseInt(paramIntent.Btv);
-      if (i >= localc.Btu)
+      int i = Integer.parseInt(paramIntent.IFp);
+      if (i >= localc.sua)
       {
-        SharePatchFileUtil.aq(localc.Btt);
+        SharePatchFileUtil.safeDeleteFile(localc.IFo);
         com.tencent.tinker.lib.f.a.w("Tinker.UpgradePatchRetry", "onPatchServiceStart retry more than max count, delete retry info file!", new Object[0]);
         return;
       }
-      paramIntent.Btv = String.valueOf(i + 1);
+      paramIntent.IFp = String.valueOf(i + 1);
       continue;
-      localc.aj(localFile);
+      localc.Y(localFile);
       paramIntent = new c.a(str, "1");
     }
+  }
+  
+  public void b(File paramFile, String paramString1, String paramString2)
+  {
+    com.tencent.tinker.lib.f.a.i("Tinker.DefaultPatchReporter", "patchReporter onPatchInfoCorrupted: patch info is corrupted. old: %s, new: %s", new Object[] { paramString1, paramString2 });
+    com.tencent.tinker.lib.e.a.kI(this.context).cGh();
   }
   
   public void e(File paramFile, int paramInt)
   {
     com.tencent.tinker.lib.f.a.i("Tinker.DefaultPatchReporter", "patchReporter onPatchPackageCheckFail: package check failed. path: %s, code: %d", new Object[] { paramFile.getAbsolutePath(), Integer.valueOf(paramInt) });
     if ((paramInt == -3) || (paramInt == -4) || (paramInt == -8)) {
-      com.tencent.tinker.lib.e.a.jo(this.context).ai(paramFile);
+      com.tencent.tinker.lib.e.a.kI(this.context).X(paramFile);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.lib.d.b
  * JD-Core Version:    0.7.0.1
  */

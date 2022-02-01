@@ -16,25 +16,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class m
   implements MenuItem
 {
-  private int TR;
-  private int TY;
-  public String hBM;
+  public boolean FYu;
+  private int FYv;
+  public int FYw;
+  private Drawable FYx;
+  public ContextMenu.ContextMenuInfo FYy;
+  private MenuItem.OnMenuItemClickListener FYz;
+  private int aaU;
+  private int abb;
+  public boolean dyl;
   private int iconId;
   private Intent intent;
+  public String jBp;
+  public boolean kRX;
   private Context mContext;
-  public CharSequence mZb = null;
+  public CharSequence rvA;
   private CharSequence title;
-  public boolean xTc = false;
-  private int zkX;
-  private Drawable zkY;
-  public ContextMenu.ContextMenuInfo zkZ;
-  private MenuItem.OnMenuItemClickListener zla;
   
   public m(Context paramContext, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(159237);
+    this.rvA = null;
+    this.kRX = false;
     this.mContext = paramContext;
-    this.TY = paramInt1;
-    this.TR = paramInt2;
+    this.abb = paramInt1;
+    this.aaU = paramInt2;
+    this.FYw = paramContext.getResources().getColor(2131099732);
+    AppMethodBeat.o(159237);
+  }
+  
+  public final MenuItem D(Drawable paramDrawable)
+  {
+    this.FYx = paramDrawable;
+    this.FYw = 0;
+    return this;
   }
   
   public final boolean collapseActionView()
@@ -64,25 +79,25 @@ public final class m
   
   public final int getGroupId()
   {
-    return this.TR;
+    return this.aaU;
   }
   
   public final Drawable getIcon()
   {
-    AppMethodBeat.i(112556);
-    if (this.zkY == null)
+    AppMethodBeat.i(159239);
+    if (this.FYx == null)
     {
       if ((this.iconId != 0) && (this.mContext != null))
       {
         localDrawable = this.mContext.getResources().getDrawable(this.iconId);
-        AppMethodBeat.o(112556);
+        AppMethodBeat.o(159239);
         return localDrawable;
       }
-      AppMethodBeat.o(112556);
+      AppMethodBeat.o(159239);
       return null;
     }
-    Drawable localDrawable = this.zkY;
-    AppMethodBeat.o(112556);
+    Drawable localDrawable = this.FYx;
+    AppMethodBeat.o(159239);
     return localDrawable;
   }
   
@@ -93,12 +108,12 @@ public final class m
   
   public final int getItemId()
   {
-    return this.TY;
+    return this.abb;
   }
   
   public final ContextMenu.ContextMenuInfo getMenuInfo()
   {
-    return this.zkZ;
+    return this.FYy;
   }
   
   public final char getNumericShortcut()
@@ -118,20 +133,20 @@ public final class m
   
   public final CharSequence getTitle()
   {
-    AppMethodBeat.i(112555);
+    AppMethodBeat.i(159238);
     if (this.title == null)
     {
-      if ((this.zkX != 0) && (this.mContext != null))
+      if ((this.FYv != 0) && (this.mContext != null))
       {
-        localObject = this.mContext.getString(this.zkX);
-        AppMethodBeat.o(112555);
+        localObject = this.mContext.getString(this.FYv);
+        AppMethodBeat.o(159238);
         return localObject;
       }
-      AppMethodBeat.o(112555);
+      AppMethodBeat.o(159238);
       return null;
     }
     Object localObject = this.title;
-    AppMethodBeat.o(112555);
+    AppMethodBeat.o(159238);
     return localObject;
   }
   
@@ -170,16 +185,23 @@ public final class m
     return true;
   }
   
+  public final MenuItem jk(int paramInt1, int paramInt2)
+  {
+    this.iconId = paramInt1;
+    this.FYw = paramInt2;
+    return this;
+  }
+  
   public final boolean performClick()
   {
-    AppMethodBeat.i(112557);
-    if (this.zla != null)
+    AppMethodBeat.i(159240);
+    if (this.FYz != null)
     {
-      boolean bool = this.zla.onMenuItemClick(this);
-      AppMethodBeat.o(112557);
+      boolean bool = this.FYz.onMenuItemClick(this);
+      AppMethodBeat.o(159240);
       return bool;
     }
-    AppMethodBeat.o(112557);
+    AppMethodBeat.o(159240);
     return false;
   }
   
@@ -226,7 +248,7 @@ public final class m
   
   public final MenuItem setIcon(Drawable paramDrawable)
   {
-    this.zkY = paramDrawable;
+    this.FYx = paramDrawable;
     return this;
   }
   
@@ -248,7 +270,7 @@ public final class m
   
   public final MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    this.zla = paramOnMenuItemClickListener;
+    this.FYz = paramOnMenuItemClickListener;
     return this;
   }
   
@@ -266,7 +288,7 @@ public final class m
   
   public final MenuItem setTitle(int paramInt)
   {
-    this.zkX = paramInt;
+    this.FYv = paramInt;
     return this;
   }
   
@@ -288,7 +310,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.base.m
  * JD-Core Version:    0.7.0.1
  */

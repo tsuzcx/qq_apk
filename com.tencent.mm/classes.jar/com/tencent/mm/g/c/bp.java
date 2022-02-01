@@ -2,195 +2,70 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.acq;
-import com.tencent.mm.protocal.protobuf.add;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public abstract class bp
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FavItemInfo_id_Index ON FavItemInfo(id)", "CREATE INDEX IF NOT EXISTS FavItemInfo_type_Index ON FavItemInfo(type)", "CREATE INDEX IF NOT EXISTS FavItemInfo_updateSeq_Index ON FavItemInfo(updateSeq)", "CREATE INDEX IF NOT EXISTS FavItemInfo_flag_Index ON FavItemInfo(flag)", "CREATE INDEX IF NOT EXISTS FavItemInfo_sourceId_Index ON FavItemInfo(sourceId)", "CREATE INDEX IF NOT EXISTS FavItemInfo_datatotalsize_Index ON FavItemInfo(datatotalsize)" };
-  private static final int dgP;
-  private static final int dhV;
-  private static final int dki = "xml".hashCode();
-  private static final int dkn;
-  private static final int dsg;
-  private static final int dwH;
-  private static final int dwI;
-  private static final int dwJ;
-  private static final int dwK;
-  private static final int dwL;
-  private static final int dwM;
-  private static final int dwN;
-  private static final int dwO;
-  private static final int dwP;
-  private static final int dwQ = "ext".hashCode();
-  private static final int dwR = "edittime".hashCode();
-  private static final int dwS = "tagProto".hashCode();
-  private static final int dwT = "sessionId".hashCode();
-  private static final int dwU = "datatotalsize".hashCode();
-  private static final int dwr = "localId".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS fmconversation_isnew_Index ON fmessage_conversation(isNew)" };
+  private static final int eAI;
+  private static final int eAJ;
+  private static final int eAK = "lastModifiedTime".hashCode();
+  private static final int eAL = "isNew".hashCode();
+  private static final int eAM = "addScene".hashCode();
+  private static final int eAN = "fmsgSysRowId".hashCode();
+  private static final int eAO = "fmsgIsSend".hashCode();
+  private static final int eAP = "fmsgType".hashCode();
+  private static final int eAQ = "fmsgContent".hashCode();
+  private static final int eAR = "recvFmsgType".hashCode();
+  private static final int eAS = "contentFromUsername".hashCode();
+  private static final int eAT = "contentNickname".hashCode();
+  private static final int eAU = "contentPhoneNumMD5".hashCode();
+  private static final int eAV = "contentFullPhoneNumMD5".hashCode();
+  private static final int eAW = "contentVerifyContent".hashCode();
+  private static final int erT = "talker".hashCode();
+  private static final int ezb;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE;
-  private boolean __hadSettype = true;
-  private boolean dgs = true;
-  private boolean dhT = true;
-  private boolean dkf = true;
-  private boolean dkl = true;
-  private boolean dsd = true;
-  private boolean dwA = true;
-  private boolean dwB = true;
-  private boolean dwC = true;
-  private boolean dwD = true;
-  private boolean dwE = true;
-  private boolean dwF = true;
-  private boolean dwG = true;
-  private boolean dwp = true;
-  private boolean dwt = true;
-  private boolean dwu = true;
-  private boolean dwv = true;
-  private boolean dww = true;
-  private boolean dwx = true;
-  private boolean dwy = true;
-  private boolean dwz = true;
-  public long field_datatotalsize;
-  public long field_edittime;
-  public String field_ext;
-  public acq field_favProto;
-  public int field_flag;
-  public String field_fromUser;
-  public int field_id;
-  public int field_itemStatus;
-  public long field_localId;
-  public int field_localSeq;
-  public String field_realChatName;
-  public String field_sessionId;
-  public long field_sourceCreateTime;
-  public String field_sourceId;
-  public int field_sourceType;
-  public add field_tagProto;
-  public String field_toUser;
-  public int field_type;
-  public int field_updateSeq;
-  public long field_updateTime;
-  public String field_xml;
+  private boolean eAA = true;
+  private boolean eAB = true;
+  private boolean eAC = true;
+  private boolean eAD = true;
+  private boolean eAE = true;
+  private boolean eAF = true;
+  private boolean eAG = true;
+  private boolean eAH = true;
+  private boolean eAt = true;
+  private boolean eAu = true;
+  private boolean eAv = true;
+  private boolean eAw = true;
+  private boolean eAx = true;
+  private boolean eAy = true;
+  private boolean eAz = true;
+  private boolean erF = true;
+  private boolean eyp = true;
+  public int field_addScene;
+  public String field_contentFromUsername;
+  public String field_contentFullPhoneNumMD5;
+  public String field_contentNickname;
+  public String field_contentPhoneNumMD5;
+  public String field_contentVerifyContent;
+  public String field_displayName;
+  public String field_encryptTalker;
+  public String field_fmsgContent;
+  public int field_fmsgIsSend;
+  public long field_fmsgSysRowId;
+  public int field_fmsgType;
+  public int field_isNew;
+  public long field_lastModifiedTime;
+  public int field_recvFmsgType;
+  public int field_state;
+  public String field_talker;
   
   static
   {
-    dsg = "id".hashCode();
-    type_HASHCODE = "type".hashCode();
-    dwH = "localSeq".hashCode();
-    dwI = "updateSeq".hashCode();
-    dkn = "flag".hashCode();
-    dwJ = "sourceId".hashCode();
-    dwK = "itemStatus".hashCode();
-    dgP = "sourceType".hashCode();
-    dwL = "sourceCreateTime".hashCode();
-    dhV = "updateTime".hashCode();
-    dwM = "fromUser".hashCode();
-    dwN = "toUser".hashCode();
-    dwO = "realChatName".hashCode();
-    dwP = "favProto".hashCode();
-  }
-  
-  public static c.a Hm()
-  {
-    c.a locala = new c.a();
-    locala.yrK = new Field[21];
-    locala.columns = new String[22];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "localId";
-    locala.yrM.put("localId", "LONG PRIMARY KEY ");
-    localStringBuilder.append(" localId LONG PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "localId";
-    locala.columns[1] = "id";
-    locala.yrM.put("id", "INTEGER");
-    localStringBuilder.append(" id INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "type";
-    locala.yrM.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "localSeq";
-    locala.yrM.put("localSeq", "INTEGER");
-    localStringBuilder.append(" localSeq INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "updateSeq";
-    locala.yrM.put("updateSeq", "INTEGER");
-    localStringBuilder.append(" updateSeq INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "flag";
-    locala.yrM.put("flag", "INTEGER");
-    localStringBuilder.append(" flag INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "sourceId";
-    locala.yrM.put("sourceId", "TEXT");
-    localStringBuilder.append(" sourceId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "itemStatus";
-    locala.yrM.put("itemStatus", "INTEGER");
-    localStringBuilder.append(" itemStatus INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "sourceType";
-    locala.yrM.put("sourceType", "INTEGER");
-    localStringBuilder.append(" sourceType INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "sourceCreateTime";
-    locala.yrM.put("sourceCreateTime", "LONG");
-    localStringBuilder.append(" sourceCreateTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[10] = "updateTime";
-    locala.yrM.put("updateTime", "LONG");
-    localStringBuilder.append(" updateTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[11] = "fromUser";
-    locala.yrM.put("fromUser", "TEXT");
-    localStringBuilder.append(" fromUser TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[12] = "toUser";
-    locala.yrM.put("toUser", "TEXT");
-    localStringBuilder.append(" toUser TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[13] = "realChatName";
-    locala.yrM.put("realChatName", "TEXT");
-    localStringBuilder.append(" realChatName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[14] = "favProto";
-    locala.yrM.put("favProto", "BLOB");
-    localStringBuilder.append(" favProto BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[15] = "xml";
-    locala.yrM.put("xml", "TEXT");
-    localStringBuilder.append(" xml TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[16] = "ext";
-    locala.yrM.put("ext", "TEXT");
-    localStringBuilder.append(" ext TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[17] = "edittime";
-    locala.yrM.put("edittime", "LONG");
-    localStringBuilder.append(" edittime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[18] = "tagProto";
-    locala.yrM.put("tagProto", "BLOB");
-    localStringBuilder.append(" tagProto BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[19] = "sessionId";
-    locala.yrM.put("sessionId", "TEXT");
-    localStringBuilder.append(" sessionId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[20] = "datatotalsize";
-    locala.yrM.put("datatotalsize", "LONG");
-    localStringBuilder.append(" datatotalsize LONG");
-    locala.columns[21] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    eAI = "encryptTalker".hashCode();
+    eAJ = "displayName".hashCode();
+    ezb = "state".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -199,18 +74,18 @@ public abstract class bp
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dwr != k) {
+      if (erT != k) {
         break label65;
       }
-      this.field_localId = paramCursor.getLong(i);
-      this.dwp = true;
+      this.field_talker = paramCursor.getString(i);
+      this.erF = true;
     }
     for (;;)
     {
@@ -218,68 +93,38 @@ public abstract class bp
       break label20;
       break;
       label65:
-      if (dsg == k) {
-        this.field_id = paramCursor.getInt(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (dwH == k) {
-        this.field_localSeq = paramCursor.getInt(i);
-      } else if (dwI == k) {
-        this.field_updateSeq = paramCursor.getInt(i);
-      } else if (dkn == k) {
-        this.field_flag = paramCursor.getInt(i);
-      } else if (dwJ == k) {
-        this.field_sourceId = paramCursor.getString(i);
-      } else if (dwK == k) {
-        this.field_itemStatus = paramCursor.getInt(i);
-      } else if (dgP == k) {
-        this.field_sourceType = paramCursor.getInt(i);
-      } else if (dwL == k) {
-        this.field_sourceCreateTime = paramCursor.getLong(i);
-      } else if (dhV == k) {
-        this.field_updateTime = paramCursor.getLong(i);
-      } else if (dwM == k) {
-        this.field_fromUser = paramCursor.getString(i);
-      } else if (dwN == k) {
-        this.field_toUser = paramCursor.getString(i);
-      } else if (dwO == k) {
-        this.field_realChatName = paramCursor.getString(i);
-      } else if (dwP == k) {
-        try
-        {
-          byte[] arrayOfByte1 = paramCursor.getBlob(i);
-          if ((arrayOfByte1 == null) || (arrayOfByte1.length <= 0)) {
-            continue;
-          }
-          this.field_favProto = ((acq)new acq().parseFrom(arrayOfByte1));
-        }
-        catch (IOException localIOException1)
-        {
-          ab.e("MicroMsg.SDK.BaseFavItemInfo", localIOException1.getMessage());
-        }
-      } else if (dki == k) {
-        this.field_xml = paramCursor.getString(i);
-      } else if (dwQ == k) {
-        this.field_ext = paramCursor.getString(i);
-      } else if (dwR == k) {
-        this.field_edittime = paramCursor.getLong(i);
-      } else if (dwS == k) {
-        try
-        {
-          byte[] arrayOfByte2 = paramCursor.getBlob(i);
-          if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
-            continue;
-          }
-          this.field_tagProto = ((add)new add().parseFrom(arrayOfByte2));
-        }
-        catch (IOException localIOException2)
-        {
-          ab.e("MicroMsg.SDK.BaseFavItemInfo", localIOException2.getMessage());
-        }
-      } else if (dwT == k) {
-        this.field_sessionId = paramCursor.getString(i);
-      } else if (dwU == k) {
-        this.field_datatotalsize = paramCursor.getLong(i);
+      if (eAI == k) {
+        this.field_encryptTalker = paramCursor.getString(i);
+      } else if (eAJ == k) {
+        this.field_displayName = paramCursor.getString(i);
+      } else if (ezb == k) {
+        this.field_state = paramCursor.getInt(i);
+      } else if (eAK == k) {
+        this.field_lastModifiedTime = paramCursor.getLong(i);
+      } else if (eAL == k) {
+        this.field_isNew = paramCursor.getInt(i);
+      } else if (eAM == k) {
+        this.field_addScene = paramCursor.getInt(i);
+      } else if (eAN == k) {
+        this.field_fmsgSysRowId = paramCursor.getLong(i);
+      } else if (eAO == k) {
+        this.field_fmsgIsSend = paramCursor.getInt(i);
+      } else if (eAP == k) {
+        this.field_fmsgType = paramCursor.getInt(i);
+      } else if (eAQ == k) {
+        this.field_fmsgContent = paramCursor.getString(i);
+      } else if (eAR == k) {
+        this.field_recvFmsgType = paramCursor.getInt(i);
+      } else if (eAS == k) {
+        this.field_contentFromUsername = paramCursor.getString(i);
+      } else if (eAT == k) {
+        this.field_contentNickname = paramCursor.getString(i);
+      } else if (eAU == k) {
+        this.field_contentPhoneNumMD5 = paramCursor.getString(i);
+      } else if (eAV == k) {
+        this.field_contentFullPhoneNumMD5 = paramCursor.getString(i);
+      } else if (eAW == k) {
+        this.field_contentVerifyContent = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -289,94 +134,93 @@ public abstract class bp
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dwp) {
-      localContentValues.put("localId", Long.valueOf(this.field_localId));
+    if (this.field_talker == null) {
+      this.field_talker = "0";
     }
-    if (this.dsd) {
-      localContentValues.put("id", Integer.valueOf(this.field_id));
+    if (this.erF) {
+      localContentValues.put("talker", this.field_talker);
     }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
+    if (this.field_encryptTalker == null) {
+      this.field_encryptTalker = "";
     }
-    if (this.dwt) {
-      localContentValues.put("localSeq", Integer.valueOf(this.field_localSeq));
+    if (this.eAt) {
+      localContentValues.put("encryptTalker", this.field_encryptTalker);
     }
-    if (this.dwu) {
-      localContentValues.put("updateSeq", Integer.valueOf(this.field_updateSeq));
+    if (this.field_displayName == null) {
+      this.field_displayName = "";
     }
-    if (this.dkl) {
-      localContentValues.put("flag", Integer.valueOf(this.field_flag));
+    if (this.eAu) {
+      localContentValues.put("displayName", this.field_displayName);
     }
-    if (this.dwv) {
-      localContentValues.put("sourceId", this.field_sourceId);
+    if (this.eyp) {
+      localContentValues.put("state", Integer.valueOf(this.field_state));
     }
-    if (this.dww) {
-      localContentValues.put("itemStatus", Integer.valueOf(this.field_itemStatus));
+    if (this.eAv) {
+      localContentValues.put("lastModifiedTime", Long.valueOf(this.field_lastModifiedTime));
     }
-    if (this.dgs) {
-      localContentValues.put("sourceType", Integer.valueOf(this.field_sourceType));
+    if (this.eAw) {
+      localContentValues.put("isNew", Integer.valueOf(this.field_isNew));
     }
-    if (this.dwx) {
-      localContentValues.put("sourceCreateTime", Long.valueOf(this.field_sourceCreateTime));
+    if (this.eAx) {
+      localContentValues.put("addScene", Integer.valueOf(this.field_addScene));
     }
-    if (this.dhT) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    if (this.eAy) {
+      localContentValues.put("fmsgSysRowId", Long.valueOf(this.field_fmsgSysRowId));
     }
-    if (this.dwy) {
-      localContentValues.put("fromUser", this.field_fromUser);
+    if (this.eAz) {
+      localContentValues.put("fmsgIsSend", Integer.valueOf(this.field_fmsgIsSend));
     }
-    if (this.dwz) {
-      localContentValues.put("toUser", this.field_toUser);
+    if (this.eAA) {
+      localContentValues.put("fmsgType", Integer.valueOf(this.field_fmsgType));
     }
-    if (this.dwA) {
-      localContentValues.put("realChatName", this.field_realChatName);
+    if (this.field_fmsgContent == null) {
+      this.field_fmsgContent = "";
     }
-    if ((this.dwB) && (this.field_favProto != null)) {}
-    try
-    {
-      localContentValues.put("favProto", this.field_favProto.toByteArray());
-      if (this.dkf) {
-        localContentValues.put("xml", this.field_xml);
-      }
-      if (this.dwC) {
-        localContentValues.put("ext", this.field_ext);
-      }
-      if (this.dwD) {
-        localContentValues.put("edittime", Long.valueOf(this.field_edittime));
-      }
-      if ((!this.dwE) || (this.field_tagProto == null)) {}
+    if (this.eAB) {
+      localContentValues.put("fmsgContent", this.field_fmsgContent);
     }
-    catch (IOException localIOException1)
-    {
-      try
-      {
-        localContentValues.put("tagProto", this.field_tagProto.toByteArray());
-        if (this.dwF) {
-          localContentValues.put("sessionId", this.field_sessionId);
-        }
-        if (this.dwG) {
-          localContentValues.put("datatotalsize", Long.valueOf(this.field_datatotalsize));
-        }
-        if (this.systemRowid > 0L) {
-          localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-        }
-        return localContentValues;
-        localIOException1 = localIOException1;
-        ab.e("MicroMsg.SDK.BaseFavItemInfo", localIOException1.getMessage());
-      }
-      catch (IOException localIOException2)
-      {
-        for (;;)
-        {
-          ab.e("MicroMsg.SDK.BaseFavItemInfo", localIOException2.getMessage());
-        }
-      }
+    if (this.eAC) {
+      localContentValues.put("recvFmsgType", Integer.valueOf(this.field_recvFmsgType));
     }
+    if (this.field_contentFromUsername == null) {
+      this.field_contentFromUsername = "";
+    }
+    if (this.eAD) {
+      localContentValues.put("contentFromUsername", this.field_contentFromUsername);
+    }
+    if (this.field_contentNickname == null) {
+      this.field_contentNickname = "";
+    }
+    if (this.eAE) {
+      localContentValues.put("contentNickname", this.field_contentNickname);
+    }
+    if (this.field_contentPhoneNumMD5 == null) {
+      this.field_contentPhoneNumMD5 = "";
+    }
+    if (this.eAF) {
+      localContentValues.put("contentPhoneNumMD5", this.field_contentPhoneNumMD5);
+    }
+    if (this.field_contentFullPhoneNumMD5 == null) {
+      this.field_contentFullPhoneNumMD5 = "";
+    }
+    if (this.eAG) {
+      localContentValues.put("contentFullPhoneNumMD5", this.field_contentFullPhoneNumMD5);
+    }
+    if (this.field_contentVerifyContent == null) {
+      this.field_contentVerifyContent = "";
+    }
+    if (this.eAH) {
+      localContentValues.put("contentVerifyContent", this.field_contentVerifyContent);
+    }
+    if (this.systemRowid > 0L) {
+      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+    }
+    return localContentValues;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.bp
  * JD-Core Version:    0.7.0.1
  */

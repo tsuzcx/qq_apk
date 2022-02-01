@@ -2,84 +2,101 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class c
   extends a
 {
-  private String cOo = "";
-  public long cOp = 0L;
-  public a cOq;
+  public long dFl = 0L;
+  private long dFm = 0L;
+  public long dFn = 0L;
+  public long dFo = 0L;
+  public long dFp = 0L;
+  public long dFq = 0L;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(128637);
+    AppMethodBeat.i(19855);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cOo);
+    ((StringBuffer)localObject).append(this.dFl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cOp);
+    ((StringBuffer)localObject).append(this.dFm);
     ((StringBuffer)localObject).append(",");
-    if (this.cOq != null) {}
-    for (int i = this.cOq.value;; i = -1)
-    {
-      ((StringBuffer)localObject).append(i);
-      localObject = ((StringBuffer)localObject).toString();
-      Yp((String)localObject);
-      AppMethodBeat.o(128637);
-      return localObject;
-    }
-  }
-  
-  public final String Fg()
-  {
-    AppMethodBeat.i(128638);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Url:").append(this.cOo);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DownLoadCostStampMs:").append(this.cOp);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PreLoadStatus:").append(this.cOq);
+    ((StringBuffer)localObject).append(this.dFn);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dFo);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dFp);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dFq);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(128638);
+    ams((String)localObject);
+    AppMethodBeat.o(19855);
     return localObject;
   }
   
-  public final c eP(String paramString)
+  public final String PW()
   {
-    AppMethodBeat.i(128636);
-    this.cOo = t("Url", paramString, true);
-    AppMethodBeat.o(128636);
+    AppMethodBeat.i(19856);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("FirstInputTimeStampMs:").append(this.dFl);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("LastInputTimeStampMs:").append(this.dFm);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SendStampMs:").append(this.dFn);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickCount:").append(this.dFo);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("TextLength:").append(this.dFp);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("EmojiCount:").append(this.dFq);
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(19856);
+    return localObject;
+  }
+  
+  public final c PX()
+  {
+    AppMethodBeat.i(19852);
+    c localc = bq(bt.eGO());
+    AppMethodBeat.o(19852);
+    return localc;
+  }
+  
+  public final c PY()
+  {
+    AppMethodBeat.i(19854);
+    c localc = br(bt.eGO());
+    AppMethodBeat.o(19854);
+    return localc;
+  }
+  
+  public final c bq(long paramLong)
+  {
+    AppMethodBeat.i(19851);
+    this.dFl = paramLong;
+    super.bb("FirstInputTimeStampMs", this.dFl);
+    AppMethodBeat.o(19851);
+    return this;
+  }
+  
+  public final c br(long paramLong)
+  {
+    AppMethodBeat.i(19853);
+    this.dFm = paramLong;
+    super.bb("LastInputTimeStampMs", this.dFm);
+    AppMethodBeat.o(19853);
     return this;
   }
   
   public final int getId()
   {
-    return 15586;
-  }
-  
-  public static enum a
-  {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(128635);
-      cOr = new a("NoDownLoad", 0, 0);
-      cOs = new a("DownLoading", 1, 1);
-      cOt = new a("DownLoaded", 2, 2);
-      cOu = new a("DownLoadFail", 3, 3);
-      cOv = new a[] { cOr, cOs, cOt, cOu };
-      AppMethodBeat.o(128635);
-    }
-    
-    private a(int paramInt)
-    {
-      this.value = paramInt;
-    }
+    return 16113;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.c
  * JD-Core Version:    0.7.0.1
  */

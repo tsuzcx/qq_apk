@@ -49,24 +49,24 @@ public class SignInClientImpl
   public SignInClientImpl(Context paramContext, Looper paramLooper, boolean paramBoolean, ClientSettings paramClientSettings, Bundle paramBundle, GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
     super(paramContext, paramLooper, 44, paramClientSettings, paramConnectionCallbacks, paramOnConnectionFailedListener);
-    AppMethodBeat.i(61687);
+    AppMethodBeat.i(12179);
     this.zzads = paramBoolean;
     this.zzgf = paramClientSettings;
     this.zzada = paramBundle;
     this.zzsc = paramClientSettings.getClientSessionId();
-    AppMethodBeat.o(61687);
+    AppMethodBeat.o(12179);
   }
   
   public SignInClientImpl(Context paramContext, Looper paramLooper, boolean paramBoolean, ClientSettings paramClientSettings, SignInOptions paramSignInOptions, GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
     this(paramContext, paramLooper, paramBoolean, paramClientSettings, createBundleFromClientSettings(paramClientSettings), paramConnectionCallbacks, paramOnConnectionFailedListener);
-    AppMethodBeat.i(61688);
-    AppMethodBeat.o(61688);
+    AppMethodBeat.i(12180);
+    AppMethodBeat.o(12180);
   }
   
   public static Bundle createBundleFromClientSettings(ClientSettings paramClientSettings)
   {
-    AppMethodBeat.i(61695);
+    AppMethodBeat.i(12187);
     SignInOptions localSignInOptions = paramClientSettings.getSignInOptions();
     Integer localInteger = paramClientSettings.getClientSessionId();
     Bundle localBundle = new Bundle();
@@ -90,49 +90,49 @@ public class SignInClientImpl
         localBundle.putLong("com.google.android.gms.signin.internal.realClientLibraryVersion", localSignInOptions.getRealClientLibraryVersion().longValue());
       }
     }
-    AppMethodBeat.o(61695);
+    AppMethodBeat.o(12187);
     return localBundle;
   }
   
   public void clearAccountFromSessionStore()
   {
-    AppMethodBeat.i(61690);
+    AppMethodBeat.i(12182);
     try
     {
       ((ISignInService)getService()).clearAccountFromSessionStore(this.zzsc.intValue());
-      AppMethodBeat.o(61690);
+      AppMethodBeat.o(12182);
       return;
     }
     catch (RemoteException localRemoteException)
     {
-      AppMethodBeat.o(61690);
+      AppMethodBeat.o(12182);
     }
   }
   
   public void connect()
   {
-    AppMethodBeat.i(61694);
+    AppMethodBeat.i(12186);
     connect(new BaseGmsClient.LegacyClientCallbackAdapter(this));
-    AppMethodBeat.o(61694);
+    AppMethodBeat.o(12186);
   }
   
   protected ISignInService createServiceInterface(IBinder paramIBinder)
   {
-    AppMethodBeat.i(61692);
+    AppMethodBeat.i(12184);
     paramIBinder = ISignInService.Stub.asInterface(paramIBinder);
-    AppMethodBeat.o(61692);
+    AppMethodBeat.o(12184);
     return paramIBinder;
   }
   
   public Bundle getGetServiceRequestExtraArgs()
   {
-    AppMethodBeat.i(61693);
+    AppMethodBeat.i(12185);
     Object localObject = this.zzgf.getRealClientPackageName();
     if (!getContext().getPackageName().equals(localObject)) {
       this.zzada.putString("com.google.android.gms.signin.internal.realClientPackageName", this.zzgf.getRealClientPackageName());
     }
     localObject = this.zzada;
-    AppMethodBeat.o(61693);
+    AppMethodBeat.o(12185);
     return localObject;
   }
   
@@ -158,22 +158,22 @@ public class SignInClientImpl
   
   public void saveDefaultAccount(IAccountAccessor paramIAccountAccessor, boolean paramBoolean)
   {
-    AppMethodBeat.i(61689);
+    AppMethodBeat.i(12181);
     try
     {
       ((ISignInService)getService()).saveDefaultAccountToSharedPref(paramIAccountAccessor, this.zzsc.intValue(), paramBoolean);
-      AppMethodBeat.o(61689);
+      AppMethodBeat.o(12181);
       return;
     }
     catch (RemoteException paramIAccountAccessor)
     {
-      AppMethodBeat.o(61689);
+      AppMethodBeat.o(12181);
     }
   }
   
   public void signIn(ISignInCallbacks paramISignInCallbacks)
   {
-    AppMethodBeat.i(61691);
+    AppMethodBeat.i(12183);
     Preconditions.checkNotNull(paramISignInCallbacks, "Expecting a valid ISignInCallbacks");
     try
     {
@@ -184,7 +184,7 @@ public class SignInClientImpl
       }
       localObject = new ResolveAccountRequest(localAccount, this.zzsc.intValue(), (GoogleSignInAccount)localObject);
       ((ISignInService)getService()).signIn(new SignInRequest((ResolveAccountRequest)localObject), paramISignInCallbacks);
-      AppMethodBeat.o(61691);
+      AppMethodBeat.o(12183);
       return;
     }
     catch (RemoteException localRemoteException)
@@ -192,13 +192,13 @@ public class SignInClientImpl
       try
       {
         paramISignInCallbacks.onSignInComplete(new SignInResponse(8));
-        AppMethodBeat.o(61691);
+        AppMethodBeat.o(12183);
         return;
       }
       catch (RemoteException paramISignInCallbacks)
       {
         Log.wtf("SignInClientImpl", "ISignInCallbacks#onSignInComplete should be executed from the same process, unexpected RemoteException.", localRemoteException);
-        AppMethodBeat.o(61691);
+        AppMethodBeat.o(12183);
       }
     }
   }

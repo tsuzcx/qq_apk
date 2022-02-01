@@ -3,98 +3,165 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aeb
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int csV;
-  public String id;
-  public int mLg;
-  public String wWY;
-  public long wWZ;
+  public int Dep;
+  public int count;
+  public String dlB;
+  public String lpA;
+  public String lpv;
+  public String lpw;
+  public String lpx;
+  public String lpy;
+  public int lpz;
+  public int position;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28409);
+    AppMethodBeat.i(50085);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.id != null) {
-        paramVarArgs.e(1, this.id);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.username != null) {
+        paramVarArgs.d(1, this.username);
       }
-      paramVarArgs.aO(2, this.mLg);
-      if (this.wWY != null) {
-        paramVarArgs.e(3, this.wWY);
+      paramVarArgs.aR(2, this.count);
+      if (this.lpv != null) {
+        paramVarArgs.d(3, this.lpv);
       }
-      paramVarArgs.am(4, this.wWZ);
-      paramVarArgs.aO(5, this.csV);
-      AppMethodBeat.o(28409);
+      if (this.lpw != null) {
+        paramVarArgs.d(4, this.lpw);
+      }
+      paramVarArgs.aR(5, this.Dep);
+      if (this.dlB != null) {
+        paramVarArgs.d(6, this.dlB);
+      }
+      if (this.lpx != null) {
+        paramVarArgs.d(7, this.lpx);
+      }
+      if (this.lpy != null) {
+        paramVarArgs.d(8, this.lpy);
+      }
+      paramVarArgs.aR(9, this.lpz);
+      if (this.lpA != null) {
+        paramVarArgs.d(10, this.lpA);
+      }
+      paramVarArgs.aR(11, this.position);
+      AppMethodBeat.o(50085);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.id == null) {
-        break label421;
+      if (this.username == null) {
+        break label762;
       }
     }
-    label421:
-    for (paramInt = e.a.a.b.b.a.f(1, this.id) + 0;; paramInt = 0)
+    label762:
+    for (paramInt = f.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
     {
-      int i = paramInt + e.a.a.b.b.a.bl(2, this.mLg);
+      int i = paramInt + f.a.a.b.b.a.bA(2, this.count);
       paramInt = i;
-      if (this.wWY != null) {
-        paramInt = i + e.a.a.b.b.a.f(3, this.wWY);
+      if (this.lpv != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.lpv);
       }
-      i = e.a.a.b.b.a.p(4, this.wWZ);
-      int j = e.a.a.b.b.a.bl(5, this.csV);
-      AppMethodBeat.o(28409);
-      return paramInt + i + j;
+      i = paramInt;
+      if (this.lpw != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.lpw);
+      }
+      i += f.a.a.b.b.a.bA(5, this.Dep);
+      paramInt = i;
+      if (this.dlB != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.dlB);
+      }
+      i = paramInt;
+      if (this.lpx != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.lpx);
+      }
+      paramInt = i;
+      if (this.lpy != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.lpy);
+      }
+      i = paramInt + f.a.a.b.b.a.bA(9, this.lpz);
+      paramInt = i;
+      if (this.lpA != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.lpA);
+      }
+      i = f.a.a.b.b.a.bA(11, this.position);
+      AppMethodBeat.o(50085);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(28409);
+        AppMethodBeat.o(50085);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         aeb localaeb = (aeb)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(28409);
+          AppMethodBeat.o(50085);
           return -1;
         case 1: 
-          localaeb.id = locala.CLY.readString();
-          AppMethodBeat.o(28409);
+          localaeb.username = locala.KhF.readString();
+          AppMethodBeat.o(50085);
           return 0;
         case 2: 
-          localaeb.mLg = locala.CLY.sl();
-          AppMethodBeat.o(28409);
+          localaeb.count = locala.KhF.xS();
+          AppMethodBeat.o(50085);
           return 0;
         case 3: 
-          localaeb.wWY = locala.CLY.readString();
-          AppMethodBeat.o(28409);
+          localaeb.lpv = locala.KhF.readString();
+          AppMethodBeat.o(50085);
           return 0;
         case 4: 
-          localaeb.wWZ = locala.CLY.sm();
-          AppMethodBeat.o(28409);
+          localaeb.lpw = locala.KhF.readString();
+          AppMethodBeat.o(50085);
+          return 0;
+        case 5: 
+          localaeb.Dep = locala.KhF.xS();
+          AppMethodBeat.o(50085);
+          return 0;
+        case 6: 
+          localaeb.dlB = locala.KhF.readString();
+          AppMethodBeat.o(50085);
+          return 0;
+        case 7: 
+          localaeb.lpx = locala.KhF.readString();
+          AppMethodBeat.o(50085);
+          return 0;
+        case 8: 
+          localaeb.lpy = locala.KhF.readString();
+          AppMethodBeat.o(50085);
+          return 0;
+        case 9: 
+          localaeb.lpz = locala.KhF.xS();
+          AppMethodBeat.o(50085);
+          return 0;
+        case 10: 
+          localaeb.lpA = locala.KhF.readString();
+          AppMethodBeat.o(50085);
           return 0;
         }
-        localaeb.csV = locala.CLY.sl();
-        AppMethodBeat.o(28409);
+        localaeb.position = locala.KhF.xS();
+        AppMethodBeat.o(50085);
         return 0;
       }
-      AppMethodBeat.o(28409);
+      AppMethodBeat.o(50085);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aeb
  * JD-Core Version:    0.7.0.1
  */

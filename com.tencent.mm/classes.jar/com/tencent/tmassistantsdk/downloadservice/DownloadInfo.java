@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.tmassistantsdk.storage.DBManager;
 import com.tencent.tmassistantsdk.storage.TMAssistantFile;
 import com.tencent.tmassistantsdk.util.TMLog;
@@ -66,7 +66,7 @@ public class DownloadInfo
   
   public DownloadInfo(String paramString1, String paramString2, long paramLong, int paramInt, String paramString3)
   {
-    AppMethodBeat.i(75717);
+    AppMethodBeat.i(101963);
     this.mAutoRetry = false;
     this.mURL = paramString1;
     this.mSecondaryUrl = paramString2;
@@ -80,12 +80,12 @@ public class DownloadInfo
     this.mContentType = paramString3;
     this.mNetType = DownloadHelper.getNetStatus();
     this.mDownloadFailedTime = 0L;
-    AppMethodBeat.o(75717);
+    AppMethodBeat.o(101963);
   }
   
   public static DownloadInfo readFromCursor(Cursor paramCursor)
   {
-    AppMethodBeat.i(75725);
+    AppMethodBeat.i(101971);
     DownloadInfo localDownloadInfo = new DownloadInfo();
     localDownloadInfo.mDownloadTaskId = paramCursor.getInt(paramCursor.getColumnIndex("taskId"));
     localDownloadInfo.mUUID = paramCursor.getString(paramCursor.getColumnIndex("uId"));
@@ -105,13 +105,13 @@ public class DownloadInfo
     localDownloadInfo.mDownloadFailedErrCode = paramCursor.getInt(paramCursor.getColumnIndex("downloadFailedErrCode"));
     localDownloadInfo.mDownloadFailedTime = paramCursor.getLong(paramCursor.getColumnIndex("downloadFailedTime"));
     localDownloadInfo.mHeaderParamString = paramCursor.getString(paramCursor.getColumnIndex("headerParams"));
-    AppMethodBeat.o(75725);
+    AppMethodBeat.o(101971);
     return localDownloadInfo;
   }
   
   public static DownloadInfo readFromSimpleCursor(Cursor paramCursor)
   {
-    AppMethodBeat.i(75726);
+    AppMethodBeat.i(101972);
     DownloadInfo localDownloadInfo = new DownloadInfo();
     localDownloadInfo.mDownloadTaskId = paramCursor.getInt(paramCursor.getColumnIndex("taskId"));
     localDownloadInfo.mUUID = paramCursor.getString(paramCursor.getColumnIndex("uId"));
@@ -131,13 +131,13 @@ public class DownloadInfo
     localDownloadInfo.mDownloadFailedErrCode = 0;
     localDownloadInfo.mDownloadFailedTime = 0L;
     localDownloadInfo.mHeaderParamString = null;
-    AppMethodBeat.o(75726);
+    AppMethodBeat.o(101972);
     return localDownloadInfo;
   }
   
   public static void writeToContentValues(ContentValues paramContentValues, DownloadInfo paramDownloadInfo)
   {
-    AppMethodBeat.i(75727);
+    AppMethodBeat.i(101973);
     if ((paramDownloadInfo != null) && (paramContentValues != null))
     {
       paramContentValues.put("taskId", Integer.valueOf(paramDownloadInfo.mDownloadTaskId));
@@ -159,12 +159,12 @@ public class DownloadInfo
       paramContentValues.put("downloadFailedTime", Long.valueOf(paramDownloadInfo.mDownloadFailedTime));
       paramContentValues.put("headerParams", paramDownloadInfo.mHeaderParamString);
     }
-    AppMethodBeat.o(75727);
+    AppMethodBeat.o(101973);
   }
   
   public void dump(String paramString)
   {
-    AppMethodBeat.i(75714);
+    AppMethodBeat.i(101960);
     TMLog.i(paramString, "--------dump DownloadInfo-----------");
     TMLog.i(paramString, "mContentType: " + this.mContentType);
     TMLog.i(paramString, "mURL: " + this.mURL);
@@ -182,7 +182,7 @@ public class DownloadInfo
     TMLog.i(paramString, "mNetType:" + this.mNetType);
     TMLog.i(paramString, "mDownloadFailedTime:" + this.mDownloadFailedTime);
     TMLog.i(paramString, "mHeaderParamString:" + this.mHeaderParamString);
-    AppMethodBeat.o(75714);
+    AppMethodBeat.o(101960);
   }
   
   public HashMap<String, String> getHeaderParams()
@@ -202,14 +202,14 @@ public class DownloadInfo
   
   boolean hasReceivedAllDataBytes()
   {
-    AppMethodBeat.i(75718);
+    AppMethodBeat.i(101964);
     TMLog.i("_DownloadInfo", "mTotalBytes = " + this.mTotalBytes + ", mReceivedBytes = " + this.mReceivedBytes);
     if ((this.mTotalBytes != 0L) && (this.mReceivedBytes == this.mTotalBytes))
     {
-      AppMethodBeat.o(75718);
+      AppMethodBeat.o(101964);
       return true;
     }
-    AppMethodBeat.o(75718);
+    AppMethodBeat.o(101964);
     return false;
   }
   
@@ -220,46 +220,46 @@ public class DownloadInfo
   
   public void pauseDownload()
   {
-    AppMethodBeat.i(75721);
+    AppMethodBeat.i(101967);
     TMLog.i("_DownloadInfo", "DownloadInfo::pauseDownload url: " + this.mURL);
     DownloadThreadPool.getInstance().cancelDownloadTask(this.mDownloadTaskId);
     updateStatus(3, false);
-    AppMethodBeat.o(75721);
+    AppMethodBeat.o(101967);
   }
   
   public void setHeaderParams(HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(75715);
+    AppMethodBeat.i(101961);
     if ((paramHashMap != null) && (paramHashMap.size() > 0))
     {
       this.mHeaderParams = paramHashMap;
       this.mHeaderParamString = new JSONObject(paramHashMap).toString();
     }
-    AppMethodBeat.o(75715);
+    AppMethodBeat.o(101961);
   }
   
   public void setTotalSize(long paramLong)
   {
-    AppMethodBeat.i(75716);
+    AppMethodBeat.i(101962);
     if (0L == paramLong) {
       this.mReceivedBytes = 0L;
     }
     this.mTotalBytes = paramLong;
     DBManager.getInstance().addDownloadInfo(this);
-    AppMethodBeat.o(75716);
+    AppMethodBeat.o(101962);
   }
   
   public int startDownloadIfReady()
   {
-    AppMethodBeat.i(75719);
+    AppMethodBeat.i(101965);
     int i = startDownloadIfReady(false);
-    AppMethodBeat.o(75719);
+    AppMethodBeat.o(101965);
     return i;
   }
   
   public int startDownloadIfReady(boolean paramBoolean)
   {
-    AppMethodBeat.i(75720);
+    AppMethodBeat.i(101966);
     TMLog.i("_DownloadInfo", "DownloadInfo::startDownloadIfReady url: " + this.mURL);
     if ((!TextUtils.isEmpty(this.mHeaderParamString)) && ((this.mHeaderParams == null) || (this.mHeaderParams.size() <= 0)))
     {
@@ -280,12 +280,12 @@ public class DownloadInfo
       }
       catch (JSONException localJSONException)
       {
-        ab.printErrStackTrace("_DownloadInfo", localJSONException, "", new Object[0]);
+        ad.printErrStackTrace("_DownloadInfo", localJSONException, "", new Object[0]);
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(75720);
+      AppMethodBeat.o(101966);
       return 5;
       if (localJSONException.size() > 0) {
         this.mHeaderParams = localJSONException;
@@ -322,7 +322,7 @@ public class DownloadInfo
       {
         ((TMAssistantFile)localObject).moveFileToSavaPath();
         updateStatus(4, false);
-        AppMethodBeat.o(75720);
+        AppMethodBeat.o(101966);
         return 4;
       }
     }
@@ -342,25 +342,25 @@ public class DownloadInfo
       updateStatus(1, false);
       this.mDownloadTaskId = DownloadThreadPool.getInstance().addDownloadTask((DownloadTask)localObject);
     }
-    AppMethodBeat.o(75720);
+    AppMethodBeat.o(101966);
     return 0;
   }
   
   public void stopDownload()
   {
-    AppMethodBeat.i(75722);
+    AppMethodBeat.i(101968);
     TMLog.i("_DownloadInfo", "DownloadInfo::stopDownload url: " + this.mURL);
     DownloadThreadPool.getInstance().cancelDownloadTask(this.mDownloadTaskId);
     updateStatus(6, false);
-    AppMethodBeat.o(75722);
+    AppMethodBeat.o(101968);
   }
   
   public void updateReceivedSize(long paramLong)
   {
-    AppMethodBeat.i(75724);
+    AppMethodBeat.i(101970);
     this.mReceivedBytes += paramLong;
     DownloadListenerManager.getInstance().OnDownloadProgressChanged(this.mURL, this.mReceivedBytes, this.mTotalBytes);
-    AppMethodBeat.o(75724);
+    AppMethodBeat.o(101970);
   }
   
   public void updateStatus(int paramInt, boolean paramBoolean)
@@ -369,10 +369,10 @@ public class DownloadInfo
     {
       try
       {
-        AppMethodBeat.i(75723);
+        AppMethodBeat.i(101969);
         if (hasFinished())
         {
-          AppMethodBeat.o(75723);
+          AppMethodBeat.o(101969);
           return;
         }
         this.mStatus = paramInt;
@@ -383,19 +383,19 @@ public class DownloadInfo
           }
           DBManager.getInstance().addDownloadInfo(this);
           DownloadListenerManager.getInstance().OnDownloadStateChanged(this.mURL, this.mStatus, this.mDownloadFailedErrCode, "", paramBoolean, this.mAutoRetry);
-          AppMethodBeat.o(75723);
+          AppMethodBeat.o(101969);
           continue;
         }
         DBManager.getInstance().deleteDownloadInfo(this.mURL);
       }
       finally {}
-      AppMethodBeat.o(75723);
+      AppMethodBeat.o(101969);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.DownloadInfo
  * JD-Core Version:    0.7.0.1
  */

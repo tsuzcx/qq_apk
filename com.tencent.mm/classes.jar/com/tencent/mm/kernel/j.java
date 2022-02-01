@@ -2,86 +2,92 @@ package com.tencent.mm.kernel;
 
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class j
 {
-  private static long eIO;
-  private static long eIP;
-  private static volatile a eIQ = null;
-  
-  public static void RQ() {}
+  private static long gdX;
+  private static long gdY;
+  private static volatile a gdZ = null;
   
   public static void a(a parama)
   {
-    eIQ = parama;
+    gdZ = parama;
+  }
+  
+  public static void afG() {}
+  
+  public static long afH()
+  {
+    return gdY;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123271);
-    if (eIQ != null) {
-      eIQ.d(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.i(158324);
+    if (gdZ != null) {
+      gdZ.d(paramString1, paramString2, paramVarArgs);
     }
-    AppMethodBeat.o(123271);
+    AppMethodBeat.o(158324);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123268);
-    if (eIQ != null) {
-      eIQ.e(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.i(158321);
+    if (gdZ != null) {
+      gdZ.e(paramString1, paramString2, paramVarArgs);
     }
-    AppMethodBeat.o(123268);
+    AppMethodBeat.o(158321);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123270);
-    if (eIQ != null) {
-      eIQ.i(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.i(158323);
+    if (gdZ != null) {
+      gdZ.i(paramString1, paramString2, paramVarArgs);
     }
-    AppMethodBeat.o(123270);
-  }
-  
-  public static void ks(String paramString)
-  {
-    AppMethodBeat.i(123267);
-    long l = SystemClock.elapsedRealtime() - eIP;
-    ab.i("Blink-LOG", "since startup %s : %s", new Object[] { paramString, Long.valueOf(l) });
-    String.format("since startup %s : %s", new Object[] { paramString, Long.valueOf(l) });
-    AppMethodBeat.o(123267);
+    AppMethodBeat.o(158323);
   }
   
   public static void p(String paramString, long paramLong)
   {
-    AppMethodBeat.i(123266);
-    ab.i("Blink-LOG", "since the %s : %s", new Object[] { paramString, Long.valueOf(System.nanoTime() - paramLong) });
-    AppMethodBeat.o(123266);
+    AppMethodBeat.i(158319);
+    ad.i("Blink-LOG", "since the %s : %s", new Object[] { paramString, Long.valueOf(System.nanoTime() - paramLong) });
+    AppMethodBeat.o(158319);
   }
   
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123272);
-    if (eIQ != null) {
-      eIQ.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    AppMethodBeat.i(158325);
+    if (gdZ != null) {
+      gdZ.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
-    AppMethodBeat.o(123272);
+    AppMethodBeat.o(158325);
   }
   
-  public static void s(long paramLong1, long paramLong2)
+  public static long qV(String paramString)
   {
-    eIO = paramLong1;
-    eIP = paramLong2;
+    AppMethodBeat.i(190811);
+    long l = SystemClock.elapsedRealtime() - gdY;
+    ad.i("Blink-LOG", "since startup %s : %s", new Object[] { paramString, Long.valueOf(l) });
+    String.format("since startup %s : %s", new Object[] { paramString, Long.valueOf(l) });
+    AppMethodBeat.o(190811);
+    return l;
+  }
+  
+  public static void u(long paramLong1, long paramLong2)
+  {
+    gdX = paramLong1;
+    gdY = paramLong2;
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123269);
-    if (eIQ != null) {
-      eIQ.w(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.i(158322);
+    if (gdZ != null) {
+      gdZ.w(paramString1, paramString2, paramVarArgs);
     }
-    AppMethodBeat.o(123269);
+    AppMethodBeat.o(158322);
   }
   
   public static abstract interface a

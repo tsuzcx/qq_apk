@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<transition
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background" android:drawable="@drawable/aa3" />
-    <item android:id="@android:id/secondaryProgress" android:drawable="@drawable/aa6" />
-    <item android:id="@android:id/progress">
-        <bitmap android:src="@drawable/aa3" />
-    </item>
-</layer-list>
+    <item android:drawable="@drawable/al2" />
+    <item android:drawable="@drawable/al1" />
+</transition>

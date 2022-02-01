@@ -12,66 +12,66 @@ import java.util.List;
 final class i
   implements d
 {
-  private final List<e> aUg;
-  private final long[] aWh;
-  private final int aXy;
-  private final long[] aXz;
+  private final List<e> bsj;
+  private final long[] bul;
+  private final int bvB;
+  private final long[] bvC;
   
   public i(List<e> paramList)
   {
-    AppMethodBeat.i(95749);
-    this.aUg = paramList;
-    this.aXy = paramList.size();
-    this.aWh = new long[this.aXy * 2];
+    AppMethodBeat.i(92917);
+    this.bsj = paramList;
+    this.bvB = paramList.size();
+    this.bul = new long[this.bvB * 2];
     int i = 0;
-    while (i < this.aXy)
+    while (i < this.bvB)
     {
       e locale = (e)paramList.get(i);
       int j = i * 2;
-      this.aWh[j] = locale.startTime;
-      this.aWh[(j + 1)] = locale.endTime;
+      this.bul[j] = locale.startTime;
+      this.bul[(j + 1)] = locale.endTime;
       i += 1;
     }
-    this.aXz = Arrays.copyOf(this.aWh, this.aWh.length);
-    Arrays.sort(this.aXz);
-    AppMethodBeat.o(95749);
+    this.bvC = Arrays.copyOf(this.bul, this.bul.length);
+    Arrays.sort(this.bvC);
+    AppMethodBeat.o(92917);
   }
   
-  public final int ab(long paramLong)
+  public final int am(long paramLong)
   {
-    AppMethodBeat.i(95750);
-    int i = x.a(this.aXz, paramLong, false, false);
-    if (i < this.aXz.length)
+    AppMethodBeat.i(92918);
+    int i = x.a(this.bvC, paramLong, false, false);
+    if (i < this.bvC.length)
     {
-      AppMethodBeat.o(95750);
+      AppMethodBeat.o(92918);
       return i;
     }
-    AppMethodBeat.o(95750);
+    AppMethodBeat.o(92918);
     return -1;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> ac(long paramLong)
+  public final List<com.google.android.exoplayer2.f.a> an(long paramLong)
   {
-    AppMethodBeat.i(95752);
+    AppMethodBeat.i(92920);
     int i = 0;
     SpannableStringBuilder localSpannableStringBuilder = null;
     Object localObject1 = null;
     Object localObject3 = null;
-    if (i < this.aXy)
+    if (i < this.bvB)
     {
       Object localObject2 = localObject3;
       int j;
-      if (this.aWh[(i * 2)] <= paramLong)
+      if (this.bul[(i * 2)] <= paramLong)
       {
         localObject2 = localObject3;
-        if (paramLong < this.aWh[(i * 2 + 1)])
+        if (paramLong < this.bul[(i * 2 + 1)])
         {
           localObject2 = localObject3;
           if (localObject3 == null) {
             localObject2 = new ArrayList();
           }
-          localObject3 = (e)this.aUg.get(i);
-          if ((((e)localObject3).aTD == 1.4E-45F) && (((e)localObject3).aTF == 1.4E-45F))
+          localObject3 = (e)this.bsj.get(i);
+          if ((((e)localObject3).brG == 1.4E-45F) && (((e)localObject3).brI == 1.4E-45F))
           {
             j = 1;
             label118:
@@ -112,26 +112,26 @@ final class i
     }
     while (localObject3 != null)
     {
-      AppMethodBeat.o(95752);
+      AppMethodBeat.o(92920);
       return localObject3;
       if (localObject1 != null) {
         ((ArrayList)localObject3).add(localObject1);
       }
     }
     localObject1 = Collections.emptyList();
-    AppMethodBeat.o(95752);
+    AppMethodBeat.o(92920);
     return localObject1;
   }
   
-  public final long dT(int paramInt)
+  public final long eR(int paramInt)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(95751);
+    AppMethodBeat.i(92919);
     if (paramInt >= 0)
     {
       bool1 = true;
       com.google.android.exoplayer2.i.a.checkArgument(bool1);
-      if (paramInt >= this.aXz.length) {
+      if (paramInt >= this.bvC.length) {
         break label53;
       }
     }
@@ -139,22 +139,22 @@ final class i
     for (boolean bool1 = bool2;; bool1 = false)
     {
       com.google.android.exoplayer2.i.a.checkArgument(bool1);
-      long l = this.aXz[paramInt];
-      AppMethodBeat.o(95751);
+      long l = this.bvC[paramInt];
+      AppMethodBeat.o(92919);
       return l;
       bool1 = false;
       break;
     }
   }
   
-  public final int pH()
+  public final int uB()
   {
-    return this.aXz.length;
+    return this.bvC.length;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.f.g.i
  * JD-Core Version:    0.7.0.1
  */

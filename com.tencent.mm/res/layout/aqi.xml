@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mc"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:paddingRight="@dimen/c5" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.MMEditText android:textColor="@color/y4" android:textColorHint="@color/s4" android:layout_gravity="center_vertical" android:id="@id/bhn" android:background="@null" android:paddingLeft="0.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" android:imeOptions="actionDone" android:textCursorDrawable="@null" style="@style/n1" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/b9w" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="?k9" android:contentDescription="@string/azz" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/gx" android:textColor="@color/a0g" android:gravity="center_horizontal" android:id="@id/bn9" android:paddingBottom="@dimen/jn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

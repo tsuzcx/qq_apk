@@ -1,25 +1,16 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.a.q;
+import d.y;
 
 final class ad$4
-  implements ValueAnimator.AnimatorUpdateListener
+  implements q<ap, Long, Long, y>
 {
   ad$4(ad paramad) {}
-  
-  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    AppMethodBeat.i(132442);
-    this.iys.getView().setScrollY(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    AppMethodBeat.o(132442);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ad.4
  * JD-Core Version:    0.7.0.1
  */

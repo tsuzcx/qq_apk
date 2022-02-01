@@ -1,17 +1,62 @@
 package com.tencent.mm.plugin.appbrand.o;
 
-import com.tencent.luggage.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public abstract interface b
-  extends d
+final class b
 {
-  public abstract void e(int paramInt, Object... paramVarArgs);
+  private volatile int count;
+  private final LinkedList<Runnable> kTN;
   
-  public abstract void kvStat(int paramInt, String paramString);
+  b()
+  {
+    AppMethodBeat.i(147340);
+    this.kTN = new LinkedList();
+    this.count = 2;
+    AppMethodBeat.o(147340);
+  }
+  
+  public final void Y(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(147341);
+    Object localObject = null;
+    if (paramRunnable != null) {}
+    try
+    {
+      this.kTN.addLast(paramRunnable);
+      int i = this.count - 1;
+      this.count = i;
+      paramRunnable = localObject;
+      if (i <= 0)
+      {
+        paramRunnable = localObject;
+        if (this.kTN.size() > 0)
+        {
+          paramRunnable = new LinkedList();
+          paramRunnable.addAll(this.kTN);
+          this.kTN.clear();
+        }
+      }
+      if (paramRunnable != null)
+      {
+        paramRunnable = paramRunnable.iterator();
+        while (paramRunnable.hasNext()) {
+          ((Runnable)paramRunnable.next()).run();
+        }
+      }
+      AppMethodBeat.o(147341);
+    }
+    finally
+    {
+      AppMethodBeat.o(147341);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.o.b
  * JD-Core Version:    0.7.0.1
  */

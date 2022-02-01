@@ -23,8 +23,8 @@ class SessionInfo
   public SessionInfo(Long paramLong1, Long paramLong2)
   {
     this(paramLong1, paramLong2, UUID.randomUUID());
-    AppMethodBeat.i(72214);
-    AppMethodBeat.o(72214);
+    AppMethodBeat.i(17650);
+    AppMethodBeat.o(17650);
   }
   
   public SessionInfo(Long paramLong1, Long paramLong2, UUID paramUUID)
@@ -36,7 +36,7 @@ class SessionInfo
   
   public static void clearSavedSessionFromDisk()
   {
-    AppMethodBeat.i(72216);
+    AppMethodBeat.i(17652);
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(FacebookSdk.getApplicationContext()).edit();
     localEditor.remove("com.facebook.appevents.SessionInfo.sessionStartTime");
     localEditor.remove("com.facebook.appevents.SessionInfo.sessionEndTime");
@@ -44,19 +44,19 @@ class SessionInfo
     localEditor.remove("com.facebook.appevents.SessionInfo.sessionId");
     localEditor.apply();
     SourceApplicationInfo.clearSavedSourceApplicationInfoFromDisk();
-    AppMethodBeat.o(72216);
+    AppMethodBeat.o(17652);
   }
   
   public static SessionInfo getStoredSessionInfo()
   {
-    AppMethodBeat.i(72215);
+    AppMethodBeat.i(17651);
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(FacebookSdk.getApplicationContext());
     long l1 = localSharedPreferences.getLong("com.facebook.appevents.SessionInfo.sessionStartTime", 0L);
     long l2 = localSharedPreferences.getLong("com.facebook.appevents.SessionInfo.sessionEndTime", 0L);
     String str = localSharedPreferences.getString("com.facebook.appevents.SessionInfo.sessionId", null);
     if ((l1 == 0L) || (l2 == 0L) || (str == null))
     {
-      AppMethodBeat.o(72215);
+      AppMethodBeat.o(17651);
       return null;
     }
     SessionInfo localSessionInfo = new SessionInfo(Long.valueOf(l1), Long.valueOf(l2));
@@ -64,20 +64,20 @@ class SessionInfo
     localSessionInfo.sourceApplicationInfo = SourceApplicationInfo.getStoredSourceApplicatioInfo();
     localSessionInfo.diskRestoreTime = Long.valueOf(System.currentTimeMillis());
     localSessionInfo.sessionId = UUID.fromString(str);
-    AppMethodBeat.o(72215);
+    AppMethodBeat.o(17651);
     return localSessionInfo;
   }
   
   public long getDiskRestoreTime()
   {
-    AppMethodBeat.i(72217);
+    AppMethodBeat.i(17653);
     if (this.diskRestoreTime == null)
     {
-      AppMethodBeat.o(72217);
+      AppMethodBeat.o(17653);
       return 0L;
     }
     long l = this.diskRestoreTime.longValue();
-    AppMethodBeat.o(72217);
+    AppMethodBeat.o(17653);
     return l;
   }
   
@@ -98,15 +98,15 @@ class SessionInfo
   
   public long getSessionLength()
   {
-    AppMethodBeat.i(72218);
+    AppMethodBeat.i(17654);
     if ((this.sessionStartTime == null) || (this.sessionLastEventTime == null))
     {
-      AppMethodBeat.o(72218);
+      AppMethodBeat.o(17654);
       return 0L;
     }
     long l1 = this.sessionLastEventTime.longValue();
     long l2 = this.sessionStartTime.longValue();
-    AppMethodBeat.o(72218);
+    AppMethodBeat.o(17654);
     return l1 - l2;
   }
   
@@ -137,7 +137,7 @@ class SessionInfo
   
   public void writeSessionToDisk()
   {
-    AppMethodBeat.i(72219);
+    AppMethodBeat.i(17655);
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(FacebookSdk.getApplicationContext()).edit();
     localEditor.putLong("com.facebook.appevents.SessionInfo.sessionStartTime", this.sessionStartTime.longValue());
     localEditor.putLong("com.facebook.appevents.SessionInfo.sessionEndTime", this.sessionLastEventTime.longValue());
@@ -147,12 +147,12 @@ class SessionInfo
     if (this.sourceApplicationInfo != null) {
       this.sourceApplicationInfo.writeSourceApplicationInfoToDisk();
     }
-    AppMethodBeat.o(72219);
+    AppMethodBeat.o(17655);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.internal.SessionInfo
  * JD-Core Version:    0.7.0.1
  */

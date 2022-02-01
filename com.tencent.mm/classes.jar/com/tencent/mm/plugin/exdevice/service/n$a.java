@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class n$a
   extends Binder
@@ -35,7 +36,7 @@ public abstract class n$a
     if (paramParcel1.readInt() != 0)
     {
       paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
-      paramParcel1 = m(paramInt1, paramParcel1);
+      paramParcel1 = n(paramInt1, paramParcel1);
       paramParcel2.writeNoException();
       if (paramParcel1 == null) {
         break label110;
@@ -52,10 +53,65 @@ public abstract class n$a
       paramParcel2.writeInt(0);
     }
   }
+  
+  static final class a
+    implements n
+  {
+    private IBinder mRemote;
+    
+    a(IBinder paramIBinder)
+    {
+      this.mRemote = paramIBinder;
+    }
+    
+    public final IBinder asBinder()
+    {
+      return this.mRemote;
+    }
+    
+    public final Bundle n(int paramInt, Bundle paramBundle)
+    {
+      AppMethodBeat.i(23683);
+      Parcel localParcel1 = Parcel.obtain();
+      Parcel localParcel2 = Parcel.obtain();
+      for (;;)
+      {
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.IExDeviceInvoker_AIDL");
+          localParcel1.writeInt(paramInt);
+          if (paramBundle != null)
+          {
+            localParcel1.writeInt(1);
+            paramBundle.writeToParcel(localParcel1, 0);
+            this.mRemote.transact(1, localParcel1, localParcel2, 0);
+            localParcel2.readException();
+            if (localParcel2.readInt() != 0)
+            {
+              paramBundle = (Bundle)Bundle.CREATOR.createFromParcel(localParcel2);
+              return paramBundle;
+            }
+          }
+          else
+          {
+            localParcel1.writeInt(0);
+            continue;
+          }
+          paramBundle = null;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(23683);
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.n.a
  * JD-Core Version:    0.7.0.1
  */

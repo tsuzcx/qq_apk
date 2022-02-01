@@ -11,25 +11,25 @@ import android.support.v4.graphics.drawable.a;
 public final class d
   extends Drawable
 {
-  private static final float SU = (float)Math.toRadians(45.0D);
-  private float SV;
-  private float SW;
-  private float SX;
-  private float SY;
-  private boolean SZ;
-  private boolean Ta;
-  private float Tb;
-  private float Tc;
-  private int Td;
+  private static final float ZX = (float)Math.toRadians(45.0D);
+  private float ZY;
+  private float ZZ;
+  private float aaa;
+  private float aab;
+  private boolean aac;
+  private boolean aad;
+  private float aae;
+  private float aaf;
+  private int aag;
   private final Paint mPaint;
   private final int mSize;
-  private final Path ou;
+  private final Path uW;
   
-  public final void U(boolean paramBoolean)
+  public final void aa(boolean paramBoolean)
   {
-    if (this.Ta != paramBoolean)
+    if (this.aad != paramBoolean)
     {
-      this.Ta = paramBoolean;
+      this.aad = paramBoolean;
       invalidateSelf();
     }
   }
@@ -40,20 +40,20 @@ public final class d
     int i;
     float f1;
     float f2;
-    switch (this.Td)
+    switch (this.aag)
     {
     case 2: 
     default: 
-      if (a.f(this) == 1)
+      if (a.k(this) == 1)
       {
         i = 1;
-        f1 = (float)Math.sqrt(this.SV * this.SV * 2.0F);
-        f2 = this.SW;
-        float f6 = f2 + (f1 - f2) * this.Tb;
-        f1 = this.SW;
-        float f3 = f1 + (this.SX - f1) * this.Tb;
-        float f4 = Math.round(0.0F + (this.Tc - 0.0F) * this.Tb);
-        float f7 = 0.0F + (SU - 0.0F) * this.Tb;
+        f1 = (float)Math.sqrt(this.ZY * this.ZY * 2.0F);
+        f2 = this.ZZ;
+        float f6 = f2 + (f1 - f2) * this.aae;
+        f1 = this.ZZ;
+        float f3 = f1 + (this.aaa - f1) * this.aae;
+        float f4 = Math.round(0.0F + (this.aaf - 0.0F) * this.aae);
+        float f7 = 0.0F + (ZX - 0.0F) * this.aae;
         if (i == 0) {
           break label476;
         }
@@ -64,29 +64,29 @@ public final class d
         }
         f2 = 180.0F;
         label153:
-        float f5 = this.Tb;
+        float f5 = this.aae;
         float f8 = (float)Math.round(f6 * Math.cos(f7));
         f6 = (float)Math.round(f6 * Math.sin(f7));
-        this.ou.rewind();
-        f7 = this.SY + this.mPaint.getStrokeWidth();
-        f7 += (-this.Tc - f7) * this.Tb;
+        this.uW.rewind();
+        f7 = this.aab + this.mPaint.getStrokeWidth();
+        f7 += (-this.aaf - f7) * this.aae;
         float f9 = -f3 / 2.0F;
-        this.ou.moveTo(f9 + f4, 0.0F);
-        this.ou.rLineTo(f3 - f4 * 2.0F, 0.0F);
-        this.ou.moveTo(f9, f7);
-        this.ou.rLineTo(f8, f6);
-        this.ou.moveTo(f9, -f7);
-        this.ou.rLineTo(f8, -f6);
-        this.ou.close();
+        this.uW.moveTo(f9 + f4, 0.0F);
+        this.uW.rLineTo(f3 - f4 * 2.0F, 0.0F);
+        this.uW.moveTo(f9, f7);
+        this.uW.rLineTo(f8, f6);
+        this.uW.moveTo(f9, -f7);
+        this.uW.rLineTo(f8, -f6);
+        this.uW.close();
         paramCanvas.save();
         f3 = this.mPaint.getStrokeWidth();
-        f4 = (int)(localRect.height() - 3.0F * f3 - this.SY * 2.0F) / 4 * 2;
-        f6 = this.SY;
+        f4 = (int)(localRect.height() - 3.0F * f3 - this.aab * 2.0F) / 4 * 2;
+        f6 = this.aab;
         paramCanvas.translate(localRect.centerX(), f3 * 1.5F + f6 + f4);
-        if (!this.SZ) {
+        if (!this.aac) {
           break label493;
         }
-        if ((i ^ this.Ta) == 0) {
+        if ((i ^ this.aad) == 0) {
           break label487;
         }
         i = -1;
@@ -97,14 +97,14 @@ public final class d
     }
     for (;;)
     {
-      paramCanvas.drawPath(this.ou, this.mPaint);
+      paramCanvas.drawPath(this.uW, this.mPaint);
       paramCanvas.restore();
       return;
       i = 0;
       break;
       i = 1;
       break;
-      if (a.f(this) == 0)
+      if (a.k(this) == 0)
       {
         i = 1;
         break;
@@ -161,16 +161,16 @@ public final class d
   
   public final void setProgress(float paramFloat)
   {
-    if (this.Tb != paramFloat)
+    if (this.aae != paramFloat)
     {
-      this.Tb = paramFloat;
+      this.aae = paramFloat;
       invalidateSelf();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v7.d.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -4,65 +4,86 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static a hFM;
-  public static boolean hFP;
-  public static boolean hFQ;
-  public static boolean hFS;
-  public static boolean hFU;
-  public static int hFV;
-  public static boolean hFZ;
-  public boolean arI;
-  public int eAS;
-  public boolean hFN;
-  public long hFO;
-  public boolean hFR;
-  public boolean hFT;
-  public String hFW;
-  public int hFX;
-  public boolean hFY;
+  public static a jIN;
+  public static boolean jIQ;
+  public static boolean jIR;
+  public static boolean jIT;
+  public static boolean jIV;
+  public static int jIW;
+  public static boolean jJa;
+  public boolean aMt;
+  public int fWw;
+  public boolean jIO;
+  public long jIP;
+  public boolean jIS;
+  public boolean jIU;
+  public String jIX;
+  public int jIY;
+  public boolean jIZ;
   
   static
   {
-    AppMethodBeat.i(94218);
-    hFM = new a.a().aCm();
-    hFP = false;
-    hFQ = true;
-    hFS = true;
-    hFU = false;
-    hFV = 5;
-    hFZ = true;
-    AppMethodBeat.o(94218);
+    AppMethodBeat.i(144530);
+    jIN = new a().aYN();
+    jIQ = false;
+    jIR = true;
+    jIT = true;
+    jIV = false;
+    jIW = 5;
+    jJa = true;
+    AppMethodBeat.o(144530);
   }
   
-  public a(a.a parama)
+  public a(a parama)
   {
-    this.eAS = parama.eAS;
-    this.hFN = parama.hFN;
-    this.hFO = parama.hFO;
-    this.arI = parama.arI;
-    this.hFR = parama.hFR;
-    this.hFT = parama.hFT;
-    this.hFW = parama.hFW;
-    this.hFX = parama.hFX;
-    this.hFY = parama.hFY;
+    this.fWw = parama.fWw;
+    this.jIO = parama.jIO;
+    this.jIP = parama.jIP;
+    this.aMt = parama.aMt;
+    this.jIS = parama.jIS;
+    this.jIU = parama.jIU;
+    this.jIX = parama.jIX;
+    this.jIY = parama.jIY;
+    this.jIZ = parama.jIZ;
   }
   
   public static void a(a parama)
   {
-    hFM = parama;
+    jIN = parama;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(94217);
-    String str = "BleConfig{interval=" + this.eAS + ", allowDuplicatesKey=" + this.hFN + ", actionTimeOutTime=" + this.hFO + ", debug=" + this.arI + ", mainThread=" + this.hFR + ", serial=" + this.hFT + ", mode='" + this.hFW + '\'' + ", actionDelayTime=" + this.hFX + '}';
-    AppMethodBeat.o(94217);
+    AppMethodBeat.i(144529);
+    String str = "BleConfig{interval=" + this.fWw + ", allowDuplicatesKey=" + this.jIO + ", actionTimeOutTime=" + this.jIP + ", debug=" + this.aMt + ", mainThread=" + this.jIS + ", serial=" + this.jIU + ", mode='" + this.jIX + '\'' + ", actionDelayTime=" + this.jIY + '}';
+    AppMethodBeat.o(144529);
     return str;
+  }
+  
+  public static final class a
+  {
+    public boolean aMt = a.jIQ;
+    public int fWw = 0;
+    public boolean jIO = false;
+    long jIP = 20000L;
+    public boolean jIS = a.jIR;
+    public boolean jIU = a.jIT;
+    public String jIX = "medium";
+    public int jIY = 10;
+    public boolean jIZ = true;
+    
+    public final a aYN()
+    {
+      AppMethodBeat.i(144528);
+      a locala = new a(this);
+      AppMethodBeat.o(144528);
+      return locala;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a
  * JD-Core Version:    0.7.0.1
  */

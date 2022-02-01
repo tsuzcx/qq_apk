@@ -1,103 +1,231 @@
 package com.tencent.mm.plugin.account.model;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.an;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.bz;
-import com.tencent.mm.plugin.messenger.foundation.a.o;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.pluginsdk.g.a.a.b;
-import com.tencent.mm.pluginsdk.g.a.a.b.c;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.g.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.ap;
-import java.util.HashMap;
+import com.tencent.mm.ui.g.a.a;
+import com.tencent.mm.ui.g.a.a.1;
+import com.tencent.mm.ui.g.a.a.a;
+import com.tencent.mm.ui.g.a.c;
+import com.tencent.mm.ui.g.a.e;
+import com.tencent.mm.ui.g.a.f;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.MalformedURLException;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class j
-  implements at
+public final class j
 {
-  private static ap bAz = null;
-  private static int fWf;
-  public static j.a gAT = j.a.gAY;
-  private a gAS;
-  private o gAU;
-  private c gAV;
+  ap handler;
+  private c ioj;
+  a iok;
   
-  static
+  public j(c paramc, a parama)
   {
-    fWf = 0;
+    this.ioj = paramc;
+    this.iok = parama;
   }
   
-  public j()
+  public final void aIh()
   {
-    AppMethodBeat.i(124706);
-    this.gAU = new j.2(this);
-    this.gAV = new j.3(this);
-    AppMethodBeat.o(124706);
-  }
-  
-  public static void a(j.a parama)
-  {
-    AppMethodBeat.i(124709);
-    gAT = parama;
-    switch (j.4.gAX[parama.ordinal()])
+    AppMethodBeat.i(127846);
+    this.handler = new ap()
     {
-    }
-    for (;;)
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(127841);
+        switch (paramAnonymousMessage.what)
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(127841);
+          return;
+          if (j.this.iok != null)
+          {
+            j.this.iok.onError(paramAnonymousMessage.arg1, (String)paramAnonymousMessage.obj);
+            AppMethodBeat.o(127841);
+            return;
+            if (j.this.iok != null) {
+              j.this.iok.w(paramAnonymousMessage.getData());
+            }
+          }
+        }
+      }
+    };
+    Bundle localBundle = new Bundle();
+    localBundle.putString("client_id", aj.getContext().getString(2131758773));
+    localBundle.putString("client_secret", aj.getContext().getString(2131758788));
+    localBundle.putString("grant_type", "fb_exchange_token");
+    localBundle.putString("fb_exchange_token", this.ioj.ifJ);
+    a.a local2 = new a.a()
     {
-      AppMethodBeat.o(124709);
-      return;
-      fWf = 0;
-      if (bAz == null) {
-        bAz = new ap(new j.1(), true);
+      public final void Cy(String paramAnonymousString)
+      {
+        AppMethodBeat.i(127842);
+        if ((paramAnonymousString == null) || (paramAnonymousString.length() == 0))
+        {
+          ad.e("MicroMsg.RefreshTokenRunner", "response is null or nil");
+          j.a(j.this, 1, "response is null or nil");
+          AppMethodBeat.o(127842);
+          return;
+        }
+        Object localObject1;
+        if ((paramAnonymousString.contains("access_token")) && (paramAnonymousString.length() > 12))
+        {
+          for (;;)
+          {
+            String str1;
+            JSONArray localJSONArray;
+            Object localObject3;
+            String str2;
+            try
+            {
+              localObject1 = f.aLE(paramAnonymousString);
+              if (((JSONObject)localObject1).has("access_token"))
+              {
+                paramAnonymousString = new Bundle();
+                localObject2 = ((JSONObject)localObject1).keys();
+                if (!((Iterator)localObject2).hasNext()) {
+                  break;
+                }
+                str1 = (String)((Iterator)localObject2).next();
+                localJSONArray = ((JSONObject)localObject1).optJSONArray(str1);
+                localObject3 = Double.valueOf(((JSONObject)localObject1).optDouble(str1));
+                str2 = ((JSONObject)localObject1).optString(str1);
+                if ((localJSONArray == null) || (localJSONArray.length() > 0)) {
+                  break label189;
+                }
+                paramAnonymousString.putStringArray(str1, new String[0]);
+                continue;
+              }
+              if (localJSONArray == null) {
+                break label254;
+              }
+            }
+            catch (Throwable paramAnonymousString)
+            {
+              ad.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
+              j.a(j.this, 2, "decodeUrl fail");
+              AppMethodBeat.o(127842);
+              return;
+            }
+            label189:
+            int i;
+            if (!Double.isNaN(localJSONArray.optDouble(0)))
+            {
+              localObject3 = new double[localJSONArray.length()];
+              i = 0;
+              while (i < localJSONArray.length())
+              {
+                localObject3[i] = localJSONArray.optDouble(i);
+                i += 1;
+              }
+              paramAnonymousString.putDoubleArray(str1, (double[])localObject3);
+            }
+            else
+            {
+              label254:
+              if ((localJSONArray != null) && (localJSONArray.optString(0) != null))
+              {
+                localObject3 = new String[localJSONArray.length()];
+                i = 0;
+                while (i < localJSONArray.length())
+                {
+                  localObject3[i] = localJSONArray.optString(i);
+                  i += 1;
+                }
+                paramAnonymousString.putStringArray(str1, (String[])localObject3);
+              }
+              else if (!((Double)localObject3).isNaN())
+              {
+                paramAnonymousString.putDouble(str1, ((Double)localObject3).doubleValue());
+              }
+              else if (str2 != null)
+              {
+                paramAnonymousString.putString(str1, str2);
+              }
+              else
+              {
+                System.err.println("unable to transform json to bundle ".concat(String.valueOf(str1)));
+              }
+            }
+          }
+          localObject1 = j.this;
+          Object localObject2 = Message.obtain();
+          ((Message)localObject2).what = 2;
+          ((Message)localObject2).setData(paramAnonymousString);
+          ((j)localObject1).handler.sendMessage((Message)localObject2);
+          AppMethodBeat.o(127842);
+          return;
+        }
+        try
+        {
+          f.aLE(paramAnonymousString);
+          j.a(j.this, 2, "parseJson error");
+          AppMethodBeat.o(127842);
+          return;
+        }
+        catch (Exception paramAnonymousString)
+        {
+          for (;;)
+          {
+            ad.e("MicroMsg.RefreshTokenRunner", "parseJson exception : " + paramAnonymousString.getMessage());
+            ad.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
+          }
+        }
+        catch (e paramAnonymousString)
+        {
+          localObject1 = "errCode = " + paramAnonymousString.mErrorCode + ", errType = " + paramAnonymousString.HiI + ", errMsg = " + paramAnonymousString.getMessage();
+          ad.e("MicroMsg.RefreshTokenRunner", "parseJson facebookerror, ".concat(String.valueOf(localObject1)));
+          ad.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
+          j.a(j.this, 3, (String)localObject1);
+          AppMethodBeat.o(127842);
+        }
       }
-      ab.d("MicroMsg.SubCoreAccountSync", "[oneliang][SmsVerifyCodeState]Sent");
-      bAz.ag(900000L, 900000L);
-      AppMethodBeat.o(124709);
-      return;
-      if (bAz != null) {
-        bAz.stopTimer();
+      
+      public final void a(FileNotFoundException paramAnonymousFileNotFoundException)
+      {
+        AppMethodBeat.i(127844);
+        ad.e("MicroMsg.RefreshTokenRunner", "onFileNotFoundException");
+        j.a(j.this, 2, paramAnonymousFileNotFoundException.getMessage());
+        AppMethodBeat.o(127844);
       }
-      ab.d("MicroMsg.SubCoreAccountSync", "[oneliang][SmsVerifyCodeState]verified");
-      gAT = j.a.gAY;
-      ((com.tencent.mm.plugin.notification.b.a)g.G(com.tencent.mm.plugin.notification.b.a.class)).getNotification().cancel(36);
-      fWf = 0;
-      bAz = null;
-    }
+      
+      public final void a(MalformedURLException paramAnonymousMalformedURLException)
+      {
+        AppMethodBeat.i(127845);
+        ad.e("MicroMsg.RefreshTokenRunner", "onMalformedURLException");
+        j.a(j.this, 2, paramAnonymousMalformedURLException.getMessage());
+        AppMethodBeat.o(127845);
+      }
+      
+      public final void c(IOException paramAnonymousIOException)
+      {
+        AppMethodBeat.i(127843);
+        ad.e("MicroMsg.RefreshTokenRunner", "onIOException");
+        j.a(j.this, 2, paramAnonymousIOException.getMessage());
+        AppMethodBeat.o(127843);
+      }
+    };
+    b.c(new a.1(new a(this.ioj), "oauth/access_token", localBundle, "GET", local2), "AsyncFacebookRunner_request");
+    AppMethodBeat.o(127846);
   }
   
-  public void clearPluginData(int paramInt) {}
-  
-  public HashMap<Integer, h.d> getBaseDBFactories()
+  public static abstract interface a
   {
-    return null;
+    public abstract void onError(int paramInt, String paramString);
+    
+    public abstract void w(Bundle paramBundle);
   }
-  
-  public void onAccountPostReset(boolean paramBoolean)
-  {
-    AppMethodBeat.i(124708);
-    this.gAS = new a();
-    ((p)g.G(p.class)).getSysCmdMsgExtension().a("ChangeLaunchImage", this.gAU);
-    this.gAV.alive();
-    b.c.dmg();
-    b.LE(43);
-    AppMethodBeat.o(124708);
-  }
-  
-  public void onAccountRelease()
-  {
-    AppMethodBeat.i(124707);
-    a locala = this.gAS;
-    com.tencent.mm.sdk.b.a.ymk.d(locala.gAC);
-    this.gAS = null;
-    ((p)g.G(p.class)).getSysCmdMsgExtension().b("ChangeLaunchImage", this.gAU);
-    this.gAV.dead();
-    AppMethodBeat.o(124707);
-  }
-  
-  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

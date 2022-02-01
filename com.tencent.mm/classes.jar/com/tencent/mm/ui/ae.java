@@ -1,132 +1,65 @@
 package com.tencent.mm.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Field;
+import d.l;
 
-public final class ae<T>
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/ui/ScreenSizeUtil;", "", "()V", "get", "Lcom/tencent/mm/ui/ScreenSizeUtil$Size;", "_context", "Landroid/content/Context;", "Size", "wechat-ui-sdk_release"})
+public final class ae
 {
-  private String classname;
-  private Field erN;
-  private String fieldName;
-  private boolean inited;
-  private Object obj;
+  public static final ae FRW;
   
-  public ae(Object paramObject, String paramString)
+  static
   {
-    AppMethodBeat.i(112464);
-    if (paramObject == null)
-    {
-      paramObject = new IllegalArgumentException("obj cannot be null");
-      AppMethodBeat.o(112464);
-      throw paramObject;
-    }
-    this.obj = paramObject;
-    this.fieldName = paramString;
-    this.classname = null;
-    AppMethodBeat.o(112464);
+    AppMethodBeat.i(175972);
+    FRW = new ae();
+    AppMethodBeat.o(175972);
   }
   
-  private void prepare()
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/ui/ScreenSizeUtil$Size;", "", "width", "", "height", "(II)V", "getHeight", "()I", "getWidth", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "wechat-ui-sdk_release"})
+  public static final class a
   {
-    AppMethodBeat.i(112465);
-    if (this.inited)
+    public final int height;
+    public final int width;
+    
+    public a(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.o(112465);
-      return;
+      this.width = paramInt1;
+      this.height = paramInt2;
     }
-    this.inited = true;
-    Class localClass = this.obj.getClass();
-    while (localClass != null) {
-      try
+    
+    public final boolean equals(Object paramObject)
+    {
+      if (this != paramObject)
       {
-        Field localField1 = localClass.getDeclaredField(this.fieldName);
-        localField1.setAccessible(true);
-        this.erN = localField1;
-        return;
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
+        if ((paramObject instanceof a))
         {
-          try
-          {
-            if ((this.classname != null) && (!this.classname.equals("")))
-            {
-              Field[] arrayOfField = localClass.getDeclaredFields();
-              int j = arrayOfField.length;
-              i = 0;
-              if (i < j)
-              {
-                Field localField2 = arrayOfField[i];
-                if (!localField2.getType().getName().equals(this.classname)) {
-                  continue;
-                }
-                localField2.setAccessible(true);
-                this.erN = localField2;
-              }
-            }
-          }
-          catch (Exception localException2)
-          {
-            int i;
-            continue;
-          }
-          localClass = localClass.getSuperclass();
-          break;
-          i += 1;
+          paramObject = (a)paramObject;
+          if ((this.width != paramObject.width) || (this.height != paramObject.height)) {}
         }
       }
-      finally
-      {
-        localClass.getSuperclass();
-        AppMethodBeat.o(112465);
+      else {
+        return true;
       }
+      return false;
     }
-    AppMethodBeat.o(112465);
-  }
-  
-  public final T get()
-  {
-    AppMethodBeat.i(112466);
-    prepare();
-    Object localObject;
-    if (this.erN == null)
+    
+    public final int hashCode()
     {
-      localObject = new NoSuchFieldException();
-      AppMethodBeat.o(112466);
-      throw ((Throwable)localObject);
+      return this.width * 31 + this.height;
     }
-    try
+    
+    public final String toString()
     {
-      localObject = this.erN.get(this.obj);
-      AppMethodBeat.o(112466);
-      return localObject;
+      AppMethodBeat.i(175970);
+      String str = "Size(width=" + this.width + ", height=" + this.height + ")";
+      AppMethodBeat.o(175970);
+      return str;
     }
-    catch (ClassCastException localClassCastException)
-    {
-      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("unable to cast object");
-      AppMethodBeat.o(112466);
-      throw localIllegalArgumentException;
-    }
-  }
-  
-  public final void set(T paramT)
-  {
-    AppMethodBeat.i(112467);
-    prepare();
-    if (this.erN == null)
-    {
-      paramT = new NoSuchFieldException();
-      AppMethodBeat.o(112467);
-      throw paramT;
-    }
-    this.erN.set(this.obj, paramT);
-    AppMethodBeat.o(112467);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.ae
  * JD-Core Version:    0.7.0.1
  */

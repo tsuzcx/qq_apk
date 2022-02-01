@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.exdevice.f.b.a.d;
+import com.tencent.mm.plugin.exdevice.g.b.a.d;
 
 final class e
 {
-  int aoW;
-  d lRp;
-  int lRq;
+  int awy;
+  d pib;
+  int pic;
   
   private e(int paramInt1, int paramInt2, String paramString1, String paramString2, d paramd)
   {
-    AppMethodBeat.i(20235);
-    this.aoW = paramInt1;
-    this.lRq = paramInt2;
+    AppMethodBeat.i(24309);
+    this.awy = paramInt1;
+    this.pic = paramInt2;
     if (paramInt1 != 0)
     {
       if (paramd != null)
       {
-        this.lRp = paramd;
-        AppMethodBeat.o(20235);
+        this.pib = paramd;
+        AppMethodBeat.o(24309);
         return;
       }
       paramd = new d();
@@ -30,27 +30,27 @@ final class e
       paramd.field_rankID = "";
       paramd.field_likecount = 0;
       paramd.field_score = 0;
-      this.lRp = paramd;
+      this.pib = paramd;
     }
-    AppMethodBeat.o(20235);
+    AppMethodBeat.o(24309);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(20236);
-    String str = "{ view type: " + this.aoW + " display flag: " + this.lRq;
-    if (this.lRp != null) {}
-    for (str = str + this.lRp.toString();; str = str + " mExdeviceRankInfo is null")
+    AppMethodBeat.i(24310);
+    String str = "{ view type: " + this.awy + " display flag: " + this.pic;
+    if (this.pib != null) {}
+    for (str = str + this.pib.toString();; str = str + " mExdeviceRankInfo is null")
     {
       str = str + "}";
-      AppMethodBeat.o(20236);
+      AppMethodBeat.o(24310);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.e
  * JD-Core Version:    0.7.0.1
  */

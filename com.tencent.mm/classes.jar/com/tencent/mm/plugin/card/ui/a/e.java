@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.ui.e.a;
-import com.tencent.mm.protocal.protobuf.pg;
+import com.tencent.mm.protocal.protobuf.ro;
 import com.tencent.mm.ui.MMActivity;
 
 public final class e
@@ -15,98 +15,98 @@ public final class e
     super(paramMMActivity);
   }
   
-  public final boolean beD()
+  public final boolean bLH()
   {
-    AppMethodBeat.i(88719);
-    if ((super.beD()) && (this.klk.isNormal()) && (!this.kyA) && (!beA()) && (!beB()))
+    AppMethodBeat.i(113641);
+    if ((this.nqp.bHC()) && (!l.zp(this.nzk.fsv)) && (this.nqp.bHR()) && (!this.nDT))
     {
-      AppMethodBeat.o(88719);
-      return true;
-    }
-    AppMethodBeat.o(88719);
-    return false;
-  }
-  
-  public final boolean beL()
-  {
-    AppMethodBeat.i(88714);
-    if ((this.klk.baL()) && (!l.tv(this.ktU.ejF)) && (this.klk.isNormal()) && (!this.kyA))
-    {
-      AppMethodBeat.o(88714);
+      AppMethodBeat.o(113641);
       return false;
     }
-    AppMethodBeat.o(88714);
+    AppMethodBeat.o(113641);
     return true;
   }
   
-  public final boolean beP()
+  public final boolean bLL()
   {
-    AppMethodBeat.i(88715);
-    if ((this.klk.baL()) && (!l.tv(this.ktU.ejF)) && (this.klk.isNormal()) && (!this.kyA))
+    AppMethodBeat.i(113642);
+    if ((this.nqp.bHC()) && (!l.zp(this.nzk.fsv)) && (this.nqp.bHR()) && (!this.nDT))
     {
-      AppMethodBeat.o(88715);
+      AppMethodBeat.o(113642);
       return true;
     }
-    AppMethodBeat.o(88715);
+    AppMethodBeat.o(113642);
     return false;
   }
   
-  public final boolean beQ()
+  public final boolean bLM()
   {
-    return this.kyA;
+    return this.nDT;
   }
   
-  public final boolean beS()
+  public final boolean bLO()
   {
-    AppMethodBeat.i(88720);
-    if ((this.klk.bbd() != null) && (this.klk.bbd().wGF))
+    AppMethodBeat.i(113647);
+    if ((this.nqp.bHV() != null) && (this.nqp.bHV().CSk))
     {
-      AppMethodBeat.o(88720);
+      AppMethodBeat.o(113647);
       return true;
     }
-    AppMethodBeat.o(88720);
+    AppMethodBeat.o(113647);
     return false;
   }
   
-  public final boolean beT()
+  public final boolean bLP()
   {
-    AppMethodBeat.i(88716);
-    if ((super.beT()) || ((this.klk.isNormal()) && (!this.kyA) && ((beA()) || (beB()))))
+    AppMethodBeat.i(113643);
+    if ((super.bLP()) || ((this.nqp.bHR()) && (!this.nDT) && ((bLw()) || (bLx()))))
     {
-      AppMethodBeat.o(88716);
+      AppMethodBeat.o(113643);
       return true;
     }
-    AppMethodBeat.o(88716);
+    AppMethodBeat.o(113643);
     return false;
   }
   
-  public final boolean beY()
+  public final boolean bLU()
   {
-    AppMethodBeat.i(88718);
-    if ((this.klk.isNormal()) && (super.beY()) && (!beS()))
+    AppMethodBeat.i(113645);
+    if ((this.nqp.bHR()) && (super.bLU()) && (!bLO()))
     {
-      AppMethodBeat.o(88718);
+      AppMethodBeat.o(113645);
       return true;
     }
-    AppMethodBeat.o(88718);
+    AppMethodBeat.o(113645);
     return false;
   }
   
-  public final boolean bfc()
+  public final boolean bLY()
   {
-    AppMethodBeat.i(88717);
-    if ((this.klk.baL()) && (this.klk.bbd().wGr != null) && (this.klk.isNormal()) && (!this.kyA) && (!beA()) && (!beB()))
+    AppMethodBeat.i(113644);
+    if ((this.nqp.bHC()) && (this.nqp.bHV().CRW != null) && (this.nqp.bHR()) && (!this.nDT) && (!bLw()) && (!bLx()))
     {
-      AppMethodBeat.o(88717);
+      AppMethodBeat.o(113644);
       return true;
     }
-    AppMethodBeat.o(88717);
+    AppMethodBeat.o(113644);
+    return false;
+  }
+  
+  public final boolean bLz()
+  {
+    AppMethodBeat.i(113646);
+    if ((super.bLz()) && (this.nqp.bHR()) && (!this.nDT) && (!bLw()) && (!bLx()))
+    {
+      AppMethodBeat.o(113646);
+      return true;
+    }
+    AppMethodBeat.o(113646);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.e
  * JD-Core Version:    0.7.0.1
  */

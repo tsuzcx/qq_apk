@@ -10,15 +10,15 @@ import android.view.View;
 public final class w
   extends RecyclerView.h
 {
-  private static final int[] GC = { 16843284 };
-  private Drawable acK;
+  private static final int[] NC = { 16843284 };
+  private Drawable ajR;
   private int mOrientation;
-  private final Rect qA = new Rect();
+  private final Rect xc = new Rect();
   
   public w(Context paramContext)
   {
-    paramContext = paramContext.obtainStyledAttributes(GC);
-    this.acK = paramContext.getDrawable(0);
+    paramContext = paramContext.obtainStyledAttributes(NC);
+    this.ajR = paramContext.getDrawable(0);
     paramContext.recycle();
     this.mOrientation = 1;
   }
@@ -27,7 +27,7 @@ public final class w
   {
     int m = 0;
     int k = 0;
-    if ((paramRecyclerView.getLayoutManager() == null) || (this.acK == null)) {
+    if ((paramRecyclerView.getLayoutManager() == null) || (this.ajR == null)) {
       return;
     }
     int j;
@@ -49,12 +49,12 @@ public final class w
         while (k < m)
         {
           params = paramRecyclerView.getChildAt(k);
-          RecyclerView.d(params, this.qA);
-          n = this.qA.bottom;
+          RecyclerView.c(params, this.xc);
+          n = this.xc.bottom;
           n = Math.round(params.getTranslationY()) + n;
-          i1 = this.acK.getIntrinsicHeight();
-          this.acK.setBounds(j, n - i1, i, n);
-          this.acK.draw(paramCanvas);
+          i1 = this.ajR.getIntrinsicHeight();
+          this.ajR.setBounds(j, n - i1, i, n);
+          this.ajR.draw(paramCanvas);
           k += 1;
         }
         i = paramRecyclerView.getWidth();
@@ -78,12 +78,12 @@ public final class w
       {
         params = paramRecyclerView.getChildAt(k);
         paramRecyclerView.getLayoutManager();
-        RecyclerView.i.d(params, this.qA);
-        m = this.qA.right;
+        RecyclerView.i.c(params, this.xc);
+        m = this.xc.right;
         m = Math.round(params.getTranslationX()) + m;
-        i1 = this.acK.getIntrinsicWidth();
-        this.acK.setBounds(m - i1, j, m, i);
-        this.acK.draw(paramCanvas);
+        i1 = this.ajR.getIntrinsicWidth();
+        this.ajR.setBounds(m - i1, j, m, i);
+        this.ajR.draw(paramCanvas);
         k += 1;
       }
       i = paramRecyclerView.getHeight();
@@ -94,17 +94,17 @@ public final class w
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    if (this.acK == null)
+    if (this.ajR == null)
     {
       paramRect.set(0, 0, 0, 0);
       return;
     }
     if (this.mOrientation == 1)
     {
-      paramRect.set(0, 0, 0, this.acK.getIntrinsicHeight());
+      paramRect.set(0, 0, 0, this.ajR.getIntrinsicHeight());
       return;
     }
-    paramRect.set(0, 0, this.acK.getIntrinsicWidth(), 0);
+    paramRect.set(0, 0, this.ajR.getIntrinsicWidth(), 0);
   }
   
   public final void setDrawable(Drawable paramDrawable)
@@ -112,12 +112,12 @@ public final class w
     if (paramDrawable == null) {
       throw new IllegalArgumentException("Drawable cannot be null.");
     }
-    this.acK = paramDrawable;
+    this.ajR = paramDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.v7.widget.w
  * JD-Core Version:    0.7.0.1
  */

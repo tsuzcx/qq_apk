@@ -1,25 +1,23 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
-import a.f.a.a;
-import a.f.b.j;
-import a.l;
-import a.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.m;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.plugin.appbrand.aa.l.a;
+import d.g.a.a;
+import d.g.b.k;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"runOnWorkThread", "", "action", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"runOnWorkThread", "", "action", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
 public final class e
 {
-  public static final void f(a<y> parama)
+  public static final void n(a<y> parama)
   {
-    AppMethodBeat.i(134594);
-    j.q(parama, "action");
-    m.aNS().ac((Runnable)new a(parama));
-    AppMethodBeat.o(134594);
+    AppMethodBeat.i(50331);
+    k.h(parama, "action");
+    com.tencent.mm.plugin.appbrand.aa.l.bqm().postToWorker((Runnable)new a(parama));
+    AppMethodBeat.o(50331);
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -27,15 +25,15 @@ public final class e
     
     public final void run()
     {
-      AppMethodBeat.i(134593);
-      this.hdx.invoke();
-      AppMethodBeat.o(134593);
+      AppMethodBeat.i(50330);
+      this.iWN.invoke();
+      AppMethodBeat.o(50330);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.e
  * JD-Core Version:    0.7.0.1
  */

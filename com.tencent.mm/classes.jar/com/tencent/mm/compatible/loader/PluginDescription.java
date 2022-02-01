@@ -4,15 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.n;
+import com.tencent.mm.compatible.util.m;
 import java.io.Serializable;
 
 public class PluginDescription
   implements Parcelable, Serializable
 {
   public static final Parcelable.Creator<PluginDescription> CREATOR;
-  public final String cqq;
-  public final int erO;
+  public final int fFQ;
+  public final String md5;
   public final String name;
   public final int size;
   public final String url;
@@ -20,21 +20,21 @@ public class PluginDescription
   
   static
   {
-    AppMethodBeat.i(93027);
-    CREATOR = new PluginDescription.1();
-    AppMethodBeat.o(93027);
+    AppMethodBeat.i(155833);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(155833);
   }
   
   protected PluginDescription(Parcel paramParcel)
   {
-    AppMethodBeat.i(93025);
-    this.name = ((String)n.checkNotNull(paramParcel.readString()));
-    this.url = ((String)n.checkNotNull(paramParcel.readString()));
-    this.cqq = ((String)n.checkNotNull(paramParcel.readString()));
-    this.version = ((String)n.checkNotNull(paramParcel.readString()));
+    AppMethodBeat.i(155831);
+    this.name = ((String)m.checkNotNull(paramParcel.readString()));
+    this.url = ((String)m.checkNotNull(paramParcel.readString()));
+    this.md5 = ((String)m.checkNotNull(paramParcel.readString()));
+    this.version = ((String)m.checkNotNull(paramParcel.readString()));
     this.size = paramParcel.readInt();
-    this.erO = paramParcel.readInt();
-    AppMethodBeat.o(93025);
+    this.fFQ = paramParcel.readInt();
+    AppMethodBeat.o(155831);
   }
   
   public int describeContents()
@@ -44,22 +44,22 @@ public class PluginDescription
   
   public String toString()
   {
-    AppMethodBeat.i(93026);
-    String str = String.format("PluginDescription = [name=%s, url=%s, md5=%s, version=%s, size=%d, downloadType=%d]", new Object[] { this.name, this.url, this.cqq, this.version, Integer.valueOf(this.size), Integer.valueOf(this.erO) });
-    AppMethodBeat.o(93026);
+    AppMethodBeat.i(155832);
+    String str = String.format("PluginDescription = [name=%s, url=%s, md5=%s, version=%s, size=%d, downloadType=%d]", new Object[] { this.name, this.url, this.md5, this.version, Integer.valueOf(this.size), Integer.valueOf(this.fFQ) });
+    AppMethodBeat.o(155832);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(93024);
+    AppMethodBeat.i(155830);
     paramParcel.writeString(this.name);
     paramParcel.writeString(this.url);
-    paramParcel.writeString(this.cqq);
+    paramParcel.writeString(this.md5);
     paramParcel.writeString(this.version);
     paramParcel.writeInt(this.size);
-    paramParcel.writeInt(this.erO);
-    AppMethodBeat.o(93024);
+    paramParcel.writeInt(this.fFQ);
+    AppMethodBeat.o(155830);
   }
 }
 

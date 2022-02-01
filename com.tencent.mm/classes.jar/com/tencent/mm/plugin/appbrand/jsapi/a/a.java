@@ -7,54 +7,54 @@ import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
   extends ClickableSpan
 {
-  private String hEc;
-  private int hEd;
+  private String jFd;
+  private int jFe;
   
   public a(String paramString)
   {
-    AppMethodBeat.i(130896);
-    this.hEd = ah.getContext().getResources().getColor(2131690139);
-    this.hEc = paramString;
-    AppMethodBeat.o(130896);
+    AppMethodBeat.i(46107);
+    this.jFe = aj.getContext().getResources().getColor(2131099769);
+    this.jFd = paramString;
+    AppMethodBeat.o(46107);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(130898);
-    if (bo.isNullOrNil(this.hEc))
+    AppMethodBeat.i(46109);
+    if (bt.isNullOrNil(this.jFd))
     {
-      ab.e("MicroMsg.ExposeSpan", "exposeUrl is null, return");
-      AppMethodBeat.o(130898);
+      ad.e("MicroMsg.ExposeSpan", "exposeUrl is null, return");
+      AppMethodBeat.o(46109);
       return;
     }
     Intent localIntent = new Intent();
-    localIntent.putExtra("rawUrl", this.hEc);
+    localIntent.putExtra("rawUrl", this.jFd);
     localIntent.putExtra("forceHideShare", true);
     d.b(paramView.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
-    ab.d("MicroMsg.ExposeSpan", "expose click, exposeUrl:%s", new Object[] { this.hEc });
-    AppMethodBeat.o(130898);
+    ad.d("MicroMsg.ExposeSpan", "expose click, exposeUrl:%s", new Object[] { this.jFd });
+    AppMethodBeat.o(46109);
   }
   
   public final void updateDrawState(TextPaint paramTextPaint)
   {
-    AppMethodBeat.i(130897);
+    AppMethodBeat.i(46108);
     super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(this.hEd);
+    paramTextPaint.setColor(this.jFe);
     paramTextPaint.setUnderlineText(false);
-    AppMethodBeat.o(130897);
+    AppMethodBeat.o(46108);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.a.a
  * JD-Core Version:    0.7.0.1
  */

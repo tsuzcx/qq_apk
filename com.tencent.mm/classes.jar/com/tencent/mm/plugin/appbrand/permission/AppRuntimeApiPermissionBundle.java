@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.plugin.appbrand.jsapi.j;
-import com.tencent.mm.protocal.protobuf.se;
+import com.tencent.mm.protocal.protobuf.uw;
 import java.util.LinkedList;
 import java.util.Locale;
 
@@ -14,33 +14,33 @@ public final class AppRuntimeApiPermissionBundle
   implements Parcelable, j
 {
   public static final Parcelable.Creator<AppRuntimeApiPermissionBundle> CREATOR;
-  final byte[] iBL;
-  final byte[] iBM;
-  final byte[] iBN;
+  public final byte[] liH;
+  public final byte[] liI;
+  final byte[] liJ;
   
   static
   {
-    AppMethodBeat.i(102278);
-    CREATOR = new AppRuntimeApiPermissionBundle.1();
-    AppMethodBeat.o(102278);
+    AppMethodBeat.i(147639);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(147639);
   }
   
   private AppRuntimeApiPermissionBundle(Parcel paramParcel)
   {
-    AppMethodBeat.i(102277);
-    this.iBL = paramParcel.createByteArray();
-    this.iBM = paramParcel.createByteArray();
-    this.iBN = paramParcel.createByteArray();
-    AppMethodBeat.o(102277);
+    AppMethodBeat.i(147638);
+    this.liH = paramParcel.createByteArray();
+    this.liI = paramParcel.createByteArray();
+    this.liJ = paramParcel.createByteArray();
+    AppMethodBeat.o(147638);
   }
   
-  public AppRuntimeApiPermissionBundle(se paramse)
+  public AppRuntimeApiPermissionBundle(uw paramuw)
   {
-    AppMethodBeat.i(102274);
-    this.iBL = paramse.wKA.toByteArray();
-    this.iBM = ((b)paramse.wKB.get(0)).toByteArray();
-    this.iBN = ((b)paramse.wKB.get(1)).toByteArray();
-    AppMethodBeat.o(102274);
+    AppMethodBeat.i(147635);
+    this.liH = paramuw.CWN.wA;
+    this.liI = ((b)paramuw.CWO.get(0)).wA;
+    this.liJ = ((b)paramuw.CWO.get(1)).wA;
+    AppMethodBeat.o(147635);
   }
   
   public final int describeContents()
@@ -50,19 +50,19 @@ public final class AppRuntimeApiPermissionBundle
   
   public final String toString()
   {
-    AppMethodBeat.i(102275);
-    String str = String.format(Locale.US, "PermissionBundle[%d][%d][%d]", new Object[] { Integer.valueOf(this.iBL.length), Integer.valueOf(this.iBM.length), Integer.valueOf(this.iBN.length) });
-    AppMethodBeat.o(102275);
+    AppMethodBeat.i(147636);
+    String str = String.format(Locale.US, "PermissionBundle[%d][%d][%d]", new Object[] { Integer.valueOf(this.liH.length), Integer.valueOf(this.liI.length), Integer.valueOf(this.liJ.length) });
+    AppMethodBeat.o(147636);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(102276);
-    paramParcel.writeByteArray(this.iBL);
-    paramParcel.writeByteArray(this.iBM);
-    paramParcel.writeByteArray(this.iBN);
-    AppMethodBeat.o(102276);
+    AppMethodBeat.i(147637);
+    paramParcel.writeByteArray(this.liH);
+    paramParcel.writeByteArray(this.liI);
+    paramParcel.writeByteArray(this.liJ);
+    AppMethodBeat.o(147637);
   }
 }
 

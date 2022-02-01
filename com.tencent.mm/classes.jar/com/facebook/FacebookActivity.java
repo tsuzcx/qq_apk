@@ -26,20 +26,20 @@ public class FacebookActivity
   
   static
   {
-    AppMethodBeat.i(96592);
+    AppMethodBeat.i(7616);
     PASS_THROUGH_CANCEL_ACTION = "PassThrough";
     FRAGMENT_TAG = "SingleFragment";
     TAG = FacebookActivity.class.getName();
-    AppMethodBeat.o(96592);
+    AppMethodBeat.o(7616);
   }
   
   private void handlePassThroughError()
   {
-    AppMethodBeat.i(96591);
+    AppMethodBeat.i(7615);
     FacebookException localFacebookException = NativeProtocol.getExceptionFromErrorData(NativeProtocol.getMethodArgumentsFromIntent(getIntent()));
     setResult(0, NativeProtocol.createProtocolResultIntent(getIntent(), null, localFacebookException));
     finish();
-    AppMethodBeat.o(96591);
+    AppMethodBeat.o(7615);
   }
   
   public Fragment getCurrentFragment()
@@ -49,7 +49,7 @@ public class FacebookActivity
   
   protected Fragment getFragment()
   {
-    AppMethodBeat.i(96589);
+    AppMethodBeat.i(7613);
     Intent localIntent = getIntent();
     g localg = getSupportFragmentManager();
     Fragment localFragment = localg.findFragmentByTag(FRAGMENT_TAG);
@@ -57,7 +57,7 @@ public class FacebookActivity
     if (localFragment == null)
     {
       if (!"FacebookDialogFragment".equals(localIntent.getAction())) {
-        break label71;
+        break label73;
       }
       localObject = new FacebookDialogFragment();
       ((FacebookDialogFragment)localObject).setRetainInstance(true);
@@ -65,9 +65,9 @@ public class FacebookActivity
     }
     for (;;)
     {
-      AppMethodBeat.o(96589);
+      AppMethodBeat.o(7613);
       return localObject;
-      label71:
+      label73:
       if ("DeviceShareDialogFragment".equals(localIntent.getAction()))
       {
         localObject = new DeviceShareDialogFragment();
@@ -79,24 +79,24 @@ public class FacebookActivity
       {
         localObject = new LoginFragment();
         ((Fragment)localObject).setRetainInstance(true);
-        localg.beginTransaction().a(2131822961, (Fragment)localObject, FRAGMENT_TAG).commit();
+        localg.beginTransaction().a(2131298499, (Fragment)localObject, FRAGMENT_TAG).commit();
       }
     }
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(96590);
+    AppMethodBeat.i(7614);
     super.onConfigurationChanged(paramConfiguration);
     if (this.singleFragment != null) {
       this.singleFragment.onConfigurationChanged(paramConfiguration);
     }
-    AppMethodBeat.o(96590);
+    AppMethodBeat.o(7614);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(96588);
+    AppMethodBeat.i(7612);
     super.onCreate(paramBundle);
     paramBundle = getIntent();
     if (!FacebookSdk.isInitialized())
@@ -104,15 +104,15 @@ public class FacebookActivity
       Utility.logd(TAG, "Facebook SDK not initialized. Make sure you call sdkInitialize inside your Application's onCreate method.");
       FacebookSdk.sdkInitialize(getApplicationContext());
     }
-    setContentView(2130969185);
+    setContentView(2131493567);
     if (PASS_THROUGH_CANCEL_ACTION.equals(paramBundle.getAction()))
     {
       handlePassThroughError();
-      AppMethodBeat.o(96588);
+      AppMethodBeat.o(7612);
       return;
     }
     this.singleFragment = getFragment();
-    AppMethodBeat.o(96588);
+    AppMethodBeat.o(7612);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

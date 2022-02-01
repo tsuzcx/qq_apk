@@ -33,61 +33,61 @@ public final class ar
   extends HorizontalScrollView
   implements AdapterView.OnItemSelectedListener
 {
-  private static final Interpolator ali = new DecelerateInterpolator();
-  int Xr;
-  Runnable alb;
-  LinearLayoutCompat alc;
-  private Spinner ald;
-  private boolean ale;
-  int alf;
-  int alg;
-  private int alh;
+  private static final Interpolator asH = new DecelerateInterpolator();
+  int aew;
+  Runnable asA;
+  LinearLayoutCompat asB;
+  private Spinner asC;
+  private boolean asD;
+  int asE;
+  int asF;
+  private int asG;
   
-  private boolean kc()
+  private boolean lD()
   {
-    return (this.ald != null) && (this.ald.getParent() == this);
+    return (this.asC != null) && (this.asC.getParent() == this);
   }
   
-  private boolean kd()
+  private boolean lE()
   {
-    if (!kc()) {
+    if (!lD()) {
       return false;
     }
-    removeView(this.ald);
-    addView(this.alc, new ViewGroup.LayoutParams(-2, -1));
-    setTabSelected(this.ald.getSelectedItemPosition());
+    removeView(this.asC);
+    addView(this.asB, new ViewGroup.LayoutParams(-2, -1));
+    setTabSelected(this.asC.getSelectedItemPosition());
     return false;
   }
   
   public final void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.alb != null) {
-      post(this.alb);
+    if (this.asA != null) {
+      post(this.asA);
     }
   }
   
   protected final void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    paramConfiguration = a.W(getContext());
-    TypedArray localTypedArray = paramConfiguration.mContext.obtainStyledAttributes(null, a.a.ActionBar, 2130772139, 0);
-    int j = localTypedArray.getLayoutDimension(0, 0);
+    paramConfiguration = a.Y(getContext());
+    TypedArray localTypedArray = paramConfiguration.mContext.obtainStyledAttributes(null, a.a.ActionBar, 2130968602, 0);
+    int j = localTypedArray.getLayoutDimension(13, 0);
     Resources localResources = paramConfiguration.mContext.getResources();
     int i = j;
-    if (!paramConfiguration.fz()) {
-      i = Math.min(j, localResources.getDimensionPixelSize(2131427922));
+    if (!paramConfiguration.gV()) {
+      i = Math.min(j, localResources.getDimensionPixelSize(2131165641));
     }
     localTypedArray.recycle();
     setContentHeight(i);
-    this.alg = paramConfiguration.mContext.getResources().getDimensionPixelSize(2131427923);
+    this.asF = paramConfiguration.mContext.getResources().getDimensionPixelSize(2131165642);
   }
   
   public final void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.alb != null) {
-      removeCallbacks(this.alb);
+    if (this.asA != null) {
+      removeCallbacks(this.asA);
     }
   }
   
@@ -102,49 +102,49 @@ public final class ar
     {
       bool = true;
       setFillViewport(bool);
-      int j = this.alc.getChildCount();
+      int j = this.asB.getChildCount();
       if ((j <= 1) || ((i != 1073741824) && (i != -2147483648))) {
         break label326;
       }
       if (j <= 2) {
         break label313;
       }
-      this.alf = ((int)(View.MeasureSpec.getSize(paramInt1) * 0.4F));
+      this.asE = ((int)(View.MeasureSpec.getSize(paramInt1) * 0.4F));
       label68:
-      this.alf = Math.min(this.alf, this.alg);
+      this.asE = Math.min(this.asE, this.asF);
       label83:
-      i = View.MeasureSpec.makeMeasureSpec(this.Xr, 1073741824);
-      if ((bool) || (!this.ale)) {
+      i = View.MeasureSpec.makeMeasureSpec(this.aew, 1073741824);
+      if ((bool) || (!this.asD)) {
         break label334;
       }
       label105:
       if (paramInt2 == 0) {
         break label347;
       }
-      this.alc.measure(0, i);
-      if (this.alc.getMeasuredWidth() <= View.MeasureSpec.getSize(paramInt1)) {
+      this.asB.measure(0, i);
+      if (this.asB.getMeasuredWidth() <= View.MeasureSpec.getSize(paramInt1)) {
         break label339;
       }
-      if (!kc())
+      if (!lD())
       {
-        if (this.ald == null)
+        if (this.asC == null)
         {
-          AppCompatSpinner localAppCompatSpinner = new AppCompatSpinner(getContext(), null, 2130772168);
+          AppCompatSpinner localAppCompatSpinner = new AppCompatSpinner(getContext(), null, 2130968609);
           localAppCompatSpinner.setLayoutParams(new LinearLayoutCompat.LayoutParams(-2, -1));
           localAppCompatSpinner.setOnItemSelectedListener(this);
-          this.ald = localAppCompatSpinner;
+          this.asC = localAppCompatSpinner;
         }
-        removeView(this.alc);
-        addView(this.ald, new ViewGroup.LayoutParams(-2, -1));
-        if (this.ald.getAdapter() == null) {
-          this.ald.setAdapter(new a());
+        removeView(this.asB);
+        addView(this.asC, new ViewGroup.LayoutParams(-2, -1));
+        if (this.asC.getAdapter() == null) {
+          this.asC.setAdapter(new a());
         }
-        if (this.alb != null)
+        if (this.asA != null)
         {
-          removeCallbacks(this.alb);
-          this.alb = null;
+          removeCallbacks(this.asA);
+          this.asA = null;
         }
-        this.ald.setSelection(this.alh);
+        this.asC.setSelection(this.asG);
       }
     }
     for (;;)
@@ -153,25 +153,25 @@ public final class ar
       super.onMeasure(paramInt1, i);
       paramInt1 = getMeasuredWidth();
       if ((bool) && (paramInt2 != paramInt1)) {
-        setTabSelected(this.alh);
+        setTabSelected(this.asG);
       }
       return;
       bool = false;
       break;
       label313:
-      this.alf = (View.MeasureSpec.getSize(paramInt1) / 2);
+      this.asE = (View.MeasureSpec.getSize(paramInt1) / 2);
       break label68;
       label326:
-      this.alf = -1;
+      this.asE = -1;
       break label83;
       label334:
       paramInt2 = 0;
       break label105;
       label339:
-      kd();
+      lE();
       continue;
       label347:
-      kd();
+      lE();
     }
   }
   
@@ -179,51 +179,51 @@ public final class ar
   
   public final void setAllowCollapse(boolean paramBoolean)
   {
-    this.ale = paramBoolean;
+    this.asD = paramBoolean;
   }
   
   public final void setContentHeight(int paramInt)
   {
-    this.Xr = paramInt;
+    this.aew = paramInt;
     requestLayout();
   }
   
   public final void setTabSelected(int paramInt)
   {
-    this.alh = paramInt;
-    int j = this.alc.getChildCount();
+    this.asG = paramInt;
+    int j = this.asB.getChildCount();
     int i = 0;
     if (i < j)
     {
-      final View localView = this.alc.getChildAt(i);
+      final View localView = this.asB.getChildAt(i);
       if (i == paramInt) {}
       for (boolean bool = true;; bool = false)
       {
         localView.setSelected(bool);
         if (bool)
         {
-          localView = this.alc.getChildAt(paramInt);
-          if (this.alb != null) {
-            removeCallbacks(this.alb);
+          localView = this.asB.getChildAt(paramInt);
+          if (this.asA != null) {
+            removeCallbacks(this.asA);
           }
-          this.alb = new Runnable()
+          this.asA = new Runnable()
           {
             public final void run()
             {
               int i = localView.getLeft();
               int j = (ar.this.getWidth() - localView.getWidth()) / 2;
               ar.this.smoothScrollTo(i - j, 0);
-              ar.this.alb = null;
+              ar.this.asA = null;
             }
           };
-          post(this.alb);
+          post(this.asA);
         }
         i += 1;
         break;
       }
     }
-    if ((this.ald != null) && (paramInt >= 0)) {
-      this.ald.setSelection(paramInt);
+    if ((this.asC != null) && (paramInt >= 0)) {
+      this.asC.setSelection(paramInt);
     }
   }
   
@@ -234,12 +234,12 @@ public final class ar
     
     public final int getCount()
     {
-      return ar.this.alc.getChildCount();
+      return ar.this.asB.getChildCount();
     }
     
     public final Object getItem(int paramInt)
     {
-      return ((ar.b)ar.this.alc.getChildAt(paramInt)).alm;
+      return ((ar.b)ar.this.asB.getChildAt(paramInt)).asL;
     }
     
     public final long getItemId(int paramInt)
@@ -255,11 +255,11 @@ public final class ar
         paramViewGroup = (ActionBar.a)getItem(paramInt);
         paramViewGroup = new ar.b(paramView, paramView.getContext(), paramViewGroup);
         paramViewGroup.setBackgroundDrawable(null);
-        paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, paramView.Xr));
+        paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, paramView.aew));
         return paramViewGroup;
       }
       paramViewGroup = (ar.b)paramView;
-      paramViewGroup.alm = ((ActionBar.a)getItem(paramInt));
+      paramViewGroup.asL = ((ActionBar.a)getItem(paramInt));
       paramViewGroup.update();
       return paramView;
     }
@@ -268,21 +268,21 @@ public final class ar
   final class b
     extends LinearLayout
   {
-    private final int[] all = { 16842964 };
-    ActionBar.a alm;
-    private View lX;
-    private TextView md;
-    private ImageView me;
+    private TextView Tu;
+    private ImageView Uz;
+    private View aeL;
+    private final int[] asK = { 16842964 };
+    ActionBar.a asL;
     
     public b(Context paramContext, ActionBar.a parama)
     {
-      super(null, 2130772133);
-      this.alm = parama;
-      this$1 = az.a(paramContext, null, this.all, 2130772133, 0);
+      super(null, 2130968604);
+      this.asL = parama;
+      this$1 = az.a(paramContext, null, this.asK, 2130968604, 0);
       if (ar.this.hasValue(0)) {
         setBackgroundDrawable(ar.this.getDrawable(0));
       }
-      ar.this.aoo.recycle();
+      ar.this.avP.recycle();
       setGravity(8388627);
       update();
     }
@@ -302,8 +302,8 @@ public final class ar
     public final void onMeasure(int paramInt1, int paramInt2)
     {
       super.onMeasure(paramInt1, paramInt2);
-      if ((ar.this.alf > 0) && (getMeasuredWidth() > ar.this.alf)) {
-        super.onMeasure(View.MeasureSpec.makeMeasureSpec(ar.this.alf, 1073741824), paramInt2);
+      if ((ar.this.asE > 0) && (getMeasuredWidth() > ar.this.asE)) {
+        super.onMeasure(View.MeasureSpec.makeMeasureSpec(ar.this.asE, 1073741824), paramInt2);
       }
     }
     
@@ -322,7 +322,7 @@ public final class ar
     
     public final void update()
     {
-      Object localObject1 = this.alm;
+      Object localObject1 = this.asL;
       Object localObject2 = ((ActionBar.a)localObject1).getCustomView();
       if (localObject2 != null)
       {
@@ -334,21 +334,21 @@ public final class ar
           }
           addView((View)localObject2);
         }
-        this.lX = ((View)localObject2);
-        if (this.md != null) {
-          this.md.setVisibility(8);
+        this.aeL = ((View)localObject2);
+        if (this.Tu != null) {
+          this.Tu.setVisibility(8);
         }
-        if (this.me != null)
+        if (this.Uz != null)
         {
-          this.me.setVisibility(8);
-          this.me.setImageDrawable(null);
+          this.Uz.setVisibility(8);
+          this.Uz.setImageDrawable(null);
         }
         return;
       }
-      if (this.lX != null)
+      if (this.aeL != null)
       {
-        removeView(this.lX);
-        this.lX = null;
+        removeView(this.aeL);
+        this.aeL = null;
       }
       Object localObject3 = ((ActionBar.a)localObject1).getIcon();
       localObject2 = ((ActionBar.a)localObject1).getText();
@@ -356,17 +356,17 @@ public final class ar
       if (localObject3 != null)
       {
         Object localObject4;
-        if (this.me == null)
+        if (this.Uz == null)
         {
           localObject4 = new AppCompatImageView(getContext());
           LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
           localLayoutParams.gravity = 16;
           ((ImageView)localObject4).setLayoutParams(localLayoutParams);
           addView((View)localObject4, 0);
-          this.me = ((ImageView)localObject4);
+          this.Uz = ((ImageView)localObject4);
         }
-        this.me.setImageDrawable((Drawable)localObject3);
-        this.me.setVisibility(0);
+        this.Uz.setImageDrawable((Drawable)localObject3);
+        this.Uz.setVisibility(0);
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           break label356;
         }
@@ -375,21 +375,21 @@ public final class ar
         if (i == 0) {
           break label361;
         }
-        if (this.md == null)
+        if (this.Tu == null)
         {
-          localObject3 = new AppCompatTextView(getContext(), null, 2130772135);
+          localObject3 = new AppCompatTextView(getContext(), null, 2130968605);
           ((TextView)localObject3).setEllipsize(TextUtils.TruncateAt.END);
           localObject4 = new LinearLayout.LayoutParams(-2, -2);
           ((LinearLayout.LayoutParams)localObject4).gravity = 16;
           ((TextView)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
           addView((View)localObject3);
-          this.md = ((TextView)localObject3);
+          this.Tu = ((TextView)localObject3);
         }
-        this.md.setText((CharSequence)localObject2);
-        this.md.setVisibility(0);
+        this.Tu.setText((CharSequence)localObject2);
+        this.Tu.setVisibility(0);
         label299:
-        if (this.me != null) {
-          this.me.setContentDescription(((ActionBar.a)localObject1).getContentDescription());
+        if (this.Uz != null) {
+          this.Uz.setContentDescription(((ActionBar.a)localObject1).getContentDescription());
         }
         if (i == 0) {
           break label388;
@@ -400,21 +400,21 @@ public final class ar
       {
         bb.a(this, (CharSequence)localObject1);
         return;
-        if (this.me == null) {
+        if (this.Uz == null) {
           break;
         }
-        this.me.setVisibility(8);
-        this.me.setImageDrawable(null);
+        this.Uz.setVisibility(8);
+        this.Uz.setImageDrawable(null);
         break;
         label356:
         i = 0;
         break label209;
         label361:
-        if (this.md == null) {
+        if (this.Tu == null) {
           break label299;
         }
-        this.md.setVisibility(8);
-        this.md.setText(null);
+        this.Tu.setVisibility(8);
+        this.Tu.setText(null);
         break label299;
       }
     }

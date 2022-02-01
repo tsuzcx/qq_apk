@@ -12,13 +12,13 @@ public abstract class b
   
   public abstract String b(i parami);
   
-  public abstract String erw();
+  public abstract String fMY();
   
-  public abstract String erx();
+  public abstract String fMZ();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.b.a.a.b
  * JD-Core Version:    0.7.0.1
  */

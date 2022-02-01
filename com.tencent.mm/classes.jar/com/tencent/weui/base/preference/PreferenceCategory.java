@@ -16,14 +16,14 @@ public class PreferenceCategory
   public PreferenceCategory(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(113256);
-    setLayoutResource(2130970184);
-    AppMethodBeat.o(113256);
+    AppMethodBeat.i(159993);
+    setLayoutResource(2131494809);
+    AppMethodBeat.o(159993);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.weui.base.preference.PreferenceCategory
  * JD-Core Version:    0.7.0.1
  */

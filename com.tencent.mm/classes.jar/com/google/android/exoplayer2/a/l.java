@@ -8,34 +8,34 @@ import java.nio.ShortBuffer;
 public final class l
   implements d
 {
-  private k aAB;
-  private ShortBuffer aAC;
-  long aAD;
-  long aAE;
-  private int awU;
-  private int azR;
-  private boolean azU;
-  private ByteBuffer azt;
+  float aSD;
+  private k aVU;
+  private ShortBuffer aVV;
+  long aVW;
+  long aVX;
+  private int aVk;
+  private boolean aVn;
   private ByteBuffer buffer;
+  private int channelCount;
+  private ByteBuffer outputBuffer;
   float pitch;
-  float speed;
   
   public l()
   {
-    AppMethodBeat.i(94728);
-    this.speed = 1.0F;
+    AppMethodBeat.i(91839);
+    this.aSD = 1.0F;
     this.pitch = 1.0F;
-    this.awU = -1;
-    this.azR = -1;
-    this.buffer = ayo;
-    this.aAC = this.buffer.asShortBuffer();
-    this.azt = ayo;
-    AppMethodBeat.o(94728);
+    this.channelCount = -1;
+    this.aVk = -1;
+    this.buffer = aTH;
+    this.aVV = this.buffer.asShortBuffer();
+    this.outputBuffer = aTH;
+    AppMethodBeat.o(91839);
   }
   
-  public final void c(ByteBuffer paramByteBuffer)
+  public final void f(ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(94731);
+    AppMethodBeat.i(91842);
     Object localObject1;
     Object localObject2;
     int j;
@@ -44,154 +44,154 @@ public final class l
     {
       localObject1 = paramByteBuffer.asShortBuffer();
       i = paramByteBuffer.remaining();
-      this.aAD += i;
-      localObject2 = this.aAB;
-      j = ((ShortBuffer)localObject1).remaining() / ((k)localObject2).aAg;
-      k = ((k)localObject2).aAg;
-      ((k)localObject2).da(j);
-      ((ShortBuffer)localObject1).get(((k)localObject2).aAm, ((k)localObject2).aAt * ((k)localObject2).aAg, k * j * 2 / 2);
-      ((k)localObject2).aAt += j;
-      ((k)localObject2).nC();
+      this.aVW += i;
+      localObject2 = this.aVU;
+      j = ((ShortBuffer)localObject1).remaining() / ((k)localObject2).aVz;
+      k = ((k)localObject2).aVz;
+      ((k)localObject2).dL(j);
+      ((ShortBuffer)localObject1).get(((k)localObject2).aVF, ((k)localObject2).aVM * ((k)localObject2).aVz, k * j * 2 / 2);
+      ((k)localObject2).aVM += j;
+      ((k)localObject2).so();
       paramByteBuffer.position(paramByteBuffer.position() + i);
     }
-    int i = this.aAB.aAu * this.awU * 2;
+    int i = this.aVU.aVN * this.channelCount * 2;
     if (i > 0)
     {
       if (this.buffer.capacity() >= i) {
         break label311;
       }
       this.buffer = ByteBuffer.allocateDirect(i).order(ByteOrder.nativeOrder());
-      this.aAC = this.buffer.asShortBuffer();
+      this.aVV = this.buffer.asShortBuffer();
     }
     for (;;)
     {
-      paramByteBuffer = this.aAB;
-      localObject1 = this.aAC;
-      j = Math.min(((ShortBuffer)localObject1).remaining() / paramByteBuffer.aAg, paramByteBuffer.aAu);
-      ((ShortBuffer)localObject1).put(paramByteBuffer.aAo, 0, paramByteBuffer.aAg * j);
-      paramByteBuffer.aAu -= j;
-      localObject1 = paramByteBuffer.aAo;
-      k = paramByteBuffer.aAg;
-      localObject2 = paramByteBuffer.aAo;
-      int m = paramByteBuffer.aAu;
-      System.arraycopy(localObject1, j * k, localObject2, 0, paramByteBuffer.aAg * m);
-      this.aAE += i;
+      paramByteBuffer = this.aVU;
+      localObject1 = this.aVV;
+      j = Math.min(((ShortBuffer)localObject1).remaining() / paramByteBuffer.aVz, paramByteBuffer.aVN);
+      ((ShortBuffer)localObject1).put(paramByteBuffer.aVH, 0, paramByteBuffer.aVz * j);
+      paramByteBuffer.aVN -= j;
+      localObject1 = paramByteBuffer.aVH;
+      k = paramByteBuffer.aVz;
+      localObject2 = paramByteBuffer.aVH;
+      int m = paramByteBuffer.aVN;
+      System.arraycopy(localObject1, j * k, localObject2, 0, paramByteBuffer.aVz * m);
+      this.aVX += i;
       this.buffer.limit(i);
-      this.azt = this.buffer;
-      AppMethodBeat.o(94731);
+      this.outputBuffer = this.buffer;
+      AppMethodBeat.o(91842);
       return;
       label311:
       this.buffer.clear();
-      this.aAC.clear();
+      this.aVV.clear();
     }
   }
   
   public final void flush()
   {
-    AppMethodBeat.i(94733);
-    this.aAB = new k(this.azR, this.awU);
-    this.aAB.speed = this.speed;
-    this.aAB.pitch = this.pitch;
-    this.azt = ayo;
-    this.aAD = 0L;
-    this.aAE = 0L;
-    this.azU = false;
-    AppMethodBeat.o(94733);
+    AppMethodBeat.i(91844);
+    this.aVU = new k(this.aVk, this.channelCount);
+    this.aVU.aSD = this.aSD;
+    this.aVU.pitch = this.pitch;
+    this.outputBuffer = aTH;
+    this.aVW = 0L;
+    this.aVX = 0L;
+    this.aVn = false;
+    AppMethodBeat.o(91844);
   }
   
   public final boolean isActive()
   {
-    AppMethodBeat.i(94730);
-    if ((Math.abs(this.speed - 1.0F) >= 0.01F) || (Math.abs(this.pitch - 1.0F) >= 0.01F))
+    AppMethodBeat.i(91841);
+    if ((Math.abs(this.aSD - 1.0F) >= 0.01F) || (Math.abs(this.pitch - 1.0F) >= 0.01F))
     {
-      AppMethodBeat.o(94730);
+      AppMethodBeat.o(91841);
       return true;
     }
-    AppMethodBeat.o(94730);
+    AppMethodBeat.o(91841);
     return false;
   }
   
-  public final boolean nd()
+  public final boolean rM()
   {
-    return (this.azU) && ((this.aAB == null) || (this.aAB.aAu == 0));
+    return (this.aVn) && ((this.aVU == null) || (this.aVU.aVN == 0));
   }
   
-  public final int ni()
+  public final int rU()
   {
-    return this.awU;
+    return this.channelCount;
   }
   
-  public final void nj()
+  public final void rV()
   {
-    AppMethodBeat.i(94732);
-    k localk = this.aAB;
-    int j = localk.aAt;
-    float f = localk.speed / localk.pitch;
-    int k = localk.aAu + (int)((j / f + localk.aAv) / localk.pitch + 0.5F);
-    localk.da(localk.aAj * 2 + j);
+    AppMethodBeat.i(91843);
+    k localk = this.aVU;
+    int j = localk.aVM;
+    float f = localk.aSD / localk.pitch;
+    int k = localk.aVN + (int)((j / f + localk.aVO) / localk.pitch + 0.5F);
+    localk.dL(localk.aVC * 2 + j);
     int i = 0;
-    while (i < localk.aAj * 2 * localk.aAg)
+    while (i < localk.aVC * 2 * localk.aVz)
     {
-      localk.aAm[(localk.aAg * j + i)] = 0;
+      localk.aVF[(localk.aVz * j + i)] = 0;
       i += 1;
     }
-    localk.aAt += localk.aAj * 2;
-    localk.nC();
-    if (localk.aAu > k) {
-      localk.aAu = k;
+    localk.aVM += localk.aVC * 2;
+    localk.so();
+    if (localk.aVN > k) {
+      localk.aVN = k;
     }
-    localk.aAt = 0;
-    localk.aAw = 0;
-    localk.aAv = 0;
-    this.azU = true;
-    AppMethodBeat.o(94732);
+    localk.aVM = 0;
+    localk.aVP = 0;
+    localk.aVO = 0;
+    this.aVn = true;
+    AppMethodBeat.o(91843);
   }
   
-  public final ByteBuffer nk()
+  public final ByteBuffer rW()
   {
-    ByteBuffer localByteBuffer = this.azt;
-    this.azt = ayo;
+    ByteBuffer localByteBuffer = this.outputBuffer;
+    this.outputBuffer = aTH;
     return localByteBuffer;
-  }
-  
-  public final boolean q(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(94729);
-    if (paramInt3 != 2)
-    {
-      d.a locala = new d.a(paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(94729);
-      throw locala;
-    }
-    if ((this.azR == paramInt1) && (this.awU == paramInt2))
-    {
-      AppMethodBeat.o(94729);
-      return false;
-    }
-    this.azR = paramInt1;
-    this.awU = paramInt2;
-    AppMethodBeat.o(94729);
-    return true;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(94734);
-    this.aAB = null;
-    this.buffer = ayo;
-    this.aAC = this.buffer.asShortBuffer();
-    this.azt = ayo;
-    this.awU = -1;
-    this.azR = -1;
-    this.aAD = 0L;
-    this.aAE = 0L;
-    this.azU = false;
-    AppMethodBeat.o(94734);
+    AppMethodBeat.i(91845);
+    this.aVU = null;
+    this.buffer = aTH;
+    this.aVV = this.buffer.asShortBuffer();
+    this.outputBuffer = aTH;
+    this.channelCount = -1;
+    this.aVk = -1;
+    this.aVW = 0L;
+    this.aVX = 0L;
+    this.aVn = false;
+    AppMethodBeat.o(91845);
+  }
+  
+  public final boolean s(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(91840);
+    if (paramInt3 != 2)
+    {
+      d.a locala = new d.a(paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(91840);
+      throw locala;
+    }
+    if ((this.aVk == paramInt1) && (this.channelCount == paramInt2))
+    {
+      AppMethodBeat.o(91840);
+      return false;
+    }
+    this.aVk = paramInt1;
+    this.channelCount = paramInt2;
+    AppMethodBeat.o(91840);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.a.l
  * JD-Core Version:    0.7.0.1
  */

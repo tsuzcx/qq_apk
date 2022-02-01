@@ -11,9 +11,9 @@ public class KindaAnimateProxyCreator
   
   static
   {
-    AppMethodBeat.i(144266);
+    AppMethodBeat.i(18301);
     cache = new HashMap();
-    AppMethodBeat.o(144266);
+    AppMethodBeat.o(18301);
   }
   
   public static Object checkCreateAnimateViewProxy(Object paramObject)

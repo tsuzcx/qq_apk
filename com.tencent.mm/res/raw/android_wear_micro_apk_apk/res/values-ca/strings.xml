@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="a">Activa</string>
-    <string name="b">%1$s no funcionarà si no actives els Serveis de Google Play.</string>
-    <string name="c">Activa els Serveis de Google Play</string>
-    <string name="d">Instal·la</string>
-    <string name="e">"%1$s no s'executarà si el dispositiu no té instal·lats els serveis de Google Play."</string>
-    <string name="f">Obtén els Serveis de Google Play</string>
-    <string name="g">Error dels Serveis de Google Play</string>
-    <string name="h">%1$s té problemes amb els serveis de Google Play. Torna-ho a provar.</string>
-    <string name="i">%1$s no es pot executar sense els serveis de Google Play, però no són compatibles amb el teu dispositiu.</string>
-    <string name="j">Actualitza</string>
-    <string name="k">"%1$s no s'executarà si no actualitzes els Serveis de Google Play."</string>
-    <string name="l">Actualitza els Serveis de Google Play</string>
-    <string name="m">"%1$s no s'executarà sense els Serveis de Google Play, que s'estan actualitzant en aquest moment."</string>
-    <string name="n">"Cal una nova versió dels Serveis de Google Play. S'actualitzaran automàticament aviat."</string>
-    <string name="o">Obre al telèfon</string>
-    <string name="p">Inicia sessió</string>
-    <string name="q">Inicia la sessió amb Google</string>
-    <string name="r">+999</string>
+    <string name="common_google_play_services_enable_button">Activa</string>
+    <string name="common_google_play_services_enable_text">%1$s no funcionarà si no actives els Serveis de Google Play.</string>
+    <string name="common_google_play_services_enable_title">Activa els Serveis de Google Play</string>
+    <string name="common_google_play_services_install_button">Instal·la</string>
+    <string name="common_google_play_services_install_text">"%1$s no s'executarà si el dispositiu no té instal·lats els serveis de Google Play."</string>
+    <string name="common_google_play_services_install_title">Obtén els Serveis de Google Play</string>
+    <string name="common_google_play_services_notification_ticker">Error dels Serveis de Google Play</string>
+    <string name="common_google_play_services_unknown_issue">%1$s té problemes amb els serveis de Google Play. Torna-ho a provar.</string>
+    <string name="common_google_play_services_unsupported_text">%1$s no es pot executar sense els serveis de Google Play, però no són compatibles amb el teu dispositiu.</string>
+    <string name="common_google_play_services_update_button">Actualitza</string>
+    <string name="common_google_play_services_update_text">"%1$s no s'executarà si no actualitzes els Serveis de Google Play."</string>
+    <string name="common_google_play_services_update_title">Actualitza els Serveis de Google Play</string>
+    <string name="common_google_play_services_updating_text">"%1$s no s'executarà sense els Serveis de Google Play, que s'estan actualitzant en aquest moment."</string>
+    <string name="common_google_play_services_wear_update_text">"Cal una nova versió dels Serveis de Google Play. S'actualitzaran automàticament aviat."</string>
+    <string name="common_open_on_phone">Obre al telèfon</string>
+    <string name="common_signin_button_text">Inicia sessió</string>
+    <string name="common_signin_button_text_long">Inicia la sessió amb Google</string>
+    <string name="status_bar_notification_info_overflow">+999</string>
 </resources>

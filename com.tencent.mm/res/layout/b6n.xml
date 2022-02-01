@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/a_a" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:background="@drawable/bnt" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <include android:layout_gravity="center_horizontal" layout="@layout/b82" />
-        </LinearLayout>
-    </ScrollView>
-    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/b1e" />
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.emoji.view.EmojiStatusView android:id="@id/rv" android:background="?ji" android:layout_width="@dimen/ch" android:layout_height="@dimen/ch" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/cb" android:scaleType="fitCenter" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/am" android:paddingBottom="@dimen/c8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="0.0dip" android:layout_height="1.0px" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/b_" android:textColor="@color/BW_0_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fif" />
+        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="0.0dip" android:layout_height="1.0px" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:layout_weight="1.0" />
+    </LinearLayout>
 </LinearLayout>

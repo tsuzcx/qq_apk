@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@drawable/ej" android:paddingLeft="112.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/ug" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="12.0dip" android:textColor="#4c000000" android:gravity="center" android:id="@id/a8o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:text="@string/a_g" android:includeFontPadding="false" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a7_" android:layout_width="fill_parent" android:layout_height="68.0dip">
+        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/a8f" android:background="@color/a7c" android:layout_width="40.0dip" android:layout_height="40.0dip" android:scaleType="centerCrop" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/y0" android:id="@id/a8h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/y0" android:id="@id/a8g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        </LinearLayout>
     </LinearLayout>
-    <FrameLayout android:id="@id/a8p" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotListView android:orientation="horizontal" android:id="@id/a8q" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </FrameLayout>
-</LinearLayout>
+    <View android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/a7_" android:layout_alignParentBottom="true" />
+</RelativeLayout>

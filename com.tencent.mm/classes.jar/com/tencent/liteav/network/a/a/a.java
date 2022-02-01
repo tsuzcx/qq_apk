@@ -1,6 +1,8 @@
 package com.tencent.liteav.network.a.a;
 
-import com.tencent.liteav.network.a.c;
+import com.tencent.liteav.network.a.b;
+import com.tencent.liteav.network.a.d;
+import com.tencent.liteav.network.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -15,7 +17,7 @@ public final class a
 {
   public static InetAddress[] a()
   {
-    AppMethodBeat.i(67635);
+    AppMethodBeat.i(15446);
     ArrayList localArrayList;
     try
     {
@@ -50,17 +52,17 @@ public final class a
     catch (IOException localIOException)
     {
       Logger.getLogger("AndroidDnsServer").log(Level.WARNING, "Exception in findDNSByExec", localIOException);
-      AppMethodBeat.o(67635);
+      AppMethodBeat.o(15446);
       return null;
     }
     InetAddress[] arrayOfInetAddress = (InetAddress[])localArrayList.toArray(new InetAddress[localArrayList.size()]);
-    AppMethodBeat.o(67635);
+    AppMethodBeat.o(15446);
     return arrayOfInetAddress;
   }
   
   public static InetAddress[] b()
   {
-    AppMethodBeat.i(67636);
+    AppMethodBeat.i(15447);
     for (;;)
     {
       int i;
@@ -87,31 +89,51 @@ public final class a
         else if (localArrayList.size() > 0)
         {
           localObject1 = (InetAddress[])localArrayList.toArray(new InetAddress[localArrayList.size()]);
-          AppMethodBeat.o(67636);
+          AppMethodBeat.o(15447);
           return localObject1;
         }
       }
       catch (Exception localException)
       {
         Logger.getLogger("AndroidDnsServer").log(Level.WARNING, "Exception in findDNSByReflection", localException);
-        AppMethodBeat.o(67636);
+        AppMethodBeat.o(15447);
         return null;
       }
       i += 1;
     }
   }
   
-  public static c c()
+  public static com.tencent.liteav.network.a.c c()
   {
-    AppMethodBeat.i(67637);
-    a.1 local1 = new a.1();
-    AppMethodBeat.o(67637);
+    AppMethodBeat.i(15448);
+    com.tencent.liteav.network.a.c local1 = new com.tencent.liteav.network.a.c()
+    {
+      public final e[] a(b paramAnonymousb, d paramAnonymousd)
+      {
+        AppMethodBeat.i(15449);
+        InetAddress[] arrayOfInetAddress2 = a.b();
+        InetAddress[] arrayOfInetAddress1 = arrayOfInetAddress2;
+        if (arrayOfInetAddress2 == null) {
+          arrayOfInetAddress1 = a.a();
+        }
+        if (arrayOfInetAddress1 == null)
+        {
+          paramAnonymousb = new IOException("cant get local dns server");
+          AppMethodBeat.o(15449);
+          throw paramAnonymousb;
+        }
+        paramAnonymousb = new c(arrayOfInetAddress1[0]).a(paramAnonymousb, paramAnonymousd);
+        AppMethodBeat.o(15449);
+        return paramAnonymousb;
+      }
+    };
+    AppMethodBeat.o(15448);
     return local1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.a.a.a
  * JD-Core Version:    0.7.0.1
  */

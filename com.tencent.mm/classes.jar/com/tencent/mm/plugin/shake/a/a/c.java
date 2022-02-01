@@ -7,27 +7,27 @@ public abstract class c
   extends com.tencent.mm.sdk.e.c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dDS = "createtime".hashCode();
-  private static final int dhU = "username".hashCode();
-  private static final int dkj;
-  private static final int qMM = "deeplink".hashCode();
-  private static final int qMN;
+  private static final int eJw = "createtime".hashCode();
+  private static final int eme = "username".hashCode();
+  private static final int eoG;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dDN = true;
-  private boolean dhS = true;
-  private boolean dkg = true;
+  private static final int wlA;
+  private static final int wlz = "deeplink".hashCode();
+  private boolean eJn = true;
+  private boolean emb = true;
+  private boolean eoD = true;
   public long field_createtime;
   public String field_deeplink;
   public String field_iconurl;
   public String field_title;
   public String field_username;
-  private boolean qMK = true;
-  private boolean qML = true;
+  private boolean wlx = true;
+  private boolean wly = true;
   
   static
   {
-    dkj = "title".hashCode();
-    qMN = "iconurl".hashCode();
+    eoG = "title".hashCode();
+    wlA = "iconurl".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -43,11 +43,11 @@ public abstract class c
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dhU != k) {
+      if (eme != k) {
         break label65;
       }
       this.field_username = paramCursor.getString(i);
-      this.dhS = true;
+      this.emb = true;
     }
     for (;;)
     {
@@ -55,13 +55,13 @@ public abstract class c
       break label20;
       break;
       label65:
-      if (qMM == k) {
+      if (wlz == k) {
         this.field_deeplink = paramCursor.getString(i);
-      } else if (dkj == k) {
+      } else if (eoG == k) {
         this.field_title = paramCursor.getString(i);
-      } else if (qMN == k) {
+      } else if (wlA == k) {
         this.field_iconurl = paramCursor.getString(i);
-      } else if (dDS == k) {
+      } else if (eJw == k) {
         this.field_createtime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -75,28 +75,28 @@ public abstract class c
     if (this.field_username == null) {
       this.field_username = "";
     }
-    if (this.dhS) {
+    if (this.emb) {
       localContentValues.put("username", this.field_username);
     }
     if (this.field_deeplink == null) {
       this.field_deeplink = "";
     }
-    if (this.qMK) {
+    if (this.wlx) {
       localContentValues.put("deeplink", this.field_deeplink);
     }
     if (this.field_title == null) {
       this.field_title = "";
     }
-    if (this.dkg) {
+    if (this.eoD) {
       localContentValues.put("title", this.field_title);
     }
     if (this.field_iconurl == null) {
       this.field_iconurl = "";
     }
-    if (this.qML) {
+    if (this.wly) {
       localContentValues.put("iconurl", this.field_iconurl);
     }
-    if (this.dDN) {
+    if (this.eJn) {
       localContentValues.put("createtime", Long.valueOf(this.field_createtime));
     }
     if (this.systemRowid > 0L) {
@@ -107,7 +107,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.a.a.c
  * JD-Core Version:    0.7.0.1
  */

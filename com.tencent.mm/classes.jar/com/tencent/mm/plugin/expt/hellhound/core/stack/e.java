@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.be;
+import com.tencent.mm.protocal.protobuf.bh;
 import com.tencent.mm.vending.j.c;
 
 public final class e
 {
-  public g lZR;
+  public g pEz;
   
   e()
   {
-    AppMethodBeat.i(73371);
-    this.lZR = new g();
-    AppMethodBeat.o(73371);
+    AppMethodBeat.i(121896);
+    this.pEz = new g();
+    AppMethodBeat.o(121896);
   }
   
-  public static be brH()
+  public static bh cbL()
   {
-    AppMethodBeat.i(152267);
-    be localbe = (be)g.brI().get(1);
-    AppMethodBeat.o(152267);
-    return localbe;
+    AppMethodBeat.i(121897);
+    bh localbh = (bh)g.cbM().get(1);
+    AppMethodBeat.o(121897);
+    return localbh;
   }
 }
 

@@ -11,14 +11,14 @@ final class PhoneRechargeUI$10
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(44261);
+    AppMethodBeat.i(67170);
     paramDialogInterface.dismiss();
-    AppMethodBeat.o(44261);
+    AppMethodBeat.o(67170);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.PhoneRechargeUI.10
  * JD-Core Version:    0.7.0.1
  */

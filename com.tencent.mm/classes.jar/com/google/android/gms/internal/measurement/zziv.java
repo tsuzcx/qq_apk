@@ -11,7 +11,7 @@ final class zziv
   
   public final void run()
   {
-    AppMethodBeat.i(69334);
+    AppMethodBeat.i(1857);
     localAtomicReference = this.zzapf;
     for (;;)
     {
@@ -32,7 +32,7 @@ final class zziv
       finally
       {
         this.zzapf.notify();
-        AppMethodBeat.o(69334);
+        AppMethodBeat.o(1857);
       }
       try
       {
@@ -41,13 +41,13 @@ final class zziv
       }
       finally
       {
-        AppMethodBeat.o(69334);
+        AppMethodBeat.o(1857);
       }
     }
     this.zzapf.set(localzzey.zza(this.zzane, this.zzanz));
     zzii.zze(this.zzape);
     this.zzapf.notify();
-    AppMethodBeat.o(69334);
+    AppMethodBeat.o(1857);
   }
 }
 

@@ -9,18 +9,18 @@ import com.tencent.mm.booter.TrafficStatsReceiver;
 import com.tencent.mm.modelfriend.AddrBookObserver;
 import com.tencent.mm.modelstat.WatchDogPushReceiver;
 import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class g
   implements com.tencent.mm.plugin.zero.a.a
 {
-  private AddrBookObserver jMD;
-  private WatchDogPushReceiver jME;
-  private TrafficStatsReceiver jMF;
+  private AddrBookObserver mLF;
+  private WatchDogPushReceiver mLG;
+  private TrafficStatsReceiver mLH;
   
   public final void a(Service paramService)
   {
-    AppMethodBeat.i(18256);
+    AppMethodBeat.i(22357);
     boolean bool1;
     if (Build.VERSION.SDK_INT < 26) {
       bool1 = true;
@@ -34,14 +34,14 @@ public final class g
       if (bool2) {}
       try
       {
-        this.jMD = new AddrBookObserver(paramService);
-        paramService.getContentResolver().registerContentObserver(com.tencent.mm.pluginsdk.a.dkO(), true, this.jMD);
-        this.jME = new WatchDogPushReceiver();
-        paramService.registerReceiver(this.jME, new IntentFilter("com.tencent.mm.WatchDogPushReceiver"));
-        this.jMF = new TrafficStatsReceiver();
-        paramService.registerReceiver(this.jMF, new IntentFilter("com.tencent.mm.TrafficStatsReceiver"));
-        TrafficStatsReceiver.bz(paramService);
-        AppMethodBeat.o(18256);
+        this.mLF = new AddrBookObserver(paramService);
+        paramService.getContentResolver().registerContentObserver(com.tencent.mm.pluginsdk.a.euz(), true, this.mLF);
+        this.mLG = new WatchDogPushReceiver();
+        paramService.registerReceiver(this.mLG, new IntentFilter("com.tencent.mm.WatchDogPushReceiver"));
+        this.mLH = new TrafficStatsReceiver();
+        paramService.registerReceiver(this.mLH, new IntentFilter("com.tencent.mm.TrafficStatsReceiver"));
+        TrafficStatsReceiver.bN(paramService);
+        AppMethodBeat.o(22357);
         return;
         bool1 = false;
       }
@@ -49,8 +49,8 @@ public final class g
       {
         for (;;)
         {
-          this.jMD = null;
-          ab.e("MicroMsg.CoreService", "onCreate registerContentObserver() Exception = %s", new Object[] { localException.getMessage() });
+          this.mLF = null;
+          ad.e("MicroMsg.CoreService", "onCreate registerContentObserver() Exception = %s", new Object[] { localException.getMessage() });
         }
       }
     }
@@ -58,21 +58,21 @@ public final class g
   
   public final void b(Service paramService)
   {
-    AppMethodBeat.i(18257);
-    if (this.jMD != null)
+    AppMethodBeat.i(22358);
+    if (this.mLF != null)
     {
-      paramService.getContentResolver().unregisterContentObserver(this.jMD);
-      this.jMD = null;
+      paramService.getContentResolver().unregisterContentObserver(this.mLF);
+      this.mLF = null;
     }
-    paramService.unregisterReceiver(this.jME);
-    paramService.unregisterReceiver(this.jMF);
-    TrafficStatsReceiver.bA(paramService);
-    AppMethodBeat.o(18257);
+    paramService.unregisterReceiver(this.mLG);
+    paramService.unregisterReceiver(this.mLH);
+    TrafficStatsReceiver.bO(paramService);
+    AppMethodBeat.o(22358);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.g
  * JD-Core Version:    0.7.0.1
  */

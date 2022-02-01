@@ -38,7 +38,7 @@ public final class DynamiteModule
   
   static
   {
-    AppMethodBeat.i(90442);
+    AppMethodBeat.i(5463);
     zzabv = new ThreadLocal();
     zzabw = new zza();
     PREFER_REMOTE = new zzb();
@@ -47,19 +47,19 @@ public final class DynamiteModule
     PREFER_HIGHEST_OR_LOCAL_VERSION_NO_FORCE_STAGING = new zze();
     PREFER_HIGHEST_OR_REMOTE_VERSION = new zzf();
     PREFER_HIGHEST_OR_REMOTE_VERSION_NO_FORCE_STAGING = new zzg();
-    AppMethodBeat.o(90442);
+    AppMethodBeat.o(5463);
   }
   
   private DynamiteModule(Context paramContext)
   {
-    AppMethodBeat.i(90441);
+    AppMethodBeat.i(5462);
     this.zzabx = ((Context)Preconditions.checkNotNull(paramContext));
-    AppMethodBeat.o(90441);
+    AppMethodBeat.o(5462);
   }
   
   public static int getLocalVersion(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(90426);
+    AppMethodBeat.i(5447);
     try
     {
       Object localObject = paramContext.getApplicationContext().getClassLoader().loadClass(String.valueOf(paramString).length() + 61 + "com.google.android.gms.dynamite.descriptors." + paramString + ".ModuleDescriptor");
@@ -69,17 +69,17 @@ public final class DynamiteModule
       {
         paramContext = String.valueOf(paramContext.get(null));
         new StringBuilder(String.valueOf(paramContext).length() + 51 + String.valueOf(paramString).length()).append("Module descriptor id '").append(paramContext).append("' didn't match expected id '").append(paramString).append("'");
-        AppMethodBeat.o(90426);
+        AppMethodBeat.o(5447);
         return 0;
       }
       int i = ((Field)localObject).getInt(null);
-      AppMethodBeat.o(90426);
+      AppMethodBeat.o(5447);
       return i;
     }
     catch (ClassNotFoundException paramContext)
     {
       new StringBuilder(String.valueOf(paramString).length() + 45).append("Local module descriptor class for ").append(paramString).append(" not found.");
-      AppMethodBeat.o(90426);
+      AppMethodBeat.o(5447);
       return 0;
     }
     catch (Exception paramContext)
@@ -98,21 +98,21 @@ public final class DynamiteModule
   
   public static Uri getQueryUri(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(90432);
+    AppMethodBeat.i(5453);
     if (paramBoolean) {}
     for (String str = "api_force_staging";; str = "api")
     {
       paramString = Uri.parse(String.valueOf(str).length() + 42 + String.valueOf(paramString).length() + "content://com.google.android.gms.chimera/" + str + "/" + paramString);
-      AppMethodBeat.o(90432);
+      AppMethodBeat.o(5453);
       return paramString;
     }
   }
   
   public static int getRemoteVersion(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(90430);
+    AppMethodBeat.i(5451);
     int i = getRemoteVersion(paramContext, paramString, false);
-    AppMethodBeat.o(90430);
+    AppMethodBeat.o(5451);
     return i;
   }
   
@@ -120,248 +120,248 @@ public final class DynamiteModule
   public static int getRemoteVersion(Context paramContext, String paramString, boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc 237
-    //   2: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 2
-    //   7: monitorenter
-    //   8: getstatic 239	com/google/android/gms/dynamite/DynamiteModule:zzabr	Ljava/lang/Boolean;
-    //   11: astore 6
-    //   13: aload 6
-    //   15: astore 5
-    //   17: aload 6
-    //   19: ifnonnull +69 -> 88
-    //   22: aload_0
-    //   23: invokevirtual 129	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   26: invokevirtual 133	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   29: ldc 6
-    //   31: invokevirtual 242	java/lang/Class:getName	()Ljava/lang/String;
-    //   34: invokevirtual 165	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   37: astore 6
-    //   39: aload 6
-    //   41: ldc 244
-    //   43: invokevirtual 173	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   46: astore 5
-    //   48: aload 6
-    //   50: monitorenter
-    //   51: aload 5
-    //   53: aconst_null
-    //   54: invokevirtual 180	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   57: checkcast 161	java/lang/ClassLoader
-    //   60: astore 7
-    //   62: aload 7
-    //   64: ifnull +62 -> 126
-    //   67: aload 7
-    //   69: invokestatic 247	java/lang/ClassLoader:getSystemClassLoader	()Ljava/lang/ClassLoader;
-    //   72: if_acmpne +41 -> 113
-    //   75: getstatic 252	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   78: astore 5
-    //   80: aload 6
-    //   82: monitorexit
-    //   83: aload 5
-    //   85: putstatic 239	com/google/android/gms/dynamite/DynamiteModule:zzabr	Ljava/lang/Boolean;
-    //   88: ldc 2
-    //   90: monitorexit
-    //   91: aload 5
-    //   93: invokevirtual 256	java/lang/Boolean:booleanValue	()Z
-    //   96: ifeq +284 -> 380
-    //   99: aload_0
-    //   100: aload_1
-    //   101: iload_2
-    //   102: invokestatic 258	com/google/android/gms/dynamite/DynamiteModule:zzb	(Landroid/content/Context;Ljava/lang/String;Z)I
-    //   105: istore_3
-    //   106: ldc 237
-    //   108: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   111: iload_3
-    //   112: ireturn
-    //   113: aload 7
-    //   115: invokestatic 261	com/google/android/gms/dynamite/DynamiteModule:zza	(Ljava/lang/ClassLoader;)V
-    //   118: getstatic 264	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   121: astore 5
-    //   123: goto -43 -> 80
-    //   126: ldc_w 266
-    //   129: aload_0
-    //   130: invokevirtual 129	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   133: invokevirtual 269	android/content/Context:getPackageName	()Ljava/lang/String;
-    //   136: invokevirtual 270	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   139: ifeq +20 -> 159
-    //   142: aload 5
-    //   144: aconst_null
-    //   145: invokestatic 247	java/lang/ClassLoader:getSystemClassLoader	()Ljava/lang/ClassLoader;
-    //   148: invokevirtual 274	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   151: getstatic 252	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   154: astore 5
-    //   156: goto -76 -> 80
-    //   159: aload_0
-    //   160: aload_1
-    //   161: iload_2
-    //   162: invokestatic 258	com/google/android/gms/dynamite/DynamiteModule:zzb	(Landroid/content/Context;Ljava/lang/String;Z)I
-    //   165: istore_3
-    //   166: getstatic 276	com/google/android/gms/dynamite/DynamiteModule:zzabu	Ljava/lang/String;
-    //   169: ifnull +16 -> 185
-    //   172: getstatic 276	com/google/android/gms/dynamite/DynamiteModule:zzabu	Ljava/lang/String;
-    //   175: invokevirtual 279	java/lang/String:isEmpty	()Z
-    //   178: istore 4
-    //   180: iload 4
-    //   182: ifeq +16 -> 198
-    //   185: aload 6
-    //   187: monitorexit
-    //   188: ldc 2
-    //   190: monitorexit
-    //   191: ldc 237
-    //   193: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   196: iload_3
-    //   197: ireturn
-    //   198: new 281	com/google/android/gms/dynamite/zzh
-    //   201: dup
-    //   202: getstatic 276	com/google/android/gms/dynamite/DynamiteModule:zzabu	Ljava/lang/String;
-    //   205: invokestatic 247	java/lang/ClassLoader:getSystemClassLoader	()Ljava/lang/ClassLoader;
-    //   208: invokespecial 284	com/google/android/gms/dynamite/zzh:<init>	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
-    //   211: astore 7
-    //   213: aload 7
-    //   215: invokestatic 261	com/google/android/gms/dynamite/DynamiteModule:zza	(Ljava/lang/ClassLoader;)V
-    //   218: aload 5
-    //   220: aconst_null
-    //   221: aload 7
-    //   223: invokevirtual 274	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   226: getstatic 264	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   229: putstatic 239	com/google/android/gms/dynamite/DynamiteModule:zzabr	Ljava/lang/Boolean;
-    //   232: aload 6
-    //   234: monitorexit
-    //   235: ldc 2
+    //   0: sipush 5448
+    //   3: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 2
+    //   8: monitorenter
+    //   9: getstatic 233	com/google/android/gms/dynamite/DynamiteModule:zzabr	Ljava/lang/Boolean;
+    //   12: astore 6
+    //   14: aload 6
+    //   16: astore 5
+    //   18: aload 6
+    //   20: ifnonnull +69 -> 89
+    //   23: aload_0
+    //   24: invokevirtual 126	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   27: invokevirtual 130	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
+    //   30: ldc 6
+    //   32: invokevirtual 236	java/lang/Class:getName	()Ljava/lang/String;
+    //   35: invokevirtual 162	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   38: astore 6
+    //   40: aload 6
+    //   42: ldc 238
+    //   44: invokevirtual 170	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   47: astore 5
+    //   49: aload 6
+    //   51: monitorenter
+    //   52: aload 5
+    //   54: aconst_null
+    //   55: invokevirtual 177	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   58: checkcast 158	java/lang/ClassLoader
+    //   61: astore 7
+    //   63: aload 7
+    //   65: ifnull +63 -> 128
+    //   68: aload 7
+    //   70: invokestatic 241	java/lang/ClassLoader:getSystemClassLoader	()Ljava/lang/ClassLoader;
+    //   73: if_acmpne +42 -> 115
+    //   76: getstatic 246	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   79: astore 5
+    //   81: aload 6
+    //   83: monitorexit
+    //   84: aload 5
+    //   86: putstatic 233	com/google/android/gms/dynamite/DynamiteModule:zzabr	Ljava/lang/Boolean;
+    //   89: ldc 2
+    //   91: monitorexit
+    //   92: aload 5
+    //   94: invokevirtual 250	java/lang/Boolean:booleanValue	()Z
+    //   97: ifeq +290 -> 387
+    //   100: aload_0
+    //   101: aload_1
+    //   102: iload_2
+    //   103: invokestatic 252	com/google/android/gms/dynamite/DynamiteModule:zzb	(Landroid/content/Context;Ljava/lang/String;Z)I
+    //   106: istore_3
+    //   107: sipush 5448
+    //   110: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   113: iload_3
+    //   114: ireturn
+    //   115: aload 7
+    //   117: invokestatic 255	com/google/android/gms/dynamite/DynamiteModule:zza	(Ljava/lang/ClassLoader;)V
+    //   120: getstatic 258	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   123: astore 5
+    //   125: goto -44 -> 81
+    //   128: ldc_w 260
+    //   131: aload_0
+    //   132: invokevirtual 126	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   135: invokevirtual 263	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   138: invokevirtual 264	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   141: ifeq +20 -> 161
+    //   144: aload 5
+    //   146: aconst_null
+    //   147: invokestatic 241	java/lang/ClassLoader:getSystemClassLoader	()Ljava/lang/ClassLoader;
+    //   150: invokevirtual 268	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   153: getstatic 246	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   156: astore 5
+    //   158: goto -77 -> 81
+    //   161: aload_0
+    //   162: aload_1
+    //   163: iload_2
+    //   164: invokestatic 252	com/google/android/gms/dynamite/DynamiteModule:zzb	(Landroid/content/Context;Ljava/lang/String;Z)I
+    //   167: istore_3
+    //   168: getstatic 270	com/google/android/gms/dynamite/DynamiteModule:zzabu	Ljava/lang/String;
+    //   171: ifnull +16 -> 187
+    //   174: getstatic 270	com/google/android/gms/dynamite/DynamiteModule:zzabu	Ljava/lang/String;
+    //   177: invokevirtual 273	java/lang/String:isEmpty	()Z
+    //   180: istore 4
+    //   182: iload 4
+    //   184: ifeq +17 -> 201
+    //   187: aload 6
+    //   189: monitorexit
+    //   190: ldc 2
+    //   192: monitorexit
+    //   193: sipush 5448
+    //   196: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   199: iload_3
+    //   200: ireturn
+    //   201: new 275	com/google/android/gms/dynamite/zzh
+    //   204: dup
+    //   205: getstatic 270	com/google/android/gms/dynamite/DynamiteModule:zzabu	Ljava/lang/String;
+    //   208: invokestatic 241	java/lang/ClassLoader:getSystemClassLoader	()Ljava/lang/ClassLoader;
+    //   211: invokespecial 278	com/google/android/gms/dynamite/zzh:<init>	(Ljava/lang/String;Ljava/lang/ClassLoader;)V
+    //   214: astore 7
+    //   216: aload 7
+    //   218: invokestatic 255	com/google/android/gms/dynamite/DynamiteModule:zza	(Ljava/lang/ClassLoader;)V
+    //   221: aload 5
+    //   223: aconst_null
+    //   224: aload 7
+    //   226: invokevirtual 268	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   229: getstatic 258	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   232: putstatic 233	com/google/android/gms/dynamite/DynamiteModule:zzabr	Ljava/lang/Boolean;
+    //   235: aload 6
     //   237: monitorexit
-    //   238: ldc 237
-    //   240: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   243: iload_3
-    //   244: ireturn
-    //   245: astore 7
-    //   247: aload 5
-    //   249: aconst_null
-    //   250: invokestatic 247	java/lang/ClassLoader:getSystemClassLoader	()Ljava/lang/ClassLoader;
-    //   253: invokevirtual 274	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   256: getstatic 252	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   259: astore 5
-    //   261: goto -181 -> 80
-    //   264: astore 5
-    //   266: aload 6
-    //   268: monitorexit
-    //   269: ldc 237
-    //   271: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   274: aload 5
-    //   276: athrow
-    //   277: astore 5
+    //   238: ldc 2
+    //   240: monitorexit
+    //   241: sipush 5448
+    //   244: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   247: iload_3
+    //   248: ireturn
+    //   249: astore 7
+    //   251: aload 5
+    //   253: aconst_null
+    //   254: invokestatic 241	java/lang/ClassLoader:getSystemClassLoader	()Ljava/lang/ClassLoader;
+    //   257: invokevirtual 268	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   260: getstatic 246	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   263: astore 5
+    //   265: goto -184 -> 81
+    //   268: astore 5
+    //   270: aload 6
+    //   272: monitorexit
+    //   273: sipush 5448
+    //   276: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   279: aload 5
-    //   281: invokestatic 141	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   284: astore 5
-    //   286: new 135	java/lang/StringBuilder
-    //   289: dup
-    //   290: aload 5
-    //   292: invokestatic 141	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   295: invokevirtual 145	java/lang/String:length	()I
-    //   298: bipush 30
-    //   300: iadd
-    //   301: invokespecial 147	java/lang/StringBuilder:<init>	(I)V
-    //   304: ldc_w 286
-    //   307: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   310: aload 5
-    //   312: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   315: pop
-    //   316: getstatic 252	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
-    //   319: astore 5
-    //   321: goto -238 -> 83
-    //   324: astore_0
-    //   325: ldc 2
-    //   327: monitorexit
-    //   328: ldc 237
-    //   330: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   333: aload_0
-    //   334: athrow
-    //   335: astore_0
-    //   336: aload_0
-    //   337: invokevirtual 287	com/google/android/gms/dynamite/DynamiteModule$LoadingException:getMessage	()Ljava/lang/String;
-    //   340: invokestatic 141	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   343: astore_0
-    //   344: aload_0
-    //   345: invokevirtual 145	java/lang/String:length	()I
-    //   348: ifeq +18 -> 366
-    //   351: ldc_w 289
-    //   354: aload_0
-    //   355: invokevirtual 207	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   358: pop
-    //   359: ldc 237
-    //   361: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   364: iconst_0
-    //   365: ireturn
-    //   366: new 137	java/lang/String
-    //   369: dup
-    //   370: ldc_w 289
-    //   373: invokespecial 210	java/lang/String:<init>	(Ljava/lang/String;)V
-    //   376: pop
-    //   377: goto -18 -> 359
-    //   380: aload_0
-    //   381: aload_1
-    //   382: iload_2
-    //   383: invokestatic 291	com/google/android/gms/dynamite/DynamiteModule:zza	(Landroid/content/Context;Ljava/lang/String;Z)I
-    //   386: istore_3
-    //   387: ldc 237
-    //   389: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   392: iload_3
-    //   393: ireturn
-    //   394: astore 5
-    //   396: goto -278 -> 118
-    //   399: astore 5
-    //   401: goto -122 -> 279
-    //   404: astore 5
-    //   406: goto -127 -> 279
+    //   281: athrow
+    //   282: astore 5
+    //   284: aload 5
+    //   286: invokestatic 138	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   289: astore 5
+    //   291: new 132	java/lang/StringBuilder
+    //   294: dup
+    //   295: aload 5
+    //   297: invokestatic 138	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   300: invokevirtual 142	java/lang/String:length	()I
+    //   303: bipush 30
+    //   305: iadd
+    //   306: invokespecial 144	java/lang/StringBuilder:<init>	(I)V
+    //   309: ldc_w 280
+    //   312: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   315: aload 5
+    //   317: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   320: pop
+    //   321: getstatic 246	java/lang/Boolean:FALSE	Ljava/lang/Boolean;
+    //   324: astore 5
+    //   326: goto -242 -> 84
+    //   329: astore_0
+    //   330: ldc 2
+    //   332: monitorexit
+    //   333: sipush 5448
+    //   336: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   339: aload_0
+    //   340: athrow
+    //   341: astore_0
+    //   342: aload_0
+    //   343: invokevirtual 281	com/google/android/gms/dynamite/DynamiteModule$LoadingException:getMessage	()Ljava/lang/String;
+    //   346: invokestatic 138	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   349: astore_0
+    //   350: aload_0
+    //   351: invokevirtual 142	java/lang/String:length	()I
+    //   354: ifeq +19 -> 373
+    //   357: ldc_w 283
+    //   360: aload_0
+    //   361: invokevirtual 204	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   364: pop
+    //   365: sipush 5448
+    //   368: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   371: iconst_0
+    //   372: ireturn
+    //   373: new 134	java/lang/String
+    //   376: dup
+    //   377: ldc_w 283
+    //   380: invokespecial 207	java/lang/String:<init>	(Ljava/lang/String;)V
+    //   383: pop
+    //   384: goto -19 -> 365
+    //   387: aload_0
+    //   388: aload_1
+    //   389: iload_2
+    //   390: invokestatic 285	com/google/android/gms/dynamite/DynamiteModule:zza	(Landroid/content/Context;Ljava/lang/String;Z)I
+    //   393: istore_3
+    //   394: sipush 5448
+    //   397: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   400: iload_3
+    //   401: ireturn
+    //   402: astore 5
+    //   404: goto -284 -> 120
+    //   407: astore 5
+    //   409: goto -125 -> 284
+    //   412: astore 5
+    //   414: goto -130 -> 284
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	409	0	paramContext	Context
-    //   0	409	1	paramString	String
-    //   0	409	2	paramBoolean	boolean
-    //   105	288	3	i	int
-    //   178	3	4	bool	boolean
-    //   15	245	5	localObject1	Object
-    //   264	11	5	localObject2	Object
-    //   277	3	5	localClassNotFoundException	ClassNotFoundException
-    //   284	36	5	localObject3	Object
-    //   394	1	5	localLoadingException1	LoadingException
-    //   399	1	5	localNoSuchFieldException	java.lang.NoSuchFieldException
-    //   404	1	5	localIllegalAccessException	IllegalAccessException
-    //   11	256	6	localObject4	Object
-    //   60	162	7	localObject5	Object
-    //   245	1	7	localLoadingException2	LoadingException
+    //   0	417	0	paramContext	Context
+    //   0	417	1	paramString	String
+    //   0	417	2	paramBoolean	boolean
+    //   106	295	3	i	int
+    //   180	3	4	bool	boolean
+    //   16	248	5	localObject1	Object
+    //   268	12	5	localObject2	Object
+    //   282	3	5	localClassNotFoundException	ClassNotFoundException
+    //   289	36	5	localObject3	Object
+    //   402	1	5	localLoadingException1	LoadingException
+    //   407	1	5	localNoSuchFieldException	java.lang.NoSuchFieldException
+    //   412	1	5	localIllegalAccessException	IllegalAccessException
+    //   12	259	6	localObject4	Object
+    //   61	164	7	localObject5	Object
+    //   249	1	7	localLoadingException2	LoadingException
     // Exception table:
     //   from	to	target	type
-    //   159	180	245	com/google/android/gms/dynamite/DynamiteModule$LoadingException
-    //   198	232	245	com/google/android/gms/dynamite/DynamiteModule$LoadingException
-    //   51	62	264	finally
-    //   67	80	264	finally
-    //   80	83	264	finally
-    //   113	118	264	finally
-    //   118	123	264	finally
-    //   126	156	264	finally
-    //   159	180	264	finally
-    //   185	188	264	finally
-    //   198	232	264	finally
-    //   232	235	264	finally
-    //   247	261	264	finally
-    //   266	269	264	finally
-    //   22	51	277	java/lang/ClassNotFoundException
-    //   269	277	277	java/lang/ClassNotFoundException
-    //   8	13	324	finally
-    //   22	51	324	finally
-    //   83	88	324	finally
-    //   88	91	324	finally
-    //   188	191	324	finally
-    //   235	238	324	finally
-    //   269	277	324	finally
-    //   279	321	324	finally
-    //   325	328	324	finally
-    //   99	106	335	com/google/android/gms/dynamite/DynamiteModule$LoadingException
-    //   113	118	394	com/google/android/gms/dynamite/DynamiteModule$LoadingException
-    //   22	51	399	java/lang/NoSuchFieldException
-    //   269	277	399	java/lang/NoSuchFieldException
-    //   22	51	404	java/lang/IllegalAccessException
-    //   269	277	404	java/lang/IllegalAccessException
+    //   161	182	249	com/google/android/gms/dynamite/DynamiteModule$LoadingException
+    //   201	235	249	com/google/android/gms/dynamite/DynamiteModule$LoadingException
+    //   52	63	268	finally
+    //   68	81	268	finally
+    //   81	84	268	finally
+    //   115	120	268	finally
+    //   120	125	268	finally
+    //   128	158	268	finally
+    //   161	182	268	finally
+    //   187	190	268	finally
+    //   201	235	268	finally
+    //   235	238	268	finally
+    //   251	265	268	finally
+    //   270	273	268	finally
+    //   23	52	282	java/lang/ClassNotFoundException
+    //   273	282	282	java/lang/ClassNotFoundException
+    //   9	14	329	finally
+    //   23	52	329	finally
+    //   84	89	329	finally
+    //   89	92	329	finally
+    //   190	193	329	finally
+    //   238	241	329	finally
+    //   273	282	329	finally
+    //   284	326	329	finally
+    //   330	333	329	finally
+    //   100	107	341	com/google/android/gms/dynamite/DynamiteModule$LoadingException
+    //   115	120	402	com/google/android/gms/dynamite/DynamiteModule$LoadingException
+    //   23	52	407	java/lang/NoSuchFieldException
+    //   273	282	407	java/lang/NoSuchFieldException
+    //   23	52	412	java/lang/IllegalAccessException
+    //   273	282	412	java/lang/IllegalAccessException
   }
   
   @VisibleForTesting
@@ -381,7 +381,7 @@ public final class DynamiteModule
   
   public static DynamiteModule load(Context paramContext, VersionPolicy paramVersionPolicy, String paramString)
   {
-    AppMethodBeat.i(90425);
+    AppMethodBeat.i(5446);
     zza localzza1 = (zza)zzabv.get();
     zza localzza2 = new zza(null);
     zzabv.set(localzza2);
@@ -397,7 +397,7 @@ public final class DynamiteModule
         i = localSelectionResult.localVersion;
         j = localSelectionResult.remoteVersion;
         paramContext = new LoadingException(91 + "No acceptable module found. Local version is " + i + " and remote version is " + j + ".", null);
-        AppMethodBeat.o(90425);
+        AppMethodBeat.o(5446);
         throw paramContext;
       }
     }
@@ -407,7 +407,7 @@ public final class DynamiteModule
         localzza2.zzaby.close();
       }
       zzabv.set(localzza1);
-      AppMethodBeat.o(90425);
+      AppMethodBeat.o(5446);
     }
     if (localSelectionResult.selection == -1)
     {
@@ -416,7 +416,7 @@ public final class DynamiteModule
         localzza2.zzaby.close();
       }
       zzabv.set(localzza1);
-      AppMethodBeat.o(90425);
+      AppMethodBeat.o(5446);
       return paramContext;
     }
     int i = localSelectionResult.selection;
@@ -428,7 +428,7 @@ public final class DynamiteModule
           localzza2.zzaby.close();
         }
         zzabv.set(localzza1);
-        AppMethodBeat.o(90425);
+        AppMethodBeat.o(5446);
         return localDynamiteModule;
       }
       catch (LoadingException localLoadingException)
@@ -444,26 +444,26 @@ public final class DynamiteModule
             localzza2.zzaby.close();
           }
           zzabv.set(localzza1);
-          AppMethodBeat.o(90425);
+          AppMethodBeat.o(5446);
           return paramContext;
           new String("Failed to load remote module: ");
         }
         paramContext = new LoadingException("Remote load failed. No local fallback found.", localLoadingException, null);
-        AppMethodBeat.o(90425);
+        AppMethodBeat.o(5446);
         throw paramContext;
       }
     }
     i = localSelectionResult.selection;
     paramContext = new LoadingException(47 + "VersionPolicy returned invalid code:" + i, null);
-    AppMethodBeat.o(90425);
+    AppMethodBeat.o(5446);
     throw paramContext;
   }
   
   public static Cursor queryForDynamiteModule(Context paramContext, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(90431);
+    AppMethodBeat.i(5452);
     paramContext = paramContext.getContentResolver().query(getQueryUri(paramString, paramBoolean), null, null, null, null);
-    AppMethodBeat.o(90431);
+    AppMethodBeat.o(5452);
     return paramContext;
   }
   
@@ -475,17 +475,17 @@ public final class DynamiteModule
     //   0: ldc 2
     //   2: monitorenter
     //   3: aconst_null
-    //   4: putstatic 385	com/google/android/gms/dynamite/DynamiteModule:zzabs	Lcom/google/android/gms/dynamite/IDynamiteLoader;
+    //   4: putstatic 377	com/google/android/gms/dynamite/DynamiteModule:zzabs	Lcom/google/android/gms/dynamite/IDynamiteLoader;
     //   7: aconst_null
-    //   8: putstatic 387	com/google/android/gms/dynamite/DynamiteModule:zzabt	Lcom/google/android/gms/dynamite/IDynamiteLoaderV2;
+    //   8: putstatic 379	com/google/android/gms/dynamite/DynamiteModule:zzabt	Lcom/google/android/gms/dynamite/IDynamiteLoaderV2;
     //   11: aconst_null
-    //   12: putstatic 276	com/google/android/gms/dynamite/DynamiteModule:zzabu	Ljava/lang/String;
+    //   12: putstatic 270	com/google/android/gms/dynamite/DynamiteModule:zzabu	Ljava/lang/String;
     //   15: aconst_null
-    //   16: putstatic 239	com/google/android/gms/dynamite/DynamiteModule:zzabr	Ljava/lang/Boolean;
+    //   16: putstatic 233	com/google/android/gms/dynamite/DynamiteModule:zzabr	Ljava/lang/Boolean;
     //   19: ldc 6
     //   21: monitorenter
     //   22: aconst_null
-    //   23: putstatic 390	com/google/android/gms/dynamite/DynamiteModule$DynamiteLoaderClassLoader:sClassLoader	Ljava/lang/ClassLoader;
+    //   23: putstatic 382	com/google/android/gms/dynamite/DynamiteModule$DynamiteLoaderClassLoader:sClassLoader	Ljava/lang/ClassLoader;
     //   26: ldc 6
     //   28: monitorexit
     //   29: ldc 2
@@ -530,17 +530,17 @@ public final class DynamiteModule
   
   private static int zza(Context paramContext, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(90428);
+    AppMethodBeat.i(5449);
     IDynamiteLoader localIDynamiteLoader = zzg(paramContext);
     if (localIDynamiteLoader == null)
     {
-      AppMethodBeat.o(90428);
+      AppMethodBeat.o(5449);
       return 0;
     }
     try
     {
       int i = localIDynamiteLoader.getModuleVersion2(ObjectWrapper.wrap(paramContext), paramString, paramBoolean);
-      AppMethodBeat.o(90428);
+      AppMethodBeat.o(5449);
       return i;
     }
     catch (RemoteException paramContext)
@@ -553,7 +553,7 @@ public final class DynamiteModule
     "Failed to retrieve remote module version: ".concat(paramContext);
     for (;;)
     {
-      AppMethodBeat.o(90428);
+      AppMethodBeat.o(5449);
       return 0;
       label79:
       new String("Failed to retrieve remote module version: ");
@@ -562,11 +562,11 @@ public final class DynamiteModule
   
   private static Context zza(Context paramContext, String paramString, int paramInt, Cursor paramCursor, IDynamiteLoaderV2 paramIDynamiteLoaderV2)
   {
-    AppMethodBeat.i(90438);
+    AppMethodBeat.i(5459);
     try
     {
       paramContext = (Context)ObjectWrapper.unwrap(paramIDynamiteLoaderV2.loadModule2(ObjectWrapper.wrap(paramContext), paramString, paramInt, ObjectWrapper.wrap(paramCursor)));
-      AppMethodBeat.o(90438);
+      AppMethodBeat.o(5459);
       return paramContext;
     }
     catch (Exception paramContext)
@@ -579,7 +579,7 @@ public final class DynamiteModule
     "Failed to load DynamiteLoader: ".concat(paramContext);
     for (;;)
     {
-      AppMethodBeat.o(90438);
+      AppMethodBeat.o(5459);
       return null;
       label70:
       new String("Failed to load DynamiteLoader: ");
@@ -588,7 +588,7 @@ public final class DynamiteModule
   
   private static DynamiteModule zza(Context paramContext, String paramString, int paramInt)
   {
-    AppMethodBeat.i(90434);
+    AppMethodBeat.i(5455);
     Boolean localBoolean;
     try
     {
@@ -596,39 +596,39 @@ public final class DynamiteModule
       if (localBoolean == null)
       {
         paramContext = new LoadingException("Failed to determine which loading route to use.", null);
-        AppMethodBeat.o(90434);
+        AppMethodBeat.o(5455);
         throw paramContext;
       }
     }
     finally
     {
-      AppMethodBeat.o(90434);
+      AppMethodBeat.o(5455);
     }
     if (localBoolean.booleanValue())
     {
       paramContext = zzc(paramContext, paramString, paramInt);
-      AppMethodBeat.o(90434);
+      AppMethodBeat.o(5455);
       return paramContext;
     }
     paramContext = zzb(paramContext, paramString, paramInt);
-    AppMethodBeat.o(90434);
+    AppMethodBeat.o(5455);
     return paramContext;
   }
   
   @GuardedBy("DynamiteModule.class")
   private static void zza(ClassLoader paramClassLoader)
   {
-    AppMethodBeat.i(90439);
+    AppMethodBeat.i(5460);
     try
     {
       zzabt = IDynamiteLoaderV2.Stub.asInterface((IBinder)paramClassLoader.loadClass("com.google.android.gms.dynamiteloader.DynamiteLoaderV2").getConstructor(new Class[0]).newInstance(new Object[0]));
-      AppMethodBeat.o(90439);
+      AppMethodBeat.o(5460);
       return;
     }
     catch (ClassNotFoundException paramClassLoader)
     {
       paramClassLoader = new LoadingException("Failed to instantiate dynamite loader", paramClassLoader, null);
-      AppMethodBeat.o(90439);
+      AppMethodBeat.o(5460);
       throw paramClassLoader;
     }
     catch (InstantiationException paramClassLoader)
@@ -654,32 +654,32 @@ public final class DynamiteModule
   private static int zzb(Context paramContext, String paramString, boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc_w 465
-    //   3: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: sipush 5450
+    //   3: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: aload_1
     //   8: iload_2
-    //   9: invokestatic 467	com/google/android/gms/dynamite/DynamiteModule:queryForDynamiteModule	(Landroid/content/Context;Ljava/lang/String;Z)Landroid/database/Cursor;
+    //   9: invokestatic 454	com/google/android/gms/dynamite/DynamiteModule:queryForDynamiteModule	(Landroid/content/Context;Ljava/lang/String;Z)Landroid/database/Cursor;
     //   12: astore_0
     //   13: aload_0
     //   14: ifnull +14 -> 28
     //   17: aload_0
     //   18: astore_1
     //   19: aload_0
-    //   20: invokeinterface 470 1 0
+    //   20: invokeinterface 457 1 0
     //   25: ifne +75 -> 100
     //   28: aload_0
     //   29: astore_1
     //   30: new 9	com/google/android/gms/dynamite/DynamiteModule$LoadingException
     //   33: dup
-    //   34: ldc_w 472
+    //   34: ldc_w 459
     //   37: aconst_null
-    //   38: invokespecial 339	com/google/android/gms/dynamite/DynamiteModule$LoadingException:<init>	(Ljava/lang/String;Lcom/google/android/gms/dynamite/zza;)V
+    //   38: invokespecial 332	com/google/android/gms/dynamite/DynamiteModule$LoadingException:<init>	(Ljava/lang/String;Lcom/google/android/gms/dynamite/zza;)V
     //   41: astore 4
     //   43: aload_0
     //   44: astore_1
-    //   45: ldc_w 465
-    //   48: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: sipush 5450
+    //   48: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   51: aload_0
     //   52: astore_1
     //   53: aload 4
@@ -692,8 +692,8 @@ public final class DynamiteModule
     //   65: ifeq +153 -> 218
     //   68: aload_0
     //   69: astore_1
-    //   70: ldc_w 465
-    //   73: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   70: sipush 5450
+    //   73: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   76: aload_0
     //   77: astore_1
     //   78: aload 4
@@ -702,16 +702,16 @@ public final class DynamiteModule
     //   82: aload_1
     //   83: ifnull +9 -> 92
     //   86: aload_1
-    //   87: invokeinterface 348 1 0
-    //   92: ldc_w 465
-    //   95: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   87: invokeinterface 341 1 0
+    //   92: sipush 5450
+    //   95: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   98: aload_0
     //   99: athrow
     //   100: aload_0
     //   101: astore_1
     //   102: aload_0
     //   103: iconst_0
-    //   104: invokeinterface 475 2 0
+    //   104: invokeinterface 462 2 0
     //   109: istore_3
     //   110: aload_0
     //   111: astore 4
@@ -723,14 +723,14 @@ public final class DynamiteModule
     //   121: monitorenter
     //   122: aload_0
     //   123: iconst_2
-    //   124: invokeinterface 479 2 0
-    //   129: putstatic 276	com/google/android/gms/dynamite/DynamiteModule:zzabu	Ljava/lang/String;
+    //   124: invokeinterface 466 2 0
+    //   129: putstatic 270	com/google/android/gms/dynamite/DynamiteModule:zzabu	Ljava/lang/String;
     //   132: ldc 2
     //   134: monitorexit
     //   135: aload_0
     //   136: astore_1
-    //   137: getstatic 66	com/google/android/gms/dynamite/DynamiteModule:zzabv	Ljava/lang/ThreadLocal;
-    //   140: invokevirtual 301	java/lang/ThreadLocal:get	()Ljava/lang/Object;
+    //   137: getstatic 65	com/google/android/gms/dynamite/DynamiteModule:zzabv	Ljava/lang/ThreadLocal;
+    //   140: invokevirtual 294	java/lang/ThreadLocal:get	()Ljava/lang/Object;
     //   143: checkcast 21	com/google/android/gms/dynamite/DynamiteModule$zza
     //   146: astore 5
     //   148: aload_0
@@ -742,21 +742,21 @@ public final class DynamiteModule
     //   158: aload_0
     //   159: astore 4
     //   161: aload 5
-    //   163: getfield 343	com/google/android/gms/dynamite/DynamiteModule$zza:zzaby	Landroid/database/Cursor;
+    //   163: getfield 336	com/google/android/gms/dynamite/DynamiteModule$zza:zzaby	Landroid/database/Cursor;
     //   166: ifnonnull +14 -> 180
     //   169: aload_0
     //   170: astore_1
     //   171: aload 5
     //   173: aload_0
-    //   174: putfield 343	com/google/android/gms/dynamite/DynamiteModule$zza:zzaby	Landroid/database/Cursor;
+    //   174: putfield 336	com/google/android/gms/dynamite/DynamiteModule$zza:zzaby	Landroid/database/Cursor;
     //   177: aconst_null
     //   178: astore 4
     //   180: aload 4
     //   182: ifnull +10 -> 192
     //   185: aload 4
-    //   187: invokeinterface 348 1 0
-    //   192: ldc_w 465
-    //   195: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   187: invokeinterface 341 1 0
+    //   192: sipush 5450
+    //   195: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   198: iload_3
     //   199: ireturn
     //   200: astore 4
@@ -764,8 +764,8 @@ public final class DynamiteModule
     //   204: monitorexit
     //   205: aload_0
     //   206: astore_1
-    //   207: ldc_w 465
-    //   210: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   207: sipush 5450
+    //   210: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   213: aload_0
     //   214: astore_1
     //   215: aload 4
@@ -774,15 +774,15 @@ public final class DynamiteModule
     //   219: astore_1
     //   220: new 9	com/google/android/gms/dynamite/DynamiteModule$LoadingException
     //   223: dup
-    //   224: ldc_w 481
+    //   224: ldc_w 468
     //   227: aload 4
     //   229: aconst_null
-    //   230: invokespecial 365	com/google/android/gms/dynamite/DynamiteModule$LoadingException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;Lcom/google/android/gms/dynamite/zza;)V
+    //   230: invokespecial 358	com/google/android/gms/dynamite/DynamiteModule$LoadingException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;Lcom/google/android/gms/dynamite/zza;)V
     //   233: astore 4
     //   235: aload_0
     //   236: astore_1
-    //   237: ldc_w 465
-    //   240: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   237: sipush 5450
+    //   240: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   243: aload_0
     //   244: astore_1
     //   245: aload 4
@@ -846,13 +846,13 @@ public final class DynamiteModule
   
   private static DynamiteModule zzb(Context paramContext, String paramString, int paramInt)
   {
-    AppMethodBeat.i(90435);
+    AppMethodBeat.i(5456);
     new StringBuilder(String.valueOf(paramString).length() + 51).append("Selected remote version of ").append(paramString).append(", version >= ").append(paramInt);
     IDynamiteLoader localIDynamiteLoader = zzg(paramContext);
     if (localIDynamiteLoader == null)
     {
       paramContext = new LoadingException("Failed to create IDynamiteLoader.", null);
-      AppMethodBeat.o(90435);
+      AppMethodBeat.o(5456);
       throw paramContext;
     }
     try
@@ -861,24 +861,24 @@ public final class DynamiteModule
       if (ObjectWrapper.unwrap(paramContext) == null)
       {
         paramContext = new LoadingException("Failed to load remote module.", null);
-        AppMethodBeat.o(90435);
+        AppMethodBeat.o(5456);
         throw paramContext;
       }
     }
     catch (RemoteException paramContext)
     {
       paramContext = new LoadingException("Failed to load remote module.", paramContext, null);
-      AppMethodBeat.o(90435);
+      AppMethodBeat.o(5456);
       throw paramContext;
     }
     paramContext = new DynamiteModule((Context)ObjectWrapper.unwrap(paramContext));
-    AppMethodBeat.o(90435);
+    AppMethodBeat.o(5456);
     return paramContext;
   }
   
   private static DynamiteModule zzc(Context paramContext, String paramString, int paramInt)
   {
-    AppMethodBeat.i(90437);
+    AppMethodBeat.i(5458);
     new StringBuilder(String.valueOf(paramString).length() + 51).append("Selected remote version of ").append(paramString).append(", version >= ").append(paramInt);
     IDynamiteLoaderV2 localIDynamiteLoaderV2;
     try
@@ -887,36 +887,36 @@ public final class DynamiteModule
       if (localIDynamiteLoaderV2 == null)
       {
         paramContext = new LoadingException("DynamiteLoaderV2 was not cached.", null);
-        AppMethodBeat.o(90437);
+        AppMethodBeat.o(5458);
         throw paramContext;
       }
     }
     finally
     {
-      AppMethodBeat.o(90437);
+      AppMethodBeat.o(5458);
     }
     zza localzza = (zza)zzabv.get();
     if ((localzza == null) || (localzza.zzaby == null))
     {
       paramContext = new LoadingException("No result cursor", null);
-      AppMethodBeat.o(90437);
+      AppMethodBeat.o(5458);
       throw paramContext;
     }
     paramContext = zza(paramContext.getApplicationContext(), paramString, paramInt, localzza.zzaby, localIDynamiteLoaderV2);
     if (paramContext == null)
     {
       paramContext = new LoadingException("Failed to get module context", null);
-      AppMethodBeat.o(90437);
+      AppMethodBeat.o(5458);
       throw paramContext;
     }
     paramContext = new DynamiteModule(paramContext);
-    AppMethodBeat.o(90437);
+    AppMethodBeat.o(5458);
     return paramContext;
   }
   
   private static DynamiteModule zzd(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(90433);
+    AppMethodBeat.i(5454);
     paramString = String.valueOf(paramString);
     if (paramString.length() != 0) {
       "Selected local version of ".concat(paramString);
@@ -924,7 +924,7 @@ public final class DynamiteModule
     for (;;)
     {
       paramContext = new DynamiteModule(paramContext.getApplicationContext());
-      AppMethodBeat.o(90433);
+      AppMethodBeat.o(5454);
       return paramContext;
       new String("Selected local version of ");
     }
@@ -934,80 +934,80 @@ public final class DynamiteModule
   private static IDynamiteLoader zzg(Context paramContext)
   {
     // Byte code:
-    //   0: ldc_w 509
-    //   3: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: sipush 5457
+    //   3: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: ldc 2
     //   8: monitorenter
-    //   9: getstatic 385	com/google/android/gms/dynamite/DynamiteModule:zzabs	Lcom/google/android/gms/dynamite/IDynamiteLoader;
+    //   9: getstatic 377	com/google/android/gms/dynamite/DynamiteModule:zzabs	Lcom/google/android/gms/dynamite/IDynamiteLoader;
     //   12: ifnull +18 -> 30
-    //   15: getstatic 385	com/google/android/gms/dynamite/DynamiteModule:zzabs	Lcom/google/android/gms/dynamite/IDynamiteLoader;
+    //   15: getstatic 377	com/google/android/gms/dynamite/DynamiteModule:zzabs	Lcom/google/android/gms/dynamite/IDynamiteLoader;
     //   18: astore_0
     //   19: ldc 2
     //   21: monitorexit
-    //   22: ldc_w 509
-    //   25: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   22: sipush 5457
+    //   25: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: aload_0
     //   29: areturn
-    //   30: invokestatic 515	com/google/android/gms/common/GoogleApiAvailabilityLight:getInstance	()Lcom/google/android/gms/common/GoogleApiAvailabilityLight;
+    //   30: invokestatic 498	com/google/android/gms/common/GoogleApiAvailabilityLight:getInstance	()Lcom/google/android/gms/common/GoogleApiAvailabilityLight;
     //   33: aload_0
-    //   34: invokevirtual 519	com/google/android/gms/common/GoogleApiAvailabilityLight:isGooglePlayServicesAvailable	(Landroid/content/Context;)I
+    //   34: invokevirtual 502	com/google/android/gms/common/GoogleApiAvailabilityLight:isGooglePlayServicesAvailable	(Landroid/content/Context;)I
     //   37: ifeq +14 -> 51
     //   40: ldc 2
     //   42: monitorexit
-    //   43: ldc_w 509
-    //   46: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   43: sipush 5457
+    //   46: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: aconst_null
     //   50: areturn
     //   51: aload_0
-    //   52: ldc_w 266
+    //   52: ldc_w 260
     //   55: iconst_3
-    //   56: invokevirtual 523	android/content/Context:createPackageContext	(Ljava/lang/String;I)Landroid/content/Context;
-    //   59: invokevirtual 133	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   62: ldc_w 525
-    //   65: invokevirtual 165	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   68: invokevirtual 527	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   71: checkcast 456	android/os/IBinder
-    //   74: invokestatic 532	com/google/android/gms/dynamite/IDynamiteLoader$Stub:asInterface	(Landroid/os/IBinder;)Lcom/google/android/gms/dynamite/IDynamiteLoader;
+    //   56: invokevirtual 506	android/content/Context:createPackageContext	(Ljava/lang/String;I)Landroid/content/Context;
+    //   59: invokevirtual 130	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
+    //   62: ldc_w 508
+    //   65: invokevirtual 162	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   68: invokevirtual 510	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   71: checkcast 444	android/os/IBinder
+    //   74: invokestatic 515	com/google/android/gms/dynamite/IDynamiteLoader$Stub:asInterface	(Landroid/os/IBinder;)Lcom/google/android/gms/dynamite/IDynamiteLoader;
     //   77: astore_0
     //   78: aload_0
     //   79: ifnull +42 -> 121
     //   82: aload_0
-    //   83: putstatic 385	com/google/android/gms/dynamite/DynamiteModule:zzabs	Lcom/google/android/gms/dynamite/IDynamiteLoader;
+    //   83: putstatic 377	com/google/android/gms/dynamite/DynamiteModule:zzabs	Lcom/google/android/gms/dynamite/IDynamiteLoader;
     //   86: ldc 2
     //   88: monitorexit
-    //   89: ldc_w 509
-    //   92: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   89: sipush 5457
+    //   92: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   95: aload_0
     //   96: areturn
     //   97: astore_0
     //   98: aload_0
-    //   99: invokevirtual 201	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   102: invokestatic 141	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   99: invokevirtual 198	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   102: invokestatic 138	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   105: astore_0
     //   106: aload_0
-    //   107: invokevirtual 145	java/lang/String:length	()I
+    //   107: invokevirtual 142	java/lang/String:length	()I
     //   110: ifeq +22 -> 132
-    //   113: ldc_w 534
+    //   113: ldc_w 517
     //   116: aload_0
-    //   117: invokevirtual 207	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   117: invokevirtual 204	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
     //   120: pop
     //   121: ldc 2
     //   123: monitorexit
-    //   124: ldc_w 509
-    //   127: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   124: sipush 5457
+    //   127: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   130: aconst_null
     //   131: areturn
-    //   132: new 137	java/lang/String
+    //   132: new 134	java/lang/String
     //   135: dup
-    //   136: ldc_w 534
-    //   139: invokespecial 210	java/lang/String:<init>	(Ljava/lang/String;)V
+    //   136: ldc_w 517
+    //   139: invokespecial 207	java/lang/String:<init>	(Ljava/lang/String;)V
     //   142: pop
     //   143: goto -22 -> 121
     //   146: astore_0
     //   147: ldc 2
     //   149: monitorexit
-    //   150: ldc_w 509
-    //   153: invokestatic 104	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   150: sipush 5457
+    //   153: invokestatic 103	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   156: aload_0
     //   157: athrow
     // Local variable table:
@@ -1035,11 +1035,11 @@ public final class DynamiteModule
   
   public final IBinder instantiate(String paramString)
   {
-    AppMethodBeat.i(90440);
+    AppMethodBeat.i(5461);
     try
     {
       IBinder localIBinder = (IBinder)this.zzabx.getClassLoader().loadClass(paramString).newInstance();
-      AppMethodBeat.o(90440);
+      AppMethodBeat.o(5461);
       return localIBinder;
     }
     catch (ClassNotFoundException localClassNotFoundException)
@@ -1049,7 +1049,7 @@ public final class DynamiteModule
       for (paramString = "Failed to instantiate module class: ".concat(paramString);; paramString = new String("Failed to instantiate module class: "))
       {
         paramString = new LoadingException(paramString, localClassNotFoundException, null);
-        AppMethodBeat.o(90440);
+        AppMethodBeat.o(5461);
         throw paramString;
       }
     }

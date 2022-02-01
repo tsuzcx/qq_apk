@@ -46,23 +46,23 @@ public class OpenSDKTool4Assistant
   
   public static String decryptUri(String paramString)
   {
-    AppMethodBeat.i(75849);
+    AppMethodBeat.i(102095);
     paramString = new String(ProtocolPackage.decrypt(Base64.decode(paramString, 0), "ji*9^&43U0X-~./(".getBytes()));
-    AppMethodBeat.o(75849);
+    AppMethodBeat.o(102095);
     return paramString;
   }
   
   public static String encryptUri(String paramString)
   {
-    AppMethodBeat.i(75848);
+    AppMethodBeat.i(102094);
     paramString = Base64.encodeToString(ProtocolPackage.encrypt(paramString.getBytes(), "ji*9^&43U0X-~./(".getBytes()), 0);
-    AppMethodBeat.o(75848);
+    AppMethodBeat.o(102094);
     return paramString;
   }
   
   public static void sendDownloadStateChanged(Context paramContext, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(75847);
+    AppMethodBeat.i(102093);
     Intent localIntent = new Intent("com.tencent.assistantOpenSDK.downloadStateChange.action");
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
@@ -71,12 +71,12 @@ public class OpenSDKTool4Assistant
       localIntent.putExtra((String)localEntry.getKey(), (String)localEntry.getValue());
     }
     paramContext.sendBroadcast(localIntent);
-    AppMethodBeat.o(75847);
+    AppMethodBeat.o(102093);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.OpenSDKTool4Assistant
  * JD-Core Version:    0.7.0.1
  */

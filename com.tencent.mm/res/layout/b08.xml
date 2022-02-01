@@ -1,32 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ezg" android:background="@drawable/dx" android:layout_width="fill_parent" android:layout_height="180.0dip">
-        <ImageView android:id="@id/ezh" android:layout_width="@dimen/aab" android:layout_height="@dimen/aab" android:layout_marginTop="40.0dip" android:layout_marginStart="24.0dip" android:layout_alignParentStart="true" />
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="40.0dip" android:layout_marginEnd="24.0dip" android:layout_alignParentEnd="true">
-            <ImageView android:id="@id/ezi" android:layout_width="@dimen/aab" android:layout_height="@dimen/aab" android:src="@drawable/w5" />
-            <ImageView android:id="@id/ezj" android:visibility="gone" android:layout_width="@dimen/aab" android:layout_height="@dimen/aab" android:layout_marginTop="@dimen/l2" />
-            <ImageView android:id="@id/ezk" android:visibility="gone" android:layout_width="@dimen/aab" android:layout_height="@dimen/aab" android:layout_marginTop="@dimen/l2" />
-        </LinearLayout>
-    </RelativeLayout>
-    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/ezl" android:background="@drawable/du" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:gravity="center_vertical" android:id="@id/ezm" android:background="@drawable/a3v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="44.0dip" android:layout_marginStart="24.0dip" android:layout_marginEnd="24.0dip">
-            <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/a0k" android:textColor="@color/a6q" android:id="@id/ezn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" android:layout_marginBottom="13.0dip" android:text="@string/ext" android:layout_marginStart="12.0dip" android:layout_marginEnd="12.0dip" />
-        </RelativeLayout>
-        <RelativeLayout android:layout_gravity="bottom" android:id="@id/ezo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a_z">
-            <Button android:textStyle="bold" android:id="@id/ezp" android:background="@drawable/a47" android:layout_width="wrap_content" android:layout_height="48.0dip" android:text="@string/ey7" android:layout_centerVertical="true" android:paddingStart="12.0dip" android:paddingEnd="12.0dip" android:layout_marginStart="@dimen/a_x" android:layout_marginEnd="@dimen/a_y" android:layout_alignParentEnd="true" style="@style/ns" />
-            <LinearLayout android:orientation="horizontal" android:id="@id/ezq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_toStartOf="@id/ezp">
-                <ImageView android:layout_gravity="center_vertical" android:id="@id/ezr" android:layout_width="@dimen/aab" android:layout_height="@dimen/aab" android:layout_weight="1.0" android:layout_marginStart="@dimen/a_y" />
-                <ImageView android:layout_gravity="center_vertical" android:id="@id/ezs" android:layout_width="@dimen/aab" android:layout_height="@dimen/aab" android:layout_weight="1.0" android:layout_marginStart="@dimen/a_y" />
-                <RelativeLayout android:id="@id/ezt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="@dimen/a_y">
-                    <ImageView android:id="@id/ezu" android:layout_width="@dimen/aab" android:layout_height="@dimen/aab" android:layout_centerInParent="true" />
-                    <ImageView android:id="@id/ezv" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_alignBottom="@id/ezu" android:layout_alignEnd="@id/ezu" />
-                </RelativeLayout>
-                <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="@dimen/a_y">
-                    <ImageView android:id="@id/ezw" android:layout_width="@dimen/aab" android:layout_height="@dimen/aab" android:layout_centerInParent="true" />
-                    <ImageView android:id="@id/ezx" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_alignBottom="@id/ezw" android:layout_alignEnd="@id/ezw" />
-                </RelativeLayout>
-            </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
-</merge>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:gravity="center_horizontal" android:id="@id/e4c" android:background="@color/c" android:paddingTop="@dimen/hg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/s2" />
+        <ListView android:id="@id/d2o" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/n3" />
+        <com.tencent.mm.ui.base.sortview.SortViewScrollBar android:layout_gravity="center|right" android:id="@id/fqn" android:layout_width="@dimen/b" android:layout_height="fill_parent" />
+    </FrameLayout>
+</LinearLayout>

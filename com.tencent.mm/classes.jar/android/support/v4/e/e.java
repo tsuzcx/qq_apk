@@ -1,51 +1,33 @@
 package android.support.v4.e;
 
-import java.io.Writer;
-
 public final class e
-  extends Writer
 {
-  private StringBuilder mBuilder = new StringBuilder(128);
-  private final String mTag;
-  
-  public e(String paramString)
+  public static void a(Object paramObject, StringBuilder paramStringBuilder)
   {
-    this.mTag = paramString;
-  }
-  
-  private void flushBuilder()
-  {
-    if (this.mBuilder.length() > 0) {
-      this.mBuilder.delete(0, this.mBuilder.length());
-    }
-  }
-  
-  public final void close()
-  {
-    flushBuilder();
-  }
-  
-  public final void flush()
-  {
-    flushBuilder();
-  }
-  
-  public final void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    if (i < paramInt2)
+    if (paramObject == null)
     {
-      char c = paramArrayOfChar[(paramInt1 + i)];
-      if (c == '\n') {
-        flushBuilder();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.mBuilder.append(c);
+      paramStringBuilder.append("null");
+      return;
+    }
+    String str2 = paramObject.getClass().getSimpleName();
+    String str1;
+    if (str2 != null)
+    {
+      str1 = str2;
+      if (str2.length() > 0) {}
+    }
+    else
+    {
+      str2 = paramObject.getClass().getName();
+      int i = str2.lastIndexOf('.');
+      str1 = str2;
+      if (i > 0) {
+        str1 = str2.substring(i + 1);
       }
     }
+    paramStringBuilder.append(str1);
+    paramStringBuilder.append('{');
+    paramStringBuilder.append(Integer.toHexString(System.identityHashCode(paramObject)));
   }
 }
 

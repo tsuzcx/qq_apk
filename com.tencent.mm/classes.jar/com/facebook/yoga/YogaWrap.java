@@ -8,12 +8,12 @@ public enum YogaWrap
   
   static
   {
-    AppMethodBeat.i(144199);
+    AppMethodBeat.i(18222);
     NO_WRAP = new YogaWrap("NO_WRAP", 0, 0);
     WRAP = new YogaWrap("WRAP", 1, 1);
     WRAP_REVERSE = new YogaWrap("WRAP_REVERSE", 2, 2);
     $VALUES = new YogaWrap[] { NO_WRAP, WRAP, WRAP_REVERSE };
-    AppMethodBeat.o(144199);
+    AppMethodBeat.o(18222);
   }
   
   private YogaWrap(int paramInt)
@@ -23,24 +23,24 @@ public enum YogaWrap
   
   public static YogaWrap fromInt(int paramInt)
   {
-    AppMethodBeat.i(144198);
+    AppMethodBeat.i(18221);
     switch (paramInt)
     {
     default: 
       localObject = new IllegalArgumentException("Unknown enum value: ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(144198);
+      AppMethodBeat.o(18221);
       throw ((Throwable)localObject);
     case 0: 
       localObject = NO_WRAP;
-      AppMethodBeat.o(144198);
+      AppMethodBeat.o(18221);
       return localObject;
     case 1: 
       localObject = WRAP;
-      AppMethodBeat.o(144198);
+      AppMethodBeat.o(18221);
       return localObject;
     }
     Object localObject = WRAP_REVERSE;
-    AppMethodBeat.o(144198);
+    AppMethodBeat.o(18221);
     return localObject;
   }
   
@@ -51,7 +51,7 @@ public enum YogaWrap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.facebook.yoga.YogaWrap
  * JD-Core Version:    0.7.0.1
  */

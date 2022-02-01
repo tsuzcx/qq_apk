@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <CheckBoxPreference android:title="@string/egx" android:key="settings_voice_play_mode" android:defaultValue="false" />
-    <CheckBoxPreference android:title="@string/e_u" android:key="settings_enter_button_send" android:defaultValue="false" />
-    <Preference android:title="@string/e_b" android:key="settings_chatting_bg" android:layout="@layout/afi" />
-    <Preference android:title="@string/e_q" android:key="settings_emoji_manager" android:layout="@layout/afi" />
-    <PreferenceTitleCategory android:title="@string/e_8" />
-    <Preference android:title="@string/a2c" android:key="settings_bak_chat" android:layout="@layout/afi" />
-    <Preference android:title="@string/edz" android:key="settings_reset" android:layout="@layout/afi" />
-    <Preference android:title="@string/b60" android:key="settings_recovery" android:layout="@layout/afi" />
+    <CheckBoxPreference android:defaultValue="false" android:key="follow_system" android:summary="@string/f2z" android:title="@string/u3" />
+    <PreferenceTitleCategory android:key="manual_title" android:title="@string/f30" />
+    <SelectPreference android:key="normal_mode" android:title="@string/f37" />
+    <SelectPreference android:key="dark_mode" android:title="@string/f5n" />
 </PreferenceScreen>

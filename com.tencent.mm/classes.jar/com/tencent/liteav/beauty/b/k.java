@@ -23,7 +23,7 @@ public class k
   public k(int paramInt)
   {
     super("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n \nvarying vec2 textureCoordinate;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n}", "varying lowp vec2 textureCoordinate;\n \nuniform sampler2D inputImageTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}");
-    AppMethodBeat.i(66986);
+    AppMethodBeat.i(15110);
     this.r = null;
     this.s = 1;
     this.t = null;
@@ -33,12 +33,12 @@ public class k
     this.x = null;
     this.s = paramInt;
     TXCLog.i(y, "yuv Type ".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(66986);
+    AppMethodBeat.o(15110);
   }
   
   private int r()
   {
-    AppMethodBeat.i(66991);
+    AppMethodBeat.i(15115);
     GLES20.glBindTexture(3553, this.x[0]);
     if (this.r != null)
     {
@@ -46,13 +46,13 @@ public class k
       NativeLoad.nativeglTexImage2D(3553, 0, 6408, this.e, this.f, 0, 6408, 5121, this.r, 0);
     }
     int i = this.x[0];
-    AppMethodBeat.o(66991);
+    AppMethodBeat.o(15115);
     return i;
   }
   
   private void s()
   {
-    AppMethodBeat.i(146383);
+    AppMethodBeat.i(15117);
     if ((this.t != null) && (this.t[0] > 0))
     {
       GLES20.glDeleteTextures(1, this.t, 0);
@@ -63,15 +63,15 @@ public class k
       GLES20.glDeleteTextures(1, this.u, 0);
       this.u = null;
     }
-    AppMethodBeat.o(146383);
+    AppMethodBeat.o(15117);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(66988);
+    AppMethodBeat.i(15112);
     if ((this.f == paramInt2) && (this.e == paramInt1))
     {
-      AppMethodBeat.o(66988);
+      AppMethodBeat.o(15112);
       return;
     }
     s();
@@ -94,7 +94,7 @@ public class k
     for (;;)
     {
       super.a(paramInt1, paramInt2);
-      AppMethodBeat.o(66988);
+      AppMethodBeat.o(15112);
       return;
       if (3 == this.s)
       {
@@ -117,9 +117,9 @@ public class k
   
   public void a(int paramInt, FloatBuffer paramFloatBuffer1, FloatBuffer paramFloatBuffer2)
   {
-    AppMethodBeat.i(66992);
+    AppMethodBeat.i(15116);
     super.a(-1, paramFloatBuffer1, paramFloatBuffer2);
-    AppMethodBeat.o(66992);
+    AppMethodBeat.o(15116);
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -130,21 +130,21 @@ public class k
   public boolean a()
   {
     int i = 7;
-    AppMethodBeat.i(66987);
+    AppMethodBeat.i(15111);
     if (this.s == 1)
     {
       NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(i);
       if ((this.a == 0) || (!b())) {
-        break label125;
+        break label128;
       }
     }
-    label125:
+    label128:
     for (this.g = true;; this.g = false)
     {
       c();
       boolean bool = this.g;
-      AppMethodBeat.o(66987);
+      AppMethodBeat.o(15111);
       return bool;
       if (this.s == 3)
       {
@@ -154,7 +154,7 @@ public class k
       if (this.s == 2)
       {
         bool = super.a();
-        AppMethodBeat.o(66987);
+        AppMethodBeat.o(15111);
         return bool;
       }
       TXCLog.e(y, "don't support yuv format " + this.s);
@@ -164,15 +164,15 @@ public class k
   
   public void e()
   {
-    AppMethodBeat.i(66993);
+    AppMethodBeat.i(15118);
     super.e();
     s();
-    AppMethodBeat.o(66993);
+    AppMethodBeat.o(15118);
   }
   
   public void i()
   {
-    AppMethodBeat.i(66989);
+    AppMethodBeat.i(15113);
     super.i();
     int[] arrayOfInt;
     if (this.e % 4 != 0)
@@ -200,7 +200,7 @@ public class k
         if ((arrayOfInt != null) && (arrayOfInt[0] > 0))
         {
           GLES20.glPixelStorei(3317, arrayOfInt[0]);
-          AppMethodBeat.o(66989);
+          AppMethodBeat.o(15113);
           return;
           if (3 == this.s)
           {
@@ -229,7 +229,7 @@ public class k
           GLES20.glPixelStorei(3317, 4);
         }
       }
-      AppMethodBeat.o(66989);
+      AppMethodBeat.o(15113);
       return;
       arrayOfInt = null;
     }
@@ -237,22 +237,22 @@ public class k
   
   public int q()
   {
-    AppMethodBeat.i(66990);
+    AppMethodBeat.i(15114);
     if (2 == this.s)
     {
       i = r();
       GLES20.glBindTexture(3553, 0);
-      AppMethodBeat.o(66990);
+      AppMethodBeat.o(15114);
       return i;
     }
     int i = super.b(-1);
-    AppMethodBeat.o(66990);
+    AppMethodBeat.o(15114);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.k
  * JD-Core Version:    0.7.0.1
  */

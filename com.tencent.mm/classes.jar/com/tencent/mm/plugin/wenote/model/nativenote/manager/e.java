@@ -7,55 +7,55 @@ import java.io.Serializable;
 public class e
   implements Serializable
 {
-  public int Fe;
-  public int akX;
+  public int Mc;
+  public int asw;
   
   public e(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(26766);
-    this.akX = paramInt1;
-    this.Fe = paramInt2;
-    if (this.akX > this.Fe)
+    AppMethodBeat.i(30459);
+    this.asw = paramInt1;
+    this.Mc = paramInt2;
+    if (this.asw > this.Mc)
     {
-      paramInt1 = this.Fe;
-      this.Fe = this.akX;
-      this.akX = paramInt1;
+      paramInt1 = this.Mc;
+      this.Mc = this.asw;
+      this.asw = paramInt1;
     }
-    AppMethodBeat.o(26766);
+    AppMethodBeat.o(30459);
   }
   
   public e(EditText paramEditText)
   {
     this(paramEditText.getSelectionStart(), paramEditText.getSelectionEnd());
-    AppMethodBeat.i(26767);
-    AppMethodBeat.o(26767);
+    AppMethodBeat.i(30460);
+    AppMethodBeat.o(30460);
   }
   
-  public final e gX(int paramInt1, int paramInt2)
+  public final e iH(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(26768);
-    this.akX = Math.max(0, this.akX - paramInt1);
-    this.Fe += paramInt2;
-    AppMethodBeat.o(26768);
+    AppMethodBeat.i(30461);
+    this.asw = Math.max(0, this.asw - paramInt1);
+    this.Mc += paramInt2;
+    AppMethodBeat.o(30461);
     return this;
   }
   
   public final boolean isEmpty()
   {
-    return this.akX == this.Fe;
+    return this.asw == this.Mc;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(26769);
-    String str = "[" + this.akX + ", " + this.Fe + "]";
-    AppMethodBeat.o(26769);
+    AppMethodBeat.i(30462);
+    String str = "[" + this.asw + ", " + this.Mc + "]";
+    AppMethodBeat.o(30462);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.e
  * JD-Core Version:    0.7.0.1
  */

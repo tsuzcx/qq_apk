@@ -1,198 +1,132 @@
 package com.tencent.mm.ui;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.arch.a.c.a;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnApplyWindowInsetsListener;
-import android.view.Window;
-import android.view.WindowInsets;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-import java.util.WeakHashMap;
+import java.lang.reflect.Field;
 
-@TargetApi(21)
-public final class ah
+public final class ah<T>
 {
-  private static final boolean zfL;
-  private static final WeakHashMap<Activity, ah> zfM;
-  final Set<View.OnApplyWindowInsetsListener> jmL;
-  private WindowInsets zfN;
+  private Field bEQ;
+  private String classname;
+  private boolean fFP;
+  private String fieldName;
+  private Object obj;
   
-  static
+  public ah(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(146202);
-    if (Build.VERSION.SDK_INT < 23) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(159106);
+    if (paramObject == null)
     {
-      zfL = bool;
-      zfM = new WeakHashMap();
-      AppMethodBeat.o(146202);
-      return;
+      paramObject = new IllegalArgumentException("obj cannot be null");
+      AppMethodBeat.o(159106);
+      throw paramObject;
     }
+    this.obj = paramObject;
+    this.fieldName = paramString;
+    this.classname = null;
+    AppMethodBeat.o(159106);
   }
   
-  private ah(final Activity paramActivity)
+  private void prepare()
   {
-    AppMethodBeat.i(146200);
-    this.jmL = new HashSet();
-    paramActivity.runOnUiThread(new Runnable()
+    AppMethodBeat.i(159107);
+    if (this.fFP)
     {
-      public final void run()
+      AppMethodBeat.o(159107);
+      return;
+    }
+    this.fFP = true;
+    Class localClass = this.obj.getClass();
+    while (localClass != null) {
+      try
       {
-        AppMethodBeat.i(146195);
-        paramActivity.getWindow().getDecorView().setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener()
+        Field localField1 = localClass.getDeclaredField(this.fieldName);
+        localField1.setAccessible(true);
+        this.bEQ = localField1;
+        return;
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
         {
-          public final WindowInsets onApplyWindowInsets(View paramAnonymous2View, WindowInsets paramAnonymous2WindowInsets)
+          try
           {
-            AppMethodBeat.i(146194);
-            synchronized (ah.this)
+            if ((this.classname != null) && (!this.classname.equals("")))
             {
-              ah.a(ah.this, new WindowInsets(paramAnonymous2WindowInsets));
-            }
-            synchronized (ah.a(ah.this))
-            {
-              LinkedList localLinkedList = new LinkedList(ah.a(ah.this));
-              ??? = localLinkedList.iterator();
-              while (((Iterator)???).hasNext())
+              Field[] arrayOfField = localClass.getDeclaredFields();
+              int j = arrayOfField.length;
+              i = 0;
+              if (i < j)
               {
-                ((View.OnApplyWindowInsetsListener)((Iterator)???).next()).onApplyWindowInsets(paramAnonymous2View, paramAnonymous2WindowInsets);
-                continue;
-                paramAnonymous2View = finally;
-                AppMethodBeat.o(146194);
-                throw paramAnonymous2View;
+                Field localField2 = arrayOfField[i];
+                if (!localField2.getType().getName().equals(this.classname)) {
+                  continue;
+                }
+                localField2.setAccessible(true);
+                this.bEQ = localField2;
               }
             }
-            paramAnonymous2View = paramAnonymous2View.onApplyWindowInsets(paramAnonymous2WindowInsets);
-            AppMethodBeat.o(146194);
-            return paramAnonymous2View;
           }
-        });
-        AppMethodBeat.o(146195);
-      }
-    });
-    AppMethodBeat.o(146200);
-  }
-  
-  @TargetApi(21)
-  public static ah aB(Activity paramActivity)
-  {
-    AppMethodBeat.i(146197);
-    paramActivity = d(paramActivity, true);
-    AppMethodBeat.o(146197);
-    return paramActivity;
-  }
-  
-  public static WindowInsets aC(Activity paramActivity)
-  {
-    AppMethodBeat.i(146198);
-    if (zfL)
-    {
-      paramActivity = d(paramActivity, false);
-      if (paramActivity == null)
-      {
-        AppMethodBeat.o(146198);
-        return null;
-      }
-      paramActivity = paramActivity.dDr();
-      AppMethodBeat.o(146198);
-      return paramActivity;
-    }
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      paramActivity = paramActivity.getWindow().getDecorView().getRootWindowInsets();
-      AppMethodBeat.o(146198);
-      return paramActivity;
-    }
-    AppMethodBeat.o(146198);
-    return null;
-  }
-  
-  private static ah d(Activity paramActivity, boolean paramBoolean)
-  {
-    AppMethodBeat.i(146199);
-    synchronized (zfM)
-    {
-      ah localah2 = (ah)zfM.get(paramActivity);
-      ah localah1 = localah2;
-      if (localah2 == null)
-      {
-        localah1 = localah2;
-        if (paramBoolean)
-        {
-          localah1 = new ah(paramActivity);
-          zfM.put(paramActivity, localah1);
+          catch (Exception localException2)
+          {
+            int i;
+            continue;
+          }
+          localClass = localClass.getSuperclass();
+          break;
+          i += 1;
         }
       }
-      AppMethodBeat.o(146199);
-      return localah1;
+      finally
+      {
+        localClass.getSuperclass();
+        AppMethodBeat.o(159107);
+      }
     }
+    AppMethodBeat.o(159107);
   }
   
-  private WindowInsets dDr()
+  public final T get()
   {
+    AppMethodBeat.i(159108);
+    prepare();
+    Object localObject;
+    if (this.bEQ == null)
+    {
+      localObject = new NoSuchFieldException();
+      AppMethodBeat.o(159108);
+      throw ((Throwable)localObject);
+    }
     try
     {
-      WindowInsets localWindowInsets = this.zfN;
-      return localWindowInsets;
+      localObject = this.bEQ.get(this.obj);
+      AppMethodBeat.o(159108);
+      return localObject;
     }
-    finally {}
+    catch (ClassCastException localClassCastException)
+    {
+      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("unable to cast object");
+      AppMethodBeat.o(159108);
+      throw localIllegalArgumentException;
+    }
   }
   
-  public static void e(Application paramApplication)
+  public final void set(T paramT)
   {
-    AppMethodBeat.i(146196);
-    paramApplication.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {}
+    AppMethodBeat.i(159109);
+    prepare();
+    if (this.bEQ == null)
     {
-      public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
-      {
-        AppMethodBeat.i(146192);
-        this.zfO.apply(paramAnonymousActivity);
-        AppMethodBeat.o(146192);
-      }
-      
-      public final void onActivityDestroyed(Activity paramAnonymousActivity) {}
-      
-      public final void onActivityPaused(Activity paramAnonymousActivity) {}
-      
-      public final void onActivityResumed(Activity paramAnonymousActivity) {}
-      
-      public final void onActivitySaveInstanceState(Activity paramAnonymousActivity, Bundle paramAnonymousBundle) {}
-      
-      public final void onActivityStarted(Activity paramAnonymousActivity)
-      {
-        AppMethodBeat.i(146193);
-        this.zfO.apply(paramAnonymousActivity);
-        AppMethodBeat.o(146193);
-      }
-      
-      public final void onActivityStopped(Activity paramAnonymousActivity) {}
-    });
-    AppMethodBeat.o(146196);
-  }
-  
-  public final void a(View.OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
-  {
-    AppMethodBeat.i(146201);
-    synchronized (this.jmL)
-    {
-      this.jmL.add(paramOnApplyWindowInsetsListener);
-      AppMethodBeat.o(146201);
-      return;
+      paramT = new NoSuchFieldException();
+      AppMethodBeat.o(159109);
+      throw paramT;
     }
+    this.bEQ.set(this.obj, paramT);
+    AppMethodBeat.o(159109);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.ah
  * JD-Core Version:    0.7.0.1
  */

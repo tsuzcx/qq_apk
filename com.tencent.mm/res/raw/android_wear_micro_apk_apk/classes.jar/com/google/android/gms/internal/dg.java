@@ -10,9 +10,9 @@ public final class dg
   static void a(zzbaw paramzzbaw, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramzzbaw.Hc);
-    c.a(paramParcel, 2, paramzzbaw.gW(), paramInt);
-    c.a(paramParcel, 3, paramzzbaw.jM(), paramInt);
+    c.c(paramParcel, 1, paramzzbaw.IR);
+    c.a(paramParcel, 2, paramzzbaw.hg(), paramInt);
+    c.a(paramParcel, 3, paramzzbaw.jV(), paramInt);
     c.v(paramParcel, i);
   }
 }

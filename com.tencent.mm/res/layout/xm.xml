@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/nn" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bo0" android:background="@color/nq" android:layout_width="fill_parent" android:layout_height="9.0dip" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <com.tencent.mm.plugin.emojicapture.ui.capture.CaptureContainer android:id="@id/ab_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.emojicapture.ui.editor.CaptureEditorContainer android:id="@id/bh4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

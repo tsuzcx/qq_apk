@@ -5,73 +5,62 @@ import java.util.LinkedList;
 
 public final class a
 {
-  private int amM;
-  private int amN = 0;
-  private int amO;
-  private InputStream amP;
-  private int amQ = 0;
-  private int amR = 0;
-  private int amS = 2147483647;
-  private int amT = 67108864;
+  private int aqo;
+  private int aqp = 0;
+  private int aqq;
+  private InputStream aqr;
+  private int aqs = 0;
+  private int aqt = 0;
+  private int aqu = 2147483647;
+  private int aqv = 67108864;
   private byte[] buffer;
   
   private a(byte[] paramArrayOfByte, int paramInt)
   {
     this.buffer = paramArrayOfByte;
-    this.amM = (paramInt + 0);
-    this.amO = 0;
-    this.amP = null;
+    this.aqo = (paramInt + 0);
+    this.aqq = 0;
+    this.aqr = null;
   }
   
-  private boolean I(boolean paramBoolean)
+  private boolean L(boolean paramBoolean)
   {
-    if (this.amO < this.amM) {
+    if (this.aqq < this.aqo) {
       throw new IllegalStateException("refillBuffer() called when buffer wasn't empty.");
     }
-    if (this.amR + this.amM == this.amS)
+    if (this.aqt + this.aqo == this.aqu)
     {
       if (paramBoolean) {
-        throw b.oI();
+        throw b.pw();
       }
       return false;
     }
-    this.amR += this.amM;
-    this.amO = 0;
-    if (this.amP == null) {}
-    for (int i = -1;; i = this.amP.read(this.buffer))
+    this.aqt += this.aqo;
+    this.aqq = 0;
+    if (this.aqr == null) {}
+    for (int i = -1;; i = this.aqr.read(this.buffer))
     {
-      this.amM = i;
-      if (this.amM != -1) {
+      this.aqo = i;
+      if (this.aqo != -1) {
         break label117;
       }
-      this.amM = 0;
+      this.aqo = 0;
       if (!paramBoolean) {
         break;
       }
-      throw b.oI();
+      throw b.pw();
     }
     return false;
     label117:
-    this.amM += this.amN;
-    i = this.amR + this.amM;
-    if (i > this.amS)
-    {
-      this.amN = (i - this.amS);
-      this.amM -= this.amN;
-    }
-    for (;;)
-    {
-      i = this.amR + this.amM + this.amN;
-      if ((i <= this.amT) && (i >= 0)) {
-        break;
-      }
-      throw b.oM();
-      this.amN = 0;
+    pu();
+    i = this.aqt + this.aqo + this.aqp;
+    if ((i > this.aqv) || (i < 0)) {
+      throw b.pA();
     }
     return true;
   }
   
-  private int[] cl(int paramInt)
+  private int[] cH(int paramInt)
   {
     int j = this.buffer[paramInt];
     int i = paramInt + 1;
@@ -118,7 +107,7 @@ public final class a
     for (;;)
     {
       if (paramInt >= 5) {
-        throw b.oK();
+        throw b.py();
       }
       if (this.buffer[j] >= 0) {
         return new int[] { k, j + 1 };
@@ -127,49 +116,49 @@ public final class a
     }
   }
   
-  private byte[] cm(int paramInt)
+  private byte[] cI(int paramInt)
   {
     if (paramInt < 0) {
-      throw b.oJ();
+      throw b.px();
     }
-    if (this.amR + this.amO + paramInt > this.amS)
+    if (this.aqt + this.aqq + paramInt > this.aqu)
     {
-      cn(this.amS - this.amR - this.amO);
-      throw b.oI();
+      cJ(this.aqu - this.aqt - this.aqq);
+      throw b.pw();
     }
-    if (paramInt <= this.amM - this.amO)
+    if (paramInt <= this.aqo - this.aqq)
     {
       localObject = new byte[paramInt];
-      System.arraycopy(this.buffer, this.amO, localObject, 0, paramInt);
-      this.amO += paramInt;
+      System.arraycopy(this.buffer, this.aqq, localObject, 0, paramInt);
+      this.aqq += paramInt;
       return localObject;
     }
     if (paramInt < 2048)
     {
       localObject = new byte[paramInt];
-      i = this.amM - this.amO;
-      System.arraycopy(this.buffer, this.amO, localObject, 0, i);
-      this.amO = this.amM;
-      I(true);
+      i = this.aqo - this.aqq;
+      System.arraycopy(this.buffer, this.aqq, localObject, 0, i);
+      this.aqq = this.aqo;
+      L(true);
       for (;;)
       {
-        if (paramInt - i <= this.amM)
+        if (paramInt - i <= this.aqo)
         {
           System.arraycopy(this.buffer, 0, localObject, i, paramInt - i);
-          this.amO = (paramInt - i);
+          this.aqq = (paramInt - i);
           return localObject;
         }
-        System.arraycopy(this.buffer, 0, localObject, i, this.amM);
-        i += this.amM;
-        this.amO = this.amM;
-        I(true);
+        System.arraycopy(this.buffer, 0, localObject, i, this.aqo);
+        i += this.aqo;
+        this.aqq = this.aqo;
+        L(true);
       }
     }
-    int m = this.amO;
-    int n = this.amM;
-    this.amR += this.amM;
-    this.amO = 0;
-    this.amM = 0;
+    int m = this.aqq;
+    int n = this.aqo;
+    this.aqt += this.aqo;
+    this.aqq = 0;
+    this.aqo = 0;
     Object localObject = new LinkedList();
     int i = paramInt - (n - m);
     byte[] arrayOfByte1;
@@ -196,11 +185,11 @@ public final class a
             i -= j;
             break;
           }
-          if (this.amP == null) {}
-          for (int k = -1; k == -1; k = this.amP.read(arrayOfByte1, j, arrayOfByte1.length - j)) {
-            throw b.oI();
+          if (this.aqr == null) {}
+          for (int k = -1; k == -1; k = this.aqr.read(arrayOfByte1, j, arrayOfByte1.length - j)) {
+            throw b.pw();
           }
-          this.amR += k;
+          this.aqt += k;
           j += k;
         }
       }
@@ -211,62 +200,62 @@ public final class a
     }
   }
   
-  private void cn(int paramInt)
+  private void cJ(int paramInt)
   {
     if (paramInt < 0) {
-      throw b.oJ();
+      throw b.px();
     }
-    if (this.amR + this.amO + paramInt > this.amS)
+    if (this.aqt + this.aqq + paramInt > this.aqu)
     {
-      cn(this.amS - this.amR - this.amO);
-      throw b.oI();
+      cJ(this.aqu - this.aqt - this.aqq);
+      throw b.pw();
     }
-    if (paramInt < this.amM - this.amO) {
-      this.amO += paramInt;
+    if (paramInt < this.aqo - this.aqq) {
+      this.aqq += paramInt;
     }
     for (;;)
     {
       return;
-      int i = this.amM - this.amO;
-      this.amR += i;
-      this.amO = 0;
-      this.amM = 0;
+      int i = this.aqo - this.aqq;
+      this.aqt += i;
+      this.aqq = 0;
+      this.aqo = 0;
       while (i < paramInt)
       {
-        if (this.amP == null) {}
-        for (int j = -1; j <= 0; j = (int)this.amP.skip(paramInt - i)) {
-          throw b.oI();
+        if (this.aqr == null) {}
+        for (int j = -1; j <= 0; j = (int)this.aqr.skip(paramInt - i)) {
+          throw b.pw();
         }
         i += j;
-        this.amR = (j + this.amR);
+        this.aqt = (j + this.aqt);
       }
     }
   }
   
-  private int oF()
+  private int ps()
   {
-    int i = oH();
+    int i = pv();
     if (i >= 0) {}
     int k;
     do
     {
       return i;
       i &= 0x7F;
-      j = oH();
+      j = pv();
       if (j >= 0) {
         return i | j << 7;
       }
       i |= (j & 0x7F) << 7;
-      j = oH();
+      j = pv();
       if (j >= 0) {
         return i | j << 14;
       }
       i |= (j & 0x7F) << 14;
-      k = oH();
+      k = pv();
       if (k >= 0) {
         return i | k << 21;
       }
-      j = oH();
+      j = pv();
       k = i | (k & 0x7F) << 21 | j << 28;
       i = k;
     } while (j >= 0);
@@ -274,24 +263,37 @@ public final class a
     for (;;)
     {
       if (j >= 5) {
-        throw b.oK();
+        throw b.py();
       }
       i = k;
-      if (oH() >= 0) {
+      if (pv() >= 0) {
         break;
       }
       j += 1;
     }
   }
   
-  private byte oH()
+  private void pu()
   {
-    if (this.amO == this.amM) {
-      I(true);
+    this.aqo += this.aqp;
+    int i = this.aqt + this.aqo;
+    if (i > this.aqu)
+    {
+      this.aqp = (i - this.aqu);
+      this.aqo -= this.aqp;
+      return;
+    }
+    this.aqp = 0;
+  }
+  
+  private byte pv()
+  {
+    if (this.aqq == this.aqo) {
+      L(true);
     }
     byte[] arrayOfByte = this.buffer;
-    int i = this.amO;
-    this.amO = (i + 1);
+    int i = this.aqq;
+    this.aqq = (i + 1);
     return arrayOfByte[i];
   }
   
@@ -300,89 +302,89 @@ public final class a
     return new a(paramArrayOfByte, paramArrayOfByte.length);
   }
   
-  public final LinkedList<byte[]> ci(int paramInt)
+  public final LinkedList<byte[]> cE(int paramInt)
   {
     LinkedList localLinkedList = new LinkedList();
-    int i = oF();
+    int i = ps();
     try
     {
       byte[] arrayOfByte = new byte[i];
-      System.arraycopy(this.buffer, this.amO, arrayOfByte, 0, i);
+      System.arraycopy(this.buffer, this.aqq, arrayOfByte, 0, i);
       localLinkedList.add(arrayOfByte);
-      this.amO = (i + this.amO);
-      i = this.amO;
-      if (this.amO == this.amM) {
+      this.aqq = (i + this.aqq);
+      i = this.aqq;
+      if (this.aqq == this.aqo) {
         return localLinkedList;
       }
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      throw new OutOfMemoryError("alloc bytes:" + i);
+      throw new OutOfMemoryError("alloc bytes:".concat(String.valueOf(i)));
     }
-    Object localObject = cl(i);
+    Object localObject = cH(i);
     for (i = localObject[0];; i = localObject[0])
     {
-      if (a.a.a.b.a.ck(i) != paramInt) {}
+      if (a.a.a.b.a.cG(i) != paramInt) {}
       do
       {
         return localLinkedList;
-        this.amO = localObject[1];
-        i = oF();
+        this.aqq = localObject[1];
+        i = ps();
         localObject = new byte[i];
-        System.arraycopy(this.buffer, this.amO, localObject, 0, i);
+        System.arraycopy(this.buffer, this.aqq, localObject, 0, i);
         localLinkedList.add(localObject);
-        this.amO = (i + this.amO);
-      } while (this.amO == this.amM);
-      localObject = cl(this.amO);
+        this.aqq = (i + this.aqq);
+      } while (this.aqq == this.aqo);
+      localObject = cH(this.aqq);
     }
   }
   
-  public final int oB()
+  public final int po()
   {
-    if ((this.amO == this.amM) && (!I(false)))
+    if ((this.aqq == this.aqo) && (!L(false)))
     {
-      this.amQ = 0;
+      this.aqs = 0;
       return 0;
     }
-    this.amQ = oF();
-    if (this.amQ == 0) {
-      throw b.oL();
+    this.aqs = ps();
+    if (this.aqs == 0) {
+      throw b.pz();
     }
-    return this.amQ;
+    return this.aqs;
   }
   
-  public final int oC()
+  public final int pp()
   {
-    return oF();
+    return ps();
   }
   
-  public final boolean oD()
+  public final boolean pq()
   {
-    return oF() != 0;
+    return ps() != 0;
   }
   
-  public final com.tencent.mm.d.b oE()
+  public final com.tencent.mm.d.b pr()
   {
-    int i = oF();
-    if ((i < this.amM - this.amO) && (i > 0))
+    int i = ps();
+    if ((i < this.aqo - this.aqq) && (i > 0))
     {
-      com.tencent.mm.d.b localb = new com.tencent.mm.d.b(this.buffer, this.amO, i);
-      this.amO = (i + this.amO);
+      com.tencent.mm.d.b localb = new com.tencent.mm.d.b(this.buffer, this.aqq, i);
+      this.aqq = (i + this.aqq);
       return localb;
     }
-    return new com.tencent.mm.d.b(cm(i));
+    return new com.tencent.mm.d.b(cI(i));
   }
   
-  public final long oG()
+  public final long pt()
   {
     int i = 0;
     long l = 0L;
     for (;;)
     {
       if (i >= 64) {
-        throw b.oK();
+        throw b.py();
       }
-      int j = oH();
+      int j = pv();
       l |= (j & 0x7F) << i;
       if ((j & 0x80) == 0) {
         return l;
@@ -393,33 +395,33 @@ public final class a
   
   public final double readDouble()
   {
-    int i = oH();
-    int j = oH();
-    int k = oH();
-    int m = oH();
-    int n = oH();
-    int i1 = oH();
-    int i2 = oH();
-    int i3 = oH();
+    int i = pv();
+    int j = pv();
+    int k = pv();
+    int m = pv();
+    int n = pv();
+    int i1 = pv();
+    int i2 = pv();
+    int i3 = pv();
     long l = i;
     return Double.longBitsToDouble((j & 0xFF) << 8 | l & 0xFF | (k & 0xFF) << 16 | (m & 0xFF) << 24 | (n & 0xFF) << 32 | (i1 & 0xFF) << 40 | (i2 & 0xFF) << 48 | (i3 & 0xFF) << 56);
   }
   
   public final float readFloat()
   {
-    return Float.intBitsToFloat(oH() & 0xFF | (oH() & 0xFF) << 8 | (oH() & 0xFF) << 16 | (oH() & 0xFF) << 24);
+    return Float.intBitsToFloat(pv() & 0xFF | (pv() & 0xFF) << 8 | (pv() & 0xFF) << 16 | (pv() & 0xFF) << 24);
   }
   
   public final String readString()
   {
-    int i = oF();
-    if ((i < this.amM - this.amO) && (i > 0))
+    int i = ps();
+    if ((i < this.aqo - this.aqq) && (i > 0))
     {
-      String str = new String(this.buffer, this.amO, i, "UTF-8");
-      this.amO = (i + this.amO);
+      String str = new String(this.buffer, this.aqq, i, "UTF-8");
+      this.aqq = (i + this.aqq);
       return str;
     }
-    return new String(cm(i), "UTF-8");
+    return new String(cI(i), "UTF-8");
   }
 }
 

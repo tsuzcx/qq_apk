@@ -8,14 +8,14 @@ import com.google.android.gms.wearable.c;
 final class cn
   extends ci<Status>
 {
-  private final String TS;
-  private c US;
+  private final String VH;
+  private c WH;
   
   cn(p paramp, c paramc)
   {
     super(paramp);
-    this.US = ((c)d.u(paramc));
-    this.TS = null;
+    this.WH = ((c)d.D(paramc));
+    this.VH = null;
   }
 }
 

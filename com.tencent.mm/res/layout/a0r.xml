@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/w_" android:id="@id/bwq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cbu" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/l2" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <CheckBox android:id="@id/bwr" android:clickable="true" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/n_" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/w_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bx6" />
-    </LinearLayout>
-</LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="center_horizontal" android:paddingLeft="@dimen/i_" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/i_" android:paddingBottom="@dimen/jn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:id="@id/tb" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/aq8" android:contentDescription="@string/s3" />
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="left" android:layout_gravity="center_vertical" android:id="@id/gap" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/br_" android:singleLine="true" android:shadowColor="#99000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="10.0" />
+        </LinearLayout>
+    </RelativeLayout>
+</merge>

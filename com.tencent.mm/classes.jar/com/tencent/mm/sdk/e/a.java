@@ -1,445 +1,273 @@
 package com.tencent.mm.sdk.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vfs.i;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Properties;
 
 public final class a
 {
+  private Properties cLB;
   private String filePath;
-  private Properties yrI;
   
-  /* Error */
   public a(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokespecial 17	java/lang/Object:<init>	()V
-    //   4: ldc 18
-    //   6: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: aload_0
-    //   10: aconst_null
-    //   11: putfield 26	com/tencent/mm/sdk/e/a:yrI	Ljava/util/Properties;
-    //   14: aload_0
-    //   15: aconst_null
-    //   16: putfield 28	com/tencent/mm/sdk/e/a:filePath	Ljava/lang/String;
-    //   19: aload_0
-    //   20: new 30	java/util/Properties
-    //   23: dup
-    //   24: invokespecial 31	java/util/Properties:<init>	()V
-    //   27: putfield 26	com/tencent/mm/sdk/e/a:yrI	Ljava/util/Properties;
-    //   30: aload_0
-    //   31: aload_1
-    //   32: putfield 28	com/tencent/mm/sdk/e/a:filePath	Ljava/lang/String;
-    //   35: new 33	java/io/FileInputStream
-    //   38: dup
-    //   39: aload_1
-    //   40: invokespecial 35	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   43: astore_3
-    //   44: aload_3
-    //   45: astore_2
-    //   46: aload_0
-    //   47: getfield 26	com/tencent/mm/sdk/e/a:yrI	Ljava/util/Properties;
-    //   50: aload_3
-    //   51: invokevirtual 39	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   54: aload_3
-    //   55: invokevirtual 42	java/io/FileInputStream:close	()V
-    //   58: ldc 18
-    //   60: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   63: return
-    //   64: astore_2
-    //   65: ldc 47
-    //   67: ldc 49
-    //   69: iconst_2
-    //   70: anewarray 4	java/lang/Object
-    //   73: dup
-    //   74: iconst_0
-    //   75: aload_1
-    //   76: aastore
-    //   77: dup
-    //   78: iconst_1
-    //   79: aload_2
-    //   80: invokevirtual 53	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
-    //   83: aastore
-    //   84: invokestatic 59	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   87: ldc 18
-    //   89: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   92: return
-    //   93: astore 4
-    //   95: aconst_null
-    //   96: astore_3
-    //   97: aload_3
-    //   98: astore_2
-    //   99: ldc 47
-    //   101: ldc 61
-    //   103: iconst_2
-    //   104: anewarray 4	java/lang/Object
-    //   107: dup
-    //   108: iconst_0
-    //   109: aload_1
-    //   110: aastore
-    //   111: dup
-    //   112: iconst_1
-    //   113: aload 4
-    //   115: invokevirtual 62	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
-    //   118: aastore
-    //   119: invokestatic 59	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   122: aload_3
-    //   123: ifnull +86 -> 209
-    //   126: aload_3
-    //   127: invokevirtual 42	java/io/FileInputStream:close	()V
-    //   130: ldc 18
-    //   132: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   135: return
-    //   136: astore_2
-    //   137: ldc 47
-    //   139: ldc 49
-    //   141: iconst_2
-    //   142: anewarray 4	java/lang/Object
-    //   145: dup
-    //   146: iconst_0
-    //   147: aload_1
-    //   148: aastore
-    //   149: dup
-    //   150: iconst_1
-    //   151: aload_2
-    //   152: invokevirtual 53	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
-    //   155: aastore
-    //   156: invokestatic 59	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   159: ldc 18
-    //   161: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   164: return
-    //   165: astore_3
-    //   166: aconst_null
-    //   167: astore_2
-    //   168: aload_2
-    //   169: ifnull +7 -> 176
-    //   172: aload_2
-    //   173: invokevirtual 42	java/io/FileInputStream:close	()V
-    //   176: ldc 18
-    //   178: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   181: aload_3
-    //   182: athrow
-    //   183: astore_2
-    //   184: ldc 47
-    //   186: ldc 49
-    //   188: iconst_2
-    //   189: anewarray 4	java/lang/Object
-    //   192: dup
-    //   193: iconst_0
-    //   194: aload_1
-    //   195: aastore
-    //   196: dup
-    //   197: iconst_1
-    //   198: aload_2
-    //   199: invokevirtual 53	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
-    //   202: aastore
-    //   203: invokestatic 59	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   206: goto -30 -> 176
-    //   209: ldc 18
-    //   211: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   214: return
-    //   215: astore_3
-    //   216: goto -48 -> 168
-    //   219: astore 4
-    //   221: goto -124 -> 97
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	224	0	this	a
-    //   0	224	1	paramString	String
-    //   45	1	2	localFileInputStream1	java.io.FileInputStream
-    //   64	16	2	localIOException1	java.io.IOException
-    //   98	1	2	localFileInputStream2	java.io.FileInputStream
-    //   136	16	2	localIOException2	java.io.IOException
-    //   167	6	2	localObject1	Object
-    //   183	16	2	localIOException3	java.io.IOException
-    //   43	84	3	localFileInputStream3	java.io.FileInputStream
-    //   165	17	3	localObject2	Object
-    //   215	1	3	localObject3	Object
-    //   93	21	4	localException1	Exception
-    //   219	1	4	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   54	58	64	java/io/IOException
-    //   35	44	93	java/lang/Exception
-    //   126	130	136	java/io/IOException
-    //   35	44	165	finally
-    //   172	176	183	java/io/IOException
-    //   46	54	215	finally
-    //   99	122	215	finally
-    //   46	54	219	java/lang/Exception
+    AppMethodBeat.i(158052);
+    this.cLB = null;
+    this.filePath = null;
+    this.cLB = new Properties();
+    this.filePath = paramString;
+    try
+    {
+      InputStream localInputStream = i.openRead(paramString);
+      localObject1 = localInputStream;
+      localObject3 = localInputStream;
+      this.cLB.load(localInputStream);
+      if (localInputStream != null) {
+        try
+        {
+          localInputStream.close();
+          AppMethodBeat.o(158052);
+          return;
+        }
+        catch (IOException localIOException1)
+        {
+          ad.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { paramString, localIOException1.getLocalizedMessage() });
+          AppMethodBeat.o(158052);
+          return;
+        }
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localObject3 = localIOException1;
+      ad.e("MicroMsg.ReadConfig", "Read File: %s Failed. [%s]", new Object[] { paramString, localException.getLocalizedMessage() });
+      if (localIOException1 != null) {
+        try
+        {
+          localIOException1.close();
+          AppMethodBeat.o(158052);
+          return;
+        }
+        catch (IOException localIOException2)
+        {
+          ad.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { paramString, localIOException2.getLocalizedMessage() });
+          AppMethodBeat.o(158052);
+          return;
+        }
+      }
+    }
+    finally
+    {
+      if (localObject3 != null) {}
+      try
+      {
+        localObject3.close();
+        AppMethodBeat.o(158052);
+        throw localObject2;
+      }
+      catch (IOException localIOException3)
+      {
+        for (;;)
+        {
+          ad.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { paramString, localIOException3.getLocalizedMessage() });
+        }
+      }
+      AppMethodBeat.o(158052);
+    }
   }
   
-  public static boolean aE(String paramString1, String paramString2, String paramString3)
+  public static boolean A(String paramString1, String paramString2, long paramLong)
   {
-    AppMethodBeat.i(52494);
-    boolean bool = new a(paramString1).ij(paramString2, paramString3);
-    AppMethodBeat.o(52494);
+    AppMethodBeat.i(158062);
+    boolean bool = new a(paramString1).bS(paramString2, paramLong);
+    AppMethodBeat.o(158062);
+    return bool;
+  }
+  
+  public static boolean aS(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(158061);
+    boolean bool = new a(paramString1).L(paramString2, paramString3);
+    AppMethodBeat.o(158061);
     return bool;
   }
   
   public static String getValue(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(52492);
+    AppMethodBeat.i(158059);
     paramString1 = new a(paramString1).getValue(paramString2);
-    AppMethodBeat.o(52492);
+    AppMethodBeat.o(158059);
     return paramString1;
   }
   
-  public static Long ik(String paramString1, String paramString2)
+  public static Long kV(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(52493);
-    paramString1 = new a(paramString1).aqo(paramString2);
-    AppMethodBeat.o(52493);
+    AppMethodBeat.i(158060);
+    paramString1 = new a(paramString1).aGB(paramString2);
+    AppMethodBeat.o(158060);
     return paramString1;
   }
   
-  public static boolean il(String paramString1, String paramString2)
+  public static boolean kW(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(52496);
-    boolean bool = new a(paramString1).ex(paramString2, 0);
-    AppMethodBeat.o(52496);
+    AppMethodBeat.i(158063);
+    boolean bool = new a(paramString1).fI(paramString2, 0);
+    AppMethodBeat.o(158063);
     return bool;
   }
   
-  public static boolean r(String paramString1, String paramString2, long paramLong)
+  public final boolean L(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(52495);
-    boolean bool = new a(paramString1).aZ(paramString2, paramLong);
-    AppMethodBeat.o(52495);
-    return bool;
+    bool2 = true;
+    AppMethodBeat.i(158053);
+    localObject2 = null;
+    localObject1 = null;
+    for (;;)
+    {
+      try
+      {
+        localOutputStream = i.cM(this.filePath, false);
+        localObject1 = localOutputStream;
+        localObject2 = localOutputStream;
+        this.cLB.setProperty(paramString1, paramString2);
+        localObject1 = localOutputStream;
+        localObject2 = localOutputStream;
+        this.cLB.store(localOutputStream, "");
+        bool1 = bool2;
+        if (localOutputStream == null) {}
+      }
+      catch (Exception paramString1)
+      {
+        OutputStream localOutputStream;
+        localObject2 = localObject1;
+        ad.e("MicroMsg.ReadConfig", "Write File: %s Failed. [%s]", new Object[] { this.filePath, paramString1.getLocalizedMessage() });
+        if (localObject1 == null) {
+          continue;
+        }
+        try
+        {
+          localObject1.close();
+          bool1 = false;
+        }
+        catch (IOException paramString1)
+        {
+          ad.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { this.filePath, paramString1.getLocalizedMessage() });
+          bool1 = false;
+        }
+        continue;
+      }
+      finally
+      {
+        if (localObject2 == null) {
+          continue;
+        }
+        try
+        {
+          localObject2.close();
+          AppMethodBeat.o(158053);
+          throw paramString1;
+        }
+        catch (IOException paramString2)
+        {
+          ad.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { this.filePath, paramString2.getLocalizedMessage() });
+          continue;
+        }
+        boolean bool1 = false;
+        continue;
+      }
+      try
+      {
+        localOutputStream.close();
+        bool1 = bool2;
+      }
+      catch (IOException paramString1)
+      {
+        ad.e("MicroMsg.ReadConfig", "Close File: %s Failed. [%s]", new Object[] { this.filePath, paramString1.getLocalizedMessage() });
+        bool1 = bool2;
+      }
+    }
+    AppMethodBeat.o(158053);
+    return bool1;
   }
   
-  public final boolean aZ(String paramString, long paramLong)
+  public final Long aGB(String paramString)
   {
-    AppMethodBeat.i(52487);
-    boolean bool = ij(paramString, String.valueOf(paramLong));
-    AppMethodBeat.o(52487);
-    return bool;
-  }
-  
-  public final Long aqo(String paramString)
-  {
-    AppMethodBeat.i(52490);
+    AppMethodBeat.i(158057);
     paramString = getValue(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(52490);
+      AppMethodBeat.o(158057);
       return null;
     }
     try
     {
       long l = Long.parseLong(paramString);
-      AppMethodBeat.o(52490);
+      AppMethodBeat.o(158057);
       return Long.valueOf(l);
     }
     catch (Exception localException)
     {
-      ab.e("MicroMsg.ReadConfig", "getLongValue ParseLong : %s Failed. [%s]", new Object[] { paramString, localException.getLocalizedMessage() });
-      AppMethodBeat.o(52490);
+      ad.e("MicroMsg.ReadConfig", "getLongValue ParseLong : %s Failed. [%s]", new Object[] { paramString, localException.getLocalizedMessage() });
+      AppMethodBeat.o(158057);
     }
     return null;
   }
   
-  public final Integer aqp(String paramString)
+  public final Integer aGC(String paramString)
   {
-    AppMethodBeat.i(52491);
+    AppMethodBeat.i(158058);
     paramString = getValue(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(52491);
+      AppMethodBeat.o(158058);
       return null;
     }
     try
     {
       int i = Integer.parseInt(paramString);
-      AppMethodBeat.o(52491);
+      AppMethodBeat.o(158058);
       return Integer.valueOf(i);
     }
     catch (Exception localException)
     {
-      ab.e("MicroMsg.ReadConfig", "getIntegerValue ParseInteger : %s Failed. [%s]", new Object[] { paramString, localException.getLocalizedMessage() });
-      AppMethodBeat.o(52491);
+      ad.e("MicroMsg.ReadConfig", "getIntegerValue ParseInteger : %s Failed. [%s]", new Object[] { paramString, localException.getLocalizedMessage() });
+      AppMethodBeat.o(158058);
     }
     return null;
   }
   
-  public final boolean ex(String paramString, int paramInt)
+  public final boolean bS(String paramString, long paramLong)
   {
-    AppMethodBeat.i(52488);
-    boolean bool = ij(paramString, String.valueOf(paramInt));
-    AppMethodBeat.o(52488);
+    AppMethodBeat.i(158054);
+    boolean bool = L(paramString, String.valueOf(paramLong));
+    AppMethodBeat.o(158054);
+    return bool;
+  }
+  
+  public final boolean fI(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(158055);
+    boolean bool = L(paramString, String.valueOf(paramInt));
+    AppMethodBeat.o(158055);
     return bool;
   }
   
   public final String getValue(String paramString)
   {
-    AppMethodBeat.i(52489);
-    if ((this.yrI != null) && (this.yrI.containsKey(paramString)))
+    AppMethodBeat.i(158056);
+    if ((this.cLB != null) && (this.cLB.containsKey(paramString)))
     {
-      paramString = this.yrI.getProperty(paramString);
-      AppMethodBeat.o(52489);
+      paramString = this.cLB.getProperty(paramString);
+      AppMethodBeat.o(158056);
       return paramString;
     }
-    AppMethodBeat.o(52489);
+    AppMethodBeat.o(158056);
     return null;
-  }
-  
-  /* Error */
-  public final boolean ij(String paramString1, String paramString2)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: ldc 143
-    //   4: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: new 145	java/io/FileOutputStream
-    //   10: dup
-    //   11: aload_0
-    //   12: getfield 28	com/tencent/mm/sdk/e/a:filePath	Ljava/lang/String;
-    //   15: invokespecial 146	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   18: astore 5
-    //   20: aload 5
-    //   22: astore 4
-    //   24: aload_0
-    //   25: getfield 26	com/tencent/mm/sdk/e/a:yrI	Ljava/util/Properties;
-    //   28: aload_1
-    //   29: aload_2
-    //   30: invokevirtual 150	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
-    //   33: pop
-    //   34: aload 5
-    //   36: astore 4
-    //   38: aload_0
-    //   39: getfield 26	com/tencent/mm/sdk/e/a:yrI	Ljava/util/Properties;
-    //   42: aload 5
-    //   44: ldc 152
-    //   46: invokevirtual 156	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
-    //   49: aload 5
-    //   51: invokevirtual 157	java/io/FileOutputStream:close	()V
-    //   54: ldc 143
-    //   56: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   59: iload_3
-    //   60: ireturn
-    //   61: astore_1
-    //   62: ldc 47
-    //   64: ldc 49
-    //   66: iconst_2
-    //   67: anewarray 4	java/lang/Object
-    //   70: dup
-    //   71: iconst_0
-    //   72: aload_0
-    //   73: getfield 28	com/tencent/mm/sdk/e/a:filePath	Ljava/lang/String;
-    //   76: aastore
-    //   77: dup
-    //   78: iconst_1
-    //   79: aload_1
-    //   80: invokevirtual 53	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
-    //   83: aastore
-    //   84: invokestatic 59	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   87: goto -33 -> 54
-    //   90: astore_2
-    //   91: aconst_null
-    //   92: astore_1
-    //   93: aload_1
-    //   94: astore 4
-    //   96: ldc 47
-    //   98: ldc 159
-    //   100: iconst_2
-    //   101: anewarray 4	java/lang/Object
-    //   104: dup
-    //   105: iconst_0
-    //   106: aload_0
-    //   107: getfield 28	com/tencent/mm/sdk/e/a:filePath	Ljava/lang/String;
-    //   110: aastore
-    //   111: dup
-    //   112: iconst_1
-    //   113: aload_2
-    //   114: invokevirtual 62	java/lang/Exception:getLocalizedMessage	()Ljava/lang/String;
-    //   117: aastore
-    //   118: invokestatic 59	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   121: aload_1
-    //   122: ifnull +104 -> 226
-    //   125: aload_1
-    //   126: invokevirtual 157	java/io/FileOutputStream:close	()V
-    //   129: iconst_0
-    //   130: istore_3
-    //   131: goto -77 -> 54
-    //   134: astore_1
-    //   135: ldc 47
-    //   137: ldc 49
-    //   139: iconst_2
-    //   140: anewarray 4	java/lang/Object
-    //   143: dup
-    //   144: iconst_0
-    //   145: aload_0
-    //   146: getfield 28	com/tencent/mm/sdk/e/a:filePath	Ljava/lang/String;
-    //   149: aastore
-    //   150: dup
-    //   151: iconst_1
-    //   152: aload_1
-    //   153: invokevirtual 53	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
-    //   156: aastore
-    //   157: invokestatic 59	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   160: iconst_0
-    //   161: istore_3
-    //   162: goto -108 -> 54
-    //   165: astore_1
-    //   166: aconst_null
-    //   167: astore 4
-    //   169: aload 4
-    //   171: ifnull +8 -> 179
-    //   174: aload 4
-    //   176: invokevirtual 157	java/io/FileOutputStream:close	()V
-    //   179: ldc 143
-    //   181: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   184: aload_1
-    //   185: athrow
-    //   186: astore_2
-    //   187: ldc 47
-    //   189: ldc 49
-    //   191: iconst_2
-    //   192: anewarray 4	java/lang/Object
-    //   195: dup
-    //   196: iconst_0
-    //   197: aload_0
-    //   198: getfield 28	com/tencent/mm/sdk/e/a:filePath	Ljava/lang/String;
-    //   201: aastore
-    //   202: dup
-    //   203: iconst_1
-    //   204: aload_2
-    //   205: invokevirtual 53	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
-    //   208: aastore
-    //   209: invokestatic 59	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   212: goto -33 -> 179
-    //   215: astore_1
-    //   216: goto -47 -> 169
-    //   219: astore_2
-    //   220: aload 5
-    //   222: astore_1
-    //   223: goto -130 -> 93
-    //   226: iconst_0
-    //   227: istore_3
-    //   228: goto -174 -> 54
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	231	0	this	a
-    //   0	231	1	paramString1	String
-    //   0	231	2	paramString2	String
-    //   1	227	3	bool	boolean
-    //   22	153	4	localObject	Object
-    //   18	203	5	localFileOutputStream	java.io.FileOutputStream
-    // Exception table:
-    //   from	to	target	type
-    //   49	54	61	java/io/IOException
-    //   7	20	90	java/lang/Exception
-    //   125	129	134	java/io/IOException
-    //   7	20	165	finally
-    //   174	179	186	java/io/IOException
-    //   24	34	215	finally
-    //   38	49	215	finally
-    //   96	121	215	finally
-    //   24	34	219	java/lang/Exception
-    //   38	49	219	java/lang/Exception
   }
 }
 

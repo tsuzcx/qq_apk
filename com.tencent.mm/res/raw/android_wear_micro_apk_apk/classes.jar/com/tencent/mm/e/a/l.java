@@ -5,105 +5,105 @@ import a.a.a.b;
 public final class l
   extends com.tencent.mm.d.a
 {
-  public String VB;
-  public String VC;
-  public String VD;
-  public String VE;
-  public String VF;
-  public String VG;
-  public String VH;
-  public String VI;
-  public String VJ;
-  public int VK;
+  public String XA;
+  public String XB;
+  public String XC;
+  public String XD;
+  public String XE;
+  public int XF;
+  public String Xw;
+  public String Xx;
+  public String Xy;
+  public String Xz;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.VB == null) {
+      if (this.Xw == null) {
         throw new b("Not all required fields were included: LocalNodeId");
       }
-      if (this.VB != null) {
-        paramVarArgs.d(1, this.VB);
+      if (this.Xw != null) {
+        paramVarArgs.d(1, this.Xw);
       }
-      if (this.VC != null) {
-        paramVarArgs.d(2, this.VC);
+      if (this.Xx != null) {
+        paramVarArgs.d(2, this.Xx);
       }
-      if (this.VD != null) {
-        paramVarArgs.d(3, this.VD);
+      if (this.Xy != null) {
+        paramVarArgs.d(3, this.Xy);
       }
-      if (this.VE != null) {
-        paramVarArgs.d(4, this.VE);
+      if (this.Xz != null) {
+        paramVarArgs.d(4, this.Xz);
       }
-      if (this.VF != null) {
-        paramVarArgs.d(5, this.VF);
+      if (this.XA != null) {
+        paramVarArgs.d(5, this.XA);
       }
-      if (this.VG != null) {
-        paramVarArgs.d(6, this.VG);
+      if (this.XB != null) {
+        paramVarArgs.d(6, this.XB);
       }
-      if (this.VH != null) {
-        paramVarArgs.d(7, this.VH);
+      if (this.XC != null) {
+        paramVarArgs.d(7, this.XC);
       }
-      if (this.VI != null) {
-        paramVarArgs.d(8, this.VI);
+      if (this.XD != null) {
+        paramVarArgs.d(8, this.XD);
       }
-      if (this.VJ != null) {
-        paramVarArgs.d(9, this.VJ);
+      if (this.XE != null) {
+        paramVarArgs.d(9, this.XE);
       }
-      paramVarArgs.aq(10, this.VK);
+      paramVarArgs.at(10, this.XF);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.VB == null) {
+      if (this.Xw == null) {
         break label664;
       }
     }
     label664:
-    for (int i = a.a.a.b.b.a.e(1, this.VB) + 0;; i = 0)
+    for (int i = a.a.a.b.b.a.e(1, this.Xw) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.VC != null) {
-        paramInt = i + a.a.a.b.b.a.e(2, this.VC);
+      if (this.Xx != null) {
+        paramInt = i + a.a.a.b.b.a.e(2, this.Xx);
       }
       i = paramInt;
-      if (this.VD != null) {
-        i = paramInt + a.a.a.b.b.a.e(3, this.VD);
+      if (this.Xy != null) {
+        i = paramInt + a.a.a.b.b.a.e(3, this.Xy);
       }
       paramInt = i;
-      if (this.VE != null) {
-        paramInt = i + a.a.a.b.b.a.e(4, this.VE);
+      if (this.Xz != null) {
+        paramInt = i + a.a.a.b.b.a.e(4, this.Xz);
       }
       i = paramInt;
-      if (this.VF != null) {
-        i = paramInt + a.a.a.b.b.a.e(5, this.VF);
+      if (this.XA != null) {
+        i = paramInt + a.a.a.b.b.a.e(5, this.XA);
       }
       paramInt = i;
-      if (this.VG != null) {
-        paramInt = i + a.a.a.b.b.a.e(6, this.VG);
+      if (this.XB != null) {
+        paramInt = i + a.a.a.b.b.a.e(6, this.XB);
       }
       i = paramInt;
-      if (this.VH != null) {
-        i = paramInt + a.a.a.b.b.a.e(7, this.VH);
+      if (this.XC != null) {
+        i = paramInt + a.a.a.b.b.a.e(7, this.XC);
       }
       paramInt = i;
-      if (this.VI != null) {
-        paramInt = i + a.a.a.b.b.a.e(8, this.VI);
+      if (this.XD != null) {
+        paramInt = i + a.a.a.b.b.a.e(8, this.XD);
       }
       i = paramInt;
-      if (this.VJ != null) {
-        i = paramInt + a.a.a.b.b.a.e(9, this.VJ);
+      if (this.XE != null) {
+        i = paramInt + a.a.a.b.b.a.e(9, this.XE);
       }
-      return i + a.a.a.a.ak(10, this.VK);
+      return i + a.a.a.a.an(10, this.XF);
       if (paramInt == 2)
       {
-        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-        for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+        for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
           if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.oz();
+            paramVarArgs.pm();
           }
         }
-        if (this.VB != null) {
+        if (this.Xw != null) {
           break;
         }
         throw new b("Not all required fields were included: LocalNodeId");
@@ -117,34 +117,34 @@ public final class l
         default: 
           return -1;
         case 1: 
-          locall.VB = locala.ou();
+          locall.Xw = locala.ph();
           return 0;
         case 2: 
-          locall.VC = locala.ou();
+          locall.Xx = locala.ph();
           return 0;
         case 3: 
-          locall.VD = locala.ou();
+          locall.Xy = locala.ph();
           return 0;
         case 4: 
-          locall.VE = locala.ou();
+          locall.Xz = locala.ph();
           return 0;
         case 5: 
-          locall.VF = locala.ou();
+          locall.XA = locala.ph();
           return 0;
         case 6: 
-          locall.VG = locala.ou();
+          locall.XB = locala.ph();
           return 0;
         case 7: 
-          locall.VH = locala.ou();
+          locall.XC = locala.ph();
           return 0;
         case 8: 
-          locall.VI = locala.ou();
+          locall.XD = locala.ph();
           return 0;
         case 9: 
-          locall.VJ = locala.ou();
+          locall.XE = locala.ph();
           return 0;
         }
-        locall.VK = locala.ot();
+        locall.XF = locala.pg();
         return 0;
       }
       return -1;

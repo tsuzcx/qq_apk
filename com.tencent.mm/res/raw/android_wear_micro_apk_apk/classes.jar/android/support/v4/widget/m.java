@@ -1,80 +1,88 @@
 package android.support.v4.widget;
 
-import android.graphics.Rect;
-import android.support.v4.view.a;
-import android.support.v4.view.a.e;
-import android.support.v4.view.r;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.accessibility.AccessibilityEvent;
+import android.content.Context;
+import android.view.animation.Interpolator;
+import android.widget.OverScroller;
 
-final class m
-  extends a
+@Deprecated
+public final class m
 {
-  private final Rect oI = new Rect();
+  OverScroller qO;
   
-  m(SlidingPaneLayout paramSlidingPaneLayout) {}
-  
-  private boolean S(View paramView)
+  private m(Context paramContext, Interpolator paramInterpolator)
   {
-    return this.pH.R(paramView);
-  }
-  
-  public final void a(View paramView, e parame)
-  {
-    e locale = e.a(parame);
-    super.a(paramView, locale);
-    Rect localRect = this.oI;
-    locale.getBoundsInParent(localRect);
-    parame.setBoundsInParent(localRect);
-    locale.getBoundsInScreen(localRect);
-    parame.setBoundsInScreen(localRect);
-    parame.setVisibleToUser(locale.isVisibleToUser());
-    parame.setPackageName(locale.getPackageName());
-    parame.setClassName(locale.getClassName());
-    parame.setContentDescription(locale.getContentDescription());
-    parame.setEnabled(locale.isEnabled());
-    parame.setClickable(locale.isClickable());
-    parame.setFocusable(locale.isFocusable());
-    parame.setFocused(locale.isFocused());
-    parame.setAccessibilityFocused(locale.isAccessibilityFocused());
-    parame.setSelected(locale.isSelected());
-    parame.setLongClickable(locale.isLongClickable());
-    parame.addAction(locale.getActions());
-    parame.setMovementGranularities(locale.getMovementGranularities());
-    locale.recycle();
-    parame.setClassName(SlidingPaneLayout.class.getName());
-    parame.setSource(paramView);
-    paramView = r.j(paramView);
-    if ((paramView instanceof View)) {
-      parame.setParent((View)paramView);
-    }
-    int j = this.pH.getChildCount();
-    int i = 0;
-    while (i < j)
+    if (paramInterpolator != null) {}
+    for (paramContext = new OverScroller(paramContext, paramInterpolator);; paramContext = new OverScroller(paramContext))
     {
-      paramView = this.pH.getChildAt(i);
-      if ((!S(paramView)) && (paramView.getVisibility() == 0))
-      {
-        r.c(paramView, 1);
-        parame.addChild(paramView);
-      }
-      i += 1;
+      this.qO = paramContext;
+      return;
     }
   }
   
-  public final void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  @Deprecated
+  public static m a(Context paramContext, Interpolator paramInterpolator)
   {
-    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
-    paramAccessibilityEvent.setClassName(SlidingPaneLayout.class.getName());
+    return new m(paramContext, paramInterpolator);
   }
   
-  public final boolean onRequestSendAccessibilityEvent(ViewGroup paramViewGroup, View paramView, AccessibilityEvent paramAccessibilityEvent)
+  @Deprecated
+  public final void abortAnimation()
   {
-    if (!S(paramView)) {
-      return super.onRequestSendAccessibilityEvent(paramViewGroup, paramView, paramAccessibilityEvent);
-    }
-    return false;
+    this.qO.abortAnimation();
+  }
+  
+  @Deprecated
+  public final void c(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.qO.startScroll(0, 0, paramInt1, paramInt2, paramInt3);
+  }
+  
+  @Deprecated
+  public final boolean computeScrollOffset()
+  {
+    return this.qO.computeScrollOffset();
+  }
+  
+  @Deprecated
+  public final void g(int paramInt1, int paramInt2)
+  {
+    this.qO.fling(0, 0, paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
+  }
+  
+  @Deprecated
+  public final float getCurrVelocity()
+  {
+    return this.qO.getCurrVelocity();
+  }
+  
+  @Deprecated
+  public final int getCurrX()
+  {
+    return this.qO.getCurrX();
+  }
+  
+  @Deprecated
+  public final int getCurrY()
+  {
+    return this.qO.getCurrY();
+  }
+  
+  @Deprecated
+  public final int getFinalX()
+  {
+    return this.qO.getFinalX();
+  }
+  
+  @Deprecated
+  public final int getFinalY()
+  {
+    return this.qO.getFinalY();
+  }
+  
+  @Deprecated
+  public final boolean isFinished()
+  {
+    return this.qO.isFinished();
   }
 }
 

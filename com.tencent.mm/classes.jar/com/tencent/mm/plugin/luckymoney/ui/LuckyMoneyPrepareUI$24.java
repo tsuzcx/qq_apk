@@ -11,13 +11,17 @@ final class LuckyMoneyPrepareUI$24
   
   public final void run()
   {
-    AppMethodBeat.i(142077);
-    Intent localIntent = new Intent();
-    localIntent.setClass(this.owL.getContext(), LuckyMoneyIndexUI.class);
-    localIntent.addFlags(67108864);
-    this.owL.getContext().startActivity(localIntent);
-    this.owL.finish();
-    AppMethodBeat.o(142077);
+    AppMethodBeat.i(65853);
+    Object localObject = new Intent();
+    ((Intent)localObject).setClass(this.tpT.getContext(), LuckyMoneyIndexUI.class);
+    ((Intent)localObject).addFlags(67108864);
+    AppCompatActivity localAppCompatActivity = this.tpT.getContext();
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(localAppCompatActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPrepareUI$31", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localAppCompatActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(localAppCompatActivity, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyPrepareUI$31", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    this.tpT.finish();
+    AppMethodBeat.o(65853);
   }
 }
 

@@ -6,10 +6,10 @@ public abstract class DowngradeableSafeParcel
   extends zza
   implements ReflectedParcelable
 {
-  private static final Object IU = new Object();
-  private static ClassLoader IV = null;
-  private static Integer IW = null;
-  private boolean IX = false;
+  private static final Object KJ = new Object();
+  private static ClassLoader KK = null;
+  private static Integer KL = null;
+  private boolean KM = false;
 }
 
 

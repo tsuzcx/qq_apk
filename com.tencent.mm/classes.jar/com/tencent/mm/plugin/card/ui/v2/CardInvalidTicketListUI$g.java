@@ -1,43 +1,27 @@
 package com.tencent.mm.plugin.card.ui.v2;
 
-import android.content.Context;
-import android.view.View;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.base.n.c;
-import com.tencent.mm.ui.base.n.d;
+import d.l;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "parent", "Landroid/support/v7/widget/RecyclerView;", "kotlin.jvm.PlatformType", "view", "Landroid/view/View;", "position", "", "id", "", "onItemLongClick"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
 final class CardInvalidTicketListUI$g
-  implements MRecyclerView.b
+  implements MenuItem.OnMenuItemClickListener
 {
   CardInvalidTicketListUI$g(CardInvalidTicketListUI paramCardInvalidTicketListUI) {}
   
-  public final boolean O(View paramView, int paramInt)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(89258);
-    ab.i("MicroMsg.CardInvalidTicketListUI", "long click item");
-    paramView = this.kAh.bfk().ts(paramInt);
-    if (paramView != null) {
-      switch (paramView.type)
-      {
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(89258);
-      return false;
-      com.tencent.mm.ui.tools.l locall = new com.tencent.mm.ui.tools.l((Context)this.kAh.getContext());
-      locall.a((n.c)new CardInvalidTicketListUI.g.a(this, paramView));
-      locall.a((n.d)new CardInvalidTicketListUI.g.b(this, paramView));
-      locall.cwt();
-    }
+    AppMethodBeat.i(112484);
+    this.nFz.finish();
+    AppMethodBeat.o(112484);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.v2.CardInvalidTicketListUI.g
  * JD-Core Version:    0.7.0.1
  */

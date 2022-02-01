@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bpi;
 import com.tencent.mm.sdk.b.b;
 
 public final class tn
   extends b
 {
-  public tn.a cKb;
+  public a dyR;
   
   public tn()
   {
@@ -15,11 +16,19 @@ public final class tn
   
   private tn(byte paramByte)
   {
-    AppMethodBeat.i(102511);
-    this.cKb = new tn.a();
-    this.ymq = false;
+    AppMethodBeat.i(125640);
+    this.dyR = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(102511);
+    AppMethodBeat.o(125640);
+  }
+  
+  public static final class a
+  {
+    public int dbV;
+    public bpi dyS;
+    public String mediaId;
+    public String path;
   }
 }
 

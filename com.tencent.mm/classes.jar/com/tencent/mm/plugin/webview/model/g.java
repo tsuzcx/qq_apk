@@ -1,85 +1,99 @@
 package com.tencent.mm.plugin.webview.model;
 
+import android.content.ContentValues;
+import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bw;
-import com.tencent.mm.protocal.protobuf.bx;
+import com.tencent.mm.g.c.dg;
+import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bg;
+import com.tencent.mm.sdk.platformtools.bg.b;
+import com.tencent.mm.sdk.platformtools.bg.c;
+import com.tencent.mm.storagebase.h;
 
 public final class g
-  extends m
-  implements k
+  implements bg.c<Integer, Long>
 {
-  private f eGj;
-  public final com.tencent.mm.ai.b rr;
+  public static final String[] SQL_CREATE;
+  private static final c.a iMP;
+  public final bg<Integer, Long> AWS;
+  private long AWT;
+  public final h gPa;
   
-  public g(String paramString1, String paramString2, String paramString3)
+  static
   {
-    AppMethodBeat.i(6583);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bw();
-    ((b.a)localObject).fsY = new bx();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/oauth_addavatar";
-    ((b.a)localObject).funcId = 2500;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (bw)this.rr.fsV.fta;
-    ((bw)localObject).cwc = paramString1;
-    ((bw)localObject).nickname = paramString2;
-    ((bw)localObject).fileid = paramString3;
-    ((bw)localObject).wor = 1;
-    AppMethodBeat.o(6583);
+    AppMethodBeat.i(78860);
+    iMP = dg.So();
+    SQL_CREATE = new String[] { j.getCreateSQLs(iMP, "JsLogBlockList") };
+    AppMethodBeat.o(78860);
   }
   
-  public g(String paramString1, String paramString2, byte[] paramArrayOfByte)
+  public g(h paramh)
   {
-    AppMethodBeat.i(6582);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bw();
-    ((b.a)localObject).fsY = new bx();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/oauth_addavatar";
-    ((b.a)localObject).funcId = 2500;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (bw)this.rr.fsV.fta;
-    ((bw)localObject).cwc = paramString1;
-    ((bw)localObject).nickname = paramString2;
-    ((bw)localObject).woq = new com.tencent.mm.bv.b(paramArrayOfByte);
-    ((bw)localObject).wor = 0;
-    AppMethodBeat.o(6582);
+    AppMethodBeat.i(78855);
+    this.gPa = paramh;
+    this.AWS = new bg(this, com.tencent.mm.kernel.g.afE().EUN.getLooper(), 100, 20);
+    AppMethodBeat.o(78855);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final void a(bg.b<Integer, Long> paramb)
   {
-    AppMethodBeat.i(6585);
-    this.eGj = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(6585);
-    return i;
+    AppMethodBeat.i(78858);
+    switch (paramb.EWD)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(78858);
+      return;
+      this.gPa.delete("JsLogBlockList", "logId=" + paramb.aFP, null);
+      AppMethodBeat.o(78858);
+      return;
+      ContentValues localContentValues = new ContentValues(2);
+      localContentValues.put("logId", (Integer)paramb.aFP);
+      localContentValues.put("liftTime", (Long)paramb.values);
+      this.gPa.replace("JsLogBlockList", "logId", localContentValues);
+    }
   }
   
-  public final int getType()
+  public final boolean aBK()
   {
-    return 2500;
+    AppMethodBeat.i(78857);
+    if (this.gPa.inTransaction())
+    {
+      AppMethodBeat.o(78857);
+      return false;
+    }
+    this.AWT = this.gPa.rb(Thread.currentThread().getId());
+    if (this.AWT > 0L)
+    {
+      AppMethodBeat.o(78857);
+      return true;
+    }
+    AppMethodBeat.o(78857);
+    return false;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void aBL()
   {
-    AppMethodBeat.i(6584);
-    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(6584);
+    AppMethodBeat.i(78859);
+    if (this.AWT > 0L) {
+      this.gPa.mX(this.AWT);
+    }
+    AppMethodBeat.o(78859);
+  }
+  
+  public final void elG()
+  {
+    AppMethodBeat.i(78856);
+    this.AWS.uV(true);
+    AppMethodBeat.o(78856);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.g
  * JD-Core Version:    0.7.0.1
  */

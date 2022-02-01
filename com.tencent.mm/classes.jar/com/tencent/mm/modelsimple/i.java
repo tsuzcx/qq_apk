@@ -1,86 +1,151 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.l;
+import com.tencent.mm.al.n;
+import com.tencent.mm.b.o;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.zx;
-import com.tencent.mm.protocal.protobuf.zy;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.p.a;
+import com.tencent.mm.protocal.p.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.List;
+import junit.framework.Assert;
 
 public final class i
-  extends m
+  extends n
   implements k
 {
-  private f callback;
-  private final com.tencent.mm.ai.b rr;
+  private g callback;
+  public byte[] content;
+  private q gVZ;
+  public String hrn;
   
-  public i(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
+  public i(l.e parame)
   {
-    AppMethodBeat.i(153482);
-    ab.i("MicroMsg.NetSceneEnterTempSession", "NetSceneEnterTempSession %s, %s, %s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new zx();
-    ((b.a)localObject).fsY = new zy();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/entertempsession";
-    ((b.a)localObject).funcId = 1066;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    if (paramString2 != null)
+    AppMethodBeat.i(20614);
+    this.hrn = "";
+    parame = (p.b)parame;
+    this.hrn = parame.hrn;
+    this.content = parame.content;
+    AppMethodBeat.o(20614);
+  }
+  
+  public i(List<String> paramList, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(20613);
+    this.hrn = "";
+    if ((paramList.size() > 0) && (paramArrayOfByte != null)) {}
+    int j;
+    String str;
+    for (boolean bool1 = true;; bool1 = false)
     {
-      localObject = paramString2;
-      if (paramString2.length() > 32)
+      Assert.assertTrue(bool1);
+      j = (int)(System.currentTimeMillis() / 1000L);
+      str = (String)paramList.get(0);
+      int i = 1;
+      while (i < paramList.size())
       {
-        localObject = paramString2;
-        if (paramInt == 19) {}
+        str = str + "," + ((String)paramList.get(i)).trim();
+        i += 1;
       }
     }
-    for (localObject = paramString2.substring(0, 32);; localObject = "")
+    this.gVZ = new a();
+    paramList = (p.a)this.gVZ.getReqObj();
+    paramList.djq = 111;
+    paramList.dtM = 0;
+    paramList.htk = j;
+    if (str != null)
     {
-      paramString2 = (zx)this.rr.fsV.fta;
-      paramString2.wxM = paramString1;
-      paramString2.niK = paramInt;
-      paramString2.wQU = com.tencent.mm.bv.b.ank((String)localObject);
-      if (paramArrayOfByte == null) {}
-      for (paramString2.wPb = com.tencent.mm.bv.b.bL(new byte[0]);; paramString2.wPb = com.tencent.mm.bv.b.bL(paramArrayOfByte))
-      {
-        ab.i("MicroMsg.NetSceneEnterTempSession", "NetSceneEnterTempSession %s, %s, %s", new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(paramString2.wPb.pW.length) });
-        AppMethodBeat.o(153482);
-        return;
+      bool1 = true;
+      Assert.assertTrue(bool1);
+      paramList.CqG = str;
+      if (paramArrayOfByte == null) {
+        break label269;
       }
+    }
+    label269:
+    for (bool1 = bool2;; bool1 = false)
+    {
+      Assert.assertTrue(bool1);
+      paramList.CqH = paramArrayOfByte;
+      ad.d("MicroMsg.NetSceneDirectSend", "NetSceneDirectSend: cmdId=111 seq=".concat(String.valueOf(j)));
+      ad.d("MicroMsg.NetSceneDirectSend", "NetSceneDirectSend: lstReceiver=" + str + " status = " + o.v(paramArrayOfByte, 0));
+      AppMethodBeat.o(20613);
+      return;
+      bool1 = false;
+      break;
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(16573);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(16573);
+    AppMethodBeat.i(20615);
+    this.callback = paramg;
+    int i = dispatch(parame, this.gVZ, this);
+    AppMethodBeat.o(20615);
     return i;
   }
   
   public final int getType()
   {
-    return 1066;
+    return 10;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(16574);
-    ab.i("MicroMsg.NetSceneEnterTempSession", "onGYNetEnd: %d, %d, %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(20616);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(16574);
+    AppMethodBeat.o(20616);
+  }
+  
+  public final boolean uniqueInNetsceneQueue()
+  {
+    return true;
+  }
+  
+  public static final class a
+    extends l
+  {
+    private final p.a hro;
+    private final p.b hrp;
+    
+    public a()
+    {
+      AppMethodBeat.i(20612);
+      this.hro = new p.a();
+      this.hrp = new p.b();
+      AppMethodBeat.o(20612);
+    }
+    
+    public final l.d getReqObjImp()
+    {
+      return this.hro;
+    }
+    
+    public final l.e getRespObj()
+    {
+      return this.hrp;
+    }
+    
+    public final int getType()
+    {
+      return 10;
+    }
+    
+    public final String getUri()
+    {
+      return null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelsimple.i
  * JD-Core Version:    0.7.0.1
  */

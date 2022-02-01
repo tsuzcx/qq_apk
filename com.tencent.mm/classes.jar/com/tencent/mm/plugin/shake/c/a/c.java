@@ -1,50 +1,52 @@
 package com.tencent.mm.plugin.shake.c.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cbh;
-import com.tencent.mm.protocal.protobuf.cbi;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.shake.b.m;
+import com.tencent.mm.protocal.protobuf.crz;
+import com.tencent.mm.protocal.protobuf.csa;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
-  extends com.tencent.mm.ai.m
+  extends n
   implements k
 {
-  private f callback;
-  e qNx;
+  private g callback;
   private final b rr;
+  e wmn;
   
   public c(float paramFloat1, float paramFloat2, int paramInt, String paramString)
   {
-    AppMethodBeat.i(24514);
+    AppMethodBeat.i(28185);
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new cbh();
-    ((b.a)localObject).fsY = new cbi();
+    ((b.a)localObject).gUU = new crz();
+    ((b.a)localObject).gUV = new csa();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/card/shakecard";
     ((b.a)localObject).funcId = 1250;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (cbh)this.rr.fsV.fta;
-    ((cbh)localObject).cyV = paramFloat2;
-    ((cbh)localObject).cAH = paramFloat1;
-    ((cbh)localObject).scene = paramInt;
-    ((cbh)localObject).xLZ = paramString;
-    AppMethodBeat.o(24514);
+    this.rr = ((b.a)localObject).atI();
+    localObject = (crz)this.rr.gUS.gUX;
+    ((crz)localObject).dpb = paramFloat2;
+    ((crz)localObject).dqQ = paramFloat1;
+    ((crz)localObject).scene = paramInt;
+    ((crz)localObject).EjX = paramString;
+    AppMethodBeat.o(28185);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, g paramg)
   {
-    AppMethodBeat.i(24515);
-    this.callback = paramf;
+    AppMethodBeat.i(28186);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(24515);
+    AppMethodBeat.o(28186);
     return i;
   }
   
@@ -55,47 +57,47 @@ public final class c
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(24516);
-    ab.i("MicroMsg.NetSceneShakeCard", "onGYNetEnd, getType = " + getType() + " errType = " + paramInt2 + " errCode = " + paramInt3);
+    AppMethodBeat.i(28187);
+    ad.i("MicroMsg.NetSceneShakeCard", "onGYNetEnd, getType = " + getType() + " errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (cbi)this.rr.fsW.fta;
+      paramq = (csa)this.rr.gUT.gUX;
       if (paramq != null)
       {
-        this.qNx = new e();
-        this.qNx.knS = paramq.knS;
-        this.qNx.kml = paramq.kml;
-        this.qNx.cHo = paramq.cHo;
-        this.qNx.title = paramq.title;
-        this.qNx.kmn = paramq.kmn;
-        this.qNx.kmo = paramq.kmo;
-        this.qNx.knw = paramq.knw;
-        this.qNx.kmm = paramq.kmm;
-        this.qNx.color = paramq.color;
-        this.qNx.qNy = paramq.qNy;
-        this.qNx.qNB = paramq.qNB;
-        this.qNx.qNC = paramq.qNC;
-        this.qNx.qND = paramq.qND;
-        this.qNx.qNE = paramq.qNE;
-        this.qNx.qNF = paramq.qNF;
-        this.qNx.kmq = paramq.kmq;
-        this.qNx.qNG = paramq.qNG;
-        this.qNx.qNH = paramq.qNH;
-        com.tencent.mm.plugin.shake.b.m.clt().qNA = this.qNx.qNF;
+        this.wmn = new e();
+        this.wmn.ntg = paramq.ntg;
+        this.wmn.nrr = paramq.nrr;
+        this.wmn.dyd = paramq.dyd;
+        this.wmn.title = paramq.title;
+        this.wmn.nrs = paramq.nrs;
+        this.wmn.nrt = paramq.nrt;
+        this.wmn.nsK = paramq.nsK;
+        this.wmn.gGR = paramq.gGR;
+        this.wmn.gHT = paramq.gHT;
+        this.wmn.wmo = paramq.wmo;
+        this.wmn.wmr = paramq.wmr;
+        this.wmn.wms = paramq.wms;
+        this.wmn.wmt = paramq.wmt;
+        this.wmn.wmu = paramq.wmu;
+        this.wmn.wmv = paramq.wmv;
+        this.wmn.nrv = paramq.nrv;
+        this.wmn.wmw = paramq.wmw;
+        this.wmn.wmx = paramq.wmx;
+        m.dph().wmq = this.wmn.wmv;
       }
     }
     for (;;)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(24516);
+      AppMethodBeat.o(28187);
       return;
-      this.qNx = new e();
-      this.qNx.knS = 3;
-      this.qNx.qNF = com.tencent.mm.plugin.shake.b.m.clt().qNA;
+      this.wmn = new e();
+      this.wmn.ntg = 3;
+      this.wmn.wmv = m.dph().wmq;
       continue;
-      this.qNx = new e();
-      this.qNx.knS = 3;
-      this.qNx.qNF = com.tencent.mm.plugin.shake.b.m.clt().qNA;
+      this.wmn = new e();
+      this.wmn.ntg = 3;
+      this.wmn.wmv = m.dph().wmq;
     }
   }
 }

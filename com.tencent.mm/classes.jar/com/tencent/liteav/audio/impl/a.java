@@ -1,690 +1,480 @@
 package com.tencent.liteav.audio.impl;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothHeadset;
-import android.bluetooth.BluetoothProfile.ServiceListener;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.media.AudioManager;
-import android.os.Build;
-import android.os.Handler;
-import android.os.Looper;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.module.TXCEventRecorderProxy;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class a
-  implements e
+  extends TXCAudioEngImplBase
+  implements c
 {
-  private final String a;
-  private int b;
-  private Context c;
-  private boolean d;
-  private BroadcastReceiver e;
-  private BluetoothProfile.ServiceListener f;
-  private BluetoothHeadset g;
-  private List<d> h;
-  private Handler i;
-  private boolean j;
-  private int k;
-  private boolean l;
-  private com.tencent.liteav.basic.module.a m;
-  private boolean n;
-  private String o;
-  private int p;
-  private boolean q;
-  private List<String> r;
-  private List<String> s;
-  private AudioManager t;
+  protected static boolean e = false;
+  protected String a;
+  protected boolean b;
+  protected Context c;
+  protected boolean d;
+  protected boolean f;
+  private com.tencent.liteav.audio.impl.a.c g;
   
-  static
+  public a()
   {
-    AppMethodBeat.i(66583);
-    com.tencent.liteav.basic.util.b.f();
-    AppMethodBeat.o(66583);
+    AppMethodBeat.i(16413);
+    this.b = false;
+    this.c = null;
+    this.d = false;
+    this.g = null;
+    this.f = false;
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "construct: TXCAudioEngImplTRAE.");
+    AppMethodBeat.o(16413);
   }
   
-  private a()
+  public void InitBeforeStart(Context paramContext)
   {
-    AppMethodBeat.i(66570);
-    this.a = ("AudioCenter:" + a.class.getSimpleName());
-    this.b = 1;
-    this.k = 0;
-    this.m = null;
-    this.n = false;
-    this.p = 0;
-    this.o = "18446744073709551615";
-    this.m = new com.tencent.liteav.basic.module.a();
-    this.m.setID(this.o);
-    this.h = new ArrayList();
-    b();
-    AppMethodBeat.o(66570);
-  }
-  
-  public static a a()
-  {
-    AppMethodBeat.i(66569);
-    a locala = a.a.a();
-    AppMethodBeat.o(66569);
-    return locala;
-  }
-  
-  private void a(Intent paramIntent)
-  {
-    AppMethodBeat.i(66572);
-    int i1 = paramIntent.getIntExtra("android.bluetooth.profile.extra.STATE", -1);
-    TXCLog.i(this.a, "processAudioState state " + i1 + " (ps: 10--DISCONNECTED; 11--CONNECTING; 12--CONNECTED), thread id = " + Thread.currentThread().getId());
-    if (i1 == 12)
-    {
-      TXCLog.i(this.a, "SCO connected, yeah!");
-      this.b = 3;
-      a(true, true);
-      this.i.removeCallbacksAndMessages(null);
-      this.t.setBluetoothScoOn(true);
-      b(this.k);
-      AppMethodBeat.o(66572);
-      return;
+    AppMethodBeat.i(16414);
+    super.InitBeforeStart(paramContext);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", " InitBeforeStart");
+    if (paramContext != null) {
+      this.c = paramContext.getApplicationContext();
     }
-    if ((i1 != 11) && (i1 == 10))
-    {
-      this.b = 1;
-      b(this.k);
-      a(false, false);
-      if (this.q)
-      {
-        TXCLog.i(this.a, "processAudioState, mNeedRestartScoWithHangUp");
-        this.q = false;
-        d();
-      }
-    }
-    AppMethodBeat.o(66572);
+    TXCTraeJNI.InitTraeEngineLibrary(paramContext);
+    com.tencent.liteav.basic.e.b.a().a(paramContext);
+    TXCTraeJNI.nativeSetTraeConfig(com.tencent.liteav.basic.e.b.a().b());
+    TXCTraeJNI.nativeInitBeforeEngineCreate(paramContext);
+    TXCTraeJNI.nativeNewAudioSessionDuplicate(this.c);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", " TXCTelephonyMgr set...");
+    b.a().a(this.c);
+    b.a().a(this);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", " InitBeforeStart end...");
+    AppMethodBeat.o(16414);
   }
   
-  public static void a(String paramString)
+  public void UnInitEngine()
   {
-    AppMethodBeat.i(66568);
-    TXCTraeJNI.nativeSetTraeConfig(paramString);
-    AppMethodBeat.o(66568);
-  }
-  
-  private void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i1 = 1;
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(146231);
-        if (paramBoolean1 != true) {
-          break label106;
-        }
-        if (!paramBoolean2)
-        {
-          this.m.setStatusValue(11005, Integer.valueOf(i1));
-          TXCEventRecorderProxy.a("18446744073709551615", 1001, i1, -1, "", 0);
-          Iterator localIterator = this.h.iterator();
-          if (!localIterator.hasNext()) {
-            break label98;
-          }
-          ((d)localIterator.next()).OnHeadsetState(paramBoolean1);
-          continue;
-        }
-        i1 = 2;
-      }
-      finally {}
-      continue;
-      label98:
-      AppMethodBeat.o(146231);
-      return;
-      label106:
-      i1 = 0;
-    }
-  }
-  
-  private void b()
-  {
-    AppMethodBeat.i(146227);
-    this.r = new ArrayList();
-    this.s = new ArrayList();
-    this.r.add("HUAWEI");
-    this.s.add("EVA-AL00");
-    AppMethodBeat.o(146227);
-  }
-  
-  private void b(Intent paramIntent)
-  {
-    AppMethodBeat.i(66573);
-    if (paramIntent.hasExtra("state"))
-    {
-      int i1 = paramIntent.getIntExtra("state", 0);
-      if (i1 == 0)
-      {
-        this.j = false;
-        a(false, false);
-        b(this.k);
-        TXCLog.i(this.a, "pull out wired headset");
-        AppMethodBeat.o(66573);
-        return;
-      }
-      if (1 == i1)
-      {
-        this.j = true;
-        a(true, false);
-        b(this.k);
-        TXCLog.i(this.a, "insert wired headset");
-      }
-    }
-    AppMethodBeat.o(66573);
-  }
-  
-  private boolean c()
-  {
-    AppMethodBeat.i(146228);
-    String str1;
-    if (Build.MANUFACTURER == null)
-    {
-      str1 = "";
-      if (Build.MODEL != null) {
-        break label105;
-      }
-    }
-    label105:
-    for (String str2 = "";; str2 = Build.MODEL)
-    {
-      if ((!this.r.contains(str1)) || (!this.s.contains(str2))) {
-        break label112;
-      }
-      TXCLog.i(this.a, "manufacturer = " + str1 + ", model = " + str2 + " need MODE_NORMAL for BT Mic");
-      AppMethodBeat.o(146228);
-      return true;
-      str1 = Build.MANUFACTURER;
-      break;
-    }
-    label112:
-    AppMethodBeat.o(146228);
-    return false;
-  }
-  
-  /* Error */
-  private void d()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 290
-    //   5: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: getfield 115	com/tencent/liteav/audio/impl/a:g	Landroid/bluetooth/BluetoothHeadset;
-    //   12: ifnonnull +12 -> 24
-    //   15: ldc_w 290
-    //   18: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   21: aload_0
-    //   22: monitorexit
-    //   23: return
-    //   24: aload_0
-    //   25: getfield 115	com/tencent/liteav/audio/impl/a:g	Landroid/bluetooth/BluetoothHeadset;
-    //   28: invokevirtual 296	android/bluetooth/BluetoothHeadset:getConnectedDevices	()Ljava/util/List;
-    //   31: astore_2
-    //   32: aload_2
-    //   33: ifnull +12 -> 45
-    //   36: aload_2
-    //   37: invokeinterface 300 1 0
-    //   42: ifne +55 -> 97
-    //   45: aload_0
-    //   46: getfield 83	com/tencent/liteav/audio/impl/a:a	Ljava/lang/String;
-    //   49: ldc_w 302
-    //   52: invokestatic 304	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   55: ldc_w 290
-    //   58: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   61: goto -40 -> 21
-    //   64: astore_2
-    //   65: aload_0
-    //   66: monitorexit
-    //   67: aload_2
-    //   68: athrow
-    //   69: astore_2
-    //   70: aload_0
-    //   71: getfield 83	com/tencent/liteav/audio/impl/a:a	Ljava/lang/String;
-    //   74: ldc_w 306
-    //   77: aload_2
-    //   78: invokestatic 311	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   81: invokevirtual 315	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   84: invokestatic 304	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   87: aload_0
-    //   88: aconst_null
-    //   89: putfield 115	com/tencent/liteav/audio/impl/a:g	Landroid/bluetooth/BluetoothHeadset;
-    //   92: aconst_null
-    //   93: astore_2
-    //   94: goto -62 -> 32
-    //   97: aload_2
-    //   98: iconst_0
-    //   99: invokeinterface 319 2 0
-    //   104: checkcast 321	android/bluetooth/BluetoothDevice
-    //   107: astore_2
-    //   108: aload_0
-    //   109: getfield 115	com/tencent/liteav/audio/impl/a:g	Landroid/bluetooth/BluetoothHeadset;
-    //   112: aload_2
-    //   113: invokevirtual 325	android/bluetooth/BluetoothHeadset:getConnectionState	(Landroid/bluetooth/BluetoothDevice;)I
-    //   116: istore_1
-    //   117: iload_1
-    //   118: iconst_m1
-    //   119: if_icmpne +35 -> 154
-    //   122: ldc_w 290
-    //   125: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   128: goto -107 -> 21
-    //   131: astore_2
-    //   132: aload_0
-    //   133: getfield 83	com/tencent/liteav/audio/impl/a:a	Ljava/lang/String;
-    //   136: ldc_w 327
-    //   139: aload_2
-    //   140: invokestatic 311	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   143: invokevirtual 315	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   146: invokestatic 304	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   149: iconst_m1
-    //   150: istore_1
-    //   151: goto -34 -> 117
-    //   154: aload_0
-    //   155: iload_1
-    //   156: invokespecial 188	com/tencent/liteav/audio/impl/a:d	(I)V
-    //   159: ldc_w 290
-    //   162: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   165: goto -144 -> 21
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	168	0	this	a
-    //   116	40	1	i1	int
-    //   31	6	2	localList	List
-    //   64	4	2	localObject	Object
-    //   69	9	2	localException1	Exception
-    //   93	20	2	localBluetoothDevice	android.bluetooth.BluetoothDevice
-    //   131	9	2	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   2	21	64	finally
-    //   24	32	64	finally
-    //   36	45	64	finally
-    //   45	61	64	finally
-    //   70	92	64	finally
-    //   97	108	64	finally
-    //   108	117	64	finally
-    //   122	128	64	finally
-    //   132	149	64	finally
-    //   154	165	64	finally
-    //   24	32	69	java/lang/Exception
-    //   108	117	131	java/lang/Exception
-  }
-  
-  private void d(int paramInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(146230);
-        switch (paramInt)
-        {
-        case 1: 
-          AppMethodBeat.o(146230);
-          return;
-        }
-      }
-      finally {}
-      if (!this.l)
-      {
-        TXCLog.w(this.a, "processBTHeadsetState connected, record is not running");
-        AppMethodBeat.o(146230);
-      }
-      else if (this.b == 2)
-      {
-        TXCLog.w(this.a, "processBTHeadsetState connected, sco is connecting, ignore");
-        AppMethodBeat.o(146230);
-      }
-      else
-      {
-        this.t.stopBluetoothSco();
-        this.t.setBluetoothScoOn(false);
-        if (!this.t.isBluetoothScoAvailableOffCall())
-        {
-          TXCLog.e(this.a, "checkBTHeadsetState connected, not support BTHeadset sco");
-          AppMethodBeat.o(146230);
-        }
-        else
-        {
-          TXCLog.i(this.a, "processBTHeadsetState connected, delay to startBluetoothSco");
-          this.b = 2;
-          this.i.postDelayed(new a.3(this), 1000L);
-          AppMethodBeat.o(146230);
-          continue;
-          this.t.stopBluetoothSco();
-          this.t.setBluetoothScoOn(false);
-          TXCLog.i(this.a, "processBTHeadsetState, disconnected");
-          b(this.k);
-          this.i.removeCallbacksAndMessages(null);
-        }
-      }
-    }
+    AppMethodBeat.i(16415);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "TXCAudioEngImplTRAE UnInitEngine");
+    TXCTraeJNI.nativeUnInitEngine();
+    b.a().b(this);
+    AppMethodBeat.o(16415);
   }
   
   public void a(int paramInt)
   {
+    AppMethodBeat.i(16444);
+    switch (paramInt)
+    {
+    }
     for (;;)
     {
-      try
+      AppMethodBeat.o(16444);
+      return;
+      TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "TelephonyManager.CALL_STATE_RINGING!");
+      AppMethodBeat.o(16444);
+      return;
+      TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "TelephonyManager.CALL_STATE_OFFHOOK!");
+      TXCTraeJNI.traePauseAuioRecord(true);
+      TXCTraeJNI.traeSetSilence(true);
+      this.f = true;
+      AppMethodBeat.o(16444);
+      return;
+      TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "TelephonyManager.CALL_STATE_IDLE!");
+      if (this.f)
       {
-        AppMethodBeat.i(66575);
-        if (this.t == null)
-        {
-          AppMethodBeat.o(66575);
-          return;
-        }
-        if (this.b == 2)
-        {
-          AppMethodBeat.o(66575);
-          continue;
-        }
-        if (!com.tencent.liteav.basic.e.b.a().g()) {
-          break label101;
-        }
-      }
-      finally {}
-      TXCLog.i(this.a, "【TXSDK-TRAE-LOG】 sys Aec Enable~");
-      try
-      {
-        if (this.j)
-        {
-          if (this.t.getMode() == 0)
-          {
-            TXCLog.w(this.a, "setMode, mIsWiredHeadsetOn, audioMode is MODE_NORMAL, ignore");
-            AppMethodBeat.o(66575);
-            continue;
-            label101:
-            TXCLog.i(this.a, "【TXSDK-TRAE-LOG】 TRAE don't setMode here~");
-            AppMethodBeat.o(66575);
-          }
-          else
-          {
-            this.t.setMode(0);
-            TXCLog.i(this.a, "setMode, is wiredHeadsetOn, set MODE_NORMA");
-            AppMethodBeat.o(66575);
-          }
-        }
-        else if ((this.g != null) && (this.b == 3) && (!c()))
-        {
-          if (this.t.getMode() == 3)
-          {
-            TXCLog.w(this.a, "setMode, bluetoothHeadset on, audioMode is MODE_IN_COMMUNICATION, ignore");
-            AppMethodBeat.o(66575);
-          }
-          else
-          {
-            this.t.setMode(3);
-            TXCLog.i(this.a, "setMode, bluetoothHeadset on, set mode MODE_IN_COMMUNICATION");
-            AppMethodBeat.o(66575);
-          }
-        }
-        else if (this.t.getMode() == 0)
-        {
-          TXCLog.w(this.a, "setMode, audioMode is MODE_NORMAL, ignore");
-          AppMethodBeat.o(66575);
-        }
-        else
-        {
-          TXCLog.i(this.a, "【TXSDK-TRAE-LOG】 michael setMode = ".concat(String.valueOf(paramInt)));
-          TXCLog.i(this.a, "【TXSDK-TRAE-LOG】 michael info don't change trae mode");
-          this.t.setMode(paramInt);
-          AppMethodBeat.o(66575);
-        }
-      }
-      catch (Exception localException)
-      {
-        AppMethodBeat.o(66575);
+        this.f = false;
+        TXCTraeJNI.traeResumeAuioRecord();
+        TXCTraeJNI.traeSetSilence(false);
       }
     }
   }
   
-  public void a(Context paramContext)
+  public int addJitterChannel(String paramString)
   {
-    AppMethodBeat.i(66571);
-    if (this.d)
+    AppMethodBeat.i(16439);
+    super.addJitterChannel(paramString);
+    paramString = getJitterByID(paramString);
+    if (paramString != null) {
+      paramString.enableVolumeLevelCal(e);
+    }
+    AppMethodBeat.o(16439);
+    return 0;
+  }
+  
+  public void enableEosMode(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16427);
+    TXCTraeJNI.nativeTraeEnableEosMode(paramBoolean);
+    AppMethodBeat.o(16427);
+  }
+  
+  public void enableSoftAEC(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(16422);
+    TXCTraeJNI.nativeSetTraeAEC(paramBoolean, paramInt);
+    AppMethodBeat.o(16422);
+  }
+  
+  public void enableSoftAGC(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(16424);
+    TXCTraeJNI.nativeSetTraeAGC(paramBoolean, paramInt);
+    AppMethodBeat.o(16424);
+  }
+  
+  public void enableSoftANS(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(16423);
+    TXCTraeJNI.nativeSetTraeANS(paramBoolean, paramInt);
+    AppMethodBeat.o(16423);
+  }
+  
+  public void enableVolumeLevel(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16428);
+    e = paramBoolean;
+    TXCTraeJNI.nativeTraeEnableVolumeLevel(paramBoolean);
+    TXCJitter.EnableCoreplayVolumeLevelCal(paramBoolean);
+    Object localObject1 = null;
+    synchronized (this.mLockObj)
     {
-      TXCLog.e(this.a, "init, but has inited, ignore!");
-      AppMethodBeat.o(66571);
+      if (this.mJitterMap != null) {
+        localObject1 = (HashMap)this.mJitterMap.clone();
+      }
+      if (localObject1 != null)
+      {
+        localObject1 = ((HashMap)localObject1).entrySet().iterator();
+        if (((Iterator)localObject1).hasNext()) {
+          ((TXCJitter)((Map.Entry)((Iterator)localObject1).next()).getValue()).enableVolumeLevelCal(paramBoolean);
+        }
+      }
+    }
+    AppMethodBeat.o(16428);
+  }
+  
+  public int getAECType()
+  {
+    return 0;
+  }
+  
+  public int getPlayAECType()
+  {
+    return 2;
+  }
+  
+  public int getRecordVolumeLevel()
+  {
+    AppMethodBeat.i(16429);
+    int i = TXCTraeJNI.nativeTraeGetVolumeLevel();
+    AppMethodBeat.o(16429);
+    return i;
+  }
+  
+  public int getVolumeLevel()
+  {
+    AppMethodBeat.i(16419);
+    int i = TXCTraeJNI.nativeTraeGetVolumeLevel();
+    AppMethodBeat.o(16419);
+    return i;
+  }
+  
+  public boolean isRecording()
+  {
+    AppMethodBeat.i(16436);
+    boolean bool = TXCTraeJNI.nativeTraeIsRecording();
+    AppMethodBeat.o(16436);
+    return bool;
+  }
+  
+  public int pauseRecord(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16431);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "trae pauseRecord : ".concat(String.valueOf(paramBoolean)));
+    TXCTraeJNI.nativeTraePauseAuioRecord(paramBoolean);
+    AppMethodBeat.o(16431);
+    return 0;
+  }
+  
+  public int resumeRecord()
+  {
+    AppMethodBeat.i(16432);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "trae resumeRecord");
+    TXCTraeJNI.nativeTraeResumeAuioRecord();
+    AppMethodBeat.o(16432);
+    return 0;
+  }
+  
+  public void sendCustomPCMData(com.tencent.liteav.basic.structs.a parama)
+  {
+    AppMethodBeat.i(16435);
+    TXCTraeJNI.sendCustomPCMData(parama);
+    AppMethodBeat.o(16435);
+  }
+  
+  public void sendCustomPCMData(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(16434);
+    TXCTraeJNI.sendCustomPCMData(paramArrayOfByte);
+    AppMethodBeat.o(16434);
+  }
+  
+  public void setAudioMode(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(16443);
+    TXCTraeJNI.setContext(paramContext);
+    TXCTraeJNI.nativeSetAudioMode(paramInt);
+    AppMethodBeat.o(16443);
+  }
+  
+  public void setEarphoneOn(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16421);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "setEarphoneOn: ".concat(String.valueOf(paramBoolean)));
+    AppMethodBeat.o(16421);
+  }
+  
+  public void setEncInfo(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(16438);
+    TXCTraeJNI.nativeSetEncInfo(paramInt1, paramInt2);
+    AppMethodBeat.o(16438);
+  }
+  
+  public void setFecRatio(float paramFloat)
+  {
+    AppMethodBeat.i(16426);
+    TXCTraeJNI.nativeSetFecRatio(paramFloat);
+    AppMethodBeat.o(16426);
+  }
+  
+  public void setIsCustomRecord(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16437);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "setIsCustomRecord: ".concat(String.valueOf(paramBoolean)));
+    if (isRecording())
+    {
+      TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "setIsCustomRecord must set before startRecord!!! ");
+      AppMethodBeat.o(16437);
       return;
     }
-    TXCLog.i(this.a, "init");
-    if (this.c == null) {
-      this.c = paramContext.getApplicationContext();
-    }
-    if (this.t == null) {
-      this.t = ((AudioManager)paramContext.getSystemService("audio"));
-    }
-    if (this.i == null) {
-      this.i = new Handler(Looper.getMainLooper());
-    }
-    this.t = ((AudioManager)paramContext.getSystemService("audio"));
-    this.i = new Handler(Looper.getMainLooper());
-    c.a().a(this.c);
-    c.a().a(this);
-    if (this.e == null) {
-      this.e = new a.1(this);
-    }
-    if (this.f == null) {
-      this.f = new a.2(this);
-    }
-    paramContext = new IntentFilter();
-    paramContext.addAction("android.intent.action.HEADSET_PLUG");
-    paramContext.addAction("android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED");
-    paramContext.addAction("android.bluetooth.headset.profile.action.AUDIO_STATE_CHANGED");
-    this.c.registerReceiver(this.e, paramContext);
-    try
-    {
-      paramContext = BluetoothAdapter.getDefaultAdapter();
-      if (paramContext != null) {
-        paramContext.getProfileProxy(this.c, this.f, 1);
-      }
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        TXCLog.e(this.a, "BluetoothAdapter getProfileProxy: ".concat(String.valueOf(paramContext)));
-      }
-    }
-    this.d = true;
-    AppMethodBeat.o(66571);
+    this.d = paramBoolean;
+    TXCTraeJNI.setIsCustomRecord(paramBoolean);
+    AppMethodBeat.o(16437);
   }
   
-  public void a(d paramd)
+  public void setPlayoutVolume(float paramFloat)
   {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(66576);
-        if (paramd == null)
-        {
-          AppMethodBeat.o(66576);
-          return;
-        }
-        this.h.add(paramd);
-        if (this.j)
-        {
-          paramd.OnHeadsetState(true);
-          AppMethodBeat.o(66576);
-          continue;
-        }
-        if (this.g == null) {
-          break label98;
-        }
-      }
-      finally {}
-      if ((this.t != null) && (this.b == 3))
-      {
-        paramd.OnHeadsetState(true);
-        AppMethodBeat.o(66576);
-      }
-      else
-      {
-        label98:
-        AppMethodBeat.o(66576);
-      }
-    }
+    AppMethodBeat.i(182285);
+    TXCTraeJNI.nativeTraeSetPlayoutVolume(paramFloat);
+    AppMethodBeat.o(182285);
   }
   
-  public void a(boolean paramBoolean)
+  public void setRecordID(String paramString)
   {
-    AppMethodBeat.i(66578);
-    TXCLog.i(this.a, "setRecordRunning = ".concat(String.valueOf(paramBoolean)));
-    this.l = paramBoolean;
-    if (!this.l)
-    {
-      TXCLog.w(this.a, "processBTHeadsetState, record is not running");
-      if ((this.b == 3) || (this.b == 2)) {
-        this.i.postDelayed(new a.4(this), 1000L);
-      }
-      AppMethodBeat.o(66578);
-      return;
-    }
-    d();
-    AppMethodBeat.o(66578);
-  }
-  
-  public void b(int paramInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(66579);
-        if (com.tencent.liteav.basic.e.b.a().g())
-        {
-          TXCLog.i(this.a, "【TXSDK-TRAE-LOG】 sys AecEnable~");
-          this.k = paramInt;
-          a(0);
-          if (this.j)
-          {
-            this.t.setSpeakerphoneOn(false);
-            TXCLog.i(this.a, "setAudioRoute, is wiredHeadsetOn, set speakerphoneOn false");
-            AppMethodBeat.o(66579);
-          }
-        }
-        else
-        {
-          TXCLog.i(this.a, "【TXSDK-TRAE-LOG】 TRAE don't set Route here~");
-          AppMethodBeat.o(66579);
-          continue;
-        }
-        if (this.g == null) {
-          break;
-        }
-      }
-      finally {}
-      if (this.b != 3) {
-        break;
-      }
-      this.t.setSpeakerphoneOn(false);
-      TXCLog.i(this.a, "setAudioRoute, is bluetoothHeadset connect and isBluetoothScoOn true, set speakerphoneOn false");
-      AppMethodBeat.o(66579);
-    }
-    String str2 = this.a;
-    StringBuilder localStringBuilder = new StringBuilder("setAudioRoute, only phone, mSpeakerOn = ");
-    if (this.k == 0) {}
-    for (String str1 = "true";; str1 = "false")
-    {
-      TXCLog.i(str2, str1);
-      if (this.k == 0)
-      {
-        this.t.setSpeakerphoneOn(true);
-        AppMethodBeat.o(66579);
-        break;
-      }
-      this.t.setSpeakerphoneOn(false);
-      AppMethodBeat.o(66579);
-      break;
-    }
+    this.a = paramString;
   }
   
   /* Error */
-  public void b(d paramd)
+  public void setRecordListener(com.tencent.liteav.audio.e parame)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 509
-    //   5: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_1
-    //   9: ifnonnull +12 -> 21
-    //   12: ldc_w 509
-    //   15: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: return
-    //   21: aload_0
-    //   22: getfield 108	com/tencent/liteav/audio/impl/a:h	Ljava/util/List;
-    //   25: aload_1
-    //   26: invokeinterface 512 2 0
-    //   31: pop
-    //   32: ldc_w 509
-    //   35: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   38: goto -20 -> 18
-    //   41: astore_1
-    //   42: aload_0
-    //   43: monitorexit
+    //   2: sipush 16416
+    //   5: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: ldc 43
+    //   10: ldc_w 286
+    //   13: aload_1
+    //   14: invokestatic 289	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   17: invokevirtual 228	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   20: invokestatic 50	com/tencent/liteav/basic/log/TXCLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   23: aload_1
+    //   24: ifnonnull +16 -> 40
+    //   27: aconst_null
+    //   28: invokestatic 293	com/tencent/liteav/audio/impl/TXCTraeJNI:setTraeRecordListener	(Ljava/lang/ref/WeakReference;)V
+    //   31: sipush 16416
+    //   34: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   37: aload_0
+    //   38: monitorexit
+    //   39: return
+    //   40: new 295	java/lang/ref/WeakReference
+    //   43: dup
     //   44: aload_1
-    //   45: athrow
+    //   45: invokespecial 298	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   48: invokestatic 293	com/tencent/liteav/audio/impl/TXCTraeJNI:setTraeRecordListener	(Ljava/lang/ref/WeakReference;)V
+    //   51: sipush 16416
+    //   54: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   57: goto -20 -> 37
+    //   60: astore_1
+    //   61: aload_0
+    //   62: monitorexit
+    //   63: aload_1
+    //   64: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	46	0	this	a
-    //   0	46	1	paramd	d
+    //   0	65	0	this	a
+    //   0	65	1	parame	com.tencent.liteav.audio.e
     // Exception table:
     //   from	to	target	type
-    //   2	8	41	finally
-    //   12	18	41	finally
-    //   21	38	41	finally
+    //   2	23	60	finally
+    //   27	37	60	finally
+    //   40	57	60	finally
   }
   
-  public void c(int paramInt)
+  public void setRecordMute(boolean paramBoolean)
   {
-    AppMethodBeat.i(146232);
-    TXCLog.i(this.a, "onCallStateChanged, state = ".concat(String.valueOf(paramInt)));
-    if (!this.t.isBluetoothScoAvailableOffCall())
+    AppMethodBeat.i(16418);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "setRecordMute: ".concat(String.valueOf(paramBoolean)));
+    TXCTraeJNI.nativeTraeSetRecordMute(paramBoolean);
+    AppMethodBeat.o(16418);
+  }
+  
+  public void setRecordVolume(float paramFloat)
+  {
+    AppMethodBeat.i(16420);
+    TXCTraeJNI.nativeTraeSetRecordVolume(paramFloat);
+    AppMethodBeat.o(16420);
+  }
+  
+  public void setReverbParam(int paramInt, float paramFloat) {}
+  
+  public void setReverbType(int paramInt)
+  {
+    AppMethodBeat.i(16417);
+    TXCTraeJNI.nativeTraeSetRecordReverb(paramInt);
+    AppMethodBeat.o(16417);
+  }
+  
+  public void setVoiceChangerType(int paramInt)
+  {
+    int i = 13;
+    AppMethodBeat.i(16425);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "setVoiceChangerType: ".concat(String.valueOf(paramInt)));
+    switch (paramInt)
     {
-      TXCLog.e(this.a, "not support BTHeadset sco");
-      AppMethodBeat.o(146232);
-      return;
+    default: 
+      paramInt = -1;
+      i = -1;
     }
-    if (paramInt == 0)
+    for (;;)
     {
-      if ((this.b == 1) && (this.g != null))
+      TXCTraeJNI.nativeTraeSetChangerType(i, paramInt);
+      AppMethodBeat.o(16425);
+      return;
+      paramInt = -1;
+      i = 6;
+      continue;
+      paramInt = -1;
+      i = 4;
+      continue;
+      paramInt = -1;
+      i = 5;
+      continue;
+      paramInt = 9;
+      i = -1;
+      continue;
+      paramInt = 50;
+      i = 536936433;
+      continue;
+      paramInt = 5;
+      i = -1;
+      continue;
+      paramInt = 1;
+      continue;
+      paramInt = -1;
+      continue;
+      paramInt = 4;
+      i = 10;
+      continue;
+      paramInt = 20;
+      i = 10;
+      continue;
+      paramInt = 2;
+      i = -1;
+    }
+  }
+  
+  public int startDevicePlay()
+  {
+    AppMethodBeat.i(16442);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "startDevicePlay!");
+    if (this.mDeviceIsPlaying != true)
+    {
+      if (!TXCJitter.nativeIsTracksEmpty())
       {
-        this.p = 0;
-        TXCLog.i(this.a, "to restartBluetoothSco");
-        d();
-        AppMethodBeat.o(146232);
-        return;
+        TXCTraeJNI.InitTraeEngineLibrary(this.mPlayContext);
+        TXCTraeJNI.traeStartPlay(this.mPlayContext);
+        TXCTraeJNI.nativeNewAudioSessionDuplicate(this.mPlayContext);
+        this.mDeviceIsPlaying = true;
       }
-      if (this.p == 2) {
-        this.q = true;
-      }
-      this.p = 0;
-      AppMethodBeat.o(146232);
-      return;
+      TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "finish start play audio!");
+      AppMethodBeat.o(16442);
+      return 0;
     }
-    if (paramInt == 1)
+    TXCLog.e("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "repeat start play audio, ignore it!");
+    AppMethodBeat.o(16442);
+    return -104;
+  }
+  
+  public int startJitterChannelPlay(String paramString)
+  {
+    AppMethodBeat.i(16440);
+    super.startJitterChannelPlay(paramString);
+    AppMethodBeat.o(16440);
+    return 0;
+  }
+  
+  public int startRecord(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(16430);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "trae startRecord");
+    if (this.c == null)
     {
-      this.p = 1;
-      AppMethodBeat.o(146232);
-      return;
+      TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "Please call CreateInstance fisrt!!!");
+      AppMethodBeat.o(16430);
+      return -1;
     }
-    if (paramInt == 2) {
-      this.p = paramInt;
+    TXCTraeJNI.InitTraeEngineLibrary(this.c);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "startRecord: " + paramInt1 + "," + paramInt2 + "," + paramInt3);
+    TXCTraeJNI.nativeNewAudioSessionDuplicate(this.c);
+    TXCTraeJNI.nativeTraeEnableVolumeLevel(e);
+    TXCTraeJNI.nativeTraeStartRecord(this.c, paramInt1, paramInt2, paramInt3);
+    this.b = true;
+    AppMethodBeat.o(16430);
+    return 0;
+  }
+  
+  public int stopDevicePlay()
+  {
+    AppMethodBeat.i(16441);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "stopDevicePlay()!");
+    this.mDeviceIsPlaying = false;
+    if (!TXCJitter.nativeIsTracksEmpty()) {
+      TXCJitter.nativeStopAllTracks();
     }
-    AppMethodBeat.o(146232);
+    synchronized (this.mLockObj)
+    {
+      if (this.mJitterMap != null) {
+        this.mJitterMap.clear();
+      }
+      TXCTraeJNI.traeStopPlay();
+      if (!this.b) {
+        TXCTraeJNI.nativeDeleteAudioSessionDuplicate();
+      }
+      AppMethodBeat.o(16441);
+      return 0;
+    }
+  }
+  
+  public int stopRecord()
+  {
+    AppMethodBeat.i(16433);
+    TXCLog.i("TXCAudioEngImplTRAE[TXSDK-TRAE-LOG]", "trae stopRecord");
+    TXCTraeJNI.nativeTraeStopRecord();
+    this.b = false;
+    AppMethodBeat.o(16433);
+    return 0;
   }
 }
 

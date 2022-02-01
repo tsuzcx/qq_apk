@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class e
   extends b
 {
-  public e.a cmf;
+  public a daR;
   
   public e()
   {
@@ -15,11 +15,17 @@ public final class e
   
   private e(byte paramByte)
   {
-    AppMethodBeat.i(105665);
-    this.cmf = new e.a();
-    this.ymq = false;
+    AppMethodBeat.i(140984);
+    this.daR = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(105665);
+    AppMethodBeat.o(140984);
+  }
+  
+  public static final class a
+  {
+    public boolean active;
+    public String className;
   }
 }
 

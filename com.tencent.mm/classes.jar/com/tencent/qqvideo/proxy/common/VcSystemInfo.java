@@ -113,30 +113,30 @@ public class VcSystemInfo
   
   public static int GetNetAP(Context paramContext)
   {
-    AppMethodBeat.i(124434);
+    AppMethodBeat.i(89708);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124434);
+      AppMethodBeat.o(89708);
       return 0;
     }
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
     if (paramContext == null)
     {
-      AppMethodBeat.o(124434);
+      AppMethodBeat.o(89708);
       return 0;
     }
     paramContext = paramContext.getActiveNetworkInfo();
     if (paramContext == null)
     {
-      AppMethodBeat.o(124434);
+      AppMethodBeat.o(89708);
       return 0;
     }
     if ("wifi".equalsIgnoreCase(paramContext.getTypeName()))
     {
-      AppMethodBeat.o(124434);
+      AppMethodBeat.o(89708);
       return 1;
     }
-    AppMethodBeat.o(124434);
+    AppMethodBeat.o(89708);
     return 2;
   }
   
@@ -193,94 +193,94 @@ public class VcSystemInfo
   
   public static long getAppInstallTime(Context paramContext)
   {
-    AppMethodBeat.i(124442);
+    AppMethodBeat.i(89716);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124442);
+      AppMethodBeat.o(89716);
       return 0L;
     }
     PackageManager localPackageManager = paramContext.getPackageManager();
     try
     {
       long l = new File(localPackageManager.getApplicationInfo(paramContext.getPackageName(), 0).sourceDir).lastModified() / 1000L;
-      AppMethodBeat.o(124442);
+      AppMethodBeat.o(89716);
       return l;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      AppMethodBeat.o(124442);
+      AppMethodBeat.o(89716);
       return 0L;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(124442);
+      AppMethodBeat.o(89716);
     }
     return 0L;
   }
   
   public static String getAppName(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(124435);
+    AppMethodBeat.i(89709);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124435);
+      AppMethodBeat.o(89709);
       return "";
     }
     try
     {
       paramContext = paramContext.getPackageManager();
       paramContext = paramContext.getApplicationLabel(paramContext.getApplicationInfo(paramString, 0)).toString();
-      AppMethodBeat.o(124435);
+      AppMethodBeat.o(89709);
       return paramContext;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(124435);
+      AppMethodBeat.o(89709);
     }
     return "";
   }
   
   public static int getAppVersionCode(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(124437);
+    AppMethodBeat.i(89711);
     int i;
     if (appVersionCode != 0)
     {
       i = appVersionCode;
-      AppMethodBeat.o(124437);
+      AppMethodBeat.o(89711);
       return i;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124437);
+      AppMethodBeat.o(89711);
       return 0;
     }
     try
     {
       i = paramContext.getPackageManager().getPackageInfo(paramString, 0).versionCode;
       appVersionCode = i;
-      AppMethodBeat.o(124437);
+      AppMethodBeat.o(89711);
       return i;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(124437);
+      AppMethodBeat.o(89711);
     }
     return 0;
   }
   
   public static String getAppVersionName(Context paramContext)
   {
-    AppMethodBeat.i(124436);
+    AppMethodBeat.i(89710);
     if (!TextUtils.isEmpty(appVersionName))
     {
       paramContext = appVersionName;
-      AppMethodBeat.o(124436);
+      AppMethodBeat.o(89710);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124436);
+      AppMethodBeat.o(89710);
       return "";
     }
     try
@@ -291,28 +291,28 @@ public class VcSystemInfo
       if (str == null) {
         paramContext = "";
       }
-      AppMethodBeat.o(124436);
+      AppMethodBeat.o(89710);
       return paramContext;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(124436);
+      AppMethodBeat.o(89710);
     }
     return "";
   }
   
   public static String getDeviceID(Context paramContext)
   {
-    AppMethodBeat.i(124431);
+    AppMethodBeat.i(89705);
     if (!TextUtils.isEmpty(deviceID))
     {
       paramContext = deviceID;
-      AppMethodBeat.o(124431);
+      AppMethodBeat.o(89705);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124431);
+      AppMethodBeat.o(89705);
       return "";
     }
     try
@@ -331,22 +331,22 @@ public class VcSystemInfo
       }
     }
     paramContext = deviceID;
-    AppMethodBeat.o(124431);
+    AppMethodBeat.o(89705);
     return paramContext;
   }
   
   public static String getDeviceIMEI(Context paramContext)
   {
-    AppMethodBeat.i(124429);
+    AppMethodBeat.i(89703);
     if (!TextUtils.isEmpty(deviceIMEI))
     {
       paramContext = deviceIMEI;
-      AppMethodBeat.o(124429);
+      AppMethodBeat.o(89703);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124429);
+      AppMethodBeat.o(89703);
       return "";
     }
     try
@@ -360,29 +360,29 @@ public class VcSystemInfo
           deviceIMEI = "";
         }
         paramContext = deviceIMEI;
-        AppMethodBeat.o(124429);
+        AppMethodBeat.o(89703);
         return paramContext;
       }
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(124429);
+      AppMethodBeat.o(89703);
     }
     return "";
   }
   
   public static String getDeviceIMSI(Context paramContext)
   {
-    AppMethodBeat.i(124430);
+    AppMethodBeat.i(89704);
     if (!TextUtils.isEmpty(deviceIMSI))
     {
       paramContext = deviceIMSI;
-      AppMethodBeat.o(124430);
+      AppMethodBeat.o(89704);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124430);
+      AppMethodBeat.o(89704);
       return "";
     }
     try
@@ -396,29 +396,29 @@ public class VcSystemInfo
           deviceIMSI = "";
         }
         paramContext = deviceIMSI;
-        AppMethodBeat.o(124430);
+        AppMethodBeat.o(89704);
         return paramContext;
       }
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(124430);
+      AppMethodBeat.o(89704);
     }
     return "";
   }
   
   public static String getDeviceMacAddr(Context paramContext)
   {
-    AppMethodBeat.i(124432);
+    AppMethodBeat.i(89706);
     if (!TextUtils.isEmpty(deviceMacAddr))
     {
       paramContext = deviceMacAddr;
-      AppMethodBeat.o(124432);
+      AppMethodBeat.o(89706);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124432);
+      AppMethodBeat.o(89706);
       return "";
     }
     try
@@ -435,31 +435,31 @@ public class VcSystemInfo
             deviceMacAddr = "";
           }
           paramContext = deviceMacAddr;
-          AppMethodBeat.o(124432);
+          AppMethodBeat.o(89706);
           return paramContext;
         }
       }
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(124432);
+      AppMethodBeat.o(89706);
     }
     return "";
   }
   
   public static int getMCC(Context paramContext)
   {
-    AppMethodBeat.i(124447);
+    AppMethodBeat.i(89721);
     int i;
     if (mMCC != 0)
     {
       i = mMCC;
-      AppMethodBeat.o(124447);
+      AppMethodBeat.o(89721);
       return i;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124447);
+      AppMethodBeat.o(89721);
       return 0;
     }
     try
@@ -469,29 +469,29 @@ public class VcSystemInfo
         mMCC = paramContext.mcc;
       }
       i = mMCC;
-      AppMethodBeat.o(124447);
+      AppMethodBeat.o(89721);
       return i;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(124447);
+      AppMethodBeat.o(89721);
     }
     return 0;
   }
   
   public static int getMNC(Context paramContext)
   {
-    AppMethodBeat.i(124448);
+    AppMethodBeat.i(89722);
     int i;
     if (mMNC != 0)
     {
       i = mMNC;
-      AppMethodBeat.o(124448);
+      AppMethodBeat.o(89722);
       return i;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124448);
+      AppMethodBeat.o(89722);
       return 0;
     }
     try
@@ -501,12 +501,12 @@ public class VcSystemInfo
         mMNC = paramContext.mnc;
       }
       i = mMNC;
-      AppMethodBeat.o(124448);
+      AppMethodBeat.o(89722);
       return i;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(124448);
+      AppMethodBeat.o(89722);
     }
     return 0;
   }
@@ -675,10 +675,10 @@ public class VcSystemInfo
   
   public static int getNetWorkType(Context paramContext)
   {
-    AppMethodBeat.i(124439);
+    AppMethodBeat.i(89713);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124439);
+      AppMethodBeat.o(89713);
       return 0;
     }
     for (;;)
@@ -726,7 +726,7 @@ public class VcSystemInfo
         i = 0;
         continue;
       }
-      AppMethodBeat.o(124439);
+      AppMethodBeat.o(89713);
       return i;
       i = 1;
     }
@@ -762,10 +762,10 @@ public class VcSystemInfo
   
   public static int getNetworkClass(Context paramContext)
   {
-    AppMethodBeat.i(124454);
+    AppMethodBeat.i(89728);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124454);
+      AppMethodBeat.o(89728);
       return 0;
     }
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
@@ -783,7 +783,7 @@ public class VcSystemInfo
     }
     for (;;)
     {
-      AppMethodBeat.o(124454);
+      AppMethodBeat.o(89728);
       return i;
       i = getNetworkClass(paramContext.getSubtype());
       continue;
@@ -818,7 +818,7 @@ public class VcSystemInfo
   
   public static int getOsVerIntFromVerStr()
   {
-    AppMethodBeat.i(124433);
+    AppMethodBeat.i(89707);
     String str = getOsVersion();
     j = getOsVerInt();
     i = j;
@@ -844,7 +844,7 @@ public class VcSystemInfo
         i = j;
         continue;
       }
-      AppMethodBeat.o(124433);
+      AppMethodBeat.o(89707);
       return i;
       i = j;
       if (k == 4) {
@@ -885,10 +885,10 @@ public class VcSystemInfo
   public static long getRxBytesFromNetwork(Context paramContext)
   {
     long l = -1L;
-    AppMethodBeat.i(124441);
+    AppMethodBeat.i(89715);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124441);
+      AppMethodBeat.o(89715);
       return -1L;
     }
     try
@@ -897,34 +897,34 @@ public class VcSystemInfo
       if (-1L == -1L) {
         l = TrafficStats.getTotalRxBytes();
       }
-      AppMethodBeat.o(124441);
+      AppMethodBeat.o(89715);
       return l;
     }
     catch (ClassNotFoundException paramContext)
     {
-      AppMethodBeat.o(124441);
+      AppMethodBeat.o(89715);
       return 0L;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(124441);
+      AppMethodBeat.o(89715);
     }
     return 0L;
   }
   
   public static int getScreenHeight(Context paramContext)
   {
-    AppMethodBeat.i(124444);
+    AppMethodBeat.i(89718);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124444);
+      AppMethodBeat.o(89718);
       return 0;
     }
     int i;
     if (mScreenHeight != 0)
     {
       i = mScreenHeight;
-      AppMethodBeat.o(124444);
+      AppMethodBeat.o(89718);
       return i;
     }
     try
@@ -932,7 +932,7 @@ public class VcSystemInfo
       mScreenHeight = paramContext.getResources().getDisplayMetrics().heightPixels;
       label49:
       i = mScreenHeight;
-      AppMethodBeat.o(124444);
+      AppMethodBeat.o(89718);
       return i;
     }
     catch (Throwable paramContext)
@@ -943,17 +943,17 @@ public class VcSystemInfo
   
   public static int getScreenWidth(Context paramContext)
   {
-    AppMethodBeat.i(124443);
+    AppMethodBeat.i(89717);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124443);
+      AppMethodBeat.o(89717);
       return 0;
     }
     int i;
     if (mScreenWidth != 0)
     {
       i = mScreenWidth;
-      AppMethodBeat.o(124443);
+      AppMethodBeat.o(89717);
       return i;
     }
     try
@@ -961,7 +961,7 @@ public class VcSystemInfo
       mScreenWidth = paramContext.getResources().getDisplayMetrics().widthPixels;
       label49:
       i = mScreenWidth;
-      AppMethodBeat.o(124443);
+      AppMethodBeat.o(89717);
       return i;
     }
     catch (Throwable paramContext)
@@ -972,10 +972,10 @@ public class VcSystemInfo
   
   public static int getSystemCpuUsage(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(124451);
+    AppMethodBeat.i(89725);
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      AppMethodBeat.o(124451);
+      AppMethodBeat.o(89725);
       return -1;
     }
     float f2 = -1.0F;
@@ -1021,36 +1021,36 @@ public class VcSystemInfo
       }
     }
     i = (int)f1;
-    AppMethodBeat.o(124451);
+    AppMethodBeat.o(89725);
     return i;
   }
   
   public static long getSystemIdleTime(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(124453);
+    AppMethodBeat.i(89727);
     try
     {
       long l = Long.parseLong(paramArrayOfString[4]);
-      AppMethodBeat.o(124453);
+      AppMethodBeat.o(89727);
       return l;
     }
     catch (Throwable paramArrayOfString)
     {
-      AppMethodBeat.o(124453);
+      AppMethodBeat.o(89727);
     }
     return -1L;
   }
   
   public static long getSystemUptime(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(124452);
+    AppMethodBeat.i(89726);
     long l1 = 0L;
     int i = 1;
     for (;;)
     {
       if (i >= paramArrayOfString.length)
       {
-        AppMethodBeat.o(124452);
+        AppMethodBeat.o(89726);
         return l1;
       }
       long l2 = l1;
@@ -1064,7 +1064,7 @@ public class VcSystemInfo
       }
       catch (Throwable paramArrayOfString)
       {
-        AppMethodBeat.o(124452);
+        AppMethodBeat.o(89726);
       }
     }
     return -1L;
@@ -1072,11 +1072,11 @@ public class VcSystemInfo
   
   public static String getWiFiMacAddress(Context paramContext)
   {
-    AppMethodBeat.i(124455);
+    AppMethodBeat.i(89729);
     try
     {
       paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getMacAddress();
-      AppMethodBeat.o(124455);
+      AppMethodBeat.o(89729);
       return paramContext;
     }
     catch (Throwable paramContext)
@@ -1090,10 +1090,10 @@ public class VcSystemInfo
   
   public static int getWifiNetStrength(Context paramContext)
   {
-    AppMethodBeat.i(124440);
+    AppMethodBeat.i(89714);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124440);
+      AppMethodBeat.o(89714);
       return 0;
     }
     try
@@ -1101,72 +1101,72 @@ public class VcSystemInfo
       paramContext = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
       if (paramContext == null)
       {
-        AppMethodBeat.o(124440);
+        AppMethodBeat.o(89714);
         return 0;
       }
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(124440);
+      AppMethodBeat.o(89714);
       return 0;
     }
     int i = paramContext.getRssi();
     if (Build.VERSION.SDK_INT >= 14)
     {
       i = WifiManager.calculateSignalLevel(paramContext.getRssi(), 101);
-      AppMethodBeat.o(124440);
+      AppMethodBeat.o(89714);
       return i;
     }
     if (i <= -100)
     {
-      AppMethodBeat.o(124440);
+      AppMethodBeat.o(89714);
       return 0;
     }
     if (i >= -55)
     {
-      AppMethodBeat.o(124440);
+      AppMethodBeat.o(89714);
       return 100;
     }
     i = (int)((i + 100) * 100.0F / 45.0F);
-    AppMethodBeat.o(124440);
+    AppMethodBeat.o(89714);
     return i;
   }
   
   public static boolean isNetworkAvailable(Context paramContext)
   {
-    AppMethodBeat.i(124438);
+    AppMethodBeat.i(89712);
     if (paramContext != null)
     {
       paramContext = (ConnectivityManager)paramContext.getApplicationContext().getSystemService("connectivity");
       if (paramContext == null)
       {
-        AppMethodBeat.o(124438);
+        AppMethodBeat.o(89712);
         return false;
       }
       paramContext = paramContext.getActiveNetworkInfo();
       if ((paramContext == null) || (!paramContext.isAvailable()))
       {
-        AppMethodBeat.o(124438);
+        AppMethodBeat.o(89712);
         return false;
       }
       if (paramContext.getState() == NetworkInfo.State.CONNECTED)
       {
-        AppMethodBeat.o(124438);
+        AppMethodBeat.o(89712);
         return true;
       }
-      AppMethodBeat.o(124438);
+      AppMethodBeat.o(89712);
       return false;
     }
-    AppMethodBeat.o(124438);
+    AppMethodBeat.o(89712);
     return false;
   }
   
   public static boolean isNetworkTypeMobile(Context paramContext)
   {
-    AppMethodBeat.i(124445);
+    AppMethodBeat.i(89719);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124445);
+      AppMethodBeat.o(89719);
       return true;
     }
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
@@ -1179,14 +1179,14 @@ public class VcSystemInfo
         {
         case 1: 
         default: 
-          AppMethodBeat.o(124445);
+          AppMethodBeat.o(89719);
           return false;
         }
-        AppMethodBeat.o(124445);
+        AppMethodBeat.o(89719);
         return true;
       }
     }
-    AppMethodBeat.o(124445);
+    AppMethodBeat.o(89719);
     return true;
   }
   

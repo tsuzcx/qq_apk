@@ -1,346 +1,340 @@
 package com.tencent.mm.cg;
 
-import android.database.AbstractCursor;
-import android.database.CursorIndexOutOfBoundsException;
-import android.database.CursorWindow;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.emoji.PluginEmoji;
+import com.tencent.mm.plugin.emoji.b.d;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.emotion.SmileyInfo;
+import com.tencent.mm.storage.emotion.SmileyPanelConfigInfo;
+import com.tencent.tmassistantsdk.util.Base64;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-public final class e
-  extends AbstractCursor
+public class e
 {
-  private final int columnCount;
-  private final String[] columnNames;
-  private Object[] data;
-  private int rowCount;
+  private static e FaE = null;
+  private String[] FaF;
+  private String[] FaG;
+  private String[] FaH;
+  private final List<SmileyPanelConfigInfo> FaI;
+  private SparseArray<SmileyPanelConfigInfo> FaJ;
+  private String country;
   
-  private e(String[] paramArrayOfString)
+  public e(Context paramContext)
   {
-    AppMethodBeat.i(59038);
-    this.rowCount = 0;
-    this.columnNames = paramArrayOfString;
-    this.columnCount = paramArrayOfString.length;
-    this.data = new Object[this.columnCount * 16];
-    AppMethodBeat.o(59038);
+    AppMethodBeat.i(104920);
+    this.FaI = Collections.synchronizedList(new ArrayList());
+    this.FaJ = new SparseArray();
+    this.FaF = paramContext.getResources().getStringArray(2130903068);
+    this.FaG = paramContext.getResources().getStringArray(2130903069);
+    this.FaH = paramContext.getResources().getStringArray(2130903070);
+    this.FaI.clear();
+    this.FaJ.clear();
+    eHR();
+    this.country = ac.eFu();
+    if (!aj.cbe()) {
+      eHS();
+    }
+    AppMethodBeat.o(104920);
   }
   
-  public e(String[] paramArrayOfString, byte paramByte)
+  public static Drawable aGN(String paramString)
   {
-    this(paramArrayOfString);
-  }
-  
-  private static int cF(Object paramObject)
-  {
-    if (paramObject == null) {
-      return 0;
-    }
-    if ((paramObject instanceof byte[])) {
-      return 4;
-    }
-    if (((paramObject instanceof Float)) || ((paramObject instanceof Double))) {
-      return 2;
-    }
-    if (((paramObject instanceof Long)) || ((paramObject instanceof Integer)) || ((paramObject instanceof Short)) || ((paramObject instanceof Byte))) {
-      return 1;
-    }
-    return 3;
-  }
-  
-  private void ensureCapacity(int paramInt)
-  {
-    AppMethodBeat.i(59041);
-    Object[] arrayOfObject;
-    int i;
-    if (paramInt > this.data.length)
+    AppMethodBeat.i(177037);
+    if (bt.isNullOrNil(paramString))
     {
-      arrayOfObject = this.data;
-      i = this.data.length * 2;
-      if (i >= paramInt) {
-        break label58;
+      AppMethodBeat.o(177037);
+      return null;
+    }
+    SmileyInfo localSmileyInfo = f.eHV().aGS(paramString);
+    if (localSmileyInfo != null)
+    {
+      paramString = f.eHV().a(localSmileyInfo);
+      AppMethodBeat.o(177037);
+      return paramString;
+    }
+    paramString = b.eHL().aGM(paramString);
+    paramString = b.eHL().a(paramString, true);
+    AppMethodBeat.o(177037);
+    return paramString;
+  }
+  
+  private void eHR()
+  {
+    int k = 0;
+    AppMethodBeat.i(104921);
+    if ((this.FaF != null) && (this.FaH != null))
+    {
+      int m = this.FaF.length;
+      int j = 0;
+      int i = 0;
+      SmileyPanelConfigInfo localSmileyPanelConfigInfo;
+      while (j < m)
+      {
+        localSmileyPanelConfigInfo = new SmileyPanelConfigInfo(i, this.FaF[j]);
+        this.FaI.add(localSmileyPanelConfigInfo);
+        this.FaJ.put(i, localSmileyPanelConfigInfo);
+        j += 1;
+        i += 1;
       }
+      m = this.FaH.length;
+      j = k;
+      while (j < m)
+      {
+        localSmileyPanelConfigInfo = new SmileyPanelConfigInfo(i, this.FaH[j]);
+        this.FaI.add(localSmileyPanelConfigInfo);
+        this.FaJ.put(i, localSmileyPanelConfigInfo);
+        j += 1;
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(104921);
+  }
+  
+  public static e eHT()
+  {
+    AppMethodBeat.i(104925);
+    if (FaE == null) {}
+    try
+    {
+      FaE = new e(aj.getContext());
+      e locale = FaE;
+      AppMethodBeat.o(104925);
+      return locale;
+    }
+    finally
+    {
+      AppMethodBeat.o(104925);
+    }
+  }
+  
+  public final String aGO(String paramString)
+  {
+    AppMethodBeat.i(177038);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(177038);
+      return "";
+    }
+    SmileyInfo localSmileyInfo = f.eHV().aGS(paramString);
+    if (localSmileyInfo != null)
+    {
+      if ((this.country.equals("zh_CN")) && (!bt.isNullOrNil(localSmileyInfo.field_cnValue)))
+      {
+        paramString = localSmileyInfo.field_cnValue;
+        AppMethodBeat.o(177038);
+        return paramString;
+      }
+      if (((this.country.equals("zh_TW")) || (this.country.equals("zh_HK"))) && (!bt.isNullOrNil(localSmileyInfo.field_twValue)))
+      {
+        paramString = localSmileyInfo.field_twValue;
+        AppMethodBeat.o(177038);
+        return paramString;
+      }
+      paramString = localSmileyInfo.field_enValue;
+      AppMethodBeat.o(177038);
+      return paramString;
+    }
+    AppMethodBeat.o(177038);
+    return paramString;
+  }
+  
+  public int btQ()
+  {
+    AppMethodBeat.i(104923);
+    ad.i("MicroMsg.MergerSmileyManager", "updateSmileyPanelInfo " + bt.eGN());
+    this.FaI.clear();
+    ArrayList localArrayList1 = ((PluginEmoji)g.ad(PluginEmoji.class)).getProvider().bUF();
+    if ((localArrayList1 == null) || (localArrayList1.isEmpty())) {
+      localArrayList1 = com.tencent.mm.emoji.d.b.f(new com.tencent.mm.vfs.e("assets:///panel/".concat(String.valueOf(((d)g.ad(d.class)).getProvider().bUI()))));
     }
     for (;;)
     {
-      this.data = new Object[paramInt];
-      System.arraycopy(arrayOfObject, 0, this.data, 0, arrayOfObject.length);
-      AppMethodBeat.o(59041);
-      return;
-      label58:
-      paramInt = i;
-    }
-  }
-  
-  private Object get(int paramInt)
-  {
-    AppMethodBeat.i(59039);
-    if ((paramInt < 0) || (paramInt >= this.columnCount))
-    {
-      localObject = new CursorIndexOutOfBoundsException("Requested column: " + paramInt + ", # of columns: " + this.columnCount);
-      AppMethodBeat.o(59039);
-      throw ((Throwable)localObject);
-    }
-    if (this.mPos < 0)
-    {
-      localObject = new CursorIndexOutOfBoundsException("Before first row.");
-      AppMethodBeat.o(59039);
-      throw ((Throwable)localObject);
-    }
-    if (this.mPos >= this.rowCount)
-    {
-      localObject = new CursorIndexOutOfBoundsException("After last row.");
-      AppMethodBeat.o(59039);
-      throw ((Throwable)localObject);
-    }
-    Object localObject = this.data[(this.mPos * this.columnCount + paramInt)];
-    AppMethodBeat.o(59039);
-    return localObject;
-  }
-  
-  public final void addRow(Object[] paramArrayOfObject)
-  {
-    AppMethodBeat.i(59040);
-    if (paramArrayOfObject.length != this.columnCount)
-    {
-      paramArrayOfObject = new IllegalArgumentException("columnNames.length = " + this.columnCount + ", columnValues.length = " + paramArrayOfObject.length);
-      AppMethodBeat.o(59040);
-      throw paramArrayOfObject;
-    }
-    int i = this.rowCount;
-    this.rowCount = (i + 1);
-    i *= this.columnCount;
-    ensureCapacity(this.columnCount + i);
-    System.arraycopy(paramArrayOfObject, 0, this.data, i, this.columnCount);
-    AppMethodBeat.o(59040);
-  }
-  
-  public final void fillWindow(int paramInt, CursorWindow paramCursorWindow)
-  {
-    AppMethodBeat.i(59051);
-    if ((paramInt < 0) || (paramInt >= getCount()))
-    {
-      AppMethodBeat.o(59051);
-      return;
-    }
-    paramCursorWindow.acquireReference();
-    try
-    {
-      int j = getPosition();
-      int k = getColumnCount();
-      paramCursorWindow.clear();
-      paramCursorWindow.setStartPosition(paramInt);
-      paramCursorWindow.setNumColumns(k);
+      ArrayList localArrayList2;
+      int j;
       int i;
-      if (moveToPosition(paramInt)) {
-        if (paramCursorWindow.allocRow())
+      SmileyPanelConfigInfo localSmileyPanelConfigInfo;
+      String str;
+      if ((localArrayList1 != null) && (!localArrayList1.isEmpty()))
+      {
+        localArrayList2 = f.eHV().eHZ();
+        int k = localArrayList1.size();
+        j = 0;
+        i = 0;
+        if (j < k)
         {
-          i = 0;
-          label72:
-          if (i < k) {
-            switch (cF(get(i)))
-            {
-            }
+          localSmileyPanelConfigInfo = (SmileyPanelConfigInfo)localArrayList1.get(j);
+          str = localSmileyPanelConfigInfo.field_key;
+          if (!str.matches("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$")) {
+            break label293;
           }
+          str = new String(Base64.decode(str, 0));
+          localSmileyPanelConfigInfo.field_key = str;
         }
       }
+      label293:
       for (;;)
       {
-        Object localObject1 = getString(i);
-        boolean bool;
-        if (localObject1 != null) {
-          bool = paramCursorWindow.putString((String)localObject1, paramInt, i);
+        if ((str.startsWith("[")) && (!localArrayList2.contains(str))) {
+          ad.i("MicroMsg.MergerSmileyManager", "no smiley info. key:%s", new Object[] { str });
         }
         for (;;)
         {
-          if (bool) {
-            break label269;
-          }
-          paramCursorWindow.freeLastRow();
-          paramInt += 1;
-          if (moveToNext()) {
-            break;
-          }
-          moveToPosition(j);
-          return;
-          bool = paramCursorWindow.putNull(paramInt, i);
-          continue;
-          bool = paramCursorWindow.putLong(getLong(i), paramInt, i);
-          continue;
-          bool = paramCursorWindow.putDouble(getDouble(i), paramInt, i);
-          continue;
-          localObject1 = getBlob(i);
-          if (localObject1 != null)
-          {
-            bool = paramCursorWindow.putBlob((byte[])localObject1, paramInt, i);
-          }
-          else
-          {
-            bool = paramCursorWindow.putNull(paramInt, i);
-            continue;
-            bool = paramCursorWindow.putNull(paramInt, i);
-          }
+          j += 1;
+          break;
+          this.FaI.add(localSmileyPanelConfigInfo);
+          this.FaJ.put(i, localSmileyPanelConfigInfo);
+          i += 1;
         }
-        label269:
-        i += 1;
-        break label72;
+        for (i = 0;; i = -1)
+        {
+          AppMethodBeat.o(104923);
+          return i;
+          eHR();
+          ad.i("MicroMsg.MergerSmileyManager", "smiley panel list is null.");
+        }
       }
     }
-    catch (IllegalStateException localIllegalStateException) {}finally
-    {
-      paramCursorWindow.releaseReference();
-      AppMethodBeat.o(59051);
-    }
   }
   
-  public final byte[] getBlob(int paramInt)
+  public int btR()
   {
-    AppMethodBeat.i(59048);
-    byte[] arrayOfByte = (byte[])get(paramInt);
-    AppMethodBeat.o(59048);
-    return arrayOfByte;
-  }
-  
-  public final String[] getColumnNames()
-  {
-    return this.columnNames;
-  }
-  
-  public final int getCount()
-  {
-    return this.rowCount;
-  }
-  
-  public final double getDouble(int paramInt)
-  {
-    AppMethodBeat.i(59047);
-    Object localObject = get(paramInt);
-    if (localObject == null)
+    AppMethodBeat.i(104924);
+    if (this.FaI == null)
     {
-      AppMethodBeat.o(59047);
-      return 0.0D;
-    }
-    if ((localObject instanceof Number))
-    {
-      d = ((Number)localObject).doubleValue();
-      AppMethodBeat.o(59047);
-      return d;
-    }
-    double d = bo.getDouble(localObject.toString(), 0.0D);
-    AppMethodBeat.o(59047);
-    return d;
-  }
-  
-  public final float getFloat(int paramInt)
-  {
-    AppMethodBeat.i(59046);
-    Object localObject = get(paramInt);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(59046);
-      return 0.0F;
-    }
-    if ((localObject instanceof Number))
-    {
-      f = ((Number)localObject).floatValue();
-      AppMethodBeat.o(59046);
-      return f;
-    }
-    float f = bo.getFloat(localObject.toString(), 0.0F);
-    AppMethodBeat.o(59046);
-    return f;
-  }
-  
-  public final int getInt(int paramInt)
-  {
-    AppMethodBeat.i(59044);
-    Object localObject = get(paramInt);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(59044);
+      AppMethodBeat.o(104924);
       return 0;
     }
-    if ((localObject instanceof Number))
-    {
-      paramInt = ((Number)localObject).intValue();
-      AppMethodBeat.o(59044);
-      return paramInt;
-    }
-    paramInt = bo.getInt(localObject.toString(), 0);
-    AppMethodBeat.o(59044);
-    return paramInt;
+    int i = this.FaI.size();
+    AppMethodBeat.o(104924);
+    return i;
   }
   
-  public final long getLong(int paramInt)
+  public final boolean containsKey(String paramString)
   {
-    AppMethodBeat.i(59045);
-    Object localObject = get(paramInt);
-    if (localObject == null)
+    AppMethodBeat.i(177036);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(59045);
-      return 0L;
+      AppMethodBeat.o(177036);
+      return false;
     }
-    if ((localObject instanceof Number))
+    synchronized (this.FaI)
     {
-      l = ((Number)localObject).longValue();
-      AppMethodBeat.o(59045);
-      return l;
+      Iterator localIterator = this.FaI.iterator();
+      while (localIterator.hasNext()) {
+        if (bt.kU(((SmileyPanelConfigInfo)localIterator.next()).field_key, paramString))
+        {
+          AppMethodBeat.o(177036);
+          return true;
+        }
+      }
+      AppMethodBeat.o(177036);
+      return false;
     }
-    long l = bo.getLong(localObject.toString(), 0L);
-    AppMethodBeat.o(59045);
-    return l;
   }
   
-  public final short getShort(int paramInt)
+  public final boolean eHS()
   {
-    AppMethodBeat.i(59043);
-    Object localObject = get(paramInt);
-    if (localObject == null)
+    AppMethodBeat.i(104922);
+    ad.i("MicroMsg.MergerSmileyManager", "checkNewSmiley ");
+    ArrayList localArrayList = ((PluginEmoji)g.ad(PluginEmoji.class)).getProvider().bUF();
+    if ((localArrayList == null) || (localArrayList.isEmpty()))
     {
-      AppMethodBeat.o(59043);
-      return 0;
+      btQ();
+      AppMethodBeat.o(104922);
+      return true;
     }
-    if ((localObject instanceof Number))
-    {
-      s = ((Number)localObject).shortValue();
-      AppMethodBeat.o(59043);
-      return s;
-    }
-    short s = Short.parseShort(localObject.toString());
-    AppMethodBeat.o(59043);
-    return s;
+    btQ();
+    AppMethodBeat.o(104922);
+    return false;
   }
   
-  public final String getString(int paramInt)
+  public final List<SmileyPanelConfigInfo> eHU()
   {
-    AppMethodBeat.i(59042);
-    Object localObject = get(paramInt);
-    if (localObject == null)
+    AppMethodBeat.i(177035);
+    synchronized (this.FaI)
     {
-      AppMethodBeat.o(59042);
+      ArrayList localArrayList = new ArrayList(this.FaI);
+      AppMethodBeat.o(177035);
+      return localArrayList;
+    }
+  }
+  
+  public Drawable vc(int paramInt)
+  {
+    AppMethodBeat.i(104926);
+    if (this.FaJ == null)
+    {
+      ad.i("MicroMsg.MergerSmileyManager", "getSmileyDrawable smiley panel map is null.");
+      AppMethodBeat.o(104926);
       return null;
     }
-    localObject = localObject.toString();
-    AppMethodBeat.o(59042);
+    Object localObject = (SmileyPanelConfigInfo)this.FaJ.get(paramInt);
+    if (localObject == null)
+    {
+      ad.i("MicroMsg.MergerSmileyManager", "getSmileyDrawable smiley info is null.");
+      AppMethodBeat.o(104926);
+      return null;
+    }
+    localObject = aGN(((SmileyPanelConfigInfo)localObject).field_key);
+    AppMethodBeat.o(104926);
     return localObject;
   }
   
-  public final int getType(int paramInt)
+  public String vd(int paramInt)
   {
-    AppMethodBeat.i(59049);
-    paramInt = cF(get(paramInt));
-    AppMethodBeat.o(59049);
-    return paramInt;
+    AppMethodBeat.i(104929);
+    if (paramInt < 0)
+    {
+      ad.w("MicroMsg.MergerSmileyManager", "get emoji text, error index down");
+      AppMethodBeat.o(104929);
+      return "";
+    }
+    Object localObject2 = eHT().FaH[paramInt].split(" ");
+    Object localObject1 = Character.toChars(Integer.decode(localObject2[0]).intValue());
+    localObject2 = Character.toChars(Integer.decode(localObject2[1]).intValue());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((char[])localObject1);
+    localStringBuilder.append((char[])localObject2);
+    localObject1 = localStringBuilder.toString();
+    AppMethodBeat.o(104929);
+    return localObject1;
   }
   
-  public final boolean isNull(int paramInt)
+  public String ve(int paramInt)
   {
-    AppMethodBeat.i(59050);
-    if (get(paramInt) == null)
+    AppMethodBeat.i(104928);
+    List localList = this.FaI;
+    if (paramInt >= 0) {}
+    try
     {
-      AppMethodBeat.o(59050);
-      return true;
+      if (paramInt >= this.FaI.size())
+      {
+        ad.w("MicroMsg.MergerSmileyManager", "get text key, error index");
+        return "";
+      }
+      Object localObject1 = (SmileyPanelConfigInfo)this.FaI.get(paramInt);
+      if (localObject1 != null)
+      {
+        localObject1 = ((SmileyPanelConfigInfo)localObject1).field_key;
+        return localObject1;
+      }
+      return "";
     }
-    AppMethodBeat.o(59050);
-    return false;
+    finally
+    {
+      AppMethodBeat.o(104928);
+    }
   }
 }
 

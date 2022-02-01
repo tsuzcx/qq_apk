@@ -21,47 +21,47 @@ import java.lang.reflect.Field;
 class y
   extends ListView
 {
-  private final Rect acN = new Rect();
-  private int acO = 0;
-  private int acP = 0;
-  private int acQ = 0;
-  private int acR = 0;
-  private int acS;
-  private Field acT;
-  private a acU;
-  private boolean acV;
-  private boolean acW;
-  private boolean acX;
-  private x acY;
-  private m acZ;
-  b ada;
+  private final Rect ajU = new Rect();
+  private int ajV = 0;
+  private int ajW = 0;
+  private int ajX = 0;
+  private int ajY = 0;
+  private int ajZ;
+  private Field aka;
+  private a akb;
+  private boolean akc;
+  private boolean akd;
+  private boolean ake;
+  private x akf;
+  private m akg;
+  b akh;
   
   y(Context paramContext, boolean paramBoolean)
   {
-    super(paramContext, null, 2130772197);
-    this.acW = paramBoolean;
+    super(paramContext, null, 2130968938);
+    this.akd = paramBoolean;
     setCacheColorHint(0);
     try
     {
-      this.acT = AbsListView.class.getDeclaredField("mIsChildViewEnabled");
-      this.acT.setAccessible(true);
+      this.aka = AbsListView.class.getDeclaredField("mIsChildViewEnabled");
+      this.aka.setAccessible(true);
       return;
     }
     catch (NoSuchFieldException paramContext) {}
   }
   
-  private void hD()
+  private void iZ()
   {
     Drawable localDrawable = getSelector();
-    if ((localDrawable != null) && (this.acX) && (isPressed())) {
+    if ((localDrawable != null) && (this.ake) && (isPressed())) {
       localDrawable.setState(getDrawableState());
     }
   }
   
   private void setSelectorEnabled(boolean paramBoolean)
   {
-    if (this.acU != null) {
-      this.acU.mEnabled = paramBoolean;
+    if (this.akb != null) {
+      this.akb.mEnabled = paramBoolean;
     }
   }
   
@@ -79,26 +79,26 @@ class y
       bool1 = bool2;
       if ((!bool1) || (paramInt != 0))
       {
-        this.acX = false;
+        this.ake = false;
         setPressed(false);
         drawableStateChanged();
-        localView = getChildAt(this.acS - getFirstVisiblePosition());
+        localView = getChildAt(this.ajZ - getFirstVisiblePosition());
         if (localView != null) {
           localView.setPressed(false);
         }
-        if (this.acY != null)
+        if (this.akf != null)
         {
-          this.acY.cancel();
-          this.acY = null;
+          this.akf.cancel();
+          this.akf = null;
         }
       }
       if (bool1)
       {
-        if (this.acZ == null) {
-          this.acZ = new m(this);
+        if (this.akg == null) {
+          this.akg = new m(this);
         }
-        this.acZ.G(true);
-        this.acZ.onTouch(this, paramMotionEvent);
+        this.akg.M(true);
+        this.akg.onTouch(this, paramMotionEvent);
       }
       break;
     }
@@ -107,7 +107,7 @@ class y
     label576:
     label708:
     label714:
-    while (this.acZ == null)
+    while (this.akg == null)
     {
       return bool1;
       bool1 = false;
@@ -132,7 +132,7 @@ class y
       localView = getChildAt(k - getFirstVisiblePosition());
       float f1 = paramInt;
       float f2 = m;
-      this.acX = true;
+      this.ake = true;
       if (Build.VERSION.SDK_INT >= 21) {
         drawableHotspotChanged(f1, f2);
       }
@@ -140,14 +140,14 @@ class y
         setPressed(true);
       }
       layoutChildren();
-      if (this.acS != -1)
+      if (this.ajZ != -1)
       {
-        localObject1 = getChildAt(this.acS - getFirstVisiblePosition());
+        localObject1 = getChildAt(this.ajZ - getFirstVisiblePosition());
         if ((localObject1 != null) && (localObject1 != localView) && (((View)localObject1).isPressed())) {
           ((View)localObject1).setPressed(false);
         }
       }
-      this.acS = k;
+      this.ajZ = k;
       float f3 = localView.getLeft();
       float f4 = localView.getTop();
       if (Build.VERSION.SDK_INT >= 21) {
@@ -164,19 +164,19 @@ class y
         if (paramInt != 0) {
           ((Drawable)localObject1).setVisible(false, false);
         }
-        localObject2 = this.acN;
+        localObject2 = this.ajU;
         ((Rect)localObject2).set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
-        ((Rect)localObject2).left -= this.acO;
-        ((Rect)localObject2).top -= this.acP;
-        ((Rect)localObject2).right += this.acQ;
-        ((Rect)localObject2).bottom += this.acR;
+        ((Rect)localObject2).left -= this.ajV;
+        ((Rect)localObject2).top -= this.ajW;
+        ((Rect)localObject2).right += this.ajX;
+        ((Rect)localObject2).bottom += this.ajY;
       }
       try
       {
-        bool1 = this.acT.getBoolean(this);
+        bool1 = this.aka.getBoolean(this);
         if (localView.isEnabled() != bool1)
         {
-          localObject2 = this.acT;
+          localObject2 = this.aka;
           if (bool1) {
             break label708;
           }
@@ -193,7 +193,7 @@ class y
       }
       if (paramInt != 0)
       {
-        localObject2 = this.acN;
+        localObject2 = this.ajU;
         f3 = ((Rect)localObject2).exactCenterX();
         f4 = ((Rect)localObject2).exactCenterY();
         if (getVisibility() != 0) {
@@ -226,7 +226,7 @@ class y
         break label555;
       }
     }
-    this.acZ.G(false);
+    this.akg.M(false);
     return bool1;
   }
   
@@ -320,12 +320,12 @@ class y
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    if (!this.acN.isEmpty())
+    if (!this.ajU.isEmpty())
     {
       Drawable localDrawable = getSelector();
       if (localDrawable != null)
       {
-        localDrawable.setBounds(this.acN);
+        localDrawable.setBounds(this.ajU);
         localDrawable.draw(paramCanvas);
       }
     }
@@ -334,37 +334,37 @@ class y
   
   protected void drawableStateChanged()
   {
-    if (this.ada != null) {
+    if (this.akh != null) {
       return;
     }
     super.drawableStateChanged();
     setSelectorEnabled(true);
-    hD();
+    iZ();
   }
   
   public boolean hasFocus()
   {
-    return (this.acW) || (super.hasFocus());
+    return (this.akd) || (super.hasFocus());
   }
   
   public boolean hasWindowFocus()
   {
-    return (this.acW) || (super.hasWindowFocus());
+    return (this.akd) || (super.hasWindowFocus());
   }
   
   public boolean isFocused()
   {
-    return (this.acW) || (super.isFocused());
+    return (this.akd) || (super.isFocused());
   }
   
   public boolean isInTouchMode()
   {
-    return ((this.acW) && (this.acV)) || (super.isInTouchMode());
+    return ((this.akd) && (this.akc)) || (super.isInTouchMode());
   }
   
   protected void onDetachedFromWindow()
   {
-    this.ada = null;
+    this.akh = null;
     super.onDetachedFromWindow();
   }
   
@@ -382,11 +382,11 @@ class y
       {
         return bool1;
         i = paramMotionEvent.getActionMasked();
-        if ((i == 10) && (this.ada == null))
+        if ((i == 10) && (this.akh == null))
         {
-          this.ada = new b();
-          b localb = this.ada;
-          localb.adb.post(localb);
+          this.akh = new b();
+          b localb = this.akh;
+          localb.aki.post(localb);
         }
         bool2 = super.onHoverEvent(paramMotionEvent);
         if ((i != 9) && (i != 7)) {
@@ -401,7 +401,7 @@ class y
     if (paramMotionEvent.isEnabled()) {
       setSelectionFromTop(i, paramMotionEvent.getTop() - getTop());
     }
-    hD();
+    iZ();
     return bool2;
     setSelection(-1);
     return bool2;
@@ -414,20 +414,20 @@ class y
     }
     for (;;)
     {
-      if (this.ada != null)
+      if (this.akh != null)
       {
-        b localb = this.ada;
-        localb.adb.ada = null;
-        localb.adb.removeCallbacks(localb);
+        b localb = this.akh;
+        localb.aki.akh = null;
+        localb.aki.removeCallbacks(localb);
       }
       return super.onTouchEvent(paramMotionEvent);
-      this.acS = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+      this.ajZ = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
     }
   }
   
   void setListSelectionHidden(boolean paramBoolean)
   {
-    this.acV = paramBoolean;
+    this.akc = paramBoolean;
   }
   
   public void setSelector(Drawable paramDrawable)
@@ -435,16 +435,16 @@ class y
     if (paramDrawable != null) {}
     for (Object localObject = new a(paramDrawable);; localObject = null)
     {
-      this.acU = ((a)localObject);
-      super.setSelector(this.acU);
+      this.akb = ((a)localObject);
+      super.setSelector(this.akb);
       localObject = new Rect();
       if (paramDrawable != null) {
         paramDrawable.getPadding((Rect)localObject);
       }
-      this.acO = ((Rect)localObject).left;
-      this.acP = ((Rect)localObject).top;
-      this.acQ = ((Rect)localObject).right;
-      this.acR = ((Rect)localObject).bottom;
+      this.ajV = ((Rect)localObject).left;
+      this.ajW = ((Rect)localObject).top;
+      this.ajX = ((Rect)localObject).right;
+      this.ajY = ((Rect)localObject).bottom;
       return;
     }
   }
@@ -504,7 +504,7 @@ class y
     
     public final void run()
     {
-      y.this.ada = null;
+      y.this.akh = null;
       y.this.drawableStateChanged();
     }
   }

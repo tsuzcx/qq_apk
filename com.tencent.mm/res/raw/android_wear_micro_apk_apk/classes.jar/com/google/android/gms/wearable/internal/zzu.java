@@ -16,15 +16,15 @@ public class zzu
   implements Channel
 {
   public static final Parcelable.Creator<zzu> CREATOR = new cp();
-  private final String Sq;
-  private final String TG;
-  private final String TS;
+  private final String Uf;
+  private final String VH;
+  private final String Vv;
   
   public zzu(String paramString1, String paramString2, String paramString3)
   {
-    this.TS = ((String)d.u(paramString1));
-    this.Sq = ((String)d.u(paramString2));
-    this.TG = ((String)d.u(paramString3));
+    this.VH = ((String)d.D(paramString1));
+    this.Uf = ((String)d.D(paramString2));
+    this.Vv = ((String)d.D(paramString3));
   }
   
   public final t<Status> a(p paramp)
@@ -34,9 +34,9 @@ public class zzu
   
   public final t<Status> a(p paramp, final Uri paramUri)
   {
-    d.e(paramp, "client is null");
-    d.e(this.TS, "token is null");
-    d.e(paramUri, "uri is null");
+    d.g(paramp, "client is null");
+    d.g(this.VH, "token is null");
+    d.g(paramUri, "uri is null");
     if (0L >= 0L)
     {
       bool = true;
@@ -65,35 +65,35 @@ public class zzu
         return false;
       }
       paramObject = (zzu)paramObject;
-    } while ((this.TS.equals(paramObject.TS)) && (b.b(paramObject.Sq, this.Sq)) && (b.b(paramObject.TG, this.TG)));
+    } while ((this.VH.equals(paramObject.VH)) && (b.c(paramObject.Uf, this.Uf)) && (b.c(paramObject.Vv, this.Vv)));
     return false;
   }
   
   public final String getPath()
   {
-    return this.TG;
+    return this.Vv;
   }
   
   public int hashCode()
   {
-    return this.TS.hashCode();
+    return this.VH.hashCode();
   }
   
-  public final String kY()
+  public final String kz()
   {
-    return this.TS;
+    return this.Uf;
   }
   
-  public final String kq()
+  public final String lh()
   {
-    return this.Sq;
+    return this.VH;
   }
   
   public String toString()
   {
-    String str1 = this.TS;
-    String str2 = this.Sq;
-    String str3 = this.TG;
+    String str1 = this.VH;
+    String str2 = this.Uf;
+    String str3 = this.Vv;
     return String.valueOf(str1).length() + 43 + String.valueOf(str2).length() + String.valueOf(str3).length() + "ChannelImpl{, token='" + str1 + "', nodeId='" + str2 + "', path='" + str3 + "'}";
   }
   

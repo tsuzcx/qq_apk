@@ -7,37 +7,39 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.r;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI;
 import com.tencent.mm.plugin.account.bind.ui.MobileFriendUI;
 import com.tencent.mm.plugin.account.friend.a.l;
 import com.tencent.mm.plugin.account.friend.a.l.a;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.plugin.websearch.api.m;
-import com.tencent.mm.r.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.websearch.api.i;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ba;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.af;
 import com.tencent.mm.ui.MMWizardActivity;
+import com.tencent.mm.ui.ai;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceInfoCategory;
 import com.tencent.mm.ui.base.preference.f;
+import java.util.Map;
 
 public class AddMoreFriendsUI
   extends MMPreference
 {
-  private final int sZs = 4;
-  private final int sZt = 9;
   private f screen;
+  private final int yFQ = 4;
+  private final int yFR = 9;
   
   public int getForceOrientation()
   {
@@ -46,189 +48,249 @@ public class AddMoreFriendsUI
   
   public int getResourceId()
   {
-    return 2131165185;
+    return 2131951617;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(25513);
-    setMMTitle(2131296420);
+    AppMethodBeat.i(29203);
+    setMMTitle(2131755148);
     this.screen = getPreferenceScreen();
     AddFriendItemPreference localAddFriendItemPreference = new AddFriendItemPreference(getContext());
     localAddFriendItemPreference.setKey("find_friends_by_invite");
-    localAddFriendItemPreference.setTitle(2131299900);
-    localAddFriendItemPreference.es();
-    localAddFriendItemPreference.setSummary(2131299901);
-    if ((bo.getInt(com.tencent.mm.m.g.Nq().getValue("InviteFriendsControlFlags"), 0) & 0x4) > 0) {
+    localAddFriendItemPreference.setTitle(2131759087);
+    localAddFriendItemPreference.fK();
+    localAddFriendItemPreference.setSummary(2131759088);
+    if ((bt.getInt(com.tencent.mm.m.g.Zd().getValue("InviteFriendsControlFlags"), 0) & 0x4) > 0) {
       this.screen.a(localAddFriendItemPreference, 4);
     }
     hideActionbarLine();
     setBackBtn(new AddMoreFriendsUI.2(this));
-    AppMethodBeat.o(25513);
+    AppMethodBeat.o(29203);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(25508);
+    AppMethodBeat.i(29198);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(25508);
+    AppMethodBeat.o(29198);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(25511);
+    AppMethodBeat.i(29201);
     super.onDestroy();
-    AppMethodBeat.o(25511);
+    AppMethodBeat.o(29201);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(25514);
+    AppMethodBeat.i(29204);
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(25514);
+    AppMethodBeat.o(29204);
     return bool;
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(25510);
+    AppMethodBeat.i(29200);
     super.onPause();
-    AppMethodBeat.o(25510);
+    AppMethodBeat.o(29200);
   }
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(25512);
+    AppMethodBeat.i(29202);
     if ("find_friends_by_qrcode".equals(paramPreference.mKey))
     {
       paramf = new Intent();
       paramf.putExtra("BaseScanUI_select_scan_mode", 1);
       paramf.putExtra("GetFriendQRCodeUI.INTENT_FROM_ACTIVITY", 0);
       paramf.setFlags(65536);
-      h.qsU.e(11265, new Object[] { Integer.valueOf(1) });
-      if ((!a.bN(this)) && (!com.tencent.mm.bg.e.alb())) {
-        com.tencent.mm.bq.d.b(this, "scanner", ".ui.BaseScanUI", paramf);
+      h.vKh.f(11265, new Object[] { Integer.valueOf(1) });
+      if ((!com.tencent.mm.r.a.cd(this)) && (!com.tencent.mm.bi.e.aCh())) {
+        com.tencent.mm.bs.d.b(this, "scanner", ".ui.BaseScanUI", paramf);
       }
-      AppMethodBeat.o(25512);
+      AppMethodBeat.o(29202);
       return true;
     }
     if ("find_friends_by_other_way".equals(paramPreference.mKey))
     {
-      if (l.aqq() != l.a.gxB)
+      if (l.aIL() != l.a.iky)
       {
         paramf = new Intent(this, BindMContactIntroUI.class);
         paramf.putExtra("key_upload_scene", 6);
-        MMWizardActivity.J(this, paramf);
-        AppMethodBeat.o(25512);
+        MMWizardActivity.V(this, paramf);
+        AppMethodBeat.o(29202);
         return true;
       }
-      startActivity(new Intent(this, MobileFriendUI.class));
-      AppMethodBeat.o(25512);
+      paramf = new Intent(this, MobileFriendUI.class);
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bd(paramf);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.adn(), "com/tencent/mm/plugin/subapp/ui/pluginapp/AddMoreFriendsUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/pluginapp/AddMoreFriendsUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(29202);
       return true;
     }
     if ("find_friends_by_web".equals(paramPreference.mKey))
     {
-      if (aa.Je(0))
+      if (aa.Sa(0))
       {
-        ((m)com.tencent.mm.kernel.g.E(m.class)).a(ah.getContext(), new AddMoreFriendsUI.1(this));
+        ((i)com.tencent.mm.kernel.g.ab(i.class)).a(aj.getContext(), new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(29194);
+            Intent localIntent = aa.ehS();
+            localIntent.putExtra("KRightBtn", true);
+            localIntent.putExtra("ftsneedkeyboard", true);
+            localIntent.putExtra("key_load_js_without_delay", true);
+            localIntent.putExtra("ftsType", 1);
+            localIntent.putExtra("ftsbizscene", 9);
+            Object localObject = aa.f(9, true, 0);
+            String str = aa.RY(bt.aGh((String)((Map)localObject).get("scene")));
+            ((Map)localObject).put("sessionId", str);
+            ((Map)localObject).put("subSessionId", str);
+            localIntent.putExtra("sessionId", str);
+            localIntent.putExtra("subSessionId", str);
+            localIntent.putExtra("rawUrl", aa.aR((Map)localObject));
+            str = null;
+            localObject = str;
+            if (Build.VERSION.SDK_INT >= 21)
+            {
+              localObject = str;
+              if (!ai.Eq()) {
+                localObject = ActivityOptions.makeSceneTransitionAnimation(AddMoreFriendsUI.this, new Pair[0]).toBundle();
+              }
+            }
+            com.tencent.mm.bs.d.a(AddMoreFriendsUI.this, "webview", ".ui.tools.fts.FTSSearchTabWebViewUI", localIntent, (Bundle)localObject);
+            AppMethodBeat.o(29194);
+          }
+        });
         paramPreference.setEnabled(false);
       }
       for (;;)
       {
-        AppMethodBeat.o(25512);
+        AppMethodBeat.o(29202);
         return true;
-        ab.e("MicroMsg.AddMoreFriendsUI", "fts h5 template not avail");
+        ad.e("MicroMsg.AddMoreFriendsUI", "fts h5 template not avail");
       }
     }
     if ("find_friends_by_radar".equals(paramPreference.mKey))
     {
-      com.tencent.mm.bq.d.H(this, "radar", ".ui.RadarSearchUI");
-      AppMethodBeat.o(25512);
+      com.tencent.mm.bs.d.O(this, "radar", ".ui.RadarSearchUI");
+      AppMethodBeat.o(29202);
       return true;
     }
     if ("find_friends_create_pwdgroup".equals(paramPreference.mKey))
     {
-      h.qsU.e(11140, new Object[] { Integer.valueOf(1) });
-      com.tencent.mm.bq.d.H(this, "pwdgroup", ".ui.FacingCreateChatRoomAllInOneUI");
-      AppMethodBeat.o(25512);
+      h.vKh.f(11140, new Object[] { Integer.valueOf(1) });
+      com.tencent.mm.bs.d.O(this, "pwdgroup", ".ui.FacingCreateChatRoomAllInOneUI");
+      AppMethodBeat.o(29202);
       return true;
     }
     if ("find_friends_by_invite".equals(paramPreference.mKey))
     {
       int i = getIntent().getIntExtra("invite_friend_scene", 4);
-      h.qsU.e(14034, new Object[] { Integer.valueOf(i) });
+      h.vKh.f(14034, new Object[] { Integer.valueOf(i) });
       paramf = new Intent(this, InviteFriendsBy3rdUI.class);
       paramf.putExtra("Invite_friends", i);
-      startActivity(paramf);
-      AppMethodBeat.o(25512);
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bd(paramf);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.adn(), "com/tencent/mm/plugin/subapp/ui/pluginapp/AddMoreFriendsUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/pluginapp/AddMoreFriendsUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(29202);
       return true;
     }
     if ("find_friends_by_ww".equals(paramPreference.mKey))
     {
-      paramPreference = new Intent().putExtra("Search_Scene", 2).putExtra("MMActivity.OverrideEnterAnimation", 0).putExtra("MMActivity.OverrideExitAnimation", 0);
-      paramf = null;
-      if (Build.VERSION.SDK_INT >= 21) {
-        paramf = ActivityOptions.makeSceneTransitionAnimation(this, new Pair[0]).toBundle();
+      Intent localIntent = new Intent().putExtra("Search_Scene", 2).putExtra("MMActivity.OverrideEnterAnimation", 0).putExtra("MMActivity.OverrideExitAnimation", 0);
+      paramPreference = null;
+      paramf = paramPreference;
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        paramf = paramPreference;
+        if (!ai.Eq()) {
+          paramf = ActivityOptions.makeSceneTransitionAnimation(this, new Pair[0]).toBundle();
+        }
       }
-      com.tencent.mm.plugin.fts.a.d.b(getContext(), ".ui.FTSAddWw", paramPreference, paramf);
-      AppMethodBeat.o(25512);
+      com.tencent.mm.plugin.fts.a.d.b(getContext(), ".ui.FTSAddWw", localIntent, paramf);
+      AppMethodBeat.o(29202);
       return true;
     }
-    AppMethodBeat.o(25512);
+    AppMethodBeat.o(29202);
     return false;
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(25509);
+    AppMethodBeat.i(29199);
     super.onResume();
     Object localObject;
     PreferenceInfoCategory localPreferenceInfoCategory;
     String str2;
-    if (!com.tencent.mm.bq.d.ahR("brandservice"))
+    if (!com.tencent.mm.bs.d.axB("brandservice"))
     {
-      this.screen.cl("find_friends_by_web", true);
+      this.screen.cE("find_friends_by_web", true);
       this.screen.notifyDataSetChanged();
-      localObject = (AddFriendSearchPreference)this.screen.atx("find_friends_by_input");
-      ((AddFriendSearchPreference)localObject).sZk = getString(2131298839);
-      ((AddFriendSearchPreference)localObject).sZm = new AddMoreFriendsUI.3(this);
-      localPreferenceInfoCategory = (PreferenceInfoCategory)this.screen.atx("find_friends_info");
-      localObject = r.Zn();
-      String str1 = r.Zo();
-      aw.aaz();
-      str2 = av.apy((String)c.Ru().get(6, null));
-      if (bo.isNullOrNil(str1)) {
-        break label244;
+      localObject = (AddFriendSearchPreference)this.screen.aKk("find_friends_by_input");
+      ((AddFriendSearchPreference)localObject).yFK = getString(2131757917);
+      ((AddFriendSearchPreference)localObject).yFM = new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(29196);
+          Intent localIntent = new Intent().putExtra("Search_Scene", 2).putExtra("MMActivity.OverrideEnterAnimation", 0).putExtra("MMActivity.OverrideExitAnimation", 0);
+          Object localObject = null;
+          paramAnonymousView = localObject;
+          if (Build.VERSION.SDK_INT >= 21)
+          {
+            paramAnonymousView = localObject;
+            if (!ai.Eq()) {
+              paramAnonymousView = ActivityOptions.makeSceneTransitionAnimation(AddMoreFriendsUI.this, new Pair[0]).toBundle();
+            }
+          }
+          com.tencent.mm.plugin.fts.a.d.b(AddMoreFriendsUI.this.getContext(), ".ui.FTSAddFriendUI", localIntent, paramAnonymousView);
+          AppMethodBeat.o(29196);
+        }
+      };
+      localPreferenceInfoCategory = (PreferenceInfoCategory)this.screen.aKk("find_friends_info");
+      localObject = u.aqG();
+      String str1 = u.aqH();
+      az.arV();
+      str2 = ba.aFL((String)c.afk().get(6, null));
+      if (bt.isNullOrNil(str1)) {
+        break label249;
       }
-      localObject = getString(2131299916, new Object[] { str1 });
+      localObject = getString(2131759103, new Object[] { str1 });
     }
     for (;;)
     {
       localPreferenceInfoCategory.setTitle((CharSequence)localObject);
       localObject = new AddMoreFriendsUI.4(this);
-      localPreferenceInfoCategory.zst = ((View.OnClickListener)localObject);
-      localPreferenceInfoCategory.zsu = ((View.OnClickListener)localObject);
-      ((AddFriendItemPreference)this.screen.atx("find_friends_create_pwdgroup")).qGf = 8;
-      com.tencent.mm.cn.d.aNX();
+      localPreferenceInfoCategory.Ggj = ((View.OnClickListener)localObject);
+      localPreferenceInfoCategory.Ggk = ((View.OnClickListener)localObject);
+      ((AddFriendItemPreference)this.screen.aKk("find_friends_create_pwdgroup")).wez = 8;
+      com.tencent.mm.cr.d.fkP();
       if (getPreferenceScreen() != null)
       {
-        localObject = getPreferenceScreen().atx("find_friends_by_web");
+        localObject = getPreferenceScreen().aKk("find_friends_by_web");
         if (localObject != null) {
           ((Preference)localObject).setEnabled(true);
         }
       }
-      AppMethodBeat.o(25509);
+      AppMethodBeat.o(29199);
       return;
-      this.screen.cl("find_friends_by_web", false);
+      this.screen.cE("find_friends_by_web", false);
       break;
-      label244:
-      if (!ad.ari((String)localObject)) {
-        localObject = getString(2131299916, new Object[] { localObject });
-      } else if (!bo.isNullOrNil(str2)) {
-        localObject = getString(2131299917, new Object[] { av.apx(str2) });
+      label249:
+      if (!af.aHK((String)localObject)) {
+        localObject = getString(2131759103, new Object[] { localObject });
+      } else if (!bt.isNullOrNil(str2)) {
+        localObject = getString(2131759104, new Object[] { ba.aFK(str2) });
       } else {
-        localObject = getString(2131299918);
+        localObject = getString(2131759105);
       }
     }
   }
@@ -241,7 +303,7 @@ public class AddMoreFriendsUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.pluginapp.AddMoreFriendsUI
  * JD-Core Version:    0.7.0.1
  */

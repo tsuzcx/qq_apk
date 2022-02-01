@@ -16,22 +16,22 @@ final class c$1$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(85121);
-    paramDialogInterface = this.BIP.BIO;
+    AppMethodBeat.i(154151);
+    paramDialogInterface = this.ISU.IST;
     Object localObject1 = new Date();
     Object localObject2 = new SimpleDateFormat("yyyy-MM-dd-HH_mm_ss");
     String str = Environment.getExternalStorageDirectory().getPath();
     localObject1 = str + "/xweb_dump/" + ((SimpleDateFormat)localObject2).format((Date)localObject1);
     localObject2 = (String)localObject1 + "/main.html";
     str = (String)localObject1 + "/resource";
-    paramDialogInterface.BID.savePage((String)localObject2, str, 1);
-    new Thread(new c.44(paramDialogInterface, (String)localObject1)).start();
-    AppMethodBeat.o(85121);
+    paramDialogInterface.ISE.savePage((String)localObject2, str, 1);
+    new Thread(new c.46(paramDialogInterface, (String)localObject1)).start();
+    AppMethodBeat.o(154151);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.xwalk.c.1.2
  * JD-Core Version:    0.7.0.1
  */

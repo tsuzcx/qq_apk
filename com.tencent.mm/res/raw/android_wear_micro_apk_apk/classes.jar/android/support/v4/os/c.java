@@ -5,16 +5,16 @@ import android.os.IBinder;
 final class c
   implements a
 {
-  private IBinder hO;
+  private IBinder jN;
   
   c(IBinder paramIBinder)
   {
-    this.hO = paramIBinder;
+    this.jN = paramIBinder;
   }
   
   public final IBinder asBinder()
   {
-    return this.hO;
+    return this.jN;
   }
   
   /* Error */
@@ -39,7 +39,7 @@ final class c
     //   26: iconst_0
     //   27: invokevirtual 42	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
     //   30: aload_0
-    //   31: getfield 15	android/support/v4/os/c:hO	Landroid/os/IBinder;
+    //   31: getfield 15	android/support/v4/os/c:jN	Landroid/os/IBinder;
     //   34: iconst_1
     //   35: aload_3
     //   36: aconst_null

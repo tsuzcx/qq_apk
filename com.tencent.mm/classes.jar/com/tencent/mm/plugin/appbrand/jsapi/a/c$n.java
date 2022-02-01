@@ -1,18 +1,14 @@
 package com.tencent.mm.plugin.appbrand.jsapi.a;
 
-import a.f.a.a;
-import a.f.b.k;
-import a.l;
-import a.y;
-import com.tencent.mm.g.b.a.bn;
 import com.tencent.mm.vending.g.b;
+import d.g.a.a;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "invoke"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
 final class c$n
-  extends k
-  implements a<y>
+  extends d.g.b.l
+  implements a<d.y>
 {
-  c$n(bn parambn, b paramb)
+  c$n(com.tencent.mm.plugin.appbrand.phonenumber.y paramy, b paramb)
   {
     super(0);
   }

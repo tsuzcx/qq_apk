@@ -16,40 +16,44 @@ public class a
   extends e
   implements SurfaceTexture.OnFrameAvailableListener
 {
-  private TXSVideoFrame A;
-  private TXCYuvTextureRender B;
-  private final Queue<Runnable> C;
+  private c A;
+  private TXSVideoFrame B;
+  private TXCYuvTextureRender C;
+  private Object D;
+  private Object E;
+  private final Queue<Runnable> F;
   g a;
-  a.a b;
-  a.a c;
-  private final int p;
+  a b;
+  a c;
   private final int q;
   private final int r;
   private final int s;
-  private Object t;
-  private b u;
-  private SurfaceTexture v;
-  private c w;
-  private boolean x;
-  private float[] y;
-  private c z;
+  private final int t;
+  private Object u;
+  private b v;
+  private SurfaceTexture w;
+  private c x;
+  private boolean y;
+  private float[] z;
   
   public a()
   {
-    AppMethodBeat.i(67153);
-    this.p = 0;
+    AppMethodBeat.i(16847);
     this.q = 0;
     this.r = 0;
     this.s = 0;
-    this.t = new Object();
-    this.C = new LinkedList();
-    this.y = new float[16];
-    AppMethodBeat.o(67153);
+    this.t = 0;
+    this.u = new Object();
+    this.D = null;
+    this.E = new Object();
+    this.F = new LinkedList();
+    this.z = new float[16];
+    AppMethodBeat.o(16847);
   }
   
   private boolean a(Queue<Runnable> paramQueue)
   {
-    AppMethodBeat.i(67169);
+    AppMethodBeat.i(16864);
     try
     {
       if (paramQueue.isEmpty()) {
@@ -58,31 +62,31 @@ public class a
       Runnable localRunnable = (Runnable)paramQueue.poll();
       if (localRunnable == null)
       {
-        AppMethodBeat.o(67169);
+        AppMethodBeat.o(16864);
         return false;
       }
     }
     finally
     {
-      AppMethodBeat.o(67169);
+      AppMethodBeat.o(16864);
     }
     localObject.run();
-    AppMethodBeat.o(67169);
+    AppMethodBeat.o(16864);
     return true;
   }
   
-  private void s()
+  private void p()
   {
-    AppMethodBeat.i(146744);
-    this.w = new c(true);
-    this.B = new TXCYuvTextureRender();
-    this.z = new c(false);
-    AppMethodBeat.o(146744);
+    AppMethodBeat.i(16857);
+    this.x = new c(true);
+    this.C = new TXCYuvTextureRender();
+    this.A = new c(false);
+    AppMethodBeat.o(16857);
   }
   
-  private boolean t()
+  private boolean q()
   {
-    AppMethodBeat.i(146745);
+    AppMethodBeat.i(16863);
     for (;;)
     {
       EGLContext localEGLContext;
@@ -90,46 +94,46 @@ public class a
       {
         boolean bool;
         Object localObject;
-        if (this.x)
+        if (this.y)
         {
-          bool = this.x;
-          this.x = false;
+          bool = this.y;
+          this.y = false;
           localObject = null;
-          GLES20.glViewport(0, 0, k(), l());
-          if (this.k != 1) {
-            break label393;
+          GLES20.glViewport(0, 0, h(), i());
+          if (this.l != 1) {
+            break label405;
           }
           localEGLContext = b();
           if (!bool) {
-            break label258;
+            break label266;
           }
-          if (this.v != null)
+          if (this.w != null)
           {
-            this.v.updateTexImage();
-            this.v.getTransformMatrix(this.y);
+            this.w.updateTexImage();
+            this.w.getTransformMatrix(this.z);
           }
           if (this.a != null)
           {
-            if (this.w != null) {
-              this.a.a(this.w.a(), this.y);
+            if (this.x != null) {
+              this.a.a(this.x.a(), this.z);
             }
             localObject = this.c;
             if (localObject != null) {
-              ((a.a)localObject).onTextureProcess(this.w.a(), m(), n());
+              ((a)localObject).onTextureProcess(this.x.a(), j(), k(), this.k);
             }
-            if ((this.k == 1) && (this.w != null)) {
-              a(localEGLContext, this.w.a(), this.y, true);
+            if ((this.l == 1) && (this.x != null)) {
+              a(localEGLContext, this.x.a(), this.z, true);
             }
-            AppMethodBeat.o(146745);
+            AppMethodBeat.o(16863);
             return true;
           }
         }
         else
         {
-          if (this.A != null)
+          if (this.B != null)
           {
-            localObject = this.A;
-            this.A = null;
+            localObject = this.B;
+            this.B = null;
             bool = false;
             continue;
           }
@@ -138,43 +142,43 @@ public class a
       }
       finally
       {
-        AppMethodBeat.o(146745);
+        AppMethodBeat.o(16863);
       }
-      if (this.w != null)
+      if (this.x != null)
       {
-        this.w.a(this.v);
+        this.x.a(this.w);
         continue;
-        label258:
-        if ((localTXSVideoFrame != null) && (this.B != null))
+        label266:
+        if ((localTXSVideoFrame != null) && (this.C != null))
         {
           int i;
           if (this.b != null)
           {
-            this.B.setHasFrameBuffer(this.h, this.i);
-            i = this.B.drawToTexture(localTXSVideoFrame);
-            this.b.onTextureProcess(i, m(), n());
+            this.C.setHasFrameBuffer(this.h, this.i);
+            i = this.C.drawToTexture(localTXSVideoFrame);
+            this.b.onTextureProcess(i, j(), k(), this.k);
           }
           for (;;)
           {
-            if (this.k != 1) {
-              break label391;
+            if (this.l != 1) {
+              break label403;
             }
             int j = i;
             if (i == -1)
             {
-              this.B.setHasFrameBuffer(this.h, this.i);
-              j = this.B.drawToTexture(localTXSVideoFrame);
+              this.C.setHasFrameBuffer(this.h, this.i);
+              j = this.C.drawToTexture(localTXSVideoFrame);
             }
             a(localEGLContext, j, null, false);
             break;
-            if (this.k == 0) {
-              this.B.drawFrame(localTXSVideoFrame);
+            if (this.l == 0) {
+              this.C.drawFrame(localTXSVideoFrame);
             }
             i = -1;
           }
-          label391:
+          label403:
           continue;
-          label393:
+          label405:
           localEGLContext = null;
         }
       }
@@ -183,70 +187,75 @@ public class a
   
   public SurfaceTexture a()
   {
-    return this.v;
+    return this.w;
   }
   
   protected void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(67160);
+    AppMethodBeat.i(16855);
     super.a(paramInt1, paramInt2);
-    if (this.B != null) {
-      this.B.setVideoSize(paramInt1, paramInt2);
+    if (this.C != null) {
+      this.C.setVideoSize(paramInt1, paramInt2);
     }
-    if (this.w != null) {
-      this.w.a(paramInt1, paramInt2);
+    if (this.x != null) {
+      this.x.a(paramInt1, paramInt2);
     }
-    AppMethodBeat.o(67160);
+    AppMethodBeat.o(16855);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4)
   {
-    AppMethodBeat.i(67156);
-    GLES20.glViewport(0, 0, k(), l());
-    if (this.z != null) {
-      this.z.a(paramInt1, paramBoolean, paramInt4);
+    AppMethodBeat.i(16851);
+    GLES20.glViewport(0, 0, h(), i());
+    if (this.A != null) {
+      this.A.a(paramInt1, paramBoolean, paramInt4);
     }
     super.a(paramInt1, paramInt2, paramInt3, paramBoolean, paramInt4);
-    if (this.u != null) {
-      this.u.c();
+    if (this.v != null) {
+      this.v.c();
     }
-    AppMethodBeat.o(67156);
+    AppMethodBeat.o(16851);
   }
   
   protected void a(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(67158);
-    g();
-    AppMethodBeat.o(67158);
+    AppMethodBeat.i(16853);
+    super.a(paramSurfaceTexture);
+    TXCLog.w("TXCVideoRender", "play:vrender: create render thread when onSurfaceCreate");
+    e();
+    AppMethodBeat.o(16853);
   }
   
   public void a(TXSVideoFrame paramTXSVideoFrame, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(146743);
+    AppMethodBeat.i(16850);
     try
     {
-      this.A = paramTXSVideoFrame;
-      super.a(paramTXSVideoFrame, paramInt1, paramInt2, paramInt3);
-      if (this.u != null) {
-        this.u.c();
+      if (this.B != null) {
+        this.B.release();
       }
-      AppMethodBeat.o(146743);
+      this.B = paramTXSVideoFrame;
+      super.a(paramTXSVideoFrame, paramInt1, paramInt2, paramInt3);
+      if (this.v != null) {
+        this.v.c();
+      }
+      AppMethodBeat.o(16850);
       return;
     }
     finally
     {
-      AppMethodBeat.o(146743);
+      AppMethodBeat.o(16850);
     }
   }
   
-  public void a(a.a parama)
+  public void a(a parama)
   {
-    AppMethodBeat.i(67154);
+    AppMethodBeat.i(16848);
     this.b = parama;
-    if ((parama != null) && (this.B != null)) {
-      this.B.setHasFrameBuffer(this.h, this.i);
+    if ((parama != null) && (this.C != null)) {
+      this.C.setHasFrameBuffer(this.h, this.i);
     }
-    AppMethodBeat.o(67154);
+    AppMethodBeat.o(16848);
   }
   
   public void a(g paramg)
@@ -254,15 +263,51 @@ public class a
     this.a = paramg;
   }
   
+  void a(Object paramObject)
+  {
+    AppMethodBeat.i(16856);
+    synchronized (this.E)
+    {
+      this.D = paramObject;
+      TXCLog.w("TXCVideoRender", "play:vrender: TXCGLRender initTextureRender ".concat(String.valueOf(this)));
+      p();
+      if (this.e != null)
+      {
+        this.e.a(this.f, this.g);
+        this.e.b(this.h, this.i);
+      }
+      if (this.x != null)
+      {
+        this.x.b();
+        this.w = new SurfaceTexture(this.x.a());
+        this.w.setOnFrameAvailableListener(this);
+      }
+      if (this.C != null) {
+        this.C.createTexture();
+      }
+      if ((this.b != null) && (this.C != null)) {
+        this.C.setHasFrameBuffer(this.h, this.i);
+      }
+      if (this.A != null) {
+        this.A.b();
+      }
+      if (this.o != null) {
+        this.o.onSurfaceTextureAvailable(this.w);
+      }
+      AppMethodBeat.o(16856);
+      return;
+    }
+  }
+  
   public EGLContext b()
   {
-    AppMethodBeat.i(67157);
-    synchronized (this.t)
+    AppMethodBeat.i(16852);
+    synchronized (this.u)
     {
-      if (this.u != null)
+      if (this.v != null)
       {
-        localEGLContext = this.u.a();
-        AppMethodBeat.o(67157);
+        localEGLContext = this.v.a();
+        AppMethodBeat.o(16852);
         return localEGLContext;
       }
       EGLContext localEGLContext = null;
@@ -271,157 +316,142 @@ public class a
   
   protected void b(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(67159);
-    h();
-    AppMethodBeat.o(67159);
+    AppMethodBeat.i(16854);
+    super.b(paramSurfaceTexture);
+    TXCLog.w("TXCVideoRender", "play:vrender: quit render thread when onSurfaceRelease");
+    f();
+    AppMethodBeat.o(16854);
   }
   
-  public void b(a.a parama)
+  public void b(a parama)
   {
-    AppMethodBeat.i(146742);
+    AppMethodBeat.i(16849);
     this.c = parama;
-    if ((parama != null) && (this.B != null)) {
-      this.B.setHasFrameBuffer(this.h, this.i);
+    if ((parama != null) && (this.C != null)) {
+      this.C.setHasFrameBuffer(this.h, this.i);
     }
-    AppMethodBeat.o(146742);
+    AppMethodBeat.o(16849);
   }
   
-  void c()
+  void b(Object paramObject)
   {
-    AppMethodBeat.i(67161);
-    TXCLog.w("TXCVideoRender", "play:vrender: TXCGLRender initTextureRender");
-    s();
-    if (this.e != null)
+    AppMethodBeat.i(16858);
+    synchronized (this.E)
     {
-      this.e.a(this.f, this.g);
-      this.e.b(this.h, this.i);
+      if (this.D != paramObject)
+      {
+        TXCLog.w("TXCVideoRender", "play:vrender: TXCGLRender destroyTextureRender ignore when not the same gl thread ".concat(String.valueOf(this)));
+        AppMethodBeat.o(16858);
+        return;
+      }
+      this.D = null;
+      TXCLog.w("TXCVideoRender", "play:vrender: TXCGLRender destroyTextureRender ".concat(String.valueOf(this)));
     }
-    if (this.w != null)
-    {
-      this.w.b();
-      this.v = new SurfaceTexture(this.w.a());
-      this.v.setOnFrameAvailableListener(this);
-    }
-    if (this.B != null) {
-      this.B.createTexture();
-    }
-    if ((this.b != null) && (this.B != null)) {
-      this.B.setHasFrameBuffer(this.h, this.i);
-    }
-    if (this.z != null) {
-      this.z.b();
-    }
-    if (this.n != null) {
-      this.n.onSurfaceTextureAvailable(this.v);
-    }
-    AppMethodBeat.o(67161);
-  }
-  
-  void d()
-  {
-    AppMethodBeat.i(67163);
     try
     {
-      if (this.n != null) {
-        this.n.onSurfaceTextureDestroy(this.v);
+      if (this.o != null) {
+        this.o.onSurfaceTextureDestroy(this.w);
       }
-      label26:
-      if (this.w != null)
+      label85:
+      if (this.x != null)
       {
-        this.w.c();
-        this.w = null;
+        this.x.c();
+        this.x = null;
       }
-      if (this.B != null)
+      if (this.C != null)
       {
-        this.B.onSurfaceDestroy();
-        this.B = null;
+        this.C.onSurfaceDestroy();
+        this.C = null;
       }
-      if (this.z != null)
+      if (this.A != null)
       {
-        this.z.c();
-        this.z = null;
+        this.A.c();
+        this.A = null;
       }
-      this.v = null;
-      AppMethodBeat.o(67163);
+      this.w = null;
+      AppMethodBeat.o(16858);
       return;
+      paramObject = finally;
+      AppMethodBeat.o(16858);
+      throw paramObject;
     }
-    catch (Exception localException)
+    catch (Exception paramObject)
     {
-      break label26;
+      break label85;
     }
   }
   
-  boolean e()
+  boolean c()
   {
-    AppMethodBeat.i(67164);
-    while (a(this.C)) {}
-    boolean bool = t();
-    AppMethodBeat.o(67164);
+    AppMethodBeat.i(16859);
+    while (a(this.F)) {}
+    boolean bool = q();
+    AppMethodBeat.o(16859);
     return bool;
   }
   
-  SurfaceTexture f()
+  SurfaceTexture d()
   {
-    AppMethodBeat.i(67165);
+    AppMethodBeat.i(16860);
     if (this.d != null)
     {
       SurfaceTexture localSurfaceTexture = this.d.getSurfaceTexture();
-      AppMethodBeat.o(67165);
+      AppMethodBeat.o(16860);
       return localSurfaceTexture;
     }
-    AppMethodBeat.o(67165);
+    AppMethodBeat.o(16860);
     return null;
   }
   
-  public void finalize()
+  protected void e()
   {
-    AppMethodBeat.i(67170);
-    super.finalize();
-    TXCLog.w("TXCVideoRender", "play:vrender: quit render thread when finalize");
-    try
+    AppMethodBeat.i(16861);
+    synchronized (this.u)
     {
-      h();
-      AppMethodBeat.o(67170);
-      return;
-    }
-    catch (Exception localException)
-    {
-      AppMethodBeat.o(67170);
-    }
-  }
-  
-  protected void g()
-  {
-    AppMethodBeat.i(67166);
-    synchronized (this.t)
-    {
-      if (this.u == null)
+      if (this.v == null)
       {
-        this.u = new b(new WeakReference(this));
-        this.u.start();
-        this.u.c();
+        this.v = new b(new WeakReference(this));
+        this.v.start();
+        this.v.c();
         TXCLog.w("TXCVideoRender", "play:vrender: start render thread id " + getID() + ", " + this);
-        AppMethodBeat.o(67166);
+        AppMethodBeat.o(16861);
         return;
       }
       TXCLog.w("TXCVideoRender", "play:vrender: render thread is running " + getID() + ", " + this);
     }
   }
   
-  protected void h()
+  protected void f()
   {
-    AppMethodBeat.i(67167);
-    synchronized (this.t)
+    AppMethodBeat.i(16862);
+    synchronized (this.u)
     {
-      if (this.u != null)
+      if (this.v != null)
       {
-        this.u.b();
-        this.u.c();
-        this.u = null;
+        this.v.b();
+        this.v.c();
+        this.v = null;
         TXCLog.w("TXCVideoRender", "play:vrender: quit render thread id" + getID() + ", " + this);
       }
-      AppMethodBeat.o(67167);
+      AppMethodBeat.o(16862);
       return;
+    }
+  }
+  
+  public void finalize()
+  {
+    AppMethodBeat.i(16865);
+    super.finalize();
+    TXCLog.w("TXCVideoRender", "play:vrender: quit render thread when finalize");
+    try
+    {
+      f();
+      AppMethodBeat.o(16865);
+      return;
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(16865);
     }
   }
   
@@ -429,17 +459,22 @@ public class a
   {
     try
     {
-      this.x = true;
+      this.y = true;
       return;
     }
     finally {}
   }
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
+  
+  public static abstract interface a
+  {
+    public abstract void onTextureProcess(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.renderer.a
  * JD-Core Version:    0.7.0.1
  */

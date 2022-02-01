@@ -1,236 +1,393 @@
 package com.tencent.mm.plugin.qqmail.b;
 
-import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.i;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public final class q
 {
-  String czp;
-  String pIO;
-  private String[] pJq;
-  private String[] pJr;
-  private String[] pJs;
-  String pJt;
-  q.a[] pJu;
-  q.a[] pJv;
+  List<a> callbacks;
+  int status;
+  long uLA;
+  private k uLB;
+  a uLC;
+  private int uLD;
+  int uLE;
+  private int uLF;
+  int uLG;
   
-  public q(String paramString1, String[] paramArrayOfString1, String[] paramArrayOfString2, String[] paramArrayOfString3, String paramString2)
+  q(String paramString)
   {
-    AppMethodBeat.i(67973);
-    this.czp = null;
-    this.pJq = null;
-    this.pJr = null;
-    this.pJs = null;
-    this.pIO = null;
-    this.pJt = null;
-    this.pJu = null;
-    this.pJv = null;
-    if (!bo.isNullOrNil(paramString1)) {
-      this.czp = paramString1;
-    }
-    if ((paramArrayOfString1 != null) && (paramArrayOfString1.length > 0))
+    AppMethodBeat.i(122698);
+    this.uLA = 0L;
+    this.uLD = 0;
+    this.uLE = 1;
+    this.uLF = 2;
+    this.uLG = 3;
+    this.status = this.uLD;
+    this.uLB = new k(paramString, 1);
+    paramString = k.readFromFile(this.uLB.uLk + "address");
+    if (paramString != null)
     {
-      this.pJq = paramArrayOfString1;
-      if ((paramArrayOfString2 == null) || (paramArrayOfString2.length <= 0)) {
-        break label134;
-      }
-      this.pJr = paramArrayOfString2;
-      label89:
-      if ((paramArrayOfString3 == null) || (paramArrayOfString3.length <= 0)) {
-        break label142;
+      this.uLB.a("address", null, paramString);
+      i.deleteFile(this.uLB.uLk + "address");
+      if (paramString == null) {
+        break label216;
       }
     }
-    label134:
-    label142:
-    for (this.pJs = paramArrayOfString3;; this.pJs = null)
+    for (;;)
     {
-      if (bo.isNullOrNil(paramString2)) {
-        break label150;
+      try
+      {
+        this.uLC = new a().bv(paramString);
+        this.callbacks = new ArrayList();
+        AppMethodBeat.o(122698);
+        return;
+        paramString = this.uLB.A("address", null);
       }
-      this.pIO = paramString2;
-      AppMethodBeat.o(67973);
+      catch (IOException paramString)
+      {
+        ad.printErrStackTrace("MicroMsg.Plugin.MailAddrMgr", paramString, "", new Object[0]);
+        this.uLC = new a();
+        this.uLC.akP("");
+        continue;
+      }
+      label216:
+      this.uLC = new a();
+      this.uLC.akP("");
+    }
+  }
+  
+  public static p akW(String paramString)
+  {
+    AppMethodBeat.i(122706);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(122706);
+      return null;
+    }
+    paramString = paramString.trim();
+    int i = paramString.trim().lastIndexOf(" ");
+    if (i == -1)
+    {
+      AppMethodBeat.o(122706);
+      return null;
+    }
+    p localp = new p();
+    localp.name = paramString.substring(0, i);
+    localp.sOr = paramString.substring(i + 1);
+    AppMethodBeat.o(122706);
+    return localp;
+  }
+  
+  public final void a(a parama)
+  {
+    AppMethodBeat.i(122702);
+    Iterator localIterator = this.callbacks.iterator();
+    while (localIterator.hasNext()) {
+      if ((a)localIterator.next() == parama)
+      {
+        AppMethodBeat.o(122702);
+        return;
+      }
+    }
+    this.callbacks.add(parama);
+    AppMethodBeat.o(122702);
+  }
+  
+  public final List<p> akV(String paramString)
+  {
+    AppMethodBeat.i(122700);
+    Object localObject = this.uLC.uKL;
+    if (this.status <= this.uLE)
+    {
+      ddW();
+      AppMethodBeat.o(122700);
+      return localObject;
+    }
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(122700);
+      return localObject;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      p localp = (p)((Iterator)localObject).next();
+      if ((localp != null) && (((localp.name != null) && (localp.name.contains(paramString))) || ((localp.uLz != null) && (localp.uLz.contains(paramString))) || ((localp.sOr != null) && (localp.sOr.contains(paramString)))))
+      {
+        a.b(localp);
+        localArrayList.add(localp);
+      }
+    }
+    AppMethodBeat.o(122700);
+    return localArrayList;
+  }
+  
+  public final void b(a parama)
+  {
+    AppMethodBeat.i(122703);
+    Iterator localIterator = this.callbacks.iterator();
+    while (localIterator.hasNext())
+    {
+      a locala = (a)localIterator.next();
+      if (locala == parama)
+      {
+        this.callbacks.remove(locala);
+        AppMethodBeat.o(122703);
+        return;
+      }
+    }
+    AppMethodBeat.o(122703);
+  }
+  
+  public final void ddW()
+  {
+    AppMethodBeat.i(122701);
+    if (this.status == this.uLF)
+    {
+      AppMethodBeat.o(122701);
       return;
-      this.pJq = null;
-      break;
-      this.pJr = null;
-      break label89;
     }
-    label150:
-    this.pIO = null;
-    AppMethodBeat.o(67973);
+    if (bt.eGO() - this.uLA <= 600000L)
+    {
+      localObject = this.callbacks.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((a)((Iterator)localObject).next()).onComplete();
+      }
+      AppMethodBeat.o(122701);
+      return;
+    }
+    this.status = this.uLF;
+    HashMap localHashMap = new HashMap();
+    if (this.uLC.uKJ == null) {}
+    for (Object localObject = "";; localObject = this.uLC.uKJ)
+    {
+      localHashMap.put("syncinfo", localObject);
+      ad.d("MicroMsg.Plugin.MailAddrMgr", "%s", new Object[] { "sync~~~" });
+      ((o)g.ad(o.class)).getNormalMailAppService().b("/cgi-bin/syncaddrlist", localHashMap, new w.a()
+      {
+        public final void onComplete()
+        {
+          q.this.status = q.this.uLG;
+        }
+        
+        public final void onError(int paramAnonymousInt, String paramAnonymousString)
+        {
+          AppMethodBeat.i(122697);
+          paramAnonymousString = q.this.callbacks.iterator();
+          while (paramAnonymousString.hasNext()) {
+            ((q.a)paramAnonymousString.next()).onComplete();
+          }
+          AppMethodBeat.o(122697);
+        }
+        
+        public final void onSuccess(String paramAnonymousString, Map<String, String> paramAnonymousMap)
+        {
+          AppMethodBeat.i(122696);
+          q localq = q.this;
+          int m = bt.getInt((String)paramAnonymousMap.get(".Response.result.Count"), 0);
+          if (m > 0)
+          {
+            int i;
+            int j;
+            Object localObject1;
+            if (localq.uLC.uKL.size() == 0)
+            {
+              i = 1;
+              j = 0;
+              if (j >= m) {
+                break label474;
+              }
+              localObject1 = new StringBuilder(".Response.result.List.item");
+              if (j <= 0) {
+                break label328;
+              }
+            }
+            String str1;
+            Object localObject2;
+            int n;
+            int k;
+            label328:
+            for (paramAnonymousString = String.valueOf(j);; paramAnonymousString = "")
+            {
+              paramAnonymousString = paramAnonymousString + ".";
+              String str2 = (String)paramAnonymousMap.get(paramAnonymousString + "Del");
+              str1 = (String)paramAnonymousMap.get(paramAnonymousString + "Freq");
+              localObject2 = (String)paramAnonymousMap.get(paramAnonymousString + "Name");
+              localObject1 = (String)paramAnonymousMap.get(paramAnonymousString + "Addr");
+              if ((localObject1 == null) || (((String)localObject1).length() == 0)) {
+                break label401;
+              }
+              if (localObject2 != null)
+              {
+                paramAnonymousString = (String)localObject2;
+                if (((String)localObject2).length() != 0) {}
+              }
+              else
+              {
+                paramAnonymousString = (String)localObject1;
+              }
+              n = ((String)localObject1).hashCode();
+              if (!str2.equals("0")) {
+                break label410;
+              }
+              localObject2 = localq.uLC.uKL;
+              k = 0;
+              while ((i == 0) && (k < ((List)localObject2).size()) && (((p)((List)localObject2).get(k)).uLx != n)) {
+                k += 1;
+              }
+              i = 0;
+              break;
+            }
+            if ((k >= ((List)localObject2).size()) || (i != 0))
+            {
+              localObject2 = new p();
+              ((p)localObject2).uLx = n;
+              ((p)localObject2).name = paramAnonymousString;
+              ((p)localObject2).sOr = ((String)localObject1);
+              ((p)localObject2).uLy = bt.getInt(str1, 0);
+              localq.uLC.a((p)localObject2);
+            }
+            label401:
+            label410:
+            label472:
+            for (;;)
+            {
+              j += 1;
+              break;
+              paramAnonymousString = localq.uLC.uKL.iterator();
+              k = 0;
+              for (;;)
+              {
+                if (!paramAnonymousString.hasNext()) {
+                  break label472;
+                }
+                if (((p)paramAnonymousString.next()).uLx == n)
+                {
+                  localq.uLC.JJ(k);
+                  break;
+                }
+                k += 1;
+              }
+            }
+            label474:
+            localq.uLC.akP((String)paramAnonymousMap.get(".Response.result.SyncInfo"));
+            localq.save();
+          }
+          if (((String)paramAnonymousMap.get(".Response.result.ContinueFlag")).equals("1"))
+          {
+            new ap().postDelayed(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(122695);
+                q.this.status = q.this.uLE;
+                q.this.ddW();
+                AppMethodBeat.o(122695);
+              }
+            }, 0L);
+            AppMethodBeat.o(122696);
+            return;
+          }
+          q.this.uLA = bt.eGO();
+          paramAnonymousString = q.this.callbacks.iterator();
+          while (paramAnonymousString.hasNext()) {
+            ((q.a)paramAnonymousString.next()).onComplete();
+          }
+          AppMethodBeat.o(122696);
+        }
+      });
+      AppMethodBeat.o(122701);
+      return;
+    }
   }
   
-  public static String Xu(String paramString)
+  public final void ez(List<p> paramList)
   {
-    Object localObject = null;
-    AppMethodBeat.i(67977);
-    int k = "abEdf4&^^*sxcSD$%&1sdfz@!~AZcT4s322dA%^&&*$##C$%__SDy4d_(*%".length();
-    paramString = paramString + "d$3^&xRw%&*_(";
-    try
+    AppMethodBeat.i(122704);
+    a locala = this.uLC;
+    if ((paramList == null) || (paramList.size() == 0))
     {
-      paramString = g.w(paramString.getBytes());
-      arrayOfChar = new char[paramString.length() * 2];
-      int i = 0;
-      int j = 0;
-      while (i < paramString.length())
-      {
-        int m = j + 1;
-        arrayOfChar[j] = paramString.charAt(i);
-        int n = paramString.charAt(i);
-        j = m + 1;
-        int i1 = paramString.charAt(i);
-        arrayOfChar[m] = ((char)("abEdf4&^^*sxcSD$%&1sdfz@!~AZcT4s322dA%^&&*$##C$%__SDy4d_(*%".charAt(n % k) + i1));
-        i += 1;
-      }
+      save();
+      AppMethodBeat.o(122704);
+      return;
     }
-    catch (Exception paramString)
+    paramList = paramList.iterator();
+    label144:
+    for (;;)
     {
-      char[] arrayOfChar;
+      label42:
+      p localp1;
+      Iterator localIterator;
+      int i;
+      if (paramList.hasNext())
+      {
+        localp1 = (p)paramList.next();
+        localIterator = locala.uKL.iterator();
+        i = 0;
+      }
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.MailContentFormatter", paramString, "", new Object[0]);
-        ab.e("MicroMsg.MailContentFormatter", "attachIdToKey, error:" + paramString.getLocalizedMessage());
-        paramString = null;
+        if (!localIterator.hasNext()) {
+          break label144;
+        }
+        p localp2 = (p)localIterator.next();
+        if (localp2.sOr.equalsIgnoreCase(localp1.sOr))
+        {
+          locala.JJ(i);
+          localp2.uLy += 1;
+          locala.a(localp2);
+          break label42;
+          break;
+        }
+        i += 1;
       }
-      paramString = new String(arrayOfChar);
     }
+  }
+  
+  protected final void finalize()
+  {
+    AppMethodBeat.i(122699);
+    this.callbacks.clear();
+    AppMethodBeat.o(122699);
+  }
+  
+  final void save()
+  {
+    AppMethodBeat.i(122705);
     try
     {
-      paramString = g.w(paramString.getBytes("ISO-8859-1"));
-      AppMethodBeat.o(67977);
-      return paramString;
+      this.uLB.a("address", null, this.uLC.toByteArray());
+      AppMethodBeat.o(122705);
+      return;
     }
-    catch (Exception paramString)
+    catch (IOException localIOException)
     {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.MailContentFormatter", paramString, "", new Object[0]);
-        ab.e("MicroMsg.MailContentFormatter", "attachIdToKey, error:" + paramString.getLocalizedMessage());
-        paramString = localObject;
-      }
+      ad.printErrStackTrace("MicroMsg.Plugin.MailAddrMgr", localIOException, "", new Object[0]);
+      AppMethodBeat.o(122705);
     }
   }
   
-  final String cdF()
+  public static abstract class a
   {
-    AppMethodBeat.i(67974);
-    if (this.pJq != null)
-    {
-      Object localObject1 = new StringBuilder("");
-      ((StringBuilder)localObject1).append("To: ");
-      Object localObject2 = this.pJq;
-      int j = localObject2.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = localObject2[i];
-        ((StringBuilder)localObject1).append("\"");
-        ((StringBuilder)localObject1).append("=?utf-8?B?");
-        ((StringBuilder)localObject1).append(Base64.encodeToString(str.getBytes(), 2));
-        ((StringBuilder)localObject1).append("?=");
-        ((StringBuilder)localObject1).append("\"");
-        ((StringBuilder)localObject1).append(" ");
-        ((StringBuilder)localObject1).append("<");
-        ((StringBuilder)localObject1).append(str);
-        ((StringBuilder)localObject1).append(">");
-        ((StringBuilder)localObject1).append(" ,");
-        i += 1;
-      }
-      localObject2 = ((StringBuilder)localObject1).toString();
-      i = ((String)localObject2).lastIndexOf(" ,");
-      localObject1 = localObject2;
-      if (i != -1) {
-        localObject1 = ((String)localObject2).substring(0, i);
-      }
-      AppMethodBeat.o(67974);
-      return localObject1;
-    }
-    AppMethodBeat.o(67974);
-    return null;
-  }
-  
-  final String cdG()
-  {
-    AppMethodBeat.i(67975);
-    if (this.pJr != null)
-    {
-      Object localObject1 = new StringBuilder("");
-      ((StringBuilder)localObject1).append("Cc: ");
-      Object localObject2 = this.pJr;
-      int j = localObject2.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = localObject2[i];
-        ((StringBuilder)localObject1).append("\"");
-        ((StringBuilder)localObject1).append("=?utf-8?B?");
-        ((StringBuilder)localObject1).append(Base64.encodeToString(str.getBytes(), 2));
-        ((StringBuilder)localObject1).append("?=");
-        ((StringBuilder)localObject1).append("\"");
-        ((StringBuilder)localObject1).append(" ");
-        ((StringBuilder)localObject1).append("<");
-        ((StringBuilder)localObject1).append(str);
-        ((StringBuilder)localObject1).append(">");
-        ((StringBuilder)localObject1).append(" ,");
-        i += 1;
-      }
-      localObject2 = ((StringBuilder)localObject1).toString();
-      i = ((String)localObject2).lastIndexOf(" ,");
-      localObject1 = localObject2;
-      if (i != -1) {
-        localObject1 = ((String)localObject2).substring(0, i);
-      }
-      AppMethodBeat.o(67975);
-      return localObject1;
-    }
-    AppMethodBeat.o(67975);
-    return null;
-  }
-  
-  final String cdH()
-  {
-    AppMethodBeat.i(67976);
-    if (this.pJs != null)
-    {
-      Object localObject1 = new StringBuilder("");
-      ((StringBuilder)localObject1).append("Bcc: ");
-      Object localObject2 = this.pJr;
-      int j = localObject2.length;
-      int i = 0;
-      while (i < j)
-      {
-        String str = localObject2[i];
-        ((StringBuilder)localObject1).append("\"");
-        ((StringBuilder)localObject1).append("=?utf-8?B?");
-        ((StringBuilder)localObject1).append(Base64.encodeToString(str.getBytes(), 2));
-        ((StringBuilder)localObject1).append("?=");
-        ((StringBuilder)localObject1).append("\"");
-        ((StringBuilder)localObject1).append(" ");
-        ((StringBuilder)localObject1).append("<");
-        ((StringBuilder)localObject1).append(str);
-        ((StringBuilder)localObject1).append(">");
-        ((StringBuilder)localObject1).append(" ,");
-        i += 1;
-      }
-      localObject2 = ((StringBuilder)localObject1).toString();
-      i = ((String)localObject2).lastIndexOf(" ,");
-      localObject1 = localObject2;
-      if (i != -1) {
-        localObject1 = ((String)localObject2).substring(0, i);
-      }
-      AppMethodBeat.o(67976);
-      return localObject1;
-    }
-    AppMethodBeat.o(67976);
-    return null;
+    public abstract void onComplete();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.q
  * JD-Core Version:    0.7.0.1
  */

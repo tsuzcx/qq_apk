@@ -11,14 +11,14 @@ final class c$10
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(43480);
+    AppMethodBeat.i(66379);
     paramDialogInterface.dismiss();
-    AppMethodBeat.o(43480);
+    AppMethodBeat.o(66379);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.c.10
  * JD-Core Version:    0.7.0.1
  */

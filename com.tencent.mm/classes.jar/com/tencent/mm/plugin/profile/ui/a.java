@@ -2,71 +2,73 @@ package com.tencent.mm.plugin.profile.ui;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.plugin.fts.a.a.k;
+import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.plugin.fts.a.l;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.contact.a.d;
-import com.tencent.mm.ui.contact.m;
-import com.tencent.mm.ui.contact.p;
+import com.tencent.mm.ui.contact.n;
+import com.tencent.mm.ui.contact.q;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class a
-  extends p
-  implements com.tencent.mm.plugin.fts.a.l
+  extends q
+  implements l
 {
-  ad contact;
-  ak handler;
-  private List<com.tencent.mm.plugin.fts.a.a.l> mTC;
+  af contact;
+  ap handler;
+  private List<m> kLN;
   
-  public a(m paramm, int paramInt, ad paramad)
+  public a(n paramn, int paramInt, af paramaf)
   {
-    super(paramm, new ArrayList(), true, false, paramInt);
-    AppMethodBeat.i(23330);
-    this.handler = new ak(Looper.getMainLooper());
-    this.contact = paramad;
-    AppMethodBeat.o(23330);
+    super(paramn, new ArrayList(), true, false, paramInt);
+    AppMethodBeat.i(26950);
+    this.handler = new ap(Looper.getMainLooper());
+    this.contact = paramaf;
+    AppMethodBeat.o(26950);
   }
   
-  public final void b(j paramj)
+  public final void b(k paramk)
   {
-    AppMethodBeat.i(23333);
-    if (paramj.bpE == 0) {
-      this.mTC = paramj.mSW;
+    AppMethodBeat.i(26953);
+    if (paramk.bRZ == 0) {
+      this.kLN = paramk.rpQ;
     }
     notifyDataSetChanged();
-    AppMethodBeat.o(23333);
+    AppMethodBeat.o(26953);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(23332);
-    if (this.mTC == null)
+    AppMethodBeat.i(26952);
+    if (this.kLN == null)
     {
-      AppMethodBeat.o(23332);
+      AppMethodBeat.o(26952);
       return 0;
     }
-    int i = this.mTC.size();
-    AppMethodBeat.o(23332);
+    int i = this.kLN.size();
+    AppMethodBeat.o(26952);
     return i;
   }
   
-  public final com.tencent.mm.ui.contact.a.a mM(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a pU(int paramInt)
   {
-    AppMethodBeat.i(23331);
+    AppMethodBeat.i(26951);
     d locald = new d(paramInt, this.contact);
-    aw.aaz();
-    locald.contact = c.YA().arw(((com.tencent.mm.plugin.fts.a.a.l)this.mTC.get(paramInt)).mRV);
-    AppMethodBeat.o(23331);
+    az.arV();
+    locald.contact = c.apM().aHY(((m)this.kLN.get(paramInt)).roN);
+    AppMethodBeat.o(26951);
     return locald;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.a
  * JD-Core Version:    0.7.0.1
  */

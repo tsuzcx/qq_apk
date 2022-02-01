@@ -1,330 +1,146 @@
 package com.tencent.mm.an;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.h;
-import com.tencent.mm.model.cb;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import java.io.FileInputStream;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.b.f;
+import com.tencent.mm.memory.a.c;
+import com.tencent.mm.model.u;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import java.util.Map;
 
 public final class a
 {
-  private static boolean active;
-  private static final c fAq;
-  private static boolean fAr;
-  private static long fAs;
-  private static long fAt;
-  private static Thread thread;
+  private static int hag = 0;
+  private static int hah = 0;
   
-  static
+  public static String a(a parama)
   {
-    AppMethodBeat.i(58336);
-    thread = null;
-    active = false;
-    fAq = new c();
-    fAr = true;
-    fAs = 0L;
-    fAt = 0L;
-    AppMethodBeat.o(58336);
-  }
-  
-  private static a.a a(c.a parama, int paramInt)
-  {
-    AppMethodBeat.i(58335);
+    AppMethodBeat.i(20473);
     if (parama == null)
     {
-      AppMethodBeat.o(58335);
-      return null;
+      AppMethodBeat.o(20473);
+      return "";
     }
-    a.a locala = new a.a();
-    locala.fAu = parama.fAu;
-    locala.startTime = parama.time;
-    locala.endTime = parama.time;
-    locala.type = paramInt;
-    locala.fAy = parama.type;
-    AppMethodBeat.o(58335);
-    return locala;
+    StringBuilder localStringBuilder = new StringBuilder("");
+    localStringBuilder.append(bt.nullAsNil(parama.haq));
+    localStringBuilder.append("\n-------------------\n");
+    localStringBuilder.append(bt.nullAsNil(parama.hao));
+    localStringBuilder.append("\n-------------------\n");
+    localStringBuilder.append(bt.nullAsNil(parama.hal));
+    parama = localStringBuilder.toString();
+    AppMethodBeat.o(20473);
+    return parama;
   }
   
-  private static a.a a(c.d paramd, int paramInt)
+  public static String b(a parama)
   {
-    AppMethodBeat.i(58334);
-    if (paramd == null)
+    AppMethodBeat.i(20474);
+    StringBuilder localStringBuilder = new StringBuilder("");
+    if (!u.se(parama.dpv))
     {
-      AppMethodBeat.o(58334);
-      return null;
+      localStringBuilder.append(parama.hai);
+      localStringBuilder.append(": ");
     }
-    a.a locala = new a.a();
-    locala.fAu = paramd.fAQ;
-    locala.startTime = paramd.startTime;
-    locala.endTime = paramd.endTime;
-    locala.type = paramInt;
-    locala.pid = paramd.pid;
-    locala.fAw = paramd.fAw;
-    if (paramInt == 1)
+    if (bt.isNullOrNil(parama.haq)) {
+      if (bt.isNullOrNil(parama.hao)) {
+        parama = parama.hal;
+      }
+    }
+    for (;;)
     {
-      locala.fAv = paramd.fAv;
-      locala.fAx = paramd.fAx;
+      localStringBuilder.append(parama);
+      parama = localStringBuilder.toString();
+      AppMethodBeat.o(20474);
+      return parama;
+      parama = parama.hao;
+      continue;
+      parama = parama.haq;
     }
-    AppMethodBeat.o(58334);
-    return locala;
   }
   
-  public static void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5)
+  public static final class a
   {
-    AppMethodBeat.i(58331);
-    if (!fAr)
+    private static final f<Integer, a> fwL;
+    public String dpv;
+    public String hai;
+    public String haj;
+    public String hak;
+    public String hal;
+    public String ham;
+    public String han;
+    public String hao;
+    public String hap;
+    public String haq;
+    public String toUser;
+    
+    static
     {
-      AppMethodBeat.o(58331);
-      return;
+      AppMethodBeat.i(20472);
+      fwL = new c(100);
+      AppMethodBeat.o(20472);
     }
-    c localc = fAq;
-    c.c localc1 = new c.c(Process.myPid(), paramLong1, paramLong2, paramLong3, paramLong4, paramLong5);
-    ab.i("MicroMsg.ActiveDetector.ProcessDetector", "[oneliang]delayed msg[%s]", new Object[] { localc1.toString() });
-    localc.fAE.fAO.add(localc1);
-    AppMethodBeat.o(58331);
-  }
-  
-  public static List<a.a> agj()
-  {
-    AppMethodBeat.i(58332);
-    if (!ah.brt())
+    
+    public static final a xB(String paramString)
     {
-      AppMethodBeat.o(58332);
-      return null;
-    }
-    Object localObject2 = fAq.fAI;
-    Object localObject1 = (String)localObject2 + "/mm";
-    Object localObject4 = (String)localObject2 + "/push";
-    try
-    {
-      localObject2 = (c.b)b.t(new FileInputStream((String)localObject1));
-    }
-    catch (Exception localException2)
-    {
+      AppMethodBeat.i(20471);
+      if (bt.isNullOrNil(paramString))
+      {
+        ad.e("MicroMsg.BrandQALogic", "empty xml to parse");
+        AppMethodBeat.o(20471);
+        return null;
+      }
+      int i = paramString.indexOf("<qamsg");
+      Object localObject = paramString;
+      if (i > 0) {
+        localObject = paramString.substring(i);
+      }
+      i = ((String)localObject).hashCode();
+      paramString = (a)fwL.get(Integer.valueOf(i));
+      if (paramString != null)
+      {
+        AppMethodBeat.o(20471);
+        return paramString;
+      }
+      paramString = bw.K((String)localObject, "qamsg");
+      if (paramString == null)
+      {
+        ad.e("MicroMsg.BrandQALogic", "parse msg failed");
+        AppMethodBeat.o(20471);
+        return null;
+      }
       try
       {
-        for (;;)
-        {
-          localObject1 = (c.b)b.t(new FileInputStream((String)localObject4));
-          localObject4 = new ArrayList();
-          if (localObject2 == null) {
-            break label416;
-          }
-          localObject5 = ((c.b)localObject2).fAL.iterator();
-          while (((Iterator)localObject5).hasNext())
-          {
-            localObject6 = a((c.d)((Iterator)localObject5).next(), 0);
-            if (localObject6 != null) {
-              ((List)localObject4).add(localObject6);
-            }
-          }
-          localException2 = localException2;
-          ab.e("MicroMsg.ActiveDetector", "%s,read exception:" + localException2.getMessage(), new Object[] { localObject1 });
-          localObject3 = null;
-        }
+        localObject = new a();
+        ((a)localObject).dpv = ((String)paramString.get(".qamsg.$fromUser"));
+        ((a)localObject).hai = ((String)paramString.get(".qamsg.$fromNickname"));
+        ((a)localObject).toUser = ((String)paramString.get(".qamsg.$title"));
+        ((a)localObject).haj = ((String)paramString.get(".qamsg.question.$id"));
+        ((a)localObject).hak = ((String)paramString.get(".qamsg.question.$fromUser"));
+        ((a)localObject).hal = ((String)paramString.get(".qamsg.question.content"));
+        ((a)localObject).ham = ((String)paramString.get(".qamsg.answer.$id"));
+        ((a)localObject).han = ((String)paramString.get(".qamsg.answer.$fromUser"));
+        ((a)localObject).hao = ((String)paramString.get(".qamsg.answer.content"));
+        ((a)localObject).ham = ((String)paramString.get(".qamsg.answer1.$id"));
+        ((a)localObject).hap = ((String)paramString.get(".qamsg.answer1.$fromUser"));
+        ((a)localObject).haq = ((String)paramString.get(".qamsg.answer1.content"));
+        fwL.o(Integer.valueOf(i), localObject);
+        AppMethodBeat.o(20471);
+        return localObject;
       }
-      catch (Exception localException1)
+      catch (Exception paramString)
       {
-        Object localObject6;
-        Object localObject3;
-        Iterator localIterator;
-        for (;;)
-        {
-          ab.e("MicroMsg.ActiveDetector", "%s,read exception:" + localException1.getMessage(), new Object[] { localObject4 });
-          localIterator = null;
-        }
-        Object localObject5 = ((c.b)localObject3).fAN.iterator();
-        while (((Iterator)localObject5).hasNext())
-        {
-          localObject6 = a((c.a)((Iterator)localObject5).next(), 3);
-          if (localObject6 != null) {
-            ((List)localObject4).add(localObject6);
-          }
-        }
-        localObject5 = ((c.b)localObject3).fAO.iterator();
-        label414:
-        while (((Iterator)localObject5).hasNext())
-        {
-          localObject6 = (c.c)((Iterator)localObject5).next();
-          if (localObject6 == null) {
-            localObject3 = null;
-          }
-          for (;;)
-          {
-            if (localObject3 == null) {
-              break label414;
-            }
-            ((List)localObject4).add(localObject3);
-            break;
-            localObject3 = new a.a();
-            ((a.a)localObject3).pid = ((c.c)localObject6).pid;
-            ((a.a)localObject3).fAu = ((c.c)localObject6).fAu;
-            ((a.a)localObject3).startTime = ((c.c)localObject6).fAP;
-            ((a.a)localObject3).endTime = ((c.c)localObject6).fAP;
-            ((a.a)localObject3).type = 4;
-            ((a.a)localObject3).fAz = ((c.c)localObject6).fAz;
-            ((a.a)localObject3).fAA = ((c.c)localObject6).fAA;
-            ((a.a)localObject3).fAB = ((c.c)localObject6).fAB;
-          }
-        }
-        label416:
-        if (localIterator != null)
-        {
-          localObject3 = localIterator.fAL.iterator();
-          while (((Iterator)localObject3).hasNext())
-          {
-            localObject5 = a((c.d)((Iterator)localObject3).next(), 1);
-            if (localObject5 != null) {
-              ((List)localObject4).add(localObject5);
-            }
-          }
-          localIterator = localIterator.fAM.iterator();
-          while (localIterator.hasNext())
-          {
-            localObject3 = a((c.a)localIterator.next(), 2);
-            if (localObject3 != null) {
-              ((List)localObject4).add(localObject3);
-            }
-          }
-        }
-        Collections.sort((List)localObject4);
-        AppMethodBeat.o(58332);
+        ad.e("MicroMsg.BrandQALogic", "parse qamessage xml failed");
+        ad.printErrStackTrace("MicroMsg.BrandQALogic", paramString, "", new Object[0]);
+        AppMethodBeat.o(20471);
       }
+      return null;
     }
-    return localObject4;
-  }
-  
-  public static final void cW(boolean paramBoolean)
-  {
-    AppMethodBeat.i(58328);
-    if (!ah.getContext().getSharedPreferences("system_config_prefs", h.Mp()).getBoolean("msg_delay_close_detect", false)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      fAr = bool;
-      if (bool) {
-        break;
-      }
-      AppMethodBeat.o(58328);
-      return;
-    }
-    active = paramBoolean;
-    if (paramBoolean)
-    {
-      ab.i("MicroMsg.ActiveDetector", "[oneliang]active, time%s, pid:%s", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(Process.myPid()) });
-      if (thread != null) {
-        thread.interrupt();
-      }
-      ab.i("MicroMsg.ActiveDetector", "active, interrupt end, time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-      thread = null;
-      fAq.clear();
-      ab.i("MicroMsg.ActiveDetector", "active, processDetector.clear end, time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-      fAs = cb.abp();
-      AppMethodBeat.o(58328);
-      return;
-    }
-    ab.i("MicroMsg.ActiveDetector", "[oneliang]unactive, time%s, pid:%s", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(Process.myPid()) });
-    if (thread == null)
-    {
-      Thread localThread = d.h(fAq, "ProcessDetector_" + Process.myPid());
-      thread = localThread;
-      localThread.start();
-      fAq.fAK = true;
-    }
-    fAt = cb.abp();
-    AppMethodBeat.o(58328);
-  }
-  
-  public static boolean gO(long paramLong)
-  {
-    boolean bool = true;
-    if ((fAs <= 0L) || (fAt <= 0L) || (paramLong <= 0L)) {
-      bool = false;
-    }
-    do
-    {
-      do
-      {
-        return bool;
-        if (fAs < fAt) {
-          break;
-        }
-      } while (paramLong >= fAs);
-      return false;
-    } while (paramLong < fAt);
-    return false;
-  }
-  
-  static String gP(long paramLong)
-  {
-    AppMethodBeat.i(58333);
-    Object localObject = new Date(paramLong);
-    localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format((Date)localObject);
-    AppMethodBeat.o(58333);
-    return localObject;
-  }
-  
-  public static boolean isActive()
-  {
-    return active;
-  }
-  
-  public static void li(int paramInt)
-  {
-    AppMethodBeat.i(58329);
-    if (!fAr)
-    {
-      AppMethodBeat.o(58329);
-      return;
-    }
-    if (active)
-    {
-      AppMethodBeat.o(58329);
-      return;
-    }
-    c localc = fAq;
-    c.a locala = new c.a(cb.abp(), System.currentTimeMillis(), paramInt);
-    localc.fAE.fAM.add(locala);
-    AppMethodBeat.o(58329);
-  }
-  
-  public static void lj(int paramInt)
-  {
-    AppMethodBeat.i(58330);
-    if (!fAr)
-    {
-      AppMethodBeat.o(58330);
-      return;
-    }
-    if (active)
-    {
-      AppMethodBeat.o(58330);
-      return;
-    }
-    c localc = fAq;
-    c.a locala = new c.a(cb.abp(), System.currentTimeMillis(), paramInt);
-    localc.fAE.fAN.add(locala);
-    AppMethodBeat.o(58330);
-  }
-  
-  public static void lk(int paramInt)
-  {
-    fAq.fAC = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.an.a
  * JD-Core Version:    0.7.0.1
  */

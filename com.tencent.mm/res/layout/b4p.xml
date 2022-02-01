@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/a73" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/fcs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:src="@raw/voip_voice_mini_window_icon" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="12.0dip" android:textColor="#ff09bb07" android:id="@id/fct" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="00:00" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <ListView android:id="@id/sx" android:divider="@drawable/x8" style="@style/n3" />
+    <TextView android:gravity="center_horizontal" android:id="@id/sw" android:visibility="gone" android:layout_marginTop="@dimen/ig" android:text="@string/f4v" style="@style/le" />
+</FrameLayout>

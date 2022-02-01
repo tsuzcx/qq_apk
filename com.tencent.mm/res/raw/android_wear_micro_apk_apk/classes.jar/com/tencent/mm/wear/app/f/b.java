@@ -5,74 +5,74 @@ import com.tencent.mm.wear.app.a.e;
 public final class b
   extends com.tencent.mm.wear.app.g.a
 {
-  private long aaA = 10000L;
-  private int aaO;
-  private e aaS;
-  private byte[] aen;
-  private boolean aeo;
-  private d aep;
+  private long aeb = 10000L;
+  private int aep;
+  private e aet;
+  private byte[] ahP;
+  private boolean ahQ;
+  private d ahR;
   
   public b(int paramInt, byte[] paramArrayOfByte)
   {
-    this.aaO = paramInt;
-    this.aen = paramArrayOfByte;
+    this.aep = paramInt;
+    this.ahP = paramArrayOfByte;
   }
   
-  public final void F(boolean paramBoolean)
+  public final void I(boolean paramBoolean)
   {
-    this.aeo = paramBoolean;
+    this.ahQ = paramBoolean;
   }
   
   public final void a(d paramd)
   {
-    this.aep = paramd;
+    this.ahR = paramd;
   }
   
   public final void cancel()
   {
-    if (this.aaS != null) {
-      this.aaS.cancel();
+    if (this.aet != null) {
+      this.aet.cancel();
     }
   }
   
   protected final void execute()
   {
-    this.aaS = new e(com.tencent.mm.wear.app.b.h.mb().lS());
-    this.aaS.setTimeout(this.aaA);
+    this.aet = new e(com.tencent.mm.wear.app.b.h.mO().mF());
+    this.aet.setTimeout(this.aeb);
     Object localObject = new com.tencent.mm.wear.app.a.g();
-    ((com.tencent.mm.wear.app.a.g)localObject).aaO = this.aaO;
-    if ((this.aeo) && (this.aen != null))
+    ((com.tencent.mm.wear.app.a.g)localObject).aep = this.aep;
+    if ((this.ahQ) && (this.ahP != null))
     {
-      this.aen = com.tencent.mm.wear.app.b.h.mb().k(this.aen);
-      if (this.aen == null)
+      this.ahP = com.tencent.mm.wear.app.b.h.mO().k(this.ahP);
+      if (this.ahP == null)
       {
-        com.tencent.mm.wear.a.c.d.a("MicroMsg.CommonTask", "common task fail encryptData = null %d", new Object[] { Integer.valueOf(this.aaO) });
-        com.tencent.mm.wear.a.b.a.aiT.post(new c(this, this.aaO, 65536, null));
+        com.tencent.mm.wear.a.c.d.a("MicroMsg.CommonTask", "common task fail encryptData = null %d", new Object[] { Integer.valueOf(this.aep) });
+        com.tencent.mm.wear.a.b.a.amv.post(new c(this, this.aep, 65536, null));
         return;
       }
     }
-    ((com.tencent.mm.wear.app.a.g)localObject).data = this.aen;
-    localObject = this.aaS.a((com.tencent.mm.wear.app.a.g)localObject);
-    if ((((com.tencent.mm.wear.app.a.h)localObject).aaw == 0) && (((com.tencent.mm.wear.app.a.h)localObject).data != null))
+    ((com.tencent.mm.wear.app.a.g)localObject).data = this.ahP;
+    localObject = this.aet.a((com.tencent.mm.wear.app.a.g)localObject);
+    if ((((com.tencent.mm.wear.app.a.h)localObject).adX == 0) && (((com.tencent.mm.wear.app.a.h)localObject).data != null))
     {
-      if (this.aeo)
+      if (this.ahQ)
       {
-        localObject = com.tencent.mm.wear.app.b.h.mb().l(((com.tencent.mm.wear.app.a.h)localObject).data);
+        localObject = com.tencent.mm.wear.app.b.h.mO().l(((com.tencent.mm.wear.app.a.h)localObject).data);
         if (localObject == null)
         {
-          com.tencent.mm.wear.a.c.d.a("MicroMsg.CommonTask", "common task fail decryptData = null %d", new Object[] { Integer.valueOf(this.aaO) });
-          com.tencent.mm.wear.a.b.a.aiT.post(new c(this, this.aaO, 65536, null));
+          com.tencent.mm.wear.a.c.d.a("MicroMsg.CommonTask", "common task fail decryptData = null %d", new Object[] { Integer.valueOf(this.aep) });
+          com.tencent.mm.wear.a.b.a.amv.post(new c(this, this.aep, 65536, null));
           return;
         }
-        com.tencent.mm.wear.a.c.d.c("MicroMsg.CommonTask", "common task success %d", new Object[] { Integer.valueOf(this.aaO) });
-        com.tencent.mm.wear.a.b.a.aiT.post(new c(this, this.aaO, 0, (byte[])localObject));
+        com.tencent.mm.wear.a.c.d.c("MicroMsg.CommonTask", "common task success %d", new Object[] { Integer.valueOf(this.aep) });
+        com.tencent.mm.wear.a.b.a.amv.post(new c(this, this.aep, 0, (byte[])localObject));
         return;
       }
-      com.tencent.mm.wear.a.c.d.c("MicroMsg.CommonTask", "common task success %d", new Object[] { Integer.valueOf(this.aaO) });
-      com.tencent.mm.wear.a.b.a.aiT.post(new c(this, this.aaO, 0, ((com.tencent.mm.wear.app.a.h)localObject).data));
+      com.tencent.mm.wear.a.c.d.c("MicroMsg.CommonTask", "common task success %d", new Object[] { Integer.valueOf(this.aep) });
+      com.tencent.mm.wear.a.b.a.amv.post(new c(this, this.aep, 0, ((com.tencent.mm.wear.app.a.h)localObject).data));
       return;
     }
-    com.tencent.mm.wear.a.b.a.aiT.post(new c(this, this.aaO, 131072, null));
+    com.tencent.mm.wear.a.b.a.amv.post(new c(this, this.aep, 131072, null));
   }
   
   protected final String getName()

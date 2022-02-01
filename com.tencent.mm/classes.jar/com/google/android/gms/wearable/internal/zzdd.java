@@ -39,15 +39,15 @@ public final class zzdd
   
   static
   {
-    AppMethodBeat.i(71197);
+    AppMethodBeat.i(101180);
     CREATOR = new zzde();
-    AppMethodBeat.o(71197);
+    AppMethodBeat.o(101180);
   }
   
   @SafeParcelable.Constructor
   zzdd(@SafeParcelable.Param(id=2) Uri paramUri, @SafeParcelable.Param(id=4) Bundle paramBundle, @SafeParcelable.Param(id=5) byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(71194);
+    AppMethodBeat.i(101177);
     this.uri = paramUri;
     paramUri = new HashMap();
     paramBundle.setClassLoader(DataItemAssetParcelable.class.getClassLoader());
@@ -59,7 +59,7 @@ public final class zzdd
     }
     this.zzdo = paramUri;
     this.data = paramArrayOfByte;
-    AppMethodBeat.o(71194);
+    AppMethodBeat.o(101177);
   }
   
   public final Map<String, DataItemAsset> getAssets()
@@ -85,7 +85,7 @@ public final class zzdd
   
   public final String toString()
   {
-    AppMethodBeat.i(71196);
+    AppMethodBeat.i(101179);
     boolean bool = Log.isLoggable("DataItem", 3);
     StringBuilder localStringBuilder = new StringBuilder("DataItemParcelable[");
     localStringBuilder.append("@");
@@ -104,7 +104,7 @@ public final class zzdd
       }
       localStringBuilder.append("]");
       localObject = localStringBuilder.toString();
-      AppMethodBeat.o(71196);
+      AppMethodBeat.o(101179);
       return localObject;
     }
     localStringBuilder.append("]\n  assets: ");
@@ -117,13 +117,13 @@ public final class zzdd
     }
     localStringBuilder.append("\n  ]");
     localObject = localStringBuilder.toString();
-    AppMethodBeat.o(71196);
+    AppMethodBeat.o(101179);
     return localObject;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(71195);
+    AppMethodBeat.i(101178);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeParcelable(paramParcel, 2, getUri(), paramInt, false);
     Bundle localBundle = new Bundle();
@@ -137,7 +137,7 @@ public final class zzdd
     SafeParcelWriter.writeBundle(paramParcel, 4, localBundle, false);
     SafeParcelWriter.writeByteArray(paramParcel, 5, getData(), false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(71195);
+    AppMethodBeat.o(101178);
   }
 }
 

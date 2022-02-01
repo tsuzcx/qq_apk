@@ -16,171 +16,230 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.aj.m.a;
-import com.tencent.mm.aj.z;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.am.af;
+import com.tencent.mm.am.n.a;
+import com.tencent.mm.plugin.brandservice.b.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.tools.SearchViewNotRealTimeHelper;
 import com.tencent.mm.ui.tools.SearchViewNotRealTimeHelper.a;
+import java.util.LinkedList;
 
 public class SearchOrRecommendBizUI
   extends MMActivity
   implements BizSearchResultItemContainer.b
 {
-  private int ejF = 0;
-  private BizSearchResultItemContainer jTk;
-  private ProgressDialog jUQ = null;
-  private int jUR = 0;
-  private SearchViewNotRealTimeHelper jUS;
+  private int fsv = 0;
+  private BizSearchResultItemContainer mTC;
+  private ProgressDialog mVv = null;
+  private int mVw = 0;
+  private SearchViewNotRealTimeHelper mVx;
   
-  public final void aWy()
+  public final void bCx()
   {
-    AppMethodBeat.i(14053);
+    AppMethodBeat.i(5790);
     AppCompatActivity localAppCompatActivity = getContext();
-    getString(2131297087);
-    this.jUQ = h.b(localAppCompatActivity, getString(2131298842), true, new DialogInterface.OnCancelListener()
+    getString(2131755906);
+    this.mVv = h.b(localAppCompatActivity, getString(2131757920), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
-        AppMethodBeat.i(14048);
+        AppMethodBeat.i(5786);
         paramAnonymousDialogInterface = SearchOrRecommendBizUI.a(SearchOrRecommendBizUI.this);
-        g.Rc().a(paramAnonymousDialogInterface.jTH);
-        paramAnonymousDialogInterface.jTF.jTS = false;
-        AppMethodBeat.o(14048);
+        com.tencent.mm.kernel.g.aeS().a(paramAnonymousDialogInterface.mTY);
+        paramAnonymousDialogInterface.mTW.mUj = false;
+        AppMethodBeat.o(5786);
       }
     });
-    AppMethodBeat.o(14053);
+    AppMethodBeat.o(5790);
   }
   
-  public final void aWz()
+  public final void bCy()
   {
-    AppMethodBeat.i(14054);
-    if (this.jUQ != null)
+    AppMethodBeat.i(5791);
+    if (this.mVv != null)
     {
-      this.jUQ.dismiss();
-      this.jUQ = null;
+      this.mVv.dismiss();
+      this.mVv = null;
     }
-    AppMethodBeat.o(14054);
+    AppMethodBeat.o(5791);
   }
   
   public int getLayoutId()
   {
-    return 2130969271;
+    return 2131493659;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(14051);
-    setMMTitle(2131298844);
+    AppMethodBeat.i(5789);
+    setMMTitle(2131757922);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(14043);
+        AppMethodBeat.i(5781);
         SearchOrRecommendBizUI.this.hideVKB();
         SearchOrRecommendBizUI.this.finish();
-        AppMethodBeat.o(14043);
+        AppMethodBeat.o(5781);
         return true;
       }
     });
-    this.jUS = ((SearchViewNotRealTimeHelper)findViewById(2131823242));
-    this.jUS.setSearchColor(getResources().getColor(2131690322));
-    this.jUS.setSearchHint(getString(2131298844));
-    this.jUS.setSearchHintColor(getResources().getColor(2131690167));
-    this.jUS.setSearchIcon(0);
-    this.jUS.setShowBackIcon(false);
-    this.jUS.setCallBack(new SearchViewNotRealTimeHelper.a()
+    this.mVx = ((SearchViewNotRealTimeHelper)findViewById(2131304452));
+    this.mVx.setSearchColor(getResources().getColor(2131100711));
+    this.mVx.setSearchHint(getString(2131757922));
+    this.mVx.setSearchHintColor(getResources().getColor(2131100489));
+    this.mVx.setSearchIcon(0);
+    this.mVx.setShowBackIcon(false);
+    this.mVx.setCallBack(new SearchViewNotRealTimeHelper.a()
     {
-      public final void GL(String paramAnonymousString)
+      public final boolean BX(String paramAnonymousString)
       {
-        AppMethodBeat.i(14046);
-        if (!bo.isNullOrNil(paramAnonymousString))
+        AppMethodBeat.i(5783);
+        Pm(paramAnonymousString);
+        AppMethodBeat.o(5783);
+        return true;
+      }
+      
+      public final void Pm(String paramAnonymousString)
+      {
+        AppMethodBeat.i(5784);
+        if (!bt.isNullOrNil(paramAnonymousString))
         {
           SearchOrRecommendBizUI.this.hideVKB();
-          SearchOrRecommendBizUI.a(SearchOrRecommendBizUI.this).bJ(paramAnonymousString, 0);
-          AppMethodBeat.o(14046);
+          SearchOrRecommendBizUI.a(SearchOrRecommendBizUI.this).co(paramAnonymousString, 0);
+          AppMethodBeat.o(5784);
           return;
         }
-        h.bO(SearchOrRecommendBizUI.this.getContext(), SearchOrRecommendBizUI.this.getString(2131298840));
-        AppMethodBeat.o(14046);
+        h.cf(SearchOrRecommendBizUI.this.getContext(), SearchOrRecommendBizUI.this.getString(2131757918));
+        AppMethodBeat.o(5784);
       }
       
-      public final void aWD()
+      public final void bCD()
       {
-        AppMethodBeat.i(14047);
+        AppMethodBeat.i(5785);
         SearchOrRecommendBizUI.this.showVKB();
-        AppMethodBeat.o(14047);
-      }
-      
-      public final boolean wR(String paramAnonymousString)
-      {
-        AppMethodBeat.i(14045);
-        GL(paramAnonymousString);
-        AppMethodBeat.o(14045);
-        return true;
+        AppMethodBeat.o(5785);
       }
     });
-    this.jTk = ((BizSearchResultItemContainer)findViewById(2131821845));
-    this.jTk.setOnTouchListener(new View.OnTouchListener()
+    this.mTC = ((BizSearchResultItemContainer)findViewById(2131304388));
+    this.mTC.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(14044);
+        AppMethodBeat.i(5782);
         SearchOrRecommendBizUI.b(SearchOrRecommendBizUI.this).clearFocus();
         SearchOrRecommendBizUI.this.hideVKB();
-        AppMethodBeat.o(14044);
+        AppMethodBeat.o(5782);
         return false;
       }
     });
-    f localf = new f(this);
-    localf.jUM = com.tencent.mm.plugin.brandservice.b.f.aWs();
-    this.jTk.setAdapter(localf);
-    this.jTk.setBusinessTypes(new long[] { 1L });
-    this.jTk.setDisplayArgs$25decb5(false);
-    this.jTk.setMode(1);
-    this.jTk.setScene(this.ejF);
-    this.jTk.setIOnSearchStateChangedListener(this);
-    AppMethodBeat.o(14051);
+    g localg = new g(this);
+    localg.mVr = k.bCr();
+    this.mTC.setAdapter(localg);
+    this.mTC.setBusinessTypes(new long[] { 1L });
+    this.mTC.setDisplayArgs$25decb5(false);
+    this.mTC.setMode(1);
+    this.mTC.setScene(this.fsv);
+    this.mTC.setIOnSearchStateChangedListener(this);
+    AppMethodBeat.o(5789);
   }
   
   public void onCreate(final Bundle paramBundle)
   {
-    AppMethodBeat.i(14049);
+    AppMethodBeat.i(5787);
     super.onCreate(paramBundle);
-    this.jUR = getIntent().getIntExtra("intent_extra_entry_flag", 0);
-    this.ejF = getIntent().getIntExtra("fromScene", 0);
+    this.mVw = getIntent().getIntExtra("intent_extra_entry_flag", 0);
+    this.fsv = getIntent().getIntExtra("fromScene", 0);
     initView();
-    if (com.tencent.mm.plugin.brandservice.b.f.aWr())
+    if (k.bCq())
     {
-      g.Rc().a(456, new SearchOrRecommendBizUI.1(this));
-      g.Rc().a(new com.tencent.mm.plugin.brandservice.b.f(), 0);
+      com.tencent.mm.kernel.g.aeS().a(456, new com.tencent.mm.al.g()
+      {
+        public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, final String paramAnonymousString, n paramAnonymousn)
+        {
+          AppMethodBeat.i(5779);
+          if (paramAnonymousn == null)
+          {
+            ad.e("MicroMsg.BrandService.SearchOrRecommendBizUI", "NetScene is null.");
+            AppMethodBeat.o(5779);
+            return;
+          }
+          if (paramAnonymousn.getType() != 456)
+          {
+            ad.e("MicroMsg.BrandService.SearchOrRecommendBizUI", "The NetScene is not a RecommendGroupNetScene.");
+            AppMethodBeat.o(5779);
+            return;
+          }
+          com.tencent.mm.kernel.g.aeS().b(456, this);
+          ad.i("MicroMsg.BrandService.SearchOrRecommendBizUI", "errType(%d) , errCode(%d) , errMsg(%s)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+          {
+            paramAnonymousn = k.bCr();
+            if (SearchOrRecommendBizUI.a(SearchOrRecommendBizUI.this) != null) {
+              break label169;
+            }
+            paramAnonymousString = null;
+            if ((paramAnonymousString != null) && (paramAnonymousn != null) && (paramAnonymousn.size() > 0)) {
+              if (paramAnonymousString.getCount() != 0) {
+                break label189;
+              }
+            }
+          }
+          label169:
+          label189:
+          for (paramAnonymousInt1 = 1;; paramAnonymousInt1 = 0)
+          {
+            paramAnonymousString.mVr = paramAnonymousn;
+            if (paramAnonymousInt1 != 0) {
+              aq.f(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(5778);
+                  ad.i("MicroMsg.BrandService.SearchOrRecommendBizUI", "Has got recommend groups, so notifyDataSetChanged.");
+                  paramAnonymousString.notifyDataSetChanged();
+                  AppMethodBeat.o(5778);
+                }
+              });
+            }
+            AppMethodBeat.o(5779);
+            return;
+            paramAnonymousString = (g)SearchOrRecommendBizUI.a(SearchOrRecommendBizUI.this).getAdapter();
+            break;
+          }
+        }
+      });
+      com.tencent.mm.kernel.g.aeS().a(new k(), 0);
     }
     paramBundle = getIntent().getStringExtra("Search_Str");
-    if (!bo.isNullOrNil(paramBundle)) {
-      new ak(Looper.getMainLooper()).post(new Runnable()
+    if (!bt.isNullOrNil(paramBundle)) {
+      new ap(Looper.getMainLooper()).post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(14042);
+          AppMethodBeat.i(5780);
           SearchOrRecommendBizUI.b(SearchOrRecommendBizUI.this).setSearchContent(paramBundle);
-          SearchOrRecommendBizUI.b(SearchOrRecommendBizUI.this).Axs.performClick();
-          AppMethodBeat.o(14042);
+          SearchOrRecommendBizUI.b(SearchOrRecommendBizUI.this).HtC.performClick();
+          AppMethodBeat.o(5780);
         }
       });
     }
-    AppMethodBeat.o(14049);
+    AppMethodBeat.o(5787);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(14050);
+    AppMethodBeat.i(5788);
     super.onDestroy();
-    z.afs().afc();
-    AppMethodBeat.o(14050);
+    af.awo().avU();
+    AppMethodBeat.o(5788);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -191,7 +250,7 @@ public class SearchOrRecommendBizUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.SearchOrRecommendBizUI
  * JD-Core Version:    0.7.0.1
  */

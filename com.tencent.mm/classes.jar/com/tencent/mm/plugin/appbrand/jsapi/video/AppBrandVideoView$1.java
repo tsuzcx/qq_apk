@@ -11,14 +11,14 @@ final class AppBrandVideoView$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(126441);
-    this.icX.start();
-    AppMethodBeat.o(126441);
+    AppMethodBeat.i(137698);
+    this.kny.start();
+    AppMethodBeat.o(137698);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView.1
  * JD-Core Version:    0.7.0.1
  */

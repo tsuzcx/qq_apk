@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/ya" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m7" android:layout_marginRight="@dimen/m7" android:minWidth="@dimen/lo"
+<LinearLayout android:id="@id/ba2" style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/bri" android:background="@drawable/o4" android:paddingTop="20.0dip" android:paddingBottom="20.0dip" android:layout_width="160.0dip" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.fingerprint.faceid.auth.FrameAnimatorImageView android:layout_gravity="center_horizontal" android:id="@id/brj" android:layout_width="64.0dip" android:layout_height="64.0dip" android:src="@drawable/b66" />
-        <TextView android:textSize="@dimen/ff" android:textColor="#ff111111" android:layout_gravity="center_horizontal" android:id="@id/brk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:text="@string/bon" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/brl" android:paddingLeft="@dimen/la" android:paddingTop="@dimen/l2" android:paddingRight="@dimen/l2" android:paddingBottom="@dimen/l2" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:gravity="right" android:id="@id/brm" android:background="@color/a6q" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/pa" android:layout_weight="1.0" style="@style/ny" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/rb" android:id="@id/brn" android:background="@color/a6q" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="queding" style="@style/ny" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ba1" android:background="@color/a25" android:paddingTop="@dimen/hj" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ba6" android:background="@color/a25" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/jm" style="@style/qp">
+            <TextView android:textColor="@color/y4" android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/ba7" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/bn9" android:layout_weight="1.0" style="@style/nd" />
+        </LinearLayout>
+        <com.tencent.mm.plugin.emoji.ui.v2.PreViewListGridView android:gravity="center" android:id="@id/ba4" android:background="@color/xo" android:paddingBottom="@dimen/i_" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/afj" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:choiceMode="none" />
+        <LinearLayout android:background="@color/xo" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:id="@id/ba3" android:background="@drawable/oc" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/i_" android:layout_marginRight="@dimen/i_" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ba5" android:background="@drawable/emoji_store_v2_single_bar" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:layout_width="fill_parent" android:layout_height="@dimen/jm" style="@style/qp">
+            <TextView android:textColor="@color/y4" android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/ba8" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/bn8" android:layout_weight="1.0" style="@style/nd" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

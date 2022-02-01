@@ -1,65 +1,40 @@
 package com.tencent.mm.model;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.j.a.a.a;
-import com.tencent.mm.protocal.protobuf.rc;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bh;
 
 public final class o
-  implements com.tencent.mm.plugin.chatroom.a.b
 {
-  public final boolean N(String paramString, int paramInt)
+  public static int aqz()
   {
-    AppMethodBeat.i(5551);
-    boolean bool = n.N(paramString, paramInt);
-    AppMethodBeat.o(5551);
-    return bool;
-  }
-  
-  public final String R(List<String> paramList)
-  {
-    AppMethodBeat.i(5550);
-    paramList = n.f(paramList, -1);
-    AppMethodBeat.o(5550);
-    return paramList;
-  }
-  
-  public final boolean a(String paramString1, String paramString2, rc paramrc, String paramString3, a parama, com.tencent.mm.sdk.b.b paramb)
-  {
-    AppMethodBeat.i(5552);
-    boolean bool = n.a(paramString1, paramString2, paramrc, 0, paramString3, parama, paramb);
-    AppMethodBeat.o(5552);
-    return bool;
-  }
-  
-  public final boolean a(String paramString1, ArrayList<String> paramArrayList, String paramString2)
-  {
-    AppMethodBeat.i(5549);
-    boolean bool = n.a(paramString1, paramArrayList, paramString2);
-    AppMethodBeat.o(5549);
-    return bool;
-  }
-  
-  public final List<String> nt(String paramString)
-  {
-    AppMethodBeat.i(5547);
-    paramString = n.nt(paramString);
-    AppMethodBeat.o(5547);
-    return paramString;
-  }
-  
-  public final int nv(String paramString)
-  {
-    AppMethodBeat.i(5548);
-    int i = n.nv(paramString);
-    AppMethodBeat.o(5548);
-    return i;
+    AppMethodBeat.i(20317);
+    if (!g.afw())
+    {
+      ad.w("MicroMsg.BottleConversationLogic", "get Bottle Total Conversation Unread, but has not set uin");
+      AppMethodBeat.o(20317);
+      return 0;
+    }
+    Cursor localCursor = ((k)g.ab(k.class)).apR().eLo();
+    if ((localCursor != null) && (localCursor.getCount() > 0)) {
+      localCursor.moveToFirst();
+    }
+    for (int i = localCursor.getInt(0);; i = 0)
+    {
+      if (localCursor != null) {
+        localCursor.close();
+      }
+      AppMethodBeat.o(20317);
+      return i;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.model.o
  * JD-Core Version:    0.7.0.1
  */

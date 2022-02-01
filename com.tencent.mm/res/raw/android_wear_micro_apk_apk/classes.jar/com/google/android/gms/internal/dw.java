@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public abstract class dw
 {
-  protected volatile int RB = -1;
+  protected volatile int Tq = -1;
   
   public static final <T extends dw> T a(T paramT, byte[] paramArrayOfByte, int paramInt)
   {
@@ -12,7 +12,7 @@ public abstract class dw
     {
       paramArrayOfByte = dn.a(paramArrayOfByte, 0, paramInt);
       paramT.a(paramArrayOfByte);
-      paramArrayOfByte.bp(0);
+      paramArrayOfByte.bJ(0);
       return paramT;
     }
     catch (dv paramT)
@@ -27,13 +27,13 @@ public abstract class dw
   
   public static final byte[] c(dw paramdw)
   {
-    byte[] arrayOfByte = new byte[paramdw.kj()];
+    byte[] arrayOfByte = new byte[paramdw.ks()];
     int i = arrayOfByte.length;
     try
     {
       do localdo = do.b(arrayOfByte, 0, i);
       paramdw.a(localdo);
-      localdo.jY();
+      localdo.kh();
       return arrayOfByte;
     }
     catch (IOException paramdw)
@@ -46,28 +46,28 @@ public abstract class dw
   
   public void a(do paramdo) {}
   
-  protected int jN()
+  protected int jW()
   {
     return 0;
   }
   
-  public dw jZ()
+  public dw ki()
   {
     return (dw)super.clone();
   }
   
-  public final int ki()
+  public final int kr()
   {
-    if (this.RB < 0) {
-      kj();
+    if (this.Tq < 0) {
+      ks();
     }
-    return this.RB;
+    return this.Tq;
   }
   
-  public final int kj()
+  public final int ks()
   {
-    int i = jN();
-    this.RB = i;
+    int i = jW();
+    this.Tq = i;
     return i;
   }
   

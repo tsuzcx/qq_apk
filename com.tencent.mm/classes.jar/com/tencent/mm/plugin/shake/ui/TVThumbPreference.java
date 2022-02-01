@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.x;
-import com.tencent.mm.platformtools.x.a;
+import com.tencent.mm.platformtools.u;
+import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.shake.e.b;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -16,13 +16,13 @@ import java.util.List;
 
 public class TVThumbPreference
   extends Preference
-  implements x.a
+  implements u.a
 {
-  f iLA;
-  private ImageView qRR;
-  private ImageView qRS;
-  private ImageView qRT;
-  List<String> qRU;
+  f lxI;
+  private ImageView wqH;
+  private ImageView wqI;
+  private ImageView wqJ;
+  List<String> wqK;
   
   public TVThumbPreference(Context paramContext)
   {
@@ -37,100 +37,133 @@ public class TVThumbPreference
   public TVThumbPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(24939);
-    this.qRU = null;
-    setLayoutResource(2130971047);
+    AppMethodBeat.i(28608);
+    this.wqK = null;
+    setLayoutResource(2131495812);
     setWidgetLayoutResource(0);
-    x.a(this);
-    AppMethodBeat.o(24939);
+    u.a(this);
+    AppMethodBeat.o(28608);
   }
   
-  public final void m(String paramString, Bitmap paramBitmap)
+  public final void l(String paramString, final Bitmap paramBitmap)
   {
-    AppMethodBeat.i(24942);
+    AppMethodBeat.i(28611);
     if ((paramString == null) || (paramBitmap == null) || (paramBitmap.isRecycled()))
     {
-      AppMethodBeat.o(24942);
+      AppMethodBeat.o(28611);
       return;
     }
-    if ((this.qRR != null) && (this.qRR.getTag() != null) && (paramString.equals((String)this.qRR.getTag())))
+    if ((this.wqH != null) && (this.wqH.getTag() != null) && (paramString.equals((String)this.wqH.getTag())))
     {
-      this.qRR.post(new TVThumbPreference.1(this, paramBitmap));
-      AppMethodBeat.o(24942);
+      this.wqH.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(28605);
+          TVThumbPreference.a(TVThumbPreference.this).setImageBitmap(paramBitmap);
+          if (TVThumbPreference.b(TVThumbPreference.this) != null) {
+            TVThumbPreference.b(TVThumbPreference.this).notifyDataSetChanged();
+          }
+          AppMethodBeat.o(28605);
+        }
+      });
+      AppMethodBeat.o(28611);
       return;
     }
-    if ((this.qRS != null) && (this.qRS.getTag() != null) && (paramString.equals((String)this.qRS.getTag())))
+    if ((this.wqI != null) && (this.wqI.getTag() != null) && (paramString.equals((String)this.wqI.getTag())))
     {
-      this.qRS.post(new TVThumbPreference.2(this, paramBitmap));
-      AppMethodBeat.o(24942);
+      this.wqI.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(28606);
+          TVThumbPreference.c(TVThumbPreference.this).setImageBitmap(paramBitmap);
+          if (TVThumbPreference.b(TVThumbPreference.this) != null) {
+            TVThumbPreference.b(TVThumbPreference.this).notifyDataSetChanged();
+          }
+          AppMethodBeat.o(28606);
+        }
+      });
+      AppMethodBeat.o(28611);
       return;
     }
-    if ((this.qRT != null) && (this.qRT.getTag() != null) && (paramString.equals((String)this.qRT.getTag()))) {
-      this.qRT.post(new TVThumbPreference.3(this, paramBitmap));
+    if ((this.wqJ != null) && (this.wqJ.getTag() != null) && (paramString.equals((String)this.wqJ.getTag()))) {
+      this.wqJ.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(28607);
+          TVThumbPreference.d(TVThumbPreference.this).setImageBitmap(paramBitmap);
+          if (TVThumbPreference.b(TVThumbPreference.this) != null) {
+            TVThumbPreference.b(TVThumbPreference.this).notifyDataSetChanged();
+          }
+          AppMethodBeat.o(28607);
+        }
+      });
     }
-    AppMethodBeat.o(24942);
+    AppMethodBeat.o(28611);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(24941);
+    AppMethodBeat.i(28610);
     super.onBindView(paramView);
-    this.qRR = ((ImageView)paramView.findViewById(2131828652));
-    this.qRS = ((ImageView)paramView.findViewById(2131828653));
-    this.qRT = ((ImageView)paramView.findViewById(2131828654));
-    if (this.qRU != null)
+    this.wqH = ((ImageView)paramView.findViewById(2131305794));
+    this.wqI = ((ImageView)paramView.findViewById(2131305795));
+    this.wqJ = ((ImageView)paramView.findViewById(2131305796));
+    if (this.wqK != null)
     {
-      if (this.qRU.size() <= 0)
+      if (this.wqK.size() <= 0)
       {
-        AppMethodBeat.o(24941);
+        AppMethodBeat.o(28610);
         return;
       }
-      paramView = new b((String)this.qRU.get(0));
-      this.qRR.setTag(paramView.aop());
-      paramView = x.a(paramView);
+      paramView = new b((String)this.wqK.get(0));
+      this.wqH.setTag(paramView.aGA());
+      paramView = u.a(paramView);
       if ((paramView != null) && (!paramView.isRecycled())) {
-        this.qRR.setImageBitmap(paramView);
+        this.wqH.setImageBitmap(paramView);
       }
-      this.qRR.setVisibility(0);
-      if (1 >= this.qRU.size())
+      this.wqH.setVisibility(0);
+      if (1 >= this.wqK.size())
       {
-        AppMethodBeat.o(24941);
+        AppMethodBeat.o(28610);
         return;
       }
-      paramView = new b((String)this.qRU.get(1));
-      this.qRS.setTag(paramView.aop());
-      paramView = x.a(paramView);
+      paramView = new b((String)this.wqK.get(1));
+      this.wqI.setTag(paramView.aGA());
+      paramView = u.a(paramView);
       if ((paramView != null) && (!paramView.isRecycled())) {
-        this.qRS.setImageBitmap(paramView);
+        this.wqI.setImageBitmap(paramView);
       }
-      this.qRS.setVisibility(0);
-      if (2 >= this.qRU.size())
+      this.wqI.setVisibility(0);
+      if (2 >= this.wqK.size())
       {
-        AppMethodBeat.o(24941);
+        AppMethodBeat.o(28610);
         return;
       }
-      paramView = new b((String)this.qRU.get(2));
-      this.qRT.setTag(paramView.aop());
-      paramView = x.a(paramView);
+      paramView = new b((String)this.wqK.get(2));
+      this.wqJ.setTag(paramView.aGA());
+      paramView = u.a(paramView);
       if ((paramView != null) && (!paramView.isRecycled())) {
-        this.qRT.setImageBitmap(paramView);
+        this.wqJ.setImageBitmap(paramView);
       }
-      this.qRT.setVisibility(0);
+      this.wqJ.setVisibility(0);
     }
-    AppMethodBeat.o(24941);
+    AppMethodBeat.o(28610);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(24940);
+    AppMethodBeat.i(28609);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    AppMethodBeat.o(24940);
+    AppMethodBeat.o(28609);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.TVThumbPreference
  * JD-Core Version:    0.7.0.1
  */

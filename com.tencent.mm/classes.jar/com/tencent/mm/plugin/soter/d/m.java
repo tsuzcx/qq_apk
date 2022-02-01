@@ -2,121 +2,138 @@ package com.tencent.mm.plugin.soter.d;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.ac;
-import com.tencent.mm.compatible.e.t;
+import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.t;
 import com.tencent.mm.kernel.c;
-import com.tencent.mm.model.r;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.model.u;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 
 public final class m
 {
   private static String TAG = "MicroMsg.SoterUtil";
-  public static int sot = 3;
+  public static int yaM = 2;
+  public static String yaN = "";
+  public static String yaO = "";
   
-  public static void Fx(int paramInt)
+  public static void Oh(int paramInt)
   {
-    AppMethodBeat.i(141737);
-    com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yJt, Integer.valueOf(paramInt));
-    AppMethodBeat.o(141737);
+    AppMethodBeat.i(130861);
+    com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fss, Integer.valueOf(paramInt));
+    AppMethodBeat.o(130861);
   }
   
-  public static void cyd()
+  public static void Oi(int paramInt)
   {
-    AppMethodBeat.i(59347);
-    if (bo.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.RH().E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("SoterEntry"), 0) == 1) {}
+    AppMethodBeat.i(130863);
+    com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fst, Integer.valueOf(paramInt));
+    AppMethodBeat.o(130863);
+  }
+  
+  public static void dES()
+  {
+    AppMethodBeat.i(130854);
+    if (bt.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.afx().ab(com.tencent.mm.plugin.zero.b.a.class)).Zd().getValue("SoterEntry"), 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      com.tencent.mm.sdk.platformtools.ab.i(TAG, "alvinluo dynamic config support soter: %b", new Object[] { Boolean.valueOf(bool) });
+      com.tencent.mm.sdk.platformtools.ad.i(TAG, "alvinluo dynamic config support soter: %b", new Object[] { Boolean.valueOf(bool) });
       if (bool)
       {
-        com.tencent.mm.sdk.platformtools.ab.d(TAG, "alvinluo set all soter support flag to true");
-        ac.erA.cJE = true;
-        ac.erA.err = 255;
-        ac.ery.eqB = 1;
-        ac.ery.eqC = 1;
-        com.tencent.mm.sdk.platformtools.ab.d(TAG, "alvinluo deviceInfo soter support: %b, force status: %d, allow external: %d", new Object[] { Boolean.valueOf(ac.erA.cJE), Integer.valueOf(ac.ery.eqB), Integer.valueOf(ac.ery.eqC) });
+        com.tencent.mm.sdk.platformtools.ad.d(TAG, "alvinluo set all soter support flag to true");
+        ae.fFC.dAy = true;
+        ae.fFC.fFt = 255;
+        ae.fFA.fDR = 1;
+        ae.fFA.fDS = 1;
+        com.tencent.mm.sdk.platformtools.ad.d(TAG, "alvinluo deviceInfo soter support: %b, force status: %d, allow external: %d", new Object[] { Boolean.valueOf(ae.fFC.dAy), Integer.valueOf(ae.fFA.fDR), Integer.valueOf(ae.fFA.fDS) });
       }
-      AppMethodBeat.o(59347);
+      AppMethodBeat.o(130854);
       return;
     }
   }
   
-  public static String cye()
+  public static String dET()
   {
-    AppMethodBeat.i(59348);
+    AppMethodBeat.i(130855);
     try
     {
-      String str = com.tencent.mm.a.g.w(r.Zq().getBytes());
+      String str = com.tencent.mm.b.g.getMessageDigest(u.aqJ().getBytes());
       if (str != null)
       {
         str = str.substring(0, 8);
-        AppMethodBeat.o(59348);
+        AppMethodBeat.o(130855);
         return str;
       }
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ab.printErrStackTrace(TAG, localException, "alvinluo get md5 exception", new Object[0]);
-      AppMethodBeat.o(59348);
+      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace(TAG, localException, "alvinluo get md5 exception", new Object[0]);
+      AppMethodBeat.o(130855);
     }
     return "";
   }
   
-  public static String cyf()
+  public static String dEU()
   {
-    AppMethodBeat.i(59349);
-    String str = "WechatAuthKeyPay&" + r.Zq();
-    AppMethodBeat.o(59349);
+    AppMethodBeat.i(130856);
+    String str = "WechatAuthKeyPay&" + u.aqJ();
+    AppMethodBeat.o(130856);
     return str;
   }
   
-  public static boolean cyg()
+  public static boolean dEV()
   {
-    AppMethodBeat.i(156849);
-    boolean bool = cyh();
-    AppMethodBeat.o(156849);
+    AppMethodBeat.i(204990);
+    boolean bool = dEW();
+    AppMethodBeat.o(204990);
     return bool;
   }
   
-  private static boolean cyh()
+  private static boolean dEW()
   {
-    AppMethodBeat.i(59352);
-    if (!ac.erA.cJE)
+    AppMethodBeat.i(130859);
+    if (!ae.fFC.dAy)
     {
-      com.tencent.mm.sdk.platformtools.ab.i(TAG, "hy: dynamic config is not support soter");
-      AppMethodBeat.o(59352);
+      com.tencent.mm.sdk.platformtools.ad.i(TAG, "hy: dynamic config is not support soter");
+      AppMethodBeat.o(130859);
       return false;
     }
-    boolean bool = com.tencent.soter.a.a.dVs();
-    AppMethodBeat.o(59352);
+    boolean bool = com.tencent.soter.a.a.fnk();
+    AppMethodBeat.o(130859);
     return bool;
   }
   
-  public static int cyi()
+  public static int dEX()
   {
-    AppMethodBeat.i(141736);
-    int i = ((Integer)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yJt, Integer.valueOf(0))).intValue();
-    AppMethodBeat.o(141736);
+    AppMethodBeat.i(130860);
+    int i = ((Integer)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fss, Integer.valueOf(0))).intValue();
+    AppMethodBeat.o(130860);
     return i;
   }
   
-  public static boolean eZ(Context paramContext)
+  public static int dEY()
   {
-    AppMethodBeat.i(59350);
-    if ((cyh()) && (com.tencent.soter.core.a.jg(paramContext)))
+    AppMethodBeat.i(130862);
+    int i = ((Integer)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fst, Integer.valueOf(0))).intValue();
+    AppMethodBeat.o(130862);
+    return i;
+  }
+  
+  public static boolean ga(Context paramContext)
+  {
+    AppMethodBeat.i(130857);
+    if ((dEW()) && (com.tencent.soter.core.a.eO(paramContext)))
     {
-      AppMethodBeat.o(59350);
+      AppMethodBeat.o(130857);
       return true;
     }
-    AppMethodBeat.o(59350);
+    AppMethodBeat.o(130857);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.d.m
  * JD-Core Version:    0.7.0.1
  */

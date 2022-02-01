@@ -1,116 +1,121 @@
 package com.tencent.mm.plugin.story.ui.view.gallery;
 
-import a.l;
-import a.v;
 import android.content.Context;
+import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ba;
-import com.tencent.mm.g.b.a.bw;
+import com.tencent.mm.g.b.a.dl;
+import com.tencent.mm.g.b.a.eu;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelvideo.MMVideoView;
 import com.tencent.mm.modelvideo.MMVideoView.a;
-import com.tencent.mm.plugin.sight.base.d;
-import com.tencent.mm.plugin.story.h.n;
-import com.tencent.mm.plugin.story.h.o;
-import com.tencent.mm.plugin.story.model.j.b;
-import com.tencent.mm.plugin.story.model.k;
-import com.tencent.mm.plugin.story.model.s;
+import com.tencent.mm.plugin.recordvideo.background.d;
+import com.tencent.mm.plugin.recordvideo.ui.FakeVideoViewLayer;
+import com.tencent.mm.plugin.story.f.j.b;
+import com.tencent.mm.plugin.story.f.s;
+import com.tencent.mm.plugin.story.i.n;
+import com.tencent.mm.plugin.story.i.o;
 import com.tencent.mm.pluginsdk.ui.h.b;
-import com.tencent.mm.pluginsdk.ui.h.d;
-import com.tencent.mm.pluginsdk.ui.tools.e.a;
+import com.tencent.mm.pluginsdk.ui.tools.h.a;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.chf;
-import com.tencent.mm.protocal.protobuf.chl;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.cym;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.vfs.i;
+import d.l;
+import d.v;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoView;", "Lcom/tencent/mm/modelvideo/MMVideoView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "C_TAG", "", "fakeLayer", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoViewFakeLayer;", "firstPlayWaitTime", "", "getFirstPlayWaitTime", "()J", "setFirstPlayWaitTime", "(J)V", "isFakeVideo", "", "isLocalVideo", "isLocalVideoPause", "isMute", "needShowLoading", "sessionId", "startPlayTime", "surfaceAvailable", "videoItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "videoTips", "Landroid/widget/TextView;", "avgBlockTime", "", "blockCount", "calcDownloadRange", "playTime", "start", "Lcom/tencent/mm/pointers/PInt;", "end", "checkCanPlay", "checkNeedReset", "checkResumeLocalVideo", "createVideoView", "Lcom/tencent/mm/pluginsdk/ui/tools/IVideoView;", "mContext", "fakeEndTime", "fakeStartTime", "getErrorCode", "getFilePath", "getSessionId", "getStayTime", "initView", "", "isLive", "isShowLoading", "moovCostTime", "onCompletion", "onFinish", "mediaId", "ret", "onGetVideoSize", "width", "height", "onProgress", "offset", "total", "onSeekComplete", "startPlay", "onSurfaceAvailable", "onTextureUpdate", "onUIDestroy", "onUIPause", "onUIResume", "pause", "play", "item", "playLocalVideo", "videoPath", "prepareVideo", "reportStopLocalVideo", "reset", "resume", "storyVideoItem", "setMute", "mute", "setNeedShowLoading", "show", "setScaleType", "scaleType", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$ScaleType;", "setVideoPath", "url", "durationSec", "showDebugInfo", "path", "showLoading", "startTimer", "rightNow", "stop", "stopTimer", "Companion", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoView;", "Lcom/tencent/mm/modelvideo/MMVideoView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "C_TAG", "", "fakeBlurLayer", "Landroid/widget/ImageView;", "fakeLayer", "Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "firstPlayWaitTime", "", "getFirstPlayWaitTime", "()J", "setFirstPlayWaitTime", "(J)V", "isFakeVideo", "", "isLocalVideo", "isLocalVideoPause", "isMute", "needShowLoading", "sessionId", "startPlayTime", "surfaceAvailable", "videoItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "videoTips", "Landroid/widget/TextView;", "avgBlockTime", "", "blockCount", "calcDownloadRange", "playTime", "start", "Lcom/tencent/mm/pointers/PInt;", "end", "checkCanPlay", "checkLandscape", "", "blurBgPath", "checkNeedReset", "checkResumeLocalVideo", "createVideoView", "Lcom/tencent/mm/pluginsdk/ui/tools/IVideoView;", "mContext", "fakeEndTime", "fakeStartTime", "getErrorCode", "getFilePath", "getSessionId", "getStayTime", "initView", "isLive", "isShowLoading", "moovCostTime", "onCompletion", "onFinish", "mediaId", "ret", "onGetVideoSize", "width", "height", "onProgress", "offset", "total", "onSeekComplete", "startPlay", "onSurfaceAvailable", "onTextureUpdate", "onUIDestroy", "onUIPause", "onUIResume", "pause", "play", "item", "playLocalVideo", "videoPath", "prepareVideo", "reportStopLocalVideo", "reset", "resume", "storyVideoItem", "setMute", "mute", "setNeedShowLoading", "show", "setScaleType", "scaleType", "Lcom/tencent/mm/pluginsdk/ui/IMMVideoView$ScaleType;", "setVideoPath", "url", "durationSec", "showDebugInfo", "path", "showLoading", "startTimer", "rightNow", "stop", "stopTimer", "Companion", "plugin-story_release"})
 public final class StoryVideoView
   extends MMVideoView
 {
-  public static final StoryVideoView.a sVe;
-  private String cpW;
-  private boolean efg;
-  private long fqZ;
-  private TextView mEu;
-  private final String sUY;
-  private boolean sUZ;
-  private StoryVideoViewFakeLayer sUh;
-  boolean sVa;
-  private boolean sVb;
-  private boolean sVc;
-  private long sVd;
-  private boolean stu;
-  private com.tencent.mm.plugin.story.model.d.i syr;
+  public static final a yAZ;
+  private boolean fqj;
+  private long gSP;
+  private TextView qmi;
+  private FakeVideoViewLayer rTL;
+  private String sessionId;
+  private boolean vso;
+  private final String yAS;
+  private boolean yAT;
+  boolean yAU;
+  private boolean yAV;
+  private boolean yAW;
+  private ImageView yAX;
+  private long yAY;
+  private com.tencent.mm.plugin.story.f.d.j yhF;
   
   static
   {
-    AppMethodBeat.i(110950);
-    sVe = new StoryVideoView.a((byte)0);
-    AppMethodBeat.o(110950);
+    AppMethodBeat.i(120621);
+    yAZ = new a((byte)0);
+    AppMethodBeat.o(120621);
   }
   
   public StoryVideoView(Context paramContext)
   {
     this(paramContext, null);
-    AppMethodBeat.i(110949);
-    AppMethodBeat.o(110949);
+    AppMethodBeat.i(120620);
+    AppMethodBeat.o(120620);
   }
   
   public StoryVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(110948);
-    this.sUY = "MicroMsg.StoryVideoView";
-    paramContext = com.tencent.mm.plugin.story.model.j.svi;
-    setRootPath(j.b.getAccStoryPath());
-    dmN();
+    AppMethodBeat.i(120619);
+    this.yAS = "MicroMsg.StoryVideoView";
+    paramContext = com.tencent.mm.plugin.story.f.j.yfh;
+    setRootPath(i.k(j.b.getAccStoryPath(), true));
+    ewZ();
     setIsShowBasicControls(false);
-    paramContext = this.vPq;
-    a.f.b.j.p(paramContext, "footerRoot");
+    paramContext = this.kuR;
+    d.g.b.k.g(paramContext, "footerRoot");
     paramContext.setVisibility(8);
-    this.TAG = this.sUY;
-    this.sUZ = true;
-    AppMethodBeat.o(110948);
+    this.TAG = this.yAS;
+    this.yAT = true;
+    AppMethodBeat.o(120619);
   }
   
-  private final void adK(String paramString)
+  private final void ase(String paramString)
   {
-    AppMethodBeat.i(110921);
+    AppMethodBeat.i(120591);
     Object localObject1 = this.TAG;
     Object localObject2 = new StringBuilder("playLocalVideo: ").append(paramString).append(", isPlayingNow:");
-    com.tencent.mm.pluginsdk.ui.tools.e locale = this.kvG;
-    a.f.b.j.p(locale, "videoView");
-    ab.i((String)localObject1, locale.isPlaying());
-    if (this.kvG == null) {
-      this.kvG = ck(getContext());
+    com.tencent.mm.pluginsdk.ui.tools.h localh = this.nAZ;
+    d.g.b.k.g(localh, "videoView");
+    ad.i((String)localObject1, localh.isPlaying());
+    if (this.nAZ == null) {
+      this.nAZ = cF(getContext());
     }
     reset();
-    localObject1 = this.kvG;
+    localObject1 = this.nAZ;
     if (localObject1 != null) {
-      ((com.tencent.mm.pluginsdk.ui.tools.e)localObject1).stop();
+      ((com.tencent.mm.pluginsdk.ui.tools.h)localObject1).stop();
     }
-    localObject1 = this.kvG;
+    localObject1 = this.nAZ;
     if (localObject1 != null) {
-      if (!this.efg)
+      if (!this.fqj)
       {
-        if (!this.sVc) {
+        if (!this.yAW) {
           break label204;
         }
-        localObject2 = this.sUh;
+        localObject2 = this.rTL;
         if (localObject2 == null) {
-          a.f.b.j.ays("fakeLayer");
+          d.g.b.k.aPZ("fakeLayer");
         }
-        if (!((StoryVideoViewFakeLayer)localObject2).sVl) {
+        if (!((FakeVideoViewLayer)localObject2).vpE) {
           break label204;
         }
       }
@@ -118,30 +123,30 @@ public final class StoryVideoView
     label204:
     for (boolean bool = true;; bool = false)
     {
-      ((com.tencent.mm.pluginsdk.ui.tools.e)localObject1).setMute(bool);
-      this.aTq = false;
-      this.sVa = true;
+      ((com.tencent.mm.pluginsdk.ui.tools.h)localObject1).setMute(bool);
+      this.bqS = false;
+      this.yAU = true;
       setDownloadStatus(3);
       setNeedShowLoading(false);
-      localObject1 = this.kvG;
+      localObject1 = this.nAZ;
       if (localObject1 != null) {
         break;
       }
       paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.story.ui.view.gallery.StoryVideoPlayTextureView");
-      AppMethodBeat.o(110921);
+      AppMethodBeat.o(120591);
       throw paramString;
     }
-    ((StoryVideoPlayTextureView)localObject1).setNeedResetExtractor(byv());
-    localObject1 = this.kvG;
-    a.f.b.j.p(localObject1, "videoView");
-    ((com.tencent.mm.pluginsdk.ui.tools.e)localObject1).setVideoPath(paramString);
-    this.fqZ = bo.yB();
-    this.sVd = 0L;
-    localObject1 = k.svr;
-    localObject1 = this.syr;
+    ((StoryVideoPlayTextureView)localObject1).setNeedResetExtractor(ckf());
+    localObject1 = this.nAZ;
+    d.g.b.k.g(localObject1, "videoView");
+    ((com.tencent.mm.pluginsdk.ui.tools.h)localObject1).setVideoPath(paramString);
+    this.gSP = bt.GC();
+    this.yAY = 0L;
+    localObject1 = com.tencent.mm.plugin.story.f.k.yfq;
+    localObject1 = this.yhF;
     if (localObject1 != null)
     {
-      localObject2 = ((com.tencent.mm.plugin.story.model.d.i)localObject1).username;
+      localObject2 = ((com.tencent.mm.plugin.story.f.d.j)localObject1).username;
       localObject1 = localObject2;
       if (localObject2 != null) {}
     }
@@ -149,521 +154,575 @@ public final class StoryVideoView
     {
       localObject1 = "";
     }
-    k.acT((String)localObject1);
-    this.kvG.setVideoCallback((e.a)new StoryVideoView.b(this));
-    this.sVb = false;
-    this.cpW = null;
-    adL(paramString);
-    AppMethodBeat.o(110921);
+    com.tencent.mm.plugin.story.f.k.aro((String)localObject1);
+    this.nAZ.setVideoCallback((h.a)new b(this));
+    this.yAV = false;
+    this.sessionId = null;
+    asf(paramString);
+    AppMethodBeat.o(120591);
   }
   
-  private final void adL(String paramString)
+  private final void asf(String paramString)
   {
-    AppMethodBeat.i(151347);
-    Object localObject = g.RL();
-    a.f.b.j.p(localObject, "MMKernel.storage()");
-    localObject = ((com.tencent.mm.kernel.e)localObject).Ru().get(ac.a.yDR, Integer.valueOf(0));
+    AppMethodBeat.i(120617);
+    Object localObject = g.afB();
+    d.g.b.k.g(localObject, "MMKernel.storage()");
+    localObject = ((com.tencent.mm.kernel.e)localObject).afk().get(ae.a.Fmr, Integer.valueOf(0));
     if (localObject == null)
     {
       paramString = new v("null cannot be cast to non-null type kotlin.Int");
-      AppMethodBeat.o(151347);
+      AppMethodBeat.o(120617);
       throw paramString;
     }
     if (((Integer)localObject).intValue() == 1)
     {
-      localObject = this.mEu;
+      localObject = this.qmi;
       if (localObject != null) {
-        ((TextView)localObject).setText((CharSequence)d.TX(paramString));
+        ((TextView)localObject).setText((CharSequence)com.tencent.mm.plugin.sight.base.e.ahc(paramString));
       }
-      paramString = this.mEu;
+      paramString = this.qmi;
       if (paramString != null)
       {
         paramString.setVisibility(0);
-        AppMethodBeat.o(151347);
+        AppMethodBeat.o(120617);
         return;
       }
     }
-    AppMethodBeat.o(151347);
+    AppMethodBeat.o(120617);
   }
   
-  private final boolean byv()
+  private final boolean ckf()
   {
-    AppMethodBeat.i(110934);
-    if (this.sVa)
+    AppMethodBeat.i(120604);
+    if (this.yAU)
     {
-      AppMethodBeat.o(110934);
+      AppMethodBeat.o(120604);
       return false;
     }
     try
     {
-      boolean bool = g.RL().Ru().getBoolean(ac.a.yFa, false);
-      AppMethodBeat.o(110934);
+      boolean bool = g.afB().afk().getBoolean(ae.a.FnJ, false);
+      AppMethodBeat.o(120604);
       return bool;
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace(this.TAG, (Throwable)localException, "check need reset error", new Object[0]);
-      AppMethodBeat.o(110934);
+      ad.printErrStackTrace(this.TAG, (Throwable)localException, "check need reset error", new Object[0]);
+      AppMethodBeat.o(120604);
     }
     return false;
   }
   
-  public final void Es()
+  public final void a(com.tencent.mm.plugin.story.f.d.j paramj, String paramString)
   {
-    AppMethodBeat.i(110916);
-    ab.i(this.TAG, "onCompletion, currPosMs:" + getCurrPosMs() + ", playStatus:" + this.fVj + ", downloadStatus:" + this.fVi);
-    if (getCurrPosMs() <= 0)
-    {
-      AppMethodBeat.o(110916);
-      return;
-    }
-    h.b localb = this.ryi;
-    if (localb != null) {
-      localb.cr(getSessionId(), getMediaId());
-    }
-    super.Es();
-    AppMethodBeat.o(110916);
-  }
-  
-  public final void a(com.tencent.mm.plugin.story.model.d.i parami, String paramString)
-  {
-    AppMethodBeat.i(110915);
-    a.f.b.j.q(parami, "item");
-    Object localObject1 = this.mEu;
+    AppMethodBeat.i(120585);
+    d.g.b.k.h(paramj, "item");
+    Object localObject1 = this.qmi;
     if (localObject1 != null) {
       ((TextView)localObject1).setVisibility(8);
     }
-    this.syr = parami;
-    localObject1 = parami.syB;
-    int i = parami.fDT;
-    this.sVc = false;
-    Object localObject2 = this.sUh;
+    this.yhF = paramj;
+    localObject1 = paramj.yhP;
+    int i = paramj.hgr;
+    this.yAW = false;
+    Object localObject2 = this.rTL;
     if (localObject2 == null) {
-      a.f.b.j.ays("fakeLayer");
+      d.g.b.k.aPZ("fakeLayer");
     }
-    ((StoryVideoViewFakeLayer)localObject2).setVisibility(8);
-    if (!parami.cBN())
+    ((FakeVideoViewLayer)localObject2).setVisibility(8);
+    localObject2 = this.yAX;
+    if (localObject2 != null) {
+      ((ImageView)localObject2).setVisibility(8);
+    }
+    if (!paramj.dHX())
     {
-      ab.i(this.TAG, "play empty item");
+      ad.i(this.TAG, "play empty item");
       showLoading();
-      AppMethodBeat.o(110915);
+      AppMethodBeat.o(120585);
       return;
     }
-    if (parami.cBM())
+    if (paramj.dHW())
     {
-      this.sVc = true;
-      ab.i(this.TAG, "LogStory: play fake video");
-      paramString = this.sUh;
+      this.yAW = true;
+      ad.i(this.TAG, "LogStory: play fake video");
+      paramString = this.rTL;
       if (paramString == null) {
-        a.f.b.j.ays("fakeLayer");
+        d.g.b.k.aPZ("fakeLayer");
       }
       paramString.setVisibility(0);
-      parami = parami.syD;
-      if (parami != null)
+      paramj = paramj.yhQ;
+      if (paramj != null)
       {
-        paramString = this.sUh;
-        if (paramString == null) {
-          a.f.b.j.ays("fakeLayer");
+        paramString = paramj.field_blurBgPath;
+        d.g.b.k.g(paramString, "fakeData.field_blurBgPath");
+        localObject1 = (CharSequence)paramString;
+        if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
+          break label379;
         }
-        paramString.setFakeVideoInfo(parami);
-        paramString = this.sUh;
-        if (paramString == null) {
-          a.f.b.j.ays("fakeLayer");
+        i = 1;
+        if (i != 0) {
+          break label384;
         }
-        paramString.mu(this.efg);
-        this.fVg = parami.videoPath;
-        this.fVf = "";
-        parami = this.fVg;
-        a.f.b.j.p(parami, "filepath");
-        adK(parami);
+        localObject1 = com.tencent.mm.ui.ap.cf(getContext());
+        paramString = f.e(paramString, ((Point)localObject1).y, ((Point)localObject1).x, true);
+        localObject1 = this.yAX;
+        if (localObject1 != null) {
+          ((ImageView)localObject1).setImageBitmap(paramString);
+        }
+        paramString = this.yAX;
+        if (paramString != null) {
+          paramString.setVisibility(0);
+        }
+        label268:
+        paramString = this.rTL;
+        if (paramString == null) {
+          d.g.b.k.aPZ("fakeLayer");
+        }
+        paramString.setFakeVideoInfo(paramj);
+        paramString = this.rTL;
+        if (paramString == null) {
+          d.g.b.k.aPZ("fakeLayer");
+        }
+        paramString.oC(this.fqj);
+        this.hxQ = paramj.dgA().videoPath;
+        this.hxP = "";
+        paramj = this.hxQ;
+        d.g.b.k.g(paramj, "filepath");
+        ase(paramj);
       }
     }
     for (;;)
     {
       setLoop(true);
-      parami = this.kvG;
-      if (parami != null) {
-        break;
+      paramj = this.nAZ;
+      if (paramj != null) {
+        break label964;
       }
-      parami = new v("null cannot be cast to non-null type android.view.View");
-      AppMethodBeat.o(110915);
-      throw parami;
-      ab.i(this.TAG, "LogStory: play normal video");
-      localObject2 = s.swk;
-      Object localObject3 = s.a((chl)localObject1);
-      if (com.tencent.mm.vfs.e.avI((String)localObject3) > 0L)
+      paramj = new v("null cannot be cast to non-null type android.view.View");
+      AppMethodBeat.o(120585);
+      throw paramj;
+      label379:
+      i = 0;
+      break;
+      label384:
+      paramString = this.yAX;
+      if (paramString == null) {
+        break label268;
+      }
+      paramString.setVisibility(8);
+      break label268;
+      ad.i(this.TAG, "LogStory: play normal video");
+      localObject2 = s.ygj;
+      Object localObject3 = s.a((cym)localObject1);
+      if (i.aMN((String)localObject3) > 0L)
       {
-        ab.i(this.TAG, "play " + (String)localObject3 + " downloadDone now can play " + ((chl)localObject1).Id);
-        this.fVg = ((String)localObject3);
+        ad.i(this.TAG, "play " + (String)localObject3 + " downloadDone now can play " + ((cym)localObject1).Id);
+        this.hxQ = ((String)localObject3);
         if (localObject3 != null) {
-          adK((String)localObject3);
+          ase((String)localObject3);
         }
       }
       else
       {
-        localObject2 = s.swk;
-        localObject2 = s.a(parami);
-        int j = (int)com.tencent.mm.vfs.e.avI(((n)localObject2).field_filePath);
-        ab.i(this.TAG, "play " + (String)localObject3 + " error try play from url or videoCache " + ((chl)localObject1).Id + " fileLength:" + j + " cacheSize:" + ((n)localObject2).field_cacheSize);
+        localObject2 = s.ygj;
+        localObject2 = s.a(paramj);
+        int j = (int)i.aMN(((n)localObject2).field_filePath);
+        ad.i(this.TAG, "play " + (String)localObject3 + " error try play from url or videoCache " + ((cym)localObject1).Id + " fileLength:" + j + " cacheSize:" + ((n)localObject2).field_cacheSize);
         if (j < ((n)localObject2).field_cacheSize)
         {
           ((n)localObject2).field_cacheSize = j;
-          localObject3 = com.tencent.mm.plugin.story.model.j.svi;
-          j.b.cAF().b((n)localObject2);
+          localObject3 = com.tencent.mm.plugin.story.f.j.yfh;
+          j.b.dHh().b((n)localObject2);
         }
-        ab.i(this.TAG, String.valueOf(localObject2));
-        if ((((n)localObject2).Jo()) && (com.tencent.mm.vfs.e.cN(((n)localObject2).field_filePath)))
+        ad.i(this.TAG, String.valueOf(localObject2));
+        if ((((n)localObject2).UE()) && (i.eK(((n)localObject2).field_filePath)))
         {
-          ab.i(this.TAG, "play " + ((chl)localObject1).Id + " download finish");
-          this.fVg = ((n)localObject2).field_filePath;
-          parami = s.swk;
-          this.fVf = s.be(i, ((chl)localObject1).Url);
-          parami = this.fVg;
-          a.f.b.j.p(parami, "filepath");
-          adK(parami);
+          ad.i(this.TAG, "play " + ((cym)localObject1).Id + " download finish");
+          this.hxQ = ((n)localObject2).field_filePath;
+          paramj = s.ygj;
+          this.hxP = s.bQ(i, ((cym)localObject1).Url);
+          paramj = this.hxQ;
+          d.g.b.k.g(paramj, "filepath");
+          ase(paramj);
         }
         else
         {
-          if ((((n)localObject2).Jo()) && (!com.tencent.mm.vfs.e.cN(((n)localObject2).field_filePath)))
+          if ((((n)localObject2).UE()) && (!i.eK(((n)localObject2).field_filePath)))
           {
-            ab.i(this.TAG, "error downloadFinish " + ((n)localObject2).Jo() + " ret:" + com.tencent.mm.vfs.e.cN(((n)localObject2).field_filePath));
-            ((n)localObject2).cFl();
-            localObject3 = com.tencent.mm.plugin.story.model.j.svi;
-            j.b.cAF().b((n)localObject2);
+            ad.i(this.TAG, "error downloadFinish " + ((n)localObject2).UE() + " ret:" + i.eK(((n)localObject2).field_filePath));
+            ((n)localObject2).dKS();
+            localObject3 = com.tencent.mm.plugin.story.f.j.yfh;
+            j.b.dHh().b((n)localObject2);
           }
-          ab.i(this.TAG, "play " + ((chl)localObject1).Id + ' ' + paramString + " start online play " + ((n)localObject2).field_filePath);
+          ad.i(this.TAG, "play " + ((cym)localObject1).Id + ' ' + paramString + " start online play " + ((n)localObject2).field_filePath);
           reset();
-          this.kvG.stop();
-          this.kvG.setVideoCallback((e.a)this);
-          this.sVa = false;
-          this.vPy = true;
+          this.nAZ.stop();
+          this.nAZ.setVideoCallback((h.a)this);
+          this.yAU = false;
+          this.kva = true;
           setNeedShowLoading(true);
-          super.c(false, parami.syB.Url, (int)((chl)localObject1).duration);
-          this.fVg = ((n)localObject2).field_filePath;
-          parami = s.swk;
-          this.fVf = s.be(i, ((chl)localObject1).Url);
-          this.cpW = paramString;
-          this.fqZ = bo.yB();
-          this.sVd = 0L;
+          super.c(false, paramj.yhP.Url, (int)((cym)localObject1).EqD);
+          this.hxQ = ((n)localObject2).field_filePath;
+          paramj = s.ygj;
+          this.hxP = s.bQ(i, ((cym)localObject1).Url);
+          this.sessionId = paramString;
+          this.gSP = bt.GC();
+          this.yAY = 0L;
           start();
         }
       }
     }
-    ((View)parami).setAlpha(0.0F);
-    AppMethodBeat.o(110915);
+    label964:
+    ((View)paramj).setAlpha(0.0F);
+    AppMethodBeat.o(120585);
   }
   
   public final boolean a(int paramInt, PInt paramPInt1, PInt paramPInt2)
   {
-    AppMethodBeat.i(110936);
-    a.f.b.j.q(paramPInt1, "start");
-    a.f.b.j.q(paramPInt2, "end");
+    AppMethodBeat.i(120606);
+    d.g.b.k.h(paramPInt1, "start");
+    d.g.b.k.h(paramPInt2, "end");
     Object localObject1 = "";
-    paramPInt1.value = Math.max(paramInt, this.fVp);
-    if (this.fVj == 1)
+    paramPInt1.value = Math.max(paramInt, this.hxZ);
+    if (this.hxT == 1)
     {
       paramPInt1.value = paramInt;
-      paramPInt1.value += this.fVq;
+      paramPInt1.value += this.hya;
       localObject1 = "" + "step1;";
     }
     Object localObject2 = localObject1;
-    if (this.fVj == 2)
+    if (this.hxT == 2)
     {
       paramPInt1.value = (paramInt - 8);
       if (paramPInt1.value < 0) {
         paramPInt1.value = 0;
       }
-      paramPInt2.value = (paramPInt1.value + this.fVq + 8);
+      paramPInt2.value = (paramPInt1.value + this.hya + 8);
       localObject2 = (String)localObject1 + "step2;";
     }
-    if (this.fVj == 3)
+    if (this.hxT == 3)
     {
-      paramPInt1.value = this.fVp;
-      paramPInt2.value = (paramInt + 1 + this.fVu.fVA);
+      paramPInt1.value = this.hxZ;
+      paramPInt2.value = (paramInt + 1 + this.hye.hyk);
       localObject1 = (String)localObject2 + "step3;";
     }
     for (;;)
     {
       localObject2 = localObject1;
-      if (paramPInt2.value >= this.fVl + 1)
+      if (paramPInt2.value >= this.hxV + 1)
       {
-        paramPInt2.value = (this.fVl + 1);
+        paramPInt2.value = (this.hxV + 1);
         localObject2 = (String)localObject1 + "step5;";
       }
       if (paramPInt2.value >= paramPInt1.value) {
         break;
       }
-      paramPInt1.value += this.fVu.fVA;
-      AppMethodBeat.o(110936);
+      paramPInt1.value += this.hye.hyk;
+      AppMethodBeat.o(120606);
       return false;
       localObject1 = localObject2;
-      if (this.fVj == 4)
+      if (this.hxT == 4)
       {
-        paramPInt1.value = this.fVp;
-        paramPInt2.value = (this.fVq + paramInt + 1 + this.fVu.fVA);
+        paramPInt1.value = this.hxZ;
+        paramPInt2.value = (this.hya + paramInt + 1 + this.hye.hyk);
         localObject1 = (String)localObject2 + "step4;";
       }
     }
-    ab.i(this.TAG, "%s calcDownloadRange range[%d, %d] playTime[%d] playStatus[%d] cache[%d, %d] [%s] %s", new Object[] { bas(), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value), Integer.valueOf(paramInt), Integer.valueOf(this.fVj), Integer.valueOf(this.fVp), Integer.valueOf(this.fVq), this.fVf, localObject2 });
-    AppMethodBeat.o(110936);
+    ad.i(this.TAG, "%s calcDownloadRange range[%d, %d] playTime[%d] playStatus[%d] cache[%d, %d] [%s] %s", new Object[] { bel(), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value), Integer.valueOf(paramInt), Integer.valueOf(this.hxT), Integer.valueOf(this.hxZ), Integer.valueOf(this.hya), this.hxP, localObject2 });
+    AppMethodBeat.o(120606);
     return true;
   }
   
-  public final void aEM()
+  public final void aCu()
   {
-    AppMethodBeat.i(110930);
-    ab.i(this.TAG, "onUIDestroy, isLocalVideo:" + this.sVa);
-    StoryVideoViewFakeLayer localStoryVideoViewFakeLayer = this.sUh;
-    if (localStoryVideoViewFakeLayer == null) {
-      a.f.b.j.ays("fakeLayer");
-    }
-    localStoryVideoViewFakeLayer.cGx();
-    super.aEM();
-    AppMethodBeat.o(110930);
-  }
-  
-  public final void ad(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(110933);
-    super.ad(paramString, paramInt);
-    AppMethodBeat.o(110933);
-  }
-  
-  public final void aln()
-  {
-    AppMethodBeat.i(110946);
-    ab.i(this.TAG, "prepareVideo, surfaceAvailable:" + this.stu);
-    if (this.kvG != null)
+    AppMethodBeat.i(120616);
+    ad.i(this.TAG, "prepareVideo, surfaceAvailable:" + this.vso);
+    if (this.nAZ != null)
     {
-      localObject = this.kvG;
+      localObject = this.nAZ;
       if (localObject == null)
       {
         localObject = new v("null cannot be cast to non-null type com.tencent.mm.plugin.story.ui.view.gallery.StoryVideoPlayTextureView");
-        AppMethodBeat.o(110946);
+        AppMethodBeat.o(120616);
         throw ((Throwable)localObject);
       }
-      ((StoryVideoPlayTextureView)localObject).setNeedResetExtractor(byv());
+      ((StoryVideoPlayTextureView)localObject).setNeedResetExtractor(ckf());
     }
-    Object localObject = this.fVg;
-    a.f.b.j.p(localObject, "filepath");
-    adL((String)localObject);
-    super.aln();
-    AppMethodBeat.o(110946);
+    Object localObject = this.hxQ;
+    d.g.b.k.g(localObject, "filepath");
+    asf((String)localObject);
+    super.aCu();
+    AppMethodBeat.o(120616);
   }
   
-  public final void alo()
+  public final void aCw()
   {
-    AppMethodBeat.i(110928);
-    ab.i(this.TAG, "onUIPause, isLocalVideo:" + this.sVa);
-    Object localObject = this.sUh;
-    if (localObject == null) {
-      a.f.b.j.ays("fakeLayer");
-    }
-    ((StoryVideoViewFakeLayer)localObject).cGw();
-    if (this.sVa)
+    AppMethodBeat.i(120615);
+    super.aCw();
+    ad.i(this.TAG, "onSurfaceAvailable");
+    this.vso = true;
+    AppMethodBeat.o(120615);
+  }
+  
+  public final boolean aXf()
+  {
+    AppMethodBeat.i(120595);
+    if (this.yAU)
     {
-      localObject = this.kvG;
-      if (localObject != null)
-      {
-        ((com.tencent.mm.pluginsdk.ui.tools.e)localObject).pause();
-        AppMethodBeat.o(110928);
-        return;
-      }
-      AppMethodBeat.o(110928);
-      return;
+      AppMethodBeat.o(120595);
+      return false;
     }
-    super.alo();
-    AppMethodBeat.o(110928);
+    boolean bool = super.aXf();
+    AppMethodBeat.o(120595);
+    return bool;
   }
   
-  public final void alp()
+  public final void am(String paramString, int paramInt)
   {
-    AppMethodBeat.i(110929);
-    ab.i(this.TAG, "onUIResume, isLocalVideo:" + this.sVa);
-    if (isPlaying())
-    {
-      StoryVideoViewFakeLayer localStoryVideoViewFakeLayer = this.sUh;
-      if (localStoryVideoViewFakeLayer == null) {
-        a.f.b.j.ays("fakeLayer");
-      }
-      localStoryVideoViewFakeLayer.mu(this.efg);
-    }
-    if (this.sVa)
-    {
-      AppMethodBeat.o(110929);
-      return;
-    }
-    super.alp();
-    AppMethodBeat.o(110929);
+    AppMethodBeat.i(120603);
+    super.am(paramString, paramInt);
+    AppMethodBeat.o(120603);
   }
   
-  public final void alr()
+  public final void beo()
   {
-    AppMethodBeat.i(110945);
-    super.alr();
-    ab.i(this.TAG, "onSurfaceAvailable");
-    this.stu = true;
-    AppMethodBeat.o(110945);
-  }
-  
-  public final void bSk()
-  {
-    AppMethodBeat.i(110940);
-    super.bSk();
-    Object localObject = this.kvG;
+    AppMethodBeat.i(120610);
+    super.beo();
+    Object localObject = this.nAZ;
     if (localObject == null)
     {
       localObject = new v("null cannot be cast to non-null type android.view.View");
-      AppMethodBeat.o(110940);
+      AppMethodBeat.o(120610);
       throw ((Throwable)localObject);
     }
     ((View)localObject).setAlpha(1.0F);
     String str;
     StringBuilder localStringBuilder;
-    if (this.sVd <= 0L)
+    if (this.yAY <= 0L)
     {
-      this.sVd = bo.av(this.fqZ);
+      this.yAY = bt.aS(this.gSP);
       str = this.TAG;
-      localStringBuilder = new StringBuilder("onTextureUpdate firstPlayWaitTime ").append(this.sVd).append(" storyId: ");
-      localObject = this.syr;
+      localStringBuilder = new StringBuilder("onTextureUpdate firstPlayWaitTime ").append(this.yAY).append(" storyId: ");
+      localObject = this.yhF;
       if (localObject == null) {
         break label131;
       }
     }
     label131:
-    for (localObject = Long.valueOf(((com.tencent.mm.plugin.story.model.d.i)localObject).cJA);; localObject = null)
+    for (localObject = Long.valueOf(((com.tencent.mm.plugin.story.f.d.j)localObject).dAu);; localObject = null)
     {
-      ab.i(str, localObject);
-      AppMethodBeat.o(110940);
+      ad.i(str, localObject);
+      AppMethodBeat.o(120610);
       return;
     }
   }
   
   public final void c(boolean paramBoolean, String paramString, int paramInt)
   {
-    AppMethodBeat.i(156828);
+    AppMethodBeat.i(204837);
     super.c(paramBoolean, paramString, paramInt);
-    AppMethodBeat.o(156828);
+    AppMethodBeat.o(204837);
   }
   
-  public final int cGt()
+  public final com.tencent.mm.pluginsdk.ui.tools.h cF(Context paramContext)
   {
-    if (this.vPK.rJM > this.vPK.startTimeStamp) {
-      return (int)(this.vPK.rJM - this.vPK.startTimeStamp);
-    }
-    return 0;
-  }
-  
-  public final int cGu()
-  {
-    return this.vPK.blockCount;
-  }
-  
-  public final int cGv()
-  {
-    if (this.vPK.blockCount > 0) {
-      return (int)(this.vPK.vRL / this.vPK.blockCount);
-    }
-    return 0;
-  }
-  
-  public final com.tencent.mm.pluginsdk.ui.tools.e ck(Context paramContext)
-  {
-    AppMethodBeat.i(110944);
+    AppMethodBeat.i(120614);
     paramContext = new StoryVideoPlayTextureView(paramContext);
     paramContext.setOpenWithNoneSurface(true);
-    paramContext.setNeedResetExtractor(byv());
+    paramContext.setNeedResetExtractor(ckf());
     paramContext.setIsOnlineVideoType(true);
-    paramContext = (com.tencent.mm.pluginsdk.ui.tools.e)paramContext;
-    AppMethodBeat.o(110944);
+    paramContext = (com.tencent.mm.pluginsdk.ui.tools.h)paramContext;
+    AppMethodBeat.o(120614);
     return paramContext;
   }
   
-  public final void dQ(int paramInt1, int paramInt2)
+  public final int dLK()
   {
-    AppMethodBeat.i(110932);
-    super.dQ(paramInt1, paramInt2);
-    ab.i(this.TAG, "onGetVideoSize, mediaId:" + getMediaId() + ", isLocalVideo:" + this.sVa + ", isPrepareVideo:" + this.fVr + ", isPrepared:" + this.Pz + ", playerStatus:" + this.fVj + ", downloadStatus:" + this.fVi);
-    AppMethodBeat.o(110932);
+    if (this.BUs.xqo > this.BUs.kmA) {
+      return (int)(this.BUs.xqo - this.BUs.kmA);
+    }
+    return 0;
   }
   
-  public final void dg(boolean paramBoolean)
+  public final int dLL()
   {
-    AppMethodBeat.i(110922);
-    if (this.sVa)
+    return this.BUs.blockCount;
+  }
+  
+  public final int dLM()
+  {
+    if (this.BUs.blockCount > 0) {
+      return (int)(this.BUs.BWr / this.BUs.blockCount);
+    }
+    return 0;
+  }
+  
+  public final void dY(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(120602);
+    super.dY(paramInt1, paramInt2);
+    ad.i(this.TAG, "onGetVideoSize, mediaId:" + getMediaId() + ", isLocalVideo:" + this.yAU + ", isPrepareVideo:" + this.hyb + ", isPrepared:" + this.WD + ", playerStatus:" + this.hxT + ", downloadStatus:" + this.hxS);
+    AppMethodBeat.o(120602);
+  }
+  
+  public final void ey(boolean paramBoolean)
+  {
+    AppMethodBeat.i(120592);
+    if (this.yAU)
     {
-      AppMethodBeat.o(110922);
+      AppMethodBeat.o(120592);
       return;
     }
-    super.dg(paramBoolean);
-    AppMethodBeat.o(110922);
+    super.ey(paramBoolean);
+    AppMethodBeat.o(120592);
   }
   
-  public final void dh(boolean paramBoolean)
+  public final void ez(boolean paramBoolean)
   {
-    AppMethodBeat.i(110923);
-    ab.b(this.TAG, bas() + " startTimer, isLocalVideo:" + this.sVa, new Object[0]);
-    if (!this.sVa) {
-      super.dh(paramBoolean);
+    AppMethodBeat.i(120593);
+    ad.m(this.TAG, bel() + " startTimer, isLocalVideo:" + this.yAU, new Object[0]);
+    if (!this.yAU) {
+      super.ez(paramBoolean);
     }
-    AppMethodBeat.o(110923);
+    AppMethodBeat.o(120593);
   }
   
-  public final void g(com.tencent.mm.plugin.story.model.d.i parami)
+  public final int getErrorCode()
+  {
+    return this.BUs.kDa;
+  }
+  
+  public final String getFilePath()
+  {
+    AppMethodBeat.i(120612);
+    String str = this.hxQ;
+    d.g.b.k.g(str, "filepath");
+    AppMethodBeat.o(120612);
+    return str;
+  }
+  
+  public final long getFirstPlayWaitTime()
+  {
+    return this.yAY;
+  }
+  
+  public final String getSessionId()
+  {
+    AppMethodBeat.i(120587);
+    String str = bt.nullAsNil(this.sessionId);
+    d.g.b.k.g(str, "Util.nullAsNil(sessionId)");
+    AppMethodBeat.o(120587);
+    return str;
+  }
+  
+  public final int getStayTime()
+  {
+    AppMethodBeat.i(120611);
+    int i = (int)bt.aS(this.gSP);
+    AppMethodBeat.o(120611);
+    return i;
+  }
+  
+  public final void initView()
+  {
+    AppMethodBeat.i(120584);
+    super.initView();
+    Object localObject = com.tencent.mm.plugin.story.f.e.a.yhX;
+    this.rTL = com.tencent.mm.plugin.story.f.e.a.gf(getContext());
+    this.yAX = new ImageView(getContext());
+    localObject = this.yAX;
+    if (localObject != null) {
+      ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_CROP);
+    }
+    localObject = this.yAX;
+    if (localObject != null) {
+      ((ImageView)localObject).setVisibility(8);
+    }
+    localObject = this.kuN;
+    FakeVideoViewLayer localFakeVideoViewLayer = this.rTL;
+    if (localFakeVideoViewLayer == null) {
+      d.g.b.k.aPZ("fakeLayer");
+    }
+    ((RelativeLayout)localObject).addView((View)localFakeVideoViewLayer, new ViewGroup.LayoutParams(-1, -1));
+    this.kuN.addView((View)this.yAX, 0);
+    this.qmi = ((TextView)findViewById(2131306403));
+    AppMethodBeat.o(120584);
+  }
+  
+  public final void k(String paramString, long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(120601);
+    if (!bt.kU(this.hxP, paramString))
+    {
+      AppMethodBeat.o(120601);
+      return;
+    }
+    paramString = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder("%s download  onProgress [%d, %d], pauseByLoadData:").append(this.hxY).append(", playStatus:").append(this.hxT).append(", currPosMs:").append(getCurrPosMs()).append(", isPlyaing:");
+    com.tencent.mm.pluginsdk.ui.tools.h localh = this.nAZ;
+    d.g.b.k.g(localh, "videoView");
+    ad.d(paramString, localh.isPlaying(), new Object[] { bel(), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    if (((getCurrPosMs() <= 0) || (this.hxT == 1) || (this.hxT == 0)) && (oR(getCurrPosSec()))) {
+      ez(true);
+    }
+    AppMethodBeat.o(120601);
+  }
+  
+  public final void o(com.tencent.mm.plugin.story.f.d.j paramj)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(110919);
-    ab.i(this.TAG, "resume, current play time:" + getCurrPosMs() + ", " + getCurrPosSec() + ", " + getVideoDurationSec() + ", isPrepared:" + this.Pz + ", sessionId:" + this.cpW + ", isLocalVideo:" + this.sVa);
-    Object localObject1 = this.sUh;
+    AppMethodBeat.i(120589);
+    ad.i(this.TAG, "resume, current play time:" + getCurrPosMs() + ", " + getCurrPosSec() + ", " + getVideoDurationSec() + ", isPrepared:" + this.WD + ", sessionId:" + this.sessionId + ", isLocalVideo:" + this.yAU);
+    Object localObject1 = this.rTL;
     if (localObject1 == null) {
-      a.f.b.j.ays("fakeLayer");
+      d.g.b.k.aPZ("fakeLayer");
     }
-    ((StoryVideoViewFakeLayer)localObject1).mu(this.efg);
+    ((FakeVideoViewLayer)localObject1).oC(this.fqj);
     if (getCurrPosSec() >= getVideoDurationSec())
     {
-      ab.i(this.TAG, "resume, restart video");
-      if (parami != null)
+      ad.i(this.TAG, "resume, restart video");
+      if (paramj != null)
       {
-        a(parami, this.cpW);
-        AppMethodBeat.o(110919);
+        a(paramj, this.sessionId);
+        AppMethodBeat.o(120589);
         return;
       }
     }
     Object localObject3 = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("checkResumeLocalVideo, isLocalVideo:").append(this.sVa).append(", currentPosition:");
-    localObject1 = this.kvG;
+    StringBuilder localStringBuilder = new StringBuilder("checkResumeLocalVideo, isLocalVideo:").append(this.yAU).append(", currentPosition:");
+    localObject1 = this.nAZ;
     int i;
     if (localObject1 != null)
     {
-      localObject1 = Integer.valueOf(((com.tencent.mm.pluginsdk.ui.tools.e)localObject1).getCurrentPosition());
-      ab.i((String)localObject3, localObject1);
-      if (!this.sVa) {
+      localObject1 = Integer.valueOf(((com.tencent.mm.pluginsdk.ui.tools.h)localObject1).getCurrentPosition());
+      ad.i((String)localObject3, localObject1);
+      if (!this.yAU) {
         break label330;
       }
-      localObject1 = this.kvG;
+      localObject1 = this.nAZ;
       if (localObject1 == null) {
         break label325;
       }
-      i = ((com.tencent.mm.pluginsdk.ui.tools.e)localObject1).getCurrentPosition();
+      i = ((com.tencent.mm.pluginsdk.ui.tools.h)localObject1).getCurrentPosition();
       label263:
       if (i <= 0) {
         break label330;
       }
-      localObject3 = this.kvG;
+      localObject3 = this.nAZ;
       localObject1 = localObject2;
       if (localObject3 != null) {
-        localObject1 = Boolean.valueOf(((com.tencent.mm.pluginsdk.ui.tools.e)localObject3).start());
+        localObject1 = Boolean.valueOf(((com.tencent.mm.pluginsdk.ui.tools.h)localObject3).start());
       }
-      this.sVb = false;
+      this.yAV = false;
     }
     label325:
     label330:
-    for (boolean bool = a.f.b.j.e(localObject1, Boolean.TRUE);; bool = false)
+    for (boolean bool = d.g.b.k.g(localObject1, Boolean.TRUE);; bool = false)
     {
       if (!bool) {
         break label335;
       }
-      AppMethodBeat.o(110919);
+      AppMethodBeat.o(120589);
       return;
       localObject1 = null;
       break;
@@ -671,276 +730,272 @@ public final class StoryVideoView
       break label263;
     }
     label335:
-    if ((getCurrPosMs() > 0) && (!this.sVa))
+    if ((getCurrPosMs() > 0) && (!this.yAU))
     {
-      if (!this.Pz)
+      if (!this.WD)
       {
-        this.vPy = true;
-        aln();
-        AppMethodBeat.o(110919);
+        this.kva = true;
+        aCu();
+        AppMethodBeat.o(120589);
         return;
       }
       super.play();
-      AppMethodBeat.o(110919);
+      AppMethodBeat.o(120589);
       return;
     }
-    if (parami != null) {
-      a(parami, this.cpW);
+    if (paramj != null) {
+      a(paramj, this.sessionId);
     }
-    AppMethodBeat.o(110919);
+    AppMethodBeat.o(120589);
   }
   
-  public final int getErrorCode()
+  public final boolean oS(int paramInt)
   {
-    return this.vPK.vRM;
-  }
-  
-  public final String getFilePath()
-  {
-    AppMethodBeat.i(110942);
-    String str = this.fVg;
-    a.f.b.j.p(str, "filepath");
-    AppMethodBeat.o(110942);
-    return str;
-  }
-  
-  public final long getFirstPlayWaitTime()
-  {
-    return this.sVd;
-  }
-  
-  public final String getSessionId()
-  {
-    AppMethodBeat.i(110917);
-    String str = bo.nullAsNil(this.cpW);
-    a.f.b.j.p(str, "Util.nullAsNil(sessionId)");
-    AppMethodBeat.o(110917);
-    return str;
-  }
-  
-  public final int getStayTime()
-  {
-    AppMethodBeat.i(110941);
-    int i = (int)bo.av(this.fqZ);
-    AppMethodBeat.o(110941);
-    return i;
-  }
-  
-  public final void initView()
-  {
-    AppMethodBeat.i(110914);
-    super.initView();
-    Object localObject = getContext();
-    a.f.b.j.p(localObject, "context");
-    this.sUh = new StoryVideoViewFakeLayer((Context)localObject);
-    localObject = this.vPp;
-    StoryVideoViewFakeLayer localStoryVideoViewFakeLayer = this.sUh;
-    if (localStoryVideoViewFakeLayer == null) {
-      a.f.b.j.ays("fakeLayer");
-    }
-    ((RelativeLayout)localObject).addView((View)localStoryVideoViewFakeLayer, new ViewGroup.LayoutParams(-1, -1));
-    this.mEu = ((TextView)findViewById(2131822194));
-    AppMethodBeat.o(110914);
-  }
-  
-  public final boolean isLive()
-  {
-    AppMethodBeat.i(110925);
-    if (this.sVa)
-    {
-      AppMethodBeat.o(110925);
-      return false;
-    }
-    boolean bool = super.isLive();
-    AppMethodBeat.o(110925);
+    AppMethodBeat.i(120605);
+    boolean bool = super.oS(paramInt);
+    ad.i(this.TAG, "checkCanPlay, cachePlayTime:" + this.hxZ + ", ret:" + bool);
+    AppMethodBeat.o(120605);
     return bool;
   }
   
-  public final boolean mk(int paramInt)
+  public final void onCompletion()
   {
-    AppMethodBeat.i(110935);
-    boolean bool = super.mk(paramInt);
-    ab.i(this.TAG, "checkCanPlay, cachePlayTime:" + this.fVp + ", ret:" + bool);
-    AppMethodBeat.o(110935);
-    return bool;
-  }
-  
-  public final void n(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(110931);
-    if (!bo.isEqual(this.fVf, paramString))
+    AppMethodBeat.i(120586);
+    ad.i(this.TAG, "onCompletion, currPosMs:" + getCurrPosMs() + ", playStatus:" + this.hxT + ", downloadStatus:" + this.hxS);
+    if (getCurrPosMs() <= 0)
     {
-      AppMethodBeat.o(110931);
+      AppMethodBeat.o(120586);
       return;
     }
-    paramString = this.TAG;
-    StringBuilder localStringBuilder = new StringBuilder("%s download  onProgress [%d, %d], pauseByLoadData:").append(this.fVo).append(", playStatus:").append(this.fVj).append(", currPosMs:").append(getCurrPosMs()).append(", isPlyaing:");
-    com.tencent.mm.pluginsdk.ui.tools.e locale = this.kvG;
-    a.f.b.j.p(locale, "videoView");
-    ab.d(paramString, locale.isPlaying(), new Object[] { bas(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (((getCurrPosMs() <= 0) || (this.fVj == 1) || (this.fVj == 0)) && (mj(getCurrPosSec()))) {
-      dh(true);
+    h.b localb = this.nns;
+    if (localb != null) {
+      localb.dc(getSessionId(), getMediaId());
     }
-    AppMethodBeat.o(110931);
+    super.onCompletion();
+    AppMethodBeat.o(120586);
+  }
+  
+  public final void onUIDestroy()
+  {
+    AppMethodBeat.i(120600);
+    ad.i(this.TAG, "onUIDestroy, isLocalVideo:" + this.yAU);
+    FakeVideoViewLayer localFakeVideoViewLayer = this.rTL;
+    if (localFakeVideoViewLayer == null) {
+      d.g.b.k.aPZ("fakeLayer");
+    }
+    localFakeVideoViewLayer.diG();
+    super.onUIDestroy();
+    AppMethodBeat.o(120600);
+  }
+  
+  public final void onUIPause()
+  {
+    AppMethodBeat.i(120598);
+    ad.i(this.TAG, "onUIPause, isLocalVideo:" + this.yAU);
+    Object localObject = this.rTL;
+    if (localObject == null) {
+      d.g.b.k.aPZ("fakeLayer");
+    }
+    ((FakeVideoViewLayer)localObject).diF();
+    if (this.yAU)
+    {
+      localObject = this.nAZ;
+      if (localObject != null)
+      {
+        ((com.tencent.mm.pluginsdk.ui.tools.h)localObject).pause();
+        AppMethodBeat.o(120598);
+        return;
+      }
+      AppMethodBeat.o(120598);
+      return;
+    }
+    super.onUIPause();
+    AppMethodBeat.o(120598);
+  }
+  
+  public final void onUIResume()
+  {
+    AppMethodBeat.i(120599);
+    ad.i(this.TAG, "onUIResume, isLocalVideo:" + this.yAU);
+    if (isPlaying())
+    {
+      FakeVideoViewLayer localFakeVideoViewLayer = this.rTL;
+      if (localFakeVideoViewLayer == null) {
+        d.g.b.k.aPZ("fakeLayer");
+      }
+      localFakeVideoViewLayer.oC(this.fqj);
+    }
+    if (this.yAU)
+    {
+      AppMethodBeat.o(120599);
+      return;
+    }
+    super.onUIResume();
+    AppMethodBeat.o(120599);
   }
   
   public final boolean pause()
   {
-    AppMethodBeat.i(110920);
-    ab.i(this.TAG, "pause, isLocalVideo:" + this.sVa);
-    StoryVideoViewFakeLayer localStoryVideoViewFakeLayer = this.sUh;
-    if (localStoryVideoViewFakeLayer == null) {
-      a.f.b.j.ays("fakeLayer");
+    AppMethodBeat.i(120590);
+    ad.i(this.TAG, "pause, isLocalVideo:" + this.yAU);
+    FakeVideoViewLayer localFakeVideoViewLayer = this.rTL;
+    if (localFakeVideoViewLayer == null) {
+      d.g.b.k.aPZ("fakeLayer");
     }
-    localStoryVideoViewFakeLayer.cGw();
-    if (this.sVa)
+    localFakeVideoViewLayer.diF();
+    if (this.yAU)
     {
-      this.sVb = true;
-      this.kvG.pause();
-      AppMethodBeat.o(110920);
+      this.yAV = true;
+      this.nAZ.pause();
+      AppMethodBeat.o(120590);
       return true;
     }
     boolean bool = super.pause();
-    AppMethodBeat.o(110920);
+    AppMethodBeat.o(120590);
     return bool;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(110947);
+    AppMethodBeat.i(120618);
     super.reset();
-    this.stu = false;
-    this.cpW = null;
-    AppMethodBeat.o(110947);
+    this.vso = false;
+    this.sessionId = null;
+    AppMethodBeat.o(120618);
   }
   
   public final void setFirstPlayWaitTime(long paramLong)
   {
-    this.sVd = paramLong;
+    this.yAY = paramLong;
   }
   
   public final void setMute(boolean paramBoolean)
   {
-    AppMethodBeat.i(110918);
+    AppMethodBeat.i(120588);
     super.setMute(paramBoolean);
-    this.efg = paramBoolean;
-    if (this.kvG != null) {
-      this.kvG.setMute(paramBoolean);
+    this.fqj = paramBoolean;
+    if (this.nAZ != null) {
+      this.nAZ.setMute(paramBoolean);
     }
-    AppMethodBeat.o(110918);
+    AppMethodBeat.o(120588);
   }
   
   public final void setNeedShowLoading(boolean paramBoolean)
   {
-    AppMethodBeat.i(110926);
-    ab.i(this.TAG, hashCode() + " setNeedShowLoading: " + paramBoolean);
-    this.sUZ = paramBoolean;
-    if (!this.sUZ) {
+    AppMethodBeat.i(120596);
+    ad.i(this.TAG, hashCode() + " setNeedShowLoading: " + paramBoolean);
+    this.yAT = paramBoolean;
+    if (!this.yAT) {
       hideLoading();
     }
-    AppMethodBeat.o(110926);
+    AppMethodBeat.o(120596);
   }
   
-  public final void setScaleType(h.d paramd)
+  public final void setScaleType(com.tencent.mm.pluginsdk.ui.h.e parame)
   {
-    AppMethodBeat.i(110943);
-    super.setScaleType(paramd);
-    AppMethodBeat.o(110943);
+    AppMethodBeat.i(120613);
+    super.setScaleType(parame);
+    AppMethodBeat.o(120613);
   }
   
   public final void showLoading()
   {
-    AppMethodBeat.i(110927);
-    if (this.sUZ) {
-      ie(800L);
+    AppMethodBeat.i(120597);
+    if (this.yAT) {
+      nM(800L);
     }
-    AppMethodBeat.o(110927);
+    AppMethodBeat.o(120597);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(110937);
-    if ((this.aZy > 0) && (!this.sVa))
+    AppMethodBeat.i(120607);
+    if ((this.bxy > 0) && (!this.yAU))
     {
-      ab.i(this.TAG, "start from onError and not local video");
-      localObject = this.syr;
+      ad.i(this.TAG, "start from onError and not local video");
+      localObject = this.yhF;
       if (localObject != null)
       {
-        s locals = s.swk;
-        localObject = s.a((com.tencent.mm.plugin.story.model.d.i)localObject);
-        if (((n)localObject).Jo())
+        s locals = s.ygj;
+        localObject = s.a((com.tencent.mm.plugin.story.f.d.j)localObject);
+        if (((n)localObject).UE())
         {
-          ab.i(this.TAG, "start from onError and download finish now");
+          ad.i(this.TAG, "start from onError and download finish now");
           localObject = ((n)localObject).field_filePath;
-          a.f.b.j.p(localObject, "videoCache.field_filePath");
-          adK((String)localObject);
-          AppMethodBeat.o(110937);
+          d.g.b.k.g(localObject, "videoCache.field_filePath");
+          ase((String)localObject);
+          AppMethodBeat.o(120607);
           return;
         }
       }
     }
-    Object localObject = this.fVg;
-    a.f.b.j.p(localObject, "filepath");
-    adL((String)localObject);
+    Object localObject = this.hxQ;
+    d.g.b.k.g(localObject, "filepath");
+    asf((String)localObject);
     super.start();
-    AppMethodBeat.o(110937);
+    AppMethodBeat.o(120607);
   }
   
   public final void stop()
   {
-    long l = 1L;
-    AppMethodBeat.i(110938);
+    final long l = 1L;
+    AppMethodBeat.i(120608);
     for (;;)
     {
       try
       {
-        Object localObject1 = this.sUh;
+        Object localObject1 = this.rTL;
         if (localObject1 == null) {
-          a.f.b.j.ays("fakeLayer");
+          d.g.b.k.aPZ("fakeLayer");
         }
-        ((StoryVideoViewFakeLayer)localObject1).cGx();
-        if (this.sVa)
+        ((FakeVideoViewLayer)localObject1).diG();
+        if (this.yAU)
         {
-          bw localbw = new bw();
-          localObject1 = this.syr;
+          final eu localeu = new eu();
+          localObject1 = this.yhF;
           if (localObject1 == null) {
-            break label343;
+            break label362;
           }
-          localObject1 = Long.valueOf(((com.tencent.mm.plugin.story.model.d.i)localObject1).cJA);
-          localObject1 = localbw.gS(String.valueOf(localObject1));
-          com.tencent.mm.plugin.story.g.i locali = com.tencent.mm.plugin.story.g.i.sFa;
-          localObject1 = ((bw)localObject1).el(com.tencent.mm.plugin.story.g.i.cDo().FF());
-          locali = com.tencent.mm.plugin.story.g.i.sFa;
-          if (com.tencent.mm.plugin.story.g.i.cDo().FK() != 1L) {
-            break label348;
+          localObject1 = Long.valueOf(((com.tencent.mm.plugin.story.f.d.j)localObject1).dAu);
+          localObject1 = localeu.kM(String.valueOf(localObject1));
+          com.tencent.mm.plugin.story.h.h localh = com.tencent.mm.plugin.story.h.h.ynv;
+          localObject1 = ((eu)localObject1).gY(com.tencent.mm.plugin.story.h.h.dJj().QS());
+          localh = com.tencent.mm.plugin.story.h.h.ynv;
+          if (com.tencent.mm.plugin.story.h.h.dJj().QX() != 1L) {
+            break label367;
           }
-          localObject1 = ((bw)localObject1).en(l).eq(this.sVd).er(getStayTime()).es(getErrorCode()).GW();
-          locali = com.tencent.mm.plugin.story.g.i.sFa;
-          localObject1 = ((bw)localObject1).eu(com.tencent.mm.plugin.story.g.i.cDo().FE());
-          locali = com.tencent.mm.plugin.story.g.i.sFa;
-          ((bw)localObject1).ev(com.tencent.mm.plugin.story.g.i.cDo().FH()).ep(getCurrPosMs());
-          ab.d(this.TAG, "time distance %d", new Object[] { Long.valueOf(System.currentTimeMillis() - localbw.GX()) });
-          if (System.currentTimeMillis() - localbw.GX() >= 500L)
+          localObject1 = ((eu)localObject1).ha(l).hd(this.yAY).hh(getStayTime()).hi(getErrorCode()).hF(1L);
+          localh = com.tencent.mm.plugin.story.h.h.ynv;
+          localObject1 = ((eu)localObject1).hG(com.tencent.mm.plugin.story.h.h.dJj().QR());
+          localh = com.tencent.mm.plugin.story.h.h.ynv;
+          ((eu)localObject1).hH(com.tencent.mm.plugin.story.h.h.dJj().QU()).hc(getCurrPosMs());
+          ad.d(this.TAG, "time distance %d", new Object[] { Long.valueOf(System.currentTimeMillis() - localeu.RL()) });
+          if (System.currentTimeMillis() - localeu.RL() >= 500L)
           {
-            localObject1 = this.syr;
+            localObject1 = this.yhF;
             if (localObject1 == null) {
-              break label353;
+              break label372;
             }
-            l = ((com.tencent.mm.plugin.story.model.d.i)localObject1).cJA;
+            l = ((com.tencent.mm.plugin.story.f.d.j)localObject1).dAu;
           }
           try
           {
-            localObject1 = com.tencent.mm.plugin.story.model.j.svi;
-            j.b.coO().post((Runnable)new StoryVideoView.c(this, localbw, l));
-            this.kvG.stop();
+            localObject1 = com.tencent.mm.plugin.story.f.j.yfh;
+            j.b.dhI().post((Runnable)new c(this, localeu, l));
+            this.nAZ.stop();
             reset();
-            AppMethodBeat.o(110938);
+            localObject1 = this.yAX;
+            if (localObject1 == null) {
+              break label355;
+            }
+            ((ImageView)localObject1).setVisibility(8);
+            AppMethodBeat.o(120608);
             return;
           }
           catch (Exception localException1)
           {
-            ab.printErrStackTrace(this.TAG, (Throwable)localException1, "reportStopLocalVideo", new Object[0]);
-            localbw.ake();
+            ad.printErrStackTrace(this.TAG, (Throwable)localException1, "reportStopLocalVideo", new Object[0]);
+            localeu.aBj();
             continue;
           }
         }
@@ -948,34 +1003,192 @@ public final class StoryVideoView
       }
       catch (Exception localException2)
       {
-        ab.printErrStackTrace(this.TAG, (Throwable)localException2, "stop error", new Object[0]);
-        AppMethodBeat.o(110938);
+        ad.printErrStackTrace(this.TAG, (Throwable)localException2, "stop error", new Object[0]);
+        AppMethodBeat.o(120608);
         return;
       }
-      AppMethodBeat.o(110938);
+      continue;
+      label355:
+      AppMethodBeat.o(120608);
       return;
-      label343:
+      label362:
       Object localObject2 = null;
       continue;
-      label348:
+      label367:
       l = 0L;
       continue;
-      label353:
+      label372:
       l = 0L;
     }
   }
   
   public final void stopTimer()
   {
-    AppMethodBeat.i(110924);
-    ab.b(this.TAG, bas() + " stopTimer, isLocalVideo:" + this.sVa, new Object[0]);
+    AppMethodBeat.i(120594);
+    ad.m(this.TAG, bel() + " stopTimer, isLocalVideo:" + this.yAU, new Object[0]);
     super.stopTimer();
-    AppMethodBeat.o(110924);
+    AppMethodBeat.o(120594);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryVideoView$Companion;", "", "()V", "PRELOAD_CACHE", "", "PRELOAD_CACHE_GOOD_NETWORK", "plugin-story_release"})
+  public static final class a {}
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/story/ui/view/gallery/StoryVideoView$playLocalVideo$1", "Lcom/tencent/mm/pluginsdk/ui/tools/IVideoView$IVideoCallback;", "onCompletion", "", "onError", "what", "", "extra", "onGetVideoSize", "width", "height", "onPlayTime", "playTime", "videoTime", "onPrepared", "plugin-story_release"})
+  public static final class b
+    implements h.a
+  {
+    public final void dY(int paramInt1, int paramInt2) {}
+    
+    public final int eM(int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(120582);
+      com.tencent.mm.plugin.story.f.d.j localj = StoryVideoView.c(this.yBa);
+      if ((localj != null) && (localj.dHW() == true) && (StoryVideoView.e(this.yBa) > 0L) && (paramInt1 >= StoryVideoView.e(this.yBa)))
+      {
+        ad.i(StoryVideoView.a(this.yBa), "fakeVideo exceed endTime, playTime:" + paramInt1 + ", fakeEndTime:" + StoryVideoView.e(this.yBa) + ", fakeStartTime:" + StoryVideoView.d(this.yBa));
+        if (StoryVideoView.d(this.yBa) <= 0L) {
+          break label146;
+        }
+        StoryVideoView.f(this.yBa).d(StoryVideoView.d(this.yBa), true);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(120582);
+        return 0;
+        label146:
+        StoryVideoView.f(this.yBa).d(0.0D, true);
+      }
+    }
+    
+    public final void onCompletion()
+    {
+      AppMethodBeat.i(120581);
+      String str = StoryVideoView.a(this.yBa);
+      StringBuilder localStringBuilder = new StringBuilder("localVideo onCompleted, isFakeVideo:");
+      Object localObject = StoryVideoView.c(this.yBa);
+      if (localObject != null)
+      {
+        localObject = Boolean.valueOf(((com.tencent.mm.plugin.story.f.d.j)localObject).dHW());
+        ad.i(str, localObject + ", fakeStartTime:" + StoryVideoView.d(this.yBa));
+        localObject = StoryVideoView.c(this.yBa);
+        if ((localObject == null) || (((com.tencent.mm.plugin.story.f.d.j)localObject).dHW() != true) || (StoryVideoView.d(this.yBa) <= 0L)) {
+          break label166;
+        }
+        StoryVideoView.f(this.yBa).d(StoryVideoView.d(this.yBa), true);
+      }
+      for (;;)
+      {
+        localObject = StoryVideoView.h(this.yBa);
+        if (localObject == null) {
+          break label183;
+        }
+        ((h.b)localObject).dc(this.yBa.getSessionId(), StoryVideoView.i(this.yBa));
+        AppMethodBeat.o(120581);
+        return;
+        localObject = null;
+        break;
+        label166:
+        StoryVideoView.f(this.yBa).d(0.0D, true);
+      }
+      label183:
+      AppMethodBeat.o(120581);
+    }
+    
+    public final void onError(int paramInt1, int paramInt2) {}
+    
+    public final void rq()
+    {
+      AppMethodBeat.i(120580);
+      String str = StoryVideoView.a(this.yBa);
+      StringBuilder localStringBuilder = new StringBuilder("localVideo onPrepared, isLocalVideoPause:").append(StoryVideoView.b(this.yBa)).append(", isFakeVideo:");
+      Object localObject = StoryVideoView.c(this.yBa);
+      if (localObject != null)
+      {
+        localObject = Boolean.valueOf(((com.tencent.mm.plugin.story.f.d.j)localObject).dHW());
+        ad.i(str, localObject + ", fakeStartTime:" + StoryVideoView.d(this.yBa) + ", fakeEndTime:" + StoryVideoView.e(this.yBa));
+        if (!StoryVideoView.b(this.yBa))
+        {
+          localObject = StoryVideoView.c(this.yBa);
+          if ((localObject == null) || (((com.tencent.mm.plugin.story.f.d.j)localObject).dHW() != true) || (StoryVideoView.d(this.yBa) <= 0L)) {
+            break label197;
+          }
+          StoryVideoView.f(this.yBa).d(StoryVideoView.d(this.yBa), true);
+        }
+      }
+      for (;;)
+      {
+        StoryVideoView.f(this.yBa).setOneTimeVideoTextureUpdateCallback((com.tencent.mm.pluginsdk.ui.tools.h.e)new a(this));
+        AppMethodBeat.o(120580);
+        return;
+        localObject = null;
+        break;
+        label197:
+        StoryVideoView.f(this.yBa).start();
+      }
+    }
+    
+    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "onTextureUpdate"})
+    static final class a
+      implements com.tencent.mm.pluginsdk.ui.tools.h.e
+    {
+      a(StoryVideoView.b paramb) {}
+      
+      public final void beo()
+      {
+        AppMethodBeat.i(120579);
+        this.yBb.yBa.setFirstPlayWaitTime(bt.aS(StoryVideoView.g(this.yBb.yBa)));
+        aq.n((Runnable)new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(120578);
+            ad.i(StoryVideoView.a(this.yBc.yBb.yBa), "onTextureUpdate");
+            if (StoryVideoView.f(this.yBc.yBb.yBa) == null)
+            {
+              AppMethodBeat.o(120578);
+              return;
+            }
+            this.yBc.yBb.yBa.hideLoading();
+            Object localObject = StoryVideoView.f(this.yBc.yBb.yBa);
+            if (localObject == null)
+            {
+              localObject = new v("null cannot be cast to non-null type android.view.View");
+              AppMethodBeat.o(120578);
+              throw ((Throwable)localObject);
+            }
+            ((View)localObject).setAlpha(1.0F);
+            AppMethodBeat.o(120578);
+          }
+        }, 50L);
+        AppMethodBeat.o(120579);
+      }
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  static final class c
+    implements Runnable
+  {
+    c(StoryVideoView paramStoryVideoView, eu parameu, long paramLong) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(120583);
+      ad.i(StoryVideoView.a(this.yBa), "reportStopLocalVideo");
+      com.tencent.mm.plugin.sight.base.a locala = com.tencent.mm.plugin.sight.base.e.ano(StoryVideoView.j(this.yBa));
+      if (locala != null)
+      {
+        eu localeu = localeu.hb(locala.videoDuration);
+        j.b localb = com.tencent.mm.plugin.story.f.j.yfh;
+        localeu.gZ(j.b.dHd().tX(l)).hj(locala.videoBitrate).aBj();
+      }
+      AppMethodBeat.o(120583);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.StoryVideoView
  * JD-Core Version:    0.7.0.1
  */

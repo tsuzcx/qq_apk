@@ -13,25 +13,25 @@ final class JsApiChooseMultiMedia$4
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(131220);
+    AppMethodBeat.i(46496);
     if (paramInt != 113)
     {
-      AppMethodBeat.o(131220);
+      AppMethodBeat.o(46496);
       return;
     }
     if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == 0))
     {
-      this.hRt.a(this.hxW, this.bBa, this.bAX);
-      AppMethodBeat.o(131220);
+      this.jXo.a(this.cgw, this.ccE, this.ccB);
+      AppMethodBeat.o(46496);
       return;
     }
-    this.hxW.h(this.bAX, this.hRt.j("fail:system permission denied", null));
-    AppMethodBeat.o(131220);
+    this.cgw.h(this.ccB, this.jXo.e("fail:system permission denied", null));
+    AppMethodBeat.o(46496);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.JsApiChooseMultiMedia.4
  * JD-Core Version:    0.7.0.1
  */

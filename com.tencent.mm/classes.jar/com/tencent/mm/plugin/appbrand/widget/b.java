@@ -6,11 +6,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static int di(Context paramContext)
+  public static int dL(Context paramContext)
   {
-    AppMethodBeat.i(87439);
-    int i = paramContext.getResources().getDimensionPixelSize(2131427557);
-    AppMethodBeat.o(87439);
+    AppMethodBeat.i(135387);
+    int i = paramContext.getResources().getDimensionPixelSize(2131165250);
+    AppMethodBeat.o(135387);
     return i;
   }
 }

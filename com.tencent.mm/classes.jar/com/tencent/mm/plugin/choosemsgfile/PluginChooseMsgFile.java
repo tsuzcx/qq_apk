@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.choosemsgfile;
 
-import com.tencent.luggage.g.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class PluginChooseMsgFile
   extends f
@@ -10,25 +11,27 @@ public class PluginChooseMsgFile
 {
   public void dependency()
   {
-    AppMethodBeat.i(54248);
-    dependsOn(com.tencent.mm.plugin.comm.a.a.class);
-    AppMethodBeat.o(54248);
+    AppMethodBeat.i(123220);
+    if (aj.cbe()) {
+      dependsOn(com.tencent.mm.plugin.comm.a.a.class);
+    }
+    AppMethodBeat.o(123220);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(54247);
-    d.d("MicroMsg.PluginChooseMsgFile", "execute");
+    AppMethodBeat.i(123219);
+    ad.d("MicroMsg.PluginChooseMsgFile", "execute");
     com.tencent.mm.kernel.g.b(com.tencent.mm.choosemsgfile.compat.a.class, new com.tencent.mm.plugin.choosemsgfile.b.a());
-    AppMethodBeat.o(54247);
+    AppMethodBeat.o(123219);
   }
   
   public void installed()
   {
-    AppMethodBeat.i(54246);
-    d.d("MicroMsg.PluginChooseMsgFile", "installed");
+    AppMethodBeat.i(123218);
+    ad.d("MicroMsg.PluginChooseMsgFile", "installed");
     alias(com.tencent.mm.plugin.choosemsgfile.a.a.class);
-    AppMethodBeat.o(54246);
+    AppMethodBeat.o(123218);
   }
   
   public String name()

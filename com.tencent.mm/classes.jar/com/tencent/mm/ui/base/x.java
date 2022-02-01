@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 public abstract class x
   extends q
 {
-  private final w zpF;
+  private final w Gde;
   
   public x()
   {
@@ -18,7 +18,7 @@ public abstract class x
   
   private x(w paramw)
   {
-    this.zpF = paramw;
+    this.Gde = paramw;
     SparseArray[] arrayOfSparseArray = new SparseArray[1];
     int i = 0;
     while (i <= 0)
@@ -26,23 +26,18 @@ public abstract class x
       arrayOfSparseArray[0] = new SparseArray();
       i += 1;
     }
-    paramw.zpD = 1;
-    paramw.zpE = arrayOfSparseArray[0];
-    paramw.zpC = arrayOfSparseArray;
+    paramw.uWk = 1;
+    paramw.Gdd = arrayOfSparseArray[0];
+    paramw.Gdc = arrayOfSparseArray;
   }
   
   public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     paramObject = (View)paramObject;
     paramViewGroup.removeView(paramObject);
-    int i = getItemViewType(paramInt);
-    if (i != -1)
-    {
-      paramViewGroup = this.zpF;
-      if (paramViewGroup.zpD != 1) {
-        break label59;
-      }
-      paramViewGroup.zpE.put(paramInt, paramObject);
+    paramViewGroup = this.Gde;
+    if (paramViewGroup.uWk == 1) {
+      paramViewGroup.Gdd.put(paramInt, paramObject);
     }
     for (;;)
     {
@@ -50,45 +45,27 @@ public abstract class x
         paramObject.setAccessibilityDelegate(null);
       }
       return;
-      label59:
-      paramViewGroup.zpC[i].put(paramInt, paramObject);
+      paramViewGroup.Gdc[0].put(paramInt, paramObject);
     }
   }
   
-  public int getItemViewType(int paramInt)
-  {
-    return 0;
-  }
-  
-  public abstract View getView(int paramInt, View paramView, ViewGroup paramViewGroup);
+  public abstract View e(int paramInt, View paramView);
   
   public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject2 = null;
-    int i = getItemViewType(paramInt);
-    Object localObject1 = localObject2;
-    w localw;
-    if (i != -1)
-    {
-      localw = this.zpF;
-      if (localw.zpD != 1) {
-        break label63;
-      }
-      localObject1 = w.a(localw.zpE, paramInt);
+    Object localObject = this.Gde;
+    if (((w)localObject).uWk == 1) {
+      localObject = w.c(((w)localObject).Gdd, paramInt);
     }
     for (;;)
     {
-      localObject1 = getView(paramInt, (View)localObject1, paramViewGroup);
-      paramViewGroup.addView((View)localObject1);
-      return localObject1;
-      label63:
-      localObject1 = localObject2;
-      if (i >= 0)
-      {
-        localObject1 = localObject2;
-        if (i < localw.zpC.length) {
-          localObject1 = w.a(localw.zpC[i], paramInt);
-        }
+      localObject = e(paramInt, (View)localObject);
+      paramViewGroup.addView((View)localObject);
+      return localObject;
+      if (((w)localObject).Gdc.length > 0) {
+        localObject = w.c(localObject.Gdc[0], paramInt);
+      } else {
+        localObject = null;
       }
     }
   }
@@ -100,17 +77,17 @@ public abstract class x
   
   public void notifyDataSetChanged()
   {
-    w localw = this.zpF;
-    View[] arrayOfView = localw.zpA;
-    int[] arrayOfInt = localw.zpB;
+    w localw = this.Gde;
+    View[] arrayOfView = localw.Gda;
+    int[] arrayOfInt = localw.Gdb;
     int j;
     label44:
     View localView;
     Object localObject2;
-    if (localw.zpD > 1)
+    if (localw.uWk > 1)
     {
       i = 1;
-      localObject1 = localw.zpE;
+      localObject1 = localw.Gdd;
       j = arrayOfView.length - 1;
       if (j < 0) {
         break label159;
@@ -134,7 +111,7 @@ public abstract class x
       if (k != 0)
       {
         if (i != 0) {
-          localObject1 = localw.zpC[m];
+          localObject1 = localw.Gdc[m];
         }
         ((SparseArray)localObject1).put(j, localView);
         localObject2 = localObject1;
@@ -151,9 +128,9 @@ public abstract class x
       break;
     }
     label159:
-    int m = localw.zpA.length;
-    int n = localw.zpD;
-    Object localObject1 = localw.zpC;
+    int m = localw.Gda.length;
+    int n = localw.uWk;
+    Object localObject1 = localw.Gdc;
     int i = 0;
     while (i < n)
     {
@@ -174,7 +151,7 @@ public abstract class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.x
  * JD-Core Version:    0.7.0.1
  */

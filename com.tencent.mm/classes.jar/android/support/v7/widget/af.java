@@ -3,15 +3,15 @@ package android.support.v7.widget;
 import android.graphics.PointF;
 import android.view.View;
 
-public final class af
+public class af
   extends at
 {
-  private aj agR;
-  private aj agS;
+  private aj anY;
+  private aj anZ;
   
   private int a(RecyclerView.i parami, aj paramaj, int paramInt1, int paramInt2)
   {
-    int[] arrayOfInt = aG(paramInt1, paramInt2);
+    int[] arrayOfInt = aH(paramInt1, paramInt2);
     float f = b(parami, paramaj);
     if (f <= 0.0F) {
       return 0;
@@ -24,10 +24,10 @@ public final class af
   
   private static int a(RecyclerView.i parami, View paramView, aj paramaj)
   {
-    int j = paramaj.bh(paramView);
-    int k = paramaj.bl(paramView) / 2;
+    int j = paramaj.bn(paramView);
+    int k = paramaj.br(paramView) / 2;
     if (parami.getClipToPadding()) {}
-    for (int i = paramaj.iI() + paramaj.iK() / 2;; i = paramaj.getEnd() / 2) {
+    for (int i = paramaj.kd() + paramaj.kf() / 2;; i = paramaj.getEnd() / 2) {
       return k + j - i;
     }
   }
@@ -48,13 +48,13 @@ public final class af
       if (!parami.getClipToPadding()) {
         break;
       }
-      j = paramaj.iI() + paramaj.iK() / 2;
+      j = paramaj.kd() + paramaj.kf() / 2;
       i = 2147483647;
       k = 0;
       localObject2 = localObject1;
     } while (k >= n);
     localObject2 = parami.getChildAt(k);
-    int m = Math.abs(paramaj.bh((View)localObject2) + paramaj.bl((View)localObject2) / 2 - j);
+    int m = Math.abs(paramaj.bn((View)localObject2) + paramaj.br((View)localObject2) / 2 - j);
     if (m < i)
     {
       localObject1 = localObject2;
@@ -86,7 +86,7 @@ public final class af
     if (n < i2)
     {
       View localView = parami.getChildAt(n);
-      int i1 = RecyclerView.i.bv(localView);
+      int i1 = RecyclerView.i.bB(localView);
       m = i;
       localObject3 = localObject1;
       if (i1 == -1) {
@@ -115,8 +115,8 @@ public final class af
       if ((localObject1 == null) || (localObject2 == null)) {
         return 1.0F;
       }
-      j = Math.min(paramaj.bh(localObject1), paramaj.bh(localObject2));
-      j = Math.max(paramaj.bi(localObject1), paramaj.bi(localObject2)) - j;
+      j = Math.min(paramaj.bn(localObject1), paramaj.bn(localObject2));
+      j = Math.max(paramaj.bo(localObject1), paramaj.bo(localObject2)) - j;
       if (j == 0) {
         return 1.0F;
       }
@@ -130,21 +130,21 @@ public final class af
   
   private aj b(RecyclerView.i parami)
   {
-    if ((this.agR == null) || (this.agR.ahB != parami)) {
-      this.agR = aj.e(parami);
+    if ((this.anY == null) || (this.anY.aoI != parami)) {
+      this.anY = aj.e(parami);
     }
-    return this.agR;
+    return this.anY;
   }
   
   private aj c(RecyclerView.i parami)
   {
-    if ((this.agS == null) || (this.agS.ahB != parami)) {
-      this.agS = aj.d(parami);
+    if ((this.anZ == null) || (this.anZ.aoI != parami)) {
+      this.anZ = aj.d(parami);
     }
-    return this.agS;
+    return this.anZ;
   }
   
-  public final int a(RecyclerView.i parami, int paramInt1, int paramInt2)
+  public int a(RecyclerView.i parami, int paramInt1, int paramInt2)
   {
     if (!(parami instanceof RecyclerView.r.b)) {
       paramInt2 = -1;
@@ -165,22 +165,22 @@ public final class af
       if (localObject == null) {
         return -1;
       }
-      int k = RecyclerView.i.bv((View)localObject);
+      int k = RecyclerView.i.bB((View)localObject);
       if (k == -1) {
         return -1;
       }
-      localObject = ((RecyclerView.r.b)parami).bI(j - 1);
+      localObject = ((RecyclerView.r.b)parami).bZ(j - 1);
       if (localObject == null) {
         return -1;
       }
-      if (parami.ij())
+      if (parami.jE())
       {
         int i = a(parami, c(parami), paramInt1, 0);
         paramInt1 = i;
         if (((PointF)localObject).x < 0.0F) {
           paramInt1 = -i;
         }
-        if (!parami.ik()) {
+        if (!parami.jF()) {
           break label169;
         }
         i = a(parami, b(parami), 0, paramInt2);
@@ -188,7 +188,7 @@ public final class af
         if (((PointF)localObject).y < 0.0F) {
           paramInt2 = -i;
         }
-        if (!parami.ik()) {
+        if (!parami.jF()) {
           break label174;
         }
       }
@@ -214,24 +214,24 @@ public final class af
     return j - 1;
   }
   
-  public final View a(RecyclerView.i parami)
+  public View a(RecyclerView.i parami)
   {
-    if (parami.ik()) {
+    if (parami.jF()) {
       return a(parami, b(parami));
     }
-    if (parami.ij()) {
+    if (parami.jE()) {
       return a(parami, c(parami));
     }
     return null;
   }
   
-  public final int[] a(RecyclerView.i parami, View paramView)
+  public int[] a(RecyclerView.i parami, View paramView)
   {
     int[] arrayOfInt = new int[2];
-    if (parami.ij()) {
+    if (parami.jE()) {
       arrayOfInt[0] = a(parami, paramView, c(parami));
     }
-    while (parami.ik())
+    while (parami.jF())
     {
       arrayOfInt[1] = a(parami, paramView, b(parami));
       return arrayOfInt;
@@ -243,7 +243,7 @@ public final class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v7.widget.af
  * JD-Core Version:    0.7.0.1
  */

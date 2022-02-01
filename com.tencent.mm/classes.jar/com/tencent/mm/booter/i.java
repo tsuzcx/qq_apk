@@ -1,24 +1,24 @@
 package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 
 public final class i
 {
-  public static boolean Iu()
+  public static boolean TG()
   {
-    AppMethodBeat.i(15852);
+    AppMethodBeat.i(19886);
     try
     {
-      aw.aaz();
-      ah.d((Long)c.Ru().get(66817, null));
-      if (ah.gz(0L) * 1000L > 1800000L)
+      az.arV();
+      bt.a((Long)c.afk().get(66817, null), 0L);
+      if (bt.lZ(0L) * 1000L > 1800000L)
       {
-        AppMethodBeat.o(15852);
+        AppMethodBeat.o(19886);
         return true;
       }
     }
@@ -26,16 +26,16 @@ public final class i
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.PostTaskMediaNoteStat", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.PostTaskMediaNoteStat", localException, "", new Object[0]);
       }
-      AppMethodBeat.o(15852);
+      AppMethodBeat.o(19886);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.booter.i
  * JD-Core Version:    0.7.0.1
  */

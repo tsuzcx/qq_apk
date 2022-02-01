@@ -1,26 +1,26 @@
 package com.tencent.mm.app.plugin.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fc;
+import com.tencent.mm.g.a.fi;
 import com.tencent.mm.sdk.b.c;
 
 public final class a$a
-  extends c<fc>
+  extends c<fi>
 {
-  a.i caH;
-  a.e caI;
-  a.f caJ;
-  a.d caK;
-  a.h caL;
-  a.g caM;
-  a.c caN;
-  a.b caO;
+  a.i cOm;
+  a.e cOn;
+  a.f cOo;
+  a.d cOp;
+  a.h cOq;
+  a.g cOr;
+  a.c cOs;
+  a.b cOt;
   
   public a$a()
   {
-    AppMethodBeat.i(15731);
-    this.__eventId = fc.class.getName().hashCode();
-    AppMethodBeat.o(15731);
+    AppMethodBeat.i(161260);
+    this.__eventId = fi.class.getName().hashCode();
+    AppMethodBeat.o(161260);
   }
 }
 

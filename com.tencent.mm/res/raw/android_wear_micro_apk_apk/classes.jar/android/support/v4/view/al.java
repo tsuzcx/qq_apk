@@ -2,11 +2,11 @@ package android.support.v4.view;
 
 public abstract interface al
 {
+  public abstract void J(int paramInt);
+  
   public abstract void a(int paramInt, float paramFloat);
   
-  public abstract void bs();
-  
-  public abstract void y(int paramInt);
+  public abstract void bJ();
 }
 
 

@@ -2,38 +2,38 @@ package com.tencent.mm.plugin.backup.g;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public final class j
 {
-  private static int jFV = 60000;
-  private j.a jBK;
-  long jFW;
-  long jFX;
-  long jFY;
-  long jFZ;
-  long jGa;
-  int jGb;
-  Queue<Long> jGc;
-  ap jGd;
+  private static int mxo = 60000;
+  private a mtf;
+  long mxp;
+  long mxq;
+  long mxr;
+  long mxs;
+  long mxt;
+  int mxu;
+  Queue<Long> mxv;
+  av mxw;
   
-  public j(j.a parama)
+  public j(a parama)
   {
-    AppMethodBeat.i(17677);
-    this.jFW = 0L;
-    this.jGb = 0;
-    this.jGc = new LinkedList();
-    this.jGd = new ap(Looper.getMainLooper(), new ap.a()
+    AppMethodBeat.i(21736);
+    this.mxp = 0L;
+    this.mxu = 0;
+    this.mxv = new LinkedList();
+    this.mxw = new av(Looper.getMainLooper(), new av.a()
     {
       public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(17676);
-        long l = bo.hl(j.a(j.this));
+        AppMethodBeat.i(21735);
+        long l = bt.vM(j.a(j.this));
         if (l != 0L)
         {
           j.a(j.this, j.b(j.this) / l * 1000L);
@@ -50,8 +50,8 @@ public final class j
             j.a(localj, l);
             j.b(j.this, j.c(j.this));
             j.f(j.this);
-            j.c(j.this, bo.aoy());
-            j.g(j.this).aTF();
+            j.c(j.this, bt.eGO());
+            j.g(j.this).bwO();
             if (j.c(j.this) < 102400L) {
               break label277;
             }
@@ -59,10 +59,10 @@ public final class j
             {
               j.a(j.this, 0);
               j.d(j.this, 0L);
-              j.g(j.this).rk(0);
-              ab.i("MicroMsg.BackupSpeedCalculator", "backupGetSpeedTimeHandler is not low speed now.");
+              j.g(j.this).vX(0);
+              ad.i("MicroMsg.BackupSpeedCalculator", "backupGetSpeedTimeHandler is not low speed now.");
             }
-            AppMethodBeat.o(17676);
+            AppMethodBeat.o(21735);
             return true;
           }
         }
@@ -80,75 +80,84 @@ public final class j
               if (j.h(j.this) == 0)
               {
                 j.a(j.this, 1);
-                j.g(j.this).rk(1);
-                j.d(j.this, bo.aoy());
-                ab.e("MicroMsg.BackupSpeedCalculator", "backupGetSpeedTimeHandler is too low speed! backupLowSpeedStartTime[%d]", new Object[] { Long.valueOf(j.i(j.this)) });
+                j.g(j.this).vX(1);
+                j.d(j.this, bt.eGO());
+                ad.e("MicroMsg.BackupSpeedCalculator", "backupGetSpeedTimeHandler is too low speed! backupLowSpeedStartTime[%d]", new Object[] { Long.valueOf(j.i(j.this)) });
               }
               else if (j.h(j.this) == 1)
               {
                 if (j.i(j.this) > 0L)
                 {
-                  if (bo.hl(j.i(j.this)) > j.aUG())
+                  if (bt.vM(j.i(j.this)) > j.bxP())
                   {
-                    ab.e("MicroMsg.BackupSpeedCalculator", "backupGetSpeedTimeHandler low speed overtime, overtime[%d]", new Object[] { Long.valueOf(bo.hl(j.i(j.this))) });
+                    ad.e("MicroMsg.BackupSpeedCalculator", "backupGetSpeedTimeHandler low speed overtime, overtime[%d]", new Object[] { Long.valueOf(bt.vM(j.i(j.this))) });
                     j.a(j.this, 2);
-                    j.g(j.this).aTG();
+                    j.g(j.this).bwP();
                     j.d(j.this, 0L);
-                    AppMethodBeat.o(17676);
+                    AppMethodBeat.o(21735);
                     return false;
                   }
                 }
                 else
                 {
-                  j.d(j.this, bo.aoy());
-                  ab.e("MicroMsg.BackupSpeedCalculator", "backupGetSpeedTimeHandler is too low speed! backupLowSpeedStartTime[%d]", new Object[] { Long.valueOf(j.i(j.this)) });
+                  j.d(j.this, bt.eGO());
+                  ad.e("MicroMsg.BackupSpeedCalculator", "backupGetSpeedTimeHandler is too low speed! backupLowSpeedStartTime[%d]", new Object[] { Long.valueOf(j.i(j.this)) });
                 }
               }
             }
             else if (j.h(j.this) != 1)
             {
               j.a(j.this, 1);
-              j.g(j.this).rk(1);
-              ab.e("MicroMsg.BackupSpeedCalculator", "backupGetSpeedTimeHandler is weak now.");
+              j.g(j.this).vX(1);
+              ad.e("MicroMsg.BackupSpeedCalculator", "backupGetSpeedTimeHandler is weak now.");
             }
           }
         }
       }
     }, true);
-    this.jBK = parama;
-    AppMethodBeat.o(17677);
+    this.mtf = parama;
+    AppMethodBeat.o(21736);
   }
   
-  static String hL(long paramLong)
+  static String ns(long paramLong)
   {
-    AppMethodBeat.i(17678);
+    AppMethodBeat.i(21737);
     if (paramLong >> 30 > 0L)
     {
-      str = bo.c(paramLong, 100.0D);
-      AppMethodBeat.o(17678);
+      str = bt.b(paramLong, 100.0D);
+      AppMethodBeat.o(21737);
       return str;
     }
     if (paramLong >> 20 > 0L)
     {
-      str = bo.b(paramLong, 100.0D);
-      AppMethodBeat.o(17678);
+      str = bt.a(paramLong, 100.0D);
+      AppMethodBeat.o(21737);
       return str;
     }
     if (paramLong >> 9 > 0L)
     {
       int i = Math.round((float)paramLong / 1024.0F);
       str = i + " KB";
-      AppMethodBeat.o(17678);
+      AppMethodBeat.o(21737);
       return str;
     }
     String str = paramLong + " B";
-    AppMethodBeat.o(17678);
+    AppMethodBeat.o(21737);
     return str;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void bwO();
+    
+    public abstract void bwP();
+    
+    public abstract void vX(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.g.j
  * JD-Core Version:    0.7.0.1
  */

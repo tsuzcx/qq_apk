@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ql
   extends b
 {
-  public ql.a cHa;
+  public a dwb;
   
   public ql()
   {
@@ -15,11 +15,16 @@ public final class ql
   
   private ql(byte paramByte)
   {
-    AppMethodBeat.i(15800);
-    this.cHa = new ql.a();
-    this.ymq = false;
+    AppMethodBeat.i(153417);
+    this.dwb = new a();
+    this.ESR = true;
     this.callback = null;
-    AppMethodBeat.o(15800);
+    AppMethodBeat.o(153417);
+  }
+  
+  public static final class a
+  {
+    public String dwc;
   }
 }
 

@@ -1,62 +1,113 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.atw;
-import com.tencent.mm.protocal.protobuf.atx;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.p;
+import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class ae
-  extends p
+  extends ac
 {
-  public atx ooZ;
+  public int dDO;
+  public int dDP;
+  public long dEb;
+  public int nTB;
+  public String sZn;
+  public RealnameGuideHelper tac;
+  public String tdh;
+  public f tdw;
+  public String teL;
+  public String teM;
+  public int teN;
+  public String teO;
+  public int teP;
+  public String teQ;
+  public String teR;
+  public int teS;
+  public l teT;
   
-  public ae(String paramString1, String paramString2, String paramString3)
+  public ae(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(42395);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new atw();
-    ((b.a)localObject).fsY = new atx();
-    ((b.a)localObject).funcId = 2929;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/ftfhb/businesscallbackwxhb";
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (atw)this.rr.fsV.fta;
-    ((atw)localObject).ojA = paramString1;
-    ((atw)localObject).kMN = paramString2;
-    ((atw)localObject).opF = paramString3;
-    ab.i("MicroMsg.NetSceneLuckyMoneyBusinessCallback", "sendId: %s, %s", new Object[] { paramString1, paramString3 });
-    AppMethodBeat.o(42395);
-  }
-  
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
-  {
-    AppMethodBeat.i(42396);
-    this.ooZ = ((atx)((b)paramq).fsW.fta);
-    ab.i("MicroMsg.NetSceneLuckyMoneyBusinessCallback", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.ooZ.cnK), this.ooZ.kNv });
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    AppMethodBeat.i(65279);
+    this.teT = null;
+    this.sZn = paramString1;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("sendId", paramString1);
+    if (!bt.isNullOrNil(paramString2)) {
+      localHashMap.put("nativeUrl", URLEncoder.encode(paramString2));
     }
-    AppMethodBeat.o(42396);
+    localHashMap.put("way", String.valueOf(paramInt));
+    localHashMap.put("channelId", "2");
+    localHashMap.put("package", paramString3);
+    localHashMap.put("sessionUserName", paramString4);
+    setRequestData(localHashMap);
+    AppMethodBeat.o(65279);
   }
   
-  public final void e(q paramq)
+  public final int bOC()
   {
-    paramq = (atx)((b)paramq).fsW.fta;
-    this.AXb = paramq.cnK;
-    this.AXc = paramq.kNv;
+    return 1;
   }
   
-  public final int getType()
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    return 2929;
+    AppMethodBeat.i(65280);
+    this.teL = paramJSONObject.optString("spidName");
+    this.dDO = paramJSONObject.optInt("hbStatus");
+    this.dDP = paramJSONObject.optInt("receiveStatus");
+    this.tdh = paramJSONObject.optString("statusMess");
+    this.teM = paramJSONObject.optString("hintMess");
+    this.dEb = paramJSONObject.optLong("amount");
+    this.teN = paramJSONObject.optInt("recNum");
+    this.nTB = paramJSONObject.optInt("totalNum");
+    this.tdw = new f();
+    paramString = paramJSONObject.optJSONObject("atomicFunc");
+    if (paramString != null)
+    {
+      this.tdw.fBI = paramString.optInt("enable");
+      this.tdw.tcS = paramString.optString("fissionContent");
+      this.tdw.tcR = paramString.optString("fissionUrl");
+    }
+    this.teP = paramJSONObject.optInt("focusFlag");
+    this.teQ = paramJSONObject.optString("focusWording");
+    this.teR = paramJSONObject.optString("focusAppidUserName");
+    this.teS = paramJSONObject.optInt("isFocus");
+    this.teO = paramJSONObject.optString("smallHbButtonMess");
+    try
+    {
+      this.teT = x.at(paramJSONObject);
+      this.teT.tdk = paramJSONObject.optString("spidLogo");
+      this.teT.tdj = paramJSONObject.optString("spidName");
+      this.teT.sYt = paramJSONObject.optString("spidWishing");
+      if ((paramInt == 0) && (paramJSONObject.has("real_name_info")))
+      {
+        Object localObject = paramJSONObject.optJSONObject("real_name_info");
+        if (localObject != null)
+        {
+          paramString = ((JSONObject)localObject).optString("guide_flag");
+          paramJSONObject = ((JSONObject)localObject).optString("guide_wording");
+          String str1 = ((JSONObject)localObject).optString("left_button_wording");
+          String str2 = ((JSONObject)localObject).optString("right_button_wording");
+          localObject = ((JSONObject)localObject).optString("upload_credit_url");
+          this.tac = new RealnameGuideHelper();
+          this.tac.b(paramString, paramJSONObject, str1, str2, (String)localObject, 1005);
+        }
+      }
+      AppMethodBeat.o(65280);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        ad.w("MicroMsg.NetSceneLuckyMoneyBusiBase", "parse luckyMoneyDetail fail: " + paramString.getLocalizedMessage());
+      }
+    }
   }
 }
 

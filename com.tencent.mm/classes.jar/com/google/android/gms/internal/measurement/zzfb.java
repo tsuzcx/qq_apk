@@ -35,49 +35,49 @@ public final class zzfb
   
   private final String zzgj()
   {
-    AppMethodBeat.i(68778);
+    AppMethodBeat.i(1301);
     zzab();
     if ((zzgg().zzay(this.zzti)) && (!this.zzacw.isEnabled()))
     {
-      AppMethodBeat.o(68778);
+      AppMethodBeat.o(1301);
       return null;
     }
     try
     {
-      FirebaseInstanceId.rL().rM();
+      FirebaseInstanceId.wK().wL();
       String str = FirebaseInstanceId.zzf();
-      AppMethodBeat.o(68778);
+      AppMethodBeat.o(1301);
       return str;
     }
     catch (IllegalStateException localIllegalStateException)
     {
       zzge().zzip().log("Failed to retrieve Firebase Instance Id");
-      AppMethodBeat.o(68778);
+      AppMethodBeat.o(1301);
     }
     return null;
   }
   
   final String getGmpAppId()
   {
-    AppMethodBeat.i(68780);
+    AppMethodBeat.i(1303);
     zzch();
     String str = this.zzadm;
-    AppMethodBeat.o(68780);
+    AppMethodBeat.o(1303);
     return str;
   }
   
   final String zzah()
   {
-    AppMethodBeat.i(68779);
+    AppMethodBeat.i(1302);
     zzch();
     String str = this.zzti;
-    AppMethodBeat.o(68779);
+    AppMethodBeat.o(1302);
     return str;
   }
   
   final zzdz zzbi(String paramString)
   {
-    AppMethodBeat.i(68776);
+    AppMethodBeat.i(1299);
     zzab();
     String str1 = zzah();
     String str2 = getGmpAppId();
@@ -107,26 +107,26 @@ public final class zzfb
       i = zzik();
       Boolean localBoolean = zzgg().zzas("google_analytics_adid_collection_enabled");
       if ((localBoolean != null) && (!localBoolean.booleanValue())) {
-        break label252;
+        break label254;
       }
       bool2 = true;
-      label168:
+      label169:
       localBoolean = zzgg().zzas("google_analytics_ssaid_collection_enabled");
       if ((localBoolean != null) && (!localBoolean.booleanValue())) {
-        break label258;
+        break label260;
       }
     }
-    label258:
+    label260:
     for (boolean bool3 = true;; bool3 = false)
     {
       paramString = new zzdz(str1, str2, str3, l1, str4, 12451L, l2, paramString, bool4, bool1, str5, 0L, l3, i, bool2, bool3, zzgf().zzje());
-      AppMethodBeat.o(68776);
+      AppMethodBeat.o(1299);
       return paramString;
       bool1 = false;
       break;
-      label252:
+      label254:
       bool2 = false;
-      break label168;
+      break label169;
     }
   }
   
@@ -138,7 +138,7 @@ public final class zzfb
   protected final void zzih()
   {
     int j = 1;
-    AppMethodBeat.i(68775);
+    AppMethodBeat.i(1298);
     Object localObject3 = "unknown";
     String str3 = "Unknown";
     int k = -2147483648;
@@ -164,33 +164,33 @@ public final class zzfb
       this.zzaif = 0L;
       localObject1 = GoogleServices.initialize(getContext());
       if ((localObject1 == null) || (!((Status)localObject1).isSuccess())) {
-        break label543;
+        break label538;
       }
       i = 1;
-      label140:
+      label135:
       if (i == 0)
       {
         if (localObject1 != null) {
-          break label548;
+          break label543;
         }
         zzge().zzim().log("GoogleService failed to initialize (no status)");
       }
-      label162:
+      label157:
       if (i == 0) {
-        break label697;
+        break label692;
       }
       localObject1 = zzgg().zzas("firebase_analytics_collection_enabled");
       if (!zzgg().zzhg()) {
-        break label577;
+        break label572;
       }
       zzge().zzir().log("Collection disabled with firebase_analytics_collection_deactivated=1");
       i = 0;
     }
+    label538:
     label543:
-    label548:
+    label675:
     label680:
-    label685:
-    label697:
+    label692:
     for (;;)
     {
       for (;;)
@@ -219,18 +219,18 @@ public final class zzfb
             i = 0;
           }
           this.zzaen = 0;
-          AppMethodBeat.o(68775);
+          AppMethodBeat.o(1298);
           return;
         }
         if (Build.VERSION.SDK_INT < 16) {
-          break label685;
+          break label680;
         }
         if (!InstantApps.isInstantApp(getContext())) {
-          break label680;
+          break label675;
         }
         i = j;
         this.zzaen = i;
-        AppMethodBeat.o(68775);
+        AppMethodBeat.o(1298);
         return;
         try
         {
@@ -297,10 +297,10 @@ public final class zzfb
       }
       break;
       i = 0;
-      break label140;
+      break label135;
       zzge().zzim().zze("GoogleService failed to initialize, status", Integer.valueOf(((Status)localObject2).getStatusCode()), ((Status)localObject2).getStatusMessage());
-      break label162;
-      label577:
+      break label157;
+      label572:
       if ((localObject2 != null) && (!((Boolean)localObject2).booleanValue()))
       {
         zzge().zzir().log("Collection disabled with firebase_analytics_collection_enabled=0");
@@ -323,29 +323,29 @@ public final class zzfb
   
   final String zzii()
   {
-    AppMethodBeat.i(68777);
+    AppMethodBeat.i(1300);
     Object localObject = new byte[16];
     zzgb().zzlc().nextBytes((byte[])localObject);
     localObject = String.format(Locale.US, "%032x", new Object[] { new BigInteger(1, (byte[])localObject) });
-    AppMethodBeat.o(68777);
+    AppMethodBeat.o(1300);
     return localObject;
   }
   
   final int zzij()
   {
-    AppMethodBeat.i(68781);
+    AppMethodBeat.i(1304);
     zzch();
     int i = this.zzaie;
-    AppMethodBeat.o(68781);
+    AppMethodBeat.o(1304);
     return i;
   }
   
   final int zzik()
   {
-    AppMethodBeat.i(68782);
+    AppMethodBeat.i(1305);
     zzch();
     int i = this.zzaen;
-    AppMethodBeat.o(68782);
+    AppMethodBeat.o(1305);
     return i;
   }
 }

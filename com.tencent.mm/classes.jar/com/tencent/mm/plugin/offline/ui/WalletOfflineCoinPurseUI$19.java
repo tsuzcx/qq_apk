@@ -1,27 +1,24 @@
 package com.tencent.mm.plugin.offline.ui;
 
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.d;
 
 final class WalletOfflineCoinPurseUI$19
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  WalletOfflineCoinPurseUI$19(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI, Integer paramInteger, Bitmap paramBitmap, ImageView paramImageView) {}
+  WalletOfflineCoinPurseUI$19(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(43525);
-    int i = this.pnO.intValue();
-    Bitmap localBitmap = d.a(this.val$bitmap, i, i, true, false);
-    this.kCm.setImageBitmap(localBitmap);
-    AppMethodBeat.o(43525);
+    AppMethodBeat.i(184854);
+    paramDialogInterface.dismiss();
+    AppMethodBeat.o(184854);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.WalletOfflineCoinPurseUI.19
  * JD-Core Version:    0.7.0.1
  */

@@ -13,16 +13,16 @@ public final class c
     super(paramMMActivity);
   }
   
-  public final void s(Drawable paramDrawable)
+  public final void z(Drawable paramDrawable)
   {
-    AppMethodBeat.i(42016);
-    super.s(paramDrawable);
-    AppMethodBeat.o(42016);
+    AppMethodBeat.i(64905);
+    super.z(paramDrawable);
+    AppMethodBeat.o(64905);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.ui.c
  * JD-Core Version:    0.7.0.1
  */

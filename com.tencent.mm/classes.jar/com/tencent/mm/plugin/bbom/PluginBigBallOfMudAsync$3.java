@@ -4,38 +4,41 @@ import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.d.c;
-import com.tencent.mm.pluginsdk.ui.d.l.3;
-import com.tencent.mm.pluginsdk.ui.d.l.4;
+import com.tencent.mm.pluginsdk.ui.span.d;
+import com.tencent.mm.pluginsdk.ui.span.m;
+import com.tencent.mm.pluginsdk.ui.span.m.3;
+import com.tencent.mm.pluginsdk.ui.span.m.4;
+import com.tencent.mm.ui.tools.l;
+import com.tencent.mm.ui.widget.a.e.b;
 import java.util.List;
 
 final class PluginBigBallOfMudAsync$3
-  implements c
+  implements d
 {
   PluginBigBallOfMudAsync$3(PluginBigBallOfMudAsync paramPluginBigBallOfMudAsync) {}
   
   public final void a(Context paramContext, String paramString, DialogInterface.OnDismissListener paramOnDismissListener, Bundle paramBundle)
   {
-    AppMethodBeat.i(18309);
-    com.tencent.mm.pluginsdk.ui.d.l.a(paramContext, paramString, paramOnDismissListener, paramBundle);
-    AppMethodBeat.o(18309);
+    AppMethodBeat.i(22421);
+    m.a(paramContext, paramString, paramOnDismissListener, paramBundle);
+    AppMethodBeat.o(22421);
   }
   
-  public final void a(Context paramContext, List<String> paramList, DialogInterface.OnDismissListener paramOnDismissListener)
+  public final void a(Context paramContext, List<String> paramList, e.b paramb)
   {
-    AppMethodBeat.i(18308);
+    AppMethodBeat.i(22420);
     if ((paramList.isEmpty()) || (paramContext == null))
     {
-      AppMethodBeat.o(18308);
+      AppMethodBeat.o(22420);
       return;
     }
-    new com.tencent.mm.ui.tools.l(paramContext).a(null, new l.3(paramList), new l.4(paramContext), paramOnDismissListener);
-    AppMethodBeat.o(18308);
+    new l(paramContext).a(null, new m.3(paramList), new m.4(paramContext), paramb);
+    AppMethodBeat.o(22420);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.PluginBigBallOfMudAsync.3
  * JD-Core Version:    0.7.0.1
  */

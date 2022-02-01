@@ -2,95 +2,95 @@ package com.tencent.mm.plugin.zero;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.platformtools.aa;
+import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.zero.a.f;
-import com.tencent.mm.protocal.protobuf.ud;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.xd;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class c
 {
-  public static volatile com.tencent.mm.cm.c<f> vJk;
-  private final f vJl;
+  public static volatile com.tencent.mm.co.c<f> BMJ;
+  public final f BMK;
   
   public c()
   {
-    AppMethodBeat.i(58772);
-    if (vJk != null)
+    AppMethodBeat.i(133022);
+    if (BMJ != null)
     {
-      this.vJl = ((f)vJk.get());
-      AppMethodBeat.o(58772);
+      this.BMK = ((f)BMJ.get());
+      AppMethodBeat.o(133022);
       return;
     }
-    this.vJl = null;
-    AppMethodBeat.o(58772);
+    this.BMK = null;
+    AppMethodBeat.o(133022);
   }
   
-  public final boolean a(ud paramud, boolean paramBoolean)
+  public final boolean a(xd paramxd, boolean paramBoolean)
   {
-    AppMethodBeat.i(58774);
-    if (!g.RG())
+    AppMethodBeat.i(133024);
+    if (!g.afw())
     {
-      ab.e("MicroMsg.SyncDoCmdDelegate", "account storage disabled, discard all commands");
-      AppMethodBeat.o(58774);
+      ad.e("MicroMsg.SyncDoCmdDelegate", "account storage disabled, discard all commands");
+      AppMethodBeat.o(133024);
       return false;
     }
-    long l = bo.aoy();
-    byte[] arrayOfByte = aa.a(paramud.wMD);
-    ab.i("MicroMsg.SyncDoCmdDelegate", "doCmd %d cmdid:%d buf:%d thr:[%d]", new Object[] { Long.valueOf(l), Integer.valueOf(paramud.wMC), Integer.valueOf(bo.cf(arrayOfByte)), Long.valueOf(Thread.currentThread().getId()) });
-    if (bo.ce(arrayOfByte))
+    long l = bt.eGO();
+    byte[] arrayOfByte = z.a(paramxd.CYZ);
+    ad.i("MicroMsg.SyncDoCmdDelegate", "doCmd %d cmdid:%d buf:%d thr:[%d]", new Object[] { Long.valueOf(l), Integer.valueOf(paramxd.CYY), Integer.valueOf(bt.cx(arrayOfByte)), Long.valueOf(Thread.currentThread().getId()) });
+    if (bt.cw(arrayOfByte))
     {
-      ab.e("MicroMsg.SyncDoCmdDelegate", "docmd: no protobuf found.");
-      AppMethodBeat.o(58774);
+      ad.e("MicroMsg.SyncDoCmdDelegate", "docmd: no protobuf found.");
+      AppMethodBeat.o(133024);
       return false;
     }
     try
     {
-      if (this.vJl != null) {
-        this.vJl.a(paramud, arrayOfByte, paramBoolean);
+      if (this.BMK != null) {
+        this.BMK.a(paramxd, arrayOfByte, paramBoolean);
       }
-      ab.i("MicroMsg.SyncDoCmdDelegate", "doCmd FIN %d cmdid:%d Time:%d", new Object[] { Long.valueOf(l), Integer.valueOf(paramud.wMC), Long.valueOf(bo.hl(l)) });
-      AppMethodBeat.o(58774);
+      ad.i("MicroMsg.SyncDoCmdDelegate", "doCmd FIN %d cmdid:%d Time:%d", new Object[] { Long.valueOf(l), Integer.valueOf(paramxd.CYY), Long.valueOf(bt.vM(l)) });
+      AppMethodBeat.o(133024);
       return true;
     }
-    catch (Exception paramud)
+    catch (Exception paramxd)
     {
-      ab.printErrStackTrace("MicroMsg.SyncDoCmdDelegate", paramud, "", new Object[0]);
-      AppMethodBeat.o(58774);
+      ad.printErrStackTrace("MicroMsg.SyncDoCmdDelegate", paramxd, "", new Object[0]);
+      AppMethodBeat.o(133024);
     }
     return false;
   }
   
-  public final void bT(Object paramObject)
+  public final void dn(Object paramObject)
   {
-    AppMethodBeat.i(58773);
-    if (this.vJl != null) {
-      this.vJl.bT(paramObject);
+    AppMethodBeat.i(133023);
+    if (this.BMK != null) {
+      this.BMK.dn(paramObject);
     }
-    AppMethodBeat.o(58773);
+    AppMethodBeat.o(133023);
   }
   
-  public final void bU(Object paramObject)
+  public final void jdMethod_do(Object paramObject)
   {
-    AppMethodBeat.i(58775);
-    if (this.vJl != null) {
-      this.vJl.bU(paramObject);
+    AppMethodBeat.i(133025);
+    if (this.BMK != null) {
+      this.BMK.jdMethod_do(paramObject);
     }
-    AppMethodBeat.o(58775);
+    AppMethodBeat.o(133025);
   }
   
-  public final void bV(Object paramObject)
+  public final void dp(Object paramObject)
   {
-    AppMethodBeat.i(58776);
-    if (this.vJl != null) {
-      this.vJl.bV(paramObject);
+    AppMethodBeat.i(133026);
+    if (this.BMK != null) {
+      this.BMK.dp(paramObject);
     }
-    AppMethodBeat.o(58776);
+    AppMethodBeat.o(133026);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.c
  * JD-Core Version:    0.7.0.1
  */

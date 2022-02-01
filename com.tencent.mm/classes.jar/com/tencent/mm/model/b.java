@@ -6,22 +6,22 @@ import com.tencent.mm.kernel.a;
 public final class b
   extends RuntimeException
 {
-  private final int cfE;
+  private final int cUB;
   
   public b()
   {
-    super(a.QG());
-    AppMethodBeat.i(58087);
-    this.cfE = 0;
-    AppMethodBeat.o(58087);
+    super(a.aet());
+    AppMethodBeat.i(132231);
+    this.cUB = 0;
+    AppMethodBeat.o(132231);
   }
   
   public b(byte paramByte)
   {
-    super(a.QG());
-    AppMethodBeat.i(58088);
-    this.cfE = 1;
-    AppMethodBeat.o(58088);
+    super(a.aet());
+    AppMethodBeat.i(132232);
+    this.cUB = 1;
+    AppMethodBeat.o(132232);
   }
 }
 

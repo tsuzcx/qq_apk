@@ -1,31 +1,45 @@
 package kotlinx.coroutines;
 
-import a.c.e;
-import a.c.f;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/GlobalScope;", "Lkotlinx/coroutines/CoroutineScope;", "()V", "coroutineContext", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "kotlinx-coroutines-core"})
-public final class aw
-  implements ac
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/Empty;", "Lkotlinx/coroutines/Incomplete;", "isActive", "", "(Z)V", "()Z", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"})
+final class aw
+  implements be
 {
-  public static final aw CIf;
+  final boolean isActive;
   
-  static
+  public aw(boolean paramBoolean)
   {
-    AppMethodBeat.i(118500);
-    CIf = new aw();
-    AppMethodBeat.o(118500);
+    this.isActive = paramBoolean;
   }
   
-  public final e epr()
+  public final bs fLh()
   {
-    return (e)f.BMO;
+    return null;
+  }
+  
+  public final boolean isActive()
+  {
+    return this.isActive;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(117965);
+    StringBuilder localStringBuilder = new StringBuilder("Empty{");
+    if (this.isActive) {}
+    for (String str = "Active";; str = "New")
+    {
+      str = str + '}';
+      AppMethodBeat.o(117965);
+      return str;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.aw
  * JD-Core Version:    0.7.0.1
  */

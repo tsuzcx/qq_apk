@@ -2,44 +2,44 @@ package com.tencent.tinker.c.a.a.a;
 
 import com.tencent.tinker.a.a.i.e;
 import com.tencent.tinker.a.a.o;
-import com.tencent.tinker.a.a.t.a;
-import com.tencent.tinker.a.a.t.a.a;
+import com.tencent.tinker.a.a.s.a;
+import com.tencent.tinker.a.a.s.a.a;
 import com.tencent.tinker.c.a.c.c;
 import java.util.Arrays;
 
 public abstract class i<T extends Comparable<T>>
 {
-  protected final com.tencent.tinker.a.a.i Bqv;
-  protected final com.tencent.tinker.c.a.b.a Bqx;
-  private final c Bqy;
+  protected final com.tencent.tinker.a.a.i ICq;
+  protected final com.tencent.tinker.c.a.b.a ICs;
+  private final c ICt;
   
   public i(com.tencent.tinker.c.a.b.a parama, com.tencent.tinker.a.a.i parami, c paramc)
   {
-    this.Bqx = parama;
-    this.Bqv = parami;
-    this.Bqy = paramc;
+    this.ICs = parama;
+    this.ICq = parami;
+    this.ICt = paramc;
   }
   
-  private int[] SO(int paramInt)
+  private static int a(int paramInt, T paramT)
+  {
+    if ((paramT instanceof s.a.a)) {
+      paramInt = ((s.a.a)paramT).off;
+    }
+    return paramInt;
+  }
+  
+  private int[] acA(int paramInt)
   {
     int[] arrayOfInt = new int[paramInt];
     int i = 0;
     int j = 0;
     while (i < paramInt)
     {
-      j = o.a(this.Bqx.Bru) + j;
+      j = o.a(this.ICs.IDp) + j;
       arrayOfInt[i] = j;
       i += 1;
     }
     return arrayOfInt;
-  }
-  
-  private static int a(int paramInt, T paramT)
-  {
-    if ((paramT instanceof t.a.a)) {
-      paramInt = ((t.a.a)paramT).off;
-    }
-    return paramInt;
   }
   
   protected abstract T a(com.tencent.tinker.a.a.a.a parama);
@@ -53,20 +53,22 @@ public abstract class i<T extends Comparable<T>>
   
   protected void a(c paramc, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  protected abstract t.a c(com.tencent.tinker.a.a.i parami);
+  protected abstract s.a c(com.tencent.tinker.a.a.i parami);
+  
+  protected abstract int e(T paramT);
   
   public final void execute()
   {
-    int[] arrayOfInt1 = SO(o.b(this.Bqx.Bru));
-    int[] arrayOfInt2 = SO(o.b(this.Bqx.Bru));
-    int[] arrayOfInt3 = SO(o.b(this.Bqx.Bru));
-    Object localObject = c(this.Bqv);
+    int[] arrayOfInt1 = acA(o.b(this.ICs.IDp));
+    int[] arrayOfInt2 = acA(o.b(this.ICs.IDp));
+    int[] arrayOfInt3 = acA(o.b(this.ICs.IDp));
+    Object localObject = c(this.ICq);
     i.e locale;
     int k;
-    if (((t.a)localObject).exists())
+    if (((s.a)localObject).exists())
     {
-      locale = this.Bqv.a((t.a)localObject);
-      k = ((t.a)localObject).size;
+      locale = this.ICq.a((s.a)localObject);
+      k = ((s.a)localObject).size;
     }
     for (;;)
     {
@@ -81,34 +83,34 @@ public abstract class i<T extends Comparable<T>>
       while ((j < k) || (i < k + i3 - i2)) {
         if ((n < i3) && (arrayOfInt2[n] == i))
         {
-          h(a(this.Bqx.Bru));
+          e(a(this.ICs.IDp));
           i += 1;
           n += 1;
         }
         else if ((i1 < i4) && (arrayOfInt3[i1] == i))
         {
-          h(a(this.Bqx.Bru));
+          e(a(this.ICs.IDp));
           i += 1;
           i1 += 1;
         }
         else if (Arrays.binarySearch(arrayOfInt1, j) >= 0)
         {
           localObject = a(locale);
-          a(this.Bqy, j, a(j, (Comparable)localObject));
+          a(this.ICt, j, a(j, (Comparable)localObject));
           j += 1;
           m += 1;
         }
         else if (Arrays.binarySearch(arrayOfInt3, j) >= 0)
         {
           localObject = a(locale);
-          a(this.Bqy, j, a(j, (Comparable)localObject));
+          a(this.ICt, j, a(j, (Comparable)localObject));
           j += 1;
         }
         else if (j < k)
         {
-          localObject = a(this.Bqy, a(locale));
-          int i5 = h((Comparable)localObject);
-          a(this.Bqy, j, a(j, (Comparable)localObject), i, i5);
+          localObject = a(this.ICt, a(locale));
+          int i5 = e((Comparable)localObject);
+          a(this.ICt, j, a(j, (Comparable)localObject), i, i5);
           j += 1;
           i += 1;
         }
@@ -121,12 +123,10 @@ public abstract class i<T extends Comparable<T>>
       locale = null;
     }
   }
-  
-  protected abstract int h(T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.c.a.a.a.i
  * JD-Core Version:    0.7.0.1
  */

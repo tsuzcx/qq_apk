@@ -1,30 +1,45 @@
 package android.support.v4.a.a;
 
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
 
-class d
-  extends c
+public abstract class d
+  extends Drawable.ConstantState
 {
-  public final void a(Drawable paramDrawable, ColorStateList paramColorStateList)
-  {
-    paramDrawable.setTintList(paramColorStateList);
-  }
+  int jdField_if;
+  Drawable.ConstantState ig;
+  ColorStateList ih = null;
+  PorterDuff.Mode ii = c.hX;
   
-  public final void a(Drawable paramDrawable, PorterDuff.Mode paramMode)
+  d(d paramd)
   {
-    paramDrawable.setTintMode(paramMode);
-  }
-  
-  public Drawable b(Drawable paramDrawable)
-  {
-    Object localObject = paramDrawable;
-    if (!(paramDrawable instanceof n)) {
-      localObject = new l(paramDrawable);
+    if (paramd != null)
+    {
+      this.jdField_if = paramd.jdField_if;
+      this.ig = paramd.ig;
+      this.ih = paramd.ih;
+      this.ii = paramd.ii;
     }
-    return localObject;
   }
+  
+  public int getChangingConfigurations()
+  {
+    int j = this.jdField_if;
+    if (this.ig != null) {}
+    for (int i = this.ig.getChangingConfigurations();; i = 0) {
+      return i | j;
+    }
+  }
+  
+  public Drawable newDrawable()
+  {
+    return newDrawable(null);
+  }
+  
+  public abstract Drawable newDrawable(Resources paramResources);
 }
 
 

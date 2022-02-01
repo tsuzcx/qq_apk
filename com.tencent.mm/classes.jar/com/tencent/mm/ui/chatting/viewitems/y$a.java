@@ -1,62 +1,41 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Map;
+import com.tencent.mm.ui.widget.MMNeat7extView;
 
 final class y$a
-  implements Comparable<a>
+  extends c.a
 {
-  public boolean cIi;
-  public int color;
-  public int hPx;
-  public int offset;
-  public boolean zVG;
-  public String zVH;
+  protected ImageView GHZ;
+  protected TextView GIU;
+  protected MMNeat7extView GLB;
+  protected TextView qkL;
+  protected ProgressBar uPp;
   
-  public static a x(Map<String, String> paramMap, String paramString)
+  public final a gb(View paramView)
   {
-    AppMethodBeat.i(33178);
-    a locala = new a();
-    for (;;)
-    {
-      try
-      {
-        locala.offset = bo.getInt((String)paramMap.get(paramString + ".offset"), 0);
-        str = (String)paramMap.get(paramString + ".font");
-        if (bo.isNullOrNil(str))
-        {
-          ab.d("MicroMsg.LineNode", "parseFrom, font is null, use default value");
-          str = "m";
-          locala.cIi = y.dA(str);
-          locala.zVG = y.yq(str);
-          locala.hPx = y.aus(str);
-          locala.color = y.aut((String)paramMap.get(paramString + ".color"));
-          locala.zVH = ((String)paramMap.get(paramString + ".chars"));
-          if (!bo.isNullOrNil(locala.zVH)) {
-            break;
-          }
-          ab.e("MicroMsg.LineNode", "parseFrom fail, chars is null");
-          AppMethodBeat.o(33178);
-          return null;
-        }
-      }
-      catch (Exception paramMap)
-      {
-        ab.e("MicroMsg.LineNode", "parseFrom fail, ex = " + paramMap.getMessage());
-        AppMethodBeat.o(33178);
-        return null;
-      }
-      String str = str.toLowerCase();
-    }
-    AppMethodBeat.o(33178);
-    return locala;
+    AppMethodBeat.i(37056);
+    super.fK(paramView);
+    this.GLB = ((MMNeat7extView)paramView.findViewById(2131298073));
+    this.uPp = ((ProgressBar)paramView.findViewById(2131306220));
+    this.GHZ = ((ImageView)paramView.findViewById(2131298174));
+    this.qkL = ((TextView)paramView.findViewById(2131298044));
+    this.GIU = ((TextView)paramView.findViewById(2131298023));
+    this.wet = ((TextView)paramView.findViewById(2131298185));
+    this.hIS = ((CheckBox)paramView.findViewById(2131298068));
+    this.lRB = paramView.findViewById(2131298147);
+    AppMethodBeat.o(37056);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.y.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,28 +2,23 @@ package com.tencent.mm.audio.mix.h;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
   private static final String SYS_INFO;
-  private static b.a cia;
-  private static b.a cib;
+  private static b.a cXa;
+  private static b.a cXb;
   private static int level;
   
   static
   {
-    AppMethodBeat.i(137218);
+    AppMethodBeat.i(136967);
     level = 6;
-    Object localObject = new b.a()
-    {
-      private Handler handler;
-    };
-    cia = (b.a)localObject;
-    cib = (b.a)localObject;
+    Object localObject = new b.1();
+    cXa = (b.a)localObject;
+    cXb = (b.a)localObject;
     localObject = new StringBuilder();
     try
     {
@@ -42,63 +37,63 @@ public final class b
       ((StringBuilder)localObject).append("] TYPE:[" + Build.TYPE);
       ((StringBuilder)localObject).append("] USER:[" + Build.USER + "]");
       SYS_INFO = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(137218);
+      AppMethodBeat.o(136967);
       return;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        ab.printErrStackTrace("mix.Log", localThrowable, "", new Object[0]);
+        ad.printErrStackTrace("mix.Log", localThrowable, "", new Object[0]);
       }
     }
   }
   
   public static void d(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(137214);
-    ab.d(paramString1, paramString2, null);
-    AppMethodBeat.o(137214);
+    AppMethodBeat.i(136963);
+    ad.d(paramString1, paramString2, null);
+    AppMethodBeat.o(136963);
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(137212);
-    ab.e(paramString1, paramString2, null);
-    AppMethodBeat.o(137212);
+    AppMethodBeat.i(136961);
+    ad.e(paramString1, paramString2, null);
+    AppMethodBeat.o(136961);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(137215);
-    ab.e(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(137215);
+    AppMethodBeat.i(136964);
+    ad.e(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(136964);
   }
   
   public static void i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(137213);
-    ab.i(paramString1, paramString2, null);
-    AppMethodBeat.o(137213);
+    AppMethodBeat.i(136962);
+    ad.i(paramString1, paramString2, null);
+    AppMethodBeat.o(136962);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(137216);
-    ab.i(paramString1, paramString2, paramVarArgs);
-    AppMethodBeat.o(137216);
+    AppMethodBeat.i(136965);
+    ad.i(paramString1, paramString2, paramVarArgs);
+    AppMethodBeat.o(136965);
   }
   
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(137217);
-    ab.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
-    AppMethodBeat.o(137217);
+    AppMethodBeat.i(136966);
+    ad.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    AppMethodBeat.o(136966);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.h.b
  * JD-Core Version:    0.7.0.1
  */

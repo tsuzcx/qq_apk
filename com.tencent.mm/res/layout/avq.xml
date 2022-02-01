@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/eld" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@drawable/oc" android:layout_width="fill_parent" android:layout_height="@dimen/i9"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="17.0dip" android:textColor="@color/a6q" android:layout_gravity="center_horizontal" android:id="@id/ele" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip" android:layout_centerHorizontal="true" />
-    <View android:id="@id/elf" android:background="@drawable/gi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/g4l" android:paddingLeft="@dimen/ha" android:layout_width="wrap_content" android:layout_height="@dimen/i9" android:maxWidth="200.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/fpl" android:paddingLeft="@dimen/ha" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_toRightOf="@id/g4l" android:layout_centerVertical="true" />
+    <Button android:id="@id/b95" android:visibility="visible" android:layout_marginRight="@dimen/ha" android:minWidth="60.0dip" android:text="@string/rk" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/oa" />
 </RelativeLayout>

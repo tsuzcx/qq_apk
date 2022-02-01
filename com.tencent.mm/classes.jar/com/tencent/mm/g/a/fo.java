@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.database.MatrixCursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class fo
   extends b
 {
-  public fo.a ctE;
-  public b ctF;
+  public a dii;
+  public b dij;
   
   public fo()
   {
@@ -16,23 +17,28 @@ public final class fo
   
   private fo(byte paramByte)
   {
-    AppMethodBeat.i(70185);
-    this.ctE = new fo.a();
-    this.ctF = new b();
-    this.ymq = false;
+    AppMethodBeat.i(19806);
+    this.dii = new a();
+    this.dij = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70185);
+    AppMethodBeat.o(19806);
+  }
+  
+  public static final class a
+  {
+    public String[] dik;
   }
   
   public static final class b
   {
-    public boolean cpz = false;
-    public int ctG;
+    public int dhQ = 0;
+    public MatrixCursor dil;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.fo
  * JD-Core Version:    0.7.0.1
  */

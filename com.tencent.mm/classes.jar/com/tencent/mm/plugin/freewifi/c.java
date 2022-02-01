@@ -5,57 +5,65 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.net.wifi.WifiManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public final class c
 {
+  public Lock aGr;
   public Activity activity;
-  public Condition bVg;
+  public WifiManager bVj;
   public BroadcastReceiver broadcastReceiver;
-  public WifiManager bsO;
+  public Condition cHn;
   public boolean connected;
-  public long ftP;
-  public String gFE;
-  public Lock mHZ;
-  public boolean mIg;
+  public long csI;
+  public String dom;
+  public boolean rfo;
   public String ssid;
   
   public c(String paramString1, Activity paramActivity, String paramString2)
   {
-    AppMethodBeat.i(20568);
+    AppMethodBeat.i(24645);
     this.connected = false;
-    this.mIg = false;
+    this.rfo = false;
     this.activity = paramActivity;
-    this.ftP = 30000L;
+    this.csI = 30000L;
     this.ssid = paramString1;
-    this.gFE = paramString2;
-    this.mHZ = new ReentrantLock();
-    this.bVg = this.mHZ.newCondition();
-    this.bsO = ((WifiManager)ah.getContext().getSystemService("wifi"));
-    AppMethodBeat.o(20568);
+    this.dom = paramString2;
+    this.aGr = new ReentrantLock();
+    this.cHn = this.aGr.newCondition();
+    this.bVj = ((WifiManager)aj.getContext().getSystemService("wifi"));
+    AppMethodBeat.o(24645);
   }
   
-  public final void bzQ()
+  public final void cvf()
   {
-    AppMethodBeat.i(20569);
+    AppMethodBeat.i(24646);
     try
     {
       this.activity.unregisterReceiver(this.broadcastReceiver);
-      AppMethodBeat.o(20569);
+      AppMethodBeat.o(24646);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      AppMethodBeat.o(20569);
+      AppMethodBeat.o(24646);
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onFail(int paramInt);
+    
+    public abstract void onSuccess();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.c
  * JD-Core Version:    0.7.0.1
  */

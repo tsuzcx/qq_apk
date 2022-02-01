@@ -1,38 +1,33 @@
 package android.support.v4.view.a;
 
+import android.os.Bundle;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.view.accessibility.AccessibilityNodeProvider;
+import java.util.List;
 
 class g
-  extends o
+  extends AccessibilityNodeProvider
 {
-  public final void a(AccessibilityNodeInfo paramAccessibilityNodeInfo, int paramInt)
+  final f oV;
+  
+  g(f paramf)
   {
-    paramAccessibilityNodeInfo.setMovementGranularities(paramInt);
+    this.oV = paramf;
   }
   
-  public final void a(AccessibilityNodeInfo paramAccessibilityNodeInfo, boolean paramBoolean)
+  public AccessibilityNodeInfo createAccessibilityNodeInfo(int paramInt)
   {
-    paramAccessibilityNodeInfo.setVisibleToUser(paramBoolean);
+    return null;
   }
   
-  public final void b(AccessibilityNodeInfo paramAccessibilityNodeInfo, boolean paramBoolean)
+  public List<AccessibilityNodeInfo> findAccessibilityNodeInfosByText(String paramString, int paramInt)
   {
-    paramAccessibilityNodeInfo.setAccessibilityFocused(paramBoolean);
+    return null;
   }
   
-  public final boolean b(AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    return paramAccessibilityNodeInfo.isVisibleToUser();
-  }
-  
-  public final boolean c(AccessibilityNodeInfo paramAccessibilityNodeInfo)
-  {
-    return paramAccessibilityNodeInfo.isAccessibilityFocused();
-  }
-  
-  public final int d(AccessibilityNodeInfo paramAccessibilityNodeInfo)
-  {
-    return paramAccessibilityNodeInfo.getMovementGranularities();
+    return false;
   }
 }
 

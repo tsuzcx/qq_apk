@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <CheckBoxPreference android:summary="@string/fz" android:title="@string/fy" android:key="allow_by_identity" android:layout="@layout/afi" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_like_feed_not_recommend" android:title="@string/hj2" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/dyv" android:key="room_transfer_room_ower" android:layout="@layout/afi" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.chatroom.ui.preference.RoomManagerPreference android:title="@string/dwx" android:key="room_manager" android:layout="@layout/aql" />
+    <SummaryBelowPreference android:key="settings_blacklist" android:layout="@layout/aop" android:title="@string/hhf" />
+    <Preference android:layout="@layout/aqa" android:title="@string/c90" />
 </PreferenceScreen>

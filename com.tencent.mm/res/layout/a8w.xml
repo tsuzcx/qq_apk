@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/c8q" android:layout_width="fill_parent" android:layout_height="75.0dip" android:layout_marginLeft="@dimen/jn" android:layout_marginTop="@dimen/jn" android:layout_marginRight="@dimen/jn"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MultiTouchImageView android:layout_gravity="center" android:id="@id/bl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/cm1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bll" android:scaleType="centerCrop" android:layout_centerInParent="true" />
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/a6q" android:id="@id/cm2" android:background="@drawable/a6_" android:padding="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/a6s" android:id="@id/cm3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a6p" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c8p" android:background="@drawable/bdk" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="fill_parent" android:layout_height="75.0dip">
+        <ImageView android:id="@id/c8o" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginTop="@dimen/ha" android:layout_marginRight="@dimen/jn" android:layout_marginBottom="@dimen/ha" android:src="@raw/actionbar_particular_icon" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/ab" android:id="@id/c8s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="@dimen/gx" android:textColor="@color/a_" android:ellipsize="end" android:id="@id/c8r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/aca" android:background="@drawable/pc" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/hu" android:layout_marginRight="@dimen/hu" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/c8p" android:layerType="software" />
 </RelativeLayout>

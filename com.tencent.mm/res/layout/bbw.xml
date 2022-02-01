@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.widget.RecyclerView android:id="@id/fpa" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center" android:id="@id/fpc" android:background="@drawable/ad6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:layout_marginEnd="20.0dip" android:layout_toEndOf="@id/fpa">
+        <TextView android:textSize="16.0dip" android:textColor="@color/a5o" android:gravity="center" android:id="@id/fpb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:text="@string/fvl" android:layout_marginStart="12.0dip" android:layout_marginEnd="12.0dip" />
+    </LinearLayout>
+</merge>

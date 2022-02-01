@@ -1,99 +1,132 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
-import java.util.LinkedList;
 
 public final class ii
-  extends bvk
+  extends com.tencent.mm.bx.a
 {
-  public String koi;
+  public String CDR;
+  public String CDS;
+  public String CDT;
+  public String CDU;
+  public String CDV;
+  public String ntj;
+  public String odo;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89016);
+    AppMethodBeat.i(124392);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(89016);
-        throw paramVarArgs;
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.CDR != null) {
+        paramVarArgs.d(1, this.CDR);
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.iQ(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      if (this.CDS != null) {
+        paramVarArgs.d(2, this.CDS);
       }
-      if (this.koi != null) {
-        paramVarArgs.e(2, this.koi);
+      if (this.CDT != null) {
+        paramVarArgs.d(3, this.CDT);
       }
-      AppMethodBeat.o(89016);
+      if (this.odo != null) {
+        paramVarArgs.d(4, this.odo);
+      }
+      if (this.ntj != null) {
+        paramVarArgs.d(5, this.ntj);
+      }
+      if (this.CDU != null) {
+        paramVarArgs.d(6, this.CDU);
+      }
+      if (this.CDV != null) {
+        paramVarArgs.d(7, this.CDV);
+      }
+      AppMethodBeat.o(124392);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label418;
+      if (this.CDR == null) {
+        break label578;
       }
     }
-    label418:
-    for (paramInt = e.a.a.a.iP(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label578:
+    for (int i = f.a.a.b.b.a.e(1, this.CDR) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.koi != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.koi);
+      paramInt = i;
+      if (this.CDS != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.CDS);
       }
-      AppMethodBeat.o(89016);
+      i = paramInt;
+      if (this.CDT != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.CDT);
+      }
+      paramInt = i;
+      if (this.odo != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.odo);
+      }
+      i = paramInt;
+      if (this.ntj != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.ntj);
+      }
+      paramInt = i;
+      if (this.CDU != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.CDU);
+      }
+      i = paramInt;
+      if (this.CDV != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.CDV);
+      }
+      AppMethodBeat.o(124392);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = bvk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = bvk.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(89016);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(89016);
+        AppMethodBeat.o(124392);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         ii localii = (ii)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(89016);
+          AppMethodBeat.o(124392);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, bvk.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localii.BaseResponse = ((BaseResponse)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(89016);
+          localii.CDR = locala.KhF.readString();
+          AppMethodBeat.o(124392);
+          return 0;
+        case 2: 
+          localii.CDS = locala.KhF.readString();
+          AppMethodBeat.o(124392);
+          return 0;
+        case 3: 
+          localii.CDT = locala.KhF.readString();
+          AppMethodBeat.o(124392);
+          return 0;
+        case 4: 
+          localii.odo = locala.KhF.readString();
+          AppMethodBeat.o(124392);
+          return 0;
+        case 5: 
+          localii.ntj = locala.KhF.readString();
+          AppMethodBeat.o(124392);
+          return 0;
+        case 6: 
+          localii.CDU = locala.KhF.readString();
+          AppMethodBeat.o(124392);
           return 0;
         }
-        localii.koi = ((e.a.a.a.a)localObject1).CLY.readString();
-        AppMethodBeat.o(89016);
+        localii.CDV = locala.KhF.readString();
+        AppMethodBeat.o(124392);
         return 0;
       }
-      AppMethodBeat.o(89016);
+      AppMethodBeat.o(124392);
       return -1;
     }
   }

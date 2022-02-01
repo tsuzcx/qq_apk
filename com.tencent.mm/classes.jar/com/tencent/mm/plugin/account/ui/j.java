@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.account.ui;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
@@ -7,136 +9,144 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.a.a;
-import com.tencent.mm.plugin.account.friend.a.x;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.plugin.account.friend.a.z;
+import com.tencent.mm.pluginsdk.k;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ba;
 import com.tencent.mm.ui.base.MMFormInputView;
 import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.p;
 
 public final class j
-  implements f, MobileInputUI.b
+  implements com.tencent.mm.al.g, MobileInputUI.b
 {
-  protected String eiu = null;
-  private MobileInputUI gFq;
-  protected String guB = "";
-  protected int guC = 2;
+  protected String fsw = null;
+  protected String ihB = "";
+  protected int ihC = 2;
+  private MobileInputUI isU;
   
   public final void a(MobileInputUI.a parama)
   {
-    AppMethodBeat.i(125112);
-    switch (j.2.gFv[parama.ordinal()])
+    AppMethodBeat.i(128290);
+    switch (2.isZ[parama.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(125112);
+      AppMethodBeat.o(128290);
       return;
-      this.gFq.gFW = av.apA(this.gFq.countryCode);
-      this.gFq.gFX = this.gFq.gFJ.getText().toString();
-      parama = this.gFq.gFW + this.gFq.gFX;
-      if (this.gFq.gwe != null)
+      this.isU.itx = ba.aFN(this.isU.countryCode);
+      this.isU.ity = this.isU.itk.getText().toString();
+      parama = this.isU.itx + this.isU.ity;
+      if (this.isU.ijb != null)
       {
-        ab.d("MicroMsg.MobileInputRegLogic", "already checking ");
-        AppMethodBeat.o(125112);
+        ad.d("MicroMsg.MobileInputRegLogic", "already checking ");
+        AppMethodBeat.o(128290);
         return;
       }
-      MobileInputUI localMobileInputUI1 = this.gFq;
-      MobileInputUI localMobileInputUI2 = this.gFq;
-      this.gFq.getString(2131297087);
-      localMobileInputUI1.gwe = h.b(localMobileInputUI2, this.gFq.getString(2131302413), true, new j.1(this));
-      parama = new x(parama, 1, "", 0, "");
-      g.Rc().a(parama, 0);
+      MobileInputUI localMobileInputUI1 = this.isU;
+      MobileInputUI localMobileInputUI2 = this.isU;
+      this.isU.getString(2131755906);
+      localMobileInputUI1.ijb = h.b(localMobileInputUI2, this.isU.getString(2131762310), true, new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
+      });
+      parama = new z(parama, 1, "", 0, "");
+      com.tencent.mm.kernel.g.aeS().a(parama, 0);
     }
   }
   
   public final void a(MobileInputUI paramMobileInputUI)
   {
-    AppMethodBeat.i(125109);
-    this.gFq = paramMobileInputUI;
-    paramMobileInputUI.gFK.requestFocus();
+    AppMethodBeat.i(128287);
+    this.isU = paramMobileInputUI;
+    paramMobileInputUI.itl.requestFocus();
     paramMobileInputUI.showVKB();
-    this.eiu = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_ticket");
-    this.guB = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_NextStep");
-    this.guC = paramMobileInputUI.getIntent().getIntExtra("regsetinfo_NextStyle", 2);
-    String str2 = paramMobileInputUI.getString(2131302468);
+    this.fsw = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_ticket");
+    this.ihB = paramMobileInputUI.getIntent().getStringExtra("regsetinfo_NextStep");
+    this.ihC = paramMobileInputUI.getIntent().getIntExtra("regsetinfo_NextStyle", 2);
+    String str2 = paramMobileInputUI.getString(2131762371);
     String str1 = str2;
-    if (d.whK) {
-      str1 = str2 + paramMobileInputUI.getString(2131296529);
+    if (d.CpN) {
+      str1 = str2 + paramMobileInputUI.getString(2131755263);
     }
     paramMobileInputUI.setMMTitle(str1);
-    paramMobileInputUI.gtI.setVisibility(0);
-    paramMobileInputUI.gFJ.setVisibility(0);
-    paramMobileInputUI.gFK.requestFocus();
-    paramMobileInputUI.gFM.setVisibility(0);
-    paramMobileInputUI.gFP.setVisibility(0);
-    paramMobileInputUI.gFP.setText(2131301166);
-    AppMethodBeat.o(125109);
+    paramMobileInputUI.igJ.setVisibility(0);
+    paramMobileInputUI.itk.setVisibility(0);
+    paramMobileInputUI.itl.requestFocus();
+    paramMobileInputUI.itn.setVisibility(0);
+    paramMobileInputUI.itq.setVisibility(0);
+    paramMobileInputUI.itq.setText(2131760798);
+    AppMethodBeat.o(128287);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(125113);
-    ab.i("MicroMsg.MobileInputRegLogic", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.gFq.gwe != null)
+    AppMethodBeat.i(128291);
+    ad.i("MicroMsg.MobileInputRegLogic", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.isU.ijb != null)
     {
-      this.gFq.gwe.dismiss();
-      this.gFq.gwe = null;
+      this.isU.ijb.dismiss();
+      this.isU.ijb = null;
     }
-    if (paramm.getType() == 132)
+    if (paramn.getType() == 132)
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (((x)paramm).Ac() == 1)
+        if (((z)paramn).JJ() == 1)
         {
-          paramString = new Intent();
-          paramString.putExtra("bindmcontact_mobile", this.gFq.gFW + " " + this.gFq.gFJ.getText().toString());
-          paramString.putExtra("bindmcontact_shortmobile", this.gFq.gFJ.getText().toString());
-          paramString.putExtra("country_name", this.gFq.fHT);
-          paramString.putExtra("couttry_code", this.gFq.countryCode);
-          paramString.putExtra("mobile_verify_purpose", 4);
-          paramString.putExtra("regsetinfo_ticket", this.eiu);
-          paramString.putExtra("regsetinfo_NextStep", this.guB);
-          paramString.putExtra("regsetinfo_NextStyle", this.guC);
-          paramString.setClass(this.gFq, MobileVerifyUI.class);
-          this.gFq.startActivity(paramString);
-          this.gFq.finish();
+          paramn = new Intent();
+          paramn.putExtra("bindmcontact_mobile", this.isU.itx + " " + this.isU.itk.getText().toString());
+          paramn.putExtra("bindmcontact_shortmobile", this.isU.itk.getText().toString());
+          paramn.putExtra("country_name", this.isU.hkO);
+          paramn.putExtra("couttry_code", this.isU.countryCode);
+          paramn.putExtra("mobile_verify_purpose", 4);
+          paramn.putExtra("regsetinfo_ticket", this.fsw);
+          paramn.putExtra("regsetinfo_NextStep", this.ihB);
+          paramn.putExtra("regsetinfo_NextStyle", this.ihC);
+          paramn.setClass(this.isU, MobileVerifyUI.class);
+          paramString = this.isU;
+          paramn = new com.tencent.mm.hellhoundlib.b.a().bd(paramn);
+          com.tencent.mm.hellhoundlib.a.a.a(paramString, paramn.adn(), "com/tencent/mm/plugin/account/ui/MobileInputQQRegLogic", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramString.startActivity((Intent)paramn.lS(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/account/ui/MobileInputQQRegLogic", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          this.isU.finish();
         }
-        AppMethodBeat.o(125113);
+        AppMethodBeat.o(128291);
         return;
       }
-      if (a.gmP.a(this.gFq, paramInt1, paramInt2, paramString))
+      if (com.tencent.mm.plugin.account.a.a.hYu.a(this.isU, paramInt1, paramInt2, paramString))
       {
-        AppMethodBeat.o(125113);
+        AppMethodBeat.o(128291);
         return;
       }
-      Toast.makeText(this.gFq, this.gFq.getString(2131297614, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
-      AppMethodBeat.o(125113);
+      Toast.makeText(this.isU, this.isU.getString(2131756507, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      AppMethodBeat.o(128291);
       return;
     }
-    AppMethodBeat.o(125113);
+    AppMethodBeat.o(128291);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(125110);
-    g.Rc().a(132, this);
-    AppMethodBeat.o(125110);
+    AppMethodBeat.i(128288);
+    com.tencent.mm.kernel.g.aeS().a(132, this);
+    AppMethodBeat.o(128288);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(125111);
-    g.Rc().b(132, this);
-    AppMethodBeat.o(125111);
+    AppMethodBeat.i(128289);
+    com.tencent.mm.kernel.g.aeS().b(132, this);
+    AppMethodBeat.o(128289);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.j
  * JD-Core Version:    0.7.0.1
  */

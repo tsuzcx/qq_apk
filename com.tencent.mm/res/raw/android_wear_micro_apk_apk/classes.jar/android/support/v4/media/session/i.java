@@ -6,16 +6,17 @@ import android.os.Message;
 final class i
   extends Handler
 {
-  boolean hY;
+  boolean jX;
   
   public final void handleMessage(Message paramMessage)
   {
-    if (!this.hY) {
+    if (!this.jX) {
       return;
     }
     switch (paramMessage.what)
     {
     case 8: 
+    case 10: 
     default: 
       return;
     case 1: 
@@ -39,9 +40,6 @@ final class i
       return;
     case 9: 
       ((Integer)paramMessage.obj).intValue();
-      return;
-    case 10: 
-      ((Boolean)paramMessage.obj).booleanValue();
       return;
     case 12: 
       ((Integer)paramMessage.obj).intValue();

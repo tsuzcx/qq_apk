@@ -7,7 +7,7 @@ import android.os.Bundle;
 final class i
   extends h
 {
-  public i(Context paramContext, ComponentName paramComponentName, b paramb, Bundle paramBundle)
+  i(Context paramContext, ComponentName paramComponentName, b paramb, Bundle paramBundle)
   {
     super(paramContext, paramComponentName, paramb, null);
   }

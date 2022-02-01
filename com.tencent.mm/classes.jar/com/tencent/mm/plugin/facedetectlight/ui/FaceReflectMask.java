@@ -17,33 +17,33 @@ public class FaceReflectMask
   extends YTReflectLayout
 {
   private ColorMatrixColorFilter mColorMatrixColorFilter;
-  private Paint mqQ;
-  private Paint mqR;
-  private PorterDuffXfermode mqS;
-  public boolean mqT;
-  public boolean msf;
+  private Paint pXu;
+  private Paint pXv;
+  private PorterDuffXfermode pXw;
+  public boolean pXx;
+  public boolean pYL;
   private Rect rect;
   
   public FaceReflectMask(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(803);
+    AppMethodBeat.i(104323);
     this.rect = new Rect();
-    this.mqT = false;
-    this.mqQ = new Paint(1);
-    this.mqQ.setStyle(Paint.Style.FILL);
-    this.mqR = new Paint(1);
+    this.pXx = false;
+    this.pXu = new Paint(1);
+    this.pXu.setStyle(Paint.Style.FILL);
+    this.pXv = new Paint(1);
     this.mColorMatrixColorFilter = ReflectController.DEFAULT_MATRIX_COLOR_FILTER;
     setWillNotDraw(false);
-    this.mqS = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-    this.msf = true;
+    this.pXw = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    this.pYL = true;
     setLayerType(1, null);
-    AppMethodBeat.o(803);
+    AppMethodBeat.o(104323);
   }
   
   public void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(805);
+    AppMethodBeat.i(104325);
     paramCanvas.save();
     float f1 = (float)(getWidth() * 0.35D);
     float f2 = (float)(getWidth() * 0.5D);
@@ -52,40 +52,40 @@ public class FaceReflectMask
     this.rect.right = getWidth();
     this.rect.top = 0;
     this.rect.bottom = getHeight();
-    if (this.msf)
+    if (this.pYL)
     {
-      this.mqQ.setColor(-16777216);
-      this.msf = false;
+      this.pXu.setColor(-16777216);
+      this.pYL = false;
     }
     for (;;)
     {
       paramCanvas.drawARGB(255, 0, 0, 0);
-      paramCanvas.drawRect(this.rect, this.mqQ);
-      if (!this.mqT)
+      paramCanvas.drawRect(this.rect, this.pXu);
+      if (!this.pXx)
       {
-        this.mqR.setStyle(Paint.Style.FILL_AND_STROKE);
-        this.mqR.setXfermode(this.mqS);
-        paramCanvas.drawCircle(f2, f3, f1, this.mqR);
+        this.pXv.setStyle(Paint.Style.FILL_AND_STROKE);
+        this.pXv.setXfermode(this.pXw);
+        paramCanvas.drawCircle(f2, f3, f1, this.pXv);
       }
       paramCanvas.restore();
-      AppMethodBeat.o(805);
+      AppMethodBeat.o(104325);
       return;
-      this.mqQ.setColor(-16777216);
-      this.mqQ.setColorFilter(this.mColorMatrixColorFilter);
+      this.pXu.setColor(-16777216);
+      this.pXu.setColorFilter(this.mColorMatrixColorFilter);
     }
   }
   
   public void setColorMatrixColorFilter(ColorMatrixColorFilter paramColorMatrixColorFilter)
   {
-    AppMethodBeat.i(804);
+    AppMethodBeat.i(104324);
     this.mColorMatrixColorFilter = paramColorMatrixColorFilter;
     invalidate();
-    AppMethodBeat.o(804);
+    AppMethodBeat.o(104324);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectlight.ui.FaceReflectMask
  * JD-Core Version:    0.7.0.1
  */

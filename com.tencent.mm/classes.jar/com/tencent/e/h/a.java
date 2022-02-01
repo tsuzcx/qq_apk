@@ -1,0 +1,57 @@
+package com.tencent.e.h;
+
+import com.tencent.e.d.a;
+import com.tencent.e.d.e;
+import com.tencent.e.i.k;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+public abstract class a
+  implements d
+{
+  private final AtomicBoolean Izr = new AtomicBoolean(false);
+  
+  protected abstract a foe();
+  
+  public final <V> com.tencent.e.i.d<V> g(k<V> paramk)
+  {
+    if (!this.Izr.get())
+    {
+      if (!paramk.isCancelled())
+      {
+        foe().i(paramk);
+        return paramk;
+      }
+      com.tencent.e.d.IxU.w("[BasePool#input] task=%s pool=%s", paramk.getKey() + "#" + paramk.IzQ, new Object[] { getName() });
+    }
+    for (;;)
+    {
+      return null;
+      com.tencent.e.d.IxS.f(paramk.getKey(), paramk.IzQ, getName());
+    }
+  }
+  
+  public final boolean isShutdown()
+  {
+    return this.Izr.get();
+  }
+  
+  protected abstract void onShutdown();
+  
+  public final void shutdown()
+  {
+    if (this.Izr.compareAndSet(false, true)) {
+      onShutdown();
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void i(k<?> paramk);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     com.tencent.e.h.a
+ * JD-Core Version:    0.7.0.1
+ */

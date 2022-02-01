@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameNewTopBannerView android:id="@id/c_7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/c8w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ImageView android:layout_gravity="bottom" android:id="@id/c_8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </com.tencent.mm.plugin.game.ui.GameNewTopBannerView>
-    <com.tencent.mm.plugin.game.ui.GameIndexSearchView android:id="@id/c_9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.plugin.game.ui.GameMessageBubbleView android:gravity="center_horizontal" android:id="@id/c4s" android:background="@color/a6q" android:paddingLeft="@dimen/dv" android:paddingRight="@dimen/dv" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center|left" android:id="@id/c4t" android:background="@drawable/pp" android:padding="@dimen/n_" android:focusable="true" android:clickable="true" android:duplicateParentState="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l2">
-            <ImageView android:id="@id/c4u" android:layout_width="@dimen/lz" android:layout_height="@dimen/lz" android:scaleType="fitCenter" />
-            <TextView android:textSize="@dimen/m2" android:textColor="@color/a6q" android:ellipsize="end" android:id="@id/c4v" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        </LinearLayout>
-    </com.tencent.mm.plugin.game.ui.GameMessageBubbleView>
-    <com.tencent.mm.plugin.game.ui.GameIndexWxagView android:id="@id/c__" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.plugin.game.ui.GameBlockView android:orientation="vertical" android:id="@id/c_a" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.plugin.game.ui.GameRecomBlockView android:orientation="vertical" android:id="@id/c_b" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.plugin.game.ui.GameNewClassifyView android:orientation="vertical" android:id="@id/c_c" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/c6q" android:layout_width="fill_parent" android:layout_height="@dimen/jz" />
-    </com.tencent.mm.plugin.game.ui.GameNewClassifyView>
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:background="@color/c" android:paddingBottom="@dimen/c0" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/bzm" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/ci" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+    <TextView android:textSize="@dimen/b_" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/c0v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bq" android:layout_marginRight="@dimen/ci" android:maxWidth="100.0dip" android:maxLines="1" app:layout_constraintBottom_toBottomOf="@id/bzm" app:layout_constraintLeft_toRightOf="@id/bzm" app:layout_constraintTop_toTopOf="@id/bzm" />
+    <ImageView android:id="@id/ss" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" app:layout_constraintBottom_toBottomOf="@id/bzm" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toRightOf="@id/c0v" app:layout_constraintTop_toTopOf="@id/bzm" />
+    <TextView android:textSize="@dimen/b_" android:textColor="@color/fd" android:ellipsize="end" android:id="@id/c03" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/ci" android:text="试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试" android:maxLines="1" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/bzm" />
+</android.support.constraint.ConstraintLayout>

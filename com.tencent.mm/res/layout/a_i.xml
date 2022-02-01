@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/hf" android:textColor="@color/s5" android:gravity="center" android:background="@color/kh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cq2" />
+    <ImageView android:id="@id/c9s" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+</RelativeLayout>

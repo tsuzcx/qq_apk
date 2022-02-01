@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.internal.FragmentWrapper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class FacebookButtonBase
   extends Button
@@ -38,7 +39,7 @@ public abstract class FacebookButtonBase
     {
       int i = paramInt2;
       if (paramInt2 == 0) {
-        i = 2131493861;
+        i = 2131821697;
       }
       configureButton(paramContext, paramAttributeSet, paramInt1, i);
       this.analyticsButtonCreatedEventName = paramString1;
@@ -80,7 +81,7 @@ public abstract class FacebookButtonBase
           setBackgroundColor(paramAttributeSet.getColor(0, 0));
           continue;
         }
-        setBackgroundColor(b.m(paramContext, 2131689893));
+        setBackgroundColor(b.n(paramContext, 2131100162));
       }
       finally
       {
@@ -124,103 +125,103 @@ public abstract class FacebookButtonBase
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 78	android/content/Context:getTheme	()Landroid/content/res/Resources$Theme;
+    //   1: invokevirtual 80	android/content/Context:getTheme	()Landroid/content/res/Resources$Theme;
     //   4: aload_2
     //   5: iconst_1
     //   6: newarray int
     //   8: dup
     //   9: iconst_0
-    //   10: ldc 146
+    //   10: ldc 148
     //   12: iastore
     //   13: iload_3
     //   14: iload 4
-    //   16: invokevirtual 85	android/content/res/Resources$Theme:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
+    //   16: invokevirtual 87	android/content/res/Resources$Theme:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
     //   19: astore 5
     //   21: aload_0
     //   22: aload 5
     //   24: iconst_0
-    //   25: invokevirtual 150	android/content/res/TypedArray:getColorStateList	(I)Landroid/content/res/ColorStateList;
-    //   28: invokevirtual 154	com/facebook/FacebookButtonBase:setTextColor	(Landroid/content/res/ColorStateList;)V
+    //   25: invokevirtual 152	android/content/res/TypedArray:getColorStateList	(I)Landroid/content/res/ColorStateList;
+    //   28: invokevirtual 156	com/facebook/FacebookButtonBase:setTextColor	(Landroid/content/res/ColorStateList;)V
     //   31: aload 5
-    //   33: invokevirtual 103	android/content/res/TypedArray:recycle	()V
+    //   33: invokevirtual 105	android/content/res/TypedArray:recycle	()V
     //   36: aload_1
-    //   37: invokevirtual 78	android/content/Context:getTheme	()Landroid/content/res/Resources$Theme;
+    //   37: invokevirtual 80	android/content/Context:getTheme	()Landroid/content/res/Resources$Theme;
     //   40: aload_2
     //   41: iconst_1
     //   42: newarray int
     //   44: dup
     //   45: iconst_0
-    //   46: ldc 155
+    //   46: ldc 157
     //   48: iastore
     //   49: iload_3
     //   50: iload 4
-    //   52: invokevirtual 85	android/content/res/Resources$Theme:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
+    //   52: invokevirtual 87	android/content/res/Resources$Theme:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
     //   55: astore 5
     //   57: aload_0
     //   58: aload 5
     //   60: iconst_0
     //   61: bipush 17
-    //   63: invokevirtual 158	android/content/res/TypedArray:getInt	(II)I
-    //   66: invokevirtual 161	com/facebook/FacebookButtonBase:setGravity	(I)V
+    //   63: invokevirtual 160	android/content/res/TypedArray:getInt	(II)I
+    //   66: invokevirtual 163	com/facebook/FacebookButtonBase:setGravity	(I)V
     //   69: aload 5
-    //   71: invokevirtual 103	android/content/res/TypedArray:recycle	()V
+    //   71: invokevirtual 105	android/content/res/TypedArray:recycle	()V
     //   74: aload_1
-    //   75: invokevirtual 78	android/content/Context:getTheme	()Landroid/content/res/Resources$Theme;
+    //   75: invokevirtual 80	android/content/Context:getTheme	()Landroid/content/res/Resources$Theme;
     //   78: aload_2
     //   79: iconst_3
     //   80: newarray int
     //   82: dup
     //   83: iconst_0
-    //   84: ldc 162
+    //   84: ldc 164
     //   86: iastore
     //   87: dup
     //   88: iconst_1
-    //   89: ldc 163
+    //   89: ldc 165
     //   91: iastore
     //   92: dup
     //   93: iconst_2
-    //   94: ldc 164
+    //   94: ldc 166
     //   96: iastore
     //   97: iload_3
     //   98: iload 4
-    //   100: invokevirtual 85	android/content/res/Resources$Theme:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
+    //   100: invokevirtual 87	android/content/res/Resources$Theme:obtainStyledAttributes	(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
     //   103: astore_1
     //   104: aload_0
     //   105: iconst_0
     //   106: aload_1
     //   107: iconst_0
     //   108: iconst_0
-    //   109: invokevirtual 132	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   109: invokevirtual 134	android/content/res/TypedArray:getDimensionPixelSize	(II)I
     //   112: i2f
-    //   113: invokevirtual 168	com/facebook/FacebookButtonBase:setTextSize	(IF)V
+    //   113: invokevirtual 170	com/facebook/FacebookButtonBase:setTextSize	(IF)V
     //   116: aload_0
     //   117: aload_1
     //   118: iconst_1
     //   119: iconst_1
-    //   120: invokevirtual 158	android/content/res/TypedArray:getInt	(II)I
-    //   123: invokestatic 174	android/graphics/Typeface:defaultFromStyle	(I)Landroid/graphics/Typeface;
-    //   126: invokevirtual 178	com/facebook/FacebookButtonBase:setTypeface	(Landroid/graphics/Typeface;)V
+    //   120: invokevirtual 160	android/content/res/TypedArray:getInt	(II)I
+    //   123: invokestatic 176	android/graphics/Typeface:defaultFromStyle	(I)Landroid/graphics/Typeface;
+    //   126: invokevirtual 180	com/facebook/FacebookButtonBase:setTypeface	(Landroid/graphics/Typeface;)V
     //   129: aload_0
     //   130: aload_1
     //   131: iconst_2
-    //   132: invokevirtual 182	android/content/res/TypedArray:getString	(I)Ljava/lang/String;
-    //   135: invokevirtual 186	com/facebook/FacebookButtonBase:setText	(Ljava/lang/CharSequence;)V
+    //   132: invokevirtual 184	android/content/res/TypedArray:getString	(I)Ljava/lang/String;
+    //   135: invokevirtual 188	com/facebook/FacebookButtonBase:setText	(Ljava/lang/CharSequence;)V
     //   138: aload_1
-    //   139: invokevirtual 103	android/content/res/TypedArray:recycle	()V
+    //   139: invokevirtual 105	android/content/res/TypedArray:recycle	()V
     //   142: return
     //   143: astore_1
     //   144: aload 5
-    //   146: invokevirtual 103	android/content/res/TypedArray:recycle	()V
+    //   146: invokevirtual 105	android/content/res/TypedArray:recycle	()V
     //   149: aload_1
     //   150: athrow
     //   151: astore_1
     //   152: aload 5
-    //   154: invokevirtual 103	android/content/res/TypedArray:recycle	()V
+    //   154: invokevirtual 105	android/content/res/TypedArray:recycle	()V
     //   157: aload_1
     //   158: athrow
     //   159: astore_2
     //   160: aload_1
-    //   161: invokevirtual 103	android/content/res/TypedArray:recycle	()V
+    //   161: invokevirtual 105	android/content/res/TypedArray:recycle	()V
     //   164: aload_2
     //   165: athrow
     // Local variable table:
@@ -240,7 +241,24 @@ public abstract class FacebookButtonBase
   
   private void setupOnClickListener()
   {
-    super.setOnClickListener(new FacebookButtonBase.1(this));
+    super.setOnClickListener(new View.OnClickListener()
+    {
+      public void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(7617);
+        FacebookButtonBase.this.logButtonTapped(FacebookButtonBase.this.getContext());
+        if (FacebookButtonBase.this.internalOnClickListener != null)
+        {
+          FacebookButtonBase.this.internalOnClickListener.onClick(paramAnonymousView);
+          AppMethodBeat.o(7617);
+          return;
+        }
+        if (FacebookButtonBase.this.externalOnClickListener != null) {
+          FacebookButtonBase.this.externalOnClickListener.onClick(paramAnonymousView);
+        }
+        AppMethodBeat.o(7617);
+      }
+    });
   }
   
   public void callExternalOnClickListener(View paramView)
@@ -368,7 +386,7 @@ public abstract class FacebookButtonBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.FacebookButtonBase
  * JD-Core Version:    0.7.0.1
  */

@@ -1,99 +1,108 @@
 package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.app.j.a;
-import com.tencent.mm.platformtools.ah;
+import com.tencent.mm.app.n.a;
+import com.tencent.mm.g.a.pe;
+import com.tencent.mm.g.a.sf;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.aa;
+import com.tencent.mm.storage.ae;
 import java.util.HashSet;
+import java.util.Locale;
 
 public final class y
 {
-  public static y dZP;
-  public j.a appForegroundListener;
-  public com.tencent.mm.storage.y dZQ;
-  public c dZR;
-  public c dZS;
-  public y.a dZT;
-  public int dZU;
-  HashSet<Long> dZV;
-  HashSet<Long> dZW;
-  public long dZX;
-  public long dZY;
-  public String dZZ;
-  public long eaa;
-  public int eab;
-  public int eac;
-  private int ead;
-  private int eae;
+  public static y fjY;
+  public n.a appForegroundListener;
+  public aa fjZ;
+  public c fka;
+  public c fkb;
+  public a fkc;
+  public int fkd;
+  HashSet<Long> fke;
+  HashSet<Long> fkf;
+  public long fkg;
+  public long fkh;
+  public String fki;
+  public long fkj;
+  public int fkk;
+  public int fkl;
+  private int fkm;
+  private int fkn;
   private boolean hasInit;
   
   static
   {
-    AppMethodBeat.i(15881);
-    dZP = new y();
-    AppMethodBeat.o(15881);
+    AppMethodBeat.i(19915);
+    fjY = new y();
+    AppMethodBeat.o(19915);
   }
   
   private y()
   {
-    AppMethodBeat.i(15879);
-    this.dZR = new y.1(this);
-    this.dZS = new y.2(this);
-    this.appForegroundListener = new y.3(this);
-    this.dZU = 0;
-    this.dZV = new HashSet();
-    this.dZW = new HashSet();
-    this.eaa = -1L;
-    this.eab = 20;
-    this.eac = 24;
-    this.ead = 30;
-    this.eae = 10800;
+    AppMethodBeat.i(19913);
+    this.fka = new c() {};
+    this.fkb = new c() {};
+    this.appForegroundListener = new n.a()
+    {
+      public final void onAppBackground(String paramAnonymousString) {}
+      
+      public final void onAppForeground(String paramAnonymousString) {}
+    };
+    this.fkd = 0;
+    this.fke = new HashSet();
+    this.fkf = new HashSet();
+    this.fkj = -1L;
+    this.fkk = 20;
+    this.fkl = 24;
+    this.fkm = 30;
+    this.fkn = 10800;
     this.hasInit = false;
-    this.dZQ = new com.tencent.mm.storage.y(ac.eQv + "staytime.cfg");
-    AppMethodBeat.o(15879);
+    this.fjZ = new aa(ae.FfH + "staytime.cfg");
+    AppMethodBeat.o(19913);
   }
   
-  public final void kA(String paramString)
+  public final void or(String paramString)
   {
-    AppMethodBeat.i(15880);
-    a.ymk.d(this.dZR);
-    a.ymk.d(this.dZS);
+    AppMethodBeat.i(19914);
+    a.ESL.d(this.fka);
+    a.ESL.d(this.fkb);
     this.appForegroundListener.dead();
-    this.dZW.clear();
-    this.dZV.clear();
-    if ((paramString == null) || (this.dZT == null))
+    this.fkf.clear();
+    this.fke.clear();
+    if ((paramString == null) || (this.fkc == null))
     {
-      if (this.dZT == null) {}
+      if (this.fkc == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ab.i("MicroMsg.StayTimeReport", "exitChattingUI chatUser or reprotingItem is null, chatUser:%s, reportingItem is null:%b", new Object[] { paramString, Boolean.valueOf(bool) });
-        AppMethodBeat.o(15880);
+        ad.i("MicroMsg.StayTimeReport", "exitChattingUI chatUser or reprotingItem is null, chatUser:%s, reportingItem is null:%b", new Object[] { paramString, Boolean.valueOf(bool) });
+        AppMethodBeat.o(19914);
         return;
       }
     }
-    if (!paramString.equals(this.dZT.eag))
+    if (!paramString.equals(this.fkc.fkp))
     {
-      ab.i("MicroMsg.StayTimeReport", "exitChattingUI no startedUI: %s, start:", new Object[] { paramString, this.dZT.eag });
-      AppMethodBeat.o(15880);
+      ad.i("MicroMsg.StayTimeReport", "exitChattingUI no startedUI: %s, start:", new Object[] { paramString, this.fkc.fkp });
+      AppMethodBeat.o(19914);
       return;
     }
-    paramString = this.dZT;
-    paramString.time += ah.av(this.dZX) / 1000L;
-    paramString = (String)this.dZQ.get(5, "");
-    this.dZQ.set(5, paramString + this.dZT.toString());
+    paramString = this.fkc;
+    paramString.time += bt.aS(this.fkg) / 1000L;
+    paramString = (String)this.fjZ.get(5, "");
+    this.fjZ.set(5, paramString + this.fkc.toString());
     long l;
-    if (this.dZT != null)
+    if (this.fkc != null)
     {
-      l = this.dZQ.getLong(4, 0L);
-      i = this.dZQ.Nr(6) + 1;
-      this.dZQ.setInt(6, i);
-      ab.i("MicroMsg.StayTimeReport", "exitChattingUI, chatUser:%s, type:%d, stayTime:%d, stayWebTime:%d, chattingReportCnt:%d", new Object[] { this.dZT.eag, Integer.valueOf(this.dZT.type), Long.valueOf(this.dZT.time), Integer.valueOf(this.dZT.eak), Integer.valueOf(i) });
-      ab.i("MicroMsg.StayTimeReport", "exitChattingUI goBackHistoryStatus:%d, recnCnt:%d, sendCnt:%d", new Object[] { Integer.valueOf(this.dZT.eal), Integer.valueOf(this.dZT.eam), Integer.valueOf(this.dZT.ean) });
-      if ((ah.gz(l) <= this.eae) && (i <= this.ead)) {
+      l = this.fjZ.getLong(4, 0L);
+      i = this.fjZ.Wv(6) + 1;
+      this.fjZ.setInt(6, i);
+      ad.i("MicroMsg.StayTimeReport", "exitChattingUI, chatUser:%s, type:%d, stayTime:%d, stayWebTime:%d, chattingReportCnt:%d", new Object[] { this.fkc.fkp, Integer.valueOf(this.fkc.type), Long.valueOf(this.fkc.time), Integer.valueOf(this.fkc.fks), Integer.valueOf(i) });
+      ad.i("MicroMsg.StayTimeReport", "exitChattingUI goBackHistoryStatus:%d, recnCnt:%d, sendCnt:%d", new Object[] { Integer.valueOf(this.fkc.fkt), Integer.valueOf(this.fkc.fku), Integer.valueOf(this.fkc.fkv) });
+      if ((bt.lZ(l) <= this.fkn) && (i <= this.fkm)) {
         break label516;
       }
     }
@@ -102,21 +111,46 @@ public final class y
     {
       if (i != 0)
       {
-        paramString = (String)this.dZQ.get(5, "");
-        paramString = paramString + "," + l + "," + ah.aox();
-        ab.i("MicroMsg.StayTimeReport", "report （13062） %d: %s", new Object[] { Integer.valueOf(13062), paramString });
-        h.qsU.kvStat(13062, paramString);
-        this.dZQ.setInt(6, 0);
-        this.dZQ.set(5, "");
+        paramString = (String)this.fjZ.get(5, "");
+        paramString = paramString + "," + l + "," + bt.aGK();
+        ad.i("MicroMsg.StayTimeReport", "report （13062） %d: %s", new Object[] { Integer.valueOf(13062), paramString });
+        h.vKh.kvStat(13062, paramString);
+        this.fjZ.setInt(6, 0);
+        this.fjZ.set(5, "");
       }
-      AppMethodBeat.o(15880);
+      AppMethodBeat.o(19914);
       return;
+    }
+  }
+  
+  public final class a
+  {
+    public int dbk;
+    public long enterTime;
+    public String fkp;
+    public int fkq;
+    public int fkr;
+    public int fks;
+    public int fkt = 0;
+    int fku = 0;
+    int fkv = 0;
+    public long time;
+    public int type;
+    
+    public a() {}
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(19912);
+      String str = String.format(Locale.US, "%d#%d#%d#%d#%d#%d#%d#%s#%d#%d#%d|", new Object[] { Integer.valueOf(this.type), Long.valueOf(this.time), Integer.valueOf(this.fkq), Integer.valueOf(this.dbk), Integer.valueOf(this.fkr), Long.valueOf(this.enterTime), Integer.valueOf(this.fks), this.fkp, Integer.valueOf(this.fkt), Integer.valueOf(this.fku), Integer.valueOf(this.fkv) });
+      AppMethodBeat.o(19912);
+      return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.booter.y
  * JD-Core Version:    0.7.0.1
  */

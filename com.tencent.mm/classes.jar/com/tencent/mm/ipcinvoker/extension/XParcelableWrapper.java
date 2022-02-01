@@ -9,13 +9,13 @@ public class XParcelableWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<XParcelableWrapper> CREATOR;
-  public f eEM;
+  public f fZP;
   
   static
   {
-    AppMethodBeat.i(114105);
+    AppMethodBeat.i(158816);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(114105);
+    AppMethodBeat.o(158816);
   }
   
   public int describeContents()
@@ -25,17 +25,17 @@ public class XParcelableWrapper
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(114104);
-    if (this.eEM != null)
+    AppMethodBeat.i(158815);
+    if (this.fZP != null)
     {
       paramParcel.writeInt(1);
-      paramParcel.writeString(this.eEM.getClass().getName());
-      this.eEM.e(paramParcel);
-      AppMethodBeat.o(114104);
+      paramParcel.writeString(this.fZP.getClass().getName());
+      this.fZP.d(paramParcel);
+      AppMethodBeat.o(158815);
       return;
     }
     paramParcel.writeInt(0);
-    AppMethodBeat.o(114104);
+    AppMethodBeat.o(158815);
   }
 }
 

@@ -11,9 +11,9 @@ public abstract class a
   {
     d.c("MicroMsg.BasePushHandler", "handle push message connectType=%d sessionId=%d funIc=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     byte[] arrayOfByte = paramArrayOfByte;
-    if (bQ(paramInt3))
+    if (cm(paramInt3))
     {
-      paramArrayOfByte = h.mb().l(paramArrayOfByte);
+      paramArrayOfByte = h.mO().l(paramArrayOfByte);
       arrayOfByte = paramArrayOfByte;
       if (paramArrayOfByte == null)
       {
@@ -26,12 +26,12 @@ public abstract class a
   
   protected abstract void a(int paramInt, byte[] paramArrayOfByte);
   
-  protected boolean bQ(int paramInt)
+  protected boolean cm(int paramInt)
   {
     return false;
   }
   
-  public abstract List<Integer> mS();
+  public abstract List<Integer> nE();
 }
 
 

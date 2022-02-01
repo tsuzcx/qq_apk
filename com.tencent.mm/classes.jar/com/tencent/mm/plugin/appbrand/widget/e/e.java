@@ -1,32 +1,34 @@
 package com.tencent.mm.plugin.appbrand.widget.e;
 
+import android.text.Spannable;
+import android.text.Spannable.Factory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.g.a;
+import d.l;
 
-public final class e
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/widget/prompt/FixedLineHeightSpannableFactory;", "Landroid/text/Spannable$Factory;", "height", "", "(I)V", "getHeight", "()I", "newSpannable", "Landroid/text/Spannable;", "source", "", "plugin-appbrand-integration_release"})
+final class e
+  extends Spannable.Factory
 {
-  public final double x;
-  public final double y;
+  private final int height;
   
-  public e(double paramDouble1, double paramDouble2)
+  public e(int paramInt)
   {
-    this.x = paramDouble1;
-    this.y = paramDouble2;
+    this.height = paramInt;
   }
   
-  public final boolean equals(Object paramObject)
+  public final Spannable newSpannable(CharSequence paramCharSequence)
   {
-    if (!(paramObject instanceof e)) {
-      return false;
+    AppMethodBeat.i(51453);
+    paramCharSequence = super.newSpannable(paramCharSequence);
+    if (paramCharSequence != null)
+    {
+      paramCharSequence.setSpan(new a(this.height), 0, paramCharSequence.length(), 18);
+      AppMethodBeat.o(51453);
+      return paramCharSequence;
     }
-    return (this.x == ((e)paramObject).x) && (this.y == ((e)paramObject).y);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(51275);
-    String str = "Point{x=" + this.x + ", y=" + this.y + '}';
-    AppMethodBeat.o(51275);
-    return str;
+    AppMethodBeat.o(51453);
+    return null;
   }
 }
 

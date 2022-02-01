@@ -3,131 +3,131 @@ package com.tencent.mm.plugin.backup.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class w
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
   public String ID;
   public int Version;
-  public int jJS;
-  public com.tencent.mm.bv.b jJh;
-  public int jKr;
-  public int jKs;
-  public int jKt;
-  public com.tencent.mm.bv.b jKv;
+  public com.tencent.mm.bx.b mAx;
+  public int mBG;
+  public int mBH;
+  public int mBI;
+  public com.tencent.mm.bx.b mBK;
+  public int mBi;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(18071);
+    AppMethodBeat.i(22128);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.ID == null)
       {
-        paramVarArgs = new e.a.a.b("Not all required fields were included: ID");
-        AppMethodBeat.o(18071);
+        paramVarArgs = new f.a.a.b("Not all required fields were included: ID");
+        AppMethodBeat.o(22128);
         throw paramVarArgs;
       }
-      paramVarArgs.aO(1, this.jKr);
-      paramVarArgs.aO(2, this.jJS);
+      paramVarArgs.aR(1, this.mBG);
+      paramVarArgs.aR(2, this.mBi);
       if (this.ID != null) {
-        paramVarArgs.e(3, this.ID);
+        paramVarArgs.d(3, this.ID);
       }
-      if (this.jJh != null) {
-        paramVarArgs.c(4, this.jJh);
+      if (this.mAx != null) {
+        paramVarArgs.c(4, this.mAx);
       }
-      paramVarArgs.aO(5, this.Version);
-      paramVarArgs.aO(6, this.jKs);
-      paramVarArgs.aO(7, this.jKt);
-      if (this.jKv != null) {
-        paramVarArgs.c(8, this.jKv);
+      paramVarArgs.aR(5, this.Version);
+      paramVarArgs.aR(6, this.mBH);
+      paramVarArgs.aR(7, this.mBI);
+      if (this.mBK != null) {
+        paramVarArgs.c(8, this.mBK);
       }
-      AppMethodBeat.o(18071);
+      AppMethodBeat.o(22128);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = e.a.a.b.b.a.bl(1, this.jKr) + 0 + e.a.a.b.b.a.bl(2, this.jJS);
+      int i = f.a.a.b.b.a.bA(1, this.mBG) + 0 + f.a.a.b.b.a.bA(2, this.mBi);
       paramInt = i;
       if (this.ID != null) {
-        paramInt = i + e.a.a.b.b.a.f(3, this.ID);
+        paramInt = i + f.a.a.b.b.a.e(3, this.ID);
       }
       i = paramInt;
-      if (this.jJh != null) {
-        i = paramInt + e.a.a.b.b.a.b(4, this.jJh);
+      if (this.mAx != null) {
+        i = paramInt + f.a.a.b.b.a.b(4, this.mAx);
       }
-      i = i + e.a.a.b.b.a.bl(5, this.Version) + e.a.a.b.b.a.bl(6, this.jKs) + e.a.a.b.b.a.bl(7, this.jKt);
+      i = i + f.a.a.b.b.a.bA(5, this.Version) + f.a.a.b.b.a.bA(6, this.mBH) + f.a.a.b.b.a.bA(7, this.mBI);
       paramInt = i;
-      if (this.jKv != null) {
-        paramInt = i + e.a.a.b.b.a.b(8, this.jKv);
+      if (this.mBK != null) {
+        paramInt = i + f.a.a.b.b.a.b(8, this.mBK);
       }
-      AppMethodBeat.o(18071);
+      AppMethodBeat.o(22128);
       return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
       if (this.ID == null)
       {
-        paramVarArgs = new e.a.a.b("Not all required fields were included: ID");
-        AppMethodBeat.o(18071);
+        paramVarArgs = new f.a.a.b("Not all required fields were included: ID");
+        AppMethodBeat.o(22128);
         throw paramVarArgs;
       }
-      AppMethodBeat.o(18071);
+      AppMethodBeat.o(22128);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       w localw = (w)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(18071);
+        AppMethodBeat.o(22128);
         return -1;
       case 1: 
-        localw.jKr = locala.CLY.sl();
-        AppMethodBeat.o(18071);
+        localw.mBG = locala.KhF.xS();
+        AppMethodBeat.o(22128);
         return 0;
       case 2: 
-        localw.jJS = locala.CLY.sl();
-        AppMethodBeat.o(18071);
+        localw.mBi = locala.KhF.xS();
+        AppMethodBeat.o(22128);
         return 0;
       case 3: 
-        localw.ID = locala.CLY.readString();
-        AppMethodBeat.o(18071);
+        localw.ID = locala.KhF.readString();
+        AppMethodBeat.o(22128);
         return 0;
       case 4: 
-        localw.jJh = locala.CLY.eqS();
-        AppMethodBeat.o(18071);
+        localw.mAx = locala.KhF.fMu();
+        AppMethodBeat.o(22128);
         return 0;
       case 5: 
-        localw.Version = locala.CLY.sl();
-        AppMethodBeat.o(18071);
+        localw.Version = locala.KhF.xS();
+        AppMethodBeat.o(22128);
         return 0;
       case 6: 
-        localw.jKs = locala.CLY.sl();
-        AppMethodBeat.o(18071);
+        localw.mBH = locala.KhF.xS();
+        AppMethodBeat.o(22128);
         return 0;
       case 7: 
-        localw.jKt = locala.CLY.sl();
-        AppMethodBeat.o(18071);
+        localw.mBI = locala.KhF.xS();
+        AppMethodBeat.o(22128);
         return 0;
       }
-      localw.jKv = locala.CLY.eqS();
-      AppMethodBeat.o(18071);
+      localw.mBK = locala.KhF.fMu();
+      AppMethodBeat.o(22128);
       return 0;
     }
-    AppMethodBeat.o(18071);
+    AppMethodBeat.o(22128);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.w
  * JD-Core Version:    0.7.0.1
  */

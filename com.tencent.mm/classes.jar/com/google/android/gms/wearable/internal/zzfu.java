@@ -24,9 +24,9 @@ public final class zzfu
   
   static
   {
-    AppMethodBeat.i(71341);
+    AppMethodBeat.i(101324);
     CREATOR = new zzfv();
-    AppMethodBeat.o(71341);
+    AppMethodBeat.o(101324);
   }
   
   @SafeParcelable.Constructor
@@ -38,12 +38,12 @@ public final class zzfu
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(71340);
+    AppMethodBeat.i(101323);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 2, this.statusCode);
     SafeParcelWriter.writeParcelable(paramParcel, 3, this.zzdy, paramInt, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(71340);
+    AppMethodBeat.o(101323);
   }
 }
 

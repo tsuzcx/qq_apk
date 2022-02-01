@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.ui.widget;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
@@ -11,13 +13,15 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.h;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r;
+import com.tencent.mm.g.a.sy;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.k;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.g;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -27,67 +31,67 @@ import java.util.Map;
 public class SnsAdLandingPageFloatView
   extends FrameLayout
 {
-  public String cCo;
-  public String cFe;
-  public String heu;
+  public String dsN;
+  public String dvK;
+  public String iYE;
   private boolean isResume;
-  public ValueAnimator omt;
-  public LinkedList<g> rLY;
-  private List<h> rME;
-  public String rMe;
-  public String rpw;
-  private Map<String, String> rti;
-  public boolean sdt;
-  public int smE;
-  public String smF;
-  public String smG;
-  public r smH;
-  public g smI;
-  public h smJ;
-  public View smK;
-  public AnimatorSet smL;
+  public ValueAnimator tck;
+  public String wSj;
+  private Map<String, String> wXp;
+  public boolean xMz;
+  public int xXi;
+  public String xXj;
+  public String xXk;
+  public v xXl;
+  public g xXm;
+  public k xXn;
+  public View xXo;
+  public AnimatorSet xXp;
+  public LinkedList<g> xhQ;
+  private List<k> xtW;
+  public String xtw;
   
   public SnsAdLandingPageFloatView(Context paramContext)
   {
     super(paramContext, null);
-    AppMethodBeat.i(40447);
-    this.rLY = new LinkedList();
-    this.rti = new HashMap();
-    this.smL = new AnimatorSet();
-    this.omt = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
-    AppMethodBeat.o(40447);
+    AppMethodBeat.i(100462);
+    this.xhQ = new LinkedList();
+    this.wXp = new HashMap();
+    this.xXp = new AnimatorSet();
+    this.tck = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
+    AppMethodBeat.o(100462);
   }
   
   public SnsAdLandingPageFloatView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet, -1);
-    AppMethodBeat.i(40448);
-    this.rLY = new LinkedList();
-    this.rti = new HashMap();
-    this.smL = new AnimatorSet();
-    this.omt = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
-    AppMethodBeat.o(40448);
+    AppMethodBeat.i(100463);
+    this.xhQ = new LinkedList();
+    this.wXp = new HashMap();
+    this.xXp = new AnimatorSet();
+    this.tck = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
+    AppMethodBeat.o(100463);
   }
   
   public SnsAdLandingPageFloatView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt, -1);
-    AppMethodBeat.i(40449);
-    this.rLY = new LinkedList();
-    this.rti = new HashMap();
-    this.smL = new AnimatorSet();
-    this.omt = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
-    AppMethodBeat.o(40449);
+    AppMethodBeat.i(100464);
+    this.xhQ = new LinkedList();
+    this.wXp = new HashMap();
+    this.xXp = new AnimatorSet();
+    this.tck = ValueAnimator.ofFloat(new float[] { 1.0F, 0.4F }).setDuration(100L);
+    AppMethodBeat.o(100464);
   }
   
-  public final void cxD()
+  public final void dEc()
   {
-    AppMethodBeat.i(40452);
+    AppMethodBeat.i(100467);
     Map localMap;
     int i;
-    if ((this.smI != null) && (!bo.isNullOrNil(this.rpw)))
+    if ((this.xXm != null) && (!bt.isNullOrNil(this.wSj)))
     {
-      localMap = br.F(this.rpw, "adCardItemList");
+      localMap = bw.K(this.wSj, "adCardItemList");
       i = 0;
       if (i <= 0) {
         break label196;
@@ -98,69 +102,69 @@ public class SnsAdLandingPageFloatView
     {
       if (localMap.containsKey(str1 + ".cardTpId"))
       {
-        String str2 = bo.bf((String)localMap.get(str1 + ".cardTpId"), "");
-        str1 = bo.bf((String)localMap.get(str1 + ".cardExt"), "");
-        if ((!bo.isNullOrNil(str2)) && (!bo.isNullOrNil(str1))) {
-          this.rti.put(str2, str1);
+        String str2 = bt.by((String)localMap.get(str1 + ".cardTpId"), "");
+        str1 = bt.by((String)localMap.get(str1 + ".cardExt"), "");
+        if ((!bt.isNullOrNil(str2)) && (!bt.isNullOrNil(str1))) {
+          this.wXp.put(str2, str1);
         }
         i += 1;
         break;
       }
-      AppMethodBeat.o(40452);
+      AppMethodBeat.o(100467);
       return;
     }
   }
   
-  public List<h> getAllComp()
+  public List<k> getAllComp()
   {
-    AppMethodBeat.i(40453);
-    if (this.rME != null)
+    AppMethodBeat.i(100468);
+    if (this.xtW != null)
     {
-      localList = this.rME;
-      AppMethodBeat.o(40453);
+      localList = this.xtW;
+      AppMethodBeat.o(100468);
       return localList;
     }
-    this.rME = new ArrayList();
-    this.rME.add(this.smJ);
-    i.df(this.rME);
-    List localList = this.rME;
-    AppMethodBeat.o(40453);
+    this.xtW = new ArrayList();
+    this.xtW.add(this.xXn);
+    i.fv(this.xtW);
+    List localList = this.xtW;
+    AppMethodBeat.o(100468);
     return localList;
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(40451);
+    AppMethodBeat.i(100466);
     this.isResume = false;
-    if (this.smI != null) {
-      this.smJ.cqB();
+    if (this.xXm != null) {
+      this.xXn.dvA();
     }
-    AppMethodBeat.o(40451);
+    AppMethodBeat.o(100466);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(40450);
+    AppMethodBeat.i(100465);
     this.isResume = true;
-    if (this.smI != null)
+    if (this.xXm != null)
     {
-      this.smJ.cqA();
+      this.xXn.dvz();
       post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(40446);
-          SnsAdLandingPageFloatView.d(SnsAdLandingPageFloatView.this).cqC();
-          AppMethodBeat.o(40446);
+          AppMethodBeat.i(100461);
+          SnsAdLandingPageFloatView.d(SnsAdLandingPageFloatView.this).dvB();
+          AppMethodBeat.o(100461);
         }
       });
     }
-    AppMethodBeat.o(40450);
+    AppMethodBeat.o(100465);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsAdLandingPageFloatView
  * JD-Core Version:    0.7.0.1
  */

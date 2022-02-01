@@ -2,80 +2,80 @@ package com.tencent.xweb.x5;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.sdk.CookieManager;
-import com.tencent.xweb.c.b.a;
+import com.tencent.xweb.internal.CookieInternal.ICookieManagerInternal;
 import org.xwalk.core.Log;
 
 public final class d
-  implements b.a
+  implements CookieInternal.ICookieManagerInternal
 {
-  CookieManager BHT;
+  CookieManager IRS;
   
   public d()
   {
-    AppMethodBeat.i(84799);
-    this.BHT = CookieManager.getInstance();
-    AppMethodBeat.o(84799);
+    AppMethodBeat.i(153834);
+    this.IRS = CookieManager.getInstance();
+    AppMethodBeat.o(153834);
   }
   
-  public final void dYh()
+  public final void e(com.tencent.xweb.WebView paramWebView)
   {
-    AppMethodBeat.i(84800);
-    this.BHT.setAcceptCookie(true);
-    AppMethodBeat.o(84800);
-  }
-  
-  public final void f(com.tencent.xweb.WebView paramWebView)
-  {
-    AppMethodBeat.i(84801);
+    AppMethodBeat.i(153836);
     if (paramWebView == null)
     {
       Log.e("X5CookieManagerWrapper", "setAcceptThirdPartyCookies: the webview is null");
-      AppMethodBeat.o(84801);
+      AppMethodBeat.o(153836);
       return;
     }
     paramWebView = paramWebView.getWebViewUI();
     if (!(paramWebView instanceof com.tencent.smtt.sdk.WebView))
     {
       Log.e("X5CookieManagerWrapper", "setAcceptThirdPartyCookies: the webview is not x5 webview");
-      AppMethodBeat.o(84801);
+      AppMethodBeat.o(153836);
       return;
     }
-    this.BHT.setAcceptThirdPartyCookies((com.tencent.smtt.sdk.WebView)paramWebView, true);
-    AppMethodBeat.o(84801);
+    this.IRS.setAcceptThirdPartyCookies((com.tencent.smtt.sdk.WebView)paramWebView, true);
+    AppMethodBeat.o(153836);
+  }
+  
+  public final void fqD()
+  {
+    AppMethodBeat.i(153835);
+    this.IRS.setAcceptCookie(true);
+    AppMethodBeat.o(153835);
   }
   
   public final String getCookie(String paramString)
   {
-    AppMethodBeat.i(84803);
-    paramString = this.BHT.getCookie(paramString);
-    AppMethodBeat.o(84803);
+    AppMethodBeat.i(153838);
+    paramString = this.IRS.getCookie(paramString);
+    AppMethodBeat.o(153838);
     return paramString;
   }
   
   public final void removeAllCookie()
   {
-    AppMethodBeat.i(84802);
-    this.BHT.removeAllCookie();
-    AppMethodBeat.o(84802);
+    AppMethodBeat.i(153837);
+    this.IRS.removeAllCookie();
+    AppMethodBeat.o(153837);
   }
   
   public final void removeSessionCookie()
   {
-    AppMethodBeat.i(84805);
-    this.BHT.removeSessionCookie();
-    AppMethodBeat.o(84805);
+    AppMethodBeat.i(153840);
+    this.IRS.removeSessionCookie();
+    AppMethodBeat.o(153840);
   }
   
   public final void setCookie(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(84804);
-    this.BHT.setCookie(paramString1, paramString2);
-    AppMethodBeat.o(84804);
+    AppMethodBeat.i(153839);
+    this.IRS.setCookie(paramString1, paramString2);
+    AppMethodBeat.o(153839);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.d
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class PLSysTextView
   extends SysTextView
@@ -24,26 +24,26 @@ public class PLSysTextView
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(105703);
+    AppMethodBeat.i(141021);
     super.onConfigurationChanged(paramConfiguration);
     if (getLayoutWrapper() != null) {
-      getLayoutWrapper().eLO = false;
+      getLayoutWrapper().ggU = false;
     }
-    AppMethodBeat.o(105703);
+    AppMethodBeat.o(141021);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(105702);
+    AppMethodBeat.i(141020);
     super.onDraw(paramCanvas);
-    AppMethodBeat.o(105702);
+    AppMethodBeat.o(141020);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(105701);
+    AppMethodBeat.i(141019);
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(105701);
+    AppMethodBeat.o(141019);
   }
   
   public boolean onPreDraw()
@@ -53,32 +53,32 @@ public class PLSysTextView
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    AppMethodBeat.i(105700);
-    if (bo.aa(paramCharSequence))
+    AppMethodBeat.i(141018);
+    if (bt.ai(paramCharSequence))
     {
       if (h.DEBUG) {
-        ab.d("MicroMsg.PLSysTextView", "set null text");
+        ad.d("MicroMsg.PLSysTextView", "set null text");
       }
-      AppMethodBeat.o(105700);
+      AppMethodBeat.o(141018);
       return;
     }
     long l = 0L;
     if (h.DEBUG) {
       l = System.currentTimeMillis();
     }
-    if ((getLayoutWrapper() != null) && (getLayoutWrapper().eLO)) {
-      c.eLm.a(getConfig(), getLayoutWrapper());
+    if ((getLayoutWrapper() != null) && (getLayoutWrapper().ggU)) {
+      c.ggt.a(getConfig(), getLayoutWrapper());
     }
-    paramBufferType = c.eLm.a(getConfig(), paramCharSequence);
+    paramBufferType = c.ggt.a(getConfig(), paramCharSequence);
     if (paramBufferType != null) {
       setTextLayout(paramBufferType);
     }
     for (boolean bool = true;; bool = false)
     {
       if (h.DEBUG) {
-        ab.d("MicroMsg.PLSysTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s", new Object[] { Double.valueOf((System.currentTimeMillis() - l) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence });
+        ad.d("MicroMsg.PLSysTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s", new Object[] { Double.valueOf((System.currentTimeMillis() - l) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence });
       }
-      AppMethodBeat.o(105700);
+      AppMethodBeat.o(141018);
       return;
       super.setText$609c24db(paramCharSequence);
     }
@@ -86,7 +86,7 @@ public class PLSysTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.PLSysTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ public final class SQLiteStatement
   
   public final void execute()
   {
-    AppMethodBeat.i(12629);
+    AppMethodBeat.i(3315);
     execute(null);
-    AppMethodBeat.o(12629);
+    AppMethodBeat.o(3315);
   }
   
   public final void execute(CancellationSignal paramCancellationSignal)
   {
-    AppMethodBeat.i(12630);
+    AppMethodBeat.i(3316);
     acquireReference();
     try
     {
@@ -30,27 +30,27 @@ public final class SQLiteStatement
     catch (SQLiteException paramCancellationSignal)
     {
       checkCorruption(paramCancellationSignal);
-      AppMethodBeat.o(12630);
+      AppMethodBeat.o(3316);
       throw paramCancellationSignal;
     }
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12630);
+      AppMethodBeat.o(3316);
     }
   }
   
   public final long executeInsert()
   {
-    AppMethodBeat.i(12633);
+    AppMethodBeat.i(3319);
     long l = executeInsert(null);
-    AppMethodBeat.o(12633);
+    AppMethodBeat.o(3319);
     return l;
   }
   
   public final long executeInsert(CancellationSignal paramCancellationSignal)
   {
-    AppMethodBeat.i(12634);
+    AppMethodBeat.i(3320);
     acquireReference();
     try
     {
@@ -60,27 +60,27 @@ public final class SQLiteStatement
     catch (SQLiteDatabaseCorruptException paramCancellationSignal)
     {
       checkCorruption(paramCancellationSignal);
-      AppMethodBeat.o(12634);
+      AppMethodBeat.o(3320);
       throw paramCancellationSignal;
     }
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12634);
+      AppMethodBeat.o(3320);
     }
   }
   
   public final int executeUpdateDelete()
   {
-    AppMethodBeat.i(12631);
+    AppMethodBeat.i(3317);
     int i = executeUpdateDelete(null);
-    AppMethodBeat.o(12631);
+    AppMethodBeat.o(3317);
     return i;
   }
   
   public final int executeUpdateDelete(CancellationSignal paramCancellationSignal)
   {
-    AppMethodBeat.i(12632);
+    AppMethodBeat.i(3318);
     acquireReference();
     try
     {
@@ -90,27 +90,27 @@ public final class SQLiteStatement
     catch (SQLiteDatabaseCorruptException paramCancellationSignal)
     {
       checkCorruption(paramCancellationSignal);
-      AppMethodBeat.o(12632);
+      AppMethodBeat.o(3318);
       throw paramCancellationSignal;
     }
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12632);
+      AppMethodBeat.o(3318);
     }
   }
   
   public final long simpleQueryForLong()
   {
-    AppMethodBeat.i(12635);
+    AppMethodBeat.i(3321);
     long l = simpleQueryForLong(null);
-    AppMethodBeat.o(12635);
+    AppMethodBeat.o(3321);
     return l;
   }
   
   public final long simpleQueryForLong(CancellationSignal paramCancellationSignal)
   {
-    AppMethodBeat.i(12636);
+    AppMethodBeat.i(3322);
     acquireReference();
     try
     {
@@ -120,27 +120,27 @@ public final class SQLiteStatement
     catch (SQLiteDatabaseCorruptException paramCancellationSignal)
     {
       checkCorruption(paramCancellationSignal);
-      AppMethodBeat.o(12636);
+      AppMethodBeat.o(3322);
       throw paramCancellationSignal;
     }
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12636);
+      AppMethodBeat.o(3322);
     }
   }
   
   public final String simpleQueryForString()
   {
-    AppMethodBeat.i(12637);
+    AppMethodBeat.i(3323);
     String str = simpleQueryForString(null);
-    AppMethodBeat.o(12637);
+    AppMethodBeat.o(3323);
     return str;
   }
   
   public final String simpleQueryForString(CancellationSignal paramCancellationSignal)
   {
-    AppMethodBeat.i(12638);
+    AppMethodBeat.i(3324);
     acquireReference();
     try
     {
@@ -150,21 +150,21 @@ public final class SQLiteStatement
     catch (SQLiteDatabaseCorruptException paramCancellationSignal)
     {
       checkCorruption(paramCancellationSignal);
-      AppMethodBeat.o(12638);
+      AppMethodBeat.o(3324);
       throw paramCancellationSignal;
     }
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12638);
+      AppMethodBeat.o(3324);
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(12639);
+    AppMethodBeat.i(3325);
     String str = "SQLiteProgram: " + getSql();
-    AppMethodBeat.o(12639);
+    AppMethodBeat.o(3325);
     return str;
   }
 }

@@ -23,101 +23,101 @@ public class YearClass
   
   private static int categorizeByYear2014Method(Context paramContext)
   {
-    AppMethodBeat.i(114638);
+    AppMethodBeat.i(133651);
     ArrayList localArrayList = new ArrayList();
     conditionallyAdd(localArrayList, getNumCoresYear());
     conditionallyAdd(localArrayList, getClockSpeedYear());
     conditionallyAdd(localArrayList, getRamYear(paramContext));
     if (localArrayList.isEmpty())
     {
-      AppMethodBeat.o(114638);
+      AppMethodBeat.o(133651);
       return -1;
     }
     Collections.sort(localArrayList);
     if ((localArrayList.size() & 0x1) == 1)
     {
       i = ((Integer)localArrayList.get(localArrayList.size() / 2)).intValue();
-      AppMethodBeat.o(114638);
+      AppMethodBeat.o(133651);
       return i;
     }
     int j = localArrayList.size() / 2 - 1;
     int i = ((Integer)localArrayList.get(j)).intValue();
     j = (((Integer)localArrayList.get(j + 1)).intValue() - ((Integer)localArrayList.get(j)).intValue()) / 2;
-    AppMethodBeat.o(114638);
+    AppMethodBeat.o(133651);
     return j + i;
   }
   
   private static int categorizeByYear2016Method(Context paramContext)
   {
-    AppMethodBeat.i(114637);
+    AppMethodBeat.i(133650);
     long l = DeviceInfo.getTotalMemory(paramContext);
     if (l == -1L)
     {
       int i = categorizeByYear2014Method(paramContext);
-      AppMethodBeat.o(114637);
+      AppMethodBeat.o(133650);
       return i;
     }
     if (l <= 805306368L)
     {
       if (DeviceInfo.getNumberOfCPUCores() <= 1)
       {
-        AppMethodBeat.o(114637);
+        AppMethodBeat.o(133650);
         return 2009;
       }
-      AppMethodBeat.o(114637);
+      AppMethodBeat.o(133650);
       return 2010;
     }
     if (l <= 1073741824L)
     {
       if (DeviceInfo.getCPUMaxFreqKHz() < 1300000)
       {
-        AppMethodBeat.o(114637);
+        AppMethodBeat.o(133650);
         return 2011;
       }
-      AppMethodBeat.o(114637);
+      AppMethodBeat.o(133650);
       return 2012;
     }
     if (l <= 1610612736L)
     {
       if (DeviceInfo.getCPUMaxFreqKHz() < 1800000)
       {
-        AppMethodBeat.o(114637);
+        AppMethodBeat.o(133650);
         return 2012;
       }
-      AppMethodBeat.o(114637);
+      AppMethodBeat.o(133650);
       return 2013;
     }
     if (l <= 2147483648L)
     {
-      AppMethodBeat.o(114637);
+      AppMethodBeat.o(133650);
       return 2013;
     }
     if (l <= 3221225472L)
     {
-      AppMethodBeat.o(114637);
+      AppMethodBeat.o(133650);
       return 2014;
     }
     if (l <= 5368709120L)
     {
-      AppMethodBeat.o(114637);
+      AppMethodBeat.o(133650);
       return 2015;
     }
-    AppMethodBeat.o(114637);
+    AppMethodBeat.o(133650);
     return 2016;
   }
   
   private static void conditionallyAdd(ArrayList<Integer> paramArrayList, int paramInt)
   {
-    AppMethodBeat.i(114636);
+    AppMethodBeat.i(133649);
     if (paramInt != -1) {
       paramArrayList.add(Integer.valueOf(paramInt));
     }
-    AppMethodBeat.o(114636);
+    AppMethodBeat.o(133649);
   }
   
   public static int get(Context paramContext)
   {
-    AppMethodBeat.i(114635);
+    AppMethodBeat.i(133648);
     if (mYearCategory == null) {}
     try
     {
@@ -125,127 +125,127 @@ public class YearClass
         mYearCategory = Integer.valueOf(categorizeByYear2016Method(paramContext));
       }
       int i = mYearCategory.intValue();
-      AppMethodBeat.o(114635);
+      AppMethodBeat.o(133648);
       return i;
     }
     finally
     {
-      AppMethodBeat.o(114635);
+      AppMethodBeat.o(133648);
     }
   }
   
   private static int getClockSpeedYear()
   {
-    AppMethodBeat.i(114640);
+    AppMethodBeat.i(133653);
     long l = DeviceInfo.getCPUMaxFreqKHz();
     if (l == -1L)
     {
-      AppMethodBeat.o(114640);
+      AppMethodBeat.o(133653);
       return -1;
     }
     if (l <= 528000L)
     {
-      AppMethodBeat.o(114640);
+      AppMethodBeat.o(133653);
       return 2008;
     }
     if (l <= 620000L)
     {
-      AppMethodBeat.o(114640);
+      AppMethodBeat.o(133653);
       return 2009;
     }
     if (l <= 1020000L)
     {
-      AppMethodBeat.o(114640);
+      AppMethodBeat.o(133653);
       return 2010;
     }
     if (l <= 1220000L)
     {
-      AppMethodBeat.o(114640);
+      AppMethodBeat.o(133653);
       return 2011;
     }
     if (l <= 1520000L)
     {
-      AppMethodBeat.o(114640);
+      AppMethodBeat.o(133653);
       return 2012;
     }
     if (l <= 2020000L)
     {
-      AppMethodBeat.o(114640);
+      AppMethodBeat.o(133653);
       return 2013;
     }
-    AppMethodBeat.o(114640);
+    AppMethodBeat.o(133653);
     return 2014;
   }
   
   private static int getNumCoresYear()
   {
-    AppMethodBeat.i(114639);
+    AppMethodBeat.i(133652);
     int i = DeviceInfo.getNumberOfCPUCores();
     if (i <= 0)
     {
-      AppMethodBeat.o(114639);
+      AppMethodBeat.o(133652);
       return -1;
     }
     if (i == 1)
     {
-      AppMethodBeat.o(114639);
+      AppMethodBeat.o(133652);
       return 2008;
     }
     if (i <= 3)
     {
-      AppMethodBeat.o(114639);
+      AppMethodBeat.o(133652);
       return 2011;
     }
-    AppMethodBeat.o(114639);
+    AppMethodBeat.o(133652);
     return 2012;
   }
   
   private static int getRamYear(Context paramContext)
   {
-    AppMethodBeat.i(114641);
+    AppMethodBeat.i(133654);
     long l = DeviceInfo.getTotalMemory(paramContext);
     if (l <= 0L)
     {
-      AppMethodBeat.o(114641);
+      AppMethodBeat.o(133654);
       return -1;
     }
     if (l <= 201326592L)
     {
-      AppMethodBeat.o(114641);
+      AppMethodBeat.o(133654);
       return 2008;
     }
     if (l <= 304087040L)
     {
-      AppMethodBeat.o(114641);
+      AppMethodBeat.o(133654);
       return 2009;
     }
     if (l <= 536870912L)
     {
-      AppMethodBeat.o(114641);
+      AppMethodBeat.o(133654);
       return 2010;
     }
     if (l <= 1073741824L)
     {
-      AppMethodBeat.o(114641);
+      AppMethodBeat.o(133654);
       return 2011;
     }
     if (l <= 1610612736L)
     {
-      AppMethodBeat.o(114641);
+      AppMethodBeat.o(133654);
       return 2012;
     }
     if (l <= 2147483648L)
     {
-      AppMethodBeat.o(114641);
+      AppMethodBeat.o(133654);
       return 2013;
     }
-    AppMethodBeat.o(114641);
+    AppMethodBeat.o(133654);
     return 2014;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.facebook.device.yearclass.YearClass
  * JD-Core Version:    0.7.0.1
  */

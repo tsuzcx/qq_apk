@@ -16,15 +16,15 @@ public class FunctionMirror
   
   public String getName()
   {
-    AppMethodBeat.i(74868);
+    AppMethodBeat.i(61491);
     String str = this.v8Object.executeStringFunction("name", null);
-    AppMethodBeat.o(74868);
+    AppMethodBeat.o(61491);
     return str;
   }
   
   public String getScriptName()
   {
-    AppMethodBeat.i(74869);
+    AppMethodBeat.i(61492);
     V8Object localV8Object = this.v8Object.executeObjectFunction("script", null);
     try
     {
@@ -34,7 +34,7 @@ public class FunctionMirror
     finally
     {
       localV8Object.release();
-      AppMethodBeat.o(74869);
+      AppMethodBeat.o(61492);
     }
   }
   
@@ -45,7 +45,7 @@ public class FunctionMirror
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.debug.mirror.FunctionMirror
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.liteav.videoencoder;
 
+import org.json.JSONArray;
+
 public class TXSVideoEncoderParam
 {
   public boolean annexb = false;
@@ -12,22 +14,25 @@ public class TXSVideoEncoderParam
   public boolean enableBFrame = false;
   public boolean enableBlackList = true;
   public boolean enableEGL14 = false;
+  public JSONArray encFmt = null;
+  public int encodeType = 0;
   public int encoderMode = 1;
   public int encoderProfile = 1;
+  public boolean forceSetBitrateMode = false;
   public int fps = 20;
   public boolean fullIFrame = false;
   public Object glContext = null;
   public int gop = 3;
-  public int height = 640;
+  public int height = 0;
   public boolean realTime = false;
   public boolean record = false;
   public int streamType = 0;
   public boolean syncOutput = false;
-  public int width = 360;
+  public int width = 0;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.TXSVideoEncoderParam
  * JD-Core Version:    0.7.0.1
  */

@@ -13,11 +13,11 @@ public abstract interface b
 {
   public abstract void a(Intent paramIntent, a parama);
   
-  public abstract void aG(Intent paramIntent);
+  public abstract void aY(Intent paramIntent);
   
-  public abstract void aH(Intent paramIntent);
+  public abstract void aZ(Intent paramIntent);
   
-  public abstract void aM(Intent paramIntent);
+  public abstract void bf(Intent paramIntent);
   
   public static abstract class a
     extends Binder
@@ -28,7 +28,7 @@ public abstract interface b
       attachInterface(this, "com.tencent.mm.service.IMMServiceStub_AIDL");
     }
     
-    public static b M(IBinder paramIBinder)
+    public static b O(IBinder paramIBinder)
     {
       if (paramIBinder == null) {
         return null;
@@ -86,7 +86,7 @@ public abstract interface b
         if (paramParcel1.readInt() != 0) {}
         for (paramParcel1 = (Intent)Intent.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
         {
-          aM(paramParcel1);
+          bf(paramParcel1);
           paramParcel2.writeNoException();
           return true;
         }
@@ -96,7 +96,7 @@ public abstract interface b
         if (paramParcel1.readInt() != 0) {}
         for (paramParcel1 = (Intent)Intent.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
         {
-          aG(paramParcel1);
+          aY(paramParcel1);
           paramParcel2.writeNoException();
           return true;
         }
@@ -105,7 +105,7 @@ public abstract interface b
       if (paramParcel1.readInt() != 0) {}
       for (paramParcel1 = (Intent)Intent.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
       {
-        aH(paramParcel1);
+        aZ(paramParcel1);
         paramParcel2.writeNoException();
         return true;
       }
@@ -123,7 +123,7 @@ public abstract interface b
       
       public final void a(Intent paramIntent, a parama)
       {
-        AppMethodBeat.i(115268);
+        AppMethodBeat.i(125305);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         for (;;)
@@ -154,13 +154,13 @@ public abstract interface b
           {
             localParcel2.recycle();
             localParcel1.recycle();
-            AppMethodBeat.o(115268);
+            AppMethodBeat.o(125305);
           }
         }
       }
       
       /* Error */
-      public final void aG(Intent paramIntent)
+      public final void aY(Intent paramIntent)
       {
         // Byte code:
         //   0: ldc 75
@@ -226,7 +226,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final void aH(Intent paramIntent)
+      public final void aZ(Intent paramIntent)
       {
         // Byte code:
         //   0: ldc 77
@@ -291,8 +291,13 @@ public abstract interface b
         //   66	71	74	finally
       }
       
+      public final IBinder asBinder()
+      {
+        return this.mRemote;
+      }
+      
       /* Error */
-      public final void aM(Intent paramIntent)
+      public final void bf(Intent paramIntent)
       {
         // Byte code:
         //   0: ldc 79
@@ -355,11 +360,6 @@ public abstract interface b
         //   23	34	74	finally
         //   34	52	74	finally
         //   66	71	74	finally
-      }
-      
-      public final IBinder asBinder()
-      {
-        return this.mRemote;
       }
     }
   }

@@ -14,6 +14,7 @@ public abstract interface ConstantsAPI
   public static final int COMMAND_GETMESSAGE_FROM_WX = 3;
   public static final int COMMAND_HANDLE_SCAN_RESULT = 17;
   public static final int COMMAND_INVOICE_AUTH_INSERT = 20;
+  public static final int COMMAND_JOINT_PAY = 27;
   public static final int COMMAND_JOIN_CHATROOM = 15;
   public static final int COMMAND_JUMP_BIZ_TEMPSESSION = 10;
   public static final int COMMAND_JUMP_BIZ_WEBVIEW = 8;
@@ -21,6 +22,7 @@ public abstract interface ConstantsAPI
   public static final int COMMAND_JUMP_TO_OFFLINE_PAY = 24;
   public static final int COMMAND_LAUNCH_BY_WX = 6;
   public static final int COMMAND_LAUNCH_WX_MINIPROGRAM = 19;
+  public static final int COMMAND_LAUNCH_WX_MINIPROGRAM_WITH_TOKEN = 29;
   public static final int COMMAND_NON_TAX_PAY = 21;
   public static final int COMMAND_OPEN_BUSINESS_VIEW = 26;
   public static final int COMMAND_OPEN_BUSINESS_WEBVIEW = 25;
@@ -29,6 +31,7 @@ public abstract interface ConstantsAPI
   public static final int COMMAND_OPEN_WEBVIEW = 12;
   public static final int COMMAND_PAY_BY_WX = 5;
   public static final int COMMAND_PAY_INSURANCE = 22;
+  public static final int COMMAND_PRELOAD_MINI_PROGRAM = 28;
   public static final int COMMAND_SENDAUTH = 1;
   public static final int COMMAND_SENDMESSAGE_TO_WX = 2;
   public static final int COMMAND_SHOWMESSAGE_FROM_WX = 4;
@@ -38,19 +41,10 @@ public abstract interface ConstantsAPI
   public static final String CONTENT = "_mmessage_content";
   public static final String SDK_VERSION = "_mmessage_sdkVersion";
   public static final String TOKEN = "_message_token";
-  
-  public static final class Token
-  {
-    public static final String WX_LAUNCH_PARAM_KEY = "launchParam";
-    public static final String WX_TOKEN_KEY = "wx_token_key";
-    public static final String WX_TOKEN_PLATFORMID_KEY = "platformId";
-    public static final String WX_TOKEN_PLATFORMID_VALUE = "wechat";
-    public static final String WX_TOKEN_VALUE_MSG = "com.tencent.mm.openapi.token";
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.opensdk.constants.ConstantsAPI
  * JD-Core Version:    0.7.0.1
  */

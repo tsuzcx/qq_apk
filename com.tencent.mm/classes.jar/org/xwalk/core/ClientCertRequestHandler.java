@@ -25,7 +25,7 @@ public class ClientCertRequestHandler
   
   public ClientCertRequestHandler(Object paramObject)
   {
-    AppMethodBeat.i(85500);
+    AppMethodBeat.i(154590);
     this.proceedPrivateKeyListMethod = new ReflectMethod(null, "proceed", new Class[0]);
     this.ignoreMethod = new ReflectMethod(null, "ignore", new Class[0]);
     this.cancelMethod = new ReflectMethod(null, "cancel", new Class[0]);
@@ -35,16 +35,16 @@ public class ClientCertRequestHandler
     this.getPrincipalsMethod = new ReflectMethod(null, "getPrincipals", new Class[0]);
     this.bridge = paramObject;
     reflectionInit();
-    AppMethodBeat.o(85500);
+    AppMethodBeat.o(154590);
   }
   
   public void cancel()
   {
-    AppMethodBeat.i(85503);
+    AppMethodBeat.i(154593);
     try
     {
       this.cancelMethod.invoke(new Object[0]);
-      AppMethodBeat.o(85503);
+      AppMethodBeat.o(154593);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -53,11 +53,11 @@ public class ClientCertRequestHandler
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85503);
+        AppMethodBeat.o(154593);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85503);
+      AppMethodBeat.o(154593);
     }
   }
   
@@ -68,11 +68,11 @@ public class ClientCertRequestHandler
   
   public String getHost()
   {
-    AppMethodBeat.i(85504);
+    AppMethodBeat.i(154594);
     try
     {
       String str = (String)this.getHostMethod.invoke(new Object[0]);
-      AppMethodBeat.o(85504);
+      AppMethodBeat.o(154594);
       return str;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -81,22 +81,22 @@ public class ClientCertRequestHandler
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85504);
+        AppMethodBeat.o(154594);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85504);
+      AppMethodBeat.o(154594);
     }
     return null;
   }
   
   public String[] getKeyTypes()
   {
-    AppMethodBeat.i(85506);
+    AppMethodBeat.i(154596);
     try
     {
       String[] arrayOfString = (String[])this.getKeyTypesMethod.invoke(new Object[0]);
-      AppMethodBeat.o(85506);
+      AppMethodBeat.o(154596);
       return arrayOfString;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -105,22 +105,22 @@ public class ClientCertRequestHandler
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85506);
+        AppMethodBeat.o(154596);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85506);
+      AppMethodBeat.o(154596);
     }
     return null;
   }
   
   public int getPort()
   {
-    AppMethodBeat.i(85505);
+    AppMethodBeat.i(154595);
     try
     {
       int i = ((Integer)this.getPortMethod.invoke(new Object[0])).intValue();
-      AppMethodBeat.o(85505);
+      AppMethodBeat.o(154595);
       return i;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -129,22 +129,22 @@ public class ClientCertRequestHandler
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85505);
+        AppMethodBeat.o(154595);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85505);
+      AppMethodBeat.o(154595);
     }
     return 0;
   }
   
   public Principal[] getPrincipals()
   {
-    AppMethodBeat.i(85507);
+    AppMethodBeat.i(154597);
     try
     {
       Principal[] arrayOfPrincipal = (Principal[])this.getPrincipalsMethod.invoke(new Object[0]);
-      AppMethodBeat.o(85507);
+      AppMethodBeat.o(154597);
       return arrayOfPrincipal;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -153,22 +153,22 @@ public class ClientCertRequestHandler
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85507);
+        AppMethodBeat.o(154597);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85507);
+      AppMethodBeat.o(154597);
     }
     return null;
   }
   
   public void ignore()
   {
-    AppMethodBeat.i(85502);
+    AppMethodBeat.i(154592);
     try
     {
       this.ignoreMethod.invoke(new Object[0]);
-      AppMethodBeat.o(85502);
+      AppMethodBeat.o(154592);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -177,21 +177,21 @@ public class ClientCertRequestHandler
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85502);
+        AppMethodBeat.o(154592);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85502);
+      AppMethodBeat.o(154592);
     }
   }
   
   public void proceed(PrivateKey paramPrivateKey, List<X509Certificate> paramList)
   {
-    AppMethodBeat.i(85501);
+    AppMethodBeat.i(154591);
     try
     {
       this.proceedPrivateKeyListMethod.invoke(new Object[] { paramPrivateKey, paramList });
-      AppMethodBeat.o(85501);
+      AppMethodBeat.o(154591);
       return;
     }
     catch (UnsupportedOperationException paramPrivateKey)
@@ -199,23 +199,23 @@ public class ClientCertRequestHandler
       if (this.coreWrapper == null)
       {
         paramPrivateKey = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85501);
+        AppMethodBeat.o(154591);
         throw paramPrivateKey;
       }
       XWalkCoreWrapper.handleRuntimeError(paramPrivateKey);
-      AppMethodBeat.o(85501);
+      AppMethodBeat.o(154591);
     }
   }
   
   void reflectionInit()
   {
-    AppMethodBeat.i(85508);
+    AppMethodBeat.i(154598);
     XWalkCoreWrapper.initEmbeddedMode();
     this.coreWrapper = XWalkCoreWrapper.getInstance();
     if (this.coreWrapper == null)
     {
       XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(85508);
+      AppMethodBeat.o(154598);
       return;
     }
     this.proceedPrivateKeyListMethod.init(this.bridge, null, "proceedSuper", new Class[] { PrivateKey.class, List.class });
@@ -225,12 +225,12 @@ public class ClientCertRequestHandler
     this.getPortMethod.init(this.bridge, null, "getPortSuper", new Class[0]);
     this.getKeyTypesMethod.init(this.bridge, null, "getKeyTypesSuper", new Class[0]);
     this.getPrincipalsMethod.init(this.bridge, null, "getPrincipalsSuper", new Class[0]);
-    AppMethodBeat.o(85508);
+    AppMethodBeat.o(154598);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.ClientCertRequestHandler
  * JD-Core Version:    0.7.0.1
  */

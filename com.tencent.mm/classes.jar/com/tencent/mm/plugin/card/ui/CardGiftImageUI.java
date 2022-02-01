@@ -8,6 +8,7 @@ import android.os.Looper;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -17,13 +18,15 @@ import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.d.a.a;
 import com.tencent.mm.plugin.card.model.CardGiftInfo;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.tools.MMGestureGallery;
+import com.tencent.mm.ui.tools.MMGestureGallery.f;
 import com.tencent.mm.ui.tools.e;
+import com.tencent.mm.ui.tools.e.c;
 import com.tencent.mm.ui.tools.l;
 
 @com.tencent.mm.ui.base.a(3)
@@ -31,187 +34,246 @@ public class CardGiftImageUI
   extends MMActivity
   implements a.a
 {
-  private l igW;
-  private String imgPath;
+  private String dpa;
+  private MMGestureGallery ibu;
   private boolean isAnimated;
-  private e kip;
-  private ImageView kuA;
-  private RelativeLayout kuB;
-  private MMGestureGallery kuC;
-  private ProgressBar kuD;
-  private ak kuE;
-  private Bundle kuF;
-  private int kuG;
-  private int kuH;
-  private int kuI;
-  private int kuJ;
-  private CardGiftImageUI.a kuK;
-  private CardGiftInfo kuz;
+  private l kxh;
+  private CardGiftImageUI.a nAa;
+  private CardGiftInfo nzP;
+  private ImageView nzQ;
+  private RelativeLayout nzR;
+  private ProgressBar nzS;
+  private ap nzT;
+  private Bundle nzU;
+  private e nzV;
+  private int nzW;
+  private int nzX;
+  private int nzY;
+  private int nzZ;
   
   public CardGiftImageUI()
   {
-    AppMethodBeat.i(88403);
-    this.kuE = new ak(Looper.getMainLooper());
+    AppMethodBeat.i(113328);
+    this.nzT = new ap(Looper.getMainLooper());
     this.isAnimated = false;
-    this.kuG = 0;
-    this.kuH = 0;
-    this.kuI = 0;
-    this.kuJ = 0;
-    AppMethodBeat.o(88403);
+    this.nzW = 0;
+    this.nzX = 0;
+    this.nzY = 0;
+    this.nzZ = 0;
+    AppMethodBeat.o(113328);
   }
   
-  public final void Ig(String paramString) {}
+  public final void QQ(String paramString) {}
   
-  public final void bO(String paramString, int paramInt)
+  public final void bKT()
   {
-    AppMethodBeat.i(88412);
-    this.kuE.post(new CardGiftImageUI.7(this));
-    AppMethodBeat.o(88412);
+    AppMethodBeat.i(113336);
+    this.nzV.P(this.nzX, this.nzW, this.nzY, this.nzZ);
+    this.nzV.a(this.nzR, this.nzQ, new e.c()
+    {
+      public final void onAnimationEnd()
+      {
+        AppMethodBeat.i(113324);
+        new ap().post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(113323);
+            CardGiftImageUI.this.finish();
+            CardGiftImageUI.this.overridePendingTransition(0, 0);
+            AppMethodBeat.o(113323);
+          }
+        });
+        AppMethodBeat.o(113324);
+      }
+      
+      public final void onAnimationStart() {}
+    }, null);
+    AppMethodBeat.o(113336);
   }
   
-  public final void bdV()
+  public final void cx(String paramString, int paramInt)
   {
-    AppMethodBeat.i(88411);
-    this.kip.L(this.kuH, this.kuG, this.kuI, this.kuJ);
-    this.kip.a(this.kuB, this.kuA, new CardGiftImageUI.6(this), null);
-    AppMethodBeat.o(88411);
+    AppMethodBeat.i(113337);
+    this.nzT.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(113325);
+        if (CardGiftImageUI.f(CardGiftImageUI.this).getVisibility() != 0) {
+          CardGiftImageUI.f(CardGiftImageUI.this).setVisibility(0);
+        }
+        AppMethodBeat.o(113325);
+      }
+    });
+    AppMethodBeat.o(113337);
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(88410);
+    AppMethodBeat.i(113335);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      ab.d("MicroMsg.CardGiftImageUI", "dispatchKeyEvent");
-      bdV();
-      AppMethodBeat.o(88410);
+      ad.d("MicroMsg.CardGiftImageUI", "dispatchKeyEvent");
+      bKT();
+      AppMethodBeat.o(113335);
       return true;
     }
     boolean bool = super.dispatchKeyEvent(paramKeyEvent);
-    AppMethodBeat.o(88410);
+    AppMethodBeat.o(113335);
     return bool;
   }
   
-  public final void du(String paramString1, String paramString2)
+  public final void eE(String paramString1, final String paramString2)
   {
-    AppMethodBeat.i(88413);
-    this.kuE.post(new CardGiftImageUI.8(this, paramString2));
-    AppMethodBeat.o(88413);
+    AppMethodBeat.i(113338);
+    this.nzT.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(113326);
+        if (CardGiftImageUI.f(CardGiftImageUI.this).getVisibility() != 8) {
+          CardGiftImageUI.f(CardGiftImageUI.this).setVisibility(8);
+        }
+        CardGiftImageUI.a(CardGiftImageUI.this, paramString2);
+        CardGiftImageUI.g(CardGiftImageUI.this);
+        CardGiftImageUI.h(CardGiftImageUI.this).notifyDataSetChanged();
+        AppMethodBeat.o(113326);
+      }
+    });
+    AppMethodBeat.o(113338);
   }
   
   public int getLayoutId()
   {
-    return 2130968938;
+    return 2131493280;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(88405);
-    this.kuA = ((ImageView)findViewById(2131822135));
-    this.kuA.setLayerType(2, null);
-    this.kuD = ((ProgressBar)findViewById(2131822138));
-    this.kuB = ((RelativeLayout)findViewById(2131822136));
-    this.kuC = ((MMGestureGallery)findViewById(2131822137));
-    this.kuC.setVerticalFadingEdgeEnabled(false);
-    this.kuC.setHorizontalFadingEdgeEnabled(false);
-    this.kuK = new CardGiftImageUI.a(this, (byte)0);
-    this.kuC.setAdapter(this.kuK);
-    this.kuC.setSingleClickOverListener(new CardGiftImageUI.1(this));
-    this.kuC.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+    AppMethodBeat.i(113330);
+    this.nzQ = ((ImageView)findViewById(2131300336));
+    this.nzS = ((ProgressBar)findViewById(2131300950));
+    this.nzR = ((RelativeLayout)findViewById(2131300960));
+    this.ibu = ((MMGestureGallery)findViewById(2131300335));
+    this.ibu.setVerticalFadingEdgeEnabled(false);
+    this.ibu.setHorizontalFadingEdgeEnabled(false);
+    this.nAa = new CardGiftImageUI.a(this, (byte)0);
+    this.ibu.setAdapter(this.nAa);
+    this.ibu.setSingleClickOverListener(new MMGestureGallery.f()
+    {
+      public final void aHo()
+      {
+        AppMethodBeat.i(113318);
+        CardGiftImageUI.this.bKT();
+        AppMethodBeat.o(113318);
+      }
+    });
+    this.ibu.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(88394);
-        h.a(CardGiftImageUI.this, CardGiftImageUI.a(CardGiftImageUI.this).cwt());
-        AppMethodBeat.o(88394);
+        AppMethodBeat.i(113319);
+        h.a(CardGiftImageUI.this, CardGiftImageUI.a(CardGiftImageUI.this).fdQ());
+        AppMethodBeat.o(113319);
         return true;
       }
     });
-    this.kip = new e(this);
-    AppMethodBeat.o(88405);
+    this.nzV = new e(this);
+    AppMethodBeat.o(113330);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(88404);
+    AppMethodBeat.i(113329);
     if (getIntent().getExtras() != null) {
       getIntent().getExtras().setClassLoader(getClass().getClassLoader());
     }
     super.onCreate(paramBundle);
     hideTitleView();
-    this.kuF = paramBundle;
+    this.nzU = paramBundle;
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setFlags(1024, 1024);
     }
-    this.kuz = ((CardGiftInfo)getIntent().getParcelableExtra("key_gift_into"));
-    if (this.kuz == null) {}
-    for (paramBundle = "null";; paramBundle = this.kuz.toString())
+    this.nzP = ((CardGiftInfo)getIntent().getParcelableExtra("key_gift_into"));
+    if (this.nzP == null) {}
+    for (paramBundle = "null";; paramBundle = this.nzP.toString())
     {
-      ab.d("MicroMsg.CardGiftImageUI", "cardGiftInfo:%s", new Object[] { paramBundle });
-      ab.i("MicroMsg.CardGiftImageUI", "imgPath:%s", new Object[] { this.imgPath });
+      ad.d("MicroMsg.CardGiftImageUI", "cardGiftInfo:%s", new Object[] { paramBundle });
+      ad.i("MicroMsg.CardGiftImageUI", "imgPath:%s", new Object[] { this.dpa });
       initView();
       com.tencent.mm.plugin.card.d.a.a(this);
-      if ((this.kuz == null) || (bo.isNullOrNil(this.kuz.kmD))) {
+      if ((this.nzP == null) || (bt.isNullOrNil(this.nzP.nrJ))) {
         break;
       }
-      com.tencent.mm.plugin.card.d.a.h(this.kuz.kmD, this.kuz.kmG, this.kuz.kmP, 2);
-      AppMethodBeat.o(88404);
+      com.tencent.mm.plugin.card.d.a.g(this.nzP.nrJ, this.nzP.nrM, this.nzP.nrU, 2);
+      AppMethodBeat.o(113329);
       return;
     }
-    ab.e("MicroMsg.CardGiftImageUI", "fromUserContentPicUrl is null");
-    AppMethodBeat.o(88404);
+    ad.e("MicroMsg.CardGiftImageUI", "fromUserContentPicUrl is null");
+    AppMethodBeat.o(113329);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(88409);
+    AppMethodBeat.i(113334);
     super.onDestroy();
     com.tencent.mm.plugin.card.d.a.b(this);
-    AppMethodBeat.o(88409);
+    AppMethodBeat.o(113334);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(88408);
+    AppMethodBeat.i(113333);
     super.onPause();
-    AppMethodBeat.o(88408);
+    AppMethodBeat.o(113333);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(88407);
+    AppMethodBeat.i(113332);
     super.onResume();
-    if (this.kuK != null) {
-      this.kuK.notifyDataSetChanged();
+    if (this.nAa != null) {
+      this.nAa.notifyDataSetChanged();
     }
-    AppMethodBeat.o(88407);
+    AppMethodBeat.o(113332);
   }
   
   public void onStart()
   {
-    AppMethodBeat.i(88406);
-    Bundle localBundle = this.kuF;
+    AppMethodBeat.i(113331);
+    Bundle localBundle = this.nzU;
     if (!this.isAnimated)
     {
       this.isAnimated = true;
       if (Build.VERSION.SDK_INT >= 12) {
         break label63;
       }
-      ab.e("MicroMsg.CardGiftImageUI", "version is %d, no animation", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
+      ad.e("MicroMsg.CardGiftImageUI", "version is %d, no animation", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) });
     }
     for (;;)
     {
       super.onStart();
-      AppMethodBeat.o(88406);
+      AppMethodBeat.o(113331);
       return;
       label63:
-      this.kuG = getIntent().getIntExtra("img_top", 0);
-      this.kuH = getIntent().getIntExtra("img_left", 0);
-      this.kuI = getIntent().getIntExtra("img_width", 0);
-      this.kuJ = getIntent().getIntExtra("img_height", 0);
-      this.kip.L(this.kuH, this.kuG, this.kuI, this.kuJ);
+      this.nzW = getIntent().getIntExtra("img_top", 0);
+      this.nzX = getIntent().getIntExtra("img_left", 0);
+      this.nzY = getIntent().getIntExtra("img_width", 0);
+      this.nzZ = getIntent().getIntExtra("img_height", 0);
+      this.nzV.P(this.nzX, this.nzW, this.nzY, this.nzZ);
       if (localBundle == null) {
-        this.kuB.getViewTreeObserver().addOnPreDrawListener(new CardGiftImageUI.5(this));
+        this.nzR.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+        {
+          public final boolean onPreDraw()
+          {
+            AppMethodBeat.i(113322);
+            CardGiftImageUI.c(CardGiftImageUI.this).getViewTreeObserver().removeOnPreDrawListener(this);
+            CardGiftImageUI.e(CardGiftImageUI.this).a(CardGiftImageUI.c(CardGiftImageUI.this), CardGiftImageUI.d(CardGiftImageUI.this), null);
+            AppMethodBeat.o(113322);
+            return true;
+          }
+        });
       }
     }
   }
@@ -224,7 +286,7 @@ public class CardGiftImageUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardGiftImageUI
  * JD-Core Version:    0.7.0.1
  */

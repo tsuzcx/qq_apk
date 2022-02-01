@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.SwipeBackLayout android:id="@id/f20" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="16.0dip" android:textColor="@color/y4" android:id="@id/f4o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/enk" android:alpha="0.46" />
+    <View android:background="@drawable/a91" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginTop="15.0dip" android:layerType="software" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0dip" android:textColor="@color/rx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/emz" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/rx" android:gravity="right" android:id="@id/f4n" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/rx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/emv" />
+            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="14.0dip" android:textColor="@color/rx" android:gravity="right" android:id="@id/f4m" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" wallet:walletTypeFace="ftc" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

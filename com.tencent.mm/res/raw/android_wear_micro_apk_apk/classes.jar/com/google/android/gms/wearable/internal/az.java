@@ -8,23 +8,23 @@ import java.util.List;
 public final class az
   implements v
 {
-  private final Status HS;
-  private final List<t> TL;
+  private final Status JH;
+  private final List<t> VA;
   
   public az(Status paramStatus, List<t> paramList)
   {
-    this.HS = paramStatus;
-    this.TL = paramList;
+    this.JH = paramStatus;
+    this.VA = paramList;
   }
   
-  public final Status gC()
+  public final Status gM()
   {
-    return this.HS;
+    return this.JH;
   }
   
-  public final List<t> ky()
+  public final List<t> kH()
   {
-    return this.TL;
+    return this.VA;
   }
 }
 

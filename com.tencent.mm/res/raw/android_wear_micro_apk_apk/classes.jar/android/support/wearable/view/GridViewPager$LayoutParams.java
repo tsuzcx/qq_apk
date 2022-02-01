@@ -9,7 +9,7 @@ public class GridViewPager$LayoutParams
   extends ViewGroup.MarginLayoutParams
 {
   public int gravity;
-  public boolean mb;
+  public boolean nX;
   
   public GridViewPager$LayoutParams()
   {
@@ -19,7 +19,7 @@ public class GridViewPager$LayoutParams
   public GridViewPager$LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, GridViewPager.fo());
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, GridViewPager.fx());
     this.gravity = paramContext.getInteger(0, 48);
     paramContext.recycle();
   }

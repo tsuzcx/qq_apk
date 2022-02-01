@@ -10,23 +10,23 @@ public final class MMFtsTokenizer
   
   static
   {
-    AppMethodBeat.i(12641);
+    AppMethodBeat.i(3327);
     EXTENSION = new MMFtsTokenizer();
-    AppMethodBeat.o(12641);
+    AppMethodBeat.o(3327);
   }
   
   private static native void nativeInitialize(long paramLong1, long paramLong2);
   
   public final void initialize(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(12640);
+    AppMethodBeat.i(3326);
     nativeInitialize(paramLong1, paramLong2);
-    AppMethodBeat.o(12640);
+    AppMethodBeat.o(3326);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wcdb.extension.fts.MMFtsTokenizer
  * JD-Core Version:    0.7.0.1
  */

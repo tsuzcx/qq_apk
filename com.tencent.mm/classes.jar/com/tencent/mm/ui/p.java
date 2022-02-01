@@ -1,190 +1,195 @@
 package com.tencent.mm.ui;
 
+import android.app.Activity;
 import android.content.Context;
-import android.database.Cursor;
-import android.os.Looper;
-import android.widget.BaseAdapter;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import java.util.HashMap;
-import java.util.Map;
-import junit.framework.Assert;
+import android.content.res.Resources;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.view.Display;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.h.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-public abstract class p<T>
-  extends BaseAdapter
-  implements k.a, n.b
+public class p
 {
-  public Context context;
-  protected int count;
-  private ak mHV = new ak(Looper.getMainLooper());
-  protected T zan;
-  private Cursor zao = null;
-  protected Map<Integer, T> zap = null;
-  protected p.a zaq;
-  private int zar = 0;
-  private int zas = 0;
-  private int zat = 0;
-  private Runnable zau = new p.1(this);
-  
-  public p(Context paramContext, T paramT)
+  public static int Ts(int paramInt)
   {
-    this.zan = paramT;
-    this.context = paramContext;
-    this.count = -1;
+    return ((int)((paramInt >> 24 & 0xFF) * 0.78F + 56.100006F) & 0xFF) << 24 | ((int)((paramInt >> 16 & 0xFF) * 0.78F + 0.0F) & 0xFF) << 16 | ((int)((paramInt >> 8 & 0xFF) * 0.78F + 0.0F) & 0xFF) << 8 | ((int)((paramInt & 0xFF) * 0.78F + 0.0F) & 0xFF) << 0;
   }
   
-  private void dCq()
+  private static int aB(Context paramContext, int paramInt)
   {
-    ab.v("MicroMsg.MListAdapter", "ashutest:: on UI, directly call resetCursor Job");
-    bKb();
-    Ku();
-    if (this.zaq != null) {
-      this.zaq.apT();
-    }
-  }
-  
-  public abstract void Ku();
-  
-  protected abstract void Kv();
-  
-  public abstract T a(T paramT, Cursor paramCursor);
-  
-  public void a(int paramInt, n paramn, Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof String)))
+    AppMethodBeat.i(175975);
+    Rect localRect = new Rect();
+    ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    if (localRect.top > paramInt)
     {
-      ab.d("MicroMsg.MListAdapter", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      ad.w("Luggage.LuggageUIHelper", "[fixStatusBarHeight] top:%s statusHeight:%s", new Object[] { Integer.valueOf(localRect.top), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(175975);
+      return 0;
+    }
+    AppMethodBeat.o(175975);
+    return paramInt;
+  }
+  
+  public static void b(Window paramWindow)
+  {
+    AppMethodBeat.i(175977);
+    if (paramWindow == null)
+    {
+      AppMethodBeat.o(175977);
       return;
     }
-    a((String)paramObject, null);
-  }
-  
-  public final void a(p.a parama)
-  {
-    this.zaq = parama;
-  }
-  
-  public void a(String paramString, m paramm)
-  {
-    dCq();
-  }
-  
-  protected int bHs()
-  {
-    return 0;
-  }
-  
-  protected T bHt()
-  {
-    return this.zan;
-  }
-  
-  public void bKb()
-  {
-    if (this.zap != null) {
-      this.zap.clear();
-    }
-    if (this.zao != null) {
-      this.zao.close();
-    }
-    this.count = -1;
-  }
-  
-  public final void dAW()
-  {
-    this.zaq = null;
-  }
-  
-  public int getCount()
-  {
-    if (this.count < 0) {
-      this.count = getCursor().getCount();
-    }
-    return this.count + bHs();
-  }
-  
-  protected final Cursor getCursor()
-  {
-    if ((this.zao == null) || (this.zao.isClosed()))
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      Kv();
-      Assert.assertNotNull(this.zao);
+      paramWindow.addFlags(-2147483648);
+      paramWindow.setStatusBarColor(0);
     }
-    return this.zao;
+    AppMethodBeat.o(175977);
   }
   
-  public T getItem(int paramInt)
+  public static boolean c(Window paramWindow, boolean paramBoolean)
   {
-    if (xj(paramInt)) {
-      localObject1 = bHt();
-    }
-    Object localObject2;
-    do
+    AppMethodBeat.i(175978);
+    if ((paramWindow == null) || (paramWindow.getDecorView() == null))
     {
-      return localObject1;
-      if (this.zap == null) {
-        break;
+      AppMethodBeat.o(175978);
+      return false;
+    }
+    if (eQT())
+    {
+      paramWindow = paramWindow.getDecorView();
+      int i = paramWindow.getSystemUiVisibility();
+      if (paramBoolean) {
+        i |= 0x2000;
       }
-      localObject2 = this.zap.get(Integer.valueOf(paramInt));
-      localObject1 = localObject2;
-    } while (localObject2 != null);
-    if ((paramInt < 0) || (!getCursor().moveToPosition(paramInt))) {
-      return null;
-    }
-    if (this.zap == null) {
-      return a(this.zan, getCursor());
-    }
-    Object localObject1 = a(null, getCursor());
-    this.zap.put(Integer.valueOf(paramInt), localObject1);
-    return localObject1;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public final int getRealCount()
-  {
-    if (this.count < 0) {
-      this.count = getCursor().getCount();
-    }
-    return this.count;
-  }
-  
-  public final void qp(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      if (this.zap != null)
+      for (;;)
       {
-        this.zap.clear();
-        this.zap = null;
+        paramWindow.setSystemUiVisibility(i);
+        AppMethodBeat.o(175978);
+        return true;
+        i &= 0xFFFFDFFF;
       }
     }
-    while (this.zap != null) {
-      return;
+    AppMethodBeat.o(175978);
+    return false;
+  }
+  
+  public static Point cf(Context paramContext)
+  {
+    AppMethodBeat.i(175980);
+    Point localPoint = new Point();
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(175980);
+      return localPoint;
     }
-    this.zap = new HashMap();
+    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    if (Build.VERSION.SDK_INT >= 17) {
+      paramContext.getRealSize(localPoint);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(175980);
+      return localPoint;
+      if (Build.VERSION.SDK_INT >= 14) {
+        try
+        {
+          Method localMethod = Display.class.getMethod("getRawHeight", new Class[0]);
+          localPoint.x = ((Integer)Display.class.getMethod("getRawWidth", new Class[0]).invoke(paramContext, new Object[0])).intValue();
+          localPoint.y = ((Integer)localMethod.invoke(paramContext, new Object[0])).intValue();
+        }
+        catch (Exception localException) {}
+      } else {
+        paramContext.getSize(localPoint);
+      }
+    }
   }
   
-  public final void setCursor(Cursor paramCursor)
+  public static boolean eQT()
   {
-    this.zao = paramCursor;
-    this.count = -1;
+    AppMethodBeat.i(175979);
+    if ((Build.VERSION.SDK_INT >= 23) && (!b.XM()))
+    {
+      AppMethodBeat.o(175979);
+      return true;
+    }
+    AppMethodBeat.o(175979);
+    return false;
   }
   
-  public boolean xj(int paramInt)
+  public static int iX(Context paramContext)
   {
-    return (paramInt >= this.count) && (paramInt < this.count + bHs());
+    AppMethodBeat.i(175973);
+    int i = jm(paramContext);
+    AppMethodBeat.o(175973);
+    return i;
+  }
+  
+  public static int jl(Context paramContext)
+  {
+    AppMethodBeat.i(175974);
+    int i = jm(paramContext);
+    if (i > 0)
+    {
+      i = aB(paramContext, i);
+      AppMethodBeat.o(175974);
+      return i;
+    }
+    if ((paramContext instanceof Activity))
+    {
+      Rect localRect = new Rect();
+      ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+      i = ((Activity)paramContext).getWindow().getDecorView().getHeight();
+      int[] arrayOfInt = new int[2];
+      ((Activity)paramContext).getWindow().getDecorView().getLocationOnScreen(arrayOfInt);
+      if ((i - localRect.height() >= 0) && (arrayOfInt[1] > 200))
+      {
+        int j = localRect.height();
+        AppMethodBeat.o(175974);
+        return i - j;
+      }
+      i = localRect.top;
+      AppMethodBeat.o(175974);
+      return i;
+    }
+    i = a.fromDPToPix(paramContext, 20);
+    AppMethodBeat.o(175974);
+    return i;
+  }
+  
+  public static int jm(Context paramContext)
+  {
+    int i = 0;
+    AppMethodBeat.i(175976);
+    try
+    {
+      Class localClass = Class.forName("com.android.internal.R$dimen");
+      Object localObject = localClass.newInstance();
+      int j = bt.getInt(localClass.getField("status_bar_height").get(localObject).toString(), 0);
+      j = paramContext.getResources().getDimensionPixelSize(j);
+      i = j;
+    }
+    catch (Exception paramContext)
+    {
+      label49:
+      break label49;
+    }
+    AppMethodBeat.o(175976);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.p
  * JD-Core Version:    0.7.0.1
  */

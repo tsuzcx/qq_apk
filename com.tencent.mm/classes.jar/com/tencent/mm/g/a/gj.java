@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class gj
   extends b
 {
+  public b djA;
+  public a djz;
+  
   public gj()
   {
     this((byte)0);
@@ -12,8 +16,29 @@ public final class gj
   
   private gj(byte paramByte)
   {
-    this.ymq = false;
+    AppMethodBeat.i(104417);
+    this.djz = new a();
+    this.djA = new b();
+    this.ESR = false;
     this.callback = null;
+    AppMethodBeat.o(104417);
+  }
+  
+  public static final class a
+  {
+    public String aeskey;
+    public int dbV;
+    public String dft;
+    public String djB;
+    public String djC;
+    public String md5;
+    public String name;
+    public String thumbUrl;
+  }
+  
+  public static final class b
+  {
+    public String path;
   }
 }
 

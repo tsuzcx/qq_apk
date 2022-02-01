@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="?e1"
+<android.support.v7.widget.AlertDialogLayout android:gravity="start|center|top" android:orientation="vertical" android:id="@id/ea9" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageButton android:id="@id/kw" android:background="@color/a3x" android:paddingLeft="@dimen/g2" android:paddingRight="@dimen/g2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-    <TextView android:textSize="@dimen/dw" android:textColor="@color/e6" android:gravity="center" android:id="@id/kx" android:background="@drawable/am" android:paddingLeft="@dimen/g2" android:paddingRight="@dimen/g2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="send" />
-    <Button android:id="@id/ky" android:visibility="gone" android:layout_marginRight="@dimen/ft" android:text="send" style="@style/ns" />
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageButton android:id="@id/kz" android:background="@drawable/am" android:paddingLeft="@dimen/g2" android:paddingRight="@dimen/g2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="56.0dip" />
-        <ImageView android:id="@id/l0" android:visibility="gone" android:layout_marginTop="7.0dip" android:layout_marginRight="6.0dip" android:layout_alignTop="@id/kz" android:layout_alignRight="@id/kz" style="@style/v9" />
-    </RelativeLayout>
-</LinearLayout>
+    <include layout="@layout/aa" />
+    <FrameLayout android:id="@id/b3e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
+        <View android:layout_gravity="top" android:id="@id/f7i" android:background="?fi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <android.support.v4.widget.NestedScrollView android:id="@id/f7j" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <android.widget.Space android:id="@id/g6j" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/md" />
+                <TextView android:id="@android:id/message" android:paddingLeft="?id" android:paddingRight="?id" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ut" />
+                <android.widget.Space android:id="@id/g6i" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/md" />
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+        <View android:layout_gravity="bottom" android:id="@id/f7h" android:background="?fi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/b7p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
+        <FrameLayout android:id="@id/b7o" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/a9" />
+</android.support.v7.widget.AlertDialogLayout>

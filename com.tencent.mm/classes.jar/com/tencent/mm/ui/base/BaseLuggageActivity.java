@@ -1,0 +1,147 @@
+package com.tencent.mm.ui.base;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.support.v7.app.ActionBar;
+import android.view.View;
+import android.view.Window;
+import com.tencent.luggage.h.e;
+import com.tencent.luggage.h.e.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.BaseActivity;
+import com.tencent.mm.ui.am;
+
+public class BaseLuggageActivity
+  extends BaseActivity
+  implements e.d
+{
+  private static boolean aJZ(String paramString)
+  {
+    AppMethodBeat.i(176011);
+    String str1 = Build.MODEL;
+    String str2 = Build.DEVICE;
+    if ((str1 == null) && (str2 == null))
+    {
+      AppMethodBeat.o(176011);
+      return false;
+    }
+    if ((lo(str1, paramString)) || (lo(str2, paramString)))
+    {
+      AppMethodBeat.o(176011);
+      return true;
+    }
+    AppMethodBeat.o(176011);
+    return false;
+  }
+  
+  private static boolean lo(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(176010);
+    if ((paramString1 == null) || (paramString2 == null))
+    {
+      AppMethodBeat.o(176010);
+      return false;
+    }
+    boolean bool = bt.kU(paramString1.toLowerCase(), paramString2.toLowerCase());
+    AppMethodBeat.o(176010);
+    return bool;
+  }
+  
+  public int getLayoutId()
+  {
+    return 2131492992;
+  }
+  
+  protected final void hideActionbarLine()
+  {
+    AppMethodBeat.i(131600);
+    if ((Build.VERSION.SDK_INT >= 21) && (getSupportActionBar() != null)) {
+      getSupportActionBar().setElevation(0.0F);
+    }
+    AppMethodBeat.o(131600);
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(131598);
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    e.az(this).onActivityResult(paramInt1, paramInt2, paramIntent);
+    AppMethodBeat.o(131598);
+  }
+  
+  public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(131599);
+    super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    e.az(this).b(paramInt, paramArrayOfInt);
+    AppMethodBeat.o(131599);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public final void setNavigationbarColor(int paramInt)
+  {
+    AppMethodBeat.i(176012);
+    int i;
+    View localView;
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      if ((!aJZ("y83a")) && (!aJZ("y83")) && (!aJZ("v1732a")) && (!aJZ("v1732t"))) {
+        break label100;
+      }
+      i = 1;
+      if (i == 0)
+      {
+        getWindow().setNavigationBarColor(paramInt);
+        boolean bool = am.XC(paramInt);
+        localView = getWindow().getDecorView();
+        paramInt = localView.getSystemUiVisibility();
+        if (!bool) {
+          break label105;
+        }
+        paramInt &= 0xFFFFFFEF;
+      }
+    }
+    for (;;)
+    {
+      localView.setSystemUiVisibility(paramInt);
+      AppMethodBeat.o(176012);
+      return;
+      label100:
+      i = 0;
+      break;
+      label105:
+      paramInt |= 0x10;
+    }
+  }
+  
+  public void setRequestedOrientation(int paramInt)
+  {
+    AppMethodBeat.i(131601);
+    try
+    {
+      super.setRequestedOrientation(paramInt);
+      AppMethodBeat.o(131601);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      ad.printErrStackTrace("MicroMsg.BaseLuggageActivity", localThrowable, "AndroidOSafety.safety uncaught", new Object[0]);
+      AppMethodBeat.o(131601);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     com.tencent.mm.ui.base.BaseLuggageActivity
+ * JD-Core Version:    0.7.0.1
+ */

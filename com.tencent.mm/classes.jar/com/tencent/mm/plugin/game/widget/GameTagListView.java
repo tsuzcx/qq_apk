@@ -10,8 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public class GameTagListView
@@ -25,13 +25,13 @@ public class GameTagListView
     super(paramContext, paramAttributeSet);
   }
   
-  public final void f(LinkedList<String> paramLinkedList, int paramInt)
+  public final void h(LinkedList<String> paramLinkedList, int paramInt)
   {
-    AppMethodBeat.i(112412);
-    if (bo.es(paramLinkedList))
+    AppMethodBeat.i(42623);
+    if (bt.gL(paramLinkedList))
     {
       setVisibility(8);
-      AppMethodBeat.o(112412);
+      AppMethodBeat.o(42623);
       return;
     }
     setVisibility(0);
@@ -40,12 +40,12 @@ public class GameTagListView
     while (getChildCount() < paramLinkedList.size())
     {
       localObject1 = new TextView(getContext());
-      ((TextView)localObject1).setBackgroundResource(2130839038);
+      ((TextView)localObject1).setBackgroundResource(2131232577);
       ((TextView)localObject1).setMaxLines(1);
       ((TextView)localObject1).setTextColor(this.textColor);
       ((TextView)localObject1).setTextSize(0, this.textSize);
       localObject2 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject2).setMargins(0, 0, getResources().getDimensionPixelSize(2131427731), 0);
+      ((LinearLayout.LayoutParams)localObject2).setMargins(0, 0, getResources().getDimensionPixelSize(2131165437), 0);
       ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       addView((View)localObject1);
     }
@@ -57,14 +57,14 @@ public class GameTagListView
       if (i < paramLinkedList.size())
       {
         localObject1 = (String)paramLinkedList.get(i);
-        ab.d("MicroMsg.GameTagListView", (String)localObject1);
+        ad.d("MicroMsg.GameTagListView", (String)localObject1);
         localObject2 = (TextView)getChildAt(i);
         ((TextView)localObject2).setVisibility(0);
         ((TextView)localObject2).setText((CharSequence)localObject1);
         float f2 = ((TextView)localObject2).getPaint().measureText((String)localObject1);
         float f3 = ((TextView)localObject2).getPaddingLeft();
         float f4 = ((TextView)localObject2).getPaddingRight();
-        f1 = getResources().getDimensionPixelSize(2131427731) + (f2 + f3 + f4 + f1);
+        f1 = getResources().getDimensionPixelSize(2131165437) + (f2 + f3 + f4 + f1);
         if (f1 > paramInt)
         {
           ((TextView)localObject2).setVisibility(8);
@@ -81,21 +81,21 @@ public class GameTagListView
       }
       i += 1;
     }
-    AppMethodBeat.o(112412);
+    AppMethodBeat.o(42623);
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(112411);
+    AppMethodBeat.i(42622);
     super.onFinishInflate();
-    this.textColor = getResources().getColor(2131690108);
-    this.textSize = getResources().getDimensionPixelSize(2131427733);
-    AppMethodBeat.o(112411);
+    this.textColor = getResources().getColor(2131100432);
+    this.textSize = getResources().getDimensionPixelSize(2131165441);
+    AppMethodBeat.o(42622);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.GameTagListView
  * JD-Core Version:    0.7.0.1
  */

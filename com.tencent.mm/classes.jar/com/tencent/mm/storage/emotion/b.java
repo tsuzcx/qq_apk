@@ -1,73 +1,168 @@
 package com.tencent.mm.storage.emotion;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bc;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.storage.at;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public final class b
-  extends bc
+  extends j<a>
 {
-  protected static c.a info;
+  public static final String[] SQL_CREATE;
+  private e db;
   
   static
   {
-    AppMethodBeat.i(62793);
-    c.a locala = new c.a();
-    locala.yrK = new Field[7];
-    locala.columns = new String[8];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "md5_lang";
-    locala.yrM.put("md5_lang", "TEXT PRIMARY KEY  COLLATE NOCASE ");
-    localStringBuilder.append(" md5_lang TEXT PRIMARY KEY  COLLATE NOCASE ");
-    localStringBuilder.append(", ");
-    locala.yrL = "md5_lang";
-    locala.columns[1] = "md5";
-    locala.yrM.put("md5", "TEXT COLLATE NOCASE ");
-    localStringBuilder.append(" md5 TEXT COLLATE NOCASE ");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "lang";
-    locala.yrM.put("lang", "TEXT COLLATE NOCASE ");
-    localStringBuilder.append(" lang TEXT COLLATE NOCASE ");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "desc";
-    locala.yrM.put("desc", "TEXT");
-    localStringBuilder.append(" desc TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "groupId";
-    locala.yrM.put("groupId", "TEXT default '' ");
-    localStringBuilder.append(" groupId TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "click_flag";
-    locala.yrM.put("click_flag", "INTEGER");
-    localStringBuilder.append(" click_flag INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "download_flag";
-    locala.yrM.put("download_flag", "INTEGER");
-    localStringBuilder.append(" download_flag INTEGER");
-    locala.columns[7] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(62793);
+    AppMethodBeat.i(183928);
+    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "EmojiDesignerProduct") };
+    AppMethodBeat.o(183928);
   }
   
-  public final String Al()
+  public b(e parame)
   {
-    if (this.field_md5 == null) {
-      return "";
+    super(parame, a.info, "EmojiDesignerProduct", null);
+    this.db = parame;
+  }
+  
+  /* Error */
+  public final at WE(int paramInt)
+  {
+    // Byte code:
+    //   0: ldc 52
+    //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 54	com/tencent/mm/storage/at
+    //   8: dup
+    //   9: invokespecial 56	com/tencent/mm/storage/at:<init>	()V
+    //   12: astore 4
+    //   14: aload 4
+    //   16: iload_1
+    //   17: putfield 60	com/tencent/mm/storage/at:fMB	I
+    //   20: aload_0
+    //   21: getfield 45	com/tencent/mm/storage/emotion/b:db	Lcom/tencent/mm/sdk/e/e;
+    //   24: ldc 28
+    //   26: getstatic 26	com/tencent/mm/storage/emotion/a:info	Lcom/tencent/mm/sdk/e/c$a;
+    //   29: getfield 65	com/tencent/mm/sdk/e/c$a:columns	[Ljava/lang/String;
+    //   32: ldc 67
+    //   34: iconst_1
+    //   35: anewarray 20	java/lang/String
+    //   38: dup
+    //   39: iconst_0
+    //   40: iload_1
+    //   41: invokestatic 71	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   44: aastore
+    //   45: aconst_null
+    //   46: aconst_null
+    //   47: aconst_null
+    //   48: invokeinterface 77 8 0
+    //   53: astore 5
+    //   55: aload 5
+    //   57: ifnull +93 -> 150
+    //   60: aload 5
+    //   62: invokeinterface 83 1 0
+    //   67: ifeq +83 -> 150
+    //   70: new 22	com/tencent/mm/storage/emotion/a
+    //   73: dup
+    //   74: invokespecial 84	com/tencent/mm/storage/emotion/a:<init>	()V
+    //   77: astore_2
+    //   78: aload_2
+    //   79: aload 5
+    //   81: invokevirtual 88	com/tencent/mm/storage/emotion/a:convertFrom	(Landroid/database/Cursor;)V
+    //   84: aload 4
+    //   86: getfield 92	com/tencent/mm/storage/at:FyC	Ljava/util/LinkedList;
+    //   89: aload_2
+    //   90: invokevirtual 98	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   93: pop
+    //   94: goto -34 -> 60
+    //   97: astore_3
+    //   98: ldc 52
+    //   100: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   103: aload_3
+    //   104: athrow
+    //   105: astore_2
+    //   106: aload 5
+    //   108: ifnull +14 -> 122
+    //   111: aload_3
+    //   112: ifnull +64 -> 176
+    //   115: aload 5
+    //   117: invokeinterface 101 1 0
+    //   122: ldc 52
+    //   124: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   127: aload_2
+    //   128: athrow
+    //   129: astore_2
+    //   130: ldc 103
+    //   132: aload_2
+    //   133: ldc 105
+    //   135: iconst_0
+    //   136: anewarray 107	java/lang/Object
+    //   139: invokestatic 113	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   142: ldc 52
+    //   144: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   147: aload 4
+    //   149: areturn
+    //   150: aload 5
+    //   152: ifnull -10 -> 142
+    //   155: aload 5
+    //   157: invokeinterface 101 1 0
+    //   162: goto -20 -> 142
+    //   165: astore 5
+    //   167: aload_3
+    //   168: aload 5
+    //   170: invokevirtual 117	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   173: goto -51 -> 122
+    //   176: aload 5
+    //   178: invokeinterface 101 1 0
+    //   183: goto -61 -> 122
+    //   186: astore_2
+    //   187: aconst_null
+    //   188: astore_3
+    //   189: goto -83 -> 106
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	192	0	this	b
+    //   0	192	1	paramInt	int
+    //   77	13	2	locala	a
+    //   105	23	2	localObject1	Object
+    //   129	4	2	localException	java.lang.Exception
+    //   186	1	2	localObject2	Object
+    //   97	71	3	localThrowable1	java.lang.Throwable
+    //   188	1	3	localObject3	Object
+    //   12	136	4	localat	at
+    //   53	103	5	localCursor	android.database.Cursor
+    //   165	12	5	localThrowable2	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   60	94	97	java/lang/Throwable
+    //   98	105	105	finally
+    //   20	55	129	java/lang/Exception
+    //   115	122	129	java/lang/Exception
+    //   122	129	129	java/lang/Exception
+    //   155	162	129	java/lang/Exception
+    //   167	173	129	java/lang/Exception
+    //   176	183	129	java/lang/Exception
+    //   115	122	165	java/lang/Throwable
+    //   60	94	186	finally
+  }
+  
+  public final void a(at paramat)
+  {
+    AppMethodBeat.i(183927);
+    Object localObject = paramat.fMB;
+    this.db.delete("EmojiDesignerProduct", "designerUin=? ", new String[] { localObject });
+    paramat = paramat.FyC.iterator();
+    while (paramat.hasNext())
+    {
+      localObject = (a)paramat.next();
+      this.db.insert("EmojiDesignerProduct", "", ((a)localObject).convertTo());
     }
-    return this.field_md5;
-  }
-  
-  public final c.a getDBInfo()
-  {
-    return null;
+    AppMethodBeat.o(183927);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.b
  * JD-Core Version:    0.7.0.1
  */

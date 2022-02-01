@@ -2,8 +2,8 @@ package com.tencent.mm.sdk;
 
 public final class a
 {
-  public static String ylY = "wechatmm";
-  public static String ylZ = "matrixmrs";
+  public static String ESB = "matrixmrs";
+  public static String ESC = "andromeda";
 }
 
 

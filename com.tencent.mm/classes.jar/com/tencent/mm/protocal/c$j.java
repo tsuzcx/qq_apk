@@ -5,12 +5,12 @@ public final class c$j
 {
   public c$j()
   {
-    super("addDownloadTask", "add_download_task", 38, false);
+    super("addDownloadApp", "addDownloadApp", 344, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.j
  * JD-Core Version:    0.7.0.1
  */

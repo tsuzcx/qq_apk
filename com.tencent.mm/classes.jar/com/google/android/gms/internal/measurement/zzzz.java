@@ -9,10 +9,10 @@ class zzzz
   
   static
   {
-    AppMethodBeat.i(3603);
+    AppMethodBeat.i(40393);
     zzbta = new zzaab(null);
     zzbtb = new zzaac(null);
-    AppMethodBeat.o(3603);
+    AppMethodBeat.o(40393);
   }
   
   static zzzz zztq()
@@ -27,7 +27,7 @@ class zzzz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzzz
  * JD-Core Version:    0.7.0.1
  */

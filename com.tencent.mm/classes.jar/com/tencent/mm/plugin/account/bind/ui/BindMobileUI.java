@@ -1,156 +1,220 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.au.b;
-import com.tencent.mm.au.b.a;
+import com.tencent.mm.ax.b;
+import com.tencent.mm.ax.b.a;
 import com.tencent.mm.modelsimple.BindWordingContent;
+import com.tencent.mm.plugin.account.a.a;
 import com.tencent.mm.plugin.account.friend.ui.i;
 import com.tencent.mm.plugin.account.friend.ui.i.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BindMobileUI
   extends MMWizardActivity
 {
   private String countryCode = null;
-  private String czF;
-  private String fHT = null;
-  private EditText gtH;
-  private LinearLayout gtI;
-  private TextView gtK;
-  private TextView gtL;
-  private String gtM = null;
-  private i gtr;
-  private BindWordingContent gub;
-  private int guc;
-  private TextView gui;
-  private Button guj;
-  private TextView guk;
-  private TextView gul;
-  private CheckBox gum;
-  private CheckBox gun;
-  private LinearLayout guo;
-  private ImageView gup;
-  private boolean guq;
+  private String dpO;
+  private TextView fQp;
+  private String hkO = null;
+  private EditText igI;
+  private LinearLayout igJ;
+  private TextView igL;
+  private TextView igM;
+  private String igN = null;
+  private i igt;
+  private BindWordingContent ihc;
+  private int ihd;
+  private Button ihj;
+  private TextView ihk;
+  private TextView ihl;
+  private CheckBox ihm;
+  private CheckBox ihn;
+  private LinearLayout iho;
+  private ImageView ihp;
+  private boolean ihq;
   
   public int getLayoutId()
   {
-    return 2130968841;
+    return 2131493173;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(13519);
-    this.gtH = ((EditText)findViewById(2131821768));
-    this.gtI = ((LinearLayout)findViewById(2131821765));
-    this.gtK = ((TextView)findViewById(2131821767));
-    this.gtL = ((TextView)findViewById(2131821766));
-    this.gui = ((TextView)findViewById(2131821764));
-    this.guj = ((Button)findViewById(2131821769));
-    this.guk = ((TextView)findViewById(2131821775));
-    this.gui.setText(getString(2131297588));
-    this.gul = ((TextView)findViewById(2131821773));
-    this.guo = ((LinearLayout)findViewById(2131821770));
-    this.gun = ((CheckBox)findViewById(2131821772));
-    this.gum = ((CheckBox)findViewById(2131821771));
-    this.gup = ((ImageView)findViewById(2131821763));
-    if (this.gub != null)
+    AppMethodBeat.i(109946);
+    this.igI = ((EditText)findViewById(2131297244));
+    this.igJ = ((LinearLayout)findViewById(2131298805));
+    this.igL = ((TextView)findViewById(2131298807));
+    this.igM = ((TextView)findViewById(2131298803));
+    this.fQp = ((TextView)findViewById(2131297248));
+    this.ihj = ((Button)findViewById(2131297232));
+    this.ihk = ((TextView)findViewById(2131297245));
+    this.fQp.setText(getString(2131756480));
+    this.ihl = ((TextView)findViewById(2131297233));
+    this.iho = ((LinearLayout)findViewById(2131297247));
+    this.ihn = ((CheckBox)findViewById(2131297242));
+    this.ihm = ((CheckBox)findViewById(2131297241));
+    this.ihp = ((ImageView)findViewById(2131297243));
+    if (this.ihc != null)
     {
-      if ((this.gub.title != null) && (this.gub.title.length() > 0)) {
-        this.gui.setText(this.gub.title);
+      if ((this.ihc.title != null) && (this.ihc.title.length() > 0)) {
+        this.fQp.setText(this.ihc.title);
       }
-      if ((this.gub.content != null) && (this.gub.content.length() > 0)) {
-        this.gul.setText(this.gub.content);
+      if ((this.ihc.content != null) && (this.ihc.content.length() > 0)) {
+        this.ihl.setText(this.ihc.content);
       }
     }
-    switch (this.gub.bOw.intValue())
+    switch (this.ihc.hrf.intValue())
     {
     default: 
-      switch (this.guc)
+      switch (this.ihd)
       {
       default: 
-        label320:
-        if ((bo.isNullOrNil(this.fHT)) && (bo.isNullOrNil(this.countryCode))) {}
+        label324:
+        if ((bt.isNullOrNil(this.hkO)) && (bt.isNullOrNil(this.countryCode))) {}
         break;
       }
       break;
     }
     for (;;)
     {
-      if ((this.fHT != null) && (!this.fHT.equals(""))) {
-        this.gtK.setText(this.fHT);
+      if ((this.hkO != null) && (!this.hkO.equals(""))) {
+        this.igL.setText(this.hkO);
       }
       if ((this.countryCode != null) && (!this.countryCode.equals(""))) {
-        this.gtL.setText("+" + this.countryCode);
+        this.igM.setText("+" + this.countryCode);
       }
-      if ((this.gtM != null) && (!this.gtM.equals(""))) {
-        this.gtH.setText(this.gtM);
+      if ((this.igN != null) && (!this.igN.equals(""))) {
+        this.igI.setText(this.igN);
       }
-      this.guj.setOnClickListener(new BindMobileUI.2(this));
-      this.guk.setOnClickListener(new BindMobileUI.3(this));
-      if (this.guq)
+      this.ihj.setOnClickListener(new View.OnClickListener()
       {
-        setMMTitle(2131297556);
-        this.gup.setVisibility(8);
-        this.gui.setText(2131297577);
-        this.guo.setVisibility(8);
-        this.gun.setVisibility(8);
-        this.gun.setChecked(false);
-        this.gum.setVisibility(0);
-        this.gum.setChecked(false);
-        this.gul.setVisibility(8);
-        this.gul.setText(getString(2131297558));
-        this.guk.setVisibility(8);
-        this.guj.setText(2131297556);
-        setBackBtn(new BindMobileUI.4(this));
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(109937);
+          if ((BindMobileUI.a(BindMobileUI.this).getText().toString() == null) || (BindMobileUI.a(BindMobileUI.this).getText().toString().length() == 0))
+          {
+            Toast.makeText(BindMobileUI.this, BindMobileUI.this.getString(2131756461), 0).show();
+            AppMethodBeat.o(109937);
+            return;
+          }
+          BindMobileUI.b(BindMobileUI.this, BindMobileUI.b(BindMobileUI.this).getText().toString().trim() + bt.aeE(BindMobileUI.a(BindMobileUI.this).getText().toString()));
+          ad.i("MicroMsg.BindMContactUI", "do next, send sms to self");
+          BindMobileUI.c(BindMobileUI.this, BindMobileUI.c(BindMobileUI.this));
+          AppMethodBeat.o(109937);
+        }
+      });
+      this.ihk.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(109938);
+          BindMobileUI.d(BindMobileUI.this);
+          AppMethodBeat.o(109938);
+        }
+      });
+      if (this.ihq)
+      {
+        setMMTitle(2131756448);
+        this.ihp.setVisibility(8);
+        this.fQp.setText(2131756469);
+        this.iho.setVisibility(8);
+        this.ihn.setVisibility(8);
+        this.ihn.setChecked(false);
+        this.ihm.setVisibility(0);
+        this.ihm.setChecked(false);
+        this.ihl.setVisibility(8);
+        this.ihl.setText(getString(2131756450));
+        this.ihk.setVisibility(8);
+        this.ihj.setText(2131756448);
+        setBackBtn(new MenuItem.OnMenuItemClickListener()
+        {
+          public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+          {
+            AppMethodBeat.i(109939);
+            BindMobileUI.e(BindMobileUI.this);
+            AppMethodBeat.o(109939);
+            return true;
+          }
+        });
       }
-      this.gtI.setOnClickListener(new BindMobileUI.5(this));
-      this.gtI.setOnClickListener(new BindMobileUI.6(this));
-      AppMethodBeat.o(13519);
+      this.igJ.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(109940);
+          paramAnonymousView = new Intent();
+          paramAnonymousView.putExtra("country_name", BindMobileUI.f(BindMobileUI.this));
+          paramAnonymousView.putExtra("couttry_code", BindMobileUI.g(BindMobileUI.this));
+          a.hYt.b(paramAnonymousView, BindMobileUI.this);
+          AppMethodBeat.o(109940);
+        }
+      });
+      this.igJ.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(109941);
+          paramAnonymousView = new Intent();
+          paramAnonymousView.putExtra("country_name", BindMobileUI.f(BindMobileUI.this));
+          paramAnonymousView.putExtra("couttry_code", BindMobileUI.g(BindMobileUI.this));
+          a.hYt.b(paramAnonymousView, BindMobileUI.this);
+          AppMethodBeat.o(109941);
+        }
+      });
+      AppMethodBeat.o(109946);
       return;
-      this.gup.setImageResource(2130837902);
+      this.ihp.setImageResource(2131231176);
       break;
-      this.gup.setImageResource(2130837905);
+      this.ihp.setImageResource(2131231179);
       break;
-      this.gup.setImageResource(2130837903);
+      this.ihp.setImageResource(2131231177);
       break;
-      this.guo.setVisibility(0);
-      this.gun.setVisibility(0);
-      this.gul.setVisibility(8);
-      break label320;
-      this.guo.setVisibility(8);
-      this.gun.setVisibility(8);
-      this.gul.setVisibility(0);
-      break label320;
+      this.iho.setVisibility(0);
+      this.ihn.setVisibility(0);
+      this.ihl.setVisibility(8);
+      break label324;
+      this.iho.setVisibility(8);
+      this.ihn.setVisibility(8);
+      this.ihl.setVisibility(0);
+      break label324;
       Object localObject = ((TelephonyManager)getSystemService("phone")).getSimCountryIso();
-      ab.d("MicroMsg.BindMContactUI", "tm.getSimCountryIso()".concat(String.valueOf(localObject)));
-      if (bo.isNullOrNil((String)localObject))
+      ad.d("MicroMsg.BindMContactUI", "tm.getSimCountryIso()".concat(String.valueOf(localObject)));
+      if (bt.isNullOrNil((String)localObject))
       {
-        ab.e("MicroMsg.BindMContactUI", "getDefaultCountryInfo error");
+        ad.e("MicroMsg.BindMContactUI", "getDefaultCountryInfo error");
       }
       else
       {
-        localObject = b.k(this, (String)localObject, getString(2131298871));
+        localObject = b.bh((String)localObject, getString(2131757950));
         if (localObject == null)
         {
-          ab.e("MicroMsg.BindMContactUI", "getDefaultCountryInfo error");
+          ad.e("MicroMsg.BindMContactUI", "getDefaultCountryInfo error");
         }
         else
         {
-          this.fHT = ((b.a)localObject).fHT;
-          this.countryCode = ((b.a)localObject).fHS;
+          this.hkO = ((b.a)localObject).hkO;
+          this.countryCode = ((b.a)localObject).hkN;
         }
       }
     }
@@ -158,62 +222,62 @@ public class BindMobileUI
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(13520);
+    AppMethodBeat.i(109947);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     switch (paramInt2)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(13520);
+      AppMethodBeat.o(109947);
       return;
-      this.fHT = bo.bf(paramIntent.getStringExtra("country_name"), "");
-      this.countryCode = bo.bf(paramIntent.getStringExtra("couttry_code"), "");
-      if (!this.fHT.equals("")) {
-        this.gtK.setText(this.fHT);
+      this.hkO = bt.by(paramIntent.getStringExtra("country_name"), "");
+      this.countryCode = bt.by(paramIntent.getStringExtra("couttry_code"), "");
+      if (!this.hkO.equals("")) {
+        this.igL.setText(this.hkO);
       }
       if (!this.countryCode.equals("")) {
-        this.gtL.setText("+" + this.countryCode);
+        this.igM.setText("+" + this.countryCode);
       }
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(13516);
+    AppMethodBeat.i(109943);
     super.onCreate(paramBundle);
-    setMMTitle(2131297592);
-    this.fHT = bo.bf(getIntent().getStringExtra("country_name"), "");
-    this.countryCode = bo.bf(getIntent().getStringExtra("couttry_code"), "");
-    this.gtM = bo.bf(getIntent().getStringExtra("bindmcontact_shortmobile"), "");
-    this.gub = ((BindWordingContent)getIntent().getParcelableExtra("kstyle_bind_wording"));
-    this.guc = getIntent().getIntExtra("kstyle_bind_recommend_show", 0);
-    this.guq = getIntent().getBooleanExtra("is_bind_for_chatroom_upgrade", false);
+    setMMTitle(2131756484);
+    this.hkO = bt.by(getIntent().getStringExtra("country_name"), "");
+    this.countryCode = bt.by(getIntent().getStringExtra("couttry_code"), "");
+    this.igN = bt.by(getIntent().getStringExtra("bindmcontact_shortmobile"), "");
+    this.ihc = ((BindWordingContent)getIntent().getParcelableExtra("kstyle_bind_wording"));
+    this.ihd = getIntent().getIntExtra("kstyle_bind_recommend_show", 0);
+    this.ihq = getIntent().getBooleanExtra("is_bind_for_chatroom_upgrade", false);
     initView();
-    AppMethodBeat.o(13516);
+    AppMethodBeat.o(109943);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(13517);
+    AppMethodBeat.i(109944);
     super.onDestroy();
-    if (this.gtr != null) {
-      this.gtr.recycle();
+    if (this.igt != null) {
+      this.igt.recycle();
     }
-    AppMethodBeat.o(13517);
+    AppMethodBeat.o(109944);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(13518);
+    AppMethodBeat.i(109945);
     if (paramInt == 4)
     {
-      Oi(1);
-      AppMethodBeat.o(13518);
+      Xo(1);
+      AppMethodBeat.o(109945);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(13518);
+    AppMethodBeat.o(109945);
     return bool;
   }
   
@@ -225,7 +289,7 @@ public class BindMobileUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMobileUI
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ public class ValidateAccountRequestCreator
   
   public ValidateAccountRequest createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(89725);
+    AppMethodBeat.i(4747);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     int i = 0;
     while (paramParcel.dataPosition() < j)
@@ -29,7 +29,7 @@ public class ValidateAccountRequestCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new ValidateAccountRequest(i);
-    AppMethodBeat.o(89725);
+    AppMethodBeat.o(4747);
     return paramParcel;
   }
   

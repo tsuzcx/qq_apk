@@ -48,15 +48,15 @@ public final class KRedirectUrl
   
   public final String toString()
   {
-    AppMethodBeat.i(141371);
+    AppMethodBeat.i(135883);
     String str = "KRedirectUrl{mType=" + this.mType + ",mAppid=" + this.mAppid + ",mAppVersion=" + this.mAppVersion + ",mPath=" + this.mPath + ",mBtnName=" + this.mBtnName + "}";
-    AppMethodBeat.o(141371);
+    AppMethodBeat.o(135883);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.gen.KRedirectUrl
  * JD-Core Version:    0.7.0.1
  */

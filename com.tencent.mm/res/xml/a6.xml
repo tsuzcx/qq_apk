@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/am2" />
+    <com.tencent.mm.pluginsdk.ui.preference.NormalUserHeaderPreference android:key="contact_info_header_normal" android:layout="@layout/u2" />
+    <PreferenceSmallCategory android:key="contact_info_category_1" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_district" android:layout="@layout/aop" android:title="@string/b5k" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_signature" android:layout="@layout/aop" android:title="@string/b_a" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_source" android:layout="@layout/aop" android:title="@string/bap" />
+    <com.tencent.mm.pluginsdk.ui.preference.SnsPreference android:key="contact_info_sns" android:layout="@layout/aop" android:title="@string/b_b" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_invite_source" android:layout="@layout/aop" android:title="@string/b6t" />
+    <com.tencent.mm.plugin.profile.ui.ContactMoreInfoPreference android:key="contact_info_more" android:layout="@layout/aop" android:title="@string/b7y" />
+    <com.tencent.mm.plugin.profile.ui.ContactSocialInfoPreference android:key="contact_info_social" android:layout="@layout/aop" android:title="@string/b_i" />
+    <com.tencent.mm.plugin.profile.ui.FriendPreference android:key="contact_info_facebook" android:layout="@layout/aop" android:title="@string/cyp" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_verifyuser" android:layout="@layout/aop" android:title="@string/bb_" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/eda" android:key="contact_info_qmessage_install" android:layout="@layout/a95" />
-    <Preference android:title="@string/b3x" android:key="contact_info_view_message" android:layout="@layout/afi" />
-    <CheckBoxPreference android:persistent="false" android:title="@string/b0a" android:key="contact_info_qmessage_recv_offline_msg" android:layout="@layout/afi" />
-    <Preference android:title="@string/awy" android:key="contact_info_qmessage_clear_data" android:layout="@layout/afi" />
+    <com.tencent.mm.plugin.profile.ui.NormalUserFooterPreference android:key="contact_info_footer_normal" android:layout="@layout/tv" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/edg" android:key="contact_info_qmessage_uninstall" android:layout="@layout/aap" />
-    <PreferenceCategory />
+    <com.tencent.mm.ui.base.preference.TextPreference android:key="contact_info_hint" />
 </PreferenceScreen>

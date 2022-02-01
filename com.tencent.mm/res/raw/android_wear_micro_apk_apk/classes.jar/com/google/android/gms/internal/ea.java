@@ -4,11 +4,11 @@ import com.google.android.gms.common.api.Status;
 
 public abstract class ea
 {
-  public final int GT;
+  public final int II;
   
   public ea(int paramInt)
   {
-    this.GT = paramInt;
+    this.II = paramInt;
   }
   
   public abstract void a(w paramw, boolean paramBoolean);

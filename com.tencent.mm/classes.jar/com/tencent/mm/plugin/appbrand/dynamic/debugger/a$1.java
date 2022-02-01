@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.appbrand.dynamic.debugger;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.z.c.e.a;
+import com.tencent.mm.ab.c.e.a;
+import com.tencent.mm.ipcinvoker.h;
 
 final class a$1
   implements e.a
 {
-  public final void I(String paramString, int paramInt)
+  public final void M(String paramString, int paramInt)
   {
-    AppMethodBeat.i(10803);
+    AppMethodBeat.i(121285);
     Bundle localBundle = new Bundle();
     localBundle.putString("id", paramString);
     localBundle.putInt("status", paramInt);
-    f.a("com.tencent.mm", localBundle, a.a.class, null);
-    AppMethodBeat.o(10803);
+    h.a("com.tencent.mm", localBundle, a.a.class, null);
+    AppMethodBeat.o(121285);
   }
 }
 

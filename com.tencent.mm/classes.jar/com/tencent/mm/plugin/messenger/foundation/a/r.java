@@ -1,14 +1,19 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.protocal.protobuf.ud;
+import com.tencent.mm.kernel.c.a;
 
 public abstract interface r
+  extends a
 {
-  public abstract void a(ud paramud, byte[] paramArrayOfByte, boolean paramBoolean, u paramu);
+  public abstract boolean UQ();
+  
+  public abstract void Z(String paramString1, String paramString2);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.r
  * JD-Core Version:    0.7.0.1
  */

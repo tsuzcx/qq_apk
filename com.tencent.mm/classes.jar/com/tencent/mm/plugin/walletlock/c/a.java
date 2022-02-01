@@ -7,112 +7,118 @@ import com.tencent.mm.plugin.walletlock.a.b.a;
 import com.tencent.mm.plugin.walletlock.a.b.b;
 import com.tencent.mm.plugin.walletlock.gesture.a.c;
 import com.tencent.mm.plugin.walletlock.ui.WalletLockSettingUI;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class a
   implements com.tencent.mm.plugin.walletlock.a.b
 {
-  protected static int am(Activity paramActivity)
+  protected static int aH(Activity paramActivity)
   {
-    AppMethodBeat.i(51682);
-    ab.i("MicroMsg.BaseWalletLockImpl", "alvinluo activity %s", new Object[] { paramActivity.getClass().getSimpleName() });
+    AppMethodBeat.i(129888);
+    ad.i("MicroMsg.BaseWalletLockImpl", "alvinluo activity %s", new Object[] { paramActivity.getClass().getSimpleName() });
     if (paramActivity.getClass().getSimpleName().equals("MallIndexUI"))
     {
-      AppMethodBeat.o(51682);
+      AppMethodBeat.o(129888);
       return 1;
     }
     if (paramActivity.getClass().getSimpleName().equals("WalletOfflineCoinPurseUI"))
     {
-      AppMethodBeat.o(51682);
+      AppMethodBeat.o(129888);
       return 2;
     }
-    AppMethodBeat.o(51682);
+    AppMethodBeat.o(129888);
     return -1;
   }
   
-  public void IL(int paramInt) {}
-  
-  public void a(Activity paramActivity, b.b paramb) {}
+  public void RK(int paramInt) {}
   
   public void a(Activity paramActivity, b.b paramb, b.a parama) {}
   
-  public void ak(Activity paramActivity) {}
+  public boolean a(Activity paramActivity, b.b paramb)
+  {
+    return false;
+  }
+  
+  public void aF(Activity paramActivity) {}
   
   public void b(Activity paramActivity, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(51685);
-    ab.i("MicroMsg.BaseWalletLockImpl", "alvinluo enterNewWalletLockProcessForResult walletLockType: %d, requestCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(129891);
+    ad.i("MicroMsg.BaseWalletLockImpl", "alvinluo enterNewWalletLockProcessForResult walletLockType: %d, requestCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 1)
     {
       new c().b(paramActivity, paramInt1, paramInt2);
-      AppMethodBeat.o(51685);
+      AppMethodBeat.o(129891);
       return;
     }
     if (paramInt1 == 2) {
       new com.tencent.mm.plugin.walletlock.fingerprint.a.b().b(paramActivity, paramInt1, paramInt2);
     }
-    AppMethodBeat.o(51685);
+    AppMethodBeat.o(129891);
   }
   
   public void b(Activity paramActivity, Intent paramIntent)
   {
-    AppMethodBeat.i(51686);
+    AppMethodBeat.i(129892);
     paramIntent.setClass(paramActivity, WalletLockSettingUI.class);
-    paramActivity.startActivity(paramIntent);
-    AppMethodBeat.o(51686);
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.adn(), "com/tencent/mm/plugin/walletlock/model/BaseWalletLockImpl", "startWalletLockManagerUI", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramIntent.lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/walletlock/model/BaseWalletLockImpl", "startWalletLockManagerUI", "(Landroid/app/Activity;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(129892);
   }
   
-  public void b(Activity paramActivity, Intent paramIntent, int paramInt)
+  public void c(Activity paramActivity, Intent paramIntent, int paramInt)
   {
-    AppMethodBeat.i(51687);
+    AppMethodBeat.i(129893);
     paramIntent.setClass(paramActivity, WalletLockSettingUI.class);
     paramActivity.startActivityForResult(paramIntent, paramInt);
-    AppMethodBeat.o(51687);
+    AppMethodBeat.o(129893);
   }
   
-  public b.b cXt()
+  public b.b efN()
   {
     return null;
   }
   
-  public boolean cXu()
+  public boolean efO()
   {
     return false;
   }
   
-  public boolean cXv()
+  public boolean efP()
   {
     return false;
   }
   
   public void init()
   {
-    AppMethodBeat.i(51683);
-    g.uGh.IQ(0);
-    AppMethodBeat.o(51683);
+    AppMethodBeat.i(129889);
+    g.ADl.RP(0);
+    AppMethodBeat.o(129889);
   }
   
-  public void j(Activity paramActivity, int paramInt)
+  public void l(Activity paramActivity, int paramInt)
   {
-    AppMethodBeat.i(51684);
-    ab.i("MicroMsg.BaseWalletLockImpl", "alvinluo enterNewWalletLockProcess walletLockType: %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(129890);
+    ad.i("MicroMsg.BaseWalletLockImpl", "alvinluo enterNewWalletLockProcess walletLockType: %d", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt == 1)
     {
-      new c().j(paramActivity, paramInt);
-      AppMethodBeat.o(51684);
+      new c().l(paramActivity, paramInt);
+      AppMethodBeat.o(129890);
       return;
     }
     if (paramInt == 2) {
-      new com.tencent.mm.plugin.walletlock.fingerprint.a.b().j(paramActivity, paramInt);
+      new com.tencent.mm.plugin.walletlock.fingerprint.a.b().l(paramActivity, paramInt);
     }
-    AppMethodBeat.o(51684);
+    AppMethodBeat.o(129890);
   }
   
-  public void k(Activity paramActivity, int paramInt) {}
+  public void m(Activity paramActivity, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.c.a
  * JD-Core Version:    0.7.0.1
  */

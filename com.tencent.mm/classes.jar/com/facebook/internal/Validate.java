@@ -28,33 +28,33 @@ public final class Validate
   
   static
   {
-    AppMethodBeat.i(72593);
+    AppMethodBeat.i(18029);
     TAG = Validate.class.getName();
-    AppMethodBeat.o(72593);
+    AppMethodBeat.o(18029);
   }
   
   public static void checkCustomTabRedirectActivity(Context paramContext)
   {
-    AppMethodBeat.i(72589);
+    AppMethodBeat.i(18025);
     checkCustomTabRedirectActivity(paramContext, true);
-    AppMethodBeat.o(72589);
+    AppMethodBeat.o(18025);
   }
   
   public static void checkCustomTabRedirectActivity(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(72590);
+    AppMethodBeat.i(18026);
     if ((!hasCustomTabRedirectActivity(paramContext)) && (paramBoolean))
     {
       paramContext = new IllegalStateException("FacebookActivity is declared incorrectly in the AndroidManifest.xml, please add com.facebook.FacebookActivity to your AndroidManifest.xml file. See https://developers.facebook.com/docs/android/getting-started for more info.");
-      AppMethodBeat.o(72590);
+      AppMethodBeat.o(18026);
       throw paramContext;
     }
-    AppMethodBeat.o(72590);
+    AppMethodBeat.o(18026);
   }
   
   public static void containsNoNullOrEmpty(Collection<String> paramCollection, String paramString)
   {
-    AppMethodBeat.i(72572);
+    AppMethodBeat.i(18008);
     notNull(paramCollection, paramString);
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext())
@@ -63,86 +63,86 @@ public final class Validate
       if (str == null)
       {
         paramCollection = new NullPointerException("Container '" + paramString + "' cannot contain null values");
-        AppMethodBeat.o(72572);
+        AppMethodBeat.o(18008);
         throw paramCollection;
       }
       if (str.length() == 0)
       {
         paramCollection = new IllegalArgumentException("Container '" + paramString + "' cannot contain empty values");
-        AppMethodBeat.o(72572);
+        AppMethodBeat.o(18008);
         throw paramCollection;
       }
     }
-    AppMethodBeat.o(72572);
+    AppMethodBeat.o(18008);
   }
   
   public static <T> void containsNoNulls(Collection<T> paramCollection, String paramString)
   {
-    AppMethodBeat.i(72571);
+    AppMethodBeat.i(18007);
     notNull(paramCollection, paramString);
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext()) {
       if (paramCollection.next() == null)
       {
         paramCollection = new NullPointerException("Container '" + paramString + "' cannot contain null values");
-        AppMethodBeat.o(72571);
+        AppMethodBeat.o(18007);
         throw paramCollection;
       }
     }
-    AppMethodBeat.o(72571);
+    AppMethodBeat.o(18007);
   }
   
   public static String hasAppID()
   {
-    AppMethodBeat.i(72578);
+    AppMethodBeat.i(18014);
     Object localObject = FacebookSdk.getApplicationId();
     if (localObject == null)
     {
       localObject = new IllegalStateException("No App ID found, please set the App ID.");
-      AppMethodBeat.o(72578);
+      AppMethodBeat.o(18014);
       throw ((Throwable)localObject);
     }
-    AppMethodBeat.o(72578);
+    AppMethodBeat.o(18014);
     return localObject;
   }
   
   public static boolean hasBluetoothPermission(Context paramContext)
   {
-    AppMethodBeat.i(72585);
+    AppMethodBeat.i(18021);
     if ((hasPermission(paramContext, "android.permission.BLUETOOTH")) && (hasPermission(paramContext, "android.permission.BLUETOOTH_ADMIN")))
     {
-      AppMethodBeat.o(72585);
+      AppMethodBeat.o(18021);
       return true;
     }
-    AppMethodBeat.o(72585);
+    AppMethodBeat.o(18021);
     return false;
   }
   
   public static boolean hasChangeWifiStatePermission(Context paramContext)
   {
-    AppMethodBeat.i(72583);
+    AppMethodBeat.i(18019);
     boolean bool = hasPermission(paramContext, "android.permission.CHANGE_WIFI_STATE");
-    AppMethodBeat.o(72583);
+    AppMethodBeat.o(18019);
     return bool;
   }
   
   public static String hasClientToken()
   {
-    AppMethodBeat.i(72579);
+    AppMethodBeat.i(18015);
     Object localObject = FacebookSdk.getClientToken();
     if (localObject == null)
     {
       localObject = new IllegalStateException("No Client Token found, please set the Client Token.");
-      AppMethodBeat.o(72579);
+      AppMethodBeat.o(18015);
       throw ((Throwable)localObject);
     }
-    AppMethodBeat.o(72579);
+    AppMethodBeat.o(18015);
     return localObject;
   }
   
   public static void hasContentProvider(Context paramContext)
   {
-    AppMethodBeat.i(72592);
+    AppMethodBeat.i(18028);
     notNull(paramContext, "context");
     String str = hasAppID();
     paramContext = paramContext.getPackageManager();
@@ -152,16 +152,16 @@ public final class Validate
       if (paramContext.resolveContentProvider(str, 0) == null)
       {
         paramContext = new IllegalStateException(String.format("A ContentProvider for this app was not set up in the AndroidManifest.xml, please add %s as a provider to your AndroidManifest.xml file. See https://developers.facebook.com/docs/sharing/android for more info.", new Object[] { str }));
-        AppMethodBeat.o(72592);
+        AppMethodBeat.o(18028);
         throw paramContext;
       }
     }
-    AppMethodBeat.o(72592);
+    AppMethodBeat.o(18028);
   }
   
   public static boolean hasCustomTabRedirectActivity(Context paramContext)
   {
-    AppMethodBeat.i(72591);
+    AppMethodBeat.i(18027);
     notNull(paramContext, "context");
     Object localObject2 = paramContext.getPackageManager();
     Object localObject1 = null;
@@ -180,32 +180,32 @@ public final class Validate
       for (bool = false;; bool = true)
       {
         if (!((Iterator)localObject1).hasNext()) {
-          break label165;
+          break label167;
         }
         localObject2 = ((ResolveInfo)((Iterator)localObject1).next()).activityInfo;
         if ((!((ActivityInfo)localObject2).name.equals("com.facebook.CustomTabActivity")) || (!((ActivityInfo)localObject2).packageName.equals(paramContext.getPackageName()))) {
           break;
         }
       }
-      AppMethodBeat.o(72591);
+      AppMethodBeat.o(18027);
       return false;
     }
     boolean bool = false;
-    label165:
-    AppMethodBeat.o(72591);
+    label167:
+    AppMethodBeat.o(18027);
     return bool;
   }
   
   public static void hasFacebookActivity(Context paramContext)
   {
-    AppMethodBeat.i(72587);
+    AppMethodBeat.i(18023);
     hasFacebookActivity(paramContext, true);
-    AppMethodBeat.o(72587);
+    AppMethodBeat.o(18023);
   }
   
   public static void hasFacebookActivity(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(72588);
+    AppMethodBeat.i(18024);
     notNull(paramContext, "context");
     PackageManager localPackageManager = paramContext.getPackageManager();
     Object localObject2 = null;
@@ -219,10 +219,10 @@ public final class Validate
       if ((localObject1 == null) && (paramBoolean))
       {
         paramContext = new IllegalStateException("FacebookActivity is not declared in the AndroidManifest.xml. If you are using the facebook-common module or dependent modules please add com.facebook.FacebookActivity to your AndroidManifest.xml file. See https://developers.facebook.com/docs/android/getting-started for more info.");
-        AppMethodBeat.o(72588);
+        AppMethodBeat.o(18024);
         throw paramContext;
       }
-      AppMethodBeat.o(72588);
+      AppMethodBeat.o(18024);
       return;
     }
     catch (PackageManager.NameNotFoundException paramContext)
@@ -236,103 +236,103 @@ public final class Validate
   
   public static void hasInternetPermissions(Context paramContext)
   {
-    AppMethodBeat.i(72580);
+    AppMethodBeat.i(18016);
     hasInternetPermissions(paramContext, true);
-    AppMethodBeat.o(72580);
+    AppMethodBeat.o(18016);
   }
   
   public static void hasInternetPermissions(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(72581);
+    AppMethodBeat.i(18017);
     notNull(paramContext, "context");
     if ((paramContext.checkCallingOrSelfPermission("android.permission.INTERNET") == -1) && (paramBoolean))
     {
       paramContext = new IllegalStateException("No internet permissions granted for the app, please add <uses-permission android:name=\"android.permission.INTERNET\" /> to your AndroidManifest.xml.");
-      AppMethodBeat.o(72581);
+      AppMethodBeat.o(18017);
       throw paramContext;
     }
-    AppMethodBeat.o(72581);
+    AppMethodBeat.o(18017);
   }
   
   public static boolean hasLocationPermission(Context paramContext)
   {
-    AppMethodBeat.i(72584);
+    AppMethodBeat.i(18020);
     if ((hasPermission(paramContext, "android.permission.ACCESS_COARSE_LOCATION")) || (hasPermission(paramContext, "android.permission.ACCESS_FINE_LOCATION")))
     {
-      AppMethodBeat.o(72584);
+      AppMethodBeat.o(18020);
       return true;
     }
-    AppMethodBeat.o(72584);
+    AppMethodBeat.o(18020);
     return false;
   }
   
   public static boolean hasPermission(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(72586);
+    AppMethodBeat.i(18022);
     if (paramContext.checkCallingOrSelfPermission(paramString) == 0)
     {
-      AppMethodBeat.o(72586);
+      AppMethodBeat.o(18022);
       return true;
     }
-    AppMethodBeat.o(72586);
+    AppMethodBeat.o(18022);
     return false;
   }
   
   public static boolean hasWiFiPermission(Context paramContext)
   {
-    AppMethodBeat.i(72582);
+    AppMethodBeat.i(18018);
     boolean bool = hasPermission(paramContext, "android.permission.ACCESS_WIFI_STATE");
-    AppMethodBeat.o(72582);
+    AppMethodBeat.o(18018);
     return bool;
   }
   
   public static <T> void notEmpty(Collection<T> paramCollection, String paramString)
   {
-    AppMethodBeat.i(72570);
+    AppMethodBeat.i(18006);
     if (paramCollection.isEmpty())
     {
       paramCollection = new IllegalArgumentException("Container '" + paramString + "' cannot be empty");
-      AppMethodBeat.o(72570);
+      AppMethodBeat.o(18006);
       throw paramCollection;
     }
-    AppMethodBeat.o(72570);
+    AppMethodBeat.o(18006);
   }
   
   public static <T> void notEmptyAndContainsNoNulls(Collection<T> paramCollection, String paramString)
   {
-    AppMethodBeat.i(72573);
+    AppMethodBeat.i(18009);
     containsNoNulls(paramCollection, paramString);
     notEmpty(paramCollection, paramString);
-    AppMethodBeat.o(72573);
+    AppMethodBeat.o(18009);
   }
   
   public static void notNull(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(72569);
+    AppMethodBeat.i(18005);
     if (paramObject == null)
     {
       paramObject = new NullPointerException("Argument '" + paramString + "' cannot be null");
-      AppMethodBeat.o(72569);
+      AppMethodBeat.o(18005);
       throw paramObject;
     }
-    AppMethodBeat.o(72569);
+    AppMethodBeat.o(18005);
   }
   
   public static void notNullOrEmpty(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(72575);
+    AppMethodBeat.i(18011);
     if (Utility.isNullOrEmpty(paramString1))
     {
       paramString1 = new IllegalArgumentException("Argument '" + paramString2 + "' cannot be null or empty");
-      AppMethodBeat.o(72575);
+      AppMethodBeat.o(18011);
       throw paramString1;
     }
-    AppMethodBeat.o(72575);
+    AppMethodBeat.o(18011);
   }
   
   public static void oneOf(Object paramObject, String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72576);
+    AppMethodBeat.i(18012);
     int j = paramVarArgs.length;
     int i = 0;
     while (i < j)
@@ -341,48 +341,48 @@ public final class Validate
       if (localObject != null)
       {
         if (localObject.equals(paramObject)) {
-          AppMethodBeat.o(72576);
+          AppMethodBeat.o(18012);
         }
       }
       else if (paramObject == null)
       {
-        AppMethodBeat.o(72576);
+        AppMethodBeat.o(18012);
         return;
       }
       i += 1;
     }
     paramObject = new IllegalArgumentException("Argument '" + paramString + "' was not one of the allowed values");
-    AppMethodBeat.o(72576);
+    AppMethodBeat.o(18012);
     throw paramObject;
   }
   
   public static void runningOnUiThread()
   {
-    AppMethodBeat.i(72574);
+    AppMethodBeat.i(18010);
     if (!Looper.getMainLooper().equals(Looper.myLooper()))
     {
       FacebookException localFacebookException = new FacebookException("This method should be called from the UI thread");
-      AppMethodBeat.o(72574);
+      AppMethodBeat.o(18010);
       throw localFacebookException;
     }
-    AppMethodBeat.o(72574);
+    AppMethodBeat.o(18010);
   }
   
   public static void sdkInitialized()
   {
-    AppMethodBeat.i(72577);
+    AppMethodBeat.i(18013);
     if (!FacebookSdk.isInitialized())
     {
       FacebookSdkNotInitializedException localFacebookSdkNotInitializedException = new FacebookSdkNotInitializedException("The SDK has not been initialized, make sure to call FacebookSdk.sdkInitialize() first.");
-      AppMethodBeat.o(72577);
+      AppMethodBeat.o(18013);
       throw localFacebookSdkNotInitializedException;
     }
-    AppMethodBeat.o(72577);
+    AppMethodBeat.o(18013);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.Validate
  * JD-Core Version:    0.7.0.1
  */

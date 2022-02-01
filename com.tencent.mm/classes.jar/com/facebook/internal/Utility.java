@@ -26,8 +26,10 @@ import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import com.facebook.AccessToken;
 import com.facebook.FacebookException;
+import com.facebook.FacebookRequestError;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
+import com.facebook.GraphRequest.Callback;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -96,25 +98,25 @@ public final class Utility
   
   public static <T> boolean areObjectsEqual(T paramT1, T paramT2)
   {
-    AppMethodBeat.i(72525);
+    AppMethodBeat.i(17961);
     if (paramT1 == null)
     {
       if (paramT2 == null)
       {
-        AppMethodBeat.o(72525);
+        AppMethodBeat.o(17961);
         return true;
       }
-      AppMethodBeat.o(72525);
+      AppMethodBeat.o(17961);
       return false;
     }
     boolean bool = paramT1.equals(paramT2);
-    AppMethodBeat.o(72525);
+    AppMethodBeat.o(17961);
     return bool;
   }
   
   public static <T> ArrayList<T> arrayList(T... paramVarArgs)
   {
-    AppMethodBeat.i(72498);
+    AppMethodBeat.i(17934);
     ArrayList localArrayList = new ArrayList(paramVarArgs.length);
     int j = paramVarArgs.length;
     int i = 0;
@@ -123,13 +125,13 @@ public final class Utility
       localArrayList.add(paramVarArgs[i]);
       i += 1;
     }
-    AppMethodBeat.o(72498);
+    AppMethodBeat.o(17934);
     return localArrayList;
   }
   
   public static <T> List<T> asListNoNulls(T... paramVarArgs)
   {
-    AppMethodBeat.i(72532);
+    AppMethodBeat.i(17968);
     ArrayList localArrayList = new ArrayList();
     int j = paramVarArgs.length;
     int i = 0;
@@ -141,33 +143,33 @@ public final class Utility
       }
       i += 1;
     }
-    AppMethodBeat.o(72532);
+    AppMethodBeat.o(17968);
     return localArrayList;
   }
   
   public static JSONObject awaitGetGraphMeRequestWithCache(String paramString)
   {
-    AppMethodBeat.i(72553);
+    AppMethodBeat.i(17989);
     JSONObject localJSONObject = ProfileInformationCache.getProfileInformation(paramString);
     if (localJSONObject != null)
     {
-      AppMethodBeat.o(72553);
+      AppMethodBeat.o(17989);
       return localJSONObject;
     }
     paramString = getGraphMeRequestWithCache(paramString).executeAndWait();
     if (paramString.getError() != null)
     {
-      AppMethodBeat.o(72553);
+      AppMethodBeat.o(17989);
       return null;
     }
     paramString = paramString.getJSONObject();
-    AppMethodBeat.o(72553);
+    AppMethodBeat.o(17989);
     return paramString;
   }
   
   public static Uri buildUri(String paramString1, String paramString2, Bundle paramBundle)
   {
-    AppMethodBeat.i(72506);
+    AppMethodBeat.i(17942);
     Uri.Builder localBuilder = new Uri.Builder();
     localBuilder.scheme("https");
     localBuilder.authority(paramString1);
@@ -185,26 +187,26 @@ public final class Utility
       }
     }
     paramString1 = localBuilder.build();
-    AppMethodBeat.o(72506);
+    AppMethodBeat.o(17942);
     return paramString1;
   }
   
   public static void clearCaches(Context paramContext)
   {
-    AppMethodBeat.i(72530);
+    AppMethodBeat.i(17966);
     ImageDownloader.clearCache(paramContext);
-    AppMethodBeat.o(72530);
+    AppMethodBeat.o(17966);
   }
   
   private static void clearCookiesForDomain(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(72520);
+    AppMethodBeat.i(17956);
     CookieSyncManager.createInstance(paramContext).sync();
     paramContext = CookieManager.getInstance();
     Object localObject = paramContext.getCookie(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(72520);
+      AppMethodBeat.o(17956);
       return;
     }
     localObject = ((String)localObject).split(";");
@@ -219,58 +221,58 @@ public final class Utility
       i += 1;
     }
     paramContext.removeExpiredCookie();
-    AppMethodBeat.o(72520);
+    AppMethodBeat.o(17956);
   }
   
   public static void clearFacebookCookies(Context paramContext)
   {
-    AppMethodBeat.i(72521);
+    AppMethodBeat.i(17957);
     clearCookiesForDomain(paramContext, "facebook.com");
     clearCookiesForDomain(paramContext, ".facebook.com");
     clearCookiesForDomain(paramContext, "https://facebook.com");
     clearCookiesForDomain(paramContext, "https://.facebook.com");
-    AppMethodBeat.o(72521);
+    AppMethodBeat.o(17957);
   }
   
   public static void closeQuietly(Closeable paramCloseable)
   {
-    AppMethodBeat.i(72512);
+    AppMethodBeat.i(17948);
     if (paramCloseable != null) {}
     try
     {
       paramCloseable.close();
-      AppMethodBeat.o(72512);
+      AppMethodBeat.o(17948);
       return;
     }
     catch (IOException paramCloseable)
     {
-      AppMethodBeat.o(72512);
+      AppMethodBeat.o(17948);
     }
   }
   
   public static String coerceValueIfNullOrEmpty(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(72496);
+    AppMethodBeat.i(17932);
     if (isNullOrEmpty(paramString1))
     {
-      AppMethodBeat.o(72496);
+      AppMethodBeat.o(17932);
       return paramString2;
     }
-    AppMethodBeat.o(72496);
+    AppMethodBeat.o(17932);
     return paramString1;
   }
   
   private static long convertBytesToGB(double paramDouble)
   {
-    AppMethodBeat.i(72562);
+    AppMethodBeat.i(17998);
     long l = Math.round(paramDouble / 1073741824.0D);
-    AppMethodBeat.o(72562);
+    AppMethodBeat.o(17998);
     return l;
   }
   
   static Map<String, Object> convertJSONObjectToHashMap(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(72515);
+    AppMethodBeat.i(17951);
     HashMap localHashMap = new HashMap();
     JSONArray localJSONArray = paramJSONObject.names();
     int i = 0;
@@ -293,14 +295,14 @@ public final class Utility
       }
       i += 1;
     }
-    AppMethodBeat.o(72515);
+    AppMethodBeat.o(17951);
     return localHashMap;
   }
   
   public static int copyAndCloseInputStream(InputStream paramInputStream, OutputStream paramOutputStream)
   {
     int i = 0;
-    AppMethodBeat.i(72518);
+    AppMethodBeat.i(17954);
     try
     {
       localBufferedInputStream = new BufferedInputStream(paramInputStream);
@@ -328,7 +330,7 @@ public final class Utility
         if (paramInputStream != null) {
           paramInputStream.close();
         }
-        AppMethodBeat.o(72518);
+        AppMethodBeat.o(17954);
         return i;
       }
       finally
@@ -345,16 +347,16 @@ public final class Utility
     if (paramInputStream != null) {
       paramInputStream.close();
     }
-    AppMethodBeat.o(72518);
+    AppMethodBeat.o(17954);
     throw paramOutputStream;
   }
   
   public static void deleteDirectory(File paramFile)
   {
-    AppMethodBeat.i(72531);
+    AppMethodBeat.i(17967);
     if (!paramFile.exists())
     {
-      AppMethodBeat.o(72531);
+      AppMethodBeat.o(17967);
       return;
     }
     if (paramFile.isDirectory())
@@ -372,32 +374,32 @@ public final class Utility
       }
     }
     paramFile.delete();
-    AppMethodBeat.o(72531);
+    AppMethodBeat.o(17967);
   }
   
   public static void disconnectQuietly(URLConnection paramURLConnection)
   {
-    AppMethodBeat.i(72513);
+    AppMethodBeat.i(17949);
     if ((paramURLConnection != null) && ((paramURLConnection instanceof HttpURLConnection))) {
       ((HttpURLConnection)paramURLConnection).disconnect();
     }
-    AppMethodBeat.o(72513);
+    AppMethodBeat.o(17949);
   }
   
   private static boolean externalStorageExists()
   {
-    AppMethodBeat.i(72559);
+    AppMethodBeat.i(17995);
     boolean bool = "mounted".equals(Environment.getExternalStorageState());
-    AppMethodBeat.o(72559);
+    AppMethodBeat.o(17995);
     return bool;
   }
   
-  public static <T> List<T> filter(List<T> paramList, Utility.Predicate<T> paramPredicate)
+  public static <T> List<T> filter(List<T> paramList, Predicate<T> paramPredicate)
   {
-    AppMethodBeat.i(72541);
+    AppMethodBeat.i(17977);
     if (paramList == null)
     {
-      AppMethodBeat.o(72541);
+      AppMethodBeat.o(17977);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
@@ -411,45 +413,45 @@ public final class Utility
     }
     if (localArrayList.size() == 0)
     {
-      AppMethodBeat.o(72541);
+      AppMethodBeat.o(17977);
       return null;
     }
-    AppMethodBeat.o(72541);
+    AppMethodBeat.o(17977);
     return localArrayList;
   }
   
   public static String generateRandomString(int paramInt)
   {
-    AppMethodBeat.i(72564);
+    AppMethodBeat.i(18000);
     String str = new BigInteger(paramInt * 5, new Random()).toString(32);
-    AppMethodBeat.o(72564);
+    AppMethodBeat.o(18000);
     return str;
   }
   
   public static String getActivityName(Context paramContext)
   {
-    AppMethodBeat.i(72540);
+    AppMethodBeat.i(17976);
     if (paramContext == null)
     {
-      AppMethodBeat.o(72540);
+      AppMethodBeat.o(17976);
       return "null";
     }
     if (paramContext == paramContext.getApplicationContext())
     {
-      AppMethodBeat.o(72540);
+      AppMethodBeat.o(17976);
       return "unknown";
     }
     paramContext = paramContext.getClass().getSimpleName();
-    AppMethodBeat.o(72540);
+    AppMethodBeat.o(17976);
     return paramContext;
   }
   
   public static Date getBundleLongAsDate(Bundle paramBundle, String paramString, Date paramDate)
   {
-    AppMethodBeat.i(72548);
+    AppMethodBeat.i(17984);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(72548);
+      AppMethodBeat.o(17984);
       return null;
     }
     paramBundle = paramBundle.get(paramString);
@@ -463,7 +465,7 @@ public final class Utility
         break label99;
       }
       paramBundle = new Date(9223372036854775807L);
-      AppMethodBeat.o(72548);
+      AppMethodBeat.o(17984);
       return paramBundle;
       if ((paramBundle instanceof String)) {
         try
@@ -472,22 +474,22 @@ public final class Utility
         }
         catch (NumberFormatException paramBundle)
         {
-          AppMethodBeat.o(72548);
+          AppMethodBeat.o(17984);
           return null;
         }
       }
     }
-    AppMethodBeat.o(72548);
+    AppMethodBeat.o(17984);
     return null;
     label99:
     paramBundle = new Date(l * 1000L + paramDate.getTime());
-    AppMethodBeat.o(72548);
+    AppMethodBeat.o(17984);
     return paramBundle;
   }
   
   public static long getContentSize(Uri paramUri)
   {
-    AppMethodBeat.i(72547);
+    AppMethodBeat.i(17983);
     try
     {
       paramUri = FacebookSdk.getApplicationContext().getContentResolver().query(paramUri, null, null, null, null);
@@ -507,7 +509,7 @@ public final class Utility
         if (paramUri != null) {
           paramUri.close();
         }
-        AppMethodBeat.o(72547);
+        AppMethodBeat.o(17983);
         return l;
       }
       finally {}
@@ -516,17 +518,17 @@ public final class Utility
     }
     paramUri.close();
     label78:
-    AppMethodBeat.o(72547);
+    AppMethodBeat.o(17983);
     throw localObject1;
   }
   
   public static Locale getCurrentLocale()
   {
-    AppMethodBeat.i(72568);
+    AppMethodBeat.i(18004);
     try
     {
       Locale localLocale1 = FacebookSdk.getApplicationContext().getResources().getConfiguration().locale;
-      AppMethodBeat.o(72568);
+      AppMethodBeat.o(18004);
       return localLocale1;
     }
     catch (Exception localException)
@@ -540,77 +542,92 @@ public final class Utility
   
   private static GraphRequest getGraphMeRequestWithCache(String paramString)
   {
-    AppMethodBeat.i(72554);
+    AppMethodBeat.i(17990);
     Bundle localBundle = new Bundle();
     localBundle.putString("fields", "id,name,first_name,middle_name,last_name,link");
     localBundle.putString("access_token", paramString);
     paramString = new GraphRequest(null, "me", localBundle, HttpMethod.GET, null);
-    AppMethodBeat.o(72554);
+    AppMethodBeat.o(17990);
     return paramString;
   }
   
-  public static void getGraphMeRequestWithCacheAsync(String paramString, Utility.GraphMeRequestWithCacheCallback paramGraphMeRequestWithCacheCallback)
+  public static void getGraphMeRequestWithCacheAsync(final String paramString, GraphMeRequestWithCacheCallback paramGraphMeRequestWithCacheCallback)
   {
-    AppMethodBeat.i(72552);
+    AppMethodBeat.i(17988);
     JSONObject localJSONObject = ProfileInformationCache.getProfileInformation(paramString);
     if (localJSONObject != null)
     {
       paramGraphMeRequestWithCacheCallback.onSuccess(localJSONObject);
-      AppMethodBeat.o(72552);
+      AppMethodBeat.o(17988);
       return;
     }
-    paramGraphMeRequestWithCacheCallback = new Utility.1(paramGraphMeRequestWithCacheCallback, paramString);
+    paramGraphMeRequestWithCacheCallback = new GraphRequest.Callback()
+    {
+      public final void onCompleted(GraphResponse paramAnonymousGraphResponse)
+      {
+        AppMethodBeat.i(17926);
+        if (paramAnonymousGraphResponse.getError() != null)
+        {
+          this.val$callback.onFailure(paramAnonymousGraphResponse.getError().getException());
+          AppMethodBeat.o(17926);
+          return;
+        }
+        ProfileInformationCache.putProfileInformation(paramString, paramAnonymousGraphResponse.getJSONObject());
+        this.val$callback.onSuccess(paramAnonymousGraphResponse.getJSONObject());
+        AppMethodBeat.o(17926);
+      }
+    };
     paramString = getGraphMeRequestWithCache(paramString);
     paramString.setCallback(paramGraphMeRequestWithCacheCallback);
     paramString.executeAsync();
-    AppMethodBeat.o(72552);
+    AppMethodBeat.o(17988);
   }
   
   public static String getMetadataApplicationId(Context paramContext)
   {
-    AppMethodBeat.i(72514);
+    AppMethodBeat.i(17950);
     Validate.notNull(paramContext, "context");
     FacebookSdk.sdkInitialize(paramContext);
     paramContext = FacebookSdk.getApplicationId();
-    AppMethodBeat.o(72514);
+    AppMethodBeat.o(17950);
     return paramContext;
   }
   
   public static Method getMethodQuietly(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
   {
-    AppMethodBeat.i(72537);
+    AppMethodBeat.i(17973);
     try
     {
       paramClass = paramClass.getMethod(paramString, paramVarArgs);
-      AppMethodBeat.o(72537);
+      AppMethodBeat.o(17973);
       return paramClass;
     }
     catch (NoSuchMethodException paramClass)
     {
-      AppMethodBeat.o(72537);
+      AppMethodBeat.o(17973);
     }
     return null;
   }
   
   public static Method getMethodQuietly(String paramString1, String paramString2, Class<?>... paramVarArgs)
   {
-    AppMethodBeat.i(72538);
+    AppMethodBeat.i(17974);
     try
     {
       paramString1 = getMethodQuietly(Class.forName(paramString1), paramString2, paramVarArgs);
-      AppMethodBeat.o(72538);
+      AppMethodBeat.o(17974);
       return paramString1;
     }
     catch (ClassNotFoundException paramString1)
     {
-      AppMethodBeat.o(72538);
+      AppMethodBeat.o(17974);
     }
     return null;
   }
   
   public static Object getStringPropertyAsJSON(JSONObject paramJSONObject, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(72516);
+    AppMethodBeat.i(17952);
     paramJSONObject = paramJSONObject.opt(paramString1);
     if ((paramJSONObject != null) && ((paramJSONObject instanceof String))) {
       paramJSONObject = new JSONTokener((String)paramJSONObject).nextValue();
@@ -623,34 +640,34 @@ public final class Utility
         {
           paramString1 = new JSONObject();
           paramString1.putOpt(paramString2, paramJSONObject);
-          AppMethodBeat.o(72516);
+          AppMethodBeat.o(17952);
           return paramString1;
         }
         paramJSONObject = new FacebookException("Got an unexpected non-JSON object.");
-        AppMethodBeat.o(72516);
+        AppMethodBeat.o(17952);
         throw paramJSONObject;
       }
-      AppMethodBeat.o(72516);
+      AppMethodBeat.o(17952);
       return paramJSONObject;
     }
   }
   
   public static String getUriString(Uri paramUri)
   {
-    AppMethodBeat.i(72543);
+    AppMethodBeat.i(17979);
     if (paramUri == null)
     {
-      AppMethodBeat.o(72543);
+      AppMethodBeat.o(17979);
       return null;
     }
     paramUri = paramUri.toString();
-    AppMethodBeat.o(72543);
+    AppMethodBeat.o(17979);
     return paramUri;
   }
   
-  public static Utility.PermissionsPair handlePermissionResponse(JSONObject paramJSONObject)
+  public static PermissionsPair handlePermissionResponse(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(72563);
+    AppMethodBeat.i(17999);
     paramJSONObject = paramJSONObject.getJSONObject("permissions").getJSONArray("data");
     ArrayList localArrayList1 = new ArrayList(paramJSONObject.length());
     ArrayList localArrayList2 = new ArrayList(paramJSONObject.length());
@@ -680,39 +697,39 @@ public final class Utility
         }
       }
     }
-    paramJSONObject = new Utility.PermissionsPair(localArrayList1, localArrayList2);
-    AppMethodBeat.o(72563);
+    paramJSONObject = new PermissionsPair(localArrayList1, localArrayList2);
+    AppMethodBeat.o(17999);
     return paramJSONObject;
   }
   
   public static boolean hasSameId(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    AppMethodBeat.i(72526);
+    AppMethodBeat.i(17962);
     if ((paramJSONObject1 == null) || (paramJSONObject2 == null) || (!paramJSONObject1.has("id")) || (!paramJSONObject2.has("id")))
     {
-      AppMethodBeat.o(72526);
+      AppMethodBeat.o(17962);
       return false;
     }
     if (paramJSONObject1.equals(paramJSONObject2))
     {
-      AppMethodBeat.o(72526);
+      AppMethodBeat.o(17962);
       return true;
     }
     paramJSONObject1 = paramJSONObject1.optString("id");
     paramJSONObject2 = paramJSONObject2.optString("id");
     if ((paramJSONObject1 == null) || (paramJSONObject2 == null))
     {
-      AppMethodBeat.o(72526);
+      AppMethodBeat.o(17962);
       return false;
     }
     boolean bool = paramJSONObject1.equals(paramJSONObject2);
-    AppMethodBeat.o(72526);
+    AppMethodBeat.o(17962);
     return bool;
   }
   
   private static String hashBytes(MessageDigest paramMessageDigest, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(72505);
+    AppMethodBeat.i(17941);
     paramMessageDigest.update(paramArrayOfByte);
     paramMessageDigest = paramMessageDigest.digest();
     paramArrayOfByte = new StringBuilder();
@@ -726,13 +743,13 @@ public final class Utility
       i += 1;
     }
     paramMessageDigest = paramArrayOfByte.toString();
-    AppMethodBeat.o(72505);
+    AppMethodBeat.o(17941);
     return paramMessageDigest;
   }
   
   public static <T> HashSet<T> hashSet(T... paramVarArgs)
   {
-    AppMethodBeat.i(72499);
+    AppMethodBeat.i(17935);
     HashSet localHashSet = new HashSet(paramVarArgs.length);
     int j = paramVarArgs.length;
     int i = 0;
@@ -741,46 +758,46 @@ public final class Utility
       localHashSet.add(paramVarArgs[i]);
       i += 1;
     }
-    AppMethodBeat.o(72499);
+    AppMethodBeat.o(17935);
     return localHashSet;
   }
   
   private static String hashWithAlgorithm(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(72503);
+    AppMethodBeat.i(17939);
     paramString1 = hashWithAlgorithm(paramString1, paramString2.getBytes());
-    AppMethodBeat.o(72503);
+    AppMethodBeat.o(17939);
     return paramString1;
   }
   
   private static String hashWithAlgorithm(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(72504);
+    AppMethodBeat.i(17940);
     try
     {
       paramString = MessageDigest.getInstance(paramString);
       paramString = hashBytes(paramString, paramArrayOfByte);
-      AppMethodBeat.o(72504);
+      AppMethodBeat.o(17940);
       return paramString;
     }
     catch (NoSuchAlgorithmException paramString)
     {
-      AppMethodBeat.o(72504);
+      AppMethodBeat.o(17940);
     }
     return null;
   }
   
   public static int[] intersectRanges(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    AppMethodBeat.i(72492);
+    AppMethodBeat.i(17928);
     if (paramArrayOfInt1 == null)
     {
-      AppMethodBeat.o(72492);
+      AppMethodBeat.o(17928);
       return paramArrayOfInt2;
     }
     if (paramArrayOfInt2 == null)
     {
-      AppMethodBeat.o(72492);
+      AppMethodBeat.o(17928);
       return paramArrayOfInt1;
     }
     int[] arrayOfInt = new int[paramArrayOfInt1.length + paramArrayOfInt2.length];
@@ -862,7 +879,7 @@ public final class Utility
             label249:
             j = i1;
             paramArrayOfInt1 = Arrays.copyOf(arrayOfInt, j);
-            AppMethodBeat.o(72492);
+            AppMethodBeat.o(17928);
             return paramArrayOfInt1;
             m = 2147483647;
             j = -2147483648;
@@ -874,132 +891,132 @@ public final class Utility
   
   public static Object invokeMethodQuietly(Object paramObject, Method paramMethod, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72539);
+    AppMethodBeat.i(17975);
     try
     {
       paramObject = paramMethod.invoke(paramObject, paramVarArgs);
-      AppMethodBeat.o(72539);
+      AppMethodBeat.o(17975);
       return paramObject;
     }
     catch (IllegalAccessException paramObject)
     {
-      AppMethodBeat.o(72539);
+      AppMethodBeat.o(17975);
       return null;
     }
     catch (InvocationTargetException paramObject)
     {
-      AppMethodBeat.o(72539);
+      AppMethodBeat.o(17975);
     }
     return null;
   }
   
   public static boolean isAutofillAvailable(Context paramContext)
   {
-    AppMethodBeat.i(72566);
+    AppMethodBeat.i(18002);
     if (Build.VERSION.SDK_INT < 26)
     {
-      AppMethodBeat.o(72566);
+      AppMethodBeat.o(18002);
       return false;
     }
     paramContext = (AutofillManager)paramContext.getSystemService(AutofillManager.class);
     if ((paramContext != null) && (paramContext.isAutofillSupported()) && (paramContext.isEnabled()))
     {
-      AppMethodBeat.o(72566);
+      AppMethodBeat.o(18002);
       return true;
     }
-    AppMethodBeat.o(72566);
+    AppMethodBeat.o(18002);
     return false;
   }
   
   public static boolean isChromeOS(Context paramContext)
   {
-    AppMethodBeat.i(72567);
+    AppMethodBeat.i(18003);
     if (Build.VERSION.SDK_INT >= 27)
     {
       boolean bool = paramContext.getPackageManager().hasSystemFeature("android.hardware.type.pc");
-      AppMethodBeat.o(72567);
+      AppMethodBeat.o(18003);
       return bool;
     }
     if ((Build.DEVICE != null) && (Build.DEVICE.matches(".+_cheets|cheets_.+")))
     {
-      AppMethodBeat.o(72567);
+      AppMethodBeat.o(18003);
       return true;
     }
-    AppMethodBeat.o(72567);
+    AppMethodBeat.o(18003);
     return false;
   }
   
   public static boolean isContentUri(Uri paramUri)
   {
-    AppMethodBeat.i(72545);
+    AppMethodBeat.i(17981);
     if ((paramUri != null) && ("content".equalsIgnoreCase(paramUri.getScheme())))
     {
-      AppMethodBeat.o(72545);
+      AppMethodBeat.o(17981);
       return true;
     }
-    AppMethodBeat.o(72545);
+    AppMethodBeat.o(17981);
     return false;
   }
   
   public static boolean isCurrentAccessToken(AccessToken paramAccessToken)
   {
-    AppMethodBeat.i(72551);
+    AppMethodBeat.i(17987);
     if ((paramAccessToken != null) && (paramAccessToken.equals(AccessToken.getCurrentAccessToken())))
     {
-      AppMethodBeat.o(72551);
+      AppMethodBeat.o(17987);
       return true;
     }
-    AppMethodBeat.o(72551);
+    AppMethodBeat.o(17987);
     return false;
   }
   
   public static boolean isFileUri(Uri paramUri)
   {
-    AppMethodBeat.i(72546);
+    AppMethodBeat.i(17982);
     if ((paramUri != null) && ("file".equalsIgnoreCase(paramUri.getScheme())))
     {
-      AppMethodBeat.o(72546);
+      AppMethodBeat.o(17982);
       return true;
     }
-    AppMethodBeat.o(72546);
+    AppMethodBeat.o(17982);
     return false;
   }
   
   public static boolean isNullOrEmpty(String paramString)
   {
-    AppMethodBeat.i(72495);
+    AppMethodBeat.i(17931);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(72495);
+      AppMethodBeat.o(17931);
       return true;
     }
-    AppMethodBeat.o(72495);
+    AppMethodBeat.o(17931);
     return false;
   }
   
   public static <T> boolean isNullOrEmpty(Collection<T> paramCollection)
   {
-    AppMethodBeat.i(72494);
+    AppMethodBeat.i(17930);
     if ((paramCollection == null) || (paramCollection.size() == 0))
     {
-      AppMethodBeat.o(72494);
+      AppMethodBeat.o(17930);
       return true;
     }
-    AppMethodBeat.o(72494);
+    AppMethodBeat.o(17930);
     return false;
   }
   
   public static <T> boolean isSubset(Collection<T> paramCollection1, Collection<T> paramCollection2)
   {
-    AppMethodBeat.i(72493);
+    AppMethodBeat.i(17929);
     if ((paramCollection2 == null) || (paramCollection2.size() == 0))
     {
       if ((paramCollection1 == null) || (paramCollection1.size() == 0))
       {
-        AppMethodBeat.o(72493);
+        AppMethodBeat.o(17929);
         return true;
       }
-      AppMethodBeat.o(72493);
+      AppMethodBeat.o(17929);
       return false;
     }
     paramCollection2 = new HashSet(paramCollection2);
@@ -1007,29 +1024,29 @@ public final class Utility
     while (paramCollection1.hasNext()) {
       if (!paramCollection2.contains(paramCollection1.next()))
       {
-        AppMethodBeat.o(72493);
+        AppMethodBeat.o(17929);
         return false;
       }
     }
-    AppMethodBeat.o(72493);
+    AppMethodBeat.o(17929);
     return true;
   }
   
   public static boolean isWebUri(Uri paramUri)
   {
-    AppMethodBeat.i(72544);
+    AppMethodBeat.i(17980);
     if ((paramUri != null) && (("http".equalsIgnoreCase(paramUri.getScheme())) || ("https".equalsIgnoreCase(paramUri.getScheme())) || ("fbstaging".equalsIgnoreCase(paramUri.getScheme()))))
     {
-      AppMethodBeat.o(72544);
+      AppMethodBeat.o(17980);
       return true;
     }
-    AppMethodBeat.o(72544);
+    AppMethodBeat.o(17980);
     return false;
   }
   
   public static Set<String> jsonArrayToSet(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(72534);
+    AppMethodBeat.i(17970);
     HashSet localHashSet = new HashSet();
     int i = 0;
     while (i < paramJSONArray.length())
@@ -1037,13 +1054,13 @@ public final class Utility
       localHashSet.add(paramJSONArray.getString(i));
       i += 1;
     }
-    AppMethodBeat.o(72534);
+    AppMethodBeat.o(17970);
     return localHashSet;
   }
   
   public static List<String> jsonArrayToStringList(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(72533);
+    AppMethodBeat.i(17969);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramJSONArray.length())
@@ -1051,41 +1068,41 @@ public final class Utility
       localArrayList.add(paramJSONArray.getString(i));
       i += 1;
     }
-    AppMethodBeat.o(72533);
+    AppMethodBeat.o(17969);
     return localArrayList;
   }
   
   public static void logd(String paramString, Exception paramException)
   {
-    AppMethodBeat.i(72522);
+    AppMethodBeat.i(17958);
     if ((FacebookSdk.isDebugEnabled()) && (paramString != null) && (paramException != null)) {
       new StringBuilder().append(paramException.getClass().getSimpleName()).append(": ").append(paramException.getMessage());
     }
-    AppMethodBeat.o(72522);
+    AppMethodBeat.o(17958);
   }
   
   public static void logd(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(72523);
+    AppMethodBeat.i(17959);
     FacebookSdk.isDebugEnabled();
-    AppMethodBeat.o(72523);
+    AppMethodBeat.o(17959);
   }
   
   public static void logd(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    AppMethodBeat.i(72524);
+    AppMethodBeat.i(17960);
     if (FacebookSdk.isDebugEnabled()) {
       isNullOrEmpty(paramString1);
     }
-    AppMethodBeat.o(72524);
+    AppMethodBeat.o(17960);
   }
   
-  public static <T, K> List<K> map(List<T> paramList, Utility.Mapper<T, K> paramMapper)
+  public static <T, K> List<K> map(List<T> paramList, Mapper<T, K> paramMapper)
   {
-    AppMethodBeat.i(72542);
+    AppMethodBeat.i(17978);
     if (paramList == null)
     {
-      AppMethodBeat.o(72542);
+      AppMethodBeat.o(17978);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
@@ -1099,32 +1116,32 @@ public final class Utility
     }
     if (localArrayList.size() == 0)
     {
-      AppMethodBeat.o(72542);
+      AppMethodBeat.o(17978);
       return null;
     }
-    AppMethodBeat.o(72542);
+    AppMethodBeat.o(17978);
     return localArrayList;
   }
   
   public static String md5hash(String paramString)
   {
-    AppMethodBeat.i(72500);
+    AppMethodBeat.i(17936);
     paramString = hashWithAlgorithm("MD5", paramString);
-    AppMethodBeat.o(72500);
+    AppMethodBeat.o(17936);
     return paramString;
   }
   
   public static boolean mustFixWindowParamsForAutofill(Context paramContext)
   {
-    AppMethodBeat.i(72565);
+    AppMethodBeat.i(18001);
     boolean bool = isAutofillAvailable(paramContext);
-    AppMethodBeat.o(72565);
+    AppMethodBeat.o(18001);
     return bool;
   }
   
   public static Bundle parseUrlQueryString(String paramString)
   {
-    AppMethodBeat.i(72507);
+    AppMethodBeat.i(17943);
     Bundle localBundle = new Bundle();
     int j;
     int i;
@@ -1154,7 +1171,7 @@ public final class Utility
       }
       else
       {
-        AppMethodBeat.o(72507);
+        AppMethodBeat.o(17943);
         return localBundle;
       }
       i += 1;
@@ -1163,7 +1180,7 @@ public final class Utility
   
   public static void putCommaSeparatedStringList(Bundle paramBundle, String paramString, List<String> paramList)
   {
-    AppMethodBeat.i(72509);
+    AppMethodBeat.i(17945);
     if (paramList != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -1179,18 +1196,18 @@ public final class Utility
       }
       paramBundle.putString(paramString, paramList);
     }
-    AppMethodBeat.o(72509);
+    AppMethodBeat.o(17945);
   }
   
   public static boolean putJSONValueInBundle(Bundle paramBundle, String paramString, Object paramObject)
   {
-    AppMethodBeat.i(72511);
+    AppMethodBeat.i(17947);
     if (paramObject == null) {
       paramBundle.remove(paramString);
     }
     for (;;)
     {
-      AppMethodBeat.o(72511);
+      AppMethodBeat.o(17947);
       return true;
       if ((paramObject instanceof Boolean))
       {
@@ -1240,54 +1257,54 @@ public final class Utility
         paramBundle.putString(paramString, paramObject.toString());
       }
     }
-    AppMethodBeat.o(72511);
+    AppMethodBeat.o(17947);
     return false;
   }
   
   public static void putNonEmptyString(Bundle paramBundle, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(72508);
+    AppMethodBeat.i(17944);
     if (!isNullOrEmpty(paramString2)) {
       paramBundle.putString(paramString1, paramString2);
     }
-    AppMethodBeat.o(72508);
+    AppMethodBeat.o(17944);
   }
   
   public static void putUri(Bundle paramBundle, String paramString, Uri paramUri)
   {
-    AppMethodBeat.i(72510);
+    AppMethodBeat.i(17946);
     if (paramUri != null) {
       putNonEmptyString(paramBundle, paramString, paramUri.toString());
     }
-    AppMethodBeat.o(72510);
+    AppMethodBeat.o(17946);
   }
   
   /* Error */
   public static String readStreamToString(InputStream paramInputStream)
   {
     // Byte code:
-    //   0: ldc_w 960
-    //   3: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 329	java/io/BufferedInputStream
+    //   0: sipush 17953
+    //   3: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 322	java/io/BufferedInputStream
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 332	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   11: invokespecial 325	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   14: astore_3
-    //   15: new 962	java/io/InputStreamReader
+    //   15: new 906	java/io/InputStreamReader
     //   18: dup
     //   19: aload_3
-    //   20: invokespecial 963	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   20: invokespecial 907	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
     //   23: astore_2
-    //   24: new 232	java/lang/StringBuilder
+    //   24: new 231	java/lang/StringBuilder
     //   27: dup
-    //   28: invokespecial 233	java/lang/StringBuilder:<init>	()V
+    //   28: invokespecial 232	java/lang/StringBuilder:<init>	()V
     //   31: astore_0
     //   32: sipush 2048
     //   35: newarray char
     //   37: astore 4
     //   39: aload_2
     //   40: aload 4
-    //   42: invokevirtual 966	java/io/InputStreamReader:read	([C)I
+    //   42: invokevirtual 910	java/io/InputStreamReader:read	([C)I
     //   45: istore_1
     //   46: iload_1
     //   47: iconst_m1
@@ -1296,27 +1313,27 @@ public final class Utility
     //   52: aload 4
     //   54: iconst_0
     //   55: iload_1
-    //   56: invokevirtual 969	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   56: invokevirtual 913	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
     //   59: pop
     //   60: goto -21 -> 39
     //   63: astore_0
     //   64: aload_3
-    //   65: invokestatic 971	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   65: invokestatic 915	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   68: aload_2
-    //   69: invokestatic 971	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
-    //   72: ldc_w 960
-    //   75: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   69: invokestatic 915	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   72: sipush 17953
+    //   75: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   78: aload_0
     //   79: athrow
     //   80: aload_0
-    //   81: invokevirtual 246	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   81: invokevirtual 245	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   84: astore_0
     //   85: aload_3
-    //   86: invokestatic 971	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   86: invokestatic 915	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
     //   89: aload_2
-    //   90: invokestatic 971	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
-    //   93: ldc_w 960
-    //   96: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   90: invokestatic 915	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   93: sipush 17953
+    //   96: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: aload_0
     //   100: areturn
     //   101: astore_0
@@ -1348,11 +1365,11 @@ public final class Utility
   
   public static Map<String, String> readStringMapFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(72550);
+    AppMethodBeat.i(17986);
     int j = paramParcel.readInt();
     if (j < 0)
     {
-      AppMethodBeat.o(72550);
+      AppMethodBeat.o(17986);
       return null;
     }
     HashMap localHashMap = new HashMap();
@@ -1362,13 +1379,13 @@ public final class Utility
       localHashMap.put(paramParcel.readString(), paramParcel.readString());
       i += 1;
     }
-    AppMethodBeat.o(72550);
+    AppMethodBeat.o(17986);
     return localHashMap;
   }
   
   private static void refreshAvailableExternalStorage()
   {
-    AppMethodBeat.i(72560);
+    AppMethodBeat.i(17996);
     try
     {
       if (externalStorageExists())
@@ -1378,22 +1395,22 @@ public final class Utility
         availableExternalStorageGB = localStatFs.getBlockSize() * l;
       }
       availableExternalStorageGB = convertBytesToGB(availableExternalStorageGB);
-      AppMethodBeat.o(72560);
+      AppMethodBeat.o(17996);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(72560);
+      AppMethodBeat.o(17996);
     }
   }
   
   private static int refreshBestGuessNumberOfCPUCores()
   {
-    AppMethodBeat.i(72555);
+    AppMethodBeat.i(17991);
     if (numCPUCores > 0)
     {
       i = numCPUCores;
-      AppMethodBeat.o(72555);
+      AppMethodBeat.o(17991);
       return i;
     }
     try
@@ -1412,28 +1429,28 @@ public final class Utility
       numCPUCores = Math.max(Runtime.getRuntime().availableProcessors(), 1);
     }
     int i = numCPUCores;
-    AppMethodBeat.o(72555);
+    AppMethodBeat.o(17991);
     return i;
   }
   
   private static void refreshCarrierName(Context paramContext)
   {
-    AppMethodBeat.i(72558);
+    AppMethodBeat.i(17994);
     if (carrierName.equals("NoCarrier")) {
       try
       {
         carrierName = ((TelephonyManager)paramContext.getSystemService("phone")).getNetworkOperatorName();
-        AppMethodBeat.o(72558);
+        AppMethodBeat.o(17994);
         return;
       }
       catch (Exception paramContext) {}
     }
-    AppMethodBeat.o(72558);
+    AppMethodBeat.o(17994);
   }
   
   private static void refreshPeriodicExtendedDeviceInfo(Context paramContext)
   {
-    AppMethodBeat.i(72556);
+    AppMethodBeat.i(17992);
     if ((timestampOfLastCheck == -1L) || (System.currentTimeMillis() - timestampOfLastCheck >= 1800000L))
     {
       timestampOfLastCheck = System.currentTimeMillis();
@@ -1442,34 +1459,34 @@ public final class Utility
       refreshTotalExternalStorage();
       refreshAvailableExternalStorage();
     }
-    AppMethodBeat.o(72556);
+    AppMethodBeat.o(17992);
   }
   
   private static void refreshTimezone()
   {
-    AppMethodBeat.i(72557);
+    AppMethodBeat.i(17993);
     try
     {
       TimeZone localTimeZone = TimeZone.getDefault();
       deviceTimezoneAbbreviation = localTimeZone.getDisplayName(localTimeZone.inDaylightTime(new Date()), 0);
       deviceTimeZoneName = localTimeZone.getID();
-      AppMethodBeat.o(72557);
+      AppMethodBeat.o(17993);
       return;
     }
     catch (AssertionError localAssertionError)
     {
-      AppMethodBeat.o(72557);
+      AppMethodBeat.o(17993);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(72557);
+      AppMethodBeat.o(17993);
     }
   }
   
   private static void refreshTotalExternalStorage()
   {
-    AppMethodBeat.i(72561);
+    AppMethodBeat.i(17997);
     try
     {
       if (externalStorageExists())
@@ -1479,32 +1496,32 @@ public final class Utility
         totalExternalStorageGB = localStatFs.getBlockSize() * l;
       }
       totalExternalStorageGB = convertBytesToGB(totalExternalStorageGB);
-      AppMethodBeat.o(72561);
+      AppMethodBeat.o(17997);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(72561);
+      AppMethodBeat.o(17997);
     }
   }
   
   public static String safeGetStringFromResponse(JSONObject paramJSONObject, String paramString)
   {
-    AppMethodBeat.i(72527);
+    AppMethodBeat.i(17963);
     if (paramJSONObject != null)
     {
       paramJSONObject = paramJSONObject.optString(paramString, "");
-      AppMethodBeat.o(72527);
+      AppMethodBeat.o(17963);
       return paramJSONObject;
     }
-    AppMethodBeat.o(72527);
+    AppMethodBeat.o(17963);
     return "";
   }
   
   public static void setAppEventAttributionParameters(JSONObject paramJSONObject, AttributionIdentifiers paramAttributionIdentifiers, String paramString, boolean paramBoolean)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(72535);
+    AppMethodBeat.i(17971);
     if ((paramAttributionIdentifiers != null) && (paramAttributionIdentifiers.getAttributionId() != null)) {
       paramJSONObject.put("attribution", paramAttributionIdentifiers.getAttributionId());
     }
@@ -1532,7 +1549,7 @@ public final class Utility
     for (paramBoolean = bool2;; paramBoolean = false)
     {
       paramJSONObject.put("application_tracking_enabled", paramBoolean);
-      AppMethodBeat.o(72535);
+      AppMethodBeat.o(17971);
       return;
       bool1 = false;
       break;
@@ -1541,7 +1558,7 @@ public final class Utility
   
   public static void setAppEventExtendedDeviceInfoParameters(JSONObject paramJSONObject, Context paramContext)
   {
-    AppMethodBeat.i(72536);
+    AppMethodBeat.i(17972);
     JSONArray localJSONArray = new JSONArray();
     localJSONArray.put("a2");
     refreshPeriodicExtendedDeviceInfo(paramContext);
@@ -1626,7 +1643,7 @@ public final class Utility
           localJSONArray.put(availableExternalStorageGB);
           localJSONArray.put(deviceTimeZoneName);
           paramJSONObject.put("extinfo", localJSONArray.toString());
-          AppMethodBeat.o(72536);
+          AppMethodBeat.o(17972);
           return;
         }
         catch (Exception paramContext)
@@ -1641,81 +1658,81 @@ public final class Utility
   
   public static String sha1hash(String paramString)
   {
-    AppMethodBeat.i(72501);
+    AppMethodBeat.i(17937);
     paramString = hashWithAlgorithm("SHA-1", paramString);
-    AppMethodBeat.o(72501);
+    AppMethodBeat.o(17937);
     return paramString;
   }
   
   public static String sha1hash(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(72502);
+    AppMethodBeat.i(17938);
     paramArrayOfByte = hashWithAlgorithm("SHA-1", paramArrayOfByte);
-    AppMethodBeat.o(72502);
+    AppMethodBeat.o(17938);
     return paramArrayOfByte;
   }
   
   public static boolean stringsEqualOrEmpty(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(72519);
+    AppMethodBeat.i(17955);
     boolean bool1 = TextUtils.isEmpty(paramString1);
     boolean bool2 = TextUtils.isEmpty(paramString2);
     if ((bool1) && (bool2))
     {
-      AppMethodBeat.o(72519);
+      AppMethodBeat.o(17955);
       return true;
     }
     if ((!bool1) && (!bool2))
     {
       bool1 = paramString1.equals(paramString2);
-      AppMethodBeat.o(72519);
+      AppMethodBeat.o(17955);
       return bool1;
     }
-    AppMethodBeat.o(72519);
+    AppMethodBeat.o(17955);
     return false;
   }
   
   public static JSONArray tryGetJSONArrayFromResponse(JSONObject paramJSONObject, String paramString)
   {
-    AppMethodBeat.i(72529);
+    AppMethodBeat.i(17965);
     if (paramJSONObject != null)
     {
       paramJSONObject = paramJSONObject.optJSONArray(paramString);
-      AppMethodBeat.o(72529);
+      AppMethodBeat.o(17965);
       return paramJSONObject;
     }
-    AppMethodBeat.o(72529);
+    AppMethodBeat.o(17965);
     return null;
   }
   
   public static JSONObject tryGetJSONObjectFromResponse(JSONObject paramJSONObject, String paramString)
   {
-    AppMethodBeat.i(72528);
+    AppMethodBeat.i(17964);
     if (paramJSONObject != null)
     {
       paramJSONObject = paramJSONObject.optJSONObject(paramString);
-      AppMethodBeat.o(72528);
+      AppMethodBeat.o(17964);
       return paramJSONObject;
     }
-    AppMethodBeat.o(72528);
+    AppMethodBeat.o(17964);
     return null;
   }
   
   public static <T> Collection<T> unmodifiableCollection(T... paramVarArgs)
   {
-    AppMethodBeat.i(72497);
+    AppMethodBeat.i(17933);
     paramVarArgs = Collections.unmodifiableCollection(Arrays.asList(paramVarArgs));
-    AppMethodBeat.o(72497);
+    AppMethodBeat.o(17933);
     return paramVarArgs;
   }
   
   public static void writeStringMapToParcel(Parcel paramParcel, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(72549);
+    AppMethodBeat.i(17985);
     if (paramMap == null)
     {
       paramParcel.writeInt(-1);
-      AppMethodBeat.o(72549);
+      AppMethodBeat.o(17985);
       return;
     }
     paramParcel.writeInt(paramMap.size());
@@ -1726,12 +1743,51 @@ public final class Utility
       paramParcel.writeString((String)localEntry.getKey());
       paramParcel.writeString((String)localEntry.getValue());
     }
-    AppMethodBeat.o(72549);
+    AppMethodBeat.o(17985);
+  }
+  
+  public static abstract interface GraphMeRequestWithCacheCallback
+  {
+    public abstract void onFailure(FacebookException paramFacebookException);
+    
+    public abstract void onSuccess(JSONObject paramJSONObject);
+  }
+  
+  public static abstract interface Mapper<T, K>
+  {
+    public abstract K apply(T paramT);
+  }
+  
+  public static class PermissionsPair
+  {
+    List<String> declinedPermissions;
+    List<String> grantedPermissions;
+    
+    public PermissionsPair(List<String> paramList1, List<String> paramList2)
+    {
+      this.grantedPermissions = paramList1;
+      this.declinedPermissions = paramList2;
+    }
+    
+    public List<String> getDeclinedPermissions()
+    {
+      return this.declinedPermissions;
+    }
+    
+    public List<String> getGrantedPermissions()
+    {
+      return this.grantedPermissions;
+    }
+  }
+  
+  public static abstract interface Predicate<T>
+  {
+    public abstract boolean apply(T paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.Utility
  * JD-Core Version:    0.7.0.1
  */

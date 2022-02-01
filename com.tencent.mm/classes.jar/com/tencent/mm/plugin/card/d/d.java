@@ -9,175 +9,241 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.jg;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.b.c;
 
 public final class d
 {
-  private static c a(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener)
+  private static com.tencent.mm.ui.widget.a.d a(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(88842);
+    AppMethodBeat.i(113770);
     View localView = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(paramInt, null);
     TextView localTextView;
     String str;
-    if (paramInt == 2130968998)
+    if (paramInt == 2131493349)
     {
-      localTextView = (TextView)localView.findViewById(2131822379);
+      localTextView = (TextView)localView.findViewById(2131297897);
       str = paramString2;
       if (TextUtils.isEmpty(paramString2)) {
-        str = paramContext.getResources().getString(2131297892);
+        str = paramContext.getResources().getString(2131756824);
       }
-      localTextView.setText(paramContext.getResources().getString(2131297865, new Object[] { str }));
+      localTextView.setText(paramContext.getResources().getString(2131756797, new Object[] { str }));
     }
     for (;;)
     {
       paramContext = h.a(paramContext, paramString1, paramString3, localView, paramOnClickListener);
-      AppMethodBeat.o(88842);
+      AppMethodBeat.o(113770);
       return paramContext;
-      if (paramInt == 2130968997)
+      if (paramInt == 2131493348)
       {
-        localTextView = (TextView)localView.findViewById(2131822379);
+        localTextView = (TextView)localView.findViewById(2131297897);
         str = paramString2;
         if (TextUtils.isEmpty(paramString2)) {
-          str = paramContext.getResources().getString(2131297892);
+          str = paramContext.getResources().getString(2131756824);
         }
-        localTextView.setText(paramContext.getResources().getString(2131297864, new Object[] { str }));
+        localTextView.setText(paramContext.getResources().getString(2131756796, new Object[] { str }));
       }
     }
   }
   
-  private static c a(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  private static com.tencent.mm.ui.widget.a.d a(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    AppMethodBeat.i(88843);
+    AppMethodBeat.i(113771);
     View localView = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(paramInt, null);
     TextView localTextView;
     String str;
-    if (paramInt == 2130968998)
+    if (paramInt == 2131493349)
     {
-      localTextView = (TextView)localView.findViewById(2131822379);
+      localTextView = (TextView)localView.findViewById(2131297897);
       str = paramString2;
       if (TextUtils.isEmpty(paramString2)) {
-        str = paramContext.getResources().getString(2131297892);
+        str = paramContext.getResources().getString(2131756824);
       }
-      localTextView.setText(paramContext.getResources().getString(2131297865, new Object[] { str }));
+      localTextView.setText(paramContext.getResources().getString(2131756797, new Object[] { str }));
     }
     for (;;)
     {
       paramContext = h.a(paramContext, paramString1, localView, paramString3, paramString4, paramOnClickListener1, paramOnClickListener2);
-      AppMethodBeat.o(88843);
+      AppMethodBeat.o(113771);
       return paramContext;
-      if (paramInt == 2130968997)
+      if (paramInt == 2131493348)
       {
-        localTextView = (TextView)localView.findViewById(2131822379);
+        localTextView = (TextView)localView.findViewById(2131297897);
         str = paramString2;
         if (TextUtils.isEmpty(paramString2)) {
-          str = paramContext.getResources().getString(2131297892);
+          str = paramContext.getResources().getString(2131756824);
         }
-        localTextView.setText(paramContext.getResources().getString(2131297864, new Object[] { str }));
+        localTextView.setText(paramContext.getResources().getString(2131756796, new Object[] { str }));
       }
     }
   }
   
-  public static void a(MMActivity paramMMActivity, d.b paramb)
+  public static void a(MMActivity paramMMActivity, b paramb)
   {
-    AppMethodBeat.i(88836);
-    h.a(paramMMActivity, true, paramMMActivity.getString(2131297877), "", paramMMActivity.getString(2131297018), paramMMActivity.getString(2131296888), new d.4(paramb), new d.5());
-    AppMethodBeat.o(88836);
+    AppMethodBeat.i(113764);
+    h.a(paramMMActivity, true, paramMMActivity.getString(2131756809), "", paramMMActivity.getString(2131755835), paramMMActivity.getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(113757);
+        paramAnonymousDialogInterface.dismiss();
+        this.nJg.bLf();
+        AppMethodBeat.o(113757);
+      }
+    }, new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(113758);
+        paramAnonymousDialogInterface.dismiss();
+        AppMethodBeat.o(113758);
+      }
+    });
+    AppMethodBeat.o(113764);
   }
   
-  public static void a(MMActivity paramMMActivity, String paramString1, String paramString2, d.b paramb)
+  public static void a(MMActivity paramMMActivity, final String paramString1, String paramString2, b paramb)
   {
-    AppMethodBeat.i(88835);
+    AppMethodBeat.i(113763);
     if (TextUtils.isEmpty(paramString2)) {
-      paramString2 = paramMMActivity.getString(2131296902);
+      paramString2 = paramMMActivity.getString(2131755709);
     }
     for (;;)
     {
-      h.a(paramMMActivity, true, paramString2, paramMMActivity.getString(2131297087), paramMMActivity.getString(2131297018), paramMMActivity.getString(2131296888), new d.1(paramb, paramString1), new d.3());
-      AppMethodBeat.o(88835);
+      h.a(paramMMActivity, true, paramString2, paramMMActivity.getString(2131755906), paramMMActivity.getString(2131755835), paramMMActivity.getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(113754);
+          paramAnonymousDialogInterface.dismiss();
+          this.nJg.bHz();
+          AppMethodBeat.o(113754);
+        }
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(113756);
+          paramAnonymousDialogInterface.dismiss();
+          AppMethodBeat.o(113756);
+        }
+      });
+      AppMethodBeat.o(113763);
       return;
     }
   }
   
-  public static void a(MMActivity paramMMActivity, String paramString, boolean paramBoolean)
+  public static void a(final MMActivity paramMMActivity, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(88839);
+    AppMethodBeat.i(113767);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = paramMMActivity.getString(2131298085);
+      str = paramMMActivity.getString(2131757027);
     }
-    h.a(paramMMActivity, str, null, false, new d.6(paramBoolean, paramMMActivity));
-    AppMethodBeat.o(88839);
+    h.a(paramMMActivity, str, null, false, new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(113759);
+        paramAnonymousDialogInterface.dismiss();
+        if (this.nJh) {
+          paramMMActivity.finish();
+        }
+        AppMethodBeat.o(113759);
+      }
+    });
+    AppMethodBeat.o(113767);
   }
   
   public static void b(MMActivity paramMMActivity, String paramString, int paramInt)
   {
-    AppMethodBeat.i(88838);
+    AppMethodBeat.i(113766);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = "errcode = ".concat(String.valueOf(paramInt));
     }
     a(paramMMActivity, str, false);
-    AppMethodBeat.o(88838);
+    AppMethodBeat.o(113766);
   }
   
   public static void c(Context paramContext, int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(88841);
+    AppMethodBeat.i(113769);
     if (paramInt1 == -1)
     {
-      AppMethodBeat.o(88841);
+      AppMethodBeat.o(113769);
       return;
     }
-    if (paramInt1 == 2130968999) {}
-    for (paramContext = a(paramContext, paramInt1, paramContext.getResources().getString(paramInt2), paramString, paramContext.getResources().getString(2131297952), new DialogInterface.OnClickListener()
+    if (paramInt1 == 2131493350) {}
+    for (paramContext = a(paramContext, paramInt1, paramContext.getResources().getString(paramInt2), paramString, paramContext.getResources().getString(2131756894), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
-            AppMethodBeat.i(88833);
+            AppMethodBeat.i(113761);
             paramAnonymousDialogInterface.dismiss();
-            AppMethodBeat.o(88833);
+            AppMethodBeat.o(113761);
           }
-        });; paramContext = a(paramContext, paramInt1, paramContext.getResources().getString(paramInt2), paramString, paramContext.getResources().getString(2131297968), paramContext.getResources().getString(2131297952), new d.10(paramContext), new DialogInterface.OnClickListener()
+        });; paramContext = a(paramContext, paramInt1, paramContext.getResources().getString(paramInt2), paramString, paramContext.getResources().getString(2131756910), paramContext.getResources().getString(2131756894), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
-            AppMethodBeat.i(88827);
+            AppMethodBeat.i(113762);
             paramAnonymousDialogInterface.dismiss();
-            AppMethodBeat.o(88827);
+            paramAnonymousDialogInterface = new jg();
+            paramAnonymousDialogInterface.dnt.context = this.val$context;
+            a.ESL.l(paramAnonymousDialogInterface);
+            ad.i("MicroMsg.CardDialogHelper", "enter to cardhome");
+            AppMethodBeat.o(113762);
+          }
+        }, new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(113755);
+            paramAnonymousDialogInterface.dismiss();
+            AppMethodBeat.o(113755);
           }
         }))
     {
       if (paramContext != null) {
         paramContext.show();
       }
-      AppMethodBeat.o(88841);
+      AppMethodBeat.o(113769);
       return;
     }
   }
   
   public static void c(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(88840);
-    h.a(paramMMActivity, paramMMActivity.getString(2131298015, new Object[] { paramMMActivity.getString(2131297868) }), paramMMActivity.getString(2131297087), new d.7(paramMMActivity), new d.8());
-    AppMethodBeat.o(88840);
+    AppMethodBeat.i(113768);
+    h.a(paramMMActivity, paramMMActivity.getString(2131756957, new Object[] { paramMMActivity.getString(2131756800) }), paramMMActivity.getString(2131755906), new d.7(paramMMActivity), new d.8());
+    AppMethodBeat.o(113768);
   }
   
   public static void c(MMActivity paramMMActivity, String paramString)
   {
-    AppMethodBeat.i(88837);
+    AppMethodBeat.i(113765);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = paramMMActivity.getString(2131298085);
+      str = paramMMActivity.getString(2131757027);
     }
     a(paramMMActivity, str, false);
-    AppMethodBeat.o(88837);
+    AppMethodBeat.o(113765);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void bHz();
+    
+    public abstract void bLf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.d
  * JD-Core Version:    0.7.0.1
  */

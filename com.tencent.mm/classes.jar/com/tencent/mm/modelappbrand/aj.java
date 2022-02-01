@@ -1,7 +1,7 @@
 package com.tencent.mm.modelappbrand;
 
 public abstract class aj
-  implements m
+  implements o
 {
   public abstract void a(int paramInt, t paramt);
   
@@ -12,7 +12,7 @@ public abstract class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.aj
  * JD-Core Version:    0.7.0.1
  */

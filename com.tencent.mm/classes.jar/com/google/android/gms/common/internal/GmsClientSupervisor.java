@@ -80,54 +80,54 @@ public abstract class GmsClientSupervisor
     
     public ConnectionStatusConfig(ComponentName paramComponentName, int paramInt)
     {
-      AppMethodBeat.i(89616);
+      AppMethodBeat.i(4638);
       this.zzto = null;
       this.zztp = null;
       this.mComponentName = ((ComponentName)Preconditions.checkNotNull(paramComponentName));
       this.zztq = paramInt;
-      AppMethodBeat.o(89616);
+      AppMethodBeat.o(4638);
     }
     
     public ConnectionStatusConfig(String paramString, int paramInt)
     {
-      AppMethodBeat.i(89614);
+      AppMethodBeat.i(4636);
       this.zzto = Preconditions.checkNotEmpty(paramString);
       this.zztp = "com.google.android.gms";
       this.mComponentName = null;
       this.zztq = paramInt;
-      AppMethodBeat.o(89614);
+      AppMethodBeat.o(4636);
     }
     
     public ConnectionStatusConfig(String paramString1, String paramString2, int paramInt)
     {
-      AppMethodBeat.i(89615);
+      AppMethodBeat.i(4637);
       this.zzto = Preconditions.checkNotEmpty(paramString1);
       this.zztp = Preconditions.checkNotEmpty(paramString2);
       this.mComponentName = null;
       this.zztq = paramInt;
-      AppMethodBeat.o(89615);
+      AppMethodBeat.o(4637);
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(89620);
+      AppMethodBeat.i(4642);
       if (this == paramObject)
       {
-        AppMethodBeat.o(89620);
+        AppMethodBeat.o(4642);
         return true;
       }
       if (!(paramObject instanceof ConnectionStatusConfig))
       {
-        AppMethodBeat.o(89620);
+        AppMethodBeat.o(4642);
         return false;
       }
       paramObject = (ConnectionStatusConfig)paramObject;
       if ((Objects.equal(this.zzto, paramObject.zzto)) && (Objects.equal(this.zztp, paramObject.zztp)) && (Objects.equal(this.mComponentName, paramObject.mComponentName)) && (this.zztq == paramObject.zztq))
       {
-        AppMethodBeat.o(89620);
+        AppMethodBeat.o(4642);
         return true;
       }
-      AppMethodBeat.o(89620);
+      AppMethodBeat.o(4642);
       return false;
     }
     
@@ -153,34 +153,34 @@ public abstract class GmsClientSupervisor
     
     public final Intent getStartServiceIntent(Context paramContext)
     {
-      AppMethodBeat.i(89618);
+      AppMethodBeat.i(4640);
       if (this.zzto != null) {}
       for (paramContext = new Intent(this.zzto).setPackage(this.zztp);; paramContext = new Intent().setComponent(this.mComponentName))
       {
-        AppMethodBeat.o(89618);
+        AppMethodBeat.o(4640);
         return paramContext;
       }
     }
     
     public final int hashCode()
     {
-      AppMethodBeat.i(89619);
+      AppMethodBeat.i(4641);
       int i = Objects.hashCode(new Object[] { this.zzto, this.zztp, this.mComponentName, Integer.valueOf(this.zztq) });
-      AppMethodBeat.o(89619);
+      AppMethodBeat.o(4641);
       return i;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(89617);
+      AppMethodBeat.i(4639);
       if (this.zzto == null)
       {
         str = this.mComponentName.flattenToString();
-        AppMethodBeat.o(89617);
+        AppMethodBeat.o(4639);
         return str;
       }
       String str = this.zzto;
-      AppMethodBeat.o(89617);
+      AppMethodBeat.o(4639);
       return str;
     }
   }

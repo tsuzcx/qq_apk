@@ -12,7 +12,7 @@ public class FeatureCreator
   
   public Feature createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(89357);
+    AppMethodBeat.i(4379);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     String str = null;
     int i = 0;
@@ -37,7 +37,7 @@ public class FeatureCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new Feature(str, i, l);
-    AppMethodBeat.o(89357);
+    AppMethodBeat.o(4379);
     return paramParcel;
   }
   

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class gl
   extends b
 {
-  public gl.a cvq;
+  public a djF;
   
   public gl()
   {
@@ -15,11 +15,16 @@ public final class gl
   
   private gl(byte paramByte)
   {
-    AppMethodBeat.i(137225);
-    this.cvq = new gl.a();
-    this.ymq = false;
+    AppMethodBeat.i(19808);
+    this.djF = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(137225);
+    AppMethodBeat.o(19808);
+  }
+  
+  public static final class a
+  {
+    public boolean isActive;
   }
 }
 

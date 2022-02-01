@@ -1,88 +1,79 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
-import java.util.LinkedList;
 
 public final class fp
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public bcs wrF;
+  public int CAr;
+  public String fVC;
+  public String fVG;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94511);
+    AppMethodBeat.i(152494);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wrF == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: MediaObj");
-        AppMethodBeat.o(94511);
-        throw paramVarArgs;
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.fVC != null) {
+        paramVarArgs.d(1, this.fVC);
       }
-      if (this.wrF != null)
-      {
-        paramVarArgs.iQ(1, this.wrF.computeSize());
-        this.wrF.writeFields(paramVarArgs);
+      paramVarArgs.aR(2, this.CAr);
+      if (this.fVG != null) {
+        paramVarArgs.d(3, this.fVG);
       }
-      AppMethodBeat.o(94511);
+      AppMethodBeat.o(152494);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.wrF == null) {
-        break label358;
+      if (this.fVC == null) {
+        break label318;
       }
     }
-    label358:
-    for (paramInt = e.a.a.a.iP(1, this.wrF.computeSize()) + 0;; paramInt = 0)
+    label318:
+    for (paramInt = f.a.a.b.b.a.e(1, this.fVC) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(94511);
+      int i = paramInt + f.a.a.b.b.a.bA(2, this.CAr);
+      paramInt = i;
+      if (this.fVG != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.fVG);
+      }
+      AppMethodBeat.o(152494);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        if (this.wrF == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: MediaObj");
-          AppMethodBeat.o(94511);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(94511);
+        AppMethodBeat.o(152494);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         fp localfp = (fp)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(94511);
+          AppMethodBeat.o(152494);
           return -1;
+        case 1: 
+          localfp.fVC = locala.KhF.readString();
+          AppMethodBeat.o(152494);
+          return 0;
+        case 2: 
+          localfp.CAr = locala.KhF.xS();
+          AppMethodBeat.o(152494);
+          return 0;
         }
-        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new bcs();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((bcs)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          localfp.wrF = ((bcs)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(94511);
+        localfp.fVG = locala.KhF.readString();
+        AppMethodBeat.o(152494);
         return 0;
       }
-      AppMethodBeat.o(94511);
+      AppMethodBeat.o(152494);
       return -1;
     }
   }

@@ -1,44 +1,41 @@
 package com.tencent.mm.plugin.soter.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.m.b;
-import com.tencent.mm.ai.p;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.b;
 import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.soter.a.f.b;
 import com.tencent.soter.a.f.e.b;
 
 public final class g
-  extends m
+  extends n
   implements k, com.tencent.soter.a.f.e
 {
-  private f callback;
-  private q ftU;
-  private b<e.b> mGF = null;
+  private com.tencent.mm.al.g callback;
+  private com.tencent.mm.network.q gVZ;
+  private b<e.b> rcO = null;
   
   public final void a(b<e.b> paramb)
   {
-    this.mGF = paramb;
+    this.rcO = paramb;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(59314);
-    this.callback = paramf;
-    int i = dispatch(parame, this.ftU, this);
-    AppMethodBeat.o(59314);
+    AppMethodBeat.i(130821);
+    this.callback = paramg;
+    int i = dispatch(parame, this.gVZ, this);
+    AppMethodBeat.o(130821);
     return i;
   }
   
   public final void execute()
   {
-    AppMethodBeat.i(59316);
-    ab.v("MicroMsg.NetSceneUploadSoterASKRsa", "alvinluo NetSceneUploadSoterASKRsa doScene");
-    com.tencent.mm.kernel.g.Rc().a(this, 0);
-    AppMethodBeat.o(59316);
+    AppMethodBeat.i(130823);
+    ad.v("MicroMsg.NetSceneUploadSoterASKRsa", "alvinluo NetSceneUploadSoterASKRsa doScene");
+    com.tencent.mm.kernel.g.aeS().a(this, 0);
+    AppMethodBeat.o(130823);
   }
   
   public final int getType()
@@ -46,30 +43,30 @@ public final class g
     return 627;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(59315);
-    ab.i("MicroMsg.NetSceneUploadSoterASKRsa", "alvinluo errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(130822);
+    ad.i("MicroMsg.NetSceneUploadSoterASKRsa", "alvinluo errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ab.i("MicroMsg.NetSceneUploadSoterASKRsa", "netscene upload soter ask rsa successfully");
-      if (this.mGF != null)
+      ad.i("MicroMsg.NetSceneUploadSoterASKRsa", "netscene upload soter ask rsa successfully");
+      if (this.rcO != null)
       {
-        this.mGF.cW(new e.b(true));
-        AppMethodBeat.o(59315);
+        this.rcO.eq(new e.b(true));
+        AppMethodBeat.o(130822);
       }
     }
     else
     {
-      ab.e("MicroMsg.NetSceneUploadSoterASKRsa", "netscene upload soter ask rsa failed");
-      if (this.mGF != null) {
-        this.mGF.cW(new e.b(false));
+      ad.e("MicroMsg.NetSceneUploadSoterASKRsa", "netscene upload soter ask rsa failed");
+      if (this.rcO != null) {
+        this.rcO.eq(new e.b(false));
       }
     }
-    AppMethodBeat.o(59315);
+    AppMethodBeat.o(130822);
   }
   
   public final int securityLimitCount()
@@ -77,14 +74,14 @@ public final class g
     return 3;
   }
   
-  public final m.b securityVerificationChecked(q paramq)
+  public final n.b securityVerificationChecked(com.tencent.mm.network.q paramq)
   {
-    return m.b.ftu;
+    return n.b.gVB;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.b.g
  * JD-Core Version:    0.7.0.1
  */

@@ -3,147 +3,118 @@ package com.tencent.mm.modelvideo;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bby;
-import com.tencent.mm.protocal.protobuf.cii;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.br;
+import com.tencent.mm.protocal.protobuf.boj;
+import com.tencent.mm.protocal.protobuf.czj;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.Map;
 
 public final class s
 {
-  public int bsY;
-  public String cDt;
-  public long cFn;
-  public String cGU;
-  public String cHH;
   String clientId;
   public long createTime;
-  public int czu;
-  public int edL;
-  public long fVM;
-  public String fVa;
-  public int fWa;
-  public int fXA;
-  public int fXB;
-  public int fXC;
-  public String fXD;
-  public int fXE;
-  public String fXF;
-  public cii fXG;
-  public bby fXH;
-  public String fXq;
-  public int fXs;
-  public int fXt;
-  public int fXu;
-  public long fXv;
-  public long fXw;
-  public int fXx;
-  public int fXy;
-  public int fXz;
+  public int dpA;
+  public long drA;
+  public int dtM;
+  public String dtV;
+  public String dxG;
+  public String dyw;
   public String fileName;
-  public int fsd;
+  public int foe;
+  public int gOY;
+  public int gTY;
+  public String hAb;
+  public int hAd;
+  public int hAe;
+  public int hAf;
+  public long hAg;
+  public long hAh;
+  public int hAi;
+  public int hAj;
+  public int hAk;
+  public int hAl;
+  public int hAm;
+  public String hAn;
+  public int hAo;
+  public String hAp;
+  public czj hAq;
+  public boj hAr;
+  int hAs;
+  String hAt;
+  private boolean hAu;
+  private boolean hAv;
+  public String hxL;
+  public int hyM;
+  public long hyw;
   public int status;
   public int videoFormat;
   
   public s()
   {
-    AppMethodBeat.i(50782);
-    this.bsY = -1;
+    AppMethodBeat.i(126948);
+    this.dtM = -1;
     this.fileName = "";
     this.clientId = "";
-    this.cFn = 0L;
-    this.fWa = 0;
-    this.fXs = 0;
-    this.fsd = 0;
-    this.fXt = 0;
-    this.fXu = 0;
+    this.drA = 0L;
+    this.hyM = 0;
+    this.hAd = 0;
+    this.gTY = 0;
+    this.hAe = 0;
+    this.hAf = 0;
     this.status = 0;
     this.createTime = 0L;
-    this.fXv = 0L;
-    this.fXw = 0L;
-    this.fXx = 0;
-    this.fXy = 0;
-    this.fXz = 0;
-    this.fXA = 0;
-    this.cDt = "";
-    this.fXq = "";
-    this.fXB = 0;
-    this.fXC = 0;
-    this.fVa = "";
-    this.fXD = "";
-    this.fXE = 0;
-    this.fVM = 0L;
-    this.fXF = "";
-    this.cHH = "";
-    this.fXG = new cii();
-    this.cGU = "";
-    this.edL = 0;
-    this.fXH = new bby();
-    this.czu = 0;
+    this.hAg = 0L;
+    this.hAh = 0L;
+    this.gOY = 0;
+    this.hAi = 0;
+    this.hAj = 0;
+    this.hAk = 0;
+    this.dtV = "";
+    this.hAb = "";
+    this.hAl = 0;
+    this.hAm = 0;
+    this.hxL = "";
+    this.hAn = "";
+    this.hAo = 0;
+    this.hyw = 0L;
+    this.hAp = "";
+    this.dyw = "";
+    this.hAq = new czj();
+    this.dxG = "";
+    this.foe = 0;
+    this.hAr = new boj();
+    this.dpA = 0;
     this.videoFormat = 0;
-    AppMethodBeat.o(50782);
+    AppMethodBeat.o(126948);
   }
   
-  private void W(byte[] paramArrayOfByte)
+  private byte[] aCR()
   {
-    AppMethodBeat.i(50787);
-    this.fXG = new cii();
-    try
-    {
-      this.fXG.parseFrom(paramArrayOfByte);
-      AppMethodBeat.o(50787);
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      ab.printErrStackTrace("MicroMsg.VideoInfo", paramArrayOfByte, "", new Object[0]);
-      AppMethodBeat.o(50787);
-    }
-  }
-  
-  private void X(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(50788);
-    this.fXH = new bby();
-    try
-    {
-      this.fXH.parseFrom(paramArrayOfByte);
-      AppMethodBeat.o(50788);
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      AppMethodBeat.o(50788);
-    }
-  }
-  
-  private byte[] alN()
-  {
-    AppMethodBeat.i(50786);
+    AppMethodBeat.i(126952);
     Object localObject = new byte[0];
     try
     {
-      byte[] arrayOfByte = this.fXG.toByteArray();
+      byte[] arrayOfByte = this.hAq.toByteArray();
       localObject = arrayOfByte;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.VideoInfo", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.VideoInfo", localException, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(50786);
+    AppMethodBeat.o(126952);
     return localObject;
   }
   
-  private byte[] alT()
+  private byte[] aCX()
   {
-    AppMethodBeat.i(50789);
+    AppMethodBeat.i(126956);
     Object localObject = new byte[0];
     try
     {
-      byte[] arrayOfByte = this.fXH.toByteArray();
+      byte[] arrayOfByte = this.hAr.toByteArray();
       localObject = arrayOfByte;
     }
     catch (Exception localException)
@@ -151,214 +122,271 @@ public final class s
       label19:
       break label19;
     }
-    AppMethodBeat.o(50789);
+    AppMethodBeat.o(126956);
     return localObject;
   }
   
-  public static String vc(String paramString)
+  private void ae(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(50783);
+    AppMethodBeat.i(126953);
+    this.hAq = new czj();
     try
     {
-      paramString = br.F(paramString, "msg");
+      this.hAq.parseFrom(paramArrayOfByte);
+      AppMethodBeat.o(126953);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      ad.printErrStackTrace("MicroMsg.VideoInfo", paramArrayOfByte, "", new Object[0]);
+      AppMethodBeat.o(126953);
+    }
+  }
+  
+  private void af(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(126955);
+    this.hAr = new boj();
+    try
+    {
+      this.hAr.parseFrom(paramArrayOfByte);
+      AppMethodBeat.o(126955);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      AppMethodBeat.o(126955);
+    }
+  }
+  
+  public static String zM(String paramString)
+  {
+    AppMethodBeat.i(126949);
+    try
+    {
+      paramString = bw.K(paramString, "msg");
       if (paramString != null)
       {
         paramString = (String)paramString.get(".msg.videomsg.$cdnvideourl");
-        AppMethodBeat.o(50783);
+        AppMethodBeat.o(126949);
         return paramString;
       }
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(50783);
+      AppMethodBeat.o(126949);
     }
     return "";
   }
   
-  public final String alM()
+  public final void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    if (this.fXq == null) {
-      return "";
+    AppMethodBeat.i(126954);
+    if (this.hAq == null) {
+      this.hAq = new czj();
     }
-    return this.fXq;
+    this.hAq.gJx = paramString2;
+    this.hAq.Dim = paramInt;
+    this.hAq.gJv = paramString1;
+    this.hAq.gJy = paramString3;
+    this.hAq.gJz = paramString4;
+    this.hAq.gJB = paramString5;
+    this.hAq.gJC = paramString6;
+    AppMethodBeat.o(126954);
   }
   
-  public final String alO()
+  public final String aCQ()
   {
-    if (this.fVa == null) {
+    if (this.hAb == null) {
       return "";
     }
-    return this.fVa;
+    return this.hAb;
   }
   
-  public final String alP()
+  public final String aCS()
   {
-    if (this.fXD == null) {
+    if (this.hxL == null) {
       return "";
     }
-    return this.fXD;
+    return this.hxL;
   }
   
-  public final boolean alQ()
+  public final String aCT()
+  {
+    if (this.hAn == null) {
+      return "";
+    }
+    return this.hAn;
+  }
+  
+  public final boolean aCU()
   {
     return (this.status == 140) || (this.status == 141) || (this.status == 142);
   }
   
-  public final boolean alR()
+  public final boolean aCV()
   {
     return (this.status == 121) || (this.status == 122) || (this.status == 120) || (this.status == 123);
   }
   
-  public final boolean alS()
+  public final boolean aCW()
   {
     return (this.status == 199) || (this.status == 199);
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(50784);
+    AppMethodBeat.i(126950);
     this.fileName = paramCursor.getString(0);
     this.clientId = paramCursor.getString(1);
-    this.cFn = paramCursor.getLong(2);
-    this.fWa = paramCursor.getInt(3);
-    this.fXs = paramCursor.getInt(4);
-    this.fsd = paramCursor.getInt(5);
-    this.fXt = paramCursor.getInt(6);
-    this.fXu = paramCursor.getInt(7);
+    this.drA = paramCursor.getLong(2);
+    this.hyM = paramCursor.getInt(3);
+    this.hAd = paramCursor.getInt(4);
+    this.gTY = paramCursor.getInt(5);
+    this.hAe = paramCursor.getInt(6);
+    this.hAf = paramCursor.getInt(7);
     this.status = paramCursor.getInt(8);
     this.createTime = paramCursor.getLong(9);
-    this.fXv = paramCursor.getLong(10);
-    this.fXw = paramCursor.getLong(11);
-    this.fXx = paramCursor.getInt(12);
-    this.fXy = paramCursor.getInt(13);
-    this.fXz = paramCursor.getInt(14);
-    this.fXA = paramCursor.getInt(15);
-    this.cDt = paramCursor.getString(16);
-    this.fXq = paramCursor.getString(17);
-    this.fXB = paramCursor.getInt(18);
-    this.fXC = paramCursor.getInt(19);
-    this.fVa = paramCursor.getString(20);
-    this.fXD = paramCursor.getString(21);
-    this.fXE = paramCursor.getInt(22);
-    this.fVM = paramCursor.getLong(23);
-    this.fXF = paramCursor.getString(24);
-    this.cHH = paramCursor.getString(25);
-    W(paramCursor.getBlob(26));
-    this.cGU = paramCursor.getString(27);
-    this.edL = paramCursor.getInt(28);
-    X(paramCursor.getBlob(29));
-    this.czu = paramCursor.getInt(30);
+    this.hAg = paramCursor.getLong(10);
+    this.hAh = paramCursor.getLong(11);
+    this.gOY = paramCursor.getInt(12);
+    this.hAi = paramCursor.getInt(13);
+    this.hAj = paramCursor.getInt(14);
+    this.hAk = paramCursor.getInt(15);
+    this.dtV = paramCursor.getString(16);
+    this.hAb = paramCursor.getString(17);
+    this.hAl = paramCursor.getInt(18);
+    this.hAm = paramCursor.getInt(19);
+    this.hxL = paramCursor.getString(20);
+    this.hAn = paramCursor.getString(21);
+    this.hAo = paramCursor.getInt(22);
+    this.hyw = paramCursor.getLong(23);
+    this.hAp = paramCursor.getString(24);
+    this.dyw = paramCursor.getString(25);
+    ae(paramCursor.getBlob(26));
+    this.dxG = paramCursor.getString(27);
+    this.foe = paramCursor.getInt(28);
+    af(paramCursor.getBlob(29));
+    this.dpA = paramCursor.getInt(30);
     this.videoFormat = paramCursor.getInt(31);
-    AppMethodBeat.o(50784);
+    this.hAs = paramCursor.getInt(32);
+    this.hAt = paramCursor.getString(33);
+    AppMethodBeat.o(126950);
   }
   
   public final ContentValues convertTo()
   {
-    AppMethodBeat.i(50785);
+    AppMethodBeat.i(126951);
     ContentValues localContentValues = new ContentValues();
-    if ((this.bsY & 0x1) != 0) {
+    if ((this.dtM & 0x1) != 0) {
       localContentValues.put("filename", getFileName());
     }
-    if ((this.bsY & 0x2) != 0) {
+    if ((this.dtM & 0x2) != 0) {
       if (this.clientId != null) {
-        break label775;
+        break label818;
       }
     }
-    label775:
+    label818:
     for (String str = "";; str = this.clientId)
     {
       localContentValues.put("clientid", str);
-      if ((this.bsY & 0x4) != 0) {
-        localContentValues.put("msgsvrid", Long.valueOf(this.cFn));
+      if ((this.dtM & 0x4) != 0) {
+        localContentValues.put("msgsvrid", Long.valueOf(this.drA));
       }
-      if ((this.bsY & 0x8) != 0) {
-        localContentValues.put("netoffset", Integer.valueOf(this.fWa));
+      if ((this.dtM & 0x8) != 0) {
+        localContentValues.put("netoffset", Integer.valueOf(this.hyM));
       }
-      if ((this.bsY & 0x10) != 0) {
-        localContentValues.put("filenowsize", Integer.valueOf(this.fXs));
+      if ((this.dtM & 0x10) != 0) {
+        localContentValues.put("filenowsize", Integer.valueOf(this.hAd));
       }
-      if ((this.bsY & 0x20) != 0) {
-        localContentValues.put("totallen", Integer.valueOf(this.fsd));
+      if ((this.dtM & 0x20) != 0) {
+        localContentValues.put("totallen", Integer.valueOf(this.gTY));
       }
-      if ((this.bsY & 0x40) != 0) {
-        localContentValues.put("thumbnetoffset", Integer.valueOf(this.fXt));
+      if ((this.dtM & 0x40) != 0) {
+        localContentValues.put("thumbnetoffset", Integer.valueOf(this.hAe));
       }
-      if ((this.bsY & 0x80) != 0) {
-        localContentValues.put("thumblen", Integer.valueOf(this.fXu));
+      if ((this.dtM & 0x80) != 0) {
+        localContentValues.put("thumblen", Integer.valueOf(this.hAf));
       }
-      if ((this.bsY & 0x100) != 0) {
+      if ((this.dtM & 0x100) != 0) {
         localContentValues.put("status", Integer.valueOf(this.status));
       }
-      if ((this.bsY & 0x200) != 0) {
+      if ((this.dtM & 0x200) != 0) {
         localContentValues.put("createtime", Long.valueOf(this.createTime));
       }
-      if ((this.bsY & 0x400) != 0) {
-        localContentValues.put("lastmodifytime", Long.valueOf(this.fXv));
+      if ((this.dtM & 0x400) != 0) {
+        localContentValues.put("lastmodifytime", Long.valueOf(this.hAg));
       }
-      if ((this.bsY & 0x800) != 0) {
-        localContentValues.put("downloadtime", Long.valueOf(this.fXw));
+      if ((this.dtM & 0x800) != 0) {
+        localContentValues.put("downloadtime", Long.valueOf(this.hAh));
       }
-      if ((this.bsY & 0x1000) != 0) {
-        localContentValues.put("videolength", Integer.valueOf(this.fXx));
+      if ((this.dtM & 0x1000) != 0) {
+        localContentValues.put("videolength", Integer.valueOf(this.gOY));
       }
-      if ((this.bsY & 0x2000) != 0) {
-        localContentValues.put("msglocalid", Integer.valueOf(this.fXy));
+      if ((this.dtM & 0x2000) != 0) {
+        localContentValues.put("msglocalid", Integer.valueOf(this.hAi));
       }
-      if ((this.bsY & 0x4000) != 0) {
-        localContentValues.put("nettimes", Integer.valueOf(this.fXz));
+      if ((this.dtM & 0x4000) != 0) {
+        localContentValues.put("nettimes", Integer.valueOf(this.hAj));
       }
-      if ((this.bsY & 0x8000) != 0) {
-        localContentValues.put("cameratype", Integer.valueOf(this.fXA));
+      if ((this.dtM & 0x8000) != 0) {
+        localContentValues.put("cameratype", Integer.valueOf(this.hAk));
       }
-      if ((this.bsY & 0x10000) != 0) {
+      if ((this.dtM & 0x10000) != 0) {
         localContentValues.put("user", getUser());
       }
-      if ((this.bsY & 0x20000) != 0) {
-        localContentValues.put("human", alM());
+      if ((this.dtM & 0x20000) != 0) {
+        localContentValues.put("human", aCQ());
       }
-      if ((this.bsY & 0x40000) != 0) {
-        localContentValues.put("reserved1", Integer.valueOf(this.fXB));
+      if ((this.dtM & 0x40000) != 0) {
+        localContentValues.put("reserved1", Integer.valueOf(this.hAl));
       }
-      if ((this.bsY & 0x80000) != 0) {
-        localContentValues.put("reserved2", Integer.valueOf(this.fXC));
+      if ((this.dtM & 0x80000) != 0) {
+        localContentValues.put("reserved2", Integer.valueOf(this.hAm));
       }
-      if ((this.bsY & 0x100000) != 0) {
-        localContentValues.put("reserved3", alO());
+      if ((this.dtM & 0x100000) != 0) {
+        localContentValues.put("reserved3", aCS());
       }
-      if ((this.bsY & 0x200000) != 0) {
-        localContentValues.put("reserved4", alP());
+      if ((this.dtM & 0x200000) != 0) {
+        localContentValues.put("reserved4", aCT());
       }
-      if ((this.bsY & 0x400000) != 0) {
-        localContentValues.put("videofuncflag", Integer.valueOf(this.fXE));
+      if ((this.dtM & 0x400000) != 0) {
+        localContentValues.put("videofuncflag", Integer.valueOf(this.hAo));
       }
-      if ((this.bsY & 0x800000) != 0) {
-        localContentValues.put("masssendid", Long.valueOf(this.fVM));
+      if ((this.dtM & 0x800000) != 0) {
+        localContentValues.put("masssendid", Long.valueOf(this.hyw));
       }
-      if ((this.bsY & 0x1000000) != 0) {
-        localContentValues.put("masssendlist", this.fXF);
+      if ((this.dtM & 0x1000000) != 0) {
+        localContentValues.put("masssendlist", this.hAp);
       }
-      if ((this.bsY & 0x2000000) != 0) {
-        localContentValues.put("videomd5", this.cHH);
+      if ((this.dtM & 0x2000000) != 0) {
+        localContentValues.put("videomd5", this.dyw);
       }
-      if ((this.bsY & 0x4000000) != 0) {
-        localContentValues.put("streamvideo", alN());
+      if ((this.dtM & 0x4000000) != 0) {
+        localContentValues.put("streamvideo", aCR());
       }
-      if ((this.bsY & 0x8000000) != 0) {
-        localContentValues.put("statextstr", this.cGU);
+      if ((this.dtM & 0x8000000) != 0) {
+        localContentValues.put("statextstr", this.dxG);
       }
-      if ((this.bsY & 0x10000000) != 0) {
-        localContentValues.put("downloadscene", Integer.valueOf(this.edL));
+      if ((this.dtM & 0x10000000) != 0) {
+        localContentValues.put("downloadscene", Integer.valueOf(this.foe));
       }
-      if ((this.bsY & 0x20000000) != 0) {
-        localContentValues.put("mmsightextinfo", alT());
+      if ((this.dtM & 0x20000000) != 0) {
+        localContentValues.put("mmsightextinfo", aCX());
       }
-      if ((this.bsY & 0x1) != 0) {
-        localContentValues.put("preloadsize", Integer.valueOf(this.czu));
+      if ((this.dtM & 0x1) != 0) {
+        localContentValues.put("preloadsize", Integer.valueOf(this.dpA));
       }
-      if ((this.bsY & 0x2) != 0) {
+      if ((this.dtM & 0x2) != 0) {
         localContentValues.put("videoformat", Integer.valueOf(this.videoFormat));
       }
-      AppMethodBeat.o(50785);
+      if (this.hAu) {
+        localContentValues.put("forward_msg_local_id", Integer.valueOf(this.hAs));
+      }
+      if (this.hAv) {
+        localContentValues.put("msg_uuid", this.hAt);
+      }
+      AppMethodBeat.o(126951);
       return localContentValues;
     }
   }
@@ -373,15 +401,35 @@ public final class s
   
   public final String getUser()
   {
-    if (this.cDt == null) {
+    if (this.dtV == null) {
       return "";
     }
-    return this.cDt;
+    return this.dtV;
+  }
+  
+  public final void oU(int paramInt)
+  {
+    this.hAs = paramInt;
+    this.hAu = true;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(126947);
+    String str = "VideoInfo{fileName='" + this.fileName + '\'' + ", clientId='" + this.clientId + '\'' + ", msgSvrId=" + this.drA + ", netOffset=" + this.hyM + ", fileNowSize=" + this.hAd + ", totalLen=" + this.gTY + ", thumbNetOffset=" + this.hAe + ", thumbLen=" + this.hAf + ", status=" + this.status + ", createTime=" + this.createTime + ", lastModifyTime=" + this.hAg + ", priorityTime=" + this.hAh + ", videoLength=" + this.gOY + ", msgLocalId=" + this.hAi + ", netTimes=" + this.hAj + ", cameraType=" + this.hAk + ", user='" + this.dtV + '\'' + ", human='" + this.hAb + '\'' + ", isExport=" + this.hAl + ", isUseCdn=" + this.hAm + ", importPath='" + this.hxL + '\'' + ", recvXml='" + this.hAn + '\'' + ", videoFuncFlag=" + this.hAo + ", massSendId=" + this.hyw + ", massSendList='" + this.hAp + '\'' + ", videoMD5='" + this.dyw + '\'' + ", streamVideoProto=" + this.hAq + ", statextstr='" + this.dxG + '\'' + ", downloadScene=" + this.foe + ", mmSightExtInfo=" + this.hAr + ", preloadSize=" + this.dpA + ", videoFormat=" + this.videoFormat + ", flag=" + this.dtM + '}';
+    AppMethodBeat.o(126947);
+    return str;
+  }
+  
+  public final void zN(String paramString)
+  {
+    this.hAt = paramString;
+    this.hAv = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelvideo.s
  * JD-Core Version:    0.7.0.1
  */

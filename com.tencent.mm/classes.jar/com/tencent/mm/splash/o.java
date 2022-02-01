@@ -8,7 +8,7 @@ public abstract interface o
   {
     public abstract void done();
     
-    public abstract void dvD();
+    public abstract void eIs();
   }
 }
 

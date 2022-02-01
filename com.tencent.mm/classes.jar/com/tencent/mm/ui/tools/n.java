@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 
 public final class n
 {
-  public static float[] c(float[][] paramArrayOfFloat, float[] paramArrayOfFloat1)
+  public static float[] a(float[][] paramArrayOfFloat, float[] paramArrayOfFloat1)
   {
     float[] arrayOfFloat = new float[3];
     int i = 0;
@@ -103,7 +103,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.tools.n
  * JD-Core Version:    0.7.0.1
  */

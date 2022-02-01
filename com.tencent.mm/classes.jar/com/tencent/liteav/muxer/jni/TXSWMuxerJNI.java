@@ -12,24 +12,24 @@ public class TXSWMuxerJNI
   
   public TXSWMuxerJNI()
   {
-    AppMethodBeat.i(67141);
+    AppMethodBeat.i(14945);
     this.a = -1L;
     this.a = init();
     this.b = true;
-    AppMethodBeat.o(67141);
+    AppMethodBeat.o(14945);
   }
   
   private byte[] b(ByteBuffer paramByteBuffer, int paramInt)
   {
-    AppMethodBeat.i(67150);
+    AppMethodBeat.i(14954);
     if (paramByteBuffer == null)
     {
-      AppMethodBeat.o(67150);
+      AppMethodBeat.o(14954);
       return null;
     }
     byte[] arrayOfByte = new byte[paramInt];
     paramByteBuffer.get(arrayOfByte);
-    AppMethodBeat.o(67150);
+    AppMethodBeat.o(14954);
     return arrayOfByte;
   }
   
@@ -37,7 +37,7 @@ public class TXSWMuxerJNI
   
   private native void release(long paramLong);
   
-  private native void setAVParams(long paramLong, TXSWMuxerJNI.AVOptions paramAVOptions);
+  private native void setAVParams(long paramLong, AVOptions paramAVOptions);
   
   private native void setAudioCSD(long paramLong, byte[] paramArrayOfByte);
   
@@ -53,7 +53,7 @@ public class TXSWMuxerJNI
   
   public int a()
   {
-    AppMethodBeat.i(67147);
+    AppMethodBeat.i(14951);
     if (this.b)
     {
       int i = start(this.a);
@@ -62,19 +62,19 @@ public class TXSWMuxerJNI
       }
       for (;;)
       {
-        AppMethodBeat.o(67147);
+        AppMethodBeat.o(14951);
         return i;
         TXCLog.e("TXSWMuxerJNI", "Start Muxer Error!!!");
       }
     }
     TXCLog.e("TXSWMuxerJNI", "Muxer isn't init yet!");
-    AppMethodBeat.o(67147);
+    AppMethodBeat.o(14951);
     return -1;
   }
   
   public int a(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong)
   {
-    AppMethodBeat.i(67146);
+    AppMethodBeat.i(14950);
     if (this.b)
     {
       if (this.c)
@@ -83,73 +83,73 @@ public class TXSWMuxerJNI
         if (paramInt1 != 0) {
           TXCLog.e("TXSWMuxerJNI", "Muxer write frame error!");
         }
-        AppMethodBeat.o(67146);
+        AppMethodBeat.o(14950);
         return paramInt1;
       }
       TXCLog.e("TXSWMuxerJNI", "Muxer isn't start yet!");
-      AppMethodBeat.o(67146);
+      AppMethodBeat.o(14950);
       return -1;
     }
     TXCLog.e("TXSWMuxerJNI", "Muxer isn't init yet!");
-    AppMethodBeat.o(67146);
+    AppMethodBeat.o(14950);
     return -1;
   }
   
-  public void a(TXSWMuxerJNI.AVOptions paramAVOptions)
+  public void a(AVOptions paramAVOptions)
   {
-    AppMethodBeat.i(67142);
+    AppMethodBeat.i(14946);
     if (this.b)
     {
       setAVParams(this.a, paramAVOptions);
-      AppMethodBeat.o(67142);
+      AppMethodBeat.o(14946);
       return;
     }
     TXCLog.e("TXSWMuxerJNI", "Muxer isn't init yet!");
-    AppMethodBeat.o(67142);
+    AppMethodBeat.o(14946);
   }
   
   public void a(String paramString)
   {
-    AppMethodBeat.i(67143);
+    AppMethodBeat.i(14947);
     if (this.b)
     {
       setDstPath(this.a, paramString);
-      AppMethodBeat.o(67143);
+      AppMethodBeat.o(14947);
       return;
     }
     TXCLog.e("TXSWMuxerJNI", "Muxer isn't init yet!");
-    AppMethodBeat.o(67143);
+    AppMethodBeat.o(14947);
   }
   
   public void a(ByteBuffer paramByteBuffer, int paramInt)
   {
-    AppMethodBeat.i(67145);
+    AppMethodBeat.i(14949);
     if (this.b)
     {
       setAudioCSD(this.a, b(paramByteBuffer, paramInt));
-      AppMethodBeat.o(67145);
+      AppMethodBeat.o(14949);
       return;
     }
     TXCLog.e("TXSWMuxerJNI", "Muxer isn't init yet!");
-    AppMethodBeat.o(67145);
+    AppMethodBeat.o(14949);
   }
   
   public void a(ByteBuffer paramByteBuffer1, int paramInt1, ByteBuffer paramByteBuffer2, int paramInt2)
   {
-    AppMethodBeat.i(67144);
+    AppMethodBeat.i(14948);
     if (this.b)
     {
       setVideoCSD(this.a, b(paramByteBuffer1, paramInt1), b(paramByteBuffer2, paramInt2));
-      AppMethodBeat.o(67144);
+      AppMethodBeat.o(14948);
       return;
     }
     TXCLog.e("TXSWMuxerJNI", "Muxer isn't init yet!");
-    AppMethodBeat.o(67144);
+    AppMethodBeat.o(14948);
   }
   
   public int b()
   {
-    AppMethodBeat.i(67148);
+    AppMethodBeat.i(14952);
     if (this.b)
     {
       if (this.c)
@@ -159,31 +159,40 @@ public class TXSWMuxerJNI
         if (i != 0) {
           TXCLog.e("TXSWMuxerJNI", "Stop Muxer Error!!!");
         }
-        AppMethodBeat.o(67148);
+        AppMethodBeat.o(14952);
         return i;
       }
       TXCLog.e("TXSWMuxerJNI", "Muxer isn't start yet!");
-      AppMethodBeat.o(67148);
+      AppMethodBeat.o(14952);
       return -1;
     }
     TXCLog.e("TXSWMuxerJNI", "Muxer isn't init yet!");
-    AppMethodBeat.o(67148);
+    AppMethodBeat.o(14952);
     return -1;
   }
   
   public void c()
   {
-    AppMethodBeat.i(67149);
+    AppMethodBeat.i(14953);
     if (this.b)
     {
       release(this.a);
       this.b = false;
       this.c = false;
-      AppMethodBeat.o(67149);
+      AppMethodBeat.o(14953);
       return;
     }
     TXCLog.e("TXSWMuxerJNI", "Muxer isn't init yet!");
-    AppMethodBeat.o(67149);
+    AppMethodBeat.o(14953);
+  }
+  
+  public static class AVOptions
+  {
+    public int audioChannels = 0;
+    public int audioSampleRate = 0;
+    public int videoGOP = 12;
+    public int videoHeight = 540;
+    public int videoWidth = 960;
   }
 }
 

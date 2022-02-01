@@ -13,15 +13,15 @@ public class PropertyMirror
   
   public String getName()
   {
-    AppMethodBeat.i(74897);
+    AppMethodBeat.i(61520);
     String str = this.v8Object.executeStringFunction("name", null);
-    AppMethodBeat.o(74897);
+    AppMethodBeat.o(61520);
     return str;
   }
   
   public Mirror getValue()
   {
-    AppMethodBeat.i(74898);
+    AppMethodBeat.i(61521);
     V8Object localV8Object = this.v8Object.executeObjectFunction("value", null);
     try
     {
@@ -31,7 +31,7 @@ public class PropertyMirror
     finally
     {
       localV8Object.release();
-      AppMethodBeat.o(74898);
+      AppMethodBeat.o(61521);
     }
   }
   
@@ -42,7 +42,7 @@ public class PropertyMirror
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.debug.mirror.PropertyMirror
  * JD-Core Version:    0.7.0.1
  */

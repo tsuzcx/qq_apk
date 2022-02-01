@@ -1,84 +1,84 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ak;
-import com.tencent.mm.protocal.protobuf.al;
-import com.tencent.mm.protocal.protobuf.ot;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.am;
+import com.tencent.mm.protocal.protobuf.an;
+import com.tencent.mm.protocal.protobuf.rb;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 
 public final class p
-  extends m
+  extends n
   implements k
 {
-  private f callback;
-  public String koi;
-  public int koj;
-  public String kok;
+  private g callback;
+  public String ntw;
+  public int ntx;
+  public String nty;
   private final b rr;
   
-  public p(LinkedList<ot> paramLinkedList, int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public p(LinkedList<rb> paramLinkedList, int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    AppMethodBeat.i(87860);
+    AppMethodBeat.i(112802);
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new ak();
-    ((b.a)localObject).fsY = new al();
+    ((b.a)localObject).gUU = new am();
+    ((b.a)localObject).gUV = new an();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/acceptcardlistfromapp";
-    ((b.a)localObject).funcId = 687;
+    ((b.a)localObject).funcId = 1049;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (ak)this.rr.fsV.fta;
-    ((ak)localObject).wlK = paramLinkedList;
-    ((ak)localObject).cHp = paramInt1;
-    ((ak)localObject).wlG = paramString1;
-    ((ak)localObject).wlF = paramString2;
-    ((ak)localObject).wlH = paramInt2;
-    AppMethodBeat.o(87860);
+    this.rr = ((b.a)localObject).atI();
+    localObject = (am)this.rr.gUS.gUX;
+    ((am)localObject).CtY = paramLinkedList;
+    ((am)localObject).dye = paramInt1;
+    ((am)localObject).CtU = paramString1;
+    ((am)localObject).CtT = paramString2;
+    ((am)localObject).CtV = paramInt2;
+    AppMethodBeat.o(112802);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(87861);
-    this.callback = paramf;
+    AppMethodBeat.i(112803);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(87861);
+    AppMethodBeat.o(112803);
     return i;
   }
   
   public final int getType()
   {
-    return 687;
+    return 1049;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(87862);
-    ab.i("MicroMsg.NetSceneGetCardListFromApp", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
+    AppMethodBeat.i(112804);
+    ad.i("MicroMsg.NetSceneGetCardListFromApp", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (al)this.rr.fsW.fta;
-      this.koi = paramq.koi;
-      this.koj = paramq.koj;
-      this.kok = paramq.kok;
-      ab.e("MicroMsg.NetSceneGetCardListFromApp", "onGYNetEnd, ret_code = " + this.koj + " ret_msg = " + this.kok);
+      paramq = (an)this.rr.gUT.gUX;
+      this.ntw = paramq.ntw;
+      this.ntx = paramq.ntx;
+      this.nty = paramq.nty;
+      ad.e("MicroMsg.NetSceneGetCardListFromApp", "onGYNetEnd, ret_code = " + this.ntx + " ret_msg = " + this.nty);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(87862);
+    AppMethodBeat.o(112804);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.p
  * JD-Core Version:    0.7.0.1
  */

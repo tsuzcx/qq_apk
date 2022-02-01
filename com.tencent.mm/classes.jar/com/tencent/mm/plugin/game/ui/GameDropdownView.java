@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -10,10 +11,11 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 
 public class GameDropdownView
@@ -21,133 +23,185 @@ public class GameDropdownView
   implements View.OnClickListener, PopupWindow.OnDismissListener
 {
   private Context mContext;
-  private GameDropdownView.b nyI;
-  private LinkedList<String> nyJ;
-  private int nyK;
-  private int nyL;
-  private GameDropdownView.a nyM;
-  private View nyN;
-  private View.OnClickListener nyO;
+  private View.OnClickListener olC;
+  private b sii;
+  private LinkedList<String> sij;
+  private int sik;
+  private int sil;
+  private a sin;
+  private View sio;
   
   public GameDropdownView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(111916);
-    this.nyK = 0;
-    this.nyL = 0;
-    this.nyM = null;
-    this.nyN = null;
-    this.nyO = new GameDropdownView.1(this);
+    AppMethodBeat.i(42087);
+    this.sik = 0;
+    this.sil = 0;
+    this.sin = null;
+    this.sio = null;
+    this.olC = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(42084);
+        if ((GameDropdownView.a(GameDropdownView.this).getContentView() == null) || (!(GameDropdownView.a(GameDropdownView.this).getContentView() instanceof ViewGroup)))
+        {
+          GameDropdownView.a(GameDropdownView.this).dismiss();
+          AppMethodBeat.o(42084);
+          return;
+        }
+        int i = ((ViewGroup)GameDropdownView.a(GameDropdownView.this).getContentView()).indexOfChild(paramAnonymousView);
+        GameDropdownView.a(GameDropdownView.this, i);
+        GameDropdownView.a(GameDropdownView.this).dismiss();
+        AppMethodBeat.o(42084);
+      }
+    };
     this.mContext = paramContext;
-    this.nyI = new GameDropdownView.b(paramContext);
+    this.sii = new b(paramContext);
     setOnClickListener(this);
-    AppMethodBeat.o(111916);
+    AppMethodBeat.o(42087);
   }
   
   private void setCurrentSelection(int paramInt)
   {
-    AppMethodBeat.i(111920);
-    if ((this.nyI.getContentView() == null) || (!(this.nyI.getContentView() instanceof ViewGroup)))
+    AppMethodBeat.i(42091);
+    if ((this.sii.getContentView() == null) || (!(this.sii.getContentView() instanceof ViewGroup)))
     {
-      AppMethodBeat.o(111920);
+      AppMethodBeat.o(42091);
       return;
     }
-    ViewGroup localViewGroup = (ViewGroup)this.nyI.getContentView();
-    if ((paramInt > this.nyL) || (this.nyK > this.nyL) || (!(localViewGroup.getChildAt(paramInt) instanceof TextView)) || (!(localViewGroup.getChildAt(this.nyK) instanceof TextView)))
+    ViewGroup localViewGroup = (ViewGroup)this.sii.getContentView();
+    if ((paramInt > this.sil) || (this.sik > this.sil) || (!(localViewGroup.getChildAt(paramInt) instanceof TextView)) || (!(localViewGroup.getChildAt(this.sik) instanceof TextView)))
     {
-      AppMethodBeat.o(111920);
+      AppMethodBeat.o(42091);
       return;
     }
-    ((TextView)localViewGroup.getChildAt(this.nyK)).setTextColor(this.mContext.getResources().getColor(2131690168));
-    ((TextView)localViewGroup.getChildAt(paramInt)).setTextColor(this.mContext.getResources().getColor(2131690322));
-    setText((CharSequence)this.nyJ.get(paramInt));
-    if ((this.nyM != null) && (this.nyK != paramInt)) {
-      this.nyM.xh(paramInt);
+    ((TextView)localViewGroup.getChildAt(this.sik)).setTextColor(this.mContext.getResources().getColor(2131100490));
+    ((TextView)localViewGroup.getChildAt(paramInt)).setTextColor(this.mContext.getResources().getColor(2131100711));
+    setText((CharSequence)this.sij.get(paramInt));
+    if ((this.sin != null) && (this.sik != paramInt)) {
+      this.sin.EH(paramInt);
     }
-    this.nyK = paramInt;
-    AppMethodBeat.o(111920);
+    this.sik = paramInt;
+    AppMethodBeat.o(42091);
   }
   
-  public final void e(LinkedList<String> paramLinkedList, int paramInt)
+  public final void g(LinkedList<String> paramLinkedList, int paramInt)
   {
-    AppMethodBeat.i(111919);
+    AppMethodBeat.i(42090);
     if (paramLinkedList.size() == 0)
     {
-      ab.i("MicroMsg.GameDropdownView", "No menu item");
-      AppMethodBeat.o(111919);
+      ad.i("MicroMsg.GameDropdownView", "No menu item");
+      AppMethodBeat.o(42090);
       return;
     }
-    this.nyJ = paramLinkedList;
-    this.nyL = (paramLinkedList.size() - 1);
-    if ((paramInt < 0) || (paramInt > this.nyL)) {}
+    this.sij = paramLinkedList;
+    this.sil = (paramLinkedList.size() - 1);
+    if ((paramInt < 0) || (paramInt > this.sil)) {}
     LinearLayout localLinearLayout;
-    for (this.nyK = 0;; this.nyK = paramInt)
+    for (this.sik = 0;; this.sik = paramInt)
     {
       LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-      localLinearLayout = (LinearLayout)localLayoutInflater.inflate(2130969773, null);
+      localLinearLayout = (LinearLayout)localLayoutInflater.inflate(2131494331, null);
       paramInt = 0;
       while (paramInt < paramLinkedList.size())
       {
         String str = (String)paramLinkedList.get(paramInt);
-        TextView localTextView = (TextView)localLayoutInflater.inflate(2130969774, localLinearLayout, false);
+        TextView localTextView = (TextView)localLayoutInflater.inflate(2131494332, localLinearLayout, false);
         localTextView.setText(str);
-        localTextView.setOnClickListener(this.nyO);
-        if (paramInt == this.nyK)
+        localTextView.setOnClickListener(this.olC);
+        if (paramInt == this.sik)
         {
-          localTextView.setTextColor(this.mContext.getResources().getColor(2131690322));
+          localTextView.setTextColor(this.mContext.getResources().getColor(2131100711));
           setText(str);
         }
         localLinearLayout.addView(localTextView);
         paramInt += 1;
       }
     }
-    this.nyI.setContentView(localLinearLayout);
+    this.sii.setContentView(localLinearLayout);
     setVisibility(0);
-    AppMethodBeat.o(111919);
+    AppMethodBeat.o(42090);
   }
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(111918);
-    if (this.nyI.isShowing())
+    AppMethodBeat.i(42089);
+    if (this.sii.isShowing())
     {
-      this.nyI.dismiss();
-      AppMethodBeat.o(111918);
+      this.sii.dismiss();
+      AppMethodBeat.o(42089);
       return;
     }
-    if (this.nyN == null)
+    if (this.sio == null)
     {
-      this.nyI.showAsDropDown(this);
-      AppMethodBeat.o(111918);
+      this.sii.showAsDropDown(this);
+      AppMethodBeat.o(42089);
       return;
     }
-    this.nyI.showAsDropDown(this.nyN);
-    AppMethodBeat.o(111918);
+    this.sii.showAsDropDown(this.sio);
+    AppMethodBeat.o(42089);
   }
   
   public void onDismiss() {}
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(111917);
+    AppMethodBeat.i(42088);
     super.onFinishInflate();
     setVisibility(8);
-    AppMethodBeat.o(111917);
+    AppMethodBeat.o(42088);
   }
   
   public void setAnchorView(View paramView)
   {
-    this.nyN = paramView;
+    this.sio = paramView;
   }
   
-  public void setOnSelectionChangedListener(GameDropdownView.a parama)
+  public void setOnSelectionChangedListener(a parama)
   {
-    this.nyM = parama;
+    this.sin = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void EH(int paramInt);
+  }
+  
+  static final class b
+    extends PopupWindow
+  {
+    public b(Context paramContext)
+    {
+      super();
+      AppMethodBeat.i(42086);
+      setWindowLayoutMode(-1, -2);
+      setBackgroundDrawable(new BitmapDrawable());
+      setFocusable(true);
+      setOutsideTouchable(true);
+      setTouchInterceptor(new View.OnTouchListener()
+      {
+        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+        {
+          AppMethodBeat.i(42085);
+          if (paramAnonymousMotionEvent.getAction() == 4)
+          {
+            GameDropdownView.b.this.dismiss();
+            AppMethodBeat.o(42085);
+            return true;
+          }
+          AppMethodBeat.o(42085);
+          return false;
+        }
+      });
+      setAnimationStyle(2130772061);
+      AppMethodBeat.o(42086);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDropdownView
  * JD-Core Version:    0.7.0.1
  */

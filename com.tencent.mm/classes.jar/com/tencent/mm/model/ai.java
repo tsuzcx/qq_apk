@@ -1,18 +1,14 @@
 package com.tencent.mm.model;
 
-public abstract class ai
+public abstract interface ai
 {
-  public long flH = 0L;
+  public abstract void arC();
   
-  public abstract String getTag();
-  
-  public abstract boolean kv(int paramInt);
-  
-  public abstract void transfer(int paramInt);
+  public abstract void arD();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.model.ai
  * JD-Core Version:    0.7.0.1
  */

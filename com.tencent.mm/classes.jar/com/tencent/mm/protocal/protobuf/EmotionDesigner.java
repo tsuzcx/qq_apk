@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class EmotionDesigner
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
   public String BigImgUrl;
   public String Desc;
@@ -13,26 +13,26 @@ public class EmotionDesigner
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(62539);
+    AppMethodBeat.i(104775);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.Title != null) {
-        paramVarArgs.e(1, this.Title);
+        paramVarArgs.d(1, this.Title);
       }
       if (this.SmallImgUrl != null) {
-        paramVarArgs.e(2, this.SmallImgUrl);
+        paramVarArgs.d(2, this.SmallImgUrl);
       }
       if (this.BigImgUrl != null) {
-        paramVarArgs.e(3, this.BigImgUrl);
+        paramVarArgs.d(3, this.BigImgUrl);
       }
       if (this.Desc != null) {
-        paramVarArgs.e(4, this.Desc);
+        paramVarArgs.d(4, this.Desc);
       }
       if (this.Motto != null) {
-        paramVarArgs.e(5, this.Motto);
+        paramVarArgs.d(5, this.Motto);
       }
-      AppMethodBeat.o(62539);
+      AppMethodBeat.o(104775);
       return 0;
     }
     if (paramInt == 1) {
@@ -41,75 +41,75 @@ public class EmotionDesigner
       }
     }
     label454:
-    for (int i = e.a.a.b.b.a.f(1, this.Title) + 0;; i = 0)
+    for (int i = f.a.a.b.b.a.e(1, this.Title) + 0;; i = 0)
     {
       paramInt = i;
       if (this.SmallImgUrl != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.SmallImgUrl);
+        paramInt = i + f.a.a.b.b.a.e(2, this.SmallImgUrl);
       }
       i = paramInt;
       if (this.BigImgUrl != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.BigImgUrl);
+        i = paramInt + f.a.a.b.b.a.e(3, this.BigImgUrl);
       }
       paramInt = i;
       if (this.Desc != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.Desc);
+        paramInt = i + f.a.a.b.b.a.e(4, this.Desc);
       }
       i = paramInt;
       if (this.Motto != null) {
-        i = paramInt + e.a.a.b.b.a.f(5, this.Motto);
+        i = paramInt + f.a.a.b.b.a.e(5, this.Motto);
       }
-      AppMethodBeat.o(62539);
+      AppMethodBeat.o(104775);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(62539);
+        AppMethodBeat.o(104775);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         EmotionDesigner localEmotionDesigner = (EmotionDesigner)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(62539);
+          AppMethodBeat.o(104775);
           return -1;
         case 1: 
-          localEmotionDesigner.Title = locala.CLY.readString();
-          AppMethodBeat.o(62539);
+          localEmotionDesigner.Title = locala.KhF.readString();
+          AppMethodBeat.o(104775);
           return 0;
         case 2: 
-          localEmotionDesigner.SmallImgUrl = locala.CLY.readString();
-          AppMethodBeat.o(62539);
+          localEmotionDesigner.SmallImgUrl = locala.KhF.readString();
+          AppMethodBeat.o(104775);
           return 0;
         case 3: 
-          localEmotionDesigner.BigImgUrl = locala.CLY.readString();
-          AppMethodBeat.o(62539);
+          localEmotionDesigner.BigImgUrl = locala.KhF.readString();
+          AppMethodBeat.o(104775);
           return 0;
         case 4: 
-          localEmotionDesigner.Desc = locala.CLY.readString();
-          AppMethodBeat.o(62539);
+          localEmotionDesigner.Desc = locala.KhF.readString();
+          AppMethodBeat.o(104775);
           return 0;
         }
-        localEmotionDesigner.Motto = locala.CLY.readString();
-        AppMethodBeat.o(62539);
+        localEmotionDesigner.Motto = locala.KhF.readString();
+        AppMethodBeat.o(104775);
         return 0;
       }
-      AppMethodBeat.o(62539);
+      AppMethodBeat.o(104775);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionDesigner
  * JD-Core Version:    0.7.0.1
  */

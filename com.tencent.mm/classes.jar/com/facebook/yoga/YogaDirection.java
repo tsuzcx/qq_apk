@@ -8,12 +8,12 @@ public enum YogaDirection
   
   static
   {
-    AppMethodBeat.i(144048);
+    AppMethodBeat.i(18071);
     INHERIT = new YogaDirection("INHERIT", 0, 0);
     LTR = new YogaDirection("LTR", 1, 1);
     RTL = new YogaDirection("RTL", 2, 2);
     $VALUES = new YogaDirection[] { INHERIT, LTR, RTL };
-    AppMethodBeat.o(144048);
+    AppMethodBeat.o(18071);
   }
   
   private YogaDirection(int paramInt)
@@ -23,24 +23,24 @@ public enum YogaDirection
   
   public static YogaDirection fromInt(int paramInt)
   {
-    AppMethodBeat.i(144047);
+    AppMethodBeat.i(18070);
     switch (paramInt)
     {
     default: 
       localObject = new IllegalArgumentException("Unknown enum value: ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(144047);
+      AppMethodBeat.o(18070);
       throw ((Throwable)localObject);
     case 0: 
       localObject = INHERIT;
-      AppMethodBeat.o(144047);
+      AppMethodBeat.o(18070);
       return localObject;
     case 1: 
       localObject = LTR;
-      AppMethodBeat.o(144047);
+      AppMethodBeat.o(18070);
       return localObject;
     }
     Object localObject = RTL;
-    AppMethodBeat.o(144047);
+    AppMethodBeat.o(18070);
     return localObject;
   }
   
@@ -51,7 +51,7 @@ public enum YogaDirection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.facebook.yoga.YogaDirection
  * JD-Core Version:    0.7.0.1
  */

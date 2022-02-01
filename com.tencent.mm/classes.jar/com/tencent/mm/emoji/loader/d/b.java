@@ -1,78 +1,80 @@
 package com.tencent.mm.emoji.loader.d;
 
-import a.l;
 import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.emoji.loader.e;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import java.lang.ref.WeakReference;
+import d.g.a.a;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/loader/request/EmojiCoverRequest;", "Lcom/tencent/mm/emoji/loader/request/ViewRequest;", "Landroid/widget/ImageView;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "view", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Landroid/widget/ImageView;)V", "createTask", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "onLoad", "", "success", "", "start", "async", "plugin-emojisdk_release"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/request/EmojiCoverBitmapRequest;", "Lcom/tencent/mm/emoji/loader/request/Request;", "Landroid/graphics/Bitmap;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "callback", "Lcom/tencent/mm/emoji/loader/request/Request$StateCallback;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Lcom/tencent/mm/emoji/loader/request/Request$StateCallback;)V", "TAG", "", "createTask", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "onLoad", "", "success", "", "start", "async", "plugin-emojisdk_release"})
 public final class b
-  extends i<ImageView>
+  extends i<Bitmap>
 {
-  public b(EmojiInfo paramEmojiInfo, ImageView paramImageView)
+  private final String TAG;
+  private final i.c<Bitmap> fMc;
+  
+  public b(EmojiInfo paramEmojiInfo, i.c<Bitmap> paramc)
   {
-    super(paramEmojiInfo, (View)paramImageView);
-    AppMethodBeat.i(63207);
-    AppMethodBeat.o(63207);
+    super(paramEmojiInfo);
+    AppMethodBeat.i(105457);
+    this.fMc = paramc;
+    this.TAG = "MicroMsg.EmojiCoverBitmapRequest";
+    AppMethodBeat.o(105457);
   }
   
-  protected final com.tencent.mm.emoji.loader.e.c Ov()
+  protected final com.tencent.mm.emoji.loader.e.c abd()
   {
-    AppMethodBeat.i(63205);
-    Object localObject = com.tencent.mm.emoji.loader.a.evk;
-    localObject = com.tencent.mm.emoji.loader.a.b(this.evH);
-    AppMethodBeat.o(63205);
+    AppMethodBeat.i(105455);
+    Object localObject = e.fLn;
+    localObject = e.d(this.fLP);
+    AppMethodBeat.o(105455);
     return localObject;
   }
   
-  public final void cf(boolean paramBoolean)
+  public final void dg(final boolean paramBoolean)
   {
-    AppMethodBeat.i(63206);
-    super.cf(paramBoolean);
-    Object localObject1 = this.evZ;
-    if (localObject1 != null) {}
-    for (localObject1 = (ImageView)((WeakReference)localObject1).get();; localObject1 = null)
-    {
-      Object localObject2 = com.tencent.mm.emoji.loader.a.b.evt;
-      localObject2 = com.tencent.mm.emoji.loader.a.b.lK(this.evH.Al());
-      ab.d(c.Ot(), "onLoad: " + this.evH.Al() + ", " + localObject2);
-      com.tencent.mm.ab.b.b((a.f.a.a)new b.a(paramBoolean, (Bitmap)localObject2, (ImageView)localObject1));
-      AppMethodBeat.o(63206);
-      return;
-    }
+    AppMethodBeat.i(105456);
+    com.tencent.mm.emoji.loader.a.b localb = com.tencent.mm.emoji.loader.a.b.fLw;
+    com.tencent.mm.ad.c.g((a)new a(this, paramBoolean, com.tencent.mm.emoji.loader.a.b.pT(this.fLP.JS())));
+    AppMethodBeat.o(105456);
   }
   
   public final void start(boolean paramBoolean)
   {
-    AppMethodBeat.i(151758);
-    Object localObject = com.tencent.mm.emoji.loader.a.b.evt;
-    localObject = com.tencent.mm.emoji.loader.a.b.lK(this.evH.Al());
-    ab.d(c.Ot(), "start: " + this.evH.Al() + ", " + localObject);
+    AppMethodBeat.i(105454);
+    Object localObject = com.tencent.mm.emoji.loader.a.b.fLw;
+    localObject = com.tencent.mm.emoji.loader.a.b.pT(this.fLP.JS());
+    ad.d(this.TAG, "start: " + this.fLP.JS() + ", " + localObject);
     if (localObject != null)
     {
-      cf(true);
-      AppMethodBeat.o(151758);
+      dg(true);
+      AppMethodBeat.o(105454);
       return;
     }
-    localObject = this.evZ;
-    if (localObject != null)
-    {
-      localObject = (ImageView)((WeakReference)localObject).get();
-      if (localObject != null) {
-        ((ImageView)localObject).setImageDrawable(null);
-      }
+    localObject = this.fMc;
+    if (localObject != null) {
+      ((i.c)localObject).aS(null);
     }
-    h.a(this);
-    AppMethodBeat.o(151758);
+    i.b(this);
+    AppMethodBeat.o(105454);
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  static final class a
+    extends d.g.b.l
+    implements a<y>
+  {
+    a(b paramb, boolean paramBoolean, Bitmap paramBitmap)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.d.b
  * JD-Core Version:    0.7.0.1
  */

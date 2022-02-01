@@ -14,14 +14,14 @@ public class zze$zza
   
   static
   {
-    AppMethodBeat.i(90474);
+    AppMethodBeat.i(5495);
     zzagq = new HashMap();
-    AppMethodBeat.o(90474);
+    AppMethodBeat.o(5495);
   }
   
   private static zzh zza(ContentResolver paramContentResolver, Uri paramUri)
   {
-    AppMethodBeat.i(90471);
+    AppMethodBeat.i(5492);
     zzh localzzh = (zzh)zzagq.get(paramUri);
     if (localzzh == null)
     {
@@ -32,7 +32,7 @@ public class zze$zza
     }
     for (;;)
     {
-      AppMethodBeat.o(90471);
+      AppMethodBeat.o(5492);
       return paramContentResolver;
       paramContentResolver = localzzh;
       if (!localzzh.zzagu.getAndSet(false)) {
@@ -46,7 +46,7 @@ public class zze$zza
       }
       finally
       {
-        AppMethodBeat.o(90471);
+        AppMethodBeat.o(5492);
       }
     }
   }
@@ -55,198 +55,198 @@ public class zze$zza
   protected static String zza(ContentResolver paramContentResolver, Uri paramUri, String paramString)
   {
     // Byte code:
-    //   0: ldc 81
-    //   2: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 2
-    //   7: monitorenter
-    //   8: aload_0
-    //   9: aload_1
-    //   10: invokestatic 83	com/google/android/gms/internal/stable/zze$zza:zza	(Landroid/content/ContentResolver;Landroid/net/Uri;)Lcom/google/android/gms/internal/stable/zzh;
-    //   13: astore 5
-    //   15: ldc 2
-    //   17: monitorexit
-    //   18: aload 5
-    //   20: monitorenter
-    //   21: aload 5
-    //   23: getfield 77	com/google/android/gms/internal/stable/zzh:zzagt	Ljava/lang/Object;
-    //   26: astore 6
-    //   28: aload 5
-    //   30: getfield 70	com/google/android/gms/internal/stable/zzh:zzags	Ljava/util/HashMap;
-    //   33: aload_2
-    //   34: invokevirtual 87	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   37: ifeq +37 -> 74
-    //   40: aload 5
-    //   42: getfield 70	com/google/android/gms/internal/stable/zzh:zzags	Ljava/util/HashMap;
-    //   45: aload_2
-    //   46: invokevirtual 39	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   49: checkcast 89	java/lang/String
-    //   52: astore_0
-    //   53: aload 5
-    //   55: monitorexit
-    //   56: ldc 81
-    //   58: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   61: aload_0
-    //   62: areturn
-    //   63: astore_0
-    //   64: ldc 2
-    //   66: monitorexit
-    //   67: ldc 81
-    //   69: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   72: aload_0
-    //   73: athrow
-    //   74: aload 5
-    //   76: monitorexit
-    //   77: aload_0
-    //   78: aload_1
-    //   79: iconst_1
-    //   80: anewarray 89	java/lang/String
-    //   83: dup
-    //   84: iconst_0
-    //   85: ldc 91
-    //   87: aastore
-    //   88: ldc 93
-    //   90: iconst_1
-    //   91: anewarray 89	java/lang/String
-    //   94: dup
-    //   95: iconst_0
-    //   96: aload_2
-    //   97: aastore
-    //   98: aconst_null
-    //   99: invokevirtual 97	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   102: astore_3
-    //   103: aload_3
-    //   104: ifnull +15 -> 119
-    //   107: aload_3
-    //   108: astore 4
+    //   0: sipush 5493
+    //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 2
+    //   8: monitorenter
+    //   9: aload_0
+    //   10: aload_1
+    //   11: invokestatic 80	com/google/android/gms/internal/stable/zze$zza:zza	(Landroid/content/ContentResolver;Landroid/net/Uri;)Lcom/google/android/gms/internal/stable/zzh;
+    //   14: astore 5
+    //   16: ldc 2
+    //   18: monitorexit
+    //   19: aload 5
+    //   21: monitorenter
+    //   22: aload 5
+    //   24: getfield 75	com/google/android/gms/internal/stable/zzh:zzagt	Ljava/lang/Object;
+    //   27: astore 6
+    //   29: aload 5
+    //   31: getfield 68	com/google/android/gms/internal/stable/zzh:zzags	Ljava/util/HashMap;
+    //   34: aload_2
+    //   35: invokevirtual 84	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   38: ifeq +39 -> 77
+    //   41: aload 5
+    //   43: getfield 68	com/google/android/gms/internal/stable/zzh:zzags	Ljava/util/HashMap;
+    //   46: aload_2
+    //   47: invokevirtual 37	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   50: checkcast 86	java/lang/String
+    //   53: astore_0
+    //   54: aload 5
+    //   56: monitorexit
+    //   57: sipush 5493
+    //   60: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   63: aload_0
+    //   64: areturn
+    //   65: astore_0
+    //   66: ldc 2
+    //   68: monitorexit
+    //   69: sipush 5493
+    //   72: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   75: aload_0
+    //   76: athrow
+    //   77: aload 5
+    //   79: monitorexit
+    //   80: aload_0
+    //   81: aload_1
+    //   82: iconst_1
+    //   83: anewarray 86	java/lang/String
+    //   86: dup
+    //   87: iconst_0
+    //   88: ldc 88
+    //   90: aastore
+    //   91: ldc 90
+    //   93: iconst_1
+    //   94: anewarray 86	java/lang/String
+    //   97: dup
+    //   98: iconst_0
+    //   99: aload_2
+    //   100: aastore
+    //   101: aconst_null
+    //   102: invokevirtual 94	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   105: astore_3
+    //   106: aload_3
+    //   107: ifnull +15 -> 122
     //   110: aload_3
-    //   111: invokeinterface 103 1 0
-    //   116: ifne +43 -> 159
-    //   119: aload_3
-    //   120: astore 4
-    //   122: aload 5
-    //   124: aload 6
-    //   126: aload_2
-    //   127: aconst_null
-    //   128: invokestatic 106	com/google/android/gms/internal/stable/zze$zza:zza	(Lcom/google/android/gms/internal/stable/zzh;Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
-    //   131: aload_3
-    //   132: ifnull +9 -> 141
-    //   135: aload_3
-    //   136: invokeinterface 109 1 0
-    //   141: ldc 81
-    //   143: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   146: aconst_null
-    //   147: areturn
-    //   148: astore_0
-    //   149: aload 5
-    //   151: monitorexit
-    //   152: ldc 81
-    //   154: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   157: aload_0
-    //   158: athrow
-    //   159: aload_3
-    //   160: astore 4
-    //   162: aload_3
-    //   163: iconst_0
-    //   164: invokeinterface 113 2 0
-    //   169: astore_0
-    //   170: aload_3
-    //   171: astore 4
-    //   173: aload 5
-    //   175: aload 6
-    //   177: aload_2
-    //   178: aload_0
-    //   179: invokestatic 106	com/google/android/gms/internal/stable/zze$zza:zza	(Lcom/google/android/gms/internal/stable/zzh;Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
-    //   182: aload_0
-    //   183: astore_1
-    //   184: aload_3
-    //   185: ifnull +11 -> 196
-    //   188: aload_3
-    //   189: invokeinterface 109 1 0
-    //   194: aload_0
-    //   195: astore_1
-    //   196: ldc 81
-    //   198: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   201: aload_1
-    //   202: areturn
-    //   203: astore_0
-    //   204: aconst_null
-    //   205: astore_3
-    //   206: aconst_null
-    //   207: astore_0
-    //   208: aload_3
-    //   209: astore 4
-    //   211: new 115	java/lang/StringBuilder
-    //   214: dup
-    //   215: ldc 117
-    //   217: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   220: aload_2
-    //   221: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   224: ldc 126
-    //   226: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   229: aload_1
-    //   230: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   233: pop
-    //   234: aload_0
-    //   235: astore_1
-    //   236: aload_3
-    //   237: ifnull -41 -> 196
-    //   240: aload_3
-    //   241: invokeinterface 109 1 0
-    //   246: aload_0
-    //   247: astore_1
-    //   248: goto -52 -> 196
-    //   251: astore_0
-    //   252: aconst_null
-    //   253: astore 4
-    //   255: aload 4
-    //   257: ifnull +10 -> 267
-    //   260: aload 4
-    //   262: invokeinterface 109 1 0
-    //   267: ldc 81
-    //   269: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   272: aload_0
-    //   273: athrow
-    //   274: astore_0
-    //   275: goto -20 -> 255
-    //   278: astore_0
-    //   279: aconst_null
-    //   280: astore_0
-    //   281: goto -73 -> 208
-    //   284: astore 4
-    //   286: goto -78 -> 208
+    //   111: astore 4
+    //   113: aload_3
+    //   114: invokeinterface 100 1 0
+    //   119: ifne +45 -> 164
+    //   122: aload_3
+    //   123: astore 4
+    //   125: aload 5
+    //   127: aload 6
+    //   129: aload_2
+    //   130: aconst_null
+    //   131: invokestatic 103	com/google/android/gms/internal/stable/zze$zza:zza	(Lcom/google/android/gms/internal/stable/zzh;Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   134: aload_3
+    //   135: ifnull +9 -> 144
+    //   138: aload_3
+    //   139: invokeinterface 106 1 0
+    //   144: sipush 5493
+    //   147: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   150: aconst_null
+    //   151: areturn
+    //   152: astore_0
+    //   153: aload 5
+    //   155: monitorexit
+    //   156: sipush 5493
+    //   159: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   162: aload_0
+    //   163: athrow
+    //   164: aload_3
+    //   165: astore 4
+    //   167: aload_3
+    //   168: iconst_0
+    //   169: invokeinterface 110 2 0
+    //   174: astore_0
+    //   175: aload_3
+    //   176: astore 4
+    //   178: aload 5
+    //   180: aload 6
+    //   182: aload_2
+    //   183: aload_0
+    //   184: invokestatic 103	com/google/android/gms/internal/stable/zze$zza:zza	(Lcom/google/android/gms/internal/stable/zzh;Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   187: aload_0
+    //   188: astore_1
+    //   189: aload_3
+    //   190: ifnull +11 -> 201
+    //   193: aload_3
+    //   194: invokeinterface 106 1 0
+    //   199: aload_0
+    //   200: astore_1
+    //   201: sipush 5493
+    //   204: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   207: aload_1
+    //   208: areturn
+    //   209: astore_0
+    //   210: aconst_null
+    //   211: astore_3
+    //   212: aconst_null
+    //   213: astore_0
+    //   214: aload_3
+    //   215: astore 4
+    //   217: new 112	java/lang/StringBuilder
+    //   220: dup
+    //   221: ldc 114
+    //   223: invokespecial 117	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   226: aload_2
+    //   227: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: ldc 123
+    //   232: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   235: aload_1
+    //   236: invokevirtual 126	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   239: pop
+    //   240: aload_0
+    //   241: astore_1
+    //   242: aload_3
+    //   243: ifnull -42 -> 201
+    //   246: aload_3
+    //   247: invokeinterface 106 1 0
+    //   252: aload_0
+    //   253: astore_1
+    //   254: goto -53 -> 201
+    //   257: astore_0
+    //   258: aconst_null
+    //   259: astore 4
+    //   261: aload 4
+    //   263: ifnull +10 -> 273
+    //   266: aload 4
+    //   268: invokeinterface 106 1 0
+    //   273: sipush 5493
+    //   276: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   279: aload_0
+    //   280: athrow
+    //   281: astore_0
+    //   282: goto -21 -> 261
+    //   285: astore_0
+    //   286: aconst_null
+    //   287: astore_0
+    //   288: goto -74 -> 214
+    //   291: astore 4
+    //   293: goto -79 -> 214
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	289	0	paramContentResolver	ContentResolver
-    //   0	289	1	paramUri	Uri
-    //   0	289	2	paramString	String
-    //   102	139	3	localCursor1	android.database.Cursor
-    //   108	153	4	localCursor2	android.database.Cursor
-    //   284	1	4	localSQLException	android.database.SQLException
-    //   13	161	5	localzzh	zzh
-    //   26	150	6	localObject	Object
+    //   0	296	0	paramContentResolver	ContentResolver
+    //   0	296	1	paramUri	Uri
+    //   0	296	2	paramString	String
+    //   105	142	3	localCursor1	android.database.Cursor
+    //   111	156	4	localCursor2	android.database.Cursor
+    //   291	1	4	localSQLException	android.database.SQLException
+    //   14	165	5	localzzh	zzh
+    //   27	154	6	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   8	18	63	finally
-    //   64	67	63	finally
-    //   21	56	148	finally
-    //   74	77	148	finally
-    //   149	152	148	finally
-    //   77	103	203	android/database/SQLException
-    //   77	103	251	finally
-    //   110	119	274	finally
-    //   122	131	274	finally
-    //   162	170	274	finally
-    //   173	182	274	finally
-    //   211	234	274	finally
-    //   110	119	278	android/database/SQLException
-    //   122	131	278	android/database/SQLException
-    //   162	170	278	android/database/SQLException
-    //   173	182	284	android/database/SQLException
+    //   9	19	65	finally
+    //   66	69	65	finally
+    //   22	57	152	finally
+    //   77	80	152	finally
+    //   153	156	152	finally
+    //   80	106	209	android/database/SQLException
+    //   80	106	257	finally
+    //   113	122	281	finally
+    //   125	134	281	finally
+    //   167	175	281	finally
+    //   178	187	281	finally
+    //   217	240	281	finally
+    //   113	122	285	android/database/SQLException
+    //   125	134	285	android/database/SQLException
+    //   167	175	285	android/database/SQLException
+    //   178	187	291	android/database/SQLException
   }
   
   private static void zza(zzh paramzzh, Object paramObject, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(90473);
+    AppMethodBeat.i(5494);
     try
     {
       if (paramObject == paramzzh.zzagt) {
@@ -256,13 +256,13 @@ public class zze$zza
     }
     finally
     {
-      AppMethodBeat.o(90473);
+      AppMethodBeat.o(5494);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.gms.internal.stable.zze.zza
  * JD-Core Version:    0.7.0.1
  */

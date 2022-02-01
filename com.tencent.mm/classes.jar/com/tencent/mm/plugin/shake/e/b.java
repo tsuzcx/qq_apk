@@ -5,24 +5,24 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.v;
-import com.tencent.mm.platformtools.v.a;
-import com.tencent.mm.platformtools.v.b;
+import com.tencent.mm.platformtools.s;
+import com.tencent.mm.platformtools.s.a;
+import com.tencent.mm.platformtools.s.b;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.f;
 import java.io.IOException;
 
 public final class b
-  implements v
+  implements s
 {
-  private c.a qSa = null;
   private String thumburl = "";
+  private c.a wqP = null;
   
   public b(c.a parama)
   {
-    this.qSa = parama;
+    this.wqP = parama;
   }
   
   public b(String paramString)
@@ -30,106 +30,106 @@ public final class b
     this.thumburl = paramString;
   }
   
-  public final void W(String paramString, boolean paramBoolean) {}
+  public final void Z(String paramString, boolean paramBoolean) {}
   
-  public final Bitmap a(Bitmap paramBitmap, v.a parama, String paramString)
+  public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
-    AppMethodBeat.i(24951);
-    if (v.a.gjx == parama) {}
+    AppMethodBeat.i(28620);
+    if (s.a.hUk == parama) {}
     try
     {
-      d.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aon(), false);
-      AppMethodBeat.o(24951);
+      f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aGy(), false);
+      AppMethodBeat.o(28620);
       return paramBitmap;
     }
     catch (IOException parama)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.TVImgGetStrategy", parama, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.TVImgGetStrategy", parama, "", new Object[0]);
       }
     }
   }
   
-  public final void a(v.a parama, String paramString) {}
+  public final void a(s.a parama, String paramString) {}
   
-  public final v.b aom()
+  public final String aGA()
+  {
+    AppMethodBeat.i(28618);
+    String str = aGz() + "_tv";
+    AppMethodBeat.o(28618);
+    return str;
+  }
+  
+  public final boolean aGB()
+  {
+    return false;
+  }
+  
+  public final boolean aGC()
+  {
+    return false;
+  }
+  
+  public final Bitmap aGD()
+  {
+    AppMethodBeat.i(28621);
+    if (aj.getContext() == null)
+    {
+      AppMethodBeat.o(28621);
+      return null;
+    }
+    Bitmap localBitmap = BitmapFactory.decodeResource(aj.getContext().getResources(), 2131233476);
+    AppMethodBeat.o(28621);
+    return localBitmap;
+  }
+  
+  public final void aGE() {}
+  
+  public final s.b aGx()
   {
     return null;
   }
   
-  public final String aon()
+  public final String aGy()
   {
-    AppMethodBeat.i(24948);
+    AppMethodBeat.i(28617);
     String str;
-    if ((this.qSa != null) && (this.qSa.field_thumburl != null))
+    if ((this.wqP != null) && (this.wqP.field_thumburl != null))
     {
-      str = m.gb(this.qSa.field_thumburl, "@S");
-      AppMethodBeat.o(24948);
+      str = m.ir(this.wqP.field_thumburl, "@S");
+      AppMethodBeat.o(28617);
       return str;
     }
     if (this.thumburl != null)
     {
-      str = m.gb(this.thumburl, "@S");
-      AppMethodBeat.o(24948);
+      str = m.ir(this.thumburl, "@S");
+      AppMethodBeat.o(28617);
       return str;
     }
-    AppMethodBeat.o(24948);
+    AppMethodBeat.o(28617);
     return "";
   }
   
-  public final String aoo()
+  public final String aGz()
   {
-    if ((this.qSa != null) && (this.qSa.field_thumburl != null)) {
-      return this.qSa.field_thumburl;
+    if ((this.wqP != null) && (this.wqP.field_thumburl != null)) {
+      return this.wqP.field_thumburl;
     }
     return this.thumburl;
   }
   
-  public final String aop()
-  {
-    AppMethodBeat.i(24949);
-    String str = aoo() + "_tv";
-    AppMethodBeat.o(24949);
-    return str;
-  }
-  
-  public final boolean aoq()
-  {
-    return false;
-  }
-  
-  public final boolean aor()
-  {
-    return false;
-  }
-  
-  public final Bitmap aos()
-  {
-    AppMethodBeat.i(24952);
-    if (ah.getContext() == null)
-    {
-      AppMethodBeat.o(24952);
-      return null;
-    }
-    Bitmap localBitmap = BitmapFactory.decodeResource(ah.getContext().getResources(), 2130839821);
-    AppMethodBeat.o(24952);
-    return localBitmap;
-  }
-  
-  public final void aot() {}
-  
   public final String getCacheKey()
   {
-    AppMethodBeat.i(24950);
-    String str = aoo() + "_tv";
-    AppMethodBeat.o(24950);
+    AppMethodBeat.i(28619);
+    String str = aGz() + "_tv";
+    AppMethodBeat.o(28619);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.e.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,116 +1,137 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class bed
-  extends com.tencent.mm.bv.a
+  extends ckq
 {
-  public int DeleteFlag;
-  public bwc wOT;
-  public int xtS;
-  public int xtT;
+  public String DBL;
+  public int DBM;
+  public String dyc;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28554);
+    AppMethodBeat.i(114041);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wOT == null)
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.dyc == null)
       {
-        paramVarArgs = new b("Not all required fields were included: UserName");
-        AppMethodBeat.o(28554);
+        paramVarArgs = new b("Not all required fields were included: card_id");
+        AppMethodBeat.o(114041);
         throw paramVarArgs;
       }
-      if (this.wOT != null)
+      if (this.DBL == null)
       {
-        paramVarArgs.iQ(1, this.wOT.computeSize());
-        this.wOT.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: to_username");
+        AppMethodBeat.o(114041);
+        throw paramVarArgs;
       }
-      paramVarArgs.aO(2, this.xtS);
-      paramVarArgs.aO(3, this.xtT);
-      paramVarArgs.aO(4, this.DeleteFlag);
-      AppMethodBeat.o(28554);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.kX(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.dyc != null) {
+        paramVarArgs.d(2, this.dyc);
+      }
+      if (this.DBL != null) {
+        paramVarArgs.d(3, this.DBL);
+      }
+      paramVarArgs.aR(4, this.DBM);
+      AppMethodBeat.o(114041);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.wOT == null) {
-        break label508;
+      if (this.BaseRequest == null) {
+        break label570;
       }
     }
-    label508:
-    for (paramInt = e.a.a.a.iP(1, this.wOT.computeSize()) + 0;; paramInt = 0)
+    label570:
+    for (int i = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = e.a.a.b.b.a.bl(2, this.xtS);
-      int j = e.a.a.b.b.a.bl(3, this.xtT);
-      int k = e.a.a.b.b.a.bl(4, this.DeleteFlag);
-      AppMethodBeat.o(28554);
-      return paramInt + i + j + k;
+      paramInt = i;
+      if (this.dyc != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.dyc);
+      }
+      i = paramInt;
+      if (this.DBL != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.DBL);
+      }
+      paramInt = f.a.a.b.b.a.bA(4, this.DBM);
+      AppMethodBeat.o(114041);
+      return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        if (this.wOT == null)
+        if (this.dyc == null)
         {
-          paramVarArgs = new b("Not all required fields were included: UserName");
-          AppMethodBeat.o(28554);
+          paramVarArgs = new b("Not all required fields were included: card_id");
+          AppMethodBeat.o(114041);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(28554);
+        if (this.DBL == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: to_username");
+          AppMethodBeat.o(114041);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(114041);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         bed localbed = (bed)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(28554);
+          AppMethodBeat.o(114041);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new bwc();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((bwc)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localbed.wOT = ((bwc)localObject1);
+            localObject1 = new ip();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbed.BaseRequest = ((ip)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(28554);
+          AppMethodBeat.o(114041);
           return 0;
         case 2: 
-          localbed.xtS = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(28554);
+          localbed.dyc = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(114041);
           return 0;
         case 3: 
-          localbed.xtT = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(28554);
+          localbed.DBL = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(114041);
           return 0;
         }
-        localbed.DeleteFlag = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(28554);
+        localbed.DBM = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(114041);
         return 0;
       }
-      AppMethodBeat.o(28554);
+      AppMethodBeat.o(114041);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bed
  * JD-Core Version:    0.7.0.1
  */

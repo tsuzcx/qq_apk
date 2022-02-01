@@ -8,14 +8,14 @@ public class zzh
   extends zza
 {
   public static final Parcelable.Creator<zzh> CREATOR = new cf();
-  private byte UB;
-  private final byte UC;
+  private byte Wq;
+  private final byte Wr;
   private final String mValue;
   
   public zzh(byte paramByte1, byte paramByte2, String paramString)
   {
-    this.UB = paramByte1;
-    this.UC = paramByte2;
+    this.Wq = paramByte1;
+    this.Wr = paramByte2;
     this.mValue = paramString;
   }
   
@@ -29,10 +29,10 @@ public class zzh
         return false;
       }
       paramObject = (zzh)paramObject;
-      if (this.UB != paramObject.UB) {
+      if (this.Wq != paramObject.Wq) {
         return false;
       }
-      if (this.UC != paramObject.UC) {
+      if (this.Wr != paramObject.Wr) {
         return false;
       }
     } while (this.mValue.equals(paramObject.mValue));
@@ -46,23 +46,23 @@ public class zzh
   
   public int hashCode()
   {
-    return ((this.UB + 31) * 31 + this.UC) * 31 + this.mValue.hashCode();
+    return ((this.Wq + 31) * 31 + this.Wr) * 31 + this.mValue.hashCode();
   }
   
-  public final byte kN()
+  public final byte kW()
   {
-    return this.UB;
+    return this.Wq;
   }
   
-  public final byte kO()
+  public final byte kX()
   {
-    return this.UC;
+    return this.Wr;
   }
   
   public String toString()
   {
-    int i = this.UB;
-    int j = this.UC;
+    int i = this.Wq;
+    int j = this.Wr;
     String str = this.mValue;
     return String.valueOf(str).length() + 73 + "AmsEntityUpdateParcelable{, mEntityId=" + i + ", mAttributeId=" + j + ", mValue='" + str + "'}";
   }

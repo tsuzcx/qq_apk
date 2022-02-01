@@ -11,17 +11,17 @@ import java.util.Locale;
 public final class a
   implements TransformationMethod
 {
-  private Locale GH;
+  private Locale NG;
   
   public a(Context paramContext)
   {
-    this.GH = paramContext.getResources().getConfiguration().locale;
+    this.NG = paramContext.getResources().getConfiguration().locale;
   }
   
   public final CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
   {
     if (paramCharSequence != null) {
-      return paramCharSequence.toString().toUpperCase(this.GH);
+      return paramCharSequence.toString().toUpperCase(this.NG);
     }
     return null;
   }
@@ -30,7 +30,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v7.g.a
  * JD-Core Version:    0.7.0.1
  */

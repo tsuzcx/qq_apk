@@ -1,42 +1,31 @@
 package com.tencent.xweb.xwalk;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import org.xwalk.core.XWalkEnvironment;
 
 final class c$49
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  c$49(c paramc, EditText paramEditText) {}
+  c$49(c paramc, CheckBox paramCheckBox) {}
   
-  public final void afterTextChanged(Editable paramEditable)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(85172);
-    paramEditable = this.BJj.getText().toString();
-    int i = 0;
-    try
+    AppMethodBeat.i(154212);
+    paramView = this.ITy;
+    if (!this.ITy.isChecked()) {}
+    for (boolean bool = true;; bool = false)
     {
-      int j = Integer.parseInt(paramEditable);
-      i = j;
+      paramView.setChecked(bool);
+      AppMethodBeat.o(154212);
+      return;
     }
-    catch (Exception paramEditable)
-    {
-      label25:
-      break label25;
-    }
-    XWalkEnvironment.setGrayValueForTest(i);
-    AppMethodBeat.o(85172);
   }
-  
-  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.xweb.xwalk.c.49
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,31 @@
 package com.tencent.mm.modelappbrand.a;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.d;
 
 public final class f
-  implements b.f
+  extends BitmapDrawable
 {
-  public static final f fqU;
-  
-  static
+  public f(Resources paramResources, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(77384);
-    fqU = new f();
-    AppMethodBeat.o(77384);
+    super(paramResources, paramBitmap);
   }
   
-  public final String tX()
+  public final void draw(Canvas paramCanvas)
   {
-    return "WxaIcon";
-  }
-  
-  public final Bitmap x(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(77383);
-    if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0))
-    {
-      AppMethodBeat.o(77383);
-      return paramBitmap;
+    AppMethodBeat.i(131404);
+    if ((getBitmap() != null) && (!getBitmap().isRecycled())) {
+      super.draw(paramCanvas);
     }
-    paramBitmap = d.a(paramBitmap, false, paramBitmap.getWidth() / 2, false);
-    AppMethodBeat.o(77383);
-    return paramBitmap;
+    AppMethodBeat.o(131404);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.a.f
  * JD-Core Version:    0.7.0.1
  */

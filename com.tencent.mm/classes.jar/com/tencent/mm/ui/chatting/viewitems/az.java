@@ -1,175 +1,299 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.pluginsdk.ui.chat.c;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.q;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.model.u;
+import com.tencent.mm.modelvoice.s;
+import com.tencent.mm.plugin.subapp.d.k;
+import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.pluginsdk.model.app.l;
+import com.tencent.mm.pluginsdk.model.app.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
+import com.tencent.mm.ui.chatting.c.b.ao;
+import com.tencent.mm.ui.chatting.d;
+import com.tencent.mm.ui.transmit.MsgRetransmitUI;
 
-public class az
+public final class az
   extends c
 {
-  public j.b cEn;
-  public String cGN;
-  public String cGO;
-  public String cMO;
-  public int cNH = 0;
-  public String chatroomName;
-  public String cqx;
-  public String dGR;
-  public String desc;
-  public String designerName;
-  public String designerRediretctUrl;
-  public int designerUIN;
-  public String fiM;
-  public String hAg;
-  public String iconUrl;
-  public int pageType;
-  public int position;
-  public String secondUrl;
-  public int tid;
-  public String title;
-  public long uWZ;
-  public int uXa;
-  public String userName;
-  public boolean zYF;
-  public String zYG;
-  public boolean zYH;
-  public boolean zYI;
-  public String zYJ;
-  public boolean zYK;
-  public Bundle zYL;
-  public q zYM;
-  public int zYN;
-  public boolean zvB;
+  private com.tencent.mm.ui.chatting.d.a Gob;
+  private g onSceneEndCallback;
   
-  public az() {}
-  
-  public az(bi parambi, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, String paramString7, String paramString8)
+  public final View a(LayoutInflater paramLayoutInflater, View paramView)
   {
-    this.cEE = parambi;
-    this.zvB = false;
-    this.position = paramInt1;
-    this.userName = paramString1;
-    this.zYF = false;
-    this.title = paramString2;
-    this.cGN = paramString3;
-    this.cGO = paramString4;
-    this.zYG = paramString5;
-    this.designerUIN = paramInt2;
-    this.designerName = paramString6;
-    this.designerRediretctUrl = paramString7;
-    this.dGR = paramString8;
+    AppMethodBeat.i(37506);
+    Object localObject;
+    if (paramView != null)
+    {
+      localObject = paramView;
+      if (paramView.getTag() != null) {}
+    }
+    else
+    {
+      localObject = new af(paramLayoutInflater, 2131493511);
+      ((View)localObject).setTag(new bp().gk((View)localObject));
+    }
+    AppMethodBeat.o(37506);
+    return localObject;
   }
   
-  public az(bi parambi, String paramString)
+  public final void a(c.a parama, final int paramInt, com.tencent.mm.ui.chatting.d.a parama1, final bl parambl, String paramString)
   {
-    this(paramString);
-    this.cEE = parambi;
+    AppMethodBeat.i(37508);
+    localbp = (bp)parama;
+    this.Gob = parama1;
+    Object localObject2 = ap.evR().vk(parambl.field_msgId);
+    Object localObject1 = parambl.field_content;
+    parama = null;
+    paramString = parama;
+    if (localObject2 != null)
+    {
+      paramString = parama;
+      if (localObject1 != null) {
+        paramString = k.b.ar((String)localObject1, parambl.field_reserved);
+      }
+    }
+    localObject2 = com.tencent.mm.plugin.subapp.d.e.asj((String)localObject1);
+    if ((localObject2 != null) && (((com.tencent.mm.plugin.subapp.d.e)localObject2).yCZ != 0)) {}
+    try
+    {
+      localObject3 = com.tencent.mm.pluginsdk.g.h.ah(parama1.GzJ.getContext(), ((com.tencent.mm.plugin.subapp.d.e)localObject2).yCZ);
+      localObject1 = "";
+      parama = (c.a)localObject1;
+      if (localObject3 != null)
+      {
+        parama = (c.a)localObject1;
+        if (((String)localObject3).length() > 0)
+        {
+          localObject3 = ((String)localObject3).split(";");
+          localObject1 = "" + localObject3[0].replace(" ", "");
+          parama = (c.a)localObject1;
+          if (localObject3.length > 1) {
+            parama = (String)localObject1 + localObject3[1];
+          }
+        }
+      }
+      localObject1 = parama;
+      if (paramString != null)
+      {
+        localObject1 = parama;
+        if (paramString.description != null) {
+          localObject1 = parama + " " + paramString.description;
+        }
+      }
+      localbp.hJe.setText((CharSequence)localObject1);
+    }
+    catch (Exception parama)
+    {
+      for (;;)
+      {
+        Object localObject3;
+        long l;
+        ad.printErrStackTrace("MicroMsg.ChattingItemVoiceRemindRemind", parama, "", new Object[0]);
+        continue;
+        int i = 0;
+        continue;
+        localbp.GRV.setImageResource(2131233395);
+      }
+    }
+    ad.d("MicroMsg.ChattingItemVoiceRemindRemind", "content remind " + parambl.field_content);
+    if ((bt.isNullOrNil(parambl.field_imgPath)) && (((com.tencent.mm.plugin.subapp.d.e)localObject2).yDf > 0))
+    {
+      com.tencent.mm.model.az.arV();
+      parama = com.tencent.mm.model.c.apO().aD(parambl.field_talker, ((com.tencent.mm.plugin.subapp.d.e)localObject2).yDf);
+      if (!bt.isNullOrNil(parama.field_imgPath))
+      {
+        localObject1 = k.zP(u.aqG());
+        localObject3 = com.tencent.mm.plugin.subapp.d.h.bP((String)localObject1, false);
+        if (com.tencent.mm.vfs.i.lC(com.tencent.mm.plugin.subapp.d.h.bP(parama.field_imgPath, false), (String)localObject3) >= 0L)
+        {
+          parambl.nZ((String)localObject1);
+          com.tencent.mm.model.az.arV();
+          com.tencent.mm.model.c.apO().a(parambl.field_msgId, parambl);
+        }
+      }
+    }
+    if ((bt.isNullOrNil(parambl.field_imgPath)) && (localObject2 != null) && (((com.tencent.mm.plugin.subapp.d.e)localObject2).dbA != null) && (((com.tencent.mm.plugin.subapp.d.e)localObject2).dbA.length() > 0) && (((com.tencent.mm.plugin.subapp.d.e)localObject2).gHe > 0) && (this.onSceneEndCallback == null))
+    {
+      parama = k.zP(u.aqG());
+      localObject1 = com.tencent.mm.plugin.subapp.d.h.bP(parama, false);
+      if (bt.isNullOrNil(parambl.field_imgPath))
+      {
+        parambl.nZ(parama);
+        com.tencent.mm.model.az.arV();
+        com.tencent.mm.model.c.apO().a(parambl.field_msgId, parambl);
+        ad.d("MicroMsg.ChattingItemVoiceRemindRemind", "content.attachid " + paramString.dbA);
+        parama = m.a((String)localObject1, parambl.field_msgId, paramString.sdkVer, paramString.appId, paramString.dbA, paramString.gHe);
+        ad.d("MicroMsg.ChattingItemVoiceRemindRemind", "ainfo.field_mediaSvrId " + parama.field_mediaSvrId);
+        if (parama.field_mediaSvrId != null)
+        {
+          paramString = com.tencent.mm.model.az.aeS();
+          localObject1 = new g()
+          {
+            public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+            {
+              AppMethodBeat.i(37504);
+              ad.d("MicroMsg.ChattingItemVoiceRemindRemind", "errType " + paramAnonymousInt1 + " errCode " + paramAnonymousInt2 + "  scene " + paramAnonymousn.getType());
+              com.tencent.mm.model.az.aeS().b(221, az.a(az.this));
+              az.b(az.this);
+              AppMethodBeat.o(37504);
+            }
+          };
+          this.onSceneEndCallback = ((g)localObject1);
+          paramString.a(221, (g)localObject1);
+          ad.d("MicroMsg.ChattingItemVoiceRemindRemind", "doscene");
+          parama = new com.tencent.mm.plugin.record.b.e(parama);
+          com.tencent.mm.model.az.aeS().a(parama, 0);
+        }
+      }
+    }
+    localbp.GRV.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(37505);
+        if (bt.isNullOrNil(parambl.field_imgPath))
+        {
+          ad.d("MicroMsg.ChattingItemVoiceRemindRemind", "filename is null");
+          AppMethodBeat.o(37505);
+          return;
+        }
+        paramAnonymousView = ((ao)az.c(az.this).be(ao.class)).eYQ();
+        int i = paramInt;
+        bl localbl = parambl;
+        if (localbl != null)
+        {
+          paramAnonymousView.eUD();
+          com.tencent.mm.model.az.arV();
+          Boolean localBoolean = (Boolean)com.tencent.mm.model.c.afk().get(4115, null);
+          if ((localBoolean == null) || (!localBoolean.booleanValue()))
+          {
+            com.tencent.mm.model.az.arV();
+            com.tencent.mm.model.c.afk().set(4115, Boolean.TRUE);
+            paramAnonymousView.eUJ();
+            paramAnonymousView.GkK = t.a(paramAnonymousView.cOd.GzJ.getActivity(), paramAnonymousView.context.getString(2131757255), 4000L);
+          }
+          if ((paramAnonymousView.org.isPlaying()) && (localbl.field_msgId == paramAnonymousView.GkH))
+          {
+            paramAnonymousView.eUI();
+            AppMethodBeat.o(37505);
+            return;
+          }
+          paramAnonymousView.aL(localbl);
+          if ((localbl.field_isSend == 0) && (!s.W(localbl))) {
+            paramAnonymousView.Yn(i + 1);
+          }
+          paramAnonymousView.vZ(true);
+        }
+        AppMethodBeat.o(37505);
+      }
+    });
+    l = parambl.field_msgId;
+    parama = ((ao)this.Gob.be(ao.class)).eYQ();
+    if ((parama.isPlaying()) && (parama.GkH == l))
+    {
+      i = 1;
+      if (i == 0) {
+        break label796;
+      }
+      localbp.GRV.setImageResource(2131233393);
+      localbp.naN.setTag(new bi(parambl, parama1.eZb(), paramInt, null, '\000'));
+      com.tencent.mm.model.az.arV();
+      if (com.tencent.mm.model.c.isSDCardAvailable()) {
+        localbp.naN.setOnLongClickListener(c(parama1));
+      }
+      AppMethodBeat.o(37508);
+    }
   }
   
-  public az(bi parambi, String paramString1, String paramString2)
+  public final boolean a(ContextMenu paramContextMenu, View paramView, bl parambl)
   {
-    this.cEE = parambi;
-    this.userName = paramString1;
-    this.cEE = parambi;
-    this.hAg = paramString2;
+    AppMethodBeat.i(37509);
+    int i = ((bi)paramView.getTag()).position;
+    int j = m.aAU(com.tencent.mm.model.bi.b(this.Gob.eZb(), parambl.field_content, parambl.field_isSend));
+    paramView = k.b.rx(com.tencent.mm.model.bi.b(this.Gob.eZb(), parambl.field_content, parambl.field_isSend));
+    if ((paramView.gHe <= 0) || ((paramView.gHe > 0) && (j >= 100))) {
+      paramContextMenu.add(i, 111, 0, this.Gob.GzJ.getMMResources().getString(2131762559));
+    }
+    if (!this.Gob.eZc()) {
+      paramContextMenu.add(i, 100, 0, this.Gob.GzJ.getMMResources().getString(2131757221));
+    }
+    AppMethodBeat.o(37509);
+    return true;
   }
   
-  private az(bi parambi, boolean paramBoolean, int paramInt, String paramString)
+  public final boolean a(MenuItem paramMenuItem, com.tencent.mm.ui.chatting.d.a parama, bl parambl)
   {
-    this(parambi, paramBoolean, paramInt, paramString, false, null, null, null);
+    AppMethodBeat.i(37510);
+    switch (paramMenuItem.getItemId())
+    {
+    default: 
+      AppMethodBeat.o(37510);
+      return false;
+    }
+    paramMenuItem = new Intent(parama.GzJ.getContext(), MsgRetransmitUI.class);
+    paramMenuItem.putExtra("Retr_Msg_content", com.tencent.mm.model.bi.b(parama.eZb(), parambl.field_content, parambl.field_isSend));
+    paramMenuItem.putExtra("Retr_Msg_Type", 2);
+    paramMenuItem.putExtra("Retr_Msg_Id", parambl.field_msgId);
+    paramMenuItem = new com.tencent.mm.hellhoundlib.b.a().bd(paramMenuItem);
+    com.tencent.mm.hellhoundlib.a.a.a(parama, paramMenuItem.adn(), "com/tencent/mm/ui/chatting/viewitems/ChattingItemVoiceRemindRemind", "onContextItemSelected", "(Landroid/view/MenuItem;Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/storage/MsgInfo;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    parama.startActivity((Intent)paramMenuItem.lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(parama, "com/tencent/mm/ui/chatting/viewitems/ChattingItemVoiceRemindRemind", "onContextItemSelected", "(Landroid/view/MenuItem;Lcom/tencent/mm/ui/chatting/context/ChattingContext;Lcom/tencent/mm/storage/MsgInfo;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(37510);
+    return false;
   }
   
-  private az(bi parambi, boolean paramBoolean, int paramInt, String paramString, byte paramByte)
+  public final boolean aX(int paramInt, boolean paramBoolean)
   {
-    this(parambi, paramBoolean, paramInt, paramString);
+    return paramInt == -1879048190;
   }
   
-  public az(bi parambi, boolean paramBoolean, int paramInt, String paramString, char paramChar)
+  public final String b(com.tencent.mm.ui.chatting.d.a parama, bl parambl)
   {
-    this(parambi, paramBoolean, paramInt, paramString, (byte)0);
+    AppMethodBeat.i(37507);
+    parama = parama.getTalkerUserName();
+    AppMethodBeat.o(37507);
+    return parama;
   }
   
-  public az(bi parambi, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  public final boolean b(View paramView, com.tencent.mm.ui.chatting.d.a parama, bl parambl)
   {
-    this(parambi, paramBoolean, paramInt, paramString1, (byte)0);
-    this.chatroomName = paramString2;
+    return true;
   }
   
-  public az(bi parambi, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4)
+  protected final boolean b(com.tencent.mm.ui.chatting.d.a parama)
   {
-    this(parambi, paramBoolean1, paramInt, paramString1, paramBoolean2, paramString2, paramString3, paramString4, null);
+    return false;
   }
   
-  public az(bi parambi, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4, String paramString5)
+  public final boolean faE()
   {
-    this(parambi, paramBoolean1, paramInt, paramString1, paramBoolean2, paramString2, paramString3, paramString4, paramString5, null, null, false, false);
-  }
-  
-  public az(bi parambi, boolean paramBoolean1, int paramInt, String paramString1, boolean paramBoolean2, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, boolean paramBoolean3, boolean paramBoolean4)
-  {
-    this.cEE = parambi;
-    this.zvB = paramBoolean1;
-    this.position = paramInt;
-    this.userName = paramString1;
-    this.zYF = paramBoolean2;
-    this.title = paramString2;
-    this.cGN = paramString3;
-    this.cGO = paramString4;
-    this.zYG = paramString5;
-    this.cqx = paramString6;
-    this.dGR = paramString7;
-    this.zYH = paramBoolean3;
-    this.zYI = paramBoolean4;
-  }
-  
-  private az(String paramString)
-  {
-    this.userName = paramString;
-  }
-  
-  public az(String paramString1, String paramString2)
-  {
-    this.userName = paramString1;
-    this.chatroomName = paramString2;
-  }
-  
-  public static az a(j.b paramb, bi parambi)
-  {
-    AppMethodBeat.i(33444);
-    az localaz = new az();
-    localaz.cEn = paramb;
-    localaz.cEE = parambi;
-    AppMethodBeat.o(33444);
-    return localaz;
-  }
-  
-  public static az auv(String paramString)
-  {
-    AppMethodBeat.i(33443);
-    az localaz = new az();
-    localaz.dGR = paramString;
-    AppMethodBeat.o(33443);
-    return localaz;
-  }
-  
-  public static az b(bi parambi, boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(33445);
-    az localaz = new az();
-    localaz.cEE = parambi;
-    localaz.zvB = paramBoolean;
-    localaz.position = paramInt;
-    localaz.zYK = false;
-    AppMethodBeat.o(33445);
-    return localaz;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.az
  * JD-Core Version:    0.7.0.1
  */

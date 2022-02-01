@@ -1,28 +1,36 @@
 package com.tencent.mm.plugin.appbrand.page;
 
+import android.content.Intent;
+import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.f.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandAuthorizeUI;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class h$6
-  implements f.e
+  implements Runnable
 {
-  h$6(h paramh, v paramv, h.b paramb, long paramLong, String paramString) {}
+  h$6(h paramh, com.tencent.luggage.sdk.b.a.c paramc) {}
   
-  public final void onReady()
+  public final void run()
   {
-    AppMethodBeat.i(141657);
-    this.hVQ.b(this);
-    this.ivS.run();
-    long l1 = System.currentTimeMillis();
-    long l2 = this.dZo;
-    ab.i("MicroMsg.AppBrandMultiplePage", "Tab[%s][%s] onReady received, time: %d", new Object[] { this.ivQ.getAppId(), this.val$url, Long.valueOf(l1 - l2) });
-    AppMethodBeat.o(141657);
+    AppMethodBeat.i(175026);
+    Object localObject = this.kkW.Dl().DZ().username;
+    if (bt.isNullOrNil((String)localObject))
+    {
+      AppMethodBeat.o(175026);
+      return;
+    }
+    localObject = new Intent(this.kkW.getContext(), AppBrandAuthorizeUI.class).putExtra("key_username", (String)localObject);
+    ((Intent)localObject).putExtra("key_app_authorize_profile", true);
+    d.b(this.kkW.getContext(), "appbrand", ".ui.AppBrandAuthorizeUI", (Intent)localObject);
+    com.tencent.mm.plugin.appbrand.report.h.a(this.kkW.getAppId(), this.kkW.jzm, 34, "", bt.aGK(), 1, 0);
+    AppMethodBeat.o(175026);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.h.6
  * JD-Core Version:    0.7.0.1
  */

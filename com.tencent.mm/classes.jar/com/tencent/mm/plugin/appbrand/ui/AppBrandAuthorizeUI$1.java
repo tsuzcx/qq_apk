@@ -1,26 +1,22 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.n;
+import com.tencent.mm.sdk.b.c;
 
 final class AppBrandAuthorizeUI$1
-  implements MenuItem.OnMenuItemClickListener
+  extends c<n>
 {
-  AppBrandAuthorizeUI$1(AppBrandAuthorizeUI paramAppBrandAuthorizeUI) {}
-  
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  AppBrandAuthorizeUI$1(AppBrandAuthorizeUI paramAppBrandAuthorizeUI)
   {
-    AppMethodBeat.i(132892);
-    AppBrandAuthorizeUI.a(this.iLF);
-    this.iLF.finish();
-    AppMethodBeat.o(132892);
-    return false;
+    AppMethodBeat.i(196137);
+    this.__eventId = n.class.getName().hashCode();
+    AppMethodBeat.o(196137);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandAuthorizeUI.1
  * JD-Core Version:    0.7.0.1
  */

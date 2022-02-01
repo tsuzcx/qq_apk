@@ -24,12 +24,12 @@ public class QUASetting
   
   private StringBuffer filter(String paramString)
   {
-    AppMethodBeat.i(76280);
+    AppMethodBeat.i(102523);
     StringBuffer localStringBuffer = new StringBuffer();
     if (TextUtils.isEmpty(paramString))
     {
       localStringBuffer.append("NA");
-      AppMethodBeat.o(76280);
+      AppMethodBeat.o(102523);
       return localStringBuffer;
     }
     paramString = paramString.toCharArray();
@@ -41,13 +41,13 @@ public class QUASetting
       }
       i += 1;
     }
-    AppMethodBeat.o(76280);
+    AppMethodBeat.o(102523);
     return localStringBuffer;
   }
   
   private String getAndroidVersion()
   {
-    AppMethodBeat.i(76279);
+    AppMethodBeat.i(102522);
     Object localObject = new StringBuffer();
     String str = Build.VERSION.RELEASE;
     if (TextUtils.isEmpty(str)) {
@@ -58,7 +58,7 @@ public class QUASetting
       ((StringBuffer)localObject).append("_");
       ((StringBuffer)localObject).append(Build.VERSION.SDK_INT);
       localObject = ((StringBuffer)localObject).toString();
-      AppMethodBeat.o(76279);
+      AppMethodBeat.o(102522);
       return localObject;
       ((StringBuffer)localObject).append(str);
     }
@@ -66,29 +66,29 @@ public class QUASetting
   
   public static String getBuildNo()
   {
-    AppMethodBeat.i(76277);
+    AppMethodBeat.i(102520);
     if ("100".contains("BuildNo"))
     {
-      AppMethodBeat.o(76277);
+      AppMethodBeat.o(102520);
       return "0000";
     }
-    AppMethodBeat.o(76277);
+    AppMethodBeat.o(102520);
     return "100";
   }
   
   private int getDeviceHeight()
   {
-    AppMethodBeat.i(76276);
+    AppMethodBeat.i(102519);
     int i = this.mContext.getResources().getDisplayMetrics().heightPixels;
-    AppMethodBeat.o(76276);
+    AppMethodBeat.o(102519);
     return i;
   }
   
   private int getDeviceWidth()
   {
-    AppMethodBeat.i(76275);
+    AppMethodBeat.i(102518);
     int i = this.mContext.getResources().getDisplayMetrics().widthPixels;
-    AppMethodBeat.o(76275);
+    AppMethodBeat.o(102518);
     return i;
   }
   
@@ -99,19 +99,19 @@ public class QUASetting
   
   private String getUA()
   {
-    AppMethodBeat.i(76278);
+    AppMethodBeat.i(102521);
     Object localObject = new StringBuffer();
     ((StringBuffer)localObject).append(filter(Build.BRAND));
     ((StringBuffer)localObject).append("_");
     ((StringBuffer)localObject).append(filter(Build.MODEL));
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(76278);
+    AppMethodBeat.o(102521);
     return localObject;
   }
   
   public String buildQUA()
   {
-    AppMethodBeat.i(76274);
+    AppMethodBeat.i(102517);
     Object localObject = new QUABuilder();
     ((QUABuilder)localObject).mBuildNo = getBuildNo();
     ((QUABuilder)localObject).mChannel = "";
@@ -123,13 +123,13 @@ public class QUASetting
     ((QUABuilder)localObject).mUA = getUA();
     ((QUABuilder)localObject).mVersionName = "100";
     localObject = ((QUABuilder)localObject).get();
-    AppMethodBeat.o(76274);
+    AppMethodBeat.o(102517);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.util.QUASetting
  * JD-Core Version:    0.7.0.1
  */

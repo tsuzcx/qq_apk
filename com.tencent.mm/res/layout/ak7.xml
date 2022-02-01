@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@color/a6q" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:id="@id/bbn" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="16.0dip" android:textColor="@color/i0" android:layout_gravity="left" android:id="@id/dm_" android:background="@drawable/a4w" android:padding="16.0dip" android:text="@string/g7q" style="@style/no" />
-        </LinearLayout>
-        <ImageView android:id="@id/dma" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="80.0dip" android:src="@drawable/als" />
-        <TextView android:textSize="@dimen/kx" android:textColor="@color/w_" android:gravity="center" android:id="@id/dmb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="45.0dip" android:layout_marginTop="27.0dip" android:layout_marginRight="45.0dip" android:text="AAA" />
-        <TextView android:textSize="@dimen/na" android:textColor="@color/h9" android:gravity="center" android:id="@id/dmc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="45.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="45.0dip" android:text="BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB" android:lineSpacingExtra="1.0dip" />
-        <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-                <Button android:ellipsize="end" android:id="@id/dmd" android:layout_marginBottom="40.0dip" android:text="@string/b75" android:singleLine="true" android:layout_above="@id/bbv" android:layout_alignParentLeft="true" style="@style/pc" />
-                <TextView android:textColor="@color/io" android:gravity="center" android:id="@id/dme" android:background="@drawable/a4w" android:layout_marginBottom="15.0dip" android:text="@string/b78" android:layout_centerHorizontal="true" style="@style/mt" />
-            </LinearLayout>
+    <ImageView android:id="@id/daj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <FrameLayout android:orientation="vertical" android:id="@id/dam" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_gravity="center" android:id="@id/dfk" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/dan" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/ci" android:src="@raw/lucky_money_mute_icon" android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+            <ImageView android:id="@id/dfl" android:visibility="visible" android:layout_width="44.0dip" android:layout_height="44.0dip" android:src="@raw/shortvideo_play_btn" android:layout_centerInParent="true" />
         </RelativeLayout>
+    </FrameLayout>
+    <ProgressBar android:id="@id/dak" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a4p" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@raw/lucky_money_detail_story_video_error_icon" />
+        <TextView android:textSize="@dimen/jo" android:textColor="@color/a_r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:text="{dddd}" style="@style/t1" />
     </LinearLayout>
-</ScrollView>
+</RelativeLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/f8v" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip">
+        <TextView android:textSize="@dimen/a7h" android:textColor="@color/t1" android:id="@id/cjn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bhv" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/a7h" android:textColor="@color/t1" android:id="@id/cjm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bhk" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/f8x" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip">
+        <ImageView android:id="@id/f8w" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/b6o" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/f8l" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/b6n" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/a7l" android:textColor="@color/y4" android:id="@id/f95" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_toLeftOf="@id/f8l" android:layout_toRightOf="@id/f8w" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/f9j" android:background="@drawable/ni" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/pe" android:layout_width="@dimen/a7k" android:layout_height="@dimen/a7k" android:layout_marginLeft="@dimen/a7m" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/b5k" android:layout_alignParentLeft="true" />
+        <Button android:textSize="13.0sp" android:textColor="@color/gx" android:id="@id/cu_" android:background="@drawable/q_" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="22.0dip" android:layout_marginRight="16.0dip" android:text="下载" android:layout_alignParentRight="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/f91" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a7m" android:layout_marginBottom="12.0dip" android:layout_toLeftOf="@id/cu_" android:layout_toRightOf="@id/pe">
+            <TextView android:textSize="@dimen/a7l" android:textColor="@color/t1" android:id="@id/ps" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/q3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/a4i" android:id="@id/pz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Messenger;
 import android.os.RemoteException;
-import android.support.v4.app.h;
+import android.support.v4.app.i;
 import android.support.v4.media.session.MediaSessionCompat.Token;
 import android.support.v4.media.session.d;
 import android.support.v4.media.session.e;
@@ -17,16 +17,17 @@ import android.util.Log;
 class g
   implements c, f, l
 {
-  private MediaSessionCompat.Token gA;
-  protected final Object gu;
-  protected final Bundle gv;
-  protected final a gw = new a(this);
-  private final android.support.v4.b.a<String, n> gx = new android.support.v4.b.a();
-  protected m gy;
-  protected Messenger gz;
+  protected final Object ir;
+  protected final Bundle is;
+  protected final a it = new a(this);
+  private final android.support.v4.b.a<String, n> iu = new android.support.v4.b.a();
+  protected int iv;
+  protected m iw;
+  protected Messenger ix;
+  private MediaSessionCompat.Token iy;
   final Context mContext;
   
-  public g(Context paramContext, ComponentName paramComponentName, b paramb, Bundle paramBundle)
+  g(Context paramContext, ComponentName paramComponentName, b paramb, Bundle paramBundle)
   {
     this.mContext = paramContext;
     Bundle localBundle = paramBundle;
@@ -34,53 +35,53 @@ class g
       localBundle = new Bundle();
     }
     localBundle.putInt("extra_client_version", 1);
-    this.gv = new Bundle(localBundle);
-    paramb.gr = this;
-    paramb = paramb.gq;
-    paramBundle = this.gv;
-    this.gu = new MediaBrowser(paramContext, paramComponentName, (MediaBrowser.ConnectionCallback)paramb, paramBundle);
+    this.is = new Bundle(localBundle);
+    paramb.io = this;
+    paramb = paramb.in;
+    paramBundle = this.is;
+    this.ir = new MediaBrowser(paramContext, paramComponentName, (MediaBrowser.ConnectionCallback)paramb, paramBundle);
   }
   
   public final void a(Messenger paramMessenger, String paramString, Bundle paramBundle)
   {
-    if (this.gz != paramMessenger) {}
+    if (this.ix != paramMessenger) {}
     do
     {
       return;
-      paramMessenger = (n)this.gx.get(paramString);
+      paramMessenger = (n)this.iu.get(paramString);
       if (paramMessenger != null) {
         break;
       }
     } while (!MediaBrowserCompat.DEBUG);
-    Log.d("MediaBrowserCompat", "onLoadChildren for id that isn't subscribed id=" + paramString);
+    Log.d("MediaBrowserCompat", "onLoadChildren for id that isn't subscribed id=".concat(String.valueOf(paramString)));
     return;
     paramMessenger.a(this.mContext, paramBundle);
   }
   
   public final void a(Messenger paramMessenger, String paramString, MediaSessionCompat.Token paramToken, Bundle paramBundle) {}
   
-  public final MediaSessionCompat.Token aG()
+  public final MediaSessionCompat.Token aW()
   {
-    if (this.gA == null) {
-      this.gA = MediaSessionCompat.Token.g(((MediaBrowser)this.gu).getSessionToken());
+    if (this.iy == null) {
+      this.iy = MediaSessionCompat.Token.m(((MediaBrowser)this.ir).getSessionToken());
     }
-    return this.gA;
+    return this.iy;
   }
   
   public final void b(Messenger paramMessenger) {}
   
   public final void connect()
   {
-    ((MediaBrowser)this.gu).connect();
+    ((MediaBrowser)this.ir).connect();
   }
   
   public final void disconnect()
   {
-    if ((this.gy != null) && (this.gz != null)) {}
+    if ((this.iw != null) && (this.ix != null)) {}
     try
     {
-      this.gy.e(this.gz);
-      ((MediaBrowser)this.gu).disconnect();
+      this.iw.e(this.ix);
+      ((MediaBrowser)this.ir).disconnect();
       return;
     }
     catch (RemoteException localRemoteException)
@@ -94,26 +95,27 @@ class g
   
   public final void onConnected()
   {
-    Object localObject = ((MediaBrowser)this.gu).getExtras();
+    Object localObject = ((MediaBrowser)this.ir).getExtras();
     if (localObject == null) {}
     for (;;)
     {
       return;
-      IBinder localIBinder = h.a((Bundle)localObject, "extra_messenger");
+      this.iv = ((Bundle)localObject).getInt("extra_service_version", 0);
+      IBinder localIBinder = i.a((Bundle)localObject, "extra_messenger");
       if (localIBinder != null)
       {
-        this.gy = new m(localIBinder, this.gv);
-        this.gz = new Messenger(this.gw);
-        this.gw.a(this.gz);
+        this.iw = new m(localIBinder, this.is);
+        this.ix = new Messenger(this.it);
+        this.it.a(this.ix);
       }
       try
       {
-        this.gy.d(this.gz);
-        localObject = e.b(h.a((Bundle)localObject, "extra_session_binder"));
+        this.iw.d(this.ix);
+        localObject = e.b(i.a((Bundle)localObject, "extra_session_binder"));
         if (localObject == null) {
           continue;
         }
-        this.gA = MediaSessionCompat.Token.a(((MediaBrowser)this.gu).getSessionToken(), (d)localObject);
+        this.iy = MediaSessionCompat.Token.a(((MediaBrowser)this.ir).getSessionToken(), (d)localObject);
         return;
       }
       catch (RemoteException localRemoteException)
@@ -128,10 +130,10 @@ class g
   
   public final void onConnectionSuspended()
   {
-    this.gy = null;
-    this.gz = null;
-    this.gA = null;
-    this.gw.a(null);
+    this.iw = null;
+    this.ix = null;
+    this.iy = null;
+    this.it.a(null);
   }
 }
 

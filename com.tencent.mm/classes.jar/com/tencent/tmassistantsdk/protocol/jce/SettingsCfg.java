@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class SettingsCfg
   extends JceStruct
@@ -20,12 +20,12 @@ public final class SettingsCfg
   
   static
   {
-    AppMethodBeat.i(76133);
+    AppMethodBeat.i(102379);
     if (!SettingsCfg.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(76133);
+      AppMethodBeat.o(102379);
       return;
     }
   }
@@ -46,7 +46,7 @@ public final class SettingsCfg
   
   public final Object clone()
   {
-    AppMethodBeat.i(76128);
+    AppMethodBeat.i(102374);
     localObject1 = null;
     try
     {
@@ -57,48 +57,48 @@ public final class SettingsCfg
     {
       while ($assertionsDisabled) {}
       localObject1 = new AssertionError();
-      AppMethodBeat.o(76128);
+      AppMethodBeat.o(102374);
       throw ((Throwable)localObject1);
     }
-    AppMethodBeat.o(76128);
+    AppMethodBeat.o(102374);
     return localObject1;
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
   {
-    AppMethodBeat.i(76131);
+    AppMethodBeat.i(102377);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.display(this.type, "type");
     paramStringBuilder.display(this.cfg, "cfg");
     paramStringBuilder.display(this.revision, "revision");
-    AppMethodBeat.o(76131);
+    AppMethodBeat.o(102377);
   }
   
   public final void displaySimple(StringBuilder paramStringBuilder, int paramInt)
   {
-    AppMethodBeat.i(76132);
+    AppMethodBeat.i(102378);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.displaySimple(this.type, true);
     paramStringBuilder.displaySimple(this.cfg, true);
     paramStringBuilder.displaySimple(this.revision, false);
-    AppMethodBeat.o(76132);
+    AppMethodBeat.o(102378);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(76126);
+    AppMethodBeat.i(102372);
     if (paramObject == null)
     {
-      AppMethodBeat.o(76126);
+      AppMethodBeat.o(102372);
       return false;
     }
     paramObject = (SettingsCfg)paramObject;
     if ((JceUtil.equals(this.type, paramObject.type)) && (JceUtil.equals(this.cfg, paramObject.cfg)) && (JceUtil.equals(this.revision, paramObject.revision)))
     {
-      AppMethodBeat.o(76126);
+      AppMethodBeat.o(102372);
       return true;
     }
-    AppMethodBeat.o(76126);
+    AppMethodBeat.o(102372);
     return false;
   }
   
@@ -124,24 +124,24 @@ public final class SettingsCfg
   
   public final int hashCode()
   {
-    AppMethodBeat.i(76127);
+    AppMethodBeat.i(102373);
     try
     {
       Exception localException1 = new Exception("Need define key first!");
-      AppMethodBeat.o(76127);
+      AppMethodBeat.o(102373);
       throw localException1;
     }
     catch (Exception localException2)
     {
-      ab.printErrStackTrace("SettingsCfg", localException2, "", new Object[0]);
-      AppMethodBeat.o(76127);
+      ad.printErrStackTrace("SettingsCfg", localException2, "", new Object[0]);
+      AppMethodBeat.o(102373);
     }
     return 0;
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76130);
+    AppMethodBeat.i(102376);
     this.type = paramJceInputStream.read(this.type, 0, true);
     if (cache_cfg == null)
     {
@@ -151,7 +151,7 @@ public final class SettingsCfg
     }
     this.cfg = ((byte[])paramJceInputStream.read(cache_cfg, 1, true));
     this.revision = paramJceInputStream.read(this.revision, 2, false);
-    AppMethodBeat.o(76130);
+    AppMethodBeat.o(102376);
   }
   
   public final void setCfg(byte[] paramArrayOfByte)
@@ -171,16 +171,16 @@ public final class SettingsCfg
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76129);
+    AppMethodBeat.i(102375);
     paramJceOutputStream.write(this.type, 0);
     paramJceOutputStream.write(this.cfg, 1);
     paramJceOutputStream.write(this.revision, 2);
-    AppMethodBeat.o(76129);
+    AppMethodBeat.o(102375);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.SettingsCfg
  * JD-Core Version:    0.7.0.1
  */

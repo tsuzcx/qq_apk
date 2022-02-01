@@ -2,80 +2,99 @@ package com.tencent.mm.plugin.wear.model;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.h;
-import com.tencent.mm.ai.h.a;
-import com.tencent.mm.ai.h.b;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.al.i.b;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.modelvoice.s;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.bl;
 import java.util.LinkedList;
 
 public final class i
 {
-  private h.a ctA;
-  private h.b ctB;
-  AudioManager elW;
-  i.a uHt;
-  BroadcastReceiver uHu;
+  a AEy;
+  BroadcastReceiver AEz;
+  AudioManager audioManager;
+  private com.tencent.mm.al.i.a div;
+  private i.b diw;
   
   public i()
   {
-    AppMethodBeat.i(26349);
-    this.ctA = new h.a()
+    AppMethodBeat.i(30031);
+    this.div = new com.tencent.mm.al.i.a()
     {
-      public final void Es()
+      public final void onCompletion()
       {
-        AppMethodBeat.i(26346);
-        i.this.uHt.mtU.a(null);
-        i.this.uHt.mtU.a(null);
-        i.this.b(i.this.uHt);
-        AppMethodBeat.o(26346);
+        AppMethodBeat.i(30028);
+        i.this.AEy.org.a(null);
+        i.this.AEy.org.a(null);
+        i.this.b(i.this.AEy);
+        AppMethodBeat.o(30028);
       }
     };
-    this.ctB = new i.2(this);
-    this.uHu = new i.3(this);
-    this.elW = ((AudioManager)ah.getContext().getSystemService("audio"));
+    this.diw = new i.b()
+    {
+      public final void onError()
+      {
+        AppMethodBeat.i(30029);
+        i.this.AEy.org.a(null);
+        i.this.AEy.org.a(null);
+        i.this.b(i.this.AEy);
+        AppMethodBeat.o(30029);
+      }
+    };
+    this.AEz = new BroadcastReceiver()
+    {
+      public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(30030);
+        if ((paramAnonymousIntent.hasExtra("state")) && (paramAnonymousIntent.getIntExtra("state", 2) == 0)) {
+          i.this.ehh();
+        }
+        AppMethodBeat.o(30030);
+      }
+    };
+    this.audioManager = ((AudioManager)aj.getContext().getSystemService("audio"));
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.HEADSET_PLUG");
-    ah.getContext().registerReceiver(this.uHu, localIntentFilter);
-    AppMethodBeat.o(26349);
+    aj.getContext().registerReceiver(this.AEz, localIntentFilter);
+    AppMethodBeat.o(30031);
   }
   
-  private static i.a a(i.a parama)
+  private static a a(a parama)
   {
-    AppMethodBeat.i(26351);
+    AppMethodBeat.i(30033);
     if (parama != null)
     {
-      parama.mtU.stop();
-      parama.mtU.a(null);
-      parama.mtU.a(null);
-      parama.uHw.clear();
+      parama.org.stop();
+      parama.org.a(null);
+      parama.org.a(null);
+      parama.AEB.clear();
     }
-    AppMethodBeat.o(26351);
+    AppMethodBeat.o(30033);
     return null;
   }
   
-  final void b(i.a parama)
+  final void b(a parama)
   {
-    AppMethodBeat.i(26352);
+    AppMethodBeat.i(30034);
     while (parama != null) {
-      if (parama.uHw.size() > 0)
+      if (parama.AEB.size() > 0)
       {
-        bi localbi = (bi)parama.uHw.getLast();
-        parama.uHw.removeLast();
-        s.M(localbi);
-        String str = s.getFullPath(localbi.field_imgPath);
-        ab.i("MicroMsg.Wear.WearVoicePlayLogic", "play: msgid=%d, fullpath=%s", new Object[] { Long.valueOf(localbi.field_msgId), str });
-        if (parama.mtU.a(str, true, true, -1))
+        bl localbl = (bl)parama.AEB.getLast();
+        parama.AEB.removeLast();
+        s.Y(localbl);
+        String str = s.getFullPath(localbl.field_imgPath);
+        ad.i("MicroMsg.Wear.WearVoicePlayLogic", "play: msgid=%d, fullpath=%s", new Object[] { Long.valueOf(localbl.field_msgId), str });
+        if (parama.org.a(str, true, true, -1))
         {
-          parama.mtU.a(this.ctA);
-          parama.mtU.a(this.ctB);
-          AppMethodBeat.o(26352);
+          parama.org.a(this.div);
+          parama.org.a(this.diw);
+          AppMethodBeat.o(30034);
         }
       }
       else
@@ -83,19 +102,25 @@ public final class i
         a(parama);
       }
     }
-    AppMethodBeat.o(26352);
+    AppMethodBeat.o(30034);
   }
   
-  public final void cYF()
+  public final void ehh()
   {
-    AppMethodBeat.i(26350);
-    a(this.uHt);
-    AppMethodBeat.o(26350);
+    AppMethodBeat.i(30032);
+    a(this.AEy);
+    AppMethodBeat.o(30032);
+  }
+  
+  final class a
+  {
+    LinkedList<bl> AEB;
+    com.tencent.mm.al.i org;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.i
  * JD-Core Version:    0.7.0.1
  */

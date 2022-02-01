@@ -6,30 +6,30 @@ import oicq.wlogin_sdk.tools.util;
 public final class ao
   extends a
 {
-  int COb = 0;
-  int COc = 0;
+  int KjJ = 0;
+  int KjK = 0;
   
   public ao()
   {
-    this.CMD = 2;
+    this.Kik = 2;
   }
   
-  public final byte[] q(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public final byte[] r(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(96470);
-    this.COb = (paramArrayOfByte1.length + 6 + paramArrayOfByte2.length);
-    byte[] arrayOfByte = new byte[this.COb];
-    util.O(arrayOfByte, 0, this.COc);
-    util.O(arrayOfByte, 2, paramArrayOfByte1.length);
+    AppMethodBeat.i(88109);
+    this.KjJ = (paramArrayOfByte1.length + 6 + paramArrayOfByte2.length);
+    byte[] arrayOfByte = new byte[this.KjJ];
+    util.W(arrayOfByte, 0, this.KjK);
+    util.W(arrayOfByte, 2, paramArrayOfByte1.length);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 4, paramArrayOfByte1.length);
     int i = paramArrayOfByte1.length + 4;
-    util.O(arrayOfByte, i, paramArrayOfByte2.length);
+    util.W(arrayOfByte, i, paramArrayOfByte2.length);
     System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, i + 2, paramArrayOfByte2.length);
-    super.Wr(this.CMD);
-    super.ab(arrayOfByte, this.COb);
-    super.ere();
-    paramArrayOfByte1 = super.era();
-    AppMethodBeat.o(96470);
+    super.agp(this.Kik);
+    super.af(arrayOfByte, this.KjJ);
+    super.fMH();
+    paramArrayOfByte1 = super.fMD();
+    AppMethodBeat.o(88109);
     return paramArrayOfByte1;
   }
 }

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<selector android:constantSize="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/aao" />
-    <item android:drawable="@android:color/transparent" />
+    <item android:state_enabled="false" android:state_pressed="true">
+        <bitmap android:gravity="center" android:src="@drawable/al8" />
+    </item>
+    <item android:state_enabled="false">
+        <bitmap android:gravity="center" android:src="@drawable/al8" />
+    </item>
+    <item android:state_pressed="true">
+        <bitmap android:gravity="center" android:src="@drawable/al_" />
+    </item>
+    <item>
+        <bitmap android:gravity="center" android:src="@drawable/al9" />
+    </item>
 </selector>

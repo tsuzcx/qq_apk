@@ -6,116 +6,124 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.chatting.e.b.a;
 import com.tencent.mm.ui.chatting.e.b.b;
-import com.tencent.mm.ui.chatting.i.a;
+import com.tencent.mm.ui.chatting.j.a;
 
 public class AppBrandHistoryListUI
   extends MMActivity
   implements b.b
 {
-  private RecyclerView adt;
-  private String ejr;
-  private TextView ejt;
-  private ProgressDialog kFY;
-  private b.a zJG;
+  private b.a GzX;
+  private RecyclerView akA;
+  private String fwd;
+  private TextView fwf;
+  private ProgressDialog nMZ;
   
-  private void fV(boolean paramBoolean)
+  private void iF(boolean paramBoolean)
   {
-    AppMethodBeat.i(31958);
-    ab.i("MicroMsg.AppBrandHistoryListUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.i(35874);
+    ad.i("MicroMsg.AppBrandHistoryListUI", "[setProgress] isVisible:%s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      this.kFY = p.b(this, getString(2131301086), true, null);
-      AppMethodBeat.o(31958);
+      this.nMZ = p.a(this, getString(2131760709), true, 0, null);
+      AppMethodBeat.o(35874);
       return;
     }
-    if ((this.kFY != null) && (this.kFY.isShowing()))
+    if ((this.nMZ != null) && (this.nMZ.isShowing()))
     {
-      this.kFY.dismiss();
-      this.kFY = null;
+      this.nMZ.dismiss();
+      this.nMZ = null;
     }
-    AppMethodBeat.o(31958);
+    AppMethodBeat.o(35874);
   }
   
-  public final void co(String paramString, boolean paramBoolean) {}
-  
-  public final void dJU()
+  public final void A(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(31955);
-    fV(true);
-    AppMethodBeat.o(31955);
+    AppMethodBeat.i(35872);
+    iF(false);
+    ad.i("MicroMsg.AppBrandHistoryListUI", "[onDataLoaded] isFirst:%s addCount:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    if (paramInt <= 0)
+    {
+      this.fwf.setVisibility(0);
+      this.akA.setVisibility(8);
+      this.fwf.setText(getString(2131757279));
+      AppMethodBeat.o(35872);
+      return;
+    }
+    this.fwf.setVisibility(8);
+    this.akA.setVisibility(0);
+    this.akA.getAdapter().ao(0, paramInt);
+    AppMethodBeat.o(35872);
+  }
+  
+  public final void cH(String paramString, boolean paramBoolean) {}
+  
+  public final void eZo()
+  {
+    AppMethodBeat.i(35871);
+    iF(true);
+    AppMethodBeat.o(35871);
   }
   
   public int getLayoutId()
   {
-    return 2130968768;
+    return 2131493094;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(31953);
-    setMMTitle(getString(2131298094));
-    this.ejt = ((TextView)findViewById(2131821515));
-    this.adt = ((RecyclerView)findViewById(2131821516));
-    this.adt.setBackgroundColor(-1);
-    this.adt.setLayoutManager(this.zJG.bgA());
-    this.adt.setAdapter(this.zJG.auc(this.ejr));
-    this.adt.setHasFixedSize(true);
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(31951);
-        AppBrandHistoryListUI.this.finish();
-        AppMethodBeat.o(31951);
-        return true;
-      }
-    });
-    AppMethodBeat.o(31953);
+    AppMethodBeat.i(35869);
+    setMMTitle(getString(2131757040));
+    this.fwf = ((TextView)findViewById(2131304436));
+    this.akA = ((RecyclerView)findViewById(2131300757));
+    this.akA.setBackgroundColor(-1);
+    this.akA.setLayoutManager(this.GzX.bNL());
+    this.akA.setAdapter(this.GzX.aKQ(this.fwd));
+    this.akA.setHasFixedSize(true);
+    setBackBtn(new AppBrandHistoryListUI.1(this));
+    AppMethodBeat.o(35869);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(31952);
+    AppMethodBeat.i(35868);
     super.onCreate(paramBundle);
-    this.ejr = getIntent().getStringExtra("Chat_User");
+    this.fwd = getIntent().getStringExtra("Chat_User");
     new a(this).a(this);
     initView();
-    this.zJG.dJQ();
-    if (t.lA(this.ejr))
+    this.GzX.eZk();
+    if (w.pF(this.fwd))
     {
-      h.qsU.e(14562, new Object[] { this.ejr, Integer.valueOf(0) });
-      AppMethodBeat.o(31952);
+      h.vKh.f(14562, new Object[] { this.fwd, Integer.valueOf(0) });
+      AppMethodBeat.o(35868);
       return;
     }
-    h.qsU.e(14562, new Object[] { this.ejr, Integer.valueOf(1) });
-    AppMethodBeat.o(31952);
+    h.vKh.f(14562, new Object[] { this.fwd, Integer.valueOf(1) });
+    AppMethodBeat.o(35868);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(31954);
+    AppMethodBeat.i(35870);
     super.onDestroy();
-    this.zJG.onDetach();
-    AppMethodBeat.o(31954);
+    this.GzX.onDetach();
+    AppMethodBeat.o(35870);
   }
   
   public final void onFinish()
   {
-    AppMethodBeat.i(31957);
-    ab.i("MicroMsg.AppBrandHistoryListUI", "[onRefreshed]");
+    AppMethodBeat.i(35873);
+    ad.i("MicroMsg.AppBrandHistoryListUI", "[onRefreshed]");
     finish();
-    AppMethodBeat.o(31957);
+    AppMethodBeat.o(35873);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -123,29 +131,10 @@ public class AppBrandHistoryListUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  public final void s(boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(31956);
-    fV(false);
-    ab.i("MicroMsg.AppBrandHistoryListUI", "[onDataLoaded] isFirst:%s addCount:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-    if (paramInt <= 0)
-    {
-      this.ejt.setVisibility(0);
-      this.adt.setVisibility(8);
-      this.ejt.setText(getString(2131298288));
-      AppMethodBeat.o(31956);
-      return;
-    }
-    this.ejt.setVisibility(8);
-    this.adt.setVisibility(0);
-    this.adt.getAdapter().an(0, paramInt);
-    AppMethodBeat.o(31956);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.AppBrandHistoryListUI
  * JD-Core Version:    0.7.0.1
  */

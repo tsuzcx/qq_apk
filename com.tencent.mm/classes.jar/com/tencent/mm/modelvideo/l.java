@@ -14,9 +14,9 @@ public final class l
   
   static
   {
-    AppMethodBeat.i(50732);
+    AppMethodBeat.i(126894);
     SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(j.info, "SightDraftInfo") };
-    AppMethodBeat.o(50732);
+    AppMethodBeat.o(126894);
   }
   
   public l(e parame)
@@ -25,15 +25,15 @@ public final class l
     this.db = parame;
   }
   
-  public final List<j> aly()
+  public final List<j> aCC()
   {
-    AppMethodBeat.i(50730);
+    AppMethodBeat.i(126892);
     LinkedList localLinkedList = new LinkedList();
     Object localObject = "SELECT * FROM SightDraftInfo WHERE fileStatus = ?  ORDER BY localId DESC " + new StringBuilder(" LIMIT 5").toString();
     localObject = this.db.a((String)localObject, new String[] { "7" }, 2);
     if (localObject == null)
     {
-      AppMethodBeat.o(50730);
+      AppMethodBeat.o(126892);
       return localLinkedList;
     }
     while (((Cursor)localObject).moveToNext())
@@ -43,21 +43,21 @@ public final class l
       localLinkedList.add(localj);
     }
     ((Cursor)localObject).close();
-    AppMethodBeat.o(50730);
+    AppMethodBeat.o(126892);
     return localLinkedList;
   }
   
-  public final Cursor alz()
+  public final Cursor aCD()
   {
-    AppMethodBeat.i(50731);
+    AppMethodBeat.i(126893);
     Cursor localCursor = this.db.rawQuery("SELECT * FROM SightDraftInfo WHERE fileStatus = ?  ORDER BY localId DESC ", new String[] { "1" });
-    AppMethodBeat.o(50731);
+    AppMethodBeat.o(126893);
     return localCursor;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelvideo.l
  * JD-Core Version:    0.7.0.1
  */

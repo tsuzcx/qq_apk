@@ -8,14 +8,14 @@ public final class e
   public static final int CTRL_INDEX = 498;
   public static final String NAME = "getGlobalStorageInfo";
   
-  protected final String w(c paramc)
+  protected final String B(c paramc)
   {
     return "wxGlobal";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.e
  * JD-Core Version:    0.7.0.1
  */

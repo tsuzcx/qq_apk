@@ -3,19 +3,21 @@ package com.tencent.mm.plugin.profile.ui.newbizinfo.b;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.f;
-import com.tencent.mm.model.t;
+import com.tencent.mm.am.f;
+import com.tencent.mm.api.c;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.service.j;
-import com.tencent.mm.protocal.protobuf.lv;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.service.n;
+import com.tencent.mm.protocal.protobuf.np;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class g
 {
-  public static int BQ(int paramInt)
+  public static int JF(int paramInt)
   {
     switch (paramInt)
     {
@@ -36,23 +38,59 @@ public final class g
     return 4;
   }
   
-  public static void a(lv paramlv, Context paramContext, String paramString)
+  public static void a(np paramnp, Context paramContext, String paramString)
   {
-    AppMethodBeat.i(153601);
+    AppMethodBeat.i(27582);
     Intent localIntent = new Intent();
-    localIntent.putExtra("rawUrl", paramlv.value);
+    localIntent.putExtra("rawUrl", paramnp.value);
     localIntent.putExtra("geta8key_username", paramString);
     localIntent.putExtra("geta8key_scene", 59);
-    com.tencent.mm.bq.d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
-    AppMethodBeat.o(153601);
+    d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
+    AppMethodBeat.o(27582);
   }
   
-  public static int aW(int paramInt, String paramString)
+  public static void b(np paramnp, Context paramContext, String paramString)
   {
-    AppMethodBeat.i(23938);
-    if ((paramString != null) && (t.nU(paramString)))
+    Object localObject1 = null;
+    AppMethodBeat.i(27583);
+    if (bt.isNullOrNil(paramnp.value))
     {
-      AppMethodBeat.o(23938);
+      ad.d("MicroMsg.NewBizInfoUtil", "jumpToWeApp serviceInfo.id:%s value is null", new Object[] { Integer.valueOf(paramnp.id) });
+      AppMethodBeat.o(27583);
+      return;
+    }
+    ad.d("MicroMsg.NewBizInfoUtil", "jumpToWeApp value:%s", new Object[] { paramnp.value });
+    try
+    {
+      Object localObject2 = new JSONObject(paramnp.value);
+      paramnp = f.ei(paramString);
+      AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
+      localAppBrandStatObject.scene = 1102;
+      localAppBrandStatObject.dbt = paramString;
+      paramString = (n)com.tencent.mm.kernel.g.ab(n.class);
+      String str = ((JSONObject)localObject2).optString("userName");
+      localObject2 = ((JSONObject)localObject2).optString("pagePath");
+      if (paramnp == null) {}
+      for (paramnp = localObject1;; paramnp = paramnp.field_appId)
+      {
+        paramString.a(paramContext, str, null, 0, 0, (String)localObject2, localAppBrandStatObject, paramnp);
+        AppMethodBeat.o(27583);
+        return;
+      }
+      return;
+    }
+    catch (JSONException paramnp)
+    {
+      AppMethodBeat.o(27583);
+    }
+  }
+  
+  public static int bs(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(27584);
+    if ((paramString != null) && (w.sE(paramString)))
+    {
+      AppMethodBeat.o(27584);
       return 3;
     }
     switch (paramInt)
@@ -63,56 +101,20 @@ public final class g
     case 8: 
     case 10: 
     default: 
-      AppMethodBeat.o(23938);
+      AppMethodBeat.o(27584);
       return 0;
     case 1: 
     case 2: 
-      AppMethodBeat.o(23938);
+      AppMethodBeat.o(27584);
       return paramInt;
     }
-    AppMethodBeat.o(23938);
+    AppMethodBeat.o(27584);
     return 3;
-  }
-  
-  public static void b(lv paramlv, Context paramContext, String paramString)
-  {
-    Object localObject1 = null;
-    AppMethodBeat.i(153602);
-    if (bo.isNullOrNil(paramlv.value))
-    {
-      ab.d("MicroMsg.NewBizInfoUtil", "jumpToWeApp serviceInfo.id:%s value is null", new Object[] { Integer.valueOf(paramlv.id) });
-      AppMethodBeat.o(153602);
-      return;
-    }
-    ab.d("MicroMsg.NewBizInfoUtil", "jumpToWeApp value:%s", new Object[] { paramlv.value });
-    try
-    {
-      Object localObject2 = new JSONObject(paramlv.value);
-      paramlv = f.rS(paramString);
-      AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
-      localAppBrandStatObject.scene = 1102;
-      localAppBrandStatObject.cmF = paramString;
-      paramString = (j)com.tencent.mm.kernel.g.E(j.class);
-      String str = ((JSONObject)localObject2).optString("userName");
-      localObject2 = ((JSONObject)localObject2).optString("pagePath");
-      if (paramlv == null) {}
-      for (paramlv = localObject1;; paramlv = paramlv.field_appId)
-      {
-        paramString.a(paramContext, str, null, 0, 0, (String)localObject2, localAppBrandStatObject, paramlv);
-        AppMethodBeat.o(153602);
-        return;
-      }
-      return;
-    }
-    catch (JSONException paramlv)
-    {
-      AppMethodBeat.o(153602);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.b.g
  * JD-Core Version:    0.7.0.1
  */

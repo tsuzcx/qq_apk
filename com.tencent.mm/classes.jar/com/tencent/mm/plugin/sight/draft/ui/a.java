@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.sight.draft.ui;
 
 public abstract interface a
 {
-  public abstract void cmU();
+  public abstract void dqL();
   
-  public abstract void cmV();
+  public abstract void dqM();
 }
 
 

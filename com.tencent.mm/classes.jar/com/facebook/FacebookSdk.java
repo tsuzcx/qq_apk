@@ -18,7 +18,10 @@ import com.facebook.appevents.internal.AppEventsLoggerUtility;
 import com.facebook.appevents.internal.AppEventsLoggerUtility.GraphAPIActivityType;
 import com.facebook.internal.AttributionIdentifiers;
 import com.facebook.internal.BoltsMeasurementEventListener;
+import com.facebook.internal.FetchedAppGateKeepersManager;
+import com.facebook.internal.FetchedAppSettings;
 import com.facebook.internal.FetchedAppSettingsManager;
+import com.facebook.internal.FetchedAppSettingsManager.FetchedAppSettingsCallback;
 import com.facebook.internal.LockOnGetVariable;
 import com.facebook.internal.NativeProtocol;
 import com.facebook.internal.ServerProtocol;
@@ -34,6 +37,7 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Callable;
 import java.util.concurrent.Executor;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -83,7 +87,7 @@ public final class FacebookSdk
   
   static
   {
-    AppMethodBeat.i(71638);
+    AppMethodBeat.i(17074);
     TAG = FacebookSdk.class.getCanonicalName();
     loggingBehaviors = new HashSet(Arrays.asList(new LoggingBehavior[] { LoggingBehavior.DEVELOPER_ERRORS }));
     facebookDomain = "facebook.com";
@@ -96,72 +100,72 @@ public final class FacebookSdk
     DEFAULT_WORK_QUEUE = new LinkedBlockingQueue(10);
     DEFAULT_THREAD_FACTORY = new FacebookSdk.1();
     sdkInitialized = Boolean.FALSE;
-    AppMethodBeat.o(71638);
+    AppMethodBeat.o(17074);
   }
   
   public static void addLoggingBehavior(LoggingBehavior paramLoggingBehavior)
   {
-    AppMethodBeat.i(71611);
+    AppMethodBeat.i(17047);
     synchronized (loggingBehaviors)
     {
       loggingBehaviors.add(paramLoggingBehavior);
       updateGraphDebugBehavior();
-      AppMethodBeat.o(71611);
+      AppMethodBeat.o(17047);
       return;
     }
   }
   
   public static void clearLoggingBehaviors()
   {
-    AppMethodBeat.i(71613);
+    AppMethodBeat.i(17049);
     synchronized (loggingBehaviors)
     {
       loggingBehaviors.clear();
-      AppMethodBeat.o(71613);
+      AppMethodBeat.o(17049);
       return;
     }
   }
   
   public static Context getApplicationContext()
   {
-    AppMethodBeat.i(71617);
+    AppMethodBeat.i(17053);
     Validate.sdkInitialized();
     Context localContext = applicationContext;
-    AppMethodBeat.o(71617);
+    AppMethodBeat.o(17053);
     return localContext;
   }
   
   public static String getApplicationId()
   {
-    AppMethodBeat.i(71628);
+    AppMethodBeat.i(17064);
     Validate.sdkInitialized();
     String str = applicationId;
-    AppMethodBeat.o(71628);
+    AppMethodBeat.o(17064);
     return str;
   }
   
   public static String getApplicationName()
   {
-    AppMethodBeat.i(71629);
+    AppMethodBeat.i(17065);
     Validate.sdkInitialized();
     String str = applicationName;
-    AppMethodBeat.o(71629);
+    AppMethodBeat.o(17065);
     return str;
   }
   
   public static String getApplicationSignature(Context paramContext)
   {
-    AppMethodBeat.i(71627);
+    AppMethodBeat.i(17063);
     Validate.sdkInitialized();
     if (paramContext == null)
     {
-      AppMethodBeat.o(71627);
+      AppMethodBeat.o(17063);
       return null;
     }
     Object localObject = paramContext.getPackageManager();
     if (localObject == null)
     {
-      AppMethodBeat.o(71627);
+      AppMethodBeat.o(17063);
       return null;
     }
     paramContext = paramContext.getPackageName();
@@ -171,13 +175,13 @@ public final class FacebookSdk
       localObject = paramContext.signatures;
       if ((localObject == null) || (localObject.length == 0))
       {
-        AppMethodBeat.o(71627);
+        AppMethodBeat.o(17063);
         return null;
       }
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      AppMethodBeat.o(71627);
+      AppMethodBeat.o(17063);
       return null;
     }
     try
@@ -185,58 +189,58 @@ public final class FacebookSdk
       localObject = MessageDigest.getInstance("SHA-1");
       ((MessageDigest)localObject).update(paramContext.signatures[0].toByteArray());
       paramContext = Base64.encodeToString(((MessageDigest)localObject).digest(), 9);
-      AppMethodBeat.o(71627);
+      AppMethodBeat.o(17063);
       return paramContext;
     }
     catch (NoSuchAlgorithmException paramContext)
     {
-      AppMethodBeat.o(71627);
+      AppMethodBeat.o(17063);
     }
     return null;
   }
   
   public static boolean getAutoLogAppEventsEnabled()
   {
-    AppMethodBeat.i(71631);
+    AppMethodBeat.i(17067);
     Validate.sdkInitialized();
     boolean bool = autoLogAppEventsEnabled.booleanValue();
-    AppMethodBeat.o(71631);
+    AppMethodBeat.o(17067);
     return bool;
   }
   
   public static File getCacheDir()
   {
-    AppMethodBeat.i(71635);
+    AppMethodBeat.i(17071);
     Validate.sdkInitialized();
     File localFile = (File)cacheDir.getValue();
-    AppMethodBeat.o(71635);
+    AppMethodBeat.o(17071);
     return localFile;
   }
   
   public static int getCallbackRequestCodeOffset()
   {
-    AppMethodBeat.i(71637);
+    AppMethodBeat.i(17073);
     Validate.sdkInitialized();
     int i = callbackRequestCodeOffset;
-    AppMethodBeat.o(71637);
+    AppMethodBeat.o(17073);
     return i;
   }
   
   public static String getClientToken()
   {
-    AppMethodBeat.i(71630);
+    AppMethodBeat.i(17066);
     Validate.sdkInitialized();
     String str = appClientToken;
-    AppMethodBeat.o(71630);
+    AppMethodBeat.o(17066);
     return str;
   }
   
   public static boolean getCodelessDebugLogEnabled()
   {
-    AppMethodBeat.i(71633);
+    AppMethodBeat.i(17069);
     Validate.sdkInitialized();
     boolean bool = codelessDebugLogEnabled.booleanValue();
-    AppMethodBeat.o(71633);
+    AppMethodBeat.o(17069);
     return bool;
   }
   
@@ -258,39 +262,39 @@ public final class FacebookSdk
   
   public static String getGraphApiVersion()
   {
-    AppMethodBeat.i(71619);
+    AppMethodBeat.i(17055);
     Utility.logd(TAG, String.format("getGraphApiVersion: %s", new Object[] { graphApiVersion }));
     String str = graphApiVersion;
-    AppMethodBeat.o(71619);
+    AppMethodBeat.o(17055);
     return str;
   }
   
   public static boolean getLimitEventAndDataUsage(Context paramContext)
   {
-    AppMethodBeat.i(71622);
+    AppMethodBeat.i(17058);
     Validate.sdkInitialized();
     boolean bool = paramContext.getSharedPreferences("com.facebook.sdk.appEventPreferences", 0).getBoolean("limitEventUsage", false);
-    AppMethodBeat.o(71622);
+    AppMethodBeat.o(17058);
     return bool;
   }
   
   public static Set<LoggingBehavior> getLoggingBehaviors()
   {
-    AppMethodBeat.i(71610);
+    AppMethodBeat.i(17046);
     synchronized (loggingBehaviors)
     {
       Set localSet = Collections.unmodifiableSet(new HashSet(loggingBehaviors));
-      AppMethodBeat.o(71610);
+      AppMethodBeat.o(17046);
       return localSet;
     }
   }
   
   public static long getOnProgressThreshold()
   {
-    AppMethodBeat.i(71624);
+    AppMethodBeat.i(17060);
     Validate.sdkInitialized();
     long l = onProgressThreshold.get();
-    AppMethodBeat.o(71624);
+    AppMethodBeat.o(17060);
     return l;
   }
   
@@ -313,9 +317,9 @@ public final class FacebookSdk
   {
     try
     {
-      AppMethodBeat.i(71609);
+      AppMethodBeat.i(17045);
       boolean bool = sdkInitialized.booleanValue();
-      AppMethodBeat.o(71609);
+      AppMethodBeat.o(17045);
       return bool;
     }
     finally
@@ -332,13 +336,13 @@ public final class FacebookSdk
   
   public static boolean isLoggingBehaviorEnabled(LoggingBehavior paramLoggingBehavior)
   {
-    AppMethodBeat.i(71614);
+    AppMethodBeat.i(17050);
     synchronized (loggingBehaviors)
     {
       if ((isDebugEnabled()) && (loggingBehaviors.contains(paramLoggingBehavior)))
       {
         bool = true;
-        AppMethodBeat.o(71614);
+        AppMethodBeat.o(17050);
         return bool;
       }
       boolean bool = false;
@@ -347,10 +351,10 @@ public final class FacebookSdk
   
   static void loadDefaultsFromMetadata(Context paramContext)
   {
-    AppMethodBeat.i(71626);
+    AppMethodBeat.i(17062);
     if (paramContext == null)
     {
-      AppMethodBeat.o(71626);
+      AppMethodBeat.o(17062);
       return;
     }
     try
@@ -358,13 +362,13 @@ public final class FacebookSdk
       paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128);
       if ((paramContext == null) || (paramContext.metaData == null))
       {
-        AppMethodBeat.o(71626);
+        AppMethodBeat.o(17062);
         return;
       }
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      AppMethodBeat.o(71626);
+      AppMethodBeat.o(17062);
       return;
     }
     Object localObject;
@@ -400,30 +404,30 @@ public final class FacebookSdk
         if (codelessDebugLogEnabled == null) {
           codelessDebugLogEnabled = Boolean.valueOf(paramContext.metaData.getBoolean("com.facebook.sdk.CodelessDebugLogEnabled", false));
         }
-        AppMethodBeat.o(71626);
+        AppMethodBeat.o(17062);
         return;
         applicationId = (String)localObject;
       }
     }
     paramContext = new FacebookException("App Ids cannot be directly placed in the manifest.They must be prefixed by 'fb' or be placed in the string resource file.");
-    AppMethodBeat.o(71626);
+    AppMethodBeat.o(17062);
     throw paramContext;
   }
   
   static void publishInstallAndWaitForResponse(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(71621);
+    AppMethodBeat.i(17057);
     if ((paramContext == null) || (paramString == null)) {
       try
       {
         paramContext = new IllegalArgumentException("Both context and applicationId must be non-null");
-        AppMethodBeat.o(71621);
+        AppMethodBeat.o(17057);
         throw paramContext;
       }
       catch (Exception paramContext)
       {
         Utility.logd("Facebook-publish", paramContext);
-        AppMethodBeat.o(71621);
+        AppMethodBeat.o(17057);
         return;
       }
     }
@@ -442,32 +446,40 @@ public final class FacebookSdk
         paramContext.putLong(str, System.currentTimeMillis());
         paramContext.apply();
       }
-      AppMethodBeat.o(71621);
+      AppMethodBeat.o(17057);
       return;
     }
     catch (JSONException paramContext)
     {
       paramContext = new FacebookException("An error occurred while publishing install.", paramContext);
-      AppMethodBeat.o(71621);
+      AppMethodBeat.o(17057);
       throw paramContext;
     }
   }
   
-  public static void publishInstallAsync(Context paramContext, String paramString)
+  public static void publishInstallAsync(Context paramContext, final String paramString)
   {
-    AppMethodBeat.i(71620);
+    AppMethodBeat.i(17056);
     paramContext = paramContext.getApplicationContext();
-    getExecutor().execute(new FacebookSdk.5(paramContext, paramString));
-    AppMethodBeat.o(71620);
+    getExecutor().execute(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(17040);
+        FacebookSdk.publishInstallAndWaitForResponse(this.val$applicationContext, paramString);
+        AppMethodBeat.o(17040);
+      }
+    });
+    AppMethodBeat.o(17056);
   }
   
   public static void removeLoggingBehavior(LoggingBehavior paramLoggingBehavior)
   {
-    AppMethodBeat.i(71612);
+    AppMethodBeat.i(17048);
     synchronized (loggingBehaviors)
     {
       loggingBehaviors.remove(paramLoggingBehavior);
-      AppMethodBeat.o(71612);
+      AppMethodBeat.o(17048);
       return;
     }
   }
@@ -477,9 +489,9 @@ public final class FacebookSdk
   {
     try
     {
-      AppMethodBeat.i(71607);
+      AppMethodBeat.i(17043);
       sdkInitialize(paramContext, null);
-      AppMethodBeat.o(71607);
+      AppMethodBeat.o(17043);
       return;
     }
     finally
@@ -494,9 +506,9 @@ public final class FacebookSdk
   {
     try
     {
-      AppMethodBeat.i(71605);
+      AppMethodBeat.i(17041);
       sdkInitialize(paramContext, paramInt, null);
-      AppMethodBeat.o(71605);
+      AppMethodBeat.o(17041);
       return;
     }
     finally
@@ -511,11 +523,11 @@ public final class FacebookSdk
   {
     try
     {
-      AppMethodBeat.i(71606);
+      AppMethodBeat.i(17042);
       if ((sdkInitialized.booleanValue()) && (paramInt != callbackRequestCodeOffset))
       {
         paramContext = new FacebookException("The callback request code offset can't be updated once the SDK is initialized. Call FacebookSdk.setCallbackRequestCodeOffset inside your Application.onCreate method");
-        AppMethodBeat.o(71606);
+        AppMethodBeat.o(17042);
         throw paramContext;
       }
     }
@@ -523,28 +535,28 @@ public final class FacebookSdk
     if (paramInt < 0)
     {
       paramContext = new FacebookException("The callback request code offset can't be negative.");
-      AppMethodBeat.o(71606);
+      AppMethodBeat.o(17042);
       throw paramContext;
     }
     callbackRequestCodeOffset = paramInt;
     sdkInitialize(paramContext, paramInitializeCallback);
-    AppMethodBeat.o(71606);
+    AppMethodBeat.o(17042);
   }
   
   @Deprecated
-  public static void sdkInitialize(Context paramContext, InitializeCallback paramInitializeCallback)
+  public static void sdkInitialize(final Context paramContext, InitializeCallback paramInitializeCallback)
   {
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(71608);
+        AppMethodBeat.i(17044);
         if (sdkInitialized.booleanValue())
         {
           if (paramInitializeCallback != null) {
             paramInitializeCallback.onInitialized();
           }
-          AppMethodBeat.o(71608);
+          AppMethodBeat.o(17044);
           return;
         }
         Validate.notNull(paramContext, "applicationContext");
@@ -556,7 +568,7 @@ public final class FacebookSdk
         if (Utility.isNullOrEmpty(applicationId))
         {
           paramContext = new FacebookException("A valid Facebook app id must be set in the AndroidManifest.xml or set by calling FacebookSdk.setApplicationId before initializing the sdk.");
-          AppMethodBeat.o(71608);
+          AppMethodBeat.o(17044);
           throw paramContext;
         }
       }
@@ -565,13 +577,50 @@ public final class FacebookSdk
         ActivityLifecycleTracker.startTracking((Application)applicationContext, applicationId);
       }
       sdkInitialized = Boolean.TRUE;
-      FetchedAppSettingsManager.getAppSettingsAsync(new FacebookSdk.2());
+      FetchedAppSettingsManager.getAppSettingsAsync(new FetchedAppSettingsManager.FetchedAppSettingsCallback()
+      {
+        public final void onError() {}
+        
+        public final void onSuccess(FetchedAppSettings paramAnonymousFetchedAppSettings)
+        {
+          AppMethodBeat.i(17035);
+          FetchedAppGateKeepersManager.loadAppGateKeepersAsync();
+          AppMethodBeat.o(17035);
+        }
+      });
       NativeProtocol.updateAllAvailableProtocolVersionsAsync();
       BoltsMeasurementEventListener.getInstance(applicationContext);
-      cacheDir = new LockOnGetVariable(new FacebookSdk.3());
-      paramContext = new FutureTask(new FacebookSdk.4(paramInitializeCallback, paramContext));
+      cacheDir = new LockOnGetVariable(new Callable()
+      {
+        public final File call()
+        {
+          AppMethodBeat.i(17036);
+          File localFile = FacebookSdk.applicationContext.getCacheDir();
+          AppMethodBeat.o(17036);
+          return localFile;
+        }
+      });
+      paramContext = new FutureTask(new Callable()
+      {
+        public final Void call()
+        {
+          AppMethodBeat.i(17038);
+          AccessTokenManager.getInstance().loadCurrentAccessToken();
+          ProfileManager.getInstance().loadCurrentProfile();
+          if ((AccessToken.isCurrentAccessTokenActive()) && (Profile.getCurrentProfile() == null)) {
+            Profile.fetchProfileForCurrentAccessToken();
+          }
+          if (this.val$callback != null) {
+            this.val$callback.onInitialized();
+          }
+          AppEventsLogger.initializeLib(FacebookSdk.applicationContext, FacebookSdk.applicationId);
+          AppEventsLogger.newLogger(paramContext.getApplicationContext()).flush();
+          AppMethodBeat.o(17038);
+          return null;
+        }
+      });
       getExecutor().execute(paramContext);
-      AppMethodBeat.o(71608);
+      AppMethodBeat.o(17044);
     }
   }
   
@@ -587,16 +636,16 @@ public final class FacebookSdk
   
   public static void setAutoLogAppEventsEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(71632);
+    AppMethodBeat.i(17068);
     autoLogAppEventsEnabled = Boolean.valueOf(paramBoolean);
-    AppMethodBeat.o(71632);
+    AppMethodBeat.o(17068);
   }
   
   public static void setCacheDir(File paramFile)
   {
-    AppMethodBeat.i(71636);
+    AppMethodBeat.i(17072);
     cacheDir = new LockOnGetVariable(paramFile);
-    AppMethodBeat.o(71636);
+    AppMethodBeat.o(17072);
   }
   
   public static void setClientToken(String paramString)
@@ -606,19 +655,19 @@ public final class FacebookSdk
   
   public static void setCodelessDebugLogEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(71634);
+    AppMethodBeat.i(17070);
     codelessDebugLogEnabled = Boolean.valueOf(paramBoolean);
-    AppMethodBeat.o(71634);
+    AppMethodBeat.o(17070);
   }
   
   public static void setExecutor(Executor paramExecutor)
   {
-    AppMethodBeat.i(71616);
+    AppMethodBeat.i(17052);
     Validate.notNull(paramExecutor, "executor");
     synchronized (LOCK)
     {
       executor = paramExecutor;
-      AppMethodBeat.o(71616);
+      AppMethodBeat.o(17052);
       return;
     }
   }
@@ -630,11 +679,11 @@ public final class FacebookSdk
   
   public static void setGraphApiVersion(String paramString)
   {
-    AppMethodBeat.i(71618);
+    AppMethodBeat.i(17054);
     if ((!Utility.isNullOrEmpty(paramString)) && (!graphApiVersion.equals(paramString))) {
       graphApiVersion = paramString;
     }
-    AppMethodBeat.o(71618);
+    AppMethodBeat.o(17054);
   }
   
   public static void setIsDebugEnabled(boolean paramBoolean)
@@ -649,25 +698,25 @@ public final class FacebookSdk
   
   public static void setLimitEventAndDataUsage(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(71623);
+    AppMethodBeat.i(17059);
     paramContext.getSharedPreferences("com.facebook.sdk.appEventPreferences", 0).edit().putBoolean("limitEventUsage", paramBoolean).apply();
-    AppMethodBeat.o(71623);
+    AppMethodBeat.o(17059);
   }
   
   public static void setOnProgressThreshold(long paramLong)
   {
-    AppMethodBeat.i(71625);
+    AppMethodBeat.i(17061);
     onProgressThreshold.set(paramLong);
-    AppMethodBeat.o(71625);
+    AppMethodBeat.o(17061);
   }
   
   private static void updateGraphDebugBehavior()
   {
-    AppMethodBeat.i(71615);
+    AppMethodBeat.i(17051);
     if ((loggingBehaviors.contains(LoggingBehavior.GRAPH_API_DEBUG_INFO)) && (!loggingBehaviors.contains(LoggingBehavior.GRAPH_API_DEBUG_WARNING))) {
       loggingBehaviors.add(LoggingBehavior.GRAPH_API_DEBUG_WARNING);
     }
-    AppMethodBeat.o(71615);
+    AppMethodBeat.o(17051);
   }
   
   public static abstract interface InitializeCallback
@@ -677,7 +726,7 @@ public final class FacebookSdk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.FacebookSdk
  * JD-Core Version:    0.7.0.1
  */

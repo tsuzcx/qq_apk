@@ -7,77 +7,77 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.d.c;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.plugin.fts.ui.widget.FTSEditTextView;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.search.FTSEditTextView;
 
 public class FTSDetailUI
   extends FTSBaseUI
 {
-  private int ibk;
-  private int lox;
-  private i mXm;
+  private int kme;
+  private int oEL;
+  private i rub;
   
   protected final d a(e parame)
   {
-    AppMethodBeat.i(61847);
-    if (this.mXm == null) {
-      this.mXm = new i(parame, this.lox, this.ibk);
+    AppMethodBeat.i(111942);
+    if (this.rub == null) {
+      this.rub = new i(parame, this.oEL, this.kme);
     }
-    parame = this.mXm;
-    AppMethodBeat.o(61847);
+    parame = this.rub;
+    AppMethodBeat.o(111942);
     return parame;
   }
   
-  public final void a(com.tencent.mm.plugin.fts.a.d.a.a parama) {}
+  public final void a(com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean) {}
   
-  protected final void bCD()
+  protected final void cxR()
   {
-    AppMethodBeat.i(61846);
-    this.lox = getIntent().getIntExtra("detail_type", 0);
-    this.ibk = getIntent().getIntExtra("Search_Scene", 0);
-    AppMethodBeat.o(61846);
+    AppMethodBeat.i(111941);
+    this.oEL = getIntent().getIntExtra("detail_type", 0);
+    this.kme = getIntent().getIntExtra("Search_Scene", 0);
+    AppMethodBeat.o(111941);
   }
   
   public final String getHint()
   {
-    AppMethodBeat.i(61849);
-    String str = m.wA(this.lox);
+    AppMethodBeat.i(111944);
+    String str = m.DM(this.oEL);
     if (str == null)
     {
-      str = getString(2131297065);
-      AppMethodBeat.o(61849);
+      str = getString(2131755882);
+      AppMethodBeat.o(111944);
       return str;
     }
-    AppMethodBeat.o(61849);
+    AppMethodBeat.o(111944);
     return str;
   }
   
   public int getLayoutId()
   {
-    return 2130969655;
+    return 2131494197;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(61845);
+    AppMethodBeat.i(111940);
     super.onCreate(paramBundle);
-    ((n)g.G(n.class)).getFTSImageLoader().bBL();
+    ((n)g.ad(n.class)).getFTSImageLoader().cwY();
     paramBundle = getIntent().getStringExtra("detail_query");
     this.query = paramBundle;
-    this.mWO.getFtsEditText().o(paramBundle, null);
-    ab.i("MicroMsg.FTS.FTSDetailUI", "onCreate query=%s, searchType=%d, kvScene=%d", new Object[] { this.query, Integer.valueOf(this.lox), Integer.valueOf(this.ibk) });
-    bCz();
-    this.mWO.getFtsEditText().bDh();
-    AppMethodBeat.o(61845);
+    this.rtD.getFtsEditText().J(paramBundle, null);
+    ad.i("MicroMsg.FTS.FTSDetailUI", "onCreate query=%s, searchType=%d, kvScene=%d", new Object[] { this.query, Integer.valueOf(this.oEL), Integer.valueOf(this.kme) });
+    cxN();
+    this.rtD.getFtsEditText().fdg();
+    AppMethodBeat.o(111940);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(61848);
-    this.mXm.finish();
-    ((n)g.G(n.class)).getFTSImageLoader().bBI();
+    AppMethodBeat.i(111943);
+    this.rub.finish();
+    ((n)g.ad(n.class)).getFTSImageLoader().cwV();
     super.onDestroy();
-    AppMethodBeat.o(61848);
+    AppMethodBeat.o(111943);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -88,7 +88,7 @@ public class FTSDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSDetailUI
  * JD-Core Version:    0.7.0.1
  */

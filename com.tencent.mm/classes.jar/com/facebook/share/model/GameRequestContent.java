@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Arrays;
 import java.util.List;
 
 public final class GameRequestContent
@@ -21,14 +22,14 @@ public final class GameRequestContent
   
   static
   {
-    AppMethodBeat.i(97393);
+    AppMethodBeat.i(8417);
     CREATOR = new Parcelable.Creator()
     {
       public final GameRequestContent createFromParcel(Parcel paramAnonymousParcel)
       {
-        AppMethodBeat.i(97374);
+        AppMethodBeat.i(8398);
         paramAnonymousParcel = new GameRequestContent(paramAnonymousParcel);
-        AppMethodBeat.o(97374);
+        AppMethodBeat.o(8398);
         return paramAnonymousParcel;
       }
       
@@ -37,12 +38,12 @@ public final class GameRequestContent
         return new GameRequestContent[paramAnonymousInt];
       }
     };
-    AppMethodBeat.o(97393);
+    AppMethodBeat.o(8417);
   }
   
   GameRequestContent(Parcel paramParcel)
   {
-    AppMethodBeat.i(97390);
+    AppMethodBeat.i(8414);
     this.message = paramParcel.readString();
     this.recipients = paramParcel.createStringArrayList();
     this.title = paramParcel.readString();
@@ -52,21 +53,21 @@ public final class GameRequestContent
     this.filters = ((GameRequestContent.Filters)paramParcel.readSerializable());
     this.suggestions = paramParcel.createStringArrayList();
     paramParcel.readStringList(this.suggestions);
-    AppMethodBeat.o(97390);
+    AppMethodBeat.o(8414);
   }
   
-  private GameRequestContent(GameRequestContent.Builder paramBuilder)
+  private GameRequestContent(Builder paramBuilder)
   {
-    AppMethodBeat.i(97389);
-    this.message = GameRequestContent.Builder.access$000(paramBuilder);
-    this.recipients = GameRequestContent.Builder.access$100(paramBuilder);
-    this.title = GameRequestContent.Builder.access$200(paramBuilder);
-    this.data = GameRequestContent.Builder.access$300(paramBuilder);
-    this.actionType = GameRequestContent.Builder.access$400(paramBuilder);
-    this.objectId = GameRequestContent.Builder.access$500(paramBuilder);
-    this.filters = GameRequestContent.Builder.access$600(paramBuilder);
-    this.suggestions = GameRequestContent.Builder.access$700(paramBuilder);
-    AppMethodBeat.o(97389);
+    AppMethodBeat.i(8413);
+    this.message = paramBuilder.message;
+    this.recipients = paramBuilder.recipients;
+    this.title = paramBuilder.title;
+    this.data = paramBuilder.data;
+    this.actionType = paramBuilder.actionType;
+    this.objectId = paramBuilder.objectId;
+    this.filters = paramBuilder.filters;
+    this.suggestions = paramBuilder.suggestions;
+    AppMethodBeat.o(8413);
   }
   
   public final int describeContents()
@@ -116,20 +117,20 @@ public final class GameRequestContent
   
   public final String getTo()
   {
-    AppMethodBeat.i(97391);
+    AppMethodBeat.i(8415);
     if (getRecipients() != null)
     {
       String str = TextUtils.join(",", getRecipients());
-      AppMethodBeat.o(97391);
+      AppMethodBeat.o(8415);
       return str;
     }
-    AppMethodBeat.o(97391);
+    AppMethodBeat.o(8415);
     return null;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(97392);
+    AppMethodBeat.i(8416);
     paramParcel.writeString(this.message);
     paramParcel.writeStringList(this.recipients);
     paramParcel.writeString(this.title);
@@ -138,12 +139,112 @@ public final class GameRequestContent
     paramParcel.writeString(this.objectId);
     paramParcel.writeSerializable(this.filters);
     paramParcel.writeStringList(this.suggestions);
-    AppMethodBeat.o(97392);
+    AppMethodBeat.o(8416);
+  }
+  
+  public static class Builder
+    implements ShareModelBuilder<GameRequestContent, Builder>
+  {
+    private GameRequestContent.ActionType actionType;
+    private String data;
+    private GameRequestContent.Filters filters;
+    private String message;
+    private String objectId;
+    private List<String> recipients;
+    private List<String> suggestions;
+    private String title;
+    
+    public GameRequestContent build()
+    {
+      AppMethodBeat.i(8405);
+      GameRequestContent localGameRequestContent = new GameRequestContent(this, null);
+      AppMethodBeat.o(8405);
+      return localGameRequestContent;
+    }
+    
+    Builder readFrom(Parcel paramParcel)
+    {
+      AppMethodBeat.i(8407);
+      paramParcel = readFrom((GameRequestContent)paramParcel.readParcelable(GameRequestContent.class.getClassLoader()));
+      AppMethodBeat.o(8407);
+      return paramParcel;
+    }
+    
+    public Builder readFrom(GameRequestContent paramGameRequestContent)
+    {
+      AppMethodBeat.i(8406);
+      if (paramGameRequestContent == null)
+      {
+        AppMethodBeat.o(8406);
+        return this;
+      }
+      paramGameRequestContent = setMessage(paramGameRequestContent.getMessage()).setRecipients(paramGameRequestContent.getRecipients()).setTitle(paramGameRequestContent.getTitle()).setData(paramGameRequestContent.getData()).setActionType(paramGameRequestContent.getActionType()).setObjectId(paramGameRequestContent.getObjectId()).setFilters(paramGameRequestContent.getFilters()).setSuggestions(paramGameRequestContent.getSuggestions());
+      AppMethodBeat.o(8406);
+      return paramGameRequestContent;
+    }
+    
+    public Builder setActionType(GameRequestContent.ActionType paramActionType)
+    {
+      this.actionType = paramActionType;
+      return this;
+    }
+    
+    public Builder setData(String paramString)
+    {
+      this.data = paramString;
+      return this;
+    }
+    
+    public Builder setFilters(GameRequestContent.Filters paramFilters)
+    {
+      this.filters = paramFilters;
+      return this;
+    }
+    
+    public Builder setMessage(String paramString)
+    {
+      this.message = paramString;
+      return this;
+    }
+    
+    public Builder setObjectId(String paramString)
+    {
+      this.objectId = paramString;
+      return this;
+    }
+    
+    public Builder setRecipients(List<String> paramList)
+    {
+      this.recipients = paramList;
+      return this;
+    }
+    
+    public Builder setSuggestions(List<String> paramList)
+    {
+      this.suggestions = paramList;
+      return this;
+    }
+    
+    public Builder setTitle(String paramString)
+    {
+      this.title = paramString;
+      return this;
+    }
+    
+    public Builder setTo(String paramString)
+    {
+      AppMethodBeat.i(8404);
+      if (paramString != null) {
+        this.recipients = Arrays.asList(paramString.split(","));
+      }
+      AppMethodBeat.o(8404);
+      return this;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.share.model.GameRequestContent
  * JD-Core Version:    0.7.0.1
  */

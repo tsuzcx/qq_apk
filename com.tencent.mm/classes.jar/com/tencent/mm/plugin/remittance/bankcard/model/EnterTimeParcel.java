@@ -4,45 +4,45 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.zz;
+import com.tencent.mm.protocal.protobuf.adn;
 
 public class EnterTimeParcel
   implements Parcelable
 {
   public static final Parcelable.Creator<EnterTimeParcel> CREATOR;
-  public String color;
-  public int qgh;
-  public String qgi;
-  public String qgj;
-  public int qgk;
+  public String gHT;
+  public int vuA;
+  public String vuB;
+  public String vuC;
+  public int vuD;
   
   static
   {
-    AppMethodBeat.i(44499);
-    CREATOR = new EnterTimeParcel.1();
-    AppMethodBeat.o(44499);
+    AppMethodBeat.i(67408);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(67408);
   }
   
   public EnterTimeParcel() {}
   
   public EnterTimeParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(44497);
-    this.qgh = paramParcel.readInt();
-    this.qgi = paramParcel.readString();
-    this.qgj = paramParcel.readString();
-    this.qgk = paramParcel.readInt();
-    this.color = paramParcel.readString();
-    AppMethodBeat.o(44497);
+    AppMethodBeat.i(67406);
+    this.vuA = paramParcel.readInt();
+    this.vuB = paramParcel.readString();
+    this.vuC = paramParcel.readString();
+    this.vuD = paramParcel.readInt();
+    this.gHT = paramParcel.readString();
+    AppMethodBeat.o(67406);
   }
   
-  public EnterTimeParcel(zz paramzz)
+  public EnterTimeParcel(adn paramadn)
   {
-    this.qgh = paramzz.qgh;
-    this.qgi = paramzz.qgi;
-    this.qgj = paramzz.qgj;
-    this.qgk = paramzz.qgk;
-    this.color = paramzz.color;
+    this.vuA = paramadn.vuA;
+    this.vuB = paramadn.vuB;
+    this.vuC = paramadn.vuC;
+    this.vuD = paramadn.vuD;
+    this.gHT = paramadn.gHT;
   }
   
   public int describeContents()
@@ -52,18 +52,18 @@ public class EnterTimeParcel
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(44498);
-    paramParcel.writeInt(this.qgh);
-    paramParcel.writeString(this.qgi);
-    paramParcel.writeString(this.qgj);
-    paramParcel.writeInt(this.qgk);
-    paramParcel.writeString(this.color);
-    AppMethodBeat.o(44498);
+    AppMethodBeat.i(67407);
+    paramParcel.writeInt(this.vuA);
+    paramParcel.writeString(this.vuB);
+    paramParcel.writeString(this.vuC);
+    paramParcel.writeInt(this.vuD);
+    paramParcel.writeString(this.gHT);
+    AppMethodBeat.o(67407);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.model.EnterTimeParcel
  * JD-Core Version:    0.7.0.1
  */

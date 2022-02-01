@@ -1,92 +1,81 @@
 package com.tencent.mm.plugin.game.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import java.util.LinkedList;
 
 public final class ai
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String Desc;
-  public String npR;
+  public LinkedList<l> saZ;
+  
+  public ai()
+  {
+    AppMethodBeat.i(41736);
+    this.saZ = new LinkedList();
+    AppMethodBeat.o(41736);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(111575);
+    AppMethodBeat.i(41737);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.Desc == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: Desc");
-        AppMethodBeat.o(111575);
-        throw paramVarArgs;
-      }
-      if (this.Desc != null) {
-        paramVarArgs.e(1, this.Desc);
-      }
-      if (this.npR != null) {
-        paramVarArgs.e(2, this.npR);
-      }
-      AppMethodBeat.o(111575);
+      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.saZ);
+      AppMethodBeat.o(41737);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.Desc == null) {
-        break label322;
-      }
-    }
-    label322:
-    for (paramInt = e.a.a.b.b.a.f(1, this.Desc) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.npR != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.npR);
-      }
-      AppMethodBeat.o(111575);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
-          }
-        }
-        if (this.Desc == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Desc");
-          AppMethodBeat.o(111575);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(111575);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-        ai localai = (ai)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(111575);
-          return -1;
-        case 1: 
-          localai.Desc = locala.CLY.readString();
-          AppMethodBeat.o(111575);
-          return 0;
-        }
-        localai.npR = locala.CLY.readString();
-        AppMethodBeat.o(111575);
-        return 0;
-      }
-      AppMethodBeat.o(111575);
-      return -1;
+      paramInt = f.a.a.a.c(1, 8, this.saZ);
+      AppMethodBeat.o(41737);
+      return paramInt + 0;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.saZ.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.fMq();
+        }
+      }
+      AppMethodBeat.o(41737);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      ai localai = (ai)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(41737);
+        return -1;
+      }
+      paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new l();
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((l)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localai.saZ.add(localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(41737);
+      return 0;
+    }
+    AppMethodBeat.o(41737);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.ai
  * JD-Core Version:    0.7.0.1
  */

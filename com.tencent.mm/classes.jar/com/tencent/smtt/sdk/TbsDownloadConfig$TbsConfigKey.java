@@ -24,6 +24,7 @@ public abstract interface TbsDownloadConfig$TbsConfigKey
   public static final String KEY_DOWNLOAD_SUCCESS_MAX_RETRYTIMES = "tbs_download_success_max_retrytimes";
   public static final String KEY_DOWNLOAD_SUCCESS_RETRYTIMES = "tbs_download_success_retrytimes";
   public static final String KEY_FULL_PACKAGE = "request_full_package";
+  public static final String KEY_GUID = "tbs_guid";
   public static final String KEY_INSTALL_INTERRUPT_CODE = "tbs_install_interrupt_code";
   public static final String KEY_IS_OVERSEA = "is_oversea";
   public static final String KEY_LAST_CHECK = "last_check";
@@ -50,7 +51,7 @@ public abstract interface TbsDownloadConfig$TbsConfigKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloadConfig.TbsConfigKey
  * JD-Core Version:    0.7.0.1
  */

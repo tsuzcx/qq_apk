@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.location_soso;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -12,9 +13,9 @@ import com.tencent.mm.plugin.k.c;
 import com.tencent.mm.plugin.k.c.a;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ui.y;
 import com.tencent.tencentmap.mapsdk.map.MapActivity;
 
 @com.tencent.mm.ui.base.a(19)
@@ -26,87 +27,90 @@ public class SoSoProxyUI
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(113766);
+    AppMethodBeat.i(56232);
     if (this.basemapUI.dispatchKeyEvent(paramKeyEvent))
     {
-      AppMethodBeat.o(113766);
+      AppMethodBeat.o(56232);
       return true;
     }
     boolean bool = super.dispatchKeyEvent(paramKeyEvent);
-    AppMethodBeat.o(113766);
+    AppMethodBeat.o(56232);
     return bool;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(113765);
+    AppMethodBeat.i(56231);
     if (this.basemapUI.dispatchTouchEvent(paramMotionEvent))
     {
-      AppMethodBeat.o(113765);
+      AppMethodBeat.o(56231);
       return true;
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(113765);
+    AppMethodBeat.o(56231);
     return bool;
   }
   
   public void finish()
   {
-    AppMethodBeat.i(113774);
+    AppMethodBeat.i(56240);
     super.finish();
-    AppMethodBeat.o(113774);
+    AppMethodBeat.o(56240);
   }
   
   public Resources getResources()
   {
-    AppMethodBeat.i(113773);
-    if ((getAssets() != null) && (ah.getResources() != null))
+    AppMethodBeat.i(56239);
+    if ((getAssets() != null) && (aj.getResources() != null))
     {
-      localResources = ah.getResources();
-      AppMethodBeat.o(113773);
+      localResources = aj.getResources();
+      AppMethodBeat.o(56239);
       return localResources;
     }
     Resources localResources = super.getResources();
-    AppMethodBeat.o(113773);
+    AppMethodBeat.o(56239);
     return localResources;
   }
   
   public Object getSystemService(String paramString)
   {
-    AppMethodBeat.i(113772);
+    AppMethodBeat.i(56238);
     Object localObject = super.getSystemService(paramString);
     if ((getAssets() != null) && ("layout_inflater".equals(paramString)))
     {
-      paramString = w.b((LayoutInflater)localObject);
-      AppMethodBeat.o(113772);
+      paramString = y.b((LayoutInflater)localObject);
+      AppMethodBeat.o(56238);
       return paramString;
     }
-    AppMethodBeat.o(113772);
+    AppMethodBeat.o(56238);
     return localObject;
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(113771);
+    AppMethodBeat.i(56237);
     this.basemapUI.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(113771);
+    AppMethodBeat.o(56237);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(113764);
+    AppMethodBeat.i(56230);
     this.basemapUI.onBackPressed();
-    AppMethodBeat.o(113764);
+    AppMethodBeat.o(56230);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     boolean bool1 = true;
-    AppMethodBeat.i(113763);
-    ab.i("MicroMsg.SoSoProxyUI", "SoSoProxyUI onCreate");
+    AppMethodBeat.i(56229);
+    ad.i("MicroMsg.SoSoProxyUI", "SoSoProxyUI onCreate");
     super.onCreate(paramBundle);
+    if (Build.VERSION.SDK_INT != 26) {
+      setRequestedOrientation(1);
+    }
     int i = getIntent().getIntExtra("intent_map_key", -1);
-    if (c.a.ohZ == null) {
+    if (c.a.sXC == null) {
       for (;;)
       {
         try
@@ -115,69 +119,69 @@ public class SoSoProxyUI
           if (paramBundle == null) {
             continue;
           }
-          ab.e("MicroMsg.SoSoProxyUI", "summerasyncinit not init activity foreground[%b] savedInstanceState[%b], activity[%s, %d]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), getClass().getSimpleName(), Integer.valueOf(hashCode()) });
+          ad.e("MicroMsg.SoSoProxyUI", "summerasyncinit not init activity foreground[%b] savedInstanceState[%b], activity[%s, %d]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), getClass().getSimpleName(), Integer.valueOf(hashCode()) });
           finish();
         }
         catch (Throwable paramBundle)
         {
-          ab.printErrStackTrace("MicroMsg.SoSoProxyUI", paramBundle, "summerasyncinit finish:", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.SoSoProxyUI", paramBundle, "summerasyncinit finish:", new Object[0]);
           continue;
         }
-        h.qsU.idkeyStat(598L, 20L, 1L, false);
-        AppMethodBeat.o(113763);
+        h.vKh.idkeyStat(598L, 20L, 1L, false);
+        AppMethodBeat.o(56229);
         return;
         bool1 = false;
       }
     }
-    this.basemapUI = c.a.ohZ.f(this, i);
+    this.basemapUI = c.a.sXC.h(this, i);
     if (this.basemapUI == null)
     {
       finish();
-      AppMethodBeat.o(113763);
+      AppMethodBeat.o(56229);
       return;
     }
     this.basemapUI.onCreate(paramBundle);
-    AppMethodBeat.o(113763);
+    AppMethodBeat.o(56229);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(113770);
+    AppMethodBeat.i(56236);
     if (this.basemapUI != null) {
       this.basemapUI.onDestroy();
     }
     super.onDestroy();
-    AppMethodBeat.o(113770);
+    AppMethodBeat.o(56236);
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(113767);
+    AppMethodBeat.i(56233);
     if ((paramInt == 82) && (paramKeyEvent.getAction() == 1))
     {
-      this.basemapUI.bMf();
-      AppMethodBeat.o(113767);
+      this.basemapUI.cKg();
+      AppMethodBeat.o(56233);
       return true;
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
-    AppMethodBeat.o(113767);
+    AppMethodBeat.o(56233);
     return bool;
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(113769);
+    AppMethodBeat.i(56235);
     super.onPause();
     this.basemapUI.onPause();
-    AppMethodBeat.o(113769);
+    AppMethodBeat.o(56235);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(113768);
+    AppMethodBeat.i(56234);
     super.onResume();
     this.basemapUI.onResume();
-    AppMethodBeat.o(113768);
+    AppMethodBeat.o(56234);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -188,7 +192,7 @@ public class SoSoProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location_soso.SoSoProxyUI
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,8 @@ import java.util.Map;
 
 public class Lifecycling
 {
-  private static Map<Class, Integer> cH = new HashMap();
-  private static Map<Class, List<Constructor<? extends GeneratedAdapter>>> cI = new HashMap();
+  private static Map<Class, Integer> cK = new HashMap();
+  private static Map<Class, List<Constructor<? extends GeneratedAdapter>>> cL = new HashMap();
   
   private static GeneratedAdapter a(Constructor<? extends GeneratedAdapter> paramConstructor, Object paramObject)
   {
@@ -35,7 +35,7 @@ public class Lifecycling
     }
   }
   
-  static GenericLifecycleObserver e(Object paramObject)
+  static GenericLifecycleObserver d(Object paramObject)
   {
     if ((paramObject instanceof FullLifecycleObserver)) {
       return new FullLifecycleObserverAdapter((FullLifecycleObserver)paramObject);
@@ -44,9 +44,9 @@ public class Lifecycling
       return (GenericLifecycleObserver)paramObject;
     }
     Object localObject = paramObject.getClass();
-    if (h((Class)localObject) == 2)
+    if (e((Class)localObject) == 2)
     {
-      localObject = (List)cI.get(localObject);
+      localObject = (List)cL.get(localObject);
       if (((List)localObject).size() == 1) {
         return new SingleGeneratedAdapterObserver(a((Constructor)((List)localObject).get(0), paramObject));
       }
@@ -62,7 +62,7 @@ public class Lifecycling
     return new ReflectiveGenericLifecycleObserver(paramObject);
   }
   
-  private static Constructor<? extends GeneratedAdapter> g(Class<?> paramClass)
+  private static Constructor<? extends GeneratedAdapter> d(Class<?> paramClass)
   {
     for (;;)
     {
@@ -110,43 +110,38 @@ public class Lifecycling
     }
   }
   
-  public static String getAdapterName(String paramString)
+  private static int e(Class<?> paramClass)
   {
-    return paramString.replace(".", "_") + "_LifecycleAdapter";
-  }
-  
-  private static int h(Class<?> paramClass)
-  {
-    if (cH.containsKey(paramClass)) {
-      return ((Integer)cH.get(paramClass)).intValue();
+    if (cK.containsKey(paramClass)) {
+      return ((Integer)cK.get(paramClass)).intValue();
     }
-    int i = i(paramClass);
-    cH.put(paramClass, Integer.valueOf(i));
+    int i = f(paramClass);
+    cK.put(paramClass, Integer.valueOf(i));
     return i;
   }
   
-  private static int i(Class<?> paramClass)
+  private static int f(Class<?> paramClass)
   {
     if (paramClass.getCanonicalName() == null) {
       return 1;
     }
-    Object localObject1 = g(paramClass);
+    Object localObject1 = d(paramClass);
     if (localObject1 != null)
     {
-      cI.put(paramClass, Collections.singletonList(localObject1));
+      cL.put(paramClass, Collections.singletonList(localObject1));
       return 2;
     }
-    if (ClassesInfoCache.bY.d(paramClass)) {
+    if (ClassesInfoCache.cb.a(paramClass)) {
       return 1;
     }
     Object localObject2 = paramClass.getSuperclass();
     localObject1 = null;
-    if (j((Class)localObject2))
+    if (g((Class)localObject2))
     {
-      if (h((Class)localObject2) == 1) {
+      if (e((Class)localObject2) == 1) {
         return 1;
       }
-      localObject1 = new ArrayList((Collection)cI.get(localObject2));
+      localObject1 = new ArrayList((Collection)cL.get(localObject2));
     }
     localObject2 = paramClass.getInterfaces();
     int j = localObject2.length;
@@ -154,10 +149,10 @@ public class Lifecycling
     if (i < j)
     {
       Class localClass = localObject2[i];
-      if (!j(localClass)) {
+      if (!g(localClass)) {
         break label197;
       }
-      if (h(localClass) == 1) {
+      if (e(localClass) == 1) {
         return 1;
       }
       if (localObject1 != null) {
@@ -165,7 +160,7 @@ public class Lifecycling
       }
       localObject1 = new ArrayList();
       label148:
-      ((List)localObject1).addAll((Collection)cI.get(localClass));
+      ((List)localObject1).addAll((Collection)cL.get(localClass));
     }
     label194:
     label197:
@@ -175,7 +170,7 @@ public class Lifecycling
       break;
       if (localObject1 != null)
       {
-        cI.put(paramClass, localObject1);
+        cL.put(paramClass, localObject1);
         return 2;
       }
       return 1;
@@ -183,9 +178,14 @@ public class Lifecycling
     }
   }
   
-  private static boolean j(Class<?> paramClass)
+  private static boolean g(Class<?> paramClass)
   {
     return (paramClass != null) && (LifecycleObserver.class.isAssignableFrom(paramClass));
+  }
+  
+  public static String getAdapterName(String paramString)
+  {
+    return paramString.replace(".", "_") + "_LifecycleAdapter";
   }
 }
 

@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.MMCollapsibleTextView android:textSize="@dimen/m2" android:textColor="@color/o" android:textColorLink="#ff4f729c" android:id="@id/b4a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="105.0dip" android:maxLines="3" android:lineSpacingExtra="5.0dip" app:noCollapseCenter="true" app:collapseButtonPosition="gz"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />
+<LinearLayout android:gravity="center_vertical" android:background="@drawable/ajz" android:layout_width="fill_parent" android:layout_height="@dimen/i9" android:minHeight="@dimen/i9"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:ellipsize="end" android:id="@id/anu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:text="@string/awr" android:maxLines="2" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/im" android:id="@id/ant" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:text="@string/awq" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="center|right" android:id="@id/ans" android:padding="8.0dip" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/list_deletetext_icon" />
+</LinearLayout>

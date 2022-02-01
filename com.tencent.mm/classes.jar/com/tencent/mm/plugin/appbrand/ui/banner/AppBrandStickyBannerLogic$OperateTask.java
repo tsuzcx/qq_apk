@@ -9,88 +9,76 @@ final class AppBrandStickyBannerLogic$OperateTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<OperateTask> CREATOR;
-  String hSW;
-  boolean iRd;
-  int iRe;
-  String iRf;
+  boolean lFD;
+  String lFE;
+  int lFF;
+  String lFG;
   int op = 0;
   
   static
   {
-    AppMethodBeat.i(133304);
-    CREATOR = new AppBrandStickyBannerLogic.OperateTask.1();
-    AppMethodBeat.o(133304);
+    AppMethodBeat.i(49023);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(49023);
   }
   
-  static OperateTask o(String paramString1, int paramInt, String paramString2)
+  public final void aEz()
   {
-    AppMethodBeat.i(133301);
-    OperateTask localOperateTask = new OperateTask();
-    localOperateTask.op = 2;
-    localOperateTask.hSW = paramString1;
-    localOperateTask.iRe = paramInt;
-    localOperateTask.iRf = paramString2;
-    AppMethodBeat.o(133301);
-    return localOperateTask;
-  }
-  
-  public final void ata()
-  {
-    AppMethodBeat.i(133300);
+    AppMethodBeat.i(49019);
     switch (this.op)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(133300);
+      AppMethodBeat.o(49019);
       return;
-      this.iRd = AppBrandStickyBannerLogic.b.aMM();
-      aBp();
-      AppMethodBeat.o(133300);
+      this.lFD = AppBrandStickyBannerLogic.b.bpb();
+      aXw();
+      AppMethodBeat.o(49019);
       return;
-      AppBrandStickyBannerLogic.b.aMO();
-      AppMethodBeat.o(133300);
+      AppBrandStickyBannerLogic.b.bpd();
+      AppMethodBeat.o(49019);
       return;
       AppBrandStickyBannerLogic.b.b(this);
     }
   }
   
-  public final void f(Parcel paramParcel)
+  public final void e(Parcel paramParcel)
   {
-    AppMethodBeat.i(133303);
+    AppMethodBeat.i(49022);
     this.op = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.iRd = bool;
-      this.hSW = paramParcel.readString();
-      this.iRe = paramParcel.readInt();
-      this.iRf = paramParcel.readString();
-      AppMethodBeat.o(133303);
+      this.lFD = bool;
+      this.lFE = paramParcel.readString();
+      this.lFF = paramParcel.readInt();
+      this.lFG = paramParcel.readString();
+      AppMethodBeat.o(49022);
       return;
     }
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(133302);
+    AppMethodBeat.i(49021);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeInt(this.op);
-    if (this.iRd) {}
+    if (this.lFD) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
-      paramParcel.writeString(this.hSW);
-      paramParcel.writeInt(this.iRe);
-      paramParcel.writeString(this.iRf);
-      AppMethodBeat.o(133302);
+      paramParcel.writeString(this.lFE);
+      paramParcel.writeInt(this.lFF);
+      paramParcel.writeString(this.lFG);
+      AppMethodBeat.o(49021);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.banner.AppBrandStickyBannerLogic.OperateTask
  * JD-Core Version:    0.7.0.1
  */

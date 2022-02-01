@@ -1,43 +1,30 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.exdevice.f.b.a.a;
-import com.tencent.mm.plugin.exdevice.f.b.c;
-import com.tencent.mm.plugin.exdevice.model.ad;
-import com.tencent.mm.plugin.sport.a.d;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
 
 final class ExdeviceRankInfoUI$17
-  implements n.d
+  implements n.c
 {
   ExdeviceRankInfoUI$17(ExdeviceRankInfoUI paramExdeviceRankInfoUI) {}
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public final void onCreateMMMenu(l paraml)
   {
-    AppMethodBeat.i(20155);
-    if (ExdeviceRankInfoUI.x(this.lPt) == null)
+    AppMethodBeat.i(179641);
+    if (ExdeviceRankInfoUI.w(this.pgf))
     {
-      AppMethodBeat.o(20155);
+      paraml.c(1, this.pgf.getString(2131758573));
+      AppMethodBeat.o(179641);
       return;
     }
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(20155);
-      return;
-      ExdeviceRankInfoUI.a(this.lPt, true);
-      d.kS(10);
-      ad.bqg();
-      c.d("", ExdeviceRankInfoUI.y(this.lPt), ExdeviceRankInfoUI.x(this.lPt).field_username, 3);
-    }
+    paraml.c(0, this.pgf.getString(2131758579));
+    AppMethodBeat.o(179641);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceRankInfoUI.17
  * JD-Core Version:    0.7.0.1
  */

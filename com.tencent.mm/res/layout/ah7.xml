@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:paddingLeft="@dimen/hd" android:paddingRight="@dimen/hd" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/rf" android:gravity="center" android:id="@android:id/title" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/dl" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/l1" />
-</LinearLayout>
+    <com.tencent.mm.plugin.ipcall.ui.IPCallShareGridView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/cu2" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@drawable/oe" android:horizontalSpacing="@dimen/hd" android:verticalSpacing="@dimen/ha" android:numColumns="3" />
+</RelativeLayout>

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class k
   extends b
 {
-  public a cmu;
+  public a dbg;
   
   public k()
   {
@@ -15,11 +15,11 @@ public final class k
   
   private k(byte paramByte)
   {
-    AppMethodBeat.i(59604);
-    this.cmu = new a();
-    this.ymq = false;
+    AppMethodBeat.i(42650);
+    this.dbg = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(59604);
+    AppMethodBeat.o(42650);
   }
   
   public static final class a

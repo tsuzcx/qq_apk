@@ -1,35 +1,41 @@
 package c.t.m.c;
 
+import android.annotation.SuppressLint;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Process;
 import android.os.StatFs;
-import android.preference.PreferenceManager;
+import android.provider.Settings.Secure;
+import android.provider.Settings.System;
 import android.telephony.TelephonyManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.InputStream;
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.zip.GZIPOutputStream;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -37,15 +43,23 @@ public class q
 {
   public static final Object a;
   public static String b;
-  public static long c;
+  public static String c;
+  public static String d;
+  public static long e;
+  public static String f;
+  public static HashMap<String, r> g;
   
   static
   {
-    AppMethodBeat.i(136434);
+    AppMethodBeat.i(40011);
     a = new Object();
-    b = "complist_loading";
-    c = 0L;
-    AppMethodBeat.o(136434);
+    b = "TencentLocation/comp";
+    c = "TencentLocation/odex";
+    d = "complist_loading";
+    e = 0L;
+    f = "01234567890ABCDEF";
+    g = new HashMap();
+    AppMethodBeat.o(40011);
   }
   
   public static double a(double paramDouble)
@@ -55,67 +69,64 @@ public class q
   
   public static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
   {
-    AppMethodBeat.i(136431);
+    AppMethodBeat.i(40008);
     paramDouble1 = a(paramDouble1);
     paramDouble3 = a(paramDouble3);
     paramDouble2 = a(paramDouble2);
     paramDouble4 = a(paramDouble4);
-    double d = Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D);
-    paramDouble1 = Math.round(Math.asin(Math.sqrt(Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D) + d)) * 2.0D * 6378.1369999999997D * 10000.0D) / 10000.0D;
-    AppMethodBeat.o(136431);
+    double d1 = Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D);
+    paramDouble1 = Math.round(Math.asin(Math.sqrt(Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D) + d1)) * 2.0D * 6378.1369999999997D * 10000.0D) / 10000.0D;
+    AppMethodBeat.o(40008);
     return paramDouble1 * 1000.0D;
   }
   
-  public static String a()
+  public static r a(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(136409);
-    try
+    AppMethodBeat.i(39972);
+    if (g.containsKey(paramString))
     {
-      String str = Build.MODEL.replaceAll("[_]", "");
-      AppMethodBeat.o(136409);
-      return str;
+      paramContext = (r)g.get(paramString);
+      AppMethodBeat.o(39972);
+      return paramContext;
     }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(136409);
-    }
-    return "";
+    paramContext = new r(paramContext.getFilesDir().getAbsolutePath() + "/TencentLocation/conf/" + paramString);
+    g.put(paramString, paramContext);
+    AppMethodBeat.o(39972);
+    return paramContext;
   }
   
-  public static String a(Context paramContext)
+  public static Long a(Context paramContext, String paramString, Long paramLong)
   {
-    AppMethodBeat.i(136405);
+    AppMethodBeat.i(39976);
+    paramContext = a(paramContext, paramString).a(String.valueOf(paramLong));
     try
     {
-      String str = paramContext.getPackageName();
-      paramContext = paramContext.getPackageManager().getPackageInfo(str, 0);
-      str = paramContext.versionName;
-      int i = paramContext.versionCode;
-      if (str != null)
-      {
-        paramContext = str;
-        if (str.trim().length() > 0) {}
-      }
-      else
-      {
-        AppMethodBeat.o(136405);
-        return String.valueOf(i);
-      }
+      long l = Long.parseLong(paramContext);
+      paramLong = Long.valueOf(l);
     }
     catch (Exception paramContext)
     {
-      paramContext = "";
-      AppMethodBeat.o(136405);
+      label28:
+      break label28;
     }
+    AppMethodBeat.o(39976);
+    return paramLong;
+  }
+  
+  public static String a(Context paramContext, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(39975);
+    paramContext = a(paramContext, paramString1).a(paramString2);
+    AppMethodBeat.o(39975);
     return paramContext;
   }
   
   public static String a(File paramFile)
   {
-    AppMethodBeat.i(136413);
+    AppMethodBeat.i(39990);
     if (!paramFile.isFile())
     {
-      AppMethodBeat.o(136413);
+      AppMethodBeat.o(39990);
       return null;
     }
     byte[] arrayOfByte = new byte[1024];
@@ -136,33 +147,17 @@ public class q
     }
     catch (Exception paramFile)
     {
-      AppMethodBeat.o(136413);
+      AppMethodBeat.o(39990);
       return null;
     }
-    paramFile = c(localMessageDigest.digest());
-    AppMethodBeat.o(136413);
+    paramFile = a(localMessageDigest.digest());
+    AppMethodBeat.o(39990);
     return paramFile;
-  }
-  
-  public static String a(String paramString)
-  {
-    AppMethodBeat.i(136414);
-    try
-    {
-      String str = c(MessageDigest.getInstance("MD5").digest(paramString.getBytes()));
-      AppMethodBeat.o(136414);
-      return str;
-    }
-    catch (Exception localException)
-    {
-      AppMethodBeat.o(136414);
-    }
-    return paramString;
   }
   
   public static String a(List<a> paramList)
   {
-    AppMethodBeat.i(136424);
+    AppMethodBeat.i(40001);
     StringBuilder localStringBuilder = new StringBuilder();
     paramList = paramList.iterator();
     while (paramList.hasNext())
@@ -179,116 +174,158 @@ public class q
       localStringBuilder.append(locala.f).append(";");
     }
     paramList = localStringBuilder.toString();
-    AppMethodBeat.o(136424);
+    AppMethodBeat.o(40001);
     return paramList;
+  }
+  
+  public static String a(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(39992);
+    if (paramArrayOfByte == null)
+    {
+      AppMethodBeat.o(39992);
+      return "";
+    }
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
+      if (str.length() == 1) {
+        localStringBuffer.append("0");
+      }
+      localStringBuffer.append(str);
+      i += 1;
+    }
+    paramArrayOfByte = localStringBuffer.toString().toLowerCase();
+    AppMethodBeat.o(39992);
+    return paramArrayOfByte;
+  }
+  
+  public static List<String> a(Context paramContext, File paramFile)
+  {
+    AppMethodBeat.i(39982);
+    Object localObject2 = null;
+    paramContext = "";
+    Context localContext = paramContext;
+    Object localObject1 = localObject2;
+    if (paramFile.exists())
+    {
+      localContext = paramContext;
+      localObject1 = localObject2;
+      if (paramFile.isDirectory())
+      {
+        File[] arrayOfFile = paramFile.listFiles();
+        localContext = paramContext;
+        localObject1 = localObject2;
+        if (arrayOfFile != null)
+        {
+          localContext = paramContext;
+          localObject1 = localObject2;
+          if (arrayOfFile.length > 0)
+          {
+            paramFile = new ArrayList();
+            int j = arrayOfFile.length;
+            int i = 0;
+            for (;;)
+            {
+              localContext = paramContext;
+              localObject1 = paramFile;
+              if (i >= j) {
+                break;
+              }
+              localContext = arrayOfFile[i];
+              paramFile.add(localContext.getName() + "," + localContext.length() + "," + a(localContext));
+              paramContext = paramContext + localContext.getName() + "," + localContext.length() + "," + a(localContext) + ";";
+              i += 1;
+            }
+          }
+        }
+      }
+    }
+    j.a("before check ,private dir files:".concat(String.valueOf(localContext)));
+    AppMethodBeat.o(39982);
+    return localObject1;
+  }
+  
+  public static void a()
+  {
+    AppMethodBeat.i(39977);
+    long l = System.currentTimeMillis();
+    b = "TencentLocation/comp";
+    c = "TencentLocation/odex";
+    b = b + "_atuo_" + l;
+    c = c + "_atuo_" + l;
+    AppMethodBeat.o(39977);
   }
   
   public static void a(long paramLong)
   {
-    AppMethodBeat.i(136418);
+    AppMethodBeat.i(39995);
     try
     {
       Thread.sleep(paramLong);
-      AppMethodBeat.o(136418);
+      AppMethodBeat.o(39995);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      AppMethodBeat.o(136418);
+      AppMethodBeat.o(39995);
     }
   }
   
-  public static boolean a(Context paramContext, String paramString)
+  public static void a(Context paramContext)
   {
-    boolean bool2 = true;
-    int i = 0;
-    AppMethodBeat.i(136412);
-    if ((paramContext != null) && (paramString != null))
+    AppMethodBeat.i(39978);
+    if (paramContext == null)
     {
-      boolean bool1;
-      if (paramContext.checkPermission(paramString, Process.myPid(), Process.myUid()) == 0) {
-        bool1 = true;
-      }
-      while (!bool1) {
-        try
+      AppMethodBeat.o(39978);
+      return;
+    }
+    paramContext = new File(paramContext.getFilesDir().getAbsolutePath() + "/TencentLocation").listFiles();
+    if ((paramContext != null) && (paramContext.length > 0))
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        Object localObject = paramContext[i];
+        String str = localObject.getName();
+        if ((localObject.isDirectory()) && (str.contains("_atuo_")) && (!b.contains(str)))
         {
-          paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 4096).requestedPermissions;
-          if (paramContext != null)
-          {
-            int j = paramContext.length;
-            label65:
-            if (i < j)
-            {
-              boolean bool3 = paramString.equals(paramContext[i]);
-              if (bool3) {
-                bool1 = bool2;
-              }
-            }
-          }
-          for (;;)
-          {
-            AppMethodBeat.o(136412);
-            return bool1;
-            bool1 = false;
-            break;
-            i += 1;
-            break label65;
-          }
+          b(localObject.getAbsolutePath());
+          localObject.delete();
         }
-        catch (Throwable paramContext) {}
+        i += 1;
       }
     }
-    AppMethodBeat.o(136412);
-    return false;
-  }
-  
-  public static boolean a(Context paramContext, String paramString, Long paramLong)
-  {
-    AppMethodBeat.i(136402);
-    boolean bool = PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putLong(paramString, paramLong.longValue()).commit();
-    AppMethodBeat.o(136402);
-    return bool;
-  }
-  
-  public static boolean a(Context paramContext, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(136401);
-    boolean bool = PreferenceManager.getDefaultSharedPreferences(paramContext).edit().putString(paramString1, paramString2).commit();
-    AppMethodBeat.o(136401);
-    return bool;
+    AppMethodBeat.o(39978);
   }
   
   public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, long paramLong, byte[] paramArrayOfByte)
   {
     boolean bool1 = false;
-    boolean bool3 = false;
-    AppMethodBeat.i(136426);
+    boolean bool2 = false;
+    AppMethodBeat.i(40003);
     paramString3 = paramString2 + File.separator + paramString3;
     paramString2 = new File(paramString2);
     if (!paramString2.exists()) {
       paramString2.mkdir();
     }
-    boolean bool2 = bool3;
     try
     {
       paramContext = paramContext.getResources().getAssets().open(paramString1);
-      bool2 = bool3;
-      paramString1 = new ByteArrayOutputStream();
-      bool2 = bool3;
+      paramString2 = new ByteArrayOutputStream();
       paramContext.available();
-      bool2 = bool3;
-      paramString2 = new BufferedOutputStream(new FileOutputStream(paramString3, true), 1024);
+      paramString1 = new BufferedOutputStream(new FileOutputStream(paramString3, true), 1024);
       for (;;)
       {
-        bool2 = bool3;
         int i = paramContext.read(paramArrayOfByte);
         if (i <= 0) {
           break;
         }
-        bool2 = bool3;
-        paramString1.write(paramArrayOfByte, 0, i);
+        paramString2.write(paramArrayOfByte, 0, i);
       }
-      AppMethodBeat.o(136426);
+      j.a("copy base to private dir", paramContext);
     }
     catch (Exception paramContext)
     {
@@ -296,32 +333,39 @@ public class q
     }
     for (;;)
     {
+      AppMethodBeat.o(40003);
       return bool1;
-      bool2 = bool3;
-      paramString1.close();
-      bool2 = bool3;
-      paramString1 = a(m.b(paramString1.toByteArray(), "sE0zy%DVqLnXA$hmNZ8NBwcg7FDrvi!q"));
-      if (paramString1 != null)
+      paramString2.close();
+      paramString2 = paramString2.toByteArray();
+      paramString2 = c(m.a(paramString2, "sE0zy%DVqLnXA$hmNZ8NBwcg7FDrvi!q"));
+      if (paramString2 != null)
       {
-        bool2 = bool3;
-        paramString2.write(paramString1);
-        bool2 = bool3;
-        paramString2.close();
+        paramString1.write(paramString2);
+        paramString1.close();
         bool1 = true;
       }
-      bool2 = bool1;
-      paramContext.close();
+      try
+      {
+        paramContext.close();
+      }
+      catch (Exception paramContext) {}
     }
   }
   
   public static boolean a(Context paramContext, List<a> paramList)
   {
-    AppMethodBeat.i(136425);
-    List localList = b(b(paramContext, "__SP_Tencent_Loc_COMP_INFO__", ""));
-    if ((localList.size() == 0) || (paramList.size() == 0))
+    AppMethodBeat.i(40002);
+    List localList = e(a(paramContext, "__SP_UPDATE_TencentLoc_COMP_INFO__", ""));
+    if (paramList.size() == 0)
     {
-      AppMethodBeat.o(136425);
+      AppMethodBeat.o(40002);
       return false;
+    }
+    if (localList.size() == 0)
+    {
+      bool = b(paramContext, "__SP_UPDATE_TencentLoc_COMP_INFO__", a(paramList));
+      AppMethodBeat.o(40002);
+      return bool;
     }
     int i = 0;
     if (i < localList.size())
@@ -349,14 +393,51 @@ public class q
         j += 1;
       }
     }
-    boolean bool = a(paramContext, "__SP_Tencent_Loc_COMP_INFO__", a(localList));
-    AppMethodBeat.o(136425);
+    boolean bool = b(paramContext, "__SP_UPDATE_TencentLoc_COMP_INFO__", a(localList));
+    AppMethodBeat.o(40002);
     return bool;
+  }
+  
+  public static boolean a(String paramString)
+  {
+    AppMethodBeat.i(40006);
+    Object localObject = new File(paramString);
+    if (!((File)localObject).exists())
+    {
+      ((File)localObject).mkdirs();
+      AppMethodBeat.o(40006);
+      return true;
+    }
+    localObject = ((File)localObject).list();
+    if ((localObject != null) && (localObject.length != 0))
+    {
+      int j = localObject.length;
+      int i = 0;
+      if (i < j)
+      {
+        File localFile = new File(paramString, localObject[i]);
+        if (localFile.isDirectory())
+        {
+          b(localFile.getAbsolutePath());
+          localFile.delete();
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          localFile.delete();
+        }
+      }
+      AppMethodBeat.o(40006);
+      return true;
+    }
+    AppMethodBeat.o(40006);
+    return true;
   }
   
   public static byte[] a(int paramInt)
   {
-    AppMethodBeat.i(136421);
+    AppMethodBeat.i(39998);
     byte[] arrayOfByte = new byte[2];
     int j = 0;
     int i = paramInt;
@@ -367,333 +448,78 @@ public class q
       i >>= 8;
       paramInt += 1;
     }
-    AppMethodBeat.o(136421);
+    AppMethodBeat.o(39998);
     return arrayOfByte;
   }
   
-  /* Error */
-  public static byte[] a(byte[] paramArrayOfByte)
+  public static int b()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: ldc_w 410
-    //   6: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: aload_0
-    //   10: ifnull +8 -> 18
-    //   13: aload_0
-    //   14: arraylength
-    //   15: ifne +11 -> 26
-    //   18: ldc_w 410
-    //   21: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   24: aconst_null
-    //   25: areturn
-    //   26: new 334	java/io/ByteArrayOutputStream
-    //   29: dup
-    //   30: invokespecial 335	java/io/ByteArrayOutputStream:<init>	()V
-    //   33: astore_2
-    //   34: new 412	java/io/ByteArrayInputStream
-    //   37: dup
-    //   38: aload_0
-    //   39: invokespecial 414	java/io/ByteArrayInputStream:<init>	([B)V
-    //   42: astore_3
-    //   43: new 416	java/util/zip/GZIPInputStream
-    //   46: dup
-    //   47: aload_3
-    //   48: invokespecial 419	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
-    //   51: astore_0
-    //   52: ldc_w 420
-    //   55: newarray byte
-    //   57: astore 4
-    //   59: aload_0
-    //   60: aload 4
-    //   62: invokevirtual 421	java/util/zip/GZIPInputStream:read	([B)I
-    //   65: istore_1
-    //   66: iload_1
-    //   67: iflt +57 -> 124
-    //   70: aload_2
-    //   71: aload 4
-    //   73: iconst_0
-    //   74: iload_1
-    //   75: invokevirtual 356	java/io/ByteArrayOutputStream:write	([BII)V
-    //   78: goto -19 -> 59
-    //   81: astore 4
-    //   83: aload_0
-    //   84: ifnull +7 -> 91
-    //   87: aload_0
-    //   88: invokevirtual 422	java/util/zip/GZIPInputStream:close	()V
-    //   91: aload_3
-    //   92: ifnull +7 -> 99
-    //   95: aload_3
-    //   96: invokevirtual 423	java/io/ByteArrayInputStream:close	()V
-    //   99: aload 5
-    //   101: astore 4
-    //   103: aload_2
-    //   104: ifnull +11 -> 115
-    //   107: aload_2
-    //   108: invokevirtual 357	java/io/ByteArrayOutputStream:close	()V
-    //   111: aload 5
-    //   113: astore 4
-    //   115: ldc_w 410
-    //   118: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   121: aload 4
-    //   123: areturn
-    //   124: aload_2
-    //   125: invokevirtual 360	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   128: astore 4
-    //   130: aload_0
-    //   131: invokevirtual 422	java/util/zip/GZIPInputStream:close	()V
-    //   134: aload_3
-    //   135: invokevirtual 423	java/io/ByteArrayInputStream:close	()V
-    //   138: aload_2
-    //   139: invokevirtual 357	java/io/ByteArrayOutputStream:close	()V
-    //   142: goto -27 -> 115
-    //   145: astore_0
-    //   146: goto -31 -> 115
-    //   149: astore_0
-    //   150: aconst_null
-    //   151: astore_0
-    //   152: aconst_null
-    //   153: astore_3
-    //   154: aconst_null
-    //   155: astore_2
-    //   156: aload_0
-    //   157: ifnull +7 -> 164
-    //   160: aload_0
-    //   161: invokevirtual 422	java/util/zip/GZIPInputStream:close	()V
-    //   164: aload_3
-    //   165: ifnull +7 -> 172
-    //   168: aload_3
-    //   169: invokevirtual 423	java/io/ByteArrayInputStream:close	()V
-    //   172: aload 5
-    //   174: astore 4
-    //   176: aload_2
-    //   177: ifnull -62 -> 115
-    //   180: aload_2
-    //   181: invokevirtual 357	java/io/ByteArrayOutputStream:close	()V
-    //   184: aload 5
-    //   186: astore 4
-    //   188: goto -73 -> 115
-    //   191: astore_0
-    //   192: aload 5
-    //   194: astore 4
-    //   196: goto -81 -> 115
-    //   199: astore_0
-    //   200: aconst_null
-    //   201: astore_2
-    //   202: aconst_null
-    //   203: astore_3
-    //   204: aconst_null
-    //   205: astore 4
-    //   207: aload_2
-    //   208: ifnull +7 -> 215
-    //   211: aload_2
-    //   212: invokevirtual 422	java/util/zip/GZIPInputStream:close	()V
-    //   215: aload_3
-    //   216: ifnull +7 -> 223
-    //   219: aload_3
-    //   220: invokevirtual 423	java/io/ByteArrayInputStream:close	()V
-    //   223: aload 4
-    //   225: ifnull +8 -> 233
-    //   228: aload 4
-    //   230: invokevirtual 357	java/io/ByteArrayOutputStream:close	()V
-    //   233: ldc_w 410
-    //   236: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   239: aload_0
-    //   240: athrow
-    //   241: astore_2
-    //   242: goto -9 -> 233
-    //   245: astore_0
-    //   246: aconst_null
-    //   247: astore 5
-    //   249: aconst_null
-    //   250: astore_3
-    //   251: aload_2
-    //   252: astore 4
-    //   254: aload 5
-    //   256: astore_2
-    //   257: goto -50 -> 207
-    //   260: astore_0
-    //   261: aconst_null
-    //   262: astore 5
-    //   264: aload_2
-    //   265: astore 4
-    //   267: aload 5
-    //   269: astore_2
-    //   270: goto -63 -> 207
-    //   273: astore 5
-    //   275: aload_0
-    //   276: astore 6
-    //   278: aload_2
-    //   279: astore 4
-    //   281: aload 5
-    //   283: astore_0
-    //   284: aload 6
-    //   286: astore_2
-    //   287: goto -80 -> 207
-    //   290: astore_0
-    //   291: aconst_null
-    //   292: astore_0
-    //   293: aconst_null
-    //   294: astore_3
-    //   295: goto -139 -> 156
-    //   298: astore_0
-    //   299: aconst_null
-    //   300: astore_0
-    //   301: goto -145 -> 156
-    //   304: astore 4
-    //   306: goto -150 -> 156
-    //   309: astore_0
-    //   310: aload 5
-    //   312: astore 4
-    //   314: goto -199 -> 115
-    //   317: astore_0
-    //   318: aconst_null
-    //   319: astore_0
-    //   320: aconst_null
-    //   321: astore_3
-    //   322: aconst_null
-    //   323: astore_2
-    //   324: goto -241 -> 83
-    //   327: astore_0
-    //   328: aconst_null
-    //   329: astore_0
-    //   330: aconst_null
-    //   331: astore_3
-    //   332: goto -249 -> 83
-    //   335: astore_0
-    //   336: aconst_null
-    //   337: astore_0
-    //   338: goto -255 -> 83
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	341	0	paramArrayOfByte	byte[]
-    //   65	10	1	i	int
-    //   33	179	2	localByteArrayOutputStream	ByteArrayOutputStream
-    //   241	11	2	localException1	Exception
-    //   256	68	2	localObject1	Object
-    //   42	290	3	localByteArrayInputStream	java.io.ByteArrayInputStream
-    //   57	15	4	arrayOfByte1	byte[]
-    //   81	1	4	localException2	Exception
-    //   101	179	4	localObject2	Object
-    //   304	1	4	localError	java.lang.Error
-    //   312	1	4	localObject3	Object
-    //   1	267	5	localObject4	Object
-    //   273	38	5	localObject5	Object
-    //   276	9	6	arrayOfByte2	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   52	59	81	java/lang/Exception
-    //   59	66	81	java/lang/Exception
-    //   70	78	81	java/lang/Exception
-    //   124	130	81	java/lang/Exception
-    //   130	142	145	java/lang/Exception
-    //   26	34	149	java/lang/Error
-    //   160	164	191	java/lang/Exception
-    //   168	172	191	java/lang/Exception
-    //   180	184	191	java/lang/Exception
-    //   26	34	199	finally
-    //   211	215	241	java/lang/Exception
-    //   219	223	241	java/lang/Exception
-    //   228	233	241	java/lang/Exception
-    //   34	43	245	finally
-    //   43	52	260	finally
-    //   52	59	273	finally
-    //   59	66	273	finally
-    //   70	78	273	finally
-    //   124	130	273	finally
-    //   34	43	290	java/lang/Error
-    //   43	52	298	java/lang/Error
-    //   52	59	304	java/lang/Error
-    //   59	66	304	java/lang/Error
-    //   70	78	304	java/lang/Error
-    //   124	130	304	java/lang/Error
-    //   87	91	309	java/lang/Exception
-    //   95	99	309	java/lang/Exception
-    //   107	111	309	java/lang/Exception
-    //   26	34	317	java/lang/Exception
-    //   34	43	327	java/lang/Exception
-    //   43	52	335	java/lang/Exception
-  }
-  
-  public static Long b(Context paramContext, String paramString, Long paramLong)
-  {
-    AppMethodBeat.i(136404);
-    long l = PreferenceManager.getDefaultSharedPreferences(paramContext).getLong(paramString, paramLong.longValue());
-    AppMethodBeat.o(136404);
-    return Long.valueOf(l);
-  }
-  
-  public static String b()
-  {
-    AppMethodBeat.i(136410);
-    try
-    {
-      String str = Build.MANUFACTURER.replaceAll("[_]", "");
-      AppMethodBeat.o(136410);
-      return str;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(136410);
-    }
-    return "";
+    return Build.VERSION.SDK_INT;
   }
   
   public static String b(Context paramContext)
   {
-    AppMethodBeat.i(136406);
-    paramContext = paramContext.getFilesDir().getAbsolutePath() + File.separator + "TencentLocation/comp";
-    AppMethodBeat.o(136406);
-    return paramContext;
+    AppMethodBeat.i(39986);
+    try
+    {
+      paramContext = paramContext.getContentResolver();
+      paramContext = Settings.System.getString(paramContext, "android_id");
+      AppMethodBeat.o(39986);
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      AppMethodBeat.o(39986);
+    }
+    return "01234567890ABCDEF";
   }
   
   /* Error */
   public static String b(Context paramContext, String paramString)
   {
     // Byte code:
-    //   0: ldc_w 452
-    //   3: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 182	java/lang/StringBuilder
+    //   0: ldc_w 478
+    //   3: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 110	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 183	java/lang/StringBuilder:<init>	()V
+    //   10: invokespecial 111	java/lang/StringBuilder:<init>	()V
     //   13: astore_2
     //   14: aload_0
-    //   15: invokevirtual 453	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   15: invokevirtual 479	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   18: aload_1
-    //   19: invokevirtual 332	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   19: invokevirtual 362	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   22: astore_0
-    //   23: new 455	java/io/BufferedReader
+    //   23: new 481	java/io/BufferedReader
     //   26: dup
-    //   27: new 457	java/io/InputStreamReader
+    //   27: new 483	java/io/InputStreamReader
     //   30: dup
     //   31: aload_0
-    //   32: ldc_w 459
-    //   35: invokespecial 462	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   38: invokespecial 465	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   32: ldc_w 485
+    //   35: invokespecial 488	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   38: invokespecial 491	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   41: astore_1
     //   42: aload_1
-    //   43: invokevirtual 468	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   43: invokevirtual 494	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   46: astore_3
     //   47: aload_3
     //   48: ifnull +26 -> 74
     //   51: aload_2
     //   52: aload_3
-    //   53: invokevirtual 211	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   56: pop
     //   57: goto -15 -> 42
     //   60: astore_0
     //   61: aload_2
-    //   62: invokevirtual 223	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   62: invokevirtual 132	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   65: astore_0
-    //   66: ldc_w 452
-    //   69: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   66: ldc_w 478
+    //   69: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   72: aload_0
     //   73: areturn
     //   74: aload_1
-    //   75: invokevirtual 469	java/io/BufferedReader:close	()V
+    //   75: invokevirtual 495	java/io/BufferedReader:close	()V
     //   78: aload_0
-    //   79: invokevirtual 374	java/io/InputStream:close	()V
+    //   79: invokevirtual 410	java/io/InputStream:close	()V
     //   82: goto -21 -> 61
     //   85: astore_0
     //   86: goto -25 -> 61
@@ -705,28 +531,613 @@ public class q
     //   46	7	3	str	String
     // Exception table:
     //   from	to	target	type
-    //   14	42	60	java/io/UnsupportedEncodingException
+    //   14	23	60	java/io/UnsupportedEncodingException
+    //   23	42	60	java/io/UnsupportedEncodingException
     //   42	47	60	java/io/UnsupportedEncodingException
     //   51	57	60	java/io/UnsupportedEncodingException
     //   74	82	60	java/io/UnsupportedEncodingException
-    //   14	42	85	java/io/IOException
+    //   14	23	85	java/io/IOException
+    //   23	42	85	java/io/IOException
     //   42	47	85	java/io/IOException
     //   51	57	85	java/io/IOException
     //   74	82	85	java/io/IOException
   }
   
-  public static String b(Context paramContext, String paramString1, String paramString2)
+  public static boolean b(Context paramContext, String paramString, Long paramLong)
   {
-    AppMethodBeat.i(136403);
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).getString(paramString1, paramString2);
-    AppMethodBeat.o(136403);
+    AppMethodBeat.i(39974);
+    boolean bool = a(paramContext, paramString).a(String.valueOf(paramLong).getBytes(), false);
+    AppMethodBeat.o(39974);
+    return bool;
+  }
+  
+  public static boolean b(Context paramContext, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(39973);
+    boolean bool = a(paramContext, paramString1).a(paramString2.getBytes(), false);
+    AppMethodBeat.o(39973);
+    return bool;
+  }
+  
+  public static boolean b(Context paramContext, String paramString1, String paramString2, String paramString3, long paramLong, byte[] paramArrayOfByte)
+  {
+    boolean bool2 = false;
+    AppMethodBeat.i(40005);
+    paramContext = paramString2 + File.separator + paramString3;
+    paramString2 = new File(paramString2);
+    if (!paramString2.exists()) {
+      paramString2.mkdir();
+    }
+    boolean bool1 = bool2;
+    try
+    {
+      paramString1 = new FileInputStream(paramString1);
+      bool1 = bool2;
+      paramContext = new FileOutputStream(paramContext);
+      for (;;)
+      {
+        bool1 = bool2;
+        int i = paramString1.read(paramArrayOfByte);
+        if (i <= 0) {
+          break;
+        }
+        bool1 = bool2;
+        paramContext.write(paramArrayOfByte, 0, i);
+      }
+      AppMethodBeat.o(40005);
+    }
+    catch (Exception paramContext) {}
+    for (;;)
+    {
+      return bool1;
+      bool1 = bool2;
+      paramContext.close();
+      bool2 = true;
+      bool1 = true;
+      paramString1.close();
+      bool1 = bool2;
+    }
+  }
+  
+  public static boolean b(String paramString)
+  {
+    int i = 0;
+    AppMethodBeat.i(40004);
+    Object localObject = new File(paramString);
+    if (!((File)localObject).exists())
+    {
+      AppMethodBeat.o(40004);
+      return false;
+    }
+    localObject = ((File)localObject).list();
+    if ((localObject != null) && (localObject.length != 0))
+    {
+      int j = localObject.length;
+      if (i < j)
+      {
+        File localFile = new File(paramString, localObject[i]);
+        if (localFile.isDirectory())
+        {
+          b(localFile.getAbsolutePath());
+          localFile.delete();
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          localFile.delete();
+        }
+      }
+      AppMethodBeat.o(40004);
+      return true;
+    }
+    AppMethodBeat.o(40004);
+    return true;
+  }
+  
+  /* Error */
+  public static byte[] b(byte[] paramArrayOfByte)
+  {
+    // Byte code:
+    //   0: ldc_w 512
+    //   3: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 364	java/io/ByteArrayOutputStream
+    //   9: dup
+    //   10: aload_0
+    //   11: arraylength
+    //   12: invokespecial 514	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   15: astore_1
+    //   16: new 516	java/util/zip/GZIPOutputStream
+    //   19: dup
+    //   20: aload_1
+    //   21: invokespecial 519	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   24: astore_2
+    //   25: aload_2
+    //   26: aload_0
+    //   27: invokevirtual 520	java/util/zip/GZIPOutputStream:write	([B)V
+    //   30: aload_2
+    //   31: invokevirtual 521	java/util/zip/GZIPOutputStream:close	()V
+    //   34: aload_1
+    //   35: invokevirtual 395	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   38: astore_0
+    //   39: aload_1
+    //   40: invokevirtual 392	java/io/ByteArrayOutputStream:close	()V
+    //   43: ldc_w 512
+    //   46: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   49: aload_0
+    //   50: areturn
+    //   51: astore_0
+    //   52: aconst_null
+    //   53: astore_0
+    //   54: goto -11 -> 43
+    //   57: astore_1
+    //   58: goto -15 -> 43
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	61	0	paramArrayOfByte	byte[]
+    //   15	25	1	localByteArrayOutputStream	ByteArrayOutputStream
+    //   57	1	1	localThrowable	Throwable
+    //   24	7	2	localGZIPOutputStream	java.util.zip.GZIPOutputStream
+    // Exception table:
+    //   from	to	target	type
+    //   6	39	51	java/lang/Throwable
+    //   39	43	57	java/lang/Throwable
+  }
+  
+  public static long c()
+  {
+    AppMethodBeat.i(39993);
+    long l1 = 0L;
+    try
+    {
+      StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
+      long l2 = localStatFs.getBlockSize();
+      int i = localStatFs.getAvailableBlocks();
+      l1 = i * l2;
+    }
+    catch (Exception localException)
+    {
+      label41:
+      break label41;
+    }
+    AppMethodBeat.o(39993);
+    return l1;
+  }
+  
+  public static String c(Context paramContext)
+  {
+    AppMethodBeat.i(39979);
+    try
+    {
+      String str = paramContext.getPackageName();
+      paramContext = paramContext.getPackageManager().getPackageInfo(str, 0);
+      str = paramContext.versionName;
+      int i = paramContext.versionCode;
+      if (str != null)
+      {
+        paramContext = str;
+        if (str.trim().length() > 0) {}
+      }
+      else
+      {
+        paramContext = new StringBuilder();
+        paramContext = "" + i;
+        AppMethodBeat.o(39979);
+        return paramContext;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      paramContext = "";
+      AppMethodBeat.o(39979);
+    }
     return paramContext;
   }
   
-  public static List<a> b(String paramString)
+  public static String c(String paramString)
+  {
+    AppMethodBeat.i(39991);
+    try
+    {
+      String str = a(MessageDigest.getInstance("MD5").digest(paramString.getBytes()));
+      AppMethodBeat.o(39991);
+      return str;
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(39991);
+    }
+    return paramString;
+  }
+  
+  /* Error */
+  public static byte[] c(byte[] paramArrayOfByte)
+  {
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 5
+    //   3: ldc_w 570
+    //   6: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: aload_0
+    //   10: ifnull +273 -> 283
+    //   13: aload_0
+    //   14: arraylength
+    //   15: ifeq +268 -> 283
+    //   18: new 364	java/io/ByteArrayOutputStream
+    //   21: dup
+    //   22: invokespecial 365	java/io/ByteArrayOutputStream:<init>	()V
+    //   25: astore 4
+    //   27: new 572	java/io/ByteArrayInputStream
+    //   30: dup
+    //   31: aload_0
+    //   32: invokespecial 574	java/io/ByteArrayInputStream:<init>	([B)V
+    //   35: astore_0
+    //   36: new 576	java/util/zip/GZIPInputStream
+    //   39: dup
+    //   40: aload_0
+    //   41: invokespecial 579	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   44: astore_2
+    //   45: ldc_w 580
+    //   48: newarray byte
+    //   50: astore_3
+    //   51: aload_2
+    //   52: aload_3
+    //   53: invokevirtual 581	java/util/zip/GZIPInputStream:read	([B)I
+    //   56: istore_1
+    //   57: iload_1
+    //   58: iflt +50 -> 108
+    //   61: aload 4
+    //   63: aload_3
+    //   64: iconst_0
+    //   65: iload_1
+    //   66: invokevirtual 386	java/io/ByteArrayOutputStream:write	([BII)V
+    //   69: goto -18 -> 51
+    //   72: astore_3
+    //   73: aload_2
+    //   74: ifnull +7 -> 81
+    //   77: aload_2
+    //   78: invokevirtual 582	java/util/zip/GZIPInputStream:close	()V
+    //   81: aload_0
+    //   82: ifnull +7 -> 89
+    //   85: aload_0
+    //   86: invokevirtual 583	java/io/ByteArrayInputStream:close	()V
+    //   89: aload 4
+    //   91: astore_0
+    //   92: aload 4
+    //   94: ifnonnull +109 -> 203
+    //   97: aload 5
+    //   99: astore_3
+    //   100: ldc_w 570
+    //   103: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   106: aload_3
+    //   107: areturn
+    //   108: aload 4
+    //   110: invokevirtual 395	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   113: astore_3
+    //   114: aload_2
+    //   115: invokevirtual 582	java/util/zip/GZIPInputStream:close	()V
+    //   118: aload_0
+    //   119: invokevirtual 583	java/io/ByteArrayInputStream:close	()V
+    //   122: aload 4
+    //   124: invokevirtual 392	java/io/ByteArrayOutputStream:close	()V
+    //   127: goto -27 -> 100
+    //   130: astore_0
+    //   131: goto -31 -> 100
+    //   134: astore 5
+    //   136: aload_2
+    //   137: astore_3
+    //   138: aload 5
+    //   140: astore_2
+    //   141: aload_3
+    //   142: ifnull +7 -> 149
+    //   145: aload_3
+    //   146: invokevirtual 582	java/util/zip/GZIPInputStream:close	()V
+    //   149: aload_0
+    //   150: ifnull +7 -> 157
+    //   153: aload_0
+    //   154: invokevirtual 583	java/io/ByteArrayInputStream:close	()V
+    //   157: aload 4
+    //   159: ifnull +8 -> 167
+    //   162: aload 4
+    //   164: invokevirtual 392	java/io/ByteArrayOutputStream:close	()V
+    //   167: ldc_w 570
+    //   170: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   173: aload_2
+    //   174: athrow
+    //   175: astore_2
+    //   176: aconst_null
+    //   177: astore_3
+    //   178: goto -37 -> 141
+    //   181: astore_2
+    //   182: aconst_null
+    //   183: astore_2
+    //   184: aload_2
+    //   185: ifnull +7 -> 192
+    //   188: aload_2
+    //   189: invokevirtual 582	java/util/zip/GZIPInputStream:close	()V
+    //   192: aload_0
+    //   193: ifnull +106 -> 299
+    //   196: aload_0
+    //   197: invokevirtual 583	java/io/ByteArrayInputStream:close	()V
+    //   200: goto +99 -> 299
+    //   203: aload_0
+    //   204: invokevirtual 392	java/io/ByteArrayOutputStream:close	()V
+    //   207: aload 5
+    //   209: astore_3
+    //   210: goto -110 -> 100
+    //   213: astore_0
+    //   214: aload 5
+    //   216: astore_3
+    //   217: goto -117 -> 100
+    //   220: astore_2
+    //   221: aconst_null
+    //   222: astore_2
+    //   223: goto -150 -> 73
+    //   226: astore_2
+    //   227: aconst_null
+    //   228: astore_0
+    //   229: aconst_null
+    //   230: astore_3
+    //   231: goto -90 -> 141
+    //   234: astore_0
+    //   235: aconst_null
+    //   236: astore_0
+    //   237: aconst_null
+    //   238: astore_2
+    //   239: goto -55 -> 184
+    //   242: astore_0
+    //   243: aconst_null
+    //   244: astore_0
+    //   245: aconst_null
+    //   246: astore_2
+    //   247: goto -174 -> 73
+    //   250: astore_2
+    //   251: aconst_null
+    //   252: astore_0
+    //   253: aconst_null
+    //   254: astore 4
+    //   256: aconst_null
+    //   257: astore_3
+    //   258: goto -117 -> 141
+    //   261: astore_0
+    //   262: aconst_null
+    //   263: astore_0
+    //   264: aconst_null
+    //   265: astore 4
+    //   267: aconst_null
+    //   268: astore_2
+    //   269: goto -85 -> 184
+    //   272: astore_0
+    //   273: aconst_null
+    //   274: astore_0
+    //   275: aconst_null
+    //   276: astore 4
+    //   278: aconst_null
+    //   279: astore_2
+    //   280: goto -207 -> 73
+    //   283: ldc_w 570
+    //   286: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   289: aconst_null
+    //   290: areturn
+    //   291: astore_0
+    //   292: goto -125 -> 167
+    //   295: astore_3
+    //   296: goto -112 -> 184
+    //   299: aload 5
+    //   301: astore_3
+    //   302: aload 4
+    //   304: ifnull -204 -> 100
+    //   307: aload 4
+    //   309: astore_0
+    //   310: goto -107 -> 203
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	313	0	paramArrayOfByte	byte[]
+    //   56	10	1	i	int
+    //   44	130	2	localObject1	Object
+    //   175	1	2	localObject2	Object
+    //   181	1	2	localError1	java.lang.Error
+    //   183	6	2	localObject3	Object
+    //   220	1	2	localException1	Exception
+    //   222	1	2	localObject4	Object
+    //   226	1	2	localObject5	Object
+    //   238	9	2	localObject6	Object
+    //   250	1	2	localObject7	Object
+    //   268	12	2	localObject8	Object
+    //   50	14	3	arrayOfByte	byte[]
+    //   72	1	3	localException2	Exception
+    //   99	159	3	localObject9	Object
+    //   295	1	3	localError2	java.lang.Error
+    //   301	1	3	localObject10	Object
+    //   25	283	4	localByteArrayOutputStream	ByteArrayOutputStream
+    //   1	97	5	localObject11	Object
+    //   134	166	5	localObject12	Object
+    // Exception table:
+    //   from	to	target	type
+    //   45	51	72	java/lang/Exception
+    //   51	57	72	java/lang/Exception
+    //   61	69	72	java/lang/Exception
+    //   108	114	72	java/lang/Exception
+    //   114	127	130	java/lang/Exception
+    //   45	51	134	finally
+    //   51	57	134	finally
+    //   61	69	134	finally
+    //   108	114	134	finally
+    //   36	45	175	finally
+    //   36	45	181	java/lang/Error
+    //   77	81	213	java/lang/Exception
+    //   85	89	213	java/lang/Exception
+    //   188	192	213	java/lang/Exception
+    //   196	200	213	java/lang/Exception
+    //   203	207	213	java/lang/Exception
+    //   36	45	220	java/lang/Exception
+    //   27	36	226	finally
+    //   27	36	234	java/lang/Error
+    //   27	36	242	java/lang/Exception
+    //   18	27	250	finally
+    //   18	27	261	java/lang/Error
+    //   18	27	272	java/lang/Exception
+    //   145	149	291	java/lang/Exception
+    //   153	157	291	java/lang/Exception
+    //   162	167	291	java/lang/Exception
+    //   45	51	295	java/lang/Error
+    //   51	57	295	java/lang/Error
+    //   61	69	295	java/lang/Error
+    //   108	114	295	java/lang/Error
+  }
+  
+  public static String d()
+  {
+    AppMethodBeat.i(39985);
+    try
+    {
+      String str = Build.MANUFACTURER;
+      str = str.replaceAll("[_]", "");
+      AppMethodBeat.o(39985);
+      return str;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(39985);
+    }
+    return "";
+  }
+  
+  public static String d(Context paramContext)
+  {
+    AppMethodBeat.i(39980);
+    paramContext = paramContext.getFilesDir().getAbsolutePath() + File.separator + b;
+    AppMethodBeat.o(39980);
+    return paramContext;
+  }
+  
+  public static String d(String paramString)
+  {
+    AppMethodBeat.i(40000);
+    try
+    {
+      Object localObject1 = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject1).getString("status");
+      Object localObject2 = e.b();
+      Object localObject3 = new StringBuilder();
+      ((e)localObject2).a("DRG", "statucode:" + paramString);
+      boolean bool = paramString.equals("-3");
+      if (bool)
+      {
+        AppMethodBeat.o(40000);
+        return null;
+      }
+      bool = paramString.equals("0");
+      if (bool)
+      {
+        paramString = "";
+        localObject1 = ((JSONObject)localObject1).getJSONArray("compList");
+        int i = 0;
+        while (i < ((JSONArray)localObject1).length())
+        {
+          Object localObject4 = ((JSONArray)localObject1).getJSONObject(i);
+          int j = ((JSONObject)localObject4).getInt("compId");
+          localObject3 = ((JSONObject)localObject4).getString("compVer");
+          localObject2 = ((JSONObject)localObject4).getString("md5");
+          int k = ((JSONObject)localObject4).getInt("size");
+          localObject4 = ((JSONObject)localObject4).getString("compName");
+          paramString = new StringBuilder().append(paramString).append(j);
+          paramString = paramString.append(",").append((String)localObject3);
+          paramString = paramString.append(",").append((String)localObject4);
+          paramString = paramString.append(",").append(k);
+          paramString = paramString.append(",").append((String)localObject2);
+          paramString = ",;";
+          i += 1;
+        }
+        AppMethodBeat.o(40000);
+        return paramString;
+      }
+      bool = paramString.equals("-1");
+      if (bool)
+      {
+        AppMethodBeat.o(40000);
+        return null;
+      }
+      bool = paramString.equals("-2");
+      if (bool)
+      {
+        AppMethodBeat.o(40000);
+        return null;
+      }
+      bool = paramString.equals("-4");
+      if (bool)
+      {
+        AppMethodBeat.o(40000);
+        return null;
+      }
+      bool = paramString.equals("-5");
+      if (bool)
+      {
+        AppMethodBeat.o(40000);
+        return null;
+      }
+    }
+    catch (Exception paramString)
+    {
+      e.b().a("DRG", "statucode:" + paramString.toString());
+      AppMethodBeat.o(40000);
+    }
+    return null;
+  }
+  
+  public static String e()
+  {
+    AppMethodBeat.i(39984);
+    try
+    {
+      String str = Build.MODEL;
+      str = str.replaceAll("[_]", "");
+      AppMethodBeat.o(39984);
+      return str;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(39984);
+    }
+    return "";
+  }
+  
+  public static String e(Context paramContext)
+  {
+    AppMethodBeat.i(39987);
+    try
+    {
+      int i = Process.myPid();
+      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
+      while (paramContext.hasNext())
+      {
+        localObject = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+        if (((ActivityManager.RunningAppProcessInfo)localObject).pid == i)
+        {
+          paramContext = ((ActivityManager.RunningAppProcessInfo)localObject).processName;
+          AppMethodBeat.o(39987);
+          return paramContext;
+        }
+      }
+      paramContext = new StringBuilder();
+      paramContext = paramContext.append("/proc/").append(Process.myPid());
+      paramContext = new BufferedReader(new FileReader(new File("/cmdline")));
+      Object localObject = paramContext.readLine().trim();
+      paramContext.close();
+      AppMethodBeat.o(39987);
+      return localObject;
+    }
+    catch (Exception paramContext)
+    {
+      AppMethodBeat.o(39987);
+    }
+    return null;
+  }
+  
+  public static List<a> e(String paramString)
   {
     int i = 0;
-    AppMethodBeat.i(136422);
+    AppMethodBeat.i(39999);
     localArrayList = new ArrayList();
     for (;;)
     {
@@ -736,7 +1147,8 @@ public class q
         int j = paramString.length;
         if (i < j)
         {
-          arrayOfString = paramString[i].split(",");
+          arrayOfString = paramString[i];
+          arrayOfString = arrayOfString.split(",");
           int k = arrayOfString.length;
           if (k < 5) {}
         }
@@ -745,7 +1157,7 @@ public class q
       {
         String[] arrayOfString;
         a locala;
-        AppMethodBeat.o(136422);
+        AppMethodBeat.o(39999);
         return localArrayList;
       }
       try
@@ -769,374 +1181,201 @@ public class q
     }
   }
   
-  public static boolean b(Context paramContext, String paramString1, String paramString2, String paramString3, long paramLong, byte[] paramArrayOfByte)
+  public static int f()
   {
-    boolean bool2 = false;
-    AppMethodBeat.i(136428);
-    paramContext = paramString2 + File.separator + paramString3;
-    paramString2 = new File(paramString2);
-    if (!paramString2.exists()) {
-      paramString2.mkdir();
-    }
-    boolean bool1 = bool2;
-    try
-    {
-      paramString1 = new FileInputStream(paramString1);
-      bool1 = bool2;
-      paramContext = new FileOutputStream(paramContext);
-      for (;;)
-      {
-        bool1 = bool2;
-        int i = paramString1.read(paramArrayOfByte);
-        if (i <= 0) {
-          break;
-        }
-        bool1 = bool2;
-        paramContext.write(paramArrayOfByte, 0, i);
-      }
-      AppMethodBeat.o(136428);
-    }
-    catch (Exception paramContext) {}
-    for (;;)
-    {
-      return bool1;
-      bool1 = bool2;
-      paramContext.close();
-      bool2 = true;
-      bool1 = true;
-      paramString1.close();
-      bool1 = bool2;
-    }
+    AppMethodBeat.i(39988);
+    int i = Process.myPid();
+    AppMethodBeat.o(39988);
+    return i;
   }
   
-  public static byte[] b(byte[] paramArrayOfByte)
+  public static int f(Context paramContext)
   {
-    AppMethodBeat.i(136420);
-    Object localObject2 = null;
-    localObject1 = localObject2;
-    try
-    {
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length);
-      localObject1 = localObject2;
-      GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
-      localObject1 = localObject2;
-      localGZIPOutputStream.write(paramArrayOfByte);
-      localObject1 = localObject2;
-      localGZIPOutputStream.close();
-      localObject1 = localObject2;
-      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      localObject1 = paramArrayOfByte;
-      localByteArrayOutputStream.close();
-    }
-    catch (Throwable paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte = (byte[])localObject1;
-      }
-    }
-    AppMethodBeat.o(136420);
-    return paramArrayOfByte;
-  }
-  
-  public static int c()
-  {
-    return Build.VERSION.SDK_INT;
-  }
-  
-  public static String c(String paramString)
-  {
-    AppMethodBeat.i(136423);
-    try
-    {
-      Object localObject1 = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject1).getString("status");
-      e.a().a("DRG", "statucode:".concat(String.valueOf(paramString)));
-      boolean bool = paramString.equals("-3");
-      if (bool)
-      {
-        AppMethodBeat.o(136423);
-        return null;
-      }
-      if (paramString.equals("0"))
-      {
-        paramString = "";
-        localObject1 = ((JSONObject)localObject1).getJSONArray("compList");
-        int i = 0;
-        while (i < ((JSONArray)localObject1).length())
-        {
-          Object localObject2 = ((JSONArray)localObject1).getJSONObject(i);
-          int j = ((JSONObject)localObject2).getInt("compId");
-          String str1 = ((JSONObject)localObject2).getString("compVer");
-          String str2 = ((JSONObject)localObject2).getString("md5");
-          int k = ((JSONObject)localObject2).getInt("size");
-          localObject2 = ((JSONObject)localObject2).getString("compName");
-          paramString = paramString + j + "," + str1 + "," + (String)localObject2 + "," + k + "," + str2 + ",;";
-          i += 1;
-        }
-        AppMethodBeat.o(136423);
-        return paramString;
-      }
-      bool = paramString.equals("-1");
-      if (bool)
-      {
-        AppMethodBeat.o(136423);
-        return null;
-      }
-      bool = paramString.equals("-2");
-      if (bool)
-      {
-        AppMethodBeat.o(136423);
-        return null;
-      }
-      bool = paramString.equals("-4");
-      if (bool)
-      {
-        AppMethodBeat.o(136423);
-        return null;
-      }
-      bool = paramString.equals("-5");
-      if (bool)
-      {
-        AppMethodBeat.o(136423);
-        return null;
-      }
-    }
-    catch (Exception paramString)
-    {
-      e.a().a("DRG", "statucode:" + paramString.toString());
-      AppMethodBeat.o(136423);
-    }
-    return null;
-  }
-  
-  private static String c(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(136415);
-    if (paramArrayOfByte == null)
-    {
-      AppMethodBeat.o(136415);
-      return "";
-    }
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      String str = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      if (str.length() == 1) {
-        localStringBuffer.append("0");
-      }
-      localStringBuffer.append(str);
-      i += 1;
-    }
-    paramArrayOfByte = localStringBuffer.toString().toLowerCase();
-    AppMethodBeat.o(136415);
-    return paramArrayOfByte;
-  }
-  
-  public static List<String> c(Context paramContext)
-  {
-    AppMethodBeat.i(136407);
-    Object localObject = new File(paramContext.getFilesDir(), "TencentLocation/comp");
-    ArrayList localArrayList = null;
-    paramContext = localArrayList;
-    if (((File)localObject).exists())
-    {
-      paramContext = localArrayList;
-      if (((File)localObject).isDirectory())
-      {
-        localObject = ((File)localObject).listFiles();
-        paramContext = localArrayList;
-        if (localObject != null)
-        {
-          paramContext = localArrayList;
-          if (localObject.length > 0)
-          {
-            localArrayList = new ArrayList();
-            int j = localObject.length;
-            int i = 0;
-            for (;;)
-            {
-              paramContext = localArrayList;
-              if (i >= j) {
-                break;
-              }
-              paramContext = localObject[i];
-              localArrayList.add(paramContext.getName() + "," + paramContext.length());
-              i += 1;
-            }
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(136407);
-    return paramContext;
-  }
-  
-  public static long d()
-  {
-    AppMethodBeat.i(136416);
-    long l1 = 0L;
-    try
-    {
-      StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
-      long l2 = localStatFs.getBlockSize();
-      int i = localStatFs.getAvailableBlocks();
-      l1 = i * l2;
-    }
-    catch (Exception localException)
-    {
-      label41:
-      break label41;
-    }
-    AppMethodBeat.o(136416);
-    return l1;
-  }
-  
-  public static String d(Context paramContext)
-  {
-    AppMethodBeat.i(136408);
-    try
-    {
-      paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData;
-      if (paramContext != null)
-      {
-        if (paramContext.containsKey("TencentGeoLocationSDK"))
-        {
-          paramContext = paramContext.getString("TencentGeoLocationSDK");
-          AppMethodBeat.o(136408);
-          return paramContext;
-        }
-        if (paramContext.containsKey("TencentMapSDK"))
-        {
-          paramContext = paramContext.getString("TencentMapSDK");
-          AppMethodBeat.o(136408);
-          return paramContext;
-        }
-        AppMethodBeat.o(136408);
-        return "";
-      }
-    }
-    catch (Exception paramContext)
-    {
-      AppMethodBeat.o(136408);
-    }
-    return "";
-  }
-  
-  public static boolean d(String paramString)
-  {
-    int i = 0;
-    AppMethodBeat.i(136427);
-    Object localObject = new File(paramString);
-    if (!((File)localObject).exists())
-    {
-      AppMethodBeat.o(136427);
-      return false;
-    }
-    localObject = ((File)localObject).list();
-    int j = localObject.length;
-    if (i < j)
-    {
-      File localFile = new File(paramString, localObject[i]);
-      if (localFile.isDirectory())
-      {
-        d(localFile.getAbsolutePath());
-        localFile.delete();
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localFile.delete();
-      }
-    }
-    AppMethodBeat.o(136427);
-    return true;
-  }
-  
-  public static String e(Context paramContext)
-  {
-    AppMethodBeat.i(136411);
-    String str = "";
+    AppMethodBeat.i(40009);
     if (paramContext == null)
     {
-      AppMethodBeat.o(136411);
-      return "";
+      AppMethodBeat.o(40009);
+      return -1;
     }
-    localObject = str;
+    boolean bool5 = j(paramContext);
     for (;;)
     {
       try
       {
-        if (!a(paramContext, "android.permission.READ_PHONE_STATE")) {
+        localObject = (WifiManager)paramContext.getSystemService("wifi");
+        if (localObject == null) {
           continue;
         }
-        localObject = str;
-        paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-        localObject = str;
-        if (Build.VERSION.SDK_INT < 26) {
+        bool1 = ((WifiManager)localObject).isWifiEnabled();
+      }
+      catch (Throwable localThrowable2)
+      {
+        Object localObject;
+        boolean bool2;
+        int k;
+        boolean bool4;
+        boolean bool3;
+        int n;
+        int m;
+        boolean bool1 = false;
+        continue;
+        int j = 1;
+        int i = 0;
+        continue;
+      }
+      try
+      {
+        if (Build.VERSION.SDK_INT < 18) {
           continue;
         }
-        localObject = str;
-        paramContext = paramContext.getImei();
-        if (paramContext != null) {
+        bool2 = ((WifiManager)localObject).isScanAlwaysAvailable();
+        if (!bool2) {
           continue;
         }
-        paramContext = "";
+        j = 1;
+        i = 1;
+      }
+      catch (Throwable localThrowable1) {}
+      try
+      {
+        localObject = (LocationManager)paramContext.getSystemService("location");
+        if (localObject == null) {
+          continue;
+        }
+      }
+      catch (Exception paramContext)
+      {
+        k = 0;
+        bool2 = false;
+        bool3 = false;
+        n = k;
+        continue;
+        i = k + 512;
+        continue;
+        i = k + 256;
+        continue;
+        i = k + 128;
+        continue;
+        i = k + 64;
+        continue;
+      }
+      try
+      {
+        paramContext = paramContext.getContentResolver();
+        k = Settings.Secure.getInt(paramContext, "location_mode");
       }
       catch (Throwable paramContext)
       {
-        paramContext = (Context)localObject;
+        k = 0;
         continue;
-        paramContext = "";
+        bool2 = paramContext.contains("gps");
         continue;
       }
-      AppMethodBeat.o(136411);
-      return paramContext;
-      localObject = str;
-      paramContext = paramContext.getDeviceId();
-      continue;
-      localObject = paramContext;
-      paramContext = paramContext.toLowerCase();
+      try
+      {
+        bool4 = ((LocationManager)localObject).isProviderEnabled("gps");
+        paramContext = ((LocationManager)localObject).getAllProviders();
+        if (paramContext != null) {
+          continue;
+        }
+        bool2 = false;
+        bool3 = bool2;
+        bool2 = bool4;
+        n = k;
+        if (bool5) {
+          continue;
+        }
+        m = 1;
+      }
+      catch (Exception paramContext)
+      {
+        continue;
+        m = 0;
+        continue;
+      }
+      k = m;
+      if (!bool1) {
+        k = m + 2;
+      }
+      m = k;
+      if (!bool2) {
+        m = k + 4;
+      }
+      k = m;
+      if (j == 0) {
+        k = m + 8;
+      }
+      j = k;
+      if (!bool3) {
+        j = k + 16;
+      }
+      k = j;
+      if (i == 0) {
+        k = j + 32;
+      }
+      switch (n)
+      {
+      default: 
+        i = k;
+        AppMethodBeat.o(40009);
+        return i;
+        j = 0;
+        i = 0;
+        continue;
+        bool1 = false;
+        j = 0;
+        i = 0;
+      }
     }
   }
   
-  public static boolean e(String paramString)
+  @SuppressLint({"MissingPermission"})
+  public static String g(Context paramContext)
   {
-    AppMethodBeat.i(136429);
-    Object localObject = new File(paramString);
-    if (!((File)localObject).exists())
+    AppMethodBeat.i(39989);
+    Object localObject = f;
+    if ((localObject != null) && (((String)localObject).length() != 0) && (!"01234567890ABCDEF".equals(f)))
     {
-      ((File)localObject).mkdirs();
-      AppMethodBeat.o(136429);
-      return true;
+      paramContext = f;
+      AppMethodBeat.o(39989);
+      return paramContext;
     }
-    localObject = ((File)localObject).list();
-    int j = localObject.length;
-    int i = 0;
-    if (i < j)
+    try
     {
-      File localFile = new File(paramString, localObject[i]);
-      if (localFile.isDirectory())
+      localObject = (TelephonyManager)paramContext.getSystemService("phone");
+      if (Build.VERSION.SDK_INT > 28) {}
+      for (f = b(paramContext);; f = ((TelephonyManager)localObject).getImei())
       {
-        d(localFile.getAbsolutePath());
-        localFile.delete();
+        paramContext = f;
+        AppMethodBeat.o(39989);
+        return paramContext;
+        if (Build.VERSION.SDK_INT < 26) {
+          break;
+        }
       }
+    }
+    catch (Throwable paramContext)
+    {
       for (;;)
       {
-        i += 1;
-        break;
-        localFile.delete();
+        f = "01234567890ABCDEF";
+        continue;
+        f = ((TelephonyManager)localObject).getDeviceId();
       }
     }
-    AppMethodBeat.o(136429);
-    return true;
   }
   
-  public static boolean f(Context paramContext)
+  public static String h(Context paramContext)
   {
-    AppMethodBeat.i(136417);
+    AppMethodBeat.i(39981);
+    paramContext = paramContext.getFilesDir().getAbsolutePath() + File.separator + c;
+    AppMethodBeat.o(39981);
+    return paramContext;
+  }
+  
+  public static boolean i(Context paramContext)
+  {
+    AppMethodBeat.i(39994);
     try
     {
       paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
@@ -1148,7 +1387,7 @@ public class q
           int i = paramContext.getType();
           if (i == 1)
           {
-            AppMethodBeat.o(136417);
+            AppMethodBeat.o(39994);
             return true;
           }
         }
@@ -1156,266 +1395,74 @@ public class q
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(136417);
+      AppMethodBeat.o(39994);
     }
     return false;
   }
   
-  /* Error */
-  public static int g(Context paramContext)
+  public static boolean j(Context paramContext)
   {
-    // Byte code:
-    //   0: ldc_w 709
-    //   3: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aload_0
-    //   7: ifnonnull +11 -> 18
-    //   10: ldc_w 709
-    //   13: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   16: iconst_m1
-    //   17: ireturn
-    //   18: aload_0
-    //   19: invokestatic 712	c/t/m/c/q:h	(Landroid/content/Context;)Z
-    //   22: istore 9
-    //   24: aload_0
-    //   25: ldc_w 714
-    //   28: invokevirtual 679	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   31: checkcast 716	android/net/wifi/WifiManager
-    //   34: astore 10
-    //   36: aload 10
-    //   38: ifnull +217 -> 255
-    //   41: aload 10
-    //   43: invokevirtual 719	android/net/wifi/WifiManager:isWifiEnabled	()Z
-    //   46: istore 7
-    //   48: iload 7
-    //   50: ifeq +339 -> 389
-    //   53: iconst_1
-    //   54: istore_1
-    //   55: getstatic 513	android/os/Build$VERSION:SDK_INT	I
-    //   58: bipush 18
-    //   60: if_icmplt +324 -> 384
-    //   63: aload 10
-    //   65: invokevirtual 722	android/net/wifi/WifiManager:isScanAlwaysAvailable	()Z
-    //   68: istore 7
-    //   70: iload 7
-    //   72: ifeq +312 -> 384
-    //   75: iconst_1
-    //   76: istore_3
-    //   77: iconst_1
-    //   78: istore_2
-    //   79: iload_1
-    //   80: istore 4
-    //   82: aload_0
-    //   83: ldc_w 724
-    //   86: invokevirtual 679	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   89: checkcast 726	android/location/LocationManager
-    //   92: astore 10
-    //   94: aload 10
-    //   96: ifnull +211 -> 307
-    //   99: aload_0
-    //   100: invokevirtual 730	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   103: ldc_w 732
-    //   106: invokestatic 737	android/provider/Settings$Secure:getInt	(Landroid/content/ContentResolver;Ljava/lang/String;)I
-    //   109: istore_1
-    //   110: aload 10
-    //   112: ldc_w 739
-    //   115: invokevirtual 742	android/location/LocationManager:isProviderEnabled	(Ljava/lang/String;)Z
-    //   118: istore 8
-    //   120: aload 10
-    //   122: invokevirtual 746	android/location/LocationManager:getAllProviders	()Ljava/util/List;
-    //   125: astore_0
-    //   126: aload_0
-    //   127: ifnonnull +166 -> 293
-    //   130: iconst_0
-    //   131: istore 7
-    //   133: iload 9
-    //   135: ifne +243 -> 378
-    //   138: iconst_1
-    //   139: istore 6
-    //   141: iload 6
-    //   143: istore 5
-    //   145: iload 4
-    //   147: ifne +9 -> 156
-    //   150: iload 6
-    //   152: iconst_2
-    //   153: iadd
-    //   154: istore 5
-    //   156: iload 5
-    //   158: istore 4
-    //   160: iload 8
-    //   162: ifne +9 -> 171
-    //   165: iload 5
-    //   167: iconst_4
-    //   168: iadd
-    //   169: istore 4
-    //   171: iload 4
-    //   173: istore 5
-    //   175: iload_3
-    //   176: ifne +10 -> 186
-    //   179: iload 4
-    //   181: bipush 8
-    //   183: iadd
-    //   184: istore 5
-    //   186: iload 5
-    //   188: istore_3
-    //   189: iload 7
-    //   191: ifne +9 -> 200
-    //   194: iload 5
-    //   196: bipush 16
-    //   198: iadd
-    //   199: istore_3
-    //   200: iload_3
-    //   201: istore 4
-    //   203: iload_2
-    //   204: ifne +9 -> 213
-    //   207: iload_3
-    //   208: bipush 32
-    //   210: iadd
-    //   211: istore 4
-    //   213: iload_1
-    //   214: tableswitch	default:+30 -> 244, 0:+116->330, 1:+125->339, 2:+135->349, 3:+145->359
-    //   245: iconst_1
-    //   246: istore_1
-    //   247: ldc_w 709
-    //   250: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   253: iload_1
-    //   254: ireturn
-    //   255: iconst_0
-    //   256: istore_2
-    //   257: iconst_0
-    //   258: istore_1
-    //   259: iconst_0
-    //   260: istore 4
-    //   262: iload_2
-    //   263: istore_3
-    //   264: iload 4
-    //   266: istore_2
-    //   267: iload_1
-    //   268: istore 4
-    //   270: goto -188 -> 82
-    //   273: astore 10
-    //   275: iconst_0
-    //   276: istore_1
-    //   277: iconst_0
-    //   278: istore_3
-    //   279: iconst_0
-    //   280: istore_2
-    //   281: iload_1
-    //   282: istore 4
-    //   284: goto -202 -> 82
-    //   287: astore_0
-    //   288: iconst_0
-    //   289: istore_1
-    //   290: goto -180 -> 110
-    //   293: aload_0
-    //   294: ldc_w 739
-    //   297: invokeinterface 748 2 0
-    //   302: istore 7
-    //   304: goto -171 -> 133
-    //   307: iconst_0
-    //   308: istore 7
-    //   310: iconst_0
-    //   311: istore_1
-    //   312: iconst_0
-    //   313: istore 8
-    //   315: goto -182 -> 133
-    //   318: astore_0
-    //   319: iconst_0
-    //   320: istore_1
-    //   321: iconst_0
-    //   322: istore 7
-    //   324: iconst_0
-    //   325: istore 8
-    //   327: goto -194 -> 133
-    //   330: iload 4
-    //   332: bipush 64
-    //   334: iadd
-    //   335: istore_1
-    //   336: goto -89 -> 247
-    //   339: iload 4
-    //   341: sipush 128
-    //   344: iadd
-    //   345: istore_1
-    //   346: goto -99 -> 247
-    //   349: iload 4
-    //   351: sipush 256
-    //   354: iadd
-    //   355: istore_1
-    //   356: goto -109 -> 247
-    //   359: iload 4
-    //   361: sipush 512
-    //   364: iadd
-    //   365: istore_1
-    //   366: goto -119 -> 247
-    //   369: astore_0
-    //   370: goto -49 -> 321
-    //   373: astore 10
-    //   375: goto -98 -> 277
-    //   378: iconst_0
-    //   379: istore 6
-    //   381: goto -240 -> 141
-    //   384: iconst_1
-    //   385: istore_2
-    //   386: goto -127 -> 259
-    //   389: iconst_0
-    //   390: istore_1
-    //   391: goto -336 -> 55
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	394	0	paramContext	Context
-    //   54	337	1	i	int
-    //   78	308	2	j	int
-    //   76	203	3	k	int
-    //   80	285	4	m	int
-    //   143	56	5	n	int
-    //   139	241	6	i1	int
-    //   46	277	7	bool1	boolean
-    //   118	208	8	bool2	boolean
-    //   22	112	9	bool3	boolean
-    //   34	87	10	localObject	Object
-    //   273	1	10	localThrowable1	Throwable
-    //   373	1	10	localThrowable2	Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   24	36	273	java/lang/Throwable
-    //   41	48	273	java/lang/Throwable
-    //   99	110	287	java/lang/Throwable
-    //   82	94	318	java/lang/Exception
-    //   99	110	318	java/lang/Exception
-    //   110	126	369	java/lang/Exception
-    //   293	304	369	java/lang/Exception
-    //   55	70	373	java/lang/Throwable
-  }
-  
-  private static boolean h(Context paramContext)
-  {
-    AppMethodBeat.i(136433);
+    AppMethodBeat.i(40010);
     try
     {
       paramContext = (TelephonyManager)paramContext.getSystemService("phone");
       if (paramContext == null)
       {
-        AppMethodBeat.o(136433);
+        AppMethodBeat.o(40010);
         return false;
       }
       int i = paramContext.getSimState();
       if (i == 5)
       {
-        AppMethodBeat.o(136433);
+        AppMethodBeat.o(40010);
         return true;
       }
-      AppMethodBeat.o(136433);
+      AppMethodBeat.o(40010);
       return false;
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(136433);
+      AppMethodBeat.o(40010);
     }
     return false;
+  }
+  
+  public static String k(Context paramContext)
+  {
+    AppMethodBeat.i(39983);
+    try
+    {
+      paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData;
+      if (paramContext != null)
+      {
+        boolean bool = paramContext.containsKey("TencentGeoLocationSDK");
+        if (bool)
+        {
+          paramContext = paramContext.getString("TencentGeoLocationSDK");
+          AppMethodBeat.o(39983);
+          return paramContext;
+        }
+        bool = paramContext.containsKey("TencentMapSDK");
+        if (bool)
+        {
+          paramContext = paramContext.getString("TencentMapSDK");
+          AppMethodBeat.o(39983);
+          return paramContext;
+        }
+        AppMethodBeat.o(39983);
+        return "";
+      }
+    }
+    catch (Exception paramContext)
+    {
+      AppMethodBeat.o(39983);
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     c.t.m.c.q
  * JD-Core Version:    0.7.0.1
  */

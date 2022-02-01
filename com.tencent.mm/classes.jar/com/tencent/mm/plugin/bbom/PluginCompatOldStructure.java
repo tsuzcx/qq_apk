@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.bbom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.c;
+import com.tencent.mm.bs.c;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.kernel.d;
 
@@ -11,13 +11,13 @@ public class PluginCompatOldStructure
 {
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(18321);
-    if (((h)com.tencent.mm.kernel.g.RI().Rj()).SD())
+    AppMethodBeat.i(22433);
+    if (((h)com.tencent.mm.kernel.g.afy().aeZ()).agu())
     {
-      new k.1().alone();
-      new k.2().alone();
-      new k.3().alone();
-      new k.4().alone();
+      new l.1().alone();
+      new l.2().alone();
+      new l.3().alone();
+      new l.4().alone();
       c.b("profile", null);
       c.b("setting", null);
       c.b("subapp", null);
@@ -31,7 +31,6 @@ public class PluginCompatOldStructure
       c.b("radar", null);
       c.b("ext", null);
       c.b("emoji", new com.tencent.mm.plugin.emoji.model.b());
-      c.b("emoticon", null);
       c.b("account", null);
       c.b("qqmail", null);
       c.b("readerapp", null);
@@ -77,22 +76,25 @@ public class PluginCompatOldStructure
       c.b("fps_lighter", null);
       c.b("mmsight", null);
       c.b("login_exdevice", null);
+      c.b("finder", null);
+      c.b("groupcollect", null);
+      c.b("editor", null);
     }
-    AppMethodBeat.o(18321);
+    AppMethodBeat.o(22433);
   }
   
   public void dependency()
   {
-    AppMethodBeat.i(18320);
+    AppMethodBeat.i(22432);
     super.dependency();
-    AppMethodBeat.o(18320);
+    AppMethodBeat.o(22432);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.PluginCompatOldStructure
  * JD-Core Version:    0.7.0.1
  */

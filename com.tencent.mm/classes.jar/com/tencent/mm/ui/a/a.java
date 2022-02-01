@@ -6,91 +6,88 @@ import android.content.res.Resources;
 import android.os.SystemClock;
 import android.os.Vibrator;
 import android.speech.tts.TextToSpeech;
-import android.speech.tts.TextToSpeech.OnInitListener;
 import android.view.View;
 import android.view.Window;
 import android.view.accessibility.AccessibilityManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Locale;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
 {
-  private AccessibilityManager fU;
-  Vibrator kqP;
-  public Context zF;
-  TextToSpeech zfT;
-  private boolean zfU;
-  private long zfV;
+  TextToSpeech FTk;
+  private boolean FTl;
+  private long FTm;
+  public Context FZ;
+  private AccessibilityManager apt;
+  Vibrator mHT;
   
   public a(Context paramContext)
   {
-    AppMethodBeat.i(106134);
-    this.zfT = null;
-    this.zF = paramContext;
-    this.fU = ((AccessibilityManager)this.zF.getSystemService("accessibility"));
-    AppMethodBeat.o(106134);
+    AppMethodBeat.i(141494);
+    this.FTk = null;
+    this.FZ = paramContext;
+    this.apt = ((AccessibilityManager)this.FZ.getSystemService("accessibility"));
+    AppMethodBeat.o(141494);
   }
   
   public final void a(View paramView, String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(106137);
-    if (!dDs())
+    AppMethodBeat.i(141497);
+    if (!eSe())
     {
-      AppMethodBeat.o(106137);
+      AppMethodBeat.o(141497);
       return;
     }
-    if ((this.zF == null) || (paramView == null))
+    if ((this.FZ == null) || (paramView == null))
     {
-      AppMethodBeat.o(106137);
+      AppMethodBeat.o(141497);
       return;
     }
     if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null))
     {
-      AppMethodBeat.o(106137);
+      AppMethodBeat.o(141497);
       return;
     }
     b localb = new b();
-    localb.atr(paramString1);
+    localb.aKd(paramString1);
     if (paramInt > 0) {
-      localb.atr(this.zF.getResources().getQuantityString(2131361796, 1, new Object[] { Integer.valueOf(paramInt) }));
+      localb.aKd(this.FZ.getResources().getQuantityString(2131623940, 1, new Object[] { Integer.valueOf(paramInt) }));
     }
-    localb.atr(paramString2).atr(paramString3);
-    localb.eK(paramView);
-    AppMethodBeat.o(106137);
+    localb.aKd(paramString2).aKd(paramString3);
+    localb.fB(paramView);
+    AppMethodBeat.o(141497);
   }
   
   public final void a(View paramView, String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(106136);
-    if (!dDs())
+    AppMethodBeat.i(141496);
+    if (!eSe())
     {
-      AppMethodBeat.o(106136);
+      AppMethodBeat.o(141496);
       return;
     }
-    if ((bo.isNullOrNil(paramString1)) || (this.zF == null))
+    if ((bt.isNullOrNil(paramString1)) || (this.FZ == null))
     {
-      AppMethodBeat.o(106136);
+      AppMethodBeat.o(141496);
       return;
     }
     b localb = new b();
-    localb.atr(paramString1);
-    if (!bo.isNullOrNil(paramString2)) {}
+    localb.aKd(paramString1);
+    if (!bt.isNullOrNil(paramString2)) {}
     for (;;)
     {
       try
       {
-        i = bo.getInt(paramString2, 0);
+        i = bt.getInt(paramString2, 0);
         if (i > 0)
         {
           if (i > 0) {
-            localb.atr(this.zF.getResources().getQuantityString(2131361823, 1, new Object[] { Integer.valueOf(i) }));
+            localb.aKd(this.FZ.getResources().getQuantityString(2131623969, 1, new Object[] { Integer.valueOf(i) }));
           }
-          localb.atr(this.zF.getResources().getQuantityString(2131361824, 5, new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt + 1) }));
-          localb.eK(paramView);
-          AppMethodBeat.o(106136);
+          localb.aKd(this.FZ.getResources().getQuantityString(2131623970, 5, new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt + 1) }));
+          localb.fB(paramView);
+          AppMethodBeat.o(141496);
           return;
         }
       }
@@ -99,33 +96,33 @@ public final class a
     }
   }
   
-  public final void al(View paramView, int paramInt)
+  public final void aw(View paramView, int paramInt)
   {
-    AppMethodBeat.i(106138);
-    if (!dDs())
+    AppMethodBeat.i(141498);
+    if (!eSe())
     {
-      AppMethodBeat.o(106138);
+      AppMethodBeat.o(141498);
       return;
     }
-    if ((this.zF == null) || (paramView == null))
+    if ((this.FZ == null) || (paramView == null))
     {
-      AppMethodBeat.o(106138);
+      AppMethodBeat.o(141498);
       return;
     }
     paramInt = Math.max(paramInt, 1);
     b localb = new b();
-    localb.atr(this.zF.getResources().getQuantityString(2131361795, paramInt, new Object[] { Integer.valueOf(paramInt) }));
-    localb.eK(paramView);
-    AppMethodBeat.o(106138);
+    localb.aKd(this.FZ.getResources().getQuantityString(2131623939, paramInt, new Object[] { Integer.valueOf(paramInt) }));
+    localb.fB(paramView);
+    AppMethodBeat.o(141498);
   }
   
-  public final boolean dDs()
+  public final boolean eSe()
   {
-    AppMethodBeat.i(106135);
-    if (SystemClock.uptimeMillis() - this.zfV > 2000L)
+    AppMethodBeat.i(141495);
+    if (SystemClock.uptimeMillis() - this.FTm > 2000L)
     {
-      bool1 = this.fU.isEnabled();
-      boolean bool2 = this.fU.isTouchExplorationEnabled();
+      bool1 = this.apt.isEnabled();
+      boolean bool2 = this.apt.isTouchExplorationEnabled();
       if ((!bool1) || (!bool2)) {
         break label70;
       }
@@ -133,41 +130,41 @@ public final class a
     label70:
     for (boolean bool1 = true;; bool1 = false)
     {
-      this.zfU = bool1;
-      this.zfV = SystemClock.uptimeMillis();
-      bool1 = this.zfU;
-      AppMethodBeat.o(106135);
+      this.FTl = bool1;
+      this.FTm = SystemClock.uptimeMillis();
+      bool1 = this.FTl;
+      AppMethodBeat.o(141495);
       return bool1;
     }
   }
   
-  public final void k(Activity paramActivity, String paramString)
+  public final void l(Activity paramActivity, String paramString)
   {
-    AppMethodBeat.i(106139);
-    if (dDs())
+    AppMethodBeat.i(141499);
+    if (eSe())
     {
-      AppMethodBeat.o(106139);
+      AppMethodBeat.o(141499);
       return;
     }
-    if ((bo.isNullOrNil(paramString)) || (paramActivity == null))
+    if ((bt.isNullOrNil(paramString)) || (paramActivity == null))
     {
-      AppMethodBeat.o(106139);
+      AppMethodBeat.o(141499);
       return;
     }
-    paramString = paramActivity.getString(2131298492) + paramString;
+    paramString = paramActivity.getString(2131757533) + paramString;
     paramActivity.getWindow().getDecorView().setContentDescription(paramString);
-    AppMethodBeat.o(106139);
+    AppMethodBeat.o(141499);
   }
   
   public static final class a
   {
-    private static final a zfX;
+    private static final a FTo;
     
     static
     {
-      AppMethodBeat.i(106133);
-      zfX = new a(ah.getContext());
-      AppMethodBeat.o(106133);
+      AppMethodBeat.i(141493);
+      FTo = new a(aj.getContext());
+      AppMethodBeat.o(141493);
     }
   }
 }

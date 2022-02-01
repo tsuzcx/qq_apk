@@ -5,14 +5,14 @@ import com.tencent.qqmusic.mediaplayer.AudioFormat.AudioType;
 import com.tencent.qqmusic.mediaplayer.AudioRecognition;
 import com.tencent.qqmusic.mediaplayer.util.StreamUtils;
 import java.io.BufferedInputStream;
-import java.io.File;
 import java.io.FileInputStream;
+import java.io.RandomAccessFile;
 
 public class FileDataSource
   implements IDataSource
 {
   private long currentPosition;
-  private File file;
+  private RandomAccessFile file;
   private FileInputStream fileInputStream;
   private final String filePath;
   private boolean opened = false;
@@ -25,10 +25,10 @@ public class FileDataSource
   
   public void close()
   {
-    AppMethodBeat.i(128359);
+    AppMethodBeat.i(114294);
     if (!this.opened)
     {
-      AppMethodBeat.o(128359);
+      AppMethodBeat.o(114294);
       return;
     }
     if (this.fileInputStream != null) {
@@ -37,15 +37,18 @@ public class FileDataSource
     if (this.readingStream != null) {
       this.readingStream.close();
     }
+    if (this.file != null) {
+      this.file.close();
+    }
     this.opened = false;
-    AppMethodBeat.o(128359);
+    AppMethodBeat.o(114294);
   }
   
   public AudioFormat.AudioType getAudioType()
   {
-    AppMethodBeat.i(128358);
+    AppMethodBeat.i(114293);
     AudioFormat.AudioType localAudioType = AudioRecognition.recognitionAudioFormatExactly(this.filePath);
-    AppMethodBeat.o(128358);
+    AppMethodBeat.o(114293);
     return localAudioType;
   }
   
@@ -56,43 +59,41 @@ public class FileDataSource
   
   public long getSize()
   {
-    AppMethodBeat.i(128357);
+    AppMethodBeat.i(114292);
     long l = this.file.length();
-    AppMethodBeat.o(128357);
+    AppMethodBeat.o(114292);
     return l;
   }
   
   public void open()
   {
-    AppMethodBeat.i(128355);
+    AppMethodBeat.i(114290);
     if (this.opened)
     {
-      AppMethodBeat.o(128355);
+      AppMethodBeat.o(114290);
       return;
     }
     this.opened = true;
-    this.file = new File(this.filePath);
-    this.fileInputStream = new FileInputStream(this.filePath);
+    this.file = new RandomAccessFile(this.filePath, "r");
+    this.fileInputStream = new FileInputStream(this.file.getFD());
     this.readingStream = new BufferedInputStream(this.fileInputStream);
     this.currentPosition = 0L;
-    AppMethodBeat.o(128355);
+    AppMethodBeat.o(114290);
   }
   
   public int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(128356);
+    AppMethodBeat.i(114291);
     if (this.currentPosition != paramLong)
     {
       if (this.currentPosition > paramLong)
       {
-        this.readingStream.close();
-        this.fileInputStream.close();
-        this.fileInputStream = new FileInputStream(this.filePath);
+        this.file.seek(paramLong);
         this.readingStream = new BufferedInputStream(this.fileInputStream);
       }
-      for (long l = StreamUtils.skipForBufferStream(this.readingStream, paramLong); l != paramLong; l = this.currentPosition + StreamUtils.skipForBufferStream(this.readingStream, paramLong - this.currentPosition))
+      for (long l = paramLong; l != paramLong; l = this.currentPosition + StreamUtils.skipForBufferStream(this.readingStream, paramLong - this.currentPosition))
       {
-        AppMethodBeat.o(128356);
+        AppMethodBeat.o(114291);
         return -1;
       }
       this.currentPosition = paramLong;
@@ -101,21 +102,21 @@ public class FileDataSource
     if (paramInt1 >= 0) {
       this.currentPosition += paramInt1;
     }
-    AppMethodBeat.o(128356);
+    AppMethodBeat.o(114291);
     return paramInt1;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(128360);
+    AppMethodBeat.i(114295);
     String str = "(fd)" + this.filePath;
-    AppMethodBeat.o(128360);
+    AppMethodBeat.o(114295);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.FileDataSource
  * JD-Core Version:    0.7.0.1
  */

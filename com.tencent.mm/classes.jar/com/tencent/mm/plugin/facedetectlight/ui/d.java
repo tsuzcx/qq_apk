@@ -17,38 +17,38 @@ public final class d
     super(paramViewGroup, parama);
   }
   
-  public final int bvM()
+  public final int chg()
   {
-    return 2130969500;
+    return 2131493913;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(806);
-    FaceDetectReporter.buB().buC();
-    FaceDetectReporter.buB().buD();
-    FaceDetectReporter.buB().miO = System.currentTimeMillis();
-    MMAnimateView localMMAnimateView = (MMAnimateView)findViewById(2131823900);
-    localMMAnimateView.setImageResource(2131231285);
+    AppMethodBeat.i(104326);
+    FaceDetectReporter.cfV().cfW();
+    FaceDetectReporter.cfV().cfX();
+    FaceDetectReporter.cfV().pPB = System.currentTimeMillis();
+    MMAnimateView localMMAnimateView = (MMAnimateView)findViewById(2131299705);
+    localMMAnimateView.setImageResource(2131690129);
     localMMAnimateView.start();
-    ((Button)findViewById(2131823903)).setOnClickListener(this);
-    AppMethodBeat.o(806);
+    ((Button)findViewById(2131299704)).setOnClickListener(this);
+    AppMethodBeat.o(104326);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(807);
-    if (paramView.getId() == 2131823903)
+    AppMethodBeat.i(104327);
+    if (paramView.getId() == 2131299704)
     {
       setVisibility(8);
-      this.mrz.startPreview();
+      this.pYb.startPreview();
     }
-    AppMethodBeat.o(807);
+    AppMethodBeat.o(104327);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectlight.ui.d
  * JD-Core Version:    0.7.0.1
  */

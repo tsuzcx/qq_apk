@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.CardInfo;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.c;
-import com.tencent.mm.protocal.protobuf.aio;
-import com.tencent.mm.protocal.protobuf.qd;
-import com.tencent.mm.protocal.protobuf.qe;
-import com.tencent.mm.protocal.protobuf.qf;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.arv;
+import com.tencent.mm.protocal.protobuf.so;
+import com.tencent.mm.protocal.protobuf.sp;
+import com.tencent.mm.protocal.protobuf.sq;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,34 +18,34 @@ import org.json.JSONObject;
 
 public final class j
 {
-  public static aio IA(String paramString)
+  public static arv Rl(String paramString)
   {
-    AppMethodBeat.i(88879);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(113807);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.w("MicroMsg.CardStickyHelper", "jsonRet null");
-      AppMethodBeat.o(88879);
+      ad.w("MicroMsg.CardStickyHelper", "jsonRet null");
+      AppMethodBeat.o(113807);
       return null;
     }
-    aio localaio = new aio();
+    arv localarv = new arv();
     try
     {
       paramString = new JSONObject(paramString);
-      localaio.xad = paramString.optString("layout_buff");
+      localarv.DrT = paramString.optString("layout_buff");
       localJSONObject = paramString.getJSONObject("list");
       if (localJSONObject == null) {
         break label358;
       }
-      localaio.xaj = new qf();
-      localaio.xaj.wIE = U(localJSONObject.optJSONObject("expiring_list"));
-      localaio.xaj.wIF = U(localJSONObject.optJSONObject("member_card_list"));
-      localaio.xaj.wIG = U(localJSONObject.optJSONObject("nearby_list"));
-      localaio.xaj.wIH = U(localJSONObject.optJSONObject("label_list"));
-      localaio.xaj.wII = U(localJSONObject.optJSONObject("first_list"));
-      if ((localaio.xaj.wII == null) || (localaio.xaj.wII.wID == null)) {
+      localarv.DrZ = new sq();
+      localarv.DrZ.CUx = ak(localJSONObject.optJSONObject("expiring_list"));
+      localarv.DrZ.CUy = ak(localJSONObject.optJSONObject("member_card_list"));
+      localarv.DrZ.CUz = ak(localJSONObject.optJSONObject("nearby_list"));
+      localarv.DrZ.CUA = ak(localJSONObject.optJSONObject("label_list"));
+      localarv.DrZ.CUB = ak(localJSONObject.optJSONObject("first_list"));
+      if ((localarv.DrZ.CUB == null) || (localarv.DrZ.CUB.CUw == null)) {
         break label286;
       }
-      i = localaio.xaj.wII.wID.size() - 1;
+      i = localarv.DrZ.CUB.CUw.size() - 1;
     }
     catch (JSONException paramString)
     {
@@ -56,53 +56,83 @@ public final class j
         label286:
         boolean bool;
         label358:
-        ab.printErrStackTrace("MicroMsg.CardStickyHelper", paramString, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.CardStickyHelper", paramString, "", new Object[0]);
         continue;
         i -= 1;
       }
     }
     if (i >= 0)
     {
-      paramString = (qd)localaio.xaj.wII.wID.get(i);
-      if (!bo.isNullOrNil(paramString.cHn))
+      paramString = (so)localarv.DrZ.CUB.CUw.get(i);
+      if (!bt.isNullOrNil(paramString.dyc))
       {
-        paramString = am.bcd().HJ(paramString.cHn);
-        if ((paramString != null) && (!paramString.baL())) {
-          localaio.xaj.wII.wID.remove(i);
+        paramString = am.bIV().Qt(paramString.dyc);
+        if ((paramString != null) && (!paramString.bHC())) {
+          localarv.DrZ.CUB.CUw.remove(i);
         }
       }
     }
     else
     {
-      localaio.xak = localJSONObject.optString("red_dot_wording");
+      localarv.Dsa = localJSONObject.optString("red_dot_wording");
       if (localJSONObject.optInt("show_red_dot", 0) == 1) {}
       for (bool = true;; bool = false)
       {
-        localaio.xal = bool;
+        localarv.Dsb = bool;
         String str = localJSONObject.optString("title");
         paramString = str;
         if (str == null) {
           paramString = "";
         }
-        am.bci().putValue("key_card_entrance_tips", paramString);
-        localaio.xam = localJSONObject.optInt("top_scene", 100);
-        AppMethodBeat.o(88879);
-        return localaio;
+        am.bJa().putValue("key_card_entrance_tips", paramString);
+        localarv.Dsc = localJSONObject.optInt("top_scene", 100);
+        AppMethodBeat.o(113807);
+        return localarv;
       }
     }
   }
   
-  private static qe U(JSONObject paramJSONObject)
+  public static String a(Context paramContext, int paramInt, CardInfo paramCardInfo)
   {
-    AppMethodBeat.i(88880);
+    AppMethodBeat.i(113809);
+    switch (paramInt % 10)
+    {
+    default: 
+      AppMethodBeat.o(113809);
+      return null;
+    case 3: 
+      paramContext = paramContext.getString(2131757009);
+      AppMethodBeat.o(113809);
+      return paramContext;
+    case 2: 
+      paramContext = paramContext.getString(2131757010);
+      AppMethodBeat.o(113809);
+      return paramContext;
+    case 1: 
+      paramContext = paramContext.getString(2131757011);
+      AppMethodBeat.o(113809);
+      return paramContext;
+    case 0: 
+      paramContext = paramContext.getString(2131757012);
+      AppMethodBeat.o(113809);
+      return paramContext;
+    }
+    paramContext = paramCardInfo.field_label_wording;
+    AppMethodBeat.o(113809);
+    return paramContext;
+  }
+  
+  private static sp ak(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(113808);
     if (paramJSONObject == null)
     {
-      ab.w("MicroMsg.CardStickyHelper", "parseLayoutItemList param obj null");
-      AppMethodBeat.o(88880);
+      ad.w("MicroMsg.CardStickyHelper", "parseLayoutItemList param obj null");
+      AppMethodBeat.o(113808);
       return null;
     }
-    qe localqe = new qe();
-    localqe.wID = new LinkedList();
+    sp localsp = new sp();
+    localsp.CUw = new LinkedList();
     for (;;)
     {
       int i;
@@ -116,27 +146,27 @@ public final class j
           if (localJSONObject == null)
           {
             paramJSONObject = null;
-            if ((paramJSONObject == null) || ((paramJSONObject.kmq <= bo.aox()) && (paramJSONObject.kmq != 0))) {
+            if ((paramJSONObject == null) || ((paramJSONObject.nrv <= bt.aGK()) && (paramJSONObject.nrv != 0))) {
               break label196;
             }
-            localqe.wID.add(paramJSONObject);
+            localsp.CUw.add(paramJSONObject);
             break label203;
           }
-          paramJSONObject = new qd();
-          paramJSONObject.kqd = localJSONObject.optString("announcement");
-          paramJSONObject.cHn = localJSONObject.optString("card_id");
-          paramJSONObject.kmq = localJSONObject.optInt("end_time", 0);
-          paramJSONObject.wAo = localJSONObject.optInt("update_time", 0);
-          paramJSONObject.wIC = localJSONObject.optString("label_wording");
+          paramJSONObject = new so();
+          paramJSONObject.nvx = localJSONObject.optString("announcement");
+          paramJSONObject.dyc = localJSONObject.optString("card_id");
+          paramJSONObject.nrv = localJSONObject.optInt("end_time", 0);
+          paramJSONObject.CLl = localJSONObject.optInt("update_time", 0);
+          paramJSONObject.CUv = localJSONObject.optString("label_wording");
           continue;
         }
-        ab.i("MicroMsg.CardStickyHelper", "item.end_time > Util.nowSecond()");
+        ad.i("MicroMsg.CardStickyHelper", "item.end_time > Util.nowSecond()");
       }
       catch (JSONException paramJSONObject)
       {
-        ab.printErrStackTrace("MicroMsg.CardStickyHelper", paramJSONObject, "", new Object[0]);
-        AppMethodBeat.o(88880);
-        return localqe;
+        ad.printErrStackTrace("MicroMsg.CardStickyHelper", paramJSONObject, "", new Object[0]);
+        AppMethodBeat.o(113808);
+        return localsp;
       }
       label196:
       label203:
@@ -144,55 +174,25 @@ public final class j
     }
   }
   
-  public static String a(Context paramContext, int paramInt, CardInfo paramCardInfo)
+  public static void d(LinkedList<so> paramLinkedList, int paramInt)
   {
-    AppMethodBeat.i(88881);
-    switch (paramInt % 10)
-    {
-    default: 
-      AppMethodBeat.o(88881);
-      return null;
-    case 3: 
-      paramContext = paramContext.getString(2131298067);
-      AppMethodBeat.o(88881);
-      return paramContext;
-    case 2: 
-      paramContext = paramContext.getString(2131298068);
-      AppMethodBeat.o(88881);
-      return paramContext;
-    case 1: 
-      paramContext = paramContext.getString(2131298069);
-      AppMethodBeat.o(88881);
-      return paramContext;
-    case 0: 
-      paramContext = paramContext.getString(2131298070);
-      AppMethodBeat.o(88881);
-      return paramContext;
-    }
-    paramContext = paramCardInfo.field_label_wording;
-    AppMethodBeat.o(88881);
-    return paramContext;
-  }
-  
-  public static void c(LinkedList<qd> paramLinkedList, int paramInt)
-  {
-    AppMethodBeat.i(88877);
+    AppMethodBeat.i(113805);
     if (paramLinkedList == null)
     {
-      AppMethodBeat.o(88877);
+      AppMethodBeat.o(113805);
       return;
     }
     int j = paramLinkedList.size();
     int i = 0;
     if (i < paramLinkedList.size())
     {
-      Object localObject = (qd)paramLinkedList.get(i);
-      c localc = am.bcd();
-      String str1 = ((qd)localObject).cHn;
-      String str2 = ((qd)localObject).kqd;
-      int k = ((qd)localObject).kmq;
-      if (bo.isNullOrNil(str1)) {
-        ab.w("MicroMsg.CardInfoStorage", "cardId null");
+      Object localObject = (so)paramLinkedList.get(i);
+      c localc = am.bIV();
+      String str1 = ((so)localObject).dyc;
+      String str2 = ((so)localObject).nvx;
+      int k = ((so)localObject).nrv;
+      if (bt.isNullOrNil(str1)) {
+        ad.w("MicroMsg.CardInfoStorage", "cardId null");
       }
       for (;;)
       {
@@ -202,25 +202,25 @@ public final class j
         localc.db.execSQL("UserCardInfo", (String)localObject);
       }
     }
-    AppMethodBeat.o(88877);
+    AppMethodBeat.o(113805);
   }
   
-  public static void d(LinkedList<qd> paramLinkedList, int paramInt)
+  public static void e(LinkedList<so> paramLinkedList, int paramInt)
   {
-    AppMethodBeat.i(88878);
+    AppMethodBeat.i(113806);
     if (paramLinkedList == null)
     {
-      AppMethodBeat.o(88878);
+      AppMethodBeat.o(113806);
       return;
     }
     int i = 0;
     if (i < paramLinkedList.size())
     {
-      Object localObject = (qd)paramLinkedList.get(i);
-      c localc = am.bcd();
-      String str = ((qd)localObject).cHn;
-      if (((qd)localObject).wIC != null) {}
-      for (localObject = ((qd)localObject).wIC;; localObject = "")
+      Object localObject = (so)paramLinkedList.get(i);
+      c localc = am.bIV();
+      String str = ((so)localObject).dyc;
+      if (((so)localObject).CUv != null) {}
+      for (localObject = ((so)localObject).CUv;; localObject = "")
       {
         localObject = "update UserCardInfo set stickyIndex=" + paramInt + ", label_wording='" + (String)localObject + "' where card_id='" + str + "'";
         localc.db.execSQL("UserCardInfo", (String)localObject);
@@ -228,12 +228,12 @@ public final class j
         break;
       }
     }
-    AppMethodBeat.o(88878);
+    AppMethodBeat.o(113806);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.j
  * JD-Core Version:    0.7.0.1
  */

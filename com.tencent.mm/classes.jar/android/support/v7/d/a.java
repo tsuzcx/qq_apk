@@ -4,35 +4,36 @@ import android.graphics.Color;
 import android.support.v4.graphics.b;
 import android.util.TimingLogger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public final class a
+final class a
 {
-  private static final Comparator<a.a> Rg = new a.1();
-  final int[] Aq;
-  public final List<b.c> Rc;
-  final TimingLogger Rd = null;
-  final b.b[] Re;
-  private final float[] Rf = new float[3];
-  final int[] mHistogram;
+  private static final Comparator<a> Yg = new Comparator() {};
+  final int[] Yb;
+  final List<b.d> Yc;
+  final TimingLogger Yd = null;
+  final b.b[] Ye;
+  private final float[] Yf = new float[3];
+  final int[] mColors;
   
-  public a(int[] paramArrayOfInt, int paramInt, b.b[] paramArrayOfb)
+  a(int[] paramArrayOfInt, int paramInt, b.b[] paramArrayOfb)
   {
-    this.Re = paramArrayOfb;
+    this.Ye = paramArrayOfb;
     paramArrayOfb = new int[32768];
-    this.mHistogram = paramArrayOfb;
+    this.Yb = paramArrayOfb;
     int i = 0;
     int n;
     while (i < paramArrayOfInt.length)
     {
       j = paramArrayOfInt[i];
-      k = j(Color.red(j), 8, 5);
-      n = j(Color.green(j), 8, 5);
-      j = j(Color.blue(j), 8, 5) | k << 10 | n << 5;
+      k = k(Color.red(j), 8, 5);
+      n = k(Color.green(j), 8, 5);
+      j = k(Color.blue(j), 8, 5) | k << 10 | n << 5;
       paramArrayOfInt[i] = j;
       paramArrayOfb[j] += 1;
       i += 1;
@@ -42,8 +43,8 @@ public final class a
     {
       if (paramArrayOfb[i] > 0)
       {
-        b.d(aV(i), this.Rf);
-        if (c(this.Rf)) {
+        b.d(bo(i), this.Yf);
+        if (d(this.Yf)) {
           paramArrayOfb[i] = 0;
         }
       }
@@ -54,7 +55,7 @@ public final class a
       i += 1;
     }
     paramArrayOfInt = new int[j];
-    this.Aq = paramArrayOfInt;
+    this.mColors = paramArrayOfInt;
     int k = 0;
     i = 0;
     if (k < 32768)
@@ -73,39 +74,53 @@ public final class a
       break;
       if (j <= paramInt)
       {
-        this.Rc = new ArrayList();
+        this.Yc = new ArrayList();
         i = paramArrayOfInt.length;
         paramInt = m;
         while (paramInt < i)
         {
           j = paramArrayOfInt[paramInt];
-          this.Rc.add(new b.c(aV(j), paramArrayOfb[j]));
+          this.Yc.add(new b.d(bo(j), paramArrayOfb[j]));
           paramInt += 1;
         }
       }
-      paramArrayOfInt = new PriorityQueue(paramInt, Rg);
-      paramArrayOfInt.offer(new a.a(this, 0, this.Aq.length - 1));
+      paramArrayOfInt = new PriorityQueue(paramInt, Yg);
+      paramArrayOfInt.offer(new a(0, this.mColors.length - 1));
       a(paramArrayOfInt, paramInt);
-      this.Rc = b(paramArrayOfInt);
+      this.Yc = a(paramArrayOfInt);
       return;
     }
   }
   
-  private static void a(PriorityQueue<a.a> paramPriorityQueue, int paramInt)
+  private List<b.d> a(Collection<a> paramCollection)
+  {
+    ArrayList localArrayList = new ArrayList(paramCollection.size());
+    paramCollection = paramCollection.iterator();
+    while (paramCollection.hasNext())
+    {
+      b.d locald = ((a)paramCollection.next()).gA();
+      if (!d(locald.gF())) {
+        localArrayList.add(locald);
+      }
+    }
+    return localArrayList;
+  }
+  
+  private static void a(PriorityQueue<a> paramPriorityQueue, int paramInt)
   {
     while (paramPriorityQueue.size() < paramInt)
     {
-      a.a locala1 = (a.a)paramPriorityQueue.poll();
-      if ((locala1 == null) || (!locala1.fd())) {
+      a locala1 = (a)paramPriorityQueue.poll();
+      if ((locala1 == null) || (!locala1.gw())) {
         break;
       }
-      if (!locala1.fd()) {
+      if (!locala1.gw()) {
         throw new IllegalStateException("Can not split a box with only 1 color");
       }
-      int i = locala1.fg();
-      a.a locala2 = new a.a(locala1.Rq, i + 1, locala1.Ri);
-      locala1.Ri = i;
-      locala1.ff();
+      int i = locala1.gz();
+      a locala2 = new a(locala1.Yq, i + 1, locala1.Yi);
+      locala1.Yi = i;
+      locala1.gy();
       paramPriorityQueue.offer(locala2);
       paramPriorityQueue.offer(locala1);
     }
@@ -135,52 +150,38 @@ public final class a
     }
   }
   
-  private static int aV(int paramInt)
+  private static int bo(int paramInt)
   {
-    return i(paramInt >> 10 & 0x1F, paramInt >> 5 & 0x1F, paramInt & 0x1F);
+    return j(paramInt >> 10 & 0x1F, paramInt >> 5 & 0x1F, paramInt & 0x1F);
   }
   
-  static int aW(int paramInt)
+  static int bp(int paramInt)
   {
     return paramInt >> 10 & 0x1F;
   }
   
-  static int aX(int paramInt)
+  static int bq(int paramInt)
   {
     return paramInt >> 5 & 0x1F;
   }
   
-  static int aY(int paramInt)
+  static int br(int paramInt)
   {
     return paramInt & 0x1F;
   }
   
-  private List<b.c> b(Collection<a.a> paramCollection)
-  {
-    ArrayList localArrayList = new ArrayList(paramCollection.size());
-    paramCollection = paramCollection.iterator();
-    while (paramCollection.hasNext())
-    {
-      b.c localc = ((a.a)paramCollection.next()).fh();
-      if (!c(localc.fj())) {
-        localArrayList.add(localc);
-      }
-    }
-    return localArrayList;
-  }
-  
-  private boolean c(float[] paramArrayOfFloat)
+  private boolean d(float[] paramArrayOfFloat)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
     int j;
     int i;
-    if (this.Re != null)
+    if (this.Ye != null)
     {
       bool1 = bool2;
-      if (this.Re.length > 0)
+      if (this.Ye.length > 0)
       {
-        j = this.Re.length;
+        j = this.Ye.length;
         i = 0;
       }
     }
@@ -189,7 +190,7 @@ public final class a
       bool1 = bool2;
       if (i < j)
       {
-        if (!this.Re[i].d(paramArrayOfFloat)) {
+        if (!this.Ye[i].e(paramArrayOfFloat)) {
           bool1 = true;
         }
       }
@@ -200,12 +201,12 @@ public final class a
     }
   }
   
-  static int i(int paramInt1, int paramInt2, int paramInt3)
+  static int j(int paramInt1, int paramInt2, int paramInt3)
   {
-    return Color.rgb(j(paramInt1, 5, 8), j(paramInt2, 5, 8), j(paramInt3, 5, 8));
+    return Color.rgb(k(paramInt1, 5, 8), k(paramInt2, 5, 8), k(paramInt3, 5, 8));
   }
   
-  private static int j(int paramInt1, int paramInt2, int paramInt3)
+  private static int k(int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramInt3 > paramInt2) {
       paramInt1 <<= paramInt3 - paramInt2;
@@ -216,10 +217,181 @@ public final class a
       paramInt1 >>= paramInt2 - paramInt3;
     }
   }
+  
+  final class a
+  {
+    private int Yh;
+    int Yi;
+    private int Yj;
+    private int Yk;
+    private int Yl;
+    private int Ym;
+    private int Yn;
+    private int Yo;
+    private int Yp;
+    
+    a(int paramInt1, int paramInt2)
+    {
+      this.Yh = paramInt1;
+      this.Yi = paramInt2;
+      gy();
+    }
+    
+    private int gx()
+    {
+      return this.Yi + 1 - this.Yh;
+    }
+    
+    final b.d gA()
+    {
+      int[] arrayOfInt1 = a.this.mColors;
+      int[] arrayOfInt2 = a.this.Yb;
+      int j = this.Yh;
+      int n = 0;
+      int i = 0;
+      int k = 0;
+      int m = 0;
+      while (j <= this.Yi)
+      {
+        int i2 = arrayOfInt1[j];
+        int i1 = arrayOfInt2[i2];
+        n += i1;
+        m += a.bp(i2) * i1;
+        k += a.bq(i2) * i1;
+        i2 = a.br(i2);
+        j += 1;
+        i = i2 * i1 + i;
+      }
+      return new b.d(a.j(Math.round(m / n), Math.round(k / n), Math.round(i / n)), n);
+    }
+    
+    final int getVolume()
+    {
+      return (this.Yl - this.Yk + 1) * (this.Yn - this.Ym + 1) * (this.Yp - this.Yo + 1);
+    }
+    
+    final boolean gw()
+    {
+      return gx() > 1;
+    }
+    
+    final void gy()
+    {
+      int[] arrayOfInt1 = a.this.mColors;
+      int[] arrayOfInt2 = a.this.Yb;
+      int i4 = 0;
+      int n = this.Yh;
+      int i5 = -2147483648;
+      int j = -2147483648;
+      int m = -2147483648;
+      int i3 = 2147483647;
+      int i = 2147483647;
+      int k = 2147483647;
+      int i1;
+      int i8;
+      int i6;
+      int i2;
+      if (n <= this.Yi)
+      {
+        i1 = arrayOfInt1[n];
+        i8 = i4 + arrayOfInt2[i1];
+        int i7 = a.bp(i1);
+        i6 = a.bq(i1);
+        i4 = a.br(i1);
+        i1 = i5;
+        if (i7 > i5) {
+          i1 = i7;
+        }
+        i2 = i3;
+        if (i7 < i3) {
+          i2 = i7;
+        }
+        if (i6 <= j) {
+          break label242;
+        }
+        j = i6;
+      }
+      label242:
+      for (;;)
+      {
+        if (i6 < i) {
+          i = i6;
+        }
+        for (;;)
+        {
+          i3 = m;
+          if (i4 > m) {
+            i3 = i4;
+          }
+          i6 = k;
+          if (i4 < k) {
+            i6 = i4;
+          }
+          n += 1;
+          i4 = i8;
+          i5 = i1;
+          m = i3;
+          i3 = i2;
+          k = i6;
+          break;
+          this.Yk = i3;
+          this.Yl = i5;
+          this.Ym = i;
+          this.Yn = j;
+          this.Yo = k;
+          this.Yp = m;
+          this.Yj = i4;
+          return;
+        }
+      }
+    }
+    
+    final int gz()
+    {
+      int i = this.Yl - this.Yk;
+      int j = this.Yn - this.Ym;
+      int k = this.Yp - this.Yo;
+      int[] arrayOfInt1;
+      int[] arrayOfInt2;
+      if ((i >= j) && (i >= k))
+      {
+        i = -3;
+        arrayOfInt1 = a.this.mColors;
+        arrayOfInt2 = a.this.Yb;
+        a.a(arrayOfInt1, i, this.Yh, this.Yi);
+        Arrays.sort(arrayOfInt1, this.Yh, this.Yi + 1);
+        a.a(arrayOfInt1, i, this.Yh, this.Yi);
+        k = this.Yj / 2;
+        i = this.Yh;
+        j = 0;
+      }
+      for (;;)
+      {
+        if (i > this.Yi) {
+          break label180;
+        }
+        j += arrayOfInt2[arrayOfInt1[i]];
+        if (j >= k)
+        {
+          return Math.min(this.Yi - 1, i);
+          if ((j >= i) && (j >= k))
+          {
+            i = -2;
+            break;
+          }
+          i = -1;
+          break;
+        }
+        i += 1;
+      }
+      label180:
+      return this.Yh;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v7.d.a
  * JD-Core Version:    0.7.0.1
  */

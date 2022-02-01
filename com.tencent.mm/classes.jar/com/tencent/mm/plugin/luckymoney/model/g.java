@@ -1,44 +1,73 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.bg;
-import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.vfs.e;
-import java.io.File;
+import com.tencent.mm.al.c.a;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.protocal.protobuf.bap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import java.io.IOException;
 
 public final class g
+  extends com.tencent.mm.wallet_core.c.a<bap, c>
 {
-  private static String ond;
-  private static c<bg> one;
+  private static g tcT;
   
-  static
+  public static g cLo()
   {
-    AppMethodBeat.i(42285);
-    ond = null;
-    one = new c() {};
-    AppMethodBeat.o(42285);
-  }
-  
-  public static void aoR()
-  {
-    AppMethodBeat.i(42281);
-    ab.i("MicroMsg.LuckMoneyEffectResourceMgr", "unInit");
-    a.ymk.d(one);
-    AppMethodBeat.o(42281);
-  }
-  
-  public static void bNi()
-  {
-    AppMethodBeat.i(42282);
-    File localFile = new File(b.eQz + "wallet/luckyMoneyEffect/");
-    ab.d("MicroMsg.LuckMoneyEffectResourceMgr", "no media");
-    if ((localFile.isDirectory()) && (localFile.exists())) {
-      ab.i("MicroMsg.LuckMoneyEffectResourceMgr", "delete unused files: %s", new Object[] { Boolean.valueOf(e.O(localFile.getPath(), true)) });
+    AppMethodBeat.i(65165);
+    if (tcT == null) {
+      tcT = new g();
     }
-    AppMethodBeat.o(42282);
+    g localg = tcT;
+    AppMethodBeat.o(65165);
+    return localg;
+  }
+  
+  private static bap cLp()
+  {
+    AppMethodBeat.i(65167);
+    Object localObject = (String)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fse, "");
+    if (bt.isNullOrNil((String)localObject))
+    {
+      AppMethodBeat.o(65167);
+      return null;
+    }
+    localObject = ((String)localObject).getBytes(org.apache.commons.a.a.ISO_8859_1);
+    try
+    {
+      localObject = (bap)new bap().parseFrom((byte[])localObject);
+      AppMethodBeat.o(65167);
+      return localObject;
+    }
+    catch (IOException localIOException)
+    {
+      ad.printErrStackTrace("MicroMsg.GetShowSourceAsyncLoader", localIOException, "", new Object[0]);
+      AppMethodBeat.o(65167);
+    }
+    return null;
+  }
+  
+  public final void c(c.a<bap> parama)
+  {
+    AppMethodBeat.i(182454);
+    ad.i("MicroMsg.GetShowSourceAsyncLoader", "errType: %s, errCode: %s", new Object[] { Integer.valueOf(parama.errCode), Integer.valueOf(parama.errType) });
+    if ((parama.errType == 0) && (parama.errCode == 0) && (((bap)parama.gUK).dcG == 0)) {
+      try
+      {
+        parama = new String(((bap)parama.gUK).toByteArray(), org.apache.commons.a.a.ISO_8859_1);
+        com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fse, parama);
+        AppMethodBeat.o(182454);
+        return;
+      }
+      catch (IOException parama)
+      {
+        ad.printErrStackTrace("MicroMsg.GetShowSourceAsyncLoader", parama, "", new Object[0]);
+      }
+    }
+    AppMethodBeat.o(182454);
   }
 }
 

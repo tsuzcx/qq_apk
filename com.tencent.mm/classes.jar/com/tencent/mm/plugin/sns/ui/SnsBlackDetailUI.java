@@ -3,54 +3,53 @@ package com.tencent.mm.plugin.sns.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.storage.u;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.p;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class SnsBlackDetailUI
   extends SnsTagDetailUI
-  implements f, n.b
+  implements com.tencent.mm.al.g, n.b
 {
-  private static List<String> cuQ()
+  private static List<String> dAR()
   {
-    AppMethodBeat.i(38744);
+    AppMethodBeat.i(98493);
     new LinkedList();
-    List localList = t.aac();
-    AppMethodBeat.o(38744);
+    List localList = com.tencent.mm.model.w.arx();
+    AppMethodBeat.o(98493);
     return localList;
   }
   
-  protected final void bMd()
+  protected final void cKe()
   {
-    AppMethodBeat.i(38743);
-    if (((this.rWA + " " + bo.d(this.lbK, ",")).equals(this.cqq)) && (this.rfr != 0L))
+    AppMethodBeat.i(98492);
+    if (((this.xFb + " " + bt.n(this.oiL, ",")).equals(this.md5)) && (this.wFP != 0L))
     {
       finish();
-      AppMethodBeat.o(38743);
+      AppMethodBeat.o(98492);
       return;
     }
-    if (ag.cpl().v(this.rfr, this.rWA))
+    if (af.dtA().B(this.wFP, this.xFb))
     {
-      h.b(this, getString(2131303977, new Object[] { this.rWA }), getString(2131297087), true);
-      AppMethodBeat.o(38743);
+      h.c(this, getString(2131763994, new Object[] { this.xFb }), getString(2131755906), true);
+      AppMethodBeat.o(98492);
       return;
     }
-    Object localObject2 = cuR();
+    Object localObject2 = dAS();
     LinkedList localLinkedList = new LinkedList();
     Object localObject1 = new LinkedList();
     Iterator localIterator = ((List)localObject2).iterator();
@@ -58,11 +57,11 @@ public class SnsBlackDetailUI
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
-      if (!this.lbK.contains(str)) {
+      if (!this.oiL.contains(str)) {
         localLinkedList.add(str);
       }
     }
-    localIterator = this.lbK.iterator();
+    localIterator = this.oiL.iterator();
     while (localIterator.hasNext())
     {
       str = (String)localIterator.next();
@@ -72,122 +71,121 @@ public class SnsBlackDetailUI
     }
     localObject2 = localLinkedList.iterator();
     while (((Iterator)localObject2).hasNext()) {
-      t.w((String)((Iterator)localObject2).next(), false);
+      com.tencent.mm.model.w.B((String)((Iterator)localObject2).next(), false);
     }
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
-      t.w((String)((Iterator)localObject1).next(), true);
+      com.tencent.mm.model.w.B((String)((Iterator)localObject1).next(), true);
     }
-    com.tencent.mm.plugin.sns.c.a.gmP.BO();
     finish();
-    AppMethodBeat.o(38743);
+    AppMethodBeat.o(98492);
   }
   
-  public final void cuN()
+  public final void dAO()
   {
-    AppMethodBeat.i(38739);
-    ab.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI __onCreate");
-    g.RM();
-    ((j)g.E(j.class)).YA().a(this);
-    AppMethodBeat.o(38739);
+    AppMethodBeat.i(98488);
+    ad.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI __onCreate");
+    com.tencent.mm.kernel.g.afC();
+    ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().a(this);
+    AppMethodBeat.o(98488);
   }
   
-  protected final void cuO()
+  protected final void dAP()
   {
-    AppMethodBeat.i(38740);
-    ab.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI __onDestroy");
-    g.RM();
-    if (g.RJ().QU())
+    AppMethodBeat.i(98489);
+    ad.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI __onDestroy");
+    com.tencent.mm.kernel.g.afC();
+    if (com.tencent.mm.kernel.g.afz().aeI())
     {
-      g.RM();
-      ((j)g.E(j.class)).YA().b(this);
+      com.tencent.mm.kernel.g.afC();
+      ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().b(this);
     }
-    AppMethodBeat.o(38740);
+    AppMethodBeat.o(98489);
   }
   
-  protected final void cuP() {}
+  protected final void dAQ() {}
   
-  protected final List<String> cuR()
+  protected final List<String> dAS()
   {
-    AppMethodBeat.i(38745);
+    AppMethodBeat.i(98494);
     Object localObject = new LinkedList();
-    if (this.rfr == 4L)
+    if (this.wFP == 4L)
     {
-      localObject = cuQ();
-      AppMethodBeat.o(38745);
+      localObject = dAR();
+      AppMethodBeat.o(98494);
       return localObject;
     }
-    AppMethodBeat.o(38745);
+    AppMethodBeat.o(98494);
     return localObject;
   }
   
-  protected final void dm(List<String> paramList)
+  protected final void fD(List<String> paramList)
   {
-    AppMethodBeat.i(38747);
-    bd localbd = ag.coT();
-    String str1 = r.Zn();
+    AppMethodBeat.i(98496);
+    bg localbg = af.dti();
+    String str1 = u.aqG();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       String str2 = (String)paramList.next();
-      if ((!this.lbK.contains(str2)) && (com.tencent.mm.n.a.je(localbd.arw(str2).field_type)) && (!str1.equals(str2))) {
-        this.lbK.add(str2);
+      if ((!this.oiL.contains(str2)) && (com.tencent.mm.n.b.ls(localbg.aHY(str2).field_type)) && (!str1.equals(str2))) {
+        this.oiL.add(str2);
       }
     }
-    if (this.eeU != null) {
-      this.eeU.cg(this.lbK);
+    if (this.fpW != null) {
+      this.fpW.dX(this.oiL);
     }
     updateTitle();
-    AppMethodBeat.o(38747);
+    AppMethodBeat.o(98496);
   }
   
-  protected final void lc(String paramString)
+  protected final void oY(String paramString)
   {
-    AppMethodBeat.i(38746);
-    super.lc(paramString);
-    AppMethodBeat.o(38746);
+    AppMethodBeat.i(98495);
+    super.oY(paramString);
+    AppMethodBeat.o(98495);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(38741);
+    AppMethodBeat.i(98490);
     super.onCreate(paramBundle);
-    ab.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI onCreate");
-    AppMethodBeat.o(38741);
+    ad.d("MicroMsg.SnsBlackDetailUI", "SnsBlackDetailUI onCreate");
+    AppMethodBeat.o(98490);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(38742);
+    AppMethodBeat.i(98491);
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
-    g.RM();
-    g.RK().eHt.b(290, this);
-    g.RM();
-    g.RK().eHt.b(291, this);
-    g.RM();
-    g.RK().eHt.b(292, this);
-    g.RM();
-    g.RK().eHt.b(293, this);
-    g.RM();
-    if (g.RJ().QU())
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.b(290, this);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.b(291, this);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.b(292, this);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.b(293, this);
+    com.tencent.mm.kernel.g.afC();
+    if (com.tencent.mm.kernel.g.afz().aeI())
     {
-      g.RM();
-      ((j)g.E(j.class)).YA().b(this);
+      com.tencent.mm.kernel.g.afC();
+      ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().b(this);
     }
     super.onDestroy();
-    AppMethodBeat.o(38742);
+    AppMethodBeat.o(98491);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(38748);
-    ab.i("MicroMsg.SnsBlackDetailUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    AppMethodBeat.i(98497);
+    ad.i("MicroMsg.SnsBlackDetailUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
-    AppMethodBeat.o(38748);
+    AppMethodBeat.o(98497);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -198,7 +196,7 @@ public class SnsBlackDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsBlackDetailUI
  * JD-Core Version:    0.7.0.1
  */

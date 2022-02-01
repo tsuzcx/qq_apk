@@ -1,51 +1,54 @@
 package kotlinx.coroutines;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
+import java.util.concurrent.CancellationException;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/ChildHandleNode;", "Lkotlinx/coroutines/JobCancellingNode;", "Lkotlinx/coroutines/JobSupport;", "Lkotlinx/coroutines/ChildHandle;", "parent", "childJob", "Lkotlinx/coroutines/ChildJob;", "(Lkotlinx/coroutines/JobSupport;Lkotlinx/coroutines/ChildJob;)V", "childCancelled", "", "cause", "", "invoke", "", "toString", "", "kotlinx-coroutines-core"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/ChildHandleNode;", "Lkotlinx/coroutines/JobCancellingNode;", "Lkotlinx/coroutines/JobSupport;", "Lkotlinx/coroutines/ChildHandle;", "parent", "childJob", "Lkotlinx/coroutines/ChildJob;", "(Lkotlinx/coroutines/JobSupport;Lkotlinx/coroutines/ChildJob;)V", "childCancelled", "", "cause", "", "invoke", "", "toString", "", "kotlinx-coroutines-core"})
 public final class n
-  extends be<bg>
+  extends bl<bn>
   implements m
 {
-  public final o CHo;
+  public final o Kdk;
   
-  public n(bg parambg, o paramo)
+  public n(bn parambn, o paramo)
   {
-    super((bc)parambg);
-    AppMethodBeat.i(118512);
-    this.CHo = paramo;
-    AppMethodBeat.o(118512);
+    super((bj)parambn);
+    AppMethodBeat.i(118196);
+    this.Kdk = paramo;
+    AppMethodBeat.o(118196);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(118511);
-    String str = "ChildHandle[" + this.CHo + ']';
-    AppMethodBeat.o(118511);
+    AppMethodBeat.i(118195);
+    String str = "ChildHandle[" + this.Kdk + ']';
+    AppMethodBeat.o(118195);
     return str;
   }
   
-  public final void v(Throwable paramThrowable)
+  public final void u(Throwable paramThrowable)
   {
-    AppMethodBeat.i(118508);
-    this.CHo.a((bn)this.CIm);
-    AppMethodBeat.o(118508);
+    AppMethodBeat.i(118192);
+    this.Kdk.a((bv)this.Kes);
+    AppMethodBeat.o(118192);
   }
   
   public final boolean x(Throwable paramThrowable)
   {
-    AppMethodBeat.i(118510);
-    j.q(paramThrowable, "cause");
-    bg localbg = (bg)this.CIm;
-    j.q(paramThrowable, "cause");
-    if (localbg.ed(paramThrowable))
+    AppMethodBeat.i(118194);
+    bn localbn = (bn)this.Kes;
+    if ((paramThrowable instanceof CancellationException))
     {
-      AppMethodBeat.o(118510);
+      AppMethodBeat.o(118194);
       return true;
     }
-    AppMethodBeat.o(118510);
+    if (localbn.fF(paramThrowable))
+    {
+      AppMethodBeat.o(118194);
+      return true;
+    }
+    AppMethodBeat.o(118194);
     return false;
   }
 }

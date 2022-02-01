@@ -30,62 +30,62 @@ public class MessageHistoryUI
   extends MMAvatarActivity
   implements com.tencent.mm.wear.app.d.a.a.e, h
 {
-  private com.tencent.mm.wear.app.ui.widget.d aeC;
-  private boolean aeJ;
-  private AbsListView.OnScrollListener aeK = new AbsListView.OnScrollListener()
+  private ListView aiK;
+  private f aiL;
+  private View aiM;
+  private View aiN;
+  private View aiO;
+  private View aiP;
+  private View aiQ;
+  private com.tencent.mm.sdk.a.e aiR = new com.tencent.mm.sdk.a.e() {};
+  private com.tencent.mm.wear.app.ui.widget.d aie;
+  private boolean ail;
+  private AbsListView.OnScrollListener aim = new AbsListView.OnScrollListener()
   {
     public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     
     public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
     {
-      if ((paramAnonymousInt == 0) && (MessageHistoryUI.a(MessageHistoryUI.this).getFirstVisiblePosition() == 0) && (!MessageHistoryUI.c(MessageHistoryUI.this)) && (MessageHistoryUI.b(MessageHistoryUI.this).nk()))
+      if ((paramAnonymousInt == 0) && (MessageHistoryUI.a(MessageHistoryUI.this).getFirstVisiblePosition() == 0) && (!MessageHistoryUI.c(MessageHistoryUI.this)) && (MessageHistoryUI.b(MessageHistoryUI.this).nX()))
       {
         MessageHistoryUI.d(MessageHistoryUI.this);
         MessageHistoryUI.e(MessageHistoryUI.this).setVisibility(0);
       }
     }
   };
-  private ListView afi;
-  private f afj;
-  private View afk;
-  private View afl;
-  private View afm;
-  private View afn;
-  private View afo;
-  private com.tencent.mm.sdk.a.e afp = new com.tencent.mm.sdk.a.e() {};
   
-  public final void af(int paramInt1, int paramInt2)
+  public final void ai(int paramInt1, int paramInt2)
   {
     com.tencent.mm.wear.a.c.d.c("MicroMsg.MessageHistoryUI", "increaseCount %d scene %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.aeC.nD();
-    this.afi.setVisibility(0);
+    this.aie.or();
+    this.aiK.setVisibility(0);
     switch (paramInt2)
     {
     }
     for (;;)
     {
-      this.aeJ = false;
-      this.afl.setVisibility(8);
+      this.ail = false;
+      this.aiN.setVisibility(8);
       return;
       if (MMActivity.isRect()) {}
-      for (paramInt1 = nb() - 106;; paramInt1 = nb() - 87)
+      for (paramInt1 = nO() - 106;; paramInt1 = nO() - 87)
       {
-        this.afi.setSelectionFromTop(this.afj.getCount() + 1, paramInt1);
+        this.aiK.setSelectionFromTop(this.aiL.getCount() + 1, paramInt1);
         break;
       }
-      this.afi.setSelectionFromTop(paramInt1 + 1, 45);
+      this.aiK.setSelectionFromTop(paramInt1 + 1, 45);
     }
   }
   
   public final void c(int paramInt, long paramLong)
   {
-    this.afj.notifyDataSetChanged();
+    this.aiL.notifyDataSetChanged();
     getWindow().clearFlags(128);
   }
   
-  public final void f(long paramLong)
+  public final void g(long paramLong)
   {
-    this.afj.notifyDataSetChanged();
+    this.aiL.notifyDataSetChanged();
   }
   
   public final int getLayoutId()
@@ -111,7 +111,7 @@ public class MessageHistoryUI
         paramIntent = paramIntent.getStringArrayListExtra("android.speech.extra.RESULTS");
         localObject = new Intent(this, TextMessageConfirmUI.class);
         ((Intent)localObject).putExtra("key_text", (String)paramIntent.get(0));
-        d((Intent)localObject);
+        f((Intent)localObject);
         return;
       } while ((paramInt2 != -1) || (paramIntent == null));
       paramIntent = RemoteInput.getResultsFromIntent(paramIntent);
@@ -120,13 +120,13 @@ public class MessageHistoryUI
     try
     {
       localObject = new ah();
-      ((ah)localObject).VN = getUsername();
-      ((ah)localObject).Ws = 1;
-      ((ah)localObject).Wt = paramIntent;
-      paramIntent = new com.tencent.mm.wear.app.f.e(nd(), 11023, ((ah)localObject).toByteArray());
-      paramIntent.mU();
-      com.tencent.mm.wear.app.b.h.mc().a(paramIntent);
-      com.tencent.mm.wear.app.d.a.bM(2);
+      ((ah)localObject).XI = getUsername();
+      ((ah)localObject).Yn = 1;
+      ((ah)localObject).Yo = paramIntent;
+      paramIntent = new com.tencent.mm.wear.app.f.e(nQ(), 11023, ((ah)localObject).toByteArray());
+      paramIntent.nG();
+      com.tencent.mm.wear.app.b.h.mP().a(paramIntent);
+      com.tencent.mm.wear.app.d.a.ci(2);
       return;
     }
     catch (IOException paramIntent) {}
@@ -135,16 +135,16 @@ public class MessageHistoryUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.afi = ((ListView)findViewById(2131558470));
-    this.aeC = new com.tencent.mm.wear.app.ui.widget.d(this);
+    this.aiK = ((ListView)findViewById(2131558471));
+    this.aie = new com.tencent.mm.wear.app.ui.widget.d(this);
     if (!MMActivity.isRect())
     {
-      this.afi.setPadding(36, 0, 36, 0);
-      this.afk = getLayoutInflater().inflate(2130903063, null);
-      this.afm = this.afk.findViewById(2131558472);
-      this.afn = this.afk.findViewById(2131558473);
-      this.afo = this.afk.findViewById(2131558471);
-      this.afi.addFooterView(this.afk);
+      this.aiK.setPadding(36, 0, 36, 0);
+      this.aiM = getLayoutInflater().inflate(2130903063, null);
+      this.aiO = this.aiM.findViewById(2131558473);
+      this.aiP = this.aiM.findViewById(2131558474);
+      this.aiQ = this.aiM.findViewById(2131558472);
+      this.aiK.addFooterView(this.aiM);
       if (MMActivity.isRect()) {
         break label341;
       }
@@ -152,13 +152,13 @@ public class MessageHistoryUI
     label341:
     for (paramBundle = getLayoutInflater().inflate(2130903065, null);; paramBundle = getLayoutInflater().inflate(2130903064, null))
     {
-      this.afl = paramBundle.findViewById(2131558458);
-      this.afi.addHeaderView(paramBundle);
-      this.afj = new f(this, getUsername());
-      this.afj.a(this);
-      this.afi.setAdapter(this.afj);
-      this.afi.setOnScrollListener(this.aeK);
-      this.afi.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.aiN = paramBundle.findViewById(2131558459);
+      this.aiK.addHeaderView(paramBundle);
+      this.aiL = new f(this, getUsername());
+      this.aiL.a(this);
+      this.aiK.setAdapter(this.aiL);
+      this.aiK.setOnScrollListener(this.aim);
+      this.aiK.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
@@ -170,53 +170,53 @@ public class MessageHistoryUI
           do
           {
             return;
-            paramAnonymousAdapterView = MessageHistoryUI.b(MessageHistoryUI.this).bR(paramAnonymousInt);
+            paramAnonymousAdapterView = MessageHistoryUI.b(MessageHistoryUI.this).cn(paramAnonymousInt);
           } while ((paramAnonymousAdapterView == null) || (paramAnonymousAdapterView.a(MessageHistoryUI.this, paramAnonymousAdapterView)));
-          switch (paramAnonymousAdapterView.ahe.afg.VU)
+          switch (paramAnonymousAdapterView.akG.aiI.XP)
           {
           default: 
             return;
           }
-          if (MMActivity.ne())
+          if (MMActivity.nR())
           {
-            if (paramAnonymousAdapterView.ahe.afg.VO == com.tencent.mm.wear.app.b.h.md().mv().mH())
+            if (paramAnonymousAdapterView.akG.aiI.XJ == com.tencent.mm.wear.app.b.h.mQ().nh().nt())
             {
-              com.tencent.mm.wear.app.b.h.md().mv().mG();
+              com.tencent.mm.wear.app.b.h.mQ().nh().ns();
               return;
             }
             MessageHistoryUI.this.getWindow().addFlags(128);
-            com.tencent.mm.wear.app.b.h.md().mv().k(MessageHistoryUI.b(MessageHistoryUI.this).bV(paramAnonymousInt));
+            com.tencent.mm.wear.app.b.h.mQ().nh().k(MessageHistoryUI.b(MessageHistoryUI.this).cr(paramAnonymousInt));
             return;
           }
-          Toast.makeText(MessageHistoryUI.this, 2131165246, 0).show();
+          Toast.makeText(MessageHistoryUI.this, 2131165249, 0).show();
         }
       });
-      this.aeC.a(new com.tencent.mm.wear.app.ui.widget.e()
+      this.aie.a(new com.tencent.mm.wear.app.ui.widget.e()
       {
         public final void onStart()
         {
-          MessageHistoryUI.b(MessageHistoryUI.this).ni();
+          MessageHistoryUI.b(MessageHistoryUI.this).nV();
         }
       });
-      this.aeC.startLoading();
-      this.afm.setOnClickListener(new View.OnClickListener()
+      this.aie.startLoading();
+      this.aiO.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          com.tencent.mm.wear.app.d.a.bN(3);
+          com.tencent.mm.wear.app.d.a.cj(3);
           paramAnonymousView = new Intent(MessageHistoryUI.this, ReplyVoiceUI.class);
-          MessageHistoryUI.this.d(paramAnonymousView);
+          MessageHistoryUI.this.f(paramAnonymousView);
         }
       });
-      this.afn.setOnClickListener(new View.OnClickListener()
+      this.aiP.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          com.tencent.mm.wear.app.d.a.bN(4);
-          if (!com.tencent.mm.wear.app.b.h.mb().lU())
+          com.tencent.mm.wear.app.d.a.cj(4);
+          if (!com.tencent.mm.wear.app.b.h.mO().mH())
           {
             paramAnonymousView = new Intent(MessageHistoryUI.this, ReplyTextUI.class);
-            MessageHistoryUI.this.d(paramAnonymousView);
+            MessageHistoryUI.this.f(paramAnonymousView);
             return;
           }
           try
@@ -232,55 +232,55 @@ public class MessageHistoryUI
           catch (ActivityNotFoundException paramAnonymousView)
           {
             paramAnonymousView = new Intent("android.speech.action.RECOGNIZE_SPEECH");
-            MessageHistoryUI.this.e(paramAnonymousView);
+            MessageHistoryUI.this.g(paramAnonymousView);
           }
         }
       });
-      this.afo.setOnClickListener(new View.OnClickListener()
+      this.aiQ.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          com.tencent.mm.wear.app.d.a.bN(2);
+          com.tencent.mm.wear.app.d.a.cj(2);
           paramAnonymousView = new Intent(MessageHistoryUI.this, ReplyEmojiListUI.class);
-          MessageHistoryUI.this.d(paramAnonymousView);
+          MessageHistoryUI.this.f(paramAnonymousView);
         }
       });
-      N(getUsername());
-      this.afj.ni();
-      com.tencent.mm.sdk.a.a.WJ.a(this.afp);
-      com.tencent.mm.wear.app.b.h.md().mv().a(this);
-      com.tencent.mm.wear.app.d.a.bN(1);
+      U(getUsername());
+      this.aiL.nV();
+      com.tencent.mm.sdk.a.a.YM.a(this.aiR);
+      com.tencent.mm.wear.app.b.h.mQ().nh().a(this);
+      com.tencent.mm.wear.app.d.a.cj(1);
       return;
-      this.afk = getLayoutInflater().inflate(2130903062, null);
+      this.aiM = getLayoutInflater().inflate(2130903062, null);
       break;
     }
   }
   
   protected void onDestroy()
   {
-    if (this.afj != null) {
-      this.afj.finish();
+    if (this.aiL != null) {
+      this.aiL.finish();
     }
-    com.tencent.mm.wear.app.b.h.md().mv().mG();
-    com.tencent.mm.sdk.a.a.WJ.b(this.afp);
+    com.tencent.mm.wear.app.b.h.mQ().nh().ns();
+    com.tencent.mm.sdk.a.a.YM.b(this.aiR);
     com.tencent.mm.wear.app.f.b localb = new com.tencent.mm.wear.app.f.b(11021, null);
-    com.tencent.mm.wear.app.b.h.mc().a(localb);
-    com.tencent.mm.wear.app.b.h.md().mv().a(null);
+    com.tencent.mm.wear.app.b.h.mP().a(localb);
+    com.tencent.mm.wear.app.b.h.mQ().nh().a(null);
     super.onDestroy();
   }
   
   protected void onPause()
   {
     super.onPause();
-    com.tencent.mm.wear.app.b.h.mf().stop();
-    com.tencent.mm.wear.app.b.h.md().mv().mG();
+    com.tencent.mm.wear.app.b.h.mS().stop();
+    com.tencent.mm.wear.app.b.h.mQ().nh().ns();
   }
   
   protected void onResume()
   {
     super.onResume();
-    com.tencent.mm.wear.app.b.h.mf().start();
-    this.afj.notifyDataSetChanged();
+    com.tencent.mm.wear.app.b.h.mS().start();
+    this.aiL.notifyDataSetChanged();
   }
 }
 

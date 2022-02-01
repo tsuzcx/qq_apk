@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/fum" android:background="@drawable/f3" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <LinearLayout android:gravity="center" android:layout_gravity="start" android:orientation="horizontal" android:id="@id/fys" android:background="@drawable/ez" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="28.0dip" android:layout_marginBottom="18.0dip" android:layout_marginStart="40.0dip" android:layout_marginEnd="40.0dip">
+            <ImageView android:id="@id/fzp" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn" android:layout_marginStart="@dimen/h" />
+            <TextView android:textSize="@dimen/jo" android:textColor="@color/a4q" android:gravity="center" android:id="@id/fzv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn" android:text="@string/fwr" android:layout_marginStart="@dimen/hk" android:layout_marginEnd="@dimen/h" />
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView android:id="@id/fxf" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="88.0dip" />
+        <LinearLayout android:paddingLeft="40.0dip" android:paddingRight="40.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="24.0dip">
+            <LinearLayout android:gravity="start" android:orientation="horizontal" android:id="@id/fx9" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageView android:layout_gravity="start|center" android:id="@id/fx_" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+                <TextView android:textSize="@dimen/i" android:textColor="@color/a_u" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/fxa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fwi" android:layout_marginStart="4.0dip" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal" android:id="@id/fxb" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/fxc" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+                <TextView android:textSize="@dimen/i" android:textColor="@color/a_u" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/fxd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fwj" android:layout_marginStart="4.0dip" />
+            </LinearLayout>
+            <LinearLayout android:gravity="end" android:orientation="horizontal" android:id="@id/fx6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageView android:layout_gravity="start|center" android:id="@id/fx7" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+                <TextView android:textSize="@dimen/i" android:textColor="@color/a_u" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/fx8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fwh" android:layout_marginStart="4.0dip" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorAudioSearchView android:id="@id/fxr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

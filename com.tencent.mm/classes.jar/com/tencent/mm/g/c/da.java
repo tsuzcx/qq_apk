@@ -8,22 +8,33 @@ public abstract class da
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dGq = "bubbleMd5".hashCode();
-  private static final int dGr = "coverMd5".hashCode();
-  private static final int dGs = "minilogoMd5".hashCode();
-  private static final int diB = "version".hashCode();
-  private static final int dwY = "subtype".hashCode();
+  private static final int eKA = "rankID".hashCode();
+  private static final int eKB = "appusername".hashCode();
+  private static final int eKE = "score".hashCode();
+  private static final int eKK;
+  private static final int eKL = "likecount".hashCode();
+  private static final int eKM = "selfLikeState".hashCode();
+  private static final int eme = "username".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dGn = true;
-  private boolean dGo = true;
-  private boolean dGp = true;
-  private boolean div = true;
-  private boolean dwW = true;
-  public String field_bubbleMd5;
-  public String field_coverMd5;
-  public String field_minilogoMd5;
-  public int field_subtype;
-  public int field_version;
+  private boolean eKD = true;
+  private boolean eKH = true;
+  private boolean eKI = true;
+  private boolean eKJ = true;
+  private boolean eKx = true;
+  private boolean eKy = true;
+  private boolean emb = true;
+  public String field_appusername;
+  public int field_likecount;
+  public String field_rankID;
+  public int field_ranknum;
+  public int field_score;
+  public int field_selfLikeState;
+  public String field_username;
+  
+  static
+  {
+    eKK = "ranknum".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -38,26 +49,29 @@ public abstract class da
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dwY != k) {
-        break label65;
+      if (eKA != k) {
+        break label60;
       }
-      this.field_subtype = paramCursor.getInt(i);
-      this.dwW = true;
+      this.field_rankID = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (dGq == k) {
-        this.field_bubbleMd5 = paramCursor.getString(i);
-      } else if (dGr == k) {
-        this.field_coverMd5 = paramCursor.getString(i);
-      } else if (dGs == k) {
-        this.field_minilogoMd5 = paramCursor.getString(i);
-      } else if (diB == k) {
-        this.field_version = paramCursor.getInt(i);
+      label60:
+      if (eKB == k) {
+        this.field_appusername = paramCursor.getString(i);
+      } else if (eme == k) {
+        this.field_username = paramCursor.getString(i);
+      } else if (eKK == k) {
+        this.field_ranknum = paramCursor.getInt(i);
+      } else if (eKE == k) {
+        this.field_score = paramCursor.getInt(i);
+      } else if (eKL == k) {
+        this.field_likecount = paramCursor.getInt(i);
+      } else if (eKM == k) {
+        this.field_selfLikeState = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -67,20 +81,26 @@ public abstract class da
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dwW) {
-      localContentValues.put("subtype", Integer.valueOf(this.field_subtype));
+    if (this.eKx) {
+      localContentValues.put("rankID", this.field_rankID);
     }
-    if (this.dGn) {
-      localContentValues.put("bubbleMd5", this.field_bubbleMd5);
+    if (this.eKy) {
+      localContentValues.put("appusername", this.field_appusername);
     }
-    if (this.dGo) {
-      localContentValues.put("coverMd5", this.field_coverMd5);
+    if (this.emb) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.dGp) {
-      localContentValues.put("minilogoMd5", this.field_minilogoMd5);
+    if (this.eKH) {
+      localContentValues.put("ranknum", Integer.valueOf(this.field_ranknum));
     }
-    if (this.div) {
-      localContentValues.put("version", Integer.valueOf(this.field_version));
+    if (this.eKD) {
+      localContentValues.put("score", Integer.valueOf(this.field_score));
+    }
+    if (this.eKI) {
+      localContentValues.put("likecount", Integer.valueOf(this.field_likecount));
+    }
+    if (this.eKJ) {
+      localContentValues.put("selfLikeState", Integer.valueOf(this.field_selfLikeState));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -90,7 +110,7 @@ public abstract class da
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.da
  * JD-Core Version:    0.7.0.1
  */

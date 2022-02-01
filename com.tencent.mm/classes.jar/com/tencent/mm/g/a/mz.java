@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.ArrayList;
 
 public final class mz
   extends b
 {
-  public a cDc;
-  public b cDd;
+  public a dsd;
   
   public mz()
   {
@@ -17,31 +16,21 @@ public final class mz
   
   private mz(byte paramByte)
   {
-    AppMethodBeat.i(135761);
-    this.cDc = new a();
-    this.cDd = new b();
-    this.ymq = false;
+    AppMethodBeat.i(116037);
+    this.dsd = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(135761);
+    AppMethodBeat.o(116037);
   }
   
   public static final class a
   {
-    public String cDe;
-    public Context context;
-    public int opType = 0;
-  }
-  
-  public static final class b
-  {
-    public String cDf;
-    public boolean cpz = false;
-    public String thumbPath;
+    public ArrayList dlQ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.mz
  * JD-Core Version:    0.7.0.1
  */

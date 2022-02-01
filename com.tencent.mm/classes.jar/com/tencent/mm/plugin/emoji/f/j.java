@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.emoji.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ajw;
-import com.tencent.mm.protocal.protobuf.ajx;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.ati;
+import com.tencent.mm.protocal.protobuf.atj;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class j
-  extends m
+  extends n
   implements k
 {
-  private f eGj;
-  public String liI;
-  private String liJ;
+  private g gbr;
+  public String oyL;
+  private String oyM;
   public final b rr;
   
   public j(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(53120);
+    AppMethodBeat.i(108692);
     b.a locala = new b.a();
-    locala.fsX = new ajw();
-    locala.fsY = new ajx();
+    locala.gUU = new ati();
+    locala.gUV = new atj();
     locala.uri = "/cgi-bin/micromsg-bin/getemotionactivity";
     locala.funcId = 368;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    this.liI = paramString1;
-    this.liJ = paramString2;
-    AppMethodBeat.o(53120);
+    this.rr = locala.atI();
+    this.oyL = paramString1;
+    this.oyM = paramString2;
+    AppMethodBeat.o(108692);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(53121);
-    this.eGj = paramf;
-    paramf = (ajw)this.rr.fsV.fta;
-    paramf.xbi = this.liI;
-    paramf.Md5 = this.liJ;
+    AppMethodBeat.i(108693);
+    this.gbr = paramg;
+    paramg = (ati)this.rr.gUS.gUX;
+    paramg.Dts = this.oyL;
+    paramg.Md5 = this.oyM;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(53121);
+    AppMethodBeat.o(108693);
     return i;
   }
   
@@ -57,15 +57,15 @@ public final class j
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(53122);
-    ab.i("MicroMsg.emoji.NetSceneGetEmotionActivity", "onGYNetEnd ErrType:%d, errCode:%d, errMsg", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(53122);
+    AppMethodBeat.i(108694);
+    ad.i("MicroMsg.emoji.NetSceneGetEmotionActivity", "onGYNetEnd ErrType:%d, errCode:%d, errMsg", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.gbr.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(108694);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.f.j
  * JD-Core Version:    0.7.0.1
  */

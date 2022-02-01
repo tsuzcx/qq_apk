@@ -2,14 +2,14 @@ package android.support.v7.view.menu;
 
 public class d<T>
 {
-  public final T Vj;
+  public final T aco;
   
   d(T paramT)
   {
     if (paramT == null) {
       throw new IllegalArgumentException("Wrapped Object can not be null.");
     }
-    this.Vj = paramT;
+    this.aco = paramT;
   }
 }
 

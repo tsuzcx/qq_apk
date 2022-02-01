@@ -4,47 +4,47 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.c.d;
+import com.tencent.pb.common.c.c;
 import java.io.BufferedOutputStream;
 
 public final class k
 {
   static BufferedOutputStream mOutputStream = null;
-  public static boolean tFf = false;
+  public static boolean ztj = false;
   
-  public static boolean dXX()
+  public static boolean fqo()
   {
-    AppMethodBeat.i(128006);
-    if (getNetType(d.tFk) == 4)
+    AppMethodBeat.i(62691);
+    if (getNetType(c.ztG) == 4)
     {
-      AppMethodBeat.o(128006);
+      AppMethodBeat.o(62691);
       return true;
     }
-    AppMethodBeat.o(128006);
+    AppMethodBeat.o(62691);
     return false;
   }
   
   private static int getNetType(Context paramContext)
   {
-    AppMethodBeat.i(128005);
+    AppMethodBeat.i(62690);
     try
     {
       paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext == null)
       {
-        AppMethodBeat.o(128005);
+        AppMethodBeat.o(62690);
         return 0;
       }
       int i = paramContext.getType();
       if (i == 1)
       {
-        AppMethodBeat.o(128005);
+        AppMethodBeat.o(62690);
         return 4;
       }
       i = paramContext.getSubtype();
       if (i == 3)
       {
-        AppMethodBeat.o(128005);
+        AppMethodBeat.o(62690);
         return 3;
       }
       if (paramContext.getSubtype() > 0)
@@ -52,7 +52,7 @@ public final class k
         i = paramContext.getSubtype();
         if (i < 5)
         {
-          AppMethodBeat.o(128005);
+          AppMethodBeat.o(62690);
           return 1;
         }
       }
@@ -61,47 +61,47 @@ public final class k
         i = paramContext.getSubtype();
         if (i < 13)
         {
-          AppMethodBeat.o(128005);
+          AppMethodBeat.o(62690);
           return 3;
         }
       }
       i = paramContext.getSubtype();
       if (i >= 13)
       {
-        AppMethodBeat.o(128005);
+        AppMethodBeat.o(62690);
         return 5;
       }
-      AppMethodBeat.o(128005);
+      AppMethodBeat.o(62690);
       return 2;
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(128005);
+      AppMethodBeat.o(62690);
     }
     return 2;
   }
   
-  public static int jN(Context paramContext)
+  public static int kR(Context paramContext)
   {
-    AppMethodBeat.i(128004);
+    AppMethodBeat.i(62689);
     try
     {
       paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
       if (paramContext == null)
       {
-        AppMethodBeat.o(128004);
+        AppMethodBeat.o(62689);
         return 0;
       }
       int i = paramContext.getType();
       if (i == 1)
       {
-        AppMethodBeat.o(128004);
+        AppMethodBeat.o(62689);
         return 4;
       }
       i = paramContext.getSubtype();
       if (i == 3)
       {
-        AppMethodBeat.o(128004);
+        AppMethodBeat.o(62689);
         return 3;
       }
       if (paramContext.getSubtype() > 0)
@@ -109,7 +109,7 @@ public final class k
         i = paramContext.getSubtype();
         if (i < 5)
         {
-          AppMethodBeat.o(128004);
+          AppMethodBeat.o(62689);
           return 1;
         }
       }
@@ -118,22 +118,22 @@ public final class k
         i = paramContext.getSubtype();
         if (i < 13)
         {
-          AppMethodBeat.o(128004);
+          AppMethodBeat.o(62689);
           return 3;
         }
       }
       i = paramContext.getSubtype();
       if (i >= 13)
       {
-        AppMethodBeat.o(128004);
+        AppMethodBeat.o(62689);
         return 5;
       }
-      AppMethodBeat.o(128004);
+      AppMethodBeat.o(62689);
       return 2;
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(128004);
+      AppMethodBeat.o(62689);
     }
     return 2;
   }

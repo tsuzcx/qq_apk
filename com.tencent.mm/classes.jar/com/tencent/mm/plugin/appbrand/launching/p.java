@@ -1,16 +1,43 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mm.ui.MMActivity.a;
+import android.util.Pair;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.app.j;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.appcache.b.c.a;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
+import com.tencent.mm.plugin.appbrand.config.w;
+import com.tencent.mm.plugin.appbrand.config.w.b;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
-public abstract interface p
+final class p
 {
-  public abstract void a(MMActivity.a parama, Intent paramIntent, int paramInt);
+  final int enterScene;
+  final int iNo;
+  final QualitySession jdu;
+  final WxaAttributes.WxaVersionInfo kHo;
+  final AppBrandPrepareTask.PrepareParams kIB;
+  final a kIC;
   
-  public abstract boolean aGH();
+  p(AppBrandPrepareTask.PrepareParams paramPrepareParams, a parama)
+  {
+    AppMethodBeat.i(180300);
+    this.kIB = paramPrepareParams;
+    this.enterScene = paramPrepareParams.ifv;
+    this.kHo = paramPrepareParams.kGw;
+    this.iNo = this.kHo.aAS;
+    this.kIC = parama;
+    this.jdu = paramPrepareParams.kGz;
+    AppMethodBeat.o(180300);
+  }
   
-  public abstract Context getBaseContext();
+  public static abstract interface a
+  {
+    public abstract void b(com.tencent.mm.plugin.appbrand.jsapi.w.b paramb);
+  }
 }
 
 

@@ -1,33 +1,30 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.f;
-import a.f.a.a;
-import a.f.b.j;
-import a.g;
-import a.l;
-import android.app.Activity;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.f;
+import d.g;
+import d.g.a.a;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"unsafeLazy", "Lkotlin/Lazy;", "T", "initializer", "Lkotlin/Function0;", "bind", "Landroid/view/View;", "Landroid/app/Activity;", "idRes", "", "plugin-radar_release"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"unsafeLazy", "Lkotlin/Lazy;", "T", "initializer", "Lkotlin/Function0;", "bind", "Landroid/view/View;", "Landroid/app/Activity;", "idRes", "", "plugin-radar_release"})
 public final class i
 {
-  public static final <T extends View> f<T> ae(View paramView, int paramInt)
+  public static final <T extends View> f<T> am(View paramView, final int paramInt)
   {
-    AppMethodBeat.i(103140);
-    j.q(paramView, "receiver$0");
-    paramView = (a)new i.b(paramView, paramInt);
-    paramView = g.a(a.k.BLV, paramView);
-    AppMethodBeat.o(103140);
+    AppMethodBeat.i(138793);
+    d.g.b.k.h(paramView, "$this$bind");
+    paramView = (a)new b(paramView, paramInt);
+    paramView = g.a(d.k.JfK, paramView);
+    AppMethodBeat.o(138793);
     return paramView;
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "T", "Landroid/view/View;", "invoke", "()Landroid/view/View;"})
-  static final class a
-    extends a.f.b.k
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "T", "Landroid/view/View;", "invoke", "()Landroid/view/View;"})
+  static final class b
+    extends d.g.b.l
     implements a<T>
   {
-    a(Activity paramActivity)
+    b(View paramView, int paramInt)
     {
       super();
     }
@@ -35,7 +32,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.i
  * JD-Core Version:    0.7.0.1
  */

@@ -1,96 +1,99 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableString;
-import android.text.method.LinkMovementMethod;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.plugin.wallet_core.model.Orders;
+import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public final class e
-  extends Preference
+public enum e
 {
-  public View.OnClickListener lPx;
-  private View ldP;
-  public String mContent;
-  private View mView;
-  public boolean nob;
-  public int prD;
-  private int prE;
-  private int prF;
+  private Map<String, WeakReference<d>> Ajq;
   
-  public e(Context paramContext)
+  static
   {
-    super(paramContext, null);
-    AppMethodBeat.i(47126);
-    this.mView = null;
-    this.prD = 2147483647;
-    this.prE = -1;
-    this.prF = -1;
-    setLayoutResource(2130969951);
-    AppMethodBeat.o(47126);
+    AppMethodBeat.i(70674);
+    Ajp = new e("INSTANCE");
+    Ajr = new e[] { Ajp };
+    AppMethodBeat.o(70674);
   }
   
-  public final View getView(View paramView, ViewGroup paramViewGroup)
+  private e()
   {
-    AppMethodBeat.i(47127);
-    if (this.mView == null) {
-      this.mView = onCreateView(paramViewGroup);
-    }
-    onBindView(this.mView);
-    paramView = this.mView;
-    AppMethodBeat.o(47127);
-    return paramView;
+    AppMethodBeat.i(70671);
+    this.Ajq = new HashMap();
+    AppMethodBeat.o(70671);
   }
   
-  public final void onBindView(View paramView)
+  private static String b(Orders paramOrders)
   {
-    AppMethodBeat.i(47128);
-    super.onBindView(paramView);
-    Object localObject = (TextView)paramView.findViewById(2131825329);
-    TextView localTextView = (TextView)paramView.findViewById(2131825330);
-    ((TextView)localObject).setText(getTitle());
-    this.ldP = paramView;
-    if (this.prD != 2147483647) {
-      localTextView.setTextColor(this.prD);
-    }
-    if (this.nob)
+    AppMethodBeat.i(70673);
+    if ((paramOrders != null) && (paramOrders.Afx != null))
     {
-      if ((this.prE >= 0) && (this.prF > 0))
+      StringBuilder localStringBuilder = new StringBuilder();
+      int i = 0;
+      while (i < paramOrders.Afx.size())
       {
-        paramView = new j(this.mContext);
-        localObject = new SpannableString(this.mContent);
-        paramView.uqj = new e.1(this);
-        localTextView.setMovementMethod(LinkMovementMethod.getInstance());
-        ((SpannableString)localObject).setSpan(paramView, this.prE, this.prF, 33);
-        localTextView.setText((CharSequence)localObject);
-        AppMethodBeat.o(47128);
-        return;
+        localStringBuilder.append(((Orders.Commodity)paramOrders.Afx.get(i)).dcF);
+        i += 1;
       }
-      if (this.prD != 2147483647) {
-        localTextView.setTextColor(this.prD);
-      }
-      for (;;)
-      {
-        localTextView.setOnClickListener(this.lPx);
-        localTextView.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.mContext, this.mContent, localTextView.getTextSize()));
-        AppMethodBeat.o(47128);
-        return;
-        localTextView.setTextColor(this.mContext.getResources().getColor(2131690267));
-      }
+      localStringBuilder.append("@");
+      localStringBuilder.append(paramOrders.Aff);
+      paramOrders = localStringBuilder.toString();
+      AppMethodBeat.o(70673);
+      return paramOrders;
     }
-    localTextView.setOnClickListener(null);
-    localTextView.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.mContext, this.mContent, localTextView.getTextSize()));
-    AppMethodBeat.o(47128);
+    AppMethodBeat.o(70673);
+    return null;
+  }
+  
+  public final d a(Orders paramOrders)
+  {
+    AppMethodBeat.i(70672);
+    String str = b(paramOrders);
+    if (bt.isNullOrNil(str))
+    {
+      ad.w("MicroMsg.FavorLogicHelperPool", "get key null");
+      AppMethodBeat.o(70672);
+      return null;
+    }
+    Object localObject;
+    if (this.Ajq.containsKey(str))
+    {
+      ad.i("MicroMsg.FavorLogicHelperPool", "hit cache, key:".concat(String.valueOf(str)));
+      localObject = (WeakReference)this.Ajq.get(str);
+      if (localObject == null) {
+        break label153;
+      }
+      localObject = (d)((WeakReference)localObject).get();
+      if (localObject != null)
+      {
+        AppMethodBeat.o(70672);
+        return localObject;
+      }
+      ad.i("MicroMsg.FavorLogicHelperPool", "helper null");
+    }
+    while ((paramOrders != null) && (paramOrders.Afy != null))
+    {
+      paramOrders = new d(paramOrders.Afy);
+      localObject = new WeakReference(paramOrders);
+      this.Ajq.put(str, localObject);
+      AppMethodBeat.o(70672);
+      return paramOrders;
+      label153:
+      ad.i("MicroMsg.FavorLogicHelperPool", "weakHelper null");
+    }
+    AppMethodBeat.o(70672);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.e
  * JD-Core Version:    0.7.0.1
  */

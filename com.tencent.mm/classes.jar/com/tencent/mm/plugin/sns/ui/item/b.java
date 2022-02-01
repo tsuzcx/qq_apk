@@ -7,19 +7,19 @@ import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.g;
+import com.tencent.mm.plugin.sns.data.q;
+import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.f;
 import com.tencent.mm.plugin.sns.ui.TagImageView;
-import com.tencent.mm.plugin.sns.ui.ao;
-import com.tencent.mm.plugin.sns.ui.av;
 import com.tencent.mm.plugin.sns.ui.aw;
-import com.tencent.mm.plugin.sns.ui.q;
+import com.tencent.mm.plugin.sns.ui.be;
+import com.tencent.mm.plugin.sns.ui.bf;
+import com.tencent.mm.plugin.sns.ui.s;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.storage.az;
-import com.tencent.mm.ui.widget.c.a;
+import com.tencent.mm.protocal.protobuf.bpi;
+import com.tencent.mm.protocal.protobuf.yk;
+import com.tencent.mm.storage.bc;
+import com.tencent.mm.ui.widget.b.a;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,90 +27,90 @@ import java.util.List;
 public final class b
   extends BaseTimeLineItem
 {
-  public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, aw paramaw, TimeLineObject paramTimeLineObject, int paramInt2, av paramav)
+  public final void a(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder, int paramInt1, bf parambf, TimeLineObject paramTimeLineObject, int paramInt2, be parambe)
   {
-    AppMethodBeat.i(40134);
-    paramBaseViewHolder.sgW.setPosition(paramInt1);
-    Object localObject2 = paramaw.rGx;
-    paramInt2 = paramTimeLineObject.xTS.wOa.size();
+    AppMethodBeat.i(100067);
+    paramBaseViewHolder.xQz.setPosition(paramInt1);
+    Object localObject2 = parambf.xmu;
+    paramInt2 = paramTimeLineObject.Etm.DaC.size();
     if (paramInt2 > 0)
     {
-      paramaw = (bcs)paramTimeLineObject.xTS.wOa.get(0);
-      switch (paramTimeLineObject.xTS.wNZ)
+      parambf = (bpi)paramTimeLineObject.Etm.DaC.get(0);
+      switch (paramTimeLineObject.Etm.DaB)
       {
       }
     }
     for (;;)
     {
-      paramav.jVd.c(paramBaseViewHolder.sgW, paramav.rks.sjI, paramav.rks.sjr);
-      AppMethodBeat.o(40134);
+      parambe.dCa().c(paramBaseViewHolder.xQz, parambe.wMy.xTK, parambe.wMy.xTt);
+      AppMethodBeat.o(100067);
       return;
-      paramBaseViewHolder.sgW.setOnClickListener(paramav.rks.rHw);
-      Object localObject1 = new ao();
-      ((ao)localObject1).ctV = ((String)localObject2);
-      ((ao)localObject1).index = 0;
+      paramBaseViewHolder.xQz.setOnClickListener(parambe.wMy.xno);
+      Object localObject1 = new aw();
+      ((aw)localObject1).diQ = ((String)localObject2);
+      ((aw)localObject1).index = 0;
       localObject2 = new ArrayList();
-      ((List)localObject2).add(paramBaseViewHolder.sgW);
-      ((ao)localObject1).rQS = ((List)localObject2);
-      ((ao)localObject1).rNW = this.rNW;
-      ((ao)localObject1).position = paramInt1;
-      paramBaseViewHolder.sgW.setTag(localObject1);
-      paramBaseViewHolder.sgW.setVisibility(0);
-      localObject1 = ag.cpc();
-      localObject2 = paramBaseViewHolder.sgW;
+      ((List)localObject2).add(paramBaseViewHolder.xQz);
+      ((aw)localObject1).xzo = ((List)localObject2);
+      ((aw)localObject1).xvU = this.xvU;
+      ((aw)localObject1).position = paramInt1;
+      paramBaseViewHolder.xQz.setTag(localObject1);
+      paramBaseViewHolder.xQz.setVisibility(0);
+      localObject1 = af.dtr();
+      localObject2 = paramBaseViewHolder.xQz;
       paramInt1 = this.mActivity.hashCode();
-      az localaz = az.dxB();
-      localaz.oLs = paramTimeLineObject.CreateTime;
-      ((g)localObject1).b(paramaw, (View)localObject2, paramInt1, localaz);
-      paramBaseViewHolder.rFb.setVisibility(8);
-      paramBaseViewHolder.titleTv.setText(this.mActivity.getString(2131303923, new Object[] { Integer.valueOf(paramInt2) }));
+      bc localbc = bc.eLG();
+      localbc.tGD = paramTimeLineObject.CreateTime;
+      ((f)localObject1).b(parambf, (View)localObject2, paramInt1, localbc);
+      paramBaseViewHolder.xkO.setVisibility(8);
+      paramBaseViewHolder.titleTv.setText(this.mActivity.getString(2131763937, new Object[] { Integer.valueOf(paramInt2) }));
       paramBaseViewHolder.titleTv.setVisibility(0);
       continue;
-      paramBaseViewHolder.sgW.setTag(new q(paramTimeLineObject, (String)localObject2));
-      paramBaseViewHolder.sgW.setOnClickListener(paramav.rks.sjP);
-      paramBaseViewHolder.rFb.setImageResource(2131232003);
-      paramBaseViewHolder.rFb.setVisibility(0);
+      paramBaseViewHolder.xQz.setTag(new s(paramTimeLineObject, (String)localObject2));
+      paramBaseViewHolder.xQz.setOnClickListener(parambe.wMy.xTR);
+      paramBaseViewHolder.xkO.setImageResource(2131691189);
+      paramBaseViewHolder.xkO.setVisibility(0);
       paramBaseViewHolder.titleTv.setVisibility(8);
-      localObject1 = ag.cpc();
-      localObject2 = paramBaseViewHolder.sgW;
+      localObject1 = af.dtr();
+      localObject2 = paramBaseViewHolder.xQz;
       paramInt1 = this.mActivity.hashCode();
-      localaz = az.dxB();
-      localaz.oLs = paramTimeLineObject.CreateTime;
-      ((g)localObject1).b(paramaw, (View)localObject2, paramInt1, localaz);
+      localbc = bc.eLG();
+      localbc.tGD = paramTimeLineObject.CreateTime;
+      ((f)localObject1).b(parambf, (View)localObject2, paramInt1, localbc);
     }
   }
   
-  public final void d(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
+  public final void e(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
-    AppMethodBeat.i(40133);
-    int i = ag.cpn();
-    if (paramBaseViewHolder.sgT != null) {
-      if (!paramBaseViewHolder.shD)
+    AppMethodBeat.i(100066);
+    int i = af.dtE();
+    if (paramBaseViewHolder.xQw != null) {
+      if (!paramBaseViewHolder.xRj)
       {
-        paramBaseViewHolder.sgT.setLayoutResource(2130970840);
-        paramBaseViewHolder.shE = paramBaseViewHolder.sgT.inflate();
+        paramBaseViewHolder.xQw.setLayoutResource(2131495564);
+        paramBaseViewHolder.xRk = paramBaseViewHolder.xQw.inflate();
       }
     }
-    for (paramBaseViewHolder.shD = true;; paramBaseViewHolder.shD = true)
+    for (paramBaseViewHolder.xRj = true;; paramBaseViewHolder.xRj = true)
     {
-      paramBaseViewHolder.sgW = ((TagImageView)paramBaseViewHolder.shE.findViewById(2131828022));
-      paramBaseViewHolder.rFb = ((ImageView)paramBaseViewHolder.shE.findViewById(2131824765));
-      paramBaseViewHolder.titleTv = ((TextView)paramBaseViewHolder.shE.findViewById(2131828024));
-      View localView = paramBaseViewHolder.shE;
+      paramBaseViewHolder.xQz = ((TagImageView)paramBaseViewHolder.xRk.findViewById(2131298769));
+      paramBaseViewHolder.xkO = ((ImageView)paramBaseViewHolder.xRk.findViewById(2131305185));
+      paramBaseViewHolder.titleTv = ((TextView)paramBaseViewHolder.xRk.findViewById(2131298756));
+      View localView = paramBaseViewHolder.xRk;
       ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
       localLayoutParams.height = i;
       localLayoutParams.width = i;
       localView.setLayoutParams(localLayoutParams);
-      i.b(paramBaseViewHolder.sgW, this.mActivity);
-      AppMethodBeat.o(40133);
+      q.b(paramBaseViewHolder.xQz, this.mActivity);
+      AppMethodBeat.o(100066);
       return;
-      paramBaseViewHolder.shE = paramBaseViewHolder.ngZ.findViewById(2131828021);
+      paramBaseViewHolder.xRk = paramBaseViewHolder.rLd.findViewById(2131298751);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.item.b
  * JD-Core Version:    0.7.0.1
  */

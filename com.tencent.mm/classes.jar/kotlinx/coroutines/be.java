@@ -1,19 +1,17 @@
 package kotlinx.coroutines;
 
-import a.l;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/JobCancellingNode;", "J", "Lkotlinx/coroutines/Job;", "Lkotlinx/coroutines/JobNode;", "job", "(Lkotlinx/coroutines/Job;)V", "kotlinx-coroutines-core"})
-public abstract class be<J extends bc>
-  extends bf<J>
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/Incomplete;", "", "isActive", "", "()Z", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "kotlinx-coroutines-core"})
+public abstract interface be
 {
-  public be(J paramJ)
-  {
-    super(paramJ);
-  }
+  public abstract bs fLh();
+  
+  public abstract boolean isActive();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.be
  * JD-Core Version:    0.7.0.1
  */

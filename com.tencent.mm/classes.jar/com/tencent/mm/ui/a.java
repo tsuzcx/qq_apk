@@ -6,23 +6,24 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
 {
-  public TextView gpL;
-  private ImageView lzc;
-  private ImageView tit;
-  private View vlC;
-  public TextView yTn;
-  public ImageView yTo;
-  public ImageView yTp;
-  private ImageView yTq;
-  public ImageView yTr;
-  private View yTs;
+  private View BlI;
+  private TextView FFJ;
+  public ImageView FFK;
+  public ImageView FFL;
+  private ImageView FFM;
+  public ImageView FFN;
+  private View FFO;
+  public TextView ica;
+  private ImageView oPR;
+  private ImageView yOS;
   
   public a(View paramView)
   {
-    AppMethodBeat.i(105936);
+    AppMethodBeat.i(141266);
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
     if (localLayoutParams == null) {
       localLayoutParams = new ViewGroup.LayoutParams(-2, -1);
@@ -30,64 +31,83 @@ public final class a
     for (;;)
     {
       paramView.setLayoutParams(localLayoutParams);
-      this.gpL = ((TextView)paramView.findViewById(2131820981));
-      this.yTn = ((TextView)paramView.findViewById(2131820982));
-      this.tit = ((ImageView)paramView.findViewById(2131820984));
-      this.yTo = ((ImageView)paramView.findViewById(2131820983));
-      this.yTp = ((ImageView)paramView.findViewById(2131820985));
-      this.yTq = ((ImageView)paramView.findViewById(2131820986));
-      this.vlC = paramView.findViewById(2131820979);
-      this.lzc = ((ImageView)paramView.findViewById(2131820980));
-      this.yTr = ((ImageView)paramView.findViewById(2131820987));
-      this.yTs = paramView;
-      AppMethodBeat.o(105936);
+      this.ica = ((TextView)paramView.findViewById(2131305908));
+      this.FFJ = ((TextView)paramView.findViewById(2131305509));
+      this.yOS = ((ImageView)paramView.findViewById(2131302623));
+      this.FFK = ((ImageView)paramView.findViewById(2131300216));
+      this.FFL = ((ImageView)paramView.findViewById(2131303211));
+      this.FFM = ((ImageView)paramView.findViewById(2131303553));
+      this.BlI = paramView.findViewById(2131296939);
+      this.oPR = ((ImageView)paramView.findViewById(2131296940));
+      this.FFN = ((ImageView)paramView.findViewById(2131303966));
+      this.FFO = paramView;
+      AppMethodBeat.o(141266);
       return;
       localLayoutParams.width = -2;
       localLayoutParams.height = -1;
     }
   }
   
-  public final void b(View.OnClickListener paramOnClickListener)
+  public final void ak(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(105940);
-    this.vlC.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(105940);
-  }
-  
-  public final void pY(boolean paramBoolean)
-  {
-    AppMethodBeat.i(105938);
-    ImageView localImageView = this.tit;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    AppMethodBeat.i(190968);
+    if ((paramCharSequence == null) || (bt.isNullOrNil(paramCharSequence.toString())))
     {
-      localImageView.setVisibility(i);
-      AppMethodBeat.o(105938);
+      this.FFJ.setVisibility(8);
+      AppMethodBeat.o(190968);
       return;
     }
+    this.FFJ.setVisibility(0);
+    this.FFJ.setText(paramCharSequence);
+    if (com.tencent.mm.cd.a.hS(this.FFJ.getContext()))
+    {
+      this.FFJ.setTextSize(1, 14.0F);
+      this.ica.setTextSize(1, 18.0F);
+    }
+    AppMethodBeat.o(190968);
   }
   
-  public final void pZ(boolean paramBoolean)
+  public final void e(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(105939);
-    ImageView localImageView = this.yTq;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      AppMethodBeat.o(105939);
-      return;
-    }
+    AppMethodBeat.i(141270);
+    this.BlI.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(141270);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(105937);
-    this.gpL.setText(paramCharSequence);
-    if (com.tencent.mm.cb.a.gt(this.gpL.getContext())) {
-      this.gpL.setTextSize(0, com.tencent.mm.cb.a.ap(this.gpL.getContext(), 2131427493) * com.tencent.mm.cb.a.gr(this.gpL.getContext()));
+    AppMethodBeat.i(141267);
+    this.ica.setText(paramCharSequence);
+    if (com.tencent.mm.cd.a.hS(this.ica.getContext())) {
+      this.ica.setTextSize(0, com.tencent.mm.cd.a.ap(this.ica.getContext(), 2131165184) * com.tencent.mm.cd.a.hQ(this.ica.getContext()));
     }
-    AppMethodBeat.o(105937);
+    AppMethodBeat.o(141267);
+  }
+  
+  public final void vh(boolean paramBoolean)
+  {
+    AppMethodBeat.i(141268);
+    ImageView localImageView = this.yOS;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      localImageView.setVisibility(i);
+      AppMethodBeat.o(141268);
+      return;
+    }
+  }
+  
+  public final void vi(boolean paramBoolean)
+  {
+    AppMethodBeat.i(141269);
+    ImageView localImageView = this.FFM;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      localImageView.setVisibility(i);
+      AppMethodBeat.o(141269);
+      return;
+    }
   }
 }
 

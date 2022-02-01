@@ -8,7 +8,7 @@ public enum AccessTokenSource
   
   static
   {
-    AppMethodBeat.i(71571);
+    AppMethodBeat.i(17007);
     NONE = new AccessTokenSource("NONE", 0, false);
     FACEBOOK_APPLICATION_WEB = new AccessTokenSource("FACEBOOK_APPLICATION_WEB", 1, true);
     FACEBOOK_APPLICATION_NATIVE = new AccessTokenSource("FACEBOOK_APPLICATION_NATIVE", 2, true);
@@ -19,7 +19,7 @@ public enum AccessTokenSource
     CLIENT_TOKEN = new AccessTokenSource("CLIENT_TOKEN", 7, true);
     DEVICE_AUTH = new AccessTokenSource("DEVICE_AUTH", 8, true);
     $VALUES = new AccessTokenSource[] { NONE, FACEBOOK_APPLICATION_WEB, FACEBOOK_APPLICATION_NATIVE, FACEBOOK_APPLICATION_SERVICE, WEB_VIEW, CHROME_CUSTOM_TAB, TEST_USER, CLIENT_TOKEN, DEVICE_AUTH };
-    AppMethodBeat.o(71571);
+    AppMethodBeat.o(17007);
   }
   
   private AccessTokenSource(boolean paramBoolean)
@@ -34,7 +34,7 @@ public enum AccessTokenSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.AccessTokenSource
  * JD-Core Version:    0.7.0.1
  */

@@ -8,19 +8,19 @@ public abstract class eb
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dLn = "locaMsgId".hashCode();
-  private static final int dLo = "receiveStatus".hashCode();
-  private static final int dle = "isSend".hashCode();
-  private static final int drW = "transferId".hashCode();
+  private static final int eRJ = "reqkey".hashCode();
+  private static final int eRK = "ack_key".hashCode();
+  private static final int eRL = "receive_time".hashCode();
+  private static final int ejR = "status".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dLl = true;
-  private boolean dLm = true;
-  private boolean dkQ = true;
-  private boolean drV = true;
-  public boolean field_isSend;
-  public long field_locaMsgId;
-  public int field_receiveStatus;
-  public String field_transferId;
+  private boolean eRG = true;
+  private boolean eRH = true;
+  private boolean eRI = true;
+  private boolean ejO = true;
+  public String field_ack_key;
+  public long field_receive_time;
+  public String field_reqkey;
+  public int field_status;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -28,18 +28,18 @@ public abstract class eb
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (drW != k) {
+      if (eRJ != k) {
         break label65;
       }
-      this.field_transferId = paramCursor.getString(i);
-      this.drV = true;
+      this.field_reqkey = paramCursor.getString(i);
+      this.eRG = true;
     }
     for (;;)
     {
@@ -47,28 +47,14 @@ public abstract class eb
       break label20;
       break;
       label65:
-      if (dLn == k)
-      {
-        this.field_locaMsgId = paramCursor.getLong(i);
-      }
-      else if (dLo == k)
-      {
-        this.field_receiveStatus = paramCursor.getInt(i);
-      }
-      else
-      {
-        if (dle == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_isSend = bool;
-            break;
-          }
-        }
-        if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      if (eRK == k) {
+        this.field_ack_key = paramCursor.getString(i);
+      } else if (ejR == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (eRL == k) {
+        this.field_receive_time = paramCursor.getLong(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -76,17 +62,17 @@ public abstract class eb
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.drV) {
-      localContentValues.put("transferId", this.field_transferId);
+    if (this.eRG) {
+      localContentValues.put("reqkey", this.field_reqkey);
     }
-    if (this.dLl) {
-      localContentValues.put("locaMsgId", Long.valueOf(this.field_locaMsgId));
+    if (this.eRH) {
+      localContentValues.put("ack_key", this.field_ack_key);
     }
-    if (this.dLm) {
-      localContentValues.put("receiveStatus", Integer.valueOf(this.field_receiveStatus));
+    if (this.ejO) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.dkQ) {
-      localContentValues.put("isSend", Boolean.valueOf(this.field_isSend));
+    if (this.eRI) {
+      localContentValues.put("receive_time", Long.valueOf(this.field_receive_time));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -96,7 +82,7 @@ public abstract class eb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.eb
  * JD-Core Version:    0.7.0.1
  */

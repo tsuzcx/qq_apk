@@ -10,62 +10,62 @@ import java.util.Set;
 public final class s
   implements b
 {
-  private final Set<Class<?>> beQ;
-  private final Set<Class<?>> beR;
-  private final b beS;
+  private final Set<Class<?>> bCQ;
+  private final Set<Class<?>> bCR;
+  private final b bCS;
   
   public s(Iterable<f> paramIterable, b paramb)
   {
-    AppMethodBeat.i(10632);
+    AppMethodBeat.i(4099);
     HashSet localHashSet1 = new HashSet();
     HashSet localHashSet2 = new HashSet();
     paramIterable = paramIterable.iterator();
     while (paramIterable.hasNext())
     {
       f localf = (f)paramIterable.next();
-      if (localf.rJ()) {
-        localHashSet1.add(localf.beA);
+      if (localf.wI()) {
+        localHashSet1.add(localf.bCA);
       } else {
-        localHashSet2.add(localf.beA);
+        localHashSet2.add(localf.bCA);
       }
     }
-    this.beQ = Collections.unmodifiableSet(localHashSet1);
-    this.beR = Collections.unmodifiableSet(localHashSet2);
-    this.beS = paramb;
-    AppMethodBeat.o(10632);
+    this.bCQ = Collections.unmodifiableSet(localHashSet1);
+    this.bCR = Collections.unmodifiableSet(localHashSet2);
+    this.bCS = paramb;
+    AppMethodBeat.o(4099);
   }
   
-  public final <T> T m(Class<T> paramClass)
+  public final <T> T w(Class<T> paramClass)
   {
-    AppMethodBeat.i(10633);
-    if (!this.beQ.contains(paramClass))
+    AppMethodBeat.i(4100);
+    if (!this.bCQ.contains(paramClass))
     {
       paramClass = new IllegalArgumentException(String.format("Requesting %s is not allowed.", new Object[] { paramClass }));
-      AppMethodBeat.o(10633);
+      AppMethodBeat.o(4100);
       throw paramClass;
     }
-    paramClass = this.beS.m(paramClass);
-    AppMethodBeat.o(10633);
+    paramClass = this.bCS.w(paramClass);
+    AppMethodBeat.o(4100);
     return paramClass;
   }
   
-  public final <T> a<T> o(Class<T> paramClass)
+  public final <T> a<T> y(Class<T> paramClass)
   {
-    AppMethodBeat.i(10634);
-    if (!this.beR.contains(paramClass))
+    AppMethodBeat.i(4101);
+    if (!this.bCR.contains(paramClass))
     {
       paramClass = new IllegalArgumentException(String.format("Requesting Provider<%s> is not allowed.", new Object[] { paramClass }));
-      AppMethodBeat.o(10634);
+      AppMethodBeat.o(4101);
       throw paramClass;
     }
-    paramClass = this.beS.o(paramClass);
-    AppMethodBeat.o(10634);
+    paramClass = this.bCS.y(paramClass);
+    AppMethodBeat.o(4101);
     return paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.components.s
  * JD-Core Version:    0.7.0.1
  */

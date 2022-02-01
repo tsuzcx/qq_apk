@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class op
   extends b
 {
-  public op.a cFg;
+  public a dtO;
+  public b dtP;
   
   public op()
   {
@@ -15,11 +16,24 @@ public final class op
   
   private op(byte paramByte)
   {
-    AppMethodBeat.i(70205);
-    this.cFg = new op.a();
-    this.ymq = false;
+    AppMethodBeat.i(149880);
+    this.dtO = new a();
+    this.dtP = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70205);
+    AppMethodBeat.o(149880);
+  }
+  
+  public static final class a
+  {
+    public int dtM = 0;
+    public String dtQ;
+    public String scanResult;
+  }
+  
+  public static final class b
+  {
+    public int ret = 0;
   }
 }
 

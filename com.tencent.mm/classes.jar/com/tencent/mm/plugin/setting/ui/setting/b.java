@@ -5,66 +5,66 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b
 {
-  LinearLayout qLM;
-  LinearLayout qLN;
-  LinearLayout qLO;
-  LinearLayout qLP;
-  LinearLayout qLQ;
+  LinearLayout wkH;
+  LinearLayout wkI;
+  LinearLayout wkJ;
+  LinearLayout wkK;
+  LinearLayout wkL;
   
-  public final void YY(String paramString)
+  public final void amZ(String paramString)
   {
-    AppMethodBeat.i(127689);
+    AppMethodBeat.i(74625);
     if (paramString.equals("downloading"))
     {
-      this.qLM.setVisibility(0);
-      this.qLN.setVisibility(8);
-      this.qLO.setVisibility(8);
-      this.qLP.setVisibility(8);
-      this.qLQ.setVisibility(8);
-      AppMethodBeat.o(127689);
+      this.wkH.setVisibility(0);
+      this.wkI.setVisibility(8);
+      this.wkJ.setVisibility(8);
+      this.wkK.setVisibility(8);
+      this.wkL.setVisibility(8);
+      AppMethodBeat.o(74625);
       return;
     }
     if (paramString.equals("downloaded"))
     {
-      this.qLM.setVisibility(8);
-      this.qLN.setVisibility(0);
-      this.qLO.setVisibility(8);
-      this.qLP.setVisibility(8);
-      this.qLQ.setVisibility(8);
-      AppMethodBeat.o(127689);
+      this.wkH.setVisibility(8);
+      this.wkI.setVisibility(0);
+      this.wkJ.setVisibility(8);
+      this.wkK.setVisibility(8);
+      this.wkL.setVisibility(8);
+      AppMethodBeat.o(74625);
       return;
     }
     if (paramString.equals("undownloaded"))
     {
-      this.qLM.setVisibility(8);
-      this.qLN.setVisibility(8);
-      this.qLO.setVisibility(0);
-      this.qLP.setVisibility(8);
-      this.qLQ.setVisibility(8);
-      AppMethodBeat.o(127689);
+      this.wkH.setVisibility(8);
+      this.wkI.setVisibility(8);
+      this.wkJ.setVisibility(0);
+      this.wkK.setVisibility(8);
+      this.wkL.setVisibility(8);
+      AppMethodBeat.o(74625);
       return;
     }
     if (paramString.equals("using"))
     {
-      this.qLM.setVisibility(8);
-      this.qLN.setVisibility(8);
-      this.qLO.setVisibility(8);
-      this.qLP.setVisibility(0);
-      this.qLQ.setVisibility(8);
-      AppMethodBeat.o(127689);
+      this.wkH.setVisibility(8);
+      this.wkI.setVisibility(8);
+      this.wkJ.setVisibility(8);
+      this.wkK.setVisibility(0);
+      this.wkL.setVisibility(8);
+      AppMethodBeat.o(74625);
       return;
     }
     if (paramString.equals("canceling"))
     {
-      this.qLM.setVisibility(8);
-      this.qLN.setVisibility(8);
-      this.qLO.setVisibility(8);
-      this.qLP.setVisibility(8);
-      this.qLQ.setVisibility(0);
-      AppMethodBeat.o(127689);
+      this.wkH.setVisibility(8);
+      this.wkI.setVisibility(8);
+      this.wkJ.setVisibility(8);
+      this.wkK.setVisibility(8);
+      this.wkL.setVisibility(0);
+      AppMethodBeat.o(74625);
       return;
     }
-    AppMethodBeat.o(127689);
+    AppMethodBeat.o(74625);
   }
 }
 

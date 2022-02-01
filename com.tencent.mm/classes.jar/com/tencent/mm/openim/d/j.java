@@ -1,21 +1,21 @@
 package com.tencent.mm.openim.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bit;
+import com.tencent.mm.protocal.protobuf.bwc;
 
 public final class j
   extends i
 {
-  bit ggs;
+  bwc hOo;
   
   public j(String paramString)
   {
     super(14);
-    AppMethodBeat.i(78929);
-    this.ggs = new bit();
-    this.ggs.gfM = paramString;
-    this.oDZ = this.ggs;
-    AppMethodBeat.o(78929);
+    AppMethodBeat.i(151273);
+    this.hOo = new bwc();
+    this.hOo.hNI = paramString;
+    this.tyM = this.hOo;
+    AppMethodBeat.o(151273);
   }
 }
 

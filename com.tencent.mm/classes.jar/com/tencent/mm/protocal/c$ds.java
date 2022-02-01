@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-public final class c$ds
+final class c$ds
   extends c.g
 {
-  public c$ds()
+  c$ds()
   {
-    super("idCardRealnameVerify", "idCardRealnameVerify", 235, true);
+    super("handleHaokanAction", "handleHaokanAction", 335, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ds
  * JD-Core Version:    0.7.0.1
  */

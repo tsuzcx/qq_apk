@@ -1,171 +1,120 @@
 package com.tencent.mm.plugin.exdevice.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import com.tencent.mm.model.az;
+import com.tencent.mm.plugin.exdevice.f.e;
+import com.tencent.mm.plugin.exdevice.service.p;
+import com.tencent.mm.plugin.exdevice.service.u;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
 import junit.framework.Assert;
 
-public final class a
+public class a
+  implements c
 {
-  private final int lRr;
-  private ByteBuffer lRs;
-  private ByteBuffer lRt;
+  private long oYP = -1L;
+  protected com.tencent.mm.plugin.exdevice.c.c oZW = null;
+  protected d oZX = null;
+  private m oZY = null;
   
-  public a(int paramInt)
+  public a(com.tencent.mm.plugin.exdevice.c.c paramc, d paramd)
   {
-    AppMethodBeat.i(20237);
-    this.lRr = 1024;
-    ab.d("MicroMsg.exdevice.AutoBuffer", "******AutoBuffer****** capacity = ".concat(String.valueOf(paramInt)));
-    if (paramInt >= 0)
-    {
-      bool1 = true;
-      Assert.assertTrue(bool1);
-      this.lRt = ByteBuffer.allocate(paramInt);
-      this.lRs = this.lRt.asReadOnlyBuffer();
-      if (this.lRt == null) {
-        break label100;
-      }
-      bool1 = true;
-      label71:
-      Assert.assertTrue(bool1);
-      if (this.lRs == null) {
-        break label105;
-      }
-    }
-    label100:
-    label105:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      Assert.assertTrue(bool1);
-      AppMethodBeat.o(20237);
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label71;
-    }
+    this.oZW = paramc;
+    this.oZX = paramd;
   }
   
-  private int getCapacity()
+  public final void a(long paramLong, int paramInt1, int paramInt2, String paramString, p paramp)
   {
-    AppMethodBeat.i(20238);
-    ab.d("MicroMsg.exdevice.AutoBuffer", "getCapacity = " + this.lRt.capacity());
-    int i = this.lRt.capacity();
-    AppMethodBeat.o(20238);
-    return i;
-  }
-  
-  public final void P(byte[] paramArrayOfByte, int paramInt)
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(20241);
-    Assert.assertTrue(true);
-    if (paramInt >= 0)
+    AppMethodBeat.i(23796);
+    ad.i("MicroMsg.exdevice.ExDeviceTask", "------onTaskEnd------ taskId = %d, errType = %d, errCode = %d, errMsg = %s, deviceId = %d, reqCmdId = %d, respCmdId = %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Long.valueOf(this.oZW.mQq), Short.valueOf(this.oZW.bZb()), Short.valueOf(this.oZW.oTg) });
+    long l = this.oZW.mQq;
+    if (paramInt1 == 0) {}
+    for (int i = 1;; i = 0)
     {
-      bool1 = true;
-      Assert.assertTrue(bool1);
-      if (paramArrayOfByte.length < 0) {
-        break label103;
+      com.tencent.mm.plugin.exdevice.h.a.s(l, i);
+      if ((paramp == null) || (paramp == this.oZY)) {
+        break;
       }
-      bool1 = true;
-      label30:
-      Assert.assertTrue(bool1);
-      if (paramArrayOfByte.length < paramInt + 0) {
-        break label108;
-      }
-      bool1 = true;
-      label44:
-      Assert.assertTrue(bool1);
-      if (this.lRs.remaining() < paramInt) {
-        break label113;
-      }
-    }
-    label103:
-    label108:
-    label113:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      Assert.assertTrue(bool1);
-      ab.d("MicroMsg.exdevice.AutoBuffer", "readByte dstOffset = 0 byteCount = ".concat(String.valueOf(paramInt)));
-      this.lRs.get(paramArrayOfByte, 0, paramInt);
-      AppMethodBeat.o(20241);
+      ad.e("MicroMsg.exdevice.ExDeviceTask", "netCmd != mRemoteTask");
+      AppMethodBeat.o(23796);
       return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label30;
-      bool1 = false;
-      break label44;
     }
-  }
-  
-  public final void Q(byte[] paramArrayOfByte, int paramInt)
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(20242);
-    Assert.assertTrue(true);
-    if (paramInt >= 0)
+    if ((-1 == paramInt1) && (-2 == paramInt2)) {
+      ad.e("MicroMsg.exdevice.ExDeviceTask", "Time Out in local!!!");
+    }
+    if (this.oZW.oTh != null)
     {
-      bool1 = true;
-      Assert.assertTrue(bool1);
-      if (paramArrayOfByte == null) {
-        break label152;
+      i = this.oZW.oTh.oXv;
+      if ((-5 == i) || (-3 == i) || (-4 == i))
+      {
+        ad.w("MicroMsg.exdevice.ExDeviceTask", "ErrorCode = %d, destroy channel(deviceId = %d)", new Object[] { Integer.valueOf(this.oZW.oTh.oXv), Long.valueOf(this.oZW.mQq) });
+        if ((u.cai().oTC == null) || (!u.cai().oTC.oZ(this.oZW.mQq))) {
+          break label329;
+        }
       }
     }
-    label152:
-    for (boolean bool1 = bool2;; bool1 = false)
+    label329:
+    for (i = 1;; i = 0)
     {
-      Assert.assertTrue(bool1);
-      ab.d("MicroMsg.exdevice.AutoBuffer", "writeByte srcOffset = 0 byteCount = ".concat(String.valueOf(paramInt)));
-      if (paramInt <= this.lRt.remaining()) {
-        break label158;
+      if (i == 0) {
+        ad.e("MicroMsg.exdevice.ExDeviceTask", "stopChannel Failed!!!");
       }
-      ab.d("MicroMsg.exdevice.AutoBuffer", "byteCount > mWriteStream.remaining() Recalloc");
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(getCapacity() + paramInt + 1024);
-      int i = this.lRs.position();
-      localByteBuffer.put(this.lRt.array());
-      localByteBuffer.put(paramArrayOfByte, 0, paramInt);
-      this.lRt = localByteBuffer;
-      this.lRs = localByteBuffer.asReadOnlyBuffer();
-      this.lRs.position(i);
-      AppMethodBeat.o(20242);
+      if (this.oZX != null) {
+        this.oZX.a(paramLong, paramInt1, paramInt2, paramString);
+      }
+      this.oZY = null;
+      AppMethodBeat.o(23796);
       return;
-      bool1 = false;
+      i = 0;
       break;
     }
-    label158:
-    this.lRt.put(paramArrayOfByte, 0, paramInt);
-    AppMethodBeat.o(20242);
   }
   
-  public final int getSize()
+  public final void a(d paramd)
   {
-    AppMethodBeat.i(20239);
-    ab.d("MicroMsg.exdevice.AutoBuffer", "size = " + this.lRt.position());
-    int i = this.lRt.position();
-    AppMethodBeat.o(20239);
-    return i;
+    this.oZX = paramd;
   }
   
-  public final short readShort()
+  public final boolean b(com.tencent.mm.plugin.exdevice.service.m paramm)
   {
-    AppMethodBeat.i(20240);
-    if (getSize() <= 1)
+    AppMethodBeat.i(23795);
+    if (paramm == null)
     {
-      IOException localIOException = new IOException("There is only one byte in array");
-      AppMethodBeat.o(20240);
-      throw localIOException;
+      ad.e("MicroMsg.exdevice.ExDeviceTask", "dispatcher is null");
+      AppMethodBeat.o(23795);
+      return false;
     }
-    short s = this.lRs.getShort();
-    ab.d("MicroMsg.exdevice.AutoBuffer", "getShort = ".concat(String.valueOf(s)));
-    AppMethodBeat.o(20240);
-    return s;
+    if (this.oZY != null)
+    {
+      ad.e("MicroMsg.exdevice.ExDeviceTask", "Prev task is still working!!!");
+      AppMethodBeat.o(23795);
+      return false;
+    }
+    ad.i("MicroMsg.exdevice.ExDeviceTask", "------startTask begin------cmdReqId = %d, cmdRespId = %d, deviceId = %d", new Object[] { Short.valueOf(this.oZW.bZb()), Short.valueOf(this.oZW.oTg), Long.valueOf(this.oZW.mQq) });
+    m localm = new m(this.oZW, this);
+    long l = paramm.a(localm);
+    if (-1L == l)
+    {
+      ad.e("MicroMsg.exdevice.ExDeviceTask", "dispatcher.startTask Failed!!!");
+      AppMethodBeat.o(23795);
+      return false;
+    }
+    this.oZY = localm;
+    this.oYP = l;
+    paramm = this.oZY;
+    Assert.assertNotNull(paramm.pas);
+    paramm = paramm.pas;
+    paramm.pal = false;
+    paramm.pam = false;
+    az.afE().cBt().postDelayed(paramm.pan, 15000L);
+    AppMethodBeat.o(23795);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.j.a
  * JD-Core Version:    0.7.0.1
  */

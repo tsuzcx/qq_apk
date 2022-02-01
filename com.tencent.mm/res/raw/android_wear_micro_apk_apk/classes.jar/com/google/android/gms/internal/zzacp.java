@@ -14,25 +14,25 @@ public final class zzacp
   implements bx<String, Integer>
 {
   public static final Parcelable.Creator<zzacp> CREATOR = new bv();
-  final int Hc;
-  private final HashMap<String, Integer> PD;
-  private final SparseArray<String> PE;
-  private final ArrayList<zzacp.zza> PF;
+  final int IR;
+  private final HashMap<String, Integer> Rs;
+  private final SparseArray<String> Rt;
+  private final ArrayList<zzacp.zza> Ru;
   
   public zzacp()
   {
-    this.Hc = 1;
-    this.PD = new HashMap();
-    this.PE = new SparseArray();
-    this.PF = null;
+    this.IR = 1;
+    this.Rs = new HashMap();
+    this.Rt = new SparseArray();
+    this.Ru = null;
   }
   
   zzacp(int paramInt, ArrayList<zzacp.zza> paramArrayList)
   {
-    this.Hc = paramInt;
-    this.PD = new HashMap();
-    this.PE = new SparseArray();
-    this.PF = null;
+    this.IR = paramInt;
+    this.Rs = new HashMap();
+    this.Rt = new SparseArray();
+    this.Ru = null;
     c(paramArrayList);
   }
   
@@ -42,21 +42,21 @@ public final class zzacp
     while (paramArrayList.hasNext())
     {
       zzacp.zza localzza = (zzacp.zza)paramArrayList.next();
-      String str = localzza.PG;
-      int i = localzza.PH;
-      this.PD.put(str, Integer.valueOf(i));
-      this.PE.put(i, str);
+      String str = localzza.Rv;
+      int i = localzza.Rw;
+      this.Rs.put(str, Integer.valueOf(i));
+      this.Rt.put(i, str);
     }
   }
   
-  final ArrayList<zzacp.zza> jk()
+  final ArrayList<zzacp.zza> jt()
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.PD.keySet().iterator();
+    Iterator localIterator = this.Rs.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localArrayList.add(new zzacp.zza(str, ((Integer)this.PD.get(str)).intValue()));
+      localArrayList.add(new zzacp.zza(str, ((Integer)this.Rs.get(str)).intValue()));
     }
     return localArrayList;
   }

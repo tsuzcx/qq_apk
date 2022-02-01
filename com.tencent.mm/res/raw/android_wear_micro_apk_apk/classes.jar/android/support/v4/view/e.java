@@ -8,29 +8,29 @@ import java.lang.reflect.Field;
 
 public final class e
 {
-  private static Field jM;
-  private static boolean jN;
-  static final g jO = new g();
+  private static Field lJ;
+  private static boolean lK;
+  static final g lL = new g();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      jO = new f();
+      lL = new f();
       return;
     }
   }
   
   static void a(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
   {
-    if (!jN) {}
+    if (!lK) {}
     try
     {
       Field localField = LayoutInflater.class.getDeclaredField("mFactory2");
-      jM = localField;
+      lJ = localField;
       localField.setAccessible(true);
-      jN = true;
-      if (jM == null) {}
+      lK = true;
+      if (lJ == null) {}
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
@@ -38,7 +38,7 @@ public final class e
       {
         try
         {
-          jM.set(paramLayoutInflater, paramFactory2);
+          lJ.set(paramLayoutInflater, paramFactory2);
           return;
         }
         catch (IllegalAccessException paramFactory2)
@@ -53,7 +53,7 @@ public final class e
   
   public static void b(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
   {
-    jO.b(paramLayoutInflater, paramFactory2);
+    lL.b(paramLayoutInflater, paramFactory2);
   }
 }
 

@@ -1,63 +1,70 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
-import a.f;
-import a.f.b.t;
-import a.f.b.v;
-import a.j.k;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.service.m;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.service.q;
+import com.tencent.mm.plugin.expt.a.b;
+import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.f;
+import d.g.a.a;
+import d.g.b.u;
+import d.g.b.w;
+import d.l;
+import d.l.k;
 import java.util.concurrent.TimeUnit;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendFakeNativePredownloadPeriodCheckLogic;", "", "()V", "INTERVAL", "", "getINTERVAL", "()J", "KEY_LAST_CHECK_TIMESTAMP", "", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "MMKV$delegate", "Lkotlin/Lazy;", "SP", "hitFrequencyLimit", "", "triggerCheck", "", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendFakeNativePredownloadPeriodCheckLogic;", "", "()V", "INTERVAL", "", "getINTERVAL", "()J", "KEY_LAST_CHECK_TIMESTAMP", "", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "MMKV$delegate", "Lkotlin/Lazy;", "SP", "hitFrequencyLimit", "", "triggerCheck", "", "plugin-appbrand-integration_release"})
 public final class d
 {
-  private static final f iWm;
-  public static final d iWn;
+  private static final f lKy;
+  public static final d lKz;
   
   static
   {
-    AppMethodBeat.i(154357);
-    eOJ = new k[] { (k)v.a(new t(v.aG(d.class), "MMKV", "getMMKV()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;")) };
-    iWn = new d();
-    iWm = a.g.j((a.f.a.a)d.a.iWo);
-    AppMethodBeat.o(154357);
+    AppMethodBeat.i(51351);
+    $$delegatedProperties = new k[] { (k)w.a(new u(w.bk(d.class), "MMKV", "getMMKV()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;")) };
+    lKz = new d();
+    lKy = d.g.E((a)d.a.lKA);
+    AppMethodBeat.o(51351);
   }
   
-  private static as aND()
+  private static ax Km()
   {
-    AppMethodBeat.i(154358);
-    as localas = (as)iWm.getValue();
-    AppMethodBeat.o(154358);
-    return localas;
+    AppMethodBeat.i(51352);
+    ax localax = (ax)lKy.getValue();
+    AppMethodBeat.o(51352);
+    return localax;
   }
   
-  public static void aNE()
+  public static void bpW()
   {
-    AppMethodBeat.i(154359);
-    if (!c.aNC())
+    AppMethodBeat.i(51353);
+    if (!c.bpT())
     {
-      AppMethodBeat.o(154359);
+      AppMethodBeat.o(51353);
       return;
     }
-    long l = aND().getLong("KEY_LAST_CHECK_TIMESTAMP", 0L);
-    if (bo.aoy() - l <= TimeUnit.MINUTES.toMillis(((com.tencent.mm.plugin.expt.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lVv, 60L))) {}
+    if (!c.bpV())
+    {
+      AppMethodBeat.o(51353);
+      return;
+    }
+    long l = Km().getLong("KEY_LAST_CHECK_TIMESTAMP", 0L);
+    if (bt.eGO() - l <= TimeUnit.MINUTES.toMillis(((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.ppp, 60L))) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(154359);
+      AppMethodBeat.o(51353);
       return;
     }
-    aND().putLong("KEY_LAST_CHECK_TIMESTAMP", bo.aoy());
-    ((m)com.tencent.mm.kernel.g.E(m.class)).yN("gh_b489f391e008@app");
-    AppMethodBeat.o(154359);
+    Km().putLong("KEY_LAST_CHECK_TIMESTAMP", bt.eGO());
+    ((q)com.tencent.mm.kernel.g.ab(q.class)).Eu("gh_b489f391e008@app");
+    AppMethodBeat.o(51353);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.d
  * JD-Core Version:    0.7.0.1
  */

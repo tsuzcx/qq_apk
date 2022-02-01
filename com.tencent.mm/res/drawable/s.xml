@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vector android:tint="?ft" android:height="24.0dip" android:width="24.0dip" android:autoMirrored="true" android:viewportWidth="24.0" android:viewportHeight="24.0"
+<inset android:insetLeft="@dimen/lv" android:insetRight="@dimen/lv" android:insetTop="@dimen/lw" android:insetBottom="@dimen/lw"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <path android:fillColor="@android:color/white" android:pathData="M20,11L7.8,11l5.6,-5.6L12,4l-8,8l8,8l1.4,-1.4L7.8,13L20,13L20,11z" />
-</vector>
+    <shape android:shape="rectangle">
+        <corners android:radius="@dimen/m1" />
+        <solid android:color="@android:color/white" />
+        <padding android:left="@dimen/lx" android:top="@dimen/ly" android:right="@dimen/lx" android:bottom="@dimen/ly" />
+    </shape>
+</inset>

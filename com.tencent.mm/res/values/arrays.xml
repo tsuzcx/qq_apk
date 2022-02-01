@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="a">
-        <item>@string/v1</item>
+        <item>@string/xf</item>
+    </string-array>
+    <string-array name="b">
+        <item>@string/dlx</item>
+    </string-array>
+    <string-array name="c">
+        <item>@string/dlw</item>
+    </string-array>
+    <string-array name="d">
+        <item>@string/f0r</item>
+        <item>@string/f0s</item>
     </string-array>
     <string-array name="e">
         <item>0</item>
@@ -18,8 +28,8 @@
         <item>正在完成恢复</item>
     </string-array>
     <string-array name="g">
-        <item>@string/am1</item>
-        <item>@string/am0</item>
+        <item>@string/ast</item>
+        <item>@string/ass</item>
     </string-array>
     <string-array name="h">
         <item></item>
@@ -730,12 +740,12 @@
         <item>com.tencent.xin.emoticon.tuzkig</item>
     </string-array>
     <string-array name="m">
-        <item>@string/cbc</item>
+        <item>@string/cwa</item>
     </string-array>
     <string-array name="n">
-        <item>@string/q0</item>
-        <item>@string/pn</item>
-        <item>@string/ph</item>
+        <item>@string/ry</item>
+        <item>@string/rk</item>
+        <item>@string/re</item>
     </string-array>
     <string-array name="o">
         <item>0</item>
@@ -743,47 +753,93 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+    <string-array name="p">
+        <item>appbrand</item>
+        <item>support</item>
+    </string-array>
     <string-array name="q">
-        <item>@string/rw</item>
-        <item>@string/vg</item>
-        <item>@string/vi</item>
-        <item>@string/vh</item>
-        <item>@string/q6</item>
-        <item>@string/rq</item>
+        <item>@string/u3</item>
+        <item>@string/xv</item>
+        <item>@string/xx</item>
+        <item>@string/xw</item>
+        <item>@string/s4</item>
+        <item>@string/tx</item>
+        <item>@string/ui</item>
         <item>@string/sa</item>
-        <item>@string/qc</item>
-        <item>@string/rv</item>
-        <item>@string/rt</item>
-        <item>@string/ru</item>
-        <item>@string/tm</item>
+        <item>@string/u2</item>
         <item>@string/u0</item>
+        <item>@string/u1</item>
+        <item>@string/vu</item>
+        <item>@string/w8</item>
+        <item>@string/wx</item>
+        <item>@string/xg</item>
+        <item>@string/gg</item>
+        <item>@string/x1</item>
+        <item>@string/ri</item>
+        <item>@string/tj</item>
         <item>@string/un</item>
-        <item>@string/v2</item>
-        <item>@string/gf</item>
-        <item>@string/ur</item>
-        <item>@string/pl</item>
-        <item>@string/rd</item>
-        <item>@string/sf</item>
-        <item>@string/ry</item>
+        <item>@string/u6</item>
     </string-array>
     <string-array name="r">
-        <item>@string/dm0</item>
-        <item>@string/dm1</item>
-        <item>@string/dlu</item>
+        <item>@string/eer</item>
+        <item>@string/ees</item>
+        <item>@string/eel</item>
+    </string-array>
+    <string-array name="s">
+        <item>@string/dm2</item>
+        <item>@string/go7</item>
+        <item>@string/go9</item>
+        <item>@string/go5</item>
+    </string-array>
+    <string-array name="t">
+        <item>@string/dm2</item>
+        <item>@string/go8</item>
+        <item>@string/go5</item>
+    </string-array>
+    <string-array name="u">
+        <item>@string/dm2</item>
+        <item>@string/go7</item>
+        <item>@string/go9</item>
+        <item>@string/go5</item>
+    </string-array>
+    <string-array name="v">
+        <item>@string/dm2</item>
+        <item>@string/go5</item>
+    </string-array>
+    <string-array name="w">
+        <item>@string/dm2</item>
+        <item>@string/go7</item>
+        <item>@string/go9</item>
+        <item>@string/go5</item>
+        <item>@string/go_</item>
+    </string-array>
+    <string-array name="x">
+        <item>@string/dm2</item>
+        <item>@string/go7</item>
+        <item>@string/go9</item>
+        <item>@string/go5</item>
+        <item>@string/go_</item>
+    </string-array>
+    <string-array name="y">
+        <item>@string/dm2</item>
+        <item>@string/go7</item>
+        <item>@string/go9</item>
+        <item>@string/go5</item>
+        <item>@string/go_</item>
     </string-array>
     <string-array name="z">
-        <item>@string/dv2</item>
-        <item>@string/e0u</item>
-        <item>@string/dg9</item>
+        <item>@string/eoj</item>
+        <item>@string/eue</item>
+        <item>@string/e8w</item>
     </string-array>
     <string-array name="a0">
-        <item>@string/dv2</item>
-        <item>@string/e0u</item>
+        <item>@string/eoj</item>
+        <item>@string/eue</item>
     </string-array>
     <string-array name="a1">
-        <item>@string/dia</item>
-        <item>@string/dib</item>
-        <item>@string/dg9</item>
+        <item>@string/ea2</item>
+        <item>@string/ea3</item>
+        <item>@string/e8w</item>
     </string-array>
     <string-array name="a2">
         <item>/::)</item>
@@ -931,33 +987,100 @@
         <item>0xd83c 0xdf89</item>
         <item>0xd83c 0xdf81</item>
     </string-array>
+    <string-array name="a5">
+        <item>@string/fdm</item>
+        <item>@string/fom</item>
+        <item>@string/dwb</item>
+        <item>@string/e8w</item>
+    </string-array>
+    <string-array name="a6">
+        <item>Log</item>
+        <item>@string/dzb</item>
+    </string-array>
+    <string-array name="a7">
+        <item>@string/avz</item>
+        <item>@string/avr</item>
+        <item>@string/avt</item>
+    </string-array>
     <string-array name="a8">
-        <item>@string/aov</item>
-        <item>@string/ap3</item>
+        <item>@string/avq</item>
+        <item>@string/avy</item>
     </string-array>
     <string-array name="a9">
-        <item>@string/axa</item>
-        <item>@string/b1w</item>
-        <item>@string/b1i</item>
+        <item>XFilesPDFReader</item>
+        <item>XFilesPPTReader</item>
+        <item>XFilesWordReader</item>
+        <item>XFilesExcelReader</item>
+        <item>FullScreenVideo</item>
     </string-array>
     <string-array name="a_">
-        <item>@string/axa</item>
-        <item>@string/b1w</item>
+        <item>@string/b5h</item>
+        <item>@string/b_6</item>
+        <item>@string/b9s</item>
     </string-array>
+    <string-array name="aa">
+        <item>@string/b5h</item>
+        <item>@string/b_6</item>
+    </string-array>
+    <string-array name="ab">
+        <item>000000</item>
+        <item>FF0000</item>
+        <item>00FF00</item>
+        <item>0000FF</item>
+        <item>00FFFF</item>
+        <item>FFBF00</item>
+        <item>FF00FF</item>
+        <item>A4A4A4</item>
+    </string-array>
+    <string-array name="ac">
+        <item>@string/et1</item>
+        <item>@string/et2</item>
+        <item>@string/et3</item>
+        <item>@string/et4</item>
+        <item>@string/et5</item>
+        <item>@string/et6</item>
+        <item>@string/et7</item>
+        <item>@string/et8</item>
+        <item>@string/et9</item>
+        <item>@string/et_</item>
+    </string-array>
+    <integer-array name="ad">
+        <item>10</item>
+        <item>12</item>
+        <item>14</item>
+        <item>16</item>
+        <item>18</item>
+        <item>20</item>
+        <item>24</item>
+        <item>28</item>
+        <item>32</item>
+        <item>36</item>
+    </integer-array>
     <string-array name="ae">
-        <item>@string/ehz</item>
-        <item>@string/ehy</item>
+        <item>@string/awm</item>
+        <item>@string/awn</item>
+        <item>@string/awo</item>
+        <item>@string/awp</item>
     </string-array>
     <string-array name="af">
+        <item>@string/fdf</item>
+        <item>@string/fde</item>
+    </string-array>
+    <string-array name="ag">
         <item>male</item>
         <item>female</item>
     </string-array>
-    <string-array name="ag">
-        <item>@string/ei6</item>
-        <item>@string/ei4</item>
-        <item>@string/ei3</item>
+    <string-array name="ah">
+        <item>@string/fdm</item>
+        <item>@string/fdk</item>
+        <item>@string/fdj</item>
     </string-array>
     <string-array name="ai">
+        <item>@string/fdl</item>
+        <item>@string/fdn</item>
+        <item>@string/fdo</item>
+    </string-array>
+    <string-array name="aj">
         <item>/::)</item>
         <item>/::~</item>
         <item>/::B</item>
@@ -1064,7 +1187,7 @@
         <item>/:&lt;&amp;</item>
         <item>/:&amp;></item>
     </string-array>
-    <string-array name="aj">
+    <string-array name="ak">
         <item>[微笑]</item>
         <item>[撇嘴]</item>
         <item>[色]</item>
@@ -1171,7 +1294,7 @@
         <item>[左太极]</item>
         <item>[右太极]</item>
     </string-array>
-    <string-array name="ak">
+    <string-array name="al">
         <item>[Smile]</item>
         <item>[Grimace]</item>
         <item>[Drool]</item>
@@ -1278,7 +1401,7 @@
         <item>[TaiChi L]</item>
         <item>[TaiChi R]</item>
     </string-array>
-    <string-array name="al">
+    <string-array name="am">
         <item>/微笑</item>
         <item>/撇嘴</item>
         <item>/色</item>
@@ -1385,7 +1508,7 @@
         <item>/左太极</item>
         <item>/右太极</item>
     </string-array>
-    <string-array name="am">
+    <string-array name="an">
         <item>[ยิ้ม]</item>
         <item>[หน้าบูด]</item>
         <item>[น้ำลายไหล]</item>
@@ -1492,7 +1615,7 @@
         <item>[หญิงต่อสู้]</item>
         <item>[ชายต่อสู้]</item>
     </string-array>
-    <string-array name="an">
+    <string-array name="ao">
         <item>[微笑]</item>
         <item>[撇嘴]</item>
         <item>[色]</item>
@@ -1599,58 +1722,77 @@
         <item>[左太極]</item>
         <item>[右太極]</item>
     </string-array>
-    <string-array name="ao">
+    <string-array name="ap">
         <item>微信验证码</item>
         <item>微信驗證碼</item>
         <item>Verification code from WeChat</item>
         <item>WeChat Verification code</item>
     </string-array>
     <string-array name="aq">
-        <item>@string/f21</item>
-        <item>@string/f1z</item>
-        <item>@string/f25</item>
-        <item>@string/f1w</item>
-        <item>@string/f26</item>
-        <item>@string/f23</item>
-        <item>@string/f22</item>
-        <item>@string/f1x</item>
-        <item>@string/f2a</item>
-        <item>@string/f29</item>
-        <item>@string/f28</item>
-        <item>@string/f1y</item>
+        <item>@string/g1h</item>
+        <item>@string/g1o</item>
+        <item>@string/g1p</item>
+        <item>@string/g1n</item>
+        <item>@string/g1a</item>
+        <item>@string/g1k</item>
+        <item>@string/g1m</item>
     </string-array>
     <string-array name="ar">
-        <item>@string/q0</item>
-        <item>@string/pn</item>
-        <item>@string/ph</item>
+        <item>@string/g1b</item>
+        <item>@string/g1_</item>
+        <item>@string/g1f</item>
+        <item>@string/g17</item>
+        <item>@string/g1g</item>
+        <item>@string/g1d</item>
+        <item>@string/g1c</item>
+        <item>@string/g18</item>
+        <item>@string/g1l</item>
+        <item>@string/g1j</item>
+        <item>@string/g1i</item>
+        <item>@string/g19</item>
+    </string-array>
+    <string-array name="as">
+        <item>@string/ry</item>
+        <item>@string/rk</item>
+        <item>@string/re</item>
     </string-array>
     <string-array name="at">
-        <item>@string/g3y</item>
-        <item>@string/g2w</item>
+        <item>@string/ggv</item>
     </string-array>
     <string-array name="au">
-        <item>@string/fx5</item>
+        <item>@string/h5s</item>
+        <item>@string/h4q</item>
     </string-array>
-    <integer-array name="aw">
+    <string-array name="av">
+        <item>@string/gyu</item>
+    </string-array>
+    <string-array name="aw">
+        <item>@string/xf</item>
+    </string-array>
+    <integer-array name="ax">
         <item>1</item>
         <item>5</item>
         <item>9</item>
         <item>2</item>
     </integer-array>
-    <string-array name="ax">
-        <item>身份证</item>
-        <item>回乡证</item>
-        <item>台胞证</item>
-        <item>护照</item>
-    </string-array>
     <string-array name="ay">
+        <item>@string/h77</item>
+        <item>@string/h76</item>
+        <item>@string/h79</item>
+        <item>@string/h78</item>
+    </string-array>
+    <string-array name="az">
+        <item>@string/fdf</item>
+        <item>@string/fde</item>
+    </string-array>
+    <string-array name="b0">
         <item>tools</item>
         <item>toolsmp</item>
         <item>appbrand</item>
         <item>support</item>
         <item>mm</item>
     </string-array>
-    <string-array name="az">
+    <string-array name="b1">
         <item>tools</item>
         <item>toolsmp</item>
         <item>appbrand</item>
@@ -1658,163 +1800,10 @@
         <item>mm</item>
         <item>all</item>
     </string-array>
-    <string-array name="b">
-        <item>@string/czc</item>
-    </string-array>
-    <string-array name="c">
-        <item>@string/czb</item>
-    </string-array>
-    <string-array name="d">
-        <item>@string/e68</item>
-        <item>@string/e69</item>
-    </string-array>
-    <string-array name="p">
-        <item>appbrand</item>
-        <item>support</item>
-    </string-array>
-    <string-array name="s">
-        <item>@string/czh</item>
-        <item>@string/fn4</item>
-        <item>@string/fn6</item>
-        <item>@string/fn2</item>
-    </string-array>
-    <string-array name="t">
-        <item>@string/czh</item>
-        <item>@string/fn5</item>
-        <item>@string/fn2</item>
-    </string-array>
-    <string-array name="u">
-        <item>@string/czh</item>
-        <item>@string/fn4</item>
-        <item>@string/fn6</item>
-        <item>@string/fn2</item>
-    </string-array>
-    <string-array name="v">
-        <item>@string/czh</item>
-        <item>@string/fn2</item>
-    </string-array>
-    <string-array name="w">
-        <item>@string/czh</item>
-        <item>@string/fn4</item>
-        <item>@string/fn6</item>
-        <item>@string/fn2</item>
-        <item>@string/fn7</item>
-    </string-array>
-    <string-array name="x">
-        <item>@string/czh</item>
-        <item>@string/fn4</item>
-        <item>@string/fn6</item>
-        <item>@string/fn2</item>
-        <item>@string/fn7</item>
-    </string-array>
-    <string-array name="y">
-        <item>@string/czh</item>
-        <item>@string/fn4</item>
-        <item>@string/fn6</item>
-        <item>@string/fn2</item>
-        <item>@string/fn7</item>
-    </string-array>
-    <string-array name="a5">
-        <item>@string/ei6</item>
-        <item>@string/esb</item>
-        <item>@string/d75</item>
-        <item>@string/dg9</item>
-    </string-array>
-    <string-array name="a6">
-        <item>Log</item>
-        <item>@string/d9q</item>
-    </string-array>
-    <string-array name="a7">
-        <item>@string/ap4</item>
-        <item>@string/aow</item>
-        <item>@string/aoy</item>
-    </string-array>
-    <string-array name="aa">
-        <item>000000</item>
-        <item>FF0000</item>
-        <item>00FF00</item>
-        <item>0000FF</item>
-        <item>00FFFF</item>
-        <item>FFBF00</item>
-        <item>FF00FF</item>
-        <item>A4A4A4</item>
-    </string-array>
-    <string-array name="ab">
-        <item>@string/dzg</item>
-        <item>@string/dzh</item>
-        <item>@string/dzi</item>
-        <item>@string/dzj</item>
-        <item>@string/dzk</item>
-        <item>@string/dzl</item>
-        <item>@string/dzm</item>
-        <item>@string/dzn</item>
-        <item>@string/dzo</item>
-        <item>@string/dzp</item>
-    </string-array>
-    <integer-array name="ac">
-        <item>10</item>
-        <item>12</item>
-        <item>14</item>
-        <item>16</item>
-        <item>18</item>
-        <item>20</item>
-        <item>24</item>
-        <item>28</item>
-        <item>32</item>
-        <item>36</item>
-    </integer-array>
-    <string-array name="ad">
-        <item>@string/apr</item>
-        <item>@string/aps</item>
-        <item>@string/apt</item>
-        <item>@string/apu</item>
-    </string-array>
-    <string-array name="ah">
-        <item>@string/ei5</item>
-        <item>@string/ei7</item>
-        <item>@string/ei8</item>
-    </string-array>
-    <string-array name="ap">
-        <item>@string/f27</item>
-        <item>@string/f2d</item>
-        <item>@string/f2e</item>
-        <item>@string/f2c</item>
-        <item>@string/f20</item>
-        <item>@string/f2_</item>
-        <item>@string/f2b</item>
-    </string-array>
-    <string-array name="as">
-        <item>@string/ffx</item>
-    </string-array>
-    <string-array name="av">
-        <item>@string/v1</item>
-    </string-array>
-    <string-array name="b0">
+    <string-array name="b2">
         <item>xwalk.pak</item>
         <item>xwalk_100_percent.pak</item>
         <item>icudtl.dat</item>
         <item>xweb_fullscreen_video.js</item>
     </string-array>
-    <item type="array" name="APKTOOL_DUMMY_1" />
-    <item type="array" name="APKTOOL_DUMMY_2" />
-    <item type="array" name="APKTOOL_DUMMY_3" />
-    <item type="array" name="APKTOOL_DUMMY_f" />
-    <item type="array" name="APKTOOL_DUMMY_12" />
-    <item type="array" name="APKTOOL_DUMMY_13" />
-    <item type="array" name="APKTOOL_DUMMY_14" />
-    <item type="array" name="APKTOOL_DUMMY_15" />
-    <item type="array" name="APKTOOL_DUMMY_16" />
-    <item type="array" name="APKTOOL_DUMMY_17" />
-    <item type="array" name="APKTOOL_DUMMY_18" />
-    <item type="array" name="APKTOOL_DUMMY_1f" />
-    <item type="array" name="APKTOOL_DUMMY_20" />
-    <item type="array" name="APKTOOL_DUMMY_21" />
-    <item type="array" name="APKTOOL_DUMMY_25" />
-    <item type="array" name="APKTOOL_DUMMY_26" />
-    <item type="array" name="APKTOOL_DUMMY_27" />
-    <item type="array" name="APKTOOL_DUMMY_28" />
-    <item type="array" name="APKTOOL_DUMMY_2c" />
-    <item type="array" name="APKTOOL_DUMMY_34" />
-    <item type="array" name="APKTOOL_DUMMY_37" />
-    <item type="array" name="APKTOOL_DUMMY_3a" />
 </resources>

@@ -13,28 +13,28 @@ final class av
   static final int[] EMPTY_STATE_SET = new int[0];
   static final int[] FOCUSED_STATE_SET;
   static final int[] PRESSED_STATE_SET;
-  private static final ThreadLocal<TypedValue> QX = new ThreadLocal();
   static final int[] SELECTED_STATE_SET;
-  static final int[] aoi;
-  static final int[] aoj;
-  private static final int[] aok = new int[1];
-  static final int[] dP;
-  static final int[] gc = { -16842910 };
+  private static final ThreadLocal<TypedValue> XW = new ThreadLocal();
+  static final int[] avJ;
+  static final int[] avK;
+  private static final int[] avL = new int[1];
+  static final int[] gZ;
+  static final int[] hl = { -16842910 };
   
   static
   {
     FOCUSED_STATE_SET = new int[] { 16842908 };
-    aoi = new int[] { 16843518 };
+    avJ = new int[] { 16843518 };
     PRESSED_STATE_SET = new int[] { 16842919 };
-    dP = new int[] { 16842912 };
+    gZ = new int[] { 16842912 };
     SELECTED_STATE_SET = new int[] { 16842913 };
-    aoj = new int[] { -16842919, -16842908 };
+    avK = new int[] { -16842919, -16842908 };
   }
   
-  public static int u(Context paramContext, int paramInt)
+  public static int v(Context paramContext, int paramInt)
   {
-    aok[0] = paramInt;
-    paramContext = az.a(paramContext, null, aok);
+    avL[0] = paramInt;
+    paramContext = az.a(paramContext, null, avL);
     try
     {
       paramInt = paramContext.getColor(0, 0);
@@ -42,14 +42,14 @@ final class av
     }
     finally
     {
-      paramContext.aoo.recycle();
+      paramContext.avP.recycle();
     }
   }
   
-  public static ColorStateList v(Context paramContext, int paramInt)
+  public static ColorStateList w(Context paramContext, int paramInt)
   {
-    aok[0] = paramInt;
-    paramContext = az.a(paramContext, null, aok);
+    avL[0] = paramInt;
+    paramContext = az.a(paramContext, null, avL);
     try
     {
       ColorStateList localColorStateList = paramContext.getColorStateList(0);
@@ -57,27 +57,27 @@ final class av
     }
     finally
     {
-      paramContext.aoo.recycle();
+      paramContext.avP.recycle();
     }
   }
   
-  public static int w(Context paramContext, int paramInt)
+  public static int x(Context paramContext, int paramInt)
   {
-    Object localObject = v(paramContext, paramInt);
+    Object localObject = w(paramContext, paramInt);
     if ((localObject != null) && (((ColorStateList)localObject).isStateful())) {
-      return ((ColorStateList)localObject).getColorForState(gc, ((ColorStateList)localObject).getDefaultColor());
+      return ((ColorStateList)localObject).getColorForState(hl, ((ColorStateList)localObject).getDefaultColor());
     }
-    TypedValue localTypedValue = (TypedValue)QX.get();
+    TypedValue localTypedValue = (TypedValue)XW.get();
     localObject = localTypedValue;
     if (localTypedValue == null)
     {
       localObject = new TypedValue();
-      QX.set(localObject);
+      XW.set(localObject);
     }
     paramContext.getTheme().resolveAttribute(16842803, (TypedValue)localObject, true);
     float f = ((TypedValue)localObject).getFloat();
-    paramInt = u(paramContext, paramInt);
-    return b.p(paramInt, Math.round(f * Color.alpha(paramInt)));
+    paramInt = v(paramContext, paramInt);
+    return b.q(paramInt, Math.round(f * Color.alpha(paramInt)));
   }
 }
 

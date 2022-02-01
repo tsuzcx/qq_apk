@@ -10,11 +10,11 @@ final class ap
       return 0;
     }
     if (!paramBoolean) {
-      return Math.abs(ab.ao(paramView1) - ab.ao(paramView2)) + 1;
+      return Math.abs(ab.av(paramView1) - ab.av(paramView2)) + 1;
     }
-    int i = params.af(paramView2);
-    int j = params.ae(paramView1);
-    return Math.min(params.dc(), i - j);
+    int i = params.am(paramView2);
+    int j = params.al(paramView1);
+    return Math.min(params.dl(), i - j);
   }
   
   static int a(ak paramak, s params, View paramView1, View paramView2, ab paramab, boolean paramBoolean1, boolean paramBoolean2)
@@ -38,8 +38,8 @@ final class ap
     }
     return j;
     label45:
-    i = Math.min(ab.ao(paramView1), ab.ao(paramView2));
-    j = Math.max(ab.ao(paramView1), ab.ao(paramView2));
+    i = Math.min(ab.av(paramView1), ab.av(paramView2));
+    j = Math.max(ab.av(paramView1), ab.av(paramView2));
     if (paramBoolean2) {}
     for (i = Math.max(0, paramak.getItemCount() - j - 1);; i = Math.max(0, i))
     {
@@ -47,10 +47,10 @@ final class ap
       if (!paramBoolean1) {
         break;
       }
-      j = Math.abs(params.af(paramView2) - params.ae(paramView1));
-      int k = Math.abs(ab.ao(paramView1) - ab.ao(paramView2));
+      j = Math.abs(params.am(paramView2) - params.al(paramView1));
+      int k = Math.abs(ab.av(paramView1) - ab.av(paramView2));
       float f = j / (k + 1);
-      return Math.round(i * f + (params.da() - params.ae(paramView1)));
+      return Math.round(i * f + (params.dj() - params.al(paramView1)));
     }
   }
   
@@ -62,9 +62,9 @@ final class ap
     if (!paramBoolean) {
       return paramak.getItemCount();
     }
-    int i = params.af(paramView2);
-    int j = params.ae(paramView1);
-    int k = Math.abs(ab.ao(paramView1) - ab.ao(paramView2));
+    int i = params.am(paramView2);
+    int j = params.al(paramView1);
+    int k = Math.abs(ab.av(paramView1) - ab.av(paramView2));
     return (int)((i - j) / (k + 1) * paramak.getItemCount());
   }
 }

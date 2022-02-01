@@ -1,77 +1,67 @@
 package com.google.android.exoplayer2.h;
 
 import android.net.Uri;
-import com.google.android.exoplayer2.i.a;
+import com.google.android.exoplayer2.i.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.InputStream;
 
-public final class v
-  implements g
+public final class v<T>
+  implements t.c
 {
-  private final g aQR;
-  private final f aZE;
+  private final g aWG;
+  public final j bml;
+  private final a<? extends T> bxC;
+  public volatile long bxD;
+  private volatile boolean isCanceled;
+  public volatile T result;
+  public final int type;
   
-  public v(g paramg, f paramf)
+  public v(g paramg, Uri paramUri, int paramInt, a<? extends T> parama)
   {
-    AppMethodBeat.i(152015);
-    this.aQR = ((g)a.checkNotNull(paramg));
-    this.aZE = ((f)a.checkNotNull(paramf));
-    AppMethodBeat.o(152015);
+    AppMethodBeat.i(93100);
+    this.aWG = paramg;
+    this.bml = new j(paramUri);
+    this.type = paramInt;
+    this.bxC = parama;
+    AppMethodBeat.o(93100);
   }
   
-  public final long a(j paramj)
+  public final void tN()
   {
-    AppMethodBeat.i(152016);
-    long l = this.aQR.a(paramj);
-    j localj = paramj;
-    if (paramj.aPF == -1L)
-    {
-      localj = paramj;
-      if (l != -1L) {
-        localj = new j(paramj.uri, paramj.aYy, paramj.position, l, paramj.key, paramj.flags);
-      }
-    }
-    this.aZE.b(localj);
-    AppMethodBeat.o(152016);
-    return l;
+    this.isCanceled = true;
   }
   
-  public final void close()
+  public final boolean tO()
   {
-    AppMethodBeat.i(152019);
+    return this.isCanceled;
+  }
+  
+  public final void tP()
+  {
+    AppMethodBeat.i(93101);
+    i locali = new i(this.aWG, this.bml);
     try
     {
-      this.aQR.close();
+      locali.vj();
+      this.result = this.bxC.a(this.aWG.getUri(), locali);
       return;
     }
     finally
     {
-      this.aZE.close();
-      AppMethodBeat.o(152019);
+      this.bxD = locali.bwx;
+      x.closeQuietly(locali);
+      AppMethodBeat.o(93101);
     }
   }
   
-  public final Uri getUri()
+  public static abstract interface a<T>
   {
-    AppMethodBeat.i(152018);
-    Uri localUri = this.aQR.getUri();
-    AppMethodBeat.o(152018);
-    return localUri;
-  }
-  
-  public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(152017);
-    paramInt2 = this.aQR.read(paramArrayOfByte, paramInt1, paramInt2);
-    if (paramInt2 > 0) {
-      this.aZE.write(paramArrayOfByte, paramInt1, paramInt2);
-    }
-    AppMethodBeat.o(152017);
-    return paramInt2;
+    public abstract T a(Uri paramUri, InputStream paramInputStream);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.h.v
  * JD-Core Version:    0.7.0.1
  */

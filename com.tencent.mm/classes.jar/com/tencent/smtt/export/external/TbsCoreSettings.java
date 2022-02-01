@@ -20,7 +20,9 @@ public class TbsCoreSettings
   public static final String TBS_SETTINGS_APP_SCENE_ID = "app_scene_id";
   public static final String TBS_SETTINGS_APP_USE_SCENE = "app_use_scene";
   public static final String TBS_SETTINGS_CHECK_TBS_VALIDITY = "check_tbs_validity";
+  public static final String TBS_SETTINGS_DATA_DIRECTORY_SUFFIX = "data_directory_suffix";
   public static final String TBS_SETTINGS_IS_LOWEND_DEVICES = "sandbox_isLowEndDevice";
+  public static final String TBS_SETTINGS_PRAVITE_MTT_CLASSES = "use_mtt_classes";
   public static final String TBS_SETTINGS_SANDBOX_BUILDINFO = "sandbox_buildinfo";
   public static final String TBS_SETTINGS_USE_DEXLOADER_SERVICE = "use_dexloader_service";
   public static final String TBS_SETTINGS_USE_PRIVATE_CLASSLOADER = "use_private_classloader";
@@ -31,7 +33,7 @@ public class TbsCoreSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.smtt.export.external.TbsCoreSettings
  * JD-Core Version:    0.7.0.1
  */

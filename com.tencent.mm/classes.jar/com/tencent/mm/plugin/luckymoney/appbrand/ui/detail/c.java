@@ -8,9 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.luckymoney.model.x;
-import com.tencent.mm.protocal.protobuf.aty;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.luckymoney.model.z;
+import com.tencent.mm.protocal.protobuf.bez;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.wallet_core.ui.e;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,50 +20,50 @@ public final class c
 {
   private Context mContext;
   private LayoutInflater mInflater;
-  private List<aty> oja;
-  private String ojb;
-  boolean ojc;
-  private int ojd;
-  private c.a oje;
+  private List<bez> sYN;
+  private String sYO;
+  boolean sYP;
+  private int sYQ;
+  private a sYR;
   
   public c(Context paramContext)
   {
-    AppMethodBeat.i(42017);
-    this.oja = new LinkedList();
-    this.ojb = null;
-    this.ojc = false;
-    this.ojd = 1;
-    this.oje = null;
+    AppMethodBeat.i(64906);
+    this.sYN = new LinkedList();
+    this.sYO = null;
+    this.sYP = false;
+    this.sYQ = 1;
+    this.sYR = null;
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(paramContext);
-    AppMethodBeat.o(42017);
+    AppMethodBeat.o(64906);
   }
   
-  private aty yh(int paramInt)
+  private bez FK(int paramInt)
   {
-    AppMethodBeat.i(42020);
-    aty localaty = (aty)this.oja.get(paramInt);
-    AppMethodBeat.o(42020);
-    return localaty;
+    AppMethodBeat.i(64909);
+    bez localbez = (bez)this.sYN.get(paramInt);
+    AppMethodBeat.o(64909);
+    return localbez;
   }
   
-  public final void ci(List<aty> paramList)
+  public final void eb(List<bez> paramList)
   {
-    AppMethodBeat.i(42018);
+    AppMethodBeat.i(64907);
     if (paramList == null) {}
-    for (this.oja = new LinkedList();; this.oja = paramList)
+    for (this.sYN = new LinkedList();; this.sYN = paramList)
     {
       notifyDataSetChanged();
-      AppMethodBeat.o(42018);
+      AppMethodBeat.o(64907);
       return;
     }
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(42019);
-    int i = this.oja.size();
-    AppMethodBeat.o(42019);
+    AppMethodBeat.i(64908);
+    int i = this.sYN.size();
+    AppMethodBeat.o(64908);
     return i;
   }
   
@@ -74,54 +74,71 @@ public final class c
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(42021);
+    AppMethodBeat.i(64910);
     if (paramView == null)
     {
-      paramView = this.mInflater.inflate(2130970044, paramViewGroup, false);
-      paramViewGroup = new c.b(this);
-      paramViewGroup.ldP = paramView.findViewById(2131821003);
-      paramViewGroup.kPy = ((ImageView)paramView.findViewById(2131825822));
-      paramViewGroup.nzx = ((TextView)paramView.findViewById(2131825823));
-      paramViewGroup.ojf = ((TextView)paramView.findViewById(2131825827));
-      paramViewGroup.ojg = ((TextView)paramView.findViewById(2131825824));
-      paramViewGroup.ojh = ((TextView)paramView.findViewById(2131825826));
-      paramViewGroup.oji = ((TextView)paramView.findViewById(2131825825));
-      paramViewGroup.ojj = ((ImageView)paramView.findViewById(2131825828));
-      paramViewGroup.ojk = ((TextView)paramView.findViewById(2131825829));
+      paramView = this.mInflater.inflate(2131494658, paramViewGroup, false);
+      paramViewGroup = new b();
+      paramViewGroup.iIW = paramView.findViewById(2131304239);
+      paramViewGroup.nVN = ((ImageView)paramView.findViewById(2131301935));
+      paramViewGroup.siX = ((TextView)paramView.findViewById(2131301938));
+      paramViewGroup.sYS = ((TextView)paramView.findViewById(2131301939));
+      paramViewGroup.sYT = ((TextView)paramView.findViewById(2131301933));
+      paramViewGroup.sYU = ((TextView)paramView.findViewById(2131301934));
+      paramViewGroup.sYV = ((TextView)paramView.findViewById(2131301940));
+      paramViewGroup.sYW = ((ImageView)paramView.findViewById(2131301936));
+      paramViewGroup.sYX = ((TextView)paramView.findViewById(2131301937));
       paramView.setTag(paramViewGroup);
     }
-    aty localaty;
+    bez localbez;
     for (;;)
     {
-      localaty = yh(paramInt);
-      x.b(paramViewGroup.kPy, localaty.oiD, localaty.username);
-      paramViewGroup.ojh.setVisibility(8);
-      x.a(this.mContext, paramViewGroup.nzx, localaty.nickname);
-      String str = this.mContext.getString(2131301295, new Object[] { e.E(localaty.xiM / 100.0D) });
-      paramViewGroup.ojg.setText(str);
-      paramViewGroup.ojf.setText(x.j(this.mContext, localaty.xiN * 1000L));
-      paramViewGroup.ojf.setVisibility(0);
-      paramViewGroup.oji.setVisibility(8);
-      if (!bo.isNullOrNil(localaty.xiP)) {
+      localbez = FK(paramInt);
+      z.b(paramViewGroup.nVN, localbez.sYq, localbez.username);
+      paramViewGroup.sYU.setVisibility(8);
+      z.a(this.mContext, paramViewGroup.siX, localbez.nickname);
+      String str = this.mContext.getString(2131760940, new Object[] { e.D(localbez.DCe / 100.0D) });
+      paramViewGroup.sYT.setText(str);
+      paramViewGroup.sYS.setText(z.m(this.mContext, localbez.DCf * 1000L));
+      paramViewGroup.sYS.setVisibility(0);
+      paramViewGroup.sYV.setVisibility(8);
+      if (!bt.isNullOrNil(localbez.DCh)) {
         break;
       }
-      paramViewGroup.ojj.setVisibility(8);
-      paramViewGroup.ojk.setVisibility(8);
-      AppMethodBeat.o(42021);
+      paramViewGroup.sYW.setVisibility(8);
+      paramViewGroup.sYX.setVisibility(8);
+      AppMethodBeat.o(64910);
       return paramView;
-      paramViewGroup = (c.b)paramView.getTag();
+      paramViewGroup = (b)paramView.getTag();
     }
-    paramViewGroup.ojk.setText(localaty.xiP);
-    if (this.ojd == 2) {
-      paramViewGroup.ojj.setImageResource(2130839405);
+    paramViewGroup.sYX.setText(localbez.DCh);
+    if (this.sYQ == 2) {
+      paramViewGroup.sYW.setImageResource(2131233018);
     }
     for (;;)
     {
-      paramViewGroup.ojj.setVisibility(0);
-      paramViewGroup.ojk.setVisibility(0);
+      paramViewGroup.sYW.setVisibility(0);
+      paramViewGroup.sYX.setVisibility(0);
       break;
-      paramViewGroup.ojj.setImageResource(2130839354);
+      paramViewGroup.sYW.setImageResource(2131232964);
     }
+  }
+  
+  static abstract interface a {}
+  
+  final class b
+  {
+    View iIW;
+    ImageView nVN;
+    TextView sYS;
+    TextView sYT;
+    TextView sYU;
+    TextView sYV;
+    ImageView sYW;
+    TextView sYX;
+    TextView siX;
+    
+    b() {}
   }
 }
 

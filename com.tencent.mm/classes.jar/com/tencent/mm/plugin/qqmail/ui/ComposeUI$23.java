@@ -13,16 +13,16 @@ final class ComposeUI$23
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(68206);
+    AppMethodBeat.i(122931);
     if (paramBoolean) {
-      ComposeUI.j(this.pLX).setSelection(ComposeUI.j(this.pLX).getText().length());
+      ComposeUI.j(this.uOk).setSelection(ComposeUI.j(this.uOk).getText().length());
     }
-    AppMethodBeat.o(68206);
+    AppMethodBeat.o(122931);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.ComposeUI.23
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,22 @@
 package com.tencent.mm.ui.contact;
 
-public abstract class n
-  extends o
+import android.app.Activity;
+import android.widget.ListView;
+import com.tencent.mm.ui.contact.a.a;
+
+public abstract interface n
 {
-  public a Adj;
+  public abstract boolean a(a parama);
   
-  public n(m paramm, boolean paramBoolean, int paramInt)
-  {
-    super(paramm, paramBoolean, paramInt);
-  }
+  public abstract boolean b(a parama);
   
-  public void a(a parama)
-  {
-    this.Adj = parama;
-  }
+  public abstract Activity getActivity();
   
-  public abstract void a(String paramString, int[] paramArrayOfInt, boolean paramBoolean);
-  
-  public abstract void clearData();
-  
-  public static abstract interface a
-  {
-    public abstract void w(String paramString, int paramInt, boolean paramBoolean);
-  }
+  public abstract ListView getContentLV();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.contact.n
  * JD-Core Version:    0.7.0.1
  */

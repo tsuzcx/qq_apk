@@ -6,16 +6,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.g.a.iy;
-import com.tencent.mm.g.a.uy;
-import com.tencent.mm.plugin.wallet.balance.a.a.ad;
-import com.tencent.mm.plugin.wallet.balance.a.a.l;
+import com.tencent.mm.al.c.a;
+import com.tencent.mm.al.n;
+import com.tencent.mm.g.a.jw;
+import com.tencent.mm.g.a.wx;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.wallet.balance.model.lqt.ae;
+import com.tencent.mm.plugin.wallet.balance.model.lqt.ag;
+import com.tencent.mm.plugin.wallet.balance.model.lqt.o;
 import com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtPlanAddUI;
-import com.tencent.mm.plugin.wallet_core.c.x;
-import com.tencent.mm.protocal.protobuf.bjb;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.wallet_core.c.z;
+import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.protocal.protobuf.bwk;
+import com.tencent.mm.protocal.protobuf.cer;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.net.URLDecoder;
 import java.util.HashMap;
@@ -25,122 +30,122 @@ import java.util.Map;
 public class WalletOpenViewProxyUI
   extends WalletBaseUI
 {
-  private Map<String, String> uBw;
+  private Map<String, String> AyC;
   
   public WalletOpenViewProxyUI()
   {
-    AppMethodBeat.i(48301);
-    this.uBw = new HashMap();
-    AppMethodBeat.o(48301);
+    AppMethodBeat.i(71942);
+    this.AyC = new HashMap();
+    AppMethodBeat.o(71942);
   }
   
-  private void afT(String paramString)
+  private void auE(final String paramString)
   {
-    AppMethodBeat.i(48305);
+    AppMethodBeat.i(71946);
     int i;
-    if (!bo.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
-      paramString = (String)this.uBw.get("openview");
+      paramString = (String)this.AyC.get("openview");
       if ("open_wcpay_biz_view".equals(paramString))
       {
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletOpenViewProxyUI", "func[handleOpenView] do open mall_index_ui");
-        com.tencent.mm.pluginsdk.wallet.h.gc(getContext());
+        ad.d("MicroMsg.WalletOpenViewProxyUI", "func[handleOpenView] do open mall_index_ui");
+        com.tencent.mm.pluginsdk.wallet.f.hp(getContext());
         i = 1;
       }
     }
     for (;;)
     {
       paramString = new Intent();
-      paramString.putExtra("closeWebView", (String)this.uBw.get("closeWebView"));
+      paramString.putExtra("closeWebView", (String)this.AyC.get("closeWebView"));
       setResult(-1, paramString);
       if (i != 0) {
         finish();
       }
-      AppMethodBeat.o(48305);
+      AppMethodBeat.o(71946);
       return;
       if ("open_wcpay_balance_view".equals(paramString))
       {
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletOpenViewProxyUI", "func[handleOpenView] do open wallet_balance_manager_ui");
-        com.tencent.mm.pluginsdk.wallet.h.an(getContext(), 0);
+        ad.d("MicroMsg.WalletOpenViewProxyUI", "func[handleOpenView] do open wallet_balance_manager_ui");
+        com.tencent.mm.pluginsdk.wallet.f.an(getContext(), 0);
         i = 1;
       }
       else if ("open_wcpay_order_detail_view".equals(paramString))
       {
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletOpenViewProxyUI", "func[handleOpenView] do open mall_order_transaction_info_ui");
+        ad.d("MicroMsg.WalletOpenViewProxyUI", "func[handleOpenView] do open mall_order_transaction_info_ui");
         paramString = new Intent();
-        paramString.putExtra("trans_id", (String)this.uBw.get("trans_id"));
+        paramString.putExtra("trans_id", (String)this.AyC.get("trans_id"));
         paramString.putExtra("scene", 1);
-        if (this.uBw.containsKey("bill_id")) {
-          paramString.putExtra("bill_id", (String)this.uBw.get("bill_id"));
+        if (this.AyC.containsKey("bill_id")) {
+          paramString.putExtra("bill_id", (String)this.AyC.get("bill_id"));
         }
-        com.tencent.mm.bq.d.b(getContext(), "order", ".ui.MallOrderTransactionInfoUI", paramString);
+        com.tencent.mm.bs.d.b(getContext(), "order", ".ui.MallOrderTransactionInfoUI", paramString);
         i = 1;
       }
       else if ("open_wcpay_f2f_receive_detail".equals(paramString))
       {
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletOpenViewProxyUI", "func[handleOpenView] do open open_wcpay_f2f_receive_detail");
+        ad.d("MicroMsg.WalletOpenViewProxyUI", "func[handleOpenView] do open open_wcpay_f2f_receive_detail");
         paramString = new Intent();
-        paramString.putExtra("key_timestamp", bo.getLong((String)this.uBw.get("fromtimestamp"), 0L));
+        paramString.putExtra("key_timestamp", bt.getLong((String)this.AyC.get("fromtimestamp"), 0L));
         paramString.putExtra("key_from_scene", 1);
-        com.tencent.mm.bq.d.b(getContext(), "collect", ".ui.CollectBillUI", paramString);
-        com.tencent.mm.plugin.report.service.h.qsU.e(13944, new Object[] { Integer.valueOf(2) });
+        com.tencent.mm.bs.d.b(getContext(), "collect", ".ui.CollectBillUI", paramString);
+        h.vKh.f(13944, new Object[] { Integer.valueOf(2) });
         i = 1;
       }
       else if ("open_wcpay_grouppay_detail".equals(paramString))
       {
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletOpenViewProxyUI", "func[handleOpenView] do open open_wcpay_grouppay_detail");
+        ad.d("MicroMsg.WalletOpenViewProxyUI", "func[handleOpenView] do open open_wcpay_grouppay_detail");
         paramString = new Intent();
-        paramString.putExtra("bill_no", (String)this.uBw.get("billno"));
-        paramString.putExtra("chatroom", (String)this.uBw.get("groupid"));
-        paramString.putExtra("key_sign", (String)this.uBw.get("sign"));
-        paramString.putExtra("key_ver", (String)this.uBw.get("ver"));
+        paramString.putExtra("bill_no", (String)this.AyC.get("billno"));
+        paramString.putExtra("chatroom", (String)this.AyC.get("groupid"));
+        paramString.putExtra("key_sign", (String)this.AyC.get("sign"));
+        paramString.putExtra("key_ver", (String)this.AyC.get("ver"));
         paramString.putExtra("enter_scene", 5);
-        com.tencent.mm.bq.d.b(getContext(), "aa", ".ui.PaylistAAUI", paramString);
+        com.tencent.mm.bs.d.b(getContext(), "aa", ".ui.PaylistAAUI", paramString);
         i = 1;
       }
       else if ("open_wcpay_t2bc_detail".equals(paramString))
       {
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletOpenViewProxyUI", "do open_wcpay_t2bc_detail");
+        ad.d("MicroMsg.WalletOpenViewProxyUI", "do open_wcpay_t2bc_detail");
         paramString = new Intent();
-        paramString.putExtra("key_transfer_bill_id", (String)this.uBw.get("transfer_bill_id"));
+        paramString.putExtra("key_transfer_bill_id", (String)this.AyC.get("transfer_bill_id"));
         paramString.putExtra("key_enter_scene", 1);
-        com.tencent.mm.bq.d.b(getContext(), "remittance", ".bankcard.ui.BankRemitDetailUI", paramString);
+        com.tencent.mm.bs.d.b(getContext(), "remittance", ".bankcard.ui.BankRemitDetailUI", paramString);
         i = 1;
       }
       else if ("open_honey_pay_home".equals(paramString))
       {
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletOpenViewProxyUI", "do open honey pay view");
+        ad.d("MicroMsg.WalletOpenViewProxyUI", "do open honey pay view");
         paramString = new Intent();
-        com.tencent.mm.bq.d.b(getContext(), "honey_pay", ".ui.HoneyPayMainUI", paramString);
+        com.tencent.mm.bs.d.b(getContext(), "honey_pay", ".ui.HoneyPayMainUI", paramString);
         i = 1;
       }
       else if ("open_wcpay_t2bc_view".equals(paramString))
       {
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletOpenViewProxyUI", "do open VIEW_OPEN_T2BC_UI");
+        ad.d("MicroMsg.WalletOpenViewProxyUI", "do open VIEW_OPEN_T2BC_UI");
         paramString = new Intent();
-        com.tencent.mm.bq.d.b(getContext(), "remittance", ".bankcard.ui.BankRemitBankcardInputUI", paramString);
+        com.tencent.mm.bs.d.b(getContext(), "remittance", ".bankcard.ui.BankRemitBankcardInputUI", paramString);
         i = 1;
       }
       else if ("open_wcpay_fetch_balance_view".equals(paramString))
       {
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletOpenViewProxyUI", "do open VIEW_OPEN_FETCH_BALANCE_UI");
-        paramString = new uy();
-        paramString.cLw.context = getContext();
-        com.tencent.mm.sdk.b.a.ymk.l(paramString);
+        ad.d("MicroMsg.WalletOpenViewProxyUI", "do open VIEW_OPEN_FETCH_BALANCE_UI");
+        paramString = new wx();
+        paramString.dCt.context = getContext();
+        com.tencent.mm.sdk.b.a.ESL.l(paramString);
         i = 1;
       }
       else if ("open_wcpay_wallet_lock_view".equals(paramString))
       {
         paramString = new Intent();
-        paramString.putExtra("wallet_lock_jsapi_scene", (String)this.uBw.get("entry_scene"));
-        ((com.tencent.mm.plugin.walletlock.a.b)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.walletlock.a.b.class)).b(this, paramString);
+        paramString.putExtra("wallet_lock_jsapi_scene", (String)this.AyC.get("entry_scene"));
+        ((com.tencent.mm.plugin.walletlock.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.walletlock.a.b.class)).b(this, paramString);
         i = 1;
       }
       else if ("open_wcpay_security_setting_view".equals(paramString))
       {
         paramString = new Intent();
-        paramString.putExtra("wallet_lock_jsapi_scene", (String)this.uBw.get("entry_scene"));
-        com.tencent.mm.bq.d.b(this, "wallet", ".pwd.ui.WalletSecuritySettingUI", paramString);
+        paramString.putExtra("wallet_lock_jsapi_scene", (String)this.AyC.get("entry_scene"));
+        com.tencent.mm.bs.d.b(this, "wallet", ".pwd.ui.WalletSecuritySettingUI", paramString);
         i = 1;
       }
       else
@@ -149,20 +154,20 @@ public class WalletOpenViewProxyUI
         Object localObject2;
         if ("open_wcpay_c2c_message_view".equals(paramString))
         {
-          if (this.uBw != null)
+          if (this.AyC != null)
           {
-            i = bo.getInt((String)this.uBw.get("bizType"), -1);
+            i = bt.getInt((String)this.AyC.get("bizType"), -1);
             if (i == 1)
             {
-              paramString = (String)this.uBw.get("bizId");
-              localObject1 = (String)this.uBw.get("username");
-              long l = bo.getLong((String)this.uBw.get("createTime"), -1L);
-              com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletOpenViewProxyUI", "view open c2c message view, bizType: %s, bizId: %s, username: %s, createTime: %s", new Object[] { Integer.valueOf(i), paramString, localObject1, Long.valueOf(l) });
-              localObject2 = new iy();
-              ((iy)localObject2).cyq.cyr = paramString;
-              ((iy)localObject2).cyq.username = ((String)localObject1);
-              ((iy)localObject2).cyq.cys = Long.valueOf(l);
-              com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject2);
+              paramString = (String)this.AyC.get("bizId");
+              localObject1 = (String)this.AyC.get("username");
+              long l = bt.getLong((String)this.AyC.get("createTime"), -1L);
+              ad.i("MicroMsg.WalletOpenViewProxyUI", "view open c2c message view, bizType: %s, bizId: %s, username: %s, createTime: %s", new Object[] { Integer.valueOf(i), paramString, localObject1, Long.valueOf(l) });
+              localObject2 = new jw();
+              ((jw)localObject2).dnY.dnZ = paramString;
+              ((jw)localObject2).dnY.username = ((String)localObject1);
+              ((jw)localObject2).dnY.doa = Long.valueOf(l);
+              com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject2);
             }
             i = 1;
           }
@@ -172,7 +177,7 @@ public class WalletOpenViewProxyUI
           if ("open_lqt_auto_planindex_view".equals(paramString))
           {
             paramString = new Intent();
-            com.tencent.mm.bq.d.b(getContext(), "wallet", ".balance.ui.lqt.WalletLqtPlanHomeUI", paramString);
+            com.tencent.mm.bs.d.b(getContext(), "wallet", ".balance.ui.lqt.WalletLqtPlanBeforeHomeUI", paramString);
             i = 1;
             continue;
           }
@@ -180,42 +185,45 @@ public class WalletOpenViewProxyUI
           {
             paramString = new Intent(this, WalletLqtPlanAddUI.class);
             paramString.putExtra("key_mode", 1);
-            startActivity(paramString);
+            paramString = new com.tencent.mm.hellhoundlib.b.a().bd(paramString);
+            com.tencent.mm.hellhoundlib.a.a.a(this, paramString.adn(), "com/tencent/mm/plugin/wallet_index/ui/WalletOpenViewProxyUI", "handleOpenView", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)paramString.lS(0));
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_index/ui/WalletOpenViewProxyUI", "handleOpenView", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             i = 1;
             continue;
           }
           if ("open_wcpay_lqt_save".equals(paramString))
           {
-            com.tencent.mm.plugin.wallet.balance.a.a.ab.aeP((String)this.uBw.get("trace_info"));
-            paramString = (String)this.uBw.get("operate_id");
+            ae.atq((String)this.AyC.get("trace_info"));
+            paramString = (String)this.AyC.get("operate_id");
             localObject1 = com.tencent.mm.wallet_core.ui.g.c(getContext(), false, null);
-            new l().adl().b(new WalletOpenViewProxyUI.1(this, (Dialog)localObject1, paramString));
+            new o().auK().b(new com.tencent.mm.vending.c.a() {});
             i = 0;
             continue;
           }
           if ("open_wcpay_grouppay_introview".equals(paramString))
           {
-            localObject2 = (String)this.uBw.get("amount");
-            localObject1 = (String)this.uBw.get("title");
+            localObject2 = (String)this.AyC.get("amount");
+            localObject1 = (String)this.AyC.get("title");
             Intent localIntent = new Intent();
             localIntent.putExtra("amount", (String)localObject2);
             paramString = (String)localObject1;
-            if (!bo.isNullOrNil((String)localObject1))
+            if (!bt.isNullOrNil((String)localObject1))
             {
               paramString = URLDecoder.decode((String)localObject1);
               localIntent.putExtra("title", paramString);
             }
             localIntent.putExtra("enter_scene", 5);
-            com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletOpenViewProxyUI", "view open grouppay, amount: %s, title: %s", new Object[] { localObject2, paramString });
-            com.tencent.mm.bq.d.b(this, "aa", ".ui.AAEntranceUI", localIntent);
+            ad.i("MicroMsg.WalletOpenViewProxyUI", "view open grouppay, amount: %s, title: %s", new Object[] { localObject2, paramString });
+            com.tencent.mm.bs.d.b(this, "aa", ".ui.AAEntranceUI", localIntent);
             i = 1;
             continue;
           }
-          com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletOpenViewProxyUI", "func[handleOpenView] invalid target view : ".concat(String.valueOf(paramString)));
+          ad.d("MicroMsg.WalletOpenViewProxyUI", "func[handleOpenView] invalid target view : ".concat(String.valueOf(paramString)));
         }
         i = 1;
         continue;
-        com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.WalletOpenViewProxyUI", "func[handleOpenView] packageExt null or nil");
+        ad.w("MicroMsg.WalletOpenViewProxyUI", "func[handleOpenView] packageExt null or nil");
         i = 1;
       }
     }
@@ -228,78 +236,79 @@ public class WalletOpenViewProxyUI
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(48306);
+    AppMethodBeat.i(71947);
     if (paramInt1 == 563)
     {
       if (paramInt2 == -1)
       {
         String str3 = paramIntent.getStringExtra("Select_Conv_User");
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletOpenViewProxyUI", "select chatroom：%s", new Object[] { str3 });
-        String str4 = (String)this.uBw.get("amount");
-        String str2 = (String)this.uBw.get("title");
+        ad.i("MicroMsg.WalletOpenViewProxyUI", "select chatroom：%s", new Object[] { str3 });
+        String str4 = (String)this.AyC.get("amount");
+        String str2 = (String)this.AyC.get("title");
         Intent localIntent = new Intent();
         localIntent.putExtra("amount", str4);
         String str1 = str2;
-        if (!bo.isNullOrNil(str2))
+        if (!bt.isNullOrNil(str2))
         {
           str1 = URLDecoder.decode(str2);
           localIntent.putExtra("title", str1);
         }
-        if (!bo.isNullOrNil(str3)) {
+        if (!bt.isNullOrNil(str3)) {
           localIntent.putExtra("chatroom_name", str3);
         }
         localIntent.putExtra("enter_scene", 5);
-        com.tencent.mm.bq.d.b(getContext(), "aa", ".ui.LaunchAAUI", localIntent);
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletOpenViewProxyUI", "view open grouppay, amount: %s, title: %s", new Object[] { str4, str1 });
+        com.tencent.mm.bs.d.b(getContext(), "aa", ".ui.LaunchAAUI", localIntent);
+        ad.i("MicroMsg.WalletOpenViewProxyUI", "view open grouppay, amount: %s, title: %s", new Object[] { str4, str1 });
       }
       finish();
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(48306);
+    AppMethodBeat.o(71947);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(48302);
+    AppMethodBeat.i(71943);
     super.onCreate(paramBundle);
     setContentViewVisibility(8);
     paramBundle = getIntent().getStringExtra("packageExt");
-    this.uBw = new HashMap();
-    if (!bo.isNullOrNil(paramBundle))
+    this.AyC = new HashMap();
+    int i;
+    if (!bt.isNullOrNil(paramBundle))
     {
       paramBundle = paramBundle.split("&");
       if ((paramBundle != null) && (paramBundle.length > 0))
       {
-        int i = 0;
+        i = 0;
         while (i < paramBundle.length)
         {
-          if (!bo.isNullOrNil(paramBundle[i]))
+          if (!bt.isNullOrNil(paramBundle[i]))
           {
             localObject = paramBundle[i].split("=");
-            if ((localObject.length == 2) && (!bo.isNullOrNil(localObject[0]))) {
-              this.uBw.put(localObject[0], localObject[1]);
+            if ((localObject.length == 2) && (!bt.isNullOrNil(localObject[0]))) {
+              this.AyC.put(localObject[0], localObject[1]);
             }
           }
           i += 1;
         }
       }
     }
-    paramBundle = (String)this.uBw.get("trace_info");
-    if (!bo.isNullOrNil(paramBundle)) {
-      com.tencent.mm.plugin.wallet.balance.a.a.ab.aeP(paramBundle);
+    paramBundle = (String)this.AyC.get("trace_info");
+    if (!bt.isNullOrNil(paramBundle)) {
+      ae.atq(paramBundle);
     }
     addSceneEndListener(2996);
     addSceneEndListener(580);
     addSceneEndListener(385);
     if (getIntent() == null)
     {
-      com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletOpenViewProxyUI", "func[doCheckPayNetscene] intent null");
+      ad.d("MicroMsg.WalletOpenViewProxyUI", "func[doCheckPayNetscene] intent null");
       setResult(0);
       finish();
-      AppMethodBeat.o(48302);
+      AppMethodBeat.o(71943);
       return;
     }
-    paramBundle = (String)this.uBw.get("openview");
+    paramBundle = (String)this.AyC.get("openview");
     Object localObject = getIntent().getStringExtra("appId");
     String str1 = getIntent().getStringExtra("timeStamp");
     String str2 = getIntent().getStringExtra("nonceStr");
@@ -307,108 +316,119 @@ public class WalletOpenViewProxyUI
     String str4 = getIntent().getStringExtra("paySignature");
     if ("open_wcpay_f2f_receive_detail".equals(paramBundle))
     {
-      doSceneForceProgress(new x((String)localObject, str1, str2, str3, str4));
-      AppMethodBeat.o(48302);
+      doSceneForceProgress(new z((String)localObject, str1, str2, str3, str4));
+      AppMethodBeat.o(71943);
       return;
     }
     if ("open_wcpay_grouppay_detail".equals(paramBundle))
     {
-      afT(str3);
-      AppMethodBeat.o(48302);
+      auE(str3);
+      AppMethodBeat.o(71943);
       return;
     }
     if ("open_wcpay_lqt_detail".equals(paramBundle))
     {
-      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletOpenViewProxyUI", "open lqt detail ui");
-      if (this.uBw != null)
+      ad.i("MicroMsg.WalletOpenViewProxyUI", "open lqt detail ui");
+      if (this.AyC != null)
       {
         new Intent().putExtra("key_account_type", 1);
-        localObject = (String)this.uBw.get("ecardtype");
-        str1 = (String)this.uBw.get("extradata");
-        paramBundle = (String)this.uBw.get("need_open_lqb");
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletOpenViewProxyUI", "open lqt detail ui, ecardtype: %s, extradata: %s, need_open_lqb: %s", new Object[] { localObject, str1, paramBundle });
-        if (bo.getInt(paramBundle, 0) == 1)
+        localObject = (String)this.AyC.get("ecardtype");
+        str1 = (String)this.AyC.get("extradata");
+        paramBundle = (String)this.AyC.get("need_open_lqb");
+        ad.i("MicroMsg.WalletOpenViewProxyUI", "open lqt detail ui, ecardtype: %s, extradata: %s, need_open_lqb: %s", new Object[] { localObject, str1, paramBundle });
+        if (bt.getInt(paramBundle, 0) == 1)
         {
           paramBundle = (Bundle)localObject;
-          if (bo.isNullOrNil((String)localObject)) {
+          if (bt.isNullOrNil((String)localObject)) {
             paramBundle = "WEB_DEBIT";
           }
-          doSceneForceProgress(new ad(paramBundle, str1));
+          doSceneForceProgress(new ag(paramBundle, str1));
         }
       }
       for (;;)
       {
-        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(663L, 18L, 1L, false);
-        AppMethodBeat.o(48302);
+        h.vKh.idkeyStat(663L, 18L, 1L, false);
+        AppMethodBeat.o(71943);
         return;
-        com.tencent.mm.bq.d.H(getContext(), "wallet", ".balance.ui.lqt.WalletLqtDetailUI");
-        setResult(-1);
-        finish();
-        continue;
-        com.tencent.mm.bq.d.H(getContext(), "wallet", ".balance.ui.lqt.WalletLqtDetailUI");
+        i = bt.getInt((String)this.AyC.get("auto_jump_charge_setting"), 0);
+        int j = bt.getInt((String)this.AyC.get("show_open_toast"), 0);
+        paramBundle = new Intent();
+        if (i == 1)
+        {
+          paramBundle.putExtra("show_open_toast", j);
+          com.tencent.mm.bs.d.b(getContext(), "wallet", ".balance.ui.lqt.WalletLqtBalanceAutoTransferUI", paramBundle);
+        }
+        for (;;)
+        {
+          setResult(-1);
+          finish();
+          break;
+          com.tencent.mm.bs.d.b(getContext(), "wallet", ".balance.ui.lqt.WalletLqtDetailUI", paramBundle);
+        }
+        com.tencent.mm.bs.d.O(getContext(), "wallet", ".balance.ui.lqt.WalletLqtDetailUI");
         setResult(-1);
         finish();
       }
     }
     if ("redenvelopes_getshowresouces_and_move_to_root".equals(paramBundle))
     {
-      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletOpenViewProxyUI", "receive envelope");
-      ((com.tencent.mm.plugin.luckymoney.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.luckymoney.a.a.class)).bME();
+      ad.i("MicroMsg.WalletOpenViewProxyUI", "receive envelope");
+      ((com.tencent.mm.plugin.luckymoney.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.luckymoney.a.a.class)).O(true, true);
       setResult(-1);
       finish();
-      AppMethodBeat.o(48302);
+      AppMethodBeat.o(71943);
       return;
     }
     doSceneForceProgress(new com.tencent.mm.plugin.wallet_core.c.d((String)localObject, str1, str2, str3, getIntent().getStringExtra("signtype"), str4, getIntent().getStringExtra("url"), 4, "openWCPaySpecificView", getIntent().getIntExtra("pay_channel", 0)));
-    AppMethodBeat.o(48302);
+    AppMethodBeat.o(71943);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(48304);
+    AppMethodBeat.i(71945);
     super.onDestroy();
     removeSceneEndListener(580);
     removeSceneEndListener(385);
     removeSceneEndListener(2996);
-    AppMethodBeat.o(48304);
+    AppMethodBeat.o(71945);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(48303);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletOpenViewProxyUI", "onSceneEnd, errType: %s, errCode: %s, errMsg: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramm });
+    AppMethodBeat.i(71944);
+    ad.i("MicroMsg.WalletOpenViewProxyUI", "onSceneEnd, errType: %s, errCode: %s, errMsg: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.d))
+      if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.d))
       {
-        com.tencent.mm.pluginsdk.wallet.g.ana(((com.tencent.mm.plugin.wallet_core.c.d)paramm).cSW());
-        afT(getIntent().getStringExtra("packageExt"));
-        AppMethodBeat.o(48303);
+        e.aCV(((com.tencent.mm.plugin.wallet_core.c.d)paramn).ebj());
+        auE(getIntent().getStringExtra("packageExt"));
+        AppMethodBeat.o(71944);
         return true;
       }
-      if ((paramm instanceof x))
+      if ((paramn instanceof z))
       {
-        afT(getIntent().getStringExtra("packageExt"));
-        AppMethodBeat.o(48303);
+        auE(getIntent().getStringExtra("packageExt"));
+        AppMethodBeat.o(71944);
         return true;
       }
-      if ((paramm instanceof ad))
+      if ((paramn instanceof ag))
       {
-        paramString = ((ad)paramm).tNB;
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletOpenViewProxyUI", "on open lqb account scene end, retcode: %s, regmsg: %s", new Object[] { Integer.valueOf(paramString.koj), paramString.kok });
-        if (paramString.koj == 0)
+        paramString = ((ag)paramn).zGb;
+        ad.i("MicroMsg.WalletOpenViewProxyUI", "on open lqb account scene end, retcode: %s, regmsg: %s", new Object[] { Integer.valueOf(paramString.ntx), paramString.nty });
+        if (paramString.ntx == 0)
         {
           paramString = new Intent();
           paramString.putExtra("key_account_type", 2);
-          com.tencent.mm.bq.d.b(getContext(), "wallet", ".balance.ui.lqt.WalletLqtDetailUI", paramString);
+          com.tencent.mm.bs.d.b(getContext(), "wallet", ".balance.ui.lqt.WalletLqtDetailUI", paramString);
           setResult(-1);
         }
         for (;;)
         {
           finish();
-          AppMethodBeat.o(48303);
+          AppMethodBeat.o(71944);
           return true;
-          Toast.makeText(this, paramString.kok, 1).show();
+          Toast.makeText(this, paramString.nty, 1).show();
           setResult(0);
         }
       }
@@ -417,10 +437,10 @@ public class WalletOpenViewProxyUI
     {
       setResult(0);
       finish();
-      AppMethodBeat.o(48303);
+      AppMethodBeat.o(71944);
       return true;
     }
-    AppMethodBeat.o(48303);
+    AppMethodBeat.o(71944);
     return false;
   }
   
@@ -432,7 +452,7 @@ public class WalletOpenViewProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.ui.WalletOpenViewProxyUI
  * JD-Core Version:    0.7.0.1
  */

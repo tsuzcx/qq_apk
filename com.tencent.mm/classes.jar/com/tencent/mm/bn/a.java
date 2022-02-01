@@ -1,107 +1,112 @@
 package com.tencent.mm.bn;
 
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.view.OrientationEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.aug;
+import com.tencent.mm.protocal.protobuf.auh;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
-@TargetApi(3)
 public final class a
-  extends OrientationEventListener
+  extends n
+  implements k
 {
-  private a ggB = a.ggE;
-  private int ggC = 45;
-  private a.b ggD;
+  private g callback;
+  private aug hKu;
+  public auh hKv;
+  public com.tencent.mm.api.h hKw;
+  private String hKx;
+  private b rr;
   
-  public a(Context paramContext, a.b paramb)
+  public a(com.tencent.mm.api.h paramh)
   {
-    super(paramContext);
-    this.ggD = paramb;
-  }
-  
-  public final void disable()
-  {
-    AppMethodBeat.i(78999);
-    super.disable();
-    this.ggB = a.ggE;
-    AppMethodBeat.o(78999);
-  }
-  
-  public final void enable()
-  {
-    AppMethodBeat.i(78998);
-    super.enable();
-    AppMethodBeat.o(78998);
-  }
-  
-  public final void onOrientationChanged(int paramInt)
-  {
-    AppMethodBeat.i(79000);
-    if (paramInt == -1)
+    AppMethodBeat.i(114107);
+    this.callback = null;
+    this.hKx = null;
+    if (paramh == null)
     {
-      AppMethodBeat.o(79000);
+      AppMethodBeat.o(114107);
       return;
     }
-    a locala2 = this.ggB;
-    a locala1;
-    if (((paramInt >= 360 - this.ggC) && (paramInt < 360)) || ((paramInt >= 0) && (paramInt <= this.ggC + 0))) {
-      locala1 = a.ggF;
+    this.hKw = paramh;
+    ad.i("MicroMsg.NetSceneGetFuncMsg", "new NetSceneGetFuncMsg, cgi: %s, cmdId: %s, functionMsgId: %s", new Object[] { paramh.field_cgi, Integer.valueOf(paramh.field_cmdid), paramh.field_functionmsgid });
+    b.a locala = new b.a();
+    locala.gUU = new aug();
+    locala.gUV = new auh();
+    locala.funcId = 825;
+    locala.uri = paramh.field_cgi;
+    locala.reqCmdId = paramh.field_cmdid;
+    locala.respCmdId = 0;
+    this.rr = locala.atI();
+    this.hKu = ((aug)this.rr.gUS.gUX);
+    this.hKu.Due = paramh.field_functionmsgid;
+    if (paramh.field_custombuff != null) {
+      this.hKu.Duf = paramh.field_custombuff;
     }
-    for (;;)
-    {
-      if (locala1 != this.ggB)
-      {
-        if ((this.ggD != null) && (this.ggB != a.ggE)) {
-          this.ggD.a(this.ggB, locala1);
-        }
-        this.ggB = locala1;
-      }
-      ab.i("MicroMsg.OrientationListenerHelper", "OrientationListener onOrientationChanged:".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(79000);
-      return;
-      if ((paramInt >= 270 - this.ggC) && (paramInt <= this.ggC + 270))
-      {
-        locala1 = a.ggG;
-      }
-      else if ((paramInt >= 180 - this.ggC) && (paramInt <= this.ggC + 180))
-      {
-        locala1 = a.ggH;
-      }
-      else
-      {
-        locala1 = locala2;
-        if (paramInt >= 90 - this.ggC)
-        {
-          locala1 = locala2;
-          if (paramInt <= this.ggC + 90) {
-            locala1 = a.ggI;
-          }
-        }
-      }
-    }
+    this.hKu.Dug = paramh.field_businessInfo;
+    AppMethodBeat.o(114107);
   }
   
-  public static enum a
+  public final int doScene(e parame, g paramg)
   {
-    static
+    AppMethodBeat.i(114108);
+    if (this.hKw != null)
     {
-      AppMethodBeat.i(78997);
-      ggE = new a("NONE", 0);
-      ggF = new a("PORTRAIT", 1);
-      ggG = new a("LANDSCAPE", 2);
-      ggH = new a("REVERSE_PORTRAIT", 3);
-      ggI = new a("REVERSE_LANDSCAPE", 4);
-      ggJ = new a[] { ggE, ggF, ggG, ggH, ggI };
-      AppMethodBeat.o(78997);
+      ad.i("MicroMsg.NetSceneGetFuncMsg", "doScene, functionMsgId: %s", new Object[] { this.hKw.field_functionmsgid });
+      this.hKw.field_status = 1;
     }
-    
-    private a() {}
+    this.callback = paramg;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(114108);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 825;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(114109);
+    this.hKv = ((auh)((b)paramq).gUT.gUX);
+    this.hKx = this.hKv.Duf;
+    ad.i("MicroMsg.NetSceneGetFuncMsg", "onGYNetEnd, errType: %s, errCode: %s, errMsg: %s, opCode: %s, responseCustomBuff==null: %s, response.version: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(this.hKv.OpCode), Boolean.valueOf(bt.isNullOrNil(this.hKx)), Long.valueOf(this.hKv.Dql) });
+    if (!bt.isNullOrNil(this.hKx))
+    {
+      this.hKu = ((aug)this.rr.gUS.gUX);
+      this.hKu.Duf = this.hKx;
+    }
+    if ((paramInt2 != 0) && (paramInt3 != 0))
+    {
+      if (paramInt2 == 4)
+      {
+        ad.i("MicroMsg.NetSceneGetFuncMsg", "server error");
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+        AppMethodBeat.o(114109);
+        return;
+      }
+      ad.i("MicroMsg.NetSceneGetFuncMsg", "onGYNetEnd, local error");
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(114109);
+      return;
+    }
+    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(this.hKw.field_reportid, this.hKw.field_successkey, 1L, false);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(114109);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bn.a
  * JD-Core Version:    0.7.0.1
  */

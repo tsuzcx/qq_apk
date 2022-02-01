@@ -23,41 +23,41 @@ public class TbsDownloadUpload
   
   public TbsDownloadUpload(Context paramContext)
   {
-    AppMethodBeat.i(64339);
+    AppMethodBeat.i(54657);
     this.a = new HashMap();
     this.mPreferences = paramContext.getSharedPreferences("tbs_download_upload", 4);
     this.c = paramContext.getApplicationContext();
     if (this.c == null) {
       this.c = paramContext;
     }
-    AppMethodBeat.o(64339);
+    AppMethodBeat.o(54657);
   }
   
   private static File a(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(64343);
-    ao.a();
-    paramContext = ao.s(paramContext);
+    AppMethodBeat.i(54661);
+    o.a();
+    paramContext = o.s(paramContext);
     if (paramContext == null)
     {
-      AppMethodBeat.o(64343);
+      AppMethodBeat.o(54661);
       return null;
     }
     paramContext = new File(paramContext, paramString);
     if (paramContext.exists())
     {
-      AppMethodBeat.o(64343);
+      AppMethodBeat.o(54661);
       return paramContext;
     }
     try
     {
       paramContext.createNewFile();
-      AppMethodBeat.o(64343);
+      AppMethodBeat.o(54661);
       return paramContext;
     }
     catch (IOException paramContext)
     {
-      AppMethodBeat.o(64343);
+      AppMethodBeat.o(54661);
     }
     return null;
   }
@@ -94,12 +94,12 @@ public class TbsDownloadUpload
   {
     try
     {
-      AppMethodBeat.i(64340);
+      AppMethodBeat.i(54658);
       if (b == null) {
         b = new TbsDownloadUpload(paramContext);
       }
       paramContext = b;
-      AppMethodBeat.o(64340);
+      AppMethodBeat.o(54658);
       return paramContext;
     }
     finally {}
@@ -107,7 +107,7 @@ public class TbsDownloadUpload
   
   public void clearUploadCode()
   {
-    AppMethodBeat.i(64341);
+    AppMethodBeat.i(54659);
     this.a.put("tbs_needdownload_code", Integer.valueOf(0));
     this.a.put("tbs_startdownload_code", Integer.valueOf(0));
     this.a.put("tbs_needdownload_return", Integer.valueOf(0));
@@ -115,16 +115,16 @@ public class TbsDownloadUpload
     this.a.put("tbs_startdownload_sent", Integer.valueOf(0));
     this.a.put("tbs_local_core_version", Integer.valueOf(0));
     writeTbsDownloadInfo();
-    AppMethodBeat.o(64341);
+    AppMethodBeat.o(54659);
   }
   
   public void commit()
   {
     try
     {
-      AppMethodBeat.i(64345);
+      AppMethodBeat.i(54663);
       writeTbsDownloadInfo();
-      AppMethodBeat.o(64345);
+      AppMethodBeat.o(54663);
       return;
     }
     finally
@@ -697,7 +697,7 @@ public class TbsDownloadUpload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloadUpload
  * JD-Core Version:    0.7.0.1
  */

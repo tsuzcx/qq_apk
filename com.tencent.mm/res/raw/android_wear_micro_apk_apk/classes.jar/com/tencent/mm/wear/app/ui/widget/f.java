@@ -3,19 +3,19 @@ package com.tencent.mm.wear.app.ui.widget;
 final class f
   implements Runnable
 {
-  private int aiv;
-  private int aiw;
+  private int alX;
+  private int alY;
   
   public f(RecordView paramRecordView, int paramInt1, int paramInt2)
   {
-    this.aiv = paramInt1;
-    this.aiw = paramInt2;
+    this.alX = paramInt1;
+    this.alY = paramInt2;
   }
   
   public final void run()
   {
-    if (RecordView.a(this.aix) != null) {
-      RecordView.a(this.aix).aj(this.aiv, this.aiw);
+    if (RecordView.a(this.alZ) != null) {
+      RecordView.a(this.alZ).am(this.alX, this.alY);
     }
   }
 }

@@ -4,63 +4,116 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.j;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.i;
+import com.tencent.mm.plugin.story.h.h;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import com.tencent.mm.ui.base.CustomViewPager;
 import java.util.HashMap;
 
-@com.tencent.mm.kernel.i
+@i
 public class AlbumUI
   extends MMActivity
 {
+  private DoubleTabView FFQ;
+  private HashMap<Integer, MMFragment> FFR;
+  private boolean FFS;
   private CustomViewPager mViewPager;
-  private DoubleTabView yTu;
-  private HashMap<Integer, MMFragment> yTv;
-  private boolean yTw;
   
   public AlbumUI()
   {
-    AppMethodBeat.i(29109);
-    this.yTu = null;
+    AppMethodBeat.i(32932);
+    this.FFQ = null;
     this.mViewPager = null;
-    this.yTv = new HashMap();
-    this.yTw = false;
-    AppMethodBeat.o(29109);
+    this.FFR = new HashMap();
+    this.FFS = false;
+    AppMethodBeat.o(32932);
   }
   
   protected void dealContentView(View paramView)
   {
-    AppMethodBeat.i(29110);
+    AppMethodBeat.i(32934);
     super.dealContentView(paramView);
-    this.yTw = getIntent().getBooleanExtra("story_dot", false);
-    this.yTu = ((DoubleTabView)findViewById(2131826138));
-    this.mViewPager = ((CustomViewPager)findViewById(2131826139));
-    this.yTu.setFirstTabString(getResources().getString(2131296516));
-    this.yTu.setSecondTabString(getResources().getString(2131296517));
-    if (this.yTw) {
-      this.yTu.qe(true);
+    this.FFS = getIntent().getBooleanExtra("story_dot", false);
+    this.FFQ = ((DoubleTabView)findViewById(2131296623));
+    this.mViewPager = ((CustomViewPager)findViewById(2131296628));
+    this.FFQ.setFirstTabString(getResources().getString(2131755249));
+    this.FFQ.setSecondTabString(getResources().getString(2131755250));
+    if (this.FFS) {
+      this.FFQ.vm(true);
     }
-    this.yTu.setOnTabClickListener(new AlbumUI.1(this));
-    this.mViewPager.setOnPageChangeListener(new AlbumUI.2(this));
-    this.mViewPager.setAdapter(new AlbumUI.a(this, getSupportFragmentManager()));
-    paramView = com.tencent.mm.plugin.story.g.i.sFa;
-    com.tencent.mm.plugin.story.g.i.cDs().cWn = 3L;
-    paramView = com.tencent.mm.plugin.story.g.i.sFa;
-    com.tencent.mm.plugin.story.g.i.cDt();
-    AppMethodBeat.o(29110);
+    this.FFQ.setOnTabClickListener(new DoubleTabView.a()
+    {
+      public final void onTabClick(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(32928);
+        AlbumUI.a(AlbumUI.this).setCurrentItem(paramAnonymousInt, true);
+        AppMethodBeat.o(32928);
+      }
+    });
+    this.mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
+    {
+      public final void onPageScrollStateChanged(int paramAnonymousInt) {}
+      
+      public final void onPageScrolled(int paramAnonymousInt1, float paramAnonymousFloat, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(32929);
+        AlbumUI.b(AlbumUI.this).n(paramAnonymousInt1, paramAnonymousFloat);
+        AppMethodBeat.o(32929);
+      }
+      
+      public final void onPageSelected(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(32930);
+        AlbumUI.b(AlbumUI.this).setTo(paramAnonymousInt);
+        h localh;
+        if (paramAnonymousInt == 0)
+        {
+          localh = h.ynv;
+          h.dJn().dUt = 3L;
+        }
+        for (;;)
+        {
+          localh = h.ynv;
+          h.dJo();
+          AppMethodBeat.o(32930);
+          return;
+          localh = h.ynv;
+          h.dJn().dUt = 2L;
+          if (AlbumUI.c(AlbumUI.this))
+          {
+            AlbumUI.b(AlbumUI.this).vm(false);
+            com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fvn, Boolean.FALSE);
+          }
+        }
+      }
+    });
+    this.mViewPager.setAdapter(new a(getSupportFragmentManager()));
+    paramView = h.ynv;
+    h.dJn().dUt = 3L;
+    paramView = h.ynv;
+    h.dJo();
+    AppMethodBeat.o(32934);
   }
   
   protected int getLayoutId()
   {
-    return 2130970140;
+    return 2131494762;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(138619);
+    AppMethodBeat.i(32933);
     fixStatusbar(true);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(138619);
+    setRequestedOrientation(1);
+    AppMethodBeat.o(32933);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -68,10 +121,32 @@ public class AlbumUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  final class a
+    extends j
+  {
+    public a(android.support.v4.app.g paramg)
+    {
+      super();
+    }
+    
+    public final int getCount()
+    {
+      return 2;
+    }
+    
+    public final Fragment getItem(int paramInt)
+    {
+      AppMethodBeat.i(32931);
+      MMFragment localMMFragment = AlbumUI.a(AlbumUI.this, paramInt);
+      AppMethodBeat.o(32931);
+      return localMMFragment;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.AlbumUI
  * JD-Core Version:    0.7.0.1
  */

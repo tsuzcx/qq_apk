@@ -11,11 +11,11 @@ final class zzd
   
   public final void redirect()
   {
-    AppMethodBeat.i(61403);
+    AppMethodBeat.i(11895);
     if (this.zzsh != null) {
       this.zzsi.startActivityForResult(this.zzsh, this.val$requestCode);
     }
-    AppMethodBeat.o(61403);
+    AppMethodBeat.o(11895);
   }
 }
 

@@ -1,90 +1,57 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mm.g.c.dr;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class p
+  extends dr
 {
-  private Object lock;
-  private Set<String> ooi;
+  public static c.a info;
   
-  public p()
+  static
   {
-    AppMethodBeat.i(42336);
-    this.lock = new Object();
-    this.ooi = new HashSet();
-    Object localObject1 = (String)g.RL().Ru().get(ac.a.yEP, "");
-    if (!bo.isNullOrNil((String)localObject1))
-    {
-      localObject1 = ((String)localObject1).split(",");
-      int j = localObject1.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject2 = localObject1[i];
-        this.ooi.add(localObject2);
-        i += 1;
-      }
-    }
-    AppMethodBeat.o(42336);
+    AppMethodBeat.i(65223);
+    c.a locala = new c.a();
+    locala.EYt = new Field[5];
+    locala.columns = new String[6];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "subtype";
+    locala.EYv.put("subtype", "INTEGER PRIMARY KEY ");
+    localStringBuilder.append(" subtype INTEGER PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.EYu = "subtype";
+    locala.columns[1] = "bubbleMd5";
+    locala.EYv.put("bubbleMd5", "TEXT");
+    localStringBuilder.append(" bubbleMd5 TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "coverMd5";
+    locala.EYv.put("coverMd5", "TEXT");
+    localStringBuilder.append(" coverMd5 TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "minilogoMd5";
+    locala.EYv.put("minilogoMd5", "TEXT");
+    localStringBuilder.append(" minilogoMd5 TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "version";
+    locala.EYv.put("version", "INTEGER");
+    localStringBuilder.append(" version INTEGER");
+    locala.columns[5] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(65223);
   }
   
-  public final boolean Sr(String paramString)
+  public final c.a getDBInfo()
   {
-    AppMethodBeat.i(42337);
-    synchronized (this.lock)
-    {
-      if (!this.ooi.contains(paramString))
-      {
-        StringBuilder localStringBuilder = new StringBuilder((String)g.RL().Ru().get(ac.a.yEP, ""));
-        if (this.ooi.size() <= 0)
-        {
-          localStringBuilder.append(paramString);
-          g.RL().Ru().set(ac.a.yEP, localStringBuilder.toString());
-          boolean bool = this.ooi.add(paramString);
-          AppMethodBeat.o(42337);
-          return bool;
-        }
-        localStringBuilder.append(",").append(paramString);
-      }
-    }
-    ab.i("MicroMsg.LuckyMoneyMsg", "has contains msg, %s", new Object[] { paramString });
-    AppMethodBeat.o(42337);
-    return false;
-  }
-  
-  public final void Ss(String paramString)
-  {
-    AppMethodBeat.i(42338);
-    synchronized (this.lock)
-    {
-      this.ooi.remove(paramString);
-      paramString = new StringBuilder();
-      Iterator localIterator = this.ooi.iterator();
-      if (localIterator.hasNext()) {
-        paramString.append((String)localIterator.next()).append(",");
-      }
-    }
-    if (paramString.length() == 0) {}
-    for (paramString = paramString.toString();; paramString = paramString.substring(0, paramString.length() - 1))
-    {
-      g.RL().Ru().set(ac.a.yEP, paramString);
-      AppMethodBeat.o(42338);
-      return;
-    }
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.p
  * JD-Core Version:    0.7.0.1
  */

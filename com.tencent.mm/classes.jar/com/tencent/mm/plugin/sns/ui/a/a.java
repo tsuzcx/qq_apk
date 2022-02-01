@@ -6,31 +6,32 @@ import android.database.Cursor;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.sns.h.k;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ax;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.model.w;
+import com.tencent.mm.n.b;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.plugin.sns.j.l;
+import com.tencent.mm.plugin.sns.j.m;
+import com.tencent.mm.plugin.sns.model.az;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bh;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.a.h;
-import com.tencent.mm.ui.contact.m;
-import com.tencent.mm.ui.contact.o;
+import com.tencent.mm.ui.contact.n;
 import com.tencent.mm.ui.contact.p;
+import com.tencent.mm.ui.contact.q;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class a
-  extends p
+  extends q
 {
   private List<String> dataList;
-  private Cursor gqa;
-  private List<k> sdp;
-  public View.OnClickListener sdq;
+  private Cursor icq;
+  private List<m> xMv;
+  public View.OnClickListener xMw;
   
   public a(MMBaseSelectContactUI paramMMBaseSelectContactUI)
   {
@@ -40,46 +41,50 @@ public final class a
   private a(MMBaseSelectContactUI paramMMBaseSelectContactUI, byte paramByte)
   {
     super(paramMMBaseSelectContactUI, null, true, true);
-    AppMethodBeat.i(145676);
-    this.gqa = null;
-    this.sdp = null;
+    AppMethodBeat.i(99808);
+    this.icq = null;
+    this.xMv = null;
     this.dataList = new ArrayList();
-    this.sdq = null;
-    ab.i("MicroMsg.SnsChatRoomAdapter", "create!");
-    Kg();
-    AppMethodBeat.o(145676);
+    this.xMw = null;
+    ad.i("MicroMsg.SnsChatRoomAdapter", "create!");
+    VP();
+    AppMethodBeat.o(99808);
   }
   
-  private void Kg()
+  public final void VP()
   {
-    AppMethodBeat.i(145678);
-    ab.i("MicroMsg.SnsChatRoomAdapter", "resetData");
-    this.sdp = ag.cpb().riU.rma;
-    if (this.gqa != null)
+    AppMethodBeat.i(99810);
+    ad.i("MicroMsg.SnsChatRoomAdapter", "resetData");
+    this.xMv = com.tencent.mm.plugin.sns.model.af.dtq().wKK.wOl;
+    if (this.icq != null)
     {
-      this.gqa.close();
-      this.gqa = null;
+      this.icq.close();
+      this.icq = null;
     }
-    this.gqa = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YF().a(t.flj, this.ejc, this.AdB, "");
+    this.icq = ((k)g.ab(k.class)).apR().a(w.gMu, this.fvP, this.GWl, "");
     clearCache();
     Object localObject;
-    if (!bo.es(this.sdp))
+    if (!bt.gL(this.xMv))
     {
-      localObject = this.sdp.iterator();
+      localObject = this.xMv.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        k localk = (k)((Iterator)localObject).next();
-        this.dataList.add(localk.name);
+        m localm = (m)((Iterator)localObject).next();
+        g.afC();
+        com.tencent.mm.storage.af localaf = ((k)g.ab(k.class)).apM().aHY(localm.name);
+        if ((localaf != null) && ((int)localaf.fId != 0)) {
+          this.dataList.add(localm.name);
+        }
       }
     }
-    if (!bo.es(this.dataList))
+    if (!bt.gL(this.dataList))
     {
       this.dataList.add(0, "recent_use");
       this.dataList.add("recent");
     }
-    while (this.gqa.moveToNext())
+    while (this.icq.moveToNext())
     {
-      localObject = this.gqa.getString(this.gqa.getColumnIndex("username"));
+      localObject = this.icq.getString(this.icq.getColumnIndex("username"));
       if (!this.dataList.contains(localObject))
       {
         this.dataList.add(localObject);
@@ -87,46 +92,46 @@ public final class a
         this.dataList.add(0, "recent");
       }
     }
-    AppMethodBeat.o(145678);
+    AppMethodBeat.o(99810);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(145679);
+    AppMethodBeat.i(99811);
     int i = this.dataList.size();
-    AppMethodBeat.o(145679);
+    AppMethodBeat.o(99811);
     return i;
   }
   
-  public final com.tencent.mm.ui.contact.a.a mM(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a pU(int paramInt)
   {
-    AppMethodBeat.i(145677);
+    AppMethodBeat.i(99809);
     Object localObject2 = (String)this.dataList.get(paramInt);
-    if (bo.isEqual((String)localObject2, "recent_use")) {
+    if (bt.kU((String)localObject2, "recent_use")) {
       localObject1 = new h(paramInt);
     }
-    for (((h)localObject1).mZq = this.Adk.getActivity().getResources().getString(2131303867);; ((h)localObject1).mZq = this.Adk.getActivity().getResources().getString(2131303866))
+    for (((h)localObject1).header = this.GVS.getActivity().getResources().getString(2131763876);; ((h)localObject1).header = this.GVS.getActivity().getResources().getString(2131763875))
     {
-      AppMethodBeat.o(145677);
+      AppMethodBeat.o(99809);
       return localObject1;
-      if (!bo.isEqual((String)localObject2, "recent")) {
+      if (!bt.kU((String)localObject2, "recent")) {
         break;
       }
       localObject1 = new h(paramInt);
     }
-    g.RM();
-    Object localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arq((String)localObject2);
+    g.afC();
+    Object localObject1 = ((k)g.ab(k.class)).apM().aHS((String)localObject2);
     if (localObject1 == null)
     {
-      g.RM();
-      localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arv((String)localObject2);
+      g.afC();
+      localObject1 = ((k)g.ab(k.class)).apM().aHX((String)localObject2);
     }
     for (;;)
     {
       localObject2 = new com.tencent.mm.plugin.sns.ui.a.a.a(paramInt);
-      ((com.tencent.mm.plugin.sns.ui.a.a.a)localObject2).sdq = this.sdq;
-      ((com.tencent.mm.ui.contact.a.a)localObject2).contact = ((ad)localObject1);
-      ((com.tencent.mm.ui.contact.a.a)localObject2).Adl = cni();
+      ((com.tencent.mm.plugin.sns.ui.a.a.a)localObject2).xMw = this.xMw;
+      ((com.tencent.mm.ui.contact.a.a)localObject2).contact = ((com.tencent.mm.storage.af)localObject1);
+      ((com.tencent.mm.ui.contact.a.a)localObject2).GVT = dqZ();
       localObject1 = localObject2;
       break;
     }
@@ -134,7 +139,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,27 +6,27 @@ import java.util.HashMap;
 
 public final class d
 {
-  public String BsY;
-  public String BsZ;
-  public boolean Bta;
-  public boolean Btb;
-  public boolean Btc;
-  public File Btd;
-  public File Bte;
-  public File Btf;
-  public File Btg;
-  public File Bth;
-  public File Bti;
-  public HashMap<String, String> Btj;
-  public HashMap<String, String> Btk;
-  public HashMap<String, String> Btl;
-  public int Btm;
-  public long iHc;
+  public String IEV;
+  public boolean IEW;
+  public boolean IEX;
+  public File IEY;
+  public File IEZ;
+  public File IFa;
+  public File IFb;
+  public File IFc;
+  public File IFd;
+  public HashMap<String, String> IFe;
+  public HashMap<String, String> IFf;
+  public HashMap<String, String> IFg;
+  public int IFh;
+  public long lrf;
+  public String oatDir;
   public SharePatchInfo patchInfo;
+  public boolean useInterpretMode;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.lib.e.d
  * JD-Core Version:    0.7.0.1
  */

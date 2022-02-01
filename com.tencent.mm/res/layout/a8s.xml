@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:id="@id/cle" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/jy"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MultiTouchImageView android:id="@id/clh" android:visibility="gone" android:layout_width="150.0dip" android:layout_height="150.0dip" />
-    <ProgressBar android:id="@id/ats" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_marginBottom="3.0dip" style="?android:attr/progressBarStyleHorizontal" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/a6q" android:gravity="center" android:id="@id/cli" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/cg_" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/a6q" android:gravity="center" android:id="@id/bt1" android:background="@color/h6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:src="@drawable/arv" style="@style/jo" />
+    <TextView android:text="@string/ck_" style="@style/k5" />
+    <LinearLayout android:id="@id/c80" android:layout_marginTop="@dimen/eg" style="@style/k2">
+        <RelativeLayout android:id="@id/c7z" style="@style/jz">
+            <TextView android:id="@id/c81" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" style="@style/k1" />
+            <CheckBox android:id="@id/c7y" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:checked="false" android:text="@string/ckr" android:layout_alignParentRight="true" style="@style/oj" />
+        </RelativeLayout>
     </LinearLayout>
+    <LinearLayout android:id="@id/c7v" style="@style/k2">
+        <LinearLayout android:background="@null" style="@style/jx">
+            <TextView android:id="@id/c7w" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/k0" />
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout android:id="@id/c82" android:visibility="gone" android:layout_marginTop="@dimen/eg" style="@style/k3">
+        <TextView android:id="@id/c7x" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" style="@style/k1" />
+        <TextView android:id="@id/c83" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/clg" android:layout_alignParentRight="true" style="@style/k4" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_marginTop="@dimen/ee" style="@style/mz">
+        <Button android:id="@id/ayy" android:text="@string/ckp" style="@style/k_" />
+    </LinearLayout>
+    <RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <Button android:id="@id/c84" android:visibility="gone" android:layout_height="20.0dip" android:layout_marginBottom="0.0dip" android:text="查看更多三星服务" android:layout_alignParentBottom="true" style="@style/k6" />
+    </RelativeLayout>
 </LinearLayout>

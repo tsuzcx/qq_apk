@@ -1,11 +1,11 @@
 package com.tencent.mm.pluginsdk.a;
 
 import android.content.Context;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.ba.f;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.bc.f;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.storage.as;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.storage.av;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.SmileyInfo;
 import com.tencent.mm.storage.emotion.SmileyPanelConfigInfo;
@@ -15,71 +15,73 @@ import java.util.List;
 public abstract interface d
   extends e
 {
-  public abstract String KA(String paramString);
+  public abstract boolean J(ArrayList<SmileyInfo> paramArrayList);
   
-  public abstract String KB(String paramString);
+  public abstract boolean K(ArrayList<SmileyPanelConfigInfo> paramArrayList);
   
-  public abstract int KC(String paramString);
+  public abstract String TB(String paramString);
   
-  public abstract String KD(String paramString);
+  public abstract List<EmojiInfo> TC(String paramString);
   
-  public abstract void KE(String paramString);
+  public abstract boolean TE(String paramString);
   
-  public abstract EmojiInfo Kt(String paramString);
+  public abstract ArrayList<String> TF(String paramString);
   
-  public abstract String Kv(String paramString);
+  public abstract String TG(String paramString);
   
-  public abstract List<EmojiInfo> Kw(String paramString);
+  public abstract String TH(String paramString);
   
-  public abstract boolean Ky(String paramString);
+  public abstract int TI(String paramString);
   
-  public abstract ArrayList<String> Kz(String paramString);
+  public abstract String TJ(String paramString);
+  
+  public abstract void TK(String paramString);
+  
+  public abstract EmojiInfo Tz(String paramString);
   
   public abstract EmojiInfo a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3);
   
   public abstract String a(Context paramContext, WXMediaMessage paramWXMediaMessage, String paramString);
   
-  public abstract void a(Context paramContext, bi parambi, String paramString);
+  public abstract void a(Context paramContext, bl parambl, String paramString);
   
-  public abstract void a(String paramString, EmojiInfo paramEmojiInfo, bi parambi);
+  public abstract void a(String paramString, EmojiInfo paramEmojiInfo, bl parambl);
   
   public abstract boolean a(Context paramContext, EmojiInfo paramEmojiInfo, int paramInt, String paramString);
   
-  public abstract boolean a(String paramString1, String paramString2, long paramLong, String paramString3, e.a parama);
+  public abstract boolean a(EmojiInfo paramEmojiInfo, boolean paramBoolean);
   
-  public abstract boolean bkT();
+  public abstract boolean a(String paramString1, String paramString2, long paramLong, String paramString3, f.a parama);
   
-  public abstract f bkW();
+  public abstract byte[] a(EmojiInfo paramEmojiInfo);
   
-  public abstract boolean bkX();
+  public abstract boolean bUD();
   
-  public abstract boolean c(EmojiInfo paramEmojiInfo, boolean paramBoolean);
+  public abstract f bUG();
   
-  public abstract as dN(String paramString1, String paramString2);
+  public abstract boolean bUH();
   
-  public abstract String dO(String paramString1, String paramString2);
+  public abstract int d(EmojiInfo paramEmojiInfo, boolean paramBoolean);
   
-  public abstract int e(EmojiInfo paramEmojiInfo, boolean paramBoolean);
+  public abstract av fa(String paramString1, String paramString2);
   
-  public abstract byte[] l(EmojiInfo paramEmojiInfo);
+  public abstract String fb(String paramString1, String paramString2);
   
-  public abstract int o(EmojiInfo paramEmojiInfo);
+  public abstract String getDataEmojiPath();
   
-  public abstract int[] p(EmojiInfo paramEmojiInfo);
+  public abstract int q(EmojiInfo paramEmojiInfo);
   
-  public abstract byte[] q(EmojiInfo paramEmojiInfo);
+  public abstract int[] r(EmojiInfo paramEmojiInfo);
   
-  public abstract boolean r(Context paramContext, String paramString1, String paramString2);
+  public abstract byte[] s(EmojiInfo paramEmojiInfo);
   
   public abstract void updateEmojiInfo(EmojiInfo paramEmojiInfo);
   
-  public abstract boolean w(ArrayList<SmileyInfo> paramArrayList);
-  
-  public abstract boolean x(ArrayList<SmileyPanelConfigInfo> paramArrayList);
+  public abstract boolean v(Context paramContext, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.chatting.ChattingAnimFrame android:id="@id/awu" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:id="@id/gd2" android:background="@drawable/aju" android:paddingLeft="@dimen/ha" android:paddingTop="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/cid" android:background="@drawable/amv" android:paddingBottom="@dimen/i_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip">
+        <include layout="@layout/o5" />
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="center_vertical" android:id="@id/aob" android:paddingLeft="@dimen/jn" android:layout_width="0.0dip" android:layout_height="fill_parent" android:singleLine="true" android:layout_weight="1.0" />
+        <LinearLayout android:gravity="center" android:id="@id/dtm" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/js" android:minHeight="50.0dip">
+            <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_item_dyeing_template_more_icon" android:scaleType="centerCrop" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="11.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/gam" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="@dimen/ju" android:text="@string/uo" android:maxLines="2" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/s5" android:id="@id/g96" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/uo" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:id="@id/dtn" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/js" android:minHeight="50.0dip">
+            <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_item_dyeing_template_more_icon" android:scaleType="centerCrop" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/bd2" android:paddingBottom="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:id="@id/fcj" android:background="@drawable/amv" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginBottom="@dimen/ha" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/to" android:id="@id/bab" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ha" android:text="@string/au9" />
+</LinearLayout>

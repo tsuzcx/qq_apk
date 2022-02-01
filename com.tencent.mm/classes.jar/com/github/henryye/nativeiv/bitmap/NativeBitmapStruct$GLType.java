@@ -12,7 +12,7 @@ public abstract interface NativeBitmapStruct$GLType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.github.henryye.nativeiv.bitmap.NativeBitmapStruct.GLType
  * JD-Core Version:    0.7.0.1
  */

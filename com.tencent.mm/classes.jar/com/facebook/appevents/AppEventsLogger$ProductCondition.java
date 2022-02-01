@@ -6,19 +6,19 @@ public enum AppEventsLogger$ProductCondition
 {
   static
   {
-    AppMethodBeat.i(71927);
+    AppMethodBeat.i(17363);
     NEW = new ProductCondition("NEW", 0);
     REFURBISHED = new ProductCondition("REFURBISHED", 1);
     USED = new ProductCondition("USED", 2);
     $VALUES = new ProductCondition[] { NEW, REFURBISHED, USED };
-    AppMethodBeat.o(71927);
+    AppMethodBeat.o(17363);
   }
   
   private AppEventsLogger$ProductCondition() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.facebook.appevents.AppEventsLogger.ProductCondition
  * JD-Core Version:    0.7.0.1
  */

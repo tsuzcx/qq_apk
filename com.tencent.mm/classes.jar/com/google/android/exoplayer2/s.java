@@ -6,11 +6,11 @@ public abstract interface s
   
   public abstract int getTrackType();
   
-  public abstract int mE();
+  public abstract int ro();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.s
  * JD-Core Version:    0.7.0.1
  */

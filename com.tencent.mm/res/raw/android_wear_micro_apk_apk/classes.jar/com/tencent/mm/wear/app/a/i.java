@@ -1,7 +1,7 @@
 package com.tencent.mm.wear.app.a;
 
 import com.tencent.mm.b.a.f;
-import com.tencent.mm.c.a.a.b;
+import com.tencent.mm.c.b.a.b;
 import com.tencent.mm.sdk.a.e;
 import com.tencent.mm.wear.app.MMApplication;
 import java.io.ByteArrayOutputStream;
@@ -12,22 +12,22 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class i
 {
-  private static AtomicInteger aaM = new AtomicInteger();
-  private e aaE = new e() {};
-  private int aaN;
-  private k aaP;
-  private c aay;
+  private static AtomicInteger aen = new AtomicInteger();
+  private c adZ;
+  private e aef = new e() {};
+  private int aeo;
+  private k aeq;
   
   public i(c paramc)
   {
-    this.aay = paramc;
-    this.aaN = aaM.incrementAndGet();
-    com.tencent.mm.sdk.a.a.WJ.a(this.aaE);
+    this.adZ = paramc;
+    this.aeo = aen.incrementAndGet();
+    com.tencent.mm.sdk.a.a.YM.a(this.aef);
   }
   
   public final void a(k paramk)
   {
-    this.aaP = paramk;
+    this.aeq = paramk;
   }
   
   public final void i(byte[] paramArrayOfByte)
@@ -38,7 +38,7 @@ public final class i
       localObject = new ByteArrayOutputStream();
       localDataOutputStream = new DataOutputStream((OutputStream)localObject);
       localDataOutputStream.writeInt(2);
-      localDataOutputStream.writeInt(this.aaN);
+      localDataOutputStream.writeInt(this.aeo);
       localDataOutputStream.writeInt(30001);
       if (paramArrayOfByte == null) {
         break label83;
@@ -64,7 +64,7 @@ public final class i
       }
     }
     if (paramArrayOfByte == null) {
-      com.tencent.mm.wear.a.b.a.aiT.post(new j(this, 65536, 30001, null));
+      com.tencent.mm.wear.a.b.a.amv.post(new j(this, 65536, 30001, null));
     }
     for (;;)
     {
@@ -72,9 +72,9 @@ public final class i
       localDataOutputStream.writeInt(0);
       break;
       label180:
-      for (paramArrayOfByte = this.aay.a((String)localObject, paramArrayOfByte); paramArrayOfByte.aaw != 0; paramArrayOfByte = this.aay.b((String)localObject, paramArrayOfByte))
+      for (paramArrayOfByte = this.adZ.a((String)localObject, paramArrayOfByte); paramArrayOfByte.adX != 0; paramArrayOfByte = this.adZ.b((String)localObject, paramArrayOfByte))
       {
-        com.tencent.mm.wear.a.b.a.aiT.post(new j(this, 65536, 30001, null));
+        com.tencent.mm.wear.a.b.a.amv.post(new j(this, 65536, 30001, null));
         return;
       }
     }
@@ -82,7 +82,7 @@ public final class i
   
   public final void stop()
   {
-    com.tencent.mm.sdk.a.a.WJ.b(this.aaE);
+    com.tencent.mm.sdk.a.a.YM.b(this.aef);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.k;
+import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.kernel.a.c.a;
 import com.tencent.mm.kernel.b.g;
 
@@ -10,10 +10,12 @@ public final class b
 {
   public final void execute(g paramg)
   {
-    AppMethodBeat.i(18522);
-    k.a("FFmpeg", getClass().getClassLoader());
-    k.a("wechatpack", getClass().getClassLoader());
-    AppMethodBeat.o(18522);
+    AppMethodBeat.i(22633);
+    getClass().getClassLoader();
+    j.pq("FFmpeg");
+    getClass().getClassLoader();
+    j.pq("wechatpack");
+    AppMethodBeat.o(22633);
   }
   
   public final String name()
@@ -23,7 +25,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.e.b
  * JD-Core Version:    0.7.0.1
  */

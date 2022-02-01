@@ -3,19 +3,22 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bp;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.s;
+import com.tencent.mm.model.bs;
+import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
 import com.tencent.mm.plugin.account.bind.ui.BindLinkedInUI;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
 import com.tencent.mm.plugin.setting.b;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.base.preference.DialogPreference;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -24,162 +27,184 @@ public class SettingsPersonalMoreUI
   extends MMPreference
   implements n.b
 {
-  private int dqC = -1;
+  private int evp = -1;
   private f screen;
   
-  private void cku()
+  private void dog()
   {
-    AppMethodBeat.i(127387);
-    Preference localPreference = this.screen.atx("settings_signature");
-    String str2 = bo.nullAsNil((String)com.tencent.mm.kernel.g.RL().Ru().get(12291, null));
+    AppMethodBeat.i(74324);
+    Preference localPreference = this.screen.aKk("settings_signature");
+    String str2 = bt.nullAsNil((String)com.tencent.mm.kernel.g.afB().afk().get(12291, null));
     String str1 = str2;
     if (str2.length() <= 0) {
-      str1 = getString(2131303427);
+      str1 = getString(2131763409);
     }
-    localPreference.setSummary(com.tencent.mm.pluginsdk.ui.d.j.b(this, str1));
-    AppMethodBeat.o(127387);
+    localPreference.setSummary(com.tencent.mm.pluginsdk.ui.span.k.c(this, str1));
+    AppMethodBeat.o(74324);
   }
   
-  public final void a(int paramInt, com.tencent.mm.sdk.e.n paramn, Object paramObject)
+  public final void a(int paramInt, n paramn, Object paramObject)
   {
-    AppMethodBeat.i(127389);
-    int i = bo.f(paramObject, 0);
-    ab.d("SettingsPersonalMoreUI", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
-    if ((paramn != com.tencent.mm.kernel.g.RL().Ru()) || (i <= 0))
+    AppMethodBeat.i(74326);
+    int i = bt.i(paramObject, 0);
+    ad.d("SettingsPersonalMoreUI", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
+    if ((paramn != com.tencent.mm.kernel.g.afB().afk()) || (i <= 0))
     {
-      ab.e("SettingsPersonalMoreUI", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
-      AppMethodBeat.o(127389);
+      ad.e("SettingsPersonalMoreUI", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
+      AppMethodBeat.o(74326);
       return;
     }
     if (12291 == i) {
-      cku();
+      dog();
     }
-    AppMethodBeat.o(127389);
+    AppMethodBeat.o(74326);
   }
   
   public int getResourceId()
   {
-    return 2131165289;
+    return 2131951733;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(127384);
-    setMMTitle(2131303364);
+    AppMethodBeat.i(74321);
+    setMMTitle(2131763346);
     this.screen = getPreferenceScreen();
-    ((DialogPreference)this.screen.atx("settings_sex")).zqD = new SettingsPersonalMoreUI.1(this);
-    setBackBtn(new SettingsPersonalMoreUI.2(this));
-    AppMethodBeat.o(127384);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(74319);
+        SettingsPersonalMoreUI.this.hideVKB();
+        SettingsPersonalMoreUI.this.finish();
+        AppMethodBeat.o(74319);
+        return true;
+      }
+    });
+    AppMethodBeat.o(74321);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(127383);
+    AppMethodBeat.i(74320);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(127383);
+    AppMethodBeat.o(74320);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(127386);
+    AppMethodBeat.i(74323);
     super.onPause();
-    bp localbp = bp.aba();
-    if (this.dqC != -1) {
-      localbp.dqC = this.dqC;
+    bs localbs = bs.asB();
+    if (this.evp != -1) {
+      localbs.evp = this.evp;
     }
-    ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Yz().c(new j.a(1, bp.a(localbp)));
-    AppMethodBeat.o(127386);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new j.a(1, bs.a(localbs)));
+    AppMethodBeat.o(74323);
   }
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(127388);
+    AppMethodBeat.i(74325);
     paramf = paramPreference.mKey;
     if (paramf.equals("settings_district"))
     {
-      b.gmO.b(new Intent(), getContext());
-      AppMethodBeat.o(127388);
+      b.hYt.b(new Intent(), getContext());
+      AppMethodBeat.o(74325);
       return true;
     }
     if (paramf.equals("settings_signature"))
     {
-      startActivity(new Intent(this, EditSignatureUI.class));
-      AppMethodBeat.o(127388);
+      paramf = new Intent(this, EditSignatureUI.class);
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bd(paramf);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.adn(), "com/tencent/mm/plugin/setting/ui/setting/SettingsPersonalMoreUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsPersonalMoreUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(74325);
       return true;
     }
     if (paramf.equals("settings_linkedin"))
     {
       paramf = new Intent(this, BindLinkedInUI.class);
       paramf.putExtra("oversea_entry", true);
-      startActivity(paramf);
-      AppMethodBeat.o(127388);
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bd(paramf);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.adn(), "com/tencent/mm/plugin/setting/ui/setting/SettingsPersonalMoreUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsPersonalMoreUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(74325);
       return true;
     }
-    AppMethodBeat.o(127388);
+    if (paramf.equals("settings_sex"))
+    {
+      paramf = new Intent(this, SelectSexUI.class);
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bd(paramf);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.adn(), "com/tencent/mm/plugin/setting/ui/setting/SettingsPersonalMoreUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SettingsPersonalMoreUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(74325);
+      return true;
+    }
+    AppMethodBeat.o(74325);
     return false;
   }
   
   public void onResume()
   {
-    int k = 1;
-    AppMethodBeat.i(127385);
+    int k = 0;
+    AppMethodBeat.i(74322);
     super.onResume();
-    int i = bo.a((Integer)com.tencent.mm.kernel.g.RL().Ru().get(12290, null), 0);
-    Object localObject1 = (DialogPreference)this.screen.atx("settings_sex");
-    switch (i)
+    this.evp = bt.a((Integer)com.tencent.mm.kernel.g.afB().afk().get(12290, null), 0);
+    Object localObject1 = this.screen.aKk("settings_sex");
+    int i;
+    switch (this.evp)
     {
     default: 
-      ((DialogPreference)localObject1).setValue("unknown");
-      Object localObject2 = bp.aba();
-      localObject1 = bo.nullAsNil(((bp)localObject2).getProvince());
-      localObject2 = bo.nullAsNil(((bp)localObject2).getCity());
-      this.screen.atx("settings_district").setSummary(s.nG((String)localObject1) + " " + (String)localObject2);
-      cku();
-      if ((r.Zy() & 0x1000000) == 0)
+      Object localObject2 = bs.asB();
+      localObject1 = bt.nullAsNil(((bs)localObject2).getProvince());
+      localObject2 = bt.nullAsNil(((bs)localObject2).getCity());
+      this.screen.aKk("settings_district").setSummary(v.sj((String)localObject1) + " " + (String)localObject2);
+      dog();
+      if ((u.aqS() & 0x1000000) == 0)
       {
         i = 1;
-        label163:
-        localObject1 = com.tencent.mm.m.g.Nq().getValue("LinkedinPluginClose");
-        if ((!bo.isNullOrNil((String)localObject1)) && (Integer.valueOf((String)localObject1).intValue() != 0)) {
-          break label248;
+        label160:
+        localObject1 = com.tencent.mm.m.g.Zd().getValue("LinkedinPluginClose");
+        if ((!bt.isNullOrNil((String)localObject1)) && (bt.getInt((String)localObject1, 0) != 0)) {
+          break label281;
         }
       }
       break;
     }
-    label248:
+    label281:
     for (int j = 1;; j = 0)
     {
-      if ((i != 0) && (j != 0)) {
-        break label253;
+      if (!bt.isNullOrNil((String)com.tencent.mm.kernel.g.afB().afk().get(286721, null))) {
+        k = 1;
       }
-      this.screen.cl("settings_linkedin", true);
-      AppMethodBeat.o(127385);
+      if ((i != 0) && (j != 0) && (k != 0)) {
+        break label286;
+      }
+      this.screen.cE("settings_linkedin", true);
+      AppMethodBeat.o(74322);
       return;
-      ((DialogPreference)localObject1).setValue("male");
+      ((Preference)localObject1).setSummary(getString(2131763533));
       break;
-      ((DialogPreference)localObject1).setValue("female");
+      ((Preference)localObject1).setSummary(getString(2131763532));
       break;
       i = 0;
-      break label163;
+      break label160;
     }
-    label253:
-    localObject1 = this.screen.atx("settings_linkedin");
-    if (!bo.isNullOrNil((String)com.tencent.mm.kernel.g.RL().Ru().get(286721, null))) {}
-    for (i = k; i == 0; i = 0)
+    label286:
+    localObject1 = this.screen.aKk("settings_linkedin");
+    if ((u.aqK() & 0x400000) == 0)
     {
-      ((Preference)localObject1).setSummary(getString(2131303289));
-      AppMethodBeat.o(127385);
+      ((Preference)localObject1).setSummary(getString(2131763259));
+      AppMethodBeat.o(74322);
       return;
     }
-    if ((r.Zr() & 0x400000) == 0)
-    {
-      ((Preference)localObject1).setSummary(getString(2131303290));
-      AppMethodBeat.o(127385);
-      return;
-    }
-    ((Preference)localObject1).setSummary(getString(2131303291));
-    AppMethodBeat.o(127385);
+    ((Preference)localObject1).setSummary(getString(2131763260));
+    AppMethodBeat.o(74322);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -190,7 +215,7 @@ public class SettingsPersonalMoreUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsPersonalMoreUI
  * JD-Core Version:    0.7.0.1
  */

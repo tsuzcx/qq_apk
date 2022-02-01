@@ -9,13 +9,13 @@ public final class u
   
   public final void c(ConnectionResult paramConnectionResult)
   {
-    if (paramConnectionResult.gm()) {
-      this.JK.a(null, this.JK.hi());
+    if (paramConnectionResult.gw()) {
+      this.Lz.a(null, this.Lz.hs());
     }
-    while (l.d(this.JK) == null) {
+    while (l.d(this.Lz) == null) {
       return;
     }
-    l.d(this.JK).a(paramConnectionResult);
+    l.d(this.Lz).a(paramConnectionResult);
   }
 }
 

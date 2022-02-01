@@ -4,9 +4,9 @@ import com.google.android.gms.common.api.Status;
 
 public abstract interface h<R>
 {
-  public abstract void a(Status paramStatus);
+  public abstract void G(R paramR);
   
-  public abstract void x(R paramR);
+  public abstract void a(Status paramStatus);
 }
 
 

@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class gr
   extends b
 {
-  public gr.a cvE;
+  public a djZ;
+  public b dka;
   
   public gr()
   {
@@ -15,16 +16,30 @@ public final class gr
   
   private gr(byte paramByte)
   {
-    AppMethodBeat.i(56560);
-    this.cvE = new gr.a();
-    this.ymq = false;
+    AppMethodBeat.i(106599);
+    this.djZ = new a();
+    this.dka = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(56560);
+    AppMethodBeat.o(106599);
+  }
+  
+  public static final class a
+  {
+    public String dkb;
+  }
+  
+  public static final class b
+  {
+    public int ddh = 0;
+    public int ddi = 0;
+    public int ddj = 0;
+    public int ddk = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.gr
  * JD-Core Version:    0.7.0.1
  */

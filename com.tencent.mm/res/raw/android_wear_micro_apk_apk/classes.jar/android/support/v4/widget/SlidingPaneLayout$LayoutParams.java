@@ -10,10 +10,10 @@ import android.view.ViewGroup.MarginLayoutParams;
 public class SlidingPaneLayout$LayoutParams
   extends ViewGroup.MarginLayoutParams
 {
-  private static final int[] kz = { 16843137 };
-  boolean pJ;
-  boolean pK;
-  Paint pL;
+  private static final int[] mv = { 16843137 };
+  boolean rA;
+  Paint rB;
+  boolean rz;
   public float weight = 0.0F;
   
   public SlidingPaneLayout$LayoutParams()
@@ -24,7 +24,7 @@ public class SlidingPaneLayout$LayoutParams
   public SlidingPaneLayout$LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, kz);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, mv);
     this.weight = paramContext.getFloat(0, 0.0F);
     paramContext.recycle();
   }

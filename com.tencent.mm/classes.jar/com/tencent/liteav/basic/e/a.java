@@ -13,16 +13,16 @@ public final class a
   
   public static PrivateKey a(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(146656);
+    AppMethodBeat.i(14494);
     paramArrayOfByte = new PKCS8EncodedKeySpec(paramArrayOfByte);
     paramArrayOfByte = KeyFactory.getInstance(a).generatePrivate(paramArrayOfByte);
-    AppMethodBeat.o(146656);
+    AppMethodBeat.o(14494);
     return paramArrayOfByte;
   }
   
   public static byte[] a(byte[] paramArrayOfByte, PrivateKey paramPrivateKey)
   {
-    AppMethodBeat.i(146655);
+    AppMethodBeat.i(14493);
     Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
     localCipher.init(2, paramPrivateKey);
     int j = paramArrayOfByte.length;
@@ -40,7 +40,7 @@ public final class a
     }
     paramArrayOfByte = localByteArrayOutputStream.toByteArray();
     localByteArrayOutputStream.close();
-    AppMethodBeat.o(146655);
+    AppMethodBeat.o(14493);
     return paramArrayOfByte;
   }
 }

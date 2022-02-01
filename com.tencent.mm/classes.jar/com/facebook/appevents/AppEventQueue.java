@@ -6,6 +6,7 @@ import android.support.v4.content.d;
 import com.facebook.FacebookRequestError;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
+import com.facebook.GraphRequest.Callback;
 import com.facebook.GraphResponse;
 import com.facebook.LoggingBehavior;
 import com.facebook.internal.FetchedAppSettings;
@@ -20,6 +21,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,27 +38,55 @@ class AppEventQueue
   
   static
   {
-    AppMethodBeat.i(71899);
+    AppMethodBeat.i(17335);
     TAG = AppEventQueue.class.getName();
     appEventCollection = new AppEventCollection();
     singleThreadExecutor = Executors.newSingleThreadScheduledExecutor();
-    flushRunnable = new AppEventQueue.1();
-    AppMethodBeat.o(71899);
+    flushRunnable = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(17320);
+        AppEventQueue.access$002(null);
+        if (AppEventsLogger.getFlushBehavior() != AppEventsLogger.FlushBehavior.EXPLICIT_ONLY) {
+          AppEventQueue.flushAndWait(FlushReason.TIMER);
+        }
+        AppMethodBeat.o(17320);
+      }
+    };
+    AppMethodBeat.o(17335);
   }
   
-  public static void add(AccessTokenAppIdPair paramAccessTokenAppIdPair, AppEvent paramAppEvent)
+  public static void add(AccessTokenAppIdPair paramAccessTokenAppIdPair, final AppEvent paramAppEvent)
   {
-    AppMethodBeat.i(71892);
-    singleThreadExecutor.execute(new AppEventQueue.4(paramAccessTokenAppIdPair, paramAppEvent));
-    AppMethodBeat.o(71892);
+    AppMethodBeat.i(17328);
+    singleThreadExecutor.execute(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(17323);
+        AppEventQueue.appEventCollection.addEvent(this.val$accessTokenAppId, paramAppEvent);
+        if ((AppEventsLogger.getFlushBehavior() != AppEventsLogger.FlushBehavior.EXPLICIT_ONLY) && (AppEventQueue.appEventCollection.getEventCount() > 100))
+        {
+          AppEventQueue.flushAndWait(FlushReason.EVENT_THRESHOLD);
+          AppMethodBeat.o(17323);
+          return;
+        }
+        if (AppEventQueue.scheduledFuture == null) {
+          AppEventQueue.access$002(AppEventQueue.singleThreadExecutor.schedule(AppEventQueue.flushRunnable, 15L, TimeUnit.SECONDS));
+        }
+        AppMethodBeat.o(17323);
+      }
+    });
+    AppMethodBeat.o(17328);
   }
   
-  private static GraphRequest buildRequestForSession(AccessTokenAppIdPair paramAccessTokenAppIdPair, SessionEventsState paramSessionEventsState, boolean paramBoolean, FlushStatistics paramFlushStatistics)
+  private static GraphRequest buildRequestForSession(AccessTokenAppIdPair paramAccessTokenAppIdPair, final SessionEventsState paramSessionEventsState, boolean paramBoolean, final FlushStatistics paramFlushStatistics)
   {
-    AppMethodBeat.i(71896);
+    AppMethodBeat.i(17332);
     Object localObject1 = paramAccessTokenAppIdPair.getApplicationId();
     FetchedAppSettings localFetchedAppSettings = FetchedAppSettingsManager.queryAppSettings((String)localObject1, false);
-    GraphRequest localGraphRequest = GraphRequest.newPostRequest(null, String.format("%s/activities", new Object[] { localObject1 }), null, null);
+    final GraphRequest localGraphRequest = GraphRequest.newPostRequest(null, String.format("%s/activities", new Object[] { localObject1 }), null, null);
     Object localObject2 = localGraphRequest.getParameters();
     localObject1 = localObject2;
     if (localObject2 == null) {
@@ -74,26 +104,42 @@ class AppEventQueue
       int i = paramSessionEventsState.populateRequest(localGraphRequest, FacebookSdk.getApplicationContext(), bool, paramBoolean);
       if (i == 0)
       {
-        AppMethodBeat.o(71896);
+        AppMethodBeat.o(17332);
         return null;
       }
       paramFlushStatistics.numEvents = (i + paramFlushStatistics.numEvents);
-      localGraphRequest.setCallback(new AppEventQueue.5(paramAccessTokenAppIdPair, localGraphRequest, paramSessionEventsState, paramFlushStatistics));
-      AppMethodBeat.o(71896);
+      localGraphRequest.setCallback(new GraphRequest.Callback()
+      {
+        public final void onCompleted(GraphResponse paramAnonymousGraphResponse)
+        {
+          AppMethodBeat.i(17324);
+          AppEventQueue.access$400(this.val$accessTokenAppId, localGraphRequest, paramAnonymousGraphResponse, paramSessionEventsState, paramFlushStatistics);
+          AppMethodBeat.o(17324);
+        }
+      });
+      AppMethodBeat.o(17332);
       return localGraphRequest;
     }
   }
   
   public static void flush(FlushReason paramFlushReason)
   {
-    AppMethodBeat.i(71891);
-    singleThreadExecutor.execute(new AppEventQueue.3(paramFlushReason));
-    AppMethodBeat.o(71891);
+    AppMethodBeat.i(17327);
+    singleThreadExecutor.execute(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(17322);
+        AppEventQueue.flushAndWait(this.val$reason);
+        AppMethodBeat.o(17322);
+      }
+    });
+    AppMethodBeat.o(17327);
   }
   
   static void flushAndWait(FlushReason paramFlushReason)
   {
-    AppMethodBeat.i(71894);
+    AppMethodBeat.i(17330);
     Object localObject = AppEventStore.readAndClearStore();
     appEventCollection.addPersistedEvents((PersistedEvents)localObject);
     try
@@ -104,28 +150,28 @@ class AppEventQueue
         localObject = new Intent("com.facebook.sdk.APP_EVENTS_FLUSHED");
         ((Intent)localObject).putExtra("com.facebook.sdk.APP_EVENTS_NUM_EVENTS_FLUSHED", paramFlushReason.numEvents);
         ((Intent)localObject).putExtra("com.facebook.sdk.APP_EVENTS_FLUSH_RESULT", paramFlushReason.result);
-        d.R(FacebookSdk.getApplicationContext()).c((Intent)localObject);
+        d.T(FacebookSdk.getApplicationContext()).b((Intent)localObject);
       }
-      AppMethodBeat.o(71894);
+      AppMethodBeat.o(17330);
       return;
     }
     catch (Exception paramFlushReason)
     {
-      AppMethodBeat.o(71894);
+      AppMethodBeat.o(17330);
     }
   }
   
   public static Set<AccessTokenAppIdPair> getKeySet()
   {
-    AppMethodBeat.i(71893);
+    AppMethodBeat.i(17329);
     Set localSet = appEventCollection.keySet();
-    AppMethodBeat.o(71893);
+    AppMethodBeat.o(17329);
     return localSet;
   }
   
-  private static void handleResponse(AccessTokenAppIdPair paramAccessTokenAppIdPair, GraphRequest paramGraphRequest, GraphResponse paramGraphResponse, SessionEventsState paramSessionEventsState, FlushStatistics paramFlushStatistics)
+  private static void handleResponse(AccessTokenAppIdPair paramAccessTokenAppIdPair, GraphRequest paramGraphRequest, GraphResponse paramGraphResponse, final SessionEventsState paramSessionEventsState, FlushStatistics paramFlushStatistics)
   {
-    AppMethodBeat.i(71897);
+    AppMethodBeat.i(17333);
     FacebookRequestError localFacebookRequestError = paramGraphResponse.getError();
     String str1 = "Success";
     Object localObject = FlushResult.SUCCESS;
@@ -150,12 +196,20 @@ class AppEventQueue
             bool = true;
             paramSessionEventsState.clearInFlightAndStats(bool);
             if (paramGraphResponse == FlushResult.NO_CONNECTIVITY) {
-              FacebookSdk.getExecutor().execute(new AppEventQueue.6(paramAccessTokenAppIdPair, paramSessionEventsState));
+              FacebookSdk.getExecutor().execute(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(17325);
+                  AppEventStore.persistEvents(this.val$accessTokenAppId, paramSessionEventsState);
+                  AppMethodBeat.o(17325);
+                }
+              });
             }
             if ((paramGraphResponse != FlushResult.SUCCESS) && (paramFlushStatistics.result != FlushResult.NO_CONNECTIVITY)) {
               paramFlushStatistics.result = paramGraphResponse;
             }
-            AppMethodBeat.o(71897);
+            AppMethodBeat.o(17333);
             return;
             str1 = String.format("Failed:\n  Response: %s\n  Error %s", new Object[] { paramGraphResponse.toString(), localFacebookRequestError.toString() });
             paramGraphResponse = FlushResult.SERVER_ERROR;
@@ -176,14 +230,23 @@ class AppEventQueue
   
   public static void persistToDisk()
   {
-    AppMethodBeat.i(71890);
-    singleThreadExecutor.execute(new AppEventQueue.2());
-    AppMethodBeat.o(71890);
+    AppMethodBeat.i(17326);
+    singleThreadExecutor.execute(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(17321);
+        AppEventStore.persistEvents(AppEventQueue.appEventCollection);
+        AppEventQueue.access$102(new AppEventCollection());
+        AppMethodBeat.o(17321);
+      }
+    });
+    AppMethodBeat.o(17326);
   }
   
   private static FlushStatistics sendEventsToServer(FlushReason paramFlushReason, AppEventCollection paramAppEventCollection)
   {
-    AppMethodBeat.i(71895);
+    AppMethodBeat.i(17331);
     FlushStatistics localFlushStatistics = new FlushStatistics();
     boolean bool = FacebookSdk.getLimitEventAndDataUsage(FacebookSdk.getApplicationContext());
     ArrayList localArrayList = new ArrayList();
@@ -203,16 +266,16 @@ class AppEventQueue
       while (paramFlushReason.hasNext()) {
         ((GraphRequest)paramFlushReason.next()).executeAndWait();
       }
-      AppMethodBeat.o(71895);
+      AppMethodBeat.o(17331);
       return localFlushStatistics;
     }
-    AppMethodBeat.o(71895);
+    AppMethodBeat.o(17331);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.AppEventQueue
  * JD-Core Version:    0.7.0.1
  */

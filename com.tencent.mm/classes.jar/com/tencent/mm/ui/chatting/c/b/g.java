@@ -1,14 +1,13 @@
 package com.tencent.mm.ui.chatting.c.b;
 
-import com.tencent.mm.ui.chatting.c.v;
-import com.tencent.mm.ui.l;
+import com.tencent.mm.ui.chatting.c.ab;
 
 public abstract interface g
-  extends v
+  extends ab
 {
-  public abstract void a(l paraml);
+  public abstract void YK(int paramInt);
   
-  public abstract void b(l paraml);
+  public abstract void eWZ();
 }
 
 

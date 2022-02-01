@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@drawable/adl" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/wo" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" android:layout_marginLeft="@dimen/d" android:layout_marginTop="10.0dip" android:scaleType="fitXY" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingTop="7.0dip" android:paddingBottom="7.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d" android:layout_weight="1.0">
+        <TextView android:textAppearance="@style/nn" android:ellipsize="marquee" android:id="@id/gam" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:ellipsize="end" android:id="@id/g2b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="10" style="@style/ym" />
+            <com.tencent.mm.plugin.wallet_core.ui.view.FavourLayout android:orientation="vertical" android:id="@id/bwv" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <CheckedTextView android:gravity="center" android:layout_gravity="center|right" android:id="@id/ap4" android:background="@null" android:layout_width="wrap_content" android:layout_height="54.0dip" android:checkMark="@drawable/a9_" />
+</LinearLayout>

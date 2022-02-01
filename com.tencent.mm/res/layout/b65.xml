@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/tc" android:id="@id/fi9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_marginBottom="24.0dip" android:text="" />
-</LinearLayout>
+    <SurfaceView android:layout_gravity="center" android:id="@id/g2n" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <include layout="@layout/b63" />
+</merge>

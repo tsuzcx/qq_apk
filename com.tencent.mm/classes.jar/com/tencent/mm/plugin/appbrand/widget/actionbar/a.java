@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.actionbar;
 
 public abstract interface a
 {
-  public abstract void aGp();
+  public abstract void beJ();
 }
 
 

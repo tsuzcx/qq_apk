@@ -12,7 +12,7 @@ public final class bd
     int i = c.b(paramParcel);
     c.a(paramParcel, 2, paramzzcg.packageName);
     c.a(paramParcel, 3, paramzzcg.label);
-    c.a(paramParcel, 4, paramzzcg.TQ);
+    c.a(paramParcel, 4, paramzzcg.VF);
     c.v(paramParcel, i);
   }
 }

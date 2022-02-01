@@ -1,10 +1,8 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.tenpay.model.m;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -12,54 +10,81 @@ import org.json.JSONObject;
 public final class x
   extends m
 {
-  public x(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public String zWu;
+  public int zWv;
+  public String zWw;
+  public String zWx;
+  
+  public x(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(46540);
+    AppMethodBeat.i(69939);
     HashMap localHashMap = new HashMap();
-    try
-    {
-      localHashMap.put("appid", URLEncoder.encode(paramString1, "UTF-8"));
-      localHashMap.put("timestamp", URLEncoder.encode(paramString2, "UTF-8"));
-      localHashMap.put("noncestr", URLEncoder.encode(paramString3, "UTF-8"));
-      localHashMap.put("package", URLEncoder.encode(paramString4, "UTF-8"));
-      localHashMap.put("sign", URLEncoder.encode(paramString5, "UTF-8"));
-      setRequestData(localHashMap);
-      ab.d("MicroMsg.NetSceneTenpayF2fJsapiCheck", "package: %s, sign: %s", new Object[] { paramString4, paramString5 });
-      AppMethodBeat.o(46540);
-      return;
-    }
-    catch (UnsupportedEncodingException paramString1)
-    {
-      ab.printErrStackTrace("MicroMsg.NetSceneTenpayF2fJsapiCheck", paramString1, "", new Object[0]);
-      AppMethodBeat.o(46540);
-    }
+    localHashMap.put("token", paramString1);
+    localHashMap.put("use_touch", "1");
+    setRequestData(localHashMap);
+    paramString1 = new HashMap();
+    paramString1.put("soter_req", paramString2);
+    setWXRequestData(paramString1);
+    AppMethodBeat.o(69939);
+  }
+  
+  public x(String paramString1, String paramString2, byte paramByte)
+  {
+    AppMethodBeat.i(69940);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("passwd", paramString1);
+    localHashMap.put("token", paramString2);
+    setRequestData(localHashMap);
+    setWXRequestData(new HashMap());
+    AppMethodBeat.o(69940);
+  }
+  
+  public x(String paramString1, String paramString2, char paramChar)
+  {
+    AppMethodBeat.i(69941);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("passwd", paramString1);
+    localHashMap.put("token", paramString2);
+    localHashMap.put("resend", "1");
+    setRequestData(localHashMap);
+    setWXRequestData(new HashMap());
+    AppMethodBeat.o(69941);
+  }
+  
+  public final boolean ebl()
+  {
+    return this.zWv == 0;
   }
   
   public final int getFuncId()
   {
-    return 1973;
+    return 1515;
   }
   
   public final int getTenpayCgicmd()
   {
-    return 0;
+    return 100;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/f2frcvdlistjsapicheck";
+    return "/cgi-bin/mmpay-bin/tenpay/getusertoken";
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(46541);
-    ab.d("MicroMsg.NetSceneTenpayF2fJsapiCheck", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-    AppMethodBeat.o(46541);
+    AppMethodBeat.i(69942);
+    ad.d("Micromsg.NetSceneTenpayCheckPwdByToken", "errCode " + paramInt + " errMsg: " + paramString);
+    this.zWu = paramJSONObject.optString("usertoken");
+    this.zWv = paramJSONObject.optInt("is_free_sms");
+    this.zWw = paramJSONObject.optString("mobile_no");
+    this.zWx = paramJSONObject.optString("relation_key");
+    AppMethodBeat.o(69942);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.x
  * JD-Core Version:    0.7.0.1
  */

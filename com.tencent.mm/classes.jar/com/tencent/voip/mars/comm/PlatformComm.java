@@ -25,11 +25,11 @@ public class PlatformComm
   
   public static void init(Context paramContext, Handler paramHandler)
   {
-    AppMethodBeat.i(92744);
+    AppMethodBeat.i(55581);
     context = paramContext;
     handler = paramHandler;
     NetworkSignalUtil.InitNetworkSignalUtil(paramContext);
-    AppMethodBeat.o(92744);
+    AppMethodBeat.o(55581);
   }
 }
 

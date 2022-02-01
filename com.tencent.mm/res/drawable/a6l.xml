@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/ass" />
-    <item android:drawable="@drawable/asr" />
-</selector>
+    <size android:height="70.0dip" android:width="1.0dip" />
+    <solid android:color="@color/a_j" />
+</shape>

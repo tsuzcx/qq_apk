@@ -1,112 +1,126 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
-import android.os.HandlerThread;
+import com.tencent.e.j.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ae.a;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
 {
-  private static int oIk = 4;
-  static int oIl = 4;
-  ak handler;
-  HandlerThread[] oIm;
-  int oIn;
-  private int oIo;
-  private LinkedList<b> oIp;
-  private a.a oIq;
-  boolean oIr;
-  b.a oIs;
+  private static int tDs = 4;
+  static int tDt = 4;
+  ap handler;
+  boolean stop;
+  b.a tDA;
+  ap[] tDu;
+  int tDv;
+  private int tDw;
+  private LinkedList<b> tDx;
+  private a tDy;
   
-  public a(a.a parama)
+  public a(a parama)
   {
-    AppMethodBeat.i(76564);
-    this.oIn = 0;
-    this.oIo = 0;
-    this.oIp = new LinkedList();
-    this.oIr = false;
-    this.oIs = new a.1(this);
-    this.oIq = parama;
-    oIl = -1;
-    if (CaptureMMProxy.getInstance() != null) {
-      oIl = CaptureMMProxy.getInstance().getInt(ac.a.yDW, -1);
-    }
-    if (oIl == -1)
+    AppMethodBeat.i(89465);
+    this.tDv = 0;
+    this.tDw = 0;
+    this.tDx = new LinkedList();
+    this.stop = false;
+    this.tDA = new b.a()
     {
-      oIl = Runtime.getRuntime().availableProcessors();
-      oIl = Math.min(oIk, oIl);
-      ab.i("MicroMsg.ForwardMgr", "ForwardMgr THREAD_COUNT from runtime %d, availableProcessors: %s", new Object[] { Integer.valueOf(oIl), Integer.valueOf(Runtime.getRuntime().availableProcessors()) });
+      public final void a(final b paramAnonymousb)
+      {
+        AppMethodBeat.i(89464);
+        a.a(a.this).post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(89463);
+            a.a(a.this, paramAnonymousb);
+            AppMethodBeat.o(89463);
+          }
+        });
+        AppMethodBeat.o(89464);
+      }
+    };
+    this.tDy = parama;
+    tDt = -1;
+    if (CaptureMMProxy.getInstance() != null) {
+      tDt = CaptureMMProxy.getInstance().getInt(ae.a.Fmw, -1);
+    }
+    if (tDt == -1)
+    {
+      tDt = Runtime.getRuntime().availableProcessors();
+      tDt = Math.min(tDs, tDt);
+      ad.i("MicroMsg.ForwardMgr", "ForwardMgr THREAD_COUNT from runtime %d, availableProcessors: %s", new Object[] { Integer.valueOf(tDt), Integer.valueOf(Runtime.getRuntime().availableProcessors()) });
     }
     for (;;)
     {
-      this.oIm = new HandlerThread[oIl];
-      SightVideoJNI.initScaleAndRoateBuffer(oIl);
+      this.tDu = new ap[tDt];
+      SightVideoJNI.initScaleAndRoateBuffer(tDt);
       int i = 0;
-      while (i < this.oIm.length)
+      while (i < this.tDu.length)
       {
-        this.oIm[i] = d.ey("BigSightMediaCodecMP4MuxRecorder_FrameBufProcessMgr_".concat(String.valueOf(i)), -1);
-        this.oIm[i].start();
+        this.tDu[i] = new ap("BigSightMediaCodecMP4MuxRecorder_FrameBufProcessMgr_".concat(String.valueOf(i)));
         i += 1;
       }
-      ab.i("MicroMsg.ForwardMgr", "ForwardMgr THREAD_COUNT from config %d", new Object[] { Integer.valueOf(oIl) });
+      ad.i("MicroMsg.ForwardMgr", "ForwardMgr THREAD_COUNT from config %d", new Object[] { Integer.valueOf(tDt) });
     }
-    this.oIr = false;
-    AppMethodBeat.o(76564);
+    this.stop = false;
+    AppMethodBeat.o(89465);
   }
   
-  private void bRi()
+  private void cQc()
   {
-    AppMethodBeat.i(76565);
-    ab.i("MicroMsg.ForwardMgr", "processBufList %d %d", new Object[] { Integer.valueOf(this.oIp.size()), Integer.valueOf(this.oIo) });
+    AppMethodBeat.i(89466);
+    ad.i("MicroMsg.ForwardMgr", "processBufList %d %d", new Object[] { Integer.valueOf(this.tDx.size()), Integer.valueOf(this.tDw) });
     for (;;)
     {
-      if (this.oIp.size() == 0)
+      if (this.tDx.size() == 0)
       {
-        AppMethodBeat.o(76565);
+        AppMethodBeat.o(89466);
         return;
       }
-      ab.i("MicroMsg.ForwardMgr", "loop processBufList %d %d", new Object[] { Integer.valueOf(this.oIp.size()), Integer.valueOf(this.oIo) });
-      Iterator localIterator = this.oIp.iterator();
+      ad.i("MicroMsg.ForwardMgr", "loop processBufList %d %d", new Object[] { Integer.valueOf(this.tDx.size()), Integer.valueOf(this.tDw) });
+      Iterator localIterator = this.tDx.iterator();
       while (localIterator.hasNext())
       {
         b localb = (b)localIterator.next();
-        if (this.oIo == localb.oIz)
+        if (this.tDw == localb.tDH)
         {
-          this.oIo += 1;
-          this.oIq.output(localb.oIx);
-          this.oIp.remove(localb);
+          this.tDw += 1;
+          this.tDy.output(localb.tDF);
+          this.tDx.remove(localb);
         }
       }
       for (int i = 1; i == 0; i = 0)
       {
-        AppMethodBeat.o(76565);
+        AppMethodBeat.o(89466);
         return;
       }
     }
   }
   
-  public final boolean bRj()
+  public final boolean cQd()
   {
-    return this.oIo == this.oIn;
+    return this.tDw == this.tDv;
   }
   
   protected final void finalize()
   {
-    AppMethodBeat.i(76567);
+    AppMethodBeat.i(89468);
     try
     {
       stop();
       label9:
       super.finalize();
-      AppMethodBeat.o(76567);
+      AppMethodBeat.o(89468);
       return;
     }
     catch (Throwable localThrowable)
@@ -118,25 +132,30 @@ public final class a
   public final void stop()
   {
     int i = 0;
-    AppMethodBeat.i(76566);
-    ab.i("MicroMsg.ForwardMgr", "stop FrameBufProcessMgr %s", new Object[] { bo.dtY().toString() });
-    while (i < this.oIm.length)
+    AppMethodBeat.i(89467);
+    ad.i("MicroMsg.ForwardMgr", "stop FrameBufProcessMgr %s", new Object[] { bt.eGN().toString() });
+    while (i < this.tDu.length)
     {
-      if (this.oIm[i] != null)
+      if (this.tDu[i] != null)
       {
-        this.oIm[i].quit();
-        this.oIm[i] = null;
+        this.tDu[i].getSerial().IzX.quit();
+        this.tDu[i] = null;
       }
       i += 1;
     }
-    SightVideoJNI.releaseScaleAndRoateBuffer(oIl);
-    this.oIr = true;
-    AppMethodBeat.o(76566);
+    SightVideoJNI.releaseScaleAndRoateBuffer(tDt);
+    this.stop = true;
+    AppMethodBeat.o(89467);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void output(byte[] paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ public class IPCFloat
   
   static
   {
-    AppMethodBeat.i(114149);
-    CREATOR = new IPCFloat.1();
-    AppMethodBeat.o(114149);
+    AppMethodBeat.i(158860);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(158860);
   }
   
   public int describeContents()
@@ -25,10 +25,10 @@ public class IPCFloat
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(114148);
+    AppMethodBeat.i(158859);
     if (paramObject == this)
     {
-      AppMethodBeat.o(114148);
+      AppMethodBeat.o(158859);
       return true;
     }
     if ((paramObject instanceof IPCFloat))
@@ -36,40 +36,40 @@ public class IPCFloat
       paramObject = (IPCFloat)paramObject;
       if (this.value == paramObject.value)
       {
-        AppMethodBeat.o(114148);
+        AppMethodBeat.o(158859);
         return true;
       }
-      AppMethodBeat.o(114148);
+      AppMethodBeat.o(158859);
       return false;
     }
     if ((paramObject instanceof Float))
     {
       boolean bool = paramObject.equals(Float.valueOf(this.value));
-      AppMethodBeat.o(114148);
+      AppMethodBeat.o(158859);
       return bool;
     }
-    AppMethodBeat.o(114148);
+    AppMethodBeat.o(158859);
     return false;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(114147);
+    AppMethodBeat.i(158858);
     String str = Float.toString(this.value);
-    AppMethodBeat.o(114147);
+    AppMethodBeat.o(158858);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(114146);
+    AppMethodBeat.i(158857);
     paramParcel.writeFloat(this.value);
-    AppMethodBeat.o(114146);
+    AppMethodBeat.o(158857);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.type.IPCFloat
  * JD-Core Version:    0.7.0.1
  */

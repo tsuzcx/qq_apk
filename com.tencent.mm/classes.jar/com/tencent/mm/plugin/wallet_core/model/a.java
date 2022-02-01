@@ -1,33 +1,30 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bt;
 
-public abstract class a
+public final class a
 {
-  private Runnable ueT = new a.1(this);
+  public String doh;
+  public String nTQ;
+  public String tfH;
+  public String tfI;
   
-  protected abstract void a(a parama);
-  
-  public final void b(a parama)
+  public final boolean ebt()
   {
-    a(parama);
-  }
-  
-  protected abstract void bOR();
-  
-  public void release()
-  {
-    al.ae(this.ueT);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void r(Object... paramVarArgs);
+    AppMethodBeat.i(70205);
+    if ((!bt.isNullOrNil(this.doh)) && (!bt.isNullOrNil(this.tfH)) && (!bt.isNullOrNil(this.tfI)) && (!bt.isNullOrNil(this.nTQ)))
+    {
+      AppMethodBeat.o(70205);
+      return true;
+    }
+    AppMethodBeat.o(70205);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.a
  * JD-Core Version:    0.7.0.1
  */

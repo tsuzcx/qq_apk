@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.card.ui.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.protobuf.oj;
+import com.tencent.mm.protocal.protobuf.qo;
 import com.tencent.mm.ui.MMActivity;
 
 public final class d
@@ -13,31 +13,31 @@ public final class d
     super(paramMMActivity);
   }
   
-  public final boolean beT()
+  public final boolean bLP()
   {
     return false;
   }
   
-  public final boolean beV()
+  public final boolean bLR()
   {
     return false;
   }
   
-  public final boolean beW()
+  public final boolean bLS()
   {
-    AppMethodBeat.i(88713);
-    if ((this.klk.bbe().wEd != null) && (this.kyA) && (bex()) && (bey()))
+    AppMethodBeat.i(113640);
+    if ((this.nqp.bHW().CPE != null) && (this.nDT) && (bLt()) && (bLu()))
     {
-      AppMethodBeat.o(88713);
+      AppMethodBeat.o(113640);
       return true;
     }
-    AppMethodBeat.o(88713);
+    AppMethodBeat.o(113640);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ public abstract interface c
 {
   public abstract void a(Throwable paramThrowable, String paramString);
   
-  public abstract void c(String paramString1, String paramString2, Object... paramVarArgs);
+  public abstract void b(String paramString1, String paramString2, Object... paramVarArgs);
   
-  public abstract void m(Activity paramActivity);
+  public abstract void r(Activity paramActivity);
 }
 
 

@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="26.0dip" android:textStyle="bold" android:textColor="@color/h6" android:id="@id/fi_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:text="@string/g1g" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:gravity="center" android:id="@id/fia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/g1d" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:minHeight="56.0dip">
-        <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:id="@id/fib" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/g1e" android:layout_weight="1.0" />
-        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/fic" android:layout_width="@dimen/no" android:layout_height="@dimen/nl" />
-    </LinearLayout>
-    <View android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="1.0px" android:alpha="0.1" />
-    <TextView android:textSize="14.0dip" android:textColor="#ff8c8c8c" android:id="@id/fid" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:layout_marginBottom="16.0dip" android:text="@string/g1f" />
-</LinearLayout>
+    <com.tencent.mm.ui.base.MMTextureView android:layout_gravity="center" android:id="@id/g2n" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <include layout="@layout/b63" />
+</merge>

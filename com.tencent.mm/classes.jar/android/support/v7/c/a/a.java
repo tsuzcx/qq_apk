@@ -15,16 +15,16 @@ import org.xmlpull.v1.XmlPullParser;
 
 public final class a
 {
-  private static final ThreadLocal<TypedValue> QX = new ThreadLocal();
-  private static final WeakHashMap<Context, SparseArray<a>> QY = new WeakHashMap(0);
-  private static final Object QZ = new Object();
+  private static final ThreadLocal<TypedValue> XW = new ThreadLocal();
+  private static final WeakHashMap<Context, SparseArray<a>> XX = new WeakHashMap(0);
+  private static final Object XY = new Object();
   
-  public static Drawable k(Context paramContext, int paramInt)
+  public static Drawable l(Context paramContext, int paramInt)
   {
-    return g.hg().k(paramContext, paramInt);
+    return g.iD().l(paramContext, paramInt);
   }
   
-  public static ColorStateList l(Context paramContext, int paramInt)
+  public static ColorStateList m(Context paramContext, int paramInt)
   {
     Object localObject1;
     if (Build.VERSION.SDK_INT >= 23) {
@@ -34,36 +34,36 @@ public final class a
     do
     {
       return localObject1;
-      localObject2 = p(paramContext, paramInt);
+      localObject2 = q(paramContext, paramInt);
       localObject1 = localObject2;
     } while (localObject2 != null);
-    ColorStateList localColorStateList = o(paramContext, paramInt);
+    ColorStateList localColorStateList = p(paramContext, paramInt);
     if (localColorStateList != null) {
-      synchronized (QZ)
+      synchronized (XY)
       {
-        localObject2 = (SparseArray)QY.get(paramContext);
+        localObject2 = (SparseArray)XX.get(paramContext);
         localObject1 = localObject2;
         if (localObject2 == null)
         {
           localObject1 = new SparseArray();
-          QY.put(paramContext, localObject1);
+          XX.put(paramContext, localObject1);
         }
         ((SparseArray)localObject1).append(paramInt, new a(localColorStateList, paramContext.getResources().getConfiguration()));
         return localColorStateList;
       }
     }
-    return b.l(paramContext, paramInt);
+    return b.m(paramContext, paramInt);
   }
   
-  private static ColorStateList o(Context paramContext, int paramInt)
+  private static ColorStateList p(Context paramContext, int paramInt)
   {
     Resources localResources = paramContext.getResources();
-    Object localObject2 = (TypedValue)QX.get();
+    Object localObject2 = (TypedValue)XW.get();
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new TypedValue();
-      QX.set(localObject1);
+      XW.set(localObject1);
     }
     localResources.getValue(paramInt, (TypedValue)localObject1, true);
     if ((((TypedValue)localObject1).type >= 28) && (((TypedValue)localObject1).type <= 31)) {}
@@ -81,19 +81,19 @@ public final class a
     return null;
   }
   
-  private static ColorStateList p(Context paramContext, int paramInt)
+  private static ColorStateList q(Context paramContext, int paramInt)
   {
-    synchronized (QZ)
+    synchronized (XY)
     {
-      SparseArray localSparseArray = (SparseArray)QY.get(paramContext);
+      SparseArray localSparseArray = (SparseArray)XX.get(paramContext);
       if ((localSparseArray != null) && (localSparseArray.size() > 0))
       {
         a locala = (a)localSparseArray.get(paramInt);
         if (locala != null)
         {
-          if (locala.Rb.equals(paramContext.getResources().getConfiguration()))
+          if (locala.Ya.equals(paramContext.getResources().getConfiguration()))
           {
-            paramContext = locala.Ra;
+            paramContext = locala.XZ;
             return paramContext;
           }
           localSparseArray.remove(paramInt);
@@ -105,13 +105,13 @@ public final class a
   
   static final class a
   {
-    final ColorStateList Ra;
-    final Configuration Rb;
+    final ColorStateList XZ;
+    final Configuration Ya;
     
     a(ColorStateList paramColorStateList, Configuration paramConfiguration)
     {
-      this.Ra = paramColorStateList;
-      this.Rb = paramConfiguration;
+      this.XZ = paramColorStateList;
+      this.Ya = paramConfiguration;
     }
   }
 }

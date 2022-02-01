@@ -13,22 +13,22 @@ public class HandlerExecutor
   public HandlerExecutor(Handler paramHandler)
   {
     this(paramHandler.getLooper());
-    AppMethodBeat.i(90298);
-    AppMethodBeat.o(90298);
+    AppMethodBeat.i(5319);
+    AppMethodBeat.o(5319);
   }
   
   public HandlerExecutor(Looper paramLooper)
   {
-    AppMethodBeat.i(90299);
+    AppMethodBeat.i(5320);
     this.handler = new Handler(paramLooper);
-    AppMethodBeat.o(90299);
+    AppMethodBeat.o(5320);
   }
   
   public void execute(Runnable paramRunnable)
   {
-    AppMethodBeat.i(90300);
+    AppMethodBeat.i(5321);
     this.handler.post(paramRunnable);
-    AppMethodBeat.o(90300);
+    AppMethodBeat.o(5321);
   }
 }
 

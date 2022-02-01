@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a6q" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="@dimen/dp">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:id="@id/c_n" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/c9x" android:layout_weight="1.0" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:gravity="center_vertical" android:id="@id/c_o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-    </LinearLayout>
+<LinearLayout android:gravity="center|left" android:id="@id/gbk" android:paddingLeft="0.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/b8" android:layout_weight="1.0" style="@style/mc"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d4m" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginRight="@dimen/ci" android:src="@raw/icons_filled_location" app:iconColor="@color/Brand_100" />
+    <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/lw" />
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/lw" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fsl" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@raw/icons_outlined_done" app:iconColor="@color/Brand" />
 </LinearLayout>

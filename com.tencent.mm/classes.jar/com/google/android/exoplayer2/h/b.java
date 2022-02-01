@@ -6,11 +6,11 @@ public abstract interface b
   
   public abstract void a(a[] paramArrayOfa);
   
-  public abstract a qk();
-  
-  public abstract int ql();
-  
   public abstract void trim();
+  
+  public abstract a ve();
+  
+  public abstract int vf();
 }
 
 

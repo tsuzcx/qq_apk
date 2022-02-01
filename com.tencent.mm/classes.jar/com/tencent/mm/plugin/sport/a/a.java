@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.sport.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.ac;
+import com.tencent.mm.storage.ae;
 
 public final class a
 {
-  public static final String spi;
-  public static final String spj;
-  public static final String spk;
+  public static final String ybD;
+  public static final String ybE;
+  public static final String ybF;
   
   static
   {
-    AppMethodBeat.i(55717);
-    spi = ac.eQv + "stepcounter.cfg";
-    spj = ac.eQv + "MM_stepcounter.cfg";
-    spk = ac.eQv + "PUSH_stepcounter.cfg";
-    AppMethodBeat.o(55717);
+    AppMethodBeat.i(116810);
+    ybD = ae.FfH + "stepcounter.cfg";
+    ybE = ae.FfH + "MM_stepcounter.cfg";
+    ybF = ae.FfH + "PUSH_stepcounter.cfg";
+    AppMethodBeat.o(116810);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.remittance.a;
 
-import com.tencent.mm.cg.h.d;
 import com.tencent.mm.plugin.remittance.b.b;
+import com.tencent.mm.storagebase.h.b;
 
 final class c$1
-  implements h.d
+  implements h.b
 {
   public final String[] getSQLs()
   {
@@ -13,7 +13,7 @@ final class c$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.a.c.1
  * JD-Core Version:    0.7.0.1
  */

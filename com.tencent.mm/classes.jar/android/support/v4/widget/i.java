@@ -7,12 +7,12 @@ import android.widget.EdgeEffect;
 
 public final class i
 {
-  public EdgeEffect Ky;
+  public EdgeEffect Rz;
   
   @Deprecated
   public i(Context paramContext)
   {
-    this.Ky = new EdgeEffect(paramContext);
+    this.Rz = new EdgeEffect(paramContext);
   }
   
   public static void a(EdgeEffect paramEdgeEffect, float paramFloat1, float paramFloat2)
@@ -28,34 +28,34 @@ public final class i
   @Deprecated
   public final boolean E(float paramFloat)
   {
-    this.Ky.onPull(paramFloat);
+    this.Rz.onPull(paramFloat);
     return true;
   }
   
   @Deprecated
-  public final boolean aF(int paramInt)
+  public final boolean aW(int paramInt)
   {
-    this.Ky.onAbsorb(paramInt);
+    this.Rz.onAbsorb(paramInt);
     return true;
   }
   
   @Deprecated
   public final boolean draw(Canvas paramCanvas)
   {
-    return this.Ky.draw(paramCanvas);
+    return this.Rz.draw(paramCanvas);
   }
   
   @Deprecated
-  public final boolean ec()
+  public final boolean fu()
   {
-    this.Ky.onRelease();
-    return this.Ky.isFinished();
+    this.Rz.onRelease();
+    return this.Rz.isFinished();
   }
   
   @Deprecated
   public final void setSize(int paramInt1, int paramInt2)
   {
-    this.Ky.setSize(paramInt1, paramInt2);
+    this.Rz.setSize(paramInt1, paramInt2);
   }
 }
 

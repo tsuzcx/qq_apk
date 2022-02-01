@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <Preference android:title="@string/fuq" android:key="wallet_modify_password" android:layout="@layout/afi" />
-    <Preference android:title="@string/fuk" android:key="wallet_forget_password" android:layout="@layout/afi" />
-    <PreferenceCategory />
-    <CheckBoxPreference android:title="@string/fur" android:key="wallet_open_gesture_password" android:layout="@layout/afi" />
-    <Preference android:title="@string/fup" android:key="wallet_modify_gesture_password" android:layout="@layout/afi" />
-    <PreferenceCategory />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceSmallCategory android:key="settings_tag_name_category" />
+    <Preference android:key="settings_tag_name" android:layout="@layout/aop" android:title="@string/fq2" />
+    <PreferenceTitleCategory android:key="outside" android:title="@string/fq4" />
+    <PreferenceTitleCategory android:key="black" android:title="@string/fq3" />
+    <PreferenceTitleCategory android:key="group" android:title="@string/fpz" />
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
+    <PreferenceSmallCategory android:key="delete_tag_name_category" />
+    <Preference android:key="delete_tag_name" android:layout="@layout/ajc" android:title="@string/f2p" />
+    <PreferenceSmallCategory />
 </PreferenceScreen>

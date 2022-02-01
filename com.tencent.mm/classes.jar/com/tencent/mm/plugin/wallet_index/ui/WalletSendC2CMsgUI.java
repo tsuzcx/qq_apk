@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.pluginsdk.wallet.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.al.n;
+import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.net.URLDecoder;
@@ -19,12 +19,12 @@ import java.util.Map;
 public class WalletSendC2CMsgUI
   extends WalletBaseUI
 {
+  private Map<String, String> AyE = null;
   private int mScene;
-  private Map<String, String> uBy = null;
   
-  private boolean afU(String paramString)
+  private boolean auF(String paramString)
   {
-    AppMethodBeat.i(48311);
+    AppMethodBeat.i(71952);
     String str4;
     String str5;
     String str6;
@@ -45,28 +45,28 @@ public class WalletSendC2CMsgUI
     }
     for (;;)
     {
-      if ((!bo.isNullOrNil(str6)) && (!bo.isNullOrNil(str3)))
+      if ((!bt.isNullOrNil(str6)) && (!bt.isNullOrNil(str3)))
       {
-        ab.d("MicroMsg.WalletSendC2CMsgUI", "send c2c msg to".concat(String.valueOf(paramString)));
+        ad.d("MicroMsg.WalletSendC2CMsgUI", "send c2c msg to".concat(String.valueOf(paramString)));
         doSceneProgress(new com.tencent.mm.plugin.wallet_index.c.h(paramString, str1, str2, str3, str4, str5, str6, (String)localObject));
-        AppMethodBeat.o(48311);
+        AppMethodBeat.o(71952);
         return true;
-        localObject = cXm();
-        if ((localObject != null) && (!bo.isNullOrNil(paramString)))
+        localObject = efH();
+        if ((localObject != null) && (!bt.isNullOrNil(paramString)))
         {
-          str1 = URLDecoder.decode(bo.nullAsNil((String)((Map)localObject).get("receivertitle")));
-          str2 = URLDecoder.decode(bo.nullAsNil((String)((Map)localObject).get("sendertitle")));
-          str4 = URLDecoder.decode(bo.nullAsNil((String)((Map)localObject).get("senderdes")));
-          str5 = URLDecoder.decode(bo.nullAsNil((String)((Map)localObject).get("receiverdes")));
-          str6 = bo.nullAsNil((String)((Map)localObject).get("url"));
-          str3 = URLDecoder.decode(bo.nullAsNil((String)((Map)localObject).get("templateid")));
-          localObject = URLDecoder.decode(bo.nullAsNil((String)((Map)localObject).get("senceid")));
+          str1 = URLDecoder.decode(bt.nullAsNil((String)((Map)localObject).get("receivertitle")));
+          str2 = URLDecoder.decode(bt.nullAsNil((String)((Map)localObject).get("sendertitle")));
+          str4 = URLDecoder.decode(bt.nullAsNil((String)((Map)localObject).get("senderdes")));
+          str5 = URLDecoder.decode(bt.nullAsNil((String)((Map)localObject).get("receiverdes")));
+          str6 = bt.nullAsNil((String)((Map)localObject).get("url"));
+          str3 = URLDecoder.decode(bt.nullAsNil((String)((Map)localObject).get("templateid")));
+          localObject = URLDecoder.decode(bt.nullAsNil((String)((Map)localObject).get("senceid")));
         }
       }
       else
       {
-        ab.w("MicroMsg.WalletSendC2CMsgUI", "url = " + bo.isNullOrNil(str6) + "templateId=" + bo.isNullOrNil(str3));
-        AppMethodBeat.o(48311);
+        ad.w("MicroMsg.WalletSendC2CMsgUI", "url = " + bt.isNullOrNil(str6) + "templateId=" + bt.isNullOrNil(str3));
+        AppMethodBeat.o(71952);
         return false;
       }
       localObject = null;
@@ -79,27 +79,27 @@ public class WalletSendC2CMsgUI
     }
   }
   
-  private Map<String, String> cXm()
+  private Map<String, String> efH()
   {
-    AppMethodBeat.i(48312);
-    if (this.uBy == null)
+    AppMethodBeat.i(71953);
+    if (this.AyE == null)
     {
       localObject = getIntent().getStringExtra("packageExt");
-      ab.d("MicroMsg.WalletSendC2CMsgUI", "func[getPackageData] packageExt: ".concat(String.valueOf(localObject)));
-      if (!bo.isNullOrNil((String)localObject))
+      ad.d("MicroMsg.WalletSendC2CMsgUI", "func[getPackageData] packageExt: ".concat(String.valueOf(localObject)));
+      if (!bt.isNullOrNil((String)localObject))
       {
         localObject = ((String)localObject).split("&");
-        this.uBy = new HashMap();
+        this.AyE = new HashMap();
         if ((localObject != null) && (localObject.length > 0))
         {
           int i = 0;
           while (i < localObject.length)
           {
-            if (!bo.isNullOrNil(localObject[i]))
+            if (!bt.isNullOrNil(localObject[i]))
             {
               String[] arrayOfString = localObject[i].split("=");
-              if ((arrayOfString.length == 2) && (!bo.isNullOrNil(arrayOfString[0]))) {
-                this.uBy.put(arrayOfString[0], arrayOfString[1]);
+              if ((arrayOfString.length == 2) && (!bt.isNullOrNil(arrayOfString[0]))) {
+                this.AyE.put(arrayOfString[0], arrayOfString[1]);
               }
             }
             i += 1;
@@ -107,8 +107,8 @@ public class WalletSendC2CMsgUI
         }
       }
     }
-    Object localObject = this.uBy;
-    AppMethodBeat.o(48312);
+    Object localObject = this.AyE;
+    AppMethodBeat.o(71953);
     return localObject;
   }
   
@@ -119,95 +119,95 @@ public class WalletSendC2CMsgUI
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(48310);
+    AppMethodBeat.i(71951);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramIntent != null) {
-      ab.d("MicroMsg.WalletSendC2CMsgUI", "onActivityResult, requestCode = " + paramInt1 + ", resultCode = " + paramInt2 + ", data = " + paramIntent.toString());
+      ad.d("MicroMsg.WalletSendC2CMsgUI", "onActivityResult, requestCode = " + paramInt1 + ", resultCode = " + paramInt2 + ", data = " + paramIntent.toString());
     }
     while (paramInt1 == 1) {
       if ((paramInt2 == -1) && (paramIntent != null))
       {
         paramIntent = paramIntent.getStringExtra("Select_Conv_User");
-        ab.d("MicroMsg.WalletSendC2CMsgUI", "Select user , " + bo.nullAsNil(paramIntent));
-        if (!afU(paramIntent))
+        ad.d("MicroMsg.WalletSendC2CMsgUI", "Select user , " + bt.nullAsNil(paramIntent));
+        if (!auF(paramIntent))
         {
-          ab.e("MicroMsg.WalletSendC2CMsgUI", "doSendC2CMsg fail");
+          ad.e("MicroMsg.WalletSendC2CMsgUI", "doSendC2CMsg fail");
           setResult(-1000);
           finish();
-          AppMethodBeat.o(48310);
+          AppMethodBeat.o(71951);
           return;
-          ab.e("MicroMsg.WalletSendC2CMsgUI", "onActivityResult, requestCode = " + paramInt1 + ", resultCode = " + paramInt2 + ", data = null");
+          ad.e("MicroMsg.WalletSendC2CMsgUI", "onActivityResult, requestCode = " + paramInt1 + ", resultCode = " + paramInt2 + ", data = null");
         }
         else
         {
-          AppMethodBeat.o(48310);
+          AppMethodBeat.o(71951);
         }
       }
       else
       {
-        ab.e("MicroMsg.WalletSendC2CMsgUI", "cancel select contact fail");
+        ad.e("MicroMsg.WalletSendC2CMsgUI", "cancel select contact fail");
         setResult(0);
         finish();
-        AppMethodBeat.o(48310);
+        AppMethodBeat.o(71951);
         return;
       }
     }
-    ab.e("MicroMsg.WalletSendC2CMsgUI", "onActivityResult, unknown requestCode = ".concat(String.valueOf(paramInt1)));
-    AppMethodBeat.o(48310);
+    ad.e("MicroMsg.WalletSendC2CMsgUI", "onActivityResult, unknown requestCode = ".concat(String.valueOf(paramInt1)));
+    AppMethodBeat.o(71951);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(48307);
+    AppMethodBeat.i(71948);
     super.onCreate(paramBundle);
     setContentViewVisibility(8);
     this.mScene = getIntent().getIntExtra("key_scene", 0);
-    ab.i("MicroMsg.WalletSendC2CMsgUI", "scene:" + this.mScene);
+    ad.i("MicroMsg.WalletSendC2CMsgUI", "scene:" + this.mScene);
     if (this.mScene == 0)
     {
       addSceneEndListener(580);
       if (getIntent() == null)
       {
-        ab.e("MicroMsg.WalletSendC2CMsgUI", "func[doCheckPayNetscene] intent null");
+        ad.e("MicroMsg.WalletSendC2CMsgUI", "func[doCheckPayNetscene] intent null");
         setResult(-1000);
         finish();
-        AppMethodBeat.o(48307);
+        AppMethodBeat.o(71948);
         return;
       }
       doSceneForceProgress(new com.tencent.mm.plugin.wallet_core.c.d(getIntent().getStringExtra("appId"), getIntent().getStringExtra("timeStamp"), getIntent().getStringExtra("nonceStr"), getIntent().getStringExtra("packageExt"), getIntent().getStringExtra("signtype"), getIntent().getStringExtra("paySignature"), getIntent().getStringExtra("url"), 6, "getSendC2CMessageRequest", getIntent().getIntExtra("pay_channel", 0)));
-      AppMethodBeat.o(48307);
+      AppMethodBeat.o(71948);
       return;
     }
-    if (!afU(null))
+    if (!auF(null))
     {
-      ab.d("MicroMsg.WalletSendC2CMsgUI", "doSendC2CMsg fail");
+      ad.d("MicroMsg.WalletSendC2CMsgUI", "doSendC2CMsg fail");
       setResult(-1000);
       finish();
-      AppMethodBeat.o(48307);
+      AppMethodBeat.o(71948);
       return;
     }
-    AppMethodBeat.o(48307);
+    AppMethodBeat.o(71948);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(48308);
+    AppMethodBeat.i(71949);
     super.onDestroy();
     removeSceneEndListener(580);
-    AppMethodBeat.o(48308);
+    AppMethodBeat.o(71949);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     int i = 0;
-    AppMethodBeat.i(48309);
+    AppMethodBeat.i(71950);
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.d))
+      if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.d))
       {
-        ab.i("MicroMsg.WalletSendC2CMsgUI", "Check jsapi suc & Go Select Contact");
-        g.ana(((com.tencent.mm.plugin.wallet_core.c.d)paramm).cSW());
-        ab.i("MicroMsg.WalletSendC2CMsgUI", "doCallSelectConversationUI");
-        paramString = cXm();
+        ad.i("MicroMsg.WalletSendC2CMsgUI", "Check jsapi suc & Go Select Contact");
+        e.aCV(((com.tencent.mm.plugin.wallet_core.c.d)paramn).ebj());
+        ad.i("MicroMsg.WalletSendC2CMsgUI", "doCallSelectConversationUI");
+        paramString = efH();
         paramInt1 = i;
         if (paramString != null)
         {
@@ -231,40 +231,40 @@ public class WalletSendC2CMsgUI
     {
       paramString.putExtra("select_is_ret", true);
       paramString.putExtra("Select_Conv_Type", paramInt1);
-      com.tencent.mm.bq.d.b(this, ".ui.transmit.SelectConversationUI", paramString, 1);
-      AppMethodBeat.o(48309);
+      com.tencent.mm.bs.d.c(this, ".ui.transmit.SelectConversationUI", paramString, 1);
+      AppMethodBeat.o(71950);
       return true;
-      if ((paramm instanceof com.tencent.mm.plugin.wallet_index.c.h))
+      if ((paramn instanceof com.tencent.mm.plugin.wallet_index.c.h))
       {
-        ab.i("MicroMsg.WalletSendC2CMsgUI", "Send c2c msg suc");
+        ad.i("MicroMsg.WalletSendC2CMsgUI", "Send c2c msg suc");
         if (this.mScene == 1) {
-          com.tencent.mm.ui.base.h.bO(this, getString(2131305647));
+          com.tencent.mm.ui.base.h.cf(this, getString(2131765866));
         }
         for (;;)
         {
           finish();
-          AppMethodBeat.o(48309);
+          AppMethodBeat.o(71950);
           return true;
-          com.tencent.mm.ui.base.h.bO(this, getString(2131300637));
+          com.tencent.mm.ui.base.h.cf(this, getString(2131760233));
           setResult(-1);
         }
-        if ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.d))
+        if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.d))
         {
-          ab.e("MicroMsg.WalletSendC2CMsgUI", "Check jsapi fail");
+          ad.e("MicroMsg.WalletSendC2CMsgUI", "Check jsapi fail");
           setResult(-1000);
           finish();
-          AppMethodBeat.o(48309);
+          AppMethodBeat.o(71950);
           return true;
         }
-        if ((paramm instanceof com.tencent.mm.plugin.wallet_index.c.h))
+        if ((paramn instanceof com.tencent.mm.plugin.wallet_index.c.h))
         {
           if (this.mScene == 1) {
-            com.tencent.mm.ui.base.h.bO(this, paramString);
+            com.tencent.mm.ui.base.h.cf(this, paramString);
           }
           for (;;)
           {
             finish();
-            AppMethodBeat.o(48309);
+            AppMethodBeat.o(71950);
             return true;
             setResult(-1000);
           }
@@ -272,7 +272,7 @@ public class WalletSendC2CMsgUI
         setResult(-1000);
         finish();
       }
-      AppMethodBeat.o(48309);
+      AppMethodBeat.o(71950);
       return false;
     }
   }
@@ -285,7 +285,7 @@ public class WalletSendC2CMsgUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.ui.WalletSendC2CMsgUI
  * JD-Core Version:    0.7.0.1
  */

@@ -8,26 +8,26 @@ import com.tencent.mm.lib.riskscanner.RiskScannerReqBufferProvider;
 
 public final class a
 {
-  public static Bundle bS(Context paramContext)
+  public static Bundle cl(Context paramContext)
   {
-    AppMethodBeat.i(114463);
+    AppMethodBeat.i(138304);
     paramContext = paramContext.getContentResolver();
     try
     {
       paramContext = paramContext.call(RiskScannerReqBufferProvider.CONTENT_URI, "prepareReqBuffer", null, null);
-      AppMethodBeat.o(114463);
+      AppMethodBeat.o(138304);
       return paramContext;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(114463);
+      AppMethodBeat.o(138304);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.lib.riskscanner.a.a
  * JD-Core Version:    0.7.0.1
  */

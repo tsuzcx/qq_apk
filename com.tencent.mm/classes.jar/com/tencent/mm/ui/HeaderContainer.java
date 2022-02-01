@@ -10,69 +10,69 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class HeaderContainer
   extends FrameLayout
 {
-  private Rect jdr;
-  private z yXA;
-  private i yXz;
+  private i FKE;
+  private ab FKF;
+  private Rect lTn;
   
   public HeaderContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(29334);
-    this.jdr = new Rect();
+    AppMethodBeat.i(33167);
+    this.lTn = new Rect();
     init(paramContext);
-    AppMethodBeat.o(29334);
+    AppMethodBeat.o(33167);
   }
   
   public HeaderContainer(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(29335);
-    this.jdr = new Rect();
+    AppMethodBeat.i(33168);
+    this.lTn = new Rect();
     init(paramContext);
-    AppMethodBeat.o(29335);
+    AppMethodBeat.o(33168);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(29338);
-    this.yXA = new z(paramContext);
-    this.yXA.setHeaderContainer(this);
-    this.yXA.setId(2131820647);
+    AppMethodBeat.i(33171);
+    this.FKF = new ab(paramContext);
+    this.FKF.setHeaderContainer(this);
+    this.FKF.setId(2131302489);
     paramContext = new FrameLayout.LayoutParams(-1, -2);
-    addView(this.yXA, paramContext);
-    AppMethodBeat.o(29338);
+    addView(this.FKF, paramContext);
+    AppMethodBeat.o(33171);
   }
   
   public Rect getBackUpFooterRect()
   {
-    return this.jdr;
+    return this.lTn;
   }
   
-  public z getHeaderView()
+  public ab getHeaderView()
   {
-    return this.yXA;
+    return this.FKF;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(29337);
+    AppMethodBeat.i(33170);
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(29337);
+    AppMethodBeat.o(33170);
   }
   
   public void setAnimController(i parami)
   {
-    AppMethodBeat.i(29336);
-    this.yXz = parami;
-    if ((this.yXA != null) && (this.yXz != null)) {
-      this.yXz.a(this.yXA);
+    AppMethodBeat.i(33169);
+    this.FKE = parami;
+    if ((this.FKF != null) && (this.FKE != null)) {
+      this.FKE.a(this.FKF);
     }
-    AppMethodBeat.o(29336);
+    AppMethodBeat.o(33169);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.HeaderContainer
  * JD-Core Version:    0.7.0.1
  */

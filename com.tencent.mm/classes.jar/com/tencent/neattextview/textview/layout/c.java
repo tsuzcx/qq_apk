@@ -25,119 +25,137 @@ import java.util.List;
 public abstract class c
   implements a
 {
-  private static final char[] Bbk = { '…' };
-  private static final String Bbl = new String(Bbk);
-  e<ImageSpan> BbA = new e(ImageSpan.class);
-  e<AbsoluteSizeSpan> BbB = new e(AbsoluteSizeSpan.class);
-  e<RelativeSizeSpan> BbC = new e(RelativeSizeSpan.class);
-  private e<BackgroundColorSpan> BbD = new e(BackgroundColorSpan.class);
-  e<ForegroundColorSpan> BbE = new e(ForegroundColorSpan.class);
-  e<ClickableSpan> BbF = new e(ClickableSpan.class);
-  e<LineBackgroundSpan> BbG = new e(LineBackgroundSpan.class);
-  private float BbH = 0.0F;
-  private LinkedList<com.tencent.neattextview.textview.b.c> BbI;
-  protected boolean[] BbJ;
-  protected String Bbm;
-  protected char[] Bbn;
-  protected float[] Bbo;
-  protected float[] Bbp;
-  protected float[] Bbq = new float[com.tencent.neattextview.textview.a.a.Bbg.length];
-  protected float[] Bbr = new float[com.tencent.neattextview.textview.a.a.Bbh.length];
-  protected HashMap<Character, Float> Bbs = new HashMap(com.tencent.neattextview.textview.a.a.Bbg.length);
-  public ArrayList<b> Bbt = new ArrayList();
-  private LinkedList<com.tencent.neattextview.textview.b.b> Bbu = new LinkedList();
-  private float Bbv;
-  private float Bbw;
-  private int Bbx;
-  private TextPaint Bby = new TextPaint();
-  private float[] Bbz;
-  private int bdk = 0;
-  protected TextPaint hB;
+  public static final char[] IhZ = { '…' };
+  private static final String Iia = new String(IhZ);
+  private int IiA = 0;
+  private int IiB = 0;
+  private int IiC = 0;
+  protected String Iib;
+  protected char[] Iic;
+  protected float[] Iid;
+  protected float[] Iie;
+  protected float[] Iif = new float[com.tencent.neattextview.textview.a.a.IhV.length];
+  protected float[] Iig = new float[com.tencent.neattextview.textview.a.a.IhW.length];
+  protected HashMap<Character, Float> Iih = new HashMap(com.tencent.neattextview.textview.a.a.IhV.length);
+  public ArrayList<b> Iii = new ArrayList();
+  private LinkedList<com.tencent.neattextview.textview.b.b> Iij = new LinkedList();
+  private float Iik;
+  private float Iil;
+  private float Iim;
+  private int Iin;
+  private TextPaint Iio = new TextPaint();
+  private float[] Iip;
+  e<ImageSpan> Iiq = new e(ImageSpan.class);
+  e<AbsoluteSizeSpan> Iir = new e(AbsoluteSizeSpan.class);
+  e<RelativeSizeSpan> Iis = new e(RelativeSizeSpan.class);
+  private e<BackgroundColorSpan> Iit = new e(BackgroundColorSpan.class);
+  e<ForegroundColorSpan> Iiu = new e(ForegroundColorSpan.class);
+  e<ClickableSpan> Iiv = new e(ClickableSpan.class);
+  e<LineBackgroundSpan> Iiw = new e(LineBackgroundSpan.class);
+  private float Iix = 0.0F;
+  private LinkedList<com.tencent.neattextview.textview.b.c> Iiy;
+  protected boolean[] Iiz;
+  protected TextPaint avD;
+  private int bBk = 0;
+  private TextUtils.TruncateAt ggM;
   private float mPaddingLeft;
   private float mPaddingTop;
   protected CharSequence mText;
-  private float vBh;
+  private float oqd;
   
   public c(CharSequence paramCharSequence, float[] paramArrayOfFloat)
   {
     this.mText = paramCharSequence;
-    this.Bbm = paramCharSequence.toString();
-    this.Bbn = this.Bbm.toCharArray();
+    this.Iib = paramCharSequence.toString();
+    this.Iic = this.Iib.toCharArray();
     if (paramArrayOfFloat != null)
     {
-      this.Bbo = new float[paramArrayOfFloat.length];
-      System.arraycopy(paramArrayOfFloat, 0, this.Bbo, 0, paramArrayOfFloat.length);
+      this.Iid = new float[paramArrayOfFloat.length];
+      System.arraycopy(paramArrayOfFloat, 0, this.Iid, 0, paramArrayOfFloat.length);
     }
   }
   
   private void a(TextUtils.TruncateAt paramTruncateAt, float paramFloat, TextPaint paramTextPaint)
   {
     int i;
+    label129:
     float f;
-    if ((paramTruncateAt != null) && (paramTruncateAt != TextUtils.TruncateAt.MARQUEE)) {
-      if ((this.mText != null) && (this.Bbt.size() > 0) && (this.mText.length() > ((b)this.Bbt.get(this.Bbt.size() - 1)).getEnd()))
+    if ((this.ggM != null) && (this.ggM != TextUtils.TruncateAt.MARQUEE)) {
+      if ((this.mText != null) && (this.Iii.size() > 0) && ((this.mText.length() > ((b)this.Iii.get(this.Iii.size() - 1)).getEnd()) || ((this.Iim > 0.0F) && (flf()[0] - ((b)this.Iii.get(this.Iii.size() - 1)).getWidth() < this.Iim))))
       {
         i = 1;
         if (i == 0) {
-          break label294;
+          break label327;
         }
-        f = paramTextPaint.measureText(Bbl) + paramTextPaint.getTextSize() / 6.0F + paramFloat;
-        if ((this.bdk != 1) || (paramTruncateAt != TextUtils.TruncateAt.MIDDLE)) {
-          break label230;
+        i = 1;
+        if (i == 0) {
+          break label415;
         }
-        paramTruncateAt = (b)this.Bbt.get(0);
+        f = paramTextPaint.measureText(Iia) + paramTextPaint.getTextSize() / 6.0F + paramFloat;
+        paramTextPaint = (b)this.Iii.get(this.Iii.size() - 1);
+        this.IiC = (this.Iii.size() - 1);
+        if ((this.bBk != 1) || (paramTruncateAt != TextUtils.TruncateAt.MIDDLE)) {
+          break label348;
+        }
+        paramTruncateAt = (b)this.Iii.get(0);
         i = paramTruncateAt.getStart();
         paramFloat = 0.0F;
-        label128:
+        label223:
         if (i >= paramTruncateAt.getEnd()) {
-          break label224;
+          break label342;
         }
-        paramFloat += this.Bbo[i];
-        if (paramFloat < this.vBh / 2.0F) {
-          break label215;
+        paramFloat += this.Iid[i];
+        if (paramFloat < this.oqd / 2.0F) {
+          break label333;
         }
       }
     }
     for (;;)
     {
-      label160:
+      label255:
+      int j = paramTextPaint.getStart();
       paramFloat = 0.0F;
       for (;;)
       {
-        if (i > 0)
+        if (i >= j)
         {
-          paramFloat += this.Bbo[i];
-          if (paramFloat < f)
+          paramFloat += this.Iid[i];
+          if ((paramFloat < f) && (i != j))
           {
-            this.Bbo[i] = 0.0F;
-            this.Bbn[i] = '\000';
+            this.Iid[i] = 0.0F;
+            this.Iic[i] = '\000';
             i -= 1;
             continue;
             i = 0;
             break;
-            label215:
-            i += 1;
-            break label128;
-            label224:
+            label327:
             i = 0;
-            break label160;
-            label230:
+            break label129;
+            label333:
+            i += 1;
+            break label223;
+            label342:
+            i = 0;
+            break label255;
+            label348:
             if (paramTruncateAt != TextUtils.TruncateAt.END) {
-              break label295;
+              break label416;
             }
-            i = ((b)this.Bbt.get(this.Bbt.size() - 1)).getEnd() - 1;
-            break label160;
+            i = paramTextPaint.getEnd() - 1;
+            break label255;
           }
         }
       }
       if (i >= 0)
       {
-        this.Bbo[i] = f;
-        this.Bbn[i] = Bbk[0];
+        this.IiB = (this.Iic.length - i);
+        this.Iid[i] = f;
+        this.Iic[i] = IhZ[0];
+        this.IiA = (i - j);
       }
-      label294:
+      label415:
       return;
-      label295:
+      label416:
       i = 0;
     }
   }
@@ -150,104 +168,104 @@ public abstract class c
     {
       localObject = (Spanned)paramCharSequence;
       i = paramCharSequence.length();
-      this.BbA.a((Spanned)localObject, i);
-      this.BbB.a((Spanned)localObject, i);
-      this.BbC.a((Spanned)localObject, i);
-      this.BbE.a((Spanned)localObject, i);
-      this.BbD.a((Spanned)localObject, i);
-      this.BbF.a((Spanned)localObject, i);
-      this.BbG.a((Spanned)localObject, i);
+      this.Iiq.a((Spanned)localObject, i);
+      this.Iir.a((Spanned)localObject, i);
+      this.Iis.a((Spanned)localObject, i);
+      this.Iiu.a((Spanned)localObject, i);
+      this.Iit.a((Spanned)localObject, i);
+      this.Iiv.a((Spanned)localObject, i);
+      this.Iiw.a((Spanned)localObject, i);
     }
-    this.Bby.set(paramTextPaint);
+    this.Iio.set(paramTextPaint);
     int i = 0;
     int j;
     int m;
     int n;
-    while (i < this.BbB.Bca)
+    while (i < this.Iir.IiT)
     {
-      ((AbsoluteSizeSpan[])this.BbB.Bcb)[i].updateMeasureState(this.Bby);
-      j = this.BbB.Bcc[i];
-      m = this.BbB.Bcd[i];
+      ((AbsoluteSizeSpan[])this.Iir.IiU)[i].updateMeasureState(this.Iio);
+      j = this.Iir.IiV[i];
+      m = this.Iir.IiW[i];
       n = m - j;
       paramTextPaint = new float[n];
-      this.Bby.getTextWidths(paramCharSequence, j, m, paramTextPaint);
-      System.arraycopy(paramTextPaint, 0, this.Bbo, j, n);
-      if (this.Bbp == null) {
-        this.Bbp = new float[paramCharSequence.length()];
+      this.Iio.getTextWidths(paramCharSequence, j, m, paramTextPaint);
+      System.arraycopy(paramTextPaint, 0, this.Iid, j, n);
+      if (this.Iie == null) {
+        this.Iie = new float[paramCharSequence.length()];
       }
-      this.Bbp[j] = this.Bby.getTextSize();
+      this.Iie[j] = this.Iio.getTextSize();
       i += 1;
     }
     i = 0;
-    while (i < this.BbC.Bca)
+    while (i < this.Iis.IiT)
     {
-      ((RelativeSizeSpan[])this.BbC.Bcb)[i].updateMeasureState(this.Bby);
-      j = this.BbC.Bcc[i];
-      m = this.BbC.Bcd[i];
+      ((RelativeSizeSpan[])this.Iis.IiU)[i].updateMeasureState(this.Iio);
+      j = this.Iis.IiV[i];
+      m = this.Iis.IiW[i];
       n = m - j;
       paramTextPaint = new float[n];
-      this.Bby.getTextWidths(paramCharSequence, j, m, paramTextPaint);
-      System.arraycopy(paramTextPaint, 0, this.Bbo, j, n);
-      if (this.Bbp == null) {
-        this.Bbp = new float[paramCharSequence.length()];
+      this.Iio.getTextWidths(paramCharSequence, j, m, paramTextPaint);
+      System.arraycopy(paramTextPaint, 0, this.Iid, j, n);
+      if (this.Iie == null) {
+        this.Iie = new float[paramCharSequence.length()];
       }
-      this.Bbp[j] = this.Bby.getTextSize();
+      this.Iie[j] = this.Iio.getTextSize();
       i += 1;
     }
     i = 0;
-    while (i < this.BbA.Bca)
+    while (i < this.Iiq.IiT)
     {
-      paramTextPaint = ((ImageSpan[])this.BbA.Bcb)[i];
-      m = this.BbA.Bcc[i];
-      n = this.BbA.Bcd[i];
+      paramTextPaint = ((ImageSpan[])this.Iiq.IiU)[i];
+      m = this.Iiq.IiV[i];
+      n = this.Iiq.IiW[i];
       paramTextPaint = paramTextPaint.getDrawable();
       localObject = new Rect();
       if (paramTextPaint != null) {
         ((Rect)localObject).set(paramTextPaint.getBounds());
       }
-      this.Bbo[m] = ((Rect)localObject).width();
+      this.Iid[m] = ((Rect)localObject).width();
       paramArrayOfBoolean[m] = true;
       j = m + 1;
-      while ((j < m + (n - m)) && (j < this.Bbo.length))
+      while ((j < m + (n - m)) && (j < this.Iid.length))
       {
-        this.Bbo[j] = 0.0F;
+        this.Iid[j] = 0.0F;
         paramArrayOfBoolean[j] = true;
         j += 1;
       }
-      if (this.Bbp == null) {
-        this.Bbp = new float[paramCharSequence.length()];
+      if (this.Iie == null) {
+        this.Iie = new float[paramCharSequence.length()];
       }
-      this.Bbp[m] = ((Rect)localObject).height();
+      this.Iie[m] = ((Rect)localObject).height();
       i += 1;
     }
     i = 0;
     for (;;)
     {
       j = k;
-      if (i >= this.BbD.Bca) {
+      if (i >= this.Iit.IiT) {
         break;
       }
-      paramCharSequence = ((BackgroundColorSpan[])this.BbD.Bcb)[i];
-      j = this.BbD.Bcc[i];
-      m = this.BbD.Bcd[i];
-      this.Bbu.add(new com.tencent.neattextview.textview.b.a(j, m, paramCharSequence));
+      paramCharSequence = ((BackgroundColorSpan[])this.Iit.IiU)[i];
+      j = this.Iit.IiV[i];
+      m = this.Iit.IiW[i];
+      this.Iij.add(new com.tencent.neattextview.textview.b.a(j, m, paramCharSequence));
       i += 1;
     }
-    while (j < this.BbF.Bca)
+    while (j < this.Iiv.IiT)
     {
-      paramCharSequence = ((ClickableSpan[])this.BbF.Bcb)[j];
-      i = this.BbF.Bcc[j];
-      k = this.BbF.Bcd[j];
-      this.Bbu.add(new com.tencent.neattextview.textview.b.c(i, k, paramCharSequence));
+      paramCharSequence = ((ClickableSpan[])this.Iiv.IiU)[j];
+      i = this.Iiv.IiV[j];
+      k = this.Iiv.IiW[j];
+      this.Iij.add(new com.tencent.neattextview.textview.b.c(i, k, paramCharSequence));
       j += 1;
     }
   }
   
-  private void d(Paint paramPaint)
+  private void b(Paint paramPaint)
   {
-    this.Bbs.clear();
+    this.Iih.clear();
     Rect localRect = new Rect();
-    char[] arrayOfChar = com.tencent.neattextview.textview.a.a.Bbg;
+    char[] arrayOfChar = com.tencent.neattextview.textview.a.a.IhV;
     int k = arrayOfChar.length;
     int i = 0;
     int j = 0;
@@ -258,11 +276,11 @@ public abstract class c
       f1 = paramPaint.measureText(String.valueOf(c));
       paramPaint.getTextBounds(String.valueOf(c), 0, 1, localRect);
       float f2 = localRect.right;
-      this.Bbq[j] = (f1 - f2);
+      this.Iif[j] = (f1 - f2);
       j += 1;
       i += 1;
     }
-    arrayOfChar = com.tencent.neattextview.textview.a.a.Bbh;
+    arrayOfChar = com.tencent.neattextview.textview.a.a.IhW;
     k = arrayOfChar.length;
     i = 0;
     j = 0;
@@ -272,8 +290,8 @@ public abstract class c
       if (localRect.left > 0) {}
       for (f1 = localRect.left;; f1 = 0.0F)
       {
-        this.Bbr[j] = f1;
-        this.Bbs.put(Character.valueOf(com.tencent.neattextview.textview.a.a.Bbh[j]), Float.valueOf(f1));
+        this.Iig[j] = f1;
+        this.Iih.put(Character.valueOf(com.tencent.neattextview.textview.a.a.IhW[j]), Float.valueOf(f1));
         j += 1;
         i += 1;
         break;
@@ -286,15 +304,15 @@ public abstract class c
     paramCanvas.save();
     paramCanvas.translate(paramFloat1, paramFloat2);
     paramFloat1 = 0.0F;
-    Iterator localIterator = this.Bbu.iterator();
+    Iterator localIterator = this.Iij.iterator();
     while (localIterator.hasNext()) {
-      ((com.tencent.neattextview.textview.b.b)localIterator.next()).a(paramCanvas, this.hB, this.Bbt);
+      ((com.tencent.neattextview.textview.b.b)localIterator.next()).a(paramCanvas, this.avD, this.Iii);
     }
-    localIterator = this.Bbt.iterator();
+    localIterator = this.Iii.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      localb.a(paramCanvas, this.hB, paramFloat1);
+      localb.a(paramCanvas, this.avD, paramFloat1);
       paramFloat1 = localb.getHeight() + paramFloat1;
     }
     paramCanvas.restore();
@@ -302,24 +320,26 @@ public abstract class c
   
   public final void a(TextPaint paramTextPaint, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, int paramInt1, TextUtils.TruncateAt paramTruncateAt, float paramFloat6, boolean paramBoolean, int paramInt2)
   {
-    this.hB = new TextPaint(paramTextPaint);
-    this.Bbv = paramFloat2;
-    this.vBh = paramFloat1;
+    this.avD = new TextPaint(paramTextPaint);
+    this.Iim = paramFloat6;
+    this.Iik = paramFloat2;
+    this.oqd = paramFloat1;
     this.mPaddingLeft = paramFloat3;
     this.mPaddingTop = paramFloat4;
-    this.bdk = paramInt1;
-    this.Bbw = paramFloat5;
-    this.Bbz = null;
-    this.Bbx = paramInt2;
+    this.bBk = paramInt1;
+    this.ggM = paramTruncateAt;
+    this.Iil = paramFloat5;
+    this.Iip = null;
+    this.Iin = paramInt2;
     paramInt2 = this.mText.length();
-    if (this.Bbo == null)
+    if (this.Iid == null)
     {
-      this.Bbo = new float[paramInt2];
-      paramTextPaint.getTextWidths(this.Bbm, this.Bbo);
+      this.Iid = new float[paramInt2];
+      paramTextPaint.getTextWidths(this.Iib, this.Iid);
     }
-    this.BbJ = new boolean[paramInt2];
-    a(this.mText, paramTextPaint, this.BbJ);
-    d(paramTextPaint);
+    this.Iiz = new boolean[paramInt2];
+    a(this.mText, paramTextPaint, this.Iiz);
+    b(paramTextPaint);
     a(paramTextPaint, paramFloat1, paramInt1, paramBoolean);
     a(paramTruncateAt, paramFloat6, paramTextPaint);
   }
@@ -328,10 +348,10 @@ public abstract class c
   
   protected final void a(char[] paramArrayOfChar, int paramInt1, int paramInt2, float paramFloat1, float[] paramArrayOfFloat, int paramInt3, float paramFloat2, boolean paramBoolean, float paramFloat3, float paramFloat4)
   {
-    Paint.FontMetrics localFontMetrics = this.hB.getFontMetrics();
+    Paint.FontMetrics localFontMetrics = this.avD.getFontMetrics();
     float f1 = localFontMetrics.bottom - localFontMetrics.top;
     float f2 = f1;
-    if (this.Bbp != null)
+    if (this.Iie != null)
     {
       int i = paramInt1;
       for (;;)
@@ -341,61 +361,61 @@ public abstract class c
           break;
         }
         f2 = f1;
-        if (f1 < this.Bbp[i]) {
-          f2 = this.Bbp[i];
+        if (f1 < this.Iie[i]) {
+          f2 = this.Iie[i];
         }
         i += 1;
         f1 = f2;
       }
     }
-    f1 = f2 + this.Bbw;
-    paramArrayOfChar = new d(this, paramArrayOfChar, paramInt1, paramInt2, this.BbH, paramArrayOfFloat, paramFloat1, f1, paramFloat2, this.hB, paramBoolean, paramFloat3, paramInt3, this.Bbx, paramFloat4);
-    this.BbH += f1;
-    this.Bbt.add(paramArrayOfChar);
+    f1 = f2 + this.Iil;
+    paramArrayOfChar = new d(this, paramArrayOfChar, paramInt1, paramInt2, this.Iix, paramArrayOfFloat, paramFloat1, f1, paramFloat2, this.avD, paramBoolean, paramFloat3, paramInt3, this.Iin, paramFloat4);
+    this.Iix += f1;
+    this.Iii.add(paramArrayOfChar);
   }
   
-  public final void al(CharSequence paramCharSequence)
+  public final void ax(CharSequence paramCharSequence)
   {
-    a(paramCharSequence, this.hB, this.BbJ);
+    a(paramCharSequence, this.avD, this.Iiz);
   }
   
-  public int dTo()
+  public int fkV()
   {
-    return this.Bbt.size();
+    return this.Iii.size();
   }
   
-  public final List<com.tencent.neattextview.textview.b.c> dTp()
+  public final List<com.tencent.neattextview.textview.b.c> fkW()
   {
-    if (this.BbI == null)
+    if (this.Iiy == null)
     {
-      this.BbI = new LinkedList();
-      Iterator localIterator = this.Bbu.iterator();
+      this.Iiy = new LinkedList();
+      Iterator localIterator = this.Iij.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.neattextview.textview.b.b localb = (com.tencent.neattextview.textview.b.b)localIterator.next();
         if (localb.getClass() == com.tencent.neattextview.textview.b.c.class) {
-          this.BbI.add((com.tencent.neattextview.textview.b.c)localb);
+          this.Iiy.add((com.tencent.neattextview.textview.b.c)localb);
         }
       }
     }
-    return this.BbI;
+    return this.Iiy;
   }
   
-  public final float[] dTq()
+  public final float[] fkX()
   {
-    return this.Bbo;
+    return this.Iid;
   }
   
-  public final String dTx()
+  public final String fle()
   {
-    return this.Bbm;
+    return this.Iib;
   }
   
-  public final float[] dTy()
+  public final float[] flf()
   {
-    if (this.Bbz == null)
+    if (this.Iip == null)
     {
-      Iterator localIterator = this.Bbt.iterator();
+      Iterator localIterator = this.Iii.iterator();
       float f2 = 0.0F;
       float f1 = 0.0F;
       while (localIterator.hasNext())
@@ -408,23 +428,31 @@ public abstract class c
         f1 = localb.getHeight() + f1;
         f2 = f3;
       }
-      this.Bbz = new float[] { f2, f1 };
+      this.Iip = new float[] { f2, f1 };
     }
-    return this.Bbz;
+    return this.Iip;
   }
   
-  public final HashMap<Character, Float> dTz()
+  public final HashMap<Character, Float> flg()
   {
-    return this.Bbs;
+    return this.Iih;
+  }
+  
+  public final int getEllipsisCount(int paramInt)
+  {
+    if (this.IiC == paramInt) {
+      return this.IiB;
+    }
+    return 0;
   }
   
   public final int getLineBaseline(int paramInt)
   {
-    int i = this.Bbt.size();
+    int i = this.Iii.size();
     if (i > paramInt) {}
-    for (b localb = (b)this.Bbt.get(paramInt);; localb = (b)this.Bbt.get(i - 1))
+    for (b localb = (b)this.Iii.get(paramInt);; localb = (b)this.Iii.get(i - 1))
     {
-      return (int)localb.dTw();
+      return (int)localb.fld();
       if (i <= 0) {
         break;
       }
@@ -434,11 +462,11 @@ public abstract class c
   
   public final int getLineBottom(int paramInt)
   {
-    int i = this.Bbt.size();
+    int i = this.Iii.size();
     if (i > paramInt) {}
-    for (b localb = (b)this.Bbt.get(paramInt);; localb = (b)this.Bbt.get(i - 1))
+    for (b localb = (b)this.Iii.get(paramInt);; localb = (b)this.Iii.get(i - 1))
     {
-      return (int)localb.dTr().bottom;
+      return (int)localb.fkY().bottom;
       if (i <= 0) {
         break;
       }
@@ -448,7 +476,7 @@ public abstract class c
   
   public final int getLineForOffset(int paramInt)
   {
-    Iterator localIterator = this.Bbt.iterator();
+    Iterator localIterator = this.Iii.iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
@@ -464,7 +492,7 @@ public abstract class c
   public final int getLineForVertical(int paramInt)
   {
     int i = (int)(paramInt - this.mPaddingTop);
-    Iterator localIterator = this.Bbt.iterator();
+    Iterator localIterator = this.Iii.iterator();
     float f1 = 0.0F;
     paramInt = 0;
     while (localIterator.hasNext())
@@ -472,9 +500,9 @@ public abstract class c
       Object localObject = (b)localIterator.next();
       float f2 = f1;
       if (f1 == 0.0F) {
-        f2 = ((b)localObject).dTs().top;
+        f2 = ((b)localObject).fkZ().top;
       }
-      localObject = ((b)localObject).dTs();
+      localObject = ((b)localObject).fkZ();
       if (((RectF)localObject).contains(((RectF)localObject).centerX(), i)) {
         return paramInt;
       }
@@ -489,27 +517,27 @@ public abstract class c
   
   public final float getLineRight(int paramInt)
   {
-    if (this.Bbt.size() > paramInt) {
-      return ((b)this.Bbt.get(paramInt)).dTr().right;
+    if (this.Iii.size() > paramInt) {
+      return ((b)this.Iii.get(paramInt)).fkY().right;
     }
     return 0.0F;
   }
   
   public final int getLineStart(int paramInt)
   {
-    if (this.Bbt.size() > paramInt) {
-      return ((b)this.Bbt.get(paramInt)).getStart();
+    if (this.Iii.size() > paramInt) {
+      return ((b)this.Iii.get(paramInt)).getStart();
     }
-    return this.Bbn.length;
+    return this.Iic.length;
   }
   
   public final int getLineTop(int paramInt)
   {
-    int i = this.Bbt.size();
+    int i = this.Iii.size();
     if (i > paramInt) {}
-    for (b localb = (b)this.Bbt.get(paramInt);; localb = (b)this.Bbt.get(i - 1))
+    for (b localb = (b)this.Iii.get(paramInt);; localb = (b)this.Iii.get(i - 1))
     {
-      return (int)localb.dTr().top;
+      return (int)localb.fkY().top;
       if (i <= 0) {
         break;
       }
@@ -519,8 +547,8 @@ public abstract class c
   
   public final float getLineWidth(int paramInt)
   {
-    if (this.Bbt.size() > paramInt) {
-      return ((b)this.Bbt.get(paramInt)).dTr().width();
+    if (this.Iii.size() > paramInt) {
+      return ((b)this.Iii.get(paramInt)).fkY().width();
     }
     return 0.0F;
   }
@@ -528,8 +556,8 @@ public abstract class c
   public final int getOffsetForHorizontal(int paramInt, float paramFloat)
   {
     float f = this.mPaddingLeft;
-    if (this.Bbt.size() > paramInt) {
-      return ((b)this.Bbt.get(paramInt)).RZ((int)(paramFloat - f));
+    if (this.Iii.size() > paramInt) {
+      return ((b)this.Iii.get(paramInt)).abD((int)(paramFloat - f));
     }
     return 0;
   }
@@ -540,7 +568,7 @@ public abstract class c
     if (i < 0) {
       return 0.0F;
     }
-    return ((b)this.Bbt.get(i)).getPrimaryHorizontal(paramInt);
+    return ((b)this.Iii.get(i)).getPrimaryHorizontal(paramInt);
   }
   
   public final CharSequence getText()
@@ -550,22 +578,22 @@ public abstract class c
   
   public final TextPaint getTextPaint()
   {
-    return this.hB;
+    return this.avD;
   }
   
-  public final int ii(int paramInt1, int paramInt2)
+  public final int kf(int paramInt1, int paramInt2)
   {
     paramInt1 = (int)(paramInt1 - this.mPaddingLeft);
     paramInt2 = (int)(paramInt2 - this.mPaddingTop);
-    Iterator localIterator = this.Bbt.iterator();
+    Iterator localIterator = this.Iii.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (localb.dTs().contains(paramInt1, paramInt2)) {
-        return localb.RZ(paramInt1);
+      if (localb.fkZ().contains(paramInt1, paramInt2)) {
+        return localb.abD(paramInt1);
       }
     }
-    return this.Bbn.length;
+    return this.Iic.length;
   }
 }
 

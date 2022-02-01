@@ -3,8 +3,8 @@ package com.tencent.mm.ui.tools.b;
 import android.text.InputFilter;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.tools.f;
 import com.tencent.mm.ui.tools.f.a;
 import java.lang.ref.WeakReference;
@@ -13,150 +13,162 @@ import java.util.ArrayList;
 public class c
   extends a
 {
-  public boolean AyD = true;
-  public WeakReference<EditText> AyE;
-  private int AyF;
-  private int AyG;
-  private ArrayList<InputFilter> AyH;
-  public a AyI;
-  public f.a jmp;
+  public boolean HuM = true;
+  public WeakReference<EditText> HuN;
+  private int HuO;
+  private int HuP;
+  private ArrayList<InputFilter> HuQ;
+  public a HuR;
   private String mText;
+  public f.a mcf;
   
   public c(String paramString)
   {
     this.mText = paramString;
-    this.jmp = f.a.Avn;
-    this.AyD = false;
+    this.mcf = f.a.Hrm;
+    this.HuM = false;
   }
   
   public c(WeakReference<EditText> paramWeakReference)
   {
-    this.AyE = paramWeakReference;
-    this.jmp = f.a.Avn;
-    this.AyD = false;
+    this.HuN = paramWeakReference;
+    this.mcf = f.a.Hrm;
+    this.HuM = false;
   }
   
   public static c d(EditText paramEditText)
   {
-    AppMethodBeat.i(67866);
+    AppMethodBeat.i(133841);
     paramEditText = new c(new WeakReference(paramEditText));
-    AppMethodBeat.o(67866);
+    AppMethodBeat.o(133841);
     return paramEditText;
   }
   
-  public final c QS(int paramInt)
+  public final c a(f.a parama)
   {
-    this.AyG = 0;
-    this.AyF = paramInt;
+    this.mcf = parama;
     return this;
   }
   
   protected f a(int paramInt, f.a parama)
   {
-    AppMethodBeat.i(67870);
+    AppMethodBeat.i(133845);
     parama = new f(paramInt, parama);
-    AppMethodBeat.o(67870);
+    AppMethodBeat.o(133845);
     return parama;
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(67867);
-    this.AyI = parama;
-    bEI();
-    AppMethodBeat.o(67867);
+    AppMethodBeat.i(133842);
+    this.HuR = parama;
+    cAQ();
+    AppMethodBeat.o(133842);
   }
   
-  protected final int azZ()
+  protected final int aVG()
   {
-    AppMethodBeat.i(67868);
-    if (bo.isNullOrNil(this.mText))
+    AppMethodBeat.i(133843);
+    if (bt.isNullOrNil(this.mText))
     {
-      if (this.AyE == null)
+      if (this.HuN == null)
       {
-        AppMethodBeat.o(67868);
+        AppMethodBeat.o(133843);
         return 1;
       }
-      this.mText = ((EditText)this.AyE.get()).getText().toString().trim();
+      this.mText = ((EditText)this.HuN.get()).getText().toString().trim();
     }
-    int j = f.a(this.mText, this.jmp);
+    int j = f.a(this.mText, this.mcf);
     if (j < 0) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ab.w("MicroMsg.InputTextBoundaryCheck", "you are crazy =.=!that is 2 GB character!");
-      AppMethodBeat.o(67868);
+      ad.w("MicroMsg.InputTextBoundaryCheck", "you are crazy =.=!that is 2 GB character!");
+      AppMethodBeat.o(133843);
       return 2;
     }
-    if (j < this.AyG)
+    if (j < this.HuP)
     {
-      AppMethodBeat.o(67868);
+      AppMethodBeat.o(133843);
       return 1;
     }
-    if (j > this.AyF)
+    if (j > this.HuO)
     {
-      AppMethodBeat.o(67868);
+      AppMethodBeat.o(133843);
       return 2;
     }
-    AppMethodBeat.o(67868);
+    AppMethodBeat.o(133843);
     return 0;
   }
   
-  protected final void bEI()
+  public final c aaj(int paramInt)
   {
-    AppMethodBeat.i(67869);
+    this.HuP = 0;
+    this.HuO = paramInt;
+    return this;
+  }
+  
+  protected final void cAQ()
+  {
+    AppMethodBeat.i(133844);
     Object localObject;
-    if (!this.AyD)
+    if (!this.HuM)
     {
-      if (this.AyE == null)
+      if (this.HuN == null)
       {
-        ab.w("MicroMsg.InputTextBoundaryCheck", "edit text view is null");
-        AppMethodBeat.o(67869);
+        ad.w("MicroMsg.InputTextBoundaryCheck", "edit text view is null");
+        AppMethodBeat.o(133844);
         return;
       }
-      if (bo.es(this.AyH))
+      if (bt.gL(this.HuQ))
       {
-        localObject = a(this.AyF, this.jmp);
-        ((EditText)this.AyE.get()).setFilters(new InputFilter[] { localObject });
+        localObject = a(this.HuO, this.mcf);
+        ((EditText)this.HuN.get()).setFilters(new InputFilter[] { localObject });
       }
     }
-    else if (this.AyI != null)
+    else if (this.HuR != null)
     {
-      switch (azZ())
+      switch (aVG())
       {
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(67869);
+      AppMethodBeat.o(133844);
       return;
-      this.AyH.add(a(this.AyF, this.jmp));
-      localObject = (InputFilter[])this.AyH.toArray(new InputFilter[this.AyH.size()]);
-      ((EditText)this.AyE.get()).setFilters((InputFilter[])localObject);
+      this.HuQ.add(a(this.HuO, this.mcf));
+      localObject = (InputFilter[])this.HuQ.toArray(new InputFilter[this.HuQ.size()]);
+      ((EditText)this.HuN.get()).setFilters((InputFilter[])localObject);
       break;
-      this.AyI.kY(this.mText);
-      AppMethodBeat.o(67869);
+      this.HuR.CH(this.mText);
+      AppMethodBeat.o(133844);
       return;
-      this.AyI.JU();
-      AppMethodBeat.o(67869);
+      this.HuR.aKr();
+      AppMethodBeat.o(133844);
       return;
-      this.AyI.vn();
+      this.HuR.ck(this.mText);
     }
   }
   
-  public final c hR(int paramInt1, int paramInt2)
+  public final c feh()
   {
-    this.AyG = paramInt1;
-    this.AyF = paramInt2;
+    this.HuM = true;
+    return this;
+  }
+  
+  public final c jE(int paramInt1, int paramInt2)
+  {
+    this.HuP = paramInt1;
+    this.HuO = paramInt2;
     return this;
   }
   
   public static abstract interface a
   {
-    public abstract void JU();
+    public abstract void CH(String paramString);
     
-    public abstract void kY(String paramString);
+    public abstract void aKr();
     
-    public abstract void vn();
+    public abstract void ck(String paramString);
   }
 }
 

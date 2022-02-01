@@ -1,64 +1,64 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
 import com.tencent.luggage.a.e;
-import com.tencent.luggage.sdk.customize.b;
+import com.tencent.luggage.sdk.customize.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.f;
-import com.tencent.mm.plugin.appbrand.appstorage.q;
 import com.tencent.mm.plugin.appbrand.appstorage.r;
+import com.tencent.mm.plugin.appbrand.appstorage.s;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.jsapi.u;
+import com.tencent.mm.plugin.appbrand.jsapi.y;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class o
-  extends u<h>
+  extends y<com.tencent.mm.plugin.appbrand.jsapi.h>
 {
   public static final int CTRL_INDEX = 16;
   public static final String NAME = "setStorageSync";
   
-  private static String a(h paramh, String paramString1, String paramString2, String paramString3, int paramInt)
+  private static String a(com.tencent.mm.plugin.appbrand.jsapi.h paramh, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    AppMethodBeat.i(102081);
+    AppMethodBeat.i(147287);
     long l = System.currentTimeMillis();
     try
     {
       JsApiSetStorageTask localJsApiSetStorageTask = new JsApiSetStorageTask();
       localJsApiSetStorageTask.appId = paramh.getAppId();
-      localJsApiSetStorageTask.ias = paramInt;
-      localJsApiSetStorageTask.E(paramString1, paramString2, paramString3);
+      localJsApiSetStorageTask.kkZ = paramInt;
+      localJsApiSetStorageTask.D(paramString1, paramString2, paramString3);
       if (AppBrandMainProcessService.b(localJsApiSetStorageTask))
       {
         paramString3 = localJsApiSetStorageTask.result;
         return paramString3;
       }
+      ad.e("Luggage.FULL.JsApiSetStorageSync", "invokeWithDB appId[%s] key[%s] execSync failed", new Object[] { paramh.getAppId(), paramString1 });
       return "fail";
     }
     finally
     {
-      q.a(1, 1, r.bB(paramString1, paramString2), 1, System.currentTimeMillis() - l, paramh);
-      AppMethodBeat.o(102081);
+      r.a(1, 1, s.cf(paramString1, paramString2), 1, System.currentTimeMillis() - l, paramh);
+      AppMethodBeat.o(147287);
     }
   }
   
-  private static String b(h paramh, String paramString1, String paramString2, String paramString3, int paramInt)
+  private static String b(com.tencent.mm.plugin.appbrand.jsapi.h paramh, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    AppMethodBeat.i(102082);
+    AppMethodBeat.i(147288);
     long l = System.currentTimeMillis();
     try
     {
-      paramString3 = p.a(((b)e.q(b.class)).cc(paramh.getAppId()).b(paramInt, paramh.getAppId(), paramString1, paramString2, paramString3));
+      paramString3 = p.a(((a)e.K(a.class)).cs(paramh.getAppId()).c(paramInt, paramh.getAppId(), paramString1, paramString2, paramString3));
       return paramString3;
     }
     finally
     {
-      q.a(2, 1, r.bB(paramString1, paramString2), 1, System.currentTimeMillis() - l, paramh);
-      AppMethodBeat.o(102082);
+      r.a(2, 1, s.cf(paramString1, paramString2), 1, System.currentTimeMillis() - l, paramh);
+      AppMethodBeat.o(147288);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.o
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,9 @@ import android.os.Process;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.voip.mars.xlog.Log;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.TreeSet;
+import java.util.TreeMap;
 
 public class Alarm
   extends BroadcastReceiver
@@ -20,38 +21,36 @@ public class Alarm
   private static final String KEXTRA_ID = "ID";
   private static final String KEXTRA_PID = "PID";
   private static final String TAG = "MicroMsg.Alarm";
-  private static TreeSet<Object[]> alarm_waiting_set;
   private static Alarm bc_alarm;
+  private static TreeMap<Long, AlarmRecord> gPendingAlarms;
   private static WakerLock wakerlock;
   
   static
   {
-    AppMethodBeat.i(92763);
+    AppMethodBeat.i(55600);
     wakerlock = null;
     bc_alarm = null;
-    alarm_waiting_set = new TreeSet(new Alarm.ComparatorAlarm(null));
-    AppMethodBeat.o(92763);
+    gPendingAlarms = new TreeMap();
+    AppMethodBeat.o(55600);
   }
   
-  private static boolean cancelAlarmMgr(Context paramContext, PendingIntent paramPendingIntent)
+  private static boolean cancelAlarmMgr(long paramLong, Context paramContext, PendingIntent paramPendingIntent)
   {
-    AppMethodBeat.i(92761);
-    paramContext = (AlarmManager)paramContext.getSystemService("alarm");
-    if (paramContext == null)
+    AppMethodBeat.i(183735);
+    if ((AlarmManager)paramContext.getSystemService("alarm") == null)
     {
       Log.e("MicroMsg.Alarm", "am == null");
-      AppMethodBeat.o(92761);
+      AppMethodBeat.o(183735);
       return false;
     }
     if (paramPendingIntent == null)
     {
       Log.e("MicroMsg.Alarm", "pendingIntent == null");
-      AppMethodBeat.o(92761);
+      AppMethodBeat.o(183735);
       return false;
     }
-    paramContext.cancel(paramPendingIntent);
-    paramPendingIntent.cancel();
-    AppMethodBeat.o(92761);
+    AlarmHelper.cancel(paramContext, (int)paramLong, paramPendingIntent);
+    AppMethodBeat.o(183735);
     return true;
   }
   
@@ -59,66 +58,66 @@ public class Alarm
   
   public static void resetAlarm(Context paramContext)
   {
-    AppMethodBeat.i(92757);
-    synchronized (alarm_waiting_set)
+    AppMethodBeat.i(55594);
+    synchronized (gPendingAlarms)
     {
-      Iterator localIterator = alarm_waiting_set.iterator();
-      if (localIterator.hasNext()) {
-        cancelAlarmMgr(paramContext, (PendingIntent)((Object[])localIterator.next())[Alarm.TSetData.PENDINGINTENT.ordinal()]);
+      Iterator localIterator = gPendingAlarms.values().iterator();
+      if (localIterator.hasNext())
+      {
+        AlarmRecord localAlarmRecord = (AlarmRecord)localIterator.next();
+        cancelAlarmMgr(localAlarmRecord.id, paramContext, localAlarmRecord.pendingIntent);
       }
     }
-    alarm_waiting_set.clear();
+    gPendingAlarms.clear();
     if (bc_alarm != null)
     {
       paramContext.unregisterReceiver(bc_alarm);
       bc_alarm = null;
     }
-    AppMethodBeat.o(92757);
+    AppMethodBeat.o(55594);
   }
   
-  private static PendingIntent setAlarmMgr(long paramLong1, long paramLong2, Context paramContext)
+  private static PendingIntent setAlarmMgr(int paramInt, long paramLong1, long paramLong2, Context paramContext)
   {
-    AppMethodBeat.i(92760);
-    AlarmManager localAlarmManager = (AlarmManager)paramContext.getSystemService("alarm");
-    if (localAlarmManager == null)
+    AppMethodBeat.i(183734);
+    if ((AlarmManager)paramContext.getSystemService("alarm") == null)
     {
       Log.e("MicroMsg.Alarm", "am == null");
-      AppMethodBeat.o(92760);
+      AppMethodBeat.o(183734);
       return null;
     }
     Intent localIntent = new Intent();
     localIntent.setAction("ALARM_ACTION(" + String.valueOf(Process.myPid()) + ")");
     localIntent.putExtra("ID", paramLong1);
     localIntent.putExtra("PID", Process.myPid());
-    paramContext = PendingIntent.getBroadcast(paramContext, (int)paramLong1, localIntent, 268435456);
-    if (Build.VERSION.SDK_INT < 19) {
-      localAlarmManager.set(2, paramLong2, paramContext);
-    }
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 19)
     {
-      AppMethodBeat.o(92760);
+      paramContext = AlarmHelper.setExact(paramContext, paramInt, 2, paramLong2, localIntent, 268435456);
+      AppMethodBeat.o(183734);
       return paramContext;
-      localAlarmManager.setExact(2, paramLong2, paramContext);
     }
+    paramContext = AlarmHelper.set(paramContext, paramInt, 2, paramLong2, localIntent, 268435456);
+    AppMethodBeat.o(183734);
+    return paramContext;
   }
   
-  public static boolean start(long paramLong, int paramInt, Context paramContext)
+  public static boolean start(int paramInt1, long paramLong, int paramInt2, Context paramContext)
   {
-    AppMethodBeat.i(92758);
+    AppMethodBeat.i(183733);
     long l2 = SystemClock.elapsedRealtime();
-    if (paramInt < 0)
+    if (paramInt2 < 0)
     {
-      Log.e("MicroMsg.Alarm", "id:%d, after:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(92758);
+      Log.e("MicroMsg.Alarm", "id:%d, after:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(183733);
       return false;
     }
     if (paramContext == null)
     {
-      Log.e("MicroMsg.Alarm", "null==context, id:%d, after:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(92758);
+      Log.e("MicroMsg.Alarm", "null==context, id:%d, after:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(183733);
       return false;
     }
-    synchronized (alarm_waiting_set)
+    synchronized (gPendingAlarms)
     {
       if (wakerlock == null)
       {
@@ -130,41 +129,40 @@ public class Alarm
         bc_alarm = new Alarm();
         paramContext.registerReceiver(bc_alarm, new IntentFilter("ALARM_ACTION(" + String.valueOf(Process.myPid()) + ")"));
       }
-      Iterator localIterator = alarm_waiting_set.iterator();
-      while (localIterator.hasNext()) {
-        if (((Long)((Object[])localIterator.next())[Alarm.TSetData.ID.ordinal()]).longValue() == paramLong)
-        {
-          Log.e("MicroMsg.Alarm", "id exist=%d", new Object[] { Long.valueOf(paramLong) });
-          AppMethodBeat.o(92758);
-          return false;
-        }
-      }
-      long l1 = l2;
-      if (paramInt >= 0) {
-        l1 = l2 + paramInt;
-      }
-      paramContext = setAlarmMgr(paramLong, l1, paramContext);
-      if (paramContext == null)
+      if (gPendingAlarms.containsKey(Long.valueOf(paramLong)))
       {
-        AppMethodBeat.o(92758);
+        Log.e("MicroMsg.Alarm", "id exist=%d", new Object[] { Long.valueOf(paramLong) });
+        AppMethodBeat.o(183733);
         return false;
       }
-      alarm_waiting_set.add(new Object[] { Long.valueOf(paramLong), Long.valueOf(l1), paramContext });
-      AppMethodBeat.o(92758);
+      long l1 = l2;
+      if (paramInt2 >= 0) {
+        l1 = l2 + paramInt2;
+      }
+      paramContext = setAlarmMgr(paramInt1, paramLong, l1, paramContext);
+      if (paramContext == null)
+      {
+        AppMethodBeat.o(183733);
+        return false;
+      }
+      gPendingAlarms.put(Long.valueOf(paramLong), new AlarmRecord(paramLong, l1, paramContext));
+      Log.i("MicroMsg.Alarm", "Alarm.start [id: %d, after: %d, size: %d]", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(gPendingAlarms.size()) });
+      AppMethodBeat.o(183733);
       return true;
     }
   }
   
   public static boolean stop(long paramLong, Context paramContext)
   {
-    AppMethodBeat.i(92759);
+    AppMethodBeat.i(55596);
+    Log.i("MicroMsg.Alarm", "Alarm.stop [id: %d]", new Object[] { Long.valueOf(paramLong) });
     if (paramContext == null)
     {
       Log.e("MicroMsg.Alarm", "context==null");
-      AppMethodBeat.o(92759);
+      AppMethodBeat.o(55596);
       return false;
     }
-    synchronized (alarm_waiting_set)
+    synchronized (gPendingAlarms)
     {
       if (wakerlock == null)
       {
@@ -178,74 +176,73 @@ public class Alarm
         paramContext.registerReceiver(bc_alarm, (IntentFilter)localObject);
         Log.i("MicroMsg.Alarm", "stop new Alarm");
       }
-      Object localObject = alarm_waiting_set.iterator();
-      while (((Iterator)localObject).hasNext())
+      Object localObject = (AlarmRecord)gPendingAlarms.remove(Long.valueOf(paramLong));
+      if (localObject != null)
       {
-        Object[] arrayOfObject = (Object[])((Iterator)localObject).next();
-        if (((Long)arrayOfObject[Alarm.TSetData.ID.ordinal()]).longValue() == paramLong)
-        {
-          cancelAlarmMgr(paramContext, (PendingIntent)arrayOfObject[Alarm.TSetData.PENDINGINTENT.ordinal()]);
-          ((Iterator)localObject).remove();
-          AppMethodBeat.o(92759);
-          return true;
-        }
+        cancelAlarmMgr(((AlarmRecord)localObject).id, paramContext, ((AlarmRecord)localObject).pendingIntent);
+        AppMethodBeat.o(55596);
+        return true;
       }
-      AppMethodBeat.o(92759);
+      AppMethodBeat.o(55596);
       return false;
     }
   }
   
-  public void onReceive(Context paramContext, Intent arg2)
+  public void onReceive(Context arg1, Intent paramIntent)
   {
-    AppMethodBeat.i(92762);
-    if ((paramContext == null) || (??? == null))
+    AppMethodBeat.i(55599);
+    if ((??? == null) || (paramIntent == null))
     {
-      AppMethodBeat.o(92762);
+      AppMethodBeat.o(55599);
       return;
     }
-    paramContext = Long.valueOf(???.getLongExtra("ID", 0L));
-    Integer localInteger = Integer.valueOf(???.getIntExtra("PID", 0));
-    if ((0L == paramContext.longValue()) || (localInteger.intValue() == 0))
+    long l = paramIntent.getLongExtra("ID", 0L);
+    int i = paramIntent.getIntExtra("PID", 0);
+    if ((0L == l) || (i == 0))
     {
-      AppMethodBeat.o(92762);
+      AppMethodBeat.o(55599);
       return;
     }
-    if (localInteger.intValue() != Process.myPid())
+    if (i != Process.myPid())
     {
-      Log.w("MicroMsg.Alarm", "onReceive id:%d, pid:%d, mypid:%d", new Object[] { paramContext, localInteger, Integer.valueOf(Process.myPid()) });
-      AppMethodBeat.o(92762);
+      Log.w("MicroMsg.Alarm", "onReceive id:%d, pid:%d, mypid:%d", new Object[] { Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(Process.myPid()) });
+      AppMethodBeat.o(55599);
       return;
     }
-    for (;;)
+    synchronized (gPendingAlarms)
     {
-      synchronized (alarm_waiting_set)
+      paramIntent = (AlarmRecord)gPendingAlarms.remove(Long.valueOf(l));
+      if (paramIntent != null)
       {
-        Iterator localIterator = alarm_waiting_set.iterator();
-        if (localIterator.hasNext())
-        {
-          Object[] arrayOfObject = (Object[])localIterator.next();
-          Long localLong = (Long)arrayOfObject[Alarm.TSetData.ID.ordinal()];
-          Log.i("MicroMsg.Alarm", "onReceive id=%d, curId=%d", new Object[] { paramContext, localLong });
-          if (!localLong.equals(paramContext)) {
-            continue;
-          }
-          Log.i("MicroMsg.Alarm", "onReceive find alarm id:%d, pid:%d, delta miss time:%d", new Object[] { paramContext, localInteger, Long.valueOf(SystemClock.elapsedRealtime() - ((Long)arrayOfObject[Alarm.TSetData.WAITTIME.ordinal()]).longValue()) });
-          localIterator.remove();
-          i = 1;
-          if (i == 0) {
-            Log.e("MicroMsg.Alarm", "onReceive not found id:%d, pid:%d, alarm_waiting_set.size:%d", new Object[] { paramContext, localInteger, Integer.valueOf(alarm_waiting_set.size()) });
-          }
-          if (wakerlock != null) {
-            wakerlock.lock(200L);
-          }
-          if (i != 0) {
-            onAlarm(paramContext.longValue());
-          }
-          AppMethodBeat.o(92762);
-          return;
+        Log.i("MicroMsg.Alarm", "Alarm.onReceive [id: %d, delta miss time: %d, size: %d]", new Object[] { Long.valueOf(l), Long.valueOf(SystemClock.elapsedRealtime() - paramIntent.waitTime), Integer.valueOf(gPendingAlarms.size()) });
+        if (wakerlock != null) {
+          wakerlock.lock(200L);
         }
+        onAlarm(l);
+        AppMethodBeat.o(55599);
+        return;
       }
-      int i = 0;
+      Log.e("MicroMsg.Alarm", "onReceive not found id:%d, pid:%d, gPendingAlarms.size:%d", new Object[] { Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(gPendingAlarms.size()) });
+    }
+  }
+  
+  static class AlarmRecord
+    implements Comparable<AlarmRecord>
+  {
+    final long id;
+    PendingIntent pendingIntent;
+    long waitTime;
+    
+    AlarmRecord(long paramLong1, long paramLong2, PendingIntent paramPendingIntent)
+    {
+      this.id = paramLong1;
+      this.waitTime = paramLong2;
+      this.pendingIntent = paramPendingIntent;
+    }
+    
+    public int compareTo(AlarmRecord paramAlarmRecord)
+    {
+      return (int)(this.id - paramAlarmRecord.id);
     }
   }
 }

@@ -2,11 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import org.json.JSONObject;
 
 public final class m
   extends b
 {
-  public m.a cmz;
+  public a dbl;
   
   public m()
   {
@@ -15,16 +16,23 @@ public final class m
   
   private m(byte paramByte)
   {
-    AppMethodBeat.i(108012);
-    this.cmz = new m.a();
-    this.ymq = false;
+    AppMethodBeat.i(144177);
+    this.dbl = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(108012);
+    AppMethodBeat.o(144177);
+  }
+  
+  public static final class a
+  {
+    public String dbm;
+    public String dbn;
+    public JSONObject dbo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.m
  * JD-Core Version:    0.7.0.1
  */

@@ -10,29 +10,29 @@ public class V8Locker
   
   V8Locker(V8 paramV8)
   {
-    AppMethodBeat.i(75502);
+    AppMethodBeat.i(62127);
     this.thread = null;
     this.released = false;
     this.runtime = paramV8;
     acquire();
-    AppMethodBeat.o(75502);
+    AppMethodBeat.o(62127);
   }
   
   public void acquire()
   {
     try
     {
-      AppMethodBeat.i(75503);
+      AppMethodBeat.i(62128);
       if ((this.thread != null) && (this.thread != Thread.currentThread()))
       {
         Error localError = new Error("Invalid V8 thread access: current thread is " + Thread.currentThread() + " while the locker has thread " + this.thread);
-        AppMethodBeat.o(75503);
+        AppMethodBeat.o(62128);
         throw localError;
       }
     }
     finally {}
     if (this.thread == Thread.currentThread()) {
-      AppMethodBeat.o(75503);
+      AppMethodBeat.o(62128);
     }
     for (;;)
     {
@@ -40,27 +40,27 @@ public class V8Locker
       this.runtime.acquireLock(this.runtime.getV8RuntimePtr());
       this.thread = Thread.currentThread();
       this.released = false;
-      AppMethodBeat.o(75503);
+      AppMethodBeat.o(62128);
     }
   }
   
   public void checkThread()
   {
-    AppMethodBeat.i(75506);
+    AppMethodBeat.i(62131);
     Error localError;
     if ((this.released) && (this.thread == null))
     {
       localError = new Error("Invalid V8 thread access: the locker has been released!");
-      AppMethodBeat.o(75506);
+      AppMethodBeat.o(62131);
       throw localError;
     }
     if (this.thread != Thread.currentThread())
     {
       localError = new Error("Invalid V8 thread access: current thread is " + Thread.currentThread() + " while the locker has thread " + this.thread);
-      AppMethodBeat.o(75506);
+      AppMethodBeat.o(62131);
       throw localError;
     }
-    AppMethodBeat.o(75506);
+    AppMethodBeat.o(62131);
   }
   
   public Thread getThread()
@@ -70,13 +70,13 @@ public class V8Locker
   
   public boolean hasLock()
   {
-    AppMethodBeat.i(75507);
+    AppMethodBeat.i(62132);
     if (this.thread == Thread.currentThread())
     {
-      AppMethodBeat.o(75507);
+      AppMethodBeat.o(62132);
       return true;
     }
-    AppMethodBeat.o(75507);
+    AppMethodBeat.o(62132);
     return false;
   }
   
@@ -205,7 +205,7 @@ public class V8Locker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.V8Locker
  * JD-Core Version:    0.7.0.1
  */

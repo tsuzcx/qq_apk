@@ -11,186 +11,206 @@ import android.graphics.Rect;
 import android.os.Looper;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class e
   extends b
 {
-  private final Rect Bc;
-  private ak loX;
-  int lrL;
+  private final Rect Hy;
   private Context mContext;
   private int mHeight;
   boolean mIsPlaying;
   private final Paint mPaint;
   private Resources mResources;
   private int mWidth;
-  private final Runnable nFA;
-  private final Runnable nFB;
-  private volatile boolean nFH;
-  private int nFI;
-  private int nFJ;
-  private int[] nFK;
-  private Bitmap nFL;
-  private boolean nFM;
-  boolean nFN;
-  private String nFO;
-  int nFP;
-  private k nFQ;
-  private float nFi;
-  private float nFj;
-  private boolean nFk;
-  private long nFt;
+  private ap oFl;
+  int oIf;
+  private long spF;
+  private final Runnable spN;
+  private final Runnable spO;
+  private volatile boolean spU;
+  private int spV;
+  private int spW;
+  private int[] spX;
+  private Bitmap spY;
+  private boolean spZ;
+  private float sps;
+  private float spt;
+  private boolean spu;
+  boolean sqa;
+  private String sqb;
+  int sqc;
+  private k sqd;
   
   public e(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, int paramInt, int[] paramArrayOfInt, String paramString)
   {
-    AppMethodBeat.i(62410);
-    this.nFH = false;
-    this.lrL = 0;
-    this.nFL = null;
-    this.nFM = false;
+    AppMethodBeat.i(104644);
+    this.spU = false;
+    this.oIf = 0;
+    this.spY = null;
+    this.spZ = false;
     this.mIsPlaying = true;
-    this.nFN = true;
-    this.nFP = 0;
-    this.nFi = 1.0F;
-    this.nFj = 1.0F;
-    this.Bc = new Rect();
+    this.sqa = true;
+    this.sqc = 0;
+    this.sps = 1.0F;
+    this.spt = 1.0F;
+    this.Hy = new Rect();
     this.mPaint = new Paint(6);
-    this.loX = new ak(Looper.getMainLooper());
-    this.nFt = 0L;
-    this.nFB = new e.1(this);
-    this.nFA = new e.2(this);
+    this.oFl = new ap(Looper.getMainLooper());
+    this.spF = 0L;
+    this.spO = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(104642);
+        if (SystemClock.uptimeMillis() >= e.a(e.this)) {
+          e.this.invalidateSelf();
+        }
+        AppMethodBeat.o(104642);
+      }
+    };
+    this.spN = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(104643);
+        if (e.b(e.this) != null) {
+          e.b(e.this);
+        }
+        AppMethodBeat.o(104643);
+      }
+    };
     this.mContext = paramContext;
     this.mResources = this.mContext.getResources();
-    this.nFM = false;
+    this.spZ = false;
     this.mIsPlaying = paramBoolean1;
-    this.nFN = paramBoolean2;
-    this.nFO = paramString;
-    this.nFJ = paramInt;
-    this.nFK = paramArrayOfInt;
+    this.sqa = paramBoolean2;
+    this.sqb = paramString;
+    this.spW = paramInt;
+    this.spX = paramArrayOfInt;
     if (!paramBoolean1)
     {
-      this.nFL = xp(QH(paramString));
-      this.mWidth = this.nFL.getWidth();
-      this.mHeight = this.nFL.getHeight();
-      if (this.nFK.length != 3) {
+      this.spY = EP(adf(paramString));
+      this.mWidth = this.spY.getWidth();
+      this.mHeight = this.spY.getHeight();
+      if (this.spX.length != 3) {
         break label254;
       }
     }
     label254:
-    for (this.nFI = 300;; this.nFI = 100)
+    for (this.spV = 300;; this.spV = 100)
     {
-      this.nFP = 0;
-      AppMethodBeat.o(62410);
+      this.sqc = 0;
+      AppMethodBeat.o(104644);
       return;
-      this.nFL = xp(this.nFK[0]);
+      this.spY = EP(this.spX[0]);
       break;
     }
   }
   
-  private int QH(String paramString)
+  private Bitmap EP(int paramInt)
   {
-    AppMethodBeat.i(62418);
+    AppMethodBeat.i(104651);
+    Bitmap localBitmap = BitmapFactory.decodeResource(this.mResources, paramInt);
+    AppMethodBeat.o(104651);
+    return localBitmap;
+  }
+  
+  private int adf(String paramString)
+  {
+    AppMethodBeat.i(104652);
     paramString = paramString.split("\\.")[0];
     int i = this.mResources.getIdentifier(paramString, "drawable", this.mContext.getPackageName());
-    AppMethodBeat.o(62418);
+    AppMethodBeat.o(104652);
     return i;
   }
   
-  private void m(Runnable paramRunnable, long paramLong)
+  private void l(Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(62412);
-    this.nFt = (SystemClock.uptimeMillis() + paramLong);
-    if (this.loX != null) {
-      this.loX.postDelayed(paramRunnable, paramLong);
+    AppMethodBeat.i(104646);
+    this.spF = (SystemClock.uptimeMillis() + paramLong);
+    if (this.oFl != null) {
+      this.oFl.postDelayed(paramRunnable, paramLong);
     }
-    AppMethodBeat.o(62412);
-  }
-  
-  private Bitmap xp(int paramInt)
-  {
-    AppMethodBeat.i(62417);
-    Bitmap localBitmap = BitmapFactory.decodeResource(this.mResources, paramInt);
-    AppMethodBeat.o(62417);
-    return localBitmap;
+    AppMethodBeat.o(104646);
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(62411);
-    if (this.nFk)
+    AppMethodBeat.i(104645);
+    if (this.spu)
     {
-      this.Bc.set(getBounds());
-      this.nFi = (this.Bc.width() / this.mWidth);
-      this.nFj = (this.Bc.height() / this.mHeight);
-      this.nFk = false;
+      this.Hy.set(getBounds());
+      this.sps = (this.Hy.width() / this.mWidth);
+      this.spt = (this.Hy.height() / this.mHeight);
+      this.spu = false;
     }
     if (this.mPaint.getShader() == null)
     {
-      paramCanvas.scale(this.nFi, this.nFj);
-      if (this.nFM)
+      paramCanvas.scale(this.sps, this.spt);
+      if (this.spZ)
       {
-        this.nFL = xp(this.nFJ);
-        if ((this.nFL != null) && (!this.nFL.isRecycled()))
+        this.spY = EP(this.spW);
+        if ((this.spY != null) && (!this.spY.isRecycled()))
         {
-          paramCanvas.drawBitmap(this.nFL, 0.0F, 0.0F, this.mPaint);
-          AppMethodBeat.o(62411);
+          paramCanvas.drawBitmap(this.spY, 0.0F, 0.0F, this.mPaint);
+          AppMethodBeat.o(104645);
         }
       }
       else if (!this.mIsPlaying)
       {
-        this.nFL = xp(QH(this.nFO));
-        if ((this.nFL != null) && (!this.nFL.isRecycled()))
+        this.spY = EP(adf(this.sqb));
+        if ((this.spY != null) && (!this.spY.isRecycled()))
         {
-          paramCanvas.drawBitmap(this.nFL, 0.0F, 0.0F, this.mPaint);
-          AppMethodBeat.o(62411);
+          paramCanvas.drawBitmap(this.spY, 0.0F, 0.0F, this.mPaint);
+          AppMethodBeat.o(104645);
         }
       }
       else
       {
-        this.nFL = xp(this.nFK[this.lrL]);
-        if ((this.nFL != null) && (!this.nFL.isRecycled())) {
-          paramCanvas.drawBitmap(this.nFL, 0.0F, 0.0F, this.mPaint);
+        this.spY = EP(this.spX[this.oIf]);
+        if ((this.spY != null) && (!this.spY.isRecycled())) {
+          paramCanvas.drawBitmap(this.spY, 0.0F, 0.0F, this.mPaint);
         }
-        this.lrL += 1;
-        if (this.nFP < 3)
+        this.oIf += 1;
+        if (this.sqc < 3)
         {
-          if (this.lrL >= this.nFK.length)
+          if (this.oIf >= this.spX.length)
           {
-            this.lrL = 0;
-            if (this.nFN) {
+            this.oIf = 0;
+            if (this.sqa) {
               break label316;
             }
           }
           label316:
-          for (this.nFP = 0;; this.nFP += 1)
+          for (this.sqc = 0;; this.sqc += 1)
           {
-            m(this.nFB, this.nFI);
-            AppMethodBeat.o(62411);
+            l(this.spO, this.spV);
+            AppMethodBeat.o(104645);
             return;
           }
         }
         this.mIsPlaying = false;
-        m(this.nFB, this.nFI);
-        m(this.nFA, 0L);
-        AppMethodBeat.o(62411);
+        l(this.spO, this.spV);
+        l(this.spN, 0L);
+        AppMethodBeat.o(104645);
       }
     }
     else
     {
-      ab.i("MicroMsg.GIF.MMGIFGameDrawable", "shader is not null.");
-      paramCanvas.drawRect(this.Bc, this.mPaint);
+      ad.i("MicroMsg.GIF.MMGIFGameDrawable", "shader is not null.");
+      paramCanvas.drawRect(this.Hy, this.mPaint);
     }
-    AppMethodBeat.o(62411);
+    AppMethodBeat.o(104645);
   }
   
   protected final void finalize()
   {
-    AppMethodBeat.i(62419);
-    this.nFQ = null;
+    AppMethodBeat.i(104653);
+    this.sqd = null;
     super.finalize();
-    AppMethodBeat.o(62419);
+    AppMethodBeat.o(104653);
   }
   
   public final int getIntrinsicHeight()
@@ -210,15 +230,15 @@ public final class e
   
   public final boolean isRunning()
   {
-    return this.nFH;
+    return this.spU;
   }
   
   protected final void onBoundsChange(Rect paramRect)
   {
-    AppMethodBeat.i(62415);
+    AppMethodBeat.i(104649);
     super.onBoundsChange(paramRect);
-    this.nFk = true;
-    AppMethodBeat.o(62415);
+    this.spu = true;
+    AppMethodBeat.o(104649);
   }
   
   public final void pause() {}
@@ -231,34 +251,34 @@ public final class e
   
   public final void setAlpha(int paramInt)
   {
-    AppMethodBeat.i(62413);
+    AppMethodBeat.i(104647);
     this.mPaint.setAlpha(paramInt);
-    AppMethodBeat.o(62413);
+    AppMethodBeat.o(104647);
   }
   
   public final void setColorFilter(ColorFilter paramColorFilter)
   {
-    AppMethodBeat.i(62414);
+    AppMethodBeat.i(104648);
     this.mPaint.setColorFilter(paramColorFilter);
-    AppMethodBeat.o(62414);
+    AppMethodBeat.o(104648);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(62416);
-    this.nFH = true;
-    this.loX.post(this.nFB);
-    AppMethodBeat.o(62416);
+    AppMethodBeat.i(104650);
+    this.spU = true;
+    this.oFl.post(this.spO);
+    AppMethodBeat.o(104650);
   }
   
   public final void stop()
   {
-    this.nFH = false;
+    this.spU = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gif.e
  * JD-Core Version:    0.7.0.1
  */

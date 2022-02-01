@@ -11,14 +11,14 @@ final class BindLinkedInUI$9
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(13396);
-    BindLinkedInUI.a(this.gtf);
-    AppMethodBeat.o(13396);
+    AppMethodBeat.i(109824);
+    BindLinkedInUI.a(this.igh);
+    AppMethodBeat.o(109824);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindLinkedInUI.9
  * JD-Core Version:    0.7.0.1
  */

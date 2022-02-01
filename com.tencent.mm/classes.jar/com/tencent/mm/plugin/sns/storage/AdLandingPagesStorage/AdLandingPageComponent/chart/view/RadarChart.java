@@ -14,68 +14,68 @@ public class RadarChart
   extends Chart
 {
   private Context context;
-  public ArrayList<com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a> rtZ;
-  private c rua;
-  public TextView rub;
-  private RadarGrid ruc;
-  private RadarDataLayer[] rud;
-  private a rue;
-  private boolean ruf;
-  private boolean rug;
-  public int ruh;
-  public int rui;
-  private int ruj;
-  public Spannable[] ruk;
-  private float rul;
+  public ArrayList<com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a> wYg;
+  private c wYh;
+  public TextView wYi;
+  private RadarGrid wYj;
+  private RadarDataLayer[] wYk;
+  private a wYl;
+  private boolean wYm;
+  private boolean wYn;
+  public int wYo;
+  public int wYp;
+  private int wYq;
+  public Spannable[] wYr;
+  private float wYs;
   
   public RadarChart(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(36958);
-    this.rua = new c();
-    this.ruf = true;
-    this.rug = true;
-    this.ruh = 3;
-    this.rui = 0;
-    this.ruj = 4;
-    this.rul = 1.0F;
+    AppMethodBeat.i(96338);
+    this.wYh = new c();
+    this.wYm = true;
+    this.wYn = true;
+    this.wYo = 3;
+    this.wYp = 0;
+    this.wYq = 4;
+    this.wYs = 1.0F;
     this.context = paramContext;
-    AppMethodBeat.o(36958);
+    AppMethodBeat.o(96338);
   }
   
   public RadarChart(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(36959);
-    this.rua = new c();
-    this.ruf = true;
-    this.rug = true;
-    this.ruh = 3;
-    this.rui = 0;
-    this.ruj = 4;
-    this.rul = 1.0F;
+    AppMethodBeat.i(96339);
+    this.wYh = new c();
+    this.wYm = true;
+    this.wYn = true;
+    this.wYo = 3;
+    this.wYp = 0;
+    this.wYq = 4;
+    this.wYs = 1.0F;
     this.context = paramContext;
-    AppMethodBeat.o(36959);
+    AppMethodBeat.o(96339);
   }
   
   public c getGridStyle()
   {
-    AppMethodBeat.i(36963);
-    if (this.ruc == null)
+    AppMethodBeat.i(96343);
+    if (this.wYj == null)
     {
-      localc = this.rua;
-      AppMethodBeat.o(36963);
+      localc = this.wYh;
+      AppMethodBeat.o(96343);
       return localc;
     }
-    this.rua = this.ruc.getGridStyle();
-    c localc = this.ruc.getGridStyle();
-    AppMethodBeat.o(36963);
+    this.wYh = this.wYj.getGridStyle();
+    c localc = this.wYj.getGridStyle();
+    AppMethodBeat.o(96343);
     return localc;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(36961);
+    AppMethodBeat.i(96341);
     paramInt2 = getChildCount();
     paramInt1 = 0;
     while (paramInt1 < paramInt2)
@@ -83,13 +83,13 @@ public class RadarChart
       getChildAt(paramInt1).layout(0, 0, getMeasuredWidth(), getMeasuredHeight());
       paramInt1 += 1;
     }
-    AppMethodBeat.o(36961);
+    AppMethodBeat.o(96341);
   }
   
   public void setData(com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a... paramVarArgs)
   {
     int k = 0;
-    AppMethodBeat.i(36960);
+    AppMethodBeat.i(96340);
     removeAllViews();
     int j = paramVarArgs.length;
     int i = 0;
@@ -98,7 +98,7 @@ public class RadarChart
       if (paramVarArgs[i].size() <= 0)
       {
         paramVarArgs = new Exception("Not enough elements.");
-        AppMethodBeat.o(36960);
+        AppMethodBeat.o(96340);
         throw paramVarArgs;
       }
       i += 1;
@@ -112,56 +112,56 @@ public class RadarChart
         if (!paramVarArgs[i].a(paramVarArgs[j]))
         {
           paramVarArgs = new Error("Layer not compatible.");
-          AppMethodBeat.o(36960);
+          AppMethodBeat.o(96340);
           throw paramVarArgs;
         }
         j += 1;
       }
       i += 1;
     }
-    this.ruk = paramVarArgs[0].cqI();
-    this.rui = paramVarArgs[0].size();
-    if (this.rtZ == null) {
-      this.rtZ = new ArrayList();
+    this.wYr = paramVarArgs[0].dvH();
+    this.wYp = paramVarArgs[0].size();
+    if (this.wYg == null) {
+      this.wYg = new ArrayList();
     }
     j = paramVarArgs.length;
     i = 0;
     while (i < j)
     {
       com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a locala = paramVarArgs[i];
-      this.rtZ.add(locala);
+      this.wYg.add(locala);
       i += 1;
     }
-    this.ruc = new RadarGrid(this.context, this.rui, this.ruj, this.rul, this.ruk, this.rua);
-    addView(this.ruc);
-    this.rud = new RadarDataLayer[this.ruh];
+    this.wYj = new RadarGrid(this.context, this.wYp, this.wYq, this.wYs, this.wYr, this.wYh);
+    addView(this.wYj);
+    this.wYk = new RadarDataLayer[this.wYo];
     i = k;
-    while ((i < this.rud.length) && (this.rtZ.size() > i))
+    while ((i < this.wYk.length) && (this.wYg.size() > i))
     {
-      this.rud[i] = new RadarDataLayer(this.context, this.rul, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a)this.rtZ.get(i));
-      addView(this.rud[i]);
+      this.wYk[i] = new RadarDataLayer(this.context, this.wYs, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a)this.wYg.get(i));
+      addView(this.wYk[i]);
       i += 1;
     }
-    if (this.rue == null) {
-      this.rue = new a(this.context, this.rua);
+    if (this.wYl == null) {
+      this.wYl = new a(this.context, this.wYh);
     }
-    addView(this.rue);
-    AppMethodBeat.o(36960);
+    addView(this.wYl);
+    AppMethodBeat.o(96340);
   }
   
   public void setGridStyle(c paramc)
   {
-    AppMethodBeat.i(36962);
-    this.rua = paramc;
-    if (this.ruc != null) {
-      this.ruc.setGridStyle(paramc);
+    AppMethodBeat.i(96342);
+    this.wYh = paramc;
+    if (this.wYj != null) {
+      this.wYj.setGridStyle(paramc);
     }
-    AppMethodBeat.o(36962);
+    AppMethodBeat.o(96342);
   }
   
   public void setLatitudeNum(int paramInt)
   {
-    this.ruj = paramInt;
+    this.wYq = paramInt;
   }
 }
 

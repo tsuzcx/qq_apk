@@ -1,23 +1,18 @@
 package com.tencent.xweb;
 
-import android.graphics.Bitmap;
-import java.io.File;
-
 public abstract interface l
 {
-  public abstract File getCacheFileDir();
+  @Deprecated
+  public abstract void a(k paramk);
   
-  public abstract int getMaxHeightSupported();
+  @Deprecated
+  public abstract void aOY(String paramString);
   
-  public abstract File getResultFileDir();
-  
-  public abstract void onLongScreenshotFinished(int paramInt, String paramString);
-  
-  public abstract Bitmap overrideScreenshot(Bitmap paramBitmap);
+  public abstract boolean setProfileResultCallback(String paramString, j paramj);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.l
  * JD-Core Version:    0.7.0.1
  */

@@ -6,20 +6,20 @@ import java.util.HashSet;
 public final class a<E>
   extends HashSet<E>
 {
-  private b kDW;
+  private b nKU;
   
   public a(b paramb)
   {
-    this.kDW = paramb;
+    this.nKU = paramb;
   }
   
-  private void bfW()
+  private void bNh()
   {
     try
     {
-      AppMethodBeat.i(932);
-      this.kDW.bfV();
-      AppMethodBeat.o(932);
+      AppMethodBeat.i(120764);
+      this.nKU.bNg();
+      AppMethodBeat.o(120764);
       return;
     }
     finally
@@ -29,13 +29,13 @@ public final class a<E>
     }
   }
   
-  private void bfX()
+  private void bNi()
   {
     try
     {
-      AppMethodBeat.i(933);
-      this.kDW.remove();
-      AppMethodBeat.o(933);
+      AppMethodBeat.i(120765);
+      this.nKU.remove();
+      AppMethodBeat.o(120765);
       return;
     }
     finally
@@ -45,13 +45,13 @@ public final class a<E>
     }
   }
   
-  private void bfY()
+  private void bNj()
   {
     try
     {
-      AppMethodBeat.i(934);
-      this.kDW.clear();
-      AppMethodBeat.o(934);
+      AppMethodBeat.i(120766);
+      this.nKU.clear();
+      AppMethodBeat.o(120766);
       return;
     }
     finally
@@ -65,10 +65,10 @@ public final class a<E>
   {
     try
     {
-      AppMethodBeat.i(935);
+      AppMethodBeat.i(120767);
       boolean bool = super.add(paramE);
-      bfW();
-      AppMethodBeat.o(935);
+      bNh();
+      AppMethodBeat.o(120767);
       return bool;
     }
     finally
@@ -80,20 +80,20 @@ public final class a<E>
   
   public final void clear()
   {
-    AppMethodBeat.i(936);
+    AppMethodBeat.i(120768);
     super.clear();
-    bfY();
-    AppMethodBeat.o(936);
+    bNj();
+    AppMethodBeat.o(120768);
   }
   
   public final boolean remove(Object paramObject)
   {
     try
     {
-      AppMethodBeat.i(937);
+      AppMethodBeat.i(120769);
       boolean bool = super.remove(paramObject);
-      bfX();
-      AppMethodBeat.o(937);
+      bNi();
+      AppMethodBeat.o(120769);
       return bool;
     }
     finally
@@ -105,7 +105,7 @@ public final class a<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.e.a
  * JD-Core Version:    0.7.0.1
  */

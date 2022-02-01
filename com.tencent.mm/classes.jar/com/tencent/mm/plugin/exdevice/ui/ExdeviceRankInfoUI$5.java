@@ -1,26 +1,30 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
+import android.view.View;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.MMPullDownView.d;
 
 final class ExdeviceRankInfoUI$5
-  implements AbsListView.OnScrollListener
+  implements MMPullDownView.d
 {
   ExdeviceRankInfoUI$5(ExdeviceRankInfoUI paramExdeviceRankInfoUI) {}
   
-  public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public final boolean bPi()
   {
-    AppMethodBeat.i(20139);
-    ExdeviceRankInfoUI.r(this.lPt);
-    AppMethodBeat.o(20139);
-  }
-  
-  public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    AppMethodBeat.i(20138);
-    ExdeviceRankInfoUI.r(this.lPt);
-    AppMethodBeat.o(20138);
+    AppMethodBeat.i(179633);
+    int i = ExdeviceRankInfoUI.q(this.pgf).getFirstVisiblePosition();
+    if (i == 0)
+    {
+      View localView = ExdeviceRankInfoUI.q(this.pgf).getChildAt(i);
+      if ((localView != null) && (localView.getTop() >= 0))
+      {
+        AppMethodBeat.o(179633);
+        return true;
+      }
+    }
+    AppMethodBeat.o(179633);
+    return false;
   }
 }
 

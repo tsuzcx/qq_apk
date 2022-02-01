@@ -9,50 +9,50 @@ import com.tencent.mm.ui.MMActivity;
 
 public class j
 {
-  public MMActivity kxD;
-  public int oxg;
-  private int oxh;
+  public MMActivity nCW;
+  public int tqo;
+  private int tqp;
   
   public j(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(43045);
-    this.kxD = paramMMActivity;
-    if (bOm())
+    AppMethodBeat.i(65941);
+    this.nCW = paramMMActivity;
+    if (cMO())
     {
       paramMMActivity = paramMMActivity.getWindow();
       paramMMActivity.addFlags(-2147483648);
-      this.oxh = paramMMActivity.getStatusBarColor();
+      this.tqp = paramMMActivity.getStatusBarColor();
     }
-    AppMethodBeat.o(43045);
+    AppMethodBeat.o(65941);
   }
   
-  public static boolean bOm()
+  public static boolean cMO()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
   
-  protected void s(Drawable paramDrawable)
+  protected void z(Drawable paramDrawable)
   {
-    AppMethodBeat.i(43046);
-    if (this.kxD.getSupportActionBar() != null) {
-      this.kxD.getSupportActionBar().setBackgroundDrawable(paramDrawable);
+    AppMethodBeat.i(65942);
+    if (this.nCW.getSupportActionBar() != null) {
+      this.nCW.getSupportActionBar().setBackgroundDrawable(paramDrawable);
     }
-    AppMethodBeat.o(43046);
+    AppMethodBeat.o(65942);
   }
   
   public static final class a
   {
-    public int jaJ;
-    public int jsT;
-    public Drawable oxi;
-    public int oxj;
-    public int oxk;
-    public int oxl;
+    public int lQE;
+    public int miX;
+    public Drawable tqq;
+    public int tqr;
+    public int tqs;
+    public int tqt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.j
  * JD-Core Version:    0.7.0.1
  */

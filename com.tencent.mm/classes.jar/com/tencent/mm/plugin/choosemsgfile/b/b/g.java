@@ -2,42 +2,41 @@ package com.tencent.mm.plugin.choosemsgfile.b.b;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.o;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.plugin.choosemsgfile.b.d.b;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.aw.o;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.vfs.i;
 
 public class g
   extends d
 {
-  private String kEL;
+  private String nLL;
   
-  public g(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, bi parambi)
+  public g(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, bl parambl)
   {
-    super(paramg, parambi);
+    super(paramg, parambl);
   }
   
   public final void a(View paramView, a parama)
   {
-    AppMethodBeat.i(54303);
-    b.a(this.kEI.bgw().getContext(), paramView, parama);
-    AppMethodBeat.o(54303);
+    AppMethodBeat.i(123275);
+    com.tencent.mm.plugin.choosemsgfile.b.d.c.a(this.nLI.bNH().getContext(), paramView, parama);
+    AppMethodBeat.o(123275);
   }
   
-  protected String aaZ()
+  protected String asu()
   {
-    AppMethodBeat.i(54302);
-    if (this.kEL == null)
+    AppMethodBeat.i(123274);
+    if (this.nLL == null)
     {
-      this.kEL = o.ahC().c(this.kEz.field_imgPath, false, false);
-      if ((!bo.isNullOrNil(this.kEL)) && (!this.kEL.endsWith("hd")) && (e.cN(this.kEL + "hd"))) {
-        this.kEL += "hd";
+      this.nLL = o.ayF().b(this.nLz.field_imgPath, false, false);
+      if ((!bt.isNullOrNil(this.nLL)) && (!this.nLL.endsWith("hd")) && (i.eK(this.nLL + "hd"))) {
+        this.nLL += "hd";
       }
     }
-    String str = this.kEL;
-    AppMethodBeat.o(54302);
+    String str = this.nLL;
+    AppMethodBeat.o(123274);
     return str;
   }
   
@@ -48,7 +47,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.g
  * JD-Core Version:    0.7.0.1
  */

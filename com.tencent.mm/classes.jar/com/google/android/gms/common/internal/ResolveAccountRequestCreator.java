@@ -14,7 +14,7 @@ public class ResolveAccountRequestCreator
   
   public ResolveAccountRequest createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61361);
+    AppMethodBeat.i(11853);
     int k = SafeParcelReader.validateObjectHeader(paramParcel);
     GoogleSignInAccount localGoogleSignInAccount = null;
     int j = 0;
@@ -43,7 +43,7 @@ public class ResolveAccountRequestCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, k);
     paramParcel = new ResolveAccountRequest(i, localAccount, j, localGoogleSignInAccount);
-    AppMethodBeat.o(61361);
+    AppMethodBeat.o(11853);
     return paramParcel;
   }
   

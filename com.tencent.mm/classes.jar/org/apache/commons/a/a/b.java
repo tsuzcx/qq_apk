@@ -8,43 +8,43 @@ public final class b
   extends Writer
   implements Serializable
 {
-  private final StringBuilder rAP;
+  private final StringBuilder xgv;
   
   public b()
   {
-    AppMethodBeat.i(136502);
-    this.rAP = new StringBuilder();
-    AppMethodBeat.o(136502);
+    AppMethodBeat.i(10311);
+    this.xgv = new StringBuilder();
+    AppMethodBeat.o(10311);
   }
   
   public b(byte paramByte)
   {
-    AppMethodBeat.i(136503);
-    this.rAP = new StringBuilder(4);
-    AppMethodBeat.o(136503);
+    AppMethodBeat.i(10312);
+    this.xgv = new StringBuilder(4);
+    AppMethodBeat.o(10312);
   }
   
   public final Writer append(char paramChar)
   {
-    AppMethodBeat.i(136504);
-    this.rAP.append(paramChar);
-    AppMethodBeat.o(136504);
+    AppMethodBeat.i(10313);
+    this.xgv.append(paramChar);
+    AppMethodBeat.o(10313);
     return this;
   }
   
   public final Writer append(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(136505);
-    this.rAP.append(paramCharSequence);
-    AppMethodBeat.o(136505);
+    AppMethodBeat.i(10314);
+    this.xgv.append(paramCharSequence);
+    AppMethodBeat.o(10314);
     return this;
   }
   
   public final Writer append(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(136506);
-    this.rAP.append(paramCharSequence, paramInt1, paramInt2);
-    AppMethodBeat.o(136506);
+    AppMethodBeat.i(10315);
+    this.xgv.append(paramCharSequence, paramInt1, paramInt2);
+    AppMethodBeat.o(10315);
     return this;
   }
   
@@ -54,33 +54,33 @@ public final class b
   
   public final String toString()
   {
-    AppMethodBeat.i(136509);
-    String str = this.rAP.toString();
-    AppMethodBeat.o(136509);
+    AppMethodBeat.i(10318);
+    String str = this.xgv.toString();
+    AppMethodBeat.o(10318);
     return str;
   }
   
   public final void write(String paramString)
   {
-    AppMethodBeat.i(136507);
+    AppMethodBeat.i(10316);
     if (paramString != null) {
-      this.rAP.append(paramString);
+      this.xgv.append(paramString);
     }
-    AppMethodBeat.o(136507);
+    AppMethodBeat.o(10316);
   }
   
   public final void write(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(136508);
+    AppMethodBeat.i(10317);
     if (paramArrayOfChar != null) {
-      this.rAP.append(paramArrayOfChar, paramInt1, paramInt2);
+      this.xgv.append(paramArrayOfChar, paramInt1, paramInt2);
     }
-    AppMethodBeat.o(136508);
+    AppMethodBeat.o(10317);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.apache.commons.a.a.b
  * JD-Core Version:    0.7.0.1
  */

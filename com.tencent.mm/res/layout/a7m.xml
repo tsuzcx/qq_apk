@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<LinearLayout android:orientation="vertical" android:background="@color/xo" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/cdr" android:background="@color/vy" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/mn" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:gravity="center" android:id="@id/cds" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/ef" />
-    </FrameLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/co9" android:layout_width="199.0dip" android:layout_height="214.0dip" android:layout_marginTop="92.0dip" android:layout_marginBottom="65.0dip" android:src="@drawable/bkt" />
+    <TextView android:textSize="@dimen/ia" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/cre" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="@dimen/hd" android:layout_marginRight="@dimen/ha" android:layout_marginBottom="@dimen/ha" android:text="@string/cen" style="@style/ja" />
 </LinearLayout>

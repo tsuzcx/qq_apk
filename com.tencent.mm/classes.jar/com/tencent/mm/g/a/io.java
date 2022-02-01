@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class io
   extends b
 {
-  public io.a cxX;
+  public a dmx;
+  public b dmy;
   
   public io()
   {
@@ -15,16 +16,27 @@ public final class io
   
   private io(byte paramByte)
   {
-    AppMethodBeat.i(60240);
-    this.cxX = new io.a();
-    this.ymq = false;
+    AppMethodBeat.i(130778);
+    this.dmx = new a();
+    this.dmy = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(60240);
+    AppMethodBeat.o(130778);
+  }
+  
+  public static final class a
+  {
+    public int dmz = -1;
+  }
+  
+  public static final class b
+  {
+    public int dmA = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.io
  * JD-Core Version:    0.7.0.1
  */

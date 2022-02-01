@@ -9,9 +9,9 @@ final class ExdeviceBindDeviceUI$7
   
   public final void run()
   {
-    AppMethodBeat.i(19831);
-    this.lKV.a(this.lKW);
-    AppMethodBeat.o(19831);
+    AppMethodBeat.i(23899);
+    this.pbF.a(this.pbG);
+    AppMethodBeat.o(23899);
   }
 }
 

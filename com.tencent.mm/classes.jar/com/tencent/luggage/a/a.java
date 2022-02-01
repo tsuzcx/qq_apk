@@ -7,30 +7,30 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class a
   implements c
 {
-  private static Map<Class<? extends b>, b> bxF;
-  private static Map<Class<? extends d>, d> bxG;
+  private static Map<Class<? extends b>, b> bYW;
+  private static Map<Class<? extends d>, d> bYX;
   
   static
   {
-    AppMethodBeat.i(90706);
-    bxF = new ConcurrentHashMap();
-    bxG = new ConcurrentHashMap();
-    AppMethodBeat.o(90706);
+    AppMethodBeat.i(140304);
+    bYW = new ConcurrentHashMap();
+    bYX = new ConcurrentHashMap();
+    AppMethodBeat.o(140304);
+  }
+  
+  public final Map<Class<? extends b>, b> AD()
+  {
+    return bYW;
+  }
+  
+  public final Map<Class<? extends d>, d> AE()
+  {
+    return bYX;
   }
   
   public final String getName()
   {
     return "luggage-core";
-  }
-  
-  public final Map<Class<? extends b>, b> tP()
-  {
-    return bxF;
-  }
-  
-  public final Map<Class<? extends d>, d> tQ()
-  {
-    return bxG;
   }
 }
 

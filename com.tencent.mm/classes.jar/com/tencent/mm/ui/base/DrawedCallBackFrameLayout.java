@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class DrawedCallBackFrameLayout
   extends FrameLayout
 {
-  private DrawedCallBackFrameLayout.a zho;
+  private a FUS;
   
   public DrawedCallBackFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -18,17 +18,17 @@ public class DrawedCallBackFrameLayout
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(106263);
+    AppMethodBeat.i(141624);
     try
     {
       super.dispatchDraw(paramCanvas);
       label10:
-      if (this.zho != null)
+      if (this.FUS != null)
       {
-        this.zho.bEm();
-        this.zho = null;
+        this.FUS.cAy();
+        this.FUS = null;
       }
-      AppMethodBeat.o(106263);
+      AppMethodBeat.o(141624);
       return;
     }
     catch (Throwable paramCanvas)
@@ -39,19 +39,24 @@ public class DrawedCallBackFrameLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(106262);
+    AppMethodBeat.i(141623);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(106262);
+    AppMethodBeat.o(141623);
   }
   
-  public void setListener(DrawedCallBackFrameLayout.a parama)
+  public void setListener(a parama)
   {
-    this.zho = parama;
+    this.FUS = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void cAy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.DrawedCallBackFrameLayout
  * JD-Core Version:    0.7.0.1
  */

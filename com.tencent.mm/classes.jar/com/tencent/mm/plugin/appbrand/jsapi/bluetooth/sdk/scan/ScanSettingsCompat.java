@@ -9,31 +9,31 @@ public class ScanSettingsCompat
   implements Parcelable
 {
   public static final Parcelable.Creator<ScanSettingsCompat> CREATOR;
-  final int hIg;
-  private final int hIh;
-  final long hIi;
+  final int jLu;
+  private final int jLv;
+  final long jLw;
   
   static
   {
-    AppMethodBeat.i(94340);
-    CREATOR = new ScanSettingsCompat.1();
-    AppMethodBeat.o(94340);
+    AppMethodBeat.i(144652);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(144652);
   }
   
   private ScanSettingsCompat(int paramInt, long paramLong)
   {
-    this.hIg = paramInt;
-    this.hIh = 1;
-    this.hIi = paramLong;
+    this.jLu = paramInt;
+    this.jLv = 1;
+    this.jLw = paramLong;
   }
   
   private ScanSettingsCompat(Parcel paramParcel)
   {
-    AppMethodBeat.i(94338);
-    this.hIg = paramParcel.readInt();
-    this.hIh = paramParcel.readInt();
-    this.hIi = paramParcel.readLong();
-    AppMethodBeat.o(94338);
+    AppMethodBeat.i(144650);
+    this.jLu = paramParcel.readInt();
+    this.jLv = paramParcel.readInt();
+    this.jLw = paramParcel.readLong();
+    AppMethodBeat.o(144650);
   }
   
   public int describeContents()
@@ -43,16 +43,45 @@ public class ScanSettingsCompat
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(94339);
-    paramParcel.writeInt(this.hIg);
-    paramParcel.writeInt(this.hIh);
-    paramParcel.writeLong(this.hIi);
-    AppMethodBeat.o(94339);
+    AppMethodBeat.i(144651);
+    paramParcel.writeInt(this.jLu);
+    paramParcel.writeInt(this.jLv);
+    paramParcel.writeLong(this.jLw);
+    AppMethodBeat.o(144651);
+  }
+  
+  public static final class a
+  {
+    private int jLu = 0;
+    private final int jLv = 1;
+    private long jLw = 0L;
+    
+    public final ScanSettingsCompat aYX()
+    {
+      AppMethodBeat.i(144649);
+      ScanSettingsCompat localScanSettingsCompat = new ScanSettingsCompat(this.jLu, this.jLw, (byte)0);
+      AppMethodBeat.o(144649);
+      return localScanSettingsCompat;
+    }
+    
+    public final a rD(int paramInt)
+    {
+      AppMethodBeat.i(144648);
+      if ((paramInt < 0) || (paramInt > 2))
+      {
+        IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("invalid scan mode ".concat(String.valueOf(paramInt)));
+        AppMethodBeat.o(144648);
+        throw localIllegalArgumentException;
+      }
+      this.jLu = paramInt;
+      AppMethodBeat.o(144648);
+      return this;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.ScanSettingsCompat
  * JD-Core Version:    0.7.0.1
  */

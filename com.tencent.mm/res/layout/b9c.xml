@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:background="@drawable/abh" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="48.0dip" android:src="@raw/realname_done" />
-    <TextView android:textSize="22.0dip" android:textColor="@color/h8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:text="@string/g5f" />
-    <android.support.v4.widget.Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-    <Button android:id="@id/ft7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="96.0dip" android:text="@string/g5d" style="@style/nx" />
+    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="50.0dip">
+        <com.tencent.mm.ui.MMImageView android:id="@id/cp2" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_margin="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+        <ImageView android:layout_gravity="center" android:id="@id/fsk" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_margin="3.0dip" android:scaleType="center" android:maxHeight="350.0dip" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/f26" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="6.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@color/a3l" android:ellipsize="end" android:id="@id/gbx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/a4d" android:id="@id/f30" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
 </LinearLayout>

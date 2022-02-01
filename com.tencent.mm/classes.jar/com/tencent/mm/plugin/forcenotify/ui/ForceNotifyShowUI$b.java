@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.forcenotify.ui;
 
-import a.l;
 import android.media.AudioManager.OnAudioFocusChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "", "onAudioFocusChange"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "onAudioFocusChange"})
 final class ForceNotifyShowUI$b
   implements AudioManager.OnAudioFocusChangeListener
 {
-  public static final b mHY;
+  public static final b rfe;
   
   static
   {
-    AppMethodBeat.i(51084);
-    mHY = new b();
-    AppMethodBeat.o(51084);
+    AppMethodBeat.i(149231);
+    rfe = new b();
+    AppMethodBeat.o(149231);
   }
   
   public final void onAudioFocusChange(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.ui.ForceNotifyShowUI.b
  * JD-Core Version:    0.7.0.1
  */

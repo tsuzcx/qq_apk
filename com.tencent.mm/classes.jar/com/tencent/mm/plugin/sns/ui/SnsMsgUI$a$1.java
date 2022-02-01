@@ -13,57 +13,57 @@ final class SnsMsgUI$a$1
   
   public final void a(MMSlideDelView paramMMSlideDelView, boolean paramBoolean)
   {
-    AppMethodBeat.i(39084);
+    AppMethodBeat.i(98874);
     if (paramBoolean)
     {
-      nTX.add(paramMMSlideDelView);
-      AppMethodBeat.o(39084);
+      sHR.add(paramMMSlideDelView);
+      AppMethodBeat.o(98874);
       return;
     }
-    nTX.remove(paramMMSlideDelView);
-    AppMethodBeat.o(39084);
+    sHR.remove(paramMMSlideDelView);
+    AppMethodBeat.o(98874);
   }
   
-  public final boolean bKj()
+  public final boolean cIf()
   {
-    AppMethodBeat.i(39085);
-    if (nTX.size() > 0)
+    AppMethodBeat.i(98875);
+    if (sHR.size() > 0)
     {
-      AppMethodBeat.o(39085);
+      AppMethodBeat.o(98875);
       return true;
     }
-    AppMethodBeat.o(39085);
+    AppMethodBeat.o(98875);
     return false;
   }
   
-  public final void bKk()
+  public final void cIg()
   {
-    AppMethodBeat.i(39086);
-    Iterator localIterator = nTX.iterator();
+    AppMethodBeat.i(98876);
+    Iterator localIterator = sHR.iterator();
     while (localIterator.hasNext())
     {
       MMSlideDelView localMMSlideDelView = (MMSlideDelView)localIterator.next();
       if (localMMSlideDelView != null) {
-        localMMSlideDelView.dEk();
+        localMMSlideDelView.eSY();
       }
     }
-    nTX.clear();
-    AppMethodBeat.o(39086);
+    sHR.clear();
+    AppMethodBeat.o(98876);
   }
   
-  public final void bKl()
+  public final void cIh()
   {
-    AppMethodBeat.i(39087);
-    Iterator localIterator = nTX.iterator();
+    AppMethodBeat.i(98877);
+    Iterator localIterator = sHR.iterator();
     while (localIterator.hasNext())
     {
       MMSlideDelView localMMSlideDelView = (MMSlideDelView)localIterator.next();
       if (localMMSlideDelView != null) {
-        localMMSlideDelView.dEj();
+        localMMSlideDelView.eSX();
       }
     }
-    nTX.clear();
-    AppMethodBeat.o(39087);
+    sHR.clear();
+    AppMethodBeat.o(98877);
   }
 }
 

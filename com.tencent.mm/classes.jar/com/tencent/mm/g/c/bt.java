@@ -2,37 +2,64 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import com.tencent.mm.protocal.protobuf.agc;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class bt
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int dyD = "ForcePushId".hashCode();
-  private static final int dyE = "CreateTime".hashCode();
-  private static final int dyF = "ExpiredTime".hashCode();
-  private static final int dyG = "Description".hashCode();
-  private static final int dyH = "UserIcon".hashCode();
-  private static final int dyI = "UserName".hashCode();
-  private static final int dyJ = "ExtInfo".hashCode();
-  private static final int dyK = "Status".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FavModInfo_LocalId_Index ON FavEditInfo(localId)" };
+  private static final int eBr = "localId".hashCode();
+  private static final int eBs = "modItem".hashCode();
+  private static final int elq = "scene".hashCode();
+  private static final int esJ = "time".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dyA = true;
-  private boolean dyB = true;
-  private boolean dyC = true;
-  private boolean dyv = true;
-  private boolean dyw = true;
-  private boolean dyx = true;
-  private boolean dyy = true;
-  private boolean dyz = true;
-  public long field_CreateTime;
-  public String field_Description;
-  public long field_ExpiredTime;
-  public String field_ExtInfo;
-  public String field_ForcePushId;
-  public int field_Status;
-  public String field_UserIcon;
-  public String field_UserName;
+  private static final int type_HASHCODE = "type".hashCode();
+  private boolean __hadSettype = true;
+  private boolean eBp = true;
+  private boolean eBq = true;
+  private boolean elo = true;
+  private boolean esq = true;
+  public long field_localId;
+  public agc field_modItem;
+  public int field_scene;
+  public long field_time;
+  public int field_type;
+  
+  public static c.a So()
+  {
+    c.a locala = new c.a();
+    locala.EYt = new Field[5];
+    locala.columns = new String[6];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "localId";
+    locala.EYv.put("localId", "LONG");
+    localStringBuilder.append(" localId LONG");
+    localStringBuilder.append(", ");
+    locala.columns[1] = "modItem";
+    locala.EYv.put("modItem", "BLOB");
+    localStringBuilder.append(" modItem BLOB");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "time";
+    locala.EYv.put("time", "LONG");
+    localStringBuilder.append(" time LONG");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "type";
+    locala.EYv.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "scene";
+    locala.EYv.put("scene", "INTEGER default '1' ");
+    localStringBuilder.append(" scene INTEGER default '1' ");
+    locala.columns[5] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -40,39 +67,43 @@ public abstract class bt
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dyD != k) {
-        break label65;
+      if (eBr != k) {
+        break label60;
       }
-      this.field_ForcePushId = paramCursor.getString(i);
-      this.dyv = true;
+      this.field_localId = paramCursor.getLong(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (dyE == k) {
-        this.field_CreateTime = paramCursor.getLong(i);
-      } else if (dyF == k) {
-        this.field_ExpiredTime = paramCursor.getLong(i);
-      } else if (dyG == k) {
-        this.field_Description = paramCursor.getString(i);
-      } else if (dyH == k) {
-        this.field_UserIcon = paramCursor.getString(i);
-      } else if (dyI == k) {
-        this.field_UserName = paramCursor.getString(i);
-      } else if (dyJ == k) {
-        this.field_ExtInfo = paramCursor.getString(i);
-      } else if (dyK == k) {
-        this.field_Status = paramCursor.getInt(i);
+      label60:
+      if (eBs == k) {
+        try
+        {
+          byte[] arrayOfByte = paramCursor.getBlob(i);
+          if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
+            continue;
+          }
+          this.field_modItem = ((agc)new agc().parseFrom(arrayOfByte));
+        }
+        catch (IOException localIOException)
+        {
+          ad.e("MicroMsg.SDK.BaseFavEditInfo", localIOException.getMessage());
+        }
+      } else if (esJ == k) {
+        this.field_time = paramCursor.getLong(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (elq == k) {
+        this.field_scene = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -82,39 +113,39 @@ public abstract class bt
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dyv) {
-      localContentValues.put("ForcePushId", this.field_ForcePushId);
+    if (this.eBp) {
+      localContentValues.put("localId", Long.valueOf(this.field_localId));
     }
-    if (this.dyw) {
-      localContentValues.put("CreateTime", Long.valueOf(this.field_CreateTime));
+    if ((this.eBq) && (this.field_modItem != null)) {}
+    try
+    {
+      localContentValues.put("modItem", this.field_modItem.toByteArray());
+      if (this.esq) {
+        localContentValues.put("time", Long.valueOf(this.field_time));
+      }
+      if (this.__hadSettype) {
+        localContentValues.put("type", Integer.valueOf(this.field_type));
+      }
+      if (this.elo) {
+        localContentValues.put("scene", Integer.valueOf(this.field_scene));
+      }
+      if (this.systemRowid > 0L) {
+        localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+      }
+      return localContentValues;
     }
-    if (this.dyx) {
-      localContentValues.put("ExpiredTime", Long.valueOf(this.field_ExpiredTime));
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        ad.e("MicroMsg.SDK.BaseFavEditInfo", localIOException.getMessage());
+      }
     }
-    if (this.dyy) {
-      localContentValues.put("Description", this.field_Description);
-    }
-    if (this.dyz) {
-      localContentValues.put("UserIcon", this.field_UserIcon);
-    }
-    if (this.dyA) {
-      localContentValues.put("UserName", this.field_UserName);
-    }
-    if (this.dyB) {
-      localContentValues.put("ExtInfo", this.field_ExtInfo);
-    }
-    if (this.dyC) {
-      localContentValues.put("Status", Integer.valueOf(this.field_Status));
-    }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.bt
  * JD-Core Version:    0.7.0.1
  */

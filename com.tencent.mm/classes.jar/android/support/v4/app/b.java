@@ -1,6 +1,6 @@
 package android.support.v4.app;
 
-import android.support.v4.e.e;
+import android.support.v4.e.f;
 import java.io.PrintWriter;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -9,31 +9,52 @@ final class b
   extends k
   implements FragmentManagerImpl.h, g.a
 {
+  final FragmentManagerImpl BE;
+  ArrayList<a> BF = new ArrayList();
+  int BG;
+  int BH;
+  int BI;
+  int BJ;
+  int BK;
+  int BL;
+  boolean BM;
+  boolean BN = true;
+  boolean BO;
+  int BP;
+  CharSequence BQ;
+  int BR;
+  CharSequence BS;
+  ArrayList<String> BT;
+  ArrayList<String> BU;
+  boolean BV = false;
+  ArrayList<Runnable> BW;
   int mIndex = -1;
   String mName;
-  final FragmentManagerImpl vh;
-  ArrayList<a> vi = new ArrayList();
-  int vj;
-  int vk;
-  int vl;
-  int vm;
-  int vn;
-  int vo;
-  boolean vp;
-  boolean vq = true;
-  boolean vr;
-  int vs;
-  CharSequence vt;
-  int vu;
-  CharSequence vv;
-  ArrayList<String> vw;
-  ArrayList<String> vx;
-  boolean vy = false;
-  ArrayList<Runnable> vz;
   
   public b(FragmentManagerImpl paramFragmentManagerImpl)
   {
-    this.vh = paramFragmentManagerImpl;
+    this.BE = paramFragmentManagerImpl;
+  }
+  
+  private int D(boolean paramBoolean)
+  {
+    if (this.BO) {
+      throw new IllegalStateException("commit already called");
+    }
+    if (FragmentManagerImpl.DEBUG)
+    {
+      new StringBuilder("Commit: ").append(this);
+      PrintWriter localPrintWriter = new PrintWriter(new f("FragmentManager"));
+      a("  ", localPrintWriter);
+      localPrintWriter.close();
+    }
+    this.BO = true;
+    if (this.BM) {}
+    for (this.mIndex = this.BE.allocBackStackIndex(this);; this.mIndex = -1)
+    {
+      this.BE.enqueueAction(this, paramBoolean);
+      return this.mIndex;
+    }
   }
   
   private void a(int paramInt1, Fragment paramFragment, String paramString, int paramInt2)
@@ -43,7 +64,7 @@ final class b
     if ((localClass.isAnonymousClass()) || (!Modifier.isPublic(i)) || ((localClass.isMemberClass()) && (!Modifier.isStatic(i)))) {
       throw new IllegalStateException("Fragment " + localClass.getCanonicalName() + " must be a public static class to be  properly recreated from instance state.");
     }
-    paramFragment.mFragmentManager = this.vh;
+    paramFragment.mFragmentManager = this.BE;
     if (paramString != null)
     {
       if ((paramFragment.mTag != null) && (!paramString.equals(paramFragment.mTag))) {
@@ -71,87 +92,64 @@ final class b
     return (parama != null) && (parama.mAdded) && (parama.mView != null) && (!parama.mDetached) && (!parama.mHidden) && (parama.isPostponed());
   }
   
-  private k cw()
+  private k dz()
   {
-    if (this.vp) {
+    if (this.BM) {
       throw new IllegalStateException("This transaction is already being added to the back stack");
     }
-    this.vq = false;
+    this.BN = false;
     return this;
   }
   
-  private int x(boolean paramBoolean)
+  final void E(boolean paramBoolean)
   {
-    if (this.vr) {
-      throw new IllegalStateException("commit already called");
-    }
-    if (FragmentManagerImpl.DEBUG)
+    int i = this.BF.size() - 1;
+    if (i >= 0)
     {
-      new StringBuilder("Commit: ").append(this);
-      PrintWriter localPrintWriter = new PrintWriter(new e("FragmentManager"));
-      a("  ", localPrintWriter);
-      localPrintWriter.close();
-    }
-    this.vr = true;
-    if (this.vp) {}
-    for (this.mIndex = this.vh.allocBackStackIndex(this);; this.mIndex = -1)
-    {
-      this.vh.enqueueAction(this, paramBoolean);
-      return this.mIndex;
-    }
-  }
-  
-  public final k F(String paramString)
-  {
-    if (!this.vq) {
-      throw new IllegalStateException("This FragmentTransaction is not allowed to be added to the back stack.");
-    }
-    this.vp = true;
-    this.mName = paramString;
-    return this;
-  }
-  
-  final void W(int paramInt)
-  {
-    if (!this.vp) {}
-    for (;;)
-    {
-      return;
-      if (FragmentManagerImpl.DEBUG) {
-        new StringBuilder("Bump nesting in ").append(this).append(" by ").append(paramInt);
+      a locala = (a)this.BF.get(i);
+      Fragment localFragment = locala.fragment;
+      if (localFragment != null) {
+        localFragment.setNextTransition(FragmentManagerImpl.reverseTransit(this.BK), this.BL);
       }
-      int j = this.vi.size();
-      int i = 0;
-      while (i < j)
+      switch (locala.BX)
       {
-        a locala = (a)this.vi.get(i);
-        if (locala.fragment != null)
-        {
-          Fragment localFragment = locala.fragment;
-          localFragment.mBackStackNesting += paramInt;
-          if (FragmentManagerImpl.DEBUG) {
-            new StringBuilder("Bump nesting of ").append(locala.fragment).append(" to ").append(locala.fragment.mBackStackNesting);
-          }
+      case 2: 
+      default: 
+        throw new IllegalArgumentException("Unknown cmd: " + locala.BX);
+      case 1: 
+        localFragment.setNextAnim(locala.Cb);
+        this.BE.removeFragment(localFragment);
+      }
+      for (;;)
+      {
+        if ((!this.BV) && (locala.BX != 3) && (localFragment != null)) {
+          this.BE.moveFragmentToExpectedState(localFragment);
         }
-        i += 1;
+        i -= 1;
+        break;
+        localFragment.setNextAnim(locala.Ca);
+        this.BE.addFragment(localFragment, false);
+        continue;
+        localFragment.setNextAnim(locala.Ca);
+        this.BE.showFragment(localFragment);
+        continue;
+        localFragment.setNextAnim(locala.Cb);
+        this.BE.hideFragment(localFragment);
+        continue;
+        localFragment.setNextAnim(locala.Ca);
+        this.BE.attachFragment(localFragment);
+        continue;
+        localFragment.setNextAnim(locala.Cb);
+        this.BE.detachFragment(localFragment);
+        continue;
+        this.BE.setPrimaryNavigationFragment(null);
+        continue;
+        this.BE.setPrimaryNavigationFragment(localFragment);
       }
     }
-  }
-  
-  final boolean X(int paramInt)
-  {
-    int k = this.vi.size();
-    int i = 0;
-    while (i < k)
-    {
-      a locala = (a)this.vi.get(i);
-      if (locala.fragment != null) {}
-      for (int j = locala.fragment.mContainerId; (j != 0) && (j == paramInt); j = 0) {
-        return true;
-      }
-      i += 1;
+    if ((!this.BV) && (paramBoolean)) {
+      this.BE.moveToState(this.BE.mCurState, true);
     }
-    return false;
   }
   
   final Fragment a(ArrayList<Fragment> paramArrayList, Fragment paramFragment)
@@ -165,12 +163,12 @@ final class b
     int k;
     label218:
     Fragment localFragment3;
-    if (j < this.vi.size())
+    if (j < this.BF.size())
     {
-      locala = (a)this.vi.get(j);
+      locala = (a)this.BF.get(j);
       i = j;
       paramFragment = localFragment1;
-      switch (locala.vA)
+      switch (locala.BX)
       {
       default: 
         paramFragment = localFragment1;
@@ -195,7 +193,7 @@ final class b
           paramFragment = localFragment1;
           if (locala.fragment == localFragment1)
           {
-            this.vi.add(j, new a(9, locala.fragment));
+            this.BF.add(j, new a(9, locala.fragment));
             i = j + 1;
             paramFragment = null;
           }
@@ -230,30 +228,30 @@ final class b
       localFragment1 = paramFragment;
       if (localFragment3 == paramFragment)
       {
-        this.vi.add(i, new a(9, localFragment3));
+        this.BF.add(i, new a(9, localFragment3));
         m = i + 1;
         localFragment1 = null;
       }
       paramFragment = new a(3, localFragment3);
-      paramFragment.vB = locala.vB;
-      paramFragment.vD = locala.vD;
-      paramFragment.vC = locala.vC;
-      paramFragment.vE = locala.vE;
-      this.vi.add(m, paramFragment);
+      paramFragment.BY = locala.BY;
+      paramFragment.Ca = locala.Ca;
+      paramFragment.BZ = locala.BZ;
+      paramFragment.Cb = locala.Cb;
+      this.BF.add(m, paramFragment);
       paramArrayList.remove(localFragment3);
       i = m + 1;
       paramFragment = localFragment1;
       continue;
       if (j != 0)
       {
-        this.vi.remove(i);
+        this.BF.remove(i);
         i -= 1;
         break;
       }
-      locala.vA = 1;
+      locala.BX = 1;
       paramArrayList.add(localFragment2);
       break;
-      this.vi.add(j, new a(9, localFragment1));
+      this.BF.add(j, new a(9, localFragment1));
       i = j + 1;
       paramFragment = locala.fragment;
       break;
@@ -282,9 +280,9 @@ final class b
   final void a(Fragment.c paramc)
   {
     int i = 0;
-    while (i < this.vi.size())
+    while (i < this.BF.size())
     {
-      a locala = (a)this.vi.get(i);
+      a locala = (a)this.BF.get(i);
       if (b(locala)) {
         locala.fragment.setOnStartEnterTransitionListener(paramc);
       }
@@ -294,11 +292,11 @@ final class b
   
   final void a(a parama)
   {
-    this.vi.add(parama);
-    parama.vB = this.vj;
-    parama.vC = this.vk;
-    parama.vD = this.vl;
-    parama.vE = this.vm;
+    this.BF.add(parama);
+    parama.BY = this.BG;
+    parama.BZ = this.BH;
+    parama.Ca = this.BI;
+    parama.Cb = this.BJ;
   }
   
   public final void a(String paramString, PrintWriter paramPrintWriter)
@@ -316,63 +314,63 @@ final class b
       paramPrintWriter.print(" mIndex=");
       paramPrintWriter.print(this.mIndex);
       paramPrintWriter.print(" mCommitted=");
-      paramPrintWriter.println(this.vr);
-      if (this.vn != 0)
+      paramPrintWriter.println(this.BO);
+      if (this.BK != 0)
       {
         paramPrintWriter.print(paramString);
         paramPrintWriter.print("mTransition=#");
-        paramPrintWriter.print(Integer.toHexString(this.vn));
+        paramPrintWriter.print(Integer.toHexString(this.BK));
         paramPrintWriter.print(" mTransitionStyle=#");
-        paramPrintWriter.println(Integer.toHexString(this.vo));
+        paramPrintWriter.println(Integer.toHexString(this.BL));
       }
-      if ((this.vj != 0) || (this.vk != 0))
+      if ((this.BG != 0) || (this.BH != 0))
       {
         paramPrintWriter.print(paramString);
         paramPrintWriter.print("mEnterAnim=#");
-        paramPrintWriter.print(Integer.toHexString(this.vj));
+        paramPrintWriter.print(Integer.toHexString(this.BG));
         paramPrintWriter.print(" mExitAnim=#");
-        paramPrintWriter.println(Integer.toHexString(this.vk));
+        paramPrintWriter.println(Integer.toHexString(this.BH));
       }
-      if ((this.vl != 0) || (this.vm != 0))
+      if ((this.BI != 0) || (this.BJ != 0))
       {
         paramPrintWriter.print(paramString);
         paramPrintWriter.print("mPopEnterAnim=#");
-        paramPrintWriter.print(Integer.toHexString(this.vl));
+        paramPrintWriter.print(Integer.toHexString(this.BI));
         paramPrintWriter.print(" mPopExitAnim=#");
-        paramPrintWriter.println(Integer.toHexString(this.vm));
+        paramPrintWriter.println(Integer.toHexString(this.BJ));
       }
-      if ((this.vs != 0) || (this.vt != null))
+      if ((this.BP != 0) || (this.BQ != null))
       {
         paramPrintWriter.print(paramString);
         paramPrintWriter.print("mBreadCrumbTitleRes=#");
-        paramPrintWriter.print(Integer.toHexString(this.vs));
+        paramPrintWriter.print(Integer.toHexString(this.BP));
         paramPrintWriter.print(" mBreadCrumbTitleText=");
-        paramPrintWriter.println(this.vt);
+        paramPrintWriter.println(this.BQ);
       }
-      if ((this.vu != 0) || (this.vv != null))
+      if ((this.BR != 0) || (this.BS != null))
       {
         paramPrintWriter.print(paramString);
         paramPrintWriter.print("mBreadCrumbShortTitleRes=#");
-        paramPrintWriter.print(Integer.toHexString(this.vu));
+        paramPrintWriter.print(Integer.toHexString(this.BR));
         paramPrintWriter.print(" mBreadCrumbShortTitleText=");
-        paramPrintWriter.println(this.vv);
+        paramPrintWriter.println(this.BS);
       }
     }
-    if (!this.vi.isEmpty())
+    if (!this.BF.isEmpty())
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.println("Operations:");
       new StringBuilder().append(paramString).append("    ");
-      int j = this.vi.size();
+      int j = this.BF.size();
       int i = 0;
       if (i < j)
       {
-        a locala = (a)this.vi.get(i);
+        a locala = (a)this.BF.get(i);
         String str;
-        switch (locala.vA)
+        switch (locala.BX)
         {
         default: 
-          str = "cmd=" + locala.vA;
+          str = "cmd=" + locala.BX;
         }
         for (;;)
         {
@@ -385,21 +383,21 @@ final class b
           paramPrintWriter.println(locala.fragment);
           if (paramBoolean)
           {
-            if ((locala.vB != 0) || (locala.vC != 0))
+            if ((locala.BY != 0) || (locala.BZ != 0))
             {
               paramPrintWriter.print(paramString);
               paramPrintWriter.print("enterAnim=#");
-              paramPrintWriter.print(Integer.toHexString(locala.vB));
+              paramPrintWriter.print(Integer.toHexString(locala.BY));
               paramPrintWriter.print(" exitAnim=#");
-              paramPrintWriter.println(Integer.toHexString(locala.vC));
+              paramPrintWriter.println(Integer.toHexString(locala.BZ));
             }
-            if ((locala.vD != 0) || (locala.vE != 0))
+            if ((locala.Ca != 0) || (locala.Cb != 0))
             {
               paramPrintWriter.print(paramString);
               paramPrintWriter.print("popEnterAnim=#");
-              paramPrintWriter.print(Integer.toHexString(locala.vD));
+              paramPrintWriter.print(Integer.toHexString(locala.Ca));
               paramPrintWriter.print(" popExitAnim=#");
-              paramPrintWriter.println(Integer.toHexString(locala.vE));
+              paramPrintWriter.println(Integer.toHexString(locala.Cb));
             }
           }
           i += 1;
@@ -433,13 +431,13 @@ final class b
     if (paramInt2 == paramInt1) {
       return false;
     }
-    int i1 = this.vi.size();
+    int i1 = this.BF.size();
     int j = -1;
     int k = 0;
     int i;
     if (k < i1)
     {
-      Object localObject = (a)this.vi.get(k);
+      Object localObject = (a)this.BF.get(k);
       if (((a)localObject).fragment != null)
       {
         i = ((a)localObject).fragment.mContainerId;
@@ -454,14 +452,14 @@ final class b
           break label185;
         }
         localObject = (b)paramArrayList.get(j);
-        int i2 = ((b)localObject).vi.size();
+        int i2 = ((b)localObject).BF.size();
         int m = 0;
         for (;;)
         {
           if (m >= i2) {
             break label176;
           }
-          a locala = (a)((b)localObject).vi.get(m);
+          a locala = (a)((b)localObject).BF.get(m);
           if (locala.fragment != null) {}
           for (int n = locala.fragment.mContainerId;; n = 0)
           {
@@ -498,21 +496,64 @@ final class b
     }
     paramArrayList.add(this);
     paramArrayList1.add(Boolean.FALSE);
-    if (this.vp) {
-      this.vh.addBackStackState(this);
+    if (this.BM) {
+      this.BE.addBackStackState(this);
     }
     return true;
+  }
+  
+  final void aq(int paramInt)
+  {
+    if (!this.BM) {}
+    for (;;)
+    {
+      return;
+      if (FragmentManagerImpl.DEBUG) {
+        new StringBuilder("Bump nesting in ").append(this).append(" by ").append(paramInt);
+      }
+      int j = this.BF.size();
+      int i = 0;
+      while (i < j)
+      {
+        a locala = (a)this.BF.get(i);
+        if (locala.fragment != null)
+        {
+          Fragment localFragment = locala.fragment;
+          localFragment.mBackStackNesting += paramInt;
+          if (FragmentManagerImpl.DEBUG) {
+            new StringBuilder("Bump nesting of ").append(locala.fragment).append(" to ").append(locala.fragment.mBackStackNesting);
+          }
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  final boolean ar(int paramInt)
+  {
+    int k = this.BF.size();
+    int i = 0;
+    while (i < k)
+    {
+      a locala = (a)this.BF.get(i);
+      if (locala.fragment != null) {}
+      for (int j = locala.fragment.mContainerId; (j != 0) && (j == paramInt); j = 0) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
   
   final Fragment b(ArrayList<Fragment> paramArrayList, Fragment paramFragment)
   {
     int i = 0;
     Fragment localFragment = paramFragment;
-    if (i < this.vi.size())
+    if (i < this.BF.size())
     {
-      a locala = (a)this.vi.get(i);
+      a locala = (a)this.BF.get(i);
       paramFragment = localFragment;
-      switch (locala.vA)
+      switch (locala.BX)
       {
       default: 
         paramFragment = localFragment;
@@ -559,96 +600,106 @@ final class b
   
   public final int commit()
   {
-    return x(false);
+    return D(false);
   }
   
   public final int commitAllowingStateLoss()
   {
-    return x(true);
+    return D(true);
   }
   
   public final void commitNow()
   {
-    cw();
-    this.vh.execSingleAction(this, false);
+    dz();
+    this.BE.execSingleAction(this, false);
   }
   
   public final void commitNowAllowingStateLoss()
   {
-    cw();
-    this.vh.execSingleAction(this, true);
-  }
-  
-  public final void cx()
-  {
-    if (this.vz != null)
-    {
-      int j = this.vz.size();
-      int i = 0;
-      while (i < j)
-      {
-        ((Runnable)this.vz.get(i)).run();
-        i += 1;
-      }
-      this.vz = null;
-    }
-  }
-  
-  final void cy()
-  {
-    int j = this.vi.size();
-    int i = 0;
-    if (i < j)
-    {
-      a locala = (a)this.vi.get(i);
-      Fragment localFragment = locala.fragment;
-      if (localFragment != null) {
-        localFragment.setNextTransition(this.vn, this.vo);
-      }
-      switch (locala.vA)
-      {
-      case 2: 
-      default: 
-        throw new IllegalArgumentException("Unknown cmd: " + locala.vA);
-      case 1: 
-        localFragment.setNextAnim(locala.vB);
-        this.vh.addFragment(localFragment, false);
-      }
-      for (;;)
-      {
-        if ((!this.vy) && (locala.vA != 1) && (localFragment != null)) {
-          this.vh.moveFragmentToExpectedState(localFragment);
-        }
-        i += 1;
-        break;
-        localFragment.setNextAnim(locala.vC);
-        this.vh.removeFragment(localFragment);
-        continue;
-        localFragment.setNextAnim(locala.vC);
-        this.vh.hideFragment(localFragment);
-        continue;
-        localFragment.setNextAnim(locala.vB);
-        this.vh.showFragment(localFragment);
-        continue;
-        localFragment.setNextAnim(locala.vC);
-        this.vh.detachFragment(localFragment);
-        continue;
-        localFragment.setNextAnim(locala.vB);
-        this.vh.attachFragment(localFragment);
-        continue;
-        this.vh.setPrimaryNavigationFragment(localFragment);
-        continue;
-        this.vh.setPrimaryNavigationFragment(null);
-      }
-    }
-    if (!this.vy) {
-      this.vh.moveToState(this.vh.mCurState, true);
-    }
+    dz();
+    this.BE.execSingleAction(this, true);
   }
   
   public final k d(Fragment paramFragment)
   {
     a(new a(6, paramFragment));
+    return this;
+  }
+  
+  public final void dA()
+  {
+    if (this.BW != null)
+    {
+      int j = this.BW.size();
+      int i = 0;
+      while (i < j)
+      {
+        ((Runnable)this.BW.get(i)).run();
+        i += 1;
+      }
+      this.BW = null;
+    }
+  }
+  
+  final void dB()
+  {
+    int j = this.BF.size();
+    int i = 0;
+    if (i < j)
+    {
+      a locala = (a)this.BF.get(i);
+      Fragment localFragment = locala.fragment;
+      if (localFragment != null) {
+        localFragment.setNextTransition(this.BK, this.BL);
+      }
+      switch (locala.BX)
+      {
+      case 2: 
+      default: 
+        throw new IllegalArgumentException("Unknown cmd: " + locala.BX);
+      case 1: 
+        localFragment.setNextAnim(locala.BY);
+        this.BE.addFragment(localFragment, false);
+      }
+      for (;;)
+      {
+        if ((!this.BV) && (locala.BX != 1) && (localFragment != null)) {
+          this.BE.moveFragmentToExpectedState(localFragment);
+        }
+        i += 1;
+        break;
+        localFragment.setNextAnim(locala.BZ);
+        this.BE.removeFragment(localFragment);
+        continue;
+        localFragment.setNextAnim(locala.BZ);
+        this.BE.hideFragment(localFragment);
+        continue;
+        localFragment.setNextAnim(locala.BY);
+        this.BE.showFragment(localFragment);
+        continue;
+        localFragment.setNextAnim(locala.BZ);
+        this.BE.detachFragment(localFragment);
+        continue;
+        localFragment.setNextAnim(locala.BY);
+        this.BE.attachFragment(localFragment);
+        continue;
+        this.BE.setPrimaryNavigationFragment(localFragment);
+        continue;
+        this.BE.setPrimaryNavigationFragment(null);
+      }
+    }
+    if (!this.BV) {
+      this.BE.moveToState(this.BE.mCurState, true);
+    }
+  }
+  
+  public final k dy()
+  {
+    if (!this.BN) {
+      throw new IllegalStateException("This FragmentTransaction is not allowed to be added to the back stack.");
+    }
+    this.BM = true;
+    this.mName = null;
     return this;
   }
   
@@ -658,12 +709,12 @@ final class b
     return this;
   }
   
-  public final k m(int paramInt1, int paramInt2)
+  public final k n(int paramInt1, int paramInt2)
   {
-    this.vj = paramInt1;
-    this.vk = paramInt2;
-    this.vl = 0;
-    this.vm = 0;
+    this.BG = paramInt1;
+    this.BH = paramInt2;
+    this.BI = 0;
+    this.BJ = 0;
     return this;
   }
   
@@ -686,71 +737,20 @@ final class b
     return localStringBuilder.toString();
   }
   
-  final void y(boolean paramBoolean)
-  {
-    int i = this.vi.size() - 1;
-    if (i >= 0)
-    {
-      a locala = (a)this.vi.get(i);
-      Fragment localFragment = locala.fragment;
-      if (localFragment != null) {
-        localFragment.setNextTransition(FragmentManagerImpl.reverseTransit(this.vn), this.vo);
-      }
-      switch (locala.vA)
-      {
-      case 2: 
-      default: 
-        throw new IllegalArgumentException("Unknown cmd: " + locala.vA);
-      case 1: 
-        localFragment.setNextAnim(locala.vE);
-        this.vh.removeFragment(localFragment);
-      }
-      for (;;)
-      {
-        if ((!this.vy) && (locala.vA != 3) && (localFragment != null)) {
-          this.vh.moveFragmentToExpectedState(localFragment);
-        }
-        i -= 1;
-        break;
-        localFragment.setNextAnim(locala.vD);
-        this.vh.addFragment(localFragment, false);
-        continue;
-        localFragment.setNextAnim(locala.vD);
-        this.vh.showFragment(localFragment);
-        continue;
-        localFragment.setNextAnim(locala.vE);
-        this.vh.hideFragment(localFragment);
-        continue;
-        localFragment.setNextAnim(locala.vD);
-        this.vh.attachFragment(localFragment);
-        continue;
-        localFragment.setNextAnim(locala.vE);
-        this.vh.detachFragment(localFragment);
-        continue;
-        this.vh.setPrimaryNavigationFragment(null);
-        continue;
-        this.vh.setPrimaryNavigationFragment(localFragment);
-      }
-    }
-    if ((!this.vy) && (paramBoolean)) {
-      this.vh.moveToState(this.vh.mCurState, true);
-    }
-  }
-  
   static final class a
   {
+    int BX;
+    int BY;
+    int BZ;
+    int Ca;
+    int Cb;
     Fragment fragment;
-    int vA;
-    int vB;
-    int vC;
-    int vD;
-    int vE;
     
     a() {}
     
     a(int paramInt, Fragment paramFragment)
     {
-      this.vA = paramInt;
+      this.BX = paramInt;
       this.fragment = paramFragment;
     }
   }

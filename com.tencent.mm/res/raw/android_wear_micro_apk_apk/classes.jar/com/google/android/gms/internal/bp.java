@@ -18,15 +18,15 @@ public final class bp<R extends w>
   extends aa<R>
   implements x<R>
 {
-  private final Object Ms;
-  private final WeakReference<p> Mu;
-  private z<? super R, ? extends w> Po;
-  private bp<? extends w> Pp;
-  private volatile y<? super R> Pq;
-  private t<R> Pr;
-  private Status Ps;
-  private final bq Pt;
-  private boolean Pu;
+  private final Object Oh;
+  private final WeakReference<p> Oj;
+  private z<? super R, ? extends w> Rd;
+  private bp<? extends w> Re;
+  private volatile y<? super R> Rf;
+  private t<R> Rg;
+  private Status Rh;
+  private final bq Ri;
+  private boolean Rj;
   
   private static void d(w paramw)
   {
@@ -45,79 +45,79 @@ public final class bp<R extends w>
   
   private void e(Status paramStatus)
   {
-    synchronized (this.Ms)
+    synchronized (this.Oh)
     {
-      this.Ps = paramStatus;
-      f(this.Ps);
+      this.Rh = paramStatus;
+      f(this.Rh);
       return;
     }
   }
   
   private void f(Status paramStatus)
   {
-    synchronized (this.Ms)
+    synchronized (this.Oh)
     {
-      if (this.Po != null)
+      if (this.Rd != null)
       {
-        d.e(paramStatus, "onFailure must not return null");
-        this.Pp.e(paramStatus);
+        d.g(paramStatus, "onFailure must not return null");
+        this.Re.e(paramStatus);
       }
-      while (!jg()) {
+      while (!jp()) {
         return;
       }
-      paramStatus = this.Pq;
+      paramStatus = this.Rf;
     }
   }
   
-  private boolean jg()
+  private boolean jp()
   {
-    p localp = (p)this.Mu.get();
-    return (this.Pq != null) && (localp != null);
+    p localp = (p)this.Oj.get();
+    return (this.Rf != null) && (localp != null);
   }
   
   public final void a(t<?> paramt)
   {
-    synchronized (this.Ms)
+    synchronized (this.Oh)
     {
-      this.Pr = paramt;
-      if ((this.Po != null) || (this.Pq != null))
+      this.Rg = paramt;
+      if ((this.Rd != null) || (this.Rf != null))
       {
-        paramt = (p)this.Mu.get();
-        if ((!this.Pu) && (this.Po != null) && (paramt != null))
+        paramt = (p)this.Oj.get();
+        if ((!this.Rj) && (this.Rd != null) && (paramt != null))
         {
           paramt.a(this);
-          this.Pu = true;
+          this.Rj = true;
         }
-        if (this.Ps == null) {
+        if (this.Rh == null) {
           break label83;
         }
-        f(this.Ps);
+        f(this.Rh);
       }
       label83:
-      while (this.Pr == null) {
+      while (this.Rg == null) {
         return;
       }
-      this.Pr.a(this);
+      this.Rg.a(this);
     }
   }
   
   public final void a(final R paramR)
   {
-    synchronized (this.Ms)
+    synchronized (this.Oh)
     {
-      if (paramR.gC().gm())
+      if (paramR.gM().gw())
       {
-        if (this.Po != null) {
-          bj.iG().submit(new Runnable()
+        if (this.Rd != null) {
+          bj.iO().submit(new Runnable()
           {
             public final void run()
             {
               try
               {
-                k.Mr.set(Boolean.valueOf(true));
-                Object localObject1 = bp.c(bp.this).gD();
+                k.Og.set(Boolean.TRUE);
+                Object localObject1 = bp.c(bp.this).gN();
                 bp.d(bp.this).sendMessage(bp.d(bp.this).obtainMessage(0, localObject1));
-                k.Mr.set(Boolean.valueOf(false));
+                k.Og.set(Boolean.FALSE);
                 bp.e(paramR);
                 localObject1 = (p)bp.e(bp.this).get();
                 if (localObject1 != null) {
@@ -133,7 +133,7 @@ public final class bp<R extends w>
               }
               finally
               {
-                k.Mr.set(Boolean.valueOf(false));
+                k.Og.set(Boolean.FALSE);
                 bp.e(paramR);
                 p localp2 = (p)bp.e(bp.this).get();
                 if (localp2 != null) {
@@ -146,19 +146,19 @@ public final class bp<R extends w>
         for (;;)
         {
           return;
-          if (jg()) {
-            paramR = this.Pq;
+          if (jp()) {
+            paramR = this.Rf;
           }
         }
       }
-      e(paramR.gC());
+      e(paramR.gM());
       d(paramR);
     }
   }
   
-  final void jf()
+  final void jo()
   {
-    this.Pq = null;
+    this.Rf = null;
   }
 }
 

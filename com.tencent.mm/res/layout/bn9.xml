@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/b39" android:background="@drawable/ak3" android:layout_width="132.0dip" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip">
+        <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/jv" android:textColor="@color/y4" android:ellipsize="end" android:id="@id/gbv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hu" android:layout_marginTop="8.699982dip" android:layout_marginRight="@dimen/hu" android:maxLines="2" />
+        <FrameLayout android:layout_gravity="center_horizontal" android:id="@id/c6w" android:layout_width="112.0dip" android:layout_height="90.0dip" android:layout_marginLeft="@dimen/hu" android:layout_marginTop="5.0dip" android:layout_marginRight="@dimen/hu">
+            <com.tencent.mm.ui.widget.ThreeDotsLoadingView android:layout_gravity="center" android:id="@id/d4c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" />
+            <ImageView android:layout_gravity="center" android:id="@id/bne" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/app_brand_share_page_cover_default" android:scaleType="centerInside" />
+            <ImageView android:id="@id/b5m" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+            <com.tencent.mm.plugin.appbrand.dynamic.widget.IPCDynamicPageView android:layout_gravity="center" android:id="@id/h47" android:visibility="invisible" android:layout_width="224.0dip" android:layout_height="180.0dip" android:scaleX="0.5" android:scaleY="0.5" />
+            <ImageView android:layout_gravity="bottom|center|left" android:id="@id/gmk" android:layout_width="13.0dip" android:layout_height="11.0dip" android:layout_marginLeft="5.0dip" android:layout_marginBottom="5.0dip" android:src="@raw/video_icon_sub" android:scaleType="centerInside" />
+        </FrameLayout>
+    </LinearLayout>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/gc7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_alignParentTop="true" style="@style/hp" />
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:layout_gravity="center|right" android:id="@id/gc6" android:focusable="false" android:focusableInTouchMode="true" android:clickable="false" android:layout_width="@dimen/k2" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c0" android:layout_marginBottom="@dimen/c0" android:minHeight="@dimen/jz" android:layout_alignParentRight="true" />
+        <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:shrinkColumns="0" android:layout_toLeftOf="@id/gc6" android:layout_centerVertical="true" xmlns:app="http://schemas.android.com/apk/res-auto">
+            <TableRow>
+                <TextView android:textSize="@dimen/a7" android:textColor="@color/y4" android:ellipsize="end" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bq" android:text="@string/cxo" android:maxLines="1" android:includeFontPadding="false" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/crm" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/bq" android:src="@raw/icons_outlined_info" android:scaleType="fitXY" android:contentDescription="@string/apw" app:iconColor="@color/FG_2" />
+            </TableRow>
+        </TableLayout>
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_alignParentBottom="true" style="@style/hp" />
+    </RelativeLayout>
+</LinearLayout>

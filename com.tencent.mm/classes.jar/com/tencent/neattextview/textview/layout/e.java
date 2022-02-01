@@ -6,32 +6,32 @@ import java.lang.reflect.Array;
 
 public final class e<E>
 {
-  private final Class<? extends E> BbZ;
-  public int Bca;
-  public E[] Bcb;
-  public int[] Bcc;
-  public int[] Bcd;
-  public int[] Bce;
+  private final Class<? extends E> IiS;
+  public int IiT;
+  public E[] IiU;
+  public int[] IiV;
+  public int[] IiW;
+  public int[] IiX;
   
   e(Class<? extends E> paramClass)
   {
-    this.BbZ = paramClass;
-    this.Bca = 0;
+    this.IiS = paramClass;
+    this.IiT = 0;
   }
   
   public final void a(Spanned paramSpanned, int paramInt)
   {
-    AppMethodBeat.i(3258);
-    Object[] arrayOfObject = paramSpanned.getSpans(0, paramInt, this.BbZ);
+    AppMethodBeat.i(39760);
+    Object[] arrayOfObject = paramSpanned.getSpans(0, paramInt, this.IiS);
     int i = arrayOfObject.length;
-    if ((i > 0) && ((this.Bcb == null) || (this.Bcb.length < i)))
+    if ((i > 0) && ((this.IiU == null) || (this.IiU.length < i)))
     {
-      this.Bcb = ((Object[])Array.newInstance(this.BbZ, i));
-      this.Bcc = new int[i];
-      this.Bcd = new int[i];
-      this.Bce = new int[i];
+      this.IiU = ((Object[])Array.newInstance(this.IiS, i));
+      this.IiV = new int[i];
+      this.IiW = new int[i];
+      this.IiX = new int[i];
     }
-    this.Bca = 0;
+    this.IiT = 0;
     paramInt = 0;
     while (paramInt < i)
     {
@@ -41,24 +41,24 @@ public final class e<E>
       if (j != k)
       {
         int m = paramSpanned.getSpanFlags(localObject);
-        this.Bcb[this.Bca] = localObject;
-        this.Bcc[this.Bca] = j;
-        this.Bcd[this.Bca] = k;
-        this.Bce[this.Bca] = m;
-        this.Bca += 1;
+        this.IiU[this.IiT] = localObject;
+        this.IiV[this.IiT] = j;
+        this.IiW[this.IiT] = k;
+        this.IiX[this.IiT] = m;
+        this.IiT += 1;
       }
       paramInt += 1;
     }
-    AppMethodBeat.o(3258);
+    AppMethodBeat.o(39760);
   }
   
-  public final E ik(int paramInt1, int paramInt2)
+  public final E kh(int paramInt1, int paramInt2)
   {
     int i = 0;
-    while (i < this.Bca)
+    while (i < this.IiT)
     {
-      if ((this.Bcc[i] < paramInt2) && (this.Bcd[i] > paramInt1)) {
-        return this.Bcb[i];
+      if ((this.IiV[i] < paramInt2) && (this.IiW[i] > paramInt1)) {
+        return this.IiU[i];
       }
       i += 1;
     }

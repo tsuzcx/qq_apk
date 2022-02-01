@@ -10,73 +10,73 @@ public final class PrivFrame
   extends Id3Frame
 {
   public static final Parcelable.Creator<PrivFrame> CREATOR;
-  public final String aOg;
-  public final byte[] aOh;
+  public final String bjG;
+  public final byte[] bjH;
   
   static
   {
-    AppMethodBeat.i(95327);
-    CREATOR = new PrivFrame.1();
-    AppMethodBeat.o(95327);
+    AppMethodBeat.i(92449);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(92449);
   }
   
   PrivFrame(Parcel paramParcel)
   {
     super("PRIV");
-    AppMethodBeat.i(95323);
-    this.aOg = paramParcel.readString();
-    this.aOh = paramParcel.createByteArray();
-    AppMethodBeat.o(95323);
+    AppMethodBeat.i(92445);
+    this.bjG = paramParcel.readString();
+    this.bjH = paramParcel.createByteArray();
+    AppMethodBeat.o(92445);
   }
   
   public PrivFrame(String paramString, byte[] paramArrayOfByte)
   {
     super("PRIV");
-    this.aOg = paramString;
-    this.aOh = paramArrayOfByte;
+    this.bjG = paramString;
+    this.bjH = paramArrayOfByte;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(95324);
+    AppMethodBeat.i(92446);
     if (this == paramObject)
     {
-      AppMethodBeat.o(95324);
+      AppMethodBeat.o(92446);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(95324);
+      AppMethodBeat.o(92446);
       return false;
     }
     paramObject = (PrivFrame)paramObject;
-    if ((x.e(this.aOg, paramObject.aOg)) && (Arrays.equals(this.aOh, paramObject.aOh)))
+    if ((x.g(this.bjG, paramObject.bjG)) && (Arrays.equals(this.bjH, paramObject.bjH)))
     {
-      AppMethodBeat.o(95324);
+      AppMethodBeat.o(92446);
       return true;
     }
-    AppMethodBeat.o(95324);
+    AppMethodBeat.o(92446);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(95325);
-    if (this.aOg != null) {}
-    for (int i = this.aOg.hashCode();; i = 0)
+    AppMethodBeat.i(92447);
+    if (this.bjG != null) {}
+    for (int i = this.bjG.hashCode();; i = 0)
     {
-      int j = Arrays.hashCode(this.aOh);
-      AppMethodBeat.o(95325);
+      int j = Arrays.hashCode(this.bjH);
+      AppMethodBeat.o(92447);
       return (i + 527) * 31 + j;
     }
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(95326);
-    paramParcel.writeString(this.aOg);
-    paramParcel.writeByteArray(this.aOh);
-    AppMethodBeat.o(95326);
+    AppMethodBeat.i(92448);
+    paramParcel.writeString(this.bjG);
+    paramParcel.writeByteArray(this.bjH);
+    AppMethodBeat.o(92448);
   }
 }
 

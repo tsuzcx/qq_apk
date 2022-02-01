@@ -2,13 +2,13 @@ package com.tencent.mm.vending.a;
 
 final class k<_Index>
 {
-  i<_Index> Zx = new i((byte)0);
-  m Zy;
+  i<_Index> acX = new i((byte)0);
+  m acY;
   
-  public final void lx()
+  public final void me()
   {
-    this.Zx.M(null);
-    this.Zy = null;
+    this.acX.V(null);
+    this.acY = null;
   }
 }
 

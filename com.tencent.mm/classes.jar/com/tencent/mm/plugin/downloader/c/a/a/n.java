@@ -3,66 +3,66 @@ package com.tencent.mm.plugin.downloader.c.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class n
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int kWh;
-  public boolean kWi;
-  public long kWj;
+  public int ocT;
+  public boolean ocU;
+  public long ocV;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(35523);
+    AppMethodBeat.i(153056);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.kWh);
-      paramVarArgs.aS(2, this.kWi);
-      paramVarArgs.am(3, this.kWj);
-      AppMethodBeat.o(35523);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.ocT);
+      paramVarArgs.bg(2, this.ocU);
+      paramVarArgs.aG(3, this.ocV);
+      AppMethodBeat.o(153056);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.bl(1, this.kWh);
-      int i = e.a.a.b.b.a.eW(2);
-      int j = e.a.a.b.b.a.p(3, this.kWj);
-      AppMethodBeat.o(35523);
+      paramInt = f.a.a.b.b.a.bA(1, this.ocT);
+      int i = f.a.a.b.b.a.fY(2);
+      int j = f.a.a.b.b.a.q(3, this.ocV);
+      AppMethodBeat.o(153056);
       return paramInt + 0 + (i + 1) + j;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      AppMethodBeat.o(35523);
+      AppMethodBeat.o(153056);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       n localn = (n)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(35523);
+        AppMethodBeat.o(153056);
         return -1;
       case 1: 
-        localn.kWh = locala.CLY.sl();
-        AppMethodBeat.o(35523);
+        localn.ocT = locala.KhF.xS();
+        AppMethodBeat.o(153056);
         return 0;
       case 2: 
-        localn.kWi = locala.CLY.emu();
-        AppMethodBeat.o(35523);
+        localn.ocU = locala.KhF.fHu();
+        AppMethodBeat.o(153056);
         return 0;
       }
-      localn.kWj = locala.CLY.sm();
-      AppMethodBeat.o(35523);
+      localn.ocV = locala.KhF.xT();
+      AppMethodBeat.o(153056);
       return 0;
     }
-    AppMethodBeat.o(35523);
+    AppMethodBeat.o(153056);
     return -1;
   }
 }

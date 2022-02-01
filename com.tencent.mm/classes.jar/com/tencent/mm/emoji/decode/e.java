@@ -1,170 +1,179 @@
 package com.tencent.mm.emoji.decode;
 
-import a.f.b.j;
-import a.l;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
+import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.gif.MMGIFException;
-import com.tencent.mm.plugin.gif.MMWXGFJNI;
+import com.tencent.mm.hardcoder.WXHardCoderJNI;
+import com.tencent.mm.plugin.gif.MMGIFJNI;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.k;
+import d.l;
+import java.io.InputStream;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/decode/MMWXGFDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "TAG", "", "currFrame", "", "currFrameTime", "frameMetadata", "", "gifHandle", "", "lastValidFrame", "Landroid/graphics/Bitmap;", "metadata", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "frameCount", "frameHeight", "frameTime", "frameWidth", "getFrame", "plugin-emojisdk_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/decode/MMGIFDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "stream", "Ljava/io/InputStream;", "(Ljava/io/InputStream;)V", "TAG", "", "currFrame", "", "currFrameTime", "framePicker", "Lcom/tencent/mm/emoji/decode/FramePicker;", "gifPointer", "", "lastValidFrame", "Landroid/graphics/Bitmap;", "metadata", "", "startPerformance", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "frameCount", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "plugin-emojisdk_release"})
 public final class e
-  implements b
+  implements c
 {
   private final String TAG;
-  private int currFrame;
-  private Bitmap evb;
-  private final int[] evd;
-  private long eve;
-  private final int[] evf;
-  private int evg;
+  private Bitmap fKU;
+  private long fKV;
+  private final int[] fKW;
+  private int fKZ;
+  private int fLa;
+  private int foV;
+  private final g qro;
+  
+  public e(InputStream paramInputStream)
+  {
+    AppMethodBeat.i(105373);
+    this.TAG = "MicroMsg.GIF.MMGIFDecoder";
+    this.fKW = new int[6];
+    this.fKZ = -1;
+    boolean bool = WXHardCoderJNI.hcGifEnable;
+    int j = WXHardCoderJNI.hcGifDelay;
+    int k = WXHardCoderJNI.hcGifCPU;
+    int m = WXHardCoderJNI.hcGifIO;
+    if (WXHardCoderJNI.hcGifThr) {}
+    for (int i = Process.myTid();; i = 0)
+    {
+      this.foV = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, this.TAG);
+      this.fKV = MMGIFJNI.openByInputStrem(paramInputStream, this.fKW);
+      if ((this.fKW[0] > 1024) || (this.fKW[1] > 1024))
+      {
+        ad.w(this.TAG, "emoji width or height over size. Width:%d Height:%d", new Object[] { Integer.valueOf(this.fKW[0]), Integer.valueOf(this.fKW[1]) });
+        h.vKh.idkeyStat(401L, 2L, 1L, false);
+      }
+      paramInputStream = Bitmap.createBitmap(this.fKW[0], this.fKW[1], Bitmap.Config.ARGB_8888);
+      k.g(paramInputStream, "Bitmap.createBitmap(fram… Bitmap.Config.ARGB_8888)");
+      this.fKU = paramInputStream;
+      this.qro = new g(this.fKW[2]);
+      AppMethodBeat.o(105373);
+      return;
+    }
+  }
   
   public e(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(63149);
-    this.TAG = "MicroMsg.GIF.MMWXGFDecoder";
-    this.evd = new int[4];
-    this.evf = new int[4];
-    this.currFrame = -1;
-    this.evg = 100;
-    this.eve = MMWXGFJNI.nativeInitWxAMDecoder();
-    if ((this.eve == 0L) || (this.eve == -901L))
+    AppMethodBeat.i(105372);
+    this.TAG = "MicroMsg.GIF.MMGIFDecoder";
+    this.fKW = new int[6];
+    this.fKZ = -1;
+    boolean bool = WXHardCoderJNI.hcGifEnable;
+    int j = WXHardCoderJNI.hcGifDelay;
+    int k = WXHardCoderJNI.hcGifCPU;
+    int m = WXHardCoderJNI.hcGifIO;
+    if (WXHardCoderJNI.hcGifThr) {}
+    for (int i = Process.myTid();; i = 0)
     {
-      ab.w(this.TAG, "Cpan init wxam decoder failed. gifHandle:%d", new Object[] { Long.valueOf(this.eve) });
-      if (this.eve == -901L) {
-        h.qsU.idkeyStat(711L, 5L, 1L, false);
-      }
-      h.qsU.idkeyStat(711L, 4L, 1L, false);
-      paramArrayOfByte = (Throwable)new MMGIFException(201);
-      AppMethodBeat.o(63149);
-      throw paramArrayOfByte;
-    }
-    int i = MMWXGFJNI.nativeDecodeBufferHeader(this.eve, paramArrayOfByte, paramArrayOfByte.length);
-    if (i != 0)
-    {
-      ab.w(this.TAG, "Cpan WXGF decode buffer header failed. result:%d", new Object[] { Integer.valueOf(i) });
-      if (i == -904) {
-        h.qsU.idkeyStat(711L, 8L, 1L, false);
-      }
-      for (;;)
+      this.foV = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, this.TAG);
+      this.fKV = MMGIFJNI.openByByteArray(paramArrayOfByte, this.fKW);
+      if ((this.fKW[0] > 1024) || (this.fKW[1] > 1024))
       {
-        paramArrayOfByte = (Throwable)new MMGIFException(i);
-        AppMethodBeat.o(63149);
-        throw paramArrayOfByte;
-        h.qsU.idkeyStat(711L, 3L, 1L, false);
+        ad.w(this.TAG, "emoji width or height over size. Width:%d Height:%d", new Object[] { Integer.valueOf(this.fKW[0]), Integer.valueOf(this.fKW[1]) });
+        h.vKh.idkeyStat(401L, 2L, 1L, false);
       }
-    }
-    i = MMWXGFJNI.nativeGetOption(this.eve, paramArrayOfByte, paramArrayOfByte.length, this.evd);
-    if (i != 0)
-    {
-      ab.w(this.TAG, "Cpan WXGF get option failed. result:%d", new Object[] { Integer.valueOf(i) });
-      if (i == -903) {
-        h.qsU.idkeyStat(711L, 7L, 1L, false);
-      }
-      for (;;)
-      {
-        paramArrayOfByte = (Throwable)new MMGIFException(i);
-        AppMethodBeat.o(63149);
-        throw paramArrayOfByte;
-        h.qsU.idkeyStat(711L, 3L, 1L, false);
-      }
-    }
-    paramArrayOfByte = Bitmap.createBitmap(this.evd[1], this.evd[2], Bitmap.Config.ARGB_8888);
-    j.p(paramArrayOfByte, "Bitmap.createBitmap(fram… Bitmap.Config.ARGB_8888)");
-    this.evb = paramArrayOfByte;
-    AppMethodBeat.o(63149);
-  }
-  
-  public final void Om()
-  {
-    AppMethodBeat.i(63147);
-    Bitmap localBitmap = this.evb;
-    int i = MMWXGFJNI.nativeDecodeBufferFrame(this.eve, null, 0, localBitmap, this.evf);
-    if (i == -904)
-    {
-      ab.i(this.TAG, "nativeDecodeBufferFrame failed. func is null.");
-      h.qsU.idkeyStat(401L, 8L, 1L, false);
-      this.currFrame += 1;
-      if ((this.currFrame >= this.evd[0]) || (i == 1))
-      {
-        this.currFrame = -1;
-        if (MMWXGFJNI.nativeRewindBuffer(this.eve) == -905)
-        {
-          h.qsU.idkeyStat(711L, 9L, 1L, false);
-          ab.w(this.TAG, "Cpan Rewind buffer failed.");
-        }
-      }
-      if (this.evf[0] <= 0) {
-        break label201;
-      }
-    }
-    label201:
-    for (i = this.evf[0];; i = 100)
-    {
-      this.evg = i;
-      AppMethodBeat.o(63147);
+      paramArrayOfByte = Bitmap.createBitmap(this.fKW[0], this.fKW[1], Bitmap.Config.ARGB_8888);
+      k.g(paramArrayOfByte, "Bitmap.createBitmap(fram… Bitmap.Config.ARGB_8888)");
+      this.fKU = paramArrayOfByte;
+      this.qro = new g(this.fKW[2]);
+      AppMethodBeat.o(105372);
       return;
-      if (i == -909)
-      {
-        ab.i(this.TAG, "nativeDecodeBufferFrame failed. frame is null.");
-        h.qsU.idkeyStat(401L, 11L, 1L, false);
-        break;
-      }
-      if (i != -1) {
-        break;
-      }
-      ab.i(this.TAG, "nativeDecodeBufferFrame failed.");
-      break;
     }
   }
   
-  public final Bitmap On()
+  public final void aaR()
   {
-    return this.evb;
+    AppMethodBeat.i(105370);
+    Bitmap localBitmap = this.fKU;
+    MMGIFJNI.drawFrameBitmap(this.fKV, localBitmap, this.fKW);
+    this.fKZ = this.fKW[5];
+    this.fLa = this.fKW[4];
+    ad.d(this.TAG, "drawFrameBitmap: decode frame " + this.fKZ + ", " + this.fLa);
+    AppMethodBeat.o(105370);
   }
   
-  public final int Oo()
+  public final Bitmap aaS()
   {
-    return this.evd[0];
+    return this.fKU;
   }
   
-  public final int Op()
+  public final int aaT()
   {
-    if (this.evd[0] == 1) {
+    return this.fKW[2];
+  }
+  
+  public final int aaU()
+  {
+    if (this.fKW[2] == 1) {
       return 2147483647;
     }
-    return this.evg;
+    return this.fKW[4];
   }
   
-  public final int Oq()
+  public final int aaV()
   {
-    return this.evd[1];
+    return this.fKW[0];
   }
   
-  public final int Or()
+  public final int aaW()
   {
-    return this.evd[2];
+    return this.fKW[1];
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(63148);
-    long l = this.eve;
-    this.eve = 0L;
-    int i = MMWXGFJNI.nativeUninit(l);
-    if (i == -906) {
-      h.qsU.idkeyStat(401L, 10L, 1L, false);
+    AppMethodBeat.i(105371);
+    if (this.foV != 0) {
+      if ((!WXHardCoderJNI.hcGifEnable) && (!WXHardCoderJNI.hcGifFrameEnable)) {
+        break label60;
+      }
     }
-    ab.d(this.TAG, "nativeUninit result:%d gifHandle:%s", new Object[] { Integer.valueOf(i), Long.valueOf(l) });
-    AppMethodBeat.o(63148);
+    label60:
+    for (boolean bool = true;; bool = false)
+    {
+      WXHardCoderJNI.stopPerformance(bool, this.foV);
+      this.foV = 0;
+      long l = this.fKV;
+      this.fKV = 0L;
+      MMGIFJNI.recycle(l);
+      AppMethodBeat.o(105371);
+      return;
+    }
+  }
+  
+  public final void seekTo(long paramLong)
+  {
+    int k = 0;
+    AppMethodBeat.i(202401);
+    if (this.fLa <= 0) {
+      aaR();
+    }
+    int j = this.qro.Bx((int)paramLong);
+    int m = this.fKW[2];
+    int i = 0;
+    while ((i < m) && (j < 0))
+    {
+      aaR();
+      this.qro.ep(this.fKZ, this.fLa);
+      j = this.qro.Bx((int)paramLong);
+      i += 1;
+    }
+    j = (j - this.fKZ + this.fKW[2]) % this.fKW[2];
+    ad.d(this.TAG, "seekTo: " + paramLong + ", " + this.fKZ + ", " + j + ", " + aaU() + ", " + this.fKW[2] + 65292 + this.qro.qre);
+    i = k;
+    while (i < j)
+    {
+      aaR();
+      i += 1;
+    }
+    AppMethodBeat.o(202401);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.decode.e
  * JD-Core Version:    0.7.0.1
  */

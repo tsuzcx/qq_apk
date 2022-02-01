@@ -12,12 +12,12 @@ final class q$1
   
   public final Spannable newSpannable(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(123698);
+    AppMethodBeat.i(136432);
     paramCharSequence = super.newSpannable(paramCharSequence);
-    if ((q.a(this.jmB) != null) && (!TextUtils.isEmpty(paramCharSequence))) {
-      paramCharSequence.setSpan(q.a(this.jmB), 0, paramCharSequence.length(), 18);
+    if ((q.a(this.mcr) != null) && (!TextUtils.isEmpty(paramCharSequence))) {
+      paramCharSequence.setSpan(q.a(this.mcr), 0, paramCharSequence.length(), 18);
     }
-    AppMethodBeat.o(123698);
+    AppMethodBeat.o(136432);
     return paramCharSequence;
   }
 }

@@ -1,17 +1,24 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import a.l;
-import com.tencent.mm.ipcinvoker.i;
-import com.tencent.mm.ipcinvoker.type.IPCInteger;
-import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.kernel.b.e;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.plugin.appbrand.a.c;
+import com.tencent.mm.sdk.e.g;
+import java.util.List;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/appusage/LimitCountCall;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "Lcom/tencent/mm/ipcinvoker/type/IPCInteger;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
-final class ai
-  implements i<IPCVoid, IPCInteger>
-{}
+@e(c.class)
+public abstract interface ai
+  extends a, g
+{
+  public abstract boolean aU(String paramString, int paramInt);
+  
+  public abstract List<LocalUsageInfo> dC(int paramInt1, int paramInt2);
+  
+  public abstract List<LocalUsageInfo> qL(int paramInt);
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.ai
  * JD-Core Version:    0.7.0.1
  */

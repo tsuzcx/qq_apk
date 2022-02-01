@@ -1,388 +1,376 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
-import com.tencent.mm.protocal.protobuf.daa;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.x;
+import com.tencent.mm.al.x.a;
+import com.tencent.mm.plugin.appbrand.app.j;
+import com.tencent.mm.protocal.protobuf.aoy;
+import com.tencent.mm.protocal.protobuf.aoz;
+import com.tencent.mm.protocal.protobuf.apa;
+import com.tencent.mm.protocal.protobuf.dke;
+import com.tencent.mm.protocal.protobuf.ed;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import org.json.JSONObject;
+import java.util.LinkedList;
 
-public class p
-  extends j<WxaAttributes>
+public final class p
 {
-  public static final String[] fkl;
-  final e db;
-  
-  static
+  private static aoy I(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(94153);
-    fkl = new String[] { j.getCreateSQLs(WxaAttributes.gUb, "WxaAttributesTable") };
-    AppMethodBeat.o(94153);
+    AppMethodBeat.i(44868);
+    aoy localaoy = new aoy();
+    localaoy.hnC = paramString;
+    localaoy.mBH = paramInt1;
+    localaoy.Cys = paramInt2;
+    AppMethodBeat.o(44868);
+    return localaoy;
   }
   
-  public p(e parame)
+  public static String a(final String paramString, int paramInt1, int paramInt2, c paramc, boolean paramBoolean)
   {
-    super(parame, WxaAttributes.gUb, "WxaAttributesTable", WxaAttributes.INDEX_CREATE);
-    this.db = parame;
-  }
-  
-  private boolean a(WxaAttributes paramWxaAttributes, boolean paramBoolean, String... paramVarArgs)
-  {
-    AppMethodBeat.i(94148);
-    if (!bo.isNullOrNil(paramWxaAttributes.field_username)) {
-      paramWxaAttributes.field_usernameHash = paramWxaAttributes.field_username.hashCode();
+    AppMethodBeat.i(44869);
+    if (j.Dh() == null)
+    {
+      AppMethodBeat.o(44869);
+      return "";
     }
-    paramBoolean = super.delete(paramWxaAttributes, paramBoolean, paramVarArgs);
-    AppMethodBeat.o(94148);
-    return paramBoolean;
-  }
-  
-  private boolean a(WxaAttributes paramWxaAttributes, String... paramVarArgs)
-  {
-    AppMethodBeat.i(94147);
-    int i;
-    if (!bo.Q(paramVarArgs)) {
-      i = 0;
+    int i = a.bn(paramString, paramInt1);
+    int j = a.bo(paramString, paramInt1);
+    String str = a.bp(paramString, paramInt1);
+    boolean bool;
+    if ((j != 0) && ((bt.isNullOrNil(str)) || (j > i)))
+    {
+      bool = true;
+      ad.i("MicroMsg.CommonConfigManager", "getConfig the server_version is %d ,the local_version is %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+      ad.i("MicroMsg.CommonConfigManager", "the config is \n %s \n isShouldSyncFromServer:%b", new Object[] { str, Boolean.valueOf(bool) });
+      if (!bool) {
+        break label155;
+      }
+      if (paramBoolean) {
+        a(paramString, paramInt1, j, paramInt2, new b()
+        {
+          public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb)
+          {
+            AppMethodBeat.i(44855);
+            if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+            {
+              ad.e("MicroMsg.CommonConfigManager", "getConfig syncConfigFromServer, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+              if (this.jew != null) {
+                this.jew.Eh("");
+              }
+              AppMethodBeat.o(44855);
+              return;
+            }
+            paramAnonymousString = (apa)paramAnonymousb.gUT.gUX;
+            if ((paramAnonymousString.DqJ == null) || (paramAnonymousString.DqJ.size() == 0))
+            {
+              ad.e("MicroMsg.CommonConfigManager", "getConfig syncConfigFromServer, AppConfigList is empty");
+              if (this.jew != null) {
+                this.jew.Eh("");
+              }
+              AppMethodBeat.o(44855);
+              return;
+            }
+            paramAnonymousString = (ed)paramAnonymousString.DqJ.get(0);
+            ad.i("MicroMsg.CommonConfigManager", "getConfig syncConfigFromServer, the config is %s, the configVersion is %d", new Object[] { paramAnonymousString.Cyt, Integer.valueOf(paramAnonymousString.Cys) });
+            if (!bt.isNullOrNil(paramAnonymousString.Cyt))
+            {
+              p.a.J(paramString, paramAnonymousString.mBH, paramAnonymousString.Cys);
+              p.a.K(paramString, paramAnonymousString.mBH, paramAnonymousString.Cys);
+              p.a.m(paramString, paramAnonymousString.mBH, paramAnonymousString.Cyt);
+              if (this.jew != null)
+              {
+                this.jew.Eh(paramAnonymousString.Cyt);
+                AppMethodBeat.o(44855);
+              }
+            }
+            else if (this.jew != null)
+            {
+              this.jew.Eh("");
+            }
+            AppMethodBeat.o(44855);
+          }
+        });
+      }
     }
     for (;;)
     {
-      if (i < paramVarArgs.length)
-      {
-        if (paramVarArgs[i].equals("username"))
+      AppMethodBeat.o(44869);
+      return str;
+      bool = false;
+      break;
+      label155:
+      paramc.Eh(str);
+    }
+  }
+  
+  private static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, b paramb)
+  {
+    AppMethodBeat.i(44870);
+    LinkedList localLinkedList = new LinkedList();
+    aoy localaoy = new aoy();
+    localaoy.hnC = paramString;
+    localaoy.mBH = paramInt1;
+    localaoy.Cys = paramInt2;
+    localaoy.DqH = paramInt3;
+    localLinkedList.add(localaoy);
+    a(localLinkedList, paramb);
+    AppMethodBeat.o(44870);
+  }
+  
+  public static void a(String paramString, LinkedList<dke> paramLinkedList, boolean paramBoolean)
+  {
+    AppMethodBeat.i(44867);
+    if (bt.isNullOrNil(paramString))
+    {
+      ad.e("MicroMsg.CommonConfigManager", "setVersion, app_id is null");
+      AppMethodBeat.o(44867);
+      return;
+    }
+    if ((paramLinkedList == null) || (paramLinkedList.size() == 0))
+    {
+      ad.e("MicroMsg.CommonConfigManager", "setVersion, versionItems is empty");
+      AppMethodBeat.o(44867);
+      return;
+    }
+    LinkedList localLinkedList = new LinkedList();
+    Iterator localIterator = paramLinkedList.iterator();
+    while (localIterator.hasNext())
+    {
+      dke localdke = (dke)localIterator.next();
+      ad.d("MicroMsg.CommonConfigManager", "versionItem.version:%d,version.type:%d", new Object[] { Integer.valueOf(localdke.version), Integer.valueOf(localdke.type) });
+      int i = a.bn(paramString, localdke.type);
+      int j = localdke.version;
+      a.K(paramString, localdke.type, j);
+      if (j != 0) {
+        if (j > i)
         {
-          paramVarArgs[i] = "usernameHash";
-          paramWxaAttributes.field_usernameHash = paramWxaAttributes.field_username.hashCode();
+          localLinkedList.add(I(paramString, localdke.type, localdke.version));
+        }
+        else if (j == i)
+        {
+          if (bt.isNullOrNil(a.bp(paramString, localdke.type))) {
+            localLinkedList.add(I(paramString, localdke.type, localdke.version));
+          }
+        }
+        else
+        {
+          ad.i("MicroMsg.CommonConfigManager", "local_version:%d, server_version:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          if (bt.isNullOrNil(a.bp(paramString, localdke.type))) {
+            localLinkedList.add(I(paramString, localdke.type, localdke.version));
+          }
         }
       }
-      else
+    }
+    ad.i("MicroMsg.CommonConfigManager", "setVersion appid:%s,versionItems.size:%d,getAppConfigItems.size:%d", new Object[] { paramString, Integer.valueOf(paramLinkedList.size()), Integer.valueOf(localLinkedList.size()) });
+    if (paramBoolean)
+    {
+      if (localLinkedList.size() == 0)
       {
-        boolean bool = super.get(paramWxaAttributes, paramVarArgs);
-        AppMethodBeat.o(94147);
-        return bool;
+        AppMethodBeat.o(44867);
+        return;
       }
-      i += 1;
+      ad.d("MicroMsg.CommonConfigManager", "setVersion appid:%s, need sync from server", new Object[] { paramString });
+      a(localLinkedList, new b()
+      {
+        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb)
+        {
+          AppMethodBeat.i(44854);
+          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+          {
+            ad.e("MicroMsg.CommonConfigManager", "setVersion syncConfigFromServer, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+            AppMethodBeat.o(44854);
+            return;
+          }
+          paramAnonymousString = (apa)paramAnonymousb.gUT.gUX;
+          if ((paramAnonymousString.DqJ == null) || (paramAnonymousString.DqJ.size() == 0))
+          {
+            ad.e("MicroMsg.CommonConfigManager", "setVersion syncConfigFromServer, AppConfigList is empty");
+            AppMethodBeat.o(44854);
+            return;
+          }
+          ad.i("MicroMsg.CommonConfigManager", "setVersion syncConfigFromServer appConfigList.size:%d", new Object[] { Integer.valueOf(paramAnonymousString.DqJ.size()) });
+          paramAnonymousString = paramAnonymousString.DqJ.iterator();
+          while (paramAnonymousString.hasNext())
+          {
+            paramAnonymousb = (ed)paramAnonymousString.next();
+            ad.i("MicroMsg.CommonConfigManager", "setVersion syncConfigFromServer, the config is %s, the configVersion is %d", new Object[] { paramAnonymousb.Cyt, Integer.valueOf(paramAnonymousb.Cys) });
+            if (!bt.isNullOrNil(paramAnonymousb.Cyt))
+            {
+              p.a.J(this.jev, paramAnonymousb.mBH, paramAnonymousb.Cys);
+              p.a.K(this.jev, paramAnonymousb.mBH, paramAnonymousb.Cys);
+              p.a.m(this.jev, paramAnonymousb.mBH, paramAnonymousb.Cyt);
+            }
+          }
+          AppMethodBeat.o(44854);
+        }
+      });
     }
+    AppMethodBeat.o(44867);
   }
   
-  private static boolean bK(String paramString1, String paramString2)
+  private static void a(LinkedList<aoy> paramLinkedList, b paramb)
   {
-    AppMethodBeat.i(94146);
-    boolean bool = bo.nullAsNil(paramString1).equals(bo.nullAsNil(paramString2));
-    AppMethodBeat.o(94146);
-    return bool;
-  }
-  
-  final long Ah(String paramString)
-  {
-    AppMethodBeat.i(94138);
-    paramString = d(paramString, new String[] { "syncTimeSecond" });
-    if (paramString == null)
+    AppMethodBeat.i(44871);
+    b.a locala = new b.a();
+    locala.funcId = 1138;
+    locala.uri = "/cgi-bin/mmbiz-bin/wxausrevent/getappconfig";
+    locala.gUV = new apa();
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    aoz localaoz = new aoz();
+    localaoz.DqI = paramLinkedList;
+    locala.gUU = localaoz;
+    x.a(locala.atI(), new x.a()
     {
-      AppMethodBeat.o(94138);
-      return 0L;
-    }
-    long l = paramString.field_syncTimeSecond;
-    AppMethodBeat.o(94138);
-    return l;
+      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb, n paramAnonymousn)
+      {
+        AppMethodBeat.i(44856);
+        if (this.jex != null) {
+          this.jex.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousb);
+        }
+        AppMethodBeat.o(44856);
+        return 0;
+      }
+    }, true);
+    AppMethodBeat.o(44871);
   }
   
-  final b Ai(String paramString)
+  public static void b(String paramString, LinkedList<dke> paramLinkedList)
   {
-    AppMethodBeat.i(94139);
-    paramString = d(paramString, new String[] { "syncVersion" });
-    if (paramString == null) {}
-    for (paramString = new byte[0];; paramString = bo.apQ(bo.nullAsNil(paramString.field_syncVersion)))
+    AppMethodBeat.i(44866);
+    a(paramString, paramLinkedList, true);
+    AppMethodBeat.o(44866);
+  }
+  
+  public static final class a
+  {
+    public static String FV(String paramString)
     {
-      paramString = new b(paramString);
-      AppMethodBeat.o(94139);
+      AppMethodBeat.i(195687);
+      paramString = String.format("%s#NotifyMessageStatus", new Object[] { paramString });
+      AppMethodBeat.o(195687);
       return paramString;
     }
-  }
-  
-  public final boolean Aj(String paramString)
-  {
-    AppMethodBeat.i(94140);
-    if (bo.isNullOrNil(paramString))
+    
+    public static void J(String paramString, int paramInt1, int paramInt2)
     {
-      ab.e("MicroMsg.WxaAttrStorage", "delete with invalid username");
-      AppMethodBeat.o(94140);
-      return false;
-    }
-    WxaAttributes localWxaAttributes = new WxaAttributes();
-    localWxaAttributes.field_username = paramString;
-    boolean bool = a(localWxaAttributes, false, new String[0]);
-    AppMethodBeat.o(94140);
-    return bool;
-  }
-  
-  protected boolean a(WxaAttributes paramWxaAttributes, daa paramdaa)
-  {
-    AppMethodBeat.i(94145);
-    if (("NickName".equals(paramdaa.wxP)) && (!bK(paramdaa.qsu, paramWxaAttributes.field_nickname)))
-    {
-      paramWxaAttributes.field_nickname = bo.nullAsNil(paramdaa.qsu);
-      AppMethodBeat.o(94145);
-      return true;
-    }
-    if (("BrandIconURL".equals(paramdaa.wxP)) && (!bK(paramdaa.qsu, paramWxaAttributes.field_brandIconURL)))
-    {
-      paramWxaAttributes.field_brandIconURL = paramdaa.qsu;
-      AppMethodBeat.o(94145);
-      return true;
-    }
-    if (("BigHeadImgUrl".equals(paramdaa.wxP)) && (!bK(paramdaa.qsu, paramWxaAttributes.field_bigHeadURL)))
-    {
-      paramWxaAttributes.field_bigHeadURL = paramdaa.qsu;
-      AppMethodBeat.o(94145);
-      return true;
-    }
-    if (("SmallHeadImgUrl".equals(paramdaa.wxP)) && (!bK(paramdaa.qsu, paramWxaAttributes.field_smallHeadURL)))
-    {
-      paramWxaAttributes.field_smallHeadURL = paramdaa.qsu;
-      AppMethodBeat.o(94145);
-      return true;
-    }
-    if (("Signature".equals(paramdaa.wxP)) && (!bK(paramdaa.qsu, paramWxaAttributes.field_signature)))
-    {
-      paramWxaAttributes.field_signature = paramdaa.qsu;
-      AppMethodBeat.o(94145);
-      return true;
-    }
-    if ("WxAppOpt".equals(paramdaa.wxP))
-    {
-      int i = bo.getInt(paramdaa.qsu, 0);
-      if (i != paramWxaAttributes.field_appOpt)
+      AppMethodBeat.i(44860);
+      if (j.Dh() == null)
       {
-        paramWxaAttributes.field_appOpt = i;
-        AppMethodBeat.o(94145);
-        return true;
+        AppMethodBeat.o(44860);
+        return;
       }
+      j.Dh().cl(bk(paramString, paramInt1), String.valueOf(paramInt2));
+      AppMethodBeat.o(44860);
     }
-    if (("RegisterSource".equals(paramdaa.wxP)) && (!bK(paramdaa.qsu, paramWxaAttributes.field_registerSource)))
+    
+    public static void K(String paramString, int paramInt1, int paramInt2)
     {
-      paramWxaAttributes.field_registerSource = paramdaa.qsu;
-      AppMethodBeat.o(94145);
-      return true;
+      AppMethodBeat.i(44861);
+      if (j.Dh() == null)
+      {
+        AppMethodBeat.o(44861);
+        return;
+      }
+      j.Dh().cl(bl(paramString, paramInt1), String.valueOf(paramInt2));
+      AppMethodBeat.o(44861);
     }
-    if (("WxaAppInfo".equals(paramdaa.wxP)) && (!bK(paramdaa.qsu, paramWxaAttributes.field_appInfo))) {
-      paramWxaAttributes.field_appInfo = paramdaa.qsu;
-    }
-    try
+    
+    private static String bk(String paramString, int paramInt)
     {
-      paramdaa = new JSONObject(paramdaa.qsu);
-      paramWxaAttributes.field_appId = paramdaa.getString("Appid");
-      paramWxaAttributes.field_roundedSquareIconURL = paramdaa.getString("RoundedSquareIconUrl");
-      paramWxaAttributes.field_shortNickname = paramdaa.optString("ShortNickName");
-      label371:
-      AppMethodBeat.o(94145);
-      return true;
-      if (("WxaAppVersionInfo".equalsIgnoreCase(paramdaa.wxP)) && (!bK(paramdaa.qsu, paramWxaAttributes.field_versionInfo)))
-      {
-        paramWxaAttributes.field_versionInfo = paramdaa.qsu;
-        AppMethodBeat.o(94145);
-        return true;
-      }
-      if (("BindWxaInfo".equals(paramdaa.wxP)) && (!bK(paramdaa.qsu, paramWxaAttributes.field_bindWxaInfo)))
-      {
-        paramWxaAttributes.field_bindWxaInfo = paramdaa.qsu;
-        AppMethodBeat.o(94145);
-        return true;
-      }
-      if (("WxaAppDynamic".equals(paramdaa.wxP)) && (!bK(paramdaa.qsu, paramWxaAttributes.field_dynamicInfo)))
-      {
-        paramWxaAttributes.field_dynamicInfo = paramdaa.qsu;
-        AppMethodBeat.o(94145);
-        return true;
-      }
-      if (("MMBizMenu".equals(paramdaa.wxP)) && (!bK(paramdaa.qsu, paramWxaAttributes.field_bizMenu)))
-      {
-        paramWxaAttributes.field_bizMenu = paramdaa.qsu;
-        AppMethodBeat.o(94145);
-        return true;
-      }
-      AppMethodBeat.o(94145);
-      return false;
+      AppMethodBeat.i(44857);
+      paramString = String.format("%s_%s_local_version", new Object[] { paramString, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(44857);
+      return paramString;
     }
-    catch (Exception paramWxaAttributes)
+    
+    private static String bl(String paramString, int paramInt)
     {
-      break label371;
+      AppMethodBeat.i(44858);
+      paramString = String.format("%s_%s_server_version", new Object[] { paramString, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(44858);
+      return paramString;
+    }
+    
+    private static String bm(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(44859);
+      paramString = String.format("%s_%s_config", new Object[] { paramString, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(44859);
+      return paramString;
+    }
+    
+    public static int bn(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(44863);
+      if (j.Dh() == null)
+      {
+        AppMethodBeat.o(44863);
+        return 0;
+      }
+      paramInt = bt.getInt(j.Dh().get(bk(paramString, paramInt), "0"), 0);
+      AppMethodBeat.o(44863);
+      return paramInt;
+    }
+    
+    public static int bo(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(44864);
+      if (j.Dh() == null)
+      {
+        AppMethodBeat.o(44864);
+        return 0;
+      }
+      paramInt = bt.getInt(j.Dh().get(bl(paramString, paramInt), "0"), 0);
+      AppMethodBeat.o(44864);
+      return paramInt;
+    }
+    
+    public static String bp(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(44865);
+      if (j.Dh() == null)
+      {
+        AppMethodBeat.o(44865);
+        return "";
+      }
+      paramString = j.Dh().get(bm(paramString, paramInt), "");
+      AppMethodBeat.o(44865);
+      return paramString;
+    }
+    
+    public static void m(String paramString1, int paramInt, String paramString2)
+    {
+      AppMethodBeat.i(44862);
+      if (j.Dh() == null)
+      {
+        AppMethodBeat.o(44862);
+        return;
+      }
+      j.Dh().cl(bm(paramString1, paramInt), paramString2);
+      AppMethodBeat.o(44862);
     }
   }
   
-  public boolean a(String paramString, b paramb, List<daa> paramList)
+  public static abstract interface b
   {
-    AppMethodBeat.i(94144);
-    if (bo.es(paramList))
-    {
-      AppMethodBeat.o(94144);
-      return false;
-    }
-    WxaAttributes localWxaAttributes = new WxaAttributes();
-    localWxaAttributes.field_username = paramString;
-    if (!a(localWxaAttributes, new String[] { "username" })) {}
-    boolean bool;
-    for (int i = 1;; i = 0)
-    {
-      paramString = paramList.iterator();
-      bool = false;
-      while (paramString.hasNext())
-      {
-        paramList = (daa)paramString.next();
-        if (paramList != null) {
-          bool = a(localWxaAttributes, paramList) | bool;
-        }
-      }
-    }
-    if (bool)
-    {
-      if (i != 0) {
-        insert(localWxaAttributes);
-      }
-    }
-    else
-    {
-      localWxaAttributes.field_syncTimeSecond = bo.aox();
-      if (paramb != null) {
-        break label194;
-      }
-    }
-    label194:
-    for (paramString = new byte[0];; paramString = paramb.pW)
-    {
-      localWxaAttributes.field_syncVersion = bo.cg(paramString);
-      update(localWxaAttributes, new String[] { "username" });
-      AppMethodBeat.o(94144);
-      return bool;
-      update(localWxaAttributes, new String[] { "username" });
-      break;
-    }
+    public abstract void a(int paramInt1, int paramInt2, String paramString, b paramb);
   }
   
-  public final boolean ayz()
+  public static abstract interface c
   {
-    AppMethodBeat.i(94137);
-    if ((this.db != null) && (!this.db.dun()))
-    {
-      AppMethodBeat.o(94137);
-      return true;
-    }
-    AppMethodBeat.o(94137);
-    return false;
-  }
-  
-  public final WxaAttributes d(String paramString, String... paramVarArgs)
-  {
-    Object localObject1 = null;
-    AppMethodBeat.i(94141);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(94141);
-      return null;
-    }
-    if (!paramString.endsWith("@app"))
-    {
-      AppMethodBeat.o(94141);
-      return null;
-    }
-    Object localObject2 = this.db;
-    if (bo.Q(paramVarArgs)) {
-      paramVarArgs = null;
-    }
-    for (;;)
-    {
-      localObject2 = ((e)localObject2).a("WxaAttributesTable", paramVarArgs, String.format(Locale.US, "%s=?", new Object[] { "usernameHash" }), new String[] { String.valueOf(paramString.hashCode()) }, null, null, null, 2);
-      if (localObject2 != null) {
-        break;
-      }
-      AppMethodBeat.o(94141);
-      return null;
-    }
-    paramVarArgs = localObject1;
-    if (((Cursor)localObject2).moveToFirst())
-    {
-      paramVarArgs = new WxaAttributes();
-      paramVarArgs.convertFrom((Cursor)localObject2);
-      paramVarArgs.field_username = paramString;
-    }
-    ((Cursor)localObject2).close();
-    AppMethodBeat.o(94141);
-    return paramVarArgs;
-  }
-  
-  public final WxaAttributes e(String paramString, String... paramVarArgs)
-  {
-    Object localObject1 = null;
-    AppMethodBeat.i(94142);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(94142);
-      return null;
-    }
-    Object localObject2 = this.db;
-    if (bo.Q(paramVarArgs)) {
-      paramVarArgs = null;
-    }
-    for (;;)
-    {
-      localObject2 = ((e)localObject2).a("WxaAttributesTable", paramVarArgs, String.format(Locale.US, "%s=?", new Object[] { "appId" }), new String[] { paramString }, null, null, null, 2);
-      if (localObject2 != null) {
-        break;
-      }
-      AppMethodBeat.o(94142);
-      return null;
-    }
-    paramVarArgs = localObject1;
-    if (((Cursor)localObject2).moveToFirst())
-    {
-      paramVarArgs = new WxaAttributes();
-      paramVarArgs.convertFrom((Cursor)localObject2);
-      paramVarArgs.field_appId = paramString;
-    }
-    ((Cursor)localObject2).close();
-    AppMethodBeat.o(94142);
-    return paramVarArgs;
-  }
-  
-  protected boolean k(String paramString, int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(94143);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(94143);
-      return false;
-    }
-    Object localObject = d(paramString, new String[] { "appOpt" });
-    if (localObject == null)
-    {
-      AppMethodBeat.o(94143);
-      return false;
-    }
-    int i = ((WxaAttributes)localObject).field_appOpt;
-    if (!paramBoolean) {}
-    for (paramInt = i & (paramInt ^ 0xFFFFFFFF);; paramInt = i | paramInt)
-    {
-      localObject = new ContentValues(1);
-      ((ContentValues)localObject).put("appOpt", Integer.valueOf(paramInt));
-      if (this.db.update("WxaAttributesTable", (ContentValues)localObject, String.format("%s=?", new Object[] { "username" }), new String[] { paramString }) <= 0) {
-        break;
-      }
-      AppMethodBeat.o(94143);
-      return true;
-    }
-    AppMethodBeat.o(94143);
-    return false;
+    public abstract void Eh(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.p
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,17 @@
 package com.google.android.exoplayer2.g;
 
 import com.google.android.exoplayer2.s;
-import com.google.android.exoplayer2.source.p;
+import com.google.android.exoplayer2.source.q;
 
 public abstract class h
 {
-  public h.a aYl;
+  public a bwo;
   
-  public abstract void Q(Object paramObject);
+  public abstract i a(s[] paramArrayOfs, q paramq);
   
-  public abstract i a(s[] paramArrayOfs, p paramp);
+  public abstract void ad(Object paramObject);
+  
+  public static abstract interface a {}
 }
 
 

@@ -9,6 +9,8 @@ class CommNativeBitmapStruct
 {
   @Keep
   private int nConfig = -1;
+  @Keep
+  private boolean premultiplyAlpha;
   
   public CommNativeBitmapStruct convertToCommonStruct()
   {
@@ -57,7 +59,7 @@ class CommNativeBitmapStruct
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.github.henryye.nativeiv.comm.CommNativeBitmapStruct
  * JD-Core Version:    0.7.0.1
  */

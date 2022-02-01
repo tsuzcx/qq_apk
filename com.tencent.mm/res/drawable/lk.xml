@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:left="3.0dip" android:top="3.0dip" android:right="3.0dip" android:bottom="3.0dip">
+    <item android:state_checked="true">
         <shape android:shape="rectangle">
-            <solid android:color="#ffebebeb" />
-            <corners android:radius="2.0dip" />
-            <padding android:left="50.0dip" android:top="8.0dip" android:right="11.0dip" android:bottom="7.0dip" />
+            <corners android:radius="@dimen/y" />
+            <solid android:color="@color/Brand_Alpha_0_1" />
         </shape>
     </item>
-    <item android:left="-36.0dip">
-        <bitmap android:gravity="center|left" android:src="@drawable/abi" />
+    <item android:state_checked="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/y" />
+            <solid android:color="@color/BW_0_Alpha_0_0_5" />
+        </shape>
     </item>
-</layer-list>
+</selector>

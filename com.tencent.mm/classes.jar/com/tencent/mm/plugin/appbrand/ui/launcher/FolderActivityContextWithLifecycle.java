@@ -18,9 +18,9 @@ public abstract class FolderActivityContextWithLifecycle
     super(paramMMActivity);
   }
   
-  public void N(Intent paramIntent) {}
+  public void R(Intent paramIntent) {}
   
-  protected final MMActivity aNc()
+  protected final MMActivity getActivity()
   {
     return (MMActivity)getBaseContext();
   }
@@ -28,7 +28,7 @@ public abstract class FolderActivityContextWithLifecycle
   @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
   public final void onActivityDidCreateCall()
   {
-    N(((MMActivity)getBaseContext()).getIntent());
+    R(((MMActivity)getBaseContext()).getIntent());
   }
   
   @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
@@ -39,7 +39,7 @@ public abstract class FolderActivityContextWithLifecycle
   {
     View localView = ((MMActivity)getBaseContext()).findViewById(16908290);
     if ((localView instanceof ViewGroup)) {
-      com.tencent.mm.plugin.appbrand.widget.j.a.k((ViewGroup)localView);
+      com.tencent.mm.plugin.appbrand.widget.h.a.m((ViewGroup)localView);
     }
   }
   
@@ -48,7 +48,7 @@ public abstract class FolderActivityContextWithLifecycle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.launcher.FolderActivityContextWithLifecycle
  * JD-Core Version:    0.7.0.1
  */

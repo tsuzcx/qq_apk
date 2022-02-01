@@ -4,8 +4,8 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -14,25 +14,25 @@ import java.util.HashMap;
 
 public final class d
 {
-  private static a yUQ;
-  private static HashMap<Integer, Long> yUR;
-  private static int yUS;
-  private static int yUT;
-  private static long yUU;
+  private static a FHG;
+  private static HashMap<Integer, Long> FHH;
+  private static int FHI;
+  private static int FHJ;
+  private static long FHK;
   
   static
   {
-    AppMethodBeat.i(105951);
-    yUR = new HashMap();
-    yUS = 1100;
-    yUT = 2000;
-    yUU = 0L;
-    AppMethodBeat.o(105951);
+    AppMethodBeat.i(141281);
+    FHH = new HashMap();
+    FHI = 1100;
+    FHJ = 2000;
+    FHK = 0L;
+    AppMethodBeat.o(141281);
   }
   
   public static void a(a parama)
   {
-    yUQ = parama;
+    FHG = parama;
   }
   
   public static boolean a(Context paramContext, boolean paramBoolean, Intent[] paramArrayOfIntent, Object... paramVarArgs)
@@ -44,15 +44,15 @@ public final class d
       Long localLong2;
       try
       {
-        AppMethodBeat.i(105948);
+        AppMethodBeat.i(141278);
         int j = paramArrayOfIntent.length;
         int i = 0;
         if (i < j)
         {
-          if (aN(paramArrayOfIntent[i]))
+          if (bg(paramArrayOfIntent[i]))
           {
             paramBoolean = false;
-            AppMethodBeat.o(105948);
+            AppMethodBeat.o(141278);
             return paramBoolean;
           }
           i += 1;
@@ -81,29 +81,29 @@ public final class d
         }
         paramVarArgs = ((StringBuilder)localObject).toString();
         localObject = Integer.valueOf(paramVarArgs.hashCode());
-        Long localLong1 = (Long)yUR.get(localObject);
+        Long localLong1 = (Long)FHH.get(localObject);
         localLong2 = Long.valueOf(System.currentTimeMillis());
         if ((!paramBoolean) || (localLong1 == null)) {
           break label370;
         }
-        if (localLong2.longValue() - localLong1.longValue() <= yUT)
+        if (localLong2.longValue() - localLong1.longValue() <= FHJ)
         {
-          String str = atk(paramContext.getClass().toString());
+          String str = aJW(paramContext.getClass().toString());
           if (paramArrayOfIntent[0].getComponent() != null)
           {
-            paramContext = atk(paramArrayOfIntent[0].getComponent().getClassName());
-            yUQ.b(localLong2.longValue() - localLong1.longValue(), str, paramContext);
+            paramContext = aJW(paramArrayOfIntent[0].getComponent().getClassName());
+            FHG.b(localLong2.longValue() - localLong1.longValue(), str, paramContext);
           }
         }
         else
         {
-          if (localLong2.longValue() - localLong1.longValue() > yUS) {
+          if (localLong2.longValue() - localLong1.longValue() > FHI) {
             break label370;
           }
-          yUR.put(localObject, localLong2);
-          ab.e("MicroMsg.CheckReduplicatedAcitiv", "starting the same activity in %sms, [k:%s, v:%s], curr: %s", new Object[] { Integer.valueOf(yUS), paramVarArgs, localLong1, localLong2 });
+          FHH.put(localObject, localLong2);
+          ad.e("MicroMsg.CheckReduplicatedAcitiv", "starting the same activity in %sms, [k:%s, v:%s], curr: %s", new Object[] { Integer.valueOf(FHI), paramVarArgs, localLong1, localLong2 });
           paramBoolean = true;
-          AppMethodBeat.o(105948);
+          AppMethodBeat.o(141278);
           continue;
         }
         paramContext = "None";
@@ -111,66 +111,66 @@ public final class d
       finally {}
       continue;
       label370:
-      if ((yUR.size() > 100) && (yUU != 0L) && (System.currentTimeMillis() - yUU > yUS)) {
-        yUR.clear();
+      if ((FHH.size() > 100) && (FHK != 0L) && (System.currentTimeMillis() - FHK > FHI)) {
+        FHH.clear();
       }
-      yUR.put(localObject, localLong2);
-      yUU = System.currentTimeMillis();
-      ab.i("MicroMsg.CheckReduplicatedAcitiv", "check reduplicated cost %sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      FHH.put(localObject, localLong2);
+      FHK = System.currentTimeMillis();
+      ad.i("MicroMsg.CheckReduplicatedAcitiv", "check reduplicated cost %sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       paramBoolean = false;
-      AppMethodBeat.o(105948);
+      AppMethodBeat.o(141278);
     }
   }
   
-  private static boolean aN(Intent paramIntent)
+  private static String aJW(String paramString)
   {
-    AppMethodBeat.i(105950);
+    AppMethodBeat.i(141279);
+    paramString = paramString.split("\\.");
+    if (paramString.length > 0)
+    {
+      paramString = paramString[(paramString.length - 1)];
+      AppMethodBeat.o(141279);
+      return paramString;
+    }
+    AppMethodBeat.o(141279);
+    return "";
+  }
+  
+  private static boolean bg(Intent paramIntent)
+  {
+    AppMethodBeat.i(141280);
     if (paramIntent != null) {}
     try
     {
       if (paramIntent.getComponent() != null)
       {
-        boolean bool = bo.isNullOrNil(paramIntent.getComponent().getClassName());
+        boolean bool = bt.isNullOrNil(paramIntent.getComponent().getClassName());
         if (!bool) {}
       }
       else
       {
-        AppMethodBeat.o(105950);
+        AppMethodBeat.o(141280);
         return false;
       }
       if (Class.forName(paramIntent.getComponent().getClassName()).getAnnotation(b.class) != null)
       {
-        AppMethodBeat.o(105950);
+        AppMethodBeat.o(141280);
         return true;
       }
     }
     catch (Exception paramIntent)
     {
-      ab.e("MicroMsg.CheckReduplicatedAcitiv", "skipReduplicateCheck exception %s", new Object[] { paramIntent });
-      AppMethodBeat.o(105950);
+      ad.e("MicroMsg.CheckReduplicatedAcitiv", "skipReduplicateCheck exception %s", new Object[] { paramIntent });
+      AppMethodBeat.o(141280);
       return false;
     }
-    AppMethodBeat.o(105950);
+    AppMethodBeat.o(141280);
     return false;
   }
   
-  private static String atk(String paramString)
+  public static int ePs()
   {
-    AppMethodBeat.i(105949);
-    paramString = paramString.split("\\.");
-    if (paramString.length > 0)
-    {
-      paramString = paramString[(paramString.length - 1)];
-      AppMethodBeat.o(105949);
-      return paramString;
-    }
-    AppMethodBeat.o(105949);
-    return "";
-  }
-  
-  public static int dAU()
-  {
-    return yUS;
+    return FHI;
   }
   
   public static abstract interface a

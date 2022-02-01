@@ -1,142 +1,86 @@
 package com.tencent.mm.plugin.location.model;
 
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.o;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.pluginsdk.location.a;
-import com.tencent.mm.pluginsdk.location.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.bi.b;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.HashSet;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.bdh;
+import com.tencent.mm.protocal.protobuf.bdi;
+import com.tencent.mm.protocal.protobuf.pp;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class j
-  implements a
+  extends n
+  implements k
 {
-  int h;
-  HashMap<Long, Integer> oaA;
-  HashSet<Long> oaB;
-  HashMap<Long, WeakReference<ImageView>> oav;
-  HashMap<Long, bi.b> oaw;
-  HashMap<Long, WeakReference<ProgressBar>> oax;
-  HashMap<Long, WeakReference<ImageView>> oay;
-  HashMap<bi.b, bi> oaz;
-  int w;
+  private g callback;
+  private final b rr;
+  public List<pp> sOM;
   
   public j()
   {
-    AppMethodBeat.i(113326);
-    this.oav = new HashMap();
-    this.oaw = new HashMap();
-    this.oax = new HashMap();
-    this.oay = new HashMap();
-    this.oaz = new HashMap();
-    this.oaA = new HashMap();
-    this.oaB = new HashSet();
-    this.w = 300;
-    this.h = 300;
-    start();
-    AppMethodBeat.o(113326);
+    AppMethodBeat.i(55697);
+    b.a locala = new b.a();
+    locala.gUU = new bdh();
+    locala.gUV = new bdi();
+    locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/getweapplistbylocation";
+    locala.funcId = 1913;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.atI();
+    this.sOM = new ArrayList(8);
+    AppMethodBeat.o(55697);
   }
   
-  public final void a(b paramb)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(113329);
-    if (paramb == null)
-    {
-      AppMethodBeat.o(113329);
-      return;
-    }
-    if (!this.oaw.containsKey(Long.valueOf(paramb.itemId)))
-    {
-      AppMethodBeat.o(113329);
-      return;
-    }
-    paramb = (bi.b)this.oaw.get(Long.valueOf(paramb.itemId));
-    paramb = (bi)this.oaz.remove(paramb);
-    if (paramb == null)
-    {
-      AppMethodBeat.o(113329);
-      return;
-    }
-    this.oav.get(Long.valueOf(paramb.field_msgId));
-    if ((paramb != null) && ((paramb.dGX < 0) || (paramb.dGX > 5)))
-    {
-      paramb.ia(0);
-      paramb.ia(paramb.dGX + 1);
-      if (com.tencent.mm.kernel.g.RG())
-      {
-        ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().a(paramb.field_msgId, paramb);
-        ab.i("MicroMsg.StaticMapMsgLogic", "on error count %d", new Object[] { Integer.valueOf(paramb.dGX) });
-      }
-    }
-    AppMethodBeat.o(113329);
+    AppMethodBeat.i(55698);
+    this.callback = paramg;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(55698);
+    return i;
   }
   
-  public final void a(String paramString, b paramb)
+  public final int getType()
   {
-    AppMethodBeat.i(113328);
-    if (paramb == null)
-    {
-      AppMethodBeat.o(113328);
-      return;
-    }
-    if (!this.oaw.containsKey(Long.valueOf(paramb.itemId)))
-    {
-      AppMethodBeat.o(113328);
-      return;
-    }
-    paramb = (bi.b)this.oaw.get(Long.valueOf(paramb.itemId));
-    paramb = (bi)this.oaz.remove(paramb);
-    if (paramb == null)
-    {
-      AppMethodBeat.o(113328);
-      return;
-    }
-    WeakReference localWeakReference = (WeakReference)this.oav.get(Long.valueOf(paramb.field_msgId));
-    if ((localWeakReference == null) || (localWeakReference.get() == null))
-    {
-      AppMethodBeat.o(113328);
-      return;
-    }
-    if (!this.oaA.containsKey(Long.valueOf(paramb.field_msgId)))
-    {
-      AppMethodBeat.o(113328);
-      return;
-    }
-    int i = ((Integer)this.oaA.remove(Long.valueOf(paramb.field_msgId))).intValue();
-    if (paramb.field_isSend == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((ImageView)localWeakReference.get()).setImageBitmap(o.ahC().a(paramb.field_msgId, paramString, i, this.w, this.h, bool));
-      paramString = (WeakReference)this.oax.remove(Long.valueOf(paramb.field_msgId));
-      if ((paramString != null) && (paramString.get() != null)) {
-        ((ProgressBar)paramString.get()).setVisibility(8);
-      }
-      paramString = (WeakReference)this.oay.remove(Long.valueOf(paramb.field_msgId));
-      if ((paramString != null) && (paramString.get() != null)) {
-        ((ImageView)paramString.get()).setVisibility(0);
-      }
-      AppMethodBeat.o(113328);
-      return;
-    }
+    return 1913;
   }
   
-  final void start()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(113327);
-    l.bLp().a(this);
-    AppMethodBeat.o(113327);
+    AppMethodBeat.i(55699);
+    ad.i("MicroMsg.NetSceneGetWeappListByLocation", "onGYNetEnd errType: %s, errCode: %s, errMsg: %s.", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramq = (bdi)this.rr.gUT.gUX;
+    if (paramq.DAH != null)
+    {
+      paramInt1 = paramq.DAH.size();
+      ad.i("MicroMsg.NetSceneGetWeappListByLocation", "weapp list size: %s.", new Object[] { Integer.valueOf(paramInt1) });
+      if (paramInt1 > 8) {
+        break label126;
+      }
+      this.sOM.addAll(paramq.DAH);
+    }
+    for (;;)
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(55699);
+      return;
+      label126:
+      this.sOM.addAll(paramq.DAH.subList(0, 8));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.j
  * JD-Core Version:    0.7.0.1
  */

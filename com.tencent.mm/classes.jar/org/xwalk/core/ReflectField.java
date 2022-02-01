@@ -15,55 +15,55 @@ public class ReflectField
   
   public ReflectField(Class<?> paramClass, String paramString)
   {
-    AppMethodBeat.i(4195);
+    AppMethodBeat.i(157216);
     init(null, paramClass, paramString);
-    AppMethodBeat.o(4195);
+    AppMethodBeat.o(157216);
   }
   
   public ReflectField(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(4194);
+    AppMethodBeat.i(157215);
     init(paramObject, null, paramString);
-    AppMethodBeat.o(4194);
+    AppMethodBeat.o(157215);
   }
   
   public Object get()
   {
-    AppMethodBeat.i(4197);
+    AppMethodBeat.i(157218);
     Object localObject;
     if (this.mField == null)
     {
       localObject = new UnsupportedOperationException(toString());
-      AppMethodBeat.o(4197);
+      AppMethodBeat.o(157218);
       throw ((Throwable)localObject);
     }
     try
     {
       localObject = this.mField.get(this.mInstance);
-      AppMethodBeat.o(4197);
+      AppMethodBeat.o(157218);
       return localObject;
     }
     catch (NullPointerException localNullPointerException)
     {
       RejectedExecutionException localRejectedExecutionException = new RejectedExecutionException(localNullPointerException);
-      AppMethodBeat.o(4197);
+      AppMethodBeat.o(157218);
       throw localRejectedExecutionException;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
-      AppMethodBeat.o(4197);
+      AppMethodBeat.o(157218);
       throw localIllegalArgumentException;
     }
     catch (ExceptionInInitializerError localExceptionInInitializerError)
     {
       RuntimeException localRuntimeException = new RuntimeException(localExceptionInInitializerError);
-      AppMethodBeat.o(4197);
+      AppMethodBeat.o(157218);
       throw localRuntimeException;
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
-      label54:
-      break label54;
+      label51:
+      break label51;
     }
   }
   
@@ -79,7 +79,7 @@ public class ReflectField
   
   public boolean init(Object paramObject, Class<?> paramClass, String paramString)
   {
-    AppMethodBeat.i(4196);
+    AppMethodBeat.i(157217);
     this.mInstance = paramObject;
     if (paramClass != null) {}
     for (;;)
@@ -90,7 +90,7 @@ public class ReflectField
       if (this.mClass != null) {
         break;
       }
-      AppMethodBeat.o(4196);
+      AppMethodBeat.o(157217);
       return false;
       if (paramObject != null) {
         paramClass = paramObject.getClass();
@@ -103,7 +103,7 @@ public class ReflectField
       this.mField = this.mClass.getField(this.mName);
       if (this.mField != null)
       {
-        AppMethodBeat.o(4196);
+        AppMethodBeat.o(157217);
         return true;
       }
     }
@@ -121,7 +121,7 @@ public class ReflectField
           paramObject = paramObject.getSuperclass();
         }
       }
-      AppMethodBeat.o(4196);
+      AppMethodBeat.o(157217);
     }
     return false;
   }
@@ -133,11 +133,11 @@ public class ReflectField
   
   public String toString()
   {
-    AppMethodBeat.i(4198);
+    AppMethodBeat.i(157219);
     if (this.mField != null)
     {
       str1 = this.mField.toString();
-      AppMethodBeat.o(4198);
+      AppMethodBeat.o(157219);
       return str1;
     }
     String str1 = "";
@@ -148,7 +148,7 @@ public class ReflectField
     if (this.mName != null) {
       str2 = str1 + this.mName;
     }
-    AppMethodBeat.o(4198);
+    AppMethodBeat.o(157219);
     return str2;
   }
 }

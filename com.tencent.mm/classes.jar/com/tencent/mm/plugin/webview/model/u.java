@@ -1,94 +1,101 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.c.a;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.c.b;
-import com.tencent.mm.protocal.protobuf.axm;
-import com.tencent.mm.protocal.protobuf.axn;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.a.a;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.a.b;
+import com.tencent.mm.protocal.protobuf.bip;
+import com.tencent.mm.protocal.protobuf.biq;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.LinkedList;
 
 public final class u
-  extends m
-  implements k, c.b
+  extends n
+  implements k, a.b
 {
-  private f eGj;
-  private final com.tencent.mm.ai.b rr;
-  public c.a uVF;
-  private final int uVH;
+  public a.a AXk;
+  private final int AXm;
+  private g gbr;
+  public String lst;
+  public final b rr;
   
-  public u(c.a parama, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, byte[] paramArrayOfByte, int paramInt)
+  public u(a.a parama, String paramString1, String paramString2, String paramString3, LinkedList<String> paramLinkedList1, LinkedList<String> paramLinkedList2, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt1, String paramString8, int paramInt2)
   {
-    AppMethodBeat.i(6619);
-    ab.i("MicroMsg.webview.NetSceneJSAPIRealtimeVerify", "NetSceneJSAPIRealtimeVerify doScene url[%s], appid[%s], jsapiName[%s], [%s], [%s], [%s], [%s]", new Object[] { paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7 });
-    this.uVF = parama;
-    this.uVH = paramInt;
+    AppMethodBeat.i(187888);
+    ad.i("MicroMsg.webview.NetSceneJSAPIPreVerify", "NetSceneJSAPIPreVerify doScene url[%s], appid[%s], [%s], [%s], [%s], [%s]", new Object[] { paramString1, paramString3, paramString4, paramString5, paramString6, paramString7 });
+    this.AXk = parama;
+    this.lst = paramString1;
+    this.AXm = paramInt2;
     parama = new b.a();
-    parama.fsX = new axm();
-    parama.fsY = new axn();
-    parama.uri = "/cgi-bin/mmbiz-bin/jsapi-realtimeverify";
-    parama.funcId = 1094;
+    parama.gUU = new bip();
+    parama.gUV = new biq();
+    parama.uri = "/cgi-bin/mmbiz-bin/jsapi-preverify";
+    parama.funcId = 1093;
     parama.reqCmdId = 0;
     parama.respCmdId = 0;
-    this.rr = parama.ado();
-    parama = (axm)this.rr.fsV.fta;
+    this.rr = parama.atI();
+    parama = (bip)this.rr.gUS.gUX;
     parama.url = paramString1;
-    parama.cwc = paramString2;
-    parama.xmo = paramString3;
-    parama.cqf = paramString4;
-    parama.xmq = paramString5;
+    parama.DFV = paramString2;
+    parama.dlB = paramString3;
+    parama.DGk = paramLinkedList1;
+    parama.DGm = paramLinkedList2;
+    parama.cMo = paramString4;
+    parama.DFR = paramString5;
     parama.signature = paramString6;
-    parama.xmr = paramString7;
-    parama.xms = com.tencent.mm.bv.b.bL(paramArrayOfByte);
-    AppMethodBeat.o(6619);
+    parama.DFS = paramString7;
+    parama.scene = paramInt1;
+    parama.DGl = paramString8;
+    AppMethodBeat.o(187888);
   }
   
-  public final int dbN()
+  public final int doScene(e parame, g paramg)
   {
-    return this.uVH;
+    AppMethodBeat.i(78902);
+    ad.i("MicroMsg.webview.NetSceneJSAPIPreVerify", "doScene");
+    this.gbr = paramg;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(78902);
+    return i;
   }
   
-  public final axn dbP()
+  public final int eiZ()
+  {
+    return this.AXm;
+  }
+  
+  public final biq elL()
   {
     if (this.rr == null) {
       return null;
     }
-    return (axn)this.rr.fsW.fta;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(6621);
-    ab.i("MicroMsg.webview.NetSceneJSAPIRealtimeVerify", "doScene");
-    this.eGj = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(6621);
-    return i;
+    return (biq)this.rr.gUT.gUX;
   }
   
   public final int getType()
   {
-    return 1094;
+    return 1093;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(6620);
-    ab.i("MicroMsg.webview.NetSceneJSAPIRealtimeVerify", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(6620);
+    AppMethodBeat.i(78901);
+    ad.i("MicroMsg.webview.NetSceneJSAPIPreVerify", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.gbr.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(78901);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.u
  * JD-Core Version:    0.7.0.1
  */

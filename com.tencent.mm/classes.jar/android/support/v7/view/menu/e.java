@@ -38,31 +38,36 @@ final class e
   extends m
   implements o, View.OnKeyListener, PopupWindow.OnDismissListener
 {
-  private static final int Vk = 2130968595;
-  private boolean NG;
-  private boolean VA;
-  private int VB;
-  private int VC;
-  private boolean VD;
-  private o.a VE;
-  ViewTreeObserver VF;
-  private PopupWindow.OnDismissListener VG;
-  boolean VH;
-  private final int Vl;
-  private final int Vm;
-  private final int Vn;
-  private final boolean Vo;
-  final Handler Vp;
-  private final List<h> Vq = new ArrayList();
-  final List<a> Vr = new ArrayList();
-  final ViewTreeObserver.OnGlobalLayoutListener Vs = new ViewTreeObserver.OnGlobalLayoutListener()
+  private static final int acp = 2131492902;
+  private boolean UK;
+  private int acA = 0;
+  private int acB = 0;
+  View acC;
+  private int acD;
+  private boolean acE;
+  private boolean acF;
+  private int acG;
+  private int acH;
+  private boolean acI;
+  private o.a acJ;
+  ViewTreeObserver acK;
+  private PopupWindow.OnDismissListener acL;
+  boolean acM;
+  private final int acq;
+  private final int acr;
+  private final int acs;
+  private final boolean act;
+  final Handler acu;
+  private final List<h> acv = new ArrayList();
+  final List<a> acw = new ArrayList();
+  final ViewTreeObserver.OnGlobalLayoutListener acx = new ViewTreeObserver.OnGlobalLayoutListener()
   {
     public final void onGlobalLayout()
     {
       Object localObject;
-      if ((e.this.isShowing()) && (e.this.Vr.size() > 0) && (!((e.a)e.this.Vr.get(0)).VN.ahs))
+      if ((e.this.isShowing()) && (e.this.acw.size() > 0) && (!((e.a)e.this.acw.get(0)).acS.aoz))
       {
-        localObject = e.this.Vx;
+        localObject = e.this.acC;
         if ((localObject != null) && (((View)localObject).isShown())) {
           break label77;
         }
@@ -72,43 +77,43 @@ final class e
       {
         return;
         label77:
-        localObject = e.this.Vr.iterator();
+        localObject = e.this.acw.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((e.a)((Iterator)localObject).next()).VN.show();
+          ((e.a)((Iterator)localObject).next()).acS.show();
         }
       }
     }
   };
-  private final View.OnAttachStateChangeListener Vt = new View.OnAttachStateChangeListener()
+  private final View.OnAttachStateChangeListener acy = new View.OnAttachStateChangeListener()
   {
     public final void onViewAttachedToWindow(View paramAnonymousView) {}
     
     public final void onViewDetachedFromWindow(View paramAnonymousView)
     {
-      if (e.this.VF != null)
+      if (e.this.acK != null)
       {
-        if (!e.this.VF.isAlive()) {
-          e.this.VF = paramAnonymousView.getViewTreeObserver();
+        if (!e.this.acK.isAlive()) {
+          e.this.acK = paramAnonymousView.getViewTreeObserver();
         }
-        e.this.VF.removeGlobalOnLayoutListener(e.this.Vs);
+        e.this.acK.removeGlobalOnLayoutListener(e.this.acx);
       }
       paramAnonymousView.removeOnAttachStateChangeListener(this);
     }
   };
-  private final ag Vu = new ag()
+  private final ag acz = new ag()
   {
     public final void b(h paramAnonymoush, MenuItem paramAnonymousMenuItem)
     {
-      e.this.Vp.removeCallbacksAndMessages(paramAnonymoush);
+      e.this.acu.removeCallbacksAndMessages(paramAnonymoush);
     }
     
     public final void c(final h paramAnonymoush, final MenuItem paramAnonymousMenuItem)
     {
-      e.this.Vp.removeCallbacksAndMessages(null);
+      e.this.acu.removeCallbacksAndMessages(null);
       int i = 0;
-      int j = e.this.Vr.size();
+      int j = e.this.acw.size();
       if (i < j) {
-        if (paramAnonymoush != ((e.a)e.this.Vr.get(i)).Pw) {}
+        if (paramAnonymoush != ((e.a)e.this.acw.get(i)).hI) {}
       }
       for (;;)
       {
@@ -119,8 +124,8 @@ final class e
           break;
         }
         i += 1;
-        if (i < e.this.Vr.size()) {}
-        for (final e.a locala = (e.a)e.this.Vr.get(i);; locala = null)
+        if (i < e.this.acw.size()) {}
+        for (final e.a locala = (e.a)e.this.acw.get(i);; locala = null)
         {
           paramAnonymousMenuItem = new Runnable()
           {
@@ -128,9 +133,9 @@ final class e
             {
               if (locala != null)
               {
-                e.this.VH = true;
-                locala.Pw.V(false);
-                e.this.VH = false;
+                e.this.acM = true;
+                locala.hI.ab(false);
+                e.this.acM = false;
               }
               if ((paramAnonymousMenuItem.isEnabled()) && (paramAnonymousMenuItem.hasSubMenu())) {
                 paramAnonymoush.a(paramAnonymousMenuItem, null, 4);
@@ -138,33 +143,28 @@ final class e
             }
           };
           long l = SystemClock.uptimeMillis();
-          e.this.Vp.postAtTime(paramAnonymousMenuItem, paramAnonymoush, l + 200L);
+          e.this.acu.postAtTime(paramAnonymousMenuItem, paramAnonymoush, l + 200L);
           return;
         }
         i = -1;
       }
     }
   };
-  private int Vv = 0;
-  private int Vw = 0;
-  View Vx;
-  private int Vy;
-  private boolean Vz;
-  private View iU;
   private final Context mContext;
+  private View nO;
   
   public e(Context paramContext, View paramView, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     this.mContext = paramContext;
-    this.iU = paramView;
-    this.Vm = paramInt1;
-    this.Vn = paramInt2;
-    this.Vo = paramBoolean;
-    this.VD = false;
-    this.Vy = fO();
+    this.nO = paramView;
+    this.acr = paramInt1;
+    this.acs = paramInt2;
+    this.act = paramBoolean;
+    this.acI = false;
+    this.acD = hk();
     paramContext = paramContext.getResources();
-    this.Vl = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(2131427360));
-    this.Vp = new Handler();
+    this.acq = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(2131165655));
+    this.acu = new Handler();
   }
   
   private static MenuItem a(h paramh1, h paramh2)
@@ -185,11 +185,11 @@ final class e
   private static View a(a parama, h paramh)
   {
     int i = 0;
-    paramh = a(parama.Pw, paramh);
+    paramh = a(parama.hI, paramh);
     if (paramh == null) {
       return null;
     }
-    y localy = parama.VN.agW;
+    y localy = parama.acS.aod;
     parama = localy.getAdapter();
     int j;
     if ((parama instanceof HeaderViewListAdapter))
@@ -202,7 +202,7 @@ final class e
       if (i >= k) {
         break label134;
       }
-      if (paramh != parama.bb(i)) {
+      if (paramh != parama.bu(i)) {
         break label95;
       }
     }
@@ -228,14 +228,14 @@ final class e
     }
   }
   
-  private int ba(int paramInt)
+  private int bt(int paramInt)
   {
-    y localy = ((a)this.Vr.get(this.Vr.size() - 1)).VN.agW;
+    y localy = ((a)this.acw.get(this.acw.size() - 1)).acS.aod;
     int[] arrayOfInt = new int[2];
     localy.getLocationOnScreen(arrayOfInt);
     Rect localRect = new Rect();
-    this.Vx.getWindowVisibleDisplayFrame(localRect);
-    if (this.Vy == 1)
+    this.acC.getWindowVisibleDisplayFrame(localRect);
+    if (this.acD == 1)
     {
       int i = arrayOfInt[0];
       if (localy.getWidth() + i + paramInt > localRect.right) {
@@ -249,32 +249,10 @@ final class e
     return 0;
   }
   
-  private ah fN()
-  {
-    ah localah = new ah(this.mContext, this.Vm, this.Vn);
-    localah.ahw = this.Vu;
-    localah.ahl = this;
-    localah.setOnDismissListener(this);
-    localah.ahj = this.iU;
-    localah.Vw = this.Vw;
-    localah.setModal(true);
-    localah.iD();
-    return localah;
-  }
-  
-  private int fO()
-  {
-    int i = 1;
-    if (t.T(this.iU) == 1) {
-      i = 0;
-    }
-    return i;
-  }
-  
   private void g(h paramh)
   {
     Object localObject3 = LayoutInflater.from(this.mContext);
-    Object localObject1 = new g(paramh, (LayoutInflater)localObject3, this.Vo, Vk);
+    Object localObject1 = new g(paramh, (LayoutInflater)localObject3, this.act, acp);
     int m;
     ah localah;
     Object localObject2;
@@ -283,38 +261,38 @@ final class e
     int i;
     label167:
     int k;
-    if ((!isShowing()) && (this.VD))
+    if ((!isShowing()) && (this.acI))
     {
-      ((g)localObject1).VD = true;
-      m = a((ListAdapter)localObject1, null, this.mContext, this.Vl);
-      localah = fN();
+      ((g)localObject1).acI = true;
+      m = a((ListAdapter)localObject1, null, this.mContext, this.acq);
+      localah = hj();
       localah.setAdapter((ListAdapter)localObject1);
       localah.setContentWidth(m);
-      localah.Vw = this.Vw;
-      if (this.Vr.size() <= 0) {
+      localah.acB = this.acB;
+      if (this.acw.size() <= 0) {
         break label372;
       }
-      localObject1 = (a)this.Vr.get(this.Vr.size() - 1);
+      localObject1 = (a)this.acw.get(this.acw.size() - 1);
       localObject2 = a((a)localObject1, paramh);
       if (localObject2 == null) {
         break label514;
       }
-      localah.iG();
-      localah.iF();
-      j = ba(m);
+      localah.kb();
+      localah.ka();
+      j = bt(m);
       if (j != 1) {
         break label381;
       }
       i = 1;
-      this.Vy = j;
+      this.acD = j;
       if (Build.VERSION.SDK_INT < 26) {
         break label386;
       }
-      localah.ahj = ((View)localObject2);
+      localah.aoq = ((View)localObject2);
       j = 0;
       k = 0;
       label192:
-      if ((this.Vw & 0x5) != 5) {
+      if ((this.acB & 0x5) != 5) {
         break label489;
       }
       if (i == 0) {
@@ -322,23 +300,23 @@ final class e
       }
       i = k + m;
       label212:
-      localah.agY = i;
-      localah.iE();
+      localah.aof = i;
+      localah.jZ();
       localah.setVerticalOffset(j);
     }
     for (;;)
     {
-      localObject2 = new a(localah, paramh, this.Vy);
-      this.Vr.add(localObject2);
+      localObject2 = new a(localah, paramh, this.acD);
+      this.acw.add(localObject2);
       localah.show();
-      localObject2 = localah.agW;
+      localObject2 = localah.aod;
       ((ListView)localObject2).setOnKeyListener(this);
-      if ((localObject1 == null) && (this.NG) && (paramh.Wu != null))
+      if ((localObject1 == null) && (this.UK) && (paramh.adA != null))
       {
-        localObject1 = (FrameLayout)((LayoutInflater)localObject3).inflate(2130968602, (ViewGroup)localObject2, false);
+        localObject1 = (FrameLayout)((LayoutInflater)localObject3).inflate(2131492909, (ViewGroup)localObject2, false);
         localObject3 = (TextView)((FrameLayout)localObject1).findViewById(16908310);
         ((FrameLayout)localObject1).setEnabled(false);
-        ((TextView)localObject3).setText(paramh.Wu);
+        ((TextView)localObject3).setText(paramh.adA);
         ((ListView)localObject2).addHeaderView((View)localObject1, null, false);
         localah.show();
       }
@@ -346,7 +324,7 @@ final class e
       if (!isShowing()) {
         break;
       }
-      ((g)localObject1).VD = m.h(paramh);
+      ((g)localObject1).acI = m.h(paramh);
       break;
       label372:
       localObject2 = null;
@@ -357,12 +335,12 @@ final class e
       break label167;
       label386:
       int[] arrayOfInt1 = new int[2];
-      this.iU.getLocationOnScreen(arrayOfInt1);
+      this.nO.getLocationOnScreen(arrayOfInt1);
       int[] arrayOfInt2 = new int[2];
       ((View)localObject2).getLocationOnScreen(arrayOfInt2);
-      if ((this.Vw & 0x7) == 5)
+      if ((this.acB & 0x7) == 5)
       {
-        arrayOfInt1[0] += this.iU.getWidth();
+        arrayOfInt1[0] += this.nO.getWidth();
         arrayOfInt2[0] += ((View)localObject2).getWidth();
       }
       k = arrayOfInt2[0] - arrayOfInt1[0];
@@ -380,22 +358,44 @@ final class e
       i = k - m;
       break label212;
       label514:
-      if (this.Vz) {
-        localah.agY = this.VB;
+      if (this.acE) {
+        localah.aof = this.acG;
       }
-      if (this.VA) {
-        localah.setVerticalOffset(this.VC);
+      if (this.acF) {
+        localah.setVerticalOffset(this.acH);
       }
-      localah.Xa = this.Xa;
+      localah.aef = this.aef;
     }
+  }
+  
+  private ah hj()
+  {
+    ah localah = new ah(this.mContext, this.acr, this.acs);
+    localah.aoD = this.acz;
+    localah.aos = this;
+    localah.setOnDismissListener(this);
+    localah.aoq = this.nO;
+    localah.acB = this.acB;
+    localah.setModal(true);
+    localah.jY();
+    return localah;
+  }
+  
+  private int hk()
+  {
+    int i = 1;
+    if (t.Y(this.nO) == 1) {
+      i = 0;
+    }
+    return i;
   }
   
   public final void a(h paramh, boolean paramBoolean)
   {
-    int j = this.Vr.size();
+    int j = this.acw.size();
     int i = 0;
     if (i < j) {
-      if (paramh == ((a)this.Vr.get(i)).Pw) {
+      if (paramh == ((a)this.acw.get(i)).hI) {
         label39:
         if (i >= 0) {
           break label56;
@@ -411,88 +411,88 @@ final class e
       i = -1;
       break label39;
       j = i + 1;
-      if (j < this.Vr.size()) {
-        ((a)this.Vr.get(j)).Pw.V(false);
+      if (j < this.acw.size()) {
+        ((a)this.acw.get(j)).hI.ab(false);
       }
-      a locala = (a)this.Vr.remove(i);
-      locala.Pw.b(this);
-      if (this.VH)
+      a locala = (a)this.acw.remove(i);
+      locala.hI.b(this);
+      if (this.acM)
       {
-        ah localah = locala.VN;
+        ah localah = locala.acS;
         if (Build.VERSION.SDK_INT >= 23) {
-          localah.aht.setExitTransition(null);
+          localah.aoA.setExitTransition(null);
         }
-        locala.VN.setAnimationStyle(0);
+        locala.acS.setAnimationStyle(0);
       }
-      locala.VN.dismiss();
-      i = this.Vr.size();
+      locala.acS.dismiss();
+      i = this.acw.size();
       if (i > 0) {}
-      for (this.Vy = ((a)this.Vr.get(i - 1)).position; i == 0; this.Vy = fO())
+      for (this.acD = ((a)this.acw.get(i - 1)).position; i == 0; this.acD = hk())
       {
         dismiss();
-        if (this.VE != null) {
-          this.VE.a(paramh, true);
+        if (this.acJ != null) {
+          this.acJ.a(paramh, true);
         }
-        if (this.VF != null)
+        if (this.acK != null)
         {
-          if (this.VF.isAlive()) {
-            this.VF.removeGlobalOnLayoutListener(this.Vs);
+          if (this.acK.isAlive()) {
+            this.acK.removeGlobalOnLayoutListener(this.acx);
           }
-          this.VF = null;
+          this.acK = null;
         }
-        this.Vx.removeOnAttachStateChangeListener(this.Vt);
-        this.VG.onDismiss();
+        this.acC.removeOnAttachStateChangeListener(this.acy);
+        this.acL.onDismiss();
         return;
       }
     } while (!paramBoolean);
-    ((a)this.Vr.get(0)).Pw.V(false);
+    ((a)this.acw.get(0)).hI.ab(false);
   }
   
   public final void a(o.a parama)
   {
-    this.VE = parama;
+    this.acJ = parama;
   }
   
   public final boolean a(u paramu)
   {
-    Iterator localIterator = this.Vr.iterator();
+    Iterator localIterator = this.acw.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      if (paramu == locala.Pw)
+      if (paramu == locala.hI)
       {
-        locala.VN.agW.requestFocus();
+        locala.acS.aod.requestFocus();
         return true;
       }
     }
     if (paramu.hasVisibleItems())
     {
       f(paramu);
-      if (this.VE != null) {
-        this.VE.d(paramu);
+      if (this.acJ != null) {
+        this.acJ.d(paramu);
       }
       return true;
     }
     return false;
   }
   
-  public final boolean aG()
+  public final boolean bh()
   {
     return false;
   }
   
   public final void dismiss()
   {
-    int i = this.Vr.size();
+    int i = this.acw.size();
     if (i > 0)
     {
-      a[] arrayOfa = (a[])this.Vr.toArray(new a[i]);
+      a[] arrayOfa = (a[])this.acw.toArray(new a[i]);
       i -= 1;
       while (i >= 0)
       {
         a locala = arrayOfa[i];
-        if (locala.VN.aht.isShowing()) {
-          locala.VN.dismiss();
+        if (locala.acS.aoA.isShowing()) {
+          locala.acS.dismiss();
         }
         i -= 1;
       }
@@ -507,49 +507,41 @@ final class e
       g(paramh);
       return;
     }
-    this.Vq.add(paramh);
-  }
-  
-  protected final boolean fP()
-  {
-    return false;
+    this.acv.add(paramh);
   }
   
   public final ListView getListView()
   {
-    if (this.Vr.isEmpty()) {
+    if (this.acw.isEmpty()) {
       return null;
     }
-    return ((a)this.Vr.get(this.Vr.size() - 1)).VN.agW;
+    return ((a)this.acw.get(this.acw.size() - 1)).acS.aod;
+  }
+  
+  protected final boolean hl()
+  {
+    return false;
   }
   
   public final boolean isShowing()
   {
-    return (this.Vr.size() > 0) && (((a)this.Vr.get(0)).VN.aht.isShowing());
-  }
-  
-  public final void n(boolean paramBoolean)
-  {
-    Iterator localIterator = this.Vr.iterator();
-    while (localIterator.hasNext()) {
-      a(((a)localIterator.next()).VN.agW.getAdapter()).notifyDataSetChanged();
-    }
+    return (this.acw.size() > 0) && (((a)this.acw.get(0)).acS.aoA.isShowing());
   }
   
   public final void onDismiss()
   {
-    int j = this.Vr.size();
+    int j = this.acw.size();
     int i = 0;
     a locala;
     if (i < j)
     {
-      locala = (a)this.Vr.get(i);
-      if (locala.VN.aht.isShowing()) {}
+      locala = (a)this.acw.get(i);
+      if (locala.acS.aoA.isShowing()) {}
     }
     for (;;)
     {
       if (locala != null) {
-        locala.Pw.V(false);
+        locala.hI.ab(false);
       }
       return;
       i += 1;
@@ -575,49 +567,57 @@ final class e
     return null;
   }
   
+  public final void p(boolean paramBoolean)
+  {
+    Iterator localIterator = this.acw.iterator();
+    while (localIterator.hasNext()) {
+      a(((a)localIterator.next()).acS.aod.getAdapter()).notifyDataSetChanged();
+    }
+  }
+  
   public final void setAnchorView(View paramView)
   {
-    if (this.iU != paramView)
+    if (this.nO != paramView)
     {
-      this.iU = paramView;
-      this.Vw = d.getAbsoluteGravity(this.Vv, t.T(this.iU));
+      this.nO = paramView;
+      this.acB = d.getAbsoluteGravity(this.acA, t.Y(this.nO));
     }
   }
   
   public final void setForceShowIcon(boolean paramBoolean)
   {
-    this.VD = paramBoolean;
+    this.acI = paramBoolean;
   }
   
   public final void setGravity(int paramInt)
   {
-    if (this.Vv != paramInt)
+    if (this.acA != paramInt)
     {
-      this.Vv = paramInt;
-      this.Vw = d.getAbsoluteGravity(paramInt, t.T(this.iU));
+      this.acA = paramInt;
+      this.acB = d.getAbsoluteGravity(paramInt, t.Y(this.nO));
     }
   }
   
   public final void setHorizontalOffset(int paramInt)
   {
-    this.Vz = true;
-    this.VB = paramInt;
+    this.acE = true;
+    this.acG = paramInt;
   }
   
   public final void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.VG = paramOnDismissListener;
+    this.acL = paramOnDismissListener;
   }
   
   public final void setShowTitle(boolean paramBoolean)
   {
-    this.NG = paramBoolean;
+    this.UK = paramBoolean;
   }
   
   public final void setVerticalOffset(int paramInt)
   {
-    this.VA = true;
-    this.VC = paramInt;
+    this.acF = true;
+    this.acH = paramInt;
   }
   
   public final void show()
@@ -626,35 +626,35 @@ final class e
     do
     {
       return;
-      Iterator localIterator = this.Vq.iterator();
+      Iterator localIterator = this.acv.iterator();
       while (localIterator.hasNext()) {
         g((h)localIterator.next());
       }
-      this.Vq.clear();
-      this.Vx = this.iU;
-    } while (this.Vx == null);
-    if (this.VF == null) {}
+      this.acv.clear();
+      this.acC = this.nO;
+    } while (this.acC == null);
+    if (this.acK == null) {}
     for (int i = 1;; i = 0)
     {
-      this.VF = this.Vx.getViewTreeObserver();
+      this.acK = this.acC.getViewTreeObserver();
       if (i != 0) {
-        this.VF.addOnGlobalLayoutListener(this.Vs);
+        this.acK.addOnGlobalLayoutListener(this.acx);
       }
-      this.Vx.addOnAttachStateChangeListener(this.Vt);
+      this.acC.addOnAttachStateChangeListener(this.acy);
       return;
     }
   }
   
   static final class a
   {
-    public final h Pw;
-    public final ah VN;
+    public final ah acS;
+    public final h hI;
     public final int position;
     
     public a(ah paramah, h paramh, int paramInt)
     {
-      this.VN = paramah;
-      this.Pw = paramh;
+      this.acS = paramah;
+      this.hI = paramh;
       this.position = paramInt;
     }
   }

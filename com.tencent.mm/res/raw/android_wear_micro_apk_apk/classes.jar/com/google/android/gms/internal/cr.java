@@ -12,7 +12,7 @@ public abstract interface cr
   
   public abstract void connect();
   
-  public abstract void jE();
+  public abstract void jN();
 }
 
 

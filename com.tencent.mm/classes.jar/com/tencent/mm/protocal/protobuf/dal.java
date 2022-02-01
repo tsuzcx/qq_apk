@@ -4,78 +4,87 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class dal
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<dak> fjy;
+  public int Elb;
+  public LinkedList<bkk> Elc;
   
   public dal()
   {
-    AppMethodBeat.i(139625);
-    this.fjy = new LinkedList();
-    AppMethodBeat.o(139625);
+    AppMethodBeat.i(133201);
+    this.Elc = new LinkedList();
+    AppMethodBeat.o(133201);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(139626);
+    AppMethodBeat.i(133202);
     if (paramInt == 0)
     {
-      ((e.a.a.c.a)paramVarArgs[0]).e(1, 8, this.fjy);
-      AppMethodBeat.o(139626);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.Elb);
+      paramVarArgs.e(2, 8, this.Elc);
+      AppMethodBeat.o(133202);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      paramInt = e.a.a.a.c(1, 8, this.fjy);
-      AppMethodBeat.o(139626);
-      return paramInt + 0;
+      paramInt = f.a.a.b.b.a.bA(1, this.Elb);
+      i = f.a.a.a.c(2, 8, this.Elc);
+      AppMethodBeat.o(133202);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.fjy.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      this.Elc.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      AppMethodBeat.o(139626);
+      AppMethodBeat.o(133202);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
       dal localdal = (dal)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(139626);
+        AppMethodBeat.o(133202);
         return -1;
+      case 1: 
+        localdal.Elb = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(133202);
+        return 0;
       }
-      paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-      int i = paramVarArgs.size();
+      paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+      i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
       {
         Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new dak();
-        localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((dak)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-        localdal.fjy.add(localObject1);
+        localObject1 = new bkk();
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((bkk)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localdal.Elc.add(localObject1);
         paramInt += 1;
       }
-      AppMethodBeat.o(139626);
+      AppMethodBeat.o(133202);
       return 0;
     }
-    AppMethodBeat.o(139626);
+    AppMethodBeat.o(133202);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dal
  * JD-Core Version:    0.7.0.1
  */

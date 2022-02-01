@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
 import android.support.v4.e.a;
-import com.tencent.luggage.g.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.s.m;
+import com.tencent.mm.plugin.appbrand.aa.l;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,181 +12,212 @@ import java.util.Set;
 
 public enum o
 {
-  public static final Map<String, Integer> jmi;
-  public static final Set<String> jmj;
-  private static final a<v, ab> jmk;
+  public static final Map<String, Integer> mbY;
+  public static final Set<String> mbZ;
+  private static final a<com.tencent.mm.plugin.appbrand.page.aa, ab> mca;
   
   static
   {
-    AppMethodBeat.i(123693);
-    jml = new o[0];
+    AppMethodBeat.i(136427);
+    mcb = new o[0];
     Object localObject = new HashSet();
     ((Set)localObject).add("text");
     ((Set)localObject).add("emoji");
     ((Set)localObject).add("number");
     ((Set)localObject).add("digit");
     ((Set)localObject).add("idcard");
-    jmj = Collections.unmodifiableSet((Set)localObject);
+    mbZ = Collections.unmodifiableSet((Set)localObject);
     localObject = new HashMap(3);
     ((Map)localObject).put("digit", Integer.valueOf(2));
     ((Map)localObject).put("number", Integer.valueOf(0));
     ((Map)localObject).put("idcard", Integer.valueOf(1));
-    jmi = Collections.unmodifiableMap((Map)localObject);
-    jmk = new a();
-    AppMethodBeat.o(123693);
+    mbY = Collections.unmodifiableMap((Map)localObject);
+    mca = new a();
+    AppMethodBeat.o(136427);
   }
   
-  public static aa a(v paramv, int paramInt)
+  public static aa a(com.tencent.mm.plugin.appbrand.page.aa paramaa, int paramInt)
   {
-    AppMethodBeat.i(123684);
-    paramv = e.a(paramv, new e.a()
+    AppMethodBeat.i(136418);
+    paramaa = e.a(paramaa, new e.a()
     {
       public final boolean a(aa paramAnonymousaa)
       {
-        AppMethodBeat.i(123677);
-        if ((paramAnonymousaa.aQw() != null) && (((ab)paramAnonymousaa.aQw()).getInputId() == this.hMH))
+        AppMethodBeat.i(136411);
+        if ((paramAnonymousaa.bsM() != null) && (((ab)paramAnonymousaa.bsM()).getInputId() == this.jRR))
         {
-          AppMethodBeat.o(123677);
+          AppMethodBeat.o(136411);
           return true;
         }
-        AppMethodBeat.o(123677);
+        AppMethodBeat.o(136411);
         return false;
       }
     });
-    AppMethodBeat.o(123684);
-    return paramv;
+    AppMethodBeat.o(136418);
+    return paramaa;
   }
   
-  static void a(v paramv, ab paramab)
+  static void a(com.tencent.mm.plugin.appbrand.page.aa paramaa, final ab paramab)
   {
-    AppMethodBeat.i(123690);
-    if (paramv == null)
+    AppMethodBeat.i(136424);
+    if (paramaa == null)
     {
-      AppMethodBeat.o(123690);
+      AppMethodBeat.o(136424);
       return;
     }
-    m.runOnUiThread(new o.3(paramv, paramab));
-    AppMethodBeat.o(123690);
+    l.runOnUiThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(136413);
+        o.btm().put(this.keJ, paramab);
+        AppMethodBeat.o(136413);
+      }
+    });
+    AppMethodBeat.o(136424);
   }
   
-  public static void a(v paramv, String paramString, Integer paramInteger)
+  public static void a(com.tencent.mm.plugin.appbrand.page.aa paramaa, final String paramString, final Integer paramInteger)
   {
-    AppMethodBeat.i(123685);
-    if (paramv == null)
+    AppMethodBeat.i(136419);
+    if (paramaa == null)
     {
-      AppMethodBeat.o(123685);
+      AppMethodBeat.o(136419);
       return;
     }
-    m.runOnUiThread(new o.2(paramv, paramString, paramInteger));
-    AppMethodBeat.o(123685);
+    l.runOnUiThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(136412);
+        Object localObject = (ab)o.btm().get(this.jFf);
+        if (localObject != null)
+        {
+          localObject = o.a(this.jFf, ((ab)localObject).getInputId());
+          if (localObject != null) {
+            ((aa)localObject).a(paramString, paramInteger);
+          }
+        }
+        AppMethodBeat.o(136412);
+      }
+    });
+    AppMethodBeat.o(136419);
   }
   
-  public static boolean a(v paramv, int paramInt1, int paramInt2, int paramInt3)
+  public static boolean a(com.tencent.mm.plugin.appbrand.page.aa paramaa, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(123688);
-    aa localaa = a(paramv, paramInt1);
-    if ((localaa != null) && (localaa.n(paramv)) && (localaa.dw(paramInt2, paramInt3)))
+    AppMethodBeat.i(136422);
+    aa localaa = a(paramaa, paramInt1);
+    if ((localaa != null) && (localaa.u(paramaa)) && (localaa.er(paramInt2, paramInt3)))
     {
-      AppMethodBeat.o(123688);
+      AppMethodBeat.o(136422);
       return true;
     }
-    AppMethodBeat.o(123688);
+    AppMethodBeat.o(136422);
     return false;
   }
   
-  public static boolean a(v paramv, Integer paramInteger)
+  public static boolean a(com.tencent.mm.plugin.appbrand.page.aa paramaa, Integer paramInteger)
   {
-    AppMethodBeat.i(123687);
+    AppMethodBeat.i(136421);
     Integer localInteger = paramInteger;
     if (paramInteger == null) {}
     try
     {
-      paramInteger = (ab)jmk.get(paramv);
+      paramInteger = (ab)mca.get(paramaa);
       if (paramInteger == null)
       {
-        AppMethodBeat.o(123687);
+        AppMethodBeat.o(136421);
         return false;
       }
       localInteger = Integer.valueOf(paramInteger.getInputId());
-      paramv = a(paramv, localInteger.intValue());
-      if ((paramv != null) && (paramv.aQB()))
+      paramaa = a(paramaa, localInteger.intValue());
+      if ((paramaa != null) && (paramaa.bsS()))
       {
-        AppMethodBeat.o(123687);
+        AppMethodBeat.o(136421);
         return true;
       }
     }
-    catch (Throwable paramv)
+    catch (Throwable paramaa)
     {
-      d.printErrStackTrace("MicroMsg.AppBrandInputService", paramv, "[NOT CRASH]", new Object[0]);
-      AppMethodBeat.o(123687);
+      ad.printErrStackTrace("MicroMsg.AppBrandInputService", paramaa, "[NOT CRASH]", new Object[0]);
+      AppMethodBeat.o(136421);
       return false;
     }
-    AppMethodBeat.o(123687);
+    AppMethodBeat.o(136421);
     return false;
   }
   
-  static void b(v paramv, aa paramaa)
+  static void b(com.tencent.mm.plugin.appbrand.page.aa paramaa, aa paramaa1)
   {
-    AppMethodBeat.i(123683);
-    e.a(paramv, paramaa);
-    AppMethodBeat.o(123683);
+    AppMethodBeat.i(136417);
+    e.a(paramaa, paramaa1);
+    AppMethodBeat.o(136417);
   }
   
-  public static boolean b(v paramv, int paramInt)
+  public static boolean b(com.tencent.mm.plugin.appbrand.page.aa paramaa, int paramInt)
   {
-    AppMethodBeat.i(123689);
-    paramv = a(paramv, paramInt);
-    if ((paramv != null) && (paramv.aQv()))
+    AppMethodBeat.i(136423);
+    paramaa = a(paramaa, paramInt);
+    if ((paramaa != null) && (paramaa.bsL()))
     {
-      AppMethodBeat.o(123689);
+      AppMethodBeat.o(136423);
       return true;
     }
-    AppMethodBeat.o(123689);
+    AppMethodBeat.o(136423);
     return false;
   }
   
-  public static boolean q(v paramv)
+  public static boolean x(com.tencent.mm.plugin.appbrand.page.aa paramaa)
   {
-    AppMethodBeat.i(123686);
-    boolean bool = a(paramv, null);
-    AppMethodBeat.o(123686);
+    AppMethodBeat.i(136420);
+    boolean bool = a(paramaa, null);
+    AppMethodBeat.o(136420);
     return bool;
   }
   
-  static void r(v paramv)
+  static void y(com.tencent.mm.plugin.appbrand.page.aa paramaa)
   {
-    AppMethodBeat.i(123691);
-    if (paramv == null)
+    AppMethodBeat.i(136425);
+    if (paramaa == null)
     {
-      AppMethodBeat.o(123691);
+      AppMethodBeat.o(136425);
       return;
     }
-    m.runOnUiThread(new o.4(paramv));
-    AppMethodBeat.o(123691);
+    l.runOnUiThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(136414);
+        o.btm().remove(this.keJ);
+        AppMethodBeat.o(136414);
+      }
+    });
+    AppMethodBeat.o(136425);
   }
   
-  public static aa s(v paramv)
+  public static aa z(com.tencent.mm.plugin.appbrand.page.aa paramaa)
   {
-    AppMethodBeat.i(123692);
-    if (paramv == null)
+    AppMethodBeat.i(136426);
+    if (paramaa == null)
     {
-      AppMethodBeat.o(123692);
+      AppMethodBeat.o(136426);
       return null;
     }
-    ab localab = (ab)jmk.get(paramv);
+    ab localab = (ab)mca.get(paramaa);
     if (localab == null)
     {
-      AppMethodBeat.o(123692);
+      AppMethodBeat.o(136426);
       return null;
     }
-    paramv = a(paramv, localab.getInputId());
-    AppMethodBeat.o(123692);
-    return paramv;
+    paramaa = a(paramaa, localab.getInputId());
+    AppMethodBeat.o(136426);
+    return paramaa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.o
  * JD-Core Version:    0.7.0.1
  */

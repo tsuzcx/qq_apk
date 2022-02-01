@@ -3,93 +3,100 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.app.Activity;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.a.km;
-import com.tencent.mm.g.a.km.b;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.lr;
+import com.tencent.mm.g.a.lr.b;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.model.bn.a;
+import com.tencent.mm.network.e;
+import com.tencent.mm.pluginsdk.k;
 
 public final class c
-  implements f
+  implements com.tencent.mm.al.g
 {
-  private static long pOj = 0L;
-  private Activity cup;
-  private c.a pOk;
+  private static long uQt = 0L;
+  private Activity djj;
+  private a uQu;
   
   public c(Activity paramActivity)
   {
-    AppMethodBeat.i(68413);
-    g.RK().eHt.a(138, this);
-    this.cup = paramActivity;
-    AppMethodBeat.o(68413);
+    AppMethodBeat.i(123141);
+    com.tencent.mm.kernel.g.afA().gcy.a(138, this);
+    this.djj = paramActivity;
+    AppMethodBeat.o(123141);
   }
   
-  public final void a(final c.a parama)
+  public final void a(final a parama)
   {
-    AppMethodBeat.i(68414);
-    this.pOk = parama;
-    parama = new km();
-    parama.cAj.cup = this.cup;
-    parama.cAj.cAl = new Runnable()
+    AppMethodBeat.i(123142);
+    this.uQu = parama;
+    parama = new lr();
+    parama.dqs.djj = this.djj;
+    parama.dqs.dqu = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(68411);
-        if (parama.cAk.cpz)
+        AppMethodBeat.i(123139);
+        if (parama.dqt.dew)
         {
           c.a(c.this);
-          AppMethodBeat.o(68411);
+          AppMethodBeat.o(123139);
           return;
         }
         if (c.b(c.this) != null) {
-          c.b(c.this).cdU();
+          c.b(c.this).dei();
         }
-        AppMethodBeat.o(68411);
+        AppMethodBeat.o(123139);
       }
     };
-    a.ymk.a(parama, Looper.myLooper());
-    AppMethodBeat.o(68414);
+    com.tencent.mm.sdk.b.a.ESL.a(parama, Looper.myLooper());
+    AppMethodBeat.o(123142);
   }
   
   protected final void finalize()
   {
-    AppMethodBeat.i(68416);
+    AppMethodBeat.i(123144);
     release();
     super.finalize();
-    AppMethodBeat.o(68416);
+    AppMethodBeat.o(123144);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(68417);
+    AppMethodBeat.i(123145);
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if (this.pOk != null)
+      if (this.uQu != null)
       {
-        this.pOk.cdT();
-        this.pOk = null;
+        this.uQu.deh();
+        this.uQu = null;
       }
     }
     for (;;)
     {
-      pOj = System.currentTimeMillis();
-      AppMethodBeat.o(68417);
+      uQt = System.currentTimeMillis();
+      AppMethodBeat.o(123145);
       return;
-      if (this.pOk != null)
+      if (this.uQu != null)
       {
-        this.pOk.cdU();
-        this.pOk = null;
+        this.uQu.dei();
+        this.uQu = null;
       }
     }
   }
   
   public final void release()
   {
-    AppMethodBeat.i(68415);
-    g.RK().eHt.b(138, this);
-    AppMethodBeat.o(68415);
+    AppMethodBeat.i(123143);
+    com.tencent.mm.kernel.g.afA().gcy.b(138, this);
+    AppMethodBeat.o(123143);
+  }
+  
+  public static abstract class a
+  {
+    public abstract void deh();
+    
+    public abstract void dei();
   }
 }
 

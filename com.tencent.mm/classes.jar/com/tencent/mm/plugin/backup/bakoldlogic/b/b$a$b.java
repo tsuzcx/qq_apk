@@ -1,98 +1,98 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
 final class b$a$b
 {
-  StringBuffer jDt;
+  StringBuffer muN;
   
   b$a$b()
   {
-    AppMethodBeat.i(17769);
-    this.jDt = new StringBuffer();
-    AppMethodBeat.o(17769);
+    AppMethodBeat.i(21826);
+    this.muN = new StringBuffer();
+    AppMethodBeat.o(21826);
   }
   
   private void setText(int paramInt)
   {
-    AppMethodBeat.i(17773);
-    this.jDt.append(paramInt);
-    AppMethodBeat.o(17773);
+    AppMethodBeat.i(21830);
+    this.muN.append(paramInt);
+    AppMethodBeat.o(21830);
   }
   
   private void setText(String paramString)
   {
-    AppMethodBeat.i(17772);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(21829);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(17772);
+      AppMethodBeat.o(21829);
       return;
     }
-    if (paramString.contains(b.a.jDr))
+    if (paramString.contains(b.a.muL))
     {
-      this.jDt.append("<![CDATA[" + bo.apT(paramString) + "]]>");
-      AppMethodBeat.o(17772);
+      this.muN.append("<![CDATA[" + bt.aGf(paramString) + "]]>");
+      AppMethodBeat.o(21829);
       return;
     }
-    this.jDt.append("<![CDATA[" + paramString + "]]>");
-    AppMethodBeat.o(17772);
+    this.muN.append("<![CDATA[" + paramString + "]]>");
+    AppMethodBeat.o(21829);
   }
   
-  public final void Gp(String paramString)
+  public final void Oq(String paramString)
   {
-    AppMethodBeat.i(17770);
-    this.jDt.append("<" + paramString + ">");
-    AppMethodBeat.o(17770);
+    AppMethodBeat.i(21827);
+    this.muN.append("<" + paramString + ">");
+    AppMethodBeat.o(21827);
   }
   
-  public final void Gq(String paramString)
+  public final void Or(String paramString)
   {
-    AppMethodBeat.i(17771);
-    this.jDt.append("</" + paramString + ">");
-    AppMethodBeat.o(17771);
+    AppMethodBeat.i(21828);
+    this.muN.append("</" + paramString + ">");
+    AppMethodBeat.o(21828);
   }
   
-  public final void bG(String paramString, int paramInt)
+  public final void cd(String paramString, int paramInt)
   {
-    AppMethodBeat.i(17775);
-    Gp(paramString);
+    AppMethodBeat.i(21832);
+    Oq(paramString);
     setText(paramInt);
-    Gq(paramString);
-    AppMethodBeat.o(17775);
+    Or(paramString);
+    AppMethodBeat.o(21832);
   }
   
-  public final void da(String paramString1, String paramString2)
+  public final void eb(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(17774);
-    Gp(paramString1);
+    AppMethodBeat.i(21831);
+    Oq(paramString1);
     setText(paramString2);
-    Gq(paramString1);
-    AppMethodBeat.o(17774);
+    Or(paramString1);
+    AppMethodBeat.o(21831);
   }
   
-  public final void n(String paramString, Map<String, String> paramMap)
+  public final void p(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(17776);
-    this.jDt.append("<".concat(String.valueOf(paramString)));
+    AppMethodBeat.i(21833);
+    this.muN.append("<".concat(String.valueOf(paramString)));
     paramString = paramMap.keySet().iterator();
     while (paramString.hasNext())
     {
       String str1 = (String)paramString.next();
       String str2 = (String)paramMap.get(str1);
-      this.jDt.append(" " + str1 + " =  \"" + str2 + "\" ");
+      this.muN.append(" " + str1 + " =  \"" + str2 + "\" ");
     }
-    this.jDt.append(">");
+    this.muN.append(">");
     paramMap.clear();
-    AppMethodBeat.o(17776);
+    AppMethodBeat.o(21833);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.b.b.a.b
  * JD-Core Version:    0.7.0.1
  */

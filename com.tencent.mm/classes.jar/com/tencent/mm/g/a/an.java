@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class an
   extends b
 {
-  public an.a cnQ;
+  public a dcr;
   
   public an()
   {
@@ -15,16 +15,26 @@ public final class an
   
   private an(byte paramByte)
   {
-    AppMethodBeat.i(70133);
-    this.cnQ = new an.a();
-    this.ymq = false;
+    AppMethodBeat.i(175415);
+    this.dcr = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70133);
+    AppMethodBeat.o(175415);
+  }
+  
+  public static final class a
+  {
+    public String appId;
+    public int dcs;
+    public String dct;
+    public int dcu;
+    public String title;
+    public int version;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.an
  * JD-Core Version:    0.7.0.1
  */

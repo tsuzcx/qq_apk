@@ -9,7 +9,7 @@ import android.os.Bundle;
 public class ReportFragment
   extends Fragment
 {
-  ActivityInitializationListener dl;
+  ActivityInitializationListener jdField_do;
   
   private void a(Lifecycle.Event paramEvent)
   {
@@ -46,7 +46,7 @@ public class ReportFragment
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    paramBundle = this.dl;
+    paramBundle = this.jdField_do;
     if (paramBundle != null) {
       paramBundle.onCreate();
     }
@@ -57,7 +57,7 @@ public class ReportFragment
   {
     super.onDestroy();
     a(Lifecycle.Event.ON_DESTROY);
-    this.dl = null;
+    this.jdField_do = null;
   }
   
   public void onPause()
@@ -69,7 +69,7 @@ public class ReportFragment
   public void onResume()
   {
     super.onResume();
-    ActivityInitializationListener localActivityInitializationListener = this.dl;
+    ActivityInitializationListener localActivityInitializationListener = this.jdField_do;
     if (localActivityInitializationListener != null) {
       localActivityInitializationListener.onResume();
     }
@@ -79,7 +79,7 @@ public class ReportFragment
   public void onStart()
   {
     super.onStart();
-    ActivityInitializationListener localActivityInitializationListener = this.dl;
+    ActivityInitializationListener localActivityInitializationListener = this.jdField_do;
     if (localActivityInitializationListener != null) {
       localActivityInitializationListener.onStart();
     }

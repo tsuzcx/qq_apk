@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="fill_parent" android:layout_height="@dimen/acq" layout="@layout/afz" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/g_2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.picker.WheelView android:id="@id/h81" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.picker.WheelView android:id="@id/dsn" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.picker.WheelView android:id="@id/b8m" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.picker.WheelView android:id="@id/ck3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.picker.WheelView android:id="@id/dnx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.picker.WheelView android:id="@id/f9w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

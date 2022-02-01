@@ -3,53 +3,68 @@ package com.tencent.mm.plugin.appbrand.dynamic.k;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.concurrent.CountDownLatch;
 
 public final class a
 {
-  public static <T extends com.tencent.mm.kernel.c.a> T Z(Class<T> paramClass)
+  public static <T extends com.tencent.mm.kernel.c.a> T aw(Class<T> paramClass)
   {
-    AppMethodBeat.i(11036);
-    Object localObject = com.tencent.mm.kernel.g.E(paramClass);
+    AppMethodBeat.i(121518);
+    Object localObject = com.tencent.mm.kernel.g.ab(paramClass);
     if (localObject != null)
     {
-      AppMethodBeat.o(11036);
+      AppMethodBeat.o(121518);
       return localObject;
     }
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      AppMethodBeat.o(11036);
+      AppMethodBeat.o(121518);
       return null;
     }
-    if (!com.tencent.mm.kernel.g.RM().eIn.eIH)
+    if (!com.tencent.mm.kernel.g.afC().gdw.gdQ)
     {
       CountDownLatch localCountDownLatch = new CountDownLatch(1);
-      localObject = new a.1(localCountDownLatch);
-      com.tencent.mm.kernel.g.RM().a((com.tencent.mm.kernel.api.g)localObject);
+      localObject = new com.tencent.mm.kernel.api.g()
+      {
+        public final void Lk()
+        {
+          AppMethodBeat.i(121516);
+          this.val$latch.countDown();
+          AppMethodBeat.o(121516);
+        }
+        
+        public final void ce(boolean paramAnonymousBoolean)
+        {
+          AppMethodBeat.i(121517);
+          this.val$latch.countDown();
+          AppMethodBeat.o(121517);
+        }
+      };
+      com.tencent.mm.kernel.g.afC().a((com.tencent.mm.kernel.api.g)localObject);
       try
       {
         localCountDownLatch.await();
-        com.tencent.mm.kernel.g.RM().b((com.tencent.mm.kernel.api.g)localObject);
+        com.tencent.mm.kernel.g.afC().b((com.tencent.mm.kernel.api.g)localObject);
       }
       catch (InterruptedException localInterruptedException)
       {
         for (;;)
         {
-          ab.printErrStackTrace("MicroMsg.SyncGetter", localInterruptedException, "", new Object[0]);
-          com.tencent.mm.kernel.g.RM().b((com.tencent.mm.kernel.api.g)localObject);
+          ad.printErrStackTrace("MicroMsg.SyncGetter", localInterruptedException, "", new Object[0]);
+          com.tencent.mm.kernel.g.afC().b((com.tencent.mm.kernel.api.g)localObject);
         }
       }
       finally
       {
-        com.tencent.mm.kernel.g.RM().b((com.tencent.mm.kernel.api.g)localObject);
-        AppMethodBeat.o(11036);
+        com.tencent.mm.kernel.g.afC().b((com.tencent.mm.kernel.api.g)localObject);
+        AppMethodBeat.o(121518);
       }
-      paramClass = com.tencent.mm.kernel.g.E(paramClass);
-      AppMethodBeat.o(11036);
+      paramClass = com.tencent.mm.kernel.g.ab(paramClass);
+      AppMethodBeat.o(121518);
       return paramClass;
     }
-    AppMethodBeat.o(11036);
+    AppMethodBeat.o(121518);
     return null;
   }
 }

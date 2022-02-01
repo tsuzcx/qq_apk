@@ -26,7 +26,7 @@ public class CommonStatusCodes
   
   public static String getStatusCodeString(int paramInt)
   {
-    AppMethodBeat.i(89444);
+    AppMethodBeat.i(4466);
     switch (paramInt)
     {
     case 1: 
@@ -35,55 +35,55 @@ public class CommonStatusCodes
     case 12: 
     default: 
       String str = 32 + "unknown status code: " + paramInt;
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return str;
     case -1: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "SUCCESS_CACHE";
     case 0: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "SUCCESS";
     case 2: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "SERVICE_VERSION_UPDATE_REQUIRED";
     case 3: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "SERVICE_DISABLED";
     case 4: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "SIGN_IN_REQUIRED";
     case 5: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "INVALID_ACCOUNT";
     case 6: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "RESOLUTION_REQUIRED";
     case 7: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "NETWORK_ERROR";
     case 8: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "INTERNAL_ERROR";
     case 10: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "DEVELOPER_ERROR";
     case 13: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "ERROR";
     case 14: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "INTERRUPTED";
     case 15: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "TIMEOUT";
     case 16: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "CANCELED";
     case 17: 
-      AppMethodBeat.o(89444);
+      AppMethodBeat.o(4466);
       return "API_NOT_CONNECTED";
     }
-    AppMethodBeat.o(89444);
+    AppMethodBeat.o(4466);
     return "DEAD_CLIENT";
   }
 }

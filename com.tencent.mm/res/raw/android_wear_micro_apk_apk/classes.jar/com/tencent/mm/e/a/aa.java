@@ -3,36 +3,36 @@ package com.tencent.mm.e.a;
 public final class aa
   extends com.tencent.mm.d.a
 {
-  public int Wi;
-  public String Wj;
-  public com.tencent.mm.d.b Wk;
-  public com.tencent.mm.d.b Wl;
-  public String Wm;
-  public String Wn;
+  public int Yd;
+  public String Ye;
+  public com.tencent.mm.d.b Yf;
+  public com.tencent.mm.d.b Yg;
+  public String Yh;
+  public String Yi;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.Wj == null) {
+      if (this.Ye == null) {
         throw new a.a.a.b("Not all required fields were included: Msg");
       }
-      paramVarArgs.aq(1, this.Wi);
-      if (this.Wj != null) {
-        paramVarArgs.d(2, this.Wj);
+      paramVarArgs.at(1, this.Yd);
+      if (this.Ye != null) {
+        paramVarArgs.d(2, this.Ye);
       }
-      if (this.Wk != null) {
-        paramVarArgs.c(3, this.Wk);
+      if (this.Yf != null) {
+        paramVarArgs.c(3, this.Yf);
       }
-      if (this.Wl != null) {
-        paramVarArgs.c(4, this.Wl);
+      if (this.Yg != null) {
+        paramVarArgs.c(4, this.Yg);
       }
-      if (this.Wm != null) {
-        paramVarArgs.d(5, this.Wm);
+      if (this.Yh != null) {
+        paramVarArgs.d(5, this.Yh);
       }
-      if (this.Wn != null) {
-        paramVarArgs.d(6, this.Wn);
+      if (this.Yi != null) {
+        paramVarArgs.d(6, this.Yi);
       }
       paramInt = 0;
     }
@@ -43,35 +43,35 @@ public final class aa
       if (paramInt != 1) {
         break;
       }
-      i = a.a.a.a.ak(1, this.Wi) + 0;
+      i = a.a.a.a.an(1, this.Yd) + 0;
       paramInt = i;
-      if (this.Wj != null) {
-        paramInt = i + a.a.a.b.b.a.e(2, this.Wj);
+      if (this.Ye != null) {
+        paramInt = i + a.a.a.b.b.a.e(2, this.Ye);
       }
       i = paramInt;
-      if (this.Wk != null) {
-        i = paramInt + a.a.a.a.a(3, this.Wk);
+      if (this.Yf != null) {
+        i = paramInt + a.a.a.b.b.a.b(3, this.Yf);
       }
       paramInt = i;
-      if (this.Wl != null) {
-        paramInt = i + a.a.a.a.a(4, this.Wl);
+      if (this.Yg != null) {
+        paramInt = i + a.a.a.b.b.a.b(4, this.Yg);
       }
       i = paramInt;
-      if (this.Wm != null) {
-        i = paramInt + a.a.a.b.b.a.e(5, this.Wm);
+      if (this.Yh != null) {
+        i = paramInt + a.a.a.b.b.a.e(5, this.Yh);
       }
       paramInt = i;
-    } while (this.Wn == null);
-    return i + a.a.a.b.b.a.e(6, this.Wn);
+    } while (this.Yi == null);
+    return i + a.a.a.b.b.a.e(6, this.Yi);
     if (paramInt == 2)
     {
-      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
-      if (this.Wj == null) {
+      if (this.Ye == null) {
         throw new a.a.a.b("Not all required fields were included: Msg");
       }
       return 0;
@@ -85,22 +85,22 @@ public final class aa
       default: 
         return -1;
       case 1: 
-        localaa.Wi = locala.ot();
+        localaa.Yd = locala.pg();
         return 0;
       case 2: 
-        localaa.Wj = locala.ou();
+        localaa.Ye = locala.ph();
         return 0;
       case 3: 
-        localaa.Wk = locala.ox();
+        localaa.Yf = locala.pk();
         return 0;
       case 4: 
-        localaa.Wl = locala.ox();
+        localaa.Yg = locala.pk();
         return 0;
       case 5: 
-        localaa.Wm = locala.ou();
+        localaa.Yh = locala.ph();
         return 0;
       }
-      localaa.Wn = locala.ou();
+      localaa.Yi = locala.ph();
       return 0;
     }
     return -1;

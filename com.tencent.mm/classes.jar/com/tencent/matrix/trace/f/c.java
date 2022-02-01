@@ -3,79 +3,85 @@ package com.tencent.matrix.trace.f;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.SystemClock;
-import com.tencent.mrs.b.a.a;
+import com.tencent.c.a.a.a;
+import com.tencent.matrix.trace.e.b.1;
+import com.tencent.matrix.trace.e.b.a;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.concurrent.TimeUnit;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.Executor;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class c
   extends f
 {
-  private final com.tencent.matrix.trace.a.a bRa;
-  private final long bSh;
-  long bSi;
-  private boolean bSj;
-  long bSk;
-  long bSl;
-  long bSm;
-  long bSn;
-  private HashSet<com.tencent.matrix.trace.e.b> listeners = new HashSet();
+  private final com.tencent.matrix.trace.a.b cBH;
+  private final long cDc;
+  long cDd;
+  private boolean cDe;
+  long cDf;
+  long cDg;
+  long cDh;
+  long cDi;
+  public int cDj = 0;
+  private long cDk = 0L;
+  private final HashSet<com.tencent.matrix.trace.e.b> listeners = new HashSet();
   
-  public c(com.tencent.matrix.trace.a.a parama)
+  public c(com.tencent.matrix.trace.a.b paramb)
   {
-    this.bRa = parama;
-    this.bSh = (TimeUnit.MILLISECONDS.convert(com.tencent.matrix.trace.core.b.zt().bLF, TimeUnit.NANOSECONDS) + 1L);
-    if (parama.bNO == null)
+    this.cBH = paramb;
+    this.cDc = com.tencent.matrix.trace.core.b.HU().csA;
+    if (paramb.cwi == null)
     {
       i = 10000;
-      this.bSi = i;
-      this.bSj = parama.bQT;
-      if (parama.bNO != null) {
-        break label203;
+      this.cDd = i;
+      this.cDe = paramb.cBz;
+      if (paramb.cwi != null) {
+        break label202;
       }
       i = 42;
-      label76:
-      this.bSk = i;
-      if (parama.bNO != null) {
-        break label224;
+      label75:
+      this.cDf = i;
+      if (paramb.cwi != null) {
+        break label223;
       }
       i = 24;
-      label92:
-      this.bSl = i;
-      if (parama.bNO != null) {
-        break label245;
+      label91:
+      this.cDg = i;
+      if (paramb.cwi != null) {
+        break label244;
       }
       i = 3;
-      label107:
-      this.bSn = i;
-      if (parama.bNO != null) {
-        break label265;
+      label106:
+      this.cDi = i;
+      if (paramb.cwi != null) {
+        break label264;
       }
     }
-    label265:
-    for (int i = 9;; i = parama.bNO.get(a.a.Bar.name(), 9))
+    label264:
+    for (int i = 9;; i = paramb.cwi.get(a.a.Ihc.name(), 9))
     {
-      this.bSm = i;
-      com.tencent.matrix.g.c.i("Matrix.FrameTracer", "[init] frameIntervalMs:%s isFPSEnable:%s", new Object[] { Long.valueOf(this.bSh), Boolean.valueOf(this.bSj) });
-      if (this.bSj) {
+      this.cDh = i;
+      com.tencent.matrix.g.c.i("Matrix.FrameTracer", "[init] frameIntervalMs:%s isFPSEnable:%s", new Object[] { Long.valueOf(this.cDc), Boolean.valueOf(this.cDe) });
+      if (this.cDe) {
         a(new b((byte)0));
       }
       return;
-      i = parama.bNO.get(a.a.Bao.name(), 10000);
+      i = paramb.cwi.get(a.a.IgZ.name(), 10000);
       break;
-      label203:
-      i = parama.bNO.get(a.a.Bat.name(), 42);
-      break label76;
-      label224:
-      i = parama.bNO.get(a.a.Bas.name(), 24);
-      break label92;
-      label245:
-      i = parama.bNO.get(a.a.Baq.name(), 3);
-      break label107;
+      label202:
+      i = paramb.cwi.get(a.a.Ihe.name(), 42);
+      break label75;
+      label223:
+      i = paramb.cwi.get(a.a.Ihd.name(), 24);
+      break label91;
+      label244:
+      i = paramb.cwi.get(a.a.Ihb.name(), 3);
+      break label106;
     }
   }
   
@@ -88,49 +94,83 @@ public final class c
     }
   }
   
-  public final void a(final String paramString, final long paramLong1, long paramLong2, long paramLong3, long paramLong4)
+  public final void a(final String paramString, final long paramLong1, long paramLong2, boolean paramBoolean, final long paramLong3, final long paramLong4, final long paramLong5, long paramLong6)
   {
-    if (com.tencent.matrix.a.bLP.bLR)
+    if (com.tencent.matrix.a.csS.csU)
     {
-      paramLong2 = System.currentTimeMillis();
-      try
+      long l1 = System.currentTimeMillis();
+      long l2 = paramLong2 - paramLong3;
+      for (;;)
       {
-        synchronized (this.listeners)
+        final int i;
+        final com.tencent.matrix.trace.e.b localb;
+        try
         {
-          Iterator localIterator = this.listeners.iterator();
-          while (localIterator.hasNext())
+          i = (int)(l2 / this.cDc);
+          this.cDj += i;
+          long l3 = this.cDk;
+          this.cDk = (Math.max(l2, this.cDc) + l3);
+          synchronized (this.listeners)
           {
-            final com.tencent.matrix.trace.e.b localb = (com.tencent.matrix.trace.e.b)localIterator.next();
-            if (this.bRa.bQX) {
+            Iterator localIterator = this.listeners.iterator();
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            localb = (com.tencent.matrix.trace.e.b)localIterator.next();
+            if (this.cBH.cBD) {
               localb.time = SystemClock.uptimeMillis();
             }
-            int i = (int)(paramLong1 / this.bSh);
-            if (localb.getHandler() != null) {
-              localb.getHandler().post(new Runnable()
-              {
-                public final void run()
-                {
-                  localb.a(paramString, paramLong1, this.bSr);
-                }
-              });
+            if (localb.getExecutor() == null) {
+              break label449;
             }
-            if (this.bRa.bQX)
+            if (localb.Ib() > 0)
             {
+              Object localObject = b.a.Id();
+              ((b.a)localObject).cCD = paramString;
+              ((b.a)localObject).cCE = paramLong1;
+              ((b.a)localObject).cCF = paramLong2;
+              ((b.a)localObject).cCG = i;
+              ((b.a)localObject).cCb = paramBoolean;
+              ((b.a)localObject).cCH = paramLong3;
+              ((b.a)localObject).cCI = paramLong4;
+              ((b.a)localObject).cCJ = paramLong5;
+              ((b.a)localObject).cCK = paramLong6;
+              localb.list.add(localObject);
+              if ((localb.list.size() >= localb.cCz) && (localb.getExecutor() != null))
+              {
+                localObject = new LinkedList(localb.list);
+                localb.list.clear();
+                localb.getExecutor().execute(new b.1(localb, (List)localObject));
+              }
+              if (!this.cBH.cBD) {
+                continue;
+              }
               localb.time = (SystemClock.uptimeMillis() - localb.time);
               com.tencent.matrix.g.c.d("Matrix.FrameTracer", "[notifyListener] cost:%sms listener:%s", new Object[] { Long.valueOf(localb.time), localb });
             }
           }
+          localb.getExecutor().execute(new Runnable()
+          {
+            public final void run()
+            {
+              localb.a(paramString, paramLong1, i, paramLong3, paramLong4, paramLong5, this.cDs, this.cDt, this.cDu);
+            }
+          });
         }
-      }
-      finally
-      {
-        paramLong1 = System.currentTimeMillis() - paramLong2;
-        if ((this.bRa.isDebug) && (paramLong1 > this.bSh)) {
-          com.tencent.matrix.g.c.w("Matrix.FrameTracer", "[notifyListener] warm! maybe do heavy work in doFrameSync! size:%s cost:%sms", new Object[] { Integer.valueOf(this.listeners.size()), Long.valueOf(paramLong1) });
+        finally
+        {
+          paramLong1 = System.currentTimeMillis() - l1;
+          if ((this.cBH.cxf) && (paramLong1 > this.cDc)) {
+            com.tencent.matrix.g.c.w("Matrix.FrameTracer", "[notifyListener] warm! maybe do heavy work in doFrameSync! size:%s cost:%sms", new Object[] { Integer.valueOf(this.listeners.size()), Long.valueOf(paramLong1) });
+          }
         }
+        continue;
+        label449:
+        l2 = (paramLong2 - paramLong3) / 1000000L;
+        localb.a(paramString, l2, l2, i, paramBoolean);
       }
-      paramLong1 = System.currentTimeMillis() - paramLong2;
-      if ((this.bRa.isDebug) && (paramLong1 > this.bSh)) {
+      paramLong1 = System.currentTimeMillis() - l1;
+      if ((this.cBH.cxf) && (paramLong1 > this.cDc)) {
         com.tencent.matrix.g.c.w("Matrix.FrameTracer", "[notifyListener] warm! maybe do heavy work in doFrameSync! size:%s cost:%sms", new Object[] { Integer.valueOf(this.listeners.size()), Long.valueOf(paramLong1) });
       }
     }
@@ -145,21 +185,21 @@ public final class c
     }
   }
   
-  public final void zy()
+  public final void onAlive()
   {
-    super.zy();
-    com.tencent.matrix.trace.core.b.zt().a(this);
+    super.onAlive();
+    com.tencent.matrix.trace.core.b.HU().a(this);
   }
   
-  public final void zz()
+  public final void onDead()
   {
-    super.zz();
-    com.tencent.matrix.trace.core.b.zt().b(this);
+    super.onDead();
+    com.tencent.matrix.trace.core.b.HU().b(this);
   }
   
-  static enum a
+  public static enum a
   {
-    int index;
+    public int index;
     
     private a(int paramInt)
     {
@@ -170,181 +210,195 @@ public final class c
   final class b
     extends com.tencent.matrix.trace.e.b
   {
-    private HashMap<String, c.c> bSA = new HashMap();
-    private Handler bSz = new Handler(com.tencent.matrix.g.b.zI().getLooper());
+    private Handler cDC = new Handler(com.tencent.matrix.g.b.Ip().getLooper());
+    private HashMap<String, c.c> cvB = new HashMap();
+    Executor executor = new Executor()
+    {
+      public final void execute(Runnable paramAnonymousRunnable)
+      {
+        c.b.a(c.b.this).post(paramAnonymousRunnable);
+      }
+    };
     
     private b() {}
     
-    public final void a(String paramString, long paramLong, int paramInt)
+    public final int Ib()
     {
-      super.a(paramString, paramLong, paramInt);
-      if ((paramString == null) || (paramString.equals(""))) {}
-      for (int i = 1; i != 0; i = 0) {
-        return;
-      }
-      c.c localc = (c.c)this.bSA.get(paramString);
-      if (localc == null)
+      return 300;
+    }
+    
+    public final void O(List<b.a> paramList)
+    {
+      super.O(paramList);
+      Iterator localIterator = paramList.iterator();
+      Object localObject2;
+      int i;
+      while (localIterator.hasNext())
       {
-        localc = new c.c(c.this, paramString);
-        this.bSA.put(paramString, localc);
+        paramList = (b.a)localIterator.next();
+        localObject2 = paramList.cCD;
+        i = paramList.cCG;
+        boolean bool = paramList.cCb;
+        if ((!com.tencent.matrix.trace.g.b.dq((String)localObject2)) && (bool))
+        {
+          paramList = (c.c)this.cvB.get(localObject2);
+          if (paramList != null) {
+            break label1025;
+          }
+          paramList = new c.c(c.this, (String)localObject2);
+          this.cvB.put(localObject2, paramList);
+        }
       }
+      label1025:
       for (;;)
       {
-        paramLong = com.tencent.matrix.trace.core.b.zt().bLF;
-        long l = localc.bSB;
-        localc.bSB = (paramLong * (paramInt + 1) / 1000000L + l);
-        localc.bSD += paramInt;
-        localc.bSC += 1;
-        Object localObject1;
-        int j;
-        int k;
-        if (paramInt >= localc.bSs.bSk)
-        {
-          localObject1 = localc.bSE;
-          i = c.a.bSt.index;
-          localObject1[i] += 1;
-          localObject1 = localc.bSF;
-          j = c.a.bSt.index;
-          i = localObject1[j];
-          k = paramInt;
-        }
         for (;;)
         {
-          localObject1[j] = (i + k);
-          if (localc.bSB < c.this.bSi) {
-            break;
+          float f1 = 1.0F * (float)com.tencent.matrix.trace.core.b.HU().csA / 1000000.0F;
+          float f2 = (float)paramList.cDE;
+          paramList.cDE = ((f1 * (i + 1) + f2));
+          paramList.cDG += i;
+          paramList.cDF += 1;
+          Object localObject3;
+          int j;
+          if (i >= paramList.cDv.cDf)
+          {
+            localObject3 = paramList.cDH;
+            j = c.a.cDw.index;
+            localObject3[j] += 1;
+            localObject3 = paramList.cDI;
+            j = c.a.cDw.index;
+            localObject3[j] = (i + localObject3[j]);
+            label228:
+            if (paramList.cDE < c.this.cDd) {
+              break;
+            }
+            this.cvB.remove(localObject2);
+            f1 = Math.min(60.0F, 1000.0F * paramList.cDF / (float)paramList.cDE);
+            com.tencent.matrix.g.c.i("Matrix.FrameTracer", "[report] FPS:%s %s", new Object[] { Float.valueOf(f1), paramList.toString() });
           }
-          this.bSA.remove(paramString);
-          float f = Math.min(60.0F, 1000.0F * localc.bSC / (float)localc.bSB);
-          com.tencent.matrix.g.c.i("Matrix.FrameTracer", "[report] FPS:%s %s", new Object[] { Float.valueOf(f), localc.toString() });
           try
           {
-            paramString = (com.tencent.matrix.trace.b)com.tencent.matrix.b.yD().z(com.tencent.matrix.trace.b.class);
-            Object localObject2;
-            if (paramString == null)
+            localObject2 = (com.tencent.matrix.trace.a)com.tencent.matrix.b.GF().V(com.tencent.matrix.trace.a.class);
+            if (localObject2 == null)
             {
-              return;
-              if (paramInt >= localc.bSs.bSl)
+              paramList.cDF = 0;
+              paramList.cDG = 0;
+              paramList.cDE = 0L;
+              break;
+              if (i >= paramList.cDv.cDg)
               {
-                localObject1 = localc.bSE;
-                i = c.a.bSu.index;
-                localObject1[i] += 1;
-                localObject1 = localc.bSF;
-                j = c.a.bSu.index;
-                i = localObject1[j];
-                k = paramInt;
+                localObject3 = paramList.cDH;
+                j = c.a.cDx.index;
+                localObject3[j] += 1;
+                localObject3 = paramList.cDI;
+                j = c.a.cDx.index;
+                localObject3[j] = (i + localObject3[j]);
+                break label228;
               }
-              else if (paramInt >= localc.bSs.bSm)
+              if (i >= paramList.cDv.cDh)
               {
-                localObject1 = localc.bSE;
-                i = c.a.bSv.index;
-                localObject1[i] += 1;
-                localObject1 = localc.bSF;
-                j = c.a.bSv.index;
-                i = localObject1[j];
-                k = paramInt;
+                localObject3 = paramList.cDH;
+                j = c.a.cDy.index;
+                localObject3[j] += 1;
+                localObject3 = paramList.cDI;
+                j = c.a.cDy.index;
+                localObject3[j] = (i + localObject3[j]);
+                break label228;
               }
-              else if (paramInt >= localc.bSs.bSn)
+              if (i >= paramList.cDv.cDi)
               {
-                localObject1 = localc.bSE;
-                i = c.a.bSw.index;
-                localObject1[i] += 1;
-                localObject1 = localc.bSF;
-                j = c.a.bSw.index;
-                i = localObject1[j];
-                k = paramInt;
+                localObject3 = paramList.cDH;
+                j = c.a.cDz.index;
+                localObject3[j] += 1;
+                localObject3 = paramList.cDI;
+                j = c.a.cDz.index;
+                localObject3[j] = (i + localObject3[j]);
+                break label228;
               }
-              else
-              {
-                localObject1 = localc.bSE;
-                i = c.a.bSx.index;
-                localObject1[i] += 1;
-                localObject2 = localc.bSF;
-                int m = c.a.bSx.index;
-                int n = localObject2[m];
-                i = n;
-                j = m;
-                localObject1 = localObject2;
-                k = paramInt;
-                if (paramInt < 0)
-                {
-                  k = 0;
-                  i = n;
-                  j = m;
-                  localObject1 = localObject2;
-                }
-              }
+              localObject3 = paramList.cDH;
+              j = c.a.cDA.index;
+              localObject3[j] += 1;
+              localObject3 = paramList.cDI;
+              j = c.a.cDA.index;
+              int k = localObject3[j];
+              localObject3[j] = (Math.max(i, 0) + k);
+              break label228;
             }
-            else
-            {
-              localObject2 = new JSONObject();
-              ((JSONObject)localObject2).put(c.a.bSt.name(), localc.bSE[c.a.bSt.index]);
-              ((JSONObject)localObject2).put(c.a.bSu.name(), localc.bSE[c.a.bSu.index]);
-              ((JSONObject)localObject2).put(c.a.bSv.name(), localc.bSE[c.a.bSv.index]);
-              ((JSONObject)localObject2).put(c.a.bSw.name(), localc.bSE[c.a.bSw.index]);
-              ((JSONObject)localObject2).put(c.a.bSx.name(), localc.bSE[c.a.bSx.index]);
-              JSONObject localJSONObject = new JSONObject();
-              localJSONObject.put(c.a.bSt.name(), localc.bSF[c.a.bSt.index]);
-              localJSONObject.put(c.a.bSu.name(), localc.bSF[c.a.bSu.index]);
-              localJSONObject.put(c.a.bSv.name(), localc.bSF[c.a.bSv.index]);
-              localJSONObject.put(c.a.bSw.name(), localc.bSF[c.a.bSw.index]);
-              localJSONObject.put(c.a.bSx.name(), localc.bSF[c.a.bSx.index]);
-              localObject1 = com.tencent.matrix.g.a.a(new JSONObject(), paramString.getApplication());
-              ((JSONObject)localObject1).put("scene", localc.bLS);
-              ((JSONObject)localObject1).put("dropLevel", localObject2);
-              ((JSONObject)localObject1).put("dropSum", localJSONObject);
-              ((JSONObject)localObject1).put("fps", f);
-              localObject2 = new com.tencent.matrix.e.b();
-              ((com.tencent.matrix.e.b)localObject2).tag = "Trace_FPS";
-              ((com.tencent.matrix.e.b)localObject2).bOx = ((JSONObject)localObject1);
-              paramString.onDetectIssue((com.tencent.matrix.e.b)localObject2);
-              return;
-            }
+            Object localObject4 = new JSONObject();
+            ((JSONObject)localObject4).put(c.a.cDw.name(), paramList.cDH[c.a.cDw.index]);
+            ((JSONObject)localObject4).put(c.a.cDx.name(), paramList.cDH[c.a.cDx.index]);
+            ((JSONObject)localObject4).put(c.a.cDy.name(), paramList.cDH[c.a.cDy.index]);
+            ((JSONObject)localObject4).put(c.a.cDz.name(), paramList.cDH[c.a.cDz.index]);
+            ((JSONObject)localObject4).put(c.a.cDA.name(), paramList.cDH[c.a.cDA.index]);
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put(c.a.cDw.name(), paramList.cDI[c.a.cDw.index]);
+            localJSONObject.put(c.a.cDx.name(), paramList.cDI[c.a.cDx.index]);
+            localJSONObject.put(c.a.cDy.name(), paramList.cDI[c.a.cDy.index]);
+            localJSONObject.put(c.a.cDz.name(), paramList.cDI[c.a.cDz.index]);
+            localJSONObject.put(c.a.cDA.name(), paramList.cDI[c.a.cDA.index]);
+            localObject3 = com.tencent.matrix.g.a.a(new JSONObject(), ((com.tencent.matrix.trace.a)localObject2).getApplication());
+            ((JSONObject)localObject3).put("scene", paramList.csV);
+            ((JSONObject)localObject3).put("dropLevel", localObject4);
+            ((JSONObject)localObject3).put("dropSum", localJSONObject);
+            ((JSONObject)localObject3).put("fps", f1);
+            localObject4 = new com.tencent.matrix.report.c();
+            ((com.tencent.matrix.report.c)localObject4).tag = "Trace_FPS";
+            ((com.tencent.matrix.report.c)localObject4).cwV = ((JSONObject)localObject3);
+            ((com.tencent.matrix.trace.a)localObject2).onDetectIssue((com.tencent.matrix.report.c)localObject4);
+            paramList.cDF = 0;
+            paramList.cDG = 0;
+            paramList.cDE = 0L;
+            break;
           }
-          catch (JSONException paramString)
+          catch (JSONException localJSONException)
           {
-            com.tencent.matrix.g.c.e("Matrix.FrameTracer", "json error", new Object[] { paramString });
-            return;
+            com.tencent.matrix.g.c.e("Matrix.FrameTracer", "json error", new Object[] { localJSONException });
+            paramList.cDF = 0;
+            paramList.cDG = 0;
+            paramList.cDE = 0L;
+            break;
           }
           finally
           {
-            localc.bSC = 0;
-            localc.bSD = 0;
-            localc.bSB = 0L;
+            paramList.cDF = 0;
+            paramList.cDG = 0;
+            paramList.cDE = 0L;
           }
         }
+        return;
       }
     }
     
-    public final Handler getHandler()
+    public final Executor getExecutor()
     {
-      return this.bSz;
+      return this.executor;
     }
   }
   
   final class c
   {
-    String bLS;
-    long bSB;
-    int bSC = 0;
-    int bSD;
-    int[] bSE = new int[c.a.values().length];
-    int[] bSF = new int[c.a.values().length];
+    long cDE;
+    int cDF = 0;
+    int cDG;
+    int[] cDH = new int[c.a.values().length];
+    int[] cDI = new int[c.a.values().length];
+    String csV;
     
     c(String paramString)
     {
-      this.bLS = paramString;
+      this.csV = paramString;
     }
     
     public final String toString()
     {
-      return "visibleScene=" + this.bLS + ", sumFrame=" + this.bSC + ", sumDroppedFrames=" + this.bSD + ", sumFrameCost=" + this.bSB + ", dropLevel=" + Arrays.toString(this.bSE);
+      return "visibleScene=" + this.csV + ", sumFrame=" + this.cDF + ", sumDroppedFrames=" + this.cDG + ", sumFrameCost=" + this.cDE + ", dropLevel=" + Arrays.toString(this.cDH);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.matrix.trace.f.c
  * JD-Core Version:    0.7.0.1
  */

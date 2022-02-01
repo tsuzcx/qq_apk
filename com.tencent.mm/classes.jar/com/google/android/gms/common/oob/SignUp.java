@@ -32,17 +32,17 @@ public class SignUp
   
   public static AccountManagerFuture<Boolean> checkSignUpState(Context paramContext, String paramString, String[] paramArrayOfString, AccountManagerCallback<Boolean> paramAccountManagerCallback, Handler paramHandler)
   {
-    AppMethodBeat.i(61413);
+    AppMethodBeat.i(11905);
     if (!TextUtils.isEmpty(paramString))
     {
       bool = true;
       Preconditions.checkArgument(bool, "The accountName is required");
       if (paramArrayOfString == null) {
-        break label100;
+        break label101;
       }
     }
     int j;
-    label100:
+    label101:
     for (boolean bool = true;; bool = false)
     {
       Preconditions.checkArgument(bool, "The requiredFeatures parameter is required");
@@ -64,45 +64,45 @@ public class SignUp
     if (j == 0)
     {
       paramContext = new IllegalStateException("Given account does not exist on the device");
-      AppMethodBeat.o(61413);
+      AppMethodBeat.o(11905);
       throw paramContext;
     }
     paramContext = paramContext.hasFeatures(new Account(paramString, "com.google"), paramArrayOfString, paramAccountManagerCallback, paramHandler);
-    AppMethodBeat.o(61413);
+    AppMethodBeat.o(11905);
     return paramContext;
   }
   
   public static boolean isSignedUpBlocking(Context paramContext, String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(61414);
+    AppMethodBeat.i(11906);
     boolean bool = ((Boolean)checkSignUpState(paramContext, paramString, paramArrayOfString, null, null).getResult()).booleanValue();
-    AppMethodBeat.o(61414);
+    AppMethodBeat.o(11906);
     return bool;
   }
   
   public static Intent newSignUpIntent(String paramString)
   {
-    AppMethodBeat.i(61410);
+    AppMethodBeat.i(11902);
     paramString = newSignUpIntent(paramString, null);
-    AppMethodBeat.o(61410);
+    AppMethodBeat.o(11902);
     return paramString;
   }
   
   public static Intent newSignUpIntent(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(61411);
+    AppMethodBeat.i(11903);
     Intent localIntent = new Intent();
     localIntent.setPackage("com.google.android.gms");
     localIntent.setAction("com.google.android.gms.common.oob.OOB_SIGN_UP");
     localIntent.putExtra("com.google.android.gms.common.oob.EXTRA_ACCOUNT_NAME", paramString1);
     localIntent.putExtra("com.google.android.gms.common.oob.EXTRA_BACK_BUTTON_NAME", paramString2);
-    AppMethodBeat.o(61411);
+    AppMethodBeat.o(11903);
     return localIntent;
   }
   
   public static Intent newSignUpIntent(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(61412);
+    AppMethodBeat.i(11904);
     Intent localIntent = new Intent();
     localIntent.setPackage("com.google.android.gms");
     localIntent.setAction("com.google.android.gms.common.oob.OOB_SIGN_UP");
@@ -110,13 +110,13 @@ public class SignUp
     localIntent.putExtra("com.google.android.gms.common.oob.EXTRA_BACK_BUTTON_NAME", paramString2);
     localIntent.putExtra("com.google.android.gms.common.oob.EXTRAS_PROMO_APP_PACKAGE", paramString3);
     localIntent.putExtra("com.google.android.gms.common.oob.EXTRAS_PROMO_APP_TEXT", paramString4);
-    AppMethodBeat.o(61412);
+    AppMethodBeat.o(11904);
     return localIntent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.gms.common.oob.SignUp
  * JD-Core Version:    0.7.0.1
  */

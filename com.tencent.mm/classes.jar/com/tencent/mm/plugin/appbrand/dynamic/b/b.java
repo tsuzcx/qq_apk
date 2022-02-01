@@ -5,23 +5,23 @@ import com.tencent.mm.plugin.appbrand.canvas.e;
 
 public final class b
 {
-  private static e hoj;
+  private static e jlr;
   
   static
   {
-    AppMethodBeat.i(10769);
-    hoj = new c();
-    AppMethodBeat.o(10769);
+    AppMethodBeat.i(121251);
+    jlr = new c();
+    AppMethodBeat.o(121251);
   }
   
-  public static e azN()
+  public static e aVu()
   {
-    return hoj;
+    return jlr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.b.b
  * JD-Core Version:    0.7.0.1
  */

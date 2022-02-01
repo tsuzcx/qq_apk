@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
 import android.app.Dialog;
-import com.tencent.mm.ai.a.a;
-import com.tencent.mm.protocal.protobuf.bpw;
+import com.tencent.mm.al.c.a;
+import com.tencent.mm.protocal.protobuf.cer;
 import com.tencent.mm.vending.c.a;
 
 final class WalletLqtBeforeSaveUI$1
-  implements a<Void, a.a<bpw>>
+  implements a<Void, c.a<cer>>
 {
   WalletLqtBeforeSaveUI$1(WalletLqtBeforeSaveUI paramWalletLqtBeforeSaveUI, Dialog paramDialog) {}
 }

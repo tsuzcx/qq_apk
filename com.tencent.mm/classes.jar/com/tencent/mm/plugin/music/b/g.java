@@ -1,46 +1,64 @@
 package com.tencent.mm.plugin.music.b;
 
 import android.os.Looper;
-import com.tencent.mm.g.a.t;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.v;
 import com.tencent.mm.plugin.music.f.a.d;
 import com.tencent.mm.plugin.music.f.a.d.a;
 import com.tencent.mm.plugin.music.f.a.e;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bc;
+import com.tencent.mm.sdk.platformtools.bc.a;
 
 public abstract class g
   implements d
 {
-  protected c oXb = null;
-  ax oXi;
-  protected boolean oXj;
-  protected d.a oXk;
+  protected c tUh = null;
+  bc tUo;
+  protected boolean tUp;
+  protected d.a tUq;
+  
+  public final void Hp(int paramInt)
+  {
+    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onErrorEvent with errCode:%d", new Object[] { Integer.valueOf(paramInt) });
+    v localv = new v();
+    localv.dbN.action = 4;
+    localv.dbN.state = "error";
+    localv.dbN.errCode = e.HZ(paramInt);
+    localv.dbN.errMsg = e.te(paramInt);
+    localv.dbN.cTr = cTR();
+    localv.dbN.appId = getAppId();
+    a.ESL.a(localv, Looper.getMainLooper());
+    if (this.tUh != null) {
+      this.tUh.onError(cTR());
+    }
+  }
   
   public final void a(c paramc)
   {
-    this.oXb = paramc;
+    this.tUh = paramc;
   }
   
   public final void a(d.a parama)
   {
-    this.oXk = parama;
+    this.tUq = parama;
   }
   
-  public final boolean aix()
+  public final boolean azG()
   {
     return false;
   }
   
-  protected final void bUl()
+  protected final void cTN()
   {
     try
     {
-      if (this.oXi != null)
+      if (this.tUo != null)
       {
-        this.oXi.end();
-        this.oXi.dtv();
-        this.oXi = null;
+        this.tUo.end();
+        this.tUo.eGl();
+        this.tUo = null;
       }
       return;
     }
@@ -51,140 +69,124 @@ public abstract class g
     }
   }
   
-  public final void bUm() {}
+  public final void cTO() {}
   
-  public boolean bUn()
+  public boolean cTP()
   {
     return false;
   }
   
-  public final com.tencent.mm.aw.c bUo()
+  public final com.tencent.mm.az.c cTQ()
   {
     return null;
   }
   
-  public abstract String bUp();
+  public abstract String cTR();
   
-  public final void bUq()
+  public final void cTS()
   {
-    ab.i("MicroMsg.Audio.BaseAudioPlayer", "onPrepareEvent");
-    t localt = new t();
-    localt.cmZ.action = 7;
-    localt.cmZ.state = "canplay";
-    localt.cmZ.duration = getDuration();
-    localt.cmZ.ceu = bUp();
-    localt.cmZ.appId = getAppId();
-    a.ymk.a(localt, Looper.getMainLooper());
+    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onPrepareEvent");
+    v localv = new v();
+    localv.dbN.action = 7;
+    localv.dbN.state = "canplay";
+    localv.dbN.duration = getDuration();
+    localv.dbN.cTr = cTR();
+    localv.dbN.appId = getAppId();
+    a.ESL.a(localv, Looper.getMainLooper());
   }
   
-  public final void bUr()
+  public final void cTT()
   {
-    ab.i("MicroMsg.Audio.BaseAudioPlayer", "onStartEvent %b", new Object[] { Boolean.valueOf(aiw()) });
-    t localt = new t();
-    localt.cmZ.action = 0;
-    localt.cmZ.state = "play";
-    localt.cmZ.ceu = bUp();
-    localt.cmZ.appId = getAppId();
-    a.ymk.a(localt, Looper.getMainLooper());
-    if (this.oXb != null) {
-      this.oXb.onStart(bUp());
+    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onStartEvent %b", new Object[] { Boolean.valueOf(azF()) });
+    v localv = new v();
+    localv.dbN.action = 0;
+    localv.dbN.state = "play";
+    localv.dbN.cTr = cTR();
+    localv.dbN.appId = getAppId();
+    a.ESL.a(localv, Looper.getMainLooper());
+    if (this.tUh != null) {
+      this.tUh.onStart(cTR());
     }
   }
   
-  public final void bUs()
+  public final void cTU()
   {
-    ab.i("MicroMsg.Audio.BaseAudioPlayer", "onResumeEvent");
-    t localt = new t();
-    localt.cmZ.action = 1;
-    localt.cmZ.state = "play";
-    localt.cmZ.ceu = bUp();
-    localt.cmZ.appId = getAppId();
-    a.ymk.a(localt, Looper.getMainLooper());
-    if (this.oXb != null) {
-      this.oXb.onStart(bUp());
+    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onResumeEvent");
+    v localv = new v();
+    localv.dbN.action = 1;
+    localv.dbN.state = "play";
+    localv.dbN.cTr = cTR();
+    localv.dbN.appId = getAppId();
+    a.ESL.a(localv, Looper.getMainLooper());
+    if (this.tUh != null) {
+      this.tUh.onStart(cTR());
     }
   }
   
-  public final void bUt()
+  public final void cTV()
   {
-    ab.i("MicroMsg.Audio.BaseAudioPlayer", "onPauseEvent");
-    t localt = new t();
-    localt.cmZ.action = 2;
-    localt.cmZ.state = "pause";
-    localt.cmZ.ceu = bUp();
-    localt.cmZ.appId = getAppId();
-    a.ymk.a(localt, Looper.getMainLooper());
-    if (this.oXb != null) {
-      this.oXb.UF(bUp());
+    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onPauseEvent");
+    v localv = new v();
+    localv.dbN.action = 2;
+    localv.dbN.state = "pause";
+    localv.dbN.cTr = cTR();
+    localv.dbN.appId = getAppId();
+    a.ESL.a(localv, Looper.getMainLooper());
+    if (this.tUh != null) {
+      this.tUh.ahP(cTR());
     }
   }
   
-  public final void bUu()
+  public final void cTW()
   {
-    ab.i("MicroMsg.Audio.BaseAudioPlayer", "onStopEvent");
-    t localt = new t();
-    localt.cmZ.action = 3;
-    localt.cmZ.state = "stop";
-    localt.cmZ.ceu = bUp();
-    localt.cmZ.appId = getAppId();
-    a.ymk.a(localt, Looper.getMainLooper());
-    if (this.oXb != null) {
-      this.oXb.Ns(bUp());
+    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onStopEvent");
+    v localv = new v();
+    localv.dbN.action = 3;
+    localv.dbN.state = "stop";
+    localv.dbN.cTr = cTR();
+    localv.dbN.appId = getAppId();
+    a.ESL.a(localv, Looper.getMainLooper());
+    if (this.tUh != null) {
+      this.tUh.XM(cTR());
     }
   }
   
-  public final void bUv()
+  public final void cTX()
   {
-    ab.i("MicroMsg.Audio.BaseAudioPlayer", "onSeekToEvent");
-    t localt = new t();
-    localt.cmZ.action = 6;
-    localt.cmZ.state = "seeked";
-    localt.cmZ.ceu = bUp();
-    localt.cmZ.appId = getAppId();
-    a.ymk.a(localt, Looper.getMainLooper());
+    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onSeekToEvent");
+    v localv = new v();
+    localv.dbN.action = 6;
+    localv.dbN.state = "seeked";
+    localv.dbN.cTr = cTR();
+    localv.dbN.appId = getAppId();
+    a.ESL.a(localv, Looper.getMainLooper());
   }
   
-  public final void bUw()
+  public final void cTY()
   {
-    ab.i("MicroMsg.Audio.BaseAudioPlayer", "onStopEvent");
-    t localt = new t();
-    localt.cmZ.action = 5;
-    localt.cmZ.state = "ended";
-    localt.cmZ.ceu = bUp();
-    localt.cmZ.appId = getAppId();
-    a.ymk.a(localt, Looper.getMainLooper());
-    if (this.oXb != null) {
-      this.oXb.ek(bUp());
+    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onStopEvent");
+    v localv = new v();
+    localv.dbN.action = 5;
+    localv.dbN.state = "ended";
+    localv.dbN.cTr = cTR();
+    localv.dbN.appId = getAppId();
+    a.ESL.a(localv, Looper.getMainLooper());
+    if (this.tUh != null) {
+      this.tUh.fr(cTR());
     }
   }
   
-  public final void bUx()
+  public final void cTZ()
   {
-    ab.i("MicroMsg.Audio.BaseAudioPlayer", "onErrorEvent");
-    zL(-1);
+    ad.i("MicroMsg.Audio.BaseAudioPlayer", "onErrorEvent");
+    Hp(-1);
   }
   
   public abstract String getAppId();
-  
-  public final void zL(int paramInt)
-  {
-    ab.i("MicroMsg.Audio.BaseAudioPlayer", "onErrorEvent with errCode:%d", new Object[] { Integer.valueOf(paramInt) });
-    t localt = new t();
-    localt.cmZ.action = 4;
-    localt.cmZ.state = "error";
-    localt.cmZ.errCode = e.Aw(paramInt);
-    localt.cmZ.errMsg = e.oP(paramInt);
-    localt.cmZ.ceu = bUp();
-    localt.cmZ.appId = getAppId();
-    a.ymk.a(localt, Looper.getMainLooper());
-    if (this.oXb != null) {
-      this.oXb.onError(bUp());
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.g
  * JD-Core Version:    0.7.0.1
  */

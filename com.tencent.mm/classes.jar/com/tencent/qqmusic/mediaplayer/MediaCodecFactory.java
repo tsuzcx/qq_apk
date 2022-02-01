@@ -21,7 +21,7 @@ public class MediaCodecFactory
   
   static
   {
-    AppMethodBeat.i(128466);
+    AppMethodBeat.i(114218);
     mDecoderMap = new HashMap();
     mSupportAudioType = new ArrayList();
     registerDecoder(AudioFormat.AudioType.M4A, FfmpegRecognition.class);
@@ -33,15 +33,15 @@ public class MediaCodecFactory
     registerDecoder(AudioFormat.AudioType.WMA, WmaRecognition.class);
     registerDecoder(AudioFormat.AudioType.MP4, FfmpegRecognition.class);
     registerDecoder(AudioFormat.AudioType.AAC, FfmpegRecognition.class);
-    AppMethodBeat.o(128466);
+    AppMethodBeat.o(114218);
   }
   
   static IAudioRecognition createDecoderByType(AudioFormat.AudioType paramAudioType)
   {
-    AppMethodBeat.i(128464);
+    AppMethodBeat.i(114216);
     if (!AudioFormat.isAudioType(paramAudioType))
     {
-      AppMethodBeat.o(128464);
+      AppMethodBeat.o(114216);
       return null;
     }
     if (mDecoderMap.containsKey(paramAudioType)) {}
@@ -50,7 +50,7 @@ public class MediaCodecFactory
       try
       {
         paramAudioType = (IAudioRecognition)((Class)mDecoderMap.get(paramAudioType)).newInstance();
-        AppMethodBeat.o(128464);
+        AppMethodBeat.o(114216);
         return paramAudioType;
       }
       catch (Throwable paramAudioType)
@@ -63,31 +63,31 @@ public class MediaCodecFactory
   
   public static ArrayList<AudioFormat.AudioType> getSupportAudioType()
   {
-    AppMethodBeat.i(128465);
+    AppMethodBeat.i(114217);
     ArrayList localArrayList = new ArrayList(mSupportAudioType);
-    AppMethodBeat.o(128465);
+    AppMethodBeat.o(114217);
     return localArrayList;
   }
   
   private static void registerDecoder(AudioFormat.AudioType paramAudioType, Class<? extends IAudioRecognition> paramClass)
   {
-    AppMethodBeat.i(128462);
+    AppMethodBeat.i(114214);
     mDecoderMap.put(paramAudioType, paramClass);
     mSupportAudioType.add(paramAudioType);
-    AppMethodBeat.o(128462);
+    AppMethodBeat.o(114214);
   }
   
   public static void unRegisterDecoder(AudioFormat.AudioType paramAudioType)
   {
-    AppMethodBeat.i(128463);
+    AppMethodBeat.i(114215);
     mSupportAudioType.remove(paramAudioType);
     mDecoderMap.remove(paramAudioType);
-    AppMethodBeat.o(128463);
+    AppMethodBeat.o(114215);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.MediaCodecFactory
  * JD-Core Version:    0.7.0.1
  */

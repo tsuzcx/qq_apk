@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:padding="@dimen/h" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RadioGroup android:orientation="vertical" android:id="@id/bcn" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/a1w" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o"
+      xmlns:android="http://schemas.android.com/apk/res/android" />
 </LinearLayout>

@@ -3,12 +3,16 @@ package com.tencent.mm.plugin.honey_pay.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.wallet_core.c.ae;
+import com.tencent.mm.al.n;
+import com.tencent.mm.wallet_core.c.ah;
 import com.tencent.mm.wallet_core.ui.e;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import java.math.BigDecimal;
@@ -17,112 +21,153 @@ import java.math.RoundingMode;
 public class HoneyPayModifyQuotaUI
   extends HoneyPayBaseUI
 {
-  private String nHE;
-  private TextView nIR;
-  private long nIs;
-  private long nIt;
-  private WalletFormView nJl;
-  private Button nJm;
+  private Button lkJ;
+  private long svZ;
+  private String svk;
+  private WalletFormView swS;
+  private long swa;
+  private TextView swy;
   
-  private void iq(boolean paramBoolean)
+  private void mf(boolean paramBoolean)
   {
-    AppMethodBeat.i(41920);
-    if ((paramBoolean) && (!this.nIR.isShown()))
+    AppMethodBeat.i(64809);
+    if ((paramBoolean) && (!this.swy.isShown()))
     {
-      String str = ae.dSz() + e.a(new StringBuilder().append(this.nIt).toString(), "100", 2, RoundingMode.HALF_UP).toString();
-      this.nIR.setText(getString(2131300689, new Object[] { str }));
-      this.nIR.startAnimation(AnimationUtils.loadAnimation(this, 2131034194));
-      this.nIR.setVisibility(0);
-      AppMethodBeat.o(41920);
+      String str = ah.fkg() + e.a(new StringBuilder().append(this.swa).toString(), "100", 2, RoundingMode.HALF_UP).toString();
+      this.swy.setText(getString(2131760286, new Object[] { str }));
+      this.swy.startAnimation(AnimationUtils.loadAnimation(this, 2130772068));
+      this.swy.setVisibility(0);
+      AppMethodBeat.o(64809);
       return;
     }
-    if ((!paramBoolean) && (this.nIR.isShown()))
+    if ((!paramBoolean) && (this.swy.isShown()))
     {
-      this.nIR.startAnimation(AnimationUtils.loadAnimation(this, 2131034214));
-      this.nIR.setVisibility(8);
+      this.swy.startAnimation(AnimationUtils.loadAnimation(this, 2130772088));
+      this.swy.setVisibility(8);
     }
-    AppMethodBeat.o(41920);
+    AppMethodBeat.o(64809);
   }
   
-  private void ir(boolean paramBoolean)
+  private void mg(boolean paramBoolean)
   {
-    AppMethodBeat.i(41921);
-    if ((paramBoolean) && (!this.nIR.isShown()))
+    AppMethodBeat.i(64810);
+    if ((paramBoolean) && (!this.swy.isShown()))
     {
-      String str = ae.dSz() + e.a(new StringBuilder().append(this.nIs).toString(), "100", 2, RoundingMode.HALF_UP);
-      this.nIR.setText(getString(2131300685, new Object[] { str }));
-      this.nIR.startAnimation(AnimationUtils.loadAnimation(this, 2131034194));
-      this.nIR.setVisibility(0);
-      AppMethodBeat.o(41921);
+      String str = ah.fkg() + e.a(new StringBuilder().append(this.svZ).toString(), "100", 2, RoundingMode.HALF_UP);
+      this.swy.setText(getString(2131760282, new Object[] { str }));
+      this.swy.startAnimation(AnimationUtils.loadAnimation(this, 2130772068));
+      this.swy.setVisibility(0);
+      AppMethodBeat.o(64810);
       return;
     }
-    if ((!paramBoolean) && (this.nIR.isShown()))
+    if ((!paramBoolean) && (this.swy.isShown()))
     {
-      this.nIR.startAnimation(AnimationUtils.loadAnimation(this, 2131034214));
-      this.nIR.setVisibility(8);
+      this.swy.startAnimation(AnimationUtils.loadAnimation(this, 2130772088));
+      this.swy.setVisibility(8);
     }
-    AppMethodBeat.o(41921);
+    AppMethodBeat.o(64810);
   }
   
-  private void is(boolean paramBoolean)
+  private void mh(boolean paramBoolean)
   {
-    AppMethodBeat.i(41922);
-    this.nJm.setEnabled(paramBoolean);
-    AppMethodBeat.o(41922);
+    AppMethodBeat.i(64811);
+    this.lkJ.setEnabled(paramBoolean);
+    AppMethodBeat.o(64811);
   }
   
   public int getLayoutId()
   {
-    return 2130969873;
+    return 2131494450;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(41917);
-    this.nJl = ((WalletFormView)findViewById(2131825059));
-    this.nJm = ((Button)findViewById(2131825060));
-    this.nIR = ((TextView)findViewById(2131825061));
-    this.nJl.dSY();
-    this.nJl.getTitleTv().setText(ae.dSz());
-    setEditFocusListener(this.nJl, 2, false);
-    this.nJl.a(new HoneyPayModifyQuotaUI.1(this));
-    this.nJm.setOnClickListener(new HoneyPayModifyQuotaUI.2(this));
-    this.nJl.postDelayed(new HoneyPayModifyQuotaUI.3(this), 100L);
-    AppMethodBeat.o(41917);
+    AppMethodBeat.i(64806);
+    this.swS = ((WalletFormView)findViewById(2131300834));
+    this.lkJ = ((Button)findViewById(2131300833));
+    this.swy = ((TextView)findViewById(2131300835));
+    this.swS.setContentPadding$3b4dfe4b(0);
+    this.swS.getTitleTv().setText(ah.fkg());
+    setEditFocusListener(this.swS, 2, false);
+    this.swS.a(new TextWatcher()
+    {
+      public final void afterTextChanged(Editable paramAnonymousEditable)
+      {
+        AppMethodBeat.i(64802);
+        if (paramAnonymousEditable.toString().startsWith(".")) {
+          paramAnonymousEditable.insert(0, "0");
+        }
+        String str = paramAnonymousEditable.toString();
+        int i = str.indexOf(".");
+        int j = str.length();
+        if ((i >= 0) && (j - i > 2)) {
+          paramAnonymousEditable.delete(i + 3, j);
+        }
+        HoneyPayModifyQuotaUI.a(HoneyPayModifyQuotaUI.this);
+        AppMethodBeat.o(64802);
+      }
+      
+      public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+      
+      public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+    });
+    this.lkJ.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(64803);
+        if (HoneyPayModifyQuotaUI.a(HoneyPayModifyQuotaUI.this))
+        {
+          HoneyPayModifyQuotaUI.b(HoneyPayModifyQuotaUI.this);
+          HoneyPayModifyQuotaUI.this.hideTenpayKB();
+        }
+        AppMethodBeat.o(64803);
+      }
+    });
+    this.swS.postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(64804);
+        HoneyPayModifyQuotaUI.c(HoneyPayModifyQuotaUI.this).d(HoneyPayModifyQuotaUI.this);
+        AppMethodBeat.o(64804);
+      }
+    }, 100L);
+    AppMethodBeat.o(64806);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(41919);
+    AppMethodBeat.i(64808);
     if ((paramInt1 == 1) && (paramInt2 == -1) && (paramIntent.getBooleanExtra("key_modify_create_line_succ", false)))
     {
       setResult(-1, paramIntent);
       finish();
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(41919);
+    AppMethodBeat.o(64808);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(41916);
+    AppMethodBeat.i(64805);
     super.onCreate(paramBundle);
-    this.nIs = getIntent().getLongExtra("key_max_credit_line", 0L);
-    this.nIt = getIntent().getLongExtra("key_min_credit_line", 0L);
-    this.nHE = getIntent().getStringExtra("key_card_no");
+    this.svZ = getIntent().getLongExtra("key_max_credit_line", 0L);
+    this.swa = getIntent().getLongExtra("key_min_credit_line", 0L);
+    this.svk = getIntent().getStringExtra("key_card_no");
     initView();
-    setMMTitle(2131300690);
-    AppMethodBeat.o(41916);
+    setMMTitle(2131760287);
+    AppMethodBeat.o(64805);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(41918);
+    AppMethodBeat.i(64807);
     super.onDestroy();
-    AppMethodBeat.o(41918);
+    AppMethodBeat.o(64807);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     return false;
   }
@@ -135,7 +180,7 @@ public class HoneyPayModifyQuotaUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.ui.HoneyPayModifyQuotaUI
  * JD-Core Version:    0.7.0.1
  */

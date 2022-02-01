@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/a4c" android:layout_width="fill_parent" android:layout_height="@dimen/n9"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="@dimen/la" android:paddingRight="@dimen/la" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/jp" android:layout_width="@dimen/lq" android:layout_height="@dimen/lq" android:layout_marginRight="@dimen/dp" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <ImageView android:background="@color/a0a" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-</LinearLayout>
+<RelativeLayout android:id="@id/b6y" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/c9h" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.base.MMViewPager android:id="@id/c9g" android:background="@null" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:layout_below="@id/fb9" android:unselectedAlpha="1.2" android:transitionGroup="true" />
+    <include layout="@layout/b25" />
+    <RelativeLayout android:id="@id/b75" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/b70" android:background="@drawable/ag7" android:paddingTop="@dimen/c5" android:paddingBottom="@dimen/c5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <com.tencent.mm.pluginsdk.ui.tools.RedesignVideoPlayerSeekBar android:id="@id/gne" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c8" android:layout_marginRight="@dimen/c8" android:onClick="onClick" />
+            <com.tencent.mm.ui.tools.PressAlphaImageView android:id="@id/glt" android:visibility="gone" android:layout_width="@dimen/c9" android:layout_height="@dimen/c9" android:layout_marginLeft="@dimen/c8" android:layout_marginTop="@dimen/c5" android:src="@raw/icons_outlined_close" android:layout_below="@id/gne" android:elevation="@dimen/ajv" app:iconColor="@color/aj" />
+            <com.tencent.mm.ui.tools.PressAlphaImageView android:id="@id/gnc" android:layout_width="@dimen/c9" android:layout_height="@dimen/c9" android:layout_marginTop="@dimen/c5" android:layout_marginRight="@dimen/c8" android:src="@raw/icons_outlined_more" android:layout_below="@id/gne" android:layout_alignParentRight="true" android:onClick="onClick" android:elevation="@dimen/ajv" app:iconColor="@color/aj" />
+            <com.tencent.mm.ui.tools.PressAlphaImageView android:id="@id/bmu" android:layout_width="@dimen/c9" android:layout_height="@dimen/c9" android:layout_marginTop="@dimen/c5" android:layout_marginRight="@dimen/c8" android:src="@raw/icons_outlined_photo_wall" android:layout_toLeftOf="@id/gnc" android:layout_below="@id/gne" android:onClick="onClick" android:elevation="@dimen/ajv" app:iconColor="@color/aj" />
+            <com.tencent.mm.ui.tools.PressAlphaImageView android:id="@id/bem" android:layout_width="@dimen/c9" android:layout_height="@dimen/c9" android:layout_marginTop="@dimen/c5" android:layout_marginRight="@dimen/c8" android:src="@raw/icons_outlined_download" android:layout_toLeftOf="@id/bmu" android:layout_below="@id/gne" android:onClick="onClick" android:elevation="@dimen/ajv" app:iconColor="@color/aj" />
+            <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c8" android:layout_marginTop="@dimen/c5" android:layout_alignParentLeft="true" layout="@layout/afj" />
+        </RelativeLayout>
+        <ViewStub android:id="@id/fb9" android:visibility="gone" android:layout="@layout/aft" android:layout_width="fill_parent" android:layout_height="@dimen/b5" android:layout_alignParentTop="true" />
+        <ViewStub android:id="@id/c9n" android:visibility="gone" android:layout="@layout/asn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    </RelativeLayout>
+</RelativeLayout>

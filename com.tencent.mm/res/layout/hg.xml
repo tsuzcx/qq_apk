@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/f2" android:paddingLeft="@dimen/l2" android:paddingTop="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/ra" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" android:src="@drawable/aew" android:scaleType="centerCrop" />
-    <LinearLayout android:orientation="vertical" android:id="@id/a90" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ll">
-        <TextView android:textColor="@color/rv" android:id="@id/a8d" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/o2" />
-        <TextView android:textColor="@color/w_" android:id="@id/rc" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/lb" style="@style/o2" />
-        <TextView android:textSize="@dimen/ko" android:textColor="#4c000000" android:id="@id/lq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/lb" />
-        <View android:id="@id/a8e" android:background="@color/k0" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/l2" />
+    <com.tencent.mm.ui.base.sortview.CatalogView android:id="@id/aha" android:background="@color/eq" android:paddingLeft="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/n4" />
+    <LinearLayout android:orientation="vertical" android:id="@id/b3i" android:background="@drawable/a_c" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:layout_gravity="center_vertical" android:id="@id/a8i" android:background="@color/a7c" android:layout_width="26.0dip" android:layout_height="26.0dip" android:scaleType="fitCenter" />
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/a8j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/h" android:text="" android:maxLines="2" />
+        </LinearLayout>
+        <View android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" />
     </LinearLayout>
 </LinearLayout>

@@ -3,32 +3,32 @@ package com.tencent.xweb.x5;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.sdk.CookieSyncManager;
-import com.tencent.xweb.c.b.b;
+import com.tencent.xweb.internal.CookieInternal.ICookieSyncManagerInternal;
 
 public final class e
-  implements b.b
+  implements CookieInternal.ICookieSyncManagerInternal
 {
-  CookieSyncManager BHU;
+  CookieSyncManager IRT;
   
   public final void init(Context paramContext)
   {
-    AppMethodBeat.i(84806);
-    this.BHU = CookieSyncManager.createInstance(paramContext);
-    AppMethodBeat.o(84806);
+    AppMethodBeat.i(153841);
+    this.IRT = CookieSyncManager.createInstance(paramContext);
+    AppMethodBeat.o(153841);
   }
   
   public final void sync()
   {
-    AppMethodBeat.i(84807);
-    if (this.BHU != null) {
-      this.BHU.sync();
+    AppMethodBeat.i(153842);
+    if (this.IRT != null) {
+      this.IRT.sync();
     }
-    AppMethodBeat.o(84807);
+    AppMethodBeat.o(153842);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.e
  * JD-Core Version:    0.7.0.1
  */

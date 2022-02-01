@@ -1,75 +1,99 @@
 package com.tencent.mm.plugin.brandservice.ui.widget;
 
-import a.f.b.j;
-import a.l;
-import a.v;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.video.d.d;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "progressLen", "", "totalLen", "onProgressChanged"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "visible", "", "onVisibilityChanged"})
 final class MPVideoView$l
-  implements d.d
+  implements e.f
 {
   MPVideoView$l(MPVideoView paramMPVideoView) {}
   
-  public final void dj(int paramInt1, int paramInt2)
+  public final void onVisibilityChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(153019);
-    if (paramInt2 <= 0)
-    {
-      AppMethodBeat.o(153019);
-      return;
+    AppMethodBeat.i(7495);
+    MPVideoView.A(this.noy);
+    Object localObject1 = MPVideoView.k(this.noy);
+    if (localObject1 != null) {
+      ((MPVideoView.c)localObject1).iC(paramBoolean);
     }
-    if (paramInt1 < 0) {
-      paramInt1 = 0;
-    }
-    for (;;)
+    localObject1 = MPVideoView.h(this.noy);
+    if (localObject1 != null)
     {
-      int i = paramInt1;
-      if (paramInt1 > paramInt2) {
-        i = paramInt2;
-      }
-      Object localObject = MPVideoView.F(this.kjR);
-      if (localObject == null) {
-        j.ebi();
-      }
-      paramInt1 = i * ((ImageView)localObject).getWidth() / paramInt2;
-      localObject = MPVideoView.G(this.kjR);
-      if (localObject == null) {
-        j.ebi();
-      }
-      localObject = ((ImageView)localObject).getLayoutParams();
-      if (localObject == null)
+      Object localObject2;
+      if (paramBoolean)
       {
-        localObject = new v("null cannot be cast to non-null type android.widget.FrameLayout.LayoutParams");
-        AppMethodBeat.o(153019);
-        throw ((Throwable)localObject);
-      }
-      localObject = (FrameLayout.LayoutParams)localObject;
-      ((FrameLayout.LayoutParams)localObject).width = paramInt1;
-      ImageView localImageView = MPVideoView.G(this.kjR);
-      if (localImageView == null) {
-        j.ebi();
-      }
-      localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      localObject = MPVideoView.G(this.kjR);
-      if (localObject == null) {
-        j.ebi();
-      }
-      ((ImageView)localObject).requestLayout();
-      localObject = MPVideoView.m(this.kjR);
-      if (localObject != null)
-      {
-        ((MPVideoView.c)localObject).aZG();
-        AppMethodBeat.o(153019);
+        ((MPExoVideoWrapper)localObject1).nnF = true;
+        localObject2 = ((MPExoVideoWrapper)localObject1).nnm;
+        if ((localObject2 == null) || (((ImageView)localObject2).getVisibility() != 0))
+        {
+          localObject2 = ((MPExoVideoWrapper)localObject1).nnn;
+          if (localObject2 != null) {
+            if (((TextView)localObject2).getVisibility() != 0) {
+              break label265;
+            }
+          }
+        }
+        else
+        {
+          ad.i(MPExoVideoWrapper.TAG, "hide switchingResolution onControllerBarVisible");
+          if (((MPExoVideoWrapper)localObject1).nnE)
+          {
+            localObject2 = ((MPExoVideoWrapper)localObject1).nnm;
+            if ((localObject2 != null) && (((ImageView)localObject2).getVisibility() == 0)) {
+              ((MPExoVideoWrapper)localObject1).nnD = true;
+            }
+          }
+          localObject2 = ((MPExoVideoWrapper)localObject1).nnm;
+          if (localObject2 != null) {
+            ((ImageView)localObject2).setVisibility(8);
+          }
+          localObject1 = ((MPExoVideoWrapper)localObject1).nnn;
+          if (localObject1 == null) {
+            break label165;
+          }
+          ((TextView)localObject1).setVisibility(8);
+          AppMethodBeat.o(7495);
+          return;
+        }
+        AppMethodBeat.o(7495);
         return;
+        label165:
+        AppMethodBeat.o(7495);
       }
-      AppMethodBeat.o(153019);
+      else
+      {
+        ((MPExoVideoWrapper)localObject1).nnF = false;
+        if (((MPExoVideoWrapper)localObject1).nnD)
+        {
+          ad.i(MPExoVideoWrapper.TAG, "show switchingResolution onControllerBarVisible isSwitchingResolution = " + ((MPExoVideoWrapper)localObject1).nnE);
+          ((MPExoVideoWrapper)localObject1).nnD = false;
+          if (((MPExoVideoWrapper)localObject1).nnE)
+          {
+            ((MPExoVideoWrapper)localObject1).bGC();
+            AppMethodBeat.o(7495);
+            return;
+          }
+          localObject2 = ((MPExoVideoWrapper)localObject1).nnm;
+          if (localObject2 != null) {
+            ((ImageView)localObject2).setVisibility(8);
+          }
+          localObject2 = ((MPExoVideoWrapper)localObject1).nnn;
+          if (localObject2 != null) {
+            ((TextView)localObject2).setVisibility(0);
+          }
+          ((MPExoVideoWrapper)localObject1).bGD();
+        }
+      }
+      label265:
+      AppMethodBeat.o(7495);
       return;
     }
+    AppMethodBeat.o(7495);
   }
 }
 

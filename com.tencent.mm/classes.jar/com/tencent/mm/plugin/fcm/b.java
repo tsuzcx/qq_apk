@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.fcm;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dd;
-import com.tencent.mm.protocal.protobuf.de;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.dp;
+import com.tencent.mm.protocal.protobuf.dq;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
-  extends m
+  extends n
   implements k
 {
-  private f callback;
-  private final com.tencent.mm.ai.b rr;
+  private g callback;
+  private final com.tencent.mm.al.b rr;
   
   public b(String paramString)
   {
-    AppMethodBeat.i(56435);
+    AppMethodBeat.i(127575);
     b.a locala = new b.a();
-    locala.fsX = new dd();
-    locala.fsY = new de();
+    locala.gUU = new dp();
+    locala.gUV = new dq();
     locala.uri = "/cgi-bin/micromsg-bin/androidfcmreg";
     locala.funcId = 216;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    ((dd)this.rr.fsV.fta).wkV = paramString;
-    AppMethodBeat.o(56435);
+    this.rr = locala.atI();
+    ((dp)this.rr.gUS.gUX).Ctj = paramString;
+    AppMethodBeat.o(127575);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(56436);
-    this.callback = paramf;
+    AppMethodBeat.i(127576);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(56436);
+    AppMethodBeat.o(127576);
     return i;
   }
   
@@ -50,15 +50,15 @@ public final class b
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(56437);
-    ab.i("MicroMsg.FCM.NetSceneFcmReg", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
+    AppMethodBeat.i(127577);
+    ad.i("MicroMsg.FCM.NetSceneFcmReg", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(56437);
+    AppMethodBeat.o(127577);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fcm.b
  * JD-Core Version:    0.7.0.1
  */

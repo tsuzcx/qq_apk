@@ -14,16 +14,16 @@ public class Asset
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<Asset> CREATOR = new ah();
-  private byte[] Sh;
-  private String Si;
-  public ParcelFileDescriptor Sj;
+  private byte[] TW;
+  private String TX;
+  public ParcelFileDescriptor TY;
   public Uri uri;
   
   Asset(byte[] paramArrayOfByte, String paramString, ParcelFileDescriptor paramParcelFileDescriptor, Uri paramUri)
   {
-    this.Sh = paramArrayOfByte;
-    this.Si = paramString;
-    this.Sj = paramParcelFileDescriptor;
+    this.TW = paramArrayOfByte;
+    this.TX = paramString;
+    this.TY = paramParcelFileDescriptor;
     this.uri = paramUri;
   }
   
@@ -61,23 +61,23 @@ public class Asset
         return false;
       }
       paramObject = (Asset)paramObject;
-    } while ((Arrays.equals(this.Sh, paramObject.Sh)) && (b.b(this.Si, paramObject.Si)) && (b.b(this.Sj, paramObject.Sj)) && (b.b(this.uri, paramObject.uri)));
+    } while ((Arrays.equals(this.TW, paramObject.TW)) && (b.c(this.TX, paramObject.TX)) && (b.c(this.TY, paramObject.TY)) && (b.c(this.uri, paramObject.uri)));
     return false;
   }
   
   public final byte[] getData()
   {
-    return this.Sh;
+    return this.TW;
   }
   
   public int hashCode()
   {
-    return Arrays.deepHashCode(new Object[] { this.Sh, this.Si, this.Sj, this.uri });
+    return Arrays.deepHashCode(new Object[] { this.TW, this.TX, this.TY, this.uri });
   }
   
-  public final String kp()
+  public final String ky()
   {
-    return this.Si;
+    return this.TX;
   }
   
   public String toString()
@@ -85,20 +85,20 @@ public class Asset
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("Asset[@");
     localStringBuilder.append(Integer.toHexString(hashCode()));
-    if (this.Si == null) {
+    if (this.TX == null) {
       localStringBuilder.append(", nodigest");
     }
     for (;;)
     {
-      if (this.Sh != null)
+      if (this.TW != null)
       {
         localStringBuilder.append(", size=");
-        localStringBuilder.append(this.Sh.length);
+        localStringBuilder.append(this.TW.length);
       }
-      if (this.Sj != null)
+      if (this.TY != null)
       {
         localStringBuilder.append(", fd=");
-        localStringBuilder.append(this.Sj);
+        localStringBuilder.append(this.TY);
       }
       if (this.uri != null)
       {
@@ -108,7 +108,7 @@ public class Asset
       localStringBuilder.append("]");
       return localStringBuilder.toString();
       localStringBuilder.append(", ");
-      localStringBuilder.append(this.Si);
+      localStringBuilder.append(this.TX);
     }
   }
   

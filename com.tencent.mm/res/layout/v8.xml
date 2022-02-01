@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" style="@style/n6"
+<RelativeLayout android:orientation="vertical" android:id="@id/b6u" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/bgk" android:background="@drawable/gr" android:padding="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/a6q" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bgl" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/bep" android:layout_weight="1.0" />
-    </LinearLayout>
-    <include layout="@layout/v7" />
-</LinearLayout>
+    <com.tencent.mm.ui.tools.CropImageView android:gravity="center" android:layout_gravity="center" android:id="@id/b6v" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="#00000000" android:scaleType="fitCenter" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/b6t">
+        <View android:id="@id/b6z" android:visibility="invisible" android:layout_width="312.0dip" android:layout_height="312.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/b74" android:background="@drawable/avs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerInside" android:layout_above="@id/b6t" />
+    <com.tencent.mm.ui.base.MMHorList android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/b6s" android:background="@drawable/aou" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:spacing="0.0dip" android:layout_above="@id/b6t" />
+</RelativeLayout>

@@ -3,7 +3,7 @@ package com.tencent.mm.vending.a;
 public abstract class a<_Struct>
   extends c<_Struct, Class<?>, Void>
 {
-  protected abstract _Struct b(Class<?> paramClass);
+  protected abstract _Struct h(Class<?> paramClass);
 }
 
 

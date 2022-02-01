@@ -11,12 +11,12 @@ final class zzin
   
   public final void run()
   {
-    AppMethodBeat.i(69326);
+    AppMethodBeat.i(1849);
     zzey localzzey = zzii.zzd(this.zzape);
     if (localzzey == null)
     {
       this.zzape.zzge().zzim().log("Failed to send current screen to service");
-      AppMethodBeat.o(69326);
+      AppMethodBeat.o(1849);
       return;
     }
     try
@@ -27,7 +27,7 @@ final class zzin
       for (;;)
       {
         zzii.zze(this.zzape);
-        AppMethodBeat.o(69326);
+        AppMethodBeat.o(1849);
         return;
         localzzey.zza(this.zzaow.zzaoj, this.zzaow.zzul, this.zzaow.zzaoi, this.zzape.getContext().getPackageName());
       }
@@ -36,13 +36,13 @@ final class zzin
     catch (RemoteException localRemoteException)
     {
       this.zzape.zzge().zzim().zzg("Failed to send current screen to the service", localRemoteException);
-      AppMethodBeat.o(69326);
+      AppMethodBeat.o(1849);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzin
  * JD-Core Version:    0.7.0.1
  */

@@ -2,23 +2,23 @@ package com.tencent.mm.ui;
 
 public abstract interface l
 {
-  public abstract void dBY();
+  public abstract void eQA();
   
-  public abstract void dBZ();
+  public abstract void eQB();
   
-  public abstract void dCa();
+  public abstract void eQC();
   
-  public abstract void dCb();
+  public abstract void eQD();
   
-  public abstract void dCc();
+  public abstract void eQE();
   
-  public abstract void dCd();
+  public abstract void eQF();
   
-  public abstract void dCe();
+  public abstract void eQG();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.l
  * JD-Core Version:    0.7.0.1
  */

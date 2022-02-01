@@ -7,16 +7,15 @@ import android.graphics.Typeface;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.websearch.api.aa;
 import com.tencent.mm.pluginsdk.cmd.a;
-import com.tencent.mm.pluginsdk.cmd.b;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.sdk.platformtools.g;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.ui.ao;
 import java.util.Map;
 
 public final class j
@@ -24,26 +23,29 @@ public final class j
 {
   static
   {
-    AppMethodBeat.i(16143);
-    b.a(new j(), new String[] { "//version" });
-    AppMethodBeat.o(16143);
+    AppMethodBeat.i(20188);
+    com.tencent.mm.pluginsdk.cmd.b.a(new j(), new String[] { "//version" });
+    AppMethodBeat.o(20188);
   }
   
   public static void init() {}
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(16142);
+    AppMethodBeat.i(20187);
     paramString = new StringBuilder();
-    paramString.append(String.format("[ver  ] %s %08X\n", new Object[] { g.d(paramContext, d.whH, true), Integer.valueOf(d.whH) }));
-    paramString.append(f.bau());
-    paramString.append(String.format("[cid  ] %d\n", new Object[] { Integer.valueOf(g.bWu) }));
-    paramString.append(String.format("[s.ver] %d\n", new Object[] { Integer.valueOf(aa.Jf(0)) }));
-    paramString.append(String.format("[r.ver] %s\n", new Object[] { "0x27000536" }));
-    if (f.EX_DEVICE_LOGIN) {
+    paramString.append(String.format("[ver  ] %s %08X\n", new Object[] { i.c(paramContext, d.CpK, true), Integer.valueOf(d.CpK) }));
+    paramString.append(com.tencent.mm.sdk.platformtools.h.info());
+    paramString.append(String.format("[cid  ] %d\n", new Object[] { Integer.valueOf(i.cJR) }));
+    paramString.append(String.format("[s.ver] %d\n", new Object[] { Integer.valueOf(aa.Sb(0)) }));
+    paramString.append(String.format("[l.ver] %d %s\n", new Object[] { Integer.valueOf(aa.Sb(1)), ((com.tencent.mm.plugin.topstory.a.b)g.ad(com.tencent.mm.plugin.topstory.a.b.class)).getWebViewType() }));
+    paramString.append(String.format("[w.ver] %d\n", new Object[] { Integer.valueOf(aa.Sb(3)) }));
+    paramString.append(String.format("[b.ver] %d\n", new Object[] { Integer.valueOf(aa.Sb(2)) }));
+    paramString.append(String.format("[r.ver] %s\n", new Object[] { com.tencent.mm.sdk.platformtools.h.glW }));
+    if (com.tencent.mm.sdk.platformtools.h.EX_DEVICE_LOGIN) {
       try
       {
-        Map localMap = br.F(bo.convertStreamToString(paramContext.getAssets().open("merged_features.xml")), "merged");
+        Map localMap = bw.K(bt.convertStreamToString(paramContext.getAssets().open("merged_features.xml")), "merged");
         if (localMap != null)
         {
           i = 0;
@@ -53,7 +55,7 @@ public final class j
           {
             paramArrayOfString = (String)localMap.get(paramArrayOfString);
             if (paramArrayOfString == null) {
-              break label255;
+              break label344;
             }
             paramString.append(String.format("[feature#%02d] %s\n", new Object[] { Integer.valueOf(i), paramArrayOfString }));
             i += 1;
@@ -64,26 +66,26 @@ public final class j
       }
       catch (Exception paramArrayOfString)
       {
-        ab.printErrStackTrace("MicroMsg.Version", paramArrayOfString, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Version", paramArrayOfString, "", new Object[0]);
       }
     }
-    label255:
+    label344:
     paramArrayOfString.setText(paramString);
     paramArrayOfString.setGravity(19);
     paramArrayOfString.setTextSize(1, 10.0F);
     paramArrayOfString.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    paramArrayOfString.setTextColor(-16777216);
+    paramArrayOfString.setTextColor(ao.aD(paramContext, 2130968584));
     paramArrayOfString.setTypeface(Typeface.MONOSPACE);
-    int i = paramContext.getResources().getDimensionPixelSize(2131427772);
+    int i = paramContext.getResources().getDimensionPixelSize(2131165480);
     paramArrayOfString.setPadding(i, i, i, i);
-    h.a(paramContext, null, paramArrayOfString, null);
-    AppMethodBeat.o(16142);
+    com.tencent.mm.ui.base.h.a(paramContext, null, paramArrayOfString, null);
+    AppMethodBeat.o(20187);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.a.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,328 +1,209 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-import android.os.Environment;
-import com.tencent.luggage.g.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.vfs.b;
-import java.io.File;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.a.e;
+import d.a.j;
+import d.g.a.b;
+import d.g.b.k;
+import d.l;
+import d.y;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import org.json.JSONArray;
 
-public class s
-  implements o
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appstorage/KVStorageUtil;", "", "()V", "INTERNAL_KEY_SEPARATOR", "", "MAX_STORAGE_ID", "", "NORMAL_KEY_SEPARATOR", "RET_GET_NO_SUCH_KEY", "", "[Ljava/lang/Object;", "TOTAL_DATA_SIZE_KEY", "TOTAL_STORAGE_ID_KEY", "addStorageId", "", "appId", "storageId", "getter", "Lkotlin/Function1;", "setter", "Lkotlin/Function2;", "calculateDataSize", "key", "data", "checkStorageIdInvalid", "", "generateInternalRecordKey", "generateRecordKey", "separator", "getAllStorageId", "", "getQuota", "removeStorageId", "removeStorageIdAll", "luggage-wechat-full-sdk_release"})
+public final class s
 {
-  public final LinkedList<o> had;
-  private final o hae;
+  public static final Object[] iSV;
+  public static final s iSW;
   
-  public s(String paramString)
+  static
   {
-    AppMethodBeat.i(105390);
-    this.hae = new g();
-    this.had = new LinkedList();
-    Object localObject1 = new File(Environment.getExternalStorageDirectory(), "luggage/".concat(String.valueOf(paramString)));
-    paramString = this.had;
-    Object localObject2 = ((File)localObject1).getAbsolutePath();
-    localObject1 = new l(new File((String)localObject2, "objects/").getAbsolutePath(), "default_obfuscation_key", "wxfile://");
-    localObject2 = new w(new File((String)localObject2, "files/").getAbsolutePath());
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(localObject1);
-    localLinkedList.add(localObject2);
-    paramString.addAll(localLinkedList);
-    AppMethodBeat.o(105390);
+    AppMethodBeat.i(147897);
+    iSW = new s();
+    iSV = new Object[] { o.a.iSR };
+    AppMethodBeat.o(147897);
   }
   
-  public final j Y(String paramString, boolean paramBoolean)
+  public static final int U(int paramInt, String paramString)
   {
-    AppMethodBeat.i(105396);
-    paramString = zn(paramString).Y(paramString, paramBoolean);
-    AppMethodBeat.o(105396);
-    return paramString;
-  }
-  
-  public final <T extends o> T Y(Class<T> paramClass)
-  {
-    AppMethodBeat.i(105392);
-    Iterator localIterator = this.had.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(147896);
+    k.h(paramString, "appId");
+    if (k.g("wxGlobal", paramString))
     {
-      o localo = (o)localIterator.next();
-      if (paramClass.isInstance(localo))
-      {
-        AppMethodBeat.o(105392);
-        return localo;
-      }
+      paramInt = AppBrandGlobalSystemConfig.aTv().jco;
+      AppMethodBeat.o(147896);
+      return paramInt;
     }
-    AppMethodBeat.o(105392);
-    return null;
-  }
-  
-  public final j Z(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(105397);
-    paramString = zn(paramString).Z(paramString, paramBoolean);
-    AppMethodBeat.o(105397);
-    return paramString;
-  }
-  
-  public final j a(com.tencent.mm.plugin.appbrand.s.j<String> paramj)
-  {
-    AppMethodBeat.i(105412);
-    Iterator localIterator = this.had.iterator();
-    while (localIterator.hasNext())
+    if ((paramInt == 0) || (paramInt == 2))
     {
-      j localj = ((o)localIterator.next()).a(paramj);
-      if (localj != j.gZO)
-      {
-        AppMethodBeat.o(105412);
-        return localj;
-      }
+      paramInt = com.tencent.mm.plugin.appbrand.config.m.FS(paramString);
+      AppMethodBeat.o(147896);
+      return paramInt;
     }
-    paramj = j.gZO;
-    AppMethodBeat.o(105412);
-    return paramj;
+    paramInt = com.tencent.mm.plugin.appbrand.config.m.FT(paramString);
+    AppMethodBeat.o(147896);
+    return paramInt;
   }
   
-  public final j a(File paramFile, String paramString, com.tencent.mm.plugin.appbrand.s.j<String> paramj)
+  public static final void a(String paramString, int paramInt, b<? super String, String> paramb, d.g.a.m<? super String, ? super String, y> paramm)
   {
-    AppMethodBeat.i(105414);
-    Iterator localIterator = this.had.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(147893);
+    k.h(paramString, "appId");
+    k.h(paramb, "getter");
+    k.h(paramm, "setter");
+    paramb = a(paramString, paramb, paramm);
+    if (e.contains(paramb, paramInt))
     {
-      j localj = ((o)localIterator.next()).a(paramFile, paramString, paramj);
-      if (localj != j.gZO)
-      {
-        AppMethodBeat.o(105414);
-        return localj;
-      }
+      AppMethodBeat.o(147893);
+      return;
     }
-    paramFile = j.gZO;
-    AppMethodBeat.o(105414);
-    return paramFile;
+    paramb = new JSONArray((Collection)e.N(paramb));
+    paramb.put(paramInt);
+    paramString = cg(paramString, "@@@TOTAL@STORAGE@ID@@@");
+    paramb = paramb.toString();
+    k.g(paramb, "json.toString()");
+    paramm.n(paramString, paramb);
+    AppMethodBeat.o(147893);
   }
   
-  public j a(File paramFile, String paramString, boolean paramBoolean, com.tencent.mm.plugin.appbrand.s.j<String> paramj)
+  public static final int[] a(String paramString, b<? super String, String> paramb, d.g.a.m<? super String, ? super String, y> paramm)
   {
-    AppMethodBeat.i(105413);
-    Iterator localIterator = this.had.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(147892);
+    k.h(paramString, "appId");
+    k.h(paramb, "getter");
+    k.h(paramm, "setter");
+    paramString = cg(paramString, "@@@TOTAL@STORAGE@ID@@@");
+    if (bt.isNullOrNil(paramString))
     {
-      j localj = ((o)localIterator.next()).a(paramFile, paramString, paramBoolean, paramj);
-      if (localj != j.gZO)
-      {
-        AppMethodBeat.o(105413);
-        return localj;
-      }
+      AppMethodBeat.o(147892);
+      return new int[] { 0 };
     }
-    paramFile = j.gZO;
-    AppMethodBeat.o(105413);
-    return paramFile;
-  }
-  
-  public final j a(String paramString, FileStructStat paramFileStructStat)
-  {
-    AppMethodBeat.i(105402);
-    paramString = zn(paramString).a(paramString, paramFileStructStat);
-    AppMethodBeat.o(105402);
-    return paramString;
-  }
-  
-  public j a(String paramString, com.tencent.mm.plugin.appbrand.s.j<List<h>> paramj)
-  {
-    AppMethodBeat.i(105398);
-    paramString = zn(paramString).a(paramString, paramj);
-    AppMethodBeat.o(105398);
-    return paramString;
-  }
-  
-  public final j a(String paramString, File paramFile, boolean paramBoolean)
-  {
-    AppMethodBeat.i(105404);
-    paramString = zn(paramString).a(paramString, paramFile, paramBoolean);
-    AppMethodBeat.o(105404);
-    return paramString;
-  }
-  
-  public final j a(String paramString, InputStream paramInputStream, boolean paramBoolean)
-  {
-    AppMethodBeat.i(105400);
-    paramString = zn(paramString).a(paramString, paramInputStream, paramBoolean);
-    AppMethodBeat.o(105400);
-    return paramString;
-  }
-  
-  public final File aa(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(105406);
-    paramString = zn(paramString).aa(paramString, paramBoolean);
-    AppMethodBeat.o(105406);
-    return paramString;
-  }
-  
-  public List<? extends o.a> awJ()
-  {
-    AppMethodBeat.i(105415);
-    List localList = ((l)Y(l.class)).gZT.awK();
-    AppMethodBeat.o(105415);
-    return localList;
-  }
-  
-  public final j b(String paramString, com.tencent.mm.plugin.appbrand.s.j<ByteBuffer> paramj)
-  {
-    AppMethodBeat.i(105399);
-    paramString = zn(paramString).b(paramString, paramj);
-    AppMethodBeat.o(105399);
-    return paramString;
-  }
-  
-  public final j b(String paramString, File paramFile)
-  {
-    AppMethodBeat.i(105407);
-    paramString = zn(paramString).b(paramString, paramFile);
-    AppMethodBeat.o(105407);
-    return paramString;
-  }
-  
-  public final boolean bL(String paramString)
-  {
-    AppMethodBeat.i(105408);
+    paramString = (String)paramb.aA(paramString);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(147892);
+      return new int[] { 0 };
+    }
+    paramString = new JSONArray(paramString);
+    if (paramString.length() <= 0)
+    {
+      AppMethodBeat.o(147892);
+      return new int[] { 0 };
+    }
+    int j = paramString.length();
+    paramb = new ArrayList(j);
     int i = 0;
-    while (i < 3)
+    while (i < j)
     {
-      if (com.tencent.luggage.g.h.x(paramString, new String[] { "file://", "http://", "https://" }[i]))
-      {
-        AppMethodBeat.o(105408);
-        return false;
-      }
+      paramb.add(Integer.valueOf(paramString.getInt(i)));
       i += 1;
     }
-    AppMethodBeat.o(105408);
-    return true;
-  }
-  
-  public final j h(String paramString, List<u> paramList)
-  {
-    AppMethodBeat.i(105403);
-    paramString = zn(paramString).h(paramString, paramList);
-    AppMethodBeat.o(105403);
-    return paramString;
-  }
-  
-  public final void initialize()
-  {
-    AppMethodBeat.i(105409);
-    Iterator localIterator = this.had.iterator();
-    while (localIterator.hasNext()) {
-      ((o)localIterator.next()).initialize();
+    paramString = (List)paramb;
+    if (!paramString.contains(Integer.valueOf(0))) {
+      paramString.add(Integer.valueOf(0));
     }
-    this.hae.initialize();
-    AppMethodBeat.o(105409);
+    paramString = j.p((Collection)paramString);
+    AppMethodBeat.o(147892);
+    return paramString;
   }
   
-  public final void release()
+  public static final void b(String paramString, int paramInt, b<? super String, String> paramb, d.g.a.m<? super String, ? super String, y> paramm)
   {
-    AppMethodBeat.i(105410);
-    Iterator localIterator = this.had.iterator();
-    while (localIterator.hasNext()) {
-      ((o)localIterator.next()).release();
+    AppMethodBeat.i(147894);
+    k.h(paramString, "appId");
+    k.h(paramb, "getter");
+    k.h(paramm, "setter");
+    paramb = e.Q(a(paramString, paramb, paramm));
+    paramb.remove(Integer.valueOf(paramInt));
+    paramString = cg(paramString, "@@@TOTAL@STORAGE@ID@@@");
+    paramb = new JSONArray((Collection)paramb).toString();
+    k.g(paramb, "JSONArray(list).toString()");
+    paramm.n(paramString, paramb);
+    AppMethodBeat.o(147894);
+  }
+  
+  public static final void b(String paramString, b<? super String, String> paramb, d.g.a.m<? super String, ? super String, y> paramm)
+  {
+    AppMethodBeat.i(147895);
+    k.h(paramString, "appId");
+    k.h(paramb, "getter");
+    k.h(paramm, "setter");
+    paramm.n(cg(paramString, "@@@TOTAL@STORAGE@ID@@@"), "");
+    AppMethodBeat.o(147895);
+  }
+  
+  public static final String c(int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(147888);
+    k.h(paramString1, "appId");
+    k.h(paramString2, "key");
+    k.h(paramString3, "separator");
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramInt > 0) {
+      localStringBuilder.append(paramInt).append(paramString3);
     }
-    this.had.clear();
-    this.hae.release();
-    AppMethodBeat.o(105410);
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append(paramString2);
+    paramString1 = localStringBuilder.toString();
+    k.g(paramString1, "sb.toString()");
+    AppMethodBeat.o(147888);
+    return paramString1;
   }
   
-  public final j zd(String paramString)
+  public static final int cf(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(105394);
-    paramString = zn(paramString).zd(paramString);
-    AppMethodBeat.o(105394);
-    return paramString;
-  }
-  
-  public final j ze(String paramString)
-  {
-    AppMethodBeat.i(105395);
-    paramString = zn(paramString).ze(paramString);
-    AppMethodBeat.o(105395);
-    return paramString;
-  }
-  
-  public final j zf(String paramString)
-  {
-    AppMethodBeat.i(105401);
-    paramString = zn(paramString).zf(paramString);
-    AppMethodBeat.o(105401);
-    return paramString;
-  }
-  
-  public final File zg(String paramString)
-  {
-    AppMethodBeat.i(105405);
-    paramString = aa(paramString, false);
-    AppMethodBeat.o(105405);
-    return paramString;
-  }
-  
-  public b zh(String paramString)
-  {
-    AppMethodBeat.i(105411);
-    paramString = ((l)Y(l.class)).zh(paramString);
-    AppMethodBeat.o(105411);
-    return paramString;
-  }
-  
-  public final boolean zi(String paramString)
-  {
-    AppMethodBeat.i(105416);
-    boolean bool = ((l)Y(l.class)).zi(paramString);
-    AppMethodBeat.o(105416);
-    return bool;
-  }
-  
-  public final InputStream zj(String paramString)
-  {
-    AppMethodBeat.i(105391);
-    com.tencent.mm.plugin.appbrand.s.j localj = new com.tencent.mm.plugin.appbrand.s.j();
-    if (b(paramString, localj) == j.gZA)
-    {
-      paramString = new a((ByteBuffer)localj.value);
-      AppMethodBeat.o(105391);
-      return paramString;
+    AppMethodBeat.i(147889);
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
     }
-    AppMethodBeat.o(105391);
-    return null;
+    int i = str.length();
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    int j = paramString1.length();
+    AppMethodBeat.o(147889);
+    return i + j;
   }
   
-  public final o zn(String paramString)
+  private static String cg(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(105393);
-    if (bo.isNullOrNil(paramString))
-    {
-      paramString = this.hae;
-      AppMethodBeat.o(105393);
-      return paramString;
+    AppMethodBeat.i(147891);
+    k.h(paramString1, "appId");
+    k.h(paramString2, "key");
+    paramString1 = c(0, paramString1, paramString2, "++");
+    AppMethodBeat.o(147891);
+    return paramString1;
+  }
+  
+  public static final String n(int paramInt, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(147890);
+    k.h(paramString1, "appId");
+    k.h(paramString2, "key");
+    paramString1 = c(paramInt, paramString1, paramString2, "++");
+    AppMethodBeat.o(147890);
+    return paramString1;
+  }
+  
+  public static final boolean qI(int paramInt)
+  {
+    if (paramInt < 0) {}
+    while (paramInt > 2) {
+      return true;
     }
-    Iterator localIterator = this.had.iterator();
-    while (localIterator.hasNext())
-    {
-      o localo = (o)localIterator.next();
-      if (localo.bL(paramString))
-      {
-        AppMethodBeat.o(105393);
-        return localo;
-      }
-    }
-    paramString = this.hae;
-    AppMethodBeat.o(105393);
-    return paramString;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.s
  * JD-Core Version:    0.7.0.1
  */

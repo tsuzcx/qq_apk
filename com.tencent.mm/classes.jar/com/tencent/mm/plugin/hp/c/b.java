@@ -1,209 +1,283 @@
 package com.tencent.mm.plugin.hp.c;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.hp.b.e;
-import com.tencent.mm.plugin.hp.d.c.a;
-import com.tencent.mm.protocal.protobuf.bjt;
-import com.tencent.mm.protocal.protobuf.bjv;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.bsi;
+import com.tencent.mm.protocal.protobuf.bxk;
+import com.tencent.mm.protocal.protobuf.bxl;
+import com.tencent.mm.protocal.protobuf.bxm;
+import com.tencent.mm.protocal.protobuf.ckz;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.h;
+import java.util.HashMap;
+import java.util.HashMap<Ljava.lang.Integer;Ljava.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.bsi;>;>;
+import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 public final class b
-  extends a
 {
-  com.tencent.mm.plugin.hp.d.b nKA;
-  private boolean nKz;
+  public String clientVersion;
+  public final int fileSize;
+  public final Integer syD;
+  public HashMap<Integer, LinkedList<bsi>> syE;
+  public final Integer syF;
+  public final Integer syG;
+  public final String syH;
+  public final String syI;
+  public final String syJ;
+  public String syK;
+  public String syL;
+  public String syM;
+  public String syN;
+  public String syO;
+  public int versionCode;
   
-  public b()
+  public b(bxm parambxm)
   {
-    this("", "", null, false);
-  }
-  
-  public b(String paramString1, String paramString2, List<bjt> paramList)
-  {
-    this(paramString1, paramString2, paramList, true);
-  }
-  
-  private b(String paramString1, String paramString2, List<bjt> paramList, boolean paramBoolean)
-  {
-    AppMethodBeat.i(90622);
-    this.nKz = true;
-    String str1;
-    if (!paramBoolean)
+    AppMethodBeat.i(117514);
+    this.syE = new HashMap();
+    if (parambxm == null)
     {
-      str1 = "tinker_id_" + com.tencent.mm.loader.j.a.Uj();
-      if (com.tencent.mm.loader.j.a.eQt == null) {
-        paramString1 = "";
+      this.syD = Integer.valueOf(1);
+      this.syH = "";
+      this.syI = "";
+      this.syF = Integer.valueOf(-1);
+      this.syG = Integer.valueOf(-1);
+      this.syJ = "";
+      this.fileSize = 0;
+      this.syK = "";
+      this.syL = "";
+      this.versionCode = 0;
+      this.clientVersion = "";
+      this.syM = "";
+      this.syN = "";
+      this.syO = "";
+      AppMethodBeat.o(117514);
+      return;
+    }
+    if (parambxm.DTY != null)
+    {
+      this.syI = parambxm.DTY.MD5;
+      this.syH = parambxm.DTY.Url;
+    }
+    Object localObject;
+    for (this.fileSize = parambxm.DTY.FileSize;; this.fileSize = 0)
+    {
+      this.syD = Integer.valueOf(parambxm.state);
+      this.syG = Integer.valueOf(parambxm.DTX);
+      if ((parambxm.DTV == null) || (parambxm.DTV.isEmpty())) {
+        break;
+      }
+      int j = parambxm.DTV.size();
+      int i = 0;
+      while (i < j)
+      {
+        localObject = (bxl)parambxm.DTV.get(i);
+        if ((((bxl)localObject).DTU != null) && (!((bxl)localObject).DTU.isEmpty())) {
+          this.syE.put(Integer.valueOf(((bxl)localObject).type), ((bxl)localObject).DTU);
+        }
+        i += 1;
+      }
+      this.syI = "";
+      this.syH = "";
+    }
+    this.syF = Integer.valueOf(parambxm.DTW);
+    this.syJ = parambxm.upD;
+    if ((parambxm.DUa != null) && (!parambxm.DUa.isEmpty()))
+    {
+      parambxm = parambxm.DUa.iterator();
+      while (parambxm.hasNext())
+      {
+        localObject = (bxk)parambxm.next();
+        if ((localObject != null) && (!bt.isNullOrNil(((bxk)localObject).key))) {
+          if (((bxk)localObject).key.equalsIgnoreCase("newApkMd5")) {
+            this.syK = ((bxk)localObject).value;
+          } else if (((bxk)localObject).key.equalsIgnoreCase("oldApkMd5")) {
+            this.syL = ((bxk)localObject).value;
+          } else if (((bxk)localObject).key.equalsIgnoreCase("versionCode")) {
+            this.versionCode = bt.aGh(((bxk)localObject).value);
+          } else if (((bxk)localObject).key.equalsIgnoreCase("clientVersion")) {
+            this.clientVersion = ((bxk)localObject).value;
+          } else if (((bxk)localObject).key.equalsIgnoreCase("alphaTitle")) {
+            this.syM = c.adL(((bxk)localObject).value);
+          } else if (((bxk)localObject).key.equalsIgnoreCase("alphaContent")) {
+            this.syN = c.adL(((bxk)localObject).value);
+          } else if (((bxk)localObject).key.equalsIgnoreCase("alphaUrl")) {
+            this.syO = ((bxk)localObject).value;
+          }
+        }
+      }
+      AppMethodBeat.o(117514);
+      return;
+    }
+    this.syK = "";
+    this.syL = "";
+    this.versionCode = 0;
+    this.clientVersion = "";
+    this.syM = "";
+    this.syN = "";
+    this.syO = "";
+    AppMethodBeat.o(117514);
+  }
+  
+  public static String a(HashMap<Integer, LinkedList<bsi>> paramHashMap, int paramInt)
+  {
+    AppMethodBeat.i(117518);
+    if ((paramHashMap == null) || (paramHashMap.isEmpty()))
+    {
+      AppMethodBeat.o(117518);
+      return "";
+    }
+    Object localObject1 = "";
+    LinkedList localLinkedList = (LinkedList)paramHashMap.get(Integer.valueOf(paramInt));
+    Object localObject2 = localObject1;
+    if (localLinkedList != null)
+    {
+      localObject2 = localObject1;
+      if (!localLinkedList.isEmpty())
+      {
+        int i = localLinkedList.size();
+        paramInt = 0;
+        paramHashMap = (HashMap<Integer, LinkedList<bsi>>)localObject1;
+        localObject2 = paramHashMap;
+        if (paramInt < i)
+        {
+          localObject1 = (bsi)localLinkedList.get(paramInt);
+          if (((bsi)localObject1).lang.equalsIgnoreCase("default")) {
+            paramHashMap = new String(Base64.decode(((bsi)localObject1).content, 0));
+          }
+        }
       }
     }
     for (;;)
     {
-      paramList = bIj();
-      this.mScene = 1;
-      paramString2 = paramString1;
-      label59:
-      this.nKv = str1;
-      this.nKw = paramString2;
-      this.nKx.addAll(paramList);
-      this.nKz = paramBoolean;
-      if (this.nKz)
+      paramInt += 1;
+      break;
+      if (((bsi)localObject1).lang.equalsIgnoreCase(ac.eFu()))
       {
-        paramString2 = new b.1(this);
-        paramString1 = ah.getContext().getSharedPreferences("tinker_patch_share_config", 4).getString("tinker_node", "");
-        if (!bo.isNullOrNil(paramString1)) {
-          try
-          {
-            paramList = new bjv();
-            paramList.parseFrom(Base64.decode(paramString1.getBytes(), 0));
-            if (paramList.pqD != null)
-            {
-              if (com.tencent.mm.loader.j.a.eQt == null) {}
-              for (paramString1 = "";; paramString1 = "tinker_id_" + com.tencent.mm.loader.j.a.eQt)
-              {
-                str1 = "tinker_id_" + com.tencent.mm.loader.j.a.Uj();
-                String str2 = ah.getContext().getSharedPreferences("tinker_patch_share_config", 4).getString("tinker_base_id", "");
-                paramList = new com.tencent.mm.plugin.hp.d.b(paramList.xyk);
-                ab.i("Tinker.TinkerUtils", "LastResponse PID:%s current PID:%s last baseId:%s current baseId:%s", new Object[] { paramList.nKR, paramString1, str2, str1 });
-                if ((bo.isNullOrNil(paramList.nKR)) || (paramList.nKR.equalsIgnoreCase(paramString1)) || (bo.isNullOrNil(str1)) || (!str1.equalsIgnoreCase(str2))) {
-                  break label383;
-                }
-                paramString2.a(true, paramList);
-                AppMethodBeat.o(90622);
-                return;
-                paramString1 = "tinker_id_" + com.tencent.mm.loader.j.a.eQt;
-                break;
-                this.mScene = 0;
-                str1 = paramString1;
-                break label59;
-              }
-            }
-            paramString2.a(false, null);
-          }
-          catch (Exception paramString1)
-          {
-            ab.printErrStackTrace("Tinker.TinkerUtils", paramString1, "parse tinker update Response failed.", new Object[0]);
-            com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(614L, 73L, 1L, false);
-          }
-        }
+        paramHashMap = new String(Base64.decode(((bsi)localObject1).content, 0));
+        AppMethodBeat.o(117518);
+        return paramHashMap;
+        AppMethodBeat.o(117518);
+        return localObject2;
       }
     }
-    label383:
-    AppMethodBeat.o(90622);
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final boolean cGm()
   {
-    AppMethodBeat.i(90623);
-    ab.i("MicroMsg.Tinker.NetSceneCheckTinkerUpdate", "errType:%d errCode:%d errMsg:%s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    AppMethodBeat.i(117515);
+    Context localContext = aj.getContext();
+    if (!ay.isConnected(localContext))
     {
-      paramArrayOfByte = (bjv)((com.tencent.mm.ai.b)paramq).fsW.fta;
-      paramq = paramArrayOfByte.xyk;
-      if (paramq != null) {
-        if (!this.nKz) {}
-      }
+      AppMethodBeat.o(117515);
+      return false;
+    }
+    if (this.syG.intValue() == 1)
+    {
+      AppMethodBeat.o(117515);
+      return true;
+    }
+    if (this.syG.intValue() == 3)
+    {
+      boolean bool = ay.isWifi(localContext);
+      AppMethodBeat.o(117515);
+      return bool;
+    }
+    AppMethodBeat.o(117515);
+    return true;
+  }
+  
+  public final boolean cGn()
+  {
+    AppMethodBeat.i(117516);
+    if ((this.syD.intValue() == 2) || (this.syD.intValue() == 4))
+    {
+      AppMethodBeat.o(117516);
+      return true;
+    }
+    AppMethodBeat.o(117516);
+    return false;
+  }
+  
+  public final boolean cGo()
+  {
+    AppMethodBeat.i(117517);
+    if ((this.syE != null) && (!this.syE.isEmpty()) && (this.syE.containsKey(Integer.valueOf(4))))
+    {
+      AppMethodBeat.o(117517);
+      return true;
+    }
+    AppMethodBeat.o(117517);
+    return false;
+  }
+  
+  public final String cGp()
+  {
+    AppMethodBeat.i(117519);
+    if (cGo())
+    {
+      String str = a(this.syE, 4);
+      AppMethodBeat.o(117519);
+      return str;
+    }
+    AppMethodBeat.o(117519);
+    return "";
+  }
+  
+  public final boolean cGq()
+  {
+    AppMethodBeat.i(117521);
+    String str;
+    if (this.clientVersion == null) {
+      str = "";
     }
     for (;;)
     {
-      try
-      {
-        com.tencent.mm.plugin.hp.tinker.h.aB(ah.getContext(), new String(Base64.encode(paramArrayOfByte.toByteArray(), 0)));
-        com.tencent.mm.plugin.hp.tinker.h.Q(ah.getContext(), 0);
-        ab.d("MicroMsg.Tinker.NetSceneCheckTinkerUpdate", "node is no empty. try to process");
-        paramq = new com.tencent.mm.plugin.hp.d.b(paramq);
-        ab.d("MicroMsg.Tinker.NetSceneCheckTinkerUpdate", "node is no empty. new TinkerSyncResponse finish");
-        new e(paramq).iv(this.nKz);
-        ab.d("MicroMsg.Tinker.NetSceneCheckTinkerUpdate", "node is no empty. end process");
-        com.tencent.mm.plugin.hp.b.a.ew(4, 0);
-        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        AppMethodBeat.o(90623);
-        return;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        ab.printErrStackTrace("MicroMsg.Tinker.NetSceneCheckTinkerUpdate", paramArrayOfByte, "save node failed.", new Object[0]);
-        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(614L, 72L, 1L, false);
-        continue;
-      }
-      ab.i("MicroMsg.Tinker.NetSceneCheckTinkerUpdate", "check from setting about ui. ");
-      continue;
-      if (paramArrayOfByte.xym == 1)
-      {
-        com.tencent.mm.plugin.hp.b.a.ew(1, 0);
-        label240:
-        if (this.nKA == null) {
-          break label439;
+      ad.i("Tinker.TinkerSyncResponse", "clientVersion %s currentVersion %s", new Object[] { str, h.glW });
+      if (!bt.isNullOrNil(this.clientVersion)) {
+        try
+        {
+          int i = Integer.decode(this.clientVersion).intValue();
+          int j = Integer.decode(h.glW).intValue();
+          if ((i & 0xFFFFFF00) < (j & 0xFFFFFF00))
+          {
+            AppMethodBeat.o(117521);
+            return true;
+            str = this.clientVersion;
+          }
+          else
+          {
+            AppMethodBeat.o(117521);
+            return false;
+          }
         }
-        if (com.tencent.mm.loader.j.a.eQt != null) {
-          break label441;
+        catch (Exception localException)
+        {
+          ad.printErrStackTrace("Tinker.TinkerSyncResponse", localException, "isLowerClientVersion", new Object[0]);
         }
       }
-      label439:
-      label441:
-      for (paramq = "";; paramq = "tinker_id_" + com.tencent.mm.loader.j.a.eQt)
-      {
-        if ((bo.isNullOrNil(this.nKA.nKR)) || (this.nKA.nKR.equalsIgnoreCase(paramq))) {
-          break label462;
-        }
-        paramInt1 = ah.getContext().getSharedPreferences("tinker_patch_share_config", 4).getInt("tinker_node_retry_time", 0);
-        if (paramInt1 < 4) {
-          break label464;
-        }
-        com.tencent.mm.plugin.hp.tinker.h.aB(ah.getContext(), "");
-        com.tencent.mm.plugin.hp.tinker.h.Q(ah.getContext(), 0);
-        ab.i("MicroMsg.Tinker.NetSceneCheckTinkerUpdate", "retry time over %d time, then clear node and count", new Object[] { Integer.valueOf(paramInt1) });
-        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(614L, 74L, 1L, false);
-        break;
-        if (paramArrayOfByte.xym == 2)
-        {
-          com.tencent.mm.plugin.hp.b.a.ew(2, 0);
-          break label240;
-        }
-        if (paramArrayOfByte.xym == 3)
-        {
-          com.tencent.mm.plugin.hp.b.a.ew(3, 0);
-          break label240;
-        }
-        if (paramArrayOfByte.xym == 4)
-        {
-          com.tencent.mm.plugin.hp.b.a.ew(6, 0);
-          break label240;
-        }
-        if (paramArrayOfByte.xym == 6)
-        {
-          ab.i("MicroMsg.Tinker.NetSceneCheckTinkerUpdate", "revoke this patch.");
-          break label240;
-        }
-        com.tencent.mm.plugin.hp.b.a.ew(5, 0);
-        break label240;
-        break;
-      }
-      label462:
-      continue;
-      label464:
-      new e(this.nKA).iv(this.nKz);
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(614L, 70L, 1L, false);
-      paramInt1 += 1;
-      com.tencent.mm.plugin.hp.tinker.h.Q(ah.getContext(), paramInt1);
-      ab.d("MicroMsg.Tinker.NetSceneCheckTinkerUpdate", "add retry time %d", new Object[] { Integer.valueOf(paramInt1) });
-      continue;
-      ab.d("MicroMsg.Tinker.NetSceneCheckTinkerUpdate", "check tinker update failed.");
-      com.tencent.mm.plugin.hp.b.a.ew(5, paramInt2);
     }
+    AppMethodBeat.o(117521);
+    return false;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(117520);
+    String str = "responseState:" + this.syD + "\ncdnUrl:" + this.syH + "\nfileMd5:" + this.syI + "\npackageType:" + this.syF + "\nnetworkType:" + this.syG + "\npatchId:" + this.syJ;
+    AppMethodBeat.o(117520);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.c.b
  * JD-Core Version:    0.7.0.1
  */

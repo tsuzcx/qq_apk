@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:title="@string/bo4" android:key="facebook_auth_tip" android:layout="@layout/ah2" />
-    <PreferenceCategory android:key="facebook_auth_cat" />
-    <Preference android:title="@string/bny" android:key="facebook_auth_bind_btn" android:layout="@layout/ym" />
+    <com.tencent.mm.plugin.exdevice.ui.DeviceProfileHeaderPreference android:key="device_profile_header" android:layout="@layout/a0a" />
+    <Preference android:key="sub_device_desc" android:layout="@layout/a16" android:title="@string/bue" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="message_manage" android:layout="@layout/aop" android:title="@string/bsu" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="connect_setting" android:layout="@layout/aop" android:title="@string/brq" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="user_list" android:layout="@layout/aop" android:title="@string/buj" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_biz_go_chatting" android:layout="@layout/aop" android:title="@string/b4d" />
+    <PreferenceSmallCategory />
+    <Preference android:key="bind_device" android:layout="@layout/ag2" android:title="@string/bqo" />
+    <Preference android:key="open_device_panel" android:layout="@layout/ag2" android:title="@string/bt1" />
+    <PreferenceSmallCategory />
+    <Preference android:key="unbind_device" android:layout="@layout/bmt" android:title="@string/buf" />
+    <PreferenceCategory />
 </PreferenceScreen>

@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.FoursquareRelativeLayout android:background="@drawable/y7" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/nh" android:textColor="@color/en" android:gravity="center" android:id="@id/amk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c6t" android:drawableTop="@drawable/y8" android:drawablePadding="@dimen/n_" android:layout_centerInParent="true" />
-</com.tencent.mm.ui.widget.FoursquareRelativeLayout>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:paddingTop="@dimen/c0" android:paddingBottom="@dimen/bq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/as6" android:background="@drawable/ke" android:paddingLeft="10.0dip" android:paddingTop="9.0dip" android:paddingRight="10.0dip" android:paddingBottom="9.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c5">
+        <TextView android:textSize="@dimen/jt" android:textColor="@color/ff" android:id="@id/as7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{有注册过的会员卡可添加}" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="10.0dip" android:layout_height="20.0dip" android:layout_marginLeft="4.0dip" android:src="@raw/icons_filled_arrow" app:iconColor="@color/FG_2" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/as3" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/rx" android:id="@id/as4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/alf" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/asd" android:layout_width="8.5dip" android:layout_height="8.5dip" android:layout_marginLeft="4.0dip" android:src="@raw/card_sort_icon" app:iconColor="@color/FG_2" />
+    </LinearLayout>
+</LinearLayout>

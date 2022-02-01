@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="@dimen/m0" style="@style/lx"
+<RelativeLayout android:id="@id/b39" android:layout_width="fill_parent" android:layout_height="@dimen/d2"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/bjn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9" android:maxLines="2" android:layout_centerVertical="true" style="@style/ln" />
+    <View android:id="@id/cud" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:baselineAligned="false" android:weightSum="1.0">
+        <RelativeLayout android:id="@id/bo3" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <RelativeLayout android:id="@id/epx" style="@style/i5">
+                <TextView android:id="@id/bp8" style="@style/i8" />
+            </RelativeLayout>
+            <ImageView android:id="@id/bpb" android:layout_toRightOf="@id/epx" style="@style/i_" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent" style="@style/ia">
+            <RelativeLayout android:id="@id/bpf" android:paddingLeft="13.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/bob" android:layout_centerVertical="true">
+                <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/bnx" android:layout_alignParentLeft="true" android:layout_centerInParent="true" android:layout_centerVertical="true" style="@style/ie">
+                    <com.tencent.mm.ui.base.NoMeasuredTextView android:id="@id/bpd" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" style="@style/ib" />
+                    <TextView android:id="@id/bpe" android:visibility="visible" android:layout_height="wrap_content" android:layout_below="@id/bpd" android:layout_alignParentLeft="true" android:layout_centerInParent="false" style="@style/ic" />
+                </RelativeLayout>
+                <TextView android:id="@id/bnx" android:layout_marginBottom="@dimen/d" android:layout_alignParentRight="true" style="@style/if" />
+            </RelativeLayout>
+            <com.tencent.mm.plugin.exdevice.ui.ExdeviceLikeView android:id="@id/bob" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_alignParentBottom="true">
+        <View android:id="@id/bdk" android:background="@color/n3" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
 </RelativeLayout>

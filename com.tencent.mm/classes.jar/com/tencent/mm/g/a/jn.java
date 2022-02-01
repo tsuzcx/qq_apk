@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class jn
   extends b
 {
-  public jn.a czd;
+  public a dnG;
   
   public jn()
   {
@@ -15,16 +15,22 @@ public final class jn
   
   private jn(byte paramByte)
   {
-    AppMethodBeat.i(73671);
-    this.czd = new jn.a();
-    this.ymq = false;
+    AppMethodBeat.i(153184);
+    this.dnG = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(73671);
+    AppMethodBeat.o(153184);
+  }
+  
+  public static final class a
+  {
+    public int delay;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.jn
  * JD-Core Version:    0.7.0.1
  */

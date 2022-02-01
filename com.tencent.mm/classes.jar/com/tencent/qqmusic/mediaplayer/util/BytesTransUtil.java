@@ -11,18 +11,18 @@ public class BytesTransUtil
   
   public static BytesTransUtil getInstance()
   {
-    AppMethodBeat.i(105543);
+    AppMethodBeat.i(87728);
     if (instance == null) {
       instance = new BytesTransUtil();
     }
     BytesTransUtil localBytesTransUtil = instance;
-    AppMethodBeat.o(105543);
+    AppMethodBeat.o(87728);
     return localBytesTransUtil;
   }
   
   public int[] Bytes2Ints(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(105558);
+    AppMethodBeat.i(87743);
     int[] arrayOfInt = new int[paramArrayOfByte.length / 4];
     int i = 0;
     while (i < arrayOfInt.length)
@@ -38,13 +38,13 @@ public class BytesTransUtil
       System.out.println("2out->" + arrayOfInt[i]);
       i += 1;
     }
-    AppMethodBeat.o(105558);
+    AppMethodBeat.o(87743);
     return arrayOfInt;
   }
   
   public long[] Bytes2Longs(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(105560);
+    AppMethodBeat.i(87745);
     long[] arrayOfLong = new long[paramArrayOfByte.length / 8];
     int i = 0;
     while (i < arrayOfLong.length)
@@ -59,13 +59,13 @@ public class BytesTransUtil
       arrayOfLong[i] = getLong(arrayOfByte);
       i += 1;
     }
-    AppMethodBeat.o(105560);
+    AppMethodBeat.o(87745);
     return arrayOfLong;
   }
   
   public short[] Bytes2Shorts(short[] paramArrayOfShort, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(105555);
+    AppMethodBeat.i(87740);
     byte[] arrayOfByte = new byte[2];
     int i = 0;
     while (i < paramArrayOfShort.length)
@@ -74,13 +74,13 @@ public class BytesTransUtil
       paramArrayOfShort[i] = getShort(arrayOfByte);
       i += 1;
     }
-    AppMethodBeat.o(105555);
+    AppMethodBeat.o(87740);
     return paramArrayOfShort;
   }
   
   public byte[] Ints2Bytes(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(105559);
+    AppMethodBeat.i(87744);
     byte[] arrayOfByte1 = new byte[paramArrayOfInt.length * 4];
     int i = 0;
     while (i < paramArrayOfInt.length)
@@ -95,13 +95,13 @@ public class BytesTransUtil
       }
       i += 1;
     }
-    AppMethodBeat.o(105559);
+    AppMethodBeat.o(87744);
     return arrayOfByte1;
   }
   
   public byte[] Longs2Bytes(long[] paramArrayOfLong)
   {
-    AppMethodBeat.i(105561);
+    AppMethodBeat.i(87746);
     byte[] arrayOfByte1 = new byte[paramArrayOfLong.length * 8];
     int i = 0;
     while (i < paramArrayOfLong.length)
@@ -115,42 +115,42 @@ public class BytesTransUtil
       }
       i += 1;
     }
-    AppMethodBeat.o(105561);
+    AppMethodBeat.o(87746);
     return arrayOfByte1;
   }
   
   public void Shorts2Bytes(short[] paramArrayOfShort, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(105557);
+    AppMethodBeat.i(87742);
     int i = 0;
     while (i < paramArrayOfShort.length)
     {
       System.arraycopy(getBytes(paramArrayOfShort[i]), 0, paramArrayOfByte, i * 2, 2);
       i += 1;
     }
-    AppMethodBeat.o(105557);
+    AppMethodBeat.o(87742);
   }
   
   public byte[] Shorts2Bytes(short[] paramArrayOfShort)
   {
-    AppMethodBeat.i(105556);
+    AppMethodBeat.i(87741);
     byte[] arrayOfByte = new byte[paramArrayOfShort.length * 2];
     Shorts2Bytes(paramArrayOfShort, arrayOfByte);
-    AppMethodBeat.o(105556);
+    AppMethodBeat.o(87741);
     return arrayOfByte;
   }
   
   public byte[] getBytes(int paramInt)
   {
-    AppMethodBeat.i(105549);
+    AppMethodBeat.i(87734);
     byte[] arrayOfByte = getBytes(paramInt, testCPU());
-    AppMethodBeat.o(105549);
+    AppMethodBeat.o(87734);
     return arrayOfByte;
   }
   
   public byte[] getBytes(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(105545);
+    AppMethodBeat.i(87730);
     byte[] arrayOfByte = new byte[4];
     if (paramBoolean)
     {
@@ -174,15 +174,15 @@ public class BytesTransUtil
       i >>= 8;
       paramInt += 1;
     }
-    AppMethodBeat.o(105545);
+    AppMethodBeat.o(87730);
     return arrayOfByte;
   }
   
   public byte[] getBytes(long paramLong)
   {
-    AppMethodBeat.i(105551);
+    AppMethodBeat.i(87736);
     byte[] arrayOfByte = getBytes(paramLong, testCPU());
-    AppMethodBeat.o(105551);
+    AppMethodBeat.o(87736);
     return arrayOfByte;
   }
   
@@ -211,9 +211,9 @@ public class BytesTransUtil
   
   public byte[] getBytes(short paramShort)
   {
-    AppMethodBeat.i(105550);
+    AppMethodBeat.i(87735);
     byte[] arrayOfByte = getBytes(paramShort, testCPU());
-    AppMethodBeat.o(105550);
+    AppMethodBeat.o(87735);
     return arrayOfByte;
   }
   
@@ -246,25 +246,25 @@ public class BytesTransUtil
   
   public int getInt(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(105552);
+    AppMethodBeat.i(87737);
     int i = getInt(paramArrayOfByte, testCPU());
-    AppMethodBeat.o(105552);
+    AppMethodBeat.o(87737);
     return i;
   }
   
   public int getInt(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    AppMethodBeat.i(105547);
+    AppMethodBeat.i(87732);
     if (paramArrayOfByte == null)
     {
       paramArrayOfByte = new IllegalArgumentException("byte array is null!");
-      AppMethodBeat.o(105547);
+      AppMethodBeat.o(87732);
       throw paramArrayOfByte;
     }
     if (paramArrayOfByte.length > 4)
     {
       paramArrayOfByte = new IllegalArgumentException("byte array size > 4 !");
-      AppMethodBeat.o(105547);
+      AppMethodBeat.o(87732);
       throw paramArrayOfByte;
     }
     int k;
@@ -293,31 +293,31 @@ public class BytesTransUtil
       i = i << 8 | paramArrayOfByte[j] & 0xFF;
       j -= 1;
     }
-    AppMethodBeat.o(105547);
+    AppMethodBeat.o(87732);
     return k;
   }
   
   public long getLong(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(105554);
+    AppMethodBeat.i(87739);
     long l = getLong(paramArrayOfByte, testCPU());
-    AppMethodBeat.o(105554);
+    AppMethodBeat.o(87739);
     return l;
   }
   
   public long getLong(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    AppMethodBeat.i(105548);
+    AppMethodBeat.i(87733);
     if (paramArrayOfByte == null)
     {
       paramArrayOfByte = new IllegalArgumentException("byte array is null!");
-      AppMethodBeat.o(105548);
+      AppMethodBeat.o(87733);
       throw paramArrayOfByte;
     }
     if (paramArrayOfByte.length > 8)
     {
       paramArrayOfByte = new IllegalArgumentException("byte array size > 8 !");
-      AppMethodBeat.o(105548);
+      AppMethodBeat.o(87733);
       throw paramArrayOfByte;
     }
     long l1 = 0L;
@@ -345,31 +345,31 @@ public class BytesTransUtil
       l1 = l1 << 8 | paramArrayOfByte[i] & 0xFF;
       i -= 1;
     }
-    AppMethodBeat.o(105548);
+    AppMethodBeat.o(87733);
     return l2;
   }
   
   public short getShort(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(105553);
+    AppMethodBeat.i(87738);
     short s = getShort(paramArrayOfByte, testCPU());
-    AppMethodBeat.o(105553);
+    AppMethodBeat.o(87738);
     return s;
   }
   
   public short getShort(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    AppMethodBeat.i(105546);
+    AppMethodBeat.i(87731);
     if (paramArrayOfByte == null)
     {
       paramArrayOfByte = new IllegalArgumentException("byte array is null!");
-      AppMethodBeat.o(105546);
+      AppMethodBeat.o(87731);
       throw paramArrayOfByte;
     }
     if (paramArrayOfByte.length > 2)
     {
       paramArrayOfByte = new IllegalArgumentException("byte array size > 2 !");
-      AppMethodBeat.o(105546);
+      AppMethodBeat.o(87731);
       throw paramArrayOfByte;
     }
     short s2;
@@ -398,25 +398,25 @@ public class BytesTransUtil
       s1 = (short)((short)(s1 << 8) | paramArrayOfByte[i] & 0xFF);
       i -= 1;
     }
-    AppMethodBeat.o(105546);
+    AppMethodBeat.o(87731);
     return s2;
   }
   
   public boolean testCPU()
   {
-    AppMethodBeat.i(105544);
+    AppMethodBeat.i(87729);
     if (ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN)
     {
-      AppMethodBeat.o(105544);
+      AppMethodBeat.o(87729);
       return true;
     }
-    AppMethodBeat.o(105544);
+    AppMethodBeat.o(87729);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.util.BytesTransUtil
  * JD-Core Version:    0.7.0.1
  */

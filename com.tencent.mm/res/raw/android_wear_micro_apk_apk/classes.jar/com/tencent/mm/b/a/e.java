@@ -4,7 +4,7 @@ import com.tencent.mm.e.a.o;
 
 public final class e
 {
-  public o UZ;
+  public o WP;
 }
 
 

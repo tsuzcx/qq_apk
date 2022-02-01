@@ -2,44 +2,133 @@ package android.support.v4.a.a;
 
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.Outline;
 import android.graphics.PorterDuff.Mode;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
+import android.graphics.drawable.DrawableContainer;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.InsetDrawable;
+import android.graphics.drawable.RippleDrawable;
+import android.os.Build.VERSION;
+import android.util.Log;
+import java.lang.reflect.Method;
 
-public abstract class h
-  extends Drawable.ConstantState
+final class h
+  extends f
 {
-  int gi;
-  Drawable.ConstantState gj;
-  ColorStateList gk = null;
-  PorterDuff.Mode gl = g.gb;
+  private static Method ij;
   
-  h(h paramh)
+  h(Drawable paramDrawable)
   {
-    if (paramh != null)
+    super(paramDrawable);
+    aV();
+  }
+  
+  h(d paramd, Resources paramResources)
+  {
+    super(paramd, paramResources);
+    aV();
+  }
+  
+  private static void aV()
+  {
+    if (ij == null) {}
+    try
     {
-      this.gi = paramh.gi;
-      this.gj = paramh.gj;
-      this.gk = paramh.gk;
-      this.gl = paramh.gl;
+      ij = Drawable.class.getDeclaredMethod("isProjected", new Class[0]);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.w("WrappedDrawableApi21", "Failed to retrieve Drawable#isProjected() method", localException);
     }
   }
   
-  public int getChangingConfigurations()
+  final d aT()
   {
-    int j = this.gi;
-    if (this.gj != null) {}
-    for (int i = this.gj.getChangingConfigurations();; i = 0) {
-      return i | j;
+    return new i(this.ib);
+  }
+  
+  protected final boolean aU()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (Build.VERSION.SDK_INT == 21)
+    {
+      Drawable localDrawable = this.ie;
+      if ((!(localDrawable instanceof GradientDrawable)) && (!(localDrawable instanceof DrawableContainer)) && (!(localDrawable instanceof InsetDrawable)))
+      {
+        bool1 = bool2;
+        if (!(localDrawable instanceof RippleDrawable)) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
-  public Drawable newDrawable()
+  public final Rect getDirtyBounds()
   {
-    return newDrawable(null);
+    return this.ie.getDirtyBounds();
   }
   
-  public abstract Drawable newDrawable(Resources paramResources);
+  public final void getOutline(Outline paramOutline)
+  {
+    this.ie.getOutline(paramOutline);
+  }
+  
+  public final void setHotspot(float paramFloat1, float paramFloat2)
+  {
+    this.ie.setHotspot(paramFloat1, paramFloat2);
+  }
+  
+  public final void setHotspotBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.ie.setHotspotBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public final boolean setState(int[] paramArrayOfInt)
+  {
+    if (super.setState(paramArrayOfInt))
+    {
+      invalidateSelf();
+      return true;
+    }
+    return false;
+  }
+  
+  public final void setTint(int paramInt)
+  {
+    if (aU())
+    {
+      super.setTint(paramInt);
+      return;
+    }
+    this.ie.setTint(paramInt);
+  }
+  
+  public final void setTintList(ColorStateList paramColorStateList)
+  {
+    if (aU())
+    {
+      super.setTintList(paramColorStateList);
+      return;
+    }
+    this.ie.setTintList(paramColorStateList);
+  }
+  
+  public final void setTintMode(PorterDuff.Mode paramMode)
+  {
+    if (aU())
+    {
+      super.setTintMode(paramMode);
+      return;
+    }
+    this.ie.setTintMode(paramMode);
+  }
 }
 
 

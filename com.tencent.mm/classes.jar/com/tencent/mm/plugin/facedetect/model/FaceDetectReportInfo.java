@@ -4,128 +4,208 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 
 class FaceDetectReportInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<FaceDetectReportInfo> CREATOR;
-  protected int ciX;
-  protected int mgC;
-  protected int miA;
-  protected int miB;
-  protected int miC;
-  protected int miD;
-  protected int miE;
-  protected HashMap<Integer, Long> miF;
-  protected HashMap<Integer, Long> miG;
-  protected int mio;
-  protected int mip;
-  protected int miq;
-  protected int mir;
-  protected int mis;
-  protected int mit;
-  protected int miu;
-  protected int miv;
-  protected int miw;
-  protected int mix;
-  protected int miy;
-  protected int miz;
+  protected int cXP;
+  protected int pNr;
+  protected int pPb;
+  protected int pPc;
+  protected int pPd;
+  protected int pPe;
+  protected int pPf;
+  protected int pPg;
+  protected int pPh;
+  protected int pPi;
+  protected int pPj;
+  protected int pPk;
+  protected int pPl;
+  protected int pPm;
+  protected int pPn;
+  protected int pPo;
+  protected int pPp;
+  protected int pPq;
+  protected int pPr;
+  protected HashMap<Integer, Long> pPs;
+  protected HashMap<Integer, Long> pPt;
   protected long sessionId;
   
   static
   {
-    AppMethodBeat.i(226);
-    CREATOR = new FaceDetectReportInfo.1();
-    AppMethodBeat.o(226);
+    AppMethodBeat.i(103751);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(103751);
   }
   
   public FaceDetectReportInfo()
   {
-    AppMethodBeat.i(221);
+    AppMethodBeat.i(103746);
     this.sessionId = 0L;
-    this.mio = 0;
-    this.mip = 0;
-    this.miq = 0;
-    this.mir = 0;
-    this.mis = 0;
-    this.mit = 0;
-    this.miu = 0;
-    this.miv = 0;
-    this.miw = 0;
-    this.mix = 0;
-    this.miy = 0;
-    this.miz = 0;
-    this.miA = 0;
-    this.miB = 0;
-    this.miC = 0;
-    this.ciX = 0;
-    this.mgC = 0;
-    this.miD = 0;
-    this.miE = 0;
-    this.miF = new HashMap();
-    this.miG = new HashMap();
-    AppMethodBeat.o(221);
+    this.pPb = 0;
+    this.pPc = 0;
+    this.pPd = 0;
+    this.pPe = 0;
+    this.pPf = 0;
+    this.pPg = 0;
+    this.pPh = 0;
+    this.pPi = 0;
+    this.pPj = 0;
+    this.pPk = 0;
+    this.pPl = 0;
+    this.pPm = 0;
+    this.pPn = 0;
+    this.pPo = 0;
+    this.pPp = 0;
+    this.cXP = 0;
+    this.pNr = 0;
+    this.pPq = 0;
+    this.pPr = 0;
+    this.pPs = new HashMap();
+    this.pPt = new HashMap();
+    AppMethodBeat.o(103746);
   }
   
   protected FaceDetectReportInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(222);
+    AppMethodBeat.i(103747);
     this.sessionId = 0L;
-    this.mio = 0;
-    this.mip = 0;
-    this.miq = 0;
-    this.mir = 0;
-    this.mis = 0;
-    this.mit = 0;
-    this.miu = 0;
-    this.miv = 0;
-    this.miw = 0;
-    this.mix = 0;
-    this.miy = 0;
-    this.miz = 0;
-    this.miA = 0;
-    this.miB = 0;
-    this.miC = 0;
-    this.ciX = 0;
-    this.mgC = 0;
-    this.miD = 0;
-    this.miE = 0;
-    this.miF = new HashMap();
-    this.miG = new HashMap();
+    this.pPb = 0;
+    this.pPc = 0;
+    this.pPd = 0;
+    this.pPe = 0;
+    this.pPf = 0;
+    this.pPg = 0;
+    this.pPh = 0;
+    this.pPi = 0;
+    this.pPj = 0;
+    this.pPk = 0;
+    this.pPl = 0;
+    this.pPm = 0;
+    this.pPn = 0;
+    this.pPo = 0;
+    this.pPp = 0;
+    this.cXP = 0;
+    this.pNr = 0;
+    this.pPq = 0;
+    this.pPr = 0;
+    this.pPs = new HashMap();
+    this.pPt = new HashMap();
     this.sessionId = paramParcel.readLong();
-    this.mio = paramParcel.readInt();
-    this.mip = paramParcel.readInt();
-    this.miq = paramParcel.readInt();
-    this.mir = paramParcel.readInt();
-    this.mis = paramParcel.readInt();
-    this.mit = paramParcel.readInt();
-    this.miu = paramParcel.readInt();
-    this.miv = paramParcel.readInt();
-    this.miw = paramParcel.readInt();
-    this.mix = paramParcel.readInt();
-    this.miy = paramParcel.readInt();
-    this.miz = paramParcel.readInt();
-    this.miA = paramParcel.readInt();
-    this.miB = paramParcel.readInt();
-    this.miC = paramParcel.readInt();
-    this.ciX = paramParcel.readInt();
-    this.mgC = paramParcel.readInt();
-    this.miD = paramParcel.readInt();
-    this.miE = paramParcel.readInt();
+    this.pPb = paramParcel.readInt();
+    this.pPc = paramParcel.readInt();
+    this.pPd = paramParcel.readInt();
+    this.pPe = paramParcel.readInt();
+    this.pPf = paramParcel.readInt();
+    this.pPg = paramParcel.readInt();
+    this.pPh = paramParcel.readInt();
+    this.pPi = paramParcel.readInt();
+    this.pPj = paramParcel.readInt();
+    this.pPk = paramParcel.readInt();
+    this.pPl = paramParcel.readInt();
+    this.pPm = paramParcel.readInt();
+    this.pPn = paramParcel.readInt();
+    this.pPo = paramParcel.readInt();
+    this.pPp = paramParcel.readInt();
+    this.cXP = paramParcel.readInt();
+    this.pNr = paramParcel.readInt();
+    this.pPq = paramParcel.readInt();
+    this.pPr = paramParcel.readInt();
     try
     {
-      this.miF = paramParcel.readHashMap(HashMap.class.getClassLoader());
-      this.miG = paramParcel.readHashMap(HashMap.class.getClassLoader());
-      AppMethodBeat.o(222);
+      this.pPs = paramParcel.readHashMap(HashMap.class.getClassLoader());
+      this.pPt = paramParcel.readHashMap(HashMap.class.getClassLoader());
+      AppMethodBeat.o(103747);
       return;
     }
     catch (Exception paramParcel)
     {
-      ab.printErrStackTrace("MicroMsg.FaceDetectReportInfo", paramParcel, "", new Object[0]);
-      AppMethodBeat.o(222);
+      ad.printErrStackTrace("MicroMsg.FaceDetectReportInfo", paramParcel, "", new Object[0]);
+      AppMethodBeat.o(103747);
     }
+  }
+  
+  public final void BX(int paramInt)
+  {
+    if (paramInt > 0)
+    {
+      if (paramInt == 1)
+      {
+        this.pPc += 1;
+        return;
+      }
+      if (paramInt == 2)
+      {
+        this.pPd += 1;
+        return;
+      }
+      this.pPc += 1;
+      return;
+    }
+    if (paramInt == 0)
+    {
+      this.pPe += 1;
+      return;
+    }
+    if (paramInt == -11)
+    {
+      this.pPg += 1;
+      return;
+    }
+    if (paramInt == -12)
+    {
+      this.pPh += 1;
+      return;
+    }
+    if (paramInt == -13)
+    {
+      this.pPi += 1;
+      return;
+    }
+    if (paramInt == -101)
+    {
+      this.pPm += 1;
+      return;
+    }
+    if (paramInt == -102)
+    {
+      this.pPj += 1;
+      return;
+    }
+    if (paramInt == -103)
+    {
+      this.pPk += 1;
+      return;
+    }
+    if (paramInt == -105)
+    {
+      this.pPl += 1;
+      return;
+    }
+    if (paramInt == -106)
+    {
+      this.pPf += 1;
+      return;
+    }
+    if (paramInt == -107)
+    {
+      this.pPn += 1;
+      return;
+    }
+    if (paramInt == -108)
+    {
+      this.pPo += 1;
+      return;
+    }
+    if (paramInt == -109)
+    {
+      this.pPp += 1;
+      return;
+    }
+    this.pPb += 1;
   }
   
   public int describeContents()
@@ -135,149 +215,69 @@ class FaceDetectReportInfo
   
   public final void reset()
   {
-    AppMethodBeat.i(224);
+    AppMethodBeat.i(103749);
     this.sessionId = 0L;
-    this.mip = 0;
-    this.miq = 0;
-    this.mir = 0;
-    this.mio = 0;
-    this.mis = 0;
-    this.mit = 0;
-    this.miu = 0;
-    this.miv = 0;
-    this.miw = 0;
-    this.mix = 0;
-    this.miy = 0;
-    this.miz = 0;
-    this.miA = 0;
-    this.ciX = 0;
-    this.mgC = 0;
-    this.miD = 0;
-    this.miE = 0;
-    this.miF.clear();
-    this.miG.clear();
-    AppMethodBeat.o(224);
+    this.pPc = 0;
+    this.pPd = 0;
+    this.pPe = 0;
+    this.pPb = 0;
+    this.pPf = 0;
+    this.pPg = 0;
+    this.pPh = 0;
+    this.pPi = 0;
+    this.pPj = 0;
+    this.pPk = 0;
+    this.pPl = 0;
+    this.pPm = 0;
+    this.pPn = 0;
+    this.cXP = 0;
+    this.pNr = 0;
+    this.pPq = 0;
+    this.pPr = 0;
+    this.pPs.clear();
+    this.pPt.clear();
+    AppMethodBeat.o(103749);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(225);
-    String str = "detectOk: " + this.mip + ", motionOk: " + this.miq + ", noFace: " + this.mir + ", systemErr: " + this.mio + ", noLiveFace: " + this.mis + ", tooDark: " + this.mit + ", tooLight: " + this.miu + ", backLight: " + this.miv + ", tooSmall: " + this.miw + ", tooBig: " + this.mix + ", tooActive: " + this.miy + ", poseNotValid: " + this.miz + ", timeOut: " + this.miA + ", totalFrame: " + this.ciX + ", verifyTime: " + this.mgC + ", processTimePerFrame: " + this.miE;
-    AppMethodBeat.o(225);
+    AppMethodBeat.i(103750);
+    String str = "detectOk: " + this.pPc + ", motionOk: " + this.pPd + ", noFace: " + this.pPe + ", systemErr: " + this.pPb + ", noLiveFace: " + this.pPf + ", tooDark: " + this.pPg + ", tooLight: " + this.pPh + ", backLight: " + this.pPi + ", tooSmall: " + this.pPj + ", tooBig: " + this.pPk + ", tooActive: " + this.pPl + ", poseNotValid: " + this.pPm + ", timeOut: " + this.pPn + ", totalFrame: " + this.cXP + ", verifyTime: " + this.pNr + ", processTimePerFrame: " + this.pPr;
+    AppMethodBeat.o(103750);
     return str;
-  }
-  
-  public final void vF(int paramInt)
-  {
-    if (paramInt > 0)
-    {
-      if (paramInt == 1)
-      {
-        this.mip += 1;
-        return;
-      }
-      if (paramInt == 2)
-      {
-        this.miq += 1;
-        return;
-      }
-      this.mip += 1;
-      return;
-    }
-    if (paramInt == 0)
-    {
-      this.mir += 1;
-      return;
-    }
-    if (paramInt == -11)
-    {
-      this.mit += 1;
-      return;
-    }
-    if (paramInt == -12)
-    {
-      this.miu += 1;
-      return;
-    }
-    if (paramInt == -13)
-    {
-      this.miv += 1;
-      return;
-    }
-    if (paramInt == -101)
-    {
-      this.miz += 1;
-      return;
-    }
-    if (paramInt == -102)
-    {
-      this.miw += 1;
-      return;
-    }
-    if (paramInt == -103)
-    {
-      this.mix += 1;
-      return;
-    }
-    if (paramInt == -105)
-    {
-      this.miy += 1;
-      return;
-    }
-    if (paramInt == -106)
-    {
-      this.mis += 1;
-      return;
-    }
-    if (paramInt == -107)
-    {
-      this.miA += 1;
-      return;
-    }
-    if (paramInt == -108)
-    {
-      this.miB += 1;
-      return;
-    }
-    if (paramInt == -109)
-    {
-      this.miC += 1;
-      return;
-    }
-    this.mio += 1;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(223);
+    AppMethodBeat.i(103748);
     paramParcel.writeLong(this.sessionId);
-    paramParcel.writeInt(this.mio);
-    paramParcel.writeInt(this.mip);
-    paramParcel.writeInt(this.miq);
-    paramParcel.writeInt(this.mir);
-    paramParcel.writeInt(this.mis);
-    paramParcel.writeInt(this.mit);
-    paramParcel.writeInt(this.miu);
-    paramParcel.writeInt(this.miv);
-    paramParcel.writeInt(this.miw);
-    paramParcel.writeInt(this.mix);
-    paramParcel.writeInt(this.miy);
-    paramParcel.writeInt(this.miz);
-    paramParcel.writeInt(this.miA);
-    paramParcel.writeInt(this.miB);
-    paramParcel.writeInt(this.miC);
-    paramParcel.writeInt(this.ciX);
-    paramParcel.writeInt(this.mgC);
-    paramParcel.writeInt(this.miD);
-    paramParcel.writeInt(this.miE);
-    paramParcel.writeMap(this.miF);
-    paramParcel.writeMap(this.miG);
-    AppMethodBeat.o(223);
+    paramParcel.writeInt(this.pPb);
+    paramParcel.writeInt(this.pPc);
+    paramParcel.writeInt(this.pPd);
+    paramParcel.writeInt(this.pPe);
+    paramParcel.writeInt(this.pPf);
+    paramParcel.writeInt(this.pPg);
+    paramParcel.writeInt(this.pPh);
+    paramParcel.writeInt(this.pPi);
+    paramParcel.writeInt(this.pPj);
+    paramParcel.writeInt(this.pPk);
+    paramParcel.writeInt(this.pPl);
+    paramParcel.writeInt(this.pPm);
+    paramParcel.writeInt(this.pPn);
+    paramParcel.writeInt(this.pPo);
+    paramParcel.writeInt(this.pPp);
+    paramParcel.writeInt(this.cXP);
+    paramParcel.writeInt(this.pNr);
+    paramParcel.writeInt(this.pPq);
+    paramParcel.writeInt(this.pPr);
+    paramParcel.writeMap(this.pPs);
+    paramParcel.writeMap(this.pPt);
+    AppMethodBeat.o(103748);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.FaceDetectReportInfo
  * JD-Core Version:    0.7.0.1
  */

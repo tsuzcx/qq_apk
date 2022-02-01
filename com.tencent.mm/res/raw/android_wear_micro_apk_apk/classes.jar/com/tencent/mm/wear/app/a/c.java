@@ -13,9 +13,9 @@ public abstract interface c
   
   public abstract boolean e(Uri paramUri);
   
-  public abstract d l(String paramString1, String paramString2);
+  public abstract d m(String paramString1, String paramString2);
   
-  public abstract String lN();
+  public abstract String mA();
 }
 
 

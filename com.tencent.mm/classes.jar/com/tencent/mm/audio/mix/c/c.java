@@ -1,139 +1,124 @@
 package com.tencent.mm.audio.mix.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.a.d;
+import com.tencent.mm.audio.mix.a.e;
 import java.lang.reflect.Array;
 
 public class c
   implements g
 {
-  protected static long ceW;
-  protected static long ceX;
-  protected static Object ceY;
-  protected h ceK;
-  protected int ceL;
-  protected int ceM;
-  protected int ceN;
-  protected int ceO;
-  protected int ceP;
-  protected int ceQ;
-  protected boolean ceR;
-  protected boolean ceS;
-  protected boolean ceT;
-  protected String ceU;
-  protected String ceV;
-  protected byte[][] ceZ;
-  protected h cfa;
+  protected static long cTV;
+  protected static long cTW;
+  protected static Object cTX;
+  protected h cTJ;
+  protected int cTK;
+  protected int cTL;
+  protected int cTM;
+  protected int cTN;
+  protected int cTO;
+  protected int cTP;
+  protected boolean cTQ;
+  protected boolean cTR;
+  protected boolean cTS;
+  protected String cTT;
+  protected String cTU;
+  protected byte[][] cTY;
+  protected h cTZ;
   
   static
   {
-    AppMethodBeat.i(137018);
-    ceW = 0L;
-    ceX = 0L;
-    ceY = new Object();
-    AppMethodBeat.o(137018);
+    AppMethodBeat.i(136766);
+    cTV = 0L;
+    cTW = 0L;
+    cTX = new Object();
+    AppMethodBeat.o(136766);
   }
   
   public c()
   {
-    AppMethodBeat.i(137013);
-    this.ceL = 0;
-    this.ceM = 0;
-    this.ceN = 0;
-    this.ceO = 44100;
-    this.ceP = 2;
-    this.ceQ = 2;
-    this.ceR = false;
-    this.ceS = false;
-    this.ceT = false;
-    this.ceZ = new byte[2][];
-    AppMethodBeat.o(137013);
+    AppMethodBeat.i(136761);
+    this.cTK = 0;
+    this.cTL = 0;
+    this.cTM = 0;
+    this.cTN = 44100;
+    this.cTO = 2;
+    this.cTP = 2;
+    this.cTQ = false;
+    this.cTR = false;
+    this.cTS = false;
+    this.cTY = new byte[2][];
+    AppMethodBeat.o(136761);
   }
   
-  public final void C(int paramInt1, int paramInt2, int paramInt3)
+  public final void F(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(137015);
-    int i = this.ceL;
-    this.ceL = paramInt1;
-    this.ceM = paramInt2;
-    this.ceN = paramInt3;
-    if (this.ceO != this.ceL) {
-      if (this.ceK == null)
+    AppMethodBeat.i(136763);
+    int i = this.cTK;
+    this.cTK = paramInt1;
+    this.cTL = paramInt2;
+    this.cTM = paramInt3;
+    if (this.cTN != this.cTK) {
+      if (this.cTJ == null)
       {
-        this.ceK = Dj();
-        this.ceK.k(this.ceV, this.ceL, this.ceO);
-        if ((this.ceM == 2) && (this.ceP == 2))
+        this.cTJ = MS();
+        this.cTJ.j(this.cTU, this.cTK, this.cTN);
+        if ((this.cTL == 2) && (this.cTO == 2))
         {
-          if (this.cfa != null) {
+          if (this.cTZ != null) {
             break label247;
           }
-          this.cfa = Dj();
-          this.cfa.k(this.ceV + "RResample", this.ceL, this.ceO);
+          this.cTZ = MS();
+          this.cTZ.j(this.cTU + "RResample", this.cTK, this.cTN);
         }
         label145:
-        this.ceT = true;
+        this.cTS = true;
       }
     }
     for (;;)
     {
-      if (this.ceQ != this.ceN) {
-        this.ceS = true;
+      if (this.cTP != this.cTM) {
+        this.cTR = true;
       }
-      if (this.ceP != this.ceM) {
-        this.ceR = true;
+      if (this.cTO != this.cTL) {
+        this.cTQ = true;
       }
-      AppMethodBeat.o(137015);
+      AppMethodBeat.o(136763);
       return;
-      if ((this.ceK == null) || (i == this.ceL)) {
+      if ((this.cTJ == null) || (i == this.cTK)) {
         break;
       }
-      this.ceK.release();
-      this.ceK = Dj();
-      this.ceK.k(this.ceV, this.ceL, this.ceO);
+      this.cTJ.release();
+      this.cTJ = MS();
+      this.cTJ.j(this.cTU, this.cTK, this.cTN);
       break;
       label247:
-      if ((this.cfa == null) || (i == this.ceL)) {
+      if ((this.cTZ == null) || (i == this.cTK)) {
         break label145;
       }
-      this.cfa.release();
-      this.cfa = Dj();
-      this.cfa.k(this.ceV + "RResample", this.ceL, this.ceO);
+      this.cTZ.release();
+      this.cTZ = MS();
+      this.cTZ.j(this.cTU + "RResample", this.cTK, this.cTN);
       break label145;
-      this.ceT = false;
-      if (this.ceK != null)
+      this.cTS = false;
+      if (this.cTJ != null)
       {
-        this.ceK.release();
-        this.ceK = null;
+        this.cTJ.release();
+        this.cTJ = null;
       }
     }
   }
   
-  public h Dj()
+  public byte[] L(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(137014);
-    i locali = new i();
-    AppMethodBeat.o(137014);
-    return locali;
-  }
-  
-  public void Dk() {}
-  
-  public d Dl()
-  {
-    return null;
-  }
-  
-  public byte[] E(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(137016);
+    AppMethodBeat.i(136764);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(137016);
+      AppMethodBeat.o(136764);
       return paramArrayOfByte;
     }
-    if (this.ceS)
+    if (this.cTR)
     {
-      ??? = b.b(this.ceN, this.ceQ, paramArrayOfByte);
+      ??? = b.a(this.cTM, this.cTP, paramArrayOfByte);
       if (??? == null) {}
     }
     for (;;)
@@ -143,32 +128,32 @@ public class c
       }
       for (;;)
       {
-        if ((this.ceM == 1) && (this.ceP == 2) && (this.ceT))
+        if ((this.cTL == 1) && (this.cTO == 2) && (this.cTS))
         {
-          paramArrayOfByte = this.ceK.E((byte[])???);
+          paramArrayOfByte = this.cTJ.L((byte[])???);
           if (paramArrayOfByte != null) {
             ??? = paramArrayOfByte;
           }
-          paramArrayOfByte = b.c(this.ceM, this.ceP, this.ceQ, (byte[])???);
+          paramArrayOfByte = b.b(this.cTL, this.cTO, this.cTP, (byte[])???);
           if (paramArrayOfByte != null) {
             ??? = paramArrayOfByte;
           }
-          AppMethodBeat.o(137016);
+          AppMethodBeat.o(136764);
           return ???;
         }
         byte[] arrayOfByte;
-        if ((this.ceM == 2) && (this.ceP == 2) && (this.ceT))
+        if ((this.cTL == 2) && (this.cTO == 2) && (this.cTS))
         {
-          if ((this.ceK instanceof i)) {
-            if (this.ceP == 2)
+          if ((this.cTJ instanceof i)) {
+            if (this.cTO == 2)
             {
               int i = ???.length / 2;
-              if ((this.ceZ == null) || (i != this.ceZ.length)) {
-                this.ceZ = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { 2, i }));
+              if ((this.cTY == null) || (i != this.cTY.length)) {
+                this.cTY = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { 2, i }));
               }
-              b.a(this.ceQ, (byte[])???, this.ceZ);
-              paramArrayOfByte = this.ceK.E(this.ceZ[0]);
-              arrayOfByte = this.cfa.E(this.ceZ[1]);
+              b.a(this.cTP, (byte[])???, this.cTY);
+              paramArrayOfByte = this.cTJ.L(this.cTY[0]);
+              arrayOfByte = this.cTZ.L(this.cTY[1]);
               if ((paramArrayOfByte == null) || (arrayOfByte == null)) {
                 paramArrayOfByte = (byte[])???;
               }
@@ -179,18 +164,18 @@ public class c
             if (paramArrayOfByte != null) {
               ??? = paramArrayOfByte;
             }
-            AppMethodBeat.o(137016);
+            AppMethodBeat.o(136764);
             return ???;
-            paramArrayOfByte = b.a(this.ceQ, paramArrayOfByte, arrayOfByte);
+            paramArrayOfByte = b.a(this.cTP, paramArrayOfByte, arrayOfByte);
             continue;
-            paramArrayOfByte = this.ceK.E((byte[])???);
+            paramArrayOfByte = this.cTJ.L((byte[])???);
             continue;
-            paramArrayOfByte = this.ceK.E((byte[])???);
+            paramArrayOfByte = this.cTJ.L((byte[])???);
           }
         }
-        if (this.ceR)
+        if (this.cTQ)
         {
-          arrayOfByte = b.c(this.ceM, this.ceP, this.ceQ, (byte[])???);
+          arrayOfByte = b.b(this.cTL, this.cTO, this.cTP, (byte[])???);
           if (arrayOfByte != null) {
             ??? = arrayOfByte;
           }
@@ -201,22 +186,22 @@ public class c
           for (;;)
           {
             ??? = paramArrayOfByte;
-            if (this.ceT) {}
-            synchronized (ceY)
+            if (this.cTS) {}
+            synchronized (cTX)
             {
-              ceW += 1L;
+              cTV += 1L;
               System.nanoTime();
-              ??? = this.ceK.E(paramArrayOfByte);
+              ??? = this.cTJ.L(paramArrayOfByte);
               if (??? != null) {
                 paramArrayOfByte = (byte[])???;
               }
-              synchronized (ceY)
+              synchronized (cTX)
               {
                 ??? = paramArrayOfByte;
               }
             }
             paramArrayOfByte = finally;
-            AppMethodBeat.o(137016);
+            AppMethodBeat.o(136764);
             throw paramArrayOfByte;
             paramArrayOfByte = (byte[])???;
           }
@@ -226,27 +211,42 @@ public class c
     }
   }
   
+  public h MS()
+  {
+    AppMethodBeat.i(136762);
+    i locali = new i();
+    AppMethodBeat.o(136762);
+    return locali;
+  }
+  
+  public void MT() {}
+  
+  public e MU()
+  {
+    return null;
+  }
+  
   public void flushCache() {}
   
   public void release()
   {
-    AppMethodBeat.i(137017);
-    if (this.ceK != null)
+    AppMethodBeat.i(136765);
+    if (this.cTJ != null)
     {
-      this.ceK.release();
-      this.ceK = null;
+      this.cTJ.release();
+      this.cTJ = null;
     }
-    if (this.cfa != null)
+    if (this.cTZ != null)
     {
-      this.cfa.release();
-      this.cfa = null;
+      this.cTZ.release();
+      this.cTZ = null;
     }
-    AppMethodBeat.o(137017);
+    AppMethodBeat.o(136765);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.c.c
  * JD-Core Version:    0.7.0.1
  */

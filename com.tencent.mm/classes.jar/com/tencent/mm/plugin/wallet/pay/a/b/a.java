@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.wallet.pay.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.ny;
-import com.tencent.mm.protocal.protobuf.nz;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.u;
+import com.tencent.mm.protocal.protobuf.qd;
+import com.tencent.mm.protocal.protobuf.qe;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.wallet_core.c.w;
 
 public class a
-  extends u
+  extends w
 {
-  private f callback;
+  private g callback;
   private b rr;
   
   public a(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(45933);
+    AppMethodBeat.i(69276);
     b.a locala = new b.a();
-    ny localny = new ny();
-    localny.wrH = paramString;
-    localny.wDC = paramInt1;
-    localny.wDD = paramInt2;
-    locala.fsX = localny;
-    locala.fsY = new nz();
+    qd localqd = new qd();
+    localqd.CAV = paramString;
+    localqd.CPd = paramInt1;
+    localqd.CPe = paramInt2;
+    locala.gUU = localqd;
+    locala.gUV = new qe();
     locala.uri = getUri();
     locala.funcId = getType();
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    locala.routeInfo = com.tencent.mm.wallet_core.ui.e.awk(paramString);
-    this.rr = locala.ado();
-    ab.i("MicroMsg.NetSceneCancelPay", "request uri: %s, reqKey: %s, payScene: %d, payChannel:%d", new Object[] { getUri(), paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(45933);
+    locala.routeInfo = com.tencent.mm.wallet_core.ui.e.aNn(paramString);
+    this.rr = locala.atI();
+    ad.i("MicroMsg.NetSceneCancelPay", "request uri: %s, reqKey: %s, payScene: %d, payChannel:%d", new Object[] { getUri(), paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(69276);
   }
   
-  public int doScene(com.tencent.mm.network.e parame, f paramf)
+  public int doScene(com.tencent.mm.network.e parame, g paramg)
   {
-    AppMethodBeat.i(45934);
-    this.callback = paramf;
+    AppMethodBeat.i(69277);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(45934);
+    AppMethodBeat.o(69277);
     return i;
   }
   
@@ -54,9 +54,9 @@ public class a
   
   public int getType()
   {
-    AppMethodBeat.i(138553);
+    AppMethodBeat.i(69279);
     int i = getFuncId();
-    AppMethodBeat.o(138553);
+    AppMethodBeat.o(69279);
     return i;
   }
   
@@ -67,31 +67,31 @@ public class a
   
   public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(142355);
-    ab.d("MicroMsg.NetSceneCancelPay", "response uri: %s, errType: %d, errCode: %d, errMsg: %s", new Object[] { getUri(), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(69278);
+    ad.d("MicroMsg.NetSceneCancelPay", "response uri: %s, errType: %d, errCode: %d, errMsg: %s", new Object[] { getUri(), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {}
     try
     {
-      paramq = (nz)((b)paramq).fsW.fta;
-      ab.i("MicroMsg.NetSceneCancelPay", "NetSceneCancelPay BaseResponse.Ret is %d, BaseResponse.ErrMsg is %s", new Object[] { Integer.valueOf(paramq.BaseResponse.Ret), paramq.BaseResponse.ErrMsg });
+      paramq = (qe)((b)paramq).gUT.gUX;
+      ad.i("MicroMsg.NetSceneCancelPay", "NetSceneCancelPay BaseResponse.Ret is %d, BaseResponse.ErrMsg is %s", new Object[] { Integer.valueOf(paramq.BaseResponse.Ret), paramq.BaseResponse.ErrMsg });
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
-      AppMethodBeat.o(142355);
+      AppMethodBeat.o(69278);
       return;
     }
     catch (Exception paramq)
     {
       for (;;)
       {
-        ab.i("MicroMsg.NetSceneCancelPay", paramq.getMessage());
+        ad.i("MicroMsg.NetSceneCancelPay", paramq.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.b.a
  * JD-Core Version:    0.7.0.1
  */

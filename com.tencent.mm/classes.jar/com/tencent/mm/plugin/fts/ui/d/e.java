@@ -3,14 +3,15 @@ package com.tencent.mm.plugin.fts.ui.d;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fts.a.a.i;
+import com.tencent.mm.plugin.fts.a.a.c;
 import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.plugin.fts.a.a.l;
+import com.tencent.mm.plugin.fts.a.a.k;
+import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.d.e.a;
 import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.fts.ui.a.r;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -22,65 +23,65 @@ public final class e
     super(paramContext, paramb, paramInt);
   }
   
-  public final com.tencent.mm.plugin.fts.a.a.a a(ak paramak, HashSet<String> paramHashSet)
+  public final com.tencent.mm.plugin.fts.a.a.a a(ap paramap, HashSet<String> paramHashSet)
   {
-    AppMethodBeat.i(62066);
-    i locali = new i();
-    locali.hdl = 64;
-    locali.query = this.query;
-    locali.mSP = new int[] { 131072, 131081 };
-    locali.mSR = 3;
-    locali.mST = com.tencent.mm.plugin.fts.a.c.b.mTt;
-    locali.mSS = paramHashSet;
-    locali.mSU = this;
-    locali.handler = paramak;
-    paramak = ((n)g.G(n.class)).search(2, locali);
-    AppMethodBeat.o(62066);
-    return paramak;
+    AppMethodBeat.i(112179);
+    j localj = new j();
+    localj.iWB = 64;
+    localj.query = this.query;
+    localj.rpJ = new int[] { 131072, 131081 };
+    localj.rpL = 3;
+    localj.rpN = com.tencent.mm.plugin.fts.a.c.b.rqn;
+    localj.rpM = paramHashSet;
+    localj.rpO = this;
+    localj.handler = paramap;
+    paramap = ((n)g.ad(n.class)).search(2, localj);
+    AppMethodBeat.o(112179);
+    return paramap;
   }
   
-  public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt1, int paramInt2, l paraml, e.a parama)
+  public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt1, int paramInt2, m paramm, e.a parama)
   {
-    AppMethodBeat.i(62069);
+    AppMethodBeat.i(112182);
     Object localObject = null;
-    if ((paraml.type == 131072) || (paraml.type == 131081))
+    if ((paramm.type == 131072) || (paramm.type == 131081))
     {
       localObject = new r(paramInt2);
-      ((r)localObject).hrL = paraml;
-      ((r)localObject).mRX = parama.mRX;
-      ((r)localObject).es(paraml.type, paraml.mRU);
+      ((r)localObject).jpy = paramm;
+      ((r)localObject).roS = parama.roS;
+      ((r)localObject).fI(paramm.type, paramm.roM);
     }
     for (;;)
     {
-      AppMethodBeat.o(62069);
+      AppMethodBeat.o(112182);
       return localObject;
-      if ((paraml.type == 131073) || (paraml.type == 131074)) {
-        localObject = ((com.tencent.mm.plugin.fts.ui.a)((n)g.G(n.class)).createFTSUIUnit(33, this.context, this.mTx, this.ibk)).a(paramInt1, paramInt2, paraml, parama);
+      if ((paramm.type == 131073) || (paramm.type == 131074)) {
+        localObject = ((com.tencent.mm.plugin.fts.ui.a)((n)g.ad(n.class)).createFTSUIUnit(33, this.context, this.rqr, this.kme)).a(paramInt1, paramInt2, paramm, parama);
       }
     }
   }
   
   public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
   {
-    AppMethodBeat.i(62068);
+    AppMethodBeat.i(112181);
     Object localObject = null;
     com.tencent.mm.plugin.fts.a.d.a.a locala = null;
     int i;
-    if (parama.mTz)
+    if (parama.rqt)
     {
-      i = paramInt - parama.mTy - 1;
+      i = paramInt - parama.rqs - 1;
       localObject = locala;
-      if (i < parama.mTC.size())
+      if (i < parama.kLN.size())
       {
         localObject = locala;
         if (i >= 0)
         {
-          l locall = (l)parama.mTC.get(i);
-          locala = a(locall.type, paramInt, locall, parama);
+          m localm = (m)parama.kLN.get(i);
+          locala = a(localm.type, paramInt, localm, parama);
           localObject = locala;
           if (locala != null)
           {
-            locala.es(locall.type, locall.mRU);
+            locala.fI(localm.type, localm.roM);
             localObject = locala;
           }
         }
@@ -90,33 +91,55 @@ public final class e
     {
       if (localObject != null)
       {
-        localObject.mTJ = (paramInt + 1);
-        if (paramInt == parama.mTC.size() - 1) {
-          localObject.mTH = false;
+        localObject.rqB = (paramInt + 1);
+        if (paramInt == parama.kLN.size() - 1) {
+          localObject.rqz = false;
         }
       }
-      AppMethodBeat.o(62068);
+      AppMethodBeat.o(112181);
       return localObject;
     }
   }
   
-  public final void a(j paramj, HashSet<String> paramHashSet)
+  public final void a(k paramk, HashSet<String> paramHashSet)
   {
-    AppMethodBeat.i(62067);
+    AppMethodBeat.i(112180);
     paramHashSet = new e.a();
     paramHashSet.businessType = -4;
-    paramHashSet.mTC = paramj.mSW;
-    paramHashSet.mTz = bU(paramj.mSW);
-    paramHashSet.mRX = paramj.mRX;
-    if (paramHashSet.mTC.size() > 3)
+    paramHashSet.kLN = paramk.rpQ;
+    paramHashSet.rqt = dF(paramk.rpQ);
+    paramHashSet.roS = paramk.roS;
+    if (paramHashSet.kLN.size() > 3)
     {
-      paramHashSet.mTB = true;
-      paramHashSet.mTC = paramHashSet.mTC.subList(0, 3);
+      paramHashSet.qpI = true;
+      paramHashSet.kLN = paramHashSet.kLN.subList(0, 3);
     }
-    if (bU(paramj.mSW)) {
-      this.mVO.add(paramHashSet);
+    if (dF(paramk.rpQ)) {
+      this.rsD.add(paramHashSet);
     }
-    AppMethodBeat.o(62067);
+    AppMethodBeat.o(112180);
+  }
+  
+  public final c b(int paramInt, e.a parama)
+  {
+    AppMethodBeat.i(112183);
+    if ((paramInt < parama.kLN.size()) && (paramInt >= 0))
+    {
+      m localm = (m)parama.kLN.get(paramInt);
+      parama = new c();
+      parama.drI = String.valueOf(localm.hashCode());
+      if ((localm.type == 131072) || (localm.type == 131081) || (localm.type == 131073) || (localm.type == 131074)) {
+        parama.drT = 3;
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(112183);
+      return parama;
+      parama = null;
+      continue;
+      parama = null;
+    }
   }
   
   public final int getType()
@@ -126,7 +149,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.d.e
  * JD-Core Version:    0.7.0.1
  */

@@ -24,16 +24,16 @@ public final class TextFilteredDataBuffer<T>
   public TextFilteredDataBuffer(AbstractDataBuffer<T> paramAbstractDataBuffer, String paramString)
   {
     super(paramAbstractDataBuffer);
-    AppMethodBeat.i(61181);
+    AppMethodBeat.i(11673);
     this.zzob = new ArrayList();
     this.zzoc = paramAbstractDataBuffer;
     this.zzoo = paramString;
-    AppMethodBeat.o(61181);
+    AppMethodBeat.o(11673);
   }
   
   private final String zzh(String paramString)
   {
-    AppMethodBeat.i(61186);
+    AppMethodBeat.i(11678);
     paramString = paramString.toLowerCase(this.zzor);
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
@@ -46,46 +46,46 @@ public final class TextFilteredDataBuffer<T>
       i += 1;
     }
     paramString = localStringBuilder.toString();
-    AppMethodBeat.o(61186);
+    AppMethodBeat.o(11678);
     return paramString;
   }
   
   public final int computeRealPosition(int paramInt)
   {
-    AppMethodBeat.i(61183);
+    AppMethodBeat.i(11675);
     if (TextUtils.isEmpty(this.zzop))
     {
-      AppMethodBeat.o(61183);
+      AppMethodBeat.o(11675);
       return paramInt;
     }
     if ((paramInt < 0) || (paramInt >= this.zzob.size()))
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException(53 + "Position " + paramInt + " is out of bounds for this buffer");
-      AppMethodBeat.o(61183);
+      AppMethodBeat.o(11675);
       throw localIllegalArgumentException;
     }
     paramInt = ((Integer)this.zzob.get(paramInt)).intValue();
-    AppMethodBeat.o(61183);
+    AppMethodBeat.o(11675);
     return paramInt;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(61182);
+    AppMethodBeat.i(11674);
     if (TextUtils.isEmpty(this.zzop))
     {
       i = this.mDataBuffer.getCount();
-      AppMethodBeat.o(61182);
+      AppMethodBeat.o(11674);
       return i;
     }
     int i = this.zzob.size();
-    AppMethodBeat.o(61182);
+    AppMethodBeat.o(11674);
     return i;
   }
   
   public final void setFilterTerm(Context paramContext, TextFilterable.StringFilter paramStringFilter, String paramString)
   {
-    AppMethodBeat.i(61185);
+    AppMethodBeat.i(11677);
     Preconditions.checkNotNull(paramStringFilter);
     this.zzop = paramString;
     this.zzoq = paramStringFilter;
@@ -112,24 +112,24 @@ public final class TextFilteredDataBuffer<T>
           break;
         }
       }
-      AppMethodBeat.o(61185);
+      AppMethodBeat.o(11677);
       return;
     }
     this.zzob.clear();
-    AppMethodBeat.o(61185);
+    AppMethodBeat.o(11677);
   }
   
   @VisibleForTesting
   public final void setFilterTerm(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(61184);
+    AppMethodBeat.i(11676);
     setFilterTerm(paramContext, CONTAINS, paramString);
-    AppMethodBeat.o(61184);
+    AppMethodBeat.o(11676);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.data.TextFilteredDataBuffer
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.f.e;
 import com.tencent.mm.plugin.game.f.e.a.a;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public class GameSmallAvatarList
@@ -24,11 +24,11 @@ public class GameSmallAvatarList
   
   public void setData(LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(112410);
-    if (bo.es(paramLinkedList))
+    AppMethodBeat.i(42620);
+    if (bt.gL(paramLinkedList))
     {
       setVisibility(8);
-      AppMethodBeat.o(112410);
+      AppMethodBeat.o(42620);
       return;
     }
     setVisibility(0);
@@ -36,8 +36,8 @@ public class GameSmallAvatarList
     while (getChildCount() < paramLinkedList.size())
     {
       localObject = new ImageView(getContext());
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(getResources().getDimensionPixelSize(2131427736), getResources().getDimensionPixelSize(2131427736));
-      localLayoutParams.setMargins(0, 0, getResources().getDimensionPixelSize(2131427731), 0);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(getResources().getDimensionPixelSize(2131165444), getResources().getDimensionPixelSize(2131165444));
+      localLayoutParams.setMargins(0, 0, getResources().getDimensionPixelSize(2131165437), 0);
       ((ImageView)localObject).setLayoutParams(localLayoutParams);
       ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
       addView((View)localObject);
@@ -51,8 +51,8 @@ public class GameSmallAvatarList
         break;
       }
       localObject = new e.a.a();
-      ((e.a.a)localObject).eOk = true;
-      e.bHE().a((ImageView)getChildAt(i), (String)paramLinkedList.get(i), ((e.a.a)localObject).bHF());
+      ((e.a.a)localObject).gkG = true;
+      e.cEB().a((ImageView)getChildAt(i), (String)paramLinkedList.get(i), ((e.a.a)localObject).cEC());
       getChildAt(i).setVisibility(0);
       i += 1;
     }
@@ -61,12 +61,12 @@ public class GameSmallAvatarList
       getChildAt(j).setVisibility(8);
       j += 1;
     }
-    AppMethodBeat.o(112410);
+    AppMethodBeat.o(42620);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.GameSmallAvatarList
  * JD-Core Version:    0.7.0.1
  */

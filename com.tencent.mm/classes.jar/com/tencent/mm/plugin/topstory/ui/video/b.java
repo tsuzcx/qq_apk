@@ -5,79 +5,85 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.aj;
 import android.view.View;
-import com.tencent.mm.protocal.protobuf.ccp;
-import com.tencent.mm.protocal.protobuf.ckw;
-import com.tencent.mm.protocal.protobuf.ckx;
+import com.tencent.mm.protocal.protobuf.ctk;
+import com.tencent.mm.protocal.protobuf.dcy;
+import com.tencent.mm.protocal.protobuf.ddb;
 import com.tencent.mm.ui.MMActivity;
 import java.util.List;
 
 public abstract interface b
 {
-  public abstract boolean DP();
+  public abstract boolean Ny();
   
-  public abstract void GA(int paramInt);
+  public abstract boolean Ph(int paramInt);
   
-  public abstract void GB(int paramInt);
+  public abstract void Pi(int paramInt);
   
-  public abstract boolean Gz(int paramInt);
+  public abstract void Pj(int paramInt);
   
-  public abstract void a(ccp paramccp);
+  public abstract void a(ctk paramctk);
   
-  public abstract void a(ckx paramckx);
+  public abstract void a(ddb paramddb);
   
-  public abstract void aen(String paramString);
+  public abstract void a(ddb paramddb, int paramInt1, int paramInt2);
   
-  public abstract void aeo(String paramString);
+  public abstract void a(ddb paramddb, View paramView);
   
-  public abstract void ah(View paramView, int paramInt);
+  public abstract void a(ddb paramddb, f paramf, int paramInt);
   
-  public abstract MMActivity bMN();
+  public abstract void aq(View paramView, int paramInt);
   
-  public abstract void cIZ();
+  public abstract void asH(String paramString);
   
-  public abstract void cJa();
+  public abstract void asI(String paramString);
   
-  public abstract l cJc();
+  public abstract MMActivity cKW();
   
-  public abstract o cJd();
+  public abstract void cMY();
   
-  public abstract String cJe();
+  public abstract void dOB();
   
-  public abstract ckw cJf();
+  public abstract void dOC();
   
-  public abstract m cJg();
+  public abstract l dOE();
   
-  public abstract r cJh();
+  public abstract o dOF();
   
-  public abstract Point cJi();
+  public abstract String dOG();
   
-  public abstract aj cJj();
+  public abstract dcy dOH();
   
-  public abstract int cJk();
+  public abstract m dOI();
   
-  public abstract boolean cJl();
+  public abstract r dOJ();
   
-  public abstract e cJm();
+  public abstract Point dOK();
   
-  public abstract boolean cJn();
+  public abstract aj dOL();
   
-  public abstract void cJo();
+  public abstract int dOM();
   
-  public abstract int cJp();
+  public abstract boolean dON();
   
-  public abstract void cJq();
+  public abstract boolean dOO();
   
-  public abstract void cJr();
+  public abstract e dOP();
   
-  public abstract n cJs();
+  public abstract boolean dOQ();
   
-  public abstract String cJt();
+  public abstract void dOR();
   
-  public abstract int cJu();
+  public abstract int dOS();
   
-  public abstract void cJv();
+  public abstract n dOT();
   
-  public abstract int cJw();
+  public abstract String dOU();
+  
+  public abstract int dOV();
+  
+  public abstract void dOW();
+  
+  public abstract int dOX();
   
   public abstract RecyclerView.i getLayoutManager();
   
@@ -87,15 +93,13 @@ public abstract interface b
   
   public abstract int getVideoWidth();
   
-  public abstract boolean gh(int paramInt1, int paramInt2);
-  
   public abstract boolean isFullscreenMode();
   
-  public abstract void k(List<ckx> paramList, boolean paramBoolean);
+  public abstract void l(List<ddb> paramList, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.b
  * JD-Core Version:    0.7.0.1
  */

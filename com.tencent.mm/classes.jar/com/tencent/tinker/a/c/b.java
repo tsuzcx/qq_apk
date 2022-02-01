@@ -3,19 +3,30 @@ package com.tencent.tinker.a.c;
 public final class b
   implements Cloneable
 {
-  private static final int[] bgZ = new int[0];
-  public int[] Bqu = new int[this.Fk.length];
-  public int[] Fk = new int[10];
-  public int mSize = 0;
+  private static final int[] bIT = new int[0];
+  public int[] ICp;
+  public int[] Mi;
+  public int mSize;
   
   public b()
   {
-    this((byte)0);
+    this(10);
   }
   
-  private b(byte paramByte) {}
+  public b(int paramInt)
+  {
+    if (paramInt == 0) {
+      this.Mi = bIT;
+    }
+    for (this.ICp = bIT;; this.ICp = new int[this.Mi.length])
+    {
+      this.mSize = 0;
+      return;
+      this.Mi = new int[paramInt];
+    }
+  }
   
-  private static int ad(int paramInt)
+  private static int av(int paramInt)
   {
     if (paramInt <= 4) {
       return 8;
@@ -59,14 +70,14 @@ public final class b
       paramArrayOfInt[paramInt2] = paramInt3;
       return paramArrayOfInt;
     }
-    int[] arrayOfInt = new int[ad(paramInt1)];
+    int[] arrayOfInt = new int[av(paramInt1)];
     System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, paramInt2);
     arrayOfInt[paramInt2] = paramInt3;
     System.arraycopy(paramArrayOfInt, paramInt2, arrayOfInt, paramInt2 + 1, paramArrayOfInt.length - paramInt2);
     return arrayOfInt;
   }
   
-  private b dWu()
+  private b foZ()
   {
     try
     {
@@ -77,8 +88,8 @@ public final class b
     {
       try
       {
-        localb.Fk = ((int[])this.Fk.clone());
-        localb.Bqu = ((int[])this.Bqu.clone());
+        localb.Mi = ((int[])this.Mi.clone());
+        localb.ICp = ((int[])this.ICp.clone());
         return localb;
       }
       catch (CloneNotSupportedException localCloneNotSupportedException2) {}
@@ -87,7 +98,7 @@ public final class b
     }
   }
   
-  public static int[] h(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  private static int[] h(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
     if (paramInt1 > paramArrayOfInt.length) {
       throw new IllegalArgumentException("Bad currentSize, originalSize: " + paramArrayOfInt.length + " currentSize: " + paramInt1);
@@ -95,30 +106,66 @@ public final class b
     int[] arrayOfInt = paramArrayOfInt;
     if (paramInt1 + 1 > paramArrayOfInt.length)
     {
-      arrayOfInt = new int[ad(paramInt1)];
+      arrayOfInt = new int[av(paramInt1)];
       System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, paramInt1);
     }
     arrayOfInt[paramInt1] = paramInt2;
     return arrayOfInt;
   }
   
+  public final int acz(int paramInt)
+  {
+    paramInt = b(this.Mi, this.mSize, paramInt);
+    if (paramInt < 0) {
+      return 0;
+    }
+    return this.ICp[paramInt];
+  }
+  
+  public final void append(int paramInt1, int paramInt2)
+  {
+    if ((this.mSize != 0) && (paramInt1 <= this.Mi[(this.mSize - 1)]))
+    {
+      put(paramInt1, paramInt2);
+      return;
+    }
+    this.Mi = h(this.Mi, this.mSize, paramInt1);
+    this.ICp = h(this.ICp, this.mSize, paramInt2);
+    this.mSize += 1;
+  }
+  
+  public final int get(int paramInt)
+  {
+    return acz(paramInt);
+  }
+  
   public final int indexOfKey(int paramInt)
   {
-    return b(this.Fk, this.mSize, paramInt);
+    return b(this.Mi, this.mSize, paramInt);
+  }
+  
+  public final int keyAt(int paramInt)
+  {
+    return this.Mi[paramInt];
   }
   
   public final void put(int paramInt1, int paramInt2)
   {
-    int i = b(this.Fk, this.mSize, paramInt1);
+    int i = b(this.Mi, this.mSize, paramInt1);
     if (i >= 0)
     {
-      this.Bqu[i] = paramInt2;
+      this.ICp[i] = paramInt2;
       return;
     }
     i ^= 0xFFFFFFFF;
-    this.Fk = c(this.Fk, this.mSize, i, paramInt1);
-    this.Bqu = c(this.Bqu, this.mSize, i, paramInt2);
+    this.Mi = c(this.Mi, this.mSize, i, paramInt1);
+    this.ICp = c(this.ICp, this.mSize, i, paramInt2);
     this.mSize += 1;
+  }
+  
+  public final int size()
+  {
+    return this.mSize;
   }
   
   public final String toString()
@@ -134,9 +181,9 @@ public final class b
       if (i > 0) {
         localStringBuilder.append(", ");
       }
-      localStringBuilder.append(this.Fk[i]);
+      localStringBuilder.append(this.Mi[i]);
       localStringBuilder.append('=');
-      localStringBuilder.append(this.Bqu[i]);
+      localStringBuilder.append(this.ICp[i]);
       i += 1;
     }
     localStringBuilder.append('}');
@@ -145,7 +192,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tinker.a.c.b
  * JD-Core Version:    0.7.0.1
  */

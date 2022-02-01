@@ -1,26 +1,32 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.plugin.sns.i.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.data.o;
+import com.tencent.mm.pluginsdk.model.m;
+import java.io.OutputStream;
+import java.util.concurrent.ExecutorService;
 
 public final class av
-  implements af
+  extends m<o, String, Boolean>
 {
-  public b rhS;
-  private int scene = 0;
+  private String fileName;
+  private String gUn;
+  private String mediaId;
+  private OutputStream output = null;
+  private String wEY;
+  private String wFc = "";
   
-  public final b coJ()
+  public final ExecutorService dnm()
   {
-    return this.rhS;
-  }
-  
-  public final int getScene()
-  {
-    return this.scene;
+    AppMethodBeat.i(179117);
+    ExecutorService localExecutorService = af.dtg();
+    AppMethodBeat.o(179117);
+    return localExecutorService;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.av
  * JD-Core Version:    0.7.0.1
  */

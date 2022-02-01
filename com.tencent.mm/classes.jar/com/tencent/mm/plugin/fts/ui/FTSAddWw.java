@@ -2,6 +2,8 @@ package com.tencent.mm.plugin.fts.ui;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -9,30 +11,30 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.b.a.w;
-import com.tencent.mm.openim.b.n;
-import com.tencent.mm.plugin.fts.ui.widget.FTSEditTextView;
-import com.tencent.mm.plugin.fts.ui.widget.FTSEditTextView.b;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.b.a.bh;
 import com.tencent.mm.plugin.fts.ui.widget.FTSLocalPageRelevantView;
-import com.tencent.mm.plugin.fts.ui.widget.a.c;
 import com.tencent.mm.plugin.websearch.api.aa;
 import com.tencent.mm.plugin.websearch.api.ac;
-import com.tencent.mm.plugin.websearch.api.an;
-import com.tencent.mm.protocal.protobuf.bie;
-import com.tencent.mm.protocal.protobuf.bxw;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.e.b;
+import com.tencent.mm.plugin.websearch.api.ak;
+import com.tencent.mm.protocal.protobuf.bvn;
+import com.tencent.mm.protocal.protobuf.cny;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.e.c;
+import com.tencent.mm.ui.search.FTSEditTextView;
+import com.tencent.mm.ui.search.FTSEditTextView.b;
+import com.tencent.mm.ui.search.a.c;
 import java.util.List;
 import org.json.JSONObject;
 
@@ -40,251 +42,352 @@ import org.json.JSONObject;
 public class FTSAddWw
   extends FTSBaseUI
 {
-  private f callback;
-  private long jfp;
-  private Dialog lFU;
-  private String lbI = "";
+  private com.tencent.mm.al.g callback;
+  private long lVv;
   private String mSessionId = "";
-  private bxw mWD;
-  private View mWe;
-  private View mWf;
-  private View mWg;
-  private View mWh;
-  private View mWi;
-  private View mWj;
-  private View mWk;
-  private ImageView mWl;
-  private TextView mWm;
-  private TextView mWn;
-  private TextView mWo;
-  private TextView mWp;
-  private TextView mWq;
-  private boolean mWr;
-  protected boolean mWs;
-  private int mWt = 1;
-  private FTSLocalPageRelevantView mWu;
-  private c mWv;
-  private int mWw;
-  private int mWx;
-  int mWz = -1;
+  private Dialog oWF;
+  private String oiJ = "";
+  private View rsT;
+  private View rsU;
+  private View rsV;
+  private View rsW;
+  private View rsX;
+  private View rsY;
+  private View rsZ;
+  private ImageView rta;
+  private TextView rtb;
+  private TextView rtc;
+  private TextView rtd;
+  private TextView rte;
+  private TextView rtf;
+  private boolean rtg;
+  protected boolean rth;
+  private int rti = 1;
+  private FTSLocalPageRelevantView rtj;
+  private c rtk;
+  private int rtl;
+  private int rtm;
+  int rto = -1;
+  private cny rts;
   
-  private void Pt(String paramString)
+  private void abt(final String paramString)
   {
-    AppMethodBeat.i(61773);
-    this.mWr = true;
-    this.mWs = false;
-    this.mWt = 1;
+    AppMethodBeat.i(111866);
+    this.rtg = true;
+    this.rth = false;
+    this.rti = 1;
     if ((paramString == null) || (paramString.length() == 0) || (paramString.trim().length() == 0))
     {
-      AppMethodBeat.o(61773);
+      AppMethodBeat.o(111866);
       return;
     }
     if (Character.isDigit(paramString.charAt(0))) {}
     for (int i = 15;; i = 3)
     {
-      this.mWz = i;
-      this.callback = new FTSAddWw.5(this);
-      this.mWw = 0;
-      this.mWx = 0;
-      com.tencent.mm.kernel.g.Rc().a(372, this.callback);
-      paramString = new n(paramString);
-      com.tencent.mm.kernel.g.Rc().a(paramString, 0);
-      getString(2131297087);
-      this.lFU = h.b(this, getString(2131302977), true, new FTSAddWw.6(this, paramString));
-      AppMethodBeat.o(61773);
+      this.rto = i;
+      this.callback = new com.tencent.mm.al.g()
+      {
+        public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.al.n paramAnonymousn)
+        {
+          AppMethodBeat.i(111850);
+          com.tencent.mm.kernel.g.aeS().b(372, this);
+          FTSAddWw.d(FTSAddWw.this);
+          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
+            switch (paramAnonymousInt2)
+            {
+            default: 
+              FTSAddWw.e(FTSAddWw.this).setText(2131761619);
+              label68:
+              FTSAddWw.a(FTSAddWw.this, -1);
+              FTSAddWw.f(FTSAddWw.this);
+              paramAnonymousString = new bh();
+              paramAnonymousString.ia(FTSAddWw.a(FTSAddWw.this));
+              paramAnonymousString.dPt = 0L;
+              paramAnonymousString.dPu = 2L;
+              paramAnonymousString.aBj();
+            }
+          }
+          for (;;)
+          {
+            FTSAddWw.g(FTSAddWw.this);
+            AppMethodBeat.o(111850);
+            return;
+            if (paramAnonymousInt1 == 4) {
+              break;
+            }
+            FTSAddWw.e(FTSAddWw.this).setText(FTSAddWw.this.getString(2131762916));
+            break label68;
+            paramAnonymousString = com.tencent.mm.h.a.oG(paramAnonymousString);
+            if (paramAnonymousString != null)
+            {
+              FTSAddWw.e(FTSAddWw.this).setText(paramAnonymousString.desc);
+              break label68;
+            }
+            FTSAddWw.e(FTSAddWw.this).setText(2131761619);
+            break label68;
+            FTSAddWw.a(FTSAddWw.this, ((com.tencent.mm.openim.b.n)paramAnonymousn).hNO);
+            FTSAddWw.a(FTSAddWw.this, 1);
+            paramAnonymousString = new bh();
+            paramAnonymousString.ia(FTSAddWw.a(FTSAddWw.this));
+            paramAnonymousString.dPt = 0L;
+            paramAnonymousString.dPu = 1L;
+            paramAnonymousString.aBj();
+          }
+        }
+      };
+      this.rtl = 0;
+      this.rtm = 0;
+      com.tencent.mm.kernel.g.aeS().a(372, this.callback);
+      paramString = new com.tencent.mm.openim.b.n(paramString);
+      com.tencent.mm.kernel.g.aeS().a(paramString, 0);
+      getString(2131755906);
+      this.oWF = com.tencent.mm.ui.base.h.b(this, getString(2131762915), true, new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(111851);
+          com.tencent.mm.kernel.g.aeS().a(paramString);
+          com.tencent.mm.kernel.g.aeS().b(372, FTSAddWw.h(FTSAddWw.this));
+          FTSAddWw.i(FTSAddWw.this);
+          AppMethodBeat.o(111851);
+        }
+      });
+      AppMethodBeat.o(111866);
       return;
     }
   }
   
-  private void bCA()
+  private void cxO()
   {
-    AppMethodBeat.i(61771);
-    String str = this.mWD.jJA;
-    if (bo.nullAsNil(str).length() > 0)
+    AppMethodBeat.i(111864);
+    String str = this.rts.mAQ;
+    if (bt.nullAsNil(str).length() > 0)
     {
-      if (2 != this.mWD.xKf) {
+      if (2 != this.rts.EhQ) {
         break label254;
       }
-      this.mWz = 15;
+      this.rto = 15;
     }
     for (;;)
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("Contact_User", str);
-      localIntent.putExtra(e.b.yUZ, this.mWD.wYu);
-      if ((this.mWz == 15) && (2 == this.mWD.xKf)) {
-        localIntent.putExtra("Contact_Search_Mobile", this.lbI.trim());
+      localIntent.putExtra(e.c.FHR, this.rts.Dqd);
+      if ((this.rto == 15) && (2 == this.rts.EhQ)) {
+        localIntent.putExtra("Contact_Search_Mobile", this.oiJ.trim());
       }
-      localIntent.putExtra("key_add_contact_openim_appid", this.mWD.fKw);
-      localIntent.putExtra("Contact_Nick", this.mWD.jKG);
-      localIntent.putExtra("Contact_PyInitial", this.mWD.wNI);
-      localIntent.putExtra("Contact_QuanPin", this.mWD.wNJ);
-      localIntent.putExtra("Contact_Sex", this.mWD.gwP);
-      localIntent.putExtra("key_add_contact_custom_detail_visible", this.mWD.xKv.xxt);
-      localIntent.putExtra("key_add_contact_custom_detail", this.mWD.xKv.nqY);
-      localIntent.putExtra("Contact_Scene", this.mWz);
+      localIntent.putExtra("key_add_contact_openim_appid", this.rts.hnC);
+      localIntent.putExtra("Contact_Nick", this.rts.mBV);
+      localIntent.putExtra("Contact_PyInitial", this.rts.Dal);
+      localIntent.putExtra("Contact_QuanPin", this.rts.Dam);
+      localIntent.putExtra("Contact_Sex", this.rts.ijM);
+      localIntent.putExtra("key_add_contact_custom_detail_visible", this.rts.Eif.DSR);
+      localIntent.putExtra("key_add_contact_custom_detail", this.rts.Eif.saB);
+      localIntent.putExtra("Contact_Scene", this.rto);
       localIntent.putExtra("key_ww_add_session_id", this.mSessionId);
       localIntent.putExtra("add_more_friend_search_scene", 2);
-      com.tencent.mm.bq.d.b(this, "profile", ".ui.ContactInfoUI", localIntent);
-      AppMethodBeat.o(61771);
+      com.tencent.mm.bs.d.b(this, "profile", ".ui.ContactInfoUI", localIntent);
+      AppMethodBeat.o(111864);
       return;
       label254:
-      if (1 == this.mWD.xKf) {
-        this.mWz = 1;
+      if (1 == this.rts.EhQ) {
+        this.rto = 1;
       }
     }
   }
   
-  private void bCB()
+  private void cxP()
   {
-    AppMethodBeat.i(61774);
-    al.d(new FTSAddWw.7(this));
-    AppMethodBeat.o(61774);
+    AppMethodBeat.i(111867);
+    aq.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(111852);
+        if (FTSAddWw.j(FTSAddWw.this) != null)
+        {
+          FTSAddWw.j(FTSAddWw.this).dismiss();
+          FTSAddWw.i(FTSAddWw.this);
+        }
+        AppMethodBeat.o(111852);
+      }
+    });
+    AppMethodBeat.o(111867);
   }
   
   protected final d a(e parame)
   {
-    AppMethodBeat.i(61765);
-    if (this.mWv == null) {
-      this.mWv = new c(parame);
+    AppMethodBeat.i(111858);
+    if (this.rtk == null) {
+      this.rtk = new c(parame);
     }
-    parame = this.mWv;
-    AppMethodBeat.o(61765);
+    parame = this.rtk;
+    AppMethodBeat.o(111858);
     return parame;
   }
   
-  public final void a(com.tencent.mm.plugin.fts.a.d.a.a parama)
+  public final void a(com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(61766);
+    AppMethodBeat.i(111859);
     if ((parama instanceof com.tencent.mm.plugin.fts.ui.a.a))
     {
-      if (System.currentTimeMillis() - this.jfp <= 1000L)
+      if (System.currentTimeMillis() - this.lVv <= 1000L)
       {
-        AppMethodBeat.o(61766);
+        AppMethodBeat.o(111859);
         return;
       }
-      this.jfp = System.currentTimeMillis();
-      this.lbI = parama.mRX.mSw;
-      Pt(parama.mRX.mSw);
-      parama = new w();
-      parama.fr(this.mSessionId);
-      parama.cTG = 1L;
-      parama.ake();
+      this.lVv = System.currentTimeMillis();
+      this.oiJ = parama.roS.rpq;
+      abt(parama.roS.rpq);
+      parama = new bh();
+      parama.ia(this.mSessionId);
+      parama.dPt = 1L;
+      parama.aBj();
     }
-    AppMethodBeat.o(61766);
+    AppMethodBeat.o(111859);
   }
   
   public final void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.b paramb)
   {
-    AppMethodBeat.i(61767);
+    AppMethodBeat.i(168766);
     super.a(paramString1, paramString2, paramList, paramb);
-    this.mWr = false;
-    AppMethodBeat.o(61767);
+    this.rtg = false;
+    AppMethodBeat.o(168766);
   }
   
-  public final boolean aMm()
+  public final boolean bow()
   {
-    AppMethodBeat.i(61768);
-    Pt(this.query);
+    AppMethodBeat.i(111861);
+    abt(this.query);
     hideVKB();
-    AppMethodBeat.o(61768);
+    AppMethodBeat.o(111861);
     return true;
   }
   
-  protected final void bCC()
+  protected final void cxN()
   {
-    AppMethodBeat.i(61762);
-    super.bCC();
-    setBackBtn(new FTSAddWw.3(this));
-    AppMethodBeat.o(61762);
+    AppMethodBeat.i(111862);
+    super.cxN();
+    this.rsU.setVisibility(8);
+    AppMethodBeat.o(111862);
   }
   
-  protected final void bCz()
+  protected final void cxQ()
   {
-    AppMethodBeat.i(61769);
-    super.bCz();
-    this.mWf.setVisibility(8);
-    AppMethodBeat.o(61769);
+    AppMethodBeat.i(111855);
+    super.cxQ();
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(111848);
+        paramAnonymousMenuItem = new bh();
+        paramAnonymousMenuItem.ia(FTSAddWw.a(FTSAddWw.this));
+        paramAnonymousMenuItem.dPt = 2L;
+        paramAnonymousMenuItem.aBj();
+        FTSAddWw.this.finish();
+        AppMethodBeat.o(111848);
+        return true;
+      }
+    });
+    AppMethodBeat.o(111855);
   }
   
   public int getLayoutId()
   {
-    return 2130969643;
+    return 2131494185;
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(61764);
-    w localw = new w();
-    localw.fr(this.mSessionId);
-    localw.cTG = 2L;
-    localw.ake();
+    AppMethodBeat.i(111857);
+    bh localbh = new bh();
+    localbh.ia(this.mSessionId);
+    localbh.dPt = 2L;
+    localbh.aBj();
     finish();
-    AppMethodBeat.o(61764);
+    AppMethodBeat.o(111857);
   }
   
   public void onClickBackBtn(View paramView)
   {
-    AppMethodBeat.i(61761);
+    AppMethodBeat.i(111854);
     super.onClickBackBtn(paramView);
-    paramView = new w();
-    paramView.fr(this.mSessionId);
-    paramView.cTG = 2L;
-    paramView.ake();
-    AppMethodBeat.o(61761);
+    paramView = new bh();
+    paramView.ia(this.mSessionId);
+    paramView.dPt = 2L;
+    paramView.aBj();
+    AppMethodBeat.o(111854);
   }
   
   public void onClickClearTextBtn(View paramView)
   {
-    AppMethodBeat.i(61775);
+    AppMethodBeat.i(111868);
     super.onClickClearTextBtn(paramView);
-    if (!this.mWO.getFtsEditText().naN.hasFocus())
+    if (!this.rtD.getFtsEditText().sz.hasFocus())
     {
-      this.mWO.getFtsEditText().bDf();
+      this.rtD.getFtsEditText().fdj();
       showVKB();
     }
-    AppMethodBeat.o(61775);
+    AppMethodBeat.o(111868);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(61760);
+    AppMethodBeat.i(111853);
     super.onCreate(paramBundle);
-    this.mSessionId = com.tencent.xweb.util.d.w(System.currentTimeMillis().getBytes());
-    com.tencent.mm.plugin.fts.a.e.mRk = com.tencent.mm.plugin.fts.a.d.wp(16);
+    this.mSessionId = com.tencent.xweb.util.d.getMessageDigest(System.currentTimeMillis().getBytes());
+    com.tencent.mm.plugin.fts.a.e.rob = com.tencent.mm.plugin.fts.a.d.DB(16);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramBundle = TransitionInflater.from(this).inflateTransition(17760258);
-      paramBundle.excludeTarget(getWindow().getDecorView().findViewById(2131820956), true);
+      paramBundle.excludeTarget(getWindow().getDecorView().findViewById(2131296345), true);
       paramBundle.excludeTarget(16908335, true);
       getWindow().setEnterTransition(paramBundle);
     }
-    setActionbarColor(getContext().getResources().getColor(2131690316));
+    setActionbarColor(getContext().getResources().getColor(2131100705));
     hideActionbarLine();
-    setHint(getContext().getResources().getString(2131298847));
-    this.mWe = findViewById(2131824323);
-    this.mWf = findViewById(2131824310);
-    this.mWg = findViewById(2131824311);
-    this.mWk = findViewById(2131824312);
-    this.mWh = findViewById(2131824316);
-    this.mWi = findViewById(2131824318);
-    this.mWj = findViewById(2131824319);
-    this.mWu = ((FTSLocalPageRelevantView)findViewById(2131824322));
-    this.mWl = ((ImageView)findViewById(2131824313));
-    this.mWm = ((TextView)findViewById(2131824314));
-    this.mWn = ((TextView)findViewById(2131824315));
-    this.mWo = ((TextView)findViewById(2131824320));
-    this.mWp = ((TextView)findViewById(2131824317));
-    this.mWq = ((TextView)findViewById(2131824321));
+    setHint(getContext().getResources().getString(2131757925));
+    this.rsT = findViewById(2131297205);
+    this.rsU = findViewById(2131298588);
+    this.rsV = findViewById(2131300681);
+    this.rsZ = findViewById(2131298589);
+    this.rsW = findViewById(2131302876);
+    this.rsX = findViewById(2131302252);
+    this.rsY = findViewById(2131304408);
+    this.rtj = ((FTSLocalPageRelevantView)findViewById(2131303972));
+    this.rta = ((ImageView)findViewById(2131298585));
+    this.rtb = ((TextView)findViewById(2131298716));
+    this.rtc = ((TextView)findViewById(2131298593));
+    this.rtd = ((TextView)findViewById(2131304451));
+    this.rte = ((TextView)findViewById(2131298594));
+    this.rtf = ((TextView)findViewById(2131304410));
     try
     {
-      paramBundle = ac.agv("webSearchBar").optString("wording");
-      ab.i("MicroMsg.FTS.FTSAddFriendUI", "set searchNetworkTips %s", new Object[] { paramBundle });
-      this.mWq.setText(paramBundle);
+      paramBundle = ac.ave("webSearchBar").optString("wording");
+      ad.i("MicroMsg.FTS.FTSAddFriendUI", "set searchNetworkTips %s", new Object[] { paramBundle });
+      this.rtf.setText(paramBundle);
       label351:
-      getContentView().postDelayed(new FTSAddWw.1(this), 128L);
-      this.mWe.setOnClickListener(new FTSAddWw.2(this));
-      AppMethodBeat.o(61760);
+      getContentView().postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(111846);
+          FTSAddWw.this.rtD.getFtsEditText().fdj();
+          FTSAddWw.this.rtD.getFtsEditText().fdi();
+          AppMethodBeat.o(111846);
+        }
+      }, 128L);
+      this.rsT.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(111847);
+          FTSAddWw.this.finish();
+          AppMethodBeat.o(111847);
+        }
+      });
+      AppMethodBeat.o(111853);
       return;
     }
     catch (Exception paramBundle)
@@ -295,23 +398,23 @@ public class FTSAddWw
   
   public void onDestroy()
   {
-    AppMethodBeat.i(61772);
+    AppMethodBeat.i(111865);
     super.onDestroy();
-    if ((this.mWr) && (!this.mWs)) {
-      an.m(this.query, this.mWt, 3, 16);
+    if ((this.rtg) && (!this.rth)) {
+      ak.p(this.query, this.rti, 3, 16);
     }
     if (this.callback != null) {
-      com.tencent.mm.kernel.g.Rc().b(372, this.callback);
+      com.tencent.mm.kernel.g.aeS().b(372, this.callback);
     }
-    AppMethodBeat.o(61772);
+    AppMethodBeat.o(111865);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(61763);
+    AppMethodBeat.i(111856);
     super.onResume();
-    aa.cZq();
-    AppMethodBeat.o(61763);
+    aa.ehT();
+    AppMethodBeat.o(111856);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -322,19 +425,19 @@ public class FTSAddWw
   
   protected final void stopSearch()
   {
-    AppMethodBeat.i(61770);
+    AppMethodBeat.i(111863);
     super.stopSearch();
-    w localw = new w();
-    localw.fr(this.mSessionId);
-    localw.cTG = 3L;
-    localw.ake();
-    this.mWf.setVisibility(8);
-    AppMethodBeat.o(61770);
+    bh localbh = new bh();
+    localbh.ia(this.mSessionId);
+    localbh.dPt = 3L;
+    localbh.aBj();
+    this.rsU.setVisibility(8);
+    AppMethodBeat.o(111863);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSAddWw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.matrix.iocanary.core;
 
+import com.tencent.c.a.a.a;
 import com.tencent.matrix.g.c;
-import com.tencent.mrs.b.a.a;
 import java.util.ArrayList;
 
 public class IOCanaryJniBridge
@@ -46,20 +46,20 @@ public class IOCanaryJniBridge
     if (parama != null) {}
     try
     {
-      if (parama.yU())
+      if (parama.Hi())
       {
         enableDetector(0);
-        setConfig(0, parama.bMc.get(a.a.BaA.name(), 500) * 1000L);
+        setConfig(0, parama.cty.get(a.a.Ihl.name(), 500) * 1000L);
       }
-      if (parama.yW())
+      if (parama.Hk())
       {
         enableDetector(1);
-        setConfig(1, parama.bMc.get(a.a.BaD.name(), 4096));
+        setConfig(1, parama.cty.get(a.a.Ihn.name(), 4096));
       }
-      if (parama.yV())
+      if (parama.Hj())
       {
         enableDetector(2);
-        setConfig(2, parama.bMc.get(a.a.BaF.name(), 5));
+        setConfig(2, parama.cty.get(a.a.Ihq.name(), 5));
       }
       doHook();
       sIsTryInstall = true;
@@ -109,29 +109,22 @@ public class IOCanaryJniBridge
     sIsTryInstall = false;
   }
   
-  static final class ConfigKey
-  {
-    static final int MAIN_THREAD_THRESHOLD = 0;
-    static final int REPEAT_READ_THRESHOLD = 2;
-    static final int SMALL_BUFFER_THRESHOLD = 1;
-  }
-  
-  static final class DetectorType
-  {
-    static final int MAIN_THREAD_IO = 0;
-    static final int REPEAT_READ = 2;
-    static final int SMALL_BUFFER = 1;
-  }
-  
   static final class JavaContext
   {
     private final String stack = com.tencent.matrix.iocanary.c.a.getThrowableStack(new Throwable());
-    private final String threadName = Thread.currentThread().getName();
+    private String threadName;
+    
+    private JavaContext()
+    {
+      if (Thread.currentThread() != null) {
+        this.threadName = Thread.currentThread().getName();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.iocanary.core.IOCanaryJniBridge
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.boots.b.a;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.g;
-import com.tencent.mm.cg.g.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storagebase.g;
+import com.tencent.mm.storagebase.g.a;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +20,9 @@ public final class a
   
   static
   {
-    AppMethodBeat.i(90537);
+    AppMethodBeat.i(117376);
     SQL_CREATE = new String[] { j.getCreateSQLs(com.tencent.mm.plugin.boots.a.a.info, "ActiveInfo") };
-    AppMethodBeat.o(90537);
+    AppMethodBeat.o(117376);
   }
   
   public a(e parame)
@@ -37,11 +37,11 @@ public final class a
     return 0;
   }
   
-  public final List<com.tencent.mm.plugin.boots.a.a> aWg()
+  public final List<com.tencent.mm.plugin.boots.a.a> bBI()
   {
-    AppMethodBeat.i(90536);
+    AppMethodBeat.i(117375);
     ArrayList localArrayList = new ArrayList();
-    long l = bo.dtU();
+    long l = bt.eGJ();
     localObject3 = null;
     localObject1 = null;
     try
@@ -80,7 +80,7 @@ public final class a
       for (;;)
       {
         localObject3 = localObject1;
-        ab.printErrStackTrace("MicroMsg.Tinker.ActiveInfoStorage", localException, "getDayActiveFeature failed.", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Tinker.ActiveInfoStorage", localException, "getDayActiveFeature failed.", new Object[0]);
         if (localObject1 != null) {
           localObject1.close();
         }
@@ -92,9 +92,9 @@ public final class a
         break label214;
       }
       localObject3.close();
-      AppMethodBeat.o(90536);
+      AppMethodBeat.o(117375);
     }
-    AppMethodBeat.o(90536);
+    AppMethodBeat.o(117375);
     return localArrayList;
   }
   
@@ -104,7 +104,7 @@ public final class a
   }
   
   /* Error */
-  public final int rR(int paramInt)
+  public final int xx(int paramInt)
   {
     // Byte code:
     //   0: ldc 119
@@ -154,14 +154,14 @@ public final class a
     //   91: istore_3
     //   92: aload 9
     //   94: getfield 132	com/tencent/mm/plugin/boots/a/a:field_useTime	J
-    //   97: invokestatic 64	com/tencent/mm/sdk/platformtools/bo:dtU	()J
+    //   97: invokestatic 64	com/tencent/mm/sdk/platformtools/bt:eGJ	()J
     //   100: ldc2_w 67
     //   103: lsub
     //   104: lcmp
     //   105: iflt +170 -> 275
     //   108: aload 9
     //   110: getfield 132	com/tencent/mm/plugin/boots/a/a:field_useTime	J
-    //   113: invokestatic 64	com/tencent/mm/sdk/platformtools/bo:dtU	()J
+    //   113: invokestatic 64	com/tencent/mm/sdk/platformtools/bt:eGJ	()J
     //   116: lcmp
     //   117: ifgt +158 -> 275
     //   120: aload 9
@@ -194,7 +194,7 @@ public final class a
     //   176: ifge +10 -> 186
     //   179: ldc 102
     //   181: ldc 156
-    //   183: invokestatic 160	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   183: invokestatic 160	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   186: ldc 119
     //   188: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   191: iload_2
@@ -219,7 +219,7 @@ public final class a
     //   222: ldc 165
     //   224: iconst_0
     //   225: anewarray 106	java/lang/Object
-    //   228: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   228: invokestatic 112	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   231: iload_2
     //   232: istore_3
     //   233: aload 7
@@ -242,7 +242,7 @@ public final class a
     //   274: athrow
     //   275: aload 9
     //   277: getfield 132	com/tencent/mm/plugin/boots/a/a:field_useTime	J
-    //   280: invokestatic 64	com/tencent/mm/sdk/platformtools/bo:dtU	()J
+    //   280: invokestatic 64	com/tencent/mm/sdk/platformtools/bt:eGJ	()J
     //   283: ldc2_w 67
     //   286: lsub
     //   287: lcmp
@@ -319,7 +319,7 @@ public final class a
   }
   
   /* Error */
-  public final com.tencent.mm.plugin.boots.a.a rS(int paramInt)
+  public final com.tencent.mm.plugin.boots.a.a xy(int paramInt)
   {
     // Byte code:
     //   0: ldc 172
@@ -380,7 +380,7 @@ public final class a
     //   102: iload_1
     //   103: invokestatic 181	java/lang/Integer:toHexString	(I)Ljava/lang/String;
     //   106: aastore
-    //   107: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   107: invokestatic 112	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   110: aload_3
     //   111: ifnull -35 -> 76
     //   114: aload_3
@@ -425,7 +425,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.boots.b.a.a
  * JD-Core Version:    0.7.0.1
  */

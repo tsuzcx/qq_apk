@@ -1,94 +1,101 @@
 package com.tencent.mm.plugin.boots;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.g.a.bg;
-import com.tencent.mm.g.a.bi;
+import com.tencent.mm.g.a.bk;
+import com.tencent.mm.g.a.bm;
+import com.tencent.mm.kernel.a.b.b;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.q;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.model.t;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storagebase.h;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class PluginBoots
   extends f
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.d, com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.boots.a.d
 {
-  private com.tencent.mm.plugin.boots.b.a jRv;
-  private com.tencent.mm.plugin.hp.b.c jRw;
-  private com.tencent.mm.sdk.b.c<bi> jRx;
-  private com.tencent.mm.sdk.b.c<bg> jRy;
+  private com.tencent.mm.sdk.b.c<bm> mQA;
+  private com.tencent.mm.sdk.b.c<bk> mQB;
+  private com.tencent.mm.plugin.boots.b.a mQy;
+  private com.tencent.mm.plugin.hp.b.c mQz;
   
   public PluginBoots()
   {
-    AppMethodBeat.i(90518);
-    this.jRw = new com.tencent.mm.plugin.hp.b.c();
-    this.jRx = new PluginBoots.1(this);
-    this.jRy = new PluginBoots.2(this);
-    AppMethodBeat.o(90518);
+    AppMethodBeat.i(117361);
+    this.mQz = new com.tencent.mm.plugin.hp.b.c();
+    this.mQA = new com.tencent.mm.sdk.b.c() {};
+    this.mQB = new com.tencent.mm.sdk.b.c() {};
+    AppMethodBeat.o(117361);
   }
   
-  public HashMap<Integer, h.d> collectDatabaseFactory()
+  public HashMap<Integer, h.b> collectDatabaseFactory()
   {
-    AppMethodBeat.i(90524);
+    AppMethodBeat.i(117367);
     HashMap localHashMap = new HashMap();
-    localHashMap.put(Integer.valueOf("ACTIVE_TABLE".hashCode()), new PluginBoots.3(this));
-    AppMethodBeat.o(90524);
+    localHashMap.put(Integer.valueOf("ACTIVE_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return com.tencent.mm.plugin.boots.b.a.a.SQL_CREATE;
+      }
+    });
+    AppMethodBeat.o(117367);
     return localHashMap;
   }
   
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(90522);
+    AppMethodBeat.i(117365);
     super.configure(paramg);
-    AppMethodBeat.o(90522);
+    AppMethodBeat.o(117365);
   }
   
   public void dependency()
   {
-    AppMethodBeat.i(90521);
-    ab.d("MicroMsg.Boots.PluginBoots", "[cpan] boots dependency");
+    AppMethodBeat.i(117364);
+    ad.d("MicroMsg.Boots.PluginBoots", "[cpan] boots dependency");
     dependsOn(com.tencent.mm.plugin.comm.a.a.class);
-    AppMethodBeat.o(90521);
+    AppMethodBeat.o(117364);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(90523);
-    ab.d("MicroMsg.Boots.PluginBoots", "[cpan] boots execute %s", new Object[] { paramg.mProcessName });
-    if (com.tencent.mm.plugin.boots.b.a.jRN == null) {
-      com.tencent.mm.plugin.boots.b.a.jRN = new com.tencent.mm.plugin.boots.b.a();
+    AppMethodBeat.i(117366);
+    ad.d("MicroMsg.Boots.PluginBoots", "[cpan] boots execute %s", new Object[] { paramg.mProcessName });
+    if (com.tencent.mm.plugin.boots.b.a.mQX == null) {
+      com.tencent.mm.plugin.boots.b.a.mQX = new com.tencent.mm.plugin.boots.b.a();
     }
-    this.jRv = com.tencent.mm.plugin.boots.b.a.jRN;
-    if ((paramg.SD()) || (paramg.mI(":patch")))
+    this.mQy = com.tencent.mm.plugin.boots.b.a.mQX;
+    if ((paramg.agu()) || (paramg.ra(":patch")))
     {
-      com.tencent.mm.plugin.hp.tinker.e.bIn();
-      com.tencent.mm.plugin.hp.tinker.e.b(com.tencent.mm.app.b.bXD);
-      com.tencent.mm.sdk.b.a.ymk.c(this.jRw);
-      com.tencent.mm.sdk.b.a.ymk.c(this.jRy);
-      com.tencent.mm.sdk.b.a.ymk.c(this.jRx);
+      com.tencent.mm.plugin.hp.tinker.e.cGg();
+      com.tencent.mm.plugin.hp.tinker.e.b(com.tencent.mm.app.d.cKY);
+      com.tencent.mm.sdk.b.a.ESL.c(this.mQz);
+      com.tencent.mm.sdk.b.a.ESL.c(this.mQB);
+      com.tencent.mm.sdk.b.a.ESL.c(this.mQA);
     }
-    if (paramg.SD()) {
+    if (paramg.agu()) {
       com.tencent.mm.kernel.g.a(a.class, new com.tencent.mm.kernel.c.e(new a()));
     }
-    if (paramg.SD()) {
+    if (paramg.agu()) {
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.boots.a.c.class, new com.tencent.mm.kernel.c.e(new a()));
     }
-    AppMethodBeat.o(90523);
+    AppMethodBeat.o(117366);
   }
   
   public com.tencent.mm.plugin.boots.a.e getTinkerLogic()
   {
-    return this.jRv;
+    return this.mQy;
   }
   
   public void installed()
   {
-    AppMethodBeat.i(90519);
-    ab.d("MicroMsg.Boots.PluginBoots", "[cpan] boots installed");
+    AppMethodBeat.i(117362);
+    ad.d("MicroMsg.Boots.PluginBoots", "[cpan] boots installed");
     alias(com.tencent.mm.plugin.boots.a.d.class);
-    AppMethodBeat.o(90519);
+    AppMethodBeat.o(117362);
   }
   
   public String name()
@@ -96,11 +103,7 @@ public class PluginBoots
     return "plugin-boots";
   }
   
-  public void onAccountInitialized(e.c paramc)
-  {
-    AppMethodBeat.i(90529);
-    AppMethodBeat.o(90529);
-  }
+  public void onAccountInitialized(e.c paramc) {}
   
   public void onAccountRelease() {}
   
@@ -108,25 +111,25 @@ public class PluginBoots
   
   public void onDataBaseOpened(h paramh1, h paramh2)
   {
-    AppMethodBeat.i(90525);
-    ab.d("MicroMsg.Boots.PluginBoots", "[cpan] boots onDataBaseOpened");
-    if (this.jRv != null) {
-      this.jRv.jRO = new com.tencent.mm.plugin.boots.b.a.a(paramh1);
+    AppMethodBeat.i(117368);
+    ad.d("MicroMsg.Boots.PluginBoots", "[cpan] boots onDataBaseOpened");
+    if (this.mQy != null) {
+      this.mQy.mQY = new com.tencent.mm.plugin.boots.b.a.a(paramh1);
     }
-    AppMethodBeat.o(90525);
+    AppMethodBeat.o(117368);
   }
   
   public void uninstalled()
   {
-    AppMethodBeat.i(90520);
-    ab.d("MicroMsg.Boots.PluginBoots", "uninstalled");
+    AppMethodBeat.i(117363);
+    ad.d("MicroMsg.Boots.PluginBoots", "uninstalled");
     super.uninstalled();
-    AppMethodBeat.o(90520);
+    AppMethodBeat.o(117363);
   }
   
   static final class a
-    extends q
-    implements com.tencent.mm.kernel.a.b.b
+    extends t
+    implements b
   {
     a()
     {

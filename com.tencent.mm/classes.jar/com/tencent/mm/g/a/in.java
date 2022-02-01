@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class in
   extends b
 {
-  public in.a cxU;
+  public a dmv;
   
   public in()
   {
@@ -15,16 +15,22 @@ public final class in
   
   private in(byte paramByte)
   {
-    AppMethodBeat.i(77546);
-    this.cxU = new in.a();
-    this.ymq = false;
+    AppMethodBeat.i(94811);
+    this.dmv = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77546);
+    AppMethodBeat.o(94811);
+  }
+  
+  public static final class a
+  {
+    public String dmw;
+    public int state;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.in
  * JD-Core Version:    0.7.0.1
  */

@@ -5,179 +5,232 @@ import android.app.Application;
 import android.app.Application.ActivityLifecycleCallbacks;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Handler.Callback;
 import android.os.SystemClock;
+import com.tencent.c.a.a.a;
 import com.tencent.matrix.g.c;
+import com.tencent.matrix.trace.c.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.matrix.trace.core.AppMethodBeat.a;
+import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public final class e
   extends f
-  implements Application.ActivityLifecycleCallbacks, com.tencent.matrix.trace.e.a
+  implements Application.ActivityLifecycleCallbacks, a.b, com.tencent.matrix.trace.e.a
 {
-  private final com.tencent.matrix.trace.a.a bRa;
-  private long bSG = 0L;
-  private long bSH = 0L;
-  private int bSI;
-  private boolean bSJ;
-  private boolean bSK;
-  private Set<String> bSL;
-  private long bSM;
-  private long bSN;
+  private boolean cBG;
+  private final com.tencent.matrix.trace.a.b cBH;
+  private long cDJ = 0L;
+  private long cDK = 0L;
+  private int cDL;
+  private boolean cDM;
+  private boolean cDN;
+  private boolean cDO;
+  private Set<String> cDP;
+  private long cDQ;
+  private long cDR;
+  private long cDS = 0L;
+  private HashMap<String, Long> cDT = new HashMap();
+  private boolean cDU = true;
   
-  public e(com.tencent.matrix.trace.a.a parama)
+  public e(com.tencent.matrix.trace.a.b paramb)
   {
-    this.bRa = parama;
-    this.bSK = parama.bQV;
-    HashSet localHashSet;
-    if (parama.bQZ == null)
+    this.cBH = paramb;
+    this.cDO = paramb.cBB;
+    if (paramb.cBF == null)
     {
-      if (parama.bNO == null)
-      {
-        localHashSet = new HashSet(Arrays.asList(new String[] { parama.bQY }));
-        parama.bQZ = localHashSet;
+      paramb.cBF = new HashSet();
+      if (paramb.cwi != null) {
+        break label157;
+      }
+      if (paramb.cBE != null) {
+        paramb.cBF.addAll(Arrays.asList(paramb.cBE.split(";")));
       }
     }
-    else
+    this.cDP = paramb.cBF;
+    if (paramb.cwi == null)
     {
-      this.bSL = parama.bQZ;
-      if (parama.bNO != null) {
-        break label149;
-      }
-      i = 10000;
-      label87:
-      this.bSM = i;
-      if (parama.bNO != null) {
-        break label171;
+      label121:
+      this.cDQ = i;
+      if (paramb.cwi != null) {
+        break label240;
       }
     }
-    label149:
-    label171:
-    for (int i = 4000;; i = parama.bNO.get(com.tencent.mrs.b.a.a.Bay.name(), 4000))
+    label157:
+    label240:
+    for (i = 4000;; i = paramb.cwi.get(a.a.Ihj.name(), 4000))
     {
-      this.bSN = i;
+      this.cDR = i;
+      this.cBG = paramb.cBG;
+      com.tencent.matrix.trace.c.a.a(this);
       return;
-      localHashSet = new HashSet(Arrays.asList(parama.bNO.get(com.tencent.mrs.b.a.a.Ban.name(), parama.bQY).split(";")));
+      String str = paramb.cwi.get(a.a.IgY.name(), paramb.cBE);
+      if (str != null) {
+        paramb.cBE = str;
+      }
+      if (paramb.cBE == null) {
+        break;
+      }
+      paramb.cBF.addAll(Arrays.asList(paramb.cBE.split(";")));
       break;
-      i = parama.bNO.get(com.tencent.mrs.b.a.a.Bax.name(), 10000);
-      break label87;
+      i = paramb.cwi.get(a.a.Ihi.name(), 10000);
+      break label121;
     }
   }
   
-  public final void cB(String paramString)
+  private void a(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
   {
-    int i;
-    long l1;
-    boolean bool;
-    if (this.bSH == 0L)
+    c.i("Matrix.StartupTracer", "[report] applicationCost:%s firstScreenCost:%s allCost:%s isWarmStartUp:%s, createScene:%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Boolean.valueOf(paramBoolean), Integer.valueOf(com.tencent.matrix.trace.c.a.cCs) });
+    long[] arrayOfLong2 = new long[0];
+    long[] arrayOfLong1;
+    if ((!paramBoolean) && (paramLong3 >= this.cDQ))
     {
-      i = 1;
-      if (i == 0) {
-        break label276;
-      }
-      if (this.bSG == 0L) {
-        this.bSG = (SystemClock.uptimeMillis() - com.tencent.matrix.trace.c.a.zw());
-      }
-      if (!this.bSJ) {
-        break label184;
-      }
-      l1 = SystemClock.uptimeMillis() - com.tencent.matrix.trace.c.a.zw();
-      this.bSH = l1;
-      bool = false;
+      arrayOfLong1 = AppMethodBeat.getInstance().copyData(com.tencent.matrix.trace.c.a.cCr);
+      com.tencent.matrix.trace.c.a.cCr.release();
     }
     for (;;)
     {
-      label58:
-      long l2;
-      long l3;
-      long[] arrayOfLong;
-      if (l1 > 0L)
+      com.tencent.matrix.g.b.Iq().post(new e.a(this, arrayOfLong1, paramLong1, paramLong2, paramLong3, paramBoolean, com.tencent.matrix.trace.c.a.cCs));
+      return;
+      arrayOfLong1 = arrayOfLong2;
+      if (paramBoolean)
       {
-        l2 = com.tencent.matrix.trace.c.a.zv();
-        l3 = this.bSG;
-        c.i("Matrix.StartupTracer", "[report] applicationCost:%s firstScreenCost:%s allCost:%s isWarmStartUp:%s", new Object[] { Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l1), Boolean.valueOf(bool) });
-        arrayOfLong = new long[0];
-        if ((bool) || (l1 < this.bSM)) {
-          break label329;
+        arrayOfLong1 = arrayOfLong2;
+        if (paramLong3 >= this.cDR)
+        {
+          arrayOfLong1 = AppMethodBeat.getInstance().copyData(com.tencent.matrix.trace.c.a.cCq);
+          com.tencent.matrix.trace.c.a.cCq.release();
         }
-        paramString = AppMethodBeat.getInstance().copyData(com.tencent.matrix.trace.c.a.bRH);
-        com.tencent.matrix.trace.c.a.bRH.release();
+      }
+    }
+  }
+  
+  public final void Ia()
+  {
+    if (!this.cBG)
+    {
+      long l = com.tencent.matrix.trace.c.a.HW();
+      c.i("Matrix.StartupTracer", "onApplicationCreateEnd, applicationCost:%d", new Object[] { Long.valueOf(l) });
+      a(l, 0L, l, false);
+    }
+  }
+  
+  public final void n(Activity paramActivity)
+  {
+    if (com.tencent.matrix.trace.c.a.cCs == -2147483648) {
+      return;
+    }
+    Object localObject = paramActivity.getClass().getName();
+    int i;
+    boolean bool;
+    String str;
+    if (this.cDK == 0L)
+    {
+      i = 1;
+      if (i == 0) {
+        break label436;
+      }
+      bool = com.tencent.matrix.trace.c.a.HY();
+      c.i("Matrix.StartupTracer", "#ColdStartup# activity:%s, splashActivities:%s, empty:%b, isCreatedByLaunchActivity:%b, hasShowSplashActivity:%b, firstScreenCost:%d, now:%d, application_create_begin_time:%d, app_cost:%d", new Object[] { localObject, this.cDP, Boolean.valueOf(this.cDP.isEmpty()), Boolean.valueOf(bool), Boolean.valueOf(this.cDN), Long.valueOf(this.cDJ), Long.valueOf(SystemClock.uptimeMillis()), Long.valueOf(com.tencent.matrix.trace.c.a.HX()), Long.valueOf(com.tencent.matrix.trace.c.a.HW()) });
+      str = (String)localObject + "@" + paramActivity.hashCode();
+      paramActivity = (Long)this.cDT.get(str);
+      if (paramActivity != null) {
+        break label519;
+      }
+      paramActivity = Long.valueOf(0L);
+    }
+    label519:
+    for (;;)
+    {
+      this.cDT.put(str, Long.valueOf(SystemClock.uptimeMillis() - paramActivity.longValue()));
+      if (this.cDJ == 0L) {
+        this.cDJ = (SystemClock.uptimeMillis() - com.tencent.matrix.trace.c.a.HX());
+      }
+      if (this.cDN) {
+        this.cDK = (SystemClock.uptimeMillis() - com.tencent.matrix.trace.c.a.HX());
       }
       for (;;)
       {
-        com.tencent.matrix.g.b.zJ().post(new a(paramString, l2, l3, l1, bool, com.tencent.matrix.trace.c.a.bRI));
+        if (this.cDK <= 0L) {
+          break label417;
+        }
+        localObject = (Long)this.cDT.get(str);
+        if ((localObject == null) || (((Long)localObject).longValue() < 30000L)) {
+          break label419;
+        }
+        c.e("Matrix.StartupTracer", "%s cost too much time[%s] between activity create and onActivityFocused, just throw it.(createTime:%s) ", new Object[] { str, Long.valueOf(SystemClock.uptimeMillis() - paramActivity.longValue()), paramActivity });
         return;
         i = 0;
         break;
-        label184:
-        if (this.bSL.contains(paramString))
+        if (this.cDP.contains(localObject))
         {
-          this.bSJ = true;
-          bool = false;
-          l1 = 0L;
-          break label58;
+          this.cDN = true;
         }
-        if (this.bSL.isEmpty())
+        else if (this.cDP.isEmpty())
         {
-          c.i("Matrix.StartupTracer", "default care activity[%s]", new Object[] { paramString });
-          l1 = this.bSG;
-          this.bSH = l1;
-          bool = false;
-          break label58;
-        }
-        c.w("Matrix.StartupTracer", "pass this activity[%s] in duration of startup!", new Object[] { paramString });
-        bool = false;
-        l1 = 0L;
-        break label58;
-        label276:
-        if (this.bSI > 1) {
-          bool = false;
-        }
-        for (;;)
-        {
-          if (!bool) {
-            break label368;
-          }
-          l1 = SystemClock.uptimeMillis() - com.tencent.matrix.trace.c.a.zx();
-          break;
-          if (SystemClock.uptimeMillis() - com.tencent.matrix.trace.c.a.zx() > 5000L) {
-            bool = false;
-          } else {
-            bool = true;
-          }
-        }
-        label329:
-        paramString = arrayOfLong;
-        if (bool)
-        {
-          paramString = arrayOfLong;
-          if (l1 >= this.bSN)
+          if (bool)
           {
-            paramString = AppMethodBeat.getInstance().copyData(com.tencent.matrix.trace.c.a.bRG);
-            com.tencent.matrix.trace.c.a.bRG.release();
+            this.cDK = this.cDJ;
           }
+          else
+          {
+            this.cDJ = 0L;
+            this.cDK = com.tencent.matrix.trace.c.a.HW();
+          }
+        }
+        else if (bool)
+        {
+          this.cDK = this.cDJ;
+        }
+        else
+        {
+          this.cDJ = 0L;
+          this.cDK = com.tencent.matrix.trace.c.a.HW();
         }
       }
-      label368:
-      l1 = 0L;
+      label417:
+      break;
+      label419:
+      a(com.tencent.matrix.trace.c.a.HW(), this.cDJ, this.cDK, false);
+      return;
+      label436:
+      if (!this.cDM) {
+        break;
+      }
+      this.cDM = false;
+      long l = SystemClock.uptimeMillis() - this.cDS;
+      c.i("Matrix.StartupTracer", "#WarmStartup# activity:%s, warmCost:%d, now:%d, lastCreateActivity:%d", new Object[] { localObject, Long.valueOf(l), Long.valueOf(SystemClock.uptimeMillis()), Long.valueOf(this.cDS) });
+      if (l <= 0L) {
+        break;
+      }
+      a(0L, 0L, l, true);
+      return;
     }
   }
   
   public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    this.bSI += 1;
+    c.i("Matrix.StartupTracer", "activeActivityCount:%d, coldCost:%d", new Object[] { Integer.valueOf(this.cDL), Long.valueOf(this.cDK) });
+    if ((this.cDL == 0) && (this.cDK > 0L))
+    {
+      this.cDS = SystemClock.uptimeMillis();
+      c.i("Matrix.StartupTracer", "lastCreateActivity:%d, activity:%s", new Object[] { Long.valueOf(this.cDS), paramActivity.getClass().getName() });
+      this.cDM = true;
+    }
+    this.cDL += 1;
+    if (this.cDU) {
+      this.cDT.put(paramActivity.getClass().getName() + "@" + paramActivity.hashCode(), Long.valueOf(SystemClock.uptimeMillis()));
+    }
   }
   
   public final void onActivityDestroyed(Activity paramActivity)
   {
-    this.bSI -= 1;
+    c.i("Matrix.StartupTracer", "activeActivityCount:%d", new Object[] { Integer.valueOf(this.cDL) });
+    this.cDL -= 1;
   }
   
   public final void onActivityPaused(Activity paramActivity) {}
@@ -190,143 +243,51 @@ public final class e
   
   public final void onActivityStopped(Activity paramActivity) {}
   
-  protected final void zy()
+  protected final void onAlive()
   {
-    super.zy();
-    c.i("Matrix.StartupTracer", "[onAlive] isStartupEnable:%s", new Object[] { Boolean.valueOf(this.bSK) });
-    if (this.bSK)
+    super.onAlive();
+    c.i("Matrix.StartupTracer", "[onAlive] isStartupEnable:%s", new Object[] { Boolean.valueOf(this.cDO) });
+    if (this.cDO)
     {
       AppMethodBeat.getInstance().addListener(this);
-      com.tencent.matrix.b.yD().application.registerActivityLifecycleCallbacks(this);
+      com.tencent.matrix.b.GF().application.registerActivityLifecycleCallbacks(this);
     }
   }
   
-  protected final void zz()
+  protected final void onDead()
   {
-    super.zz();
-    if (this.bSK)
+    super.onDead();
+    if (this.cDO)
     {
       AppMethodBeat.getInstance().removeListener(this);
-      com.tencent.matrix.b.yD().application.unregisterActivityLifecycleCallbacks(this);
+      com.tencent.matrix.b.GF().application.unregisterActivityLifecycleCallbacks(this);
     }
   }
   
-  final class a
-    implements Runnable
+  public final void onForeground(boolean paramBoolean)
   {
-    long[] bRZ;
-    long bSG;
-    long bSO;
-    long bSP;
-    boolean bSQ;
-    int scene;
-    
-    a(long[] paramArrayOfLong, long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean, int paramInt)
+    super.onForeground(paramBoolean);
+    if (!paramBoolean) {}
+    try
     {
-      this.bRZ = paramArrayOfLong;
-      this.scene = paramInt;
-      this.bSO = paramLong1;
-      this.bSG = paramLong2;
-      this.bSP = paramLong3;
-      this.bSQ = paramBoolean;
+      Object localObject1 = Class.forName("android.app.ActivityThread");
+      Object localObject2 = ((Class)localObject1).getDeclaredField("sCurrentActivityThread");
+      ((Field)localObject2).setAccessible(true);
+      localObject2 = ((Field)localObject2).get(localObject1);
+      localObject1 = ((Class)localObject1).getDeclaredField("mH");
+      ((Field)localObject1).setAccessible(true);
+      localObject1 = ((Field)localObject1).get(localObject2);
+      localObject2 = localObject1.getClass().getSuperclass().getDeclaredField("mCallback");
+      ((Field)localObject2).setAccessible(true);
+      c.i("Matrix.StartupTracer", "callback %s", new Object[] { (Handler.Callback)((Field)localObject2).get(localObject1) });
+      return;
     }
-    
-    public final void run()
-    {
-      Object localObject2 = new LinkedList();
-      if (this.bRZ.length > 0)
-      {
-        com.tencent.matrix.trace.g.a.a(this.bRZ, (LinkedList)localObject2, false, -1L);
-        com.tencent.matrix.trace.g.a.a((List)localObject2, new com.tencent.matrix.trace.g.a.a()
-        {
-          public final boolean c(long paramAnonymousLong, int paramAnonymousInt)
-          {
-            return paramAnonymousLong < paramAnonymousInt * 5;
-          }
-          
-          public final void e(List<com.tencent.matrix.trace.d.a> paramAnonymousList, int paramAnonymousInt)
-          {
-            c.w("Matrix.StartupTracer", "[fallback] size:%s targetSize:%s stack:%s", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(30), paramAnonymousList });
-            paramAnonymousList = paramAnonymousList.listIterator(Math.min(paramAnonymousInt, 30));
-            while (paramAnonymousList.hasNext())
-            {
-              paramAnonymousList.next();
-              paramAnonymousList.remove();
-            }
-          }
-        });
-      }
-      Object localObject1 = new StringBuilder();
-      Object localObject3 = new StringBuilder();
-      long l1 = Math.max(this.bSP, com.tencent.matrix.trace.g.a.a((LinkedList)localObject2, (StringBuilder)localObject1, (StringBuilder)localObject3));
-      localObject2 = com.tencent.matrix.trace.g.a.a((List)localObject2, l1);
-      if (((this.bSP > e.a(e.this)) && (!this.bSQ)) || ((this.bSP > e.b(e.this)) && (this.bSQ))) {
-        c.w("Matrix.StartupTracer", "stackKey:%s \n%s", new Object[] { localObject2, ((StringBuilder)localObject3).toString() });
-      }
-      long l2 = this.bSO;
-      long l3 = this.bSG;
-      boolean bool = this.bSQ;
-      int i = this.scene;
-      localObject3 = (com.tencent.matrix.trace.b)com.tencent.matrix.b.yD().z(com.tencent.matrix.trace.b.class);
-      if (localObject3 == null) {}
-      for (;;)
-      {
-        return;
-        try
-        {
-          JSONObject localJSONObject = com.tencent.matrix.g.a.a(new JSONObject(), com.tencent.matrix.b.yD().application);
-          localJSONObject.put("application_create", l2);
-          localJSONObject.put("application_create_scene", i);
-          localJSONObject.put("first_activity_create", l3);
-          localJSONObject.put("startup_duration", l1);
-          localJSONObject.put("is_warm_start_up", bool);
-          com.tencent.matrix.e.b localb = new com.tencent.matrix.e.b();
-          localb.tag = "Trace_StartUp";
-          localb.bOx = localJSONObject;
-          ((com.tencent.matrix.trace.b)localObject3).onDetectIssue(localb);
-          if (((l1 <= e.a(e.this)) || (bool)) && ((l1 <= e.b(e.this)) || (!bool))) {
-            continue;
-          }
-          try
-          {
-            localJSONObject = com.tencent.matrix.g.a.a(new JSONObject(), com.tencent.matrix.b.yD().application);
-            localJSONObject.put("detail", com.tencent.matrix.trace.b.a.a.bRd);
-            localJSONObject.put("cost", l1);
-            localJSONObject.put("stack", ((StringBuilder)localObject1).toString());
-            localJSONObject.put("stackKey", localObject2);
-            if (bool)
-            {
-              i = 2;
-              localJSONObject.put("subType", i);
-              localObject1 = new com.tencent.matrix.e.b();
-              ((com.tencent.matrix.e.b)localObject1).tag = "Trace_EvilMethod";
-              ((com.tencent.matrix.e.b)localObject1).bOx = localJSONObject;
-              ((com.tencent.matrix.trace.b)localObject3).onDetectIssue((com.tencent.matrix.e.b)localObject1);
-              return;
-            }
-          }
-          catch (JSONException localJSONException1)
-          {
-            c.e("Matrix.StartupTracer", "[JSONException error: %s", new Object[] { localJSONException1 });
-            return;
-          }
-        }
-        catch (JSONException localJSONException2)
-        {
-          for (;;)
-          {
-            c.e("Matrix.StartupTracer", "[JSONException for StartUpReportTask error: %s", new Object[] { localJSONException2 });
-            continue;
-            i = 1;
-          }
-        }
-      }
-    }
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.trace.f.e
  * JD-Core Version:    0.7.0.1
  */

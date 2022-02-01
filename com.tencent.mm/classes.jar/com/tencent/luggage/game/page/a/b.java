@@ -2,23 +2,67 @@ package com.tencent.luggage.game.page.a;
 
 import android.content.res.Configuration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.b.f;
-import com.tencent.mm.plugin.appbrand.page.c.c.b;
-import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.b.h;
+import com.tencent.mm.plugin.appbrand.page.d.c.b;
 
 public final class b
-  implements com.tencent.mm.plugin.appbrand.page.b.a, f
+  implements com.tencent.mm.plugin.appbrand.page.b.b, h
 {
-  private final a bCj;
-  private final v bCk;
+  private final a cef;
+  private final aa ceg;
   
-  public b(v paramv)
+  public b(aa paramaa)
   {
-    AppMethodBeat.i(140533);
-    this.bCj = new a(paramv);
-    this.bCk = paramv;
-    AppMethodBeat.o(140533);
+    AppMethodBeat.i(130682);
+    this.cef = new a(paramaa);
+    this.ceg = paramaa;
+    AppMethodBeat.o(130682);
   }
+  
+  public final void CH()
+  {
+    AppMethodBeat.i(130684);
+    this.ceg.runOnUiThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(130680);
+        b.a(b.this).CH();
+        AppMethodBeat.o(130680);
+      }
+    });
+    AppMethodBeat.o(130684);
+  }
+  
+  public final void CI()
+  {
+    AppMethodBeat.i(130685);
+    this.ceg.runOnUiThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(130681);
+        b.a(b.this).CI();
+        AppMethodBeat.o(130681);
+      }
+    });
+    AppMethodBeat.o(130685);
+  }
+  
+  public final boolean CK()
+  {
+    AppMethodBeat.i(130686);
+    if (this.cef.CJ() == c.b.lgX)
+    {
+      AppMethodBeat.o(130686);
+      return true;
+    }
+    AppMethodBeat.o(130686);
+    return false;
+  }
+  
+  public final void a(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb) {}
   
   public final void onBackground() {}
   
@@ -28,40 +72,14 @@ public final class b
   
   public final void onForeground()
   {
-    AppMethodBeat.i(140534);
-    this.bCj.vu();
-    AppMethodBeat.o(140534);
-  }
-  
-  public final void vJ()
-  {
-    AppMethodBeat.i(140535);
-    this.bCk.runOnUiThread(new b.1(this));
-    AppMethodBeat.o(140535);
-  }
-  
-  public final void vK()
-  {
-    AppMethodBeat.i(140536);
-    this.bCk.runOnUiThread(new b.2(this));
-    AppMethodBeat.o(140536);
-  }
-  
-  public final boolean vM()
-  {
-    AppMethodBeat.i(140537);
-    if (this.bCj.vL() == c.b.iAB)
-    {
-      AppMethodBeat.o(140537);
-      return true;
-    }
-    AppMethodBeat.o(140537);
-    return false;
+    AppMethodBeat.i(130683);
+    this.cef.Cs();
+    AppMethodBeat.o(130683);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.game.page.a.b
  * JD-Core Version:    0.7.0.1
  */

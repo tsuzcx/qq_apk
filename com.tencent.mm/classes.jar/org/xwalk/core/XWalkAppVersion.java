@@ -10,7 +10,7 @@ class XWalkAppVersion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     org.xwalk.core.XWalkAppVersion
  * JD-Core Version:    0.7.0.1
  */

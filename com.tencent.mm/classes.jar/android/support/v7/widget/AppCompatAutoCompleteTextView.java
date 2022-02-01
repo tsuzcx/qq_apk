@@ -18,53 +18,53 @@ public class AppCompatAutoCompleteTextView
   extends AutoCompleteTextView
   implements s
 {
-  private static final int[] VO = { 16843126 };
-  private final e ZZ;
-  private final l aaa;
+  private static final int[] acT = { 16843126 };
+  private final e ahe;
+  private final l ahf;
   
   public AppCompatAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130772224);
+    this(paramContext, paramAttributeSet, 2130968660);
   }
   
   public AppCompatAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.Z(paramContext), paramAttributeSet, paramInt);
-    paramContext = az.a(getContext(), paramAttributeSet, VO, paramInt, 0);
+    super(aw.ab(paramContext), paramAttributeSet, paramInt);
+    paramContext = az.a(getContext(), paramAttributeSet, acT, paramInt, 0);
     if (paramContext.hasValue(0)) {
       setDropDownBackgroundDrawable(paramContext.getDrawable(0));
     }
-    paramContext.aoo.recycle();
-    this.ZZ = new e(this);
-    this.ZZ.a(paramAttributeSet, paramInt);
-    this.aaa = new l(this);
-    this.aaa.a(paramAttributeSet, paramInt);
-    this.aaa.hk();
+    paramContext.avP.recycle();
+    this.ahe = new e(this);
+    this.ahe.a(paramAttributeSet, paramInt);
+    this.ahf = new l(this);
+    this.ahf.a(paramAttributeSet, paramInt);
+    this.ahf.iH();
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.ZZ != null) {
-      this.ZZ.hc();
+    if (this.ahe != null) {
+      this.ahe.iz();
     }
-    if (this.aaa != null) {
-      this.aaa.hk();
+    if (this.ahf != null) {
+      this.ahf.iH();
     }
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    if (this.ZZ != null) {
-      return this.ZZ.getSupportBackgroundTintList();
+    if (this.ahe != null) {
+      return this.ahe.getSupportBackgroundTintList();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.ZZ != null) {
-      return this.ZZ.getSupportBackgroundTintMode();
+    if (this.ahe != null) {
+      return this.ahe.getSupportBackgroundTintMode();
     }
     return null;
   }
@@ -77,16 +77,16 @@ public class AppCompatAutoCompleteTextView
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (this.ZZ != null) {
-      this.ZZ.hb();
+    if (this.ahe != null) {
+      this.ahe.iy();
     }
   }
   
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (this.ZZ != null) {
-      this.ZZ.bo(paramInt);
+    if (this.ahe != null) {
+      this.ahe.bG(paramInt);
     }
   }
   
@@ -97,28 +97,28 @@ public class AppCompatAutoCompleteTextView
   
   public void setDropDownBackgroundResource(int paramInt)
   {
-    setDropDownBackgroundDrawable(a.k(getContext(), paramInt));
+    setDropDownBackgroundDrawable(a.l(getContext(), paramInt));
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if (this.ZZ != null) {
-      this.ZZ.setSupportBackgroundTintList(paramColorStateList);
+    if (this.ahe != null) {
+      this.ahe.setSupportBackgroundTintList(paramColorStateList);
     }
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.ZZ != null) {
-      this.ZZ.setSupportBackgroundTintMode(paramMode);
+    if (this.ahe != null) {
+      this.ahe.setSupportBackgroundTintMode(paramMode);
     }
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    if (this.aaa != null) {
-      this.aaa.t(paramContext, paramInt);
+    if (this.ahf != null) {
+      this.ahf.u(paramContext, paramInt);
     }
   }
 }

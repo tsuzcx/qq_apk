@@ -5,22 +5,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e
   extends o
 {
-  public long vxh;
+  public long BDA;
   
   public e(long paramLong)
   {
-    this.vxh = paramLong;
-    this.mBq = "";
-    this.vxr = "";
-    this.cBD = "";
+    this.BDA = paramLong;
+    this.dkb = "";
+    this.omI = "";
+    this.drZ = "";
     this.type = -3;
   }
   
-  public final String dhQ()
+  public final String esC()
   {
-    AppMethodBeat.i(26681);
-    String str = super.dhQ();
-    AppMethodBeat.o(26681);
+    AppMethodBeat.i(30374);
+    String str = super.esC();
+    AppMethodBeat.o(30374);
     return str;
   }
   
@@ -31,7 +31,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.a.e
  * JD-Core Version:    0.7.0.1
  */

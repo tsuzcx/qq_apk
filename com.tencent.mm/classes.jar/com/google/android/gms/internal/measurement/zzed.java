@@ -41,14 +41,14 @@ public final class zzed
   
   static
   {
-    AppMethodBeat.i(68594);
+    AppMethodBeat.i(1117);
     CREATOR = new zzee();
-    AppMethodBeat.o(68594);
+    AppMethodBeat.o(1117);
   }
   
   zzed(zzed paramzzed)
   {
-    AppMethodBeat.i(68592);
+    AppMethodBeat.i(1115);
     Preconditions.checkNotNull(paramzzed);
     this.packageName = paramzzed.packageName;
     this.origin = paramzzed.origin;
@@ -61,7 +61,7 @@ public final class zzed
     this.zzaer = paramzzed.zzaer;
     this.timeToLive = paramzzed.timeToLive;
     this.zzaes = paramzzed.zzaes;
-    AppMethodBeat.o(68592);
+    AppMethodBeat.o(1115);
   }
   
   @SafeParcelable.Constructor
@@ -82,7 +82,7 @@ public final class zzed
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(68593);
+    AppMethodBeat.i(1116);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeString(paramParcel, 2, this.packageName, false);
     SafeParcelWriter.writeString(paramParcel, 3, this.origin, false);
@@ -96,12 +96,12 @@ public final class zzed
     SafeParcelWriter.writeLong(paramParcel, 11, this.timeToLive);
     SafeParcelWriter.writeParcelable(paramParcel, 12, this.zzaes, paramInt, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(68593);
+    AppMethodBeat.o(1116);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzed
  * JD-Core Version:    0.7.0.1
  */

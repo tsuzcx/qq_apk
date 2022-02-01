@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/f2d" android:background="@drawable/a55" android:layout_width="fill_parent" android:layout_height="@dimen/aai" />
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/f2e" android:layout_width="fill_parent" android:layout_height="@dimen/aai">
-            <FrameLayout android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" android:layout_marginLeft="10.0dip">
-                <ImageView android:id="@id/f2f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/tipsbar_icon_location" android:scaleType="fitXY" android:contentDescription="@null" />
-                <ImageView android:id="@id/f2g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" android:contentDescription="@null" />
-            </FrameLayout>
-            <TextView android:textSize="@dimen/aak" android:textColor="@color/a6s" android:gravity="center|left" android:id="@id/f2h" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:singleLine="true" android:layout_weight="1.0" />
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@raw/tipsbar_icon_arrow_light" android:scaleType="fitCenter" android:contentDescription="@null" />
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/f2i" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="132.0dip">
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="60.0dip">
-                <ImageView android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginTop="7.0dip" android:src="@raw/tipsbar_icon_location" android:scaleType="fitXY" android:contentDescription="@null" />
-                <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/f2j" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-            </LinearLayout>
-            <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/f2k" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="24.0dip">
-                <Button android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/f2l" android:background="@drawable/ar4" android:layout_width="143.0dip" android:layout_height="48.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:text="@string/pa" android:layout_weight="1.0" />
-                <Button android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/f2m" android:background="@drawable/ar7" android:layout_width="143.0dip" android:layout_height="48.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:text="@string/f0a" android:layout_weight="1.0" />
-            </LinearLayout>
-        </LinearLayout>
+    <TextView android:id="@id/f2g" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/i0" android:paddingBottom="@dimen/jn" android:singleLine="true" style="@style/lz" />
+    <FrameLayout android:id="@id/f2p" android:background="@null" android:visibility="gone" android:layout_width="@dimen/as" android:layout_height="@dimen/as">
+        <ImageView android:layout_gravity="center" android:id="@id/cpc" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@drawable/bgx" android:scaleType="fitCenter" />
+        <ImageView android:gravity="center" android:layout_gravity="center" android:id="@id/f2o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:layout_marginBottom="@dimen/c0" android:src="@drawable/afx" />
     </FrameLayout>
-</FrameLayout>
+    <ImageView android:gravity="center" android:id="@id/f2f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:src="@drawable/afx" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/f27" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginLeft="@dimen/ci" android:src="@drawable/ou" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</merge>

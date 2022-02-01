@@ -1,6 +1,8 @@
 package com.facebook.internal;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,7 +11,9 @@ import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.appevents.codeless.internal.UnityReflection;
+import com.facebook.appevents.internal.AutomaticAnalyticsLogger;
 import com.facebook.appevents.internal.Constants;
+import com.facebook.appevents.internal.InAppPurchaseActivityLifecycleTracker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,6 +24,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicReference;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class FetchedAppSettingsManager
@@ -49,37 +54,37 @@ public final class FetchedAppSettingsManager
   private static final String TAG;
   private static final int TRACK_UNINSTALL_ENABLED_BITMASK_FIELD = 256;
   private static final Map<String, FetchedAppSettings> fetchedAppSettings;
-  private static final ConcurrentLinkedQueue<FetchedAppSettingsManager.FetchedAppSettingsCallback> fetchedAppSettingsCallbacks;
+  private static final ConcurrentLinkedQueue<FetchedAppSettingsCallback> fetchedAppSettingsCallbacks;
   private static boolean isUnityInit;
-  private static final AtomicReference<FetchedAppSettingsManager.FetchAppSettingState> loadingState;
+  private static final AtomicReference<FetchAppSettingState> loadingState;
   private static boolean printedSDKUpdatedMessage;
   private static JSONArray unityEventBindings;
   
   static
   {
-    AppMethodBeat.i(72322);
+    AppMethodBeat.i(17758);
     TAG = FetchedAppSettingsManager.class.getSimpleName();
     APP_SETTING_FIELDS = new String[] { "supports_implicit_sdk_logging", "gdpv4_nux_content", "gdpv4_nux_enabled", "gdpv4_chrome_custom_tabs_enabled", "android_dialog_configs", "android_sdk_error_categories", "app_events_session_timeout", "app_events_feature_bitmask", "auto_event_mapping_android", "auto_event_setup_enabled", "seamless_login", "smart_login_bookmark_icon_url", "smart_login_menu_icon_url" };
     fetchedAppSettings = new ConcurrentHashMap();
-    loadingState = new AtomicReference(FetchedAppSettingsManager.FetchAppSettingState.NOT_LOADED);
+    loadingState = new AtomicReference(FetchAppSettingState.NOT_LOADED);
     fetchedAppSettingsCallbacks = new ConcurrentLinkedQueue();
     printedSDKUpdatedMessage = false;
     isUnityInit = false;
     unityEventBindings = null;
-    AppMethodBeat.o(72322);
+    AppMethodBeat.o(17758);
   }
   
-  public static void getAppSettingsAsync(FetchedAppSettingsManager.FetchedAppSettingsCallback paramFetchedAppSettingsCallback)
+  public static void getAppSettingsAsync(FetchedAppSettingsCallback paramFetchedAppSettingsCallback)
   {
-    AppMethodBeat.i(72312);
+    AppMethodBeat.i(17748);
     fetchedAppSettingsCallbacks.add(paramFetchedAppSettingsCallback);
     loadAppSettingsAsync();
-    AppMethodBeat.o(72312);
+    AppMethodBeat.o(17748);
   }
   
   private static JSONObject getAppSettingsQueryResponse(String paramString)
   {
-    AppMethodBeat.i(72317);
+    AppMethodBeat.i(17753);
     Bundle localBundle = new Bundle();
     localBundle.putString("fields", TextUtils.join(",", new ArrayList(Arrays.asList(APP_SETTING_FIELDS))));
     AttributionIdentifiers localAttributionIdentifiers = AttributionIdentifiers.getAttributionIdentifiers(FacebookSdk.getApplicationContext());
@@ -90,57 +95,110 @@ public final class FetchedAppSettingsManager
     paramString.setSkipClientToken(true);
     paramString.setParameters(localBundle);
     paramString = paramString.executeAndWait().getJSONObject();
-    AppMethodBeat.o(72317);
+    AppMethodBeat.o(17753);
     return paramString;
   }
   
   public static FetchedAppSettings getAppSettingsWithoutQuery(String paramString)
   {
-    AppMethodBeat.i(72311);
+    AppMethodBeat.i(17747);
     if (paramString != null)
     {
       paramString = (FetchedAppSettings)fetchedAppSettings.get(paramString);
-      AppMethodBeat.o(72311);
+      AppMethodBeat.o(17747);
       return paramString;
     }
-    AppMethodBeat.o(72311);
+    AppMethodBeat.o(17747);
     return null;
   }
   
   public static void loadAppSettingsAsync()
   {
-    AppMethodBeat.i(72310);
+    AppMethodBeat.i(17746);
     Context localContext = FacebookSdk.getApplicationContext();
-    String str1 = FacebookSdk.getApplicationId();
+    final String str1 = FacebookSdk.getApplicationId();
     if (Utility.isNullOrEmpty(str1))
     {
-      loadingState.set(FetchedAppSettingsManager.FetchAppSettingState.ERROR);
+      loadingState.set(FetchAppSettingState.ERROR);
       pollCallbacks();
-      AppMethodBeat.o(72310);
+      AppMethodBeat.o(17746);
       return;
     }
     if (fetchedAppSettings.containsKey(str1))
     {
-      loadingState.set(FetchedAppSettingsManager.FetchAppSettingState.SUCCESS);
+      loadingState.set(FetchAppSettingState.SUCCESS);
       pollCallbacks();
-      AppMethodBeat.o(72310);
+      AppMethodBeat.o(17746);
       return;
     }
-    if ((loadingState.compareAndSet(FetchedAppSettingsManager.FetchAppSettingState.NOT_LOADED, FetchedAppSettingsManager.FetchAppSettingState.LOADING)) || (loadingState.compareAndSet(FetchedAppSettingsManager.FetchAppSettingState.ERROR, FetchedAppSettingsManager.FetchAppSettingState.LOADING))) {}
+    if ((loadingState.compareAndSet(FetchAppSettingState.NOT_LOADED, FetchAppSettingState.LOADING)) || (loadingState.compareAndSet(FetchAppSettingState.ERROR, FetchAppSettingState.LOADING))) {}
     for (int i = 1; i == 0; i = 0)
     {
       pollCallbacks();
-      AppMethodBeat.o(72310);
+      AppMethodBeat.o(17746);
       return;
     }
-    String str2 = String.format("com.facebook.internal.APP_SETTINGS.%s", new Object[] { str1 });
-    FacebookSdk.getExecutor().execute(new FetchedAppSettingsManager.1(localContext, str2, str1));
-    AppMethodBeat.o(72310);
+    final String str2 = String.format("com.facebook.internal.APP_SETTINGS.%s", new Object[] { str1 });
+    FacebookSdk.getExecutor().execute(new Runnable()
+    {
+      public final void run()
+      {
+        Object localObject3 = null;
+        AppMethodBeat.i(17740);
+        SharedPreferences localSharedPreferences = this.val$context.getSharedPreferences("com.facebook.internal.preferences.APP_SETTINGS", 0);
+        Object localObject2 = localSharedPreferences.getString(str2, null);
+        Object localObject1 = localObject3;
+        if (!Utility.isNullOrEmpty((String)localObject2)) {}
+        try
+        {
+          localObject2 = new JSONObject((String)localObject2);
+          localObject1 = localObject3;
+          if (localObject2 != null) {
+            localObject1 = FetchedAppSettingsManager.access$000(str1, (JSONObject)localObject2);
+          }
+          localObject2 = FetchedAppSettingsManager.access$100(str1);
+          if (localObject2 != null)
+          {
+            FetchedAppSettingsManager.access$000(str1, (JSONObject)localObject2);
+            localSharedPreferences.edit().putString(str2, ((JSONObject)localObject2).toString()).apply();
+          }
+          if (localObject1 != null)
+          {
+            localObject1 = ((FetchedAppSettings)localObject1).getSdkUpdateMessage();
+            if ((!FetchedAppSettingsManager.printedSDKUpdatedMessage) && (localObject1 != null) && (((String)localObject1).length() > 0)) {
+              FetchedAppSettingsManager.access$202(true);
+            }
+          }
+          AutomaticAnalyticsLogger.logActivateAppEvent();
+          InAppPurchaseActivityLifecycleTracker.update();
+          localObject2 = FetchedAppSettingsManager.loadingState;
+          if (FetchedAppSettingsManager.fetchedAppSettings.containsKey(str1))
+          {
+            localObject1 = FetchedAppSettingsManager.FetchAppSettingState.SUCCESS;
+            ((AtomicReference)localObject2).set(localObject1);
+            FetchedAppSettingsManager.access$600();
+            AppMethodBeat.o(17740);
+            return;
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            Utility.logd("FacebookSDK", localJSONException);
+            localObject2 = null;
+            continue;
+            FetchedAppSettingsManager.FetchAppSettingState localFetchAppSettingState = FetchedAppSettingsManager.FetchAppSettingState.ERROR;
+          }
+        }
+      }
+    });
+    AppMethodBeat.o(17746);
   }
   
   private static FetchedAppSettings parseAppSettingsFromJSON(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(72315);
+    AppMethodBeat.i(17751);
     Object localObject = paramJSONObject.optJSONArray("android_sdk_error_categories");
     boolean bool1;
     label41:
@@ -182,7 +240,7 @@ public final class FetchedAppSettingsManager
       }
       paramJSONObject = new FetchedAppSettings(paramJSONObject.optBoolean("supports_implicit_sdk_logging", false), paramJSONObject.optString("gdpv4_nux_content", ""), paramJSONObject.optBoolean("gdpv4_nux_enabled", false), paramJSONObject.optBoolean("gdpv4_chrome_custom_tabs_enabled", false), paramJSONObject.optInt("app_events_session_timeout", Constants.getDefaultAppEventsSessionTimeoutInSeconds()), SmartLoginOption.parseOptions(paramJSONObject.optLong("seamless_login")), parseDialogConfigurations(paramJSONObject.optJSONObject("android_dialog_configs")), bool1, (FacebookRequestErrorClassification)localObject, paramJSONObject.optString("smart_login_bookmark_icon_url"), paramJSONObject.optString("smart_login_menu_icon_url"), bool2, bool3, localJSONArray, paramJSONObject.optString("sdk_update_message"), bool4, bool5);
       fetchedAppSettings.put(paramString, paramJSONObject);
-      AppMethodBeat.o(72315);
+      AppMethodBeat.o(17751);
       return paramJSONObject;
       localObject = FacebookRequestErrorClassification.createFromJSON((JSONArray)localObject);
       break;
@@ -197,7 +255,7 @@ public final class FetchedAppSettingsManager
   
   private static Map<String, Map<String, FetchedAppSettings.DialogFeatureConfig>> parseDialogConfigurations(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(72318);
+    AppMethodBeat.i(17754);
     HashMap localHashMap = new HashMap();
     if (paramJSONObject != null)
     {
@@ -224,7 +282,7 @@ public final class FetchedAppSettingsManager
         }
       }
     }
-    AppMethodBeat.o(72318);
+    AppMethodBeat.o(17754);
     return localHashMap;
   }
   
@@ -236,74 +294,113 @@ public final class FetchedAppSettingsManager
       Handler localHandler;
       try
       {
-        AppMethodBeat.i(72313);
-        FetchedAppSettingsManager.FetchAppSettingState localFetchAppSettingState = (FetchedAppSettingsManager.FetchAppSettingState)loadingState.get();
-        if ((FetchedAppSettingsManager.FetchAppSettingState.NOT_LOADED.equals(localFetchAppSettingState)) || (FetchedAppSettingsManager.FetchAppSettingState.LOADING.equals(localFetchAppSettingState)))
+        AppMethodBeat.i(17749);
+        FetchAppSettingState localFetchAppSettingState = (FetchAppSettingState)loadingState.get();
+        if ((FetchAppSettingState.NOT_LOADED.equals(localFetchAppSettingState)) || (FetchAppSettingState.LOADING.equals(localFetchAppSettingState)))
         {
-          AppMethodBeat.o(72313);
+          AppMethodBeat.o(17749);
           return;
         }
         localObject2 = FacebookSdk.getApplicationId();
         localObject2 = (FetchedAppSettings)fetchedAppSettings.get(localObject2);
         localHandler = new Handler(Looper.getMainLooper());
-        if (!FetchedAppSettingsManager.FetchAppSettingState.ERROR.equals(localFetchAppSettingState)) {
+        if (!FetchAppSettingState.ERROR.equals(localFetchAppSettingState)) {
           break label135;
         }
         if (!fetchedAppSettingsCallbacks.isEmpty())
         {
-          localHandler.post(new FetchedAppSettingsManager.2((FetchedAppSettingsManager.FetchedAppSettingsCallback)fetchedAppSettingsCallbacks.poll()));
+          localHandler.post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(17741);
+              this.val$callback.onError();
+              AppMethodBeat.o(17741);
+            }
+          });
           continue;
         }
-        AppMethodBeat.o(72313);
+        AppMethodBeat.o(17749);
       }
       finally {}
       continue;
       label135:
       while (!fetchedAppSettingsCallbacks.isEmpty()) {
-        localHandler.post(new FetchedAppSettingsManager.3((FetchedAppSettingsManager.FetchedAppSettingsCallback)fetchedAppSettingsCallbacks.poll(), (FetchedAppSettings)localObject2));
+        localHandler.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(17742);
+            this.val$callback.onSuccess(this.val$appSettings);
+            AppMethodBeat.o(17742);
+          }
+        });
       }
-      AppMethodBeat.o(72313);
+      AppMethodBeat.o(17749);
     }
   }
   
   public static FetchedAppSettings queryAppSettings(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(72314);
+    AppMethodBeat.i(17750);
     if ((!paramBoolean) && (fetchedAppSettings.containsKey(paramString)))
     {
       paramString = (FetchedAppSettings)fetchedAppSettings.get(paramString);
-      AppMethodBeat.o(72314);
+      AppMethodBeat.o(17750);
       return paramString;
     }
     Object localObject = getAppSettingsQueryResponse(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(72314);
+      AppMethodBeat.o(17750);
       return null;
     }
     localObject = parseAppSettingsFromJSON(paramString, (JSONObject)localObject);
     if (paramString.equals(FacebookSdk.getApplicationId()))
     {
-      loadingState.set(FetchedAppSettingsManager.FetchAppSettingState.SUCCESS);
+      loadingState.set(FetchAppSettingState.SUCCESS);
       pollCallbacks();
     }
-    AppMethodBeat.o(72314);
+    AppMethodBeat.o(17750);
     return localObject;
   }
   
   public static void setIsUnityInit(boolean paramBoolean)
   {
-    AppMethodBeat.i(72316);
+    AppMethodBeat.i(17752);
     isUnityInit = paramBoolean;
     if ((unityEventBindings != null) && (isUnityInit)) {
       UnityReflection.sendEventMapping(unityEventBindings.toString());
     }
-    AppMethodBeat.o(72316);
+    AppMethodBeat.o(17752);
+  }
+  
+  static enum FetchAppSettingState
+  {
+    static
+    {
+      AppMethodBeat.i(17745);
+      NOT_LOADED = new FetchAppSettingState("NOT_LOADED", 0);
+      LOADING = new FetchAppSettingState("LOADING", 1);
+      SUCCESS = new FetchAppSettingState("SUCCESS", 2);
+      ERROR = new FetchAppSettingState("ERROR", 3);
+      $VALUES = new FetchAppSettingState[] { NOT_LOADED, LOADING, SUCCESS, ERROR };
+      AppMethodBeat.o(17745);
+    }
+    
+    private FetchAppSettingState() {}
+  }
+  
+  public static abstract interface FetchedAppSettingsCallback
+  {
+    public abstract void onError();
+    
+    public abstract void onSuccess(FetchedAppSettings paramFetchedAppSettings);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.FetchedAppSettingsManager
  * JD-Core Version:    0.7.0.1
  */

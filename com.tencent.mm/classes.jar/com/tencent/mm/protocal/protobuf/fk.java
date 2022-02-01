@@ -1,128 +1,116 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
-import java.util.LinkedList;
 
 public final class fk
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String crs;
-  public String fLx;
-  public String gfK;
-  public long wrA;
-  public LinkedList<String> wrz;
-  
-  public fk()
-  {
-    AppMethodBeat.i(118265);
-    this.wrz = new LinkedList();
-    AppMethodBeat.o(118265);
-  }
+  public String CAc;
+  public int CAd;
+  public int CAe;
+  public long CAf;
+  public int CAg;
+  public long gLf;
+  public int idx;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(118266);
+    AppMethodBeat.i(124388);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.gfK == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: roomname");
-        AppMethodBeat.o(118266);
-        throw paramVarArgs;
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.CAc != null) {
+        paramVarArgs.d(1, this.CAc);
       }
-      if (this.gfK != null) {
-        paramVarArgs.e(1, this.gfK);
+      paramVarArgs.aG(2, this.gLf);
+      paramVarArgs.aR(3, this.idx);
+      paramVarArgs.aR(4, this.CAd);
+      paramVarArgs.aR(5, this.CAe);
+      paramVarArgs.aG(6, this.CAf);
+      paramVarArgs.aR(7, this.CAg);
+      if (this.url != null) {
+        paramVarArgs.d(8, this.url);
       }
-      if (this.crs != null) {
-        paramVarArgs.e(2, this.crs);
-      }
-      if (this.fLx != null) {
-        paramVarArgs.e(3, this.fLx);
-      }
-      paramVarArgs.e(4, 1, this.wrz);
-      paramVarArgs.am(5, this.wrA);
-      AppMethodBeat.o(118266);
+      AppMethodBeat.o(124388);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.gfK == null) {
-        break label486;
+      if (this.CAc == null) {
+        break label534;
       }
     }
-    label486:
-    for (int i = e.a.a.b.b.a.f(1, this.gfK) + 0;; i = 0)
+    label534:
+    for (paramInt = f.a.a.b.b.a.e(1, this.CAc) + 0;; paramInt = 0)
     {
+      int i = paramInt + f.a.a.b.b.a.q(2, this.gLf) + f.a.a.b.b.a.bA(3, this.idx) + f.a.a.b.b.a.bA(4, this.CAd) + f.a.a.b.b.a.bA(5, this.CAe) + f.a.a.b.b.a.q(6, this.CAf) + f.a.a.b.b.a.bA(7, this.CAg);
       paramInt = i;
-      if (this.crs != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.crs);
+      if (this.url != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.url);
       }
-      i = paramInt;
-      if (this.fLx != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.fLx);
-      }
-      paramInt = e.a.a.a.c(4, 1, this.wrz);
-      int j = e.a.a.b.b.a.p(5, this.wrA);
-      AppMethodBeat.o(118266);
-      return i + paramInt + j;
+      AppMethodBeat.o(124388);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.wrz.clear();
-        paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        if (this.gfK == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: roomname");
-          AppMethodBeat.o(118266);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(118266);
+        AppMethodBeat.o(124388);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         fk localfk = (fk)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(118266);
+          AppMethodBeat.o(124388);
           return -1;
         case 1: 
-          localfk.gfK = locala.CLY.readString();
-          AppMethodBeat.o(118266);
+          localfk.CAc = locala.KhF.readString();
+          AppMethodBeat.o(124388);
           return 0;
         case 2: 
-          localfk.crs = locala.CLY.readString();
-          AppMethodBeat.o(118266);
+          localfk.gLf = locala.KhF.xT();
+          AppMethodBeat.o(124388);
           return 0;
         case 3: 
-          localfk.fLx = locala.CLY.readString();
-          AppMethodBeat.o(118266);
+          localfk.idx = locala.KhF.xS();
+          AppMethodBeat.o(124388);
           return 0;
         case 4: 
-          localfk.wrz.add(locala.CLY.readString());
-          AppMethodBeat.o(118266);
+          localfk.CAd = locala.KhF.xS();
+          AppMethodBeat.o(124388);
+          return 0;
+        case 5: 
+          localfk.CAe = locala.KhF.xS();
+          AppMethodBeat.o(124388);
+          return 0;
+        case 6: 
+          localfk.CAf = locala.KhF.xT();
+          AppMethodBeat.o(124388);
+          return 0;
+        case 7: 
+          localfk.CAg = locala.KhF.xS();
+          AppMethodBeat.o(124388);
           return 0;
         }
-        localfk.wrA = locala.CLY.sm();
-        AppMethodBeat.o(118266);
+        localfk.url = locala.KhF.readString();
+        AppMethodBeat.o(124388);
         return 0;
       }
-      AppMethodBeat.o(118266);
+      AppMethodBeat.o(124388);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.fk
  * JD-Core Version:    0.7.0.1
  */

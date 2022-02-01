@@ -6,92 +6,93 @@ import com.tencent.mm.plugin.report.a;
 public final class i
   extends a
 {
-  private String cQc = "";
-  public int cQf = 0;
-  public long cQg = 0L;
-  public long cQh = 0L;
-  public long cQi = 0L;
-  private long cQj = 0L;
-  public long cQk = 0L;
-  private String cQl = "";
+  public int dHg = 0;
+  public int dHh = 0;
+  public int dHi = 0;
+  public int dHj = 0;
+  private String dHk;
+  public int dHl;
+  public long dHm = 0L;
+  public long dHn = 0L;
+  private String dHo;
+  public long dHp = 0L;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(73285);
+    AppMethodBeat.i(149905);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cQc);
+    ((StringBuffer)localObject).append(this.dHg);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cQf);
+    ((StringBuffer)localObject).append(this.dHh);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cQg);
+    ((StringBuffer)localObject).append(this.dHi);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cQh);
+    ((StringBuffer)localObject).append(this.dHj);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cQi);
+    ((StringBuffer)localObject).append(this.dHk);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cQj);
+    ((StringBuffer)localObject).append(this.dHl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cQk);
+    ((StringBuffer)localObject).append(this.dHm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cQl);
+    ((StringBuffer)localObject).append(this.dHn);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dHo);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dHp);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(73285);
+    ams((String)localObject);
+    AppMethodBeat.o(149905);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(73286);
+    AppMethodBeat.i(149906);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ChatroomName:").append(this.cQc);
+    ((StringBuffer)localObject).append("optype:").append(this.dHg);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ChatroomMute:").append(this.cQf);
+    ((StringBuffer)localObject).append("errtype:").append(this.dHh);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UnreadCount:").append(this.cQg);
+    ((StringBuffer)localObject).append("errcode:").append(this.dHi);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DisRedDotCount:").append(this.cQh);
+    ((StringBuffer)localObject).append("mapederror:").append(this.dHj);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterCount:").append(this.cQi);
+    ((StringBuffer)localObject).append("filekey:").append(this.dHk);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StayTimeMs:").append(this.cQj);
+    ((StringBuffer)localObject).append("filetype:").append(this.dHl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SendCount:").append(this.cQk);
+    ((StringBuffer)localObject).append("TryWritenBytes:").append(this.dHm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Score:").append(this.cQl);
+    ((StringBuffer)localObject).append("AvailableBytes:").append(this.dHn);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SystemErrorDescribe:").append(this.dHo);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("CurrentFileSize:").append(this.dHp);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(73286);
+    AppMethodBeat.o(149906);
     return localObject;
   }
   
-  public final i aK(long paramLong)
+  public final i fT(String paramString)
   {
-    AppMethodBeat.i(73283);
-    this.cQj = paramLong;
-    super.ay("StayTimeMs", this.cQj);
-    AppMethodBeat.o(73283);
+    AppMethodBeat.i(149903);
+    this.dHk = t("filekey", paramString, true);
+    AppMethodBeat.o(149903);
     return this;
   }
   
-  public final i eV(String paramString)
+  public final i fU(String paramString)
   {
-    AppMethodBeat.i(73282);
-    this.cQc = t("ChatroomName", paramString, true);
-    AppMethodBeat.o(73282);
-    return this;
-  }
-  
-  public final i eW(String paramString)
-  {
-    AppMethodBeat.i(73284);
-    this.cQl = t("Score", paramString, true);
-    AppMethodBeat.o(73284);
+    AppMethodBeat.i(149904);
+    this.dHo = t("SystemErrorDescribe", paramString, true);
+    AppMethodBeat.o(149904);
     return this;
   }
   
   public final int getId()
   {
-    return 15460;
+    return 17473;
   }
 }
 

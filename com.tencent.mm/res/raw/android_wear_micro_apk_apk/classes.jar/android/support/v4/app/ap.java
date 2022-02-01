@@ -1,44 +1,10 @@
 package android.support.v4.app;
 
-import android.app.PendingIntent;
-import android.os.Bundle;
+import android.app.Notification.Builder;
 
-public final class ap
-  extends bm
+public abstract interface ap
 {
-  public static final bn eA = new bn() {};
-  public PendingIntent actionIntent;
-  final Bundle ew;
-  private final bt[] ex;
-  private final bt[] ey;
-  private boolean ez;
-  public int icon;
-  public CharSequence title;
-  
-  public final PendingIntent getActionIntent()
-  {
-    return this.actionIntent;
-  }
-  
-  public final boolean getAllowGeneratedReplies()
-  {
-    return this.ez;
-  }
-  
-  public final Bundle getExtras()
-  {
-    return this.ew;
-  }
-  
-  public final int getIcon()
-  {
-    return this.icon;
-  }
-  
-  public final CharSequence getTitle()
-  {
-    return this.title;
-  }
+  public abstract Notification.Builder aJ();
 }
 
 

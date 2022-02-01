@@ -6,27 +6,27 @@ import oicq.wlogin_sdk.tools.util;
 public final class b
   extends a
 {
-  int CNo;
-  int CNp;
-  int CNq;
-  int CNr;
-  byte[] CNs;
+  int KiV;
+  int KiW;
+  int KiX;
+  int KiY;
+  byte[] KiZ;
   
   public b()
   {
-    AppMethodBeat.i(96498);
-    this.CNo = 4;
-    this.CNp = 14;
-    this.CNq = 1;
-    this.CNr = 20;
-    this.CNs = new byte[2];
-    this.CMD = 1;
-    AppMethodBeat.o(96498);
+    AppMethodBeat.i(88137);
+    this.KiV = 4;
+    this.KiW = 14;
+    this.KiX = 1;
+    this.KiY = 20;
+    this.KiZ = new byte[2];
+    this.Kik = 1;
+    AppMethodBeat.o(88137);
   }
   
-  public final Boolean erf()
+  public final Boolean fMI()
   {
-    if (this.CNn < 20) {
+    if (this.KiU < 20) {
       return Boolean.FALSE;
     }
     return Boolean.TRUE;
@@ -34,19 +34,19 @@ public final class b
   
   public final byte[] g(long paramLong, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(96499);
-    byte[] arrayOfByte = new byte[this.CNr];
-    util.O(arrayOfByte, 0, this.CNq);
-    util.P(arrayOfByte, 2, util.erl());
-    util.P(arrayOfByte, 6, (int)paramLong);
-    util.d(arrayOfByte, 10, util.ern());
+    AppMethodBeat.i(88138);
+    byte[] arrayOfByte = new byte[this.KiY];
+    util.W(arrayOfByte, 0, this.KiX);
+    util.X(arrayOfByte, 2, util.fMO());
+    util.X(arrayOfByte, 6, (int)paramLong);
+    util.d(arrayOfByte, 10, util.fMQ());
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 14, paramArrayOfByte.length);
-    util.O(arrayOfByte, paramArrayOfByte.length + 14, 0);
-    super.Wr(this.CMD);
-    super.ab(arrayOfByte, this.CNr);
-    super.ere();
-    paramArrayOfByte = super.era();
-    AppMethodBeat.o(96499);
+    util.W(arrayOfByte, paramArrayOfByte.length + 14, 0);
+    super.agp(this.Kik);
+    super.af(arrayOfByte, this.KiY);
+    super.fMH();
+    paramArrayOfByte = super.fMD();
+    AppMethodBeat.o(88138);
     return paramArrayOfByte;
   }
 }

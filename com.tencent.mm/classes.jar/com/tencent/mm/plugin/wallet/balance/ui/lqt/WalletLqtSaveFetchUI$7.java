@@ -12,19 +12,19 @@ final class WalletLqtSaveFetchUI$7
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(155073);
-    if (!WalletLqtSaveFetchUI.p(this.tRZ).isChecked()) {}
+    AppMethodBeat.i(68975);
+    if (!WalletLqtSaveFetchUI.q(this.zMe).isChecked()) {}
     for (boolean bool = true;; bool = false)
     {
-      WalletLqtSaveFetchUI.p(this.tRZ).setChecked(bool);
-      AppMethodBeat.o(155073);
+      WalletLqtSaveFetchUI.q(this.zMe).setChecked(bool);
+      AppMethodBeat.o(68975);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSaveFetchUI.7
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ import android.media.MediaCrypto;
 public final class d
   implements c
 {
-  public final MediaCrypto aBi;
-  public final boolean aBj;
+  public final MediaCrypto aWA;
+  public final boolean aWB;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.d
  * JD-Core Version:    0.7.0.1
  */

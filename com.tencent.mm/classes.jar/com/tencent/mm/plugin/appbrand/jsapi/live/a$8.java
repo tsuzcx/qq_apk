@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.live;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.rtmp.ITXLivePlayListener;
 import java.util.Iterator;
 import java.util.Set;
@@ -17,13 +17,13 @@ final class a$8
   
   public final void onNetStatus(Bundle paramBundle)
   {
-    AppMethodBeat.i(96080);
-    a.b localb = new a.b((byte)0);
+    AppMethodBeat.i(145854);
+    a.c localc = new a.c((byte)0);
     JSONObject localJSONObject1 = new JSONObject();
     JSONObject localJSONObject2;
     try
     {
-      localJSONObject1.put("livePlayerId", this.hEO);
+      localJSONObject1.put("livePlayerId", this.jGR);
       localJSONObject2 = new JSONObject();
       if (paramBundle != null)
       {
@@ -33,14 +33,14 @@ final class a$8
           String str = (String)localIterator.next();
           localJSONObject2.put(str, paramBundle.get(str));
           continue;
-          this.hEL.b(localb.BN(localJSONObject1.toString()));
+          this.jGO.b(localc.HK(localJSONObject1.toString()));
         }
       }
     }
     catch (JSONException paramBundle) {}
     for (;;)
     {
-      AppMethodBeat.o(96080);
+      AppMethodBeat.o(145854);
       return;
       localJSONObject1.put("info", localJSONObject2);
     }
@@ -48,18 +48,18 @@ final class a$8
   
   public final void onPlayEvent(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(96079);
-    ab.i("MicroMsg.JsApiInsertLivePlayer", "onPlayEvent errCode:%d", new Object[] { Integer.valueOf(paramInt) });
-    a.c localc = new a.c((byte)0);
+    AppMethodBeat.i(145853);
+    ad.i("MicroMsg.JsApiInsertLivePlayer", "onPlayEvent errCode:%d", new Object[] { Integer.valueOf(paramInt) });
+    a.d locald = new a.d((byte)0);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("errCode", paramInt);
       localJSONObject.put("errMsg", paramBundle.getString("EVT_MSG"));
-      localJSONObject.put("livePlayerId", this.hEO);
+      localJSONObject.put("livePlayerId", this.jGR);
       label76:
-      this.hEL.b(localc.BN(localJSONObject.toString()));
-      AppMethodBeat.o(96079);
+      this.jGO.b(locald.HK(localJSONObject.toString()));
+      AppMethodBeat.o(145853);
       return;
     }
     catch (JSONException paramBundle)

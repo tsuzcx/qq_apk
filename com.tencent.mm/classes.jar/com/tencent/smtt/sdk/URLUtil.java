@@ -1,253 +1,234 @@
 package com.tencent.smtt.sdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.smtt.export.external.interfaces.IX5CoreUrlUtil;
 
 public final class URLUtil
+  extends x
 {
   public static String composeSearchUrl(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(64650);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54944);
+    if (isX5Core())
     {
-      paramString1 = localbz.c().a(paramString1, paramString2, paramString3);
-      AppMethodBeat.o(64650);
+      paramString1 = getX5CoreUrlUtilImpl().composeSearchUrl(paramString1, paramString2, paramString3);
+      AppMethodBeat.o(54944);
       return paramString1;
     }
     paramString1 = android.webkit.URLUtil.composeSearchUrl(paramString1, paramString2, paramString3);
-    AppMethodBeat.o(64650);
+    AppMethodBeat.o(54944);
     return paramString1;
   }
   
   public static byte[] decode(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(64651);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54945);
+    if (isX5Core())
     {
-      paramArrayOfByte = localbz.c().a(paramArrayOfByte);
-      AppMethodBeat.o(64651);
+      paramArrayOfByte = getX5CoreUrlUtilImpl().decode(paramArrayOfByte);
+      AppMethodBeat.o(54945);
       return paramArrayOfByte;
     }
     paramArrayOfByte = android.webkit.URLUtil.decode(paramArrayOfByte);
-    AppMethodBeat.o(64651);
+    AppMethodBeat.o(54945);
     return paramArrayOfByte;
   }
   
   public static final String guessFileName(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(64664);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
-    {
-      paramString1 = localbz.c().b(paramString1, paramString2, paramString3);
-      AppMethodBeat.o(64664);
-      return paramString1;
-    }
+    AppMethodBeat.i(54958);
+    while (isX5Core()) {}
     paramString1 = android.webkit.URLUtil.guessFileName(paramString1, paramString2, paramString3);
-    AppMethodBeat.o(64664);
+    AppMethodBeat.o(54958);
     return paramString1;
   }
   
   public static String guessUrl(String paramString)
   {
-    AppMethodBeat.i(64649);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54943);
+    if (isX5Core())
     {
-      paramString = localbz.c().m(paramString);
-      AppMethodBeat.o(64649);
+      paramString = getX5CoreUrlUtilImpl().guessUrl(paramString);
+      AppMethodBeat.o(54943);
       return paramString;
     }
     paramString = android.webkit.URLUtil.guessUrl(paramString);
-    AppMethodBeat.o(64649);
+    AppMethodBeat.o(54943);
     return paramString;
   }
   
   public static boolean isAboutUrl(String paramString)
   {
-    AppMethodBeat.i(64655);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54949);
+    if (isX5Core())
     {
-      bool = localbz.c().q(paramString);
-      AppMethodBeat.o(64655);
+      bool = getX5CoreUrlUtilImpl().isAboutUrl(paramString);
+      AppMethodBeat.o(54949);
       return bool;
     }
     boolean bool = android.webkit.URLUtil.isAboutUrl(paramString);
-    AppMethodBeat.o(64655);
+    AppMethodBeat.o(54949);
     return bool;
   }
   
   public static boolean isAssetUrl(String paramString)
   {
-    AppMethodBeat.i(64652);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54946);
+    if (isX5Core())
     {
-      bool = localbz.c().n(paramString);
-      AppMethodBeat.o(64652);
+      bool = getX5CoreUrlUtilImpl().isAssetUrl(paramString);
+      AppMethodBeat.o(54946);
       return bool;
     }
     boolean bool = android.webkit.URLUtil.isAssetUrl(paramString);
-    AppMethodBeat.o(64652);
+    AppMethodBeat.o(54946);
     return bool;
   }
   
   public static boolean isContentUrl(String paramString)
   {
-    AppMethodBeat.i(64661);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54955);
+    if (isX5Core())
     {
-      bool = localbz.c().w(paramString);
-      AppMethodBeat.o(64661);
+      bool = getX5CoreUrlUtilImpl().isContentUrl(paramString);
+      AppMethodBeat.o(54955);
       return bool;
     }
     boolean bool = android.webkit.URLUtil.isContentUrl(paramString);
-    AppMethodBeat.o(64661);
+    AppMethodBeat.o(54955);
     return bool;
   }
   
   @Deprecated
   public static boolean isCookielessProxyUrl(String paramString)
   {
-    AppMethodBeat.i(64653);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54947);
+    if (isX5Core())
     {
-      bool = localbz.c().o(paramString);
-      AppMethodBeat.o(64653);
+      bool = getX5CoreUrlUtilImpl().isCookielessProxyUrl(paramString);
+      AppMethodBeat.o(54947);
       return bool;
     }
     boolean bool = android.webkit.URLUtil.isCookielessProxyUrl(paramString);
-    AppMethodBeat.o(64653);
+    AppMethodBeat.o(54947);
     return bool;
   }
   
   public static boolean isDataUrl(String paramString)
   {
-    AppMethodBeat.i(64656);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54950);
+    if (isX5Core())
     {
-      bool = localbz.c().r(paramString);
-      AppMethodBeat.o(64656);
+      bool = getX5CoreUrlUtilImpl().isDataUrl(paramString);
+      AppMethodBeat.o(54950);
       return bool;
     }
     boolean bool = android.webkit.URLUtil.isDataUrl(paramString);
-    AppMethodBeat.o(64656);
+    AppMethodBeat.o(54950);
     return bool;
   }
   
   public static boolean isFileUrl(String paramString)
   {
-    AppMethodBeat.i(64654);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54948);
+    if (isX5Core())
     {
-      bool = localbz.c().p(paramString);
-      AppMethodBeat.o(64654);
+      bool = getX5CoreUrlUtilImpl().isFileUrl(paramString);
+      AppMethodBeat.o(54948);
       return bool;
     }
     boolean bool = android.webkit.URLUtil.isFileUrl(paramString);
-    AppMethodBeat.o(64654);
+    AppMethodBeat.o(54948);
     return bool;
   }
   
   public static boolean isHttpUrl(String paramString)
   {
-    AppMethodBeat.i(64658);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54952);
+    if (isX5Core())
     {
-      bool = localbz.c().t(paramString);
-      AppMethodBeat.o(64658);
+      bool = getX5CoreUrlUtilImpl().isHttpUrl(paramString);
+      AppMethodBeat.o(54952);
       return bool;
     }
     boolean bool = android.webkit.URLUtil.isHttpUrl(paramString);
-    AppMethodBeat.o(64658);
+    AppMethodBeat.o(54952);
     return bool;
   }
   
   public static boolean isHttpsUrl(String paramString)
   {
-    AppMethodBeat.i(64659);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54953);
+    if (isX5Core())
     {
-      bool = localbz.c().u(paramString);
-      AppMethodBeat.o(64659);
+      bool = getX5CoreUrlUtilImpl().isHttpsUrl(paramString);
+      AppMethodBeat.o(54953);
       return bool;
     }
     boolean bool = android.webkit.URLUtil.isHttpsUrl(paramString);
-    AppMethodBeat.o(64659);
+    AppMethodBeat.o(54953);
     return bool;
   }
   
   public static boolean isJavaScriptUrl(String paramString)
   {
-    AppMethodBeat.i(64657);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54951);
+    if (isX5Core())
     {
-      bool = localbz.c().s(paramString);
-      AppMethodBeat.o(64657);
+      bool = getX5CoreUrlUtilImpl().isJavaScriptUrl(paramString);
+      AppMethodBeat.o(54951);
       return bool;
     }
     boolean bool = android.webkit.URLUtil.isJavaScriptUrl(paramString);
-    AppMethodBeat.o(64657);
+    AppMethodBeat.o(54951);
     return bool;
   }
   
   public static boolean isNetworkUrl(String paramString)
   {
-    AppMethodBeat.i(64660);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54954);
+    if (isX5Core())
     {
-      bool = localbz.c().v(paramString);
-      AppMethodBeat.o(64660);
+      bool = getX5CoreUrlUtilImpl().isNetworkUrl(paramString);
+      AppMethodBeat.o(54954);
       return bool;
     }
     boolean bool = android.webkit.URLUtil.isNetworkUrl(paramString);
-    AppMethodBeat.o(64660);
+    AppMethodBeat.o(54954);
     return bool;
   }
   
   public static boolean isValidUrl(String paramString)
   {
-    AppMethodBeat.i(64662);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54956);
+    if (isX5Core())
     {
-      bool = localbz.c().x(paramString);
-      AppMethodBeat.o(64662);
+      bool = getX5CoreUrlUtilImpl().isValidUrl(paramString);
+      AppMethodBeat.o(54956);
       return bool;
     }
     boolean bool = android.webkit.URLUtil.isValidUrl(paramString);
-    AppMethodBeat.o(64662);
+    AppMethodBeat.o(54956);
     return bool;
   }
   
   public static String stripAnchor(String paramString)
   {
-    AppMethodBeat.i(64663);
-    bz localbz = bz.a();
-    if ((localbz != null) && (localbz.b()))
+    AppMethodBeat.i(54957);
+    if (isX5Core())
     {
-      paramString = localbz.c().y(paramString);
-      AppMethodBeat.o(64663);
+      paramString = getX5CoreUrlUtilImpl().stripAnchor(paramString);
+      AppMethodBeat.o(54957);
       return paramString;
     }
     paramString = android.webkit.URLUtil.stripAnchor(paramString);
-    AppMethodBeat.o(64663);
+    AppMethodBeat.o(54957);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.URLUtil
  * JD-Core Version:    0.7.0.1
  */

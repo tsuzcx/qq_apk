@@ -7,39 +7,33 @@ import java.util.List;
 
 final class j
 {
-  static final j bKr;
-  float bKs;
-  float bKt;
-  float bKu;
-  float bKv;
-  float bKw;
-  float bKx;
-  boolean bKy;
+  static final j cra;
+  float crb;
+  float crd;
+  float cre;
+  float crf;
+  float crg;
+  float crh;
+  boolean cri;
+  int crj = 1;
   float height;
   float width;
   
   static
   {
-    AppMethodBeat.i(115955);
+    AppMethodBeat.i(140056);
     j localj = new j();
-    bKr = localj;
-    localj.height = 0.0F;
-    localj.width = 0.0F;
-    localj.bKt = 0.0F;
-    localj.bKs = 0.0F;
-    localj.bKx = 0.0F;
-    localj.bKw = 0.0F;
-    localj.bKv = 0.0F;
-    localj.bKu = 0.0F;
-    AppMethodBeat.o(115955);
+    cra = localj;
+    localj.setEmpty();
+    AppMethodBeat.o(140056);
   }
   
   static void a(FloatBuffer paramFloatBuffer, List<j> paramList)
   {
-    AppMethodBeat.i(115953);
+    AppMethodBeat.i(140054);
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      AppMethodBeat.o(115953);
+      AppMethodBeat.o(140054);
       return;
     }
     paramList = paramList.iterator();
@@ -48,43 +42,57 @@ final class j
       j localj = (j)paramList.next();
       if (localj != null)
       {
-        FloatBuffer localFloatBuffer = paramFloatBuffer.put(localj.bKs).put(localj.bKt).put(localj.width).put(localj.height).put(localj.bKu).put(localj.bKv).put(localj.bKw).put(localj.bKx);
-        if (localj.bKy) {}
+        FloatBuffer localFloatBuffer = paramFloatBuffer.put(localj.crb).put(localj.crd).put(localj.width).put(localj.height).put(localj.cre).put(localj.crf).put(localj.crg).put(localj.crh);
+        if (localj.cri) {}
         for (float f = 1.0F;; f = 0.0F)
         {
-          localFloatBuffer.put(f);
+          localFloatBuffer.put(f).put(localj.crj);
           break;
         }
       }
     }
-    AppMethodBeat.o(115953);
+    AppMethodBeat.o(140054);
   }
   
-  public final void A(float paramFloat1, float paramFloat2)
+  public final void i(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this.cre = paramFloat1;
+    this.crf = paramFloat2;
+    this.crg = paramFloat3;
+    this.crh = paramFloat4;
+  }
+  
+  public final void r(float paramFloat1, float paramFloat2)
   {
     this.width = paramFloat1;
     this.height = paramFloat2;
   }
   
-  public final void f(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public final void setEmpty()
   {
-    this.bKu = paramFloat1;
-    this.bKv = paramFloat2;
-    this.bKw = paramFloat3;
-    this.bKx = paramFloat4;
+    this.height = 0.0F;
+    this.width = 0.0F;
+    this.crd = 0.0F;
+    this.crb = 0.0F;
+    this.crh = 0.0F;
+    this.crg = 0.0F;
+    this.crf = 0.0F;
+    this.cre = 0.0F;
+    this.crj = 1;
+    this.cri = false;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(115954);
-    String str = "glyph(" + this.bKs + ", " + this.bKt + ", [" + this.width + ", " + this.height + "], [" + this.bKu + ", " + this.bKv + ", " + this.bKw + ", " + this.bKx + ", " + this.bKy + "])";
-    AppMethodBeat.o(115954);
+    AppMethodBeat.i(140055);
+    String str = "glyph(" + this.crb + ", " + this.crd + ", [" + this.width + ", " + this.height + "], [" + this.cre + ", " + this.crf + ", " + this.crg + ", " + this.crh + ", " + this.cri + "])";
+    AppMethodBeat.o(140055);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.j
  * JD-Core Version:    0.7.0.1
  */

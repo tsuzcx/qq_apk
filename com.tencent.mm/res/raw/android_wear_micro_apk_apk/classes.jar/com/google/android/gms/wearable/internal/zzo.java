@@ -12,18 +12,18 @@ public class zzo
   extends zza
 {
   public static final Parcelable.Creator<zzo> CREATOR = new ck();
-  private final Object Jv = new Object();
-  private final List<zzcc> UN;
-  private Set<t> UO;
+  private final Object Lk = new Object();
+  private final List<zzcc> WC;
+  private Set<t> WD;
   private final String mName;
   
   public zzo(String paramString, List<zzcc> paramList)
   {
     this.mName = paramString;
-    this.UN = paramList;
-    this.UO = null;
-    d.u(this.mName);
-    d.u(this.UN);
+    this.WC = paramList;
+    this.WD = null;
+    d.D(this.mName);
+    d.D(this.WC);
   }
   
   public boolean equals(Object paramObject)
@@ -45,14 +45,14 @@ public class zzo
           return false;
         }
       }
-      if (this.UN == null) {
+      if (this.WC == null) {
         break;
       }
-    } while (this.UN.equals(paramObject.UN));
+    } while (this.WC.equals(paramObject.WC));
     for (;;)
     {
       return false;
-      if (paramObject.UN == null) {
+      if (paramObject.WC == null) {
         break;
       }
     }
@@ -69,22 +69,22 @@ public class zzo
     if (this.mName != null) {}
     for (int i = this.mName.hashCode();; i = 0)
     {
-      if (this.UN != null) {
-        j = this.UN.hashCode();
+      if (this.WC != null) {
+        j = this.WC.hashCode();
       }
       return (i + 31) * 31 + j;
     }
   }
   
-  public final List<zzcc> kX()
+  public final List<zzcc> lg()
   {
-    return this.UN;
+    return this.WC;
   }
   
   public String toString()
   {
     String str1 = this.mName;
-    String str2 = String.valueOf(this.UN);
+    String str2 = String.valueOf(this.WC);
     return String.valueOf(str1).length() + 18 + String.valueOf(str2).length() + "CapabilityInfo{" + str1 + ", " + str2 + "}";
   }
   

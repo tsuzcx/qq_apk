@@ -25,30 +25,30 @@ import android.view.View.MeasureSpec;
 public class CircledImageView
   extends View
 {
-  private static final ArgbEvaluator AP = new ArgbEvaluator();
-  private final RectF AQ;
-  private ColorStateList AR;
-  private float AS;
-  private float AT;
-  private float AU;
-  private float AV;
-  private float AW;
-  private int AX;
-  private float AY;
-  private float AZ = 1.0F;
-  private final float Ba;
-  private float Bb;
-  private boolean Bc = false;
-  private float Bd;
-  private boolean Be = false;
-  private s Bf;
-  private Rect Bg = new Rect();
-  private long Bh = 0L;
-  private float Bi = 1.0F;
-  private float Bj = 0.0F;
-  private Integer Bk;
-  private Integer Bl;
-  private final Drawable.Callback Bm = new Drawable.Callback()
+  private static final ArgbEvaluator CE = new ArgbEvaluator();
+  private final RectF CF;
+  private ColorStateList CG;
+  private float CH;
+  private float CI;
+  private float CJ;
+  private float CK;
+  private float CL;
+  private int CM;
+  private float CN;
+  private float CO = 1.0F;
+  private final float CP;
+  private float CQ;
+  private boolean CR = false;
+  private float CS;
+  private boolean CT = false;
+  private s CU;
+  private Rect CV = new Rect();
+  private long CW = 0L;
+  private float CX = 1.0F;
+  private float CY = 0.0F;
+  private Integer CZ;
+  private Integer Da;
+  private final Drawable.Callback Db = new Drawable.Callback()
   {
     public final void invalidateDrawable(Drawable paramAnonymousDrawable)
     {
@@ -59,7 +59,7 @@ public class CircledImageView
     
     public final void unscheduleDrawable(Drawable paramAnonymousDrawable, Runnable paramAnonymousRunnable) {}
   };
-  private final ValueAnimator.AnimatorUpdateListener Bn = new ValueAnimator.AnimatorUpdateListener()
+  private final ValueAnimator.AnimatorUpdateListener Dc = new ValueAnimator.AnimatorUpdateListener()
   {
     public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
     {
@@ -71,11 +71,11 @@ public class CircledImageView
       }
     }
   };
-  private ValueAnimator Bo;
-  private boolean eS;
-  private int gc;
-  private Drawable gh;
-  private final Paint nC;
+  private ValueAnimator Dd;
+  private boolean gH;
+  private int hY;
+  private Drawable ie;
+  private final Paint pq;
   
   public CircledImageView(Context paramContext)
   {
@@ -90,113 +90,113 @@ public class CircledImageView
   public CircledImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = getContext().obtainStyledAttributes(paramAttributeSet, k.xs);
-    this.gh = paramContext.getDrawable(k.xt);
-    this.AR = paramContext.getColorStateList(k.xu);
-    if (this.AR == null) {
-      this.AR = ColorStateList.valueOf(17170432);
+    paramContext = getContext().obtainStyledAttributes(paramAttributeSet, k.zh);
+    this.ie = paramContext.getDrawable(k.zi);
+    this.CG = paramContext.getColorStateList(k.zj);
+    if (this.CG == null) {
+      this.CG = ColorStateList.valueOf(17170432);
     }
-    this.AS = paramContext.getDimension(k.xv, 0.0F);
-    this.Bd = this.AS;
-    this.AU = paramContext.getDimension(k.xw, this.AS);
-    this.AX = paramContext.getColor(k.xy, -16777216);
-    this.AY = paramContext.getDimension(k.xx, 0.0F);
-    if (this.AY > 0.0F) {
-      this.AW += this.AY;
+    this.CH = paramContext.getDimension(k.zk, 0.0F);
+    this.CS = this.CH;
+    this.CJ = paramContext.getDimension(k.zl, this.CH);
+    this.CM = paramContext.getColor(k.zn, -16777216);
+    this.CN = paramContext.getDimension(k.zm, 0.0F);
+    if (this.CN > 0.0F) {
+      this.CL += this.CN;
     }
-    float f = paramContext.getDimension(k.xz, 0.0F);
+    float f = paramContext.getDimension(k.zo, 0.0F);
     if (f > 0.0F) {
-      this.AW = (f + this.AW);
+      this.CL = (f + this.CL);
     }
-    this.Ba = paramContext.getDimension(k.xA, 0.0F);
-    this.Bi = paramContext.getFloat(k.xB, 0.0F);
-    this.Bj = paramContext.getFloat(k.xC, 0.0F);
-    if (paramContext.hasValue(k.xD)) {
-      this.Bk = Integer.valueOf(paramContext.getColor(k.xD, 0));
+    this.CP = paramContext.getDimension(k.zp, 0.0F);
+    this.CX = paramContext.getFloat(k.zq, 0.0F);
+    this.CY = paramContext.getFloat(k.zr, 0.0F);
+    if (paramContext.hasValue(k.zs)) {
+      this.CZ = Integer.valueOf(paramContext.getColor(k.zs, 0));
     }
-    if (paramContext.hasValue(k.xG)) {
-      this.Bl = Integer.valueOf(paramContext.getInt(k.xG, 0));
+    if (paramContext.hasValue(k.zv)) {
+      this.Da = Integer.valueOf(paramContext.getInt(k.zv, 0));
     }
-    this.AT = paramContext.getFraction(k.xE, 1, 1, 0.0F);
-    this.AV = paramContext.getFraction(k.xF, 1, 1, this.AT);
+    this.CI = paramContext.getFraction(k.zt, 1, 1, 0.0F);
+    this.CK = paramContext.getFraction(k.zu, 1, 1, this.CI);
     paramContext.recycle();
-    this.AQ = new RectF();
-    this.nC = new Paint();
-    this.nC.setAntiAlias(true);
-    this.Bf = new s();
-    this.Bf.setCallback(this.Bm);
+    this.CF = new RectF();
+    this.pq = new Paint();
+    this.pq.setAntiAlias(true);
+    this.CU = new s();
+    this.CU.setCallback(this.Db);
     setWillNotDraw(false);
-    eL();
+    fb();
   }
   
-  private void eL()
+  private void fb()
   {
-    int i = this.AR.getColorForState(getDrawableState(), this.AR.getDefaultColor());
-    if (this.Bh > 0L) {
-      if (this.Bo != null)
+    int i = this.CG.getColorForState(getDrawableState(), this.CG.getDefaultColor());
+    if (this.CW > 0L) {
+      if (this.Dd != null)
       {
-        this.Bo.cancel();
-        this.Bo.setIntValues(new int[] { this.gc, i });
-        this.Bo.setEvaluator(AP);
-        this.Bo.setDuration(this.Bh);
-        this.Bo.addUpdateListener(this.Bn);
-        this.Bo.start();
+        this.Dd.cancel();
+        this.Dd.setIntValues(new int[] { this.hY, i });
+        this.Dd.setEvaluator(CE);
+        this.Dd.setDuration(this.CW);
+        this.Dd.addUpdateListener(this.Dc);
+        this.Dd.start();
       }
     }
-    while (i == this.gc) {
+    while (i == this.hY) {
       for (;;)
       {
         return;
-        this.Bo = new ValueAnimator();
+        this.Dd = new ValueAnimator();
       }
     }
-    this.gc = i;
+    this.hY = i;
     invalidate();
   }
   
-  private float eN()
+  private float fd()
   {
-    float f2 = this.AS;
+    float f2 = this.CH;
     float f1 = f2;
-    if (this.AS <= 0.0F)
+    if (this.CH <= 0.0F)
     {
       f1 = f2;
-      if (this.AT > 0.0F) {
-        f1 = Math.max(getMeasuredHeight(), getMeasuredWidth()) * this.AT;
+      if (this.CI > 0.0F) {
+        f1 = Math.max(getMeasuredHeight(), getMeasuredWidth()) * this.CI;
       }
     }
-    return f1 - this.AW;
+    return f1 - this.CL;
   }
   
-  private void s(boolean paramBoolean)
+  private void v(boolean paramBoolean)
   {
-    this.eS = paramBoolean;
-    if (this.Bf != null)
+    this.gH = paramBoolean;
+    if (this.CU != null)
     {
       if (paramBoolean) {
-        this.Bf.fq();
+        this.CU.fz();
       }
     }
     else {
       return;
     }
-    this.Bf.fr();
+    this.CU.fA();
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    eL();
+    fb();
   }
   
-  public final void eM()
+  public final void fc()
   {
     Drawable localDrawable1 = getContext().getDrawable(2130837507);
     int i;
-    if (localDrawable1 != this.gh)
+    if (localDrawable1 != this.ie)
     {
-      Drawable localDrawable2 = this.gh;
-      this.gh = localDrawable1;
+      Drawable localDrawable2 = this.ie;
+      this.ie = localDrawable1;
       if ((localDrawable1 == null) || (localDrawable2 == null) || (localDrawable2.getIntrinsicHeight() != localDrawable1.getIntrinsicHeight()) || (localDrawable2.getIntrinsicWidth() != localDrawable1.getIntrinsicWidth())) {
         break label81;
       }
@@ -204,7 +204,7 @@ public class CircledImageView
       if (i == 0) {
         break label86;
       }
-      this.gh.setBounds(localDrawable2.getBounds());
+      this.ie.setBounds(localDrawable2.getBounds());
     }
     for (;;)
     {
@@ -218,25 +218,25 @@ public class CircledImageView
     }
   }
   
-  public final void eO()
+  public final void fe()
   {
-    if (28.0F != this.AS)
+    if (28.0F != this.CH)
     {
-      this.AS = 28.0F;
+      this.CH = 28.0F;
       invalidate();
     }
   }
   
-  public final void eP()
+  public final void ff()
   {
-    this.AX = -1;
+    this.CM = -1;
   }
   
-  public final void eQ()
+  public final void fg()
   {
-    if (5.0F != this.AY)
+    if (5.0F != this.CN)
     {
-      this.AY = 5.0F;
+      this.CN = 5.0F;
       invalidate();
     }
   }
@@ -246,75 +246,75 @@ public class CircledImageView
     int i = getPaddingLeft();
     int j = getPaddingTop();
     float f1;
-    if (this.Be)
+    if (this.CT)
     {
-      float f2 = this.AU;
+      float f2 = this.CJ;
       f1 = f2;
-      if (this.AU <= 0.0F)
+      if (this.CJ <= 0.0F)
       {
         f1 = f2;
-        if (this.AV > 0.0F) {
-          f1 = Math.max(getMeasuredHeight(), getMeasuredWidth()) * this.AV;
+        if (this.CK > 0.0F) {
+          f1 = Math.max(getMeasuredHeight(), getMeasuredWidth()) * this.CK;
         }
       }
-      f1 -= this.AW;
-      if ((this.Ba > 0.0F) && (this.Bb > 0.0F))
+      f1 -= this.CL;
+      if ((this.CP > 0.0F) && (this.CQ > 0.0F))
       {
-        this.AQ.set(i, j, getWidth() - getPaddingRight(), getHeight() - getPaddingBottom());
-        f2 = this.AY + f1 + this.Ba * this.Bb;
-        this.nC.setColor(-16777216);
-        this.nC.setAlpha(Math.round(this.nC.getAlpha() * getAlpha()));
-        this.nC.setStyle(Paint.Style.FILL);
-        Paint localPaint = this.nC;
-        float f3 = this.AQ.centerX();
-        float f4 = this.AQ.centerY();
+        this.CF.set(i, j, getWidth() - getPaddingRight(), getHeight() - getPaddingBottom());
+        f2 = this.CN + f1 + this.CP * this.CQ;
+        this.pq.setColor(-16777216);
+        this.pq.setAlpha(Math.round(this.pq.getAlpha() * getAlpha()));
+        this.pq.setStyle(Paint.Style.FILL);
+        Paint localPaint = this.pq;
+        float f3 = this.CF.centerX();
+        float f4 = this.CF.centerY();
         Shader.TileMode localTileMode = Shader.TileMode.MIRROR;
         localPaint.setShader(new RadialGradient(f3, f4, f2, new int[] { -16777216, 0 }, new float[] { 0.6F, 1.0F }, localTileMode));
-        paramCanvas.drawCircle(this.AQ.centerX(), this.AQ.centerY(), f2, this.nC);
-        this.nC.setShader(null);
+        paramCanvas.drawCircle(this.CF.centerX(), this.CF.centerY(), f2, this.pq);
+        this.pq.setShader(null);
       }
-      if (this.AY > 0.0F)
+      if (this.CN > 0.0F)
       {
-        this.AQ.set(i, j, getWidth() - getPaddingRight(), getHeight() - getPaddingBottom());
-        this.AQ.set(this.AQ.centerX() - f1, this.AQ.centerY() - f1, this.AQ.centerX() + f1, this.AQ.centerY() + f1);
-        this.nC.setColor(this.AX);
-        this.nC.setAlpha(Math.round(this.nC.getAlpha() * getAlpha()));
-        this.nC.setStyle(Paint.Style.STROKE);
-        this.nC.setStrokeWidth(this.AY);
-        if (!this.eS) {
+        this.CF.set(i, j, getWidth() - getPaddingRight(), getHeight() - getPaddingBottom());
+        this.CF.set(this.CF.centerX() - f1, this.CF.centerY() - f1, this.CF.centerX() + f1, this.CF.centerY() + f1);
+        this.pq.setColor(this.CM);
+        this.pq.setAlpha(Math.round(this.pq.getAlpha() * getAlpha()));
+        this.pq.setStyle(Paint.Style.STROKE);
+        this.pq.setStrokeWidth(this.CN);
+        if (!this.gH) {
           break label661;
         }
-        this.AQ.roundOut(this.Bg);
-        this.Bf.setBounds(this.Bg);
-        this.Bf.aW(this.AX);
-        this.Bf.x(this.AY);
-        this.Bf.draw(paramCanvas);
+        this.CF.roundOut(this.CV);
+        this.CU.setBounds(this.CV);
+        this.CU.bq(this.CM);
+        this.CU.y(this.CN);
+        this.CU.draw(paramCanvas);
       }
     }
     for (;;)
     {
-      if (!this.Bc)
+      if (!this.CR)
       {
-        this.AQ.set(i, j, getWidth() - getPaddingRight(), getHeight() - getPaddingBottom());
-        this.nC.setColor(this.gc);
-        this.nC.setAlpha(Math.round(this.nC.getAlpha() * getAlpha()));
-        this.nC.setStyle(Paint.Style.FILL);
-        paramCanvas.drawCircle(this.AQ.centerX(), this.AQ.centerY(), f1, this.nC);
+        this.CF.set(i, j, getWidth() - getPaddingRight(), getHeight() - getPaddingBottom());
+        this.pq.setColor(this.hY);
+        this.pq.setAlpha(Math.round(this.pq.getAlpha() * getAlpha()));
+        this.pq.setStyle(Paint.Style.FILL);
+        paramCanvas.drawCircle(this.CF.centerX(), this.CF.centerY(), f1, this.pq);
       }
-      if (this.gh != null)
+      if (this.ie != null)
       {
-        this.gh.setAlpha(Math.round(getAlpha() * 255.0F));
-        if (this.Bk != null) {
-          this.gh.setTint(this.Bk.intValue());
+        this.ie.setAlpha(Math.round(getAlpha() * 255.0F));
+        if (this.CZ != null) {
+          this.ie.setTint(this.CZ.intValue());
         }
-        this.gh.draw(paramCanvas);
+        this.ie.draw(paramCanvas);
       }
       super.onDraw(paramCanvas);
       return;
-      f1 = eN();
+      f1 = fd();
       break;
       label661:
-      paramCanvas.drawArc(this.AQ, -90.0F, this.AZ * 360.0F, false, this.nC);
+      paramCanvas.drawArc(this.CF, -90.0F, this.CO * 360.0F, false, this.pq);
     }
   }
   
@@ -325,16 +325,16 @@ public class CircledImageView
     int k;
     int i;
     float f1;
-    if (this.gh != null)
+    if (this.ie != null)
     {
-      j = this.gh.getIntrinsicWidth();
-      m = this.gh.getIntrinsicHeight();
+      j = this.ie.getIntrinsicWidth();
+      m = this.ie.getIntrinsicHeight();
       k = getMeasuredWidth();
       i = getMeasuredHeight();
-      if (this.Bi <= 0.0F) {
+      if (this.CX <= 0.0F) {
         break label190;
       }
-      f2 = this.Bi;
+      f2 = this.CX;
       if (j == 0.0F) {
         break label196;
       }
@@ -352,9 +352,9 @@ public class CircledImageView
       f1 = Math.min(1.0F, Math.min(f1, f2));
       j = Math.round(j * f1);
       m = Math.round(f1 * m);
-      k = (k - j) / 2 + Math.round(this.Bj * j);
+      k = (k - j) / 2 + Math.round(this.CY * j);
       i = (i - m) / 2;
-      this.gh.setBounds(k, i, j + k, m + i);
+      this.ie.setBounds(k, i, j + k, m + i);
       super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
       return;
       f2 = 1.0F;
@@ -366,7 +366,7 @@ public class CircledImageView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    float f2 = eN() + this.AY + this.Ba * this.Bb;
+    float f2 = fd() + this.CN + this.CP * this.CQ;
     float f1 = f2 * 2.0F;
     f2 = 2.0F * f2;
     int j = View.MeasureSpec.getMode(paramInt1);
@@ -379,8 +379,8 @@ public class CircledImageView
         break label160;
       }
       label70:
-      if (this.Bl != null) {}
-      switch (this.Bl.intValue())
+      if (this.Da != null) {}
+      switch (this.Da.intValue())
       {
       default: 
         i = paramInt2;
@@ -425,29 +425,29 @@ public class CircledImageView
   {
     super.onVisibilityChanged(paramView, paramInt);
     if (paramInt != 0) {
-      s(false);
+      v(false);
     }
-    while (!this.eS) {
+    while (!this.gH) {
       return;
     }
-    s(true);
+    v(true);
   }
   
   public void setPressed(boolean paramBoolean)
   {
     super.setPressed(paramBoolean);
-    if (paramBoolean != this.Be)
+    if (paramBoolean != this.CT)
     {
-      this.Be = paramBoolean;
+      this.CT = paramBoolean;
       invalidate();
     }
   }
   
   public final void setProgress(float paramFloat)
   {
-    if (paramFloat != this.AZ)
+    if (paramFloat != this.CO)
     {
-      this.AZ = paramFloat;
+      this.CO = paramFloat;
       invalidate();
     }
   }

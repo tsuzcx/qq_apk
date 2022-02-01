@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class hf
   extends b
 {
-  public hf.a cwn;
-  public hf.b cwo;
+  public a aaE;
   
   public hf()
   {
@@ -16,12 +15,17 @@ public final class hf
   
   private hf(byte paramByte)
   {
-    AppMethodBeat.i(135758);
-    this.cwn = new hf.a();
-    this.cwo = new hf.b();
-    this.ymq = false;
+    AppMethodBeat.i(203654);
+    this.aaE = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(135758);
+    AppMethodBeat.o(203654);
+  }
+  
+  public static final class a
+  {
+    public String Imu;
+    public int aBh;
   }
 }
 

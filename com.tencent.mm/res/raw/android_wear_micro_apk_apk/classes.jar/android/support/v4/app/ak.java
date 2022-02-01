@@ -1,260 +1,227 @@
 package android.support.v4.app;
 
-import android.support.v4.content.e;
-import android.support.v4.content.f;
-import android.util.Log;
-import java.io.FileDescriptor;
-import java.io.PrintWriter;
-import java.lang.reflect.Modifier;
+import android.graphics.Rect;
+import android.support.v4.view.ad;
+import android.support.v4.view.r;
+import android.view.View;
+import android.view.ViewGroup;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-final class ak
-  extends ai
+public abstract class ak
 {
-  static boolean DEBUG = false;
-  final String aM;
-  r aZ;
-  boolean bj;
-  final android.support.v4.b.r<al> eh;
-  final android.support.v4.b.r<al> ei;
-  boolean ej;
-  
-  public final boolean aq()
+  protected static void a(View paramView, Rect paramRect)
   {
-    int j = this.eh.size();
-    int i = 0;
-    boolean bool2 = false;
-    if (i < j)
-    {
-      al localal = (al)this.eh.valueAt(i);
-      if ((localal.ej) && (!localal.eo)) {}
-      for (boolean bool1 = true;; bool1 = false)
-      {
-        bool2 |= bool1;
-        i += 1;
-        break;
-      }
-    }
-    return bool2;
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    paramRect.set(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
   }
   
-  final void as()
+  protected static void a(List<View> paramList, View paramView)
   {
-    if (DEBUG) {
-      Log.v("LoaderManager", "Starting in " + this);
-    }
-    Object localObject;
-    if (this.ej)
-    {
-      localObject = new RuntimeException("here");
-      ((RuntimeException)localObject).fillInStackTrace();
-      Log.w("LoaderManager", "Called doStart when already started: " + this, (Throwable)localObject);
-      return;
-    }
-    this.ej = true;
-    int i = this.eh.size() - 1;
-    label89:
-    if (i >= 0)
-    {
-      localObject = (al)this.eh.valueAt(i);
-      if ((!((al)localObject).bj) || (!((al)localObject).eq)) {
-        break label131;
-      }
-      ((al)localObject).ej = true;
-    }
+    int k = paramList.size();
+    if (a(paramList, paramView, k)) {}
     for (;;)
     {
-      i -= 1;
-      break label89;
-      break;
-      label131:
-      if (!((al)localObject).ej)
+      return;
+      paramList.add(paramView);
+      int i = k;
+      while (i < paramList.size())
       {
-        ((al)localObject).ej = true;
-        if (DEBUG) {
-          Log.v("LoaderManager", "  Starting: " + localObject);
-        }
-        if ((((al)localObject).em == null) && (((al)localObject).el != null)) {
-          ((al)localObject).em = ((al)localObject).el.ar();
-        }
-        if (((al)localObject).em != null)
+        paramView = (View)paramList.get(i);
+        if ((paramView instanceof ViewGroup))
         {
-          if ((((al)localObject).em.getClass().isMemberClass()) && (!Modifier.isStatic(((al)localObject).em.getClass().getModifiers()))) {
-            throw new IllegalArgumentException("Object returned from onCreateLoader must not be a non-static inner member class: " + ((al)localObject).em);
-          }
-          if (!((al)localObject).es)
+          paramView = (ViewGroup)paramView;
+          int m = paramView.getChildCount();
+          int j = 0;
+          while (j < m)
           {
-            ((al)localObject).em.a(((al)localObject).de, (f)localObject);
-            ((al)localObject).em.a((e)localObject);
-            ((al)localObject).es = true;
+            View localView = paramView.getChildAt(j);
+            if (!a(paramList, localView, k)) {
+              paramList.add(localView);
+            }
+            j += 1;
           }
-          ((al)localObject).em.startLoading();
         }
+        i += 1;
       }
     }
   }
   
-  final void at()
+  protected static boolean a(List paramList)
   {
-    if (DEBUG) {
-      Log.v("LoaderManager", "Stopping in " + this);
-    }
-    if (!this.ej)
-    {
-      RuntimeException localRuntimeException = new RuntimeException("here");
-      localRuntimeException.fillInStackTrace();
-      Log.w("LoaderManager", "Called doStop when not started: " + this, localRuntimeException);
-      return;
-    }
-    int i = this.eh.size() - 1;
-    while (i >= 0)
-    {
-      ((al)this.eh.valueAt(i)).stop();
-      i -= 1;
-    }
-    this.ej = false;
+    return (paramList == null) || (paramList.isEmpty());
   }
   
-  final void au()
+  private static boolean a(List<View> paramList, View paramView, int paramInt)
   {
-    if (DEBUG) {
-      Log.v("LoaderManager", "Retaining in " + this);
-    }
-    Object localObject;
-    if (!this.ej)
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
     {
-      localObject = new RuntimeException("here");
-      ((RuntimeException)localObject).fillInStackTrace();
-      Log.w("LoaderManager", "Called doRetain when not started: " + this, (Throwable)localObject);
+      boolean bool1 = bool2;
+      if (i < paramInt)
+      {
+        if (paramList.get(i) == paramView) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  static ArrayList<String> b(ArrayList<View> paramArrayList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int j = paramArrayList.size();
+    int i = 0;
+    while (i < j)
+    {
+      View localView = (View)paramArrayList.get(i);
+      localArrayList.add(r.r(localView));
+      r.a(localView, null);
+      i += 1;
+    }
+    return localArrayList;
+  }
+  
+  public abstract Object a(Object paramObject1, Object paramObject2, Object paramObject3);
+  
+  final void a(View paramView, final ArrayList<View> paramArrayList1, final ArrayList<View> paramArrayList2, final ArrayList<String> paramArrayList, Map<String, String> paramMap)
+  {
+    final int k = paramArrayList2.size();
+    final ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    if (i < k)
+    {
+      Object localObject = (View)paramArrayList1.get(i);
+      String str = r.r((View)localObject);
+      localArrayList.add(str);
+      int j;
+      if (str != null)
+      {
+        r.a((View)localObject, null);
+        localObject = (String)paramMap.get(str);
+        j = 0;
+      }
+      for (;;)
+      {
+        if (j < k)
+        {
+          if (((String)localObject).equals(paramArrayList.get(j))) {
+            r.a((View)paramArrayList2.get(j), str);
+          }
+        }
+        else
+        {
+          i += 1;
+          break;
+        }
+        j += 1;
+      }
+    }
+    az.a(paramView, new Runnable()
+    {
+      public final void run()
+      {
+        int i = 0;
+        while (i < k)
+        {
+          r.a((View)paramArrayList2.get(i), (String)paramArrayList.get(i));
+          r.a((View)paramArrayList1.get(i), (String)localArrayList.get(i));
+          i += 1;
+        }
+      }
+    });
+  }
+  
+  public abstract void a(ViewGroup paramViewGroup, Object paramObject);
+  
+  public abstract void a(Object paramObject, Rect paramRect);
+  
+  public abstract void a(Object paramObject, View paramView);
+  
+  public abstract void a(Object paramObject, View paramView, ArrayList<View> paramArrayList);
+  
+  public abstract void a(Object paramObject1, Object paramObject2, ArrayList<View> paramArrayList1, Object paramObject3, ArrayList<View> paramArrayList2, Object paramObject4, ArrayList<View> paramArrayList3);
+  
+  public abstract void a(Object paramObject, ArrayList<View> paramArrayList);
+  
+  public abstract void a(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2);
+  
+  final void a(ArrayList<View> paramArrayList, View paramView)
+  {
+    if (paramView.getVisibility() == 0)
+    {
+      if (!(paramView instanceof ViewGroup)) {
+        break label64;
+      }
+      paramView = (ViewGroup)paramView;
+      if (!ad.a(paramView)) {
+        break label33;
+      }
+      paramArrayList.add(paramView);
     }
     for (;;)
     {
       return;
-      this.bj = true;
-      this.ej = false;
-      int i = this.eh.size() - 1;
-      while (i >= 0)
+      label33:
+      int j = paramView.getChildCount();
+      int i = 0;
+      while (i < j)
       {
-        localObject = (al)this.eh.valueAt(i);
-        if (DEBUG) {
-          Log.v("LoaderManager", "  Retaining: " + localObject);
-        }
-        ((al)localObject).bj = true;
-        ((al)localObject).eq = ((al)localObject).ej;
-        ((al)localObject).ej = false;
-        ((al)localObject).el = null;
-        i -= 1;
-      }
-    }
-  }
-  
-  final void av()
-  {
-    int i = this.eh.size() - 1;
-    while (i >= 0)
-    {
-      ((al)this.eh.valueAt(i)).er = true;
-      i -= 1;
-    }
-  }
-  
-  final void aw()
-  {
-    int i = this.eh.size() - 1;
-    while (i >= 0)
-    {
-      al localal = (al)this.eh.valueAt(i);
-      if ((localal.ej) && (localal.er))
-      {
-        localal.er = false;
-        if ((localal.en) && (!localal.bj)) {
-          localal.a(localal.em, localal.ep);
-        }
-      }
-      i -= 1;
-    }
-  }
-  
-  final void ax()
-  {
-    if (!this.bj)
-    {
-      if (DEBUG) {
-        Log.v("LoaderManager", "Destroying Active in " + this);
-      }
-      i = this.eh.size() - 1;
-      while (i >= 0)
-      {
-        ((al)this.eh.valueAt(i)).destroy();
-        i -= 1;
-      }
-      this.eh.clear();
-    }
-    if (DEBUG) {
-      Log.v("LoaderManager", "Destroying Inactive in " + this);
-    }
-    int i = this.ei.size() - 1;
-    while (i >= 0)
-    {
-      ((al)this.ei.valueAt(i)).destroy();
-      i -= 1;
-    }
-    this.ei.clear();
-    this.aZ = null;
-  }
-  
-  public final void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
-  {
-    int j = 0;
-    int i;
-    al localal;
-    if (this.eh.size() > 0)
-    {
-      paramPrintWriter.print(paramString);
-      paramPrintWriter.println("Active Loaders:");
-      paramArrayOfString = paramString + "    ";
-      i = 0;
-      while (i < this.eh.size())
-      {
-        localal = (al)this.eh.valueAt(i);
-        paramPrintWriter.print(paramString);
-        paramPrintWriter.print("  #");
-        paramPrintWriter.print(this.eh.keyAt(i));
-        paramPrintWriter.print(": ");
-        paramPrintWriter.println(localal.toString());
-        localal.a(paramArrayOfString, paramFileDescriptor, paramPrintWriter);
+        a(paramArrayList, paramView.getChildAt(i));
         i += 1;
       }
     }
-    if (this.ei.size() > 0)
+    label64:
+    paramArrayList.add(paramView);
+  }
+  
+  final void a(Map<String, View> paramMap, View paramView)
+  {
+    if (paramView.getVisibility() == 0)
     {
-      paramPrintWriter.print(paramString);
-      paramPrintWriter.println("Inactive Loaders:");
-      paramArrayOfString = paramString + "    ";
-      i = j;
-      while (i < this.ei.size())
+      String str = r.r(paramView);
+      if (str != null) {
+        paramMap.put(str, paramView);
+      }
+      if ((paramView instanceof ViewGroup))
       {
-        localal = (al)this.ei.valueAt(i);
-        paramPrintWriter.print(paramString);
-        paramPrintWriter.print("  #");
-        paramPrintWriter.print(this.ei.keyAt(i));
-        paramPrintWriter.print(": ");
-        paramPrintWriter.println(localal.toString());
-        localal.a(paramArrayOfString, paramFileDescriptor, paramPrintWriter);
-        i += 1;
+        paramView = (ViewGroup)paramView;
+        int j = paramView.getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          a(paramMap, paramView.getChildAt(i));
+          i += 1;
+        }
       }
     }
   }
   
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    localStringBuilder.append("LoaderManager{");
-    localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
-    localStringBuilder.append(" in ");
-    android.support.v4.b.d.a(this.aZ, localStringBuilder);
-    localStringBuilder.append("}}");
-    return localStringBuilder.toString();
-  }
+  public abstract Object b(Object paramObject1, Object paramObject2, Object paramObject3);
+  
+  public abstract void b(Object paramObject, View paramView);
+  
+  public abstract void b(Object paramObject, View paramView, ArrayList<View> paramArrayList);
+  
+  public abstract void b(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2);
+  
+  public abstract void c(Object paramObject, View paramView);
+  
+  public abstract boolean e(Object paramObject);
+  
+  public abstract Object f(Object paramObject);
+  
+  public abstract Object g(Object paramObject);
 }
 
 

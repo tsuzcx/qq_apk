@@ -1,18 +1,13 @@
 package com.tencent.mm.plugin.appbrand.widget.b;
 
-import android.content.Context;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.graphics.Bitmap;
+import android.widget.ImageView.ScaleType;
 
-public final class d
-  extends b
+public abstract interface d
 {
-  public d(Context paramContext)
-  {
-    super(paramContext);
-    AppMethodBeat.i(134252);
-    setContentView(2130968752);
-    AppMethodBeat.o(134252);
-  }
+  public abstract void setImageBitmap(Bitmap paramBitmap);
+  
+  public abstract void setScaleType(ImageView.ScaleType paramScaleType);
 }
 
 

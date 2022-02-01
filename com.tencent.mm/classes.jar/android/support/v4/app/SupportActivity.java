@@ -7,18 +7,19 @@ import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LifecycleRegistry;
 import android.arch.lifecycle.ReportFragment;
 import android.os.Bundle;
-import android.support.v4.e.m;
+import android.support.v4.e.n;
 import android.support.v4.view.e;
 import android.support.v4.view.e.a;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 
 public class SupportActivity
-  extends Activity
+  extends HellActivity
   implements LifecycleOwner, e.a
 {
-  private m<Class<? extends a>, a> mExtraDataMap = new m();
+  private n<Class<? extends a>, a> mExtraDataMap = new n();
   private LifecycleRegistry mLifecycleRegistry = new LifecycleRegistry(this);
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -49,7 +50,7 @@ public class SupportActivity
     return this.mLifecycleRegistry;
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     ReportFragment.injectIfNeededIn(this);

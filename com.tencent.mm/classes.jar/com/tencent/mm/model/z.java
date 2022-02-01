@@ -1,69 +1,92 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.k;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bq.a;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.al.f.b;
+import com.tencent.mm.al.f.c;
+import com.tencent.mm.g.a.cp;
+import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.io.ByteArrayInputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
 public final class z
+  implements f
 {
-  private static String aj(String paramString1, String paramString2)
+  public final f.b b(f.a parama)
   {
-    AppMethodBeat.i(77808);
-    String str = "";
-    if (paramString1 != null) {
-      str = "" + paramString1.replace("@", "");
-    }
-    paramString1 = str;
-    if (paramString2 != null) {
-      paramString1 = str + paramString2;
-    }
-    AppMethodBeat.o(77808);
-    return paramString1;
-  }
-  
-  public static y ak(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(77809);
-    if ((paramString1 == null) || (paramString1.length() <= 0))
+    AppMethodBeat.i(150155);
+    parama = parama.fTo;
+    if ((parama == null) || (parama.Cxz == null))
     {
-      AppMethodBeat.o(77809);
+      ad.f("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension failed, invalid cmdAM");
+      AppMethodBeat.o(150155);
       return null;
     }
-    paramString1 = ((j)g.E(j.class)).YI().TL(paramString1);
-    if ((paramString1 == null) || (!paramString1.dyI()))
+    ad.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension start");
+    parama = com.tencent.mm.platformtools.z.a(parama.Cxz);
+    Object localObject = DocumentBuilderFactory.newInstance();
+    for (;;)
     {
-      AppMethodBeat.o(77809);
-      return null;
+      int i;
+      try
+      {
+        parama = ((DocumentBuilderFactory)localObject).newDocumentBuilder().parse(new InputSource(new ByteArrayInputStream(parama.getBytes("utf-8"))));
+        parama.normalize();
+        parama = parama.getDocumentElement().getElementsByTagName("deletepackage");
+        if ((parama != null) && (parama.getLength() == 1))
+        {
+          parama = parama.item(0).getChildNodes();
+          int j = parama.getLength();
+          i = 0;
+          if (i < j)
+          {
+            localObject = parama.item(i);
+            if ((localObject == null) || (((Node)localObject).getNodeName() == null) || (!((Node)localObject).getNodeName().equals("pack"))) {
+              break label298;
+            }
+            localObject = ((Node)localObject).getAttributes();
+            if (localObject == null) {
+              break label298;
+            }
+            localObject = ((NamedNodeMap)localObject).getNamedItem("type");
+            if (localObject == null) {
+              break label298;
+            }
+            int k = bt.getInt(((Node)localObject).getNodeValue(), 0);
+            localObject = new cp();
+            ((cp)localObject).deO.deP = k;
+            a.ESL.l((b)localObject);
+            break label298;
+          }
+        }
+        ad.i("MicroMsg.DeletePackageMsgExtension", "[oneliang]DeletePackageMsgExtension end");
+        AppMethodBeat.o(150155);
+        return null;
+      }
+      catch (Exception parama)
+      {
+        ad.e("MicroMsg.DeletePackageMsgExtension", "exception:%s", new Object[] { bt.m(parama) });
+        AppMethodBeat.o(150155);
+        return null;
+      }
+      label298:
+      i += 1;
     }
-    paramString1 = new y("@domain.android", paramString1.name, aj(paramString1.yOV.asA(""), paramString2), paramString1.yOV.asA(""), paramString1.isEnable(), true);
-    AppMethodBeat.o(77809);
-    return paramString1;
   }
   
-  public static y oS(String paramString)
-  {
-    AppMethodBeat.i(77806);
-    paramString = new y("@black.android", null, paramString, null, true, true);
-    AppMethodBeat.o(77806);
-    return paramString;
-  }
-  
-  public static y oT(String paramString)
-  {
-    AppMethodBeat.i(77807);
-    bq localbq = ((j)g.E(j.class)).YI().TL("@t.qq.com");
-    if (localbq == null)
-    {
-      AppMethodBeat.o(77807);
-      return null;
-    }
-    paramString = new y("@t.qq.com", null, paramString, null, localbq.isEnable(), localbq.dyH());
-    AppMethodBeat.o(77807);
-    return paramString;
-  }
+  public final void b(f.c paramc) {}
 }
 
 

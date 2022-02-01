@@ -1,47 +1,36 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.widget.textview.a;
+import com.tencent.mm.ui.widget.textview.a.e;
 
 final class u$d
-  extends u.b
+  implements a.e
 {
-  ImageView jXx;
-  ImageView jXy;
-  TextView jYx;
-  ImageView jYy;
+  private a GqS;
   
-  public final void fj(View paramView)
+  u$d(a parama)
   {
-    AppMethodBeat.i(33073);
-    if (this.jXr != null)
-    {
-      AppMethodBeat.o(33073);
-      return;
-    }
-    ViewStub localViewStub = (ViewStub)paramView.findViewById(2131821883);
-    if (localViewStub == null)
-    {
-      AppMethodBeat.o(33073);
-      return;
-    }
-    localViewStub.inflate();
-    this.jXr = paramView.findViewById(2131821913);
-    this.jXx = ((ImageView)this.jXr.findViewById(2131821438));
-    this.gui = ((TextView)this.jXr.findViewById(2131820680));
-    this.jYx = ((TextView)this.jXr.findViewById(2131821915));
-    this.jXy = ((ImageView)this.jXr.findViewById(2131821895));
-    this.jYy = ((ImageView)this.jXr.findViewById(2131821916));
-    this.jXG = ((ImageView)this.jXr.findViewById(2131821917));
-    AppMethodBeat.o(33073);
+    this.GqS = parama;
+  }
+  
+  public final void faO()
+  {
+    AppMethodBeat.i(37033);
+    ad.d("OnTouchOutside", "touchOutside");
+    this.GqS.fgF();
+    this.GqS.HNY = true;
+    this.GqS.fgI();
+    this.GqS.HNX = true;
+    this.GqS.fgJ();
+    this.GqS.fgL();
+    AppMethodBeat.o(37033);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.u.d
  * JD-Core Version:    0.7.0.1
  */

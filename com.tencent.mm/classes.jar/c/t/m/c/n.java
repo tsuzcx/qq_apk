@@ -12,52 +12,67 @@ import java.util.concurrent.TimeUnit;
 public class n
   implements Thread.UncaughtExceptionHandler
 {
-  private static final String a;
-  private static n d;
-  private Context b;
-  private Thread.UncaughtExceptionHandler c;
-  private volatile boolean e = false;
-  private CountDownLatch f;
+  public static final String a;
+  public static n b;
+  public Context c;
+  public Thread.UncaughtExceptionHandler d;
+  public volatile boolean e;
+  public CountDownLatch f;
   
   static
   {
-    AppMethodBeat.i(136394);
+    AppMethodBeat.i(39961);
     a = TencentLocation.class.getPackage().getName();
-    d = null;
-    AppMethodBeat.o(136394);
+    b = null;
+    AppMethodBeat.o(39961);
   }
   
-  private n(Context paramContext)
+  public n(Context paramContext)
   {
-    this.b = paramContext;
+    AppMethodBeat.i(39959);
+    this.e = false;
+    this.c = paramContext;
+    AppMethodBeat.o(39959);
   }
   
   public static n a(Context paramContext)
   {
-    AppMethodBeat.i(136389);
-    if (d == null) {}
+    AppMethodBeat.i(39960);
+    if (b == null) {}
     try
     {
-      if (d == null) {
-        d = new n(paramContext);
+      if (b == null) {
+        b = new n(paramContext);
       }
-      paramContext = d;
-      AppMethodBeat.o(136389);
+      paramContext = b;
+      AppMethodBeat.o(39960);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(136389);
+      AppMethodBeat.o(39960);
     }
   }
   
-  private boolean a(Throwable paramThrowable)
+  public void a()
   {
-    AppMethodBeat.i(136391);
+    AppMethodBeat.i(39963);
+    if (!this.e)
+    {
+      this.d = Thread.getDefaultUncaughtExceptionHandler();
+      Thread.setDefaultUncaughtExceptionHandler(b);
+      this.e = true;
+    }
+    AppMethodBeat.o(39963);
+  }
+  
+  public final boolean a(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(39964);
     Throwable localThrowable = paramThrowable;
     if (paramThrowable == null)
     {
-      AppMethodBeat.o(136391);
+      AppMethodBeat.o(39964);
       return false;
     }
     for (;;)
@@ -73,19 +88,19 @@ public class n
       {
         if ("TL".equals(paramThrowable[i].getFileName()))
         {
-          AppMethodBeat.o(136391);
+          AppMethodBeat.o(39964);
           return true;
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(136391);
+    AppMethodBeat.o(39964);
     return false;
   }
   
-  private String b(Throwable paramThrowable)
+  public final String b(Throwable paramThrowable)
   {
-    AppMethodBeat.i(136393);
+    AppMethodBeat.i(39965);
     StringBuffer localStringBuffer = new StringBuffer();
     try
     {
@@ -104,57 +119,68 @@ public class n
       break label74;
     }
     paramThrowable = localStringBuffer.toString();
-    AppMethodBeat.o(136393);
+    AppMethodBeat.o(39965);
     return paramThrowable;
-  }
-  
-  public void a()
-  {
-    AppMethodBeat.i(136392);
-    if (!this.e)
-    {
-      this.c = Thread.getDefaultUncaughtExceptionHandler();
-      Thread.setDefaultUncaughtExceptionHandler(d);
-      this.e = true;
-    }
-    AppMethodBeat.o(136392);
   }
   
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    AppMethodBeat.i(136390);
-    if ((a(paramThrowable)) && (this.b != null))
+    AppMethodBeat.i(39962);
+    Object localObject;
+    if ((a(paramThrowable)) && (this.c != null))
     {
-      String str = b(paramThrowable);
-      if ((!str.contains("onLocationChanged")) && (!str.contains("onStatusUpdate")))
+      localObject = b(paramThrowable);
+      if ((!((String)localObject).contains("onLocationChanged")) && (!((String)localObject).contains("onStatusUpdate")))
       {
-        q.a(this.b, "__bad_dex_info__", q.b);
-        q.a(this.b, "__loc_sdk_run_duration__", Long.valueOf(System.currentTimeMillis() - q.c));
-        paramThrowable = "EXP:" + q.b + "," + str;
+        q.b(this.c, "__bad_dex_info__", q.d);
+        q.b(this.c, "__loc_sdk_run_duration__", Long.valueOf(System.currentTimeMillis() - q.e));
+        paramThrowable = "EXP:" + q.d + "," + (String)localObject;
         paramThread = paramThrowable;
         if (paramThrowable.contains("\n")) {
           paramThread = paramThrowable.replaceAll("\n", "$");
         }
         this.f = new CountDownLatch(1);
-        new n.a(this, paramThread).start();
+        new a(paramThread).start();
       }
     }
     try
     {
       this.f.await(3000L, TimeUnit.MILLISECONDS);
       label163:
-      TencentLocationManager.getInstance(this.b).removeUpdates(null);
-      AppMethodBeat.o(136390);
+      TencentLocationManager.getInstance(this.c).removeUpdates(null);
+      AppMethodBeat.o(39962);
       return;
-      if (this.c != null) {
-        this.c.uncaughtException(paramThread, paramThrowable);
+      localObject = this.d;
+      if (localObject != null) {
+        ((Thread.UncaughtExceptionHandler)localObject).uncaughtException(paramThread, paramThrowable);
       }
-      AppMethodBeat.o(136390);
+      AppMethodBeat.o(39962);
       return;
     }
     catch (InterruptedException paramThread)
     {
       break label163;
+    }
+  }
+  
+  public class a
+    extends Thread
+  {
+    public String a;
+    
+    public a(String paramString)
+    {
+      AppMethodBeat.i(39957);
+      this.a = paramString;
+      AppMethodBeat.o(39957);
+    }
+    
+    public void run()
+    {
+      AppMethodBeat.i(39958);
+      e.a(n.a(n.this)).a(this.a);
+      n.b(n.this).countDown();
+      AppMethodBeat.o(39958);
     }
   }
 }

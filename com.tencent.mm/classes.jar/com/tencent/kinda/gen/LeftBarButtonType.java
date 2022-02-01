@@ -6,12 +6,12 @@ public enum LeftBarButtonType
 {
   static
   {
-    AppMethodBeat.i(141431);
+    AppMethodBeat.i(135950);
     BACK = new LeftBarButtonType("BACK", 0);
     CANCEL = new LeftBarButtonType("CANCEL", 1);
     NONE = new LeftBarButtonType("NONE", 2);
     $VALUES = new LeftBarButtonType[] { BACK, CANCEL, NONE };
-    AppMethodBeat.o(141431);
+    AppMethodBeat.o(135950);
   }
   
   private LeftBarButtonType() {}

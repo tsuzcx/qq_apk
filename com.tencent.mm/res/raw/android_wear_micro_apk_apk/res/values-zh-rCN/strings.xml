@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="a">启用</string>
-    <string name="b">您必须先启用 Google Play 服务，然后才能运行%1$s。</string>
-    <string name="c">启用 Google Play 服务</string>
-    <string name="d">安装</string>
-    <string name="e">您的设备没有安装 Google Play 服务，因此无法运行%1$s。</string>
-    <string name="f">获取 Google Play 服务</string>
-    <string name="g">Google Play服务出错</string>
-    <string name="h">%1$s无法访问 Google Play 服务，请重试。</string>
-    <string name="i">您的设备不支持 Google Play 服务，因此无法运行%1$s。</string>
-    <string name="j">更新</string>
-    <string name="k">您必须先更新 Google Play 服务，然后才能运行%1$s。</string>
-    <string name="l">更新 Google Play 服务</string>
-    <string name="m">Google Play 服务当前正在更新，因此您无法运行%1$s。</string>
-    <string name="n">必须使用新版 Google Play 服务。该服务很快就会自行更新。</string>
-    <string name="o">在手机上打开</string>
-    <string name="p">登录</string>
-    <string name="q">使用 Google 帐号登录</string>
-    <string name="r">999+</string>
-    <string name="t">退出</string>
+    <string name="common_google_play_services_enable_button">启用</string>
+    <string name="common_google_play_services_enable_text">您必须先启用 Google Play 服务，然后才能运行%1$s。</string>
+    <string name="common_google_play_services_enable_title">启用 Google Play 服务</string>
+    <string name="common_google_play_services_install_button">安装</string>
+    <string name="common_google_play_services_install_text">您的设备没有安装 Google Play 服务，因此无法运行%1$s。</string>
+    <string name="common_google_play_services_install_title">获取 Google Play 服务</string>
+    <string name="common_google_play_services_notification_ticker">Google Play服务出错</string>
+    <string name="common_google_play_services_unknown_issue">%1$s无法访问 Google Play 服务，请重试。</string>
+    <string name="common_google_play_services_unsupported_text">您的设备不支持 Google Play 服务，因此无法运行%1$s。</string>
+    <string name="common_google_play_services_update_button">更新</string>
+    <string name="common_google_play_services_update_text">您必须先更新 Google Play 服务，然后才能运行%1$s。</string>
+    <string name="common_google_play_services_update_title">更新 Google Play 服务</string>
+    <string name="common_google_play_services_updating_text">Google Play 服务当前正在更新，因此您无法运行%1$s。</string>
+    <string name="common_google_play_services_wear_update_text">必须使用新版 Google Play 服务。该服务很快就会自行更新。</string>
+    <string name="common_open_on_phone">在手机上打开</string>
+    <string name="common_signin_button_text">登录</string>
+    <string name="common_signin_button_text_long">使用 Google 帐号登录</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="dismiss_overlay_button_label">退出</string>
 </resources>

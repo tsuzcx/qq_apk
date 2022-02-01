@@ -17,7 +17,7 @@ public class HolderFragment
   implements ViewModelStoreOwner
 {
   public static final String HOLDER_TAG = "android.arch.lifecycle.state.StateProviderHolderFragment";
-  private static final HolderFragmentManager cn = new HolderFragmentManager();
+  private static final HolderFragmentManager cq = new HolderFragmentManager();
   private ViewModelStore mViewModelStore = new ViewModelStore();
   
   public HolderFragment()
@@ -27,7 +27,7 @@ public class HolderFragment
   
   public static HolderFragment holderFragmentFor(Fragment paramFragment)
   {
-    HolderFragmentManager localHolderFragmentManager = cn;
+    HolderFragmentManager localHolderFragmentManager = cq;
     g localg = paramFragment.getChildFragmentManager();
     Object localObject = HolderFragmentManager.a(localg);
     if (localObject != null) {}
@@ -35,18 +35,18 @@ public class HolderFragment
     do
     {
       return localObject;
-      localHolderFragment = (HolderFragment)localHolderFragmentManager.cp.get(paramFragment);
+      localHolderFragment = (HolderFragment)localHolderFragmentManager.ct.get(paramFragment);
       localObject = localHolderFragment;
     } while (localHolderFragment != null);
-    paramFragment.getFragmentManager().registerFragmentLifecycleCallbacks(localHolderFragmentManager.ct, false);
+    paramFragment.getFragmentManager().registerFragmentLifecycleCallbacks(localHolderFragmentManager.cw, false);
     localObject = HolderFragmentManager.b(localg);
-    localHolderFragmentManager.cp.put(paramFragment, localObject);
+    localHolderFragmentManager.ct.put(paramFragment, localObject);
     return localObject;
   }
   
   public static HolderFragment holderFragmentFor(FragmentActivity paramFragmentActivity)
   {
-    HolderFragmentManager localHolderFragmentManager = cn;
+    HolderFragmentManager localHolderFragmentManager = cq;
     g localg = paramFragmentActivity.getSupportFragmentManager();
     Object localObject = HolderFragmentManager.a(localg);
     if (localObject != null) {}
@@ -54,16 +54,16 @@ public class HolderFragment
     do
     {
       return localObject;
-      localHolderFragment = (HolderFragment)localHolderFragmentManager.co.get(paramFragmentActivity);
+      localHolderFragment = (HolderFragment)localHolderFragmentManager.cs.get(paramFragmentActivity);
       localObject = localHolderFragment;
     } while (localHolderFragment != null);
-    if (!localHolderFragmentManager.cs)
+    if (!localHolderFragmentManager.cv)
     {
-      localHolderFragmentManager.cs = true;
-      paramFragmentActivity.getApplication().registerActivityLifecycleCallbacks(localHolderFragmentManager.cq);
+      localHolderFragmentManager.cv = true;
+      paramFragmentActivity.getApplication().registerActivityLifecycleCallbacks(localHolderFragmentManager.cu);
     }
     localObject = HolderFragmentManager.b(localg);
-    localHolderFragmentManager.co.put(paramFragmentActivity, localObject);
+    localHolderFragmentManager.cs.put(paramFragmentActivity, localObject);
     return localObject;
   }
   
@@ -75,15 +75,15 @@ public class HolderFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = cn;
+    paramBundle = cq;
     Fragment localFragment = getParentFragment();
     if (localFragment != null)
     {
-      paramBundle.cp.remove(localFragment);
-      localFragment.getFragmentManager().unregisterFragmentLifecycleCallbacks(paramBundle.ct);
+      paramBundle.ct.remove(localFragment);
+      localFragment.getFragmentManager().unregisterFragmentLifecycleCallbacks(paramBundle.cw);
       return;
     }
-    paramBundle.co.remove(getActivity());
+    paramBundle.cs.remove(getActivity());
   }
   
   public void onDestroy()
@@ -99,9 +99,9 @@ public class HolderFragment
   
   static class HolderFragmentManager
   {
-    Map<Activity, HolderFragment> co = new HashMap();
-    Map<Fragment, HolderFragment> cp = new HashMap();
-    Application.ActivityLifecycleCallbacks cq = new EmptyActivityLifecycleCallbacks()
+    Map<Activity, HolderFragment> cs = new HashMap();
+    Map<Fragment, HolderFragment> ct = new HashMap();
+    Application.ActivityLifecycleCallbacks cu = new EmptyActivityLifecycleCallbacks()
     {
       public void onActivityDestroyed(Activity paramAnonymousActivity)
       {
@@ -110,8 +110,8 @@ public class HolderFragment
         }
       }
     };
-    boolean cs = false;
-    g.b ct = new g.b()
+    boolean cv = false;
+    g.b cw = new g.b()
     {
       public void onFragmentDestroyed(g paramAnonymousg, Fragment paramAnonymousFragment)
       {

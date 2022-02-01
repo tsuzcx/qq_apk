@@ -12,9 +12,23 @@ class FacebookLiteLoginMethodHandler
   
   static
   {
-    AppMethodBeat.i(96766);
-    CREATOR = new FacebookLiteLoginMethodHandler.1();
-    AppMethodBeat.o(96766);
+    AppMethodBeat.i(7790);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final FacebookLiteLoginMethodHandler createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(7785);
+        paramAnonymousParcel = new FacebookLiteLoginMethodHandler(paramAnonymousParcel);
+        AppMethodBeat.o(7785);
+        return paramAnonymousParcel;
+      }
+      
+      public final FacebookLiteLoginMethodHandler[] newArray(int paramAnonymousInt)
+      {
+        return new FacebookLiteLoginMethodHandler[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(7790);
   }
   
   FacebookLiteLoginMethodHandler(Parcel paramParcel)
@@ -39,25 +53,25 @@ class FacebookLiteLoginMethodHandler
   
   boolean tryAuthorize(LoginClient.Request paramRequest)
   {
-    AppMethodBeat.i(96764);
+    AppMethodBeat.i(7788);
     String str = LoginClient.getE2E();
     paramRequest = NativeProtocol.createFacebookLiteIntent(this.loginClient.getActivity(), paramRequest.getApplicationId(), paramRequest.getPermissions(), str, paramRequest.isRerequest(), paramRequest.hasPublishPermission(), paramRequest.getDefaultAudience(), getClientState(paramRequest.getAuthId()), paramRequest.getAuthType());
     addLoggingExtra("e2e", str);
     boolean bool = tryIntent(paramRequest, LoginClient.getLoginRequestCode());
-    AppMethodBeat.o(96764);
+    AppMethodBeat.o(7788);
     return bool;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(96765);
+    AppMethodBeat.i(7789);
     super.writeToParcel(paramParcel, paramInt);
-    AppMethodBeat.o(96765);
+    AppMethodBeat.o(7789);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.login.FacebookLiteLoginMethodHandler
  * JD-Core Version:    0.7.0.1
  */

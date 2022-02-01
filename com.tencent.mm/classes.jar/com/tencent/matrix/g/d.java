@@ -10,10 +10,9 @@ import java.util.Date;
 
 public final class d
 {
-  private static char[] bUg = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
-  private static final ThreadLocal<MessageDigest> bUh = new ThreadLocal()
+  private static final ThreadLocal<MessageDigest> cFN = new ThreadLocal()
   {
-    private static MessageDigest zK()
+    private static MessageDigest Ir()
     {
       try
       {
@@ -26,54 +25,148 @@ public final class d
       }
     }
   };
+  private static final ThreadLocal<MessageDigest> cFO = new ThreadLocal()
+  {
+    private static MessageDigest Ir()
+    {
+      try
+      {
+        MessageDigest localMessageDigest = MessageDigest.getInstance("SHA-256");
+        return localMessageDigest;
+      }
+      catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+      {
+        throw new RuntimeException("Initialize SHA256-DIGEST failed.", localNoSuchAlgorithmException);
+      }
+    }
+  };
+  private static char[] hexDigits;
   private static String processName = null;
   
-  public static String aI(Context paramContext)
+  static
+  {
+    hexDigits = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+  }
+  
+  public static void closeQuietly(Closeable paramCloseable)
+  {
+    if (paramCloseable != null) {}
+    try
+    {
+      paramCloseable.close();
+      return;
+    }
+    catch (IOException paramCloseable) {}
+  }
+  
+  public static String du(String paramString)
+  {
+    paramString = paramString.getBytes();
+    paramString = ((MessageDigest)cFN.get()).digest(paramString);
+    int j = paramString.length;
+    StringBuffer localStringBuffer = new StringBuffer(j * 2);
+    int i = 0;
+    while (i < j + 0)
+    {
+      int k = paramString[i];
+      char c1 = hexDigits[((k & 0xF0) >> 4)];
+      char c2 = hexDigits[(k & 0xF)];
+      localStringBuffer.append(c1);
+      localStringBuffer.append(c2);
+      i += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static long dv(String paramString)
+  {
+    try
+    {
+      if (paramString.length() <= 0) {
+        return 0L;
+      }
+      long l = Long.decode(paramString).longValue();
+      return l;
+    }
+    catch (NumberFormatException paramString)
+    {
+      c.printErrStackTrace("Matrix.MatrixUtil", paramString, "", new Object[0]);
+    }
+    return 0L;
+  }
+  
+  public static String formatTime(String paramString, long paramLong)
+  {
+    return new SimpleDateFormat(paramString).format(new Date(paramLong));
+  }
+  
+  public static String g(Exception paramException)
+  {
+    StackTraceElement[] arrayOfStackTraceElement = paramException.getStackTrace();
+    if (arrayOfStackTraceElement == null) {
+      return "";
+    }
+    paramException = new StringBuilder(paramException.toString());
+    int i = 2;
+    while (i < arrayOfStackTraceElement.length)
+    {
+      paramException.append('[');
+      paramException.append(arrayOfStackTraceElement[i].getClassName());
+      paramException.append(':');
+      paramException.append(arrayOfStackTraceElement[i].getMethodName());
+      paramException.append("(" + arrayOfStackTraceElement[i].getLineNumber() + ")]");
+      paramException.append("\n");
+      i += 1;
+    }
+    return paramException.toString();
+  }
+  
+  public static String getProcessName(Context paramContext)
   {
     if (processName != null) {
       return processName;
     }
-    paramContext = aJ(paramContext);
+    paramContext = getProcessNameInternal(paramContext);
     processName = paramContext;
     return paramContext;
   }
   
   /* Error */
-  private static String aJ(Context paramContext)
+  private static String getProcessNameInternal(Context paramContext)
   {
     // Byte code:
-    //   0: invokestatic 54	android/os/Process:myPid	()I
+    //   0: invokestatic 182	android/os/Process:myPid	()I
     //   3: istore_1
     //   4: aload_0
     //   5: ifnull +7 -> 12
     //   8: iload_1
     //   9: ifgt +6 -> 15
-    //   12: ldc 56
+    //   12: ldc 111
     //   14: areturn
     //   15: aload_0
-    //   16: ldc 58
-    //   18: invokevirtual 64	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   21: checkcast 66	android/app/ActivityManager
+    //   16: ldc 184
+    //   18: invokevirtual 190	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   21: checkcast 192	android/app/ActivityManager
     //   24: astore_0
     //   25: aload_0
     //   26: ifnull +88 -> 114
     //   29: aload_0
-    //   30: invokevirtual 70	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
+    //   30: invokevirtual 196	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
     //   33: astore_0
     //   34: aload_0
     //   35: ifnull +79 -> 114
     //   38: aload_0
-    //   39: invokeinterface 76 1 0
+    //   39: invokeinterface 202 1 0
     //   44: astore 4
     //   46: aload 4
-    //   48: invokeinterface 82 1 0
+    //   48: invokeinterface 208 1 0
     //   53: ifeq +33 -> 86
     //   56: aload 4
-    //   58: invokeinterface 86 1 0
-    //   63: checkcast 88	android/app/ActivityManager$RunningAppProcessInfo
+    //   58: invokeinterface 211 1 0
+    //   63: checkcast 213	android/app/ActivityManager$RunningAppProcessInfo
     //   66: astore_0
     //   67: aload_0
-    //   68: getfield 92	android/app/ActivityManager$RunningAppProcessInfo:pid	I
+    //   68: getfield 217	android/app/ActivityManager$RunningAppProcessInfo:pid	I
     //   71: istore_2
     //   72: iload_2
     //   73: iload_1
@@ -81,19 +174,19 @@ public final class d
     //   77: aload_0
     //   78: ifnull +36 -> 114
     //   81: aload_0
-    //   82: getfield 93	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
+    //   82: getfield 218	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
     //   85: areturn
     //   86: aconst_null
     //   87: astore_0
     //   88: goto -11 -> 77
     //   91: astore_0
-    //   92: new 95	java/lang/StringBuilder
+    //   92: new 143	java/lang/StringBuilder
     //   95: dup
-    //   96: ldc 97
-    //   98: invokespecial 100	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   96: ldc 220
+    //   98: invokespecial 145	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   101: aload_0
-    //   102: invokevirtual 104	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   105: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: invokevirtual 223	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   105: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   108: pop
     //   109: aconst_null
     //   110: astore_0
@@ -101,24 +194,24 @@ public final class d
     //   114: sipush 128
     //   117: newarray byte
     //   119: astore 5
-    //   121: new 110	java/io/FileInputStream
+    //   121: new 225	java/io/FileInputStream
     //   124: dup
-    //   125: new 95	java/lang/StringBuilder
+    //   125: new 143	java/lang/StringBuilder
     //   128: dup
-    //   129: ldc 112
-    //   131: invokespecial 100	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   129: ldc 227
+    //   131: invokespecial 145	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   134: iload_1
-    //   135: invokevirtual 115	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   138: ldc 117
-    //   140: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: invokevirtual 120	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   146: invokespecial 121	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   135: invokevirtual 167	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   138: ldc 229
+    //   140: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   143: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   146: invokespecial 230	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   149: astore 4
     //   151: aload 4
     //   153: astore_0
     //   154: aload 4
     //   156: aload 5
-    //   158: invokevirtual 125	java/io/FileInputStream:read	([B)I
+    //   158: invokevirtual 234	java/io/FileInputStream:read	([B)I
     //   161: istore_3
     //   162: iload_3
     //   163: ifle +53 -> 216
@@ -127,22 +220,22 @@ public final class d
     //   168: goto +147 -> 315
     //   171: aload 4
     //   173: astore_0
-    //   174: new 127	java/lang/String
+    //   174: new 60	java/lang/String
     //   177: dup
     //   178: aload 5
     //   180: iconst_0
     //   181: iload_2
-    //   182: ldc 129
-    //   184: invokestatic 135	java/nio/charset/Charset:forName	(Ljava/lang/String;)Ljava/nio/charset/Charset;
-    //   187: invokespecial 138	java/lang/String:<init>	([BIILjava/nio/charset/Charset;)V
+    //   182: ldc 236
+    //   184: invokestatic 242	java/nio/charset/Charset:forName	(Ljava/lang/String;)Ljava/nio/charset/Charset;
+    //   187: invokespecial 245	java/lang/String:<init>	([BIILjava/nio/charset/Charset;)V
     //   190: astore 5
     //   192: aload 4
-    //   194: invokevirtual 141	java/io/FileInputStream:close	()V
+    //   194: invokevirtual 246	java/io/FileInputStream:close	()V
     //   197: aload 5
     //   199: areturn
     //   200: astore_0
     //   201: aload_0
-    //   202: invokevirtual 104	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   202: invokevirtual 223	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   205: pop
     //   206: aload 5
     //   208: areturn
@@ -152,12 +245,12 @@ public final class d
     //   212: istore_1
     //   213: goto +102 -> 315
     //   216: aload 4
-    //   218: invokevirtual 141	java/io/FileInputStream:close	()V
-    //   221: ldc 56
+    //   218: invokevirtual 246	java/io/FileInputStream:close	()V
+    //   221: ldc 111
     //   223: areturn
     //   224: astore_0
     //   225: aload_0
-    //   226: invokevirtual 104	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   226: invokevirtual 223	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   229: pop
     //   230: goto -9 -> 221
     //   233: astore 5
@@ -165,22 +258,22 @@ public final class d
     //   236: astore 4
     //   238: aload 4
     //   240: astore_0
-    //   241: new 95	java/lang/StringBuilder
+    //   241: new 143	java/lang/StringBuilder
     //   244: dup
-    //   245: ldc 97
-    //   247: invokespecial 100	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   245: ldc 220
+    //   247: invokespecial 145	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   250: aload 5
-    //   252: invokevirtual 104	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   255: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   252: invokevirtual 223	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   255: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   258: pop
     //   259: aload 4
     //   261: ifnull -40 -> 221
     //   264: aload 4
-    //   266: invokevirtual 141	java/io/FileInputStream:close	()V
+    //   266: invokevirtual 246	java/io/FileInputStream:close	()V
     //   269: goto -48 -> 221
     //   272: astore_0
     //   273: aload_0
-    //   274: invokevirtual 104	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   274: invokevirtual 223	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   277: pop
     //   278: goto -57 -> 221
     //   281: astore 4
@@ -189,12 +282,12 @@ public final class d
     //   285: aload_0
     //   286: ifnull +7 -> 293
     //   289: aload_0
-    //   290: invokevirtual 141	java/io/FileInputStream:close	()V
+    //   290: invokevirtual 246	java/io/FileInputStream:close	()V
     //   293: aload 4
     //   295: athrow
     //   296: astore_0
     //   297: aload_0
-    //   298: invokevirtual 104	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   298: invokevirtual 223	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   301: pop
     //   302: goto -9 -> 293
     //   305: astore 4
@@ -223,8 +316,8 @@ public final class d
     //   281	13	4	localObject2	Object
     //   305	1	4	localObject3	Object
     //   119	88	5	localObject4	Object
-    //   233	18	5	localException1	java.lang.Exception
-    //   310	13	5	localException2	java.lang.Exception
+    //   233	18	5	localException1	Exception
+    //   310	13	5	localException2	Exception
     // Exception table:
     //   from	to	target	type
     //   38	46	91	java/lang/Exception
@@ -240,41 +333,6 @@ public final class d
     //   241	259	305	finally
     //   154	162	310	java/lang/Exception
     //   174	192	310	java/lang/Exception
-  }
-  
-  public static String cE(String paramString)
-  {
-    paramString = paramString.getBytes();
-    paramString = ((MessageDigest)bUh.get()).digest(paramString);
-    int j = paramString.length;
-    StringBuffer localStringBuffer = new StringBuffer(j * 2);
-    int i = 0;
-    while (i < j + 0)
-    {
-      int k = paramString[i];
-      char c1 = bUg[((k & 0xF0) >> 4)];
-      char c2 = bUg[(k & 0xF)];
-      localStringBuffer.append(c1);
-      localStringBuffer.append(c2);
-      i += 1;
-    }
-    return localStringBuffer.toString();
-  }
-  
-  public static void closeQuietly(Closeable paramCloseable)
-  {
-    if (paramCloseable != null) {}
-    try
-    {
-      paramCloseable.close();
-      return;
-    }
-    catch (IOException paramCloseable) {}
-  }
-  
-  public static String formatTime(String paramString, long paramLong)
-  {
-    return new SimpleDateFormat(paramString).format(new Date(paramLong));
   }
 }
 

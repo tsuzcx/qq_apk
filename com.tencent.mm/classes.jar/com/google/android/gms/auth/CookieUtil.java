@@ -8,20 +8,20 @@ public final class CookieUtil
 {
   public static String getCookieUrl(String paramString, Boolean paramBoolean)
   {
-    AppMethodBeat.i(76936);
+    AppMethodBeat.i(10595);
     Preconditions.checkNotEmpty(paramString);
     if (zzd(paramBoolean)) {}
     for (paramBoolean = "https";; paramBoolean = "http")
     {
       paramString = String.valueOf(paramBoolean).length() + 3 + String.valueOf(paramString).length() + paramBoolean + "://" + paramString;
-      AppMethodBeat.o(76936);
+      AppMethodBeat.o(10595);
       return paramString;
     }
   }
   
   public static String getCookieValue(String paramString1, String paramString2, String paramString3, String paramString4, Boolean paramBoolean1, Boolean paramBoolean2, Long paramLong)
   {
-    AppMethodBeat.i(76937);
+    AppMethodBeat.i(10596);
     paramString1 = new StringBuilder(paramString1).append('=');
     if (!TextUtils.isEmpty(paramString2)) {
       paramString1.append(paramString2);
@@ -42,25 +42,25 @@ public final class CookieUtil
       paramString1.append(";Max-Age=").append(paramLong);
     }
     paramString1 = paramString1.toString();
-    AppMethodBeat.o(76937);
+    AppMethodBeat.o(10596);
     return paramString1;
   }
   
   private static boolean zzd(Boolean paramBoolean)
   {
-    AppMethodBeat.i(76935);
+    AppMethodBeat.i(10594);
     if ((paramBoolean != null) && (paramBoolean.booleanValue()))
     {
-      AppMethodBeat.o(76935);
+      AppMethodBeat.o(10594);
       return true;
     }
-    AppMethodBeat.o(76935);
+    AppMethodBeat.o(10594);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.auth.CookieUtil
  * JD-Core Version:    0.7.0.1
  */

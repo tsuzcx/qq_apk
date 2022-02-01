@@ -15,22 +15,22 @@ final class AppBrandProcessProxyUI$1
   
   protected final void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(73124);
+    AppMethodBeat.i(45385);
     if (paramBundle == null)
     {
-      this.hvY.c(null);
-      AppMethodBeat.o(73124);
+      this.jux.a(null);
+      AppMethodBeat.o(45385);
       return;
     }
     paramBundle.setClassLoader(AppBrandProcessProxyUI.class.getClassLoader());
     paramBundle = (AppBrandProxyUIProcessTask.ProcessResult)paramBundle.getParcelable("key_result_parcel");
-    this.hvY.c(paramBundle);
-    AppMethodBeat.o(73124);
+    this.jux.a(paramBundle);
+    AppMethodBeat.o(45385);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandProcessProxyUI.1
  * JD-Core Version:    0.7.0.1
  */

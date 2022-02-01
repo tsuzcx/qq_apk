@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/lp" android:background="@drawable/a0v" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="bottom" android:orientation="vertical" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ye"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/ux">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/jp" android:layout_width="@dimen/uz" android:layout_height="@dimen/uz" android:layout_marginLeft="@dimen/uy" android:scaleType="fitCenter" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/v2" android:textColor="@color/w_" android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/uy" />
-            <TextView android:textSize="@dimen/v1" android:textColor="@color/hi" android:id="@id/oq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/uy" android:layout_marginTop="2.0dip" />
-        </LinearLayout>
-        <LinearLayout android:gravity="right" android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <RadioButton android:textSize="0.0dip" android:id="@id/ka" android:background="@drawable/a0c" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/uy" android:button="@null" android:text="" android:drawablePadding="0.0dip" />
-        </LinearLayout>
-    </LinearLayout>
-    <ImageView android:layout_gravity="bottom" android:id="@id/pm" android:layout_marginLeft="@dimen/uy" style="@style/he" />
+    <TextView android:textColor="@color/rk" android:id="@android:id/title" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:singleLine="true" style="@style/o3" />
 </LinearLayout>

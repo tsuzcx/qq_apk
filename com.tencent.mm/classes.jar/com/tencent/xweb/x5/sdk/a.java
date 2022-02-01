@@ -7,8 +7,6 @@ import java.util.Map;
 
 public abstract interface a
 {
-  public abstract void a(Context paramContext, d.a parama);
-  
   public abstract void a(Context paramContext, String paramString, ValueCallback<Boolean> paramValueCallback);
   
   public abstract void a(h paramh);
@@ -19,6 +17,8 @@ public abstract interface a
   
   public abstract void closeFileReader(Context paramContext);
   
+  public abstract void disableAutoCreateX5Webview();
+  
   public abstract void forceSysWebView();
   
   public abstract boolean getTBSInstalling();
@@ -26,8 +26,6 @@ public abstract interface a
   public abstract int getTbsVersion(Context paramContext);
   
   public abstract void initTbsSettings(Map<String, Object> paramMap);
-  
-  public abstract boolean isTbsCoreInited();
   
   public abstract void reset(Context paramContext);
   
@@ -37,7 +35,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.x5.sdk.a
  * JD-Core Version:    0.7.0.1
  */

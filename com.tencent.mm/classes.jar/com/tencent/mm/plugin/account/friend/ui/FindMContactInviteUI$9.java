@@ -14,21 +14,21 @@ final class FindMContactInviteUI$9
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(108546);
-    if (FindMContactInviteUI.b(this.gzf) != null)
+    AppMethodBeat.i(131207);
+    if (FindMContactInviteUI.b(this.imo) != null)
     {
-      paramView = FindMContactInviteUI.b(this.gzf);
-      if (paramView.gxo != null) {
-        paramView.gxo.onTouchEvent(paramMotionEvent);
+      paramView = FindMContactInviteUI.b(this.imo);
+      if (paramView.ikl != null) {
+        paramView.ikl.onTouchEvent(paramMotionEvent);
       }
     }
-    AppMethodBeat.o(108546);
+    AppMethodBeat.o(131207);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.FindMContactInviteUI.9
  * JD-Core Version:    0.7.0.1
  */

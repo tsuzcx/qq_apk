@@ -5,49 +5,49 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static a AnF = null;
+  private static a Hij = null;
   
   public static void a(a parama)
   {
-    AnF = parama;
-  }
-  
-  public static int bW(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(112573);
-    if (AnF != null)
-    {
-      paramInt = AnF.bW(paramString, paramInt);
-      AppMethodBeat.o(112573);
-      return paramInt;
-    }
-    AppMethodBeat.o(112573);
-    return paramInt;
+    Hij = parama;
   }
   
   public static CharSequence c(Context paramContext, CharSequence paramCharSequence, float paramFloat)
   {
-    AppMethodBeat.i(112572);
-    if (AnF != null)
+    AppMethodBeat.i(159256);
+    if (Hij != null)
     {
-      paramContext = AnF.c(paramContext, paramCharSequence, paramFloat);
-      AppMethodBeat.o(112572);
+      paramContext = Hij.c(paramContext, paramCharSequence, paramFloat);
+      AppMethodBeat.o(159256);
       return paramContext;
     }
-    AppMethodBeat.o(112572);
+    AppMethodBeat.o(159256);
     return paramCharSequence;
   }
   
-  public static CharSequence h(Context paramContext, CharSequence paramCharSequence, int paramInt)
+  public static int cJ(String paramString, int paramInt)
   {
-    AppMethodBeat.i(112571);
-    if (AnF != null)
+    AppMethodBeat.i(159257);
+    if (Hij != null)
     {
-      paramContext = AnF.h(paramCharSequence, paramInt);
-      AppMethodBeat.o(112571);
+      paramInt = Hij.cJ(paramString, paramInt);
+      AppMethodBeat.o(159257);
+      return paramInt;
+    }
+    AppMethodBeat.o(159257);
+    return paramInt;
+  }
+  
+  public static CharSequence g(Context paramContext, CharSequence paramCharSequence, int paramInt)
+  {
+    AppMethodBeat.i(159255);
+    if (Hij != null)
+    {
+      paramContext = Hij.i(paramCharSequence, paramInt);
+      AppMethodBeat.o(159255);
       return paramContext;
     }
-    AppMethodBeat.o(112571);
+    AppMethodBeat.o(159255);
     return paramCharSequence;
   }
 }

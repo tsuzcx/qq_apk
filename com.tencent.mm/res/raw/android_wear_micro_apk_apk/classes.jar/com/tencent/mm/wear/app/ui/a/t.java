@@ -6,10 +6,10 @@ import android.widget.TextView;
 public final class t
   extends b
 {
-  public TextView afL;
-  public ImageView ahr;
-  public TextView ahs;
-  public ImageView aht;
+  public TextView ajn;
+  public ImageView akT;
+  public TextView akU;
+  public ImageView akV;
   
   public t(s params)
   {

@@ -5,25 +5,25 @@ import com.tencent.mm.plugin.zero.b.a;
 
 public final class g
 {
-  public static e Nq()
+  public static e Zd()
   {
-    AppMethodBeat.i(114642);
-    e locale = ((a)com.tencent.mm.kernel.g.E(a.class)).Nq();
-    AppMethodBeat.o(114642);
+    AppMethodBeat.i(133655);
+    e locale = ((a)com.tencent.mm.kernel.g.ab(a.class)).Zd();
+    AppMethodBeat.o(133655);
     return locale;
   }
   
-  public static c Nr()
+  public static c Ze()
   {
-    AppMethodBeat.i(114643);
-    c localc = ((a)com.tencent.mm.kernel.g.E(a.class)).Nr();
-    AppMethodBeat.o(114643);
+    AppMethodBeat.i(133656);
+    c localc = ((a)com.tencent.mm.kernel.g.ab(a.class)).Ze();
+    AppMethodBeat.o(133656);
     return localc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.m.g
  * JD-Core Version:    0.7.0.1
  */

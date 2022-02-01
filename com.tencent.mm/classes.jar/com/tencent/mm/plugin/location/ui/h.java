@@ -1,264 +1,230 @@
 package com.tencent.mm.plugin.location.ui;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Looper;
-import android.view.View;
+import android.os.Message;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.location.model.l;
-import com.tencent.mm.plugin.location.model.p;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.MMHorList;
+import com.tencent.mm.model.v;
+import com.tencent.mm.plugin.location.model.n;
+import com.tencent.mm.plugin.location.model.r;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class h
 {
+  TextView UA;
   Context context;
-  private String eis;
-  private ak mHandler;
-  private boolean mIsInit;
-  MMHorList ocZ;
-  h.a oda;
-  private int odb;
-  h.c odc;
+  private String fvg;
+  ap mHandler;
+  boolean sSc;
+  private ViewGroup sSf;
+  ArrayList<String> sSg;
+  private final int sSh;
+  private final int sSi;
+  private final int sSj;
+  private final int sSk;
+  private final int sSl;
+  private final int sSm;
+  private final int sSn;
+  private final int sSo;
+  private final int sSp;
+  private final int sSq;
+  private final int sSr;
+  boolean sSs;
+  private int sSt;
+  int sSu;
+  int sSv;
+  int sSw;
+  boolean sSx;
+  String sSy;
   
-  public h(Context paramContext, View paramView, String paramString)
+  public h(Context paramContext, ViewGroup paramViewGroup, String paramString)
   {
-    AppMethodBeat.i(113504);
-    this.mIsInit = false;
-    this.eis = "";
-    this.mHandler = new ak(Looper.getMainLooper());
-    this.odc = null;
-    this.context = paramContext;
-    this.ocZ = ((MMHorList)paramView);
-    this.eis = paramString;
-    bLJ();
-    AppMethodBeat.o(113504);
-  }
-  
-  private void G(ArrayList<h.b> paramArrayList)
-  {
-    AppMethodBeat.i(113506);
-    Iterator localIterator = paramArrayList.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(55923);
+    this.sSh = 100;
+    this.sSi = 1;
+    this.sSj = 2;
+    this.sSk = 3;
+    this.sSl = 4;
+    this.sSm = 5;
+    this.sSn = 6;
+    this.sSo = 7;
+    this.sSp = 8;
+    this.sSq = 9;
+    this.sSr = 10;
+    this.sSs = true;
+    this.sSt = Color.parseColor("#44FEBB");
+    this.sSu = Color.parseColor("#FFFFFF");
+    this.sSv = Color.parseColor("#E54646");
+    this.sSw = Color.parseColor("#FFC90C");
+    this.sSc = false;
+    this.sSx = false;
+    this.sSy = "";
+    this.mHandler = new ap(Looper.getMainLooper())
     {
-      h.b localb = (h.b)localIterator.next();
-      if (localb.odg) {
-        localb.bLM();
-      }
-    }
-    this.odb = a.fromDPToPix(this.context, 60);
-    this.ocZ.setOverScrollEnabled(true);
-    this.ocZ.setItemWidth(this.odb);
-    this.ocZ.setCenterInParent(true);
-    this.ocZ.setOnItemClickListener(new h.1(this));
-    this.oda = new h.a(this, paramArrayList);
-    this.ocZ.setAdapter(this.oda);
-    AppMethodBeat.o(113506);
-  }
-  
-  private void Sc(String paramString)
-  {
-    AppMethodBeat.i(113507);
-    ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberEnter, usernmae=%s", new Object[] { paramString });
-    if (this.oda.Sg(paramString))
-    {
-      AppMethodBeat.o(113507);
-      return;
-    }
-    paramString = new h.b(this, paramString);
-    h.a locala = this.oda;
-    locala.odf.add(paramString);
-    locala.notifyDataSetChanged();
-    this.ocZ.invalidate();
-    AppMethodBeat.o(113507);
-  }
-  
-  private void Sd(String paramString)
-  {
-    AppMethodBeat.i(113508);
-    ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberExit, username=%s", new Object[] { paramString });
-    h.a locala;
-    int i;
-    if (this.oda.Sg(paramString))
-    {
-      locala = this.oda;
-      i = 0;
-      if (i >= locala.odf.size()) {
-        break label108;
-      }
-      if (!((h.b)locala.odf.get(i)).username.equals(paramString)) {
-        break label101;
-      }
-    }
-    for (;;)
-    {
-      if (i != -1)
+      public final void handleMessage(Message paramAnonymousMessage)
       {
-        locala.odf.remove(i);
-        locala.notifyDataSetChanged();
-      }
-      this.ocZ.invalidate();
-      AppMethodBeat.o(113508);
-      return;
-      label101:
-      i += 1;
-      break;
-      label108:
-      i = -1;
-    }
-  }
-  
-  private void bLJ()
-  {
-    AppMethodBeat.i(113505);
-    Object localObject = l.bLs().uN(this.eis);
-    ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "initAvatarList, memebers.size=%d", new Object[] { Integer.valueOf(((List)localObject).size()) });
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      String str = (String)((Iterator)localObject).next();
-      if (!bo.isNullOrNil(str))
-      {
-        localArrayList1.add(new h.b(this, str));
-        localArrayList2.add(str);
-      }
-    }
-    G(localArrayList1);
-    H(localArrayList2);
-    this.ocZ.invalidate();
-    this.oda.notifyDataSetChanged();
-    AppMethodBeat.o(113505);
-  }
-  
-  public final void H(ArrayList<String> paramArrayList)
-  {
-    AppMethodBeat.i(113511);
-    ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "onRefreshMemberList, members.size=%d", new Object[] { Integer.valueOf(paramArrayList.size()) });
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList1 = new ArrayList();
-    Object localObject1 = this.oda.bLL();
-    Object localObject2 = paramArrayList.iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      String str = (String)((Iterator)localObject2).next();
-      if (((ArrayList)localObject1).indexOf(str) == -1) {
-        localArrayList2.add(str);
-      }
-    }
-    localObject1 = ((ArrayList)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (String)((Iterator)localObject1).next();
-      if (paramArrayList.indexOf(localObject2) == -1) {
-        localArrayList1.add(localObject2);
-      }
-    }
-    ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "onRefreshMemberList, newMember.size=%d, removeMember.size=%d", new Object[] { Integer.valueOf(localArrayList2.size()), Integer.valueOf(localArrayList1.size()) });
-    if (localArrayList2.size() > 0)
-    {
-      paramArrayList = localArrayList2.iterator();
-      while (paramArrayList.hasNext()) {
-        Sc((String)paramArrayList.next());
-      }
-    }
-    if (localArrayList1.size() > 0)
-    {
-      paramArrayList = localArrayList1.iterator();
-      while (paramArrayList.hasNext()) {
-        Sd((String)paramArrayList.next());
-      }
-    }
-    AppMethodBeat.o(113511);
-  }
-  
-  public final void Se(String paramString)
-  {
-    int k = 0;
-    AppMethodBeat.i(113509);
-    ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberTalk, username=%s", new Object[] { paramString });
-    int i;
-    if (this.oda.Sg(paramString))
-    {
-      this.oda.Sf(paramString).bLM();
-      this.oda.notifyDataSetChanged();
-      this.ocZ.invalidate();
-      if ((this.ocZ.getIsTouching()) || (bo.isNullOrNil(paramString)))
-      {
-        AppMethodBeat.o(113509);
-        return;
-      }
-      h.a locala = this.oda;
-      i = 0;
-      if (i >= locala.odf.size()) {
-        break label243;
-      }
-      if (!((h.b)locala.odf.get(i)).username.equals(paramString)) {
-        break label202;
-      }
-    }
-    label172:
-    label202:
-    label209:
-    label238:
-    label243:
-    for (int j = i;; j = -1)
-    {
-      ab.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker, index=%d", new Object[] { Integer.valueOf(j) });
-      int m;
-      if (j != -1)
-      {
-        m = j * this.odb;
-        i = this.ocZ.getCurrentPosition();
-        if (m >= i) {
-          break label209;
-        }
-      }
-      for (;;)
-      {
-        if (j == 0) {
-          i = k;
+        AppMethodBeat.i(55922);
+        super.handleMessage(paramAnonymousMessage);
+        switch (paramAnonymousMessage.what)
+        {
         }
         for (;;)
         {
-          this.mHandler.post(new h.2(this, i));
-          AppMethodBeat.o(113509);
+          AppMethodBeat.o(55922);
           return;
-          i += 1;
-          break;
-          if (m <= i + this.odb * 3) {
-            break label238;
+          h.this.UA.setText(h.this.sSy);
+          AppMethodBeat.o(55922);
+          return;
+          ad.d("MicroMsg.ShareHeaderMsgMgr", "update member num, isMyselfTalking=%b, isOtherTalking=%b", new Object[] { Boolean.valueOf(h.this.sSc), Boolean.valueOf(h.this.sSx) });
+          if ((!h.this.sSc) && (!h.this.sSx))
+          {
+            Object localObject = h.this;
+            ((h)localObject).UA.setTextColor(((h)localObject).sSu);
+            ((h)localObject).UA.invalidate();
+            int i = ((Integer)paramAnonymousMessage.obj).intValue();
+            if (i == 0)
+            {
+              h.this.UA.setText(h.this.context.getString(2131764524));
+              AppMethodBeat.o(55922);
+              return;
+            }
+            h.this.UA.setText(h.this.context.getResources().getQuantityString(2131623971, i, new Object[] { Integer.valueOf(i) }));
+            AppMethodBeat.o(55922);
+            return;
+            if ((h.this.sSx) || (h.this.sSc))
+            {
+              removeMessages(3);
+              localObject = Message.obtain();
+              ((Message)localObject).what = 3;
+              ((Message)localObject).obj = paramAnonymousMessage.obj;
+              sendMessage((Message)localObject);
+              AppMethodBeat.o(55922);
+              return;
+            }
+            h.this.sSy = h.this.UA.getText().toString();
+            h.a(h.this);
+            paramAnonymousMessage = v.sh((String)paramAnonymousMessage.obj);
+            h.this.UA.setText(h.this.context.getString(2131764530, new Object[] { paramAnonymousMessage }));
+            if ((h.this.sSc) || (h.this.sSx))
+            {
+              h.b(h.this);
+              AppMethodBeat.o(55922);
+              return;
+              if ((h.this.sSx) || (h.this.sSc))
+              {
+                removeMessages(4);
+                localObject = Message.obtain();
+                ((Message)localObject).what = 4;
+                ((Message)localObject).obj = paramAnonymousMessage.obj;
+                sendMessage((Message)localObject);
+                AppMethodBeat.o(55922);
+                return;
+              }
+              h.this.sSy = h.this.UA.getText().toString();
+              h.a(h.this);
+              paramAnonymousMessage = v.sh((String)paramAnonymousMessage.obj);
+              h.this.UA.setText(h.this.context.getString(2131764531, new Object[] { paramAnonymousMessage }));
+              if ((h.this.sSc) || (h.this.sSx))
+              {
+                h.b(h.this);
+                AppMethodBeat.o(55922);
+                return;
+                h.this.sSx = true;
+                h.this.sSc = false;
+                h.a(h.this);
+                paramAnonymousMessage = v.sh((String)paramAnonymousMessage.obj);
+                h.this.UA.setText(h.this.context.getString(2131764532, new Object[] { paramAnonymousMessage }));
+                AppMethodBeat.o(55922);
+                return;
+                h.this.sSc = true;
+                h.this.sSx = false;
+                h.a(h.this);
+                h.this.UA.setText(h.this.context.getString(2131764529));
+                AppMethodBeat.o(55922);
+                return;
+                h.this.sSc = false;
+                if (!h.this.sSx)
+                {
+                  h.this.mI(true);
+                  AppMethodBeat.o(55922);
+                  return;
+                  h.this.sSx = true;
+                  paramAnonymousMessage = h.this;
+                  paramAnonymousMessage.UA.setTextColor(paramAnonymousMessage.sSv);
+                  paramAnonymousMessage.UA.invalidate();
+                  h.this.UA.setText(h.this.context.getString(2131764534));
+                  h.this.sSy = h.this.UA.getText().toString();
+                  h.b(h.this);
+                  AppMethodBeat.o(55922);
+                  return;
+                  paramAnonymousMessage = h.this;
+                  paramAnonymousMessage.UA.setTextColor(paramAnonymousMessage.sSw);
+                  paramAnonymousMessage.UA.invalidate();
+                  h.this.UA.setText(h.this.context.getString(2131764535));
+                  AppMethodBeat.o(55922);
+                  return;
+                  h.this.sSx = false;
+                  h.this.mI(false);
+                }
+              }
+            }
           }
-          i = m - this.odb * 3;
-          break label172;
         }
-        i = 0;
       }
-    }
+    };
+    this.context = paramContext;
+    this.sSf = paramViewGroup;
+    this.UA = ((TextView)this.sSf.findViewById(2131305902));
+    this.fvg = paramString;
+    init();
+    AppMethodBeat.o(55923);
   }
   
-  public final void bLK()
+  private void init()
   {
-    AppMethodBeat.i(113510);
-    h.a locala = this.oda;
-    Iterator localIterator = locala.odf.iterator();
-    while (localIterator.hasNext()) {
-      ((h.b)localIterator.next()).bLN();
+    AppMethodBeat.i(55924);
+    ad.d("MicroMsg.ShareHeaderMsgMgr", "init");
+    this.UA.invalidate();
+    this.sSg = new ArrayList();
+    Iterator localIterator = n.cJr().zz(this.fvg).iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      this.sSg.add(str);
     }
-    locala.notifyDataSetChanged();
-    this.ocZ.invalidate();
-    AppMethodBeat.o(113510);
+    mI(false);
+    AppMethodBeat.o(55924);
+  }
+  
+  final void mI(boolean paramBoolean)
+  {
+    AppMethodBeat.i(55925);
+    this.mHandler.removeMessages(2);
+    Message localMessage = Message.obtain();
+    localMessage.what = 2;
+    localMessage.obj = Integer.valueOf(this.sSg.size());
+    ad.d("MicroMsg.ShareHeaderMsgMgr", "updateMemberCount, size=%d, isDelay=%b", new Object[] { Integer.valueOf(this.sSg.size()), Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
+    {
+      this.mHandler.sendMessageDelayed(localMessage, 100L);
+      AppMethodBeat.o(55925);
+      return;
+    }
+    this.mHandler.sendMessage(localMessage);
+    AppMethodBeat.o(55925);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.h
  * JD-Core Version:    0.7.0.1
  */

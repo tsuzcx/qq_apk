@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vd
   extends b
 {
-  public a cLE;
-  public vd.b cLF;
+  public a dAB;
   
   public vd()
   {
@@ -16,17 +15,19 @@ public final class vd
   
   private vd(byte paramByte)
   {
-    AppMethodBeat.i(56577);
-    this.cLE = new a();
-    this.cLF = new vd.b();
-    this.ymq = false;
+    AppMethodBeat.i(91221);
+    this.dAB = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(56577);
+    AppMethodBeat.o(91221);
   }
   
   public static final class a
   {
-    public String bSd;
+    public boolean dAC;
+    public boolean dAD = false;
+    public int dAE = 0;
+    public int scene;
   }
 }
 

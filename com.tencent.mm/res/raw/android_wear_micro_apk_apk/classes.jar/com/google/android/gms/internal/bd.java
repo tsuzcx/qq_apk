@@ -2,13 +2,13 @@ package com.google.android.gms.internal;
 
 public final class bd<L>
 {
-  private final L JL;
-  private final String Pc;
+  private final L LA;
+  private final String QR;
   
   bd(L paramL, String paramString)
   {
-    this.JL = paramL;
-    this.Pc = paramString;
+    this.LA = paramL;
+    this.QR = paramString;
   }
   
   public final boolean equals(Object paramObject)
@@ -21,13 +21,13 @@ public final class bd<L>
         return false;
       }
       paramObject = (bd)paramObject;
-    } while ((this.JL == paramObject.JL) && (this.Pc.equals(paramObject.Pc)));
+    } while ((this.LA == paramObject.LA) && (this.QR.equals(paramObject.QR)));
     return false;
   }
   
   public final int hashCode()
   {
-    return System.identityHashCode(this.JL) * 31 + this.Pc.hashCode();
+    return System.identityHashCode(this.LA) * 31 + this.QR.hashCode();
   }
 }
 

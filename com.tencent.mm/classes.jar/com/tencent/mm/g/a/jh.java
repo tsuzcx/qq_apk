@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class jh
   extends b
 {
-  public jh.a cyK;
+  public a dnv;
   
   public jh()
   {
@@ -15,16 +16,23 @@ public final class jh
   
   private jh(byte paramByte)
   {
-    AppMethodBeat.i(55345);
-    this.cyK = new jh.a();
-    this.ymq = false;
+    AppMethodBeat.i(19813);
+    this.dnv = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(55345);
+    AppMethodBeat.o(19813);
+  }
+  
+  public static final class a
+  {
+    public Context context;
+    public String[] daV;
+    public String[] selectionArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.jh
  * JD-Core Version:    0.7.0.1
  */

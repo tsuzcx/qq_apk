@@ -2,11 +2,12 @@ package com.tencent.mm.storage;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storagebase.h;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,101 +15,113 @@ public final class g
   extends j<com.tencent.mm.g.c.g>
 {
   public static final String[] SQL_CREATE;
-  private h fnw;
-  SparseArray<String> ywy;
+  SparseArray<String> Feh;
+  private h gPa;
   
   static
   {
-    AppMethodBeat.i(80280);
-    SQL_CREATE = new String[] { j.getCreateSQLs(com.tencent.mm.g.c.g.Hm(), "AddContactAntispamTicket") };
-    AppMethodBeat.o(80280);
+    AppMethodBeat.i(152799);
+    SQL_CREATE = new String[] { j.getCreateSQLs(com.tencent.mm.g.c.g.So(), "AddContactAntispamTicket") };
+    AppMethodBeat.o(152799);
   }
   
   public g(e parame)
   {
-    super(parame, com.tencent.mm.g.c.g.Hm(), "AddContactAntispamTicket", null);
-    AppMethodBeat.i(80275);
-    this.ywy = new SparseArray();
-    this.fnw = ((h)parame);
-    AppMethodBeat.o(80275);
+    super(parame, com.tencent.mm.g.c.g.So(), "AddContactAntispamTicket", null);
+    AppMethodBeat.i(152794);
+    this.Feh = new SparseArray();
+    this.gPa = ((h)parame);
+    AppMethodBeat.o(152794);
   }
   
-  public final String aqP(String paramString)
+  public final void D(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(80279);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(152795);
+    if (bt.isNullOrNil(paramString1))
     {
-      AppMethodBeat.o(80279);
-      return null;
-    }
-    Object localObject = (String)this.ywy.get(paramString.hashCode());
-    if (!bo.isNullOrNil((String)localObject))
-    {
-      AppMethodBeat.o(80279);
-      return localObject;
-    }
-    localObject = new g.a();
-    ((g.a)localObject).field_userName = paramString;
-    if (get((c)localObject, new String[] { "userName" }))
-    {
-      in(((g.a)localObject).field_userName, ((g.a)localObject).field_ticket);
-      paramString = ((g.a)localObject).field_ticket;
-      AppMethodBeat.o(80279);
-      return paramString;
-    }
-    AppMethodBeat.o(80279);
-    return null;
-  }
-  
-  public final void ev(List<com.tencent.mm.g.c.g> paramList)
-  {
-    AppMethodBeat.i(80277);
-    if (paramList.size() == 0)
-    {
-      AppMethodBeat.o(80277);
+      AppMethodBeat.o(152795);
       return;
     }
-    long l = this.fnw.kr(Thread.currentThread().getId());
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      replace((com.tencent.mm.g.c.g)paramList.next());
-    }
-    this.fnw.nY(l);
-    AppMethodBeat.o(80277);
-  }
-  
-  public final void in(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(80278);
-    if (bo.isNullOrNil(paramString1))
-    {
-      AppMethodBeat.o(80278);
-      return;
-    }
-    this.ywy.put(paramString1.hashCode(), paramString2);
-    AppMethodBeat.o(80278);
-  }
-  
-  public final void x(String paramString1, int paramInt, String paramString2)
-  {
-    AppMethodBeat.i(80276);
-    if (bo.isNullOrNil(paramString1))
-    {
-      AppMethodBeat.o(80276);
-      return;
-    }
-    g.a locala = new g.a();
+    a locala = new a();
     locala.field_userName = paramString1;
     locala.field_scene = paramInt;
     locala.field_ticket = paramString2;
     replace(locala);
-    in(paramString1, paramString2);
-    AppMethodBeat.o(80276);
+    kY(paramString1, paramString2);
+    AppMethodBeat.o(152795);
+  }
+  
+  public final String aHl(String paramString)
+  {
+    AppMethodBeat.i(152798);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(152798);
+      return null;
+    }
+    Object localObject = (String)this.Feh.get(paramString.hashCode());
+    if (!bt.isNullOrNil((String)localObject))
+    {
+      AppMethodBeat.o(152798);
+      return localObject;
+    }
+    localObject = new a();
+    ((a)localObject).field_userName = paramString;
+    if (get((c)localObject, new String[] { "userName" }))
+    {
+      kY(((a)localObject).field_userName, ((a)localObject).field_ticket);
+      paramString = ((a)localObject).field_ticket;
+      AppMethodBeat.o(152798);
+      return paramString;
+    }
+    AppMethodBeat.o(152798);
+    return null;
+  }
+  
+  public final void gP(List<com.tencent.mm.g.c.g> paramList)
+  {
+    AppMethodBeat.i(152796);
+    if (paramList.size() == 0)
+    {
+      AppMethodBeat.o(152796);
+      return;
+    }
+    long l = this.gPa.rb(Thread.currentThread().getId());
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      replace((com.tencent.mm.g.c.g)paramList.next());
+    }
+    this.gPa.mX(l);
+    AppMethodBeat.o(152796);
+  }
+  
+  public final void kY(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(152797);
+    if (bt.isNullOrNil(paramString1))
+    {
+      AppMethodBeat.o(152797);
+      return;
+    }
+    this.Feh.put(paramString1.hashCode(), paramString2);
+    AppMethodBeat.o(152797);
+  }
+  
+  public static final class a
+    extends com.tencent.mm.g.c.g
+  {
+    public final c.a getDBInfo()
+    {
+      AppMethodBeat.i(152793);
+      c.a locala = com.tencent.mm.g.c.g.So();
+      AppMethodBeat.o(152793);
+      return locala;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.g
  * JD-Core Version:    0.7.0.1
  */

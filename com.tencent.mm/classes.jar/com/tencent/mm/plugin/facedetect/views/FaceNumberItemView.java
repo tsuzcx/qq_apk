@@ -13,22 +13,22 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Timer;
 
 public class FaceNumberItemView
   extends View
 {
-  static final long mpg = 29L;
-  Timer mpf;
-  private boolean mph;
-  private Paint mpi;
-  private RectF mpj;
-  private Bitmap mpk;
-  private int mpl;
-  int mpm;
-  Runnable mpn;
+  static final long pVP = 29L;
+  Timer pVO;
+  private boolean pVQ;
+  private Paint pVR;
+  private RectF pVS;
+  private Bitmap pVT;
+  private int pVU;
+  int pVV;
+  Runnable pVW;
   
   public FaceNumberItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,118 +38,118 @@ public class FaceNumberItemView
   public FaceNumberItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(645);
-    this.mpf = null;
-    this.mph = false;
-    this.mpi = null;
-    this.mpj = null;
-    this.mpk = null;
-    this.mpl = 17;
-    this.mpm = 0;
-    this.mpn = new Runnable()
+    AppMethodBeat.i(104166);
+    this.pVO = null;
+    this.pVQ = false;
+    this.pVR = null;
+    this.pVS = null;
+    this.pVT = null;
+    this.pVU = 17;
+    this.pVV = 0;
+    this.pVW = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(642);
+        AppMethodBeat.i(104163);
         if (FaceNumberItemView.a(FaceNumberItemView.this) <= 30)
         {
           FaceNumberItemView.b(FaceNumberItemView.this);
           FaceNumberItemView.this.invalidate();
-          AppMethodBeat.o(642);
+          AppMethodBeat.o(104163);
           return;
         }
-        FaceNumberItemView.this.bvB();
-        AppMethodBeat.o(642);
+        FaceNumberItemView.this.cgW();
+        AppMethodBeat.o(104163);
       }
     };
     setLayerType(1, null);
-    this.mpi = new Paint();
-    this.mpi.setColor(paramContext.getResources().getColor(2131690032));
-    this.mpi.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
-    this.mpj = new RectF();
-    AppMethodBeat.o(645);
+    this.pVR = new Paint();
+    this.pVR.setColor(paramContext.getResources().getColor(2131100331));
+    this.pVR.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
+    this.pVS = new RectF();
+    AppMethodBeat.o(104166);
   }
   
-  public final void bvB()
+  public final void cgW()
   {
-    AppMethodBeat.i(648);
-    if (this.mpf != null)
+    AppMethodBeat.i(104169);
+    if (this.pVO != null)
     {
-      this.mpf.cancel();
-      this.mpf = null;
+      this.pVO.cancel();
+      this.pVO = null;
     }
-    AppMethodBeat.o(648);
+    AppMethodBeat.o(104169);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(649);
+    AppMethodBeat.i(104170);
     super.onDraw(paramCanvas);
     float f2;
     float f1;
-    if (this.mpl == 17)
+    if (this.pVU == 17)
     {
-      f2 = getWidth() - this.mpk.getWidth() >> 1;
-      f1 = getHeight() - this.mpk.getHeight() >> 1;
+      f2 = getWidth() - this.pVT.getWidth() >> 1;
+      f1 = getHeight() - this.pVT.getHeight() >> 1;
     }
     for (;;)
     {
-      if (!this.mph) {
-        paramCanvas.drawBitmap(this.mpk, f2, f1, null);
+      if (!this.pVQ) {
+        paramCanvas.drawBitmap(this.pVT, f2, f1, null);
       }
-      this.mpj.set(f2, 0.0F, this.mpk.getWidth() * this.mpm / 30.0F + f2, getHeight());
-      paramCanvas.drawRect(this.mpj, this.mpi);
-      AppMethodBeat.o(649);
+      this.pVS.set(f2, 0.0F, this.pVT.getWidth() * this.pVV / 30.0F + f2, getHeight());
+      paramCanvas.drawRect(this.pVS, this.pVR);
+      AppMethodBeat.o(104170);
       return;
-      if (this.mpl == 3)
+      if (this.pVU == 3)
       {
-        f1 = getHeight() - this.mpk.getHeight() >> 1;
+        f1 = getHeight() - this.pVT.getHeight() >> 1;
         f2 = 0.0F;
       }
-      else if (this.mpl == 5)
+      else if (this.pVU == 5)
       {
-        f2 = getWidth() - this.mpk.getWidth();
-        f1 = getHeight() - this.mpk.getHeight() >> 1;
+        f2 = getWidth() - this.pVT.getWidth();
+        f1 = getHeight() - this.pVT.getHeight() >> 1;
       }
       else
       {
-        ab.e("MicroMsg.FaceNumberItemView", "hy: not support gravity! treat as center");
-        f2 = getWidth() - this.mpk.getWidth() >> 1;
-        f1 = getHeight() - this.mpk.getHeight() >> 1;
+        ad.e("MicroMsg.FaceNumberItemView", "hy: not support gravity! treat as center");
+        f2 = getWidth() - this.pVT.getWidth() >> 1;
+        f1 = getHeight() - this.pVT.getHeight() >> 1;
       }
     }
   }
   
   public void setGravity(int paramInt)
   {
-    AppMethodBeat.i(647);
-    ab.i("MicroMsg.FaceNumberItemView", "hy: setting gravity");
-    this.mpl = paramInt;
-    AppMethodBeat.o(647);
+    AppMethodBeat.i(104168);
+    ad.i("MicroMsg.FaceNumberItemView", "hy: setting gravity");
+    this.pVU = paramInt;
+    AppMethodBeat.o(104168);
   }
   
   public void setImageResource(int paramInt)
   {
-    AppMethodBeat.i(646);
+    AppMethodBeat.i(104167);
     Bitmap localBitmap1 = BitmapFactory.decodeResource(getResources(), paramInt);
-    if (paramInt == 2130838710)
+    if (paramInt == 2131232151)
     {
-      paramInt = (getResources().getDimensionPixelSize(2131428413) - a.fromDPToPix(getContext(), 8)) / 2;
+      paramInt = (getResources().getDimensionPixelSize(2131166279) - a.fromDPToPix(getContext(), 8)) / 2;
       Bitmap localBitmap2 = Bitmap.createBitmap(localBitmap1.getWidth() + paramInt * 2, localBitmap1.getHeight() + 0, Bitmap.Config.ARGB_8888);
       Canvas localCanvas = new Canvas(localBitmap2);
       localCanvas.drawARGB(0, 255, 255, 255);
       localCanvas.drawBitmap(localBitmap1, paramInt, 0.0F, null);
-      this.mpk = localBitmap2;
-      AppMethodBeat.o(646);
+      this.pVT = localBitmap2;
+      AppMethodBeat.o(104167);
       return;
     }
-    this.mpk = Bitmap.createScaledBitmap(localBitmap1, a.fromDPToPix(getContext(), 48), localBitmap1.getHeight(), false);
-    AppMethodBeat.o(646);
+    this.pVT = Bitmap.createScaledBitmap(localBitmap1, a.fromDPToPix(getContext(), 48), localBitmap1.getHeight(), false);
+    AppMethodBeat.o(104167);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceNumberItemView
  * JD-Core Version:    0.7.0.1
  */

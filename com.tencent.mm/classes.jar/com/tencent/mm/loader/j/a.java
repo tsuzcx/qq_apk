@@ -6,7 +6,6 @@ import android.os.Bundle;
 public final class a
 {
   public static String BUILD_TAG;
-  public static String CLIENT_VERSION;
   public static String COMMAND;
   public static String HOSTNAME;
   public static String OWNER;
@@ -14,28 +13,40 @@ public final class a
   public static String REV;
   public static String SVNPATH;
   public static String TIME;
-  public static String eQs = "android-" + Build.VERSION.SDK_INT;
-  public static String eQt;
+  public static String TINKER_ID;
+  public static String glW;
+  public static String glX = "android-" + Build.VERSION.SDK_INT;
+  public static String glY;
+  public static boolean glZ;
+  public static String gma;
   
-  public static String Ui()
+  public static String ahT()
   {
-    if (eQt == null) {
+    if (glY == null) {
       return REV;
     }
-    return REV + "." + eQt;
+    return REV + "." + glY;
   }
   
-  public static String Uj()
+  public static String ahU()
   {
-    return REV;
+    return TINKER_ID;
   }
   
-  public static boolean Uk()
+  public static String ahV()
+  {
+    if (gma == null) {
+      return "";
+    }
+    return gma;
+  }
+  
+  public static boolean ahW()
   {
     return !"false".equalsIgnoreCase(PATCH_ENABLED);
   }
   
-  public static void p(Bundle paramBundle)
+  public static void r(Bundle paramBundle)
   {
     if (paramBundle == null) {
       return;
@@ -45,13 +56,15 @@ public final class a
     {
       PATCH_ENABLED = str;
       REV = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_REV");
-      CLIENT_VERSION = "0x" + Integer.toHexString(paramBundle.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION"));
+      glW = "0x" + Integer.toHexString(paramBundle.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION"));
       TIME = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_TIME");
       HOSTNAME = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_HOSTNAME");
       BUILD_TAG = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_TAG");
       OWNER = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_OWNER");
       COMMAND = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_COMMAND");
       SVNPATH = paramBundle.getString("com.tencent.mm.BuildInfo.BUILD_SVNPATH");
+      glZ = paramBundle.getBoolean("com.tencent.mm.BuildInfo.BUILD_IS_ARM64", false);
+      TINKER_ID = paramBundle.getString("TINKER_ID");
       return;
     }
   }

@@ -1,30 +1,32 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.b.d;
 
 final class BaseScanUI$20
-  implements MenuItem.OnMenuItemClickListener
+  implements DialogInterface.OnClickListener
 {
-  BaseScanUI$20(BaseScanUI paramBaseScanUI, View.OnClickListener paramOnClickListener) {}
+  BaseScanUI$20(BaseScanUI paramBaseScanUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(138478);
-    paramMenuItem = new d(this.qwI.getContext(), 1, false);
-    paramMenuItem.sao = new BaseScanUI.20.1(this);
-    paramMenuItem.sap = new BaseScanUI.20.2(this);
-    paramMenuItem.crd();
-    AppMethodBeat.o(138478);
-    return false;
+    AppMethodBeat.i(51705);
+    paramDialogInterface = this.vRt;
+    Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/scanner/ui/BaseScanUI$27", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/plugin/scanner/ui/BaseScanUI$27", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    BaseScanUI.I(this.vRt);
+    this.vRt.finish();
+    AppMethodBeat.o(51705);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.BaseScanUI.20
  * JD-Core Version:    0.7.0.1
  */

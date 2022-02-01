@@ -83,7 +83,7 @@ public final class zzav
   
   public zzav(Context paramContext, Lock paramLock, Looper paramLooper, ClientSettings paramClientSettings, GoogleApiAvailability paramGoogleApiAvailability, Api.AbstractClientBuilder<? extends SignInClient, SignInOptions> paramAbstractClientBuilder, Map<Api<?>, Boolean> paramMap, List<GoogleApiClient.ConnectionCallbacks> paramList, List<GoogleApiClient.OnConnectionFailedListener> paramList1, Map<Api.AnyClientKey<?>, Api.Client> paramMap1, int paramInt1, int paramInt2, ArrayList<zzp> paramArrayList, boolean paramBoolean)
   {
-    AppMethodBeat.i(60765);
+    AppMethodBeat.i(11257);
     this.zzif = null;
     this.zzgo = new LinkedList();
     this.zzih = 120000L;
@@ -122,12 +122,12 @@ public final class zzav
     }
     this.zzgf = paramClientSettings;
     this.zzdh = paramAbstractClientBuilder;
-    AppMethodBeat.o(60765);
+    AppMethodBeat.o(11257);
   }
   
   private final void resume()
   {
-    AppMethodBeat.i(60786);
+    AppMethodBeat.i(11278);
     this.zzga.lock();
     try
     {
@@ -139,13 +139,13 @@ public final class zzav
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60786);
+      AppMethodBeat.o(11278);
     }
   }
   
   public static int zza(Iterable<Api.Client> paramIterable, boolean paramBoolean)
   {
-    AppMethodBeat.i(60805);
+    AppMethodBeat.i(11297);
     paramIterable = paramIterable.iterator();
     int i = 0;
     int j = 0;
@@ -156,11 +156,11 @@ public final class zzav
         j = 1;
       }
       if (!localClient.providesSignIn()) {
-        break label96;
+        break label100;
       }
       i = 1;
     }
-    label96:
+    label100:
     for (;;)
     {
       break;
@@ -168,36 +168,36 @@ public final class zzav
       {
         if ((i != 0) && (paramBoolean))
         {
-          AppMethodBeat.o(60805);
+          AppMethodBeat.o(11297);
           return 2;
         }
-        AppMethodBeat.o(60805);
+        AppMethodBeat.o(11297);
         return 1;
       }
-      AppMethodBeat.o(60805);
+      AppMethodBeat.o(11297);
       return 3;
     }
   }
   
   private final void zza(GoogleApiClient paramGoogleApiClient, StatusPendingResult paramStatusPendingResult, boolean paramBoolean)
   {
-    AppMethodBeat.i(60780);
+    AppMethodBeat.i(11272);
     Common.CommonApi.clearDefaultAccount(paramGoogleApiClient).setResultCallback(new zzaz(this, paramStatusPendingResult, paramBoolean, paramGoogleApiClient));
-    AppMethodBeat.o(60780);
+    AppMethodBeat.o(11272);
   }
   
   @GuardedBy("mLock")
   private final void zzax()
   {
-    AppMethodBeat.i(60785);
+    AppMethodBeat.i(11277);
     this.zzie.enableCallbacks();
     this.zzif.connect();
-    AppMethodBeat.o(60785);
+    AppMethodBeat.o(11277);
   }
   
   private final void zzay()
   {
-    AppMethodBeat.i(60787);
+    AppMethodBeat.i(11279);
     this.zzga.lock();
     try
     {
@@ -209,27 +209,27 @@ public final class zzav
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60787);
+      AppMethodBeat.o(11279);
     }
   }
   
   private final void zzg(int paramInt)
   {
-    AppMethodBeat.i(60784);
+    AppMethodBeat.i(11276);
     if (this.zzip == null) {
       this.zzip = Integer.valueOf(paramInt);
     }
     Object localObject2;
     while (this.zzif != null)
     {
-      AppMethodBeat.o(60784);
+      AppMethodBeat.o(11276);
       return;
       if (this.zzip.intValue() != paramInt)
       {
         localObject1 = zzh(paramInt);
         localObject2 = zzh(this.zzip.intValue());
         localObject1 = new IllegalStateException(String.valueOf(localObject1).length() + 51 + String.valueOf(localObject2).length() + "Cannot use sign-in mode: " + (String)localObject1 + ". Mode was already set to " + (String)localObject2);
-        AppMethodBeat.o(60784);
+        AppMethodBeat.o(11276);
         throw ((Throwable)localObject1);
       }
     }
@@ -257,35 +257,35 @@ public final class zzav
       while ((this.zzdk) && (paramInt == 0))
       {
         this.zzif = new zzw(this.mContext, this.zzga, this.zzcn, this.zzdg, this.zzil, this.zzgf, this.zzgi, this.zzdh, this.zzio, this, false);
-        AppMethodBeat.o(60784);
+        AppMethodBeat.o(11276);
         return;
         if (i == 0)
         {
           localObject1 = new IllegalStateException("SIGN_IN_MODE_REQUIRED cannot be used on a GoogleApiClient that does not contain any authenticated APIs. Use connect() instead.");
-          AppMethodBeat.o(60784);
+          AppMethodBeat.o(11276);
           throw ((Throwable)localObject1);
         }
         if (paramInt != 0)
         {
           localObject1 = new IllegalStateException("Cannot use SIGN_IN_MODE_REQUIRED with GOOGLE_SIGN_IN_API. Use connect(SIGN_IN_MODE_OPTIONAL) instead.");
-          AppMethodBeat.o(60784);
+          AppMethodBeat.o(11276);
           throw ((Throwable)localObject1);
           if (i != 0)
           {
             if (this.zzdk)
             {
               this.zzif = new zzw(this.mContext, this.zzga, this.zzcn, this.zzdg, this.zzil, this.zzgf, this.zzgi, this.zzdh, this.zzio, this, true);
-              AppMethodBeat.o(60784);
+              AppMethodBeat.o(11276);
               return;
             }
             this.zzif = zzr.zza(this.mContext, this, this.zzga, this.zzcn, this.zzdg, this.zzil, this.zzgf, this.zzgi, this.zzdh, this.zzio);
-            AppMethodBeat.o(60784);
+            AppMethodBeat.o(11276);
             return;
           }
         }
       }
       this.zzif = new zzbd(this.mContext, this, this.zzga, this.zzcn, this.zzdg, this.zzil, this.zzgf, this.zzgi, this.zzdh, this.zzio, this);
-      AppMethodBeat.o(60784);
+      AppMethodBeat.o(11276);
       return;
     }
   }
@@ -307,7 +307,7 @@ public final class zzav
   public final ConnectionResult blockingConnect()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(60775);
+    AppMethodBeat.i(11267);
     boolean bool1;
     if (Looper.myLooper() != Looper.getMainLooper()) {
       bool1 = true;
@@ -348,19 +348,19 @@ public final class zzav
       finally
       {
         this.zzga.unlock();
-        AppMethodBeat.o(60775);
+        AppMethodBeat.o(11267);
       }
     }
     label161:
     IllegalStateException localIllegalStateException = new IllegalStateException("Cannot call blockingConnect() when sign-in mode is set to SIGN_IN_MODE_OPTIONAL. Call connect(SIGN_IN_MODE_OPTIONAL) instead.");
-    AppMethodBeat.o(60775);
+    AppMethodBeat.o(11267);
     throw localIllegalStateException;
   }
   
   public final ConnectionResult blockingConnect(long paramLong, TimeUnit paramTimeUnit)
   {
     boolean bool = false;
-    AppMethodBeat.i(60776);
+    AppMethodBeat.i(11268);
     if (Looper.myLooper() != Looper.getMainLooper()) {
       bool = true;
     }
@@ -380,19 +380,19 @@ public final class zzav
         return paramTimeUnit;
       }
       paramTimeUnit = new IllegalStateException("Cannot call blockingConnect() when sign-in mode is set to SIGN_IN_MODE_OPTIONAL. Call connect(SIGN_IN_MODE_OPTIONAL) instead.");
-      AppMethodBeat.o(60776);
+      AppMethodBeat.o(11268);
       throw paramTimeUnit;
     }
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60776);
+      AppMethodBeat.o(11268);
     }
   }
   
   public final PendingResult<Status> clearDefaultAccountAndReconnect()
   {
-    AppMethodBeat.i(60779);
+    AppMethodBeat.i(11271);
     Preconditions.checkState(isConnected(), "GoogleApiClient is not connected yet.");
     boolean bool;
     StatusPendingResult localStatusPendingResult;
@@ -408,7 +408,7 @@ public final class zzav
     }
     for (;;)
     {
-      AppMethodBeat.o(60779);
+      AppMethodBeat.o(11271);
       return localStatusPendingResult;
       bool = false;
       break;
@@ -425,7 +425,7 @@ public final class zzav
   public final void connect()
   {
     boolean bool = false;
-    AppMethodBeat.i(60773);
+    AppMethodBeat.i(11265);
     this.zzga.lock();
     try
     {
@@ -452,17 +452,17 @@ public final class zzav
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60773);
+      AppMethodBeat.o(11265);
     }
     IllegalStateException localIllegalStateException = new IllegalStateException("Cannot call connect() when SignInMode is set to SIGN_IN_MODE_OPTIONAL. Call connect(SIGN_IN_MODE_OPTIONAL) instead.");
-    AppMethodBeat.o(60773);
+    AppMethodBeat.o(11265);
     throw localIllegalStateException;
   }
   
   public final void connect(int paramInt)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(60774);
+    AppMethodBeat.i(11266);
     this.zzga.lock();
     boolean bool1 = bool2;
     if (paramInt != 3)
@@ -486,14 +486,14 @@ public final class zzav
       {
         label89:
         this.zzga.unlock();
-        AppMethodBeat.o(60774);
+        AppMethodBeat.o(11266);
       }
     }
   }
   
   public final void disconnect()
   {
-    AppMethodBeat.i(60777);
+    AppMethodBeat.i(11269);
     this.zzga.lock();
     try
     {
@@ -514,24 +514,24 @@ public final class zzav
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60777);
+      AppMethodBeat.o(11269);
     }
     zzbp localzzbp = this.zzif;
     if (localzzbp == null)
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60777);
+      AppMethodBeat.o(11269);
       return;
     }
     zzaz();
     this.zzie.disableCallbacks();
     this.zzga.unlock();
-    AppMethodBeat.o(60777);
+    AppMethodBeat.o(11269);
   }
   
   public final void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(60804);
+    AppMethodBeat.i(11296);
     paramPrintWriter.append(paramString).append("mContext=").println(this.mContext);
     paramPrintWriter.append(paramString).append("mResuming=").print(this.zzig);
     paramPrintWriter.append(" mWorkQueue.size()=").print(this.zzgo.size());
@@ -540,12 +540,12 @@ public final class zzav
     if (this.zzif != null) {
       this.zzif.dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
     }
-    AppMethodBeat.o(60804);
+    AppMethodBeat.o(11296);
   }
   
   public final <A extends Api.AnyClient, R extends Result, T extends BaseImplementation.ApiMethodImpl<R, A>> T enqueue(T paramT)
   {
-    AppMethodBeat.i(60766);
+    AppMethodBeat.i(11258);
     boolean bool;
     if (paramT.getClientKey() != null) {
       bool = true;
@@ -579,14 +579,14 @@ public final class zzav
       finally
       {
         this.zzga.unlock();
-        AppMethodBeat.o(60766);
+        AppMethodBeat.o(11258);
       }
     }
   }
   
   public final <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T execute(T paramT)
   {
-    AppMethodBeat.i(60767);
+    AppMethodBeat.i(11259);
     boolean bool;
     if (paramT.getClientKey() != null)
     {
@@ -608,13 +608,13 @@ public final class zzav
           break label156;
         }
         paramT = new IllegalStateException("GoogleApiClient is not connected yet.");
-        AppMethodBeat.o(60767);
+        AppMethodBeat.o(11259);
         throw paramT;
       }
       finally
       {
         this.zzga.unlock();
-        AppMethodBeat.o(60767);
+        AppMethodBeat.o(11259);
       }
       bool = false;
       break;
@@ -630,41 +630,41 @@ public final class zzav
         ((BaseImplementation.ApiMethodImpl)localObject).setFailedResult(Status.RESULT_INTERNAL_ERROR);
       }
       this.zzga.unlock();
-      AppMethodBeat.o(60767);
+      AppMethodBeat.o(11259);
       return paramT;
     }
     paramT = this.zzif.execute(paramT);
     this.zzga.unlock();
-    AppMethodBeat.o(60767);
+    AppMethodBeat.o(11259);
     return paramT;
   }
   
   public final <C extends Api.Client> C getClient(Api.AnyClientKey<C> paramAnyClientKey)
   {
-    AppMethodBeat.i(60769);
+    AppMethodBeat.i(11261);
     paramAnyClientKey = (Api.Client)this.zzil.get(paramAnyClientKey);
     Preconditions.checkNotNull(paramAnyClientKey, "Appropriate Api was not requested.");
-    AppMethodBeat.o(60769);
+    AppMethodBeat.o(11261);
     return paramAnyClientKey;
   }
   
   public final ConnectionResult getConnectionResult(Api<?> paramApi)
   {
-    AppMethodBeat.i(60772);
+    AppMethodBeat.i(11264);
     this.zzga.lock();
     try
     {
       if ((!isConnected()) && (!this.zzig))
       {
         paramApi = new IllegalStateException("Cannot invoke getConnectionResult unless GoogleApiClient is connected");
-        AppMethodBeat.o(60772);
+        AppMethodBeat.o(11264);
         throw paramApi;
       }
     }
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60772);
+      AppMethodBeat.o(11264);
     }
     if (this.zzil.containsKey(paramApi.getClientKey()))
     {
@@ -675,22 +675,22 @@ public final class zzav
         {
           paramApi = ConnectionResult.RESULT_SUCCESS;
           this.zzga.unlock();
-          AppMethodBeat.o(60772);
+          AppMethodBeat.o(11264);
           return paramApi;
         }
         zzbb();
         Log.wtf("GoogleApiClientImpl", String.valueOf(paramApi.getName()).concat(" requested in getConnectionResult is not connected but is not present in the failed  connections map"), new Exception());
         paramApi = new ConnectionResult(8, null);
         this.zzga.unlock();
-        AppMethodBeat.o(60772);
+        AppMethodBeat.o(11264);
         return paramApi;
       }
       this.zzga.unlock();
-      AppMethodBeat.o(60772);
+      AppMethodBeat.o(11264);
       return localConnectionResult;
     }
     paramApi = new IllegalArgumentException(String.valueOf(paramApi.getName()).concat(" was never registered with GoogleApiClient"));
-    AppMethodBeat.o(60772);
+    AppMethodBeat.o(11264);
     throw paramApi;
   }
   
@@ -706,116 +706,116 @@ public final class zzav
   
   public final boolean hasApi(Api<?> paramApi)
   {
-    AppMethodBeat.i(60770);
+    AppMethodBeat.i(11262);
     boolean bool = this.zzil.containsKey(paramApi.getClientKey());
-    AppMethodBeat.o(60770);
+    AppMethodBeat.o(11262);
     return bool;
   }
   
   public final boolean hasConnectedApi(Api<?> paramApi)
   {
-    AppMethodBeat.i(60771);
+    AppMethodBeat.i(11263);
     if (!isConnected())
     {
-      AppMethodBeat.o(60771);
+      AppMethodBeat.o(11263);
       return false;
     }
     paramApi = (Api.Client)this.zzil.get(paramApi.getClientKey());
     if ((paramApi != null) && (paramApi.isConnected()))
     {
-      AppMethodBeat.o(60771);
+      AppMethodBeat.o(11263);
       return true;
     }
-    AppMethodBeat.o(60771);
+    AppMethodBeat.o(11263);
     return false;
   }
   
   public final boolean isConnected()
   {
-    AppMethodBeat.i(60782);
+    AppMethodBeat.i(11274);
     if ((this.zzif != null) && (this.zzif.isConnected()))
     {
-      AppMethodBeat.o(60782);
+      AppMethodBeat.o(11274);
       return true;
     }
-    AppMethodBeat.o(60782);
+    AppMethodBeat.o(11274);
     return false;
   }
   
   public final boolean isConnecting()
   {
-    AppMethodBeat.i(60783);
+    AppMethodBeat.i(11275);
     if ((this.zzif != null) && (this.zzif.isConnecting()))
     {
-      AppMethodBeat.o(60783);
+      AppMethodBeat.o(11275);
       return true;
     }
-    AppMethodBeat.o(60783);
+    AppMethodBeat.o(11275);
     return false;
   }
   
   public final boolean isConnectionCallbacksRegistered(GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks)
   {
-    AppMethodBeat.i(60790);
+    AppMethodBeat.i(11282);
     boolean bool = this.zzie.isConnectionCallbacksRegistered(paramConnectionCallbacks);
-    AppMethodBeat.o(60790);
+    AppMethodBeat.o(11282);
     return bool;
   }
   
   public final boolean isConnectionFailedListenerRegistered(GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
-    AppMethodBeat.i(60793);
+    AppMethodBeat.i(11285);
     boolean bool = this.zzie.isConnectionFailedListenerRegistered(paramOnConnectionFailedListener);
-    AppMethodBeat.o(60793);
+    AppMethodBeat.o(11285);
     return bool;
   }
   
   public final boolean maybeSignIn(SignInConnectionListener paramSignInConnectionListener)
   {
-    AppMethodBeat.i(60798);
+    AppMethodBeat.i(11290);
     if ((this.zzif != null) && (this.zzif.maybeSignIn(paramSignInConnectionListener)))
     {
-      AppMethodBeat.o(60798);
+      AppMethodBeat.o(11290);
       return true;
     }
-    AppMethodBeat.o(60798);
+    AppMethodBeat.o(11290);
     return false;
   }
   
   public final void maybeSignOut()
   {
-    AppMethodBeat.i(60799);
+    AppMethodBeat.i(11291);
     if (this.zzif != null) {
       this.zzif.maybeSignOut();
     }
-    AppMethodBeat.o(60799);
+    AppMethodBeat.o(11291);
   }
   
   public final void reconnect()
   {
-    AppMethodBeat.i(60778);
+    AppMethodBeat.i(11270);
     disconnect();
     connect();
-    AppMethodBeat.o(60778);
+    AppMethodBeat.o(11270);
   }
   
   public final void registerConnectionCallbacks(GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks)
   {
-    AppMethodBeat.i(60789);
+    AppMethodBeat.i(11281);
     this.zzie.registerConnectionCallbacks(paramConnectionCallbacks);
-    AppMethodBeat.o(60789);
+    AppMethodBeat.o(11281);
   }
   
   public final void registerConnectionFailedListener(GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
-    AppMethodBeat.i(60792);
+    AppMethodBeat.i(11284);
     this.zzie.registerConnectionFailedListener(paramOnConnectionFailedListener);
-    AppMethodBeat.o(60792);
+    AppMethodBeat.o(11284);
   }
   
   public final <L> ListenerHolder<L> registerListener(L paramL)
   {
-    AppMethodBeat.i(60768);
+    AppMethodBeat.i(11260);
     this.zzga.lock();
     try
     {
@@ -825,42 +825,42 @@ public final class zzav
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60768);
+      AppMethodBeat.o(11260);
     }
   }
   
   public final void stopAutoManage(FragmentActivity paramFragmentActivity)
   {
-    AppMethodBeat.i(60781);
+    AppMethodBeat.i(11273);
     paramFragmentActivity = new LifecycleActivity(paramFragmentActivity);
     if (this.zzde >= 0)
     {
       zzi.zza(paramFragmentActivity).zzc(this.zzde);
-      AppMethodBeat.o(60781);
+      AppMethodBeat.o(11273);
       return;
     }
     paramFragmentActivity = new IllegalStateException("Called stopAutoManage but automatic lifecycle management is not enabled.");
-    AppMethodBeat.o(60781);
+    AppMethodBeat.o(11273);
     throw paramFragmentActivity;
   }
   
   public final void unregisterConnectionCallbacks(GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks)
   {
-    AppMethodBeat.i(60791);
+    AppMethodBeat.i(11283);
     this.zzie.unregisterConnectionCallbacks(paramConnectionCallbacks);
-    AppMethodBeat.o(60791);
+    AppMethodBeat.o(11283);
   }
   
   public final void unregisterConnectionFailedListener(GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
-    AppMethodBeat.i(60794);
+    AppMethodBeat.i(11286);
     this.zzie.unregisterConnectionFailedListener(paramOnConnectionFailedListener);
-    AppMethodBeat.o(60794);
+    AppMethodBeat.o(11286);
   }
   
   public final void zza(zzch paramzzch)
   {
-    AppMethodBeat.i(60800);
+    AppMethodBeat.i(11292);
     this.zzga.lock();
     try
     {
@@ -873,17 +873,17 @@ public final class zzav
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60800);
+      AppMethodBeat.o(11292);
     }
   }
   
   @GuardedBy("mLock")
   final boolean zzaz()
   {
-    AppMethodBeat.i(60788);
+    AppMethodBeat.i(11280);
     if (!this.zzig)
     {
-      AppMethodBeat.o(60788);
+      AppMethodBeat.o(11280);
       return false;
     }
     this.zzig = false;
@@ -894,14 +894,14 @@ public final class zzav
       this.zzik.unregister();
       this.zzik = null;
     }
-    AppMethodBeat.o(60788);
+    AppMethodBeat.o(11280);
     return true;
   }
   
   @GuardedBy("mLock")
   public final void zzb(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(60797);
+    AppMethodBeat.i(11289);
     if ((paramInt == 1) && (!paramBoolean) && (!this.zzig))
     {
       this.zzig = true;
@@ -917,23 +917,23 @@ public final class zzav
     if (paramInt == 2) {
       zzax();
     }
-    AppMethodBeat.o(60797);
+    AppMethodBeat.o(11289);
   }
   
   @GuardedBy("mLock")
   public final void zzb(Bundle paramBundle)
   {
-    AppMethodBeat.i(60795);
+    AppMethodBeat.i(11287);
     while (!this.zzgo.isEmpty()) {
       execute((BaseImplementation.ApiMethodImpl)this.zzgo.remove());
     }
     this.zzie.onConnectionSuccess(paramBundle);
-    AppMethodBeat.o(60795);
+    AppMethodBeat.o(11287);
   }
   
   public final void zzb(zzch paramzzch)
   {
-    AppMethodBeat.i(60801);
+    AppMethodBeat.i(11293);
     this.zzga.lock();
     for (;;)
     {
@@ -956,7 +956,7 @@ public final class zzav
       finally
       {
         this.zzga.unlock();
-        AppMethodBeat.o(60801);
+        AppMethodBeat.o(11293);
       }
       this.zzif.zzz();
     }
@@ -965,7 +965,7 @@ public final class zzav
   final boolean zzba()
   {
     boolean bool1 = false;
-    AppMethodBeat.i(60802);
+    AppMethodBeat.i(11294);
     this.zzga.lock();
     try
     {
@@ -982,24 +982,24 @@ public final class zzav
     finally
     {
       this.zzga.unlock();
-      AppMethodBeat.o(60802);
+      AppMethodBeat.o(11294);
     }
   }
   
   final String zzbb()
   {
-    AppMethodBeat.i(60803);
+    AppMethodBeat.i(11295);
     Object localObject = new StringWriter();
     dump("", null, new PrintWriter((Writer)localObject), null);
     localObject = ((StringWriter)localObject).toString();
-    AppMethodBeat.o(60803);
+    AppMethodBeat.o(11295);
     return localObject;
   }
   
   @GuardedBy("mLock")
   public final void zzc(ConnectionResult paramConnectionResult)
   {
-    AppMethodBeat.i(60796);
+    AppMethodBeat.i(11288);
     if (!this.zzdg.isPlayServicesPossiblyUpdating(this.mContext, paramConnectionResult.getErrorCode())) {
       zzaz();
     }
@@ -1008,7 +1008,7 @@ public final class zzav
       this.zzie.onConnectionFailure(paramConnectionResult);
       this.zzie.disableCallbacks();
     }
-    AppMethodBeat.o(60796);
+    AppMethodBeat.o(11288);
   }
 }
 

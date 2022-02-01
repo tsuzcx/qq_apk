@@ -14,20 +14,21 @@ import com.tencent.mm.pluginsdk.ui.g;
 import com.tencent.mm.pluginsdk.ui.h.b;
 import com.tencent.mm.pluginsdk.ui.h.c;
 import com.tencent.mm.pluginsdk.ui.h.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.ui.h.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class WebVideoWrapper
   extends RelativeLayout
   implements d.a, com.tencent.mm.pluginsdk.ui.h, h.b, h.c
 {
-  private boolean aTq;
-  private int idD;
-  private d idF;
-  private com.tencent.mm.pluginsdk.ui.h idy;
+  private boolean bqS;
+  private int knG;
   private Context mContext;
-  private h.b ryi;
+  private h.b nns;
+  private d nnt;
   private String url;
+  private com.tencent.mm.pluginsdk.ui.h xdR;
   
   public WebVideoWrapper(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,416 +38,430 @@ public class WebVideoWrapper
   public WebVideoWrapper(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(9860);
+    AppMethodBeat.i(82068);
     this.mContext = paramContext;
-    this.idF = new d();
-    if (this.idy == null)
+    this.nnt = new d();
+    if (this.xdR == null)
     {
       paramContext = new CommonVideoView(this.mContext);
       paramContext.setReporter(this);
       paramContext.setIMMVideoViewCallback(this);
-      hB(200L);
-      this.idy = paramContext;
+      ln(200L);
+      this.xdR = paramContext;
     }
     paramContext = new RelativeLayout.LayoutParams(-1, -2);
     paramContext.addRule(13);
-    addView((View)this.idy, paramContext);
-    AppMethodBeat.o(9860);
+    addView((View)this.xdR, paramContext);
+    AppMethodBeat.o(82068);
   }
   
-  public final void aEM()
+  public final boolean aXf()
   {
-    AppMethodBeat.i(9882);
-    if (this.idy != null) {
-      this.idy.aEM();
-    }
-    this.idF.cJ(false);
-    setKeepScreenOn(false);
-    AppMethodBeat.o(9882);
-  }
-  
-  public final void alo()
-  {
-    AppMethodBeat.i(9881);
-    if (this.idy != null) {
-      this.idy.alo();
-    }
-    this.idF.cJ(false);
-    setKeepScreenOn(false);
-    AppMethodBeat.o(9881);
-  }
-  
-  public final void alp()
-  {
-    AppMethodBeat.i(9880);
-    if (this.idy != null) {
-      this.idy.alp();
-    }
-    AppMethodBeat.o(9880);
-  }
-  
-  public final boolean ay(float paramFloat)
-  {
-    AppMethodBeat.i(9884);
-    if (paramFloat <= 0.0F)
+    AppMethodBeat.i(82082);
+    if (this.xdR != null)
     {
-      AppMethodBeat.o(9884);
-      return false;
-    }
-    if (this.idy != null)
-    {
-      boolean bool = this.idy.ay(paramFloat);
-      AppMethodBeat.o(9884);
+      boolean bool = this.xdR.aXf();
+      AppMethodBeat.o(82082);
       return bool;
     }
-    AppMethodBeat.o(9884);
+    AppMethodBeat.o(82082);
+    return false;
+  }
+  
+  public final void aqt() {}
+  
+  public final void aqu() {}
+  
+  public final void aqv() {}
+  
+  public final void aqw() {}
+  
+  public final boolean ax(float paramFloat)
+  {
+    AppMethodBeat.i(82092);
+    if (paramFloat <= 0.0F)
+    {
+      AppMethodBeat.o(82092);
+      return false;
+    }
+    if (this.xdR != null)
+    {
+      boolean bool = this.xdR.ax(paramFloat);
+      AppMethodBeat.o(82092);
+      return bool;
+    }
+    AppMethodBeat.o(82092);
     return false;
   }
   
   public final void c(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(9885);
-    ab.w("MicroMsg.WebVideoWrapper", "%d onError[%s %d, %d]", new Object[] { Integer.valueOf(hashCode()), paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (this.ryi != null) {
-      this.ryi.c(paramString1, paramString2, paramString3, paramInt1, paramInt2);
+    AppMethodBeat.i(82093);
+    ad.w("MicroMsg.WebVideoWrapper", "%d onError[%s %d, %d]", new Object[] { Integer.valueOf(hashCode()), paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (this.nns != null) {
+      this.nns.c(paramString1, paramString2, paramString3, paramInt1, paramInt2);
     }
-    AppMethodBeat.o(9885);
+    AppMethodBeat.o(82093);
   }
   
   public final void c(boolean paramBoolean, String paramString, int paramInt)
   {
-    AppMethodBeat.i(9861);
-    this.idD = paramInt;
-    this.aTq = paramBoolean;
+    AppMethodBeat.i(82069);
+    this.knG = paramInt;
+    this.bqS = paramBoolean;
     this.url = paramString;
-    if (this.idy != null) {
-      this.idy.c(this.aTq, this.url, this.idD);
+    if (this.xdR != null) {
+      this.xdR.c(this.bqS, this.url, this.knG);
     }
-    AppMethodBeat.o(9861);
+    AppMethodBeat.o(82069);
   }
   
-  public final void cq(String paramString1, String paramString2)
+  public final boolean c(double paramDouble, boolean paramBoolean)
   {
-    AppMethodBeat.i(9886);
-    ab.i("MicroMsg.WebVideoWrapper", "%d onPrepared", new Object[] { Integer.valueOf(hashCode()) });
-    if (this.ryi != null) {
-      this.ryi.cq(paramString1, paramString2);
+    AppMethodBeat.i(82074);
+    if (this.xdR != null)
+    {
+      paramBoolean = this.xdR.c(paramDouble, paramBoolean);
+      AppMethodBeat.o(82074);
+      return paramBoolean;
     }
-    AppMethodBeat.o(9886);
+    AppMethodBeat.o(82074);
+    return false;
   }
   
-  public final void cr(String paramString1, String paramString2)
+  public final void cCC()
   {
-    AppMethodBeat.i(9887);
-    ab.i("MicroMsg.WebVideoWrapper", "%d onVideoEnded", new Object[] { Integer.valueOf(hashCode()) });
-    if (this.ryi != null) {
-      this.ryi.cr(paramString1, paramString2);
+    AppMethodBeat.i(82071);
+    if (this.xdR != null) {
+      this.xdR.cCC();
     }
-    AppMethodBeat.o(9887);
-  }
-  
-  public final void crA()
-  {
-    AppMethodBeat.i(9863);
-    if (this.idy != null) {
-      this.idy.crA();
-    }
-    AppMethodBeat.o(9863);
-  }
-  
-  public final void cs(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(9889);
-    ab.d("MicroMsg.WebVideoWrapper", "%d onVideoPause", new Object[] { Integer.valueOf(hashCode()) });
-    setKeepScreenOn(false);
-    this.idF.cJ(false);
-    if (this.ryi != null) {
-      this.ryi.cs(paramString1, paramString2);
-    }
-    AppMethodBeat.o(9889);
-  }
-  
-  public final void ct(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(9890);
-    ab.d("MicroMsg.WebVideoWrapper", "%d onVideoPlay", new Object[] { Integer.valueOf(hashCode()) });
-    setKeepScreenOn(true);
-    this.idF.a(this);
-    if (this.ryi != null) {
-      this.ryi.ct(paramString1, paramString2);
-    }
-    AppMethodBeat.o(9890);
-  }
-  
-  public final void cu(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(9891);
-    if (this.ryi != null) {
-      this.ryi.cu(paramString1, paramString2);
-    }
-    AppMethodBeat.o(9891);
-  }
-  
-  public final void cv(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(9892);
-    if (this.ryi != null) {
-      this.ryi.cv(paramString1, paramString2);
-    }
-    AppMethodBeat.o(9892);
+    AppMethodBeat.o(82071);
   }
   
   public final void d(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(9888);
-    ab.i("MicroMsg.WebVideoWrapper", "%d onGetVideoSize[%d %d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (this.ryi != null) {
-      this.ryi.d(paramString1, paramString2, paramInt1, paramInt2);
+    AppMethodBeat.i(82096);
+    ad.i("MicroMsg.WebVideoWrapper", "%d onGetVideoSize[%d %d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (this.nns != null) {
+      this.nns.d(paramString1, paramString2, paramInt1, paramInt2);
     }
-    AppMethodBeat.o(9888);
+    AppMethodBeat.o(82096);
   }
   
-  public final boolean d(double paramDouble, boolean paramBoolean)
+  public final void db(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(9866);
-    if (this.idy != null)
-    {
-      paramBoolean = this.idy.d(paramDouble, paramBoolean);
-      AppMethodBeat.o(9866);
-      return paramBoolean;
+    AppMethodBeat.i(82094);
+    ad.i("MicroMsg.WebVideoWrapper", "%d onPrepared", new Object[] { Integer.valueOf(hashCode()) });
+    if (this.nns != null) {
+      this.nns.db(paramString1, paramString2);
     }
-    AppMethodBeat.o(9866);
-    return false;
+    AppMethodBeat.o(82094);
+  }
+  
+  public final void dc(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(82095);
+    ad.i("MicroMsg.WebVideoWrapper", "%d onVideoEnded", new Object[] { Integer.valueOf(hashCode()) });
+    if (this.nns != null) {
+      this.nns.dc(paramString1, paramString2);
+    }
+    AppMethodBeat.o(82095);
+  }
+  
+  public final void dd(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(82097);
+    ad.d("MicroMsg.WebVideoWrapper", "%d onVideoPause", new Object[] { Integer.valueOf(hashCode()) });
+    setKeepScreenOn(false);
+    this.nnt.ea(false);
+    if (this.nns != null) {
+      this.nns.dd(paramString1, paramString2);
+    }
+    AppMethodBeat.o(82097);
+  }
+  
+  public final void de(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(82098);
+    ad.d("MicroMsg.WebVideoWrapper", "%d onVideoPlay", new Object[] { Integer.valueOf(hashCode()) });
+    setKeepScreenOn(true);
+    this.nnt.a(this);
+    if (this.nns != null) {
+      this.nns.de(paramString1, paramString2);
+    }
+    AppMethodBeat.o(82098);
+  }
+  
+  public final void dg(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(82099);
+    if (this.nns != null) {
+      this.nns.dg(paramString1, paramString2);
+    }
+    AppMethodBeat.o(82099);
+  }
+  
+  public final void dh(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(82100);
+    if (this.nns != null) {
+      this.nns.dh(paramString1, paramString2);
+    }
+    AppMethodBeat.o(82100);
   }
   
   public int getCacheTimeSec()
   {
-    AppMethodBeat.i(9872);
-    if (this.idy != null)
+    AppMethodBeat.i(82080);
+    if (this.xdR != null)
     {
-      int i = this.idy.getCacheTimeSec();
-      AppMethodBeat.o(9872);
+      int i = this.xdR.getCacheTimeSec();
+      AppMethodBeat.o(82080);
       return i;
     }
-    AppMethodBeat.o(9872);
+    AppMethodBeat.o(82080);
     return 0;
   }
   
   public int getCurrPosMs()
   {
-    AppMethodBeat.i(9870);
-    if (this.idy != null)
+    AppMethodBeat.i(82078);
+    if (this.xdR != null)
     {
-      int i = this.idy.getCurrPosMs();
-      AppMethodBeat.o(9870);
+      int i = this.xdR.getCurrPosMs();
+      AppMethodBeat.o(82078);
       return i;
     }
-    AppMethodBeat.o(9870);
+    AppMethodBeat.o(82078);
     return 0;
   }
   
   public int getCurrPosSec()
   {
-    AppMethodBeat.i(9871);
-    if (this.idy != null)
+    AppMethodBeat.i(82079);
+    if (this.xdR != null)
     {
-      int i = this.idy.getCurrPosSec();
-      AppMethodBeat.o(9871);
+      int i = this.xdR.getCurrPosSec();
+      AppMethodBeat.o(82079);
       return i;
     }
-    AppMethodBeat.o(9871);
+    AppMethodBeat.o(82079);
     return 0;
   }
   
   public int getPlayerType()
   {
-    AppMethodBeat.i(9864);
-    if (this.idy != null)
+    AppMethodBeat.i(82072);
+    if (this.xdR != null)
     {
-      int i = this.idy.getPlayerType();
-      AppMethodBeat.o(9864);
+      int i = this.xdR.getPlayerType();
+      AppMethodBeat.o(82072);
       return i;
     }
-    AppMethodBeat.o(9864);
+    AppMethodBeat.o(82072);
     return 0;
   }
   
   public int getVideoDurationSec()
   {
-    AppMethodBeat.i(9869);
-    if (this.idy != null)
+    AppMethodBeat.i(82077);
+    if (this.xdR != null)
     {
-      i = this.idy.getVideoDurationSec();
-      AppMethodBeat.o(9869);
+      i = this.xdR.getVideoDurationSec();
+      AppMethodBeat.o(82077);
       return i;
     }
-    int i = this.idD;
-    AppMethodBeat.o(9869);
+    int i = this.knG;
+    AppMethodBeat.o(82077);
     return i;
-  }
-  
-  public final void hB(long paramLong)
-  {
-    AppMethodBeat.i(9894);
-    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(600L, paramLong, 1L, false);
-    AppMethodBeat.o(9894);
-  }
-  
-  public final boolean isLive()
-  {
-    AppMethodBeat.i(9874);
-    if (this.idy != null)
-    {
-      boolean bool = this.idy.isLive();
-      AppMethodBeat.o(9874);
-      return bool;
-    }
-    AppMethodBeat.o(9874);
-    return false;
   }
   
   public final boolean isPlaying()
   {
-    AppMethodBeat.i(9873);
-    if (this.idy != null)
+    AppMethodBeat.i(82081);
+    if (this.xdR != null)
     {
-      boolean bool = this.idy.isPlaying();
-      AppMethodBeat.o(9873);
+      boolean bool = this.xdR.isPlaying();
+      AppMethodBeat.o(82081);
       return bool;
     }
-    AppMethodBeat.o(9873);
+    AppMethodBeat.o(82081);
+    return false;
+  }
+  
+  public final void jw(String paramString1, String paramString2) {}
+  
+  public final void ln(long paramLong)
+  {
+    AppMethodBeat.i(82102);
+    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(600L, paramLong, 1L, false);
+    AppMethodBeat.o(82102);
+  }
+  
+  public final void onUIDestroy()
+  {
+    AppMethodBeat.i(82090);
+    if (this.xdR != null) {
+      this.xdR.onUIDestroy();
+    }
+    this.nnt.ea(false);
+    setKeepScreenOn(false);
+    AppMethodBeat.o(82090);
+  }
+  
+  public final void onUIPause()
+  {
+    AppMethodBeat.i(82089);
+    if (this.xdR != null) {
+      this.xdR.onUIPause();
+    }
+    this.nnt.ea(false);
+    setKeepScreenOn(false);
+    AppMethodBeat.o(82089);
+  }
+  
+  public final void onUIResume()
+  {
+    AppMethodBeat.i(82088);
+    if (this.xdR != null) {
+      this.xdR.onUIResume();
+    }
+    AppMethodBeat.o(82088);
+  }
+  
+  public final boolean p(double paramDouble)
+  {
+    AppMethodBeat.i(82073);
+    if (this.xdR != null)
+    {
+      boolean bool = this.xdR.p(paramDouble);
+      AppMethodBeat.o(82073);
+      return bool;
+    }
+    AppMethodBeat.o(82073);
     return false;
   }
   
   public final boolean pause()
   {
-    AppMethodBeat.i(9878);
-    if (this.idy != null)
+    AppMethodBeat.i(82086);
+    if (this.xdR != null)
     {
       setKeepScreenOn(false);
-      this.idF.cJ(false);
-      boolean bool = this.idy.pause();
-      AppMethodBeat.o(9878);
+      this.nnt.ea(false);
+      boolean bool = this.xdR.pause();
+      AppMethodBeat.o(82086);
       return bool;
     }
-    AppMethodBeat.o(9878);
+    AppMethodBeat.o(82086);
     return false;
   }
   
-  public final boolean r(double paramDouble)
+  public final void pj(String paramString)
   {
-    AppMethodBeat.i(9865);
-    if (this.idy != null)
-    {
-      boolean bool = this.idy.r(paramDouble);
-      AppMethodBeat.o(9865);
-      return bool;
-    }
-    AppMethodBeat.o(9865);
-    return false;
+    AppMethodBeat.i(82103);
+    com.tencent.mm.plugin.report.service.h.vKh.kvStat(14349, paramString);
+    AppMethodBeat.o(82103);
   }
   
   public void setCover(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(9875);
-    if (this.idy != null) {
-      this.idy.setCover(paramBitmap);
+    AppMethodBeat.i(82083);
+    if (this.xdR != null) {
+      this.xdR.setCover(paramBitmap);
     }
-    AppMethodBeat.o(9875);
+    AppMethodBeat.o(82083);
   }
   
   public void setFullDirection(int paramInt)
   {
-    AppMethodBeat.i(9868);
-    if (this.idy != null) {
-      this.idy.setFullDirection(paramInt);
+    AppMethodBeat.i(82076);
+    if (this.xdR != null) {
+      this.xdR.setFullDirection(paramInt);
     }
-    AppMethodBeat.o(9868);
+    AppMethodBeat.o(82076);
   }
   
   public void setIMMVideoViewCallback(h.b paramb)
   {
-    this.ryi = paramb;
+    this.nns = paramb;
   }
   
   public void setIsShowBasicControls(boolean paramBoolean)
   {
-    AppMethodBeat.i(9867);
-    if (this.idy != null) {
-      this.idy.setIsShowBasicControls(paramBoolean);
+    AppMethodBeat.i(82075);
+    if (this.xdR != null) {
+      this.xdR.setIsShowBasicControls(paramBoolean);
     }
-    AppMethodBeat.o(9867);
+    AppMethodBeat.o(82075);
   }
   
   public void setKeepScreenOn(boolean paramBoolean)
   {
-    AppMethodBeat.i(9893);
-    ab.d("MicroMsg.WebVideoWrapper", "set keep screen on[%b] stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), bo.dtY() });
+    AppMethodBeat.i(82101);
+    ad.d("MicroMsg.WebVideoWrapper", "set keep screen on[%b] stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), bt.eGN() });
     super.setKeepScreenOn(paramBoolean);
-    AppMethodBeat.o(9893);
+    AppMethodBeat.o(82101);
   }
+  
+  public void setLoop(boolean paramBoolean) {}
+  
+  public void setLoopCompletionCallback(h.d paramd) {}
   
   public void setMute(boolean paramBoolean)
   {
-    AppMethodBeat.i(9879);
-    if (this.idy != null) {
-      this.idy.setMute(paramBoolean);
+    AppMethodBeat.i(82087);
+    if (this.xdR != null) {
+      this.xdR.setMute(paramBoolean);
     }
-    AppMethodBeat.o(9879);
+    AppMethodBeat.o(82087);
   }
   
-  public void setScaleType(h.d paramd)
+  public void setScaleType(h.e parame)
   {
-    AppMethodBeat.i(9883);
-    if (this.idy != null) {
-      this.idy.setScaleType(paramd);
+    AppMethodBeat.i(82091);
+    if (this.xdR != null) {
+      this.xdR.setScaleType(parame);
     }
-    AppMethodBeat.o(9883);
+    AppMethodBeat.o(82091);
   }
   
   public void setVideoFooterView(g paramg)
   {
-    AppMethodBeat.i(9862);
-    if (this.idy != null) {
-      this.idy.setVideoFooterView(paramg);
+    AppMethodBeat.i(82070);
+    if (this.xdR != null) {
+      this.xdR.setVideoFooterView(paramg);
     }
-    AppMethodBeat.o(9862);
+    AppMethodBeat.o(82070);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(9876);
-    if (this.idy != null)
+    AppMethodBeat.i(82084);
+    if (this.xdR != null)
     {
-      this.idy.start();
+      this.xdR.start();
       setKeepScreenOn(true);
-      this.idF.a(this);
+      this.nnt.a(this);
     }
-    AppMethodBeat.o(9876);
+    AppMethodBeat.o(82084);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(9877);
-    if (this.idy != null)
+    AppMethodBeat.i(82085);
+    if (this.xdR != null)
     {
-      this.idy.stop();
-      this.idF.cJ(false);
+      this.xdR.stop();
+      this.nnt.ea(false);
       setKeepScreenOn(false);
     }
-    AppMethodBeat.o(9877);
-  }
-  
-  public final void xE(String paramString)
-  {
-    AppMethodBeat.i(9895);
-    com.tencent.mm.plugin.report.service.h.qsU.kvStat(14349, paramString);
-    AppMethodBeat.o(9895);
+    AppMethodBeat.o(82085);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.media.WebVideoWrapper
  * JD-Core Version:    0.7.0.1
  */

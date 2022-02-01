@@ -1,95 +1,101 @@
 package com.tencent.mm.audio.mix.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.a.d;
+import com.tencent.mm.audio.mix.a.e;
+import com.tencent.mm.audio.mix.h.b;
 import java.util.ArrayList;
 
-public class c
+public final class c
 {
-  private static c ceE;
-  private ArrayList<d> ceC;
+  private static c cTB;
+  private long cTA;
+  private ArrayList<e> cTC;
+  private int count;
   private Object sLock;
+  private int size;
   
   private c()
   {
-    AppMethodBeat.i(136987);
-    this.ceC = new ArrayList();
+    AppMethodBeat.i(136731);
+    this.cTC = new ArrayList();
     this.sLock = new Object();
-    AppMethodBeat.o(136987);
+    this.cTA = 3000000L;
+    this.size = 0;
+    this.count = 0;
+    AppMethodBeat.o(136731);
   }
   
-  public static c Dc()
+  public static c MJ()
   {
-    AppMethodBeat.i(136988);
-    if (ceE == null) {}
+    AppMethodBeat.i(136732);
+    if (cTB == null) {}
     try
     {
-      if (ceE == null) {
-        ceE = new c();
+      if (cTB == null) {
+        cTB = new c();
       }
-      c localc = ceE;
-      AppMethodBeat.o(136988);
+      c localc = cTB;
+      AppMethodBeat.o(136732);
       return localc;
     }
     finally
     {
-      AppMethodBeat.o(136988);
+      AppMethodBeat.o(136732);
     }
   }
   
-  public final d Db()
+  public final e MK()
   {
-    AppMethodBeat.i(136989);
+    AppMethodBeat.i(136733);
     synchronized (this.sLock)
     {
-      if (this.ceC.size() > 0)
+      if (this.cTC.size() > 0)
       {
-        d locald = (d)this.ceC.remove(this.ceC.size() - 1);
-        AppMethodBeat.o(136989);
-        return locald;
+        e locale = (e)this.cTC.remove(this.cTC.size() - 1);
+        AppMethodBeat.o(136733);
+        return locale;
       }
-      ??? = new d();
-      AppMethodBeat.o(136989);
+      if (this.size >= this.cTA)
+      {
+        b.e("MicroMsg.Mix.AudioPcmDataTrackFixedSizePool", "size >= FIX_SIZE, size:%d", new Object[] { Integer.valueOf(this.size) });
+        AppMethodBeat.o(136733);
+        return null;
+      }
+      this.count += 1;
+      this.size = (this.count * 3536);
+      b.i("MicroMsg.Mix.AudioPcmDataTrackFixedSizePool", "pool tract count:%d", new Object[] { Integer.valueOf(this.count) });
+      ??? = new e();
+      ((e)???).cTv = true;
+      AppMethodBeat.o(136733);
       return ???;
     }
   }
   
-  public final long Dd()
+  public final void b(e parame)
   {
-    try
+    AppMethodBeat.i(136734);
+    if ((parame == null) || (parame.cTk == null))
     {
-      AppMethodBeat.i(136991);
-      long l = this.ceC.size() * 3536;
-      AppMethodBeat.o(136991);
-      return l;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void b(d paramd)
-  {
-    AppMethodBeat.i(136990);
-    if ((paramd == null) || (paramd.cem == null))
-    {
-      AppMethodBeat.o(136990);
+      AppMethodBeat.o(136734);
       return;
     }
-    paramd.reset();
+    if (!parame.cTv)
+    {
+      AppMethodBeat.o(136734);
+      return;
+    }
+    parame.reset();
     synchronized (this.sLock)
     {
-      this.ceC.add(0, paramd);
-      AppMethodBeat.o(136990);
+      this.cTC.add(0, parame);
+      AppMethodBeat.o(136734);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.b.c
  * JD-Core Version:    0.7.0.1
  */

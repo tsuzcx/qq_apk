@@ -1,51 +1,93 @@
 package com.tencent.luggage.game.c;
 
-import com.tencent.luggage.game.g.a;
-import com.tencent.luggage.game.g.a.a;
-import com.tencent.magicbrush.a.b;
-import com.tencent.magicbrush.a.c.c;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.os.Looper;
+import android.support.v7.widget.AppCompatTextView;
+import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class d
+@SuppressLint({"ViewConstructor"})
+public final class d
+  extends AppCompatTextView
 {
-  private static final a.a bAf;
+  StringBuilder bvd;
+  private final List<f> cbP;
+  public e.c cbQ;
+  public av cbR;
   
-  static
+  public d(Context paramContext)
   {
-    AppMethodBeat.i(140361);
-    bAf = new a.a();
-    AppMethodBeat.o(140361);
+    super(paramContext);
+    AppMethodBeat.i(130513);
+    this.cbP = new ArrayList(4);
+    this.bvd = new StringBuilder(100);
+    this.cbQ = null;
+    this.cbR = new av(Looper.getMainLooper(), new av.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(130512);
+        d.a(d.this).clear();
+        if (d.b(d.this) != null) {
+          d.b(d.this).K(d.a(d.this));
+        }
+        d locald = d.this;
+        Object localObject = d.a(d.this);
+        locald.bvd.setLength(0);
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          f localf = (f)((Iterator)localObject).next();
+          locald.bvd.append(localf.key).append("[").append(localf.ccj).append("] ");
+        }
+        locald.setText(locald.bvd);
+        AppMethodBeat.o(130512);
+        return true;
+      }
+    }, true);
+    setTextSize(12.0F);
+    setTextColor(-65536);
+    setFocusable(false);
+    setClickable(false);
+    setOnClickListener(null);
+    this.cbR.av(2000L, 2000L);
+    AppMethodBeat.o(130513);
   }
   
-  public final void uD()
+  @SuppressLint({"ClickableViewAccessibility"})
+  public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(140358);
-    a.a(bAf, new d.1(this));
-    AppMethodBeat.o(140358);
+    return false;
   }
   
-  protected void uE()
+  public final void setInfo(List<f> paramList)
   {
-    AppMethodBeat.i(140359);
-    long l = bo.yB();
-    b.loadLibraries();
-    ab.i("MicroMsg.MBLogDelegateRegistry", "dl: load magicbrush [%d]ms", new Object[] { Long.valueOf(bo.av(l)) });
-    AppMethodBeat.o(140359);
+    AppMethodBeat.i(130514);
+    this.bvd.setLength(0);
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      f localf = (f)paramList.next();
+      this.bvd.append(localf.key).append("[").append(localf.ccj).append("] ");
+    }
+    setText(this.bvd);
+    AppMethodBeat.o(130514);
   }
   
-  protected final void uF()
+  public final void setOnRequestUpdateShowItemsCallback(e.c paramc)
   {
-    AppMethodBeat.i(140360);
-    uE();
-    c.c.a(new d.2(this));
-    AppMethodBeat.o(140360);
+    this.cbQ = paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.game.c.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,110 +1,106 @@
 package com.tencent.mm.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class b
 {
-  public static int MR()
+  public static int YE()
   {
-    AppMethodBeat.i(77655);
-    int i = bo.getInt(g.Nq().getValue("InputLimitSNSObjectText"), 2000);
-    AppMethodBeat.o(77655);
+    AppMethodBeat.i(149991);
+    int i = bt.getInt(g.Zd().getValue("InputLimitSNSObjectText"), 2000);
+    AppMethodBeat.o(149991);
     return i * 2;
   }
   
-  public static int MS()
+  public static int YF()
   {
-    AppMethodBeat.i(77656);
-    int i = bo.getInt(g.Nq().getValue("SnsCommentMaxSize"), 1000);
-    AppMethodBeat.o(77656);
+    AppMethodBeat.i(149992);
+    int i = bt.getInt(g.Zd().getValue("SnsCommentMaxSize"), 1000);
+    AppMethodBeat.o(149992);
     return i * 2;
   }
   
-  public static int MT()
+  public static int YG()
   {
-    AppMethodBeat.i(77657);
-    int i = bo.getInt(g.Nq().getValue("InputLimitFavText"), 100000);
-    AppMethodBeat.o(77657);
+    AppMethodBeat.i(149993);
+    int i = bt.getInt(g.Zd().getValue("InputLimitFavText"), 100000);
+    AppMethodBeat.o(149993);
     return i * 2;
   }
   
-  public static int MU()
+  public static int YH()
   {
-    AppMethodBeat.i(77658);
-    int i = bo.getInt(g.Nq().getValue("InputLimitSendEmotionBufSize"), 10485760);
-    AppMethodBeat.o(77658);
+    AppMethodBeat.i(149994);
+    int i = bt.getInt(g.Zd().getValue("InputLimitSendEmotionBufSize"), 10485760);
+    AppMethodBeat.o(149994);
     return i;
   }
   
-  public static int MV()
+  public static int YI()
   {
-    AppMethodBeat.i(77659);
+    AppMethodBeat.i(149995);
     try
     {
-      int i = bo.getInt(g.Nq().getValue("InputLimitSendEmotionWidth"), 1024);
-      AppMethodBeat.o(77659);
+      int i = bt.getInt(g.Zd().getValue("InputLimitSendEmotionWidth"), 1024);
+      AppMethodBeat.o(149995);
       return i;
     }
     catch (Exception localException)
     {
-      ab.a("MicroMsg.BoundaryConfig", "getCustomEmojiMaxWidthAndHeight:%s", new Object[] { localException });
-      AppMethodBeat.o(77659);
+      ad.l("MicroMsg.BoundaryConfig", "getCustomEmojiMaxWidthAndHeight:%s", new Object[] { localException });
+      AppMethodBeat.o(149995);
     }
     return 1024;
   }
   
-  public static int MW()
+  public static int YJ()
   {
-    AppMethodBeat.i(77660);
+    AppMethodBeat.i(149996);
     try
     {
-      int i = bo.getInt(g.Nq().getValue("InputLimitSendAppMsgEmotionBufSize"), 5242880);
-      AppMethodBeat.o(77660);
+      int i = bt.getInt(g.Zd().getValue("InputLimitSendAppMsgEmotionBufSize"), 5242880);
+      AppMethodBeat.o(149996);
       return i;
     }
     catch (Exception localException)
     {
-      ab.a("MicroMsg.BoundaryConfig", "getAppEmojiMsgMaxSize:%s", new Object[] { localException });
-      AppMethodBeat.o(77660);
+      ad.l("MicroMsg.BoundaryConfig", "getAppEmojiMsgMaxSize:%s", new Object[] { localException });
+      AppMethodBeat.o(149996);
     }
     return 5242880;
   }
   
-  public static int MX()
+  public static int YK()
   {
-    AppMethodBeat.i(77661);
-    if (!com.tencent.mm.kernel.g.RJ().QU())
-    {
-      AppMethodBeat.o(77661);
-      return 26214400;
-    }
-    int i = bo.getInt(g.Nq().getValue("InputLimitFavImageSize"), 26214400);
-    AppMethodBeat.o(77661);
+    AppMethodBeat.i(149997);
+    int i = bt.getInt(g.Zd().getValue("InputLimitVideoSize"), 26214400);
+    AppMethodBeat.o(149997);
     return i;
   }
   
-  public static int MY()
+  public static String YL()
   {
-    AppMethodBeat.i(77662);
-    int i = bo.getInt(g.Nq().getValue("InputLimitVideoSize"), 26214400);
-    AppMethodBeat.o(77662);
-    return i;
-  }
-  
-  public static String MZ()
-  {
-    AppMethodBeat.i(77663);
-    String str = g.Nq().getValue("InputLimitForbiddenChar");
-    AppMethodBeat.o(77663);
+    AppMethodBeat.i(149998);
+    String str = g.Zd().getValue("InputLimitForbiddenChar");
+    AppMethodBeat.o(149998);
     return str;
+  }
+  
+  public static long YM()
+  {
+    AppMethodBeat.i(177286);
+    String str = g.Zd().getValue("InputLimitGroupFileTotalSize");
+    ad.d("MicroMsg.BoundaryConfig", "MaxMultipleFileTotalSize, svrLimit:%s, localLimit:%s", new Object[] { str, Long.valueOf(107374182400L) });
+    long l = bt.getLong(str, 107374182400L);
+    AppMethodBeat.o(177286);
+    return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.m.b
  * JD-Core Version:    0.7.0.1
  */

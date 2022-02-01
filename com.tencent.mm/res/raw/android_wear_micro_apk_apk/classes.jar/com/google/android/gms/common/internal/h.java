@@ -10,7 +10,7 @@ import com.google.android.gms.a.f;
 public final class h
   extends e<az>
 {
-  private static final h Jk = new h();
+  private static final h KZ = new h();
   
   private h()
   {
@@ -19,7 +19,7 @@ public final class h
   
   public static View b(Context paramContext, int paramInt1, int paramInt2)
   {
-    return Jk.c(paramContext, paramInt1, paramInt2);
+    return KZ.c(paramContext, paramInt1, paramInt2);
   }
   
   private View c(Context paramContext, int paramInt1, int paramInt2)
@@ -27,8 +27,8 @@ public final class h
     try
     {
       zzah localzzah = new zzah(paramInt1, paramInt2);
-      a locala = d.w(paramContext);
-      paramContext = (View)d.a(((az)q(paramContext)).a(locala, localzzah));
+      a locala = d.F(paramContext);
+      paramContext = (View)d.a(((az)r(paramContext)).a(locala, localzzah));
       return paramContext;
     }
     catch (Exception paramContext)

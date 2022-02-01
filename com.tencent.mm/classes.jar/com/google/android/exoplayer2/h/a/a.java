@@ -6,29 +6,27 @@ import java.util.NavigableSet;
 
 public abstract interface a
 {
-  public abstract NavigableSet<e> a(String paramString, a.b paramb);
+  public abstract NavigableSet<g> a(String paramString, b paramb);
   
-  public abstract void a(e parame);
+  public abstract void a(g paramg);
   
-  public abstract long ay(String paramString);
+  public abstract long aB(String paramString);
   
-  public abstract void b(e parame);
+  public abstract void b(g paramg);
   
-  public abstract e d(String paramString, long paramLong);
+  public abstract g d(String paramString, long paramLong);
   
-  public abstract e e(String paramString, long paramLong);
+  public abstract g e(String paramString, long paramLong);
   
-  public abstract File e(String paramString, long paramLong1, long paramLong2);
+  public abstract File f(String paramString, long paramLong1, long paramLong2);
   
   public abstract void f(String paramString, long paramLong);
   
-  public abstract boolean f(String paramString, long paramLong1, long paramLong2);
-  
   public abstract long g(String paramString, long paramLong1, long paramLong2);
   
-  public abstract void k(File paramFile);
+  public abstract long vr();
   
-  public abstract long qw();
+  public abstract void w(File paramFile);
   
   public static class a
     extends IOException
@@ -42,6 +40,15 @@ public abstract interface a
     {
       super();
     }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void a(a parama, g paramg);
+    
+    public abstract void a(a parama, g paramg1, g paramg2);
+    
+    public abstract void c(g paramg);
   }
 }
 

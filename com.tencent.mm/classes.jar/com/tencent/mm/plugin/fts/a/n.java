@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.fts.a;
 
 import android.content.Context;
 import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.plugin.fts.a.a.l;
 import com.tencent.mm.plugin.fts.a.d.a.b;
 import com.tencent.mm.plugin.fts.a.d.c;
 import com.tencent.mm.plugin.fts.a.d.e;
@@ -13,7 +12,7 @@ import java.util.LinkedList;
 public abstract interface n
   extends com.tencent.mm.kernel.b.d
 {
-  public abstract void addSOSHistory(String paramString);
+  public abstract void addSOSHistory(String paramString1, String paramString2);
   
   public abstract void cancelSearchTask(a parama);
   
@@ -49,7 +48,7 @@ public abstract interface n
   
   public abstract void registerNativeLogic(int paramInt, k paramk);
   
-  public abstract a search(int paramInt, com.tencent.mm.plugin.fts.a.a.i parami);
+  public abstract a search(int paramInt, com.tencent.mm.plugin.fts.a.a.j paramj);
   
   public abstract int stringCompareUtfBinary(String paramString1, String paramString2);
   
@@ -61,11 +60,11 @@ public abstract interface n
   
   public abstract void unregisterNativeLogic(int paramInt);
   
-  public abstract void updateTopHitsRank(String paramString, l paraml, int paramInt);
+  public abstract void updateTopHitsRank(String paramString, com.tencent.mm.plugin.fts.a.a.m paramm, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.n
  * JD-Core Version:    0.7.0.1
  */

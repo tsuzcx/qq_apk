@@ -1,33 +1,32 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video;
 
-import a.f.a.b;
-import a.f.b.k;
-import a.l;
-import a.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.WebView;
+import d.g.a.m;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "webViewDenisty", "", "invoke"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "view", "Lcom/tencent/xweb/WebView;", "url", "", "invoke"})
 final class BizVideoDetailUI$g
-  extends k
-  implements b<Float, y>
+  extends d.g.b.l
+  implements m<WebView, String, y>
 {
-  public static final g kgj;
+  public static final g njK;
   
   static
   {
-    AppMethodBeat.i(152816);
-    kgj = new g();
-    AppMethodBeat.o(152816);
+    AppMethodBeat.i(7091);
+    njK = new g();
+    AppMethodBeat.o(7091);
   }
   
   BizVideoDetailUI$g()
   {
-    super(1);
+    super(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.video.BizVideoDetailUI.g
  * JD-Core Version:    0.7.0.1
  */

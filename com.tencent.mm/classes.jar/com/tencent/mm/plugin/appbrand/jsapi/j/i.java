@@ -1,110 +1,164 @@
 package com.tencent.mm.plugin.appbrand.jsapi.j;
 
-import android.net.nsd.NsdManager;
-import android.text.TextUtils;
-import com.tencent.luggage.g.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.m.p;
-import com.tencent.mm.plugin.appbrand.m.p.1;
-import com.tencent.mm.plugin.appbrand.m.p.b;
-import com.tencent.mm.sdk.platformtools.al;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mm.plugin.appbrand.jsapi.websocket.d;
+import com.tencent.mm.plugin.appbrand.q.k.c;
+import com.tencent.mm.plugin.appbrand.q.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.nio.ByteBuffer;
+import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONObject;
 
 public final class i
-  extends a<c>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a
 {
-  public static final int CTRL_INDEX = 529;
-  public static final String NAME = "operateLocalServicesScan";
-  final Map<String, i.a> gRJ;
+  public static final int CTRL_INDEX = 347;
+  public static final String NAME = "operateSocketTask";
+  private k.c kan;
+  private boolean kar;
+  private boolean kas;
+  private final AtomicBoolean kat;
   
-  public i()
+  public i(k.c paramc)
   {
-    AppMethodBeat.i(108072);
-    this.gRJ = new ConcurrentHashMap();
-    AppMethodBeat.o(108072);
+    AppMethodBeat.i(144243);
+    this.kar = false;
+    this.kas = false;
+    this.kat = new AtomicBoolean(false);
+    this.kan = paramc;
+    AppMethodBeat.o(144243);
   }
   
-  static String k(c paramc, String paramString)
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(108074);
-    paramc = paramc.getAppId() + "#" + paramString;
-    AppMethodBeat.o(108074);
-    return paramc;
-  }
-  
-  public final void a(c paramc, JSONObject arg2, int paramInt)
-  {
-    AppMethodBeat.i(108073);
-    ??? = ???.optString("action");
-    d.i("MicroMsg.JsApiOperateLocalServicesScan", "action = ".concat(String.valueOf(???)));
-    Object localObject2;
-    if (TextUtils.equals("start", (CharSequence)???))
+    AppMethodBeat.i(144244);
+    ad.d("MicroMsg.JsApiOperateSocketTask", "JsApiOperateSocketTask");
+    if ((!this.kat.getAndSet(true)) && (this.kan != null))
     {
-      ??? = ???.optString("serviceType");
-      if (TextUtils.isEmpty(???))
+      this.kar = this.kan.Dx(paramc.getAppId());
+      this.kas = this.kan.aNR();
+    }
+    if (paramJSONObject == null)
+    {
+      paramc.h(paramInt, e("fail:data is null", null));
+      ad.e("MicroMsg.JsApiOperateSocketTask", "data is null");
+      AppMethodBeat.o(144244);
+      return;
+    }
+    String str1 = paramJSONObject.optString("socketTaskId");
+    if (bt.isNullOrNil(str1))
+    {
+      ad.e("MicroMsg.JsApiOperateSocketTask", "taskId is null");
+      paramc.h(paramInt, e("fail:taskId is null or nil", null));
+      AppMethodBeat.o(144244);
+      return;
+    }
+    String str2 = paramJSONObject.optString("operationType");
+    if (bt.isNullOrNil(str2))
+    {
+      ad.e("MicroMsg.JsApiOperateSocketTask", "operationType is null");
+      paramc.h(paramInt, e("fail:operationType is null or nil", null));
+      AppMethodBeat.o(144244);
+      return;
+    }
+    d locald = l.biu().Li(paramc.getAppId());
+    if (locald == null)
+    {
+      paramc.h(paramInt, e("fail:no task", null));
+      ad.w("MicroMsg.JsApiOperateSocketTask", "client is null");
+      AppMethodBeat.o(144244);
+      return;
+    }
+    com.tencent.mm.plugin.appbrand.jsapi.websocket.e locale = locald.JE(str1);
+    if (locale == null)
+    {
+      paramc.h(paramInt, e("fail:taskID not exist", null));
+      ad.w("MicroMsg.JsApiOperateSocketTask", "webSocketClient is null");
+      AppMethodBeat.o(144244);
+      return;
+    }
+    if (str2.equals("close"))
+    {
+      int i = paramJSONObject.optInt("code", 1000);
+      if ((i != 1000) && ((i < 3000) || (i >= 5000)))
       {
-        paramc.h(paramInt, j("fail:invalid param", null));
-        AppMethodBeat.o(108073);
+        paramc.h(paramInt, e("fail:The code must be either 1000, or between 3000 and 4999", null));
+        AppMethodBeat.o(144244);
         return;
       }
-      synchronized (this.gRJ)
+      paramJSONObject = paramJSONObject.optString("reason", "");
+      locald.a(locale, i, paramJSONObject);
+      paramc.h(paramInt, e("ok", null));
+      ad.i("MicroMsg.JsApiOperateSocketTask", "closeSocket taskId:%s, code %d, reason %s", new Object[] { str1, Integer.valueOf(i), paramJSONObject });
+      AppMethodBeat.o(144244);
+      return;
+    }
+    if (str2.equals("send"))
+    {
+      if (!locald.b(locale))
       {
-        localObject2 = this.gRJ.keySet().iterator();
-        while (((Iterator)localObject2).hasNext()) {
-          if (((String)((Iterator)localObject2).next()).contains(paramc.getAppId()))
+        paramc.h(paramInt, e("fail:don't send before socket connected", null));
+        ad.w("MicroMsg.JsApiOperateSocketTask", "send fail taskId: %s", new Object[] { str1 });
+        AppMethodBeat.o(144244);
+        return;
+      }
+      paramJSONObject = paramJSONObject.opt("data");
+      if (paramJSONObject != null) {
+        try
+        {
+          if ((paramJSONObject instanceof ByteBuffer))
           {
-            paramc.h(paramInt, j("fail:scan task already exist", null));
-            AppMethodBeat.o(108073);
+            ad.d("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage ok message:%s", new Object[] { paramJSONObject });
+            locald.a(locale, (ByteBuffer)paramJSONObject);
+            ((com.tencent.mm.plugin.appbrand.u.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.u.a.class)).idkeyStat(972L, 4L, 1L, false);
+          }
+          for (;;)
+          {
+            paramc.h(paramInt, e("ok", null));
+            AppMethodBeat.o(144244);
+            return;
+            if (!(paramJSONObject instanceof String)) {
+              break;
+            }
+            ad.d("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage ok message");
+            locald.a(locale, (String)paramJSONObject);
+            ((com.tencent.mm.plugin.appbrand.u.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.u.a.class)).idkeyStat(972L, 4L, 1L, false);
+          }
+          paramc.h(paramInt, e("fail:message is null or nil", null));
+        }
+        catch (Exception paramJSONObject)
+        {
+          paramc.h(paramInt, e("fail:" + paramJSONObject.getMessage(), null));
+          if ((this.kar) || (this.kas))
+          {
+            ((com.tencent.mm.plugin.appbrand.u.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.u.a.class)).idkeyStat(972L, 6L, 1L, false);
+            AppMethodBeat.o(144244);
+            return;
+            ad.w("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage error message type wrong");
+            paramc.h(paramInt, e("fail:unknown data", null));
+            AppMethodBeat.o(144244);
             return;
           }
+          ((com.tencent.mm.plugin.appbrand.u.a)com.tencent.luggage.a.e.L(com.tencent.mm.plugin.appbrand.u.a.class)).idkeyStat(972L, 5L, 1L, false);
+          AppMethodBeat.o(144244);
+          return;
         }
-        ??? = new i.a(this, paramc);
-        ((i.a)???).hUg.set(paramInt);
-        this.gRJ.put(k(paramc, ???), ???);
-        localObject2 = p.itw;
-        NsdManager localNsdManager = p.aIu();
-        p.1 local1 = new p.1((p)localObject2, (p.b)???);
-        ((p)localObject2).itx.put(???, local1);
-        localNsdManager.discoverServices(???, 1, local1);
-        al.p(new i.1(this, paramc, ???, (i.a)???), 30000L);
-        AppMethodBeat.o(108073);
-        return;
       }
+      ad.w("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage fail:%s", new Object[] { paramJSONObject });
+      AppMethodBeat.o(144244);
+      return;
     }
-    if (TextUtils.equals("stop", (CharSequence)???)) {
-      synchronized (this.gRJ)
-      {
-        ??? = this.gRJ.values().iterator();
-        for (int i = 1; ((Iterator)???).hasNext(); i = 0)
-        {
-          localObject2 = (i.a)((Iterator)???).next();
-          ((i.a)localObject2).hUh.set(paramInt);
-          p.itw.a((p.b)localObject2);
-        }
-        if (i != 0) {
-          paramc.h(paramInt, j("fail:task not found", null));
-        }
-        this.gRJ.clear();
-        AppMethodBeat.o(108073);
-        return;
-      }
-    }
-    paramc.h(paramInt, j("fail:invalid param", null));
-    AppMethodBeat.o(108073);
+    paramc.h(paramInt, e("fail:unknown operationType", null));
+    ad.w("MicroMsg.JsApiOperateSocketTask", "sendSocketMessage fail:unknown operationType");
+    AppMethodBeat.o(144244);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.j.i
  * JD-Core Version:    0.7.0.1
  */

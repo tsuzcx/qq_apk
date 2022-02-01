@@ -27,11 +27,11 @@ public final class FacebookRequestError
   private static final String ERROR_TYPE_FIELD_KEY = "type";
   private static final String ERROR_USER_MSG_KEY = "error_user_msg";
   private static final String ERROR_USER_TITLE_KEY = "error_user_title";
-  static final FacebookRequestError.Range HTTP_RANGE_SUCCESS;
+  static final Range HTTP_RANGE_SUCCESS;
   public static final int INVALID_ERROR_CODE = -1;
   public static final int INVALID_HTTP_STATUS_CODE = -1;
   private final Object batchRequestResult;
-  private final FacebookRequestError.Category category;
+  private final Category category;
   private final HttpURLConnection connection;
   private final int errorCode;
   private final String errorMessage;
@@ -47,15 +47,29 @@ public final class FacebookRequestError
   
   static
   {
-    AppMethodBeat.i(71596);
-    HTTP_RANGE_SUCCESS = new FacebookRequestError.Range(200, 299, null);
-    CREATOR = new FacebookRequestError.1();
-    AppMethodBeat.o(71596);
+    AppMethodBeat.i(17032);
+    HTTP_RANGE_SUCCESS = new Range(200, 299, null);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final FacebookRequestError createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(17018);
+        paramAnonymousParcel = new FacebookRequestError(paramAnonymousParcel, null);
+        AppMethodBeat.o(17018);
+        return paramAnonymousParcel;
+      }
+      
+      public final FacebookRequestError[] newArray(int paramAnonymousInt)
+      {
+        return new FacebookRequestError[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(17032);
   }
   
   private FacebookRequestError(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, JSONObject paramJSONObject1, JSONObject paramJSONObject2, Object paramObject, HttpURLConnection paramHttpURLConnection, FacebookException paramFacebookException)
   {
-    AppMethodBeat.i(71588);
+    AppMethodBeat.i(17024);
     this.requestStatusCode = paramInt1;
     this.errorCode = paramInt2;
     this.subErrorCode = paramInt3;
@@ -74,15 +88,15 @@ public final class FacebookRequestError
       paramInt1 = 1;
       paramString2 = getErrorClassification();
       if (paramInt1 == 0) {
-        break label143;
+        break label145;
       }
     }
-    label143:
-    for (paramString1 = FacebookRequestError.Category.OTHER;; paramString1 = paramString2.classify(paramInt2, paramInt3, paramBoolean))
+    label145:
+    for (paramString1 = Category.OTHER;; paramString1 = paramString2.classify(paramInt2, paramInt3, paramBoolean))
     {
       this.category = paramString1;
       this.errorRecoveryMessage = paramString2.getRecoveryMessage(this.category);
-      AppMethodBeat.o(71588);
+      AppMethodBeat.o(17024);
       return;
       this.exception = new FacebookServiceException(this, paramString2);
       break;
@@ -97,15 +111,15 @@ public final class FacebookRequestError
   private FacebookRequestError(Parcel paramParcel)
   {
     this(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), false, null, null, null, null, null);
-    AppMethodBeat.i(71595);
-    AppMethodBeat.o(71595);
+    AppMethodBeat.i(17031);
+    AppMethodBeat.o(17031);
   }
   
   FacebookRequestError(HttpURLConnection paramHttpURLConnection, Exception paramException) {}
   
   static FacebookRequestError checkResponseAndCreateError(JSONObject paramJSONObject, Object paramObject, HttpURLConnection paramHttpURLConnection)
   {
-    AppMethodBeat.i(71592);
+    AppMethodBeat.i(17028);
     try
     {
       if (paramJSONObject.has("code"))
@@ -141,7 +155,7 @@ public final class FacebookRequestError
           while (i != 0)
           {
             paramJSONObject = new FacebookRequestError(m, j, k, (String)localObject1, str, (String)localObject3, (String)localObject2, bool1, localJSONObject2, paramJSONObject, paramObject, paramHttpURLConnection, null);
-            AppMethodBeat.o(71592);
+            AppMethodBeat.o(17028);
             return paramJSONObject;
             if ((!localJSONObject2.has("error_code")) && (!localJSONObject2.has("error_msg")))
             {
@@ -169,7 +183,7 @@ public final class FacebookRequestError
           for (localObject1 = (JSONObject)Utility.getStringPropertyAsJSON(paramJSONObject, "body", "FACEBOOK_NON_JSON_RESULT");; localObject1 = null)
           {
             paramJSONObject = new FacebookRequestError(m, -1, -1, null, null, null, null, false, (JSONObject)localObject1, paramJSONObject, paramObject, paramHttpURLConnection, null);
-            AppMethodBeat.o(71592);
+            AppMethodBeat.o(17028);
             return paramJSONObject;
           }
         }
@@ -178,7 +192,7 @@ public final class FacebookRequestError
     }
     catch (JSONException paramJSONObject)
     {
-      AppMethodBeat.o(71592);
+      AppMethodBeat.o(17028);
     }
   }
   
@@ -188,41 +202,41 @@ public final class FacebookRequestError
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 219
-    //   5: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 224	com/facebook/FacebookSdk:getApplicationId	()Ljava/lang/String;
-    //   11: invokestatic 230	com/facebook/internal/FetchedAppSettingsManager:getAppSettingsWithoutQuery	(Ljava/lang/String;)Lcom/facebook/internal/FetchedAppSettings;
-    //   14: astore_0
-    //   15: aload_0
-    //   16: ifnonnull +17 -> 33
-    //   19: invokestatic 233	com/facebook/internal/FacebookRequestErrorClassification:getDefaultErrorClassification	()Lcom/facebook/internal/FacebookRequestErrorClassification;
-    //   22: astore_0
-    //   23: ldc 219
-    //   25: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   28: ldc 2
-    //   30: monitorexit
-    //   31: aload_0
-    //   32: areturn
+    //   3: sipush 17029
+    //   6: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: invokestatic 220	com/facebook/FacebookSdk:getApplicationId	()Ljava/lang/String;
+    //   12: invokestatic 226	com/facebook/internal/FetchedAppSettingsManager:getAppSettingsWithoutQuery	(Ljava/lang/String;)Lcom/facebook/internal/FetchedAppSettings;
+    //   15: astore_0
+    //   16: aload_0
+    //   17: ifnonnull +18 -> 35
+    //   20: invokestatic 229	com/facebook/internal/FacebookRequestErrorClassification:getDefaultErrorClassification	()Lcom/facebook/internal/FacebookRequestErrorClassification;
+    //   23: astore_0
+    //   24: sipush 17029
+    //   27: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   30: ldc 2
+    //   32: monitorexit
     //   33: aload_0
-    //   34: invokevirtual 236	com/facebook/internal/FetchedAppSettings:getErrorClassification	()Lcom/facebook/internal/FacebookRequestErrorClassification;
-    //   37: astore_0
-    //   38: ldc 219
-    //   40: invokestatic 100	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   43: goto -15 -> 28
-    //   46: astore_0
-    //   47: ldc 2
-    //   49: monitorexit
-    //   50: aload_0
-    //   51: athrow
+    //   34: areturn
+    //   35: aload_0
+    //   36: invokevirtual 232	com/facebook/internal/FetchedAppSettings:getErrorClassification	()Lcom/facebook/internal/FacebookRequestErrorClassification;
+    //   39: astore_0
+    //   40: sipush 17029
+    //   43: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: goto -16 -> 30
+    //   49: astore_0
+    //   50: ldc 2
+    //   52: monitorexit
+    //   53: aload_0
+    //   54: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   14	24	0	localObject1	Object
-    //   46	5	0	localObject2	Object
+    //   15	25	0	localObject1	Object
+    //   49	5	0	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   3	15	46	finally
-    //   19	28	46	finally
-    //   33	43	46	finally
+    //   3	16	49	finally
+    //   20	30	49	finally
+    //   35	46	49	finally
   }
   
   public final int describeContents()
@@ -235,7 +249,7 @@ public final class FacebookRequestError
     return this.batchRequestResult;
   }
   
-  public final FacebookRequestError.Category getCategory()
+  public final Category getCategory()
   {
     return this.category;
   }
@@ -252,15 +266,15 @@ public final class FacebookRequestError
   
   public final String getErrorMessage()
   {
-    AppMethodBeat.i(71590);
+    AppMethodBeat.i(17026);
     if (this.errorMessage != null)
     {
       str = this.errorMessage;
-      AppMethodBeat.o(71590);
+      AppMethodBeat.o(17026);
       return str;
     }
     String str = this.exception.getLocalizedMessage();
-    AppMethodBeat.o(71590);
+    AppMethodBeat.o(17026);
     return str;
   }
   
@@ -311,15 +325,15 @@ public final class FacebookRequestError
   
   public final String toString()
   {
-    AppMethodBeat.i(71591);
+    AppMethodBeat.i(17027);
     String str = "{HttpStatus: " + this.requestStatusCode + ", errorCode: " + this.errorCode + ", subErrorCode: " + this.subErrorCode + ", errorType: " + this.errorType + ", errorMessage: " + getErrorMessage() + "}";
-    AppMethodBeat.o(71591);
+    AppMethodBeat.o(17027);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(71594);
+    AppMethodBeat.i(17030);
     paramParcel.writeInt(this.requestStatusCode);
     paramParcel.writeInt(this.errorCode);
     paramParcel.writeInt(this.subErrorCode);
@@ -327,12 +341,44 @@ public final class FacebookRequestError
     paramParcel.writeString(this.errorMessage);
     paramParcel.writeString(this.errorUserTitle);
     paramParcel.writeString(this.errorUserMessage);
-    AppMethodBeat.o(71594);
+    AppMethodBeat.o(17030);
+  }
+  
+  public static enum Category
+  {
+    static
+    {
+      AppMethodBeat.i(17023);
+      LOGIN_RECOVERABLE = new Category("LOGIN_RECOVERABLE", 0);
+      OTHER = new Category("OTHER", 1);
+      TRANSIENT = new Category("TRANSIENT", 2);
+      $VALUES = new Category[] { LOGIN_RECOVERABLE, OTHER, TRANSIENT };
+      AppMethodBeat.o(17023);
+    }
+    
+    private Category() {}
+  }
+  
+  static class Range
+  {
+    private final int end;
+    private final int start;
+    
+    private Range(int paramInt1, int paramInt2)
+    {
+      this.start = paramInt1;
+      this.end = paramInt2;
+    }
+    
+    boolean contains(int paramInt)
+    {
+      return (this.start <= paramInt) && (paramInt <= this.end);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.FacebookRequestError
  * JD-Core Version:    0.7.0.1
  */

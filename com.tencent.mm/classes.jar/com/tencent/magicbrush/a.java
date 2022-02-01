@@ -1,133 +1,67 @@
 package com.tencent.magicbrush;
 
-import android.util.SparseLongArray;
-import com.tencent.magicbrush.d.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.k;
+import d.l;
+import java.util.Arrays;
+import java.util.Locale;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/magicbrush/FpsInfo;", "", "()V", "fps", "", "exceedFps", "(FF)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "lib-magicbrush-nano_release"})
 public final class a
 {
-  public final MBRuntime bJe;
-  public SparseLongArray bJf;
+  public float coh = 0.0F;
+  public float coi = 0.0F;
   
-  a(MBRuntime paramMBRuntime)
+  private a() {}
+  
+  public a(byte paramByte)
   {
-    AppMethodBeat.i(115779);
-    this.bJf = new SparseLongArray();
-    this.bJe = paramMBRuntime;
-    AppMethodBeat.o(115779);
+    this();
   }
   
-  public final float fH(int paramInt)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(115780);
-    float f = (yl() - paramInt) * 1000.0F / (float)e.av(this.bJf.get(paramInt));
-    AppMethodBeat.o(115780);
-    return f;
-  }
-  
-  public final a.a getCurrentFps()
-  {
-    AppMethodBeat.i(115781);
-    synchronized (this.bJe)
+    AppMethodBeat.i(140079);
+    if (this != paramObject)
     {
-      if (this.bJe.mNativeInst == 0L)
+      if ((paramObject instanceof a))
       {
-        locala = new a.a(this);
-        AppMethodBeat.o(115781);
-        return locala;
+        paramObject = (a)paramObject;
+        if ((Float.compare(this.coh, paramObject.coh) != 0) || (Float.compare(this.coi, paramObject.coi) != 0)) {}
       }
-      a.a locala = new a.a(this);
-      float[] arrayOfFloat = this.bJe.nativeGetCurrentFps(this.bJe.mNativeInst);
-      locala.bJg = arrayOfFloat[0];
-      locala.bJh = arrayOfFloat[1];
-      AppMethodBeat.o(115781);
-      return locala;
     }
+    else
+    {
+      AppMethodBeat.o(140079);
+      return true;
+    }
+    AppMethodBeat.o(140079);
+    return false;
   }
   
-  public final float yk()
+  public final int hashCode()
   {
-    AppMethodBeat.i(115782);
-    synchronized (this.bJe)
-    {
-      if (this.bJe.mNativeInst == 0L)
-      {
-        AppMethodBeat.o(115782);
-        return -1.0F;
-      }
-      float f = this.bJe.nativeGetCurrentFpsVariance(this.bJe.mNativeInst);
-      AppMethodBeat.o(115782);
-      return f;
-    }
+    AppMethodBeat.i(140078);
+    int i = Float.floatToIntBits(this.coh);
+    int j = Float.floatToIntBits(this.coi);
+    AppMethodBeat.o(140078);
+    return i * 31 + j;
   }
   
-  public final int yl()
+  public final String toString()
   {
-    AppMethodBeat.i(115783);
-    synchronized (this.bJe)
-    {
-      if (this.bJe.mNativeInst == 0L)
-      {
-        AppMethodBeat.o(115783);
-        return -1;
-      }
-      int i = this.bJe.nativeGetFrameCounter(this.bJe.mNativeInst);
-      AppMethodBeat.o(115783);
-      return i;
-    }
-  }
-  
-  public final int ym()
-  {
-    AppMethodBeat.i(115784);
-    synchronized (this.bJe)
-    {
-      if (this.bJe.mNativeInst == 0L)
-      {
-        AppMethodBeat.o(115784);
-        return 0;
-      }
-      int i = this.bJe.nativeGetDrawCalls(this.bJe.mNativeInst);
-      AppMethodBeat.o(115784);
-      return i;
-    }
-  }
-  
-  public final int yn()
-  {
-    AppMethodBeat.i(115785);
-    synchronized (this.bJe)
-    {
-      if (this.bJe.mNativeInst == 0L)
-      {
-        AppMethodBeat.o(115785);
-        return 0;
-      }
-      int i = this.bJe.nativeGetVertexes(this.bJe.mNativeInst);
-      AppMethodBeat.o(115785);
-      return i;
-    }
-  }
-  
-  public final int yo()
-  {
-    AppMethodBeat.i(115786);
-    synchronized (this.bJe)
-    {
-      if (this.bJe.mNativeInst == 0L)
-      {
-        AppMethodBeat.o(115786);
-        return 0;
-      }
-      int i = this.bJe.nativeGetTriangles(this.bJe.mNativeInst);
-      AppMethodBeat.o(115786);
-      return i;
-    }
+    AppMethodBeat.i(140077);
+    Object localObject = Locale.ENGLISH;
+    k.g(localObject, "Locale.ENGLISH");
+    localObject = String.format((Locale)localObject, "fps(%.2f, %.2f)", Arrays.copyOf(new Object[] { Float.valueOf(this.coh), Float.valueOf(this.coi) }, 2));
+    k.g(localObject, "java.lang.String.format(locale, this, *args)");
+    AppMethodBeat.o(140077);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.magicbrush.a
  * JD-Core Version:    0.7.0.1
  */

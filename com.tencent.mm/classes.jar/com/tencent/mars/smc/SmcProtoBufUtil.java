@@ -14,219 +14,219 @@ import com.tencent.mm.protocal.a.a.l;
 import com.tencent.mm.protocal.a.a.m;
 import com.tencent.mm.protocal.a.a.n;
 import com.tencent.mm.protocal.a.a.o;
-import com.tencent.mm.protocal.protobuf.aix;
-import com.tencent.mm.protocal.protobuf.aiy;
-import com.tencent.mm.protocal.protobuf.awb;
-import com.tencent.mm.protocal.protobuf.awc;
-import com.tencent.mm.protocal.protobuf.ayt;
-import com.tencent.mm.protocal.protobuf.bgh;
-import com.tencent.mm.protocal.protobuf.cig;
-import com.tencent.mm.protocal.protobuf.tl;
-import com.tencent.mm.protocal.protobuf.tm;
-import com.tencent.mm.protocal.protobuf.tn;
+import com.tencent.mm.protocal.protobuf.ase;
+import com.tencent.mm.protocal.protobuf.asf;
+import com.tencent.mm.protocal.protobuf.bhg;
+import com.tencent.mm.protocal.protobuf.bhh;
+import com.tencent.mm.protocal.protobuf.bkb;
+import com.tencent.mm.protocal.protobuf.bti;
+import com.tencent.mm.protocal.protobuf.czh;
+import com.tencent.mm.protocal.protobuf.wh;
+import com.tencent.mm.protocal.protobuf.wi;
+import com.tencent.mm.protocal.protobuf.wj;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class SmcProtoBufUtil
 {
-  private static o fillStrategyTable(LinkedList<cig> paramLinkedList)
+  private static o fillStrategyTable(LinkedList<czh> paramLinkedList)
   {
     o localo = new o();
     int i = 0;
     while (i < paramLinkedList.size())
     {
-      cig localcig = (cig)paramLinkedList.get(i);
+      czh localczh = (czh)paramLinkedList.get(i);
       m localm = new m();
-      localm.wjH = localcig.xSU;
-      localm.wjI = localcig.xSV;
+      localm.CrT = localczh.Erk;
+      localm.CrU = localczh.Erl;
       int j = 0;
-      while (j < localcig.xSW.size())
+      while (j < localczh.Erm.size())
       {
-        bgh localbgh = (bgh)localcig.xSW.get(j);
+        bti localbti = (bti)localczh.Erm.get(j);
         n localn = new n();
-        localn.wjb = localbgh.xoo;
-        localn.wjK = localbgh.xvB;
-        localn.wjL = localbgh.xvz;
-        localn.wjM = localbgh.xvA;
-        localn.wjN = localbgh.xvC;
-        localn.wjO = localbgh.xvD;
-        localn.wjP = localbgh.xvE;
-        localn.type = localbgh.jKs;
-        localm.wjJ.add(localn);
+        localn.Crn = localbti.DIc;
+        localn.CrW = localbti.DQO;
+        localn.CrX = localbti.DQM;
+        localn.CrY = localbti.DQN;
+        localn.CrZ = localbti.DQP;
+        localn.Csa = localbti.DQQ;
+        localn.Csb = localbti.DQR;
+        localn.type = localbti.mBH;
+        localm.CrV.add(localn);
         j += 1;
       }
-      localo.wjQ.add(localm);
+      localo.Csc.add(localm);
       i += 1;
     }
     return localo;
   }
   
-  public static aix toMMGetStrategyReq()
+  public static ase toMMGetStrategyReq()
   {
-    aix localaix = new aix();
+    ase localase = new ase();
     ArrayList localArrayList = SmcLogic.getStrategyVersions();
     if (localArrayList.size() != 6) {
       return null;
     }
-    localaix.wLP = ((Integer)localArrayList.get(0)).intValue();
-    localaix.wLQ = ((Integer)localArrayList.get(1)).intValue();
-    localaix.wLR = ((Integer)localArrayList.get(2)).intValue();
-    localaix.xaD = ((Integer)localArrayList.get(3)).intValue();
-    localaix.xaE = ((Integer)localArrayList.get(4)).intValue();
-    localaix.xaF = ((Integer)localArrayList.get(5)).intValue();
-    return localaix;
+    localase.CYj = ((Integer)localArrayList.get(0)).intValue();
+    localase.CYk = ((Integer)localArrayList.get(1)).intValue();
+    localase.CYl = ((Integer)localArrayList.get(2)).intValue();
+    localase.Dsu = ((Integer)localArrayList.get(3)).intValue();
+    localase.Dsv = ((Integer)localArrayList.get(4)).intValue();
+    localase.Dsw = ((Integer)localArrayList.get(5)).intValue();
+    return localase;
   }
   
-  public static tm toMMReportIdkeyReq(g paramg)
+  public static wi toMMReportIdkeyReq(g paramg)
   {
-    tm localtm = new tm();
-    localtm.wLP = paramg.wje;
-    localtm.wLQ = paramg.wju;
-    localtm.wLR = 0;
+    wi localwi = new wi();
+    localwi.CYj = paramg.Crq;
+    localwi.CYk = paramg.CrG;
+    localwi.CYl = 0;
     int i = 0;
-    while (i < paramg.wjv.size())
+    while (i < paramg.CrH.size())
     {
-      com.tencent.mm.protocal.a.a.b localb = (com.tencent.mm.protocal.a.a.b)paramg.wjv.get(i);
-      tl localtl = new tl();
-      localtl.lGw = localb.uin;
-      localtl.wur = localb.wjc;
-      localtl.wLO = localb.nettype;
+      com.tencent.mm.protocal.a.a.b localb = (com.tencent.mm.protocal.a.a.b)paramg.CrH.get(i);
+      wh localwh = new wh();
+      localwh.oXh = localb.uin;
+      localwh.CEj = localb.Cro;
+      localwh.CYi = localb.nettype;
       int j = 0;
-      while (j < localb.wjd.size())
+      while (j < localb.Crp.size())
       {
-        a locala = (a)localb.wjd.get(j);
-        ayt localayt = new ayt();
-        localayt.xoo = locala.wjb;
-        localayt.wPI = 0;
-        localayt.xoq = 0;
-        localayt.jJu = locala.count;
-        localayt.xop = com.tencent.mm.bv.b.bL(Integer.toString(locala.value).getBytes());
-        localtl.nrw.add(localayt);
+        a locala = (a)localb.Crp.get(j);
+        bkb localbkb = new bkb();
+        localbkb.DIc = locala.Crn;
+        localbkb.Dcz = 0;
+        localbkb.DIe = 0;
+        localbkb.mAK = locala.count;
+        localbkb.DId = com.tencent.mm.bx.b.cd(Integer.toString(locala.value).getBytes());
+        localwh.saZ.add(localbkb);
         j += 1;
       }
-      localtm.wLS.add(localtl);
+      localwi.CYm.add(localwh);
       i += 1;
     }
-    return localtm;
+    return localwi;
   }
   
-  public static tm toMMReportKvReq(i parami)
+  public static wi toMMReportKvReq(i parami)
   {
-    tm localtm = new tm();
-    localtm.wLP = parami.wje;
-    localtm.wLQ = parami.wju;
-    localtm.wLR = parami.wjs;
+    wi localwi = new wi();
+    localwi.CYj = parami.Crq;
+    localwi.CYk = parami.CrG;
+    localwi.CYl = parami.CrE;
     int i = 0;
-    while (i < parami.wjv.size())
+    while (i < parami.CrH.size())
     {
-      e locale = (e)parami.wjv.get(i);
-      tl localtl = new tl();
-      localtl.lGw = locale.uin;
-      localtl.wur = locale.wjc;
-      localtl.wLO = locale.nettype;
-      localtl.wAd = locale.wjo;
-      localtl.wAb = locale.wjm;
-      localtl.wAc = locale.wjn;
-      localtl.wAe = locale.wjp;
-      localtl.wAf = locale.wjq;
-      localtl.jKx = locale.wjr;
+      e locale = (e)parami.CrH.get(i);
+      wh localwh = new wh();
+      localwh.oXh = locale.uin;
+      localwh.CEj = locale.Cro;
+      localwh.CYi = locale.nettype;
+      localwh.fVx = locale.CrA;
+      localwh.fVv = locale.Cry;
+      localwh.fVw = locale.Crz;
+      localwh.fVy = locale.CrB;
+      localwh.fVz = locale.CrC;
+      localwh.mBM = locale.CrD;
       int j = 0;
-      while (j < locale.wjd.size())
+      while (j < locale.Crp.size())
       {
-        d locald = (d)locale.wjd.get(j);
-        ayt localayt = new ayt();
-        localayt.xoo = locald.wjb;
-        localayt.xop = locald.wjk;
-        localayt.xoq = locald.wjl;
-        localayt.wPI = locald.qNK;
-        localayt.jJu = locald.count;
-        localtl.nrw.add(localayt);
+        d locald = (d)locale.Crp.get(j);
+        bkb localbkb = new bkb();
+        localbkb.DIc = locald.Crn;
+        localbkb.DId = locald.Crw;
+        localbkb.DIe = locald.Crx;
+        localbkb.Dcz = locald.wmA;
+        localbkb.mAK = locald.count;
+        localwh.saZ.add(localbkb);
         j += 1;
       }
-      localtm.wLS.add(localtl);
+      localwi.CYm.add(localwh);
       i += 1;
     }
-    return localtm;
+    return localwi;
   }
   
-  public static awb toMMSelfMonitor(k paramk)
+  public static bhg toMMSelfMonitor(k paramk)
   {
-    awb localawb = new awb();
-    localawb.xlp = paramk.wjy;
+    bhg localbhg = new bhg();
+    localbhg.DFc = paramk.CrK;
     int i = 0;
-    while (i < paramk.wjz.size())
+    while (i < paramk.CrL.size())
     {
-      awc localawc = new awc();
-      l locall = (l)paramk.wjz.get(i);
-      localawc.xlq = locall.wjA;
-      localawc.cnE = locall.action;
-      localawc.xlr = locall.wjB;
-      localawc.xls = locall.wjC;
-      localawc.xlt = locall.wjD;
-      localawc.xlu = locall.wjE;
-      localawc.xlv = locall.wjF;
-      localawc.xlw = locall.wjG;
-      localawb.nrw.add(localawc);
+      bhh localbhh = new bhh();
+      l locall = (l)paramk.CrL.get(i);
+      localbhh.DFd = locall.CrM;
+      localbhh.dcA = locall.action;
+      localbhh.DFe = locall.CrN;
+      localbhh.DFf = locall.CrO;
+      localbhh.DFg = locall.CrP;
+      localbhh.DFh = locall.CrQ;
+      localbhh.DFi = locall.CrR;
+      localbhh.DFj = locall.CrS;
+      localbhg.saZ.add(localbhh);
       i += 1;
     }
-    return localawb;
+    return localbhg;
   }
   
-  public static c toSmcIdkeyStrategyResp(aiy paramaiy)
+  public static c toSmcIdkeyStrategyResp(asf paramasf)
   {
     c localc = new c();
-    localc.ret = paramaiy.Ret;
-    localc.wje = paramaiy.wLV;
-    localc.wjf = paramaiy.wLW;
-    localc.wji = paramaiy.wMb;
-    localc.wjj = paramaiy.wMd;
-    localc.wjg = fillStrategyTable(paramaiy.wLY);
-    localc.wjh = fillStrategyTable(paramaiy.wLZ);
+    localc.ret = paramasf.Ret;
+    localc.Crq = paramasf.CYp;
+    localc.Crr = paramasf.CYq;
+    localc.Cru = paramasf.CYv;
+    localc.Crv = paramasf.CYx;
+    localc.Crs = fillStrategyTable(paramasf.CYs);
+    localc.Crt = fillStrategyTable(paramasf.CYt);
     return localc;
   }
   
-  public static f toSmcKVStrategyResp(aiy paramaiy)
+  public static f toSmcKVStrategyResp(asf paramasf)
   {
     f localf = new f();
-    localf.ret = paramaiy.Ret;
-    localf.wje = paramaiy.xaD;
-    localf.wjf = paramaiy.xaE;
-    localf.wjs = paramaiy.xaF;
-    localf.wji = paramaiy.wMb;
-    localf.wjj = paramaiy.wMd;
-    localf.wjg = fillStrategyTable(paramaiy.xaG);
-    localf.wjh = fillStrategyTable(paramaiy.xaH);
-    localf.wjt = fillStrategyTable(paramaiy.xaI);
+    localf.ret = paramasf.Ret;
+    localf.Crq = paramasf.Dsu;
+    localf.Crr = paramasf.Dsv;
+    localf.CrE = paramasf.Dsw;
+    localf.Cru = paramasf.CYv;
+    localf.Crv = paramasf.CYx;
+    localf.Crs = fillStrategyTable(paramasf.Dsx);
+    localf.Crt = fillStrategyTable(paramasf.Dsy);
+    localf.CrF = fillStrategyTable(paramasf.Dsz);
     return localf;
   }
   
-  public static h toSmcReportIdkeyResp(tn paramtn)
+  public static h toSmcReportIdkeyResp(wj paramwj)
   {
     h localh = new h();
-    localh.ret = paramtn.Ret;
-    localh.wje = paramtn.wLV;
-    localh.wjf = paramtn.wLW;
-    localh.wji = paramtn.wMb;
-    localh.wjx = paramtn.wMc;
-    localh.wjj = paramtn.wMd;
-    localh.wjg = fillStrategyTable(paramtn.wLY);
-    localh.wjh = fillStrategyTable(paramtn.wLZ);
+    localh.ret = paramwj.Ret;
+    localh.Crq = paramwj.CYp;
+    localh.Crr = paramwj.CYq;
+    localh.Cru = paramwj.CYv;
+    localh.CrJ = paramwj.CYw;
+    localh.Crv = paramwj.CYx;
+    localh.Crs = fillStrategyTable(paramwj.CYs);
+    localh.Crt = fillStrategyTable(paramwj.CYt);
     return localh;
   }
   
-  public static j toSmcReportKvResp(tn paramtn)
+  public static j toSmcReportKvResp(wj paramwj)
   {
     j localj = new j();
-    localj.ret = paramtn.Ret;
-    localj.wje = paramtn.wLV;
-    localj.wjf = paramtn.wLW;
-    localj.wjs = paramtn.wLX;
-    localj.wji = paramtn.wMb;
-    localj.wjx = paramtn.wMc;
-    localj.wjj = paramtn.wMd;
-    localj.wjg = fillStrategyTable(paramtn.wLY);
-    localj.wjh = fillStrategyTable(paramtn.wLZ);
-    localj.wjt = fillStrategyTable(paramtn.wMa);
+    localj.ret = paramwj.Ret;
+    localj.Crq = paramwj.CYp;
+    localj.Crr = paramwj.CYq;
+    localj.CrE = paramwj.CYr;
+    localj.Cru = paramwj.CYv;
+    localj.CrJ = paramwj.CYw;
+    localj.Crv = paramwj.CYx;
+    localj.Crs = fillStrategyTable(paramwj.CYs);
+    localj.Crt = fillStrategyTable(paramwj.CYt);
+    localj.CrF = fillStrategyTable(paramwj.CYu);
     return localj;
   }
 }

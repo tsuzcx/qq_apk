@@ -5,36 +5,36 @@ import android.support.v7.widget.RecyclerView.a;
 public final class a
   implements d
 {
-  private final RecyclerView.a Tg;
+  private final RecyclerView.a aaj;
   
   public a(RecyclerView.a parama)
   {
-    this.Tg = parama;
-  }
-  
-  public final void C(int paramInt1, int paramInt2)
-  {
-    this.Tg.ap(paramInt1, paramInt2);
-  }
-  
-  public final void D(int paramInt1, int paramInt2)
-  {
-    this.Tg.aq(paramInt1, paramInt2);
+    this.aaj = parama;
   }
   
   public final void E(int paramInt1, int paramInt2)
   {
-    this.Tg.ao(paramInt1, paramInt2);
+    this.aaj.aq(paramInt1, paramInt2);
+  }
+  
+  public final void F(int paramInt1, int paramInt2)
+  {
+    this.aaj.ar(paramInt1, paramInt2);
+  }
+  
+  public final void G(int paramInt1, int paramInt2)
+  {
+    this.aaj.ap(paramInt1, paramInt2);
   }
   
   public final void c(int paramInt1, int paramInt2, Object paramObject)
   {
-    this.Tg.e(paramInt1, paramInt2, paramObject);
+    this.aaj.e(paramInt1, paramInt2, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.v7.h.a
  * JD-Core Version:    0.7.0.1
  */

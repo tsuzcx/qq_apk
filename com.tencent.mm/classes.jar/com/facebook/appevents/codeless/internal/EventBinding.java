@@ -18,9 +18,9 @@ public class EventBinding
   private final List<ParameterComponent> parameters;
   private final List<PathComponent> path;
   private final String pathType;
-  private final EventBinding.ActionType type;
+  private final ActionType type;
   
-  public EventBinding(String paramString1, EventBinding.MappingMethod paramMappingMethod, EventBinding.ActionType paramActionType, String paramString2, List<PathComponent> paramList, List<ParameterComponent> paramList1, String paramString3, String paramString4, String paramString5)
+  public EventBinding(String paramString1, EventBinding.MappingMethod paramMappingMethod, ActionType paramActionType, String paramString2, List<PathComponent> paramList, List<ParameterComponent> paramList1, String paramString3, String paramString4, String paramString5)
   {
     this.eventName = paramString1;
     this.method = paramMappingMethod;
@@ -36,10 +36,10 @@ public class EventBinding
   public static EventBinding getInstanceFromJson(JSONObject paramJSONObject)
   {
     int j = 0;
-    AppMethodBeat.i(72098);
+    AppMethodBeat.i(17534);
     String str1 = paramJSONObject.getString("event_name");
     EventBinding.MappingMethod localMappingMethod = EventBinding.MappingMethod.valueOf(paramJSONObject.getString("method").toUpperCase());
-    EventBinding.ActionType localActionType = EventBinding.ActionType.valueOf(paramJSONObject.getString("event_type").toUpperCase());
+    ActionType localActionType = ActionType.valueOf(paramJSONObject.getString("event_type").toUpperCase());
     String str2 = paramJSONObject.getString("app_version");
     Object localObject = paramJSONObject.getJSONArray("path");
     ArrayList localArrayList1 = new ArrayList();
@@ -62,14 +62,14 @@ public class EventBinding
       }
     }
     paramJSONObject = new EventBinding(str1, localMappingMethod, localActionType, str2, localArrayList1, localArrayList2, paramJSONObject.optString("component_id"), (String)localObject, paramJSONObject.optString("activity_name"));
-    AppMethodBeat.o(72098);
+    AppMethodBeat.o(17534);
     return paramJSONObject;
   }
   
   public static List<EventBinding> parseArray(JSONArray paramJSONArray)
   {
     int j = 0;
-    AppMethodBeat.i(72097);
+    AppMethodBeat.i(17533);
     localArrayList = new ArrayList();
     if (paramJSONArray != null) {}
     try
@@ -86,7 +86,7 @@ public class EventBinding
     }
     catch (JSONException paramJSONArray)
     {
-      AppMethodBeat.o(72097);
+      AppMethodBeat.o(17533);
     }
   }
   
@@ -120,30 +120,45 @@ public class EventBinding
     return this.pathType;
   }
   
-  public EventBinding.ActionType getType()
+  public ActionType getType()
   {
     return this.type;
   }
   
   public List<ParameterComponent> getViewParameters()
   {
-    AppMethodBeat.i(72100);
+    AppMethodBeat.i(17536);
     List localList = Collections.unmodifiableList(this.parameters);
-    AppMethodBeat.o(72100);
+    AppMethodBeat.o(17536);
     return localList;
   }
   
   public List<PathComponent> getViewPath()
   {
-    AppMethodBeat.i(72099);
+    AppMethodBeat.i(17535);
     List localList = Collections.unmodifiableList(this.path);
-    AppMethodBeat.o(72099);
+    AppMethodBeat.o(17535);
     return localList;
+  }
+  
+  public static enum ActionType
+  {
+    static
+    {
+      AppMethodBeat.i(17529);
+      CLICK = new ActionType("CLICK", 0);
+      SELECTED = new ActionType("SELECTED", 1);
+      TEXT_CHANGED = new ActionType("TEXT_CHANGED", 2);
+      $VALUES = new ActionType[] { CLICK, SELECTED, TEXT_CHANGED };
+      AppMethodBeat.o(17529);
+    }
+    
+    private ActionType() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.codeless.internal.EventBinding
  * JD-Core Version:    0.7.0.1
  */

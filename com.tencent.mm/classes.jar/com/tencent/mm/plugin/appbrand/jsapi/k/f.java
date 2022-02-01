@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.k;
 
-import com.tencent.luggage.g.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.b;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.o;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.o;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,27 +12,36 @@ public final class f
 {
   public static final int CTRL_INDEX = 521;
   public static final String NAME = "updateVoIPChatMuteConfig";
-  boolean hVF = false;
-  boolean hVG = false;
+  boolean kea;
+  boolean keb;
   
-  public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
+  public f()
   {
-    AppMethodBeat.i(143430);
+    AppMethodBeat.i(174848);
+    this.kea = false;
+    this.keb = false;
+    com.tencent.mm.plugin.appbrand.permission.c.Me("updateVoIPChatMuteConfig");
+    AppMethodBeat.o(174848);
+  }
+  
+  public final void a(final com.tencent.mm.plugin.appbrand.service.c paramc, JSONObject paramJSONObject, final int paramInt)
+  {
+    AppMethodBeat.i(46690);
     try
     {
       paramJSONObject = paramJSONObject.getJSONObject("muteConfig");
-      boolean bool1 = paramJSONObject.getBoolean("muteMicrophone");
+      final boolean bool1 = paramJSONObject.getBoolean("muteMicrophone");
       boolean bool2 = paramJSONObject.getBoolean("muteEarphone");
-      d.i("MicroMsg.OpenVoice.JsApiCloudVoiceUpdateVoIPChatMuteConfig", "hy: muteMicroPhone:%b, muteEarPhone:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-      o.kKN.a(bool2, new b() {});
-      o.kKN.b(bool1, new f.2(this, bool1, paramc, paramInt));
-      AppMethodBeat.o(143430);
+      ad.i("MicroMsg.OpenVoice.JsApiCloudVoiceUpdateVoIPChatMuteConfig", "hy: muteMicroPhone:%b, muteEarPhone:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      o.nQO.a(bool2, new b() {});
+      o.nQO.b(bool1, new b() {});
+      AppMethodBeat.o(46690);
       return;
     }
     catch (JSONException paramc)
     {
-      d.printErrStackTrace("MicroMsg.OpenVoice.JsApiCloudVoiceUpdateVoIPChatMuteConfig", paramc, "", new Object[0]);
-      AppMethodBeat.o(143430);
+      ad.printErrStackTrace("MicroMsg.OpenVoice.JsApiCloudVoiceUpdateVoIPChatMuteConfig", paramc, "", new Object[0]);
+      AppMethodBeat.o(46690);
     }
   }
 }

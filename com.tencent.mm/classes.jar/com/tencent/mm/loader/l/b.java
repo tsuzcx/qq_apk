@@ -1,51 +1,36 @@
 package com.tencent.mm.loader.l;
 
-import com.tencent.mm.compatible.util.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.io.File;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vfs.e;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class b
 {
-  public static final String eQS = eQz + ".tmp";
-  public static long eQT = 0L;
-  public static final String eQx = h.getExternalStorageDirectory().getAbsolutePath();
-  public static final String eQz = eQx + "/tencent/MicroMsg/";
+  public static long gmA = 0L;
+  public static final String gmy = com.tencent.mm.loader.j.b.aih() + ".tmp";
+  public static final String gmz = com.tencent.mm.loader.j.b.aih() + ".loader";
   
-  public static String Uq()
+  public static String ajj()
   {
-    Object localObject = new StringBuilder().append(eQS).append("/");
+    Object localObject = new StringBuilder().append(gmy).append("/");
     long l = System.currentTimeMillis();
     localObject = new SimpleDateFormat("yyyyMMdd").format(new Date(l));
-    ab.d("MicroMsg.Loader.ImageTmpFilehUtils", "[cpan] get tmp file path:%s", new Object[] { localObject });
-    com.tencent.mm.vfs.b localb = new com.tencent.mm.vfs.b(eQS);
-    if (!localb.exists()) {
-      localb.mkdirs();
+    ad.d("MicroMsg.Loader.ImageTmpFilehUtils", "[cpan] get tmp file path:%s", new Object[] { localObject });
+    e locale = new e(gmy);
+    if (!locale.exists()) {
+      locale.mkdirs();
     }
-    localb = new com.tencent.mm.vfs.b((String)localObject);
-    if (!localb.exists()) {
-      localb.mkdirs();
+    locale = new e((String)localObject);
+    if (!locale.exists()) {
+      locale.mkdirs();
     }
     return localObject;
-  }
-  
-  public static boolean Ur()
-  {
-    long l = System.currentTimeMillis();
-    if (l - eQT > 86400000L)
-    {
-      ab.d("MicroMsg.Loader.ImageTmpFilehUtils", "[cpan] need clean tmp file.");
-      eQT = l;
-      return true;
-    }
-    ab.d("MicroMsg.Loader.ImageTmpFilehUtils", "[cpan] need not clean tmp file.");
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.loader.l.b
  * JD-Core Version:    0.7.0.1
  */

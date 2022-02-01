@@ -1,56 +1,57 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.exdevice.h.c;
-import com.tencent.mm.protocal.protobuf.auh;
-import com.tencent.mm.protocal.protobuf.jw;
-import com.tencent.mm.protocal.protobuf.jx;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.exdevice.i.c;
+import com.tencent.mm.protocal.protobuf.bfj;
+import com.tencent.mm.protocal.protobuf.le;
+import com.tencent.mm.protocal.protobuf.lf;
 
 public final class m
-  extends com.tencent.mm.ai.m
+  extends n
   implements k
 {
-  private com.tencent.mm.ai.f callback;
-  private String lFr;
-  private long lFs;
-  private String lFt;
-  private long lFu;
-  private com.tencent.mm.ai.b rr;
+  private g callback;
+  private String oWc;
+  private long oWd;
+  private String oWe;
+  private long oWf;
+  private com.tencent.mm.al.b rr;
   
   public m(long paramLong1, String paramString1, String paramString2, long paramLong2)
   {
-    this.lFs = paramLong1;
-    this.lFt = paramString1;
-    this.lFr = paramString2;
-    this.lFu = paramLong2;
+    this.oWd = paramLong1;
+    this.oWe = paramString1;
+    this.oWc = paramString2;
+    this.oWf = paramLong2;
   }
   
-  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(19318);
-    this.callback = paramf;
-    paramf = new b.a();
-    paramf.fsX = new jw();
-    paramf.fsY = new jx();
-    paramf.uri = "/cgi-bin/mmoc-bin/hardware/bindunauthdevice";
-    paramf.funcId = 1262;
-    paramf.reqCmdId = 0;
-    paramf.respCmdId = 0;
-    this.rr = paramf.ado();
-    paramf = (jw)this.rr.fsV.fta;
-    paramf.mac = com.tencent.mm.plugin.exdevice.j.b.jx(this.lFs);
-    paramf.wwu = this.lFt;
-    paramf.wwt = this.lFr;
-    paramf.wwv = this.lFu;
+    AppMethodBeat.i(23387);
+    this.callback = paramg;
+    paramg = new b.a();
+    paramg.gUU = new le();
+    paramg.gUV = new lf();
+    paramg.uri = "/cgi-bin/mmoc-bin/hardware/bindunauthdevice";
+    paramg.funcId = 1262;
+    paramg.reqCmdId = 0;
+    paramg.respCmdId = 0;
+    this.rr = paramg.atI();
+    paramg = (le)this.rr.gUS.gUX;
+    paramg.mac = com.tencent.mm.plugin.exdevice.k.b.pf(this.oWd);
+    paramg.CGD = this.oWe;
+    paramg.CGC = this.oWc;
+    paramg.CGE = this.oWf;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(19318);
+    AppMethodBeat.o(23387);
     return i;
   }
   
@@ -61,27 +62,27 @@ public final class m
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(19317);
-    ab.i("MicroMsg.NetSceneBindUnauthDevice", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
-    jx localjx;
-    auh localauh;
+    AppMethodBeat.i(23386);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetSceneBindUnauthDevice", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    lf locallf;
+    bfj localbfj;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      localjx = (jx)this.rr.fsW.fta;
-      localauh = localjx.wvw;
+      locallf = (lf)this.rr.gUT.gUX;
+      localbfj = locallf.CFB;
       paramArrayOfByte = null;
       paramq = null;
-      if (localauh != null)
+      if (localbfj != null)
       {
-        paramArrayOfByte = localauh.jJD;
-        paramq = localauh.wsq;
+        paramArrayOfByte = localbfj.mAT;
+        paramq = localbfj.CBS;
       }
-      ab.d("MicroMsg.NetSceneBindUnauthDevice", "unauth bind deviceId = %s, deviceType = %s", new Object[] { paramArrayOfByte, paramq });
-      if (ad.bpY().dV(paramq, paramArrayOfByte) == null) {
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneBindUnauthDevice", "unauth bind deviceId = %s, deviceType = %s", new Object[] { paramArrayOfByte, paramq });
+      if (ad.bZG().fi(paramq, paramArrayOfByte) == null) {
         break label291;
       }
-      boolean bool = ad.bpY().dW(paramArrayOfByte, paramq);
-      ab.i("MicroMsg.NetSceneBindUnauthDevice", "delete local deviceinfo : %s, ret : %b", new Object[] { paramq, Boolean.valueOf(bool) });
+      boolean bool = ad.bZG().fj(paramArrayOfByte, paramq);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetSceneBindUnauthDevice", "delete local deviceinfo : %s, ret : %b", new Object[] { paramq, Boolean.valueOf(bool) });
       if (!bool) {
         break label308;
       }
@@ -89,29 +90,29 @@ public final class m
     }
     for (;;)
     {
-      paramq = new com.tencent.mm.plugin.exdevice.h.b();
-      paramq.field_connProto = this.lFr;
+      paramq = new com.tencent.mm.plugin.exdevice.i.b();
+      paramq.field_connProto = this.oWc;
       paramq.field_connStrategy = 1;
       paramq.field_closeStrategy = 1;
       paramq.field_url = "";
-      f.a(paramq, localauh, localjx.wvx);
+      f.a(paramq, localbfj, locallf.CFC);
       if (paramq.field_mac == 0L)
       {
-        ab.d("MicroMsg.NetSceneBindUnauthDevice", "onSceneEnd, mac of hardDeviceAttr is 0 so set a local mac.");
-        paramq.field_mac = this.lFs;
+        com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneBindUnauthDevice", "onSceneEnd, mac of hardDeviceAttr is 0 so set a local mac.");
+        paramq.field_mac = this.oWd;
       }
       if (paramInt1 != 0) {
-        ad.bpY().insert(paramq);
+        ad.bZG().insert(paramq);
       }
       for (;;)
       {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        AppMethodBeat.o(19317);
+        AppMethodBeat.o(23386);
         return;
         label291:
         paramInt1 = 1;
         break;
-        ad.bpY().e(paramq);
+        ad.bZG().e(paramq);
       }
       label308:
       paramInt1 = 0;
@@ -120,7 +121,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.m
  * JD-Core Version:    0.7.0.1
  */

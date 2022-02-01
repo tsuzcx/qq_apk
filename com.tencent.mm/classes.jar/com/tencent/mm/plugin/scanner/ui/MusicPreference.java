@@ -12,14 +12,14 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class MusicPreference
   extends Preference
 {
-  private boolean isPlaying;
+  private View.OnClickListener hs;
+  private boolean kQm;
   private View mView;
-  private View.OnClickListener qaq;
-  public String qtT;
-  public String qtU;
-  public String qtV;
-  private ImageButton qxm;
-  MusicPreference.a qxn;
+  public String vNW;
+  public String vNX;
+  public String vNY;
+  private ImageButton vSg;
+  a vSh;
   
   public MusicPreference(Context paramContext)
   {
@@ -34,62 +34,95 @@ public class MusicPreference
   public MusicPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(81036);
+    AppMethodBeat.i(51808);
     this.mView = null;
-    this.qxm = null;
-    this.qtT = "";
-    this.qtU = "";
-    this.qtV = "";
-    setLayoutResource(2130970247);
-    AppMethodBeat.o(81036);
+    this.vSg = null;
+    this.vNW = "";
+    this.vNX = "";
+    this.vNY = "";
+    setLayoutResource(2131494875);
+    AppMethodBeat.o(51808);
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(81037);
+    AppMethodBeat.i(51809);
     if (this.mView == null) {
       this.mView = onCreateView(paramViewGroup);
     }
     onBindView(this.mView);
     paramView = this.mView;
-    AppMethodBeat.o(81037);
+    AppMethodBeat.o(51809);
     return paramView;
-  }
-  
-  public final void kB(boolean paramBoolean)
-  {
-    AppMethodBeat.i(81038);
-    this.isPlaying = paramBoolean;
-    if (this.qxm != null)
-    {
-      if (paramBoolean)
-      {
-        this.qxm.setImageResource(2130839970);
-        AppMethodBeat.o(81038);
-        return;
-      }
-      this.qxm.setImageResource(2130839969);
-    }
-    AppMethodBeat.o(81038);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(81039);
+    AppMethodBeat.i(51811);
     super.onBindView(paramView);
-    if (this.qaq == null) {
-      this.qaq = new MusicPreference.1(this);
+    if (this.hs == null) {
+      this.hs = new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(51807);
+          if (MusicPreference.a(MusicPreference.this) == null)
+          {
+            AppMethodBeat.o(51807);
+            return;
+          }
+          if (paramAnonymousView.getId() == 2131303376)
+          {
+            if (!MusicPreference.b(MusicPreference.this)) {
+              break label83;
+            }
+            MusicPreference.a(MusicPreference.this, false);
+            MusicPreference.c(MusicPreference.this).setImageResource(2131233641);
+          }
+          for (;;)
+          {
+            MusicPreference.a(MusicPreference.this).d(MusicPreference.this);
+            AppMethodBeat.o(51807);
+            return;
+            label83:
+            MusicPreference.a(MusicPreference.this, true);
+            MusicPreference.c(MusicPreference.this).setImageResource(2131233642);
+          }
+        }
+      };
     }
-    this.qxm = ((ImageButton)paramView.findViewById(2131826253));
-    this.qxm.setOnClickListener(this.qaq);
-    if (this.isPlaying)
+    this.vSg = ((ImageButton)paramView.findViewById(2131303376));
+    this.vSg.setOnClickListener(this.hs);
+    if (this.kQm)
     {
-      this.qxm.setImageResource(2130839970);
-      AppMethodBeat.o(81039);
+      this.vSg.setImageResource(2131233642);
+      AppMethodBeat.o(51811);
       return;
     }
-    this.qxm.setImageResource(2130839969);
-    AppMethodBeat.o(81039);
+    this.vSg.setImageResource(2131233641);
+    AppMethodBeat.o(51811);
+  }
+  
+  public final void pa(boolean paramBoolean)
+  {
+    AppMethodBeat.i(51810);
+    this.kQm = paramBoolean;
+    if (this.vSg != null)
+    {
+      if (paramBoolean)
+      {
+        this.vSg.setImageResource(2131233642);
+        AppMethodBeat.o(51810);
+        return;
+      }
+      this.vSg.setImageResource(2131233641);
+    }
+    AppMethodBeat.o(51810);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void d(MusicPreference paramMusicPreference);
   }
 }
 

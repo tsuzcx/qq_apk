@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/cu6" android:background="@null" android:layout_width="74.0dip" android:layout_height="74.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/blg" android:background="@color/a6q" android:padding="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ProgressBar android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:progressDrawable="@drawable/z1" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:id="@id/blh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bjx" />
-    </LinearLayout>
-</LinearLayout>
+    <ImageView android:id="@id/co4" android:padding="@dimen/d" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_centerInParent="true" />
+    <CheckBox android:id="@id/aqg" android:background="@drawable/a2r" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="20.0dip" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

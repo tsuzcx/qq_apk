@@ -21,15 +21,15 @@ public final class AppBrandCapsuleHomeButton
   
   protected final Drawable getDefaultImageDrawable()
   {
-    AppMethodBeat.i(87497);
-    Drawable localDrawable = b.k(getContext(), 2130837710);
-    AppMethodBeat.o(87497);
+    AppMethodBeat.i(135459);
+    Drawable localDrawable = b.l(getContext(), 2131230946);
+    AppMethodBeat.o(135459);
     return localDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandCapsuleHomeButton
  * JD-Core Version:    0.7.0.1
  */

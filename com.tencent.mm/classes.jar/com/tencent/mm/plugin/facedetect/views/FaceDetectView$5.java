@@ -11,14 +11,14 @@ final class FaceDetectView$5
   
   public final void run()
   {
-    AppMethodBeat.i(624);
-    this.mpb.moJ.bvu();
-    if (this.mkl != null)
+    AppMethodBeat.i(104144);
+    this.pVK.pVs.cgP();
+    if (this.pQW != null)
     {
-      FaceProNative.FaceResult localFaceResult = FaceDetectView.j(this.mpb).bvw();
-      this.mkl.b(localFaceResult);
+      FaceProNative.FaceResult localFaceResult = FaceDetectView.j(this.pVK).cgR();
+      this.pQW.b(localFaceResult);
     }
-    AppMethodBeat.o(624);
+    AppMethodBeat.o(104144);
   }
 }
 

@@ -11,14 +11,14 @@ final class c$14
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(43484);
-    this.pmw.bYS();
-    AppMethodBeat.o(43484);
+    AppMethodBeat.i(66383);
+    this.ulg.cYE();
+    AppMethodBeat.o(66383);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.c.14
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ final class JsApiChooseImage$ChooseResult
   extends AppBrandProxyUIProcessTask.ProcessResult
 {
   public static final Parcelable.Creator<ChooseResult> CREATOR;
-  int bpE;
-  ArrayList<AppBrandLocalMediaObject> hQH;
+  int bRZ;
+  ArrayList<AppBrandLocalMediaObject> jWB;
   
   static
   {
-    AppMethodBeat.i(131134);
-    CREATOR = new JsApiChooseImage.ChooseResult.1();
-    AppMethodBeat.o(131134);
+    AppMethodBeat.i(46407);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(46407);
   }
   
   JsApiChooseImage$ChooseResult() {}
@@ -35,23 +35,23 @@ final class JsApiChooseImage$ChooseResult
   
   public final void j(Parcel paramParcel)
   {
-    AppMethodBeat.i(131132);
-    this.bpE = paramParcel.readInt();
-    this.hQH = paramParcel.createTypedArrayList(AppBrandLocalMediaObject.CREATOR);
-    AppMethodBeat.o(131132);
+    AppMethodBeat.i(46405);
+    this.bRZ = paramParcel.readInt();
+    this.jWB = paramParcel.createTypedArrayList(AppBrandLocalMediaObject.CREATOR);
+    AppMethodBeat.o(46405);
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(131133);
-    paramParcel.writeInt(this.bpE);
-    paramParcel.writeTypedList(this.hQH);
-    AppMethodBeat.o(131133);
+    AppMethodBeat.i(46406);
+    paramParcel.writeInt(this.bRZ);
+    paramParcel.writeTypedList(this.jWB);
+    AppMethodBeat.o(46406);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.JsApiChooseImage.ChooseResult
  * JD-Core Version:    0.7.0.1
  */

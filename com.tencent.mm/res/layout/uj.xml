@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.emojicapture.ui.capture.CaptureContainer android:id="@id/bgd" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.emojicapture.ui.editor.CaptureEditorContainer android:id="@id/bge" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+<RelativeLayout style="@style/qp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <ListView android:id="@id/b1h" android:background="@color/xo" android:focusable="true" android:transcriptMode="disabled" android:overScrollMode="never" style="@style/n3" />
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:gravity="center" android:id="@id/blq" android:paddingTop="0.0dip" android:paddingBottom="60.0dip" android:visibility="gone" android:text="@string/d_7" android:layout_centerInParent="true" style="@style/lv" />
+</RelativeLayout>

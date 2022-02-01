@@ -16,14 +16,14 @@ public abstract interface ConsoleMessage
   {
     static
     {
-      AppMethodBeat.i(63800);
+      AppMethodBeat.i(53203);
       TIP = new MessageLevel("TIP", 0);
       LOG = new MessageLevel("LOG", 1);
       WARNING = new MessageLevel("WARNING", 2);
       ERROR = new MessageLevel("ERROR", 3);
       DEBUG = new MessageLevel("DEBUG", 4);
       $VALUES = new MessageLevel[] { TIP, LOG, WARNING, ERROR, DEBUG };
-      AppMethodBeat.o(63800);
+      AppMethodBeat.o(53203);
     }
     
     private MessageLevel() {}
@@ -31,7 +31,7 @@ public abstract interface ConsoleMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.export.external.interfaces.ConsoleMessage
  * JD-Core Version:    0.7.0.1
  */

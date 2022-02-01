@@ -11,15 +11,15 @@ final class InviteFriendsBy3rdUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(25538);
-    this.sZR.finish();
-    AppMethodBeat.o(25538);
+    AppMethodBeat.i(29228);
+    this.yGp.finish();
+    AppMethodBeat.o(29228);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.pluginapp.InviteFriendsBy3rdUI.1
  * JD-Core Version:    0.7.0.1
  */

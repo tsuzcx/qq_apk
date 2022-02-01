@@ -1,168 +1,260 @@
 package com.tencent.mm.plugin.appbrand.game.f.a;
 
-import a.f.a.b;
-import a.y;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
+import android.opengl.EGL14;
 import android.opengl.EGLContext;
+import android.opengl.EGLExt;
 import android.os.HandlerThread;
-import com.tencent.magicbrush.c.g;
+import android.view.Surface;
+import com.tencent.luggage.a.e;
+import com.tencent.magicbrush.ui.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.i.b.b;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.media.j.c.a;
+import com.tencent.mm.media.j.c.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import d.g.a.b;
+import d.y;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class a
-  extends g
-  implements c
+public abstract class a
+  extends h
+  implements d
 {
-  private HandlerThread eVQ;
-  private ak eVR;
-  private com.tencent.mm.media.h.a eWh;
-  private int fbH;
-  private int fbI;
-  private com.tencent.mm.media.widget.camerarecordview.preview.a.a fby;
-  private SurfaceTexture htJ;
-  private b.b htK;
-  private AtomicBoolean htL;
-  private c.a htM;
+  private com.tencent.mm.media.widget.camerarecordview.preview.a.a gBC;
+  private com.tencent.mm.media.i.a gsB;
+  private HandlerThread gsj = com.tencent.e.c.d.gu("GameTextureView_renderThread", -2);
+  private ap gsk;
+  private SurfaceTexture jrH;
+  private c.b jrI;
+  private AtomicBoolean jrJ = new AtomicBoolean(false);
+  private d.a jrK;
+  private int surfaceHeight;
+  private int surfaceWidth;
   
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(143187);
-    this.htL = new AtomicBoolean(false);
-    this.eVQ = d.ey("GameTextureView_renderThread", -2);
-    this.eVQ.start();
-    this.eVR = new ak(this.eVQ.getLooper());
-    AppMethodBeat.o(143187);
+    this.gsj.start();
+    this.gsk = new ap(this.gsj.getLooper());
   }
   
   private void queueEvent(Runnable paramRunnable)
   {
-    AppMethodBeat.i(143188);
-    if (Thread.currentThread().getId() == this.eVQ.getId())
+    if (Thread.currentThread().getId() == this.gsj.getId())
     {
       paramRunnable.run();
-      AppMethodBeat.o(143188);
       return;
     }
-    this.eVR.post(paramRunnable);
-    AppMethodBeat.o(143188);
-  }
-  
-  public final void e(a.f.a.a<y> parama)
-  {
-    AppMethodBeat.i(143189);
-    if (Thread.currentThread().getId() == this.eVQ.getId())
-    {
-      parama.invoke();
-      AppMethodBeat.o(143189);
-      return;
-    }
-    this.eVR.post(new a.1(this, parama));
-    AppMethodBeat.o(143189);
+    this.gsk.post(paramRunnable);
   }
   
   public EGLContext getEGLContext()
   {
-    if (this.htK == null) {
+    if (this.jrI == null) {
       return null;
     }
-    return this.htK.eZz;
+    return this.jrI.gwo;
   }
   
   public int getPreviewTextureId()
   {
-    AppMethodBeat.i(143196);
-    if (this.fby == null)
-    {
-      AppMethodBeat.o(143196);
+    if ((this.gBC == null) || (this.gBC.fQI() == null)) {
       return -1;
     }
-    int i = this.fby.getTextureId();
-    AppMethodBeat.o(143196);
-    return i;
+    return this.gBC.fQI().gro;
   }
   
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  public final void j(final d.g.a.a<y> parama)
   {
-    AppMethodBeat.i(143190);
-    ab.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureAvailable, surfaceTexture:%s, width:%d, height:%d", new Object[] { paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    queueEvent(new a.2(this, paramInt1, paramInt2, paramSurfaceTexture));
-    AppMethodBeat.o(143190);
+    if (Thread.currentThread().getId() == this.gsj.getId())
+    {
+      parama.invoke();
+      return;
+    }
+    this.gsk.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(45193);
+        parama.invoke();
+        AppMethodBeat.o(45193);
+      }
+    });
+  }
+  
+  public void onSurfaceTextureAvailable(final SurfaceTexture paramSurfaceTexture, final int paramInt1, final int paramInt2)
+  {
+    ad.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureAvailable, surfaceTexture:%s, width:%d, height:%d", new Object[] { paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    queueEvent(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(45194);
+        a.a(a.this, paramInt1);
+        a.b(a.this, paramInt2);
+        a.a(a.this, paramSurfaceTexture);
+        a locala = a.this;
+        c.a locala1 = com.tencent.mm.media.j.c.gwl;
+        a.a(locala, c.a.a(new Surface(paramSurfaceTexture), null, 0, 0, EGL14.EGL_NO_CONTEXT));
+        if (a.a(a.this) != null)
+        {
+          a.a(a.this).onSurfaceCreated(null, null);
+          a.a(a.this).cT(paramInt1, paramInt2);
+          a.a(a.this).cS(paramInt1, paramInt2);
+          a.a(a.this).dI(true);
+        }
+        a.a(a.this, a.b(a.this).getSurfaceTexture(), paramInt1, paramInt2);
+        a.c(a.this).getAndSet(true);
+        if (a.d(a.this) != null)
+        {
+          a.d(a.this);
+          a.b(a.this);
+        }
+        AppMethodBeat.o(45194);
+      }
+    });
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(143192);
-    ab.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureDestroyed");
-    queueEvent(new a.4(this));
-    AppMethodBeat.o(143192);
+    ad.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureDestroyed");
+    queueEvent(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(45198);
+        ad.i("MicroMsg.CameraPreviewGLTextureView", "hy: onSurfaceTextureDestroyed in thread! can preview: %b", new Object[] { Boolean.valueOf(a.c(a.this).get()) });
+        try
+        {
+          if (a.c(a.this).get())
+          {
+            boolean bool = a.b(a.this, a.b(a.this).getSurfaceTexture());
+            a.c(a.this).getAndSet(false);
+            if (a.a(a.this) == null) {
+              break label170;
+            }
+            a.a(a.this).release(bool);
+          }
+          for (;;)
+          {
+            if (a.g(a.this) != null)
+            {
+              EGL14.eglDestroyContext(a.g(a.this).gwm, a.g(a.this).gwo);
+              EGL14.eglDestroySurface(a.g(a.this).gwm, a.g(a.this).eglSurface);
+              a.h(a.this).release();
+            }
+            AppMethodBeat.o(45198);
+            return;
+            label170:
+            ad.w("MicroMsg.CameraPreviewGLTextureView", "hy: no renderer!");
+          }
+          return;
+        }
+        catch (Throwable localThrowable)
+        {
+          ad.printErrStackTrace("MicroMsg.CameraPreviewGLTextureView", localThrowable, "hy: error in surface destroy!!", new Object[0]);
+          AppMethodBeat.o(45198);
+        }
+      }
+    });
     return false;
   }
   
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, final int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(143191);
-    ab.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureSizeChanged, surfaceTexture:%s, width:%d, height:%d", new Object[] { paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    queueEvent(new a.3(this, paramInt1, paramInt2));
-    AppMethodBeat.o(143191);
+    ad.i("MicroMsg.CameraPreviewGLTextureView", "onSurfaceTextureSizeChanged, surfaceTexture:%s, width:%d, height:%d", new Object[] { paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    queueEvent(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(45195);
+        a.b(a.this, a.b(a.this).getSurfaceTexture(), paramInt1, paramInt2);
+        a.a(a.this, paramInt1);
+        a.b(a.this, paramInt2);
+        a.a(a.this).cT(a.e(a.this), a.f(a.this));
+        AppMethodBeat.o(45195);
+      }
+    });
   }
   
   public void requestRender()
   {
-    AppMethodBeat.i(143195);
-    queueEvent(new a.5(this));
-    AppMethodBeat.o(143195);
-  }
-  
-  public void setOnSurfaceTextureAvailableDelegate(c.a parama)
-  {
-    AppMethodBeat.i(143193);
-    this.htM = parama;
-    this.htL.get();
-    AppMethodBeat.o(143193);
-  }
-  
-  public void setOnTextureDrawFinishDelegate(b<Integer, y> paramb)
-  {
-    this.fby.fbN = paramb;
-  }
-  
-  public void setPreviewRenderer(com.tencent.mm.media.h.a parama)
-  {
-    AppMethodBeat.i(143194);
-    ab.i("MicroMsg.CameraPreviewGLTextureView", "setRenderer:${renderer.hashCode()}  ");
-    if (this.fby != null)
+    queueEvent(new Runnable()
     {
-      this.fby.release();
-      this.fby = new com.tencent.mm.media.widget.camerarecordview.preview.a.c(this);
+      public final void run()
+      {
+        AppMethodBeat.i(45197);
+        try
+        {
+          if (a.a(a.this).guH)
+          {
+            ((SurfaceTexture)Objects.requireNonNull(a.b(a.this).getSurfaceTexture())).updateTexImage();
+            a.a(a.this).onDrawFrame(null);
+          }
+          while (a.c(a.this).get())
+          {
+            if (a.g(a.this) == null) {
+              break label194;
+            }
+            EGLExt.eglPresentationTimeANDROID(a.g(a.this).gwm, a.g(a.this).eglSurface, System.nanoTime());
+            EGL14.eglSwapBuffers(a.g(a.this).gwm, a.g(a.this).eglSurface);
+            AppMethodBeat.o(45197);
+            return;
+            ad.w("MicroMsg.CameraPreviewGLTextureView", "hy: renderer already released!");
+          }
+          ad.w("MicroMsg.CameraPreviewGLTextureView", "hy: can not render because already destroyed");
+        }
+        catch (Throwable localThrowable)
+        {
+          ad.printErrStackTrace("MicroMsg.CameraPreviewGLTextureView", localThrowable, "hy: encounter exception! gl get error: %d", new Object[] { Integer.valueOf(EGL14.eglGetError()) });
+          ((com.tencent.mm.plugin.appbrand.u.a)e.L(com.tencent.mm.plugin.appbrand.u.a.class)).idkeyStat(808L, 2L, 1L, true);
+          AppMethodBeat.o(45197);
+          return;
+        }
+        label194:
+        AppMethodBeat.o(45197);
+      }
+    });
+  }
+  
+  public void setOnSurfaceTextureAvailableDelegate(d.a parama)
+  {
+    this.jrK = parama;
+    this.jrJ.get();
+  }
+  
+  public void setOnTextureDrawFinishDelegate(b<com.tencent.mm.media.f.d, y> paramb)
+  {
+    this.gBC.gBQ = paramb;
+  }
+  
+  public void setPreviewRenderer(final com.tencent.mm.media.i.a parama)
+  {
+    ad.i("MicroMsg.CameraPreviewGLTextureView", "setRenderer: %d", new Object[] { Integer.valueOf(parama.hashCode()) });
+    if (this.gBC != null)
+    {
+      this.gBC.release();
+      this.gBC = new com.tencent.mm.media.widget.camerarecordview.preview.a.c(this);
     }
-    this.fby = new com.tencent.mm.media.widget.camerarecordview.preview.a.c(this);
-    this.fby.b(parama);
-    this.eWh = parama;
-    AppMethodBeat.o(143194);
-  }
-  
-  public final void yA()
-  {
-    AppMethodBeat.i(143197);
-    super.yA();
-    this.eVQ.quitSafely();
-    AppMethodBeat.o(143197);
-  }
-  
-  public final boolean yz()
-  {
-    return true;
+    this.gBC = new com.tencent.mm.media.widget.camerarecordview.preview.a.c(this);
+    this.gBC.b(parama);
+    queueEvent(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(45196);
+        a.a(a.this, parama);
+        AppMethodBeat.o(45196);
+      }
+    });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.f.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -16,33 +16,51 @@ import java.util.List;
 public final class g
   extends BaseAdapter
 {
-  private View.OnClickListener gMO;
-  private boolean kns;
-  c krl;
-  List<CardInfo> krw;
-  private boolean kws;
-  List<Boolean> kwt;
-  g.a kwu;
+  private View.OnClickListener iAw;
   Context mContext;
+  private boolean nBL;
+  List<Boolean> nBM;
+  a nBN;
+  private boolean nsG;
+  c nwE;
+  List<CardInfo> nwP;
   
   public g(Context paramContext)
   {
-    AppMethodBeat.i(88546);
-    this.krw = new ArrayList();
-    this.kws = false;
-    this.kwt = new ArrayList();
-    this.kns = true;
-    this.gMO = new g.1(this);
-    this.krl = new l(paramContext, this);
+    AppMethodBeat.i(113473);
+    this.nwP = new ArrayList();
+    this.nBL = false;
+    this.nBM = new ArrayList();
+    this.nsG = true;
+    this.iAw = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(113472);
+        int i = ((Integer)paramAnonymousView.getTag()).intValue();
+        paramAnonymousView = g.this;
+        if (((Boolean)paramAnonymousView.nBM.get(i)).booleanValue()) {
+          paramAnonymousView.nBM.set(i, Boolean.FALSE);
+        }
+        for (;;)
+        {
+          paramAnonymousView.notifyDataSetChanged();
+          AppMethodBeat.o(113472);
+          return;
+          paramAnonymousView.nBM.set(i, Boolean.TRUE);
+        }
+      }
+    };
+    this.nwE = new l(paramContext, this);
     this.mContext = paramContext;
-    AppMethodBeat.o(88546);
+    AppMethodBeat.o(113473);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(88547);
-    int i = this.krw.size();
-    AppMethodBeat.o(88547);
+    AppMethodBeat.i(113474);
+    int i = this.nwP.size();
+    AppMethodBeat.o(113474);
     return i;
   }
   
@@ -53,40 +71,42 @@ public final class g
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(88549);
-    paramViewGroup = tg(paramInt);
-    paramViewGroup.kns = this.kns;
-    paramView = this.krl.a(paramInt, paramView, paramViewGroup);
-    if ((this.kws) && (paramViewGroup.baQ()))
+    AppMethodBeat.i(113476);
+    paramViewGroup = yZ(paramInt);
+    paramViewGroup.nsG = this.nsG;
+    paramView = this.nwE.a(paramInt, paramView, paramViewGroup);
+    if ((this.nBL) && (paramViewGroup.bHH()))
     {
-      this.krl.W(paramView, 0);
-      if (((Boolean)this.kwt.get(paramInt)).booleanValue())
+      this.nwE.Y(paramView, 0);
+      if (((Boolean)this.nBM.get(paramInt)).booleanValue())
       {
-        this.krl.V(paramView, 2130838096);
-        this.krl.a(paramView, paramInt, this.gMO);
+        this.nwE.X(paramView, 2131231424);
+        this.nwE.a(paramView, paramInt, this.iAw);
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(88549);
+      AppMethodBeat.o(113476);
       return paramView;
-      this.krl.V(paramView, 2130838097);
+      this.nwE.X(paramView, 2131231425);
       break;
-      this.krl.W(paramView, 8);
+      this.nwE.Y(paramView, 8);
     }
   }
   
-  public final CardInfo tg(int paramInt)
+  public final CardInfo yZ(int paramInt)
   {
-    AppMethodBeat.i(88548);
-    CardInfo localCardInfo = (CardInfo)this.krw.get(paramInt);
-    AppMethodBeat.o(88548);
+    AppMethodBeat.i(113475);
+    CardInfo localCardInfo = (CardInfo)this.nwP.get(paramInt);
+    AppMethodBeat.o(113475);
     return localCardInfo;
   }
+  
+  public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.g
  * JD-Core Version:    0.7.0.1
  */

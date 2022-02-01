@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.card.ui.v2;
 
-import a.l;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -9,59 +8,60 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/card/ui/v2/CardLabelTextView;", "Landroid/widget/TextView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "fillColor", "p", "Landroid/graphics/Paint;", "radius", "", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "setFillColor", "color", "setRadius", "plugin-card_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/card/ui/v2/CardLabelTextView;", "Landroid/widget/TextView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "fillColor", "p", "Landroid/graphics/Paint;", "radius", "", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "setFillColor", "color", "setRadius", "plugin-card_release"})
 public final class CardLabelTextView
   extends TextView
 {
   private int fillColor;
-  private final Paint kAn;
+  private final Paint nFF;
   private float radius;
   
   public CardLabelTextView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(89281);
+    AppMethodBeat.i(112506);
     this.radius = a.fromDPToPix(getContext(), 1);
-    this.kAn = new Paint();
-    AppMethodBeat.o(89281);
+    this.nFF = new Paint();
+    AppMethodBeat.o(112506);
   }
   
   public CardLabelTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(89282);
+    AppMethodBeat.i(112507);
     this.radius = a.fromDPToPix(getContext(), 1);
-    this.kAn = new Paint();
-    AppMethodBeat.o(89282);
+    this.nFF = new Paint();
+    AppMethodBeat.o(112507);
   }
   
   public CardLabelTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(89283);
+    AppMethodBeat.i(112508);
     this.radius = a.fromDPToPix(getContext(), 1);
-    this.kAn = new Paint();
-    AppMethodBeat.o(89283);
+    this.nFF = new Paint();
+    AppMethodBeat.o(112508);
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(89280);
+    AppMethodBeat.i(112505);
     RectF localRectF = new RectF();
     localRectF.left = 0.0F;
     localRectF.right = getWidth();
     localRectF.top = 0.0F;
     localRectF.bottom = getHeight();
-    this.kAn.setAntiAlias(true);
-    this.kAn.setColor(this.fillColor);
-    this.kAn.setStyle(Paint.Style.FILL);
+    this.nFF.setAntiAlias(true);
+    this.nFF.setColor(this.fillColor);
+    this.nFF.setStyle(Paint.Style.FILL);
     if (paramCanvas != null) {
-      paramCanvas.drawRoundRect(localRectF, this.radius, this.radius, this.kAn);
+      paramCanvas.drawRoundRect(localRectF, this.radius, this.radius, this.nFF);
     }
     super.onDraw(paramCanvas);
-    AppMethodBeat.o(89280);
+    AppMethodBeat.o(112505);
   }
   
   public final void setFillColor(int paramInt)
@@ -76,7 +76,7 @@ public final class CardLabelTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.v2.CardLabelTextView
  * JD-Core Version:    0.7.0.1
  */

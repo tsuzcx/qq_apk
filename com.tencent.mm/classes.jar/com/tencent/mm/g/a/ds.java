@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ds
   extends b
 {
-  public ds.a crv;
+  public a dfW;
+  public b dfX;
   
   public ds()
   {
@@ -15,16 +16,28 @@ public final class ds
   
   private ds(byte paramByte)
   {
-    AppMethodBeat.i(70154);
-    this.crv = new ds.a();
-    this.ymq = false;
+    AppMethodBeat.i(115984);
+    this.dfW = new a();
+    this.dfX = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70154);
+    AppMethodBeat.o(115984);
+  }
+  
+  public static final class a
+  {
+    public boolean dfN = false;
+  }
+  
+  public static final class b
+  {
+    public boolean dfO;
+    public String dfY;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ds
  * JD-Core Version:    0.7.0.1
  */

@@ -4,12 +4,12 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.a.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawTextActionArg;
-import com.tencent.mm.plugin.appbrand.s.g;
 import org.json.JSONArray;
 
 public final class l
@@ -17,13 +17,13 @@ public final class l
 {
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    AppMethodBeat.i(103214);
-    Paint.FontMetrics localFontMetrics = paramd.heB.getFontMetrics();
+    AppMethodBeat.i(144897);
+    Paint.FontMetrics localFontMetrics = paramd.iYL.getFontMetrics();
     float f;
-    if (paramd.heB.hfC == a.a.hfJ)
+    if (paramd.iYL.iZN == a.a.iZU)
     {
       f = paramFloat2 + Math.abs(localFontMetrics.ascent);
-      paramd = paramd.heC;
+      paramd = paramd.iYM;
       paramFloat2 = paramd.measureText(paramString);
       if ((paramFloat3 <= 0.0F) || (paramFloat3 >= paramFloat2)) {
         break label189;
@@ -37,15 +37,15 @@ public final class l
     }
     for (;;)
     {
-      AppMethodBeat.o(103214);
+      AppMethodBeat.o(144897);
       return true;
-      if (paramd.heB.hfC == a.a.hfL)
+      if (paramd.iYL.iZN == a.a.iZW)
       {
         f = paramFloat2 + Math.abs((-localFontMetrics.ascent + localFontMetrics.descent) / 2.0F - localFontMetrics.descent);
         break;
       }
       f = paramFloat2;
-      if (paramd.heB.hfC != a.a.hfK) {
+      if (paramd.iYL.iZN != a.a.iZV) {
         break;
       }
       f = paramFloat2 - Math.abs(localFontMetrics.descent);
@@ -57,36 +57,36 @@ public final class l
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    AppMethodBeat.i(103215);
+    AppMethodBeat.i(144898);
     paramDrawActionArg = (DrawTextActionArg)paramDrawActionArg;
     if (paramDrawActionArg == null)
     {
-      AppMethodBeat.o(103215);
+      AppMethodBeat.o(144898);
       return false;
     }
     boolean bool = a(paramd, paramCanvas, paramDrawActionArg.text, paramDrawActionArg.x, paramDrawActionArg.y, paramDrawActionArg.maxWidth);
-    AppMethodBeat.o(103215);
+    AppMethodBeat.o(144898);
     return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103213);
+    AppMethodBeat.i(144896);
     if (paramJSONArray.length() < 3)
     {
-      AppMethodBeat.o(103213);
+      AppMethodBeat.o(144896);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas, paramJSONArray.optString(0), g.d(paramJSONArray, 1), g.d(paramJSONArray, 2), g.d(paramJSONArray, 3));
-    AppMethodBeat.o(103213);
+    boolean bool = a(paramd, paramCanvas, paramJSONArray.optString(0), g.f(paramJSONArray, 1), g.f(paramJSONArray, 2), g.f(paramJSONArray, 3));
+    AppMethodBeat.o(144896);
     return bool;
   }
   
-  public final BaseDrawActionArg axW()
+  public final BaseDrawActionArg aSP()
   {
-    AppMethodBeat.i(103212);
+    AppMethodBeat.i(144895);
     DrawTextActionArg localDrawTextActionArg = new DrawTextActionArg();
-    AppMethodBeat.o(103212);
+    AppMethodBeat.o(144895);
     return localDrawTextActionArg;
   }
   
@@ -97,7 +97,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.l
  * JD-Core Version:    0.7.0.1
  */

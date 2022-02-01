@@ -10,9 +10,9 @@ public class ArgbEvaluator
   
   static
   {
-    AppMethodBeat.i(144265);
+    AppMethodBeat.i(18300);
     sInstance = new android.animation.ArgbEvaluator();
-    AppMethodBeat.o(144265);
+    AppMethodBeat.o(18300);
   }
   
   public static android.animation.ArgbEvaluator getInstance()
@@ -22,7 +22,7 @@ public class ArgbEvaluator
   
   public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(144264);
+    AppMethodBeat.i(18299);
     int i = ((Integer)paramObject1).intValue();
     float f1 = (i >> 24 & 0xFF) / 255.0F;
     float f4 = (i >> 16 & 0xFF) / 255.0F;
@@ -46,13 +46,13 @@ public class ArgbEvaluator
     int j = Math.round(f4 * 255.0F);
     int k = Math.round(f5 * 255.0F);
     int m = Math.round(f3 * 255.0F);
-    AppMethodBeat.o(144264);
+    AppMethodBeat.o(18299);
     return Integer.valueOf(m | i << 24 | j << 16 | k << 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.kinda.framework.animate.ArgbEvaluator
  * JD-Core Version:    0.7.0.1
  */

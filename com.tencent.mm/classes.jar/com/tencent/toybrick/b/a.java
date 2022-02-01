@@ -9,29 +9,29 @@ import com.tencent.toybrick.c.e;
 
 public final class a
 {
-  private static RecyclerView.n BwR;
+  private static RecyclerView.n IFV;
   
   static
   {
-    AppMethodBeat.i(113179);
+    AppMethodBeat.i(159916);
     RecyclerView.n localn = new RecyclerView.n();
-    BwR = localn;
-    localn.aB(d.Bxa, 10);
-    BwR.aB(e.Bxa, 10);
-    BwR.aB(com.tencent.toybrick.c.a.Bxa, 10);
-    BwR.aB(b.Bxa, 10);
-    BwR.aB(c.Bxa, 10);
-    AppMethodBeat.o(113179);
+    IFV = localn;
+    localn.aB(d.IGe, 10);
+    IFV.aB(e.IGe, 10);
+    IFV.aB(com.tencent.toybrick.c.a.IGe, 10);
+    IFV.aB(b.IGe, 10);
+    IFV.aB(c.IGe, 10);
+    AppMethodBeat.o(159916);
   }
   
-  public static RecyclerView.n dWN()
+  public static RecyclerView.n fph()
   {
-    return BwR;
+    return IFV;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.toybrick.b.a
  * JD-Core Version:    0.7.0.1
  */

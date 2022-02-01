@@ -1,186 +1,205 @@
 package com.tencent.tencentmap.mapsdk.a;
 
 import android.content.Context;
-import com.tencent.map.lib.f;
+import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.tencentmap.mapsdk.map.IMapView;
+import com.tencent.tencentmap.mapsdk.map.MapController;
+import com.tencent.tencentmap.mapsdk.map.MapView.LayoutParams;
+import com.tencent.tencentmap.mapsdk.map.Projection;
+import com.tencent.tencentmap.mapsdk.maps.TextureMapView;
+import com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptorFactory;
+import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
 
 public class o
+  implements IMapView
 {
-  public static int a = 1000;
-  private volatile List<n> b;
-  private q c;
-  private int d;
+  private TextureMapView a;
+  private com.tencent.tencentmap.mapsdk.map.TencentMap b;
   
-  public o(Context paramContext, String paramString)
+  public o(Context paramContext, com.tencent.tencentmap.mapsdk.map.TencentMapOptions paramTencentMapOptions)
   {
-    AppMethodBeat.i(147046);
-    this.d = -1;
-    if (paramString == null) {}
-    for (this.c = u.a(paramContext);; this.c = s.a(paramContext, paramString))
+    AppMethodBeat.i(186386);
+    a.a("vector MapView construct function start");
+    com.tencent.tencentmap.mapsdk.maps.TencentMapOptions localTencentMapOptions = null;
+    if (paramTencentMapOptions != null)
     {
-      b();
-      AppMethodBeat.o(147046);
-      return;
+      localTencentMapOptions = new com.tencent.tencentmap.mapsdk.maps.TencentMapOptions();
+      if (paramTencentMapOptions.getExtSurface() != null) {
+        localTencentMapOptions.setExtSurface(paramTencentMapOptions.getExtSurface());
+      }
+      localTencentMapOptions.setHandDrawMapEnable(paramTencentMapOptions.isHandDrawMapEnable());
+      localTencentMapOptions.setSubInfo(paramTencentMapOptions.getSubKey(), paramTencentMapOptions.getSubId());
+      localTencentMapOptions.setMultipleInfoWindowEnable(paramTencentMapOptions.isMutipleInfowindowEnabled());
     }
+    this.a = new TextureMapView(paramContext, localTencentMapOptions);
+    this.b = new n(this.a.getMap());
+    this.a.getMap().getUiSettings().setZoomControlsEnabled(false);
+    AppMethodBeat.o(186386);
   }
   
-  private List<n> b(JSONArray paramJSONArray)
+  public void addView(View paramView, MapView.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(147049);
-    if (paramJSONArray == null)
-    {
-      AppMethodBeat.o(147049);
-      return null;
+    AppMethodBeat.i(186389);
+    if (this.a.getMap() != null) {
+      this.a.getMap().addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromView(paramView)).position(q.a(paramLayoutParams.point)));
     }
-    int j = paramJSONArray.length();
-    ArrayList localArrayList = new ArrayList(j);
-    int i = 0;
-    while (i < j) {
-      try
-      {
-        JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-        localArrayList.add(new n(localJSONObject.getInt("index"), localJSONObject.getInt("id"), localJSONObject.getInt("order")));
-        i += 1;
-      }
-      catch (Exception paramJSONArray)
-      {
-        AppMethodBeat.o(147049);
-        return null;
-      }
-    }
-    Collections.sort(localArrayList);
-    AppMethodBeat.o(147049);
-    return localArrayList;
+    AppMethodBeat.o(186389);
   }
   
-  private void b()
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(147047);
-    this.b = new CopyOnWriteArrayList();
-    String str = this.c.a("mapStyleList");
-    Object localObject = str;
-    if (str == null) {
-      localObject = "[{\"id\":0,\"index\":0,\"order\":1},{\"id\":-1,\"index\":1,\"order\":-1},{\"id\":-1,\"index\":2,\"order\":-1},{\"id\":-1,\"index\":3,\"order\":-1},{\"id\":-1,\"index\":4,\"order\":-1},{\"id\":-1,\"index\":5,\"order\":-1},{\"id\":-1,\"index\":6,\"order\":-1},{\"id\":-1,\"index\":7,\"order\":-1},{\"id\":-1,\"index\":8,\"order\":-1},{\"id\":9,\"index\":9,\"order\":-1},{\"id\":10,\"index\":10,\"order\":-1},{\"id\":5,\"index\":11,\"order\":-1},{\"id\":4,\"index\":12,\"order\":-1},{\"id\":6,\"index\":13,\"order\":-1},{\"id\":7,\"index\":14,\"order\":-1},{\"id\":8,\"index\":15,\"order\":-1}]";
-    }
-    try
+    AppMethodBeat.i(186398);
+    if (this.a == null)
     {
-      localObject = new JSONArray((String)localObject);
-      this.b.addAll(b((JSONArray)localObject));
-      AppMethodBeat.o(147047);
-      return;
+      AppMethodBeat.o(186398);
+      return false;
     }
-    catch (Exception localException)
+    if ((this.a.dispatchTouchEvent(paramMotionEvent)) || (this.a.onTouchEvent(paramMotionEvent)))
     {
-      AppMethodBeat.o(147047);
+      AppMethodBeat.o(186398);
+      return true;
     }
+    AppMethodBeat.o(186398);
+    return false;
   }
   
-  public int a(int paramInt)
+  public com.tencent.tencentmap.mapsdk.map.TencentMap getMap()
   {
-    AppMethodBeat.i(147051);
-    if ((this.b == null) || (this.b.size() == 0) || (paramInt < 0))
-    {
-      AppMethodBeat.o(147051);
-      return paramInt;
-    }
-    this.d = paramInt;
-    if (paramInt >= a)
-    {
-      int i = a;
-      AppMethodBeat.o(147051);
-      return paramInt - i;
-    }
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
-    {
-      n localn = (n)localIterator.next();
-      if (localn.c == paramInt)
-      {
-        paramInt = localn.a;
-        AppMethodBeat.o(147051);
-        return paramInt;
-      }
-    }
-    AppMethodBeat.o(147051);
-    return paramInt;
+    return this.b;
   }
   
-  public String a()
+  public MapController getMapController()
   {
-    AppMethodBeat.i(147050);
-    if (this.b == null)
-    {
-      AppMethodBeat.o(147050);
-      return null;
-    }
-    Object localObject = new StringBuilder(128);
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
-    {
-      n localn = (n)localIterator.next();
-      if (localn.b != -1)
-      {
-        if (((StringBuilder)localObject).length() == 0)
-        {
-          ((StringBuilder)localObject).append(localn.b);
-        }
-        else
-        {
-          ((StringBuilder)localObject).append(",");
-          ((StringBuilder)localObject).append(localn.b);
-        }
-      }
-      else if (((StringBuilder)localObject).length() == 0) {
-        ((StringBuilder)localObject).append(0);
-      } else {
-        ((StringBuilder)localObject).append(",");
-      }
-    }
-    localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(147050);
-    return localObject;
+    return this.b;
   }
   
-  public void a(f paramf)
+  public View getMapView()
   {
-    AppMethodBeat.i(147052);
-    if (paramf != null) {
-      paramf.a(a(this.d));
-    }
-    AppMethodBeat.o(147052);
+    return this.a;
   }
   
-  public void a(JSONArray paramJSONArray)
+  public Projection getProjection()
   {
-    AppMethodBeat.i(147048);
-    String str = this.c.a("mapStyleList");
-    if (paramJSONArray != null)
+    AppMethodBeat.i(186388);
+    if (getMap() != null)
     {
-      List localList = b(paramJSONArray);
-      if (localList != null)
-      {
-        this.b.clear();
-        this.b.addAll(localList);
-        if (!paramJSONArray.toString().equals(str))
-        {
-          this.c.a();
-          this.c.a("mapStyleList", paramJSONArray.toString());
-        }
-      }
+      Projection localProjection = getMap().getProjection();
+      AppMethodBeat.o(186388);
+      return localProjection;
     }
-    AppMethodBeat.o(147048);
+    AppMethodBeat.o(186388);
+    return null;
+  }
+  
+  public com.tencent.tencentmap.mapsdk.map.UiSettings getUiSettings()
+  {
+    AppMethodBeat.i(186387);
+    if (this.a.getMap() != null)
+    {
+      r localr = new r(this.a.getMap().getUiSettings());
+      AppMethodBeat.o(186387);
+      return localr;
+    }
+    AppMethodBeat.o(186387);
+    return null;
+  }
+  
+  public void onCreate(Bundle paramBundle) {}
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(186396);
+    this.a.onDestroy();
+    AppMethodBeat.o(186396);
+  }
+  
+  public void onDestroyView() {}
+  
+  public void onLowMemory() {}
+  
+  public void onPause()
+  {
+    AppMethodBeat.i(186393);
+    this.a.onPause();
+    AppMethodBeat.o(186393);
+  }
+  
+  public void onRestart()
+  {
+    AppMethodBeat.i(186395);
+    this.a.onRestart();
+    AppMethodBeat.o(186395);
+  }
+  
+  public void onResume()
+  {
+    AppMethodBeat.i(186392);
+    this.a.onResume();
+    AppMethodBeat.o(186392);
+  }
+  
+  public void onSaveInstanceState(Bundle paramBundle) {}
+  
+  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(186399);
+    if (this.a != null) {
+      this.a.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+    AppMethodBeat.o(186399);
+  }
+  
+  public void onStart()
+  {
+    AppMethodBeat.i(186391);
+    this.a.onStart();
+    AppMethodBeat.o(186391);
+  }
+  
+  public void onStop()
+  {
+    AppMethodBeat.i(186394);
+    this.a.onStop();
+    AppMethodBeat.o(186394);
+  }
+  
+  public void onSurfaceChanged(Object paramObject, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(186400);
+    if (this.a != null) {
+      this.a.onSurfaceChanged(paramObject, paramInt1, paramInt2);
+    }
+    AppMethodBeat.o(186400);
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(186397);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      AppMethodBeat.o(186397);
+      return true;
+    }
+    AppMethodBeat.o(186397);
+    return false;
+  }
+  
+  public void updateViewLayout(View paramView, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    AppMethodBeat.i(186390);
+    if (this.a != null) {
+      this.a.updateViewLayout(paramView, paramLayoutParams);
+    }
+    AppMethodBeat.o(186390);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.o
  * JD-Core Version:    0.7.0.1
  */

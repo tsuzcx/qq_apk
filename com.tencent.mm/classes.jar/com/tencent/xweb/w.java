@@ -1,76 +1,149 @@
 package com.tencent.xweb;
 
 import android.graphics.Bitmap;
-import android.net.http.SslError;
-import android.os.Bundle;
+import android.net.Uri;
+import android.view.View;
+import android.webkit.ConsoleMessage;
+import android.webkit.GeolocationPermissions.Callback;
+import android.webkit.ValueCallback;
+import android.webkit.WebChromeClient.CustomViewCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.c.f;
+import com.tencent.xweb.internal.e;
 
 public class w
 {
-  public f BDF;
+  e IMW;
   
-  public s a(WebView paramWebView, r paramr)
+  public void a(WebView paramWebView, int paramInt) {}
+  
+  public boolean a(long paramLong, String paramString1, String paramString2, String paramString3)
   {
-    return null;
+    return true;
   }
   
-  public s a(WebView paramWebView, r paramr, Bundle paramBundle)
+  public boolean a(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    return null;
+    if (this.IMW != null) {}
+    return false;
   }
   
-  public void a(WebView paramWebView, float paramFloat1, float paramFloat2) {}
-  
-  public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2) {}
-  
-  public void a(WebView paramWebView, m paramm, SslError paramSslError)
-  {
-    AppMethodBeat.i(3943);
-    if (paramm != null) {
-      paramm.cancel();
-    }
-    AppMethodBeat.o(3943);
-  }
-  
-  public void a(WebView paramWebView, r paramr, s params) {}
-  
-  public void a(WebView paramWebView, String paramString, boolean paramBoolean) {}
-  
-  public boolean a(WebView paramWebView, String paramString)
+  public boolean a(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, a parama)
   {
     return false;
   }
   
-  public void b(WebView paramWebView, String paramString) {}
-  
-  public void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    AppMethodBeat.i(3942);
-    if (this.BDF == null)
+    AppMethodBeat.i(156776);
+    if (this.IMW != null)
     {
-      AppMethodBeat.o(3942);
-      return;
+      boolean bool = this.IMW.a(paramString1, paramString2, paramJsResult);
+      AppMethodBeat.o(156776);
+      return bool;
     }
-    this.BDF.w(paramString, paramBitmap);
-    AppMethodBeat.o(3942);
-  }
-  
-  public boolean b(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
+    AppMethodBeat.o(156776);
     return false;
   }
   
-  public s c(WebView paramWebView, String paramString)
+  public boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, n paramn)
+  {
+    AppMethodBeat.i(156778);
+    if (this.IMW != null)
+    {
+      boolean bool = this.IMW.a(paramString1, paramString2, paramString3, paramn);
+      AppMethodBeat.o(156778);
+      return bool;
+    }
+    AppMethodBeat.o(156778);
+    return false;
+  }
+  
+  public void b(WebView paramWebView, int paramInt) {}
+  
+  public boolean b(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    AppMethodBeat.i(156777);
+    if (this.IMW != null)
+    {
+      boolean bool = this.IMW.b(paramString1, paramString2, paramJsResult);
+      AppMethodBeat.o(156777);
+      return bool;
+    }
+    AppMethodBeat.o(156777);
+    return false;
+  }
+  
+  public boolean beF()
+  {
+    if (this.IMW != null) {}
+    return false;
+  }
+  
+  public boolean c(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    return true;
+  }
+  
+  public void d(WebView paramWebView, String paramString) {}
+  
+  public View getVideoLoadingProgressView()
   {
     return null;
   }
   
-  public void h(WebView paramWebView, String paramString) {}
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  {
+    return false;
+  }
+  
+  public void onExitFullscreenVideo(Bitmap paramBitmap) {}
+  
+  public void onGeolocationPermissionsHidePrompt() {}
+  
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissions.Callback paramCallback)
+  {
+    AppMethodBeat.i(156774);
+    paramCallback.invoke(paramString, true, true);
+    AppMethodBeat.o(156774);
+  }
+  
+  public void onHideCustomView()
+  {
+    AppMethodBeat.i(156775);
+    if (this.IMW != null) {
+      this.IMW.onHideCustomView();
+    }
+    AppMethodBeat.o(156775);
+  }
+  
+  public void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    AppMethodBeat.i(156780);
+    if (this.IMW != null) {
+      this.IMW.onShowCustomView(paramView, paramCustomViewCallback);
+    }
+    AppMethodBeat.o(156780);
+  }
+  
+  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(156779);
+    paramValueCallback.onReceiveValue(null);
+    AppMethodBeat.o(156779);
+  }
+  
+  public static abstract class a
+  {
+    public abstract String[] getAcceptTypes();
+    
+    public abstract int getMode();
+    
+    public abstract boolean isCaptureEnabled();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.w
  * JD-Core Version:    0.7.0.1
  */

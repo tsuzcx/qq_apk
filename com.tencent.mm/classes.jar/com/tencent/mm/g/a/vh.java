@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vh
   extends b
 {
-  public vh.a cMt;
+  public a dAL;
   
   public vh()
   {
@@ -15,16 +15,21 @@ public final class vh
   
   private vh(byte paramByte)
   {
-    AppMethodBeat.i(40560);
-    this.cMt = new vh.a();
-    this.ymq = false;
+    AppMethodBeat.i(162263);
+    this.dAL = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(40560);
+    AppMethodBeat.o(162263);
+  }
+  
+  public static final class a
+  {
+    public String dAM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.vh
  * JD-Core Version:    0.7.0.1
  */

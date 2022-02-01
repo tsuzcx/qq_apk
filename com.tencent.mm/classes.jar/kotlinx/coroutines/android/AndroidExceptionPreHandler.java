@@ -1,54 +1,106 @@
 package kotlinx.coroutines.android;
 
-import a.c.e;
-import a.c.e.c;
-import a.f.b.j;
-import a.l;
+import android.os.Build.VERSION;
 import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.d.a;
+import d.d.f;
+import d.d.f.c;
+import d.l;
 import java.lang.reflect.Method;
-import kotlinx.coroutines.x;
+import java.lang.reflect.Modifier;
+import kotlinx.coroutines.CoroutineExceptionHandler;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/android/AndroidExceptionPreHandler;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "()V", "handleException", "", "context", "Lkotlin/coroutines/CoroutineContext;", "exception", "", "kotlinx-coroutines-android"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/android/AndroidExceptionPreHandler;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "()V", "_preHandler", "", "handleException", "", "context", "Lkotlin/coroutines/CoroutineContext;", "exception", "", "preHandler", "Ljava/lang/reflect/Method;", "kotlinx-coroutines-android"})
 @Keep
 public final class AndroidExceptionPreHandler
-  extends a.c.a
-  implements x
+  extends a
+  implements CoroutineExceptionHandler
 {
+  private volatile Object _preHandler;
+  
   public AndroidExceptionPreHandler()
   {
-    super((e.c)x.CHx);
-    AppMethodBeat.i(118260);
-    AppMethodBeat.o(118260);
+    super((f.c)CoroutineExceptionHandler.Kdv);
+    AppMethodBeat.i(107783);
+    this._preHandler = this;
+    AppMethodBeat.o(107783);
   }
   
-  public final void handleException(e parame, Throwable paramThrowable)
+  private final Method preHandler()
   {
-    AppMethodBeat.i(118259);
-    j.q(parame, "context");
-    j.q(paramThrowable, "exception");
-    parame = a.eqb();
-    if (parame != null) {}
-    for (parame = parame.invoke(null, new Object[0]);; parame = null)
+    AppMethodBeat.i(189938);
+    Object localObject1 = this._preHandler;
+    if (localObject1 != (AndroidExceptionPreHandler)this)
     {
-      e locale = parame;
-      if (!(parame instanceof Thread.UncaughtExceptionHandler)) {
-        locale = null;
+      localObject1 = (Method)localObject1;
+      AppMethodBeat.o(189938);
+      return localObject1;
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject1 = Thread.class.getDeclaredMethod("getUncaughtExceptionPreHandler", new Class[0]);
+        if (!Modifier.isPublic(((Method)localObject1).getModifiers())) {
+          continue;
+        }
+        boolean bool = Modifier.isStatic(((Method)localObject1).getModifiers());
+        if (!bool) {
+          continue;
+        }
+        i = 1;
+        if (i == 0) {
+          continue;
+        }
       }
-      parame = (Thread.UncaughtExceptionHandler)locale;
-      if (parame == null) {
-        break;
+      catch (Throwable localThrowable)
+      {
+        int i;
+        Object localObject2 = null;
+        continue;
       }
-      parame.uncaughtException(Thread.currentThread(), paramThrowable);
-      AppMethodBeat.o(118259);
+      this._preHandler = localObject1;
+      AppMethodBeat.o(189938);
+      return localObject1;
+      i = 0;
+      continue;
+      localObject1 = null;
+    }
+  }
+  
+  public final void handleException(f paramf, Throwable paramThrowable)
+  {
+    AppMethodBeat.i(107782);
+    Thread localThread = Thread.currentThread();
+    if (Build.VERSION.SDK_INT >= 28)
+    {
+      localThread.getUncaughtExceptionHandler().uncaughtException(localThread, paramThrowable);
+      AppMethodBeat.o(107782);
       return;
     }
-    AppMethodBeat.o(118259);
+    paramf = preHandler();
+    if (paramf != null) {}
+    for (paramf = paramf.invoke(null, new Object[0]);; paramf = null)
+    {
+      f localf = paramf;
+      if (!(paramf instanceof Thread.UncaughtExceptionHandler)) {
+        localf = null;
+      }
+      paramf = (Thread.UncaughtExceptionHandler)localf;
+      if (paramf == null) {
+        break;
+      }
+      paramf.uncaughtException(localThread, paramThrowable);
+      AppMethodBeat.o(107782);
+      return;
+    }
+    AppMethodBeat.o(107782);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.android.AndroidExceptionPreHandler
  * JD-Core Version:    0.7.0.1
  */

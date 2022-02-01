@@ -10,28 +10,28 @@ final class zzo
   
   zzo()
   {
-    AppMethodBeat.i(90500);
+    AppMethodBeat.i(5521);
     this.zzahm = new zzm();
-    AppMethodBeat.o(90500);
+    AppMethodBeat.o(5521);
   }
   
   public final void zza(Throwable paramThrowable1, Throwable paramThrowable2)
   {
-    AppMethodBeat.i(90501);
+    AppMethodBeat.i(5522);
     if (paramThrowable2 == paramThrowable1)
     {
       paramThrowable1 = new IllegalArgumentException("Self suppression is not allowed.", paramThrowable2);
-      AppMethodBeat.o(90501);
+      AppMethodBeat.o(5522);
       throw paramThrowable1;
     }
     if (paramThrowable2 == null)
     {
       paramThrowable1 = new NullPointerException("The suppressed exception cannot be null.");
-      AppMethodBeat.o(90501);
+      AppMethodBeat.o(5522);
       throw paramThrowable1;
     }
     this.zzahm.zza(paramThrowable1, true).add(paramThrowable2);
-    AppMethodBeat.o(90501);
+    AppMethodBeat.o(5522);
   }
 }
 

@@ -22,16 +22,16 @@ public class ScrollAlwaysTextView
   
   public int getBaseline()
   {
-    AppMethodBeat.i(106129);
+    AppMethodBeat.i(141488);
     try
     {
       int i = super.getBaseline();
-      AppMethodBeat.o(106129);
+      AppMethodBeat.o(141488);
       return i;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(106129);
+      AppMethodBeat.o(141488);
     }
     return -1;
   }
@@ -43,71 +43,71 @@ public class ScrollAlwaysTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(106128);
+    AppMethodBeat.i(141487);
     try
     {
       super.onDraw(paramCanvas);
-      AppMethodBeat.o(106128);
+      AppMethodBeat.o(141487);
       return;
     }
     catch (Throwable paramCanvas)
     {
-      AppMethodBeat.o(106128);
+      AppMethodBeat.o(141487);
     }
   }
   
   protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
   {
-    AppMethodBeat.i(106125);
+    AppMethodBeat.i(141484);
     if (paramBoolean) {
       super.onFocusChanged(paramBoolean, paramInt, paramRect);
     }
-    AppMethodBeat.o(106125);
+    AppMethodBeat.o(141484);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106127);
+    AppMethodBeat.i(141486);
     try
     {
       super.onMeasure(paramInt1, paramInt2);
-      AppMethodBeat.o(106127);
+      AppMethodBeat.o(141486);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(106127);
+      AppMethodBeat.o(141486);
     }
   }
   
   public boolean onPreDraw()
   {
-    AppMethodBeat.i(106130);
+    AppMethodBeat.i(141489);
     try
     {
       boolean bool = super.onPreDraw();
-      AppMethodBeat.o(106130);
+      AppMethodBeat.o(141489);
       return bool;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(106130);
+      AppMethodBeat.o(141489);
     }
     return true;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(106126);
+    AppMethodBeat.i(141485);
     if (paramBoolean) {
       super.onWindowFocusChanged(paramBoolean);
     }
-    AppMethodBeat.o(106126);
+    AppMethodBeat.o(141485);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.ScrollAlwaysTextView
  * JD-Core Version:    0.7.0.1
  */

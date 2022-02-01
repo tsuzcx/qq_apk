@@ -9,8 +9,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class InitCallBackLayout
   extends FrameLayout
 {
+  private ap FSu;
   private boolean hasDrawed;
-  private ao zfl;
   
   public InitCallBackLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -19,21 +19,21 @@ public class InitCallBackLayout
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(30954);
+    AppMethodBeat.i(34834);
     super.onDraw(paramCanvas);
     if (!this.hasDrawed)
     {
       this.hasDrawed = true;
-      if (this.zfl != null) {
-        this.zfl.bEm();
+      if (this.FSu != null) {
+        this.FSu.cAy();
       }
     }
-    AppMethodBeat.o(30954);
+    AppMethodBeat.o(34834);
   }
   
-  public void setListener(ao paramao)
+  public void setListener(ap paramap)
   {
-    this.zfl = paramao;
+    this.FSu = paramap;
   }
 }
 

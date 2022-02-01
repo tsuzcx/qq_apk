@@ -19,16 +19,16 @@ public final class zzjh
   zzjh(zzgl paramzzgl)
   {
     super(paramzzgl);
-    AppMethodBeat.i(69363);
+    AppMethodBeat.i(1886);
     this.zzapv = new zzji(this, this.zzacw);
     this.zzapw = new zzjj(this, this.zzacw);
     this.zzapu = zzbt().elapsedRealtime();
-    AppMethodBeat.o(69363);
+    AppMethodBeat.o(1886);
   }
   
   private final void zzaf(long paramLong)
   {
-    AppMethodBeat.i(69366);
+    AppMethodBeat.i(1889);
     zzab();
     zzki();
     this.zzapv.cancel();
@@ -43,16 +43,16 @@ public final class zzjh
     if (zzgf().zzakk.get())
     {
       this.zzapv.zzh(Math.max(0L, zzgf().zzaki.get() - zzgf().zzakm.get()));
-      AppMethodBeat.o(69366);
+      AppMethodBeat.o(1889);
       return;
     }
     this.zzapw.zzh(Math.max(0L, 3600000L - zzgf().zzakm.get()));
-    AppMethodBeat.o(69366);
+    AppMethodBeat.o(1889);
   }
   
   private final void zzag(long paramLong)
   {
-    AppMethodBeat.i(69367);
+    AppMethodBeat.i(1890);
     zzab();
     zzki();
     this.zzapv.cancel();
@@ -61,12 +61,12 @@ public final class zzjh
     if (this.zzapu != 0L) {
       zzgf().zzakm.set(zzgf().zzakm.get() + (paramLong - this.zzapu));
     }
-    AppMethodBeat.o(69367);
+    AppMethodBeat.o(1890);
   }
   
   private final void zzki()
   {
-    AppMethodBeat.i(69364);
+    AppMethodBeat.i(1887);
     try
     {
       if (this.handler == null) {
@@ -76,17 +76,17 @@ public final class zzjh
     }
     finally
     {
-      AppMethodBeat.o(69364);
+      AppMethodBeat.o(1887);
     }
   }
   
   private final void zzkk()
   {
-    AppMethodBeat.i(69369);
+    AppMethodBeat.i(1892);
     zzab();
     zzl(false);
     zzft().zzk(zzbt().elapsedRealtime());
-    AppMethodBeat.o(69369);
+    AppMethodBeat.o(1892);
   }
   
   protected final boolean zzhf()
@@ -96,16 +96,16 @@ public final class zzjh
   
   final void zzkj()
   {
-    AppMethodBeat.i(69365);
+    AppMethodBeat.i(1888);
     this.zzapv.cancel();
     this.zzapw.cancel();
     this.zzapu = 0L;
-    AppMethodBeat.o(69365);
+    AppMethodBeat.o(1888);
   }
   
   public final boolean zzl(boolean paramBoolean)
   {
-    AppMethodBeat.i(69368);
+    AppMethodBeat.i(1891);
     zzab();
     zzch();
     long l1 = zzbt().elapsedRealtime();
@@ -114,7 +114,7 @@ public final class zzjh
     if ((!paramBoolean) && (l2 < 1000L))
     {
       zzge().zzit().zzg("Screen exposed for less than 1000 ms. Event not sent. time", Long.valueOf(l2));
-      AppMethodBeat.o(69368);
+      AppMethodBeat.o(1891);
       return false;
     }
     zzgf().zzakm.set(l2);
@@ -126,13 +126,13 @@ public final class zzjh
     this.zzapu = l1;
     this.zzapw.cancel();
     this.zzapw.zzh(Math.max(0L, 3600000L - zzgf().zzakm.get()));
-    AppMethodBeat.o(69368);
+    AppMethodBeat.o(1891);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzjh
  * JD-Core Version:    0.7.0.1
  */

@@ -12,66 +12,67 @@ public class FragmentTabHost
   extends TabHost
   implements TabHost.OnTabChangeListener
 {
-  private int be;
-  private final ArrayList<ad> dr = new ArrayList();
-  private s ds;
-  private TabHost.OnTabChangeListener dt;
-  private ad du;
-  private boolean dv;
+  private int cP;
+  private final ArrayList<af> fg = new ArrayList();
+  private t fh;
+  private TabHost.OnTabChangeListener fi;
+  private af fj;
+  private boolean fk;
   private Context mContext;
   
   public FragmentTabHost(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, new int[] { 16842995 }, 0, 0);
-    this.be = paramContext.getResourceId(0, 0);
+    this.cP = paramContext.getResourceId(0, 0);
     paramContext.recycle();
     super.setOnTabChangedListener(this);
   }
   
-  private ae a(String paramString, ae paramae)
+  private ag a(String paramString, ag paramag)
   {
-    int j = this.dr.size();
-    int i = 0;
-    ad localad;
-    if (i < j)
+    af localaf = c(paramString);
+    paramString = paramag;
+    if (this.fj != localaf)
     {
-      localad = (ad)this.dr.get(i);
-      if (localad.tag.equals(paramString))
+      paramString = paramag;
+      if (paramag == null) {
+        paramString = this.fh.ao();
+      }
+      if ((this.fj != null) && (this.fj.bV != null)) {
+        paramString.b(this.fj.bV);
+      }
+      if (localaf != null)
       {
-        label42:
-        paramString = paramae;
-        if (this.du != localad)
-        {
-          paramString = paramae;
-          if (paramae == null) {
-            paramString = this.ds.Z();
-          }
-          if ((this.du != null) && (this.du.am != null)) {
-            paramString.b(this.du.am);
-          }
-          if (localad != null)
-          {
-            if (localad.am != null) {
-              break label174;
-            }
-            localad.am = Fragment.a(this.mContext, localad.dx.getName(), localad.dy);
-            paramString.a(this.be, localad.am, localad.tag);
-          }
+        if (localaf.bV != null) {
+          break label116;
         }
+        localaf.bV = Fragment.a(this.mContext, localaf.fm.getName(), localaf.fn);
+        paramString.a(this.cP, localaf.bV, localaf.tag);
       }
     }
     for (;;)
     {
-      this.du = localad;
+      this.fj = localaf;
       return paramString;
-      i += 1;
-      break;
-      localad = null;
-      break label42;
-      label174:
-      paramString.c(localad.am);
+      label116:
+      paramString.c(localaf.bV);
     }
+  }
+  
+  private af c(String paramString)
+  {
+    int j = this.fg.size();
+    int i = 0;
+    while (i < j)
+    {
+      af localaf = (af)this.fg.get(i);
+      if (localaf.tag.equals(paramString)) {
+        return localaf;
+      }
+      i += 1;
+    }
+    return null;
   }
   
   protected void onAttachedToWindow()
@@ -79,22 +80,22 @@ public class FragmentTabHost
     super.onAttachedToWindow();
     String str = getCurrentTabTag();
     Object localObject1 = null;
-    int j = this.dr.size();
+    int j = this.fg.size();
     int i = 0;
     if (i < j)
     {
-      ad localad = (ad)this.dr.get(i);
-      localad.am = this.ds.c(localad.tag);
+      af localaf = (af)this.fg.get(i);
+      localaf.bV = this.fh.b(localaf.tag);
       Object localObject2 = localObject1;
-      if (localad.am != null)
+      if (localaf.bV != null)
       {
         localObject2 = localObject1;
-        if (!localad.am.bh)
+        if (!localaf.bV.cS)
         {
-          if (!localad.tag.equals(str)) {
+          if (!localaf.tag.equals(str)) {
             break label114;
           }
-          this.du = localad;
+          this.fj = localaf;
           localObject2 = localObject1;
         }
       }
@@ -106,24 +107,24 @@ public class FragmentTabHost
         label114:
         localObject2 = localObject1;
         if (localObject1 == null) {
-          localObject2 = this.ds.Z();
+          localObject2 = this.fh.ao();
         }
-        ((ae)localObject2).b(localad.am);
+        ((ag)localObject2).b(localaf.bV);
       }
     }
-    this.dv = true;
-    localObject1 = a(str, (ae)localObject1);
+    this.fk = true;
+    localObject1 = a(str, (ag)localObject1);
     if (localObject1 != null)
     {
-      ((ae)localObject1).commit();
-      this.ds.executePendingTransactions();
+      ((ag)localObject1).commit();
+      this.fh.executePendingTransactions();
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.dv = false;
+    this.fk = false;
   }
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
@@ -135,33 +136,33 @@ public class FragmentTabHost
     }
     paramParcelable = (FragmentTabHost.SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    setCurrentTabByTag(paramParcelable.dw);
+    setCurrentTabByTag(paramParcelable.fl);
   }
   
   protected Parcelable onSaveInstanceState()
   {
     FragmentTabHost.SavedState localSavedState = new FragmentTabHost.SavedState(super.onSaveInstanceState());
-    localSavedState.dw = getCurrentTabTag();
+    localSavedState.fl = getCurrentTabTag();
     return localSavedState;
   }
   
   public void onTabChanged(String paramString)
   {
-    if (this.dv)
+    if (this.fk)
     {
-      ae localae = a(paramString, null);
-      if (localae != null) {
-        localae.commit();
+      ag localag = a(paramString, null);
+      if (localag != null) {
+        localag.commit();
       }
     }
-    if (this.dt != null) {
-      this.dt.onTabChanged(paramString);
+    if (this.fi != null) {
+      this.fi.onTabChanged(paramString);
     }
   }
   
   public void setOnTabChangedListener(TabHost.OnTabChangeListener paramOnTabChangeListener)
   {
-    this.dt = paramOnTabChangeListener;
+    this.fi = paramOnTabChangeListener;
   }
   
   @Deprecated

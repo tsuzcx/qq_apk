@@ -13,9 +13,9 @@ public abstract interface al
   
   public abstract <A extends com.google.android.gms.common.api.g, T extends g<? extends w, A>> T b(T paramT);
   
-  public abstract void bd(int paramInt);
-  
   public abstract void begin();
+  
+  public abstract void bx(int paramInt);
   
   public abstract void connect();
   

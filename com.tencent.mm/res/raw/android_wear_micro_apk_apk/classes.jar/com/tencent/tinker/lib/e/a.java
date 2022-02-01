@@ -4,8 +4,8 @@ import android.util.Log;
 
 public final class a
 {
-  private static b aki;
-  private static b akj;
+  private static b anH;
+  private static b anI;
   
   static
   {
@@ -74,35 +74,35 @@ public final class a
         }
       }
     };
-    aki = local1;
-    akj = local1;
+    anH = local1;
+    anI = local1;
   }
   
   public static void a(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (akj != null) {
-      akj.a(paramString1, paramString2, paramVarArgs);
+    if (anI != null) {
+      anI.a(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void a(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    if (akj != null) {
-      akj.a(paramString1, paramThrowable, paramString2, paramVarArgs);
+    if (anI != null) {
+      anI.a(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
   }
   
   public static void b(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (akj != null) {
-      akj.b(paramString1, paramString2, paramVarArgs);
+    if (anI != null) {
+      anI.b(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void c(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (akj != null) {
-      akj.c(paramString1, paramString2, paramVarArgs);
+    if (anI != null) {
+      anI.c(paramString1, paramString2, paramVarArgs);
     }
   }
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/g11" android:layout_width="56.0dip" android:layout_height="48.0dip" android:layout_marginTop="120.0dip" android:src="@raw/story_user_guide_icon" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="22.0dip" android:textColor="@color/a_u" android:id="@id/g13" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="32.0dip" android:text="@string/fx4" android:layout_below="@id/g11" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/g13" android:layout_marginStart="24.0dip" android:layout_marginEnd="24.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="17.0dip" android:textColor="@color/a_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:layout_marginEnd="8.0dip" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/a_u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fyb" android:lineSpacingExtra="6.0dip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <TextView android:textSize="17.0dip" android:textColor="@color/a_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:layout_marginEnd="8.0dip" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/a_u" android:id="@id/g10" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fyc" android:lineSpacingExtra="6.0dip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+            <TextView android:textSize="17.0dip" android:textColor="@color/a_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="—" android:layout_marginEnd="8.0dip" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/a_u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fyd" android:lineSpacingExtra="6.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button android:textColor="@color/a_x" android:id="@id/g0z" android:background="@drawable/ach" android:layout_width="184.0dip" android:layout_height="wrap_content" android:layout_marginBottom="96.0dip" android:text="@string/fya" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/my" />
+</merge>

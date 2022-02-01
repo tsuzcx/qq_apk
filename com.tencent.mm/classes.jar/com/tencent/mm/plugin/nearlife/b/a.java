@@ -1,54 +1,50 @@
 package com.tencent.mm.plugin.nearlife.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.azs;
-import com.tencent.mm.protocal.protobuf.bwc;
-import java.util.LinkedList;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.pluginsdk.location.a.a;
+import com.tencent.mm.protocal.protobuf.avq;
+import com.tencent.mm.protocal.protobuf.bld;
+import java.util.Collections;
 
 public final class a
+  implements com.tencent.mm.pluginsdk.location.a
 {
-  public String Title;
-  public int dqG;
-  public int jKs;
-  public String ohd;
-  public String ohe;
-  public String pdW;
-  public float pdX;
-  public int pdY;
-  public LinkedList<Integer> pdZ;
-  public int pea;
-  public LinkedList<bwc> peb;
-  public float pec;
-  public String ped;
-  public SKBuiltinBuffer_t pee;
-  public azs pef;
-  
-  public a(String paramString, azs paramazs)
+  public final void a(bld parambld, final a.a parama)
   {
-    AppMethodBeat.i(22923);
-    this.pdZ = new LinkedList();
-    this.peb = new LinkedList();
-    this.ohd = paramString;
-    this.pdW = paramazs.pdW;
-    this.Title = paramazs.Title;
-    this.pdX = paramazs.pdX;
-    this.pdY = paramazs.pdY;
-    this.pdZ = paramazs.pdZ;
-    this.pea = paramazs.pea;
-    this.peb = paramazs.peb;
-    this.pec = paramazs.pec;
-    this.ped = paramazs.ped;
-    this.jKs = paramazs.jKs;
-    this.pee = paramazs.pee;
-    this.dqG = paramazs.xpp;
-    this.pef = paramazs;
-    AppMethodBeat.o(22923);
+    AppMethodBeat.i(163196);
+    parambld = new d(parambld);
+    parama = new com.tencent.mm.al.g()
+    {
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+      {
+        AppMethodBeat.i(163195);
+        com.tencent.mm.kernel.g.aeS().b(603, this);
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+        {
+          if (this.ubt) {}
+          for (paramAnonymousString = ((avq)((d)paramAnonymousn).rr.gUT.gUX).Dvn;; paramAnonymousString = ((avq)((d)paramAnonymousn).rr.gUT.gUX).ijO)
+          {
+            parama.r(paramAnonymousString, ((avq)((d)paramAnonymousn).rr.gUT.gUX).Dvi);
+            AppMethodBeat.o(163195);
+            return;
+          }
+        }
+        parama.r("", Collections.EMPTY_LIST);
+        AppMethodBeat.o(163195);
+      }
+    };
+    com.tencent.mm.kernel.g.aeS().a(603, parama);
+    com.tencent.mm.kernel.g.aeS().a(parambld, 0);
+    AppMethodBeat.o(163196);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.b.a
  * JD-Core Version:    0.7.0.1
  */

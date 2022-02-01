@@ -3,58 +3,57 @@ package com.tencent.mm.plugin.choosemsgfile.b.b;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.modelvideo.u;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
-import com.tencent.mm.plugin.choosemsgfile.b.d.b;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
 
 public final class h
   extends d
 {
-  private String kEL;
-  private String kEV;
+  private String nLL;
+  private String nLW;
   
-  public h(g paramg, bi parambi)
+  public h(g paramg, bl parambl)
   {
-    super(paramg, parambi);
+    super(paramg, parambl);
   }
   
   public final void a(View paramView, a parama)
   {
-    AppMethodBeat.i(54306);
-    b.a(this.kEI.bgw().getContext(), paramView, parama);
-    AppMethodBeat.o(54306);
+    AppMethodBeat.i(123278);
+    com.tencent.mm.plugin.choosemsgfile.b.d.c.a(this.nLI.bNH().getContext(), paramView, parama);
+    AppMethodBeat.o(123278);
   }
   
-  public final void a(m paramm, int paramInt)
+  public final void a(m paramm, int paramInt, a parama)
   {
-    AppMethodBeat.i(54305);
-    super.a(paramm, paramInt);
-    paramm.kFi.setVisibility(0);
-    paramm.kFj.setVisibility(0);
-    paramm = paramm.kFj;
-    if (this.kEV == null) {
-      this.kEV = bo.mH(u.vr(this.kEz.field_imgPath).fXx);
+    AppMethodBeat.i(162329);
+    super.a(paramm, paramInt, parama);
+    paramm.nMk.setVisibility(0);
+    paramm.nMl.setVisibility(0);
+    paramm = paramm.nMl;
+    if (this.nLW == null) {
+      this.nLW = bt.pL(u.Ae(this.nLz.field_imgPath).gOY);
     }
-    paramm.setText(bo.bf(this.kEV, ""));
-    AppMethodBeat.o(54305);
+    paramm.setText(bt.by(this.nLW, ""));
+    AppMethodBeat.o(162329);
   }
   
-  protected final String aaZ()
+  protected final String asu()
   {
-    AppMethodBeat.i(54304);
-    if (this.kEL == null)
+    AppMethodBeat.i(123276);
+    if (this.nLL == null)
     {
-      o.alE();
-      this.kEL = t.vg(this.kEz.field_imgPath);
+      o.aCI();
+      this.nLL = t.zR(this.nLz.field_imgPath);
     }
-    String str = this.kEL;
-    AppMethodBeat.o(54304);
+    String str = this.nLL;
+    AppMethodBeat.o(123276);
     return str;
   }
   
@@ -65,7 +64,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.h
  * JD-Core Version:    0.7.0.1
  */

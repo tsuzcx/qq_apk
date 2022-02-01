@@ -1,16 +1,17 @@
 package android.support.v4.media.session;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
 final class MediaControllerCompat$a$a
   extends Handler
 {
-  boolean CS;
+  boolean JH;
   
   public final void handleMessage(Message paramMessage)
   {
-    if (!this.CS) {
+    if (!this.JH) {
       return;
     }
     switch (paramMessage.what)
@@ -20,8 +21,8 @@ final class MediaControllerCompat$a$a
     default: 
       return;
     case 1: 
-      Object localObject = paramMessage.obj;
-      paramMessage.getData();
+      MediaSessionCompat.d(paramMessage.getData());
+      paramMessage = paramMessage.obj;
       return;
     case 2: 
       paramMessage = paramMessage.obj;
@@ -45,7 +46,7 @@ final class MediaControllerCompat$a$a
       ((Integer)paramMessage.obj).intValue();
       return;
     case 7: 
-      paramMessage = paramMessage.obj;
+      MediaSessionCompat.d((Bundle)paramMessage.obj);
       return;
     }
     paramMessage = paramMessage.obj;
@@ -53,7 +54,7 @@ final class MediaControllerCompat$a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.media.session.MediaControllerCompat.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/b16" android:paddingLeft="@dimen/la" android:paddingRight="@dimen/la" android:focusable="false" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="78.599976dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/w6" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/alm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/ar2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="@dimen/jo" android:textColor="@color/fe" android:id="@id/ar4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/ci" android:text="" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ar3" android:paddingTop="108.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:src="@raw/card_empty" app:iconColor="@color/FG_2" />
+        <TextView android:textSize="@dimen/jo" android:textColor="@color/FG_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/alp" />
     </LinearLayout>
 </LinearLayout>

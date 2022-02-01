@@ -3,63 +3,86 @@ package com.tencent.mm.app;
 import android.content.res.Configuration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.t;
-import com.tencent.mm.compatible.loader.e;
-import com.tencent.mm.compatible.util.k;
-import com.tencent.mm.platformtools.ae;
+import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.platformtools.ab;
 import com.tencent.mm.protocal.MMProtocalJni;
-import com.tencent.mm.sandbox.updater.k.a;
+import com.tencent.mm.sandbox.updater.l.a;
 import com.tencent.mm.sdk.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class SandBoxProfile
-  extends e
+  extends com.tencent.mm.compatible.loader.d
 {
-  public static final String bXW;
+  public static final String cLt;
   
   static
   {
-    AppMethodBeat.i(15399);
-    bXW = ah.getPackageName() + ":sandbox";
-    AppMethodBeat.o(15399);
+    AppMethodBeat.i(19474);
+    cLt = aj.getPackageName() + ":sandbox";
+    AppMethodBeat.o(19474);
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration) {}
   
   public final void onCreate()
   {
-    AppMethodBeat.i(15398);
-    Object localObject = com.tencent.mm.booter.d.bt(ah.getContext());
-    k.a("MMProtocalJni", SandBoxProfile.class.getClassLoader());
-    k.a(a.ylY, SandBoxProfile.class.getClassLoader());
-    MMProtocalJni.setClientPackVersion(com.tencent.mm.protocal.d.whH);
-    localObject = new t((com.tencent.mm.booter.d)localObject);
+    AppMethodBeat.i(19473);
+    Object localObject1 = com.tencent.mm.booter.d.bH(aj.getContext());
+    SandBoxProfile.class.getClassLoader();
+    j.pq("MMProtocalJni");
+    SandBoxProfile.class.getClassLoader();
+    j.pq("wechatbase");
+    Object localObject2 = a.ESC;
+    SandBoxProfile.class.getClassLoader();
+    j.pq((String)localObject2);
+    SandBoxProfile.class.getClassLoader();
+    j.pq("wechatmm");
+    localObject2 = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(19472);
+        MMProtocalJni.setClientPackVersion(com.tencent.mm.protocal.d.CpK);
+        AppMethodBeat.o(19472);
+      }
+    };
     try
     {
-      ((t)localObject).kt("SANDBOX");
-      ae.gkz = bo.a(((t)localObject).ku(".com.tencent.mm.debug.test.network.simulate_down_fault"), false);
-      ab.i("MicroMsg.SandboxDebugger", "Test.simulateDownFault = " + ae.gkz);
-      label92:
-      localObject = k.a.ylX;
-      s.By();
-      AppMethodBeat.o(15398);
-      return;
+      ((Runnable)localObject2).run();
+      localObject1 = new t((com.tencent.mm.booter.d)localObject1);
     }
-    catch (Error localError)
+    catch (Throwable localThrowable)
     {
-      break label92;
+      try
+      {
+        ((t)localObject1).ok("SANDBOX");
+        ab.hVr = bt.a(((t)localObject1).ol(".com.tencent.mm.debug.test.network.simulate_down_fault"), false);
+        ad.i("MicroMsg.SandboxDebugger", "Test.simulateDownFault = " + ab.hVr);
+        label126:
+        localObject1 = l.a.EPA;
+        aa.KV();
+        AppMethodBeat.o(19473);
+        return;
+        localThrowable = localThrowable;
+        ((Runnable)localObject2).run();
+      }
+      catch (Error localError)
+      {
+        break label126;
+      }
     }
   }
   
   public final String toString()
   {
-    return bXW;
+    return cLt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.app.SandBoxProfile
  * JD-Core Version:    0.7.0.1
  */

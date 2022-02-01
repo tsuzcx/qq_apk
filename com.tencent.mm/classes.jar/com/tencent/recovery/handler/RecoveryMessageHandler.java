@@ -20,13 +20,13 @@ public class RecoveryMessageHandler
     default: 
       return;
     case 1: 
-      Recovery.dUh();
+      Recovery.markApplicationOnCreateNormal();
       return;
     case 2: 
-      Recovery.Sd(1);
+      Recovery.normal(1);
       return;
     }
-    Recovery.Sd(1);
+    Recovery.normal(1);
   }
 }
 

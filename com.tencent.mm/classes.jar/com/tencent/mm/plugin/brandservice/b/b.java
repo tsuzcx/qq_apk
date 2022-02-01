@@ -1,157 +1,322 @@
 package com.tencent.mm.plugin.brandservice.b;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.a.aj;
-import com.tencent.mm.g.a.aj.a;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.g.a.t;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.brandservice.ui.BizSearchDetailPageUI;
-import com.tencent.mm.protocal.protobuf.azu;
-import com.tencent.mm.protocal.protobuf.nc;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.brandservice.ui.timeline.preload.j;
+import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ui.ai;
+import com.tencent.mm.ui.widget.MMNeat7extView;
+import d.g.b.k;
+import d.l;
+import java.util.Map;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/model/BizPayLogic;", "", "()V", "TAG", "", "isPayReadingOpen", "", "()I", "setPayReadingOpen", "(I)V", "payMMkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getPayMMkv", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "setPayMMkv", "(Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;)V", "appMsgPaySuccess", "", "url", "itemShowType", "getPayIcon", "scene", "isPaid", "", "onPaySuccessNotify", "values", "", "payMmkv", "setPayStatus", "setPayStatusById", "id", "setTitleText", "text", "", "titleTv", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "isPaySubscribe", "item", "Lcom/tencent/mm/message/BizReaderItem;", "plugin-brandservice_release"})
 public final class b
 {
-  public static azu acv()
+  private static final String TAG = "MicroMsg.BizPayLogic";
+  private static ax mSA;
+  private static int mSB;
+  public static final b mSC;
+  
+  static
   {
-    AppMethodBeat.i(13828);
-    try
-    {
-      g.RM();
-      Object localObject = (String)g.RL().Ru().get(67591, null);
-      if (localObject != null)
-      {
-        azu localazu = new azu();
-        localObject = ((String)localObject).split(",");
-        localazu.wSk = Integer.valueOf(localObject[0]).intValue();
-        localazu.wSn = Integer.valueOf(localObject[1]).intValue();
-        localazu.wDi = (Integer.valueOf(localObject[2]).intValue() / 1000000.0F);
-        localazu.wDh = (Integer.valueOf(localObject[3]).intValue() / 1000000.0F);
-        ab.i("MicroMsg.BrandService.BrandServiceLogic", "lbs location is not null, %f, %f", new Object[] { Float.valueOf(localazu.wDi), Float.valueOf(localazu.wDh) });
-        AppMethodBeat.o(13828);
-        return localazu;
-      }
-      ab.i("MicroMsg.BrandService.BrandServiceLogic", "lbs location is null, lbsContent is null!");
-      AppMethodBeat.o(13828);
-      return null;
-    }
-    catch (Exception localException)
-    {
-      ab.i("MicroMsg.BrandService.BrandServiceLogic", "lbs location is null, reason %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(13828);
-    }
-    return null;
+    AppMethodBeat.i(6497);
+    mSC = new b();
+    TAG = "MicroMsg.BizPayLogic";
+    mSB = -1;
+    AppMethodBeat.o(6497);
   }
   
-  public static final class a
-    implements f
+  public static boolean Pi(String paramString)
   {
-    private String cnv;
-    private long cnw;
-    private boolean cnx;
-    private Context context;
-    private int fromScene;
-    private aj jSK;
-    private int offset;
-    private String title;
-    
-    public a(Context paramContext, String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean, aj paramaj)
+    AppMethodBeat.i(6490);
+    if (paramString == null)
     {
-      this.context = paramContext;
-      this.cnv = paramString1;
-      this.cnw = paramLong;
-      this.offset = paramInt1;
-      this.fromScene = paramInt2;
-      this.title = paramString2;
-      this.cnx = paramBoolean;
-      this.jSK = paramaj;
+      AppMethodBeat.o(6490);
+      return false;
     }
-    
-    private void fL(boolean paramBoolean)
+    ax localax = bCb();
+    h localh = h.mSY;
+    if (localax.decodeInt(h.Pj(paramString), 0) == 1)
     {
-      AppMethodBeat.i(13827);
-      g.Rc().b(1071, this);
-      if ((this.jSK != null) && (this.jSK.cnt.cny != null))
-      {
-        this.jSK.cnu.cnz = paramBoolean;
-        this.jSK.cnt.cny.run();
-      }
-      AppMethodBeat.o(13827);
+      AppMethodBeat.o(6490);
+      return true;
     }
-    
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+    AppMethodBeat.o(6490);
+    return false;
+  }
+  
+  public static void R(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(6495);
+    k.h(paramMap, "values");
+    String str = (String)paramMap.get(".sysmsg.MMBizPaySubscribePayNotify.AppmsgUrl");
+    int i = bt.getInt((String)paramMap.get(".sysmsg.MMBizPaySubscribePayNotify.ItemShowType"), -1);
+    ad.i(TAG, "onPaySuccessNotify url=" + str + ", itemShowType=" + i);
+    if ((str != null) && (i >= 0)) {
+      cl(str, i);
+    }
+    AppMethodBeat.o(6495);
+  }
+  
+  public static void a(CharSequence paramCharSequence, MMNeat7extView paramMMNeat7extView, boolean paramBoolean, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(6493);
+    k.h(paramCharSequence, "text");
+    k.h(paramMMNeat7extView, "titleTv");
+    if ((paramBoolean) && (bBS()))
     {
-      AppMethodBeat.i(13826);
-      ab.i("MicroMsg.BrandService.BrandServiceLogic", "errType (%d) , errCode (%d) , errMsg (errMsg)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-      if ((paramInt1 != 0) || (paramInt2 != 0))
+      Object localObject = com.tencent.mm.plugin.bizui.a.a.mLS;
+      localObject = paramMMNeat7extView.getContext();
+      k.g(localObject, "titleTv.context");
+      com.tencent.mm.plugin.bizui.a.a.a((Context)localObject, paramMMNeat7extView, cn(paramString, paramInt), paramCharSequence, paramInt);
+      AppMethodBeat.o(6493);
+      return;
+    }
+    paramMMNeat7extView.aq(paramCharSequence);
+    AppMethodBeat.o(6493);
+  }
+  
+  public static void a(String paramString, MMNeat7extView paramMMNeat7extView, com.tencent.mm.ai.v paramv, int paramInt)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(6492);
+    k.h(paramString, "text");
+    k.h(paramMMNeat7extView, "titleTv");
+    k.h(paramv, "item");
+    if ((paramv.type == 0) && (paramv.gGA == 1)) {}
+    for (;;)
+    {
+      a((CharSequence)paramString, paramMMNeat7extView, bool, paramv.url, paramInt);
+      AppMethodBeat.o(6492);
+      return;
+      bool = false;
+    }
+  }
+  
+  public static void aA(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(6489);
+    k.h(paramString, "url");
+    h localh = h.mSY;
+    paramString = h.Pj(paramString);
+    if (paramBoolean)
+    {
+      bCb().encode(paramString, 1);
+      AppMethodBeat.o(6489);
+      return;
+    }
+    bCb().remove(paramString);
+    AppMethodBeat.o(6489);
+  }
+  
+  public static boolean bBS()
+  {
+    AppMethodBeat.i(6496);
+    if ((com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.DEBUG) || (bu.eGT()))
+    {
+      AppMethodBeat.o(6496);
+      return true;
+    }
+    if (mSB != -1)
+    {
+      if (mSB == 1)
       {
-        fL(false);
-        AppMethodBeat.o(13826);
-        return;
+        AppMethodBeat.o(6496);
+        return true;
       }
-      if (paramm == null)
+      AppMethodBeat.o(6496);
+      return false;
+    }
+    mSB = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pmE, 0);
+    ad.i(TAG, "isPayReadingOpen open %d", new Object[] { Integer.valueOf(mSB) });
+    if (mSB == 1)
+    {
+      AppMethodBeat.o(6496);
+      return true;
+    }
+    AppMethodBeat.o(6496);
+    return false;
+  }
+  
+  private static ax bCb()
+  {
+    AppMethodBeat.i(6488);
+    Object localObject;
+    if (mSA != null)
+    {
+      localObject = mSA;
+      if (localObject == null)
       {
-        ab.e("MicroMsg.BrandService.BrandServiceLogic", "scene is null.");
-        fL(false);
-        AppMethodBeat.o(13826);
-        return;
+        localObject = new d.v("null cannot be cast to non-null type com.tencent.mm.sdk.platformtools.MultiProcessMMKV");
+        AppMethodBeat.o(6488);
+        throw ((Throwable)localObject);
       }
-      if (paramm.getType() != 1071)
-      {
-        ab.i("MicroMsg.BrandService.BrandServiceLogic", "The NetScene is not a instanceof BizSearchDetailPage.");
-        AppMethodBeat.o(13826);
-        return;
+      AppMethodBeat.o(6488);
+      return localObject;
+    }
+    if (aj.cbe()) {
+      k.g(g.afz(), "MMKernel.account()");
+    }
+    for (int i = com.tencent.mm.kernel.a.getUin();; i = com.tencent.mm.kernel.a.aeL())
+    {
+      localObject = ax.fF("appMsgPay_".concat(String.valueOf(i)), 2);
+      mSA = (ax)localObject;
+      if (localObject != null) {
+        break;
       }
-      ab.i("MicroMsg.BrandService.BrandServiceLogic", "BizSearchDetailPage.");
-      paramString = ((h)paramm).aWt();
-      if ((paramString == null) || (paramString.nrw == null))
+      localObject = new d.v("null cannot be cast to non-null type com.tencent.mm.sdk.platformtools.MultiProcessMMKV");
+      AppMethodBeat.o(6488);
+      throw ((Throwable)localObject);
+    }
+    AppMethodBeat.o(6488);
+    return localObject;
+  }
+  
+  public static void cl(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(6494);
+    k.h(paramString, "url");
+    if (Pi(paramString))
+    {
+      ad.d(TAG, "url pay status: already paid url=" + paramString + ", itemShowType=" + paramInt);
+      AppMethodBeat.o(6494);
+      return;
+    }
+    ad.i(TAG, "appMsgPaySuccess url=" + paramString + ", itemShowType=" + paramInt);
+    j localj = j.ned;
+    j.PC(paramString);
+    aA(paramString, true);
+    j.a(paramString, paramInt, 90, new Object[0]);
+    paramString = new t();
+    paramString.dbF.dbG = true;
+    com.tencent.mm.sdk.b.a.ESL.a((com.tencent.mm.sdk.b.b)paramString, Looper.getMainLooper());
+    AppMethodBeat.o(6494);
+  }
+  
+  private static int cn(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(162409);
+    String str = ac.eFu();
+    boolean bool1 = ai.Eq();
+    com.tencent.mm.plugin.bizui.a.a locala = com.tencent.mm.plugin.bizui.a.a.mLS;
+    boolean bool2 = com.tencent.mm.plugin.bizui.a.a.xs(paramInt);
+    if (Pi(paramString))
+    {
+      if (str == null) {}
+      while (bool1)
       {
-        ab.e("MicroMsg.BrandService.BrandServiceLogic", "response or BusinessContent or itemList is null.");
-        fL(false);
-        AppMethodBeat.o(13826);
-        return;
-      }
-      ab.d("MicroMsg.BrandService.BrandServiceLogic", "searchId : %s.", new Object[] { paramString.wBZ });
-      paramm = new Intent(this.context, BizSearchDetailPageUI.class);
-      paramm.putExtra("addContactScene", 35);
-      paramm.putExtra("fromScene", this.fromScene);
-      paramm.putExtra("keyword", this.cnv);
-      paramm.putExtra("businessType", this.cnw);
-      paramm.putExtra("offset", this.offset);
-      paramm.putExtra("title", this.title);
-      paramm.putExtra("showEditText", this.cnx);
-      try
-      {
-        paramm.putExtra("result", paramString.toByteArray());
-        if (!(this.context instanceof Activity)) {
-          paramm.addFlags(268435456);
+        AppMethodBeat.o(162409);
+        return 2131231215;
+        switch (str.hashCode())
+        {
+        default: 
+          break;
+        case 115861276: 
+          if (str.equals("zh_CN")) {
+            if (bool1)
+            {
+              AppMethodBeat.o(162409);
+              return 2131231214;
+            }
+          }
+          break;
+        case 115861428: 
+          if (!str.equals("zh_HK")) {}
+          break;
+        case 115861812: 
+          for (;;)
+          {
+            if (!bool1) {
+              break label183;
+            }
+            AppMethodBeat.o(162409);
+            return 2131231216;
+            if (!str.equals("zh_TW")) {
+              break;
+            }
+          }
+          if (bool2)
+          {
+            AppMethodBeat.o(162409);
+            return 2131231211;
+          }
+          AppMethodBeat.o(162409);
+          return 2131231217;
+          label183:
+          if (bool2)
+          {
+            AppMethodBeat.o(162409);
+            return 2131231213;
+          }
+          AppMethodBeat.o(162409);
+          return 2131231219;
         }
-        fL(true);
-        return;
       }
-      catch (Exception paramString)
+      if (bool2)
       {
-        fL(false);
-        ab.printErrStackTrace("MicroMsg.BrandService.BrandServiceLogic", paramString, "", new Object[0]);
-        return;
+        AppMethodBeat.o(162409);
+        return 2131231212;
       }
-      finally
+      AppMethodBeat.o(162409);
+      return 2131231218;
+    }
+    if (str == null) {}
+    while (bool1)
+    {
+      AppMethodBeat.o(162409);
+      return 2131231221;
+      switch (str.hashCode())
       {
-        AppMethodBeat.o(13826);
+      default: 
+        break;
+      case 115861276: 
+        if (str.equals("zh_CN")) {
+          if (bool1)
+          {
+            AppMethodBeat.o(162409);
+            return 2131231220;
+          }
+        }
+        break;
+      case 115861428: 
+        if (!str.equals("zh_HK")) {}
+        break;
+      case 115861812: 
+        for (;;)
+        {
+          if (!bool1) {
+            break label365;
+          }
+          AppMethodBeat.o(162409);
+          return 2131231222;
+          if (!str.equals("zh_TW")) {
+            break;
+          }
+        }
+        AppMethodBeat.o(162409);
+        return 2131231223;
+        label365:
+        AppMethodBeat.o(162409);
+        return 2131231225;
       }
     }
+    AppMethodBeat.o(162409);
+    return 2131231224;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.b.b
  * JD-Core Version:    0.7.0.1
  */

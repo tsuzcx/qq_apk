@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <ScrollView android:id="@id/e76" android:background="@color/y_" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true">
-        <LinearLayout android:orientation="vertical" android:id="@id/e77" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:gravity="center" android:id="@id/e78" android:background="#fffbfbfb" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textSize="13.0dip" android:textColor="#ff888888" android:id="@id/e79" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="24.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="24.0dip" android:text="" />
-            </LinearLayout>
-            <LinearLayout android:orientation="vertical" android:paddingTop="30.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="15.0dip" android:layout_gravity="center_horizontal" android:id="@id/e7_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-                <ImageView android:layout_gravity="center_horizontal" android:id="@id/e7a" android:background="@color/a3x" android:layout_width="145.0dip" android:layout_height="145.0dip" android:layout_marginTop="10.0dip" android:scaleType="centerCrop" />
-                <View android:background="@color/tf" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="20.0dip" />
-                <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/e7b" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-                <LinearLayout android:orientation="horizontal" android:id="@id/e7c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="20.0dip">
-                    <ImageView android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:src="@drawable/bkg" android:scaleType="fitXY" />
-                    <TextView android:textSize="14.0dip" android:id="@id/e7d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="false" />
-                </LinearLayout>
-                <Button android:id="@id/e7e" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="35.0dip" android:text="@string/du4" style="@style/nq" />
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+<RelativeLayout android:id="@id/egr" style="@style/nl"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.listview.PullDownListView android:id="@android:id/list" android:cacheColorHint="#00000000" android:layout_alignParentTop="true" android:overScrollMode="never" style="@style/n3" />
+    <include layout="@layout/bcy" />
+</RelativeLayout>

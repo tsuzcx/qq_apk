@@ -22,9 +22,9 @@ public class SimpleClientAdapter<T extends IInterface>
   
   protected T createServiceInterface(IBinder paramIBinder)
   {
-    AppMethodBeat.i(61388);
+    AppMethodBeat.i(11880);
     paramIBinder = this.zzva.createServiceInterface(paramIBinder);
-    AppMethodBeat.o(61388);
+    AppMethodBeat.o(11880);
     return paramIBinder;
   }
   
@@ -35,33 +35,33 @@ public class SimpleClientAdapter<T extends IInterface>
   
   public int getMinApkVersion()
   {
-    AppMethodBeat.i(61390);
+    AppMethodBeat.i(11882);
     int i = super.getMinApkVersion();
-    AppMethodBeat.o(61390);
+    AppMethodBeat.o(11882);
     return i;
   }
   
   protected String getServiceDescriptor()
   {
-    AppMethodBeat.i(61387);
+    AppMethodBeat.i(11879);
     String str = this.zzva.getServiceDescriptor();
-    AppMethodBeat.o(61387);
+    AppMethodBeat.o(11879);
     return str;
   }
   
   protected String getStartServiceAction()
   {
-    AppMethodBeat.i(61386);
+    AppMethodBeat.i(11878);
     String str = this.zzva.getStartServiceAction();
-    AppMethodBeat.o(61386);
+    AppMethodBeat.o(11878);
     return str;
   }
   
   protected void onSetConnectState(int paramInt, T paramT)
   {
-    AppMethodBeat.i(61389);
+    AppMethodBeat.i(11881);
     this.zzva.setState(paramInt, paramT);
-    AppMethodBeat.o(61389);
+    AppMethodBeat.o(11881);
   }
 }
 

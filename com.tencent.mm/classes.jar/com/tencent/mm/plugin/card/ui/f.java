@@ -7,184 +7,184 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.b.e;
-import com.tencent.mm.plugin.card.d.m;
+import com.tencent.mm.plugin.card.d.n;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.a.b;
 import com.tencent.mm.plugin.card.sharecard.model.l;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.ow;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.re;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import java.util.LinkedList;
 
 public final class f
 {
-  private View iCk;
-  private MMActivity jpX;
-  private b krp;
-  private int kvQ;
-  private View kvR;
-  private TextView kvS;
-  private TextView kvT;
-  private CdnImageView kvU;
-  private ImageView[] kvV;
-  private ImageView kvW;
-  private ow kvX;
+  private View hIZ;
+  private int nBj;
+  private View nBk;
+  private TextView nBl;
+  private TextView nBm;
+  private CdnImageView nBn;
+  private ImageView[] nBo;
+  private ImageView nBp;
+  private re nBq;
+  private MMActivity nqt;
+  private b nwI;
   
   public f(MMActivity paramMMActivity, View paramView, int paramInt, b paramb)
   {
     this(paramMMActivity, paramView, paramInt, paramb, null);
   }
   
-  public f(MMActivity paramMMActivity, View paramView, int paramInt, b paramb, ow paramow)
+  public f(MMActivity paramMMActivity, View paramView, int paramInt, b paramb, re paramre)
   {
-    AppMethodBeat.i(88479);
-    this.kvV = new ImageView[3];
-    this.jpX = paramMMActivity;
-    this.iCk = paramView;
-    this.kvQ = paramInt;
-    this.krp = paramb;
-    this.kvX = paramow;
-    this.kvR = this.iCk.findViewById(2131822195);
-    this.kvS = ((TextView)this.iCk.findViewById(2131822197));
-    this.kvT = ((TextView)this.iCk.findViewById(2131822198));
-    this.kvU = ((CdnImageView)this.iCk.findViewById(2131822196));
-    this.kvV[0] = ((ImageView)this.iCk.findViewById(2131822200));
-    this.kvV[1] = ((ImageView)this.iCk.findViewById(2131822201));
-    this.kvV[2] = ((ImageView)this.iCk.findViewById(2131822202));
-    this.kvW = ((ImageView)this.iCk.findViewById(2131822203));
-    if (this.kvQ == 1)
+    AppMethodBeat.i(113406);
+    this.nBo = new ImageView[3];
+    this.nqt = paramMMActivity;
+    this.hIZ = paramView;
+    this.nBj = paramInt;
+    this.nwI = paramb;
+    this.nBq = paramre;
+    this.nBk = this.hIZ.findViewById(2131297818);
+    this.nBl = ((TextView)this.hIZ.findViewById(2131297820));
+    this.nBm = ((TextView)this.hIZ.findViewById(2131297819));
+    this.nBn = ((CdnImageView)this.hIZ.findViewById(2131297821));
+    this.nBo[0] = ((ImageView)this.hIZ.findViewById(2131297815));
+    this.nBo[1] = ((ImageView)this.hIZ.findViewById(2131297816));
+    this.nBo[2] = ((ImageView)this.hIZ.findViewById(2131297817));
+    this.nBp = ((ImageView)this.hIZ.findViewById(2131297885));
+    if (this.nBj == 1)
     {
-      this.kvS.setText(this.jpX.getString(2131297986, new Object[] { Integer.valueOf(0) }));
-      this.kvU.setImageResource(2131231077);
-      AppMethodBeat.o(88479);
+      this.nBl.setText(this.nqt.getString(2131756928, new Object[] { Integer.valueOf(0) }));
+      this.nBn.setImageResource(2131689869);
+      AppMethodBeat.o(113406);
       return;
     }
-    if (this.kvQ == 2)
+    if (this.nBj == 2)
     {
-      this.kvS.setText(2131298046);
-      this.kvU.setImageResource(2131231076);
-      AppMethodBeat.o(88479);
+      this.nBl.setText(2131756988);
+      this.nBn.setImageResource(2131689868);
+      AppMethodBeat.o(113406);
       return;
     }
-    if (this.kvQ == 3)
+    if (this.nBj == 3)
     {
-      this.kvS.setText(2131298079);
-      this.kvU.setImageResource(2131231078);
-      AppMethodBeat.o(88479);
+      this.nBl.setText(2131757021);
+      this.nBn.setImageResource(2131689870);
+      AppMethodBeat.o(113406);
       return;
     }
-    if (this.kvQ == 4)
+    if (this.nBj == 4)
     {
-      if (this.kvX == null)
+      if (this.nBq == null)
       {
-        ab.w("MicroMsg.CardHomePageItemController", "cell element is null");
-        bed();
+        ad.w("MicroMsg.CardHomePageItemController", "cell element is null");
+        bLa();
       }
-      this.iCk.findViewById(2131822199).setVisibility(8);
-      this.kvS.setText(this.kvX.wFt);
-      this.kvU.setUseSdcardCache(true);
-      this.kvU.setUrl(this.kvX.wFu);
-      if (!bo.isNullOrNil(this.kvX.wFv))
+      this.hIZ.findViewById(2131297814).setVisibility(8);
+      this.nBl.setText(this.nBq.CQY);
+      this.nBn.setUseSdcardCache(true);
+      this.nBn.setUrl(this.nBq.CQZ);
+      if (!bt.isNullOrNil(this.nBq.CRa))
       {
-        this.kvT.setText(this.kvX.wFv);
-        this.kvT.setVisibility(0);
-        AppMethodBeat.o(88479);
+        this.nBm.setText(this.nBq.CRa);
+        this.nBm.setVisibility(0);
+        AppMethodBeat.o(113406);
         return;
       }
-      this.kvT.setVisibility(8);
+      this.nBm.setVisibility(8);
     }
-    AppMethodBeat.o(88479);
+    AppMethodBeat.o(113406);
   }
   
-  public final void bJ()
+  public final void bLa()
   {
-    AppMethodBeat.i(88481);
+    AppMethodBeat.i(113409);
+    this.hIZ.setVisibility(8);
+    AppMethodBeat.o(113409);
+  }
+  
+  public final void cE()
+  {
+    AppMethodBeat.i(113408);
     Object localObject;
-    if (this.kvQ == 2)
+    if (this.nBj == 2)
     {
-      localObject = (l)am.bci().getValue("key_share_card_layout_data");
+      localObject = (l)am.bJa().getValue("key_share_card_layout_data");
       if (localObject == null)
       {
-        ab.w("MicroMsg.CardHomePageItemController", "updateShareCardView data is null");
-        AppMethodBeat.o(88481);
+        ad.w("MicroMsg.CardHomePageItemController", "updateShareCardView data is null");
+        AppMethodBeat.o(113408);
         return;
       }
-      if (bo.isNullOrNil(((l)localObject).kqb)) {
-        this.kvT.setVisibility(8);
+      if (bt.isNullOrNil(((l)localObject).nvv)) {
+        this.nBm.setVisibility(8);
       }
-      while (bo.es(((l)localObject).kqa))
+      while (bt.gL(((l)localObject).nvu))
       {
         i = 0;
         while (i < 3)
         {
-          this.kvV[i].setVisibility(8);
+          this.nBo[i].setVisibility(8);
           i += 1;
         }
-        this.kvT.setVisibility(0);
-        this.kvT.setText(((l)localObject).kqb);
+        this.nBm.setVisibility(0);
+        this.nBm.setText(((l)localObject).nvv);
       }
       int i = 0;
       if (i < 3)
       {
-        if (i < ((l)localObject).kqa.size())
+        if (i < ((l)localObject).nvu.size())
         {
-          this.kvV[i].setVisibility(0);
-          int j = this.jpX.getResources().getDimensionPixelSize(2131427775);
-          m.a(this.kvV[i], (String)((l)localObject).kqa.get(i), j, 2130839758, false);
+          this.nBo[i].setVisibility(0);
+          int j = this.nqt.getResources().getDimensionPixelSize(2131165483);
+          n.a(this.nBo[i], (String)((l)localObject).nvu.get(i), j, 2131233400, false);
         }
         for (;;)
         {
           i += 1;
           break;
-          this.kvV[i].setVisibility(8);
+          this.nBo[i].setVisibility(8);
         }
       }
-      if ((!bo.es(((l)localObject).kqa)) && (((l)localObject).kqa.size() == 1) && (((l)localObject).cHw) && (!((l)localObject).cHx))
+      if ((!bt.gL(((l)localObject).nvu)) && (((l)localObject).nvu.size() == 1) && (((l)localObject).dyl) && (!((l)localObject).dym))
       {
-        this.kvW.setVisibility(0);
-        AppMethodBeat.o(88481);
+        this.nBp.setVisibility(0);
+        AppMethodBeat.o(113408);
         return;
       }
-      this.kvW.setVisibility(8);
-      AppMethodBeat.o(88481);
+      this.nBp.setVisibility(8);
+      AppMethodBeat.o(113408);
       return;
     }
-    if (this.kvQ == 3)
+    if (this.nBj == 3)
     {
-      this.kvS.setText(2131298079);
-      this.iCk.findViewById(2131822199).setVisibility(8);
-      localObject = (String)am.bci().getValue("key_card_entrance_tips");
-      if (!bo.isNullOrNil((String)localObject))
+      this.nBl.setText(2131757021);
+      this.hIZ.findViewById(2131297814).setVisibility(8);
+      localObject = (String)am.bJa().getValue("key_card_entrance_tips");
+      if (!bt.isNullOrNil((String)localObject))
       {
-        this.kvT.setText((CharSequence)localObject);
-        this.kvT.setVisibility(0);
-        AppMethodBeat.o(88481);
+        this.nBm.setText((CharSequence)localObject);
+        this.nBm.setVisibility(0);
+        AppMethodBeat.o(113408);
         return;
       }
-      this.kvT.setVisibility(8);
+      this.nBm.setVisibility(8);
     }
-    AppMethodBeat.o(88481);
-  }
-  
-  public final void bed()
-  {
-    AppMethodBeat.i(88482);
-    this.iCk.setVisibility(8);
-    AppMethodBeat.o(88482);
+    AppMethodBeat.o(113408);
   }
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(88480);
-    this.kvR.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(88480);
+    AppMethodBeat.i(113407);
+    this.nBk.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(113407);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.f
  * JD-Core Version:    0.7.0.1
  */

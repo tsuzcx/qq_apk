@@ -1,0 +1,15 @@
+package com.tencent.nativecrash;
+
+import androidx.annotation.Keep;
+
+@Keep
+class InitializationProbe
+{
+  static boolean libLoaded = false;
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     com.tencent.nativecrash.InitializationProbe
+ * JD-Core Version:    0.7.0.1
+ */

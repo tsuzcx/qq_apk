@@ -10,13 +10,13 @@ public class zzbh
   extends zza
 {
   public static final Parcelable.Creator<zzbh> CREATOR = new aa();
-  public final ConnectionConfiguration Tt;
+  public final ConnectionConfiguration Vi;
   public final int statusCode;
   
   public zzbh(int paramInt, ConnectionConfiguration paramConnectionConfiguration)
   {
     this.statusCode = paramInt;
-    this.Tt = paramConnectionConfiguration;
+    this.Vi = paramConnectionConfiguration;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

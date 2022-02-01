@@ -13,22 +13,27 @@ final class MMAppMgr$10
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(29560);
+    AppMethodBeat.i(33412);
     try
     {
-      this.val$context.startActivity(new Intent("android.settings.APN_SETTINGS"));
-      AppMethodBeat.o(29560);
+      paramDialogInterface = this.val$context;
+      Object localObject = new Intent("android.settings.APN_SETTINGS");
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/MMAppMgr$5", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/ui/MMAppMgr$5", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(33412);
       return;
     }
     catch (Exception paramDialogInterface)
     {
-      AppMethodBeat.o(29560);
+      AppMethodBeat.o(33412);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.MMAppMgr.10
  * JD-Core Version:    0.7.0.1
  */

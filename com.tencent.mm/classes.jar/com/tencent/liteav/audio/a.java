@@ -1,537 +1,551 @@
 package com.tencent.liteav.audio;
 
 import android.content.Context;
-import com.tencent.liteav.audio.impl.Play.TXAudioJitterBufferReportInfo;
-import com.tencent.liteav.audio.impl.Play.TXCAudioBasePlayController;
-import com.tencent.liteav.audio.impl.Play.d;
+import com.tencent.liteav.audio.impl.TXCAudioEngImplBase;
+import com.tencent.liteav.audio.impl.TXCJitter;
 import com.tencent.liteav.audio.impl.TXCTraeJNI;
-import com.tencent.liteav.audio.impl.e;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class a
-  implements e
 {
-  public static float a;
-  public static boolean b;
-  public static float c;
-  public static float d;
-  public static boolean e;
-  private static final String f;
-  private TXCAudioBasePlayController g;
-  private c h;
-  private int i;
-  private float j;
-  private boolean k;
-  private float l;
-  private float m;
-  private boolean n;
-  private boolean o;
-  private boolean p;
-  private int q;
-  private Context r;
-  private String s;
-  private int t;
-  private com.tencent.liteav.basic.module.a u;
-  private boolean v;
+  static a a;
+  private static volatile TXCAudioEngImplBase b;
   
   static
   {
-    AppMethodBeat.i(66541);
-    f = "AudioCenter:" + a.class.getSimpleName();
-    a = 5.0F;
-    b = true;
-    c = 5.0F;
-    d = 1.0F;
-    e = false;
-    AppMethodBeat.o(66541);
+    AppMethodBeat.i(16279);
+    a = new a();
+    b = null;
+    AppMethodBeat.o(16279);
   }
   
-  public a()
+  public static a a()
   {
-    AppMethodBeat.i(146204);
-    this.g = null;
-    this.i = 0;
-    this.j = a;
-    this.k = b;
-    this.l = c;
-    this.m = d;
-    this.n = false;
-    this.o = false;
-    this.p = e;
-    this.q = 0;
-    this.t = 0;
-    this.u = null;
-    this.v = false;
-    this.u = new com.tencent.liteav.basic.module.a();
-    this.u.setID("18446744073709551615");
-    AppMethodBeat.o(146204);
+    return a;
   }
   
-  private void a(int paramInt, Context paramContext)
+  public static TXCAudioEngImplBase a(Context paramContext)
   {
-    AppMethodBeat.i(66521);
-    if ((paramInt == 2) && (!TXCTraeJNI.nativeCheckTraeEngine(paramContext)))
-    {
-      TXCLog.e(f, "set aec type failed, check trae library failed!!");
-      AppMethodBeat.o(66521);
-      return;
-    }
-    TXCLog.i(f, "set aec type to " + paramInt + ", cur type " + this.i);
-    this.i = paramInt;
-    AppMethodBeat.o(66521);
-  }
-  
-  public static void a(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(66536);
-    TXCAudioBasePlayController.setAudioMode(paramContext, paramInt);
-    AppMethodBeat.o(66536);
-  }
-  
-  public static void a(c paramc)
-  {
-    AppMethodBeat.i(66523);
-    TXCAudioBasePlayController.setAudioCorePlayListener(paramc);
-    AppMethodBeat.o(66523);
-  }
-  
-  public static void f(boolean paramBoolean)
-  {
-    AppMethodBeat.i(146213);
-    TXCAudioBasePlayController.nativeEnableCoreplayVolumeLevelCal(paramBoolean);
-    AppMethodBeat.o(146213);
-  }
-  
-  public static int h()
-  {
-    AppMethodBeat.i(146214);
-    int i1 = TXCAudioBasePlayController.nativeGetCorePlayVolumeLevel();
-    AppMethodBeat.o(146214);
-    return i1;
-  }
-  
-  public int a()
-  {
-    int i1 = 0;
-    try
-    {
-      AppMethodBeat.i(66519);
-      this.h = null;
-      this.j = a;
-      this.k = b;
-      this.l = c;
-      this.m = d;
-      this.n = false;
-      this.o = false;
-      this.p = e;
-      this.q = 0;
-      this.r = null;
-      this.s = null;
-      this.t = 0;
-      if (this.g != null)
-      {
-        i1 = this.g.stopPlay();
-        this.g = null;
-      }
-      com.tencent.liteav.audio.impl.c.a().b(this);
-      AppMethodBeat.o(66519);
-      return i1;
-    }
-    finally {}
-  }
-  
-  /* Error */
-  public int a(int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 184
-    //   4: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: iload_1
-    //   9: putfield 106	com/tencent/liteav/audio/a:t	I
-    //   12: aload_0
-    //   13: getfield 86	com/tencent/liteav/audio/a:g	Lcom/tencent/liteav/audio/impl/Play/TXCAudioBasePlayController;
-    //   16: ifnonnull +15 -> 31
-    //   19: bipush 155
-    //   21: istore_1
-    //   22: ldc 184
-    //   24: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: iload_1
-    //   30: ireturn
-    //   31: aload_0
-    //   32: getfield 86	com/tencent/liteav/audio/a:g	Lcom/tencent/liteav/audio/impl/Play/TXCAudioBasePlayController;
-    //   35: aload_0
-    //   36: getfield 106	com/tencent/liteav/audio/a:t	I
-    //   39: invokevirtual 187	com/tencent/liteav/audio/impl/Play/TXCAudioBasePlayController:setStreamFormat	(I)I
-    //   42: istore_1
-    //   43: ldc 184
-    //   45: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   48: goto -21 -> 27
-    //   51: astore_2
-    //   52: aload_0
-    //   53: monitorexit
-    //   54: aload_2
-    //   55: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	56	0	this	a
-    //   0	56	1	paramInt	int
-    //   51	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	51	finally
-    //   22	27	51	finally
-    //   31	48	51	finally
-  }
-  
-  public int a(Context paramContext)
-  {
-    int i1 = -901;
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(66518);
-        if (paramContext == null)
+        AppMethodBeat.i(16237);
+        TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "CreateInstance: ");
+        if (b != null)
         {
-          TXCLog.e(f, "invalid param, start play failed!");
-          AppMethodBeat.o(66518);
-          return i1;
+          TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "CreateInstance already created~ ");
+          paramContext = b;
+          AppMethodBeat.o(16237);
+          return paramContext;
         }
-        if (com.tencent.liteav.audio.impl.b.c(this.i) != 0) {
-          TXCLog.w(f, "start player failed, with aec type " + this.i + ", invalid aec recorder has started!");
-        }
-        if ((this.g != null) && (this.g.isPlaying()))
+        if (TXCTraeJNI.nativeCheckTraeEngine(paramContext))
         {
-          TXCLog.e(f, "play has started, can not start again!");
-          i1 = -104;
-          AppMethodBeat.o(66518);
+          TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "new TXCAudioEngImplTRAE( ): ");
+          b = new com.tencent.liteav.audio.impl.a();
+          TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "sAudioEngineInstance: " + b);
+          b.InitBeforeStart(paramContext);
+          paramContext = b;
+          AppMethodBeat.o(16237);
           continue;
         }
-        this.r = paramContext;
+        TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "new TXCAudioEngImplBase( ): ");
       }
       finally {}
-      com.tencent.liteav.audio.impl.a.a().a(paramContext);
-      com.tencent.liteav.audio.impl.c.a().a(this.r);
-      com.tencent.liteav.audio.impl.c.a().a(this);
-      if (this.g == null) {
-        if (this.i != 2) {
-          break label304;
-        }
-      }
-      label304:
-      for (this.g = new com.tencent.liteav.audio.impl.Play.c(paramContext.getApplicationContext());; this.g = new com.tencent.liteav.audio.impl.Play.b(paramContext.getApplicationContext()))
-      {
-        if (this.g == null) {
-          break label322;
-        }
-        a(this.i, this.r);
-        b(this.h);
-        a(this.j);
-        a(this.k);
-        b(this.l);
-        c(this.m);
-        d(this.n);
-        c(this.o);
-        b(this.q);
-        e(this.p);
-        a(this.s);
-        b(this.v);
-        a(this.t);
-        i1 = this.g.startPlay();
-        AppMethodBeat.o(66518);
-        break;
-      }
-      label322:
-      TXCLog.e(f, "start play failed! controller is null!");
-      AppMethodBeat.o(66518);
+      b = new TXCAudioEngImplBase();
     }
   }
   
-  public void a(float paramFloat)
+  public static void a(d paramd)
   {
-    AppMethodBeat.i(66524);
-    this.j = paramFloat;
-    if (this.g != null) {
-      this.g.setCacheTime(paramFloat);
-    }
-    AppMethodBeat.o(66524);
+    AppMethodBeat.i(16274);
+    TXCAudioEngImplBase.setAudioCorePlayListener(paramd);
+    AppMethodBeat.o(16274);
   }
   
-  public void a(String paramString)
+  public static boolean a(boolean paramBoolean)
   {
-    try
+    AppMethodBeat.i(16238);
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "enableVolumeLevel : ".concat(String.valueOf(paramBoolean)));
+    if (b != null)
     {
-      AppMethodBeat.i(146205);
-      this.s = paramString;
-      if (this.g != null) {
-        this.g.setUserID(this.s);
-      }
-      AppMethodBeat.o(146205);
-      return;
+      b.enableVolumeLevel(paramBoolean);
+      AppMethodBeat.o(16238);
+      return true;
     }
-    finally {}
+    AppMethodBeat.o(16238);
+    return false;
   }
   
-  public void a(boolean paramBoolean)
+  public static void c(int paramInt)
   {
-    AppMethodBeat.i(66525);
-    this.k = paramBoolean;
-    if (this.g != null) {
-      this.g.enableAutojustCache(paramBoolean);
-    }
-    AppMethodBeat.o(66525);
+    AppMethodBeat.i(16276);
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "setAudioRoute: ");
+    TXCTraeJNI.nativeSetAudioRoute(paramInt);
+    AppMethodBeat.o(16276);
   }
   
-  public void a(boolean paramBoolean, Context paramContext)
+  public static void d(int paramInt)
   {
-    AppMethodBeat.i(66520);
-    if (!paramBoolean)
+    AppMethodBeat.i(16277);
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "setVolumeType: ".concat(String.valueOf(paramInt)));
+    TXCTraeJNI.nativeTraeChangeVolumeType(paramInt);
+    AppMethodBeat.o(16277);
+  }
+  
+  public static void f(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16278);
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "setAudioEarMonitoring: ".concat(String.valueOf(paramBoolean)));
+    TXCTraeJNI.nativesetAudioEarMonitoring(paramBoolean);
+    AppMethodBeat.o(16278);
+  }
+  
+  public static int i()
+  {
+    AppMethodBeat.i(16275);
+    int i = TXCJitter.GetCorePlayVolumeLevel();
+    AppMethodBeat.o(16275);
+    return i;
+  }
+  
+  public int a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(16239);
+    if (b != null)
     {
-      a(0, paramContext);
-      this.u.setStatusValue(18005, Integer.valueOf(0));
-      AppMethodBeat.o(66520);
-      return;
+      paramInt1 = b.startRecord(paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(16239);
+      return paramInt1;
     }
-    if (com.tencent.liteav.basic.e.b.a().g())
+    TXCLog.e("TXCAudioEngine[TXSDK-TRAE-LOG]", "start Record failed! Please call CreateInstance fisrt!!!!");
+    AppMethodBeat.o(16239);
+    return -901;
+  }
+  
+  public void a(com.tencent.liteav.basic.structs.a parama)
+  {
+    AppMethodBeat.i(16244);
+    if (b != null) {
+      b.sendCustomPCMData(parama);
+    }
+    AppMethodBeat.o(16244);
+  }
+  
+  public void a(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(16266);
+    if (b != null) {
+      b.setCacheTime(paramString, paramFloat);
+    }
+    AppMethodBeat.o(16266);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(16271);
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "set volume to ".concat(String.valueOf(paramInt)));
+    if (b != null) {
+      b.setPlayVolume(paramString, paramInt);
+    }
+    AppMethodBeat.o(16271);
+  }
+  
+  public void a(String paramString, c paramc)
+  {
+    AppMethodBeat.i(16263);
+    if (b != null) {
+      b.setJitterChannelEventListener(paramString, paramc);
+    }
+    AppMethodBeat.o(16263);
+  }
+  
+  public void a(String paramString, d paramd)
+  {
+    AppMethodBeat.i(16262);
+    if (b != null) {
+      b.setJitterChannelDataListener(paramString, paramd);
+    }
+    AppMethodBeat.o(16262);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(16264);
+    if (b != null) {
+      b.enableRealTimePlay(paramString, paramBoolean);
+    }
+    AppMethodBeat.o(16264);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(16251);
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "enableSoftAEC: enable = " + paramBoolean + " level = " + paramInt);
+    if (b != null) {
+      b.enableSoftAEC(paramBoolean, paramInt);
+    }
+    AppMethodBeat.o(16251);
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(16243);
+    if (b != null) {
+      b.sendCustomPCMData(paramArrayOfByte);
+    }
+    AppMethodBeat.o(16243);
+  }
+  
+  public boolean a(float paramFloat)
+  {
+    AppMethodBeat.i(16250);
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "setRecordVolume: ".concat(String.valueOf(paramFloat)));
+    if (b != null)
     {
-      a(1, paramContext);
-      this.u.setStatusValue(18005, Integer.valueOf(1));
-      AppMethodBeat.o(66520);
-      return;
+      b.setRecordVolume(paramFloat);
+      AppMethodBeat.o(16250);
+      return true;
     }
-    com.tencent.liteav.audio.impl.a.a(com.tencent.liteav.basic.e.b.a().b());
-    this.u.setStatusValue(18005, Integer.valueOf(2));
-    a(2, paramContext);
-    AppMethodBeat.o(66520);
+    AppMethodBeat.o(16250);
+    return false;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    AppMethodBeat.i(16249);
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "setReverbType: ".concat(String.valueOf(paramInt)));
+    if (b != null)
+    {
+      b.setReverbType(paramInt);
+      AppMethodBeat.o(16249);
+      return true;
+    }
+    AppMethodBeat.o(16249);
+    return false;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(16256);
+    if (b != null)
+    {
+      b.setEncInfo(paramInt1, paramInt2);
+      AppMethodBeat.o(16256);
+      return true;
+    }
+    AppMethodBeat.o(16256);
+    return false;
+  }
+  
+  public boolean a(e parame)
+  {
+    AppMethodBeat.i(16246);
+    if (b != null)
+    {
+      b.setRecordListener(parame);
+      AppMethodBeat.o(16246);
+      return true;
+    }
+    AppMethodBeat.o(16246);
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    AppMethodBeat.i(16245);
+    if (b != null)
+    {
+      b.setRecordID(paramString);
+      AppMethodBeat.o(16245);
+      return false;
+    }
+    AppMethodBeat.o(16245);
+    return true;
   }
   
   public int b()
   {
-    AppMethodBeat.i(146208);
-    if (this.g != null)
+    AppMethodBeat.i(16241);
+    if (b != null)
     {
-      int i1 = this.g.getVolumeLevel();
-      AppMethodBeat.o(146208);
-      return i1;
+      int i = b.resumeRecord();
+      AppMethodBeat.o(16241);
+      return i;
     }
-    AppMethodBeat.o(146208);
-    return 0;
+    TXCLog.e("TXCAudioEngine[TXSDK-TRAE-LOG]", "resume Record failed! Please call CreateInstance fisrt!!!!");
+    AppMethodBeat.o(16241);
+    return -901;
   }
   
-  public void b(float paramFloat)
+  public int b(boolean paramBoolean)
   {
-    AppMethodBeat.i(66526);
-    this.l = paramFloat;
-    if (this.g != null) {
-      this.g.setAutoAdjustMaxCache(paramFloat);
-    }
-    AppMethodBeat.o(66526);
-  }
-  
-  public void b(int paramInt)
-  {
-    AppMethodBeat.i(66540);
-    this.q = paramInt;
-    if (this.g != null) {
-      this.g.setSmootheMode(this.q);
-    }
-    AppMethodBeat.o(66540);
-  }
-  
-  public void b(c paramc)
-  {
-    AppMethodBeat.i(146207);
-    this.h = paramc;
-    if (this.g != null) {
-      this.g.setListener(paramc);
-    }
-    AppMethodBeat.o(146207);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    AppMethodBeat.i(66533);
-    this.v = paramBoolean;
-    if (this.g != null) {
-      this.g.setEnableVolumeLevelCal(paramBoolean);
-    }
-    AppMethodBeat.o(66533);
-  }
-  
-  /* Error */
-  public float c()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 320
-    //   5: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: getfield 86	com/tencent/liteav/audio/a:g	Lcom/tencent/liteav/audio/impl/Play/TXCAudioBasePlayController;
-    //   12: ifnull +21 -> 33
-    //   15: aload_0
-    //   16: getfield 86	com/tencent/liteav/audio/a:g	Lcom/tencent/liteav/audio/impl/Play/TXCAudioBasePlayController;
-    //   19: invokevirtual 323	com/tencent/liteav/audio/impl/Play/TXCAudioBasePlayController:getCacheThreshold	()F
-    //   22: fstore_1
-    //   23: ldc_w 320
-    //   26: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: fload_1
-    //   32: freturn
-    //   33: fconst_0
-    //   34: fstore_1
-    //   35: ldc_w 320
-    //   38: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   41: goto -12 -> 29
-    //   44: astore_2
-    //   45: aload_0
-    //   46: monitorexit
-    //   47: aload_2
-    //   48: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	49	0	this	a
-    //   22	13	1	f1	float
-    //   44	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	29	44	finally
-    //   35	41	44	finally
-  }
-  
-  public void c(float paramFloat)
-  {
-    AppMethodBeat.i(66527);
-    this.m = paramFloat;
-    if (this.g != null) {
-      this.g.setAutoAdjustMinCache(paramFloat);
-    }
-    AppMethodBeat.o(66527);
-  }
-  
-  public void c(int paramInt)
-  {
-    AppMethodBeat.i(146212);
-    switch (paramInt)
+    AppMethodBeat.i(16240);
+    if (b != null)
     {
+      int i = b.pauseRecord(paramBoolean);
+      AppMethodBeat.o(16240);
+      return i;
     }
-    for (;;)
+    TXCLog.e("TXCAudioEngine[TXSDK-TRAE-LOG]", "pause Record[" + paramBoolean + "] failed! Please call CreateInstance fisrt!!!!");
+    AppMethodBeat.o(16240);
+    return -901;
+  }
+  
+  public void b(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(16267);
+    if (b != null) {
+      b.setAutoAdjustMaxCache(paramString, paramFloat);
+    }
+    AppMethodBeat.o(16267);
+  }
+  
+  public void b(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(16265);
+    if (b != null) {
+      b.enableAutoAdjustCache(paramString, paramBoolean);
+    }
+    AppMethodBeat.o(16265);
+  }
+  
+  public void b(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(16252);
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "enableSoftANS: enable = " + paramBoolean + " level = " + paramInt);
+    if (b != null) {
+      b.enableSoftANS(paramBoolean, paramInt);
+    }
+    AppMethodBeat.o(16252);
+  }
+  
+  public boolean b(float paramFloat)
+  {
+    AppMethodBeat.i(16255);
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "setPlayoutVolume: ".concat(String.valueOf(paramFloat)));
+    if (b != null)
     {
-      AppMethodBeat.o(146212);
-      return;
-      if (this.g != null)
-      {
-        this.g.setMute(true);
-        AppMethodBeat.o(146212);
-        return;
-        if (this.g != null)
-        {
-          this.g.setMute(true);
-          AppMethodBeat.o(146212);
-          return;
-          if (this.g != null) {
-            this.g.setMute(this.p);
-          }
-        }
-      }
+      b.setPlayoutVolume(paramFloat);
+      AppMethodBeat.o(16255);
+      return true;
     }
+    AppMethodBeat.o(16255);
+    return false;
+  }
+  
+  public boolean b(int paramInt)
+  {
+    AppMethodBeat.i(16254);
+    if (b != null)
+    {
+      b.setVoiceChangerType(paramInt);
+      AppMethodBeat.o(16254);
+      return true;
+    }
+    AppMethodBeat.o(16254);
+    return false;
+  }
+  
+  public boolean b(String paramString)
+  {
+    AppMethodBeat.i(16259);
+    if (b != null)
+    {
+      b.addJitterChannel(paramString);
+      AppMethodBeat.o(16259);
+      return true;
+    }
+    AppMethodBeat.o(16259);
+    return false;
+  }
+  
+  public int c()
+  {
+    AppMethodBeat.i(16242);
+    if (b != null)
+    {
+      int i = b.stopRecord();
+      AppMethodBeat.o(16242);
+      return i;
+    }
+    AppMethodBeat.o(16242);
+    return -1;
+  }
+  
+  public int c(String paramString)
+  {
+    AppMethodBeat.i(16260);
+    if (b != null)
+    {
+      int i = b.startJitterChannelPlay(paramString);
+      AppMethodBeat.o(16260);
+      return i;
+    }
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "Please call CreateInstance fisrt!!! ");
+    AppMethodBeat.o(16260);
+    return -105;
+  }
+  
+  public void c(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(16268);
+    if (b != null) {
+      b.setAutoAdjustMinCache(paramString, paramFloat);
+    }
+    AppMethodBeat.o(16268);
+  }
+  
+  public void c(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(16269);
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "set mute to ".concat(String.valueOf(paramBoolean)));
+    if (b != null) {
+      b.setPlayMute(paramString, paramBoolean);
+    }
+    AppMethodBeat.o(16269);
   }
   
   public void c(boolean paramBoolean)
   {
-    AppMethodBeat.i(66534);
-    this.o = paramBoolean;
-    if (this.g != null) {
-      this.g.enableHWAcceleration(paramBoolean);
+    AppMethodBeat.i(16247);
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "setIsCustomRecord: ".concat(String.valueOf(paramBoolean)));
+    if (b != null) {
+      b.setIsCustomRecord(paramBoolean);
     }
-    AppMethodBeat.o(66534);
+    AppMethodBeat.o(16247);
+  }
+  
+  public void c(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(16253);
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "enableSoftAGC: enable = " + paramBoolean + " level = " + paramInt);
+    if (b != null) {
+      b.enableSoftAGC(paramBoolean, paramInt);
+    }
+    AppMethodBeat.o(16253);
+  }
+  
+  public boolean c(float paramFloat)
+  {
+    AppMethodBeat.i(182288);
+    if (b != null)
+    {
+      b.setFecRatio(paramFloat);
+      AppMethodBeat.o(182288);
+      return true;
+    }
+    AppMethodBeat.o(182288);
+    return false;
   }
   
   public int d()
   {
-    AppMethodBeat.i(66530);
-    int i1;
-    if (d.a().d())
-    {
-      if (this.i == 2)
-      {
-        TXCLog.e(f, "audio track has start, but aec type is trae!!" + this.i);
-        AppMethodBeat.o(66530);
-        return 0;
-      }
-      i1 = this.i;
-      AppMethodBeat.o(66530);
-      return i1;
-    }
-    if (TXCTraeJNI.nativeTraeIsPlaying())
-    {
-      if (this.i != 2)
-      {
-        TXCLog.e(f, "trae engine has start, but aec type is not trae!!" + this.i);
-        AppMethodBeat.o(66530);
-        return 2;
-      }
-      i1 = this.i;
-      AppMethodBeat.o(66530);
-      return i1;
-    }
-    AppMethodBeat.o(66530);
-    return 0;
+    return 2;
   }
   
-  public void d(boolean paramBoolean)
+  public int d(String paramString)
   {
-    AppMethodBeat.i(66535);
-    this.n = paramBoolean;
-    if (this.g != null) {
-      this.g.enableRealTimePlay(paramBoolean);
+    AppMethodBeat.i(16261);
+    if (b != null)
+    {
+      int i = b.stopJitterChannelPlay(paramString);
+      AppMethodBeat.o(16261);
+      return i;
     }
-    AppMethodBeat.o(66535);
+    AppMethodBeat.o(16261);
+    return -101;
+  }
+  
+  public void d(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(16270);
+    if (b != null) {
+      b.muteInSpeaker(paramString, paramBoolean);
+    }
+    AppMethodBeat.o(16270);
+  }
+  
+  public boolean d(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16248);
+    TXCLog.i("TXCAudioEngine[TXSDK-TRAE-LOG]", "setRecordMute: ".concat(String.valueOf(paramBoolean)));
+    if (b != null)
+    {
+      b.setRecordMute(paramBoolean);
+      AppMethodBeat.o(16248);
+      return true;
+    }
+    AppMethodBeat.o(16248);
+    return false;
   }
   
   public int e()
   {
-    return 48000;
+    AppMethodBeat.i(16258);
+    if (b != null)
+    {
+      int i = b.getRecordVolumeLevel();
+      AppMethodBeat.o(16258);
+      return i;
+    }
+    AppMethodBeat.o(16258);
+    return 0;
   }
   
-  public void e(boolean paramBoolean)
+  public int e(String paramString)
   {
-    AppMethodBeat.i(146210);
-    this.p = paramBoolean;
-    if (this.g != null) {
-      this.g.setMute(paramBoolean);
+    AppMethodBeat.i(16272);
+    if (b != null)
+    {
+      int i = b.getJitterChannelVolumeLevel(paramString);
+      AppMethodBeat.o(16272);
+      return i;
     }
-    AppMethodBeat.o(146210);
+    AppMethodBeat.o(16272);
+    return 0;
+  }
+  
+  public boolean e(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16257);
+    if (b != null)
+    {
+      b.enableEosMode(paramBoolean);
+      AppMethodBeat.o(16257);
+      return true;
+    }
+    AppMethodBeat.o(16257);
+    return false;
   }
   
   public int f()
   {
+    return 48000;
+  }
+  
+  public int g()
+  {
     return 2;
   }
   
-  public TXAudioJitterBufferReportInfo g()
+  public int h()
   {
-    AppMethodBeat.i(146211);
-    if (this.g != null)
+    AppMethodBeat.i(16273);
+    if (b != null)
     {
-      TXAudioJitterBufferReportInfo localTXAudioJitterBufferReportInfo = this.g.getReportInfo();
-      AppMethodBeat.o(146211);
-      return localTXAudioJitterBufferReportInfo;
+      int i = b.getPlayAECType();
+      AppMethodBeat.o(16273);
+      return i;
     }
-    AppMethodBeat.o(146211);
-    return null;
+    AppMethodBeat.o(16273);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.a
  * JD-Core Version:    0.7.0.1
  */

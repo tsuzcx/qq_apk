@@ -3,84 +3,97 @@ package com.tencent.mm.plugin.appbrand.widget.input.autofill;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
+import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.input.ab;
 import com.tencent.mm.plugin.appbrand.widget.input.d.a.b;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.List;
 
 final class a
   extends ArrayAdapter<a.b>
   implements g
 {
-  private b joM;
-  h joN;
-  private boolean joO;
   private final LayoutInflater mInflater;
+  private b meE;
+  h meF;
+  private boolean meG;
   
   a(Context paramContext, List<a.b> paramList)
   {
-    super(paramContext, 2130968692, paramList);
-    AppMethodBeat.i(123875);
-    this.joO = false;
+    super(paramContext, 2131493005, paramList);
+    AppMethodBeat.i(136615);
+    this.meG = false;
     this.mInflater = LayoutInflater.from(paramContext);
-    AppMethodBeat.o(123875);
+    AppMethodBeat.o(136615);
   }
   
   public final void a(b paramb)
   {
-    AppMethodBeat.i(123877);
-    this.joM = paramb;
-    this.joM.setOnDismissListener(new a.1(this));
-    AppMethodBeat.o(123877);
+    AppMethodBeat.i(136617);
+    this.meE = paramb;
+    this.meE.setOnDismissListener(new PopupWindow.OnDismissListener()
+    {
+      public final void onDismiss()
+      {
+        AppMethodBeat.i(136612);
+        if ((a.a(a.this) != null) && (!a.b(a.this))) {
+          a.a(a.this).a("", h.a.mfq);
+        }
+        AppMethodBeat.o(136612);
+      }
+    });
+    AppMethodBeat.o(136617);
   }
   
-  public final void aRB()
+  public final void btS()
   {
-    AppMethodBeat.i(123878);
-    this.joM.setOnDismissListener(null);
-    this.joM = null;
-    AppMethodBeat.o(123878);
+    AppMethodBeat.i(136618);
+    this.meE.setOnDismissListener(null);
+    this.meE = null;
+    AppMethodBeat.o(136618);
   }
   
   public final Filter getFilter()
   {
-    AppMethodBeat.i(123880);
+    AppMethodBeat.i(136620);
     Filter localFilter = super.getFilter();
-    AppMethodBeat.o(123880);
+    AppMethodBeat.o(136620);
     return localFilter;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     int j = 8;
-    AppMethodBeat.i(123879);
+    AppMethodBeat.i(136619);
     View localView = paramView;
     if (paramView == null) {
-      localView = this.mInflater.inflate(2130968692, paramViewGroup, false);
+      localView = this.mInflater.inflate(2131493005, paramViewGroup, false);
     }
-    paramView = (a.a)localView.getTag();
+    paramView = (a)localView.getTag();
     if (paramView == null)
     {
-      paramView = new a.a(this, localView);
+      paramView = new a(localView);
       localView.setTag(paramView);
     }
     for (;;)
     {
       paramViewGroup = (a.b)getItem(paramInt);
-      paramView.joT = paramViewGroup;
-      paramView.joQ.setText(paramViewGroup.title);
-      paramView.joR.setText(paramViewGroup.content);
-      TextView localTextView = paramView.joR;
+      paramView.meL = paramViewGroup;
+      paramView.meI.setText(paramViewGroup.title);
+      paramView.meJ.setText(paramViewGroup.content);
+      TextView localTextView = paramView.meJ;
       int i;
-      if (bo.isNullOrNil(paramViewGroup.content))
+      if (bt.isNullOrNil(paramViewGroup.content))
       {
         i = 8;
         localTextView.setVisibility(i);
-        paramView = paramView.gqg;
+        paramView = paramView.icB;
         if (paramInt != getCount() - 1) {
           break label159;
         }
@@ -89,7 +102,7 @@ final class a
       for (paramInt = j;; paramInt = 0)
       {
         paramView.setVisibility(paramInt);
-        AppMethodBeat.o(123879);
+        AppMethodBeat.o(136619);
         return localView;
         i = 0;
         break;
@@ -99,9 +112,61 @@ final class a
   
   public final void notifyDataSetChanged()
   {
-    AppMethodBeat.i(123876);
+    AppMethodBeat.i(136616);
     super.notifyDataSetChanged();
-    AppMethodBeat.o(123876);
+    AppMethodBeat.o(136616);
+  }
+  
+  final class a
+    implements View.OnClickListener
+  {
+    View arI;
+    View icB;
+    TextView meI;
+    TextView meJ;
+    View meK;
+    a.b meL;
+    
+    a(View paramView)
+    {
+      AppMethodBeat.i(136613);
+      this.arI = paramView;
+      this.meI = ((TextView)paramView.findViewById(2131305902));
+      this.meJ = ((TextView)paramView.findViewById(2131298739));
+      this.meK = paramView.findViewById(2131298360);
+      this.icB = paramView.findViewById(2131299154);
+      paramView.setBackgroundResource(2131233634);
+      paramView.setOnClickListener(this);
+      this.meK.setOnClickListener(this);
+      AppMethodBeat.o(136613);
+    }
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(136614);
+      if (this.meL != null) {
+        if (paramView.getId() == 2131298360)
+        {
+          a.this.remove(this.meL);
+          if (a.a(a.this) != null)
+          {
+            a.a(a.this).a(this.meL.id, h.a.mfr);
+            AppMethodBeat.o(136614);
+          }
+        }
+        else if ((paramView == this.arI) && (a.a(a.this) != null))
+        {
+          if (this.meL != null) {
+            a.a(a.this).a(this.meL.id, h.a.mfs);
+          }
+          a.c(a.this);
+          if (a.d(a.this) != null) {
+            a.d(a.this).meM.getView().clearFocus();
+          }
+        }
+      }
+      AppMethodBeat.o(136614);
+    }
   }
 }
 

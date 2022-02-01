@@ -5,19 +5,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.account.bind.ui.BindGoogleContactUI;
 import com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI;
 import com.tencent.mm.plugin.account.bind.ui.GoogleFriendUI;
 import com.tencent.mm.plugin.account.bind.ui.MobileFriendUI;
 import com.tencent.mm.plugin.account.friend.a.l;
 import com.tencent.mm.plugin.account.friend.a.l.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.preference.IconPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -36,92 +38,106 @@ public class AddMoreFriendsByOtherWayUI
   
   public int getResourceId()
   {
-    return 2131165186;
+    return 2131951618;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(25502);
-    setMMTitle(2131296420);
+    AppMethodBeat.i(29192);
+    setMMTitle(2131755148);
     this.screen = getPreferenceScreen();
-    setBackBtn(new AddMoreFriendsByOtherWayUI.1(this));
-    AppMethodBeat.o(25502);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(29188);
+        AddMoreFriendsByOtherWayUI.this.finish();
+        AppMethodBeat.o(29188);
+        return true;
+      }
+    });
+    AppMethodBeat.o(29192);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(25499);
+    AppMethodBeat.i(29189);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(25499);
+    AppMethodBeat.o(29189);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(25503);
+    AppMethodBeat.i(29193);
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(25503);
+    AppMethodBeat.o(29193);
     return bool;
   }
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    int i = 0;
-    AppMethodBeat.i(25501);
-    ab.d("MicroMsg.AddMoreFriendsByOthersUI", "click %s", new Object[] { paramPreference.mKey });
+    AppMethodBeat.i(29191);
+    ad.d("MicroMsg.AddMoreFriendsByOthersUI", "click %s", new Object[] { paramPreference.mKey });
     if ("find_friends_by_mobile".equals(paramPreference.mKey))
     {
-      if (l.aqq() != l.a.gxB)
+      if (l.aIL() != l.a.iky)
       {
         paramf = new Intent(this, BindMContactIntroUI.class);
         paramf.putExtra("key_upload_scene", 6);
-        MMWizardActivity.J(this, paramf);
-        AppMethodBeat.o(25501);
+        MMWizardActivity.V(this, paramf);
+        AppMethodBeat.o(29191);
         return true;
       }
-      startActivity(new Intent(this, MobileFriendUI.class));
-      AppMethodBeat.o(25501);
+      paramf = new Intent(this, MobileFriendUI.class);
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bd(paramf);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.adn(), "com/tencent/mm/plugin/subapp/ui/pluginapp/AddMoreFriendsByOtherWayUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/pluginapp/AddMoreFriendsByOtherWayUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(29191);
       return true;
     }
     if ("find_friends_by_google_account".equals(paramPreference.mKey))
     {
-      if (TextUtils.isEmpty((String)g.RL().Ru().get(208903, null))) {}
-      while (i == 0)
+      if (TextUtils.isEmpty((String)g.afB().afk().get(208903, null))) {}
+      for (int i = 0; i == 0; i = 1)
       {
         paramf = new Intent(this, BindGoogleContactUI.class);
         paramf.putExtra("enter_scene", 1);
-        MMWizardActivity.J(this, paramf);
-        AppMethodBeat.o(25501);
+        MMWizardActivity.V(this, paramf);
+        AppMethodBeat.o(29191);
         return true;
-        i = 1;
       }
       paramf = new Intent(this, GoogleFriendUI.class);
       paramf.putExtra("enter_scene", 1);
-      startActivity(paramf);
-      AppMethodBeat.o(25501);
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bd(paramf);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.adn(), "com/tencent/mm/plugin/subapp/ui/pluginapp/AddMoreFriendsByOtherWayUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/subapp/ui/pluginapp/AddMoreFriendsByOtherWayUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(29191);
       return true;
     }
-    AppMethodBeat.o(25501);
+    AppMethodBeat.o(29191);
     return false;
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(25500);
+    AppMethodBeat.i(29190);
     super.onResume();
-    if ((IconPreference)this.screen.atx("find_friends_by_google_account") != null) {
-      if ((r.Zy() & 0x800000) != 0) {
+    if ((IconPreference)this.screen.aKk("find_friends_by_google_account") != null) {
+      if ((u.aqS() & 0x800000) != 0) {
         break label77;
       }
     }
     label77:
     for (int i = 1;; i = 0)
     {
-      if ((i == 0) || (!bo.hl(this))) {
-        this.screen.aty("find_friends_by_google_account");
+      if ((i == 0) || (!bt.iP(this))) {
+        this.screen.aKl("find_friends_by_google_account");
       }
       this.screen.notifyDataSetChanged();
-      AppMethodBeat.o(25500);
+      AppMethodBeat.o(29190);
       return;
     }
   }
@@ -134,7 +150,7 @@ public class AddMoreFriendsByOtherWayUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.pluginapp.AddMoreFriendsByOtherWayUI
  * JD-Core Version:    0.7.0.1
  */

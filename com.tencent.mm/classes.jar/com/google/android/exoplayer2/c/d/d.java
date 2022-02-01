@@ -5,16 +5,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d
 {
-  public static d.a a(int paramInt, long[] paramArrayOfLong, int[] paramArrayOfInt, long paramLong)
+  public static a a(int paramInt, long[] paramArrayOfLong, int[] paramArrayOfInt, long paramLong)
   {
-    AppMethodBeat.i(94959);
+    AppMethodBeat.i(92074);
     int i1 = 8192 / paramInt;
     int k = paramArrayOfInt.length;
     int j = 0;
     int m;
     for (int i = 0; j < k; i = m + i)
     {
-      m = x.bb(paramArrayOfInt[j], i1);
+      m = x.bp(paramArrayOfInt[j], i1);
       j += 1;
     }
     long[] arrayOfLong1 = new long[i];
@@ -44,14 +44,32 @@ final class d
       }
       i += 1;
     }
-    paramArrayOfLong = new d.a(arrayOfLong1, arrayOfInt1, n, arrayOfLong2, arrayOfInt2, (byte)0);
-    AppMethodBeat.o(94959);
+    paramArrayOfLong = new a(arrayOfLong1, arrayOfInt1, n, arrayOfLong2, arrayOfInt2, (byte)0);
+    AppMethodBeat.o(92074);
     return paramArrayOfLong;
+  }
+  
+  public static final class a
+  {
+    public final int[] aWC;
+    public final int bbU;
+    public final long[] bbV;
+    public final int[] bbW;
+    public final long[] offsets;
+    
+    private a(long[] paramArrayOfLong1, int[] paramArrayOfInt1, int paramInt, long[] paramArrayOfLong2, int[] paramArrayOfInt2)
+    {
+      this.offsets = paramArrayOfLong1;
+      this.aWC = paramArrayOfInt1;
+      this.bbU = paramInt;
+      this.bbV = paramArrayOfLong2;
+      this.bbW = paramArrayOfInt2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d.d
  * JD-Core Version:    0.7.0.1
  */

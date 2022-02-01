@@ -11,22 +11,22 @@ final class FacebookSdk$1
   
   FacebookSdk$1()
   {
-    AppMethodBeat.i(71597);
+    AppMethodBeat.i(17033);
     this.counter = new AtomicInteger(0);
-    AppMethodBeat.o(71597);
+    AppMethodBeat.o(17033);
   }
   
   public final Thread newThread(Runnable paramRunnable)
   {
-    AppMethodBeat.i(71598);
+    AppMethodBeat.i(17034);
     paramRunnable = new Thread(paramRunnable, "FacebookSdk #" + this.counter.incrementAndGet());
-    AppMethodBeat.o(71598);
+    AppMethodBeat.o(17034);
     return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.facebook.FacebookSdk.1
  * JD-Core Version:    0.7.0.1
  */

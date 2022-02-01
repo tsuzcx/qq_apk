@@ -1,125 +1,109 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.graphics.Bitmap;
-import android.net.http.SslError;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.m;
-import com.tencent.xweb.r;
-import com.tencent.xweb.s;
-import com.tencent.xweb.w;
+import com.tencent.xweb.x5.export.external.extension.proxy.a;
 
 public class g
-  extends w
+  extends a
 {
-  private w pvo;
+  private a ATN;
   
   public g()
   {
-    AppMethodBeat.i(6106);
-    this.pvo = new w();
-    AppMethodBeat.o(6106);
+    AppMethodBeat.i(78331);
+    this.ATN = new a();
+    AppMethodBeat.o(78331);
   }
   
-  public s a(WebView paramWebView, r paramr)
+  public final void a(a parama)
   {
-    AppMethodBeat.i(6113);
-    paramWebView = this.pvo.a(paramWebView, paramr);
-    AppMethodBeat.o(6113);
-    return paramWebView;
-  }
-  
-  public s a(WebView paramWebView, r paramr, Bundle paramBundle)
-  {
-    AppMethodBeat.i(6114);
-    paramWebView = this.pvo.a(paramWebView, paramr, paramBundle);
-    AppMethodBeat.o(6114);
-    return paramWebView;
-  }
-  
-  public final void a(WebView paramWebView, float paramFloat1, float paramFloat2)
-  {
-    AppMethodBeat.i(6117);
-    this.pvo.a(paramWebView, paramFloat1, paramFloat2);
-    AppMethodBeat.o(6117);
-  }
-  
-  public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(6110);
-    this.pvo.a(paramWebView, paramInt, paramString1, paramString2);
-    AppMethodBeat.o(6110);
-  }
-  
-  public void a(WebView paramWebView, m paramm, SslError paramSslError)
-  {
-    AppMethodBeat.i(6116);
-    this.pvo.a(paramWebView, paramm, paramSslError);
-    AppMethodBeat.o(6116);
-  }
-  
-  public void a(WebView paramWebView, r paramr, s params)
-  {
-    AppMethodBeat.i(6118);
-    this.pvo.a(paramWebView, paramr, params);
-    AppMethodBeat.o(6118);
-  }
-  
-  public final void a(WebView paramWebView, String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(6115);
-    this.pvo.a(paramWebView, paramString, paramBoolean);
-    AppMethodBeat.o(6115);
-  }
-  
-  public final void a(w paramw)
-  {
-    if (paramw != null) {
-      this.pvo = paramw;
+    if (parama != null) {
+      this.ATN = parama;
     }
   }
   
-  public boolean a(WebView paramWebView, String paramString)
+  public void computeScroll(View paramView)
   {
-    AppMethodBeat.i(6111);
-    boolean bool = this.pvo.a(paramWebView, paramString);
-    AppMethodBeat.o(6111);
+    AppMethodBeat.i(78339);
+    this.ATN.computeScroll(paramView);
+    AppMethodBeat.o(78339);
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    AppMethodBeat.i(78335);
+    boolean bool = this.ATN.dispatchTouchEvent(paramMotionEvent, paramView);
+    AppMethodBeat.o(78335);
     return bool;
   }
   
-  public void b(WebView paramWebView, String paramString)
+  public void invalidate()
   {
-    AppMethodBeat.i(6109);
-    this.pvo.b(paramWebView, paramString);
-    AppMethodBeat.o(6109);
+    AppMethodBeat.i(78341);
+    this.ATN.invalidate();
+    AppMethodBeat.o(78341);
   }
   
-  public void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    AppMethodBeat.i(6108);
-    this.pvo.b(paramWebView, paramString, paramBitmap);
-    AppMethodBeat.o(6108);
+    AppMethodBeat.i(78334);
+    boolean bool = this.ATN.onInterceptTouchEvent(paramMotionEvent, paramView);
+    AppMethodBeat.o(78334);
+    return bool;
   }
   
-  public s c(WebView paramWebView, String paramString)
+  public Object onMiscCallBack(String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(6112);
-    paramWebView = this.pvo.c(paramWebView, paramString);
-    AppMethodBeat.o(6112);
-    return paramWebView;
+    AppMethodBeat.i(78332);
+    paramString = this.ATN.onMiscCallBack(paramString, paramBundle);
+    AppMethodBeat.o(78332);
+    return paramString;
   }
   
-  public void h(WebView paramWebView, String paramString)
+  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
   {
-    AppMethodBeat.i(6107);
-    this.pvo.h(paramWebView, paramString);
-    AppMethodBeat.o(6107);
+    AppMethodBeat.i(78338);
+    this.ATN.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2, paramView);
+    AppMethodBeat.o(78338);
+  }
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    AppMethodBeat.i(78337);
+    this.ATN.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+    AppMethodBeat.o(78337);
+  }
+  
+  public boolean onShowLongClickPopupMenu()
+  {
+    AppMethodBeat.i(78340);
+    boolean bool = this.ATN.onShowLongClickPopupMenu();
+    AppMethodBeat.o(78340);
+    return bool;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    AppMethodBeat.i(78333);
+    boolean bool = this.ATN.onTouchEvent(paramMotionEvent, paramView);
+    AppMethodBeat.o(78333);
+    return bool;
+  }
+  
+  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
+  {
+    AppMethodBeat.i(78336);
+    paramBoolean = this.ATN.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean, paramView);
+    AppMethodBeat.o(78336);
+    return paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.g
  * JD-Core Version:    0.7.0.1
  */

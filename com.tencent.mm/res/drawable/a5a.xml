@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/sentpic_popup_icon_pressed" />
-    <item android:drawable="@raw/sentpic_popup_icon" />
-</selector>
+    <gradient android:startColor="@color/a86" android:endColor="@color/a83" android:angle="270.0" android:type="linear" android:centerY="0.15" android:centerColor="@color/a83" />
+</shape>

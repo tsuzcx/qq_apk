@@ -1,223 +1,198 @@
 package com.tencent.mm.platformtools;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.util.Random;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.vfs.e;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class af
 {
-  private int crypt;
-  private boolean header;
-  private byte[] key;
-  private byte[] out;
-  private int padding;
-  private byte[] plain;
-  private int pos;
-  private int preCrypt;
-  private byte[] prePlain;
-  private Random random;
-  
-  public af()
+  public static boolean a(Context paramContext, ArrayList<c> paramArrayList, boolean paramBoolean)
   {
-    AppMethodBeat.i(79042);
-    this.header = true;
-    this.random = new Random();
-    AppMethodBeat.o(79042);
-  }
-  
-  private byte[] encipher(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(79044);
-    int i = 16;
+    AppMethodBeat.i(20754);
+    if (paramArrayList.size() == 0)
+    {
+      AppMethodBeat.o(20754);
+      return false;
+    }
+    Iterator localIterator = paramArrayList.iterator();
+    c localc;
+    Object localObject2;
+    Object localObject1;
+    Object localObject3;
+    int i;
+    label127:
+    do
+    {
+      while (!((Iterator)localObject1).hasNext())
+      {
+        do
+        {
+          do
+          {
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            localc = (c)localIterator.next();
+          } while (TextUtils.isEmpty(localc.dvP));
+          localObject2 = localc.dvP;
+          localObject1 = new ArrayList();
+          localObject3 = paramContext.getPackageResourcePath();
+          if (Build.VERSION.SDK_INT < 21) {
+            break label599;
+          }
+          paramArrayList = ((String)localObject3).split("/");
+          if (paramArrayList != null)
+          {
+            i = 0;
+            if (i >= paramArrayList.length) {
+              break label823;
+            }
+            if (!paramArrayList[i].contains(paramContext.getPackageName())) {
+              break;
+            }
+            paramArrayList = paramArrayList[i];
+            if (!TextUtils.isEmpty(paramArrayList))
+            {
+              String str = ((String)localObject3).replace(paramArrayList, (String)localObject2 + "-1");
+              if (new e(str).exists()) {
+                ((List)localObject1).add(str);
+              }
+              paramArrayList = ((String)localObject3).replace(paramArrayList, (String)localObject2 + "-2");
+              if (new e(paramArrayList).exists()) {
+                ((List)localObject1).add(paramArrayList);
+              }
+            }
+          }
+        } while (((List)localObject1).size() <= 0);
+        localObject1 = ((List)localObject1).iterator();
+      }
+      localObject2 = new e((String)((Iterator)localObject1).next());
+    } while (!((e)localObject2).exists());
+    label237:
+    paramArrayList = "";
     for (;;)
     {
-      long l3;
-      long l2;
-      long l4;
-      long l5;
-      long l6;
-      long l7;
-      long l1;
       try
       {
-        l3 = z(paramArrayOfByte, 0);
-        l2 = z(paramArrayOfByte, 4);
-        l4 = z(this.key, 0);
-        l5 = z(this.key, 4);
-        l6 = z(this.key, 8);
-        l7 = z(this.key, 12);
-        l1 = 0L;
-      }
-      catch (IOException paramArrayOfByte)
-      {
-        DataOutputStream localDataOutputStream;
-        AppMethodBeat.o(79044);
-        return null;
-      }
-      paramArrayOfByte = new ByteArrayOutputStream(8);
-      localDataOutputStream = new DataOutputStream(paramArrayOfByte);
-      localDataOutputStream.writeInt((int)l3);
-      localDataOutputStream.writeInt((int)l2);
-      localDataOutputStream.close();
-      paramArrayOfByte = paramArrayOfByte.toByteArray();
-      AppMethodBeat.o(79044);
-      return paramArrayOfByte;
-      while (i > 0)
-      {
-        l1 = l1 + 2654435769L & 0xFFFFFFFF;
-        l3 = l3 + ((l2 << 4) + l4 ^ l2 + l1 ^ (l2 >>> 5) + l5) & 0xFFFFFFFF;
-        l2 = l2 + ((l3 << 4) + l6 ^ l3 + l1 ^ (l3 >>> 5) + l7) & 0xFFFFFFFF;
-        i -= 1;
-      }
-    }
-  }
-  
-  private void encrypt8Bytes()
-  {
-    AppMethodBeat.i(79045);
-    this.pos = 0;
-    byte[] arrayOfByte;
-    int i;
-    if (this.pos < 8)
-    {
-      if (this.header)
-      {
-        arrayOfByte = this.plain;
-        i = this.pos;
-        arrayOfByte[i] = ((byte)(arrayOfByte[i] ^ this.prePlain[this.pos]));
-      }
-      for (;;)
-      {
-        this.pos += 1;
-        break;
-        arrayOfByte = this.plain;
-        i = this.pos;
-        arrayOfByte[i] = ((byte)(arrayOfByte[i] ^ this.out[(this.preCrypt + this.pos)]));
-      }
-    }
-    System.arraycopy(encipher(this.plain), 0, this.out, this.crypt, 8);
-    for (this.pos = 0; this.pos < 8; this.pos += 1)
-    {
-      arrayOfByte = this.out;
-      i = this.crypt + this.pos;
-      arrayOfByte[i] = ((byte)(arrayOfByte[i] ^ this.prePlain[this.pos]));
-    }
-    System.arraycopy(this.plain, 0, this.prePlain, 0, 8);
-    this.preCrypt = this.crypt;
-    this.crypt += 8;
-    this.pos = 0;
-    this.header = false;
-    AppMethodBeat.o(79045);
-  }
-  
-  private static long z(byte[] paramArrayOfByte, int paramInt)
-  {
-    long l = 0L;
-    int i = paramInt;
-    while (i < paramInt + 4)
-    {
-      l = l << 8 | paramArrayOfByte[i] & 0xFF;
-      i += 1;
-    }
-    return l & 0xFFFFFFFF;
-  }
-  
-  public final byte[] a(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
-  {
-    AppMethodBeat.i(79043);
-    this.plain = new byte[8];
-    this.prePlain = new byte[8];
-    this.pos = 1;
-    this.padding = 0;
-    this.preCrypt = 0;
-    this.crypt = 0;
-    this.key = paramArrayOfByte2;
-    this.header = true;
-    this.pos = ((paramInt + 10) % 8);
-    if (this.pos != 0) {
-      this.pos = (8 - this.pos);
-    }
-    this.out = new byte[this.pos + paramInt + 10];
-    this.plain[0] = ((byte)(this.random.nextInt() & 0xF8 | this.pos));
-    int i = 1;
-    while (i <= this.pos)
-    {
-      this.plain[i] = ((byte)(this.random.nextInt() & 0xFF));
-      i += 1;
-    }
-    this.pos += 1;
-    i = 0;
-    while (i < 8)
-    {
-      this.prePlain[i] = 0;
-      i += 1;
-    }
-    this.padding = 1;
-    while (this.padding <= 2)
-    {
-      if (this.pos < 8)
-      {
-        paramArrayOfByte2 = this.plain;
-        i = this.pos;
-        this.pos = (i + 1);
-        paramArrayOfByte2[i] = ((byte)(this.random.nextInt() & 0xFF));
-        this.padding += 1;
-      }
-      if (this.pos == 8) {
-        encrypt8Bytes();
-      }
-    }
-    int j = 0;
-    i = paramInt;
-    paramInt = j;
-    if (i > 0)
-    {
-      if (this.pos >= 8) {
-        break label442;
-      }
-      paramArrayOfByte2 = this.plain;
-      int k = this.pos;
-      this.pos = (k + 1);
-      j = paramInt + 1;
-      paramArrayOfByte2[k] = paramArrayOfByte1[paramInt];
-      i -= 1;
-      paramInt = j;
-    }
-    label442:
-    for (;;)
-    {
-      if (this.pos == 8)
-      {
-        encrypt8Bytes();
-        break;
-        this.padding = 1;
-        while (this.padding <= 7)
+        label256:
+        long l = System.currentTimeMillis();
+        if (paramBoolean)
         {
-          if (this.pos < 8)
+          localObject2 = paramContext.getPackageManager().getPackageInfo(localc.dvP, 64);
+          if (((PackageInfo)localObject2).signatures.length <= 0) {
+            break label829;
+          }
+          paramArrayList = ai.du(localObject2.signatures[(localObject2.signatures.length - 1)].toCharsString());
+          break label829;
+          localObject2 = localc.dvP;
+          localObject3 = localc.hWR;
+          if ((TextUtils.isEmpty(paramArrayList)) || (!paramArrayList.equalsIgnoreCase(localc.hWR))) {
+            break label832;
+          }
+          bool = true;
+          ad.i("MicroMsg.YYBMarketVerify", "summertoken containLowerMarket usesSystemApi[%b], infopkg[%s], infoMD5[%s], sigMD5[%s], equal[%b], takes[%d]ms", new Object[] { Boolean.valueOf(paramBoolean), localObject2, localObject3, paramArrayList, Boolean.valueOf(bool), Long.valueOf(System.currentTimeMillis() - l) });
+          if ((TextUtils.isEmpty(paramArrayList)) || (!paramArrayList.equalsIgnoreCase(localc.hWR))) {
+            break label256;
+          }
+          l = System.currentTimeMillis();
+          if (!paramBoolean) {
+            continue;
+          }
+          i = paramContext.getPackageManager().getPackageInfo(localc.dvP, 0).versionCode;
+          paramArrayList = localc.dvP;
+          int j = localc.hWQ;
+          if (i > localc.hWQ) {
+            continue;
+          }
+          bool = true;
+          ad.i("MicroMsg.YYBMarketVerify", "summertoken containLowerMarket usesSystemApi[%b], infopkg[%s], infovc[%d], versionCode[%d], less[%b], takes[%d]ms", new Object[] { Boolean.valueOf(paramBoolean), paramArrayList, Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool), Long.valueOf(System.currentTimeMillis() - l) });
+          j = localc.hWQ;
+          if (i > j) {
+            break label256;
+          }
+          AppMethodBeat.o(20754);
+          return true;
+          i += 1;
+          break;
+          label599:
+          paramArrayList = ((String)localObject3).split("/");
+          if (paramArrayList == null) {
+            break label237;
+          }
+          localObject3 = new StringBuilder();
+          i = 0;
+          if (i < paramArrayList.length)
           {
-            paramArrayOfByte1 = this.plain;
-            paramInt = this.pos;
-            this.pos = (paramInt + 1);
-            paramArrayOfByte1[paramInt] = 0;
-            this.padding += 1;
+            if (i != paramArrayList.length - 1)
+            {
+              ((StringBuilder)localObject3).append(paramArrayList[i]);
+              ((StringBuilder)localObject3).append("/");
+            }
+            i += 1;
+            continue;
           }
-          if (this.pos == 8) {
-            encrypt8Bytes();
+          paramArrayList = ((StringBuilder)localObject3).toString();
+          localObject3 = paramArrayList + (String)localObject2 + "-1.apk";
+          if (new e((String)localObject3).exists()) {
+            ((List)localObject1).add(localObject3);
           }
+          paramArrayList = paramArrayList + (String)localObject2 + "-2.apk";
+          if (!new e(paramArrayList).exists()) {
+            break label237;
+          }
+          ((List)localObject1).add(paramArrayList);
+          break label237;
         }
-        paramArrayOfByte1 = this.out;
-        AppMethodBeat.o(79043);
-        return paramArrayOfByte1;
+        paramArrayList = af.b.n(((e)localObject2).fhV());
+        continue;
+        i = af.a.M(paramContext, localc.dvP);
+        continue;
+        bool = false;
+        continue;
       }
-      break;
+      catch (Exception paramArrayList)
+      {
+        ad.printErrStackTrace("MicroMsg.YYBMarketVerify", paramArrayList, "", new Object[0]);
+      }
+      AppMethodBeat.o(20754);
+      return false;
+      label823:
+      paramArrayList = "";
+      break label127;
+      label829:
+      continue;
+      label832:
+      boolean bool = false;
+    }
+  }
+  
+  public static final class c
+  {
+    public final String dvP;
+    public final int hWQ;
+    public final String hWR;
+    
+    public c(String paramString1, int paramInt, String paramString2)
+    {
+      this.dvP = paramString1;
+      this.hWQ = paramInt;
+      this.hWR = paramString2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.platformtools.af
  * JD-Core Version:    0.7.0.1
  */

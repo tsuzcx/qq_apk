@@ -1,86 +1,97 @@
 package com.tencent.mm.plugin.webview.model;
 
+import android.os.Bundle;
+import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.modelsns.SnsAdClick;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.k;
+import d.l;
+import java.util.ArrayList;
+import java.util.Collection;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/model/WebViewSnsAdReporter;", "Lcom/tencent/mm/plugin/webview/model/IWebviewReporter;", "()V", "errCode", "", "loadReportInfo", "Ljava/util/ArrayList;", "", "snsAdClick", "Lcom/tencent/mm/modelsns/SnsAdClick;", "report", "", "setErrorCode", "setLoadReportInfo", "loadReports", "", "([Ljava/lang/String;)V", "setSnsAdClick", "adClick", "plugin-webview_release"})
 public final class at
 {
-  private static Map<String, String> uXi;
+  private final ArrayList<String> AYF;
+  public int errCode;
+  public SnsAdClick uBA;
   
-  static
+  public at()
   {
-    AppMethodBeat.i(6799);
-    uXi = new HashMap();
-    AppMethodBeat.o(6799);
+    AppMethodBeat.i(188888);
+    this.AYF = new ArrayList();
+    AppMethodBeat.o(188888);
   }
   
-  public static String agU(String paramString)
+  public final void P(String... paramVarArgs)
   {
-    AppMethodBeat.i(6797);
-    ab.i("MicroMsg.WebviewSharedUrlCache", "rawUrl:[%s]", new Object[] { paramString });
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(188886);
+    k.h(paramVarArgs, "loadReports");
+    int i = 0;
+    while (i < 4)
     {
-      ab.e("MicroMsg.WebviewSharedUrlCache", "rawUrl is null");
-      AppMethodBeat.o(6797);
-      return null;
+      String str = paramVarArgs[i];
+      this.AYF.add(str);
+      i += 1;
     }
-    String str2 = (String)uXi.get(paramString);
-    String str1 = str2;
-    int i;
-    if (bo.isNullOrNil(str2))
+    AppMethodBeat.o(188886);
+  }
+  
+  public final void report()
+  {
+    AppMethodBeat.i(188887);
+    for (;;)
     {
-      i = paramString.indexOf("#");
-      if (i >= 0) {
-        break label106;
+      try
+      {
+        if (((Collection)this.AYF).isEmpty()) {
+          continue;
+        }
+        i = 1;
+        if (i != 0)
+        {
+          Bundle localBundle = new Bundle();
+          localBundle.putStringArrayList("reportAdH5Load", new ArrayList((Collection)this.AYF));
+          localBundle.putInt("errCode", this.errCode);
+          localBundle.putParcelable("snsAdClick", (Parcelable)this.uBA);
+          h.a("com.tencent.mm", (Parcelable)localBundle, a.AYG.getClass(), null);
+        }
       }
-    }
-    label106:
-    for (str1 = paramString;; str1 = paramString.substring(0, i))
-    {
-      str1 = (String)uXi.get(str1);
-      if (!bo.isNullOrNil(str1)) {
-        break;
+      catch (Exception localException)
+      {
+        int i;
+        ad.printErrStackTrace("MicroMsg.WebviewReporter", (Throwable)localException, "", new Object[0]);
+        continue;
       }
-      AppMethodBeat.o(6797);
-      return paramString;
+      this.uBA = null;
+      this.AYF.clear();
+      AppMethodBeat.o(188887);
+      return;
+      i = 0;
     }
-    AppMethodBeat.o(6797);
-    return str1;
   }
   
-  public static void clear()
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  static final class a<InputType, ResultType>
+    implements b<Bundle, IPCVoid>
   {
-    AppMethodBeat.i(6798);
-    uXi.clear();
-    AppMethodBeat.o(6798);
-  }
-  
-  public static void hs(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(6796);
-    ab.i("MicroMsg.WebviewSharedUrlCache", "rawurl:[%s], shareUrl:[%s]", new Object[] { paramString1, paramString2 });
-    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)))
+    public static final a AYG;
+    
+    static
     {
-      ab.e("MicroMsg.WebviewSharedUrlCache", "rawurl is null or share url is null");
-      AppMethodBeat.o(6796);
-      return;
+      AppMethodBeat.i(188885);
+      AYG = new a();
+      AppMethodBeat.o(188885);
     }
-    if (uXi.containsKey(paramString1))
-    {
-      ab.i("MicroMsg.WebviewSharedUrlCache", "has add this rawurl");
-      AppMethodBeat.o(6796);
-      return;
-    }
-    uXi.put(paramString1, paramString2);
-    AppMethodBeat.o(6796);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.at
  * JD-Core Version:    0.7.0.1
  */

@@ -20,9 +20,9 @@ public class IntField
   
   public Number getNumber()
   {
-    AppMethodBeat.i(117007);
+    AppMethodBeat.i(109561);
     int i = this.data;
-    AppMethodBeat.o(117007);
+    AppMethodBeat.o(109561);
     return Integer.valueOf(i);
   }
   
@@ -33,7 +33,7 @@ public class IntField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.qq.taf.jce.dynamic.IntField
  * JD-Core Version:    0.7.0.1
  */

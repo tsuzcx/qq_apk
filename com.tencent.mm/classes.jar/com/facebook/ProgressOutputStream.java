@@ -24,17 +24,17 @@ class ProgressOutputStream
   ProgressOutputStream(OutputStream paramOutputStream, GraphRequestBatch paramGraphRequestBatch, Map<GraphRequest, RequestProgress> paramMap, long paramLong)
   {
     super(paramOutputStream);
-    AppMethodBeat.i(71839);
+    AppMethodBeat.i(17275);
     this.requests = paramGraphRequestBatch;
     this.progressMap = paramMap;
     this.maxProgress = paramLong;
     this.threshold = FacebookSdk.getOnProgressThreshold();
-    AppMethodBeat.o(71839);
+    AppMethodBeat.o(17275);
   }
   
   private void addProgress(long paramLong)
   {
-    AppMethodBeat.i(71840);
+    AppMethodBeat.i(17276);
     if (this.currentRequestProgress != null) {
       this.currentRequestProgress.addProgress(paramLong);
     }
@@ -42,12 +42,12 @@ class ProgressOutputStream
     if ((this.batchProgress >= this.lastReportedProgress + this.threshold) || (this.batchProgress >= this.maxProgress)) {
       reportBatchProgress();
     }
-    AppMethodBeat.o(71840);
+    AppMethodBeat.o(17276);
   }
   
   private void reportBatchProgress()
   {
-    AppMethodBeat.i(71841);
+    AppMethodBeat.i(17277);
     if (this.batchProgress > this.lastReportedProgress)
     {
       Iterator localIterator = this.requests.getCallbacks().iterator();
@@ -61,25 +61,33 @@ class ProgressOutputStream
           if (localHandler == null) {
             ((GraphRequestBatch.OnProgressCallback)localObject).onBatchProgress(this.requests, this.batchProgress, this.maxProgress);
           } else {
-            localHandler.post(new ProgressOutputStream.1(this, (GraphRequestBatch.OnProgressCallback)localObject));
+            localHandler.post(new Runnable()
+            {
+              public void run()
+              {
+                AppMethodBeat.i(17274);
+                this.val$progressCallback.onBatchProgress(ProgressOutputStream.this.requests, ProgressOutputStream.this.batchProgress, ProgressOutputStream.this.maxProgress);
+                AppMethodBeat.o(17274);
+              }
+            });
           }
         }
       }
       this.lastReportedProgress = this.batchProgress;
     }
-    AppMethodBeat.o(71841);
+    AppMethodBeat.o(17277);
   }
   
   public void close()
   {
-    AppMethodBeat.i(71846);
+    AppMethodBeat.i(17282);
     super.close();
     Iterator localIterator = this.progressMap.values().iterator();
     while (localIterator.hasNext()) {
       ((RequestProgress)localIterator.next()).reportProgress();
     }
     reportBatchProgress();
-    AppMethodBeat.o(71846);
+    AppMethodBeat.o(17282);
   }
   
   long getBatchProgress()
@@ -94,43 +102,43 @@ class ProgressOutputStream
   
   public void setCurrentRequest(GraphRequest paramGraphRequest)
   {
-    AppMethodBeat.i(71842);
+    AppMethodBeat.i(17278);
     if (paramGraphRequest != null) {}
     for (paramGraphRequest = (RequestProgress)this.progressMap.get(paramGraphRequest);; paramGraphRequest = null)
     {
       this.currentRequestProgress = paramGraphRequest;
-      AppMethodBeat.o(71842);
+      AppMethodBeat.o(17278);
       return;
     }
   }
   
   public void write(int paramInt)
   {
-    AppMethodBeat.i(71845);
+    AppMethodBeat.i(17281);
     this.out.write(paramInt);
     addProgress(1L);
-    AppMethodBeat.o(71845);
+    AppMethodBeat.o(17281);
   }
   
   public void write(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(71843);
+    AppMethodBeat.i(17279);
     this.out.write(paramArrayOfByte);
     addProgress(paramArrayOfByte.length);
-    AppMethodBeat.o(71843);
+    AppMethodBeat.o(17279);
   }
   
   public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(71844);
+    AppMethodBeat.i(17280);
     this.out.write(paramArrayOfByte, paramInt1, paramInt2);
     addProgress(paramInt2);
-    AppMethodBeat.o(71844);
+    AppMethodBeat.o(17280);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.ProgressOutputStream
  * JD-Core Version:    0.7.0.1
  */

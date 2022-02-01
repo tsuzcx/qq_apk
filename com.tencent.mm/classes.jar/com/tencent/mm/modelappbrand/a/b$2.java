@@ -5,25 +5,25 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$2
-  extends b.k
+  extends b.m
 {
   b$2(b paramb1, ImageView paramImageView, b paramb2, Drawable paramDrawable)
   {
     super(paramImageView, paramb2, (byte)0);
   }
   
-  public final void acG()
+  public final void auj()
   {
-    AppMethodBeat.i(77316);
-    if ((getImageView() != null) && (this.fqw != null)) {
-      getImageView().setImageDrawable(this.fqw);
+    AppMethodBeat.i(131337);
+    if ((getImageView() != null) && (this.gSh != null)) {
+      getImageView().setImageDrawable(this.gSh);
     }
-    AppMethodBeat.o(77316);
+    AppMethodBeat.o(131337);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.a.b.2
  * JD-Core Version:    0.7.0.1
  */

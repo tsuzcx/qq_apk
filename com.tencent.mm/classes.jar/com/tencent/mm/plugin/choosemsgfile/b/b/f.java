@@ -5,105 +5,105 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
-import com.tencent.mm.plugin.choosemsgfile.b.d.b;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.plugin.choosemsgfile.b.d.c;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
 
 public class f
   extends d
 {
-  private j.b kEK;
-  public String kET;
-  private String kEU;
+  private k.b nLK;
+  public String nLU;
+  private String nLV;
   
-  public f(g paramg, bi parambi, String paramString)
+  public f(g paramg, bl parambl, String paramString)
   {
-    super(paramg, parambi);
-    this.kET = paramString;
+    super(paramg, parambl);
+    this.nLU = paramString;
   }
   
-  private j.b bgt()
+  private k.b bNE()
   {
-    AppMethodBeat.i(54295);
-    if (this.kEK == null) {
-      this.kEK = j.b.mY(this.kEz.field_content);
+    AppMethodBeat.i(123267);
+    if (this.nLK == null) {
+      this.nLK = k.b.rx(this.nLz.field_content);
     }
-    j.b localb = this.kEK;
-    AppMethodBeat.o(54295);
+    k.b localb = this.nLK;
+    AppMethodBeat.o(123267);
     return localb;
   }
   
   public void a(View paramView, a parama)
   {
-    AppMethodBeat.i(54300);
-    if ((!bgl().im(this.kEz.field_msgId)) && (!jU()))
+    AppMethodBeat.i(123272);
+    if ((!bNw().nU(this.nLz.field_msgId)) && (!bc()))
     {
       if (isEnable())
       {
-        b.f(getContext(), this.kEz.field_msgId);
-        AppMethodBeat.o(54300);
+        c.g(getContext(), this.nLz.field_msgId);
+        AppMethodBeat.o(123272);
         return;
       }
-      b.J(getContext(), bgl().mMaxCount);
+      c.L(getContext(), bNw().mMaxCount);
     }
-    AppMethodBeat.o(54300);
+    AppMethodBeat.o(123272);
   }
   
-  public final void a(m paramm, int paramInt)
+  public final void a(m paramm, int paramInt, a parama)
   {
-    AppMethodBeat.i(54299);
-    super.a(paramm, paramInt);
-    paramm.kFg.setVisibility(0);
-    paramm.kFg.setText(getFileName());
-    paramm.kFh.setVisibility(0);
-    paramm.kFh.setText(bo.hk(bgn()));
-    paramm = paramm.kha;
-    if (this.kEU == null) {
-      this.kEU = b.IZ(bgm());
+    AppMethodBeat.i(162327);
+    super.a(paramm, paramInt, parama);
+    paramm.nMi.setVisibility(0);
+    paramm.nMi.setText(getFileName());
+    paramm.nMj.setVisibility(0);
+    paramm.nMj.setText(bt.mK(bNy()));
+    paramm = paramm.nMg;
+    if (this.nLV == null) {
+      this.nLV = c.RJ(bNx());
     }
-    paramm.setBackgroundColor(Color.parseColor(this.kEU));
-    AppMethodBeat.o(54299);
+    paramm.setBackgroundColor(Color.parseColor(this.nLV));
+    AppMethodBeat.o(162327);
   }
   
-  public String bgm()
+  public String bNx()
   {
-    AppMethodBeat.i(54296);
-    if (bgt() != null)
+    AppMethodBeat.i(123268);
+    if (bNE() != null)
     {
-      String str = bgt().fgx;
-      AppMethodBeat.o(54296);
+      String str = bNE().gHf;
+      AppMethodBeat.o(123268);
       return str;
     }
-    AppMethodBeat.o(54296);
+    AppMethodBeat.o(123268);
     return "";
   }
   
-  public int bgn()
+  public int bNy()
   {
-    AppMethodBeat.i(54298);
-    if (bgt() != null)
+    AppMethodBeat.i(123270);
+    if (bNE() != null)
     {
-      int i = bgt().fgw;
-      AppMethodBeat.o(54298);
+      int i = bNE().gHe;
+      AppMethodBeat.o(123270);
       return i;
     }
-    AppMethodBeat.o(54298);
+    AppMethodBeat.o(123270);
     return 0;
   }
   
   public String getFileName()
   {
-    AppMethodBeat.i(54297);
-    if (bgt() != null)
+    AppMethodBeat.i(123269);
+    if (bNE() != null)
     {
-      String str = bgt().title;
-      AppMethodBeat.o(54297);
+      String str = bNE().title;
+      AppMethodBeat.o(123269);
       return str;
     }
-    AppMethodBeat.o(54297);
+    AppMethodBeat.o(123269);
     return "";
   }
   
@@ -114,7 +114,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle" android:useLevel="false"
+<animation-list android:oneshot="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffffffff" />
-    <corners android:radius="6.0dip" />
-</shape>
+    <item android:duration="120" android:drawable="@drawable/bk3" />
+    <item android:duration="120" android:drawable="@drawable/bk5" />
+    <item android:duration="120" android:drawable="@drawable/bk6" />
+    <item android:duration="120" android:drawable="@drawable/bk7" />
+    <item android:duration="120" android:drawable="@drawable/bk9" />
+</animation-list>

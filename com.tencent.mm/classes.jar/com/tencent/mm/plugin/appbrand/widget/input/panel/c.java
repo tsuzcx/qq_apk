@@ -4,53 +4,53 @@ import android.content.Context;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.e;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.cg.e;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class c
 {
-  Context jpJ;
-  boolean jqa = false;
-  b jqc;
-  f jqd;
-  int jqe;
-  int jqf;
+  Context mfC;
+  boolean mfS = false;
+  b mfU;
+  f mfV;
+  int mfW;
+  int mfX;
   
-  public static int[] aMu()
+  public static int[] bug()
   {
-    AppMethodBeat.i(134331);
-    Display localDisplay = ((WindowManager)ah.getContext().getSystemService("window")).getDefaultDisplay();
+    AppMethodBeat.i(49955);
+    Display localDisplay = ((WindowManager)aj.getContext().getSystemService("window")).getDefaultDisplay();
     int i = localDisplay.getWidth();
     int j = localDisplay.getHeight();
-    AppMethodBeat.o(134331);
+    AppMethodBeat.o(49955);
     return new int[] { i, j };
   }
   
-  public final a aRO()
+  protected e btP()
   {
-    AppMethodBeat.i(134330);
-    if (this.jqc == null)
-    {
-      this.jqc = new b();
-      this.jqc.jpJ = this.jpJ;
-      this.jqc.setPanelManager(this);
-    }
-    b localb = this.jqc;
-    AppMethodBeat.o(134330);
-    return localb;
+    AppMethodBeat.i(49956);
+    e locale = e.eHT();
+    AppMethodBeat.o(49956);
+    return locale;
   }
   
-  protected e aRy()
+  public final a buf()
   {
-    AppMethodBeat.i(134332);
-    e locale = e.dve();
-    AppMethodBeat.o(134332);
-    return locale;
+    AppMethodBeat.i(49954);
+    if (this.mfU == null)
+    {
+      this.mfU = new b();
+      this.mfU.mfC = this.mfC;
+      this.mfU.setPanelManager(this);
+    }
+    b localb = this.mfU;
+    AppMethodBeat.o(49954);
+    return localb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.panel.c
  * JD-Core Version:    0.7.0.1
  */

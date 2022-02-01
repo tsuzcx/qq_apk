@@ -5,13 +5,13 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.tools.s;
+import com.tencent.mm.ui.tools.t;
 
 public class SwitchKeyValuePreference
   extends Preference
 {
   private boolean enable;
-  private TextView pAD;
+  private TextView uCm;
   
   public SwitchKeyValuePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,50 +21,50 @@ public class SwitchKeyValuePreference
   public SwitchKeyValuePreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107292);
+    AppMethodBeat.i(142675);
     this.enable = true;
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(107292);
+    setLayoutResource(2131494804);
+    AppMethodBeat.o(142675);
   }
   
-  private void bJ()
+  private void cE()
   {
-    AppMethodBeat.i(107295);
-    if (this.pAD == null)
+    AppMethodBeat.i(142678);
+    if (this.uCm == null)
     {
-      AppMethodBeat.o(107295);
+      AppMethodBeat.o(142678);
       return;
     }
     if (this.enable)
     {
-      this.pAD.setTextColor(s.iD(this.mContext));
-      AppMethodBeat.o(107295);
+      this.uCm.setTextColor(t.kf(this.mContext));
+      AppMethodBeat.o(142678);
       return;
     }
-    this.pAD.setTextColor(s.iE(this.mContext));
-    AppMethodBeat.o(107295);
+    this.uCm.setTextColor(t.kg(this.mContext));
+    AppMethodBeat.o(142678);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(107293);
+    AppMethodBeat.i(142676);
     super.onBindView(paramView);
-    this.pAD = ((TextView)paramView.findViewById(16908304));
-    bJ();
-    AppMethodBeat.o(107293);
+    this.uCm = ((TextView)paramView.findViewById(16908304));
+    cE();
+    AppMethodBeat.o(142676);
   }
   
-  public final void qL(boolean paramBoolean)
+  public final void vT(boolean paramBoolean)
   {
-    AppMethodBeat.i(107294);
+    AppMethodBeat.i(142677);
     this.enable = paramBoolean;
-    bJ();
-    AppMethodBeat.o(107294);
+    cE();
+    AppMethodBeat.o(142677);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.SwitchKeyValuePreference
  * JD-Core Version:    0.7.0.1
  */

@@ -6,54 +6,54 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends i
 {
-  public k cfA;
-  private j cfy;
-  public boolean cfz = false;
+  private j cUv;
+  public boolean cUw = false;
+  public k cUx;
   
   public b(j paramj, String paramString)
   {
     super(paramString);
-    this.cfy = paramj;
+    this.cUv = paramj;
   }
   
-  public final boolean Dn()
+  public final boolean MW()
   {
-    return this.cfA == null;
+    return this.cUx == null;
   }
   
   public final void b(k paramk)
   {
-    AppMethodBeat.i(137050);
-    this.cfA = paramk;
-    this.cgd = System.currentTimeMillis();
-    AppMethodBeat.o(137050);
+    AppMethodBeat.i(136798);
+    this.cUx = paramk;
+    this.cVb = System.currentTimeMillis();
+    AppMethodBeat.o(136798);
   }
   
   public final void reset()
   {
-    this.cfz = false;
+    this.cUw = false;
   }
   
   public final void run()
   {
-    AppMethodBeat.i(137049);
+    AppMethodBeat.i(136797);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeTask", "run task %s", new Object[] { this.name });
-    if (this.cfz)
+    if (this.cUw)
     {
-      AppMethodBeat.o(137049);
+      AppMethodBeat.o(136797);
       return;
     }
     Process.setThreadPriority(-16);
-    this.cfy.a(this.cfA);
-    this.cfy.a(this);
-    this.cfz = true;
+    this.cUv.a(this.cUx);
+    this.cUv.a(this);
+    this.cUw = true;
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioDecodeTask", "run task %s end", new Object[] { this.name });
-    AppMethodBeat.o(137049);
+    AppMethodBeat.o(136797);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.d.b
  * JD-Core Version:    0.7.0.1
  */

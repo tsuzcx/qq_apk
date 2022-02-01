@@ -12,9 +12,9 @@ class AppEventStore
   
   static
   {
-    AppMethodBeat.i(71905);
+    AppMethodBeat.i(17341);
     TAG = AppEventStore.class.getName();
-    AppMethodBeat.o(71905);
+    AppMethodBeat.o(17341);
   }
   
   /* Error */
@@ -23,57 +23,57 @@ class AppEventStore
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 38
-    //   5: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 43	com/facebook/appevents/internal/AppEventUtility:assertIsNotMainThread	()V
-    //   11: invokestatic 47	com/facebook/appevents/AppEventStore:readAndClearStore	()Lcom/facebook/appevents/PersistedEvents;
-    //   14: astore_2
-    //   15: aload_2
-    //   16: aload_0
-    //   17: invokevirtual 53	com/facebook/appevents/PersistedEvents:containsKey	(Lcom/facebook/appevents/AccessTokenAppIdPair;)Z
-    //   20: ifeq +31 -> 51
-    //   23: aload_2
-    //   24: aload_0
-    //   25: invokevirtual 57	com/facebook/appevents/PersistedEvents:get	(Lcom/facebook/appevents/AccessTokenAppIdPair;)Ljava/util/List;
-    //   28: aload_1
-    //   29: invokevirtual 63	com/facebook/appevents/SessionEventsState:getEventsToPersist	()Ljava/util/List;
-    //   32: invokeinterface 69 2 0
-    //   37: pop
-    //   38: aload_2
-    //   39: invokestatic 73	com/facebook/appevents/AppEventStore:saveEventsToDisk	(Lcom/facebook/appevents/PersistedEvents;)V
-    //   42: ldc 38
-    //   44: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   47: ldc 2
-    //   49: monitorexit
-    //   50: return
-    //   51: aload_2
-    //   52: aload_0
-    //   53: aload_1
-    //   54: invokevirtual 63	com/facebook/appevents/SessionEventsState:getEventsToPersist	()Ljava/util/List;
-    //   57: invokevirtual 77	com/facebook/appevents/PersistedEvents:addEvents	(Lcom/facebook/appevents/AccessTokenAppIdPair;Ljava/util/List;)V
-    //   60: goto -22 -> 38
-    //   63: astore_0
-    //   64: ldc 2
-    //   66: monitorexit
-    //   67: aload_0
-    //   68: athrow
+    //   3: sipush 17337
+    //   6: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: invokestatic 41	com/facebook/appevents/internal/AppEventUtility:assertIsNotMainThread	()V
+    //   12: invokestatic 45	com/facebook/appevents/AppEventStore:readAndClearStore	()Lcom/facebook/appevents/PersistedEvents;
+    //   15: astore_2
+    //   16: aload_2
+    //   17: aload_0
+    //   18: invokevirtual 51	com/facebook/appevents/PersistedEvents:containsKey	(Lcom/facebook/appevents/AccessTokenAppIdPair;)Z
+    //   21: ifeq +32 -> 53
+    //   24: aload_2
+    //   25: aload_0
+    //   26: invokevirtual 55	com/facebook/appevents/PersistedEvents:get	(Lcom/facebook/appevents/AccessTokenAppIdPair;)Ljava/util/List;
+    //   29: aload_1
+    //   30: invokevirtual 61	com/facebook/appevents/SessionEventsState:getEventsToPersist	()Ljava/util/List;
+    //   33: invokeinterface 67 2 0
+    //   38: pop
+    //   39: aload_2
+    //   40: invokestatic 71	com/facebook/appevents/AppEventStore:saveEventsToDisk	(Lcom/facebook/appevents/PersistedEvents;)V
+    //   43: sipush 17337
+    //   46: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   49: ldc 2
+    //   51: monitorexit
+    //   52: return
+    //   53: aload_2
+    //   54: aload_0
+    //   55: aload_1
+    //   56: invokevirtual 61	com/facebook/appevents/SessionEventsState:getEventsToPersist	()Ljava/util/List;
+    //   59: invokevirtual 75	com/facebook/appevents/PersistedEvents:addEvents	(Lcom/facebook/appevents/AccessTokenAppIdPair;Ljava/util/List;)V
+    //   62: goto -23 -> 39
+    //   65: astore_0
+    //   66: ldc 2
+    //   68: monitorexit
+    //   69: aload_0
+    //   70: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	69	0	paramAccessTokenAppIdPair	AccessTokenAppIdPair
-    //   0	69	1	paramSessionEventsState	SessionEventsState
-    //   14	38	2	localPersistedEvents	PersistedEvents
+    //   0	71	0	paramAccessTokenAppIdPair	AccessTokenAppIdPair
+    //   0	71	1	paramSessionEventsState	SessionEventsState
+    //   15	39	2	localPersistedEvents	PersistedEvents
     // Exception table:
     //   from	to	target	type
-    //   3	38	63	finally
-    //   38	47	63	finally
-    //   51	60	63	finally
+    //   3	39	65	finally
+    //   39	49	65	finally
+    //   53	62	65	finally
   }
   
   public static void persistEvents(AppEventCollection paramAppEventCollection)
   {
     try
     {
-      AppMethodBeat.i(71902);
+      AppMethodBeat.i(17338);
       AppEventUtility.assertIsNotMainThread();
       PersistedEvents localPersistedEvents = readAndClearStore();
       Iterator localIterator = paramAppEventCollection.keySet().iterator();
@@ -85,7 +85,7 @@ class AppEventStore
       saveEventsToDisk(localPersistedEvents);
     }
     finally {}
-    AppMethodBeat.o(71902);
+    AppMethodBeat.o(17338);
   }
   
   /* Error */
@@ -96,245 +96,245 @@ class AppEventStore
     //   1: astore_1
     //   2: ldc 2
     //   4: monitorenter
-    //   5: ldc 111
-    //   7: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: invokestatic 43	com/facebook/appevents/internal/AppEventUtility:assertIsNotMainThread	()V
-    //   13: invokestatic 117	com/facebook/FacebookSdk:getApplicationContext	()Landroid/content/Context;
-    //   16: astore_3
-    //   17: new 6	com/facebook/appevents/AppEventStore$MovedClassObjectInputStream
-    //   20: dup
-    //   21: new 119	java/io/BufferedInputStream
-    //   24: dup
-    //   25: aload_3
-    //   26: ldc 10
-    //   28: invokevirtual 125	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
-    //   31: invokespecial 128	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   34: invokespecial 129	com/facebook/appevents/AppEventStore$MovedClassObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   37: astore_0
-    //   38: aload_0
-    //   39: invokevirtual 132	com/facebook/appevents/AppEventStore$MovedClassObjectInputStream:readObject	()Ljava/lang/Object;
-    //   42: checkcast 49	com/facebook/appevents/PersistedEvents
-    //   45: astore_1
-    //   46: aload_0
-    //   47: invokestatic 138	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
-    //   50: aload_3
-    //   51: ldc 10
-    //   53: invokevirtual 142	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   56: invokevirtual 147	java/io/File:delete	()Z
-    //   59: pop
-    //   60: aload_1
-    //   61: astore_0
-    //   62: aload_0
-    //   63: astore_1
-    //   64: aload_0
-    //   65: ifnonnull +11 -> 76
-    //   68: new 49	com/facebook/appevents/PersistedEvents
-    //   71: dup
-    //   72: invokespecial 148	com/facebook/appevents/PersistedEvents:<init>	()V
-    //   75: astore_1
-    //   76: ldc 111
-    //   78: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   81: ldc 2
-    //   83: monitorexit
-    //   84: aload_1
-    //   85: areturn
-    //   86: astore_0
-    //   87: aconst_null
+    //   5: sipush 17339
+    //   8: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   11: invokestatic 41	com/facebook/appevents/internal/AppEventUtility:assertIsNotMainThread	()V
+    //   14: invokestatic 113	com/facebook/FacebookSdk:getApplicationContext	()Landroid/content/Context;
+    //   17: astore_3
+    //   18: new 6	com/facebook/appevents/AppEventStore$MovedClassObjectInputStream
+    //   21: dup
+    //   22: new 115	java/io/BufferedInputStream
+    //   25: dup
+    //   26: aload_3
+    //   27: ldc 10
+    //   29: invokevirtual 121	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
+    //   32: invokespecial 124	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   35: invokespecial 125	com/facebook/appevents/AppEventStore$MovedClassObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   38: astore_0
+    //   39: aload_0
+    //   40: invokevirtual 128	com/facebook/appevents/AppEventStore$MovedClassObjectInputStream:readObject	()Ljava/lang/Object;
+    //   43: checkcast 47	com/facebook/appevents/PersistedEvents
+    //   46: astore_1
+    //   47: aload_0
+    //   48: invokestatic 134	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   51: aload_3
+    //   52: ldc 10
+    //   54: invokevirtual 138	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   57: invokevirtual 143	java/io/File:delete	()Z
+    //   60: pop
+    //   61: aload_1
+    //   62: astore_0
+    //   63: aload_0
+    //   64: astore_1
+    //   65: aload_0
+    //   66: ifnonnull +11 -> 77
+    //   69: new 47	com/facebook/appevents/PersistedEvents
+    //   72: dup
+    //   73: invokespecial 144	com/facebook/appevents/PersistedEvents:<init>	()V
+    //   76: astore_1
+    //   77: sipush 17339
+    //   80: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   83: ldc 2
+    //   85: monitorexit
+    //   86: aload_1
+    //   87: areturn
     //   88: astore_0
-    //   89: aload_0
-    //   90: invokestatic 138	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
-    //   93: aload_3
-    //   94: ldc 10
-    //   96: invokevirtual 142	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   99: invokevirtual 147	java/io/File:delete	()Z
-    //   102: pop
-    //   103: aconst_null
-    //   104: astore_0
-    //   105: goto -43 -> 62
-    //   108: astore_0
-    //   109: aconst_null
+    //   89: aconst_null
+    //   90: astore_0
+    //   91: aload_0
+    //   92: invokestatic 134	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   95: aload_3
+    //   96: ldc 10
+    //   98: invokevirtual 138	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   101: invokevirtual 143	java/io/File:delete	()Z
+    //   104: pop
+    //   105: aconst_null
+    //   106: astore_0
+    //   107: goto -44 -> 63
     //   110: astore_0
-    //   111: goto -49 -> 62
-    //   114: astore_0
-    //   115: aconst_null
+    //   111: aconst_null
+    //   112: astore_0
+    //   113: goto -50 -> 63
     //   116: astore_0
-    //   117: aload_0
-    //   118: invokestatic 138	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
-    //   121: aload_3
-    //   122: ldc 10
-    //   124: invokevirtual 142	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   127: invokevirtual 147	java/io/File:delete	()Z
-    //   130: pop
-    //   131: aconst_null
-    //   132: astore_0
-    //   133: goto -71 -> 62
-    //   136: astore_0
-    //   137: aconst_null
+    //   117: aconst_null
+    //   118: astore_0
+    //   119: aload_0
+    //   120: invokestatic 134	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   123: aload_3
+    //   124: ldc 10
+    //   126: invokevirtual 138	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   129: invokevirtual 143	java/io/File:delete	()Z
+    //   132: pop
+    //   133: aconst_null
+    //   134: astore_0
+    //   135: goto -72 -> 63
     //   138: astore_0
-    //   139: goto -77 -> 62
-    //   142: astore_0
-    //   143: aload_1
-    //   144: invokestatic 138	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
-    //   147: aload_3
-    //   148: ldc 10
-    //   150: invokevirtual 142	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   153: invokevirtual 147	java/io/File:delete	()Z
-    //   156: pop
-    //   157: ldc 111
-    //   159: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   162: aload_0
-    //   163: athrow
-    //   164: astore_0
-    //   165: ldc 2
-    //   167: monitorexit
-    //   168: aload_0
-    //   169: athrow
-    //   170: astore_1
-    //   171: goto -14 -> 157
-    //   174: astore_2
-    //   175: aload_0
-    //   176: astore_1
-    //   177: aload_2
-    //   178: astore_0
-    //   179: goto -36 -> 143
-    //   182: astore_1
-    //   183: goto -66 -> 117
-    //   186: astore_1
-    //   187: goto -98 -> 89
-    //   190: astore_0
-    //   191: aload_1
-    //   192: astore_0
-    //   193: goto -131 -> 62
+    //   139: aconst_null
+    //   140: astore_0
+    //   141: goto -78 -> 63
+    //   144: astore_0
+    //   145: aload_1
+    //   146: invokestatic 134	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   149: aload_3
+    //   150: ldc 10
+    //   152: invokevirtual 138	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   155: invokevirtual 143	java/io/File:delete	()Z
+    //   158: pop
+    //   159: sipush 17339
+    //   162: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   165: aload_0
+    //   166: athrow
+    //   167: astore_0
+    //   168: ldc 2
+    //   170: monitorexit
+    //   171: aload_0
+    //   172: athrow
+    //   173: astore_1
+    //   174: goto -15 -> 159
+    //   177: astore_2
+    //   178: aload_0
+    //   179: astore_1
+    //   180: aload_2
+    //   181: astore_0
+    //   182: goto -37 -> 145
+    //   185: astore_1
+    //   186: goto -67 -> 119
+    //   189: astore_1
+    //   190: goto -99 -> 91
+    //   193: astore_0
+    //   194: aload_1
+    //   195: astore_0
+    //   196: goto -133 -> 63
     // Local variable table:
     //   start	length	slot	name	signature
-    //   37	28	0	localObject1	Object
-    //   86	1	0	localFileNotFoundException1	java.io.FileNotFoundException
-    //   88	17	0	localCloseable1	java.io.Closeable
-    //   108	1	0	localException1	java.lang.Exception
-    //   110	1	0	localObject2	Object
-    //   114	1	0	localException2	java.lang.Exception
-    //   116	17	0	localCloseable2	java.io.Closeable
-    //   136	1	0	localException3	java.lang.Exception
-    //   138	1	0	localObject3	Object
-    //   142	21	0	localObject4	Object
-    //   164	12	0	localObject5	Object
-    //   178	1	0	localObject6	Object
-    //   190	1	0	localException4	java.lang.Exception
-    //   192	1	0	localFileNotFoundException2	java.io.FileNotFoundException
-    //   1	143	1	localObject7	Object
-    //   170	1	1	localException5	java.lang.Exception
-    //   176	1	1	localObject8	Object
-    //   182	1	1	localException6	java.lang.Exception
-    //   186	6	1	localFileNotFoundException3	java.io.FileNotFoundException
-    //   174	4	2	localObject9	Object
-    //   16	132	3	localContext	android.content.Context
+    //   38	28	0	localObject1	Object
+    //   88	1	0	localFileNotFoundException1	java.io.FileNotFoundException
+    //   90	17	0	localCloseable1	java.io.Closeable
+    //   110	1	0	localException1	java.lang.Exception
+    //   112	1	0	localObject2	Object
+    //   116	1	0	localException2	java.lang.Exception
+    //   118	17	0	localCloseable2	java.io.Closeable
+    //   138	1	0	localException3	java.lang.Exception
+    //   140	1	0	localObject3	Object
+    //   144	22	0	localObject4	Object
+    //   167	12	0	localObject5	Object
+    //   181	1	0	localObject6	Object
+    //   193	1	0	localException4	java.lang.Exception
+    //   195	1	0	localFileNotFoundException2	java.io.FileNotFoundException
+    //   1	145	1	localObject7	Object
+    //   173	1	1	localException5	java.lang.Exception
+    //   179	1	1	localObject8	Object
+    //   185	1	1	localException6	java.lang.Exception
+    //   189	6	1	localFileNotFoundException3	java.io.FileNotFoundException
+    //   177	4	2	localObject9	Object
+    //   17	133	3	localContext	android.content.Context
     // Exception table:
     //   from	to	target	type
-    //   17	38	86	java/io/FileNotFoundException
-    //   93	103	108	java/lang/Exception
-    //   17	38	114	java/lang/Exception
-    //   121	131	136	java/lang/Exception
-    //   17	38	142	finally
-    //   5	17	164	finally
-    //   46	50	164	finally
-    //   50	60	164	finally
-    //   68	76	164	finally
-    //   76	81	164	finally
-    //   89	93	164	finally
-    //   93	103	164	finally
-    //   117	121	164	finally
-    //   121	131	164	finally
-    //   143	147	164	finally
-    //   147	157	164	finally
-    //   157	164	164	finally
-    //   147	157	170	java/lang/Exception
-    //   38	46	174	finally
-    //   38	46	182	java/lang/Exception
-    //   38	46	186	java/io/FileNotFoundException
-    //   50	60	190	java/lang/Exception
+    //   18	39	88	java/io/FileNotFoundException
+    //   95	105	110	java/lang/Exception
+    //   18	39	116	java/lang/Exception
+    //   123	133	138	java/lang/Exception
+    //   18	39	144	finally
+    //   5	18	167	finally
+    //   47	51	167	finally
+    //   51	61	167	finally
+    //   69	77	167	finally
+    //   77	83	167	finally
+    //   91	95	167	finally
+    //   95	105	167	finally
+    //   119	123	167	finally
+    //   123	133	167	finally
+    //   145	149	167	finally
+    //   149	159	167	finally
+    //   159	167	167	finally
+    //   149	159	173	java/lang/Exception
+    //   39	47	177	finally
+    //   39	47	185	java/lang/Exception
+    //   39	47	189	java/io/FileNotFoundException
+    //   51	61	193	java/lang/Exception
   }
   
   /* Error */
   private static void saveEventsToDisk(PersistedEvents paramPersistedEvents)
   {
     // Byte code:
-    //   0: ldc 149
-    //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 117	com/facebook/FacebookSdk:getApplicationContext	()Landroid/content/Context;
-    //   8: astore_3
-    //   9: new 151	java/io/ObjectOutputStream
-    //   12: dup
-    //   13: new 153	java/io/BufferedOutputStream
-    //   16: dup
-    //   17: aload_3
-    //   18: ldc 10
-    //   20: iconst_0
-    //   21: invokevirtual 157	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
-    //   24: invokespecial 160	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   27: invokespecial 161	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   30: astore_2
-    //   31: aload_2
-    //   32: astore_1
-    //   33: aload_2
-    //   34: aload_0
-    //   35: invokevirtual 165	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
-    //   38: aload_2
-    //   39: invokestatic 138	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
-    //   42: ldc 149
-    //   44: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   47: return
-    //   48: astore_0
-    //   49: aconst_null
+    //   0: sipush 17340
+    //   3: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: invokestatic 113	com/facebook/FacebookSdk:getApplicationContext	()Landroid/content/Context;
+    //   9: astore_3
+    //   10: new 146	java/io/ObjectOutputStream
+    //   13: dup
+    //   14: new 148	java/io/BufferedOutputStream
+    //   17: dup
+    //   18: aload_3
+    //   19: ldc 10
+    //   21: iconst_0
+    //   22: invokevirtual 152	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   25: invokespecial 155	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   28: invokespecial 156	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   31: astore_2
+    //   32: aload_2
+    //   33: astore_1
+    //   34: aload_2
+    //   35: aload_0
+    //   36: invokevirtual 160	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   39: aload_2
+    //   40: invokestatic 134	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   43: sipush 17340
+    //   46: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   49: return
     //   50: astore_0
-    //   51: aload_0
-    //   52: astore_1
-    //   53: aload_3
-    //   54: ldc 10
-    //   56: invokevirtual 142	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   59: invokevirtual 147	java/io/File:delete	()Z
-    //   62: pop
-    //   63: aload_0
-    //   64: invokestatic 138	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
-    //   67: ldc 149
-    //   69: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   72: return
-    //   73: astore_0
-    //   74: aconst_null
-    //   75: astore_1
-    //   76: aload_1
-    //   77: invokestatic 138	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
-    //   80: ldc 149
-    //   82: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   85: aload_0
-    //   86: athrow
-    //   87: astore_0
-    //   88: goto -12 -> 76
-    //   91: astore_1
-    //   92: goto -29 -> 63
-    //   95: astore_0
-    //   96: aload_2
-    //   97: astore_0
-    //   98: goto -47 -> 51
+    //   51: aconst_null
+    //   52: astore_0
+    //   53: aload_0
+    //   54: astore_1
+    //   55: aload_3
+    //   56: ldc 10
+    //   58: invokevirtual 138	android/content/Context:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   61: invokevirtual 143	java/io/File:delete	()Z
+    //   64: pop
+    //   65: aload_0
+    //   66: invokestatic 134	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   69: sipush 17340
+    //   72: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   75: return
+    //   76: astore_0
+    //   77: aconst_null
+    //   78: astore_1
+    //   79: aload_1
+    //   80: invokestatic 134	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   83: sipush 17340
+    //   86: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   89: aload_0
+    //   90: athrow
+    //   91: astore_0
+    //   92: goto -13 -> 79
+    //   95: astore_1
+    //   96: goto -31 -> 65
+    //   99: astore_0
+    //   100: aload_2
+    //   101: astore_0
+    //   102: goto -49 -> 53
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	101	0	paramPersistedEvents	PersistedEvents
-    //   32	45	1	localObject	Object
-    //   91	1	1	localException	java.lang.Exception
-    //   30	67	2	localObjectOutputStream	java.io.ObjectOutputStream
-    //   8	46	3	localContext	android.content.Context
+    //   0	105	0	paramPersistedEvents	PersistedEvents
+    //   33	47	1	localObject	Object
+    //   95	1	1	localException	java.lang.Exception
+    //   31	70	2	localObjectOutputStream	java.io.ObjectOutputStream
+    //   9	47	3	localContext	android.content.Context
     // Exception table:
     //   from	to	target	type
-    //   9	31	48	java/lang/Exception
-    //   9	31	73	finally
-    //   33	38	87	finally
-    //   53	63	87	finally
-    //   53	63	91	java/lang/Exception
-    //   33	38	95	java/lang/Exception
+    //   10	32	50	java/lang/Exception
+    //   10	32	76	finally
+    //   34	39	91	finally
+    //   55	65	91	finally
+    //   55	65	95	java/lang/Exception
+    //   34	39	99	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.AppEventStore
  * JD-Core Version:    0.7.0.1
  */

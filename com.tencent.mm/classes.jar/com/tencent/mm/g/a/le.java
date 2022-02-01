@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class le
   extends b
 {
-  public a cBo;
+  public a dpK;
+  public b dpL;
   
   public le()
   {
@@ -15,23 +16,25 @@ public final class le
   
   private le(byte paramByte)
   {
-    AppMethodBeat.i(59608);
-    this.cBo = new a();
-    this.ymq = false;
+    AppMethodBeat.i(149871);
+    this.dpK = new a();
+    this.dpL = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(59608);
+    AppMethodBeat.o(149871);
   }
   
   public static final class a
   {
-    public String blZ;
-    public int type;
-    public String userName;
+    public int action;
+    public String filePath;
   }
+  
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.le
  * JD-Core Version:    0.7.0.1
  */

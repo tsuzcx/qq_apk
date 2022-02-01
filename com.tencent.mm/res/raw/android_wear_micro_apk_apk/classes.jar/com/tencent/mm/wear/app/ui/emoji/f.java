@@ -6,16 +6,16 @@ import android.widget.TextView;
 
 public final class f
 {
-  public ImageView aeA;
-  public TextView afL;
-  public View afM;
+  public ImageView aic;
+  public TextView ajn;
+  public View ajo;
   public int position;
   
   public f(View paramView)
   {
-    this.aeA = ((ImageView)paramView.findViewById(2131558452));
-    this.afL = ((TextView)paramView.findViewById(2131558453));
-    this.afM = paramView.findViewById(2131558451);
+    this.aic = ((ImageView)paramView.findViewById(2131558453));
+    this.ajn = ((TextView)paramView.findViewById(2131558454));
+    this.ajo = paramView.findViewById(2131558452);
     paramView.setTag(this);
   }
 }

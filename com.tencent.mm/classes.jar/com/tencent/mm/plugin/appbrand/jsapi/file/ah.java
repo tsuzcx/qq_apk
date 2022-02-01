@@ -1,29 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m.a;
-import com.tencent.mm.plugin.appbrand.jsapi.u;
-import org.json.JSONObject;
 
 public final class ah
-  extends u
+  extends f<bb>
 {
-  private static final int CTRL_INDEX = 396;
-  private static final String NAME = "saveFileSync";
+  private static final int CTRL_INDEX = 398;
+  private static final String NAME = "fs_renameSync";
   
-  public final String a(c paramc, JSONObject paramJSONObject)
+  public ah()
   {
-    AppMethodBeat.i(102809);
-    paramc = ag.d(paramc, paramJSONObject);
-    paramc = j(paramc.errMsg, paramc.values);
-    AppMethodBeat.o(102809);
-    return paramc;
+    super(new bb());
+    AppMethodBeat.i(128893);
+    AppMethodBeat.o(128893);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.ah
  * JD-Core Version:    0.7.0.1
  */

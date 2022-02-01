@@ -11,40 +11,40 @@ public class SnsCmdList
   implements Parcelable
 {
   public static final Parcelable.Creator<SnsCmdList> CREATOR;
-  private int rbe;
-  private int rbf;
-  public List<Integer> rbg;
-  public List<Integer> rbh;
+  private int wAV;
+  private int wAW;
+  public List<Integer> wAX;
+  public List<Integer> wAY;
   
   static
   {
-    AppMethodBeat.i(35793);
-    CREATOR = new SnsCmdList.1();
-    AppMethodBeat.o(35793);
+    AppMethodBeat.i(95081);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(95081);
   }
   
   public SnsCmdList()
   {
-    AppMethodBeat.i(35789);
-    this.rbe = 0;
-    this.rbf = 0;
-    this.rbg = new LinkedList();
-    this.rbh = new LinkedList();
-    AppMethodBeat.o(35789);
+    AppMethodBeat.i(95077);
+    this.wAV = 0;
+    this.wAW = 0;
+    this.wAX = new LinkedList();
+    this.wAY = new LinkedList();
+    AppMethodBeat.o(95077);
   }
   
-  public final void DA(int paramInt)
+  public final void LY(int paramInt)
   {
-    AppMethodBeat.i(35791);
-    this.rbh.add(Integer.valueOf(paramInt));
-    AppMethodBeat.o(35791);
+    AppMethodBeat.i(95078);
+    this.wAX.add(Integer.valueOf(paramInt));
+    AppMethodBeat.o(95078);
   }
   
-  public final void Dz(int paramInt)
+  public final void LZ(int paramInt)
   {
-    AppMethodBeat.i(35790);
-    this.rbg.add(Integer.valueOf(paramInt));
-    AppMethodBeat.o(35790);
+    AppMethodBeat.i(95079);
+    this.wAY.add(Integer.valueOf(paramInt));
+    AppMethodBeat.o(95079);
   }
   
   public int describeContents()
@@ -55,29 +55,29 @@ public class SnsCmdList
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 0;
-    AppMethodBeat.i(35792);
-    this.rbe = this.rbg.size();
-    paramParcel.writeInt(this.rbe);
+    AppMethodBeat.i(95080);
+    this.wAV = this.wAX.size();
+    paramParcel.writeInt(this.wAV);
     paramInt = 0;
-    while (paramInt < this.rbe)
+    while (paramInt < this.wAV)
     {
-      paramParcel.writeInt(((Integer)this.rbg.get(paramInt)).intValue());
+      paramParcel.writeInt(((Integer)this.wAX.get(paramInt)).intValue());
       paramInt += 1;
     }
-    this.rbf = this.rbh.size();
-    paramParcel.writeInt(this.rbf);
+    this.wAW = this.wAY.size();
+    paramParcel.writeInt(this.wAW);
     paramInt = i;
-    while (paramInt < this.rbf)
+    while (paramInt < this.wAW)
     {
-      paramParcel.writeInt(((Integer)this.rbh.get(paramInt)).intValue());
+      paramParcel.writeInt(((Integer)this.wAY.get(paramInt)).intValue());
       paramInt += 1;
     }
-    AppMethodBeat.o(35792);
+    AppMethodBeat.o(95080);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.SnsCmdList
  * JD-Core Version:    0.7.0.1
  */

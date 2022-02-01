@@ -13,17 +13,21 @@ final class InviteFacebookFriendsUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(124872);
-    paramDialogInterface = new Intent(this.gDx.getContext(), FacebookAuthUI.class);
-    paramDialogInterface.putExtra("is_force_unbind", true);
-    this.gDx.getContext().startActivity(paramDialogInterface);
-    this.gDx.finish();
-    AppMethodBeat.o(124872);
+    AppMethodBeat.i(128022);
+    Object localObject = new Intent(this.iqR.getContext(), FacebookAuthUI.class);
+    ((Intent)localObject).putExtra("is_force_unbind", true);
+    paramDialogInterface = this.iqR.getContext();
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/account/ui/InviteFacebookFriendsUI$10", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/plugin/account/ui/InviteFacebookFriendsUI$10", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    this.iqR.finish();
+    AppMethodBeat.o(128022);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.InviteFacebookFriendsUI.2
  * JD-Core Version:    0.7.0.1
  */

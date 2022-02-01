@@ -1,20 +1,20 @@
 package com.tencent.mm.media.h;
 
-import a.l;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import d.g.a.a;
+import d.l;
 
-@l(eaO={1, 1, 13})
-public final class b
-  implements SurfaceTexture.OnFrameAvailableListener
+@l(fvt={1, 1, 16})
+final class b
+  implements Runnable
 {
-  public b(a.f.a.b paramb)
+  b(a parama)
   {
-    this.eYp = paramb;
+    this.cbg = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.media.h.b
  * JD-Core Version:    0.7.0.1
  */

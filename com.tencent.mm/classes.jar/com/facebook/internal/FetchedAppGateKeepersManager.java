@@ -1,6 +1,8 @@
 package com.facebook.internal;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
@@ -31,15 +33,15 @@ public class FetchedAppGateKeepersManager
   
   static
   {
-    AppMethodBeat.i(72300);
+    AppMethodBeat.i(17736);
     TAG = FetchedAppGateKeepersManager.class.getCanonicalName();
     fetchedAppGateKeepers = new ConcurrentHashMap();
-    AppMethodBeat.o(72300);
+    AppMethodBeat.o(17736);
   }
   
   private static JSONObject getAppGateKeepersQueryResponse(String paramString)
   {
-    AppMethodBeat.i(72296);
+    AppMethodBeat.i(17732);
     Bundle localBundle = new Bundle();
     AttributionIdentifiers localAttributionIdentifiers = AttributionIdentifiers.getAttributionIdentifiers(FacebookSdk.getApplicationContext());
     String str2 = "";
@@ -60,20 +62,20 @@ public class FetchedAppGateKeepersManager
     paramString.setSkipClientToken(true);
     paramString.setParameters(localBundle);
     paramString = paramString.executeAndWait().getJSONObject();
-    AppMethodBeat.o(72296);
+    AppMethodBeat.o(17732);
     return paramString;
   }
   
   public static boolean getGateKeeperForKey(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(72295);
+    AppMethodBeat.i(17731);
     if ((paramString2 == null) || (!fetchedAppGateKeepers.containsKey(paramString2)))
     {
-      AppMethodBeat.o(72295);
+      AppMethodBeat.o(17731);
       return paramBoolean;
     }
     paramBoolean = ((JSONObject)fetchedAppGateKeepers.get(paramString2)).optBoolean(paramString1, paramBoolean);
-    AppMethodBeat.o(72295);
+    AppMethodBeat.o(17731);
     return paramBoolean;
   }
   
@@ -81,12 +83,44 @@ public class FetchedAppGateKeepersManager
   {
     try
     {
-      AppMethodBeat.i(72294);
+      AppMethodBeat.i(17730);
       Context localContext = FacebookSdk.getApplicationContext();
-      String str1 = FacebookSdk.getApplicationId();
-      String str2 = String.format("com.facebook.internal.APP_GATEKEEPERS.%s", new Object[] { str1 });
-      FacebookSdk.getExecutor().execute(new FetchedAppGateKeepersManager.1(localContext, str2, str1));
-      AppMethodBeat.o(72294);
+      final String str1 = FacebookSdk.getApplicationId();
+      final String str2 = String.format("com.facebook.internal.APP_GATEKEEPERS.%s", new Object[] { str1 });
+      FacebookSdk.getExecutor().execute(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(17729);
+          SharedPreferences localSharedPreferences = this.val$context.getSharedPreferences("com.facebook.internal.preferences.APP_GATEKEEPERS", 0);
+          Object localObject1 = localSharedPreferences.getString(str2, null);
+          if (!Utility.isNullOrEmpty((String)localObject1)) {}
+          try
+          {
+            localObject1 = new JSONObject((String)localObject1);
+            if (localObject1 != null) {
+              FetchedAppGateKeepersManager.access$000(str1, (JSONObject)localObject1);
+            }
+            localObject1 = FetchedAppGateKeepersManager.access$100(str1);
+            if (localObject1 != null)
+            {
+              FetchedAppGateKeepersManager.access$000(str1, (JSONObject)localObject1);
+              localSharedPreferences.edit().putString(str2, ((JSONObject)localObject1).toString()).apply();
+            }
+            AppMethodBeat.o(17729);
+            return;
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              Utility.logd("FacebookSDK", localJSONException);
+              Object localObject2 = null;
+            }
+          }
+        }
+      });
+      AppMethodBeat.o(17730);
       return;
     }
     finally
@@ -99,7 +133,7 @@ public class FetchedAppGateKeepersManager
   private static void parseAppGateKeepersFromJSON(String paramString, JSONObject paramJSONObject)
   {
     int i = 0;
-    AppMethodBeat.i(72297);
+    AppMethodBeat.i(17733);
     JSONObject localJSONObject;
     if (fetchedAppGateKeepers.containsKey(paramString)) {
       localJSONObject = (JSONObject)fetchedAppGateKeepers.get(paramString);
@@ -114,14 +148,14 @@ public class FetchedAppGateKeepersManager
       if ((paramJSONObject != null) && (paramJSONObject.optJSONArray("gatekeepers") != null))
       {
         paramJSONObject = paramJSONObject.optJSONArray("gatekeepers");
-        label74:
+        label75:
         if (i < paramJSONObject.length()) {
           try
           {
             localObject = paramJSONObject.getJSONObject(i);
             localJSONObject.put(((JSONObject)localObject).getString("key"), ((JSONObject)localObject).getBoolean("value"));
             i += 1;
-            break label74;
+            break label75;
             localJSONObject = new JSONObject();
           }
           catch (JSONException localJSONException)
@@ -135,12 +169,12 @@ public class FetchedAppGateKeepersManager
       }
     }
     fetchedAppGateKeepers.put(paramString, localJSONObject);
-    AppMethodBeat.o(72297);
+    AppMethodBeat.o(17733);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.FetchedAppGateKeepersManager
  * JD-Core Version:    0.7.0.1
  */

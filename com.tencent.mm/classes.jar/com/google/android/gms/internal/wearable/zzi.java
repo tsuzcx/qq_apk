@@ -11,17 +11,17 @@ public final class zzi
   
   public zzi()
   {
-    AppMethodBeat.i(70691);
+    AppMethodBeat.i(100674);
     this.type = 1;
     this.zzgc = null;
     this.zzhc = null;
     this.zzhl = -1;
-    AppMethodBeat.o(70691);
+    AppMethodBeat.o(100674);
   }
   
   private final zzi zzb(zzk paramzzk)
   {
-    AppMethodBeat.i(70696);
+    AppMethodBeat.i(100679);
     for (;;)
     {
       int i = paramzzk.zzj();
@@ -30,12 +30,12 @@ public final class zzi
       default: 
         if (!super.zza(paramzzk, i))
         {
-          AppMethodBeat.o(70696);
+          AppMethodBeat.o(100679);
           return this;
         }
         break;
       case 0: 
-        AppMethodBeat.o(70696);
+        AppMethodBeat.o(100679);
         return this;
       case 8: 
         int j = paramzzk.getPosition();
@@ -55,7 +55,7 @@ public final class zzi
         }
         continue;
         IllegalArgumentException localIllegalArgumentException2 = new IllegalArgumentException(36 + k + " is not a valid enum Type");
-        AppMethodBeat.o(70696);
+        AppMethodBeat.o(100679);
         throw localIllegalArgumentException2;
       case 18: 
         label116:
@@ -81,55 +81,55 @@ public final class zzi
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(70692);
+    AppMethodBeat.i(100675);
     if (paramObject == this)
     {
-      AppMethodBeat.o(70692);
+      AppMethodBeat.o(100675);
       return true;
     }
     if (!(paramObject instanceof zzi))
     {
-      AppMethodBeat.o(70692);
+      AppMethodBeat.o(100675);
       return false;
     }
     paramObject = (zzi)paramObject;
     if (this.type != paramObject.type)
     {
-      AppMethodBeat.o(70692);
+      AppMethodBeat.o(100675);
       return false;
     }
     if (this.zzgc == null)
     {
       if (paramObject.zzgc != null)
       {
-        AppMethodBeat.o(70692);
+        AppMethodBeat.o(100675);
         return false;
       }
     }
     else if (!this.zzgc.equals(paramObject.zzgc))
     {
-      AppMethodBeat.o(70692);
+      AppMethodBeat.o(100675);
       return false;
     }
     if ((this.zzhc == null) || (this.zzhc.isEmpty()))
     {
       if ((paramObject.zzhc == null) || (paramObject.zzhc.isEmpty()))
       {
-        AppMethodBeat.o(70692);
+        AppMethodBeat.o(100675);
         return true;
       }
-      AppMethodBeat.o(70692);
+      AppMethodBeat.o(100675);
       return false;
     }
     boolean bool = this.zzhc.equals(paramObject.zzhc);
-    AppMethodBeat.o(70692);
+    AppMethodBeat.o(100675);
     return bool;
   }
   
   public final int hashCode()
   {
     int k = 0;
-    AppMethodBeat.i(70693);
+    AppMethodBeat.i(100676);
     int m = getClass().getName().hashCode();
     int n = this.type;
     zzj localzzj = this.zzgc;
@@ -147,7 +147,7 @@ public final class zzi
     label96:
     for (int j = k;; j = this.zzhc.hashCode())
     {
-      AppMethodBeat.o(70693);
+      AppMethodBeat.o(100676);
       return (i + ((m + 527) * 31 + n) * 31) * 31 + j;
       i = localzzj.hashCode();
       break;
@@ -156,30 +156,30 @@ public final class zzi
   
   public final void zza(zzl paramzzl)
   {
-    AppMethodBeat.i(70694);
+    AppMethodBeat.i(100677);
     paramzzl.zzd(1, this.type);
     if (this.zzgc != null) {
       paramzzl.zza(2, this.zzgc);
     }
     super.zza(paramzzl);
-    AppMethodBeat.o(70694);
+    AppMethodBeat.o(100677);
   }
   
   protected final int zzg()
   {
-    AppMethodBeat.i(70695);
+    AppMethodBeat.i(100678);
     int j = super.zzg() + zzl.zze(1, this.type);
     int i = j;
     if (this.zzgc != null) {
       i = j + zzl.zzb(2, this.zzgc);
     }
-    AppMethodBeat.o(70695);
+    AppMethodBeat.o(100678);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.wearable.zzi
  * JD-Core Version:    0.7.0.1
  */

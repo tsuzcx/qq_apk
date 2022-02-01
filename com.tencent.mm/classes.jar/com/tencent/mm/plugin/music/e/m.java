@@ -6,18 +6,25 @@ import android.content.Intent;
 import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.a.ki;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.gs;
+import com.tencent.mm.g.a.gs.b;
+import com.tencent.mm.g.a.lm;
+import com.tencent.mm.g.a.lm.b;
+import com.tencent.mm.g.a.ln;
 import com.tencent.mm.network.b.b;
-import com.tencent.mm.platformtools.aa;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.music.f.a.d;
 import com.tencent.mm.plugin.music.model.notification.MMMusicPlayerService;
 import com.tencent.mm.plugin.music.model.notification.b.1;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.aoq;
-import com.tencent.mm.protocal.protobuf.sl;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.ayx;
+import com.tencent.mm.protocal.protobuf.vd;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,227 +32,225 @@ import java.util.List;
 
 public final class m
   extends g
-  implements com.tencent.mm.ai.f, e
+  implements com.tencent.mm.al.g, e
 {
   private Object lockObj;
   private int mode;
-  private int oZh;
-  private List<String> oZi;
-  private com.tencent.mm.plugin.music.model.notification.b oZj;
-  private com.tencent.mm.plugin.music.model.b.b oZk;
-  private com.tencent.mm.plugin.music.model.b.a oZl;
-  private com.tencent.mm.plugin.music.model.b.c oZm;
-  private boolean oZn;
+  private int tWn;
+  private List<String> tWo;
+  private com.tencent.mm.plugin.music.model.notification.b tWp;
+  private com.tencent.mm.plugin.music.model.b.b tWq;
+  private com.tencent.mm.plugin.music.model.b.a tWr;
+  private com.tencent.mm.plugin.music.model.b.c tWs;
+  private boolean tWt;
   
   public m()
   {
-    AppMethodBeat.i(104840);
+    AppMethodBeat.i(62966);
     this.mode = 1;
-    this.oZi = new ArrayList();
-    this.oZj = new com.tencent.mm.plugin.music.model.notification.b();
+    this.tWo = new ArrayList();
+    this.tWp = new com.tencent.mm.plugin.music.model.notification.b();
     this.lockObj = new Object();
-    AppMethodBeat.o(104840);
+    AppMethodBeat.o(62966);
   }
   
-  private void bVK()
+  private void cVl()
   {
-    AppMethodBeat.i(104853);
-    com.tencent.mm.sdk.g.d.post(new m.a(this, (byte)0), "music_get_list_task");
-    AppMethodBeat.o(104853);
+    AppMethodBeat.i(62980);
+    com.tencent.mm.sdk.g.b.c(new a((byte)0), "music_get_list_task");
+    AppMethodBeat.o(62980);
   }
   
-  public final boolean Af(int paramInt)
+  public final void Ft(int paramInt)
   {
-    AppMethodBeat.i(104859);
-    boolean bool = com.tencent.mm.plugin.music.model.c.a.Af(paramInt);
-    AppMethodBeat.o(104859);
+    AppMethodBeat.i(62979);
+    h.vKh.idkeyStat(285L, 2L, 1L, false);
+    if (this.mode == 1)
+    {
+      if (this.tWt)
+      {
+        ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "already running get list");
+        AppMethodBeat.o(62979);
+        return;
+      }
+      this.mode = 2;
+      if (this.tWo.size() <= 1) {
+        cVl();
+      }
+      for (;;)
+      {
+        com.tencent.mm.plugin.music.model.d.e.al(1, 2, paramInt);
+        AppMethodBeat.o(62979);
+        return;
+        localln = new ln();
+        localln.dql.action = 5;
+        com.tencent.mm.sdk.b.a.ESL.l(localln);
+      }
+    }
+    this.mode = 1;
+    ln localln = new ln();
+    localln.dql.action = 5;
+    com.tencent.mm.sdk.b.a.ESL.l(localln);
+    com.tencent.mm.plugin.music.model.d.e.al(2, 1, paramInt);
+    AppMethodBeat.o(62979);
+  }
+  
+  public final boolean HJ(int paramInt)
+  {
+    AppMethodBeat.i(62986);
+    boolean bool = com.tencent.mm.plugin.music.model.c.a.HJ(paramInt);
+    AppMethodBeat.o(62986);
     return bool;
   }
   
-  public final void Ah(int paramInt)
+  public final void HL(int paramInt)
   {
-    AppMethodBeat.i(104854);
-    if (this.oZi.size() == 0)
+    AppMethodBeat.i(62981);
+    if (this.tWo.size() == 0)
     {
-      AppMethodBeat.o(104854);
+      AppMethodBeat.o(62981);
       return;
     }
-    int i = (paramInt - 100000) % this.oZi.size();
+    int i = (paramInt - 100000) % this.tWo.size();
     paramInt = i;
     if (i < 0) {
-      paramInt = i + this.oZi.size();
+      paramInt = i + this.tWo.size();
     }
-    if (paramInt != this.oZh)
+    if (paramInt != this.tWn)
     {
-      this.oZh = paramInt;
-      this.oYX.p(null);
+      this.tWn = paramInt;
+      this.tWe.s(null);
     }
-    AppMethodBeat.o(104854);
+    AppMethodBeat.o(62981);
   }
   
-  public final String Vu(String paramString)
+  public final void a(com.tencent.mm.az.f paramf, int paramInt)
   {
-    AppMethodBeat.i(104860);
-    paramString = com.tencent.mm.plugin.music.model.a.b.Vu(paramString);
-    ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "contain shake tag playUrl:%s", new Object[] { paramString });
-    paramString = com.tencent.mm.plugin.music.model.a.b.Vy(paramString);
-    AppMethodBeat.o(104860);
-    return paramString;
-  }
-  
-  public final URL Vv(String paramString)
-  {
-    AppMethodBeat.i(104861);
-    paramString = new b.b(paramString).url;
-    AppMethodBeat.o(104861);
-    return paramString;
-  }
-  
-  public final void a(com.tencent.mm.aw.e parame, int paramInt)
-  {
-    AppMethodBeat.i(104867);
-    super.a(parame, paramInt);
-    com.tencent.mm.plugin.music.model.d.e.bVU();
-    AppMethodBeat.o(104867);
+    AppMethodBeat.i(62994);
+    super.a(paramf, paramInt);
+    com.tencent.mm.plugin.music.model.d.e.cVv();
+    AppMethodBeat.o(62994);
   }
   
   public final void a(com.tencent.mm.plugin.music.model.e.a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(104869);
+    AppMethodBeat.i(62996);
     if (parama == null)
     {
-      AppMethodBeat.o(104869);
+      AppMethodBeat.o(62996);
       return;
     }
-    if (this.oZk != null)
+    if (this.tWq != null)
     {
-      com.tencent.mm.kernel.g.RK().eHt.a(this.oZk);
-      this.oZk = null;
+      com.tencent.mm.kernel.g.afA().gcy.a(this.tWq);
+      this.tWq = null;
     }
     if (parama.field_songId <= 0)
     {
-      ab.e("MicroMsg.Music.MusicWechatPrivateLogic", "can't get songId ");
-      h.qsU.kvStat(10911, "1");
-      AppMethodBeat.o(104869);
+      ad.e("MicroMsg.Music.MusicWechatPrivateLogic", "can't get songId ");
+      h.vKh.kvStat(10911, "1");
+      AppMethodBeat.o(62996);
       return;
     }
-    this.oZk = new com.tencent.mm.plugin.music.model.b.b(parama, paramBoolean);
-    com.tencent.mm.kernel.g.RK().eHt.a(this.oZk, 0);
-    AppMethodBeat.o(104869);
+    this.tWq = new com.tencent.mm.plugin.music.model.b.b(parama, paramBoolean);
+    com.tencent.mm.kernel.g.afA().gcy.a(this.tWq, 0);
+    AppMethodBeat.o(62996);
   }
   
-  public final void bVA()
+  public final String aiG(String paramString)
   {
-    AppMethodBeat.i(104855);
-    if (this.mode == 1)
+    AppMethodBeat.i(62987);
+    paramString = com.tencent.mm.plugin.music.model.a.b.aiG(paramString);
+    ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "contain shake tag playUrl:%s", new Object[] { paramString });
+    paramString = com.tencent.mm.plugin.music.model.a.b.aiL(paramString);
+    AppMethodBeat.o(62987);
+    return paramString;
+  }
+  
+  public final URL aiH(String paramString)
+  {
+    AppMethodBeat.i(62988);
+    paramString = new b.b(paramString).url;
+    AppMethodBeat.o(62988);
+    return paramString;
+  }
+  
+  public final com.tencent.mm.plugin.music.model.e.a aiI(String paramString)
+  {
+    AppMethodBeat.i(62975);
+    if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(104855);
-      return;
+      AppMethodBeat.o(62975);
+      return null;
     }
-    this.oZh += 1;
-    this.oZh %= this.oZi.size();
-    this.oYX.jL(true);
-    this.oYX.p(null);
-    AppMethodBeat.o(104855);
-  }
-  
-  public final void bVB()
-  {
-    AppMethodBeat.i(104856);
-    if (this.mode == 1)
+    com.tencent.mm.plugin.music.model.e.a locala = com.tencent.mm.plugin.music.model.f.cVn().aiP(paramString);
+    if (locala != null)
     {
-      AppMethodBeat.o(104856);
-      return;
+      this.tWo.add(paramString);
+      ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "getMusicByDBMusicId, music data exist in db , id:%s", new Object[] { paramString });
     }
-    this.oZh = (this.oZh + this.oZi.size() - 1);
-    this.oZh %= this.oZi.size();
-    this.oYX.jL(true);
-    this.oYX.p(null);
-    AppMethodBeat.o(104856);
-  }
-  
-  public final int bVC()
-  {
-    return this.oZh;
-  }
-  
-  public final void bVD()
-  {
-    AppMethodBeat.i(104857);
-    if (!this.oYX.bVu().aiw())
+    for (;;)
     {
-      ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "really exit music");
-      this.mode = 1;
+      AppMethodBeat.o(62975);
+      return locala;
+      ad.e("MicroMsg.Music.MusicWechatPrivateLogic", "getMusicByDBMusicId, music data not exist in db , id:%s", new Object[] { paramString });
     }
-    AppMethodBeat.o(104857);
   }
   
-  public final boolean bVE()
+  public final com.tencent.mm.az.f cUT()
   {
-    AppMethodBeat.i(104858);
-    if ((this.oZi.size() > 0) && (this.mode == 2))
-    {
-      AppMethodBeat.o(104858);
-      return true;
-    }
-    AppMethodBeat.o(104858);
-    return false;
-  }
-  
-  public final com.tencent.mm.aw.e bVs()
-  {
-    AppMethodBeat.i(104850);
+    AppMethodBeat.i(62977);
     synchronized (this.lockObj)
     {
-      if (this.oZi.size() == 0)
+      if (this.tWo.size() == 0)
       {
-        AppMethodBeat.o(104850);
+        AppMethodBeat.o(62977);
         return null;
       }
-      if (this.oZi.size() <= this.oZh)
+      if (this.tWo.size() <= this.tWn)
       {
-        AppMethodBeat.o(104850);
+        AppMethodBeat.o(62977);
         return null;
       }
-      Object localObject2 = (String)this.oZi.get(this.oZh);
-      localObject2 = com.tencent.mm.plugin.music.model.e.bVM().VC((String)localObject2);
+      Object localObject2 = (String)this.tWo.get(this.tWn);
+      localObject2 = com.tencent.mm.plugin.music.model.f.cVn().aiP((String)localObject2);
       if (localObject2 != null)
       {
-        localObject2 = ((com.tencent.mm.plugin.music.model.e.a)localObject2).bVY();
-        AppMethodBeat.o(104850);
+        localObject2 = ((com.tencent.mm.plugin.music.model.e.a)localObject2).cVz();
+        AppMethodBeat.o(62977);
         return localObject2;
       }
-      AppMethodBeat.o(104850);
+      AppMethodBeat.o(62977);
       return null;
     }
   }
   
-  public final com.tencent.mm.plugin.music.model.e.a bVw()
+  public final com.tencent.mm.plugin.music.model.e.a cUX()
   {
-    AppMethodBeat.i(104849);
+    AppMethodBeat.i(62976);
     synchronized (this.lockObj)
     {
-      if (this.oZi.size() == 0)
+      if (this.tWo.size() == 0)
       {
-        AppMethodBeat.o(104849);
+        AppMethodBeat.o(62976);
         return null;
       }
-      if (this.oZi.size() <= this.oZh)
+      if (this.tWo.size() <= this.tWn)
       {
-        AppMethodBeat.o(104849);
+        AppMethodBeat.o(62976);
         return null;
       }
-      Object localObject2 = (String)this.oZi.get(this.oZh);
-      localObject2 = com.tencent.mm.plugin.music.model.e.bVM().VC((String)localObject2);
-      AppMethodBeat.o(104849);
+      Object localObject2 = (String)this.tWo.get(this.tWn);
+      localObject2 = com.tencent.mm.plugin.music.model.f.cVn().aiP((String)localObject2);
+      AppMethodBeat.o(62976);
       return localObject2;
     }
   }
   
-  public final boolean bVx()
+  public final boolean cUY()
   {
-    AppMethodBeat.i(104851);
-    com.tencent.mm.plugin.music.model.e.a locala = bVw();
+    AppMethodBeat.i(62978);
+    com.tencent.mm.plugin.music.model.e.a locala = cUX();
     if (locala != null) {}
     switch (locala.field_musicType)
     {
@@ -254,72 +259,135 @@ public final class m
     case 5: 
     case 7: 
     default: 
-      AppMethodBeat.o(104851);
+      AppMethodBeat.o(62978);
       return false;
     }
-    AppMethodBeat.o(104851);
+    AppMethodBeat.o(62978);
     return true;
   }
   
-  public final List<String> bVy()
+  public final List<String> cUZ()
   {
-    return this.oZi;
+    return this.tWo;
   }
   
-  public final void bVz()
+  public final void cVa()
   {
     this.mode = 1;
   }
   
-  public final void d(List<com.tencent.mm.aw.e> paramList, boolean paramBoolean)
+  public final void cVb()
+  {
+    AppMethodBeat.i(62982);
+    if (this.mode == 1)
+    {
+      AppMethodBeat.o(62982);
+      return;
+    }
+    this.tWn += 1;
+    this.tWn %= this.tWo.size();
+    this.tWe.nJ(true);
+    this.tWe.s(null);
+    AppMethodBeat.o(62982);
+  }
+  
+  public final void cVc()
+  {
+    AppMethodBeat.i(62983);
+    if (this.mode == 1)
+    {
+      AppMethodBeat.o(62983);
+      return;
+    }
+    this.tWn = (this.tWn + this.tWo.size() - 1);
+    this.tWn %= this.tWo.size();
+    this.tWe.nJ(true);
+    this.tWe.s(null);
+    AppMethodBeat.o(62983);
+  }
+  
+  public final int cVd()
+  {
+    return this.tWn;
+  }
+  
+  public final void cVe()
+  {
+    AppMethodBeat.i(62984);
+    if (!this.tWe.cUV().azF())
+    {
+      ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "really exit music");
+      this.mode = 1;
+    }
+    AppMethodBeat.o(62984);
+  }
+  
+  public final boolean cVf()
+  {
+    AppMethodBeat.i(62985);
+    if ((this.tWo.size() > 0) && (this.mode == 2))
+    {
+      AppMethodBeat.o(62985);
+      return true;
+    }
+    AppMethodBeat.o(62985);
+    return false;
+  }
+  
+  public final void e(List<com.tencent.mm.az.f> paramList, boolean paramBoolean)
   {
     for (;;)
     {
       Object localObject;
       try
       {
-        AppMethodBeat.i(104848);
+        AppMethodBeat.i(62974);
         if ((paramList == null) || (paramList.size() == 0))
         {
-          ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "appendMusicList error");
-          AppMethodBeat.o(104848);
+          ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "appendMusicList error");
+          AppMethodBeat.o(62974);
           return;
         }
         localObject = this.lockObj;
         if (paramBoolean) {}
         try
         {
-          this.oZi.clear();
+          this.tWo.clear();
           paramList = paramList.iterator();
           if (paramList.hasNext())
           {
-            com.tencent.mm.aw.e locale = (com.tencent.mm.aw.e)paramList.next();
-            this.oZi.add(com.tencent.mm.plugin.music.h.b.K(locale));
-            com.tencent.mm.plugin.music.model.e.bVM().x(locale);
+            com.tencent.mm.az.f localf = (com.tencent.mm.az.f)paramList.next();
+            this.tWo.add(com.tencent.mm.plugin.music.h.b.N(localf));
+            com.tencent.mm.plugin.music.model.f.cVn().A(localf);
             continue;
             paramList = finally;
           }
         }
         finally
         {
-          AppMethodBeat.o(104848);
+          AppMethodBeat.o(62974);
         }
       }
       finally {}
-      AppMethodBeat.o(104848);
+      AppMethodBeat.o(62974);
     }
   }
   
-  public final boolean g(com.tencent.mm.aw.e parame)
+  public final int getMode()
   {
-    AppMethodBeat.i(104843);
-    if (parame == null)
+    return this.mode;
+  }
+  
+  public final boolean i(com.tencent.mm.az.f paramf)
+  {
+    AppMethodBeat.i(62969);
+    if (paramf == null)
     {
-      ab.e("MicroMsg.Music.MusicWechatPrivateLogic", "musicWrapper is false, do not start music");
-      AppMethodBeat.o(104843);
+      ad.e("MicroMsg.Music.MusicWechatPrivateLogic", "musicWrapper is false, do not start music");
+      AppMethodBeat.o(62969);
       return false;
     }
-    com.tencent.mm.plugin.music.model.e.a locala = bVw();
+    com.tencent.mm.plugin.music.model.e.a locala = cUX();
     int i;
     if (locala != null)
     {
@@ -330,9 +398,9 @@ public final class m
     }
     while (i == 0)
     {
-      ab.e("MicroMsg.Music.MusicWechatPrivateLogic", "music or url is null, do not start music");
-      this.oYX.r(parame);
-      AppMethodBeat.o(104843);
+      ad.e("MicroMsg.Music.MusicWechatPrivateLogic", "music or url is null, do not start music");
+      this.tWe.u(paramf);
+      AppMethodBeat.o(62969);
       return false;
       label71:
       if ((TextUtils.isEmpty(locala.field_songWifiUrl)) && (TextUtils.isEmpty(locala.field_songWapLinkUrl)) && (TextUtils.isEmpty(locala.field_songWebUrl))) {
@@ -343,76 +411,84 @@ public final class m
     }
     if (locala.field_isBlock == 1)
     {
-      ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "not play music, music is block %s", new Object[] { locala.field_musicId });
-      this.oYX.r(parame);
-      com.tencent.mm.plugin.music.model.d.e.a(parame, true);
-      AppMethodBeat.o(104843);
+      ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "not play music, music is block %s", new Object[] { locala.field_musicId });
+      this.tWe.u(paramf);
+      com.tencent.mm.plugin.music.model.d.e.a(paramf, true);
+      AppMethodBeat.o(62969);
       return false;
     }
-    ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "musicType %d", new Object[] { Integer.valueOf(locala.field_musicType) });
-    ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "music protocol:%s", new Object[] { locala.field_protocol });
-    locala.playUrl = parame.playUrl;
-    if (this.oZl != null) {
-      com.tencent.mm.kernel.g.RK().eHt.a(this.oZl);
+    ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "musicType %d", new Object[] { Integer.valueOf(locala.field_musicType) });
+    ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "music protocol:%s", new Object[] { locala.field_protocol });
+    locala.playUrl = paramf.playUrl;
+    if (this.tWr != null) {
+      com.tencent.mm.kernel.g.afA().gcy.a(this.tWr);
     }
-    com.tencent.mm.kernel.g.RK().eHt.a(940, this);
-    this.oZl = new com.tencent.mm.plugin.music.model.b.a(locala.field_musicType, locala);
-    com.tencent.mm.kernel.g.RK().eHt.a(this.oZl, 0);
+    com.tencent.mm.kernel.g.afA().gcy.a(940, this);
+    this.tWr = new com.tencent.mm.plugin.music.model.b.a(locala.field_musicType, locala);
+    com.tencent.mm.kernel.g.afA().gcy.a(this.tWr, 0);
     if (com.tencent.mm.plugin.music.model.a.b.b(locala))
     {
-      ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "get shake music new url to play");
-      parame = locala.playUrl;
-      if (TextUtils.isEmpty(parame)) {
-        ab.e("MicroMsg.Music.MusicWechatPrivateLogic", "GetShakeMusicUrl, url is null");
+      ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "get shake music new url to play");
+      paramf = locala.playUrl;
+      if (TextUtils.isEmpty(paramf)) {
+        ad.e("MicroMsg.Music.MusicWechatPrivateLogic", "GetShakeMusicUrl, url is null");
       }
       for (;;)
       {
-        AppMethodBeat.o(104843);
+        AppMethodBeat.o(62969);
         return false;
-        if (this.oZm != null)
+        if (this.tWs != null)
         {
-          com.tencent.mm.kernel.g.RK().eHt.a(this.oZm);
-          this.oZm = null;
+          com.tencent.mm.kernel.g.afA().gcy.a(this.tWs);
+          this.tWs = null;
         }
-        ab.e("MicroMsg.Music.MusicWechatPrivateLogic", "GetShakeMusicUrl, url is %s", new Object[] { parame });
-        this.oZm = new com.tencent.mm.plugin.music.model.b.c(parame);
-        com.tencent.mm.kernel.g.RK().eHt.a(this.oZm, 0);
-        h.qsU.idkeyStat(558L, 213L, 1L, true);
+        ad.e("MicroMsg.Music.MusicWechatPrivateLogic", "GetShakeMusicUrl, url is %s", new Object[] { paramf });
+        this.tWs = new com.tencent.mm.plugin.music.model.b.c(paramf);
+        com.tencent.mm.kernel.g.afA().gcy.a(this.tWs, 0);
+        h.vKh.idkeyStat(558L, 213L, 1L, true);
       }
     }
-    AppMethodBeat.o(104843);
+    AppMethodBeat.o(62969);
     return true;
   }
   
-  public final int getMode()
+  public final void init()
   {
-    return this.mode;
+    AppMethodBeat.i(62967);
+    super.init();
+    com.tencent.mm.kernel.g.afA().gcy.a(520, this);
+    com.tencent.mm.kernel.g.afA().gcy.a(769, this);
+    com.tencent.mm.plugin.music.model.notification.b localb = this.tWp;
+    ad.i("MicroMsg.Music.MMMusicNotificationHelper", "initMusicPlayerService");
+    localb.jBI = new b.1(localb);
+    localb.jBI.alive();
+    AppMethodBeat.o(62967);
   }
   
-  public final com.tencent.mm.aw.e h(com.tencent.mm.aw.e parame)
+  public final com.tencent.mm.az.f j(com.tencent.mm.az.f paramf)
   {
-    AppMethodBeat.i(104844);
-    String str = com.tencent.mm.plugin.music.h.b.K(parame);
+    AppMethodBeat.i(62970);
+    String str = com.tencent.mm.plugin.music.h.b.N(paramf);
     for (;;)
     {
       synchronized (this.lockObj)
       {
-        if (this.oZi == null) {
+        if (this.tWo == null) {
           break label226;
         }
         i = 0;
-        if (i >= this.oZi.size()) {
+        if (i >= this.tWo.size()) {
           break label221;
         }
-        if (str.equals(this.oZi.get(i)))
+        if (str.equals(this.tWo.get(i)))
         {
-          this.oZh = i;
+          this.tWn = i;
           i = 1;
           j = i;
-          if (this.oZi.size() > 1)
+          if (this.tWo.size() > 1)
           {
             j = i;
-            if (parame.fKE)
+            if (paramf.hnK)
             {
               this.mode = 2;
               j = i;
@@ -420,8 +496,8 @@ public final class m
           }
           if (j != 0)
           {
-            ??? = bVs();
-            AppMethodBeat.o(104844);
+            ??? = cUT();
+            AppMethodBeat.o(62970);
             return ???;
           }
         }
@@ -432,16 +508,16 @@ public final class m
       }
       synchronized (this.lockObj)
       {
-        this.oZi.clear();
-        this.oZi.add(com.tencent.mm.plugin.music.h.b.K(parame));
-        this.oZh = 0;
-        com.tencent.mm.plugin.music.model.e.bVM().x(parame);
-        ??? = parame;
+        this.tWo.clear();
+        this.tWo.add(com.tencent.mm.plugin.music.h.b.N(paramf));
+        this.tWn = 0;
+        com.tencent.mm.plugin.music.model.f.cVn().A(paramf);
+        ??? = paramf;
         if (this.mode != 2) {
           continue;
         }
-        bVK();
-        ??? = parame;
+        cVl();
+        ??? = paramf;
       }
       label221:
       int i = 0;
@@ -451,308 +527,399 @@ public final class m
     }
   }
   
-  public final com.tencent.mm.aw.e i(com.tencent.mm.aw.e parame)
+  public final com.tencent.mm.az.f k(com.tencent.mm.az.f paramf)
   {
-    AppMethodBeat.i(104845);
-    if ((parame == null) && (this.oZi.size() == 0))
+    AppMethodBeat.i(62971);
+    if ((paramf == null) && (this.tWo.size() == 0))
     {
-      ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "musicWrapper is null && musicList's size is 0");
-      AppMethodBeat.o(104845);
+      ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "musicWrapper is null && musicList's size is 0");
+      AppMethodBeat.o(62971);
       return null;
     }
-    if (parame == null) {
-      ??? = bVs();
+    if (paramf == null) {
+      ??? = cUT();
     }
     for (;;)
     {
-      AppMethodBeat.o(104845);
+      AppMethodBeat.o(62971);
       return ???;
       synchronized (this.lockObj)
       {
-        this.oZi.clear();
-        this.oZi.add(com.tencent.mm.plugin.music.h.b.K(parame));
-        this.oZh = 0;
-        com.tencent.mm.plugin.music.model.e.bVM().x(parame);
-        ??? = parame;
+        this.tWo.clear();
+        this.tWo.add(com.tencent.mm.plugin.music.h.b.N(paramf));
+        this.tWn = 0;
+        com.tencent.mm.plugin.music.model.f.cVn().A(paramf);
+        ??? = paramf;
         if (this.mode != 2) {
           continue;
         }
-        bVK();
-        ??? = parame;
+        cVl();
+        ??? = paramf;
       }
     }
   }
   
-  public final void init()
+  public final void l(com.tencent.mm.az.f paramf)
   {
-    AppMethodBeat.i(104841);
-    super.init();
-    com.tencent.mm.kernel.g.RK().eHt.a(520, this);
-    com.tencent.mm.kernel.g.RK().eHt.a(769, this);
-    com.tencent.mm.plugin.music.model.notification.b localb = this.oZj;
-    ab.i("MicroMsg.Music.MMMusicNotificationHelper", "initMusicPlayerService");
-    localb.hCe = new b.1(localb);
-    localb.hCe.alive();
-    AppMethodBeat.o(104841);
-  }
-  
-  public final void j(com.tencent.mm.aw.e parame)
-  {
-    AppMethodBeat.i(104847);
-    if (parame != null) {
+    AppMethodBeat.i(62973);
+    if (paramf != null) {
       synchronized (this.lockObj)
       {
-        this.oZi.clear();
-        this.oZi.add(com.tencent.mm.plugin.music.h.b.K(parame));
-        this.oZh = 0;
-        com.tencent.mm.plugin.music.model.e.bVM().x(parame);
-        AppMethodBeat.o(104847);
+        this.tWo.clear();
+        this.tWo.add(com.tencent.mm.plugin.music.h.b.N(paramf));
+        this.tWn = 0;
+        com.tencent.mm.plugin.music.model.f.cVn().A(paramf);
+        AppMethodBeat.o(62973);
         return;
       }
     }
-    ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "shake music item is null");
-    AppMethodBeat.o(104847);
+    ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "shake music item is null");
+    AppMethodBeat.o(62973);
   }
   
-  public final void k(com.tencent.mm.aw.e parame)
+  public final void n(com.tencent.mm.az.f paramf)
   {
-    AppMethodBeat.i(104862);
-    super.k(parame);
-    com.tencent.mm.plugin.music.model.d.e.bVU();
-    com.tencent.mm.plugin.music.model.d.e.fqZ = System.currentTimeMillis();
-    com.tencent.mm.plugin.music.model.d.e.f(bVw());
-    AppMethodBeat.o(104862);
+    AppMethodBeat.i(62989);
+    super.n(paramf);
+    com.tencent.mm.plugin.music.model.d.e.cVv();
+    com.tencent.mm.plugin.music.model.d.e.gSP = System.currentTimeMillis();
+    com.tencent.mm.plugin.music.model.d.e.f(cUX());
+    AppMethodBeat.o(62989);
   }
   
-  public final void l(com.tencent.mm.aw.e parame)
+  public final void o(com.tencent.mm.az.f paramf)
   {
-    AppMethodBeat.i(104863);
-    super.l(parame);
-    com.tencent.mm.plugin.music.model.d.e.fqZ = System.currentTimeMillis();
-    AppMethodBeat.o(104863);
+    AppMethodBeat.i(62990);
+    super.o(paramf);
+    com.tencent.mm.plugin.music.model.d.e.gSP = System.currentTimeMillis();
+    AppMethodBeat.o(62990);
   }
   
-  public final com.tencent.mm.aw.e m(List<com.tencent.mm.aw.e> paramList, int paramInt)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(104846);
-    if ((paramList == null) || (paramList.size() == 0) || (paramInt >= paramList.size()))
-    {
-      ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "music wrapper list error");
-      AppMethodBeat.o(104846);
-      return null;
-    }
-    synchronized (this.lockObj)
-    {
-      this.oZi.clear();
-      int i = 0;
-      while (i < paramList.size())
-      {
-        com.tencent.mm.aw.e locale = (com.tencent.mm.aw.e)paramList.get(i);
-        this.oZi.add(com.tencent.mm.plugin.music.h.b.K(locale));
-        com.tencent.mm.plugin.music.model.e.bVM().x(locale);
-        i += 1;
-      }
-      this.oZh = paramInt;
-      this.mode = 2;
-      ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "startPlayNewMusicList:%d", new Object[] { Integer.valueOf(this.oZh) });
-      paramList = bVs();
-      AppMethodBeat.o(104846);
-      return paramList;
-    }
-  }
-  
-  public final void m(com.tencent.mm.aw.e parame)
-  {
-    AppMethodBeat.i(104864);
-    super.m(parame);
-    com.tencent.mm.plugin.music.model.d.e.KP();
-    AppMethodBeat.o(104864);
-  }
-  
-  public final void n(com.tencent.mm.aw.e parame)
-  {
-    AppMethodBeat.i(104865);
-    super.n(parame);
-    com.tencent.mm.plugin.music.model.d.e.bVU();
-    AppMethodBeat.o(104865);
-  }
-  
-  public final void o(com.tencent.mm.aw.e parame)
-  {
-    AppMethodBeat.i(104866);
-    super.o(parame);
-    com.tencent.mm.plugin.music.model.d.e.bVU();
-    if (this.mode == 2) {
-      bVA();
-    }
-    AppMethodBeat.o(104866);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
-  {
-    AppMethodBeat.i(104868);
+    AppMethodBeat.i(62995);
     Object localObject1;
-    if ((paramm instanceof com.tencent.mm.plugin.music.model.b.a))
+    if ((paramn instanceof com.tencent.mm.plugin.music.model.b.a))
     {
-      ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "onSceneEnd errCode:%d", new Object[] { Integer.valueOf(paramInt2) });
-      com.tencent.mm.kernel.g.RK().eHt.b(940, this);
+      ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "onSceneEnd errCode:%d", new Object[] { Integer.valueOf(paramInt2) });
+      com.tencent.mm.kernel.g.afA().gcy.b(940, this);
       if ((paramInt1 == 4) && (paramInt2 == -24))
       {
-        paramm = ((com.tencent.mm.plugin.music.model.b.a)paramm).oZM;
-        if ((bVw() != null) && (paramm.fKj.equals(bVw().field_musicId))) {
-          this.oYX.aiu();
+        paramn = ((com.tencent.mm.plugin.music.model.b.a)paramn).tWX;
+        if ((cUX() != null) && (paramn.hnp.equals(cUX().field_musicId))) {
+          this.tWe.azD();
         }
-        paramString = com.tencent.mm.plugin.music.model.e.bVM();
-        paramm = paramm.fKj;
+        paramString = com.tencent.mm.plugin.music.model.f.cVn();
+        paramn = paramn.hnp;
         localObject1 = new ContentValues();
         ((ContentValues)localObject1).put("isBlock", Integer.valueOf(1));
-        paramString.db.update("Music", (ContentValues)localObject1, "musicId=?", new String[] { paramm });
-        paramString = (com.tencent.mm.plugin.music.model.e.a)paramString.pax.get(paramm);
+        paramString.db.update("Music", (ContentValues)localObject1, "musicId=?", new String[] { paramn });
+        paramString = (com.tencent.mm.plugin.music.model.e.a)paramString.tXI.get(paramn);
         if (paramString != null) {
           paramString.field_isBlock = 1;
         }
-        ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "onSceneEnd music is block %s", new Object[] { bVw().field_musicId });
-        AppMethodBeat.o(104868);
+        ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "onSceneEnd music is block %s", new Object[] { cUX().field_musicId });
+        AppMethodBeat.o(62995);
       }
     }
     else
     {
-      if ((paramm instanceof com.tencent.mm.plugin.music.model.b.b))
+      if ((paramn instanceof com.tencent.mm.plugin.music.model.b.b))
       {
         if ((paramInt1 != 0) || (paramInt2 != 0))
         {
-          AppMethodBeat.o(104868);
+          AppMethodBeat.o(62995);
           return;
         }
-        paramString = (com.tencent.mm.plugin.music.model.b.b)paramm;
-        Object localObject3 = paramString.oZN;
-        localObject1 = paramString.oZD.field_musicId;
+        paramString = (com.tencent.mm.plugin.music.model.b.b)paramn;
+        Object localObject3 = paramString.tWY;
+        localObject1 = paramString.tWO.field_musicId;
         if ((localObject3 != null) && (localObject1 != null))
         {
-          Object localObject2 = this.oZi.iterator();
+          Object localObject2 = this.tWo.iterator();
           while (((Iterator)localObject2).hasNext())
           {
-            paramm = (String)((Iterator)localObject2).next();
-            if (paramm.equals(localObject1))
+            paramn = (String)((Iterator)localObject2).next();
+            if (paramn.equals(localObject1))
             {
-              localObject1 = aa.b(((aoq)localObject3).xex);
-              localObject2 = aa.b(((aoq)localObject3).xey);
-              localObject3 = aa.b(((aoq)localObject3).xew);
-              com.tencent.mm.plugin.music.model.e.b localb = com.tencent.mm.plugin.music.model.e.bVM();
-              boolean bool = paramString.oZO;
-              com.tencent.mm.plugin.music.model.e.a locala = localb.VC(paramm);
+              localObject1 = z.b(((ayx)localObject3).Dxn);
+              localObject2 = z.b(((ayx)localObject3).Dxo);
+              localObject3 = z.b(((ayx)localObject3).Dxm);
+              com.tencent.mm.plugin.music.model.e.b localb = com.tencent.mm.plugin.music.model.f.cVn();
+              boolean bool = paramString.tWZ;
+              com.tencent.mm.plugin.music.model.e.a locala = localb.aiP(paramn);
               if (locala == null) {
-                ab.e("MicroMsg.Music.MusicStorage", "updateMusicWithLyricResponse can not find music %s", new Object[] { paramm });
+                ad.e("MicroMsg.Music.MusicStorage", "updateMusicWithLyricResponse can not find music %s", new Object[] { paramn });
               }
               for (;;)
               {
-                ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "get response %s %s %s", new Object[] { localObject1, localObject2, localObject3 });
-                if (bo.isNullOrNil((String)localObject2)) {
+                ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "get response %s %s %s", new Object[] { localObject1, localObject2, localObject3 });
+                if (bt.isNullOrNil((String)localObject2)) {
                   break;
                 }
-                paramm = new ki();
-                paramm.cAc.action = 6;
-                paramm.cAc.cAd = paramString.oZD.field_musicId;
-                com.tencent.mm.sdk.b.a.ymk.a(paramm, Looper.getMainLooper());
-                AppMethodBeat.o(104868);
+                paramn = new ln();
+                paramn.dql.action = 6;
+                paramn.dql.dqm = paramString.tWO.field_musicId;
+                com.tencent.mm.sdk.b.a.ESL.a(paramn, Looper.getMainLooper());
+                AppMethodBeat.o(62995);
                 return;
-                if (!bo.isNullOrNil((String)localObject1)) {
+                if (!bt.isNullOrNil((String)localObject1)) {
                   locala.field_songAlbumUrl = ((String)localObject1);
                 }
                 locala.field_songHAlbumUrl = ((String)localObject2);
                 locala.field_songLyric = ((String)localObject3);
                 localb.update(locala, new String[] { "songAlbumUrl", "songHAlbumUrl", "songLyric" });
-                localb.pax.put(paramm, locala);
+                localb.tXI.put(paramn, locala);
                 localb.c(locala, bool);
               }
             }
           }
         }
-        AppMethodBeat.o(104868);
+        AppMethodBeat.o(62995);
         return;
       }
-      if ((paramm instanceof com.tencent.mm.plugin.music.model.b.c))
+      if ((paramn instanceof com.tencent.mm.plugin.music.model.b.c))
       {
-        ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "GetShakeMusicUrl onSceneEnd errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-        paramString = (com.tencent.mm.plugin.music.model.b.c)paramm;
-        ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "getShakeMusicUrlScene callback, playUrl:%s, tempPlayUrl:%s", new Object[] { paramString.playUrl, paramString.oZQ });
+        ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "GetShakeMusicUrl onSceneEnd errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        paramString = (com.tencent.mm.plugin.music.model.b.c)paramn;
+        ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "getShakeMusicUrlScene callback, playUrl:%s, tempPlayUrl:%s", new Object[] { paramString.playUrl, paramString.tXb });
         if ((paramInt1 != 0) || (paramInt2 != 0)) {
-          h.qsU.idkeyStat(558L, 214L, 1L, true);
+          h.vKh.idkeyStat(558L, 214L, 1L, true);
         }
         for (;;)
         {
-          paramm = bVw();
-          if ((paramm == null) || (TextUtils.isEmpty(paramm.playUrl)) || (!paramm.playUrl.equalsIgnoreCase(paramString.playUrl))) {
+          paramn = cUX();
+          if ((paramn == null) || (TextUtils.isEmpty(paramn.playUrl)) || (!paramn.playUrl.equalsIgnoreCase(paramString.playUrl))) {
             break;
           }
-          ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "music playUrl is same, start to play shake music");
-          this.oYX.q(paramm.bVY());
-          AppMethodBeat.o(104868);
+          ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "music playUrl is same, start to play shake music");
+          this.tWe.t(paramn.cVz());
+          AppMethodBeat.o(62995);
           return;
-          com.tencent.mm.plugin.music.model.a.b.fz(paramString.playUrl, paramString.oZQ);
+          com.tencent.mm.plugin.music.model.a.b.hF(paramString.playUrl, paramString.tXb);
         }
-        if (paramm != null) {
-          ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "music playUrl is diff, don't play, current playUrl is %s, netscene playUrl is %s", new Object[] { paramm.playUrl, paramString.playUrl });
+        if (paramn != null) {
+          ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "music playUrl is diff, don't play, current playUrl is %s, netscene playUrl is %s", new Object[] { paramn.playUrl, paramString.playUrl });
         }
       }
     }
-    AppMethodBeat.o(104868);
+    AppMethodBeat.o(62995);
+  }
+  
+  public final void p(com.tencent.mm.az.f paramf)
+  {
+    AppMethodBeat.i(62991);
+    super.p(paramf);
+    com.tencent.mm.plugin.music.model.d.e.azB();
+    AppMethodBeat.o(62991);
+  }
+  
+  public final void q(com.tencent.mm.az.f paramf)
+  {
+    AppMethodBeat.i(62992);
+    super.q(paramf);
+    com.tencent.mm.plugin.music.model.d.e.cVv();
+    AppMethodBeat.o(62992);
+  }
+  
+  public final com.tencent.mm.az.f r(List<com.tencent.mm.az.f> paramList, int paramInt)
+  {
+    AppMethodBeat.i(62972);
+    if ((paramList == null) || (paramList.size() == 0) || (paramInt >= paramList.size()))
+    {
+      ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "music wrapper list error");
+      AppMethodBeat.o(62972);
+      return null;
+    }
+    synchronized (this.lockObj)
+    {
+      this.tWo.clear();
+      int i = 0;
+      while (i < paramList.size())
+      {
+        com.tencent.mm.az.f localf = (com.tencent.mm.az.f)paramList.get(i);
+        this.tWo.add(com.tencent.mm.plugin.music.h.b.N(localf));
+        com.tencent.mm.plugin.music.model.f.cVn().A(localf);
+        i += 1;
+      }
+      this.tWn = paramInt;
+      this.mode = 2;
+      ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "startPlayNewMusicList:%d", new Object[] { Integer.valueOf(this.tWn) });
+      paramList = cUT();
+      AppMethodBeat.o(62972);
+      return paramList;
+    }
+  }
+  
+  public final void r(com.tencent.mm.az.f paramf)
+  {
+    AppMethodBeat.i(62993);
+    super.r(paramf);
+    com.tencent.mm.plugin.music.model.d.e.cVv();
+    if ((this.mode == 2) && ((this.tWn < this.tWo.size() - 1) || (paramf.hnK)))
+    {
+      paramf = new ln();
+      paramf.dql.action = 15;
+      paramf.dql.state = "";
+      com.tencent.mm.sdk.b.a.ESL.a(paramf, Looper.getMainLooper());
+      cVb();
+    }
+    AppMethodBeat.o(62993);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(104842);
-    this.oZi.clear();
-    com.tencent.mm.kernel.g.RK().eHt.b(520, this);
-    com.tencent.mm.kernel.g.RK().eHt.b(940, this);
-    com.tencent.mm.kernel.g.RK().eHt.b(769, this);
-    com.tencent.mm.plugin.music.model.notification.b localb = this.oZj;
-    ab.i("MicroMsg.Music.MMMusicNotificationHelper", "uninitMusicPlayerService");
+    AppMethodBeat.i(62968);
+    this.tWo.clear();
+    com.tencent.mm.kernel.g.afA().gcy.b(520, this);
+    com.tencent.mm.kernel.g.afA().gcy.b(940, this);
+    com.tencent.mm.kernel.g.afA().gcy.b(769, this);
+    com.tencent.mm.plugin.music.model.notification.b localb = this.tWp;
+    ad.i("MicroMsg.Music.MMMusicNotificationHelper", "uninitMusicPlayerService");
     Intent localIntent = new Intent();
-    localIntent.setClass(ah.getContext(), MMMusicPlayerService.class);
-    ah.getContext().stopService(localIntent);
-    localb.oZR = null;
-    localb.hCe.dead();
-    AppMethodBeat.o(104842);
+    localIntent.setClass(aj.getContext(), MMMusicPlayerService.class);
+    aj.getContext().stopService(localIntent);
+    localb.tXc = null;
+    localb.jBI.dead();
+    AppMethodBeat.o(62968);
   }
   
-  public final void xR(int paramInt)
+  final class a
+    implements Runnable
   {
-    AppMethodBeat.i(104852);
-    h.qsU.idkeyStat(285L, 2L, 1L, false);
-    if (this.mode == 1)
+    private a() {}
+    
+    public final void run()
     {
-      if (this.oZn)
+      AppMethodBeat.i(62964);
+      long l = System.currentTimeMillis();
+      m.a(m.this, true);
+      Object localObject1 = m.this.cUT();
+      ArrayList localArrayList = new ArrayList();
+      ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "musicWrapper.MusicType:%d", new Object[] { Integer.valueOf(((com.tencent.mm.az.f)localObject1).hnn) });
+      int i;
+      label118:
+      Object localObject2;
+      switch (((com.tencent.mm.az.f)localObject1).hnn)
       {
-        ab.i("MicroMsg.Music.MusicWechatPrivateLogic", "already running get list");
-        AppMethodBeat.o(104852);
-        return;
-      }
-      this.mode = 2;
-      if (this.oZi.size() <= 1) {
-        bVK();
+      case 2: 
+      case 3: 
+      case 5: 
+      case 7: 
+      default: 
+        localObject1 = null;
+        if (localObject1 == null) {
+          break label360;
+        }
+        i = 0;
+        if (i >= ((List)localObject1).size()) {
+          break label360;
+        }
+        localObject2 = (com.tencent.mm.az.f)((List)localObject1).get(i);
+        if (localObject2 == null) {
+          ad.e("MicroMsg.Music.MusicWechatPrivateLogic", "wrapper is null, continue");
+        }
+        break;
       }
       for (;;)
       {
-        com.tencent.mm.plugin.music.model.d.e.ac(1, 2, paramInt);
-        AppMethodBeat.o(104852);
+        i += 1;
+        break label118;
+        localObject1 = new gs();
+        ((gs)localObject1).dkc.type = 18;
+        com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject1);
+        localObject1 = ((gs)localObject1).dkd.dkq;
+        break;
+        localObject1 = new lm();
+        ((lm)localObject1).dqd.action = -4;
+        com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject1);
+        localObject1 = ((lm)localObject1).dqe.dkq;
+        break;
+        localObject1 = new lm();
+        ((lm)localObject1).dqd.action = -5;
+        com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject1);
+        localObject1 = ((lm)localObject1).dqe.dkq;
+        break;
+        localObject2 = new lm();
+        ((lm)localObject2).dqd.action = -6;
+        ((lm)localObject2).dqd.dqf = ((com.tencent.mm.az.f)localObject1);
+        com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject2);
+        localObject1 = ((lm)localObject2).dqe.dkq;
+        break;
+        com.tencent.mm.plugin.music.model.f.cVn().A((com.tencent.mm.az.f)localObject2);
+        localArrayList.add(com.tencent.mm.plugin.music.h.b.N((com.tencent.mm.az.f)localObject2));
+      }
+      label360:
+      ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "GetMusicWrapperListTask run time %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      m.a(m.this, false);
+      localObject1 = new m.b(m.this, (byte)0);
+      ((m.b)localObject1).tWv = localArrayList;
+      aq.f((Runnable)localObject1);
+      AppMethodBeat.o(62964);
+    }
+  }
+  
+  final class b
+    implements Runnable
+  {
+    List<String> tWv;
+    
+    private b() {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(62965);
+      Object localObject1 = com.tencent.mm.plugin.music.h.b.N(m.this.cUT());
+      int j = m.a(m.this);
+      int i = 0;
+      int k = 0;
+      while (i < this.tWv.size())
+      {
+        if (((String)this.tWv.get(i)).equals(localObject1))
+        {
+          j = i;
+          k = 1;
+        }
+        i += 1;
+      }
+      if (k == 0)
+      {
+        AppMethodBeat.o(62965);
         return;
-        localki = new ki();
-        localki.cAc.action = 5;
-        com.tencent.mm.sdk.b.a.ymk.l(localki);
+      }
+      localObject1 = m.b(m.this);
+      for (i = j + 1;; i = 0) {
+        try
+        {
+          while (i < this.tWv.size())
+          {
+            m.c(m.this).add(this.tWv.get(i));
+            i += 1;
+            continue;
+            while (i < j)
+            {
+              m.c(m.this).add(this.tWv.get(i));
+              i += 1;
+            }
+            ad.i("MicroMsg.Music.MusicWechatPrivateLogic", "GetMusicWrapperListTask currentMusicSize=%d currentMusicIndex=%d", new Object[] { Integer.valueOf(m.c(m.this).size()), Integer.valueOf(m.a(m.this)) });
+            localObject1 = new ln();
+            ((ln)localObject1).dql.action = 5;
+            com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject1);
+            AppMethodBeat.o(62965);
+            return;
+          }
+        }
+        finally
+        {
+          AppMethodBeat.o(62965);
+        }
       }
     }
-    this.mode = 1;
-    ki localki = new ki();
-    localki.cAc.action = 5;
-    com.tencent.mm.sdk.b.a.ymk.l(localki);
-    com.tencent.mm.plugin.music.model.d.e.ac(2, 1, paramInt);
-    AppMethodBeat.o(104852);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.e.m
  * JD-Core Version:    0.7.0.1
  */

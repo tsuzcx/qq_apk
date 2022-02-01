@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class PersonLive
 {
+  private String app_id = "";
   private String color_data;
   private ArrayList<FaceFrame> frames;
   private int platform;

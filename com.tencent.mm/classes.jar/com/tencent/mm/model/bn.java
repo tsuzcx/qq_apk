@@ -1,123 +1,89 @@
 package com.tencent.mm.model;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONObject;
+import com.tencent.mm.al.n;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class bn
+  extends n
+  implements k
 {
-  public static bn fnx;
-  private SharedPreferences fny;
+  private com.tencent.mm.al.g callback;
+  private long csJ;
+  private final a gOJ;
+  private final String gOK;
   
-  static
+  public bn(a parama)
   {
-    AppMethodBeat.i(58117);
-    fnx = new bn();
-    AppMethodBeat.o(58117);
+    this(parama, null);
   }
   
-  private bn()
+  public bn(a parama, String paramString)
   {
-    AppMethodBeat.i(58114);
-    this.fny = ah.getContext().getSharedPreferences(ah.dsP() + "_register_history", 0);
-    AppMethodBeat.o(58114);
+    AppMethodBeat.i(132255);
+    ad.i("MicroMsg.NetSceneLocalProxy", "init LocalProxy task:%s [%s] ", new Object[] { paramString, bt.eGN() });
+    this.gOJ = parama;
+    this.gOK = paramString;
+    AppMethodBeat.o(132255);
   }
   
-  public final void g(String paramString, Map<String, String> paramMap)
+  public final int doScene(e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(58115);
-    Object localObject;
-    for (;;)
+    AppMethodBeat.i(132256);
+    prepareDispatcher(parame);
+    this.callback = paramg;
+    this.csJ = bt.GC();
+    com.tencent.mm.kernel.g.afE().ax(new Runnable()
     {
-      try
+      public final void run()
       {
-        if (paramMap.isEmpty())
-        {
-          ab.i("MicroMsg.RegisterAccountInfo", "kv map is null or empty!");
-          AppMethodBeat.o(58115);
-          return;
-        }
-        if (!this.fny.contains(paramString)) {
-          break label173;
-        }
-        localObject = this.fny.getString(paramString, "");
-        if (!bo.isNullOrNil((String)localObject))
-        {
-          localObject = new JSONObject(new String(Base64.decode((String)localObject, 0)));
-          Iterator localIterator = paramMap.keySet().iterator();
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          String str = (String)localIterator.next();
-          ((JSONObject)localObject).put(str, paramMap.get(str));
-          continue;
-        }
-        localObject = new JSONObject();
+        AppMethodBeat.i(132253);
+        bn.this.onGYNetEnd(0, 0, 0, null, null, null);
+        AppMethodBeat.o(132253);
       }
-      catch (Exception paramMap)
+      
+      public final String toString()
       {
-        ab.e("MicroMsg.RegisterAccountInfo", "save account info about %s failed, error: %s", new Object[] { paramString, paramMap.getMessage() });
-        AppMethodBeat.o(58115);
-        return;
+        AppMethodBeat.i(132254);
+        String str = super.toString() + "|doScene";
+        AppMethodBeat.o(132254);
+        return str;
       }
-      continue;
-      label173:
-      localObject = new JSONObject();
-    }
-    ab.i("MicroMsg.RegisterAccountInfo", "put json str %s", new Object[] { ((JSONObject)localObject).toString() });
-    this.fny.edit().putString(paramString, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
-    AppMethodBeat.o(58115);
+    });
+    AppMethodBeat.o(132256);
+    return 0;
   }
   
-  public final String getString(String paramString1, String paramString2)
+  public final int getType()
   {
-    AppMethodBeat.i(58116);
-    try
+    return 0;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(132257);
+    if (this.gOJ != null)
     {
-      ab.i("MicroMsg.RegisterAccountInfo", "get %s, %s", new Object[] { paramString1, paramString2 });
-      if (this.fny.contains(paramString1))
-      {
-        Object localObject = new String(Base64.decode(this.fny.getString(paramString1, ""), 0));
-        if (!bo.isNullOrNil((String)localObject))
-        {
-          ab.i("MicroMsg.RegisterAccountInfo", "get json str %s", new Object[] { localObject });
-          localObject = new JSONObject((String)localObject);
-          if (((JSONObject)localObject).has(paramString2))
-          {
-            localObject = ((JSONObject)localObject).getString(paramString2);
-            AppMethodBeat.o(58116);
-            return localObject;
-          }
-        }
-      }
-      else
-      {
-        ab.w("MicroMsg.RegisterAccountInfo", "register info about %s is not found!", new Object[] { paramString1 });
-      }
+      ad.d("MicroMsg.NetSceneLocalProxy", "local proxy [%s] end, cost=%d", new Object[] { this.gOK, Long.valueOf(bt.aS(this.csJ)) });
+      this.gOJ.a(super.dispatcher());
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.RegisterAccountInfo", "get register info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, localException.getMessage() });
-      }
-    }
-    AppMethodBeat.o(58116);
-    return "";
+    this.callback.onSceneEnd(0, 0, null, this);
+    AppMethodBeat.o(132257);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(e parame);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.bn
  * JD-Core Version:    0.7.0.1
  */

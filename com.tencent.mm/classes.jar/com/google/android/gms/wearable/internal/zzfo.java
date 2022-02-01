@@ -30,9 +30,9 @@ public final class zzfo
   
   static
   {
-    AppMethodBeat.i(71332);
+    AppMethodBeat.i(101315);
     CREATOR = new zzfp();
-    AppMethodBeat.o(71332);
+    AppMethodBeat.o(101315);
   }
   
   @SafeParcelable.Constructor
@@ -46,14 +46,14 @@ public final class zzfo
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(71329);
+    AppMethodBeat.i(101312);
     if (!(paramObject instanceof zzfo))
     {
-      AppMethodBeat.o(71329);
+      AppMethodBeat.o(101312);
       return false;
     }
     boolean bool = ((zzfo)paramObject).zzdm.equals(this.zzdm);
-    AppMethodBeat.o(71329);
+    AppMethodBeat.o(101312);
     return bool;
   }
   
@@ -69,9 +69,9 @@ public final class zzfo
   
   public final int hashCode()
   {
-    AppMethodBeat.i(71330);
+    AppMethodBeat.i(101313);
     int i = this.zzdm.hashCode();
-    AppMethodBeat.o(71330);
+    AppMethodBeat.o(101313);
     return i;
   }
   
@@ -82,26 +82,26 @@ public final class zzfo
   
   public final String toString()
   {
-    AppMethodBeat.i(71331);
+    AppMethodBeat.i(101314);
     String str1 = this.zzbk;
     String str2 = this.zzdm;
     int i = this.zzen;
     boolean bool = this.zzeo;
     str1 = String.valueOf(str1).length() + 45 + String.valueOf(str2).length() + "Node{" + str1 + ", id=" + str2 + ", hops=" + i + ", isNearby=" + bool + "}";
-    AppMethodBeat.o(71331);
+    AppMethodBeat.o(101314);
     return str1;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(71328);
+    AppMethodBeat.i(101311);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeString(paramParcel, 2, getId(), false);
     SafeParcelWriter.writeString(paramParcel, 3, getDisplayName(), false);
     SafeParcelWriter.writeInt(paramParcel, 4, this.zzen);
     SafeParcelWriter.writeBoolean(paramParcel, 5, isNearby());
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(71328);
+    AppMethodBeat.o(101311);
   }
 }
 

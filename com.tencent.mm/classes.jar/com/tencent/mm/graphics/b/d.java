@@ -2,76 +2,78 @@ package com.tencent.mm.graphics.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.ref.WeakReference;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.Timer;
+import java.util.Iterator;
 
 public enum d
 {
-  public WeakReference<Context> eAW;
-  public HashMap<Integer, a> eAX;
-  public final Object eAY;
+  public WeakReference<Context> fWB;
+  public HashMap<Integer, a> fWC;
+  public com.tencent.e.i.b fWD;
+  public final Object fWE;
   public boolean isRunning;
-  public Timer mTimer;
   
   static
   {
-    AppMethodBeat.i(57092);
-    eAV = new d("INSTANCE");
-    eAZ = new d[] { eAV };
-    AppMethodBeat.o(57092);
+    AppMethodBeat.i(136211);
+    fWA = new d("INSTANCE");
+    fWF = new d[] { fWA };
+    AppMethodBeat.o(136211);
   }
   
   private d()
   {
-    AppMethodBeat.i(57089);
-    this.eAW = null;
-    this.eAX = new HashMap();
+    AppMethodBeat.i(136208);
+    this.fWB = null;
+    this.fWC = new HashMap();
     this.isRunning = false;
-    this.mTimer = null;
-    this.eAY = new Object();
-    AppMethodBeat.o(57089);
+    this.fWD = null;
+    this.fWE = new Object();
+    AppMethodBeat.o(136208);
   }
   
-  public final b Px()
+  public final b adc()
   {
-    AppMethodBeat.i(57090);
-    synchronized (this.eAY)
+    AppMethodBeat.i(136209);
+    synchronized (this.fWE)
     {
-      if (this.eAX != null)
+      if (this.fWC != null)
       {
-        Object localObject2 = (a)this.eAX.get(Integer.valueOf(2));
+        Object localObject2 = (a)this.fWC.get(Integer.valueOf(2));
         if ((localObject2 != null) && ((localObject2 instanceof b)))
         {
-          ((a)localObject2).Pv();
+          ((a)localObject2).acZ();
           localObject2 = (b)localObject2;
-          AppMethodBeat.o(57090);
+          AppMethodBeat.o(136209);
           return localObject2;
         }
       }
-      AppMethodBeat.o(57090);
+      AppMethodBeat.o(136209);
       return null;
     }
   }
   
-  public final void Py()
+  public final void ade()
   {
-    AppMethodBeat.i(57091);
-    synchronized (this.eAY)
+    AppMethodBeat.i(136210);
+    synchronized (this.fWE)
     {
       if (!this.isRunning)
       {
-        AppMethodBeat.o(57091);
+        AppMethodBeat.o(136210);
         return;
       }
-      if (this.mTimer != null) {
-        this.mTimer.cancel();
+      if (this.fWD != null) {
+        this.fWD.cancel();
       }
       this.isRunning = false;
-      if (this.eAX != null) {
-        this.eAX.clear();
+      if (this.fWC != null) {
+        this.fWC.clear();
       }
-      AppMethodBeat.o(57091);
+      AppMethodBeat.o(136210);
       return;
     }
   }

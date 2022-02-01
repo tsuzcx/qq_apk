@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape>
-            <solid android:color="#ff6ca479" />
-            <corners android:bottomLeftRadius="3.0dip" android:bottomRightRadius="3.0dip" />
-        </shape>
-    </item>
     <item>
-        <shape>
-            <solid android:color="#ff5b9a6a" />
-            <corners android:bottomLeftRadius="3.0dip" android:bottomRightRadius="3.0dip" />
-        </shape>
+        <rotate android:drawable="@raw/download_loading_dark" android:fromDegrees="0.0" android:toDegrees="1080.0" android:pivotX="50.0%" android:pivotY="50.0%" />
     </item>
-</selector>
+</layer-list>

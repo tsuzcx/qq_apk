@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="line"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke android:width="1.0px" android:color="#ffdddddd" android:dashWidth="3.0dip" android:dashGap="3.0dip" />
-</shape>
+    <item android:top="4.0dip" android:right="6.0dip">
+        <shape>
+            <solid android:color="@android:color/darker_gray" />
+            <corners android:radius="4.0dip" />
+        </shape>
+    </item>
+    <item android:right="0.0dip" android:bottom="0.0dip">
+        <shape>
+            <solid android:color="@color/f" />
+            <corners android:radius="4.0dip" />
+        </shape>
+    </item>
+</layer-list>

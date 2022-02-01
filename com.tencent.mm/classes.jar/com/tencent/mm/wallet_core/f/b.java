@@ -1,15 +1,15 @@
 package com.tencent.mm.wallet_core.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.c;
 import java.util.Map;
 
 public final class b
 {
-  public static boolean dSH()
+  public static boolean fko()
   {
-    AppMethodBeat.i(49164);
+    AppMethodBeat.i(72882);
     StringBuilder localStringBuilder = new StringBuilder(8);
     int i = 0;
     for (;;)
@@ -29,31 +29,31 @@ public final class b
         String str2 = localStringBuilder.toString();
         localStringBuilder.delete(0, localStringBuilder.length());
         localStringBuilder.append((b.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-        if (localStringBuilder.toString().equals(fE(str2, localStringBuilder.toString()))) {
+        if (localStringBuilder.toString().equals(hL(str2, localStringBuilder.toString()))) {
           break label175;
         }
-        AppMethodBeat.o(49164);
+        AppMethodBeat.o(72882);
         return true;
-        AppMethodBeat.o(49164);
+        AppMethodBeat.o(72882);
       }
     }
     str1 = localStringBuilder.toString();
     localStringBuilder.delete(0, localStringBuilder.length());
     localStringBuilder.append((b.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-    if (!localStringBuilder.toString().equals(fE(str1, localStringBuilder.toString())))
+    if (!localStringBuilder.toString().equals(hL(str1, localStringBuilder.toString())))
     {
-      AppMethodBeat.o(49164);
+      AppMethodBeat.o(72882);
       return true;
     }
-    AppMethodBeat.o(49164);
+    AppMethodBeat.o(72882);
     return false;
     label175:
     return false;
   }
   
-  public static boolean dSI()
+  public static boolean fkp()
   {
-    AppMethodBeat.i(49165);
+    AppMethodBeat.i(72883);
     StringBuilder localStringBuilder = new StringBuilder(8);
     int i = 0;
     for (;;)
@@ -73,31 +73,31 @@ public final class b
         String str2 = localStringBuilder.toString();
         localStringBuilder.delete(0, localStringBuilder.length());
         localStringBuilder.append((b.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-        if (localStringBuilder.toString().equals(fE(str2, localStringBuilder.toString()))) {
+        if (localStringBuilder.toString().equals(hL(str2, localStringBuilder.toString()))) {
           break label175;
         }
-        AppMethodBeat.o(49165);
+        AppMethodBeat.o(72883);
         return true;
-        AppMethodBeat.o(49165);
+        AppMethodBeat.o(72883);
       }
     }
     str1 = localStringBuilder.toString();
     localStringBuilder.delete(0, localStringBuilder.length());
     localStringBuilder.append((b.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-    if (!localStringBuilder.toString().equals(fE(str1, localStringBuilder.toString())))
+    if (!localStringBuilder.toString().equals(hL(str1, localStringBuilder.toString())))
     {
-      AppMethodBeat.o(49165);
+      AppMethodBeat.o(72883);
       return true;
     }
-    AppMethodBeat.o(49165);
+    AppMethodBeat.o(72883);
     return false;
     label175:
     return false;
   }
   
-  public static boolean dSJ()
+  public static boolean fkq()
   {
-    AppMethodBeat.i(49166);
+    AppMethodBeat.i(72884);
     StringBuilder localStringBuilder = new StringBuilder(8);
     int i = 0;
     for (;;)
@@ -117,58 +117,58 @@ public final class b
         String str2 = localStringBuilder.toString();
         localStringBuilder.delete(0, localStringBuilder.length());
         localStringBuilder.append((b.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-        if (localStringBuilder.toString().equals(fE(str2, localStringBuilder.toString()))) {
+        if (localStringBuilder.toString().equals(hL(str2, localStringBuilder.toString()))) {
           break label175;
         }
-        AppMethodBeat.o(49166);
+        AppMethodBeat.o(72884);
         return true;
-        AppMethodBeat.o(49166);
+        AppMethodBeat.o(72884);
       }
     }
     str1 = localStringBuilder.toString();
     localStringBuilder.delete(0, localStringBuilder.length());
     localStringBuilder.append((b.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-    if (!localStringBuilder.toString().equals(fE(str1, localStringBuilder.toString())))
+    if (!localStringBuilder.toString().equals(hL(str1, localStringBuilder.toString())))
     {
-      AppMethodBeat.o(49166);
+      AppMethodBeat.o(72884);
       return true;
     }
-    AppMethodBeat.o(49166);
+    AppMethodBeat.o(72884);
     return false;
     label175:
     return false;
   }
   
-  private static String fE(String paramString1, String paramString2)
+  private static String hL(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(49167);
-    Object localObject = com.tencent.mm.model.c.c.abU().me("100327");
-    if (!((com.tencent.mm.storage.c)localObject).isValid())
+    AppMethodBeat.i(72885);
+    Object localObject = com.tencent.mm.model.c.d.aty().qu("100327");
+    if (!((c)localObject).isValid())
     {
-      ab.w("MicroMsg.WalletPayHelper", "check point 1, explained by src code.");
-      AppMethodBeat.o(49167);
+      ad.w("MicroMsg.WalletPayHelper", "check point 1, explained by src code.");
+      AppMethodBeat.o(72885);
       return paramString2;
     }
-    localObject = ((com.tencent.mm.storage.c)localObject).dvN();
+    localObject = ((c)localObject).eJy();
     if (localObject == null)
     {
-      ab.w("MicroMsg.WalletPayHelper", "check point 2, explained by src code.");
-      AppMethodBeat.o(49167);
+      ad.w("MicroMsg.WalletPayHelper", "check point 2, explained by src code.");
+      AppMethodBeat.o(72885);
       return paramString2;
     }
     paramString1 = (String)((Map)localObject).get(paramString1);
     if ((paramString1 != null) && (paramString1.length() > 0))
     {
-      AppMethodBeat.o(49167);
+      AppMethodBeat.o(72885);
       return paramString1;
     }
-    AppMethodBeat.o(49167);
+    AppMethodBeat.o(72885);
     return paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.wallet_core.f.b
  * JD-Core Version:    0.7.0.1
  */

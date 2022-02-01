@@ -9,42 +9,59 @@ import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
+import com.tencent.mm.g.c.au;
+import org.xwalk.core.Log;
 
 public class SeeMemberRecordUI
   extends SelectMemberUI
 {
-  public final boolean Kf()
+  public final boolean VO()
   {
     return true;
   }
   
   protected final void a(View paramView, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(104281);
+    AppMethodBeat.i(12823);
     super.a(paramView, paramInt, paramLong);
-    paramView = this.ejE.iD(paramInt).contact.field_username;
+    paramView = this.fwq.kQ(paramInt);
+    if (paramView == null)
+    {
+      Log.e("MicroMsg.SeeMemberRecordUI", "item is null!");
+      AppMethodBeat.o(12823);
+      return;
+    }
+    if (paramView.contact == null)
+    {
+      Log.e("MicroMsg.SeeMemberRecordUI", "contact is null!");
+      AppMethodBeat.o(12823);
+      return;
+    }
+    paramView = paramView.contact.field_username;
     hideVKB();
     Intent localIntent = new Intent(this, SelectedMemberChattingRecordUI.class);
-    localIntent.putExtra("RoomInfo_Id", this.egF);
+    localIntent.putExtra("RoomInfo_Id", this.fss);
     localIntent.putExtra("room_member", paramView);
-    localIntent.putExtra("title", getString(2131303032));
-    startActivity(localIntent);
-    AppMethodBeat.o(104281);
+    localIntent.putExtra("title", getString(2131762976));
+    paramView = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramView.adn(), "com/tencent/mm/chatroom/ui/SeeMemberRecordUI", "doSeeMemberRecord", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramView.lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/chatroom/ui/SeeMemberRecordUI", "doSeeMemberRecord", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(12823);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(104282);
+    AppMethodBeat.i(12824);
     super.onCreate(paramBundle);
     if (Build.VERSION.SDK_INT >= 21)
     {
       paramBundle = TransitionInflater.from(this).inflateTransition(17760258);
-      paramBundle.excludeTarget(getWindow().getDecorView().findViewById(2131820956), true);
+      paramBundle.excludeTarget(getWindow().getDecorView().findViewById(2131296345), true);
       paramBundle.excludeTarget(16908335, true);
       getWindow().setEnterTransition(paramBundle);
     }
-    AppMethodBeat.o(104282);
+    AppMethodBeat.o(12824);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -55,7 +72,7 @@ public class SeeMemberRecordUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.SeeMemberRecordUI
  * JD-Core Version:    0.7.0.1
  */

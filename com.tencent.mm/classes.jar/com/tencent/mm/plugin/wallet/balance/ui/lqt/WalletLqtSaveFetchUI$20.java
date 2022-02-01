@@ -1,20 +1,19 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletLqtSaveFetchUI$20
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  WalletLqtSaveFetchUI$20(WalletLqtSaveFetchUI paramWalletLqtSaveFetchUI, String paramString) {}
+  WalletLqtSaveFetchUI$20(WalletLqtSaveFetchUI paramWalletLqtSaveFetchUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    AppMethodBeat.i(142338);
-    e.m(this.tRZ.getContext(), this.tSi, false);
-    AppMethodBeat.o(142338);
+    AppMethodBeat.i(187119);
+    if ((WalletLqtSaveFetchUI.x(this.zMe) == 2) && (this.zMe.isHandleAutoShowNormalStWcKb())) {
+      this.zMe.showNormalStWcKb();
+    }
+    AppMethodBeat.o(187119);
   }
 }
 

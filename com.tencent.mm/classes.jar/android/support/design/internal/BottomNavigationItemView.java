@@ -9,11 +9,14 @@ import android.support.v4.content.b;
 import android.support.v4.graphics.drawable.a;
 import android.support.v4.view.r;
 import android.support.v4.view.t;
+import android.support.v4.widget.q;
 import android.support.v7.view.menu.j;
 import android.support.v7.view.menu.p.a;
 import android.support.v7.widget.bb;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
@@ -23,18 +26,19 @@ public class BottomNavigationItemView
   extends FrameLayout
   implements p.a
 {
-  private static final int[] dP = { 16842912 };
-  private final int dQ;
-  private final int dR;
-  private final float dS;
-  private final float dT;
-  private boolean dU;
-  private ImageView dV;
-  private final TextView dW;
-  private final TextView dX;
-  private int dY = -1;
-  private j dZ;
-  private ColorStateList ea;
+  private static final int[] gZ = { 16842912 };
+  private ColorStateList eH;
+  private final int ha;
+  private float hb;
+  private float hc;
+  private float hd;
+  private int he;
+  private boolean hf;
+  private ImageView hg;
+  private final TextView hh;
+  private final TextView hi;
+  private int hj = -1;
+  private j hk;
   
   public BottomNavigationItemView(Context paramContext)
   {
@@ -50,52 +54,81 @@ public class BottomNavigationItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramAttributeSet = getResources();
-    paramInt = paramAttributeSet.getDimensionPixelSize(2131428286);
-    int i = paramAttributeSet.getDimensionPixelSize(2131428279);
-    this.dQ = paramAttributeSet.getDimensionPixelSize(2131428284);
-    this.dR = (paramInt - i);
-    this.dS = (i * 1.0F / paramInt);
-    this.dT = (paramInt * 1.0F / i);
-    LayoutInflater.from(paramContext).inflate(2130969304, this, true);
-    setBackgroundResource(2130838505);
-    this.dV = ((ImageView)findViewById(2131820929));
-    this.dW = ((TextView)findViewById(2131823371));
-    this.dX = ((TextView)findViewById(2131823372));
+    LayoutInflater.from(paramContext).inflate(2131493692, this, true);
+    setBackgroundResource(2131231891);
+    this.ha = paramAttributeSet.getDimensionPixelSize(2131166101);
+    this.hg = ((ImageView)findViewById(2131300874));
+    this.hh = ((TextView)findViewById(2131304841));
+    this.hi = ((TextView)findViewById(2131301309));
+    t.p(this.hh, 2);
+    t.p(this.hi, 2);
+    setFocusable(true);
+    b(this.hh.getTextSize(), this.hi.getTextSize());
+  }
+  
+  private static void a(View paramView, float paramFloat1, float paramFloat2, int paramInt)
+  {
+    paramView.setScaleX(paramFloat1);
+    paramView.setScaleY(paramFloat2);
+    paramView.setVisibility(paramInt);
+  }
+  
+  private static void a(View paramView, int paramInt1, int paramInt2)
+  {
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)paramView.getLayoutParams();
+    localLayoutParams.topMargin = paramInt1;
+    localLayoutParams.gravity = paramInt2;
+    paramView.setLayoutParams(localLayoutParams);
+  }
+  
+  private void b(float paramFloat1, float paramFloat2)
+  {
+    this.hb = (paramFloat1 - paramFloat2);
+    this.hc = (1.0F * paramFloat2 / paramFloat1);
+    this.hd = (1.0F * paramFloat1 / paramFloat2);
   }
   
   public final void a(j paramj)
   {
-    this.dZ = paramj;
+    this.hk = paramj;
     setCheckable(paramj.isCheckable());
     setChecked(paramj.isChecked());
     setEnabled(paramj.isEnabled());
     setIcon(paramj.getIcon());
     setTitle(paramj.getTitle());
     setId(paramj.getItemId());
-    setContentDescription(paramj.getContentDescription());
+    if (!TextUtils.isEmpty(paramj.getContentDescription())) {
+      setContentDescription(paramj.getContentDescription());
+    }
     bb.a(this, paramj.getTooltipText());
+    if (paramj.isVisible()) {}
+    for (int i = 0;; i = 8)
+    {
+      setVisibility(i);
+      return;
+    }
   }
   
-  public final boolean aE()
+  public final boolean be()
   {
     return false;
   }
   
   public j getItemData()
   {
-    return this.dZ;
+    return this.hk;
   }
   
   public int getItemPosition()
   {
-    return this.dY;
+    return this.hj;
   }
   
   public int[] onCreateDrawableState(int paramInt)
   {
     int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
-    if ((this.dZ != null) && (this.dZ.isCheckable()) && (this.dZ.isChecked())) {
-      mergeDrawableStates(arrayOfInt, dP);
+    if ((this.hk != null) && (this.hk.isCheckable()) && (this.hk.isChecked())) {
+      mergeDrawableStates(arrayOfInt, gZ);
     }
     return arrayOfInt;
   }
@@ -107,61 +140,73 @@ public class BottomNavigationItemView
   
   public void setChecked(boolean paramBoolean)
   {
-    this.dX.setPivotX(this.dX.getWidth() / 2);
-    this.dX.setPivotY(this.dX.getBaseline());
-    this.dW.setPivotX(this.dW.getWidth() / 2);
-    this.dW.setPivotY(this.dW.getBaseline());
-    FrameLayout.LayoutParams localLayoutParams;
-    if (this.dU) {
-      if (paramBoolean)
-      {
-        localLayoutParams = (FrameLayout.LayoutParams)this.dV.getLayoutParams();
-        localLayoutParams.gravity = 49;
-        localLayoutParams.topMargin = this.dQ;
-        this.dV.setLayoutParams(localLayoutParams);
-        this.dX.setVisibility(0);
-        this.dX.setScaleX(1.0F);
-        this.dX.setScaleY(1.0F);
-        this.dW.setVisibility(4);
-      }
+    this.hi.setPivotX(this.hi.getWidth() / 2);
+    this.hi.setPivotY(this.hi.getBaseline());
+    this.hh.setPivotX(this.hh.getWidth() / 2);
+    this.hh.setPivotY(this.hh.getBaseline());
+    switch (this.he)
+    {
     }
     for (;;)
     {
       refreshDrawableState();
+      setSelected(paramBoolean);
       return;
-      localLayoutParams = (FrameLayout.LayoutParams)this.dV.getLayoutParams();
-      localLayoutParams.gravity = 17;
-      localLayoutParams.topMargin = this.dQ;
-      this.dV.setLayoutParams(localLayoutParams);
-      this.dX.setVisibility(4);
-      this.dX.setScaleX(0.5F);
-      this.dX.setScaleY(0.5F);
-      break;
+      if (this.hf)
+      {
+        if (paramBoolean)
+        {
+          a(this.hg, this.ha, 49);
+          a(this.hi, 1.0F, 1.0F, 0);
+        }
+        for (;;)
+        {
+          this.hh.setVisibility(4);
+          break;
+          a(this.hg, this.ha, 17);
+          a(this.hi, 0.5F, 0.5F, 4);
+        }
+      }
       if (paramBoolean)
       {
-        localLayoutParams = (FrameLayout.LayoutParams)this.dV.getLayoutParams();
-        localLayoutParams.gravity = 49;
-        localLayoutParams.topMargin = (this.dQ + this.dR);
-        this.dV.setLayoutParams(localLayoutParams);
-        this.dX.setVisibility(0);
-        this.dW.setVisibility(4);
-        this.dX.setScaleX(1.0F);
-        this.dX.setScaleY(1.0F);
-        this.dW.setScaleX(this.dS);
-        this.dW.setScaleY(this.dS);
+        a(this.hg, (int)(this.ha + this.hb), 49);
+        a(this.hi, 1.0F, 1.0F, 0);
+        a(this.hh, this.hc, this.hc, 4);
       }
       else
       {
-        localLayoutParams = (FrameLayout.LayoutParams)this.dV.getLayoutParams();
-        localLayoutParams.gravity = 49;
-        localLayoutParams.topMargin = this.dQ;
-        this.dV.setLayoutParams(localLayoutParams);
-        this.dX.setVisibility(4);
-        this.dW.setVisibility(0);
-        this.dX.setScaleX(this.dT);
-        this.dX.setScaleY(this.dT);
-        this.dW.setScaleX(1.0F);
-        this.dW.setScaleY(1.0F);
+        a(this.hg, this.ha, 49);
+        a(this.hi, this.hd, this.hd, 4);
+        a(this.hh, 1.0F, 1.0F, 0);
+        continue;
+        if (paramBoolean)
+        {
+          a(this.hg, this.ha, 49);
+          a(this.hi, 1.0F, 1.0F, 0);
+        }
+        for (;;)
+        {
+          this.hh.setVisibility(4);
+          break;
+          a(this.hg, this.ha, 17);
+          a(this.hi, 0.5F, 0.5F, 4);
+        }
+        if (paramBoolean)
+        {
+          a(this.hg, (int)(this.ha + this.hb), 49);
+          a(this.hi, 1.0F, 1.0F, 0);
+          a(this.hh, this.hc, this.hc, 4);
+        }
+        else
+        {
+          a(this.hg, this.ha, 49);
+          a(this.hi, this.hd, this.hd, 4);
+          a(this.hh, 1.0F, 1.0F, 0);
+          continue;
+          a(this.hg, this.ha, 17);
+          this.hi.setVisibility(8);
+          this.hh.setVisibility(8);
+        }
       }
     }
   }
@@ -169,12 +214,12 @@ public class BottomNavigationItemView
   public void setEnabled(boolean paramBoolean)
   {
     super.setEnabled(paramBoolean);
-    this.dW.setEnabled(paramBoolean);
-    this.dX.setEnabled(paramBoolean);
-    this.dV.setEnabled(paramBoolean);
+    this.hh.setEnabled(paramBoolean);
+    this.hi.setEnabled(paramBoolean);
+    this.hg.setEnabled(paramBoolean);
     if (paramBoolean)
     {
-      t.a(this, r.T(getContext()));
+      t.a(this, r.V(getContext()));
       return;
     }
     t.a(this, null);
@@ -192,58 +237,122 @@ public class BottomNavigationItemView
     }
     for (;;)
     {
-      localObject = a.e(paramDrawable).mutate();
-      a.a((Drawable)localObject, this.ea);
-      this.dV.setImageDrawable((Drawable)localObject);
+      localObject = a.i(paramDrawable).mutate();
+      a.a((Drawable)localObject, this.eH);
+      this.hg.setImageDrawable((Drawable)localObject);
       return;
       label40:
       paramDrawable = ((Drawable.ConstantState)localObject).newDrawable();
     }
   }
   
+  public void setIconSize(int paramInt)
+  {
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.hg.getLayoutParams();
+    localLayoutParams.width = paramInt;
+    localLayoutParams.height = paramInt;
+    this.hg.setLayoutParams(localLayoutParams);
+  }
+  
   public void setIconTintList(ColorStateList paramColorStateList)
   {
-    this.ea = paramColorStateList;
-    if (this.dZ != null) {
-      setIcon(this.dZ.getIcon());
+    this.eH = paramColorStateList;
+    if (this.hk != null) {
+      setIcon(this.hk.getIcon());
     }
   }
   
   public void setItemBackground(int paramInt)
   {
     if (paramInt == 0) {}
-    for (Drawable localDrawable = null;; localDrawable = b.k(getContext(), paramInt))
+    for (Drawable localDrawable = null;; localDrawable = b.l(getContext(), paramInt))
     {
-      t.a(this, localDrawable);
+      setItemBackground(localDrawable);
       return;
     }
   }
   
-  public void setItemPosition(int paramInt)
+  public void setItemBackground(Drawable paramDrawable)
   {
-    this.dY = paramInt;
+    t.a(this, paramDrawable);
   }
   
-  public void setShiftingMode(boolean paramBoolean)
+  public void setItemPosition(int paramInt)
   {
-    this.dU = paramBoolean;
+    this.hj = paramInt;
+  }
+  
+  public void setLabelVisibilityMode(int paramInt)
+  {
+    if (this.he != paramInt)
+    {
+      this.he = paramInt;
+      if (this.hk == null) {
+        break label38;
+      }
+    }
+    label38:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (paramInt != 0) {
+        setChecked(this.hk.isChecked());
+      }
+      return;
+    }
+  }
+  
+  public void setShifting(boolean paramBoolean)
+  {
+    if (this.hf != paramBoolean)
+    {
+      this.hf = paramBoolean;
+      if (this.hk == null) {
+        break label38;
+      }
+    }
+    label38:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        setChecked(this.hk.isChecked());
+      }
+      return;
+    }
+  }
+  
+  public void setTextAppearanceActive(int paramInt)
+  {
+    q.d(this.hi, paramInt);
+    b(this.hh.getTextSize(), this.hi.getTextSize());
+  }
+  
+  public void setTextAppearanceInactive(int paramInt)
+  {
+    q.d(this.hh, paramInt);
+    b(this.hh.getTextSize(), this.hi.getTextSize());
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
-    this.dW.setTextColor(paramColorStateList);
-    this.dX.setTextColor(paramColorStateList);
+    if (paramColorStateList != null)
+    {
+      this.hh.setTextColor(paramColorStateList);
+      this.hi.setTextColor(paramColorStateList);
+    }
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    this.dW.setText(paramCharSequence);
-    this.dX.setText(paramCharSequence);
+    this.hh.setText(paramCharSequence);
+    this.hi.setText(paramCharSequence);
+    if ((this.hk == null) || (TextUtils.isEmpty(this.hk.getContentDescription()))) {
+      setContentDescription(paramCharSequence);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.internal.BottomNavigationItemView
  * JD-Core Version:    0.7.0.1
  */

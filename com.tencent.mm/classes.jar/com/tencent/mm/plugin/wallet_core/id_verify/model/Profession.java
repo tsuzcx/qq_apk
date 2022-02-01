@@ -9,28 +9,28 @@ public class Profession
   implements Parcelable
 {
   public static final Parcelable.Creator<Profession> CREATOR;
-  public String ues;
-  public int uet;
+  public String Aap;
+  public int Aaq;
   
   static
   {
-    AppMethodBeat.i(46657);
-    CREATOR = new Profession.1();
-    AppMethodBeat.o(46657);
+    AppMethodBeat.i(70163);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(70163);
   }
   
   protected Profession(Parcel paramParcel)
   {
-    AppMethodBeat.i(46655);
-    this.ues = paramParcel.readString();
-    this.uet = paramParcel.readInt();
-    AppMethodBeat.o(46655);
+    AppMethodBeat.i(70161);
+    this.Aap = paramParcel.readString();
+    this.Aaq = paramParcel.readInt();
+    AppMethodBeat.o(70161);
   }
   
   public Profession(String paramString, int paramInt)
   {
-    this.ues = paramString;
-    this.uet = paramInt;
+    this.Aap = paramString;
+    this.Aaq = paramInt;
   }
   
   public int describeContents()
@@ -40,15 +40,15 @@ public class Profession
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(46656);
-    paramParcel.writeString(this.ues);
-    paramParcel.writeInt(this.uet);
-    AppMethodBeat.o(46656);
+    AppMethodBeat.i(70162);
+    paramParcel.writeString(this.Aap);
+    paramParcel.writeInt(this.Aaq);
+    AppMethodBeat.o(70162);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.model.Profession
  * JD-Core Version:    0.7.0.1
  */

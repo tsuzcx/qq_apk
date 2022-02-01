@@ -1,14 +1,14 @@
 package com.tencent.mm.ipcinvoker.d;
 
 import android.os.Bundle;
-import com.tencent.mm.ipcinvoker.c;
+import com.tencent.mm.ipcinvoker.d;
 
 public abstract interface e
-  extends c<Bundle>
+  extends d<Bundle>
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.d.e
  * JD-Core Version:    0.7.0.1
  */

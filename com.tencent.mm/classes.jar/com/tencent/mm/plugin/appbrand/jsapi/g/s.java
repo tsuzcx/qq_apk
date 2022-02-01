@@ -2,60 +2,47 @@ package com.tencent.mm.plugin.appbrand.jsapi.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.b;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public final class s
-  extends a
+  extends b
 {
-  public static final int CTRL_INDEX = 343;
-  public static final String NAME = "removeMapMarkers";
+  public static final int CTRL_INDEX = 141;
+  public static final String NAME = "moveToMapLocation";
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(93870);
+    AppMethodBeat.i(143686);
     super.a(paramc, paramJSONObject, paramInt);
     if (paramJSONObject == null)
     {
-      ab.e("MicroMsg.JsApiRemoveMapMarkers", "data is null");
-      paramc.h(paramInt, j("fail:invalid data", null));
-      AppMethodBeat.o(93870);
+      ad.e("MicroMsg.JsApiMoveToMapLocation", "data is null");
+      paramc.h(paramInt, e("fail:invalid data", null));
+      AppMethodBeat.o(143686);
       return;
     }
-    ab.i("MicroMsg.JsApiRemoveMapMarkers", "data:%s", new Object[] { paramJSONObject });
-    b localb = f(paramc, paramJSONObject);
+    ad.i("MicroMsg.JsApiMoveToMapLocation", "moveToMapLocation data:%s", new Object[] { paramJSONObject });
+    com.tencent.mm.plugin.appbrand.jsapi.g.a.b localb = h(paramc, paramJSONObject);
     if (localb == null)
     {
-      ab.e("MicroMsg.JsApiRemoveMapMarkers", "mapView is null, return");
-      paramc.h(paramInt, j("fail:mapview is null", null));
-      AppMethodBeat.o(93870);
+      ad.e("MicroMsg.JsApiMoveToMapLocation", "mapView is null, return");
+      paramc.h(paramInt, e("fail:mapview is null", null));
+      AppMethodBeat.o(143686);
       return;
     }
-    if (paramJSONObject.has("markers")) {
-      try
-      {
-        paramJSONObject = new JSONArray(paramJSONObject.optString("markers"));
-        int i = 0;
-        while (i < paramJSONObject.length())
-        {
-          localb.Ci(paramJSONObject.getString(i));
-          i += 1;
-        }
-        a(paramc, paramInt, j("ok", null), true, localb.aDx());
-      }
-      catch (JSONException paramJSONObject)
-      {
-        ab.printErrStackTrace("MicroMsg.JsApiRemoveMapMarkers", paramJSONObject, "", new Object[0]);
-        paramc.h(paramInt, j("fail:internal error", null));
-        AppMethodBeat.o(93870);
-        return;
-      }
+    if ((paramJSONObject.has("latitude")) || (paramJSONObject.has("longitude"))) {
+      localb.f(bt.getDouble(paramJSONObject.optString("latitude"), 0.0D), bt.getDouble(paramJSONObject.optString("longitude"), 0.0D));
     }
-    AppMethodBeat.o(93870);
+    for (;;)
+    {
+      a(paramc, paramInt, e("ok", null), true, localb.bat());
+      AppMethodBeat.o(143686);
+      return;
+      localb.bar();
+    }
   }
 }
 

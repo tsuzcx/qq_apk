@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.wallet.pay.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.al.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class b
 {
-  private static long tVB = 0L;
+  private static long zPP = 0L;
   
-  public static void av(String paramString, int paramInt1, int paramInt2)
+  public static void ax(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(45937);
+    AppMethodBeat.i(69280);
     long l = System.currentTimeMillis();
-    if (l - tVB > 1000L)
+    if (l - zPP > 1000L)
     {
-      tVB = l;
-      if (bo.isNullOrNil(paramString)) {
+      zPP = l;
+      if (bt.isNullOrNil(paramString)) {
         break label269;
       }
       if (!paramString.startsWith("sns_aa_")) {
@@ -29,11 +29,11 @@ public final class b
     {
       if (paramString != null)
       {
-        ab.v("NetSceneCancelPayHelper", "start cancelPay request");
-        com.tencent.mm.kernel.g.RM();
-        com.tencent.mm.kernel.g.RK().eHt.a(paramString, 0);
+        ad.v("NetSceneCancelPayHelper", "start cancelPay request");
+        com.tencent.mm.kernel.g.afC();
+        com.tencent.mm.kernel.g.afA().gcy.a(paramString, 0);
       }
-      AppMethodBeat.o(45937);
+      AppMethodBeat.o(69280);
       return;
       label85:
       if (paramString.startsWith("sns_tf_")) {
@@ -60,7 +60,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.b.b
  * JD-Core Version:    0.7.0.1
  */

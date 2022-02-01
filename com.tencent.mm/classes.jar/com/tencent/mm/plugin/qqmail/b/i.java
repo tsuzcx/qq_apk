@@ -3,58 +3,58 @@ package com.tencent.mm.plugin.qqmail.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
 import java.io.IOException;
 
 public final class i
 {
-  public k pIH;
+  public k uLa;
   
   public i(String paramString)
   {
-    AppMethodBeat.i(67928);
-    this.pIH = new k(paramString, 10);
-    AppMethodBeat.o(67928);
+    AppMethodBeat.i(122662);
+    this.uLa = new k(paramString, 10);
+    AppMethodBeat.o(122662);
   }
   
-  public static String db(String paramString, int paramInt)
+  public static String ef(String paramString, int paramInt)
   {
-    AppMethodBeat.i(67930);
+    AppMethodBeat.i(122664);
     if ((paramString == null) || (paramString.length() == 0)) {}
-    for (paramString = g.RL().Ru().get(9, null);; paramString = paramString + "_" + paramInt)
+    for (paramString = g.afB().afk().get(9, null);; paramString = paramString + "_" + paramInt)
     {
-      AppMethodBeat.o(67930);
+      AppMethodBeat.o(122664);
       return paramString;
     }
   }
   
-  public final j da(String paramString, int paramInt)
+  public final j ee(String paramString, int paramInt)
   {
-    AppMethodBeat.i(67929);
-    paramString = k.readFromFile(this.pIH.pIR + db(paramString, paramInt));
+    AppMethodBeat.i(122663);
+    paramString = k.readFromFile(this.uLa.uLk + ef(paramString, paramInt));
     if ((paramString == null) || (paramString.length == 0))
     {
-      AppMethodBeat.o(67929);
+      AppMethodBeat.o(122663);
       return null;
     }
     try
     {
       paramString = (j)new j().parseFrom(paramString);
-      AppMethodBeat.o(67929);
+      AppMethodBeat.o(122663);
       return paramString;
     }
     catch (IOException paramString)
     {
-      ab.printErrStackTrace("MicroMsg.DraftBoxMgr", paramString, "", new Object[0]);
-      AppMethodBeat.o(67929);
+      ad.printErrStackTrace("MicroMsg.DraftBoxMgr", paramString, "", new Object[0]);
+      AppMethodBeat.o(122663);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.i
  * JD-Core Version:    0.7.0.1
  */

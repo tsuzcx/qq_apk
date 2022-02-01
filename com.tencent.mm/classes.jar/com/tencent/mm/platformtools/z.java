@@ -1,205 +1,132 @@
 package com.tencent.mm.platformtools;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.av;
-import com.tencent.mm.model.r;
-import com.tencent.mm.modelsimple.s.a;
-import com.tencent.mm.plugin.account.friend.a.l;
-import com.tencent.mm.plugin.account.friend.a.l.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.ui.BioHelperUI;
-import com.tencent.mm.protocal.protobuf.aek;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.cmf;
 
 public final class z
 {
-  public static void a(Context paramContext, s.a parama, int paramInt)
+  public static cmf BE(String paramString)
   {
-    AppMethodBeat.i(124592);
-    paramContext = new Intent(paramContext, BioHelperUI.class);
-    paramContext.putExtra("k_type", parama.type);
-    paramContext.putExtra("KVoiceHelpCode", paramInt);
-    paramContext.putExtra("Kvertify_key", parama.crs);
-    paramContext.putExtra("KVoiceHelpUrl", parama.fPF);
-    paramContext.putExtra("KVoiceHelpWording", parama.cyA);
-    paramContext.putExtra("Kusername", parama.username);
-    if (parama.fPG != null) {
-      paramContext.getExtras().putAll(parama.fPG);
+    AppMethodBeat.i(132979);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(132979);
+      return null;
     }
-    AppMethodBeat.o(124592);
+    cmf localcmf = new cmf();
+    localcmf.aEE(paramString);
+    AppMethodBeat.o(132979);
+    return localcmf;
   }
   
-  public static void cA(Context paramContext)
+  public static SKBuiltinBuffer_t BF(String paramString)
   {
-    AppMethodBeat.i(124590);
-    String str1 = paramContext.getString(2131296531);
-    String str2 = paramContext.getString(2131296530);
-    com.tencent.mm.ui.base.h.d(paramContext, str1, "", paramContext.getString(2131298501), paramContext.getString(2131298499), new z.3(str2, paramContext), null);
-    AppMethodBeat.o(124590);
+    AppMethodBeat.i(132982);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(132982);
+      return null;
+    }
+    paramString = Base64.decode(paramString, 0);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(132982);
+      return null;
+    }
+    SKBuiltinBuffer_t localSKBuiltinBuffer_t = new SKBuiltinBuffer_t();
+    localSKBuiltinBuffer_t.setBuffer(paramString);
+    AppMethodBeat.o(132982);
+    return localSKBuiltinBuffer_t;
   }
   
-  public static void f(Context paramContext, String paramString, int paramInt)
+  public static String a(b paramb)
   {
-    AppMethodBeat.i(124593);
-    paramString = com.tencent.mm.h.a.kO(paramString);
-    if (paramString != null)
+    AppMethodBeat.i(132980);
+    if (paramb == null)
     {
-      if (paramString.showType == 8)
-      {
-        com.tencent.mm.plugin.account.a.b.a.b(paramContext, paramString.url, paramInt, false);
-        AppMethodBeat.o(124593);
-        return;
-      }
-      String str1 = paramContext.getString(2131297018);
-      String str2 = paramContext.getString(2131296888);
-      z.5 local5 = new z.5(paramContext, paramString, paramInt);
-      if ((paramString.showType == 1) || (paramString.showType == 4))
-      {
-        if (bo.isNullOrNil(paramString.url))
-        {
-          com.tencent.mm.ui.base.h.b(paramContext, paramString.desc, paramString.Title, true);
-          AppMethodBeat.o(124593);
-          return;
-        }
-        com.tencent.mm.ui.base.h.d(paramContext, paramString.desc, paramString.Title, str1, str2, local5, null);
-      }
-      AppMethodBeat.o(124593);
-      return;
+      AppMethodBeat.o(132980);
+      return null;
     }
-    AppMethodBeat.o(124593);
+    paramb = paramb.eBA();
+    AppMethodBeat.o(132980);
+    return paramb;
   }
   
-  public static void o(Context paramContext, String paramString1, String paramString2)
+  public static String a(cmf paramcmf)
   {
-    AppMethodBeat.i(124591);
-    paramString1 = com.tencent.mm.h.a.kO(paramString1);
-    if (paramString1 != null) {
-      paramString1.a(paramContext, new z.4(paramString2, paramContext), null);
+    if (paramcmf == null) {
+      return null;
     }
-    AppMethodBeat.o(124591);
+    return paramcmf.Ehn;
   }
   
-  public static void showAddrBookUploadConfirm(final Activity paramActivity, final Runnable paramRunnable, boolean paramBoolean, int paramInt)
+  public static String a(cmf paramcmf, String paramString)
   {
-    AppMethodBeat.i(124587);
-    if ((l.aqq() != l.a.gxB) && (l.aqq() != l.a.gxC)) {
-      ab.e("MicroMsg.PostLoginUtil", "not successfully binded, skip addrbook confirm");
+    if (paramcmf == null) {
+      return paramString;
     }
-    for (;;)
-    {
-      if (paramRunnable != null) {
-        paramRunnable.run();
-      }
-      AppMethodBeat.o(124587);
-      return;
-      if (bo.e((Boolean)g.RL().Ru().get(12322, null)))
-      {
-        ab.d("MicroMsg.PostLoginUtil", "addrbook upload confirmed");
-      }
-      else if ((!paramBoolean) && (bo.e((Boolean)g.RL().Ru().get(12323, null))))
-      {
-        ab.d("MicroMsg.PostLoginUtil", "addrbook upload login confirmed showed");
-      }
-      else
-      {
-        l.dx(false);
-        String str = bo.nullAsNil(bo.hh(paramActivity));
-        if ((str.length() <= 0) || (!str.equals(g.RL().Ru().get(6, null)))) {
-          break;
-        }
-        l.dx(true);
-        ab.i("MicroMsg.PostLoginUtil", "same none-nil phone number, leave it");
-      }
-    }
-    com.tencent.mm.ui.base.h.a(paramActivity, 2131297553, 2131297087, 2131297115, 2131297014, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(124582);
-        ab.i("MicroMsg.PostLoginUtil", "[cpan] kv report logid:%d scene:%d", new Object[] { Integer.valueOf(11438), Integer.valueOf(this.fwD) });
-        com.tencent.mm.plugin.report.service.h.qsU.e(11438, new Object[] { Integer.valueOf(this.fwD) });
-        l.dx(true);
-        z.syncUploadMContactStatus(true, false);
-        a.aof();
-        if (paramRunnable != null) {
-          paramRunnable.run();
-        }
-        paramActivity.getSharedPreferences(ah.dsP(), 0).edit().putBoolean("login_upload_contacts_already_displayed", true).commit();
-        AppMethodBeat.o(124582);
-      }
-    }, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(124583);
-        l.dx(false);
-        z.syncUploadMContactStatus(false, false);
-        if (this.gjS != null) {
-          this.gjS.run();
-        }
-        paramActivity.getSharedPreferences(ah.dsP(), 0).edit().putBoolean("login_upload_contacts_already_displayed", true).commit();
-        AppMethodBeat.o(124583);
-      }
-    });
-    g.RL().Ru().set(12323, Boolean.TRUE);
-    AppMethodBeat.o(124587);
+    return paramcmf.Ehn;
   }
   
-  public static void syncUploadMContactStatus(boolean paramBoolean1, boolean paramBoolean2)
+  public static byte[] a(SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
   {
-    AppMethodBeat.i(124588);
-    int i = r.Zr();
-    if (paramBoolean1)
+    AppMethodBeat.i(132977);
+    if ((paramSKBuiltinBuffer_t == null) || (paramSKBuiltinBuffer_t.getBuffer() == null))
     {
-      i &= 0xFFFDFFFF;
-      ab.d("MicroMsg.PostLoginUtil", "Reg By mobile update = ".concat(String.valueOf(i)));
-      g.RL().Ru().set(7, Integer.valueOf(i));
-      if (paramBoolean1) {
-        break label132;
-      }
+      AppMethodBeat.o(132977);
+      return null;
     }
-    label132:
-    for (i = 1;; i = 2)
-    {
-      aek localaek = new aek();
-      localaek.wXn = 17;
-      localaek.pKC = i;
-      ((j)g.E(j.class)).Yz().c(new j.a(23, localaek));
-      if (paramBoolean2) {
-        com.tencent.mm.plugin.account.a.a.gmP.BO();
-      }
-      AppMethodBeat.o(124588);
-      return;
-      i |= 0x20000;
-      break;
-    }
+    paramSKBuiltinBuffer_t = paramSKBuiltinBuffer_t.getBuffer().toByteArray();
+    AppMethodBeat.o(132977);
+    return paramSKBuiltinBuffer_t;
   }
   
-  public static void wz(String paramString)
+  public static byte[] a(SKBuiltinBuffer_t paramSKBuiltinBuffer_t, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(124589);
-    av.flM.ao("login_user_name", paramString);
-    AppMethodBeat.o(124589);
+    AppMethodBeat.i(132978);
+    if ((paramSKBuiltinBuffer_t == null) || (paramSKBuiltinBuffer_t.getBuffer() == null))
+    {
+      AppMethodBeat.o(132978);
+      return paramArrayOfByte;
+    }
+    paramSKBuiltinBuffer_t = paramSKBuiltinBuffer_t.getBuffer().toByteArray();
+    AppMethodBeat.o(132978);
+    return paramSKBuiltinBuffer_t;
+  }
+  
+  public static SKBuiltinBuffer_t am(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(132976);
+    if (paramArrayOfByte == null)
+    {
+      AppMethodBeat.o(132976);
+      return null;
+    }
+    SKBuiltinBuffer_t localSKBuiltinBuffer_t = new SKBuiltinBuffer_t();
+    localSKBuiltinBuffer_t.setBuffer(paramArrayOfByte);
+    AppMethodBeat.o(132976);
+    return localSKBuiltinBuffer_t;
+  }
+  
+  public static String b(SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
+  {
+    AppMethodBeat.i(132981);
+    if ((paramSKBuiltinBuffer_t == null) || (paramSKBuiltinBuffer_t.getBuffer() == null))
+    {
+      AppMethodBeat.o(132981);
+      return null;
+    }
+    paramSKBuiltinBuffer_t = paramSKBuiltinBuffer_t.getBuffer().eBA();
+    AppMethodBeat.o(132981);
+    return paramSKBuiltinBuffer_t;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.platformtools.z
  * JD-Core Version:    0.7.0.1
  */

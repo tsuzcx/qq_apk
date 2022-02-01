@@ -4,7 +4,6 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.mm.e.a.l;
 import com.tencent.mm.e.a.m;
-import com.tencent.mm.wear.a.c.d;
 import com.tencent.mm.wear.app.a.e;
 import com.tencent.mm.wear.app.ui.MMActivity;
 import java.io.IOException;
@@ -17,24 +16,24 @@ import javax.crypto.Cipher;
 public final class a
   extends com.tencent.mm.wear.app.g.a
 {
-  private e aaS;
-  private c aaT;
+  private e aet;
+  private c aeu;
   
-  private boolean lP()
+  private boolean mC()
   {
     Object localObject1 = new com.tencent.mm.wear.app.a.g();
-    ((com.tencent.mm.wear.app.a.g)localObject1).aaO = 10001;
-    ((com.tencent.mm.wear.app.a.g)localObject1).data = h.lN().getBytes();
-    localObject1 = this.aaS.a((com.tencent.mm.wear.app.a.g)localObject1);
-    if ((((com.tencent.mm.wear.app.a.h)localObject1).aaw != 0) || (((com.tencent.mm.wear.app.a.h)localObject1).data == null))
+    ((com.tencent.mm.wear.app.a.g)localObject1).aep = 10001;
+    ((com.tencent.mm.wear.app.a.g)localObject1).data = h.mA().getBytes();
+    localObject1 = this.aet.a((com.tencent.mm.wear.app.a.g)localObject1);
+    if ((((com.tencent.mm.wear.app.a.h)localObject1).adX != 0) || (((com.tencent.mm.wear.app.a.h)localObject1).data == null))
     {
-      d.a("MicroMsg.InitCoreTask", "auth error %s", new Object[] { ((com.tencent.mm.wear.app.a.h)localObject1).toString() });
-      com.tencent.mm.wear.a.b.a.aiT.post(new b(this, 10001, 131072));
+      com.tencent.mm.wear.a.c.d.a("MicroMsg.InitCoreTask", "auth error %s", new Object[] { ((com.tencent.mm.wear.app.a.h)localObject1).toString() });
+      com.tencent.mm.wear.a.b.a.amv.post(new b(this, 10001, 131072));
       return false;
     }
-    byte[] arrayOfByte = com.tencent.mm.c.a.a.a.kZ();
+    byte[] arrayOfByte = com.tencent.mm.c.b.a.a.lj();
     localObject1 = ((com.tencent.mm.wear.app.a.h)localObject1).data;
-    d.c("MicroMsg.InitCoreTask", "auth randomKey=%s publicKey=%s localNodeId=%s", new Object[] { com.tencent.mm.a.c.g(arrayOfByte), com.tencent.mm.a.c.g((byte[])localObject1), h.mb().lS().lN() });
+    com.tencent.mm.wear.a.c.d.c("MicroMsg.InitCoreTask", "auth randomKey=%s publicKey=%s localNodeId=%s", new Object[] { com.tencent.mm.a.d.g(arrayOfByte), com.tencent.mm.a.d.g((byte[])localObject1), h.mO().mF().mA() });
     Object localObject2;
     try
     {
@@ -46,7 +45,7 @@ public final class a
       localObject1 = ((Cipher)localObject1).doFinal(arrayOfByte);
       if (localObject1 == null)
       {
-        com.tencent.mm.wear.a.b.a.aiT.post(new b(this, 10001, 65536));
+        com.tencent.mm.wear.a.b.a.amv.post(new b(this, 10001, 65536));
         return false;
       }
     }
@@ -54,64 +53,64 @@ public final class a
     {
       for (;;)
       {
-        d.a("MicroMsg.InitCoreTask", localException1);
+        com.tencent.mm.wear.a.c.d.a("MicroMsg.InitCoreTask", localException1);
         localObject2 = null;
       }
       Object localObject3 = new com.tencent.mm.wear.app.a.g();
-      ((com.tencent.mm.wear.app.a.g)localObject3).aaO = 10002;
+      ((com.tencent.mm.wear.app.a.g)localObject3).aep = 10002;
       ((com.tencent.mm.wear.app.a.g)localObject3).data = localObject2;
-      localObject3 = this.aaS.a((com.tencent.mm.wear.app.a.g)localObject3);
-      if ((((com.tencent.mm.wear.app.a.h)localObject3).aaw != 0) || (((com.tencent.mm.wear.app.a.h)localObject3).data == null))
+      localObject3 = this.aet.a((com.tencent.mm.wear.app.a.g)localObject3);
+      if ((((com.tencent.mm.wear.app.a.h)localObject3).adX != 0) || (((com.tencent.mm.wear.app.a.h)localObject3).data == null))
       {
-        d.a("MicroMsg.InitCoreTask", "auth error %s", new Object[] { ((com.tencent.mm.wear.app.a.h)localObject3).toString() });
-        com.tencent.mm.wear.a.b.a.aiT.post(new b(this, 10002, 131072));
+        com.tencent.mm.wear.a.c.d.a("MicroMsg.InitCoreTask", "auth error %s", new Object[] { ((com.tencent.mm.wear.app.a.h)localObject3).toString() });
+        com.tencent.mm.wear.a.b.a.amv.post(new b(this, 10002, 131072));
         return false;
       }
       localObject2 = null;
       try
       {
-        arrayOfByte = com.tencent.mm.c.a.a.a.a(((com.tencent.mm.wear.app.a.h)localObject3).data, arrayOfByte);
+        arrayOfByte = com.tencent.mm.c.b.a.a.a(((com.tencent.mm.wear.app.a.h)localObject3).data, arrayOfByte);
         localObject2 = arrayOfByte;
-        d.c("MicroMsg.InitCoreTask", "auth sessionKey=%s", new Object[] { com.tencent.mm.a.c.g(arrayOfByte) });
+        com.tencent.mm.wear.a.c.d.c("MicroMsg.InitCoreTask", "auth sessionKey=%s", new Object[] { com.tencent.mm.a.d.g(arrayOfByte) });
         localObject2 = arrayOfByte;
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          d.a("MicroMsg.InitCoreTask", localException2);
+          com.tencent.mm.wear.a.c.d.a("MicroMsg.InitCoreTask", localException2);
         }
-        h.mb().j(localObject2);
+        h.mO().j(localObject2);
       }
       if (localObject2 == null)
       {
-        com.tencent.mm.wear.a.b.a.aiT.post(new b(this, 10002, 65536));
+        com.tencent.mm.wear.a.b.a.amv.post(new b(this, 10002, 65536));
         return false;
       }
     }
     return true;
   }
   
-  private boolean lQ()
+  private boolean mD()
   {
     l locall = new l();
-    locall.VB = h.lN();
-    locall.VC = Build.MODEL;
-    locall.VD = Build.VERSION.RELEASE;
-    locall.VE = Build.SERIAL;
-    locall.VF = Build.ID;
-    locall.VH = com.tencent.mm.wear.a.a.nH();
-    locall.VI = MMActivity.na();
-    locall.VJ = com.tencent.mm.wear.a.a.a.nJ();
-    locall.VK = Build.VERSION.SDK_INT;
+    locall.Xw = h.mA();
+    locall.Xx = Build.MODEL;
+    locall.Xy = Build.VERSION.RELEASE;
+    locall.Xz = Build.SERIAL;
+    locall.XA = Build.ID;
+    locall.XC = com.tencent.mm.wear.a.a.ov();
+    locall.XD = MMActivity.nN();
+    locall.XE = com.tencent.mm.wear.a.a.a.ox();
+    locall.XF = Build.VERSION.SDK_INT;
     Object localObject = new com.tencent.mm.wear.app.a.g();
-    ((com.tencent.mm.wear.app.a.g)localObject).aaO = 11002;
+    ((com.tencent.mm.wear.app.a.g)localObject).aep = 11002;
     try
     {
-      ((com.tencent.mm.wear.app.a.g)localObject).data = h.mb().k(locall.toByteArray());
+      ((com.tencent.mm.wear.app.a.g)localObject).data = h.mO().k(locall.toByteArray());
       if (((com.tencent.mm.wear.app.a.g)localObject).data == null)
       {
-        com.tencent.mm.wear.a.b.a.aiT.post(new b(this, 11002, 65536));
+        com.tencent.mm.wear.a.b.a.amv.post(new b(this, 11002, 65536));
         return false;
       }
     }
@@ -119,52 +118,52 @@ public final class a
     {
       for (;;)
       {
-        d.a("MicroMsg.InitCoreTask", localIOException2);
+        com.tencent.mm.wear.a.c.d.a("MicroMsg.InitCoreTask", localIOException2);
       }
-      localObject = this.aaS.a((com.tencent.mm.wear.app.a.g)localObject);
-      if ((((com.tencent.mm.wear.app.a.h)localObject).aaw == 0) && (((com.tencent.mm.wear.app.a.h)localObject).data != null))
+      localObject = this.aet.a((com.tencent.mm.wear.app.a.g)localObject);
+      if ((((com.tencent.mm.wear.app.a.h)localObject).adX == 0) && (((com.tencent.mm.wear.app.a.h)localObject).data != null))
       {
-        localObject = h.mb().l(((com.tencent.mm.wear.app.a.h)localObject).data);
+        localObject = h.mO().l(((com.tencent.mm.wear.app.a.h)localObject).data);
         if (localObject == null)
         {
-          d.a("MicroMsg.InitCoreTask", "decryptData = null", new Object[0]);
-          com.tencent.mm.wear.a.b.a.aiT.post(new b(this, 11002, 65536));
+          com.tencent.mm.wear.a.c.d.a("MicroMsg.InitCoreTask", "decryptData = null", new Object[0]);
+          com.tencent.mm.wear.a.b.a.amv.post(new b(this, 11002, 65536));
           return false;
         }
         m localm = new m();
         try
         {
           localm.h((byte[])localObject);
-          d.c("MicroMsg.InitCoreTask", "login success %s %s", new Object[] { localm.Vm, localm.VL });
-          h.mb().a(localm);
+          com.tencent.mm.wear.a.c.d.c("MicroMsg.InitCoreTask", "login success %s %s", new Object[] { localm.Xh, localm.XG });
+          h.mO().a(localm);
           return true;
         }
         catch (IOException localIOException1)
         {
-          d.a("MicroMsg.InitCoreTask", localIOException1);
-          com.tencent.mm.wear.a.b.a.aiT.post(new b(this, 11002, 65536));
+          com.tencent.mm.wear.a.c.d.a("MicroMsg.InitCoreTask", localIOException1);
+          com.tencent.mm.wear.a.b.a.amv.post(new b(this, 11002, 65536));
           return false;
         }
       }
-      com.tencent.mm.wear.a.b.a.aiT.post(new b(this, 11002, 131072));
+      com.tencent.mm.wear.a.b.a.amv.post(new b(this, 11002, 131072));
     }
     return false;
   }
   
   public final void a(c paramc)
   {
-    this.aaT = paramc;
+    this.aeu = paramc;
   }
   
   protected final void execute()
   {
-    this.aaS = new e(h.mb().lS());
-    boolean bool2 = lP();
+    this.aet = new e(h.mO().mF());
+    boolean bool2 = mC();
     if (bool2) {}
-    for (boolean bool1 = lQ();; bool1 = false)
+    for (boolean bool1 = mD();; bool1 = false)
     {
       if ((bool2) && (bool1)) {
-        com.tencent.mm.wear.a.b.a.aiT.post(new b(this, 11000, 0));
+        com.tencent.mm.wear.a.b.a.amv.post(new b(this, 11000, 0));
       }
       return;
     }

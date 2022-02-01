@@ -9,24 +9,24 @@ final class JsApiChooseMedia$ChooseResult
   extends AppBrandProxyUIProcessTask.ProcessResult
 {
   public static final Parcelable.Creator<ChooseResult> CREATOR;
-  int bpE;
-  String hQZ;
+  int bRZ;
+  String jWY;
   String type;
   
   static
   {
-    AppMethodBeat.i(131167);
-    CREATOR = new JsApiChooseMedia.ChooseResult.1();
-    AppMethodBeat.o(131167);
+    AppMethodBeat.i(46441);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(46441);
   }
   
   JsApiChooseMedia$ChooseResult() {}
   
   JsApiChooseMedia$ChooseResult(Parcel paramParcel)
   {
-    AppMethodBeat.i(131166);
+    AppMethodBeat.i(46440);
     j(paramParcel);
-    AppMethodBeat.o(131166);
+    AppMethodBeat.o(46440);
   }
   
   public final int describeContents()
@@ -36,25 +36,25 @@ final class JsApiChooseMedia$ChooseResult
   
   public final void j(Parcel paramParcel)
   {
-    AppMethodBeat.i(131164);
-    this.bpE = paramParcel.readInt();
+    AppMethodBeat.i(46438);
+    this.bRZ = paramParcel.readInt();
     this.type = paramParcel.readString();
-    this.hQZ = paramParcel.readString();
-    AppMethodBeat.o(131164);
+    this.jWY = paramParcel.readString();
+    AppMethodBeat.o(46438);
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(131165);
-    paramParcel.writeInt(this.bpE);
+    AppMethodBeat.i(46439);
+    paramParcel.writeInt(this.bRZ);
     paramParcel.writeString(this.type);
-    paramParcel.writeString(this.hQZ);
-    AppMethodBeat.o(131165);
+    paramParcel.writeString(this.jWY);
+    AppMethodBeat.o(46439);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.JsApiChooseMedia.ChooseResult
  * JD-Core Version:    0.7.0.1
  */

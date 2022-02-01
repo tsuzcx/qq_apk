@@ -8,21 +8,21 @@ public abstract class j
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dhU = "username".hashCode();
-  private static final int dhV;
-  private static final int dhi = "scene".hashCode();
-  private static final int dia = "fetchType".hashCode();
-  private static final int dib;
-  private static final int dic;
-  private static final int did = "data".hashCode();
+  private static final int elq = "scene".hashCode();
+  private static final int eme = "username".hashCode();
+  private static final int emf;
+  private static final int emk = "fetchType".hashCode();
+  private static final int eml;
+  private static final int emm;
+  private static final int emn = "data".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dhS = true;
-  private boolean dhT = true;
-  private boolean dhW = true;
-  private boolean dhX = true;
-  private boolean dhY = true;
-  private boolean dhZ = true;
-  private boolean dhg = true;
+  private boolean elo = true;
+  private boolean emb = true;
+  private boolean emc = true;
+  private boolean emg = true;
+  private boolean emh = true;
+  private boolean emi = true;
+  private boolean emj = true;
   public String field_data;
   public int field_fetchType;
   public String field_path;
@@ -33,9 +33,9 @@ public abstract class j
   
   static
   {
-    dhV = "updateTime".hashCode();
-    dib = "path".hashCode();
-    dic = "query".hashCode();
+    emf = "updateTime".hashCode();
+    eml = "path".hashCode();
+    emm = "query".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -51,7 +51,7 @@ public abstract class j
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dhU != k) {
+      if (eme != k) {
         break label60;
       }
       this.field_username = paramCursor.getString(i);
@@ -62,17 +62,17 @@ public abstract class j
       break label20;
       break;
       label60:
-      if (dia == k) {
+      if (emk == k) {
         this.field_fetchType = paramCursor.getInt(i);
-      } else if (dhV == k) {
+      } else if (emf == k) {
         this.field_updateTime = paramCursor.getLong(i);
-      } else if (dib == k) {
+      } else if (eml == k) {
         this.field_path = paramCursor.getString(i);
-      } else if (dic == k) {
+      } else if (emm == k) {
         this.field_query = paramCursor.getString(i);
-      } else if (dhi == k) {
+      } else if (elq == k) {
         this.field_scene = paramCursor.getInt(i);
-      } else if (did == k) {
+      } else if (emn == k) {
         this.field_data = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -83,25 +83,25 @@ public abstract class j
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dhS) {
+    if (this.emb) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.dhW) {
+    if (this.emg) {
       localContentValues.put("fetchType", Integer.valueOf(this.field_fetchType));
     }
-    if (this.dhT) {
+    if (this.emc) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
-    if (this.dhX) {
+    if (this.emh) {
       localContentValues.put("path", this.field_path);
     }
-    if (this.dhY) {
+    if (this.emi) {
       localContentValues.put("query", this.field_query);
     }
-    if (this.dhg) {
+    if (this.elo) {
       localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.dhZ) {
+    if (this.emj) {
       localContentValues.put("data", this.field_data);
     }
     if (this.systemRowid > 0L) {

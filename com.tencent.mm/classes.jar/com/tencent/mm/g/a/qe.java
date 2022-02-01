@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class qe
   extends b
 {
-  public qe.a cGK;
+  public a dvL;
   
   public qe()
   {
@@ -15,16 +15,21 @@ public final class qe
   
   private qe(byte paramByte)
   {
-    AppMethodBeat.i(155548);
-    this.cGK = new qe.a();
-    this.ymq = false;
+    AppMethodBeat.i(186710);
+    this.dvL = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(155548);
+    AppMethodBeat.o(186710);
+  }
+  
+  public static final class a
+  {
+    public int dvM = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.qe
  * JD-Core Version:    0.7.0.1
  */

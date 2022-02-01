@@ -1,80 +1,23 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.y;
-import com.tencent.mm.sdk.g.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
 
-public abstract class v
-  implements o
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/launching/ExportWxaInstrumentation;", "", "()V", "TAG", "", "executeStartAppForResult", "", "context", "Landroid/content/Context;", "openBundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "assertValid", "toInternalParcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "plugin-appbrand-integration_release"})
+public final class v
 {
-  public volatile o.c ilE;
-  private volatile o.b ilF;
-  final y ilG;
+  public static final v kIO;
   
-  v(y paramy)
+  static
   {
-    this.ilG = paramy;
-  }
-  
-  public final void a(o.b paramb)
-  {
-    this.ilF = paramb;
-  }
-  
-  public final void a(o.c paramc)
-  {
-    this.ilE = paramc;
-  }
-  
-  final void aHa()
-  {
-    if (this.ilE != null) {
-      this.ilE.aGU();
-    }
-  }
-  
-  final void aHb()
-  {
-    if (this.ilE != null) {
-      this.ilE.aGW();
-    }
-  }
-  
-  public abstract String aHc();
-  
-  final void c(WxaPkgLoadProgress paramWxaPkgLoadProgress)
-  {
-    o.b localb = this.ilF;
-    if (localb != null) {
-      localb.a(paramWxaPkgLoadProgress);
-    }
-  }
-  
-  final void d(WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
-  {
-    if (this.ilE != null) {
-      this.ilE.a(paramWxaPkgWrappingInfo);
-    }
-  }
-  
-  final void e(WxaPkgWrappingInfo paramWxaPkgWrappingInfo)
-  {
-    if (this.ilE != null) {
-      this.ilE.b(paramWxaPkgWrappingInfo);
-    }
-  }
-  
-  public abstract void prepare();
-  
-  public final void prepareAsync()
-  {
-    d.post(new v.1(this), "AppBrandLaunchPrepareJob#" + aHc());
+    AppMethodBeat.i(50758);
+    kIO = new v();
+    AppMethodBeat.o(50758);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.v
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,12 @@
 package com.tencent.mm.sdk.b;
 
 import android.os.Looper;
+import com.tencent.e.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.ListenerInstanceMonitor;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.vending.g.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.vending.g.g;
 import com.tencent.mm.vending.h.d;
 import java.util.Collection;
 import java.util.Collections;
@@ -17,92 +18,92 @@ import junit.framework.Assert;
 
 public final class a
 {
-  public static a ymk;
-  private a ymj;
-  private final HashMap<Integer, LinkedList<c>> yml;
-  private final HashMap<Integer, b> ymm;
+  public static a ESL;
+  private a ESK;
+  private final HashMap<Integer, LinkedList<c>> ESM;
+  private final HashMap<Integer, b> ESN;
   
   static
   {
-    AppMethodBeat.i(115166);
-    ymk = new a();
-    AppMethodBeat.o(115166);
+    AppMethodBeat.i(125201);
+    ESL = new a();
+    AppMethodBeat.o(125201);
   }
   
   private a()
   {
-    AppMethodBeat.i(115156);
-    this.ymj = new a();
-    this.yml = new HashMap();
-    this.ymm = new HashMap();
-    AppMethodBeat.o(115156);
+    AppMethodBeat.i(125191);
+    this.ESK = new a();
+    this.ESM = new HashMap();
+    this.ESN = new HashMap();
+    AppMethodBeat.o(125191);
   }
   
   private void a(LinkedList<c> paramLinkedList, b paramb)
   {
-    AppMethodBeat.i(115165);
-    if (paramb.dsj()) {
+    AppMethodBeat.i(125200);
+    if (paramb.eEU()) {
       Collections.sort(paramLinkedList, new Comparator() {});
     }
     c[] arrayOfc = new c[paramLinkedList.size()];
     paramLinkedList.toArray(arrayOfc);
     int j = arrayOfc.length;
     int i = 0;
-    while ((i < j) && ((!arrayOfc[i].callback(paramb)) || (!paramb.dsj()))) {
+    while ((i < j) && ((!arrayOfc[i].callback(paramb)) || (!paramb.eEU()))) {
       i += 1;
     }
     if (paramb.callback != null) {
       paramb.callback.run();
     }
-    AppMethodBeat.o(115165);
+    AppMethodBeat.o(125200);
   }
   
   public final void a(final b paramb, Looper paramLooper)
   {
-    AppMethodBeat.i(115161);
+    AppMethodBeat.i(125196);
     Assert.assertNotNull("EventPoolImpl.asyncPublish event", paramb);
     Assert.assertNotNull("EventPoolImpl.asyncPublish looper", paramLooper);
-    ab.v("MicroMsg.EventCenter", "publish %s(%d)", new Object[] { paramb, Integer.valueOf(paramb.__getEventID()) });
-    new ak(paramLooper).post(new Runnable()
+    ad.v("MicroMsg.EventCenter", "publish %s(%d)", new Object[] { paramb, Integer.valueOf(paramb.__getEventID()) });
+    new ap(paramLooper).post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(115146);
-        a.ymk.l(paramb);
-        AppMethodBeat.o(115146);
+        AppMethodBeat.i(125179);
+        a.ESL.l(paramb);
+        AppMethodBeat.o(125179);
       }
     });
-    AppMethodBeat.o(115161);
+    AppMethodBeat.o(125196);
   }
   
   public final void a(final b paramb, Executor paramExecutor)
   {
-    AppMethodBeat.i(115162);
+    AppMethodBeat.i(125197);
     Assert.assertNotNull("EventPoolImpl.asyncPublish event", paramb);
     Assert.assertNotNull("EventPoolImpl.asyncPublish executor", paramExecutor);
-    ab.v("MicroMsg.EventCenter", "publish %s(%d)", new Object[] { paramb, Integer.valueOf(paramb.__getEventID()) });
-    paramExecutor.execute(new com.tencent.mm.sdk.g.d.b()
+    ad.v("MicroMsg.EventCenter", "publish %s(%d)", new Object[] { paramb, Integer.valueOf(paramb.__getEventID()) });
+    paramExecutor.execute(new h()
     {
       public final String getKey()
       {
-        AppMethodBeat.i(115147);
+        AppMethodBeat.i(125180);
         String str = paramb.getClass().getName();
-        AppMethodBeat.o(115147);
+        AppMethodBeat.o(125180);
         return str;
       }
       
       public final void run()
       {
-        AppMethodBeat.i(115148);
-        a.ymk.l(paramb);
-        AppMethodBeat.o(115148);
+        AppMethodBeat.i(125181);
+        a.ESL.l(paramb);
+        AppMethodBeat.o(125181);
       }
     });
-    AppMethodBeat.o(115162);
+    AppMethodBeat.o(125197);
   }
   
   /* Error */
-  public final boolean aq(Class<? extends b> paramClass)
+  public final boolean aW(Class<? extends b> paramClass)
   {
     // Byte code:
     //   0: aload_0
@@ -113,7 +114,7 @@ public final class a
     //   9: aload_1
     //   10: invokestatic 111	junit/framework/Assert:assertNotNull	(Ljava/lang/String;Ljava/lang/Object;)V
     //   13: aload_0
-    //   14: getfield 55	com/tencent/mm/sdk/b/a:yml	Ljava/util/HashMap;
+    //   14: getfield 55	com/tencent/mm/sdk/b/a:ESM	Ljava/util/HashMap;
     //   17: aload_1
     //   18: invokevirtual 166	java/lang/Class:getName	()Ljava/lang/String;
     //   21: invokevirtual 171	java/lang/String:hashCode	()I
@@ -135,7 +136,7 @@ public final class a
     //   54: iload_2
     //   55: ireturn
     //   56: aload_0
-    //   57: getfield 57	com/tencent/mm/sdk/b/a:ymm	Ljava/util/HashMap;
+    //   57: getfield 57	com/tencent/mm/sdk/b/a:ESN	Ljava/util/HashMap;
     //   60: aload_1
     //   61: invokevirtual 166	java/lang/Class:getName	()Ljava/lang/String;
     //   64: invokevirtual 171	java/lang/String:hashCode	()I
@@ -180,16 +181,16 @@ public final class a
   
   public final com.tencent.mm.vending.b.b<c> b(c paramc)
   {
-    AppMethodBeat.i(115157);
+    AppMethodBeat.i(125192);
     try
     {
       Assert.assertNotNull("EventPoolImpl.add", paramc);
-      ab.v("MicroMsg.EventCenter", "addListener %s(%d)", new Object[] { paramc, Integer.valueOf(paramc.__getEventID()) });
-      Object localObject2 = (b)this.ymm.get(Integer.valueOf(paramc.__getEventID()));
+      ad.v("MicroMsg.EventCenter", "addListener %s(%d)", new Object[] { paramc, Integer.valueOf(paramc.__getEventID()) });
+      Object localObject2 = (b)this.ESN.get(Integer.valueOf(paramc.__getEventID()));
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject2 = this.ymm;
+        localObject2 = this.ESN;
         int i = paramc.__getEventID();
         localObject1 = new b();
         ((HashMap)localObject2).put(Integer.valueOf(i), localObject1);
@@ -199,23 +200,23 @@ public final class a
     }
     finally
     {
-      AppMethodBeat.o(115157);
+      AppMethodBeat.o(125192);
     }
   }
   
   @Deprecated
   public final boolean c(c paramc)
   {
-    AppMethodBeat.i(115158);
+    AppMethodBeat.i(125193);
     try
     {
       Assert.assertNotNull("EventPoolImpl.add", paramc);
-      ab.v("MicroMsg.EventCenter", "addListener %s(%d)", new Object[] { paramc, Integer.valueOf(paramc.__getEventID()) });
-      Object localObject2 = (LinkedList)this.yml.get(Integer.valueOf(paramc.__getEventID()));
+      ad.v("MicroMsg.EventCenter", "addListener %s(%d)", new Object[] { paramc, Integer.valueOf(paramc.__getEventID()) });
+      Object localObject2 = (LinkedList)this.ESM.get(Integer.valueOf(paramc.__getEventID()));
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject2 = this.yml;
+        localObject2 = this.ESM;
         int i = paramc.__getEventID();
         localObject1 = new LinkedList();
         ((HashMap)localObject2).put(Integer.valueOf(i), localObject1);
@@ -223,13 +224,13 @@ public final class a
       if (((LinkedList)localObject1).contains(paramc)) {
         return true;
       }
-      ListenerInstanceMonitor.ct(paramc);
+      ListenerInstanceMonitor.dN(paramc);
       boolean bool = ((LinkedList)localObject1).add(paramc);
       return bool;
     }
     finally
     {
-      AppMethodBeat.o(115158);
+      AppMethodBeat.o(125193);
     }
   }
   
@@ -237,29 +238,29 @@ public final class a
   public final boolean d(c paramc)
   {
     boolean bool = false;
-    AppMethodBeat.i(115159);
+    AppMethodBeat.i(125194);
     for (;;)
     {
       try
       {
         Assert.assertNotNull("EventPoolImpl.remove", paramc);
-        ab.v("MicroMsg.EventCenter", "removeListener %s(%d)", new Object[] { paramc, Integer.valueOf(paramc.__getEventID()) });
-        Object localObject = (LinkedList)this.yml.get(Integer.valueOf(paramc.__getEventID()));
+        ad.v("MicroMsg.EventCenter", "removeListener %s(%d)", new Object[] { paramc, Integer.valueOf(paramc.__getEventID()) });
+        Object localObject = (LinkedList)this.ESM.get(Integer.valueOf(paramc.__getEventID()));
         if (localObject != null) {
           bool = ((LinkedList)localObject).remove(paramc);
         }
-        localObject = (b)this.ymm.get(Integer.valueOf(paramc.__getEventID()));
+        localObject = (b)this.ESN.get(Integer.valueOf(paramc.__getEventID()));
         if (localObject != null)
         {
           ((b)localObject).f(paramc);
           bool = true;
-          ListenerInstanceMonitor.cu(paramc);
+          ListenerInstanceMonitor.dO(paramc);
           return bool;
         }
       }
       finally
       {
-        AppMethodBeat.o(115159);
+        AppMethodBeat.o(125194);
       }
     }
   }
@@ -276,7 +277,7 @@ public final class a
     //   9: aload_1
     //   10: invokestatic 111	junit/framework/Assert:assertNotNull	(Ljava/lang/String;Ljava/lang/Object;)V
     //   13: aload_0
-    //   14: getfield 55	com/tencent/mm/sdk/b/a:yml	Ljava/util/HashMap;
+    //   14: getfield 55	com/tencent/mm/sdk/b/a:ESM	Ljava/util/HashMap;
     //   17: aload_1
     //   18: invokevirtual 184	com/tencent/mm/sdk/b/c:__getEventID	()I
     //   21: invokestatic 126	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
@@ -301,7 +302,7 @@ public final class a
     //   59: iload_2
     //   60: ireturn
     //   61: aload_0
-    //   62: getfield 57	com/tencent/mm/sdk/b/a:ymm	Ljava/util/HashMap;
+    //   62: getfield 57	com/tencent/mm/sdk/b/a:ESN	Ljava/util/HashMap;
     //   65: aload_1
     //   66: invokevirtual 184	com/tencent/mm/sdk/b/c:__getEventID	()I
     //   69: invokestatic 126	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
@@ -351,41 +352,41 @@ public final class a
   {
     boolean bool1 = false;
     boolean bool2 = true;
-    AppMethodBeat.i(115160);
+    AppMethodBeat.i(125195);
     Assert.assertNotNull("EventPoolImpl.publish", paramb);
-    ab.v("MicroMsg.EventCenter", "publish %s(%d)", new Object[] { paramb, Integer.valueOf(paramb.__getEventID()) });
+    ad.v("MicroMsg.EventCenter", "publish %s(%d)", new Object[] { paramb, Integer.valueOf(paramb.__getEventID()) });
     LinkedList localLinkedList = null;
     for (;;)
     {
       try
       {
         int i = paramb.__getEventID();
-        Object localObject = (LinkedList)this.yml.get(Integer.valueOf(i));
+        Object localObject = (LinkedList)this.ESM.get(Integer.valueOf(i));
         if (localObject != null)
         {
           localLinkedList = new LinkedList((Collection)localObject);
           bool1 = true;
         }
-        localObject = (b)this.ymm.get(Integer.valueOf(i));
+        localObject = (b)this.ESN.get(Integer.valueOf(i));
         if (localObject != null)
         {
           bool1 = bool2;
           if (!bool1) {
-            ab.w("MicroMsg.EventCenter", "No listener for this event %s(%d), Stack: %s.", new Object[] { paramb, Integer.valueOf(i), "" });
+            ad.w("MicroMsg.EventCenter", "No listener for this event %s(%d), Stack: %s.", new Object[] { paramb, Integer.valueOf(i), "" });
           }
           if (localLinkedList != null) {
             a(localLinkedList, paramb);
           }
           if (localObject != null) {
-            ((b)localObject).a(f.cO(paramb));
+            ((b)localObject).a(g.ef(paramb));
           }
-          AppMethodBeat.o(115160);
+          AppMethodBeat.o(125195);
           return bool1;
         }
       }
       finally
       {
-        AppMethodBeat.o(115160);
+        AppMethodBeat.o(125195);
       }
     }
   }
@@ -395,26 +396,26 @@ public final class a
   {
     public final void cancel() {}
     
+    public final void f(Runnable paramRunnable, long paramLong)
+    {
+      AppMethodBeat.i(125184);
+      paramRunnable.run();
+      AppMethodBeat.o(125184);
+    }
+    
     public final String getType()
     {
-      AppMethodBeat.i(115151);
+      AppMethodBeat.i(125185);
       String str = Thread.currentThread().toString();
-      AppMethodBeat.o(115151);
+      AppMethodBeat.o(125185);
       return str;
     }
     
-    public final void n(Runnable paramRunnable, long paramLong)
+    public final void v(Runnable paramRunnable)
     {
-      AppMethodBeat.i(115150);
+      AppMethodBeat.i(125183);
       paramRunnable.run();
-      AppMethodBeat.o(115150);
-    }
-    
-    public final void o(Runnable paramRunnable)
-    {
-      AppMethodBeat.i(115149);
-      paramRunnable.run();
-      AppMethodBeat.o(115149);
+      AppMethodBeat.o(125183);
     }
   }
   
@@ -424,50 +425,50 @@ public final class a
     public b()
     {
       super();
-      AppMethodBeat.i(115152);
-      AppMethodBeat.o(115152);
+      AppMethodBeat.i(125187);
+      AppMethodBeat.o(125187);
     }
     
     public final void a(com.tencent.mm.vending.j.a parama)
     {
-      AppMethodBeat.i(115153);
-      LinkedList localLinkedList = dQj();
+      AppMethodBeat.i(125188);
+      LinkedList localLinkedList = fhh();
       parama = (b)parama.get(0);
       if (parama == null)
       {
-        ab.e("MicroMsg.EventCenter", "event is null! fatal!");
-        AppMethodBeat.o(115153);
+        ad.e("MicroMsg.EventCenter", "event is null! fatal!");
+        AppMethodBeat.o(125188);
         return;
       }
-      if (parama.dsj()) {
+      if (parama.eEU()) {
         Collections.sort(localLinkedList, new Comparator() {});
       }
       com.tencent.mm.vending.b.b[] arrayOfb = new com.tencent.mm.vending.b.b[localLinkedList.size()];
       localLinkedList.toArray(arrayOfb);
       int j = arrayOfb.length;
       int i = 0;
-      while ((i < j) && ((!((c)arrayOfb[i].d).callback(parama)) || (!parama.dsj()))) {
+      while ((i < j) && ((!((c)arrayOfb[i].HPL).callback(parama)) || (!parama.eEU()))) {
         i += 1;
       }
       if (parama.callback != null) {
         parama.callback.run();
       }
-      AppMethodBeat.o(115153);
+      AppMethodBeat.o(125188);
     }
     
     public final com.tencent.mm.vending.b.b<c> b(c paramc)
     {
-      AppMethodBeat.i(115154);
+      AppMethodBeat.i(125189);
       paramc = a(new com.tencent.mm.vending.b.b(paramc, this));
-      AppMethodBeat.o(115154);
+      AppMethodBeat.o(125189);
       return paramc;
     }
     
     public final void f(c paramc)
     {
-      AppMethodBeat.i(115155);
+      AppMethodBeat.i(125190);
       b(new com.tencent.mm.vending.b.b(paramc, this));
-      AppMethodBeat.o(115155);
+      AppMethodBeat.o(125190);
     }
   }
 }

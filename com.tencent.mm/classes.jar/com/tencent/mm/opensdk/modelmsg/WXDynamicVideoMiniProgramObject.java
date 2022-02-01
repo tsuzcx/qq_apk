@@ -14,32 +14,32 @@ public class WXDynamicVideoMiniProgramObject
   
   public boolean checkArgs()
   {
-    AppMethodBeat.i(128316);
+    AppMethodBeat.i(4016);
     if (d.b(this.webpageUrl))
     {
       Log.e("MicroMsg.SDK.WXDynamicVideoMiniProgramObject", "webPageUrl is null");
-      AppMethodBeat.o(128316);
+      AppMethodBeat.o(4016);
       return false;
     }
     if (d.b(this.userName))
     {
       Log.e("MicroMsg.SDK.WXDynamicVideoMiniProgramObject", "userName is null");
-      AppMethodBeat.o(128316);
+      AppMethodBeat.o(4016);
       return false;
     }
     if ((this.miniprogramType < 0) || (this.miniprogramType > 2))
     {
       Log.e("MicroMsg.SDK.WXDynamicVideoMiniProgramObject", "miniprogram type should between MINIPTOGRAM_TYPE_RELEASE and MINIPROGRAM_TYPE_PREVIEW");
-      AppMethodBeat.o(128316);
+      AppMethodBeat.o(4016);
       return false;
     }
-    AppMethodBeat.o(128316);
+    AppMethodBeat.o(4016);
     return true;
   }
   
   public void serialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128314);
+    AppMethodBeat.i(4014);
     paramBundle.putString("_wxminiprogram_webpageurl", this.webpageUrl);
     paramBundle.putString("_wxminiprogram_username", this.userName);
     paramBundle.putString("_wxminiprogram_path", this.path);
@@ -47,7 +47,8 @@ public class WXDynamicVideoMiniProgramObject
     paramBundle.putString("_wxminiprogram_appThumbUrl", this.appThumbUrl);
     paramBundle.putBoolean("_wxminiprogram_withsharetiket", this.withShareTicket);
     paramBundle.putInt("_wxminiprogram_type", this.miniprogramType);
-    AppMethodBeat.o(128314);
+    paramBundle.putInt("_wxminiprogram_disableforward", this.disableforward);
+    AppMethodBeat.o(4014);
   }
   
   public int type()
@@ -57,7 +58,7 @@ public class WXDynamicVideoMiniProgramObject
   
   public void unserialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128315);
+    AppMethodBeat.i(4015);
     this.webpageUrl = paramBundle.getString("_wxminiprogram_webpageurl");
     this.userName = paramBundle.getString("_wxminiprogram_username");
     this.path = paramBundle.getString("_wxminiprogram_path");
@@ -65,12 +66,13 @@ public class WXDynamicVideoMiniProgramObject
     this.appThumbUrl = paramBundle.getString("_wxminiprogram_appThumbUrl");
     this.withShareTicket = paramBundle.getBoolean("_wxminiprogram_withsharetiket");
     this.miniprogramType = paramBundle.getInt("_wxminiprogram_type");
-    AppMethodBeat.o(128315);
+    this.disableforward = paramBundle.getInt("_wxminiprogram_disableforward");
+    AppMethodBeat.o(4015);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXDynamicVideoMiniProgramObject
  * JD-Core Version:    0.7.0.1
  */

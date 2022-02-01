@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<inset android:insetLeft="@dimen/jn" android:insetRight="@dimen/jn"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <size android:width="2.0dip" />
-    <padding android:bottom="-4.0dip" />
-    <solid android:color="#ffffc200" />
-</shape>
+    <shape>
+        <solid android:color="@color/ts" />
+    </shape>
+</inset>

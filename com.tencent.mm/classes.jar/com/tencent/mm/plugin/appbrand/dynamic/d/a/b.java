@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.appbrand.dynamic.d.a;
 import org.json.JSONObject;
 
 public abstract class b
-  extends com.tencent.mm.z.b.a
+  extends com.tencent.mm.ab.b.a
 {
   public b(String paramString, int paramInt)
   {
     super(paramString, paramInt);
   }
   
-  protected abstract JSONObject a(com.tencent.mm.z.c.a parama);
+  protected abstract JSONObject a(com.tencent.mm.ab.c.a parama);
 }
 
 

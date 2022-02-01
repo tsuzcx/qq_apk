@@ -1,27 +1,17 @@
 package com.tencent.mm.plugin.f.a;
 
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public abstract class a
 {
-  protected static com.tencent.mm.plugin.f.b.a R(bi parambi)
-  {
-    com.tencent.mm.plugin.f.b.a locala = new com.tencent.mm.plugin.f.b.a();
-    locala.field_msgId = parambi.field_msgId;
-    locala.field_msgType = parambi.getType();
-    locala.field_username = parambi.field_talker;
-    locala.field_msgtime = parambi.field_createTime;
-    return locala;
-  }
-  
   private static int a(List<com.tencent.mm.plugin.f.b.a> paramList1, List<com.tencent.mm.plugin.f.b.a> paramList2, List<com.tencent.mm.plugin.f.b.a> paramList3, List<com.tencent.mm.plugin.f.b.a> paramList4)
   {
     if ((paramList2 == null) || (paramList2.isEmpty())) {
@@ -56,7 +46,7 @@ public abstract class a
         if (locala2.field_msgSubType != locala1.field_msgSubType) {
           break label244;
         }
-        if (bo.isEqual(locala2.field_path, locala1.field_path)) {
+        if (bt.kU(locala2.field_path, locala1.field_path)) {
           break label206;
         }
         locala2.systemRowid = locala1.systemRowid;
@@ -70,7 +60,7 @@ public abstract class a
         locala1 = null;
         break label132;
         label206:
-        if (!bo.ah(locala2.field_size, locala1.field_size))
+        if (!bt.aw(locala2.field_size, locala1.field_size))
         {
           locala2.systemRowid = locala1.systemRowid;
           paramList4.add(locala2);
@@ -86,9 +76,19 @@ public abstract class a
     return 1;
   }
   
-  protected final String Hw(String paramString)
+  protected static com.tencent.mm.plugin.f.b.a ad(bl parambl)
   {
-    if (bo.isNullOrNil(paramString)) {
+    com.tencent.mm.plugin.f.b.a locala = new com.tencent.mm.plugin.f.b.a();
+    locala.field_msgId = parambl.field_msgId;
+    locala.field_msgType = parambl.getType();
+    locala.field_username = parambl.field_talker;
+    locala.field_msgtime = parambl.field_createTime;
+    return locala;
+  }
+  
+  protected final String aUM(String paramString)
+  {
+    if (bt.isNullOrNil(paramString)) {
       str1 = "";
     }
     String str2;
@@ -96,55 +96,55 @@ public abstract class a
     do
     {
       return str1;
-      str2 = g.RL().eHQ;
+      str2 = g.afB().gcV;
       i = paramString.indexOf(str2);
       str1 = paramString;
     } while (i < 0);
     String str1 = paramString.substring(i + str2.length());
-    ab.d("MicroMsg.AbstractMsgHandler", "%s cut down result[%s] root[%s] path[%s]", new Object[] { bau(), str1, str2, paramString });
+    ad.d("MicroMsg.AbstractMsgHandler", "%s cut down result[%s] root[%s] path[%s]", new Object[] { info(), str1, str2, paramString });
     return str1;
   }
   
-  public final void P(bi parambi)
+  public final void ab(bl parambl)
   {
     int j = 0;
-    if (parambi == null) {
+    if (parambl == null) {
       return;
     }
-    List localList = com.tencent.mm.plugin.f.b.bak().bal().S(parambi);
-    parambi = Q(parambi);
+    List localList = com.tencent.mm.plugin.f.b.bHc().bHd().ae(parambl);
+    parambl = ac(parambl);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    int k = a(localList, parambi, localArrayList1, localArrayList2);
-    String str = bau();
+    int k = a(localList, parambl, localArrayList1, localArrayList2);
+    String str = info();
     if (localList != null) {}
     for (int i = localList.size();; i = 0)
     {
-      if (parambi != null) {
-        j = parambi.size();
+      if (parambl != null) {
+        j = parambl.size();
       }
-      ab.i("MicroMsg.AbstractMsgHandler", "%s handle compare[%d] db[%d] create[%d] insert[%d] update[%d]", new Object[] { str, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localArrayList1.size()), Integer.valueOf(localArrayList2.size()) });
+      ad.i("MicroMsg.AbstractMsgHandler", "%s handle compare[%d] db[%d] create[%d] insert[%d] update[%d]", new Object[] { str, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localArrayList1.size()), Integer.valueOf(localArrayList2.size()) });
       if (k < 0) {
         break;
       }
       if (!localArrayList1.isEmpty()) {
-        com.tencent.mm.plugin.f.b.bak().bal().ba(localArrayList1);
+        com.tencent.mm.plugin.f.b.bHc().bHd().cw(localArrayList1);
       }
       if (localArrayList2.isEmpty()) {
         break;
       }
-      com.tencent.mm.plugin.f.b.bak().bal().bb(localArrayList2);
+      com.tencent.mm.plugin.f.b.bHc().bHd().cx(localArrayList2);
       return;
     }
   }
   
-  protected abstract List<com.tencent.mm.plugin.f.b.a> Q(bi parambi);
+  protected abstract List<com.tencent.mm.plugin.f.b.a> ac(bl parambl);
   
-  protected abstract String bau();
+  protected abstract String info();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.f.a.a
  * JD-Core Version:    0.7.0.1
  */

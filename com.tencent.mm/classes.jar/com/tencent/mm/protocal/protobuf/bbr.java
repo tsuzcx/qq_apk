@@ -3,122 +3,126 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bbr
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int Scene;
-  public String cwc;
-  public String username;
-  public int wwX;
-  public int xmQ;
-  public int xqL;
-  public int xqM;
-  public String xqN;
-  public int xqO;
+  public int Ctr;
+  public String DpA;
+  public int Dzl;
+  public String Dzm;
+  public String Dzn;
+  public int Ret;
+  public String Title;
+  public String mAQ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(102382);
+    AppMethodBeat.i(152608);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.cwc != null) {
-        paramVarArgs.e(1, this.cwc);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.Ret);
+      if (this.DpA != null) {
+        paramVarArgs.d(2, this.DpA);
       }
-      if (this.username != null) {
-        paramVarArgs.e(2, this.username);
+      paramVarArgs.aR(3, this.Ctr);
+      paramVarArgs.aR(4, this.Dzl);
+      if (this.Title != null) {
+        paramVarArgs.d(5, this.Title);
       }
-      paramVarArgs.aO(3, this.xmQ);
-      paramVarArgs.aO(4, this.wwX);
-      paramVarArgs.aO(5, this.Scene);
-      paramVarArgs.aO(6, this.xqL);
-      paramVarArgs.aO(7, this.xqM);
-      if (this.xqN != null) {
-        paramVarArgs.e(8, this.xqN);
+      if (this.mAQ != null) {
+        paramVarArgs.d(6, this.mAQ);
       }
-      paramVarArgs.aO(9, this.xqO);
-      AppMethodBeat.o(102382);
+      if (this.Dzm != null) {
+        paramVarArgs.d(7, this.Dzm);
+      }
+      if (this.Dzn != null) {
+        paramVarArgs.d(8, this.Dzn);
+      }
+      AppMethodBeat.o(152608);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.cwc == null) {
-        break label598;
-      }
-    }
-    label598:
-    for (paramInt = e.a.a.b.b.a.f(1, this.cwc) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.username != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.username);
-      }
-      i = i + e.a.a.b.b.a.bl(3, this.xmQ) + e.a.a.b.b.a.bl(4, this.wwX) + e.a.a.b.b.a.bl(5, this.Scene) + e.a.a.b.b.a.bl(6, this.xqL) + e.a.a.b.b.a.bl(7, this.xqM);
+      int i = f.a.a.b.b.a.bA(1, this.Ret) + 0;
       paramInt = i;
-      if (this.xqN != null) {
-        paramInt = i + e.a.a.b.b.a.f(8, this.xqN);
+      if (this.DpA != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.DpA);
       }
-      i = e.a.a.b.b.a.bl(9, this.xqO);
-      AppMethodBeat.o(102382);
-      return paramInt + i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
-          }
-        }
-        AppMethodBeat.o(102382);
-        return 0;
+      i = paramInt + f.a.a.b.b.a.bA(3, this.Ctr) + f.a.a.b.b.a.bA(4, this.Dzl);
+      paramInt = i;
+      if (this.Title != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.Title);
       }
-      if (paramInt == 3)
-      {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-        bbr localbbr = (bbr)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(102382);
-          return -1;
-        case 1: 
-          localbbr.cwc = locala.CLY.readString();
-          AppMethodBeat.o(102382);
-          return 0;
-        case 2: 
-          localbbr.username = locala.CLY.readString();
-          AppMethodBeat.o(102382);
-          return 0;
-        case 3: 
-          localbbr.xmQ = locala.CLY.sl();
-          AppMethodBeat.o(102382);
-          return 0;
-        case 4: 
-          localbbr.wwX = locala.CLY.sl();
-          AppMethodBeat.o(102382);
-          return 0;
-        case 5: 
-          localbbr.Scene = locala.CLY.sl();
-          AppMethodBeat.o(102382);
-          return 0;
-        case 6: 
-          localbbr.xqL = locala.CLY.sl();
-          AppMethodBeat.o(102382);
-          return 0;
-        case 7: 
-          localbbr.xqM = locala.CLY.sl();
-          AppMethodBeat.o(102382);
-          return 0;
-        case 8: 
-          localbbr.xqN = locala.CLY.readString();
-          AppMethodBeat.o(102382);
-          return 0;
-        }
-        localbbr.xqO = locala.CLY.sl();
-        AppMethodBeat.o(102382);
-        return 0;
+      i = paramInt;
+      if (this.mAQ != null) {
+        i = paramInt + f.a.a.b.b.a.e(6, this.mAQ);
       }
-      AppMethodBeat.o(102382);
-      return -1;
+      paramInt = i;
+      if (this.Dzm != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.Dzm);
+      }
+      i = paramInt;
+      if (this.Dzn != null) {
+        i = paramInt + f.a.a.b.b.a.e(8, this.Dzn);
+      }
+      AppMethodBeat.o(152608);
+      return i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.fMq();
+        }
+      }
+      AppMethodBeat.o(152608);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      bbr localbbr = (bbr)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(152608);
+        return -1;
+      case 1: 
+        localbbr.Ret = locala.KhF.xS();
+        AppMethodBeat.o(152608);
+        return 0;
+      case 2: 
+        localbbr.DpA = locala.KhF.readString();
+        AppMethodBeat.o(152608);
+        return 0;
+      case 3: 
+        localbbr.Ctr = locala.KhF.xS();
+        AppMethodBeat.o(152608);
+        return 0;
+      case 4: 
+        localbbr.Dzl = locala.KhF.xS();
+        AppMethodBeat.o(152608);
+        return 0;
+      case 5: 
+        localbbr.Title = locala.KhF.readString();
+        AppMethodBeat.o(152608);
+        return 0;
+      case 6: 
+        localbbr.mAQ = locala.KhF.readString();
+        AppMethodBeat.o(152608);
+        return 0;
+      case 7: 
+        localbbr.Dzm = locala.KhF.readString();
+        AppMethodBeat.o(152608);
+        return 0;
+      }
+      localbbr.Dzn = locala.KhF.readString();
+      AppMethodBeat.o(152608);
+      return 0;
+    }
+    AppMethodBeat.o(152608);
+    return -1;
   }
 }
 

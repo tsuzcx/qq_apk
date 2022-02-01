@@ -37,14 +37,14 @@ public class NoDrawingCacheLinearLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(29830);
+    AppMethodBeat.i(33676);
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(29830);
+    AppMethodBeat.o(33676);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.NoDrawingCacheLinearLayout
  * JD-Core Version:    0.7.0.1
  */

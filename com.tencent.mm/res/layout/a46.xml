@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/mb"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="10.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:id="@id/dq3" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/lw" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0dip" android:textColor="@color/km" android:id="@id/dq4" android:paddingTop="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c88" style="@style/lw" />
+            <TextView android:textSize="12.0dip" android:textColor="@color/fu" android:id="@id/dq7" android:paddingLeft="10.0dip" android:paddingTop="5.0dip" android:paddingRight="10.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c8e" style="@style/lw" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <Button android:id="@id/dpx" android:layout_width="70.0dip" android:text="@string/cli" style="@style/of" />
+        <Button android:id="@id/dpz" android:layout_width="70.0dip" android:text="@string/clk" style="@style/of" />
+        <TextView android:id="@id/dpw" android:background="@drawable/b1o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="25.0dip" />
+    </LinearLayout>
+</LinearLayout>

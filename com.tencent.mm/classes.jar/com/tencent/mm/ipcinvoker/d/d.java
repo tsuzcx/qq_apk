@@ -1,28 +1,29 @@
 package com.tencent.mm.ipcinvoker.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.f;
 import junit.framework.Assert;
 
 public class d
 {
-  public String cnC;
-  public com.tencent.mm.ipcinvoker.d eEF;
+  public String dcx;
+  public f fZI;
   private String process;
   
   public <T extends b> d(String paramString, Class<T> paramClass)
   {
-    AppMethodBeat.i(114078);
+    AppMethodBeat.i(158789);
     Assert.assertNotNull(paramString);
     Assert.assertNotNull(paramClass);
     this.process = paramString;
-    this.cnC = paramClass.getName();
-    this.eEF = new com.tencent.mm.ipcinvoker.d(paramString);
-    AppMethodBeat.o(114078);
+    this.dcx = paramClass.getName();
+    this.fZI = new f(paramString);
+    AppMethodBeat.o(158789);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.d.d
  * JD-Core Version:    0.7.0.1
  */

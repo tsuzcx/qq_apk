@@ -9,10 +9,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class CustomerScrollView
   extends ScrollView
 {
-  private float AYa;
-  private float AYb;
-  private float AYc;
-  private float AYd;
+  private float IeN;
+  private float IeO;
+  private float IeP;
+  private float IeQ;
   
   public CustomerScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,7 +26,7 @@ public class CustomerScrollView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(49180);
+    AppMethodBeat.i(72898);
     switch (paramMotionEvent.getAction())
     {
     }
@@ -35,27 +35,27 @@ public class CustomerScrollView
       for (;;)
       {
         boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(49180);
+        AppMethodBeat.o(72898);
         return bool;
-        this.AYb = 0.0F;
-        this.AYa = 0.0F;
-        this.AYc = paramMotionEvent.getX();
-        this.AYd = paramMotionEvent.getY();
+        this.IeO = 0.0F;
+        this.IeN = 0.0F;
+        this.IeP = paramMotionEvent.getX();
+        this.IeQ = paramMotionEvent.getY();
       }
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
-      this.AYa += Math.abs(f1 - this.AYc);
-      this.AYb += Math.abs(f2 - this.AYd);
-      this.AYc = f1;
-      this.AYd = f2;
-    } while (this.AYa <= this.AYb);
-    AppMethodBeat.o(49180);
+      this.IeN += Math.abs(f1 - this.IeP);
+      this.IeO += Math.abs(f2 - this.IeQ);
+      this.IeP = f1;
+      this.IeQ = f2;
+    } while (this.IeN <= this.IeO);
+    AppMethodBeat.o(72898);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.CustomerScrollView
  * JD-Core Version:    0.7.0.1
  */

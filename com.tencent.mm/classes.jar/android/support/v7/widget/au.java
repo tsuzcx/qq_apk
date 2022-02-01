@@ -39,33 +39,33 @@ final class au
   extends o
   implements View.OnClickListener
 {
-  private final SearchableInfo alZ;
-  private final WeakHashMap<String, Drawable.ConstantState> ame;
-  private final SearchView amo;
-  private final SearchManager ank = (SearchManager)this.mContext.getSystemService("search");
-  private final Context anl;
-  private final int anm;
-  int ann = 1;
-  private ColorStateList ano;
-  private int anp = -1;
-  private int anq = -1;
-  private int anr = -1;
-  private int ans = -1;
-  private int ant = -1;
-  private int anu = -1;
+  private final WeakHashMap<String, Drawable.ConstantState> atD;
+  private final SearchView atN;
+  private final SearchableInfo aty;
+  private final SearchManager auJ = (SearchManager)this.mContext.getSystemService("search");
+  private final Context auK;
+  private final int auL;
+  int auM = 1;
+  private ColorStateList auN;
+  private int auO = -1;
+  private int auP = -1;
+  private int auQ = -1;
+  private int auR = -1;
+  private int auS = -1;
+  private int auT = -1;
   private boolean mClosed = false;
   
   public au(Context paramContext, SearchView paramSearchView, SearchableInfo paramSearchableInfo, WeakHashMap<String, Drawable.ConstantState> paramWeakHashMap)
   {
     super(paramContext, paramSearchView.getSuggestionRowLayout());
-    this.amo = paramSearchView;
-    this.alZ = paramSearchableInfo;
-    this.anm = paramSearchView.getSuggestionCommitIconResId();
-    this.anl = paramContext;
-    this.ame = paramWeakHashMap;
+    this.atN = paramSearchView;
+    this.aty = paramSearchableInfo;
+    this.auL = paramSearchView.getSuggestionCommitIconResId();
+    this.auK = paramContext;
+    this.atD = paramWeakHashMap;
   }
   
-  private Drawable U(String paramString)
+  private Drawable G(String paramString)
   {
     Object localObject1;
     if ((paramString == null) || (paramString.isEmpty()) || ("0".equals(paramString))) {
@@ -77,19 +77,19 @@ final class au
       try
       {
         int i = Integer.parseInt(paramString);
-        String str = "android.resource://" + this.anl.getPackageName() + "/" + i;
-        localDrawable = V(str);
+        String str = "android.resource://" + this.auK.getPackageName() + "/" + i;
+        localDrawable = H(str);
         localObject1 = localDrawable;
         if (localDrawable == null)
         {
-          localObject1 = b.k(this.anl, i);
+          localObject1 = b.l(this.auK, i);
           a(str, (Drawable)localObject1);
           return localObject1;
         }
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        Drawable localDrawable = V(paramString);
+        Drawable localDrawable = H(paramString);
         Object localObject2 = localDrawable;
         if (localDrawable == null)
         {
@@ -103,9 +103,9 @@ final class au
     return null;
   }
   
-  private Drawable V(String paramString)
+  private Drawable H(String paramString)
   {
-    paramString = (Drawable.ConstantState)this.ame.get(paramString);
+    paramString = (Drawable.ConstantState)this.atD.get(paramString);
     if (paramString == null) {
       return null;
     }
@@ -144,21 +144,10 @@ final class au
     paramDrawable.setVisible(true, false);
   }
   
-  private static void a(TextView paramTextView, CharSequence paramCharSequence)
-  {
-    paramTextView.setText(paramCharSequence);
-    if (TextUtils.isEmpty(paramCharSequence))
-    {
-      paramTextView.setVisibility(8);
-      return;
-    }
-    paramTextView.setVisibility(0);
-  }
-  
   private void a(String paramString, Drawable paramDrawable)
   {
     if (paramDrawable != null) {
-      this.ame.put(paramString, paramDrawable.getConstantState());
+      this.atD.put(paramString, paramDrawable.getConstantState());
     }
   }
   
@@ -170,6 +159,17 @@ final class au
       if ((paramCursor != null) && (paramCursor.getBoolean("in_progress"))) {}
       return;
     }
+  }
+  
+  private static void b(TextView paramTextView, CharSequence paramCharSequence)
+  {
+    paramTextView.setText(paramCharSequence);
+    if (TextUtils.isEmpty(paramCharSequence))
+    {
+      paramTextView.setVisibility(8);
+      return;
+    }
+    paramTextView.setVisibility(0);
   }
   
   private Drawable d(Uri paramUri)
@@ -188,7 +188,7 @@ final class au
           throw new FileNotFoundException("Resource does not exist: ".concat(String.valueOf(paramUri)));
         }
       }
-      localInputStream = this.anl.getContentResolver().openInputStream(paramUri);
+      localInputStream = this.auK.getContentResolver().openInputStream(paramUri);
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
@@ -298,94 +298,94 @@ final class au
   public final void a(View paramView, Cursor paramCursor)
   {
     Object localObject2 = null;
-    au.a locala = (au.a)paramView.getTag();
-    if (this.anu != -1) {}
-    for (int i = paramCursor.getInt(this.anu);; i = 0)
+    a locala = (a)paramView.getTag();
+    if (this.auT != -1) {}
+    for (int i = paramCursor.getInt(this.auT);; i = 0)
     {
-      if (locala.anv != null)
+      if (locala.auU != null)
       {
-        paramView = a(paramCursor, this.anp);
-        a(locala.anv, paramView);
+        paramView = a(paramCursor, this.auO);
+        b(locala.auU, paramView);
       }
       Object localObject1;
-      if (locala.anw != null)
+      if (locala.auV != null)
       {
-        localObject1 = a(paramCursor, this.anr);
+        localObject1 = a(paramCursor, this.auQ);
         if (localObject1 != null)
         {
-          if (this.ano == null)
+          if (this.auN == null)
           {
             paramView = new TypedValue();
-            this.mContext.getTheme().resolveAttribute(2130772190, paramView, true);
-            this.ano = this.mContext.getResources().getColorStateList(paramView.resourceId);
+            this.mContext.getTheme().resolveAttribute(2130969561, paramView, true);
+            this.auN = this.mContext.getResources().getColorStateList(paramView.resourceId);
           }
           paramView = new SpannableString((CharSequence)localObject1);
-          paramView.setSpan(new TextAppearanceSpan(null, 0, 0, this.ano, null), 0, ((CharSequence)localObject1).length(), 33);
+          paramView.setSpan(new TextAppearanceSpan(null, 0, 0, this.auN, null), 0, ((CharSequence)localObject1).length(), 33);
           if (!TextUtils.isEmpty(paramView)) {
             break label345;
           }
-          if (locala.anv != null)
+          if (locala.auU != null)
           {
-            locala.anv.setSingleLine(false);
-            locala.anv.setMaxLines(2);
+            locala.auU.setSingleLine(false);
+            locala.auU.setMaxLines(2);
           }
           label201:
-          a(locala.anw, paramView);
+          b(locala.auV, paramView);
         }
       }
       else
       {
-        if (locala.anx != null)
+        if (locala.auW != null)
         {
-          ImageView localImageView = locala.anx;
-          if (this.ans != -1) {
+          ImageView localImageView = locala.auW;
+          if (this.auR != -1) {
             break label374;
           }
           paramView = null;
           label235:
           a(localImageView, paramView, 4);
         }
-        if (locala.any != null)
+        if (locala.auX != null)
         {
-          localObject1 = locala.any;
-          if (this.ant != -1) {
+          localObject1 = locala.auX;
+          if (this.auS != -1) {
             break label519;
           }
         }
       }
       label519:
-      for (paramView = localObject2;; paramView = U(paramCursor.getString(this.ant)))
+      for (paramView = localObject2;; paramView = G(paramCursor.getString(this.auS)))
       {
         a((ImageView)localObject1, paramView, 8);
-        if ((this.ann != 2) && ((this.ann != 1) || ((i & 0x1) == 0))) {
+        if ((this.auM != 2) && ((this.auM != 1) || ((i & 0x1) == 0))) {
           break label537;
         }
-        locala.anz.setVisibility(0);
-        locala.anz.setTag(locala.anv.getText());
-        locala.anz.setOnClickListener(this);
+        locala.auY.setVisibility(0);
+        locala.auY.setTag(locala.auU.getText());
+        locala.auY.setOnClickListener(this);
         return;
-        paramView = a(paramCursor, this.anq);
+        paramView = a(paramCursor, this.auP);
         break;
         label345:
-        if (locala.anv == null) {
+        if (locala.auU == null) {
           break label201;
         }
-        locala.anv.setSingleLine(true);
-        locala.anv.setMaxLines(1);
+        locala.auU.setSingleLine(true);
+        locala.auU.setMaxLines(1);
         break label201;
         label374:
-        localObject1 = U(paramCursor.getString(this.ans));
+        localObject1 = G(paramCursor.getString(this.auR));
         paramView = (View)localObject1;
         if (localObject1 != null) {
           break label235;
         }
-        paramView = this.alZ.getSearchActivity();
+        paramView = this.aty.getSearchActivity();
         String str = paramView.flattenToShortString();
-        if (this.ame.containsKey(str))
+        if (this.atD.containsKey(str))
         {
-          paramView = (Drawable.ConstantState)this.ame.get(str);
+          paramView = (Drawable.ConstantState)this.atD.get(str);
           if (paramView == null) {}
-          for (localObject1 = null;; localObject1 = paramView.newDrawable(this.anl.getResources()))
+          for (localObject1 = null;; localObject1 = paramView.newDrawable(this.auK.getResources()))
           {
             paramView = (View)localObject1;
             if (localObject1 != null) {
@@ -399,12 +399,12 @@ final class au
         if (localObject1 == null) {}
         for (paramView = null;; paramView = ((Drawable)localObject1).getConstantState())
         {
-          this.ame.put(str, paramView);
+          this.atD.put(str, paramView);
           break;
         }
       }
       label537:
-      locala.anz.setVisibility(8);
+      locala.auY.setVisibility(8);
       return;
     }
   }
@@ -424,12 +424,12 @@ final class au
         super.changeCursor(paramCursor);
         if (paramCursor != null)
         {
-          this.anp = paramCursor.getColumnIndex("suggest_text_1");
-          this.anq = paramCursor.getColumnIndex("suggest_text_2");
-          this.anr = paramCursor.getColumnIndex("suggest_text_2_url");
-          this.ans = paramCursor.getColumnIndex("suggest_icon_1");
-          this.ant = paramCursor.getColumnIndex("suggest_icon_2");
-          this.anu = paramCursor.getColumnIndex("suggest_flags");
+          this.auO = paramCursor.getColumnIndex("suggest_text_1");
+          this.auP = paramCursor.getColumnIndex("suggest_text_2");
+          this.auQ = paramCursor.getColumnIndex("suggest_text_2_url");
+          this.auR = paramCursor.getColumnIndex("suggest_icon_1");
+          this.auS = paramCursor.getColumnIndex("suggest_icon_2");
+          this.auT = paramCursor.getColumnIndex("suggest_flags");
           return;
         }
       }
@@ -449,14 +449,14 @@ final class au
         if (str != null) {
           return str;
         }
-        if (this.alZ.shouldRewriteQueryFromData())
+        if (this.aty.shouldRewriteQueryFromData())
         {
           str = a(paramCursor, "suggest_intent_data");
           if (str != null) {
             return str;
           }
         }
-      } while (!this.alZ.shouldRewriteQueryFromText());
+      } while (!this.aty.shouldRewriteQueryFromText());
       paramCursor = a(paramCursor, "suggest_text_1");
     } while (paramCursor == null);
     return paramCursor;
@@ -471,9 +471,9 @@ final class au
     }
     catch (RuntimeException paramView)
     {
-      paramViewGroup = newDropDownView(this.mContext, this.Js, paramViewGroup);
+      paramViewGroup = newDropDownView(this.mContext, this.Qs, paramViewGroup);
       if (paramViewGroup != null) {
-        ((au.a)paramViewGroup.getTag()).anv.setText(paramView.toString());
+        ((a)paramViewGroup.getTag()).auU.setText(paramView.toString());
       }
     }
     return paramViewGroup;
@@ -488,9 +488,9 @@ final class au
     }
     catch (RuntimeException paramView)
     {
-      paramViewGroup = newView(this.mContext, this.Js, paramViewGroup);
+      paramViewGroup = newView(this.mContext, this.Qs, paramViewGroup);
       if (paramViewGroup != null) {
-        ((au.a)paramViewGroup.getTag()).anv.setText(paramView.toString());
+        ((a)paramViewGroup.getTag()).auU.setText(paramView.toString());
       }
     }
     return paramViewGroup;
@@ -504,8 +504,8 @@ final class au
   public final View newView(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
   {
     paramContext = super.newView(paramContext, paramCursor, paramViewGroup);
-    paramContext.setTag(new au.a(paramContext));
-    ((ImageView)paramContext.findViewById(2131820959)).setImageResource(this.anm);
+    paramContext.setTag(new a(paramContext));
+    ((ImageView)paramContext.findViewById(2131299261)).setImageResource(this.auL);
     return paramContext;
   }
   
@@ -525,19 +525,19 @@ final class au
   {
     paramView = paramView.getTag();
     if ((paramView instanceof CharSequence)) {
-      this.amo.setQuery((CharSequence)paramView);
+      this.atN.setQuery((CharSequence)paramView);
     }
   }
   
   public final Cursor runQueryOnBackgroundThread(CharSequence paramCharSequence)
   {
     if (paramCharSequence == null) {}
-    for (paramCharSequence = ""; (this.amo.getVisibility() != 0) || (this.amo.getWindowVisibility() != 0); paramCharSequence = paramCharSequence.toString()) {
+    for (paramCharSequence = ""; (this.atN.getVisibility() != 0) || (this.atN.getWindowVisibility() != 0); paramCharSequence = paramCharSequence.toString()) {
       return null;
     }
     try
     {
-      Object localObject1 = this.alZ;
+      Object localObject1 = this.aty;
       if (localObject1 == null) {
         paramCharSequence = null;
       }
@@ -577,6 +577,24 @@ final class au
       return null;
     }
     catch (RuntimeException paramCharSequence) {}
+  }
+  
+  static final class a
+  {
+    public final TextView auU;
+    public final TextView auV;
+    public final ImageView auW;
+    public final ImageView auX;
+    public final ImageView auY;
+    
+    public a(View paramView)
+    {
+      this.auU = ((TextView)paramView.findViewById(16908308));
+      this.auV = ((TextView)paramView.findViewById(16908309));
+      this.auW = ((ImageView)paramView.findViewById(16908295));
+      this.auX = ((ImageView)paramView.findViewById(16908296));
+      this.auY = ((ImageView)paramView.findViewById(2131299261));
+    }
   }
 }
 

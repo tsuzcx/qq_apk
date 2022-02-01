@@ -11,35 +11,35 @@ public class ThreadUtils
   
   static
   {
-    AppMethodBeat.i(139040);
+    AppMethodBeat.i(53819);
     sLock = new Object();
-    AppMethodBeat.o(139040);
+    AppMethodBeat.o(53819);
   }
   
   private static Handler getUiThreadHandler()
   {
-    AppMethodBeat.i(139038);
+    AppMethodBeat.i(53817);
     synchronized (sLock)
     {
       if (sUiThreadHandler == null) {
         sUiThreadHandler = new Handler(Looper.getMainLooper());
       }
       Handler localHandler = sUiThreadHandler;
-      AppMethodBeat.o(139038);
+      AppMethodBeat.o(53817);
       return localHandler;
     }
   }
   
   public static void postOnUiThread(Runnable paramRunnable)
   {
-    AppMethodBeat.i(139039);
+    AppMethodBeat.i(53818);
     getUiThreadHandler().post(paramRunnable);
-    AppMethodBeat.o(139039);
+    AppMethodBeat.o(53818);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.smtt.sandbox.ThreadUtils
  * JD-Core Version:    0.7.0.1
  */

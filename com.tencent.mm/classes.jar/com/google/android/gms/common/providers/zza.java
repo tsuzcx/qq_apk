@@ -9,9 +9,9 @@ final class zza
 {
   public final ScheduledExecutorService newSingleThreadScheduledExecutor()
   {
-    AppMethodBeat.i(89934);
+    AppMethodBeat.i(4956);
     ScheduledExecutorService localScheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-    AppMethodBeat.o(89934);
+    AppMethodBeat.o(4956);
     return localScheduledExecutorService;
   }
 }

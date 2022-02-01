@@ -1,99 +1,39 @@
 package com.tencent.mm.emoji.a;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ba.d;
-import com.tencent.mm.ba.f;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.LinkedList;
-import org.xmlpull.v1.XmlPullParser;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.protocal.protobuf.GetEmotionDetailRequest;
+import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/model/EggListParser;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "TAG", "", "eggList", "Lcom/tencent/mm/modelpackage/EggList;", "getEggList", "()Lcom/tencent/mm/modelpackage/EggList;", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "validEggInfo", "", "info", "Lcom/tencent/mm/modelpackage/EggInfo;", "plugin-emojisdk_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/model/CgiGetEmotionDetail;", "Lcom/tencent/mm/modelbase/DeprecatedCgi;", "Lcom/tencent/mm/protocal/protobuf/GetEmotionDetailResponse;", "productId", "", "(Ljava/lang/String;)V", "getProductId", "()Ljava/lang/String;", "plugin-emojisdk_release"})
 public final class c
-  extends a
+  extends com.tencent.mm.al.c<GetEmotionDetailResponse>
 {
-  private final String TAG;
-  public final f ewp;
+  private final String dft;
   
-  public c()
+  public c(String paramString)
   {
-    AppMethodBeat.i(151774);
-    this.TAG = "MicroMsg.EggListParser";
-    this.ewp = new f();
-    AppMethodBeat.o(151774);
-  }
-  
-  protected final void a(String paramString, XmlPullParser paramXmlPullParser)
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(151773);
-    j.q(paramString, "tag");
-    j.q(paramXmlPullParser, "parser");
-    label56:
-    label71:
-    boolean bool1;
-    switch (paramString.hashCode())
-    {
-    default: 
-    case 2289459: 
-      do
-      {
-        a(paramXmlPullParser);
-        AppMethodBeat.o(151773);
-        return;
-      } while (!paramString.equals("Item"));
-      paramString = new b(j.e(paramString, "ItemNew"));
-      paramString.f(paramXmlPullParser);
-      paramXmlPullParser = paramString.ewn;
-      switch (paramXmlPullParser.fMw)
-      {
-      default: 
-        bool1 = false;
-      }
-      break;
-    }
-    for (;;)
-    {
-      ab.i(this.TAG, "validEggInfo: " + paramXmlPullParser.name + ", " + paramXmlPullParser.fMw + ", " + paramXmlPullParser.fMt + ", " + bool1);
-      if (!bool1) {
-        break label56;
-      }
-      this.ewp.fMy.add(paramString.ewn);
-      AppMethodBeat.o(151773);
-      return;
-      if (!paramString.equals("ItemNew")) {
-        break;
-      }
-      break label71;
-      bool1 = bool2;
-      if (paramXmlPullParser.fMt > 3)
-      {
-        paramXmlPullParser.fMt = 0;
-        bool1 = bool2;
-        continue;
-        bool1 = bool2;
-        if (paramXmlPullParser.fMt > 4)
-        {
-          paramXmlPullParser.fMt = 0;
-          bool1 = bool2;
-        }
-      }
-    }
-  }
-  
-  public final void f(XmlPullParser paramXmlPullParser)
-  {
-    AppMethodBeat.i(151772);
-    j.q(paramXmlPullParser, "parser");
-    this.ewp.fMz = e(paramXmlPullParser, "version");
-    super.f(paramXmlPullParser);
-    AppMethodBeat.o(151772);
+    AppMethodBeat.i(183954);
+    this.dft = paramString;
+    paramString = new GetEmotionDetailRequest();
+    GetEmotionDetailResponse localGetEmotionDetailResponse = new GetEmotionDetailResponse();
+    paramString.ProductID = this.dft;
+    paramString.Version = -1;
+    paramString.Scene = 3;
+    b.a locala = new b.a();
+    locala.c((a)paramString);
+    locala.d((a)localGetEmotionDetailResponse);
+    locala.wg("/cgi-bin/micromsg-bin/getemotiondetail");
+    locala.nB(412);
+    c(locala.atI());
+    AppMethodBeat.o(183954);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.a.c
  * JD-Core Version:    0.7.0.1
  */

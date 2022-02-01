@@ -1,47 +1,31 @@
 package com.tencent.mm.plugin.gallery.ui;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.gallery.stub.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.base.DrawedCallBackFrameLayout.a;
 
 final class AlbumPreviewUI$7
-  implements DrawedCallBackFrameLayout.a
+  implements DialogInterface.OnClickListener
 {
   AlbumPreviewUI$7(AlbumPreviewUI paramAlbumPreviewUI) {}
   
-  public final void bEm()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(21399);
-    try
-    {
-      AlbumPreviewUI.b(this.neV).bEm();
-      if (!this.neV.neH) {}
-    }
-    catch (Exception localException)
-    {
-      try
-      {
-        this.neV.unbindService(AlbumPreviewUI.H(this.neV));
-        this.neV.neH = false;
-        AppMethodBeat.o(21399);
-        return;
-        localException = localException;
-        ab.printErrStackTrace("MicroMsg.AlbumPreviewUI", localException, "", new Object[0]);
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          ab.printErrStackTrace("MicroMsg.AlbumPreviewUI", localThrowable, "Failed to unbindService when onViewDrawed is invoked.", new Object[0]);
-        }
-      }
-    }
+    AppMethodBeat.i(173755);
+    paramDialogInterface = this.rIn;
+    Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/gallery/ui/AlbumPreviewUI$15", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/plugin/gallery/ui/AlbumPreviewUI$15", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    this.rIn.finish();
+    AppMethodBeat.o(173755);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.AlbumPreviewUI.7
  * JD-Core Version:    0.7.0.1
  */

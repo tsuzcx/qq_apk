@@ -14,94 +14,94 @@ import java.util.Set;
 
 public final class x
 {
-  private final Account GJ;
-  private final Set<Scope> Ht;
-  private final int Hv;
-  private final View Hw;
-  private final String Hx;
-  private final String Hy;
-  private final Set<Scope> JQ;
-  private final Map<a<?>, y> JR;
-  private final cs JS;
-  private Integer JT;
+  private final Account Iy;
+  private final Set<Scope> Ji;
+  private final int Jk;
+  private final View Jl;
+  private final String Jm;
+  private final String Jn;
+  private final Set<Scope> LF;
+  private final Map<a<?>, y> LG;
+  private final cs LH;
+  private Integer LI;
   
   public x(Account paramAccount, Set<Scope> paramSet, Map<a<?>, y> paramMap, int paramInt, View paramView, String paramString1, String paramString2, cs paramcs)
   {
-    this.GJ = paramAccount;
+    this.Iy = paramAccount;
     if (paramSet == null) {}
     for (paramAccount = Collections.EMPTY_SET;; paramAccount = Collections.unmodifiableSet(paramSet))
     {
-      this.Ht = paramAccount;
+      this.Ji = paramAccount;
       paramAccount = paramMap;
       if (paramMap == null) {
         paramAccount = Collections.EMPTY_MAP;
       }
-      this.JR = paramAccount;
-      this.Hw = paramView;
-      this.Hv = paramInt;
-      this.Hx = paramString1;
-      this.Hy = paramString2;
-      this.JS = paramcs;
-      paramAccount = new HashSet(this.Ht);
-      paramSet = this.JR.values().iterator();
+      this.LG = paramAccount;
+      this.Jl = paramView;
+      this.Jk = paramInt;
+      this.Jm = paramString1;
+      this.Jn = paramString2;
+      this.LH = paramcs;
+      paramAccount = new HashSet(this.Ji);
+      paramSet = this.LG.values().iterator();
       while (paramSet.hasNext()) {
-        paramAccount.addAll(((y)paramSet.next()).GR);
+        paramAccount.addAll(((y)paramSet.next()).IG);
       }
     }
-    this.JQ = Collections.unmodifiableSet(paramAccount);
+    this.LF = Collections.unmodifiableSet(paramAccount);
   }
   
   public final void a(Integer paramInteger)
   {
-    this.JT = paramInteger;
+    this.LI = paramInteger;
   }
   
-  public final Account fX()
+  public final Account gi()
   {
-    return this.GJ;
+    return this.Iy;
   }
   
-  public final Account hm()
+  public final String hA()
   {
-    if (this.GJ != null) {
-      return this.GJ;
+    return this.Jm;
+  }
+  
+  public final String hB()
+  {
+    return this.Jn;
+  }
+  
+  public final cs hC()
+  {
+    return this.LH;
+  }
+  
+  public final Integer hD()
+  {
+    return this.LI;
+  }
+  
+  public final Account hw()
+  {
+    if (this.Iy != null) {
+      return this.Iy;
     }
     return new Account("<<default account>>", "com.google");
   }
   
-  public final Set<Scope> hn()
+  public final Set<Scope> hx()
   {
-    return this.Ht;
+    return this.Ji;
   }
   
-  public final Set<Scope> ho()
+  public final Set<Scope> hy()
   {
-    return this.JQ;
+    return this.LF;
   }
   
-  public final Map<a<?>, y> hp()
+  public final Map<a<?>, y> hz()
   {
-    return this.JR;
-  }
-  
-  public final String hq()
-  {
-    return this.Hx;
-  }
-  
-  public final String hr()
-  {
-    return this.Hy;
-  }
-  
-  public final cs hs()
-  {
-    return this.JS;
-  }
-  
-  public final Integer ht()
-  {
-    return this.JT;
+    return this.LG;
   }
 }
 

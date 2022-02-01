@@ -11,21 +11,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class AutoFillListPopupWindowBase$a
   extends ListView
 {
-  private boolean acV;
-  private boolean acW;
+  private boolean akc;
+  private boolean akd;
   
   public AutoFillListPopupWindowBase$a(Context paramContext, boolean paramBoolean)
   {
-    super(paramContext, null, 2130772197);
-    AppMethodBeat.i(123909);
-    this.acW = paramBoolean;
+    super(paramContext, null, 2130968938);
+    AppMethodBeat.i(136649);
+    this.akd = paramBoolean;
     setCacheColorHint(0);
-    AppMethodBeat.o(123909);
+    AppMethodBeat.o(136649);
   }
   
-  final int dy(int paramInt1, int paramInt2)
+  final int et(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(123914);
+    AppMethodBeat.i(136654);
     int i = getListPaddingTop();
     int k = getListPaddingBottom();
     getListPaddingLeft();
@@ -35,7 +35,7 @@ final class AutoFillListPopupWindowBase$a
     ListAdapter localListAdapter = getAdapter();
     if (localListAdapter == null)
     {
-      AppMethodBeat.o(123914);
+      AppMethodBeat.o(136654);
       return i + k;
     }
     i = k + i;
@@ -79,7 +79,7 @@ final class AutoFillListPopupWindowBase$a
       i = ((View)localObject).getMeasuredHeight() + i;
       if (i >= paramInt2)
       {
-        AppMethodBeat.o(123914);
+        AppMethodBeat.o(136654);
         return paramInt2;
         j = 0;
         break;
@@ -89,56 +89,56 @@ final class AutoFillListPopupWindowBase$a
       k += 1;
       n = m;
       break label92;
-      AppMethodBeat.o(123914);
+      AppMethodBeat.o(136654);
       return i;
     }
   }
   
   public final boolean hasFocus()
   {
-    AppMethodBeat.i(123913);
-    if ((this.acW) || (super.hasFocus()))
+    AppMethodBeat.i(136653);
+    if ((this.akd) || (super.hasFocus()))
     {
-      AppMethodBeat.o(123913);
+      AppMethodBeat.o(136653);
       return true;
     }
-    AppMethodBeat.o(123913);
+    AppMethodBeat.o(136653);
     return false;
   }
   
   public final boolean hasWindowFocus()
   {
-    AppMethodBeat.i(123911);
-    if ((this.acW) || (super.hasWindowFocus()))
+    AppMethodBeat.i(136651);
+    if ((this.akd) || (super.hasWindowFocus()))
     {
-      AppMethodBeat.o(123911);
+      AppMethodBeat.o(136651);
       return true;
     }
-    AppMethodBeat.o(123911);
+    AppMethodBeat.o(136651);
     return false;
   }
   
   public final boolean isFocused()
   {
-    AppMethodBeat.i(123912);
-    if ((this.acW) || (super.isFocused()))
+    AppMethodBeat.i(136652);
+    if ((this.akd) || (super.isFocused()))
     {
-      AppMethodBeat.o(123912);
+      AppMethodBeat.o(136652);
       return true;
     }
-    AppMethodBeat.o(123912);
+    AppMethodBeat.o(136652);
     return false;
   }
   
   public final boolean isInTouchMode()
   {
-    AppMethodBeat.i(123910);
-    if (((this.acW) && (this.acV)) || (super.isInTouchMode()))
+    AppMethodBeat.i(136650);
+    if (((this.akd) && (this.akc)) || (super.isInTouchMode()))
     {
-      AppMethodBeat.o(123910);
+      AppMethodBeat.o(136650);
       return true;
     }
-    AppMethodBeat.o(123910);
+    AppMethodBeat.o(136650);
     return false;
   }
 }

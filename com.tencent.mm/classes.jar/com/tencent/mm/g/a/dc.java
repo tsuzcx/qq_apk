@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class dc
   extends b
 {
-  public dc.a cqz;
+  public a dfl;
   
   public dc()
   {
@@ -15,11 +15,16 @@ public final class dc
   
   private dc(byte paramByte)
   {
-    AppMethodBeat.i(70138);
-    this.cqz = new dc.a();
-    this.ymq = false;
+    AppMethodBeat.i(104413);
+    this.dfl = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70138);
+    AppMethodBeat.o(104413);
+  }
+  
+  public static final class a
+  {
+    public boolean enable;
   }
 }
 

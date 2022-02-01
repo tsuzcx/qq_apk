@@ -3,17 +3,17 @@ package android.arch.lifecycle;
 public class SingleGeneratedAdapterObserver
   implements GenericLifecycleObserver
 {
-  private final GeneratedAdapter dp;
+  private final GeneratedAdapter ds;
   
   SingleGeneratedAdapterObserver(GeneratedAdapter paramGeneratedAdapter)
   {
-    this.dp = paramGeneratedAdapter;
+    this.ds = paramGeneratedAdapter;
   }
   
   public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
   {
-    this.dp.callMethods(paramLifecycleOwner, paramEvent, false, null);
-    this.dp.callMethods(paramLifecycleOwner, paramEvent, true, null);
+    this.ds.callMethods(paramLifecycleOwner, paramEvent, false, null);
+    this.ds.callMethods(paramLifecycleOwner, paramEvent, true, null);
   }
 }
 

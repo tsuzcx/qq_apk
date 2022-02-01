@@ -6,38 +6,39 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.game.preload.d;
 import com.tencent.mm.plugin.appbrand.game.preload.e;
 import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.expt.a.b;
+import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class a
-  extends com.tencent.luggage.game.e.a
+  extends com.tencent.luggage.game.d.a
 {
-  public final boolean uM()
+  public final boolean BC()
   {
-    AppMethodBeat.i(143148);
-    boolean bool = ((com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lWc, false);
-    AppMethodBeat.o(143148);
+    AppMethodBeat.i(45133);
+    boolean bool = ((b)g.ab(b.class)).a(b.a.pqS, false);
+    AppMethodBeat.o(45133);
     return bool;
   }
   
-  public final void uN()
+  public final void BD()
   {
-    AppMethodBeat.i(143149);
-    d locald = d.aAQ();
-    long l1 = bo.aoy();
-    long l2 = locald.htX.atS().startTime;
-    e.aAT().de(2002, (int)(l1 - l2));
-    e.aAT().de(3002, locald.huf.intValue());
-    e.aAT().de(3004, locald.hue.intValue());
-    e.aAT().de(4002, locald.hug.intValue());
-    e.aAT().de(3005, locald.huh.intValue());
-    AppMethodBeat.o(143149);
+    AppMethodBeat.i(45134);
+    d locald = d.aWV();
+    long l1 = bt.eGO();
+    long l2 = locald.joZ.aNc().startTime;
+    e.aWX().dK(2002, (int)(l1 - l2));
+    e.aWX().dK(3002, locald.jst.intValue());
+    e.aWX().dK(3004, locald.jss.intValue());
+    e.aWX().dK(4002, locald.jsu.intValue());
+    e.aWX().dK(3005, locald.jsv.intValue());
+    AppMethodBeat.o(45134);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.e.a
  * JD-Core Version:    0.7.0.1
  */

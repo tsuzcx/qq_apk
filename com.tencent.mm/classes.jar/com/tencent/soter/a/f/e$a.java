@@ -2,13 +2,13 @@ package com.tencent.soter.a.f;
 
 public final class e$a
 {
-  public String Bnk;
-  public String Bnl;
+  public String IvK;
+  public String IvL;
   
   public e$a(String paramString1, String paramString2)
   {
-    this.Bnl = paramString1;
-    this.Bnk = paramString2;
+    this.IvL = paramString1;
+    this.IvK = paramString2;
   }
 }
 

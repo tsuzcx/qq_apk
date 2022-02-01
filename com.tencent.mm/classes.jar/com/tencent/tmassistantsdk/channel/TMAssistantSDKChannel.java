@@ -9,10 +9,10 @@ public class TMAssistantSDKChannel
   {
     try
     {
-      AppMethodBeat.i(75616);
+      AppMethodBeat.i(101862);
       paramString1 = new TMAssistantSDKChannelDataItem(paramString1, paramInt1, paramString2, paramInt2, paramString3, paramLong1, paramLong2, paramInt3, paramArrayOfByte);
       paramLong1 = new DBOption().insert(paramString1);
-      AppMethodBeat.o(75616);
+      AppMethodBeat.o(101862);
       return paramLong1;
     }
     finally
@@ -73,9 +73,9 @@ public class TMAssistantSDKChannel
   {
     try
     {
-      AppMethodBeat.i(75615);
+      AppMethodBeat.i(101861);
       ArrayList localArrayList = new DBOption().queryAll();
-      AppMethodBeat.o(75615);
+      AppMethodBeat.o(101861);
       return localArrayList;
     }
     finally
@@ -87,7 +87,7 @@ public class TMAssistantSDKChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tmassistantsdk.channel.TMAssistantSDKChannel
  * JD-Core Version:    0.7.0.1
  */

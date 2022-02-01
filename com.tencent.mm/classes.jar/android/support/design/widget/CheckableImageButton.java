@@ -2,7 +2,7 @@ package android.support.design.widget;
 
 import android.content.Context;
 import android.support.v4.view.a;
-import android.support.v4.view.a.b;
+import android.support.v4.view.a.c;
 import android.support.v4.view.t;
 import android.support.v7.widget.AppCompatImageButton;
 import android.util.AttributeSet;
@@ -15,12 +15,12 @@ public class CheckableImageButton
   extends AppCompatImageButton
   implements Checkable
 {
-  private static final int[] gJ = { 16842912 };
-  private boolean gK;
+  private static final int[] lF = { 16842912 };
+  private boolean lG;
   
   public CheckableImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130772187);
+    this(paramContext, paramAttributeSet, 2130969084);
   }
   
   public CheckableImageButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -34,34 +34,34 @@ public class CheckableImageButton
         paramAnonymousAccessibilityEvent.setChecked(CheckableImageButton.this.isChecked());
       }
       
-      public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, b paramAnonymousb)
+      public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, c paramAnonymousc)
       {
-        super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousb);
-        paramAnonymousb.setCheckable(true);
+        super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousc);
+        paramAnonymousc.setCheckable(true);
         boolean bool = CheckableImageButton.this.isChecked();
-        paramAnonymousb.Hq.setChecked(bool);
+        paramAnonymousc.Op.setChecked(bool);
       }
     });
   }
   
   public boolean isChecked()
   {
-    return this.gK;
+    return this.lG;
   }
   
   public int[] onCreateDrawableState(int paramInt)
   {
-    if (this.gK) {
-      return mergeDrawableStates(super.onCreateDrawableState(gJ.length + paramInt), gJ);
+    if (this.lG) {
+      return mergeDrawableStates(super.onCreateDrawableState(lF.length + paramInt), lF);
     }
     return super.onCreateDrawableState(paramInt);
   }
   
   public void setChecked(boolean paramBoolean)
   {
-    if (this.gK != paramBoolean)
+    if (this.lG != paramBoolean)
     {
-      this.gK = paramBoolean;
+      this.lG = paramBoolean;
       refreshDrawableState();
       sendAccessibilityEvent(2048);
     }
@@ -69,7 +69,7 @@ public class CheckableImageButton
   
   public void toggle()
   {
-    if (!this.gK) {}
+    if (!this.lG) {}
     for (boolean bool = true;; bool = false)
     {
       setChecked(bool);
@@ -79,7 +79,7 @@ public class CheckableImageButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.widget.CheckableImageButton
  * JD-Core Version:    0.7.0.1
  */

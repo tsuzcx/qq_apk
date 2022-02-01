@@ -15,15 +15,41 @@ public class TXSVideoFrame
   public int textureId;
   public int width;
   
-  private native void loadGLArray(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  private native void nativeLoadArrayFromBuffer(byte[] paramArrayOfByte, int paramInt);
   
-  private native void loadGLData(int paramInt1, int paramInt2);
+  private native void nativeLoadArrayFromGL(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
-  private native void loadNativeData(byte[] paramArrayOfByte, int paramInt);
+  private native void nativeLoadBufferFromGL(int paramInt1, int paramInt2);
+  
+  private native void nativeLoadNV21BufferFromI420Buffer(int paramInt1, int paramInt2);
+  
+  public byte[] I420toNV21(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(14454);
+    byte[] arrayOfByte = paramArrayOfByte2;
+    if (paramArrayOfByte2 == null) {
+      arrayOfByte = new byte[paramArrayOfByte1.length];
+    }
+    paramInt1 *= paramInt2;
+    int j = paramInt1 + paramInt1 / 4;
+    System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 0, paramInt1);
+    paramInt2 = j;
+    int i = paramInt1;
+    while (i < j)
+    {
+      arrayOfByte[paramInt1] = paramArrayOfByte1[paramInt2];
+      arrayOfByte[(paramInt1 + 1)] = paramArrayOfByte1[i];
+      i += 1;
+      paramInt2 += 1;
+      paramInt1 += 2;
+    }
+    AppMethodBeat.o(14454);
+    return arrayOfByte;
+  }
   
   public TXSVideoFrame clone()
   {
-    AppMethodBeat.i(146736);
+    AppMethodBeat.i(14450);
     TXSVideoFrame localTXSVideoFrame = new TXSVideoFrame();
     localTXSVideoFrame.width = this.width;
     localTXSVideoFrame.height = this.height;
@@ -34,42 +60,48 @@ public class TXSVideoFrame
     localTXSVideoFrame.textureId = this.textureId;
     localTXSVideoFrame.eglContext = this.eglContext;
     localTXSVideoFrame.nativeClone(this.buffer);
-    AppMethodBeat.o(146736);
+    AppMethodBeat.o(14450);
     return localTXSVideoFrame;
   }
   
   public void finalize()
   {
-    AppMethodBeat.i(146734);
+    AppMethodBeat.i(14449);
     release();
     super.finalize();
-    AppMethodBeat.o(146734);
+    AppMethodBeat.o(14449);
   }
   
-  public void loadI420Array(byte[] paramArrayOfByte)
+  public void loadNV21BufferFromI420Buffer()
   {
-    AppMethodBeat.i(146735);
+    AppMethodBeat.i(14453);
+    nativeLoadNV21BufferFromI420Buffer(this.width, this.height);
+    AppMethodBeat.o(14453);
+  }
+  
+  public void loadYUVArray(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(14451);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length < this.width * this.height * 3 / 2))
     {
-      AppMethodBeat.o(146735);
+      AppMethodBeat.o(14451);
       return;
     }
-    loadNativeData(paramArrayOfByte, this.width * this.height * 3 / 2);
-    AppMethodBeat.o(146735);
+    if (this.buffer == null)
+    {
+      nativeLoadArrayFromGL(paramArrayOfByte, this.width, this.height);
+      AppMethodBeat.o(14451);
+      return;
+    }
+    nativeLoadArrayFromBuffer(paramArrayOfByte, this.width * this.height * 3 / 2);
+    AppMethodBeat.o(14451);
   }
   
-  public void loadI420BufferFromGL()
+  public void loadYUVBufferFromGL()
   {
-    AppMethodBeat.i(146738);
-    loadGLData(this.width, this.height);
-    AppMethodBeat.o(146738);
-  }
-  
-  public void loadI420BufferFromGL(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(146737);
-    loadGLArray(paramArrayOfByte, this.width, this.height);
-    AppMethodBeat.o(146737);
+    AppMethodBeat.i(14452);
+    nativeLoadBufferFromGL(this.width, this.height);
+    AppMethodBeat.o(14452);
   }
   
   public native void nativeClone(ByteBuffer paramByteBuffer);
@@ -78,7 +110,7 @@ public class TXSVideoFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.structs.TXSVideoFrame
  * JD-Core Version:    0.7.0.1
  */

@@ -84,17 +84,17 @@ public class GoogleApiManager
   
   static
   {
-    AppMethodBeat.i(60635);
+    AppMethodBeat.i(11127);
     zzjj = new Status(4, "Sign-out occurred while this API call was in progress.");
     zzjk = new Status(4, "The user must be signed in to make this API call.");
     lock = new Object();
-    AppMethodBeat.o(60635);
+    AppMethodBeat.o(11127);
   }
   
   @KeepForSdk
   private GoogleApiManager(Context paramContext, Looper paramLooper, GoogleApiAvailability paramGoogleApiAvailability)
   {
-    AppMethodBeat.i(60617);
+    AppMethodBeat.i(11109);
     this.zzjl = 5000L;
     this.zzjm = 120000L;
     this.zzjn = 10000L;
@@ -109,13 +109,13 @@ public class GoogleApiManager
     this.zzjq = paramGoogleApiAvailability;
     this.zzjr = new GoogleApiAvailabilityCache(paramGoogleApiAvailability);
     this.handler.sendMessage(this.handler.obtainMessage(6));
-    AppMethodBeat.o(60617);
+    AppMethodBeat.o(11109);
   }
   
   @KeepForSdk
   public static void reportSignOut()
   {
-    AppMethodBeat.i(60616);
+    AppMethodBeat.i(11108);
     synchronized (lock)
     {
       if (zzjo != null)
@@ -124,14 +124,14 @@ public class GoogleApiManager
         localGoogleApiManager.zzjt.incrementAndGet();
         localGoogleApiManager.handler.sendMessageAtFrontOfQueue(localGoogleApiManager.handler.obtainMessage(10));
       }
-      AppMethodBeat.o(60616);
+      AppMethodBeat.o(11108);
       return;
     }
   }
   
   public static GoogleApiManager zzb(Context paramContext)
   {
-    AppMethodBeat.i(60614);
+    AppMethodBeat.i(11106);
     synchronized (lock)
     {
       if (zzjo == null)
@@ -142,14 +142,14 @@ public class GoogleApiManager
         zzjo = new GoogleApiManager(paramContext.getApplicationContext(), (Looper)localObject2, GoogleApiAvailability.getInstance());
       }
       paramContext = zzjo;
-      AppMethodBeat.o(60614);
+      AppMethodBeat.o(11106);
       return paramContext;
     }
   }
   
   private final void zzb(GoogleApi<?> paramGoogleApi)
   {
-    AppMethodBeat.i(60620);
+    AppMethodBeat.i(11112);
     zzh localzzh = paramGoogleApi.zzm();
     zza localzza2 = (zza)this.zzju.get(localzzh);
     zza localzza1 = localzza2;
@@ -162,24 +162,24 @@ public class GoogleApiManager
       this.zzjx.add(localzzh);
     }
     localzza1.connect();
-    AppMethodBeat.o(60620);
+    AppMethodBeat.o(11112);
   }
   
   public static GoogleApiManager zzbf()
   {
-    AppMethodBeat.i(60615);
+    AppMethodBeat.i(11107);
     synchronized (lock)
     {
       Preconditions.checkNotNull(zzjo, "Must guarantee manager is non-null before using getInstance");
       GoogleApiManager localGoogleApiManager = zzjo;
-      AppMethodBeat.o(60615);
+      AppMethodBeat.o(11107);
       return localGoogleApiManager;
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(60631);
+    AppMethodBeat.i(11123);
     int i;
     Object localObject1;
     Object localObject2;
@@ -189,7 +189,7 @@ public class GoogleApiManager
     default: 
       i = paramMessage.what;
       new StringBuilder(31).append("Unknown message id: ").append(i);
-      AppMethodBeat.o(60631);
+      AppMethodBeat.o(11123);
       return false;
     case 1: 
       if (((Boolean)paramMessage.obj).booleanValue()) {}
@@ -212,7 +212,7 @@ public class GoogleApiManager
         localObject2 = (zzh)((Iterator)localObject1).next();
         localzza = (zza)this.zzju.get(localObject2);
         if (localzza != null) {
-          break label304;
+          break label306;
         }
         paramMessage.zza((zzh)localObject2, new ConnectionResult(13), null);
       }
@@ -222,7 +222,7 @@ public class GoogleApiManager
     case 13: 
       for (;;)
       {
-        AppMethodBeat.o(60631);
+        AppMethodBeat.o(11123);
         return true;
         if (localzza.isConnected())
         {
@@ -262,7 +262,7 @@ public class GoogleApiManager
         }
       }
     case 5: 
-      label304:
+      label306:
       i = paramMessage.arg1;
       localObject1 = (ConnectionResult)paramMessage.obj;
       localObject2 = this.zzju.values().iterator();
@@ -348,99 +348,99 @@ public class GoogleApiManager
   
   final void maybeSignOut()
   {
-    AppMethodBeat.i(60625);
+    AppMethodBeat.i(11117);
     this.zzjt.incrementAndGet();
     this.handler.sendMessage(this.handler.obtainMessage(10));
-    AppMethodBeat.o(60625);
+    AppMethodBeat.o(11117);
   }
   
   final PendingIntent zza(zzh<?> paramzzh, int paramInt)
   {
-    AppMethodBeat.i(60632);
+    AppMethodBeat.i(11124);
     paramzzh = (zza)this.zzju.get(paramzzh);
     if (paramzzh == null)
     {
-      AppMethodBeat.o(60632);
+      AppMethodBeat.o(11124);
       return null;
     }
     paramzzh = paramzzh.zzbt();
     if (paramzzh == null)
     {
-      AppMethodBeat.o(60632);
+      AppMethodBeat.o(11124);
       return null;
     }
     paramzzh = PendingIntent.getActivity(this.zzjp, paramInt, paramzzh.getSignInIntent(), 134217728);
-    AppMethodBeat.o(60632);
+    AppMethodBeat.o(11124);
     return paramzzh;
   }
   
   public final <O extends Api.ApiOptions> Task<Boolean> zza(GoogleApi<O> paramGoogleApi, ListenerHolder.ListenerKey<?> paramListenerKey)
   {
-    AppMethodBeat.i(60630);
+    AppMethodBeat.i(11122);
     TaskCompletionSource localTaskCompletionSource = new TaskCompletionSource();
     paramListenerKey = new zzg(paramListenerKey, localTaskCompletionSource);
     this.handler.sendMessage(this.handler.obtainMessage(13, new zzbu(paramListenerKey, this.zzjt.get(), paramGoogleApi)));
     paramGoogleApi = localTaskCompletionSource.getTask();
-    AppMethodBeat.o(60630);
+    AppMethodBeat.o(11122);
     return paramGoogleApi;
   }
   
   public final <O extends Api.ApiOptions> Task<Void> zza(GoogleApi<O> paramGoogleApi, RegisterListenerMethod<Api.AnyClient, ?> paramRegisterListenerMethod, UnregisterListenerMethod<Api.AnyClient, ?> paramUnregisterListenerMethod)
   {
-    AppMethodBeat.i(60629);
+    AppMethodBeat.i(11121);
     TaskCompletionSource localTaskCompletionSource = new TaskCompletionSource();
     paramRegisterListenerMethod = new zze(new zzbv(paramRegisterListenerMethod, paramUnregisterListenerMethod), localTaskCompletionSource);
     this.handler.sendMessage(this.handler.obtainMessage(8, new zzbu(paramRegisterListenerMethod, this.zzjt.get(), paramGoogleApi)));
     paramGoogleApi = localTaskCompletionSource.getTask();
-    AppMethodBeat.o(60629);
+    AppMethodBeat.o(11121);
     return paramGoogleApi;
   }
   
   public final Task<Map<zzh<?>, String>> zza(Iterable<? extends GoogleApi<?>> paramIterable)
   {
-    AppMethodBeat.i(60623);
+    AppMethodBeat.i(11115);
     paramIterable = new zzj(paramIterable);
     this.handler.sendMessage(this.handler.obtainMessage(2, paramIterable));
     paramIterable = paramIterable.getTask();
-    AppMethodBeat.o(60623);
+    AppMethodBeat.o(11115);
     return paramIterable;
   }
   
   public final void zza(ConnectionResult paramConnectionResult, int paramInt)
   {
-    AppMethodBeat.i(60634);
+    AppMethodBeat.i(11126);
     if (!zzc(paramConnectionResult, paramInt)) {
       this.handler.sendMessage(this.handler.obtainMessage(5, paramInt, 0, paramConnectionResult));
     }
-    AppMethodBeat.o(60634);
+    AppMethodBeat.o(11126);
   }
   
   public final void zza(GoogleApi<?> paramGoogleApi)
   {
-    AppMethodBeat.i(60619);
+    AppMethodBeat.i(11111);
     this.handler.sendMessage(this.handler.obtainMessage(7, paramGoogleApi));
-    AppMethodBeat.o(60619);
+    AppMethodBeat.o(11111);
   }
   
   public final <O extends Api.ApiOptions> void zza(GoogleApi<O> paramGoogleApi, int paramInt, BaseImplementation.ApiMethodImpl<? extends Result, Api.AnyClient> paramApiMethodImpl)
   {
-    AppMethodBeat.i(60627);
+    AppMethodBeat.i(11119);
     paramApiMethodImpl = new zzd(paramInt, paramApiMethodImpl);
     this.handler.sendMessage(this.handler.obtainMessage(4, new zzbu(paramApiMethodImpl, this.zzjt.get(), paramGoogleApi)));
-    AppMethodBeat.o(60627);
+    AppMethodBeat.o(11119);
   }
   
   public final <O extends Api.ApiOptions, ResultT> void zza(GoogleApi<O> paramGoogleApi, int paramInt, TaskApiCall<Api.AnyClient, ResultT> paramTaskApiCall, TaskCompletionSource<ResultT> paramTaskCompletionSource, StatusExceptionMapper paramStatusExceptionMapper)
   {
-    AppMethodBeat.i(60628);
+    AppMethodBeat.i(11120);
     paramTaskApiCall = new zzf(paramInt, paramTaskApiCall, paramTaskCompletionSource, paramStatusExceptionMapper);
     this.handler.sendMessage(this.handler.obtainMessage(4, new zzbu(paramTaskApiCall, this.zzjt.get(), paramGoogleApi)));
-    AppMethodBeat.o(60628);
+    AppMethodBeat.o(11120);
   }
   
   public final void zza(zzad paramzzad)
   {
-    AppMethodBeat.i(60621);
+    AppMethodBeat.i(11113);
     synchronized (lock)
     {
       if (this.zzjv != paramzzad)
@@ -449,14 +449,14 @@ public class GoogleApiManager
         this.zzjw.clear();
       }
       this.zzjw.addAll(paramzzad.zzam());
-      AppMethodBeat.o(60621);
+      AppMethodBeat.o(11113);
       return;
     }
   }
   
   final void zzb(zzad paramzzad)
   {
-    AppMethodBeat.i(60622);
+    AppMethodBeat.i(11114);
     synchronized (lock)
     {
       if (this.zzjv == paramzzad)
@@ -464,42 +464,42 @@ public class GoogleApiManager
         this.zzjv = null;
         this.zzjw.clear();
       }
-      AppMethodBeat.o(60622);
+      AppMethodBeat.o(11114);
       return;
     }
   }
   
   public final int zzbg()
   {
-    AppMethodBeat.i(60618);
+    AppMethodBeat.i(11110);
     int i = this.zzjs.getAndIncrement();
-    AppMethodBeat.o(60618);
+    AppMethodBeat.o(11110);
     return i;
   }
   
   public final Task<Boolean> zzc(GoogleApi<?> paramGoogleApi)
   {
-    AppMethodBeat.i(60626);
+    AppMethodBeat.i(11118);
     paramGoogleApi = new zzae(paramGoogleApi.zzm());
     this.handler.sendMessage(this.handler.obtainMessage(14, paramGoogleApi));
     paramGoogleApi = paramGoogleApi.zzao().getTask();
-    AppMethodBeat.o(60626);
+    AppMethodBeat.o(11118);
     return paramGoogleApi;
   }
   
   final boolean zzc(ConnectionResult paramConnectionResult, int paramInt)
   {
-    AppMethodBeat.i(60633);
+    AppMethodBeat.i(11125);
     boolean bool = this.zzjq.showWrappedErrorNotification(this.zzjp, paramConnectionResult, paramInt);
-    AppMethodBeat.o(60633);
+    AppMethodBeat.o(11125);
     return bool;
   }
   
   public final void zzr()
   {
-    AppMethodBeat.i(60624);
+    AppMethodBeat.i(11116);
     this.handler.sendMessage(this.handler.obtainMessage(3));
-    AppMethodBeat.o(60624);
+    AppMethodBeat.o(11116);
   }
   
   public final class zza<O extends Api.ApiOptions>
@@ -520,7 +520,7 @@ public class GoogleApiManager
     
     public zza()
     {
-      AppMethodBeat.i(60570);
+      AppMethodBeat.i(11062);
       this.zzjz = new LinkedList();
       this.zzkd = new HashSet();
       this.zzke = new HashMap();
@@ -538,19 +538,19 @@ public class GoogleApiManager
           break;
         }
         this.zzkg = localObject.zza(GoogleApiManager.zzb(GoogleApiManager.this), GoogleApiManager.zza(GoogleApiManager.this));
-        AppMethodBeat.o(60570);
+        AppMethodBeat.o(11062);
         return;
       }
       this.zzkg = null;
-      AppMethodBeat.o(60570);
+      AppMethodBeat.o(11062);
     }
     
     private final void zza(GoogleApiManager.zzb paramzzb)
     {
-      AppMethodBeat.i(60599);
+      AppMethodBeat.i(11091);
       if (!this.zzki.contains(paramzzb))
       {
-        AppMethodBeat.o(60599);
+        AppMethodBeat.o(11091);
         return;
       }
       if (!this.zzkh)
@@ -558,17 +558,17 @@ public class GoogleApiManager
         if (!this.zzka.isConnected())
         {
           connect();
-          AppMethodBeat.o(60599);
+          AppMethodBeat.o(11091);
           return;
         }
         zzbl();
       }
-      AppMethodBeat.o(60599);
+      AppMethodBeat.o(11091);
     }
     
     private final void zzb(GoogleApiManager.zzb paramzzb)
     {
-      AppMethodBeat.i(60600);
+      AppMethodBeat.i(11092);
       if (this.zzki.remove(paramzzb))
       {
         GoogleApiManager.zza(GoogleApiManager.this).removeMessages(15, paramzzb);
@@ -599,16 +599,16 @@ public class GoogleApiManager
           ((zzb)localObject).zza(new UnsupportedApiCallException(paramzzb));
         }
       }
-      AppMethodBeat.o(60600);
+      AppMethodBeat.o(11092);
     }
     
     private final boolean zzb(zzb paramzzb)
     {
-      AppMethodBeat.i(60584);
+      AppMethodBeat.i(11076);
       if (!(paramzzb instanceof zzf))
       {
         zzc(paramzzb);
-        AppMethodBeat.o(60584);
+        AppMethodBeat.o(11076);
         return true;
       }
       zzf localzzf = (zzf)paramzzb;
@@ -616,7 +616,7 @@ public class GoogleApiManager
       if ((arrayOfFeature == null) || (arrayOfFeature.length == 0))
       {
         zzc(paramzzb);
-        AppMethodBeat.o(60584);
+        AppMethodBeat.o(11076);
         return true;
       }
       Object localObject2 = this.zzka.getAvailableFeatures();
@@ -653,7 +653,7 @@ public class GoogleApiManager
           }
           for (;;)
           {
-            AppMethodBeat.o(60584);
+            AppMethodBeat.o(11076);
             return false;
             this.zzki.add(paramzzb);
             GoogleApiManager.zza(GoogleApiManager.this).sendMessageDelayed(Message.obtain(GoogleApiManager.zza(GoogleApiManager.this), 15, paramzzb), GoogleApiManager.zzc(GoogleApiManager.this));
@@ -671,13 +671,13 @@ public class GoogleApiManager
         i += 1;
       }
       zzc(paramzzb);
-      AppMethodBeat.o(60584);
+      AppMethodBeat.o(11076);
       return true;
     }
     
     private final boolean zzb(boolean paramBoolean)
     {
-      AppMethodBeat.i(60592);
+      AppMethodBeat.i(11084);
       Preconditions.checkHandlerThread(GoogleApiManager.zza(GoogleApiManager.this));
       if ((this.zzka.isConnected()) && (this.zzke.size() == 0))
       {
@@ -686,20 +686,20 @@ public class GoogleApiManager
           if (paramBoolean) {
             zzbr();
           }
-          AppMethodBeat.o(60592);
+          AppMethodBeat.o(11084);
           return false;
         }
         this.zzka.disconnect();
-        AppMethodBeat.o(60592);
+        AppMethodBeat.o(11084);
         return true;
       }
-      AppMethodBeat.o(60592);
+      AppMethodBeat.o(11084);
       return false;
     }
     
     private final void zzbj()
     {
-      AppMethodBeat.i(60572);
+      AppMethodBeat.i(11064);
       zzbo();
       zzi(ConnectionResult.RESULT_SUCCESS);
       zzbq();
@@ -720,7 +720,7 @@ public class GoogleApiManager
           this.zzka.disconnect();
           zzbl();
           zzbr();
-          AppMethodBeat.o(60572);
+          AppMethodBeat.o(11064);
           return;
         }
         catch (RemoteException localRemoteException) {}
@@ -729,19 +729,19 @@ public class GoogleApiManager
     
     private final void zzbk()
     {
-      AppMethodBeat.i(60574);
+      AppMethodBeat.i(11066);
       zzbo();
       this.zzkh = true;
       this.zzkc.zzal();
       GoogleApiManager.zza(GoogleApiManager.this).sendMessageDelayed(Message.obtain(GoogleApiManager.zza(GoogleApiManager.this), 9, this.zzhc), GoogleApiManager.zzc(GoogleApiManager.this));
       GoogleApiManager.zza(GoogleApiManager.this).sendMessageDelayed(Message.obtain(GoogleApiManager.zza(GoogleApiManager.this), 11, this.zzhc), GoogleApiManager.zzd(GoogleApiManager.this));
       GoogleApiManager.zze(GoogleApiManager.this).flush();
-      AppMethodBeat.o(60574);
+      AppMethodBeat.o(11066);
     }
     
     private final void zzbl()
     {
-      AppMethodBeat.i(60579);
+      AppMethodBeat.i(11071);
       ArrayList localArrayList = (ArrayList)new ArrayList(this.zzjz);
       int k = localArrayList.size();
       int i = 0;
@@ -760,66 +760,66 @@ public class GoogleApiManager
           i = j;
         }
       }
-      AppMethodBeat.o(60579);
+      AppMethodBeat.o(11071);
     }
     
     private final void zzbq()
     {
-      AppMethodBeat.i(60588);
+      AppMethodBeat.i(11080);
       if (this.zzkh)
       {
         GoogleApiManager.zza(GoogleApiManager.this).removeMessages(11, this.zzhc);
         GoogleApiManager.zza(GoogleApiManager.this).removeMessages(9, this.zzhc);
         this.zzkh = false;
       }
-      AppMethodBeat.o(60588);
+      AppMethodBeat.o(11080);
     }
     
     private final void zzbr()
     {
-      AppMethodBeat.i(60590);
+      AppMethodBeat.i(11082);
       GoogleApiManager.zza(GoogleApiManager.this).removeMessages(12, this.zzhc);
       GoogleApiManager.zza(GoogleApiManager.this).sendMessageDelayed(GoogleApiManager.zza(GoogleApiManager.this).obtainMessage(12, this.zzhc), GoogleApiManager.zzi(GoogleApiManager.this));
-      AppMethodBeat.o(60590);
+      AppMethodBeat.o(11082);
     }
     
     private final void zzc(zzb paramzzb)
     {
-      AppMethodBeat.i(60585);
+      AppMethodBeat.i(11077);
       paramzzb.zza(this.zzkc, requiresSignIn());
       try
       {
         paramzzb.zza(this);
-        AppMethodBeat.o(60585);
+        AppMethodBeat.o(11077);
         return;
       }
       catch (DeadObjectException paramzzb)
       {
         onConnectionSuspended(1);
         this.zzka.disconnect();
-        AppMethodBeat.o(60585);
+        AppMethodBeat.o(11077);
       }
     }
     
     private final boolean zzh(ConnectionResult paramConnectionResult)
     {
-      AppMethodBeat.i(60576);
+      AppMethodBeat.i(11068);
       synchronized (GoogleApiManager.zzbh())
       {
         if ((GoogleApiManager.zzf(GoogleApiManager.this) != null) && (GoogleApiManager.zzg(GoogleApiManager.this).contains(this.zzhc)))
         {
           GoogleApiManager.zzf(GoogleApiManager.this).zzb(paramConnectionResult, this.zzkf);
-          AppMethodBeat.o(60576);
+          AppMethodBeat.o(11068);
           return true;
         }
-        AppMethodBeat.o(60576);
+        AppMethodBeat.o(11068);
         return false;
       }
     }
     
     private final void zzi(ConnectionResult paramConnectionResult)
     {
-      AppMethodBeat.i(60595);
+      AppMethodBeat.i(11087);
       Iterator localIterator = this.zzkd.iterator();
       while (localIterator.hasNext())
       {
@@ -831,23 +831,23 @@ public class GoogleApiManager
         localzzj.zza(this.zzhc, paramConnectionResult, str);
       }
       this.zzkd.clear();
-      AppMethodBeat.o(60595);
+      AppMethodBeat.o(11087);
     }
     
     public final void connect()
     {
-      AppMethodBeat.i(60593);
+      AppMethodBeat.i(11085);
       Preconditions.checkHandlerThread(GoogleApiManager.zza(GoogleApiManager.this));
       if ((this.zzka.isConnected()) || (this.zzka.isConnecting()))
       {
-        AppMethodBeat.o(60593);
+        AppMethodBeat.o(11085);
         return;
       }
       int i = GoogleApiManager.zze(GoogleApiManager.this).getClientAvailability(GoogleApiManager.zzb(GoogleApiManager.this), this.zzka);
       if (i != 0)
       {
         onConnectionFailed(new ConnectionResult(i, null));
-        AppMethodBeat.o(60593);
+        AppMethodBeat.o(11085);
         return;
       }
       GoogleApiManager.zzc localzzc = new GoogleApiManager.zzc(GoogleApiManager.this, this.zzka, this.zzhc);
@@ -855,7 +855,7 @@ public class GoogleApiManager
         this.zzkg.zza(localzzc);
       }
       this.zzka.connect(localzzc);
-      AppMethodBeat.o(60593);
+      AppMethodBeat.o(11085);
     }
     
     public final int getInstanceId()
@@ -865,28 +865,28 @@ public class GoogleApiManager
     
     final boolean isConnected()
     {
-      AppMethodBeat.i(60596);
+      AppMethodBeat.i(11088);
       boolean bool = this.zzka.isConnected();
-      AppMethodBeat.o(60596);
+      AppMethodBeat.o(11088);
       return bool;
     }
     
     public final void onConnected(Bundle paramBundle)
     {
-      AppMethodBeat.i(60571);
+      AppMethodBeat.i(11063);
       if (Looper.myLooper() == GoogleApiManager.zza(GoogleApiManager.this).getLooper())
       {
         zzbj();
-        AppMethodBeat.o(60571);
+        AppMethodBeat.o(11063);
         return;
       }
       GoogleApiManager.zza(GoogleApiManager.this).post(new zzbi(this));
-      AppMethodBeat.o(60571);
+      AppMethodBeat.o(11063);
     }
     
     public final void onConnectionFailed(ConnectionResult paramConnectionResult)
     {
-      AppMethodBeat.i(60578);
+      AppMethodBeat.i(11070);
       Preconditions.checkHandlerThread(GoogleApiManager.zza(GoogleApiManager.this));
       if (this.zzkg != null) {
         this.zzkg.zzbz();
@@ -897,18 +897,18 @@ public class GoogleApiManager
       if (paramConnectionResult.getErrorCode() == 4)
       {
         zzc(GoogleApiManager.zzbi());
-        AppMethodBeat.o(60578);
+        AppMethodBeat.o(11070);
         return;
       }
       if (this.zzjz.isEmpty())
       {
         this.zzkj = paramConnectionResult;
-        AppMethodBeat.o(60578);
+        AppMethodBeat.o(11070);
         return;
       }
       if (zzh(paramConnectionResult))
       {
-        AppMethodBeat.o(60578);
+        AppMethodBeat.o(11070);
         return;
       }
       if (!GoogleApiManager.this.zzc(paramConnectionResult, this.zzkf))
@@ -919,92 +919,92 @@ public class GoogleApiManager
         if (this.zzkh)
         {
           GoogleApiManager.zza(GoogleApiManager.this).sendMessageDelayed(Message.obtain(GoogleApiManager.zza(GoogleApiManager.this), 9, this.zzhc), GoogleApiManager.zzc(GoogleApiManager.this));
-          AppMethodBeat.o(60578);
+          AppMethodBeat.o(11070);
           return;
         }
         paramConnectionResult = this.zzhc.zzq();
         zzc(new Status(17, String.valueOf(paramConnectionResult).length() + 38 + "API: " + paramConnectionResult + " is not available on this device."));
       }
-      AppMethodBeat.o(60578);
+      AppMethodBeat.o(11070);
     }
     
     public final void onConnectionSuspended(int paramInt)
     {
-      AppMethodBeat.i(60573);
+      AppMethodBeat.i(11065);
       if (Looper.myLooper() == GoogleApiManager.zza(GoogleApiManager.this).getLooper())
       {
         zzbk();
-        AppMethodBeat.o(60573);
+        AppMethodBeat.o(11065);
         return;
       }
       GoogleApiManager.zza(GoogleApiManager.this).post(new zzbj(this));
-      AppMethodBeat.o(60573);
+      AppMethodBeat.o(11065);
     }
     
     public final boolean requiresSignIn()
     {
-      AppMethodBeat.i(60597);
+      AppMethodBeat.i(11089);
       boolean bool = this.zzka.requiresSignIn();
-      AppMethodBeat.o(60597);
+      AppMethodBeat.o(11089);
       return bool;
     }
     
     public final void resume()
     {
-      AppMethodBeat.i(60587);
+      AppMethodBeat.i(11079);
       Preconditions.checkHandlerThread(GoogleApiManager.zza(GoogleApiManager.this));
       if (this.zzkh) {
         connect();
       }
-      AppMethodBeat.o(60587);
+      AppMethodBeat.o(11079);
     }
     
     public final void zza(ConnectionResult paramConnectionResult, Api<?> paramApi, boolean paramBoolean)
     {
-      AppMethodBeat.i(60577);
+      AppMethodBeat.i(11069);
       if (Looper.myLooper() == GoogleApiManager.zza(GoogleApiManager.this).getLooper())
       {
         onConnectionFailed(paramConnectionResult);
-        AppMethodBeat.o(60577);
+        AppMethodBeat.o(11069);
         return;
       }
       GoogleApiManager.zza(GoogleApiManager.this).post(new zzbk(this, paramConnectionResult));
-      AppMethodBeat.o(60577);
+      AppMethodBeat.o(11069);
     }
     
     public final void zza(zzb paramzzb)
     {
-      AppMethodBeat.i(60580);
+      AppMethodBeat.i(11072);
       Preconditions.checkHandlerThread(GoogleApiManager.zza(GoogleApiManager.this));
       if (this.zzka.isConnected())
       {
         if (zzb(paramzzb))
         {
           zzbr();
-          AppMethodBeat.o(60580);
+          AppMethodBeat.o(11072);
           return;
         }
         this.zzjz.add(paramzzb);
-        AppMethodBeat.o(60580);
+        AppMethodBeat.o(11072);
         return;
       }
       this.zzjz.add(paramzzb);
       if ((this.zzkj != null) && (this.zzkj.hasResolution()))
       {
         onConnectionFailed(this.zzkj);
-        AppMethodBeat.o(60580);
+        AppMethodBeat.o(11072);
         return;
       }
       connect();
-      AppMethodBeat.o(60580);
+      AppMethodBeat.o(11072);
     }
     
     public final void zza(zzj paramzzj)
     {
-      AppMethodBeat.i(60594);
+      AppMethodBeat.i(11086);
       Preconditions.checkHandlerThread(GoogleApiManager.zza(GoogleApiManager.this));
       this.zzkd.add(paramzzj);
-      AppMethodBeat.o(60594);
+      AppMethodBeat.o(11086);
     }
     
     public final Api.Client zzae()
@@ -1014,7 +1014,7 @@ public class GoogleApiManager
     
     public final void zzay()
     {
-      AppMethodBeat.i(60589);
+      AppMethodBeat.i(11081);
       Preconditions.checkHandlerThread(GoogleApiManager.zza(GoogleApiManager.this));
       if (this.zzkh)
       {
@@ -1028,14 +1028,14 @@ public class GoogleApiManager
       {
         zzc(localStatus);
         this.zzka.disconnect();
-        AppMethodBeat.o(60589);
+        AppMethodBeat.o(11081);
         return;
       }
     }
     
     public final void zzbm()
     {
-      AppMethodBeat.i(60581);
+      AppMethodBeat.i(11073);
       Preconditions.checkHandlerThread(GoogleApiManager.zza(GoogleApiManager.this));
       zzc(GoogleApiManager.zzjj);
       this.zzkc.zzak();
@@ -1051,7 +1051,7 @@ public class GoogleApiManager
       if (this.zzka.isConnected()) {
         this.zzka.onUserSignOut(new zzbl(this));
       }
-      AppMethodBeat.o(60581);
+      AppMethodBeat.o(11073);
     }
     
     public final Map<ListenerHolder.ListenerKey<?>, zzbv> zzbn()
@@ -1061,61 +1061,61 @@ public class GoogleApiManager
     
     public final void zzbo()
     {
-      AppMethodBeat.i(60582);
+      AppMethodBeat.i(11074);
       Preconditions.checkHandlerThread(GoogleApiManager.zza(GoogleApiManager.this));
       this.zzkj = null;
-      AppMethodBeat.o(60582);
+      AppMethodBeat.o(11074);
     }
     
     public final ConnectionResult zzbp()
     {
-      AppMethodBeat.i(60583);
+      AppMethodBeat.i(11075);
       Preconditions.checkHandlerThread(GoogleApiManager.zza(GoogleApiManager.this));
       ConnectionResult localConnectionResult = this.zzkj;
-      AppMethodBeat.o(60583);
+      AppMethodBeat.o(11075);
       return localConnectionResult;
     }
     
     public final boolean zzbs()
     {
-      AppMethodBeat.i(60591);
+      AppMethodBeat.i(11083);
       boolean bool = zzb(true);
-      AppMethodBeat.o(60591);
+      AppMethodBeat.o(11083);
       return bool;
     }
     
     final SignInClient zzbt()
     {
-      AppMethodBeat.i(60598);
+      AppMethodBeat.i(11090);
       if (this.zzkg == null)
       {
-        AppMethodBeat.o(60598);
+        AppMethodBeat.o(11090);
         return null;
       }
       SignInClient localSignInClient = this.zzkg.zzbt();
-      AppMethodBeat.o(60598);
+      AppMethodBeat.o(11090);
       return localSignInClient;
     }
     
     public final void zzc(Status paramStatus)
     {
-      AppMethodBeat.i(60586);
+      AppMethodBeat.i(11078);
       Preconditions.checkHandlerThread(GoogleApiManager.zza(GoogleApiManager.this));
       Iterator localIterator = this.zzjz.iterator();
       while (localIterator.hasNext()) {
         ((zzb)localIterator.next()).zza(paramStatus);
       }
       this.zzjz.clear();
-      AppMethodBeat.o(60586);
+      AppMethodBeat.o(11078);
     }
     
     public final void zzg(ConnectionResult paramConnectionResult)
     {
-      AppMethodBeat.i(60575);
+      AppMethodBeat.i(11067);
       Preconditions.checkHandlerThread(GoogleApiManager.zza(GoogleApiManager.this));
       this.zzka.disconnect();
       onConnectionFailed(paramConnectionResult);
-      AppMethodBeat.o(60575);
+      AppMethodBeat.o(11067);
     }
   }
   
@@ -1132,35 +1132,35 @@ public class GoogleApiManager
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(60606);
+      AppMethodBeat.i(11098);
       if ((paramObject != null) && ((paramObject instanceof zzb)))
       {
         paramObject = (zzb)paramObject;
         if ((Objects.equal(this.zzkn, paramObject.zzkn)) && (Objects.equal(this.zzdr, paramObject.zzdr)))
         {
-          AppMethodBeat.o(60606);
+          AppMethodBeat.o(11098);
           return true;
         }
-        AppMethodBeat.o(60606);
+        AppMethodBeat.o(11098);
         return false;
       }
-      AppMethodBeat.o(60606);
+      AppMethodBeat.o(11098);
       return false;
     }
     
     public final int hashCode()
     {
-      AppMethodBeat.i(60607);
+      AppMethodBeat.i(11099);
       int i = Objects.hashCode(new Object[] { this.zzkn, this.zzdr });
-      AppMethodBeat.o(60607);
+      AppMethodBeat.o(11099);
       return i;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(60608);
+      AppMethodBeat.i(11100);
       String str = Objects.toStringHelper(this).add("key", this.zzkn).add("feature", this.zzdr).toString();
-      AppMethodBeat.o(60608);
+      AppMethodBeat.o(11100);
       return str;
     }
   }
@@ -1183,41 +1183,41 @@ public class GoogleApiManager
     
     private final void zzbu()
     {
-      AppMethodBeat.i(60612);
+      AppMethodBeat.i(11104);
       if ((this.zzkq) && (this.zzko != null)) {
         this.zzka.getRemoteService(this.zzko, this.zzkp);
       }
-      AppMethodBeat.o(60612);
+      AppMethodBeat.o(11104);
     }
     
     public final void onReportServiceBinding(ConnectionResult paramConnectionResult)
     {
-      AppMethodBeat.i(60609);
+      AppMethodBeat.i(11101);
       GoogleApiManager.zza(GoogleApiManager.this).post(new zzbn(this, paramConnectionResult));
-      AppMethodBeat.o(60609);
+      AppMethodBeat.o(11101);
     }
     
     public final void zza(IAccountAccessor paramIAccountAccessor, Set<Scope> paramSet)
     {
-      AppMethodBeat.i(60611);
+      AppMethodBeat.i(11103);
       if ((paramIAccountAccessor == null) || (paramSet == null))
       {
         Log.wtf("GoogleApiManager", "Received null response from onSignInSuccess", new Exception());
         zzg(new ConnectionResult(4));
-        AppMethodBeat.o(60611);
+        AppMethodBeat.o(11103);
         return;
       }
       this.zzko = paramIAccountAccessor;
       this.zzkp = paramSet;
       zzbu();
-      AppMethodBeat.o(60611);
+      AppMethodBeat.o(11103);
     }
     
     public final void zzg(ConnectionResult paramConnectionResult)
     {
-      AppMethodBeat.i(60610);
+      AppMethodBeat.i(11102);
       ((GoogleApiManager.zza)GoogleApiManager.zzj(GoogleApiManager.this).get(this.zzhc)).zzg(paramConnectionResult);
-      AppMethodBeat.o(60610);
+      AppMethodBeat.o(11102);
     }
   }
 }

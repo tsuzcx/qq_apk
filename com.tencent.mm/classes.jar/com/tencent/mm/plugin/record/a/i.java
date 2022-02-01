@@ -1,103 +1,103 @@
 package com.tencent.mm.plugin.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dz;
+import com.tencent.mm.g.c.eu;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class i
-  extends dz
+  extends eu
   implements c
 {
   public static c.a info;
   
   static
   {
-    AppMethodBeat.i(57135);
+    AppMethodBeat.i(140937);
     c.a locala = new c.a();
-    locala.yrK = new Field[18];
+    locala.EYt = new Field[18];
     locala.columns = new String[19];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "localId";
-    locala.yrM.put("localId", "INTEGER PRIMARY KEY ");
+    locala.EYv.put("localId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" localId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.yrL = "localId";
+    locala.EYu = "localId";
     locala.columns[1] = "recordLocalId";
-    locala.yrM.put("recordLocalId", "INTEGER");
+    locala.EYv.put("recordLocalId", "INTEGER");
     localStringBuilder.append(" recordLocalId INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "toUser";
-    locala.yrM.put("toUser", "TEXT default '' ");
+    locala.EYv.put("toUser", "TEXT default '' ");
     localStringBuilder.append(" toUser TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "dataId";
-    locala.yrM.put("dataId", "TEXT");
+    locala.EYv.put("dataId", "TEXT");
     localStringBuilder.append(" dataId TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "mediaId";
-    locala.yrM.put("mediaId", "TEXT");
+    locala.EYv.put("mediaId", "TEXT");
     localStringBuilder.append(" mediaId TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "path";
-    locala.yrM.put("path", "TEXT");
+    locala.EYv.put("path", "TEXT");
     localStringBuilder.append(" path TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "cdnUrl";
-    locala.yrM.put("cdnUrl", "TEXT");
+    locala.EYv.put("cdnUrl", "TEXT");
     localStringBuilder.append(" cdnUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "cdnKey";
-    locala.yrM.put("cdnKey", "TEXT");
+    locala.EYv.put("cdnKey", "TEXT");
     localStringBuilder.append(" cdnKey TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "totalLen";
-    locala.yrM.put("totalLen", "INTEGER default '0' ");
+    locala.EYv.put("totalLen", "INTEGER default '0' ");
     localStringBuilder.append(" totalLen INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[9] = "isThumb";
-    locala.yrM.put("isThumb", "INTEGER default 'false' ");
+    locala.EYv.put("isThumb", "INTEGER default 'false' ");
     localStringBuilder.append(" isThumb INTEGER default 'false' ");
     localStringBuilder.append(", ");
     locala.columns[10] = "offset";
-    locala.yrM.put("offset", "INTEGER default '0' ");
+    locala.EYv.put("offset", "INTEGER default '0' ");
     localStringBuilder.append(" offset INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[11] = "type";
-    locala.yrM.put("type", "INTEGER default '0' ");
+    locala.EYv.put("type", "INTEGER default '0' ");
     localStringBuilder.append(" type INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[12] = "fileType";
-    locala.yrM.put("fileType", "INTEGER default '5' ");
+    locala.EYv.put("fileType", "INTEGER default '5' ");
     localStringBuilder.append(" fileType INTEGER default '5' ");
     localStringBuilder.append(", ");
     locala.columns[13] = "status";
-    locala.yrM.put("status", "INTEGER default '0' ");
+    locala.EYv.put("status", "INTEGER default '0' ");
     localStringBuilder.append(" status INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[14] = "errCode";
-    locala.yrM.put("errCode", "INTEGER default '0' ");
+    locala.EYv.put("errCode", "INTEGER default '0' ");
     localStringBuilder.append(" errCode INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[15] = "tpaeskey";
-    locala.yrM.put("tpaeskey", "TEXT");
+    locala.EYv.put("tpaeskey", "TEXT");
     localStringBuilder.append(" tpaeskey TEXT");
     localStringBuilder.append(", ");
     locala.columns[16] = "tpauthkey";
-    locala.yrM.put("tpauthkey", "TEXT");
+    locala.EYv.put("tpauthkey", "TEXT");
     localStringBuilder.append(" tpauthkey TEXT");
     localStringBuilder.append(", ");
     locala.columns[17] = "tpdataurl";
-    locala.yrM.put("tpdataurl", "TEXT");
+    locala.EYv.put("tpdataurl", "TEXT");
     localStringBuilder.append(" tpdataurl TEXT");
     locala.columns[18] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    AppMethodBeat.o(57135);
+    AppMethodBeat.o(140937);
   }
   
-  public final int cfL()
+  public final int dgb()
   {
     return this.field_localId;
   }
@@ -109,7 +109,7 @@ public final class i
   
   public final String toString()
   {
-    AppMethodBeat.i(57134);
+    AppMethodBeat.i(140936);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("localid[").append(this.field_localId).append("]\n");
     ((StringBuilder)localObject).append("recordId[").append(this.field_recordLocalId).append("]\n");
@@ -127,13 +127,13 @@ public final class i
     ((StringBuilder)localObject).append("offset[").append(this.field_offset).append("]\n");
     ((StringBuilder)localObject).append("toUser[").append(this.field_toUser).append("]\n");
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(57134);
+    AppMethodBeat.o(140936);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a.i
  * JD-Core Version:    0.7.0.1
  */

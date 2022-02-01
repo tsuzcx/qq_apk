@@ -2,6 +2,7 @@ package android.support.design.internal;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Parcelable.ClassLoaderCreator;
 import android.os.Parcelable.Creator;
 import android.util.SparseArray;
 
@@ -9,7 +10,7 @@ public class ParcelableSparseArray
   extends SparseArray<Parcelable>
   implements Parcelable
 {
-  public static final Parcelable.Creator<ParcelableSparseArray> CREATOR = new ParcelableSparseArray.1();
+  public static final Parcelable.Creator<ParcelableSparseArray> CREATOR = new Parcelable.ClassLoaderCreator() {};
   
   public ParcelableSparseArray() {}
   
@@ -51,7 +52,7 @@ public class ParcelableSparseArray
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.internal.ParcelableSparseArray
  * JD-Core Version:    0.7.0.1
  */

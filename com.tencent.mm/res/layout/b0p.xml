@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/ds" android:layout_width="120.0dip" android:layout_height="88.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip"
+<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/f11" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:id="@id/ewj" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginBottom="@dimen/n_" android:src="@drawable/a3w" />
-        <TextView android:textSize="@dimen/nf" android:textColor="@color/a8v" android:gravity="center" android:id="@id/ewk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:text="@string/ey4" />
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="@dimen/ia" android:textColor="@color/h1" android:id="@id/aay" android:background="@drawable/bo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ar" android:minHeight="48.0dip" android:text="@string/ai4" android:layout_alignParentLeft="true" />
+        <Button android:textSize="@dimen/ia" android:textColor="@color/rf" android:id="@id/e7h" android:background="@drawable/bo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="92.0dip" android:minHeight="48.0dip" android:text="@string/ekf" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.picker.OptionPicker android:id="@id/e8o" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="20.0dip" />
+        <com.tencent.mm.ui.widget.picker.OptionPicker android:id="@id/e8q" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

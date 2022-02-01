@@ -26,19 +26,19 @@ public final class zzai
   
   static
   {
-    AppMethodBeat.i(77095);
+    AppMethodBeat.i(10754);
     CREATOR = new zzaj();
-    AppMethodBeat.o(77095);
+    AppMethodBeat.o(10754);
   }
   
   @SafeParcelable.Constructor
   zzai(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) String paramString, @SafeParcelable.Param(id=3) byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(77093);
+    AppMethodBeat.i(10752);
     this.zzy = 1;
     this.accountType = ((String)Preconditions.checkNotNull(paramString));
     this.zzbz = ((byte[])Preconditions.checkNotNull(paramArrayOfByte));
-    AppMethodBeat.o(77093);
+    AppMethodBeat.o(10752);
   }
   
   public zzai(String paramString, byte[] paramArrayOfByte)
@@ -48,18 +48,18 @@ public final class zzai
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(77094);
+    AppMethodBeat.i(10753);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzy);
     SafeParcelWriter.writeString(paramParcel, 2, this.accountType, false);
     SafeParcelWriter.writeByteArray(paramParcel, 3, this.zzbz, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(77094);
+    AppMethodBeat.o(10753);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.auth.zzai
  * JD-Core Version:    0.7.0.1
  */

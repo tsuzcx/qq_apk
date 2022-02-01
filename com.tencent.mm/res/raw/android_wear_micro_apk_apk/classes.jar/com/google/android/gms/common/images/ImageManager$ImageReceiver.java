@@ -12,13 +12,13 @@ import java.util.concurrent.ExecutorService;
 final class ImageManager$ImageReceiver
   extends ResultReceiver
 {
-  private final Uri IG;
-  private final ArrayList<e> IH;
+  private final Uri Kv;
+  private final ArrayList<e> Kw;
   
   public final void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     paramBundle = (ParcelFileDescriptor)paramBundle.getParcelable("com.google.android.gms.extra.fileDescriptor");
-    ImageManager.f(this.II).execute(new c(this.II, this.IG, paramBundle));
+    ImageManager.f(this.Kx).execute(new c(this.Kx, this.Kv, paramBundle));
   }
 }
 

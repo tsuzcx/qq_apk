@@ -2,23 +2,23 @@ package com.tencent.recovery.b;
 
 public final class a
 {
-  private String ajB;
-  private String ajC;
-  private boolean ajD;
-  private long ajE;
-  private long ajF;
-  private String ajr;
-  private String ajs;
-  private String ajt;
+  private String amT;
+  private String amU;
+  private String amV;
+  private String and;
+  private String ane;
+  private boolean anf;
+  private long ang;
+  private long anh;
   
-  public final long nP()
+  public final long oD()
   {
-    return this.ajF;
+    return this.anh;
   }
   
-  public final long nQ()
+  public final long oE()
   {
-    return this.ajE;
+    return this.ang;
   }
 }
 

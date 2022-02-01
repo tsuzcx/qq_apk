@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.f;
+import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.pluginsdk.ui.tools.FileExplorerUI;
 import com.tencent.mm.ui.base.t;
 
@@ -17,18 +17,18 @@ final class c$8
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(27122);
-    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().aw(-1, false);
-    if (!f.Mi())
+    AppMethodBeat.i(30819);
+    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.esI().X(-1, false);
+    if (!e.XG())
     {
-      t.ii(this.val$context);
-      AppMethodBeat.o(27122);
+      t.g(this.val$context, null);
+      AppMethodBeat.o(30819);
       return;
     }
     paramView = new Intent(this.val$context, FileExplorerUI.class);
-    paramView.putExtra("key_title", this.val$context.getString(2131299777));
+    paramView.putExtra("key_title", this.val$context.getString(2131758949));
     ((Activity)this.val$context).startActivityForResult(paramView, 4099);
-    AppMethodBeat.o(27122);
+    AppMethodBeat.o(30819);
   }
 }
 

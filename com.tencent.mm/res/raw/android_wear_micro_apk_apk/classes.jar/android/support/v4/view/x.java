@@ -9,33 +9,38 @@ import android.view.WindowInsets;
 class x
   extends w
 {
-  private static ThreadLocal<Rect> kH;
+  private static ThreadLocal<Rect> mD;
   
-  private static Rect bt()
+  private static Rect bK()
   {
-    if (kH == null) {
-      kH = new ThreadLocal();
+    if (mD == null) {
+      mD = new ThreadLocal();
     }
-    Rect localRect2 = (Rect)kH.get();
+    Rect localRect2 = (Rect)mD.get();
     Rect localRect1 = localRect2;
     if (localRect2 == null)
     {
       localRect1 = new Rect();
-      kH.set(localRect1);
+      mD.set(localRect1);
     }
     localRect1.setEmpty();
     return localRect1;
   }
   
+  public final float A(View paramView)
+  {
+    return paramView.getTranslationZ();
+  }
+  
   public final av a(View paramView, av paramav)
   {
-    paramav = (WindowInsets)av.a(paramav);
+    paramav = (WindowInsets)av.c(paramav);
     WindowInsets localWindowInsets = paramView.onApplyWindowInsets(paramav);
     paramView = paramav;
     if (localWindowInsets != paramav) {
       paramView = new WindowInsets(localWindowInsets);
     }
-    return av.n(paramView);
+    return av.u(paramView);
   }
   
   public final void a(View paramView, final n paramn)
@@ -49,21 +54,26 @@ class x
     {
       public final WindowInsets onApplyWindowInsets(View paramAnonymousView, WindowInsets paramAnonymousWindowInsets)
       {
-        paramAnonymousWindowInsets = av.n(paramAnonymousWindowInsets);
-        return (WindowInsets)av.a(paramn.a(paramAnonymousView, paramAnonymousWindowInsets));
+        paramAnonymousWindowInsets = av.u(paramAnonymousWindowInsets);
+        return (WindowInsets)av.c(paramn.a(paramAnonymousView, paramAnonymousWindowInsets));
       }
     });
   }
   
+  public final void a(View paramView, String paramString)
+  {
+    paramView.setTransitionName(paramString);
+  }
+  
   public final av b(View paramView, av paramav)
   {
-    paramav = (WindowInsets)av.a(paramav);
+    paramav = (WindowInsets)av.c(paramav);
     WindowInsets localWindowInsets = paramView.dispatchApplyWindowInsets(paramav);
     paramView = paramav;
     if (localWindowInsets != paramav) {
       paramView = new WindowInsets(localWindowInsets);
     }
-    return av.n(paramView);
+    return av.u(paramView);
   }
   
   public final void d(View paramView, float paramFloat)
@@ -71,9 +81,9 @@ class x
     paramView.setElevation(paramFloat);
   }
   
-  public void d(View paramView, int paramInt)
+  public void g(View paramView, int paramInt)
   {
-    Rect localRect = bt();
+    Rect localRect = bK();
     ViewParent localViewParent = paramView.getParent();
     int i;
     if ((localViewParent instanceof View))
@@ -86,7 +96,7 @@ class x
     }
     for (;;)
     {
-      super.d(paramView, paramInt);
+      super.g(paramView, paramInt);
       if ((i != 0) && (localRect.intersect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()))) {
         ((View)localViewParent).invalidate(localRect);
       }
@@ -97,9 +107,9 @@ class x
     }
   }
   
-  public void e(View paramView, int paramInt)
+  public void h(View paramView, int paramInt)
   {
-    Rect localRect = bt();
+    Rect localRect = bK();
     ViewParent localViewParent = paramView.getParent();
     int i;
     if ((localViewParent instanceof View))
@@ -112,7 +122,7 @@ class x
     }
     for (;;)
     {
-      super.e(paramView, paramInt);
+      super.h(paramView, paramInt);
       if ((i != 0) && (localRect.intersect(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom()))) {
         ((View)localViewParent).invalidate(localRect);
       }
@@ -123,24 +133,34 @@ class x
     }
   }
   
-  public final float p(View paramView)
+  public final float q(View paramView)
   {
     return paramView.getElevation();
   }
   
-  public final String q(View paramView)
+  public final String r(View paramView)
   {
     return paramView.getTransitionName();
   }
   
-  public final boolean t(View paramView)
+  public final void s(View paramView)
+  {
+    paramView.requestApplyInsets();
+  }
+  
+  public final boolean v(View paramView)
   {
     return paramView.isNestedScrollingEnabled();
   }
   
-  public final void u(View paramView)
+  public final void w(View paramView)
   {
     paramView.stopNestedScroll();
+  }
+  
+  public final float y(View paramView)
+  {
+    return paramView.getZ();
   }
 }
 

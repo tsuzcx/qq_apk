@@ -1,12 +1,151 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
-import com.tencent.mm.plugin.appbrand.jsapi.ai;
+import android.util.Size;
+import android.view.View;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.f.b;
+import com.tencent.mm.plugin.appbrand.jsapi.f.c;
+import com.tencent.mm.plugin.appbrand.jsapi.f.d;
 
-public final class f
-  extends ai
+public abstract interface f
+  extends f.b, f.c, f.d
 {
-  private static final int CTRL_INDEX = 636;
-  public static final String NAME = "onCameraInitDone";
+  public static final f jMA = new f()
+  {
+    public final void aZj() {}
+    
+    public final void aZl() {}
+    
+    public final void aZm() {}
+    
+    public final void aZs() {}
+    
+    public final void aZt() {}
+    
+    public final void an(String paramAnonymousString, boolean paramAnonymousBoolean) {}
+    
+    public final float as(float paramAnonymousFloat)
+    {
+      return 0.0F;
+    }
+    
+    public final boolean dM(int paramAnonymousInt1, int paramAnonymousInt2)
+    {
+      return false;
+    }
+    
+    public final int getCameraId()
+    {
+      return 0;
+    }
+    
+    public final View getView()
+    {
+      return null;
+    }
+    
+    public final void initView() {}
+    
+    public final void o(com.tencent.mm.plugin.appbrand.jsapi.c paramAnonymousc) {}
+    
+    public final void onBackground() {}
+    
+    public final void onDestroy() {}
+    
+    public final void onForeground() {}
+    
+    public final void release() {}
+    
+    public final void setAppId(String paramAnonymousString) {}
+    
+    public final void setCameraId(int paramAnonymousInt) {}
+    
+    public final void setCompressRecord(boolean paramAnonymousBoolean) {}
+    
+    public final void setDisplayScreenSize(Size paramAnonymousSize) {}
+    
+    public final void setFlash(String paramAnonymousString) {}
+    
+    public final void setFrameLimitSize(int paramAnonymousInt) {}
+    
+    public final void setMode(String paramAnonymousString) {}
+    
+    public final void setNeedOutput(boolean paramAnonymousBoolean) {}
+    
+    public final void setOperateCallBack(c paramAnonymousc) {}
+    
+    public final void setOutPutCallBack(b paramAnonymousb) {}
+    
+    public final void setPage(e paramAnonymouse) {}
+    
+    public final void setPreviewCenterCrop(boolean paramAnonymousBoolean) {}
+    
+    public final void setQuality(String paramAnonymousString) {}
+    
+    public final void setResolution(String paramAnonymousString) {}
+    
+    public final void setScanFreq(int paramAnonymousInt) {}
+    
+    public final void w(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4) {}
+  };
+  
+  public abstract void aZj();
+  
+  public abstract void aZl();
+  
+  public abstract void aZm();
+  
+  public abstract void aZs();
+  
+  public abstract void aZt();
+  
+  public abstract void an(String paramString, boolean paramBoolean);
+  
+  public abstract float as(float paramFloat);
+  
+  public abstract boolean dM(int paramInt1, int paramInt2);
+  
+  public abstract int getCameraId();
+  
+  public abstract View getView();
+  
+  public abstract void initView();
+  
+  public abstract void o(com.tencent.mm.plugin.appbrand.jsapi.c paramc);
+  
+  public abstract void release();
+  
+  public abstract void setAppId(String paramString);
+  
+  public abstract void setCameraId(int paramInt);
+  
+  public abstract void setCompressRecord(boolean paramBoolean);
+  
+  public abstract void setDisplayScreenSize(Size paramSize);
+  
+  public abstract void setFlash(String paramString);
+  
+  public abstract void setFrameLimitSize(int paramInt);
+  
+  public abstract void setMode(String paramString);
+  
+  public abstract void setNeedOutput(boolean paramBoolean);
+  
+  public abstract void setOperateCallBack(c paramc);
+  
+  public abstract void setOutPutCallBack(b paramb);
+  
+  public abstract void setPage(e parame);
+  
+  public abstract void setPreviewCenterCrop(boolean paramBoolean);
+  
+  public abstract void setQuality(String paramString);
+  
+  public abstract void setResolution(String paramString);
+  
+  public abstract void setScanFreq(int paramInt);
+  
+  public abstract void w(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

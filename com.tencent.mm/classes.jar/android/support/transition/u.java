@@ -1,31 +1,45 @@
 package android.support.transition;
 
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import android.graphics.PointF;
-import android.util.Property;
+import android.view.View;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-final class u<T>
-  extends Property<T, Float>
+public final class u
 {
-  private final PathMeasure oA;
-  private final Property<T, PointF> sg;
-  private final float si;
-  private final float[] sj = new float[2];
-  private final PointF sk = new PointF();
-  private float sl;
+  final ArrayList<Transition> Ag = new ArrayList();
+  public final Map<String, Object> values = new HashMap();
+  public View view;
   
-  u(Property<T, PointF> paramProperty, Path paramPath)
+  public final boolean equals(Object paramObject)
   {
-    super(Float.class, paramProperty.getName());
-    this.sg = paramProperty;
-    this.oA = new PathMeasure(paramPath, false);
-    this.si = this.oA.getLength();
+    return ((paramObject instanceof u)) && (this.view == ((u)paramObject).view) && (this.values.equals(((u)paramObject).values));
+  }
+  
+  public final int hashCode()
+  {
+    return this.view.hashCode() * 31 + this.values.hashCode();
+  }
+  
+  public final String toString()
+  {
+    String str1 = "TransitionValues@" + Integer.toHexString(hashCode()) + ":\n";
+    str1 = str1 + "    view = " + this.view + "\n";
+    str1 = str1 + "    values:";
+    Iterator localIterator = this.values.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str2 = (String)localIterator.next();
+      str1 = str1 + "    " + str2 + ": " + this.values.get(str2) + "\n";
+    }
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.transition.u
  * JD-Core Version:    0.7.0.1
  */

@@ -1,259 +1,153 @@
 package com.tencent.mm.al;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.net.HttpURLConnection;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.co.f;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.cld;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import junit.framework.Assert;
 
-public final class c
+@Deprecated
+public class c<_Resp extends cld>
 {
-  public static int fyW = 1;
-  public static int fyX = 2;
-  public static int fyY = 3;
-  public static int fyZ = -1;
-  public static int fza = 3;
-  public static int fzb = 4;
-  public static int fzc = 5;
-  public static int fzd = 1;
-  public static int fze = 2;
-  public static int fzf = -10001;
-  public static int fzg = -10002;
-  public static int fzh = -10003;
-  public static int fzi = -10004;
+  private f<a<_Resp>> gUG;
+  b<_Resp> gUY;
+  public b rr;
   
-  public static String a(String paramString1, long paramLong, String paramString2, String paramString3)
+  public c()
   {
-    AppMethodBeat.i(78061);
-    ab.d("MicroMsg.CdnUtil", "cdntra genClientId prefix[%s] createtime:%d talker[%s] suffix:[%s] stack[%s]", new Object[] { paramString1, Long.valueOf(paramLong), paramString2, paramString3, bo.dtY() });
-    if (bo.isNullOrNil(sK(paramString1)))
-    {
-      AppMethodBeat.o(78061);
-      return null;
-    }
-    if (bo.isNullOrNil(paramString2))
-    {
-      AppMethodBeat.o(78061);
-      return null;
-    }
-    if (paramLong <= 0L)
-    {
-      AppMethodBeat.o(78061);
-      return null;
-    }
-    paramString3 = bo.nullAsNil(sK(paramString3));
-    paramString2 = g.w((r.Zn() + "-" + paramString2).getBytes());
-    paramString2 = "a" + paramString1 + "_" + paramString2.substring(0, 16) + "_" + paramLong;
-    paramString1 = paramString2;
-    if (!bo.isNullOrNil(paramString3)) {
-      paramString1 = paramString2 + "_" + paramString3;
-    }
-    AppMethodBeat.o(78061);
-    return paramString1;
+    AppMethodBeat.i(182916);
+    this.gUY = new b(this);
+    AppMethodBeat.o(182916);
   }
   
-  public static int c(HttpURLConnection paramHttpURLConnection)
+  protected void a(int paramInt1, int paramInt2, String paramString, _Resp param_Resp, n paramn) {}
+  
+  public f<a<_Resp>> auK()
   {
-    AppMethodBeat.i(78064);
     try
     {
-      paramHttpURLConnection = (List)paramHttpURLConnection.getHeaderFields().get("cache-control");
-      if (paramHttpURLConnection != null)
-      {
-        int i = paramHttpURLConnection.size();
-        if (i != 0) {}
+      AppMethodBeat.i(182917);
+      Assert.assertNotNull("You should set a CommReqResp!", this.rr);
+      Assert.assertTrue("RunCgi NetSceneQueue not ready!", x.avu());
+      if (this.gUG == null) {
+        this.gUG = com.tencent.mm.co.g.c(new com.tencent.mm.vending.g.c.a() {});
       }
-      else
-      {
-        AppMethodBeat.o(78064);
-        return 0;
-      }
-      if (!bo.isNullOrNil(paramHttpURLConnection.toString()))
-      {
-        boolean bool = paramHttpURLConnection.toString().contains("no-cache");
-        if (bool) {}
-      }
-      else
-      {
-        AppMethodBeat.o(78064);
-        return 0;
-      }
-      AppMethodBeat.o(78064);
-      return -1;
+      f localf = this.gUG;
+      AppMethodBeat.o(182917);
+      return localf;
     }
-    catch (Exception paramHttpURLConnection)
-    {
-      ab.e("MicroMsg.CdnUtil", "exception:%s", new Object[] { bo.l(paramHttpURLConnection) });
-      AppMethodBeat.o(78064);
-    }
-    return -2;
+    finally {}
   }
   
-  public static int ca(Context paramContext)
+  public final void c(b paramb)
   {
-    AppMethodBeat.i(78062);
-    int i;
-    try
-    {
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-      if (paramContext == null)
-      {
-        i = fyW;
-        AppMethodBeat.o(78062);
-        return i;
-      }
-      if (paramContext.getType() == 1)
-      {
-        i = fyY;
-        AppMethodBeat.o(78062);
-        return i;
-      }
-      if (paramContext.getSubtype() == 1)
-      {
-        i = fyW;
-        AppMethodBeat.o(78062);
-        return i;
-      }
-      if (paramContext.getSubtype() == 2)
-      {
-        i = fyW;
-        AppMethodBeat.o(78062);
-        return i;
-      }
-      if (paramContext.getSubtype() >= 3)
-      {
-        i = fyX;
-        AppMethodBeat.o(78062);
-        return i;
-      }
-      i = fyW;
-      AppMethodBeat.o(78062);
-      return i;
-    }
-    catch (NullPointerException paramContext)
-    {
-      ab.e("MicroMsg.CdnUtil", "exception:%s", new Object[] { bo.l(paramContext) });
-      i = fyW;
-      AppMethodBeat.o(78062);
-    }
-    return i;
+    this.rr = paramb;
   }
   
-  public static int cb(Context paramContext)
+  public final void cancel()
   {
-    AppMethodBeat.i(78063);
-    int i = at.getNetType(paramContext);
-    paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-    if (paramContext == null)
-    {
-      i = fyZ;
-      AppMethodBeat.o(78063);
-      return i;
+    AppMethodBeat.i(182915);
+    if (this.gUY != null) {
+      x.a(this.gUY);
     }
-    if (paramContext.getType() == 1)
-    {
-      i = fzd;
-      AppMethodBeat.o(78063);
-      return i;
+    if (this.gUG != null) {
+      this.gUG.xd(true);
     }
-    if ((paramContext.getSubtype() == 1) || (paramContext.getSubtype() == 2))
-    {
-      i = fza;
-      AppMethodBeat.o(78063);
-      return i;
-    }
-    if (paramContext.getSubtype() >= 13)
-    {
-      i = fzc;
-      AppMethodBeat.o(78063);
-      return i;
-    }
-    if (paramContext.getSubtype() >= 3)
-    {
-      i = fzb;
-      AppMethodBeat.o(78063);
-      return i;
-    }
-    if (at.isWap(i))
-    {
-      i = fze;
-      AppMethodBeat.o(78063);
-      return i;
-    }
-    i = fza;
-    AppMethodBeat.o(78063);
-    return i;
+    AppMethodBeat.o(182915);
   }
   
-  public static void outputJniLog(byte[] paramArrayOfByte, String paramString, int paramInt)
+  public static class a<T extends cld>
   {
-    AppMethodBeat.i(78059);
-    byte[] arrayOfByte = paramArrayOfByte;
-    if (bo.ce(paramArrayOfByte)) {
-      arrayOfByte = new byte[0];
-    }
-    paramArrayOfByte = new String(arrayOfByte);
-    if (paramInt == 4)
+    public n dfA;
+    public int errCode;
+    public String errMsg;
+    public int errType;
+    public T gUK;
+    public c gVa;
+    
+    public static <T extends cld> a<T> a(int paramInt1, int paramInt2, String paramString, T paramT, n paramn, c paramc)
     {
-      ab.e(paramString, paramArrayOfByte);
-      AppMethodBeat.o(78059);
-      return;
+      AppMethodBeat.i(182910);
+      a locala = new a();
+      locala.errType = paramInt1;
+      locala.errCode = paramInt2;
+      locala.errMsg = paramString;
+      locala.gUK = paramT;
+      locala.dfA = paramn;
+      locala.gVa = paramc;
+      if (paramc != null) {
+        paramc.a(paramInt1, paramInt2, paramString, paramT, paramn);
+      }
+      AppMethodBeat.o(182910);
+      return locala;
     }
-    if (paramInt == 3)
-    {
-      ab.w(paramString, paramArrayOfByte);
-      AppMethodBeat.o(78059);
-      return;
-    }
-    if (paramInt == 2)
-    {
-      ab.i(paramString, paramArrayOfByte);
-      AppMethodBeat.o(78059);
-      return;
-    }
-    if (paramInt == 1)
-    {
-      ab.d(paramString, paramArrayOfByte);
-      AppMethodBeat.o(78059);
-      return;
-    }
-    if (paramInt == 0) {
-      ab.v(paramString, paramArrayOfByte);
-    }
-    AppMethodBeat.o(78059);
   }
   
-  private static String sK(String paramString)
+  static final class b<_Resp extends cld>
+    extends n
   {
-    AppMethodBeat.i(78060);
-    if (!bo.isNullOrNil(paramString))
+    final n gUM;
+    b gUN;
+    com.tencent.mm.vending.g.b gUO;
+    private k gUQ;
+    c gVb;
+    g gbr;
+    final long mStartTime;
+    
+    public b(c paramc)
     {
-      int i = 0;
-      while (i < paramString.length())
+      AppMethodBeat.i(182912);
+      this.gbr = null;
+      this.gUM = this;
+      this.mStartTime = bt.eGO();
+      this.gUQ = new k()
       {
-        char c = paramString.charAt(i);
-        if ((!bo.C(c)) && (!bo.D(c)))
+        public final void onGYNetEnd(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, String paramAnonymousString, q paramAnonymousq, byte[] paramAnonymousArrayOfByte)
         {
-          AppMethodBeat.o(78060);
-          return null;
+          AppMethodBeat.i(182911);
+          com.tencent.mm.vending.g.g.a(c.b.this.gUO, new Object[] { c.a.a(paramAnonymousInt2, paramAnonymousInt3, paramAnonymousString, (cld)c.b.this.gUN.gUT.gUX, c.b.this, c.b.this.gVb) });
+          c.b.this.gbr.onSceneEnd(paramAnonymousInt2, paramAnonymousInt3, paramAnonymousString, c.b.this.gUM);
+          ad.i("MicroMsg.Cgi", "onGYNetEnd:%d func:%d time:%d [%d,%d,%s]", new Object[] { Integer.valueOf(c.b.this.gUM.hashCode()), Integer.valueOf(c.b.this.getType()), Long.valueOf(bt.eGO() - c.b.this.mStartTime), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), paramAnonymousString });
+          AppMethodBeat.o(182911);
         }
-        i += 1;
-      }
+      };
+      this.gVb = paramc;
+      AppMethodBeat.o(182912);
     }
-    AppMethodBeat.o(78060);
-    return paramString;
+    
+    public final int doScene(com.tencent.mm.network.e parame, g paramg)
+    {
+      AppMethodBeat.i(182914);
+      this.gbr = paramg;
+      int i = dispatch(parame, this.gUN, this.gUQ);
+      ad.i("MicroMsg.Cgi", "Start doScene:%d func:%d netid:%d time:%d", new Object[] { Integer.valueOf(this.gUM.hashCode()), Integer.valueOf(getType()), Integer.valueOf(i), Long.valueOf(bt.eGO() - this.mStartTime) });
+      if (i < 0) {
+        com.tencent.mm.vending.g.g.a(this.gUO, new Object[] { c.a.a(3, -1, "", (cld)this.gUN.gUT.gUX, this, this.gVb) });
+      }
+      AppMethodBeat.o(182914);
+      return i;
+    }
+    
+    public final int getType()
+    {
+      AppMethodBeat.i(182913);
+      int i = this.gUN.getType();
+      AppMethodBeat.o(182913);
+      return i;
+    }
+    
+    protected final int securityLimitCount()
+    {
+      return 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.al.c
  * JD-Core Version:    0.7.0.1
  */

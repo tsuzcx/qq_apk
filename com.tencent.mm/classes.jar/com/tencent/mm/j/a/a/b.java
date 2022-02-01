@@ -3,30 +3,30 @@ package com.tencent.mm.j.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String elx;
-  public int ely;
-  public String elz;
+  public String fyo;
+  public int fyp;
+  public String fyq;
   public String userName;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(59616);
+    AppMethodBeat.i(42662);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.userName != null) {
-        paramVarArgs.e(1, this.userName);
+        paramVarArgs.d(1, this.userName);
       }
-      if (this.elx != null) {
-        paramVarArgs.e(2, this.elx);
+      if (this.fyo != null) {
+        paramVarArgs.d(2, this.fyo);
       }
-      paramVarArgs.aO(3, this.ely);
-      if (this.elz != null) {
-        paramVarArgs.e(4, this.elz);
+      paramVarArgs.aR(3, this.fyp);
+      if (this.fyq != null) {
+        paramVarArgs.d(4, this.fyq);
       }
-      AppMethodBeat.o(59616);
+      AppMethodBeat.o(42662);
       return 0;
     }
     if (paramInt == 1) {
@@ -35,57 +35,57 @@ public final class b
       }
     }
     label378:
-    for (paramInt = e.a.a.b.b.a.f(1, this.userName) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.userName) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.elx != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.elx);
+      if (this.fyo != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.fyo);
       }
-      i += e.a.a.b.b.a.bl(3, this.ely);
+      i += f.a.a.b.b.a.bA(3, this.fyp);
       paramInt = i;
-      if (this.elz != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.elz);
+      if (this.fyq != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.fyq);
       }
-      AppMethodBeat.o(59616);
+      AppMethodBeat.o(42662);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(59616);
+        AppMethodBeat.o(42662);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         b localb = (b)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(59616);
+          AppMethodBeat.o(42662);
           return -1;
         case 1: 
-          localb.userName = locala.CLY.readString();
-          AppMethodBeat.o(59616);
+          localb.userName = locala.KhF.readString();
+          AppMethodBeat.o(42662);
           return 0;
         case 2: 
-          localb.elx = locala.CLY.readString();
-          AppMethodBeat.o(59616);
+          localb.fyo = locala.KhF.readString();
+          AppMethodBeat.o(42662);
           return 0;
         case 3: 
-          localb.ely = locala.CLY.sl();
-          AppMethodBeat.o(59616);
+          localb.fyp = locala.KhF.xS();
+          AppMethodBeat.o(42662);
           return 0;
         }
-        localb.elz = locala.CLY.readString();
-        AppMethodBeat.o(59616);
+        localb.fyq = locala.KhF.readString();
+        AppMethodBeat.o(42662);
         return 0;
       }
-      AppMethodBeat.o(59616);
+      AppMethodBeat.o(42662);
       return -1;
     }
   }

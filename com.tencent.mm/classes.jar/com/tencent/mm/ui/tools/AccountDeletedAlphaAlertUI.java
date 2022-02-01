@@ -1,11 +1,13 @@
 package com.tencent.mm.ui.tools;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.w;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.g.a.y;
+import com.tencent.mm.model.az;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
@@ -13,11 +15,11 @@ import com.tencent.mm.ui.base.h;
 public class AccountDeletedAlphaAlertUI
   extends MMActivity
 {
-  private static AccountDeletedAlphaAlertUI ApP = null;
+  private static AccountDeletedAlphaAlertUI HlH = null;
   
-  public static AccountDeletedAlphaAlertUI dNv()
+  public static AccountDeletedAlphaAlertUI fdt()
   {
-    return ApP;
+    return HlH;
   }
   
   public int getLayoutId()
@@ -27,31 +29,47 @@ public class AccountDeletedAlphaAlertUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(34741);
+    AppMethodBeat.i(38935);
     super.onCreate(paramBundle);
-    ApP = this;
-    paramBundle = new w();
-    com.tencent.mm.sdk.b.a.ymk.l(paramBundle);
-    aw.hold();
-    paramBundle = com.tencent.mm.h.a.kO(getIntent().getStringExtra("errmsg"));
+    HlH = this;
+    paramBundle = new y();
+    com.tencent.mm.sdk.b.a.ESL.l(paramBundle);
+    az.hold();
+    paramBundle = com.tencent.mm.h.a.oG(getIntent().getStringExtra("errmsg"));
     if (paramBundle != null)
     {
-      paramBundle.a(this, new AccountDeletedAlphaAlertUI.1(this), null);
-      AppMethodBeat.o(34741);
+      paramBundle.a(this, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(38933);
+          AccountDeletedAlphaAlertUI.a(AccountDeletedAlphaAlertUI.this);
+          AppMethodBeat.o(38933);
+        }
+      }, null);
+      AppMethodBeat.o(38935);
       return;
     }
-    h.a(this, getString(2131301415), null, false, new AccountDeletedAlphaAlertUI.2(this));
-    AppMethodBeat.o(34741);
+    h.a(this, getString(2131761062), null, false, new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(38934);
+        AccountDeletedAlphaAlertUI.a(AccountDeletedAlphaAlertUI.this);
+        AppMethodBeat.o(38934);
+      }
+    });
+    AppMethodBeat.o(38935);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(34742);
-    if (equals(ApP)) {
-      ApP = null;
+    AppMethodBeat.i(38936);
+    if (equals(HlH)) {
+      HlH = null;
     }
     super.onDestroy();
-    AppMethodBeat.o(34742);
+    AppMethodBeat.o(38936);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -62,7 +80,7 @@ public class AccountDeletedAlphaAlertUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.tools.AccountDeletedAlphaAlertUI
  * JD-Core Version:    0.7.0.1
  */

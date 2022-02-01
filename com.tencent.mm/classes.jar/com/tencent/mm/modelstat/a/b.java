@@ -3,14 +3,14 @@ package com.tencent.mm.modelstat.a;
 public final class b
 {
   /* Error */
-  public static int a(java.io.File paramFile, int paramInt)
+  public static int a(com.tencent.mm.vfs.e parame, int paramInt)
   {
     // Byte code:
     //   0: ldc 15
     //   2: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: iload_1
     //   6: iconst_1
-    //   7: if_icmpne +223 -> 230
+    //   7: if_icmpne +219 -> 226
     //   10: ldc 23
     //   12: astore_2
     //   13: new 25	java/net/URL
@@ -38,7 +38,7 @@ public final class b
     //   61: dup
     //   62: invokespecial 57	java/lang/StringBuilder:<init>	()V
     //   65: aload_0
-    //   66: invokevirtual 63	java/io/File:length	()J
+    //   66: invokevirtual 63	com/tencent/mm/vfs/e:length	()J
     //   69: invokevirtual 67	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   72: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   75: invokevirtual 75	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
@@ -50,21 +50,21 @@ public final class b
     //   89: ldc 81
     //   91: ldc 83
     //   93: invokevirtual 75	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   96: invokestatic 89	com/tencent/mm/kernel/g:RJ	()Lcom/tencent/mm/kernel/a;
+    //   96: invokestatic 89	com/tencent/mm/kernel/g:afz	()Lcom/tencent/mm/kernel/a;
     //   99: pop
     //   100: aload 4
     //   102: ldc 91
-    //   104: invokestatic 96	com/tencent/mm/kernel/a:QC	()Ljava/lang/String;
+    //   104: invokestatic 96	com/tencent/mm/kernel/a:aeo	()Ljava/lang/String;
     //   107: invokevirtual 75	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   110: invokestatic 89	com/tencent/mm/kernel/g:RJ	()Lcom/tencent/mm/kernel/a;
+    //   110: invokestatic 89	com/tencent/mm/kernel/g:afz	()Lcom/tencent/mm/kernel/a;
     //   113: pop
     //   114: aload 4
     //   116: ldc 98
-    //   118: invokestatic 96	com/tencent/mm/kernel/a:QC	()Ljava/lang/String;
+    //   118: invokestatic 96	com/tencent/mm/kernel/a:aeo	()Ljava/lang/String;
     //   121: invokevirtual 75	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   124: iload_1
     //   125: iconst_1
-    //   126: if_icmpne +110 -> 236
+    //   126: if_icmpne +106 -> 232
     //   129: aload 4
     //   131: ldc 100
     //   133: ldc 102
@@ -83,245 +83,243 @@ public final class b
     //   161: sipush 10240
     //   164: newarray byte
     //   166: astore_3
-    //   167: new 114	java/io/FileInputStream
-    //   170: dup
-    //   171: aload_0
-    //   172: invokespecial 117	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   175: astore_0
-    //   176: aload_0
-    //   177: aload_3
-    //   178: iconst_0
-    //   179: sipush 10240
-    //   182: invokevirtual 121	java/io/FileInputStream:read	([BII)I
-    //   185: istore_1
-    //   186: iload_1
-    //   187: iconst_m1
-    //   188: if_icmpeq +95 -> 283
-    //   191: aload_2
-    //   192: aload_3
-    //   193: iconst_0
-    //   194: iload_1
-    //   195: invokevirtual 127	java/io/OutputStream:write	([BII)V
-    //   198: goto -22 -> 176
-    //   201: astore_2
+    //   167: aload_0
+    //   168: invokestatic 118	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   171: astore_0
+    //   172: aload_0
+    //   173: aload_3
+    //   174: iconst_0
+    //   175: sipush 10240
+    //   178: invokevirtual 124	java/io/InputStream:read	([BII)I
+    //   181: istore_1
+    //   182: iload_1
+    //   183: iconst_m1
+    //   184: if_icmpeq +95 -> 279
+    //   187: aload_2
+    //   188: aload_3
+    //   189: iconst_0
+    //   190: iload_1
+    //   191: invokevirtual 130	java/io/OutputStream:write	([BII)V
+    //   194: goto -22 -> 172
+    //   197: astore_2
+    //   198: aload_0
+    //   199: ifnull +7 -> 206
     //   202: aload_0
-    //   203: ifnull +7 -> 210
-    //   206: aload_0
-    //   207: invokevirtual 130	java/io/FileInputStream:close	()V
-    //   210: aload 4
-    //   212: invokevirtual 134	javax/net/ssl/HttpsURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   215: invokevirtual 137	java/io/InputStream:close	()V
-    //   218: aload 4
-    //   220: invokevirtual 140	javax/net/ssl/HttpsURLConnection:disconnect	()V
-    //   223: ldc 15
-    //   225: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   228: iconst_m1
-    //   229: ireturn
-    //   230: ldc 145
-    //   232: astore_2
-    //   233: goto -220 -> 13
-    //   236: aload 4
-    //   238: ldc 100
-    //   240: ldc 147
-    //   242: invokevirtual 75	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   245: aload 4
-    //   247: ldc 149
-    //   249: ldc 147
-    //   251: invokevirtual 75	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   254: aload 4
-    //   256: ldc 104
-    //   258: ldc 147
-    //   260: invokevirtual 75	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   263: goto -116 -> 147
-    //   266: astore_0
-    //   267: ldc 151
-    //   269: aload_0
-    //   270: invokevirtual 154	java/net/MalformedURLException:getMessage	()Ljava/lang/String;
-    //   273: invokestatic 159	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   276: ldc 15
-    //   278: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   281: iconst_0
-    //   282: ireturn
-    //   283: aload_0
-    //   284: invokevirtual 130	java/io/FileInputStream:close	()V
-    //   287: ldc 151
-    //   289: ldc 161
-    //   291: iconst_1
-    //   292: anewarray 4	java/lang/Object
-    //   295: dup
-    //   296: iconst_0
-    //   297: aload 4
-    //   299: invokevirtual 165	javax/net/ssl/HttpsURLConnection:getResponseCode	()I
-    //   302: invokestatic 171	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   305: aastore
-    //   306: invokestatic 174	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   309: aload 4
-    //   311: invokevirtual 134	javax/net/ssl/HttpsURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   314: invokevirtual 137	java/io/InputStream:close	()V
-    //   317: aload 4
-    //   319: invokevirtual 140	javax/net/ssl/HttpsURLConnection:disconnect	()V
-    //   322: aload_2
-    //   323: invokevirtual 175	java/io/OutputStream:close	()V
-    //   326: goto -50 -> 276
-    //   329: astore_0
-    //   330: ldc 151
-    //   332: aload_0
-    //   333: invokevirtual 176	java/net/ProtocolException:getMessage	()Ljava/lang/String;
-    //   336: invokestatic 159	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   339: goto -63 -> 276
-    //   342: astore_0
-    //   343: ldc 151
-    //   345: aload_0
-    //   346: invokevirtual 177	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   349: invokestatic 159	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   352: goto -35 -> 317
-    //   355: astore_0
-    //   356: ldc 151
-    //   358: aload_0
-    //   359: invokevirtual 178	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   362: invokestatic 159	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   365: goto -89 -> 276
-    //   368: astore_0
-    //   369: ldc 151
-    //   371: aload_0
-    //   372: invokevirtual 178	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   375: invokestatic 159	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   378: ldc 15
-    //   380: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   383: iconst_m1
-    //   384: ireturn
-    //   385: astore_0
-    //   386: ldc 151
-    //   388: aload_0
-    //   389: invokevirtual 177	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   392: invokestatic 159	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   395: goto -177 -> 218
-    //   398: astore_0
-    //   399: aconst_null
-    //   400: astore_2
+    //   203: invokevirtual 133	java/io/InputStream:close	()V
+    //   206: aload 4
+    //   208: invokevirtual 137	javax/net/ssl/HttpsURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   211: invokevirtual 133	java/io/InputStream:close	()V
+    //   214: aload 4
+    //   216: invokevirtual 140	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   219: ldc 15
+    //   221: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   224: iconst_m1
+    //   225: ireturn
+    //   226: ldc 145
+    //   228: astore_2
+    //   229: goto -216 -> 13
+    //   232: aload 4
+    //   234: ldc 100
+    //   236: ldc 147
+    //   238: invokevirtual 75	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   241: aload 4
+    //   243: ldc 149
+    //   245: ldc 147
+    //   247: invokevirtual 75	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   250: aload 4
+    //   252: ldc 104
+    //   254: ldc 147
+    //   256: invokevirtual 75	javax/net/ssl/HttpsURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   259: goto -112 -> 147
+    //   262: astore_0
+    //   263: ldc 151
+    //   265: aload_0
+    //   266: invokevirtual 154	java/net/MalformedURLException:getMessage	()Ljava/lang/String;
+    //   269: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   272: ldc 15
+    //   274: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   277: iconst_0
+    //   278: ireturn
+    //   279: aload_0
+    //   280: invokevirtual 133	java/io/InputStream:close	()V
+    //   283: ldc 151
+    //   285: ldc 161
+    //   287: iconst_1
+    //   288: anewarray 4	java/lang/Object
+    //   291: dup
+    //   292: iconst_0
+    //   293: aload 4
+    //   295: invokevirtual 165	javax/net/ssl/HttpsURLConnection:getResponseCode	()I
+    //   298: invokestatic 171	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   301: aastore
+    //   302: invokestatic 174	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   305: aload 4
+    //   307: invokevirtual 137	javax/net/ssl/HttpsURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   310: invokevirtual 133	java/io/InputStream:close	()V
+    //   313: aload 4
+    //   315: invokevirtual 140	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   318: aload_2
+    //   319: invokevirtual 175	java/io/OutputStream:close	()V
+    //   322: goto -50 -> 272
+    //   325: astore_0
+    //   326: ldc 151
+    //   328: aload_0
+    //   329: invokevirtual 176	java/net/ProtocolException:getMessage	()Ljava/lang/String;
+    //   332: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   335: goto -63 -> 272
+    //   338: astore_0
+    //   339: ldc 151
+    //   341: aload_0
+    //   342: invokevirtual 177	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   345: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   348: goto -35 -> 313
+    //   351: astore_0
+    //   352: ldc 151
+    //   354: aload_0
+    //   355: invokevirtual 178	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   358: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   361: goto -89 -> 272
+    //   364: astore_0
+    //   365: ldc 151
+    //   367: aload_0
+    //   368: invokevirtual 178	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   371: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   374: ldc 15
+    //   376: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   379: iconst_m1
+    //   380: ireturn
+    //   381: astore_0
+    //   382: ldc 151
+    //   384: aload_0
+    //   385: invokevirtual 177	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   388: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   391: goto -177 -> 214
+    //   394: astore_0
+    //   395: aconst_null
+    //   396: astore_2
+    //   397: aload_2
+    //   398: ifnull +7 -> 405
     //   401: aload_2
-    //   402: ifnull +7 -> 409
-    //   405: aload_2
-    //   406: invokevirtual 130	java/io/FileInputStream:close	()V
-    //   409: aload 4
-    //   411: invokevirtual 134	javax/net/ssl/HttpsURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   414: invokevirtual 137	java/io/InputStream:close	()V
-    //   417: aload 4
-    //   419: invokevirtual 140	javax/net/ssl/HttpsURLConnection:disconnect	()V
-    //   422: ldc 15
-    //   424: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   427: aload_0
-    //   428: athrow
-    //   429: astore_0
-    //   430: ldc 151
-    //   432: aload_0
-    //   433: invokevirtual 178	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   436: invokestatic 159	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   439: ldc 15
-    //   441: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   444: iconst_m1
-    //   445: ireturn
-    //   446: astore_2
-    //   447: ldc 151
-    //   449: aload_2
-    //   450: invokevirtual 177	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   453: invokestatic 159	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   456: goto -39 -> 417
-    //   459: astore_2
-    //   460: aload_0
-    //   461: astore_3
-    //   462: aload_2
-    //   463: astore_0
-    //   464: aload_3
-    //   465: astore_2
-    //   466: goto -65 -> 401
-    //   469: astore_0
-    //   470: aconst_null
-    //   471: astore_0
-    //   472: goto -270 -> 202
+    //   402: invokevirtual 133	java/io/InputStream:close	()V
+    //   405: aload 4
+    //   407: invokevirtual 137	javax/net/ssl/HttpsURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   410: invokevirtual 133	java/io/InputStream:close	()V
+    //   413: aload 4
+    //   415: invokevirtual 140	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   418: ldc 15
+    //   420: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   423: aload_0
+    //   424: athrow
+    //   425: astore_0
+    //   426: ldc 151
+    //   428: aload_0
+    //   429: invokevirtual 178	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   432: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   435: ldc 15
+    //   437: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   440: iconst_m1
+    //   441: ireturn
+    //   442: astore_2
+    //   443: ldc 151
+    //   445: aload_2
+    //   446: invokevirtual 177	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   449: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   452: goto -39 -> 413
+    //   455: astore_2
+    //   456: aload_0
+    //   457: astore_3
+    //   458: aload_2
+    //   459: astore_0
+    //   460: aload_3
+    //   461: astore_2
+    //   462: goto -65 -> 397
+    //   465: astore_0
+    //   466: aconst_null
+    //   467: astore_0
+    //   468: goto -270 -> 198
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	475	0	paramFile	java.io.File
-    //   0	475	1	paramInt	int
-    //   12	180	2	localObject1	Object
-    //   201	1	2	localException1	java.lang.Exception
-    //   232	174	2	str	java.lang.String
-    //   446	4	2	localException2	java.lang.Exception
-    //   459	4	2	localObject2	Object
-    //   465	1	2	localObject3	Object
-    //   166	299	3	localObject4	Object
-    //   27	391	4	localHttpsURLConnection	javax.net.ssl.HttpsURLConnection
+    //   0	471	0	parame	com.tencent.mm.vfs.e
+    //   0	471	1	paramInt	int
+    //   12	176	2	localObject1	Object
+    //   197	1	2	localException1	java.lang.Exception
+    //   228	174	2	str	java.lang.String
+    //   442	4	2	localException2	java.lang.Exception
+    //   455	4	2	localObject2	Object
+    //   461	1	2	localObject3	Object
+    //   166	295	3	localObject4	Object
+    //   27	387	4	localHttpsURLConnection	javax.net.ssl.HttpsURLConnection
     // Exception table:
     //   from	to	target	type
-    //   176	186	201	java/lang/Exception
-    //   191	198	201	java/lang/Exception
-    //   283	287	201	java/lang/Exception
-    //   13	124	266	java/net/MalformedURLException
-    //   129	147	266	java/net/MalformedURLException
-    //   147	167	266	java/net/MalformedURLException
-    //   206	210	266	java/net/MalformedURLException
-    //   210	218	266	java/net/MalformedURLException
-    //   218	223	266	java/net/MalformedURLException
-    //   236	263	266	java/net/MalformedURLException
-    //   309	317	266	java/net/MalformedURLException
-    //   317	326	266	java/net/MalformedURLException
-    //   343	352	266	java/net/MalformedURLException
-    //   369	378	266	java/net/MalformedURLException
-    //   386	395	266	java/net/MalformedURLException
-    //   405	409	266	java/net/MalformedURLException
-    //   409	417	266	java/net/MalformedURLException
-    //   417	429	266	java/net/MalformedURLException
-    //   430	439	266	java/net/MalformedURLException
-    //   447	456	266	java/net/MalformedURLException
-    //   13	124	329	java/net/ProtocolException
-    //   129	147	329	java/net/ProtocolException
-    //   147	167	329	java/net/ProtocolException
-    //   206	210	329	java/net/ProtocolException
-    //   210	218	329	java/net/ProtocolException
-    //   218	223	329	java/net/ProtocolException
-    //   236	263	329	java/net/ProtocolException
-    //   309	317	329	java/net/ProtocolException
-    //   317	326	329	java/net/ProtocolException
-    //   343	352	329	java/net/ProtocolException
-    //   369	378	329	java/net/ProtocolException
-    //   386	395	329	java/net/ProtocolException
-    //   405	409	329	java/net/ProtocolException
-    //   409	417	329	java/net/ProtocolException
-    //   417	429	329	java/net/ProtocolException
-    //   430	439	329	java/net/ProtocolException
-    //   447	456	329	java/net/ProtocolException
-    //   309	317	342	java/lang/Exception
-    //   13	124	355	java/io/IOException
-    //   129	147	355	java/io/IOException
-    //   147	167	355	java/io/IOException
-    //   210	218	355	java/io/IOException
-    //   218	223	355	java/io/IOException
-    //   236	263	355	java/io/IOException
-    //   309	317	355	java/io/IOException
-    //   317	326	355	java/io/IOException
-    //   343	352	355	java/io/IOException
-    //   369	378	355	java/io/IOException
-    //   386	395	355	java/io/IOException
-    //   409	417	355	java/io/IOException
-    //   417	429	355	java/io/IOException
-    //   430	439	355	java/io/IOException
-    //   447	456	355	java/io/IOException
-    //   206	210	368	java/io/IOException
-    //   210	218	385	java/lang/Exception
-    //   167	176	398	finally
-    //   287	309	398	finally
-    //   405	409	429	java/io/IOException
-    //   409	417	446	java/lang/Exception
-    //   176	186	459	finally
-    //   191	198	459	finally
-    //   283	287	459	finally
-    //   167	176	469	java/lang/Exception
-    //   287	309	469	java/lang/Exception
+    //   172	182	197	java/lang/Exception
+    //   187	194	197	java/lang/Exception
+    //   279	283	197	java/lang/Exception
+    //   13	124	262	java/net/MalformedURLException
+    //   129	147	262	java/net/MalformedURLException
+    //   147	167	262	java/net/MalformedURLException
+    //   202	206	262	java/net/MalformedURLException
+    //   206	214	262	java/net/MalformedURLException
+    //   214	219	262	java/net/MalformedURLException
+    //   232	259	262	java/net/MalformedURLException
+    //   305	313	262	java/net/MalformedURLException
+    //   313	322	262	java/net/MalformedURLException
+    //   339	348	262	java/net/MalformedURLException
+    //   365	374	262	java/net/MalformedURLException
+    //   382	391	262	java/net/MalformedURLException
+    //   401	405	262	java/net/MalformedURLException
+    //   405	413	262	java/net/MalformedURLException
+    //   413	425	262	java/net/MalformedURLException
+    //   426	435	262	java/net/MalformedURLException
+    //   443	452	262	java/net/MalformedURLException
+    //   13	124	325	java/net/ProtocolException
+    //   129	147	325	java/net/ProtocolException
+    //   147	167	325	java/net/ProtocolException
+    //   202	206	325	java/net/ProtocolException
+    //   206	214	325	java/net/ProtocolException
+    //   214	219	325	java/net/ProtocolException
+    //   232	259	325	java/net/ProtocolException
+    //   305	313	325	java/net/ProtocolException
+    //   313	322	325	java/net/ProtocolException
+    //   339	348	325	java/net/ProtocolException
+    //   365	374	325	java/net/ProtocolException
+    //   382	391	325	java/net/ProtocolException
+    //   401	405	325	java/net/ProtocolException
+    //   405	413	325	java/net/ProtocolException
+    //   413	425	325	java/net/ProtocolException
+    //   426	435	325	java/net/ProtocolException
+    //   443	452	325	java/net/ProtocolException
+    //   305	313	338	java/lang/Exception
+    //   13	124	351	java/io/IOException
+    //   129	147	351	java/io/IOException
+    //   147	167	351	java/io/IOException
+    //   206	214	351	java/io/IOException
+    //   214	219	351	java/io/IOException
+    //   232	259	351	java/io/IOException
+    //   305	313	351	java/io/IOException
+    //   313	322	351	java/io/IOException
+    //   339	348	351	java/io/IOException
+    //   365	374	351	java/io/IOException
+    //   382	391	351	java/io/IOException
+    //   405	413	351	java/io/IOException
+    //   413	425	351	java/io/IOException
+    //   426	435	351	java/io/IOException
+    //   443	452	351	java/io/IOException
+    //   202	206	364	java/io/IOException
+    //   206	214	381	java/lang/Exception
+    //   167	172	394	finally
+    //   283	305	394	finally
+    //   401	405	425	java/io/IOException
+    //   405	413	442	java/lang/Exception
+    //   172	182	455	finally
+    //   187	194	455	finally
+    //   279	283	455	finally
+    //   167	172	465	java/lang/Exception
+    //   283	305	465	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelstat.a.b
  * JD-Core Version:    0.7.0.1
  */

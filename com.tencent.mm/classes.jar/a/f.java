@@ -1,13 +1,12 @@
 package a;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlin/Lazy;", "T", "", "value", "getValue", "()Ljava/lang/Object;", "isInitialized", "", "kotlin-stdlib"})
-public abstract interface f<T>
+public abstract interface f<TTaskResult, TContinuationResult>
 {
-  public abstract T getValue();
+  public abstract TContinuationResult a(h<TTaskResult> paramh);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     a.f
  * JD-Core Version:    0.7.0.1
  */

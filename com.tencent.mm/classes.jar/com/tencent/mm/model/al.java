@@ -1,8 +1,14 @@
 package com.tencent.mm.model;
 
-public abstract interface al
+public abstract class al
 {
-  public abstract void kw(int paramInt);
+  public long gMV = 0L;
+  
+  public abstract String getTag();
+  
+  public abstract boolean nb(int paramInt);
+  
+  public abstract void transfer(int paramInt);
 }
 
 

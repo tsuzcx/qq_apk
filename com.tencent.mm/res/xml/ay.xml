@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <IconPreference android:title="@string/eal" android:icon="@drawable/apx" android:key="settings_invite_facebook_friends" />
-    <IconPreference android:title="@string/eao" android:icon="@raw/find_more_friend_qq_icon" android:key="settings_invite_qq_friends" />
-    <IconPreference android:title="@string/edr" android:icon="@drawable/aj0" android:key="settings_recommend_by_mail" />
-    <IconPreference android:title="@string/eds" android:icon="@drawable/aq0" android:key="settings_recommend_by_mb" />
-    <IconPreference android:title="@string/ean" android:icon="@drawable/aj1" android:key="settings_invite_mobile_friends" />
+    <PreferenceTitleCategory android:key="select_current_district_title" android:persistent="false" android:title="@string/c9t" />
+    <com.tencent.mm.plugin.finder.widget.pref.FinderLocationPreference android:key="select_current_district" />
+    <PreferenceTitleCategory android:key="select_current_location_title" android:persistent="false" android:title="@string/c9u" />
+    <com.tencent.mm.plugin.finder.widget.pref.FinderLocationPreference android:key="select_current_location" />
 </PreferenceScreen>

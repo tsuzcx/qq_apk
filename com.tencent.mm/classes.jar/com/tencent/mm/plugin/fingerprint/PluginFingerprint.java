@@ -11,25 +11,25 @@ public class PluginFingerprint
 {
   public void configure(g paramg)
   {
-    AppMethodBeat.i(3228);
-    paramg.SD();
-    AppMethodBeat.o(3228);
+    AppMethodBeat.i(148768);
+    paramg.agu();
+    AppMethodBeat.o(148768);
   }
   
   public void dependency() {}
   
   public void execute(g paramg)
   {
-    AppMethodBeat.i(3229);
-    paramg.SD();
-    AppMethodBeat.o(3229);
+    AppMethodBeat.i(148769);
+    paramg.agu();
+    AppMethodBeat.o(148769);
   }
   
   public void installed()
   {
-    AppMethodBeat.i(3227);
+    AppMethodBeat.i(148767);
     alias(PluginFingerprint.class);
-    AppMethodBeat.o(3227);
+    AppMethodBeat.o(148767);
   }
   
   public String name()
@@ -39,7 +39,7 @@ public class PluginFingerprint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.PluginFingerprint
  * JD-Core Version:    0.7.0.1
  */

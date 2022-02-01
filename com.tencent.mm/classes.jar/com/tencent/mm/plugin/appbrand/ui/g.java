@@ -1,105 +1,183 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.MutableContextWrapper;
-import android.content.ServiceConnection;
-import android.view.ContextThemeWrapper;
-import android.view.LayoutInflater;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.ao;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.f;
 
 public final class g
-  extends MutableContextWrapper
 {
-  private ContextThemeWrapper iOw;
-  private volatile LayoutInflater mInflater;
+  private static final android.support.v4.e.a<AppBrandRuntime, Bitmap> lzX;
   
-  private g(Context paramContext)
+  static
   {
-    super(paramContext);
-    AppMethodBeat.i(143608);
-    this.iOw = new ContextThemeWrapper(paramContext.getApplicationContext(), 2131493046);
-    AppMethodBeat.o(143608);
+    AppMethodBeat.i(48662);
+    lzX = new android.support.v4.e.a();
+    AppMethodBeat.o(48662);
   }
   
-  public static g dc(Context paramContext)
+  public static u a(Context paramContext, AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
-    AppMethodBeat.i(143607);
-    paramContext = new g(paramContext);
-    AppMethodBeat.o(143607);
+    AppMethodBeat.i(196176);
+    if (paramAppBrandInitConfigWC.jdl)
+    {
+      if (!TextUtils.isEmpty(com.tencent.luggage.h.k.cA(paramAppBrandInitConfigWC.iJb)))
+      {
+        AppMethodBeat.o(196176);
+        return null;
+      }
+      if (!com.tencent.mm.plugin.appbrand.ui.c.a.b.bqg())
+      {
+        ad.i("MicroMsg.AppBrandLoadingSplashFactory", "createSnapshotDisplayLoadingSplash but switch off, appId:%s", new Object[] { paramAppBrandInitConfigWC.appId });
+        AppMethodBeat.o(196176);
+        return null;
+      }
+      String str = paramAppBrandInitConfigWC.jdy;
+      if (com.tencent.mm.vfs.i.eK(str))
+      {
+        ad.i("MicroMsg.AppBrandLoadingSplashFactory", "createScreenshotSplash with appId:%s, path:%s", new Object[] { paramAppBrandInitConfigWC.appId, str });
+        paramAppBrandInitConfigWC = f.decodeFile(str);
+        if ((paramAppBrandInitConfigWC != null) && (!paramAppBrandInitConfigWC.isRecycled()))
+        {
+          paramContext = new u(paramContext, paramAppBrandInitConfigWC);
+          AppMethodBeat.o(196176);
+          return paramContext;
+        }
+      }
+      AppMethodBeat.o(196176);
+      return null;
+    }
+    AppMethodBeat.o(196176);
+    return null;
+  }
+  
+  public static v a(Context paramContext, o paramo)
+  {
+    AppMethodBeat.i(48659);
+    Object localObject = (Bitmap)lzX.remove(paramo);
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
+    {
+      paramContext = new k(paramContext, (Bitmap)localObject);
+      AppMethodBeat.o(48659);
+      return paramContext;
+    }
+    localObject = a(paramContext, paramo.aNc());
+    if (localObject != null)
+    {
+      ((u)localObject).setRuntime(paramo);
+      AppMethodBeat.o(48659);
+      return localObject;
+    }
+    if (com.tencent.mm.plugin.appbrand.ac.g.as(paramo))
+    {
+      paramContext = new com.tencent.mm.plugin.appbrand.ac.b(dE(paramContext), paramo);
+      AppMethodBeat.o(48659);
+      return paramContext;
+    }
+    if ((m.ar(paramo)) || (ao.w(paramo)))
+    {
+      if (paramo.CZ())
+      {
+        paramContext = new c(dE(paramContext), paramo, paramo.aNc().cfl);
+        AppMethodBeat.o(48659);
+        return paramContext;
+      }
+      paramContext = new i(dE(paramContext), paramo, paramo.aNc().cfl);
+      AppMethodBeat.o(48659);
+      return paramContext;
+    }
+    if (paramo.CZ())
+    {
+      paramContext = new d(dE(paramContext), paramo);
+      AppMethodBeat.o(48659);
+      return paramContext;
+    }
+    localObject = (AppBrandUILoadingSplash)paramo.iGv.aC(AppBrandUILoadingSplash.class);
+    if (localObject != null)
+    {
+      ad.d("MicroMsg.AppBrandUILoadingSplash", "attachRuntime %s", new Object[] { paramo.Eg().dfM });
+      ((AppBrandUILoadingSplash)localObject).iGV = paramo;
+      paramContext = com.tencent.mm.sdk.f.a.iV(paramo.mContext);
+      int i;
+      if ((((AppBrandUILoadingSplash)localObject).getContext() instanceof MutableContextWrapper))
+      {
+        ((MutableContextWrapper)((AppBrandUILoadingSplash)localObject).getContext()).setBaseContext(paramContext);
+        i = ((AppBrandUILoadingSplash)localObject).getResources().getColor(2131099650);
+        if (((AppBrandUILoadingSplash)localObject).Eq()) {
+          break label319;
+        }
+      }
+      label319:
+      for (boolean bool = true;; bool = false)
+      {
+        ((AppBrandUILoadingSplash)localObject).L(i, bool);
+        AppMethodBeat.o(48659);
+        return localObject;
+      }
+    }
+    paramContext = new AppBrandUILoadingSplash(dE(paramContext), paramo);
+    AppMethodBeat.o(48659);
     return paramContext;
   }
   
-  public final Object getSystemService(String paramString)
+  public static void a(AppBrandRuntime paramAppBrandRuntime, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(143610);
-    if ("layout_inflater".equals(paramString)) {
-      try
-      {
-        if (this.mInflater == null) {
-          this.mInflater = w.hM(getBaseContext());
-        }
-        paramString = this.mInflater;
-        return paramString;
-      }
-      finally
-      {
-        AppMethodBeat.o(143610);
-      }
-    }
-    paramString = getBaseContext().getSystemService(paramString);
-    AppMethodBeat.o(143610);
-    return paramString;
-  }
-  
-  public final void setBaseContext(Context paramContext)
-  {
-    AppMethodBeat.i(143609);
-    if (paramContext == getBaseContext())
+    AppMethodBeat.i(48661);
+    if ((paramAppBrandRuntime == null) || (paramBitmap == null) || (paramBitmap.isRecycled()))
     {
-      AppMethodBeat.o(143609);
+      AppMethodBeat.o(48661);
       return;
     }
-    if ((paramContext instanceof Activity)) {
-      super.setBaseContext(paramContext);
-    }
-    for (;;)
-    {
-      try
-      {
-        this.mInflater = null;
-        getSystemService("layout_inflater");
-        return;
-      }
-      finally
-      {
-        AppMethodBeat.o(143609);
-      }
-      super.setBaseContext(this.iOw);
-    }
+    lzX.put(paramAppBrandRuntime, paramBitmap);
+    AppMethodBeat.o(48661);
   }
   
-  public final void unbindService(ServiceConnection paramServiceConnection)
+  public static boolean bok()
   {
-    AppMethodBeat.i(154862);
-    try
+    AppMethodBeat.i(161867);
+    if (aj.cbe())
     {
-      super.unbindService(paramServiceConnection);
-      AppMethodBeat.o(154862);
-      return;
+      AppMethodBeat.o(161867);
+      return false;
     }
-    catch (IllegalArgumentException paramServiceConnection)
+    if ((!com.tencent.mm.ce.a.eDc()) && (com.tencent.mm.ce.a.eCV())) {}
+    for (int i = 1; (i != 0) && (!com.tencent.mm.ce.a.eDb()); i = 0)
     {
-      ab.printErrStackTrace("MicroMsg.AppBrandRuntimePersistentContextWrapper", paramServiceConnection, "[CAPTURED CRASH]", new Object[0]);
-      AppMethodBeat.o(154862);
+      AppMethodBeat.o(161867);
+      return true;
     }
+    AppMethodBeat.o(161867);
+    return false;
+  }
+  
+  private static Context dE(Context paramContext)
+  {
+    AppMethodBeat.i(48660);
+    Context localContext = paramContext;
+    if (paramContext == null) {
+      localContext = aj.getContext();
+    }
+    paramContext = localContext;
+    if (bok()) {
+      paramContext = new p(localContext);
+    }
+    AppMethodBeat.o(48660);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.g
  * JD-Core Version:    0.7.0.1
  */

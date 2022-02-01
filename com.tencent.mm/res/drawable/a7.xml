@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<shape android:tint="?android:colorForeground"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background" android:drawable="@drawable/aa5" />
-    <item android:id="@android:id/secondaryProgress" android:drawable="@drawable/aa8" />
-    <item android:id="@android:id/progress">
-        <bitmap android:src="@drawable/aa5" />
-    </item>
-</layer-list>
+    <solid android:color="#1f000000" />
+    <size android:height="1.0dip" android:width="1.0dip" />
+</shape>

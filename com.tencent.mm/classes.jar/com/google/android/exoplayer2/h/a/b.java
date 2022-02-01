@@ -14,79 +14,74 @@ import java.io.OutputStream;
 public final class b
   implements f
 {
-  private j aQI;
-  private final a aZF;
-  private final long aZG;
-  private FileOutputStream aZH;
-  private long aZI;
-  private long aZJ;
-  private q aZK;
+  private j bml;
   private final int bufferSize;
+  private final a bxF;
+  private final long bxG;
+  private FileOutputStream bxH;
+  private long bxI;
+  private long bxJ;
+  private q bxK;
   private File file;
   private OutputStream outputStream;
   
-  public b(a parama)
+  public b(a parama, long paramLong, int paramInt)
   {
-    this(parama, (byte)0);
+    AppMethodBeat.i(92959);
+    this.bxF = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
+    this.bxG = paramLong;
+    this.bufferSize = paramInt;
+    AppMethodBeat.o(92959);
   }
   
-  private b(a parama, byte paramByte)
+  private void vs()
   {
-    AppMethodBeat.i(151941);
-    this.aZF = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
-    this.aZG = 5242880L;
-    this.bufferSize = 20480;
-    AppMethodBeat.o(151941);
-  }
-  
-  private void qx()
-  {
-    AppMethodBeat.i(151945);
+    AppMethodBeat.i(92963);
     long l;
-    if (this.aQI.aPF == -1L)
+    if (this.bml.length == -1L)
     {
-      l = this.aZG;
-      this.file = this.aZF.e(this.aQI.key, this.aQI.aYy + this.aZJ, l);
-      this.aZH = new FileOutputStream(this.file);
+      l = this.bxG;
+      this.file = this.bxF.f(this.bml.key, this.bml.bwz + this.bxJ, l);
+      this.bxH = new FileOutputStream(this.file);
       if (this.bufferSize <= 0) {
         break label161;
       }
-      if (this.aZK != null) {
+      if (this.bxK != null) {
         break label147;
       }
-      this.aZK = new q(this.aZH, this.bufferSize);
+      this.bxK = new q(this.bxH, this.bufferSize);
     }
     label105:
-    for (this.outputStream = this.aZK;; this.outputStream = this.aZH)
+    for (this.outputStream = this.bxK;; this.outputStream = this.bxH)
     {
-      this.aZI = 0L;
-      AppMethodBeat.o(151945);
+      this.bxI = 0L;
+      AppMethodBeat.o(92963);
       return;
-      l = Math.min(this.aQI.aPF - this.aZJ, this.aZG);
+      l = Math.min(this.bml.length - this.bxJ, this.bxG);
       break;
-      this.aZK.a(this.aZH);
+      this.bxK.a(this.bxH);
       break label105;
     }
   }
   
-  private void qy()
+  private void vt()
   {
-    AppMethodBeat.i(151946);
+    AppMethodBeat.i(92964);
     if (this.outputStream == null)
     {
-      AppMethodBeat.o(151946);
+      AppMethodBeat.o(92964);
       return;
     }
     try
     {
       this.outputStream.flush();
-      this.aZH.getFD().sync();
+      this.bxH.getFD().sync();
       x.closeQuietly(this.outputStream);
       this.outputStream = null;
       File localFile1 = this.file;
       this.file = null;
-      this.aZF.k(localFile1);
-      AppMethodBeat.o(151946);
+      this.bxF.w(localFile1);
+      AppMethodBeat.o(92964);
       return;
     }
     finally
@@ -96,93 +91,102 @@ public final class b
       File localFile2 = this.file;
       this.file = null;
       localFile2.delete();
-      AppMethodBeat.o(151946);
+      AppMethodBeat.o(92964);
     }
   }
   
   public final void b(j paramj)
   {
-    AppMethodBeat.i(151942);
-    if ((paramj.aPF == -1L) && (!paramj.ej(2)))
+    AppMethodBeat.i(92960);
+    if ((paramj.length == -1L) && (!paramj.fh(2)))
     {
-      this.aQI = null;
-      AppMethodBeat.o(151942);
+      this.bml = null;
+      AppMethodBeat.o(92960);
       return;
     }
-    this.aQI = paramj;
-    this.aZJ = 0L;
+    this.bml = paramj;
+    this.bxJ = 0L;
     try
     {
-      qx();
-      AppMethodBeat.o(151942);
+      vs();
+      AppMethodBeat.o(92960);
       return;
     }
     catch (IOException paramj)
     {
-      paramj = new b.a(paramj);
-      AppMethodBeat.o(151942);
+      paramj = new a(paramj);
+      AppMethodBeat.o(92960);
       throw paramj;
     }
   }
   
   public final void close()
   {
-    AppMethodBeat.i(151944);
-    if (this.aQI == null)
+    AppMethodBeat.i(92962);
+    if (this.bml == null)
     {
-      AppMethodBeat.o(151944);
+      AppMethodBeat.o(92962);
       return;
     }
     try
     {
-      qy();
-      AppMethodBeat.o(151944);
+      vt();
+      AppMethodBeat.o(92962);
       return;
     }
     catch (IOException localIOException)
     {
-      b.a locala = new b.a(localIOException);
-      AppMethodBeat.o(151944);
+      a locala = new a(localIOException);
+      AppMethodBeat.o(92962);
       throw locala;
     }
   }
   
   public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(151943);
-    if (this.aQI == null)
+    AppMethodBeat.i(92961);
+    if (this.bml == null)
     {
-      AppMethodBeat.o(151943);
+      AppMethodBeat.o(92961);
       return;
     }
     int i = 0;
     while (i < paramInt2) {
       try
       {
-        if (this.aZI == this.aZG)
+        if (this.bxI == this.bxG)
         {
-          qy();
-          qx();
+          vt();
+          vs();
         }
-        int j = (int)Math.min(paramInt2 - i, this.aZG - this.aZI);
+        int j = (int)Math.min(paramInt2 - i, this.bxG - this.bxI);
         this.outputStream.write(paramArrayOfByte, paramInt1 + i, j);
         i += j;
-        this.aZI += j;
-        this.aZJ += j;
+        this.bxI += j;
+        this.bxJ += j;
       }
       catch (IOException paramArrayOfByte)
       {
-        paramArrayOfByte = new b.a(paramArrayOfByte);
-        AppMethodBeat.o(151943);
+        paramArrayOfByte = new a(paramArrayOfByte);
+        AppMethodBeat.o(92961);
         throw paramArrayOfByte;
       }
     }
-    AppMethodBeat.o(151943);
+    AppMethodBeat.o(92961);
+  }
+  
+  public static final class a
+    extends a.a
+  {
+    public a(IOException paramIOException)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.b
  * JD-Core Version:    0.7.0.1
  */

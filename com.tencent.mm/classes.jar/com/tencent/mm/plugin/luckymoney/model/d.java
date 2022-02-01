@@ -1,52 +1,31 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aus;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.c;
+import com.tencent.mm.protocal.protobuf.azq;
+import com.tencent.mm.protocal.protobuf.azr;
 
 public final class d
+  extends c<azr>
 {
-  public aus omW;
-  public String omX;
-  public boolean omY;
-  public String omZ;
-  
-  public static d Sq(String paramString)
+  public d(String paramString)
   {
-    AppMethodBeat.i(42273);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(42273);
-      return null;
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      paramString = new d();
-      paramString.omX = localJSONObject.optString("showSourceMac");
-      paramString.omZ = localJSONObject.optString("illegal_msg");
-      paramString.omY = localJSONObject.optBoolean("is_illegal");
-      localJSONObject = localJSONObject.optJSONObject("showSource");
-      if (localJSONObject != null) {
-        paramString.omW = v.ah(localJSONObject);
-      }
-      AppMethodBeat.o(42273);
-      return paramString;
-    }
-    catch (JSONException paramString)
-    {
-      ab.printErrStackTrace("MicroMsg.EnvelopSourceMac", paramString, "", new Object[0]);
-      AppMethodBeat.o(42273);
-    }
-    return null;
+    AppMethodBeat.i(163540);
+    azq localazq = new azq();
+    b.a locala = new b.a();
+    locala.gUU = localazq;
+    locala.gUV = new azr();
+    locala.funcId = 3858;
+    locala.uri = "/cgi-bin/micromsg-bin/getredpacketpreview";
+    localazq.url = paramString;
+    this.rr = locala.atI();
+    AppMethodBeat.o(163540);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.d
  * JD-Core Version:    0.7.0.1
  */

@@ -26,63 +26,88 @@ public class TXCFocusIndicatorView
   public TXCFocusIndicatorView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(67232);
+    AppMethodBeat.i(16938);
     this.mSize = 0;
     this.mFocusAreaStroke = 2;
-    this.mHideRunnable = new TXCFocusIndicatorView.1(this);
+    this.mHideRunnable = new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(16750);
+        TXCFocusIndicatorView.this.setVisibility(8);
+        AppMethodBeat.o(16750);
+      }
+    };
     init(null, 0);
-    AppMethodBeat.o(67232);
+    AppMethodBeat.o(16938);
   }
   
   public TXCFocusIndicatorView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(67233);
+    AppMethodBeat.i(16939);
     this.mSize = 0;
     this.mFocusAreaStroke = 2;
-    this.mHideRunnable = new TXCFocusIndicatorView.1(this);
+    this.mHideRunnable = new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(16750);
+        TXCFocusIndicatorView.this.setVisibility(8);
+        AppMethodBeat.o(16750);
+      }
+    };
     init(paramAttributeSet, 0);
-    AppMethodBeat.o(67233);
+    AppMethodBeat.o(16939);
   }
   
   public TXCFocusIndicatorView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(67234);
+    AppMethodBeat.i(16940);
     this.mSize = 0;
     this.mFocusAreaStroke = 2;
-    this.mHideRunnable = new TXCFocusIndicatorView.1(this);
+    this.mHideRunnable = new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(16750);
+        TXCFocusIndicatorView.this.setVisibility(8);
+        AppMethodBeat.o(16750);
+      }
+    };
     init(paramAttributeSet, paramInt);
-    AppMethodBeat.o(67234);
+    AppMethodBeat.o(16940);
   }
   
   private void init(AttributeSet paramAttributeSet, int paramInt)
   {
-    AppMethodBeat.i(67235);
+    AppMethodBeat.i(16941);
     this.mPaint = new Paint();
     this.mFocusAreaStroke = ((int)(getContext().getResources().getDisplayMetrics().density * 1.0F + 0.5F));
     this.mScaleAnimation = new ScaleAnimation(1.3F, 1.0F, 1.3F, 1.0F, 1, 0.5F, 1, 0.5F);
     this.mScaleAnimation.setDuration(200L);
-    AppMethodBeat.o(67235);
+    AppMethodBeat.o(16941);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(67237);
+    AppMethodBeat.i(16943);
     paramCanvas.save();
-    Rect localRect = new Rect(0, 0, this.mSize, this.mSize);
+    int i = this.mFocusAreaStroke / 2;
+    Rect localRect = new Rect(i, i, this.mSize - i, this.mSize - i);
     this.mPaint.setColor(-1);
     this.mPaint.setStyle(Paint.Style.STROKE);
-    this.mPaint.setStrokeWidth(this.mFocusAreaStroke);
+    this.mPaint.setStrokeWidth(i * 2);
     paramCanvas.drawRect(localRect, this.mPaint);
     paramCanvas.restore();
     super.onDraw(paramCanvas);
-    AppMethodBeat.o(67237);
+    AppMethodBeat.o(16943);
   }
   
   public void show(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(67236);
+    AppMethodBeat.i(16942);
     removeCallbacks(this.mHideRunnable);
     this.mScaleAnimation.cancel();
     this.mSize = paramInt3;
@@ -95,12 +120,12 @@ public class TXCFocusIndicatorView
     this.mScaleAnimation.reset();
     startAnimation(this.mScaleAnimation);
     postDelayed(this.mHideRunnable, 1000L);
-    AppMethodBeat.o(67236);
+    AppMethodBeat.o(16942);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.renderer.TXCFocusIndicatorView
  * JD-Core Version:    0.7.0.1
  */

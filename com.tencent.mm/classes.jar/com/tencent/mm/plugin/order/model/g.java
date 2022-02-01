@@ -1,64 +1,63 @@
 package com.tencent.mm.plugin.order.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.wallet_core.model.m;
-import com.tencent.mm.protocal.protobuf.bku;
-import com.tencent.mm.protocal.protobuf.bkv;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.wallet_core.c.u;
+import com.tencent.mm.plugin.wallet_core.model.k;
+import com.tencent.mm.protocal.protobuf.byu;
+import com.tencent.mm.protocal.protobuf.byv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.wallet_core.c.w;
 
 public final class g
-  extends u
+  extends w
 {
-  private f callback;
+  private com.tencent.mm.al.g callback;
   private b rr;
   
   public g(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(43778);
+    AppMethodBeat.i(66686);
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bku();
-    ((b.a)localObject).fsY = new bkv();
+    ((b.a)localObject).gUU = new byu();
+    ((b.a)localObject).gUV = new byv();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/paydeluserroll";
     ((b.a)localObject).funcId = 389;
     ((b.a)localObject).reqCmdId = 187;
     ((b.a)localObject).respCmdId = 1000000187;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (bku)this.rr.fsV.fta;
-    ((bku)localObject).xzv = 1;
-    if (!bo.isNullOrNil(paramString1)) {
-      ((bku)localObject).ppY = paramString1;
+    this.rr = ((b.a)localObject).atI();
+    localObject = (byu)this.rr.gUS.gUX;
+    ((byu)localObject).DVC = 1;
+    if (!bt.isNullOrNil(paramString1)) {
+      ((byu)localObject).uoY = paramString1;
     }
-    if (!bo.isNullOrNil(paramString2)) {
-      ((bku)localObject).pqq = paramString2;
+    if (!bt.isNullOrNil(paramString2)) {
+      ((byu)localObject).upq = paramString2;
     }
-    ((bku)localObject).wDH = m.cTC();
-    AppMethodBeat.o(43778);
+    ((byu)localObject).CPi = k.ebS();
+    AppMethodBeat.o(66686);
   }
   
-  public final int cat()
+  public final int dah()
   {
-    return ((bku)this.rr.fsV.fta).xzv;
+    return ((byu)this.rr.gUS.gUX).DVC;
   }
   
-  public final String cau()
+  public final String dai()
   {
-    return ((bku)this.rr.fsV.fta).ppY;
+    return ((byu)this.rr.gUS.gUX).uoY;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(43780);
-    this.callback = paramf;
+    AppMethodBeat.i(66688);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(43780);
+    AppMethodBeat.o(66688);
     return i;
   }
   
@@ -69,15 +68,15 @@ public final class g
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(142119);
-    ab.d("MicroMsg.NetScenePayDelUserRoll", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    AppMethodBeat.i(66687);
+    ad.d("MicroMsg.NetScenePayDelUserRoll", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(142119);
+    AppMethodBeat.o(66687);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.g
  * JD-Core Version:    0.7.0.1
  */

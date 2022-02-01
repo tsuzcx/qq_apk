@@ -1,63 +1,91 @@
 package com.tencent.mm.plugin.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.task.e;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.task.c;
 
 public final class m
 {
-  int cO;
-  long[] gQO;
-  int gQP;
-  private int gQQ;
-  boolean gQR;
-  boolean gQS;
-  int gQT;
+  int cR;
+  long[] iFD;
+  int iFE;
+  int iFF;
+  boolean iFG;
+  boolean iFH;
+  int iFI;
   int mScene;
   int mType;
   
   public m()
   {
-    AppMethodBeat.i(128973);
-    this.gQQ = 0;
-    this.gQO = new long[15];
-    if (e.aul()) {
+    AppMethodBeat.i(43853);
+    this.iFF = 0;
+    this.iFD = new long[15];
+    if (c.aNI()) {
       i = 1;
     }
-    this.gQQ = i;
-    AppMethodBeat.o(128973);
+    this.iFF = i;
+    AppMethodBeat.o(43853);
   }
   
-  public final void C(int paramInt, long paramLong)
+  public static void a(int paramInt, AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
-    if ((paramInt >= this.gQO.length) || (this.gQO[paramInt] != 0L)) {
+    AppMethodBeat.i(195525);
+    a(paramInt, paramAppBrandInitConfigWC.appId, paramAppBrandInitConfigWC.aAS, paramAppBrandInitConfigWC.iOP, paramAppBrandInitConfigWC.CZ());
+    AppMethodBeat.o(195525);
+  }
+  
+  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    AppMethodBeat.i(195526);
+    int i = 369;
+    if (paramBoolean) {
+      i = 777;
+    }
+    try
+    {
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(i, paramInt1, 1L, false);
+      com.tencent.mm.plugin.appbrand.report.h.b(paramString, paramInt2, paramInt3, i, paramInt1);
+      AppMethodBeat.o(195526);
       return;
     }
-    this.gQO[paramInt] = paramLong;
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(195526);
+    }
   }
   
-  final void f(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public final void F(int paramInt, long paramLong)
+  {
+    if ((paramInt >= this.iFD.length) || (this.iFD[paramInt] != 0L)) {
+      return;
+    }
+    this.iFD[paramInt] = paramLong;
+  }
+  
+  final void g(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
     int i = 1;
-    AppMethodBeat.i(128974);
-    h localh = h.qsU;
-    int j = this.cO;
+    AppMethodBeat.i(43854);
+    com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.vKh;
+    int j = this.cR;
     int k = this.mType;
-    long l = this.gQO[paramInt2];
-    int m = this.gQP;
-    int n = this.gQQ;
+    long l = this.iFD[paramInt2];
+    int m = this.iFE;
+    int n = this.iFF;
     int i1 = this.mScene;
-    if (this.gQR)
+    if (this.iFG)
     {
       paramInt2 = 1;
-      if (!this.gQS) {
+      if (!this.iFH) {
         break label225;
       }
     }
     for (;;)
     {
-      localh.e(13886, new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramInt1), "", "", Long.valueOf(l), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(paramInt3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.gQT) });
-      AppMethodBeat.o(128974);
+      localh.f(13886, new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramInt1), "", "", Long.valueOf(l), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(paramInt3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.iFI) });
+      AppMethodBeat.o(43854);
       return;
       paramInt2 = 0;
       break;
@@ -68,7 +96,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m
  * JD-Core Version:    0.7.0.1
  */

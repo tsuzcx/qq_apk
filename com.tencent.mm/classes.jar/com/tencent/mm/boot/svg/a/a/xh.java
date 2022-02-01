@@ -1,6 +1,7 @@
 package com.tencent.mm.boot.svg.a.a;
 
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.Cap;
 import android.graphics.Paint.Join;
@@ -13,8 +14,8 @@ import com.tencent.mm.svg.c;
 public final class xh
   extends c
 {
-  private final int height = 46;
-  private final int width = 66;
+  private final int height = 60;
+  private final int width = 60;
   
   public final int a(int paramInt, Object... paramVarArgs)
   {
@@ -24,90 +25,56 @@ public final class xh
     for (;;)
     {
       return 0;
-      return 66;
-      return 46;
+      return 60;
+      return 60;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      c.h(paramVarArgs);
-      c.g(paramVarArgs);
-      Paint localPaint = c.k(paramVarArgs);
-      localPaint.setFlags(385);
-      localPaint.setStyle(Paint.Style.FILL);
-      Object localObject = c.k(paramVarArgs);
-      ((Paint)localObject).setFlags(385);
-      ((Paint)localObject).setStyle(Paint.Style.STROKE);
-      localPaint.setColor(-16777216);
-      ((Paint)localObject).setStrokeWidth(1.0F);
-      ((Paint)localObject).setStrokeCap(Paint.Cap.BUTT);
-      ((Paint)localObject).setStrokeJoin(Paint.Join.MITER);
-      ((Paint)localObject).setStrokeMiter(4.0F);
-      ((Paint)localObject).setPathEffect(null);
-      c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
-      localObject = c.a(localPaint, paramVarArgs);
-      ((Paint)localObject).setColor(-4547478);
+      Object localObject1 = c.j(paramVarArgs);
+      Object localObject2 = c.i(paramVarArgs);
+      Paint localPaint1 = c.m(paramVarArgs);
+      localPaint1.setFlags(385);
+      localPaint1.setStyle(Paint.Style.FILL);
+      Paint localPaint2 = c.m(paramVarArgs);
+      localPaint2.setFlags(385);
+      localPaint2.setStyle(Paint.Style.STROKE);
+      localPaint1.setColor(-16777216);
+      localPaint2.setStrokeWidth(1.0F);
+      localPaint2.setStrokeCap(Paint.Cap.BUTT);
+      localPaint2.setStrokeJoin(Paint.Join.MITER);
+      localPaint2.setStrokeMiter(4.0F);
+      localPaint2.setPathEffect(null);
+      c.a(localPaint2, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
-      localObject = c.a((Paint)localObject, paramVarArgs);
-      Path localPath = c.l(paramVarArgs);
-      localPath.moveTo(12.0F, 31.470589F);
-      localPath.lineTo(12.0F, 46.0F);
-      localPath.lineTo(66.0F, 46.0F);
-      localPath.lineTo(66.0F, 0.0F);
-      localPath.lineTo(12.0F, 0.0F);
-      localPath.lineTo(12.0F, 14.529412F);
-      localPath.lineTo(0.0F, 23.0F);
-      localPath.lineTo(12.0F, 31.470589F);
-      localPath.close();
-      localPath.moveTo(27.0F, 29.0F);
-      localPath.cubicTo(30.313709F, 29.0F, 33.0F, 26.313709F, 33.0F, 23.0F);
-      localPath.cubicTo(33.0F, 19.686291F, 30.313709F, 17.0F, 27.0F, 17.0F);
-      localPath.cubicTo(23.686291F, 17.0F, 21.0F, 19.686291F, 21.0F, 23.0F);
-      localPath.cubicTo(21.0F, 26.313709F, 23.686291F, 29.0F, 27.0F, 29.0F);
-      localPath.close();
-      localPath.moveTo(51.0F, 29.0F);
-      localPath.cubicTo(54.313709F, 29.0F, 57.0F, 26.313709F, 57.0F, 23.0F);
-      localPath.cubicTo(57.0F, 19.686291F, 54.313709F, 17.0F, 51.0F, 17.0F);
-      localPath.cubicTo(47.686291F, 17.0F, 45.0F, 19.686291F, 45.0F, 23.0F);
-      localPath.cubicTo(45.0F, 26.313709F, 47.686291F, 29.0F, 51.0F, 29.0F);
-      localPath.close();
-      WeChatSVGRenderC2Java.setFillType(localPath, 2);
-      localCanvas.drawPath(localPath, (Paint)localObject);
-      localCanvas.restore();
-      localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(436207616);
+      localPaint1 = c.a(localPaint1, paramVarArgs);
+      localPaint1.setColor(-2565928);
+      localObject2 = c.a((float[])localObject2, 1.0F, 0.0F, 6.0F, 0.0F, 1.0F, 13.0F);
+      ((Matrix)localObject1).reset();
+      ((Matrix)localObject1).setValues((float[])localObject2);
+      localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
-      localPaint = c.a(localPaint, paramVarArgs);
-      localObject = c.l(paramVarArgs);
-      ((Path)localObject).moveTo(12.0F, 31.470589F);
-      ((Path)localObject).lineTo(12.0F, 46.0F);
-      ((Path)localObject).lineTo(66.0F, 46.0F);
-      ((Path)localObject).lineTo(66.0F, 0.0F);
-      ((Path)localObject).lineTo(12.0F, 0.0F);
-      ((Path)localObject).lineTo(12.0F, 14.529412F);
-      ((Path)localObject).lineTo(0.0F, 23.0F);
-      ((Path)localObject).lineTo(12.0F, 31.470589F);
-      ((Path)localObject).close();
-      ((Path)localObject).moveTo(27.0F, 29.0F);
-      ((Path)localObject).cubicTo(30.313709F, 29.0F, 33.0F, 26.313709F, 33.0F, 23.0F);
-      ((Path)localObject).cubicTo(33.0F, 19.686291F, 30.313709F, 17.0F, 27.0F, 17.0F);
-      ((Path)localObject).cubicTo(23.686291F, 17.0F, 21.0F, 19.686291F, 21.0F, 23.0F);
-      ((Path)localObject).cubicTo(21.0F, 26.313709F, 23.686291F, 29.0F, 27.0F, 29.0F);
-      ((Path)localObject).close();
-      ((Path)localObject).moveTo(51.0F, 29.0F);
-      ((Path)localObject).cubicTo(54.313709F, 29.0F, 57.0F, 26.313709F, 57.0F, 23.0F);
-      ((Path)localObject).cubicTo(57.0F, 19.686291F, 54.313709F, 17.0F, 51.0F, 17.0F);
-      ((Path)localObject).cubicTo(47.686291F, 17.0F, 45.0F, 19.686291F, 45.0F, 23.0F);
-      ((Path)localObject).cubicTo(45.0F, 26.313709F, 47.686291F, 29.0F, 51.0F, 29.0F);
-      ((Path)localObject).close();
-      WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
-      localCanvas.drawPath((Path)localObject, localPaint);
+      localObject1 = c.a(localPaint1, paramVarArgs);
+      localObject2 = c.n(paramVarArgs);
+      ((Path)localObject2).moveTo(18.110001F, 25.83F);
+      ((Path)localObject2).cubicTo(26.559999F, 17.389999F, 35.0F, 8.92F, 43.470001F, 0.49F);
+      ((Path)localObject2).cubicTo(44.610001F, 1.63F, 45.830002F, 2.71F, 46.84F, 3.98F);
+      ((Path)localObject2).cubicTo(46.509998F, 5.07F, 45.349998F, 5.72F, 44.650002F, 6.58F);
+      ((Path)localObject2).cubicTo(35.759998F, 15.37F, 26.969999F, 24.25F, 18.110001F, 33.07F);
+      ((Path)localObject2).cubicTo(12.07F, 27.040001F, 6.03F, 21.01F, 0.0F, 14.97F);
+      ((Path)localObject2).cubicTo(1.21F, 13.76F, 2.42F, 12.56F, 3.62F, 11.35F);
+      ((Path)localObject2).cubicTo(8.45F, 16.18F, 13.28F, 21.01F, 18.110001F, 25.83F);
+      ((Path)localObject2).lineTo(18.110001F, 25.83F);
+      ((Path)localObject2).close();
+      WeChatSVGRenderC2Java.setFillType((Path)localObject2, 2);
+      localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
       localCanvas.restore();
-      c.j(paramVarArgs);
+      localCanvas.restore();
+      c.l(paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.xh
  * JD-Core Version:    0.7.0.1
  */

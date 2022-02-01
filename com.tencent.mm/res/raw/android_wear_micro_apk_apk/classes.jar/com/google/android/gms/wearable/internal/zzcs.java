@@ -9,15 +9,15 @@ public class zzcs
   extends zza
 {
   public static final Parcelable.Creator<zzcs> CREATOR = new bk();
-  public final long TQ;
-  public final List<zzcg> TU;
+  public final long VF;
+  public final List<zzcg> VJ;
   public final int statusCode;
   
   public zzcs(int paramInt, long paramLong, List<zzcg> paramList)
   {
     this.statusCode = paramInt;
-    this.TQ = paramLong;
-    this.TU = paramList;
+    this.VF = paramLong;
+    this.VJ = paramList;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

@@ -1,69 +1,78 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.BindCardOrder;
-import com.tencent.mm.wallet_core.tenpay.model.m;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.cet;
+import com.tencent.mm.protocal.protobuf.ceu;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class p
-  extends m
+  extends n
+  implements k
 {
-  public String eev;
-  public String ubJ;
-  public String ubK;
-  public BindCardOrder ubL;
+  private g callback;
+  private b iaa;
+  public String yCo;
+  private cet zWn;
+  public ceu zWo;
   
-  public p(BindCardOrder paramBindCardOrder, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, String paramString5, String paramString6, int paramInt1, int paramInt2)
+  public p(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(46523);
-    this.ubL = paramBindCardOrder;
-    paramBindCardOrder = new HashMap();
-    paramBindCardOrder.put("activity_id", paramString1);
-    paramBindCardOrder.put("award_id", paramString2);
-    paramBindCardOrder.put("send_record_id", paramString3);
-    paramBindCardOrder.put("user_record_id", paramString4);
-    paramBindCardOrder.put("activity_mch_id", String.valueOf(paramLong1));
-    paramBindCardOrder.put("activity_type", String.valueOf(paramLong2));
-    paramBindCardOrder.put("bank_type", String.valueOf(paramString5));
-    paramBindCardOrder.put("bank_serial", String.valueOf(paramString6));
-    paramBindCardOrder.put("bindbankscene", String.valueOf(paramInt1));
-    paramBindCardOrder.put("realname_scene", String.valueOf(paramInt2));
-    setRequestData(paramBindCardOrder);
-    AppMethodBeat.o(46523);
+    AppMethodBeat.i(69923);
+    b.a locala = new b.a();
+    locala.gUU = new cet();
+    locala.gUV = new ceu();
+    locala.funcId = 2710;
+    locala.uri = "/cgi-bin/mmpay-bin/mktqueryawardstatus";
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.iaa = locala.atI();
+    this.zWn = ((cet)this.iaa.gUS.gUX);
+    this.zWn.AoD = paramString1;
+    this.yCo = paramString2;
+    ad.i("MicroMsg.NetSceneMtkQueryAwardStatus", "NetSceneMtkQueryAwardStatus, query_award_status_params: %s, activityId: %s", new Object[] { paramString1, paramString2 });
+    AppMethodBeat.o(69923);
   }
   
-  public final int getFuncId()
+  public final int doScene(e parame, g paramg)
   {
-    return 1786;
+    AppMethodBeat.i(69924);
+    this.callback = paramg;
+    int i = dispatch(parame, this.iaa, this);
+    AppMethodBeat.o(69924);
+    return i;
   }
   
-  public final int getTenpayCgicmd()
+  public final int getType()
   {
-    return 1786;
+    return 2710;
   }
   
-  public final String getUri()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    return "/cgi-bin/mmpay-bin/tenpay/sendbindcardaward";
-  }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(46524);
-    if ((paramJSONObject != null) && (paramInt == 0))
-    {
-      this.ubJ = paramJSONObject.optString("result_code");
-      this.eev = paramJSONObject.optString("result_msg");
-      this.ubK = paramJSONObject.optString("alert_wording");
+    AppMethodBeat.i(69925);
+    ad.i("MicroMsg.NetSceneMtkQueryAwardStatus", "onGYNetEnd, netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.zWo = ((ceu)((b)paramq).gUT.gUX);
+    if ((paramInt2 == 0) || (paramInt3 == 0)) {
+      ad.i("MicroMsg.NetSceneMtkQueryAwardStatus", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.zWo.ntx), this.zWo.nty });
     }
-    AppMethodBeat.o(46524);
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(69925);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.p
  * JD-Core Version:    0.7.0.1
  */

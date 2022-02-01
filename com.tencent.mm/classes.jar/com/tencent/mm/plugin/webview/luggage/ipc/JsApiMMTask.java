@@ -5,94 +5,107 @@ import android.os.Parcelable.Creator;
 import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bh;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
+import com.tencent.mm.sdk.platformtools.aj;
 import org.json.JSONObject;
 
 public class JsApiMMTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<JsApiMMTask> CREATOR;
+  public a.a AUT;
+  public String AUU;
+  public String AUV;
   public String errMsg;
-  public String hCt;
-  public a.a uTe;
-  public String uTf;
-  public String uTg;
+  public String jBX;
   
   static
   {
-    AppMethodBeat.i(6263);
-    CREATOR = new JsApiMMTask.2();
-    AppMethodBeat.o(6263);
+    AppMethodBeat.i(78503);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(78503);
   }
   
   public JsApiMMTask() {}
   
   private JsApiMMTask(Parcel paramParcel)
   {
-    AppMethodBeat.i(6261);
-    f(paramParcel);
-    AppMethodBeat.o(6261);
+    AppMethodBeat.i(78501);
+    e(paramParcel);
+    AppMethodBeat.o(78501);
   }
   
-  public final void ata()
+  public final void aEA()
   {
-    AppMethodBeat.i(6257);
-    try
-    {
-      ((bh)Class.forName(this.uTf).newInstance()).a(ah.getContext(), this.hCt, new JsApiMMTask.1(this));
-      AppMethodBeat.o(6257);
-      return;
-    }
-    catch (Exception localException)
-    {
-      AppMethodBeat.o(6257);
-    }
-  }
-  
-  public final void atb()
-  {
-    AppMethodBeat.i(6258);
-    aBk();
-    if (this.uTe != null) {
+    AppMethodBeat.i(78498);
+    aXn();
+    if (this.AUT != null) {
       try
       {
-        JSONObject localJSONObject = new JSONObject(this.uTg);
-        this.uTe.a(this.errMsg, localJSONObject);
-        AppMethodBeat.o(6258);
+        JSONObject localJSONObject = new JSONObject(this.AUV);
+        this.AUT.a(this.errMsg, localJSONObject);
+        AppMethodBeat.o(78498);
         return;
       }
       catch (Exception localException)
       {
-        this.uTe.a(this.errMsg, null);
+        this.AUT.a(this.errMsg, null);
       }
     }
-    AppMethodBeat.o(6258);
+    AppMethodBeat.o(78498);
   }
   
-  public final void f(Parcel paramParcel)
+  public final void aEz()
   {
-    AppMethodBeat.i(6259);
-    this.hCt = paramParcel.readString();
-    this.uTf = paramParcel.readString();
+    AppMethodBeat.i(78497);
+    try
+    {
+      ((bn)Class.forName(this.AUU).newInstance()).a(aj.getContext(), this.jBX, new bn.a()
+      {
+        public final void f(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
+        {
+          AppMethodBeat.i(78495);
+          JsApiMMTask.this.errMsg = paramAnonymousString;
+          if (paramAnonymousJSONObject != null) {
+            JsApiMMTask.this.AUV = paramAnonymousJSONObject.toString();
+          }
+          JsApiMMTask.a(JsApiMMTask.this);
+          AppMethodBeat.o(78495);
+        }
+      });
+      AppMethodBeat.o(78497);
+      return;
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(78497);
+    }
+  }
+  
+  public final void e(Parcel paramParcel)
+  {
+    AppMethodBeat.i(78499);
+    this.jBX = paramParcel.readString();
+    this.AUU = paramParcel.readString();
     this.errMsg = paramParcel.readString();
-    this.uTg = paramParcel.readString();
-    AppMethodBeat.o(6259);
+    this.AUV = paramParcel.readString();
+    AppMethodBeat.o(78499);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(6260);
-    paramParcel.writeString(this.hCt);
-    paramParcel.writeString(this.uTf);
+    AppMethodBeat.i(78500);
+    paramParcel.writeString(this.jBX);
+    paramParcel.writeString(this.AUU);
     paramParcel.writeString(this.errMsg);
-    paramParcel.writeString(this.uTg);
-    AppMethodBeat.o(6260);
+    paramParcel.writeString(this.AUV);
+    AppMethodBeat.o(78500);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.ipc.JsApiMMTask
  * JD-Core Version:    0.7.0.1
  */

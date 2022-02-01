@@ -8,13 +8,13 @@ import com.tencent.mm.ui.base.o;
 public final class f
 {
   private static final Drawable backgroundDrawable;
-  public o vQH;
+  public o BVp;
   
   static
   {
-    AppMethodBeat.i(27490);
+    AppMethodBeat.i(31192);
     backgroundDrawable = new ColorDrawable();
-    AppMethodBeat.o(27490);
+    AppMethodBeat.o(31192);
   }
 }
 

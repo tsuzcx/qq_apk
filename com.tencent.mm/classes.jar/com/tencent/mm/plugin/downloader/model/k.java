@@ -4,10 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.downloader.g.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class k
   extends j
@@ -17,63 +16,67 @@ final class k
     super(paramc);
   }
   
-  public final long a(a parama)
+  public final long a(com.tencent.mm.plugin.downloader.g.a parama)
   {
     return 0L;
   }
   
   public final long a(g paramg)
   {
-    AppMethodBeat.i(2463);
-    if (bo.isNullOrNil(paramg.gWh))
+    AppMethodBeat.i(89031);
+    if (bt.isNullOrNil(paramg.iNT))
     {
-      AppMethodBeat.o(2463);
+      AppMethodBeat.o(89031);
       return -1L;
     }
-    paramg = new Intent("android.intent.action.VIEW", Uri.parse(paramg.gWh));
-    paramg.addFlags(268435456);
+    Object localObject = new Intent("android.intent.action.VIEW", Uri.parse(paramg.iNT));
+    ((Intent)localObject).addFlags(268435456);
     try
     {
-      ah.getContext().startActivity(paramg);
-      AppMethodBeat.o(2463);
+      paramg = aj.getContext();
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramg, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/downloader/model/FileDownloaderImplNormal", "addDownloadTask", "(Lcom/tencent/mm/plugin/downloader/model/FileDownloadRequest;)J", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramg.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramg, "com/tencent/mm/plugin/downloader/model/FileDownloaderImplNormal", "addDownloadTask", "(Lcom/tencent/mm/plugin/downloader/model/FileDownloadRequest;)J", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(89031);
       return 0L;
     }
     catch (Exception paramg)
     {
-      ab.e("MicroMsg.FileDownloaderImplNormal", "Add download task failed: " + paramg.toString());
-      AppMethodBeat.o(2463);
+      ad.e("MicroMsg.FileDownloaderImplNormal", "Add download task failed: " + paramg.toString());
+      AppMethodBeat.o(89031);
     }
     return -1L;
   }
   
-  public final FileDownloadTaskInfo iA(long paramLong)
+  public final int og(long paramLong)
   {
-    AppMethodBeat.i(2464);
+    return 1;
+  }
+  
+  public final FileDownloadTaskInfo oh(long paramLong)
+  {
+    AppMethodBeat.i(89032);
     FileDownloadTaskInfo localFileDownloadTaskInfo = new FileDownloadTaskInfo();
     localFileDownloadTaskInfo.id = paramLong;
     localFileDownloadTaskInfo.status = -1;
-    AppMethodBeat.o(2464);
+    AppMethodBeat.o(89032);
     return localFileDownloadTaskInfo;
   }
   
-  public final boolean iB(long paramLong)
+  public final boolean oi(long paramLong)
   {
     return false;
   }
   
-  public final boolean iC(long paramLong)
+  public final boolean oj(long paramLong)
   {
     return false;
-  }
-  
-  public final int iz(long paramLong)
-  {
-    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.model.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.live.core.view.TRTCVideoLayoutManager android:id="@id/hpu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.live.core.debug.LiveDebugView android:id="@id/hhv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="120.0dip" />
+</RelativeLayout>

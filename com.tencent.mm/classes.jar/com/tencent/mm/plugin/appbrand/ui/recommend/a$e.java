@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
-import a.l;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$Companion;", "", "()V", "CardType_App", "", "CardType_Audio", "CardType_BigVideo", "CardType_Goods", "CardType_ImageText", "CardType_Video", "TAG", "", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter$Companion;", "", "()V", "CardType_App", "", "CardType_Audio", "CardType_BigVideo", "CardType_Goods", "CardType_ImageText", "CardType_Video", "TAG", "", "plugin-appbrand-integration_release"})
 public final class a$e {}
 
 

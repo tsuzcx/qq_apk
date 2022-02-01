@@ -6,18 +6,18 @@ import com.google.android.gms.wearable.h;
 public final class g
   implements h
 {
-  private final Status HS;
-  private final int Tg;
+  private final Status JH;
+  private final int UV;
   
   public g(Status paramStatus, int paramInt)
   {
-    this.HS = paramStatus;
-    this.Tg = paramInt;
+    this.JH = paramStatus;
+    this.UV = paramInt;
   }
   
-  public final Status gC()
+  public final Status gM()
   {
-    return this.HS;
+    return this.JH;
   }
 }
 

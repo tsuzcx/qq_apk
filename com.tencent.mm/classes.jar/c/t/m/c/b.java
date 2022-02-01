@@ -11,152 +11,222 @@ import java.util.List;
 
 public class b
 {
-  private static b c = null;
-  private Context a;
-  private List<a> b;
+  public static b a;
+  public Context b;
+  public List<a> c;
+  public String d;
   
-  private b(Context paramContext)
+  public b(Context paramContext)
   {
-    AppMethodBeat.i(136326);
-    this.b = null;
-    this.a = paramContext;
-    this.b = new ArrayList();
-    AppMethodBeat.o(136326);
+    AppMethodBeat.i(39887);
+    this.c = null;
+    this.d = "";
+    this.b = paramContext;
+    this.c = new ArrayList();
+    AppMethodBeat.o(39887);
   }
   
-  public static b a(Context paramContext, List<a> paramList)
+  public static b a(Context paramContext)
   {
-    AppMethodBeat.i(136327);
-    if (c == null) {
-      c = new b(paramContext);
+    AppMethodBeat.i(39888);
+    if (a == null) {
+      a = new b(paramContext);
     }
-    c.a(paramList);
-    paramContext = c;
-    AppMethodBeat.o(136327);
+    paramContext = a;
+    AppMethodBeat.o(39888);
     return paramContext;
   }
   
-  private b a(List<a> paramList)
+  @TargetApi(3)
+  public final DexClassLoader a()
   {
     try
     {
-      AppMethodBeat.i(136328);
-      this.b.clear();
-      this.b.addAll(paramList);
-      AppMethodBeat.o(136328);
-      return this;
-    }
-    finally
-    {
-      paramList = finally;
-      throw paramList;
-    }
-  }
-  
-  @TargetApi(3)
-  private DexClassLoader b()
-  {
-    for (;;)
-    {
-      try
+      AppMethodBeat.i(39890);
+      l.a(this.b);
+      Object localObject1 = this.c;
+      Object localObject6;
+      Object localObject7;
+      StringBuilder localStringBuilder1;
+      Object localObject5;
+      if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
-        AppMethodBeat.i(136329);
-        l.a(this.a);
-        if ((this.b == null) || (this.b.size() <= 0))
+        q.d = q.a(this.c);
+        localObject6 = this.b.getFilesDir().getAbsolutePath() + File.separator + this.d;
+        localObject7 = this.b.getFilesDir().getAbsolutePath() + File.separator + q.c;
+        localStringBuilder1 = new StringBuilder();
+        localObject1 = this.c.iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          AppMethodBeat.o(136329);
-          localObject1 = null;
-          return localObject1;
-        }
-        q.b = q.a(this.b);
-        String str1 = this.a.getFilesDir().getAbsolutePath() + File.separator + "TencentLocation/comp";
-        String str2 = this.a.getFilesDir().getAbsolutePath() + File.separator + "TencentLocation/odex";
-        StringBuilder localStringBuilder = new StringBuilder();
-        Object localObject1 = this.b.iterator();
-        if (((Iterator)localObject1).hasNext())
-        {
-          a locala = (a)((Iterator)localObject1).next();
-          if (locala != null)
+          localObject5 = (a)((Iterator)localObject1).next();
+          if (localObject5 != null)
           {
-            localStringBuilder.append(str1);
-            localStringBuilder.append(File.separator);
-            localStringBuilder.append(locala.c);
-            localStringBuilder.append(File.pathSeparator);
-          }
-        }
-        else
-        {
-          try
-          {
-            System.currentTimeMillis();
-            DexClassLoader localDexClassLoader1 = new DexClassLoader(localStringBuilder.toString(), str2, str1, getClass().getClassLoader());
-            e.a(this.a).a("CPL", "suc:" + q.b);
-            AppMethodBeat.o(136329);
-          }
-          catch (Exception localException)
-          {
-            e.a(this.a).a("CPL", "fail:" + q.b + ",exc:" + localException.toString());
-            l.a(this.a);
-            try
-            {
-              System.currentTimeMillis();
-              DexClassLoader localDexClassLoader2 = new DexClassLoader(localStringBuilder.toString(), str2, str1, getClass().getClassLoader());
-              e.a(this.a).a("CPL", "suc:c" + q.b);
-              AppMethodBeat.o(136329);
-            }
-            catch (Throwable localThrowable)
-            {
-              AppMethodBeat.o(136329);
-              Object localObject3 = null;
-            }
+            localStringBuilder1.append((String)localObject6);
+            localStringBuilder1.append(File.separator);
+            localStringBuilder1.append(((a)localObject5).c);
+            localStringBuilder1.append(File.pathSeparator);
           }
         }
       }
-      finally {}
+      try
+      {
+        System.currentTimeMillis();
+        localObject5 = new DexClassLoader(localStringBuilder1.toString(), (String)localObject7, null, getClass().getClassLoader());
+        localObject3 = "";
+        try
+        {
+          localObject8 = new File((String)localObject6);
+          localObject6 = localObject3;
+          if (((File)localObject8).exists())
+          {
+            localObject6 = localObject3;
+            if (((File)localObject8).isDirectory())
+            {
+              localObject8 = ((File)localObject8).listFiles();
+              localObject6 = localObject3;
+              if (localObject8 != null)
+              {
+                localObject6 = localObject3;
+                if (localObject8.length > 0)
+                {
+                  j = localObject8.length;
+                  i = 0;
+                  for (;;)
+                  {
+                    localObject6 = localObject3;
+                    if (i >= j) {
+                      break;
+                    }
+                    localObject6 = localObject8[i];
+                    localStringBuilder2 = new StringBuilder().append(((File)localObject6).getName());
+                    localStringBuilder2 = localStringBuilder2.append(",").append(((File)localObject6).length());
+                    localObject6 = "," + q.a((File)localObject6);
+                    localObject3 = new StringBuilder().append((String)localObject3).append((String)localObject6);
+                    localObject3 = ";";
+                    i += 1;
+                  }
+                }
+              }
+            }
+          }
+          localObject3 = new StringBuilder();
+          j.a("before load ,private dir files:" + (String)localObject6);
+          localObject3 = e.a(this.b);
+          localObject6 = new StringBuilder();
+          ((e)localObject3).a("CPL", "suc:" + q.d);
+          AppMethodBeat.o(39890);
+          localObject3 = localObject5;
+          return localObject3;
+        }
+        catch (Exception localException2)
+        {
+          localObject3 = localObject5;
+          localObject5 = localException2;
+        }
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          localObject4 = null;
+        }
+      }
+    }
+    finally {}
+    for (;;)
+    {
+      Object localObject8;
+      int j;
+      int i;
+      StringBuilder localStringBuilder2;
+      j.a("try once", (Throwable)localObject5);
+      e.a(this.b).a("CPL", "fail:" + q.d + ",exc:" + ((Exception)localObject5).toString());
+      l.a(this.b);
+      try
+      {
+        System.currentTimeMillis();
+        localDexClassLoader = new DexClassLoader(localStringBuilder1.toString(), (String)localObject7, null, getClass().getClassLoader());
+      }
+      catch (Throwable localThrowable2)
+      {
+        DexClassLoader localDexClassLoader;
+        label622:
+        Object localObject4;
+        break label622;
+      }
+      try
+      {
+        localObject3 = e.a(this.b);
+        localObject7 = new StringBuilder();
+        ((e)localObject3).a("CPL", "suc:c" + q.d);
+        AppMethodBeat.o(39890);
+        localObject3 = localDexClassLoader;
+      }
+      catch (Throwable localThrowable1)
+      {
+        localObject4 = localDexClassLoader;
+        break label622;
+      }
+      j.a("try once failed", (Throwable)localObject5);
+      AppMethodBeat.o(39890);
+      continue;
+      AppMethodBeat.o(39890);
+      Object localObject3 = null;
     }
   }
   
-  public DexClassLoader a()
+  public DexClassLoader a(List<a> paramList, String paramString)
   {
-    AppMethodBeat.i(136330);
+    AppMethodBeat.i(39889);
+    this.c = paramList;
+    this.d = paramString;
     int i = 0;
-    Object localObject3;
-    for (Object localObject1 = null;; localObject1 = localObject3)
+    paramList = null;
+    for (;;)
     {
       int j = i + 1;
-      Object localObject2 = localObject1;
-      if (i < 3)
+      paramString = paramList;
+      if (i >= 3) {
+        break label126;
+      }
+      try
+      {
+        paramString = a();
+        paramList = paramString;
+      }
+      catch (Throwable paramString)
       {
         try
         {
-          localObject2 = b();
-          localObject1 = localObject2;
-          e.a().a("CPL", "lcn:".concat(String.valueOf(j)));
-          if (localObject2 == null) {
-            break label101;
+          paramString = e.b();
+          StringBuilder localStringBuilder = new StringBuilder();
+          paramString.a("CPL", "lcn:" + j);
+          if (paramList != null)
+          {
+            l.f(this.b);
+            AppMethodBeat.o(39889);
+            return paramList;
           }
-          AppMethodBeat.o(136330);
-          return localObject2;
+          i = j;
         }
-        catch (Throwable localThrowable)
+        catch (Throwable paramString)
         {
-          e.a().a("CPL", "fail:" + localThrowable.toString());
-          localObject3 = localObject1;
+          break;
         }
+        paramString = paramString;
       }
-      else
-      {
-        AppMethodBeat.o(136330);
-        return localObject3;
-      }
-      label101:
-      i = j;
     }
+    e.b().a("CPL", "fail:" + paramString.toString());
+    paramString = paramList;
+    label126:
+    l.f(this.b);
+    AppMethodBeat.o(39889);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     c.t.m.c.b
  * JD-Core Version:    0.7.0.1
  */

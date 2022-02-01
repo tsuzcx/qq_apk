@@ -11,35 +11,35 @@ import com.google.android.gms.common.internal.d;
 public final class a
   extends DialogFragment
 {
-  private DialogInterface.OnCancelListener Hg = null;
-  private Dialog aD = null;
+  private DialogInterface.OnCancelListener IV = null;
+  private Dialog cm = null;
   
   public static a a(Dialog paramDialog, DialogInterface.OnCancelListener paramOnCancelListener)
   {
     a locala = new a();
-    paramDialog = (Dialog)d.e(paramDialog, "Cannot display null dialog");
+    paramDialog = (Dialog)d.g(paramDialog, "Cannot display null dialog");
     paramDialog.setOnCancelListener(null);
     paramDialog.setOnDismissListener(null);
-    locala.aD = paramDialog;
+    locala.cm = paramDialog;
     if (paramOnCancelListener != null) {
-      locala.Hg = paramOnCancelListener;
+      locala.IV = paramOnCancelListener;
     }
     return locala;
   }
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.Hg != null) {
-      this.Hg.onCancel(paramDialogInterface);
+    if (this.IV != null) {
+      this.IV.onCancel(paramDialogInterface);
     }
   }
   
   public final Dialog onCreateDialog(Bundle paramBundle)
   {
-    if (this.aD == null) {
+    if (this.cm == null) {
       setShowsDialog(false);
     }
-    return this.aD;
+    return this.cm;
   }
   
   public final void show(FragmentManager paramFragmentManager, String paramString)

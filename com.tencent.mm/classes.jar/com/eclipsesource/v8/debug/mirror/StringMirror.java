@@ -18,15 +18,15 @@ public class StringMirror
   
   public String toString()
   {
-    AppMethodBeat.i(74910);
+    AppMethodBeat.i(61533);
     String str = this.v8Object.executeStringFunction("toText", null);
-    AppMethodBeat.o(74910);
+    AppMethodBeat.o(61533);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.debug.mirror.StringMirror
  * JD-Core Version:    0.7.0.1
  */

@@ -19,15 +19,15 @@ public class ReplyVoiceUI
   extends MMAvatarActivity
   implements com.tencent.mm.wear.app.d.a.b.e, com.tencent.mm.wear.app.ui.widget.b
 {
-  private String aas;
-  private BlockingQueue<g> adP;
-  private com.tencent.mm.wear.app.d.a.b.d ago;
-  private RecordView agq;
-  private TextView agr;
-  private int agu;
-  private com.tencent.mm.wear.app.d.a.b.a agx;
-  private long agy;
-  private com.tencent.mm.wear.a.b.a agz = new com.tencent.mm.wear.a.b.a()
+  private String adT;
+  private BlockingQueue<g> ahr;
+  private com.tencent.mm.wear.app.d.a.b.d ajQ;
+  private RecordView ajS;
+  private TextView ajT;
+  private int ajW;
+  private com.tencent.mm.wear.app.d.a.b.a ajZ;
+  private long aka;
+  private com.tencent.mm.wear.a.b.a akb = new com.tencent.mm.wear.a.b.a()
   {
     public final void handleMessage(Message paramAnonymousMessage)
     {
@@ -45,7 +45,7 @@ public class ReplyVoiceUI
         if (ReplyVoiceUI.a(ReplyVoiceUI.this).getStatus() != 2) {
           break label145;
         }
-        ReplyVoiceUI.a(ReplyVoiceUI.this, ReplyVoiceUI.this.getString(2131165234, new Object[] { Integer.valueOf(ReplyVoiceUI.b(ReplyVoiceUI.this)) }));
+        ReplyVoiceUI.a(ReplyVoiceUI.this, ReplyVoiceUI.this.getString(2131165235, new Object[] { Integer.valueOf(ReplyVoiceUI.b(ReplyVoiceUI.this)) }));
       }
       for (;;)
       {
@@ -53,19 +53,19 @@ public class ReplyVoiceUI
         ReplyVoiceUI.d(ReplyVoiceUI.this).sendEmptyMessageDelayed(4097, 1000L);
         return;
         label145:
-        ReplyVoiceUI.a(ReplyVoiceUI.this, ReplyVoiceUI.this.getString(2131165237, new Object[] { Integer.valueOf(ReplyVoiceUI.b(ReplyVoiceUI.this)) }));
+        ReplyVoiceUI.a(ReplyVoiceUI.this, ReplyVoiceUI.this.getString(2131165238, new Object[] { Integer.valueOf(ReplyVoiceUI.b(ReplyVoiceUI.this)) }));
       }
     }
   };
   
-  private void ns()
+  private void of()
   {
-    this.agu = 0;
-    this.agz.removeMessages(4097);
+    this.ajW = 0;
+    this.akb.removeMessages(4097);
     com.tencent.mm.wear.a.c.d.c("MicroMsg.ReplyVoiceUI", "stop time ticker", new Object[0]);
   }
   
-  public final void aj(int paramInt1, int paramInt2)
+  public final void am(int paramInt1, int paramInt2)
   {
     com.tencent.mm.wear.a.c.d.c("MicroMsg.ReplyVoiceUI", "currentStatus %d, preStatus %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     String str;
@@ -80,66 +80,66 @@ public class ReplyVoiceUI
       return;
     case 2: 
       com.tencent.mm.wear.a.c.d.c("MicroMsg.ReplyVoiceUI", "start to record", new Object[0]);
-      str = new File(h.mi(), System.currentTimeMillis()).getAbsolutePath();
-      this.adP = new LinkedBlockingQueue();
-      this.ago = new com.tencent.mm.wear.app.d.a.b.d(this.adP, 8000);
-      this.ago.a(this);
-      this.ago.start();
-      this.agx = new com.tencent.mm.wear.app.d.a.b.a(str, this.adP);
-      this.agx.start();
-      this.agr.setText(2131165233);
-      this.agu = 30;
-      this.agz.removeMessages(4097);
-      this.agz.sendEmptyMessage(4097);
+      str = new File(h.mU(), System.currentTimeMillis()).getAbsolutePath();
+      this.ahr = new LinkedBlockingQueue();
+      this.ajQ = new com.tencent.mm.wear.app.d.a.b.d(this.ahr, 8000);
+      this.ajQ.a(this);
+      this.ajQ.start();
+      this.ajZ = new com.tencent.mm.wear.app.d.a.b.a(str, this.ahr);
+      this.ajZ.start();
+      this.ajT.setText(2131165234);
+      this.ajW = 30;
+      this.akb.removeMessages(4097);
+      this.akb.sendEmptyMessage(4097);
       com.tencent.mm.wear.a.c.d.c("MicroMsg.ReplyVoiceUI", "start time ticker", new Object[0]);
       return;
     case 3: 
-      this.agr.setText(2131165228);
+      this.ajT.setText(2131165229);
       return;
     case 4: 
       com.tencent.mm.wear.a.c.d.c("MicroMsg.ReplyVoiceUI", "stop to record", new Object[0]);
-      if ((this.ago != null) && (this.agx != null))
+      if ((this.ajQ != null) && (this.ajZ != null))
       {
-        this.ago.mP();
-        this.agy = this.ago.mQ();
-        this.agx.mL();
-        this.aas = this.agx.mM();
-        this.ago = null;
-        this.agx = null;
-        if (this.agy >= 1500L) {
+        this.ajQ.nB();
+        this.aka = this.ajQ.nC();
+        this.ajZ.nx();
+        this.adT = this.ajZ.ny();
+        this.ajQ = null;
+        this.ajZ = null;
+        if (this.aka >= 1500L) {
           break label377;
         }
-        com.tencent.mm.wear.a.c.d.c("MicroMsg.ReplyVoiceUI", "two short voice: length=%d", new Object[] { Long.valueOf(this.agy) });
-        c.S(this.aas);
-        this.agq.setStatus(-1);
+        com.tencent.mm.wear.a.c.d.c("MicroMsg.ReplyVoiceUI", "two short voice: length=%d", new Object[] { Long.valueOf(this.aka) });
+        c.Z(this.adT);
+        this.ajS.setStatus(-1);
       }
       for (;;)
       {
-        ns();
+        of();
         return;
-        this.agr.setText(2131165238);
-        this.agq.cc(6);
-        this.agq.setStatus(5);
+        this.ajT.setText(2131165239);
+        this.ajS.cy(6);
+        this.ajS.setStatus(5);
       }
     case -1: 
-      this.agr.setText(2131165239);
+      this.ajT.setText(2131165240);
       return;
     case 6: 
       label377:
-      str = this.aas;
-      long l = this.agy;
-      h.mc().a(new e(this, str, l, getUsername(), nd()));
+      str = this.adT;
+      long l = this.aka;
+      h.mP().a(new e(this, str, l, getUsername(), nQ()));
       return;
     }
     finish();
   }
   
-  public final void bP(int paramInt)
+  public final void cl(int paramInt)
   {
-    if ((paramInt > 1000) && (this.agq.getStatus() == 2)) {
-      this.agq.setStatus(3);
+    if ((paramInt > 1000) && (this.ajS.getStatus() == 2)) {
+      this.ajS.setStatus(3);
     }
-    this.agq.cb(paramInt);
+    this.ajS.cx(paramInt);
   }
   
   public final int getLayoutId()
@@ -151,11 +151,11 @@ public class ReplyVoiceUI
   {
     super.onCreate(paramBundle);
     getWindow().addFlags(128);
-    this.agq = ((RecordView)findViewById(2131558516));
-    this.agr = ((TextView)findViewById(2131558517));
-    this.agr.setText(2131165233);
-    this.agq.a(this);
-    this.agq.setOnClickListener(new View.OnClickListener()
+    this.ajS = ((RecordView)findViewById(2131558517));
+    this.ajT = ((TextView)findViewById(2131558518));
+    this.ajT.setText(2131165234);
+    this.ajS.a(this);
+    this.ajS.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -177,25 +177,25 @@ public class ReplyVoiceUI
         ReplyVoiceUI.a(ReplyVoiceUI.this).setStatus(-3);
       }
     });
-    this.agq.setStatus(2);
-    N(getUsername());
+    this.ajS.setStatus(2);
+    U(getUsername());
   }
   
   protected void onDestroy()
   {
-    if (this.ago != null)
+    if (this.ajQ != null)
     {
-      this.ago.mP();
-      this.ago = null;
+      this.ajQ.nB();
+      this.ajQ = null;
     }
-    if (this.agx != null)
+    if (this.ajZ != null)
     {
-      this.agx.mL();
-      String str = this.agx.mM();
-      this.agx = null;
-      c.S(str);
+      this.ajZ.nx();
+      String str = this.ajZ.ny();
+      this.ajZ = null;
+      c.Z(str);
     }
-    ns();
+    of();
     super.onDestroy();
   }
 }

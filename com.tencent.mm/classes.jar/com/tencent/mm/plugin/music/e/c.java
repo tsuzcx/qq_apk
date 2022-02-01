@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.music.e;
 
-import com.tencent.mm.aw.e;
+import com.tencent.mm.az.f;
 import com.tencent.mm.plugin.music.f.a.d;
 
 public abstract interface c
 {
-  public abstract void aiu();
+  public abstract void azD();
   
-  public abstract d bVu();
+  public abstract d cUV();
   
-  public abstract void jL(boolean paramBoolean);
+  public abstract void nJ(boolean paramBoolean);
   
-  public abstract void p(e parame);
+  public abstract void s(f paramf);
   
-  public abstract void q(e parame);
+  public abstract void t(f paramf);
   
-  public abstract void r(e parame);
+  public abstract void u(f paramf);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.e.c
  * JD-Core Version:    0.7.0.1
  */

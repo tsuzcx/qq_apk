@@ -1,64 +1,81 @@
 package com.tencent.mm.plugin.game.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.w;
-import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.protocal.protobuf.btn;
-import com.tencent.mm.protocal.protobuf.bto;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.x;
+import com.tencent.mm.al.x.a;
+import com.tencent.mm.plugin.game.b.a.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vfs.i;
 
 public final class a
 {
-  public static void kk(long paramLong)
+  public static void report(long paramLong)
   {
-    AppMethodBeat.i(111183);
-    Object localObject = d.iJ(paramLong);
+    AppMethodBeat.i(40884);
+    Object localObject = com.tencent.mm.plugin.downloader.model.d.oq(paramLong);
     if (localObject == null)
     {
-      ab.i("MicroMsg.ReportDownloadAppState", "report, info is null");
-      AppMethodBeat.o(111183);
+      ad.i("MicroMsg.ReportDownloadAppState", "report, info is null");
+      AppMethodBeat.o(40884);
       return;
     }
     if (!((com.tencent.mm.plugin.downloader.g.a)localObject).field_fromWeApp)
     {
-      ab.i("MicroMsg.ReportDownloadAppState", "report,not from weApp, return");
-      AppMethodBeat.o(111183);
+      ad.i("MicroMsg.ReportDownloadAppState", "report,not from weApp, return");
+      AppMethodBeat.o(40884);
       return;
     }
-    if ((((com.tencent.mm.plugin.downloader.g.a)localObject).field_status == 3) && (!e.cN(((com.tencent.mm.plugin.downloader.g.a)localObject).field_filePath)))
+    if ((((com.tencent.mm.plugin.downloader.g.a)localObject).field_status == 3) && (!i.eK(((com.tencent.mm.plugin.downloader.g.a)localObject).field_filePath)))
     {
-      ab.i("MicroMsg.ReportDownloadAppState", "download success, but file not exist");
-      AppMethodBeat.o(111183);
+      ad.i("MicroMsg.ReportDownloadAppState", "download success, but file not exist");
+      AppMethodBeat.o(40884);
       return;
     }
-    btn localbtn = new btn();
-    localbtn.fKw = ((com.tencent.mm.plugin.downloader.g.a)localObject).field_appId;
+    c localc = new c();
+    localc.hnC = ((com.tencent.mm.plugin.downloader.g.a)localObject).field_appId;
     if (((com.tencent.mm.plugin.downloader.g.a)localObject).field_status == 3) {
-      localbtn.jJS = a.a.njc;
+      localc.mBi = a.rOK;
     }
     for (;;)
     {
       localObject = new b.a();
       ((b.a)localObject).funcId = 2683;
       ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/reportappdownloadstatus";
-      ((b.a)localObject).fsX = localbtn;
-      ((b.a)localObject).fsY = new bto();
+      ((b.a)localObject).gUU = localc;
+      ((b.a)localObject).gUV = new com.tencent.mm.plugin.game.b.a.d();
       ((b.a)localObject).reqCmdId = 0;
       ((b.a)localObject).respCmdId = 0;
-      w.a(((b.a)localObject).ado(), new a.1());
-      AppMethodBeat.o(111183);
+      x.a(((b.a)localObject).atI(), new x.a()
+      {
+        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb, n paramAnonymousn)
+        {
+          AppMethodBeat.i(40883);
+          ad.i("MicroMsg.ReportDownloadAppState", "doCgi, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          AppMethodBeat.o(40883);
+          return 0;
+        }
+      });
+      AppMethodBeat.o(40884);
       return;
       if (((com.tencent.mm.plugin.downloader.g.a)localObject).field_status == 4) {
-        localbtn.jJS = a.a.DOWNLOAD_STATUS_FAILED;
+        localc.mBi = a.DOWNLOAD_STATUS_FAILED;
       }
     }
+  }
+  
+  static final class a
+  {
+    static int DOWNLOAD_STATUS_FAILED = 2;
+    static int rOJ = 0;
+    static int rOK = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.c.a
  * JD-Core Version:    0.7.0.1
  */

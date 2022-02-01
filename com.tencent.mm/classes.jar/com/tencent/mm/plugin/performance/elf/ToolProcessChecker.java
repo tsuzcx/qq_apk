@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.performance.elf;
 public class ToolProcessChecker
   extends MainProcessChecker
 {
-  protected final boolean caA()
+  protected final boolean daC()
   {
     return false;
   }

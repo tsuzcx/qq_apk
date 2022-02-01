@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.ValueCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebViewBase;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import java.util.HashMap;
+import java.util.Set;
 
 public abstract interface IX5WebViewClientExtension
 {
@@ -28,13 +31,21 @@ public abstract interface IX5WebViewClientExtension
   
   public abstract void computeScroll(View paramView);
   
+  public abstract void didFailLoad(String paramString, int paramInt);
+  
   public abstract void didFirstVisuallyNonEmptyPaint();
+  
+  public abstract void didNavigateWithinPage(IX5WebViewBase paramIX5WebViewBase, String paramString);
   
   public abstract boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView);
   
   public abstract void documentAvailableInMainFrame();
   
   public abstract void handlePluginTag(String paramString1, String paramString2, boolean paramBoolean, String paramString3);
+  
+  public abstract void hasDiscardCurrentPage(boolean paramBoolean);
+  
+  public abstract void hasRestoreCurrentPage(boolean paramBoolean);
   
   public abstract void hideAddressBar();
   
@@ -46,9 +57,17 @@ public abstract interface IX5WebViewClientExtension
   
   public abstract void onDoubleTapStart();
   
+  public abstract void onFakeLoginRecognised(Bundle paramBundle);
+  
   public abstract void onFlingScrollBegin(int paramInt1, int paramInt2, int paramInt3);
   
   public abstract void onFlingScrollEnd();
+  
+  public abstract HashMap<String, String> onGetExtraHeadersForPreloading(String paramString);
+  
+  public abstract void onGetTtsText(String paramString, int paramInt);
+  
+  public abstract void onHideAdSuccess();
   
   public abstract void onHideListBox();
   
@@ -80,6 +99,8 @@ public abstract interface IX5WebViewClientExtension
   
   public abstract void onPromptScaleSaved();
   
+  public abstract void onReceivedQNovel(String paramString1, String paramString2);
+  
   public abstract void onReceivedSslErrorCancel();
   
   public abstract void onReceivedViewSource(String paramString);
@@ -102,11 +123,17 @@ public abstract interface IX5WebViewClientExtension
   
   public abstract void onShowMutilListBox(String[] paramArrayOfString, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3);
   
+  public abstract void onShowTtsBar();
+  
   public abstract void onSlidingTitleOffScreen(int paramInt1, int paramInt2);
   
   public abstract void onSoftKeyBoardHide(int paramInt);
   
   public abstract void onSoftKeyBoardShow();
+  
+  public abstract void onSpecialSiteDetectedResult(Set<String> paramSet1, Set<String> paramSet2);
+  
+  public abstract void onSupportReadMode();
   
   public abstract boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView);
   
@@ -122,11 +149,21 @@ public abstract interface IX5WebViewClientExtension
   
   public abstract boolean preShouldOverrideUrlLoading(IX5WebViewExtension paramIX5WebViewExtension, String paramString);
   
+  public abstract boolean reportFingerSearchAdjustInfo(String paramString);
+  
+  public abstract boolean reportFingerSearchRequestInfo(String paramString);
+  
+  public abstract boolean requestVibration(String paramString, JsResult paramJsResult);
+  
+  public abstract boolean shouldDiscardCurrentPage();
+  
+  public abstract boolean shouldRestoreCurrentPage();
+  
   public abstract void showTranslateBubble(int paramInt1, String paramString1, String paramString2, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.interfaces.IX5WebViewClientExtension
  * JD-Core Version:    0.7.0.1
  */

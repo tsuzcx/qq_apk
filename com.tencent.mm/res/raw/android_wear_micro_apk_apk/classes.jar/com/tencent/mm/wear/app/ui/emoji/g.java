@@ -10,23 +10,23 @@ import android.text.style.ImageSpan;
 public final class g
   extends ImageSpan
 {
-  private int afN = 0;
+  private int ajp = 0;
   
   public g(Drawable paramDrawable)
   {
     super(paramDrawable, 1);
   }
   
-  public final void bY(int paramInt)
+  public final void cu(int paramInt)
   {
-    this.afN = paramInt;
+    this.ajp = paramInt;
   }
   
   public final void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
     paramCharSequence = getDrawable();
     paramCanvas.save();
-    paramInt2 = paramInt5 - paramCharSequence.getBounds().bottom + this.afN;
+    paramInt2 = paramInt5 - paramCharSequence.getBounds().bottom + this.ajp;
     paramInt1 = paramInt2;
     if (this.mVerticalAlignment == 1) {
       paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;

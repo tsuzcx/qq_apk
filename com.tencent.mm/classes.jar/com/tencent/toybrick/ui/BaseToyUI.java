@@ -9,12 +9,12 @@ import java.util.HashMap;
 public abstract class BaseToyUI<T extends f>
   extends BaseActivity
 {
-  private HashMap<String, f> dw = new HashMap();
+  private HashMap<String, f> dz = new HashMap();
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.dw.clear();
+    this.dz.clear();
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -25,7 +25,7 @@ public abstract class BaseToyUI<T extends f>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.toybrick.ui.BaseToyUI
  * JD-Core Version:    0.7.0.1
  */

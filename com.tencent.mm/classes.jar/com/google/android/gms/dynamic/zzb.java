@@ -16,14 +16,14 @@ final class zzb
   
   public final void zza(LifecycleDelegate paramLifecycleDelegate)
   {
-    AppMethodBeat.i(61636);
+    AppMethodBeat.i(12128);
     DeferredLifecycleHelper.zzb(this.zzabg).onInflate(this.val$activity, this.zzabh, this.zzabi);
-    AppMethodBeat.o(61636);
+    AppMethodBeat.o(12128);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.dynamic.zzb
  * JD-Core Version:    0.7.0.1
  */

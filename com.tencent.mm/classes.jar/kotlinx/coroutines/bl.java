@@ -1,40 +1,19 @@
 package kotlinx.coroutines;
 
-import a.f.b.j;
-import a.l;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/NonDisposableHandle;", "Lkotlinx/coroutines/DisposableHandle;", "Lkotlinx/coroutines/ChildHandle;", "()V", "childCancelled", "", "cause", "", "dispose", "", "toString", "", "kotlinx-coroutines-core"})
-public final class bl
-  implements ap, m
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/JobCancellingNode;", "J", "Lkotlinx/coroutines/Job;", "Lkotlinx/coroutines/JobNode;", "job", "(Lkotlinx/coroutines/Job;)V", "kotlinx-coroutines-core"})
+public abstract class bl<J extends bj>
+  extends bm<J>
 {
-  public static final bl CIC;
-  
-  static
+  public bl(J paramJ)
   {
-    AppMethodBeat.i(118506);
-    CIC = new bl();
-    AppMethodBeat.o(118506);
-  }
-  
-  public final void dispose() {}
-  
-  public final String toString()
-  {
-    return "NonDisposableHandle";
-  }
-  
-  public final boolean x(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118505);
-    j.q(paramThrowable, "cause");
-    AppMethodBeat.o(118505);
-    return false;
+    super(paramJ);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bl
  * JD-Core Version:    0.7.0.1
  */

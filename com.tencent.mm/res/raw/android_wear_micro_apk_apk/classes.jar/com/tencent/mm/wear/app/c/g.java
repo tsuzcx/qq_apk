@@ -8,28 +8,28 @@ import java.io.IOException;
 final class g
   extends com.tencent.mm.wear.app.g.a
 {
-  private a acV;
+  private a agw;
   
   public g(b paramb, a parama)
   {
-    this.acV = parama;
+    this.agw = parama;
   }
   
   protected final void execute()
   {
-    Object localObject = new e(com.tencent.mm.wear.app.b.h.mb().lS());
+    Object localObject = new e(com.tencent.mm.wear.app.b.h.mO().mF());
     com.tencent.mm.wear.app.a.g localg = new com.tencent.mm.wear.app.a.g();
-    localg.aaO = 11006;
+    localg.aep = 11006;
     try
     {
-      localg.data = this.acV.acJ.getBytes("utf8");
+      localg.data = this.agw.agk.getBytes("utf8");
       label45:
       localObject = ((e)localObject).a(localg);
-      if ((((com.tencent.mm.wear.app.a.h)localObject).aaw == 0) && (((com.tencent.mm.wear.app.a.h)localObject).data != null))
+      if ((((com.tencent.mm.wear.app.a.h)localObject).adX == 0) && (((com.tencent.mm.wear.app.a.h)localObject).data != null))
       {
-        d.c("MicroMsg.MMImageLoader", "request emoji success %s", new Object[] { this.acV.acJ });
-        com.tencent.mm.wear.a.f.c.a(new File(com.tencent.mm.wear.app.b.h.ml(), this.acV.acJ), ((com.tencent.mm.wear.app.a.h)localObject).data);
-        b.d(this.acW).e(new c(this.acW, this.acV));
+        d.c("MicroMsg.MMImageLoader", "request emoji success %s", new Object[] { this.agw.agk });
+        com.tencent.mm.wear.a.f.c.a(new File(com.tencent.mm.wear.app.b.h.mX(), this.agw.agk), ((com.tencent.mm.wear.app.a.h)localObject).data);
+        b.d(this.agx).o(new c(this.agx, this.agw));
       }
       return;
     }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="45.0dip"
+<LinearLayout android:orientation="vertical" android:background="@color/o8" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/qx" android:background="@drawable/a13" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jr" android:layout_marginRight="@dimen/jr">
-        <TextView android:textSize="@dimen/jx" android:textColor="@color/q6" android:id="@id/c4e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
-        <ImageView android:layout_width="6.0dip" android:layout_height="12.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/agq" android:scaleType="fitXY" android:layout_toRightOf="@id/c4e" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/gob" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/c9h" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.fav.ui.widget.FavVideoView android:id="@id/goc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <include layout="@layout/a2f" />
     </RelativeLayout>
 </LinearLayout>

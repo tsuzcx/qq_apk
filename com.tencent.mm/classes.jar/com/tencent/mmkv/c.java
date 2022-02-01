@@ -6,11 +6,11 @@ public enum c
 {
   static
   {
-    AppMethodBeat.i(124051);
-    AZV = new c("OnErrorDiscard", 0);
-    AZW = new c("OnErrorRecover", 1);
-    AZX = new c[] { AZV, AZW };
-    AppMethodBeat.o(124051);
+    AppMethodBeat.i(13542);
+    IgQ = new c("OnErrorDiscard", 0);
+    IgR = new c("OnErrorRecover", 1);
+    IgS = new c[] { IgQ, IgR };
+    AppMethodBeat.o(13542);
   }
   
   private c() {}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.game.ui.GameInfoViewForeign android:id="@id/c_8" android:background="@drawable/vz" android:paddingTop="@dimen/d" android:paddingBottom="@dimen/h" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/dut" android:layout_width="34.0dip" android:layout_height="36.0dip" android:layout_marginRight="@dimen/d">
+            <ImageView android:id="@id/dus" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/as7" android:layout_alignParentBottom="true" />
+            <TextView android:textSize="11.0dip" android:textStyle="bold" android:textColor="@color/a_u" android:gravity="center" android:id="@id/cdi" android:background="@drawable/afs" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="center" android:id="@id/dvc" android:layout_width="wrap_content" android:layout_height="28.0dip" android:text="@string/cta" android:layout_toRightOf="@id/dut" android:layout_alignBottom="@id/dut" android:layout_toEndOf="@id/dut" />
+    </com.tencent.mm.plugin.game.ui.GameInfoViewForeign>
+</LinearLayout>

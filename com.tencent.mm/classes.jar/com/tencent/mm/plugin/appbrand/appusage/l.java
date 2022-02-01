@@ -1,83 +1,43 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.w;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.asy;
-import com.tencent.mm.protocal.protobuf.asz;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.d;
+import com.tencent.mm.protocal.protobuf.bdw;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class l
 {
-  private static volatile l hbk;
-  public final Set<l.b> hbl;
-  public volatile asz hbm;
-  public final Object mLock;
+  private static volatile l iUu;
+  private final Set<Object> iUv;
+  private volatile bdw iUw;
+  private final Object mLock;
   
   public l()
   {
-    AppMethodBeat.i(129566);
+    AppMethodBeat.i(44498);
     this.mLock = new Object();
-    this.hbl = new HashSet();
-    this.hbm = null;
-    AppMethodBeat.o(129566);
+    this.iUv = new HashSet();
+    this.iUw = null;
+    AppMethodBeat.o(44498);
   }
   
-  public static l axc()
+  public static l aRH()
   {
-    AppMethodBeat.i(129567);
-    if (hbk == null) {}
+    AppMethodBeat.i(44499);
+    if (iUu == null) {}
     try
     {
-      if (hbk == null) {
-        hbk = new l();
+      if (iUu == null) {
+        iUu = new l();
       }
-      l locall = hbk;
-      AppMethodBeat.o(129567);
+      l locall = iUu;
+      AppMethodBeat.o(44499);
       return locall;
     }
     finally
     {
-      AppMethodBeat.o(129567);
+      AppMethodBeat.o(44499);
     }
-  }
-  
-  public static boolean enabled()
-  {
-    AppMethodBeat.i(129569);
-    if (g.RG())
-    {
-      Object localObject = com.tencent.mm.model.c.c.abU().me("100328");
-      if (((com.tencent.mm.storage.c)localObject).isValid())
-      {
-        localObject = l.a.ns(bo.getInt((String)((com.tencent.mm.storage.c)localObject).dvN().get("isOpenGameEntry"), 0));
-        if ((localObject != null) && (localObject == l.a.hbp))
-        {
-          AppMethodBeat.o(129569);
-          return true;
-        }
-      }
-    }
-    AppMethodBeat.o(129569);
-    return false;
-  }
-  
-  public final void refresh()
-  {
-    AppMethodBeat.i(129568);
-    this.hbm = null;
-    b.a locala = new b.a();
-    locala.funcId = 1841;
-    locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/getwxagame";
-    locala.fsX = new asy();
-    locala.fsY = new asz();
-    w.a(locala.ado(), new l.1(this));
-    AppMethodBeat.o(129568);
   }
 }
 

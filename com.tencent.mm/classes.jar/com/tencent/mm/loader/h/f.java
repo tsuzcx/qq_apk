@@ -14,7 +14,7 @@ public abstract class f<T>
     this.data = paramT;
   }
   
-  public abstract a TU();
+  public abstract a ahF();
   
   public abstract void b(OutputStream paramOutputStream);
   
@@ -25,12 +25,12 @@ public abstract class f<T>
   
   public static abstract interface a<T>
   {
-    public abstract a TV();
+    public abstract a ahG();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.h.f
  * JD-Core Version:    0.7.0.1
  */

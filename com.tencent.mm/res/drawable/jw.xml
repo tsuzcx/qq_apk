@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
+    <item android:state_enabled="false">
         <shape android:shape="rectangle">
-            <corners android:radius="4.0dip" />
-            <solid android:color="@color/ih" />
+            <corners android:radius="@dimen/ue" />
+            <solid android:color="#19000000" />
         </shape>
     </item>
-</layer-list>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/ue" />
+            <solid android:color="#19000000" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/ue" />
+            <solid android:color="@drawable/afj" />
+        </shape>
+    </item>
+</selector>

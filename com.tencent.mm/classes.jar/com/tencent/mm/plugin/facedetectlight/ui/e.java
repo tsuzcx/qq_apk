@@ -8,39 +8,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e
   extends a
 {
-  private RelativeLayout mmu;
-  private RelativeLayout mmv;
-  private ImageView mmw;
-  private ImageView mmx;
-  private ImageView mmy;
+  private RelativeLayout pTf;
+  private RelativeLayout pTg;
+  private ImageView pTh;
+  private ImageView pTi;
+  private ImageView pTj;
   
   public e(ViewGroup paramViewGroup, com.tencent.mm.plugin.facedetectlight.ui.container.a parama)
   {
     super(paramViewGroup, parama);
   }
   
-  public final int bvM()
+  public final int chg()
   {
-    return 2130969501;
+    return 2131493914;
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(808);
-    this.mmu = ((RelativeLayout)findViewById(2131823863));
-    this.mmv = ((RelativeLayout)findViewById(2131823858));
+    AppMethodBeat.i(104328);
+    this.pTf = ((RelativeLayout)findViewById(2131299732));
+    this.pTg = ((RelativeLayout)findViewById(2131299730));
     setVisibility(4);
-    this.mmu.setVisibility(4);
-    this.mmv.setVisibility(4);
-    this.mmw = ((ImageView)findViewById(2131823869));
-    this.mmx = ((ImageView)findViewById(2131823868));
-    this.mmy = ((ImageView)findViewById(2131823865));
-    AppMethodBeat.o(808);
+    this.pTf.setVisibility(4);
+    this.pTg.setVisibility(4);
+    this.pTh = ((ImageView)findViewById(2131299673));
+    this.pTi = ((ImageView)findViewById(2131299670));
+    this.pTj = ((ImageView)findViewById(2131299680));
+    AppMethodBeat.o(104328);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectlight.ui.e
  * JD-Core Version:    0.7.0.1
  */

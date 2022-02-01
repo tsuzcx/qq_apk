@@ -6,11 +6,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 final class e$1
   implements ThreadFactory
 {
-  private final AtomicInteger mCount = new AtomicInteger(1);
+  private final AtomicInteger Gr = new AtomicInteger(1);
   
   public final Thread newThread(Runnable paramRunnable)
   {
-    return new Thread(paramRunnable, "ModernAsyncTask #" + this.mCount.getAndIncrement());
+    return new Thread(paramRunnable, "ModernAsyncTask #" + this.Gr.getAndIncrement());
   }
 }
 

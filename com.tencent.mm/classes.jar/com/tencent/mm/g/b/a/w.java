@@ -6,60 +6,57 @@ import com.tencent.mm.plugin.report.a;
 public final class w
   extends a
 {
-  private String cTF = "";
-  public long cTG = 0L;
-  public long cTH = 0L;
-  public long cTI = 0L;
+  public long dJF;
+  public long dJG;
+  public long dJH;
+  public long dJI = 0L;
+  public long dJJ = 0L;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(77591);
+    AppMethodBeat.i(73526);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cTF);
+    ((StringBuffer)localObject).append(this.dJF);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cTG);
+    ((StringBuffer)localObject).append(this.dJG);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cTH);
+    ((StringBuffer)localObject).append(this.dJH);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cTI);
+    ((StringBuffer)localObject).append(this.dJI);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dJJ);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(77591);
+    ams((String)localObject);
+    AppMethodBeat.o(73526);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(77592);
+    AppMethodBeat.i(73527);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("sessionID:").append(this.cTF);
+    ((StringBuffer)localObject).append("favid:").append(this.dJF);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("actionCode:").append(this.cTG);
+    ((StringBuffer)localObject).append("favsize:").append(this.dJG);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("actionCodeResult:").append(this.cTH);
+    ((StringBuffer)localObject).append("cachecnt:").append(this.dJH);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clickAddContact:").append(this.cTI);
+    ((StringBuffer)localObject).append("cachelsize:").append(this.dJI);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("cachesuccess:").append(this.dJJ);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(77592);
+    AppMethodBeat.o(73527);
     return localObject;
-  }
-  
-  public final w fr(String paramString)
-  {
-    AppMethodBeat.i(77590);
-    this.cTF = t("sessionID", paramString, true);
-    AppMethodBeat.o(77590);
-    return this;
   }
   
   public final int getId()
   {
-    return 15850;
+    return 18053;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.w
  * JD-Core Version:    0.7.0.1
  */

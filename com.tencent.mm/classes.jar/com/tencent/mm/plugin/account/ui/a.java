@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
@@ -14,36 +15,58 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends BaseAdapter
 {
-  private LayoutInflater exe;
-  private String[] gCf;
-  private Drawable gCg;
-  private View.OnTouchListener gCh;
+  private LayoutInflater imq;
+  private Drawable ipA;
+  private View.OnTouchListener ipB;
+  private String[] ipz;
+  private Context mContext;
   
   public a(Context paramContext, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(124713);
-    this.gCg = null;
-    this.gCh = new a.1(this);
-    this.gCf = paramArrayOfString;
-    this.exe = LayoutInflater.from(paramContext);
-    this.gCg = paramContext.getResources().getDrawable(2130840350);
-    this.gCg.setBounds(0, 0, this.gCg.getIntrinsicWidth(), this.gCg.getIntrinsicHeight());
-    AppMethodBeat.o(124713);
+    AppMethodBeat.i(127865);
+    this.ipA = null;
+    this.ipB = new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(127864);
+        if (paramAnonymousMotionEvent.getAction() == 0)
+        {
+          ((TextView)paramAnonymousView.findViewById(2131296639)).setTextColor(a.a(a.this).getResources().getColor(2131100212));
+          AppMethodBeat.o(127864);
+          return false;
+        }
+        if (paramAnonymousMotionEvent.getAction() == 1)
+        {
+          ((TextView)paramAnonymousView.findViewById(2131296639)).setTextColor(a.a(a.this).getResources().getColor(2131101182));
+          AppMethodBeat.o(127864);
+          return false;
+        }
+        AppMethodBeat.o(127864);
+        return false;
+      }
+    };
+    this.ipz = paramArrayOfString;
+    this.mContext = paramContext;
+    this.imq = LayoutInflater.from(paramContext);
+    this.ipA = paramContext.getResources().getDrawable(2131234063);
+    this.ipA.setBounds(0, 0, this.ipA.getIntrinsicWidth(), this.ipA.getIntrinsicHeight());
+    AppMethodBeat.o(127865);
   }
   
-  private boolean mY(int paramInt)
+  private boolean qh(int paramInt)
   {
-    return paramInt == this.gCf.length - 1;
+    return paramInt == this.ipz.length - 1;
   }
   
   public final int getCount()
   {
-    return this.gCf.length;
+    return this.ipz.length;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.gCf[paramInt];
+    return this.ipz[paramInt];
   }
   
   public final long getItemId(int paramInt)
@@ -54,18 +77,18 @@ public final class a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     int j = 1;
-    AppMethodBeat.i(124714);
+    AppMethodBeat.i(127866);
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = this.exe.inflate(2130968647, null);
+      paramViewGroup = this.imq.inflate(2131492956, null);
     }
-    paramView = (TextView)paramViewGroup.findViewById(2131821117);
-    paramViewGroup.setOnTouchListener(this.gCh);
+    paramView = (TextView)paramViewGroup.findViewById(2131296639);
+    paramViewGroup.setOnTouchListener(this.ipB);
     int i;
     if (paramInt == 0)
     {
       i = 1;
-      if ((i == 0) || (!mY(paramInt))) {
+      if ((i == 0) || (!qh(paramInt))) {
         break label110;
       }
       paramView.setPadding(25, 0, 25, 10);
@@ -74,8 +97,8 @@ public final class a
     }
     for (;;)
     {
-      paramView.setText(this.gCf[paramInt]);
-      AppMethodBeat.o(124714);
+      paramView.setText(this.ipz[paramInt]);
+      AppMethodBeat.o(127866);
       return paramViewGroup;
       i = 0;
       break;
@@ -88,11 +111,11 @@ public final class a
         }
         paramView.setPadding(25, 0, 10, 10);
         paramView.setCompoundDrawablePadding(10);
-        paramView.setCompoundDrawables(null, null, this.gCg, null);
+        paramView.setCompoundDrawables(null, null, this.ipA, null);
         break;
       }
       label160:
-      if (mY(paramInt))
+      if (qh(paramInt))
       {
         paramView.setPadding(0, 0, 25, 10);
         paramView.setCompoundDrawablePadding(0);
@@ -102,14 +125,14 @@ public final class a
       {
         paramView.setPadding(0, 0, 10, 10);
         paramView.setCompoundDrawablePadding(10);
-        paramView.setCompoundDrawables(null, null, this.gCg, null);
+        paramView.setCompoundDrawables(null, null, this.ipA, null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,48 +6,29 @@ public class TXCEventRecorderProxy
 {
   private long a;
   
-  public TXCEventRecorderProxy()
+  public static void a(String paramString1, int paramInt1, long paramLong1, long paramLong2, String paramString2, int paramInt2)
   {
-    AppMethodBeat.i(146479);
-    this.a = 0L;
-    this.a = nativeInit();
-    AppMethodBeat.o(146479);
-  }
-  
-  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, int paramInt4)
-  {
-    AppMethodBeat.i(146482);
+    AppMethodBeat.i(170216);
     if ((paramString1 == null) || (paramString2 == null))
     {
-      AppMethodBeat.o(146482);
+      AppMethodBeat.o(170216);
       return;
     }
-    nativeAddEventMsg(paramString1, paramInt1, paramInt2, paramInt3, paramString2, paramInt4);
-    AppMethodBeat.o(146482);
+    nativeAddEventMsg(paramString1, paramInt1, paramLong1, paramLong2, paramString2, paramInt2);
+    AppMethodBeat.o(170216);
   }
   
-  private static native void nativeAddEventListener(long paramLong, String paramString1, String paramString2);
-  
-  private static native void nativeAddEventMsg(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, int paramInt4);
-  
-  private static native long nativeInit();
+  private static native void nativeAddEventMsg(String paramString1, int paramInt1, long paramLong1, long paramLong2, String paramString2, int paramInt2);
   
   private static native void nativeRelease(long paramLong);
   
-  public void a(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(146481);
-    nativeAddEventListener(this.a, paramString1, paramString2);
-    AppMethodBeat.o(146481);
-  }
-  
   protected void finalize()
   {
-    AppMethodBeat.i(146480);
+    AppMethodBeat.i(14409);
     nativeRelease(this.a);
     this.a = 0L;
     super.finalize();
-    AppMethodBeat.o(146480);
+    AppMethodBeat.o(14409);
   }
 }
 

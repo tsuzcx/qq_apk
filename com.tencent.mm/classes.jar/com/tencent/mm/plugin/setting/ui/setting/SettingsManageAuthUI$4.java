@@ -13,11 +13,15 @@ final class SettingsManageAuthUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(127249);
-    paramMenuItem = new Intent(this.qIF, SettingsSearchAuthUI.class);
-    this.qIF.startActivity(paramMenuItem);
-    b.ie(this.qIF);
-    AppMethodBeat.o(127249);
+    AppMethodBeat.i(74186);
+    Object localObject = new Intent(this.whm, SettingsSearchAuthUI.class);
+    paramMenuItem = this.whm;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/setting/ui/setting/SettingsManageAuthUI$4", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramMenuItem, "com/tencent/mm/plugin/setting/ui/setting/SettingsManageAuthUI$4", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    b.jG(this.whm);
+    AppMethodBeat.o(74186);
     return true;
   }
 }

@@ -2,11 +2,11 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aaj;
+import com.tencent.mm.protocal.protobuf.ady;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,9 +22,9 @@ public final class d
   
   static
   {
-    AppMethodBeat.i(118217);
+    AppMethodBeat.i(153166);
     SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "ABTestItem") };
-    AppMethodBeat.o(118217);
+    AppMethodBeat.o(153166);
   }
   
   public d(e parame)
@@ -33,17 +33,17 @@ public final class d
     this.db = parame;
   }
   
-  public final Map<String, c> aqN(String paramString)
+  public final Map<String, c> aHj(String paramString)
   {
-    AppMethodBeat.i(118213);
-    if (bo.isNullOrNil(paramString)) {}
+    AppMethodBeat.i(153162);
+    if (bt.isNullOrNil(paramString)) {}
     for (paramString = null; (paramString == null) || (!paramString.moveToFirst()); paramString = rawQuery(String.format("select * from %s where %s = %s", new Object[] { "ABTestItem", "business", paramString }), new String[0]))
     {
       if (paramString != null) {
         paramString.close();
       }
       paramString = new HashMap(0);
-      AppMethodBeat.o(118213);
+      AppMethodBeat.o(153162);
       return paramString;
     }
     HashMap localHashMap = new HashMap();
@@ -54,60 +54,60 @@ public final class d
       localHashMap.put(localc.field_layerId, localc);
     } while (paramString.moveToNext());
     paramString.close();
-    AppMethodBeat.o(118213);
+    AppMethodBeat.o(153162);
     return localHashMap;
   }
   
-  public final LinkedList<aaj> dvL()
+  public final LinkedList<ady> eJw()
   {
-    AppMethodBeat.i(118216);
+    AppMethodBeat.i(153165);
     LinkedList localLinkedList = new LinkedList();
     Cursor localCursor = getAll();
     if ((localCursor == null) || (!localCursor.moveToFirst()))
     {
-      AppMethodBeat.o(118216);
+      AppMethodBeat.o(153165);
       return localLinkedList;
     }
     c localc = new c();
     for (;;)
     {
       localc.convertFrom(localCursor);
-      aaj localaaj = new aaj();
+      ady localady = new ady();
       try
       {
-        localaaj.wPe = bo.getInt(localc.field_expId, 0);
-        localaaj.priority = localc.field_prioritylevel;
-        localLinkedList.add(localaaj);
+        localady.DbI = bt.getInt(localc.field_expId, 0);
+        localady.priority = localc.field_prioritylevel;
+        localLinkedList.add(localady);
         if (localCursor.moveToNext()) {
           continue;
         }
         localCursor.close();
-        AppMethodBeat.o(118216);
+        AppMethodBeat.o(153165);
         return localLinkedList;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ab.e("MicroMsg.ABTestStorage", "expId parse failed, %s", new Object[] { localc.field_expId });
+          ad.e("MicroMsg.ABTestStorage", "expId parse failed, %s", new Object[] { localc.field_expId });
         }
       }
     }
   }
   
-  public final String dvM()
+  public final String eJx()
   {
-    AppMethodBeat.i(118215);
+    AppMethodBeat.i(153164);
     Object localObject = getAll();
     if (localObject == null)
     {
-      AppMethodBeat.o(118215);
+      AppMethodBeat.o(153164);
       return "null cursor!!";
     }
     if (!((Cursor)localObject).moveToFirst())
     {
       ((Cursor)localObject).close();
-      AppMethodBeat.o(118215);
+      AppMethodBeat.o(153164);
       return "cursor empty!!";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -123,29 +123,29 @@ public final class d
     } while (((Cursor)localObject).moveToNext());
     ((Cursor)localObject).close();
     localObject = localStringBuilder.toString();
-    AppMethodBeat.o(118215);
+    AppMethodBeat.o(153164);
     return localObject;
   }
   
-  public final c me(String paramString)
+  public final c qu(String paramString)
   {
-    AppMethodBeat.i(118212);
+    AppMethodBeat.i(153161);
     c localc = new c();
     localc.field_layerId = paramString;
     boolean bool = super.get(localc, new String[0]);
     if ((bool) && (localc.field_endTime == 0L)) {
       localc.field_endTime = 9223372036854775807L;
     }
-    ab.i("MicroMsg.ABTestStorage", "getByLayerId, id: %s, return: %b", new Object[] { paramString, Boolean.valueOf(bool) });
-    AppMethodBeat.o(118212);
+    ad.i("MicroMsg.ABTestStorage", "getByLayerId, id: %s, return: %b", new Object[] { paramString, Boolean.valueOf(bool) });
+    AppMethodBeat.o(153161);
     return localc;
   }
   
-  public final void r(List<c> paramList, int paramInt)
+  public final void y(List<c> paramList, int paramInt)
   {
-    AppMethodBeat.i(118214);
+    AppMethodBeat.i(153163);
     int i = 0;
-    long l = bo.aox();
+    long l = bt.aGK();
     this.db.delete("ABTestItem", String.format(Locale.US, "%s<>0 and %s<%d", new Object[] { "endTime", "endTime", Long.valueOf(l) }), null);
     c localc1;
     if (paramInt == 0)
@@ -160,9 +160,9 @@ public final class d
     if (paramList.hasNext())
     {
       localc1 = (c)paramList.next();
-      if ((localc1 == null) || (bo.isNullOrNil(localc1.field_layerId)))
+      if ((localc1 == null) || (bt.isNullOrNil(localc1.field_layerId)))
       {
-        ab.e("MicroMsg.ABTestStorage", "saveIfNecessary, Invalid item");
+        ad.e("MicroMsg.ABTestStorage", "saveIfNecessary, Invalid item");
         bool = false;
         label147:
         if (!bool) {
@@ -180,22 +180,22 @@ public final class d
       if (!super.get(localc2, new String[0]))
       {
         bool = super.insertNotify(localc1, false);
-        ab.i("MicroMsg.ABTestStorage", "Inserted: %s, Result: %b", new Object[] { localc1.field_layerId, Boolean.valueOf(bool) });
+        ad.i("MicroMsg.ABTestStorage", "Inserted: %s, Result: %b", new Object[] { localc1.field_layerId, Boolean.valueOf(bool) });
         break label147;
       }
       if (((localc1.field_sequence > localc2.field_sequence) && (localc1.field_prioritylevel == localc2.field_prioritylevel)) || (localc1.field_prioritylevel > localc2.field_prioritylevel))
       {
         bool = super.updateNotify(localc1, false, new String[0]);
-        ab.i("MicroMsg.ABTestStorage", "Updated: %s, Result: %b, Seq: %d, %d, PriorityLV: %d, %d", new Object[] { localc1.field_layerId, Boolean.valueOf(bool), Long.valueOf(localc2.field_sequence), Long.valueOf(localc1.field_sequence), Integer.valueOf(localc2.field_prioritylevel), Integer.valueOf(localc1.field_prioritylevel) });
+        ad.i("MicroMsg.ABTestStorage", "Updated: %s, Result: %b, Seq: %d, %d, PriorityLV: %d, %d", new Object[] { localc1.field_layerId, Boolean.valueOf(bool), Long.valueOf(localc2.field_sequence), Long.valueOf(localc1.field_sequence), Integer.valueOf(localc2.field_prioritylevel), Integer.valueOf(localc1.field_prioritylevel) });
         break label147;
       }
-      ab.i("MicroMsg.ABTestStorage", "Ignored: %s, Seq: %d, %d, PriorityLV: %d, %d", new Object[] { localc1.field_layerId, Long.valueOf(localc2.field_sequence), Long.valueOf(localc1.field_sequence), Integer.valueOf(localc2.field_prioritylevel), Integer.valueOf(localc1.field_prioritylevel) });
+      ad.i("MicroMsg.ABTestStorage", "Ignored: %s, Seq: %d, %d, PriorityLV: %d, %d", new Object[] { localc1.field_layerId, Long.valueOf(localc2.field_sequence), Long.valueOf(localc1.field_sequence), Integer.valueOf(localc2.field_prioritylevel), Integer.valueOf(localc1.field_prioritylevel) });
       bool = false;
       break label147;
       if (paramInt != 0) {
         doNotify("event_updated");
       }
-      AppMethodBeat.o(118214);
+      AppMethodBeat.o(153163);
       return;
     }
   }

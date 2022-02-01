@@ -1,144 +1,86 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.s.a;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.afz;
-import com.tencent.mm.protocal.protobuf.ex;
-import com.tencent.mm.protocal.protobuf.ey;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.ea;
+import com.tencent.mm.protocal.protobuf.eb;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class ab
-  extends x
+  extends n
+  implements k
 {
-  List<String> vLA;
+  int BQg;
+  aa BQh;
+  private g callback;
+  private b rr;
   
-  public ab(List<String> paramList)
+  public ab(int paramInt, aa paramaa)
   {
-    AppMethodBeat.i(79377);
+    AppMethodBeat.i(151804);
+    this.BQg = paramInt;
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new afy();
-    ((b.a)localObject).fsY = new afz();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getappsetting";
-    ((b.a)localObject).funcId = 395;
+    ((b.a)localObject).gUU = new ea();
+    ((b.a)localObject).gUV = new eb();
+    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/appcenter";
+    ((b.a)localObject).funcId = 452;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.lFp = ((b.a)localObject).ado();
-    this.vLA = paramList;
-    com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NetSceneGetAppSetting", "<init>, appIdList size = " + paramList.size());
-    localObject = new LinkedList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      String str = (String)paramList.next();
-      if ((str != null) && (str.length() > 0))
-      {
-        ey localey = new ey();
-        localey.npZ = str;
-        ((LinkedList)localObject).add(localey);
-      }
+    this.rr = ((b.a)localObject).atI();
+    localObject = (ea)this.rr.gUS.gUX;
+    byte[] arrayOfByte = paramaa.evp();
+    if (arrayOfByte != null) {
+      ((ea)localObject).ReqBuf = new SKBuiltinBuffer_t().setBuffer(arrayOfByte);
     }
-    if (((LinkedList)localObject).size() == 0) {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.NetSceneGetAppSetting", "doScene fail, reqList is empty");
-    }
-    paramList = (afy)this.lFp.fsV.fta;
-    paramList.wZc = ((LinkedList)localObject);
-    paramList.wZb = ((LinkedList)localObject).size();
-    AppMethodBeat.o(79377);
+    ((ea)localObject).mBH = paramInt;
+    this.BQh = paramaa;
+    AppMethodBeat.o(151804);
   }
   
-  public final void bJ(byte[] paramArrayOfByte)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(79380);
-    if (paramArrayOfByte == null)
-    {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.NetSceneGetAppSetting", "buf is null");
-      AppMethodBeat.o(79380);
-      return;
-    }
-    try
-    {
-      this.lFp.fsW.fromProtoBuf(paramArrayOfByte);
-      AppMethodBeat.o(79380);
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.NetSceneGetAppSetting", "bufToResp error: " + paramArrayOfByte.getMessage());
-      com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.NetSceneGetAppSetting", paramArrayOfByte, "", new Object[0]);
-      AppMethodBeat.o(79380);
-    }
-  }
-  
-  public final byte[] dli()
-  {
-    AppMethodBeat.i(79379);
-    try
-    {
-      byte[] arrayOfByte = ((b.b)this.lFp.getReqObj()).toProtoBuf();
-      AppMethodBeat.o(79379);
-      return arrayOfByte;
-    }
-    catch (Exception localException)
-    {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.NetSceneGetAppSetting", "toProtBuf error: " + localException.getMessage());
-      com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.NetSceneGetAppSetting", localException, "", new Object[0]);
-      AppMethodBeat.o(79379);
-    }
-    return null;
+    AppMethodBeat.i(151806);
+    this.callback = paramg;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(151806);
+    return i;
   }
   
   public final int getType()
   {
-    return 1;
+    return 452;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(79378);
-    com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NetSceneGetAppSetting", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    AppMethodBeat.i(151805);
+    ad.d("MicroMsg.NetSceneAppCenter", "errType = " + paramInt2 + ", errCode = " + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.NetSceneGetAppSetting", "onGYNetEnd, errType = " + paramInt2 + ", errCode = " + paramInt3);
-      AppMethodBeat.o(79378);
+      ad.e("MicroMsg.NetSceneAppCenter", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(151805);
       return;
     }
-    paramString = (afz)this.lFp.fsW.fta;
-    com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NetSceneGetAppSetting", "onGYNetEnd, resp appCount = " + paramString.wZb);
-    paramq = paramString.wZd;
-    if ((paramq == null) || (paramq.size() == 0))
-    {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.NetSceneGetAppSetting", "onGYNetEnd, settingList is empty");
-      AppMethodBeat.o(79378);
-      return;
-    }
-    paramString = a.cac();
-    paramq = paramq.iterator();
-    while (paramq.hasNext())
-    {
-      paramArrayOfByte = (ex)paramq.next();
-      f localf = g.ca(paramArrayOfByte.npZ, false);
-      if (localf != null)
-      {
-        localf.field_authFlag = paramArrayOfByte.wrd;
-        localf.field_openId = paramArrayOfByte.nrU;
-        boolean bool = paramString.a(localf, new String[0]);
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NetSceneGetAppSetting", "onGYNetEnd, update ret = " + bool + ", appId = " + paramArrayOfByte.npZ);
-      }
-    }
-    AppMethodBeat.o(79378);
+    this.BQh.cb(z.a(((eb)this.rr.gUT.gUX).Cyq));
+    this.BQh.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, this.rr, paramArrayOfByte);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(151805);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.ab
  * JD-Core Version:    0.7.0.1
  */

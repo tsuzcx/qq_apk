@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ch
   extends b
 {
-  public ch.a cpK;
-  public ch.b cpL;
+  public a dey;
   
   public ch()
   {
@@ -16,17 +15,21 @@ public final class ch
   
   private ch(byte paramByte)
   {
-    AppMethodBeat.i(51334);
-    this.cpK = new ch.a();
-    this.cpL = new ch.b();
-    this.ymq = false;
+    AppMethodBeat.i(93322);
+    this.dey = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(51334);
+    AppMethodBeat.o(93322);
+  }
+  
+  public static final class a
+  {
+    public int bRZ = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ch
  * JD-Core Version:    0.7.0.1
  */

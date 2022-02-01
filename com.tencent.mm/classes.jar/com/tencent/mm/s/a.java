@@ -1,143 +1,143 @@
 package com.tencent.mm.s;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.d.a;
-import com.tencent.mm.ai.d.b;
-import com.tencent.mm.ai.e;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.ai.e.c;
-import com.tencent.mm.ai.e.d;
-import com.tencent.mm.api.f;
-import com.tencent.mm.api.l;
-import com.tencent.mm.model.cb;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.protocal.protobuf.nf;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ba;
+import com.tencent.mm.al.e.a;
+import com.tencent.mm.al.e.b;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.al.f.c;
+import com.tencent.mm.al.f.d;
+import com.tencent.mm.api.h;
+import com.tencent.mm.api.q;
+import com.tencent.mm.model.ce;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.protocal.protobuf.pi;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bd;
 
 public final class a
-  implements l
+  implements q
 {
-  private static cm b(cm paramcm)
+  private static cs b(cs paramcs)
   {
     boolean bool = true;
-    AppMethodBeat.i(35445);
-    if (paramcm == null)
+    AppMethodBeat.i(114095);
+    if (paramcs == null)
     {
-      AppMethodBeat.o(35445);
+      AppMethodBeat.o(114095);
       return null;
     }
-    Object localObject = paramcm.woP;
-    int i = paramcm.nqW;
-    if (paramcm.woR == null) {}
+    Object localObject = paramcs.Cxx;
+    int i = paramcs.saz;
+    if (paramcs.Cxz == null) {}
     for (;;)
     {
-      ab.i("FunctionMsg.FunctionMsgDispatcher", "processAddMsg, fromUser: %s, msgType: %s, content==null: %s", new Object[] { localObject, Integer.valueOf(i), Boolean.valueOf(bool) });
-      localObject = bo.nullAsNil(aa.a(paramcm.woP));
+      ad.i("FunctionMsg.FunctionMsgDispatcher", "processAddMsg, fromUser: %s, msgType: %s, content==null: %s", new Object[] { localObject, Integer.valueOf(i), Boolean.valueOf(bool) });
+      localObject = bt.nullAsNil(z.a(paramcs.Cxx));
       if ("readerapp".equals(localObject))
       {
-        paramcm.woP = aa.wA("newsapp");
-        paramcm.nqW = 12399999;
+        paramcs.Cxx = z.BE("newsapp");
+        paramcs.saz = 12399999;
       }
       if (("blogapp".equals(localObject)) || ("newsapp".equals(localObject))) {
-        paramcm.nqW = 12399999;
+        paramcs.saz = 12399999;
       }
-      AppMethodBeat.o(35445);
-      return paramcm;
+      AppMethodBeat.o(114095);
+      return paramcs;
       bool = false;
     }
   }
   
-  public final void a(String paramString, f paramf, cm paramcm)
+  public final void a(String paramString, h paramh, cs paramcs)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(35446);
-    if ((paramf == null) || (paramcm == null))
+    AppMethodBeat.i(114096);
+    if ((paramh == null) || (paramcs == null))
     {
-      if (paramf == null) {}
+      if (paramh == null) {}
       for (boolean bool1 = true;; bool1 = false)
       {
-        if (paramcm == null) {
+        if (paramcs == null) {
           bool2 = true;
         }
-        ab.e("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgAdd] null == item?%s null == addMsg?%s MsgType:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(paramcm.nqW) });
-        AppMethodBeat.o(35446);
+        ad.e("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgAdd] null == item?%s null == addMsg?%s MsgType:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(paramcs.saz) });
+        AppMethodBeat.o(114096);
         return;
       }
     }
-    b(paramcm);
+    b(paramcs);
     try
     {
-      d.b localb = new d.b();
-      localb.ftc = paramf.field_businessInfo;
-      localb.ftd = paramf.field_functionmsgid;
-      if (paramf.field_actionTime == 0L) {}
-      for (long l = cb.abp() / 1000L;; l = paramf.field_actionTime)
+      e.b localb = new e.b();
+      localb.gVe = paramh.field_businessInfo;
+      localb.gVf = paramh.field_functionmsgid;
+      if (paramh.field_actionTime == 0L) {}
+      for (long l = ce.asQ() / 1000L;; l = paramh.field_actionTime)
       {
-        paramcm.CreateTime = ((int)l);
-        paramf.field_status = 100;
-        paramf.a(paramcm);
-        ba localba = ba.yOa;
-        ba.a(paramString, paramf);
-        ab.i("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgAdd] item:%s CreateTime:%s", new Object[] { paramf, Integer.valueOf(paramcm.CreateTime) });
-        e.d.aV(Integer.valueOf(paramcm.nqW)).b(new e.a(paramcm, localb));
-        AppMethodBeat.o(35446);
+        paramcs.CreateTime = ((int)l);
+        paramh.field_status = 100;
+        paramh.a(paramcs);
+        bd localbd = bd.FzL;
+        bd.a(paramString, paramh);
+        ad.i("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgAdd] item:%s CreateTime:%s", new Object[] { paramh, Integer.valueOf(paramcs.CreateTime) });
+        f.d.ca(Integer.valueOf(paramcs.saz)).b(new f.a(paramcs, localb));
+        AppMethodBeat.o(114096);
         return;
       }
       return;
     }
     catch (Exception paramString)
     {
-      ab.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", paramString, "", new Object[0]);
-      AppMethodBeat.o(35446);
+      ad.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", paramString, "", new Object[0]);
+      AppMethodBeat.o(114096);
     }
   }
   
-  public final void b(nf paramnf)
+  public final void b(pi parampi)
   {
-    AppMethodBeat.i(35448);
+    AppMethodBeat.i(114098);
     try
     {
-      new d.b();
-      d.a.aU(Long.valueOf(paramnf.wCc));
-      AppMethodBeat.o(35448);
+      new e.b();
+      e.a.bZ(Long.valueOf(parampi.CNw));
+      AppMethodBeat.o(114098);
       return;
     }
-    catch (Exception paramnf)
+    catch (Exception parampi)
     {
-      ab.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", paramnf, "", new Object[0]);
-      AppMethodBeat.o(35448);
+      ad.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", parampi, "", new Object[0]);
+      AppMethodBeat.o(114098);
     }
   }
   
-  public final void b(String paramString, f paramf, cm paramcm)
+  public final void b(String paramString, h paramh, cs paramcs)
   {
-    AppMethodBeat.i(35447);
-    ab.i("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgDelete] item:%s", new Object[] { paramf });
+    AppMethodBeat.i(114097);
+    ad.i("FunctionMsg.FunctionMsgDispatcher", "[onFunctionMsgDelete] item:%s", new Object[] { paramh });
     try
     {
-      b(paramcm);
-      paramcm.CreateTime = ((int)paramf.field_actionTime);
-      paramf.a(paramcm);
-      paramf.field_status = 100;
-      ba localba = ba.yOa;
-      ba.a(paramString, paramf);
-      e.d.aV(Integer.valueOf(paramcm.nqW)).a(new e.c(paramcm, paramString));
-      AppMethodBeat.o(35447);
+      b(paramcs);
+      paramcs.CreateTime = ((int)paramh.field_actionTime);
+      paramh.a(paramcs);
+      paramh.field_status = 100;
+      bd localbd = bd.FzL;
+      bd.a(paramString, paramh);
+      f.d.ca(Integer.valueOf(paramcs.saz)).b(new f.c(paramcs, paramString, paramh));
+      AppMethodBeat.o(114097);
       return;
     }
     catch (Exception paramString)
     {
-      ab.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", paramString, "", new Object[0]);
-      AppMethodBeat.o(35447);
+      ad.printErrStackTrace("FunctionMsg.FunctionMsgDispatcher", paramString, "", new Object[0]);
+      AppMethodBeat.o(114097);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.s.a
  * JD-Core Version:    0.7.0.1
  */

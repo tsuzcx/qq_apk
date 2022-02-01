@@ -8,11 +8,11 @@ public abstract class h
   implements Serializable
 {
   @Deprecated
-  public static final h atM = a.atM;
+  public static final h aOw = a.aOw;
   @Deprecated
-  public static final h atN = a.atN;
+  public static final h aOx = a.aOx;
   @Deprecated
-  public static final h atO = a.atO;
+  public static final h aOy = a.aOy;
   
   public final String a(l paraml)
   {
@@ -70,49 +70,49 @@ public abstract class h
     return false;
   }
   
-  public b lH()
-  {
-    throw new UnsupportedOperationException("Not an array: " + toString());
-  }
-  
-  public boolean lI()
-  {
-    throw new UnsupportedOperationException("Not a boolean: " + toString());
-  }
-  
-  public int lJ()
-  {
-    throw new UnsupportedOperationException("Not a number: " + toString());
-  }
-  
-  public long lK()
-  {
-    throw new UnsupportedOperationException("Not a number: " + toString());
-  }
-  
-  public double lL()
-  {
-    throw new UnsupportedOperationException("Not a number: " + toString());
-  }
-  
-  public e lM()
-  {
-    throw new UnsupportedOperationException("Not an object: " + toString());
-  }
-  
-  public String mk()
+  public String qV()
   {
     throw new UnsupportedOperationException("Not a string: " + toString());
   }
   
+  public b qs()
+  {
+    throw new UnsupportedOperationException("Not an array: " + toString());
+  }
+  
+  public boolean qt()
+  {
+    throw new UnsupportedOperationException("Not a boolean: " + toString());
+  }
+  
+  public int qu()
+  {
+    throw new UnsupportedOperationException("Not a number: " + toString());
+  }
+  
+  public long qv()
+  {
+    throw new UnsupportedOperationException("Not a number: " + toString());
+  }
+  
+  public double qw()
+  {
+    throw new UnsupportedOperationException("Not a number: " + toString());
+  }
+  
+  public e qx()
+  {
+    throw new UnsupportedOperationException("Not an object: " + toString());
+  }
+  
   public String toString()
   {
-    return a(l.aus);
+    return a(l.aPd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.eclipsesource.a.h
  * JD-Core Version:    0.7.0.1
  */

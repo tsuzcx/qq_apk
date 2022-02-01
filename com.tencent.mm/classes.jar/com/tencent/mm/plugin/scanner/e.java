@@ -1,380 +1,407 @@
 package com.tencent.mm.plugin.scanner;
 
-import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
+import android.os.Bundle;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.g.a.ap;
-import com.tencent.mm.g.a.qc;
-import com.tencent.mm.g.a.qd;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.q;
-import com.tencent.mm.platformtools.t.a;
-import com.tencent.mm.plugin.scanner.model.l;
-import com.tencent.mm.plugin.scanner.model.o;
-import com.tencent.mm.plugin.scanner.util.p.a;
-import com.tencent.mm.plugin.scanner.util.p.b;
-import com.tencent.mm.protocal.protobuf.bge;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.zero.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
-public class e
-  implements f, at
+public final class e
 {
-  private static HashMap<Integer, h.d> baseDBFactories;
-  @SuppressLint({"UseSparseArrays"})
-  private static HashMap<Integer, h.d> kjX;
-  public String eHR;
-  private t.a kjZ;
-  private HashMap<Integer, Long> qtA;
-  private p.b qtB;
-  private com.tencent.mm.sdk.b.c<ap> qtC;
-  private com.tencent.mm.sdk.b.c<qc> qtD;
-  private com.tencent.mm.plugin.scanner.model.b qtE;
-  public com.tencent.mm.plugin.u.a.b qtq;
-  private l qtr;
-  private com.tencent.mm.plugin.scanner.model.p qts;
-  private o qtt;
-  public com.tencent.mm.plugin.scanner.util.r qtu;
-  public com.tencent.mm.plugin.scanner.util.p qtv;
-  private com.tencent.mm.plugin.scanner.a.a qtw;
-  private com.tencent.mm.plugin.scanner.a.b qtx;
-  private HashMap<Integer, com.tencent.mm.plugin.scanner.model.r> qty;
-  private HashMap<Integer, com.tencent.mm.g.b.a.t> qtz;
+  private static final String[] vLA = { "http://work.weixin.qq.com/u/", "http://work.weixin.qq.com/ct/", "https://work.weixin.qq.com/u/", "https://work.weixin.qq.com/ct/" };
+  private static final String[] vLB = { "https://wx.tenpay.com/f2f", "wxp://f2f", "https://payapp.weixin.qq.com/qr/" };
+  private static final String[] vLC = { "m", "n" };
+  private static final String[] vLy = { "http://weixin.qq.com/g/", "https://weixin.qq.com/g/" };
+  private static final String[] vLz = { "http://u.wechat.com/", "https://u.wechat.com/" };
   
-  static
+  public static boolean bD(int paramInt, String paramString)
   {
-    AppMethodBeat.i(80798);
-    kjX = new HashMap();
-    HashMap localHashMap = new HashMap();
-    baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("SCANHISTORY_TABLE".hashCode()), new e.5());
-    baseDBFactories.put(Integer.valueOf("scan_translation_result_table".hashCode()), new e.6());
-    AppMethodBeat.o(80798);
-  }
-  
-  public e()
-  {
-    AppMethodBeat.i(80781);
-    this.qtq = new com.tencent.mm.plugin.u.a.b();
-    this.qtr = new l();
-    this.qts = new com.tencent.mm.plugin.scanner.model.p();
-    this.qtt = new o();
-    this.qtu = new com.tencent.mm.plugin.scanner.util.r();
-    this.qtv = new com.tencent.mm.plugin.scanner.util.p();
-    this.qty = new HashMap();
-    this.qtz = new HashMap();
-    this.qtA = new HashMap();
-    this.qtB = new e.1(this);
-    this.qtC = new e.2(this);
-    this.qtD = new e.3(this);
-    this.qtE = new com.tencent.mm.plugin.scanner.model.b();
-    AppMethodBeat.o(80781);
-  }
-  
-  private void CC(int paramInt)
-  {
-    AppMethodBeat.i(80782);
-    qd localqd = new qd();
-    localqd.cGG.cnU = paramInt;
-    localqd.cGG.cnz = false;
-    com.tencent.mm.sdk.b.a.ymk.l(localqd);
-    this.qty.remove(Integer.valueOf(paramInt));
-    AppMethodBeat.o(80782);
-  }
-  
-  public static String Yu(String paramString)
-  {
-    AppMethodBeat.i(80791);
-    paramString = cia() + String.format("%s_%d.%s", new Object[] { "translation", Long.valueOf(System.currentTimeMillis()), paramString });
-    AppMethodBeat.o(80791);
-    return paramString;
-  }
-  
-  public static String Yv(String paramString)
-  {
-    AppMethodBeat.i(80792);
-    paramString = chZ() + String.format("%s_%d.%s", new Object[] { "tmp", Long.valueOf(System.currentTimeMillis()), paramString });
-    AppMethodBeat.o(80792);
-    return paramString;
-  }
-  
-  public static String Yw(String paramString)
-  {
-    AppMethodBeat.i(80793);
-    paramString = String.format("%s.%s", new Object[] { chZ() + "scan_translation_bg", paramString });
-    AppMethodBeat.o(80793);
-    return paramString;
-  }
-  
-  public static e chX()
-  {
-    try
+    AppMethodBeat.i(151555);
+    if (paramInt != 22)
     {
-      AppMethodBeat.i(80783);
-      e locale = (e)q.S(e.class);
-      AppMethodBeat.o(80783);
-      return locale;
+      AppMethodBeat.o(151555);
+      return false;
     }
-    finally
+    if (bt.isNullOrNil(paramString))
     {
-      localObject = finally;
-      throw localObject;
+      AppMethodBeat.o(151555);
+      return false;
     }
-  }
-  
-  private static String chY()
-  {
-    AppMethodBeat.i(80788);
-    Object localObject = new StringBuilder();
-    com.tencent.mm.kernel.g.RM();
-    localObject = com.tencent.mm.kernel.g.RL().eHR + "scanner/";
-    AppMethodBeat.o(80788);
-    return localObject;
-  }
-  
-  public static String chZ()
-  {
-    AppMethodBeat.i(80789);
-    String str = chY() + "scan_camera/";
-    AppMethodBeat.o(80789);
-    return str;
-  }
-  
-  private static String cia()
-  {
-    AppMethodBeat.i(80790);
-    String str = chY() + "scan_result/";
-    AppMethodBeat.o(80790);
-    return str;
-  }
-  
-  public final com.tencent.mm.plugin.scanner.a.a cib()
-  {
-    AppMethodBeat.i(80794);
-    com.tencent.mm.kernel.g.RJ().QQ();
-    if (this.qtw == null) {
-      this.qtw = new com.tencent.mm.plugin.scanner.a.a(com.tencent.mm.kernel.g.RL().eHS);
-    }
-    com.tencent.mm.plugin.scanner.a.a locala = this.qtw;
-    AppMethodBeat.o(80794);
-    return locala;
-  }
-  
-  public final com.tencent.mm.plugin.scanner.a.b cic()
-  {
-    AppMethodBeat.i(80795);
-    com.tencent.mm.kernel.g.RJ().QQ();
-    if (this.qtx == null) {
-      this.qtx = new com.tencent.mm.plugin.scanner.a.b(com.tencent.mm.kernel.g.RL().eHS);
-    }
-    com.tencent.mm.plugin.scanner.a.b localb = this.qtx;
-    AppMethodBeat.o(80795);
-    return localb;
-  }
-  
-  public void clearPluginData(int paramInt) {}
-  
-  public final String gb(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(80787);
-    if ((com.tencent.mm.kernel.g.RG()) && (!bo.isNullOrNil(paramString1)))
+    if ((aj.cbv()) || ((Looper.myLooper() == Looper.getMainLooper()) && (!com.tencent.mm.ipcinvoker.c.ads().qn("com.tencent.mm"))))
     {
-      paramString1 = String.format("%s/scanbook%s_%s", new Object[] { this.eHR + "image/scan/img", paramString2, com.tencent.mm.a.g.w(paramString1.getBytes()) });
-      AppMethodBeat.o(80787);
-      return paramString1;
+      localObject = dkS();
+      localObject = ((Set)localObject).iterator();
     }
-    AppMethodBeat.o(80787);
-    return "";
-  }
-  
-  public HashMap<Integer, h.d> getBaseDBFactories()
-  {
-    return baseDBFactories;
-  }
-  
-  public void onAccountPostReset(boolean paramBoolean)
-  {
-    AppMethodBeat.i(80785);
-    Object localObject = com.tencent.mm.kernel.g.RL().cachePath + "CommonOneMicroMsg.db";
-    this.kjZ = com.tencent.mm.platformtools.t.a(hashCode(), (String)localObject, kjX, false);
-    localObject = this.qtE;
-    com.tencent.mm.sdk.b.a.ymk.c(((com.tencent.mm.plugin.scanner.model.b)localObject).quh);
-    com.tencent.mm.sdk.b.a.ymk.c(((com.tencent.mm.plugin.scanner.model.b)localObject).qui);
-    com.tencent.mm.sdk.b.a.ymk.c(this.qtr);
-    com.tencent.mm.sdk.b.a.ymk.c(this.qts.quU);
-    com.tencent.mm.sdk.b.a.ymk.c(this.qts.quV);
-    com.tencent.mm.sdk.b.a.ymk.b(this.qtt);
-    com.tencent.mm.sdk.b.a.ymk.b(this.qtD);
-    com.tencent.mm.sdk.b.a.ymk.b(this.qtC);
-    com.tencent.mm.kernel.g.Rc().a(294, this);
-    localObject = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("NewOCRTranslationRedDot");
-    ab.i("MicroMsg.scanner.SubCoreScanner", "redDotStr %s", new Object[] { localObject });
-    if (!bo.isNullOrNil((String)localObject))
-    {
-      localObject = br.F((String)localObject, "Id");
-      if (((Map)localObject).containsKey(".Id"))
+    HashSet localHashSet;
+    while (((Iterator)localObject).hasNext()) {
+      if (paramString.startsWith((String)((Iterator)localObject).next()))
       {
-        int i = bo.getInt((String)((Map)localObject).get(".Id"), 0);
-        int j = com.tencent.mm.kernel.g.RL().Ru().getInt(ac.a.yKE, 0);
-        if ((i != 0) && (j != i))
-        {
-          com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yKE, Integer.valueOf(i));
-          com.tencent.mm.x.c.PJ().b(ac.a.yKC, true);
+        AppMethodBeat.o(151555);
+        return true;
+        localHashSet = new HashSet();
+        localObject = (Bundle)h.a("com.tencent.mm", null, b.class);
+        if (localObject == null) {
+          break label187;
         }
       }
     }
-    com.tencent.mm.sdk.g.d.post(new e.4(this), "MicroMsg.scanner.SubCoreScannerdeleteOutDateImg");
-    localObject = com.tencent.mm.plugin.scanner.util.c.qCh;
-    com.tencent.mm.plugin.scanner.util.c.init();
-    AppMethodBeat.o(80785);
-  }
-  
-  public void onAccountRelease()
-  {
-    AppMethodBeat.i(80784);
-    com.tencent.mm.sdk.b.a.ymk.d(this.qtr);
-    com.tencent.mm.sdk.b.a.ymk.d(this.qts.quU);
-    com.tencent.mm.sdk.b.a.ymk.d(this.qts.quV);
-    com.tencent.mm.sdk.b.a.ymk.d(this.qtt);
-    com.tencent.mm.sdk.b.a.ymk.d(this.qtD);
-    com.tencent.mm.sdk.b.a.ymk.d(this.qtC);
-    com.tencent.mm.kernel.g.Rc().b(294, this);
-    Object localObject = this.qtE;
-    com.tencent.mm.sdk.b.a.ymk.d(((com.tencent.mm.plugin.scanner.model.b)localObject).quh);
-    com.tencent.mm.sdk.b.a.ymk.d(((com.tencent.mm.plugin.scanner.model.b)localObject).qui);
-    ((com.tencent.mm.plugin.scanner.model.b)localObject).cid();
-    localObject = this.qtq;
-    ((com.tencent.mm.plugin.u.a.b)localObject).fGO.clear();
-    ((com.tencent.mm.plugin.u.a.b)localObject).bZ.clear();
-    ((com.tencent.mm.plugin.u.a.b)localObject).pPm.clear();
-    if (this.kjZ != null)
+    label187:
+    for (Object localObject = ((Bundle)localObject).getString("wxCodePrefix", "");; localObject = "")
     {
-      this.kjZ.mG(hashCode());
-      this.kjZ = null;
-    }
-    this.eHR = "";
-    localObject = com.tencent.mm.plugin.scanner.util.c.qCh;
-    com.tencent.mm.plugin.scanner.util.c.release();
-    AppMethodBeat.o(80784);
-  }
-  
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    AppMethodBeat.i(80796);
-    ab.i("MicroMsg.scanner.SubCoreScanner", "onSceneEnd errType %d, errCode %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (paramm.getType() == 294)
-    {
-      int i = ((com.tencent.mm.plugin.scanner.model.e)paramm).cnU;
-      if ((paramInt1 == 0) && (paramInt2 == 0))
+      localObject = ((String)localObject).split("|");
+      paramInt = 0;
+      while (paramInt < localObject.length)
       {
-        paramString = ((com.tencent.mm.plugin.scanner.model.e)paramm).quk;
-        if (paramString != null)
-        {
-          ab.i("MicroMsg.scanner.SubCoreScanner", "session %d, angle %f, translationInfos length %d", new Object[] { Integer.valueOf(i), Float.valueOf(((com.tencent.mm.plugin.scanner.model.e)paramm).angle), Integer.valueOf(paramString.size()) });
-          if (this.qtz.containsKey(Integer.valueOf(i))) {
-            ((com.tencent.mm.g.b.a.t)this.qtz.get(Integer.valueOf(i))).cSO = (System.currentTimeMillis() - ((com.tencent.mm.plugin.scanner.model.e)paramm).qul);
-          }
-          if ((paramString.size() > 0) && (this.qty.containsKey(Integer.valueOf(i))))
-          {
-            Object localObject = (com.tencent.mm.plugin.scanner.model.r)this.qty.get(Integer.valueOf(i));
-            ((com.tencent.mm.plugin.scanner.model.r)localObject).cGI = ((bge)((com.tencent.mm.plugin.scanner.model.e)paramm).rr.fsW.fta).qun;
-            ((com.tencent.mm.plugin.scanner.model.r)localObject).cGJ = ((com.tencent.mm.plugin.scanner.model.e)paramm).cie();
-            if (this.qtz.containsKey(Integer.valueOf(i))) {
-              ((com.tencent.mm.g.b.a.t)this.qtz.get(Integer.valueOf(i))).cSM = 1L;
-            }
-            com.tencent.mm.plugin.scanner.util.p localp = chX().qtv;
-            float f = ((com.tencent.mm.plugin.scanner.model.e)paramm).angle;
-            localObject = ((com.tencent.mm.plugin.scanner.model.r)localObject).quY;
-            paramm = this.qtB;
-            if ((i != 0) && (paramString != null) && (paramString.size() > 0) && (paramm != null))
-            {
-              localObject = com.tencent.mm.sdk.platformtools.d.decodeFile((String)localObject, new BitmapFactory.Options());
-              if (localObject == null)
-              {
-                paramm.b(i, null);
-                AppMethodBeat.o(80796);
-                return;
-              }
-              if ((localp.qDz != 0) && (i != localp.qDz))
-              {
-                ab.i("MicroMsg.ScanTranslationRender", "stop current session %d, start new session %d", new Object[] { Integer.valueOf(localp.qDz), Integer.valueOf(i) });
-                localp.cjM();
-              }
-              localp.qDz = i;
-              localp.qDA = paramm;
-              localp.qDB = new p.a(localp, i, paramString, f, (Bitmap)localObject);
-              localp.qDB.v(new Void[0]);
-            }
-            AppMethodBeat.o(80796);
-            return;
-          }
-          if ((this.qtz.containsKey(Integer.valueOf(i))) && (this.qtA.containsKey(Integer.valueOf(i)))) {
-            ((com.tencent.mm.g.b.a.t)this.qtz.get(Integer.valueOf(i))).cSP = (System.currentTimeMillis() - ((Long)this.qtA.get(Integer.valueOf(i))).longValue());
-          }
-          CC(i);
+        if (!bt.isNullOrNil(localObject[paramInt])) {
+          localHashSet.add(localObject[paramInt]);
         }
-        AppMethodBeat.o(80796);
-        return;
+        paramInt += 1;
+        continue;
+        AppMethodBeat.o(151555);
+        return false;
       }
-      if ((this.qtz.containsKey(Integer.valueOf(i))) && (this.qtA.containsKey(Integer.valueOf(i))))
-      {
-        ((com.tencent.mm.g.b.a.t)this.qtz.get(Integer.valueOf(i))).cSP = (System.currentTimeMillis() - ((Long)this.qtA.get(Integer.valueOf(i))).longValue());
-        ((com.tencent.mm.g.b.a.t)this.qtz.get(Integer.valueOf(i))).cSM = 5L;
-        ((com.tencent.mm.g.b.a.t)this.qtz.get(Integer.valueOf(i))).ake();
-        this.qtz.remove(Integer.valueOf(i));
-        this.qtA.remove(Integer.valueOf(i));
-        ab.i("MicroMsg.scanner.SubCoreScanner", "translationReports size %d, translationUpload size %d", new Object[] { Integer.valueOf(this.qtz.size()), Integer.valueOf(this.qtA.size()) });
-      }
-      CC(i);
+      localObject = localHashSet;
+      break;
     }
-    AppMethodBeat.o(80796);
   }
   
-  public void onSdcardMount(boolean paramBoolean)
+  public static boolean bE(int paramInt, String paramString)
   {
-    AppMethodBeat.i(80786);
-    ab.d("MicroMsg.scanner.SubCoreScanner", "onSdcardMount " + com.tencent.mm.kernel.g.RL().eHR);
-    Object localObject = com.tencent.mm.kernel.g.RL().eHR;
-    ab.d("MicroMsg.scanner.SubCoreScanner", "resetAccPath on accPath : ".concat(String.valueOf(localObject)));
-    this.eHR = ((String)localObject);
-    File localFile = new File((String)localObject);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    AppMethodBeat.i(151556);
+    if (paramInt != 19)
+    {
+      AppMethodBeat.o(151556);
+      return false;
     }
-    localFile = new File((String)localObject + "image/scan/img");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(151556);
+      return false;
     }
-    localObject = new File((String)localObject + "image/scan/music");
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
+    if ((aj.cbe()) || ((Looper.myLooper() == Looper.getMainLooper()) && (!com.tencent.mm.ipcinvoker.c.ads().qn("com.tencent.mm"))))
+    {
+      localObject = dkT();
+      localObject = ((Set)localObject).iterator();
     }
-    localObject = new File(chY());
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
+    HashSet localHashSet;
+    while (((Iterator)localObject).hasNext()) {
+      if (paramString.startsWith((String)((Iterator)localObject).next()))
+      {
+        AppMethodBeat.o(151556);
+        return true;
+        localHashSet = new HashSet();
+        localObject = (Bundle)h.a("com.tencent.mm", null, a.class);
+        if (localObject == null) {
+          break label187;
+        }
+      }
     }
-    chX();
-    com.tencent.mm.vfs.e.avN(chZ());
-    chX();
-    com.tencent.mm.vfs.e.avN(cia());
-    AppMethodBeat.o(80786);
+    label187:
+    for (Object localObject = ((Bundle)localObject).getString("brandCodePrefix", "");; localObject = "")
+    {
+      localObject = ((String)localObject).split("\\|");
+      paramInt = 0;
+      while (paramInt < localObject.length)
+      {
+        if (!bt.isNullOrNil(localObject[paramInt])) {
+          localHashSet.add(localObject[paramInt]);
+        }
+        paramInt += 1;
+        continue;
+        AppMethodBeat.o(151556);
+        return false;
+      }
+      localObject = localHashSet;
+      break;
+    }
   }
+  
+  public static boolean bF(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(151557);
+    if (paramInt != 19)
+    {
+      AppMethodBeat.o(151557);
+      return false;
+    }
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(151557);
+      return false;
+    }
+    String[] arrayOfString = vLz;
+    int i = arrayOfString.length;
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      if (paramString.startsWith(arrayOfString[paramInt]))
+      {
+        AppMethodBeat.o(151557);
+        return true;
+      }
+      paramInt += 1;
+    }
+    AppMethodBeat.o(151557);
+    return false;
+  }
+  
+  public static boolean bG(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(151558);
+    if (paramInt != 19)
+    {
+      AppMethodBeat.o(151558);
+      return false;
+    }
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(151558);
+      return false;
+    }
+    String[] arrayOfString = vLy;
+    int i = arrayOfString.length;
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      if (paramString.startsWith(arrayOfString[paramInt]))
+      {
+        AppMethodBeat.o(151558);
+        return true;
+      }
+      paramInt += 1;
+    }
+    AppMethodBeat.o(151558);
+    return false;
+  }
+  
+  public static boolean bH(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(151559);
+    if (paramInt != 19)
+    {
+      AppMethodBeat.o(151559);
+      return false;
+    }
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(151559);
+      return false;
+    }
+    String[] arrayOfString = vLA;
+    int i = arrayOfString.length;
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      if (paramString.startsWith(arrayOfString[paramInt]))
+      {
+        AppMethodBeat.o(151559);
+        return true;
+      }
+      paramInt += 1;
+    }
+    AppMethodBeat.o(151559);
+    return false;
+  }
+  
+  public static boolean bI(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(177300);
+    if (paramInt != 22)
+    {
+      AppMethodBeat.o(177300);
+      return false;
+    }
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(177300);
+      return false;
+    }
+    String[] arrayOfString = vLC;
+    int i = arrayOfString.length;
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      if (paramString.startsWith(arrayOfString[paramInt]))
+      {
+        AppMethodBeat.o(177300);
+        return true;
+      }
+      paramInt += 1;
+    }
+    AppMethodBeat.o(177300);
+    return false;
+  }
+  
+  public static boolean bJ(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(177301);
+    if (paramInt != 19)
+    {
+      AppMethodBeat.o(177301);
+      return false;
+    }
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(177301);
+      return false;
+    }
+    String[] arrayOfString = vLB;
+    int i = arrayOfString.length;
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      if (paramString.startsWith(arrayOfString[paramInt]))
+      {
+        AppMethodBeat.o(177301);
+        return true;
+      }
+      paramInt += 1;
+    }
+    AppMethodBeat.o(177301);
+    return false;
+  }
+  
+  public static boolean bK(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(151560);
+    if ((bD(paramInt, paramString)) || (bE(paramInt, paramString)) || (bG(paramInt, paramString)) || (bF(paramInt, paramString)) || (bH(paramInt, paramString)) || (bJ(paramInt, paramString)) || (bI(paramInt, paramString)))
+    {
+      AppMethodBeat.o(151560);
+      return true;
+    }
+    AppMethodBeat.o(151560);
+    return false;
+  }
+  
+  public static int bL(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(151561);
+    if (bE(paramInt, paramString))
+    {
+      AppMethodBeat.o(151561);
+      return 3;
+    }
+    if (bD(paramInt, paramString))
+    {
+      AppMethodBeat.o(151561);
+      return 4;
+    }
+    if (bG(paramInt, paramString))
+    {
+      AppMethodBeat.o(151561);
+      return 2;
+    }
+    if (bF(paramInt, paramString))
+    {
+      AppMethodBeat.o(151561);
+      return 1;
+    }
+    if (bH(paramInt, paramString))
+    {
+      AppMethodBeat.o(151561);
+      return 7;
+    }
+    if (bI(paramInt, paramString))
+    {
+      AppMethodBeat.o(151561);
+      return 5;
+    }
+    if (bJ(paramInt, paramString))
+    {
+      AppMethodBeat.o(151561);
+      return 6;
+    }
+    AppMethodBeat.o(151561);
+    return -1;
+  }
+  
+  private static Set<String> dkS()
+  {
+    AppMethodBeat.i(151562);
+    HashSet localHashSet = new HashSet();
+    localHashSet.add("k");
+    localHashSet.add("l");
+    if (aj.cbv())
+    {
+      localObject = ((a)g.ab(a.class)).Ze();
+      if (localObject == null) {
+        break label134;
+      }
+    }
+    label134:
+    for (Object localObject = ((com.tencent.mm.m.c)localObject).ad("ScanCode", "weAppCodePrefix");; localObject = "")
+    {
+      ad.v("MicroMsg.QRCodeLogic", "getWxCodePrefix(%s)", new Object[] { localObject });
+      if (!bt.isNullOrNil((String)localObject))
+      {
+        localObject = ((String)localObject).split("\\|");
+        int i = 0;
+        while (i < localObject.length)
+        {
+          if (!bt.isNullOrNil(localObject[i])) {
+            localHashSet.add(localObject[i]);
+          }
+          i += 1;
+        }
+      }
+      AppMethodBeat.o(151562);
+      return localHashSet;
+    }
+  }
+  
+  private static Set<String> dkT()
+  {
+    AppMethodBeat.i(151563);
+    HashSet localHashSet = new HashSet();
+    localHashSet.add("http://weixin.qq.com/r/");
+    localHashSet.add("http://weixin.qq.com/q/");
+    if (aj.cbe())
+    {
+      localObject = ((a)g.ab(a.class)).Ze();
+      if (localObject == null) {
+        break label134;
+      }
+    }
+    label134:
+    for (Object localObject = ((com.tencent.mm.m.c)localObject).ad("ScanCode", "brandCodePrefix");; localObject = "")
+    {
+      ad.v("MicroMsg.QRCodeLogic", "getWxBrandCodePrefix(%s)", new Object[] { localObject });
+      if (!bt.isNullOrNil((String)localObject))
+      {
+        localObject = ((String)localObject).split("\\|");
+        int i = 0;
+        while (i < localObject.length)
+        {
+          if (!bt.isNullOrNil(localObject[i])) {
+            localHashSet.add(localObject[i]);
+          }
+          i += 1;
+        }
+      }
+      AppMethodBeat.o(151563);
+      return localHashSet;
+    }
+  }
+  
+  static class a
+    implements k<Bundle, Bundle>
+  {}
+  
+  static class b
+    implements k<Bundle, Bundle>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.e
  * JD-Core Version:    0.7.0.1
  */

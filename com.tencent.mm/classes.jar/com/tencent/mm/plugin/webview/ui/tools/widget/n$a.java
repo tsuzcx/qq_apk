@@ -1,11 +1,9 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
-import android.os.Bundle;
+import d.l;
 
-public abstract interface n$a
-{
-  public abstract void h(int paramInt, Bundle paramBundle);
-}
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/ui/tools/widget/MPWriteCommentLayout$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-webview_release"})
+public final class n$a {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar

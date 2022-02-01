@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public final class AppBrandLaunchReferrer
@@ -14,55 +14,55 @@ public final class AppBrandLaunchReferrer
   public static final Parcelable.Creator<AppBrandLaunchReferrer> CREATOR;
   public String appId;
   public String businessType;
-  public String cAh;
-  public String cJg;
-  public int cpG;
-  public int hiK;
-  public String hiL;
-  public String hiM;
-  public String hiN;
-  public String hiO;
+  public String dqq;
+  public String dzY;
+  public int jdC;
+  public String jdD;
+  public String jdE;
+  public String jdF;
+  public String jdG;
+  public int sourceType;
   public String url;
   
   static
   {
-    AppMethodBeat.i(86903);
-    CREATOR = new AppBrandLaunchReferrer.1();
-    AppMethodBeat.o(86903);
+    AppMethodBeat.i(134798);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(134798);
   }
   
   public AppBrandLaunchReferrer() {}
   
   private AppBrandLaunchReferrer(Parcel paramParcel)
   {
-    AppMethodBeat.i(86902);
+    AppMethodBeat.i(134797);
     i(paramParcel);
-    AppMethodBeat.o(86902);
+    AppMethodBeat.o(134797);
   }
   
   private void i(Parcel paramParcel)
   {
-    AppMethodBeat.i(86898);
-    this.hiK = paramParcel.readInt();
+    AppMethodBeat.i(134793);
+    this.jdC = paramParcel.readInt();
     this.appId = paramParcel.readString();
-    this.cAh = paramParcel.readString();
-    this.hiL = paramParcel.readString();
+    this.dqq = paramParcel.readString();
+    this.jdD = paramParcel.readString();
     this.url = paramParcel.readString();
-    this.hiM = paramParcel.readString();
-    this.cpG = paramParcel.readInt();
+    this.jdE = paramParcel.readString();
+    this.sourceType = paramParcel.readInt();
     this.businessType = paramParcel.readString();
-    this.cJg = paramParcel.readString();
-    this.hiN = paramParcel.readString();
-    this.hiO = paramParcel.readString();
-    AppMethodBeat.o(86898);
+    this.dzY = paramParcel.readString();
+    this.jdF = paramParcel.readString();
+    this.jdG = paramParcel.readString();
+    AppMethodBeat.o(134793);
   }
   
   public final void a(AppBrandLaunchReferrer paramAppBrandLaunchReferrer)
   {
-    AppMethodBeat.i(86900);
+    AppMethodBeat.i(134795);
     if (paramAppBrandLaunchReferrer == null)
     {
-      AppMethodBeat.o(86900);
+      AppMethodBeat.o(134795);
       return;
     }
     Parcel localParcel = Parcel.obtain();
@@ -71,32 +71,32 @@ public final class AppBrandLaunchReferrer
     localParcel.setDataPosition(0);
     i(localParcel);
     localParcel.recycle();
-    AppMethodBeat.o(86900);
+    AppMethodBeat.o(134795);
   }
   
-  public final JSONObject ayx()
+  public final JSONObject aTA()
   {
-    AppMethodBeat.i(86901);
+    AppMethodBeat.i(134796);
     JSONObject localJSONObject2;
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(this.cAh);
+      JSONObject localJSONObject1 = new JSONObject(this.dqq);
       localJSONObject2 = new JSONObject();
       try
       {
         localJSONObject2.put("appId", this.appId);
         localJSONObject2.put("extraData", localJSONObject1);
-        if (((this.hiK == 1) || (this.hiK == 3) || (this.hiK == 2)) && (!bo.isNullOrNil(this.hiL))) {
-          localJSONObject2.put("privateExtraData", new JSONObject(this.hiL));
+        if (((this.jdC == 1) || (this.jdC == 3) || (this.jdC == 2)) && (!bt.isNullOrNil(this.jdD))) {
+          localJSONObject2.put("privateExtraData", new JSONObject(this.jdD));
         }
-        if ((this.hiK == 6) && (!bo.isNullOrNil(this.cJg))) {
-          localJSONObject2.put("messageExtraData", new JSONObject(this.cJg));
+        if ((this.jdC == 6) && (!bt.isNullOrNil(this.dzY))) {
+          localJSONObject2.put("messageExtraData", new JSONObject(this.dzY));
         }
-        if ((this.hiK == 7) && (!bo.isNullOrNil(this.hiN))) {
-          localJSONObject2.put("openapiInvokeData", new JSONObject(this.hiN));
+        if ((this.jdC == 7) && (!bt.isNullOrNil(this.jdF))) {
+          localJSONObject2.put("openapiInvokeData", new JSONObject(this.jdF));
         }
-        if ((this.hiK == 7) && (!bo.isNullOrNil(this.hiO))) {
-          localJSONObject2.put("transitiveData", new JSONObject(this.hiO));
+        if ((this.jdC == 7) && (!bt.isNullOrNil(this.jdG))) {
+          localJSONObject2.put("transitiveData", new JSONObject(this.jdG));
         }
       }
       catch (Exception localException2)
@@ -104,13 +104,13 @@ public final class AppBrandLaunchReferrer
         for (;;)
         {
           String str;
-          ab.e("MicroMsg.AppBrandLaunchReferrer", "toJsonObj exception: %s", new Object[] { localException2 });
+          ad.e("MicroMsg.AppBrandLaunchReferrer", "toJsonObj exception: %s", new Object[] { localException2 });
         }
-        AppMethodBeat.o(86901);
+        AppMethodBeat.o(134796);
       }
       if (localJSONObject2.length() == 0)
       {
-        AppMethodBeat.o(86901);
+        AppMethodBeat.o(134796);
         return null;
       }
     }
@@ -118,7 +118,7 @@ public final class AppBrandLaunchReferrer
     {
       for (;;)
       {
-        str = this.cAh;
+        str = this.dqq;
       }
     }
     return localJSONObject2;
@@ -131,32 +131,32 @@ public final class AppBrandLaunchReferrer
   
   public final String toString()
   {
-    AppMethodBeat.i(86897);
-    String str = "AppBrandLaunchReferrer{launchScene=" + this.hiK + ", appId='" + this.appId + '\'' + ", extraData='" + this.cAh + '\'' + ", url='" + this.url + '\'' + ", agentId='" + this.hiM + '\'' + ", sourceType='" + this.cpG + '\'' + ", businessType='" + this.businessType + '\'' + '}';
-    AppMethodBeat.o(86897);
+    AppMethodBeat.i(134792);
+    String str = "AppBrandLaunchReferrer{launchScene=" + this.jdC + ", appId='" + this.appId + '\'' + ", extraData='" + this.dqq + '\'' + ", url='" + this.url + '\'' + ", agentId='" + this.jdE + '\'' + ", sourceType='" + this.sourceType + '\'' + ", businessType='" + this.businessType + '\'' + '}';
+    AppMethodBeat.o(134792);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(86899);
-    paramParcel.writeInt(this.hiK);
+    AppMethodBeat.i(134794);
+    paramParcel.writeInt(this.jdC);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.cAh);
-    paramParcel.writeString(this.hiL);
+    paramParcel.writeString(this.dqq);
+    paramParcel.writeString(this.jdD);
     paramParcel.writeString(this.url);
-    paramParcel.writeString(this.hiM);
-    paramParcel.writeInt(this.cpG);
+    paramParcel.writeString(this.jdE);
+    paramParcel.writeInt(this.sourceType);
     paramParcel.writeString(this.businessType);
-    paramParcel.writeString(this.cJg);
-    paramParcel.writeString(this.hiN);
-    paramParcel.writeString(this.hiO);
-    AppMethodBeat.o(86899);
+    paramParcel.writeString(this.dzY);
+    paramParcel.writeString(this.jdF);
+    paramParcel.writeString(this.jdG);
+    AppMethodBeat.o(134794);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer
  * JD-Core Version:    0.7.0.1
  */

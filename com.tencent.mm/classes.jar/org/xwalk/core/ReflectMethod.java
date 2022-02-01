@@ -18,16 +18,16 @@ public class ReflectMethod
   
   public ReflectMethod(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
   {
-    AppMethodBeat.i(85517);
+    AppMethodBeat.i(154607);
     init(null, paramClass, paramString, paramVarArgs);
-    AppMethodBeat.o(85517);
+    AppMethodBeat.o(154607);
   }
   
   public ReflectMethod(Object paramObject, String paramString, Class<?>... paramVarArgs)
   {
-    AppMethodBeat.i(85516);
+    AppMethodBeat.i(154606);
     init(paramObject, null, paramString, paramVarArgs);
-    AppMethodBeat.o(85516);
+    AppMethodBeat.o(154606);
   }
   
   public Object[] getArguments()
@@ -47,7 +47,7 @@ public class ReflectMethod
   
   public boolean init(Object paramObject, Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
   {
-    AppMethodBeat.i(85518);
+    AppMethodBeat.i(154608);
     this.mInstance = paramObject;
     if (paramClass != null) {}
     for (;;)
@@ -59,7 +59,7 @@ public class ReflectMethod
       if (this.mClass != null) {
         break;
       }
-      AppMethodBeat.o(85518);
+      AppMethodBeat.o(154608);
       return false;
       if (paramObject != null) {
         paramClass = paramObject.getClass();
@@ -72,7 +72,7 @@ public class ReflectMethod
       this.mMethod = this.mClass.getMethod(this.mName, this.mParameterTypes);
       if (this.mMethod != null)
       {
-        AppMethodBeat.o(85518);
+        AppMethodBeat.o(154608);
         return true;
       }
     }
@@ -90,41 +90,41 @@ public class ReflectMethod
           paramObject = paramObject.getSuperclass();
         }
       }
-      AppMethodBeat.o(85518);
+      AppMethodBeat.o(154608);
     }
     return false;
   }
   
   public Object invoke(Object... paramVarArgs)
   {
-    AppMethodBeat.i(85519);
+    AppMethodBeat.i(154609);
     if (this.mMethod == null)
     {
       paramVarArgs = new UnsupportedOperationException(toString());
-      AppMethodBeat.o(85519);
+      AppMethodBeat.o(154609);
       throw paramVarArgs;
     }
     try
     {
       paramVarArgs = this.mMethod.invoke(this.mInstance, paramVarArgs);
-      AppMethodBeat.o(85519);
+      AppMethodBeat.o(154609);
       return paramVarArgs;
     }
     catch (NullPointerException paramVarArgs)
     {
       paramVarArgs = new RejectedExecutionException(paramVarArgs);
-      AppMethodBeat.o(85519);
+      AppMethodBeat.o(154609);
       throw paramVarArgs;
     }
     catch (IllegalArgumentException paramVarArgs)
     {
-      AppMethodBeat.o(85519);
+      AppMethodBeat.o(154609);
       throw paramVarArgs;
     }
     catch (InvocationTargetException paramVarArgs)
     {
       paramVarArgs = new RuntimeException(paramVarArgs.getCause());
-      AppMethodBeat.o(85519);
+      AppMethodBeat.o(154609);
       throw paramVarArgs;
     }
     catch (IllegalAccessException paramVarArgs)
@@ -136,9 +136,9 @@ public class ReflectMethod
   
   public Object invokeWithArguments()
   {
-    AppMethodBeat.i(85521);
+    AppMethodBeat.i(154611);
     Object localObject = invoke(this.mArguments);
-    AppMethodBeat.o(85521);
+    AppMethodBeat.o(154611);
     return localObject;
   }
   
@@ -154,11 +154,11 @@ public class ReflectMethod
   
   public String toString()
   {
-    AppMethodBeat.i(85520);
+    AppMethodBeat.i(154610);
     if (this.mMethod != null)
     {
       str1 = this.mMethod.toString();
-      AppMethodBeat.o(85520);
+      AppMethodBeat.o(154610);
       return str1;
     }
     String str1 = "";
@@ -169,13 +169,13 @@ public class ReflectMethod
     if (this.mName != null) {
       str2 = str1 + this.mName;
     }
-    AppMethodBeat.o(85520);
+    AppMethodBeat.o(154610);
     return str2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.ReflectMethod
  * JD-Core Version:    0.7.0.1
  */

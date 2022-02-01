@@ -1,17 +1,30 @@
 package android.support.transition;
 
-import android.view.View;
+import android.os.IBinder;
 
-abstract interface am
-  extends at
+final class am
+  implements ao
 {
-  public abstract void add(View paramView);
+  private final IBinder Bo;
   
-  public abstract void remove(View paramView);
+  am(IBinder paramIBinder)
+  {
+    this.Bo = paramIBinder;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof am)) && (((am)paramObject).Bo.equals(this.Bo));
+  }
+  
+  public final int hashCode()
+  {
+    return this.Bo.hashCode();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.transition.am
  * JD-Core Version:    0.7.0.1
  */

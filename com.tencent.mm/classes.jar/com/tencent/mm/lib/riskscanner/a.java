@@ -2,31 +2,31 @@ package com.tencent.mm.lib.riskscanner;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class a
 {
-  private static ThreadLocal<Long> eMA;
+  private static ThreadLocal<Long> ghK;
   
   static
   {
-    AppMethodBeat.i(114457);
-    eMA = new ThreadLocal();
-    AppMethodBeat.o(114457);
+    AppMethodBeat.i(138298);
+    ghK = new ThreadLocal();
+    AppMethodBeat.o(138298);
   }
   
-  public static void SV()
+  public static void agP()
   {
-    AppMethodBeat.i(114454);
-    ab.i("MicroMsg.RiskScannerReportService", "Report scan triggering.");
-    e.qrI.idkeyStat(590L, 0L, 1L, true);
-    eMA.set(Long.valueOf(bo.yB()));
-    AppMethodBeat.o(114454);
+    AppMethodBeat.i(138295);
+    ad.i("MicroMsg.RiskScannerReportService", "Report scan triggering.");
+    e.vIY.idkeyStat(590L, 0L, 1L, true);
+    ghK.set(Long.valueOf(bt.GC()));
+    AppMethodBeat.o(138295);
   }
   
   /* Error */
-  public static void g(java.lang.Throwable paramThrowable)
+  public static void f(java.lang.Throwable paramThrowable)
   {
     // Byte code:
     //   0: ldc 71
@@ -40,10 +40,10 @@ final class a
     //   15: aload_0
     //   16: invokevirtual 77	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   19: aastore
-    //   20: invokestatic 80	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   23: getstatic 23	com/tencent/mm/lib/riskscanner/a:eMA	Ljava/lang/ThreadLocal;
+    //   20: invokestatic 80	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   23: getstatic 23	com/tencent/mm/lib/riskscanner/a:ghK	Ljava/lang/ThreadLocal;
     //   26: invokevirtual 83	java/lang/ThreadLocal:remove	()V
-    //   29: getstatic 44	com/tencent/mm/plugin/report/e:qrI	Lcom/tencent/mm/plugin/report/e;
+    //   29: getstatic 44	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
     //   32: ldc2_w 45
     //   35: ldc2_w 84
     //   38: lconst_1
@@ -69,7 +69,7 @@ final class a
     //   75: ldc 107
     //   77: invokevirtual 113	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   80: astore_0
-    //   81: getstatic 44	com/tencent/mm/plugin/report/e:qrI	Lcom/tencent/mm/plugin/report/e;
+    //   81: getstatic 44	com/tencent/mm/plugin/report/e:vIY	Lcom/tencent/mm/plugin/report/e;
     //   84: sipush 14177
     //   87: ldc 115
     //   89: aload_0
@@ -188,37 +188,37 @@ final class a
     //   60	101	232	java/lang/Throwable
   }
   
-  public static void jU(int paramInt)
+  public static void my(int paramInt)
   {
-    AppMethodBeat.i(114456);
-    ab.i("MicroMsg.RiskScannerReportService", "Report scan result, %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(138297);
+    ad.i("MicroMsg.RiskScannerReportService", "Report scan result, %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     default: 
-      e.qrI.idkeyStat(590L, 3L, 1L, true);
-      AppMethodBeat.o(114456);
+      e.vIY.idkeyStat(590L, 3L, 1L, true);
+      AppMethodBeat.o(138297);
       return;
     case 0: 
-      Long localLong = (Long)eMA.get();
+      Long localLong = (Long)ghK.get();
       if (localLong != null)
       {
-        long l = bo.yB() - localLong.longValue();
-        ab.i("MicroMsg.RiskScannerReportService", "Scan cost: %d ms", new Object[] { Long.valueOf(l) });
-        e.qrI.d(590, 5, 1, (int)l, true);
-        AppMethodBeat.o(114456);
+        long l = bt.GC() - localLong.longValue();
+        ad.i("MicroMsg.RiskScannerReportService", "Scan cost: %d ms", new Object[] { Long.valueOf(l) });
+        e.vIY.c(590, 5, 1, (int)l, true);
+        AppMethodBeat.o(138297);
         return;
       }
-      e.qrI.idkeyStat(590L, 1L, 1L, true);
-      AppMethodBeat.o(114456);
+      e.vIY.idkeyStat(590L, 1L, 1L, true);
+      AppMethodBeat.o(138297);
       return;
     }
-    e.qrI.idkeyStat(590L, 2L, 1L, true);
-    AppMethodBeat.o(114456);
+    e.vIY.idkeyStat(590L, 2L, 1L, true);
+    AppMethodBeat.o(138297);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.lib.riskscanner.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,19 @@
 package com.tencent.mm.modelappbrand;
 
-import com.tencent.mm.protocal.protobuf.cmn;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface k$a
+public enum k$a
 {
-  public abstract void a(String paramString, cmn paramcmn);
+  static
+  {
+    AppMethodBeat.i(2625);
+    gRz = new a("DECODE_TYPE_DEFAULT", 0);
+    gRA = new a("DECODE_TYPE_ORIGIN", 1);
+    gRB = new a[] { gRz, gRA };
+    AppMethodBeat.o(2625);
+  }
+  
+  private k$a() {}
 }
 
 

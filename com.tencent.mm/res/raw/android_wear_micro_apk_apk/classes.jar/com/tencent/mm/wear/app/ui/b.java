@@ -21,27 +21,27 @@ public final class b
   extends BaseAdapter
   implements com.tencent.mm.wear.app.f.d
 {
-  private com.tencent.mm.wear.app.f.b adI;
-  private ae aex;
-  private c aey;
+  private ae ahZ;
+  private com.tencent.mm.wear.app.f.b ahk;
+  private c aia;
   private Context context;
   
   public b(Context paramContext)
   {
     this.context = paramContext;
-    this.aex = new ae();
-    this.aex.Wa = true;
-    this.aex.Wq = 0;
-    paramContext = this.aex.Wr;
+    this.ahZ = new ae();
+    this.ahZ.XV = true;
+    this.ahZ.Yl = 0;
+    paramContext = this.ahZ.Ym;
     com.tencent.mm.e.a.c localc = new com.tencent.mm.e.a.c();
-    localc.Vo = "supers_offline_pay";
-    localc.Vp = this.context.getString(2131165224);
+    localc.Xj = "supers_offline_pay";
+    localc.Xk = this.context.getString(2131165224);
     paramContext.add(localc);
   }
   
   public final void a(c paramc)
   {
-    this.aey = paramc;
+    this.aia = paramc;
   }
   
   public final void b(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
@@ -54,10 +54,10 @@ public final class b
       {
         localae.h(paramArrayOfByte);
         paramArrayOfByte = new HashSet();
-        localIterator = this.aex.Wr.iterator();
+        localIterator = this.ahZ.Ym.iterator();
         while (localIterator.hasNext())
         {
-          paramArrayOfByte.add(((com.tencent.mm.e.a.c)localIterator.next()).Vo);
+          paramArrayOfByte.add(((com.tencent.mm.e.a.c)localIterator.next()).Xj);
           continue;
           return;
         }
@@ -67,17 +67,17 @@ public final class b
         com.tencent.mm.wear.a.c.d.a("MicroMsg.ConversationListAdapter", paramArrayOfByte);
       }
     }
-    Iterator localIterator = localae.Wr.iterator();
+    Iterator localIterator = localae.Ym.iterator();
     while (localIterator.hasNext())
     {
       com.tencent.mm.e.a.c localc = (com.tencent.mm.e.a.c)localIterator.next();
-      if (paramArrayOfByte.add(localc.Vo)) {
-        this.aex.Wr.add(localc);
+      if (paramArrayOfByte.add(localc.Xj)) {
+        this.ahZ.Ym.add(localc);
       }
     }
-    this.aex.Wq = localae.Wq;
-    this.aex.Wa = localae.Wa;
-    com.tencent.mm.wear.a.b.a.aiT.post(new Runnable()
+    this.ahZ.Yl = localae.Yl;
+    this.ahZ.XV = localae.XV;
+    com.tencent.mm.wear.a.b.a.amv.post(new Runnable()
     {
       public final void run()
       {
@@ -86,20 +86,20 @@ public final class b
         {
           c localc = b.a(b.this);
           b.this.getCount();
-          localc.mX();
+          localc.nJ();
         }
       }
     });
   }
   
-  public final com.tencent.mm.e.a.c bT(int paramInt)
+  public final com.tencent.mm.e.a.c cp(int paramInt)
   {
-    return (com.tencent.mm.e.a.c)this.aex.Wr.get(paramInt);
+    return (com.tencent.mm.e.a.c)this.ahZ.Ym.get(paramInt);
   }
   
   public final int getCount()
   {
-    return this.aex.Wr.size();
+    return this.ahZ.Ym.size();
   }
   
   public final long getItemId(int paramInt)
@@ -115,21 +115,21 @@ public final class b
       {
         paramView = LayoutInflater.from(this.context).inflate(2130903043, paramViewGroup, false);
         localObject = new d(this, (byte)0);
-        ((d)localObject).aeA = ((ImageView)paramView.findViewById(2131558442));
-        ((d)localObject).aeB = ((TextView)paramView.findViewById(2131558443));
+        ((d)localObject).aic = ((ImageView)paramView.findViewById(2131558443));
+        ((d)localObject).aid = ((TextView)paramView.findViewById(2131558444));
         paramView.setTag(localObject);
         paramViewGroup = paramView;
       }
     }
     for (paramView = (View)localObject;; paramView = (View)localObject)
     {
-      localObject = bT(paramInt);
-      paramView.aeB.setText(((com.tencent.mm.e.a.c)localObject).Vp);
-      if (!((com.tencent.mm.e.a.c)localObject).Vo.equalsIgnoreCase("supers_offline_pay")) {
+      localObject = cp(paramInt);
+      paramView.aid.setText(((com.tencent.mm.e.a.c)localObject).Xk);
+      if (!((com.tencent.mm.e.a.c)localObject).Xj.equalsIgnoreCase("supers_offline_pay")) {
         break label172;
       }
       localObject = com.tencent.mm.wear.a.f.b.a(BitmapFactory.decodeResource(this.context.getResources(), 2130837591), 6.0F);
-      paramView.aeA.setImageBitmap((Bitmap)localObject);
+      paramView.aic.setImageBitmap((Bitmap)localObject);
       return paramViewGroup;
       paramView = LayoutInflater.from(this.context).inflate(2130903044, paramViewGroup, false);
       break;
@@ -138,35 +138,35 @@ public final class b
     }
     label172:
     com.tencent.mm.wear.app.c.a locala = new com.tencent.mm.wear.app.c.a();
-    locala.acL = paramView.aeA;
-    locala.acM = 2130837531;
+    locala.agm = paramView.aic;
+    locala.agn = 2130837531;
     locala.width = 96;
     locala.height = 96;
     locala.type = 3;
-    locala.acH = ((com.tencent.mm.e.a.c)localObject).Vo;
-    locala.acO = 10;
-    h.me().a(locala);
+    locala.agi = ((com.tencent.mm.e.a.c)localObject).Xj;
+    locala.agp = 10;
+    h.mR().a(locala);
     return paramViewGroup;
   }
   
-  public final boolean mW()
+  public final boolean nI()
   {
-    if (!this.aex.Wa) {
+    if (!this.ahZ.XV) {
       return false;
     }
     ad localad = new ad();
-    localad.Wq = this.aex.Wq;
-    if (this.adI != null)
+    localad.Yl = this.ahZ.Yl;
+    if (this.ahk != null)
     {
-      this.adI.cancel();
-      this.adI = null;
+      this.ahk.cancel();
+      this.ahk = null;
     }
     try
     {
-      this.adI = new com.tencent.mm.wear.app.f.b(11008, localad.toByteArray());
-      this.adI.a(this);
-      this.adI.F(true);
-      h.mc().a(this.adI);
+      this.ahk = new com.tencent.mm.wear.app.f.b(11008, localad.toByteArray());
+      this.ahk.a(this);
+      this.ahk.I(true);
+      h.mP().a(this.ahk);
       return true;
     }
     catch (IOException localIOException)

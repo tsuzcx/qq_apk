@@ -2,9 +2,9 @@ package com.tencent.mm.kernel.api;
 
 public abstract interface f
 {
-  public abstract void RS();
+  public abstract void afJ();
   
-  public abstract void mE(String paramString);
+  public abstract void qW(String paramString);
 }
 
 

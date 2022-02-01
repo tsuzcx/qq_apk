@@ -12,63 +12,63 @@ import com.tencent.mm.ui.MMActivity;
 
 public final class i
 {
-  private View iCk;
-  MMActivity jpX;
-  View krR;
-  TextView krS;
-  TextView krT;
-  private boolean krU = false;
+  private View hIZ;
+  MMActivity nqt;
+  View nxk;
+  TextView nxl;
+  TextView nxm;
+  private boolean nxn = false;
   
   public i(MMActivity paramMMActivity, View paramView)
   {
-    this.jpX = paramMMActivity;
-    this.iCk = paramView;
+    this.nqt = paramMMActivity;
+    this.hIZ = paramView;
   }
   
-  public final void bJ()
+  public final void bKa()
   {
-    AppMethodBeat.i(88206);
-    Integer localInteger = (Integer)am.bci().getValue("key_share_card_show_type");
+    AppMethodBeat.i(113139);
+    this.nxk.setVisibility(8);
+    AppMethodBeat.o(113139);
+  }
+  
+  public final void cE()
+  {
+    AppMethodBeat.i(113140);
+    Integer localInteger = (Integer)am.bJa().getValue("key_share_card_show_type");
     Object localObject = localInteger;
     if (localInteger == null) {
       localObject = Integer.valueOf(0);
     }
-    if ((((Integer)localObject).intValue() != 0) && (!b.bcD()))
+    if ((((Integer)localObject).intValue() != 0) && (!b.bJB()))
     {
-      this.krR.setVisibility(0);
-      this.krS.setVisibility(0);
+      this.nxk.setVisibility(0);
+      this.nxl.setVisibility(0);
       localObject = new ShareCardInfo();
-      if (!TextUtils.isEmpty(((ShareCardInfo)localObject).sV(10)))
+      if (!TextUtils.isEmpty(((ShareCardInfo)localObject).yO(10)))
       {
-        this.krS.setVisibility(0);
-        this.krS.setText(((ShareCardInfo)localObject).sV(10));
+        this.nxl.setVisibility(0);
+        this.nxl.setText(((ShareCardInfo)localObject).yO(10));
       }
       while (!TextUtils.isEmpty(""))
       {
-        this.krT.setVisibility(0);
-        this.krT.setText("");
-        AppMethodBeat.o(88206);
+        this.nxm.setVisibility(0);
+        this.nxm.setText("");
+        AppMethodBeat.o(113140);
         return;
-        this.krS.setVisibility(8);
+        this.nxl.setVisibility(8);
       }
-      this.krT.setVisibility(8);
-      AppMethodBeat.o(88206);
+      this.nxm.setVisibility(8);
+      AppMethodBeat.o(113140);
       return;
     }
-    this.krR.setVisibility(8);
-    AppMethodBeat.o(88206);
-  }
-  
-  public final void bdc()
-  {
-    AppMethodBeat.i(88205);
-    this.krR.setVisibility(8);
-    AppMethodBeat.o(88205);
+    this.nxk.setVisibility(8);
+    AppMethodBeat.o(113140);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.i
  * JD-Core Version:    0.7.0.1
  */

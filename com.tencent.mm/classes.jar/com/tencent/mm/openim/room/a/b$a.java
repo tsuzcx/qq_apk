@@ -1,26 +1,26 @@
 package com.tencent.mm.openim.room.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bia;
+import com.tencent.mm.protocal.protobuf.bvj;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b$a
 {
-  public static LinkedList<bia> al(List<String> paramList)
+  public static LinkedList<bvj> aG(List<String> paramList)
   {
-    AppMethodBeat.i(78975);
+    AppMethodBeat.i(151319);
     LinkedList localLinkedList = new LinkedList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       String str = (String)paramList.next();
-      bia localbia = new bia();
-      localbia.userName = str;
-      localLinkedList.add(localbia);
+      bvj localbvj = new bvj();
+      localbvj.userName = str;
+      localLinkedList.add(localbvj);
     }
-    AppMethodBeat.o(78975);
+    AppMethodBeat.o(151319);
     return localLinkedList;
   }
 }

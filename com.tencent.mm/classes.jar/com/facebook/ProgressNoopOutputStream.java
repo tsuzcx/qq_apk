@@ -18,15 +18,15 @@ class ProgressNoopOutputStream
   
   ProgressNoopOutputStream(Handler paramHandler)
   {
-    AppMethodBeat.i(71832);
+    AppMethodBeat.i(17268);
     this.progressMap = new HashMap();
     this.callbackHandler = paramHandler;
-    AppMethodBeat.o(71832);
+    AppMethodBeat.o(17268);
   }
   
   void addProgress(long paramLong)
   {
-    AppMethodBeat.i(71834);
+    AppMethodBeat.i(17270);
     if (this.currentRequestProgress == null)
     {
       this.currentRequestProgress = new RequestProgress(this.callbackHandler, this.currentRequest);
@@ -34,7 +34,7 @@ class ProgressNoopOutputStream
     }
     this.currentRequestProgress.addToMax(paramLong);
     this.batchMax = ((int)(this.batchMax + paramLong));
-    AppMethodBeat.o(71834);
+    AppMethodBeat.o(17270);
   }
   
   int getMaxProgress()
@@ -49,41 +49,41 @@ class ProgressNoopOutputStream
   
   public void setCurrentRequest(GraphRequest paramGraphRequest)
   {
-    AppMethodBeat.i(71833);
+    AppMethodBeat.i(17269);
     this.currentRequest = paramGraphRequest;
     if (paramGraphRequest != null) {}
     for (paramGraphRequest = (RequestProgress)this.progressMap.get(paramGraphRequest);; paramGraphRequest = null)
     {
       this.currentRequestProgress = paramGraphRequest;
-      AppMethodBeat.o(71833);
+      AppMethodBeat.o(17269);
       return;
     }
   }
   
   public void write(int paramInt)
   {
-    AppMethodBeat.i(71837);
+    AppMethodBeat.i(17273);
     addProgress(1L);
-    AppMethodBeat.o(71837);
+    AppMethodBeat.o(17273);
   }
   
   public void write(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(71835);
+    AppMethodBeat.i(17271);
     addProgress(paramArrayOfByte.length);
-    AppMethodBeat.o(71835);
+    AppMethodBeat.o(17271);
   }
   
   public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(71836);
+    AppMethodBeat.i(17272);
     addProgress(paramInt2);
-    AppMethodBeat.o(71836);
+    AppMethodBeat.o(17272);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.ProgressNoopOutputStream
  * JD-Core Version:    0.7.0.1
  */

@@ -1,337 +1,320 @@
 package com.tencent.mm.ui.chatting.c;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.content.res.Resources;
+import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.g.a.kp;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.u;
+import com.tencent.mm.model.w;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.n.d;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.c.b.d;
+import com.tencent.mm.ui.chatting.aj;
+import com.tencent.mm.ui.chatting.c.b.ak;
 import com.tencent.mm.ui.chatting.c.b.z;
-import com.tencent.mm.ui.chatting.f.d.a;
-import com.tencent.mm.ui.chatting.u;
-import com.tencent.mm.ui.tools.q;
-import java.util.ArrayList;
+import com.tencent.mm.ui.widget.a.d.a;
+import java.util.List;
 
-@com.tencent.mm.ui.chatting.c.a.a(dJy=z.class)
+@com.tencent.mm.ui.chatting.c.a.a(eYT=z.class)
 public class ag
   extends a
   implements z
 {
-  private q eiV = null;
-  public boolean zHA = false;
-  private TextView zHB;
-  private ListView zHC;
-  private View zHD;
-  private u zHE;
-  public boolean zHF = false;
-  private boolean zHG = true;
-  private int zHH = 0;
-  private boolean zHI = false;
-  private View zHs;
-  public boolean zHt = false;
-  public boolean zHu = false;
-  public boolean zHv = false;
-  public boolean zHw = false;
-  public boolean zHx = false;
-  private long zHy = -1L;
-  private ArrayList<String> zHz;
-  
-  public final void PI(int paramInt)
+  public final boolean bx(bl parambl)
   {
-    AppMethodBeat.i(31656);
-    ab.i("MicroMsg.ChattingUI.SearchComponent", "search result count %d, in edit mode %B, can report %B", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.zHF), Boolean.valueOf(this.zHG) });
-    if ((!this.zHt) && (!this.zHF))
+    AppMethodBeat.i(35467);
+    if (parambl.cxD())
     {
-      ab.d("MicroMsg.ChattingUI.SearchComponent", "not search now");
-      AppMethodBeat.o(31656);
-      return;
-    }
-    if ((this.zHG) && (paramInt >= 0))
-    {
-      this.zHG = false;
-      com.tencent.mm.plugin.report.service.h.qsU.e(10811, new Object[] { Integer.valueOf(2) });
-    }
-    if (paramInt > 0)
-    {
-      this.zHC.setVisibility(0);
-      this.caz.Pv(8);
-      this.zHB.setVisibility(8);
-      this.zHD.setVisibility(8);
-      AppMethodBeat.o(31656);
-      return;
-    }
-    if (paramInt == 0)
-    {
-      this.zHC.setVisibility(8);
-      this.caz.Pv(8);
-      this.zHB.setVisibility(0);
-      this.zHD.setVisibility(8);
-      AppMethodBeat.o(31656);
-      return;
-    }
-    this.zHC.setVisibility(8);
-    this.caz.Pv(0);
-    this.zHB.setVisibility(8);
-    this.zHD.setVisibility(0);
-    AppMethodBeat.o(31656);
-  }
-  
-  public final void dBY()
-  {
-    AppMethodBeat.i(31659);
-    this.zHt = this.caz.zJz.getBooleanExtra("search_chat_content", false).booleanValue();
-    this.zHu = this.caz.zJz.getBooleanExtra("show_search_chat_content_result", false).booleanValue();
-    this.zHz = this.caz.zJz.getStringArrayList("highlight_keyword_list");
-    this.zHy = this.caz.zJz.getLongExtra("msg_local_id", -1L);
-    this.zHw = this.caz.zJz.getBooleanExtra("from_global_search", false).booleanValue();
-    this.zHx = this.caz.zJz.getBooleanExtra("from_date_search", false).booleanValue();
-    this.zHv = this.caz.zJz.getBooleanExtra("img_gallery_enter_from_chatting_ui", false).booleanValue();
-    AppMethodBeat.o(31659);
-  }
-  
-  public final void dBZ()
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(31660);
-    if ((this.zHy >= 0L) && (!this.zHI)) {
-      al.p(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(31643);
-          if (!ag.a(ag.this))
-          {
-            ag.b(ag.this);
-            ag.c(ag.this);
-            if (ag.this.caz != null) {
-              ag.this.caz.aWN();
-            }
-            ab.i("MicroMsg.ChattingUI.SearchComponent", "dismiss fts highlight");
-          }
-          AppMethodBeat.o(31643);
-        }
-      }, 2000L);
-    }
-    long l;
-    com.tencent.mm.ui.chatting.c.b.h localh;
-    if (this.zHt)
-    {
-      ab.i("MicroMsg.ChattingUI.SearchComponent", "[initSearchView]");
-      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(219L, 11L, 1L, true);
-      i.a(this.caz.zJz, 2131822447);
-      this.zHs = this.caz.findViewById(2131822448);
-      this.zHD = this.caz.findViewById(2131827491);
-      this.caz.getListView().setFocusable(false);
-      this.caz.getListView().setFocusableInTouchMode(false);
-      this.zHD.setOnClickListener(new ag.3(this));
-      if (this.zHB == null)
-      {
-        i.a(this.caz.zJz, 2131822443);
-        this.zHB = ((TextView)this.caz.findViewById(2131822796));
-      }
-      if ((this.caz.dJF()) || (((d)this.caz.ay(d.class)).dHw()))
-      {
-        bool1 = true;
-        this.zHE = new u(this.caz.zJz.getContext(), new bi(), this.caz.getTalkerUserName(), this.caz.dJD(), bool1);
-        this.zHE.zAw = new ag.4(this);
-        this.zHC = ((ListView)this.caz.findViewById(2131827490));
-        this.zHC.setAdapter(this.zHE);
-        this.zHC.setOnItemClickListener(new ag.5(this));
-        this.zHC.setOnTouchListener(new ag.6(this));
-        this.eiV = new q();
-        this.eiV.Axg = new ag.7(this);
-        this.caz.zJz.addSearchMenu(true, this.eiV);
-        this.eiV.ru(true);
-      }
-    }
-    else if ((this.zHu) || (this.zHw) || (this.zHx))
-    {
-      l = this.caz.zJz.getLongExtra("msg_local_id", -1L);
-      localh = (com.tencent.mm.ui.chatting.c.b.h)this.caz.ay(com.tencent.mm.ui.chatting.c.b.h.class);
-      if ((!this.zHw) || (this.zHx)) {
-        break label468;
-      }
-    }
-    label468:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localh.a(l, bool1, d.a.zOA);
-      AppMethodBeat.o(31660);
-      return;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public final void dCc()
-  {
-    AppMethodBeat.i(31661);
-    if (this.zHF)
-    {
-      dIY();
-      ((com.tencent.mm.ui.chatting.c.b.i)this.caz.ay(com.tencent.mm.ui.chatting.c.b.i.class)).dHX();
-    }
-    AppMethodBeat.o(31661);
-  }
-  
-  public final void dHq()
-  {
-    AppMethodBeat.i(31658);
-    super.dHq();
-    this.zHI = true;
-    if (this.zHE != null) {
-      this.zHE.bKb();
-    }
-    if (this.eiV != null) {
-      this.eiV.clearFocus();
-    }
-    AppMethodBeat.o(31658);
-  }
-  
-  public final ArrayList<String> dIV()
-  {
-    return this.zHz;
-  }
-  
-  public final boolean dIW()
-  {
-    return this.zHv;
-  }
-  
-  public final void dIX()
-  {
-    AppMethodBeat.i(31654);
-    if (this.zHs == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ab.v("MicroMsg.ChattingUI.SearchComponent", "enter edit search mode, search stub view is null?%B", new Object[] { Boolean.valueOf(bool) });
-      this.zHF = true;
-      this.caz.Pv(8);
-      if (this.zHs == null) {
-        break;
-      }
-      this.zHs.setVisibility(0);
-      if (this.zHE != null) {
-        this.zHE.talker = this.caz.getTalkerUserName();
-      }
-      PI(-1);
-      AppMethodBeat.o(31654);
-      return;
-    }
-    i.a(this.caz.zJz, 2131822447);
-    this.zHs = this.caz.findViewById(2131822448);
-    this.zHs.setVisibility(0);
-    this.zHD = this.caz.findViewById(2131827491);
-    this.caz.getListView().setFocusable(false);
-    this.caz.getListView().setFocusableInTouchMode(false);
-    this.zHD.setOnClickListener(new ag.8(this));
-    this.zHD.setVisibility(8);
-    this.zHB = ((TextView)this.caz.findViewById(2131822796));
-    if ((this.caz.dJF()) || (((d)this.caz.ay(d.class)).dHw())) {}
-    for (bool = true;; bool = false)
-    {
-      this.zHE = new u(this.caz.zJz.getContext(), new bi(), this.caz.getTalkerUserName(), this.caz.dJD(), bool);
-      this.zHE.zAw = new ag.9(this);
-      this.zHC = ((ListView)this.caz.findViewById(2131827490));
-      this.zHC.setVisibility(0);
-      this.zHC.setAdapter(this.zHE);
-      this.zHC.setOnItemClickListener(new ag.10(this));
-      this.zHC.setOnTouchListener(new View.OnTouchListener()
-      {
-        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-        {
-          AppMethodBeat.i(31644);
-          ag.this.caz.hideVKB();
-          AppMethodBeat.o(31644);
-          return false;
-        }
-      });
-      break;
-    }
-  }
-  
-  public final void dIY()
-  {
-    AppMethodBeat.i(31655);
-    ab.v("MicroMsg.ChattingUI.SearchComponent", "exit edit search mode");
-    this.zHF = false;
-    this.zHG = true;
-    if (this.zHB != null) {
-      this.zHB.setVisibility(8);
-    }
-    if (this.zHD != null) {
-      this.zHD.setVisibility(8);
-    }
-    if (this.zHC != null) {
-      this.zHC.setVisibility(8);
-    }
-    this.caz.Pv(0);
-    this.caz.hideVKB();
-    AppMethodBeat.o(31655);
-  }
-  
-  public final boolean dIZ()
-  {
-    return this.zHF;
-  }
-  
-  public final u dJa()
-  {
-    return this.zHE;
-  }
-  
-  public final boolean dJb()
-  {
-    return this.zHu;
-  }
-  
-  public final boolean dJc()
-  {
-    return this.zHt;
-  }
-  
-  public final boolean dJd()
-  {
-    return this.zHw;
-  }
-  
-  public final boolean dJe()
-  {
-    return this.zHx;
-  }
-  
-  public final boolean dJf()
-  {
-    return this.zHA;
-  }
-  
-  public final boolean oD(long paramLong)
-  {
-    AppMethodBeat.i(31653);
-    if ((this.zHy == paramLong) && (this.zHw) && (this.zHz != null) && (this.zHz.size() > 0))
-    {
-      AppMethodBeat.o(31653);
+      aj.br(parambl);
+      this.cOd.wc(true);
+      AppMethodBeat.o(35467);
       return true;
     }
-    AppMethodBeat.o(31653);
+    AppMethodBeat.o(35467);
     return false;
   }
   
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public final void eQB()
   {
-    AppMethodBeat.i(31657);
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if ((((com.tencent.mm.ui.chatting.c.b.h)this.caz.ay(com.tencent.mm.ui.chatting.c.b.h.class)).isInEditMode()) && (this.zHF)) {
-      dIY();
+    AppMethodBeat.i(35473);
+    kp localkp = new kp();
+    localkp.dpf.doZ = 0;
+    localkp.dpf.aSt = ac.eFu();
+    if (w.pF(this.cOd.zgX.field_username)) {}
+    for (localkp.dpf.dph = true;; localkp.dpf.dph = false)
+    {
+      com.tencent.mm.sdk.b.a.ESL.l(localkp);
+      AppMethodBeat.o(35473);
+      return;
     }
-    AppMethodBeat.o(31657);
+  }
+  
+  public final void eQF()
+  {
+    AppMethodBeat.i(35474);
+    com.tencent.mm.g.a.bt localbt = new com.tencent.mm.g.a.bt();
+    com.tencent.mm.sdk.b.a.ESL.l(localbt);
+    AppMethodBeat.o(35474);
+  }
+  
+  public final void eWx()
+  {
+    AppMethodBeat.i(35472);
+    super.eWx();
+    kp localkp = new kp();
+    localkp.dpf.doZ = 2;
+    com.tencent.mm.sdk.b.a.ESL.l(localkp);
+    AppMethodBeat.o(35472);
+  }
+  
+  public final void eYl()
+  {
+    AppMethodBeat.i(35468);
+    final boolean bool1;
+    if ((af.aHH(this.cOd.getTalkerUserName())) || (w.sn(this.cOd.zgX.field_username))) {
+      if ((((com.tencent.mm.openim.a.b)g.ab(com.tencent.mm.openim.a.b.class)).Bi(this.cOd.zgX.field_openImAppid) & 0x1000) == 0) {
+        bool1 = true;
+      }
+    }
+    for (;;)
+    {
+      if ((w.sp(this.cOd.zgX.field_username)) && ((u.arq() & 0x8) != 0)) {}
+      for (final boolean bool2 = true;; bool2 = false)
+      {
+        com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(this.cOd.GzJ.getContext(), 1, false);
+        locale.HrX = new n.c()
+        {
+          public final void onCreateMMMenu(l paramAnonymousl)
+          {
+            AppMethodBeat.i(35463);
+            if (bool2)
+            {
+              paramAnonymousl.c(1, ag.this.cOd.GzJ.getMMResources().getString(2131760732));
+              paramAnonymousl.c(2, ag.this.cOd.GzJ.getMMResources().getString(2131760733));
+              AppMethodBeat.o(35463);
+              return;
+            }
+            if ((!ag.a(ag.this)) || (bool1))
+            {
+              paramAnonymousl.c(1, ag.this.cOd.GzJ.getMMResources().getString(2131760732));
+              AppMethodBeat.o(35463);
+              return;
+            }
+            paramAnonymousl.c(1, ag.this.cOd.GzJ.getMMResources().getString(2131760732));
+            paramAnonymousl.c(2, ag.this.cOd.GzJ.getMMResources().getString(2131760733));
+            AppMethodBeat.o(35463);
+          }
+        };
+        locale.HrY = new n.d()
+        {
+          public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(35464);
+            switch (paramAnonymousMenuItem.getItemId())
+            {
+            }
+            for (;;)
+            {
+              AppMethodBeat.o(35464);
+              return;
+              if (com.tencent.mm.ax.b.yL((String)g.afB().afk().get(274436, null)))
+              {
+                if ((com.tencent.mm.pluginsdk.permission.b.o(ag.this.cOd.GzJ.getContext(), "android.permission.ACCESS_FINE_LOCATION")) && (com.tencent.mm.pluginsdk.permission.b.o(ag.this.cOd.GzJ.getContext(), "android.permission.ACCESS_COARSE_LOCATION"))) {}
+                for (paramAnonymousInt = 1;; paramAnonymousInt = 0)
+                {
+                  if (paramAnonymousInt != 0) {
+                    break label291;
+                  }
+                  if (((Boolean)g.afB().afk().get(ae.a.FtT, Boolean.FALSE)).booleanValue()) {
+                    break;
+                  }
+                  com.tencent.mm.plugin.account.a.b.a.b(ag.this.cOd.GzJ.getContext(), ag.this.cOd.GzJ.getMMResources().getString(2131760740, new Object[] { ac.eFu() }), 30763, true);
+                  AppMethodBeat.o(35464);
+                  return;
+                }
+                com.tencent.mm.pluginsdk.permission.b.a(ag.this.cOd.GzJ.getContext(), new String[] { "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" }, 67);
+                AppMethodBeat.o(35464);
+                return;
+              }
+              boolean bool = com.tencent.mm.pluginsdk.permission.b.a(ag.this.cOd.GzJ.getContext(), new String[] { "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" }, 67, null, null);
+              ad.d("MicroMsg.ChattingUI.LocationComponent", "summerper checkPermission checkLocation[%b]", new Object[] { Boolean.valueOf(bool) });
+              if (!bool)
+              {
+                AppMethodBeat.o(35464);
+                return;
+              }
+              label291:
+              ag.this.eYm();
+              AppMethodBeat.o(35464);
+              return;
+              if (com.tencent.mm.ax.b.yL((String)g.afB().afk().get(274436, null)))
+              {
+                if ((com.tencent.mm.pluginsdk.permission.b.o(ag.this.cOd.GzJ.getContext(), "android.permission.ACCESS_FINE_LOCATION")) && (com.tencent.mm.pluginsdk.permission.b.o(ag.this.cOd.GzJ.getContext(), "android.permission.ACCESS_COARSE_LOCATION"))) {}
+                for (paramAnonymousInt = 1;; paramAnonymousInt = 0)
+                {
+                  if (paramAnonymousInt != 0) {
+                    break label557;
+                  }
+                  if (((Boolean)g.afB().afk().get(ae.a.FtT, Boolean.FALSE)).booleanValue()) {
+                    break;
+                  }
+                  com.tencent.mm.plugin.account.a.b.a.b(ag.this.cOd.GzJ.getContext(), ag.this.cOd.GzJ.getMMResources().getString(2131760740, new Object[] { ac.eFu() }), 30762, true);
+                  AppMethodBeat.o(35464);
+                  return;
+                }
+                com.tencent.mm.pluginsdk.permission.b.a(ag.this.cOd.GzJ.getContext(), new String[] { "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" }, 68);
+                AppMethodBeat.o(35464);
+                return;
+              }
+              bool = com.tencent.mm.pluginsdk.permission.b.a(ag.this.cOd.GzJ.getContext(), new String[] { "android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION" }, 68, null, null);
+              ad.d("MicroMsg.ChattingUI.LocationComponent", "summerper checkPermission checkLocation[%b]", new Object[] { Boolean.valueOf(bool) });
+              if (!bool)
+              {
+                AppMethodBeat.o(35464);
+                return;
+              }
+              label557:
+              ag.this.eYn();
+            }
+          }
+        };
+        locale.csG();
+        AppMethodBeat.o(35468);
+        return;
+        bool1 = false;
+        break;
+      }
+      bool1 = false;
+    }
+  }
+  
+  public final void eYm()
+  {
+    AppMethodBeat.i(35469);
+    com.tencent.mm.plugin.report.service.h.vKh.f(12809, new Object[] { Integer.valueOf(1), "" });
+    Intent localIntent = new Intent();
+    if (this.cOd.eZb()) {
+      localIntent.putExtra("type_tag", 2);
+    }
+    for (;;)
+    {
+      localIntent.putExtra("map_view_type", 0);
+      localIntent.putExtra("map_sender_name", this.cOd.eYX());
+      localIntent.putExtra("map_talker_name", this.cOd.getTalkerUserName());
+      com.tencent.mm.bs.d.b(this.cOd.GzJ.getContext(), "location", ".ui.RedirectUI", localIntent);
+      AppMethodBeat.o(35469);
+      return;
+      localIntent.putExtra("type_tag", 1);
+    }
+  }
+  
+  public final void eYn()
+  {
+    AppMethodBeat.i(35470);
+    if ((!com.tencent.mm.r.a.ce(this.cOd.GzJ.getContext())) && (!com.tencent.mm.r.a.cc(this.cOd.GzJ.getContext())))
+    {
+      if (((com.tencent.mm.plugin.multitalk.model.a)g.ab(com.tencent.mm.plugin.multitalk.model.a.class)).ahp(this.cOd.getTalkerUserName()))
+      {
+        ad.i("MicroMsg.ChattingUI.LocationComponent", "click share location, but now is in multitalk!");
+        com.tencent.mm.ui.base.h.j(this.cOd.GzJ.getContext(), 2131761410, 2131755906);
+        AppMethodBeat.o(35470);
+        return;
+      }
+      if (!com.tencent.mm.sdk.platformtools.bt.isNullOrNil(null))
+      {
+        int j = 0;
+        int i = j;
+        Object localObject;
+        if (com.tencent.mm.bj.d.hxx != null)
+        {
+          i = j;
+          if (com.tencent.mm.bj.d.hxx.zA(this.cOd.zgX.field_username))
+          {
+            localObject = com.tencent.mm.bj.d.hxx.zz(this.cOd.zgX.field_username);
+            i = j;
+            if (localObject != null)
+            {
+              i = j;
+              if (((List)localObject).contains(this.cOd.eYX())) {
+                i = 1;
+              }
+            }
+          }
+        }
+        if (i == 0)
+        {
+          localObject = new d.a(this.cOd.GzJ.getContext());
+          ((d.a)localObject).aMg(null);
+          ((d.a)localObject).aaB(2131760315).b(new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(35465);
+              paramAnonymousDialogInterface.dismiss();
+              AppMethodBeat.o(35465);
+            }
+          });
+          ((d.a)localObject).fft().show();
+          AppMethodBeat.o(35470);
+          return;
+        }
+      }
+      ((ak)this.cOd.be(ak.class)).aKN("fromPluginLocation");
+    }
+    AppMethodBeat.o(35470);
+  }
+  
+  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(35471);
+    super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(35471);
+      return;
+      if ((paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == 0))
+      {
+        if (paramInt == 67)
+        {
+          eYm();
+          AppMethodBeat.o(35471);
+          return;
+        }
+        eYn();
+        AppMethodBeat.o(35471);
+        return;
+      }
+      com.tencent.mm.ui.base.h.a(this.cOd.GzJ.getContext(), this.cOd.GzJ.getMMResources().getString(2131761869), this.cOd.GzJ.getMMResources().getString(2131761885), this.cOd.GzJ.getMMResources().getString(2131760598), this.cOd.GzJ.getMMResources().getString(2131756766), false, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(35466);
+          paramAnonymousDialogInterface = ag.this.cOd.GzJ;
+          Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/chatting/component/LocationComponent$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/ui/chatting/component/LocationComponent$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          AppMethodBeat.o(35466);
+        }
+      }, null);
+    }
   }
 }
 

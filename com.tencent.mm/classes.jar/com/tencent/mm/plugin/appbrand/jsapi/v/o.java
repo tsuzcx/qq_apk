@@ -1,0 +1,35 @@
+package com.tencent.mm.plugin.appbrand.jsapi.v;
+
+import android.content.Context;
+import android.os.Vibrator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONObject;
+
+public final class o
+  extends a
+{
+  public static final int CTRL_INDEX = 231;
+  public static final String NAME = "vibrateLong";
+  
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  {
+    AppMethodBeat.i(137689);
+    ad.d("MicroMsg.JsApiVibrateLong", "JsApiVibrateLong!");
+    paramJSONObject = (Vibrator)paramc.getContext().getSystemService("vibrator");
+    if (paramJSONObject != null) {
+      paramJSONObject.vibrate(400L);
+    }
+    paramc.h(paramInt, e("ok", null));
+    AppMethodBeat.o(137689);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.v.o
+ * JD-Core Version:    0.7.0.1
+ */

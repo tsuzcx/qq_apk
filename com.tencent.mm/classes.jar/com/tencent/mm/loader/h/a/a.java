@@ -2,25 +2,25 @@ package com.tencent.mm.loader.h.a;
 
 public final class a<T>
 {
-  protected b eQh;
+  protected b glK;
   protected T value;
   
   public a(c paramc)
   {
     this.value = paramc;
-    this.eQh = b.eQl;
+    this.glK = b.glO;
   }
   
   public a(String paramString)
   {
     this.value = paramString;
-    this.eQh = b.eQl;
+    this.glK = b.glO;
   }
   
   private a(String paramString, b paramb)
   {
     this.value = paramString;
-    this.eQh = paramb;
+    this.glK = paramb;
   }
   
   public static <T extends String> a<T> a(T paramT, b paramb)
@@ -28,17 +28,12 @@ public final class a<T>
     return new a(paramT, paramb);
   }
   
-  public final b Ud()
+  public final b ahO()
   {
-    return this.eQh;
+    return this.glK;
   }
   
-  public final boolean Ue()
-  {
-    return this.value != null;
-  }
-  
-  public final String Uf()
+  public final String ahQ()
   {
     return this.value.toString();
   }
@@ -48,7 +43,7 @@ public final class a<T>
     if (this.value != null)
     {
       if (((this.value instanceof c)) && ((paramObject instanceof a)) && ((((a)paramObject).value instanceof c))) {
-        return ((c)this.value).Ug().equals(((c)((a)paramObject).value).Ug());
+        return ((c)this.value).aaX().equals(((c)((a)paramObject).value).aaX());
       }
       if ((paramObject instanceof a)) {
         return this.value.equals(((a)paramObject).value);
@@ -65,13 +60,18 @@ public final class a<T>
     return super.hashCode();
   }
   
+  public final boolean isLegal()
+  {
+    return this.value != null;
+  }
+  
   public final String toString()
   {
     if (this.value == null) {
       return "";
     }
     if ((this.value instanceof c)) {
-      return ((c)this.value).Ug();
+      return ((c)this.value).aaX();
     }
     return this.value.toString();
   }
@@ -83,7 +83,7 @@ public final class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.h.a.a
  * JD-Core Version:    0.7.0.1
  */

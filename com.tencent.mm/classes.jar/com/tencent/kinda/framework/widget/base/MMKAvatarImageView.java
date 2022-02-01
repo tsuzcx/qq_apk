@@ -4,7 +4,7 @@ import android.widget.ImageView;
 import com.tencent.kinda.gen.KAvatarImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class MMKAvatarImageView
   extends MMKImageView
@@ -19,28 +19,28 @@ public class MMKAvatarImageView
   
   public void setUsername(String paramString)
   {
-    AppMethodBeat.i(144841);
+    AppMethodBeat.i(18992);
     this.username = paramString;
-    if (!bo.isNullOrNil(this.username))
+    if (!bt.isNullOrNil(this.username))
     {
       if (getCornerRadius() == 0.0F) {
-        break label58;
+        break label60;
       }
       a.b.a((ImageView)getView(), this.username, getCornerRadius(), false);
     }
     for (;;)
     {
       notifyChanged();
-      AppMethodBeat.o(144841);
+      AppMethodBeat.o(18992);
       return;
-      label58:
+      label60:
       a.b.c((ImageView)getView(), this.username);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKAvatarImageView
  * JD-Core Version:    0.7.0.1
  */

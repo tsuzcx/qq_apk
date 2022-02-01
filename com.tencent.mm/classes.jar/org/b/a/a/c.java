@@ -8,25 +8,39 @@ public class c
 {
   public final String b(i parami)
   {
-    AppMethodBeat.i(77234);
+    AppMethodBeat.i(40503);
     parami = String.format("https://api.twitter.com/oauth/authorize?oauth_token=%s", new Object[] { parami.token });
-    AppMethodBeat.o(77234);
+    AppMethodBeat.o(40503);
     return parami;
   }
   
-  public String erw()
+  public String fMY()
   {
     return "http://api.twitter.com/oauth/request_token";
   }
   
-  public String erx()
+  public String fMZ()
   {
     return "http://api.twitter.com/oauth/access_token";
+  }
+  
+  public static class a
+    extends c
+  {
+    public final String fMY()
+    {
+      return "https://api.twitter.com/oauth/request_token";
+    }
+    
+    public final String fMZ()
+    {
+      return "https://api.twitter.com/oauth/access_token";
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.b.a.a.c
  * JD-Core Version:    0.7.0.1
  */

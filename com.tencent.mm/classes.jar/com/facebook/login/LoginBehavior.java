@@ -13,7 +13,7 @@ public enum LoginBehavior
   
   static
   {
-    AppMethodBeat.i(96788);
+    AppMethodBeat.i(7812);
     NATIVE_WITH_FALLBACK = new LoginBehavior("NATIVE_WITH_FALLBACK", 0, true, true, true, false, true, true);
     NATIVE_ONLY = new LoginBehavior("NATIVE_ONLY", 1, true, true, false, false, false, true);
     KATANA_ONLY = new LoginBehavior("KATANA_ONLY", 2, false, true, false, false, false, false);
@@ -22,7 +22,7 @@ public enum LoginBehavior
     DIALOG_ONLY = new LoginBehavior("DIALOG_ONLY", 5, false, true, true, false, true, true);
     DEVICE_AUTH = new LoginBehavior("DEVICE_AUTH", 6, false, false, false, true, false, false);
     $VALUES = new LoginBehavior[] { NATIVE_WITH_FALLBACK, NATIVE_ONLY, KATANA_ONLY, WEB_ONLY, WEB_VIEW_ONLY, DIALOG_ONLY, DEVICE_AUTH };
-    AppMethodBeat.o(96788);
+    AppMethodBeat.o(7812);
   }
   
   private LoginBehavior(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6)
@@ -67,7 +67,7 @@ public enum LoginBehavior
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.login.LoginBehavior
  * JD-Core Version:    0.7.0.1
  */

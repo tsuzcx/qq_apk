@@ -19,11 +19,11 @@ import javax.annotation.concurrent.GuardedBy;
 
 public final class f
 {
-  private final Context bfj;
+  private final Context bDj;
   @GuardedBy("this")
-  private int bfk;
+  private int bDk;
   @GuardedBy("this")
-  private int bfl = 0;
+  private int bDl = 0;
   @GuardedBy("this")
   private String zzbu;
   @GuardedBy("this")
@@ -31,138 +31,138 @@ public final class f
   
   public f(Context paramContext)
   {
-    this.bfj = paramContext;
+    this.bDj = paramContext;
   }
   
   public static String a(KeyPair paramKeyPair)
   {
-    AppMethodBeat.i(108718);
+    AppMethodBeat.i(4154);
     paramKeyPair = paramKeyPair.getPublic().getEncoded();
     try
     {
       paramKeyPair = MessageDigest.getInstance("SHA1").digest(paramKeyPair);
       paramKeyPair[0] = ((byte)((paramKeyPair[0] & 0xF) + 112));
       paramKeyPair = Base64.encodeToString(paramKeyPair, 0, 8, 11);
-      AppMethodBeat.o(108718);
+      AppMethodBeat.o(4154);
       return paramKeyPair;
     }
     catch (NoSuchAlgorithmException paramKeyPair)
     {
-      AppMethodBeat.o(108718);
-    }
-    return null;
-  }
-  
-  private final PackageInfo aX(String paramString)
-  {
-    AppMethodBeat.i(108723);
-    try
-    {
-      paramString = this.bfj.getPackageManager().getPackageInfo(paramString, 0);
-      AppMethodBeat.o(108723);
-      return paramString;
-    }
-    catch (PackageManager.NameNotFoundException paramString)
-    {
-      paramString = String.valueOf(paramString);
-      new StringBuilder(String.valueOf(paramString).length() + 23).append("Failed to find package ").append(paramString);
-      AppMethodBeat.o(108723);
+      AppMethodBeat.o(4154);
     }
     return null;
   }
   
   public static String b(a parama)
   {
-    AppMethodBeat.i(108717);
-    String str = parama.rA().ben;
+    AppMethodBeat.i(4153);
+    String str = parama.wz().bCn;
     if (str != null)
     {
-      AppMethodBeat.o(108717);
+      AppMethodBeat.o(4153);
       return str;
     }
-    parama = parama.rA().zzs;
+    parama = parama.wz().zzs;
     if (!parama.startsWith("1:"))
     {
-      AppMethodBeat.o(108717);
+      AppMethodBeat.o(4153);
       return parama;
     }
     parama = parama.split(":");
     if (parama.length < 2)
     {
-      AppMethodBeat.o(108717);
+      AppMethodBeat.o(4153);
       return null;
     }
     parama = parama[1];
     if (parama.isEmpty())
     {
-      AppMethodBeat.o(108717);
+      AppMethodBeat.o(4153);
       return null;
     }
-    AppMethodBeat.o(108717);
+    AppMethodBeat.o(4153);
     return parama;
+  }
+  
+  private final PackageInfo be(String paramString)
+  {
+    AppMethodBeat.i(4159);
+    try
+    {
+      paramString = this.bDj.getPackageManager().getPackageInfo(paramString, 0);
+      AppMethodBeat.o(4159);
+      return paramString;
+    }
+    catch (PackageManager.NameNotFoundException paramString)
+    {
+      paramString = String.valueOf(paramString);
+      new StringBuilder(String.valueOf(paramString).length() + 23).append("Failed to find package ").append(paramString);
+      AppMethodBeat.o(4159);
+    }
+    return null;
   }
   
   private final void zzab()
   {
     try
     {
-      AppMethodBeat.i(108722);
-      PackageInfo localPackageInfo = aX(this.bfj.getPackageName());
+      AppMethodBeat.i(4158);
+      PackageInfo localPackageInfo = be(this.bDj.getPackageName());
       if (localPackageInfo != null)
       {
         this.zzbu = Integer.toString(localPackageInfo.versionCode);
         this.zzbv = localPackageInfo.versionName;
       }
-      AppMethodBeat.o(108722);
+      AppMethodBeat.o(4158);
       return;
     }
     finally {}
   }
   
-  public final String rW()
+  public final String wV()
   {
     try
     {
-      AppMethodBeat.i(108719);
+      AppMethodBeat.i(4155);
       if (this.zzbu == null) {
         zzab();
       }
       String str = this.zzbu;
-      AppMethodBeat.o(108719);
+      AppMethodBeat.o(4155);
       return str;
     }
     finally {}
   }
   
-  public final String rX()
+  public final String wW()
   {
     try
     {
-      AppMethodBeat.i(108720);
+      AppMethodBeat.i(4156);
       if (this.zzbv == null) {
         zzab();
       }
       String str = this.zzbv;
-      AppMethodBeat.o(108720);
+      AppMethodBeat.o(4156);
       return str;
     }
     finally {}
   }
   
-  public final int rY()
+  public final int wX()
   {
     try
     {
-      AppMethodBeat.i(108721);
-      if (this.bfk == 0)
+      AppMethodBeat.i(4157);
+      if (this.bDk == 0)
       {
-        PackageInfo localPackageInfo = aX("com.google.android.gms");
+        PackageInfo localPackageInfo = be("com.google.android.gms");
         if (localPackageInfo != null) {
-          this.bfk = localPackageInfo.versionCode;
+          this.bDk = localPackageInfo.versionCode;
         }
       }
-      int i = this.bfk;
-      AppMethodBeat.o(108721);
+      int i = this.bDk;
+      AppMethodBeat.o(4157);
       return i;
     }
     finally {}
@@ -175,21 +175,21 @@ public final class f
     {
       try
       {
-        AppMethodBeat.i(108716);
-        if (this.bfl != 0)
+        AppMethodBeat.i(4152);
+        if (this.bDl != 0)
         {
-          i = this.bfl;
-          AppMethodBeat.o(108716);
+          i = this.bDl;
+          AppMethodBeat.o(4152);
           return i;
         }
-        PackageManager localPackageManager = this.bfj.getPackageManager();
+        PackageManager localPackageManager = this.bDj.getPackageManager();
         if (localPackageManager.checkPermission("com.google.android.c2dm.permission.SEND", "com.google.android.gms") == -1)
         {
-          AppMethodBeat.o(108716);
+          AppMethodBeat.o(4152);
           continue;
         }
         if (PlatformVersion.isAtLeastO()) {
-          break label124;
+          break label128;
         }
       }
       finally {}
@@ -198,29 +198,29 @@ public final class f
       localObject2 = localObject1.queryIntentServices((Intent)localObject2, 0);
       if ((localObject2 != null) && (((List)localObject2).size() > 0))
       {
-        this.bfl = 1;
-        i = this.bfl;
-        AppMethodBeat.o(108716);
+        this.bDl = 1;
+        i = this.bDl;
+        AppMethodBeat.o(4152);
       }
       else
       {
-        label124:
+        label128:
         localObject2 = new Intent("com.google.iid.TOKEN_REQUEST");
         ((Intent)localObject2).setPackage("com.google.android.gms");
         List localList = localObject1.queryBroadcastReceivers((Intent)localObject2, 0);
         if ((localList == null) || (localList.size() <= 0)) {
           break;
         }
-        this.bfl = 2;
-        i = this.bfl;
-        AppMethodBeat.o(108716);
+        this.bDl = 2;
+        i = this.bDl;
+        AppMethodBeat.o(4152);
       }
     }
     if (PlatformVersion.isAtLeastO()) {}
-    for (this.bfl = 2;; this.bfl = 1)
+    for (this.bDl = 2;; this.bDl = 1)
     {
-      i = this.bfl;
-      AppMethodBeat.o(108716);
+      i = this.bDl;
+      AppMethodBeat.o(4152);
       break;
     }
   }

@@ -1,37 +1,25 @@
 package com.tencent.mm.plugin.emojicapture.model.a;
 
-import a.f.b.j;
-import a.l;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.a;
-import com.tencent.mm.emoji.a.a.a;
-import com.tencent.mm.plugin.emojicapture.model.c.c;
-import com.tencent.mm.plugin.emojicapture.model.c.h;
+import com.tencent.mm.sticker.g;
+import d.l;
+import java.util.List;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"checkStickerValid", "", "item", "Lcom/tencent/mm/plugin/emojicapture/model/xml/EmoticonLensItem;", "plugin-emojicapture_release"})
-public final class d
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/model/capture/StickerListDiffCallback;", "", "onInsert", "", "start", "", "count", "onMove", "fromPos", "toPos", "onRemove", "onUpdate", "updateData", "lensList", "", "Lcom/tencent/mm/sticker/LensItem;", "plugin-emojicapture_release"})
+public abstract interface d
 {
-  public static final boolean a(c paramc)
-  {
-    AppMethodBeat.i(2646);
-    j.q(paramc, "item");
-    Object localObject = e.luf;
-    localObject = e.uI(paramc.lvl);
-    h localh = new h();
-    a.a locala = a.ewm;
-    a.a.a((String)localObject, (a)localh);
-    if (localh.lvE >= paramc.lvn)
-    {
-      AppMethodBeat.o(2646);
-      return true;
-    }
-    AppMethodBeat.o(2646);
-    return false;
-  }
+  public abstract void ad(List<g> paramList);
+  
+  public abstract void fj(int paramInt1, int paramInt2);
+  
+  public abstract void fk(int paramInt1, int paramInt2);
+  
+  public abstract void fl(int paramInt1, int paramInt2);
+  
+  public abstract void fm(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.a.d
  * JD-Core Version:    0.7.0.1
  */

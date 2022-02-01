@@ -3,18 +3,18 @@ package com.tencent.mm.wear.app.d.a.a;
 public final class b
   implements Runnable
 {
-  int aaw = 0;
-  long acG;
+  int adX = 0;
+  long agh;
   
   public b(a parama, long paramLong)
   {
-    this.acG = paramLong;
+    this.agh = paramLong;
   }
   
   public final void run()
   {
-    if (a.a(this.adr) != null) {
-      a.a(this.adr).c(this.aaw, this.acG);
+    if (a.a(this.agT) != null) {
+      a.a(this.agT).c(this.adX, this.agh);
     }
   }
 }

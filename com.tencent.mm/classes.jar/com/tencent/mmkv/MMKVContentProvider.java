@@ -18,11 +18,11 @@ import java.util.List;
 public class MMKVContentProvider
   extends ContentProvider
 {
-  private static Uri AZO;
+  private static Uri IgJ;
   
-  protected static String aE(Context paramContext, int paramInt)
+  protected static String aJ(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(124040);
+    AppMethodBeat.i(13531);
     paramContext = (ActivityManager)paramContext.getSystemService("activity");
     if (paramContext != null)
     {
@@ -33,18 +33,18 @@ public class MMKVContentProvider
         if (localRunningAppProcessInfo.pid == paramInt)
         {
           paramContext = localRunningAppProcessInfo.processName;
-          AppMethodBeat.o(124040);
+          AppMethodBeat.o(13531);
           return paramContext;
         }
       }
     }
-    AppMethodBeat.o(124040);
+    AppMethodBeat.o(13531);
     return "";
   }
   
-  private static String gS(Context paramContext)
+  private static String iu(Context paramContext)
   {
-    AppMethodBeat.i(124038);
+    AppMethodBeat.i(13529);
     try
     {
       ComponentName localComponentName = new ComponentName(paramContext, MMKVContentProvider.class.getName());
@@ -55,47 +55,47 @@ public class MMKVContentProvider
         if (paramContext != null)
         {
           paramContext = paramContext.authority;
-          AppMethodBeat.o(124038);
+          AppMethodBeat.o(13529);
           return paramContext;
         }
       }
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(124038);
+      AppMethodBeat.o(13529);
     }
     return null;
   }
   
-  protected static Uri iP(Context paramContext)
+  protected static Uri kt(Context paramContext)
   {
-    AppMethodBeat.i(124037);
-    if (AZO != null)
+    AppMethodBeat.i(13528);
+    if (IgJ != null)
     {
-      paramContext = AZO;
-      AppMethodBeat.o(124037);
+      paramContext = IgJ;
+      AppMethodBeat.o(13528);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(124037);
+      AppMethodBeat.o(13528);
       return null;
     }
-    paramContext = gS(paramContext);
+    paramContext = iu(paramContext);
     if (paramContext == null)
     {
-      AppMethodBeat.o(124037);
+      AppMethodBeat.o(13528);
       return null;
     }
     paramContext = Uri.parse("content://".concat(String.valueOf(paramContext)));
-    AZO = paramContext;
-    AppMethodBeat.o(124037);
+    IgJ = paramContext;
+    AppMethodBeat.o(13528);
     return paramContext;
   }
   
   public Bundle call(String paramString1, String paramString2, Bundle paramBundle)
   {
-    AppMethodBeat.i(124041);
+    AppMethodBeat.i(13532);
     if ((paramString1.equals("mmkvFromAshmemID")) && (paramBundle != null))
     {
       int i = paramBundle.getInt("KEY_SIZE");
@@ -108,21 +108,21 @@ public class MMKVContentProvider
         new StringBuilder().append(paramString2).append(" fd = ").append(paramBundle.ashmemFD()).append(", meta fd = ").append(paramBundle.ashmemMetaFD());
         paramString2 = new Bundle();
         paramString2.putParcelable("KEY", paramString1);
-        AppMethodBeat.o(124041);
+        AppMethodBeat.o(13532);
         return paramString2;
       }
-      AppMethodBeat.o(124041);
+      AppMethodBeat.o(13532);
       return null;
     }
-    AppMethodBeat.o(124041);
+    AppMethodBeat.o(13532);
     return null;
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(124044);
+    AppMethodBeat.i(13535);
     paramUri = new UnsupportedOperationException("Not implement in MMKV");
-    AppMethodBeat.o(124044);
+    AppMethodBeat.o(13535);
     throw paramUri;
   }
   
@@ -133,47 +133,47 @@ public class MMKVContentProvider
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
-    AppMethodBeat.i(124045);
+    AppMethodBeat.i(13536);
     paramUri = new UnsupportedOperationException("Not implement in MMKV");
-    AppMethodBeat.o(124045);
+    AppMethodBeat.o(13536);
     throw paramUri;
   }
   
   public boolean onCreate()
   {
-    AppMethodBeat.i(124039);
+    AppMethodBeat.i(13530);
     Object localObject = getContext();
     if (localObject == null)
     {
-      AppMethodBeat.o(124039);
+      AppMethodBeat.o(13530);
       return false;
     }
-    localObject = gS((Context)localObject);
+    localObject = iu((Context)localObject);
     if (localObject == null)
     {
-      AppMethodBeat.o(124039);
+      AppMethodBeat.o(13530);
       return false;
     }
-    if (AZO == null) {
-      AZO = Uri.parse("content://".concat(String.valueOf(localObject)));
+    if (IgJ == null) {
+      IgJ = Uri.parse("content://".concat(String.valueOf(localObject)));
     }
-    AppMethodBeat.o(124039);
+    AppMethodBeat.o(13530);
     return true;
   }
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    AppMethodBeat.i(124042);
+    AppMethodBeat.i(13533);
     paramUri = new UnsupportedOperationException("Not implement in MMKV");
-    AppMethodBeat.o(124042);
+    AppMethodBeat.o(13533);
     throw paramUri;
   }
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(124043);
+    AppMethodBeat.i(13534);
     paramUri = new UnsupportedOperationException("Not implement in MMKV");
-    AppMethodBeat.o(124043);
+    AppMethodBeat.o(13534);
     throw paramUri;
   }
 }

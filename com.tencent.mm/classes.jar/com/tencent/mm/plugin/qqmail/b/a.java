@@ -1,35 +1,64 @@
 package com.tencent.mm.plugin.qqmail.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import e.a.a.b;
+import com.tencent.mm.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import f.a.a.b;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  String pIp;
-  private boolean pIq;
-  LinkedList<o> pIr;
-  private boolean pIs;
+  String uKJ;
+  private boolean uKK;
+  LinkedList<p> uKL;
+  private boolean uKM;
   
   public a()
   {
-    AppMethodBeat.i(67903);
-    this.pIr = new LinkedList();
-    AppMethodBeat.o(67903);
+    AppMethodBeat.i(122638);
+    this.uKL = new LinkedList();
+    AppMethodBeat.o(122638);
   }
   
-  public static String Xn(String paramString)
+  private static boolean a(p paramp1, p paramp2)
   {
-    AppMethodBeat.i(67908);
+    AppMethodBeat.i(122641);
+    if ((paramp1 == null) || (paramp2 == null))
+    {
+      AppMethodBeat.o(122641);
+      return false;
+    }
+    int i = b(paramp1).compareTo(b(paramp2));
+    if (i == 0)
+    {
+      if (paramp1.sOr.compareTo(paramp2.sOr) <= 0)
+      {
+        AppMethodBeat.o(122641);
+        return true;
+      }
+      AppMethodBeat.o(122641);
+      return false;
+    }
+    if (i < 0)
+    {
+      AppMethodBeat.o(122641);
+      return true;
+    }
+    AppMethodBeat.o(122641);
+    return false;
+  }
+  
+  public static String akQ(String paramString)
+  {
+    AppMethodBeat.i(122643);
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      ab.d("MicroMsg.getAdjustFullSpell", "%s", new Object[] { "srcName is null or empty, adjust full spell = ~" });
-      AppMethodBeat.o(67908);
+      ad.d("MicroMsg.getAdjustFullSpell", "%s", new Object[] { "srcName is null or empty, adjust full spell = ~" });
+      AppMethodBeat.o(122643);
       return "~";
     }
     char[] arrayOfChar = paramString.toCharArray();
@@ -40,107 +69,79 @@ public final class a
       if ((c >= '0') && (c <= '9'))
       {
         paramString = String.format("{%c%s", new Object[] { Character.valueOf(c), paramString });
-        AppMethodBeat.o(67908);
+        AppMethodBeat.o(122643);
         return paramString;
       }
       if (((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z')))
       {
         if (i == 0)
         {
-          AppMethodBeat.o(67908);
+          AppMethodBeat.o(122643);
           return paramString;
         }
         paramString = String.format("%c%s", new Object[] { Character.valueOf(c), paramString });
-        AppMethodBeat.o(67908);
+        AppMethodBeat.o(122643);
         return paramString;
       }
       if ((c == '{') && (i == 0) && (arrayOfChar.length > 1) && (arrayOfChar[(i + 1)] >= '0') && (arrayOfChar[(i + 1)] <= '9'))
       {
-        AppMethodBeat.o(67908);
+        AppMethodBeat.o(122643);
         return paramString;
       }
       i += 1;
     }
-    ab.d("MicroMsg.getAdjustFullSpell", "%s is not ok, return '~'", new Object[] { paramString });
-    AppMethodBeat.o(67908);
+    ad.d("MicroMsg.getAdjustFullSpell", "%s is not ok, return '~'", new Object[] { paramString });
+    AppMethodBeat.o(122643);
     return "~";
   }
   
-  private static boolean a(o paramo1, o paramo2)
+  public static String b(p paramp)
   {
-    AppMethodBeat.i(67906);
-    if ((paramo1 == null) || (paramo2 == null))
-    {
-      AppMethodBeat.o(67906);
-      return false;
-    }
-    int i = b(paramo1).compareTo(b(paramo2));
-    if (i == 0)
-    {
-      if (paramo1.nZR.compareTo(paramo2.nZR) <= 0)
-      {
-        AppMethodBeat.o(67906);
-        return true;
-      }
-      AppMethodBeat.o(67906);
-      return false;
-    }
-    if (i < 0)
-    {
-      AppMethodBeat.o(67906);
-      return true;
-    }
-    AppMethodBeat.o(67906);
-    return false;
-  }
-  
-  public static String b(o paramo)
-  {
-    AppMethodBeat.i(67907);
-    String str = paramo.pJg;
+    AppMethodBeat.i(122642);
+    String str = paramp.uLz;
     if ((str == null) || ("".equals(str))) {}
-    for (str = Xn(g.wq(paramo.name.trim()).toLowerCase());; str = Xn(str))
+    for (str = akQ(f.Br(paramp.name.trim()).toLowerCase());; str = akQ(str))
     {
-      paramo.pJg = str;
-      AppMethodBeat.o(67907);
+      paramp.uLz = str;
+      AppMethodBeat.o(122642);
       return str;
     }
   }
   
-  private a cdB()
+  private a ddT()
   {
-    AppMethodBeat.i(67910);
-    if (!this.pIq)
+    AppMethodBeat.i(122645);
+    if (!this.uKK)
     {
-      b localb = new b("Not all required fields were included (false = not included in message),  syncInfo:" + this.pIq);
-      AppMethodBeat.o(67910);
+      b localb = new b("Not all required fields were included (false = not included in message),  syncInfo:" + this.uKK);
+      AppMethodBeat.o(122645);
       throw localb;
     }
-    AppMethodBeat.o(67910);
+    AppMethodBeat.o(122645);
     return this;
   }
   
-  public final a BU(int paramInt)
+  public final a JJ(int paramInt)
   {
     boolean bool = false;
-    AppMethodBeat.i(67904);
-    if ((paramInt < 0) || (paramInt >= this.pIr.size()))
+    AppMethodBeat.i(122639);
+    if ((paramInt < 0) || (paramInt >= this.uKL.size()))
     {
-      AppMethodBeat.o(67904);
+      AppMethodBeat.o(122639);
       return this;
     }
     if (paramInt >= 10)
     {
-      this.pIr.remove(paramInt);
-      if (this.pIr.size() > 0) {
+      this.uKL.remove(paramInt);
+      if (this.uKL.size() > 0) {
         bool = true;
       }
-      this.pIs = bool;
-      AppMethodBeat.o(67904);
+      this.uKM = bool;
+      AppMethodBeat.o(122639);
       return this;
     }
-    this.pIr.remove(paramInt);
-    Iterator localIterator = this.pIr.iterator();
+    this.uKL.remove(paramInt);
+    Iterator localIterator = this.uKL.iterator();
     int i = -1;
     int k = -2147483648;
     int j = 0;
@@ -149,15 +150,15 @@ public final class a
       label97:
       if (localIterator.hasNext())
       {
-        o localo = (o)localIterator.next();
+        p localp = (p)localIterator.next();
         paramInt = j + 1;
         if (j < 10) {
           break label229;
         }
-        if (k >= localo.pJf) {
+        if (k >= localp.uLy) {
           break label226;
         }
-        k = localo.pJf;
+        k = localp.uLy;
         i = paramInt;
       }
       label226:
@@ -167,16 +168,16 @@ public final class a
         {
           j = paramInt;
           break label97;
-          if ((i == -1) || (i >= this.pIr.size())) {
+          if ((i == -1) || (i >= this.uKL.size())) {
             break;
           }
           try
           {
-            a((o)this.pIr.remove(i));
+            a((p)this.uKL.remove(i));
           }
           catch (Exception localException)
           {
-            ab.printErrStackTrace("MicroMsg.AddrBook", localException, "size:%d, idx:%d", new Object[] { Integer.valueOf(this.pIr.size()), Integer.valueOf(i) });
+            ad.printErrStackTrace("MicroMsg.AddrBook", localException, "size:%d, idx:%d", new Object[] { Integer.valueOf(this.uKL.size()), Integer.valueOf(i) });
           }
         }
         break;
@@ -186,28 +187,21 @@ public final class a
     }
   }
   
-  public final a Xm(String paramString)
-  {
-    this.pIp = paramString;
-    this.pIq = true;
-    return this;
-  }
-  
-  public final a a(o paramo)
+  public final a a(p paramp)
   {
     int j = 0;
-    AppMethodBeat.i(67905);
-    if (!this.pIs) {
-      this.pIs = true;
+    AppMethodBeat.i(122640);
+    if (!this.uKM) {
+      this.uKM = true;
     }
-    Iterator localIterator = this.pIr.iterator();
+    Iterator localIterator = this.uKL.iterator();
     int i = 0;
-    o localo;
+    p localp;
     if (localIterator.hasNext())
     {
-      localo = (o)localIterator.next();
+      localp = (p)localIterator.next();
       if (i < 10) {
-        if (paramo.pJf <= localo.pJf) {
+        if (paramp.uLy <= localp.uLy) {
           break label106;
         }
       }
@@ -215,49 +209,56 @@ public final class a
     else
     {
       label70:
-      if (i < this.pIr.size()) {
+      if (i < this.uKL.size()) {
         break label113;
       }
-      this.pIr.add(paramo);
+      this.uKL.add(paramp);
     }
     for (;;)
     {
-      AppMethodBeat.o(67905);
+      AppMethodBeat.o(122640);
       return this;
-      if (a(paramo, localo)) {
+      if (a(paramp, localp)) {
         break label70;
       }
       label106:
       i += 1;
       break;
       label113:
-      this.pIr.add(i, paramo);
-      if ((i < 10) && (this.pIr.size() > 10))
+      this.uKL.add(i, paramp);
+      if ((i < 10) && (this.uKL.size() > 10))
       {
-        paramo = (o)this.pIr.remove(10);
-        localIterator = this.pIr.iterator();
+        paramp = (p)this.uKL.remove(10);
+        localIterator = this.uKL.iterator();
         i = j;
         while (localIterator.hasNext())
         {
-          localo = (o)localIterator.next();
-          if ((i >= 10) && (a(paramo, localo))) {
+          localp = (p)localIterator.next();
+          if ((i >= 10) && (a(paramp, localp))) {
             break;
           }
           i += 1;
         }
-        if (i >= this.pIr.size()) {
-          this.pIr.add(paramo);
+        if (i >= this.uKL.size()) {
+          this.uKL.add(paramp);
         } else {
-          this.pIr.add(i, paramo);
+          this.uKL.add(i, paramp);
         }
       }
     }
   }
   
-  public final a bf(byte[] paramArrayOfByte)
+  public final a akP(String paramString)
   {
-    AppMethodBeat.i(67914);
-    paramArrayOfByte = new e.a.a.a.a(paramArrayOfByte, unknownTagHandler);
+    this.uKJ = paramString;
+    this.uKK = true;
+    return this;
+  }
+  
+  public final a bv(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(122649);
+    paramArrayOfByte = new f.a.a.a.a(paramArrayOfByte, unknownTagHandler);
     int i = getNextFieldNumber(paramArrayOfByte);
     if (i > 0)
     {
@@ -269,91 +270,91 @@ public final class a
       for (;;)
       {
         if (i == 0) {
-          paramArrayOfByte.eqQ();
+          paramArrayOfByte.fMq();
         }
         i = getNextFieldNumber(paramArrayOfByte);
         break;
-        Xm(paramArrayOfByte.CLY.readString());
+        akP(paramArrayOfByte.KhF.readString());
         i = 1;
         continue;
-        Object localObject1 = paramArrayOfByte.Wp(2);
+        Object localObject1 = paramArrayOfByte.agn(2);
         i = 0;
-        o localo;
+        p localp;
         while (i < ((LinkedList)localObject1).size())
         {
           Object localObject2 = (byte[])((LinkedList)localObject1).get(i);
-          localo = new o();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = localo.populateBuilderWithField((e.a.a.a.a)localObject2, localo, getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          if (!this.pIs) {
-            this.pIs = true;
+          localp = new p();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = localp.populateBuilderWithField((f.a.a.a.a)localObject2, localp, getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          if (!this.uKM) {
+            this.uKM = true;
           }
-          this.pIr.add(localo);
+          this.uKL.add(localp);
           i += 1;
         }
-        localObject1 = new o[1];
-        localObject1 = (o[])this.pIr.toArray((Object[])localObject1);
-        Arrays.sort((Object[])localObject1, new a.1(this));
+        localObject1 = new p[1];
+        localObject1 = (p[])this.uKL.toArray((Object[])localObject1);
+        Arrays.sort((Object[])localObject1, new Comparator() {});
         if (10 <= localObject1.length) {
-          Arrays.sort((Object[])localObject1, 10, localObject1.length, new a.2(this));
+          Arrays.sort((Object[])localObject1, 10, localObject1.length, new Comparator() {});
         }
-        this.pIr.clear();
+        this.uKL.clear();
         int j = localObject1.length;
         i = 0;
         while (i < j)
         {
-          localo = localObject1[i];
-          this.pIr.add(localo);
+          localp = localObject1[i];
+          this.uKL.add(localp);
           i += 1;
         }
         i = 1;
       }
     }
-    paramArrayOfByte = cdB();
-    AppMethodBeat.o(67914);
+    paramArrayOfByte = ddT();
+    AppMethodBeat.o(122649);
     return paramArrayOfByte;
   }
   
   public final int computeSize()
   {
-    AppMethodBeat.i(67911);
-    int i = e.a.a.b.b.a.f(1, this.pIp);
-    int j = e.a.a.a.c(2, 8, this.pIr);
-    AppMethodBeat.o(67911);
+    AppMethodBeat.i(122646);
+    int i = f.a.a.b.b.a.e(1, this.uKJ);
+    int j = f.a.a.a.c(2, 8, this.uKL);
+    AppMethodBeat.o(122646);
     return i + 0 + (j + 0);
   }
   
   public final byte[] toByteArray()
   {
-    AppMethodBeat.i(67912);
-    cdB();
+    AppMethodBeat.i(122647);
+    ddT();
     byte[] arrayOfByte = super.toByteArray();
-    AppMethodBeat.o(67912);
+    AppMethodBeat.o(122647);
     return arrayOfByte;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(67909);
+    AppMethodBeat.i(122644);
     String str = "" + getClass().getName() + "(";
-    str = str + "syncInfo = " + this.pIp + "   ";
-    str = str + "addrs = " + this.pIr + "   ";
+    str = str + "syncInfo = " + this.uKJ + "   ";
+    str = str + "addrs = " + this.uKL + "   ";
     str = str + ")";
-    AppMethodBeat.o(67909);
+    AppMethodBeat.o(122644);
     return str;
   }
   
-  public final void writeFields(e.a.a.c.a parama)
+  public final void writeFields(f.a.a.c.a parama)
   {
-    AppMethodBeat.i(67913);
-    parama.e(1, this.pIp);
-    parama.e(2, 8, this.pIr);
-    AppMethodBeat.o(67913);
+    AppMethodBeat.i(122648);
+    parama.d(1, this.uKJ);
+    parama.e(2, 8, this.uKL);
+    AppMethodBeat.o(122648);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,15 @@ final class IPCallDialUI$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(22128);
+    AppMethodBeat.i(25745);
     paramDialogInterface.dismiss();
-    this.nSW.finish();
-    AppMethodBeat.o(22128);
+    this.sGR.finish();
+    AppMethodBeat.o(25745);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallDialUI.4
  * JD-Core Version:    0.7.0.1
  */

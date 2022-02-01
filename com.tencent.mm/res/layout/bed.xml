@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:background="@color/pi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/cij" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/aj_" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ciu" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="56.0dip">
+        <TextView android:textSize="20.0dip" android:textColor="@color/a_u" android:layout_gravity="center_horizontal" android:id="@id/cj7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{header_title_tv}" />
+        <TextView android:textSize="@dimen/gx" android:textColor="#99ffffff" android:layout_gravity="center_horizontal" android:id="@id/g1_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="{sub_header_title_tv}" />
+    </LinearLayout>
+</FrameLayout>

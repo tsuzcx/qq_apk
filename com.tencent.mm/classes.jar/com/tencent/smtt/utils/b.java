@@ -1,6 +1,7 @@
 package com.tencent.smtt.utils;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -14,6 +15,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.smtt.sdk.TbsDownloadConfig;
 import java.io.File;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
@@ -24,6 +26,7 @@ import java.util.Collections;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -37,7 +40,7 @@ public class b
   
   private static PackageInfo a(String paramString, int paramInt)
   {
-    AppMethodBeat.i(65185);
+    AppMethodBeat.i(53973);
     for (;;)
     {
       try
@@ -65,7 +68,7 @@ public class b
             paramString = localMethod2.invoke(localObject2, new Object[] { new File(paramString), paramString, localObject3, Integer.valueOf(0) });
             if (paramString == null)
             {
-              AppMethodBeat.o(65185);
+              AppMethodBeat.o(53973);
               return null;
             }
           }
@@ -78,13 +81,13 @@ public class b
             ((Method)localObject1).invoke(localObject2, new Object[] { paramString, Integer.valueOf(0) });
           }
           paramString = (PackageInfo)localMethod1.invoke(null, new Object[] { paramString, null, Integer.valueOf(paramInt), Integer.valueOf(0), Integer.valueOf(0) });
-          AppMethodBeat.o(65185);
+          AppMethodBeat.o(53973);
           return paramString;
         }
       }
       catch (Exception paramString)
       {
-        AppMethodBeat.o(65185);
+        AppMethodBeat.o(53973);
         return null;
       }
       Method localMethod1 = null;
@@ -232,7 +235,7 @@ public class b
     // Local variable table:
     //   start	length	slot	name	signature
     //   17	96	0	str	String
-    //   116	1	0	localThrowable1	java.lang.Throwable
+    //   116	1	0	localThrowable1	Throwable
     //   118	40	0	localObject1	Object
     //   161	1	0	localIOException1	java.io.IOException
     //   163	1	0	localObject2	Object
@@ -240,9 +243,9 @@ public class b
     //   203	1	0	localIOException2	java.io.IOException
     //   215	1	0	localObject4	Object
     //   221	1	0	localObject5	Object
-    //   229	1	0	localThrowable2	java.lang.Throwable
+    //   229	1	0	localThrowable2	Throwable
     //   231	1	0	localObject6	Object
-    //   235	1	0	localThrowable3	java.lang.Throwable
+    //   235	1	0	localThrowable3	Throwable
     //   238	1	0	localObject7	Object
     //   43	142	1	localInputStreamReader	java.io.InputStreamReader
     //   199	1	1	localIOException3	java.io.IOException
@@ -277,13 +280,13 @@ public class b
   
   public static String a(Context paramContext)
   {
-    AppMethodBeat.i(65173);
+    AppMethodBeat.i(53959);
     Object localObject = null;
     try
     {
       String str = paramContext.getPackageName();
       paramContext = paramContext.getPackageManager().getPackageInfo(str, 0).versionName;
-      AppMethodBeat.o(65173);
+      AppMethodBeat.o(53959);
       return paramContext;
     }
     catch (Exception paramContext)
@@ -298,7 +301,7 @@ public class b
   private static String a(Context paramContext, File paramFile, boolean paramBoolean)
   {
     localObject2 = null;
-    AppMethodBeat.i(65183);
+    AppMethodBeat.i(53971);
     if (paramBoolean) {}
     for (;;)
     {
@@ -323,7 +326,7 @@ public class b
         Object localObject1 = localObject2;
         continue;
       }
-      AppMethodBeat.o(65183);
+      AppMethodBeat.o(53971);
       return localObject1;
       paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramFile.getAbsolutePath(), 65);
       continue;
@@ -334,7 +337,7 @@ public class b
   
   public static String a(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(65175);
+    AppMethodBeat.i(53961);
     localObject = null;
     try
     {
@@ -358,7 +361,7 @@ public class b
     {
       break label47;
     }
-    AppMethodBeat.o(65175);
+    AppMethodBeat.o(53961);
     return paramContext;
   }
   
@@ -518,7 +521,7 @@ public class b
     //   141	1	3	localException1	Exception
     //   144	2	3	localObject2	Object
     //   152	1	3	localIOException1	java.io.IOException
-    //   171	1	3	localThrowable	java.lang.Throwable
+    //   171	1	3	localThrowable	Throwable
     //   214	30	3	localObject3	Object
     //   284	10	3	localIOException2	java.io.IOException
     //   31	247	4	localObject4	Object
@@ -540,8 +543,9 @@ public class b
   
   private static String a(File paramFile)
   {
-    AppMethodBeat.i(65184);
-    do
+    AppMethodBeat.i(53972);
+    TbsLog.d("AppUtil", "[getSignatureFromApk]## file=".concat(String.valueOf(paramFile)));
+    for (;;)
     {
       try
       {
@@ -550,50 +554,50 @@ public class b
         byte[] arrayOfByte = new byte[8192];
         str1 = a(a(localJarFile, paramFile, arrayOfByte)[0].getEncoded());
         Enumeration localEnumeration = localJarFile.entries();
-        do
-        {
-          if (!localEnumeration.hasMoreElements()) {
-            break;
-          }
-          paramFile = (JarEntry)localEnumeration.nextElement();
-          str2 = paramFile.getName();
-        } while (str2 == null);
+        if (!localEnumeration.hasMoreElements()) {
+          continue;
+        }
+        paramFile = (JarEntry)localEnumeration.nextElement();
+        String str2 = paramFile.getName();
+        if (str2 == null) {
+          continue;
+        }
+        TbsLog.d("AppUtil", "[getSignatureFromApk]## loadCertificates & check:".concat(String.valueOf(str2)));
         paramFile = a(localJarFile, paramFile, arrayOfByte);
         if (paramFile == null) {
-          break label159;
+          continue;
         }
         paramFile = a(paramFile[0].getEncoded());
+        if (paramFile != null) {
+          continue;
+        }
+        TbsLog.d("AppUtil", "[getSignatureFromApk]## loadCertificates failed!");
+        bool = str2.startsWith("META-INF/");
+        if (bool) {
+          continue;
+        }
+        paramFile = null;
       }
       catch (Exception paramFile)
       {
-        for (;;)
-        {
-          String str1;
-          String str2;
-          boolean bool;
-          paramFile = null;
-          continue;
-          paramFile = null;
-        }
+        String str1;
+        boolean bool;
+        paramFile = null;
+        continue;
       }
-      if (paramFile != null) {
-        break label133;
-      }
-      bool = str2.startsWith("META-INF/");
-    } while (bool);
-    paramFile = null;
-    for (;;)
-    {
-      AppMethodBeat.o(65184);
+      AppMethodBeat.o(53972);
       return paramFile;
-      label133:
-      bool = paramFile.equals(str1);
-      if (bool) {
-        break;
-      }
+      TbsLog.d("AppUtil", "[getSignatureFromApk]## certs2 is null!");
       paramFile = null;
       continue;
-      paramFile = str1;
+      bool = paramFile.equals(str1);
+      TbsLog.d("AppUtil", "[getSignatureFromApk]## loadCertificates check:".concat(String.valueOf(bool)));
+      if (!bool)
+      {
+        paramFile = null;
+        continue;
+        paramFile = str1;
+      }
     }
   }
   
@@ -608,7 +612,7 @@ public class b
   
   private static String a(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(65187);
+    AppMethodBeat.i(53975);
     int k = paramArrayOfByte.length;
     char[] arrayOfChar = new char[k * 2];
     int i = 0;
@@ -639,30 +643,30 @@ public class b
       }
     }
     paramArrayOfByte = new String(arrayOfChar);
-    AppMethodBeat.o(65187);
+    AppMethodBeat.o(53975);
     return paramArrayOfByte;
   }
   
   private static Certificate[] a(JarFile paramJarFile, JarEntry paramJarEntry, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(65186);
+    AppMethodBeat.i(53974);
     paramJarFile = paramJarFile.getInputStream(paramJarEntry);
     while (paramJarFile.read(paramArrayOfByte, 0, paramArrayOfByte.length) != -1) {}
     paramJarFile.close();
     if (paramJarEntry != null)
     {
       paramJarFile = paramJarEntry.getCertificates();
-      AppMethodBeat.o(65186);
+      AppMethodBeat.o(53974);
       return paramJarFile;
     }
-    AppMethodBeat.o(65186);
+    AppMethodBeat.o(53974);
     return null;
   }
   
   public static int b(Context paramContext)
   {
     int i = 0;
-    AppMethodBeat.i(65174);
+    AppMethodBeat.i(53960);
     try
     {
       String str = paramContext.getPackageName();
@@ -674,13 +678,13 @@ public class b
       label28:
       break label28;
     }
-    AppMethodBeat.o(65174);
+    AppMethodBeat.o(53960);
     return i;
   }
   
   public static String b()
   {
-    AppMethodBeat.i(65180);
+    AppMethodBeat.i(53968);
     try
     {
       Object localObject1 = Collections.list(NetworkInterface.getNetworkInterfaces()).iterator();
@@ -692,7 +696,7 @@ public class b
           localObject1 = ((NetworkInterface)localObject2).getHardwareAddress();
           if (localObject1 == null)
           {
-            AppMethodBeat.o(65180);
+            AppMethodBeat.o(53968);
             return "";
           }
           localObject2 = new StringBuilder();
@@ -707,27 +711,113 @@ public class b
             ((StringBuilder)localObject2).deleteCharAt(((StringBuilder)localObject2).length() - 1);
           }
           localObject1 = ((StringBuilder)localObject2).toString();
-          AppMethodBeat.o(65180);
+          AppMethodBeat.o(53968);
           return localObject1;
         }
       }
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(65180);
+      AppMethodBeat.o(53968);
     }
     return "02:00:00:00:00:00";
   }
   
+  public static void b(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(53962);
+    try
+    {
+      paramContext = TbsDownloadConfig.getInstance(paramContext);
+      paramContext.mSyncMap.put("tbs_guid", paramString);
+      paramContext.commit();
+      AppMethodBeat.o(53962);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      AppMethodBeat.o(53962);
+    }
+  }
+  
   public static String c(Context paramContext)
   {
-    AppMethodBeat.i(65176);
+    AppMethodBeat.i(53963);
+    String str = "";
+    try
+    {
+      paramContext = TbsDownloadConfig.getInstance(paramContext).mPreferences.getString("tbs_guid", "");
+      AppMethodBeat.o(53963);
+      return paramContext;
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        paramContext = str;
+      }
+    }
+  }
+  
+  public static boolean c()
+  {
+    AppMethodBeat.i(53976);
+    try
+    {
+      int i = Build.VERSION.SDK_INT;
+      if (i < 21)
+      {
+        AppMethodBeat.o(53976);
+        return false;
+      }
+      Object localObject1 = Class.forName("dalvik.system.VMRuntime");
+      if (localObject1 == null)
+      {
+        AppMethodBeat.o(53976);
+        return false;
+      }
+      Object localObject2 = ((Class)localObject1).getDeclaredMethod("getRuntime", new Class[0]);
+      if (localObject2 == null)
+      {
+        AppMethodBeat.o(53976);
+        return false;
+      }
+      localObject2 = ((Method)localObject2).invoke(null, new Object[0]);
+      if (localObject2 == null)
+      {
+        AppMethodBeat.o(53976);
+        return false;
+      }
+      localObject1 = ((Class)localObject1).getDeclaredMethod("is64Bit", new Class[0]);
+      if (localObject1 == null)
+      {
+        AppMethodBeat.o(53976);
+        return false;
+      }
+      localObject1 = ((Method)localObject1).invoke(localObject2, new Object[0]);
+      if ((localObject1 instanceof Boolean))
+      {
+        boolean bool = ((Boolean)localObject1).booleanValue();
+        AppMethodBeat.o(53976);
+        return bool;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(53976);
+    }
+    return false;
+  }
+  
+  public static String d(Context paramContext)
+  {
+    AppMethodBeat.i(53964);
     if (!TextUtils.isEmpty(a)) {
       paramContext = a;
     }
     for (;;)
     {
-      AppMethodBeat.o(65176);
+      AppMethodBeat.o(53964);
       return paramContext;
       try
       {
@@ -740,15 +830,15 @@ public class b
     }
   }
   
-  public static String d(Context paramContext)
+  public static String e(Context paramContext)
   {
-    AppMethodBeat.i(65177);
+    AppMethodBeat.i(53965);
     if (!TextUtils.isEmpty(b)) {
       paramContext = b;
     }
     for (;;)
     {
-      AppMethodBeat.o(65177);
+      AppMethodBeat.o(53965);
       return paramContext;
       try
       {
@@ -761,9 +851,9 @@ public class b
     }
   }
   
-  public static String e(Context paramContext)
+  public static String f(Context paramContext)
   {
-    AppMethodBeat.i(65179);
+    AppMethodBeat.i(53967);
     if ((!TextUtils.isEmpty(d)) || (Build.VERSION.SDK_INT < 23)) {}
     try
     {
@@ -785,7 +875,7 @@ public class b
     for (d = paramContext;; d = b())
     {
       paramContext = d;
-      AppMethodBeat.o(65179);
+      AppMethodBeat.o(53967);
       return paramContext;
       paramContext = paramContext.getConnectionInfo();
       break label91;
@@ -794,13 +884,13 @@ public class b
     }
   }
   
-  public static String f(Context paramContext)
+  public static String g(Context paramContext)
   {
-    AppMethodBeat.i(65181);
+    AppMethodBeat.i(53969);
     if (!TextUtils.isEmpty(e))
     {
       paramContext = e;
-      AppMethodBeat.o(65181);
+      AppMethodBeat.o(53969);
       return paramContext;
     }
     try
@@ -808,7 +898,7 @@ public class b
       e = Settings.Secure.getString(paramContext.getContentResolver(), "android_id");
       label40:
       paramContext = e;
-      AppMethodBeat.o(65181);
+      AppMethodBeat.o(53969);
       return paramContext;
     }
     catch (Exception paramContext)

@@ -1,291 +1,721 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
-import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.rtmp.ITXLivePlayListener;
-import com.tencent.rtmp.TXLivePlayConfig;
-import com.tencent.rtmp.TXLivePlayer;
-import com.tencent.rtmp.TXLivePlayer.ITXSnapshotListener;
-import com.tencent.rtmp.ui.TXCloudVideoView;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.math.BigDecimal;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class k
-  implements ITXLivePlayListener
 {
-  boolean bGe;
-  boolean bGf;
-  TXCloudVideoView bGi;
-  private TXLivePlayConfig bGj;
-  TXLivePlayer bGk;
-  ITXLivePlayListener bGl;
-  TXLivePlayer.ITXSnapshotListener bGm;
-  String bGn;
-  int bGo;
-  boolean bGp;
-  private String bGq;
-  private String bGr;
-  private String bGs;
-  private float bGt;
-  private float bGu;
-  private boolean bGv;
-  boolean bGw;
-  private boolean bGx;
-  boolean mAutoPlay;
-  private Context mContext;
-  boolean mInited;
-  private int mMode;
-  private boolean mMute;
-  
-  public k(Context paramContext)
+  public static Bundle O(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(96131);
-    this.bGn = "";
-    this.bGo = 0;
-    this.mInited = false;
-    this.bGp = false;
-    this.mAutoPlay = false;
-    this.mMode = 1;
-    this.mMute = false;
-    this.bGq = "vertical";
-    this.bGr = "contain";
-    this.bGs = "speaker";
-    this.bGt = 1.0F;
-    this.bGu = 3.0F;
-    this.bGv = true;
-    this.bGw = false;
-    this.bGx = false;
-    this.bGe = true;
-    this.bGf = true;
-    this.mContext = paramContext;
-    this.bGj = new TXLivePlayConfig();
-    this.bGk = new TXLivePlayer(this.mContext);
-    this.bGk.setConfig(this.bGj);
-    this.bGk.setPlayListener(this);
-    AppMethodBeat.o(96131);
-  }
-  
-  private void a(TXLivePlayer.ITXSnapshotListener paramITXSnapshotListener)
-  {
-    AppMethodBeat.i(96133);
-    if (this.bGk != null) {
-      this.bGk.snapshot(new k.1(this, paramITXSnapshotListener));
-    }
-    AppMethodBeat.o(96133);
-  }
-  
-  static void k(String paramString, Bundle paramBundle)
-  {
-    AppMethodBeat.i(96139);
-    Iterator localIterator = paramBundle.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if ((str.equalsIgnoreCase("playUrl")) || (str.equalsIgnoreCase("orientation")) || (str.equalsIgnoreCase("objectFit")) || (str.equalsIgnoreCase("soundMode"))) {
-        paramString = paramString + "\n" + str + " = " + paramBundle.getString(str);
-      } else if ((str.equalsIgnoreCase("mode")) || (str.equalsIgnoreCase("playType"))) {
-        paramString = paramString + "\n" + str + " = " + paramBundle.getInt(str);
-      } else if ((str.equalsIgnoreCase("minCache")) || (str.equalsIgnoreCase("maxCache"))) {
-        paramString = paramString + "\n" + str + " = " + paramBundle.getFloat(str);
-      } else if ((str.equalsIgnoreCase("hide")) || (str.equalsIgnoreCase("autoplay")) || (str.equalsIgnoreCase("muted")) || (str.equalsIgnoreCase("backgroundMute")) || (str.equalsIgnoreCase("needEvent")) || (str.equalsIgnoreCase("debug"))) {
-        paramString = paramString + "\n" + str + " = " + paramBundle.getBoolean(str);
-      }
-    }
-    ab.i("TXLivePlayerJSAdapter", paramString);
-    AppMethodBeat.o(96139);
-  }
-  
-  public final i Ce(String paramString)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(96132);
-    if (paramString == null)
-    {
-      paramString = new i(-1, "invalid params");
-      AppMethodBeat.o(96132);
-      return paramString;
-    }
-    ab.i("TXLivePlayerJSAdapter", "operateLivePlayer: ".concat(String.valueOf(paramString)));
-    if (!this.mInited)
-    {
-      paramString = new i(-3, "uninited livePlayer");
-      AppMethodBeat.o(96132);
-      return paramString;
-    }
-    if (paramString.equalsIgnoreCase("play"))
-    {
-      cm(this.bGn);
-      this.bGk.startPlay(this.bGn, this.bGo);
+    AppMethodBeat.i(145903);
+    StringBuilder localStringBuilder = new StringBuilder("LivePlayer params:");
+    Object localObject;
+    if (paramJSONObject != null) {
+      localObject = paramJSONObject.toString();
     }
     for (;;)
     {
-      paramString = new i();
-      AppMethodBeat.o(96132);
-      return paramString;
-      if (paramString.equalsIgnoreCase("stop"))
+      localStringBuilder.append((String)localObject);
+      localObject = new Bundle();
+      try
       {
-        this.bGk.stopPlay(true);
+        if (paramJSONObject.has("playUrl")) {
+          ((Bundle)localObject).putString("playUrl", paramJSONObject.getString("playUrl"));
+        }
       }
-      else if (paramString.equalsIgnoreCase("pause"))
+      catch (JSONException localJSONException17)
       {
-        this.bGk.pause();
-      }
-      else if (paramString.equalsIgnoreCase("resume"))
-      {
-        this.bGk.resume();
-      }
-      else
-      {
-        if (paramString.equalsIgnoreCase("mute"))
+        try
         {
-          if (!this.mMute) {}
-          for (;;)
-          {
-            this.mMute = bool;
-            this.bGk.setMute(this.mMute);
-            break;
-            bool = false;
+          if (paramJSONObject.has("mode")) {
+            ((Bundle)localObject).putInt("mode", paramJSONObject.getInt("mode"));
           }
         }
-        if (!paramString.equalsIgnoreCase("snapshot")) {
-          break;
+        catch (JSONException localJSONException17)
+        {
+          try
+          {
+            if (paramJSONObject.has("autoplay")) {
+              ((Bundle)localObject).putBoolean("autoplay", paramJSONObject.getBoolean("autoplay"));
+            }
+          }
+          catch (JSONException localJSONException17)
+          {
+            try
+            {
+              if (paramJSONObject.has("muted")) {
+                ((Bundle)localObject).putBoolean("muted", paramJSONObject.getBoolean("muted"));
+              }
+            }
+            catch (JSONException localJSONException17)
+            {
+              try
+              {
+                if (paramJSONObject.has("muteAudio")) {
+                  ((Bundle)localObject).putBoolean("muteAudio", paramJSONObject.getBoolean("muteAudio"));
+                }
+              }
+              catch (JSONException localJSONException17)
+              {
+                try
+                {
+                  if (paramJSONObject.has("muteVideo")) {
+                    ((Bundle)localObject).putBoolean("muteVideo", paramJSONObject.getBoolean("muteVideo"));
+                  }
+                }
+                catch (JSONException localJSONException17)
+                {
+                  try
+                  {
+                    if (paramJSONObject.has("orientation")) {
+                      ((Bundle)localObject).putString("orientation", paramJSONObject.getString("orientation"));
+                    }
+                  }
+                  catch (JSONException localJSONException17)
+                  {
+                    try
+                    {
+                      if (paramJSONObject.has("objectFit")) {
+                        ((Bundle)localObject).putString("objectFit", paramJSONObject.getString("objectFit"));
+                      }
+                    }
+                    catch (JSONException localJSONException17)
+                    {
+                      try
+                      {
+                        if (paramJSONObject.has("backgroundMute")) {
+                          ((Bundle)localObject).putBoolean("backgroundMute", paramJSONObject.getBoolean("backgroundMute"));
+                        }
+                      }
+                      catch (JSONException localJSONException17)
+                      {
+                        try
+                        {
+                          if (paramJSONObject.has("minCache")) {
+                            ((Bundle)localObject).putFloat("minCache", BigDecimal.valueOf(paramJSONObject.getDouble("minCache")).floatValue());
+                          }
+                        }
+                        catch (JSONException localJSONException17)
+                        {
+                          try
+                          {
+                            if (paramJSONObject.has("maxCache")) {
+                              ((Bundle)localObject).putFloat("maxCache", BigDecimal.valueOf(paramJSONObject.getDouble("maxCache")).floatValue());
+                            }
+                          }
+                          catch (JSONException localJSONException17)
+                          {
+                            try
+                            {
+                              if (paramJSONObject.has("enableRecvMessage")) {
+                                ((Bundle)localObject).putBoolean("enableRecvMessage", paramJSONObject.getBoolean("enableRecvMessage"));
+                              }
+                            }
+                            catch (JSONException localJSONException17)
+                            {
+                              try
+                              {
+                                if (paramJSONObject.has("needEvent")) {
+                                  ((Bundle)localObject).putBoolean("needEvent", paramJSONObject.getBoolean("needEvent"));
+                                }
+                              }
+                              catch (JSONException localJSONException17)
+                              {
+                                try
+                                {
+                                  if (paramJSONObject.has("needAudioVolume")) {
+                                    ((Bundle)localObject).putBoolean("needAudioVolume", paramJSONObject.getBoolean("needAudioVolume"));
+                                  }
+                                }
+                                catch (JSONException localJSONException17)
+                                {
+                                  try
+                                  {
+                                    if (paramJSONObject.has("debug")) {
+                                      ((Bundle)localObject).putBoolean("debug", paramJSONObject.getBoolean("debug"));
+                                    }
+                                  }
+                                  catch (JSONException localJSONException17)
+                                  {
+                                    try
+                                    {
+                                      if (paramJSONObject.has("soundMode")) {
+                                        ((Bundle)localObject).putString("soundMode", paramJSONObject.getString("soundMode"));
+                                      }
+                                    }
+                                    catch (JSONException localJSONException17)
+                                    {
+                                      try
+                                      {
+                                        if (paramJSONObject.has("autoPauseIfNavigate")) {
+                                          ((Bundle)localObject).putBoolean("autoPauseIfNavigate", paramJSONObject.getBoolean("autoPauseIfNavigate"));
+                                        }
+                                      }
+                                      catch (JSONException localJSONException17)
+                                      {
+                                        try
+                                        {
+                                          for (;;)
+                                          {
+                                            if (paramJSONObject.has("autoPauseIfOpenNative")) {
+                                              ((Bundle)localObject).putBoolean("autoPauseIfOpenNative", paramJSONObject.getBoolean("autoPauseIfOpenNative"));
+                                            }
+                                            AppMethodBeat.o(145903);
+                                            return localObject;
+                                            localObject = "";
+                                            break;
+                                            localJSONException1 = localJSONException1;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "playUrl", localJSONException1.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException2 = localJSONException2;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "mode", localJSONException2.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException3 = localJSONException3;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "autoplay", localJSONException3.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException4 = localJSONException4;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "muted", localJSONException4.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException5 = localJSONException5;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "muteAudio", localJSONException5.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException6 = localJSONException6;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "muteVideo", localJSONException6.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException7 = localJSONException7;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "orientation", localJSONException7.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException8 = localJSONException8;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "objectFit", localJSONException8.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException9 = localJSONException9;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "backgroundMute", localJSONException9.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException10 = localJSONException10;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "minCache", localJSONException10.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException11 = localJSONException11;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "maxCache", localJSONException11.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException12 = localJSONException12;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "enableRecvMessage", localJSONException12.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException13 = localJSONException13;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "needEvent", localJSONException13.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException14 = localJSONException14;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "needAudioVolume", localJSONException14.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException15 = localJSONException15;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "debug", localJSONException15.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException16 = localJSONException16;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "soundMode", localJSONException16.getLocalizedMessage() });
+                                            continue;
+                                            localJSONException17 = localJSONException17;
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "autoPauseIfNavigate", localJSONException17.getLocalizedMessage() });
+                                          }
+                                        }
+                                        catch (JSONException paramJSONObject)
+                                        {
+                                          for (;;)
+                                          {
+                                            ad.i("TXLiveParamUtil", "updateLivePlayer param=%s exp=%s", new Object[] { "autoPauseIfOpenNative", paramJSONObject.getLocalizedMessage() });
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
-        a(this.bGm);
       }
     }
-    paramString = new i(-4, "invalid operate command");
-    AppMethodBeat.o(96132);
-    return paramString;
   }
   
-  final void cm(String paramString)
+  public static Bundle P(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(96137);
-    if (paramString != null)
-    {
-      if (!paramString.startsWith("room")) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.bGk.enableHardwareDecode(bool);
-        ab.i("TXLivePlayerJSAdapter", "checkHardWareDecoder: hardwareDecode = " + bool + ", playUrl = " + paramString);
-        AppMethodBeat.o(96137);
-        return;
-      }
-    }
-    ab.i("TXLivePlayerJSAdapter", "checkHardWareDecoder: invalid playUrl");
-    AppMethodBeat.o(96137);
-  }
-  
-  final int l(Bundle paramBundle)
-  {
-    AppMethodBeat.i(96136);
-    this.mMode = paramBundle.getInt("mode", this.mMode);
-    if (this.mMode == 1)
-    {
-      if (this.bGn == null)
-      {
-        AppMethodBeat.o(96136);
-        return 0;
-      }
-      if ((this.bGn != null) && ((this.bGn.startsWith("http://")) || (this.bGn.startsWith("https://"))) && (this.bGn.contains(".flv")))
-      {
-        AppMethodBeat.o(96136);
-        return 1;
-      }
-      AppMethodBeat.o(96136);
-      return 0;
-    }
-    AppMethodBeat.o(96136);
-    return 5;
-  }
-  
-  final void m(Bundle paramBundle)
-  {
-    AppMethodBeat.i(96138);
-    this.mMute = paramBundle.getBoolean("muted", this.mMute);
-    this.bGk.setMute(this.mMute);
-    this.bGq = paramBundle.getString("orientation", this.bGq);
-    if (this.bGq.equalsIgnoreCase("horizontal"))
-    {
-      this.bGk.setRenderRotation(270);
-      this.bGr = paramBundle.getString("objectFit", this.bGr);
-      if (!this.bGr.equalsIgnoreCase("fillCrop")) {
-        break label330;
-      }
-      this.bGk.setRenderMode(0);
-      label103:
-      if (paramBundle.keySet().contains("soundMode"))
-      {
-        this.bGs = paramBundle.getString("soundMode", this.bGs);
-        if (!this.bGs.equalsIgnoreCase("speaker")) {
-          break label353;
-        }
-        this.bGk.setAudioRoute(0);
-      }
+    AppMethodBeat.i(145904);
+    StringBuilder localStringBuilder = new StringBuilder("LivePusher params:");
+    Object localObject;
+    if (paramJSONObject != null) {
+      localObject = paramJSONObject.toString();
     }
     for (;;)
     {
-      this.bGt = paramBundle.getFloat("minCache", this.bGt);
-      this.bGu = paramBundle.getFloat("maxCache", this.bGu);
-      this.bGj.setAutoAdjustCacheTime(true);
-      this.bGj.setCacheTime(this.bGt);
-      this.bGj.setMinAutoAdjustCacheTime(this.bGt);
-      this.bGj.setMaxAutoAdjustCacheTime(this.bGu);
-      this.bGk.setConfig(this.bGj);
-      this.bGw = paramBundle.getBoolean("needEvent", this.bGw);
-      this.bGe = paramBundle.getBoolean("autoPauseIfNavigate", this.bGe);
-      this.bGf = paramBundle.getBoolean("autoPauseIfOpenNative", this.bGf);
-      this.bGx = paramBundle.getBoolean("debug", this.bGx);
-      this.bGi.showLog(this.bGx);
-      AppMethodBeat.o(96138);
-      return;
-      if (!this.bGq.equalsIgnoreCase("vertical")) {
-        break;
+      localStringBuilder.append((String)localObject);
+      localObject = new Bundle();
+      try
+      {
+        if (paramJSONObject.has("pushUrl")) {
+          ((Bundle)localObject).putString("pushUrl", paramJSONObject.getString("pushUrl"));
+        }
       }
-      this.bGk.setRenderRotation(0);
-      break;
-      label330:
-      if (!this.bGr.equalsIgnoreCase("contain")) {
-        break label103;
+      catch (JSONException localJSONException36)
+      {
+        try
+        {
+          if (paramJSONObject.has("mode")) {
+            ((Bundle)localObject).putInt("mode", paramJSONObject.getInt("mode"));
+          }
+        }
+        catch (JSONException localJSONException36)
+        {
+          try
+          {
+            if (paramJSONObject.has("autopush")) {
+              ((Bundle)localObject).putBoolean("autopush", paramJSONObject.getBoolean("autopush"));
+            }
+          }
+          catch (JSONException localJSONException36)
+          {
+            try
+            {
+              if (paramJSONObject.has("audioQuality")) {
+                ((Bundle)localObject).putString("audioQuality", paramJSONObject.getString("audioQuality"));
+              }
+            }
+            catch (JSONException localJSONException36)
+            {
+              try
+              {
+                if (paramJSONObject.has("muted")) {
+                  ((Bundle)localObject).putBoolean("muted", paramJSONObject.getBoolean("muted"));
+                }
+              }
+              catch (JSONException localJSONException36)
+              {
+                try
+                {
+                  if (paramJSONObject.has("enableCamera")) {
+                    ((Bundle)localObject).putBoolean("enableCamera", paramJSONObject.getBoolean("enableCamera"));
+                  }
+                }
+                catch (JSONException localJSONException36)
+                {
+                  try
+                  {
+                    if (paramJSONObject.has("enableMic")) {
+                      ((Bundle)localObject).putBoolean("enableMic", paramJSONObject.getBoolean("enableMic"));
+                    }
+                  }
+                  catch (JSONException localJSONException36)
+                  {
+                    try
+                    {
+                      if (paramJSONObject.has("enableAGC")) {
+                        ((Bundle)localObject).putBoolean("enableAGC", paramJSONObject.getBoolean("enableAGC"));
+                      }
+                    }
+                    catch (JSONException localJSONException36)
+                    {
+                      try
+                      {
+                        if (paramJSONObject.has("enableANS")) {
+                          ((Bundle)localObject).putBoolean("enableANS", paramJSONObject.getBoolean("enableANS"));
+                        }
+                      }
+                      catch (JSONException localJSONException36)
+                      {
+                        try
+                        {
+                          if (paramJSONObject.has("enableEarMonitor")) {
+                            ((Bundle)localObject).putBoolean("enableEarMonitor", paramJSONObject.getBoolean("enableEarMonitor"));
+                          }
+                        }
+                        catch (JSONException localJSONException36)
+                        {
+                          try
+                          {
+                            if (paramJSONObject.has("audioVolumeType")) {
+                              ((Bundle)localObject).putString("audioVolumeType", paramJSONObject.getString("audioVolumeType"));
+                            }
+                          }
+                          catch (JSONException localJSONException36)
+                          {
+                            try
+                            {
+                              if (paramJSONObject.has("audioReverbType")) {
+                                ((Bundle)localObject).putInt("audioReverbType", paramJSONObject.getInt("audioReverbType"));
+                              }
+                            }
+                            catch (JSONException localJSONException36)
+                            {
+                              try
+                              {
+                                if (paramJSONObject.has("videoWidth")) {
+                                  ((Bundle)localObject).putInt("videoWidth", paramJSONObject.getInt("videoWidth"));
+                                }
+                              }
+                              catch (JSONException localJSONException36)
+                              {
+                                try
+                                {
+                                  if (paramJSONObject.has("videoHeight")) {
+                                    ((Bundle)localObject).putInt("videoHeight", paramJSONObject.getInt("videoHeight"));
+                                  }
+                                }
+                                catch (JSONException localJSONException36)
+                                {
+                                  try
+                                  {
+                                    if (paramJSONObject.has("focusMode")) {
+                                      ((Bundle)localObject).putInt("focusMode", paramJSONObject.getInt("focusMode"));
+                                    }
+                                  }
+                                  catch (JSONException localJSONException36)
+                                  {
+                                    try
+                                    {
+                                      if (paramJSONObject.has("orientation")) {
+                                        ((Bundle)localObject).putString("orientation", paramJSONObject.getString("orientation"));
+                                      }
+                                    }
+                                    catch (JSONException localJSONException36)
+                                    {
+                                      try
+                                      {
+                                        if (paramJSONObject.has("beauty")) {
+                                          ((Bundle)localObject).putInt("beauty", paramJSONObject.getInt("beauty"));
+                                        }
+                                      }
+                                      catch (JSONException localJSONException36)
+                                      {
+                                        try
+                                        {
+                                          if (paramJSONObject.has("beautyStyle")) {
+                                            ((Bundle)localObject).putString("beautyStyle", paramJSONObject.getString("beautyStyle"));
+                                          }
+                                        }
+                                        catch (JSONException localJSONException36)
+                                        {
+                                          try
+                                          {
+                                            if (paramJSONObject.has("filterImage")) {
+                                              ((Bundle)localObject).putString("filterImage", paramJSONObject.getString("filterImage"));
+                                            }
+                                          }
+                                          catch (JSONException localJSONException36)
+                                          {
+                                            try
+                                            {
+                                              if (paramJSONObject.has("filterImageMd5")) {
+                                                ((Bundle)localObject).putString("filterImageMd5", paramJSONObject.getString("filterImageMd5"));
+                                              }
+                                            }
+                                            catch (JSONException localJSONException36)
+                                            {
+                                              try
+                                              {
+                                                if (paramJSONObject.has("whiteness")) {
+                                                  ((Bundle)localObject).putInt("whiteness", paramJSONObject.getInt("whiteness"));
+                                                }
+                                              }
+                                              catch (JSONException localJSONException36)
+                                              {
+                                                try
+                                                {
+                                                  if (paramJSONObject.has("aspect")) {
+                                                    ((Bundle)localObject).putInt("aspect", paramJSONObject.getInt("aspect"));
+                                                  }
+                                                }
+                                                catch (JSONException localJSONException36)
+                                                {
+                                                  try
+                                                  {
+                                                    if (paramJSONObject.has("minBitrate")) {
+                                                      ((Bundle)localObject).putInt("minBitrate", paramJSONObject.getInt("minBitrate"));
+                                                    }
+                                                  }
+                                                  catch (JSONException localJSONException36)
+                                                  {
+                                                    try
+                                                    {
+                                                      if (paramJSONObject.has("maxBitrate")) {
+                                                        ((Bundle)localObject).putInt("maxBitrate", paramJSONObject.getInt("maxBitrate"));
+                                                      }
+                                                    }
+                                                    catch (JSONException localJSONException36)
+                                                    {
+                                                      try
+                                                      {
+                                                        if (paramJSONObject.has("backgroundMute")) {
+                                                          ((Bundle)localObject).putBoolean("backgroundMute", paramJSONObject.getBoolean("backgroundMute"));
+                                                        }
+                                                      }
+                                                      catch (JSONException localJSONException36)
+                                                      {
+                                                        try
+                                                        {
+                                                          if (paramJSONObject.has("zoom")) {
+                                                            ((Bundle)localObject).putBoolean("zoom", paramJSONObject.getBoolean("zoom"));
+                                                          }
+                                                        }
+                                                        catch (JSONException localJSONException36)
+                                                        {
+                                                          try
+                                                          {
+                                                            if (paramJSONObject.has("needEvent")) {
+                                                              ((Bundle)localObject).putBoolean("needEvent", paramJSONObject.getBoolean("needEvent"));
+                                                            }
+                                                          }
+                                                          catch (JSONException localJSONException36)
+                                                          {
+                                                            try
+                                                            {
+                                                              if (paramJSONObject.has("debug")) {
+                                                                ((Bundle)localObject).putBoolean("debug", paramJSONObject.getBoolean("debug"));
+                                                              }
+                                                            }
+                                                            catch (JSONException localJSONException36)
+                                                            {
+                                                              try
+                                                              {
+                                                                if (paramJSONObject.has("mirror")) {
+                                                                  ((Bundle)localObject).putBoolean("mirror", paramJSONObject.getBoolean("mirror"));
+                                                                }
+                                                              }
+                                                              catch (JSONException localJSONException36)
+                                                              {
+                                                                try
+                                                                {
+                                                                  if (paramJSONObject.has("remoteMirror")) {
+                                                                    ((Bundle)localObject).putBoolean("remoteMirror", paramJSONObject.getBoolean("remoteMirror"));
+                                                                  }
+                                                                }
+                                                                catch (JSONException localJSONException36)
+                                                                {
+                                                                  try
+                                                                  {
+                                                                    if (paramJSONObject.has("localMirror")) {
+                                                                      ((Bundle)localObject).putString("localMirror", paramJSONObject.getString("localMirror"));
+                                                                    }
+                                                                  }
+                                                                  catch (JSONException localJSONException36)
+                                                                  {
+                                                                    try
+                                                                    {
+                                                                      if (paramJSONObject.has("watermarkLeft")) {
+                                                                        ((Bundle)localObject).putFloat("watermarkLeft", BigDecimal.valueOf(paramJSONObject.getDouble("watermarkLeft")).floatValue());
+                                                                      }
+                                                                    }
+                                                                    catch (JSONException localJSONException36)
+                                                                    {
+                                                                      try
+                                                                      {
+                                                                        if (paramJSONObject.has("watermarkTop")) {
+                                                                          ((Bundle)localObject).putFloat("watermarkTop", BigDecimal.valueOf(paramJSONObject.getDouble("watermarkTop")).floatValue());
+                                                                        }
+                                                                      }
+                                                                      catch (JSONException localJSONException36)
+                                                                      {
+                                                                        try
+                                                                        {
+                                                                          if (paramJSONObject.has("watermarkWidth")) {
+                                                                            ((Bundle)localObject).putFloat("watermarkWidth", BigDecimal.valueOf(paramJSONObject.getDouble("watermarkWidth")).floatValue());
+                                                                          }
+                                                                        }
+                                                                        catch (JSONException localJSONException36)
+                                                                        {
+                                                                          try
+                                                                          {
+                                                                            if (paramJSONObject.has("devicePosition")) {
+                                                                              ((Bundle)localObject).putString("devicePosition", paramJSONObject.getString("devicePosition"));
+                                                                            }
+                                                                          }
+                                                                          catch (JSONException localJSONException36)
+                                                                          {
+                                                                            try
+                                                                            {
+                                                                              if (paramJSONObject.has("needBGMEvent")) {
+                                                                                ((Bundle)localObject).putBoolean("needBGMEvent", paramJSONObject.getBoolean("needBGMEvent"));
+                                                                              }
+                                                                            }
+                                                                            catch (JSONException localJSONException36)
+                                                                            {
+                                                                              try
+                                                                              {
+                                                                                for (;;)
+                                                                                {
+                                                                                  if (paramJSONObject.has("needAudioVolume")) {
+                                                                                    ((Bundle)localObject).putBoolean("needAudioVolume", paramJSONObject.getBoolean("needAudioVolume"));
+                                                                                  }
+                                                                                  AppMethodBeat.o(145904);
+                                                                                  return localObject;
+                                                                                  localObject = "";
+                                                                                  break;
+                                                                                  localJSONException1 = localJSONException1;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "pushUrl", localJSONException1.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException2 = localJSONException2;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "mode", localJSONException2.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException3 = localJSONException3;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "autopush", localJSONException3.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException4 = localJSONException4;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "audioQuality", localJSONException4.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException5 = localJSONException5;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "muted", localJSONException5.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException6 = localJSONException6;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableCamera", localJSONException6.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException7 = localJSONException7;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableMic", localJSONException7.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException8 = localJSONException8;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableAGC", localJSONException8.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException9 = localJSONException9;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableANS", localJSONException9.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException10 = localJSONException10;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "enableEarMonitor", localJSONException10.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException11 = localJSONException11;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "audioVolumeType", localJSONException11.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException12 = localJSONException12;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "audioReverbType", localJSONException12.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException13 = localJSONException13;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "videoWidth", localJSONException13.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException14 = localJSONException14;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "videoHeight", localJSONException14.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException15 = localJSONException15;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "focusMode", localJSONException15.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException16 = localJSONException16;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "orientation", localJSONException16.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException17 = localJSONException17;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "beauty", localJSONException17.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException18 = localJSONException18;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "beautyStyle", localJSONException18.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException19 = localJSONException19;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "filterImage", localJSONException19.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException20 = localJSONException20;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "filterImageMd5", localJSONException20.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException21 = localJSONException21;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "whiteness", localJSONException21.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException22 = localJSONException22;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "aspect", localJSONException22.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException23 = localJSONException23;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "minBitrate", localJSONException23.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException24 = localJSONException24;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "maxBitrate", localJSONException24.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException25 = localJSONException25;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "backgroundMute", localJSONException25.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException26 = localJSONException26;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "zoom", localJSONException26.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException27 = localJSONException27;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "needEvent", localJSONException27.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException28 = localJSONException28;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "debug", localJSONException28.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException29 = localJSONException29;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "mirror", localJSONException29.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException30 = localJSONException30;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "remoteMirror", localJSONException30.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException31 = localJSONException31;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "localMirror", localJSONException31.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException32 = localJSONException32;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "watermarkLeft", localJSONException32.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException33 = localJSONException33;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "watermarkTop", localJSONException33.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException34 = localJSONException34;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "watermarkWidth", localJSONException34.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException35 = localJSONException35;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "devicePosition", localJSONException35.getLocalizedMessage() });
+                                                                                  continue;
+                                                                                  localJSONException36 = localJSONException36;
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "needBGMEvent", localJSONException36.getLocalizedMessage() });
+                                                                                }
+                                                                              }
+                                                                              catch (JSONException paramJSONObject)
+                                                                              {
+                                                                                for (;;)
+                                                                                {
+                                                                                  ad.i("TXLiveParamUtil", "updateLivePusher param=%s exp=%s", new Object[] { "needAudioVolume", paramJSONObject.getLocalizedMessage() });
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
-      this.bGk.setRenderMode(1);
-      break label103;
-      label353:
-      if (this.bGs.equalsIgnoreCase("ear")) {
-        this.bGk.setAudioRoute(1);
-      }
     }
-  }
-  
-  public final void onNetStatus(Bundle paramBundle)
-  {
-    AppMethodBeat.i(96135);
-    if (this.bGl != null) {
-      this.bGl.onNetStatus(paramBundle);
-    }
-    ab.i("TXLivePlayerJSAdapter", "onNetStatus:".concat(String.valueOf(String.format("%-16s %-16s %-16s %-12s %-12s %-12s %-12s %-14s %-14s %-14s %-16s %-16s", new Object[] { "CPU:" + paramBundle.getString("CPU_USAGE"), "RES:" + paramBundle.getInt("VIDEO_WIDTH") + "*" + paramBundle.getInt("VIDEO_HEIGHT"), "SPD:" + paramBundle.getInt("NET_SPEED") + "Kbps", "JIT:" + paramBundle.getInt("NET_JITTER"), "FPS:" + paramBundle.getInt("VIDEO_FPS"), "GOP:" + paramBundle.getInt("VIDEO_GOP") + "s", "ARA:" + paramBundle.getInt("AUDIO_BITRATE") + "Kbps", "QUE:" + paramBundle.getInt("AUDIO_CACHE") + " | " + paramBundle.getInt("VIDEO_CACHE") + "," + paramBundle.getInt("V_SUM_CACHE_SIZE") + "," + paramBundle.getInt("V_DEC_CACHE_SIZE") + " | " + paramBundle.getInt("AV_RECV_INTERVAL") + "," + paramBundle.getInt("AV_PLAY_INTERVAL") + "," + String.format("%.1f", new Object[] { Float.valueOf(paramBundle.getFloat("AUDIO_CACHE_THRESHOLD")) }).toString(), "VRA:" + paramBundle.getInt("VIDEO_BITRATE") + "Kbps", "DRP:" + paramBundle.getInt("AUDIO_DROP") + "|" + paramBundle.getInt("VIDEO_DROP"), "SVR:" + paramBundle.getString("SERVER_IP"), "AUDIO:" + paramBundle.getString("AUDIO_PLAY_INFO") }))));
-    AppMethodBeat.o(96135);
-  }
-  
-  public final void onPlayEvent(int paramInt, Bundle paramBundle)
-  {
-    AppMethodBeat.i(96134);
-    if ((paramInt == 2006) || (paramInt == -2301)) {
-      Ce("stop");
-    }
-    if ((this.bGw) && (this.bGl != null)) {
-      this.bGl.onPlayEvent(paramInt, paramBundle);
-    }
-    paramBundle = paramBundle.getString("EVT_MSG");
-    ab.i("TXLivePlayerJSAdapter", "onPushEvent: event = " + paramInt + " message = " + paramBundle);
-    AppMethodBeat.o(96134);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.k
  * JD-Core Version:    0.7.0.1
  */

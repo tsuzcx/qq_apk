@@ -17,57 +17,57 @@ public class ScriptBreakPoint
   
   ScriptBreakPoint(V8Object paramV8Object)
   {
-    AppMethodBeat.i(74912);
+    AppMethodBeat.i(61535);
     this.v8Object = paramV8Object.twin();
-    AppMethodBeat.o(74912);
+    AppMethodBeat.o(61535);
   }
   
   public int getBreakPointNumber()
   {
-    AppMethodBeat.i(74913);
+    AppMethodBeat.i(61536);
     int i = this.v8Object.executeIntegerFunction("number", null);
-    AppMethodBeat.o(74913);
+    AppMethodBeat.o(61536);
     return i;
   }
   
   public String getCondition()
   {
-    AppMethodBeat.i(74916);
+    AppMethodBeat.i(61539);
     try
     {
       String str = this.v8Object.executeStringFunction("condition", null);
-      AppMethodBeat.o(74916);
+      AppMethodBeat.o(61539);
       return str;
     }
     catch (V8ResultUndefined localV8ResultUndefined)
     {
-      AppMethodBeat.o(74916);
+      AppMethodBeat.o(61539);
     }
     return "undefined";
   }
   
   public int getLine()
   {
-    AppMethodBeat.i(74914);
+    AppMethodBeat.i(61537);
     int i = this.v8Object.executeIntegerFunction("line", null);
-    AppMethodBeat.o(74914);
+    AppMethodBeat.o(61537);
     return i;
   }
   
   public void release()
   {
-    AppMethodBeat.i(74917);
+    AppMethodBeat.i(61540);
     if ((this.v8Object != null) && (!this.v8Object.isReleased()))
     {
       this.v8Object.release();
       this.v8Object = null;
     }
-    AppMethodBeat.o(74917);
+    AppMethodBeat.o(61540);
   }
   
   public void setCondition(String paramString)
   {
-    AppMethodBeat.i(74915);
+    AppMethodBeat.i(61538);
     V8Array localV8Array = new V8Array(this.v8Object.getRuntime());
     localV8Array.push(paramString);
     try
@@ -78,13 +78,13 @@ public class ScriptBreakPoint
     finally
     {
       localV8Array.release();
-      AppMethodBeat.o(74915);
+      AppMethodBeat.o(61538);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.debug.ScriptBreakPoint
  * JD-Core Version:    0.7.0.1
  */

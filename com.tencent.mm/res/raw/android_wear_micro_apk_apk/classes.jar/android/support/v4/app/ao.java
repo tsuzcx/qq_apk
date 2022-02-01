@@ -1,66 +1,42 @@
 package android.support.v4.app;
 
-import android.app.Notification;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.arch.lifecycle.q;
+import android.support.v4.content.d;
+import android.util.Log;
+import java.io.PrintWriter;
 
-public final class ao
+final class ao<D>
+  implements q<D>
 {
-  static final bb ev = new az();
+  private final d<D> ge;
+  private final am<D> gh;
+  private boolean gi;
   
-  static
+  public final void d(D paramD)
   {
-    if (Build.VERSION.SDK_INT >= 26)
-    {
-      ev = new ay();
-      return;
+    if (LoaderManagerImpl.DEBUG) {
+      Log.v("LoaderManager", "  onLoadFinished in " + this.ge + ": " + d.dataToString(paramD));
     }
-    if (Build.VERSION.SDK_INT >= 24)
-    {
-      ev = new ax();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      ev = new aw();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 20)
-    {
-      ev = new av();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      ev = new au();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      ev = new at();
-      return;
+    this.gi = true;
+  }
+  
+  public final void dump(String paramString, PrintWriter paramPrintWriter)
+  {
+    paramPrintWriter.print(paramString);
+    paramPrintWriter.print("mDeliveredData=");
+    paramPrintWriter.println(this.gi);
+  }
+  
+  final void reset()
+  {
+    if ((this.gi) && (LoaderManagerImpl.DEBUG)) {
+      Log.v("LoaderManager", "  Resetting: " + this.ge);
     }
   }
   
-  public static Bundle a(Notification paramNotification)
+  public final String toString()
   {
-    if (Build.VERSION.SDK_INT >= 19) {
-      return paramNotification.extras;
-    }
-    if (Build.VERSION.SDK_INT >= 16) {
-      return bo.a(paramNotification);
-    }
-    return null;
-  }
-  
-  static void a(am paramam, ArrayList<ap> paramArrayList)
-  {
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      paramam.a((ap)paramArrayList.next());
-    }
+    return this.gh.toString();
   }
 }
 

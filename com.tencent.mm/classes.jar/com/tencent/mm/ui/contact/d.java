@@ -2,25 +2,26 @@ package com.tencent.mm.ui.contact;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.s;
-import com.tencent.mm.model.t;
-import com.tencent.mm.platformtools.ah;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.w;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.applet.b.a;
 import com.tencent.mm.ui.applet.b.b;
 import com.tencent.mm.ui.base.MMSlideDelView;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
@@ -28,78 +29,87 @@ import com.tencent.mm.ui.base.MMSlideDelView.d;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 import com.tencent.mm.ui.base.MMSlideDelView.g;
 import com.tencent.mm.ui.base.MaskLayout;
-import com.tencent.mm.ui.p;
+import com.tencent.mm.ui.q;
 import java.util.List;
 
 public final class d
-  extends p<ad>
+  extends q<af>
 {
-  protected MMActivity cmc;
-  protected List<String> ejc;
-  com.tencent.mm.ui.applet.b gxo;
-  private b.b gxp;
-  protected MMSlideDelView.g jSb;
-  protected MMSlideDelView.c jSc;
-  protected MMSlideDelView.d jSe;
-  protected MMSlideDelView.f pdU;
-  com.tencent.mm.pluginsdk.ui.d vTR;
-  protected String zZK;
+  com.tencent.mm.pluginsdk.ui.d BYY;
+  protected String GRX;
+  protected List<String> fvP;
+  com.tencent.mm.ui.applet.b ikl;
+  private b.b ikm;
+  protected MMActivity imP;
+  protected MMSlideDelView.g mRk;
+  protected MMSlideDelView.c mRl;
+  protected MMSlideDelView.d mRn;
+  protected MMSlideDelView.f ubr;
   
   public d(Context paramContext, String paramString)
   {
-    super(paramContext, new ad());
-    AppMethodBeat.i(33563);
-    this.zZK = null;
-    this.ejc = null;
-    this.jSe = MMSlideDelView.getItemStatusCallBack();
-    this.gxo = null;
-    this.gxp = null;
-    this.cmc = ((MMActivity)paramContext);
-    this.zZK = paramString;
-    this.gxo = new com.tencent.mm.ui.applet.b(new d.1(this));
-    AppMethodBeat.o(33563);
+    super(paramContext, new af());
+    AppMethodBeat.i(37683);
+    this.GRX = null;
+    this.fvP = null;
+    this.mRn = MMSlideDelView.getItemStatusCallBack();
+    this.ikl = null;
+    this.ikm = null;
+    this.imP = ((MMActivity)paramContext);
+    this.GRX = paramString;
+    this.ikl = new com.tencent.mm.ui.applet.b(new b.a()
+    {
+      public final Bitmap Cl(String paramAnonymousString)
+      {
+        AppMethodBeat.i(37680);
+        paramAnonymousString = com.tencent.mm.ak.c.a(paramAnonymousString, false, -1, null);
+        AppMethodBeat.o(37680);
+        return paramAnonymousString;
+      }
+    });
+    AppMethodBeat.o(37683);
   }
   
   private void a(a parama, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(33568);
-    ad localad = (ad)getItem(paramInt1 + 1);
-    if ((localad == null) || ((localad.field_showHead != paramInt2) && (!ah.isNullOrNil(af(localad))))) {
-      parama.AbD.setBackgroundResource(0);
+    AppMethodBeat.i(37688);
+    af localaf = (af)getItem(paramInt1 + 1);
+    if ((localaf == null) || ((localaf.field_showHead != paramInt2) && (!bt.isNullOrNil(an(localaf))))) {
+      parama.GUa.setBackgroundResource(0);
     }
-    AppMethodBeat.o(33568);
+    AppMethodBeat.o(37688);
   }
   
-  private String af(ad paramad)
+  private String an(af paramaf)
   {
-    AppMethodBeat.i(33569);
-    if (paramad.field_showHead == 31)
+    AppMethodBeat.i(37689);
+    if (paramaf.field_showHead == 31)
     {
-      AppMethodBeat.o(33569);
+      AppMethodBeat.o(37689);
       return "";
     }
-    if (paramad.field_showHead == 43)
+    if (paramaf.field_showHead == 43)
     {
-      paramad = this.cmc.getString(2131302712);
-      AppMethodBeat.o(33569);
-      return paramad;
+      paramaf = this.imP.getString(2131762623);
+      AppMethodBeat.o(37689);
+      return paramaf;
     }
-    char c = (char)paramad.field_showHead;
-    AppMethodBeat.o(33569);
+    char c = (char)paramaf.field_showHead;
+    AppMethodBeat.o(37689);
     return String.valueOf(c);
   }
   
-  public final void Ku()
+  public final void Wd()
   {
     try
     {
-      AppMethodBeat.i(33566);
-      aw.aaz();
-      Cursor localCursor = c.YA().d(this.zZK, "", this.ejc);
-      bKb();
+      AppMethodBeat.i(37686);
+      az.arV();
+      Cursor localCursor = com.tencent.mm.model.c.apM().d(this.GRX, "", this.fvP);
+      cHX();
       setCursor(localCursor);
       notifyDataSetChanged();
-      AppMethodBeat.o(33566);
+      AppMethodBeat.o(37686);
       return;
     }
     finally
@@ -109,149 +119,178 @@ public final class d
     }
   }
   
-  public final void Kv()
+  public final void We()
   {
-    AppMethodBeat.i(33565);
-    Ku();
-    AppMethodBeat.o(33565);
+    AppMethodBeat.i(37685);
+    Wd();
+    AppMethodBeat.o(37685);
   }
   
   public final void a(MMSlideDelView.f paramf)
   {
-    this.pdU = paramf;
+    this.ubr = paramf;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(33564);
+    AppMethodBeat.i(37684);
     int i = getCursor().getCount();
-    AppMethodBeat.o(33564);
+    AppMethodBeat.o(37684);
     return i;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(33567);
-    if (this.gxp == null) {
-      this.gxp = new d.2(this);
+    AppMethodBeat.i(37687);
+    if (this.ikm == null) {
+      this.ikm = new b.b()
+      {
+        public final int aII()
+        {
+          AppMethodBeat.i(37682);
+          int i = d.this.getCount();
+          AppMethodBeat.o(37682);
+          return i;
+        }
+        
+        public final String qa(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(37681);
+          if ((paramAnonymousInt < 0) || (paramAnonymousInt >= d.this.getCount()))
+          {
+            ad.e("MicroMsg.ChatroomContactAdapter", "pos is invalid");
+            AppMethodBeat.o(37681);
+            return null;
+          }
+          Object localObject = (af)d.this.getItem(paramAnonymousInt);
+          if (localObject == null)
+          {
+            AppMethodBeat.o(37681);
+            return null;
+          }
+          localObject = ((au)localObject).field_username;
+          AppMethodBeat.o(37681);
+          return localObject;
+        }
+      };
     }
-    if (this.gxo != null) {
-      this.gxo.a(paramInt, this.gxp);
+    if (this.ikl != null) {
+      this.ikl.a(paramInt, this.ikm);
     }
     Object localObject1;
     if (paramView == null)
     {
-      paramView = View.inflate(this.cmc, 2130969021, null);
+      paramView = View.inflate(this.imP, 2131493371, null);
       paramViewGroup = new a();
-      paramViewGroup.nSs = ((TextView)paramView.findViewById(2131821089));
-      paramViewGroup.ejS = ((MaskLayout)paramView.findViewById(2131821092));
-      paramViewGroup.ejj = ((TextView)paramView.findViewById(2131821099));
-      paramViewGroup.AbD = ((ViewGroup)paramView.findViewById(2131821091));
-      localObject1 = paramViewGroup.AbD.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).height = ((int)(com.tencent.mm.cb.a.ap(this.cmc, 2131427549) * com.tencent.mm.cb.a.gs(this.cmc)));
-      paramViewGroup.AbD.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      paramViewGroup.sGm = ((TextView)paramView.findViewById(2131298724));
+      paramViewGroup.fwD = ((MaskLayout)paramView.findViewById(2131298721));
+      paramViewGroup.fsI = ((TextView)paramView.findViewById(2131298729));
+      paramViewGroup.GUa = ((ViewGroup)paramView.findViewById(2131298728));
+      localObject1 = paramViewGroup.GUa.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject1).height = ((int)(com.tencent.mm.cd.a.ap(this.imP, 2131165242) * com.tencent.mm.cd.a.hR(this.imP)));
+      paramViewGroup.GUa.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      localObject1 = (ad)getItem(paramInt - 1);
+      localObject1 = (af)getItem(paramInt - 1);
       int i;
       label185:
       Object localObject2;
       if (localObject1 == null)
       {
         i = -1;
-        localObject1 = (ad)getItem(paramInt);
+        localObject1 = (af)getItem(paramInt);
         if (paramInt != 0) {
           break label464;
         }
-        localObject2 = af((ad)localObject1);
-        if (!ah.isNullOrNil((String)localObject2)) {
+        localObject2 = an((af)localObject1);
+        if (!bt.isNullOrNil((String)localObject2)) {
           break label433;
         }
-        ab.w("MicroMsg.ChatroomContactAdapter", "get display show head return null, user[%s] pos[%d]", new Object[] { ((aq)localObject1).field_username, Integer.valueOf(paramInt) });
-        paramViewGroup.nSs.setVisibility(8);
+        ad.w("MicroMsg.ChatroomContactAdapter", "get display show head return null, user[%s] pos[%d]", new Object[] { ((au)localObject1).field_username, Integer.valueOf(paramInt) });
+        paramViewGroup.sGm.setVisibility(8);
         label252:
         if (getItem(paramInt + 1) == null) {
-          paramViewGroup.AbD.setBackgroundResource(0);
+          paramViewGroup.GUa.setBackgroundResource(0);
         }
         label270:
-        localObject2 = paramViewGroup.ejj;
-        MMActivity localMMActivity = this.cmc;
-        if (t.oD(((aq)localObject1).field_username)) {
+        localObject2 = paramViewGroup.fsI;
+        MMActivity localMMActivity = this.imP;
+        if (w.to(((au)localObject1).field_username)) {
           break label637;
         }
-        paramInt = 2131690768;
+        paramInt = 2131100638;
         label297:
-        ((TextView)localObject2).setTextColor(com.tencent.mm.cb.a.l(localMMActivity, paramInt));
-        localObject2 = (ImageView)paramViewGroup.ejS.getContentView();
-        a.b.c((ImageView)localObject2, ((aq)localObject1).field_username);
+        ((TextView)localObject2).setTextColor(com.tencent.mm.cd.a.m(localMMActivity, paramInt));
+        localObject2 = (ImageView)paramViewGroup.fwD.getContentView();
+        a.b.c((ImageView)localObject2, ((au)localObject1).field_username);
         localObject2 = (com.tencent.mm.pluginsdk.ui.a)((ImageView)localObject2).getDrawable();
-        if (this.vTR != null) {
-          this.vTR.a((com.tencent.mm.pluginsdk.ui.d.a)localObject2);
+        if (this.BYY != null) {
+          this.BYY.a((com.tencent.mm.pluginsdk.ui.d.a)localObject2);
         }
-        paramViewGroup.ejS.setMaskDrawable(null);
+        paramViewGroup.fwD.setMaskDrawable(null);
       }
       try
       {
-        if (t.nK(((aq)localObject1).field_username)) {
-          ((com.tencent.mm.openim.a.b)g.E(com.tencent.mm.openim.a.b.class)).a(this.cmc, paramViewGroup.ejj, s.nE(((aq)localObject1).field_username));
+        if (w.so(((au)localObject1).field_username)) {
+          ((com.tencent.mm.openim.a.b)g.ab(com.tencent.mm.openim.a.b.class)).a(this.imP, paramViewGroup.fsI, v.sh(((au)localObject1).field_username));
         }
         for (;;)
         {
-          AppMethodBeat.o(33567);
+          AppMethodBeat.o(37687);
           return paramView;
           paramViewGroup = (a)paramView.getTag();
           break;
-          i = ((aq)localObject1).field_showHead;
+          i = ((au)localObject1).field_showHead;
           break label185;
           label433:
-          paramViewGroup.nSs.setVisibility(0);
-          paramViewGroup.nSs.setText((CharSequence)localObject2);
-          paramViewGroup.nSs.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+          paramViewGroup.sGm.setVisibility(0);
+          paramViewGroup.sGm.setText((CharSequence)localObject2);
+          paramViewGroup.sGm.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
           break label252;
           label464:
-          if ((paramInt > 0) && (((aq)localObject1).field_showHead != i))
+          if ((paramInt > 0) && (((au)localObject1).field_showHead != i))
           {
-            localObject2 = af((ad)localObject1);
-            paramViewGroup.AbD.setBackgroundResource(2130838445);
-            if (ah.isNullOrNil((String)localObject2))
+            localObject2 = an((af)localObject1);
+            paramViewGroup.GUa.setBackgroundResource(2131231818);
+            if (bt.isNullOrNil((String)localObject2))
             {
-              ab.w("MicroMsg.ChatroomContactAdapter", "get display show head return null, user[%s] pos[%d]", new Object[] { ((aq)localObject1).field_username, Integer.valueOf(paramInt) });
-              paramViewGroup.nSs.setVisibility(8);
+              ad.w("MicroMsg.ChatroomContactAdapter", "get display show head return null, user[%s] pos[%d]", new Object[] { ((au)localObject1).field_username, Integer.valueOf(paramInt) });
+              paramViewGroup.sGm.setVisibility(8);
             }
             for (;;)
             {
               a(paramViewGroup, paramInt, i);
               break;
-              paramViewGroup.nSs.setVisibility(0);
-              paramViewGroup.nSs.setText((CharSequence)localObject2);
-              if (((aq)localObject1).field_showHead == 32)
+              paramViewGroup.sGm.setVisibility(0);
+              paramViewGroup.sGm.setText((CharSequence)localObject2);
+              if (((au)localObject1).field_showHead == 32)
               {
-                paramViewGroup.nSs.setCompoundDrawablesWithIntrinsicBounds(2130839648, 0, 0, 0);
-                paramViewGroup.nSs.setCompoundDrawablePadding(2);
+                paramViewGroup.sGm.setCompoundDrawablesWithIntrinsicBounds(2131233271, 0, 0, 0);
+                paramViewGroup.sGm.setCompoundDrawablePadding(2);
               }
               else
               {
-                paramViewGroup.nSs.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                paramViewGroup.sGm.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
               }
             }
           }
-          paramViewGroup.nSs.setVisibility(8);
+          paramViewGroup.sGm.setVisibility(8);
           a(paramViewGroup, paramInt, i);
           break label270;
           label637:
-          paramInt = 2131690769;
+          paramInt = 2131100639;
           break label297;
-          localObject1 = j.b(this.cmc, s.nE(((aq)localObject1).field_username), (int)paramViewGroup.ejj.getTextSize());
-          paramViewGroup.ejj.setText((CharSequence)localObject1);
+          localObject1 = k.b(this.imP, v.sh(((au)localObject1).field_username), (int)paramViewGroup.fsI.getTextSize());
+          paramViewGroup.fsI.setText((CharSequence)localObject1);
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          paramViewGroup.ejj.setText("");
+          paramViewGroup.fsI.setText("");
         }
       }
     }
@@ -259,25 +298,25 @@ public final class d
   
   public final void setGetViewPositionCallback(MMSlideDelView.c paramc)
   {
-    this.jSc = paramc;
+    this.mRl = paramc;
   }
   
   public final void setPerformItemClickListener(MMSlideDelView.g paramg)
   {
-    this.jSb = paramg;
+    this.mRk = paramg;
   }
   
   protected static final class a
   {
-    public ViewGroup AbD;
-    public MaskLayout ejS;
-    public TextView ejj;
-    public TextView nSs;
+    public ViewGroup GUa;
+    public TextView fsI;
+    public MaskLayout fwD;
+    public TextView sGm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.contact.d
  * JD-Core Version:    0.7.0.1
  */

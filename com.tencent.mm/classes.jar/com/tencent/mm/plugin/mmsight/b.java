@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.mmsight;
 
+import com.tencent.mm.pluginsdk.k;
+import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.pluginsdk.o;
 
 public final class b
-  implements o
+  implements m
 {
-  public static n gmO;
-  public static m gmP;
+  public static l hYt;
+  public static k hYu;
   
-  public final void a(m paramm)
+  public final void a(k paramk)
   {
-    gmP = paramm;
+    hYu = paramk;
   }
   
-  public final void a(n paramn)
+  public final void a(l paraml)
   {
-    gmO = paramn;
+    hYt = paraml;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0dip" android:textColor="@color/gb" android:layout_gravity="left" android:id="@id/c2z" android:background="@drawable/aed" android:padding="16.0dip" android:text="@string/gh" style="@style/o4" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/gb" android:id="@id/c30" android:background="@drawable/aed" android:padding="16.0dip" android:text="@string/gpq" android:layout_alignParentRight="true" style="@style/o4" />
+    <View android:id="@id/gff" android:background="@color/a7c" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/c2y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/o" android:src="@drawable/bku" android:layout_above="@id/gff" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="center" android:id="@id/c33" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/h" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/h" android:text="@string/gpc" android:layout_below="@id/gff" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/jt" android:textColor="@color/tq" android:id="@id/eap" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:text="@string/gpq" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

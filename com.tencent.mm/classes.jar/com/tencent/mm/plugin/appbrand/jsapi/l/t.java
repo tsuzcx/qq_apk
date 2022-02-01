@@ -1,27 +1,35 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
-import a.l;
+import android.animation.ArgbEvaluator;
+import android.animation.TimeInterpolator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.cl;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiSetPageOrientation;", "Lcom/tencent/mm/plugin/appbrand/jsapi/page/PrivateJsApiSetPageOrientation;", "()V", "Companion", "luggage-wechat-full-sdk_release"})
 public final class t
-  extends ag
+  extends a<d>
 {
-  public static final int CTRL_INDEX = 582;
-  public static final String NAME = "setPageOrientation";
-  @Deprecated
-  public static final t.a hWa;
+  public static final int CTRL_INDEX = 198;
+  public static final String NAME = "setNavigationBarColor";
   
-  static
+  public final boolean aXA()
   {
-    AppMethodBeat.i(102468);
-    hWa = new t.a((byte)0);
-    AppMethodBeat.o(102468);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.l.t
  * JD-Core Version:    0.7.0.1
  */

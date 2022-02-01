@@ -6,15 +6,15 @@ public abstract interface s
 {
   public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
-  public abstract void aZ();
+  public abstract void bq();
   
-  public abstract void ba();
+  public abstract void br();
   
-  public abstract void bb();
+  public abstract void bs();
   
-  public abstract void e(Object paramObject);
+  public abstract void k(Object paramObject);
   
-  public abstract void f(Object paramObject);
+  public abstract void l(Object paramObject);
   
   public abstract void onQueueChanged(List<?> paramList);
   

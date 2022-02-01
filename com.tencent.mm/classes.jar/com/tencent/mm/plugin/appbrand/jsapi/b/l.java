@@ -1,37 +1,27 @@
 package com.tencent.mm.plugin.appbrand.jsapi.b;
 
-import a.f.b.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.c;
-import com.tencent.mm.plugin.appbrand.page.z;
 import org.json.JSONObject;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/JsApiUpdateHTMLCanvasElement;", "Lcom/tencent/mm/plugin/appbrand/jsapi/base/BaseUpdateViewJsApi;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "()V", "getViewId", "", "data", "Lorg/json/JSONObject;", "onUpdateView", "", "component", "viewId", "view", "Landroid/view/View;", "Companion", "plugin-appbrand-integration_release"})
 public final class l
-  extends c<z>
+  extends c
 {
-  public static final int CTRL_INDEX = 595;
-  public static final String NAME = "updateWebGLCanvas";
-  public static final a hJQ;
+  public static final int CTRL_INDEX = 83;
+  public static final String NAME = "updateCanvas";
   
-  static
+  public final int A(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(134681);
-    hJQ = new a((byte)0);
-    AppMethodBeat.o(134681);
-  }
-  
-  public final int w(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(134679);
-    j.q(paramJSONObject, "data");
-    int i = paramJSONObject.getInt("canvasId");
-    AppMethodBeat.o(134679);
+    AppMethodBeat.i(145543);
+    int i = paramJSONObject.optInt("canvasId");
+    AppMethodBeat.o(145543);
     return i;
   }
   
-  @a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/JsApiUpdateHTMLCanvasElement$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
-  public static final class a {}
+  public final boolean aYx()
+  {
+    return true;
+  }
 }
 
 

@@ -12,13 +12,13 @@ public final class uk
   
   private uk(byte paramByte)
   {
-    this.ymq = false;
+    this.ESR = false;
     this.callback = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.uk
  * JD-Core Version:    0.7.0.1
  */

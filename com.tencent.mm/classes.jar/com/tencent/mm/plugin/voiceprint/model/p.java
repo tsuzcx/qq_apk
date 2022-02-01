@@ -1,102 +1,162 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.b.g;
-import com.tencent.mm.compatible.b.g.a;
-import com.tencent.mm.compatible.util.b;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.modelvoice.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.voiceprint.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.a.b;
+import d.y;
 
 public final class p
-  implements g.a
 {
-  public static int ckX = 100;
-  public m caR = null;
-  public String fileName = "";
-  public b gaP;
-  private int jRV = 0;
-  public long lvI = 0L;
-  public boolean sXv = false;
-  public int sXy = 0;
-  public p.b trD;
-  public String trE;
-  public boolean trF = false;
-  public p.a trG = null;
+  public static int cZR = 100;
+  public com.tencent.mm.modelvoice.m cOw;
+  public String fileName;
+  private int mRf;
+  public long omg;
+  public int yDk;
+  public b zdN;
+  public String zdO;
+  public boolean zdP;
+  public a zdQ;
+  public a zdR;
   
-  public final boolean Ez()
+  public p()
+  {
+    AppMethodBeat.i(191273);
+    this.cOw = null;
+    this.mRf = 0;
+    this.fileName = "";
+    this.omg = 0L;
+    this.yDk = 0;
+    this.zdP = false;
+    this.zdR = null;
+    this.zdQ = new a(new b() {});
+    AppMethodBeat.o(191273);
+  }
+  
+  public final boolean Ft()
   {
     long l = 0L;
-    AppMethodBeat.i(26127);
-    aw.aaA().KF();
-    this.trF = false;
-    ab.d("MicroMsg.VoicePrintRecoder", "stop Record :" + this.fileName);
+    AppMethodBeat.i(29808);
+    this.zdQ.rn(false);
+    this.zdP = false;
+    ad.d("MicroMsg.VoicePrintRecoder", "stop Record :" + this.fileName);
     try
     {
-      ab.d("MicroMsg.VoicePrintRecoder", "stop synchronized Record :" + this.fileName);
-      if (this.caR != null) {
-        this.caR.Et();
+      ad.d("MicroMsg.VoicePrintRecoder", "stop synchronized Record :" + this.fileName);
+      if (this.cOw != null) {
+        this.cOw.Ob();
       }
-      if (this.sXy != 2)
+      if (this.yDk != 2)
       {
         this.fileName = null;
-        this.trF = false;
-        ab.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName);
-        this.sXy = -1;
-        ab.d("MicroMsg.VoicePrintRecoder", "bLongEnough " + this.trF);
-        if (this.gaP != null) {
-          this.gaP.Mh();
-        }
-        boolean bool = this.trF;
-        AppMethodBeat.o(26127);
+        this.zdP = false;
+        ad.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName);
+        this.yDk = -1;
+        ad.d("MicroMsg.VoicePrintRecoder", "bLongEnough " + this.zdP);
+        boolean bool = this.zdP;
+        AppMethodBeat.o(29808);
         return bool;
       }
     }
     finally
     {
-      AppMethodBeat.o(26127);
+      AppMethodBeat.o(29808);
     }
-    if (this.lvI <= 0L)
+    if (this.omg <= 0L)
     {
-      label207:
-      this.jRV = ((int)l);
-      if (this.jRV >= 1000) {
-        break label290;
+      label194:
+      this.mRf = ((int)l);
+      if (this.mRf >= 1000) {
+        break label277;
       }
-      ab.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName + " by voiceLen: " + this.jRV);
+      ad.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName + " by voiceLen: " + this.mRf);
       this.fileName = "";
-      this.trF = false;
+      this.zdP = false;
     }
     for (;;)
     {
       this.fileName = "";
       break;
-      l = bo.av(this.lvI);
-      break label207;
-      label290:
-      this.trF = true;
-      ab.d("MicroMsg.VoicePrintRecoder", "Stop file success: " + this.fileName);
+      l = bt.aS(this.omg);
+      break label194;
+      label277:
+      this.zdP = true;
+      ad.d("MicroMsg.VoicePrintRecoder", "Stop file success: " + this.fileName);
     }
   }
   
-  public final void gy(int paramInt)
+  public static abstract interface a
   {
-    AppMethodBeat.i(26126);
-    ab.d("MicroMsg.VoicePrintRecoder", " Recorder onBluetoothHeadsetStateChange :".concat(String.valueOf(paramInt)));
-    if (this.sXv)
+    public abstract void dRr();
+  }
+  
+  final class b
+    extends Thread
+  {
+    ap handler;
+    
+    public b()
     {
-      AppMethodBeat.o(26126);
-      return;
+      AppMethodBeat.i(29805);
+      this.handler = new ap()
+      {
+        public final void handleMessage(Message paramAnonymousMessage)
+        {
+          AppMethodBeat.i(29804);
+          if (p.b(p.this) <= 0)
+          {
+            AppMethodBeat.o(29804);
+            return;
+          }
+          p.c(p.this);
+          AppMethodBeat.o(29804);
+        }
+      };
+      AppMethodBeat.o(29805);
     }
-    this.sXv = true;
-    aw.aaA().b(this);
-    this.caR = new m();
-    this.trD = new p.b(this);
-    this.trD.start();
-    this.trF = false;
-    this.sXy = 1;
-    AppMethodBeat.o(26126);
+    
+    public final void run()
+    {
+      AppMethodBeat.i(29806);
+      if (p.d(p.this) == null)
+      {
+        ad.e("MicroMsg.VoicePrintRecoder", "Stop Record Failed recorder == null");
+        AppMethodBeat.o(29806);
+        return;
+      }
+      synchronized (p.this)
+      {
+        String str = m.bP(p.e(p.this), true);
+        ad.d("MicroMsg.VoicePrintRecoder", "fullPathName %s", new Object[] { str });
+        p.this.zdO = str;
+        p.this.zdQ.rn(true);
+        if (!p.d(p.this).fO(str))
+        {
+          p.f(p.this);
+          ad.d("MicroMsg.VoicePrintRecoder", "Thread Start Record  Error fileName[" + p.e(p.this) + "]");
+          p.d(p.this).Ob();
+          p.g(p.this);
+          p.this.zdQ.rn(true);
+          if (p.h(p.this) != null) {
+            p.h(p.this).dRr();
+          }
+          AppMethodBeat.o(29806);
+          return;
+        }
+        if (p.h(p.this) != null) {
+          p.h(p.this);
+        }
+        p.a(p.this, bt.GC());
+        ad.d("MicroMsg.VoicePrintRecoder", "Thread Started Record fileName[" + p.e(p.this) + "]");
+        this.handler.sendEmptyMessageDelayed(0, 1L);
+        AppMethodBeat.o(29806);
+        return;
+      }
+    }
   }
 }
 

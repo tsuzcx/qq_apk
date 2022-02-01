@@ -1,55 +1,115 @@
 package kotlinx.coroutines;
 
-import a.c.e;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ServiceLoader;
+import d.d.a;
+import d.d.d;
+import d.d.e;
+import d.d.f;
+import d.d.f.b;
+import d.d.f.c;
+import d.d.g;
+import d.g.b.k;
+import d.v;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"handlers", "", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "handleCoroutineExceptionImpl", "", "context", "Lkotlin/coroutines/CoroutineContext;", "exception", "", "kotlinx-coroutines-core"})
-public final class y
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/CoroutineDispatcher;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlin/coroutines/ContinuationInterceptor;", "()V", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "dispatchYield", "interceptContinuation", "Lkotlin/coroutines/Continuation;", "T", "continuation", "isDispatchNeeded", "", "plus", "other", "releaseInterceptedContinuation", "toString", "", "Key", "kotlinx-coroutines-core"})
+public abstract class y
+  extends a
+  implements e
 {
-  private static final List<x> ytr;
+  public static final a Kdt = new a((byte)0);
   
-  static
+  public y()
   {
-    AppMethodBeat.i(118477);
-    ServiceLoader localServiceLoader = ServiceLoader.load(x.class, x.class.getClassLoader());
-    a.f.b.j.p(localServiceLoader, "ServiceLoader.load(servi…serviceClass.classLoader)");
-    ytr = a.a.j.m((Iterable)localServiceLoader);
-    AppMethodBeat.o(118477);
+    super((f.c)e.JgC);
   }
   
-  public static final void a(e parame, Throwable paramThrowable)
+  public abstract void a(f paramf, Runnable paramRunnable);
+  
+  public final <T> d<T> b(d<? super T> paramd)
   {
-    AppMethodBeat.i(118476);
-    a.f.b.j.q(parame, "context");
-    a.f.b.j.q(paramThrowable, "exception");
-    Iterator localIterator = ytr.iterator();
-    while (localIterator.hasNext())
-    {
-      x localx = (x)localIterator.next();
-      try
-      {
-        localx.handleException(parame, paramThrowable);
-      }
-      catch (Throwable localThrowable)
-      {
-        Thread localThread = Thread.currentThread();
-        a.f.b.j.p(localThread, "currentThread");
-        localThread.getUncaughtExceptionHandler().uncaughtException(localThread, z.b(paramThrowable, localThrowable));
-      }
+    return (d)new ap(this, paramd);
+  }
+  
+  public final void c(d<?> paramd)
+  {
+    if (paramd == null) {
+      throw new v("null cannot be cast to non-null type kotlinx.coroutines.DispatchedContinuation<*>");
     }
-    parame = Thread.currentThread();
-    a.f.b.j.p(parame, "currentThread");
-    parame.getUncaughtExceptionHandler().uncaughtException(parame, paramThrowable);
-    AppMethodBeat.o(118476);
+    Object localObject = ((ap)paramd)._reusableCancellableContinuation;
+    paramd = localObject;
+    if (!(localObject instanceof i)) {
+      paramd = null;
+    }
+    paramd = (i)paramd;
+    if (paramd != null) {
+      paramd.fKK();
+    }
+  }
+  
+  public boolean fKU()
+  {
+    return true;
+  }
+  
+  public <E extends f.b> E get(f.c<E> paramc)
+  {
+    k.h(paramc, "key");
+    if ((paramc instanceof d.d.b))
+    {
+      if (((d.d.b)paramc).a(getKey()))
+      {
+        f.b localb = ((d.d.b)paramc).a((f.b)this);
+        paramc = localb;
+        if ((localb instanceof f.b)) {}
+      }
+      else
+      {
+        paramc = null;
+      }
+      return paramc;
+    }
+    if (e.JgC == paramc) {
+      return (f.b)this;
+    }
+    return null;
+  }
+  
+  public f minusKey(f.c<?> paramc)
+  {
+    k.h(paramc, "key");
+    if ((paramc instanceof d.d.b))
+    {
+      if ((((d.d.b)paramc).a(getKey())) && (((d.d.b)paramc).a((f.b)this) != null)) {
+        return (f)g.JgF;
+      }
+      return (f)this;
+    }
+    if (e.JgC == paramc) {
+      return (f)g.JgF;
+    }
+    return (f)this;
+  }
+  
+  public String toString()
+  {
+    return getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this));
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/CoroutineDispatcher$Key;", "Lkotlin/coroutines/AbstractCoroutineContextKey;", "Lkotlin/coroutines/ContinuationInterceptor;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "kotlinx-coroutines-core"})
+  public static final class a
+    extends d.d.b<e, y>
+  {
+    private a()
+    {
+      super((d.g.a.b)1.Kdu);
+      AppMethodBeat.i(189985);
+      AppMethodBeat.o(189985);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.y
  * JD-Core Version:    0.7.0.1
  */

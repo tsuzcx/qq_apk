@@ -1,15 +1,9 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.widget.TextView;
-
-final class bc
-{
-  TextView zYU;
-  TextView zYV;
-}
+public final class bc {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.bc
  * JD-Core Version:    0.7.0.1
  */

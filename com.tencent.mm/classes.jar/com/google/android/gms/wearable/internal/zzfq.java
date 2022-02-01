@@ -24,9 +24,9 @@ public final class zzfq
   
   static
   {
-    AppMethodBeat.i(71335);
+    AppMethodBeat.i(101318);
     CREATOR = new zzfr();
-    AppMethodBeat.o(71335);
+    AppMethodBeat.o(101318);
   }
   
   @SafeParcelable.Constructor
@@ -38,17 +38,17 @@ public final class zzfq
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(71334);
+    AppMethodBeat.i(101317);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 2, this.statusCode);
     SafeParcelWriter.writeParcelable(paramParcel, 3, this.zzck, paramInt, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(71334);
+    AppMethodBeat.o(101317);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzfq
  * JD-Core Version:    0.7.0.1
  */

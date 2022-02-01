@@ -6,7 +6,7 @@ import android.os.IInterface;
 public abstract interface ak
   extends IInterface
 {
-  public abstract Account fX();
+  public abstract Account gi();
 }
 
 

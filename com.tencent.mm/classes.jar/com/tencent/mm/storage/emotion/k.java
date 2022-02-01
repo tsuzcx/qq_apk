@@ -1,45 +1,49 @@
 package com.tencent.mm.storage.emotion;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bg;
+import com.tencent.mm.g.c.bk;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class k
-  extends bg
+  extends bk
 {
   protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(62859);
+    AppMethodBeat.i(105115);
     c.a locala = new c.a();
-    locala.yrK = new Field[2];
-    locala.columns = new String[3];
+    locala.EYt = new Field[3];
+    locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "productID";
-    locala.yrM.put("productID", "TEXT PRIMARY KEY ");
+    locala.EYv.put("productID", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" productID TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.yrL = "productID";
+    locala.EYu = "productID";
     locala.columns[1] = "content";
-    locala.yrM.put("content", "BLOB default '' ");
+    locala.EYv.put("content", "BLOB default '' ");
     localStringBuilder.append(" content BLOB default '' ");
-    locala.columns[2] = "rowid";
+    localStringBuilder.append(", ");
+    locala.columns[2] = "lan";
+    locala.EYv.put("lan", "TEXT default '' ");
+    localStringBuilder.append(" lan TEXT default '' ");
+    locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    AppMethodBeat.o(62859);
+    AppMethodBeat.o(105115);
   }
   
   public final c.a getDBInfo()
   {
-    return null;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.k
  * JD-Core Version:    0.7.0.1
  */

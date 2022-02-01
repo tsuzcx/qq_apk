@@ -8,31 +8,31 @@ import com.google.android.gms.common.api.w;
 public final class at<O extends b>
   extends y
 {
-  private final ad<O> OO;
+  private final ad<O> QD;
   
   public at(ad<O> paramad)
   {
     super("Method is not supported by connectionless client. APIs supporting connectionless client must not call this method.");
-    this.OO = paramad;
+    this.QD = paramad;
   }
   
   public final <A extends com.google.android.gms.common.api.g, R extends w, T extends g<R, A>> T a(T paramT)
   {
-    return this.OO.c(paramT);
+    return this.QD.c(paramT);
   }
   
   public final void a(bp parambp) {}
   
   public final <A extends com.google.android.gms.common.api.g, T extends g<? extends w, A>> T b(T paramT)
   {
-    return this.OO.d(paramT);
+    return this.QD.d(paramT);
   }
   
   public final void b(bp parambp) {}
   
   public final Looper getLooper()
   {
-    return this.OO.getLooper();
+    return this.QD.getLooper();
   }
 }
 

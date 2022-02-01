@@ -6,158 +6,158 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class r
 {
-  public int bsY;
-  public String cDt;
-  public long cFn;
   public String clientId;
   public long createTime;
-  int dnr;
-  String dns;
-  public int fWa;
-  public String fXq;
-  public int fXs;
-  public long fXv;
-  public int fXy;
-  int fXz;
-  String fZr;
-  int fZy;
+  public long drA;
+  public int dtM;
+  public String dtV;
+  int esg;
+  String esh;
   public String fileName;
-  public int fsd;
-  public int gaD;
-  int gaE;
-  long gaF;
-  int gaG;
+  public int gTY;
+  public String hAb;
+  public int hAd;
+  public long hAg;
+  public int hAi;
+  int hAj;
+  String hCe;
+  int hCl;
+  public int hDp;
+  int hDq;
+  long hDr;
+  int hDs;
+  public int hyM;
   public int status;
   
   public r()
   {
-    AppMethodBeat.i(116613);
-    this.bsY = -1;
-    this.fZy = 0;
+    AppMethodBeat.i(148454);
+    this.dtM = -1;
+    this.hCl = 0;
     this.fileName = "";
-    this.cDt = "";
+    this.dtV = "";
     this.clientId = "";
-    this.cFn = 0L;
-    this.fWa = 0;
-    this.fXs = 0;
-    this.fsd = 0;
+    this.drA = 0L;
+    this.hyM = 0;
+    this.hAd = 0;
+    this.gTY = 0;
     this.status = 0;
     this.createTime = 0L;
-    this.fXv = 0L;
-    this.gaD = 0;
-    this.fXy = 0;
-    this.fXq = "";
-    this.fXz = 0;
-    this.fZr = "";
-    this.dns = "";
-    this.dnr = 0;
-    this.gaE = 0;
-    this.gaF = 0L;
-    this.gaG = 0;
-    AppMethodBeat.o(116613);
+    this.hAg = 0L;
+    this.hDp = 0;
+    this.hAi = 0;
+    this.hAb = "";
+    this.hAj = 0;
+    this.hCe = "";
+    this.esh = "";
+    this.esg = 0;
+    this.hDq = 0;
+    this.hDr = 0L;
+    this.hDs = 0;
+    AppMethodBeat.o(148454);
   }
   
-  public final boolean amv()
+  public final boolean aDB()
   {
     return (this.status == 5) || (this.status == 6);
   }
   
-  public final boolean amw()
+  public final boolean aDC()
   {
     return ((this.status > 1) && (this.status <= 3)) || (this.status == 8);
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(116612);
+    AppMethodBeat.i(148453);
     this.fileName = paramCursor.getString(0);
-    this.cDt = paramCursor.getString(1);
-    this.cFn = paramCursor.getLong(2);
-    this.fWa = paramCursor.getInt(3);
-    this.fXs = paramCursor.getInt(4);
-    this.fsd = paramCursor.getInt(5);
+    this.dtV = paramCursor.getString(1);
+    this.drA = paramCursor.getLong(2);
+    this.hyM = paramCursor.getInt(3);
+    this.hAd = paramCursor.getInt(4);
+    this.gTY = paramCursor.getInt(5);
     this.status = paramCursor.getInt(6);
     this.createTime = paramCursor.getLong(7);
-    this.fXv = paramCursor.getLong(8);
+    this.hAg = paramCursor.getLong(8);
     this.clientId = paramCursor.getString(9);
-    this.gaD = paramCursor.getInt(10);
-    this.fXy = paramCursor.getInt(11);
-    this.fXq = paramCursor.getString(12);
-    this.fXz = paramCursor.getInt(13);
-    this.fZr = paramCursor.getString(14);
-    this.dns = paramCursor.getString(15);
-    this.dnr = paramCursor.getInt(16);
-    this.gaE = paramCursor.getInt(17);
-    this.gaF = paramCursor.getLong(18);
-    this.gaG = paramCursor.getInt(19);
-    AppMethodBeat.o(116612);
+    this.hDp = paramCursor.getInt(10);
+    this.hAi = paramCursor.getInt(11);
+    this.hAb = paramCursor.getString(12);
+    this.hAj = paramCursor.getInt(13);
+    this.hCe = paramCursor.getString(14);
+    this.esh = paramCursor.getString(15);
+    this.esg = paramCursor.getInt(16);
+    this.hDq = paramCursor.getInt(17);
+    this.hDr = paramCursor.getLong(18);
+    this.hDs = paramCursor.getInt(19);
+    AppMethodBeat.o(148453);
   }
   
   public final ContentValues convertTo()
   {
-    AppMethodBeat.i(116611);
+    AppMethodBeat.i(148452);
     ContentValues localContentValues = new ContentValues();
-    if ((this.bsY & 0x1) != 0) {
+    if ((this.dtM & 0x1) != 0) {
       localContentValues.put("FileName", this.fileName);
     }
-    if ((this.bsY & 0x2) != 0) {
-      localContentValues.put("User", this.cDt);
+    if ((this.dtM & 0x2) != 0) {
+      localContentValues.put("User", this.dtV);
     }
-    if ((this.bsY & 0x4) != 0) {
-      localContentValues.put("MsgId", Long.valueOf(this.cFn));
+    if ((this.dtM & 0x4) != 0) {
+      localContentValues.put("MsgId", Long.valueOf(this.drA));
     }
-    if ((this.bsY & 0x8) != 0) {
-      localContentValues.put("NetOffset", Integer.valueOf(this.fWa));
+    if ((this.dtM & 0x8) != 0) {
+      localContentValues.put("NetOffset", Integer.valueOf(this.hyM));
     }
-    if ((this.bsY & 0x10) != 0) {
-      localContentValues.put("FileNowSize", Integer.valueOf(this.fXs));
+    if ((this.dtM & 0x10) != 0) {
+      localContentValues.put("FileNowSize", Integer.valueOf(this.hAd));
     }
-    if ((this.bsY & 0x20) != 0) {
-      localContentValues.put("TotalLen", Integer.valueOf(this.fsd));
+    if ((this.dtM & 0x20) != 0) {
+      localContentValues.put("TotalLen", Integer.valueOf(this.gTY));
     }
-    if ((this.bsY & 0x40) != 0) {
+    if ((this.dtM & 0x40) != 0) {
       localContentValues.put("Status", Integer.valueOf(this.status));
     }
-    if ((this.bsY & 0x80) != 0) {
+    if ((this.dtM & 0x80) != 0) {
       localContentValues.put("CreateTime", Long.valueOf(this.createTime));
     }
-    if ((this.bsY & 0x100) != 0) {
-      localContentValues.put("LastModifyTime", Long.valueOf(this.fXv));
+    if ((this.dtM & 0x100) != 0) {
+      localContentValues.put("LastModifyTime", Long.valueOf(this.hAg));
     }
-    if ((this.bsY & 0x200) != 0) {
+    if ((this.dtM & 0x200) != 0) {
       localContentValues.put("ClientId", this.clientId);
     }
-    if ((this.bsY & 0x400) != 0) {
-      localContentValues.put("VoiceLength", Integer.valueOf(this.gaD));
+    if ((this.dtM & 0x400) != 0) {
+      localContentValues.put("VoiceLength", Integer.valueOf(this.hDp));
     }
-    if ((this.bsY & 0x800) != 0) {
-      localContentValues.put("MsgLocalId", Integer.valueOf(this.fXy));
+    if ((this.dtM & 0x800) != 0) {
+      localContentValues.put("MsgLocalId", Integer.valueOf(this.hAi));
     }
-    if ((this.bsY & 0x1000) != 0) {
-      localContentValues.put("Human", this.fXq);
+    if ((this.dtM & 0x1000) != 0) {
+      localContentValues.put("Human", this.hAb);
     }
-    if ((this.bsY & 0x2000) != 0) {
-      localContentValues.put("reserved1", Integer.valueOf(this.fXz));
+    if ((this.dtM & 0x2000) != 0) {
+      localContentValues.put("reserved1", Integer.valueOf(this.hAj));
     }
-    if ((this.bsY & 0x4000) != 0) {
-      localContentValues.put("reserved2", this.fZr);
+    if ((this.dtM & 0x4000) != 0) {
+      localContentValues.put("reserved2", this.hCe);
     }
-    if ((this.bsY & 0x8000) != 0) {
-      localContentValues.put("MsgSource", this.dns);
+    if ((this.dtM & 0x8000) != 0) {
+      localContentValues.put("MsgSource", this.esh);
     }
-    if ((this.bsY & 0x10000) != 0) {
-      localContentValues.put("MsgFlag", Integer.valueOf(this.dnr));
+    if ((this.dtM & 0x10000) != 0) {
+      localContentValues.put("MsgFlag", Integer.valueOf(this.esg));
     }
-    if ((this.bsY & 0x20000) != 0) {
-      localContentValues.put("MsgSeq", Integer.valueOf(this.gaE));
+    if ((this.dtM & 0x20000) != 0) {
+      localContentValues.put("MsgSeq", Integer.valueOf(this.hDq));
     }
-    if ((this.bsY & 0x40000) != 0) {
-      localContentValues.put("MasterBufId", Long.valueOf(this.gaF));
+    if ((this.dtM & 0x40000) != 0) {
+      localContentValues.put("MasterBufId", Long.valueOf(this.hDr));
     }
-    if ((this.bsY & 0x80000) != 0) {
-      localContentValues.put("checksum", Integer.valueOf(this.gaG));
+    if ((this.dtM & 0x80000) != 0) {
+      localContentValues.put("checksum", Integer.valueOf(this.hDs));
     }
-    AppMethodBeat.o(116611);
+    AppMethodBeat.o(148452);
     return localContentValues;
   }
 }

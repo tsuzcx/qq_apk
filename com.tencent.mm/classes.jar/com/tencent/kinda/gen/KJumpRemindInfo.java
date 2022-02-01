@@ -62,9 +62,9 @@ public final class KJumpRemindInfo
   
   public final String toString()
   {
-    AppMethodBeat.i(141322);
+    AppMethodBeat.i(135834);
     String str = "KJumpRemindInfo{mJumpType=" + this.mJumpType + ",mIsPopUpWindows=" + this.mIsPopUpWindows + ",mWording=" + this.mWording + ",mLeftButtonWording=" + this.mLeftButtonWording + ",mRightButtonWording=" + this.mRightButtonWording + ",mUrl=" + this.mUrl + ",mTitle=" + this.mTitle + "}";
-    AppMethodBeat.o(141322);
+    AppMethodBeat.o(135834);
     return str;
   }
 }

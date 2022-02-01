@@ -4,41 +4,47 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
+import com.tencent.luggage.d.c;
 import com.tencent.luggage.d.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.l;
-import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ipcinvoker.p;
+import com.tencent.mm.plugin.game.luggage.a;
+import com.tencent.mm.plugin.game.luggage.e;
+import com.tencent.mm.plugin.game.luggage.f;
+import com.tencent.mm.plugin.game.luggage.f.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class d
 {
-  private static k lal;
-  private static String lam = "";
-  private static String lan = "action_id";
-  private static String lao = "preload_url";
-  private static String lap = "detail_url";
-  private static int laq = 1;
-  private static int lar = 2;
-  private static int las = 3;
-  private static int lau = 4;
+  private static k ohb;
+  private static String ohc = "";
+  private static String ohd = "action_id";
+  private static String ohe = "preload_url";
+  private static String ohf = "detail_url";
+  private static int ohg = 1;
+  private static int ohh = 2;
+  private static int ohi = 3;
+  private static int ohj = 4;
   
-  public static void JS(String paramString)
+  public static void SA(String paramString)
   {
-    AppMethodBeat.i(136058);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(8813);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(136058);
+      AppMethodBeat.o(8813);
       return;
     }
-    if (!ah.dsW())
+    if ((!aj.eFJ()) && (!aj.eFK()))
     {
       localObject = new Bundle();
-      ((Bundle)localObject).putInt(lan, las);
-      ((Bundle)localObject).putString(lao, paramString);
-      ToolsProcessIPCService.a((Parcelable)localObject, d.a.class, null);
-      AppMethodBeat.o(136058);
+      ((Bundle)localObject).putInt(ohd, ohi);
+      ((Bundle)localObject).putString(ohe, paramString);
+      a.b((Parcelable)localObject, a.class, null);
+      AppMethodBeat.o(8813);
       return;
     }
     int k = paramString.indexOf("appid");
@@ -52,102 +58,143 @@ public final class d
       }
       localObject = paramString.substring(k, i);
     }
-    if (!bo.isNullOrNil((String)localObject)) {}
+    if (!bt.isNullOrNil((String)localObject)) {}
     for (paramString = paramString.replace((CharSequence)localObject, "");; paramString = "")
     {
-      if ((!bo.isNullOrNil(paramString)) && (!paramString.equals(lam)))
+      if ((!bt.isNullOrNil(paramString)) && (!paramString.equals(ohc)))
       {
-        lam = paramString;
-        ab.i("MicroMsg.PreloadDetailHelp", "setPreloadlUrl : %s", new Object[] { lam });
-        bjH();
+        ohc = paramString;
+        ad.i("MicroMsg.PreloadDetailHelp", "setPreloadlUrl : %s", new Object[] { ohc });
+        bQQ();
       }
-      AppMethodBeat.o(136058);
+      AppMethodBeat.o(8813);
       return;
     }
   }
   
-  private static void bjH()
+  private static void bQQ()
   {
-    AppMethodBeat.i(136059);
-    if (!ah.dsW())
+    AppMethodBeat.i(8814);
+    if ((!aj.eFJ()) && (!aj.eFK()))
     {
       Bundle localBundle = new Bundle();
-      localBundle.putInt(lan, laq);
-      ToolsProcessIPCService.a(localBundle, d.a.class, null);
-      AppMethodBeat.o(136059);
+      localBundle.putInt(ohd, ohg);
+      a.b(localBundle, a.class, null);
+      AppMethodBeat.o(8814);
       return;
     }
-    if (bo.isNullOrNil(lam))
+    if (bt.isNullOrNil(ohc))
     {
-      AppMethodBeat.o(136059);
+      AppMethodBeat.o(8814);
       return;
     }
-    com.tencent.mm.plugin.game.luggage.d.a(b.class, lam, new d.1());
-    AppMethodBeat.o(136059);
-  }
-  
-  public static k dH(Context paramContext)
-  {
-    AppMethodBeat.i(136060);
-    if (lal != null) {
-      lal.setContext(paramContext);
-    }
-    l.postDelayed(new Runnable()
+    f.a(b.class, ohc, new f.a()
     {
-      public final void run()
+      public final void AI()
       {
-        AppMethodBeat.i(136055);
-        d.access$200();
-        AppMethodBeat.o(136055);
+        AppMethodBeat.i(8809);
+        if (d.bQR() != null) {
+          d.destroy();
+        }
+        d.a(f.aq(aj.getContext(), d.ohc));
+        if (d.bQR() != null) {
+          e.a(d.bQR(), d.ohc, false);
+        }
+        AppMethodBeat.o(8809);
       }
-    }, 50L);
-    paramContext = lal;
-    lal = null;
-    AppMethodBeat.o(136060);
-    return paramContext;
+    });
+    AppMethodBeat.o(8814);
   }
   
   public static void destroy()
   {
-    AppMethodBeat.i(136062);
-    if (!ah.dsW())
+    AppMethodBeat.i(8817);
+    if ((!aj.eFJ()) && (!aj.eFK()))
     {
       Bundle localBundle = new Bundle();
-      localBundle.putInt(lan, lar);
-      ToolsProcessIPCService.a(localBundle, d.a.class, null);
-      AppMethodBeat.o(136062);
+      localBundle.putInt(ohd, ohh);
+      a.b(localBundle, a.class, null);
+      AppMethodBeat.o(8817);
       return;
     }
-    if (lal != null)
+    if (ohb != null)
     {
-      lal.destroy();
-      lal = null;
+      ohb.destroy();
+      ohb = null;
     }
-    AppMethodBeat.o(136062);
+    AppMethodBeat.o(8817);
+  }
+  
+  public static k ep(Context paramContext)
+  {
+    AppMethodBeat.i(8815);
+    if (ohb != null) {
+      ohb.setContext(paramContext);
+    }
+    p.postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(8810);
+        d.access$200();
+        AppMethodBeat.o(8810);
+      }
+    }, 50L);
+    paramContext = ohb;
+    ohb = null;
+    AppMethodBeat.o(8815);
+    return paramContext;
   }
   
   public static void setUrl(String paramString)
   {
-    AppMethodBeat.i(136061);
-    if (ah.dsW())
+    AppMethodBeat.i(8816);
+    if ((aj.eFJ()) || (aj.eFK()))
     {
-      if (lal != null)
+      if (ohb != null)
       {
-        ab.i("MicroMsg.PreloadDetailHelp", "setUrl: %s", new Object[] { paramString });
+        ad.i("MicroMsg.PreloadDetailHelp", "setUrl: %s", new Object[] { paramString });
         paramString = Uri.parse(paramString).getQueryParameter("appid");
-        lal.a(new d.3(paramString));
-        AppMethodBeat.o(136061);
+        ohb.a(new c()
+        {
+          public final JSONObject AM()
+          {
+            AppMethodBeat.i(8811);
+            JSONObject localJSONObject = new JSONObject();
+            try
+            {
+              localJSONObject.put("appid", this.iHZ);
+              label25:
+              AppMethodBeat.o(8811);
+              return localJSONObject;
+            }
+            catch (JSONException localJSONException)
+            {
+              break label25;
+            }
+          }
+          
+          public final String name()
+          {
+            return "onDataEnvReady";
+          }
+        });
+        AppMethodBeat.o(8816);
       }
     }
     else
     {
       Bundle localBundle = new Bundle();
-      localBundle.putInt(lan, lau);
-      localBundle.putString(lap, paramString);
-      ToolsProcessIPCService.a(localBundle, d.a.class, null);
+      localBundle.putInt(ohd, ohj);
+      localBundle.putString(ohf, paramString);
+      a.b(localBundle, a.class, null);
     }
-    AppMethodBeat.o(136061);
+    AppMethodBeat.o(8816);
   }
+  
+  static class a
+    implements com.tencent.mm.ipcinvoker.b<Bundle, Bundle>
+  {}
 }
 
 

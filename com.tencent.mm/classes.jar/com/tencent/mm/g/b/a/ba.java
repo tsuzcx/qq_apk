@@ -2,304 +2,116 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Arrays;
 
 public final class ba
   extends a
 {
-  private long cOA = 0L;
-  private String cRF = "";
-  private String cSd = "";
-  private String cVF = "";
-  public long cVG = 0L;
-  public long cVa = 0L;
-  public long cVb = 0L;
-  private long cVj = 0L;
-  private long cWA = 0L;
-  public long cWp = 0L;
-  private long cWq = 0L;
-  private long cWr = 0L;
-  private long cWs = 0L;
-  private long cWt = 0L;
-  private long cWu = 0L;
-  private long cWv = 0L;
-  private long cWw = 0L;
-  private long cWx = 0L;
-  public long cWy = 0L;
-  private long cWz = 0L;
+  public String dNH;
+  public long dNI;
+  public long dNJ;
+  public long dNK;
   
-  public final long FE()
+  public ba()
   {
-    return this.cOA;
+    this.dNH = "";
+    this.dNI = 0L;
+    this.dNJ = 0L;
+    this.dNK = 0L;
   }
   
-  public final long FF()
+  public ba(String paramString)
   {
-    return this.cVa;
+    AppMethodBeat.i(121753);
+    this.dNH = "";
+    this.dNI = 0L;
+    this.dNJ = 0L;
+    this.dNK = 0L;
+    if (paramString != null)
+    {
+      paramString = paramString.split(",");
+      if (paramString != null)
+      {
+        if (paramString.length >= 4) {
+          break label123;
+        }
+        String[] arrayOfString = new String[4];
+        Arrays.fill(arrayOfString, 0, 4, "");
+        System.arraycopy(paramString, 0, arrayOfString, 0, paramString.length);
+        paramString = arrayOfString;
+      }
+    }
+    label123:
+    for (;;)
+    {
+      hU(paramString[0]);
+      this.dNI = bt.getLong(paramString[1], 0L);
+      ey(bt.getLong(paramString[2], 0L));
+      this.dNK = bt.getLong(paramString[3], 0L);
+      AppMethodBeat.o(121753);
+      return;
+    }
   }
   
-  public final long FG()
+  public final String PV()
   {
-    return this.cWp;
-  }
-  
-  public final long FH()
-  {
-    return this.cVj;
-  }
-  
-  public final long FI()
-  {
-    return this.cWr;
-  }
-  
-  public final long FJ()
-  {
-    return this.cWs;
-  }
-  
-  public final long FK()
-  {
-    return this.cWt;
-  }
-  
-  public final long FL()
-  {
-    return this.cWu;
-  }
-  
-  public final long FM()
-  {
-    return this.cWv;
-  }
-  
-  public final long FN()
-  {
-    return this.cWw;
-  }
-  
-  public final long FO()
-  {
-    return this.cWx;
-  }
-  
-  public final String Ff()
-  {
-    AppMethodBeat.i(108865);
+    AppMethodBeat.i(121756);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cOA);
+    ((StringBuffer)localObject).append(this.dNH);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVa);
+    ((StringBuffer)localObject).append(this.dNI);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWp);
+    ((StringBuffer)localObject).append(this.dNJ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVF);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVG);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVb);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVj);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWq);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWr);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWs);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWt);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWu);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWv);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWw);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cRF);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWx);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cSd);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWy);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWz);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cWA);
+    ((StringBuffer)localObject).append(this.dNK);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(108865);
+    ams((String)localObject);
+    AppMethodBeat.o(121756);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(108866);
+    AppMethodBeat.i(121757);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("NetType:").append(this.cOA);
+    ((StringBuffer)localObject).append("Name:").append(this.dNH);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.cVa);
+    ((StringBuffer)localObject).append("Type:").append(this.dNI);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ProfileSource:").append(this.cWp);
+    ((StringBuffer)localObject).append("TimeStampMs:").append(this.dNJ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SourceUserName:").append(this.cVF);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SourceContactType:").append(this.cVG);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasUnreadStoryTips:").append(this.cVb);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EnterTime:").append(this.cVj);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExitTime:").append(this.cWq);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TotalUserNameCount:").append(this.cWr);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FriendUserNameCount:").append(this.cWs);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TotalStoryCount:").append(this.cWt);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FriendStoryCount:").append(this.cWu);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TotalBrowserCount:").append(this.cWv);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FriendBrowserCount:").append(this.cWw);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ActionTrace:").append(this.cRF);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AllVideoBrowserCountWithRepeat:").append(this.cWx);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionId:").append(this.cSd);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WaitPlayFriendCount:").append(this.cWy);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsShowComment:").append(this.cWz);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsInformComment:").append(this.cWA);
+    ((StringBuffer)localObject).append("HashCode:").append(this.dNK);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(108866);
+    AppMethodBeat.o(121757);
     return localObject;
   }
   
-  public final ba cD(long paramLong)
+  public final ba ey(long paramLong)
   {
-    this.cOA = paramLong;
-    return this;
-  }
-  
-  public final ba cE(long paramLong)
-  {
-    this.cVa = paramLong;
-    return this;
-  }
-  
-  public final ba cF(long paramLong)
-  {
-    this.cVb = paramLong;
-    return this;
-  }
-  
-  public final ba cG(long paramLong)
-  {
-    this.cVj = paramLong;
-    return this;
-  }
-  
-  public final ba cH(long paramLong)
-  {
-    this.cWq = paramLong;
-    return this;
-  }
-  
-  public final ba cI(long paramLong)
-  {
-    this.cWr = paramLong;
-    return this;
-  }
-  
-  public final ba cJ(long paramLong)
-  {
-    this.cWs = paramLong;
-    return this;
-  }
-  
-  public final ba cK(long paramLong)
-  {
-    this.cWt = paramLong;
-    return this;
-  }
-  
-  public final ba cL(long paramLong)
-  {
-    this.cWu = paramLong;
-    return this;
-  }
-  
-  public final ba cM(long paramLong)
-  {
-    this.cWv = paramLong;
-    return this;
-  }
-  
-  public final ba cN(long paramLong)
-  {
-    this.cWw = paramLong;
-    return this;
-  }
-  
-  public final ba cO(long paramLong)
-  {
-    this.cWx = paramLong;
-    return this;
-  }
-  
-  public final ba cP(long paramLong)
-  {
-    this.cWy = paramLong;
-    return this;
-  }
-  
-  public final ba cQ(long paramLong)
-  {
-    this.cWz = paramLong;
+    AppMethodBeat.i(121755);
+    this.dNJ = paramLong;
+    super.bb("TimeStampMs", this.dNJ);
+    AppMethodBeat.o(121755);
     return this;
   }
   
   public final int getId()
   {
-    return 16658;
+    return 0;
   }
   
-  public final String getSessionId()
+  public final ba hU(String paramString)
   {
-    return this.cSd;
-  }
-  
-  public final ba gn(String paramString)
-  {
-    AppMethodBeat.i(108862);
-    this.cVF = t("SourceUserName", paramString, true);
-    AppMethodBeat.o(108862);
-    return this;
-  }
-  
-  public final ba go(String paramString)
-  {
-    AppMethodBeat.i(108863);
-    this.cRF = t("ActionTrace", paramString, true);
-    AppMethodBeat.o(108863);
-    return this;
-  }
-  
-  public final ba gp(String paramString)
-  {
-    AppMethodBeat.i(108864);
-    this.cSd = t("SessionId", paramString, true);
-    AppMethodBeat.o(108864);
+    AppMethodBeat.i(121754);
+    this.dNH = t("Name", paramString, true);
+    AppMethodBeat.o(121754);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ba
  * JD-Core Version:    0.7.0.1
  */

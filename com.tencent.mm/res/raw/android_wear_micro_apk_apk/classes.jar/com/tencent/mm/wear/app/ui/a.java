@@ -13,47 +13,47 @@ import com.tencent.mm.wear.app.ui.a.b;
 public abstract class a
   extends BaseAdapter
 {
-  private boolean aev;
-  private SparseArray<com.tencent.mm.wear.app.ui.a.a> aew;
+  private boolean ahX;
+  private SparseArray<com.tencent.mm.wear.app.ui.a.a> ahY;
   private Context context;
   private int count;
   
   public a(Context paramContext)
   {
     this.context = paramContext;
-    this.aew = new SparseArray();
+    this.ahY = new SparseArray();
     paramContext = paramContext.getResources().getDisplayMetrics();
     if (paramContext.widthPixels != paramContext.heightPixels) {}
     for (boolean bool = true;; bool = false)
     {
-      this.aev = bool;
+      this.ahX = bool;
       return;
     }
   }
   
-  public final com.tencent.mm.wear.app.ui.a.a bR(int paramInt)
+  protected final void clearCache()
+  {
+    this.ahY.clear();
+  }
+  
+  public final com.tencent.mm.wear.app.ui.a.a cn(int paramInt)
   {
     Object localObject;
-    if (this.aew.indexOfKey(paramInt) >= 0) {
-      localObject = (com.tencent.mm.wear.app.ui.a.a)this.aew.get(paramInt);
+    if (this.ahY.indexOfKey(paramInt) >= 0) {
+      localObject = (com.tencent.mm.wear.app.ui.a.a)this.ahY.get(paramInt);
     }
     com.tencent.mm.wear.app.ui.a.a locala;
     do
     {
       return localObject;
-      locala = bS(paramInt);
+      locala = co(paramInt);
       localObject = locala;
     } while (locala == null);
-    this.aew.put(paramInt, locala);
+    this.ahY.put(paramInt, locala);
     return locala;
   }
   
-  public abstract com.tencent.mm.wear.app.ui.a.a bS(int paramInt);
-  
-  protected final void clearCache()
-  {
-    this.aew.clear();
-  }
+  public abstract com.tencent.mm.wear.app.ui.a.a co(int paramInt);
   
   public int getCount()
   {
@@ -62,28 +62,28 @@ public abstract class a
   
   public long getItemId(int paramInt)
   {
-    com.tencent.mm.wear.app.ui.a.a locala = bR(paramInt);
+    com.tencent.mm.wear.app.ui.a.a locala = cn(paramInt);
     if (locala != null) {
-      return locala.ahe.afg.VO;
+      return locala.akG.aiI.XJ;
     }
     return 0L;
   }
   
   public int getItemViewType(int paramInt)
   {
-    return bR(paramInt).nw();
+    return cn(paramInt).oj();
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    com.tencent.mm.wear.app.ui.a.a locala = bR(paramInt);
+    com.tencent.mm.wear.app.ui.a.a locala = cn(paramInt);
     View localView = paramView;
     if (paramView == null) {
       localView = locala.a(this.context, paramViewGroup);
     }
     paramView = (b)localView.getTag();
-    if (!locala.nv()) {
-      locala.nu();
+    if (!locala.oi()) {
+      locala.oh();
     }
     locala.a(this.context, paramView);
     return localView;

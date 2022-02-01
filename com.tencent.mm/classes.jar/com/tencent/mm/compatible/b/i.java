@@ -4,64 +4,64 @@ import android.annotation.TargetApi;
 import android.media.AudioRecord;
 import android.media.audiofx.AutomaticGainControl;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class i
   implements h.a
 {
-  private AutomaticGainControl emw;
+  private AutomaticGainControl fzf;
   
   @TargetApi(16)
   public i(AudioRecord paramAudioRecord)
   {
-    AppMethodBeat.i(92893);
-    this.emw = null;
+    AppMethodBeat.i(155611);
+    this.fzf = null;
     boolean bool = AutomaticGainControl.isAvailable();
-    ab.d("MicroMsg.MMAutomaticGainControl", "available  ".concat(String.valueOf(bool)));
+    ad.d("MicroMsg.MMAutomaticGainControl", "available  ".concat(String.valueOf(bool)));
     if (bool) {
-      this.emw = AutomaticGainControl.create(paramAudioRecord.getAudioSessionId());
+      this.fzf = AutomaticGainControl.create(paramAudioRecord.getAudioSessionId());
     }
-    AppMethodBeat.o(92893);
+    AppMethodBeat.o(155611);
   }
   
   @TargetApi(16)
-  public final boolean KB()
+  public final boolean Wj()
   {
-    AppMethodBeat.i(92895);
-    if (this.emw != null) {}
+    AppMethodBeat.i(155613);
+    if (this.fzf != null) {}
     try
     {
-      int i = this.emw.setEnabled(true);
+      int i = this.fzf.setEnabled(true);
       if (i == 0)
       {
-        AppMethodBeat.o(92895);
+        AppMethodBeat.o(155613);
         return true;
       }
-      ab.d("MicroMsg.MMAutomaticGainControl", "setEnabled failed ".concat(String.valueOf(i)));
+      ad.d("MicroMsg.MMAutomaticGainControl", "setEnabled failed ".concat(String.valueOf(i)));
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.MMAutomaticGainControl", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.MMAutomaticGainControl", localException, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(92895);
+    AppMethodBeat.o(155613);
     return false;
   }
   
   @TargetApi(16)
   public final boolean isAvailable()
   {
-    AppMethodBeat.i(92894);
+    AppMethodBeat.i(155612);
     boolean bool = AutomaticGainControl.isAvailable();
-    AppMethodBeat.o(92894);
+    AppMethodBeat.o(155612);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.compatible.b.i
  * JD-Core Version:    0.7.0.1
  */

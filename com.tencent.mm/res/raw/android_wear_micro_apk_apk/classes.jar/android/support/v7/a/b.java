@@ -2,8 +2,8 @@ package android.support.v7.a;
 
 public final class b
 {
-  public static final int[] qV = { 16842948, 2130772014, 2130772015, 2130772016, 2130772017 };
-  public static final int qW = 1;
+  public static final int[] sL = { 16842948, 2130772023, 2130772024, 2130772025, 2130772026 };
+  public static final int sM = 1;
 }
 
 

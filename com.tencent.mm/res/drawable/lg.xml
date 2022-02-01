@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/abf" />
-    <item>
-        <bitmap android:gravity="center" android:src="@drawable/abj" />
-    </item>
-</layer-list>
+    <item android:state_checked="true" android:drawable="@drawable/b3i" />
+    <item android:state_checked="false" android:drawable="@drawable/b3h" />
+    <item android:drawable="@drawable/b3h" />
+</selector>

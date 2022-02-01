@@ -1,81 +1,114 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import android.text.TextUtils;
+import com.tencent.e.i;
+import com.tencent.e.i.d;
+import com.tencent.luggage.h.k;
+import com.tencent.mars.cdn.CdnLogic.C2CDownloadResult;
+import com.tencent.mars.cdn.CdnLogic.CronetTaskResult;
+import com.tencent.mars.cdn.CdnLogic.DownloadCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.loader.a;
-import com.tencent.mm.plugin.appbrand.appstorage.k;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 public final class y
 {
-  private static String[] gVj = { "__APP__", "__WITHOUT_CODELIB__", "__CODELIB__" };
-  private String appId;
-  private String gVh;
-  private volatile String gVi;
+  private static volatile boolean iME;
+  private static final ConcurrentHashMap<String, d<ArrayList<String>>> iMF;
   
-  public y(String paramString)
+  static
   {
-    this.appId = paramString;
-    this.gVh = null;
+    AppMethodBeat.i(161747);
+    iME = false;
+    iMF = new ConcurrentHashMap();
+    AppMethodBeat.o(161747);
   }
   
-  public y(String paramString1, String paramString2)
+  static ArrayList<String> DW(String paramString)
   {
-    AppMethodBeat.i(101719);
-    this.appId = paramString1;
-    this.gVh = ys(paramString2);
-    AppMethodBeat.o(101719);
-  }
-  
-  public y(String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(101721);
-    if (paramInt == 13) {}
-    for (paramString2 = ys(paramString2) + '$' + "__WITHOUT_CODELIB__";; paramString2 = ys(paramString2))
+    AppMethodBeat.i(161745);
+    if (TextUtils.isEmpty(paramString))
     {
-      this.gVh = paramString2;
-      this.appId = paramString1;
-      AppMethodBeat.o(101721);
-      return;
-    }
-  }
-  
-  private static String ys(String paramString)
-  {
-    AppMethodBeat.i(101720);
-    if ((bo.isNullOrNil(paramString)) || (a.contains(gVj, paramString)))
-    {
-      AppMethodBeat.o(101720);
+      ad.w("MicroMsg.PkgNetworkOpt", "getNewDNSIPListByHost with EMPTY host");
+      paramString = new ArrayList(0);
+      AppMethodBeat.o(161745);
       return paramString;
     }
-    paramString = k.zl(paramString);
-    AppMethodBeat.o(101720);
+    ad.i("MicroMsg.PkgNetworkOpt", "getNewDNSIPListByHost with host[%s]", new Object[] { paramString });
+    d locald2 = (d)iMF.get(paramString);
+    d locald1 = locald2;
+    if (locald2 == null)
+    {
+      locald1 = com.tencent.e.h.Iye.a(new y.3(paramString), "MicroMsg.PkgNetworkOpt");
+      iMF.put(paramString, locald1);
+    }
+    try
+    {
+      paramString = (ArrayList)locald1.get(500L, TimeUnit.MILLISECONDS);
+      AppMethodBeat.o(161745);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      ad.e("MicroMsg.PkgNetworkOpt", "getNewDNSIPListByHost await future t=%s", new Object[] { paramString });
+      paramString = new ArrayList(0);
+      AppMethodBeat.o(161745);
+    }
     return paramString;
   }
   
-  public final String toString()
+  public static void aPK()
   {
-    AppMethodBeat.i(101722);
-    StringBuilder localStringBuilder;
-    if (bo.isNullOrNil(this.gVi))
+    AppMethodBeat.i(44304);
+    if (iME)
     {
-      localStringBuilder = new StringBuilder().append(this.appId);
-      if (!bo.isNullOrNil(this.gVh)) {
-        break label67;
+      AppMethodBeat.o(44304);
+      return;
+    }
+    iME = true;
+    com.tencent.e.h.Iye.aP(new com.tencent.e.i.h()
+    {
+      public final String getKey()
+      {
+        return "PkgNetworkOpt.triggerPreConnect";
       }
-    }
-    label67:
-    for (String str = "";; str = "$" + this.gVh)
-    {
-      this.gVi = str;
-      str = this.gVi;
-      AppMethodBeat.o(101722);
-      return str;
-    }
+      
+      public final void run()
+      {
+        AppMethodBeat.i(44303);
+        try
+        {
+          String str = AppBrandGlobalSystemConfig.aTv().jcq;
+          boolean bool = TextUtils.isEmpty(str);
+          if (bool) {
+            return;
+          }
+          y.op(str);
+          y.DW(k.cz(str));
+          ad.i("MicroMsg.PkgNetworkOpt", "triggerPreConnect, url:%s", new Object[] { str });
+          return;
+        }
+        catch (Exception localException)
+        {
+          ad.printErrStackTrace("MicroMsg.PkgNetworkOpt", localException, "triggerPreConnect", new Object[0]);
+          return;
+        }
+        finally
+        {
+          y.aPL();
+          AppMethodBeat.o(44303);
+        }
+      }
+    });
+    AppMethodBeat.o(44304);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.y
  * JD-Core Version:    0.7.0.1
  */

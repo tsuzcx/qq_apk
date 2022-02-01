@@ -15,31 +15,19 @@ import com.google.android.gms.wearable.internal.d;
 
 public final class z
 {
-  public static final k<by> Qs = new k();
-  private static final f<by, aa> Qu = new f() {};
-  public static final com.google.android.gms.common.api.a<aa> Qw = new com.google.android.gms.common.api.a("Wearable.API", Qu, Qs);
-  public static final p SA;
-  public static final u SB;
-  public static final b SC;
-  public static final ag SD;
-  public static final af SE;
-  public static final ai SF;
-  public static final al SG;
-  public static final am SH;
-  public static final e Sy = new com.google.android.gms.wearable.internal.e();
-  public static final a Sz = new cj();
-  
-  static
-  {
-    SA = new av();
-    SB = new ay();
-    SC = new cl();
-    SD = new cg();
-    SE = new ce();
-    SF = new d();
-    SG = new bl();
-    SH = new cc();
-  }
+  public static final k<by> Sh = new k();
+  private static final f<by, aa> Sj = new f() {};
+  public static final com.google.android.gms.common.api.a<aa> Sl = new com.google.android.gms.common.api.a("Wearable.API", Sj, Sh);
+  public static final e Un = new com.google.android.gms.wearable.internal.e();
+  public static final a Uo = new cj();
+  public static final p Up = new av();
+  public static final u Uq = new ay();
+  public static final b Ur = new cl();
+  public static final ag Us = new cg();
+  public static final af Ut = new ce();
+  public static final ai Uu = new d();
+  public static final al Uv = new bl();
+  public static final am Uw = new cc();
 }
 
 

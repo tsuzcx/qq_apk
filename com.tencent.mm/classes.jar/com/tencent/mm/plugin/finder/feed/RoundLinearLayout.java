@@ -1,0 +1,47 @@
+package com.tencent.mm.plugin.finder.feed;
+
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Path;
+import android.graphics.Path.Direction;
+import android.util.AttributeSet;
+import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.k;
+import d.l;
+
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/finder/feed/RoundLinearLayout;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "dispatchDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-finder_release"})
+public class RoundLinearLayout
+  extends LinearLayout
+{
+  public RoundLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(198125);
+    AppMethodBeat.o(198125);
+  }
+  
+  public RoundLinearLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  {
+    super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(198126);
+    AppMethodBeat.o(198126);
+  }
+  
+  protected void dispatchDraw(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(198124);
+    k.h(paramCanvas, "canvas");
+    Path localPath = new Path();
+    localPath.addCircle(getWidth() / 2.0F, getHeight() / 2.0F, getWidth() / 2.0F, Path.Direction.CW);
+    paramCanvas.clipPath(localPath);
+    super.dispatchDraw(paramCanvas);
+    AppMethodBeat.o(198124);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+ * Qualified Name:     com.tencent.mm.plugin.finder.feed.RoundLinearLayout
+ * JD-Core Version:    0.7.0.1
+ */

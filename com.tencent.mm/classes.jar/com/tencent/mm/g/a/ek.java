@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ek
   extends b
 {
-  public ek.a csg;
-  public ek.b csh;
+  public a dgR;
   
   public ek()
   {
@@ -16,17 +16,23 @@ public final class ek
   
   private ek(byte paramByte)
   {
-    AppMethodBeat.i(70172);
-    this.csg = new ek.a();
-    this.csh = new ek.b();
-    this.ymq = false;
+    AppMethodBeat.i(116002);
+    this.dgR = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70172);
+    AppMethodBeat.o(116002);
+  }
+  
+  public static final class a
+  {
+    public Context context;
+    public int op = 0;
+    public String userName;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.ek
  * JD-Core Version:    0.7.0.1
  */

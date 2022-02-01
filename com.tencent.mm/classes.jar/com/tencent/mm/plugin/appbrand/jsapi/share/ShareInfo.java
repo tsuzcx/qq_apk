@@ -9,28 +9,28 @@ public class ShareInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ShareInfo> CREATOR;
-  public String bCY;
-  public String bCZ;
+  public String cff;
+  public String cfh;
   
   static
   {
-    AppMethodBeat.i(131482);
-    CREATOR = new ShareInfo.1();
-    AppMethodBeat.o(131482);
+    AppMethodBeat.i(46818);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(46818);
   }
   
   private ShareInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(131481);
-    this.bCZ = paramParcel.readString();
-    this.bCY = paramParcel.readString();
-    AppMethodBeat.o(131481);
+    AppMethodBeat.i(46817);
+    this.cfh = paramParcel.readString();
+    this.cff = paramParcel.readString();
+    AppMethodBeat.o(46817);
   }
   
   public ShareInfo(String paramString1, String paramString2)
   {
-    this.bCZ = paramString1;
-    this.bCY = paramString2;
+    this.cfh = paramString1;
+    this.cff = paramString2;
   }
   
   public int describeContents()
@@ -40,15 +40,15 @@ public class ShareInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(131480);
-    paramParcel.writeString(this.bCZ);
-    paramParcel.writeString(this.bCY);
-    AppMethodBeat.o(131480);
+    AppMethodBeat.i(46816);
+    paramParcel.writeString(this.cfh);
+    paramParcel.writeString(this.cff);
+    AppMethodBeat.o(46816);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.ShareInfo
  * JD-Core Version:    0.7.0.1
  */

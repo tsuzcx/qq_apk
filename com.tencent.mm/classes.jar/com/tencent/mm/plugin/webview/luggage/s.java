@@ -1,93 +1,88 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.luggage.d.d;
+import com.tencent.luggage.d.g;
+import com.tencent.luggage.h.e;
+import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bp;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.widget.SwipeBackLayout;
+import java.util.LinkedList;
 
-public final class s
+public class s
+  extends com.tencent.luggage.d.f
 {
-  private String lang;
-  private boolean uSS;
-  private String uST;
-  private String uSU;
-  private String uSV;
-  private String uSW;
-  private String uSX;
-  private String uSY;
+  private com.tencent.mm.plugin.webview.modeltools.a AUE;
   
-  public s(Bundle paramBundle)
+  public s(final Activity paramActivity)
   {
-    AppMethodBeat.i(6233);
-    this.uSS = paramBundle.getBoolean("close_window_confirm_dialog_switch");
-    this.uST = paramBundle.getString("close_window_confirm_dialog_title_cn");
-    this.uSU = paramBundle.getString("close_window_confirm_dialog_title_eng");
-    this.uSV = paramBundle.getString("close_window_confirm_dialog_ok_cn");
-    this.uSW = paramBundle.getString("close_window_confirm_dialog_ok_eng");
-    this.uSX = paramBundle.getString("close_window_confirm_dialog_cancel_cn");
-    this.uSY = paramBundle.getString("close_window_confirm_dialog_cancel_eng");
-    this.lang = aa.gP(ah.getContext());
-    AppMethodBeat.o(6233);
+    super(paramActivity);
+    AppMethodBeat.i(78469);
+    this.cad = com.tencent.mm.plugin.webview.luggage.d.a.class;
+    this.cag.J(bp.bQW());
+    this.AUE = new com.tencent.mm.plugin.webview.modeltools.a();
+    this.cal.Bd().a(new e.b()
+    {
+      public final boolean b(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(78468);
+        boolean bool = com.tencent.mm.plugin.webview.modeltools.a.c(paramActivity, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
+        AppMethodBeat.o(78468);
+        return bool;
+      }
+    });
+    AppMethodBeat.o(78469);
   }
   
-  public final boolean dbw()
+  private void elu()
   {
-    AppMethodBeat.i(6234);
-    if ((this.uSS) && (!bo.isNullOrNil(dbx())) && (!bo.isNullOrNil(dby())) && (!bo.isNullOrNil(dbz())))
+    AppMethodBeat.i(78471);
+    if ((this.mContext instanceof MMActivity))
     {
-      AppMethodBeat.o(6234);
-      return true;
+      SwipeBackLayout localSwipeBackLayout = ((MMActivity)this.mContext).getSwipeBackLayout();
+      if (localSwipeBackLayout != null)
+      {
+        if (this.cal.Ba().size() <= 1)
+        {
+          localSwipeBackLayout.setEnableGesture(true);
+          AppMethodBeat.o(78471);
+          return;
+        }
+        localSwipeBackLayout.setEnableGesture(false);
+      }
     }
-    AppMethodBeat.o(6234);
-    return false;
+    AppMethodBeat.o(78471);
   }
   
-  public final String dbx()
+  public final void AY()
   {
-    AppMethodBeat.i(6235);
-    if ("zh_CN".equals(this.lang))
-    {
-      str = this.uST;
-      AppMethodBeat.o(6235);
-      return str;
-    }
-    String str = this.uSU;
-    AppMethodBeat.o(6235);
-    return str;
+    AppMethodBeat.i(78472);
+    ((f)AT()).ekP();
+    elu();
+    AppMethodBeat.o(78472);
   }
   
-  public final String dby()
+  public final void AZ()
   {
-    AppMethodBeat.i(6236);
-    if ("zh_CN".equals(this.lang))
-    {
-      str = this.uSV;
-      AppMethodBeat.o(6236);
-      return str;
-    }
-    String str = this.uSW;
-    AppMethodBeat.o(6236);
-    return str;
+    AppMethodBeat.i(78473);
+    elu();
+    AppMethodBeat.o(78473);
   }
   
-  public final String dbz()
+  public final void onResume()
   {
-    AppMethodBeat.i(6237);
-    if ("zh_CN".equals(this.lang))
-    {
-      str = this.uSX;
-      AppMethodBeat.o(6237);
-      return str;
-    }
-    String str = this.uSY;
-    AppMethodBeat.o(6237);
-    return str;
+    AppMethodBeat.i(78470);
+    super.onResume();
+    elu();
+    AppMethodBeat.o(78470);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.s
  * JD-Core Version:    0.7.0.1
  */

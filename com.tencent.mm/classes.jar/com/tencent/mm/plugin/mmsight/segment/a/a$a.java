@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.segment.a;
 
 public abstract interface a$a
 {
-  public abstract boolean eH(int paramInt1, int paramInt2);
+  public abstract boolean gd(int paramInt1, int paramInt2);
 }
 
 

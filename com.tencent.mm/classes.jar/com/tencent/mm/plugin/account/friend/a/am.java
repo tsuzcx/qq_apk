@@ -1,101 +1,65 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.cmf;
+import com.tencent.mm.protocal.protobuf.cpv;
+import com.tencent.mm.protocal.protobuf.cpw;
 
 public final class am
+  extends n
+  implements k
 {
-  int bsY;
-  int gyA;
-  int gyB;
-  String gyC;
-  String gyD;
-  int gyw;
-  int gyx;
-  int gyy;
-  int gyz;
+  private g callback;
+  private final b rr;
   
-  public am()
+  public am(String paramString)
   {
-    AppMethodBeat.i(108493);
-    this.bsY = -1;
-    this.gyw = 0;
-    this.gyx = 0;
-    this.gyy = 0;
-    this.gyz = 0;
-    this.gyA = 0;
-    this.gyB = 0;
-    this.gyC = "";
-    this.gyD = "";
-    AppMethodBeat.o(108493);
+    AppMethodBeat.i(131142);
+    b.a locala = new b.a();
+    locala.gUU = new cpv();
+    locala.gUV = new cpw();
+    locala.uri = "/cgi-bin/micromsg-bin/sendverifyemail";
+    locala.funcId = 108;
+    locala.reqCmdId = 43;
+    locala.respCmdId = 1000000043;
+    this.rr = locala.atI();
+    ((cpv)this.rr.gUS.gUX).Dby = new cmf().aEE(paramString);
+    AppMethodBeat.o(131142);
   }
   
-  public final ContentValues aqI()
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(108495);
-    ContentValues localContentValues = new ContentValues();
-    if ((this.bsY & 0x1) != 0) {
-      localContentValues.put("grouopid", Integer.valueOf(this.gyw));
-    }
-    if ((this.bsY & 0x2) != 0) {
-      localContentValues.put("membernum", Integer.valueOf(this.gyx));
-    }
-    if ((this.bsY & 0x4) != 0) {
-      localContentValues.put("weixinnum", Integer.valueOf(this.gyy));
-    }
-    if ((this.bsY & 0x8) != 0) {
-      localContentValues.put("insert_time", Integer.valueOf(this.gyz));
-    }
-    if ((this.bsY & 0x10) != 0) {
-      localContentValues.put("lastupdate_time", Integer.valueOf(this.gyA));
-    }
-    if ((this.bsY & 0x20) != 0) {
-      localContentValues.put("needupdate", Integer.valueOf(this.gyB));
-    }
-    if ((this.bsY & 0x40) != 0) {
-      localContentValues.put("updatekey", aqJ());
-    }
-    if ((this.bsY & 0x80) != 0) {
-      localContentValues.put("groupname", aqK());
-    }
-    AppMethodBeat.o(108495);
-    return localContentValues;
+    AppMethodBeat.i(131143);
+    this.callback = paramg;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(131143);
+    return i;
   }
   
-  public final String aqJ()
+  public final int getType()
   {
-    if (this.gyC == null) {
-      return "";
-    }
-    return this.gyC;
+    return 108;
   }
   
-  public final String aqK()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    if (this.gyD == null) {
-      return "";
-    }
-    return this.gyD;
-  }
-  
-  public final void convertFrom(Cursor paramCursor)
-  {
-    AppMethodBeat.i(108494);
-    this.gyw = paramCursor.getInt(0);
-    this.gyx = paramCursor.getInt(1);
-    this.gyy = paramCursor.getInt(2);
-    this.gyz = paramCursor.getInt(3);
-    this.gyA = paramCursor.getInt(4);
-    this.gyB = paramCursor.getInt(5);
-    this.gyC = paramCursor.getString(6);
-    this.gyD = paramCursor.getString(7);
-    AppMethodBeat.o(108494);
+    AppMethodBeat.i(131144);
+    updateDispatchId(paramInt1);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(131144);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.am
  * JD-Core Version:    0.7.0.1
  */

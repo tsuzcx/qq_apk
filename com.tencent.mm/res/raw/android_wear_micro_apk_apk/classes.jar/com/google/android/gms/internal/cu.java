@@ -10,9 +10,9 @@ public final class cu
   static void a(zzbak paramzzbak, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramzzbak.Hc);
-    c.c(paramParcel, 2, paramzzbak.jJ());
-    c.a(paramParcel, 3, paramzzbak.jK(), paramInt);
+    c.c(paramParcel, 1, paramzzbak.IR);
+    c.c(paramParcel, 2, paramzzbak.jS());
+    c.a(paramParcel, 3, paramzzbak.jT(), paramInt);
     c.v(paramParcel, i);
   }
 }

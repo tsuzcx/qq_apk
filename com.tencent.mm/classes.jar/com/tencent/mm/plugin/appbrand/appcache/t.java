@@ -1,99 +1,149 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.util.Pair;
+import android.os.Looper;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.a.b;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.plugin.appbrand.app.j;
+import com.tencent.mm.pointers.PInt;
+import com.tencent.mm.protocal.protobuf.dud;
+import com.tencent.mm.sdk.d.c;
+import com.tencent.mm.sdk.d.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
+import java.util.Locale;
+import org.json.JSONObject;
 
-public enum t
-  implements b
+public final class t
+  extends d
+  implements Runnable
 {
-  private int gUU = -1;
-  private String gUV = null;
+  private final int iLU;
+  private final String iLV;
+  private final c iLW;
+  private final c iLX;
+  final c iLY;
   
-  static
+  public t(int paramInt, String paramString)
   {
-    AppMethodBeat.i(129396);
-    gUT = new t("INSTANCE");
-    gUW = new t[] { gUT };
-    AppMethodBeat.o(129396);
+    super("LibIncrementalTestCase", Looper.getMainLooper());
+    AppMethodBeat.i(44264);
+    this.iLW = new c()
+    {
+      public final void enter()
+      {
+        AppMethodBeat.i(44256);
+        super.enter();
+        ad.i("MicroMsg.LibIncrementalTestCase[incremental]", "WriteMockLibInfo enter");
+        Object localObject2 = aw.aQb();
+        if (bt.isNullOrNil((String)localObject2))
+        {
+          t.a(t.this, "!!MockLibInfo Path Error!!");
+          AppMethodBeat.o(44256);
+          return;
+        }
+        try
+        {
+          Object localObject1 = new JSONObject();
+          ((JSONObject)localObject1).put("version", t.a(t.this));
+          localObject2 = new e((String)localObject2);
+          ((e)localObject2).delete();
+          ((e)localObject2).createNewFile();
+          localObject1 = ((JSONObject)localObject1).toString().getBytes("UTF-8");
+          int i = i.f(com.tencent.mm.vfs.q.B(((e)localObject2).fhU()), (byte[])localObject1, localObject1.length);
+          if (i != 0)
+          {
+            t.a(t.this, "MockLibInfo Write Error ".concat(String.valueOf(i)));
+            AppMethodBeat.o(44256);
+            return;
+          }
+        }
+        catch (Exception localException)
+        {
+          t.a(t.this, "MockLibInfo Write Exception " + localException.getMessage());
+          AppMethodBeat.o(44256);
+          return;
+        }
+        t.a(t.this, t.b(t.this));
+        AppMethodBeat.o(44256);
+      }
+    };
+    this.iLX = new c()
+    {
+      public final void enter()
+      {
+        AppMethodBeat.i(44259);
+        super.enter();
+        ad.i("MicroMsg.LibIncrementalTestCase[incremental]", "DownloadMockLibInfo enter");
+        dud localdud = new dud();
+        localdud.url = String.format(Locale.US, "https://res.servicewechat.com/weapp/public/commlib/%d.wxapkg", new Object[] { Integer.valueOf(t.a(t.this)) });
+        localdud.version = t.a(t.this);
+        localdud.md5 = t.c(t.this);
+        localdud.DZz = 1;
+        j.aOK().a(localdud, new PInt());
+        bh.a(localdud.url, localdud.version, new bh.a() {});
+        AppMethodBeat.o(44259);
+      }
+    };
+    this.iLY = new c()
+    {
+      public final void enter()
+      {
+        AppMethodBeat.i(44262);
+        super.enter();
+        ad.i("MicroMsg.LibIncrementalTestCase[incremental]", "FetchNewestLibAndDoIncremental enter");
+        as.fm(true);
+        com.tencent.mm.kernel.g.afA().gcy.a(1168, new com.tencent.mm.al.g()
+        {
+          public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
+          {
+            AppMethodBeat.i(44261);
+            if ((paramAnonymous2n != null) && ((paramAnonymous2n.getReqResp() instanceof com.tencent.mm.al.b)))
+            {
+              paramAnonymous2String = (dud)((com.tencent.mm.al.b)paramAnonymous2n.getReqResp()).gUT.gUX;
+              paramAnonymous2Int1 = t.a(t.this);
+              paramAnonymous2Int2 = paramAnonymous2String.version;
+              paramAnonymous2String = new bh.a() {};
+              bh.a(au.A("@LibraryAppId", paramAnonymous2Int1, paramAnonymous2Int2), paramAnonymous2String);
+            }
+            com.tencent.mm.kernel.g.afA().gcy.b(1168, this);
+            AppMethodBeat.o(44261);
+          }
+        });
+        AppMethodBeat.o(44262);
+      }
+    };
+    this.iLU = paramInt;
+    this.iLV = paramString;
+    AppMethodBeat.o(44264);
   }
   
-  private t() {}
-  
-  final void H(int paramInt, String paramString)
+  public final void aPC()
   {
-    this.gUU = paramInt;
-    this.gUV = paramString;
+    AppMethodBeat.i(44266);
+    super.aPC();
+    ad.i("MicroMsg.LibIncrementalTestCase[incremental]", "TestCase onQuitting");
+    AppMethodBeat.o(44266);
   }
   
-  public final void dF(boolean paramBoolean)
+  public final void run()
   {
-    AppMethodBeat.i(129395);
-    Object localObject = as.p(paramBoolean, true);
-    if (((Pair)localObject).second != null)
-    {
-      AppMethodBeat.o(129395);
-      return;
-    }
-    if (((Pair)localObject).first == as.a.gWw)
-    {
-      localObject = g.auM();
-      if (paramBoolean)
-      {
-        i = 0;
-        localObject = ((ay)localObject).a("@LibraryAppId", i, new String[] { "downloadURL", "version" });
-        if ((localObject == null) || (bo.isNullOrNil(((at)localObject).field_downloadURL))) {
-          break label283;
-        }
-        if (!paramBoolean) {
-          break label206;
-        }
-      }
-      t.1 local1;
-      label206:
-      for (int i = ((at)localObject).field_version;; i = 0)
-      {
-        local1 = new t.1(this, i);
-        if (!paramBoolean) {
-          break label259;
-        }
-        if ((this.gUU <= 0) || (bo.isNullOrNil(this.gUV))) {
-          break label239;
-        }
-        paramBoolean = r.avw();
-        ab.i("MicroMsg.AppBrand.PkgDownloadService", "[incremental] lib can be patch, abtest open %b", new Object[] { Boolean.valueOf(paramBoolean) });
-        if (!paramBoolean) {
-          break label239;
-        }
-        if (as.F("@LibraryAppId", 0, this.gUU).first != as.a.gWs) {
-          break label211;
-        }
-        ab.i("MicroMsg.AppBrand.PkgDownloadService", "[incremental] start incremental lib download");
-        p.a("@LibraryAppId", this.gUU, ((at)localObject).field_version, this.gUV, local1);
-        AppMethodBeat.o(129395);
-        return;
-        i = 999;
-        break;
-      }
-      label211:
-      ab.e("MicroMsg.AppBrand.PkgDownloadService", "[incremental] OldLibPkg[%d] or PatchUrl[%s] Invalid", new Object[] { Integer.valueOf(this.gUU), this.gUV });
-      label239:
-      ba.a(((at)localObject).field_downloadURL, ((at)localObject).field_version, local1);
-      AppMethodBeat.o(129395);
-      return;
-      label259:
-      ba.a("@LibraryAppId", 999, ((at)localObject).field_downloadURL, local1, new t.2(this, (at)localObject));
-    }
-    label283:
-    AppMethodBeat.o(129395);
+    AppMethodBeat.i(44265);
+    a(this.iLW);
+    a(this.iLX);
+    a(this.iLY);
+    b(this.iLW);
+    start();
+    AppMethodBeat.o(44265);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.t
  * JD-Core Version:    0.7.0.1
  */

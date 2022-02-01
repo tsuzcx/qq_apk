@@ -12,11 +12,11 @@ public class SQLiteLintNativeBridge
   
   private void doExecSqlCallback(long paramLong1, long paramLong2, String paramString, Cursor paramCursor)
   {
-    AppMethodBeat.i(94022);
+    AppMethodBeat.i(52866);
     if (paramCursor == null)
     {
       SLog.w("SQLiteLint.SQLiteLintNativeBridge", "doExecSqlCallback cu is null", new Object[0]);
-      AppMethodBeat.o(94022);
+      AppMethodBeat.o(52866);
       return;
     }
     int j;
@@ -52,17 +52,17 @@ public class SQLiteLintNativeBridge
       continue;
       arrayOfString2[i] = String.valueOf(paramCursor.getFloat(i));
     }
-    AppMethodBeat.o(94022);
+    AppMethodBeat.o(52866);
   }
   
   private native void execSqlCallback(long paramLong1, long paramLong2, String paramString, int paramInt, String[] paramArrayOfString1, String[] paramArrayOfString2);
   
   public static void loadLibrary()
   {
-    AppMethodBeat.i(94019);
+    AppMethodBeat.i(52863);
     System.loadLibrary("SqliteLint-lib");
     SLog.nativeSetLogger(2);
-    AppMethodBeat.o(94019);
+    AppMethodBeat.o(52863);
   }
   
   public static native void nativeAddToWhiteList(String paramString, String[] paramArrayOfString, String[][] paramArrayOfString1);
@@ -77,23 +77,23 @@ public class SQLiteLintNativeBridge
   
   private static void onPublishIssue(String paramString, ArrayList<SQLiteLintIssue> paramArrayList)
   {
-    AppMethodBeat.i(94020);
+    AppMethodBeat.i(52864);
     try
     {
       SQLiteLintAndroidCoreManager.INSTANCE.get(paramString).onPublish(paramArrayList);
-      AppMethodBeat.o(94020);
+      AppMethodBeat.o(52864);
       return;
     }
     catch (Throwable paramString)
     {
       SLog.e("SQLiteLint.SQLiteLintNativeBridge", "onPublishIssue ex ", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(94020);
+      AppMethodBeat.o(52864);
     }
   }
   
   private String[] sqliteLintExecSql(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(94021);
+    AppMethodBeat.i(52865);
     arrayOfString = new String[2];
     for (;;)
     {
@@ -110,7 +110,7 @@ public class SQLiteLintNativeBridge
         if (localISQLiteExecutionDelegate == null)
         {
           SLog.w("SQLiteLint.SQLiteLintNativeBridge", "sqliteLintExecSql mExecSqlImp is null", new Object[0]);
-          AppMethodBeat.o(94021);
+          AppMethodBeat.o(52865);
           return arrayOfString;
         }
         if (!paramBoolean) {
@@ -152,7 +152,7 @@ public class SQLiteLintNativeBridge
         arrayOfString[0] = paramString1.getMessage();
         continue;
       }
-      AppMethodBeat.o(94021);
+      AppMethodBeat.o(52865);
       return arrayOfString;
       doExecSqlCallback(paramLong1, paramLong2, paramString1, paramString2);
       arrayOfString[1] = "0";
@@ -161,7 +161,7 @@ public class SQLiteLintNativeBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.sqlitelint.SQLiteLintNativeBridge
  * JD-Core Version:    0.7.0.1
  */

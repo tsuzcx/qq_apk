@@ -2,7 +2,7 @@ package android.support.v7.widget;
 
 import android.support.v4.os.f;
 import android.support.v4.view.r;
-import android.support.v4.widget.l;
+import android.support.v4.widget.m;
 import android.view.View;
 import android.view.animation.Interpolator;
 import java.util.ArrayList;
@@ -10,25 +10,25 @@ import java.util.ArrayList;
 final class am
   implements Runnable
 {
-  private Interpolator mInterpolator = RecyclerView.dD();
-  private int uZ;
-  private int va;
-  private l vb;
-  private boolean vc = false;
-  private boolean vd = false;
+  private Interpolator mInterpolator = RecyclerView.dR();
+  private int wO;
+  private int wP;
+  private m wQ;
+  private boolean wR = false;
+  private boolean wS = false;
   
   public am(RecyclerView paramRecyclerView)
   {
-    this.vb = l.a(paramRecyclerView.getContext(), RecyclerView.dD());
+    this.wQ = m.a(paramRecyclerView.getContext(), RecyclerView.dR());
   }
   
-  public final void F(int paramInt1, int paramInt2)
+  public final void H(int paramInt1, int paramInt2)
   {
-    RecyclerView.c(this.ua, 2);
-    this.va = 0;
-    this.uZ = 0;
-    this.vb.f(paramInt1, paramInt2);
-    ed();
+    RecyclerView.c(this.vQ, 2);
+    this.wP = 0;
+    this.wO = 0;
+    this.wQ.g(paramInt1, paramInt2);
+    er();
   }
   
   public final void b(int paramInt1, int paramInt2, int paramInt3, Interpolator paramInterpolator)
@@ -36,38 +36,38 @@ final class am
     if (this.mInterpolator != paramInterpolator)
     {
       this.mInterpolator = paramInterpolator;
-      this.vb = l.a(this.ua.getContext(), paramInterpolator);
+      this.wQ = m.a(this.vQ.getContext(), paramInterpolator);
     }
-    RecyclerView.c(this.ua, 2);
-    this.va = 0;
-    this.uZ = 0;
-    this.vb.c(paramInt1, paramInt2, paramInt3);
-    ed();
+    RecyclerView.c(this.vQ, 2);
+    this.wP = 0;
+    this.wO = 0;
+    this.wQ.c(paramInt1, paramInt2, paramInt3);
+    er();
   }
   
-  final void ed()
+  final void er()
   {
-    if (this.vc)
+    if (this.wR)
     {
-      this.vd = true;
+      this.wS = true;
       return;
     }
-    this.ua.removeCallbacks(this);
-    r.b(this.ua, this);
+    this.vQ.removeCallbacks(this);
+    r.b(this.vQ, this);
   }
   
   public final void g(int paramInt1, int paramInt2, int paramInt3)
   {
-    b(paramInt1, paramInt2, paramInt3, RecyclerView.dD());
+    b(paramInt1, paramInt2, paramInt3, RecyclerView.dR());
   }
   
   public final void run()
   {
-    this.vd = false;
-    this.vc = true;
-    RecyclerView.f(this.ua);
-    l locall = this.vb;
-    ai localai = RecyclerView.e(this.ua).ul;
+    this.wS = false;
+    this.wR = true;
+    RecyclerView.f(this.vQ);
+    m localm = this.wQ;
+    ai localai = RecyclerView.e(this.vQ).wb;
     int i6;
     int i7;
     int i4;
@@ -79,49 +79,49 @@ final class am
     int i3;
     int i;
     int n;
-    if (locall.computeScrollOffset())
+    if (localm.computeScrollOffset())
     {
-      i6 = locall.getCurrX();
-      i7 = locall.getCurrY();
-      i4 = i6 - this.uZ;
-      i5 = i7 - this.va;
+      i6 = localm.getCurrX();
+      i7 = localm.getCurrY();
+      i4 = i6 - this.wO;
+      i5 = i7 - this.wP;
       i1 = 0;
       j = 0;
       i2 = 0;
       m = 0;
-      this.uZ = i6;
-      this.va = i7;
+      this.wO = i6;
+      this.wP = i7;
       i3 = 0;
       i = 0;
       n = 0;
       k = 0;
-      if (RecyclerView.g(this.ua) != null)
+      if (RecyclerView.g(this.vQ) != null)
       {
-        this.ua.di();
-        RecyclerView.h(this.ua);
+        this.vQ.dr();
+        RecyclerView.h(this.vQ);
         f.beginSection("RV Scroll");
         if (i4 != 0)
         {
-          j = RecyclerView.e(this.ua).a(i4, this.ua.sY, this.ua.tM);
+          j = RecyclerView.e(this.vQ).a(i4, this.vQ.uO, this.vQ.vC);
           i = i4 - j;
         }
         if (i5 != 0)
         {
-          m = RecyclerView.e(this.ua).b(i5, this.ua.sY, this.ua.tM);
+          m = RecyclerView.e(this.vQ).b(i5, this.vQ.uO, this.vQ.vC);
           k = i5 - m;
         }
         f.endSection();
-        if (RecyclerView.i(this.ua))
+        if (RecyclerView.i(this.vQ))
         {
-          i1 = this.ua.tb.getChildCount();
+          i1 = this.vQ.uR.getChildCount();
           n = 0;
           while (n < i1)
           {
-            View localView = this.ua.tb.getChildAt(n);
-            Object localObject = this.ua.Z(localView);
-            if ((localObject != null) && (((an)localObject).vk != null))
+            View localView = this.vQ.uR.getChildAt(n);
+            Object localObject = this.vQ.af(localView);
+            if ((localObject != null) && (((an)localObject).wZ != null))
             {
-              localObject = ((an)localObject).vk.ve;
+              localObject = ((an)localObject).wZ.wT;
               i2 = localView.getLeft();
               i3 = localView.getTop();
               if ((i2 != ((View)localObject).getLeft()) || (i3 != ((View)localObject).getTop())) {
@@ -131,8 +131,8 @@ final class am
             n += 1;
           }
         }
-        RecyclerView.j(this.ua);
-        this.ua.o(false);
+        RecyclerView.j(this.vQ);
+        this.vQ.r(false);
         n = k;
         i2 = m;
         i3 = i;
@@ -143,7 +143,7 @@ final class am
           i2 = m;
           i3 = i;
           i1 = j;
-          if (!localai.dV())
+          if (!localai.ej())
           {
             n = k;
             i2 = m;
@@ -151,7 +151,7 @@ final class am
             i1 = j;
             if (localai.isRunning())
             {
-              n = this.ua.tM.getItemCount();
+              n = this.vQ.vC.getItemCount();
               if (n != 0) {
                 break label807;
               }
@@ -164,15 +164,15 @@ final class am
           }
         }
       }
-      if (!RecyclerView.k(this.ua).isEmpty()) {
-        this.ua.invalidate();
+      if (!RecyclerView.k(this.vQ).isEmpty()) {
+        this.vQ.invalidate();
       }
-      if (r.c(this.ua) != 2) {
-        RecyclerView.a(this.ua, i4, i5);
+      if (r.d(this.vQ) != 2) {
+        RecyclerView.a(this.vQ, i4, i5);
       }
       if ((i3 != 0) || (n != 0))
       {
-        j = (int)locall.getCurrVelocity();
+        j = (int)localm.getCurrVelocity();
         if (i3 == i6) {
           break label909;
         }
@@ -193,23 +193,23 @@ final class am
       for (;;)
       {
         label565:
-        if (r.c(this.ua) != 2) {
-          this.ua.C(k, i);
+        if (r.d(this.vQ) != 2) {
+          this.vQ.D(k, i);
         }
-        if (((k != 0) || (i3 == i6) || (locall.getFinalX() == 0)) && ((i != 0) || (n == i7) || (locall.getFinalY() == 0))) {
-          locall.abortAnimation();
+        if (((k != 0) || (i3 == i6) || (localm.getFinalX() == 0)) && ((i != 0) || (n == i7) || (localm.getFinalY() == 0))) {
+          localm.abortAnimation();
         }
         if ((i1 != 0) || (i2 != 0)) {
-          this.ua.ak(i2);
+          this.vQ.aw(i2);
         }
-        if (!RecyclerView.l(this.ua)) {
-          this.ua.invalidate();
+        if (!RecyclerView.l(this.vQ)) {
+          this.vQ.invalidate();
         }
-        if ((i5 != 0) && (RecyclerView.e(this.ua).cQ()) && (i2 == i5))
+        if ((i5 != 0) && (RecyclerView.e(this.vQ).cY()) && (i2 == i5))
         {
           i = 1;
           label691:
-          if ((i4 == 0) || (!RecyclerView.e(this.ua).cP()) || (i1 != i4)) {
+          if ((i4 == 0) || (!RecyclerView.e(this.vQ).cX()) || (i1 != i4)) {
             break label887;
           }
           j = 1;
@@ -219,30 +219,30 @@ final class am
           }
           i = 1;
           label738:
-          if ((!locall.isFinished()) && (i != 0)) {
+          if ((!localm.isFinished()) && (i != 0)) {
             break label897;
           }
-          RecyclerView.c(this.ua, 0);
+          RecyclerView.c(this.vQ, 0);
         }
         for (;;)
         {
           if (localai != null)
           {
-            if (localai.dV()) {
+            if (localai.ej()) {
               ai.a(localai, 0, 0);
             }
-            if (!this.vd) {
+            if (!this.wS) {
               localai.stop();
             }
           }
-          this.vc = false;
-          if (this.vd) {
-            ed();
+          this.wR = false;
+          if (this.wS) {
+            er();
           }
           return;
           label807:
-          if (localai.dW() >= n) {
-            localai.aw(n - 1);
+          if (localai.ek() >= n) {
+            localai.aI(n - 1);
           }
           ai.a(localai, i4 - i, i5 - k);
           n = k;
@@ -272,7 +272,7 @@ final class am
           label892:
           i = 0;
           break label738;
-          ed();
+          er();
         }
         i = 0;
       }
@@ -295,7 +295,7 @@ final class am
       }
     }
     label157:
-    for (int i = this.ua.getWidth();; i = this.ua.getHeight())
+    for (int i = this.vQ.getWidth();; i = this.vQ.getHeight())
     {
       int i2 = i / 2;
       float f3 = Math.min(1.0F, i1 * 1.0F / i);
@@ -322,8 +322,8 @@ final class am
   
   public final void stop()
   {
-    this.ua.removeCallbacks(this);
-    this.vb.abortAnimation();
+    this.vQ.removeCallbacks(this);
+    this.wQ.abortAnimation();
   }
 }
 

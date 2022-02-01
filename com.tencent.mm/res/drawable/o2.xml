@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="67" android:drawable="@drawable/b68" />
-    <item android:duration="67" android:drawable="@drawable/b6b" />
-    <item android:duration="67" android:drawable="@drawable/b6c" />
-    <item android:duration="67" android:drawable="@drawable/b6d" />
-    <item android:duration="67" android:drawable="@drawable/b6e" />
-    <item android:duration="67" android:drawable="@drawable/b6f" />
-    <item android:duration="67" android:drawable="@drawable/b6g" />
-    <item android:duration="67" android:drawable="@drawable/b6h" />
-    <item android:duration="67" android:drawable="@drawable/b6i" />
-    <item android:duration="67" android:drawable="@drawable/b69" />
-    <item android:duration="67" android:drawable="@drawable/b6_" />
-    <item android:duration="67" android:drawable="@drawable/b6a" />
-</animation-list>
+    <solid android:color="@android:color/white" />
+    <corners android:topLeftRadius="@dimen/wk" android:topRightRadius="@dimen/wk" android:bottomLeftRadius="@dimen/wj" android:bottomRightRadius="@dimen/wj" />
+</shape>

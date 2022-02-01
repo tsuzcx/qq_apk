@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.dbbackup;
 
 public abstract interface b
 {
-  public abstract void tT(int paramInt);
+  public abstract void zN(int paramInt);
 }
 
 

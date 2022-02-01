@@ -1,87 +1,139 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.xweb.WebView;
+import com.tencent.mm.b.p;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.g.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Map;
 
 public final class m
 {
-  private static String wfx = null;
-  private static final String[] wfy = { "", "dynamic_config_recv", "trigger_download", "start_download", "stop_download", "download_finish", "install_finish", "use" };
-  
-  private static String fZ(Context paramContext)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(114678);
-    if (wfx != null)
+    AppMethodBeat.i(123216);
+    b.c(new Runnable()
     {
-      paramContext = wfx;
-      AppMethodBeat.o(114678);
-      return paramContext;
-    }
-    try
-    {
-      paramContext = paramContext.getPackageManager().getApplicationInfo(ah.getPackageName(), 128);
-      if ((paramContext != null) && (paramContext.metaData != null))
+      public final void run()
       {
-        paramContext = paramContext.metaData.getString("com.tencent.mtt.TBS_CODE");
-        if (!bo.isNullOrNil(paramContext))
+        AppMethodBeat.i(123211);
+        try
         {
-          wfx = paramContext;
-          AppMethodBeat.o(114678);
-          return paramContext;
+          m.b(this.Cns);
+          AppMethodBeat.o(123211);
+          return;
+        }
+        catch (Exception localException)
+        {
+          ad.printErrStackTrace("MicroMsg.QQMailUnreadHelper", localException, "", new Object[0]);
+          ad.e("MicroMsg.QQMailUnreadHelper", "getUnreadCountAsync exception");
+          AppMethodBeat.o(123211);
+        }
+      }
+    }, "QQMailUnreadHelper");
+    AppMethodBeat.o(123216);
+  }
+  
+  public static void b(a parama)
+  {
+    AppMethodBeat.i(123217);
+    ad.i("MicroMsg.QQMailUnreadHelper", "dz[getUnreadCount]");
+    String str = (String)g.afB().afk().get(-1535680990, "");
+    long l = new p(bt.l((Integer)g.afB().afk().get(9, null))).longValue();
+    if ((bt.isNullOrNil(str)) || (l == 0L))
+    {
+      g.afB().afk().set(ae.a.Fhb, Integer.valueOf(-1));
+      ad.w("MicroMsg.QQMailUnreadHelper", "dz[getUnreadEmailCountAndSet: authkey or uin is null]");
+      aq.f(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(123212);
+          this.Cns.dej();
+          AppMethodBeat.o(123212);
+        }
+      });
+      AppMethodBeat.o(123217);
+      return;
+    }
+    Object localObject = (HttpURLConnection)new URL("https://qqmail.weixin.qq.com/cgi-bin/getunreadmailcount?f=xml&appname=qqmail_weixin&charset=utf-8&clientip=0").openConnection();
+    ((HttpURLConnection)localObject).setConnectTimeout(15000);
+    ((HttpURLConnection)localObject).setReadTimeout(20000);
+    ((HttpURLConnection)localObject).setRequestProperty("Cookie", String.format("skey=%s;uin=o%d;", new Object[] { str, Long.valueOf(l) }));
+    if (((HttpURLConnection)localObject).getResponseCode() >= 300) {
+      try
+      {
+        ((HttpURLConnection)localObject).getInputStream().close();
+        ((HttpURLConnection)localObject).disconnect();
+        ad.w("MicroMsg.QQMailUnreadHelper", "dz[getUnreadCount http 300]");
+        aq.f(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(123213);
+            this.Cns.dej();
+            AppMethodBeat.o(123213);
+          }
+        });
+        AppMethodBeat.o(123217);
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ad.e("MicroMsg.QQMailUnreadHelper", localException.getMessage());
         }
       }
     }
-    catch (Exception paramContext)
+    localObject = bw.K(bt.convertStreamToString(((HttpURLConnection)localObject).getInputStream()), "Response");
+    if ((localObject != null) && (bt.getInt((String)((Map)localObject).get(".Response.error.code"), -1) == 0)) {}
+    for (final int i = bt.getInt((String)((Map)localObject).get(".Response.result.UnreadCount"), -1); i < 0; i = -1)
     {
-      ab.e("MicroMsg.TBSReporter", "getMetaTbsCode, ex = %s", new Object[] { paramContext.getMessage() });
-      AppMethodBeat.o(114678);
-    }
-    return null;
-  }
-  
-  public static void gK(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(114677);
-    if ((paramInt1 <= 0) || (paramInt1 > 7))
-    {
-      ab.e("MicroMsg.TBSReporter", "report invalid scene = %d", new Object[] { Integer.valueOf(paramInt1) });
-      AppMethodBeat.o(114677);
+      aq.f(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(123214);
+          this.Cns.dej();
+          AppMethodBeat.o(123214);
+        }
+      });
+      AppMethodBeat.o(123217);
       return;
     }
-    hf(paramInt1, paramInt2);
-    Object localObject = ah.getContext();
-    int i = WebView.getInstalledTbsCoreVersion((Context)localObject);
-    int j = WebView.getTbsSDKVersion((Context)localObject);
-    localObject = fZ((Context)localObject);
-    h.qsU.a(11633, false, true, new Object[] { Integer.valueOf(paramInt1), Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(i), Integer.valueOf(j), localObject, Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(114677);
+    g.afB().afk().set(ae.a.Fhb, Integer.valueOf(i));
+    aq.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(123215);
+        this.Cns.onSuccess(i);
+        AppMethodBeat.o(123215);
+      }
+    });
+    AppMethodBeat.o(123217);
   }
   
-  private static void hf(int paramInt1, int paramInt2)
+  public static abstract interface a
   {
-    AppMethodBeat.i(114679);
-    ab.i("MicroMsg.TBSReporter", "logSceneDetail, scene = %d_%s, errcode = %d", new Object[] { Integer.valueOf(paramInt1), wfy[paramInt1], Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(114679);
-  }
-  
-  public static void kS(int paramInt)
-  {
-    AppMethodBeat.i(114676);
-    gK(paramInt, 0);
-    AppMethodBeat.o(114676);
+    public abstract void dej();
+    
+    public abstract void onSuccess(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.m
  * JD-Core Version:    0.7.0.1
  */

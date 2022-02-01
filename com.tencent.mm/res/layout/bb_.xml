@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.story.ui.view.CommentItemView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip" android:transformPivotX="24.0dip" android:transformPivotY="24.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <View android:id="@id/fvc" android:background="@drawable/acp" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+        <com.tencent.mm.plugin.story.ui.view.CommentAvatarImageView android:id="@id/fvx" android:padding="3.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginTop="1.0dip" android:layout_marginStart="1.0dip" android:layout_marginEnd="1.0dip" />
+        <LinearLayout android:orientation="vertical" android:id="@id/fw1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:layout_centerVertical="true" android:layout_marginStart="8.0dip" android:layout_marginEnd="4.0dip" android:layout_toEndOf="@id/fvx">
+            <TextView android:textStyle="bold" android:textColor="@color/a_u" android:ellipsize="end" android:id="@id/fw7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_marginEnd="20.0dip" />
+            <TextView android:textStyle="bold" android:textColor="@color/a_u" android:id="@id/fw0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="20.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+    <View android:id="@id/fvy" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+</com.tencent.mm.plugin.story.ui.view.CommentItemView>

@@ -1,200 +1,219 @@
 package com.tencent.mm.plugin.story.ui.view.gallery;
 
-import a.f.a.a;
-import a.f.b.j;
-import a.l;
-import android.content.Context;
 import android.view.MotionEvent;
-import android.view.ViewConfiguration;
+import android.view.VelocityTracker;
+import android.view.View;
+import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import java.util.HashSet;
-import java.util.Iterator;
+import com.tencent.mm.plugin.story.h.h;
+import com.tencent.mm.sdk.platformtools.aj;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollHelper;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "downX", "", "downY", "isLongPressed", "", "isTouchEnd", "isTouchMoved", "longClickEnable", "getLongClickEnable", "()Z", "setLongClickEnable", "(Z)V", "longPressRunnable", "Ljava/lang/Runnable;", "longPressedTimeout", "", "onClick", "Lkotlin/Function0;", "", "getOnClick", "()Lkotlin/jvm/functions/Function0;", "setOnClick", "(Lkotlin/jvm/functions/Function0;)V", "onLongClick", "getOnLongClick", "setOnLongClick", "scrollConsumers", "Ljava/util/HashSet;", "Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryScrollConsumer;", "Lkotlin/collections/HashSet;", "scrollType", "touchSlop", "addScrollConsumer", "consumer", "cancelLongPress", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "getScrollType", "onNestedPreFling", "velocityX", "velocityY", "onNestedPreScroll", "scrollX", "scrollY", "consumed", "", "onStopNestedScroll", "removeScrollConsumer", "trackTouchEvent", "Companion", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GallerySwipeBackConsumer;", "Lcom/tencent/mm/ui/recyclerview/GalleryScrollConsumer;", "galleryView", "Landroid/view/View;", "galleryScaleListener", "Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;", "(Landroid/view/View;Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;)V", "consumed", "", "currScrollType", "", "downX", "", "downY", "getGalleryScaleListener", "()Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryView$IOnGalleryScale;", "getGalleryView", "()Landroid/view/View;", "maxDownX", "moveExitY", "totalMovedX", "totalMovedY", "velocityTracker", "Landroid/view/VelocityTracker;", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "isTouchMoved", "scrollType", "getScrollDirection", "releaseVelocityTracker", "", "touchRelease", "touchTranslate", "Companion", "plugin-story_release"})
 public final class f
+  extends com.tencent.mm.ui.j.a
 {
-  private static String TAG;
-  public static final f.a sSp;
-  private float bTE;
-  private float bTF;
-  private final int nwj;
-  final Runnable oOd;
-  private final int sSh;
-  private boolean sSi;
-  private boolean sSj;
-  private boolean sSk;
-  public int sSl;
-  a<Boolean> sSm;
-  boolean sSn;
-  private final HashSet<e> sSo;
+  private static final String TAG = "MicroMsg.GallerySwipeBackConsumer";
+  public static final a yyz;
+  private float cEZ;
+  private float cFa;
+  private VelocityTracker lr;
+  private int yxX;
+  private int yys;
+  private final int yyt;
+  private float yyu;
+  private float yyv;
+  private boolean yyw;
+  private final View yyx;
+  private final StoryGalleryView.b yyy;
   
   static
   {
-    AppMethodBeat.i(110737);
-    sSp = new f.a((byte)0);
-    TAG = "MicroMsg.GalleryScrollHelper";
-    AppMethodBeat.o(110737);
+    AppMethodBeat.i(120378);
+    yyz = new a((byte)0);
+    TAG = "MicroMsg.GallerySwipeBackConsumer";
+    AppMethodBeat.o(120378);
   }
   
-  public f(Context paramContext)
+  public f(View paramView, StoryGalleryView.b paramb)
   {
-    AppMethodBeat.i(110736);
-    this.sSn = true;
-    this.oOd = ((Runnable)new f.b(this));
-    this.sSo = new HashSet();
-    paramContext = ViewConfiguration.get(paramContext);
-    this.sSh = (ViewConfiguration.getLongPressTimeout() + 100);
-    j.p(paramContext, "config");
-    this.nwj = paramContext.getScaledTouchSlop();
-    AppMethodBeat.o(110736);
+    AppMethodBeat.i(120377);
+    this.yyx = paramView;
+    this.yyy = paramb;
+    this.yys = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 32);
+    this.yyt = com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 96);
+    AppMethodBeat.o(120377);
   }
   
-  public final void N(MotionEvent paramMotionEvent)
+  private final void mL()
+  {
+    AppMethodBeat.i(120376);
+    VelocityTracker localVelocityTracker = this.lr;
+    if (localVelocityTracker != null) {
+      localVelocityTracker.clear();
+    }
+    localVelocityTracker = this.lr;
+    if (localVelocityTracker != null) {
+      localVelocityTracker.recycle();
+    }
+    this.lr = null;
+    AppMethodBeat.o(120376);
+  }
+  
+  public final boolean a(MotionEvent paramMotionEvent, boolean paramBoolean, int paramInt)
   {
     int i = 1;
-    boolean bool = false;
-    AppMethodBeat.i(110734);
-    j.q(paramMotionEvent, "event");
+    boolean bool = true;
+    AppMethodBeat.i(120375);
+    k.h(paramMotionEvent, "event");
+    if (this.lr == null) {
+      this.lr = VelocityTracker.obtain();
+    }
+    VelocityTracker localVelocityTracker = this.lr;
+    if (localVelocityTracker != null) {
+      localVelocityTracker.addMovement(paramMotionEvent);
+    }
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(110734);
-      return;
-      this.bTE = paramMotionEvent.getX();
-      this.bTF = paramMotionEvent.getY();
-      this.sSi = false;
-      this.sSj = false;
-      this.sSk = false;
-      this.sSl = 0;
-      al.p(this.oOd, this.sSh);
-      ab.d(TAG, "downX:" + this.bTE + "  downY:" + this.bTF);
-      AppMethodBeat.o(110734);
-      return;
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      float f3 = f1 - this.bTE;
-      float f4 = f2 - this.bTF;
-      if (!this.sSj)
+      paramBoolean = this.yyw;
+      AppMethodBeat.o(120375);
+      return paramBoolean;
+      this.cEZ = paramMotionEvent.getRawX();
+      this.cFa = paramMotionEvent.getRawY();
+      continue;
+      if (paramBoolean)
       {
-        if ((Math.abs(f1 - this.bTE) > this.nwj) || (Math.abs(f2 - this.bTF) > this.nwj)) {
-          bool = true;
-        }
-        this.sSj = bool;
-      }
-      if (this.sSj)
-      {
-        al.ae(this.oOd);
-        if (this.sSl == 0)
+        this.yxX = paramInt;
+        if (paramInt == 8)
         {
-          if (Math.abs(f4) <= Math.abs(f3)) {
-            break label332;
-          }
-          if (f4 >= 0.0F) {
-            break label326;
-          }
+          paramBoolean = bool;
+          if (this.cEZ < this.yys) {}
         }
-      }
-      for (;;)
-      {
-        this.sSl = i;
-        ab.d(TAG, "scrollType " + this.sSl + " move: " + f3 + ", " + f4);
-        AppMethodBeat.o(110734);
-        return;
-        label326:
-        i = 2;
-        continue;
-        label332:
-        if (f3 < 0.0F) {
-          i = 4;
-        } else {
-          i = 8;
-        }
-      }
-      al.ae(this.oOd);
-      this.sSl = 0;
-      this.sSk = true;
-    }
-  }
-  
-  public final void a(e parame)
-  {
-    AppMethodBeat.i(110733);
-    j.q(parame, "consumer");
-    this.sSo.add(parame);
-    AppMethodBeat.o(110733);
-  }
-  
-  public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    boolean bool1 = false;
-    AppMethodBeat.i(110735);
-    j.q(paramMotionEvent, "event");
-    ab.d(TAG, "dispatchTouchEvent " + paramMotionEvent.getAction() + ", " + paramMotionEvent.getX() + ' ' + paramMotionEvent.getY());
-    int i = this.sSl;
-    int j;
-    boolean bool2;
-    switch (paramMotionEvent.getActionMasked())
-    {
-    default: 
-      j = 1;
-      if (this.sSi) {
-        bool1 = true;
-      }
-      bool2 = bool1;
-      if (!bool1)
-      {
-        bool2 = bool1;
-        if (j != 0)
+        else
         {
-          Iterator localIterator = this.sSo.iterator();
+          if (paramInt != 2) {
+            break label277;
+          }
+          paramBoolean = bool;
+        }
+        label154:
+        this.yyw = paramBoolean;
+        float f1 = paramMotionEvent.getRawX();
+        float f2 = paramMotionEvent.getRawY();
+        this.yyu = (f1 - this.cEZ);
+        this.yyv = (f2 - this.cFa);
+        if (this.yyw)
+        {
+          this.yyx.animate().cancel();
+          if (this.yxX == 2) {}
+          for (f1 = this.yyv;; f1 = this.yyu * this.yyx.getHeight() / this.yyx.getWidth())
+          {
+            f2 = f1;
+            if (f1 < 0.0F) {
+              f2 = 0.0F;
+            }
+            this.yyx.setTranslationY(f2);
+            f1 = f2 / this.yyx.getHeight();
+            this.yyy.bx(0.8F - f1);
+            break;
+            label277:
+            paramBoolean = false;
+            break label154;
+          }
+          if (this.yyw)
+          {
+            paramMotionEvent = this.lr;
+            if (paramMotionEvent != null) {
+              paramMotionEvent.computeCurrentVelocity(1000);
+            }
+            paramMotionEvent = this.lr;
+            if (paramMotionEvent == null) {
+              break label445;
+            }
+            f1 = paramMotionEvent.getXVelocity();
+            label347:
+            paramMotionEvent = this.lr;
+            if (paramMotionEvent == null) {
+              break label451;
+            }
+            f2 = paramMotionEvent.getYVelocity();
+            label362:
+            if (this.yxX != 2) {
+              break label462;
+            }
+            paramInt = i;
+            if (this.yyv <= this.yyt)
+            {
+              if (f2 <= 0.0F) {
+                break label457;
+              }
+              paramInt = i;
+            }
+            label396:
+            if (paramInt == 0) {
+              break label499;
+            }
+            paramMotionEvent = h.ynv;
+            h.OB(13);
+            this.yyy.dKU();
+          }
           for (;;)
           {
-            bool2 = bool1;
-            if (!localIterator.hasNext()) {
-              break;
+            this.yxX = 0;
+            this.yyu = 0.0F;
+            this.yyv = 0.0F;
+            this.yyw = false;
+            mL();
+            break;
+            label445:
+            f1 = 0.0F;
+            break label347;
+            label451:
+            f2 = 0.0F;
+            break label362;
+            label457:
+            paramInt = 0;
+            break label396;
+            label462:
+            paramInt = i;
+            if (this.yyu > this.yyx.getWidth() / 2) {
+              break label396;
             }
-            e locale = (e)localIterator.next();
-            bool2 = bool1;
-            if (bool1) {
-              break;
+            paramInt = i;
+            if (f1 > 50.0F) {
+              break label396;
             }
-            if ((this.sSj) && ((locale.cFW() & i) == 0)) {
-              break label273;
-            }
-            bool1 = locale.a(paramMotionEvent, this.sSj, i) | bool1;
+            paramInt = 0;
+            break label396;
+            label499:
+            this.yyx.animate().translationY(0.0F).start();
           }
+          this.yxX = 0;
+          this.yyx.setTranslationY(0.0F);
+          this.yyu = 0.0F;
+          this.yyv = 0.0F;
+          this.yyw = false;
+          mL();
         }
       }
-      break;
-    case 2: 
-      label206:
-      if (!this.sSk) {}
-      break;
-    }
-    for (i = 0;; i = 1)
-    {
-      int k = this.sSl;
-      ab.d(TAG, "scrollType " + this.sSl);
-      j = i;
-      i = k;
-      break;
-      i = 15;
-      j = 1;
-      break;
-      AppMethodBeat.o(110735);
-      return bool2;
-      label273:
-      break label206;
     }
   }
+  
+  public final int dLn()
+  {
+    return 10;
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GallerySwipeBackConsumer$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/dhu" android:background="@color/h1" android:paddingLeft="4.0dip" android:paddingTop="@dimen/n_" android:paddingRight="4.0dip" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageButton android:id="@id/d5b" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bej" android:minWidth="0.0dip" android:contentDescription="@string/aka" style="@style/no" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/dhv" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>

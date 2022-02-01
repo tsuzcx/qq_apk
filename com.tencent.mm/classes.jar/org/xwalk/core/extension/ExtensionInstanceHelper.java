@@ -11,7 +11,7 @@ public class ExtensionInstanceHelper
   
   public ExtensionInstanceHelper(XWalkExternalExtension paramXWalkExternalExtension, int paramInt)
   {
-    AppMethodBeat.i(86101);
+    AppMethodBeat.i(155215);
     this.mId = paramInt;
     this.mExtension = paramXWalkExternalExtension;
     this.mHandler = new MessageHandler(this.mExtension.getMessageHandler());
@@ -19,22 +19,22 @@ public class ExtensionInstanceHelper
       ReflectionHelper.registerHandlers(this.mExtension.getReflection(), this.mHandler, this.mExtension);
     }
     this.mStore = new BindingObjectStore(this.mHandler, this);
-    AppMethodBeat.o(86101);
+    AppMethodBeat.o(155215);
   }
   
   public boolean addBindingObject(String paramString, BindingObject paramBindingObject)
   {
-    AppMethodBeat.i(86103);
+    AppMethodBeat.i(155217);
     boolean bool = this.mStore.addBindingObject(paramString, paramBindingObject);
-    AppMethodBeat.o(86103);
+    AppMethodBeat.o(155217);
     return bool;
   }
   
   public BindingObject getBindingObject(String paramString)
   {
-    AppMethodBeat.i(86102);
+    AppMethodBeat.i(155216);
     paramString = this.mStore.getBindingObject(paramString);
-    AppMethodBeat.o(86102);
+    AppMethodBeat.o(155216);
     return paramString;
   }
   
@@ -50,27 +50,27 @@ public class ExtensionInstanceHelper
   
   public Object handleMessage(String paramString)
   {
-    AppMethodBeat.i(86105);
+    AppMethodBeat.i(155219);
     paramString = new MessageInfo(this.mExtension, this.mId, paramString);
     paramString = this.mHandler.handleMessage(paramString);
-    AppMethodBeat.o(86105);
+    AppMethodBeat.o(155219);
     return paramString;
   }
   
   public Object handleMessage(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(86106);
+    AppMethodBeat.i(155220);
     paramArrayOfByte = new MessageInfo(this.mExtension, this.mId, paramArrayOfByte);
     paramArrayOfByte = this.mHandler.handleMessage(paramArrayOfByte);
-    AppMethodBeat.o(86106);
+    AppMethodBeat.o(155220);
     return paramArrayOfByte;
   }
   
   public BindingObject removeBindingObject(String paramString)
   {
-    AppMethodBeat.i(86104);
+    AppMethodBeat.i(155218);
     paramString = this.mStore.removeBindingObject(paramString);
-    AppMethodBeat.o(86104);
+    AppMethodBeat.o(155218);
     return paramString;
   }
 }

@@ -13,16 +13,16 @@ public class LibraryLoader
   
   public static String[] getLibrarySearchPaths(Context paramContext)
   {
-    AppMethodBeat.i(63770);
+    AppMethodBeat.i(53150);
     if (sLibrarySearchPaths != null)
     {
       paramContext = sLibrarySearchPaths;
-      AppMethodBeat.o(63770);
+      AppMethodBeat.o(53150);
       return paramContext;
     }
     if (paramContext == null)
     {
-      AppMethodBeat.o(63770);
+      AppMethodBeat.o(53150);
       return new String[] { "/system/lib" };
     }
     ArrayList localArrayList = new ArrayList();
@@ -31,34 +31,34 @@ public class LibraryLoader
     paramContext = new String[localArrayList.size()];
     localArrayList.toArray(paramContext);
     sLibrarySearchPaths = paramContext;
-    AppMethodBeat.o(63770);
+    AppMethodBeat.o(53150);
     return paramContext;
   }
   
   public static String getNativeLibraryDir(Context paramContext)
   {
-    AppMethodBeat.i(63771);
+    AppMethodBeat.i(53151);
     int i = Build.VERSION.SDK_INT;
     if (i >= 9)
     {
       paramContext = paramContext.getApplicationInfo().nativeLibraryDir;
-      AppMethodBeat.o(63771);
+      AppMethodBeat.o(53151);
       return paramContext;
     }
     if (i >= 4)
     {
       paramContext = paramContext.getApplicationInfo().dataDir + "/lib";
-      AppMethodBeat.o(63771);
+      AppMethodBeat.o(53151);
       return paramContext;
     }
     paramContext = "/data/data/" + paramContext.getPackageName() + "/lib";
-    AppMethodBeat.o(63771);
+    AppMethodBeat.o(53151);
     return paramContext;
   }
   
   public static void loadLibrary(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(63772);
+    AppMethodBeat.i(53152);
     paramContext = getLibrarySearchPaths(paramContext);
     String str1 = System.mapLibraryName(paramString);
     int j = paramContext.length;
@@ -71,12 +71,12 @@ public class LibraryLoader
         try
         {
           System.load(str2);
-          AppMethodBeat.o(63772);
+          AppMethodBeat.o(53152);
           return;
         }
         catch (Exception paramContext)
         {
-          AppMethodBeat.o(63772);
+          AppMethodBeat.o(53152);
           return;
         }
       }
@@ -85,18 +85,18 @@ public class LibraryLoader
     try
     {
       System.loadLibrary(paramString);
-      AppMethodBeat.o(63772);
+      AppMethodBeat.o(53152);
       return;
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(63772);
+      AppMethodBeat.o(53152);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.export.external.LibraryLoader
  * JD-Core Version:    0.7.0.1
  */

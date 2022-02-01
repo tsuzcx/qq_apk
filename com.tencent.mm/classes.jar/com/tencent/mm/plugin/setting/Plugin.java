@@ -1,49 +1,50 @@
 package com.tencent.mm.plugin.setting;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.o;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class Plugin
-  implements com.tencent.mm.pluginsdk.b.c
+  implements d
 {
   public Plugin()
   {
-    AppMethodBeat.i(126820);
-    ab.i("MicroMsg.Plugin.setting", "setting constructor " + System.currentTimeMillis());
-    AppMethodBeat.o(126820);
+    AppMethodBeat.i(73741);
+    ad.i("MicroMsg.Plugin.setting", "setting constructor " + System.currentTimeMillis());
+    AppMethodBeat.o(73741);
   }
   
-  public final o createApplication()
+  public final m createApplication()
   {
-    AppMethodBeat.i(126821);
-    ab.i("MicroMsg.Plugin.setting", "setting createApplication " + System.currentTimeMillis());
+    AppMethodBeat.i(73742);
+    ad.i("MicroMsg.Plugin.setting", "setting createApplication " + System.currentTimeMillis());
     b localb = new b();
-    AppMethodBeat.o(126821);
+    AppMethodBeat.o(73742);
     return localb;
   }
   
-  public final at createSubCore()
+  public final aw createSubCore()
   {
-    AppMethodBeat.i(126823);
-    ab.i("MicroMsg.Plugin.setting", "setting createSubCore " + System.currentTimeMillis());
+    AppMethodBeat.i(73744);
+    ad.i("MicroMsg.Plugin.setting", "setting createSubCore " + System.currentTimeMillis());
     c localc = new c();
-    AppMethodBeat.o(126823);
+    AppMethodBeat.o(73744);
     return localc;
   }
   
-  public final com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public final com.tencent.mm.pluginsdk.b.c getContactWidgetFactory()
   {
-    AppMethodBeat.i(126822);
-    ab.i("MicroMsg.Plugin.setting", "setting getContactWidgetFactory " + System.currentTimeMillis());
-    AppMethodBeat.o(126822);
+    AppMethodBeat.i(73743);
+    ad.i("MicroMsg.Plugin.setting", "setting getContactWidgetFactory " + System.currentTimeMillis());
+    AppMethodBeat.o(73743);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.Plugin
  * JD-Core Version:    0.7.0.1
  */

@@ -4,18 +4,18 @@ import com.tencent.mm.kernel.b.g;
 
 public final class d<_Profile extends g>
 {
-  private _Profile eHL;
+  private _Profile gcQ;
   
   public d(_Profile param_Profile)
   {
-    this.eHL = param_Profile;
+    this.gcQ = param_Profile;
   }
   
-  public final _Profile Rj()
+  public final _Profile aeZ()
   {
     try
     {
-      g localg = this.eHL;
+      g localg = this.gcQ;
       return localg;
     }
     finally

@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout style="@style/qp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView style="@style/ny">
+        <LinearLayout style="@style/ld">
+            <LinearLayout android:orientation="vertical" android:id="@id/b7y" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:paddingBottom="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:layout_gravity="center_horizontal" android:id="@id/tm" android:layout_width="@dimen/e" android:layout_height="@dimen/e" />
+                    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="center|left|top" android:id="@id/e3x" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/tm" />
+                    <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:gravity="left" android:id="@id/gk4" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_toRightOf="@id/tm" android:layout_below="@id/e3x" />
+                </RelativeLayout>
+                <View style="@style/oh" />
+                <EditText android:textColor="@color/y4" android:layout_gravity="bottom" android:id="@id/ewe" android:layout_marginTop="@dimen/jn" android:minHeight="@dimen/h5" style="@style/n1" />
+                <View style="@style/oh" />
+                <TextView android:gravity="center|left|top" android:id="@id/dsc" android:text="@string/dsa" android:height="70.0dip" style="@style/n2" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

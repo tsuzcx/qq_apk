@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/oc" android:layout_width="fill_parent" android:layout_height="80.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center_vertical" android:id="@android:id/progress" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:gravity="left" android:layout_gravity="center_vertical" android:id="@android:id/title" android:text="@string/e59" style="@style/l1" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/dyb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="16.0dip">
+        <TextView android:textSize="@dimen/i" android:textColor="@color/fg" android:ellipsize="end" android:id="@id/e3x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/fg" android:ellipsize="end" android:id="@id/es7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="4.0dip">
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/ecw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/fsr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:text="@string/dr3" />
+    </LinearLayout>
 </LinearLayout>

@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.account.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.jn;
+import com.tencent.mm.g.a.kq;
 import com.tencent.mm.sdk.b.c;
 
 final class LoginUI$12
-  extends c<jn>
+  extends c<kq>
 {
   LoginUI$12(LoginUI paramLoginUI)
   {
-    AppMethodBeat.i(125038);
-    this.__eventId = jn.class.getName().hashCode();
-    AppMethodBeat.o(125038);
+    AppMethodBeat.i(161703);
+    this.__eventId = kq.class.getName().hashCode();
+    AppMethodBeat.o(161703);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginUI.12
  * JD-Core Version:    0.7.0.1
  */

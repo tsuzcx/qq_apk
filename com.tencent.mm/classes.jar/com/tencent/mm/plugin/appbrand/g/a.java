@@ -1,83 +1,46 @@
 package com.tencent.mm.plugin.appbrand.g;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.plugin.appbrand.appusage.w;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import com.tencent.luggage.a.b;
+import java.io.InputStream;
+import java.util.Map;
 
-final class a
-  implements k.a
+public abstract interface a
+  extends b
 {
-  public final void a(String paramString, m paramm)
+  public abstract Bitmap a(String paramString, Rect paramRect, b paramb);
+  
+  public abstract void a(String paramString, c paramc);
+  
+  public abstract void a(String paramString, Map<String, String> paramMap, c paramc);
+  
+  public abstract Bitmap bR(String paramString);
+  
+  public static abstract interface a
   {
-    AppMethodBeat.i(129955);
-    if (g.auK() == null)
-    {
-      ab.w("MicroMsg.AppBrandSearchStorageChangeListener", "onNotifyChange by SysConfigStorage, but sLayoutStorage is null.");
-      AppMethodBeat.o(129955);
-      return;
-    }
-    switch (paramm.htj)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(129955);
-      return;
-      LinkedList localLinkedList = new LinkedList();
-      if ("batch".equals(paramString))
-      {
-        if ((paramm.obj != null) && ((paramm.obj instanceof List)))
-        {
-          paramString = ((List)paramm.obj).iterator();
-          while (paramString.hasNext())
-          {
-            paramm = (String)paramString.next();
-            localLinkedList.addAll(g.auK().zy(paramm));
-          }
-        }
-      }
-      else
-      {
-        localLinkedList.addAll(g.auK().zy(paramm.obj.toString()));
-        if (!localLinkedList.isEmpty())
-        {
-          g.auK().doNotify("batch", 3, localLinkedList);
-          AppMethodBeat.o(129955);
-          return;
-          localLinkedList = new LinkedList();
-          if ("batch".equals(paramString))
-          {
-            if ((paramm.obj != null) && ((paramm.obj instanceof List)))
-            {
-              paramString = ((List)paramm.obj).iterator();
-              while (paramString.hasNext())
-              {
-                paramm = (String)paramString.next();
-                localLinkedList.addAll(g.auK().zy(paramm));
-              }
-            }
-          }
-          else
-          {
-            localLinkedList.addAll(g.auK().zy(paramm.obj.toString()));
-            if (!localLinkedList.isEmpty()) {
-              g.auK().doNotify("batch", 5, localLinkedList);
-            }
-          }
-        }
-      }
-    }
+    public abstract String AL();
+    
+    public abstract void a(String paramString, Map<String, String> paramMap, a.c paramc);
+    
+    public abstract Bitmap b(String paramString, Rect paramRect, a.b paramb);
+    
+    public abstract boolean match(String paramString);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void M(Bitmap paramBitmap);
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void A(InputStream paramInputStream);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.a
  * JD-Core Version:    0.7.0.1
  */

@@ -73,7 +73,7 @@ public abstract interface n
       
       public final void onNetworkChange(int paramInt)
       {
-        AppMethodBeat.i(58526);
+        AppMethodBeat.i(132747);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -88,7 +88,7 @@ public abstract interface n
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58526);
+          AppMethodBeat.o(132747);
         }
       }
     }

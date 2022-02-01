@@ -1,21 +1,28 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import com.tencent.mm.kernel.c.a;
+import android.view.View;
 
 public abstract interface n
-  extends a
 {
-  public abstract void IW(int paramInt);
+  public abstract void a(String paramString1, boolean paramBoolean, String paramString2, String paramString3);
   
-  public abstract String agm(String paramString);
+  public abstract void addView(View paramView);
   
-  public abstract void bw(int paramInt, String paramString);
+  public abstract void ava(String paramString);
   
-  public abstract int cYY();
+  public abstract void eQ(String paramString, int paramInt);
   
-  public abstract String cYZ();
+  public abstract void eR(String paramString, int paramInt);
   
-  public abstract void hf(String paramString1, String paramString2);
+  public abstract void ehM();
+  
+  public abstract void h(String paramString1, String paramString2, String paramString3, int paramInt);
+  
+  public abstract void i(String paramString1, boolean paramBoolean, String paramString2);
+  
+  public abstract void jK(String paramString1, String paramString2);
+  
+  public abstract void removeView(View paramView);
 }
 
 

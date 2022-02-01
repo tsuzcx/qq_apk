@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.s;
 
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.pluginsdk.model.app.i;
+import com.tencent.mm.pluginsdk.model.app.j;
+import com.tencent.mm.storagebase.h.b;
 
 final class a$3
-  implements h.d
+  implements h.b
 {
   public final String[] getSQLs()
   {
-    return i.SQL_CREATE;
+    return j.SQL_CREATE;
   }
 }
 

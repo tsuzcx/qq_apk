@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/c_f" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="@dimen/ce"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/be0" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="@dimen/ci" app:layout_constraintTop_toTopOf="ea8" />
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="center_vertical" android:id="@id/b_l" android:layout_width="wrap_content" android:layout_height="@dimen/cd" android:layout_marginLeft="16.0dip" android:text="@string/ccu" android:layout_weight="1.0" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toBottomOf="@id/be0" />
+    <View android:background="@drawable/a8n" android:layout_width="fill_parent" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/cd" app:layout_constraintTop_toTopOf="ea8" />
+</android.support.constraint.ConstraintLayout>

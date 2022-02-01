@@ -4,27 +4,28 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 
 public class FreeWifiOwnerUI
-  extends Activity
+  extends HellActivity
 {
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(21059);
+    AppMethodBeat.i(25118);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(21059);
+    AppMethodBeat.o(25118);
   }
   
-  protected void onResume()
+  public void onResume()
   {
-    AppMethodBeat.i(21060);
+    AppMethodBeat.i(25119);
     super.onResume();
     String str = getIntent().getStringExtra("wifi_owner_name");
     int i = getIntent().getIntExtra("wifi_owner_type", 0);
     com.tencent.mm.plugin.freewifi.j.userName = str;
     com.tencent.mm.plugin.freewifi.j.type = i;
     finish();
-    AppMethodBeat.o(21060);
+    AppMethodBeat.o(25119);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

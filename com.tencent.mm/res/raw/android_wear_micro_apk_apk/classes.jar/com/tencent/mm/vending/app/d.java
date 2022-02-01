@@ -7,18 +7,18 @@ import junit.framework.Assert;
 
 public final class d
 {
-  private c YM = c.lv();
-  private a YQ;
-  private int YR = 0;
-  private b YS = new b();
+  private c acm = c.mc();
+  private a acq;
+  private int acr = 0;
+  private b acs = new b();
   
   private void a(Intent paramIntent, Context paramContext)
   {
     try
     {
-      Assert.assertNotNull("You must pair this presenter with a interactor!", this.YQ);
-      this.YQ.setContext(paramContext);
-      this.YQ.a(paramIntent);
+      Assert.assertNotNull("You must pair this presenter with a interactor!", this.acq);
+      this.acq.setContext(paramContext);
+      this.acq.c(paramIntent);
       return;
     }
     finally
@@ -28,32 +28,32 @@ public final class d
     }
   }
   
-  private void bG(int paramInt)
+  private void cc(int paramInt)
   {
-    this.YR = paramInt;
-    this.YM.a(this, paramInt);
+    this.acr = paramInt;
+    this.acm.a(this, paramInt);
   }
   
   public final void b(Intent paramIntent, Context paramContext)
   {
     a(paramIntent, paramContext);
-    bG(1);
+    cc(1);
   }
   
   public final void onDestroy()
   {
-    this.YS.lw();
-    bG(4);
+    this.acs.md();
+    cc(4);
   }
   
   public final void onPause()
   {
-    bG(3);
+    cc(3);
   }
   
   public final void onResume()
   {
-    bG(2);
+    cc(2);
   }
 }
 

@@ -13,31 +13,31 @@ final class zza
   
   private final Integer zza(Void... paramVarArgs)
   {
-    AppMethodBeat.i(90506);
+    AppMethodBeat.i(5527);
     int i;
     try
     {
       ProviderInstaller.installIfNeeded(this.val$context);
-      AppMethodBeat.o(90506);
+      AppMethodBeat.o(5527);
       return Integer.valueOf(0);
     }
     catch (GooglePlayServicesRepairableException paramVarArgs)
     {
       i = paramVarArgs.getConnectionStatusCode();
-      AppMethodBeat.o(90506);
+      AppMethodBeat.o(5527);
       return Integer.valueOf(i);
     }
     catch (GooglePlayServicesNotAvailableException paramVarArgs)
     {
       i = paramVarArgs.errorCode;
-      AppMethodBeat.o(90506);
+      AppMethodBeat.o(5527);
     }
     return Integer.valueOf(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.security.zza
  * JD-Core Version:    0.7.0.1
  */

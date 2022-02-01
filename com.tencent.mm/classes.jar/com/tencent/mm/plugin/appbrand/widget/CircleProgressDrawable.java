@@ -11,10 +11,14 @@ import android.graphics.Paint;
 import android.graphics.Paint.Cap;
 import android.graphics.Paint.Join;
 import android.graphics.Paint.Style;
+import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.Keep;
+import android.support.v4.view.b.f;
 import android.util.DisplayMetrics;
+import android.view.animation.Interpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,103 +26,94 @@ import java.util.Iterator;
 public final class CircleProgressDrawable
   extends Drawable
 {
-  private static final RectF jap;
-  private static final RectF jaq;
-  private int jar;
-  private int jas;
-  private int jat;
-  private boolean jau;
-  private int jav;
-  private CircleProgressDrawable.RingPathTransform jaw;
-  private CircleProgressDrawable.RingRotation jax;
+  private static final RectF KCp;
+  private static final RectF KCq;
+  private int KCr;
+  private int KCs;
+  private boolean KCt;
+  private int KCu;
+  private RingPathTransform KCv;
+  private RingRotation KCw;
+  private int lQm;
   private Paint mPaint;
-  private ArrayList<Animator> nD;
+  private ArrayList<Animator> ud;
   
   static
   {
-    AppMethodBeat.i(77393);
-    jap = new RectF(-21.0F, -21.0F, 21.0F, 21.0F);
-    jaq = new RectF(-19.0F, -19.0F, 19.0F, 19.0F);
-    AppMethodBeat.o(77393);
+    AppMethodBeat.i(131466);
+    KCp = new RectF(-21.0F, -21.0F, 21.0F, 21.0F);
+    KCq = new RectF(-19.0F, -19.0F, 19.0F, 19.0F);
+    AppMethodBeat.o(131466);
   }
   
   public CircleProgressDrawable(Context paramContext)
   {
-    AppMethodBeat.i(143020);
-    this.jas = 4;
-    this.jat = -16777216;
-    this.jau = false;
-    this.jav = 0;
-    this.jaw = new CircleProgressDrawable.RingPathTransform((byte)0);
-    this.jax = new CircleProgressDrawable.RingRotation((byte)0);
-    this.jar = Math.round(paramContext.getResources().getDisplayMetrics().density * 48.0F);
-    this.nD = new ArrayList();
-    AppMethodBeat.o(143020);
+    AppMethodBeat.i(131457);
+    this.lQm = 4;
+    this.KCs = -16777216;
+    this.KCt = false;
+    this.KCu = 0;
+    this.KCv = new RingPathTransform((byte)0);
+    this.KCw = new RingRotation((byte)0);
+    this.KCr = Math.round(paramContext.getResources().getDisplayMetrics().density * 48.0F);
+    this.ud = new ArrayList();
+    AppMethodBeat.o(131457);
   }
   
-  private static Animator a(CircleProgressDrawable.RingPathTransform paramRingPathTransform)
+  private static Animator a(RingPathTransform paramRingPathTransform)
   {
-    AppMethodBeat.i(143023);
+    AppMethodBeat.i(131464);
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(paramRingPathTransform, "trimPathStart", new float[] { 0.0F, 0.75F });
     localObjectAnimator1.setDuration(1333L);
-    localObjectAnimator1.setInterpolator(CircleProgressDrawable.c.jay);
+    localObjectAnimator1.setInterpolator(c.lQs);
     localObjectAnimator1.setRepeatCount(-1);
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(paramRingPathTransform, "trimPathEnd", new float[] { 0.0F, 0.75F });
     localObjectAnimator2.setDuration(1333L);
-    localObjectAnimator2.setInterpolator(CircleProgressDrawable.b.jay);
+    localObjectAnimator2.setInterpolator(b.lQs);
     localObjectAnimator2.setRepeatCount(-1);
     paramRingPathTransform = ObjectAnimator.ofFloat(paramRingPathTransform, "trimPathOffset", new float[] { 0.0F, 0.25F });
     paramRingPathTransform.setDuration(1333L);
-    paramRingPathTransform.setInterpolator(CircleProgressDrawable.a.jay);
+    paramRingPathTransform.setInterpolator(CircleProgressDrawable.a.lQs);
     paramRingPathTransform.setRepeatCount(-1);
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2, paramRingPathTransform });
-    AppMethodBeat.o(143023);
+    AppMethodBeat.o(131464);
     return localAnimatorSet;
   }
   
-  private static Animator a(CircleProgressDrawable.RingRotation paramRingRotation)
+  private static Animator a(RingRotation paramRingRotation)
   {
-    AppMethodBeat.i(143024);
+    AppMethodBeat.i(131465);
     paramRingRotation = ObjectAnimator.ofFloat(paramRingRotation, "rotation", new float[] { 0.0F, 720.0F });
     paramRingRotation.setDuration(6665L);
-    paramRingRotation.setInterpolator(CircleProgressDrawable.a.jay);
+    paramRingRotation.setInterpolator(CircleProgressDrawable.a.lQs);
     paramRingRotation.setRepeatCount(-1);
-    AppMethodBeat.o(143024);
+    AppMethodBeat.o(131465);
     return paramRingRotation;
   }
   
   private boolean isStarted()
   {
-    AppMethodBeat.i(143022);
-    Iterator localIterator = this.nD.iterator();
+    AppMethodBeat.i(131461);
+    Iterator localIterator = this.ud.iterator();
     while (localIterator.hasNext()) {
       if (((Animator)localIterator.next()).isStarted())
       {
-        AppMethodBeat.o(143022);
+        AppMethodBeat.o(131461);
         return true;
       }
     }
-    AppMethodBeat.o(143022);
+    AppMethodBeat.o(131461);
     return false;
-  }
-  
-  public final void aQG()
-  {
-    AppMethodBeat.i(143021);
-    this.nD.clear();
-    this.nD.add(a(this.jaw));
-    this.nD.add(a(this.jax));
-    AppMethodBeat.o(143021);
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(77392);
+    AppMethodBeat.i(131463);
     Object localObject = getBounds();
     if ((((Rect)localObject).width() == 0) || (((Rect)localObject).height() == 0))
     {
-      AppMethodBeat.o(77392);
+      AppMethodBeat.o(131463);
       return;
     }
     if (this.mPaint == null)
@@ -126,7 +121,7 @@ public final class CircleProgressDrawable
       this.mPaint = new Paint();
       this.mPaint.setAntiAlias(true);
       this.mPaint.setStyle(Paint.Style.STROKE);
-      this.mPaint.setStrokeWidth(this.jas);
+      this.mPaint.setStrokeWidth(this.lQm);
       this.mPaint.setStrokeCap(Paint.Cap.SQUARE);
       this.mPaint.setStrokeJoin(Paint.Join.MITER);
     }
@@ -135,36 +130,45 @@ public final class CircleProgressDrawable
     int j = ((Rect)localObject).width();
     int k = ((Rect)localObject).height();
     localObject = this.mPaint;
-    paramCanvas.scale(j / jap.width(), k / jap.height());
-    paramCanvas.translate(jap.width() / 2.0F, jap.height() / 2.0F);
-    if (this.jau)
+    paramCanvas.scale(j / KCp.width(), k / KCp.height());
+    paramCanvas.translate(KCp.width() / 2.0F, KCp.height() / 2.0F);
+    if (this.KCt)
     {
       j = paramCanvas.save();
-      ((Paint)localObject).setColor(this.jav);
-      paramCanvas.drawArc(jaq, 0.0F, 360.0F, false, (Paint)localObject);
+      ((Paint)localObject).setColor(this.KCu);
+      paramCanvas.drawArc(KCq, 0.0F, 360.0F, false, (Paint)localObject);
       paramCanvas.restoreToCount(j);
     }
     j = paramCanvas.save();
-    ((Paint)localObject).setColor(this.jat);
-    paramCanvas.rotate(CircleProgressDrawable.RingRotation.b(this.jax));
-    float f1 = this.jaw.oe;
-    float f2 = this.jaw.oc;
-    float f3 = this.jaw.od;
-    float f4 = this.jaw.oc;
-    paramCanvas.drawArc(jaq, -90.0F + (f1 + f2) * 360.0F, 360.0F * (f3 - f4), false, (Paint)localObject);
+    ((Paint)localObject).setColor(this.KCs);
+    paramCanvas.rotate(RingRotation.b(this.KCw));
+    float f1 = this.KCv.uG;
+    float f2 = this.KCv.uE;
+    float f3 = this.KCv.uF;
+    float f4 = this.KCv.uE;
+    paramCanvas.drawArc(KCq, -90.0F + (f1 + f2) * 360.0F, 360.0F * (f3 - f4), false, (Paint)localObject);
     paramCanvas.restoreToCount(j);
     paramCanvas.restoreToCount(i);
-    AppMethodBeat.o(77392);
+    AppMethodBeat.o(131463);
+  }
+  
+  public final void fQW()
+  {
+    AppMethodBeat.i(131459);
+    this.ud.clear();
+    this.ud.add(a(this.KCv));
+    this.ud.add(a(this.KCw));
+    AppMethodBeat.o(131459);
   }
   
   public final int getIntrinsicHeight()
   {
-    return this.jar;
+    return this.KCr;
   }
   
   public final int getIntrinsicWidth()
   {
-    return this.jar;
+    return this.KCr;
   }
   
   public final int getOpacity()
@@ -178,41 +182,111 @@ public final class CircleProgressDrawable
   
   public final void setStrokeColor(int paramInt)
   {
-    AppMethodBeat.i(77389);
-    this.jat = paramInt;
+    AppMethodBeat.i(131458);
+    this.KCs = paramInt;
     invalidateSelf();
-    AppMethodBeat.o(77389);
+    AppMethodBeat.o(131458);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(77390);
+    AppMethodBeat.i(131460);
     if (isStarted())
     {
-      AppMethodBeat.o(77390);
+      AppMethodBeat.o(131460);
       return;
     }
-    Iterator localIterator = this.nD.iterator();
+    Iterator localIterator = this.ud.iterator();
     while (localIterator.hasNext()) {
       ((Animator)localIterator.next()).start();
     }
     invalidateSelf();
-    AppMethodBeat.o(77390);
+    AppMethodBeat.o(131460);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(77391);
-    Iterator localIterator = this.nD.iterator();
+    AppMethodBeat.i(131462);
+    Iterator localIterator = this.ud.iterator();
     while (localIterator.hasNext()) {
       ((Animator)localIterator.next()).end();
     }
-    AppMethodBeat.o(77391);
+    AppMethodBeat.o(131462);
+  }
+  
+  static class RingPathTransform
+  {
+    public float uE = 0.0F;
+    public float uF = 0.0F;
+    public float uG = 0.0F;
+    
+    @Keep
+    public void setTrimPathEnd(float paramFloat)
+    {
+      this.uF = paramFloat;
+    }
+    
+    @Keep
+    public void setTrimPathOffset(float paramFloat)
+    {
+      this.uG = paramFloat;
+    }
+    
+    @Keep
+    public void setTrimPathStart(float paramFloat)
+    {
+      this.uE = paramFloat;
+    }
+  }
+  
+  static class RingRotation
+  {
+    private float PP;
+    
+    @Keep
+    public void setRotation(float paramFloat)
+    {
+      this.PP = paramFloat;
+    }
+  }
+  
+  static final class b
+  {
+    public static final Interpolator lQs;
+    private static final Path lQt;
+    
+    static
+    {
+      AppMethodBeat.i(131455);
+      Path localPath = new Path();
+      lQt = localPath;
+      localPath.cubicTo(0.2F, 0.0F, 0.1F, 1.0F, 0.5F, 1.0F);
+      lQt.lineTo(1.0F, 1.0F);
+      lQs = f.c(lQt);
+      AppMethodBeat.o(131455);
+    }
+  }
+  
+  static final class c
+  {
+    public static final Interpolator lQs;
+    private static final Path lQu;
+    
+    static
+    {
+      AppMethodBeat.i(131456);
+      Path localPath = new Path();
+      lQu = localPath;
+      localPath.lineTo(0.5F, 0.0F);
+      lQu.cubicTo(0.7F, 0.0F, 0.6F, 1.0F, 1.0F, 1.0F);
+      lQs = f.c(lQu);
+      AppMethodBeat.o(131456);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.CircleProgressDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -22,26 +22,26 @@ public class MetadataValueReader
   
   static
   {
-    AppMethodBeat.i(89682);
+    AppMethodBeat.i(4704);
     sLock = new Object();
-    AppMethodBeat.o(89682);
+    AppMethodBeat.o(4704);
   }
   
   public static String getGoogleAppId(Context paramContext)
   {
-    AppMethodBeat.i(89679);
+    AppMethodBeat.i(4701);
     zze(paramContext);
     paramContext = zzuj;
-    AppMethodBeat.o(89679);
+    AppMethodBeat.o(4701);
     return paramContext;
   }
   
   public static int getGooglePlayServicesVersion(Context paramContext)
   {
-    AppMethodBeat.i(89680);
+    AppMethodBeat.i(4702);
     zze(paramContext);
     int i = zzuk;
-    AppMethodBeat.o(89680);
+    AppMethodBeat.o(4702);
     return i;
   }
   
@@ -69,12 +69,12 @@ public class MetadataValueReader
   
   private static void zze(Context paramContext)
   {
-    AppMethodBeat.i(89681);
+    AppMethodBeat.i(4703);
     synchronized (sLock)
     {
       if (zzui)
       {
-        AppMethodBeat.o(89681);
+        AppMethodBeat.o(4703);
         return;
       }
       zzui = true;
@@ -85,7 +85,7 @@ public class MetadataValueReader
         paramContext = paramContext.getApplicationInfo(str, 128).metaData;
         if (paramContext == null)
         {
-          AppMethodBeat.o(89681);
+          AppMethodBeat.o(4703);
           return;
         }
         zzuj = paramContext.getString("com.google.app.id");
@@ -98,7 +98,7 @@ public class MetadataValueReader
           Log.wtf("MetadataValueReader", "This should never happen.", paramContext);
         }
       }
-      AppMethodBeat.o(89681);
+      AppMethodBeat.o(4703);
       return;
     }
   }

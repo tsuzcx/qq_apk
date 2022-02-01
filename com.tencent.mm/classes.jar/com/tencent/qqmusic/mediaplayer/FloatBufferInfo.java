@@ -10,13 +10,13 @@ public class FloatBufferInfo
   
   public void appendFloat(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(111096);
+    AppMethodBeat.i(103523);
     if ((paramArrayOfFloat != null) && (paramInt1 >= 0) && (paramInt2 > 0) && (paramInt1 + paramInt2 <= paramArrayOfFloat.length))
     {
       setFloatBufferCapacity(this.bufferSize + paramInt2);
       System.arraycopy(paramArrayOfFloat, paramInt1, this.floatBuffer, this.bufferSize, paramInt2);
     }
-    AppMethodBeat.o(111096);
+    AppMethodBeat.o(103523);
   }
   
   public FloatBufferInfo copy(FloatBufferInfo paramFloatBufferInfo)
@@ -52,7 +52,7 @@ public class FloatBufferInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.FloatBufferInfo
  * JD-Core Version:    0.7.0.1
  */

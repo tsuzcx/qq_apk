@@ -1,98 +1,49 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.d.n;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
-import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ab;
-import org.json.JSONException;
+import com.tencent.mm.plugin.webview.luggage.f;
+import com.tencent.mm.plugin.webview.luggage.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class y
-  extends bh<n>
+  extends bo<f>
 {
-  public final void a(Context paramContext, String paramString, final bh.a parama)
+  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  
+  public final void b(a<f>.a parama)
   {
-    AppMethodBeat.i(6319);
-    ab.i("MicroMsg.JsApiInstallDownloadTask", "invokeInOwn");
-    long l;
-    try
+    AppMethodBeat.i(78561);
+    ad.i("MicroMsg.JsApiHideMenuItems", "invokeInOwn");
+    JSONArray localJSONArray = parama.bZV.bZb.optJSONArray("menuList");
+    if (localJSONArray == null)
     {
-      paramContext = new JSONObject(paramString);
-      l = paramContext.optLong("download_id");
-      if (l <= 0L)
-      {
-        ab.i("MicroMsg.JsApiInstallDownloadTask", "data is null");
-        parama.c("fail_invalid_data", null);
-        AppMethodBeat.o(6319);
-        return;
-      }
-    }
-    catch (JSONException paramContext)
-    {
-      ab.e("MicroMsg.JsApiInstallDownloadTask", "paras data error: " + paramContext.getMessage());
-      parama.c("fail", null);
-      AppMethodBeat.o(6319);
+      ad.i("MicroMsg.JsApiHideMenuItems", "data is null");
+      parama.a("invalid_data", null);
+      AppMethodBeat.o(78561);
       return;
     }
-    paramString = f.bjl().iA(l);
-    if (paramString.status == -1)
-    {
-      ab.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, apilevel not supported");
-      parama.c("fail", null);
-      AppMethodBeat.o(6319);
-      return;
+    l locall = ((f)parama.bZU).ekS();
+    if (locall != null) {
+      locall.M(localJSONArray);
     }
-    if (paramString.status != 3)
-    {
-      ab.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, invalid status = " + paramString.status);
-      parama.c("fail", null);
-      AppMethodBeat.o(6319);
-      return;
-    }
-    com.tencent.mm.plugin.downloader.g.a locala = d.iJ(l);
-    if (locala != null)
-    {
-      int i = paramContext.optInt("scene");
-      int j = paramContext.optInt("uiarea");
-      int k = paramContext.optInt("notice_id");
-      int m = paramContext.optInt("ssid");
-      locala.field_scene = i;
-      locala.field_uiarea = j;
-      locala.field_noticeId = k;
-      locala.field_ssid = m;
-      d.e(locala);
-    }
-    com.tencent.mm.plugin.downloader.i.a.a(paramString.id, false, new com.tencent.mm.pluginsdk.permission.a()
-    {
-      public final void eb(boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(6318);
-        if (paramAnonymousBoolean)
-        {
-          parama.c(null, null);
-          AppMethodBeat.o(6318);
-          return;
-        }
-        parama.c("fail", null);
-        AppMethodBeat.o(6318);
-      }
-    });
-    AppMethodBeat.o(6319);
+    parama.a("", null);
+    AppMethodBeat.o(78561);
   }
   
-  public final void b(com.tencent.luggage.d.a<n>.a parama) {}
-  
-  public final int bjL()
+  public final int bQV()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "installDownloadTask";
+    return "hideMenuItems";
   }
 }
 

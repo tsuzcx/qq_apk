@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.emoji.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.model.e;
-import com.tencent.mm.plugin.emoji.model.i;
+import com.tencent.mm.plugin.emoji.h.a;
+import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ar;
-import com.tencent.mm.storage.at;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.aw;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,50 +18,50 @@ public final class d
 {
   private final String TAG = "MicroMsg.emoji.EmojiListMineData";
   
-  public d(e parame)
+  public d(com.tencent.mm.plugin.emoji.model.f paramf)
   {
-    super(parame);
+    super(paramf);
   }
   
-  public final void bkJ() {}
+  public final void bUx() {}
   
   public final void clear()
   {
-    AppMethodBeat.i(52796);
+    AppMethodBeat.i(108372);
     super.clear();
-    AppMethodBeat.o(52796);
+    AppMethodBeat.o(108372);
   }
   
   public final void notifyDataSetChanged()
   {
     try
     {
-      AppMethodBeat.i(52795);
-      Object localObject1 = i.getEmojiStorageMgr().yNo.dzh();
-      boolean bool = com.tencent.mm.plugin.emoji.h.a.bmI();
+      AppMethodBeat.i(108371);
+      Object localObject1 = k.getEmojiStorageMgr().FyZ.eNt();
+      boolean bool = a.bWs();
       this.mItemList = new ArrayList();
-      ab.v("MicroMsg.emoji.EmojiListMineData", "============= refresh Data By DB");
+      ad.v("MicroMsg.emoji.EmojiListMineData", "============= refresh Data By DB");
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        EmotionSummary localEmotionSummary = ((EmojiGroupInfo)((Iterator)localObject1).next()).dzm();
+        EmotionSummary localEmotionSummary = ((EmojiGroupInfo)((Iterator)localObject1).next()).fZL();
         f localf = new f(localEmotionSummary);
-        if ((com.tencent.mm.plugin.emoji.h.a.g(localEmotionSummary)) && (bool))
+        if ((a.g(localEmotionSummary)) && (bool))
         {
-          ar localar = new ar(localEmotionSummary.ProductID);
-          this.leW.put(localEmotionSummary.ProductID, localar);
+          au localau = new au(localEmotionSummary.ProductID);
+          this.ouH.put(localEmotionSummary.ProductID, localau);
         }
         localf.setStatus(9);
         this.mItemList.add(localf);
       }
-      AppMethodBeat.o(52795);
+      AppMethodBeat.o(108371);
     }
     finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a.d
  * JD-Core Version:    0.7.0.1
  */

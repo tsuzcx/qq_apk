@@ -5,119 +5,119 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.bq.d;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.scanner.model.a.a;
-import com.tencent.mm.plugin.scanner.model.i;
 import com.tencent.mm.plugin.scanner.model.k;
-import com.tencent.mm.plugin.scanner.util.q.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.scanner.model.m;
+import com.tencent.mm.plugin.scanner.util.k.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
 import java.util.LinkedList;
 import java.util.List;
 
 public class ProductPurchaseAreaUI
   extends MMPreference
 {
-  protected f iLA;
-  private String liu;
-  private List<a.a> qxD;
-  private int qxE;
+  protected com.tencent.mm.ui.base.preference.f lxI;
+  private String oyw;
+  private List<a.a> vSx;
+  private int vSy;
   
-  private static void n(Context paramContext, String paramString, int paramInt)
+  private static void o(Context paramContext, String paramString, int paramInt)
   {
-    AppMethodBeat.i(81076);
+    AppMethodBeat.i(51847);
     Intent localIntent = new Intent();
     Bundle localBundle = new Bundle();
-    localBundle.putString("jsapi_args_appid", k.CD(paramInt));
+    localBundle.putString("jsapi_args_appid", m.KN(paramInt));
     localIntent.putExtra("jsapiargs", localBundle);
     localIntent.putExtra("rawUrl", paramString);
     localIntent.putExtra("pay_channel", 3);
     d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
-    AppMethodBeat.o(81076);
+    AppMethodBeat.o(51847);
   }
   
   public int getResourceId()
   {
-    return 2131165260;
+    return 2131951703;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(81074);
+    AppMethodBeat.i(51845);
     setBackBtn(new ProductPurchaseAreaUI.1(this));
-    this.iLA = getPreferenceScreen();
-    AppMethodBeat.o(81074);
+    this.lxI = getPreferenceScreen();
+    AppMethodBeat.o(51845);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     int j = 0;
-    AppMethodBeat.i(81073);
+    AppMethodBeat.i(51844);
     super.onCreate(paramBundle);
     initView();
-    paramBundle = k.dg(getIntent().getStringExtra("key_Product_xml"), getIntent().getIntExtra("key_Product_funcType", 0));
-    if ((paramBundle != null) && (paramBundle.qDK != null))
+    paramBundle = m.en(getIntent().getStringExtra("key_Product_xml"), getIntent().getIntExtra("key_Product_funcType", 0));
+    if ((paramBundle != null) && (paramBundle.wbf != null))
     {
-      this.liu = paramBundle.field_productid;
-      this.qxE = paramBundle.field_functionType;
+      this.oyw = paramBundle.field_productid;
+      this.vSy = paramBundle.field_functionType;
       Object localObject = getIntent().getStringExtra("referkey");
-      ab.i("MicroMsg.ProductPurchaseAreaUI", "referkey:".concat(String.valueOf(localObject)));
-      if (!bo.isNullOrNil((String)localObject))
+      ad.i("MicroMsg.ProductPurchaseAreaUI", "referkey:".concat(String.valueOf(localObject)));
+      if (!bt.isNullOrNil((String)localObject))
       {
         int i = 0;
-        while (i < paramBundle.qDK.size())
+        while (i < paramBundle.wbf.size())
         {
-          if (((String)localObject).equals(((com.tencent.mm.plugin.scanner.model.a)paramBundle.qDK.get(i)).qtQ))
+          if (((String)localObject).equals(((com.tencent.mm.plugin.scanner.model.a)paramBundle.wbf.get(i)).vNT))
           {
-            this.qxD = ((com.tencent.mm.plugin.scanner.model.a)paramBundle.qDK.get(i)).fQb;
-            setMMTitle(((com.tencent.mm.plugin.scanner.model.a)paramBundle.qDK.get(i)).title);
-            if (this.qxD != null)
+            this.vSx = ((com.tencent.mm.plugin.scanner.model.a)paramBundle.wbf.get(i)).kGU;
+            setMMTitle(((com.tencent.mm.plugin.scanner.model.a)paramBundle.wbf.get(i)).title);
+            if (this.vSx != null)
             {
               i = j;
-              while (i < this.qxD.size())
+              while (i < this.vSx.size())
               {
-                paramBundle = (a.a)this.qxD.get(i);
+                paramBundle = (a.a)this.vSx.get(i);
                 if (paramBundle != null)
                 {
                   localObject = new a(this);
                   ((a)localObject).setKey(String.valueOf(i));
                   ((a)localObject).setTitle(paramBundle.name);
                   ((a)localObject).setSummary(paramBundle.desc);
-                  ((a)localObject).qvw = paramBundle.fjL;
-                  this.iLA.b((Preference)localObject);
-                  if (i != this.qxD.size() - 1)
+                  ((a)localObject).vQC = paramBundle.gKF;
+                  this.lxI.b((Preference)localObject);
+                  if (i != this.vSx.size() - 1)
                   {
-                    paramBundle = new g(getContext());
-                    this.iLA.b(paramBundle);
+                    paramBundle = new f(getContext());
+                    this.lxI.b(paramBundle);
                   }
                 }
                 i += 1;
               }
-              this.iLA.notifyDataSetChanged();
+              this.lxI.notifyDataSetChanged();
             }
-            AppMethodBeat.o(81073);
+            AppMethodBeat.o(51844);
             return;
           }
           i += 1;
         }
       }
-      AppMethodBeat.o(81073);
+      AppMethodBeat.o(51844);
       return;
     }
-    ab.w("MicroMsg.ProductPurchaseAreaUI", "Data product null");
-    AppMethodBeat.o(81073);
+    ad.w("MicroMsg.ProductPurchaseAreaUI", "Data product null");
+    AppMethodBeat.o(51844);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(81075);
-    if (this.qxD == null)
+    AppMethodBeat.i(51846);
+    if (this.vSx == null)
     {
-      AppMethodBeat.o(81075);
+      AppMethodBeat.o(51846);
       return false;
     }
     for (;;)
@@ -128,59 +128,59 @@ public class ProductPurchaseAreaUI
         int i = Integer.valueOf(paramPreference.mKey).intValue();
         if (i >= 0)
         {
-          int j = this.qxD.size();
+          int j = this.vSx.size();
           if (i < j) {}
         }
         else
         {
-          AppMethodBeat.o(81075);
+          AppMethodBeat.o(51846);
           return false;
         }
-        locala = (a.a)this.qxD.get(i);
+        locala = (a.a)this.vSx.get(i);
         if (locala == null)
         {
-          AppMethodBeat.o(81075);
+          AppMethodBeat.o(51846);
           return false;
         }
         paramPreference = null;
         switch (locala.type)
         {
         case 1: 
-          ab.i("MicroMsg.ProductPurchaseAreaUI", "Default go url:" + locala.link);
+          ad.i("MicroMsg.ProductPurchaseAreaUI", "Default go url:" + locala.link);
           paramf = paramPreference;
-          if (!bo.isNullOrNil(locala.link))
+          if (!bt.isNullOrNil(locala.link))
           {
-            n(getContext(), locala.link, this.qxE);
+            o(getContext(), locala.link, this.vSy);
             paramf = paramPreference;
           }
-          paramf = new i(this.liu, locala.qtW, locala.type, paramf, this.qxD.size(), locala.showType);
-          com.tencent.mm.kernel.g.Rc().a(paramf, 0);
-          AppMethodBeat.o(81075);
+          paramf = new k(this.oyw, locala.vNZ, locala.type, paramf, this.vSx.size(), locala.dcz);
+          g.aeS().a(paramf, 0);
+          AppMethodBeat.o(51846);
           return true;
         }
       }
       catch (Exception paramf)
       {
-        ab.e("MicroMsg.ProductPurchaseAreaUI", "onPreferenceTreeClick, [%s]", new Object[] { paramf.getMessage() });
-        ab.printErrStackTrace("MicroMsg.ProductPurchaseAreaUI", paramf, "", new Object[0]);
-        AppMethodBeat.o(81075);
+        ad.e("MicroMsg.ProductPurchaseAreaUI", "onPreferenceTreeClick, [%s]", new Object[] { paramf.getMessage() });
+        ad.printErrStackTrace("MicroMsg.ProductPurchaseAreaUI", paramf, "", new Object[0]);
+        AppMethodBeat.o(51846);
         return false;
       }
       paramf = locala.link;
-      if (!bo.isNullOrNil(locala.link))
+      if (!bt.isNullOrNil(locala.link))
       {
-        n(getContext(), locala.link, this.qxE);
+        o(getContext(), locala.link, this.vSy);
       }
       else
       {
-        ab.w("MicroMsg.ProductPurchaseAreaUI", "action link empty");
+        ad.w("MicroMsg.ProductPurchaseAreaUI", "action link empty");
         continue;
-        paramPreference = locala.qtX;
+        paramPreference = locala.vOa;
         paramf = paramPreference;
-        if (!bo.isNullOrNil(locala.qtX))
+        if (!bt.isNullOrNil(locala.vOa))
         {
           paramf = new Intent();
-          paramf.putExtra("key_product_id", locala.qtX);
+          paramf.putExtra("key_product_id", locala.vOa);
           paramf.putExtra("key_product_scene", 12);
           d.b(this, "product", ".ui.MallProductUI", paramf);
           paramf = paramPreference;
@@ -197,7 +197,7 @@ public class ProductPurchaseAreaUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ProductPurchaseAreaUI
  * JD-Core Version:    0.7.0.1
  */

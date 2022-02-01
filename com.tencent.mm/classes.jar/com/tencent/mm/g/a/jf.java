@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
 
 public final class jf
-  extends b
+  extends com.tencent.mm.sdk.b.b
 {
-  public jf.a cyD;
-  public jf.b cyE;
+  public a dnp;
   
   public jf()
   {
@@ -16,12 +15,19 @@ public final class jf
   
   private jf(byte paramByte)
   {
-    AppMethodBeat.i(77548);
-    this.cyD = new jf.a();
-    this.cyE = new jf.b();
-    this.ymq = false;
+    AppMethodBeat.i(123714);
+    this.dnp = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77548);
+    AppMethodBeat.o(123714);
+  }
+  
+  public static final class a
+  {
+    public com.tencent.mm.protocal.b.a.b dnq;
+    public DialogInterface.OnClickListener dnr;
+    public DialogInterface.OnClickListener dns;
+    public int type = 0;
   }
 }
 

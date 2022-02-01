@@ -4,75 +4,126 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.nc;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.coc;
+import com.tencent.mm.protocal.protobuf.pe;
+import com.tencent.mm.protocal.protobuf.pf;
+import com.tencent.mm.protocal.protobuf.pm;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.tools.q;
-import com.tencent.mm.ui.tools.q.b;
+import com.tencent.mm.ui.base.sortview.a;
+import com.tencent.mm.ui.tools.r;
+import com.tencent.mm.ui.tools.r.b;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
 public class BizSearchDetailPageUI
   extends MMActivity
-  implements q.b
+  implements r.b
 {
-  private int Fb;
-  private int ejF;
-  private BizSearchResultItemContainer jTk;
-  private long jTl;
-  private String jTm;
-  private int jTn;
-  private Runnable jTo;
-  private q mSearchViewHelper;
+  private int LZ;
+  private int fsv;
+  private r mSearchViewHelper;
+  private BizSearchResultItemContainer mTC;
+  private long mTD;
+  private String mTE;
+  private int mTF;
+  private Runnable mTG;
   
   public BizSearchDetailPageUI()
   {
-    AppMethodBeat.i(13879);
-    this.jTo = new BizSearchDetailPageUI.1(this);
-    AppMethodBeat.o(13879);
+    AppMethodBeat.i(5617);
+    this.mTG = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(5613);
+        BizSearchDetailPageUI.c(BizSearchDetailPageUI.this).co(BizSearchDetailPageUI.a(BizSearchDetailPageUI.this), BizSearchDetailPageUI.b(BizSearchDetailPageUI.this));
+        BizSearchDetailPageUI.d(BizSearchDetailPageUI.this);
+        AppMethodBeat.o(5613);
+      }
+    };
+    AppMethodBeat.o(5617);
   }
   
-  public final void apN()
+  public final boolean BX(String paramString)
   {
-    AppMethodBeat.i(13885);
-    finish();
-    AppMethodBeat.o(13885);
+    return false;
   }
   
-  public final void apO() {}
+  public final void BY(String paramString)
+  {
+    AppMethodBeat.i(5622);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(5622);
+      return;
+    }
+    paramString = paramString.trim();
+    if (!paramString.equals(this.mTE))
+    {
+      aq.az(this.mTG);
+      this.mTE = paramString;
+      aq.n(this.mTG, 400L);
+    }
+    AppMethodBeat.o(5622);
+  }
   
-  public final void apP() {}
+  public final void aIj()
+  {
+    AppMethodBeat.i(5623);
+    finish();
+    AppMethodBeat.o(5623);
+  }
   
-  public final void apQ() {}
+  public final void aIk() {}
+  
+  public final void aIl() {}
+  
+  public final void aIm() {}
   
   public int getLayoutId()
   {
-    return 2130968864;
+    return 2131493199;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(13880);
+    AppMethodBeat.i(5618);
     super.onCreate(paramBundle);
-    setBackBtn(new BizSearchDetailPageUI.2(this));
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(5614);
+        BizSearchDetailPageUI.this.finish();
+        AppMethodBeat.o(5614);
+        return true;
+      }
+    });
     paramBundle = getIntent();
-    this.jTl = paramBundle.getLongExtra("businessType", 0L);
+    this.mTD = paramBundle.getLongExtra("businessType", 0L);
     boolean bool1 = paramBundle.getBooleanExtra("showEditText", false);
-    this.ejF = paramBundle.getIntExtra("fromScene", 0);
-    this.jTn = paramBundle.getIntExtra("addContactScene", 35);
+    this.fsv = paramBundle.getIntExtra("fromScene", 0);
+    this.mTF = paramBundle.getIntExtra("addContactScene", 35);
     Object localObject = paramBundle.getStringExtra("title");
     String str = paramBundle.getStringExtra("keyword");
     boolean bool2 = paramBundle.getBooleanExtra("showCatalog", false);
-    this.Fb = paramBundle.getIntExtra("offset", 0);
-    if ((this.jTl == 0L) || (bo.isNullOrNil(str)))
+    this.LZ = paramBundle.getIntExtra("offset", 0);
+    if ((this.mTD == 0L) || (bt.isNullOrNil(str)))
     {
-      ab.e("MicroMsg.BrandService.BizSearchDetailPageUI", "businessType(%d) or queryStr is nil.", new Object[] { Long.valueOf(this.jTl) });
+      ad.e("MicroMsg.BrandService.BizSearchDetailPageUI", "businessType(%d) or queryStr is nil.", new Object[] { Long.valueOf(this.mTD) });
       finish();
-      AppMethodBeat.o(13880);
+      AppMethodBeat.o(5618);
       return;
     }
     paramBundle = paramBundle.getByteArrayExtra("result");
@@ -83,72 +134,119 @@ public class BizSearchDetailPageUI
     {
       try
       {
-        paramBundle = (nc)new nc().parseFrom(paramBundle);
+        paramBundle = (pf)new pf().parseFrom(paramBundle);
         if (paramBundle != null) {
           i = 1;
         }
-        this.jTk = ((BizSearchResultItemContainer)findViewById(2131821845));
-        this.jTk.setAdapter(new c(this));
-        this.jTk.setBusinessTypes(new long[] { this.jTl });
-        this.jTk.setMode(1);
-        this.jTk.setDisplayArgs$25decb5(bool2);
-        this.jTk.setScene(this.ejF);
-        this.jTk.setAddContactScene(this.jTn);
-        this.jTk.setReporter(new BizSearchDetailPageUI.3(this));
+        this.mTC = ((BizSearchResultItemContainer)findViewById(2131304388));
+        this.mTC.setAdapter(new c(this));
+        this.mTC.setBusinessTypes(new long[] { this.mTD });
+        this.mTC.setMode(1);
+        this.mTC.setDisplayArgs$25decb5(bool2);
+        this.mTC.setScene(this.fsv);
+        this.mTC.setAddContactScene(this.mTF);
+        this.mTC.setReporter(new c.b()
+        {
+          public final void a(c paramAnonymousc, a paramAnonymousa, int paramAnonymousInt1, String paramAnonymousString, int paramAnonymousInt2, int paramAnonymousInt3)
+          {
+            AppMethodBeat.i(5615);
+            pf localpf;
+            StringBuilder localStringBuilder;
+            if ((BizSearchDetailPageUI.e(BizSearchDetailPageUI.this) == 1) && (paramAnonymousa.type == 5))
+            {
+              paramAnonymousa = (pm)paramAnonymousa.getData();
+              if ((paramAnonymousa.CNP == null) || (paramAnonymousa.CNP.CNn == null))
+              {
+                ad.e("MicroMsg.BrandService.BizSearchDetailPageUI", "bcdItem.ContactItem == null || bcdItem.ContactItem.ContactItem == null");
+                AppMethodBeat.o(5615);
+                return;
+              }
+              localpf = paramAnonymousc.xH(paramAnonymousInt3);
+              localStringBuilder = new StringBuilder().append(bt.nullAsNil(BizSearchDetailPageUI.a(BizSearchDetailPageUI.this))).append(",").append(paramAnonymousInt1).append(",").append(bt.nullAsNil(paramAnonymousString)).append(",").append(paramAnonymousInt2).append(",").append(paramAnonymousc.mTM).append(",");
+              if (localpf != null) {
+                break label237;
+              }
+            }
+            label237:
+            for (paramAnonymousc = "";; paramAnonymousc = localpf.CNs + ",1")
+            {
+              paramAnonymousc = paramAnonymousc;
+              h.vKh.kvStat(10866, paramAnonymousc);
+              ad.d("MicroMsg.BrandService.BizSearchDetailPageUI", "report : ".concat(String.valueOf(paramAnonymousc)));
+              if ((paramAnonymousa.CNP.CNn.DIV & 0x8) > 0) {
+                h.vKh.kvStat(10298, paramAnonymousString + ",35");
+              }
+              AppMethodBeat.o(5615);
+              return;
+            }
+          }
+        });
         if (bool1)
         {
-          this.mSearchViewHelper = new q();
+          this.mSearchViewHelper = new r();
           addSearchMenu(true, this.mSearchViewHelper);
-          this.mSearchViewHelper.ru(false);
+          this.mSearchViewHelper.wH(false);
           this.mSearchViewHelper.clearFocus();
           this.mSearchViewHelper.setSearchContent(str);
-          this.mSearchViewHelper.Axg = this;
-          this.jTk.setOnTouchListener(new BizSearchDetailPageUI.4(this));
+          this.mSearchViewHelper.Htp = this;
+          this.mTC.setOnTouchListener(new View.OnTouchListener()
+          {
+            public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+            {
+              AppMethodBeat.i(5616);
+              if (BizSearchDetailPageUI.f(BizSearchDetailPageUI.this) != null) {
+                BizSearchDetailPageUI.f(BizSearchDetailPageUI.this).clearFocus();
+              }
+              BizSearchDetailPageUI.this.hideVKB();
+              AppMethodBeat.o(5616);
+              return false;
+            }
+          });
           if (i == 0) {
-            break label568;
+            break label571;
           }
-          localObject = this.jTk;
-          i = this.Fb;
+          localObject = this.mTC;
+          i = this.LZ;
           ((BizSearchResultItemContainer)localObject).reset();
           if (paramBundle != null) {
-            break label442;
+            break label445;
           }
-          ab.e("MicroMsg.BrandService.BizSearchResultItemContainer", "setFirst page content failed, content is null.");
-          AppMethodBeat.o(13880);
+          ad.e("MicroMsg.BrandService.BizSearchResultItemContainer", "setFirst page content failed, content is null.");
+          AppMethodBeat.o(5618);
           return;
         }
       }
       catch (IOException paramBundle)
       {
-        ab.printErrStackTrace("MicroMsg.BrandService.BizSearchDetailPageUI", paramBundle, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.BrandService.BizSearchDetailPageUI", paramBundle, "", new Object[0]);
         finish();
-        AppMethodBeat.o(13880);
+        AppMethodBeat.o(5618);
         return;
       }
-      if (!bo.isNullOrNil((String)localObject))
+      if (!bt.isNullOrNil((String)localObject))
       {
         setMMTitle((String)localObject);
         continue;
-        label442:
-        ((BizSearchResultItemContainer)localObject).jTF.cnv = str;
-        ((BizSearchResultItemContainer)localObject).setBusinessTypes(new long[] { paramBundle.wBW });
-        ((BizSearchResultItemContainer)localObject).jTF.jTx = paramBundle.wBX;
-        ((BizSearchResultItemContainer)localObject).jTK = i;
+        label445:
+        ((BizSearchResultItemContainer)localObject).mTW.dcm = str;
+        ((BizSearchResultItemContainer)localObject).setBusinessTypes(new long[] { paramBundle.CNp });
+        ((BizSearchResultItemContainer)localObject).mTW.continueFlag = paramBundle.CNq;
+        ((BizSearchResultItemContainer)localObject).mUb = i;
         LinkedList localLinkedList = new LinkedList();
         localLinkedList.add(paramBundle);
-        ((BizSearchResultItemContainer)localObject).jTD.i(str, localLinkedList);
-        ((BizSearchResultItemContainer)localObject).jTF.offset = (i + paramBundle.wzS);
-        paramBundle = ((BizSearchResultItemContainer)localObject).jTF;
-        if (!((BizSearchResultItemContainer)localObject).jTD.isEmpty()) {}
+        ((BizSearchResultItemContainer)localObject).mTU.m(str, localLinkedList);
+        ((BizSearchResultItemContainer)localObject).mTW.offset = (i + paramBundle.CNt);
+        paramBundle = ((BizSearchResultItemContainer)localObject).mTW;
+        if (!((BizSearchResultItemContainer)localObject).mTU.isEmpty()) {}
         for (bool1 = true;; bool1 = false)
         {
           paramBundle.isSearchMode = bool1;
-          AppMethodBeat.o(13880);
+          AppMethodBeat.o(5618);
           return;
         }
-        label568:
-        wS(str);
-        AppMethodBeat.o(13880);
+        label571:
+        BY(str);
+        AppMethodBeat.o(5618);
         return;
         paramBundle = null;
         i = j;
@@ -158,31 +256,31 @@ public class BizSearchDetailPageUI
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
-    AppMethodBeat.i(13881);
+    AppMethodBeat.i(5619);
     if (this.mSearchViewHelper != null) {
       this.mSearchViewHelper.a(this, paramMenu);
     }
-    AppMethodBeat.o(13881);
+    AppMethodBeat.o(5619);
     return true;
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(13883);
+    AppMethodBeat.i(5621);
     super.onPause();
     if (this.mSearchViewHelper != null) {
       this.mSearchViewHelper.clearFocus();
     }
-    AppMethodBeat.o(13883);
+    AppMethodBeat.o(5621);
   }
   
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
-    AppMethodBeat.i(13882);
+    AppMethodBeat.i(5620);
     if (this.mSearchViewHelper != null) {
       this.mSearchViewHelper.a(this, paramMenu);
     }
-    AppMethodBeat.o(13882);
+    AppMethodBeat.o(5620);
     return true;
   }
   
@@ -191,33 +289,10 @@ public class BizSearchDetailPageUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  public final boolean wR(String paramString)
-  {
-    return false;
-  }
-  
-  public final void wS(String paramString)
-  {
-    AppMethodBeat.i(13884);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(13884);
-      return;
-    }
-    paramString = paramString.trim();
-    if (!paramString.equals(this.jTm))
-    {
-      al.ae(this.jTo);
-      this.jTm = paramString;
-      al.p(this.jTo, 400L);
-    }
-    AppMethodBeat.o(13884);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.BizSearchDetailPageUI
  * JD-Core Version:    0.7.0.1
  */

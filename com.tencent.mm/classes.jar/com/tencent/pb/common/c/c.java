@@ -1,95 +1,35 @@
 package com.tencent.pb.common.c;
 
-import com.tencent.pb.talkroom.sdk.e;
-import com.tencent.wecall.talkroom.model.f;
+import android.content.Context;
+import android.net.Uri;
 
 public final class c
 {
-  private static int Bhc = 2;
-  private static boolean Bhd = false;
-  public static int level = 0;
+  private static String CpI;
+  private static boolean DEBUG = false;
+  public static boolean InZ;
+  public static long Ioa;
+  public static String Iob;
+  public static int Ioc = 480;
+  private static int SDK_VERSION;
+  private static String sImei = null;
+  public static int wxR;
+  public static Context ztG = null;
+  private static final Uri ztH = Uri.parse("content://com.lbe.security.miui.permmgr/active");
   
-  private static String K(Object[] paramArrayOfObject)
+  static
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
-      return "";
-    }
-    int j = paramArrayOfObject.length;
-    StringBuffer localStringBuffer = new StringBuffer(250);
-    int i = 0;
-    if (i < j)
-    {
-      Object localObject = paramArrayOfObject[i];
-      if (localObject != null)
-      {
-        localStringBuffer.append("|");
-        if (!(localObject instanceof Throwable)) {
-          break label78;
-        }
-        localStringBuffer.append(((Throwable)localObject).getMessage());
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label78:
-        localStringBuffer.append(localObject.toString());
-      }
-    }
-    return localStringBuffer.toString();
-  }
-  
-  private static void L(int paramInt, String paramString1, String paramString2)
-  {
-    e locale = f.dXO();
-    if (locale != null) {
-      locale.y(paramInt, "MTSDK".concat(String.valueOf(paramString1)), paramString2);
-    }
-  }
-  
-  public static void d(String paramString, Object... paramVarArgs)
-  {
-    if ((!Bhd) || (Bhc > 1)) {}
-    while (paramString == null) {
-      return;
-    }
-    L(1, paramString, " ".concat(String.valueOf(K(paramVarArgs))));
-  }
-  
-  public static void dTU()
-  {
-    Bhc = 0;
-    Bhd = true;
-  }
-  
-  public static void e(String paramString, Object... paramVarArgs)
-  {
-    if ((!Bhd) || (Bhc > 4)) {
-      return;
-    }
-    L(4, paramString, " ".concat(String.valueOf(K(paramVarArgs))));
-  }
-  
-  public static void i(String paramString, Object... paramVarArgs)
-  {
-    if ((!Bhd) || (Bhc > 2)) {
-      return;
-    }
-    L(2, paramString, " ".concat(String.valueOf(K(paramVarArgs))));
-  }
-  
-  public static void w(String paramString, Object... paramVarArgs)
-  {
-    if ((!Bhd) || (Bhc > 3)) {}
-    while (paramString == null) {
-      return;
-    }
-    L(3, paramString, " ".concat(String.valueOf(K(paramVarArgs))));
+    InZ = false;
+    Ioa = 0L;
+    Iob = null;
+    SDK_VERSION = -1;
+    CpI = null;
+    wxR = 320;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.pb.common.c.c
  * JD-Core Version:    0.7.0.1
  */

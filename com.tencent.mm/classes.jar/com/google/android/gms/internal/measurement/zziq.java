@@ -12,12 +12,12 @@ final class zziq
   
   public final void run()
   {
-    AppMethodBeat.i(69329);
+    AppMethodBeat.i(1852);
     zzey localzzey = zzii.zzd(this.zzape);
     if (localzzey == null)
     {
       this.zzape.zzge().zzim().log("Discarding data. Failed to send event to service");
-      AppMethodBeat.o(69329);
+      AppMethodBeat.o(1852);
       return;
     }
     Object localObject;
@@ -33,14 +33,14 @@ final class zziq
     for (;;)
     {
       zzii.zze(this.zzape);
-      AppMethodBeat.o(69329);
+      AppMethodBeat.o(1852);
       return;
       localObject = this.zzank;
       break;
       try
       {
         if (!TextUtils.isEmpty(this.zzanj)) {
-          break label137;
+          break label140;
         }
         localzzey.zza(this.zzank, this.zzane);
       }
@@ -49,14 +49,14 @@ final class zziq
         this.zzape.zzge().zzim().zzg("Failed to send event to the service", localRemoteException);
       }
       continue;
-      label137:
+      label140:
       localzzey.zza(this.zzank, this.zzanj, this.zzape.zzge().zziv());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zziq
  * JD-Core Version:    0.7.0.1
  */

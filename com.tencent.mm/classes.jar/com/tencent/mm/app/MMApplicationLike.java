@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.tinker.entry.ApplicationLifeCycle;
 import com.tencent.tinker.entry.DefaultApplicationLike;
 
@@ -16,568 +16,903 @@ public class MMApplicationLike
   private static final String TAG = "MicroMsg.MMApplication";
   private static MMApplicationLike sSafeguardInstance = null;
   private static byte[] sSafeguardLock = new byte[0];
-  private l mMMApplicationLikeImpl;
+  private r mMMApplicationLikeImpl;
   private ApplicationLifeCycle wrapper;
   
   public MMApplicationLike(Application paramApplication, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2, Intent paramIntent)
   {
     super(paramApplication, paramInt, paramBoolean, paramLong1, paramLong2, paramIntent);
-    AppMethodBeat.i(3232);
-    this.mMMApplicationLikeImpl = new l(this);
-    AppMethodBeat.o(3232);
+    AppMethodBeat.i(123467);
+    this.mMMApplicationLikeImpl = new r(this);
+    AppMethodBeat.o(123467);
   }
   
   public Resources getResources(Resources paramResources)
   {
-    AppMethodBeat.i(3237);
-    if (ah.getResources() == null)
+    AppMethodBeat.i(123472);
+    if (aj.getResources() == null)
     {
-      AppMethodBeat.o(3237);
+      AppMethodBeat.o(123472);
       return paramResources;
     }
-    paramResources = ah.getResources();
-    AppMethodBeat.o(3237);
+    paramResources = aj.getResources();
+    AppMethodBeat.o(123472);
     return paramResources;
+  }
+  
+  public int mzNightModeUseOf()
+  {
+    return 0;
   }
   
   /* Error */
   public void onBaseContextAttached(android.content.Context paramContext)
   {
     // Byte code:
-    //   0: sipush 3233
-    //   3: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: aload_0
-    //   7: invokevirtual 60	com/tencent/mm/app/MMApplicationLike:safeguard	()Z
-    //   10: ifeq +10 -> 20
-    //   13: sipush 3233
-    //   16: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   19: return
-    //   20: aload_1
-    //   21: invokestatic 66	com/tencent/mm/app/t:bd	(Landroid/content/Context;)Landroid/os/Bundle;
-    //   24: astore 8
-    //   26: aload 8
-    //   28: ifnonnull +182 -> 210
-    //   31: ldc 68
-    //   33: ldc 70
-    //   35: invokestatic 76	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   38: iconst_0
-    //   39: putstatic 82	com/tencent/mm/sdk/platformtools/f:DEBUG	Z
-    //   42: ldc 84
-    //   44: putstatic 87	com/tencent/mm/sdk/platformtools/f:BUILD_TAG	Ljava/lang/String;
-    //   47: ldc 89
-    //   49: putstatic 92	com/tencent/mm/sdk/platformtools/f:OWNER	Ljava/lang/String;
-    //   52: ldc 94
-    //   54: putstatic 97	com/tencent/mm/sdk/platformtools/f:HOSTNAME	Ljava/lang/String;
-    //   57: ldc 99
-    //   59: putstatic 102	com/tencent/mm/sdk/platformtools/f:TIME	Ljava/lang/String;
-    //   62: ldc 104
-    //   64: putstatic 107	com/tencent/mm/sdk/platformtools/f:COMMAND	Ljava/lang/String;
-    //   67: ldc 109
-    //   69: putstatic 112	com/tencent/mm/sdk/platformtools/f:REV	Ljava/lang/String;
-    //   72: ldc 114
-    //   74: putstatic 117	com/tencent/mm/sdk/platformtools/f:SVNPATH	Ljava/lang/String;
-    //   77: ldc 119
-    //   79: putstatic 122	com/tencent/mm/sdk/platformtools/f:CLIENT_VERSION	Ljava/lang/String;
-    //   82: ldc 119
-    //   84: invokestatic 128	java/lang/Integer:decode	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   87: invokevirtual 132	java/lang/Integer:intValue	()I
-    //   90: putstatic 136	com/tencent/mm/sdk/platformtools/f:ymG	I
-    //   93: iconst_0
-    //   94: putstatic 139	com/tencent/mm/sdk/platformtools/f:ENABLE_FPS_ANALYSE	Z
-    //   97: iconst_1
-    //   98: putstatic 142	com/tencent/mm/sdk/platformtools/f:ENABLE_MATRIX	Z
+    //   0: ldc 63
+    //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: invokevirtual 67	com/tencent/mm/app/MMApplicationLike:safeguard	()Z
+    //   9: ifeq +9 -> 18
+    //   12: ldc 63
+    //   14: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   17: return
+    //   18: aload_1
+    //   19: invokestatic 73	com/tencent/mm/app/ab:br	(Landroid/content/Context;)Landroid/os/Bundle;
+    //   22: astore 8
+    //   24: aload 8
+    //   26: ifnonnull +217 -> 243
+    //   29: ldc 75
+    //   31: ldc 77
+    //   33: invokestatic 83	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   36: iconst_0
+    //   37: putstatic 89	com/tencent/mm/sdk/platformtools/h:DEBUG	Z
+    //   40: ldc 91
+    //   42: putstatic 94	com/tencent/mm/sdk/platformtools/h:BUILD_TAG	Ljava/lang/String;
+    //   45: ldc 96
+    //   47: putstatic 99	com/tencent/mm/sdk/platformtools/h:OWNER	Ljava/lang/String;
+    //   50: ldc 101
+    //   52: putstatic 104	com/tencent/mm/sdk/platformtools/h:HOSTNAME	Ljava/lang/String;
+    //   55: ldc 106
+    //   57: putstatic 109	com/tencent/mm/sdk/platformtools/h:TIME	Ljava/lang/String;
+    //   60: ldc 111
+    //   62: putstatic 114	com/tencent/mm/sdk/platformtools/h:COMMAND	Ljava/lang/String;
+    //   65: ldc 116
+    //   67: putstatic 119	com/tencent/mm/sdk/platformtools/h:REV	Ljava/lang/String;
+    //   70: ldc 121
+    //   72: putstatic 124	com/tencent/mm/sdk/platformtools/h:SVNPATH	Ljava/lang/String;
+    //   75: getstatic 129	com/tencent/mm/loader/j/a:glZ	Z
+    //   78: ifeq +173 -> 251
+    //   81: ldc 131
+    //   83: astore 8
+    //   85: aload 8
+    //   87: putstatic 134	com/tencent/mm/sdk/platformtools/h:glW	Ljava/lang/String;
+    //   90: aload 8
+    //   92: invokestatic 140	java/lang/Integer:decode	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   95: invokevirtual 143	java/lang/Integer:intValue	()I
+    //   98: putstatic 147	com/tencent/mm/sdk/platformtools/h:ETr	I
     //   101: iconst_0
-    //   102: putstatic 145	com/tencent/mm/sdk/platformtools/f:ENABLE_MATRIX_TRACE	Z
-    //   105: iconst_0
-    //   106: putstatic 148	com/tencent/mm/sdk/platformtools/f:EX_DEVICE_LOGIN	Z
+    //   102: putstatic 150	com/tencent/mm/sdk/platformtools/h:ENABLE_FPS_ANALYSE	Z
+    //   105: iconst_1
+    //   106: putstatic 153	com/tencent/mm/sdk/platformtools/h:ENABLE_MATRIX	Z
     //   109: iconst_0
-    //   110: putstatic 151	com/tencent/mm/sdk/platformtools/f:PRE_RELEASE	Z
+    //   110: putstatic 156	com/tencent/mm/sdk/platformtools/h:ENABLE_MATRIX_TRACE	Z
     //   113: iconst_0
-    //   114: putstatic 154	com/tencent/mm/sdk/platformtools/f:REDESIGN_ENTRANCE	Z
+    //   114: putstatic 159	com/tencent/mm/sdk/platformtools/h:EX_DEVICE_LOGIN	Z
     //   117: iconst_0
-    //   118: putstatic 157	com/tencent/mm/sdk/platformtools/f:IS_FLAVOR_RED	Z
+    //   118: putstatic 162	com/tencent/mm/sdk/platformtools/h:PRE_RELEASE	Z
     //   121: iconst_0
-    //   122: putstatic 160	com/tencent/mm/sdk/platformtools/f:IS_FLAVOR_PURPLE	Z
-    //   125: new 162	android/util/ArrayMap
-    //   128: dup
-    //   129: invokespecial 164	android/util/ArrayMap:<init>	()V
-    //   132: astore 8
-    //   134: ldc 166
-    //   136: invokevirtual 172	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
-    //   139: astore 9
-    //   141: aload 9
-    //   143: arraylength
-    //   144: istore_3
-    //   145: iconst_0
-    //   146: istore_2
-    //   147: iload_2
-    //   148: iload_3
-    //   149: if_icmpge +87 -> 236
-    //   152: aload 9
-    //   154: iload_2
-    //   155: aaload
-    //   156: astore 10
-    //   158: ldc 68
-    //   160: ldc 174
-    //   162: iconst_2
-    //   163: anewarray 176	java/lang/Object
-    //   166: dup
-    //   167: iconst_0
-    //   168: aload 10
-    //   170: invokevirtual 182	java/lang/reflect/Field:getName	()Ljava/lang/String;
-    //   173: aastore
-    //   174: dup
-    //   175: iconst_1
-    //   176: aload 10
-    //   178: aconst_null
-    //   179: invokevirtual 186	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   182: aastore
-    //   183: invokestatic 189	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   186: aload 8
-    //   188: aload 10
-    //   190: invokevirtual 182	java/lang/reflect/Field:getName	()Ljava/lang/String;
-    //   193: aload 10
-    //   195: aconst_null
-    //   196: invokevirtual 186	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   199: invokevirtual 193	android/util/ArrayMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   202: pop
-    //   203: iload_2
-    //   204: iconst_1
-    //   205: iadd
-    //   206: istore_2
-    //   207: goto -60 -> 147
-    //   210: aload 8
-    //   212: invokestatic 199	com/tencent/mm/loader/j/a:p	(Landroid/os/Bundle;)V
-    //   215: goto -177 -> 38
-    //   218: astore 10
-    //   220: ldc 68
-    //   222: aload 10
-    //   224: ldc 201
-    //   226: iconst_0
-    //   227: anewarray 176	java/lang/Object
-    //   230: invokestatic 205	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   233: goto -30 -> 203
-    //   236: getstatic 209	com/tencent/mm/sdk/platformtools/f:ymH	Lcom/tencent/mm/sdk/platformtools/s;
-    //   239: astore 9
-    //   241: aload 9
-    //   243: getfield 214	com/tencent/mm/sdk/platformtools/s:ymW	Z
-    //   246: ifne +13 -> 259
-    //   249: aload 9
-    //   251: getfield 218	com/tencent/mm/sdk/platformtools/s:ymV	Landroid/util/ArrayMap;
-    //   254: aload 8
-    //   256: invokevirtual 222	android/util/ArrayMap:putAll	(Landroid/util/ArrayMap;)V
-    //   259: getstatic 209	com/tencent/mm/sdk/platformtools/f:ymH	Lcom/tencent/mm/sdk/platformtools/s;
-    //   262: iconst_1
-    //   263: putfield 214	com/tencent/mm/sdk/platformtools/s:ymW	Z
-    //   266: getstatic 228	com/tencent/mm/app/i$a:bXZ	Lcom/tencent/mm/app/i;
-    //   269: invokestatic 234	com/tencent/f/a/b:a	(Lcom/tencent/f/a/b$a;)V
-    //   272: aload_0
-    //   273: aload_1
-    //   274: invokespecial 236	com/tencent/tinker/entry/DefaultApplicationLike:onBaseContextAttached	(Landroid/content/Context;)V
-    //   277: aload_0
-    //   278: getfield 40	com/tencent/mm/app/MMApplicationLike:mMMApplicationLikeImpl	Lcom/tencent/mm/app/l;
-    //   281: astore 8
-    //   283: aload_1
-    //   284: invokestatic 241	android/os/Process:myPid	()I
-    //   287: invokestatic 247	com/tencent/mm/sdk/platformtools/bo:az	(Landroid/content/Context;I)Ljava/lang/String;
-    //   290: astore 9
-    //   292: aload 9
-    //   294: putstatic 252	com/tencent/mm/app/b:bNv	Ljava/lang/String;
-    //   297: invokestatic 255	com/tencent/mm/sdk/platformtools/ah:dsV	()Z
-    //   300: ifne +18 -> 318
-    //   303: getstatic 261	com/tencent/mm/app/y$a:bZh	Lcom/tencent/mm/app/y;
-    //   306: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   309: invokevirtual 270	com/tencent/mm/app/y:b	(Lcom/tencent/tinker/entry/ApplicationLike;)V
-    //   312: getstatic 261	com/tencent/mm/app/y$a:bZh	Lcom/tencent/mm/app/y;
-    //   315: invokevirtual 273	com/tencent/mm/app/y:Bz	()V
-    //   318: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   321: astore 10
-    //   323: aload 10
-    //   325: ifnull +11 -> 336
-    //   328: aload 10
-    //   330: invokevirtual 279	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
-    //   333: ifnonnull +22 -> 355
-    //   336: new 281	com/tencent/tinker/loader/TinkerRuntimeException
-    //   339: dup
-    //   340: ldc_w 283
-    //   343: invokespecial 286	com/tencent/tinker/loader/TinkerRuntimeException:<init>	(Ljava/lang/String;)V
-    //   346: astore_1
-    //   347: sipush 3233
-    //   350: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   353: aload_1
-    //   354: athrow
-    //   355: aload 10
-    //   357: invokevirtual 289	com/tencent/tinker/entry/ApplicationLike:getTinkerFlags	()I
-    //   360: invokestatic 295	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:Tf	(I)Z
-    //   363: ifeq +32 -> 395
-    //   366: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   369: invokestatic 301	com/tencent/tinker/lib/e/b:c	(Lcom/tencent/tinker/entry/ApplicationLike;)Z
-    //   372: ifeq +23 -> 395
-    //   375: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   378: ldc_w 303
-    //   381: invokestatic 308	com/tencent/tinker/lib/a/a:a	(Lcom/tencent/tinker/entry/ApplicationLike;Ljava/lang/String;)Z
-    //   384: pop
-    //   385: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   388: ldc_w 310
-    //   391: invokestatic 308	com/tencent/tinker/lib/a/a:a	(Lcom/tencent/tinker/entry/ApplicationLike;Ljava/lang/String;)Z
-    //   394: pop
-    //   395: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   398: invokevirtual 314	com/tencent/tinker/entry/ApplicationLike:getApplicationStartMillisTime	()J
-    //   401: putstatic 318	com/tencent/mm/app/b:bXE	J
-    //   404: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   407: invokestatic 320	com/tencent/mm/app/l:a	(Lcom/tencent/tinker/entry/ApplicationLike;)V
-    //   410: new 322	java/lang/StringBuilder
-    //   413: dup
-    //   414: invokespecial 323	java/lang/StringBuilder:<init>	()V
-    //   417: getstatic 326	com/tencent/mm/app/l:bYf	Ljava/lang/String;
-    //   420: invokevirtual 330	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   423: ldc_w 332
-    //   426: invokevirtual 330	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   429: aload 8
-    //   431: invokevirtual 335	java/lang/Object:hashCode	()I
-    //   434: invokevirtual 338	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   437: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   440: putstatic 326	com/tencent/mm/app/l:bYf	Ljava/lang/String;
-    //   443: iconst_0
-    //   444: invokestatic 345	com/tencent/mm/sdk/platformtools/ah:pI	(Z)V
-    //   447: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   450: invokevirtual 279	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
-    //   453: invokestatic 348	com/tencent/mm/sdk/platformtools/ah:setContext	(Landroid/content/Context;)V
-    //   456: iconst_0
-    //   457: invokestatic 351	com/tencent/mm/sdk/platformtools/ab:Ne	(I)V
-    //   460: getstatic 82	com/tencent/mm/sdk/platformtools/f:DEBUG	Z
-    //   463: ifne +24 -> 487
-    //   466: ldc_w 353
-    //   469: ldc_w 355
-    //   472: invokestatic 76	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   475: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   478: invokevirtual 279	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
-    //   481: aload 9
-    //   483: invokestatic 360	com/tencent/mm/app/h:a	(Landroid/app/Application;Ljava/lang/String;)Ljava/lang/String;
-    //   486: pop
-    //   487: invokestatic 365	java/lang/System:currentTimeMillis	()J
-    //   490: lstore 4
-    //   492: new 367	com/tencent/mm/sdk/e/a
-    //   495: dup
-    //   496: new 322	java/lang/StringBuilder
-    //   499: dup
-    //   500: invokespecial 323	java/lang/StringBuilder:<init>	()V
-    //   503: getstatic 372	com/tencent/mm/loader/j/b:eQv	Ljava/lang/String;
-    //   506: invokevirtual 330	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   509: ldc_w 374
-    //   512: invokevirtual 330	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   515: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   518: invokespecial 375	com/tencent/mm/sdk/e/a:<init>	(Ljava/lang/String;)V
-    //   521: astore 10
-    //   523: aload 8
-    //   525: aload 10
-    //   527: ldc_w 377
-    //   530: invokevirtual 381	com/tencent/mm/sdk/e/a:getValue	(Ljava/lang/String;)Ljava/lang/String;
-    //   533: putfield 384	com/tencent/mm/app/l:bYg	Ljava/lang/String;
-    //   536: aload 8
-    //   538: getstatic 122	com/tencent/mm/sdk/platformtools/f:CLIENT_VERSION	Ljava/lang/String;
-    //   541: putfield 387	com/tencent/mm/app/l:bYh	Ljava/lang/String;
-    //   544: invokestatic 365	java/lang/System:currentTimeMillis	()J
-    //   547: lstore 6
-    //   549: aload 8
-    //   551: lload 6
-    //   553: lload 4
-    //   555: lsub
-    //   556: putfield 390	com/tencent/mm/app/l:bYi	J
-    //   559: aload 8
-    //   561: lconst_0
-    //   562: putfield 393	com/tencent/mm/app/l:bYj	J
-    //   565: aload 8
-    //   567: getfield 387	com/tencent/mm/app/l:bYh	Ljava/lang/String;
-    //   570: aload 8
-    //   572: getfield 384	com/tencent/mm/app/l:bYg	Ljava/lang/String;
-    //   575: invokevirtual 399	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   578: ifne +181 -> 759
-    //   581: iconst_1
-    //   582: putstatic 402	com/tencent/mm/sdk/platformtools/ah:ynK	Z
-    //   585: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   588: invokevirtual 279	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
-    //   591: ldc_w 404
-    //   594: iconst_0
-    //   595: invokevirtual 410	android/app/Application:getDir	(Ljava/lang/String;I)Ljava/io/File;
-    //   598: invokestatic 415	com/tencent/mm/a/e:p	(Ljava/io/File;)Z
-    //   601: pop
-    //   602: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   605: invokevirtual 279	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
-    //   608: ldc_w 417
-    //   611: iconst_0
-    //   612: invokevirtual 410	android/app/Application:getDir	(Ljava/lang/String;I)Ljava/io/File;
-    //   615: invokestatic 415	com/tencent/mm/a/e:p	(Ljava/io/File;)Z
-    //   618: pop
-    //   619: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   622: invokevirtual 279	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
-    //   625: ldc_w 419
-    //   628: iconst_0
-    //   629: invokevirtual 410	android/app/Application:getDir	(Ljava/lang/String;I)Ljava/io/File;
-    //   632: invokestatic 415	com/tencent/mm/a/e:p	(Ljava/io/File;)Z
-    //   635: pop
-    //   636: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   639: invokevirtual 279	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
-    //   642: ldc_w 421
-    //   645: iconst_0
-    //   646: invokevirtual 410	android/app/Application:getDir	(Ljava/lang/String;I)Ljava/io/File;
-    //   649: invokestatic 415	com/tencent/mm/a/e:p	(Ljava/io/File;)Z
-    //   652: pop
-    //   653: getstatic 422	com/tencent/mm/loader/j/a:CLIENT_VERSION	Ljava/lang/String;
-    //   656: getstatic 122	com/tencent/mm/sdk/platformtools/f:CLIENT_VERSION	Ljava/lang/String;
-    //   659: invokevirtual 399	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   662: ifeq +44 -> 706
-    //   665: ldc_w 353
-    //   668: ldc_w 424
-    //   671: iconst_3
-    //   672: anewarray 176	java/lang/Object
-    //   675: dup
-    //   676: iconst_0
-    //   677: aload 8
-    //   679: getfield 384	com/tencent/mm/app/l:bYg	Ljava/lang/String;
-    //   682: aastore
-    //   683: dup
-    //   684: iconst_1
-    //   685: aload 8
-    //   687: getfield 387	com/tencent/mm/app/l:bYh	Ljava/lang/String;
-    //   690: aastore
-    //   691: dup
-    //   692: iconst_2
-    //   693: getstatic 422	com/tencent/mm/loader/j/a:CLIENT_VERSION	Ljava/lang/String;
-    //   696: aastore
-    //   697: invokestatic 189	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   700: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   703: invokestatic 426	com/tencent/tinker/lib/e/b:e	(Lcom/tencent/tinker/entry/ApplicationLike;)V
-    //   706: aload 10
-    //   708: ldc_w 377
-    //   711: aload 8
-    //   713: getfield 387	com/tencent/mm/app/l:bYh	Ljava/lang/String;
-    //   716: invokevirtual 430	com/tencent/mm/sdk/e/a:ij	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   719: pop
-    //   720: aload 8
-    //   722: invokestatic 365	java/lang/System:currentTimeMillis	()J
-    //   725: lload 6
-    //   727: lsub
-    //   728: putfield 393	com/tencent/mm/app/l:bYj	J
-    //   731: ldc_w 353
-    //   734: ldc_w 432
-    //   737: iconst_2
-    //   738: anewarray 176	java/lang/Object
-    //   741: dup
-    //   742: iconst_0
-    //   743: getstatic 326	com/tencent/mm/app/l:bYf	Ljava/lang/String;
-    //   746: aastore
-    //   747: dup
-    //   748: iconst_1
-    //   749: invokestatic 436	com/tencent/mm/sdk/platformtools/bo:dtY	()Lcom/tencent/mm/sdk/platformtools/an;
-    //   752: invokevirtual 439	com/tencent/mm/sdk/platformtools/an:toString	()Ljava/lang/String;
-    //   755: aastore
-    //   756: invokestatic 442	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   759: ldc_w 353
-    //   762: ldc_w 444
-    //   765: iconst_4
-    //   766: anewarray 176	java/lang/Object
-    //   769: dup
-    //   770: iconst_0
-    //   771: aload 8
-    //   773: getfield 384	com/tencent/mm/app/l:bYg	Ljava/lang/String;
-    //   776: aastore
-    //   777: dup
-    //   778: iconst_1
-    //   779: aload 8
-    //   781: getfield 387	com/tencent/mm/app/l:bYh	Ljava/lang/String;
-    //   784: aastore
-    //   785: dup
-    //   786: iconst_2
-    //   787: aload 8
-    //   789: getfield 390	com/tencent/mm/app/l:bYi	J
-    //   792: invokestatic 450	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   795: aastore
-    //   796: dup
-    //   797: iconst_3
-    //   798: aload 8
-    //   800: getfield 393	com/tencent/mm/app/l:bYj	J
-    //   803: invokestatic 450	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   806: aastore
-    //   807: invokestatic 189	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   810: getstatic 82	com/tencent/mm/sdk/platformtools/f:DEBUG	Z
-    //   813: ifne +9 -> 822
-    //   816: getstatic 151	com/tencent/mm/sdk/platformtools/f:PRE_RELEASE	Z
-    //   819: ifeq +24 -> 843
-    //   822: ldc_w 353
-    //   825: ldc_w 452
-    //   828: invokestatic 76	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   831: getstatic 265	com/tencent/mm/app/l:bXD	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   834: invokevirtual 279	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
-    //   837: aload 9
-    //   839: invokestatic 360	com/tencent/mm/app/h:a	(Landroid/app/Application;Ljava/lang/String;)Ljava/lang/String;
-    //   842: pop
-    //   843: getstatic 252	com/tencent/mm/app/b:bNv	Ljava/lang/String;
-    //   846: astore 8
-    //   848: invokestatic 255	com/tencent/mm/sdk/platformtools/ah:dsV	()Z
-    //   851: ifeq +87 -> 938
-    //   854: aload_0
-    //   855: new 322	java/lang/StringBuilder
-    //   858: dup
-    //   859: invokespecial 323	java/lang/StringBuilder:<init>	()V
-    //   862: invokestatic 455	com/tencent/mm/sdk/platformtools/ah:getPackageName	()Ljava/lang/String;
-    //   865: invokevirtual 330	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   868: ldc_w 457
-    //   871: invokevirtual 330	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   874: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   877: invokestatic 461	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   880: iconst_2
-    //   881: anewarray 168	java/lang/Class
-    //   884: dup
-    //   885: iconst_0
-    //   886: ldc_w 275
-    //   889: aastore
-    //   890: dup
-    //   891: iconst_1
-    //   892: ldc_w 395
-    //   895: aastore
-    //   896: invokevirtual 465	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
-    //   899: iconst_2
-    //   900: anewarray 176	java/lang/Object
-    //   903: dup
-    //   904: iconst_0
-    //   905: aload_0
-    //   906: aastore
-    //   907: dup
-    //   908: iconst_1
-    //   909: aload 8
-    //   911: aastore
-    //   912: invokevirtual 471	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
-    //   915: checkcast 473	com/tencent/tinker/entry/ApplicationLifeCycle
-    //   918: putfield 475	com/tencent/mm/app/MMApplicationLike:wrapper	Lcom/tencent/tinker/entry/ApplicationLifeCycle;
-    //   921: aload_0
-    //   922: getfield 475	com/tencent/mm/app/MMApplicationLike:wrapper	Lcom/tencent/tinker/entry/ApplicationLifeCycle;
-    //   925: aload_1
-    //   926: invokeinterface 476 2 0
-    //   931: sipush 3233
-    //   934: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   937: return
-    //   938: aload_0
-    //   939: new 322	java/lang/StringBuilder
-    //   942: dup
-    //   943: invokespecial 323	java/lang/StringBuilder:<init>	()V
-    //   946: invokestatic 455	com/tencent/mm/sdk/platformtools/ah:getPackageName	()Ljava/lang/String;
-    //   949: invokevirtual 330	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   952: ldc_w 478
-    //   955: invokevirtual 330	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   958: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   961: invokestatic 461	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   964: iconst_2
-    //   965: anewarray 168	java/lang/Class
-    //   968: dup
-    //   969: iconst_0
-    //   970: ldc_w 275
-    //   973: aastore
-    //   974: dup
-    //   975: iconst_1
-    //   976: ldc_w 395
-    //   979: aastore
-    //   980: invokevirtual 465	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
-    //   983: iconst_2
-    //   984: anewarray 176	java/lang/Object
-    //   987: dup
-    //   988: iconst_0
-    //   989: aload_0
-    //   990: aastore
-    //   991: dup
-    //   992: iconst_1
-    //   993: aload 8
-    //   995: aastore
-    //   996: invokevirtual 471	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
-    //   999: checkcast 473	com/tencent/tinker/entry/ApplicationLifeCycle
-    //   1002: putfield 475	com/tencent/mm/app/MMApplicationLike:wrapper	Lcom/tencent/tinker/entry/ApplicationLifeCycle;
-    //   1005: goto -84 -> 921
-    //   1008: astore_1
-    //   1009: ldc 8
-    //   1011: aload_1
-    //   1012: ldc_w 480
-    //   1015: iconst_0
-    //   1016: anewarray 176	java/lang/Object
-    //   1019: invokestatic 205	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1022: new 482	java/lang/RuntimeException
-    //   1025: dup
-    //   1026: ldc_w 480
-    //   1029: aload_1
-    //   1030: invokespecial 485	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   1033: astore_1
-    //   1034: sipush 3233
-    //   1037: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1040: aload_1
-    //   1041: athrow
+    //   122: putstatic 165	com/tencent/mm/sdk/platformtools/h:REDESIGN_ENTRANCE	Z
+    //   125: iconst_0
+    //   126: putstatic 168	com/tencent/mm/sdk/platformtools/h:IS_FLAVOR_RED	Z
+    //   129: iconst_0
+    //   130: putstatic 171	com/tencent/mm/sdk/platformtools/h:IS_FLAVOR_PURPLE	Z
+    //   133: ldc 173
+    //   135: putstatic 176	com/tencent/mm/sdk/platformtools/h:MATRIX_VERSION	Ljava/lang/String;
+    //   138: getstatic 129	com/tencent/mm/loader/j/a:glZ	Z
+    //   141: putstatic 177	com/tencent/mm/sdk/platformtools/h:glZ	Z
+    //   144: ldc 179
+    //   146: putstatic 182	com/tencent/mm/sdk/platformtools/h:KINDA_DEFAULT	Ljava/lang/String;
+    //   149: ldc 184
+    //   151: putstatic 187	com/tencent/mm/sdk/platformtools/h:TINKER_VERSION	Ljava/lang/String;
+    //   154: iconst_0
+    //   155: putstatic 190	com/tencent/mm/sdk/platformtools/h:IS_UAT	Z
+    //   158: new 192	android/util/ArrayMap
+    //   161: dup
+    //   162: invokespecial 194	android/util/ArrayMap:<init>	()V
+    //   165: astore 8
+    //   167: ldc 196
+    //   169: invokevirtual 202	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
+    //   172: astore 9
+    //   174: aload 9
+    //   176: arraylength
+    //   177: istore_3
+    //   178: iconst_0
+    //   179: istore_2
+    //   180: iload_2
+    //   181: iload_3
+    //   182: if_icmpge +94 -> 276
+    //   185: aload 9
+    //   187: iload_2
+    //   188: aaload
+    //   189: astore 10
+    //   191: ldc 75
+    //   193: ldc 204
+    //   195: iconst_2
+    //   196: anewarray 206	java/lang/Object
+    //   199: dup
+    //   200: iconst_0
+    //   201: aload 10
+    //   203: invokevirtual 212	java/lang/reflect/Field:getName	()Ljava/lang/String;
+    //   206: aastore
+    //   207: dup
+    //   208: iconst_1
+    //   209: aload 10
+    //   211: aconst_null
+    //   212: invokevirtual 216	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   215: aastore
+    //   216: invokestatic 219	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   219: aload 8
+    //   221: aload 10
+    //   223: invokevirtual 212	java/lang/reflect/Field:getName	()Ljava/lang/String;
+    //   226: aload 10
+    //   228: aconst_null
+    //   229: invokevirtual 216	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   232: invokevirtual 223	android/util/ArrayMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   235: pop
+    //   236: iload_2
+    //   237: iconst_1
+    //   238: iadd
+    //   239: istore_2
+    //   240: goto -60 -> 180
+    //   243: aload 8
+    //   245: invokestatic 227	com/tencent/mm/loader/j/a:r	(Landroid/os/Bundle;)V
+    //   248: goto -212 -> 36
+    //   251: ldc 229
+    //   253: astore 8
+    //   255: goto -170 -> 85
+    //   258: astore 10
+    //   260: ldc 75
+    //   262: aload 10
+    //   264: ldc 231
+    //   266: iconst_0
+    //   267: anewarray 206	java/lang/Object
+    //   270: invokestatic 235	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   273: goto -37 -> 236
+    //   276: getstatic 239	com/tencent/mm/sdk/platformtools/h:ETs	Lcom/tencent/mm/sdk/platformtools/u;
+    //   279: astore 9
+    //   281: aload 9
+    //   283: getfield 244	com/tencent/mm/sdk/platformtools/u:ETN	Z
+    //   286: ifne +13 -> 299
+    //   289: aload 9
+    //   291: getfield 248	com/tencent/mm/sdk/platformtools/u:ETM	Landroid/util/ArrayMap;
+    //   294: aload 8
+    //   296: invokevirtual 252	android/util/ArrayMap:putAll	(Landroid/util/ArrayMap;)V
+    //   299: getstatic 239	com/tencent/mm/sdk/platformtools/h:ETs	Lcom/tencent/mm/sdk/platformtools/u;
+    //   302: iconst_1
+    //   303: putfield 244	com/tencent/mm/sdk/platformtools/u:ETN	Z
+    //   306: invokestatic 258	com/tencent/mm/app/l:KH	()Lcom/tencent/mm/app/l;
+    //   309: invokestatic 264	com/tencent/stubs/logger/Log:setLogger	(Lcom/tencent/stubs/logger/Log$Logger;)V
+    //   312: aload_0
+    //   313: aload_1
+    //   314: invokespecial 266	com/tencent/tinker/entry/DefaultApplicationLike:onBaseContextAttached	(Landroid/content/Context;)V
+    //   317: aload_1
+    //   318: invokestatic 272	com/tencent/mm/app/z:bq	(Landroid/content/Context;)Z
+    //   321: ifeq +9 -> 330
+    //   324: ldc 63
+    //   326: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   329: return
+    //   330: aload_0
+    //   331: getfield 41	com/tencent/mm/app/MMApplicationLike:mMMApplicationLikeImpl	Lcom/tencent/mm/app/r;
+    //   334: astore 9
+    //   336: aload_1
+    //   337: invokestatic 277	android/os/Process:myPid	()I
+    //   340: invokestatic 281	com/tencent/mm/app/r:getProcessNameByPid	(Landroid/content/Context;I)Ljava/lang/String;
+    //   343: astore 10
+    //   345: aload 10
+    //   347: putstatic 286	com/tencent/mm/app/d:cvL	Ljava/lang/String;
+    //   350: invokestatic 289	com/tencent/mm/sdk/platformtools/aj:eFI	()Z
+    //   353: ifne +18 -> 371
+    //   356: getstatic 295	com/tencent/mm/app/af$a:cMK	Lcom/tencent/mm/app/af;
+    //   359: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   362: invokevirtual 304	com/tencent/mm/app/af:b	(Lcom/tencent/tinker/entry/ApplicationLike;)V
+    //   365: getstatic 295	com/tencent/mm/app/af$a:cMK	Lcom/tencent/mm/app/af;
+    //   368: invokevirtual 307	com/tencent/mm/app/af:KW	()V
+    //   371: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   374: astore 8
+    //   376: aload 8
+    //   378: ifnull +11 -> 389
+    //   381: aload 8
+    //   383: invokevirtual 313	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
+    //   386: ifnonnull +21 -> 407
+    //   389: new 315	com/tencent/tinker/loader/TinkerRuntimeException
+    //   392: dup
+    //   393: ldc_w 317
+    //   396: invokespecial 320	com/tencent/tinker/loader/TinkerRuntimeException:<init>	(Ljava/lang/String;)V
+    //   399: astore_1
+    //   400: ldc 63
+    //   402: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   405: aload_1
+    //   406: athrow
+    //   407: aload 8
+    //   409: invokevirtual 323	com/tencent/tinker/entry/ApplicationLike:getTinkerFlags	()I
+    //   412: invokestatic 329	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:isTinkerEnabledForNativeLib	(I)Z
+    //   415: ifeq +49 -> 464
+    //   418: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   421: invokestatic 335	com/tencent/tinker/lib/e/b:c	(Lcom/tencent/tinker/entry/ApplicationLike;)Z
+    //   424: ifeq +40 -> 464
+    //   427: getstatic 129	com/tencent/mm/loader/j/a:glZ	Z
+    //   430: ifeq +962 -> 1392
+    //   433: ldc_w 337
+    //   436: invokestatic 341	com/tencent/mm/app/r:ez	(Ljava/lang/String;)Ljava/lang/String;
+    //   439: astore 8
+    //   441: aload 8
+    //   443: invokestatic 347	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   446: ifne +8 -> 454
+    //   449: aload 8
+    //   451: invokestatic 352	com/tencent/mm/compatible/util/j:po	(Ljava/lang/String;)V
+    //   454: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   457: ldc_w 337
+    //   460: invokestatic 358	com/tencent/tinker/lib/a/a:a	(Lcom/tencent/tinker/entry/ApplicationLike;Ljava/lang/String;)Z
+    //   463: pop
+    //   464: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   467: invokevirtual 362	com/tencent/tinker/entry/ApplicationLike:getApplicationStartMillisTime	()J
+    //   470: putstatic 366	com/tencent/mm/app/d:cKZ	J
+    //   473: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   476: invokestatic 368	com/tencent/mm/app/r:a	(Lcom/tencent/tinker/entry/ApplicationLike;)V
+    //   479: new 370	java/lang/StringBuilder
+    //   482: dup
+    //   483: invokespecial 371	java/lang/StringBuilder:<init>	()V
+    //   486: getstatic 374	com/tencent/mm/app/r:cLC	Ljava/lang/String;
+    //   489: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   492: ldc_w 380
+    //   495: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   498: aload 9
+    //   500: invokevirtual 383	java/lang/Object:hashCode	()I
+    //   503: invokevirtual 386	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   506: invokevirtual 389	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   509: putstatic 374	com/tencent/mm/app/r:cLC	Ljava/lang/String;
+    //   512: iconst_0
+    //   513: invokestatic 393	com/tencent/mm/sdk/platformtools/aj:uS	(Z)V
+    //   516: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   519: invokevirtual 313	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
+    //   522: invokestatic 396	com/tencent/mm/sdk/platformtools/aj:setContext	(Landroid/content/Context;)V
+    //   525: iconst_0
+    //   526: invokestatic 399	com/tencent/mm/sdk/platformtools/ad:Wj	(I)V
+    //   529: getstatic 89	com/tencent/mm/sdk/platformtools/h:DEBUG	Z
+    //   532: ifne +24 -> 556
+    //   535: ldc_w 401
+    //   538: ldc_w 403
+    //   541: invokestatic 83	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   544: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   547: invokevirtual 313	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
+    //   550: aload 10
+    //   552: invokestatic 408	com/tencent/mm/app/k:a	(Landroid/app/Application;Ljava/lang/String;)Ljava/lang/String;
+    //   555: pop
+    //   556: invokestatic 413	java/lang/System:currentTimeMillis	()J
+    //   559: lstore 4
+    //   561: new 415	com/tencent/mm/app/q
+    //   564: dup
+    //   565: new 370	java/lang/StringBuilder
+    //   568: dup
+    //   569: invokespecial 371	java/lang/StringBuilder:<init>	()V
+    //   572: invokestatic 420	com/tencent/mm/loader/j/b:ahZ	()Ljava/lang/String;
+    //   575: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   578: ldc_w 422
+    //   581: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   584: invokevirtual 389	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   587: invokespecial 423	com/tencent/mm/app/q:<init>	(Ljava/lang/String;)V
+    //   590: astore 11
+    //   592: aload 11
+    //   594: getfield 427	com/tencent/mm/app/q:cLB	Ljava/util/Properties;
+    //   597: ifnull +860 -> 1457
+    //   600: aload 11
+    //   602: getfield 427	com/tencent/mm/app/q:cLB	Ljava/util/Properties;
+    //   605: ldc_w 429
+    //   608: invokevirtual 435	java/util/Properties:containsKey	(Ljava/lang/Object;)Z
+    //   611: ifeq +846 -> 1457
+    //   614: aload 11
+    //   616: getfield 427	com/tencent/mm/app/q:cLB	Ljava/util/Properties;
+    //   619: ldc_w 429
+    //   622: invokevirtual 438	java/util/Properties:getProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   625: astore 8
+    //   627: aload 9
+    //   629: aload 8
+    //   631: putfield 441	com/tencent/mm/app/r:cLD	Ljava/lang/String;
+    //   634: aload 9
+    //   636: getstatic 134	com/tencent/mm/sdk/platformtools/h:glW	Ljava/lang/String;
+    //   639: putfield 444	com/tencent/mm/app/r:cLE	Ljava/lang/String;
+    //   642: invokestatic 413	java/lang/System:currentTimeMillis	()J
+    //   645: lstore 6
+    //   647: aload 9
+    //   649: lload 6
+    //   651: lload 4
+    //   653: lsub
+    //   654: putfield 447	com/tencent/mm/app/r:cLF	J
+    //   657: aload 9
+    //   659: lconst_0
+    //   660: putfield 450	com/tencent/mm/app/r:cLG	J
+    //   663: aload 9
+    //   665: getfield 444	com/tencent/mm/app/r:cLE	Ljava/lang/String;
+    //   668: aload 9
+    //   670: getfield 441	com/tencent/mm/app/r:cLD	Ljava/lang/String;
+    //   673: invokevirtual 455	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   676: ifne +181 -> 857
+    //   679: iconst_1
+    //   680: putstatic 458	com/tencent/mm/sdk/platformtools/aj:EUA	Z
+    //   683: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   686: invokevirtual 313	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
+    //   689: ldc_w 460
+    //   692: iconst_0
+    //   693: invokevirtual 466	android/app/Application:getDir	(Ljava/lang/String;I)Ljava/io/File;
+    //   696: invokestatic 470	com/tencent/mm/app/r:D	(Ljava/io/File;)Z
+    //   699: pop
+    //   700: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   703: invokevirtual 313	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
+    //   706: ldc_w 472
+    //   709: iconst_0
+    //   710: invokevirtual 466	android/app/Application:getDir	(Ljava/lang/String;I)Ljava/io/File;
+    //   713: invokestatic 470	com/tencent/mm/app/r:D	(Ljava/io/File;)Z
+    //   716: pop
+    //   717: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   720: invokevirtual 313	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
+    //   723: ldc_w 474
+    //   726: iconst_0
+    //   727: invokevirtual 466	android/app/Application:getDir	(Ljava/lang/String;I)Ljava/io/File;
+    //   730: invokestatic 470	com/tencent/mm/app/r:D	(Ljava/io/File;)Z
+    //   733: pop
+    //   734: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   737: invokevirtual 313	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
+    //   740: ldc_w 476
+    //   743: iconst_0
+    //   744: invokevirtual 466	android/app/Application:getDir	(Ljava/lang/String;I)Ljava/io/File;
+    //   747: invokestatic 470	com/tencent/mm/app/r:D	(Ljava/io/File;)Z
+    //   750: pop
+    //   751: getstatic 477	com/tencent/mm/loader/j/a:glW	Ljava/lang/String;
+    //   754: getstatic 134	com/tencent/mm/sdk/platformtools/h:glW	Ljava/lang/String;
+    //   757: invokevirtual 455	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   760: ifeq +44 -> 804
+    //   763: ldc_w 401
+    //   766: ldc_w 479
+    //   769: iconst_3
+    //   770: anewarray 206	java/lang/Object
+    //   773: dup
+    //   774: iconst_0
+    //   775: aload 9
+    //   777: getfield 441	com/tencent/mm/app/r:cLD	Ljava/lang/String;
+    //   780: aastore
+    //   781: dup
+    //   782: iconst_1
+    //   783: aload 9
+    //   785: getfield 444	com/tencent/mm/app/r:cLE	Ljava/lang/String;
+    //   788: aastore
+    //   789: dup
+    //   790: iconst_2
+    //   791: getstatic 477	com/tencent/mm/loader/j/a:glW	Ljava/lang/String;
+    //   794: aastore
+    //   795: invokestatic 219	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   798: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   801: invokestatic 481	com/tencent/tinker/lib/e/b:e	(Lcom/tencent/tinker/entry/ApplicationLike;)V
+    //   804: aload 11
+    //   806: ldc_w 429
+    //   809: aload 9
+    //   811: getfield 444	com/tencent/mm/app/r:cLE	Ljava/lang/String;
+    //   814: invokevirtual 485	com/tencent/mm/app/q:L	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   817: pop
+    //   818: aload 9
+    //   820: invokestatic 413	java/lang/System:currentTimeMillis	()J
+    //   823: lload 6
+    //   825: lsub
+    //   826: putfield 450	com/tencent/mm/app/r:cLG	J
+    //   829: ldc_w 401
+    //   832: ldc_w 487
+    //   835: iconst_2
+    //   836: anewarray 206	java/lang/Object
+    //   839: dup
+    //   840: iconst_0
+    //   841: getstatic 374	com/tencent/mm/app/r:cLC	Ljava/lang/String;
+    //   844: aastore
+    //   845: dup
+    //   846: iconst_1
+    //   847: invokestatic 493	com/tencent/mm/sdk/platformtools/bt:eGN	()Lcom/tencent/mm/sdk/platformtools/at;
+    //   850: invokevirtual 496	com/tencent/mm/sdk/platformtools/at:toString	()Ljava/lang/String;
+    //   853: aastore
+    //   854: invokestatic 499	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   857: ldc_w 401
+    //   860: ldc_w 501
+    //   863: iconst_4
+    //   864: anewarray 206	java/lang/Object
+    //   867: dup
+    //   868: iconst_0
+    //   869: aload 9
+    //   871: getfield 441	com/tencent/mm/app/r:cLD	Ljava/lang/String;
+    //   874: aastore
+    //   875: dup
+    //   876: iconst_1
+    //   877: aload 9
+    //   879: getfield 444	com/tencent/mm/app/r:cLE	Ljava/lang/String;
+    //   882: aastore
+    //   883: dup
+    //   884: iconst_2
+    //   885: aload 9
+    //   887: getfield 447	com/tencent/mm/app/r:cLF	J
+    //   890: invokestatic 507	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   893: aastore
+    //   894: dup
+    //   895: iconst_3
+    //   896: aload 9
+    //   898: getfield 450	com/tencent/mm/app/r:cLG	J
+    //   901: invokestatic 507	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   904: aastore
+    //   905: invokestatic 219	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   908: getstatic 89	com/tencent/mm/sdk/platformtools/h:DEBUG	Z
+    //   911: ifne +9 -> 920
+    //   914: getstatic 162	com/tencent/mm/sdk/platformtools/h:PRE_RELEASE	Z
+    //   917: ifeq +24 -> 941
+    //   920: ldc_w 401
+    //   923: ldc_w 509
+    //   926: invokestatic 83	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   929: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   932: invokevirtual 313	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
+    //   935: aload 10
+    //   937: invokestatic 408	com/tencent/mm/app/k:a	(Landroid/app/Application;Ljava/lang/String;)Ljava/lang/String;
+    //   940: pop
+    //   941: getstatic 286	com/tencent/mm/app/d:cvL	Ljava/lang/String;
+    //   944: astore 8
+    //   946: aload 8
+    //   948: aload_1
+    //   949: invokevirtual 514	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   952: invokevirtual 455	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   955: ifeq +424 -> 1379
+    //   958: ldc 8
+    //   960: ldc_w 516
+    //   963: iconst_0
+    //   964: anewarray 206	java/lang/Object
+    //   967: invokestatic 520	com/tencent/mm/app/w:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   970: aload_0
+    //   971: invokestatic 335	com/tencent/tinker/lib/e/b:c	(Lcom/tencent/tinker/entry/ApplicationLike;)Z
+    //   974: ifeq +546 -> 1520
+    //   977: aload_1
+    //   978: invokestatic 526	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:getPatchDirectory	(Landroid/content/Context;)Ljava/io/File;
+    //   981: astore 12
+    //   983: aload 12
+    //   985: invokevirtual 531	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   988: invokestatic 535	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:getPatchInfoFile	(Ljava/lang/String;)Ljava/io/File;
+    //   991: astore 9
+    //   993: aload 12
+    //   995: invokevirtual 531	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   998: invokestatic 538	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:getPatchInfoLockFile	(Ljava/lang/String;)Ljava/io/File;
+    //   1001: astore 10
+    //   1003: aload 9
+    //   1005: aload 10
+    //   1007: invokestatic 544	com/tencent/tinker/loader/shareutil/SharePatchInfo:readAndCheckPropertyWithLock	(Ljava/io/File;Ljava/io/File;)Lcom/tencent/tinker/loader/shareutil/SharePatchInfo;
+    //   1010: astore 11
+    //   1012: ldc_w 546
+    //   1015: aload 11
+    //   1017: getfield 549	com/tencent/tinker/loader/shareutil/SharePatchInfo:oatDir	Ljava/lang/String;
+    //   1020: invokevirtual 455	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1023: ifeq +482 -> 1505
+    //   1026: ldc 8
+    //   1028: ldc_w 551
+    //   1031: iconst_4
+    //   1032: anewarray 206	java/lang/Object
+    //   1035: dup
+    //   1036: iconst_0
+    //   1037: aload 11
+    //   1039: getfield 554	com/tencent/tinker/loader/shareutil/SharePatchInfo:oldVersion	Ljava/lang/String;
+    //   1042: aastore
+    //   1043: dup
+    //   1044: iconst_1
+    //   1045: aload 11
+    //   1047: getfield 557	com/tencent/tinker/loader/shareutil/SharePatchInfo:newVersion	Ljava/lang/String;
+    //   1050: aastore
+    //   1051: dup
+    //   1052: iconst_2
+    //   1053: aload 11
+    //   1055: getfield 549	com/tencent/tinker/loader/shareutil/SharePatchInfo:oatDir	Ljava/lang/String;
+    //   1058: aastore
+    //   1059: dup
+    //   1060: iconst_3
+    //   1061: aload 11
+    //   1063: getfield 560	com/tencent/tinker/loader/shareutil/SharePatchInfo:fingerPrint	Ljava/lang/String;
+    //   1066: aastore
+    //   1067: invokestatic 520	com/tencent/mm/app/w:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1070: iconst_3
+    //   1071: anewarray 206	java/lang/Object
+    //   1074: dup
+    //   1075: iconst_0
+    //   1076: iconst_2
+    //   1077: invokestatic 563	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1080: aastore
+    //   1081: dup
+    //   1082: iconst_1
+    //   1083: aload 8
+    //   1085: aastore
+    //   1086: dup
+    //   1087: iconst_2
+    //   1088: ldc_w 565
+    //   1091: iconst_4
+    //   1092: anewarray 206	java/lang/Object
+    //   1095: dup
+    //   1096: iconst_0
+    //   1097: aload 11
+    //   1099: getfield 554	com/tencent/tinker/loader/shareutil/SharePatchInfo:oldVersion	Ljava/lang/String;
+    //   1102: aastore
+    //   1103: dup
+    //   1104: iconst_1
+    //   1105: aload 11
+    //   1107: getfield 557	com/tencent/tinker/loader/shareutil/SharePatchInfo:newVersion	Ljava/lang/String;
+    //   1110: aastore
+    //   1111: dup
+    //   1112: iconst_2
+    //   1113: aload 11
+    //   1115: getfield 549	com/tencent/tinker/loader/shareutil/SharePatchInfo:oatDir	Ljava/lang/String;
+    //   1118: aastore
+    //   1119: dup
+    //   1120: iconst_3
+    //   1121: aload 11
+    //   1123: getfield 560	com/tencent/tinker/loader/shareutil/SharePatchInfo:fingerPrint	Ljava/lang/String;
+    //   1126: aastore
+    //   1127: invokestatic 569	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1130: aastore
+    //   1131: invokestatic 573	com/tencent/mm/app/w:f	([Ljava/lang/Object;)V
+    //   1134: new 528	java/io/File
+    //   1137: dup
+    //   1138: aload 12
+    //   1140: aload 11
+    //   1142: getfield 557	com/tencent/tinker/loader/shareutil/SharePatchInfo:newVersion	Ljava/lang/String;
+    //   1145: invokestatic 576	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:getPatchVersionDirectory	(Ljava/lang/String;)Ljava/lang/String;
+    //   1148: invokespecial 579	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   1151: astore 13
+    //   1153: new 528	java/io/File
+    //   1156: dup
+    //   1157: aload 13
+    //   1159: ldc_w 581
+    //   1162: invokespecial 579	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   1165: astore 12
+    //   1167: new 528	java/io/File
+    //   1170: dup
+    //   1171: aload 13
+    //   1173: ldc_w 583
+    //   1176: invokespecial 579	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   1179: astore 13
+    //   1181: new 528	java/io/File
+    //   1184: dup
+    //   1185: aload 12
+    //   1187: ldc_w 585
+    //   1190: invokespecial 579	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   1193: astore 12
+    //   1195: new 528	java/io/File
+    //   1198: dup
+    //   1199: aload 13
+    //   1201: ldc_w 585
+    //   1204: invokespecial 579	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   1207: astore 13
+    //   1209: aload 12
+    //   1211: invokevirtual 588	java/io/File:exists	()Z
+    //   1214: ifeq +249 -> 1463
+    //   1217: aload 12
+    //   1219: invokevirtual 591	java/io/File:canRead	()Z
+    //   1222: ifeq +241 -> 1463
+    //   1225: aload 11
+    //   1227: ldc_w 581
+    //   1230: putfield 549	com/tencent/tinker/loader/shareutil/SharePatchInfo:oatDir	Ljava/lang/String;
+    //   1233: iconst_3
+    //   1234: anewarray 206	java/lang/Object
+    //   1237: dup
+    //   1238: iconst_0
+    //   1239: iconst_2
+    //   1240: invokestatic 563	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1243: aastore
+    //   1244: dup
+    //   1245: iconst_1
+    //   1246: aload 8
+    //   1248: aastore
+    //   1249: dup
+    //   1250: iconst_2
+    //   1251: ldc_w 593
+    //   1254: iconst_4
+    //   1255: anewarray 206	java/lang/Object
+    //   1258: dup
+    //   1259: iconst_0
+    //   1260: aload 11
+    //   1262: getfield 554	com/tencent/tinker/loader/shareutil/SharePatchInfo:oldVersion	Ljava/lang/String;
+    //   1265: aastore
+    //   1266: dup
+    //   1267: iconst_1
+    //   1268: aload 11
+    //   1270: getfield 557	com/tencent/tinker/loader/shareutil/SharePatchInfo:newVersion	Ljava/lang/String;
+    //   1273: aastore
+    //   1274: dup
+    //   1275: iconst_2
+    //   1276: aload 11
+    //   1278: getfield 549	com/tencent/tinker/loader/shareutil/SharePatchInfo:oatDir	Ljava/lang/String;
+    //   1281: aastore
+    //   1282: dup
+    //   1283: iconst_3
+    //   1284: aload 11
+    //   1286: getfield 560	com/tencent/tinker/loader/shareutil/SharePatchInfo:fingerPrint	Ljava/lang/String;
+    //   1289: aastore
+    //   1290: invokestatic 569	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1293: aastore
+    //   1294: invokestatic 573	com/tencent/mm/app/w:f	([Ljava/lang/Object;)V
+    //   1297: ldc 8
+    //   1299: ldc_w 595
+    //   1302: iconst_4
+    //   1303: anewarray 206	java/lang/Object
+    //   1306: dup
+    //   1307: iconst_0
+    //   1308: aload 11
+    //   1310: getfield 554	com/tencent/tinker/loader/shareutil/SharePatchInfo:oldVersion	Ljava/lang/String;
+    //   1313: aastore
+    //   1314: dup
+    //   1315: iconst_1
+    //   1316: aload 11
+    //   1318: getfield 557	com/tencent/tinker/loader/shareutil/SharePatchInfo:newVersion	Ljava/lang/String;
+    //   1321: aastore
+    //   1322: dup
+    //   1323: iconst_2
+    //   1324: aload 11
+    //   1326: getfield 549	com/tencent/tinker/loader/shareutil/SharePatchInfo:oatDir	Ljava/lang/String;
+    //   1329: aastore
+    //   1330: dup
+    //   1331: iconst_3
+    //   1332: aload 11
+    //   1334: getfield 560	com/tencent/tinker/loader/shareutil/SharePatchInfo:fingerPrint	Ljava/lang/String;
+    //   1337: aastore
+    //   1338: invokestatic 520	com/tencent/mm/app/w:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1341: aload 9
+    //   1343: aload 11
+    //   1345: aload 10
+    //   1347: invokestatic 599	com/tencent/tinker/loader/shareutil/SharePatchInfo:rewritePatchInfoFileWithLock	(Ljava/io/File;Lcom/tencent/tinker/loader/shareutil/SharePatchInfo;Ljava/io/File;)Z
+    //   1350: pop
+    //   1351: ldc 8
+    //   1353: ldc_w 601
+    //   1356: iconst_0
+    //   1357: anewarray 206	java/lang/Object
+    //   1360: invokestatic 520	com/tencent/mm/app/w:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1363: aload_1
+    //   1364: invokestatic 604	com/tencent/tinker/loader/shareutil/ShareTinkerInternals:killProcessExceptMain	(Landroid/content/Context;)V
+    //   1367: ldc 8
+    //   1369: ldc_w 606
+    //   1372: iconst_0
+    //   1373: anewarray 206	java/lang/Object
+    //   1376: invokestatic 520	com/tencent/mm/app/w:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1379: aload_1
+    //   1380: invokestatic 611	com/tencent/mm/app/j:bn	(Landroid/content/Context;)Z
+    //   1383: ifeq +152 -> 1535
+    //   1386: ldc 63
+    //   1388: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1391: return
+    //   1392: ldc_w 613
+    //   1395: invokestatic 341	com/tencent/mm/app/r:ez	(Ljava/lang/String;)Ljava/lang/String;
+    //   1398: astore 8
+    //   1400: aload 8
+    //   1402: invokestatic 347	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1405: ifne +8 -> 1413
+    //   1408: aload 8
+    //   1410: invokestatic 352	com/tencent/mm/compatible/util/j:po	(Ljava/lang/String;)V
+    //   1413: ldc_w 615
+    //   1416: invokestatic 341	com/tencent/mm/app/r:ez	(Ljava/lang/String;)Ljava/lang/String;
+    //   1419: astore 8
+    //   1421: aload 8
+    //   1423: invokestatic 347	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1426: ifne +8 -> 1434
+    //   1429: aload 8
+    //   1431: invokestatic 352	com/tencent/mm/compatible/util/j:po	(Ljava/lang/String;)V
+    //   1434: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   1437: ldc_w 613
+    //   1440: invokestatic 358	com/tencent/tinker/lib/a/a:a	(Lcom/tencent/tinker/entry/ApplicationLike;Ljava/lang/String;)Z
+    //   1443: pop
+    //   1444: getstatic 299	com/tencent/mm/app/r:cKY	Lcom/tencent/tinker/entry/ApplicationLike;
+    //   1447: ldc_w 615
+    //   1450: invokestatic 358	com/tencent/tinker/lib/a/a:a	(Lcom/tencent/tinker/entry/ApplicationLike;Ljava/lang/String;)Z
+    //   1453: pop
+    //   1454: goto -990 -> 464
+    //   1457: aconst_null
+    //   1458: astore 8
+    //   1460: goto -833 -> 627
+    //   1463: aload 13
+    //   1465: invokevirtual 588	java/io/File:exists	()Z
+    //   1468: ifeq -235 -> 1233
+    //   1471: aload 13
+    //   1473: invokevirtual 591	java/io/File:canRead	()Z
+    //   1476: ifeq -243 -> 1233
+    //   1479: aload 11
+    //   1481: ldc_w 583
+    //   1484: putfield 549	com/tencent/tinker/loader/shareutil/SharePatchInfo:oatDir	Ljava/lang/String;
+    //   1487: goto -254 -> 1233
+    //   1490: astore 9
+    //   1492: ldc 8
+    //   1494: aload 9
+    //   1496: ldc_w 617
+    //   1499: invokestatic 620	com/tencent/mm/app/w:a	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   1502: goto -123 -> 1379
+    //   1505: ldc 8
+    //   1507: ldc_w 622
+    //   1510: iconst_0
+    //   1511: anewarray 206	java/lang/Object
+    //   1514: invokestatic 520	com/tencent/mm/app/w:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1517: goto -138 -> 1379
+    //   1520: ldc 8
+    //   1522: ldc_w 624
+    //   1525: iconst_0
+    //   1526: anewarray 206	java/lang/Object
+    //   1529: invokestatic 520	com/tencent/mm/app/w:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1532: goto -153 -> 1379
+    //   1535: invokestatic 289	com/tencent/mm/sdk/platformtools/aj:eFI	()Z
+    //   1538: ifeq +86 -> 1624
+    //   1541: aload_0
+    //   1542: new 370	java/lang/StringBuilder
+    //   1545: dup
+    //   1546: invokespecial 371	java/lang/StringBuilder:<init>	()V
+    //   1549: invokestatic 625	com/tencent/mm/sdk/platformtools/aj:getPackageName	()Ljava/lang/String;
+    //   1552: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1555: ldc_w 627
+    //   1558: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1561: invokevirtual 389	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1564: invokestatic 631	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   1567: iconst_2
+    //   1568: anewarray 198	java/lang/Class
+    //   1571: dup
+    //   1572: iconst_0
+    //   1573: ldc_w 309
+    //   1576: aastore
+    //   1577: dup
+    //   1578: iconst_1
+    //   1579: ldc_w 452
+    //   1582: aastore
+    //   1583: invokevirtual 635	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   1586: iconst_2
+    //   1587: anewarray 206	java/lang/Object
+    //   1590: dup
+    //   1591: iconst_0
+    //   1592: aload_0
+    //   1593: aastore
+    //   1594: dup
+    //   1595: iconst_1
+    //   1596: aload 8
+    //   1598: aastore
+    //   1599: invokevirtual 641	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   1602: checkcast 643	com/tencent/tinker/entry/ApplicationLifeCycle
+    //   1605: putfield 645	com/tencent/mm/app/MMApplicationLike:wrapper	Lcom/tencent/tinker/entry/ApplicationLifeCycle;
+    //   1608: aload_0
+    //   1609: getfield 645	com/tencent/mm/app/MMApplicationLike:wrapper	Lcom/tencent/tinker/entry/ApplicationLifeCycle;
+    //   1612: aload_1
+    //   1613: invokeinterface 646 2 0
+    //   1618: ldc 63
+    //   1620: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1623: return
+    //   1624: aload_0
+    //   1625: new 370	java/lang/StringBuilder
+    //   1628: dup
+    //   1629: invokespecial 371	java/lang/StringBuilder:<init>	()V
+    //   1632: invokestatic 625	com/tencent/mm/sdk/platformtools/aj:getPackageName	()Ljava/lang/String;
+    //   1635: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1638: ldc_w 648
+    //   1641: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1644: invokevirtual 389	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1647: invokestatic 631	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   1650: iconst_2
+    //   1651: anewarray 198	java/lang/Class
+    //   1654: dup
+    //   1655: iconst_0
+    //   1656: ldc_w 309
+    //   1659: aastore
+    //   1660: dup
+    //   1661: iconst_1
+    //   1662: ldc_w 452
+    //   1665: aastore
+    //   1666: invokevirtual 635	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   1669: iconst_2
+    //   1670: anewarray 206	java/lang/Object
+    //   1673: dup
+    //   1674: iconst_0
+    //   1675: aload_0
+    //   1676: aastore
+    //   1677: dup
+    //   1678: iconst_1
+    //   1679: aload 8
+    //   1681: aastore
+    //   1682: invokevirtual 641	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   1685: checkcast 643	com/tencent/tinker/entry/ApplicationLifeCycle
+    //   1688: putfield 645	com/tencent/mm/app/MMApplicationLike:wrapper	Lcom/tencent/tinker/entry/ApplicationLifeCycle;
+    //   1691: goto -83 -> 1608
+    //   1694: astore_1
+    //   1695: ldc 8
+    //   1697: aload_1
+    //   1698: ldc_w 650
+    //   1701: iconst_0
+    //   1702: anewarray 206	java/lang/Object
+    //   1705: invokestatic 235	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1708: new 652	java/lang/RuntimeException
+    //   1711: dup
+    //   1712: ldc_w 650
+    //   1715: aload_1
+    //   1716: invokespecial 655	java/lang/RuntimeException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   1719: astore_1
+    //   1720: ldc 63
+    //   1722: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1725: aload_1
+    //   1726: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1042	0	this	MMApplicationLike
-    //   0	1042	1	paramContext	android.content.Context
-    //   146	61	2	i	int
-    //   144	6	3	j	int
-    //   490	64	4	l1	long
-    //   547	179	6	l2	long
-    //   24	970	8	localObject1	Object
-    //   139	699	9	localObject2	Object
-    //   156	38	10	localObject3	Object
-    //   218	5	10	localIllegalAccessException	java.lang.IllegalAccessException
-    //   321	386	10	localObject4	Object
+    //   0	1727	0	this	MMApplicationLike
+    //   0	1727	1	paramContext	android.content.Context
+    //   179	61	2	i	int
+    //   177	6	3	j	int
+    //   559	93	4	l1	long
+    //   645	179	6	l2	long
+    //   22	1658	8	localObject1	Object
+    //   172	1170	9	localObject2	Object
+    //   1490	5	9	localThrowable	java.lang.Throwable
+    //   189	38	10	localObject3	Object
+    //   258	5	10	localIllegalAccessException	java.lang.IllegalAccessException
+    //   343	1003	10	localObject4	Object
+    //   590	890	11	localObject5	Object
+    //   981	237	12	localFile1	java.io.File
+    //   1151	321	13	localFile2	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   158	203	218	java/lang/IllegalAccessException
-    //   848	921	1008	java/lang/Exception
-    //   921	931	1008	java/lang/Exception
-    //   938	1005	1008	java/lang/Exception
+    //   191	236	258	java/lang/IllegalAccessException
+    //   970	1233	1490	java/lang/Throwable
+    //   1233	1379	1490	java/lang/Throwable
+    //   1463	1487	1490	java/lang/Throwable
+    //   1505	1517	1490	java/lang/Throwable
+    //   1520	1532	1490	java/lang/Throwable
+    //   1535	1608	1694	java/lang/Exception
+    //   1608	1618	1694	java/lang/Exception
+    //   1624	1691	1694	java/lang/Exception
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(3236);
-    ab.d("MicroMsg.MMApplication", "configuration changed");
+    AppMethodBeat.i(123471);
+    ad.d("MicroMsg.MMApplication", "configuration changed");
     super.onConfigurationChanged(paramConfiguration);
     if (this.wrapper != null) {
       this.wrapper.onConfigurationChanged(paramConfiguration);
     }
-    AppMethodBeat.o(3236);
+    AppMethodBeat.o(123471);
   }
   
   public void onCreate()
   {
-    AppMethodBeat.i(3234);
+    AppMethodBeat.i(123469);
     if (this.wrapper != null) {
       this.wrapper.onCreate();
     }
-    AppMethodBeat.o(3234);
+    AppMethodBeat.o(123469);
   }
   
   public void onLowMemory()
   {
-    AppMethodBeat.i(3238);
+    AppMethodBeat.i(123473);
     super.onLowMemory();
     if (this.wrapper != null) {
       this.wrapper.onLowMemory();
     }
-    AppMethodBeat.o(3238);
+    AppMethodBeat.o(123473);
   }
   
   public void onTerminate()
   {
-    AppMethodBeat.i(3235);
+    AppMethodBeat.i(123470);
     super.onTerminate();
     if (this.wrapper != null) {
       this.wrapper.onTerminate();
     }
-    AppMethodBeat.o(3235);
+    AppMethodBeat.o(123470);
   }
   
   public void onTrimMemory(int paramInt)
   {
-    AppMethodBeat.i(3239);
+    AppMethodBeat.i(123474);
     super.onTrimMemory(paramInt);
     if (this.wrapper != null) {
       this.wrapper.onTrimMemory(paramInt);
     }
-    AppMethodBeat.o(3239);
+    AppMethodBeat.o(123474);
   }
   
   public boolean safeguard()

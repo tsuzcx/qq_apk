@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1"
+<LinearLayout android:background="@color/th" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v4.view.ViewPager android:id="@id/dta" android:clickable="true" android:layout_width="fill_parent" android:layout_height="300.0dip" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <ListView android:id="@android:id/list" android:paddingBottom="15.0dip" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="#00000000" android:divider="#00000000" android:dividerHeight="0.0px" />
+</LinearLayout>

@@ -8,19 +8,19 @@ public class zzacn
   extends zza
 {
   public static final Parcelable.Creator<zzacn> CREATOR = new bu();
-  final int Hc;
-  private final zzacp PC;
+  final int IR;
+  private final zzacp Rr;
   
   zzacn(int paramInt, zzacp paramzzacp)
   {
-    this.Hc = paramInt;
-    this.PC = paramzzacp;
+    this.IR = paramInt;
+    this.Rr = paramzzacp;
   }
   
   private zzacn(zzacp paramzzacp)
   {
-    this.Hc = 1;
-    this.PC = paramzzacp;
+    this.IR = 1;
+    this.Rr = paramzzacp;
   }
   
   public static zzacn a(bx<?, ?> parambx)
@@ -31,15 +31,15 @@ public class zzacn
     throw new IllegalArgumentException("Unsupported safe parcelable field converter class.");
   }
   
-  final zzacp ji()
+  final zzacp jr()
   {
-    return this.PC;
+    return this.Rr;
   }
   
-  public final bx<?, ?> jj()
+  public final bx<?, ?> js()
   {
-    if (this.PC != null) {
-      return this.PC;
+    if (this.Rr != null) {
+      return this.Rr;
     }
     throw new IllegalStateException("There was no converter wrapped in this ConverterWrapper.");
   }

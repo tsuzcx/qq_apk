@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/d3k" android:background="@drawable/a31" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="75.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center" android:id="@id/cv0" android:layout_width="wrap_content" android:layout_height="75.0dip" android:text="@string/bmt" android:layout_centerInParent="true" />
+</RelativeLayout>

@@ -2,42 +2,42 @@ package com.tencent.mm.plugin.report;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Map;
 
 public enum e
   implements d
 {
-  d qrJ;
+  d vIZ;
   
   static
   {
-    AppMethodBeat.i(115125);
-    qrI = new e("INSTANCE");
-    qrK = new e[] { qrI };
-    AppMethodBeat.o(115125);
+    AppMethodBeat.i(125145);
+    vIY = new e("INSTANCE");
+    vJa = new e[] { vIY };
+    AppMethodBeat.o(125145);
   }
   
   private e()
   {
-    AppMethodBeat.i(115113);
-    this.qrJ = new a((byte)0);
-    AppMethodBeat.o(115113);
+    AppMethodBeat.i(125133);
+    this.vIZ = new a((byte)0);
+    AppMethodBeat.o(125133);
   }
   
   public static Object a(int paramInt1, int[] paramArrayOfInt, int paramInt2, int paramInt3)
   {
     int i = 0;
-    AppMethodBeat.i(115123);
+    AppMethodBeat.i(125143);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0) || (paramInt3 <= paramInt2) || (paramInt3 > 255) || (paramArrayOfInt.length != paramInt3 - paramInt2))
     {
-      AppMethodBeat.o(115123);
+      AppMethodBeat.o(125143);
       return null;
     }
     if (paramInt1 <= paramArrayOfInt[0])
     {
-      AppMethodBeat.o(115123);
+      AppMethodBeat.o(125143);
       return Integer.valueOf(paramInt2);
     }
     do
@@ -48,13 +48,13 @@ public enum e
       }
       if (paramArrayOfInt[i] >= paramArrayOfInt[(i + 1)])
       {
-        AppMethodBeat.o(115123);
+        AppMethodBeat.o(125143);
         return null;
       }
     } while ((paramInt1 <= paramArrayOfInt[i]) || (paramInt1 > paramArrayOfInt[(i + 1)]));
-    AppMethodBeat.o(115123);
+    AppMethodBeat.o(125143);
     return Integer.valueOf(i + (paramInt2 + 1));
-    AppMethodBeat.o(115123);
+    AppMethodBeat.o(125143);
     return Integer.valueOf(paramInt3);
   }
   
@@ -83,75 +83,82 @@ public enum e
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
   {
-    AppMethodBeat.i(115120);
-    ab.d("MicroMsg.ReportService", "idkeyGroupForPair [%d, %d] -> %d / [%d, %d] -> %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Integer.valueOf(paramInt5), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4), Integer.valueOf(paramInt6) });
-    this.qrJ.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramBoolean);
-    AppMethodBeat.o(115120);
+    AppMethodBeat.i(125140);
+    ad.d("MicroMsg.ReportService", "idkeyGroupForPair [%d, %d] -> %d / [%d, %d] -> %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Integer.valueOf(paramInt5), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4), Integer.valueOf(paramInt6) });
+    this.vIZ.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramBoolean);
+    AppMethodBeat.o(125140);
   }
   
   public final void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(115116);
-    this.qrJ.a(paramInt, paramString, paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(115116);
+    AppMethodBeat.i(125136);
+    this.vIZ.a(paramInt, paramString, paramBoolean1, paramBoolean2);
+    AppMethodBeat.o(125136);
+  }
+  
+  public final void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(190859);
+    this.vIZ.a(paramInt, paramBoolean1, paramBoolean2, paramBoolean3, paramVarArgs);
+    AppMethodBeat.o(190859);
   }
   
   public final void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115117);
-    this.qrJ.a(paramInt, paramBoolean1, paramBoolean2, paramVarArgs);
-    AppMethodBeat.o(115117);
+    AppMethodBeat.i(125137);
+    this.vIZ.a(paramInt, paramBoolean1, paramBoolean2, paramVarArgs);
+    AppMethodBeat.o(125137);
   }
   
   public final void b(ArrayList<IDKey> paramArrayList, boolean paramBoolean)
   {
-    AppMethodBeat.i(115119);
-    this.qrJ.b(paramArrayList, paramBoolean);
-    AppMethodBeat.o(115119);
+    AppMethodBeat.i(125139);
+    this.vIZ.b(paramArrayList, paramBoolean);
+    AppMethodBeat.o(125139);
   }
   
-  public final void d(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
+  public final void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    AppMethodBeat.i(115121);
-    ab.d("MicroMsg.ReportService", "idkeyGroupForPairAverger [%d, %d] -> %d / [%d, %d] -> 1", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4), Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
-    this.qrJ.d(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean);
-    AppMethodBeat.o(115121);
+    AppMethodBeat.i(125141);
+    ad.d("MicroMsg.ReportService", "idkeyGroupForPairAverger [%d, %d] -> %d / [%d, %d] -> 1", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4), Integer.valueOf(paramInt1), Integer.valueOf(paramInt3) });
+    this.vIZ.c(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean);
+    AppMethodBeat.o(125141);
   }
   
-  public final void e(int paramInt, Object... paramVarArgs)
+  public final void e(String paramString1, String paramString2, Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(115114);
-    this.qrJ.e(paramInt, paramVarArgs);
-    AppMethodBeat.o(115114);
+    AppMethodBeat.i(125144);
+    this.vIZ.e(paramString1, paramString2, paramMap);
+    AppMethodBeat.o(125144);
   }
   
-  public final void g(String paramString1, String paramString2, Map<String, Object> paramMap)
+  public final void f(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115124);
-    this.qrJ.g(paramString1, paramString2, paramMap);
-    AppMethodBeat.o(115124);
+    AppMethodBeat.i(125134);
+    this.vIZ.f(paramInt, paramVarArgs);
+    AppMethodBeat.o(125134);
   }
   
   public final void idkeyStat(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
   {
-    AppMethodBeat.i(115118);
-    ab.d("MicroMsg.ReportService", "idkeyStat [%d, %d] -> %d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
-    this.qrJ.idkeyStat(paramLong1, paramLong2, paramLong3, paramBoolean);
-    AppMethodBeat.o(115118);
+    AppMethodBeat.i(125138);
+    ad.d("MicroMsg.ReportService", "idkeyStat [%d, %d] -> %d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3) });
+    this.vIZ.idkeyStat(paramLong1, paramLong2, paramLong3, paramBoolean);
+    AppMethodBeat.o(125138);
   }
   
   public final void kvStat(int paramInt, String paramString)
   {
-    AppMethodBeat.i(115115);
-    this.qrJ.kvStat(paramInt, paramString);
-    AppMethodBeat.o(115115);
+    AppMethodBeat.i(125135);
+    this.vIZ.kvStat(paramInt, paramString);
+    AppMethodBeat.o(125135);
   }
   
   public final void setUin(int paramInt)
   {
-    AppMethodBeat.i(115122);
-    this.qrJ.setUin(paramInt);
-    AppMethodBeat.o(115122);
+    AppMethodBeat.i(125142);
+    this.vIZ.setUin(paramInt);
+    AppMethodBeat.o(125142);
   }
   
   static final class a
@@ -159,72 +166,79 @@ public enum e
   {
     public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
     {
-      AppMethodBeat.i(115107);
-      ab.i("MicroMsg.ReportService", "this is DummyReportService");
-      AppMethodBeat.o(115107);
+      AppMethodBeat.i(125127);
+      ad.i("MicroMsg.ReportService", "this is DummyReportService");
+      AppMethodBeat.o(125127);
     }
     
     public final void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
     {
-      AppMethodBeat.i(115105);
-      ab.i("MicroMsg.ReportService", "this is DummyReportService");
-      AppMethodBeat.o(115105);
+      AppMethodBeat.i(125125);
+      ad.i("MicroMsg.ReportService", "this is DummyReportService");
+      AppMethodBeat.o(125125);
+    }
+    
+    public final void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object... paramVarArgs)
+    {
+      AppMethodBeat.i(190858);
+      ad.i("MicroMsg.ReportService", "this is DummyReportService");
+      AppMethodBeat.o(190858);
     }
     
     public final void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, Object... paramVarArgs)
     {
-      AppMethodBeat.i(115106);
-      ab.i("MicroMsg.ReportService", "this is DummyReportService");
-      AppMethodBeat.o(115106);
+      AppMethodBeat.i(125126);
+      ad.i("MicroMsg.ReportService", "this is DummyReportService");
+      AppMethodBeat.o(125126);
     }
     
     public final void b(ArrayList<IDKey> paramArrayList, boolean paramBoolean)
     {
-      AppMethodBeat.i(115110);
-      ab.i("MicroMsg.ReportService", "this is DummyReportService");
-      AppMethodBeat.o(115110);
+      AppMethodBeat.i(125130);
+      ad.i("MicroMsg.ReportService", "this is DummyReportService");
+      AppMethodBeat.o(125130);
     }
     
-    public final void d(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
+    public final void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
     {
-      AppMethodBeat.i(115108);
-      ab.i("MicroMsg.ReportService", "this is DummyReportService");
-      AppMethodBeat.o(115108);
+      AppMethodBeat.i(125128);
+      ad.i("MicroMsg.ReportService", "this is DummyReportService");
+      AppMethodBeat.o(125128);
     }
     
-    public final void e(int paramInt, Object... paramVarArgs)
+    public final void e(String paramString1, String paramString2, Map<String, Object> paramMap)
     {
-      AppMethodBeat.i(115103);
-      ab.i("MicroMsg.ReportService", "this is DummyReportService");
-      AppMethodBeat.o(115103);
+      AppMethodBeat.i(125129);
+      ad.i("MicroMsg.ReportService", "this is DummyReportService");
+      AppMethodBeat.o(125129);
     }
     
-    public final void g(String paramString1, String paramString2, Map<String, Object> paramMap)
+    public final void f(int paramInt, Object... paramVarArgs)
     {
-      AppMethodBeat.i(115109);
-      ab.i("MicroMsg.ReportService", "this is DummyReportService");
-      AppMethodBeat.o(115109);
+      AppMethodBeat.i(125123);
+      ad.i("MicroMsg.ReportService", "this is DummyReportService");
+      AppMethodBeat.o(125123);
     }
     
     public final void idkeyStat(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
     {
-      AppMethodBeat.i(115101);
-      ab.i("MicroMsg.ReportService", "this is DummyReportService");
-      AppMethodBeat.o(115101);
+      AppMethodBeat.i(125121);
+      ad.i("MicroMsg.ReportService", "this is DummyReportService");
+      AppMethodBeat.o(125121);
     }
     
     public final void kvStat(int paramInt, String paramString)
     {
-      AppMethodBeat.i(115104);
-      ab.i("MicroMsg.ReportService", "this is DummyReportService");
-      AppMethodBeat.o(115104);
+      AppMethodBeat.i(125124);
+      ad.i("MicroMsg.ReportService", "this is DummyReportService");
+      AppMethodBeat.o(125124);
     }
     
     public final void setUin(int paramInt)
     {
-      AppMethodBeat.i(115102);
-      ab.i("MicroMsg.ReportService", "this is DummyReportService");
-      AppMethodBeat.o(115102);
+      AppMethodBeat.i(125122);
+      ad.i("MicroMsg.ReportService", "this is DummyReportService");
+      AppMethodBeat.o(125122);
     }
   }
 }

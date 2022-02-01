@@ -1,8 +1,8 @@
 package com.github.henryye.nativeiv.comm;
 
-import android.graphics.Bitmap.Config;
 import android.graphics.Rect;
 import android.support.annotation.Keep;
+import com.github.henryye.nativeiv.ImageDecodeConfig;
 import com.github.henryye.nativeiv.bitmap.BitmapType;
 import com.github.henryye.nativeiv.bitmap.IBitmap;
 import com.github.henryye.nativeiv.bitmap.NativeBitmapStruct;
@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @Keep
-public class NativeImage
+class NativeImage
   implements IBitmap<NativeBitmapStruct>
 {
   private static final String TAG = "Ni.NativeImage";
@@ -46,7 +46,7 @@ public class NativeImage
     //   33: aload_2
     //   34: monitorenter
     //   35: aload_2
-    //   36: getfield 48	com/github/henryye/nativeiv/comm/a:auT	Ljava/util/HashMap;
+    //   36: getfield 48	com/github/henryye/nativeiv/comm/a:aQj	Ljava/util/HashMap;
     //   39: aload_0
     //   40: invokevirtual 52	java/lang/Object:hashCode	()I
     //   43: invokestatic 58	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
@@ -90,7 +90,7 @@ public class NativeImage
   }
   
   /* Error */
-  public void decodeInputStream(InputStream paramInputStream, Bitmap.Config paramConfig, c paramc)
+  public void decodeInputStream(InputStream paramInputStream, ImageDecodeConfig paramImageDecodeConfig, c paramc)
   {
     // Byte code:
     //   0: aload_0
@@ -113,139 +113,148 @@ public class NativeImage
     //   33: ldc 79
     //   35: iconst_0
     //   36: anewarray 5	java/lang/Object
-    //   39: invokestatic 85	com/tencent/magicbrush/a/c$c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   39: invokestatic 85	com/github/henryye/nativeiv/a/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   42: aload_0
     //   43: invokevirtual 88	com/github/henryye/nativeiv/comm/NativeImage:recycle	()V
     //   46: aload_1
-    //   47: invokestatic 94	com/github/henryye/nativeiv/b/a:c	(Ljava/io/InputStream;)Ljava/nio/ByteBuffer;
+    //   47: invokestatic 94	com/github/henryye/nativeiv/c/a:f	(Ljava/io/InputStream;)Ljava/nio/ByteBuffer;
     //   50: astore_3
     //   51: aload_2
-    //   52: ifnull +111 -> 163
-    //   55: aload_2
-    //   56: getstatic 100	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   59: if_acmpeq +104 -> 163
-    //   62: aload_2
-    //   63: getstatic 103	android/graphics/Bitmap$Config:ARGB_4444	Landroid/graphics/Bitmap$Config;
-    //   66: if_acmpeq +97 -> 163
-    //   69: aload_2
-    //   70: getstatic 106	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   73: if_acmpeq +90 -> 163
-    //   76: getstatic 109	android/graphics/Bitmap$Config:ALPHA_8	Landroid/graphics/Bitmap$Config;
-    //   79: astore_1
-    //   80: aload_2
-    //   81: aload_1
-    //   82: if_acmpne +76 -> 158
-    //   85: iconst_2
-    //   86: istore 4
-    //   88: aload_3
-    //   89: ifnull +117 -> 206
-    //   92: aload_0
-    //   93: getfield 40	com/github/henryye/nativeiv/comm/NativeImage:jni	Lcom/github/henryye/nativeiv/comm/NativeImageJni;
-    //   96: astore_1
-    //   97: aload_1
-    //   98: getfield 114	com/github/henryye/nativeiv/comm/NativeImageJni:mNativeInst	J
-    //   101: lconst_0
-    //   102: lcmp
-    //   103: ifeq +66 -> 169
-    //   106: aload_1
-    //   107: aload_1
-    //   108: getfield 114	com/github/henryye/nativeiv/comm/NativeImageJni:mNativeInst	J
-    //   111: aload_3
-    //   112: iload 4
-    //   114: invokevirtual 118	com/github/henryye/nativeiv/comm/NativeImageJni:nativeDecodeNative	(JLjava/nio/ByteBuffer;I)Lcom/github/henryye/nativeiv/comm/CommNativeBitmapStruct;
-    //   117: astore_1
-    //   118: aload_1
-    //   119: ifnull +55 -> 174
-    //   122: aload_0
-    //   123: aload_1
-    //   124: invokevirtual 124	com/github/henryye/nativeiv/comm/CommNativeBitmapStruct:convertToCommonStruct	()Lcom/github/henryye/nativeiv/comm/CommNativeBitmapStruct;
-    //   127: putfield 34	com/github/henryye/nativeiv/comm/NativeImage:mNativeBitmapStruct	Lcom/github/henryye/nativeiv/bitmap/NativeBitmapStruct;
-    //   130: aload_3
-    //   131: invokevirtual 130	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-    //   134: pop
-    //   135: aload_0
-    //   136: invokestatic 77	android/os/SystemClock:elapsedRealtime	()J
-    //   139: lload 5
-    //   141: lsub
-    //   142: putfield 38	com/github/henryye/nativeiv/comm/NativeImage:lastDecodeUsing	J
-    //   145: ldc 71
-    //   147: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   150: goto -131 -> 19
-    //   153: astore_1
-    //   154: aload_0
-    //   155: monitorexit
-    //   156: aload_1
-    //   157: athrow
-    //   158: getstatic 136	android/os/Build$VERSION:SDK_INT	I
-    //   161: istore 4
-    //   163: iconst_4
-    //   164: istore 4
-    //   166: goto -78 -> 88
-    //   169: aconst_null
-    //   170: astore_1
-    //   171: goto -53 -> 118
-    //   174: ldc 12
-    //   176: ldc 138
-    //   178: iconst_0
-    //   179: anewarray 5	java/lang/Object
-    //   182: invokestatic 141	com/tencent/magicbrush/a/c$c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   185: goto -55 -> 130
-    //   188: astore_1
-    //   189: aload_0
-    //   190: invokestatic 77	android/os/SystemClock:elapsedRealtime	()J
-    //   193: lload 5
-    //   195: lsub
-    //   196: putfield 38	com/github/henryye/nativeiv/comm/NativeImage:lastDecodeUsing	J
-    //   199: ldc 71
-    //   201: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   204: aload_1
-    //   205: athrow
-    //   206: ldc 12
-    //   208: ldc 143
-    //   210: iconst_0
-    //   211: anewarray 5	java/lang/Object
-    //   214: invokestatic 85	com/tencent/magicbrush/a/c$c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   217: aload_0
-    //   218: invokevirtual 88	com/github/henryye/nativeiv/comm/NativeImage:recycle	()V
-    //   221: new 145	java/io/IOException
-    //   224: dup
-    //   225: ldc 147
-    //   227: invokespecial 150	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   230: astore_1
-    //   231: ldc 71
-    //   233: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   236: aload_1
-    //   237: athrow
+    //   52: getfield 100	com/github/henryye/nativeiv/ImageDecodeConfig:mConfig	Landroid/graphics/Bitmap$Config;
+    //   55: astore_1
+    //   56: aload_1
+    //   57: ifnull +121 -> 178
+    //   60: aload_1
+    //   61: getstatic 105	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   64: if_acmpeq +114 -> 178
+    //   67: aload_1
+    //   68: getstatic 108	android/graphics/Bitmap$Config:ARGB_4444	Landroid/graphics/Bitmap$Config;
+    //   71: if_acmpeq +107 -> 178
+    //   74: aload_1
+    //   75: getstatic 111	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   78: if_acmpeq +100 -> 178
+    //   81: getstatic 114	android/graphics/Bitmap$Config:ALPHA_8	Landroid/graphics/Bitmap$Config;
+    //   84: astore 8
+    //   86: aload_1
+    //   87: aload 8
+    //   89: if_acmpne +84 -> 173
+    //   92: iconst_2
+    //   93: istore 4
+    //   95: aload_3
+    //   96: ifnull +125 -> 221
+    //   99: aload_0
+    //   100: getfield 40	com/github/henryye/nativeiv/comm/NativeImage:jni	Lcom/github/henryye/nativeiv/comm/NativeImageJni;
+    //   103: astore_1
+    //   104: aload_2
+    //   105: getfield 118	com/github/henryye/nativeiv/ImageDecodeConfig:mPremultiplyAlpha	Z
+    //   108: istore 7
+    //   110: aload_1
+    //   111: getfield 123	com/github/henryye/nativeiv/comm/NativeImageJni:mNativeInst	J
+    //   114: lconst_0
+    //   115: lcmp
+    //   116: ifeq +68 -> 184
+    //   119: aload_1
+    //   120: aload_1
+    //   121: getfield 123	com/github/henryye/nativeiv/comm/NativeImageJni:mNativeInst	J
+    //   124: aload_3
+    //   125: iload 4
+    //   127: iload 7
+    //   129: invokevirtual 127	com/github/henryye/nativeiv/comm/NativeImageJni:nativeDecodeNative	(JLjava/nio/ByteBuffer;IZ)Lcom/github/henryye/nativeiv/comm/CommNativeBitmapStruct;
+    //   132: astore_1
+    //   133: aload_1
+    //   134: ifnull +55 -> 189
+    //   137: aload_0
+    //   138: aload_1
+    //   139: invokevirtual 133	com/github/henryye/nativeiv/comm/CommNativeBitmapStruct:convertToCommonStruct	()Lcom/github/henryye/nativeiv/comm/CommNativeBitmapStruct;
+    //   142: putfield 34	com/github/henryye/nativeiv/comm/NativeImage:mNativeBitmapStruct	Lcom/github/henryye/nativeiv/bitmap/NativeBitmapStruct;
+    //   145: aload_3
+    //   146: invokevirtual 139	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   149: pop
+    //   150: aload_0
+    //   151: invokestatic 77	android/os/SystemClock:elapsedRealtime	()J
+    //   154: lload 5
+    //   156: lsub
+    //   157: putfield 38	com/github/henryye/nativeiv/comm/NativeImage:lastDecodeUsing	J
+    //   160: ldc 71
+    //   162: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   165: goto -146 -> 19
+    //   168: astore_1
+    //   169: aload_0
+    //   170: monitorexit
+    //   171: aload_1
+    //   172: athrow
+    //   173: getstatic 145	android/os/Build$VERSION:SDK_INT	I
+    //   176: istore 4
+    //   178: iconst_4
+    //   179: istore 4
+    //   181: goto -86 -> 95
+    //   184: aconst_null
+    //   185: astore_1
+    //   186: goto -53 -> 133
+    //   189: ldc 12
+    //   191: ldc 147
+    //   193: iconst_0
+    //   194: anewarray 5	java/lang/Object
+    //   197: invokestatic 150	com/github/henryye/nativeiv/a/b:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   200: goto -55 -> 145
+    //   203: astore_1
+    //   204: aload_0
+    //   205: invokestatic 77	android/os/SystemClock:elapsedRealtime	()J
+    //   208: lload 5
+    //   210: lsub
+    //   211: putfield 38	com/github/henryye/nativeiv/comm/NativeImage:lastDecodeUsing	J
+    //   214: ldc 71
+    //   216: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   219: aload_1
+    //   220: athrow
+    //   221: ldc 12
+    //   223: ldc 152
+    //   225: iconst_0
+    //   226: anewarray 5	java/lang/Object
+    //   229: invokestatic 85	com/github/henryye/nativeiv/a/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   232: aload_0
+    //   233: invokevirtual 88	com/github/henryye/nativeiv/comm/NativeImage:recycle	()V
+    //   236: new 154	java/io/IOException
+    //   239: dup
+    //   240: ldc 156
+    //   242: invokespecial 159	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   245: astore_1
+    //   246: ldc 71
+    //   248: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   251: aload_1
+    //   252: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	238	0	this	NativeImage
-    //   0	238	1	paramInputStream	InputStream
-    //   0	238	2	paramConfig	Bitmap.Config
-    //   0	238	3	paramc	c
-    //   86	79	4	i	int
-    //   25	169	5	l	long
+    //   0	253	0	this	NativeImage
+    //   0	253	1	paramInputStream	InputStream
+    //   0	253	2	paramImageDecodeConfig	ImageDecodeConfig
+    //   0	253	3	paramc	c
+    //   93	87	4	i	int
+    //   25	184	5	l	long
+    //   108	20	7	bool	boolean
+    //   84	4	8	localConfig	android.graphics.Bitmap.Config
     // Exception table:
     //   from	to	target	type
-    //   2	19	153	finally
-    //   22	27	153	finally
-    //   31	46	153	finally
-    //   46	51	153	finally
-    //   55	80	153	finally
-    //   135	150	153	finally
-    //   158	163	153	finally
-    //   189	206	153	finally
-    //   92	118	188	finally
-    //   122	130	188	finally
-    //   130	135	188	finally
-    //   174	185	188	finally
-    //   206	238	188	finally
+    //   2	19	168	finally
+    //   22	27	168	finally
+    //   31	46	168	finally
+    //   46	56	168	finally
+    //   60	86	168	finally
+    //   150	165	168	finally
+    //   173	178	168	finally
+    //   204	221	168	finally
+    //   99	133	203	finally
+    //   137	145	203	finally
+    //   145	150	203	finally
+    //   189	200	203	finally
+    //   221	253	203	finally
   }
   
-  public void decodeInputStreamRegion(InputStream paramInputStream, Rect paramRect, Bitmap.Config paramConfig, c paramc)
+  public void decodeInputStreamRegion(InputStream paramInputStream, Rect paramRect, ImageDecodeConfig paramImageDecodeConfig, c paramc)
   {
-    AppMethodBeat.i(115763);
+    AppMethodBeat.i(127368);
     paramInputStream = new IOException("Stub!");
-    AppMethodBeat.o(115763);
+    AppMethodBeat.o(127368);
     throw paramInputStream;
   }
   
@@ -253,17 +262,17 @@ public class NativeImage
   {
     try
     {
-      AppMethodBeat.i(115764);
+      AppMethodBeat.i(127369);
       com.github.henryye.nativeiv.bitmap.a locala = new com.github.henryye.nativeiv.bitmap.a();
       if (this.mNativeBitmapStruct != null)
       {
         locala.width = this.mNativeBitmapStruct.width;
         locala.height = this.mNativeBitmapStruct.height;
-        locala.auG = true;
-        locala.auH = Integer.valueOf(this.mNativeBitmapStruct.glFormat);
-        locala.auI = this.lastDecodeUsing;
+        locala.aPW = true;
+        locala.aPX = Integer.valueOf(this.mNativeBitmapStruct.glFormat);
+        locala.aPY = this.lastDecodeUsing;
       }
-      AppMethodBeat.o(115764);
+      AppMethodBeat.o(127369);
       return locala;
     }
     finally {}
@@ -298,106 +307,95 @@ public class NativeImage
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 210
+    //   2: ldc 218
     //   4: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: ldc 12
-    //   9: ldc 212
-    //   11: iconst_1
-    //   12: anewarray 5	java/lang/Object
-    //   15: dup
-    //   16: iconst_0
-    //   17: aload_0
-    //   18: invokevirtual 52	java/lang/Object:hashCode	()I
-    //   21: invokestatic 58	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   24: aastore
-    //   25: invokestatic 215	com/tencent/magicbrush/a/c$c:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   7: aload_0
+    //   8: getfield 34	com/github/henryye/nativeiv/comm/NativeImage:mNativeBitmapStruct	Lcom/github/henryye/nativeiv/bitmap/NativeBitmapStruct;
+    //   11: ifnull +53 -> 64
+    //   14: aload_0
+    //   15: getfield 34	com/github/henryye/nativeiv/comm/NativeImage:mNativeBitmapStruct	Lcom/github/henryye/nativeiv/bitmap/NativeBitmapStruct;
+    //   18: getfield 221	com/github/henryye/nativeiv/bitmap/NativeBitmapStruct:ptr	J
+    //   21: ldc2_w 35
+    //   24: lcmp
+    //   25: ifeq +39 -> 64
     //   28: aload_0
-    //   29: getfield 34	com/github/henryye/nativeiv/comm/NativeImage:mNativeBitmapStruct	Lcom/github/henryye/nativeiv/bitmap/NativeBitmapStruct;
-    //   32: ifnull +53 -> 85
-    //   35: aload_0
-    //   36: getfield 34	com/github/henryye/nativeiv/comm/NativeImage:mNativeBitmapStruct	Lcom/github/henryye/nativeiv/bitmap/NativeBitmapStruct;
-    //   39: getfield 218	com/github/henryye/nativeiv/bitmap/NativeBitmapStruct:ptr	J
-    //   42: ldc2_w 35
-    //   45: lcmp
-    //   46: ifeq +39 -> 85
-    //   49: aload_0
-    //   50: getfield 40	com/github/henryye/nativeiv/comm/NativeImage:jni	Lcom/github/henryye/nativeiv/comm/NativeImageJni;
-    //   53: astore_3
-    //   54: aload_0
-    //   55: getfield 34	com/github/henryye/nativeiv/comm/NativeImage:mNativeBitmapStruct	Lcom/github/henryye/nativeiv/bitmap/NativeBitmapStruct;
-    //   58: getfield 218	com/github/henryye/nativeiv/bitmap/NativeBitmapStruct:ptr	J
-    //   61: lstore_1
-    //   62: aload_3
-    //   63: getfield 114	com/github/henryye/nativeiv/comm/NativeImageJni:mNativeInst	J
-    //   66: lconst_0
-    //   67: lcmp
-    //   68: ifeq +12 -> 80
-    //   71: aload_3
-    //   72: aload_3
-    //   73: getfield 114	com/github/henryye/nativeiv/comm/NativeImageJni:mNativeInst	J
-    //   76: lload_1
-    //   77: invokevirtual 222	com/github/henryye/nativeiv/comm/NativeImageJni:nativeRecycleNative	(JJ)V
-    //   80: aload_0
-    //   81: aconst_null
-    //   82: putfield 34	com/github/henryye/nativeiv/comm/NativeImage:mNativeBitmapStruct	Lcom/github/henryye/nativeiv/bitmap/NativeBitmapStruct;
-    //   85: aload_0
-    //   86: getfield 42	com/github/henryye/nativeiv/comm/NativeImage:factory	Lcom/github/henryye/nativeiv/comm/a;
-    //   89: ifnull +32 -> 121
-    //   92: aload_0
-    //   93: getfield 42	com/github/henryye/nativeiv/comm/NativeImage:factory	Lcom/github/henryye/nativeiv/comm/a;
-    //   96: astore_3
-    //   97: aload_3
-    //   98: monitorenter
-    //   99: aload_3
-    //   100: getfield 48	com/github/henryye/nativeiv/comm/a:auT	Ljava/util/HashMap;
-    //   103: aload_0
-    //   104: invokevirtual 52	java/lang/Object:hashCode	()I
-    //   107: invokestatic 58	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   110: invokevirtual 226	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   113: pop
-    //   114: aload_3
-    //   115: monitorexit
-    //   116: aload_0
-    //   117: aconst_null
-    //   118: putfield 42	com/github/henryye/nativeiv/comm/NativeImage:factory	Lcom/github/henryye/nativeiv/comm/a;
-    //   121: ldc 210
-    //   123: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   126: aload_0
-    //   127: monitorexit
-    //   128: return
-    //   129: astore 4
-    //   131: aload_3
-    //   132: monitorexit
-    //   133: ldc 210
-    //   135: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   138: aload 4
-    //   140: athrow
-    //   141: astore_3
-    //   142: aload_0
-    //   143: monitorexit
-    //   144: aload_3
-    //   145: athrow
+    //   29: getfield 40	com/github/henryye/nativeiv/comm/NativeImage:jni	Lcom/github/henryye/nativeiv/comm/NativeImageJni;
+    //   32: astore_3
+    //   33: aload_0
+    //   34: getfield 34	com/github/henryye/nativeiv/comm/NativeImage:mNativeBitmapStruct	Lcom/github/henryye/nativeiv/bitmap/NativeBitmapStruct;
+    //   37: getfield 221	com/github/henryye/nativeiv/bitmap/NativeBitmapStruct:ptr	J
+    //   40: lstore_1
+    //   41: aload_3
+    //   42: getfield 123	com/github/henryye/nativeiv/comm/NativeImageJni:mNativeInst	J
+    //   45: lconst_0
+    //   46: lcmp
+    //   47: ifeq +12 -> 59
+    //   50: aload_3
+    //   51: aload_3
+    //   52: getfield 123	com/github/henryye/nativeiv/comm/NativeImageJni:mNativeInst	J
+    //   55: lload_1
+    //   56: invokevirtual 225	com/github/henryye/nativeiv/comm/NativeImageJni:nativeRecycleNative	(JJ)V
+    //   59: aload_0
+    //   60: aconst_null
+    //   61: putfield 34	com/github/henryye/nativeiv/comm/NativeImage:mNativeBitmapStruct	Lcom/github/henryye/nativeiv/bitmap/NativeBitmapStruct;
+    //   64: aload_0
+    //   65: getfield 42	com/github/henryye/nativeiv/comm/NativeImage:factory	Lcom/github/henryye/nativeiv/comm/a;
+    //   68: ifnull +32 -> 100
+    //   71: aload_0
+    //   72: getfield 42	com/github/henryye/nativeiv/comm/NativeImage:factory	Lcom/github/henryye/nativeiv/comm/a;
+    //   75: astore_3
+    //   76: aload_3
+    //   77: monitorenter
+    //   78: aload_3
+    //   79: getfield 48	com/github/henryye/nativeiv/comm/a:aQj	Ljava/util/HashMap;
+    //   82: aload_0
+    //   83: invokevirtual 52	java/lang/Object:hashCode	()I
+    //   86: invokestatic 58	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   89: invokevirtual 229	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   92: pop
+    //   93: aload_3
+    //   94: monitorexit
+    //   95: aload_0
+    //   96: aconst_null
+    //   97: putfield 42	com/github/henryye/nativeiv/comm/NativeImage:factory	Lcom/github/henryye/nativeiv/comm/a;
+    //   100: ldc 218
+    //   102: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   105: aload_0
+    //   106: monitorexit
+    //   107: return
+    //   108: astore 4
+    //   110: aload_3
+    //   111: monitorexit
+    //   112: ldc 218
+    //   114: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: aload 4
+    //   119: athrow
+    //   120: astore_3
+    //   121: aload_0
+    //   122: monitorexit
+    //   123: aload_3
+    //   124: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	146	0	this	NativeImage
-    //   61	16	1	l	long
-    //   141	4	3	localObject2	Object
-    //   129	10	4	localObject3	Object
+    //   0	125	0	this	NativeImage
+    //   40	16	1	l	long
+    //   120	4	3	localObject2	Object
+    //   108	10	4	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   99	116	129	finally
-    //   131	133	129	finally
-    //   2	80	141	finally
-    //   80	85	141	finally
-    //   85	99	141	finally
-    //   116	121	141	finally
-    //   121	126	141	finally
-    //   133	141	141	finally
+    //   78	95	108	finally
+    //   110	112	108	finally
+    //   2	59	120	finally
+    //   59	64	120	finally
+    //   64	78	120	finally
+    //   95	100	120	finally
+    //   100	105	120	finally
+    //   112	120	120	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.github.henryye.nativeiv.comm.NativeImage
  * JD-Core Version:    0.7.0.1
  */

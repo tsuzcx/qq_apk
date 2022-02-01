@@ -2,15 +2,25 @@ package com.tencent.xweb.xwalk;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.JsRuntime.JsRuntimeType;
 import com.tencent.xweb.WebView;
+import com.tencent.xweb.WebView.PreInitCallback;
 import com.tencent.xweb.WebView.c;
-import com.tencent.xweb.WebView.d;
-import com.tencent.xweb.c.b.a;
-import com.tencent.xweb.c.b.b;
-import com.tencent.xweb.c.l.a;
-import com.tencent.xweb.k.a;
-import com.tencent.xweb.util.f;
-import com.tencent.xweb.xwalk.b.a.a;
+import com.tencent.xweb.af;
+import com.tencent.xweb.b;
+import com.tencent.xweb.internal.CookieInternal.ICookieManagerInternal;
+import com.tencent.xweb.internal.CookieInternal.ICookieSyncManagerInternal;
+import com.tencent.xweb.internal.IJsRuntime;
+import com.tencent.xweb.internal.IWebStorage;
+import com.tencent.xweb.internal.IWebView;
+import com.tencent.xweb.internal.j.a;
+import com.tencent.xweb.r;
+import com.tencent.xweb.r.a;
+import com.tencent.xweb.s;
+import com.tencent.xweb.util.g;
+import com.tencent.xweb.xwalk.updater.Scheduler;
+import com.tencent.xweb.xwalk.updater.a.a;
+import java.lang.reflect.Method;
 import org.xwalk.core.WebViewExtension;
 import org.xwalk.core.WebViewExtensionListener;
 import org.xwalk.core.XWalkCoreWrapper;
@@ -21,21 +31,32 @@ import org.xwalk.core.XWalkViewDatabase;
 import org.xwalk.core.resource.XWalkContextWrapper;
 
 public class XWalkWebFactory
-  implements l.a
+  implements j.a
 {
   private static final String TAG = "XWalkWebFactory";
   static XWalkWebFactory sInstance;
-  private boolean mIsDebugMode = false;
-  private boolean mIsDebugModeReplase = false;
+  private boolean mIsDebugMode;
+  private boolean mIsDebugModeReplase;
+  
+  private XWalkWebFactory()
+  {
+    AppMethodBeat.i(185205);
+    this.mIsDebugMode = false;
+    this.mIsDebugModeReplase = false;
+    r.a(new a((byte)0));
+    AppMethodBeat.o(185205);
+  }
   
   public static XWalkWebFactory getInstance()
   {
-    AppMethodBeat.i(85399);
-    if (sInstance == null) {
+    AppMethodBeat.i(154485);
+    if (sInstance == null)
+    {
+      af.frp();
       sInstance = new XWalkWebFactory();
     }
     XWalkWebFactory localXWalkWebFactory = sInstance;
-    AppMethodBeat.o(85399);
+    AppMethodBeat.o(154485);
     return localXWalkWebFactory;
   }
   
@@ -47,19 +68,19 @@ public class XWalkWebFactory
     //   1: istore_3
     //   2: ldc 2
     //   4: monitorenter
-    //   5: ldc 48
-    //   7: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 68
+    //   7: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_0
-    //   11: invokestatic 54	org/xwalk/core/XWalkEnvironment:init	(Landroid/content/Context;)V
+    //   11: invokestatic 74	org/xwalk/core/XWalkEnvironment:init	(Landroid/content/Context;)V
     //   14: iload_1
     //   15: ifeq +17 -> 32
-    //   18: invokestatic 58	org/xwalk/core/XWalkEnvironment:getAvailableVersion	()I
-    //   21: ldc 59
+    //   18: invokestatic 78	org/xwalk/core/XWalkEnvironment:getAvailableVersion	()I
+    //   21: ldc 79
     //   23: if_icmpne +9 -> 32
-    //   26: ldc 59
-    //   28: invokestatic 63	org/xwalk/core/XWalkEnvironment:delApiVersion	(I)Z
+    //   26: ldc 79
+    //   28: invokestatic 83	org/xwalk/core/XWalkEnvironment:delApiVersion	(I)Z
     //   31: pop
-    //   32: invokestatic 58	org/xwalk/core/XWalkEnvironment:getAvailableVersion	()I
+    //   32: invokestatic 78	org/xwalk/core/XWalkEnvironment:getAvailableVersion	()I
     //   35: istore_2
     //   36: iload_2
     //   37: iconst_m1
@@ -67,33 +88,33 @@ public class XWalkWebFactory
     //   41: iload_1
     //   42: ifeq +106 -> 148
     //   45: aload_0
-    //   46: invokevirtual 69	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   49: ldc 71
-    //   51: invokevirtual 77	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   46: invokevirtual 89	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   49: ldc 91
+    //   51: invokevirtual 97	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   54: astore 4
-    //   56: new 79	java/io/File
+    //   56: new 99	java/io/File
     //   59: dup
-    //   60: ldc 59
-    //   62: invokestatic 83	org/xwalk/core/XWalkEnvironment:getDownloadZipDir	(I)Ljava/lang/String;
-    //   65: invokespecial 86	java/io/File:<init>	(Ljava/lang/String;)V
+    //   60: ldc 79
+    //   62: invokestatic 103	org/xwalk/core/XWalkEnvironment:getDownloadZipDir	(I)Ljava/lang/String;
+    //   65: invokespecial 106	java/io/File:<init>	(Ljava/lang/String;)V
     //   68: astore 5
     //   70: aload 5
-    //   72: invokevirtual 90	java/io/File:exists	()Z
+    //   72: invokevirtual 110	java/io/File:exists	()Z
     //   75: ifeq +9 -> 84
     //   78: aload 5
-    //   80: invokevirtual 93	java/io/File:delete	()Z
+    //   80: invokevirtual 113	java/io/File:delete	()Z
     //   83: pop
-    //   84: new 95	java/io/FileOutputStream
+    //   84: new 115	java/io/FileOutputStream
     //   87: dup
     //   88: aload 5
-    //   90: invokespecial 98	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   90: invokespecial 118	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   93: astore 5
-    //   95: ldc 99
+    //   95: ldc 119
     //   97: newarray byte
     //   99: astore 6
     //   101: aload 4
     //   103: aload 6
-    //   105: invokevirtual 105	java/io/InputStream:read	([B)I
+    //   105: invokevirtual 125	java/io/InputStream:read	([B)I
     //   108: istore_2
     //   109: iload_2
     //   110: iconst_m1
@@ -102,7 +123,7 @@ public class XWalkWebFactory
     //   116: aload 6
     //   118: iconst_0
     //   119: iload_2
-    //   120: invokevirtual 109	java/io/FileOutputStream:write	([BII)V
+    //   120: invokevirtual 129	java/io/FileOutputStream:write	([BII)V
     //   123: goto -22 -> 101
     //   126: astore_0
     //   127: aload 5
@@ -110,13 +131,13 @@ public class XWalkWebFactory
     //   130: aload 4
     //   132: ifnull +8 -> 140
     //   135: aload 4
-    //   137: invokevirtual 112	java/io/InputStream:close	()V
+    //   137: invokevirtual 132	java/io/InputStream:close	()V
     //   140: aload_0
     //   141: ifnull +7 -> 148
     //   144: aload_0
-    //   145: invokevirtual 113	java/io/FileOutputStream:close	()V
-    //   148: ldc 48
-    //   150: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   145: invokevirtual 133	java/io/FileOutputStream:close	()V
+    //   148: ldc 68
+    //   150: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   153: iload_3
     //   154: istore_1
     //   155: ldc 2
@@ -124,21 +145,21 @@ public class XWalkWebFactory
     //   158: iload_1
     //   159: ireturn
     //   160: aload 5
-    //   162: invokevirtual 116	java/io/FileOutputStream:flush	()V
-    //   165: invokestatic 121	org/xwalk/core/XWalkUpdater:updateLocalXWalkRuntime	()V
-    //   168: invokestatic 124	org/xwalk/core/XWalkEnvironment:resetForDebug	()V
+    //   162: invokevirtual 136	java/io/FileOutputStream:flush	()V
+    //   165: invokestatic 141	org/xwalk/core/XWalkUpdater:updateLocalXWalkRuntime	()V
+    //   168: invokestatic 144	org/xwalk/core/XWalkEnvironment:resetForDebug	()V
     //   171: aload_0
-    //   172: invokestatic 54	org/xwalk/core/XWalkEnvironment:init	(Landroid/content/Context;)V
+    //   172: invokestatic 74	org/xwalk/core/XWalkEnvironment:init	(Landroid/content/Context;)V
     //   175: aload 4
     //   177: ifnull +8 -> 185
     //   180: aload 4
-    //   182: invokevirtual 112	java/io/InputStream:close	()V
+    //   182: invokevirtual 132	java/io/InputStream:close	()V
     //   185: aload 5
-    //   187: invokevirtual 113	java/io/FileOutputStream:close	()V
+    //   187: invokevirtual 133	java/io/FileOutputStream:close	()V
     //   190: iconst_1
     //   191: istore_1
-    //   192: ldc 48
-    //   194: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   192: ldc 68
+    //   194: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   197: goto -42 -> 155
     //   200: astore_0
     //   201: ldc 2
@@ -153,13 +174,13 @@ public class XWalkWebFactory
     //   213: aload 4
     //   215: ifnull +8 -> 223
     //   218: aload 4
-    //   220: invokevirtual 112	java/io/InputStream:close	()V
+    //   220: invokevirtual 132	java/io/InputStream:close	()V
     //   223: aload 5
     //   225: ifnull +8 -> 233
     //   228: aload 5
-    //   230: invokevirtual 113	java/io/FileOutputStream:close	()V
-    //   233: ldc 48
-    //   235: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   230: invokevirtual 133	java/io/FileOutputStream:close	()V
+    //   233: ldc 68
+    //   235: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   238: aload_0
     //   239: athrow
     //   240: astore_0
@@ -241,10 +262,10 @@ public class XWalkWebFactory
   
   public void clearAllWebViewCache(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(85410);
-    if (WebView.getCurWebType() != WebView.d.BEq)
+    AppMethodBeat.i(154496);
+    if (WebView.getCurWebType() != WebView.c.INC)
     {
-      AppMethodBeat.o(85410);
+      AppMethodBeat.o(154496);
       return;
     }
     try
@@ -252,7 +273,7 @@ public class XWalkWebFactory
       int i = XWalkEnvironment.getAvailableVersion();
       if (i <= 0)
       {
-        AppMethodBeat.o(85410);
+        AppMethodBeat.o(154496);
         return;
       }
       paramContext = new XWalkView(new XWalkContextWrapper(XWalkEnvironment.getApplicationContext(), XWalkEnvironment.getAvailableVersion()));
@@ -268,26 +289,26 @@ public class XWalkWebFactory
           paramContext.removeAllCookie();
         }
       }
-      AppMethodBeat.o(85410);
+      AppMethodBeat.o(154496);
       return;
     }
     catch (Throwable paramContext)
     {
       org.xwalk.core.Log.e("XWalkWebFactory", "clearAllWebViewCache exception 1 -- " + paramContext.getMessage());
-      AppMethodBeat.o(85410);
+      AppMethodBeat.o(154496);
     }
   }
   
-  public com.tencent.xweb.c.i createWebView(WebView paramWebView)
+  public IWebView createWebView(WebView paramWebView)
   {
-    AppMethodBeat.i(85401);
+    AppMethodBeat.i(154487);
     try
     {
-      if (j.fL(paramWebView.getContext()))
+      if (j.gX(paramWebView.getContext()))
       {
         WebViewExtension.updateExtension(false);
         paramWebView = new j(paramWebView);
-        AppMethodBeat.o(85401);
+        AppMethodBeat.o(154487);
         return paramWebView;
       }
     }
@@ -296,32 +317,32 @@ public class XWalkWebFactory
       paramWebView = "init xwalk crashed:" + paramWebView.getMessage() + ",stacktrace:" + android.util.Log.getStackTraceString(paramWebView);
       org.xwalk.core.Log.e("XWalkWebFactory", paramWebView);
       XWalkInitializer.addXWalkInitializeLog(paramWebView);
-      AppMethodBeat.o(85401);
+      AppMethodBeat.o(154487);
     }
     return null;
   }
   
-  public com.tencent.xweb.c.h createWebviewStorage()
+  public IWebStorage createWebviewStorage()
   {
-    AppMethodBeat.i(85413);
+    AppMethodBeat.i(154499);
     i locali = new i();
-    AppMethodBeat.o(85413);
+    AppMethodBeat.o(154499);
     return locali;
   }
   
   public Object excute(String paramString, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(85400);
+    AppMethodBeat.i(154486);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      AppMethodBeat.o(85400);
+      AppMethodBeat.o(154486);
       return null;
     }
     if (paramString.equals("STR_CMD_INVOKE_TO_RUNTIME"))
     {
       if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 2))
       {
-        AppMethodBeat.o(85400);
+        AppMethodBeat.o(154486);
         return null;
       }
       try
@@ -329,7 +350,7 @@ public class XWalkWebFactory
         if (XWalkCoreWrapper.getInstance() != null)
         {
           paramString = XWalkCoreWrapper.invokeRuntimeChannel(((Integer)paramArrayOfObject[0]).intValue(), (Object[])paramArrayOfObject[1]);
-          AppMethodBeat.o(85400);
+          AppMethodBeat.o(154486);
           return paramString;
         }
       }
@@ -338,45 +359,45 @@ public class XWalkWebFactory
         org.xwalk.core.Log.e("XWalkWebFactory", "STR_CMD_INVOKE_TO_RUNTIME failed , err = " + paramString.getMessage());
       }
     }
-    label549:
-    label552:
+    label796:
+    label799:
     for (;;)
     {
-      AppMethodBeat.o(85400);
+      AppMethodBeat.o(154486);
       return null;
       if (paramString.equals("STR_CMD_EXXCUTE_CMD_FROM_CONFIG"))
       {
         if ((paramArrayOfObject == null) || (paramArrayOfObject.length <= 0))
         {
-          AppMethodBeat.o(85400);
+          AppMethodBeat.o(154486);
           return null;
         }
-        paramString = a.db(paramArrayOfObject[0]);
-        AppMethodBeat.o(85400);
+        paramString = a.ey(paramArrayOfObject[0]);
+        AppMethodBeat.o(154486);
         return paramString;
       }
       if (paramString.equals("STR_CMD_GET_DEBUG_VIEW"))
       {
         paramString = new c((WebView)paramArrayOfObject[0]);
-        AppMethodBeat.o(85400);
+        AppMethodBeat.o(154486);
         return paramString;
       }
       if (paramString.equals("STR_CMD_GET_UPDATER"))
       {
-        paramString = new n.a();
-        AppMethodBeat.o(85400);
+        paramString = new o.a();
+        AppMethodBeat.o(154486);
         return paramString;
       }
       if (paramString.equals("STR_CMD_GET_PLUGIN_UPDATER"))
       {
-        paramString = new com.tencent.xweb.xwalk.a.g();
-        AppMethodBeat.o(85400);
+        paramString = new com.tencent.xweb.xwalk.a.i();
+        AppMethodBeat.o(154486);
         return paramString;
       }
       if (paramString.equals("STR_CMD_CLEAR_SCHEDULER"))
       {
-        com.tencent.xweb.xwalk.b.c.a(null);
-        AppMethodBeat.o(85400);
+        Scheduler.a(null);
+        AppMethodBeat.o(154486);
         return null;
       }
       if (paramString.equals("STR_CMD_SET_DEBUG_MODE_REPLACE"))
@@ -393,15 +414,15 @@ public class XWalkWebFactory
       {
         try
         {
-          paramString = com.tencent.xweb.xwalk.b.a.ayr(XWalkEnvironment.getUpdateConfigFullPath());
+          paramString = com.tencent.xweb.xwalk.updater.a.aPF(XWalkEnvironment.getUpdateConfigFullPath());
           if (paramString == null)
           {
             XWalkEnvironment.addXWalkInitializeLog("recheck cmds ConfigParser failed ");
-            AppMethodBeat.o(85400);
+            AppMethodBeat.o(154486);
             return null;
           }
-          com.tencent.xweb.a.a(paramString.BKM, paramString.BKK, true);
-          f.pf(68L);
+          com.tencent.xweb.a.a(paramString.IVp, paramString.IVn, true);
+          g.xs(68L);
         }
         catch (Exception paramString)
         {
@@ -411,73 +432,120 @@ public class XWalkWebFactory
       else if (paramString.equals("STR_CMD_SET_DEBUG_MODE_REPLACE_NOW"))
       {
         tryLoadLocalAssetRuntime((Context)paramArrayOfObject[0], true);
-        c.ge((Context)paramArrayOfObject[0]);
+        c.hr((Context)paramArrayOfObject[0]);
       }
       else
       {
         if (paramString.equals("BASE_CONTEXT_CHANGED")) {
           if ((paramArrayOfObject == null) || (paramArrayOfObject.length <= 0) || (!(paramArrayOfObject[0] instanceof j))) {
-            break label549;
+            break label796;
           }
         }
         for (paramString = (j)paramArrayOfObject[0];; paramString = null)
         {
-          if ((paramString == null) || (XWalkCoreWrapper.getInstance() == null)) {
-            break label552;
-          }
-          if (paramString.BJF == null) {
-            org.xwalk.core.Log.e("XWWebView", "getXWalkBridge mwebview == null");
-          }
-          for (paramString = null;; paramString = paramString.BJF.getBridge())
+          for (;;)
           {
-            XWalkCoreWrapper.getInstance();
-            XWalkCoreWrapper.invokeRuntimeChannel(80001, new Object[] { paramString });
+            for (;;)
+            {
+              if ((paramString == null) || (XWalkCoreWrapper.getInstance() == null)) {
+                break label799;
+              }
+              if (paramString.ITM == null) {
+                org.xwalk.core.Log.e("XWWebView", "getXWalkBridge mwebview == null");
+              }
+              for (paramString = null;; paramString = paramString.ITM.getBridge())
+              {
+                XWalkCoreWrapper.getInstance();
+                XWalkCoreWrapper.invokeRuntimeChannel(80001, new Object[] { paramString });
+                break;
+              }
+              if (paramString.equals("STR_CMD_FEATURE_SUPPORT"))
+              {
+                boolean bool = XWalkCoreWrapper.hasFeatureStatic(((Integer)paramArrayOfObject[0]).intValue());
+                AppMethodBeat.o(154486);
+                return Boolean.valueOf(bool);
+              }
+              if (paramString.equals("STR_CMD_NATIVE_TRANS_INIT"))
+              {
+                if (paramArrayOfObject.length != 1)
+                {
+                  AppMethodBeat.o(154486);
+                  return null;
+                }
+                XWalkCoreWrapper.bindNativeTrans(((Long)paramArrayOfObject[0]).longValue());
+                break;
+              }
+              if (!paramString.equals("STR_CMD_FORCE_DARK_MODE_COMMAND")) {
+                break label699;
+              }
+              try
+              {
+                if (XWalkCoreWrapper.getInstance() == null) {
+                  break;
+                }
+                XWalkCoreWrapper.getInstance().getBridgeClass("XWalkSettingsInternal").getDeclaredMethod("setWeChatDefaultForceDarkMode", new Class[] { Boolean.TYPE }).invoke(null, new Object[] { Boolean.valueOf(((Boolean)paramArrayOfObject[0]).booleanValue()) });
+              }
+              catch (Exception paramString)
+              {
+                org.xwalk.core.Log.e("XWalkWebFactory", "XWalkSettingsInternal setWeChatDefaultForceDarkMode error:" + paramString.getMessage());
+              }
+            }
             break;
+            label699:
+            if (!paramString.equals("STR_CMD_FORCE_DARK_MODE_BEHAVIOR_COMMAND")) {
+              break;
+            }
+            try
+            {
+              if (XWalkCoreWrapper.getInstance() == null) {
+                break;
+              }
+              XWalkCoreWrapper.getInstance().getBridgeClass("XWalkSettingsInternal").getDeclaredMethod("setWeChatDefaultForceDarkBehavior", new Class[] { Integer.TYPE }).invoke(null, new Object[] { Integer.valueOf(((Integer)paramArrayOfObject[0]).intValue()) });
+            }
+            catch (Exception paramString)
+            {
+              org.xwalk.core.Log.e("XWalkWebFactory", "XWalkSettingsInternal setWeChatDefaultForceDarkBehavior error:" + paramString.getMessage());
+            }
           }
-          if (!paramString.equals("STR_CMD_FEATURE_SUPPORT")) {
-            break;
-          }
-          boolean bool = XWalkCoreWrapper.hasFeatureStatic(((Integer)paramArrayOfObject[0]).intValue());
-          AppMethodBeat.o(85400);
-          return Boolean.valueOf(bool);
+          break;
         }
       }
     }
   }
   
-  public b.a getCookieManager()
+  public CookieInternal.ICookieManagerInternal getCookieManager()
   {
-    AppMethodBeat.i(85411);
+    AppMethodBeat.i(154497);
     d locald = new d();
-    AppMethodBeat.o(85411);
+    AppMethodBeat.o(154497);
     return locald;
   }
   
-  public b.b getCookieSyncManager()
+  public CookieInternal.ICookieSyncManagerInternal getCookieSyncManager()
   {
-    AppMethodBeat.i(85412);
+    AppMethodBeat.i(154498);
     e locale = new e();
-    AppMethodBeat.o(85412);
+    AppMethodBeat.o(154498);
     return locale;
   }
   
-  public com.tencent.xweb.c.g getJsCore(k.a parama, Context paramContext)
+  public IJsRuntime getJsCore(JsRuntime.JsRuntimeType paramJsRuntimeType, Context paramContext)
   {
     Object localObject = null;
-    AppMethodBeat.i(85404);
+    AppMethodBeat.i(154490);
     initWebviewCore(paramContext, null);
-    switch (XWalkWebFactory.1.BIj[parama.ordinal()])
+    switch (1.ISl[paramJsRuntimeType.ordinal()])
     {
     default: 
       paramContext = localObject;
     }
     for (;;)
     {
-      AppMethodBeat.o(85404);
+      AppMethodBeat.o(154490);
       return paramContext;
       paramContext = localObject;
-      if (com.tencent.xweb.xwalk.b.e.isXWalkReady()) {
-        if (parama == k.a.BDu)
+      if (com.tencent.xweb.xwalk.updater.d.isXWalkReady()) {
+        if (paramJsRuntimeType == JsRuntime.JsRuntimeType.IMJ)
         {
           paramContext = new h();
           paramContext.init(0);
@@ -485,7 +553,7 @@ public class XWalkWebFactory
         else
         {
           paramContext = localObject;
-          if (parama == k.a.BDv)
+          if (paramJsRuntimeType == JsRuntime.JsRuntimeType.IMK)
           {
             paramContext = new h();
             paramContext.init(1);
@@ -497,69 +565,186 @@ public class XWalkWebFactory
   
   public boolean hasInited()
   {
-    AppMethodBeat.i(85407);
-    boolean bool = XWalkWebFactory.a.hasInited();
-    AppMethodBeat.o(85407);
+    AppMethodBeat.i(154493);
+    boolean bool = b.hasInited();
+    AppMethodBeat.o(154493);
     return bool;
   }
   
   public boolean hasInitedCallback()
   {
-    AppMethodBeat.i(85408);
-    boolean bool = XWalkWebFactory.a.hasInitedCallback();
-    AppMethodBeat.o(85408);
+    AppMethodBeat.i(154494);
+    boolean bool = b.hasInitedCallback();
+    AppMethodBeat.o(154494);
     return bool;
   }
   
   public void initCallback(WebViewExtensionListener paramWebViewExtensionListener)
   {
-    AppMethodBeat.i(85406);
-    XWalkWebFactory.a.initCallback(paramWebViewExtensionListener);
-    AppMethodBeat.o(85406);
+    AppMethodBeat.i(154492);
+    b.initCallback(paramWebViewExtensionListener);
+    AppMethodBeat.o(154492);
   }
   
   public void initEnviroment(Context paramContext)
   {
-    AppMethodBeat.i(85402);
+    AppMethodBeat.i(154488);
     if (this.mIsDebugMode) {
       tryLoadLocalAssetRuntime(paramContext, this.mIsDebugModeReplase);
     }
-    AppMethodBeat.o(85402);
+    AppMethodBeat.o(154488);
   }
   
-  public void initInterface() {}
-  
-  public boolean initWebviewCore(Context paramContext, WebView.c paramc)
+  public void initInterface()
   {
-    AppMethodBeat.i(85405);
-    boolean bool = XWalkWebFactory.a.jX(paramContext);
-    if (paramc != null)
+    AppMethodBeat.i(183744);
+    com.tencent.xweb.internal.i.a(WebView.c.INC, new m());
+    AppMethodBeat.o(183744);
+  }
+  
+  public boolean initWebviewCore(Context paramContext, WebView.PreInitCallback paramPreInitCallback)
+  {
+    AppMethodBeat.i(154491);
+    boolean bool = b.ld(paramContext);
+    if (paramPreInitCallback != null)
     {
       if (!bool) {
         break label33;
       }
-      paramc.onCoreInitFinished();
+      paramPreInitCallback.onCoreInitFinished();
     }
     for (;;)
     {
-      AppMethodBeat.o(85405);
+      AppMethodBeat.o(154491);
       return bool;
       label33:
-      paramc.BG();
+      paramPreInitCallback.aNK();
     }
   }
   
   public boolean isCoreReady()
   {
-    AppMethodBeat.i(85409);
-    boolean bool = XWalkWebFactory.a.isCoreReady();
-    AppMethodBeat.o(85409);
+    AppMethodBeat.i(154495);
+    boolean bool = b.isCoreReady();
+    AppMethodBeat.o(154495);
     return bool;
+  }
+  
+  static final class a
+    implements r.a
+  {
+    public final void bvj()
+    {
+      AppMethodBeat.i(185203);
+      if (!"true".equalsIgnoreCase(com.tencent.xweb.a.lW("dis_refresh_main_cmd", "tools")))
+      {
+        com.tencent.xweb.a.fqt();
+        s.refresh();
+        AppMethodBeat.o(185203);
+        return;
+      }
+      org.xwalk.core.Log.i("XWalkWebFactory", "dis_refresh_main_cmd");
+      AppMethodBeat.o(185203);
+    }
+    
+    public final void bvk()
+    {
+      AppMethodBeat.i(185204);
+      if (!"true".equalsIgnoreCase(com.tencent.xweb.a.lW("dis_refresh_plugin_cmd", "tools")))
+      {
+        b.fqB();
+        AppMethodBeat.o(185204);
+        return;
+      }
+      org.xwalk.core.Log.i("XWalkWebFactory", "dis_refresh_plugin_cmd");
+      AppMethodBeat.o(185204);
+    }
+    
+    public final void vG(int paramInt)
+    {
+      AppMethodBeat.i(185202);
+      if (paramInt == 0)
+      {
+        if (!af.frr())
+        {
+          AppMethodBeat.o(185202);
+          return;
+        }
+        paramInt = XWalkEnvironment.getAvailableVersion();
+        int i = XWalkEnvironment.getInstalledNewstVersionForCurAbi();
+        if ((paramInt <= 0) && (i > 0) && (!"true".equalsIgnoreCase(com.tencent.xweb.a.aOM("dis_reinit_web_core")))) {
+          WebView.reinitToXWeb();
+        }
+      }
+      AppMethodBeat.o(185202);
+    }
+  }
+  
+  static final class b
+  {
+    private static boolean IRe = false;
+    private static boolean ISn = false;
+    private static boolean peC = false;
+    
+    public static boolean hasInited()
+    {
+      return peC;
+    }
+    
+    public static boolean hasInitedCallback()
+    {
+      return IRe;
+    }
+    
+    public static void initCallback(WebViewExtensionListener paramWebViewExtensionListener)
+    {
+      AppMethodBeat.i(154484);
+      if (IRe)
+      {
+        AppMethodBeat.o(154484);
+        return;
+      }
+      org.xwalk.core.Log.i("XWebViewHelper", "initCallback");
+      WebViewExtension.SetExtension(paramWebViewExtensionListener);
+      IRe = true;
+      AppMethodBeat.o(154484);
+    }
+    
+    public static boolean isCoreReady()
+    {
+      return ISn;
+    }
+    
+    public static boolean ld(Context paramContext)
+    {
+      AppMethodBeat.i(154483);
+      boolean bool;
+      if (peC)
+      {
+        bool = peC;
+        AppMethodBeat.o(154483);
+        return bool;
+      }
+      org.xwalk.core.Log.i("XWebViewHelper", "preInit");
+      if (j.gX(paramContext))
+      {
+        org.xwalk.core.Log.i("XWebViewHelper", "preInit finished");
+        peC = true;
+        ISn = true;
+      }
+      for (;;)
+      {
+        bool = peC;
+        AppMethodBeat.o(154483);
+        return bool;
+        org.xwalk.core.Log.i("XWebViewHelper", "preInit xwalk is not available");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.XWalkWebFactory
  * JD-Core Version:    0.7.0.1
  */

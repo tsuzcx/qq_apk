@@ -6,27 +6,27 @@ import java.util.ArrayList;
 
 public final class b
 {
-  private static b.a hqE;
-  private static b.a hqF;
+  private static a jnN;
+  private static a jnO;
   
   static
   {
-    AppMethodBeat.i(10976);
-    hqE = new b.a((byte)0);
-    hqF = new b.a((byte)0);
-    AppMethodBeat.o(10976);
+    AppMethodBeat.i(121457);
+    jnN = new a((byte)0);
+    jnO = new a((byte)0);
+    AppMethodBeat.o(121457);
   }
   
-  private static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, b.a parama)
+  private static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, a parama)
   {
-    AppMethodBeat.i(10975);
+    AppMethodBeat.i(121456);
     int i = parama.count;
-    long l1 = parama.bCz;
-    long l2 = parama.hqG;
-    long l3 = parama.hqH;
+    long l1 = parama.ceC;
+    long l2 = parama.jnP;
+    long l3 = parama.jnQ;
     if ((l1 <= 0L) || (l2 <= 0L) || (i <= 0) || (l3 <= 0L))
     {
-      AppMethodBeat.o(10975);
+      AppMethodBeat.o(121456);
       return;
     }
     parama = new ArrayList();
@@ -50,50 +50,74 @@ public final class b
     localIDKey.SetKey(paramInt4);
     localIDKey.SetValue(l3);
     parama.add(localIDKey);
-    com.tencent.mm.plugin.report.service.h.qsU.b(parama, false);
-    AppMethodBeat.o(10975);
+    com.tencent.mm.plugin.report.service.h.vKh.b(parama, false);
+    AppMethodBeat.o(121456);
   }
   
-  private static void a(b.a parama, long paramLong, int paramInt)
+  private static void a(a parama, long paramLong, int paramInt)
   {
     try
     {
-      parama.bCz += paramLong / 1000L;
-      parama.hqG += paramInt;
-      parama.hqH += paramLong / paramInt;
+      parama.ceC += paramLong / 1000L;
+      parama.jnP += paramInt;
+      parama.jnQ += paramLong / paramInt;
       parama.count += 1;
       return;
     }
     finally {}
   }
   
-  public static void aAi()
+  public static void aVP()
   {
-    AppMethodBeat.i(10974);
-    a(5, 6, 7, 8, hqF);
-    a(0, 1, 2, 3, hqE);
-    hqF.reset();
-    hqE.reset();
-    AppMethodBeat.o(10974);
+    AppMethodBeat.i(121455);
+    a(5, 6, 7, 8, jnO);
+    a(0, 1, 2, 3, jnN);
+    jnO.reset();
+    jnN.reset();
+    AppMethodBeat.o(121455);
   }
   
-  public static void f(long paramLong, int paramInt)
+  public static void g(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(10973);
+    AppMethodBeat.i(121454);
     if ((paramLong <= 0L) || (paramInt <= 0))
     {
-      AppMethodBeat.o(10973);
+      AppMethodBeat.o(121454);
       return;
     }
-    switch (com.tencent.mm.aa.h.QB())
+    switch (com.tencent.mm.ac.h.aen())
     {
     default: 
-      a(hqE, paramLong, paramInt);
-      AppMethodBeat.o(10973);
+      a(jnN, paramLong, paramInt);
+      AppMethodBeat.o(121454);
       return;
     }
-    a(hqF, paramLong, paramInt);
-    AppMethodBeat.o(10973);
+    a(jnO, paramLong, paramInt);
+    AppMethodBeat.o(121454);
+  }
+  
+  static final class a
+  {
+    volatile long ceC;
+    volatile int count;
+    volatile long jnP;
+    volatile long jnQ;
+    
+    final void reset()
+    {
+      try
+      {
+        this.ceC = 0L;
+        this.jnP = 0L;
+        this.count = 0;
+        return;
+      }
+      finally
+      {
+        localObject = finally;
+        throw localObject;
+      }
+    }
   }
 }
 

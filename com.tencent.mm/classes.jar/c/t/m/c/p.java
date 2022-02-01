@@ -12,7 +12,7 @@ public class p
   
   public static byte[] a(String paramString)
   {
-    AppMethodBeat.i(136400);
+    AppMethodBeat.i(39971);
     Object localObject;
     try
     {
@@ -32,11 +32,11 @@ public class p
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(136400);
+      AppMethodBeat.o(39971);
       return null;
     }
     paramString.close();
-    AppMethodBeat.o(136400);
+    AppMethodBeat.o(39971);
     return localObject;
   }
   
@@ -44,24 +44,24 @@ public class p
   public static byte[] a(String paramString, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: ldc 68
-    //   2: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 23	java/net/URL
+    //   0: ldc 66
+    //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 19	java/net/URL
     //   8: dup
     //   9: aload_0
-    //   10: invokespecial 27	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   13: invokevirtual 31	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   16: checkcast 70	java/net/HttpURLConnection
+    //   10: invokespecial 23	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   13: invokevirtual 27	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   16: checkcast 68	java/net/HttpURLConnection
     //   19: astore_3
     //   20: aload_3
     //   21: astore_0
     //   22: aload_3
-    //   23: getstatic 10	c/t/m/c/p:a	I
+    //   23: getstatic 70	c/t/m/c/p:a	I
     //   26: invokevirtual 73	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   29: aload_3
     //   30: astore_0
     //   31: aload_3
-    //   32: getstatic 10	c/t/m/c/p:a	I
+    //   32: getstatic 70	c/t/m/c/p:a	I
     //   35: invokevirtual 76	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   38: aload_3
     //   39: astore_0
@@ -116,9 +116,9 @@ public class p
     //   118: astore_1
     //   119: aload_3
     //   120: astore_0
-    //   121: new 38	java/io/ByteArrayOutputStream
+    //   121: new 35	java/io/ByteArrayOutputStream
     //   124: dup
-    //   125: invokespecial 40	java/io/ByteArrayOutputStream:<init>	()V
+    //   125: invokespecial 37	java/io/ByteArrayOutputStream:<init>	()V
     //   128: astore 4
     //   130: aload_3
     //   131: astore_0
@@ -129,7 +129,7 @@ public class p
     //   140: astore_0
     //   141: aload_1
     //   142: aload 5
-    //   144: invokevirtual 50	java/io/InputStream:read	([B)I
+    //   144: invokevirtual 47	java/io/InputStream:read	([B)I
     //   147: istore_2
     //   148: iload_2
     //   149: iconst_m1
@@ -140,7 +140,7 @@ public class p
     //   157: aload 5
     //   159: iconst_0
     //   160: iload_2
-    //   161: invokevirtual 54	java/io/ByteArrayOutputStream:write	([BII)V
+    //   161: invokevirtual 51	java/io/ByteArrayOutputStream:write	([BII)V
     //   164: goto -25 -> 139
     //   167: astore_0
     //   168: aload_3
@@ -148,26 +148,26 @@ public class p
     //   170: aload_1
     //   171: astore_0
     //   172: sipush 20000
-    //   175: putstatic 10	c/t/m/c/p:a	I
+    //   175: putstatic 70	c/t/m/c/p:a	I
     //   178: aload_1
     //   179: ifnull +7 -> 186
     //   182: aload_1
     //   183: invokevirtual 124	java/net/HttpURLConnection:disconnect	()V
-    //   186: ldc 68
-    //   188: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   186: ldc 66
+    //   188: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   191: aconst_null
     //   192: areturn
     //   193: aload_3
     //   194: astore_0
     //   195: aload 4
-    //   197: invokevirtual 61	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   197: invokevirtual 58	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   200: astore_1
     //   201: aload_3
     //   202: ifnull +7 -> 209
     //   205: aload_3
     //   206: invokevirtual 124	java/net/HttpURLConnection:disconnect	()V
-    //   209: ldc 68
-    //   211: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   209: ldc 66
+    //   211: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   214: aload_1
     //   215: areturn
     //   216: aload_3
@@ -175,9 +175,9 @@ public class p
     //   220: aload_3
     //   221: invokevirtual 124	java/net/HttpURLConnection:disconnect	()V
     //   224: sipush 20000
-    //   227: putstatic 10	c/t/m/c/p:a	I
-    //   230: ldc 68
-    //   232: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   227: putstatic 70	c/t/m/c/p:a	I
+    //   230: ldc 66
+    //   232: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   235: aconst_null
     //   236: areturn
     //   237: astore_0
@@ -187,28 +187,28 @@ public class p
     //   241: ifnull +7 -> 248
     //   244: aload_1
     //   245: invokevirtual 124	java/net/HttpURLConnection:disconnect	()V
-    //   248: ldc 68
-    //   250: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   248: ldc 66
+    //   250: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   253: aload_0
     //   254: athrow
-    //   255: astore_1
-    //   256: aload_0
-    //   257: astore_3
-    //   258: aload_1
-    //   259: astore_0
-    //   260: aload_3
+    //   255: astore_0
+    //   256: aconst_null
+    //   257: astore_1
+    //   258: goto -88 -> 170
     //   261: astore_1
-    //   262: goto -22 -> 240
+    //   262: aload_0
+    //   263: astore_3
+    //   264: aload_1
     //   265: astore_0
-    //   266: aconst_null
+    //   266: aload_3
     //   267: astore_1
-    //   268: goto -98 -> 170
+    //   268: goto -28 -> 240
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	271	0	paramString	String
     //   0	271	1	paramArrayOfByte	byte[]
     //   147	14	2	i	int
-    //   19	242	3	localObject	Object
+    //   19	248	3	localObject	Object
     //   128	68	4	localByteArrayOutputStream	ByteArrayOutputStream
     //   137	21	5	arrayOfByte	byte[]
     // Exception table:
@@ -230,29 +230,29 @@ public class p
     //   155	164	167	java/io/IOException
     //   195	201	167	java/io/IOException
     //   5	20	237	finally
-    //   22	29	255	finally
-    //   31	38	255	finally
-    //   40	45	255	finally
-    //   47	52	255	finally
-    //   54	60	255	finally
-    //   62	67	255	finally
-    //   69	77	255	finally
-    //   79	90	255	finally
-    //   92	100	255	finally
-    //   102	112	255	finally
-    //   114	119	255	finally
-    //   121	130	255	finally
-    //   132	139	255	finally
-    //   141	148	255	finally
-    //   155	164	255	finally
-    //   172	178	255	finally
-    //   195	201	255	finally
-    //   5	20	265	java/io/IOException
+    //   5	20	255	java/io/IOException
+    //   22	29	261	finally
+    //   31	38	261	finally
+    //   40	45	261	finally
+    //   47	52	261	finally
+    //   54	60	261	finally
+    //   62	67	261	finally
+    //   69	77	261	finally
+    //   79	90	261	finally
+    //   92	100	261	finally
+    //   102	112	261	finally
+    //   114	119	261	finally
+    //   121	130	261	finally
+    //   132	139	261	finally
+    //   141	148	261	finally
+    //   155	164	261	finally
+    //   172	178	261	finally
+    //   195	201	261	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     c.t.m.c.p
  * JD-Core Version:    0.7.0.1
  */

@@ -12,15 +12,15 @@ import android.widget.PopupWindow;
 class AppCompatPopupWindow
   extends PopupWindow
 {
-  private static final boolean aaF;
-  private boolean aaG;
+  private static final boolean ahL;
+  private boolean ahM;
   
   static
   {
     if (Build.VERSION.SDK_INT < 21) {}
     for (boolean bool = true;; bool = false)
     {
-      aaF = bool;
+      ahL = bool;
       return;
     }
   }
@@ -28,42 +28,42 @@ class AppCompatPopupWindow
   public AppCompatPopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a(paramContext, paramAttributeSet, paramInt, 0);
+    b(paramContext, paramAttributeSet, paramInt, 0);
   }
   
   public AppCompatPopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
     super(paramContext, paramAttributeSet, paramInt1, paramInt2);
-    a(paramContext, paramAttributeSet, paramInt1, paramInt2);
+    b(paramContext, paramAttributeSet, paramInt1, paramInt2);
   }
   
-  private void a(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
+  private void ah(boolean paramBoolean)
   {
-    paramContext = az.a(paramContext, paramAttributeSet, a.a.PopupWindow, paramInt1, paramInt2);
-    if (paramContext.hasValue(2)) {
-      ab(paramContext.getBoolean(2, false));
-    }
-    setBackgroundDrawable(paramContext.getDrawable(0));
-    paramContext.aoo.recycle();
-  }
-  
-  private void ab(boolean paramBoolean)
-  {
-    if (aaF)
+    if (ahL)
     {
-      this.aaG = paramBoolean;
+      this.ahM = paramBoolean;
       return;
     }
     n.a(this, paramBoolean);
   }
   
+  private void b(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
+  {
+    paramContext = az.a(paramContext, paramAttributeSet, a.a.PopupWindow, paramInt1, paramInt2);
+    if (paramContext.hasValue(2)) {
+      ah(paramContext.getBoolean(2, false));
+    }
+    setBackgroundDrawable(paramContext.getDrawable(0));
+    paramContext.avP.recycle();
+  }
+  
   public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
   {
     int i = paramInt2;
-    if (aaF)
+    if (ahL)
     {
       i = paramInt2;
-      if (this.aaG) {
+      if (this.ahM) {
         i = paramInt2 - paramView.getHeight();
       }
     }
@@ -73,10 +73,10 @@ class AppCompatPopupWindow
   public void showAsDropDown(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
     int i = paramInt2;
-    if (aaF)
+    if (ahL)
     {
       i = paramInt2;
-      if (this.aaG) {
+      if (this.ahM) {
         i = paramInt2 - paramView.getHeight();
       }
     }
@@ -85,7 +85,7 @@ class AppCompatPopupWindow
   
   public void update(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((aaF) && (this.aaG)) {
+    if ((ahL) && (this.ahM)) {
       paramInt2 -= paramView.getHeight();
     }
     for (;;)

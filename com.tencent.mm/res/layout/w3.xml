@@ -1,25 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout android:id="@id/bkm" android:background="#ffeeeeee" style="@style/q1"
+<LinearLayout android:orientation="vertical" android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/bkn" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <FrameLayout android:id="@id/nw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="containerFrameLayout">
-            <include layout="@layout/b9t" />
-            <com.tencent.mm.plugin.webview.ui.tools.LogoWebViewWrapper android:id="@id/bko" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <FrameLayout android:id="@id/bkp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="containerFrameLayout" />
-            </com.tencent.mm.plugin.webview.ui.tools.LogoWebViewWrapper>
-        </FrameLayout>
-        <FrameLayout android:id="@id/bkq" android:background="#ffeeeeee" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="refreshFrameLayout">
-            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dn" android:layout_marginBottom="@dimen/dn" android:src="@raw/webview_refresh_icon" />
-                <TextView android:textSize="18.0sp" android:textColor="#ffdddddd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g7a" style="@style/p8" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:background="@color/rt" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="15.0sp" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MemoryHook" android:textAllCaps="false" />
+                <Button android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bbc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Confirm" android:textAllCaps="false" android:layout_marginStart="10.0dip" />
+                <Button android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bbd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Report" android:textAllCaps="false" android:layout_marginStart="10.0dip" />
             </LinearLayout>
-        </FrameLayout>
-        <com.tencent.mm.ui.base.MMFalseProgressBar android:layout_gravity="center|left|top" android:id="@id/bkr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:progressDrawable="@drawable/w7" android:contentDescription="progressBar" />
-    </FrameLayout>
-    <RelativeLayout android:gravity="center_vertical" android:id="@id/bks" android:background="#ff2e3132" android:layout_width="fill_parent" android:layout_height="50.0dip">
-        <ImageButton android:id="@id/bkt" android:background="@drawable/am" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/a8l" android:layout_alignParentLeft="true" />
-        <ImageView android:background="@color/e1" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_toRightOf="@id/bkt" />
-        <ImageButton android:id="@id/bku" android:background="@drawable/am" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/a8m" android:layout_alignParentRight="true" />
-        <ImageView android:background="@color/e1" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_toLeftOf="@id/bku" />
-    </RelativeLayout>
-</com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="15.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="enable" />
+                <CheckBox android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bbe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" />
+                <TextView android:textSize="12.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="MemoryHook 开关，重启生效" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="15.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="stacktrace" />
+                <CheckBox android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bbj" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="12.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="是否获取堆栈,注意⚠️开启可能导致进程卡死，建议只针对单个 so 开启，对于分配特别频繁的 so，建议设置 min/max/sampling" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="15.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="force" />
+                <CheckBox android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bbg" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="12.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="在收到命令后是否强制执行hook,注意⚠️hook点需要重启生效(hook/ignore),这里生效的只是其他配置,比如开启拿堆栈,因此有卡死风险" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="15.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="multiprocess" />
+                <CheckBox android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bbi" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="12.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="子进程是否开启Hook(tools,appbrand)" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="15.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="extreme" />
+                <CheckBox android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bbf" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="12.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="是否Hook默认ignore的系统so,开启会严重影响性能⚠️" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="15.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="mmap hook" />
+                <CheckBox android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/bbh" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="12.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="是否 hook️ mmap/munmap" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="15.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="hookRegex" />
+                <EditText android:textSize="15.0sp" android:layout_gravity="center" android:id="@id/bbl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text=".*com\\.tencent\\.mm.*\\.so$" android:maxLines="3" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="15.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ignoreRegex" />
+                <EditText android:textSize="15.0sp" android:layout_gravity="center" android:id="@id/bbm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="nullable" android:maxLines="3" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="15.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="duration(hours)" />
+                <EditText android:textSize="15.0sp" android:layout_gravity="center" android:id="@id/bbk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="1" android:maxLines="3" android:inputType="number" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="12.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="min(取堆栈的最小size,>=0,0表示不限制)" />
+                <EditText android:textSize="15.0sp" android:layout_gravity="center" android:id="@id/bbo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="0" android:maxLines="3" android:inputType="number" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="12.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="max(取堆栈的最大size,0(不限制)或>minSize)" />
+                <EditText android:textSize="15.0sp" android:layout_gravity="center" android:id="@id/bbn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="0" android:maxLines="3" android:inputType="number" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="15.0sp" android:gravity="center" android:layout_gravity="center_vertical" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="sampling(取样率,(0,1])" />
+                <EditText android:textSize="15.0sp" android:layout_gravity="center" android:id="@id/bbp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="1" android:maxLines="3" android:inputType="numberDecimal" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

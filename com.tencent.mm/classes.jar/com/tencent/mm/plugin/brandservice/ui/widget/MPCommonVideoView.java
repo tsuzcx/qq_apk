@@ -4,16 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.CommonVideoView;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.pluginsdk.ui.tools.h;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class MPCommonVideoView
   extends CommonVideoView
 {
-  public MPCommonVideoView(Context paramContext)
-  {
-    super(paramContext);
-  }
-  
   public MPCommonVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
@@ -24,12 +20,22 @@ public class MPCommonVideoView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void ie(long paramLong)
+  public final void nM(long paramLong)
   {
-    AppMethodBeat.i(138057);
-    super.ie(paramLong);
-    this.faV.postDelayed(new MPCommonVideoView.1(this), paramLong);
-    AppMethodBeat.o(138057);
+    AppMethodBeat.i(6259);
+    super.nM(paramLong);
+    this.gAC.postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(6258);
+        if (MPCommonVideoView.a(MPCommonVideoView.this) != null) {
+          MPCommonVideoView.b(MPCommonVideoView.this).setOneTimeVideoTextureUpdateCallback(MPCommonVideoView.this);
+        }
+        AppMethodBeat.o(6258);
+      }
+    }, paramLong);
+    AppMethodBeat.o(6259);
   }
 }
 

@@ -10,22 +10,22 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.messenger.a.d;
-import com.tencent.mm.plugin.messenger.a.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.w;
+import com.tencent.mm.model.w;
+import com.tencent.mm.plugin.messenger.a.e;
+import com.tencent.mm.plugin.messenger.a.j;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.y;
 
 public class MMAutoMessageReplyReceiver
   extends BroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(17110);
-    String str = w.n(paramIntent, "key_username");
+    AppMethodBeat.i(21162);
+    String str = y.getStringExtra(paramIntent, "key_username");
     if (str == null)
     {
-      AppMethodBeat.o(17110);
+      AppMethodBeat.o(21162);
       return;
     }
     if (Build.VERSION.SDK_INT >= 20)
@@ -42,8 +42,8 @@ public class MMAutoMessageReplyReceiver
       if (paramContext != null) {
         break label171;
       }
-      ab.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply null", new Object[] { str });
-      AppMethodBeat.o(17110);
+      ad.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply null", new Object[] { str });
+      AppMethodBeat.o(21162);
       return;
       if (Build.VERSION.SDK_INT >= 16)
       {
@@ -72,14 +72,14 @@ public class MMAutoMessageReplyReceiver
       break;
     }
     label171:
-    ab.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply %s", new Object[] { str, paramContext.toString() });
-    g.bPJ().K(str, paramContext.toString(), t.oF(str));
-    AppMethodBeat.o(17110);
+    ad.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply %s", new Object[] { str, paramContext.toString() });
+    j.cOB().W(str, paramContext.toString(), w.tq(str));
+    AppMethodBeat.o(21162);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.auto.service.MMAutoMessageReplyReceiver
  * JD-Core Version:    0.7.0.1
  */

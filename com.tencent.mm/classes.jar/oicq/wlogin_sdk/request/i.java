@@ -10,81 +10,81 @@ import oicq.wlogin_sdk.tools.util;
 
 public final class i
 {
-  public static byte[] CMS = new byte[0];
-  public SecureRandom CMH;
-  public byte[] CMI;
-  public byte[] CMJ;
-  public byte[] CMK;
-  public f CML;
-  public g CMM;
-  public long CMN;
-  public int CMO;
-  public long CMP;
-  public int CMQ;
-  byte[] CMR;
-  byte[] CMT;
-  int CMU;
-  byte[] CMV;
-  byte[] CMW;
-  byte[] CMX;
-  byte[] CMY;
-  byte[] CMZ;
-  byte[] CNa;
-  int CNb;
-  int CNc;
-  int CNd;
-  int CNe;
-  byte[] CNf;
-  ErrMsg CNg;
-  byte[] CNh;
-  byte[] CNi;
-  byte[] CNj;
-  c CNk;
+  public static byte[] Kiz = new byte[0];
+  byte[] KiA;
+  int KiB;
+  byte[] KiC;
+  byte[] KiD;
+  byte[] KiE;
+  byte[] KiF;
+  byte[] KiG;
+  byte[] KiH;
+  int KiI;
+  int KiJ;
+  int KiK;
+  int KiL;
+  byte[] KiM;
+  ErrMsg KiN;
+  byte[] KiO;
+  byte[] KiP;
+  byte[] KiQ;
+  c KiR;
+  public SecureRandom Kio;
+  public byte[] Kip;
+  public byte[] Kiq;
+  public byte[] Kir;
+  public f Kis;
+  public g Kit;
+  public long Kiu;
+  public int Kiv;
+  public long Kiw;
+  public int Kix;
+  byte[] Kiy;
   public Context _context;
   public long _uin;
   
   public i()
   {
-    AppMethodBeat.i(96443);
-    this.CMH = new SecureRandom();
-    this.CMI = util.erm();
-    this.CMJ = null;
-    this.CMK = new byte[16];
-    this.CML = new f();
-    this.CMM = new g();
+    AppMethodBeat.i(88082);
+    this.Kio = new SecureRandom();
+    this.Kip = util.fMP();
+    this.Kiq = null;
+    this.Kir = new byte[16];
+    this.Kis = new f();
+    this.Kit = new g();
     this._uin = 0L;
-    this.CMN = 0L;
-    this.CMO = 0;
-    this.CMP = -1L;
-    this.CMQ = 0;
+    this.Kiu = 0L;
+    this.Kiv = 0;
+    this.Kiw = -1L;
+    this.Kix = 0;
     this._context = null;
-    this.CMR = new byte[0];
-    this.CMT = new byte[0];
-    this.CMU = 0;
-    this.CMV = new byte[0];
-    this.CMW = new byte[0];
-    this.CMX = new byte[0];
-    this.CMY = new byte[0];
-    this.CMZ = new byte[0];
-    this.CNa = new byte[0];
-    this.CNb = 0;
-    this.CNc = 0;
-    this.CNd = 0;
-    this.CNe = 0;
-    this.CNf = new byte[0];
-    this.CNg = new ErrMsg();
-    this.CNh = new byte[0];
-    this.CNi = new byte[4];
-    this.CNj = new byte[0];
-    this.CNk = null;
-    AppMethodBeat.o(96443);
+    this.Kiy = new byte[0];
+    this.KiA = new byte[0];
+    this.KiB = 0;
+    this.KiC = new byte[0];
+    this.KiD = new byte[0];
+    this.KiE = new byte[0];
+    this.KiF = new byte[0];
+    this.KiG = new byte[0];
+    this.KiH = new byte[0];
+    this.KiI = 0;
+    this.KiJ = 0;
+    this.KiK = 0;
+    this.KiL = 0;
+    this.KiM = new byte[0];
+    this.KiN = new ErrMsg();
+    this.KiO = new byte[0];
+    this.KiP = new byte[4];
+    this.KiQ = new byte[0];
+    this.KiR = null;
+    AppMethodBeat.o(88082);
   }
   
-  public static long erc()
+  public static long fMF()
   {
-    AppMethodBeat.i(96444);
+    AppMethodBeat.i(88083);
     long l = System.currentTimeMillis() / 1000L;
-    AppMethodBeat.o(96444);
+    AppMethodBeat.o(88083);
     return l;
   }
   
@@ -125,85 +125,85 @@ public final class i
     //   69: ldc 171
     //   71: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   74: aload 13
-    //   76: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   76: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   79: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   82: ldc 171
     //   84: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   87: aload 14
-    //   89: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   89: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   92: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   95: ldc 171
     //   97: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   100: aload 15
-    //   102: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   102: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   105: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   108: ldc 171
     //   110: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   113: aload 16
-    //   115: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   115: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   118: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   121: ldc 171
     //   123: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   126: aload 17
-    //   128: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   128: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   131: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   134: ldc 171
     //   136: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   139: aload 18
-    //   141: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   141: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   144: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   147: ldc 171
     //   149: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   152: aload 19
-    //   154: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   154: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   157: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   160: ldc 171
     //   162: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   165: aload 20
-    //   167: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   167: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   170: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   173: ldc 171
     //   175: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   178: aload 21
-    //   180: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   180: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   183: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   186: ldc 171
     //   188: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   191: aload 22
-    //   193: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   193: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   196: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   199: ldc 171
     //   201: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   204: aload 23
-    //   206: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   206: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   209: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   212: ldc 171
     //   214: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   217: aload 24
-    //   219: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   219: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   222: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   225: ldc 171
     //   227: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   230: aload 25
-    //   232: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   232: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   235: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   238: ldc 171
     //   240: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   243: aload 26
-    //   245: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   245: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   248: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   251: ldc 171
     //   253: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   256: aload 27
-    //   258: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   258: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   261: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   264: ldc 171
     //   266: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   269: aload 28
-    //   271: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   271: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   274: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   277: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   280: invokestatic 185	oicq/wlogin_sdk/tools/util:azC	(Ljava/lang/String;)V
+    //   280: invokestatic 185	oicq/wlogin_sdk/tools/util:aRk	(Ljava/lang/String;)V
     //   283: ldc 187
     //   285: astore 31
     //   287: iconst_0
@@ -216,9 +216,9 @@ public final class i
     //   300: aload 31
     //   302: invokestatic 195	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   305: invokevirtual 199	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   308: invokestatic 185	oicq/wlogin_sdk/tools/util:azC	(Ljava/lang/String;)V
+    //   308: invokestatic 185	oicq/wlogin_sdk/tools/util:aRk	(Ljava/lang/String;)V
     //   311: aload_0
-    //   312: getfield 142	oicq/wlogin_sdk/request/i:CNk	Loicq/wlogin_sdk/request/c;
+    //   312: getfield 142	oicq/wlogin_sdk/request/i:KiR	Loicq/wlogin_sdk/request/c;
     //   315: lload_1
     //   316: lload_3
     //   317: lload 5
@@ -268,7 +268,7 @@ public final class i
     //   402: aload 29
     //   404: iload 30
     //   406: aaload
-    //   407: invokestatic 178	oicq/wlogin_sdk/tools/util:cT	([B)J
+    //   407: invokestatic 178	oicq/wlogin_sdk/tools/util:dl	([B)J
     //   410: invokestatic 215	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   413: aastore
     //   414: invokestatic 219	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
@@ -320,13 +320,13 @@ public final class i
     //   374	425	434	finally
   }
   
-  public final void i(Long paramLong)
+  public final void g(Long paramLong)
   {
     try
     {
-      AppMethodBeat.i(96447);
-      this.CNk.i(paramLong);
-      AppMethodBeat.o(96447);
+      AppMethodBeat.i(88086);
+      this.KiR.g(paramLong);
+      AppMethodBeat.o(88086);
       return;
     }
     finally
@@ -337,38 +337,38 @@ public final class i
   }
   
   /* Error */
-  public final oicq.wlogin_sdk.sharemem.WloginSigInfo pD(long paramLong)
+  public final oicq.wlogin_sdk.sharemem.WloginSigInfo xT(long paramLong)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 226
+    //   2: ldc 227
     //   4: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: ldc 228
+    //   7: ldc 229
     //   9: new 160	java/lang/StringBuilder
     //   12: dup
-    //   13: ldc 230
+    //   13: ldc 231
     //   15: invokespecial 165	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   18: lload_1
     //   19: invokevirtual 169	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   22: ldc 232
+    //   22: ldc 233
     //   24: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokestatic 236	oicq/wlogin_sdk/tools/util:jC	(Ljava/lang/String;Ljava/lang/String;)V
+    //   30: invokestatic 237	oicq/wlogin_sdk/tools/util:mI	(Ljava/lang/String;Ljava/lang/String;)V
     //   33: aload_0
-    //   34: getfield 142	oicq/wlogin_sdk/request/i:CNk	Loicq/wlogin_sdk/request/c;
+    //   34: getfield 142	oicq/wlogin_sdk/request/i:KiR	Loicq/wlogin_sdk/request/c;
     //   37: lload_1
-    //   38: invokevirtual 238	oicq/wlogin_sdk/request/c:pD	(J)Loicq/wlogin_sdk/sharemem/WloginSigInfo;
+    //   38: invokevirtual 239	oicq/wlogin_sdk/request/c:xT	(J)Loicq/wlogin_sdk/sharemem/WloginSigInfo;
     //   41: astore_3
     //   42: aload_3
     //   43: ifnull +12 -> 55
-    //   46: ldc 226
+    //   46: ldc 227
     //   48: invokestatic 145	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   51: aload_0
     //   52: monitorexit
     //   53: aload_3
     //   54: areturn
-    //   55: ldc 226
+    //   55: ldc 227
     //   57: invokestatic 145	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   60: goto -9 -> 51
     //   63: astore_3

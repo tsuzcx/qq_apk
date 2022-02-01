@@ -1,67 +1,263 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.RemoteException;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.opensdk.modelmsg.SendAuth.Req;
-import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.ai;
+import com.tencent.mm.vfs.i;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-final class e
+public final class e
 {
-  ap frx;
-  d igU;
-  p mOt;
-  boolean vaO;
-  boolean vaP;
-  final e.a vaQ;
-  OAuthUI vaR;
+  private static final HashMap<String, WeakReference<Bitmap>> BdE;
   
-  private e(OAuthUI paramOAuthUI, e.a parama, d paramd)
+  static
   {
-    AppMethodBeat.i(7415);
-    this.vaO = false;
-    this.vaP = false;
-    this.frx = new ap(new e.1(this), false);
-    this.vaR = paramOAuthUI;
-    this.vaQ = parama;
-    this.igU = paramd;
-    AppMethodBeat.o(7415);
+    AppMethodBeat.i(79687);
+    BdE = new HashMap();
+    AppMethodBeat.o(79687);
   }
   
-  public static e a(OAuthUI paramOAuthUI, String paramString, SendAuth.Req paramReq, e.a parama, d paramd)
+  public static int Ts(int paramInt)
   {
-    AppMethodBeat.i(7416);
-    paramOAuthUI = new e(paramOAuthUI, parama, paramd);
-    parama = paramReq.scope;
-    paramReq = paramReq.state;
-    if (paramOAuthUI.vaO) {
-      ab.e("MicroMsg.OAuthSession", "already getting");
-    }
-    for (;;)
+    AppMethodBeat.i(79685);
+    paramInt = ai.Ts(paramInt);
+    AppMethodBeat.o(79685);
+    return paramInt;
+  }
+  
+  public static void a(com.tencent.mm.plugin.webview.stub.e parame, int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(79678);
+    ArrayList localArrayList = new ArrayList();
+    if (paramVarArgs.length == 0)
     {
-      AppMethodBeat.o(7416);
-      return paramOAuthUI;
-      paramOAuthUI.vaP = true;
-      paramd = new Bundle();
-      paramd.putString("geta8key_data_appid", paramString);
-      paramd.putString("geta8key_data_scope", parama);
-      paramd.putString("geta8key_data_state", paramReq);
-      try
+      AppMethodBeat.o(79678);
+      return;
+    }
+    try
+    {
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
       {
-        paramOAuthUI.igU.v(233, paramd);
-        paramOAuthUI.vaO = true;
-        paramOAuthUI.frx.ag(3000L, 3000L);
+        localArrayList.add(String.valueOf(paramVarArgs[i]));
+        i += 1;
       }
-      catch (Exception paramString)
+      parame.l(paramInt, localArrayList);
+      AppMethodBeat.o(79678);
+      return;
+    }
+    catch (Exception parame)
+    {
+      ad.w("MicroMsg.WebView.RemoteUtil", "kvReport, ex = " + parame.getMessage());
+      AppMethodBeat.o(79678);
+    }
+  }
+  
+  public static boolean a(Bundle paramBundle, String paramString1, String paramString2, com.tencent.mm.plugin.webview.stub.f paramf, Runnable paramRunnable)
+  {
+    AppMethodBeat.i(79686);
+    if (paramf == null)
+    {
+      if (paramRunnable != null) {
+        paramRunnable.run();
+      }
+      AppMethodBeat.o(79686);
+      return true;
+    }
+    Bundle localBundle = new Bundle(3);
+    localBundle.putBundle("open_ui_with_webview_ui_extras", paramBundle);
+    localBundle.putString("open_ui_with_webview_ui_plugin_name", paramString1);
+    localBundle.putString("open_ui_with_webview_ui_plugin_entry", paramString2);
+    try
+    {
+      paramf.j(101, localBundle);
+      AppMethodBeat.o(79686);
+      return true;
+    }
+    catch (RemoteException paramBundle)
+    {
+      ad.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramBundle, "startUIWithWebViewUI, exp, pluginName %s, pluginEntry %s", new Object[] { paramString1, paramString2 });
+      AppMethodBeat.o(79686);
+      return false;
+    }
+    catch (Exception paramBundle)
+    {
+      if (paramRunnable != null) {
+        paramRunnable.run();
+      }
+      ad.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramBundle, "startUIWithWebViewUI, exp, pluginName %s, pluginEntry %s", new Object[] { paramString1, paramString2 });
+      AppMethodBeat.o(79686);
+    }
+    return false;
+  }
+  
+  public static Bitmap axM(String paramString)
+  {
+    AppMethodBeat.i(79680);
+    Object localObject = (WeakReference)BdE.get(paramString);
+    if ((localObject != null) && (((WeakReference)localObject).get() != null) && (!((Bitmap)((WeakReference)localObject).get()).isRecycled()))
+    {
+      paramString = (Bitmap)((WeakReference)localObject).get();
+      AppMethodBeat.o(79680);
+      return paramString;
+    }
+    if (i.eK(paramString)) {}
+    for (localObject = com.tencent.mm.sdk.platformtools.f.decodeFile(paramString, null);; localObject = null)
+    {
+      if (localObject != null) {
+        BdE.put(paramString, new WeakReference(localObject));
+      }
+      for (;;)
       {
-        for (;;)
+        AppMethodBeat.o(79680);
+        return localObject;
+        try
         {
-          ab.w("MicroMsg.OAuthSession", "startGetA8Key, ex = " + paramString.getMessage());
+          Bitmap localBitmap = BackwardSupportUtil.b.b(aj.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
+          localObject = localBitmap;
+          BdE.put(paramString, new WeakReference(localBitmap));
+          localObject = localBitmap;
+        }
+        catch (Exception paramString)
+        {
+          ad.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramString, "", new Object[0]);
         }
       }
     }
+  }
+  
+  public static long axN(String paramString)
+  {
+    AppMethodBeat.i(79681);
+    long l = bt(paramString, -1L);
+    AppMethodBeat.o(79681);
+    return l;
+  }
+  
+  public static Bitmap axO(String paramString)
+  {
+    AppMethodBeat.i(79684);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(79684);
+      return null;
+    }
+    Object localObject1 = (WeakReference)BdE.get(paramString);
+    if ((localObject1 != null) && (((WeakReference)localObject1).get() != null) && (!((Bitmap)((WeakReference)localObject1).get()).isRecycled()))
+    {
+      paramString = (Bitmap)((WeakReference)localObject1).get();
+      AppMethodBeat.o(79684);
+      return paramString;
+    }
+    localObject1 = Base64.decode(paramString, 0);
+    if (localObject1 == null)
+    {
+      AppMethodBeat.o(79684);
+      return null;
+    }
+    Object localObject2 = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
+    BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length, (BitmapFactory.Options)localObject2);
+    int k = ((BitmapFactory.Options)localObject2).outWidth;
+    int j = ((BitmapFactory.Options)localObject2).outHeight;
+    int i = Math.min(((BitmapFactory.Options)localObject2).outWidth, ((BitmapFactory.Options)localObject2).outHeight);
+    ((BitmapFactory.Options)localObject2).inJustDecodeBounds = false;
+    if (i > 96)
+    {
+      ((BitmapFactory.Options)localObject2).inSampleSize = Math.max((int)(i * 1.0F / 96.0F), 1);
+      localObject1 = BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length, (BitmapFactory.Options)localObject2);
+      if (localObject1 == null)
+      {
+        AppMethodBeat.o(79684);
+        return null;
+      }
+      k = ((Bitmap)localObject1).getWidth();
+      j = ((Bitmap)localObject1).getHeight();
+      i = Math.min(k, j);
+    }
+    do
+    {
+      localObject2 = Bitmap.createBitmap((Bitmap)localObject1, Math.max(k / 2 - i / 2, 0), Math.max(j / 2 - i / 2, 0), i, i);
+      if (localObject2 != localObject1) {
+        ((Bitmap)localObject1).recycle();
+      }
+      localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, 96, 96, false);
+      if (localObject2 != localObject1)
+      {
+        ad.i("MicroMsg.WebView.RemoteUtil", "bitmap recycle %s", new Object[] { localObject2.toString() });
+        ((Bitmap)localObject2).recycle();
+      }
+      if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled())) {
+        BdE.put(paramString, new WeakReference(localObject1));
+      }
+      AppMethodBeat.o(79684);
+      return localObject1;
+      localObject2 = BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length, (BitmapFactory.Options)localObject2);
+      localObject1 = localObject2;
+    } while (localObject2 != null);
+    AppMethodBeat.o(79684);
+    return null;
+  }
+  
+  private static long bt(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(79683);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(79683);
+      return paramLong;
+    }
+    Object localObject = paramString;
+    if (paramString.startsWith("#"))
+    {
+      localObject = paramString;
+      if (paramString.length() == 4)
+      {
+        localObject = new StringBuilder(paramString);
+        ((StringBuilder)localObject).insert(2, paramString.charAt(1));
+        ((StringBuilder)localObject).insert(4, paramString.charAt(2));
+        ((StringBuilder)localObject).insert(6, paramString.charAt(3));
+        localObject = ((StringBuilder)localObject).toString();
+      }
+    }
+    try
+    {
+      int i = Color.parseColor((String)localObject);
+      paramLong = i;
+      AppMethodBeat.o(79683);
+      return 0xFFFFFFFF & paramLong;
+    }
+    catch (Exception paramString)
+    {
+      ad.e("MicroMsg.WebView.RemoteUtil", "Failed to parse color: %s", new Object[] { localObject });
+      AppMethodBeat.o(79683);
+    }
+    return paramLong;
+  }
+  
+  public static int fj(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(79682);
+    paramInt = (int)bt(paramString, paramInt);
+    AppMethodBeat.o(79682);
+    return paramInt;
   }
 }
 

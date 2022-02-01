@@ -30,38 +30,31 @@ import java.util.Iterator;
 public class ActionChooserView
   extends View
 {
-  private static Property<ActionChooserView, Float> zi = new Property(Float.class, "offset") {};
-  private static Property<ActionChooserView, Float> zj = new Property(Float.class, "selected_multiplier") {};
-  private float iy;
-  private final Paint nE = new Paint();
-  private final float yG;
-  private final float yH;
-  private final float yI;
-  private final float yJ;
-  private final float yK;
-  private final float yL;
-  private final int yM;
-  private final int yN;
-  private final long yO;
-  private final float yP;
-  private final int yQ;
-  private final boolean yR;
-  private SparseArray<a> yS;
-  private float yT;
-  private float yU = 1.0F;
-  private float yV;
-  private Integer yW;
-  private AnimatorSet yX;
-  private ObjectAnimator yY;
-  private ObjectAnimator yZ;
-  private ObjectAnimator za;
-  private float zb;
-  private float zc;
-  private boolean zd = true;
-  private int ze = 0;
-  private GestureDetector zf;
-  private ArrayList<Object> zg;
-  private Runnable zh = new Runnable()
+  private static Property<ActionChooserView, Float> AX = new Property(Float.class, "offset") {};
+  private static Property<ActionChooserView, Float> AY = new Property(Float.class, "selected_multiplier") {};
+  private final float AA;
+  private final int AB;
+  private final int AC;
+  private final long AD;
+  private final float AE;
+  private final int AF;
+  private final boolean AG;
+  private SparseArray<a> AH;
+  private float AI;
+  private float AJ = 1.0F;
+  private float AK;
+  private Integer AL;
+  private AnimatorSet AM;
+  private ObjectAnimator AN;
+  private ObjectAnimator AO;
+  private ObjectAnimator AP;
+  private float AQ;
+  private float AR;
+  private boolean AS = true;
+  private int AT = 0;
+  private GestureDetector AU;
+  private ArrayList<Object> AV;
+  private Runnable AW = new Runnable()
   {
     public final void run()
     {
@@ -76,6 +69,13 @@ public class ActionChooserView
       }
     }
   };
+  private final float Av;
+  private final float Aw;
+  private final float Ax;
+  private final float Ay;
+  private final float Az;
+  private float kw;
+  private final Paint ps = new Paint();
   
   public ActionChooserView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -85,45 +85,45 @@ public class ActionChooserView
   public ActionChooserView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.nE.setAntiAlias(true);
-    this.nE.setStyle(Paint.Style.FILL);
+    this.ps.setAntiAlias(true);
+    this.ps.setStyle(Paint.Style.FILL);
     paramContext = new TypedValue();
-    getResources().getValue(e.wg, paramContext, true);
-    this.yG = paramContext.getFloat();
-    getResources().getValue(e.wf, paramContext, true);
-    this.yH = paramContext.getFloat();
-    getResources().getValue(e.wi, paramContext, true);
-    this.yI = paramContext.getFloat();
-    getResources().getValue(e.wh, paramContext, true);
-    this.yJ = paramContext.getFloat();
-    getResources().getValue(e.wj, paramContext, true);
-    this.yK = paramContext.getFloat();
-    getResources().getValue(e.wk, paramContext, true);
-    this.yL = paramContext.getFloat();
-    this.yM = getResources().getInteger(h.wD);
-    this.yN = getResources().getInteger(h.wE);
-    this.yP = (this.yI / this.yM);
-    this.yQ = getResources().getInteger(h.wF);
-    this.yR = getResources().getBoolean(c.wd);
-    this.yO = getResources().getInteger(h.wC);
-    this.yS = new SparseArray();
+    getResources().getValue(e.xV, paramContext, true);
+    this.Av = paramContext.getFloat();
+    getResources().getValue(e.xU, paramContext, true);
+    this.Aw = paramContext.getFloat();
+    getResources().getValue(e.xX, paramContext, true);
+    this.Ax = paramContext.getFloat();
+    getResources().getValue(e.xW, paramContext, true);
+    this.Ay = paramContext.getFloat();
+    getResources().getValue(e.xY, paramContext, true);
+    this.Az = paramContext.getFloat();
+    getResources().getValue(e.xZ, paramContext, true);
+    this.AA = paramContext.getFloat();
+    this.AB = getResources().getInteger(h.ys);
+    this.AC = getResources().getInteger(h.yt);
+    this.AE = (this.Ax / this.AB);
+    this.AF = getResources().getInteger(h.yu);
+    this.AG = getResources().getBoolean(c.xS);
+    this.AD = getResources().getInteger(h.yr);
+    this.AH = new SparseArray();
     paramContext = new ArrayList();
-    paramContext.addAll(aM(1));
-    paramContext.addAll(aM(2));
-    this.yX = new AnimatorSet();
-    this.yX.playSequentially(paramContext);
-    this.yX.addListener(new Animator.AnimatorListener()
+    paramContext.addAll(bg(1));
+    paramContext.addAll(bg(2));
+    this.AM = new AnimatorSet();
+    this.AM.playSequentially(paramContext);
+    this.AM.addListener(new Animator.AnimatorListener()
     {
-      private boolean zl;
+      private boolean Ba;
       
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        this.zl = true;
+        this.Ba = true;
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        if ((!this.zl) && (ActionChooserView.c(ActionChooserView.this) == 0)) {
+        if ((!this.Ba) && (ActionChooserView.c(ActionChooserView.this) == 0)) {
           ActionChooserView.d(ActionChooserView.this).start();
         }
       }
@@ -132,22 +132,22 @@ public class ActionChooserView
       
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
-        this.zl = false;
+        this.Ba = false;
       }
     });
-    this.yY = ObjectAnimator.ofFloat(this, zi, new float[] { 0.0F });
-    this.yY.addListener(new Animator.AnimatorListener()
+    this.AN = ObjectAnimator.ofFloat(this, AX, new float[] { 0.0F });
+    this.AN.addListener(new Animator.AnimatorListener()
     {
-      private boolean zl;
+      private boolean Ba;
       
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        this.zl = true;
+        this.Ba = true;
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        if ((!this.zl) && (ActionChooserView.c(ActionChooserView.this) == 0)) {
+        if ((!this.Ba) && (ActionChooserView.c(ActionChooserView.this) == 0)) {
           ActionChooserView.d(ActionChooserView.this).start();
         }
       }
@@ -156,12 +156,12 @@ public class ActionChooserView
       
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
-        this.zl = false;
+        this.Ba = false;
       }
     });
-    this.yZ = ObjectAnimator.ofFloat(this, zi, new float[] { 0.0F });
-    this.za = ObjectAnimator.ofFloat(this, zj, new float[] { 1.0F, (float)Math.sqrt(2.0D) });
-    this.zf = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
+    this.AO = ObjectAnimator.ofFloat(this, AX, new float[] { 0.0F });
+    this.AP = ObjectAnimator.ofFloat(this, AY, new float[] { 1.0F, (float)Math.sqrt(2.0D) });
+    this.AU = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
@@ -182,7 +182,7 @@ public class ActionChooserView
   
   private float a(int paramInt, float paramFloat1, float paramFloat2, boolean paramBoolean, float paramFloat3)
   {
-    float f1 = (paramFloat1 - this.yG) / (0.5F + this.yH - this.yG);
+    float f1 = (paramFloat1 - this.Av) / (0.5F + this.Aw - this.Av);
     float f2 = paramInt;
     paramFloat1 = paramInt;
     paramFloat2 = Math.max(0.0F, f1 * (paramFloat2 - f2));
@@ -200,8 +200,8 @@ public class ActionChooserView
     do
     {
       return;
-      this.nE.setColor(parama.color);
-      paramCanvas.drawCircle(paramInt1, paramInt2, paramFloat, this.nE);
+      this.ps.setColor(parama.color);
+      paramCanvas.drawCircle(paramInt1, paramInt2, paramFloat, this.ps);
     } while (parama.icon == null);
     Rect localRect = parama.icon.getBounds();
     localRect.offsetTo(paramInt1 - localRect.width() / 2, paramInt2 - localRect.height() / 2);
@@ -216,7 +216,7 @@ public class ActionChooserView
     }
     Rect localRect = parama.icon.getBounds();
     int i = Math.max(parama.icon.getIntrinsicHeight(), parama.icon.getIntrinsicHeight());
-    float f = this.yJ * 2.0F * this.yH * getMeasuredHeight() / i;
+    float f = this.Ay * 2.0F * this.Aw * getMeasuredHeight() / i;
     localRect.left = 0;
     localRect.top = 0;
     localRect.right = Math.round(parama.icon.getIntrinsicWidth() * f);
@@ -227,102 +227,102 @@ public class ActionChooserView
   {
     if (paramBoolean1)
     {
-      this.ze = 0;
-      if (this.yW != null)
+      this.AT = 0;
+      if (this.AL != null)
       {
-        this.yX.cancel();
-        this.yZ.cancel();
-        this.yY.cancel();
-        ObjectAnimator localObjectAnimator = this.yZ;
-        f1 = this.yT;
-        float f2 = this.yH;
-        if (this.yW.intValue() == 2) {}
+        this.AM.cancel();
+        this.AO.cancel();
+        this.AN.cancel();
+        ObjectAnimator localObjectAnimator = this.AO;
+        f1 = this.AI;
+        float f2 = this.Aw;
+        if (this.AL.intValue() == 2) {}
         for (int i = -1;; i = 1)
         {
           localObjectAnimator.setFloatValues(new float[] { f1, i * (0.5F + f2) });
-          this.yZ.setDuration(Math.round((Math.abs(this.yH + 0.5F) - Math.abs(this.yT)) / Math.max(this.yP, this.iy)));
-          this.yZ.start();
+          this.AO.setDuration(Math.round((Math.abs(this.Aw + 0.5F) - Math.abs(this.AI)) / Math.max(this.AE, this.kw)));
+          this.AO.start();
           return;
         }
       }
-      if (this.yT == 0.0F)
+      if (this.AI == 0.0F)
       {
-        this.yX.start();
+        this.AM.start();
         return;
       }
-      float f1 = this.yT;
-      this.yY.setFloatValues(new float[] { f1, 0.0F });
-      this.yY.setDuration(Math.round(Math.abs(f1 / this.yP)));
-      this.yY.start();
+      float f1 = this.AI;
+      this.AN.setFloatValues(new float[] { f1, 0.0F });
+      this.AN.setDuration(Math.round(Math.abs(f1 / this.AE)));
+      this.AN.start();
       return;
     }
     if (paramBoolean2)
     {
-      this.ze = 2;
-      this.yX.cancel();
-      this.yZ.cancel();
-      this.yY.cancel();
+      this.AT = 2;
+      this.AM.cancel();
+      this.AO.cancel();
+      this.AN.cancel();
       return;
     }
-    this.ze = 1;
+    this.AT = 1;
   }
   
-  private ArrayList<Animator> aM(int paramInt)
+  private ArrayList<Animator> bg(int paramInt)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramInt == 1) {}
     for (paramInt = 1;; paramInt = -1)
     {
-      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this, zi, new float[] { 0.0F, paramInt * this.yG });
-      localObjectAnimator1.setDuration(this.yM);
-      localObjectAnimator1.setStartDelay(this.yN);
+      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this, AX, new float[] { 0.0F, paramInt * this.Av });
+      localObjectAnimator1.setDuration(this.AB);
+      localObjectAnimator1.setStartDelay(this.AC);
       localArrayList.add(localObjectAnimator1);
-      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this, zi, new float[] { paramInt * this.yG, 0.0F });
-      localObjectAnimator1.setDuration(this.yM);
-      localObjectAnimator1.setStartDelay(this.yN);
+      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this, AX, new float[] { paramInt * this.Av, 0.0F });
+      localObjectAnimator1.setDuration(this.AB);
+      localObjectAnimator1.setStartDelay(this.AC);
       localArrayList.add(localObjectAnimator2);
       return localArrayList;
     }
   }
   
-  private void aN(int paramInt)
+  private void bh(int paramInt)
   {
-    this.yW = Integer.valueOf(paramInt);
-    this.zd = false;
+    this.AL = Integer.valueOf(paramInt);
+    this.AS = false;
   }
   
-  private boolean aO(int paramInt)
+  private boolean bi(int paramInt)
   {
-    return (this.yW != null) && (this.yW.intValue() == paramInt);
+    return (this.AL != null) && (this.AL.intValue() == paramInt);
   }
   
-  private void q(float paramFloat)
+  private void r(float paramFloat)
   {
     if (paramFloat < 0.0F) {}
-    for (int i = -1; (this.ze == 1) && (Math.abs(paramFloat) == 0.0F); i = 1)
+    for (int i = -1; (this.AT == 1) && (Math.abs(paramFloat) == 0.0F); i = 1)
     {
       a(false, true);
-      r(0.0F);
+      s(0.0F);
       invalidate();
       return;
     }
-    r(i * Math.min(Math.abs(paramFloat), this.yH + 0.5F));
-    if (Math.abs(this.yT) >= this.yH + 0.5F)
+    s(i * Math.min(Math.abs(paramFloat), this.Aw + 0.5F));
+    if (Math.abs(this.AI) >= this.Aw + 0.5F)
     {
       if (i >= 0) {
         break label175;
       }
       i = 2;
-      this.yW = Integer.valueOf(i);
-      if (this.yS.indexOfKey(this.yW.intValue()) >= 0)
+      this.AL = Integer.valueOf(i);
+      if (this.AH.indexOfKey(this.AL.intValue()) >= 0)
       {
-        this.zd = false;
+        this.AS = false;
         a(false, true);
-        if (!this.yR) {
+        if (!this.AG) {
           break label180;
         }
-        this.za.setDuration(this.yO);
-        this.za.addListener(new Animator.AnimatorListener()
+        this.AP.setDuration(this.AD);
+        this.AP.addListener(new Animator.AnimatorListener()
         {
           public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
           
@@ -336,7 +336,7 @@ public class ActionChooserView
           
           public final void onAnimationStart(Animator paramAnonymousAnimator) {}
         });
-        this.za.start();
+        this.AP.start();
       }
     }
     for (;;)
@@ -347,21 +347,21 @@ public class ActionChooserView
       i = 1;
       break;
       label180:
-      removeCallbacks(this.zh);
-      postDelayed(this.zh, this.yQ);
+      removeCallbacks(this.AW);
+      postDelayed(this.AW, this.AF);
     }
   }
   
-  private void r(float paramFloat)
+  private void s(float paramFloat)
   {
-    if (paramFloat != this.yT)
+    if (paramFloat != this.AI)
     {
-      this.yT = paramFloat;
-      paramFloat = Math.max(0.0F, (Math.abs(paramFloat) - this.yG) / (0.5F + this.yH - this.yG));
-      if (this.yV != paramFloat)
+      this.AI = paramFloat;
+      paramFloat = Math.max(0.0F, (Math.abs(paramFloat) - this.Av) / (0.5F + this.Aw - this.Av));
+      if (this.AK != paramFloat)
       {
-        this.yV = paramFloat;
-        Iterator localIterator = this.zg.iterator();
+        this.AK = paramFloat;
+        Iterator localIterator = this.AV.iterator();
         while (localIterator.hasNext()) {
           localIterator.next();
         }
@@ -377,12 +377,12 @@ public class ActionChooserView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.yX.start();
+    this.AM.start();
   }
   
   protected void onDetachedFromWindow()
   {
-    this.yX.cancel();
+    this.AM.cancel();
     super.onDetachedFromWindow();
   }
   
@@ -391,27 +391,27 @@ public class ActionChooserView
     super.onDraw(paramCanvas);
     int i = paramCanvas.getHeight();
     int j = paramCanvas.getWidth();
-    int k = Math.round(j * this.yT);
-    int m = Math.round(i * this.yH);
-    float f = i * this.yI;
-    a(paramCanvas, (a)this.yS.get(1), k - m, i / 2, a(m, this.yT, f, aO(1), this.yU));
-    a(paramCanvas, (a)this.yS.get(2), k + j + m, i / 2, a(m, -this.yT, f, aO(2), this.yU));
+    int k = Math.round(j * this.AI);
+    int m = Math.round(i * this.Aw);
+    float f = i * this.Ax;
+    a(paramCanvas, (a)this.AH.get(1), k - m, i / 2, a(m, this.AI, f, bi(1), this.AJ));
+    a(paramCanvas, (a)this.AH.get(2), k + j + m, i / 2, a(m, -this.AI, f, bi(2), this.AJ));
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    a((a)this.yS.get(1));
-    a((a)this.yS.get(2));
+    a((a)this.AH.get(1));
+    a((a)this.AH.get(2));
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = true;
-    if (!this.zd) {
+    if (!this.AS) {
       bool = false;
     }
-    while (this.zf.onTouchEvent(paramMotionEvent)) {
+    while (this.AU.onTouchEvent(paramMotionEvent)) {
       return bool;
     }
     switch (paramMotionEvent.getAction() & 0xFF)
@@ -420,25 +420,25 @@ public class ActionChooserView
       return true;
     case 0: 
       a(false, true);
-      this.zb = paramMotionEvent.getX();
-      this.zc = this.yT;
+      this.AQ = paramMotionEvent.getX();
+      this.AR = this.AI;
       return true;
     case 2: 
-      float f1 = paramMotionEvent.getX() - this.zb;
-      this.iy = Math.abs((f1 / getWidth() - this.zc) / (float)(paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime()));
-      float f2 = this.zc;
-      q(f1 / getWidth() + f2);
+      float f1 = paramMotionEvent.getX() - this.AQ;
+      this.kw = Math.abs((f1 / getWidth() - this.AR) / (float)(paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime()));
+      float f2 = this.AR;
+      r(f1 / getWidth() + f2);
       return true;
     }
-    if (Math.abs(paramMotionEvent.getX() - this.zb) >= getMeasuredWidth() * this.yK) {
-      if (paramMotionEvent.getX() >= this.zb) {
+    if (Math.abs(paramMotionEvent.getX() - this.AQ) >= getMeasuredWidth() * this.Az) {
+      if (paramMotionEvent.getX() >= this.AQ) {
         break label205;
       }
     }
     label205:
     for (int i = 2;; i = 1)
     {
-      aN(i);
+      bh(i);
       a(true, true);
       return true;
     }
@@ -450,7 +450,7 @@ public class ActionChooserView
     super.setEnabled(paramBoolean);
     if (bool != paramBoolean)
     {
-      this.zd = paramBoolean;
+      this.AS = paramBoolean;
       a(paramBoolean, paramBoolean);
     }
   }

@@ -14,6 +14,13 @@ import java.util.Set;
 
 public abstract class n
 {
+  protected static void a(View paramView, Rect paramRect)
+  {
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    paramRect.set(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
+  }
+  
   protected static void a(List<View> paramList, View paramView)
   {
     int k = paramList.size();
@@ -73,18 +80,11 @@ public abstract class n
     while (i < j)
     {
       View localView = (View)paramArrayList.get(i);
-      localArrayList.add(t.ai(localView));
+      localArrayList.add(t.an(localView));
       t.a(localView, null);
       i += 1;
     }
     return localArrayList;
-  }
-  
-  protected static void b(View paramView, Rect paramRect)
-  {
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    paramRect.set(arrayOfInt[0], arrayOfInt[1], arrayOfInt[0] + paramView.getWidth(), arrayOfInt[1] + paramView.getHeight());
   }
   
   public static boolean h(List paramList)
@@ -102,7 +102,7 @@ public abstract class n
     if (i < k)
     {
       Object localObject = (View)paramArrayList1.get(i);
-      String str = t.ai((View)localObject);
+      String str = t.an((View)localObject);
       localArrayList.add(str);
       int j;
       if (str != null)
@@ -178,8 +178,8 @@ public abstract class n
     {
       return;
       label45:
-      Boolean localBoolean = (Boolean)paramView.getTag(2131820673);
-      if (((localBoolean != null) && (localBoolean.booleanValue())) || (paramView.getBackground() != null) || (t.ai(paramView) != null))
+      Boolean localBoolean = (Boolean)paramView.getTag(2131305634);
+      if (((localBoolean != null) && (localBoolean.booleanValue())) || (paramView.getBackground() != null) || (t.an(paramView) != null))
       {
         bool = true;
         break;
@@ -203,7 +203,7 @@ public abstract class n
   {
     if (paramView.getVisibility() == 0)
     {
-      String str = t.ai(paramView);
+      String str = t.an(paramView);
       if (str != null) {
         paramMap.put(str, paramView);
       }
@@ -231,11 +231,11 @@ public abstract class n
   
   public abstract void c(Object paramObject, View paramView);
   
-  public abstract boolean g(Object paramObject);
+  public abstract boolean f(Object paramObject);
+  
+  public abstract Object g(Object paramObject);
   
   public abstract Object h(Object paramObject);
-  
-  public abstract Object i(Object paramObject);
 }
 
 

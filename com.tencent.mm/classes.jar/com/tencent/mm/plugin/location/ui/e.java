@@ -1,71 +1,82 @@
 package com.tencent.mm.plugin.location.ui;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
+import android.content.Context;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.k.d;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
-  extends ImageView
+  implements c
 {
-  private static int ocv;
-  private final String TAG;
-  private double bnp;
-  public b.a dZA;
-  private boolean isRunning;
-  private Activity mActivity;
-  private b.a ocm;
-  private Bitmap ocn;
-  private boolean oco;
-  private double ocp;
-  private double ocq;
-  public com.tencent.mm.modelgeo.d ocr;
-  private com.tencent.mm.plugin.k.d ocs;
-  private boolean oct;
-  private final int ocu;
-  private boolean ocw;
+  public boolean diE;
+  public String goQ;
+  private boolean isVisible;
+  private String sOr;
+  private double sOv;
+  private double sOw;
+  private boolean sQR;
+  private View sQS;
+  private d sQT;
+  private TextView sQU;
+  private TextView sQV;
+  public ImageButton sQW;
+  private String sQy;
   
-  public e(Activity paramActivity, com.tencent.mm.plugin.k.d paramd)
+  public e(d paramd, Context paramContext)
   {
-    super(paramActivity);
-    AppMethodBeat.i(113457);
-    this.TAG = "MicroMsg.MyPoiPoint";
-    this.oct = false;
-    this.ocu = 689208551;
-    this.ocw = false;
-    this.dZA = new e.1(this);
-    this.ocs = paramd;
-    this.ocm = null;
-    this.mActivity = paramActivity;
-    this.ocn = com.tencent.mm.sdk.platformtools.d.Na(2130839958);
-    this.isRunning = false;
-    this.oco = false;
-    this.ocr = com.tencent.mm.modelgeo.d.agQ();
-    ocv = BackwardSupportUtil.b.b(paramActivity, 80.0F);
-    setImageResource(2130839958);
-    setScaleType(ImageView.ScaleType.FIT_CENTER);
-    ab.d("MicroMsg.MyPoiPoint", "enableLocation");
-    this.isRunning = true;
-    this.ocr.a(this.dZA);
-    AppMethodBeat.o(113457);
+    AppMethodBeat.i(55842);
+    this.diE = false;
+    this.sQR = true;
+    this.sOv = 1000000.0D;
+    this.sOw = 1000000.0D;
+    this.isVisible = true;
+    this.sQy = "";
+    paramContext = ((Activity)paramContext).findViewById(2131301527);
+    this.sQU = ((TextView)paramContext.findViewById(2131301525));
+    this.sQV = ((TextView)paramContext.findViewById(2131301526));
+    this.sQW = ((ImageButton)paramContext.findViewById(2131301534));
+    this.sQT = paramd;
+    this.sQS = paramContext;
+    AppMethodBeat.o(55842);
   }
   
-  protected final void onDraw(Canvas paramCanvas)
+  public final String getPreText()
   {
-    AppMethodBeat.i(113458);
-    super.onDraw(paramCanvas);
-    ab.d("MicroMsg.MyPoiPoint", "onDraw");
-    AppMethodBeat.o(113458);
+    return this.sQy;
+  }
+  
+  public final void setText(String paramString)
+  {
+    AppMethodBeat.i(55843);
+    this.sOr = paramString;
+    paramString = this.sOr;
+    ad.d("NewItemOverlay", "popView " + this.sQS.getWidth() + " " + this.sQS.getHeight());
+    if ((paramString != null) && (!paramString.equals(""))) {
+      this.sQV.setText(paramString);
+    }
+    if ((this.goQ != null) && (!this.goQ.equals(""))) {
+      this.sQU.setText(this.goQ);
+    }
+    for (;;)
+    {
+      if (this.sQR)
+      {
+        this.sQS.setVisibility(0);
+        this.sQS.invalidate();
+      }
+      AppMethodBeat.o(55843);
+      return;
+      this.sQU.setText(2131760712);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.e
  * JD-Core Version:    0.7.0.1
  */

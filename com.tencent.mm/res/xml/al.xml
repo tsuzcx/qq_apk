@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContactsSource
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.chatting.profile" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.plugin.sns.timeline" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip.video" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-    <ContactsDataKind android:mimeType="vnd.android.cursor.item/vnd.com.tencent.mm.chatting.voip" android:summaryColumn="data2" android:detailColumn="data3" android:detailSocialSummary="true" />
-</ContactsSource>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/awl" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_wxpay_notify_go_to" android:layout="@layout/aop" android:title="@string/bbm" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="contact_info_wxpay_notify_top" android:layout="@layout/aop" android:persistent="false" android:title="@string/bbq" />
+    <CheckBoxPreference android:key="contact_info_wxpay_notify_not_disturb" android:layout="@layout/aop" android:persistent="false" android:title="@string/bbo" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_wxpay_notify_help" android:layout="@layout/aop" android:title="@string/bbn" />
+    <Preference android:key="contact_info_wxpay_notify_clear_data" android:layout="@layout/aop" android:title="@string/b55" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/f9r" android:key="contact_info_wxpay_notify_install" android:title_color="@color/rf" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/f9x" android:key="contact_info_wxpay_notify_uninstall" android:layout="@layout/ajc" android:title_color="@color/a0i" />
+    <PreferenceCategory />
+</PreferenceScreen>

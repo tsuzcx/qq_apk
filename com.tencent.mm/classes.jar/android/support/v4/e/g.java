@@ -1,383 +1,235 @@
 package android.support.v4.e;
 
-import java.util.LinkedHashMap;
-import java.util.Locale;
-import java.util.Map;
-
-public class g<K, V>
+public final class g<E>
+  implements Cloneable
 {
-  private int createCount;
-  private int evictionCount;
-  private int hitCount;
-  private final LinkedHashMap<K, V> map;
-  private int maxSize;
-  private int missCount;
-  private int putCount;
-  private int size;
+  public static final Object LS = new Object();
+  public boolean LT = false;
+  public long[] LU;
+  public Object[] LV;
+  public int mSize;
   
-  public g(int paramInt)
+  public g()
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("maxSize <= 0");
-    }
-    this.maxSize = paramInt;
-    this.map = new LinkedHashMap(0, 0.75F, true);
+    this((byte)0);
   }
   
-  private int safeSizeOf(K paramK, V paramV)
+  private g(byte paramByte)
   {
-    int i = sizeOf(paramK, paramV);
-    if (i < 0) {
-      throw new IllegalStateException("Negative size: " + paramK + "=" + paramV);
-    }
-    return i;
+    paramByte = d.aI(10);
+    this.LU = new long[paramByte];
+    this.LV = new Object[paramByte];
+    this.mSize = 0;
   }
   
-  protected V create(K paramK)
+  private void gc()
   {
-    return null;
-  }
-  
-  public final int createCount()
-  {
-    try
+    int m = this.mSize;
+    long[] arrayOfLong = this.LU;
+    Object[] arrayOfObject = this.LV;
+    int i = 0;
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      int i = this.createCount;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  protected void entryRemoved(boolean paramBoolean, K paramK, V paramV1, V paramV2) {}
-  
-  public final void evictAll()
-  {
-    trimToSize(-1);
-  }
-  
-  public final int evictionCount()
-  {
-    try
-    {
-      int i = this.evictionCount;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final V get(K paramK)
-  {
-    if (paramK == null) {
-      throw new NullPointerException("key == null");
-    }
-    Object localObject1;
-    try
-    {
-      localObject1 = this.map.get(paramK);
-      if (localObject1 != null)
+      Object localObject = arrayOfObject[i];
+      k = j;
+      if (localObject != LS)
       {
-        this.hitCount += 1;
-        return localObject1;
-      }
-      this.missCount += 1;
-      localObject1 = create(paramK);
-      if (localObject1 == null) {
-        return null;
-      }
-    }
-    finally {}
-    try
-    {
-      this.createCount += 1;
-      Object localObject2 = this.map.put(paramK, localObject1);
-      if (localObject2 != null) {
-        this.map.put(paramK, localObject2);
-      }
-      for (;;)
-      {
-        if (localObject2 == null) {
-          break;
+        if (i != j)
+        {
+          arrayOfLong[j] = arrayOfLong[i];
+          arrayOfObject[j] = localObject;
+          arrayOfObject[i] = null;
         }
-        entryRemoved(false, paramK, localObject1, localObject2);
-        return localObject2;
-        this.size += safeSizeOf(paramK, localObject1);
+        k = j + 1;
       }
-      trimToSize(this.maxSize);
+      i += 1;
     }
-    finally {}
-    return localObject1;
+    this.LT = false;
+    this.mSize = j;
   }
   
-  public final int hitCount()
+  public final void append(long paramLong, E paramE)
   {
-    try
+    if ((this.mSize != 0) && (paramLong <= this.LU[(this.mSize - 1)]))
     {
-      int i = this.hitCount;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final int maxSize()
-  {
-    try
-    {
-      int i = this.maxSize;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final int missCount()
-  {
-    try
-    {
-      int i = this.missCount;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final V put(K paramK, V paramV)
-  {
-    if ((paramK == null) || (paramV == null)) {
-      throw new NullPointerException("key == null || value == null");
-    }
-    try
-    {
-      this.putCount += 1;
-      this.size += safeSizeOf(paramK, paramV);
-      Object localObject = this.map.put(paramK, paramV);
-      if (localObject != null) {
-        this.size -= safeSizeOf(paramK, localObject);
-      }
-      if (localObject != null) {
-        entryRemoved(false, paramK, localObject, paramV);
-      }
-      trimToSize(this.maxSize);
-      return localObject;
-    }
-    finally {}
-  }
-  
-  public final int putCount()
-  {
-    try
-    {
-      int i = this.putCount;
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final V remove(K paramK)
-  {
-    if (paramK == null) {
-      throw new NullPointerException("key == null");
-    }
-    try
-    {
-      Object localObject = this.map.remove(paramK);
-      if (localObject != null) {
-        this.size -= safeSizeOf(paramK, localObject);
-      }
-      if (localObject != null) {
-        entryRemoved(false, paramK, localObject, null);
-      }
-      return localObject;
-    }
-    finally {}
-  }
-  
-  public void resize(int paramInt)
-  {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("maxSize <= 0");
-    }
-    try
-    {
-      this.maxSize = paramInt;
-      trimToSize(paramInt);
+      put(paramLong, paramE);
       return;
     }
-    finally {}
+    if ((this.LT) && (this.mSize >= this.LU.length)) {
+      gc();
+    }
+    int i = this.mSize;
+    if (i >= this.LU.length)
+    {
+      int j = d.aI(i + 1);
+      long[] arrayOfLong = new long[j];
+      Object[] arrayOfObject = new Object[j];
+      System.arraycopy(this.LU, 0, arrayOfLong, 0, this.LU.length);
+      System.arraycopy(this.LV, 0, arrayOfObject, 0, this.LV.length);
+      this.LU = arrayOfLong;
+      this.LV = arrayOfObject;
+    }
+    this.LU[i] = paramLong;
+    this.LV[i] = paramE;
+    this.mSize = (i + 1);
+  }
+  
+  public final void clear()
+  {
+    int j = this.mSize;
+    Object[] arrayOfObject = this.LV;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfObject[i] = null;
+      i += 1;
+    }
+    this.mSize = 0;
+    this.LT = false;
+  }
+  
+  public final g<E> eS()
+  {
+    try
+    {
+      g localg = (g)super.clone();
+      localg.LU = ((long[])this.LU.clone());
+      localg.LV = ((Object[])this.LV.clone());
+      return localg;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      throw new AssertionError(localCloneNotSupportedException);
+    }
+  }
+  
+  public final E get(long paramLong, E paramE)
+  {
+    int i = d.a(this.LU, this.mSize, paramLong);
+    if ((i < 0) || (this.LV[i] == LS)) {
+      return paramE;
+    }
+    return this.LV[i];
+  }
+  
+  public final int indexOfKey(long paramLong)
+  {
+    if (this.LT) {
+      gc();
+    }
+    return d.a(this.LU, this.mSize, paramLong);
+  }
+  
+  public final long keyAt(int paramInt)
+  {
+    if (this.LT) {
+      gc();
+    }
+    return this.LU[paramInt];
+  }
+  
+  public final void put(long paramLong, E paramE)
+  {
+    int i = d.a(this.LU, this.mSize, paramLong);
+    if (i >= 0)
+    {
+      this.LV[i] = paramE;
+      return;
+    }
+    int j = i ^ 0xFFFFFFFF;
+    if ((j < this.mSize) && (this.LV[j] == LS))
+    {
+      this.LU[j] = paramLong;
+      this.LV[j] = paramE;
+      return;
+    }
+    i = j;
+    if (this.LT)
+    {
+      i = j;
+      if (this.mSize >= this.LU.length)
+      {
+        gc();
+        i = d.a(this.LU, this.mSize, paramLong) ^ 0xFFFFFFFF;
+      }
+    }
+    Object localObject;
+    if (this.mSize >= this.LU.length)
+    {
+      j = d.aI(this.mSize + 1);
+      localObject = new long[j];
+      Object[] arrayOfObject = new Object[j];
+      System.arraycopy(this.LU, 0, localObject, 0, this.LU.length);
+      System.arraycopy(this.LV, 0, arrayOfObject, 0, this.LV.length);
+      this.LU = ((long[])localObject);
+      this.LV = arrayOfObject;
+    }
+    if (this.mSize - i != 0)
+    {
+      localObject = this.LU;
+      System.arraycopy(localObject, i, localObject, i + 1, this.mSize - i);
+      localObject = this.LV;
+      System.arraycopy(localObject, i, localObject, i + 1, this.mSize - i);
+    }
+    this.LU[i] = paramLong;
+    this.LV[i] = paramE;
+    this.mSize += 1;
+  }
+  
+  public final void removeAt(int paramInt)
+  {
+    if (this.LV[paramInt] != LS)
+    {
+      this.LV[paramInt] = LS;
+      this.LT = true;
+    }
   }
   
   public final int size()
   {
-    try
-    {
-      int i = this.size;
-      return i;
+    if (this.LT) {
+      gc();
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  protected int sizeOf(K paramK, V paramV)
-  {
-    return 1;
-  }
-  
-  public final Map<K, V> snapshot()
-  {
-    try
-    {
-      LinkedHashMap localLinkedHashMap = new LinkedHashMap(this.map);
-      return localLinkedHashMap;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.mSize;
   }
   
   public final String toString()
   {
-    int i = 0;
-    try
-    {
-      int j = this.hitCount + this.missCount;
-      if (j != 0) {
-        i = this.hitCount * 100 / j;
-      }
-      String str = String.format(Locale.US, "LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.maxSize), Integer.valueOf(this.hitCount), Integer.valueOf(this.missCount), Integer.valueOf(i) });
-      return str;
+    if (size() <= 0) {
+      return "{}";
     }
-    finally {}
+    StringBuilder localStringBuilder = new StringBuilder(this.mSize * 28);
+    localStringBuilder.append('{');
+    int i = 0;
+    if (i < this.mSize)
+    {
+      if (i > 0) {
+        localStringBuilder.append(", ");
+      }
+      localStringBuilder.append(keyAt(i));
+      localStringBuilder.append('=');
+      Object localObject = valueAt(i);
+      if (localObject != this) {
+        localStringBuilder.append(localObject);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localStringBuilder.append("(this Map)");
+      }
+    }
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
-  /* Error */
-  public void trimToSize(int paramInt)
+  public final E valueAt(int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 104	android/support/v4/e/g:size	I
-    //   6: iflt +20 -> 26
-    //   9: aload_0
-    //   10: getfield 38	android/support/v4/e/g:map	Ljava/util/LinkedHashMap;
-    //   13: invokevirtual 145	java/util/LinkedHashMap:isEmpty	()Z
-    //   16: ifeq +48 -> 64
-    //   19: aload_0
-    //   20: getfield 104	android/support/v4/e/g:size	I
-    //   23: ifeq +41 -> 64
-    //   26: new 46	java/lang/IllegalStateException
-    //   29: dup
-    //   30: new 48	java/lang/StringBuilder
-    //   33: dup
-    //   34: invokespecial 146	java/lang/StringBuilder:<init>	()V
-    //   37: aload_0
-    //   38: invokevirtual 150	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   41: invokevirtual 155	java/lang/Class:getName	()Ljava/lang/String;
-    //   44: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   47: ldc 157
-    //   49: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   55: invokespecial 65	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
-    //   58: athrow
-    //   59: astore_2
-    //   60: aload_0
-    //   61: monitorexit
-    //   62: aload_2
-    //   63: athrow
-    //   64: aload_0
-    //   65: getfield 104	android/support/v4/e/g:size	I
-    //   68: iload_1
-    //   69: if_icmple +13 -> 82
-    //   72: aload_0
-    //   73: getfield 38	android/support/v4/e/g:map	Ljava/util/LinkedHashMap;
-    //   76: invokevirtual 145	java/util/LinkedHashMap:isEmpty	()Z
-    //   79: ifeq +6 -> 85
-    //   82: aload_0
-    //   83: monitorexit
-    //   84: return
-    //   85: aload_0
-    //   86: getfield 38	android/support/v4/e/g:map	Ljava/util/LinkedHashMap;
-    //   89: invokevirtual 161	java/util/LinkedHashMap:entrySet	()Ljava/util/Set;
-    //   92: invokeinterface 167 1 0
-    //   97: invokeinterface 173 1 0
-    //   102: checkcast 175	java/util/Map$Entry
-    //   105: astore_3
-    //   106: aload_3
-    //   107: invokeinterface 178 1 0
-    //   112: astore_2
-    //   113: aload_3
-    //   114: invokeinterface 181 1 0
-    //   119: astore_3
-    //   120: aload_0
-    //   121: getfield 38	android/support/v4/e/g:map	Ljava/util/LinkedHashMap;
-    //   124: aload_2
-    //   125: invokevirtual 114	java/util/LinkedHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   128: pop
-    //   129: aload_0
-    //   130: aload_0
-    //   131: getfield 104	android/support/v4/e/g:size	I
-    //   134: aload_0
-    //   135: aload_2
-    //   136: aload_3
-    //   137: invokespecial 106	android/support/v4/e/g:safeSizeOf	(Ljava/lang/Object;Ljava/lang/Object;)I
-    //   140: isub
-    //   141: putfield 104	android/support/v4/e/g:size	I
-    //   144: aload_0
-    //   145: aload_0
-    //   146: getfield 82	android/support/v4/e/g:evictionCount	I
-    //   149: iconst_1
-    //   150: iadd
-    //   151: putfield 82	android/support/v4/e/g:evictionCount	I
-    //   154: aload_0
-    //   155: monitorexit
-    //   156: aload_0
-    //   157: iconst_1
-    //   158: aload_2
-    //   159: aload_3
-    //   160: aconst_null
-    //   161: invokevirtual 102	android/support/v4/e/g:entryRemoved	(ZLjava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
-    //   164: goto -164 -> 0
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	167	0	this	g
-    //   0	167	1	paramInt	int
-    //   59	4	2	localObject1	Object
-    //   112	47	2	localObject2	Object
-    //   105	55	3	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	26	59	finally
-    //   26	59	59	finally
-    //   60	62	59	finally
-    //   64	82	59	finally
-    //   82	84	59	finally
-    //   85	156	59	finally
+    if (this.LT) {
+      gc();
+    }
+    return this.LV[paramInt];
   }
 }
 

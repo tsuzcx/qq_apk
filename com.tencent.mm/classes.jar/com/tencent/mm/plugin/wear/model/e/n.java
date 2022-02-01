@@ -8,39 +8,33 @@ import java.util.List;
 public final class n
   extends a
 {
-  public final List<Integer> cYL()
+  public final List<Integer> ehn()
   {
-    AppMethodBeat.i(26414);
+    AppMethodBeat.i(30096);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(11033));
     localArrayList.add(Integer.valueOf(11030));
-    AppMethodBeat.o(26414);
+    AppMethodBeat.o(30096);
     return localArrayList;
   }
   
-  protected final byte[] q(int paramInt, byte[] paramArrayOfByte)
+  protected final byte[] s(int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(26415);
+    AppMethodBeat.i(30097);
     switch (paramInt)
     {
     case 11031: 
     case 11032: 
     default: 
-      AppMethodBeat.o(26415);
+      AppMethodBeat.o(30097);
       return null;
     case 11030: 
-      if (new String(paramArrayOfByte).equals("arm_v7"))
-      {
-        paramArrayOfByte = h.agh("wechatvoicesilk_v7a");
-        AppMethodBeat.o(26415);
-        return paramArrayOfByte;
-      }
-      paramArrayOfByte = h.agh("wechatvoicesilk");
-      AppMethodBeat.o(26415);
+      paramArrayOfByte = h.auS("wechatvoicesilk");
+      AppMethodBeat.o(30097);
       return paramArrayOfByte;
     }
-    paramArrayOfByte = h.agh("stlport_shared");
-    AppMethodBeat.o(26415);
+    paramArrayOfByte = h.auS("stlport_shared");
+    AppMethodBeat.o(30097);
     return paramArrayOfByte;
   }
 }

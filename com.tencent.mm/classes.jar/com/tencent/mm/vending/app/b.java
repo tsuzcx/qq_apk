@@ -11,89 +11,89 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
 {
-  private static b ANO;
-  final SparseIntArray ANP;
-  Map<c, a> b;
-  final Handler d;
+  private static b HPc;
+  Map<c, a> HPd;
+  final SparseIntArray HPe;
+  final Handler HPf;
   
   static
   {
-    AppMethodBeat.i(126098);
-    ANO = null;
-    ANO = new b();
-    AppMethodBeat.o(126098);
+    AppMethodBeat.i(74893);
+    HPc = null;
+    HPc = new b();
+    AppMethodBeat.o(74893);
   }
   
   public b()
   {
-    AppMethodBeat.i(126096);
-    this.b = new ConcurrentHashMap();
-    this.ANP = new SparseIntArray();
-    this.d = new Handler(com.tencent.mm.vending.i.b.dQw().a.getLooper())
+    AppMethodBeat.i(74891);
+    this.HPd = new ConcurrentHashMap();
+    this.HPe = new SparseIntArray();
+    this.HPf = new Handler(com.tencent.mm.vending.i.b.fhw().HQX.getLooper())
     {
       public final void handleMessage(Message arg1)
       {
-        AppMethodBeat.i(126099);
+        AppMethodBeat.i(74894);
         a locala = (a)???.obj;
         switch (???.what)
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(126099);
+          AppMethodBeat.o(74894);
           return;
           locala.onCreate();
-          synchronized (locala.d)
+          synchronized (locala.HOS)
           {
-            locala.g = true;
-            locala.d.notify();
-            AppMethodBeat.o(126099);
+            locala.HOV = true;
+            locala.HOS.notify();
+            AppMethodBeat.o(74894);
             return;
           }
-          AppMethodBeat.o(126099);
+          AppMethodBeat.o(74894);
           return;
-          AppMethodBeat.o(126099);
+          AppMethodBeat.o(74894);
           return;
           localObject.onDestroy();
         }
       }
     };
-    AppMethodBeat.o(126096);
+    AppMethodBeat.o(74891);
   }
   
-  public static b dQf()
+  public static b fhb()
   {
-    return ANO;
+    return HPc;
   }
   
   public final void a(c paramc, a parama)
   {
-    AppMethodBeat.i(126097);
-    if (!this.b.containsKey(paramc))
+    AppMethodBeat.i(74892);
+    if (!this.HPd.containsKey(paramc))
     {
-      this.b.put(paramc, parama);
+      this.HPd.put(paramc, parama);
       com.tencent.mm.vending.f.a.i("Vending.InteractorManager", "presenter %s hash %s interactor %s looper %s", new Object[] { paramc, Integer.valueOf(paramc.hashCode()), parama, Looper.myLooper() });
-      int i = this.ANP.get(paramc.hashCode(), 0);
+      int i = this.HPe.get(paramc.hashCode(), 0);
       if ((i > 0) && (i < 4))
       {
         if (i > 0) {
-          this.d.sendMessage(this.d.obtainMessage(1, parama));
+          this.HPf.sendMessage(this.HPf.obtainMessage(1, parama));
         }
         if (i >= 2) {
-          this.d.sendMessage(this.d.obtainMessage(2, parama));
+          this.HPf.sendMessage(this.HPf.obtainMessage(2, parama));
         }
         if (i >= 3) {
-          this.d.sendMessage(this.d.obtainMessage(3, parama));
+          this.HPf.sendMessage(this.HPf.obtainMessage(3, parama));
         }
         if (i >= 4) {
-          this.d.sendMessage(this.d.obtainMessage(4, parama));
+          this.HPf.sendMessage(this.HPf.obtainMessage(4, parama));
         }
       }
-      AppMethodBeat.o(126097);
+      AppMethodBeat.o(74892);
       return;
     }
     com.tencent.mm.vending.f.a.e("Vending.InteractorManager", "duplicate activity and interactor.", new Object[0]);
-    AppMethodBeat.o(126097);
+    AppMethodBeat.o(74892);
   }
 }
 

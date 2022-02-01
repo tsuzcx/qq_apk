@@ -5,53 +5,53 @@ import com.tencent.mm.plugin.exdevice.model.c;
 
 public final class u
 {
-  private static u lIF = null;
-  private c lIG;
-  private f lIH;
+  private static u oZq = null;
+  private c oZr;
+  private f oZs;
   
   public static void a(m paramm)
   {
-    AppMethodBeat.i(19628);
-    bqA().lCQ = paramm;
-    AppMethodBeat.o(19628);
+    AppMethodBeat.i(23696);
+    cai().oTC = paramm;
+    AppMethodBeat.o(23696);
   }
   
-  public static c bqA()
+  private static u cag()
   {
-    AppMethodBeat.i(19629);
-    if (bqy().lIG == null) {
-      bqy().lIG = c.bpE();
+    AppMethodBeat.i(23694);
+    if (oZq == null) {
+      oZq = new u();
     }
-    c localc = bqy().lIG;
-    AppMethodBeat.o(19629);
-    return localc;
-  }
-  
-  private static u bqy()
-  {
-    AppMethodBeat.i(19626);
-    if (lIF == null) {
-      lIF = new u();
-    }
-    u localu = lIF;
-    AppMethodBeat.o(19626);
+    u localu = oZq;
+    AppMethodBeat.o(23694);
     return localu;
   }
   
-  public static f bqz()
+  public static f cah()
   {
-    AppMethodBeat.i(19627);
-    if (bqy().lIH == null) {
-      bqy().lIH = new f();
+    AppMethodBeat.i(23695);
+    if (cag().oZs == null) {
+      cag().oZs = new f();
     }
-    f localf = bqy().lIH;
-    AppMethodBeat.o(19627);
+    f localf = cag().oZs;
+    AppMethodBeat.o(23695);
     return localf;
+  }
+  
+  public static c cai()
+  {
+    AppMethodBeat.i(23697);
+    if (cag().oZr == null) {
+      cag().oZr = c.bZl();
+    }
+    c localc = cag().oZr;
+    AppMethodBeat.o(23697);
+    return localc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.u
  * JD-Core Version:    0.7.0.1
  */

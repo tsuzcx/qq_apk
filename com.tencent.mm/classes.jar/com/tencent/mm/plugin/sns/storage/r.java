@@ -1,80 +1,90 @@
 package com.tencent.mm.plugin.sns.storage;
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.i;
+import com.tencent.mm.g.c.fn;
+import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class r
+  extends fn
 {
-  long createTime;
-  private int gwL;
-  public int offset;
-  public int rCV;
-  private long rDA;
-  public int rDB;
-  public String rDC;
-  private int rDD;
-  private long rDE;
-  public String rDF;
-  public byte[] rDG;
-  public int type;
-  private String userName;
+  protected static c.a info;
+  public int xiB;
+  
+  static
+  {
+    AppMethodBeat.i(97590);
+    c.a locala = new c.a();
+    locala.EYt = new Field[5];
+    locala.columns = new String[6];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "logtime";
+    locala.EYv.put("logtime", "LONG");
+    localStringBuilder.append(" logtime LONG");
+    localStringBuilder.append(", ");
+    locala.columns[1] = "offset";
+    locala.EYv.put("offset", "INTEGER default '0' ");
+    localStringBuilder.append(" offset INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "logsize";
+    locala.EYv.put("logsize", "INTEGER");
+    localStringBuilder.append(" logsize INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "errorcount";
+    locala.EYv.put("errorcount", "INTEGER");
+    localStringBuilder.append(" errorcount INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "value";
+    locala.EYv.put("value", "BLOB");
+    localStringBuilder.append(" value BLOB");
+    locala.columns[5] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(97590);
+  }
   
   public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(37977);
-    this.rCV = paramCursor.getInt(0);
-    long l = paramCursor.getLong(1);
-    this.rDA = l;
-    this.rDF = i.lq(l);
-    this.type = paramCursor.getInt(2);
-    this.createTime = paramCursor.getLong(3);
-    this.userName = paramCursor.getString(4);
-    this.rDB = paramCursor.getInt(5);
-    this.offset = paramCursor.getInt(6);
-    this.gwL = paramCursor.getInt(7);
-    this.rDC = paramCursor.getString(8);
-    this.rDD = paramCursor.getInt(9);
-    this.rDE = paramCursor.getLong(10);
-    this.rDF = paramCursor.getString(11);
-    this.rDG = paramCursor.getBlob(12);
-    AppMethodBeat.o(37977);
+    AppMethodBeat.i(97589);
+    try
+    {
+      super.convertFrom(paramCursor);
+      this.xiB = ((int)this.systemRowid);
+      AppMethodBeat.o(97589);
+      return;
+    }
+    catch (Exception paramCursor)
+    {
+      String str = paramCursor.getMessage();
+      ad.e("MicroMsg.SnsKvReport", "error ".concat(String.valueOf(str)));
+      if ((str != null) && (str.contains("Unable to convert"))) {
+        af.dtz().dgI();
+      }
+      try
+      {
+        AppMethodBeat.o(97589);
+        throw paramCursor;
+      }
+      catch (Exception paramCursor)
+      {
+        ad.printErrStackTrace("MicroMsg.SnsKvReport", paramCursor, "", new Object[0]);
+        AppMethodBeat.o(97589);
+      }
+    }
   }
   
-  public final ContentValues ctc()
+  public final c.a getDBInfo()
   {
-    AppMethodBeat.i(37976);
-    ContentValues localContentValues = new ContentValues();
-    localContentValues.put("seqId", Long.valueOf(this.rDA));
-    localContentValues.put("type", Integer.valueOf(this.type));
-    localContentValues.put("createTime", Long.valueOf(this.createTime));
-    localContentValues.put("userName", this.userName);
-    localContentValues.put("totallen", Integer.valueOf(this.rDB));
-    localContentValues.put("offset", Integer.valueOf(this.offset));
-    localContentValues.put("local_flag", Integer.valueOf(this.gwL));
-    localContentValues.put("tmp_path", this.rDC);
-    localContentValues.put("nums", Integer.valueOf(this.rDD));
-    localContentValues.put("try_times", Long.valueOf(this.rDE));
-    localContentValues.put("StrId", this.rDF);
-    localContentValues.put("upload_buf", this.rDG);
-    AppMethodBeat.o(37976);
-    return localContentValues;
-  }
-  
-  public final void ctd()
-  {
-    this.gwL |= 0x4;
-  }
-  
-  public final void cte()
-  {
-    this.gwL &= 0xFFFFFFFB;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.r
  * JD-Core Version:    0.7.0.1
  */

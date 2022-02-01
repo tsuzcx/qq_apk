@@ -1,67 +1,146 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.e;
+import com.tencent.mm.loader.j.b;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView;
+import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.a;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.e;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.g;
+import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.h;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.ui.MMActivity;
 
 public class MMSightRecordViewTestUI
   extends MMActivity
 {
-  private int gNQ = 720;
-  private float gNS = 0.67F;
-  private MMSightRecordView hIG;
+  private float gwC = 0.67F;
+  private int iBC = 720;
+  private MMSightRecordView jLY;
   
   public int getLayoutId()
   {
-    return 2130970286;
+    return 2131494918;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(55125);
+    AppMethodBeat.i(94565);
     super.onCreate(paramBundle);
-    setBackBtn(new MMSightRecordViewTestUI.1(this));
-    this.hIG = ((MMSightRecordView)findViewById(2131826292));
-    this.hIG.setDisplayRatio(this.gNS);
-    this.hIG.setPreviewSizeLimit(this.gNQ);
-    this.hIG.setVideoPara$2e715812(100000);
-    this.hIG.setVideoFilePath(e.eQz + "mmsighttest.mp4");
-    this.hIG.setClipPictureSize(true);
-    this.hIG.setClipVideoSize(true);
-    this.hIG.oGg.asM();
-    this.hIG.setFlashMode(3);
-    this.hIG.setFrameDataCallback(new MMSightRecordViewTestUI.2(this));
-    this.hIG.oGg.startPreview();
-    this.hIG.oGg.asH();
-    findViewById(2131826293).setOnClickListener(new View.OnClickListener()
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(94557);
+        MMSightRecordViewTestUI.this.finish();
+        AppMethodBeat.o(94557);
+        return false;
+      }
+    });
+    this.jLY = ((MMSightRecordView)findViewById(2131303906));
+    this.jLY.setDisplayRatio(this.gwC);
+    this.jLY.setPreviewSizeLimit(this.iBC);
+    this.jLY.setVideoPara$2e715812(100000);
+    this.jLY.setVideoFilePath(b.aih() + "mmsighttest.mp4");
+    this.jLY.setClipPictureSize(true);
+    this.jLY.setClipVideoSize(true);
+    this.jLY.tBp.aLo();
+    this.jLY.setFlashMode(3);
+    this.jLY.setFrameDataCallback(new MMSightRecordView.a()
+    {
+      public final void t(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt1, int paramAnonymousInt2) {}
+    });
+    this.jLY.tBp.startPreview();
+    this.jLY.tBp.aLj();
+    findViewById(2131305642).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(55119);
-        MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).a(new MMSightRecordViewTestUI.3.1(this), true);
-        AppMethodBeat.o(55119);
+        AppMethodBeat.i(94559);
+        MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).a(new MMSightRecordView.g()
+        {
+          public final void N(Bitmap paramAnonymous2Bitmap)
+          {
+            AppMethodBeat.i(94558);
+            if (paramAnonymous2Bitmap != null) {
+              ((ImageView)MMSightRecordViewTestUI.this.findViewById(2131300943)).setImageBitmap(paramAnonymous2Bitmap);
+            }
+            AppMethodBeat.o(94558);
+          }
+          
+          public final void aZy() {}
+        }, true);
+        AppMethodBeat.o(94559);
       }
     });
-    findViewById(2131826294).setOnClickListener(new MMSightRecordViewTestUI.4(this));
-    al.p(new MMSightRecordViewTestUI.5(this, (TextView)findViewById(2131826291)), 1000L);
-    findViewById(2131826295).setOnClickListener(new MMSightRecordViewTestUI.6(this));
-    AppMethodBeat.o(55125);
+    findViewById(2131305181).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(94562);
+        MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).tBp.Ok();
+        aq.n(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(94561);
+            MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).a(new MMSightRecordView.h()
+            {
+              public final void fU(boolean paramAnonymous3Boolean)
+              {
+                AppMethodBeat.i(94560);
+                Toast.makeText(MMSightRecordViewTestUI.this, "record finish, error: ".concat(String.valueOf(paramAnonymous3Boolean)), 0).show();
+                AppMethodBeat.o(94560);
+              }
+            });
+            AppMethodBeat.o(94561);
+          }
+        }, 5000L);
+        AppMethodBeat.o(94562);
+      }
+    });
+    aq.n(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(94563);
+        this.tJw.setText("");
+        this.tJw.append(String.format("picture size: %s, ratio: %s\n", new Object[] { MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize(), Float.valueOf(Math.min(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize().x, MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize().y) / Math.max(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize().x, MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getPictureSize().y)) }));
+        this.tJw.append(String.format("video size: %s, ratio: %s\n", new Object[] { MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize(), Float.valueOf(Math.min(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize().x, MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize().y) / Math.max(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize().x, MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getVideoSize().y)) }));
+        this.tJw.append(String.format("preview size limit: %s\n", new Object[] { Integer.valueOf(MMSightRecordViewTestUI.b(MMSightRecordViewTestUI.this)) }));
+        this.tJw.append(String.format("display ratio: %s\n", new Object[] { Float.valueOf(MMSightRecordViewTestUI.c(MMSightRecordViewTestUI.this)) }));
+        this.tJw.append(String.format("view size: %s, ratio: %s\n", new Object[] { new Point(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getWidth(), MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getHeight()), Float.valueOf(MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getWidth() / MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).getHeight()) }));
+        AppMethodBeat.o(94563);
+      }
+    }, 1000L);
+    findViewById(2131305576).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(94564);
+        MMSightRecordViewTestUI.a(MMSightRecordViewTestUI.this).tBp.switchCamera();
+        AppMethodBeat.o(94564);
+      }
+    });
+    AppMethodBeat.o(94565);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(55126);
+    AppMethodBeat.i(94566);
     super.onDestroy();
-    this.hIG.oGg.release();
-    AppMethodBeat.o(55126);
+    this.jLY.tBp.release();
+    AppMethodBeat.o(94566);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

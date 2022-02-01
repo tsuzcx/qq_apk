@@ -5,91 +5,110 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bp;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.m.b;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.q.b;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.tools.b.c;
 import com.tencent.mm.ui.tools.f;
 import com.tencent.mm.ui.widget.MMEditText;
 
 public class EditSignatureUI
   extends MMActivity
 {
-  private p efs;
-  private com.tencent.mm.sdk.b.c ehn;
-  private MMEditText qFH;
-  private j.b qFI;
-  final bp qFJ;
-  private boolean qFK;
-  private TextView qFx;
+  private TextView wdU;
+  private MMEditText wee;
   
   public EditSignatureUI()
   {
-    AppMethodBeat.i(126949);
-    this.efs = null;
-    this.qFJ = bp.aba();
-    this.qFK = false;
-    this.ehn = new EditSignatureUI.1(this);
-    AppMethodBeat.o(126949);
+    AppMethodBeat.i(73877);
+    AppMethodBeat.o(73877);
   }
   
   public int getLayoutId()
   {
-    return 2130969351;
+    return 2131493740;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(126952);
-    setMMTitle(2131303426);
-    this.qFH = ((MMEditText)findViewById(2131820946));
-    this.qFx = ((TextView)findViewById(2131823234));
-    String str = bo.nullAsNil((String)g.RL().Ru().get(12291, null));
-    this.qFH.setText(j.b(this, str, this.qFH.getTextSize()));
-    this.qFH.setSelection(this.qFH.getText().length());
-    this.qFx.setText(f.bO(60, this.qFH.getEditableText().toString()));
-    com.tencent.mm.ui.tools.b.c.d(this.qFH).hR(0, 60).a(null);
-    this.qFH.addTextChangedListener(new a((byte)0));
-    setBackBtn(new EditSignatureUI.2(this));
-    addTextOptionMenu(0, getString(2131297063), new EditSignatureUI.3(this), null, q.b.zby);
+    AppMethodBeat.i(73880);
+    setMMTitle(2131763408);
+    this.wee = ((MMEditText)findViewById(2131298739));
+    this.wdU = ((TextView)findViewById(2131307005));
+    String str = bt.nullAsNil((String)g.afB().afk().get(12291, null));
+    this.wee.setText(k.b(this, str, this.wee.getTextSize()));
+    this.wee.setSelection(this.wee.getText().length());
+    this.wdU.setText(f.cJ(60, this.wee.getEditableText().toString()));
+    c.d(this.wee).jE(0, 60).a(null);
+    this.wee.addTextChangedListener(new a((byte)0));
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(182594);
+        EditSignatureUI.this.hideVKB();
+        EditSignatureUI.this.finish();
+        AppMethodBeat.o(182594);
+        return true;
+      }
+    });
+    addTextOptionMenu(0, getString(2131755880), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(73873);
+        paramAnonymousMenuItem = EditSignatureUI.b(EditSignatureUI.this).getText().toString().trim();
+        String str = b.YL();
+        if ((!bt.isNullOrNil(str)) && (paramAnonymousMenuItem.matches(".*[" + str + "].*")))
+        {
+          h.c(EditSignatureUI.this.getContext(), EditSignatureUI.this.getString(2131760350, new Object[] { str }), EditSignatureUI.this.getString(2131755906), true);
+          AppMethodBeat.o(73873);
+          return false;
+        }
+        g.afB().afk().set(12291, paramAnonymousMenuItem);
+        EditSignatureUI.this.hideVKB();
+        EditSignatureUI.this.finish();
+        AppMethodBeat.o(73873);
+        return true;
+      }
+    }, null, r.b.FOB);
     enableOptionMenu(false);
-    AppMethodBeat.o(126952);
+    AppMethodBeat.o(73880);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(126950);
+    AppMethodBeat.i(73878);
     super.onCreate(paramBundle);
-    a.ymk.c(this.ehn);
     initView();
-    AppMethodBeat.o(126950);
+    AppMethodBeat.o(73878);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(126951);
+    AppMethodBeat.i(73879);
     super.onDestroy();
-    a.ymk.d(this.ehn);
-    AppMethodBeat.o(126951);
+    AppMethodBeat.o(73879);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(126953);
+    AppMethodBeat.i(73881);
     if (paramInt == 4) {
       finish();
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(126953);
+    AppMethodBeat.o(73881);
     return bool;
   }
   
@@ -102,30 +121,30 @@ public class EditSignatureUI
   final class a
     implements TextWatcher
   {
-    private int qFM = 60;
+    private int weg = 60;
     
     private a() {}
     
     public final void afterTextChanged(Editable paramEditable)
     {
-      AppMethodBeat.i(126948);
-      this.qFM = f.bO(60, paramEditable.toString());
-      if (this.qFM < 0) {
-        this.qFM = 0;
+      AppMethodBeat.i(73876);
+      this.weg = f.cJ(60, paramEditable.toString());
+      if (this.weg < 0) {
+        this.weg = 0;
       }
-      if (EditSignatureUI.e(EditSignatureUI.this) != null) {
-        EditSignatureUI.e(EditSignatureUI.this).setText(this.qFM);
+      if (EditSignatureUI.a(EditSignatureUI.this) != null) {
+        EditSignatureUI.a(EditSignatureUI.this).setText(this.weg);
       }
-      AppMethodBeat.o(126948);
+      AppMethodBeat.o(73876);
     }
     
     public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
     
     public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(126947);
+      AppMethodBeat.i(73875);
       EditSignatureUI.this.enableOptionMenu(true);
-      AppMethodBeat.o(126947);
+      AppMethodBeat.o(73875);
     }
   }
 }

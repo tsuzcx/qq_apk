@@ -10,29 +10,29 @@ public final class b
     super(paramString);
   }
   
-  static b oI()
+  static b pA()
+  {
+    return new b("Protocol message was too large.  May be malicious.  Use CodedInputStream.setSizeLimit() to increase the size limit.");
+  }
+  
+  static b pw()
   {
     return new b("While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either than the input has been truncated or that an embedded message misreported its own length.");
   }
   
-  static b oJ()
+  static b px()
   {
     return new b("CodedInputStream encountered an embedded string or message which claimed to have negative size.");
   }
   
-  static b oK()
+  static b py()
   {
     return new b("CodedInputStream encountered a malformed varint.");
   }
   
-  static b oL()
+  static b pz()
   {
     return new b("Protocol message contained an invalid tag (zero).");
-  }
-  
-  static b oM()
-  {
-    return new b("Protocol message was too large.  May be malicious.  Use CodedInputStream.setSizeLimit() to increase the size limit.");
   }
 }
 

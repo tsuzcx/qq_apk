@@ -3,10 +3,10 @@ package com.google.android.exoplayer2.h;
 public final class p
   extends s.a
 {
-  private final w<? super g> aYq;
-  private final boolean aZb;
-  private final int aZc;
-  private final int aZd;
+  private final x<? super g> bws;
+  private final boolean bxc;
+  private final int bxd;
+  private final int bxe;
   private final String userAgent;
   
   public p(String paramString)
@@ -14,23 +14,23 @@ public final class p
     this(paramString, null);
   }
   
-  public p(String paramString, w<? super g> paramw)
+  public p(String paramString, x<? super g> paramx)
   {
-    this(paramString, paramw, false);
+    this(paramString, paramx, false);
   }
   
-  public p(String paramString, w<? super g> paramw, boolean paramBoolean)
+  public p(String paramString, x<? super g> paramx, boolean paramBoolean)
   {
     this.userAgent = paramString;
-    this.aYq = paramw;
-    this.aZc = 8000;
-    this.aZd = 8000;
-    this.aZb = paramBoolean;
+    this.bws = paramx;
+    this.bxd = 8000;
+    this.bxe = 8000;
+    this.bxc = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.h.p
  * JD-Core Version:    0.7.0.1
  */

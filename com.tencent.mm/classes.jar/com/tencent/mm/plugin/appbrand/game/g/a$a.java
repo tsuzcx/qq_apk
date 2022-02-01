@@ -1,27 +1,32 @@
 package com.tencent.mm.plugin.appbrand.game.g;
 
-import com.tencent.magicbrush.MagicBrushView;
+import com.tencent.magicbrush.ui.MagicBrushView;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import java.lang.ref.WeakReference;
 
 public abstract class a$a
 {
-  protected WeakReference<MagicBrushView> huL;
+  protected WeakReference<MagicBrushView> jsZ;
   
   private a$a(MagicBrushView paramMagicBrushView)
   {
-    this.huL = new WeakReference(paramMagicBrushView);
+    this.jsZ = new WeakReference(paramMagicBrushView);
   }
   
-  abstract void a(b.c paramc);
+  abstract void a(b.b paramb);
   
   abstract void a(c.b paramb, d<String> paramd);
   
   abstract void a(d<String> paramd);
   
-  abstract void aAW();
+  abstract void aXa();
   
-  public abstract VideoTransPara aAX();
+  public abstract VideoTransPara aXb();
+  
+  public final MagicBrushView aXc()
+  {
+    return (MagicBrushView)this.jsZ.get();
+  }
   
   abstract void b(d<String> paramd);
   
@@ -31,7 +36,7 @@ public abstract class a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.g.a.a
  * JD-Core Version:    0.7.0.1
  */

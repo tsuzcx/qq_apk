@@ -1,228 +1,229 @@
 package com.tencent.mm.plugin.topstory.ui.home;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.topstory.a.g;
+import com.tencent.mm.plugin.topstory.a.h;
 import com.tencent.mm.plugin.topstory.ui.webview.TopStoryWebView;
 import com.tencent.mm.plugin.topstory.ui.webview.c;
-import com.tencent.mm.protocal.protobuf.cko;
-import com.tencent.mm.protocal.protobuf.ckp;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.io.File;
+import com.tencent.mm.protocal.protobuf.dcn;
+import com.tencent.mm.protocal.protobuf.dco;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.i;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
+import org.json.JSONArray;
 
 public final class d
 {
-  private c thA;
-  private TopStoryWebView thB;
-  private com.tencent.mm.plugin.topstory.ui.webview.e thC;
-  boolean thD;
-  public HashMap<Integer, ckp> thE;
-  HashMap<Integer, String> thF;
-  private cko thz;
+  boolean srI;
+  private dcn yOb;
+  private c yOc;
+  private TopStoryWebView yOd;
+  private com.tencent.mm.plugin.topstory.ui.webview.e yOe;
+  public HashMap<Integer, dco> yOf;
+  public HashMap<Integer, String> yOg;
   
   public d()
   {
-    AppMethodBeat.i(1701);
-    this.thD = false;
-    this.thE = new HashMap();
-    this.thF = new HashMap();
-    AppMethodBeat.o(1701);
+    AppMethodBeat.i(126060);
+    this.srI = false;
+    this.yOf = new HashMap();
+    this.yOg = new HashMap();
+    AppMethodBeat.o(126060);
   }
   
-  private String a(cko paramcko, int paramInt, boolean paramBoolean)
+  private String a(dcn paramdcn, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(1704);
+    AppMethodBeat.i(126063);
     String str = "";
     Object localObject;
-    if (this.thE.containsKey(Integer.valueOf(paramInt)))
+    if (this.yOf.containsKey(Integer.valueOf(paramInt)))
     {
-      localObject = (ckp)this.thE.get(Integer.valueOf(paramInt));
-      ab.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData SaveTs:%sms, DirectShowTs:%ss, ShowAndRefreshTs:%ss, curTs:%sms", new Object[] { Long.valueOf(((ckp)localObject).xUA), Integer.valueOf(((ckp)localObject).xFw), Integer.valueOf(((ckp)localObject).xUB), Long.valueOf(System.currentTimeMillis()) });
-      if (((ckp)localObject).xUA + ((ckp)localObject).xFw * 1000 > System.currentTimeMillis())
+      localObject = (dco)this.yOf.get(Integer.valueOf(paramInt));
+      ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData SaveTs:%sms, DirectShowTs:%ss, ShowAndRefreshTs:%ss, curTs:%sms", new Object[] { Long.valueOf(((dco)localObject).EtZ), Integer.valueOf(((dco)localObject).EcG), Integer.valueOf(((dco)localObject).Eua), Long.valueOf(System.currentTimeMillis()) });
+      if (((dco)localObject).EtZ + ((dco)localObject).EcG * 1000 > System.currentTimeMillis())
       {
-        this.thA.cKw();
-        ab.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData No Need Auto Refresh");
-        localObject = ((ckp)localObject).ntu;
+        this.yOc.dQc();
+        ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData No Need Auto Refresh");
+        localObject = ((dco)localObject).gKr;
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(1704);
+      AppMethodBeat.o(126063);
       return localObject;
-      if (((ckp)localObject).xUA + ((ckp)localObject).xUB * 1000 > System.currentTimeMillis())
+      if (((dco)localObject).EtZ + ((dco)localObject).Eua * 1000 > System.currentTimeMillis())
       {
-        this.thA.cKw();
-        ab.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData Need Auto Refresh");
-        str = ((ckp)localObject).ntu;
+        this.yOc.dQc();
+        ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData Need Auto Refresh");
+        str = ((dco)localObject).gKr;
       }
       for (;;)
       {
-        paramcko.xUz.addAll(((ckp)localObject).xFy);
+        paramdcn.EtX.addAll(((dco)localObject).EcI);
         localObject = str;
         if (!paramBoolean) {
           break;
         }
-        this.thA.a(paramcko, false, false, 0);
+        this.yOc.a(paramdcn, false, false, 0);
         localObject = str;
         break;
-        this.thA.cKw();
-        ab.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData No Need Show CacheData");
+        this.yOc.dQc();
+        ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadWebViewShowData No Need Show CacheData");
       }
-      this.thA.cKw();
+      this.yOc.dQc();
       localObject = str;
       if (paramBoolean)
       {
-        this.thA.a(paramcko, false, false, 0);
+        this.yOc.a(paramdcn, false, false, 0);
         localObject = str;
       }
     }
   }
   
-  private boolean cIX()
+  private boolean dOA()
   {
-    AppMethodBeat.i(1705);
-    if (this.thE.containsKey(Integer.valueOf(100)))
+    AppMethodBeat.i(126064);
+    if (this.yOf.containsKey(Integer.valueOf(100)))
     {
-      ckp localckp = (ckp)this.thE.get(Integer.valueOf(100));
-      long l = localckp.xUA;
-      if (localckp.xFw * 1000 + l > System.currentTimeMillis())
+      dco localdco = (dco)this.yOf.get(Integer.valueOf(100));
+      long l = localdco.EtZ;
+      if (localdco.EcG * 1000 + l > System.currentTimeMillis())
       {
-        ab.i("MicroMsg.TopStory.TopStoryWebViewMgr", "needRefreshCache false");
-        AppMethodBeat.o(1705);
+        ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "needRefreshCache false");
+        AppMethodBeat.o(126064);
         return false;
       }
     }
-    ab.i("MicroMsg.TopStory.TopStoryWebViewMgr", "needRefreshCache true");
-    AppMethodBeat.o(1705);
+    ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "needRefreshCache true");
+    AppMethodBeat.o(126064);
     return true;
   }
   
-  public final void a(cko paramcko, boolean paramBoolean)
+  public final void a(dcn paramdcn, boolean paramBoolean)
   {
-    AppMethodBeat.i(1702);
+    AppMethodBeat.i(126061);
     int i;
-    if (!this.thD)
+    if (!this.srI)
     {
-      this.thD = true;
-      com.tencent.mm.plugin.topstory.ui.d.c(paramcko, "startCreateWB", System.currentTimeMillis());
-      this.thz = paramcko;
-      this.thA = new c();
-      if (paramcko.bWu > 0) {
-        break label253;
+      this.srI = true;
+      com.tencent.mm.plugin.topstory.ui.d.c(paramdcn, "startCreateWB", System.currentTimeMillis());
+      this.yOb = paramdcn;
+      this.yOc = new c();
+      if (paramdcn.cJR > 0) {
+        break label251;
       }
       i = 100;
-      String str = a(paramcko, i, paramBoolean);
-      this.thB = new TopStoryWebView(ah.getContext());
+      String str = a(paramdcn, i, paramBoolean);
+      this.yOd = new TopStoryWebView(aj.getContext());
       Object localObject = new com.tencent.mm.plugin.topstory.ui.webview.b();
-      com.tencent.mm.plugin.topstory.ui.webview.d locald = new com.tencent.mm.plugin.topstory.ui.webview.d(paramcko, this.thA);
-      this.thC = new com.tencent.mm.plugin.topstory.ui.webview.e(this.thB, paramcko, this.thA);
-      this.thB.a((com.tencent.mm.plugin.topstory.ui.webview.b)localObject, locald);
-      this.thB.addJavascriptInterface(this.thC, "topStoryJSApi");
-      if (this.thA.tlW == null) {
-        break label261;
+      com.tencent.mm.plugin.topstory.ui.webview.d locald = new com.tencent.mm.plugin.topstory.ui.webview.d(paramdcn, this.yOc);
+      this.yOe = new com.tencent.mm.plugin.topstory.ui.webview.e(this.yOd, paramdcn, this.yOc);
+      this.yOd.a((com.tencent.mm.plugin.topstory.ui.webview.b)localObject, locald);
+      this.yOd.addJavascriptInterface(this.yOe, "topStoryJSApi");
+      if (this.yOc.ySK == null) {
+        break label259;
       }
-      localObject = (String)this.thF.get(Integer.valueOf(i));
-      this.thA.y(str, (String)localObject, cIX());
-      this.thB.loadDataWithBaseURL(paramcko.url, new String(this.thA.tlW), "text/html", "utf-8", null);
-      this.thA.tlW = null;
-      com.tencent.mm.plugin.topstory.ui.d.c(paramcko, "endCreateWBWithLoadData", System.currentTimeMillis());
+      localObject = (String)this.yOg.get(Integer.valueOf(i));
+      this.yOc.y(str, (String)localObject, dOA());
+      this.yOd.loadDataWithBaseURL(paramdcn.url, new String(this.yOc.ySK), "text/html", "utf-8", null);
+      this.yOc.ySK = null;
+      com.tencent.mm.plugin.topstory.ui.d.c(paramdcn, "endCreateWBWithLoadData", System.currentTimeMillis());
     }
     for (;;)
     {
       if (100 == i) {
-        this.thC.aes("");
+        this.yOe.asL("");
       }
-      AppMethodBeat.o(1702);
+      AppMethodBeat.o(126061);
       return;
-      label253:
-      i = paramcko.bWu;
+      label251:
+      i = paramdcn.cJR;
       break;
-      label261:
-      this.thB.loadUrl(paramcko.url);
-      com.tencent.mm.plugin.topstory.ui.d.c(paramcko, "endCreateWBWithLoadURL", System.currentTimeMillis());
+      label259:
+      this.yOd.loadUrl(paramdcn.url);
+      com.tencent.mm.plugin.topstory.ui.d.c(paramdcn, "endCreateWBWithLoadURL", System.currentTimeMillis());
     }
   }
   
   public final void b(b paramb)
   {
-    AppMethodBeat.i(1703);
-    ab.i("MicroMsg.TopStory.TopStoryWebViewMgr", "attachWebViewToActivity %s", new Object[] { Integer.valueOf(paramb.hashCode()) });
-    paramb.a(this.thA, this.thB, this.thC, this.thz);
-    this.thA = null;
-    this.thB = null;
-    this.thC = null;
-    this.thz = null;
-    this.thD = false;
-    AppMethodBeat.o(1703);
+    AppMethodBeat.i(126062);
+    ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "attachWebViewToActivity %s", new Object[] { Integer.valueOf(paramb.hashCode()) });
+    paramb.a(this.yOc, this.yOd, this.yOe, this.yOb);
+    this.yOc = null;
+    this.yOd = null;
+    this.yOe = null;
+    this.yOb = null;
+    this.srI = false;
+    AppMethodBeat.o(126062);
   }
   
-  public final void bp(int paramInt, String paramString)
+  public final void ca(int paramInt, String paramString)
   {
-    AppMethodBeat.i(1706);
-    this.thF.put(Integer.valueOf(paramInt), paramString);
+    AppMethodBeat.i(126065);
+    this.yOg.put(Integer.valueOf(paramInt), paramString);
     try
     {
       paramString = paramString.getBytes("utf-8");
-      File localFile = new File(g.cIy());
-      if (!localFile.exists()) {
-        localFile.mkdirs();
+      com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(h.dNV());
+      if (!locale.exists()) {
+        locale.mkdirs();
       }
-      com.tencent.mm.vfs.e.b(g.cIy() + paramInt, paramString, paramString.length);
-      ab.i("MicroMsg.TopStory.TopStoryWebViewMgr", "putNegDataCache write data key: %d length: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramString.length) });
-      AppMethodBeat.o(1706);
+      i.f(h.dNV() + paramInt, paramString, paramString.length);
+      ad.i("MicroMsg.TopStory.TopStoryWebViewMgr", "putNegDataCache write data key: %d length: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramString.length) });
+      AppMethodBeat.o(126065);
       return;
     }
     catch (IOException paramString)
     {
-      ab.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewMgr", paramString, "putNegDataCache", new Object[0]);
-      AppMethodBeat.o(1706);
+      ad.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewMgr", paramString, "putNegDataCache", new Object[0]);
+      AppMethodBeat.o(126065);
     }
   }
   
   /* Error */
-  public final void bq(int paramInt, String paramString)
+  public final void cb(final int paramInt, final String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: sipush 1707
-    //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 306
+    //   5: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_2
-    //   9: invokestatic 302	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
+    //   9: invokestatic 312	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   12: ifeq +12 -> 24
-    //   15: sipush 1707
-    //   18: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   15: ldc_w 306
+    //   18: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   21: aload_0
     //   22: monitorexit
     //   23: return
-    //   24: ldc 64
-    //   26: ldc_w 304
+    //   24: ldc 68
+    //   26: ldc_w 314
     //   29: iconst_2
     //   30: anewarray 4	java/lang/Object
     //   33: dup
     //   34: iconst_0
     //   35: iload_1
-    //   36: invokestatic 52	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   36: invokestatic 56	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   39: aastore
     //   40: dup
     //   41: iconst_1
     //   42: aload_2
     //   43: aastore
-    //   44: invokestatic 93	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   47: new 306	com/tencent/mm/plugin/topstory/ui/home/d$1
+    //   44: invokestatic 97	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   47: new 6	com/tencent/mm/plugin/topstory/ui/home/d$1
     //   50: dup
     //   51: aload_0
     //   52: iload_1
     //   53: aload_2
-    //   54: invokespecial 309	com/tencent/mm/plugin/topstory/ui/home/d$1:<init>	(Lcom/tencent/mm/plugin/topstory/ui/home/d;ILjava/lang/String;)V
-    //   57: ldc_w 311
-    //   60: invokestatic 317	com/tencent/mm/sdk/g/d:post	(Ljava/lang/Runnable;Ljava/lang/String;)V
-    //   63: sipush 1707
-    //   66: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   54: invokespecial 317	com/tencent/mm/plugin/topstory/ui/home/d$1:<init>	(Lcom/tencent/mm/plugin/topstory/ui/home/d;ILjava/lang/String;)V
+    //   57: ldc_w 319
+    //   60: invokestatic 324	com/tencent/mm/sdk/g/b:c	(Ljava/lang/Runnable;Ljava/lang/String;)V
+    //   63: ldc_w 306
+    //   66: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   69: goto -48 -> 21
     //   72: astore_2
     //   73: aload_0
@@ -239,55 +240,10 @@ public final class d
     //   2	21	72	finally
     //   24	69	72	finally
   }
-  
-  public final void cIY()
-  {
-    AppMethodBeat.i(1708);
-    File localFile = new File(g.cIy());
-    if (localFile.exists())
-    {
-      File[] arrayOfFile = localFile.listFiles();
-      if ((arrayOfFile != null) && (arrayOfFile.length > 0))
-      {
-        int j = arrayOfFile.length;
-        int i = 0;
-        if (i < j)
-        {
-          localFile = arrayOfFile[i];
-          int k = bo.getInt(localFile.getName(), -1);
-          if (k > 0) {}
-          for (;;)
-          {
-            try
-            {
-              byte[] arrayOfByte = com.tencent.mm.vfs.e.i(localFile.getAbsolutePath(), 0, -1);
-              String str = new String(arrayOfByte, "utf-8");
-              this.thF.put(Integer.valueOf(k), str);
-              ab.i("MicroMsg.TopStory.TopStoryWebViewMgr", "put neg cache key:%d size:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(arrayOfByte.length) });
-              i += 1;
-            }
-            catch (Exception localException)
-            {
-              ab.printErrStackTrace("MicroMsg.TopStory.TopStoryWebViewMgr", localException, "loadNegDataCache %s", new Object[] { localFile.getAbsoluteFile() });
-              continue;
-            }
-            ab.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadNegDataCache Decode Key Error %s", new Object[] { localFile.getAbsolutePath() });
-          }
-        }
-        AppMethodBeat.o(1708);
-        return;
-      }
-      ab.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadNegDataCache Folder Not Files %s", new Object[] { localFile.getAbsolutePath() });
-      AppMethodBeat.o(1708);
-      return;
-    }
-    ab.i("MicroMsg.TopStory.TopStoryWebViewMgr", "loadNegDataCache Folder Not Exist %s", new Object[] { localFile.getAbsolutePath() });
-    AppMethodBeat.o(1708);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.d
  * JD-Core Version:    0.7.0.1
  */

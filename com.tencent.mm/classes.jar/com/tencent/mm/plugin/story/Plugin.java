@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.story;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.story.b.a;
-import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/Plugin;", "Lcom/tencent/mm/pluginsdk/deprecated/IPlugin;", "()V", "createApplication", "Lcom/tencent/mm/pluginsdk/IPluginApplication;", "createSubCore", "Lcom/tencent/mm/model/ISubCore;", "getContactWidgetFactory", "Lcom/tencent/mm/pluginsdk/deprecated/IContactWidgetFactory;", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/Plugin;", "Lcom/tencent/mm/pluginsdk/deprecated/IPlugin;", "()V", "createApplication", "Lcom/tencent/mm/pluginsdk/IPluginApplication;", "createSubCore", "Lcom/tencent/mm/model/ISubCore;", "getContactWidgetFactory", "Lcom/tencent/mm/pluginsdk/deprecated/IContactWidgetFactory;", "plugin-story_release"})
 public final class Plugin
-  implements c
+  implements d
 {
-  public final o createApplication()
+  public final m createApplication()
   {
-    AppMethodBeat.i(108908);
-    o localo = (o)new a();
-    AppMethodBeat.o(108908);
-    return localo;
+    AppMethodBeat.i(118534);
+    m localm = (m)new a();
+    AppMethodBeat.o(118534);
+    return localm;
   }
   
-  public final at createSubCore()
+  public final aw createSubCore()
   {
     return null;
   }
   
-  public final b getContactWidgetFactory()
+  public final c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.Plugin
  * JD-Core Version:    0.7.0.1
  */

@@ -5,168 +5,96 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l;
-import com.tencent.mm.ui.base.CustomScrollView;
-import com.tencent.mm.ui.widget.RoundedCornerRelativeLayout;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
+import com.tencent.mm.sdk.platformtools.bt;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class n
-  extends a
+public abstract class n
+  extends k
 {
-  List<h> aWy;
-  private l ruW;
-  private r rwf;
-  private CustomScrollView rwg;
+  int clickCount = 0;
+  protected d.a xas;
   
-  public n(Context paramContext, r paramr, ViewGroup paramViewGroup)
+  public n(Context paramContext, x paramx, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramr, paramViewGroup);
-    AppMethodBeat.i(37153);
-    this.rwf = paramr;
-    this.aWy = new ArrayList();
-    AppMethodBeat.o(37153);
-  }
-  
-  public final void a(t paramt)
-  {
-    AppMethodBeat.i(37162);
-    if ((paramt instanceof r)) {
-      this.rwf = ((r)paramt);
-    }
-    super.a(paramt);
-    AppMethodBeat.o(37162);
-  }
-  
-  public final void cqA()
-  {
-    AppMethodBeat.i(37156);
-    Iterator localIterator = this.aWy.iterator();
-    while (localIterator.hasNext())
+    super(paramContext, paramx, paramViewGroup);
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ad localad = dwi();
+    paramViewGroup = bt.nullAsNil(localad.dvK);
+    int i = localad.wXj;
+    int j = localad.dep;
+    long l = bt.aGi(localad.jyu);
+    int k = paramx.subType;
+    if (bt.isNullOrNil(localad.dAM))
     {
-      h localh = (h)localIterator.next();
-      if (localh.cqX()) {
-        localh.cqA();
+      paramContext = "";
+      paramx = bt.nullAsNil(paramContext);
+      if (!bt.isNullOrNil(localad.wXo)) {
+        break label125;
       }
     }
-    super.cqA();
-    AppMethodBeat.o(37156);
-  }
-  
-  public final void cqB()
-  {
-    AppMethodBeat.i(37157);
-    Iterator localIterator = this.aWy.iterator();
-    while (localIterator.hasNext()) {
-      ((h)localIterator.next()).cqB();
-    }
-    super.cqB();
-    AppMethodBeat.o(37157);
-  }
-  
-  public final void cqC()
-  {
-    AppMethodBeat.i(37158);
-    Iterator localIterator = this.aWy.iterator();
-    while (localIterator.hasNext())
+    label125:
+    for (paramContext = "";; paramContext = localad.wXo)
     {
-      h localh = (h)localIterator.next();
-      if (localh.cqX()) {
-        localh.cqC();
-      }
-    }
-    super.cqC();
-    AppMethodBeat.o(37158);
-  }
-  
-  protected final void cqP()
-  {
-    AppMethodBeat.i(37154);
-    if (this.ruW == null)
-    {
-      this.ruW = new l(this.rwf.aWy, this.context, this.rwg);
-      this.ruW.layout();
-      this.aWy = cqT();
-    }
-    for (;;)
-    {
-      if (getGravity() == 0)
-      {
-        ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
-        if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-          ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.rve.paddingLeft, (int)this.rve.paddingTop, (int)this.rve.paddingRight, (int)this.rve.paddingBottom);
-        }
-        this.contentView.setLayoutParams(localLayoutParams);
-      }
-      AppMethodBeat.o(37154);
+      this.xas = new d.a(paramViewGroup, j, i, l, k, paramx, bt.nullAsNil(paramContext));
       return;
-      this.ruW.dg(this.rwf.aWy);
+      paramContext = localad.dAM;
+      break;
     }
   }
   
-  protected final View cqR()
+  public final boolean aG(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(37155);
-    RoundedCornerRelativeLayout localRoundedCornerRelativeLayout = new RoundedCornerRelativeLayout(this.context);
-    this.rwg = new CustomScrollView(this.context);
-    this.rwg.setOverScrollMode(2);
-    this.rwg.setHorizontalScrollBarEnabled(false);
-    this.rwg.setVerticalScrollBarEnabled(false);
-    this.rwg.setOnScrollChangeListener(new n.1(this));
-    localRoundedCornerRelativeLayout.setBackgroundColor(this.backgroundColor);
-    localRoundedCornerRelativeLayout.addView(this.rwg);
-    localRoundedCornerRelativeLayout.setRadius(this.rwf.rsH);
-    AppMethodBeat.o(37155);
-    return localRoundedCornerRelativeLayout;
-  }
-  
-  public final void cqS()
-  {
-    AppMethodBeat.i(37159);
-    Iterator localIterator = this.aWy.iterator();
-    while (localIterator.hasNext())
+    if (!super.aG(paramJSONObject)) {
+      return false;
+    }
+    try
     {
-      h localh = (h)localIterator.next();
-      if (localh.cqX())
-      {
-        localh.cqA();
-        localh.cqC();
-      }
-      else
-      {
-        localh.cqB();
-      }
+      paramJSONObject.put("clickCount", this.clickCount);
+      return true;
     }
-    AppMethodBeat.o(37159);
+    catch (JSONException paramJSONObject)
+    {
+      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.Sns.AdLandingPageBtnBaseComp", paramJSONObject, "", new Object[0]);
+    }
+    return false;
   }
   
-  public final List<h> cqT()
+  protected final void dvT()
   {
-    AppMethodBeat.i(37161);
-    ArrayList localArrayList = new ArrayList(this.ruW.crG());
-    AppMethodBeat.o(37161);
-    return localArrayList;
+    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.xab.paddingLeft, (int)this.xab.paddingTop, (int)this.xab.paddingRight, (int)this.xab.paddingBottom);
+    }
+    this.contentView.setLayoutParams(localLayoutParams);
   }
   
-  public final void cqz()
+  protected final void dwm()
   {
-    AppMethodBeat.i(37160);
-    super.cqz();
-    Iterator localIterator = this.aWy.iterator();
-    while (localIterator.hasNext()) {
-      ((h)localIterator.next()).cqz();
+    this.clickCount += 1;
+  }
+  
+  protected final void dwn()
+  {
+    Object localObject = this.xas;
+    try
+    {
+      localObject = ((d.a)localObject).cFx();
+      AdLandingPagesProxy.getInstance().onAdLandingPageClick("13387", (String)localObject);
+      com.tencent.mm.sdk.platformtools.ad.i("NetSceneAdLadingPageClick", "report, channel=" + "13387" + ", content=" + (String)localObject);
+      return;
     }
-    AppMethodBeat.o(37160);
+    catch (Exception localException)
+    {
+      com.tencent.mm.sdk.platformtools.ad.e("NetSceneAdLadingPageClick", "report exp=" + localException.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.n
  * JD-Core Version:    0.7.0.1
  */

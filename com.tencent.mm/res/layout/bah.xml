@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fua" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@id/fu8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/c8" android:layout_alignParentEnd="true">
+            <TextView android:textSize="14.0dip" android:textColor="@color/a_u" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/fu9" android:background="@drawable/ac9" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/c0" android:paddingEnd="@dimen/c0" android:layout_marginEnd="@dimen/c0" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/a_u" android:gravity="center" android:id="@id/fu7" android:background="@drawable/ac9" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:paddingStart="@dimen/c0" android:paddingEnd="@dimen/c0" android:layout_marginEnd="4.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/fu_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/c8" android:layout_alignParentEnd="true">
+        <LinearLayout android:orientation="vertical" android:id="@id/fu6" android:background="@drawable/acp" android:layout_width="48.0dip" android:layout_height="48.0dip">
+            <com.tencent.mm.plugin.story.ui.view.StoryCommentBubbleView android:id="@id/fwa" android:padding="12.0dip" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+        </LinearLayout>
+        <TextView android:textSize="12.0dip" android:textColor="@color/a_u" android:layout_gravity="center_horizontal" android:id="@id/fwb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/fxb" />
+    </LinearLayout>
+</merge>

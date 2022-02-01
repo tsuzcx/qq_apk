@@ -30,17 +30,17 @@ public class DataItemAssetParcelable
   
   static
   {
-    AppMethodBeat.i(70942);
+    AppMethodBeat.i(100925);
     CREATOR = new zzda();
-    AppMethodBeat.o(70942);
+    AppMethodBeat.o(100925);
   }
   
   public DataItemAssetParcelable(DataItemAsset paramDataItemAsset)
   {
-    AppMethodBeat.i(70939);
+    AppMethodBeat.i(100922);
     this.zzdm = ((String)Preconditions.checkNotNull(paramDataItemAsset.getId()));
     this.zzdn = ((String)Preconditions.checkNotNull(paramDataItemAsset.getDataItemKey()));
-    AppMethodBeat.o(70939);
+    AppMethodBeat.o(100922);
   }
   
   @SafeParcelable.Constructor
@@ -67,7 +67,7 @@ public class DataItemAssetParcelable
   
   public String toString()
   {
-    AppMethodBeat.i(70941);
+    AppMethodBeat.i(100924);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("DataItemAssetParcelable[");
     ((StringBuilder)localObject).append("@");
@@ -81,7 +81,7 @@ public class DataItemAssetParcelable
       ((StringBuilder)localObject).append(this.zzdn);
       ((StringBuilder)localObject).append("]");
       localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(70941);
+      AppMethodBeat.o(100924);
       return localObject;
       ((StringBuilder)localObject).append(",");
       ((StringBuilder)localObject).append(this.zzdm);
@@ -90,17 +90,17 @@ public class DataItemAssetParcelable
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(70940);
+    AppMethodBeat.i(100923);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeString(paramParcel, 2, getId(), false);
     SafeParcelWriter.writeString(paramParcel, 3, getDataItemKey(), false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(70940);
+    AppMethodBeat.o(100923);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.DataItemAssetParcelable
  * JD-Core Version:    0.7.0.1
  */

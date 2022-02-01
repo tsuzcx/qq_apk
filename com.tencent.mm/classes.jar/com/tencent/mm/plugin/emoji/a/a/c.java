@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.emoji.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.emoji.model.d;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.emoji.h.a;
 import com.tencent.mm.plugin.emoji.model.e;
-import com.tencent.mm.plugin.emoji.model.i;
+import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.storage.ar;
-import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.au;
+import com.tencent.mm.storage.aw;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,122 +17,127 @@ import java.util.Map;
 public class c
   implements Cloneable, Iterable<f>
 {
-  private HashMap<String, ar> leV;
-  protected HashMap<String, ar> leW;
-  public boolean leX;
   protected ArrayList<f> mItemList;
+  private HashMap<String, au> ouG;
+  protected HashMap<String, au> ouH;
+  public boolean ouI;
   
   public c()
   {
-    AppMethodBeat.i(52780);
-    this.leV = new HashMap();
-    this.leW = new HashMap();
-    this.leX = r.ZA();
-    AppMethodBeat.o(52780);
+    AppMethodBeat.i(108356);
+    this.ouG = new HashMap();
+    this.ouH = new HashMap();
+    this.ouI = u.aqU();
+    AppMethodBeat.o(108356);
   }
   
-  public c(e parame) {}
+  public c(com.tencent.mm.plugin.emoji.model.f paramf) {}
   
   public c(List<f> paramList)
   {
     this();
-    AppMethodBeat.i(52781);
+    AppMethodBeat.i(108357);
     if (paramList == null)
     {
-      AppMethodBeat.o(52781);
+      AppMethodBeat.o(108357);
       return;
     }
     this.mItemList = new ArrayList();
     this.mItemList.addAll(paramList);
-    AppMethodBeat.o(52781);
+    AppMethodBeat.o(108357);
   }
   
-  public final f Kj(String paramString)
+  public final f Ax(int paramInt)
   {
-    AppMethodBeat.i(52784);
+    AppMethodBeat.i(108359);
+    if ((this.mItemList == null) || (this.mItemList.size() <= paramInt) || (paramInt < 0))
+    {
+      AppMethodBeat.o(108359);
+      return null;
+    }
+    if (this.mItemList == null)
+    {
+      AppMethodBeat.o(108359);
+      return null;
+    }
+    f localf = (f)this.mItemList.get(paramInt);
+    AppMethodBeat.o(108359);
+    return localf;
+  }
+  
+  public final f Tp(String paramString)
+  {
+    AppMethodBeat.i(108360);
     if (this.mItemList != null)
     {
       Iterator localIterator = this.mItemList.iterator();
       while (localIterator.hasNext())
       {
         f localf = (f)localIterator.next();
-        EmotionSummary localEmotionSummary = localf.lfa;
+        EmotionSummary localEmotionSummary = localf.ouL;
         if ((localEmotionSummary != null) && (localEmotionSummary.ProductID != null) && (localEmotionSummary.ProductID.equals(paramString)))
         {
-          AppMethodBeat.o(52784);
+          AppMethodBeat.o(108360);
           return localf;
         }
       }
     }
-    AppMethodBeat.o(52784);
+    AppMethodBeat.o(108360);
     return null;
   }
   
-  public final void Kk(String paramString)
+  public final void Tq(String paramString)
   {
-    AppMethodBeat.i(52787);
-    f localf = Kj(paramString);
+    AppMethodBeat.i(108363);
+    f localf = Tp(paramString);
     if (localf == null)
     {
-      AppMethodBeat.o(52787);
+      AppMethodBeat.o(108363);
       return;
     }
     localf.setStatus(-1);
-    localf.a(this.leX, Kn(paramString), Kl(paramString));
-    AppMethodBeat.o(52787);
+    localf.a(this.ouI, Tt(paramString), Tr(paramString));
+    AppMethodBeat.o(108363);
   }
   
-  public final boolean Kl(String paramString)
+  public final boolean Tr(String paramString)
   {
-    AppMethodBeat.i(52788);
-    if (this.leW == null)
+    AppMethodBeat.i(108364);
+    if (this.ouH == null)
     {
-      AppMethodBeat.o(52788);
+      AppMethodBeat.o(108364);
       return false;
     }
-    boolean bool = this.leW.containsKey(paramString);
-    AppMethodBeat.o(52788);
+    boolean bool = this.ouH.containsKey(paramString);
+    AppMethodBeat.o(108364);
     return bool;
   }
   
-  public final ar Km(String paramString)
+  public final au Ts(String paramString)
   {
-    AppMethodBeat.i(52789);
-    ar localar2 = Kn(paramString);
-    ar localar1 = localar2;
-    if (localar2 == null)
+    AppMethodBeat.i(108365);
+    au localau2 = Tt(paramString);
+    au localau1 = localau2;
+    if (localau2 == null)
     {
-      localar1 = new ar(paramString);
-      this.leV.put(paramString, localar1);
+      localau1 = new au(paramString);
+      this.ouG.put(paramString, localau1);
     }
-    AppMethodBeat.o(52789);
-    return localar1;
+    AppMethodBeat.o(108365);
+    return localau1;
   }
   
-  public final ar Kn(String paramString)
+  public final au Tt(String paramString)
   {
-    AppMethodBeat.i(52790);
-    paramString = (ar)this.leV.get(paramString);
-    AppMethodBeat.o(52790);
+    AppMethodBeat.i(108366);
+    paramString = (au)this.ouG.get(paramString);
+    AppMethodBeat.o(108366);
     return paramString;
   }
   
-  public final void bZ(String paramString, int paramInt)
+  public final c bUw()
   {
-    AppMethodBeat.i(52792);
-    paramString = (ar)this.leV.get(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(52792);
-      return;
-    }
-    paramString.Nu(paramInt);
-    AppMethodBeat.o(52792);
-  }
-  
-  public final c bkI()
-  {
-    AppMethodBeat.i(52785);
+    AppMethodBeat.i(108361);
     try
     {
       localc3 = (c)super.clone();
@@ -160,40 +165,40 @@ public class c
       c localc2 = localc3;
       break label38;
     }
-    AppMethodBeat.o(52785);
+    AppMethodBeat.o(108361);
     return localc1;
   }
   
-  public void bkJ()
+  public void bUx()
   {
-    AppMethodBeat.i(52793);
+    AppMethodBeat.i(108369);
     if (this.mItemList == null)
     {
-      AppMethodBeat.o(52793);
+      AppMethodBeat.o(108369);
       return;
     }
-    if (i.blu().lhj == null)
+    if (k.bVe().owX == null)
     {
-      AppMethodBeat.o(52793);
+      AppMethodBeat.o(108369);
       return;
     }
     Iterator localIterator = this.mItemList.iterator();
     while (localIterator.hasNext())
     {
       f localf = (f)localIterator.next();
-      Object localObject2 = localf.lfa;
+      Object localObject2 = localf.ouL;
       if (localObject2 != null)
       {
-        Object localObject1 = i.blu();
+        Object localObject1 = k.bVe();
         localObject2 = ((EmotionSummary)localObject2).ProductID;
-        localObject1 = (Integer)((d)localObject1).lhj.get(localObject2);
+        localObject1 = (Integer)((e)localObject1).owX.get(localObject2);
         if (localObject1 == null) {}
         for (int i = -1;; i = ((Integer)localObject1).intValue())
         {
           if (i >= 0)
           {
             localf.setStatus(6);
-            localf.ym = i;
+            localf.EI = i;
           }
           if ((i >= 0) || (localf.mStatus != 6)) {
             break;
@@ -203,57 +208,70 @@ public class c
         }
       }
     }
-    AppMethodBeat.o(52793);
+    AppMethodBeat.o(108369);
+  }
+  
+  public final void cM(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(108368);
+    paramString = (au)this.ouG.get(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(108368);
+      return;
+    }
+    paramString.WA(paramInt);
+    AppMethodBeat.o(108368);
   }
   
   public void clear()
   {
-    AppMethodBeat.i(52778);
+    AppMethodBeat.i(108354);
     if (this.mItemList != null)
     {
       this.mItemList.clear();
       this.mItemList = null;
     }
-    if (this.leV != null)
+    if (this.ouG != null)
     {
-      this.leV.clear();
-      this.leV = null;
+      this.ouG.clear();
+      this.ouG = null;
     }
-    if (this.leW != null)
+    if (this.ouH != null)
     {
-      this.leW.clear();
-      this.leW = null;
+      this.ouH.clear();
+      this.ouH = null;
     }
-    AppMethodBeat.o(52778);
+    AppMethodBeat.o(108354);
   }
   
   public Iterator<f> iterator()
   {
-    AppMethodBeat.i(52791);
-    c.a locala = new c.a(this, (byte)0);
-    AppMethodBeat.o(52791);
+    AppMethodBeat.i(108367);
+    a locala = new a((byte)0);
+    AppMethodBeat.o(108367);
     return locala;
   }
   
   public void notifyDataSetChanged()
   {
-    AppMethodBeat.i(52786);
+    AppMethodBeat.i(108362);
     if (this.mItemList == null)
     {
-      AppMethodBeat.o(52786);
+      AppMethodBeat.o(108362);
       return;
     }
-    this.leW = i.getEmojiStorageMgr().yNo.dyY();
+    this.ouH = k.getEmojiStorageMgr().FyZ.eNk();
     Iterator localIterator = this.mItemList.iterator();
     while (localIterator.hasNext())
     {
       f localf = (f)localIterator.next();
-      Object localObject = localf.lfa;
+      Object localObject = localf.ouL;
       if (localObject != null)
       {
-        if (com.tencent.mm.plugin.emoji.h.a.g((EmotionSummary)localObject))
+        if (a.g((EmotionSummary)localObject))
         {
-          if (com.tencent.mm.plugin.emoji.h.a.bmI()) {}
+          if (a.bWs()) {}
           for (int i = 7;; i = 3)
           {
             localf.setStatus(i);
@@ -261,47 +279,51 @@ public class c
           }
         }
         localObject = ((EmotionSummary)localObject).ProductID;
-        localf.a(this.leX, Kn((String)localObject), Kl((String)localObject));
+        localf.a(this.ouI, Tt((String)localObject), Tr((String)localObject));
       }
     }
-    bkJ();
-    AppMethodBeat.o(52786);
+    bUx();
+    AppMethodBeat.o(108362);
   }
   
   public final int size()
   {
-    AppMethodBeat.i(52782);
+    AppMethodBeat.i(108358);
     if (this.mItemList == null)
     {
-      AppMethodBeat.o(52782);
+      AppMethodBeat.o(108358);
       return 0;
     }
     int i = this.mItemList.size();
-    AppMethodBeat.o(52782);
+    AppMethodBeat.o(108358);
     return i;
   }
   
-  public final f un(int paramInt)
+  final class a
+    implements Iterator<f>
   {
-    AppMethodBeat.i(52783);
-    if ((this.mItemList == null) || (this.mItemList.size() <= paramInt) || (paramInt < 0))
+    private int mIndex = 0;
+    
+    private a() {}
+    
+    public final boolean hasNext()
     {
-      AppMethodBeat.o(52783);
-      return null;
+      AppMethodBeat.i(108352);
+      if (this.mIndex < c.this.size())
+      {
+        AppMethodBeat.o(108352);
+        return true;
+      }
+      AppMethodBeat.o(108352);
+      return false;
     }
-    if (this.mItemList == null)
-    {
-      AppMethodBeat.o(52783);
-      return null;
-    }
-    f localf = (f)this.mItemList.get(paramInt);
-    AppMethodBeat.o(52783);
-    return localf;
+    
+    public final void remove() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a.c
  * JD-Core Version:    0.7.0.1
  */

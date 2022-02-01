@@ -24,22 +24,22 @@ import java.util.Objects;
 public class ActionLabel
   extends View
 {
-  private int ku = 8388659;
-  private int zA;
-  private TextPaint zm;
-  private float zn;
-  private float zo;
-  private Layout zp;
-  private ColorStateList zq;
-  private int zr;
-  private CharSequence zs;
-  private float zt = 1.0F;
-  private float zu = 0.0F;
-  private float zv;
-  private float zw;
-  private float zx;
-  private float zy;
-  private int zz = 2147483647;
+  private TextPaint Bb;
+  private float Bc;
+  private float Bd;
+  private Layout Be;
+  private ColorStateList Bf;
+  private int Bg;
+  private CharSequence Bh;
+  private float Bi = 1.0F;
+  private float Bj = 0.0F;
+  private float Bk;
+  private float Bl;
+  private float Bm;
+  private float Bn;
+  private int Bo = 2147483647;
+  private int Bp;
+  private int ho = 8388659;
   
   public ActionLabel(Context paramContext)
   {
@@ -62,46 +62,46 @@ public class ActionLabel
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     float f1 = localDisplayMetrics.density;
     float f2 = localDisplayMetrics.scaledDensity;
-    this.zx = (f2 / f1);
-    this.zv = (10.0F * f2);
-    this.zw = (f2 * 60.0F);
-    this.zm = new TextPaint(1);
-    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, k.wM, paramInt, 0);
-    this.zs = paramContext.getText(k.wR);
-    this.zv = paramContext.getDimension(k.wW, this.zv);
-    this.zw = paramContext.getDimension(k.wX, this.zw);
-    this.zq = paramContext.getColorStateList(k.wP);
-    this.zz = paramContext.getInt(k.wS, 2);
-    if (this.zq != null) {
-      eF();
+    this.Bm = (f2 / f1);
+    this.Bk = (10.0F * f2);
+    this.Bl = (f2 * 60.0F);
+    this.Bb = new TextPaint(1);
+    paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, k.yB, paramInt, 0);
+    this.Bh = paramContext.getText(k.yG);
+    this.Bk = paramContext.getDimension(k.yL, this.Bk);
+    this.Bl = paramContext.getDimension(k.yM, this.Bl);
+    this.Bf = paramContext.getColorStateList(k.yE);
+    this.Bo = paramContext.getInt(k.yH, 2);
+    if (this.Bf != null) {
+      eV();
     }
-    this.zm.setTextSize(this.zw);
-    a(paramContext.getString(k.wV), paramContext.getInt(k.wN, -1), paramContext.getInt(k.wO, -1));
-    this.ku = paramContext.getInt(k.wQ, this.ku);
-    this.zo = paramContext.getDimensionPixelSize(k.wT, (int)this.zo);
-    this.zn = paramContext.getFloat(k.wU, this.zn);
+    this.Bb.setTextSize(this.Bl);
+    a(paramContext.getString(k.yK), paramContext.getInt(k.yC, -1), paramContext.getInt(k.yD, -1));
+    this.ho = paramContext.getInt(k.yF, this.ho);
+    this.Bd = paramContext.getDimensionPixelSize(k.yI, (int)this.Bd);
+    this.Bc = paramContext.getFloat(k.yJ, this.Bc);
     paramContext.recycle();
-    if (this.zs == null) {
-      this.zs = "";
+    if (this.Bh == null) {
+      this.Bh = "";
     }
   }
   
-  private void eF()
+  private void eV()
   {
-    int i = this.zq.getColorForState(getDrawableState(), 0);
-    if (i != this.zr)
+    int i = this.Bf.getColorForState(getDrawableState(), 0);
+    if (i != this.Bg)
     {
-      this.zr = i;
+      this.Bg = i;
       invalidate();
     }
   }
   
   private void setTypeface(Typeface paramTypeface)
   {
-    if (this.zm.getTypeface() != paramTypeface)
+    if (this.Bb.getTypeface() != paramTypeface)
     {
-      this.zm.setTypeface(paramTypeface);
-      if (this.zp != null)
+      this.Bb.setTypeface(paramTypeface);
+      if (this.Be != null)
       {
         requestLayout();
         invalidate();
@@ -109,9 +109,51 @@ public class ActionLabel
     }
   }
   
-  final void a(String paramString, int paramInt1, int paramInt2)
+  private void setTypeface(Typeface paramTypeface, int paramInt)
   {
     boolean bool = false;
+    if (paramInt > 0)
+    {
+      int i;
+      if (paramTypeface == null)
+      {
+        paramTypeface = Typeface.defaultFromStyle(paramInt);
+        setTypeface(paramTypeface);
+        if (paramTypeface == null) {
+          break label87;
+        }
+        i = paramTypeface.getStyle();
+        label31:
+        paramInt = (i ^ 0xFFFFFFFF) & paramInt;
+        paramTypeface = this.Bb;
+        if ((paramInt & 0x1) != 0) {
+          bool = true;
+        }
+        paramTypeface.setFakeBoldText(bool);
+        paramTypeface = this.Bb;
+        if ((paramInt & 0x2) == 0) {
+          break label93;
+        }
+      }
+      label87:
+      label93:
+      for (float f = -0.25F;; f = 0.0F)
+      {
+        paramTypeface.setTextSkewX(f);
+        return;
+        paramTypeface = Typeface.create(paramTypeface, paramInt);
+        break;
+        i = 0;
+        break label31;
+      }
+    }
+    this.Bb.setFakeBoldText(false);
+    this.Bb.setTextSkewX(0.0F);
+    setTypeface(paramTypeface);
+  }
+  
+  final void a(String paramString, int paramInt1, int paramInt2)
+  {
     String str = null;
     if (paramString != null)
     {
@@ -127,60 +169,24 @@ public class ActionLabel
     {
     default: 
       paramString = str;
-      if (paramInt2 <= 0) {
-        break label175;
-      }
-      if (paramString == null)
-      {
-        paramString = Typeface.defaultFromStyle(paramInt2);
-        label72:
-        setTypeface(paramString);
-        if (paramString == null) {
-          break label164;
-        }
-        paramInt1 = paramString.getStyle();
-        label86:
-        paramInt1 = (paramInt1 ^ 0xFFFFFFFF) & paramInt2;
-        paramString = this.zm;
-        if ((paramInt1 & 0x1) != 0) {
-          bool = true;
-        }
-        paramString.setFakeBoldText(bool);
-        paramString = this.zm;
-        if ((paramInt1 & 0x2) == 0) {
-          break label169;
-        }
-      }
-      break;
     }
-    label164:
-    label169:
-    for (float f = -0.25F;; f = 0.0F)
+    for (;;)
     {
-      paramString.setTextSkewX(f);
+      setTypeface(paramString, paramInt2);
       return;
       paramString = Typeface.SANS_SERIF;
-      break;
+      continue;
       paramString = Typeface.SERIF;
-      break;
+      continue;
       paramString = Typeface.MONOSPACE;
-      break;
-      paramString = Typeface.create(paramString, paramInt2);
-      break label72;
-      paramInt1 = 0;
-      break label86;
     }
-    label175:
-    this.zm.setFakeBoldText(false);
-    this.zm.setTextSkewX(0.0F);
-    setTypeface(paramString);
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if ((this.zq != null) && (this.zq.isStateful())) {
-      eF();
+    if ((this.Bf != null) && (this.Bf.isStateful())) {
+      eV();
     }
   }
   
@@ -191,16 +197,16 @@ public class ActionLabel
     int j;
     int i;
     int k;
-    if (this.zp != null)
+    if (this.Be != null)
     {
       paramCanvas.save();
-      this.zm.setColor(this.zr);
-      this.zm.drawableState = getDrawableState();
+      this.Bb.setColor(this.Bg);
+      this.Bb.drawableState = getDrawableState();
       f = getPaddingLeft();
       j = getPaddingTop();
       i = getHeight() - (getPaddingTop() + getPaddingBottom());
-      k = this.zp.getLineTop(this.zA);
-      switch (this.ku & 0x70)
+      k = this.Be.getLineTop(this.Bp);
+      switch (this.ho & 0x70)
       {
       default: 
         i = 0;
@@ -209,8 +215,8 @@ public class ActionLabel
     for (;;)
     {
       paramCanvas.translate(f, i + j);
-      paramCanvas.clipRect(0, 0, getWidth() - getPaddingRight(), this.zp.getLineTop(this.zA));
-      this.zp.draw(paramCanvas);
+      paramCanvas.clipRect(0, 0, getWidth() - getPaddingRight(), this.Be.getLineTop(this.Bp));
+      this.Be.draw(paramCanvas);
       paramCanvas.restore();
       return;
       i = 0;
@@ -238,9 +244,9 @@ public class ActionLabel
     int i = paramInt2;
     if (paramInt2 == -1)
     {
-      this.zm.setTextSize(this.zw);
-      i = (int)Math.ceil(Layout.getDesiredWidth(this.zs, this.zm));
-      this.zm.setTextSize(this.zy);
+      this.Bb.setTextSize(this.Bl);
+      i = (int)Math.ceil(Layout.getDesiredWidth(this.Bh, this.Bb));
+      this.Bb.setTextSize(this.Bn);
     }
     if (m == -2147483648) {}
     for (m = Math.min(i, j);; m = i)
@@ -263,13 +269,13 @@ public class ActionLabel
         label190:
         label203:
         Object localObject;
-        if (this.zp != null)
+        if (this.Be != null)
         {
-          if (this.zp.getWidth() == m) {
+          if (this.Be.getWidth() == m) {
             break label378;
           }
           paramInt2 = 1;
-          if (this.zp.getHeight() == paramInt1) {
+          if (this.Be.getHeight() == paramInt1) {
             break label383;
           }
           i = 1;
@@ -284,13 +290,13 @@ public class ActionLabel
         }
         for (;;)
         {
-          this.zp = localObject;
-          if (this.zp != null) {
+          this.Be = localObject;
+          if (this.Be != null) {
             break label713;
           }
           setMeasuredDimension(0, 0);
           return;
-          switch (this.ku & 0x800007)
+          switch (this.ho & 0x800007)
           {
           default: 
             localAlignment = Layout.Alignment.ALIGN_NORMAL;
@@ -327,10 +333,10 @@ public class ActionLabel
             label388:
             int i2 = paramInt1 - (getPaddingTop() + getPaddingBottom());
             int i3 = m - (getPaddingLeft() + getPaddingRight());
-            this.zy = this.zw;
-            this.zm.setTextSize(this.zw);
-            StaticLayout localStaticLayout = new StaticLayout(this.zs, this.zm, i3, localAlignment, this.zt, this.zu, true);
-            if (localStaticLayout.getLineCount() > this.zz)
+            this.Bn = this.Bl;
+            this.Bb.setTextSize(this.Bl);
+            StaticLayout localStaticLayout = new StaticLayout(this.Bh, this.Bb, i3, localAlignment, this.Bi, this.Bj, true);
+            if (localStaticLayout.getLineCount() > this.Bo)
             {
               paramInt2 = 1;
               if (localStaticLayout.getLineTop(localStaticLayout.getLineCount()) <= i2) {
@@ -338,7 +344,7 @@ public class ActionLabel
               }
               j = 1;
               label496:
-              if (this.zm.getTextSize() <= this.zv) {
+              if (this.Bb.getTextSize() <= this.Bk) {
                 break label673;
               }
               i = 1;
@@ -362,20 +368,20 @@ public class ActionLabel
               if (i == 0) {
                 break label694;
               }
-              this.zy -= 1.0F;
-              this.zm.setTextSize(this.zy);
-              localStaticLayout = new StaticLayout(this.zs, this.zm, i3, localAlignment, this.zt, this.zu, true);
+              this.Bn -= 1.0F;
+              this.Bb.setTextSize(this.Bn);
+              localStaticLayout = new StaticLayout(this.Bh, this.Bb, i3, localAlignment, this.Bi, this.Bj, true);
               if (localStaticLayout.getLineTop(localStaticLayout.getLineCount()) <= i2) {
                 break label678;
               }
               paramInt2 = 1;
               label615:
-              if (localStaticLayout.getLineCount() <= this.zz) {
+              if (localStaticLayout.getLineCount() <= this.Bo) {
                 break label683;
               }
               i = 1;
               label629:
-              if (this.zm.getTextSize() <= this.zv) {
+              if (this.Bb.getTextSize() <= this.Bk) {
                 break label688;
               }
             }
@@ -403,12 +409,12 @@ public class ActionLabel
               break label629;
             }
             label694:
-            this.zA = Math.min(this.zz, localObject.getLineCount());
+            this.Bp = Math.min(this.Bo, localObject.getLineCount());
           }
         }
         label713:
         if (i1 != 1073741824) {
-          paramInt1 = this.zp.getLineTop(this.zp.getLineCount());
+          paramInt1 = this.Be.getLineTop(this.Be.getLineCount());
         }
         for (;;)
         {
@@ -426,41 +432,29 @@ public class ActionLabel
   public void onRtlPropertiesChanged(int paramInt)
   {
     super.onRtlPropertiesChanged(paramInt);
-    this.zp = null;
+    this.Be = null;
     requestLayout();
     invalidate();
   }
   
-  public final void s(float paramFloat)
-  {
-    paramFloat = TypedValue.applyDimension(0, paramFloat, getContext().getResources().getDisplayMetrics());
-    if (paramFloat != this.zv)
-    {
-      this.zp = null;
-      this.zv = paramFloat;
-      requestLayout();
-      invalidate();
-    }
-  }
-  
   public final void setGravity(int paramInt)
   {
-    if (this.ku != paramInt)
+    if (this.ho != paramInt)
     {
-      this.ku = paramInt;
+      this.ho = paramInt;
       invalidate();
     }
   }
   
   public final void setLineSpacing(float paramFloat1, float paramFloat2)
   {
-    if ((this.zu != paramFloat1) || (this.zt != paramFloat2))
+    if ((this.Bj != paramFloat1) || (this.Bi != paramFloat2))
     {
-      this.zu = paramFloat1;
-      this.zt = paramFloat2;
-      if (this.zp != null)
+      this.Bj = paramFloat1;
+      this.Bi = paramFloat2;
+      if (this.Be != null)
       {
-        this.zp = null;
+        this.Be = null;
         requestLayout();
         invalidate();
       }
@@ -469,10 +463,10 @@ public class ActionLabel
   
   public final void setMaxLines(int paramInt)
   {
-    if (this.zz != paramInt)
+    if (this.Bo != paramInt)
     {
-      this.zz = paramInt;
-      this.zp = null;
+      this.Bo = paramInt;
+      this.Be = null;
       requestLayout();
       invalidate();
     }
@@ -483,10 +477,10 @@ public class ActionLabel
     if (paramCharSequence == null) {
       throw new RuntimeException("Can not set ActionLabel text to null");
     }
-    if (!Objects.equals(this.zs, paramCharSequence))
+    if (!Objects.equals(this.Bh, paramCharSequence))
     {
-      this.zp = null;
-      this.zs = paramCharSequence;
+      this.Be = null;
+      this.Bh = paramCharSequence;
       requestLayout();
       invalidate();
     }
@@ -497,17 +491,29 @@ public class ActionLabel
     if (paramColorStateList == null) {
       throw new NullPointerException();
     }
-    this.zq = paramColorStateList;
-    eF();
+    this.Bf = paramColorStateList;
+    eV();
   }
   
   public final void t(float paramFloat)
   {
     paramFloat = TypedValue.applyDimension(0, paramFloat, getContext().getResources().getDisplayMetrics());
-    if (paramFloat != this.zw)
+    if (paramFloat != this.Bk)
     {
-      this.zp = null;
-      this.zw = paramFloat;
+      this.Be = null;
+      this.Bk = paramFloat;
+      requestLayout();
+      invalidate();
+    }
+  }
+  
+  public final void u(float paramFloat)
+  {
+    paramFloat = TypedValue.applyDimension(0, paramFloat, getContext().getResources().getDisplayMetrics());
+    if (paramFloat != this.Bl)
+    {
+      this.Be = null;
+      this.Bl = paramFloat;
       requestLayout();
       invalidate();
     }

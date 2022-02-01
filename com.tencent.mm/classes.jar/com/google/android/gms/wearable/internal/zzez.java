@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.net.Uri;
-import android.support.v4.e.l;
+import android.support.v4.e.m;
 import com.google.android.gms.common.api.GoogleApi.Settings;
 import com.google.android.gms.common.api.internal.ListenerHolder;
 import com.google.android.gms.common.api.internal.ListenerHolders;
@@ -26,69 +26,69 @@ public final class zzez
   public zzez(Activity paramActivity, GoogleApi.Settings paramSettings)
   {
     super(paramActivity, paramSettings);
-    AppMethodBeat.i(71298);
+    AppMethodBeat.i(101281);
     this.zzei = new zzeu();
-    AppMethodBeat.o(71298);
+    AppMethodBeat.o(101281);
   }
   
   public zzez(Context paramContext, GoogleApi.Settings paramSettings)
   {
     super(paramContext, paramSettings);
-    AppMethodBeat.i(71297);
+    AppMethodBeat.i(101280);
     this.zzei = new zzeu();
-    AppMethodBeat.o(71297);
+    AppMethodBeat.o(101280);
   }
   
   private final Task<Void> zza(MessageClient.OnMessageReceivedListener paramOnMessageReceivedListener, IntentFilter[] paramArrayOfIntentFilter)
   {
-    AppMethodBeat.i(71302);
+    AppMethodBeat.i(101285);
     ListenerHolder localListenerHolder = ListenerHolders.createListenerHolder(paramOnMessageReceivedListener, getLooper(), "MessageListener");
     paramOnMessageReceivedListener = doRegisterEventListener(new zzfc(paramOnMessageReceivedListener, paramArrayOfIntentFilter, localListenerHolder, null), new zzfd(paramOnMessageReceivedListener, localListenerHolder.getListenerKey(), null));
-    AppMethodBeat.o(71302);
+    AppMethodBeat.o(101285);
     return paramOnMessageReceivedListener;
   }
   
   public final Task<Void> addListener(MessageClient.OnMessageReceivedListener paramOnMessageReceivedListener)
   {
-    AppMethodBeat.i(71300);
+    AppMethodBeat.i(101283);
     paramOnMessageReceivedListener = zza(paramOnMessageReceivedListener, new IntentFilter[] { zzgj.zzc("com.google.android.gms.wearable.MESSAGE_RECEIVED") });
-    AppMethodBeat.o(71300);
+    AppMethodBeat.o(101283);
     return paramOnMessageReceivedListener;
   }
   
   public final Task<Void> addListener(MessageClient.OnMessageReceivedListener paramOnMessageReceivedListener, Uri paramUri, int paramInt)
   {
-    AppMethodBeat.i(71301);
-    l.checkNotNull(paramUri, "uri must not be null");
+    AppMethodBeat.i(101284);
+    m.checkNotNull(paramUri, "uri must not be null");
     if ((paramInt == 0) || (paramInt == 1)) {}
     for (boolean bool = true;; bool = false)
     {
       Preconditions.checkArgument(bool, "invalid filter type");
       paramOnMessageReceivedListener = zza(paramOnMessageReceivedListener, new IntentFilter[] { zzgj.zza("com.google.android.gms.wearable.MESSAGE_RECEIVED", paramUri, paramInt) });
-      AppMethodBeat.o(71301);
+      AppMethodBeat.o(101284);
       return paramOnMessageReceivedListener;
     }
   }
   
   public final Task<Boolean> removeListener(MessageClient.OnMessageReceivedListener paramOnMessageReceivedListener)
   {
-    AppMethodBeat.i(71303);
+    AppMethodBeat.i(101286);
     paramOnMessageReceivedListener = doUnregisterEventListener(ListenerHolders.createListenerHolder(paramOnMessageReceivedListener, getLooper(), "MessageListener").getListenerKey());
-    AppMethodBeat.o(71303);
+    AppMethodBeat.o(101286);
     return paramOnMessageReceivedListener;
   }
   
   public final Task<Integer> sendMessage(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(71299);
+    AppMethodBeat.i(101282);
     paramString1 = PendingResultUtil.toTask(this.zzei.sendMessage(asGoogleApiClient(), paramString1, paramString2, paramArrayOfByte), zzfa.zzbx);
-    AppMethodBeat.o(71299);
+    AppMethodBeat.o(101282);
     return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzez
  * JD-Core Version:    0.7.0.1
  */

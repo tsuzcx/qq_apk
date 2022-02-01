@@ -1,89 +1,101 @@
 package com.tencent.mm.plugin.game.media;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.HashMap;
-import java.util.LinkedList;
+import com.tencent.mm.g.c.ck;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class c
-  extends j<b>
+  extends ck
 {
-  public static final String[] SQL_CREATE;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(151805);
-    SQL_CREATE = new String[] { j.getCreateSQLs(b.info, "GameHaowanMedia") };
-    AppMethodBeat.o(151805);
+    AppMethodBeat.i(40945);
+    c.a locala = new c.a();
+    locala.EYt = new Field[16];
+    locala.columns = new String[17];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "localId";
+    locala.EYv.put("localId", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" localId TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.EYu = "localId";
+    locala.columns[1] = "mediaId";
+    locala.EYv.put("mediaId", "TEXT");
+    localStringBuilder.append(" mediaId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "mediaType";
+    locala.EYv.put("mediaType", "INTEGER");
+    localStringBuilder.append(" mediaType INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "filePath";
+    locala.EYv.put("filePath", "TEXT");
+    localStringBuilder.append(" filePath TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "compressPath";
+    locala.EYv.put("compressPath", "TEXT");
+    localStringBuilder.append(" compressPath TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "thumbPath";
+    locala.EYv.put("thumbPath", "TEXT");
+    localStringBuilder.append(" thumbPath TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "width";
+    locala.EYv.put("width", "INTEGER");
+    localStringBuilder.append(" width INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "height";
+    locala.EYv.put("height", "INTEGER");
+    localStringBuilder.append(" height INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "duration";
+    locala.EYv.put("duration", "INTEGER");
+    localStringBuilder.append(" duration INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "size";
+    locala.EYv.put("size", "LONG");
+    localStringBuilder.append(" size LONG");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "isGif";
+    locala.EYv.put("isGif", "INTEGER");
+    localStringBuilder.append(" isGif INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[11] = "mediaUrl";
+    locala.EYv.put("mediaUrl", "TEXT");
+    localStringBuilder.append(" mediaUrl TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[12] = "thumbPicUrl";
+    locala.EYv.put("thumbPicUrl", "TEXT");
+    localStringBuilder.append(" thumbPicUrl TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[13] = "uploadState";
+    locala.EYv.put("uploadState", "INTEGER default 'false' ");
+    localStringBuilder.append(" uploadState INTEGER default 'false' ");
+    localStringBuilder.append(", ");
+    locala.columns[14] = "hostTaskId";
+    locala.EYv.put("hostTaskId", "TEXT");
+    localStringBuilder.append(" hostTaskId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[15] = "editFlag";
+    locala.EYv.put("editFlag", "INTEGER default '0' ");
+    localStringBuilder.append(" editFlag INTEGER default '0' ");
+    locala.columns[16] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(40945);
   }
   
-  public c(e parame)
+  public final c.a getDBInfo()
   {
-    super(parame, b.info, "GameHaowanMedia", null);
-  }
-  
-  public final b PX(String paramString)
-  {
-    Object localObject = null;
-    AppMethodBeat.i(151802);
-    paramString = String.format("select * from %s where %s=\"%s\"", new Object[] { "GameHaowanMedia", "localId", paramString });
-    ab.i("MicroMsg.GameHaowanPublishStorage", "get, sql: ".concat(String.valueOf(paramString)));
-    Cursor localCursor = rawQuery(paramString, new String[0]);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(151802);
-      return null;
-    }
-    paramString = localObject;
-    if (localCursor.moveToNext())
-    {
-      paramString = new b();
-      paramString.convertFrom(localCursor);
-    }
-    localCursor.close();
-    AppMethodBeat.o(151802);
-    return paramString;
-  }
-  
-  public final Map<String, b> X(LinkedList<String> paramLinkedList)
-  {
-    AppMethodBeat.i(151803);
-    paramLinkedList = String.format("select * from %s where %s in %s", new Object[] { "GameHaowanMedia", "localId", com.tencent.mm.plugin.game.f.c.af(paramLinkedList) });
-    ab.i("MicroMsg.GameHaowanPublishStorage", "batchGet, sql: ".concat(String.valueOf(paramLinkedList)));
-    paramLinkedList = rawQuery(paramLinkedList, new String[0]);
-    if (paramLinkedList == null)
-    {
-      AppMethodBeat.o(151803);
-      return null;
-    }
-    HashMap localHashMap = new HashMap();
-    while (paramLinkedList.moveToNext())
-    {
-      b localb = new b();
-      localb.convertFrom(paramLinkedList);
-      localHashMap.put(localb.field_localId, localb);
-    }
-    paramLinkedList.close();
-    AppMethodBeat.o(151803);
-    return localHashMap;
-  }
-  
-  public final void Y(LinkedList<String> paramLinkedList)
-  {
-    AppMethodBeat.i(151804);
-    paramLinkedList = String.format("delete from %s where %s in %s", new Object[] { "GameHaowanMedia", "localId", com.tencent.mm.plugin.game.f.c.af(paramLinkedList) });
-    ab.i("MicroMsg.GameHaowanPublishStorage", "batchDelete, sql: ".concat(String.valueOf(paramLinkedList)));
-    execSQL("GameHaowanMedia", paramLinkedList);
-    AppMethodBeat.o(151804);
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.c
  * JD-Core Version:    0.7.0.1
  */

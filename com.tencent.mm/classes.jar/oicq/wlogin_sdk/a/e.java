@@ -5,7 +5,7 @@ public final class e
 {
   public e()
   {
-    this.CMD = 259;
+    this.Kik = 259;
   }
 }
 

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ru
   extends b
 {
-  public ru.a cId;
+  public a dxr;
   
   public ru()
   {
@@ -15,16 +15,23 @@ public final class ru
   
   private ru(byte paramByte)
   {
-    AppMethodBeat.i(94442);
-    this.cId = new ru.a();
-    this.ymq = false;
+    AppMethodBeat.i(120831);
+    this.dxr = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(94442);
+    AppMethodBeat.o(120831);
+  }
+  
+  public static final class a
+  {
+    public int dcS;
+    public String filePath;
+    public int scene = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ru
  * JD-Core Version:    0.7.0.1
  */

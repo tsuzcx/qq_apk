@@ -10,12 +10,12 @@ public final class j
   
   public final int getType()
   {
-    return 2519;
+    return 2923;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/unigenprepay";
+    return "/cgi-bin/mmpay-bin/tax_genprepay";
   }
 }
 

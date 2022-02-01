@@ -6,27 +6,27 @@ import java.util.LinkedList;
 public abstract class a
 {
   private static String TAG = "MicroMsg.BackupBaseModel";
-  private static LinkedList<a> jyu = new LinkedList();
+  private static LinkedList<a> mpQ = new LinkedList();
   
   public static void a(a parama)
   {
-    jyu.add(parama);
+    mpQ.add(parama);
   }
   
-  public static void aSF()
+  public static void bvN()
   {
-    Iterator localIterator = jyu.iterator();
+    Iterator localIterator = mpQ.iterator();
     while (localIterator.hasNext()) {
-      ((a)localIterator.next()).aSG();
+      ((a)localIterator.next()).bvO();
     }
-    jyu.clear();
+    mpQ.clear();
   }
   
-  public abstract void aSG();
+  public abstract void bvO();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.b.a
  * JD-Core Version:    0.7.0.1
  */

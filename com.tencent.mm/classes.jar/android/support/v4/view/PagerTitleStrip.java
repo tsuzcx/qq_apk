@@ -19,84 +19,84 @@ import java.lang.ref.WeakReference;
 public class PagerTitleStrip
   extends ViewGroup
 {
-  private static final int[] GC = { 16842804, 16842901, 16842904, 16842927 };
-  private static final int[] GD = { 16843660 };
-  private int AZ;
-  private final a GA = new a();
-  private WeakReference<q> GB;
-  private int GE;
-  int GF;
-  ViewPager Gr;
-  TextView Gs;
-  TextView Gt;
-  TextView Gu;
-  private int Gv = -1;
-  float Gw = -1.0F;
-  private int Gx;
-  private boolean Gy;
-  private boolean Gz;
+  private static final int[] NC = { 16842804, 16842901, 16842904, 16842927 };
+  private static final int[] ND = { 16843660 };
+  private int Hu;
+  private final a NA = new a();
+  private WeakReference<q> NB;
+  private int NE;
+  ViewPager Nr;
+  TextView Ns;
+  TextView Nt;
+  TextView Nu;
+  private int Nv = -1;
+  float Nw = -1.0F;
+  private int Nx;
+  private boolean Ny;
+  private boolean Nz;
+  int mTextColor;
   
   public PagerTitleStrip(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     TextView localTextView = new TextView(paramContext);
-    this.Gs = localTextView;
+    this.Ns = localTextView;
     addView(localTextView);
     localTextView = new TextView(paramContext);
-    this.Gt = localTextView;
+    this.Nt = localTextView;
     addView(localTextView);
     localTextView = new TextView(paramContext);
-    this.Gu = localTextView;
+    this.Nu = localTextView;
     addView(localTextView);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, GC);
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, NC);
     int i = paramAttributeSet.getResourceId(0, 0);
     if (i != 0)
     {
-      android.support.v4.widget.q.b(this.Gs, i);
-      android.support.v4.widget.q.b(this.Gt, i);
-      android.support.v4.widget.q.b(this.Gu, i);
+      android.support.v4.widget.q.d(this.Ns, i);
+      android.support.v4.widget.q.d(this.Nt, i);
+      android.support.v4.widget.q.d(this.Nu, i);
     }
     int j = paramAttributeSet.getDimensionPixelSize(1, 0);
     if (j != 0)
     {
       float f = j;
-      this.Gs.setTextSize(0, f);
-      this.Gt.setTextSize(0, f);
-      this.Gu.setTextSize(0, f);
+      this.Ns.setTextSize(0, f);
+      this.Nt.setTextSize(0, f);
+      this.Nu.setTextSize(0, f);
     }
     if (paramAttributeSet.hasValue(2))
     {
       j = paramAttributeSet.getColor(2, 0);
-      this.Gs.setTextColor(j);
-      this.Gt.setTextColor(j);
-      this.Gu.setTextColor(j);
+      this.Ns.setTextColor(j);
+      this.Nt.setTextColor(j);
+      this.Nu.setTextColor(j);
     }
-    this.AZ = paramAttributeSet.getInteger(3, 80);
+    this.Hu = paramAttributeSet.getInteger(3, 80);
     paramAttributeSet.recycle();
-    this.GF = this.Gt.getTextColors().getDefaultColor();
+    this.mTextColor = this.Nt.getTextColors().getDefaultColor();
     setNonPrimaryAlpha(0.6F);
-    this.Gs.setEllipsize(TextUtils.TruncateAt.END);
-    this.Gt.setEllipsize(TextUtils.TruncateAt.END);
-    this.Gu.setEllipsize(TextUtils.TruncateAt.END);
+    this.Ns.setEllipsize(TextUtils.TruncateAt.END);
+    this.Nt.setEllipsize(TextUtils.TruncateAt.END);
+    this.Nu.setEllipsize(TextUtils.TruncateAt.END);
     if (i != 0)
     {
-      paramAttributeSet = paramContext.obtainStyledAttributes(i, GD);
+      paramAttributeSet = paramContext.obtainStyledAttributes(i, ND);
       bool = paramAttributeSet.getBoolean(0, false);
       paramAttributeSet.recycle();
     }
     if (bool)
     {
-      setSingleLineAllCaps(this.Gs);
-      setSingleLineAllCaps(this.Gt);
-      setSingleLineAllCaps(this.Gu);
+      setSingleLineAllCaps(this.Ns);
+      setSingleLineAllCaps(this.Nt);
+      setSingleLineAllCaps(this.Nu);
     }
     for (;;)
     {
-      this.Gx = ((int)(paramContext.getResources().getDisplayMetrics().density * 16.0F));
+      this.Nx = ((int)(paramContext.getResources().getDisplayMetrics().density * 16.0F));
       return;
-      this.Gs.setSingleLine();
-      this.Gt.setSingleLine();
-      this.Gu.setSingleLine();
+      this.Ns.setSingleLine();
+      this.Nt.setSingleLine();
+      this.Nu.setSingleLine();
     }
   }
   
@@ -120,13 +120,13 @@ public class PagerTitleStrip
     int i7;
     int i6;
     int i8;
-    if (paramInt != this.Gv)
+    if (paramInt != this.Nv)
     {
-      a(paramInt, this.Gr.getAdapter());
-      this.Gz = true;
-      m = this.Gs.getMeasuredWidth();
-      i4 = this.Gt.getMeasuredWidth();
-      k = this.Gu.getMeasuredWidth();
+      a(paramInt, this.Nr.getAdapter());
+      this.Nz = true;
+      m = this.Ns.getMeasuredWidth();
+      i4 = this.Nt.getMeasuredWidth();
+      k = this.Nu.getMeasuredWidth();
       i3 = i4 / 2;
       n = getWidth();
       i = getHeight();
@@ -142,18 +142,18 @@ public class PagerTitleStrip
       }
       i3 = n - i5 - (int)(f1 * (n - (i2 + i3) - i5)) - i3;
       i4 = i3 + i4;
-      i7 = this.Gs.getBaseline();
-      i6 = this.Gt.getBaseline();
-      i5 = this.Gu.getBaseline();
+      i7 = this.Ns.getBaseline();
+      i6 = this.Nt.getBaseline();
+      i5 = this.Nu.getBaseline();
       i8 = Math.max(Math.max(i7, i6), i5);
       i7 = i8 - i7;
       i6 = i8 - i6;
       i5 = i8 - i5;
-      i8 = this.Gs.getMeasuredHeight();
-      int i9 = this.Gt.getMeasuredHeight();
-      int i10 = this.Gu.getMeasuredHeight();
+      i8 = this.Ns.getMeasuredHeight();
+      int i9 = this.Nt.getMeasuredHeight();
+      int i10 = this.Nu.getMeasuredHeight();
       i8 = Math.max(Math.max(i8 + i7, i9 + i6), i10 + i5);
-      switch (this.AZ & 0x70)
+      switch (this.Hu & 0x70)
       {
       default: 
         j = paramInt + i7;
@@ -163,15 +163,15 @@ public class PagerTitleStrip
     }
     for (;;)
     {
-      this.Gt.layout(i3, i, i4, this.Gt.getMeasuredHeight() + i);
-      i = Math.min(i2, i3 - this.Gx - m);
-      this.Gs.layout(i, j, m + i, this.Gs.getMeasuredHeight() + j);
-      i = Math.max(n - i1 - k, this.Gx + i4);
-      this.Gu.layout(i, paramInt, i + k, this.Gu.getMeasuredHeight() + paramInt);
-      this.Gw = paramFloat;
-      this.Gz = false;
+      this.Nt.layout(i3, i, i4, this.Nt.getMeasuredHeight() + i);
+      i = Math.min(i2, i3 - this.Nx - m);
+      this.Ns.layout(i, j, m + i, this.Ns.getMeasuredHeight() + j);
+      i = Math.max(n - i1 - k, this.Nx + i4);
+      this.Nu.layout(i, paramInt, i + k, this.Nu.getMeasuredHeight() + paramInt);
+      this.Nw = paramFloat;
+      this.Nz = false;
       return;
-      if ((paramBoolean) || (paramFloat != this.Gw)) {
+      if ((paramBoolean) || (paramFloat != this.Nw)) {
         break;
       }
       return;
@@ -194,7 +194,7 @@ public class PagerTitleStrip
     if (paramq != null)
     {
       i = paramq.getCount();
-      this.Gy = true;
+      this.Ny = true;
       if ((paramInt <= 0) || (paramq == null)) {
         break label235;
       }
@@ -202,8 +202,8 @@ public class PagerTitleStrip
     label235:
     for (Object localObject1 = paramq.getPageTitle(paramInt - 1);; localObject1 = null)
     {
-      this.Gs.setText((CharSequence)localObject1);
-      TextView localTextView = this.Gt;
+      this.Ns.setText((CharSequence)localObject1);
+      TextView localTextView = this.Nt;
       if ((paramq != null) && (paramInt < i)) {}
       for (localObject1 = paramq.getPageTitle(paramInt);; localObject1 = null)
       {
@@ -216,17 +216,17 @@ public class PagerTitleStrip
             localObject1 = paramq.getPageTitle(paramInt + 1);
           }
         }
-        this.Gu.setText((CharSequence)localObject1);
+        this.Nu.setText((CharSequence)localObject1);
         i = View.MeasureSpec.makeMeasureSpec(Math.max(0, (int)((getWidth() - getPaddingLeft() - getPaddingRight()) * 0.8F)), -2147483648);
         int j = View.MeasureSpec.makeMeasureSpec(Math.max(0, getHeight() - getPaddingTop() - getPaddingBottom()), -2147483648);
-        this.Gs.measure(i, j);
-        this.Gt.measure(i, j);
-        this.Gu.measure(i, j);
-        this.Gv = paramInt;
-        if (!this.Gz) {
-          a(paramInt, this.Gw, false);
+        this.Ns.measure(i, j);
+        this.Nt.measure(i, j);
+        this.Nu.measure(i, j);
+        this.Nv = paramInt;
+        if (!this.Nz) {
+          a(paramInt, this.Nw, false);
         }
-        this.Gy = false;
+        this.Ny = false;
         return;
         i = 0;
         break;
@@ -238,19 +238,19 @@ public class PagerTitleStrip
   {
     if (paramq1 != null)
     {
-      paramq1.unregisterDataSetObserver(this.GA);
-      this.GB = null;
+      paramq1.unregisterDataSetObserver(this.NA);
+      this.NB = null;
     }
     if (paramq2 != null)
     {
-      paramq2.registerDataSetObserver(this.GA);
-      this.GB = new WeakReference(paramq2);
+      paramq2.registerDataSetObserver(this.NA);
+      this.NB = new WeakReference(paramq2);
     }
-    if (this.Gr != null)
+    if (this.Nr != null)
     {
-      this.Gv = -1;
-      this.Gw = -1.0F;
-      a(this.Gr.getCurrentItem(), paramq2);
+      this.Nv = -1;
+      this.Nw = -1.0F;
+      a(this.Nr.getCurrentItem(), paramq2);
       requestLayout();
     }
   }
@@ -267,7 +267,7 @@ public class PagerTitleStrip
   
   public int getTextSpacing()
   {
-    return this.Gx;
+    return this.Nx;
   }
   
   protected void onAttachedToWindow()
@@ -279,11 +279,11 @@ public class PagerTitleStrip
     }
     localObject = (ViewPager)localObject;
     q localq = ((ViewPager)localObject).getAdapter();
-    ((ViewPager)localObject).setInternalPageChangeListener(this.GA);
-    ((ViewPager)localObject).addOnAdapterChangeListener(this.GA);
-    this.Gr = ((ViewPager)localObject);
-    if (this.GB != null) {}
-    for (localObject = (q)this.GB.get();; localObject = null)
+    ((ViewPager)localObject).setInternalPageChangeListener(this.NA);
+    ((ViewPager)localObject).addOnAdapterChangeListener(this.NA);
+    this.Nr = ((ViewPager)localObject);
+    if (this.NB != null) {}
+    for (localObject = (q)this.NB.get();; localObject = null)
     {
       a((q)localObject, localq);
       return;
@@ -293,24 +293,24 @@ public class PagerTitleStrip
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.Gr != null)
+    if (this.Nr != null)
     {
-      a(this.Gr.getAdapter(), null);
-      this.Gr.setInternalPageChangeListener(null);
-      this.Gr.removeOnAdapterChangeListener(this.GA);
-      this.Gr = null;
+      a(this.Nr.getAdapter(), null);
+      this.Nr.setInternalPageChangeListener(null);
+      this.Nr.removeOnAdapterChangeListener(this.NA);
+      this.Nr = null;
     }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     float f = 0.0F;
-    if (this.Gr != null)
+    if (this.Nr != null)
     {
-      if (this.Gw >= 0.0F) {
-        f = this.Gw;
+      if (this.Nw >= 0.0F) {
+        f = this.Nw;
       }
-      a(this.Gv, f, true);
+      a(this.Nv, f, true);
     }
   }
   
@@ -323,51 +323,51 @@ public class PagerTitleStrip
     int k = getChildMeasureSpec(paramInt2, j, -2);
     int i = View.MeasureSpec.getSize(paramInt1);
     paramInt1 = getChildMeasureSpec(paramInt1, (int)(i * 0.2F), -2);
-    this.Gs.measure(paramInt1, k);
-    this.Gt.measure(paramInt1, k);
-    this.Gu.measure(paramInt1, k);
+    this.Ns.measure(paramInt1, k);
+    this.Nt.measure(paramInt1, k);
+    this.Nu.measure(paramInt1, k);
     if (View.MeasureSpec.getMode(paramInt2) == 1073741824) {}
     for (paramInt1 = View.MeasureSpec.getSize(paramInt2);; paramInt1 = Math.max(getMinHeight(), j + paramInt1))
     {
-      setMeasuredDimension(i, View.resolveSizeAndState(paramInt1, paramInt2, this.Gt.getMeasuredState() << 16));
+      setMeasuredDimension(i, View.resolveSizeAndState(paramInt1, paramInt2, this.Nt.getMeasuredState() << 16));
       return;
-      paramInt1 = this.Gt.getMeasuredHeight();
+      paramInt1 = this.Nt.getMeasuredHeight();
     }
   }
   
   public void requestLayout()
   {
-    if (!this.Gy) {
+    if (!this.Ny) {
       super.requestLayout();
     }
   }
   
   public void setGravity(int paramInt)
   {
-    this.AZ = paramInt;
+    this.Hu = paramInt;
     requestLayout();
   }
   
   public void setNonPrimaryAlpha(float paramFloat)
   {
-    this.GE = ((int)(255.0F * paramFloat) & 0xFF);
-    int i = this.GE << 24 | this.GF & 0xFFFFFF;
-    this.Gs.setTextColor(i);
-    this.Gu.setTextColor(i);
+    this.NE = ((int)(255.0F * paramFloat) & 0xFF);
+    int i = this.NE << 24 | this.mTextColor & 0xFFFFFF;
+    this.Ns.setTextColor(i);
+    this.Nu.setTextColor(i);
   }
   
   public void setTextColor(int paramInt)
   {
-    this.GF = paramInt;
-    this.Gt.setTextColor(paramInt);
-    paramInt = this.GE << 24 | this.GF & 0xFFFFFF;
-    this.Gs.setTextColor(paramInt);
-    this.Gu.setTextColor(paramInt);
+    this.mTextColor = paramInt;
+    this.Nt.setTextColor(paramInt);
+    paramInt = this.NE << 24 | this.mTextColor & 0xFFFFFF;
+    this.Ns.setTextColor(paramInt);
+    this.Nu.setTextColor(paramInt);
   }
   
   public void setTextSpacing(int paramInt)
   {
-    this.Gx = paramInt;
+    this.Nx = paramInt;
     requestLayout();
   }
   
@@ -387,11 +387,11 @@ public class PagerTitleStrip
     public final void onChanged()
     {
       float f = 0.0F;
-      PagerTitleStrip.this.a(PagerTitleStrip.this.Gr.getCurrentItem(), PagerTitleStrip.this.Gr.getAdapter());
-      if (PagerTitleStrip.this.Gw >= 0.0F) {
-        f = PagerTitleStrip.this.Gw;
+      PagerTitleStrip.this.a(PagerTitleStrip.this.Nr.getCurrentItem(), PagerTitleStrip.this.Nr.getAdapter());
+      if (PagerTitleStrip.this.Nw >= 0.0F) {
+        f = PagerTitleStrip.this.Nw;
       }
-      PagerTitleStrip.this.a(PagerTitleStrip.this.Gr.getCurrentItem(), f, true);
+      PagerTitleStrip.this.a(PagerTitleStrip.this.Nr.getCurrentItem(), f, true);
     }
     
     public final void onPageScrollStateChanged(int paramInt)
@@ -413,18 +413,18 @@ public class PagerTitleStrip
       float f = 0.0F;
       if (this.mScrollState == 0)
       {
-        PagerTitleStrip.this.a(PagerTitleStrip.this.Gr.getCurrentItem(), PagerTitleStrip.this.Gr.getAdapter());
-        if (PagerTitleStrip.this.Gw >= 0.0F) {
-          f = PagerTitleStrip.this.Gw;
+        PagerTitleStrip.this.a(PagerTitleStrip.this.Nr.getCurrentItem(), PagerTitleStrip.this.Nr.getAdapter());
+        if (PagerTitleStrip.this.Nw >= 0.0F) {
+          f = PagerTitleStrip.this.Nw;
         }
-        PagerTitleStrip.this.a(PagerTitleStrip.this.Gr.getCurrentItem(), f, true);
+        PagerTitleStrip.this.a(PagerTitleStrip.this.Nr.getCurrentItem(), f, true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.view.PagerTitleStrip
  * JD-Core Version:    0.7.0.1
  */

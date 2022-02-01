@@ -1,63 +1,66 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.b.a.a.ak;
-import com.tencent.pb.common.b.a.a.l;
+import com.tencent.pb.common.b.a.a.a.ah;
+import com.tencent.pb.common.b.a.a.a.j;
 import com.tencent.pb.common.b.d;
+import com.tencent.pb.common.c.b;
+import com.tencent.wecall.talkroom.model.c;
 
 public final class m
   extends d
 {
-  public int nTj;
-  public String nuW;
-  public long tFh;
+  public int sHe;
+  public String seB;
+  public long ztl;
   
-  public m(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
+  public m(String paramString, int paramInt1, long paramLong, int paramInt2)
   {
-    AppMethodBeat.i(128030);
-    com.tencent.pb.common.c.c.d("MicroMsg.Voip", new Object[] { this.TAG2, "hello", paramString, Integer.valueOf(paramInt1), Long.valueOf(paramLong) });
-    a.l locall = new a.l();
-    locall.BdX = paramInt3;
-    locall.twP = paramInt1;
-    this.nTj = paramInt1;
-    locall.twQ = paramLong;
-    this.tFh = paramLong;
-    locall.groupId = paramString;
-    this.nuW = paramString;
-    locall.kJx = paramInt2;
-    this.mNetType = 3;
+    AppMethodBeat.i(62524);
+    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneSwitchVideoGroup" });
+    a.j localj = new a.j();
     try
     {
-      this.Bda = com.tencent.wecall.talkroom.model.c.dXv().axs(paramString);
-      c(147, locall);
-      AppMethodBeat.o(128030);
+      localj.groupId = paramString;
+      this.seB = paramString;
+      localj.roomId = paramInt1;
+      this.sHe = paramInt1;
+      localj.sAY = paramLong;
+      this.ztl = paramLong;
+      localj.action = paramInt2;
+      localj.timestamp = System.currentTimeMillis();
+      this.mNetType = 3;
+      this.IjW = c.fpJ().aOs(paramString);
+      c(243, localj);
+      AppMethodBeat.o(62524);
       return;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        com.tencent.pb.common.c.c.w(this.TAG2, new Object[] { "NetSceneVoiceRoomHello constructor", paramString });
+        b.w(this.TAG2, new Object[] { "NetSceneSwitchVideoGroup constructor", paramString });
       }
     }
   }
   
-  public final Object ck(byte[] paramArrayOfByte)
+  public final Object cC(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(128031);
+    AppMethodBeat.i(62525);
+    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
     if (paramArrayOfByte != null) {}
     for (;;)
     {
       try
       {
-        paramArrayOfByte = (a.ak)e.a(new a.ak(), paramArrayOfByte, paramArrayOfByte.length);
-        AppMethodBeat.o(128031);
+        paramArrayOfByte = (a.ah)e.a(new a.ah(), paramArrayOfByte, paramArrayOfByte.length);
+        AppMethodBeat.o(62525);
         return paramArrayOfByte;
       }
       catch (Exception paramArrayOfByte)
       {
-        com.tencent.pb.common.c.c.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte.getMessage() });
+        b.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte.getMessage() });
         paramArrayOfByte = null;
         continue;
       }
@@ -65,19 +68,19 @@ public final class m
     }
   }
   
-  public final String dTD()
+  public final String flk()
   {
-    return "CsCmd.Cmd_V_CSVoiceRoomHelloReq";
+    return "CsCmd.Cmd_V_CSSwitchVideoGroupReq";
   }
   
   public final int getType()
   {
-    return 205;
+    return 214;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.m
  * JD-Core Version:    0.7.0.1
  */

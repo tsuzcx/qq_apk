@@ -1,10 +1,11 @@
 package android.support.v4.widget;
 
 import android.graphics.Rect;
+import java.util.Comparator;
 
 final class k
 {
-  public static <L, T> T a(L paramL, b<L, T> paramb, k.a<T> parama, T paramT, Rect paramRect, int paramInt)
+  public static <L, T> T a(L paramL, b<L, T> paramb, a<T> parama, T paramT, Rect paramRect, int paramInt)
   {
     Rect localRect1 = new Rect(paramRect);
     Object localObject1;
@@ -19,7 +20,7 @@ final class k
     case 17: 
       localRect1.offset(paramRect.width() + 1, 0);
       localObject1 = null;
-      int k = paramb.J(paramL);
+      int k = paramb.I(paramL);
       localRect2 = new Rect();
       j = 0;
       if (j < k)
@@ -60,7 +61,7 @@ final class k
         i = 1;
         break label164;
       }
-      if ((!a(paramInt, paramRect, localRect1, localRect2)) && (v(c(paramInt, paramRect, localRect2), g(paramInt, paramRect, localRect2)) < v(c(paramInt, paramRect, localRect1), g(paramInt, paramRect, localRect1))))
+      if ((!a(paramInt, paramRect, localRect1, localRect2)) && (x(c(paramInt, paramRect, localRect2), g(paramInt, paramRect, localRect2)) < x(c(paramInt, paramRect, localRect1), g(paramInt, paramRect, localRect1))))
       {
         i = 1;
         break label164;
@@ -227,21 +228,89 @@ final class k
     return Math.abs(paramRect1.left + paramRect1.width() / 2 - (paramRect2.left + paramRect2.width() / 2));
   }
   
-  private static int v(int paramInt1, int paramInt2)
+  private static int x(int paramInt1, int paramInt2)
   {
     return paramInt1 * 13 * paramInt1 + paramInt2 * paramInt2;
   }
   
+  public static abstract interface a<T>
+  {
+    public abstract void b(T paramT, Rect paramRect);
+  }
+  
   public static abstract interface b<T, V>
   {
-    public abstract int J(T paramT);
+    public abstract int I(T paramT);
     
     public abstract V get(T paramT, int paramInt);
+  }
+  
+  static final class c<T>
+    implements Comparator<T>
+  {
+    private final Rect RB = new Rect();
+    private final Rect RC = new Rect();
+    private final boolean RD;
+    private final k.a<T> RE;
+    
+    c(boolean paramBoolean, k.a<T> parama)
+    {
+      this.RD = paramBoolean;
+      this.RE = parama;
+    }
+    
+    public final int compare(T paramT1, T paramT2)
+    {
+      Rect localRect1 = this.RB;
+      Rect localRect2 = this.RC;
+      this.RE.b(paramT1, localRect1);
+      this.RE.b(paramT2, localRect2);
+      if (localRect1.top < localRect2.top) {}
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return -1;
+                if (localRect1.top > localRect2.top) {
+                  return 1;
+                }
+                if (localRect1.left >= localRect2.left) {
+                  break;
+                }
+              } while (!this.RD);
+              return 1;
+              if (localRect1.left <= localRect2.left) {
+                break;
+              }
+            } while (this.RD);
+            return 1;
+          } while (localRect1.bottom < localRect2.bottom);
+          if (localRect1.bottom > localRect2.bottom) {
+            return 1;
+          }
+          if (localRect1.right >= localRect2.right) {
+            break;
+          }
+        } while (!this.RD);
+        return 1;
+        if (localRect1.right <= localRect2.right) {
+          break;
+        }
+      } while (this.RD);
+      return 1;
+      return 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.widget.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,189 +1,245 @@
 package com.tencent.mm.plugin.wenote.model;
 
+import android.content.Context;
 import android.os.Message;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.k.a;
 import com.tencent.mm.audio.b.j;
+import com.tencent.mm.audio.b.j.a;
+import com.tencent.mm.compatible.util.b;
 import com.tencent.mm.modelvoice.m;
 import com.tencent.mm.plugin.wenote.model.a.l;
-import com.tencent.mm.plugin.wenote.model.b.a;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
 
 public final class k
 {
-  private static k vwQ = null;
+  private static k BDt = null;
+  public com.tencent.mm.plugin.wenote.model.b.a BDu;
+  public l BDv;
   public long duration;
-  public com.tencent.mm.compatible.util.b gaP;
-  public long lvI;
-  public boolean mwK;
-  public boolean mwL;
-  public long mwM;
-  private Toast mwN;
-  public j mwV;
-  private final ak mwX;
-  public final ap mwY;
-  public TextView myn;
+  public b hDB;
+  public final ap olW;
+  public boolean omf;
+  public long omg;
+  public boolean omh;
+  public long omi;
+  private Toast omj;
+  public j omk;
+  public m oml;
+  public String omm;
+  public TextView omo;
+  public int omp;
+  private final ap oms;
+  public final av omt;
   public String path;
-  public m vwO;
-  public String vwP;
-  public int vwR;
-  public a vwS;
-  public l vwT;
-  public final ak vwU;
   
   private k()
   {
-    AppMethodBeat.i(26669);
-    this.mwM = -1L;
-    this.vwP = "";
+    AppMethodBeat.i(30362);
+    this.omi = -1L;
+    this.omm = "";
     this.path = "";
-    this.vwR = 0;
-    this.vwT = null;
-    this.mwX = new ak()
+    this.omp = 0;
+    this.BDv = null;
+    this.oms = new ap()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(26666);
+        AppMethodBeat.i(30359);
         super.handleMessage(paramAnonymousMessage);
         k.b(k.this);
-        AppMethodBeat.o(26666);
+        AppMethodBeat.o(30359);
       }
     };
-    this.vwU = new k.4(this);
-    this.mwY = new ap(new k.5(this), true);
-    this.gaP = new com.tencent.mm.compatible.util.b(ah.getContext());
-    AppMethodBeat.o(26669);
+    this.olW = new ap()
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(30360);
+        if (k.c(k.this).omT.booleanValue())
+        {
+          k.d(k.this).bSk();
+          k.c(k.this).omT = Boolean.FALSE;
+        }
+        k.c(k.this).omL = ((int)com.tencent.mm.bm.a.mI(k.e(k.this)));
+        sendEmptyMessageDelayed(4096, 250L);
+        AppMethodBeat.o(30360);
+      }
+    };
+    this.omt = new av(new av.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(30361);
+        if (k.f(k.this) == -1L) {
+          k.a(k.this, bt.GC());
+        }
+        long l = bt.aS(k.f(k.this));
+        if ((l >= 3590000L) && (l <= 3600000L))
+        {
+          if (k.g(k.this) != null) {
+            break label181;
+          }
+          k.a(k.this, Toast.makeText(aj.getContext(), aj.getContext().getString(2131758842, new Object[] { Integer.valueOf((int)((3600000L - l) / 1000L)) }), 0));
+        }
+        for (;;)
+        {
+          k.g(k.this).show();
+          if (l < 3600000L) {
+            break;
+          }
+          ad.v("MicroMsg.WNNoteVoiceLogic", "record stop on countdown");
+          k.h(k.this);
+          k.i(k.this);
+          if (k.d(k.this) != null) {
+            k.d(k.this).bSj();
+          }
+          AppMethodBeat.o(30361);
+          return false;
+          label181:
+          k.g(k.this).setText(aj.getContext().getString(2131758842, new Object[] { Integer.valueOf((int)((3600000L - l) / 1000L)) }));
+        }
+        AppMethodBeat.o(30361);
+        return true;
+      }
+    }, true);
+    this.hDB = new b(aj.getContext());
+    AppMethodBeat.o(30362);
   }
   
-  private void bxx()
+  private void bSe()
   {
-    AppMethodBeat.i(26674);
-    if (!this.mwK)
+    AppMethodBeat.i(30367);
+    if (!this.omf)
     {
-      AppMethodBeat.o(26674);
+      AppMethodBeat.o(30367);
       return;
     }
-    this.vwU.removeMessages(4096);
+    this.olW.removeMessages(4096);
     stopRecord();
     this.duration = getDuration();
     if (this.duration < 800L) {}
     for (int i = 1;; i = 0)
     {
-      this.mwY.stopTimer();
+      this.omt.stopTimer();
       if (i != 0)
       {
-        bxz();
-        dhO();
+        bSg();
+        bSf();
       }
-      this.mwK = false;
-      AppMethodBeat.o(26674);
+      this.omf = false;
+      AppMethodBeat.o(30367);
       return;
     }
   }
   
-  private void bxz()
+  private void bSf()
   {
-    AppMethodBeat.i(26677);
-    com.tencent.mm.vfs.b localb = new com.tencent.mm.vfs.b(this.path);
-    if (localb.exists()) {
-      localb.delete();
+    AppMethodBeat.i(30368);
+    this.oms.sendEmptyMessageDelayed(0, 500L);
+    AppMethodBeat.o(30368);
+  }
+  
+  private void bSg()
+  {
+    AppMethodBeat.i(30370);
+    e locale = new e(this.path);
+    if (locale.exists()) {
+      locale.delete();
     }
-    AppMethodBeat.o(26677);
+    AppMethodBeat.o(30370);
   }
   
   public static void destroy()
   {
-    vwQ = null;
+    BDt = null;
   }
   
-  public static k dhL()
+  public static k esA()
   {
-    AppMethodBeat.i(26670);
-    if (vwQ == null) {
-      vwQ = new k();
+    AppMethodBeat.i(30363);
+    if (BDt == null) {
+      BDt = new k();
     }
-    k localk = vwQ;
-    AppMethodBeat.o(26670);
+    k localk = BDt;
+    AppMethodBeat.o(30363);
     return localk;
   }
   
-  private void dhO()
+  public static k esB()
   {
-    AppMethodBeat.i(26675);
-    this.mwX.sendEmptyMessageDelayed(0, 500L);
-    AppMethodBeat.o(26675);
-  }
-  
-  public static k dhP()
-  {
-    return vwQ;
+    return BDt;
   }
   
   private long getDuration()
   {
-    AppMethodBeat.i(26676);
-    if (this.lvI == 0L)
+    AppMethodBeat.i(30369);
+    if (this.omg == 0L)
     {
-      AppMethodBeat.o(26676);
+      AppMethodBeat.o(30369);
       return 0L;
     }
-    long l = bo.av(this.lvI);
-    AppMethodBeat.o(26676);
+    long l = bt.aS(this.omg);
+    AppMethodBeat.o(30369);
     return l;
   }
   
   private void stopRecord()
   {
-    AppMethodBeat.i(26673);
-    if (this.vwP.equals("speex")) {
-      this.vwO.Et();
+    AppMethodBeat.i(30366);
+    if (this.omm.equals("speex")) {
+      this.oml.Ob();
     }
     for (;;)
     {
-      if (this.gaP != null) {
-        this.gaP.Mh();
+      if (this.hDB != null) {
+        this.hDB.XF();
       }
-      AppMethodBeat.o(26673);
+      AppMethodBeat.o(30366);
       return;
-      this.mwV.Et();
+      this.omk.Ob();
     }
   }
   
-  public final void dhM()
+  public final void bSc()
   {
-    AppMethodBeat.i(26671);
-    if (!this.mwK)
+    AppMethodBeat.i(30364);
+    if (!this.omf)
     {
-      AppMethodBeat.o(26671);
+      AppMethodBeat.o(30364);
       return;
     }
-    if (!this.mwL) {
-      bxx();
+    if (!this.omh) {
+      bSe();
     }
-    AppMethodBeat.o(26671);
+    AppMethodBeat.o(30364);
   }
   
-  public final String dhN()
+  public final String bSd()
   {
-    AppMethodBeat.i(26672);
-    if (e.cN(this.path))
+    AppMethodBeat.i(30365);
+    if (i.eK(this.path))
     {
       String str = this.path;
-      AppMethodBeat.o(26672);
+      AppMethodBeat.o(30365);
       return str;
     }
-    AppMethodBeat.o(26672);
+    AppMethodBeat.o(30365);
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.k
  * JD-Core Version:    0.7.0.1
  */

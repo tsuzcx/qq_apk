@@ -7,14 +7,14 @@ final class o$5
 {
   public final void run()
   {
-    AppMethodBeat.i(78771);
+    AppMethodBeat.i(151114);
     o.run(1005);
-    AppMethodBeat.o(78771);
+    AppMethodBeat.o(151114);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelstat.o.5
  * JD-Core Version:    0.7.0.1
  */

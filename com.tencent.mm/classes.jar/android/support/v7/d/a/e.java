@@ -8,8 +8,8 @@ import android.util.StateSet;
 class e
   extends b
 {
-  private a Te;
-  private boolean nP;
+  private a aah;
+  private boolean uq;
   
   e()
   {
@@ -28,7 +28,7 @@ class e
   {
     super.a(paramb);
     if ((paramb instanceof a)) {
-      this.Te = ((a)paramb);
+      this.aah = ((a)paramb);
     }
   }
   
@@ -38,9 +38,9 @@ class e
     onStateChange(getState());
   }
   
-  a fn()
+  a gJ()
   {
-    return new a(this.Te, this, null);
+    return new a(this.aah, this, null);
   }
   
   public boolean isStateful()
@@ -50,10 +50,10 @@ class e
   
   public Drawable mutate()
   {
-    if ((!this.nP) && (super.mutate() == this))
+    if ((!this.uq) && (super.mutate() == this))
     {
-      this.Te.fp();
-      this.nP = true;
+      this.aah.gL();
+      this.uq = true;
     }
     return this;
   }
@@ -61,10 +61,10 @@ class e
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
     boolean bool = super.onStateChange(paramArrayOfInt);
-    int j = this.Te.h(paramArrayOfInt);
+    int j = this.aah.h(paramArrayOfInt);
     int i = j;
     if (j < 0) {
-      i = this.Te.h(StateSet.WILD_CARD);
+      i = this.aah.h(StateSet.WILD_CARD);
     }
     return (selectDrawable(i)) || (bool);
   }
@@ -72,48 +72,48 @@ class e
   static class a
     extends b.b
   {
-    int[][] Tf;
+    int[][] aai;
     
     a(a parama, e parame, Resources paramResources)
     {
       super(parame, paramResources);
       if (parama != null)
       {
-        this.Tf = parama.Tf;
+        this.aai = parama.aai;
         return;
       }
-      this.Tf = new int[this.Sx.length][];
+      this.aai = new int[this.ZA.length][];
     }
     
-    void fp()
+    void gL()
     {
-      int[][] arrayOfInt1 = new int[this.Tf.length][];
-      int i = this.Tf.length - 1;
+      int[][] arrayOfInt1 = new int[this.aai.length][];
+      int i = this.aai.length - 1;
       if (i >= 0)
       {
-        if (this.Tf[i] != null) {}
-        for (int[] arrayOfInt = (int[])this.Tf[i].clone();; arrayOfInt = null)
+        if (this.aai[i] != null) {}
+        for (int[] arrayOfInt = (int[])this.aai[i].clone();; arrayOfInt = null)
         {
           arrayOfInt1[i] = arrayOfInt;
           i -= 1;
           break;
         }
       }
-      this.Tf = arrayOfInt1;
+      this.aai = arrayOfInt1;
     }
     
     public final void growArray(int paramInt1, int paramInt2)
     {
       super.growArray(paramInt1, paramInt2);
       int[][] arrayOfInt = new int[paramInt2][];
-      System.arraycopy(this.Tf, 0, arrayOfInt, 0, paramInt1);
-      this.Tf = arrayOfInt;
+      System.arraycopy(this.aai, 0, arrayOfInt, 0, paramInt1);
+      this.aai = arrayOfInt;
     }
     
     final int h(int[] paramArrayOfInt)
     {
-      int[][] arrayOfInt = this.Tf;
-      int j = this.Sy;
+      int[][] arrayOfInt = this.aai;
+      int j = this.ZB;
       int i = 0;
       while (i < j)
       {

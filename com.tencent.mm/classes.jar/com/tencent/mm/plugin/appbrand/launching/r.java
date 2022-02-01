@@ -1,54 +1,65 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a.a;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionModuleInfo;
-import com.tencent.mm.plugin.appbrand.s.j;
-import com.tencent.mm.protocal.protobuf.ast;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mm.g.c.ba;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
-class r
-  implements n
+public final class r
+  extends ba
 {
-  final String appId;
-  final int cxS;
-  final int hcr;
-  final String hiw;
-  final String hkj;
-  final int iln;
-  final int ilo;
-  private final AtomicInteger ilp;
-  private volatile boolean ilq;
-  final List<WxaAttributes.WxaVersionModuleInfo> moduleList;
+  static final String[] iLd;
+  static final c.a iMP;
   
-  r(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, int paramInt4, String paramString3, List<WxaAttributes.WxaVersionModuleInfo> paramList)
+  static
   {
-    AppMethodBeat.i(131836);
-    this.ilp = new AtomicInteger(0);
-    this.ilq = false;
-    this.appId = paramString1;
-    this.hcr = paramInt1;
-    this.hiw = paramString2;
-    this.cxS = paramInt2;
-    this.iln = paramInt3;
-    this.ilo = paramInt4;
-    this.hkj = paramString3;
-    this.moduleList = paramList;
-    AppMethodBeat.o(131836);
+    int i = 0;
+    AppMethodBeat.i(146064);
+    iLd = new String[] { "appId", "versionType" };
+    Object localObject1 = new c.a();
+    ((c.a)localObject1).EYt = new Field[3];
+    ((c.a)localObject1).columns = new String[4];
+    Object localObject2 = new StringBuilder();
+    ((c.a)localObject1).columns[0] = "appId";
+    ((c.a)localObject1).EYv.put("appId", "TEXT");
+    ((StringBuilder)localObject2).append(" appId TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[1] = "versionType";
+    ((c.a)localObject1).EYv.put("versionType", "INTEGER");
+    ((StringBuilder)localObject2).append(" versionType INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[2] = "extJson";
+    ((c.a)localObject1).EYv.put("extJson", "TEXT");
+    ((StringBuilder)localObject2).append(" extJson TEXT");
+    ((c.a)localObject1).columns[3] = "rowid";
+    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
+    iMP = (c.a)localObject1;
+    localObject1 = " PRIMARY KEY (";
+    localObject2 = iLd;
+    int j = localObject2.length;
+    while (i < j)
+    {
+      localObject3 = localObject2[i];
+      localObject1 = (String)localObject1 + ", " + (String)localObject3;
+      i += 1;
+    }
+    localObject1 = ((String)localObject1).replaceFirst(",", "");
+    localObject1 = (String)localObject1 + " )";
+    localObject2 = new StringBuilder();
+    Object localObject3 = iMP;
+    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
+    AppMethodBeat.o(146064);
   }
   
-  public void aGL() {}
-  
-  public void aGQ() {}
-  
-  public void onDownloadProgress(int paramInt) {}
+  public final c.a getDBInfo()
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.r
  * JD-Core Version:    0.7.0.1
  */

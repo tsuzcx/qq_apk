@@ -49,7 +49,7 @@ public final class SlookAirButtonRecentMediaAdapter
   
   public SlookAirButtonRecentMediaAdapter(View paramView, Bundle paramBundle)
   {
-    AppMethodBeat.i(117221);
+    AppMethodBeat.i(76263);
     this.mMaxCount = 15;
     this.mData = new ArrayList();
     this.mSlook = new Slook();
@@ -60,12 +60,12 @@ public final class SlookAirButtonRecentMediaAdapter
     if ((paramView == null) && (paramBundle == null))
     {
       paramView = new IllegalArgumentException("You should set the View and Bundle in Param");
-      AppMethodBeat.o(117221);
+      AppMethodBeat.o(76263);
       throw paramView;
     }
     if (!isSupport(1))
     {
-      AppMethodBeat.o(117221);
+      AppMethodBeat.o(76263);
       return;
     }
     this.mFilter = getFilter(paramBundle);
@@ -76,12 +76,12 @@ public final class SlookAirButtonRecentMediaAdapter
       this.mMaxCount = SlookResourceManager.getInt(3);
       setEmptyText(SlookResourceManager.getText(this.mContext, 1));
     }
-    AppMethodBeat.o(117221);
+    AppMethodBeat.o(76263);
   }
   
   private Drawable getAudioDrawable(String paramString)
   {
-    AppMethodBeat.i(117224);
+    AppMethodBeat.i(76266);
     paramString = Bitmap.createBitmap(200, 200, Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(paramString);
     int i = SlookResourceManager.getDrawableId(2);
@@ -90,13 +90,13 @@ public final class SlookAirButtonRecentMediaAdapter
     localCanvas.drawColor(-2236963, PorterDuff.Mode.SRC);
     localDrawable.draw(localCanvas);
     paramString = new BitmapDrawable(this.mContext.getResources(), paramString);
-    AppMethodBeat.o(117224);
+    AppMethodBeat.o(76266);
     return paramString;
   }
   
   private String getFilter(Bundle paramBundle)
   {
-    AppMethodBeat.i(117226);
+    AppMethodBeat.i(76268);
     int i = 0;
     StringBuilder localStringBuilder = new StringBuilder();
     if ((paramBundle == null) || (paramBundle.getBoolean("image")))
@@ -131,20 +131,20 @@ public final class SlookAirButtonRecentMediaAdapter
     paramBundle = localStringBuilder.toString();
     if ((paramBundle == null) || (paramBundle.length() <= 0))
     {
-      AppMethodBeat.o(117226);
+      AppMethodBeat.o(76268);
       return null;
     }
-    AppMethodBeat.o(117226);
+    AppMethodBeat.o(76268);
     return paramBundle;
   }
   
   private Drawable getThumbNail(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    AppMethodBeat.i(117223);
+    AppMethodBeat.i(76265);
     switch (paramInt2)
     {
     default: 
-      AppMethodBeat.o(117223);
+      AppMethodBeat.o(76265);
       return null;
     case 1: 
       paramString = new BitmapFactory.Options();
@@ -163,16 +163,16 @@ public final class SlookAirButtonRecentMediaAdapter
     }
     for (;;)
     {
-      AppMethodBeat.o(117223);
+      AppMethodBeat.o(76265);
       return paramString;
       paramString = new BitmapDrawable(this.mContext.getResources(), paramString);
       continue;
       paramString = MediaStore.Video.Thumbnails.getThumbnail(this.mContext.getContentResolver(), paramInt1, 3, null);
       paramString = new BitmapDrawable(this.mContext.getResources(), paramString);
-      AppMethodBeat.o(117223);
+      AppMethodBeat.o(76265);
       return paramString;
       paramString = getAudioDrawable(paramString);
-      AppMethodBeat.o(117223);
+      AppMethodBeat.o(76265);
       return paramString;
       paramString = null;
     }
@@ -180,35 +180,35 @@ public final class SlookAirButtonRecentMediaAdapter
   
   private Uri getUri(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(117225);
+    AppMethodBeat.i(76267);
     switch (paramInt2)
     {
     default: 
-      AppMethodBeat.o(117225);
+      AppMethodBeat.o(76267);
       return null;
     case 1: 
       localUri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, paramInt1);
-      AppMethodBeat.o(117225);
+      AppMethodBeat.o(76267);
       return localUri;
     case 3: 
       localUri = ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, paramInt1);
-      AppMethodBeat.o(117225);
+      AppMethodBeat.o(76267);
       return localUri;
     }
     Uri localUri = ContentUris.withAppendedId(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, paramInt1);
-    AppMethodBeat.o(117225);
+    AppMethodBeat.o(76267);
     return localUri;
   }
   
   private boolean isSupport(int paramInt)
   {
-    AppMethodBeat.i(117231);
+    AppMethodBeat.i(76273);
     if (this.mSlook.isFeatureEnabled(1))
     {
-      AppMethodBeat.o(117231);
+      AppMethodBeat.o(76273);
       return true;
     }
-    AppMethodBeat.o(117231);
+    AppMethodBeat.o(76273);
     return false;
   }
   
@@ -388,47 +388,47 @@ public final class SlookAirButtonRecentMediaAdapter
   
   public final SlookAirButtonAdapter.AirButtonItem getItem(int paramInt)
   {
-    AppMethodBeat.i(117222);
+    AppMethodBeat.i(76264);
     Object localObject = (Bundle)this.mData.get(paramInt);
     paramInt = ((Bundle)localObject).getInt("id");
     int i = ((Bundle)localObject).getInt("mime_type");
     localObject = new SlookAirButtonAdapter.AirButtonItem(getThumbNail(paramInt, i, ((Bundle)localObject).getString("title"), ((Bundle)localObject).getInt("orientation")), null, getUri(paramInt, i));
-    AppMethodBeat.o(117222);
+    AppMethodBeat.o(76264);
     return localObject;
   }
   
   public final void onDismiss(View paramView)
   {
-    AppMethodBeat.i(117229);
+    AppMethodBeat.i(76271);
     this.mIsShowing = false;
     this.mNeedUpdate = true;
     this.mData.clear();
     super.onDismiss(paramView);
-    AppMethodBeat.o(117229);
+    AppMethodBeat.o(76271);
   }
   
   public final void onHide(View paramView)
   {
-    AppMethodBeat.i(117228);
+    AppMethodBeat.i(76270);
     this.mIsShowing = false;
     this.mNeedUpdate = true;
     this.mData.clear();
     super.onHide(paramView);
-    AppMethodBeat.o(117228);
+    AppMethodBeat.o(76270);
   }
   
   public final void onShow(View paramView)
   {
-    AppMethodBeat.i(117227);
+    AppMethodBeat.i(76269);
     updateData();
     this.mIsShowing = true;
     super.onShow(paramView);
-    AppMethodBeat.o(117227);
+    AppMethodBeat.o(76269);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.samsung.android.sdk.look.airbutton.SlookAirButtonRecentMediaAdapter
  * JD-Core Version:    0.7.0.1
  */

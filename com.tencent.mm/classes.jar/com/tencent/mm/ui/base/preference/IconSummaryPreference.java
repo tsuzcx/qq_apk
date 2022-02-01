@@ -11,30 +11,30 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
 
 public class IconSummaryPreference
   extends Preference
 {
+  private int FGP;
+  private Bitmap FKj;
+  RelativeLayout.LayoutParams GeC;
+  private int GeH;
+  private View GeJ;
+  private int GeT;
+  private TextView GeU;
+  private int GeV;
+  private int Gev;
+  private int Gew;
+  private ViewGroup Gey;
   private Context context;
   private Drawable drawable;
   private int height;
-  private ImageView oyN;
-  private String pAS;
-  private int qGe;
-  public int qGf;
-  private int yUb;
-  private Bitmap yXe;
-  private int zqM;
-  private int zqN;
-  private ViewGroup zqP;
-  RelativeLayout.LayoutParams zqS;
-  private int zqX;
-  private View zqZ;
-  private int zri;
-  private TextView zrj;
-  private int zrk;
+  private ImageView tto;
+  private String uCA;
+  private int wey;
+  public int wez;
   
   public IconSummaryPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,48 +44,48 @@ public class IconSummaryPreference
   public IconSummaryPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107183);
-    this.pAS = "";
-    this.qGe = -1;
-    this.qGf = 8;
-    this.yXe = null;
-    this.yUb = -1;
-    this.zqX = 8;
-    this.zqM = 0;
-    this.zqN = 8;
-    this.zri = 8;
-    this.oyN = null;
-    this.zqP = null;
-    this.zqZ = null;
-    this.zrj = null;
-    this.zrk = -1;
+    AppMethodBeat.i(142560);
+    this.uCA = "";
+    this.wey = -1;
+    this.wez = 8;
+    this.FKj = null;
+    this.FGP = -1;
+    this.GeH = 8;
+    this.Gev = 0;
+    this.Gew = 8;
+    this.GeT = 8;
+    this.tto = null;
+    this.Gey = null;
+    this.GeJ = null;
+    this.GeU = null;
+    this.GeV = -1;
     this.height = -1;
     this.context = paramContext;
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(107183);
+    setLayoutResource(2131494804);
+    AppMethodBeat.o(142560);
   }
   
-  public final void atA(String paramString)
+  public final void aKn(String paramString)
   {
-    this.pAS = paramString;
-    this.qGe = 2130839787;
+    this.uCA = paramString;
+    this.wey = 2131233430;
   }
   
-  public final void dEL()
+  public final void eTB()
   {
-    AppMethodBeat.i(107187);
-    this.zri = 0;
-    if (this.zrj != null) {
-      this.zrj.setVisibility(this.zri);
+    AppMethodBeat.i(142564);
+    this.GeT = 0;
+    if (this.GeU != null) {
+      this.GeU.setVisibility(this.GeT);
     }
-    AppMethodBeat.o(107187);
+    AppMethodBeat.o(142564);
   }
   
   protected final void onBindView(View paramView)
   {
-    AppMethodBeat.i(107188);
+    AppMethodBeat.i(142565);
     super.onBindView(paramView);
-    Object localObject = (ImageView)paramView.findViewById(2131822243);
+    Object localObject = (ImageView)paramView.findViewById(2131300943);
     if (localObject != null)
     {
       ((ImageView)localObject).setVisibility(8);
@@ -97,109 +97,109 @@ public class IconSummaryPreference
     }
     else
     {
-      localObject = (LinearLayout)paramView.findViewById(2131822408);
+      localObject = (LinearLayout)paramView.findViewById(2131302326);
       if (this.height != -1) {
         ((LinearLayout)localObject).setMinimumHeight(this.height);
       }
-      localObject = (TextView)paramView.findViewById(2131822409);
+      localObject = (TextView)paramView.findViewById(2131305745);
       if (localObject != null)
       {
-        ((TextView)localObject).setVisibility(this.qGf);
-        ((TextView)localObject).setText(this.pAS);
-        if (this.qGe != -1) {
-          ((TextView)localObject).setBackgroundDrawable(a.k(this.context, this.qGe));
+        ((TextView)localObject).setVisibility(this.wez);
+        ((TextView)localObject).setText(this.uCA);
+        if (this.wey != -1) {
+          ((TextView)localObject).setBackgroundDrawable(a.l(this.context, this.wey));
         }
       }
-      if (this.oyN == null) {
-        this.oyN = ((ImageView)paramView.findViewById(2131822413));
+      if (this.tto == null) {
+        this.tto = ((ImageView)paramView.findViewById(2131300959));
       }
-      if (this.zqP == null) {
-        this.zqP = ((ViewGroup)paramView.findViewById(2131822412));
+      if (this.Gey == null) {
+        this.Gey = ((ViewGroup)paramView.findViewById(2131304191));
       }
-      if (this.zqZ == null) {
-        this.zqZ = paramView.findViewById(2131822414);
+      if (this.GeJ == null) {
+        this.GeJ = paramView.findViewById(2131304190);
       }
-      this.zqZ.setVisibility(this.zqN);
-      if (this.yXe == null) {
+      this.GeJ.setVisibility(this.Gew);
+      if (this.FKj == null) {
         break label425;
       }
-      this.oyN.setImageBitmap(this.yXe);
+      this.tto.setImageBitmap(this.FKj);
     }
     for (;;)
     {
-      this.oyN.setVisibility(this.zqX);
-      this.zqP.setVisibility(this.zqM);
-      if (this.zqS != null) {
-        this.oyN.setLayoutParams(this.zqS);
+      this.tto.setVisibility(this.GeH);
+      this.Gey.setVisibility(this.Gev);
+      if (this.GeC != null) {
+        this.tto.setLayoutParams(this.GeC);
       }
-      this.zrj = ((TextView)paramView.findViewById(2131826217));
-      if ((this.zrj != null) && (getSummary() != null) && (getSummary().length() > 0))
+      this.GeU = ((TextView)paramView.findViewById(2131304197));
+      if ((this.GeU != null) && (getSummary() != null) && (getSummary().length() > 0))
       {
-        this.zrj.setText(getSummary());
-        this.zrj.setVisibility(this.zri);
+        this.GeU.setText(getSummary());
+        this.GeU.setVisibility(this.GeT);
       }
-      if ((this.zrj != null) && (this.zrk != -1))
+      if ((this.GeU != null) && (this.GeV != -1))
       {
-        this.zrj.setCompoundDrawablesWithIntrinsicBounds(this.zrk, 0, 0, 0);
-        int i = BackwardSupportUtil.b.b(this.mContext, 2.0F);
-        this.zrj.setCompoundDrawablePadding(i);
-        this.zrj.setVisibility(this.zri);
+        this.GeU.setCompoundDrawablesWithIntrinsicBounds(this.GeV, 0, 0, 0);
+        int i = BackwardSupportUtil.b.g(this.mContext, 2.0F);
+        this.GeU.setCompoundDrawablePadding(i);
+        this.GeU.setVisibility(this.GeT);
       }
-      AppMethodBeat.o(107188);
+      AppMethodBeat.o(142565);
       return;
-      if (this.la != null)
+      if (this.Uy != null)
       {
-        ((ImageView)localObject).setImageDrawable(this.la);
+        ((ImageView)localObject).setImageDrawable(this.Uy);
         ((ImageView)localObject).setVisibility(0);
         break;
       }
-      if (this.UM == 0) {
+      if (this.abP == 0) {
         break;
       }
-      ((ImageView)localObject).setImageResource(this.UM);
+      ((ImageView)localObject).setImageResource(this.abP);
       ((ImageView)localObject).setVisibility(0);
       break;
       label425:
-      if (this.yUb != -1) {
-        this.oyN.setImageResource(this.yUb);
+      if (this.FGP != -1) {
+        this.tto.setImageResource(this.FGP);
       }
     }
   }
   
   protected View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107184);
+    AppMethodBeat.i(142561);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2130970204, localViewGroup);
-    AppMethodBeat.o(107184);
+    View.inflate(this.mContext, 2131494830, localViewGroup);
+    AppMethodBeat.o(142561);
     return paramViewGroup;
   }
   
   public final void setSummary(int paramInt)
   {
-    AppMethodBeat.i(107186);
+    AppMethodBeat.i(142563);
     super.setSummary(paramInt);
-    if ((this.zrj != null) && (getSummary() != null) && (getSummary().length() > 0)) {
-      this.zrj.setText(getSummary());
+    if ((this.GeU != null) && (getSummary() != null) && (getSummary().length() > 0)) {
+      this.GeU.setText(getSummary());
     }
-    AppMethodBeat.o(107186);
+    AppMethodBeat.o(142563);
   }
   
   public final void setSummary(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(107185);
+    AppMethodBeat.i(142562);
     super.setSummary(paramCharSequence);
-    if ((this.zrj != null) && (getSummary() != null) && (getSummary().length() > 0)) {
-      this.zrj.setText(getSummary());
+    if ((this.GeU != null) && (getSummary() != null) && (getSummary().length() > 0)) {
+      this.GeU.setText(getSummary());
     }
-    AppMethodBeat.o(107185);
+    AppMethodBeat.o(142562);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.IconSummaryPreference
  * JD-Core Version:    0.7.0.1
  */

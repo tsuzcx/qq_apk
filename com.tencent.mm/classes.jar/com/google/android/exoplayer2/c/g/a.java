@@ -1,171 +1,153 @@
 package com.google.android.exoplayer2.c.g;
 
-import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.c.e;
 import com.google.android.exoplayer2.c.f;
 import com.google.android.exoplayer2.c.g;
 import com.google.android.exoplayer2.c.h;
 import com.google.android.exoplayer2.c.k;
-import com.google.android.exoplayer2.c.l;
+import com.google.android.exoplayer2.c.l.a;
+import com.google.android.exoplayer2.i.m;
 import com.google.android.exoplayer2.i.x;
-import com.google.android.exoplayer2.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
-  implements e, l
+  implements e
 {
-  public static final h aBP;
-  private g aBV;
-  private com.google.android.exoplayer2.c.m aEe;
-  private b aMw;
-  private int aMx;
-  private int aMy;
+  public static final h aXh;
+  private static final int bfm;
+  private final long bfn;
+  private final b bfo;
+  private final m bfp;
+  private boolean bfq;
   
   static
   {
-    AppMethodBeat.i(95189);
-    aBP = new a.1();
-    AppMethodBeat.o(95189);
+    AppMethodBeat.i(92196);
+    aXh = new h()
+    {
+      public final e[] sK()
+      {
+        AppMethodBeat.i(92190);
+        a locala = new a();
+        AppMethodBeat.o(92190);
+        return new e[] { locala };
+      }
+    };
+    bfm = x.aY("ID3");
+    AppMethodBeat.o(92196);
   }
   
-  public final long E(long paramLong)
+  public a()
   {
-    AppMethodBeat.i(95188);
-    b localb = this.aMw;
-    paramLong = Math.min(localb.aMz * paramLong / 1000000L / localb.aMA * localb.aMA, localb.dataSize - localb.aMA);
-    long l = localb.aMC;
-    AppMethodBeat.o(95188);
-    return l + paramLong;
+    this(0L);
+  }
+  
+  public a(long paramLong)
+  {
+    AppMethodBeat.i(92191);
+    this.bfn = paramLong;
+    this.bfo = new b();
+    this.bfp = new m(2786);
+    AppMethodBeat.o(92191);
   }
   
   public final int a(f paramf, k paramk)
   {
-    AppMethodBeat.i(95187);
-    if (this.aMw == null)
-    {
-      this.aMw = c.m(paramf);
-      if (this.aMw == null)
-      {
-        paramf = new o("Unsupported or unrecognized wav header.");
-        AppMethodBeat.o(95187);
-        throw paramf;
-      }
-      paramk = this.aMw;
-      i = paramk.azR;
-      j = paramk.aMB;
-      paramk = Format.a(null, "audio/raw", paramk.aAg * (i * j), 32768, this.aMw.aAg, this.aMw.azR, this.aMw.encoding, null, null, 0, null);
-      this.aEe.f(paramk);
-      this.aMx = this.aMw.aMA;
-    }
-    paramk = this.aMw;
-    b localb;
-    com.google.android.exoplayer2.i.m localm;
-    long l1;
-    if ((paramk.aMC != 0L) && (paramk.dataSize != 0L))
-    {
-      i = 1;
-      if (i == 0)
-      {
-        localb = this.aMw;
-        com.google.android.exoplayer2.i.a.checkNotNull(paramf);
-        com.google.android.exoplayer2.i.a.checkNotNull(localb);
-        paramf.nW();
-        localm = new com.google.android.exoplayer2.i.m(8);
-      }
-    }
-    else
-    {
-      for (paramk = c.a.a(paramf, localm);; paramk = c.a.a(paramf, localm))
-      {
-        if (paramk.id == x.aS("data")) {
-          break label317;
-        }
-        new StringBuilder("Ignoring unknown WAV chunk: ").append(paramk.id);
-        l1 = 8L + paramk.size;
-        if (paramk.id == x.aS("RIFF")) {
-          l1 = 12L;
-        }
-        if (l1 > 2147483647L)
-        {
-          paramf = new o("Chunk is too large (~2GB+) to skip; id: " + paramk.id);
-          AppMethodBeat.o(95187);
-          throw paramf;
-          i = 0;
-          break;
-        }
-        paramf.dg((int)l1);
-      }
-      label317:
-      paramf.dg(8);
-      l1 = paramf.getPosition();
-      long l2 = paramk.size;
-      localb.aMC = l1;
-      localb.dataSize = l2;
-      this.aBV.a(this);
-    }
-    int i = this.aEe.a(paramf, 32768 - this.aMy, true);
-    if (i != -1) {
-      this.aMy += i;
-    }
-    int j = this.aMy / this.aMx;
-    if (j > 0)
-    {
-      paramk = this.aMw;
-      l1 = (paramf.getPosition() - this.aMy) * 1000000L / paramk.aMz;
-      j *= this.aMx;
-      this.aMy -= j;
-      this.aEe.a(l1, 1, j, this.aMy, null);
-    }
+    AppMethodBeat.i(92195);
+    int i = paramf.read(this.bfp.data, 0, 2786);
     if (i == -1)
     {
-      AppMethodBeat.o(95187);
+      AppMethodBeat.o(92195);
       return -1;
     }
-    AppMethodBeat.o(95187);
+    this.bfp.setPosition(0);
+    this.bfp.fk(i);
+    if (!this.bfq)
+    {
+      this.bfo.timeUs = this.bfn;
+      this.bfq = true;
+    }
+    this.bfo.t(this.bfp);
+    AppMethodBeat.o(92195);
     return 0;
   }
   
   public final void a(g paramg)
   {
-    AppMethodBeat.i(95186);
-    this.aBV = paramg;
-    this.aEe = paramg.dm(0);
-    this.aMw = null;
-    paramg.nZ();
-    AppMethodBeat.o(95186);
+    AppMethodBeat.i(92193);
+    this.bfo.a(paramg, new v.d(0, 1));
+    paramg.sL();
+    paramg.a(new l.a(-9223372036854775807L));
+    AppMethodBeat.o(92193);
   }
   
   public final boolean a(f paramf)
   {
-    AppMethodBeat.i(95185);
-    if (c.m(paramf) != null)
+    AppMethodBeat.i(92192);
+    m localm = new m(10);
+    int i = 0;
+    for (;;)
     {
-      AppMethodBeat.o(95185);
-      return true;
+      paramf.b(localm.data, 0, 10);
+      localm.setPosition(0);
+      if (localm.vL() != bfm) {
+        break;
+      }
+      localm.fl(3);
+      j = localm.vP();
+      i += j + 10;
+      paramf.dS(j);
     }
-    AppMethodBeat.o(95185);
-    return false;
+    paramf.sI();
+    paramf.dS(i);
+    int j = 0;
+    int k = i;
+    for (;;)
+    {
+      paramf.b(localm.data, 0, 5);
+      localm.setPosition(0);
+      if (localm.readUnsignedShort() != 2935)
+      {
+        paramf.sI();
+        k += 1;
+        if (k - i >= 8192)
+        {
+          AppMethodBeat.o(92192);
+          return false;
+        }
+        paramf.dS(k);
+        j = 0;
+      }
+      else
+      {
+        j += 1;
+        if (j >= 4)
+        {
+          AppMethodBeat.o(92192);
+          return true;
+        }
+        int m = com.google.android.exoplayer2.a.a.n(localm.data);
+        if (m == -1)
+        {
+          AppMethodBeat.o(92192);
+          return false;
+        }
+        paramf.dS(m - 5);
+      }
+    }
   }
   
-  public final void g(long paramLong1, long paramLong2)
+  public final void f(long paramLong1, long paramLong2)
   {
-    this.aMy = 0;
-  }
-  
-  public final long getDurationUs()
-  {
-    b localb = this.aMw;
-    return localb.dataSize / localb.aMA * 1000000L / localb.azR;
-  }
-  
-  public final boolean nV()
-  {
-    return true;
+    AppMethodBeat.i(92194);
+    this.bfq = false;
+    this.bfo.sX();
+    AppMethodBeat.o(92194);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.c.g.a
  * JD-Core Version:    0.7.0.1
  */

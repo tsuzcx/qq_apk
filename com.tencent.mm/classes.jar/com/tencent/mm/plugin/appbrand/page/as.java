@@ -1,15 +1,8 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.view.ViewGroup;
-
 public abstract interface as
-  extends ab.b, ag, aj
 {
-  public abstract void a(an paraman);
-  
-  public abstract ViewGroup getContainer();
-  
-  public abstract void setupWebViewTouchInterceptor(ap paramap);
+  public abstract void d(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

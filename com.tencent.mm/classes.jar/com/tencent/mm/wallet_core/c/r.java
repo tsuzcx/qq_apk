@@ -1,83 +1,168 @@
 package com.tencent.mm.wallet_core.c;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.wallet_core.model.m;
-import com.tencent.mm.protocal.protobuf.blq;
-import com.tencent.mm.protocal.protobuf.blr;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h;
+import java.lang.ref.WeakReference;
+import junit.framework.Assert;
 
-public final class r
-  extends u
+public abstract class r
+  extends n
+  implements k
 {
-  private f callback;
-  private com.tencent.mm.ai.b rr;
+  private static final String IdN = aj.getResources().getString(2131765901);
+  protected int IdO = 0;
+  protected String IdP;
+  private WeakReference<MMActivity> aLG;
+  protected g callback;
+  protected int errCode = 0;
+  protected String errMsg;
+  protected int errType = 0;
+  protected boolean nUQ = true;
+  protected boolean nUR = false;
+  protected b rr;
   
-  public r(String paramString)
+  public final r a(a parama)
   {
-    this(paramString, null, null, -1, -1, -1);
+    if ((!this.nUQ) && (!this.nUR)) {
+      parama.d(this.errCode, this.errType, this.errMsg, this);
+    }
+    return this;
   }
   
-  public r(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
+  public final r b(a parama)
   {
-    AppMethodBeat.i(49074);
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new blq();
-    ((b.a)localObject).fsY = new blr();
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/paysubscribe";
-    ((b.a)localObject).funcId = 421;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    ((b.a)localObject).routeInfo = com.tencent.mm.wallet_core.ui.e.awk(paramString2);
-    this.rr = ((b.a)localObject).ado();
-    localObject = (blq)this.rr.fsV.fta;
-    ((blq)localObject).xAn = paramString1;
-    ((blq)localObject).wDH = m.cTC();
-    ((blq)localObject).xAo = paramString3;
-    if (!bo.isNullOrNil(paramString2)) {
-      ((blq)localObject).xAp = new com.tencent.mm.bv.b(paramString2.getBytes());
+    if (this.nUR) {
+      parama.d(this.errCode, this.errType, this.errMsg, this);
     }
-    if (paramInt1 >= 0) {
-      ((blq)localObject).wDC = paramInt1;
-    }
-    if (paramInt2 >= 0) {
-      ((blq)localObject).wkX = paramInt2;
-    }
-    if (paramInt3 >= 0) {
-      ((blq)localObject).xAq = paramInt3;
-    }
-    AppMethodBeat.o(49074);
+    return this;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  protected abstract void b(int paramInt1, int paramInt2, String paramString, q paramq);
+  
+  public boolean bOO()
   {
-    AppMethodBeat.i(49075);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(49075);
-    return i;
+    return false;
   }
   
-  public final int getType()
+  public final r c(a parama)
   {
-    return 421;
+    if (this.nUQ) {
+      parama.d(this.errCode, this.errType, this.errMsg, this);
+    }
+    return this;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  public boolean djn()
   {
-    AppMethodBeat.i(142656);
-    ab.d("MicroMsg.NetScenePaySubscribe", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(142656);
+    return true;
+  }
+  
+  public boolean djo()
+  {
+    return true;
+  }
+  
+  public int doScene(e parame, g paramg)
+  {
+    this.callback = paramg;
+    Assert.assertNotNull("rr can't be null!", this.rr);
+    return dispatch(parame, this.rr, this);
+  }
+  
+  protected abstract void e(q paramq);
+  
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, final String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      this.nUQ = false;
+    }
+    if (!this.nUQ)
+    {
+      e(paramq);
+      if (this.IdO != 0) {
+        this.nUR = true;
+      }
+    }
+    this.errCode = paramInt3;
+    this.errType = paramInt2;
+    this.errMsg = paramString;
+    ad.i("MicroMsg.NetSceneNewPayBase", "errType: %s, errCode: %s, errMsg: %s, retCode: %s, retMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(this.IdO), this.IdP });
+    b(paramInt2, paramInt3, paramString, paramq);
+    if (this.aLG != null)
+    {
+      paramString = (MMActivity)this.aLG.get();
+      if (paramString != null)
+      {
+        if (!this.nUQ) {
+          break label171;
+        }
+        ad.w("MicroMsg.NetSceneNewPayBase", "show net error alert");
+      }
+    }
+    label171:
+    do
+    {
+      h.a(paramString, IdN, null, false, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(72792);
+          paramString.finish();
+          AppMethodBeat.o(72792);
+        }
+      });
+      do
+      {
+        return;
+      } while ((!this.nUR) || (bt.isNullOrNil(this.IdP)));
+      if (bOO())
+      {
+        ad.w("MicroMsg.NetSceneNewPayBase", "show resp error toast");
+        Toast.makeText(paramString, this.IdP, 1).show();
+        return;
+      }
+    } while (!djo());
+    ad.w("MicroMsg.NetSceneNewPayBase", "show resp error alert");
+    h.a(paramString, this.IdP, null, false, new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(72793);
+        if (r.this.djn()) {
+          paramString.finish();
+        }
+        AppMethodBeat.o(72793);
+      }
+    });
+  }
+  
+  public final void q(MMActivity paramMMActivity)
+  {
+    this.aLG = new WeakReference(paramMMActivity);
+  }
+  
+  public static abstract interface a<T extends n>
+  {
+    public abstract void d(int paramInt1, int paramInt2, String paramString, T paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.r
  * JD-Core Version:    0.7.0.1
  */

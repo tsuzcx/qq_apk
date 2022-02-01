@@ -1,67 +1,67 @@
 package com.tencent.mm.modelcontrol;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class e
 {
-  protected String fzS;
-  protected int fzT;
-  protected int fzU;
-  protected int fzV;
-  protected int fzW;
-  protected boolean fzX;
-  protected f[] fzY;
+  protected int audioBitrate;
+  protected String hbV;
+  protected int hbW;
+  protected int hbX;
+  protected int hbY;
+  protected boolean hbZ;
+  protected f[] hca;
   
   protected final void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    AppMethodBeat.i(50617);
-    this.fzS = paramString1;
-    this.fzT = bo.getInt(paramString2, 0);
+    AppMethodBeat.i(126774);
+    this.hbV = paramString1;
+    this.audioBitrate = bt.getInt(paramString2, 0);
     int i;
-    if (this.fzT == 0)
+    if (this.audioBitrate == 0)
     {
       i = 64000;
-      this.fzT = i;
-      this.fzU = bo.getInt(paramString3, 10);
-      this.fzV = bo.getInt(paramString4, 2);
-      this.fzW = bo.getInt(paramString5, 1);
-      if (bo.getInt(paramString6, 0) <= 0) {
+      this.audioBitrate = i;
+      this.hbW = bt.getInt(paramString3, 10);
+      this.hbX = bt.getInt(paramString4, 2);
+      this.hbY = bt.getInt(paramString5, 1);
+      if (bt.getInt(paramString6, 0) <= 0) {
         break label103;
       }
     }
     label103:
     for (boolean bool = true;; bool = false)
     {
-      this.fzX = bool;
-      AppMethodBeat.o(50617);
+      this.hbZ = bool;
+      AppMethodBeat.o(126774);
       return;
-      i = this.fzT * 1000;
+      i = this.audioBitrate * 1000;
       break;
     }
   }
   
-  protected final boolean agh()
+  protected final boolean axh()
   {
-    AppMethodBeat.i(50618);
-    if (bo.isNullOrNil(this.fzS))
+    AppMethodBeat.i(126775);
+    if (bt.isNullOrNil(this.hbV))
     {
-      AppMethodBeat.o(50618);
+      AppMethodBeat.o(126775);
       return true;
     }
-    boolean bool = b.sM(this.fzS);
-    AppMethodBeat.o(50618);
+    boolean bool = b.xO(this.hbV);
+    AppMethodBeat.o(126775);
     return bool;
   }
   
-  protected final VideoTransPara agi()
+  protected final VideoTransPara axi()
   {
-    AppMethodBeat.i(50619);
+    AppMethodBeat.i(126776);
     Object localObject2 = null;
     Object localObject1 = null;
-    if (this.fzY != null)
+    if (this.hca != null)
     {
-      f[] arrayOff = this.fzY;
+      f[] arrayOff = this.hca;
       int j = arrayOff.length;
       int i = 0;
       for (;;)
@@ -75,20 +75,20 @@ public final class e
         if (localf != null)
         {
           localObject2 = localObject1;
-          if (localf.fzZ <= 0)
+          if (localf.hcb <= 0)
           {
             localObject2 = localObject1;
-            if (localf.fAa >= 0)
+            if (localf.hcc >= 0)
             {
               localObject2 = new VideoTransPara();
-              ((VideoTransPara)localObject2).width = localf.fAb;
-              ((VideoTransPara)localObject2).height = localf.fAc;
-              ((VideoTransPara)localObject2).fps = localf.fAd;
-              ((VideoTransPara)localObject2).videoBitrate = localf.fAe;
-              ((VideoTransPara)localObject2).fzU = this.fzU;
-              ((VideoTransPara)localObject2).fzT = this.fzT;
-              ((VideoTransPara)localObject2).fzV = this.fzV;
-              ((VideoTransPara)localObject2).fzW = this.fzW;
+              ((VideoTransPara)localObject2).width = localf.hcd;
+              ((VideoTransPara)localObject2).height = localf.hce;
+              ((VideoTransPara)localObject2).fps = localf.hcf;
+              ((VideoTransPara)localObject2).videoBitrate = localf.hcg;
+              ((VideoTransPara)localObject2).hbW = this.hbW;
+              ((VideoTransPara)localObject2).audioBitrate = this.audioBitrate;
+              ((VideoTransPara)localObject2).hbX = this.hbX;
+              ((VideoTransPara)localObject2).hbY = this.hbY;
             }
           }
         }
@@ -96,21 +96,47 @@ public final class e
         localObject1 = localObject2;
       }
     }
-    AppMethodBeat.o(50619);
+    AppMethodBeat.o(126776);
     return localObject2;
+  }
+  
+  protected final VideoTransPara axj()
+  {
+    double d1 = 1.0D;
+    AppMethodBeat.i(184645);
+    VideoTransPara localVideoTransPara = axi();
+    if (localVideoTransPara == null)
+    {
+      AppMethodBeat.o(184645);
+      return null;
+    }
+    if (localVideoTransPara.fps <= 0)
+    {
+      localVideoTransPara.hbW = 1;
+      AppMethodBeat.o(184645);
+      return localVideoTransPara;
+    }
+    double d2 = localVideoTransPara.hbW / localVideoTransPara.fps;
+    if (d2 < 1.0D) {}
+    for (;;)
+    {
+      localVideoTransPara.hbW = ((int)Math.ceil(d1));
+      break;
+      d1 = d2;
+    }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(50620);
-    String str = "[ busyTime " + this.fzS + " audioBitrate " + this.fzT + " iFrame " + this.fzU + " profileIndex " + this.fzV + " presetIndex " + this.fzW + " isStepBr " + this.fzX + " ]";
-    AppMethodBeat.o(50620);
+    AppMethodBeat.i(126777);
+    String str = "[ busyTime " + this.hbV + " audioBitrate " + this.audioBitrate + " iFrame " + this.hbW + " profileIndex " + this.hbX + " presetIndex " + this.hbY + " isStepBr " + this.hbZ + " ]";
+    AppMethodBeat.o(126777);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelcontrol.e
  * JD-Core Version:    0.7.0.1
  */

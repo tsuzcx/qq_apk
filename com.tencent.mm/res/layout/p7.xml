@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/ao5" style="@style/gx" />
+    <LinearLayout style="@style/go">
+        <include layout="@layout/o5" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gp">
+            <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
+            <com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiViewFrom android:id="@id/alb" android:layout_marginLeft="@dimen/a0u" android:layout_marginRight="@dimen/a0u" style="@style/hu" />
+            <FrameLayout android:id="@id/alk" android:paddingLeft="@dimen/a0u" android:paddingTop="8.0dip" android:paddingRight="@dimen/a0u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center" android:layout_gravity="start" android:orientation="horizontal" android:background="@drawable/di" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/all" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@raw/emoticonstore_capture_icon" android:layout_marginEnd="3.0dip" />
+                    <TextView android:textSize="@dimen/k4" android:textColor="@color/a_u" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ait" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

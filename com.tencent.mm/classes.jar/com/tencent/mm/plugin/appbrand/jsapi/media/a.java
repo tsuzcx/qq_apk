@@ -1,134 +1,237 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
-import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.sdk.f.c;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.f.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.InputStream;
+import org.json.JSONObject;
 
-abstract class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
+public abstract class a
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.jsapi.c>
 {
   /* Error */
-  static boolean d(String paramString, InputStream paramInputStream)
+  static boolean c(String paramString, InputStream paramInputStream)
   {
     // Byte code:
-    //   0: new 18	java/io/File
-    //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 21	java/io/File:<init>	(Ljava/lang/String;)V
-    //   8: astore_0
-    //   9: aload_0
-    //   10: invokevirtual 25	java/io/File:getParentFile	()Ljava/io/File;
-    //   13: invokevirtual 29	java/io/File:mkdirs	()Z
-    //   16: pop
-    //   17: new 31	java/io/FileOutputStream
-    //   20: dup
-    //   21: aload_0
-    //   22: invokespecial 34	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   25: astore_3
-    //   26: aload_3
-    //   27: astore_0
-    //   28: sipush 4096
-    //   31: newarray byte
-    //   33: astore 4
-    //   35: aload_3
-    //   36: astore_0
-    //   37: aload_1
-    //   38: aload 4
-    //   40: iconst_0
-    //   41: sipush 4096
-    //   44: invokevirtual 40	java/io/InputStream:read	([BII)I
-    //   47: istore_2
-    //   48: iload_2
-    //   49: iconst_m1
-    //   50: if_icmpeq +46 -> 96
-    //   53: aload_3
-    //   54: astore_0
-    //   55: aload_3
-    //   56: aload 4
-    //   58: iconst_0
-    //   59: iload_2
-    //   60: invokevirtual 44	java/io/FileOutputStream:write	([BII)V
-    //   63: goto -28 -> 35
-    //   66: astore 4
-    //   68: aload_3
-    //   69: astore_0
-    //   70: ldc 46
-    //   72: ldc 48
-    //   74: iconst_1
-    //   75: anewarray 50	java/lang/Object
-    //   78: dup
-    //   79: iconst_0
-    //   80: aload 4
-    //   82: aastore
-    //   83: invokestatic 56	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   86: aload_3
-    //   87: invokestatic 62	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   90: aload_1
-    //   91: invokestatic 62	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   94: iconst_0
-    //   95: ireturn
-    //   96: aload_3
-    //   97: astore_0
-    //   98: aload_3
-    //   99: invokevirtual 65	java/io/FileOutputStream:flush	()V
-    //   102: aload_3
-    //   103: invokestatic 62	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   106: aload_1
-    //   107: invokestatic 62	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   110: iconst_1
-    //   111: ireturn
-    //   112: astore_3
-    //   113: aconst_null
-    //   114: astore_0
-    //   115: aload_0
-    //   116: invokestatic 62	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   119: aload_1
-    //   120: invokestatic 62	com/tencent/mm/sdk/platformtools/bo:b	(Ljava/io/Closeable;)V
-    //   123: aload_3
-    //   124: athrow
-    //   125: astore_3
-    //   126: goto -11 -> 115
+    //   0: aconst_null
+    //   1: astore 6
+    //   3: aconst_null
+    //   4: astore 5
+    //   6: aload 5
+    //   8: astore 4
+    //   10: aload 6
+    //   12: astore_3
+    //   13: new 23	com/tencent/mm/vfs/e
+    //   16: dup
+    //   17: aload_0
+    //   18: invokespecial 26	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
+    //   21: astore_0
+    //   22: aload 5
+    //   24: astore 4
+    //   26: aload 6
+    //   28: astore_3
+    //   29: aload_0
+    //   30: invokevirtual 30	com/tencent/mm/vfs/e:fhT	()Lcom/tencent/mm/vfs/e;
+    //   33: invokevirtual 34	com/tencent/mm/vfs/e:mkdirs	()Z
+    //   36: pop
+    //   37: aload 5
+    //   39: astore 4
+    //   41: aload 6
+    //   43: astore_3
+    //   44: aload_0
+    //   45: invokestatic 40	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   48: astore_0
+    //   49: aload_0
+    //   50: astore 4
+    //   52: aload_0
+    //   53: astore_3
+    //   54: sipush 4096
+    //   57: newarray byte
+    //   59: astore 5
+    //   61: aload_0
+    //   62: astore 4
+    //   64: aload_0
+    //   65: astore_3
+    //   66: aload_1
+    //   67: aload 5
+    //   69: iconst_0
+    //   70: sipush 4096
+    //   73: invokevirtual 46	java/io/InputStream:read	([BII)I
+    //   76: istore_2
+    //   77: iload_2
+    //   78: iconst_m1
+    //   79: if_icmpeq +49 -> 128
+    //   82: aload_0
+    //   83: astore 4
+    //   85: aload_0
+    //   86: astore_3
+    //   87: aload_0
+    //   88: aload 5
+    //   90: iconst_0
+    //   91: iload_2
+    //   92: invokevirtual 52	java/io/OutputStream:write	([BII)V
+    //   95: goto -34 -> 61
+    //   98: astore_0
+    //   99: aload 4
+    //   101: astore_3
+    //   102: ldc 54
+    //   104: ldc 56
+    //   106: iconst_1
+    //   107: anewarray 58	java/lang/Object
+    //   110: dup
+    //   111: iconst_0
+    //   112: aload_0
+    //   113: aastore
+    //   114: invokestatic 64	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   117: aload 4
+    //   119: invokestatic 70	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   122: aload_1
+    //   123: invokestatic 70	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   126: iconst_0
+    //   127: ireturn
+    //   128: aload_0
     //   129: astore 4
-    //   131: aconst_null
+    //   131: aload_0
     //   132: astore_3
-    //   133: goto -65 -> 68
+    //   133: aload_0
+    //   134: invokevirtual 73	java/io/OutputStream:flush	()V
+    //   137: aload_0
+    //   138: invokestatic 70	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   141: aload_1
+    //   142: invokestatic 70	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   145: iconst_1
+    //   146: ireturn
+    //   147: astore_0
+    //   148: aload_3
+    //   149: invokestatic 70	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   152: aload_1
+    //   153: invokestatic 70	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   156: aload_0
+    //   157: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	136	0	paramString	String
-    //   0	136	1	paramInputStream	InputStream
-    //   47	13	2	i	int
-    //   25	78	3	localFileOutputStream	java.io.FileOutputStream
-    //   112	12	3	localObject1	Object
-    //   125	1	3	localObject2	Object
-    //   132	1	3	localObject3	Object
-    //   33	24	4	arrayOfByte	byte[]
-    //   66	15	4	localException1	java.lang.Exception
-    //   129	1	4	localException2	java.lang.Exception
+    //   0	158	0	paramString	String
+    //   0	158	1	paramInputStream	InputStream
+    //   76	16	2	i	int
+    //   12	137	3	localObject1	Object
+    //   8	122	4	localObject2	Object
+    //   4	85	5	arrayOfByte	byte[]
+    //   1	41	6	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   28	35	66	java/lang/Exception
-    //   37	48	66	java/lang/Exception
-    //   55	63	66	java/lang/Exception
-    //   98	102	66	java/lang/Exception
-    //   0	26	112	finally
-    //   28	35	125	finally
-    //   37	48	125	finally
-    //   55	63	125	finally
-    //   70	86	125	finally
-    //   98	102	125	finally
-    //   0	26	129	java/lang/Exception
+    //   13	22	98	java/lang/Exception
+    //   29	37	98	java/lang/Exception
+    //   44	49	98	java/lang/Exception
+    //   54	61	98	java/lang/Exception
+    //   66	77	98	java/lang/Exception
+    //   87	95	98	java/lang/Exception
+    //   133	137	98	java/lang/Exception
+    //   13	22	147	finally
+    //   29	37	147	finally
+    //   44	49	147	finally
+    //   54	61	147	finally
+    //   66	77	147	finally
+    //   87	95	147	finally
+    //   102	117	147	finally
+    //   133	137	147	finally
   }
   
-  abstract boolean Ck(String paramString);
+  abstract boolean In(String paramString);
   
-  abstract String Cl(String paramString);
+  abstract String Io(String paramString);
   
-  abstract void Cm(String paramString);
+  abstract void Ip(String paramString);
+  
+  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, final JSONObject paramJSONObject, final int paramInt)
+  {
+    paramJSONObject = paramJSONObject.optString("filePath", "");
+    if (bt.isNullOrNil(paramJSONObject))
+    {
+      paramc.h(paramInt, e("fail filePath invalid", null));
+      return;
+    }
+    paramJSONObject = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139864);
+        if (!paramc.isRunning())
+        {
+          AppMethodBeat.o(139864);
+          return;
+        }
+        InputStream localInputStream = paramc.Ee().ET(paramJSONObject);
+        if (localInputStream == null) {}
+        try
+        {
+          paramc.h(paramInt, a.this.e("fail file not exists", null));
+          return;
+        }
+        finally
+        {
+          String str1;
+          Object localObject2;
+          boolean bool;
+          int i;
+          a locala;
+          bt.d(localInputStream);
+          AppMethodBeat.o(139864);
+        }
+        str1 = org.apache.commons.a.c.getExtension(paramJSONObject);
+        localObject2 = d.aGE(str1);
+        if (!a.this.In((String)localObject2))
+        {
+          paramc.h(paramInt, a.this.e("fail invalid file type", null));
+          bt.d(localInputStream);
+          AppMethodBeat.o(139864);
+          return;
+        }
+        str1 = a.this.Io(str1);
+        bool = a.c(str1, localInputStream);
+        if (bool)
+        {
+          a.this.Ip(str1);
+          com.tencent.mm.sdk.f.b.k(str1, paramc.getContext());
+        }
+        localObject2 = paramc;
+        i = paramInt;
+        locala = a.this;
+        if (bool) {}
+        String str2;
+        for (str1 = "ok";; str2 = "fail")
+        {
+          ((com.tencent.mm.plugin.appbrand.jsapi.c)localObject2).h(i, locala.e(str1, null));
+          break;
+        }
+      }
+    };
+    a locala = (a)paramc.K(a.class);
+    if (locala == null)
+    {
+      ad.w("MicroMsg.AppBrand.BaseJsApiSaveToPhotosAlbum", "NULL permissionInterface with appId:%s, run directly", new Object[] { paramc.getAppId() });
+      paramJSONObject.run();
+      return;
+    }
+    locala.a(paramc.getContext(), paramJSONObject, new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(194746);
+        paramc.h(paramInt, a.this.e("fail:system permission denied", null));
+        AppMethodBeat.o(194746);
+      }
+    });
+  }
+  
+  public static abstract interface a
+    extends com.tencent.luggage.a.b
+  {
+    public abstract void a(Context paramContext, Runnable paramRunnable1, Runnable paramRunnable2);
+  }
 }
 
 

@@ -1,196 +1,193 @@
 package com.tencent.mm.u;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.api.l;
-import com.tencent.mm.bl.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cb;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.akr;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.ba;
+import com.tencent.mm.al.n;
+import com.tencent.mm.bn.a;
+import com.tencent.mm.model.ce;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.auh;
+import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.bd;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import org.apache.commons.b.f;
 
 public final class b
-  implements com.tencent.mm.ai.f
+  implements com.tencent.mm.al.g
 {
-  private List<com.tencent.mm.api.f> eyK;
-  private b.a eyL;
-  private l eyM;
+  private List<com.tencent.mm.api.h> fTp;
+  private a fTq;
+  private com.tencent.mm.api.q fTr;
   
-  public b(List<com.tencent.mm.api.f> paramList, l paraml, b.a parama)
+  public b(List<com.tencent.mm.api.h> paramList, com.tencent.mm.api.q paramq, a parama)
   {
-    AppMethodBeat.i(35449);
-    g.Rc().a(825, this);
-    this.eyM = paraml;
-    this.eyL = parama;
-    this.eyK = paramList;
-    AppMethodBeat.o(35449);
+    AppMethodBeat.i(114101);
+    com.tencent.mm.kernel.g.aeS().a(825, this);
+    this.fTr = paramq;
+    this.fTq = parama;
+    this.fTp = paramList;
+    AppMethodBeat.o(114101);
   }
   
-  private static cm a(cm paramcm, String paramString)
+  private static cs a(cs paramcs, String paramString)
   {
-    AppMethodBeat.i(35453);
-    if (paramcm == null)
+    AppMethodBeat.i(114105);
+    if (paramcs == null)
     {
-      ab.w("FunctionMsg.FunctionMsgFetcher", "null == raw");
-      AppMethodBeat.o(35453);
+      ad.w("FunctionMsg.FunctionMsgFetcher", "null == raw");
+      AppMethodBeat.o(114105);
       return null;
     }
     int i = paramString.indexOf("<addmsg");
     if (i == -1)
     {
-      ab.e("FunctionMsg.FunctionMsgFetcher", "msgContent not start with <addmsg! content is null?%s", new Object[] { Boolean.valueOf(bo.isNullOrNil(paramString)) });
-      AppMethodBeat.o(35453);
+      ad.e("FunctionMsg.FunctionMsgFetcher", "msgContent not start with <addmsg! content is null?%s", new Object[] { Boolean.valueOf(bt.isNullOrNil(paramString)) });
+      AppMethodBeat.o(114105);
       return null;
     }
-    Map localMap = br.F(paramString.substring(i), "addmsg");
+    Map localMap = bw.K(paramString.substring(i), "addmsg");
     StringBuilder localStringBuilder = new StringBuilder();
-    if (localMap.containsKey(lM(".msgid")))
+    if (localMap.containsKey(pZ(".msgid")))
     {
-      i = bo.getInt((String)localMap.get(lM(".msgid")), 0);
-      paramcm.pIE = i;
+      i = bt.getInt((String)localMap.get(pZ(".msgid")), 0);
+      paramcs.uKX = i;
       localStringBuilder.append("msgid:".concat(String.valueOf(i)));
     }
-    if (localMap.containsKey(lM(".newmsgid")))
+    if (localMap.containsKey(pZ(".newmsgid")))
     {
-      long l = bo.getLong((String)localMap.get(lM(".newmsgid")), 0L);
-      paramcm.pIG = l;
+      long l = bt.getLong((String)localMap.get(pZ(".newmsgid")), 0L);
+      paramcs.uKZ = l;
       localStringBuilder.append(" newMsgId:".concat(String.valueOf(l)));
     }
-    if (localMap.containsKey(lM(".msgseq")))
+    if (localMap.containsKey(pZ(".msgseq")))
     {
-      i = bo.getInt((String)localMap.get(lM(".msgseq")), 0);
-      paramcm.woW = i;
+      i = bt.getInt((String)localMap.get(pZ(".msgseq")), 0);
+      paramcs.CxE = i;
       localStringBuilder.append(" msgSeq:".concat(String.valueOf(i)));
     }
     String str;
-    if (localMap.containsKey(lM(".fromusername")))
+    if (localMap.containsKey(pZ(".fromusername")))
     {
-      str = (String)localMap.get(lM(".fromusername"));
-      paramcm.woP = aa.wA(str);
+      str = (String)localMap.get(pZ(".fromusername"));
+      paramcs.Cxx = z.BE(str);
       localStringBuilder.append(" fromUsername:".concat(String.valueOf(str)));
     }
-    if (localMap.containsKey(lM(".tousername")))
+    if (localMap.containsKey(pZ(".tousername")))
     {
-      str = (String)localMap.get(lM(".tousername"));
-      paramcm.woQ = aa.wA(str);
+      str = (String)localMap.get(pZ(".tousername"));
+      paramcs.Cxy = z.BE(str);
       localStringBuilder.append(" toUsername:".concat(String.valueOf(str)));
     }
-    if (localMap.containsKey(lM(".msgtype")))
+    if (localMap.containsKey(pZ(".msgtype")))
     {
-      i = bo.getInt((String)localMap.get(lM(".msgtype")), 0);
-      paramcm.nqW = i;
+      i = bt.getInt((String)localMap.get(pZ(".msgtype")), 0);
+      paramcs.saz = i;
       localStringBuilder.append(" msgType:".concat(String.valueOf(i)));
     }
-    if (localMap.containsKey(lM(".status")))
+    if (localMap.containsKey(pZ(".status")))
     {
-      i = bo.getInt((String)localMap.get(lM(".status")), 0);
-      paramcm.jJS = i;
+      i = bt.getInt((String)localMap.get(pZ(".status")), 0);
+      paramcs.mBi = i;
       localStringBuilder.append(" status:".concat(String.valueOf(i)));
     }
-    if (localMap.containsKey(lM(".content")))
+    if (localMap.containsKey(pZ(".content")))
     {
-      paramcm.woR = aa.wA(org.apache.commons.b.f.azJ(paramString.substring(paramString.indexOf("<content>") + 9, paramString.indexOf("</content>"))));
+      paramcs.Cxz = z.BE(f.aRu(paramString.substring(paramString.indexOf("<content>") + 9, paramString.indexOf("</content>"))));
       localStringBuilder.append(" msgContent:*");
     }
     for (;;)
     {
-      if (localMap.containsKey(lM(".msgsource")))
+      if (localMap.containsKey(pZ(".msgsource")))
       {
-        paramcm.woU = org.apache.commons.b.f.azJ(paramString.substring(paramString.indexOf("<msgsource>") + 11, paramString.indexOf("</msgsource>")));
+        paramcs.CxC = f.aRu(paramString.substring(paramString.indexOf("<msgsource>") + 11, paramString.indexOf("</msgsource>")));
         localStringBuilder.append(" msgSource:*");
       }
-      if (localMap.containsKey(lM(".pushcontent")))
+      if (localMap.containsKey(pZ(".pushcontent")))
       {
-        paramcm.woV = org.apache.commons.b.f.azJ(paramString.substring(paramString.indexOf("<pushcontent>") + 13, paramString.indexOf("</pushcontent>")));
+        paramcs.CxD = f.aRu(paramString.substring(paramString.indexOf("<pushcontent>") + 13, paramString.indexOf("</pushcontent>")));
         localStringBuilder.append(" pushContent:*");
       }
-      if (localMap.containsKey(lM(".imgstatus")))
+      if (localMap.containsKey(pZ(".imgstatus")))
       {
-        i = bo.getInt((String)localMap.get(lM(".imgstatus")), 0);
-        paramcm.woS = i;
+        i = bt.getInt((String)localMap.get(pZ(".imgstatus")), 0);
+        paramcs.CxA = i;
         localStringBuilder.append(" ImgStatus:".concat(String.valueOf(i)));
       }
-      if (localMap.containsKey(lM(".imgbuf")))
+      if (localMap.containsKey(pZ(".imgbuf")))
       {
-        paramcm.woT = aa.wB((String)localMap.get(lM(".imgbuf")));
+        paramcs.CxB = z.BF((String)localMap.get(pZ(".imgbuf")));
         localStringBuilder.append(" imgBuf:*");
       }
-      if (localMap.containsKey(lM(".createtime")))
+      if (localMap.containsKey(pZ(".createtime")))
       {
-        i = bo.getInt((String)localMap.get(lM(".createtime")), 0);
-        paramcm.CreateTime = i;
+        i = bt.getInt((String)localMap.get(pZ(".createtime")), 0);
+        paramcs.CreateTime = i;
         localStringBuilder.append(" createTime:".concat(String.valueOf(i)));
       }
-      ab.i("FunctionMsg.FunctionMsgFetcher", "[mergeAddMsg] result:%s", new Object[] { localStringBuilder.toString() });
-      AppMethodBeat.o(35453);
-      return paramcm;
+      ad.i("FunctionMsg.FunctionMsgFetcher", "[mergeAddMsg] result:%s", new Object[] { localStringBuilder.toString() });
+      AppMethodBeat.o(114105);
+      return paramcs;
       localStringBuilder.append(" msgContent:null");
-      paramcm.woR = null;
+      paramcs.Cxz = null;
     }
   }
   
-  private static String lM(String paramString)
+  private static String pZ(String paramString)
   {
-    AppMethodBeat.i(35454);
+    AppMethodBeat.i(114106);
     paramString = ".addmsg".concat(String.valueOf(paramString));
-    AppMethodBeat.o(35454);
+    AppMethodBeat.o(114106);
     return paramString;
   }
   
   private void release()
   {
-    AppMethodBeat.i(35451);
-    g.Rc().b(825, this);
-    AppMethodBeat.o(35451);
+    AppMethodBeat.i(114103);
+    com.tencent.mm.kernel.g.aeS().b(825, this);
+    AppMethodBeat.o(114103);
   }
   
-  public final void Pm()
+  public final void acI()
   {
-    AppMethodBeat.i(35450);
-    Iterator localIterator = this.eyK.iterator();
+    AppMethodBeat.i(114102);
+    Iterator localIterator = this.fTp.iterator();
     label263:
     while (localIterator.hasNext())
     {
-      Object localObject = (com.tencent.mm.api.f)localIterator.next();
-      if ((localObject != null) && (((com.tencent.mm.api.f)localObject).field_cgi != null) && (((com.tencent.mm.api.f)localObject).field_cmdid > 0))
+      Object localObject = (com.tencent.mm.api.h)localIterator.next();
+      if ((localObject != null) && (((com.tencent.mm.api.h)localObject).field_cgi != null) && (((com.tencent.mm.api.h)localObject).field_cmdid > 0))
       {
-        ab.i("FunctionMsg.FunctionMsgFetcher", "[fetchInternal], functionMsgId: %s", new Object[] { ((com.tencent.mm.api.f)localObject).field_functionmsgid });
-        ((com.tencent.mm.api.f)localObject).field_status = 0;
-        this.eyM.b(((com.tencent.mm.api.f)localObject).field_businessInfo);
-        localObject = new a((com.tencent.mm.api.f)localObject);
-        g.Rc().a((m)localObject, 0);
+        ad.i("FunctionMsg.FunctionMsgFetcher", "[fetchInternal], functionMsgId: %s", new Object[] { ((com.tencent.mm.api.h)localObject).field_functionmsgid });
+        ((com.tencent.mm.api.h)localObject).field_status = 0;
+        this.fTr.b(((com.tencent.mm.api.h)localObject).field_businessInfo);
+        localObject = new a((com.tencent.mm.api.h)localObject);
+        com.tencent.mm.kernel.g.aeS().a((n)localObject, 0);
       }
       else if (localObject != null)
       {
-        cm localcm = a(((com.tencent.mm.api.f)localObject).field_addMsg, ((com.tencent.mm.api.f)localObject).field_defaultContent);
-        ab.i("FunctionMsg.FunctionMsgFetcher", "[fetchInternal] addMsgDefault is null? %s", new Object[] { localcm });
-        ((com.tencent.mm.api.f)localObject).a(localcm);
+        cs localcs = a(((com.tencent.mm.api.h)localObject).field_addMsg, ((com.tencent.mm.api.h)localObject).field_defaultContent);
+        ad.i("FunctionMsg.FunctionMsgFetcher", "[fetchInternal] addMsgDefault is null? %s", new Object[] { localcs });
+        ((com.tencent.mm.api.h)localObject).a(localcs);
         int i;
-        if (((com.tencent.mm.api.f)localObject).field_actionTime > cb.abp() / 1000L)
+        if (((com.tencent.mm.api.h)localObject).field_actionTime > ce.asQ() / 1000L)
         {
           i = -2;
           label169:
-          ((com.tencent.mm.api.f)localObject).field_status = i;
-          ba localba = ba.yOa;
-          ba.a(((com.tencent.mm.api.f)localObject).field_functionmsgid, (com.tencent.mm.api.f)localObject);
-          if ((localcm == null) || (!this.eyK.remove(localObject))) {
+          ((com.tencent.mm.api.h)localObject).field_status = i;
+          bd localbd = bd.FzL;
+          bd.a(((com.tencent.mm.api.h)localObject).field_functionmsgid, (com.tencent.mm.api.h)localObject);
+          if ((localcs == null) || (!this.fTp.remove(localObject))) {
             break label239;
           }
-          this.eyL.a((com.tencent.mm.api.f)localObject);
+          this.fTq.a((com.tencent.mm.api.h)localObject);
         }
         for (;;)
         {
-          if (this.eyK.size() > 0) {
+          if (this.fTp.size() > 0) {
             break label263;
           }
           release();
@@ -198,153 +195,160 @@ public final class b
           i = 2;
           break label169;
           label239:
-          if (this.eyK.remove(localObject)) {
-            this.eyL.b((com.tencent.mm.api.f)localObject);
+          if (this.fTp.remove(localObject)) {
+            this.fTq.b((com.tencent.mm.api.h)localObject);
           }
         }
       }
     }
-    AppMethodBeat.o(35450);
+    AppMethodBeat.o(114102);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(35452);
-    if (paramm.getType() != 825)
+    AppMethodBeat.i(114104);
+    if (paramn.getType() != 825)
     {
-      AppMethodBeat.o(35452);
+      AppMethodBeat.o(114104);
       return;
     }
-    paramm = (a)paramm;
-    akr localakr = paramm.gcW;
-    paramm = paramm.gcX;
-    ab.i("FunctionMsg.FunctionMsgFetcher", "[onSceneEnd] size:%s errCode:%s errMsg:%s", new Object[] { Integer.valueOf(this.eyK.size()), Integer.valueOf(paramInt2), paramString });
+    paramn = (a)paramn;
+    auh localauh = paramn.hKv;
+    paramn = paramn.hKw;
+    ad.i("FunctionMsg.FunctionMsgFetcher", "[onSceneEnd] size:%s errCode:%s errMsg:%s", new Object[] { Integer.valueOf(this.fTp.size()), Integer.valueOf(paramInt2), paramString });
     boolean bool;
-    if (this.eyK.contains(paramm))
+    if (this.fTp.contains(paramn))
     {
-      if ((paramInt2 == 0) && ((paramInt2 != 0) || (localakr != null)) && ((localakr == null) || (localakr.OpCode != 2)) && ((localakr == null) || (localakr.OpCode != 1))) {
+      if ((paramInt2 == 0) && ((paramInt2 != 0) || (localauh != null)) && ((localauh == null) || (localauh.OpCode != 2)) && ((localauh == null) || (localauh.OpCode != 1))) {
         break label754;
       }
-      paramString = paramm.field_functionmsgid;
-      long l1 = paramm.field_preVersion;
-      long l2 = paramm.field_version;
-      if (localakr != null) {
+      paramString = paramn.field_functionmsgid;
+      long l1 = paramn.field_preVersion;
+      long l2 = paramn.field_version;
+      if (localauh != null) {
         break label544;
       }
       paramInt1 = -1;
-      ab.i("FunctionMsg.FunctionMsgFetcher", "functionMsgId: %s, fetch failed, mark as fetch failed, preVersion: %s, version: %s op:%s", new Object[] { paramString, Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(paramInt1) });
-      if (paramm.field_retryCount >= paramm.field_retryCountLimit) {
+      ad.i("FunctionMsg.FunctionMsgFetcher", "functionMsgId: %s, fetch failed, mark as fetch failed, preVersion: %s, version: %s op:%s", new Object[] { paramString, Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(paramInt1) });
+      if (paramn.field_retryCount >= paramn.field_retryCountLimit) {
         break label636;
       }
-      paramInt1 = paramm.field_retryCount;
-      paramString = paramm.field_functionmsgid;
-      paramInt2 = paramm.field_retryinterval;
-      if (localakr != null) {
+      paramInt1 = paramn.field_retryCount;
+      paramString = paramn.field_functionmsgid;
+      paramInt2 = paramn.field_retryinterval;
+      if (localauh != null) {
         break label553;
       }
       bool = true;
       label243:
-      ab.i("FunctionMsg.FunctionMsgFetcher", "[handleFailureFetch] has retryCount:%s id:%s retryInterval:%s response is null?%s", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
-      if (localakr == null) {
+      ad.i("FunctionMsg.FunctionMsgFetcher", "[handleFailureFetch] has retryCount:%s id:%s retryInterval:%s response is null?%s", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
+      if (localauh == null) {
         break label596;
       }
-      ab.i("FunctionMsg.FunctionMsgFetcher", "[handleFailureFetch] opCode:%s actionTime:%s", new Object[] { Integer.valueOf(localakr.OpCode), Integer.valueOf(localakr.xbP) });
-      if (localakr.OpCode != 2) {
+      ad.i("FunctionMsg.FunctionMsgFetcher", "[handleFailureFetch] opCode:%s actionTime:%s", new Object[] { Integer.valueOf(localauh.OpCode), Integer.valueOf(localauh.Dui) });
+      if (localauh.OpCode != 2) {
         break label559;
       }
-      paramm.field_actionTime = localakr.xbP;
-      paramm.field_retryCount += 1;
-      paramm.field_status = -1;
+      paramn.field_actionTime = localauh.Dui;
+      paramn.field_retryCount += 1;
+      paramn.field_status = -1;
       label358:
-      paramm.cY(localakr.xbL);
+      paramn.dY(localauh.Duf);
       label368:
-      paramString = ba.yOa;
-      ba.a(paramm.field_functionmsgid, paramm);
-      if (paramm.field_status == 3) {
+      paramString = bd.FzL;
+      bd.a(paramn.field_functionmsgid, paramn);
+      if (paramn.field_status == 3) {
         break label645;
       }
-      h.qsU.idkeyStat(paramm.field_reportid, paramm.field_failkey, 1L, false);
-      ab.i("FunctionMsg.FunctionMsgFetcher", "[handleFailureFetch] maybe has to retry fetch! delay:%sms retryCount:%s", new Object[] { Long.valueOf((paramm.field_actionTime - cb.abp() / 1000L) * 1000L), Integer.valueOf(paramm.field_retryCount) });
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(paramn.field_reportid, paramn.field_failkey, 1L, false);
+      ad.i("FunctionMsg.FunctionMsgFetcher", "[handleFailureFetch] maybe has to retry fetch! delay:%sms retryCount:%s", new Object[] { Long.valueOf((paramn.field_actionTime - ce.asQ() / 1000L) * 1000L), Integer.valueOf(paramn.field_retryCount) });
       label457:
-      if (((paramm.field_status != 2) && (paramm.field_status != -2)) || (!this.eyK.remove(paramm))) {
+      if (((paramn.field_status != 2) && (paramn.field_status != -2)) || (!this.fTp.remove(paramn))) {
         break label915;
       }
-      this.eyL.a(paramm);
-      h.qsU.idkeyStat(paramm.field_reportid, paramm.field_successkey, 1L, false);
+      this.fTq.a(paramn);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(paramn.field_reportid, paramn.field_successkey, 1L, false);
     }
     for (;;)
     {
-      if (this.eyK.size() <= 0) {
+      if (this.fTp.size() <= 0) {
         release();
       }
-      AppMethodBeat.o(35452);
+      AppMethodBeat.o(114104);
       return;
       label544:
-      paramInt1 = localakr.OpCode;
+      paramInt1 = localauh.OpCode;
       break;
       label553:
       bool = false;
       break label243;
       label559:
-      if (localakr.OpCode == 1)
+      if (localauh.OpCode == 1)
       {
-        paramm.field_status = 3;
-        paramm.field_retryCount = paramm.field_retryCountLimit;
+        paramn.field_status = 3;
+        paramn.field_retryCount = paramn.field_retryCountLimit;
         break label358;
       }
-      paramm.field_status = 3;
+      paramn.field_status = 3;
       break label358;
       label596:
-      paramm.field_status = -1;
-      paramm.field_actionTime = (cb.abp() / 1000L + paramm.field_retryinterval);
-      paramm.field_retryCount += 1;
+      paramn.field_status = -1;
+      paramn.field_actionTime = (ce.asQ() / 1000L + paramn.field_retryinterval);
+      paramn.field_retryCount += 1;
       break label368;
       label636:
-      paramm.field_status = 3;
+      paramn.field_status = 3;
       break label368;
       label645:
-      paramString = a(paramm.field_addMsg, paramm.field_defaultContent);
-      ab.i("FunctionMsg.FunctionMsgFetcher", "[handleFailFetch] addMsgDefault is null? %s", new Object[] { paramString });
-      paramm.a(paramString);
+      paramString = a(paramn.field_addMsg, paramn.field_defaultContent);
+      ad.i("FunctionMsg.FunctionMsgFetcher", "[handleFailFetch] addMsgDefault is null? %s", new Object[] { paramString });
+      paramn.a(paramString);
       if (paramString == null) {}
       for (paramInt1 = 3;; paramInt1 = 2)
       {
-        paramm.field_status = paramInt1;
-        if (3 == paramm.field_status)
+        paramn.field_status = paramInt1;
+        if (3 == paramn.field_status)
         {
-          paramm.field_version = paramm.field_preVersion;
-          h.qsU.idkeyStat(paramm.field_reportid, paramm.field_finalfailkey, 1L, false);
+          paramn.field_version = paramn.field_preVersion;
+          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(paramn.field_reportid, paramn.field_finalfailkey, 1L, false);
         }
-        paramString = ba.yOa;
-        ba.a(paramm.field_functionmsgid, paramm);
+        paramString = bd.FzL;
+        bd.a(paramn.field_functionmsgid, paramn);
         break;
       }
       label754:
-      if ((localakr == null) || (paramInt2 != 0) || ((localakr.OpCode != 3) && (localakr.OpCode != 0))) {
+      if ((localauh == null) || (paramInt2 != 0) || ((localauh.OpCode != 3) && (localauh.OpCode != 0))) {
         break label457;
       }
-      ab.i("FunctionMsg.FunctionMsgFetcher", "functionMsgId: %s fetch success, response.version: %s, fetchItem.version: %s ActionTime:%s OpCode:%s", new Object[] { paramm.field_functionmsgid, Long.valueOf(localakr.xbN), Long.valueOf(paramm.field_version), Integer.valueOf(localakr.xbP), Integer.valueOf(localakr.OpCode) });
-      if (localakr.OpCode == 3) {}
+      ad.i("FunctionMsg.FunctionMsgFetcher", "functionMsgId: %s fetch success, response.version: %s, fetchItem.version: %s ActionTime:%s OpCode:%s", new Object[] { paramn.field_functionmsgid, Long.valueOf(localauh.Dql), Long.valueOf(paramn.field_version), Integer.valueOf(localauh.Dui), Integer.valueOf(localauh.OpCode) });
+      if (localauh.OpCode == 3) {}
       for (paramInt1 = -2;; paramInt1 = 2)
       {
-        paramm.field_status = paramInt1;
-        paramm.a(localakr.xbO);
-        paramm.field_businessInfo = localakr.xbM;
-        paramm.field_actionTime = localakr.xbP;
-        paramString = ba.yOa;
-        ba.a(paramm.field_functionmsgid, paramm);
+        paramn.field_status = paramInt1;
+        paramn.a(localauh.Duh);
+        paramn.field_businessInfo = localauh.Dug;
+        paramn.field_actionTime = localauh.Dui;
+        paramString = bd.FzL;
+        bd.a(paramn.field_functionmsgid, paramn);
         break;
       }
       label915:
-      if (this.eyK.remove(paramm)) {
-        this.eyL.b(paramm);
+      if (this.fTp.remove(paramn)) {
+        this.fTq.b(paramn);
       }
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(com.tencent.mm.api.h paramh);
+    
+    public abstract void b(com.tencent.mm.api.h paramh);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.u.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,24 @@
 package com.tencent.mm.plugin.appbrand.widget.recentview;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.service.n;
 import com.tencent.mm.plugin.appbrand.widget.desktop.b;
 
 public class MenuAppBrandRecentView
   extends BaseAppBrandRecentView
 {
-  private static final int jvN = b.jdj - 1;
-  private static final int jvO = b.jdj;
-  private AppBrandRecentView.b jhJ;
+  private static final int mlZ = b.lTd - 1;
+  private static final int mma = b.lTd;
+  private AppBrandRecentView.b lWI;
   
   public MenuAppBrandRecentView(Context paramContext)
   {
@@ -24,60 +30,94 @@ public class MenuAppBrandRecentView
     super(paramContext, paramAttributeSet);
   }
   
-  public final void a(BaseAppBrandRecentView.c paramc, a parama, int paramInt)
+  public final void a(BaseAppBrandRecentView.b paramb, a parama, int paramInt)
   {
-    AppMethodBeat.i(134385);
-    super.a(paramc, parama, paramInt);
-    paramc.titleTv.setTextColor(-1728053248);
+    AppMethodBeat.i(50005);
+    super.a(paramb, parama, paramInt);
+    paramb.titleTv.setTextColor(getContext().getResources().getColor(2131100711));
     if ((parama != null) && (parama.type == 2))
     {
-      paramc.titleTv.setVisibility(0);
-      paramc.jfs.setVisibility(8);
-      paramc.titleTv.setText(2131301719);
-      paramc.ivs.setImageResource(2131230848);
-      AppMethodBeat.o(134385);
+      paramb.titleTv.setVisibility(0);
+      paramb.lVy.setVisibility(8);
+      paramb.titleTv.setText(2131761462);
+      paramb.kXS.setImageResource(2131689605);
+      AppMethodBeat.o(50005);
       return;
     }
     if ((parama != null) && (parama.type == -1)) {
-      paramc.ivs.setImageResource(2131231207);
+      paramb.kXS.setImageResource(2131690013);
     }
-    AppMethodBeat.o(134385);
+    AppMethodBeat.o(50005);
   }
   
   public int getLayoutId()
   {
-    return 2130968772;
+    return 2131493099;
   }
   
   protected int getLoadCount()
   {
-    return jvO;
+    return mma;
   }
   
   protected int getShowCount()
   {
-    return jvN;
+    return mlZ;
   }
   
   protected String getType()
   {
-    AppMethodBeat.i(134384);
+    AppMethodBeat.i(50004);
     String str = MenuAppBrandRecentView.class.getSimpleName();
-    AppMethodBeat.o(134384);
+    AppMethodBeat.o(50004);
     return str;
   }
   
   protected final void init(Context paramContext)
   {
-    AppMethodBeat.i(134386);
+    AppMethodBeat.i(50006);
     super.init(paramContext);
-    super.setOnItemClickListener(new MenuAppBrandRecentView.1(this));
-    AppMethodBeat.o(134386);
+    super.setOnItemClickListener(new AppBrandRecentView.b()
+    {
+      public final boolean a(View paramAnonymousView, a paramAnonymousa, float paramAnonymousFloat1, float paramAnonymousFloat2)
+      {
+        AppMethodBeat.i(50002);
+        if (MenuAppBrandRecentView.a(MenuAppBrandRecentView.this) != null) {}
+        for (boolean bool = MenuAppBrandRecentView.a(MenuAppBrandRecentView.this).a(paramAnonymousView, paramAnonymousa, paramAnonymousFloat1, paramAnonymousFloat2);; bool = false)
+        {
+          if (bool)
+          {
+            AppMethodBeat.o(50002);
+            return true;
+          }
+          if (paramAnonymousa.type != 2)
+          {
+            paramAnonymousView = new AppBrandStatObject();
+            paramAnonymousView.scene = 1090;
+            ((n)g.ab(n.class)).a(MenuAppBrandRecentView.this.getContext(), paramAnonymousa.lVq.username, null, paramAnonymousa.lVq.gXn, -1, null, paramAnonymousView);
+          }
+          AppMethodBeat.o(50002);
+          return false;
+        }
+      }
+      
+      public final boolean b(View paramAnonymousView, a paramAnonymousa, float paramAnonymousFloat1, float paramAnonymousFloat2)
+      {
+        AppMethodBeat.i(50003);
+        boolean bool = false;
+        if (MenuAppBrandRecentView.a(MenuAppBrandRecentView.this) != null) {
+          bool = MenuAppBrandRecentView.a(MenuAppBrandRecentView.this).b(paramAnonymousView, paramAnonymousa, paramAnonymousFloat1, paramAnonymousFloat2);
+        }
+        AppMethodBeat.o(50003);
+        return bool;
+      }
+    });
+    AppMethodBeat.o(50006);
   }
   
   public void setOnItemClickListener(AppBrandRecentView.b paramb)
   {
-    this.jhJ = paramb;
+    this.lWI = paramb;
   }
 }
 

@@ -1,13 +1,20 @@
 package android.support.transition;
 
-import android.view.View;
-import android.view.ViewGroup;
+import android.animation.ObjectAnimator;
+import android.graphics.Path;
+import android.graphics.PointF;
+import android.os.Build.VERSION;
+import android.util.Property;
 
-abstract interface j
+final class j
 {
-  public abstract void a(ViewGroup paramViewGroup, View paramView);
-  
-  public abstract void setVisibility(int paramInt);
+  static <T> ObjectAnimator a(T paramT, Property<T, PointF> paramProperty, Path paramPath)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      return ObjectAnimator.ofObject(paramT, paramProperty, null, paramPath);
+    }
+    return ObjectAnimator.ofFloat(paramT, new k(paramProperty, paramPath), new float[] { 0.0F, 1.0F });
+  }
 }
 
 

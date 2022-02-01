@@ -15,9 +15,9 @@ public class DataEventBuffer
   public DataEventBuffer(DataHolder paramDataHolder)
   {
     super(paramDataHolder);
-    AppMethodBeat.i(70799);
+    AppMethodBeat.i(100782);
     this.zzp = new Status(paramDataHolder.getStatusCode());
-    AppMethodBeat.o(70799);
+    AppMethodBeat.o(100782);
   }
   
   public String getPrimaryDataMarkerColumn()
@@ -32,7 +32,7 @@ public class DataEventBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.DataEventBuffer
  * JD-Core Version:    0.7.0.1
  */

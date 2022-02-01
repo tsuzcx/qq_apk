@@ -16,23 +16,23 @@ public class MaxHeightScrollView
   public MaxHeightScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(27951);
+    AppMethodBeat.i(31746);
     init(paramContext, paramAttributeSet);
-    AppMethodBeat.o(27951);
+    AppMethodBeat.o(31746);
   }
   
   public MaxHeightScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(27952);
+    AppMethodBeat.i(31747);
     init(paramContext, paramAttributeSet);
-    AppMethodBeat.o(27952);
+    AppMethodBeat.o(31747);
   }
   
   private void init(Context paramContext, AttributeSet paramAttributeSet)
   {
     int i = 0;
-    AppMethodBeat.i(27953);
+    AppMethodBeat.i(31748);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.a.MaxHeightScrollView, 0, 0);
     try
     {
@@ -50,18 +50,18 @@ public class MaxHeightScrollView
     finally
     {
       paramContext.recycle();
-      AppMethodBeat.o(27953);
+      AppMethodBeat.o(31748);
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(27954);
+    AppMethodBeat.i(31749);
     if (this.mMaxHeight > 0) {
       paramInt2 = View.MeasureSpec.makeMeasureSpec(this.mMaxHeight, -2147483648);
     }
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(27954);
+    AppMethodBeat.o(31749);
   }
   
   public void setMaxHeight(int paramInt)
@@ -71,7 +71,7 @@ public class MaxHeightScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.MaxHeightScrollView
  * JD-Core Version:    0.7.0.1
  */

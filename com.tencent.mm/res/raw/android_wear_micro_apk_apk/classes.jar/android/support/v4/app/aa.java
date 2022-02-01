@@ -1,31 +1,8 @@
 package android.support.v4.app;
 
-import java.util.ArrayList;
-
 final class aa
-  implements z
 {
-  final int de;
-  final int df;
-  final String mName = null;
-  
-  aa(t paramt, int paramInt1, int paramInt2)
-  {
-    this.de = paramInt1;
-    this.df = 1;
-  }
-  
-  public final boolean a(ArrayList<d> paramArrayList, ArrayList<Boolean> paramArrayList1)
-  {
-    if ((this.cU.cB != null) && (this.de < 0) && (this.mName == null))
-    {
-      t localt = this.cU.cB.ba;
-      if ((localt != null) && (localt.popBackStackImmediate())) {
-        return false;
-      }
-    }
-    return this.cU.a(paramArrayList, paramArrayList1, this.mName, this.de, this.df);
-  }
+  public static final int[] eR = { 16842755, 16842960, 16842961 };
 }
 
 

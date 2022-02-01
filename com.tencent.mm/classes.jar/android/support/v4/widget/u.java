@@ -9,27 +9,27 @@ import android.view.ViewParent;
 
 public final class u
 {
-  private static final ThreadLocal<Matrix> MR = new ThreadLocal();
-  private static final ThreadLocal<RectF> MS = new ThreadLocal();
+  private static final ThreadLocal<Matrix> TS = new ThreadLocal();
+  private static final ThreadLocal<RectF> TT = new ThreadLocal();
   
   public static void a(ViewGroup paramViewGroup, View paramView, Rect paramRect)
   {
     paramRect.set(0, 0, paramView.getWidth(), paramView.getHeight());
-    Matrix localMatrix = (Matrix)MR.get();
+    Matrix localMatrix = (Matrix)TS.get();
     if (localMatrix == null)
     {
       localMatrix = new Matrix();
-      MR.set(localMatrix);
+      TS.set(localMatrix);
     }
     for (;;)
     {
       a(paramViewGroup, paramView, localMatrix);
-      paramView = (RectF)MS.get();
+      paramView = (RectF)TT.get();
       paramViewGroup = paramView;
       if (paramView == null)
       {
         paramViewGroup = new RectF();
-        MS.set(paramViewGroup);
+        TT.set(paramViewGroup);
       }
       paramViewGroup.set(paramRect);
       localMatrix.mapRect(paramViewGroup);
@@ -56,7 +56,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v4.widget.u
  * JD-Core Version:    0.7.0.1
  */

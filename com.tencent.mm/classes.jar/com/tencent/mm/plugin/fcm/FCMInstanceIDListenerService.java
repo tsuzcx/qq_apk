@@ -4,37 +4,37 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class FCMInstanceIDListenerService
   extends FirebaseInstanceIdService
 {
   public final void onTokenRefresh()
   {
-    AppMethodBeat.i(56426);
-    String str = FirebaseInstanceId.rL().getToken();
-    ab.i("MicroMsg.FCM.FCMInstanceIDListenerService", "Refreshed token: ".concat(String.valueOf(str)));
-    g.RJ();
-    if (com.tencent.mm.kernel.a.QT())
+    AppMethodBeat.i(127565);
+    String str = FirebaseInstanceId.wK().getToken();
+    ad.i("MicroMsg.FCM.FCMInstanceIDListenerService", "Refreshed token: ".concat(String.valueOf(str)));
+    g.afz();
+    if (com.tencent.mm.kernel.a.aeH())
     {
-      a locala = a.byx();
+      a locala = a.ckh();
       if (locala != null)
       {
-        locala.Oi(str);
-        AppMethodBeat.o(56426);
+        locala.YJ(str);
+        AppMethodBeat.o(127565);
         return;
       }
-      ab.w("MicroMsg.FCM.FCMInstanceIDListenerService", "fcmRegister null, not reg token");
-      AppMethodBeat.o(56426);
+      ad.w("MicroMsg.FCM.FCMInstanceIDListenerService", "fcmRegister null, not reg token");
+      AppMethodBeat.o(127565);
       return;
     }
-    ab.w("MicroMsg.FCM.FCMInstanceIDListenerService", "User is not logined, not reg token");
-    AppMethodBeat.o(56426);
+    ad.w("MicroMsg.FCM.FCMInstanceIDListenerService", "User is not logined, not reg token");
+    AppMethodBeat.o(127565);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fcm.FCMInstanceIDListenerService
  * JD-Core Version:    0.7.0.1
  */

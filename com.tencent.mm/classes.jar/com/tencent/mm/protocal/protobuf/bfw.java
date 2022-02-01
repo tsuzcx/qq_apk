@@ -3,91 +3,94 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bfw
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int nqW;
-  public String nul;
-  public String num;
-  public int pIE;
-  public long pIG;
+  public String desc;
+  public String gFS;
+  public String title;
+  public String zSf;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(60052);
+    AppMethodBeat.i(72498);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.num != null) {
-        paramVarArgs.e(1, this.num);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.title != null) {
+        paramVarArgs.d(1, this.title);
       }
-      if (this.nul != null) {
-        paramVarArgs.e(2, this.nul);
+      if (this.desc != null) {
+        paramVarArgs.d(2, this.desc);
       }
-      paramVarArgs.aO(3, this.pIE);
-      paramVarArgs.aO(4, this.nqW);
-      paramVarArgs.am(5, this.pIG);
-      AppMethodBeat.o(60052);
+      if (this.gFS != null) {
+        paramVarArgs.d(3, this.gFS);
+      }
+      if (this.zSf != null) {
+        paramVarArgs.d(4, this.zSf);
+      }
+      AppMethodBeat.o(72498);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.num == null) {
-        break label410;
+      if (this.title == null) {
+        break label394;
       }
     }
-    label410:
-    for (paramInt = e.a.a.b.b.a.f(1, this.num) + 0;; paramInt = 0)
+    label394:
+    for (int i = f.a.a.b.b.a.e(1, this.title) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.nul != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.nul);
+      paramInt = i;
+      if (this.desc != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.desc);
       }
-      paramInt = e.a.a.b.b.a.bl(3, this.pIE);
-      int j = e.a.a.b.b.a.bl(4, this.nqW);
-      int k = e.a.a.b.b.a.p(5, this.pIG);
-      AppMethodBeat.o(60052);
-      return i + paramInt + j + k;
+      i = paramInt;
+      if (this.gFS != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.gFS);
+      }
+      paramInt = i;
+      if (this.zSf != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.zSf);
+      }
+      AppMethodBeat.o(72498);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(60052);
+        AppMethodBeat.o(72498);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         bfw localbfw = (bfw)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(60052);
+          AppMethodBeat.o(72498);
           return -1;
         case 1: 
-          localbfw.num = locala.CLY.readString();
-          AppMethodBeat.o(60052);
+          localbfw.title = locala.KhF.readString();
+          AppMethodBeat.o(72498);
           return 0;
         case 2: 
-          localbfw.nul = locala.CLY.readString();
-          AppMethodBeat.o(60052);
+          localbfw.desc = locala.KhF.readString();
+          AppMethodBeat.o(72498);
           return 0;
         case 3: 
-          localbfw.pIE = locala.CLY.sl();
-          AppMethodBeat.o(60052);
-          return 0;
-        case 4: 
-          localbfw.nqW = locala.CLY.sl();
-          AppMethodBeat.o(60052);
+          localbfw.gFS = locala.KhF.readString();
+          AppMethodBeat.o(72498);
           return 0;
         }
-        localbfw.pIG = locala.CLY.sm();
-        AppMethodBeat.o(60052);
+        localbfw.zSf = locala.KhF.readString();
+        AppMethodBeat.o(72498);
         return 0;
       }
-      AppMethodBeat.o(60052);
+      AppMethodBeat.o(72498);
       return -1;
     }
   }

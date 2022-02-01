@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class cz
   extends b
 {
-  public cz.a cqr;
+  public a dfh;
   
   public cz()
   {
@@ -15,16 +15,21 @@ public final class cz
   
   private cz(byte paramByte)
   {
-    AppMethodBeat.i(105666);
-    this.cqr = new cz.a();
-    this.ymq = false;
+    AppMethodBeat.i(104410);
+    this.dfh = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(105666);
+    AppMethodBeat.o(104410);
+  }
+  
+  public static final class a
+  {
+    public int subType = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.cz
  * JD-Core Version:    0.7.0.1
  */

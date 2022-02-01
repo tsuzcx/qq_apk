@@ -1,63 +1,63 @@
 package com.tencent.mm.network.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.t;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.v;
 import java.net.InetAddress;
 
 public final class c
 {
-  private InetAddress gfo;
+  private InetAddress hNj;
   private int port;
   private int type;
   
   private c(InetAddress paramInetAddress, int paramInt1, int paramInt2)
   {
-    this.gfo = paramInetAddress;
+    this.hNj = paramInetAddress;
     this.port = paramInt1;
     this.type = paramInt2;
   }
   
-  public static c wf(String paramString)
+  public static c Bd(String paramString)
   {
-    AppMethodBeat.i(58716);
+    AppMethodBeat.i(132966);
     if (paramString == null)
     {
-      AppMethodBeat.o(58716);
+      AppMethodBeat.o(132966);
       return null;
     }
     paramString = paramString.split(":");
     if ((paramString == null) || (paramString.length != 3))
     {
-      AppMethodBeat.o(58716);
+      AppMethodBeat.o(132966);
       return null;
     }
     try
     {
-      paramString = new c(t.apc(paramString[0]), Integer.parseInt(paramString[1]), Integer.parseInt(paramString[2]));
-      AppMethodBeat.o(58716);
+      paramString = new c(v.aFq(paramString[0]), Integer.parseInt(paramString[1]), Integer.parseInt(paramString[2]));
+      AppMethodBeat.o(132966);
       return paramString;
     }
     catch (Exception paramString)
     {
-      ab.e("MicroMsg.InAddress", "exception:%s", new Object[] { bo.l(paramString) });
-      AppMethodBeat.o(58716);
+      ad.e("MicroMsg.InAddress", "exception:%s", new Object[] { bt.m(paramString) });
+      AppMethodBeat.o(132966);
     }
     return null;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(58715);
+    AppMethodBeat.i(132965);
     String str = "hc";
     if (this.type == 2) {
       str = "dns";
     }
     for (;;)
     {
-      str = this.gfo.getHostAddress() + ":" + this.port + "(" + str + ")";
-      AppMethodBeat.o(58715);
+      str = this.hNj.getHostAddress() + ":" + this.port + "(" + str + ")";
+      AppMethodBeat.o(132965);
       return str;
       if (this.type == 3) {
         str = "svrdns";
@@ -75,7 +75,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.network.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class hq
   extends b
 {
-  public a cwL;
+  public a dlo;
   
   public hq()
   {
@@ -15,22 +15,23 @@ public final class hq
   
   private hq(byte paramByte)
   {
-    AppMethodBeat.i(135759);
-    this.cwL = new a();
-    this.ymq = false;
+    AppMethodBeat.i(89641);
+    this.dlo = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(135759);
+    AppMethodBeat.o(89641);
   }
   
   public static final class a
   {
-    public String cwM;
-    public String cwN;
+    public String countryCode;
+    public int dlp;
+    public int dlq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.hq
  * JD-Core Version:    0.7.0.1
  */

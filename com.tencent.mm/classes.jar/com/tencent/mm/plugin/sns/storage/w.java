@@ -2,97 +2,164 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.vfs.FileSystem.a;
-import com.tencent.mm.vfs.e;
-import java.util.Iterator;
+import com.tencent.mm.plugin.sns.c.l;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.ArrayList;
 import java.util.List;
 
 public final class w
+  extends j<v>
+  implements l
 {
-  public boolean rDI = false;
+  public static final String[] SQL_CREATE;
+  private e db;
   
-  public static int a(h paramh1, h paramh2, String paramString)
+  static
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    AppMethodBeat.i(38030);
-    paramString = paramh1.a(" select sql from sqlite_master where tbl_name=\"" + paramString + "\" and type = \"table\"", null, 0);
-    paramh1 = localObject2;
-    if (paramString != null)
-    {
-      paramh1 = localObject1;
-      if (paramString.getCount() == 1)
-      {
-        paramString.moveToFirst();
-        paramh1 = paramString.getString(0);
-      }
-      paramString.close();
-    }
-    if (paramh1 == null)
-    {
-      ab.w("MicroMsg.TrimSnsDb", "diskDB has not this table !");
-      AppMethodBeat.o(38030);
-      return -1;
-    }
-    ab.i("MicroMsg.TrimSnsDb", "create sql %s", new Object[] { paramh1 });
-    ab.i("MicroMsg.TrimSnsDb", "create result ".concat(String.valueOf(paramh2.execSQL("", paramh1))));
-    AppMethodBeat.o(38030);
-    return 1;
+    AppMethodBeat.i(97635);
+    SQL_CREATE = new String[] { j.getCreateSQLs(v.info, "snsTagInfo2") };
+    AppMethodBeat.o(97635);
   }
   
-  public static boolean a(h paramh1, h paramh2)
+  public w(e parame)
   {
-    AppMethodBeat.i(38029);
-    try
+    super(parame, v.info, "snsTagInfo2", null);
+    this.db = parame;
+  }
+  
+  public final boolean B(long paramLong, String paramString)
+  {
+    AppMethodBeat.i(97630);
+    paramString = "select tagId, tagName, count, rowid from snsTagInfo2 where tagId > 5 AND  tagName  =\"" + bt.aFQ(paramString) + "\" AND  tagId != " + paramLong;
+    ad.d("MicroMsg.SnsTagInfoStorage", "isTagNameExist ".concat(String.valueOf(paramString)));
+    paramString = this.db.a(paramString, null, 2);
+    boolean bool = paramString.moveToFirst();
+    paramString.close();
+    AppMethodBeat.o(97630);
+    return bool;
+  }
+  
+  public final boolean a(v paramv)
+  {
+    AppMethodBeat.i(97628);
+    if (paramv.field_tagId == 0L)
     {
-      if (bo.isNullOrNil(paramh1.getKey())) {
-        paramh2.execSQL("", "ATTACH DATABASE '" + paramh1.getPath() + "' AS old ");
-      }
-      for (;;)
-      {
-        ab.i("MicroMsg.TrimSnsDb", "ATTACH DATABASE " + paramh1.getKey());
-        AppMethodBeat.o(38029);
-        return true;
-        paramh2.execSQL("", "ATTACH DATABASE '" + paramh1.getPath() + "' AS old KEY '" + paramh1.getKey() + "'");
-      }
+      AppMethodBeat.o(97628);
       return false;
     }
-    catch (Exception paramh1)
+    long l = paramv.field_tagId;
+    Cursor localCursor = this.db.a("select *, rowid from snsTagInfo2 where tagId = ? ", new String[] { String.valueOf(l) }, 2);
+    boolean bool = localCursor.moveToFirst();
+    localCursor.close();
+    if (!bool) {
+      super.insert(paramv);
+    }
+    for (;;)
     {
-      ab.e("MicroMsg.TrimSnsDb", "ERROR : attach disk db [%s] , will do again !", new Object[] { paramh1.getMessage() });
-      ab.printErrStackTrace("MicroMsg.TrimSnsDb", paramh1, "", new Object[0]);
-      AppMethodBeat.o(38029);
+      doNotify(paramv.field_tagId, 0, paramv);
+      AppMethodBeat.o(97628);
+      return true;
+      super.replace(paramv);
     }
   }
   
-  public static void abS(String paramString)
+  public final boolean akH(String paramString)
   {
-    AppMethodBeat.i(38031);
-    Object localObject = e.cs(paramString, false);
-    if (localObject == null)
+    AppMethodBeat.i(97632);
+    v localv = tj(5L);
+    if (bt.isNullOrNil(localv.field_memberList))
     {
-      AppMethodBeat.o(38031);
-      return;
+      AppMethodBeat.o(97632);
+      return false;
     }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    boolean bool = bt.S(localv.field_memberList.split(",")).contains(paramString);
+    AppMethodBeat.o(97632);
+    return bool;
+  }
+  
+  public final boolean drR()
+  {
+    AppMethodBeat.i(97633);
+    if (dyC().size() == 0)
     {
-      FileSystem.a locala = (FileSystem.a)((Iterator)localObject).next();
-      if (locala.name.startsWith("SnsMicroMsg.dberr"))
-      {
-        ab.i("MicroMsg.TrimSnsDb", "find error %s", new Object[] { paramString + locala.name });
-        locala.delete();
-      }
+      AppMethodBeat.o(97633);
+      return false;
     }
-    AppMethodBeat.o(38031);
+    AppMethodBeat.o(97633);
+    return true;
+  }
+  
+  public final List<Long> dyC()
+  {
+    AppMethodBeat.i(97627);
+    Cursor localCursor = this.db.a("snsTagInfo2", new String[] { "tagId" }, null, null, null, null, null, 2);
+    ArrayList localArrayList = new ArrayList();
+    while (localCursor.moveToNext()) {
+      localArrayList.add(Long.valueOf(localCursor.getLong(0)));
+    }
+    localCursor.close();
+    AppMethodBeat.o(97627);
+    return localArrayList;
+  }
+  
+  public final Cursor getCursor()
+  {
+    AppMethodBeat.i(97631);
+    Cursor localCursor = this.db.rawQuery("select *, rowid from snsTagInfo2 where tagId > 5", null);
+    AppMethodBeat.o(97631);
+    return localCursor;
+  }
+  
+  public final List<String> sr(long paramLong)
+  {
+    AppMethodBeat.i(97625);
+    Object localObject = tj(paramLong);
+    if ((((v)localObject).field_memberList != null) && (!((v)localObject).field_memberList.equals("")))
+    {
+      localObject = bt.S(((v)localObject).field_memberList.split(","));
+      AppMethodBeat.o(97625);
+      return localObject;
+    }
+    localObject = new ArrayList();
+    AppMethodBeat.o(97625);
+    return localObject;
+  }
+  
+  public final String ss(long paramLong)
+  {
+    AppMethodBeat.i(97626);
+    String str = tj(paramLong).field_tagName;
+    AppMethodBeat.o(97626);
+    return str;
+  }
+  
+  public final v tj(long paramLong)
+  {
+    AppMethodBeat.i(97624);
+    Cursor localCursor = this.db.a("select *, rowid from snsTagInfo2 where tagId = ? ", new String[] { String.valueOf(paramLong) }, 2);
+    v localv = new v();
+    if (localCursor.moveToFirst()) {
+      localv.convertFrom(localCursor);
+    }
+    localCursor.close();
+    AppMethodBeat.o(97624);
+    return localv;
+  }
+  
+  public final int tk(long paramLong)
+  {
+    AppMethodBeat.i(97629);
+    int i = this.db.delete("snsTagInfo2", " tagId = ? ", new String[] { String.valueOf(paramLong) });
+    AppMethodBeat.o(97629);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.w
  * JD-Core Version:    0.7.0.1
  */

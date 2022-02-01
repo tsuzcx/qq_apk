@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-public final class c$hk
+final class c$hk
   extends c.g
 {
-  public c$hk()
+  c$hk()
   {
-    super("removeSearchWAWidgetView", "", 10000, false);
+    super("privateCommonApi", "privateCommonApi", 330, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.hk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,30 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.storage.o;
 
 final class SnsUserUI$5
-  implements DialogInterface.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
-  SnsUserUI$5(SnsUserUI paramSnsUserUI, int paramInt) {}
+  SnsUserUI$5(SnsUserUI paramSnsUserUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(39789);
-    ag.cpf().EA(this.riX);
-    SnsUserUI.a(this.sce).ctD();
-    AppMethodBeat.o(39789);
+    AppMethodBeat.i(187749);
+    paramMenuItem = new Intent();
+    paramMenuItem.setClass(this.xLe, SnsMsgUI.class);
+    paramMenuItem.putExtra("sns_msg_force_show_all", true);
+    paramMenuItem.putExtra("sns_msg_comment_list_scene", 2);
+    this.xLe.startActivityForResult(paramMenuItem, 8);
+    AppMethodBeat.o(187749);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUserUI.5
  * JD-Core Version:    0.7.0.1
  */

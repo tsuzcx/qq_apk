@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.e;
+import com.tencent.mm.loader.j.b;
 import java.util.regex.Pattern;
 
 public final class a
 {
-  public static final Pattern uNB;
-  public static final String uNC;
+  public static final Pattern AKj;
+  public static final String AKk;
   
   static
   {
-    AppMethodBeat.i(5610);
-    uNB = Pattern.compile("(http|https)://mp.weixin.qq.com.*");
-    uNC = e.eQz + "vproxy";
-    AppMethodBeat.o(5610);
+    AppMethodBeat.i(77805);
+    AKj = Pattern.compile("(http|https)://mp.weixin.qq.com.*");
+    AKk = b.aih() + "vproxy";
+    AppMethodBeat.o(77805);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.a
  * JD-Core Version:    0.7.0.1
  */

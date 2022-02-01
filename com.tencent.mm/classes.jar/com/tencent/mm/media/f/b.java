@@ -1,57 +1,84 @@
 package com.tencent.mm.media.f;
 
-import a.f.b.j;
-import a.l;
-import android.graphics.Canvas;
-import android.graphics.Paint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/mix/EditorFrameDrawer;", "", "editorItems", "", "Lcom/tencent/mm/media/editor/item/BaseEditorItem;", "(Ljava/util/List;)V", "currFrameTime", "", "drawFrame", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "plugin-mediaeditor_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/globject/GLLeakIDKeyReport;", "", "()V", "FBO_STEP", "", "ID", "", "KEY_ABSSURFACERENDERER", "KEY_FADEDRAWER", "KEY_GLTEXTURERENDERPROC", "KEY_GLTEXTURERENDERPROCBLEND", "KEY_GLTEXTURERENDERPROCYUVTORGB", "KEY_IMAGEDRAWER", "KEY_LIVE", "KEY_MULTI_VIDEO", "KEY_OTHER", "KEY_SCRIPTRENDER", "KEY_STICKERPREVIEWRENDER", "KEY_VLOGREMUXSURFACE", "KEY_VLogScriptTexCache", "KEY_VOIP", "KEY_XEFFECT_RENDERER", "KEY_XLABEFFECT", "NOT_DEFINED", "TAG", "", "markGLFBOCreated", "", "markGLFBOLeaked", "markGLFBOLeakedInErrorTid", "markGLFBOLeakedScene", "key", "markGLTextureCreated", "markGLTextureLeaked", "markGLTextureLeakedInErrorTid", "markGLTextureLeakedScene", "plugin-mediaeditor_release"})
 public final class b
 {
-  private long eSz;
-  private final List<com.tencent.mm.media.editor.a.b> eVw;
+  public static final b grk;
   
-  public b(List<com.tencent.mm.media.editor.a.b> paramList)
+  static
   {
-    AppMethodBeat.i(12991);
-    this.eVw = paramList;
-    AppMethodBeat.o(12991);
+    AppMethodBeat.i(93693);
+    grk = new b();
+    AppMethodBeat.o(93693);
   }
   
-  public final long a(Canvas paramCanvas, Paint paramPaint)
+  public static void ajQ()
   {
-    AppMethodBeat.i(12990);
-    j.q(paramCanvas, "canvas");
-    j.q(paramPaint, "paint");
-    if (this.eVw.size() <= 0)
-    {
-      AppMethodBeat.o(12990);
-      return 0L;
-    }
-    Iterator localIterator = this.eVw.iterator();
-    long l1 = 9223372036854775807L;
-    if (localIterator.hasNext())
-    {
-      com.tencent.mm.media.editor.a.b localb = (com.tencent.mm.media.editor.a.b)localIterator.next();
-      long l2 = localb.gk(this.eSz);
-      localb.draw(paramCanvas, paramPaint);
-      if (l2 >= l1) {
-        break label124;
-      }
-      l1 = l2;
-    }
-    label124:
-    for (;;)
-    {
-      break;
-      this.eSz = l1;
-      l1 = this.eSz;
-      AppMethodBeat.o(12990);
-      return l1;
-    }
+    AppMethodBeat.i(93685);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureCreated");
+    h.vKh.m(1184L, 0L, 1L);
+    AppMethodBeat.o(93685);
+  }
+  
+  public static void ajR()
+  {
+    AppMethodBeat.i(93686);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureLeaked");
+    h.vKh.m(1184L, 1L, 1L);
+    AppMethodBeat.o(93686);
+  }
+  
+  public static void ajS()
+  {
+    AppMethodBeat.i(93688);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOCreated");
+    h.vKh.m(1184L, 100L, 1L);
+    AppMethodBeat.o(93688);
+  }
+  
+  public static void ajT()
+  {
+    AppMethodBeat.i(93689);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOLeaked");
+    h.vKh.m(1184L, 101L, 1L);
+    AppMethodBeat.o(93689);
+  }
+  
+  public static void ajU()
+  {
+    AppMethodBeat.i(93691);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureLeakedInErrorTid");
+    h.vKh.m(1184L, 200L, 1L);
+    AppMethodBeat.o(93691);
+  }
+  
+  public static void ajV()
+  {
+    AppMethodBeat.i(93692);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOLeakedInErrorTid");
+    h.vKh.m(1184L, 201L, 1L);
+    AppMethodBeat.o(93692);
+  }
+  
+  public static void lA(long paramLong)
+  {
+    AppMethodBeat.i(93687);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLTextureLeakedScene key:".concat(String.valueOf(paramLong)));
+    h.vKh.m(1184L, paramLong, 1L);
+    AppMethodBeat.o(93687);
+  }
+  
+  public static void lB(long paramLong)
+  {
+    AppMethodBeat.i(93690);
+    ad.i("MicroMsg.GLLeakIDKeyReport", "markGLFBOLeakedScene key:".concat(String.valueOf(paramLong)));
+    h.vKh.m(1184L, 100L + paramLong, 1L);
+    AppMethodBeat.o(93690);
   }
 }
 

@@ -1,14 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.contact;
 
-import a.f.a.a;
-import a.f.b.k;
-import a.l;
-import a.y;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
+import d.g.a.a;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "invoke"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
 final class d$b
-  extends k
+  extends d.g.b.l
   implements a<y>
 {
   d$b(c paramc, int paramInt)
@@ -18,7 +16,7 @@ final class d$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.contact.d.b
  * JD-Core Version:    0.7.0.1
  */

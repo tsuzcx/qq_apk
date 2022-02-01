@@ -17,47 +17,47 @@ public class l
   
   public final void a(View paramView, CustomViewCallback paramCustomViewCallback)
   {
-    AppMethodBeat.i(85371);
+    AppMethodBeat.i(154453);
     super.onShowCustomView(paramView, paramCustomViewCallback);
-    AppMethodBeat.o(85371);
+    AppMethodBeat.o(154453);
   }
   
   public final void a(XWalkView paramXWalkView, String paramString)
   {
-    AppMethodBeat.i(85369);
+    AppMethodBeat.i(154451);
     super.onPageLoadStarted(paramXWalkView, paramString);
-    AppMethodBeat.o(85369);
+    AppMethodBeat.o(154451);
   }
   
   public final boolean a(XWalkView paramXWalkView, String paramString1, String paramString2, String paramString3, XWalkJavascriptResult paramXWalkJavascriptResult)
   {
-    AppMethodBeat.i(85372);
+    AppMethodBeat.i(154454);
     boolean bool = super.onJsPrompt(paramXWalkView, paramString1, paramString2, paramString3, paramXWalkJavascriptResult);
-    AppMethodBeat.o(85372);
+    AppMethodBeat.o(154454);
     return bool;
   }
   
   public final boolean a(XWalkView paramXWalkView, String paramString1, String paramString2, XWalkJavascriptResult paramXWalkJavascriptResult)
   {
-    AppMethodBeat.i(85373);
+    AppMethodBeat.i(154455);
     boolean bool = super.onJsConfirm(paramXWalkView, paramString1, paramString2, paramXWalkJavascriptResult);
-    AppMethodBeat.o(85373);
+    AppMethodBeat.o(154455);
     return bool;
   }
   
   public final boolean b(XWalkView paramXWalkView, String paramString1, String paramString2, XWalkJavascriptResult paramXWalkJavascriptResult)
   {
-    AppMethodBeat.i(85374);
+    AppMethodBeat.i(154456);
     boolean bool = super.onJsAlert(paramXWalkView, paramString1, paramString2, paramXWalkJavascriptResult);
-    AppMethodBeat.o(85374);
+    AppMethodBeat.o(154456);
     return bool;
   }
   
-  public final void dZW()
+  public final void fsO()
   {
-    AppMethodBeat.i(85370);
+    AppMethodBeat.i(154452);
     super.onHideCustomView();
-    AppMethodBeat.o(85370);
+    AppMethodBeat.o(154452);
   }
 }
 

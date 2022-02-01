@@ -12,16 +12,16 @@ final class zzh
   
   zzh()
   {
-    AppMethodBeat.i(90480);
+    AppMethodBeat.i(5501);
     this.zzags = new HashMap();
     this.zzagt = new Object();
     this.zzagu = new AtomicBoolean(false);
-    AppMethodBeat.o(90480);
+    AppMethodBeat.o(5501);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.gms.internal.stable.zzh
  * JD-Core Version:    0.7.0.1
  */

@@ -19,9 +19,9 @@ public final class SignInOptions
   
   static
   {
-    AppMethodBeat.i(61651);
+    AppMethodBeat.i(12143);
     DEFAULT = new Builder().build();
-    AppMethodBeat.o(61651);
+    AppMethodBeat.o(12143);
   }
   
   private SignInOptions(boolean paramBoolean1, boolean paramBoolean2, String paramString1, boolean paramBoolean3, String paramString2, boolean paramBoolean4, Long paramLong1, Long paramLong2)
@@ -89,49 +89,49 @@ public final class SignInOptions
     
     private final String zza(String paramString)
     {
-      AppMethodBeat.i(61650);
+      AppMethodBeat.i(12142);
       Preconditions.checkNotNull(paramString);
       if ((this.zzadh == null) || (this.zzadh.equals(paramString))) {}
       for (boolean bool = true;; bool = false)
       {
         Preconditions.checkArgument(bool, "two different server client ids provided");
-        AppMethodBeat.o(61650);
+        AppMethodBeat.o(12142);
         return paramString;
       }
     }
     
     public final SignInOptions build()
     {
-      AppMethodBeat.i(61645);
+      AppMethodBeat.i(12137);
       SignInOptions localSignInOptions = new SignInOptions(this.zzadf, this.zzadg, this.zzadh, this.zzadi, this.zzadj, this.zzadk, this.zzadl, this.zzadm, null);
-      AppMethodBeat.o(61645);
+      AppMethodBeat.o(12137);
       return localSignInOptions;
     }
     
     public final Builder requestIdToken(String paramString)
     {
-      AppMethodBeat.i(61647);
+      AppMethodBeat.i(12139);
       this.zzadg = true;
       this.zzadh = zza(paramString);
-      AppMethodBeat.o(61647);
+      AppMethodBeat.o(12139);
       return this;
     }
     
     public final Builder requestServerAuthCode(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(61646);
+      AppMethodBeat.i(12138);
       this.zzadi = paramBoolean;
       this.zzadf = true;
       this.zzadh = zza(paramString);
-      AppMethodBeat.o(61646);
+      AppMethodBeat.o(12138);
       return this;
     }
     
     public final Builder setAuthApiSignInModuleVersion(long paramLong)
     {
-      AppMethodBeat.i(61648);
+      AppMethodBeat.i(12140);
       this.zzadl = Long.valueOf(paramLong);
-      AppMethodBeat.o(61648);
+      AppMethodBeat.o(12140);
       return this;
     }
     
@@ -143,9 +143,9 @@ public final class SignInOptions
     
     public final Builder setRealClientLibraryVersion(long paramLong)
     {
-      AppMethodBeat.i(61649);
+      AppMethodBeat.i(12141);
       this.zzadm = Long.valueOf(paramLong);
-      AppMethodBeat.o(61649);
+      AppMethodBeat.o(12141);
       return this;
     }
     

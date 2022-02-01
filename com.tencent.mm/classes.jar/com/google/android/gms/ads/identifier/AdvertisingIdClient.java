@@ -10,6 +10,7 @@ import com.google.android.gms.common.BlockingServiceConnection;
 import com.google.android.gms.common.GoogleApiAvailabilityLight;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.annotation.KeepForSdk;
+import com.google.android.gms.common.annotation.KeepForSdkWithMembers;
 import com.google.android.gms.common.internal.Preconditions;
 import com.google.android.gms.common.stats.ConnectionTracker;
 import com.google.android.gms.common.util.VisibleForTesting;
@@ -17,6 +18,7 @@ import com.google.android.gms.internal.ads_identifier.zze;
 import com.google.android.gms.internal.ads_identifier.zzf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
@@ -38,7 +40,7 @@ public class AdvertisingIdClient
   private boolean zzg;
   private final Object zzh;
   @GuardedBy("mAutoDisconnectTaskLock")
-  private AdvertisingIdClient.zza zzi;
+  private zza zzi;
   private final boolean zzj;
   private final long zzk;
   
@@ -51,7 +53,7 @@ public class AdvertisingIdClient
   @VisibleForTesting
   private AdvertisingIdClient(Context paramContext, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(115326);
+    AppMethodBeat.i(53016);
     this.zzh = new Object();
     Preconditions.checkNotNull(paramContext);
     Context localContext;
@@ -65,7 +67,7 @@ public class AdvertisingIdClient
       this.zzg = false;
       this.zzk = paramLong;
       this.zzj = paramBoolean2;
-      AppMethodBeat.o(115326);
+      AppMethodBeat.o(53016);
       return;
       paramContext = localContext;
       break;
@@ -73,9 +75,9 @@ public class AdvertisingIdClient
   }
   
   @KeepForSdk
-  public static AdvertisingIdClient.Info getAdvertisingIdInfo(Context paramContext)
+  public static Info getAdvertisingIdInfo(Context paramContext)
   {
-    AppMethodBeat.i(115335);
+    AppMethodBeat.i(53025);
     Object localObject2 = new zzb(paramContext);
     boolean bool = ((zzb)localObject2).getBoolean("gads:ad_id_app_context:enabled", false);
     float f = ((zzb)localObject2).getFloat("gads:ad_id_app_context:ping_ratio", 0.0F);
@@ -86,26 +88,26 @@ public class AdvertisingIdClient
       long l = SystemClock.elapsedRealtime();
       paramContext.zza(false);
       localObject2 = paramContext.getInfo();
-      paramContext.zza((AdvertisingIdClient.Info)localObject2, bool, f, SystemClock.elapsedRealtime() - l, str, null);
+      paramContext.zza((Info)localObject2, bool, f, SystemClock.elapsedRealtime() - l, str, null);
       return localObject2;
     }
     catch (Throwable localThrowable)
     {
       paramContext.zza(null, bool, f, -1L, str, localThrowable);
-      AppMethodBeat.o(115335);
+      AppMethodBeat.o(53025);
       throw localThrowable;
     }
     finally
     {
       paramContext.finish();
-      AppMethodBeat.o(115335);
+      AppMethodBeat.o(53025);
     }
   }
   
   @KeepForSdk
   public static boolean getIsAdIdFakeForDebugLogging(Context paramContext)
   {
-    AppMethodBeat.i(115336);
+    AppMethodBeat.i(53026);
     zzb localzzb = new zzb(paramContext);
     paramContext = new AdvertisingIdClient(paramContext, -1L, localzzb.getBoolean("gads:ad_id_app_context:enabled", false), localzzb.getBoolean("com.google.android.gms.ads.identifier.service.PERSISTENT_START", false));
     try
@@ -117,7 +119,7 @@ public class AdvertisingIdClient
     finally
     {
       paramContext.finish();
-      AppMethodBeat.o(115336);
+      AppMethodBeat.o(53026);
     }
   }
   
@@ -126,7 +128,7 @@ public class AdvertisingIdClient
   
   private static BlockingServiceConnection zza(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(115334);
+    AppMethodBeat.i(53024);
     try
     {
       paramContext.getPackageManager().getPackageInfo("com.android.vending", 0);
@@ -135,14 +137,14 @@ public class AdvertisingIdClient
       case 1: 
       default: 
         paramContext = new IOException("Google Play services not available");
-        AppMethodBeat.o(115334);
+        AppMethodBeat.o(53024);
         throw paramContext;
       }
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
       paramContext = new GooglePlayServicesNotAvailableException(9);
-      AppMethodBeat.o(115334);
+      AppMethodBeat.o(53024);
       throw paramContext;
     }
     if (paramBoolean) {}
@@ -157,48 +159,48 @@ public class AdvertisingIdClient
         if (!paramBoolean) {
           break;
         }
-        AppMethodBeat.o(115334);
+        AppMethodBeat.o(53024);
         return localBlockingServiceConnection;
       }
       catch (Throwable paramContext)
       {
         paramContext = new IOException(paramContext);
-        AppMethodBeat.o(115334);
+        AppMethodBeat.o(53024);
         throw paramContext;
       }
     }
     paramContext = new IOException("Connection failure");
-    AppMethodBeat.o(115334);
+    AppMethodBeat.o(53024);
     throw paramContext;
   }
   
   @VisibleForTesting
   private static zze zza(Context paramContext, BlockingServiceConnection paramBlockingServiceConnection)
   {
-    AppMethodBeat.i(115338);
+    AppMethodBeat.i(53028);
     try
     {
       paramContext = zzf.zza(paramBlockingServiceConnection.getServiceWithTimeout(10000L, TimeUnit.MILLISECONDS));
-      AppMethodBeat.o(115338);
+      AppMethodBeat.o(53028);
       return paramContext;
     }
     catch (InterruptedException paramContext)
     {
       paramContext = new IOException("Interrupted exception");
-      AppMethodBeat.o(115338);
+      AppMethodBeat.o(53028);
       throw paramContext;
     }
     catch (Throwable paramContext)
     {
       paramContext = new IOException(paramContext);
-      AppMethodBeat.o(115338);
+      AppMethodBeat.o(53028);
       throw paramContext;
     }
   }
   
   private final void zza()
   {
-    AppMethodBeat.i(115329);
+    AppMethodBeat.i(53019);
     synchronized (this.zzh)
     {
       if (this.zzi != null) {
@@ -210,12 +212,12 @@ public class AdvertisingIdClient
       this.zzi.join();
       label36:
       if (this.zzk > 0L) {
-        this.zzi = new AdvertisingIdClient.zza(this, this.zzk);
+        this.zzi = new zza(this, this.zzk);
       }
-      AppMethodBeat.o(115329);
+      AppMethodBeat.o(53019);
       return;
       localObject2 = finally;
-      AppMethodBeat.o(115329);
+      AppMethodBeat.o(53019);
       throw localObject2;
     }
     catch (InterruptedException localInterruptedException)
@@ -227,7 +229,7 @@ public class AdvertisingIdClient
   @VisibleForTesting
   private final void zza(boolean paramBoolean)
   {
-    AppMethodBeat.i(115328);
+    AppMethodBeat.i(53018);
     Preconditions.checkNotMainThread("Calling this from your main thread can lead to deadlock");
     try
     {
@@ -244,17 +246,17 @@ public class AdvertisingIdClient
     }
     finally
     {
-      AppMethodBeat.o(115328);
+      AppMethodBeat.o(53018);
     }
   }
   
   @VisibleForTesting
-  private final boolean zza(AdvertisingIdClient.Info paramInfo, boolean paramBoolean, float paramFloat, long paramLong, String paramString, Throwable paramThrowable)
+  private final boolean zza(Info paramInfo, boolean paramBoolean, float paramFloat, long paramLong, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(115337);
+    AppMethodBeat.i(53027);
     if (Math.random() > paramFloat)
     {
-      AppMethodBeat.o(115337);
+      AppMethodBeat.o(53027);
       return false;
     }
     HashMap localHashMap = new HashMap();
@@ -284,7 +286,7 @@ public class AdvertisingIdClient
       localHashMap.put("tag", "AdvertisingIdClient");
       localHashMap.put("time_spent", Long.toString(paramLong));
       new zza(this, localHashMap).start();
-      AppMethodBeat.o(115337);
+      AppMethodBeat.o(53027);
       return true;
       str = "0";
       break;
@@ -293,7 +295,7 @@ public class AdvertisingIdClient
   
   private final boolean zzb()
   {
-    AppMethodBeat.i(115331);
+    AppMethodBeat.i(53021);
     Preconditions.checkNotMainThread("Calling this from your main thread can lead to deadlock");
     try
     {
@@ -305,14 +307,14 @@ public class AdvertisingIdClient
         if ((this.zzi == null) || (!this.zzi.zzp))
         {
           IOException localIOException4 = new IOException("AdvertisingIdClient is not connected.");
-          AppMethodBeat.o(115331);
+          AppMethodBeat.o(53021);
           throw localIOException4;
         }
       }
     }
     finally
     {
-      AppMethodBeat.o(115331);
+      AppMethodBeat.o(53021);
     }
     try
     {
@@ -320,14 +322,14 @@ public class AdvertisingIdClient
       if (!this.zzg)
       {
         IOException localIOException1 = new IOException("AdvertisingIdClient cannot reconnect.");
-        AppMethodBeat.o(115331);
+        AppMethodBeat.o(53021);
         throw localIOException1;
       }
     }
     catch (Exception localException)
     {
       IOException localIOException2 = new IOException("AdvertisingIdClient cannot reconnect.", localException);
-      AppMethodBeat.o(115331);
+      AppMethodBeat.o(53021);
       throw localIOException2;
     }
     label139:
@@ -337,74 +339,74 @@ public class AdvertisingIdClient
     {
       boolean bool = this.zzf.zzc();
       zza();
-      AppMethodBeat.o(115331);
+      AppMethodBeat.o(53021);
       return bool;
     }
     catch (RemoteException localRemoteException)
     {
       IOException localIOException3 = new IOException("Remote exception");
-      AppMethodBeat.o(115331);
+      AppMethodBeat.o(53021);
       throw localIOException3;
     }
   }
   
   protected void finalize()
   {
-    AppMethodBeat.i(115333);
+    AppMethodBeat.i(53023);
     finish();
     super.finalize();
-    AppMethodBeat.o(115333);
+    AppMethodBeat.o(53023);
   }
   
   /* Error */
   public final void finish()
   {
     // Byte code:
-    //   0: ldc_w 367
-    //   3: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc 247
-    //   8: invokestatic 250	com/google/android/gms/common/internal/Preconditions:checkNotMainThread	(Ljava/lang/String;)V
+    //   0: ldc_w 368
+    //   3: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 248
+    //   8: invokestatic 251	com/google/android/gms/common/internal/Preconditions:checkNotMainThread	(Ljava/lang/String;)V
     //   11: aload_0
     //   12: monitorenter
     //   13: aload_0
-    //   14: getfield 65	com/google/android/gms/ads/identifier/AdvertisingIdClient:mContext	Landroid/content/Context;
+    //   14: getfield 67	com/google/android/gms/ads/identifier/AdvertisingIdClient:mContext	Landroid/content/Context;
     //   17: ifnull +10 -> 27
     //   20: aload_0
-    //   21: getfield 254	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
+    //   21: getfield 255	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
     //   24: ifnonnull +12 -> 36
     //   27: aload_0
     //   28: monitorexit
-    //   29: ldc_w 367
-    //   32: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   29: ldc_w 368
+    //   32: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   35: return
     //   36: aload_0
-    //   37: getfield 67	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzg	Z
+    //   37: getfield 69	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzg	Z
     //   40: ifeq +17 -> 57
-    //   43: invokestatic 192	com/google/android/gms/common/stats/ConnectionTracker:getInstance	()Lcom/google/android/gms/common/stats/ConnectionTracker;
+    //   43: invokestatic 193	com/google/android/gms/common/stats/ConnectionTracker:getInstance	()Lcom/google/android/gms/common/stats/ConnectionTracker;
     //   46: aload_0
-    //   47: getfield 65	com/google/android/gms/ads/identifier/AdvertisingIdClient:mContext	Landroid/content/Context;
+    //   47: getfield 67	com/google/android/gms/ads/identifier/AdvertisingIdClient:mContext	Landroid/content/Context;
     //   50: aload_0
-    //   51: getfield 254	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
-    //   54: invokevirtual 371	com/google/android/gms/common/stats/ConnectionTracker:unbindService	(Landroid/content/Context;Landroid/content/ServiceConnection;)V
+    //   51: getfield 255	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
+    //   54: invokevirtual 372	com/google/android/gms/common/stats/ConnectionTracker:unbindService	(Landroid/content/Context;Landroid/content/ServiceConnection;)V
     //   57: aload_0
     //   58: iconst_0
-    //   59: putfield 67	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzg	Z
+    //   59: putfield 69	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzg	Z
     //   62: aload_0
     //   63: aconst_null
-    //   64: putfield 258	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzf	Lcom/google/android/gms/internal/ads_identifier/zze;
+    //   64: putfield 259	com/google/android/gms/ads/identifier/AdvertisingIdClient:zzf	Lcom/google/android/gms/internal/ads_identifier/zze;
     //   67: aload_0
     //   68: aconst_null
-    //   69: putfield 254	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
+    //   69: putfield 255	com/google/android/gms/ads/identifier/AdvertisingIdClient:zze	Lcom/google/android/gms/common/BlockingServiceConnection;
     //   72: aload_0
     //   73: monitorexit
-    //   74: ldc_w 367
-    //   77: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   74: ldc_w 368
+    //   77: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   80: return
     //   81: astore_1
     //   82: aload_0
     //   83: monitorexit
-    //   84: ldc_w 367
-    //   87: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   84: ldc_w 368
+    //   87: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   90: aload_1
     //   91: athrow
     //   92: astore_1
@@ -425,9 +427,9 @@ public class AdvertisingIdClient
   }
   
   @KeepForSdk
-  public AdvertisingIdClient.Info getInfo()
+  public Info getInfo()
   {
-    AppMethodBeat.i(115330);
+    AppMethodBeat.i(53020);
     Preconditions.checkNotMainThread("Calling this from your main thread can lead to deadlock");
     try
     {
@@ -439,14 +441,14 @@ public class AdvertisingIdClient
         if ((this.zzi == null) || (!this.zzi.zzp))
         {
           IOException localIOException3 = new IOException("AdvertisingIdClient is not connected.");
-          AppMethodBeat.o(115330);
+          AppMethodBeat.o(53020);
           throw localIOException3;
         }
       }
     }
     finally
     {
-      AppMethodBeat.o(115330);
+      AppMethodBeat.o(53020);
     }
     Object localObject3;
     try
@@ -455,14 +457,14 @@ public class AdvertisingIdClient
       if (!this.zzg)
       {
         IOException localIOException1 = new IOException("AdvertisingIdClient cannot reconnect.");
-        AppMethodBeat.o(115330);
+        AppMethodBeat.o(53020);
         throw localIOException1;
       }
     }
     catch (Exception localException)
     {
       localObject3 = new IOException("AdvertisingIdClient cannot reconnect.", localException);
-      AppMethodBeat.o(115330);
+      AppMethodBeat.o(53020);
       throw ((Throwable)localObject3);
     }
     label139:
@@ -470,15 +472,15 @@ public class AdvertisingIdClient
     Preconditions.checkNotNull(this.zzf);
     try
     {
-      localObject3 = new AdvertisingIdClient.Info(this.zzf.getId(), this.zzf.zzb(true));
+      localObject3 = new Info(this.zzf.getId(), this.zzf.zzb(true));
       zza();
-      AppMethodBeat.o(115330);
+      AppMethodBeat.o(53020);
       return localObject3;
     }
     catch (RemoteException localRemoteException)
     {
       IOException localIOException2 = new IOException("Remote exception");
-      AppMethodBeat.o(115330);
+      AppMethodBeat.o(53020);
       throw localIOException2;
     }
   }
@@ -486,14 +488,98 @@ public class AdvertisingIdClient
   @KeepForSdk
   public void start()
   {
-    AppMethodBeat.i(115327);
+    AppMethodBeat.i(53017);
     zza(true);
-    AppMethodBeat.o(115327);
+    AppMethodBeat.o(53017);
+  }
+  
+  @KeepForSdkWithMembers
+  public static final class Info
+  {
+    private final String zzq;
+    private final boolean zzr;
+    
+    public Info(String paramString, boolean paramBoolean)
+    {
+      this.zzq = paramString;
+      this.zzr = paramBoolean;
+    }
+    
+    public final String getId()
+    {
+      return this.zzq;
+    }
+    
+    public final boolean isLimitAdTrackingEnabled()
+    {
+      return this.zzr;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(53012);
+      String str = this.zzq;
+      boolean bool = this.zzr;
+      str = String.valueOf(str).length() + 7 + "{" + str + "}" + bool;
+      AppMethodBeat.o(53012);
+      return str;
+    }
+  }
+  
+  @VisibleForTesting
+  static final class zza
+    extends Thread
+  {
+    private WeakReference<AdvertisingIdClient> zzm;
+    private long zzn;
+    CountDownLatch zzo;
+    boolean zzp;
+    
+    public zza(AdvertisingIdClient paramAdvertisingIdClient, long paramLong)
+    {
+      AppMethodBeat.i(53013);
+      this.zzm = new WeakReference(paramAdvertisingIdClient);
+      this.zzn = paramLong;
+      this.zzo = new CountDownLatch(1);
+      this.zzp = false;
+      start();
+      AppMethodBeat.o(53013);
+    }
+    
+    private final void disconnect()
+    {
+      AppMethodBeat.i(53014);
+      AdvertisingIdClient localAdvertisingIdClient = (AdvertisingIdClient)this.zzm.get();
+      if (localAdvertisingIdClient != null)
+      {
+        localAdvertisingIdClient.finish();
+        this.zzp = true;
+      }
+      AppMethodBeat.o(53014);
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(53015);
+      try
+      {
+        if (!this.zzo.await(this.zzn, TimeUnit.MILLISECONDS)) {
+          disconnect();
+        }
+        AppMethodBeat.o(53015);
+        return;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        disconnect();
+        AppMethodBeat.o(53015);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.ads.identifier.AdvertisingIdClient
  * JD-Core Version:    0.7.0.1
  */

@@ -1,126 +1,127 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.model.ae;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.n.a;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.amt;
-import com.tencent.mm.protocal.protobuf.amu;
-import com.tencent.mm.protocal.protobuf.bhi;
-import com.tencent.mm.protocal.protobuf.hq;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.ak;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.protocal.protobuf.awy;
+import com.tencent.mm.protocal.protobuf.awz;
+import com.tencent.mm.protocal.protobuf.bur;
+import com.tencent.mm.protocal.protobuf.ip;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bh;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class n
-  extends m
+  extends com.tencent.mm.al.n
   implements k
 {
-  public static String fPe;
-  public static String fPf;
-  public static String fPg;
-  public static String fPh;
-  public static String fPi;
-  public static String fPj;
-  public static String fPk;
-  public static String fPl;
-  public static String fPm;
-  public static String fPn;
-  private static int fPo;
-  private static int fPp = -1;
-  private static int fPq = 22;
-  private static int fPr = 0;
-  private static boolean fPs = false;
-  private static int fPt = 0;
-  private f callback;
+  public static String hrI;
+  public static String hrJ;
+  public static String hrK;
+  public static String hrL;
+  public static String hrM;
+  public static String hrN;
+  public static String hrO;
+  public static String hrP;
+  public static String hrQ;
+  public static String hrR;
+  public static String hrS;
+  private static int hrT;
+  private static int hrU = -1;
+  private static int hrV = 22;
+  private static int hrW = 0;
+  private static boolean hrX = false;
+  private static int hrY = 0;
+  private g callback;
   
   public n(int paramInt)
   {
-    fPo = paramInt;
+    hrT = paramInt;
   }
   
-  public static boolean ajA()
+  public static int aAC()
   {
-    return (fPq & 0x4) != 0;
+    return hrU;
   }
   
-  public static int ajB()
+  public static boolean aAD()
   {
-    return fPo;
+    return (hrW & 0x2) != 0;
   }
   
-  public static boolean ajC()
+  public static boolean aAE()
   {
-    return (fPr & 0x200) != 0;
+    return (hrV & 0x4) != 0;
   }
   
-  public static boolean ajD()
+  public static int aAF()
   {
-    return (fPr & 0x400) != 0;
+    return hrT;
   }
   
-  public static int ajy()
+  public static boolean aAG()
   {
-    return fPp;
+    return (hrW & 0x200) != 0;
   }
   
-  public static boolean ajz()
+  public static boolean aAH()
   {
-    return (fPr & 0x2) != 0;
+    return (hrW & 0x400) != 0;
   }
   
-  public static void dd(boolean paramBoolean)
+  public static void ev(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      fPq |= 0x4;
+      hrV |= 0x4;
       return;
     }
-    fPq &= 0xFFFFFFFB;
+    hrV &= 0xFFFFFFFB;
   }
   
   public static int getDeviceType()
   {
-    return fPt;
+    return hrY;
   }
   
-  public static boolean lT(int paramInt)
+  public static boolean oB(int paramInt)
   {
-    return fPo != paramInt;
+    return hrT != paramInt;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(16589);
+    AppMethodBeat.i(20633);
     b.a locala = new b.a();
-    amt localamt = new amt();
-    localamt.lGH = aa.dsG();
-    com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NetSceneGetOnlineInfo", "language %s", new Object[] { localamt.lGH });
-    locala.fsX = localamt;
-    locala.fsY = new amu();
+    awy localawy = new awy();
+    localawy.oXs = ac.eFu();
+    ad.d("MicroMsg.NetSceneGetOnlineInfo", "language %s", new Object[] { localawy.oXs });
+    locala.gUU = localawy;
+    locala.gUV = new awz();
     locala.uri = "/cgi-bin/micromsg-bin/getonlineinfo";
     locala.funcId = 526;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.callback = paramf;
-    int i = dispatch(parame, locala.ado(), this);
-    AppMethodBeat.o(16589);
+    this.callback = paramg;
+    int i = dispatch(parame, locala.atI(), this);
+    AppMethodBeat.o(20633);
     return i;
   }
   
@@ -131,110 +132,111 @@ public final class n
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(16590);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.NetSceneGetOnlineInfo", "ongynetend %d, %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.i(20634);
+    ad.i("MicroMsg.NetSceneGetOnlineInfo", "ongynetend %d, %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramArrayOfByte = (amu)((com.tencent.mm.ai.b)paramq).fsW.fta;
-      fPp = paramArrayOfByte.xdw;
-      com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NetSceneGetOnlineInfo", "iconType:%d onlineInfoFlag:%d", new Object[] { Integer.valueOf(fPp), Integer.valueOf(paramArrayOfByte.woE) });
-      Object localObject = br.F(paramArrayOfByte.xdv, "summary");
-      paramInt1 = fPq;
+      paramArrayOfByte = (awz)((com.tencent.mm.al.b)paramq).gUT.gUX;
+      hrU = paramArrayOfByte.Dwh;
+      ad.d("MicroMsg.NetSceneGetOnlineInfo", "iconType:%d onlineInfoFlag:%d", new Object[] { Integer.valueOf(hrU), Integer.valueOf(paramArrayOfByte.Cxm) });
+      Object localObject = bw.K(paramArrayOfByte.Dwg, "summary");
+      paramInt1 = hrV;
       if (localObject != null)
       {
-        fPe = (String)((Map)localObject).get(".summary.banner");
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NetSceneGetOnlineInfo", "onlineinfo, count:%d, summary:%s", new Object[] { Integer.valueOf(paramArrayOfByte.xdt), paramArrayOfByte.xdv });
-        localObject = (amt)((com.tencent.mm.ai.b)paramq).fsV.fta;
-        Iterator localIterator = paramArrayOfByte.xdu.iterator();
+        hrI = (String)((Map)localObject).get(".summary.banner");
+        hrJ = bt.nullAsNil((String)((Map)localObject).get(".summary.device_name"));
+        ad.d("MicroMsg.NetSceneGetOnlineInfo", "onlineinfo, count:%d, summary:%s", new Object[] { Integer.valueOf(paramArrayOfByte.Dwe), paramArrayOfByte.Dwg });
+        localObject = (awy)((com.tencent.mm.al.b)paramq).gUS.gUX;
+        Iterator localIterator = paramArrayOfByte.Dwf.iterator();
         while (localIterator.hasNext())
         {
-          paramq = (bhi)localIterator.next();
-          if (paramq.wuq.dqj().hashCode() != ((amt)localObject).BaseRequest.wuq.dqj().hashCode())
+          paramq = (bur)localIterator.next();
+          if (paramq.CEi.eBA().hashCode() != ((awy)localObject).BaseRequest.CEi.eBA().hashCode())
           {
-            fPt = paramq.xws;
-            com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.NetSceneGetOnlineInfo", "device type %d", new Object[] { Integer.valueOf(fPt) });
-            localObject = br.F(paramq.xwt, "wording");
-            com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NetSceneGetOnlineInfo", paramq.xwt);
+            hrY = paramq.DRP;
+            ad.i("MicroMsg.NetSceneGetOnlineInfo", "device type %d", new Object[] { Integer.valueOf(hrY) });
+            localObject = bw.K(paramq.DRQ, "wording");
+            ad.d("MicroMsg.NetSceneGetOnlineInfo", paramq.DRQ);
             if (localObject != null)
             {
-              fPf = (String)((Map)localObject).get(".wording.title");
-              fPg = (String)((Map)localObject).get(".wording.notify");
-              fPh = (String)((Map)localObject).get(".wording.mute_title");
-              fPi = (String)((Map)localObject).get(".wording.mute_tips");
-              fPj = (String)((Map)localObject).get(".wording.exit");
-              fPk = (String)((Map)localObject).get(".wording.exit_confirm");
-              fPl = (String)((Map)localObject).get(".wording.lock_title");
-              fPm = (String)((Map)localObject).get(".wording.mute_lock_title");
-              fPn = (String)((Map)localObject).get(".wording.exit");
+              hrK = (String)((Map)localObject).get(".wording.title");
+              hrL = (String)((Map)localObject).get(".wording.notify");
+              hrM = (String)((Map)localObject).get(".wording.mute_title");
+              hrN = (String)((Map)localObject).get(".wording.mute_tips");
+              hrR = (String)((Map)localObject).get(".wording.exit_confirm");
+              hrO = (String)((Map)localObject).get(".wording.lock_title");
+              hrP = (String)((Map)localObject).get(".wording.mute_lock_title");
+              hrQ = (String)((Map)localObject).get(".wording.exit");
+              hrS = (String)((Map)localObject).get(".wording.usage_link");
             }
-            paramInt1 = paramq.xwv;
+            paramInt1 = paramq.DRS;
           }
         }
       }
     }
     for (;;)
     {
-      int i = paramArrayOfByte.woE;
-      fPr = i;
+      int i = paramArrayOfByte.Cxm;
+      hrW = i;
       if ((i & 0x2) == 0)
       {
-        fPs = true;
-        if (paramInt1 != fPq)
+        hrX = true;
+        if (paramInt1 != hrV)
         {
-          fPq = paramInt1;
-          aw.aaz();
-          c.QR();
+          hrV = paramInt1;
+          az.arV();
+          c.aeE();
         }
-        if ((paramArrayOfByte.woE & 0x40) != 0)
+        if ((paramArrayOfByte.Cxm & 0x40) != 0)
         {
-          aw.aaz();
-          paramArrayOfByte = c.YA().arw("filehelper");
+          az.arV();
+          paramArrayOfByte = c.apM().aHY("filehelper");
           if (paramArrayOfByte != null)
           {
             paramq = paramArrayOfByte;
-            if (!bo.isNullOrNil(paramArrayOfByte.field_username)) {}
+            if (!bt.isNullOrNil(paramArrayOfByte.field_username)) {}
           }
           else
           {
-            com.tencent.mm.model.ab.x(paramArrayOfByte);
-            aw.aaz();
-            paramq = c.YA().arw("filehelper");
+            ae.D(paramArrayOfByte);
+            az.arV();
+            paramq = c.apM().aHY("filehelper");
           }
-          if ((paramq != null) && (!a.je(paramq.field_type)))
+          if ((paramq != null) && (!com.tencent.mm.n.b.ls(paramq.field_type)))
           {
-            paramq.Nx();
-            aw.aaz();
-            c.YA().b(paramq.field_username, paramq);
+            paramq.Zk();
+            az.arV();
+            c.apM().c(paramq.field_username, paramq);
           }
-          aw.aaz();
-          paramq = c.YF().arH("filehelper");
+          az.arV();
+          paramq = c.apR().aIn("filehelper");
           if (paramq != null) {
-            break label677;
+            break label697;
           }
-          paramq = new ak("filehelper");
-          paramq.fK(bo.aoy());
-          aw.aaz();
-          c.YF().d(paramq);
+          paramq = new am("filehelper");
+          paramq.kS(bt.eGO());
+          az.arV();
+          c.apR().e(paramq);
         }
       }
       for (;;)
       {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        AppMethodBeat.o(16590);
+        AppMethodBeat.o(20634);
         return;
-        fPs = false;
+        hrX = false;
         break;
-        label677:
-        paramq.fK(bo.aoy());
-        aw.aaz();
-        c.YF().a(paramq, "filehelper");
+        label697:
+        paramq.kS(bt.eGO());
+        az.arV();
+        c.apR().a(paramq, "filehelper");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelsimple.n
  * JD-Core Version:    0.7.0.1
  */

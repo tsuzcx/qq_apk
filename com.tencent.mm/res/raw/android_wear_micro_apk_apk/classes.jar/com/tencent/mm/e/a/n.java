@@ -5,69 +5,69 @@ import a.a.a.b;
 public final class n
   extends com.tencent.mm.d.a
 {
-  public String VN;
-  public long VO;
-  public String Vw;
-  public String Vx;
+  public String XI;
+  public long XJ;
+  public String Xr;
+  public String Xs;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.VN == null) {
+      if (this.XI == null) {
         throw new b("Not all required fields were included: Talker");
       }
-      if (this.Vw == null) {
+      if (this.Xr == null) {
         throw new b("Not all required fields were included: Title");
       }
-      if (this.Vx == null) {
+      if (this.Xs == null) {
         throw new b("Not all required fields were included: Content");
       }
-      if (this.VN != null) {
-        paramVarArgs.d(1, this.VN);
+      if (this.XI != null) {
+        paramVarArgs.d(1, this.XI);
       }
-      if (this.Vw != null) {
-        paramVarArgs.d(2, this.Vw);
+      if (this.Xr != null) {
+        paramVarArgs.d(2, this.Xr);
       }
-      if (this.Vx != null) {
-        paramVarArgs.d(3, this.Vx);
+      if (this.Xs != null) {
+        paramVarArgs.d(3, this.Xs);
       }
-      paramVarArgs.g(4, this.VO);
+      paramVarArgs.g(4, this.XJ);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.VN == null) {
+      if (this.XI == null) {
         break label412;
       }
     }
     label412:
-    for (int i = a.a.a.b.b.a.e(1, this.VN) + 0;; i = 0)
+    for (int i = a.a.a.b.b.a.e(1, this.XI) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.Vw != null) {
-        paramInt = i + a.a.a.b.b.a.e(2, this.Vw);
+      if (this.Xr != null) {
+        paramInt = i + a.a.a.b.b.a.e(2, this.Xr);
       }
       i = paramInt;
-      if (this.Vx != null) {
-        i = paramInt + a.a.a.b.b.a.e(3, this.Vx);
+      if (this.Xs != null) {
+        i = paramInt + a.a.a.b.b.a.e(3, this.Xs);
       }
-      return i + a.a.a.a.e(4, this.VO);
+      return i + a.a.a.b.b.a.f(4, this.XJ);
       if (paramInt == 2)
       {
-        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-        for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+        for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
           if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.oz();
+            paramVarArgs.pm();
           }
         }
-        if (this.VN == null) {
+        if (this.XI == null) {
           throw new b("Not all required fields were included: Talker");
         }
-        if (this.Vw == null) {
+        if (this.Xr == null) {
           throw new b("Not all required fields were included: Title");
         }
-        if (this.Vx != null) {
+        if (this.Xs != null) {
           break;
         }
         throw new b("Not all required fields were included: Content");
@@ -81,16 +81,16 @@ public final class n
         default: 
           return -1;
         case 1: 
-          localn.VN = locala.ou();
+          localn.XI = locala.ph();
           return 0;
         case 2: 
-          localn.Vw = locala.ou();
+          localn.Xr = locala.ph();
           return 0;
         case 3: 
-          localn.Vx = locala.ou();
+          localn.Xs = locala.ph();
           return 0;
         }
-        localn.VO = locala.ow();
+        localn.XJ = locala.pj();
         return 0;
       }
       return -1;

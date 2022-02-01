@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b27" android:key="contact_info_social_mobile" android:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b28" android:key="contact_info_social_qq" android:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b26" android:key="contact_info_social_linkedin" android:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b23" android:key="contact_info_social_facebook" android:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b25" android:key="contact_info_social_googlecontacts" android:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/b2_" android:key="contact_info_social_weishop" android:layout="@layout/afi" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/awl" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_wxpay_collection_go_to" android:layout="@layout/aop" android:title="@string/bbh" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="contact_info_wxpay_collection_top" android:layout="@layout/aop" android:persistent="false" android:title="@string/bbl" />
+    <CheckBoxPreference android:key="contact_info_wxpay_collection_not_disturb" android:layout="@layout/aop" android:persistent="false" android:title="@string/bbj" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_wxpay_collection_help" android:layout="@layout/aop" android:title="@string/bbi" />
+    <Preference android:key="contact_info_wxpay_collection_clear_data" android:layout="@layout/aop" android:title="@string/b55" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/f9r" android:key="contact_info_wxpay_collection_install" android:title_color="@color/rf" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/f9x" android:key="contact_info_wxpay_collection_uninstall" android:layout="@layout/ajc" android:title_color="@color/a0i" />
+    <PreferenceCategory />
 </PreferenceScreen>

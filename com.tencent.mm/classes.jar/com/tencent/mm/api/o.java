@@ -5,13 +5,17 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface o
   extends a
 {
-  public abstract void recordImage(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4);
+  public abstract boolean a(c paramc);
   
-  public abstract void recordVideo(String paramString1, String paramString2, String paramString3, String paramString4);
+  public abstract boolean b(c paramc);
+  
+  public abstract c ei(String paramString);
+  
+  public abstract void ej(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.api.o
  * JD-Core Version:    0.7.0.1
  */

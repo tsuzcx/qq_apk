@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.dynamic.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.g;
-import com.tencent.mm.z.b.c;
+import com.tencent.mm.ab.b.c;
+import com.tencent.mm.plugin.appbrand.aa.g;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
@@ -12,9 +12,9 @@ public final class b
   extends c
 {
   public String cacheKey;
-  public Map<String, String> hpW;
-  public int hpX;
-  public int hpY;
+  public Map<String, String> jne;
+  public int jnf;
+  public int jng;
   public String path;
   public String title;
   
@@ -30,7 +30,7 @@ public final class b
   
   public final JSONObject toJSONObject()
   {
-    AppMethodBeat.i(10911);
+    AppMethodBeat.i(121392);
     JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
@@ -38,29 +38,29 @@ public final class b
       {
         localJSONObject.put("title", this.title);
         localJSONObject.put("path", this.path);
-        if (this.hpW != null) {
+        if (this.jne != null) {
           continue;
         }
         localObject = new HashMap();
         localJSONObject.put("query", new JSONObject((Map)localObject));
         localJSONObject.put("cacheKey", this.cacheKey);
-        localJSONObject.put("width", g.pN(this.hpX));
-        localJSONObject.put("height", g.pN(this.hpY));
+        localJSONObject.put("width", g.ul(this.jnf));
+        localJSONObject.put("height", g.ul(this.jng));
       }
       catch (JSONException localJSONException)
       {
         Object localObject;
         continue;
       }
-      AppMethodBeat.o(10911);
+      AppMethodBeat.o(121392);
       return localJSONObject;
-      localObject = this.hpW;
+      localObject = this.jne;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.b
  * JD-Core Version:    0.7.0.1
  */

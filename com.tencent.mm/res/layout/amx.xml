@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/du2" style="@style/py" />
-    <com.tencent.mm.plugin.product.ui.MaxGridView android:gravity="center" android:id="@id/du3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:horizontalSpacing="12.0dip" android:verticalSpacing="12.0dip" android:numColumns="auto_fit" />
+    <TextView android:id="@id/dlh" style="@style/a4o" />
+    <LinearLayout android:orientation="vertical" android:id="@id/dl8" android:background="@drawable/mj" android:paddingLeft="@dimen/h" android:paddingTop="@dimen/h" android:paddingRight="@dimen/h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn">
+        <TextView android:id="@id/dl9" style="@style/a4m" />
+        <TextView android:id="@id/dlb" android:layout_marginTop="@dimen/d" android:layout_marginBottom="@dimen/jn" style="@style/a4m" />
+        <View style="@style/a4n" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/h" android:layout_marginBottom="@dimen/h">
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:id="@id/dld" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <TextView android:textSize="13.0dip" android:textColor="@color/a_u" android:gravity="bottom|center|right" android:id="@id/dle" android:background="@drawable/ap8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <ImageView android:id="@id/dla" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b6u" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+        <View style="@style/a4n" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/dl7" style="@style/a4l" />
+    </LinearLayout>
 </LinearLayout>

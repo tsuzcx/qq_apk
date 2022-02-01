@@ -4,11 +4,27 @@ import android.app.Activity;
 
 final class ActivityStubs
 {
-  static final String Buj = ActivityStubs.class.getPackage().getName();
-  static final String Buk = Buj + "." + ActivityStubs.class.getSimpleName() + "$STDStub_%02X";
-  static final String Bul = Buj + "." + ActivityStubs.class.getSimpleName() + "$SGTStub_%02X";
-  static final String Bum = Buj + "." + ActivityStubs.class.getSimpleName() + "$SGTKStub_%02X";
-  static final String Bun = Buj + "." + ActivityStubs.class.getSimpleName() + "$SIStub_%02X";
+  static final String SINGLEINSTANCE_STUB_CLASSNAME_FORMAT = STUB_PACKAGE_NAME + "." + ActivityStubs.class.getSimpleName() + "$SIStub_%02X";
+  static final int SINGLEINSTANCE_STUB_COUNT = 10;
+  static final int SINGLEINSTANCE_TRSNAPARENT_STUB_COUNT = 3;
+  static final String SINGLETASK_STUB_CLASSNAME_FORMAT;
+  static final int SINGLETASK_STUB_COUNT = 10;
+  static final int SINGLETASK_TRSNAPARENT_STUB_COUNT = 3;
+  static final String SINGLETOP_STUB_CLASSNAME_FORMAT;
+  static final int SINGLETOP_STUB_COUNT = 10;
+  static final int SINGLETOP_TRSNAPARENT_STUB_COUNT = 3;
+  static final int STANDARD_STUB_COUNT = 10;
+  static final int STANDARD_TRSNAPARENT_STUB_COUNT = 3;
+  static final String STARDARD_STUB_CLASSNAME_FORMAT;
+  static final String STUB_PACKAGE_NAME = ActivityStubs.class.getPackage().getName();
+  static final String TRANSPARENT_STUB_FORMAT_SUFFIX = "_T";
+  
+  static
+  {
+    STARDARD_STUB_CLASSNAME_FORMAT = STUB_PACKAGE_NAME + "." + ActivityStubs.class.getSimpleName() + "$STDStub_%02X";
+    SINGLETOP_STUB_CLASSNAME_FORMAT = STUB_PACKAGE_NAME + "." + ActivityStubs.class.getSimpleName() + "$SGTStub_%02X";
+    SINGLETASK_STUB_CLASSNAME_FORMAT = STUB_PACKAGE_NAME + "." + ActivityStubs.class.getSimpleName() + "$SGTKStub_%02X";
+  }
   
   private ActivityStubs()
   {

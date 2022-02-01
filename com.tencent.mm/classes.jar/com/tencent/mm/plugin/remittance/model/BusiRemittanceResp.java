@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.adh;
-import com.tencent.mm.protocal.protobuf.mk;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.ahf;
+import com.tencent.mm.protocal.protobuf.on;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 import java.util.List;
 import org.json.JSONObject;
@@ -15,58 +15,62 @@ public class BusiRemittanceResp
   implements Parcelable
 {
   public static final Parcelable.Creator<BusiRemittanceResp> CREATOR;
-  public int qiM;
-  public String qiN;
-  public String qiO;
-  public int qiP;
-  public String qiQ;
-  public String qiR;
-  public List<adh> qiS;
-  public mk qiT;
-  public int qiU;
-  public int qiV;
-  public int qiW;
+  public int vzL;
+  public String vzM;
+  public String vzN;
+  public int vzO;
+  public String vzP;
+  public String vzQ;
+  public List<ahf> vzR;
+  public on vzS;
+  public int vzT;
+  public int vzU;
+  public String vzV;
+  public String vzW;
+  public int vzX;
   
   static
   {
-    AppMethodBeat.i(44726);
-    CREATOR = new BusiRemittanceResp.1();
-    AppMethodBeat.o(44726);
+    AppMethodBeat.i(67837);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(67837);
   }
   
   BusiRemittanceResp()
   {
-    AppMethodBeat.i(44722);
-    this.qiM = 0;
-    this.qiN = "";
-    this.qiO = "";
-    this.qiS = new LinkedList();
-    this.qiU = 0;
-    this.qiV = 0;
-    this.qiW = 400;
-    AppMethodBeat.o(44722);
+    AppMethodBeat.i(67833);
+    this.vzL = 0;
+    this.vzM = "";
+    this.vzN = "";
+    this.vzR = new LinkedList();
+    this.vzT = 0;
+    this.vzU = 0;
+    this.vzX = 400;
+    AppMethodBeat.o(67833);
   }
   
   protected BusiRemittanceResp(Parcel paramParcel)
   {
-    AppMethodBeat.i(44724);
-    this.qiM = 0;
-    this.qiN = "";
-    this.qiO = "";
-    this.qiS = new LinkedList();
-    this.qiU = 0;
-    this.qiV = 0;
-    this.qiW = 400;
-    this.qiM = paramParcel.readInt();
-    this.qiN = paramParcel.readString();
-    this.qiO = paramParcel.readString();
-    this.qiP = paramParcel.readInt();
-    this.qiQ = paramParcel.readString();
-    this.qiR = paramParcel.readString();
-    this.qiU = paramParcel.readInt();
-    this.qiV = paramParcel.readInt();
-    this.qiW = paramParcel.readInt();
-    this.qiS = new LinkedList();
+    AppMethodBeat.i(67835);
+    this.vzL = 0;
+    this.vzM = "";
+    this.vzN = "";
+    this.vzR = new LinkedList();
+    this.vzT = 0;
+    this.vzU = 0;
+    this.vzX = 400;
+    this.vzL = paramParcel.readInt();
+    this.vzM = paramParcel.readString();
+    this.vzN = paramParcel.readString();
+    this.vzO = paramParcel.readInt();
+    this.vzP = paramParcel.readString();
+    this.vzQ = paramParcel.readString();
+    this.vzT = paramParcel.readInt();
+    this.vzU = paramParcel.readInt();
+    this.vzV = paramParcel.readString();
+    this.vzW = paramParcel.readString();
+    this.vzX = paramParcel.readInt();
+    this.vzR = new LinkedList();
     int j = paramParcel.readInt();
     int i = 0;
     for (;;)
@@ -82,16 +86,16 @@ public class BusiRemittanceResp
         }
         try
         {
-          adh localadh = new adh();
-          localadh.parseFrom(arrayOfByte1);
-          this.qiS.add(localadh);
+          ahf localahf = new ahf();
+          localahf.parseFrom(arrayOfByte1);
+          this.vzR.add(localahf);
           i += 1;
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            ab.printErrStackTrace("MicroMsg.BusiRemittanceResp", localException, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.BusiRemittanceResp", localException, "", new Object[0]);
           }
         }
       }
@@ -101,52 +105,54 @@ public class BusiRemittanceResp
     {
       byte[] arrayOfByte2 = new byte[i];
       paramParcel.readByteArray(arrayOfByte2);
-      this.qiT = new mk();
+      this.vzS = new on();
       try
       {
-        this.qiT.parseFrom(arrayOfByte2);
-        AppMethodBeat.o(44724);
+        this.vzS.parseFrom(arrayOfByte2);
+        AppMethodBeat.o(67835);
         return;
       }
       catch (Exception paramParcel)
       {
-        ab.printErrStackTrace("MicroMsg.BusiRemittanceResp", paramParcel, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.BusiRemittanceResp", paramParcel, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(44724);
+    AppMethodBeat.o(67835);
   }
   
   BusiRemittanceResp(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(44723);
-    this.qiM = 0;
-    this.qiN = "";
-    this.qiO = "";
-    this.qiS = new LinkedList();
-    this.qiU = 0;
-    this.qiV = 0;
-    this.qiW = 400;
-    this.qiM = paramJSONObject.optInt("show_photo", 0);
-    this.qiN = paramJSONObject.optString("photo_url", "");
-    this.qiO = paramJSONObject.optString("favor_desc", "");
-    this.qiP = paramJSONObject.optInt("scan_scene", 0);
-    this.qiQ = paramJSONObject.optString("favor_req_sign", "");
-    this.qiR = paramJSONObject.optString("favor_req_extend", "");
-    this.qiU = paramJSONObject.optInt("get_favor_flag", 0);
-    this.qiV = paramJSONObject.optInt("photo_style", 0);
-    this.qiW = paramJSONObject.optInt("get_favor_interval", 400);
-    this.qiS = b.z(paramJSONObject.optJSONArray("favor_list"));
+    AppMethodBeat.i(67834);
+    this.vzL = 0;
+    this.vzM = "";
+    this.vzN = "";
+    this.vzR = new LinkedList();
+    this.vzT = 0;
+    this.vzU = 0;
+    this.vzX = 400;
+    this.vzL = paramJSONObject.optInt("show_photo", 0);
+    this.vzM = paramJSONObject.optString("photo_url", "");
+    this.vzN = paramJSONObject.optString("favor_desc", "");
+    this.vzO = paramJSONObject.optInt("scan_scene", 0);
+    this.vzP = paramJSONObject.optString("favor_req_sign", "");
+    this.vzQ = paramJSONObject.optString("favor_req_extend", "");
+    this.vzV = paramJSONObject.optString("paying_rcvr_info", "");
+    this.vzW = paramJSONObject.optString("succpage_rcvr_info", "");
+    this.vzT = paramJSONObject.optInt("get_favor_flag", 0);
+    this.vzU = paramJSONObject.optInt("photo_style", 0);
+    this.vzX = paramJSONObject.optInt("get_favor_interval", 400);
+    this.vzR = b.B(paramJSONObject.optJSONArray("favor_list"));
     paramJSONObject = paramJSONObject.optJSONObject("favor_comm_resp");
     if (paramJSONObject != null)
     {
-      this.qiT = new mk();
-      this.qiT.wAU = paramJSONObject.optString("default_fav_compose_id");
-      this.qiT.wAS = b.z(paramJSONObject.optJSONArray("favor_info_list"));
-      this.qiT.wAV = paramJSONObject.optString("favor_resp_sign");
-      this.qiT.wAW = paramJSONObject.optString("no_compose_wording");
-      this.qiT.wAT = b.y(paramJSONObject.optJSONArray("favor_compose_result_list"));
+      this.vzS = new on();
+      this.vzS.CMi = paramJSONObject.optString("default_fav_compose_id");
+      this.vzS.CMg = b.B(paramJSONObject.optJSONArray("favor_info_list"));
+      this.vzS.CMj = paramJSONObject.optString("favor_resp_sign");
+      this.vzS.CMk = paramJSONObject.optString("no_compose_wording");
+      this.vzS.CMh = b.A(paramJSONObject.optJSONArray("favor_compose_result_list"));
     }
-    AppMethodBeat.o(44723);
+    AppMethodBeat.o(67834);
   }
   
   public int describeContents()
@@ -156,28 +162,30 @@ public class BusiRemittanceResp
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(44725);
-    paramParcel.writeInt(this.qiM);
-    paramParcel.writeString(this.qiN);
-    paramParcel.writeString(this.qiO);
-    paramParcel.writeInt(this.qiP);
-    paramParcel.writeString(this.qiQ);
-    paramParcel.writeString(this.qiR);
-    paramParcel.writeInt(this.qiU);
-    paramParcel.writeInt(this.qiV);
-    paramParcel.writeInt(this.qiW);
-    paramParcel.writeInt(this.qiS.size());
-    if (this.qiS.size() > 0)
+    AppMethodBeat.i(67836);
+    paramParcel.writeInt(this.vzL);
+    paramParcel.writeString(this.vzM);
+    paramParcel.writeString(this.vzN);
+    paramParcel.writeInt(this.vzO);
+    paramParcel.writeString(this.vzP);
+    paramParcel.writeString(this.vzQ);
+    paramParcel.writeInt(this.vzT);
+    paramParcel.writeInt(this.vzU);
+    paramParcel.writeString(this.vzV);
+    paramParcel.writeString(this.vzW);
+    paramParcel.writeInt(this.vzX);
+    paramParcel.writeInt(this.vzR.size());
+    if (this.vzR.size() > 0)
     {
       paramInt = 0;
       for (;;)
       {
-        if (paramInt < this.qiS.size())
+        if (paramInt < this.vzR.size())
         {
-          Object localObject1 = (adh)this.qiS.get(paramInt);
+          Object localObject1 = (ahf)this.vzR.get(paramInt);
           try
           {
-            localObject1 = ((adh)localObject1).toByteArray();
+            localObject1 = ((ahf)localObject1).toByteArray();
             paramParcel.writeInt(localObject1.length);
             if (localObject1.length > 0) {
               paramParcel.writeByteArray((byte[])localObject1);
@@ -188,7 +196,7 @@ public class BusiRemittanceResp
           {
             for (;;)
             {
-              ab.printErrStackTrace("MicroMsg.BusiRemittanceResp", localException1, "", new Object[0]);
+              ad.printErrStackTrace("MicroMsg.BusiRemittanceResp", localException1, "", new Object[0]);
               localObject2 = new byte[0];
             }
           }
@@ -198,26 +206,26 @@ public class BusiRemittanceResp
     Object localObject2 = new byte[0];
     try
     {
-      byte[] arrayOfByte = this.qiT.toByteArray();
+      byte[] arrayOfByte = this.vzS.toByteArray();
       localObject2 = arrayOfByte;
     }
     catch (Exception localException2)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.BusiRemittanceResp", localException2, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.BusiRemittanceResp", localException2, "", new Object[0]);
       }
     }
     paramParcel.writeInt(localObject2.length);
     if (localObject2.length > 0) {
       paramParcel.writeByteArray((byte[])localObject2);
     }
-    AppMethodBeat.o(44725);
+    AppMethodBeat.o(67836);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.BusiRemittanceResp
  * JD-Core Version:    0.7.0.1
  */

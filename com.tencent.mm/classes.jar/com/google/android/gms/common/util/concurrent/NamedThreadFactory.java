@@ -19,25 +19,25 @@ public class NamedThreadFactory
   
   public NamedThreadFactory(String paramString, int paramInt)
   {
-    AppMethodBeat.i(90301);
+    AppMethodBeat.i(5322);
     this.zzaau = Executors.defaultThreadFactory();
     this.name = ((String)Preconditions.checkNotNull(paramString, "Name must not be null"));
     this.priority = paramInt;
-    AppMethodBeat.o(90301);
+    AppMethodBeat.o(5322);
   }
   
   public Thread newThread(Runnable paramRunnable)
   {
-    AppMethodBeat.i(90302);
+    AppMethodBeat.i(5323);
     paramRunnable = this.zzaau.newThread(new zza(paramRunnable, this.priority));
     paramRunnable.setName(this.name);
-    AppMethodBeat.o(90302);
+    AppMethodBeat.o(5323);
     return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.gms.common.util.concurrent.NamedThreadFactory
  * JD-Core Version:    0.7.0.1
  */

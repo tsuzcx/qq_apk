@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
+import com.tencent.mm.bs.d;
 
 final class FreeWifiFrontPageUI$6
   implements View.OnClickListener
@@ -13,18 +13,18 @@ final class FreeWifiFrontPageUI$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(20964);
+    AppMethodBeat.i(25023);
     paramView = new Intent();
-    paramView.putExtra("rawUrl", this.mND.mNz);
+    paramView.putExtra("rawUrl", this.rkv.rkr);
     paramView.putExtra("showShare", false);
     paramView.putExtra("show_bottom", false);
-    d.b(this.mND.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
-    AppMethodBeat.o(20964);
+    d.b(this.rkv.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+    AppMethodBeat.o(25023);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.6
  * JD-Core Version:    0.7.0.1
  */

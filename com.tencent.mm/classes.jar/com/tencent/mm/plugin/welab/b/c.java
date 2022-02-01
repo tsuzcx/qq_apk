@@ -4,13 +4,13 @@ import java.util.HashMap;
 
 public final class c
 {
-  public int TR;
-  public HashMap<String, String> bSA;
+  public int BBM;
+  public int BBN;
+  public String BBO;
+  public int aaU;
+  public HashMap<String, String> cvB;
   public long endTime;
   public long startTime;
-  public int vvd;
-  public int vve;
-  public String vvf;
 }
 
 

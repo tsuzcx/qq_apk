@@ -1,89 +1,89 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
-import a.l;
-import a.v;
+import android.app.Activity;
 import android.os.Parcelable;
 import android.util.SparseArray;
-import com.tencent.luggage.sdk.launching.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aa.i;
+import com.tencent.mm.ac.i;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.ui.MMActivity;
+import d.g.b.k;
+import d.l;
+import d.v;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalAPIInvokeManager;", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "(Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;)V", "callbackContextMap", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CallbackContext;", "callbackIdGenerator", "", "getRuntime", "()Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "navigateBack", "", "transitiveData", "", "invokeResult", "onCallback", "component", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalComponent;", "callbackId", "data", "performInvoke", "invokeData", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalAPIInvokeManager;", "", "runtime", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "(Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;)V", "callbackContextMap", "Landroid/util/SparseArray;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/CallbackContext;", "callbackIdGenerator", "", "getRuntime", "()Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalRuntime;", "navigateBack", "", "transitiveData", "", "invokeResult", "onCallback", "component", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/IFunctionalComponent;", "callbackId", "data", "performInvoke", "invokeData", "plugin-appbrand-integration_release"})
 public final class c
 {
-  int iox;
-  final SparseArray<a> ioy;
-  final j ioz;
+  int kPr;
+  final SparseArray<a> kPs;
+  final j kPt;
   
   public c(j paramj)
   {
-    AppMethodBeat.i(134734);
-    this.ioz = paramj;
-    this.ioy = new SparseArray();
-    AppMethodBeat.o(134734);
+    AppMethodBeat.i(50863);
+    this.kPt = paramj;
+    this.kPs = new SparseArray();
+    AppMethodBeat.o(50863);
   }
   
   public final void a(m paramm, int paramInt, String paramString)
   {
-    AppMethodBeat.i(134732);
-    a.f.b.j.q(paramm, "component");
-    a.f.b.j.q(paramString, "data");
-    paramm = (a)this.ioy.get(paramInt, null);
+    AppMethodBeat.i(50861);
+    k.h(paramm, "component");
+    k.h(paramString, "data");
+    paramm = (a)this.kPs.get(paramInt, null);
     if ((paramm instanceof n))
     {
-      this.ioy.remove(paramInt);
-      cC(((n)paramm).hiO, paramString);
-      AppMethodBeat.o(134732);
+      this.kPs.remove(paramInt);
+      dA(((n)paramm).jdG, paramString);
+      AppMethodBeat.o(50861);
       return;
     }
     if ((paramm instanceof o))
     {
-      this.ioy.remove(paramInt);
-      paramm = this.ioz.atV();
+      this.kPs.remove(paramInt);
+      paramm = this.kPt.getContext();
       if (paramm != null) {
         paramm.moveTaskToBack(true);
       }
-      this.ioz.finish();
+      this.kPt.finish();
     }
-    AppMethodBeat.o(134732);
+    AppMethodBeat.o(50861);
   }
   
-  final void cC(String paramString1, String paramString2)
+  final void dA(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(134733);
-    Object localObject = this.ioz.atS().bDf;
+    AppMethodBeat.i(50862);
+    Object localObject = this.kPt.aNc().cfm;
     if (localObject != null)
     {
       if (localObject == null)
       {
         paramString1 = new v("null cannot be cast to non-null type com.tencent.luggage.sdk.launching.OnWXAppResultListener<com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.ByRuntimeQrcodeResult>");
-        AppMethodBeat.o(134733);
+        AppMethodBeat.o(50862);
         throw paramString1;
       }
-      ((b)localObject).b((Parcelable)new ByRuntimeQrcodeResult(paramString2, paramString1));
-      this.ioz.finish();
-      AppMethodBeat.o(134733);
+      ((com.tencent.luggage.sdk.launching.a)localObject).b((Parcelable)new ByRuntimeQrcodeResult(paramString2, paramString1));
+      this.kPt.finish();
+      AppMethodBeat.o(50862);
       return;
     }
-    this.iox += 1;
-    int i = this.iox;
+    this.kPr += 1;
+    int i = this.kPr;
     localObject = new i();
     i locali = new i();
-    locali.f("data", paramString2);
-    locali.f("transitiveData", paramString1);
-    ((i)localObject).f("extraData", locali);
+    locali.j("data", paramString2);
+    locali.j("transitiveData", paramString1);
+    ((i)localObject).j("extraData", locali);
     paramString1 = ((i)localObject).toString();
-    a.f.b.j.p(paramString1, "JSONObject().apply {\n   …   )\n        }.toString()");
-    this.ioy.put(i, o.ioM);
-    this.ioz.atU().q("navigateBackApplication", paramString1, i);
-    AppMethodBeat.o(134733);
+    k.g(paramString1, "JSONObject().apply {\n   …   )\n        }.toString()");
+    this.kPs.put(i, o.kPE);
+    this.kPt.aNe().w("navigateBackApplication", paramString1, i);
+    AppMethodBeat.o(50862);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.c
  * JD-Core Version:    0.7.0.1
  */

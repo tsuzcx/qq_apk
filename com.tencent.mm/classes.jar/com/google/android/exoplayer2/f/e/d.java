@@ -6,27 +6,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d
 {
-  int aWA;
-  boolean aWB;
-  boolean aWC;
-  int aWD = -1;
-  int aWE = -1;
-  int aWF = -1;
-  int aWG = -1;
-  int aWH = -1;
-  d aWI;
-  Layout.Alignment aWJ;
-  String aWz;
   int backgroundColor;
-  float fontSize;
+  int buC;
+  boolean buD;
+  boolean buE;
+  int buF = -1;
+  int buG = -1;
+  int buH = -1;
+  int buI = -1;
+  int buJ = -1;
+  float buK;
+  d buL;
+  Layout.Alignment buM;
+  String iE;
   String id;
   
-  public final d aI(boolean paramBoolean)
+  public final d aV(boolean paramBoolean)
   {
     int i = 1;
-    AppMethodBeat.i(95690);
+    AppMethodBeat.i(92858);
     boolean bool;
-    if (this.aWI == null)
+    if (this.buL == null)
     {
       bool = true;
       a.checkState(bool);
@@ -36,8 +36,8 @@ final class d
     }
     for (;;)
     {
-      this.aWD = i;
-      AppMethodBeat.o(95690);
+      this.buF = i;
+      AppMethodBeat.o(92858);
       return this;
       bool = false;
       break;
@@ -46,12 +46,12 @@ final class d
     }
   }
   
-  public final d aJ(boolean paramBoolean)
+  public final d aW(boolean paramBoolean)
   {
     int i = 1;
-    AppMethodBeat.i(95691);
+    AppMethodBeat.i(92859);
     boolean bool;
-    if (this.aWI == null)
+    if (this.buL == null)
     {
       bool = true;
       a.checkState(bool);
@@ -61,8 +61,8 @@ final class d
     }
     for (;;)
     {
-      this.aWE = i;
-      AppMethodBeat.o(95691);
+      this.buG = i;
+      AppMethodBeat.o(92859);
       return this;
       bool = false;
       break;
@@ -73,74 +73,74 @@ final class d
   
   final d b(d paramd)
   {
-    AppMethodBeat.i(95693);
+    AppMethodBeat.i(92861);
     if (paramd != null)
     {
-      if ((!this.aWB) && (paramd.aWB)) {
-        ee(paramd.aWA);
+      if ((!this.buD) && (paramd.buD)) {
+        fc(paramd.buC);
       }
-      if (this.aWF == -1) {
-        this.aWF = paramd.aWF;
+      if (this.buH == -1) {
+        this.buH = paramd.buH;
       }
-      if (this.aWG == -1) {
-        this.aWG = paramd.aWG;
+      if (this.buI == -1) {
+        this.buI = paramd.buI;
       }
-      if (this.aWz == null) {
-        this.aWz = paramd.aWz;
+      if (this.iE == null) {
+        this.iE = paramd.iE;
       }
-      if (this.aWD == -1) {
-        this.aWD = paramd.aWD;
+      if (this.buF == -1) {
+        this.buF = paramd.buF;
       }
-      if (this.aWE == -1) {
-        this.aWE = paramd.aWE;
+      if (this.buG == -1) {
+        this.buG = paramd.buG;
       }
-      if (this.aWJ == null) {
-        this.aWJ = paramd.aWJ;
+      if (this.buM == null) {
+        this.buM = paramd.buM;
       }
-      if (this.aWH == -1)
+      if (this.buJ == -1)
       {
-        this.aWH = paramd.aWH;
-        this.fontSize = paramd.fontSize;
+        this.buJ = paramd.buJ;
+        this.buK = paramd.buK;
       }
-      if ((!this.aWC) && (paramd.aWC)) {
-        ef(paramd.backgroundColor);
+      if ((!this.buE) && (paramd.buE)) {
+        fd(paramd.backgroundColor);
       }
     }
-    AppMethodBeat.o(95693);
+    AppMethodBeat.o(92861);
     return this;
   }
   
-  public final d ee(int paramInt)
+  public final d fc(int paramInt)
   {
-    AppMethodBeat.i(95692);
-    if (this.aWI == null) {}
+    AppMethodBeat.i(92860);
+    if (this.buL == null) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      this.aWA = paramInt;
-      this.aWB = true;
-      AppMethodBeat.o(95692);
+      this.buC = paramInt;
+      this.buD = true;
+      AppMethodBeat.o(92860);
       return this;
     }
   }
   
-  public final d ef(int paramInt)
+  public final d fd(int paramInt)
   {
     this.backgroundColor = paramInt;
-    this.aWC = true;
+    this.buE = true;
     return this;
   }
   
   public final int getStyle()
   {
     int j = 0;
-    if ((this.aWF == -1) && (this.aWG == -1)) {
+    if ((this.buH == -1) && (this.buI == -1)) {
       return -1;
     }
-    if (this.aWF == 1) {}
+    if (this.buH == 1) {}
     for (int i = 1;; i = 0)
     {
-      if (this.aWG == 1) {
+      if (this.buI == 1) {
         j = 2;
       }
       return i | j;
@@ -149,7 +149,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.f.e.d
  * JD-Core Version:    0.7.0.1
  */

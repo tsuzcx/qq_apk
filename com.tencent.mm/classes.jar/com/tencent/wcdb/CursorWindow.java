@@ -21,7 +21,7 @@ public class CursorWindow
   
   static
   {
-    AppMethodBeat.i(12056);
+    AppMethodBeat.i(2737);
     int i = Resources.getSystem().getIdentifier("config_cursorWindowSize", "integer", "android");
     if (i != 0) {}
     for (sCursorWindowSize = Resources.getSystem().getInteger(i) * 1024;; sCursorWindowSize = 2097152)
@@ -30,9 +30,9 @@ public class CursorWindow
       {
         public final CursorWindow createFromParcel(Parcel paramAnonymousParcel)
         {
-          AppMethodBeat.i(12021);
+          AppMethodBeat.i(2702);
           paramAnonymousParcel = new CursorWindow(paramAnonymousParcel, null);
-          AppMethodBeat.o(12021);
+          AppMethodBeat.o(2702);
           return paramAnonymousParcel;
         }
         
@@ -41,22 +41,22 @@ public class CursorWindow
           return new CursorWindow[paramAnonymousInt];
         }
       };
-      AppMethodBeat.o(12056);
+      AppMethodBeat.o(2737);
       return;
     }
   }
   
   private CursorWindow(Parcel paramParcel)
   {
-    AppMethodBeat.i(12025);
+    AppMethodBeat.i(2706);
     paramParcel = new UnsupportedOperationException();
-    AppMethodBeat.o(12025);
+    AppMethodBeat.o(2706);
     throw paramParcel;
   }
   
   public CursorWindow(String paramString)
   {
-    AppMethodBeat.i(12024);
+    AppMethodBeat.i(2705);
     this.mStartPos = 0;
     if ((paramString != null) && (paramString.length() != 0)) {}
     for (;;)
@@ -67,11 +67,11 @@ public class CursorWindow
         break;
       }
       paramString = new CursorWindowAllocationException("Cursor window allocation of " + sCursorWindowSize / 1024 + " kb failed. ");
-      AppMethodBeat.o(12024);
+      AppMethodBeat.o(2705);
       throw paramString;
       paramString = "<unnamed>";
     }
-    AppMethodBeat.o(12024);
+    AppMethodBeat.o(2705);
   }
   
   @Deprecated
@@ -82,13 +82,13 @@ public class CursorWindow
   
   private void dispose()
   {
-    AppMethodBeat.i(12027);
+    AppMethodBeat.i(2708);
     if (this.mWindowPtr != 0L)
     {
       nativeDispose(this.mWindowPtr);
       this.mWindowPtr = 0L;
     }
-    AppMethodBeat.o(12027);
+    AppMethodBeat.o(2708);
   }
   
   private static native boolean nativeAllocRow(long paramLong);
@@ -129,9 +129,9 @@ public class CursorWindow
   
   public static CursorWindow newFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(12052);
+    AppMethodBeat.i(2733);
     paramParcel = (CursorWindow)CREATOR.createFromParcel(paramParcel);
-    AppMethodBeat.o(12052);
+    AppMethodBeat.o(2733);
     return paramParcel;
   }
   
@@ -146,7 +146,7 @@ public class CursorWindow
   
   public boolean allocRow()
   {
-    AppMethodBeat.i(12031);
+    AppMethodBeat.i(2712);
     acquireReference();
     try
     {
@@ -156,13 +156,13 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12031);
+      AppMethodBeat.o(2712);
     }
   }
   
   public void clear()
   {
-    AppMethodBeat.i(12028);
+    AppMethodBeat.i(2709);
     acquireReference();
     try
     {
@@ -173,17 +173,17 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12028);
+      AppMethodBeat.o(2709);
     }
   }
   
   public void copyStringToBuffer(int paramInt1, int paramInt2, CharArrayBuffer paramCharArrayBuffer)
   {
-    AppMethodBeat.i(12041);
+    AppMethodBeat.i(2722);
     if (paramCharArrayBuffer == null)
     {
       paramCharArrayBuffer = new IllegalArgumentException("CharArrayBuffer should not be null");
-      AppMethodBeat.o(12041);
+      AppMethodBeat.o(2722);
       throw paramCharArrayBuffer;
     }
     acquireReference();
@@ -195,7 +195,7 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12041);
+      AppMethodBeat.o(2722);
     }
   }
   
@@ -206,7 +206,7 @@ public class CursorWindow
   
   protected void finalize()
   {
-    AppMethodBeat.i(12026);
+    AppMethodBeat.i(2707);
     try
     {
       dispose();
@@ -215,13 +215,13 @@ public class CursorWindow
     finally
     {
       super.finalize();
-      AppMethodBeat.o(12026);
+      AppMethodBeat.o(2707);
     }
   }
   
   public void freeLastRow()
   {
-    AppMethodBeat.i(12032);
+    AppMethodBeat.i(2713);
     acquireReference();
     try
     {
@@ -231,13 +231,13 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12032);
+      AppMethodBeat.o(2713);
     }
   }
   
   public byte[] getBlob(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12039);
+    AppMethodBeat.i(2720);
     acquireReference();
     try
     {
@@ -247,13 +247,13 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12039);
+      AppMethodBeat.o(2720);
     }
   }
   
   public double getDouble(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12043);
+    AppMethodBeat.i(2724);
     acquireReference();
     try
     {
@@ -263,29 +263,29 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12043);
+      AppMethodBeat.o(2724);
     }
   }
   
   public float getFloat(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12046);
+    AppMethodBeat.i(2727);
     float f = (float)getDouble(paramInt1, paramInt2);
-    AppMethodBeat.o(12046);
+    AppMethodBeat.o(2727);
     return f;
   }
   
   public int getInt(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12045);
+    AppMethodBeat.i(2726);
     paramInt1 = (int)getLong(paramInt1, paramInt2);
-    AppMethodBeat.o(12045);
+    AppMethodBeat.o(2726);
     return paramInt1;
   }
   
   public long getLong(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12042);
+    AppMethodBeat.i(2723);
     acquireReference();
     try
     {
@@ -295,7 +295,7 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12042);
+      AppMethodBeat.o(2723);
     }
   }
   
@@ -306,7 +306,7 @@ public class CursorWindow
   
   public int getNumRows()
   {
-    AppMethodBeat.i(12029);
+    AppMethodBeat.i(2710);
     acquireReference();
     try
     {
@@ -316,15 +316,15 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12029);
+      AppMethodBeat.o(2710);
     }
   }
   
   public short getShort(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12044);
+    AppMethodBeat.i(2725);
     short s = (short)(int)getLong(paramInt1, paramInt2);
-    AppMethodBeat.o(12044);
+    AppMethodBeat.o(2725);
     return s;
   }
   
@@ -335,7 +335,7 @@ public class CursorWindow
   
   public String getString(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12040);
+    AppMethodBeat.i(2721);
     acquireReference();
     try
     {
@@ -345,13 +345,13 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12040);
+      AppMethodBeat.o(2721);
     }
   }
   
   public int getType(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12038);
+    AppMethodBeat.i(2719);
     acquireReference();
     try
     {
@@ -361,87 +361,87 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12038);
+      AppMethodBeat.o(2719);
     }
   }
   
   @Deprecated
   public boolean isBlob(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12034);
+    AppMethodBeat.i(2715);
     paramInt1 = getType(paramInt1, paramInt2);
     if ((paramInt1 == 4) || (paramInt1 == 0))
     {
-      AppMethodBeat.o(12034);
+      AppMethodBeat.o(2715);
       return true;
     }
-    AppMethodBeat.o(12034);
+    AppMethodBeat.o(2715);
     return false;
   }
   
   @Deprecated
   public boolean isFloat(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12036);
+    AppMethodBeat.i(2717);
     if (getType(paramInt1, paramInt2) == 2)
     {
-      AppMethodBeat.o(12036);
+      AppMethodBeat.o(2717);
       return true;
     }
-    AppMethodBeat.o(12036);
+    AppMethodBeat.o(2717);
     return false;
   }
   
   @Deprecated
   public boolean isLong(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12035);
+    AppMethodBeat.i(2716);
     if (getType(paramInt1, paramInt2) == 1)
     {
-      AppMethodBeat.o(12035);
+      AppMethodBeat.o(2716);
       return true;
     }
-    AppMethodBeat.o(12035);
+    AppMethodBeat.o(2716);
     return false;
   }
   
   @Deprecated
   public boolean isNull(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12033);
+    AppMethodBeat.i(2714);
     if (getType(paramInt1, paramInt2) == 0)
     {
-      AppMethodBeat.o(12033);
+      AppMethodBeat.o(2714);
       return true;
     }
-    AppMethodBeat.o(12033);
+    AppMethodBeat.o(2714);
     return false;
   }
   
   @Deprecated
   public boolean isString(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12037);
+    AppMethodBeat.i(2718);
     paramInt1 = getType(paramInt1, paramInt2);
     if ((paramInt1 == 3) || (paramInt1 == 0))
     {
-      AppMethodBeat.o(12037);
+      AppMethodBeat.o(2718);
       return true;
     }
-    AppMethodBeat.o(12037);
+    AppMethodBeat.o(2718);
     return false;
   }
   
   public void onAllReferencesReleased()
   {
-    AppMethodBeat.i(12054);
+    AppMethodBeat.i(2735);
     dispose();
-    AppMethodBeat.o(12054);
+    AppMethodBeat.o(2735);
   }
   
   public boolean putBlob(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12047);
+    AppMethodBeat.i(2728);
     acquireReference();
     try
     {
@@ -451,13 +451,13 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12047);
+      AppMethodBeat.o(2728);
     }
   }
   
   public boolean putDouble(double paramDouble, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12050);
+    AppMethodBeat.i(2731);
     acquireReference();
     try
     {
@@ -467,13 +467,13 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12050);
+      AppMethodBeat.o(2731);
     }
   }
   
   public boolean putLong(long paramLong, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12049);
+    AppMethodBeat.i(2730);
     acquireReference();
     try
     {
@@ -483,13 +483,13 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12049);
+      AppMethodBeat.o(2730);
     }
   }
   
   public boolean putNull(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12051);
+    AppMethodBeat.i(2732);
     acquireReference();
     try
     {
@@ -499,13 +499,13 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12051);
+      AppMethodBeat.o(2732);
     }
   }
   
   public boolean putString(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12048);
+    AppMethodBeat.i(2729);
     acquireReference();
     try
     {
@@ -515,13 +515,13 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12048);
+      AppMethodBeat.o(2729);
     }
   }
   
   public boolean setNumColumns(int paramInt)
   {
-    AppMethodBeat.i(12030);
+    AppMethodBeat.i(2711);
     acquireReference();
     try
     {
@@ -531,7 +531,7 @@ public class CursorWindow
     finally
     {
       releaseReference();
-      AppMethodBeat.o(12030);
+      AppMethodBeat.o(2711);
     }
   }
   
@@ -542,17 +542,17 @@ public class CursorWindow
   
   public String toString()
   {
-    AppMethodBeat.i(12055);
+    AppMethodBeat.i(2736);
     String str = getName() + " {" + Long.toHexString(this.mWindowPtr) + "}";
-    AppMethodBeat.o(12055);
+    AppMethodBeat.o(2736);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(12053);
+    AppMethodBeat.i(2734);
     paramParcel = new UnsupportedOperationException();
-    AppMethodBeat.o(12053);
+    AppMethodBeat.o(2734);
     throw paramParcel;
   }
 }

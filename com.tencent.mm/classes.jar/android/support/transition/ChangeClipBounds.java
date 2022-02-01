@@ -1,6 +1,7 @@
 package android.support.transition;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.TypeEvaluator;
 import android.content.Context;
@@ -14,7 +15,7 @@ import java.util.Map;
 public class ChangeClipBounds
   extends Transition
 {
-  private static final String[] qo = { "android:clipBounds:clip" };
+  private static final String[] wR = { "android:clipBounds:clip" };
   
   public ChangeClipBounds() {}
   
@@ -23,79 +24,85 @@ public class ChangeClipBounds
     super(paramContext, paramAttributeSet);
   }
   
-  private static void c(ah paramah)
+  private static void c(u paramu)
   {
-    Object localObject = paramah.view;
+    Object localObject = paramu.view;
     if (((View)localObject).getVisibility() == 8) {}
     Rect localRect;
     do
     {
       return;
-      localRect = t.av((View)localObject);
-      paramah.values.put("android:clipBounds:clip", localRect);
+      localRect = t.aB((View)localObject);
+      paramu.values.put("android:clipBounds:clip", localRect);
     } while (localRect != null);
     localObject = new Rect(0, 0, ((View)localObject).getWidth(), ((View)localObject).getHeight());
-    paramah.values.put("android:clipBounds:bounds", localObject);
+    paramu.values.put("android:clipBounds:bounds", localObject);
   }
   
-  public final Animator a(ViewGroup paramViewGroup, ah paramah1, ah paramah2)
+  public final Animator a(ViewGroup paramViewGroup, u paramu1, u paramu2)
   {
-    if ((paramah1 == null) || (paramah2 == null) || (!paramah1.values.containsKey("android:clipBounds:clip")) || (!paramah2.values.containsKey("android:clipBounds:clip"))) {
+    if ((paramu1 == null) || (paramu2 == null) || (!paramu1.values.containsKey("android:clipBounds:clip")) || (!paramu2.values.containsKey("android:clipBounds:clip"))) {
       paramViewGroup = null;
     }
     int i;
     do
     {
       return paramViewGroup;
-      Object localObject = (Rect)paramah1.values.get("android:clipBounds:clip");
-      Rect localRect = (Rect)paramah2.values.get("android:clipBounds:clip");
+      Object localObject = (Rect)paramu1.values.get("android:clipBounds:clip");
+      Rect localRect = (Rect)paramu2.values.get("android:clipBounds:clip");
       if (localRect == null) {}
       for (i = 1; (localObject == null) && (localRect == null); i = 0) {
         return null;
       }
       if (localObject == null)
       {
-        paramViewGroup = (Rect)paramah1.values.get("android:clipBounds:bounds");
-        paramah1 = localRect;
+        paramViewGroup = (Rect)paramu1.values.get("android:clipBounds:bounds");
+        paramu1 = localRect;
       }
-      while (paramViewGroup.equals(paramah1))
+      while (paramViewGroup.equals(paramu1))
       {
         return null;
         paramViewGroup = (ViewGroup)localObject;
-        paramah1 = localRect;
+        paramu1 = localRect;
         if (localRect == null)
         {
-          paramah1 = (Rect)paramah2.values.get("android:clipBounds:bounds");
+          paramu1 = (Rect)paramu2.values.get("android:clipBounds:bounds");
           paramViewGroup = (ViewGroup)localObject;
         }
       }
-      t.c(paramah2.view, paramViewGroup);
-      localObject = new z(new Rect());
-      paramah1 = ObjectAnimator.ofObject(paramah2.view, au.uz, (TypeEvaluator)localObject, new Rect[] { paramViewGroup, paramah1 });
-      paramViewGroup = paramah1;
+      t.b(paramu2.view, paramViewGroup);
+      localObject = new m(new Rect());
+      paramu1 = ObjectAnimator.ofObject(paramu2.view, ag.AN, (TypeEvaluator)localObject, new Rect[] { paramViewGroup, paramu1 });
+      paramViewGroup = paramu1;
     } while (i == 0);
-    paramah1.addListener(new ChangeClipBounds.1(this, paramah2.view));
-    return paramah1;
+    paramu1.addListener(new AnimatorListenerAdapter()
+    {
+      public final void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        t.b(this.xu, null);
+      }
+    });
+    return paramu1;
   }
   
-  public final void a(ah paramah)
+  public final void a(u paramu)
   {
-    c(paramah);
+    c(paramu);
   }
   
-  public final void b(ah paramah)
+  public final void b(u paramu)
   {
-    c(paramah);
+    c(paramu);
   }
   
   public final String[] getTransitionProperties()
   {
-    return qo;
+    return wR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.ChangeClipBounds
  * JD-Core Version:    0.7.0.1
  */

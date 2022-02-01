@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.plugin.wallet.balance.a.a.l;
+import com.tencent.mm.al.n;
+import com.tencent.mm.co.f;
+import com.tencent.mm.plugin.wallet.balance.model.lqt.o;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.g;
@@ -21,21 +21,21 @@ public class WalletLqtBeforeSaveUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(45514);
+    AppMethodBeat.i(68779);
     super.onCreate(paramBundle);
     paramBundle = g.c(this, false, null);
-    new l().adl().b(new WalletLqtBeforeSaveUI.1(this, paramBundle));
-    AppMethodBeat.o(45514);
+    new o().auK().b(new WalletLqtBeforeSaveUI.1(this, paramBundle));
+    AppMethodBeat.o(68779);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(45515);
+    AppMethodBeat.i(68780);
     super.onDestroy();
-    AppMethodBeat.o(45515);
+    AppMethodBeat.o(68780);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     return false;
   }
@@ -48,7 +48,7 @@ public class WalletLqtBeforeSaveUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtBeforeSaveUI
  * JD-Core Version:    0.7.0.1
  */

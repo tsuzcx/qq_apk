@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="14.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/yw" android:background="@color/kd" android:layout_width="fill_parent" android:layout_height="215.0dip">
-        <com.tencent.mm.ui.base.MMFlipper android:gravity="center" android:layout_gravity="center" android:id="@id/yx" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-        <com.tencent.mm.ui.base.MMDotView android:gravity="center" android:orientation="horizontal" android:id="@id/yy" android:paddingBottom="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
+    <View android:layout_width="0.0dip" android:layout_height="1.0px" android:layout_weight="1.0" />
+    <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="28.0dip" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/gx" android:textColor="#4d000000" android:layout_gravity="center_horizontal" android:id="@id/cja" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
+    <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="28.0dip" android:layout_height="1.0px" />
+    <View android:layout_width="0.0dip" android:layout_height="1.0px" android:layout_weight="1.0" />
 </LinearLayout>

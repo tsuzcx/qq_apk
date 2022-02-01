@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/b31" android:background="@drawable/oc" android:layout_width="fill_parent" android:layout_height="@dimen/i9">
+        <TextView android:textSize="@dimen/ia" android:id="@id/b32" android:paddingLeft="@dimen/jn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{nick}" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/m3" />
+    </RelativeLayout>
+</RelativeLayout>

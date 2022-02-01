@@ -1,279 +1,486 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
-import android.graphics.Bitmap;
-import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.at.a.a.c.a;
-import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.plugin.luckymoney.a.a.a;
-import com.tencent.mm.protocal.protobuf.aus;
-import com.tencent.mm.protocal.protobuf.aut;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.io.File;
+import java.util.LinkedList;
 
 public final class l
-  implements com.tencent.mm.plugin.luckymoney.a.a
+  extends com.tencent.mm.bx.a
 {
-  private static com.tencent.mm.cm.h<com.tencent.mm.at.a.a> onV;
+  public int dDN;
+  public int dDO;
+  public int dDP;
+  public long dEb;
+  public int nTB;
+  public int resourceId;
+  public String sYt;
+  public String sZn;
+  public String taA;
+  public int tax;
+  public String tay;
+  public String taz;
+  public String tdA;
+  public int tdB;
+  public LinkedList<y> tdC;
+  public String tdD;
+  public String tdE;
+  public int tdF;
+  public String tdG;
+  public String tdH;
+  public String tdh;
+  public String tdi;
+  public String tdj;
+  public String tdk;
+  public String tdl;
+  public String tdm;
+  public long tdn;
+  public long tdo;
+  public long tdp;
+  public String tdq;
+  public int tdr;
+  public int tds;
+  public int tdt;
+  public String tdu;
+  public int tdv;
+  public f tdw;
+  public LinkedList<au> tdx;
+  public au tdy;
+  public String tdz;
   
-  static
+  public l()
   {
-    AppMethodBeat.i(42325);
-    onV = new com.tencent.mm.cm.h(new l.1());
-    AppMethodBeat.o(42325);
+    AppMethodBeat.i(91253);
+    this.tdx = new LinkedList();
+    this.tdC = new LinkedList();
+    AppMethodBeat.o(91253);
   }
   
-  private void a(aus paramaus, int paramInt, l.a parama)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(42313);
-    ab.i("MicroMsg.LuckyMoneyEnvelopeLogic", "get envelope: %s", new Object[] { Integer.valueOf(paramInt) });
-    if (paramaus == null)
+    AppMethodBeat.i(91254);
+    if (paramInt == 0)
     {
-      AppMethodBeat.o(42313);
-      return;
-    }
-    if (paramaus.subType > 0)
-    {
-      int i = paramaus.subType;
-      ab.i("MicroMsg.LuckyMoneyEnvelopeLogic", "get bitmap subtype: %s, %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
-      String str = m.yp(i);
-      n localn = new n();
-      localn.field_subtype = i;
-      boolean bool = com.tencent.mm.plugin.luckymoney.b.a.bMG().bMF().get(localn, new String[0]);
-      Object localObject = null;
-      if (bool) {
-        if (paramInt == 0)
-        {
-          localObject = new File(str, "bubble.png");
-          ab.i("MicroMsg.LuckyMoneyEnvelopeLogic", "");
-          localObject = g((File)localObject, localn.field_bubbleMd5);
-        }
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.dDN);
+      paramVarArgs.aR(2, this.dDO);
+      if (this.tdh != null) {
+        paramVarArgs.d(3, this.tdh);
       }
-      for (;;)
+      if (this.tdi != null) {
+        paramVarArgs.d(4, this.tdi);
+      }
+      if (this.sYt != null) {
+        paramVarArgs.d(5, this.sYt);
+      }
+      if (this.tdj != null) {
+        paramVarArgs.d(6, this.tdj);
+      }
+      if (this.tdk != null) {
+        paramVarArgs.d(7, this.tdk);
+      }
+      if (this.sZn != null) {
+        paramVarArgs.d(8, this.sZn);
+      }
+      if (this.tdl != null) {
+        paramVarArgs.d(9, this.tdl);
+      }
+      if (this.tdm != null) {
+        paramVarArgs.d(10, this.tdm);
+      }
+      paramVarArgs.aG(11, this.dEb);
+      paramVarArgs.aG(12, this.tdn);
+      paramVarArgs.aG(13, this.tdo);
+      paramVarArgs.aR(14, this.nTB);
+      paramVarArgs.aG(15, this.tdp);
+      if (this.tdq != null) {
+        paramVarArgs.d(16, this.tdq);
+      }
+      paramVarArgs.aR(17, this.tdr);
+      paramVarArgs.aR(18, this.tds);
+      paramVarArgs.aR(19, this.tdt);
+      if (this.tdu != null) {
+        paramVarArgs.d(20, this.tdu);
+      }
+      paramVarArgs.aR(21, this.dDP);
+      paramVarArgs.aR(22, this.tdv);
+      if (this.tdw != null)
       {
-        if (localObject == null) {
-          com.tencent.mm.plugin.report.service.h.qsU.cT(991, 5);
+        paramVarArgs.kX(23, this.tdw.computeSize());
+        this.tdw.writeFields(paramVarArgs);
+      }
+      paramVarArgs.aR(24, this.tax);
+      if (this.taz != null) {
+        paramVarArgs.d(25, this.taz);
+      }
+      paramVarArgs.e(26, 8, this.tdx);
+      if (this.tdy != null)
+      {
+        paramVarArgs.kX(27, this.tdy.computeSize());
+        this.tdy.writeFields(paramVarArgs);
+      }
+      if (this.tdz != null) {
+        paramVarArgs.d(28, this.tdz);
+      }
+      if (this.tdA != null) {
+        paramVarArgs.d(29, this.tdA);
+      }
+      paramVarArgs.aR(30, this.tdB);
+      paramVarArgs.aR(31, this.resourceId);
+      if (this.taA != null) {
+        paramVarArgs.d(32, this.taA);
+      }
+      paramVarArgs.e(33, 8, this.tdC);
+      if (this.tay != null) {
+        paramVarArgs.d(34, this.tay);
+      }
+      if (this.tdD != null) {
+        paramVarArgs.d(35, this.tdD);
+      }
+      if (this.tdE != null) {
+        paramVarArgs.d(36, this.tdE);
+      }
+      paramVarArgs.aR(37, this.tdF);
+      if (this.tdG != null) {
+        paramVarArgs.d(38, this.tdG);
+      }
+      if (this.tdH != null) {
+        paramVarArgs.d(39, this.tdH);
+      }
+      AppMethodBeat.o(91254);
+      return 0;
+    }
+    int i;
+    if (paramInt == 1)
+    {
+      i = f.a.a.b.b.a.bA(1, this.dDN) + 0 + f.a.a.b.b.a.bA(2, this.dDO);
+      paramInt = i;
+      if (this.tdh != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.tdh);
+      }
+      i = paramInt;
+      if (this.tdi != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.tdi);
+      }
+      paramInt = i;
+      if (this.sYt != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.sYt);
+      }
+      i = paramInt;
+      if (this.tdj != null) {
+        i = paramInt + f.a.a.b.b.a.e(6, this.tdj);
+      }
+      paramInt = i;
+      if (this.tdk != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.tdk);
+      }
+      i = paramInt;
+      if (this.sZn != null) {
+        i = paramInt + f.a.a.b.b.a.e(8, this.sZn);
+      }
+      paramInt = i;
+      if (this.tdl != null) {
+        paramInt = i + f.a.a.b.b.a.e(9, this.tdl);
+      }
+      i = paramInt;
+      if (this.tdm != null) {
+        i = paramInt + f.a.a.b.b.a.e(10, this.tdm);
+      }
+      i = i + f.a.a.b.b.a.q(11, this.dEb) + f.a.a.b.b.a.q(12, this.tdn) + f.a.a.b.b.a.q(13, this.tdo) + f.a.a.b.b.a.bA(14, this.nTB) + f.a.a.b.b.a.q(15, this.tdp);
+      paramInt = i;
+      if (this.tdq != null) {
+        paramInt = i + f.a.a.b.b.a.e(16, this.tdq);
+      }
+      i = paramInt + f.a.a.b.b.a.bA(17, this.tdr) + f.a.a.b.b.a.bA(18, this.tds) + f.a.a.b.b.a.bA(19, this.tdt);
+      paramInt = i;
+      if (this.tdu != null) {
+        paramInt = i + f.a.a.b.b.a.e(20, this.tdu);
+      }
+      i = paramInt + f.a.a.b.b.a.bA(21, this.dDP) + f.a.a.b.b.a.bA(22, this.tdv);
+      paramInt = i;
+      if (this.tdw != null) {
+        paramInt = i + f.a.a.a.kW(23, this.tdw.computeSize());
+      }
+      i = paramInt + f.a.a.b.b.a.bA(24, this.tax);
+      paramInt = i;
+      if (this.taz != null) {
+        paramInt = i + f.a.a.b.b.a.e(25, this.taz);
+      }
+      i = paramInt + f.a.a.a.c(26, 8, this.tdx);
+      paramInt = i;
+      if (this.tdy != null) {
+        paramInt = i + f.a.a.a.kW(27, this.tdy.computeSize());
+      }
+      i = paramInt;
+      if (this.tdz != null) {
+        i = paramInt + f.a.a.b.b.a.e(28, this.tdz);
+      }
+      paramInt = i;
+      if (this.tdA != null) {
+        paramInt = i + f.a.a.b.b.a.e(29, this.tdA);
+      }
+      i = paramInt + f.a.a.b.b.a.bA(30, this.tdB) + f.a.a.b.b.a.bA(31, this.resourceId);
+      paramInt = i;
+      if (this.taA != null) {
+        paramInt = i + f.a.a.b.b.a.e(32, this.taA);
+      }
+      i = paramInt + f.a.a.a.c(33, 8, this.tdC);
+      paramInt = i;
+      if (this.tay != null) {
+        paramInt = i + f.a.a.b.b.a.e(34, this.tay);
+      }
+      i = paramInt;
+      if (this.tdD != null) {
+        i = paramInt + f.a.a.b.b.a.e(35, this.tdD);
+      }
+      paramInt = i;
+      if (this.tdE != null) {
+        paramInt = i + f.a.a.b.b.a.e(36, this.tdE);
+      }
+      i = paramInt + f.a.a.b.b.a.bA(37, this.tdF);
+      paramInt = i;
+      if (this.tdG != null) {
+        paramInt = i + f.a.a.b.b.a.e(38, this.tdG);
+      }
+      i = paramInt;
+      if (this.tdH != null) {
+        i = paramInt + f.a.a.b.b.a.e(39, this.tdH);
+      }
+      AppMethodBeat.o(91254);
+      return i;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.tdx.clear();
+      this.tdC.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.fMq();
         }
-        if ((localObject != null) || (paramaus.xjM == null)) {
-          break;
-        }
-        ab.i("MicroMsg.LuckyMoneyEnvelopeLogic", "load subtype fail, try load from url: %s", new Object[] { Integer.valueOf(paramaus.subType) });
-        a(paramaus.xjM, paramInt, parama);
-        AppMethodBeat.o(42313);
-        return;
-        if ((paramInt == 1) || (paramInt == 2))
+      }
+      AppMethodBeat.o(91254);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      l locall = (l)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      Object localObject2;
+      boolean bool;
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(91254);
+        return -1;
+      case 1: 
+        locall.dDN = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 2: 
+        locall.dDO = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 3: 
+        locall.tdh = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 4: 
+        locall.tdi = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 5: 
+        locall.sYt = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 6: 
+        locall.tdj = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 7: 
+        locall.tdk = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 8: 
+        locall.sZn = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 9: 
+        locall.tdl = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 10: 
+        locall.tdm = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 11: 
+        locall.dEb = ((f.a.a.a.a)localObject1).KhF.xT();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 12: 
+        locall.tdn = ((f.a.a.a.a)localObject1).KhF.xT();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 13: 
+        locall.tdo = ((f.a.a.a.a)localObject1).KhF.xT();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 14: 
+        locall.nTB = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 15: 
+        locall.tdp = ((f.a.a.a.a)localObject1).KhF.xT();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 16: 
+        locall.tdq = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 17: 
+        locall.tdr = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 18: 
+        locall.tds = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 19: 
+        locall.tdt = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 20: 
+        locall.tdu = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 21: 
+        locall.dDP = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 22: 
+        locall.tdv = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 23: 
+        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
         {
-          localObject = g(new File(str, "cover.png"), localn.field_coverMd5);
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new f();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((f)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          locall.tdw = ((f)localObject1);
+          paramInt += 1;
         }
-        else if (paramInt == 3)
+        AppMethodBeat.o(91254);
+        return 0;
+      case 24: 
+        locall.tax = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 25: 
+        locall.taz = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 26: 
+        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
         {
-          localObject = g(new File(str, "minilogo.png"), localn.field_coverMd5);
-          continue;
-          m.bNo();
-          ab.w("MicroMsg.LuckyMoneyEnvelopeLogic", "can't find subtype res: %s", new Object[] { Integer.valueOf(i) });
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new au();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((au)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          locall.tdx.add(localObject1);
+          paramInt += 1;
         }
+        AppMethodBeat.o(91254);
+        return 0;
+      case 27: 
+        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new au();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((au)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          locall.tdy = ((au)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(91254);
+        return 0;
+      case 28: 
+        locall.tdz = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 29: 
+        locall.tdA = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 30: 
+        locall.tdB = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 31: 
+        locall.resourceId = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 32: 
+        locall.taA = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 33: 
+        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new y();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((y)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          locall.tdC.add(localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(91254);
+        return 0;
+      case 34: 
+        locall.tay = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 35: 
+        locall.tdD = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 36: 
+        locall.tdE = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 37: 
+        locall.tdF = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(91254);
+        return 0;
+      case 38: 
+        locall.tdG = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91254);
+        return 0;
       }
-      parama.a((Bitmap)localObject, paramaus.subType, "");
-      AppMethodBeat.o(42313);
-      return;
+      locall.tdH = ((f.a.a.a.a)localObject1).KhF.readString();
+      AppMethodBeat.o(91254);
+      return 0;
     }
-    if (paramaus.xjM != null)
-    {
-      a(paramaus.xjM, paramInt, parama);
-      AppMethodBeat.o(42313);
-      return;
-    }
-    ab.w("MicroMsg.LuckyMoneyEnvelopeLogic", "source object is null");
-    AppMethodBeat.o(42313);
-  }
-  
-  private void a(aut paramaut, int paramInt, l.a parama)
-  {
-    AppMethodBeat.i(42314);
-    ab.i("MicroMsg.LuckyMoneyEnvelopeLogic", "get bitmap by url: %s", new Object[] { Integer.valueOf(paramInt) });
-    if (paramaut == null)
-    {
-      AppMethodBeat.o(42314);
-      return;
-    }
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(42314);
-      return;
-      a(paramaut.xjV, paramaut.xjY, parama);
-      AppMethodBeat.o(42314);
-      return;
-      a(paramaut.xjW, paramaut.xjZ, parama);
-      AppMethodBeat.o(42314);
-      return;
-      a(paramaut.xjX, paramaut.xka, parama);
-      AppMethodBeat.o(42314);
-      return;
-      a(paramaut.xjU, paramaut.xkb, parama);
-    }
-  }
-  
-  private void a(String paramString1, String paramString2, l.a parama)
-  {
-    AppMethodBeat.i(42315);
-    ab.i("MicroMsg.LuckyMoneyEnvelopeLogic", "load image: %s, %s", new Object[] { paramString1, paramString2 });
-    bNm().a(paramString1, null, bNn().ahY(), new l.3(this, paramString2, parama));
-    AppMethodBeat.o(42315);
-  }
-  
-  private static com.tencent.mm.at.a.a bNm()
-  {
-    AppMethodBeat.i(42321);
-    com.tencent.mm.at.a.a locala = (com.tencent.mm.at.a.a)onV.get();
-    AppMethodBeat.o(42321);
-    return locala;
-  }
-  
-  private static c.a bNn()
-  {
-    AppMethodBeat.i(42322);
-    c.a locala = new c.a();
-    com.tencent.mm.plugin.luckymoney.b.a.bMG();
-    locala.eNP = com.tencent.mm.plugin.luckymoney.b.a.bMI();
-    locala.eNS = com.tencent.mm.cb.a.gw(ah.getContext());
-    locala.eNT = com.tencent.mm.cb.a.gx(ah.getContext());
-    locala.eNM = true;
-    AppMethodBeat.o(42322);
-    return locala;
-  }
-  
-  private static Bitmap g(File paramFile, String paramString)
-  {
-    AppMethodBeat.i(42316);
-    boolean bool1 = paramFile.exists();
-    boolean bool2 = paramFile.isFile();
-    boolean bool3 = com.tencent.mm.a.g.r(paramFile).equals(paramString);
-    ab.i("MicroMsg.LuckyMoneyEnvelopeLogic", "get from file: %s, %s, %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-    if ((bool1) && (bool2) && (bool3))
-    {
-      paramFile = MMBitmapFactory.decodeFile(paramFile.getAbsolutePath());
-      AppMethodBeat.o(42316);
-      return paramFile;
-    }
-    if (!bool3) {
-      com.tencent.mm.plugin.report.service.h.qsU.cT(991, 3);
-    }
-    if (!bool1) {
-      com.tencent.mm.plugin.report.service.h.qsU.cT(991, 4);
-    }
-    m.bNo();
-    AppMethodBeat.o(42316);
-    return null;
-  }
-  
-  public final void a(ImageView paramImageView, int paramInt1, int paramInt2, aus paramaus, boolean paramBoolean)
-  {
-    AppMethodBeat.i(42320);
-    ab.i("MicroMsg.LuckyMoneyEnvelopeLogic", "load chatting view: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (paramImageView == null)
-    {
-      AppMethodBeat.o(42320);
-      return;
-    }
-    paramImageView.setTag(2131820639, paramaus.xjM.xjV);
-    paramImageView.setTag(2131820638, Integer.valueOf(paramaus.subType));
-    a(paramaus, 0, new l.7(this, paramImageView, paramInt1, paramInt2, paramBoolean));
-    AppMethodBeat.o(42320);
-  }
-  
-  public final void a(ImageView paramImageView, aus paramaus)
-  {
-    AppMethodBeat.i(42317);
-    ab.i("MicroMsg.LuckyMoneyEnvelopeLogic", "load detail view");
-    if ((paramImageView == null) || (paramaus == null))
-    {
-      AppMethodBeat.o(42317);
-      return;
-    }
-    a(paramaus, 3, new l.4(this, paramImageView));
-    AppMethodBeat.o(42317);
-  }
-  
-  public final void a(ImageView paramImageView, aus paramaus, a.a parama)
-  {
-    AppMethodBeat.i(42319);
-    if ((paramImageView == null) || (paramaus == null))
-    {
-      AppMethodBeat.o(42319);
-      return;
-    }
-    ab.i("MicroMsg.LuckyMoneyEnvelopeLogic", "load cover view: %s", new Object[] { paramaus.materialId });
-    paramImageView.setTag(2131820639, paramaus.xjM.xjW);
-    paramImageView.setTag(2131820638, Integer.valueOf(paramaus.subType));
-    a(paramaus, 1, new l.6(this, parama, paramImageView));
-    AppMethodBeat.o(42319);
-  }
-  
-  public final void a(aut paramaut)
-  {
-    AppMethodBeat.i(42312);
-    ab.i("MicroMsg.LuckyMoneyEnvelopeLogic", "trigger load envelope resources");
-    if (paramaut != null)
-    {
-      if ((!bo.isNullOrNil(paramaut.xjV)) && (!bo.isNullOrNil(paramaut.xjY))) {
-        a(paramaut.xjV, paramaut.xjY, null);
-      }
-      if ((!bo.isNullOrNil(paramaut.xjX)) && (!bo.isNullOrNil(paramaut.xka))) {
-        a(paramaut.xjX, paramaut.xka, null);
-      }
-      if ((!bo.isNullOrNil(paramaut.xjU)) && (!bo.isNullOrNil(paramaut.xkb))) {
-        a(paramaut.xjU, paramaut.xkb, null);
-      }
-      if ((!bo.isNullOrNil(paramaut.xjW)) && (!bo.isNullOrNil(paramaut.xjZ))) {
-        a(paramaut.xjW, paramaut.xjZ, null);
-      }
-    }
-    AppMethodBeat.o(42312);
-  }
-  
-  public final void b(ImageView paramImageView, aus paramaus)
-  {
-    AppMethodBeat.i(42318);
-    ab.i("MicroMsg.LuckyMoneyEnvelopeLogic", "load detail view");
-    if ((paramImageView == null) || (paramaus == null))
-    {
-      AppMethodBeat.o(42318);
-      return;
-    }
-    a(paramaus, 2, new l.5(this, paramImageView));
-    AppMethodBeat.o(42318);
-  }
-  
-  public final void bME()
-  {
-    AppMethodBeat.i(42311);
-    ab.i("MicroMsg.LuckyMoneyEnvelopeLogic", "trigger laod envelope after receive");
-    com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yJl, Integer.valueOf(1));
-    if (!((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yJh, Boolean.FALSE)).booleanValue())
-    {
-      com.tencent.mm.x.c.PJ().a(ac.a.yJi, true);
-      com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yJh, Boolean.TRUE);
-    }
-    Object localObject = new ag("v1.0", 1, (byte)0);
-    com.tencent.mm.kernel.g.Rc().a((com.tencent.mm.ai.m)localObject, 0);
-    localObject = f.bNf();
-    ((f)localObject).b(new c(""));
-    ((f)localObject).a(new l.2(this));
-    AppMethodBeat.o(42311);
+    AppMethodBeat.o(91254);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.l
  * JD-Core Version:    0.7.0.1
  */

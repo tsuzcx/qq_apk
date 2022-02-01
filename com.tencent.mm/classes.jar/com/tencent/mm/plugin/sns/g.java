@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.sns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mv;
+import com.tencent.mm.g.a.oh;
 import com.tencent.mm.sdk.b.c;
 
 public final class g
-  extends c<mv>
+  extends c<oh>
 {
   public g()
   {
-    AppMethodBeat.i(35620);
-    this.__eventId = mv.class.getName().hashCode();
-    AppMethodBeat.o(35620);
+    AppMethodBeat.i(160635);
+    this.__eventId = oh.class.getName().hashCode();
+    AppMethodBeat.o(160635);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.g
  * JD-Core Version:    0.7.0.1
  */

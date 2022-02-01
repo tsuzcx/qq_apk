@@ -1,40 +1,30 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.luggage.sdk.b.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.i;
-import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.plugin.appbrand.page.ae;
 
 public final class f
-  extends a<c>
+  extends a<ae>
 {
   public f()
   {
-    super(r.iqU.ordinal());
-    AppMethodBeat.i(102136);
-    AppMethodBeat.o(102136);
+    super(q.kSA.ordinal());
+    AppMethodBeat.i(196040);
+    AppMethodBeat.o(196040);
   }
   
-  public static void a(d paramd, String paramString, boolean paramBoolean)
+  public static final class a
+    extends p
   {
-    AppMethodBeat.i(140851);
-    i.ab(paramString, paramBoolean);
-    if (paramBoolean) {}
-    for (paramString = paramd.getContext().getResources().getString(2131296606);; paramString = paramd.getContext().getResources().getString(2131296605))
-    {
-      al.d(new f.1(paramd, paramString));
-      AppMethodBeat.o(140851);
-      return;
-    }
+    private static final int CTRL_INDEX = 799;
+    public static final String NAME = "onAddToFavorites";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.f
  * JD-Core Version:    0.7.0.1
  */

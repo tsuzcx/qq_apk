@@ -5,27 +5,15 @@ import android.view.View;
 public abstract class as
   extends RecyclerView.f
 {
-  public boolean amy = true;
+  public boolean atX = true;
   
-  public final void B(RecyclerView.v paramv)
-  {
-    E(paramv);
-    m(paramv);
-  }
+  public void A(RecyclerView.v paramv) {}
   
-  public final void C(RecyclerView.v paramv)
-  {
-    G(paramv);
-    m(paramv);
-  }
+  public void B(RecyclerView.v paramv) {}
+  
+  public void C(RecyclerView.v paramv) {}
   
   public void D(RecyclerView.v paramv) {}
-  
-  public void E(RecyclerView.v paramv) {}
-  
-  public void F(RecyclerView.v paramv) {}
-  
-  public void G(RecyclerView.v paramv) {}
   
   public abstract boolean a(RecyclerView.v paramv, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
@@ -36,7 +24,7 @@ public abstract class as
     int k = paramc1.left;
     int m = paramc1.top;
     int i;
-    if (paramv2.jL()) {
+    if (paramv2.ll()) {
       i = paramc1.left;
     }
     for (int j = paramc1.top;; j = paramc2.top)
@@ -54,7 +42,7 @@ public abstract class as
   {
     int k = paramc1.left;
     int m = paramc1.top;
-    paramc1 = paramv.aku;
+    paramc1 = paramv.arI;
     int i;
     if (paramc2 == null)
     {
@@ -91,23 +79,45 @@ public abstract class as
     if ((paramc1.left != paramc2.left) || (paramc1.top != paramc2.top)) {
       return a(paramv, paramc1.left, paramc1.top, paramc2.left, paramc2.top);
     }
-    C(paramv);
+    x(paramv);
     return false;
   }
   
-  public final void ks()
+  public final void lT()
   {
-    this.amy = false;
+    this.atX = false;
   }
   
-  public final boolean o(RecyclerView.v paramv)
+  public boolean p(RecyclerView.v paramv)
   {
-    return (!this.amy) || (paramv.jU());
+    return (!this.atX) || (paramv.bc());
+  }
+  
+  public final void w(RecyclerView.v paramv)
+  {
+    B(paramv);
+    n(paramv);
+  }
+  
+  public final void x(RecyclerView.v paramv)
+  {
+    D(paramv);
+    n(paramv);
+  }
+  
+  public final void y(RecyclerView.v paramv)
+  {
+    n(paramv);
+  }
+  
+  public final void z(RecyclerView.v paramv)
+  {
+    A(paramv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v7.widget.as
  * JD-Core Version:    0.7.0.1
  */

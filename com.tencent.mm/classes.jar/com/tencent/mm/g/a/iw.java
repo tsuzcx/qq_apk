@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class iw
   extends b
 {
-  public a cyp;
+  public a dmR;
   
   public iw()
   {
@@ -15,21 +15,21 @@ public final class iw
   
   private iw(byte paramByte)
   {
-    AppMethodBeat.i(15780);
-    this.cyp = new a();
-    this.ymq = false;
+    AppMethodBeat.i(155371);
+    this.dmR = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15780);
+    AppMethodBeat.o(155371);
   }
   
   public static final class a
   {
-    public boolean cwR;
+    public String dmS;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.iw
  * JD-Core Version:    0.7.0.1
  */

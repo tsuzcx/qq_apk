@@ -1,15 +1,10 @@
 package android.support.v4.widget;
 
-import android.support.v4.view.r;
 import android.view.View;
 
-class q
-  implements p
+abstract interface q
 {
-  public void a(SlidingPaneLayout paramSlidingPaneLayout, View paramView)
-  {
-    r.a(paramSlidingPaneLayout, paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
-  }
+  public abstract void a(SlidingPaneLayout paramSlidingPaneLayout, View paramView);
 }
 
 

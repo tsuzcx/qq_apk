@@ -16,26 +16,26 @@ final class zzg
   
   zzg(Intent paramIntent, BroadcastReceiver.PendingResult paramPendingResult, ScheduledExecutorService paramScheduledExecutorService)
   {
-    AppMethodBeat.i(57564);
+    AppMethodBeat.i(2518);
     this.zzbf = false;
     this.intent = paramIntent;
     this.zzbe = paramPendingResult;
     this.zzbg = paramScheduledExecutorService.schedule(new zzh(this, paramIntent), 9500L, TimeUnit.MILLISECONDS);
-    AppMethodBeat.o(57564);
+    AppMethodBeat.o(2518);
   }
   
   final void finish()
   {
     try
     {
-      AppMethodBeat.i(57565);
+      AppMethodBeat.i(2519);
       if (!this.zzbf)
       {
         this.zzbe.finish();
         this.zzbg.cancel(false);
         this.zzbf = true;
       }
-      AppMethodBeat.o(57565);
+      AppMethodBeat.o(2519);
       return;
     }
     finally {}
@@ -43,7 +43,7 @@ final class zzg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.iid.zzg
  * JD-Core Version:    0.7.0.1
  */

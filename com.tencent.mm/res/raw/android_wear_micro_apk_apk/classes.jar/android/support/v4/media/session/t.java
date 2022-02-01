@@ -12,16 +12,16 @@ import java.util.List;
 final class t<T extends s>
   extends MediaController.Callback
 {
-  protected final T im;
+  protected final T kk;
   
   public t(T paramT)
   {
-    this.im = paramT;
+    this.kk = paramT;
   }
   
   public final void onAudioInfoChanged(MediaController.PlaybackInfo paramPlaybackInfo)
   {
-    s locals = this.im;
+    s locals = this.kk;
     int j = paramPlaybackInfo.getPlaybackType();
     AudioAttributes localAudioAttributes = ((MediaController.PlaybackInfo)paramPlaybackInfo).getAudioAttributes();
     int i;
@@ -74,37 +74,37 @@ final class t<T extends s>
   
   public final void onExtrasChanged(Bundle paramBundle)
   {
-    this.im.bb();
+    this.kk.bs();
   }
   
   public final void onMetadataChanged(MediaMetadata paramMediaMetadata)
   {
-    this.im.f(paramMediaMetadata);
+    this.kk.l(paramMediaMetadata);
   }
   
   public final void onPlaybackStateChanged(PlaybackState paramPlaybackState)
   {
-    this.im.e(paramPlaybackState);
+    this.kk.k(paramPlaybackState);
   }
   
   public final void onQueueChanged(List<MediaSession.QueueItem> paramList)
   {
-    this.im.onQueueChanged(paramList);
+    this.kk.onQueueChanged(paramList);
   }
   
   public final void onQueueTitleChanged(CharSequence paramCharSequence)
   {
-    this.im.ba();
+    this.kk.br();
   }
   
   public final void onSessionDestroyed()
   {
-    this.im.onSessionDestroyed();
+    this.kk.onSessionDestroyed();
   }
   
   public final void onSessionEvent(String paramString, Bundle paramBundle)
   {
-    this.im.aZ();
+    this.kk.bq();
   }
 }
 

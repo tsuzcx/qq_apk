@@ -1,144 +1,137 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
-import a.f.b.j;
-import a.l;
-import android.os.Bundle;
-import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.q;
-import com.tencent.mm.af.s;
-import com.tencent.mm.ipcinvoker.c;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.v.b;
-import com.tencent.mm.protocal.protobuf.bca;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.h;
+import d.l;
+import d.y;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoMsgShareToTimeLine;", "", "()V", "TAG", "", "doSetTimelineData", "", "msgInfo", "Lcom/tencent/mm/message/MPMsgInfo;", "controller", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "sessionId", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Landroid/os/Bundle;", "data", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable;", "IPCInvoke_ShareToTimeLine", "plugin-brandservice_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotHelper;", "", "()V", "TAG", "", "dotList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoDotInfo;", "checkDotValid", "", "lastDotInfo", "dotInfo", "duration", "", "checkWebViewId", "getDotList", "getNextDotInfo", "currentTime", "", "parseDotPosInfo", "", "posInfo", "reset", "setDotScriptData", "bundle", "Landroid/os/Bundle;", "shouldDestroyDotNow", "dot", "shouldShowDotNow", "plugin-brandservice_release"})
 public final class b
 {
-  private static final String TAG = "MicroMsg.BizVideoMsgShareToTimeLine";
-  public static final b khW;
+  public final String TAG;
+  public LinkedList<c> nkF;
   
-  static
+  public b()
   {
-    AppMethodBeat.i(152954);
-    khW = new b();
-    TAG = "MicroMsg.BizVideoMsgShareToTimeLine";
-    AppMethodBeat.o(152954);
+    AppMethodBeat.i(7283);
+    this.TAG = "MicroMsg.BizVideoDotHelper";
+    this.nkF = new LinkedList();
+    AppMethodBeat.o(7283);
   }
   
-  public static void a(s params, com.tencent.mm.plugin.brandservice.ui.timeline.video.b paramb, String paramString, c<Bundle> paramc)
+  public static boolean a(float paramFloat, c paramc)
   {
-    Object localObject = null;
-    AppMethodBeat.i(152952);
-    j.q(params, "msgInfo");
-    j.q(paramb, "controller");
-    j.q(paramString, "sessionId");
-    j.q(paramc, "callback");
-    AppMsgDataParcelable localAppMsgDataParcelable = new AppMsgDataParcelable();
-    localAppMsgDataParcelable.url = paramb.url;
-    localAppMsgDataParcelable.cpW = paramString;
-    localAppMsgDataParcelable.jXm = params;
-    int i;
-    if (paramb.aZg())
-    {
-      i = 1;
-      localAppMsgDataParcelable.khR = i;
-      params = paramb.kfA;
-      if (params == null) {
-        break label168;
-      }
-      params = params.title;
-      label93:
-      localAppMsgDataParcelable.khS = params;
-      params = paramb.kfA;
-      if (params == null) {
-        break label173;
-      }
+    if (paramc == null) {}
+    while ((paramc.nkK) || (paramc.nkN > paramFloat) || (paramFloat > paramc.nkG)) {
+      return false;
     }
-    label168:
-    label173:
-    for (params = params.fjL;; params = null)
-    {
-      localAppMsgDataParcelable.khT = params;
-      paramb = paramb.kfA;
-      params = localObject;
-      if (paramb != null) {
-        params = paramb.fjJ;
-      }
-      localAppMsgDataParcelable.khU = params;
-      f.a("com.tencent.mm", (Parcelable)localAppMsgDataParcelable, b.a.class, paramc);
-      AppMethodBeat.o(152952);
-      return;
-      i = 0;
-      break;
-      params = null;
-      break label93;
-    }
+    return true;
   }
   
-  public static void b(AppMsgDataParcelable paramAppMsgDataParcelable)
+  public static boolean bGm()
   {
-    AppMethodBeat.i(152953);
-    j.q(paramAppMsgDataParcelable, "data");
-    s locals = paramAppMsgDataParcelable.jXm;
-    if (locals == null)
+    AppMethodBeat.i(7282);
+    if ((!h.DEBUG) && (!h.IS_FLAVOR_RED))
     {
-      ab.w(TAG, "doFav msgInfo is null");
-      AppMethodBeat.o(152953);
-      return;
+      AppMethodBeat.o(7282);
+      return true;
     }
-    int i;
-    v.b localb;
-    if (paramAppMsgDataParcelable.khR == 1)
+    if (ax.aFC("MicroMsg.BizVideoDetailUI").decodeInt("CheckWebviewId", 1) == 0)
     {
-      i = 1;
-      localb = v.aae().z(paramAppMsgDataParcelable.cpW, true);
-      localb.i("sendAppMsgScene", Integer.valueOf(2));
-      localb.i("preChatName", locals.HD());
-      localb.i("preMsgIndex", Integer.valueOf(locals.fjA));
-      localb.i("prePublishId", locals.fjC);
-      localb.i("preUsername", locals.HD());
-      localb.i("url", paramAppMsgDataParcelable.url);
-      localb.i("referUrl", paramAppMsgDataParcelable.url);
-      int j = locals.fjD.type;
-      if (j != -1)
+      AppMethodBeat.o(7282);
+      return false;
+    }
+    AppMethodBeat.o(7282);
+    return true;
+  }
+  
+  public final c aN(float paramFloat)
+  {
+    AppMethodBeat.i(7280);
+    try
+    {
+      boolean bool = bt.gL((List)this.nkF);
+      if (bool) {
+        return null;
+      }
+      Object localObject1 = this.nkF.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localb.i("_DATA_CENTER_ITEM_SHOW_TYPE", Integer.valueOf(j));
-        if (locals.fjD.type == 5)
-        {
-          localb.i("_DATA_CENTER_VID", locals.fjD.fgl);
-          localb.i("_DATA_CENTER_PUB_TIME", Integer.valueOf((int)locals.fjD.time));
-          localb.i("_DATA_CENTER__DULATION", Integer.valueOf(locals.fjD.fjN));
-          if (i == 0) {
-            break label347;
+        c localc = (c)((Iterator)localObject1).next();
+        if (paramFloat <= localc.nkG) {
+          if (paramFloat >= 2.0F)
+          {
+            double d1 = paramFloat;
+            double d2 = localc.nkN;
+            if (d1 >= d2 - 10.0D) {
+              return localc;
+            }
           }
-          localb.i("_DATA_CENTER_DESC", paramAppMsgDataParcelable.khT);
-          localb.i("_DATA_CENTER_COVER_URL", paramAppMsgDataParcelable.khU);
         }
       }
+      localObject1 = y.JfV;
+      return null;
     }
-    for (;;)
+    finally
     {
-      localb.i("_DATA_CENTER_VIDEO_WIDTH", Integer.valueOf(locals.fjD.videoWidth));
-      localb.i("_DATA_CENTER_VIDEO_HEIGHT", Integer.valueOf(locals.fjD.videoHeight));
-      localb.i("_DATA_SHOW_NATIVE_PAGE", Integer.valueOf(1));
-      localb.i("_DATA_CENTER_FUNC_FLAG", Integer.valueOf(locals.fgk));
-      localb.i("_tmpl_webview_transfer_scene", Integer.valueOf(10));
-      AppMethodBeat.o(152953);
+      AppMethodBeat.o(7280);
+    }
+  }
+  
+  public final boolean b(float paramFloat, c paramc)
+  {
+    AppMethodBeat.i(7281);
+    if (paramc == null)
+    {
+      AppMethodBeat.o(7281);
+      return false;
+    }
+    if ((paramc.nkK) && ((paramFloat < paramc.nkN) || (paramFloat > paramc.nkO)))
+    {
+      AppMethodBeat.o(7281);
+      return true;
+    }
+    if (paramFloat > paramc.nkO)
+    {
+      AppMethodBeat.o(7281);
+      return true;
+    }
+    if (paramFloat < paramc.nkN)
+    {
+      c localc = aN(paramFloat);
+      if ((localc != null) && (localc.id != paramc.id))
+      {
+        AppMethodBeat.o(7281);
+        return true;
+      }
+    }
+    AppMethodBeat.o(7281);
+    return false;
+  }
+  
+  public final void reset()
+  {
+    AppMethodBeat.i(7279);
+    try
+    {
+      this.nkF.clear();
+      y localy = y.JfV;
       return;
-      i = 0;
-      break;
-      label347:
-      localb.i("_DATA_CENTER_DESC", locals.fjD.fjL);
-      localb.i("_DATA_CENTER_COVER_URL", locals.fjD.fjJ);
+    }
+    finally
+    {
+      AppMethodBeat.o(7279);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.video.util.b
  * JD-Core Version:    0.7.0.1
  */

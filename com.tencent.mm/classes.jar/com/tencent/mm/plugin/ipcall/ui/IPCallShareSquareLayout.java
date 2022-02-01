@@ -21,15 +21,15 @@ public class IPCallShareSquareLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(22358);
+    AppMethodBeat.i(25978);
     setMeasuredDimension(getDefaultSize(0, paramInt1), getDefaultSize(0, paramInt2));
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), 1073741824));
-    AppMethodBeat.o(22358);
+    AppMethodBeat.o(25978);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallShareSquareLayout
  * JD-Core Version:    0.7.0.1
  */

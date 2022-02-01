@@ -1,68 +1,99 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.remoteservice.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.ae.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.a;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.h.d;
 import java.util.LinkedList;
+import java.util.List;
 
-@a(3)
+@com.tencent.mm.ui.base.a(3)
 public class SightSettingsUI
   extends MMActivity
 {
-  private d evl;
-  private ListView gMh;
-  private CaptureMMProxy oGj;
-  private LinkedList<SightSettingsUI.b> oQA;
-  private SightSettingsUI.a oQz;
+  private d fLo;
+  private ListView izP;
+  private LinkedList<b> qPR;
+  private CaptureMMProxy tBs;
+  private a tLy;
   
   public SightSettingsUI()
   {
-    AppMethodBeat.i(55286);
-    this.evl = new d(this);
-    this.oQA = new LinkedList();
-    AppMethodBeat.o(55286);
+    AppMethodBeat.i(94737);
+    this.fLo = new d(this);
+    this.qPR = new LinkedList();
+    AppMethodBeat.o(94737);
   }
   
   public int getLayoutId()
   {
-    return 2130970755;
+    return 2131495461;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(55287);
+    AppMethodBeat.i(94738);
     super.onCreate(paramBundle);
-    this.oGj = new CaptureMMProxy(this.evl);
-    this.evl.connect(new SightSettingsUI.1(this));
-    setBackBtn(new SightSettingsUI.2(this));
-    AppMethodBeat.o(55287);
+    this.tBs = new CaptureMMProxy(this.fLo);
+    this.fLo.connect(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(94730);
+        ad.i("MicroMsg.SightSettingsUI", "has connect");
+        SightSettingsUI.a(SightSettingsUI.this);
+        AppMethodBeat.o(94730);
+      }
+    });
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(94731);
+        SightSettingsUI.this.finish();
+        AppMethodBeat.o(94731);
+        return false;
+      }
+    });
+    AppMethodBeat.o(94738);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(55288);
+    AppMethodBeat.i(94739);
     super.onDestroy();
-    this.evl.release();
-    AppMethodBeat.o(55288);
+    this.fLo.release();
+    AppMethodBeat.o(94739);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(55290);
+    AppMethodBeat.i(94741);
     super.onPause();
-    AppMethodBeat.o(55290);
+    AppMethodBeat.o(94741);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(55289);
+    AppMethodBeat.i(94740);
     super.onResume();
-    AppMethodBeat.o(55289);
+    AppMethodBeat.o(94740);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -70,10 +101,101 @@ public class SightSettingsUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  final class a
+    extends BaseAdapter
+  {
+    a() {}
+    
+    public final int getCount()
+    {
+      AppMethodBeat.i(94733);
+      int i = SightSettingsUI.d(SightSettingsUI.this).size();
+      AppMethodBeat.o(94733);
+      return i;
+    }
+    
+    public final Object getItem(int paramInt)
+    {
+      AppMethodBeat.i(94734);
+      Object localObject = SightSettingsUI.d(SightSettingsUI.this).get(paramInt);
+      AppMethodBeat.o(94734);
+      return localObject;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return 0L;
+    }
+    
+    public final View getView(int paramInt, View paramView, final ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(94735);
+      paramView = new TextView(SightSettingsUI.this);
+      paramViewGroup = (SightSettingsUI.b)getItem(paramInt);
+      paramView.setText(paramViewGroup.qPW + "->:" + paramViewGroup.Hc(((Integer)SightSettingsUI.b(paramViewGroup.tLz).get(paramViewGroup.qPX, Integer.valueOf(0))).intValue()));
+      paramView.setGravity(17);
+      paramView.setTextSize(1, 20.0F);
+      paramView.setHeight(com.tencent.mm.cd.a.fromDPToPix(aj.getContext(), 50));
+      if (paramInt % 2 == 1) {
+        paramView.setBackgroundColor(Color.parseColor("#e2efda"));
+      }
+      paramView.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(94732);
+          paramAnonymousView = paramViewGroup;
+          LinkedList localLinkedList1 = new LinkedList();
+          LinkedList localLinkedList2 = new LinkedList();
+          int i = 0;
+          while (i < paramAnonymousView.qPY.length)
+          {
+            localLinkedList1.add(paramAnonymousView.qPY[i]);
+            localLinkedList2.add(Integer.valueOf(i));
+            i += 1;
+          }
+          h.a(paramAnonymousView.tLz, "", localLinkedList1, localLinkedList2, "", new SightSettingsUI.b.1(paramAnonymousView));
+          AppMethodBeat.o(94732);
+        }
+      });
+      AppMethodBeat.o(94735);
+      return paramView;
+    }
+  }
+  
+  final class b
+  {
+    public String qPW;
+    ae.a qPX;
+    String[] qPY;
+    int[] tLC;
+    
+    public b(String paramString, ae.a parama, String[] paramArrayOfString, int[] paramArrayOfInt)
+    {
+      this.qPW = paramString;
+      this.qPY = paramArrayOfString;
+      this.qPX = parama;
+      this.tLC = paramArrayOfInt;
+    }
+    
+    final String Hc(int paramInt)
+    {
+      int i = 0;
+      while (i < this.tLC.length)
+      {
+        if ((paramInt == this.tLC[i]) && (i < this.qPY.length)) {
+          return this.qPY[i];
+        }
+        i += 1;
+      }
+      return this.qPY[0];
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.SightSettingsUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,38 @@
 package com.tencent.mm.plugin.clean;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.clean.a.a;
-import com.tencent.mm.plugin.clean.c.j;
-import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.m;
 
 public class Plugin
-  implements c
+  implements com.tencent.mm.pluginsdk.b.d
 {
-  public o createApplication()
+  public m createApplication()
   {
-    AppMethodBeat.i(18650);
+    AppMethodBeat.i(22759);
     a locala = new a();
-    AppMethodBeat.o(18650);
+    AppMethodBeat.o(22759);
     return locala;
   }
   
-  public at createSubCore()
+  public aw createSubCore()
   {
-    AppMethodBeat.i(18651);
-    j localj = j.bhb();
-    AppMethodBeat.o(18651);
-    return localj;
+    AppMethodBeat.i(22760);
+    com.tencent.mm.plugin.clean.c.d locald = com.tencent.mm.plugin.clean.c.d.bNS();
+    AppMethodBeat.o(22760);
+    return locald;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.Plugin
  * JD-Core Version:    0.7.0.1
  */

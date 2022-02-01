@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.topstory.ui.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.plugin.topstory.a.c.i;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.plugin.topstory.a.c.j;
 import com.tencent.mm.plugin.topstory.ui.home.a;
-import com.tencent.mm.protocal.protobuf.ckt;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.dcs;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 final class c$2
-  implements f
+  implements g
 {
   c$2(c paramc) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(2149);
+    AppMethodBeat.i(126554);
     JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
@@ -28,19 +28,19 @@ final class c$2
         if ((paramInt1 == 0) && (paramInt2 == 0)) {
           continue;
         }
-        ab.w("MicroMsg.TopStory.TopStoryWebData", "NetSceneTopStorySetComment response, errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        ad.w("MicroMsg.TopStory.TopStoryWebData", "NetSceneTopStorySetComment response, errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       }
       catch (JSONException paramString)
       {
         continue;
       }
-      if (this.tmb.tlT != null) {
-        this.tmb.tlT.aem(localJSONObject.toString());
+      if (this.ySN.ySH != null) {
+        this.ySN.ySH.asG(localJSONObject.toString());
       }
-      AppMethodBeat.o(2149);
+      AppMethodBeat.o(126554);
       return;
-      if (this.tmb.tlT != null) {
-        localJSONObject.put("requestId", ((i)paramm).cIG().xHX);
+      if (this.ySN.ySH != null) {
+        localJSONObject.put("requestId", ((j)paramn).dOh().DVb);
       }
     }
   }

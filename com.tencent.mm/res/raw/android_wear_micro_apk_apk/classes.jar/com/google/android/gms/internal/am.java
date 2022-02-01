@@ -23,72 +23,72 @@ import java.util.concurrent.locks.Lock;
 public final class am
   implements av, o
 {
-  final f<? extends cr, cs> HG;
-  private final com.google.android.gms.common.h Ju;
-  final x Kf;
-  final ai MJ;
-  private final Lock MT;
-  final Map<com.google.android.gms.common.api.h<?>, j> NX;
-  final Map<a<?>, Boolean> Na;
-  private final Condition Oh;
-  private final ao Oi;
-  final Map<com.google.android.gms.common.api.h<?>, ConnectionResult> Oj = new HashMap();
-  private volatile al Ok;
-  private ConnectionResult Ol = null;
-  int Om;
-  final aw On;
+  final f<? extends cr, cs> Jv;
+  final x LU;
+  private final com.google.android.gms.common.h Lj;
+  private final Lock OI;
+  final Map<a<?>, Boolean> OP;
+  final ai Oy;
+  final Map<com.google.android.gms.common.api.h<?>, j> PM;
+  private final Condition PW;
+  private final ao PX;
+  final Map<com.google.android.gms.common.api.h<?>, ConnectionResult> PY = new HashMap();
+  private volatile al PZ;
+  private ConnectionResult Qa = null;
+  int Qb;
+  final aw Qc;
   private final Context mContext;
   
   public am(Context paramContext, ai paramai, Lock paramLock, Looper paramLooper, com.google.android.gms.common.h paramh, Map<com.google.android.gms.common.api.h<?>, j> paramMap, x paramx, Map<a<?>, Boolean> paramMap1, f<? extends cr, cs> paramf, ArrayList<n> paramArrayList, aw paramaw)
   {
     this.mContext = paramContext;
-    this.MT = paramLock;
-    this.Ju = paramh;
-    this.NX = paramMap;
-    this.Kf = paramx;
-    this.Na = paramMap1;
-    this.HG = paramf;
-    this.MJ = paramai;
-    this.On = paramaw;
+    this.OI = paramLock;
+    this.Lj = paramh;
+    this.PM = paramMap;
+    this.LU = paramx;
+    this.OP = paramMap1;
+    this.Jv = paramf;
+    this.Oy = paramai;
+    this.Qc = paramaw;
     paramContext = paramArrayList.iterator();
     while (paramContext.hasNext()) {
       ((n)paramContext.next()).a(this);
     }
-    this.Oi = new ao(this, paramLooper);
-    this.Oh = paramLock.newCondition();
-    this.Ok = new ah(this);
+    this.PX = new ao(this, paramLooper);
+    this.PW = paramLock.newCondition();
+    this.PZ = new ah(this);
   }
   
   public final <A extends com.google.android.gms.common.api.g, R extends w, T extends g<R, A>> T a(T paramT)
   {
-    paramT.ih();
-    return this.Ok.a(paramT);
+    paramT.ip();
+    return this.PZ.a(paramT);
   }
   
   public final void a(ConnectionResult paramConnectionResult, a<?> parama, boolean paramBoolean)
   {
-    this.MT.lock();
+    this.OI.lock();
     try
     {
-      this.Ok.a(paramConnectionResult, parama, paramBoolean);
+      this.PZ.a(paramConnectionResult, parama, paramBoolean);
       return;
     }
     finally
     {
-      this.MT.unlock();
+      this.OI.unlock();
     }
   }
   
   final void a(an paraman)
   {
-    paraman = this.Oi.obtainMessage(1, paraman);
-    this.Oi.sendMessage(paraman);
+    paraman = this.PX.obtainMessage(1, paraman);
+    this.PX.sendMessage(paraman);
   }
   
   public final ConnectionResult b(long paramLong, TimeUnit paramTimeUnit)
   {
     connect();
-    for (paramLong = paramTimeUnit.toNanos(30L); (this.Ok instanceof aa); paramLong = this.Oh.awaitNanos(paramLong))
+    for (paramLong = paramTimeUnit.toNanos(30L); (this.PZ instanceof aa); paramLong = this.PW.awaitNanos(paramLong))
     {
       if (paramLong <= 0L) {}
       try
@@ -103,138 +103,138 @@ public final class am
       }
     }
     if (isConnected()) {
-      return ConnectionResult.Hb;
+      return ConnectionResult.IQ;
     }
-    if (this.Ol != null) {
-      return this.Ol;
+    if (this.Qa != null) {
+      return this.Qa;
     }
     return new ConnectionResult(13, null);
   }
   
   public final <A extends com.google.android.gms.common.api.g, T extends g<? extends w, A>> T b(T paramT)
   {
-    paramT.ih();
-    return this.Ok.b(paramT);
+    paramT.ip();
+    return this.PZ.b(paramT);
   }
   
   final void b(RuntimeException paramRuntimeException)
   {
-    paramRuntimeException = this.Oi.obtainMessage(2, paramRuntimeException);
-    this.Oi.sendMessage(paramRuntimeException);
+    paramRuntimeException = this.PX.obtainMessage(2, paramRuntimeException);
+    this.PX.sendMessage(paramRuntimeException);
   }
   
-  public final void bd(int paramInt)
+  public final void bx(int paramInt)
   {
-    this.MT.lock();
+    this.OI.lock();
     try
     {
-      this.Ok.bd(paramInt);
+      this.PZ.bx(paramInt);
       return;
     }
     finally
     {
-      this.MT.unlock();
+      this.OI.unlock();
     }
   }
   
   public final void connect()
   {
-    this.Ok.connect();
+    this.PZ.connect();
   }
   
   public final void disconnect()
   {
-    if (this.Ok.disconnect()) {
-      this.Oj.clear();
+    if (this.PZ.disconnect()) {
+      this.PY.clear();
     }
   }
   
   public final void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
     paramFileDescriptor = String.valueOf(paramString).concat("  ");
-    paramPrintWriter.append(paramString).append("mState=").println(this.Ok);
-    paramArrayOfString = this.Na.keySet().iterator();
+    paramPrintWriter.append(paramString).append("mState=").println(this.PZ);
+    paramArrayOfString = this.OP.keySet().iterator();
     while (paramArrayOfString.hasNext())
     {
       a locala = (a)paramArrayOfString.next();
       paramPrintWriter.append(paramString).append(locala.getName()).println(":");
-      ((j)this.NX.get(locala.gr())).a(paramFileDescriptor, paramPrintWriter);
+      ((j)this.PM.get(locala.gB())).a(paramFileDescriptor, paramPrintWriter);
     }
   }
   
   public final void h(Bundle paramBundle)
   {
-    this.MT.lock();
+    this.OI.lock();
     try
     {
-      this.Ok.h(paramBundle);
+      this.PZ.h(paramBundle);
       return;
     }
     finally
     {
-      this.MT.unlock();
+      this.OI.unlock();
     }
   }
   
-  final void iE()
+  final void iM()
   {
-    this.MT.lock();
+    this.OI.lock();
     try
     {
-      this.Ok = new aa(this, this.Kf, this.Na, this.Ju, this.HG, this.MT, this.mContext);
-      this.Ok.begin();
-      this.Oh.signalAll();
+      this.PZ = new aa(this, this.LU, this.OP, this.Lj, this.Jv, this.OI, this.mContext);
+      this.PZ.begin();
+      this.PW.signalAll();
       return;
     }
     finally
     {
-      this.MT.unlock();
+      this.OI.unlock();
     }
   }
   
-  final void iF()
+  final void iN()
   {
-    this.MT.lock();
+    this.OI.lock();
     try
     {
-      this.MJ.iB();
-      this.Ok = new z(this);
-      this.Ok.begin();
-      this.Oh.signalAll();
+      this.Oy.iJ();
+      this.PZ = new z(this);
+      this.PZ.begin();
+      this.PW.signalAll();
       return;
     }
     finally
     {
-      this.MT.unlock();
+      this.OI.unlock();
     }
   }
   
-  public final void ik()
+  public final void is()
   {
     if (isConnected()) {
-      ((z)this.Ok).it();
+      ((z)this.PZ).iB();
     }
   }
   
   public final boolean isConnected()
   {
-    return this.Ok instanceof z;
+    return this.PZ instanceof z;
   }
   
-  final void j(ConnectionResult paramConnectionResult)
+  final void k(ConnectionResult paramConnectionResult)
   {
-    this.MT.lock();
+    this.OI.lock();
     try
     {
-      this.Ol = paramConnectionResult;
-      this.Ok = new ah(this);
-      this.Ok.begin();
-      this.Oh.signalAll();
+      this.Qa = paramConnectionResult;
+      this.PZ = new ah(this);
+      this.PZ.begin();
+      this.PW.signalAll();
       return;
     }
     finally
     {
-      this.MT.unlock();
+      this.OI.unlock();
     }
   }
 }

@@ -7,13 +7,7 @@ public abstract interface j
 {
   public abstract void B(EmojiInfo paramEmojiInfo);
   
-  public abstract void C(EmojiInfo paramEmojiInfo);
-  
-  public abstract boolean bPD();
-  
-  public abstract boolean bPE();
-  
-  public abstract void bPF();
+  public abstract void cOw();
 }
 
 

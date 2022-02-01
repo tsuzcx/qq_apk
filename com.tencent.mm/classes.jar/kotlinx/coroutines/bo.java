@@ -1,117 +1,68 @@
 package kotlinx.coroutines;
 
-import a.c.c;
-import a.f.b.j;
-import a.l;
-import a.p;
-import a.p.a;
-import a.q;
-import a.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlinx.coroutines.a.o;
+import d.l;
+import kotlinx.coroutines.a.m;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"MODE_ATOMIC_DEFAULT", "", "MODE_ATOMIC_DEFAULT$annotations", "()V", "MODE_CANCELLABLE", "MODE_CANCELLABLE$annotations", "MODE_DIRECT", "MODE_DIRECT$annotations", "MODE_IGNORE", "MODE_IGNORE$annotations", "MODE_UNDISPATCHED", "MODE_UNDISPATCHED$annotations", "isCancellableMode", "", "(I)Z", "isDispatchedMode", "resumeMode", "", "T", "Lkotlin/coroutines/Continuation;", "value", "mode", "(Lkotlin/coroutines/Continuation;Ljava/lang/Object;I)V", "resumeUninterceptedMode", "resumeUninterceptedWithExceptionMode", "exception", "", "resumeWithExceptionMode", "kotlinx-coroutines-core"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"COMPLETING_ALREADY", "Lkotlinx/coroutines/internal/Symbol;", "COMPLETING_ALREADY$annotations", "()V", "COMPLETING_RETRY", "COMPLETING_RETRY$annotations", "COMPLETING_WAITING_CHILDREN", "COMPLETING_WAITING_CHILDREN$annotations", "EMPTY_ACTIVE", "Lkotlinx/coroutines/Empty;", "EMPTY_ACTIVE$annotations", "EMPTY_NEW", "EMPTY_NEW$annotations", "FALSE", "", "RETRY", "SEALED", "SEALED$annotations", "TOO_LATE_TO_CANCEL", "TOO_LATE_TO_CANCEL$annotations", "TRUE", "boxIncomplete", "", "unboxState", "kotlinx-coroutines-core"})
 public final class bo
 {
-  public static final boolean Wg(int paramInt)
+  private static final m KeB;
+  public static final m KeC;
+  private static final m KeD;
+  private static final m KeE;
+  private static final m KeF;
+  private static final aw KeG;
+  private static final aw KeH;
+  
+  static
   {
-    return paramInt == 1;
+    AppMethodBeat.i(118155);
+    KeB = new m("COMPLETING_ALREADY");
+    KeC = new m("COMPLETING_WAITING_CHILDREN");
+    KeD = new m("COMPLETING_RETRY");
+    KeE = new m("TOO_LATE_TO_CANCEL");
+    KeF = new m("SEALED");
+    KeG = new aw(false);
+    KeH = new aw(true);
+    AppMethodBeat.o(118155);
   }
   
-  public static final <T> void a(c<? super T> paramc, T paramT, int paramInt)
+  public static final Object fJ(Object paramObject)
   {
-    AppMethodBeat.i(118527);
-    j.q(paramc, "receiver$0");
-    Object localObject1;
-    switch (paramInt)
+    AppMethodBeat.i(190061);
+    if ((paramObject instanceof be))
     {
-    default: 
-      paramc = (Throwable)new IllegalStateException("Invalid mode ".concat(String.valueOf(paramInt)).toString());
-      AppMethodBeat.o(118527);
-      throw paramc;
-    case 0: 
-      localObject1 = p.BLX;
-      paramc.dg(p.de(paramT));
-      AppMethodBeat.o(118527);
-      return;
-    case 1: 
-      am.a(paramc, paramT);
-      AppMethodBeat.o(118527);
-      return;
-    case 2: 
-      am.b(paramc, paramT);
-      AppMethodBeat.o(118527);
-      return;
-    case 3: 
-      Object localObject2 = (al)paramc;
-      paramc = ((al)localObject2).eaV();
-      localObject1 = o.b(paramc, ((al)localObject2).CHM);
-      try
-      {
-        localObject2 = ((al)localObject2).CHO;
-        p.a locala = p.BLX;
-        ((c)localObject2).dg(p.de(paramT));
-        paramT = y.BMg;
-        return;
-      }
-      finally
-      {
-        o.a(paramc, localObject1);
-        AppMethodBeat.o(118527);
-      }
+      paramObject = new bf((be)paramObject);
+      AppMethodBeat.o(190061);
+      return paramObject;
     }
-    AppMethodBeat.o(118527);
+    AppMethodBeat.o(190061);
+    return paramObject;
   }
   
-  public static final <T> void a(c<? super T> paramc, Throwable paramThrowable, int paramInt)
+  public static final Object fK(Object paramObject)
   {
-    AppMethodBeat.i(118528);
-    j.q(paramc, "receiver$0");
-    j.q(paramThrowable, "exception");
-    Object localObject1;
-    switch (paramInt)
+    if (!(paramObject instanceof bf)) {}
+    for (Object localObject = null;; localObject = paramObject)
     {
-    default: 
-      paramc = (Throwable)new IllegalStateException("Invalid mode ".concat(String.valueOf(paramInt)).toString());
-      AppMethodBeat.o(118528);
-      throw paramc;
-    case 0: 
-      localObject1 = p.BLX;
-      paramc.dg(p.de(q.n(paramThrowable)));
-      AppMethodBeat.o(118528);
-      return;
-    case 1: 
-      am.a(paramc, paramThrowable);
-      AppMethodBeat.o(118528);
-      return;
-    case 2: 
-      am.b(paramc, paramThrowable);
-      AppMethodBeat.o(118528);
-      return;
-    case 3: 
-      Object localObject2 = (al)paramc;
-      paramc = ((al)localObject2).eaV();
-      localObject1 = o.b(paramc, ((al)localObject2).CHM);
-      try
+      localObject = (bf)localObject;
+      if (localObject != null)
       {
-        localObject2 = ((al)localObject2).CHO;
-        p.a locala = p.BLX;
-        ((c)localObject2).dg(p.de(q.n(paramThrowable)));
-        paramThrowable = y.BMg;
-        return;
+        localObject = ((bf)localObject).Keo;
+        if (localObject != null) {}
       }
-      finally
+      else
       {
-        o.a(paramc, localObject1);
-        AppMethodBeat.o(118528);
+        return paramObject;
       }
+      return localObject;
     }
-    AppMethodBeat.o(118528);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bo
  * JD-Core Version:    0.7.0.1
  */

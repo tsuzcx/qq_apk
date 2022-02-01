@@ -2,33 +2,48 @@ package com.tencent.mm.plugin.backup.h;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.model.ar.a;
+import com.tencent.mm.model.ar.b;
+import com.tencent.mm.pluginsdk.model.app.i;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
 {
-  public ak handler;
-  LinkedList<a.a> jGk;
+  public com.tencent.mm.sdk.platformtools.ap handler;
+  LinkedList<a> mxD;
   
   public a()
   {
-    AppMethodBeat.i(17685);
-    this.jGk = new LinkedList();
-    this.handler = new ak(Looper.getMainLooper());
-    AppMethodBeat.o(17685);
+    AppMethodBeat.i(21743);
+    this.mxD = new LinkedList();
+    this.handler = new com.tencent.mm.sdk.platformtools.ap(Looper.getMainLooper());
+    AppMethodBeat.o(21743);
   }
   
-  public final boolean h(int paramInt, Object paramObject)
+  public final void h(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(17686);
-    this.handler.post(new a.1(this, paramInt, paramObject));
-    AppMethodBeat.o(17686);
-    return true;
+    AppMethodBeat.i(21744);
+    this.mxD.add(new a(paramInt, paramObject));
+    AppMethodBeat.o(21744);
+  }
+  
+  final class a
+  {
+    public Object obj;
+    public int type;
+    
+    public a(int paramInt, Object paramObject)
+    {
+      this.type = paramInt;
+      this.obj = paramObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.h.a
  * JD-Core Version:    0.7.0.1
  */

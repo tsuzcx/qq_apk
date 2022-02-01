@@ -6,17 +6,22 @@ import java.lang.reflect.Field;
 public final class d<T>
   extends b
 {
-  private final T LB;
+  private final T Nq;
   
   private d(T paramT)
   {
-    this.LB = paramT;
+    this.Nq = paramT;
+  }
+  
+  public static <T> a F(T paramT)
+  {
+    return new d(paramT);
   }
   
   public static <T> T a(a parama)
   {
     if ((parama instanceof d)) {
-      return ((d)parama).LB;
+      return ((d)parama).Nq;
     }
     IBinder localIBinder = parama.asBinder();
     Field[] arrayOfField = localIBinder.getClass().getDeclaredFields();
@@ -62,11 +67,6 @@ public final class d<T>
       i = arrayOfField.length;
       throw new IllegalArgumentException(64 + "Unexpected number of IObjectWrapper declared fields: " + i);
     }
-  }
-  
-  public static <T> a w(T paramT)
-  {
-    return new d(paramT);
   }
 }
 

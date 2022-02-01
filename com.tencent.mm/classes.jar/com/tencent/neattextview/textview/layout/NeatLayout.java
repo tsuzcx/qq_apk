@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public class NeatLayout
   extends c
 {
-  private int BbY = 0;
+  private int IiR = 0;
   
   static
   {
-    AppMethodBeat.i(3257);
+    AppMethodBeat.i(39759);
     System.loadLibrary("linebreak");
-    AppMethodBeat.o(3257);
+    AppMethodBeat.o(39759);
   }
   
   public NeatLayout(CharSequence paramCharSequence, float[] paramArrayOfFloat)
@@ -26,7 +26,7 @@ public class NeatLayout
   
   public final void a(TextPaint paramTextPaint, float paramFloat, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(3256);
+    AppMethodBeat.i(39758);
     float f6 = paramTextPaint.getTextSize() / 2.0F;
     float f2;
     int i;
@@ -34,35 +34,35 @@ public class NeatLayout
     boolean[] arrayOfBoolean;
     int i3;
     float f1;
-    label110:
+    label109:
     float f3;
     if (paramBoolean)
     {
       f2 = paramTextPaint.getTextSize() / 6.0F;
-      i = this.Bbm.length();
+      i = this.Iib.length();
       paramTextPaint = new int[i];
       arrayOfFloat1 = new float[i];
       arrayOfBoolean = new boolean[i];
-      i3 = nComputeBreak(this.Bbm, this.Bbo, 0.0F, paramFloat + f6, paramTextPaint, arrayOfFloat1, f2, arrayOfBoolean, a.Bbh, this.Bbr, a.Bbg, this.Bbq, this.BbJ);
-      this.BbY = i3;
+      i3 = nComputeBreak(this.Iib, this.Iid, 0.0F, paramFloat + f6, paramTextPaint, arrayOfFloat1, f2, arrayOfBoolean, a.IhW, this.Iig, a.IhV, this.Iif, this.Iiz);
+      this.IiR = i3;
       f1 = 0.0F;
       i = 0;
       if ((i >= i3) || (i >= paramInt)) {
-        break label157;
+        break label156;
       }
       f3 = arrayOfFloat1[i];
       if (f1 >= f3) {
-        break label450;
+        break label448;
       }
       f1 = f3;
     }
-    label157:
-    label436:
-    label450:
+    label156:
+    label435:
+    label448:
     for (;;)
     {
       i += 1;
-      break label110;
+      break label109;
       f2 = 0.0F;
       break;
       float f5 = Math.min(f1, paramFloat);
@@ -86,7 +86,7 @@ public class NeatLayout
           if (i2 - 1 >= 0)
           {
             j = n;
-            if (this.Bbn[(i2 - 1)] == '\n') {
+            if (this.Iic[(i2 - 1)] == '\n') {
               j = n - 1;
             }
           }
@@ -96,10 +96,10 @@ public class NeatLayout
             if (n < i2)
             {
               int i1 = j;
-              if (this.Bbn[n] != '\n')
+              if (this.Iic[n] != '\n')
               {
                 i1 = j;
-                if (this.Bbo[n] == 0.0F) {
+                if (this.Iid[n] == 0.0F) {
                   i1 = j - 1;
                 }
               }
@@ -112,17 +112,17 @@ public class NeatLayout
           }
           f1 = f3 / (Math.max(2, j) - 1);
         }
-        label360:
+        label359:
         char[] arrayOfChar;
         float[] arrayOfFloat2;
         if (m != 0)
         {
           f3 = paramFloat;
-          arrayOfChar = this.Bbn;
-          arrayOfFloat2 = this.Bbo;
-          j = this.Bbt.size();
+          arrayOfChar = this.Iic;
+          arrayOfFloat2 = this.Iid;
+          j = this.Iii.size();
           if (m == 0) {
-            break label436;
+            break label435;
           }
         }
         for (float f4 = paramFloat;; f4 = f5)
@@ -132,17 +132,17 @@ public class NeatLayout
           i = i2;
           break;
           f3 = arrayOfFloat1[k];
-          break label360;
+          break label359;
         }
       }
-      AppMethodBeat.o(3256);
+      AppMethodBeat.o(39758);
       return;
     }
   }
   
-  public final int dTo()
+  public final int fkV()
   {
-    return this.BbY;
+    return this.IiR;
   }
 }
 

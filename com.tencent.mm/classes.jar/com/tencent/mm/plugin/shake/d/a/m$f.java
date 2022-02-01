@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.shake.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.Map;
 
 public final class m$f
 {
-  public String blZ;
-  public String qPm;
+  public String bNK;
   public String userName;
+  public String wob;
   
-  public static f Zj(String paramString)
+  public static f anj(String paramString)
   {
-    AppMethodBeat.i(24676);
-    Map localMap = br.F(paramString, "bizprofile");
+    AppMethodBeat.i(28346);
+    Map localMap = bw.K(paramString, "bizprofile");
     if (localMap != null) {}
     for (;;)
     {
       try
       {
         paramString = new f();
-        paramString.blZ = bo.nullAsNil((String)localMap.get(".bizprofile.nickname"));
-        paramString.userName = bo.nullAsNil((String)localMap.get(".bizprofile.username"));
-        paramString.qPm = bo.nullAsNil((String)localMap.get(".bizprofile.showchat"));
-        AppMethodBeat.o(24676);
+        paramString.bNK = bt.nullAsNil((String)localMap.get(".bizprofile.nickname"));
+        paramString.userName = bt.nullAsNil((String)localMap.get(".bizprofile.username"));
+        paramString.wob = bt.nullAsNil((String)localMap.get(".bizprofile.showchat"));
+        AppMethodBeat.o(28346);
         return paramString;
       }
       catch (Exception paramString)
       {
-        ab.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ShakeTVXmlParser", paramString, "", new Object[0]);
         paramString = null;
         continue;
       }
@@ -40,7 +40,7 @@ public final class m$f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.m.f
  * JD-Core Version:    0.7.0.1
  */

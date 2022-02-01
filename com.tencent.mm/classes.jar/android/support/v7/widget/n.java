@@ -1,11 +1,21 @@
 package android.support.v7.widget;
 
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+
 final class n
   extends p
 {
-  public final void hw()
+  public final void initStatic()
   {
-    ao.akV = new n.1(this);
+    ao.asj = new ao.a()
+    {
+      public final void a(Canvas paramAnonymousCanvas, RectF paramAnonymousRectF, float paramAnonymousFloat, Paint paramAnonymousPaint)
+      {
+        paramAnonymousCanvas.drawRoundRect(paramAnonymousRectF, paramAnonymousFloat, paramAnonymousFloat, paramAnonymousPaint);
+      }
+    };
   }
 }
 

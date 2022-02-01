@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.aqb;
-import com.tencent.mm.protocal.protobuf.aqc;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.baq;
+import com.tencent.mm.protocal.protobuf.bar;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class q
-  extends m
+  extends n
   implements k
 {
-  private f callback = null;
+  private g callback = null;
   public b rr = null;
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(19328);
-    this.callback = paramf;
-    paramf = new b.a();
-    paramf.fsX = new aqb();
-    paramf.fsY = new aqc();
-    paramf.uri = "/cgi-bin/mmbiz-bin/rank/getsportdevicelist";
-    paramf.funcId = getType();
-    paramf.reqCmdId = 0;
-    paramf.respCmdId = 0;
-    this.rr = paramf.ado();
+    AppMethodBeat.i(23397);
+    this.callback = paramg;
+    paramg = new b.a();
+    paramg.gUU = new baq();
+    paramg.gUV = new bar();
+    paramg.uri = "/cgi-bin/mmbiz-bin/rank/getsportdevicelist";
+    paramg.funcId = getType();
+    paramg.reqCmdId = 0;
+    paramg.respCmdId = 0;
+    this.rr = paramg.atI();
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(19328);
+    AppMethodBeat.o(23397);
     return i;
   }
   
@@ -42,15 +42,15 @@ public final class q
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(19327);
-    ab.i("MicroMsg.exdevice.NetSceneGetSportDeviceList", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    AppMethodBeat.i(23396);
+    ad.i("MicroMsg.exdevice.NetSceneGetSportDeviceList", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(19327);
+    AppMethodBeat.o(23396);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.q
  * JD-Core Version:    0.7.0.1
  */

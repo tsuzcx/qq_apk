@@ -4,11 +4,11 @@ import android.view.View;
 
 public abstract interface y
 {
-  public abstract void aB(View paramView);
+  public abstract void aH(View paramView);
   
-  public abstract void aC(View paramView);
+  public abstract void aI(View paramView);
   
-  public abstract void aD(View paramView);
+  public abstract void aJ(View paramView);
 }
 
 

@@ -4,59 +4,74 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.model.t;
-import com.tencent.mm.pluginsdk.model.app.al;
-import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.n;
+import com.tencent.mm.g.c.y;
+import com.tencent.mm.model.w;
+import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.pluginsdk.model.app.j;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceTitleCategory;
+import com.tencent.mm.ui.base.preference.f;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceAppUI
   extends MMPreference
-  implements com.tencent.mm.ai.f
+  implements com.tencent.mm.al.g
 {
-  private ServicePreference sYW;
-  private ServicePreference sYX;
-  private PreferenceTitleCategory sYY;
-  private PreferenceTitleCategory sYZ;
-  private List<com.tencent.mm.pluginsdk.model.app.f> sZa;
-  private List<com.tencent.mm.pluginsdk.model.app.f> sZb;
-  private AdapterView.OnItemClickListener sZc;
-  private AdapterView.OnItemClickListener sZd;
-  private com.tencent.mm.ui.base.preference.f screen;
+  private f screen;
   private String talker;
+  private List<com.tencent.mm.pluginsdk.model.app.g> yFA;
+  private List<com.tencent.mm.pluginsdk.model.app.g> yFB;
+  private AdapterView.OnItemClickListener yFC;
+  private AdapterView.OnItemClickListener yFD;
+  private ServicePreference yFw;
+  private ServicePreference yFx;
+  private PreferenceTitleCategory yFy;
+  private PreferenceTitleCategory yFz;
   
   public ServiceAppUI()
   {
-    AppMethodBeat.i(25474);
-    this.sZa = new ArrayList();
-    this.sZb = new ArrayList();
-    AppMethodBeat.o(25474);
+    AppMethodBeat.i(29168);
+    this.yFA = new ArrayList();
+    this.yFB = new ArrayList();
+    AppMethodBeat.o(29168);
   }
   
   public int getResourceId()
   {
-    return 2131165269;
+    return 2131951713;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(25479);
-    setMMTitle(2131303133);
+    AppMethodBeat.i(29172);
+    setMMTitle(2131763082);
     this.talker = getIntent().getStringExtra("service_app_talker_user");
-    setBackBtn(new ServiceAppUI.1(this));
-    this.sZa.clear();
-    this.sZb.clear();
-    Cursor localCursor;
-    if (t.lA(this.talker))
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
-      localCursor = al.cac().eZ(0, 2);
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(29165);
+        ServiceAppUI.this.finish();
+        AppMethodBeat.o(29165);
+        return true;
+      }
+    });
+    this.yFA.clear();
+    this.yFB.clear();
+    Cursor localCursor;
+    if (w.pF(this.talker))
+    {
+      localCursor = ap.cZQ().gv(0, 2);
       if (localCursor != null) {
         if (!localCursor.moveToFirst()) {}
       }
@@ -64,10 +79,10 @@ public class ServiceAppUI
     label510:
     for (;;)
     {
-      com.tencent.mm.pluginsdk.model.app.f localf = new com.tencent.mm.pluginsdk.model.app.f();
-      localf.convertFrom(localCursor);
-      if (localf.field_serviceAppType == 1) {
-        this.sZa.add(localf);
+      com.tencent.mm.pluginsdk.model.app.g localg = new com.tencent.mm.pluginsdk.model.app.g();
+      localg.convertFrom(localCursor);
+      if (localg.field_serviceAppType == 1) {
+        this.yFA.add(localg);
       }
       for (;;)
       {
@@ -75,56 +90,100 @@ public class ServiceAppUI
           break label510;
         }
         localCursor.close();
-        ab.i("MicroMsg.ServiceAppUI", "initAppList: wxServiceList size %s, bizServiceList size %s", new Object[] { Integer.valueOf(this.sZa.size()), Integer.valueOf(this.sZb.size()) });
-        if (this.sZc == null) {
-          this.sZc = new ServiceAppUI.2(this);
+        ad.i("MicroMsg.ServiceAppUI", "initAppList: wxServiceList size %s, bizServiceList size %s", new Object[] { Integer.valueOf(this.yFA.size()), Integer.valueOf(this.yFB.size()) });
+        if (this.yFC == null) {
+          this.yFC = new AdapterView.OnItemClickListener()
+          {
+            public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+            {
+              AppMethodBeat.i(29166);
+              if (ServiceAppUI.a(ServiceAppUI.this) == null)
+              {
+                ad.e("MicroMsg.ServiceAppUI", "wx onItemClick wxServicePref null");
+                AppMethodBeat.o(29166);
+                return;
+              }
+              paramAnonymousAdapterView = ServiceAppUI.a(ServiceAppUI.this).OU(paramAnonymousInt);
+              if (paramAnonymousAdapterView == null)
+              {
+                ad.e("MicroMsg.ServiceAppUI", "wx onItemClick app is null");
+                AppMethodBeat.o(29166);
+                return;
+              }
+              ad.i("MicroMsg.ServiceAppUI", "onItemClick, jumpType[%d], package[%s], appid[%s]", new Object[] { Integer.valueOf(paramAnonymousAdapterView.eoB), paramAnonymousAdapterView.field_packageName, paramAnonymousAdapterView.field_appId });
+              ServiceAppUI.a(ServiceAppUI.this, paramAnonymousAdapterView);
+              AppMethodBeat.o(29166);
+            }
+          };
         }
-        if (this.sZd == null) {
-          this.sZd = new ServiceAppUI.3(this);
+        if (this.yFD == null) {
+          this.yFD = new AdapterView.OnItemClickListener()
+          {
+            public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+            {
+              AppMethodBeat.i(29167);
+              if (ServiceAppUI.b(ServiceAppUI.this) == null)
+              {
+                ad.e("MicroMsg.ServiceAppUI", "biz onItemClick bizServicePref null");
+                AppMethodBeat.o(29167);
+                return;
+              }
+              paramAnonymousAdapterView = ServiceAppUI.b(ServiceAppUI.this).OU(paramAnonymousInt);
+              if (paramAnonymousAdapterView == null)
+              {
+                ad.e("MicroMsg.ServiceAppUI", "biz onItemClick app is null");
+                AppMethodBeat.o(29167);
+                return;
+              }
+              ad.i("MicroMsg.ServiceAppUI", "onItemClick, jumpType[%d], package[%s], appid[%s]", new Object[] { Integer.valueOf(paramAnonymousAdapterView.eoB), paramAnonymousAdapterView.field_packageName, paramAnonymousAdapterView.field_appId });
+              ServiceAppUI.a(ServiceAppUI.this, paramAnonymousAdapterView);
+              AppMethodBeat.o(29167);
+            }
+          };
         }
         this.screen = getPreferenceScreen();
         this.screen.removeAll();
-        if (this.sZa.size() > 0)
+        if (this.yFA.size() > 0)
         {
-          this.sYW = new ServicePreference(this);
-          this.sYW.qIG = this.sZa;
-          if (this.sZc != null) {
-            this.sYW.sYO = this.sZc;
+          this.yFw = new ServicePreference(this);
+          this.yFw.whn = this.yFA;
+          if (this.yFC != null) {
+            this.yFw.yFo = this.yFC;
           }
-          if (this.sYY == null)
+          if (this.yFy == null)
           {
-            this.sYY = new PreferenceTitleCategory(this);
-            this.sYY.setTitle(2131306049);
+            this.yFy = new PreferenceTitleCategory(this);
+            this.yFy.setTitle(2131766298);
           }
-          this.screen.b(this.sYY);
-          this.screen.b(this.sYW);
+          this.screen.b(this.yFy);
+          this.screen.b(this.yFw);
         }
-        if (this.sZb.size() > 0)
+        if (this.yFB.size() > 0)
         {
-          this.sYX = new ServicePreference(this);
-          this.sYX.qIG = this.sZb;
-          if (this.sZd != null) {
-            this.sYX.sYO = this.sZd;
+          this.yFx = new ServicePreference(this);
+          this.yFx.whn = this.yFB;
+          if (this.yFD != null) {
+            this.yFx.yFo = this.yFD;
           }
-          if (this.sYZ == null)
+          if (this.yFz == null)
           {
-            this.sYZ = new PreferenceTitleCategory(this);
-            this.sYZ.setTitle(2131297685);
+            this.yFz = new PreferenceTitleCategory(this);
+            this.yFz.setTitle(2131756597);
           }
-          this.screen.b(this.sYZ);
-          this.screen.b(this.sYX);
+          this.screen.b(this.yFz);
+          this.screen.b(this.yFx);
         }
-        AppMethodBeat.o(25479);
+        AppMethodBeat.o(29172);
         return;
-        if (t.nU(this.talker))
+        if (w.sE(this.talker))
         {
-          localCursor = al.cac().eZ(0, 4);
+          localCursor = ap.cZQ().gv(0, 4);
           break;
         }
-        localCursor = al.cac().eZ(0, 1);
+        localCursor = ap.cZQ().gv(0, 1);
         break;
-        if (localf.field_serviceAppType == 2) {
-          this.sZb.add(localf);
+        if (localg.field_serviceAppType == 2) {
+          this.yFB.add(localg);
         }
       }
     }
@@ -132,54 +191,54 @@ public class ServiceAppUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(25475);
+    AppMethodBeat.i(29169);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(25475);
+    AppMethodBeat.o(29169);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(25477);
+    AppMethodBeat.i(29171);
     super.onPause();
-    if (this.sYW != null) {
-      this.sYW.onPause();
+    if (this.yFw != null) {
+      this.yFw.onPause();
     }
-    if (this.sYX != null) {
-      this.sYX.onPause();
+    if (this.yFx != null) {
+      this.yFx.onPause();
     }
-    AppMethodBeat.o(25477);
+    AppMethodBeat.o(29171);
   }
   
-  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     return false;
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(25476);
+    AppMethodBeat.i(29170);
     super.onResume();
     initView();
-    if (this.sYW != null) {
-      this.sYW.onResume();
+    if (this.yFw != null) {
+      this.yFw.onResume();
     }
-    if (this.sYX != null) {
-      this.sYX.onResume();
+    if (this.yFx != null) {
+      this.yFx.onResume();
     }
-    AppMethodBeat.o(25476);
+    AppMethodBeat.o(29170);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(25480);
-    ab.d("MicroMsg.ServiceAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    AppMethodBeat.i(29173);
+    ad.d("MicroMsg.ServiceAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      AppMethodBeat.o(25480);
+      AppMethodBeat.o(29173);
       return;
     }
-    ab.e("MicroMsg.ServiceAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
-    AppMethodBeat.o(25480);
+    ad.e("MicroMsg.ServiceAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    AppMethodBeat.o(29173);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -190,7 +249,7 @@ public class ServiceAppUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.ServiceAppUI
  * JD-Core Version:    0.7.0.1
  */

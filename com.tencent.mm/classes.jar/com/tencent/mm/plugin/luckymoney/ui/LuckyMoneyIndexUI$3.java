@@ -12,15 +12,15 @@ final class LuckyMoneyIndexUI$3
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(42723);
-    h.qsU.e(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2) });
-    LuckyMoneyIndexUI.a(this.otI, 1);
-    AppMethodBeat.o(42723);
+    AppMethodBeat.i(65600);
+    h.vKh.f(11701, new Object[] { Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2) });
+    LuckyMoneyIndexUI.a(this.tms, 1);
+    AppMethodBeat.o(65600);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyIndexUI.3
  * JD-Core Version:    0.7.0.1
  */

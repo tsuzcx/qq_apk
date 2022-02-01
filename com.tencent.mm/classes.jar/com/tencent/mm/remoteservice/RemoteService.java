@@ -2,58 +2,92 @@ package com.tencent.mm.remoteservice;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.lang.reflect.Constructor;
 
 public class RemoteService
   extends Service
 {
-  private c.a yis;
+  private c.a ELU;
   
   public RemoteService()
   {
-    AppMethodBeat.i(80225);
-    this.yis = new RemoteService.1(this);
-    AppMethodBeat.o(80225);
+    AppMethodBeat.i(152742);
+    this.ELU = new c.a()
+    {
+      public final void a(String paramAnonymousString1, String paramAnonymousString2, Bundle paramAnonymousBundle, b paramAnonymousb)
+      {
+        AppMethodBeat.i(152741);
+        try
+        {
+          Object localObject = RemoteService.this.getClassLoader().loadClass(paramAnonymousString1);
+          paramAnonymousString1 = ((Class)localObject).getConstructors();
+          if (paramAnonymousString1.length > 0)
+          {
+            localObject = new Object[paramAnonymousString1[0].getParameterTypes().length];
+            localObject[0] = null;
+          }
+          for (paramAnonymousString1 = (a)paramAnonymousString1[0].newInstance((Object[])localObject);; paramAnonymousString1 = (a)((Class)localObject).newInstance())
+          {
+            paramAnonymousString1.ELS = paramAnonymousb;
+            paramAnonymousString1.ELR = RemoteService.this;
+            paramAnonymousString1.onCallback(paramAnonymousString2, paramAnonymousBundle, false);
+            AppMethodBeat.o(152741);
+            return;
+          }
+          return;
+        }
+        catch (Exception paramAnonymousString1)
+        {
+          ad.e("MicroMsg.RemoveService", "exception:%s", new Object[] { bt.m(paramAnonymousString1) });
+          AppMethodBeat.o(152741);
+        }
+      }
+    };
+    AppMethodBeat.o(152742);
   }
   
   public IBinder onBind(Intent paramIntent)
   {
-    AppMethodBeat.i(80226);
+    AppMethodBeat.i(152743);
     new StringBuilder("onBind, threadId:").append(Thread.currentThread().getId());
-    paramIntent = this.yis;
-    AppMethodBeat.o(80226);
+    paramIntent = this.ELU;
+    AppMethodBeat.o(152743);
     return paramIntent;
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(80229);
+    AppMethodBeat.i(152746);
     new StringBuilder("onDestroy, threadId:").append(Thread.currentThread().getId());
     super.onDestroy();
-    AppMethodBeat.o(80229);
+    AppMethodBeat.o(152746);
   }
   
   public void onRebind(Intent paramIntent)
   {
-    AppMethodBeat.i(80227);
+    AppMethodBeat.i(152744);
     new StringBuilder("onRebind, threadId:").append(Thread.currentThread().getId());
     super.onRebind(paramIntent);
-    AppMethodBeat.o(80227);
+    AppMethodBeat.o(152744);
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
-    AppMethodBeat.i(80228);
+    AppMethodBeat.i(152745);
     new StringBuilder("onUnbind, threadId:").append(Thread.currentThread().getId());
     boolean bool = super.onUnbind(paramIntent);
-    AppMethodBeat.o(80228);
+    AppMethodBeat.o(152745);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.remoteservice.RemoteService
  * JD-Core Version:    0.7.0.1
  */

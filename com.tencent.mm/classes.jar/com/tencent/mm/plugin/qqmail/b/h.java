@@ -3,65 +3,65 @@ package com.tencent.mm.plugin.qqmail.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int pIE;
-  public long pIG;
+  public int uKX;
+  public long uKZ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(67927);
+    AppMethodBeat.i(122661);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.pIE);
-      paramVarArgs.am(2, this.pIG);
-      AppMethodBeat.o(67927);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.uKX);
+      paramVarArgs.aG(2, this.uKZ);
+      AppMethodBeat.o(122661);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.bl(1, this.pIE);
-      int i = e.a.a.b.b.a.p(2, this.pIG);
-      AppMethodBeat.o(67927);
+      paramInt = f.a.a.b.b.a.bA(1, this.uKX);
+      int i = f.a.a.b.b.a.q(2, this.uKZ);
+      AppMethodBeat.o(122661);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      AppMethodBeat.o(67927);
+      AppMethodBeat.o(122661);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       h localh = (h)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(67927);
+        AppMethodBeat.o(122661);
         return -1;
       case 1: 
-        localh.pIE = locala.CLY.sl();
-        AppMethodBeat.o(67927);
+        localh.uKX = locala.KhF.xS();
+        AppMethodBeat.o(122661);
         return 0;
       }
-      localh.pIG = locala.CLY.sm();
-      AppMethodBeat.o(67927);
+      localh.uKZ = locala.KhF.xT();
+      AppMethodBeat.o(122661);
       return 0;
     }
-    AppMethodBeat.o(67927);
+    AppMethodBeat.o(122661);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.h
  * JD-Core Version:    0.7.0.1
  */

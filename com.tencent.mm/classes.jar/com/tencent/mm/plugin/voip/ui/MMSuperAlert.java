@@ -2,53 +2,99 @@ package com.tencent.mm.plugin.voip.ui;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.ui.base.a;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.ui.base.h;
 
-@a(3)
+@com.tencent.mm.ui.base.a(3)
 public class MMSuperAlert
-  extends Activity
+  extends HellActivity
 {
-  public static void Z(Context paramContext, int paramInt)
+  public static void ab(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(4784);
-    Intent localIntent = new Intent(paramContext, MMSuperAlert.class);
-    localIntent.putExtra("MMSuperAlert_title", 2131297087);
-    localIntent.putExtra("MMSuperAlert_msg", paramInt);
-    localIntent.putExtra("MMSuperAlert_cancelable", false);
-    paramContext.startActivity(localIntent);
-    AppMethodBeat.o(4784);
+    AppMethodBeat.i(115307);
+    Object localObject = new Intent(paramContext, MMSuperAlert.class);
+    ((Intent)localObject).putExtra("MMSuperAlert_title", 2131755906);
+    ((Intent)localObject).putExtra("MMSuperAlert_msg", paramInt);
+    ((Intent)localObject).putExtra("MMSuperAlert_cancelable", false);
+    ((Intent)localObject).setFlags(268435456);
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/voip/ui/MMSuperAlert", "show", "(Landroid/content/Context;IIZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/voip/ui/MMSuperAlert", "show", "(Landroid/content/Context;IIZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(115307);
   }
   
   public Resources getResources()
   {
-    AppMethodBeat.i(4785);
-    if ((getAssets() != null) && (ah.getResources() != null))
+    AppMethodBeat.i(115308);
+    if ((getAssets() != null) && (aj.getResources() != null))
     {
-      localResources = ah.getResources();
-      AppMethodBeat.o(4785);
+      localResources = aj.getResources();
+      AppMethodBeat.o(115308);
       return localResources;
     }
     Resources localResources = super.getResources();
-    AppMethodBeat.o(4785);
+    AppMethodBeat.o(115308);
     return localResources;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(4783);
+    AppMethodBeat.i(115306);
     super.onCreate(paramBundle);
-    setContentView(2130970275);
-    int i = getIntent().getIntExtra("MMSuperAlert_msg", 0);
-    int j = getIntent().getIntExtra("MMSuperAlert_title", 0);
-    boolean bool = getIntent().getBooleanExtra("MMSuperAlert_cancelable", true);
-    new ak().postDelayed(new MMSuperAlert.1(this, i, j, bool), 50L);
-    AppMethodBeat.o(4783);
+    setContentView(2131494906);
+    final int i = getIntent().getIntExtra("MMSuperAlert_msg", 0);
+    final int j = getIntent().getIntExtra("MMSuperAlert_title", 0);
+    final boolean bool = getIntent().getBooleanExtra("MMSuperAlert_cancelable", true);
+    new ap().postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(115305);
+        String str1;
+        if (i == 0)
+        {
+          str1 = "";
+          if (j != 0) {
+            break label76;
+          }
+        }
+        label76:
+        for (String str2 = "";; str2 = MMSuperAlert.this.getString(j))
+        {
+          h.a(MMSuperAlert.this, str1, str2, bool, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          {
+            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+            {
+              AppMethodBeat.i(115303);
+              MMSuperAlert.this.finish();
+              AppMethodBeat.o(115303);
+            }
+          }, new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+            {
+              AppMethodBeat.i(115304);
+              MMSuperAlert.this.finish();
+              AppMethodBeat.o(115304);
+            }
+          });
+          AppMethodBeat.o(115305);
+          return;
+          str1 = MMSuperAlert.this.getString(i);
+          break;
+        }
+      }
+    }, 50L);
+    AppMethodBeat.o(115306);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

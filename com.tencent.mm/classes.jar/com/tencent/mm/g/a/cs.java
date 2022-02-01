@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class cs
   extends b
 {
-  public cs.a cqd;
-  public cs.b cqe;
+  public cs.a deQ;
+  public b deR;
   
   public cs()
   {
@@ -16,17 +16,22 @@ public final class cs
   
   private cs(byte paramByte)
   {
-    AppMethodBeat.i(5468);
-    this.cqd = new cs.a();
-    this.cqe = new cs.b();
-    this.ymq = false;
+    AppMethodBeat.i(127402);
+    this.deQ = new cs.a();
+    this.deR = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(5468);
+    AppMethodBeat.o(127402);
+  }
+  
+  public static final class b
+  {
+    public int ret = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.cs
  * JD-Core Version:    0.7.0.1
  */

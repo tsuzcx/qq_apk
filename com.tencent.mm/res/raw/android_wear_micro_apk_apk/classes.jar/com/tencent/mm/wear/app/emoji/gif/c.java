@@ -2,35 +2,36 @@ package com.tencent.mm.wear.app.emoji.gif;
 
 import android.content.res.Resources;
 import com.tencent.mm.a.a;
+import com.tencent.mm.a.e;
 import com.tencent.mm.wear.a.c.d;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 
 public class c
 {
-  private static c acx;
-  private a<String, WeakReference<Object>> acy = new a(10);
-  private a<String, WeakReference<b>> acz = new a(new com.tencent.mm.a.b() {});
+  private static c afY;
+  private a<String, WeakReference<Object>> afZ = new e(10);
+  private a<String, WeakReference<b>> aga = new e(new com.tencent.mm.a.b() {});
   
   /* Error */
-  public static c mD()
+  public static c np()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 37	com/tencent/mm/wear/app/emoji/gif/c:acx	Lcom/tencent/mm/wear/app/emoji/gif/c;
+    //   3: getstatic 37	com/tencent/mm/wear/app/emoji/gif/c:afY	Lcom/tencent/mm/wear/app/emoji/gif/c;
     //   6: ifnonnull +25 -> 31
     //   9: ldc 2
     //   11: monitorenter
-    //   12: getstatic 37	com/tencent/mm/wear/app/emoji/gif/c:acx	Lcom/tencent/mm/wear/app/emoji/gif/c;
+    //   12: getstatic 37	com/tencent/mm/wear/app/emoji/gif/c:afY	Lcom/tencent/mm/wear/app/emoji/gif/c;
     //   15: ifnonnull +13 -> 28
     //   18: new 2	com/tencent/mm/wear/app/emoji/gif/c
     //   21: dup
     //   22: invokespecial 38	com/tencent/mm/wear/app/emoji/gif/c:<init>	()V
-    //   25: putstatic 37	com/tencent/mm/wear/app/emoji/gif/c:acx	Lcom/tencent/mm/wear/app/emoji/gif/c;
+    //   25: putstatic 37	com/tencent/mm/wear/app/emoji/gif/c:afY	Lcom/tencent/mm/wear/app/emoji/gif/c;
     //   28: ldc 2
     //   30: monitorexit
-    //   31: getstatic 37	com/tencent/mm/wear/app/emoji/gif/c:acx	Lcom/tencent/mm/wear/app/emoji/gif/c;
+    //   31: getstatic 37	com/tencent/mm/wear/app/emoji/gif/c:afY	Lcom/tencent/mm/wear/app/emoji/gif/c;
     //   34: astore_0
     //   35: ldc 2
     //   37: monitorexit
@@ -63,14 +64,14 @@ public class c
   
   public final b a(String paramString, Resources paramResources, int paramInt)
   {
-    if (this.acz.get(null) != null) {}
-    for (paramString = (b)((WeakReference)this.acz.get(null)).get();; paramString = null)
+    if (this.aga.get(null) != null) {}
+    for (paramString = (b)((WeakReference)this.aga.get(null)).get();; paramString = null)
     {
       Object localObject = paramString;
       if (paramString == null)
       {
         localObject = new b(paramResources, paramInt);
-        this.acz.put(null, new WeakReference(localObject));
+        this.aga.put(null, new WeakReference(localObject));
       }
       return localObject;
     }
@@ -84,14 +85,14 @@ public class c
     do
     {
       return localb2;
-      d.e("MicroMsg.GIF.MMGIFDrawableCacheMgr", "stream key:%s", new Object[] { paramString });
-      if (this.acz.get(paramString) != null) {
-        localb1 = (b)((WeakReference)this.acz.get(paramString)).get();
+      d.d("MicroMsg.GIF.MMGIFDrawableCacheMgr", "stream key:%s", new Object[] { paramString });
+      if (this.aga.get(paramString) != null) {
+        localb1 = (b)((WeakReference)this.aga.get(paramString)).get();
       }
       localb2 = localb1;
     } while (localb1 != null);
     paramInputStream = new b(paramInputStream);
-    this.acz.put(paramString, new WeakReference(paramInputStream));
+    this.aga.put(paramString, new WeakReference(paramInputStream));
     return paramInputStream;
   }
   
@@ -105,14 +106,14 @@ public class c
     do
     {
       return paramString;
-      if (this.acz.get(paramString) != null) {
-        localb2 = (b)((WeakReference)this.acz.get(paramString)).get();
+      if (this.aga.get(paramString) != null) {
+        localb2 = (b)((WeakReference)this.aga.get(paramString)).get();
       }
       localb1 = localb2;
       if (localb2 == null)
       {
         localb1 = new b(paramArrayOfByte);
-        this.acz.put(paramString, new WeakReference(localb1));
+        this.aga.put(paramString, new WeakReference(localb1));
       }
       paramString = localb1;
     } while (localb1.isRunning());
@@ -120,19 +121,19 @@ public class c
     return localb1;
   }
   
-  public final b m(String paramString1, String paramString2)
+  public final b n(String paramString1, String paramString2)
   {
     b localb1 = null;
-    if (this.acz.get(paramString1) != null) {
-      localb1 = (b)((WeakReference)this.acz.get(paramString1)).get();
+    if (this.aga.get(paramString1) != null) {
+      localb1 = (b)((WeakReference)this.aga.get(paramString1)).get();
     }
     b localb2 = localb1;
     if (localb1 == null)
     {
       long l = System.currentTimeMillis();
       localb2 = new b(paramString2);
-      d.e("MicroMsg.GIF.MMGIFDrawableCacheMgr", "new MMGIFDrawable use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-      this.acz.put(paramString1, new WeakReference(localb2));
+      d.d("MicroMsg.GIF.MMGIFDrawableCacheMgr", "new MMGIFDrawable use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      this.aga.put(paramString1, new WeakReference(localb2));
     }
     return localb2;
   }

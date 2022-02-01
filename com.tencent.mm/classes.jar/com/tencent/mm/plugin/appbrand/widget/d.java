@@ -1,18 +1,17 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
-import android.os.Build.VERSION;
-import android.support.v4.view.t;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.FrameLayout;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.af;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.plugin.appbrand.u.a;
+import com.tencent.mm.plugin.appbrand.utils.aa;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -20,107 +19,113 @@ import java.util.Set;
 public final class d
   extends FrameLayout
 {
-  private final com.tencent.mm.plugin.appbrand.o.a jal;
-  public final Set<Runnable> jam;
+  private final Set<Runnable> kYP;
+  private final a lQf;
   
   public d(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(87440);
-    this.jam = new HashSet();
+    AppMethodBeat.i(135389);
+    this.kYP = new HashSet();
     setWillNotDraw(false);
-    this.jal = ((com.tencent.mm.plugin.appbrand.o.a)e.s(com.tencent.mm.plugin.appbrand.o.a.class));
-    AppMethodBeat.o(87440);
+    this.lQf = ((a)e.M(a.class));
+    AppMethodBeat.o(135389);
+  }
+  
+  public final void Z(final Runnable paramRunnable)
+  {
+    AppMethodBeat.i(135391);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(135391);
+      return;
+    }
+    if (!aa.Be())
+    {
+      h.Iye.aN(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(135388);
+          d.this.Z(paramRunnable);
+          AppMethodBeat.o(135388);
+        }
+      });
+      AppMethodBeat.o(135391);
+      return;
+    }
+    if (getAnimation() == null)
+    {
+      paramRunnable.run();
+      AppMethodBeat.o(135391);
+      return;
+    }
+    this.kYP.add(paramRunnable);
+    AppMethodBeat.o(135391);
   }
   
   protected final void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(87441);
+    AppMethodBeat.i(135390);
     if (willNotDraw())
     {
-      AppMethodBeat.o(87441);
+      AppMethodBeat.o(135390);
       return;
     }
     try
     {
       super.dispatchDraw(paramCanvas);
-      AppMethodBeat.o(87441);
+      AppMethodBeat.o(135390);
       return;
     }
     catch (Exception paramCanvas)
     {
-      com.tencent.luggage.g.d.printErrStackTrace("Luggage.WXA.AppBrandRuntimeFrameLayout", paramCanvas, "", new Object[0]);
+      ad.printErrStackTrace("Luggage.WXA.AppBrandRuntimeFrameLayout", paramCanvas, "", new Object[0]);
       if (!(paramCanvas instanceof NullPointerException)) {
         break label71;
       }
     }
-    this.jal.idkeyStat(1088L, 0L, 1L, false);
+    this.lQf.idkeyStat(1088L, 0L, 1L, false);
     for (;;)
     {
-      AppMethodBeat.o(87441);
+      AppMethodBeat.o(135390);
       throw paramCanvas;
       label71:
-      this.jal.idkeyStat(1088L, 1L, 1L, false);
-    }
-  }
-  
-  public final void dispatchSystemUiVisibilityChanged(int paramInt)
-  {
-    AppMethodBeat.i(141713);
-    super.dispatchSystemUiVisibilityChanged(paramInt);
-    Object localObject;
-    if ((isShown()) && (t.aw(this)) && (Build.VERSION.SDK_INT >= 26) && ((getWindowSystemUiVisibility() & 0x2) == 0))
-    {
-      localObject = com.tencent.mm.sdk.f.a.hr(getContext());
-      if ((localObject != null) && (((Activity)localObject).getWindow() != null))
-      {
-        bool = aj.Ow(((Activity)localObject).getWindow().getNavigationBarColor());
-        localObject = ((Activity)localObject).getWindow();
-        if (bool) {
-          break label93;
-        }
-      }
-    }
-    label93:
-    for (boolean bool = true;; bool = false)
-    {
-      af.d((Window)localObject, bool);
-      AppMethodBeat.o(141713);
-      return;
+      this.lQf.idkeyStat(1088L, 1L, 1L, false);
     }
   }
   
   protected final void onAnimationEnd()
   {
-    AppMethodBeat.i(87442);
+    AppMethodBeat.i(135392);
     super.onAnimationEnd();
-    Iterator localIterator = this.jam.iterator();
+    Iterator localIterator = this.kYP.iterator();
     while (localIterator.hasNext()) {
       ((Runnable)localIterator.next()).run();
     }
-    this.jam.clear();
-    AppMethodBeat.o(87442);
+    this.kYP.clear();
+    AppMethodBeat.o(135392);
   }
   
   public final void onViewRemoved(View paramView)
   {
-    AppMethodBeat.i(155596);
+    AppMethodBeat.i(135393);
     super.onViewRemoved(paramView);
-    com.tencent.luggage.g.d.i("Luggage.WXA.AppBrandRuntimeFrameLayout", "onViewRemoved %s", new Object[] { paramView });
-    AppMethodBeat.o(155596);
+    ad.i("Luggage.WXA.AppBrandRuntimeFrameLayout", "onViewRemoved %s", new Object[] { paramView });
+    AppMethodBeat.o(135393);
   }
   
   public final void removeAllViews()
   {
-    AppMethodBeat.i(141712);
-    com.tencent.luggage.g.d.d("Luggage.WXA.AppBrandRuntimeFrameLayout", "removeAllViews stack = %s", new Object[] { Log.getStackTraceString(new Throwable()) });
+    AppMethodBeat.i(135394);
+    ad.d("Luggage.WXA.AppBrandRuntimeFrameLayout", "removeAllViews stack = %s", new Object[] { Log.getStackTraceString(new Throwable()) });
     super.removeAllViews();
-    AppMethodBeat.o(141712);
+    AppMethodBeat.o(135394);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.d
  * JD-Core Version:    0.7.0.1
  */

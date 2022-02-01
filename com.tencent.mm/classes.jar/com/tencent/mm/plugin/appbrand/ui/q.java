@@ -1,33 +1,36 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.support.v7.app.ActionBar;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.ai;
+import d.l;
 
-final class q
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUITheme;", "", "()V", "THEME", "", "plugin-appbrand-integration_release"})
+public final class q
 {
-  static void b(MMActivity paramMMActivity)
+  public static final q lDm;
+  
+  static
   {
-    AppMethodBeat.i(93755);
-    if (paramMMActivity.getSupportActionBar() == null)
+    AppMethodBeat.i(177768);
+    lDm = new q();
+    AppMethodBeat.o(177768);
+  }
+  
+  public static final int boF()
+  {
+    AppMethodBeat.i(177767);
+    if (ai.Eq())
     {
-      AppMethodBeat.o(93755);
-      return;
+      AppMethodBeat.o(177767);
+      return 2131820566;
     }
-    paramMMActivity = paramMMActivity.getSupportActionBar().getCustomView().findViewById(2131820988);
-    if ((paramMMActivity != null) && (paramMMActivity.getLayoutParams() != null) && ((paramMMActivity.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
-    {
-      ((ViewGroup.MarginLayoutParams)paramMMActivity.getLayoutParams()).rightMargin = 0;
-      paramMMActivity.requestLayout();
-    }
-    AppMethodBeat.o(93755);
+    AppMethodBeat.o(177767);
+    return 2131820565;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.q
  * JD-Core Version:    0.7.0.1
  */

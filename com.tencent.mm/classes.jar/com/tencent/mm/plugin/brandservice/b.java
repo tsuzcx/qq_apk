@@ -1,67 +1,72 @@
 package com.tencent.mm.plugin.brandservice;
 
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.pluginsdk.k;
+import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.pluginsdk.o;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
 
 public final class b
-  implements o
+  implements m
 {
-  public static n gmO;
-  public static m gmP;
-  
-  public static void O(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(152624);
-    a("BrandServiceWorkerThread", paramRunnable, 0L);
-    AppMethodBeat.o(152624);
-  }
+  public static l hYt;
+  public static k hYu;
   
   public static void a(String paramString, Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(13799);
+    AppMethodBeat.i(5534);
     if (paramLong > 0L)
     {
-      d.ysm.b(paramRunnable, paramString, paramLong);
-      AppMethodBeat.o(13799);
+      h.Iye.a(paramRunnable, paramLong, paramString);
+      AppMethodBeat.o(5534);
       return;
     }
-    d.ysm.b(paramRunnable, paramString);
-    AppMethodBeat.o(13799);
+    h.Iye.f(paramRunnable, paramString);
+    AppMethodBeat.o(5534);
   }
   
-  public static void i(int paramInt, Object paramObject)
+  public static void d(Intent paramIntent, Context paramContext)
   {
-    AppMethodBeat.i(13798);
+    AppMethodBeat.i(192933);
+    ad.i("MicroMsg.BrandService.BrandServiceApplication", "startChattingUI");
+    hYt.d(paramIntent, paramContext);
+    AppMethodBeat.o(192933);
+  }
+  
+  public static void j(int paramInt, Object paramObject)
+  {
+    AppMethodBeat.i(5533);
     if (paramObject == null) {}
     for (String str = "null";; str = paramObject.toString())
     {
-      ab.i("MicroMsg.BrandService.BrandServiceApplication", "set config, key[%d], value[%s]", new Object[] { Integer.valueOf(paramInt), str });
-      g.RM();
-      g.RL().Ru().set(paramInt, paramObject);
-      AppMethodBeat.o(13798);
+      ad.i("MicroMsg.BrandService.BrandServiceApplication", "set config, key[%d], value[%s]", new Object[] { Integer.valueOf(paramInt), str });
+      g.afC();
+      g.afB().afk().set(paramInt, paramObject);
+      AppMethodBeat.o(5533);
       return;
     }
   }
   
-  public final void a(m paramm)
+  public final void a(k paramk)
   {
-    gmP = paramm;
+    hYu = paramk;
   }
   
-  public final void a(n paramn)
+  public final void a(l paraml)
   {
-    gmO = paramn;
+    hYt = paraml;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.b
  * JD-Core Version:    0.7.0.1
  */

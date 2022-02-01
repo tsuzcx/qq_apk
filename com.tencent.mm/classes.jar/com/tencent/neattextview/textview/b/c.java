@@ -22,16 +22,16 @@ public class c
   
   public final void a(Canvas paramCanvas, TextPaint paramTextPaint, List<d> paramList)
   {
-    AppMethodBeat.i(3242);
-    fH(paramList);
+    AppMethodBeat.i(39744);
+    in(paramList);
     if (this.isPressed)
     {
       int i = paramTextPaint.getColor();
       int j = paramTextPaint.bgColor;
       boolean bool = paramTextPaint.isUnderlineText();
-      ((ClickableSpan)this.Bbj).updateDrawState(paramTextPaint);
+      ((ClickableSpan)this.IhY).updateDrawState(paramTextPaint);
       paramTextPaint.setColor(paramTextPaint.bgColor);
-      paramList = this.Bbi.iterator();
+      paramList = this.IhX.iterator();
       while (paramList.hasNext()) {
         paramCanvas.drawRect((RectF)paramList.next(), paramTextPaint);
       }
@@ -40,7 +40,7 @@ public class c
       paramTextPaint.bgColor = j;
       this.isPressed = false;
     }
-    AppMethodBeat.o(3242);
+    AppMethodBeat.o(39744);
   }
 }
 

@@ -1,24 +1,22 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
-import a.f.a.a;
-import a.f.b.k;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bsi;
+import com.tencent.mm.protocal.protobuf.chm;
+import d.g.a.a;
 import java.util.LinkedList;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "invoke"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "invoke"})
 final class d$c
-  extends k
-  implements a<LinkedList<bsi>>
+  extends d.g.b.l
+  implements a<LinkedList<chm>>
 {
-  public static final c hdt;
+  public static final c iWJ;
   
   static
   {
-    AppMethodBeat.i(134572);
-    hdt = new c();
-    AppMethodBeat.o(134572);
+    AppMethodBeat.i(50309);
+    iWJ = new c();
+    AppMethodBeat.o(50309);
   }
   
   d$c()

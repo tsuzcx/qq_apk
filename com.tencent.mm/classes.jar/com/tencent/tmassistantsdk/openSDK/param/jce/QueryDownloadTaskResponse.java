@@ -31,7 +31,7 @@ public final class QueryDownloadTaskResponse
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76007);
+    AppMethodBeat.i(102253);
     this.url = paramJceInputStream.readString(0, true);
     this.savePath = paramJceInputStream.readString(1, false);
     this.state = paramJceInputStream.read(this.state, 2, false);
@@ -39,12 +39,12 @@ public final class QueryDownloadTaskResponse
     this.totalLen = paramJceInputStream.read(this.totalLen, 4, false);
     this.allTaskTotalProgress = paramJceInputStream.read(this.allTaskTotalProgress, 5, false);
     this.allTaskTotalLength = paramJceInputStream.read(this.allTaskTotalLength, 6, false);
-    AppMethodBeat.o(76007);
+    AppMethodBeat.o(102253);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76006);
+    AppMethodBeat.i(102252);
     paramJceOutputStream.write(this.url, 0);
     if (this.savePath != null) {
       paramJceOutputStream.write(this.savePath, 1);
@@ -54,7 +54,7 @@ public final class QueryDownloadTaskResponse
     paramJceOutputStream.write(this.totalLen, 4);
     paramJceOutputStream.write(this.allTaskTotalProgress, 5);
     paramJceOutputStream.write(this.allTaskTotalLength, 6);
-    AppMethodBeat.o(76006);
+    AppMethodBeat.o(102252);
   }
 }
 

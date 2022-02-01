@@ -2,12 +2,11 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.ad;
 
 public final class kc
   extends b
 {
-  public a czG;
+  public a dot;
   
   public kc()
   {
@@ -16,21 +15,23 @@ public final class kc
   
   private kc(byte paramByte)
   {
-    AppMethodBeat.i(59607);
-    this.czG = new a();
-    this.ymq = false;
+    AppMethodBeat.i(128845);
+    this.dot = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(59607);
+    AppMethodBeat.o(128845);
   }
   
   public static final class a
   {
-    public ad czH;
+    public int dhR;
+    public String dlB;
+    public String returnKey;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.kc
  * JD-Core Version:    0.7.0.1
  */

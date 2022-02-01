@@ -1,8 +1,15 @@
 package com.tencent.mm.ui.conversation.a;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.c;
+import com.tencent.mm.plugin.account.ui.FacebookFriendUI;
+import com.tencent.mm.storage.ab;
+import java.lang.ref.WeakReference;
 
 public final class h
   extends com.tencent.mm.pluginsdk.ui.b.b
@@ -10,26 +17,42 @@ public final class h
   public h(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(34656);
+    AppMethodBeat.i(38783);
     if (this.view != null) {
-      this.view.findViewById(2131823965).setOnClickListener(new h.1(this));
+      this.view.findViewById(2131299735).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(38782);
+          az.arV();
+          c.afk().set(65833, Integer.valueOf(0));
+          paramAnonymousView = (Context)h.this.BZM.get();
+          Object localObject = new Intent((Context)h.this.BZM.get(), FacebookFriendUI.class);
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/conversation/banner/FackbookTipsBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/ui/conversation/banner/FackbookTipsBanner$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          h.this.view.setVisibility(8);
+          AppMethodBeat.o(38782);
+        }
+      });
     }
-    AppMethodBeat.o(34656);
+    AppMethodBeat.o(38783);
   }
   
   public final void destroy() {}
   
   public final int getLayoutId()
   {
-    AppMethodBeat.i(34657);
-    com.tencent.mm.au.b.aif();
-    AppMethodBeat.o(34657);
+    AppMethodBeat.i(38784);
+    com.tencent.mm.ax.b.azm();
+    AppMethodBeat.o(38784);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,157 +1,200 @@
 package com.tencent.mm.plugin.aa.ui;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.aa.a.c.c;
-import com.tencent.mm.plugin.aa.a.c.c.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.q.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.aa.model.b.c;
+import com.tencent.mm.plugin.aa.model.b.c.a;
+import com.tencent.mm.plugin.aa.model.i;
+import com.tencent.mm.plugin.messenger.a.b;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.ui.y;
+import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
+import com.tenpay.android.wechat.TenpaySecureEditText;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class LaunchAAByPersonAmountSelectUI
   extends BaseAAPresenterActivity
 {
-  private String cpf;
-  private ak faV;
-  private c gqi;
-  private ListView gqj;
-  private TextView gqk;
-  private TextView gql;
-  private View gqm;
-  private TextView gqn;
-  private boolean gqo;
-  private Map<String, String> gqp;
-  private LaunchAAByPersonAmountSelectUI.a gqq;
-  private double gqr;
-  private long gqs;
-  private int gqt;
-  private boolean gqu;
-  private boolean gqv;
-  private Runnable gqw;
+  private String dec;
+  private ap gAC;
+  private HashMap<String, Double> iaU;
+  private c icD;
+  private ListView icE;
+  private TextView icF;
+  private TextView icG;
+  private View icH;
+  private TextView icI;
+  private boolean icJ;
+  private Map<String, String> icK;
+  private a icL;
+  private double icM;
+  private long icN;
+  private int icO;
+  private boolean icP;
+  private boolean icQ;
+  private Runnable icR;
+  private int scene;
   
   public LaunchAAByPersonAmountSelectUI()
   {
-    AppMethodBeat.i(40805);
-    this.gqi = ((c)T(c.class));
-    this.gqo = false;
-    this.gqp = new HashMap();
-    this.gqq = null;
-    this.gqs = -1L;
-    this.gqt = -1;
-    this.gqv = false;
-    this.faV = new ak(Looper.getMainLooper());
-    this.gqw = new LaunchAAByPersonAmountSelectUI.1(this);
-    AppMethodBeat.o(40805);
+    AppMethodBeat.i(63606);
+    this.icD = ((c)aq(c.class));
+    this.icJ = false;
+    this.icK = new HashMap();
+    this.icL = null;
+    this.icN = -1L;
+    this.icO = -1;
+    this.icQ = false;
+    this.gAC = new ap(Looper.getMainLooper());
+    this.icR = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(63587);
+        LaunchAAByPersonAmountSelectUI.a(LaunchAAByPersonAmountSelectUI.this);
+        LaunchAAByPersonAmountSelectUI.b(LaunchAAByPersonAmountSelectUI.this);
+        AppMethodBeat.o(63587);
+      }
+    };
+    AppMethodBeat.o(63606);
   }
   
-  private void apf()
+  private void aHA()
   {
-    AppMethodBeat.i(40807);
+    AppMethodBeat.i(63609);
+    if (this.icM > 0.0D)
+    {
+      this.icJ = true;
+      this.icF.setTextColor(getResources().getColor(2131100053));
+      AppMethodBeat.o(63609);
+      return;
+    }
+    this.icJ = false;
+    this.icF.setTextColor(getResources().getColor(2131100052));
+    AppMethodBeat.o(63609);
+  }
+  
+  private void aHz()
+  {
+    AppMethodBeat.i(63608);
     try
     {
-      this.gqr = 0.0D;
-      this.gqu = false;
-      if (this.gqp == null) {
+      this.icM = 0.0D;
+      this.icP = false;
+      if (this.icK == null) {
         break label267;
       }
-      Iterator localIterator = this.gqp.values().iterator();
+      Iterator localIterator = this.icK.values().iterator();
       while (localIterator.hasNext())
       {
-        double d = bo.getDouble((String)localIterator.next(), 0.0D);
-        this.gqr += d;
-        if ((this.gqs > 0L) && (d * 100.0D > this.gqs)) {
-          this.gqu = true;
+        double d = bt.getDouble((String)localIterator.next(), 0.0D);
+        this.icM += d;
+        if ((this.icN > 0L) && (d * 100.0D > this.icN)) {
+          this.icP = true;
         }
       }
-      if (this.gqq == null) {
+      if (this.icL == null) {
         break label267;
       }
     }
     catch (Exception localException)
     {
-      ab.e("MicroMsg.LaunchAAByPersonAmountSelectUI", "updateTotalAmount error: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(40807);
+      ad.e("MicroMsg.LaunchAAByPersonAmountSelectUI", "updateTotalAmount error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(63608);
       return;
     }
-    Object localObject2 = this.gqq;
-    Object localObject1 = this.gqp;
-    Object localObject3 = ((LaunchAAByPersonAmountSelectUI.a)localObject2).dataList.iterator();
+    Object localObject2 = this.icL;
+    Object localObject1 = this.icK;
+    Object localObject3 = ((a)localObject2).dataList.iterator();
     while (((Iterator)localObject3).hasNext()) {
-      ((LaunchAAByPersonAmountSelectUI.b)((Iterator)localObject3).next()).gqE = "";
+      ((b)((Iterator)localObject3).next()).icZ = "";
     }
     if ((localObject1 != null) && (((Map)localObject1).size() > 0))
     {
-      localObject2 = ((LaunchAAByPersonAmountSelectUI.a)localObject2).dataList.iterator();
+      localObject2 = ((a)localObject2).dataList.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        localObject3 = (LaunchAAByPersonAmountSelectUI.b)((Iterator)localObject2).next();
-        if (((Map)localObject1).containsKey(((LaunchAAByPersonAmountSelectUI.b)localObject3).username)) {
-          ((LaunchAAByPersonAmountSelectUI.b)localObject3).gqE = ((String)((Map)localObject1).get(((LaunchAAByPersonAmountSelectUI.b)localObject3).username));
+        localObject3 = (b)((Iterator)localObject2).next();
+        if (((Map)localObject1).containsKey(((b)localObject3).username)) {
+          ((b)localObject3).icZ = ((String)((Map)localObject1).get(((b)localObject3).username));
         }
       }
     }
     label267:
-    this.gql.setText(getString(2131301032, new Object[] { Double.valueOf(this.gqr) }));
-    if ((this.gqp != null) && (this.gqp.size() > 0)) {
-      updateOptionMenuText(233, getString(2131296350, new Object[] { Integer.valueOf(this.gqp.size()) }));
+    this.icG.setText(getString(2131760641, new Object[] { Double.valueOf(this.icM) }));
+    if ((this.icK != null) && (this.icK.size() > 0)) {
+      updateOptionMenuText(233, getString(2131755030, new Object[] { Integer.valueOf(this.icK.size()) }));
     }
-    while (this.gqu)
+    while (this.icP)
     {
-      h.qsU.e(13722, new Object[] { Integer.valueOf(7) });
+      com.tencent.mm.plugin.report.service.h.vKh.f(13722, new Object[] { Integer.valueOf(7) });
       enableOptionMenu(233, false);
-      localObject1 = getString(2131301045, new Object[] { Float.valueOf((float)this.gqs / 100.0F) });
-      if (!bo.isNullOrNil((String)localObject1))
+      localObject1 = getString(2131760660, new Object[] { Float.valueOf((float)this.icN / 100.0F) });
+      if (!bt.isNullOrNil((String)localObject1))
       {
-        this.gqn.setText((CharSequence)localObject1);
-        if (!this.gqn.isShown())
+        this.icI.setText((CharSequence)localObject1);
+        if (!this.icI.isShown())
         {
-          this.gqn.startAnimation(AnimationUtils.loadAnimation(this, 2131034194));
-          this.gqn.setVisibility(0);
+          this.icI.startAnimation(AnimationUtils.loadAnimation(this, 2130772068));
+          this.icI.setVisibility(0);
         }
       }
-      AppMethodBeat.o(40807);
+      AppMethodBeat.o(63608);
       return;
-      updateOptionMenuText(233, getString(2131297018));
+      updateOptionMenuText(233, getString(2131755835));
     }
-    enableOptionMenu(233, true);
-    if (this.gqn.isShown())
-    {
-      this.gqn.setText("");
-      this.gqn.startAnimation(AnimationUtils.loadAnimation(this, 2131034214));
-      this.gqn.setVisibility(8);
+    if ((this.icK != null) && (this.icK.size() > 0)) {
+      enableOptionMenu(233, true);
     }
-    AppMethodBeat.o(40807);
-  }
-  
-  private void apg()
-  {
-    AppMethodBeat.i(40808);
-    if (this.gqr > 0.0D)
+    for (;;)
     {
-      this.gqo = true;
-      this.gqk.setTextColor(getResources().getColor(2131689794));
-      AppMethodBeat.o(40808);
+      if (this.icI.isShown())
+      {
+        this.icI.setText("");
+        this.icI.startAnimation(AnimationUtils.loadAnimation(this, 2130772088));
+        this.icI.setVisibility(8);
+      }
+      AppMethodBeat.o(63608);
       return;
+      enableOptionMenu(233, false);
     }
-    this.gqo = false;
-    this.gqk.setTextColor(getResources().getColor(2131689793));
-    AppMethodBeat.o(40808);
   }
   
   public int getForceOrientation()
@@ -161,71 +204,197 @@ public class LaunchAAByPersonAmountSelectUI
   
   public int getLayoutId()
   {
-    return 2130969965;
+    return 2131494547;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(40806);
+    AppMethodBeat.i(63607);
     super.onCreate(paramBundle);
-    setMMTitle(2131301033);
-    setBackBtn(new LaunchAAByPersonAmountSelectUI.2(this));
-    addTextOptionMenu(233, getString(2131297018), new LaunchAAByPersonAmountSelectUI.3(this), null, q.b.zby);
-    this.gqj = ((ListView)findViewById(2131825368));
-    this.gqk = ((TextView)findViewById(2131825370));
-    this.gql = ((TextView)findViewById(2131825371));
-    this.gql.setText(getString(2131301032, new Object[] { Float.valueOf(0.0F) }));
-    this.gqm = findViewById(2131825369);
-    this.gqn = ((TextView)findViewById(2131825372));
-    this.gqb = this.gqj;
-    this.gqm.setVisibility(8);
-    this.gqk.setOnTouchListener(new LaunchAAByPersonAmountSelectUI.5(this));
-    this.gqk.setOnClickListener(new LaunchAAByPersonAmountSelectUI.6(this));
-    this.gqo = true;
-    this.gqj.setOnScrollListener(new LaunchAAByPersonAmountSelectUI.7(this));
-    this.cpf = getIntent().getStringExtra("chatroom");
-    this.gqs = getIntent().getLongExtra("maxPerAmount", -1L);
-    this.gqt = getIntent().getIntExtra("maxUserNumber", -1);
-    Object localObject = getIntent().getStringArrayListExtra("oldAmountData");
-    ab.i("MicroMsg.LaunchAAByPersonAmountSelectUI", "onCreate, chatroom: %s, maxPerAmount: %s, oldDataList: %s", new Object[] { this.cpf, Long.valueOf(this.gqs), localObject });
-    this.gqp = new HashMap();
-    paramBundle = new HashMap();
-    if (localObject != null) {
-      try
+    setMMTitle(2131760642);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        if (((ArrayList)localObject).size() > 0)
+        AppMethodBeat.i(63590);
+        if ((LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this) != null) && (LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this).size() > 0))
         {
-          localObject = ((ArrayList)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
+          if ((LaunchAAByPersonAmountSelectUI.d(LaunchAAByPersonAmountSelectUI.this) == null) || (LaunchAAByPersonAmountSelectUI.d(LaunchAAByPersonAmountSelectUI.this).size() != LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this).size())) {
+            break label263;
+          }
+          paramAnonymousMenuItem = LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this).keySet().iterator();
+          i = 0;
+          while (paramAnonymousMenuItem.hasNext())
           {
-            String[] arrayOfString = ((String)((Iterator)localObject).next()).split(",");
-            if ((arrayOfString != null) && (arrayOfString.length == 2))
-            {
-              double d = bo.getDouble(arrayOfString[1], 0.0D);
-              paramBundle.put(arrayOfString[0], Double.valueOf(d));
-              this.gqp.put(arrayOfString[0], getString(2131296341, new Object[] { Double.valueOf(d) }));
+            String str = (String)paramAnonymousMenuItem.next();
+            Double localDouble = (Double)LaunchAAByPersonAmountSelectUI.d(LaunchAAByPersonAmountSelectUI.this).get(str);
+            if ((localDouble == null) || (bt.getDouble((String)LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this).get(str), 0.0D) != localDouble.doubleValue())) {
+              break;
             }
+            i += 1;
+          }
+          if (i != LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this).size()) {
+            break label263;
           }
         }
-        this.gqi.az(c.a.class);
+        label263:
+        for (int i = 0;; i = 1)
+        {
+          if (i != 0) {
+            com.tencent.mm.ui.base.h.a(LaunchAAByPersonAmountSelectUI.this, LaunchAAByPersonAmountSelectUI.this.getString(2131755066), null, LaunchAAByPersonAmountSelectUI.this.getString(2131755070), LaunchAAByPersonAmountSelectUI.this.getString(2131755069), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            {
+              public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+              {
+                AppMethodBeat.i(63588);
+                LaunchAAByPersonAmountSelectUI.e(LaunchAAByPersonAmountSelectUI.this);
+                AppMethodBeat.o(63588);
+              }
+            }, new DialogInterface.OnClickListener()
+            {
+              public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+              {
+                AppMethodBeat.i(63589);
+                LaunchAAByPersonAmountSelectUI.this.finish();
+                AppMethodBeat.o(63589);
+              }
+            });
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(63590);
+            return true;
+            LaunchAAByPersonAmountSelectUI.this.finish();
+            continue;
+            LaunchAAByPersonAmountSelectUI.this.finish();
+          }
+        }
       }
-      catch (Exception localException)
+    });
+    addTextOptionMenu(233, getString(2131755835), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        ab.e("MicroMsg.LaunchAAByPersonAmountSelectUI", "onCreate parse old data error: %s", new Object[] { localException.getMessage() });
+        AppMethodBeat.i(63591);
+        if ((LaunchAAByPersonAmountSelectUI.f(LaunchAAByPersonAmountSelectUI.this) > 0) && (LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this) != null) && (LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this).size() > LaunchAAByPersonAmountSelectUI.f(LaunchAAByPersonAmountSelectUI.this)))
+        {
+          com.tencent.mm.ui.base.h.c(LaunchAAByPersonAmountSelectUI.this.getContext(), LaunchAAByPersonAmountSelectUI.this.getString(2131760646, new Object[] { Integer.valueOf(LaunchAAByPersonAmountSelectUI.f(LaunchAAByPersonAmountSelectUI.this)) }), "", true);
+          com.tencent.mm.plugin.report.service.h.vKh.f(13722, new Object[] { Integer.valueOf(8) });
+          AppMethodBeat.o(63591);
+          return true;
+        }
+        LaunchAAByPersonAmountSelectUI.e(LaunchAAByPersonAmountSelectUI.this);
+        com.tencent.mm.plugin.report.service.h.vKh.f(13721, new Object[] { Integer.valueOf(3), Integer.valueOf(4) });
+        AppMethodBeat.o(63591);
+        return true;
       }
-    }
-    this.gqi.a(c.a.class, new LaunchAAByPersonAmountSelectUI.4(this, paramBundle));
-    AppMethodBeat.o(40806);
+    }, null, r.b.FOB);
+    this.icE = ((ListView)findViewById(2131296662));
+    this.icF = ((TextView)findViewById(2131298347));
+    this.icG = ((TextView)findViewById(2131296663));
+    this.icG.setText(getString(2131760641, new Object[] { Float.valueOf(0.0F) }));
+    this.icH = findViewById(2131305552);
+    this.icI = ((TextView)findViewById(2131296635));
+    this.ics = this.icE;
+    this.icH.setVisibility(8);
+    this.icF.setOnTouchListener(new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(63593);
+        if (!LaunchAAByPersonAmountSelectUI.l(LaunchAAByPersonAmountSelectUI.this))
+        {
+          AppMethodBeat.o(63593);
+          return true;
+        }
+        if ((paramAnonymousMotionEvent.getAction() == 0) || (paramAnonymousMotionEvent.getAction() == 2)) {
+          LaunchAAByPersonAmountSelectUI.m(LaunchAAByPersonAmountSelectUI.this).setTextColor(LaunchAAByPersonAmountSelectUI.this.getResources().getColor(2131100054));
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(63593);
+          return false;
+          if (LaunchAAByPersonAmountSelectUI.l(LaunchAAByPersonAmountSelectUI.this)) {
+            LaunchAAByPersonAmountSelectUI.m(LaunchAAByPersonAmountSelectUI.this).setTextColor(LaunchAAByPersonAmountSelectUI.this.getResources().getColor(2131100053));
+          } else {
+            LaunchAAByPersonAmountSelectUI.m(LaunchAAByPersonAmountSelectUI.this).setTextColor(LaunchAAByPersonAmountSelectUI.this.getResources().getColor(2131100052));
+          }
+        }
+      }
+    });
+    this.icF.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(63596);
+        if ((LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this) != null) && (LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this).size() > 0)) {}
+        try
+        {
+          paramAnonymousView = new d.a(LaunchAAByPersonAmountSelectUI.this);
+          paramAnonymousView.aay(2131755022);
+          paramAnonymousView.aaB(2131755835).b(new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+            {
+              AppMethodBeat.i(63594);
+              LaunchAAByPersonAmountSelectUI.n(LaunchAAByPersonAmountSelectUI.this);
+              AppMethodBeat.o(63594);
+            }
+          });
+          paramAnonymousView.aaC(2131755691).c(new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+            {
+              AppMethodBeat.i(63595);
+              com.tencent.mm.plugin.report.service.h.vKh.f(13721, new Object[] { Integer.valueOf(3), Integer.valueOf(10) });
+              AppMethodBeat.o(63595);
+            }
+          });
+          paramAnonymousView.fft().show();
+          com.tencent.mm.plugin.report.service.h.vKh.f(13721, new Object[] { Integer.valueOf(3), Integer.valueOf(8) });
+          AppMethodBeat.o(63596);
+          return;
+        }
+        catch (Exception paramAnonymousView)
+        {
+          for (;;)
+          {
+            ad.e("MicroMsg.LaunchAAByPersonAmountSelectUI", "clear amount error");
+          }
+        }
+      }
+    });
+    this.icJ = true;
+    this.icE.setOnScrollListener(new AbsListView.OnScrollListener()
+    {
+      public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+      
+      public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(63597);
+        if (paramAnonymousInt == 1) {
+          LaunchAAByPersonAmountSelectUI.this.hideTenpayKB();
+        }
+        AppMethodBeat.o(63597);
+      }
+    });
+    this.scene = getIntent().getIntExtra("enter_scene", 1);
+    this.dec = getIntent().getStringExtra("chatroom");
+    this.icN = getIntent().getLongExtra("maxPerAmount", -1L);
+    this.icO = getIntent().getIntExtra("maxUserNumber", -1);
+    ad.i("MicroMsg.LaunchAAByPersonAmountSelectUI", "onCreate, chatroom: %s, maxPerAmount: %s, ", new Object[] { this.dec, Long.valueOf(this.icN) });
+    this.icD.bf(c.a.class);
+    this.icD.a(c.a.class, new com.tencent.mm.vending.app.a.b() {});
+    AppMethodBeat.o(63607);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(40809);
+    AppMethodBeat.i(63610);
     super.onDestroy();
-    if (this.gqp != null) {
-      this.gqp.clear();
+    if (this.icK != null) {
+      this.icK.clear();
     }
-    AppMethodBeat.o(40809);
+    AppMethodBeat.o(63610);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -233,10 +402,213 @@ public class LaunchAAByPersonAmountSelectUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  final class a
+    extends BaseAdapter
+  {
+    List<LaunchAAByPersonAmountSelectUI.b> dataList;
+    
+    public a(Map<String, Double> paramMap)
+    {
+      AppMethodBeat.i(63600);
+      this.dataList = null;
+      this.dataList = new ArrayList();
+      paramMap = paramMap.iterator();
+      if (paramMap.hasNext())
+      {
+        String str = (String)paramMap.next();
+        LaunchAAByPersonAmountSelectUI.b localb = new LaunchAAByPersonAmountSelectUI.b(LaunchAAByPersonAmountSelectUI.this, (byte)0);
+        localb.username = str;
+        Object localObject;
+        if ((localObject != null) && (localObject.containsKey(str))) {}
+        for (localb.icZ = LaunchAAByPersonAmountSelectUI.this.getString(2131755021, new Object[] { localObject.get(str) });; localb.icZ = "")
+        {
+          this.dataList.add(localb);
+          break;
+        }
+      }
+      AppMethodBeat.o(63600);
+    }
+    
+    private LaunchAAByPersonAmountSelectUI.b pV(int paramInt)
+    {
+      AppMethodBeat.i(63602);
+      LaunchAAByPersonAmountSelectUI.b localb = (LaunchAAByPersonAmountSelectUI.b)this.dataList.get(paramInt);
+      AppMethodBeat.o(63602);
+      return localb;
+    }
+    
+    public final int getCount()
+    {
+      AppMethodBeat.i(63601);
+      int i = this.dataList.size();
+      AppMethodBeat.o(63601);
+      return i;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public final View getView(int paramInt, final View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(63603);
+      LaunchAAByPersonAmountSelectUI.b localb = pV(paramInt);
+      View localView = paramView;
+      if (localb != null)
+      {
+        localView = paramView;
+        if (!bt.isNullOrNil(localb.username))
+        {
+          localView = paramView;
+          if (paramView == null)
+          {
+            localView = y.js(LaunchAAByPersonAmountSelectUI.this).inflate(2131494546, paramViewGroup, false);
+            paramView = new a((byte)0);
+            paramView.icX = ((LinearLayout)localView.findViewById(2131304239));
+            paramView.fuj = ((ImageView)localView.findViewById(2131296996));
+            paramView.icz = ((TextView)localView.findViewById(2131306252));
+            paramView.icA = ((WalletFormView)localView.findViewById(2131302444));
+            paramView.icY = new LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this, localb.username);
+            paramView.icA.a(paramView.icY);
+            paramView.fuj.setOnTouchListener(new View.OnTouchListener()
+            {
+              public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+              {
+                AppMethodBeat.i(63598);
+                paramView.icA.d(LaunchAAByPersonAmountSelectUI.this);
+                AppMethodBeat.o(63598);
+                return false;
+              }
+            });
+            paramView.icz.setOnTouchListener(new View.OnTouchListener()
+            {
+              public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+              {
+                AppMethodBeat.i(63599);
+                paramView.icA.d(LaunchAAByPersonAmountSelectUI.this);
+                AppMethodBeat.o(63599);
+                return false;
+              }
+            });
+            localView.setTag(paramView);
+            LaunchAAByPersonAmountSelectUI.this.setEditFocusListener(paramView.icA, 2, false, true);
+          }
+          paramView = (a)localView.getTag();
+          if (!bt.isNullOrNil(localb.username))
+          {
+            paramView.icY.username = localb.username;
+            com.tencent.mm.pluginsdk.ui.a.b.c(paramView.fuj, localb.username);
+            paramView.icz.setText(k.b(LaunchAAByPersonAmountSelectUI.this.getContext(), ((b)g.ab(b.class)).getDisplayName(localb.username, LaunchAAByPersonAmountSelectUI.p(LaunchAAByPersonAmountSelectUI.this)), paramView.icz.getTextSize()));
+          }
+          if ((localb.icZ != null) && (paramView.icA.getText() != null) && (!localb.icZ.equals(paramView.icA.getText().toLowerCase())))
+          {
+            paramViewGroup = paramView.icA;
+            LaunchAAByPersonAmountSelectUI.c localc = paramView.icY;
+            if (paramViewGroup.IfT != null) {
+              paramViewGroup.IfT.removeTextChangedListener(localc);
+            }
+            paramView.icA.setText(localb.icZ);
+            paramView.icA.a(paramView.icY);
+          }
+          if (paramInt != 0) {
+            break label410;
+          }
+          paramView.icX.setBackgroundResource(2131232844);
+        }
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(63603);
+        return localView;
+        label410:
+        if (paramInt == this.dataList.size() - 1) {
+          paramView.icX.setBackgroundResource(2131232845);
+        } else {
+          paramView.icX.setBackgroundResource(2131232843);
+        }
+      }
+    }
+    
+    final class a
+    {
+      ImageView fuj;
+      WalletFormView icA;
+      LinearLayout icX;
+      LaunchAAByPersonAmountSelectUI.c icY;
+      TextView icz;
+      
+      private a() {}
+    }
+  }
+  
+  final class b
+  {
+    String icZ = null;
+    String username = null;
+    
+    private b() {}
+  }
+  
+  protected final class c
+    implements TextWatcher
+  {
+    String username;
+    
+    public c(String paramString)
+    {
+      this.username = paramString;
+    }
+    
+    public final void afterTextChanged(Editable paramEditable)
+    {
+      AppMethodBeat.i(63605);
+      try
+      {
+        if (paramEditable.toString().startsWith(".")) {
+          paramEditable.insert(0, "0");
+        }
+        String str = paramEditable.toString();
+        int i = str.indexOf(".");
+        int j = str.length();
+        if ((i >= 0) && (j - i > 2)) {
+          paramEditable.delete(i + 3, j);
+        }
+        int k = str.lastIndexOf(".");
+        if ((k != i) && (k > 0) && (j > k)) {
+          paramEditable.delete(k, j);
+        }
+      }
+      catch (Exception localException)
+      {
+        label105:
+        break label105;
+      }
+      if ((!bt.ai(paramEditable)) && (bt.getDouble(paramEditable.toString(), 0.0D) > 0.0D)) {
+        LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this).put(this.username, paramEditable.toString());
+      }
+      for (;;)
+      {
+        LaunchAAByPersonAmountSelectUI.k(LaunchAAByPersonAmountSelectUI.this).removeCallbacks(LaunchAAByPersonAmountSelectUI.j(LaunchAAByPersonAmountSelectUI.this));
+        LaunchAAByPersonAmountSelectUI.k(LaunchAAByPersonAmountSelectUI.this).postDelayed(LaunchAAByPersonAmountSelectUI.j(LaunchAAByPersonAmountSelectUI.this), 50L);
+        if (LaunchAAByPersonAmountSelectUI.o(LaunchAAByPersonAmountSelectUI.this)) {
+          i.pS(3);
+        }
+        AppMethodBeat.o(63605);
+        return;
+        LaunchAAByPersonAmountSelectUI.c(LaunchAAByPersonAmountSelectUI.this).remove(this.username);
+      }
+    }
+    
+    public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+    
+    public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAByPersonAmountSelectUI
  * JD-Core Version:    0.7.0.1
  */

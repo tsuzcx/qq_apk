@@ -16,7 +16,7 @@ public class BankCardInfo
   
   public BankCardInfo(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(40551);
+    AppMethodBeat.i(63285);
     this.cardNumLen = 0;
     this.cardNum = "";
     this.rectY = new int[20];
@@ -25,15 +25,15 @@ public class BankCardInfo
     this.height = 0;
     this.bitmapLen = 0;
     this.bitmapData = new byte[(int)(0.8D * paramInt1) * (int)(0.52D * paramInt1) * 3 + 54];
-    AppMethodBeat.o(40551);
+    AppMethodBeat.o(63285);
   }
   
   public String getCardNum()
   {
-    AppMethodBeat.i(40552);
+    AppMethodBeat.i(63286);
     Object localObject = new Encrypt();
     localObject = ((Encrypt)localObject).desedeEncode(this.cardNum, ((Encrypt)localObject).getRandomKey());
-    AppMethodBeat.o(40552);
+    AppMethodBeat.o(63286);
     return localObject;
   }
   
@@ -74,7 +74,7 @@ public class BankCardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.bankcardrecog.BankCardInfo
  * JD-Core Version:    0.7.0.1
  */

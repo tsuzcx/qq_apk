@@ -11,89 +11,102 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class TrackPointAnimAvatar
   extends RelativeLayout
 {
-  private ImageView gxs;
+  private ImageView ikp;
   private Context mContext;
-  private LinearLayout ohN;
-  private Animation ohO;
-  private Animation ohP;
+  private LinearLayout sXp;
+  private Animation sXq;
+  private Animation sXr;
   private String username;
   
   public TrackPointAnimAvatar(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(113734);
+    AppMethodBeat.i(56195);
     this.mContext = paramContext;
     init();
-    AppMethodBeat.o(113734);
+    AppMethodBeat.o(56195);
   }
   
   public TrackPointAnimAvatar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(113733);
+    AppMethodBeat.i(56194);
     this.mContext = paramContext;
     init();
-    AppMethodBeat.o(113733);
+    AppMethodBeat.o(56194);
   }
   
-  private void bMy()
+  private void cKE()
   {
-    AppMethodBeat.i(113737);
-    this.ohO = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -0.5F);
-    this.ohO.setDuration(500L);
-    this.ohO.setFillAfter(true);
-    this.ohP = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.5F, 1, 0.0F);
-    this.ohP.setDuration(500L);
-    this.ohP.setFillAfter(true);
-    this.ohO.setAnimationListener(new Animation.AnimationListener()
+    AppMethodBeat.i(56198);
+    this.sXq = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -0.5F);
+    this.sXq.setDuration(500L);
+    this.sXq.setFillAfter(true);
+    this.sXr = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.5F, 1, 0.0F);
+    this.sXr.setDuration(500L);
+    this.sXr.setFillAfter(true);
+    this.sXq.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
-        AppMethodBeat.i(113731);
+        AppMethodBeat.i(56192);
         TrackPointAnimAvatar.this.bringToFront();
         TrackPointAnimAvatar.b(TrackPointAnimAvatar.this).startAnimation(TrackPointAnimAvatar.a(TrackPointAnimAvatar.this));
-        AppMethodBeat.o(113731);
+        AppMethodBeat.o(56192);
       }
       
       public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
       
       public final void onAnimationStart(Animation paramAnonymousAnimation) {}
     });
-    this.ohP.setAnimationListener(new TrackPointAnimAvatar.2(this));
-    AppMethodBeat.o(113737);
+    this.sXr.setAnimationListener(new Animation.AnimationListener()
+    {
+      public final void onAnimationEnd(Animation paramAnonymousAnimation)
+      {
+        AppMethodBeat.i(56193);
+        TrackPointAnimAvatar.this.bringToFront();
+        TrackPointAnimAvatar.b(TrackPointAnimAvatar.this).startAnimation(TrackPointAnimAvatar.c(TrackPointAnimAvatar.this));
+        AppMethodBeat.o(56193);
+      }
+      
+      public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+      
+      public final void onAnimationStart(Animation paramAnonymousAnimation) {}
+    });
+    AppMethodBeat.o(56198);
   }
   
   private void init()
   {
-    AppMethodBeat.i(113735);
-    View localView = View.inflate(this.mContext, 2130971037, this);
-    this.ohN = ((LinearLayout)localView.findViewById(2131828626));
-    this.gxs = ((ImageView)localView.findViewById(2131828627));
-    bMy();
-    AppMethodBeat.o(113735);
+    AppMethodBeat.i(56196);
+    View localView = View.inflate(this.mContext, 2131495802, this);
+    this.sXp = ((LinearLayout)localView.findViewById(2131296671));
+    this.ikp = ((ImageView)localView.findViewById(2131296670));
+    cKE();
+    AppMethodBeat.o(56196);
   }
   
   public void setUser(String paramString)
   {
-    AppMethodBeat.i(113736);
-    if (!bo.isNullOrNil(paramString))
+    AppMethodBeat.i(56197);
+    if (!bt.isNullOrNil(paramString))
     {
       this.username = paramString;
-      if (this.gxs != null) {
-        a.b.s(this.gxs, this.username);
+      if (this.ikp != null) {
+        a.b.d(this.ikp, this.username);
       }
     }
-    AppMethodBeat.o(113736);
+    AppMethodBeat.o(56197);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.TrackPointAnimAvatar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.music.f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
 {
-  public static int Aw(int paramInt)
+  public static int HZ(int paramInt)
   {
-    AppMethodBeat.i(137653);
-    ab.i("MicroMsg.PlayerErrorHandler", "getErrCodeType, errorCode: %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(137405);
+    ad.i("MicroMsg.PlayerErrorHandler", "getErrCodeType, errorCode: %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     default: 
-      AppMethodBeat.o(137653);
+      AppMethodBeat.o(137405);
       return -1;
     case 62: 
     case 66: 
@@ -25,14 +25,14 @@ public final class e
     case 704: 
     case 706: 
     case 707: 
-      AppMethodBeat.o(137653);
+      AppMethodBeat.o(137405);
       return 10001;
     case 80: 
-      AppMethodBeat.o(137653);
+      AppMethodBeat.o(137405);
       return 10002;
     case 53: 
     case 54: 
-      AppMethodBeat.o(137653);
+      AppMethodBeat.o(137405);
       return 10003;
     case 55: 
     case 63: 
@@ -41,16 +41,16 @@ public final class e
     case 701: 
     case 703: 
     case 705: 
-      AppMethodBeat.o(137653);
+      AppMethodBeat.o(137405);
       return 10004;
     }
-    AppMethodBeat.o(137653);
+    AppMethodBeat.o(137405);
     return 10001;
   }
   
-  public static String oP(int paramInt)
+  public static String te(int paramInt)
   {
-    AppMethodBeat.i(137654);
+    AppMethodBeat.i(137406);
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("errCode:" + paramInt + ", err:");
     switch (paramInt)
@@ -61,7 +61,7 @@ public final class e
     for (;;)
     {
       localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(137654);
+      AppMethodBeat.o(137406);
       return localObject;
       ((StringBuilder)localObject).append("file not found");
       continue;
@@ -131,7 +131,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.a.e
  * JD-Core Version:    0.7.0.1
  */

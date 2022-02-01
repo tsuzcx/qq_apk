@@ -4,13 +4,13 @@ public class u
   extends o
 {
   public String content;
-  public String hPe;
+  public String jUR;
+  public String omK;
   public String title;
-  public String vxi;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.a.u
  * JD-Core Version:    0.7.0.1
  */

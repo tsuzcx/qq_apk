@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="wallet_realname_verify" android:layout="@layout/aop" android:title="@string/gwg" />
+    <PreferenceSmallCategory />
+    <Preference android:key="wallet_modify_password" android:layout="@layout/aop" android:title="@string/gwc" />
+    <Preference android:key="wallet_forget_password" android:layout="@layout/aop" android:title="@string/gw8" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.plugin.wallet.pwd.ui.RightBelowPreference android:key="wallet_biometric_pay" android:layout="@layout/aqx" android:title="" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="mobile_remit_switch" android:persistent="false" />
+    <PreferenceSmallCategory />
+    <IconPreference android:key="wallet_open_auto_pay" android:layout="@layout/aop" android:title="@string/gvw" />
+    <Preference android:key="wallet_delay_transfer_date" android:layout="@layout/aop" android:title="@string/gv_" />
+    <Preference android:key="wallet_universal_pay_order" android:layout="@layout/aop" android:title="@string/gwp" />
+    <IconPreference android:key="wallet_lucky_money_refund_way" android:layout="@layout/aop" android:title="@string/gvu" />
+    <PreferenceSmallCategory />
+    <Preference android:key="wallet_function_settings" android:layout="@layout/aop" android:title="@string/go6" />
+    <Preference android:key="wallet_switch_currency" android:layout="@layout/aop" android:title="@string/go_" />
+    <Preference android:key="wallet_im_mch" android:layout="@layout/aop" android:title="" />
+    <PreferenceSmallCategory android:key="wallet_switch_category" />
+    <Preference android:key="wallet_digitalcert" android:layout="@layout/aop" android:title="@string/gva" />
+    <Preference android:key="wallet_password_setting_un_reg" android:layout="@layout/aop" android:title="@string/gwo" />
+</PreferenceScreen>

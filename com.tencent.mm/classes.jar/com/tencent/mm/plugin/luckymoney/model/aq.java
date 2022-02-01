@@ -1,193 +1,156 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.a;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.plugin.messenger.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.wallet_core.model.a;
+import com.tencent.mm.protocal.protobuf.bgn;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class aq
-  extends ak
+  extends am
 {
-  public int bWu;
-  public String cMO;
-  public int cMP;
-  public int cMQ;
-  public int cMR;
-  long cpO;
-  public String ffX;
-  public int msgType;
-  public String oiG;
-  public String ojA;
-  public String okM;
-  public int onB;
-  public as onH;
-  public String onI;
-  public String onN;
-  public String onq;
-  public String ont;
-  public int ooS;
-  public String ooT;
-  public String ooU;
-  public String ooV;
-  public String ooW;
-  public String ooX;
-  public long ooY;
-  public String opH;
-  public long opI;
-  public long opJ;
-  public int opK;
-  public int opL;
-  public String opM;
-  public au opN;
-  public String opb;
-  public int opc;
-  public int opl;
-  public int opx;
-  String talker;
+  public a dyo;
+  public int nTB;
+  public String rcq;
+  public String sZn;
+  public String tfE;
+  public String tfF;
+  public String tfG;
+  public String tfH;
+  public String tfI;
+  public String tfJ;
+  public String tfK;
+  public int tfL;
   
-  public aq(int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3)
+  public aq(int paramInt1, long paramLong1, long paramLong2, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt3, String paramString7)
   {
-    AppMethodBeat.i(42421);
-    this.ooS = 1;
-    this.ooT = null;
-    this.ooU = null;
-    this.ooV = null;
-    this.ooW = null;
-    this.ooX = null;
-    this.ooY = 0L;
-    this.opl = 0;
-    this.opx = 0;
-    this.opL = 0;
-    this.msgType = 1;
-    this.bWu = paramInt1;
-    this.ojA = paramString1;
-    this.cMO = paramString2;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("msgType", "1");
-    localHashMap.put("channelId", String.valueOf(paramInt1));
-    localHashMap.put("sendId", paramString1);
-    localHashMap.put("inWay", String.valueOf(paramInt2));
-    localHashMap.put("ver", paramString3);
-    g.RM();
-    long l = ((Long)g.RL().Ru().get(ac.a.yCp, Long.valueOf(0L))).longValue();
-    if (l > 0L)
-    {
-      if (System.currentTimeMillis() >= l) {
-        break label241;
-      }
-      localHashMap.put("agreeDuty", "0");
-    }
-    for (;;)
-    {
-      if (!bo.isNullOrNil(paramString2)) {
-        localHashMap.put("nativeUrl", URLEncoder.encode(paramString2));
-      }
-      setRequestData(localHashMap);
-      AppMethodBeat.o(42421);
-      return;
-      label241:
-      paramString1 = new StringBuilder();
-      g.RM();
-      localHashMap.put("agreeDuty", (Integer)g.RL().Ru().get(ac.a.yCq, Integer.valueOf(1)));
-    }
+    this(paramInt1, paramLong1, paramLong2, paramInt2, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramInt3, paramString7, "", 0, 0, "", "", 0);
   }
   
-  public final String bhG()
+  public aq(int paramInt1, long paramLong1, long paramLong2, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt3, String paramString7, String paramString8, int paramInt4, int paramInt5, String paramString9, String paramString10, int paramInt6)
   {
-    return "/cgi-bin/mmpay-bin/receivewxhb";
+    AppMethodBeat.i(65303);
+    this.tfH = "";
+    this.tfI = "";
+    this.tfJ = "";
+    ad.i("MicroMsg.NetScenePrepareLuckyMoney", "NetScenePrepareLuckyMoney() uniqueId:%s, userConfiremJump:%s, unpayType:%s, cancelSendId:%s", new Object[] { paramString8, Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), bt.nullAsNil(paramString9) });
+    this.nTB = paramInt1;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("totalNum", String.valueOf(paramInt1));
+    localHashMap.put("totalAmount", String.valueOf(paramLong1));
+    localHashMap.put("perValue", String.valueOf(paramLong2));
+    localHashMap.put("hbType", String.valueOf(paramInt2));
+    localHashMap.put("wishing", URLEncoder.encode(bt.nullAsNil(paramString1)));
+    localHashMap.put("sendUserName", paramString5);
+    if (!bt.isNullOrNil(paramString8)) {
+      localHashMap.put("unique_id", paramString8);
+    }
+    localHashMap.put("user_confirm_jump", String.valueOf(paramInt4));
+    localHashMap.put("unpay_type", String.valueOf(paramInt5));
+    localHashMap.put("cancel_sendid", paramString9);
+    localHashMap.put("expression_md5", paramString10);
+    localHashMap.put("expression_type", String.valueOf(paramInt6));
+    if (!bt.isNullOrNil(paramString3)) {
+      localHashMap.put("username", paramString3);
+    }
+    if (!bt.isNullOrNil(paramString2))
+    {
+      localHashMap.put("headImg", URLEncoder.encode(paramString2));
+      localHashMap.put("nickName", URLEncoder.encode(bt.nullAsNil(paramString6)));
+      if (!bt.isNullOrNil(paramString4)) {
+        localHashMap.put("receiveNickName", URLEncoder.encode(paramString4));
+      }
+    }
+    localHashMap.put("inWay", String.valueOf(paramInt3));
+    if ((paramInt3 == 0) || (paramInt3 == 1) || (paramInt3 == 7)) {
+      localHashMap.put("needSendToMySelf", "0");
+    }
+    localHashMap.put("showSourceMac", URLEncoder.encode(paramString7));
+    setRequestData(localHashMap);
+    AppMethodBeat.o(65303);
+  }
+  
+  public static a a(aq paramaq, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(65305);
+    a locala = new a();
+    locala.doh = paramJSONObject.optString("retmsg");
+    JSONObject localJSONObject = paramJSONObject.optJSONObject("showmess");
+    locala.tfH = localJSONObject.optString("left_button_wording");
+    locala.tfI = localJSONObject.optString("right_button_wording");
+    locala.nTQ = localJSONObject.optString("right_button_url");
+    if (paramaq != null) {
+      paramaq.tfL = paramJSONObject.optInt("return_to_session", 0);
+    }
+    AppMethodBeat.o(65305);
+    return locala;
+  }
+  
+  public static boolean k(n paramn)
+  {
+    AppMethodBeat.i(65306);
+    try
+    {
+      paramn = new JSONObject(z.b(((bgn)((b)paramn.getReqResp()).gUT.gUX).DEv));
+      if (paramn.has("showmess"))
+      {
+        boolean bool = bt.iY(paramn.optJSONObject("showmess").optInt("return_to_session", 0), 1);
+        if (bool)
+        {
+          AppMethodBeat.o(65306);
+          return true;
+        }
+      }
+    }
+    catch (Exception paramn)
+    {
+      ad.i("MicroMsg.NetScenePrepareLuckyMoney", "ifReturnByReturnToSession() Exception：%s", new Object[] { paramn.getMessage() });
+      AppMethodBeat.o(65306);
+    }
+    return false;
+  }
+  
+  public final String bOB()
+  {
+    return "/cgi-bin/mmpay-bin/requestwxhb";
   }
   
   public final int getType()
   {
-    return 1581;
+    return 1575;
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(42422);
-    this.opH = paramJSONObject.optString("sendNick");
-    this.ont = paramJSONObject.optString("sendHeadImg");
-    this.cMQ = paramJSONObject.optInt("hbStatus");
-    this.cMR = paramJSONObject.optInt("receiveStatus");
-    this.onq = paramJSONObject.optString("statusMess");
-    this.oiG = paramJSONObject.optString("wishing");
-    this.onB = paramJSONObject.optInt("isSender");
-    this.opI = paramJSONObject.optLong("sceneAmount");
-    this.opJ = paramJSONObject.optLong("sceneRecTimeStamp");
-    this.cMP = paramJSONObject.optInt("hbType");
-    this.onI = paramJSONObject.optString("watermark");
-    this.okM = paramJSONObject.optString("externMess");
-    this.onN = paramJSONObject.optString("sendUserName");
-    if ((!bo.isNullOrNil(this.onN)) && (bo.isNullOrNil(this.opH))) {
-      this.opH = ((b)g.E(b.class)).nE(this.onN);
-    }
-    this.onH = v.ag(paramJSONObject.optJSONObject("operationTail"));
-    this.opl = paramJSONObject.optInt("scenePicSwitch");
-    paramString = paramJSONObject.optJSONObject("agree_duty");
-    if (paramString != null)
+    AppMethodBeat.i(65304);
+    this.sZn = paramJSONObject.optString("sendId");
+    this.rcq = paramJSONObject.optString("reqkey");
+    this.tfE = paramJSONObject.optString("sendMsgXml");
+    this.tfF = paramJSONObject.optString("guide_flag", "0");
+    this.tfG = paramJSONObject.optString("guide_wording");
+    this.tfH = paramJSONObject.optString("left_button_wording", "");
+    this.tfI = paramJSONObject.optString("right_button_wording", "");
+    this.tfJ = paramJSONObject.optString("upload_credit_url", "");
+    this.tfK = paramJSONObject.optString("id_sign", "");
+    if (paramJSONObject.has("showmess"))
     {
-      this.ooT = paramString.optString("agreed_flag", "-1");
-      this.ooU = paramString.optString("title", "");
-      this.ooV = paramString.optString("service_protocol_wording", "");
-      this.ooW = paramString.optString("service_protocol_url", "");
-      this.ooX = paramString.optString("button_wording", "");
-      this.ooY = paramString.optLong("delay_expired_time", 0L);
+      ad.i("MicroMsg.NetScenePrepareLuckyMoney", "has alert item");
+      this.dyo = a(this, paramJSONObject);
     }
-    if (this.ooY > 0L)
-    {
-      g.RM();
-      g.RL().Ru().set(ac.a.yCp, Long.valueOf(System.currentTimeMillis() + this.ooY * 1000L));
-    }
-    ab.i("MicroMsg.NetSceneReceiveLuckyMoney", "scenePicSwitch:" + this.opl);
-    this.opK = paramJSONObject.optInt("preStrainFlag", 1);
-    ab.i("MicroMsg.NetSceneReceiveLuckyMoney", "preStrainFlag:" + this.opK);
-    this.opx = paramJSONObject.optInt("showYearExpression");
-    ab.i("MicroMsg.NetSceneReceiveLuckyMoney", "showYearExpression:%s", new Object[] { Integer.valueOf(this.opx) });
-    this.opL = paramJSONObject.optInt("showRecNormalExpression");
-    ab.i("MicroMsg.NetSceneReceiveLuckyMoney", "showRecNormalExpression:%s", new Object[] { Integer.valueOf(this.opL) });
-    g.RM();
-    g.RL().Ru().set(ac.a.yCe, Integer.valueOf(this.opK));
-    this.opM = paramJSONObject.optString("timingIdentifier");
-    this.ffX = paramJSONObject.optString("effectResource");
-    this.opb = paramJSONObject.optString("expression_md5");
-    this.opc = paramJSONObject.optInt("expression_type");
-    ab.i("MicroMsg.NetSceneReceiveLuckyMoney", "expressionmd5:%s expressiontype:%s", new Object[] { this.opb, Integer.valueOf(this.opc) });
-    paramJSONObject = paramJSONObject.optJSONObject("showSourceRec");
-    if (paramJSONObject == null) {
-      paramString = null;
-    }
-    for (;;)
-    {
-      this.opN = paramString;
-      g.RM();
-      paramInt = ((Integer)g.RL().Ru().get(ac.a.yLJ, Integer.valueOf(0))).intValue();
-      int i = ((a)g.E(a.class)).a(a.a.lVp, 0);
-      if ((bo.hl(paramInt, 1)) || (bo.hl(i, 1)))
-      {
-        this.opL = 1;
-        this.opx = 1;
-      }
-      ab.i("MicroMsg.NetSceneReceiveLuckyMoney", "localSwitch() showRecNormalExpression:%s showYearExpression:%s", new Object[] { Integer.valueOf(this.opL), Integer.valueOf(this.opx) });
-      AppMethodBeat.o(42422);
-      return;
-      paramString = new au();
-      paramString.opR = v.ah(paramJSONObject);
-    }
+    AppMethodBeat.o(65304);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.aq
  * JD-Core Version:    0.7.0.1
  */

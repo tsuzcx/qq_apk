@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class rv
   extends b
 {
-  public rv.a cIf;
+  public a dxs;
   
   public rv()
   {
@@ -15,16 +15,25 @@ public final class rv
   
   private rv(byte paramByte)
   {
-    AppMethodBeat.i(94443);
-    this.cIf = new rv.a();
-    this.ymq = false;
+    AppMethodBeat.i(120832);
+    this.dxs = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(94443);
+    AppMethodBeat.o(120832);
+  }
+  
+  public static final class a
+  {
+    public int dcS;
+    public boolean dcq;
+    public String dxt;
+    public String dxu;
+    public String dxv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.rv
  * JD-Core Version:    0.7.0.1
  */

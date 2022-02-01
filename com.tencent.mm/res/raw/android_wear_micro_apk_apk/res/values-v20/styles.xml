@@ -1,80 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ab" parent="@style/ac" />
-    <style name="ac" parent="@style/an">
-        <item name="android:textColor">@color/ak</item>
+    <style name="CardText" parent="@style/CardTextBase" />
+    <style name="CardTextBase" parent="@style/TextView.Medium.Light">
+        <item name="android:textColor">@color/card_text_color</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:lineSpacingMultiplier">0.92</item>
     </style>
-    <style name="ad" parent="@style/ae" />
-    <style name="ae" parent="@style/an">
-        <item name="android:textColor">@color/aj</item>
+    <style name="CardTitle" parent="@style/CardTitleBase" />
+    <style name="CardTitleBase" parent="@style/TextView.Medium.Light">
+        <item name="android:textColor">@color/card_grey_text_color</item>
         <item name="android:ellipsize">end</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:maxLines">2</item>
         <item name="android:singleLine">false</item>
     </style>
-    <style name="af" parent="@style/al">
-        <item name="android:textColor">@color/a_</item>
+    <style name="DismissOverlayText" parent="@style/TextView.Large.Light">
+        <item name="android:textColor">@color/primary_text_dark</item>
         <item name="android:gravity">center</item>
-        <item name="android:background">@color/z</item>
+        <item name="android:background">@color/dismiss_close</item>
         <item name="android:lineSpacingExtra">-2.0sp</item>
     </style>
-    <style name="ag">
-        <item name="u">7.799988dip</item>
-        <item name="v">2.0999756dip</item>
-        <item name="w">3.0999756dip</item>
-        <item name="x">@color/ai</item>
-        <item name="y">@color/ai</item>
-        <item name="z">true</item>
-        <item name="a0">1000</item>
-        <item name="a1">250</item>
-        <item name="a2">100</item>
-        <item name="a3">#66000000</item>
-        <item name="a4">2.0px</item>
-        <item name="a5">1.0px</item>
-        <item name="a6">1.0px</item>
+    <style name="DotsPageIndicatorStyle">
+        <item name="dotSpacing">7.799988dip</item>
+        <item name="dotRadius">2.0999756dip</item>
+        <item name="dotRadiusSelected">3.0999756dip</item>
+        <item name="dotColor">@color/white</item>
+        <item name="dotColorSelected">@color/white</item>
+        <item name="dotFadeWhenIdle">true</item>
+        <item name="dotFadeOutDelay">1000</item>
+        <item name="dotFadeOutDuration">250</item>
+        <item name="dotFadeInDuration">100</item>
+        <item name="dotShadowColor">#66000000</item>
+        <item name="dotShadowRadius">2.0px</item>
+        <item name="dotShadowDx">1.0px</item>
+        <item name="dotShadowDy">1.0px</item>
     </style>
-    <style name="ah" parent="@android:style/TextAppearance.Medium">
+    <style name="TextAppearance.Wearable.Large" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">24.0sp</item>
-        <item name="android:textColor">@color/ab</item>
+        <item name="android:textColor">@color/primary_text_light</item>
     </style>
-    <style name="ai" parent="@android:style/TextAppearance.Medium">
+    <style name="TextAppearance.Wearable.Medium" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">20.0sp</item>
-        <item name="android:textColor">@color/ab</item>
+        <item name="android:textColor">@color/primary_text_light</item>
     </style>
-    <style name="aj" parent="@android:style/TextAppearance.Medium">
+    <style name="TextAppearance.Wearable.Small" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">16.0sp</item>
-        <item name="android:textColor">@color/ab</item>
+        <item name="android:textColor">@color/primary_text_light</item>
     </style>
-    <style name="ak" parent="@android:style/Widget.Holo.Light">
-        <item name="android:textAppearance">@style/ah</item>
+    <style name="TextView.Large" parent="@android:style/Widget.Holo.Light">
+        <item name="android:textAppearance">@style/TextAppearance.Wearable.Large</item>
         <item name="android:fontFamily">sans-serif-condensed</item>
     </style>
-    <style name="al" parent="@style/ak">
-        <item name="android:textAppearance">@style/ah</item>
+    <style name="TextView.Large.Light" parent="@style/TextView.Large">
+        <item name="android:textAppearance">@style/TextAppearance.Wearable.Large</item>
         <item name="android:fontFamily">sans-serif-condensed-light</item>
     </style>
-    <style name="am" parent="@android:style/Widget.Holo.Light">
-        <item name="android:textAppearance">@style/ai</item>
+    <style name="TextView.Medium" parent="@android:style/Widget.Holo.Light">
+        <item name="android:textAppearance">@style/TextAppearance.Wearable.Medium</item>
         <item name="android:fontFamily">sans-serif-condensed</item>
     </style>
-    <style name="an" parent="@style/am">
-        <item name="android:textAppearance">@style/ai</item>
+    <style name="TextView.Medium.Light" parent="@style/TextView.Medium">
+        <item name="android:textAppearance">@style/TextAppearance.Wearable.Medium</item>
         <item name="android:fontFamily">sans-serif-condensed-light</item>
     </style>
-    <style name="ao" parent="@android:style/Widget.Holo.Light">
-        <item name="android:textAppearance">@style/aj</item>
+    <style name="TextView.Small" parent="@android:style/Widget.Holo.Light">
+        <item name="android:textAppearance">@style/TextAppearance.Wearable.Small</item>
         <item name="android:fontFamily">sans-serif-condensed</item>
     </style>
-    <style name="ap" parent="@style/ao">
-        <item name="android:textAppearance">@style/aj</item>
+    <style name="TextView.Small.Light" parent="@style/TextView.Small">
+        <item name="android:textAppearance">@style/TextAppearance.Wearable.Small</item>
         <item name="android:fontFamily">sans-serif-condensed-light</item>
     </style>
-    <style name="aq" parent="@android:style/Theme.DeviceDefault" />
-    <style name="ar" parent="@style/aq">
+    <style name="Theme.Wearable" parent="@android:style/Theme.DeviceDefault" />
+    <style name="Theme.Wearable.Modal" parent="@style/Theme.Wearable">
         <item name="android:windowSwipeToDismiss">false</item>
     </style>
 </resources>

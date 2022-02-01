@@ -6,77 +6,91 @@ import com.tencent.mm.plugin.report.a;
 public final class t
   extends a
 {
-  public long cSK = 0L;
-  public long cSL = 0L;
-  public long cSM = 0L;
-  public long cSN = 0L;
-  public long cSO = 0L;
-  public long cSP = 0L;
-  public long cSQ = 0L;
-  public long cSR = 0L;
-  public long cSS = 0L;
+  private int dJp;
+  private int dJs;
+  private String dJt;
+  private int dJu;
+  private String dJv;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(138450);
+    AppMethodBeat.i(183918);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cSK);
+    ((StringBuffer)localObject).append(this.dJp);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cSL);
+    ((StringBuffer)localObject).append(this.dJu);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cSM);
+    ((StringBuffer)localObject).append(this.dJt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cSN);
+    ((StringBuffer)localObject).append(this.dJv);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cSO);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cSP);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cSQ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cSR);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cSS);
+    ((StringBuffer)localObject).append(this.dJs);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(138450);
+    ams((String)localObject);
+    AppMethodBeat.o(183918);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(138451);
+    AppMethodBeat.i(183919);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Source:").append(this.cSK);
+    ((StringBuffer)localObject).append("Action:").append(this.dJp);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CaptureTime:").append(this.cSL);
+    ((StringBuffer)localObject).append("Scene:").append(this.dJu);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Result:").append(this.cSM);
+    ((StringBuffer)localObject).append("Pid:").append(this.dJt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadTime:").append(this.cSN);
+    ((StringBuffer)localObject).append("Md5:").append(this.dJv);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OCRTranslateTime:").append(this.cSO);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TotalTime:").append(this.cSP);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ShowOriginCount:").append(this.cSQ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasSaveResultImage:").append(this.cSR);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasSaveOriginImage:").append(this.cSS);
+    ((StringBuffer)localObject).append("Index:").append(this.dJs);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(138451);
+    AppMethodBeat.o(183919);
     return localObject;
+  }
+  
+  public final t fZ(String paramString)
+  {
+    AppMethodBeat.i(183916);
+    this.dJt = t("Pid", paramString, true);
+    AppMethodBeat.o(183916);
+    return this;
+  }
+  
+  public final t ga(String paramString)
+  {
+    AppMethodBeat.i(183917);
+    this.dJv = t("Md5", paramString, true);
+    AppMethodBeat.o(183917);
+    return this;
   }
   
   public final int getId()
   {
-    return 15435;
+    return 19434;
+  }
+  
+  public final t ip(int paramInt)
+  {
+    this.dJp = paramInt;
+    return this;
+  }
+  
+  public final t iq(int paramInt)
+  {
+    this.dJu = paramInt;
+    return this;
+  }
+  
+  public final t ir(int paramInt)
+  {
+    this.dJs = paramInt;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.t
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.tinker.a.b.b;
 
 public final class a
 {
-  public static String SJ(int paramInt)
+  public static String acu(int paramInt)
   {
     char[] arrayOfChar = new char[8];
     int j = 0;
@@ -17,7 +17,7 @@ public final class a
     return new String(arrayOfChar);
   }
   
-  public static String SK(int paramInt)
+  public static String acv(int paramInt)
   {
     char[] arrayOfChar = new char[4];
     int j = 0;
@@ -32,15 +32,15 @@ public final class a
     return new String(arrayOfChar);
   }
   
-  public static String SL(int paramInt)
+  public static String acw(int paramInt)
   {
     if (paramInt == (char)paramInt) {
-      return SK(paramInt);
+      return acv(paramInt);
     }
-    return SJ(paramInt);
+    return acu(paramInt);
   }
   
-  public static String SM(int paramInt)
+  public static String acx(int paramInt)
   {
     int i = 0;
     char[] arrayOfChar = new char[9];
@@ -60,7 +60,7 @@ public final class a
     return new String(arrayOfChar);
   }
   
-  public static String pc(long paramLong)
+  public static String xo(long paramLong)
   {
     char[] arrayOfChar = new char[16];
     int i = 0;
@@ -75,7 +75,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.a.b.b.a
  * JD-Core Version:    0.7.0.1
  */

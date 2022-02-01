@@ -14,8 +14,9 @@ public class c
   private long g;
   private long h;
   private boolean i;
+  private String j;
   
-  public c(Context paramContext, String paramString1, String paramString2, String paramString3, b paramb, boolean paramBoolean)
+  public c(Context paramContext, String paramString1, String paramString2, String paramString3, b paramb, boolean paramBoolean, String paramString4)
   {
     this.b = paramContext;
     this.c = paramString1;
@@ -23,16 +24,17 @@ public class c
     this.e = paramString3;
     this.f = paramb;
     this.i = paramBoolean;
+    this.j = paramString4;
   }
   
   private void a(Exception paramException, int paramInt)
   {
-    AppMethodBeat.i(146705);
+    AppMethodBeat.i(14646);
     if (this.f != null) {
       this.f.a(null, paramException);
     }
     this.f = null;
-    AppMethodBeat.o(146705);
+    AppMethodBeat.o(14646);
   }
   
   /* Error */
@@ -45,591 +47,669 @@ public class c
     //   3: istore_3
     //   4: iconst_0
     //   5: istore_1
-    //   6: ldc 57
-    //   8: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   11: aload_0
-    //   12: getfield 24	com/tencent/liteav/basic/b/c:b	Landroid/content/Context;
-    //   15: invokestatic 62	com/tencent/liteav/basic/util/a:a	(Landroid/content/Context;)Z
-    //   18: ifeq +45 -> 63
-    //   21: aload_0
-    //   22: getfield 26	com/tencent/liteav/basic/b/c:c	Ljava/lang/String;
-    //   25: invokestatic 68	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   28: ifne +35 -> 63
-    //   31: aload_0
-    //   32: getfield 28	com/tencent/liteav/basic/b/c:d	Ljava/lang/String;
-    //   35: invokestatic 68	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   38: ifne +25 -> 63
-    //   41: aload_0
-    //   42: getfield 30	com/tencent/liteav/basic/b/c:e	Ljava/lang/String;
-    //   45: invokestatic 68	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   48: ifne +15 -> 63
-    //   51: aload_0
-    //   52: getfield 26	com/tencent/liteav/basic/b/c:c	Ljava/lang/String;
-    //   55: ldc 70
-    //   57: invokevirtual 76	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   60: ifne +15 -> 75
-    //   63: aload_0
-    //   64: aconst_null
-    //   65: iconst_0
-    //   66: invokespecial 78	com/tencent/liteav/basic/b/c:a	(Ljava/lang/Exception;I)V
-    //   69: ldc 57
-    //   71: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   74: return
-    //   75: new 80	java/io/File
-    //   78: dup
-    //   79: aload_0
-    //   80: getfield 28	com/tencent/liteav/basic/b/c:d	Ljava/lang/String;
-    //   83: invokespecial 83	java/io/File:<init>	(Ljava/lang/String;)V
-    //   86: astore 5
-    //   88: aload 5
-    //   90: invokevirtual 87	java/io/File:exists	()Z
-    //   93: ifne +239 -> 332
-    //   96: aload 5
-    //   98: invokevirtual 90	java/io/File:mkdirs	()Z
-    //   101: pop
-    //   102: new 80	java/io/File
-    //   105: dup
-    //   106: new 92	java/lang/StringBuilder
-    //   109: dup
-    //   110: invokespecial 93	java/lang/StringBuilder:<init>	()V
-    //   113: aload_0
-    //   114: getfield 28	com/tencent/liteav/basic/b/c:d	Ljava/lang/String;
-    //   117: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   120: getstatic 100	java/io/File:separator	Ljava/lang/String;
-    //   123: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   126: aload_0
-    //   127: getfield 30	com/tencent/liteav/basic/b/c:e	Ljava/lang/String;
-    //   130: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   136: invokespecial 83	java/io/File:<init>	(Ljava/lang/String;)V
-    //   139: astore 11
-    //   141: aload 11
-    //   143: invokevirtual 87	java/io/File:exists	()Z
-    //   146: ifeq +9 -> 155
-    //   149: aload 11
-    //   151: invokevirtual 107	java/io/File:delete	()Z
-    //   154: pop
-    //   155: aload 11
-    //   157: invokevirtual 110	java/io/File:createNewFile	()Z
-    //   160: pop
-    //   161: new 112	java/net/URL
-    //   164: dup
-    //   165: aload_0
-    //   166: getfield 26	com/tencent/liteav/basic/b/c:c	Ljava/lang/String;
-    //   169: invokespecial 113	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   172: invokevirtual 117	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   175: checkcast 119	java/net/HttpURLConnection
-    //   178: astore 5
-    //   180: iload_3
-    //   181: istore_2
-    //   182: aload 5
-    //   184: sipush 30000
-    //   187: invokevirtual 122	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   190: iload_3
-    //   191: istore_2
-    //   192: aload 5
-    //   194: sipush 30000
-    //   197: invokevirtual 125	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   200: iload_3
-    //   201: istore_2
-    //   202: aload 5
-    //   204: iconst_1
-    //   205: invokevirtual 129	java/net/HttpURLConnection:setDoInput	(Z)V
-    //   208: iload_3
-    //   209: istore_2
-    //   210: aload 5
-    //   212: ldc 131
-    //   214: invokevirtual 134	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   6: sipush 14645
+    //   9: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   12: aload_0
+    //   13: getfield 25	com/tencent/liteav/basic/b/c:b	Landroid/content/Context;
+    //   16: invokestatic 63	com/tencent/liteav/basic/util/c:a	(Landroid/content/Context;)Z
+    //   19: ifeq +45 -> 64
+    //   22: aload_0
+    //   23: getfield 27	com/tencent/liteav/basic/b/c:c	Ljava/lang/String;
+    //   26: invokestatic 69	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   29: ifne +35 -> 64
+    //   32: aload_0
+    //   33: getfield 29	com/tencent/liteav/basic/b/c:d	Ljava/lang/String;
+    //   36: invokestatic 69	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   39: ifne +25 -> 64
+    //   42: aload_0
+    //   43: getfield 31	com/tencent/liteav/basic/b/c:e	Ljava/lang/String;
+    //   46: invokestatic 69	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   49: ifne +15 -> 64
+    //   52: aload_0
+    //   53: getfield 27	com/tencent/liteav/basic/b/c:c	Ljava/lang/String;
+    //   56: ldc 71
+    //   58: invokevirtual 77	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   61: ifne +16 -> 77
+    //   64: aload_0
+    //   65: aconst_null
+    //   66: iconst_0
+    //   67: invokespecial 79	com/tencent/liteav/basic/b/c:a	(Ljava/lang/Exception;I)V
+    //   70: sipush 14645
+    //   73: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: return
+    //   77: new 81	java/io/File
+    //   80: dup
+    //   81: aload_0
+    //   82: getfield 29	com/tencent/liteav/basic/b/c:d	Ljava/lang/String;
+    //   85: invokespecial 84	java/io/File:<init>	(Ljava/lang/String;)V
+    //   88: astore 5
+    //   90: aload 5
+    //   92: invokevirtual 88	java/io/File:exists	()Z
+    //   95: ifne +284 -> 379
+    //   98: aload 5
+    //   100: invokevirtual 91	java/io/File:mkdirs	()Z
+    //   103: pop
+    //   104: new 81	java/io/File
+    //   107: dup
+    //   108: new 93	java/lang/StringBuilder
+    //   111: dup
+    //   112: invokespecial 94	java/lang/StringBuilder:<init>	()V
+    //   115: aload_0
+    //   116: getfield 29	com/tencent/liteav/basic/b/c:d	Ljava/lang/String;
+    //   119: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: getstatic 101	java/io/File:separator	Ljava/lang/String;
+    //   125: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: aload_0
+    //   129: getfield 31	com/tencent/liteav/basic/b/c:e	Ljava/lang/String;
+    //   132: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   138: invokespecial 84	java/io/File:<init>	(Ljava/lang/String;)V
+    //   141: astore 11
+    //   143: aload 11
+    //   145: invokevirtual 88	java/io/File:exists	()Z
+    //   148: ifeq +9 -> 157
+    //   151: aload 11
+    //   153: invokevirtual 108	java/io/File:delete	()Z
+    //   156: pop
+    //   157: aload 11
+    //   159: invokevirtual 111	java/io/File:createNewFile	()Z
+    //   162: pop
+    //   163: new 113	java/net/URL
+    //   166: dup
+    //   167: aload_0
+    //   168: getfield 27	com/tencent/liteav/basic/b/c:c	Ljava/lang/String;
+    //   171: invokespecial 114	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   174: invokevirtual 118	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   177: checkcast 120	java/net/HttpURLConnection
+    //   180: astore 5
+    //   182: iload_3
+    //   183: istore_2
+    //   184: aload_0
+    //   185: getfield 37	com/tencent/liteav/basic/b/c:j	Ljava/lang/String;
+    //   188: invokestatic 69	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   191: ifne +16 -> 207
+    //   194: iload_3
+    //   195: istore_2
+    //   196: aload 5
+    //   198: ldc 122
+    //   200: aload_0
+    //   201: getfield 37	com/tencent/liteav/basic/b/c:j	Ljava/lang/String;
+    //   204: invokevirtual 126	java/net/HttpURLConnection:addRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   207: iload_3
+    //   208: istore_2
+    //   209: aload 5
+    //   211: sipush 30000
+    //   214: invokevirtual 129	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   217: iload_3
     //   218: istore_2
     //   219: aload 5
-    //   221: invokevirtual 138	java/net/HttpURLConnection:getResponseCode	()I
-    //   224: istore 4
-    //   226: iload_3
-    //   227: istore_2
-    //   228: aload 5
-    //   230: invokevirtual 138	java/net/HttpURLConnection:getResponseCode	()I
-    //   233: sipush 200
-    //   236: if_icmpne +5 -> 241
-    //   239: iconst_1
-    //   240: istore_1
-    //   241: iload_1
-    //   242: ifeq +556 -> 798
-    //   245: iload_1
-    //   246: istore_2
-    //   247: aload_0
-    //   248: getfield 34	com/tencent/liteav/basic/b/c:i	Z
-    //   251: ifeq +197 -> 448
-    //   254: iload_1
-    //   255: istore_2
-    //   256: aload_0
-    //   257: aload 5
-    //   259: invokevirtual 141	java/net/HttpURLConnection:getContentLength	()I
-    //   262: i2l
-    //   263: putfield 143	com/tencent/liteav/basic/b/c:g	J
-    //   266: iload_1
-    //   267: istore_2
-    //   268: aload_0
-    //   269: getfield 143	com/tencent/liteav/basic/b/c:g	J
-    //   272: lconst_0
-    //   273: lcmp
-    //   274: ifgt +99 -> 373
-    //   277: iload_1
-    //   278: istore_2
-    //   279: aload_0
-    //   280: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   283: ifnull +17 -> 300
-    //   286: iload_1
-    //   287: istore_2
-    //   288: aload_0
-    //   289: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   292: aload 11
-    //   294: aconst_null
-    //   295: invokeinterface 48 3 0
-    //   300: aload 5
-    //   302: ifnull +8 -> 310
-    //   305: aload 5
-    //   307: invokevirtual 146	java/net/HttpURLConnection:disconnect	()V
-    //   310: aload_0
-    //   311: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   314: ifnull +12 -> 326
-    //   317: aload_0
-    //   318: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   321: invokeinterface 148 1 0
-    //   326: ldc 57
-    //   328: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   331: return
-    //   332: aload 5
-    //   334: invokevirtual 151	java/io/File:isFile	()Z
-    //   337: ifeq -235 -> 102
-    //   340: aload_0
-    //   341: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   344: ifnull -242 -> 102
-    //   347: aload_0
-    //   348: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   221: sipush 30000
+    //   224: invokevirtual 132	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   227: iload_3
+    //   228: istore_2
+    //   229: aload 5
+    //   231: iconst_1
+    //   232: invokevirtual 136	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   235: iload_3
+    //   236: istore_2
+    //   237: aload 5
+    //   239: ldc 138
+    //   241: invokevirtual 141	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   244: iload_3
+    //   245: istore_2
+    //   246: aload 5
+    //   248: invokevirtual 145	java/net/HttpURLConnection:getResponseCode	()I
+    //   251: istore 4
+    //   253: iload_3
+    //   254: istore_2
+    //   255: aload 5
+    //   257: invokevirtual 145	java/net/HttpURLConnection:getResponseCode	()I
+    //   260: sipush 200
+    //   263: if_icmpne +5 -> 268
+    //   266: iconst_1
+    //   267: istore_1
+    //   268: iload_1
+    //   269: ifeq +587 -> 856
+    //   272: iload_1
+    //   273: istore_2
+    //   274: aload 5
+    //   276: ldc 147
+    //   278: invokevirtual 151	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   281: astore 7
+    //   283: iload_1
+    //   284: istore_2
+    //   285: aload_0
+    //   286: aload 7
+    //   288: putfield 37	com/tencent/liteav/basic/b/c:j	Ljava/lang/String;
+    //   291: iload_1
+    //   292: istore_2
+    //   293: aload_0
+    //   294: getfield 35	com/tencent/liteav/basic/b/c:i	Z
+    //   297: ifeq +202 -> 499
+    //   300: iload_1
+    //   301: istore_2
+    //   302: aload_0
+    //   303: aload 5
+    //   305: invokevirtual 154	java/net/HttpURLConnection:getContentLength	()I
+    //   308: i2l
+    //   309: putfield 156	com/tencent/liteav/basic/b/c:g	J
+    //   312: iload_1
+    //   313: istore_2
+    //   314: aload_0
+    //   315: getfield 156	com/tencent/liteav/basic/b/c:g	J
+    //   318: lconst_0
+    //   319: lcmp
+    //   320: ifgt +102 -> 422
+    //   323: iload_1
+    //   324: istore_2
+    //   325: aload_0
+    //   326: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   329: ifnull +17 -> 346
+    //   332: iload_1
+    //   333: istore_2
+    //   334: aload_0
+    //   335: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   338: aload 11
+    //   340: aconst_null
+    //   341: invokeinterface 50 3 0
+    //   346: aload 5
+    //   348: ifnull +8 -> 356
     //   351: aload 5
-    //   353: aconst_null
-    //   354: invokeinterface 48 3 0
-    //   359: ldc 57
-    //   361: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   364: return
-    //   365: astore 5
-    //   367: ldc 57
-    //   369: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   372: return
-    //   373: iload_1
-    //   374: istore_2
-    //   375: aload_0
-    //   376: getfield 143	com/tencent/liteav/basic/b/c:g	J
-    //   379: invokestatic 154	com/tencent/liteav/basic/util/a:a	(J)Z
-    //   382: ifne +66 -> 448
-    //   385: iload_1
-    //   386: istore_2
+    //   353: invokevirtual 159	java/net/HttpURLConnection:disconnect	()V
+    //   356: aload_0
+    //   357: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   360: ifnull +12 -> 372
+    //   363: aload_0
+    //   364: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   367: invokeinterface 161 1 0
+    //   372: sipush 14645
+    //   375: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   378: return
+    //   379: aload 5
+    //   381: invokevirtual 164	java/io/File:isFile	()Z
+    //   384: ifeq -280 -> 104
     //   387: aload_0
-    //   388: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   391: ifnull +17 -> 408
-    //   394: iload_1
-    //   395: istore_2
-    //   396: aload_0
-    //   397: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   400: aload 11
-    //   402: aconst_null
-    //   403: invokeinterface 48 3 0
-    //   408: aload 5
-    //   410: ifnull +8 -> 418
-    //   413: aload 5
-    //   415: invokevirtual 146	java/net/HttpURLConnection:disconnect	()V
-    //   418: aload_0
-    //   419: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   422: ifnull +12 -> 434
-    //   425: aload_0
-    //   426: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   429: invokeinterface 148 1 0
-    //   434: ldc 57
-    //   436: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   439: return
-    //   440: astore 5
-    //   442: ldc 57
-    //   444: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   447: return
-    //   448: iload_1
-    //   449: istore_2
-    //   450: aload 5
-    //   452: invokevirtual 158	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   455: astore 6
-    //   457: sipush 8192
-    //   460: newarray byte
-    //   462: astore 7
-    //   464: new 160	java/io/FileOutputStream
-    //   467: dup
-    //   468: aload 11
-    //   470: invokespecial 163	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   473: astore 9
-    //   475: aload_0
-    //   476: lconst_0
-    //   477: putfield 165	com/tencent/liteav/basic/b/c:h	J
-    //   480: aload 6
-    //   482: aload 7
-    //   484: invokevirtual 171	java/io/InputStream:read	([B)I
-    //   487: istore_3
-    //   488: iload_3
-    //   489: iconst_m1
-    //   490: if_icmpeq +191 -> 681
-    //   493: aload 9
-    //   495: aload 7
-    //   497: iconst_0
-    //   498: iload_3
-    //   499: invokevirtual 175	java/io/FileOutputStream:write	([BII)V
-    //   502: aload_0
-    //   503: getfield 34	com/tencent/liteav/basic/b/c:i	Z
-    //   506: ifeq -26 -> 480
-    //   509: aload_0
-    //   510: getfield 165	com/tencent/liteav/basic/b/c:h	J
-    //   513: ldc2_w 176
-    //   516: lmul
-    //   517: aload_0
-    //   518: getfield 143	com/tencent/liteav/basic/b/c:g	J
-    //   521: ldiv
-    //   522: l2i
-    //   523: istore_2
-    //   524: aload_0
-    //   525: aload_0
-    //   526: getfield 165	com/tencent/liteav/basic/b/c:h	J
-    //   529: iload_3
-    //   530: i2l
-    //   531: ladd
-    //   532: putfield 165	com/tencent/liteav/basic/b/c:h	J
-    //   535: aload_0
-    //   536: getfield 165	com/tencent/liteav/basic/b/c:h	J
-    //   539: ldc2_w 176
-    //   542: lmul
-    //   543: aload_0
-    //   544: getfield 143	com/tencent/liteav/basic/b/c:g	J
-    //   547: ldiv
-    //   548: l2i
-    //   549: istore_3
-    //   550: iload_2
-    //   551: iload_3
-    //   552: if_icmpeq -72 -> 480
-    //   555: aload_0
-    //   556: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   559: ifnull -79 -> 480
-    //   562: aload_0
-    //   563: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   566: iload_3
-    //   567: invokeinterface 179 2 0
-    //   572: goto -92 -> 480
-    //   575: astore 10
-    //   577: aload 5
-    //   579: astore 8
-    //   581: aload 9
-    //   583: astore 7
-    //   585: aload 10
-    //   587: astore 5
-    //   589: aload 7
-    //   591: ifnull +8 -> 599
-    //   594: aload 7
-    //   596: invokevirtual 182	java/io/FileOutputStream:close	()V
-    //   599: aload 6
-    //   601: ifnull +8 -> 609
-    //   604: aload 6
-    //   606: invokevirtual 183	java/io/InputStream:close	()V
-    //   609: aload 8
-    //   611: ifnull +8 -> 619
-    //   614: aload 8
-    //   616: invokevirtual 146	java/net/HttpURLConnection:disconnect	()V
-    //   619: aload 5
-    //   621: astore 7
-    //   623: iload_1
-    //   624: istore_2
-    //   625: aload_0
-    //   626: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   629: ifnull +18 -> 647
-    //   632: aload_0
-    //   633: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   636: invokeinterface 148 1 0
-    //   641: iload_1
-    //   642: istore_2
-    //   643: aload 5
-    //   645: astore 7
-    //   647: iload_2
-    //   648: ifeq +8 -> 656
-    //   651: aload 7
-    //   653: ifnull +22 -> 675
-    //   656: aload_0
-    //   657: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   660: ifnull +15 -> 675
-    //   663: aload_0
-    //   664: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   667: aload 11
-    //   669: aconst_null
-    //   670: invokeinterface 48 3 0
-    //   675: ldc 57
-    //   677: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   680: return
-    //   681: aload 9
-    //   683: invokevirtual 186	java/io/FileOutputStream:flush	()V
-    //   686: aload_0
-    //   687: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   690: ifnull +25 -> 715
-    //   693: aload_0
-    //   694: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   697: bipush 100
-    //   699: invokeinterface 179 2 0
-    //   704: aload_0
-    //   705: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   708: aload 11
-    //   710: invokeinterface 188 2 0
-    //   715: aconst_null
-    //   716: astore 8
-    //   718: aload 6
-    //   720: astore 7
-    //   722: aload 8
-    //   724: astore 6
-    //   726: aload 9
-    //   728: ifnull +8 -> 736
-    //   731: aload 9
-    //   733: invokevirtual 182	java/io/FileOutputStream:close	()V
-    //   736: aload 7
-    //   738: ifnull +8 -> 746
-    //   741: aload 7
-    //   743: invokevirtual 183	java/io/InputStream:close	()V
-    //   746: aload 5
-    //   748: ifnull +8 -> 756
-    //   751: aload 5
-    //   753: invokevirtual 146	java/net/HttpURLConnection:disconnect	()V
-    //   756: aload 6
-    //   758: astore 7
-    //   760: iload_1
-    //   761: istore_2
-    //   762: aload_0
-    //   763: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   766: ifnull -119 -> 647
-    //   769: aload_0
-    //   770: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   773: invokeinterface 148 1 0
-    //   778: aload 6
-    //   780: astore 7
-    //   782: iload_1
-    //   783: istore_2
-    //   784: goto -137 -> 647
-    //   787: astore 5
-    //   789: aload 6
-    //   791: astore 7
-    //   793: iload_1
-    //   794: istore_2
-    //   795: goto -148 -> 647
-    //   798: iload_1
-    //   799: istore_2
-    //   800: new 190	com/tencent/liteav/basic/b/d
-    //   803: dup
-    //   804: ldc 192
-    //   806: iload 4
-    //   808: invokestatic 196	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   811: invokevirtual 200	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   814: invokespecial 201	com/tencent/liteav/basic/b/d:<init>	(Ljava/lang/String;)V
-    //   817: astore 6
-    //   819: aconst_null
-    //   820: astore 9
-    //   822: aconst_null
-    //   823: astore 7
-    //   825: goto -99 -> 726
-    //   828: astore 5
-    //   830: aconst_null
-    //   831: astore 8
-    //   833: aconst_null
-    //   834: astore 6
-    //   836: aconst_null
-    //   837: astore 7
-    //   839: aload 8
-    //   841: ifnull +8 -> 849
-    //   844: aload 8
-    //   846: invokevirtual 182	java/io/FileOutputStream:close	()V
-    //   849: aload 6
-    //   851: ifnull +8 -> 859
-    //   854: aload 6
-    //   856: invokevirtual 183	java/io/InputStream:close	()V
-    //   859: aload 7
-    //   861: ifnull +8 -> 869
-    //   864: aload 7
-    //   866: invokevirtual 146	java/net/HttpURLConnection:disconnect	()V
-    //   869: aload_0
-    //   870: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   873: ifnull +12 -> 885
-    //   876: aload_0
-    //   877: getfield 32	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
-    //   880: invokeinterface 148 1 0
-    //   885: ldc 57
-    //   887: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   890: aload 5
-    //   892: athrow
-    //   893: astore 6
-    //   895: goto -10 -> 885
-    //   898: astore 9
-    //   900: aconst_null
-    //   901: astore 8
-    //   903: aconst_null
-    //   904: astore 6
-    //   906: aload 5
-    //   908: astore 7
-    //   910: aload 9
-    //   912: astore 5
-    //   914: goto -75 -> 839
-    //   917: astore 9
-    //   919: aconst_null
-    //   920: astore 8
-    //   922: aload 5
-    //   924: astore 7
-    //   926: aload 9
-    //   928: astore 5
-    //   930: goto -91 -> 839
-    //   933: astore 8
-    //   935: aload 5
-    //   937: astore 7
-    //   939: aload 8
-    //   941: astore 5
-    //   943: aload 9
-    //   945: astore 8
-    //   947: goto -108 -> 839
+    //   388: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   391: ifnull -287 -> 104
+    //   394: aload_0
+    //   395: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   398: aload 5
+    //   400: aconst_null
+    //   401: invokeinterface 50 3 0
+    //   406: sipush 14645
+    //   409: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   412: return
+    //   413: astore 5
+    //   415: sipush 14645
+    //   418: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   421: return
+    //   422: iload_1
+    //   423: istore_2
+    //   424: aload_0
+    //   425: getfield 156	com/tencent/liteav/basic/b/c:g	J
+    //   428: invokestatic 167	com/tencent/liteav/basic/util/c:a	(J)Z
+    //   431: ifne +68 -> 499
+    //   434: iload_1
+    //   435: istore_2
+    //   436: aload_0
+    //   437: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   440: ifnull +17 -> 457
+    //   443: iload_1
+    //   444: istore_2
+    //   445: aload_0
+    //   446: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   449: aload 11
+    //   451: aconst_null
+    //   452: invokeinterface 50 3 0
+    //   457: aload 5
+    //   459: ifnull +8 -> 467
+    //   462: aload 5
+    //   464: invokevirtual 159	java/net/HttpURLConnection:disconnect	()V
+    //   467: aload_0
+    //   468: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   471: ifnull +12 -> 483
+    //   474: aload_0
+    //   475: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   478: invokeinterface 161 1 0
+    //   483: sipush 14645
+    //   486: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   489: return
+    //   490: astore 5
+    //   492: sipush 14645
+    //   495: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   498: return
+    //   499: iload_1
+    //   500: istore_2
+    //   501: aload 5
+    //   503: invokevirtual 171	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   506: astore 6
+    //   508: sipush 8192
+    //   511: newarray byte
+    //   513: astore 8
+    //   515: new 173	java/io/FileOutputStream
+    //   518: dup
+    //   519: aload 11
+    //   521: invokespecial 176	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   524: astore 9
+    //   526: aload_0
+    //   527: lconst_0
+    //   528: putfield 178	com/tencent/liteav/basic/b/c:h	J
+    //   531: aload 6
+    //   533: aload 8
+    //   535: invokevirtual 184	java/io/InputStream:read	([B)I
+    //   538: istore_3
+    //   539: iload_3
+    //   540: iconst_m1
+    //   541: if_icmpeq +192 -> 733
+    //   544: aload 9
+    //   546: aload 8
+    //   548: iconst_0
+    //   549: iload_3
+    //   550: invokevirtual 188	java/io/FileOutputStream:write	([BII)V
+    //   553: aload_0
+    //   554: getfield 35	com/tencent/liteav/basic/b/c:i	Z
+    //   557: ifeq -26 -> 531
+    //   560: aload_0
+    //   561: getfield 178	com/tencent/liteav/basic/b/c:h	J
+    //   564: ldc2_w 189
+    //   567: lmul
+    //   568: aload_0
+    //   569: getfield 156	com/tencent/liteav/basic/b/c:g	J
+    //   572: ldiv
+    //   573: l2i
+    //   574: istore_2
+    //   575: aload_0
+    //   576: aload_0
+    //   577: getfield 178	com/tencent/liteav/basic/b/c:h	J
+    //   580: iload_3
+    //   581: i2l
+    //   582: ladd
+    //   583: putfield 178	com/tencent/liteav/basic/b/c:h	J
+    //   586: aload_0
+    //   587: getfield 178	com/tencent/liteav/basic/b/c:h	J
+    //   590: ldc2_w 189
+    //   593: lmul
+    //   594: aload_0
+    //   595: getfield 156	com/tencent/liteav/basic/b/c:g	J
+    //   598: ldiv
+    //   599: l2i
+    //   600: istore_3
+    //   601: iload_2
+    //   602: iload_3
+    //   603: if_icmpeq -72 -> 531
+    //   606: aload_0
+    //   607: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   610: ifnull -79 -> 531
+    //   613: aload_0
+    //   614: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   617: iload_3
+    //   618: invokeinterface 192 2 0
+    //   623: goto -92 -> 531
+    //   626: astore 10
+    //   628: aload 5
+    //   630: astore 8
+    //   632: aload 9
+    //   634: astore 7
+    //   636: aload 10
+    //   638: astore 5
+    //   640: aload 7
+    //   642: ifnull +8 -> 650
+    //   645: aload 7
+    //   647: invokevirtual 195	java/io/FileOutputStream:close	()V
+    //   650: aload 6
+    //   652: ifnull +8 -> 660
+    //   655: aload 6
+    //   657: invokevirtual 196	java/io/InputStream:close	()V
+    //   660: aload 8
+    //   662: ifnull +8 -> 670
+    //   665: aload 8
+    //   667: invokevirtual 159	java/net/HttpURLConnection:disconnect	()V
+    //   670: aload 5
+    //   672: astore 7
+    //   674: iload_1
+    //   675: istore_2
+    //   676: aload_0
+    //   677: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   680: ifnull +18 -> 698
+    //   683: aload_0
+    //   684: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   687: invokeinterface 161 1 0
+    //   692: iload_1
+    //   693: istore_2
+    //   694: aload 5
+    //   696: astore 7
+    //   698: iload_2
+    //   699: ifeq +8 -> 707
+    //   702: aload 7
+    //   704: ifnull +22 -> 726
+    //   707: aload_0
+    //   708: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   711: ifnull +15 -> 726
+    //   714: aload_0
+    //   715: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   718: aload 11
+    //   720: aconst_null
+    //   721: invokeinterface 50 3 0
+    //   726: sipush 14645
+    //   729: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   732: return
+    //   733: aload 9
+    //   735: invokevirtual 199	java/io/FileOutputStream:flush	()V
+    //   738: aload_0
+    //   739: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   742: ifnull +27 -> 769
+    //   745: aload_0
+    //   746: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   749: bipush 100
+    //   751: invokeinterface 192 2 0
+    //   756: aload_0
+    //   757: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   760: aload 11
+    //   762: aload 7
+    //   764: invokeinterface 202 3 0
+    //   769: aconst_null
+    //   770: astore 10
+    //   772: aload 6
+    //   774: astore 8
+    //   776: aload 9
+    //   778: astore 7
+    //   780: aload 10
+    //   782: astore 6
+    //   784: aload 7
+    //   786: ifnull +8 -> 794
+    //   789: aload 7
+    //   791: invokevirtual 195	java/io/FileOutputStream:close	()V
+    //   794: aload 8
+    //   796: ifnull +8 -> 804
+    //   799: aload 8
+    //   801: invokevirtual 196	java/io/InputStream:close	()V
+    //   804: aload 5
+    //   806: ifnull +8 -> 814
+    //   809: aload 5
+    //   811: invokevirtual 159	java/net/HttpURLConnection:disconnect	()V
+    //   814: aload 6
+    //   816: astore 7
+    //   818: iload_1
+    //   819: istore_2
+    //   820: aload_0
+    //   821: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   824: ifnull -126 -> 698
+    //   827: aload_0
+    //   828: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   831: invokeinterface 161 1 0
+    //   836: aload 6
+    //   838: astore 7
+    //   840: iload_1
+    //   841: istore_2
+    //   842: goto -144 -> 698
+    //   845: astore 5
+    //   847: aload 6
+    //   849: astore 7
+    //   851: iload_1
+    //   852: istore_2
+    //   853: goto -155 -> 698
+    //   856: iload 4
+    //   858: sipush 304
+    //   861: if_icmpne +53 -> 914
+    //   864: iload_1
+    //   865: istore_2
+    //   866: aload_0
+    //   867: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   870: ifnull +261 -> 1131
+    //   873: iload_1
+    //   874: istore_2
+    //   875: aload_0
+    //   876: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   879: bipush 100
+    //   881: invokeinterface 192 2 0
+    //   886: iload_1
+    //   887: istore_2
+    //   888: aload_0
+    //   889: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   892: aconst_null
+    //   893: aload_0
+    //   894: getfield 37	com/tencent/liteav/basic/b/c:j	Ljava/lang/String;
+    //   897: invokeinterface 202 3 0
+    //   902: aconst_null
+    //   903: astore 6
+    //   905: aconst_null
+    //   906: astore 7
+    //   908: aconst_null
+    //   909: astore 8
+    //   911: goto -127 -> 784
+    //   914: iload_1
+    //   915: istore_2
+    //   916: new 204	com/tencent/liteav/basic/b/d
+    //   919: dup
+    //   920: ldc 206
+    //   922: iload 4
+    //   924: invokestatic 210	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   927: invokevirtual 213	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   930: invokespecial 214	com/tencent/liteav/basic/b/d:<init>	(Ljava/lang/String;)V
+    //   933: astore 6
+    //   935: aconst_null
+    //   936: astore 7
+    //   938: aconst_null
+    //   939: astore 8
+    //   941: goto -157 -> 784
+    //   944: astore 5
+    //   946: aconst_null
+    //   947: astore 8
+    //   949: aconst_null
     //   950: astore 6
-    //   952: aload 5
-    //   954: astore 7
-    //   956: iload_1
-    //   957: istore_2
-    //   958: goto -311 -> 647
-    //   961: astore 5
-    //   963: aconst_null
-    //   964: astore 7
-    //   966: aconst_null
-    //   967: astore 6
-    //   969: aconst_null
-    //   970: astore 8
-    //   972: iload_2
-    //   973: istore_1
-    //   974: goto -385 -> 589
-    //   977: astore 9
-    //   979: aconst_null
-    //   980: astore 7
-    //   982: aconst_null
-    //   983: astore 6
-    //   985: aload 5
-    //   987: astore 8
-    //   989: aload 9
-    //   991: astore 5
-    //   993: iload_2
-    //   994: istore_1
-    //   995: goto -406 -> 589
-    //   998: astore 9
-    //   1000: aconst_null
-    //   1001: astore 7
-    //   1003: aload 5
-    //   1005: astore 8
-    //   1007: aload 9
-    //   1009: astore 5
-    //   1011: goto -422 -> 589
+    //   952: aconst_null
+    //   953: astore 7
+    //   955: aload 8
+    //   957: ifnull +8 -> 965
+    //   960: aload 8
+    //   962: invokevirtual 195	java/io/FileOutputStream:close	()V
+    //   965: aload 6
+    //   967: ifnull +8 -> 975
+    //   970: aload 6
+    //   972: invokevirtual 196	java/io/InputStream:close	()V
+    //   975: aload 7
+    //   977: ifnull +8 -> 985
+    //   980: aload 7
+    //   982: invokevirtual 159	java/net/HttpURLConnection:disconnect	()V
+    //   985: aload_0
+    //   986: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   989: ifnull +12 -> 1001
+    //   992: aload_0
+    //   993: getfield 33	com/tencent/liteav/basic/b/c:f	Lcom/tencent/liteav/basic/b/b;
+    //   996: invokeinterface 161 1 0
+    //   1001: sipush 14645
+    //   1004: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1007: aload 5
+    //   1009: athrow
+    //   1010: astore 6
+    //   1012: goto -11 -> 1001
+    //   1015: astore 9
+    //   1017: aconst_null
+    //   1018: astore 8
+    //   1020: aconst_null
+    //   1021: astore 6
+    //   1023: aload 5
+    //   1025: astore 7
+    //   1027: aload 9
+    //   1029: astore 5
+    //   1031: goto -76 -> 955
+    //   1034: astore 9
+    //   1036: aconst_null
+    //   1037: astore 8
+    //   1039: aload 5
+    //   1041: astore 7
+    //   1043: aload 9
+    //   1045: astore 5
+    //   1047: goto -92 -> 955
+    //   1050: astore 8
+    //   1052: aload 5
+    //   1054: astore 7
+    //   1056: aload 8
+    //   1058: astore 5
+    //   1060: aload 9
+    //   1062: astore 8
+    //   1064: goto -109 -> 955
+    //   1067: astore 6
+    //   1069: aload 5
+    //   1071: astore 7
+    //   1073: iload_1
+    //   1074: istore_2
+    //   1075: goto -377 -> 698
+    //   1078: astore 5
+    //   1080: aconst_null
+    //   1081: astore 7
+    //   1083: aconst_null
+    //   1084: astore 6
+    //   1086: aconst_null
+    //   1087: astore 8
+    //   1089: iload_2
+    //   1090: istore_1
+    //   1091: goto -451 -> 640
+    //   1094: astore 9
+    //   1096: aconst_null
+    //   1097: astore 7
+    //   1099: aconst_null
+    //   1100: astore 6
+    //   1102: aload 5
+    //   1104: astore 8
+    //   1106: aload 9
+    //   1108: astore 5
+    //   1110: iload_2
+    //   1111: istore_1
+    //   1112: goto -472 -> 640
+    //   1115: astore 9
+    //   1117: aconst_null
+    //   1118: astore 7
+    //   1120: aload 5
+    //   1122: astore 8
+    //   1124: aload 9
+    //   1126: astore 5
+    //   1128: goto -488 -> 640
+    //   1131: aconst_null
+    //   1132: astore 6
+    //   1134: aconst_null
+    //   1135: astore 7
+    //   1137: aconst_null
+    //   1138: astore 8
+    //   1140: goto -356 -> 784
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1014	0	this	c
-    //   5	990	1	j	int
-    //   1	993	2	k	int
-    //   3	564	3	m	int
-    //   224	583	4	n	int
-    //   86	266	5	localObject1	java.lang.Object
-    //   365	49	5	localIOException1	java.io.IOException
-    //   440	138	5	localIOException2	java.io.IOException
-    //   587	165	5	localObject2	java.lang.Object
-    //   787	1	5	localIOException3	java.io.IOException
-    //   828	79	5	localObject3	java.lang.Object
-    //   912	41	5	localObject4	java.lang.Object
-    //   961	25	5	localException1	Exception
-    //   991	19	5	localObject5	java.lang.Object
-    //   455	400	6	localObject6	java.lang.Object
-    //   893	1	6	localIOException4	java.io.IOException
-    //   904	1	6	localObject7	java.lang.Object
-    //   950	1	6	localIOException5	java.io.IOException
-    //   967	17	6	localObject8	java.lang.Object
-    //   462	540	7	localObject9	java.lang.Object
-    //   579	342	8	localIOException6	java.io.IOException
-    //   933	7	8	localObject10	java.lang.Object
-    //   945	61	8	localObject11	java.lang.Object
-    //   473	348	9	localFileOutputStream	java.io.FileOutputStream
-    //   898	13	9	localObject12	java.lang.Object
-    //   917	27	9	localObject13	java.lang.Object
-    //   977	13	9	localException2	Exception
-    //   998	10	9	localException3	Exception
-    //   575	11	10	localException4	Exception
-    //   139	570	11	localFile	java.io.File
+    //   0	1143	0	this	c
+    //   5	1107	1	k	int
+    //   1	1110	2	m	int
+    //   3	615	3	n	int
+    //   251	672	4	i1	int
+    //   88	311	5	localObject1	java.lang.Object
+    //   413	50	5	localIOException1	java.io.IOException
+    //   490	139	5	localIOException2	java.io.IOException
+    //   638	172	5	localObject2	java.lang.Object
+    //   845	1	5	localIOException3	java.io.IOException
+    //   944	80	5	localObject3	java.lang.Object
+    //   1029	41	5	localObject4	java.lang.Object
+    //   1078	25	5	localException1	Exception
+    //   1108	19	5	localObject5	java.lang.Object
+    //   506	465	6	localObject6	java.lang.Object
+    //   1010	1	6	localIOException4	java.io.IOException
+    //   1021	1	6	localObject7	java.lang.Object
+    //   1067	1	6	localIOException5	java.io.IOException
+    //   1084	49	6	localObject8	java.lang.Object
+    //   281	855	7	localObject9	java.lang.Object
+    //   513	525	8	localObject10	java.lang.Object
+    //   1050	7	8	localObject11	java.lang.Object
+    //   1062	77	8	localObject12	java.lang.Object
+    //   524	253	9	localFileOutputStream	java.io.FileOutputStream
+    //   1015	13	9	localObject13	java.lang.Object
+    //   1034	27	9	localObject14	java.lang.Object
+    //   1094	13	9	localException2	Exception
+    //   1115	10	9	localException3	Exception
+    //   626	11	10	localException4	Exception
+    //   770	11	10	localObject15	java.lang.Object
+    //   141	620	11	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   305	310	365	java/io/IOException
-    //   310	326	365	java/io/IOException
-    //   413	418	440	java/io/IOException
-    //   418	434	440	java/io/IOException
-    //   475	480	575	java/lang/Exception
-    //   480	488	575	java/lang/Exception
-    //   493	550	575	java/lang/Exception
-    //   555	572	575	java/lang/Exception
-    //   681	715	575	java/lang/Exception
-    //   731	736	787	java/io/IOException
-    //   741	746	787	java/io/IOException
-    //   751	756	787	java/io/IOException
-    //   762	778	787	java/io/IOException
-    //   141	155	828	finally
-    //   155	180	828	finally
-    //   844	849	893	java/io/IOException
-    //   854	859	893	java/io/IOException
-    //   864	869	893	java/io/IOException
-    //   869	885	893	java/io/IOException
-    //   182	190	898	finally
-    //   192	200	898	finally
-    //   202	208	898	finally
-    //   210	217	898	finally
-    //   219	226	898	finally
-    //   228	239	898	finally
-    //   247	254	898	finally
-    //   256	266	898	finally
-    //   268	277	898	finally
-    //   279	286	898	finally
-    //   288	300	898	finally
-    //   375	385	898	finally
-    //   387	394	898	finally
-    //   396	408	898	finally
-    //   450	457	898	finally
-    //   800	819	898	finally
-    //   457	475	917	finally
-    //   475	480	933	finally
-    //   480	488	933	finally
-    //   493	550	933	finally
-    //   555	572	933	finally
-    //   681	715	933	finally
-    //   594	599	950	java/io/IOException
-    //   604	609	950	java/io/IOException
-    //   614	619	950	java/io/IOException
-    //   625	641	950	java/io/IOException
-    //   141	155	961	java/lang/Exception
-    //   155	180	961	java/lang/Exception
-    //   182	190	977	java/lang/Exception
-    //   192	200	977	java/lang/Exception
-    //   202	208	977	java/lang/Exception
-    //   210	217	977	java/lang/Exception
-    //   219	226	977	java/lang/Exception
-    //   228	239	977	java/lang/Exception
-    //   247	254	977	java/lang/Exception
-    //   256	266	977	java/lang/Exception
-    //   268	277	977	java/lang/Exception
-    //   279	286	977	java/lang/Exception
-    //   288	300	977	java/lang/Exception
-    //   375	385	977	java/lang/Exception
-    //   387	394	977	java/lang/Exception
-    //   396	408	977	java/lang/Exception
-    //   450	457	977	java/lang/Exception
-    //   800	819	977	java/lang/Exception
-    //   457	475	998	java/lang/Exception
+    //   351	356	413	java/io/IOException
+    //   356	372	413	java/io/IOException
+    //   462	467	490	java/io/IOException
+    //   467	483	490	java/io/IOException
+    //   526	531	626	java/lang/Exception
+    //   531	539	626	java/lang/Exception
+    //   544	601	626	java/lang/Exception
+    //   606	623	626	java/lang/Exception
+    //   733	769	626	java/lang/Exception
+    //   789	794	845	java/io/IOException
+    //   799	804	845	java/io/IOException
+    //   809	814	845	java/io/IOException
+    //   820	836	845	java/io/IOException
+    //   143	157	944	finally
+    //   157	182	944	finally
+    //   960	965	1010	java/io/IOException
+    //   970	975	1010	java/io/IOException
+    //   980	985	1010	java/io/IOException
+    //   985	1001	1010	java/io/IOException
+    //   184	194	1015	finally
+    //   196	207	1015	finally
+    //   209	217	1015	finally
+    //   219	227	1015	finally
+    //   229	235	1015	finally
+    //   237	244	1015	finally
+    //   246	253	1015	finally
+    //   255	266	1015	finally
+    //   274	283	1015	finally
+    //   285	291	1015	finally
+    //   293	300	1015	finally
+    //   302	312	1015	finally
+    //   314	323	1015	finally
+    //   325	332	1015	finally
+    //   334	346	1015	finally
+    //   424	434	1015	finally
+    //   436	443	1015	finally
+    //   445	457	1015	finally
+    //   501	508	1015	finally
+    //   866	873	1015	finally
+    //   875	886	1015	finally
+    //   888	902	1015	finally
+    //   916	935	1015	finally
+    //   508	526	1034	finally
+    //   526	531	1050	finally
+    //   531	539	1050	finally
+    //   544	601	1050	finally
+    //   606	623	1050	finally
+    //   733	769	1050	finally
+    //   645	650	1067	java/io/IOException
+    //   655	660	1067	java/io/IOException
+    //   665	670	1067	java/io/IOException
+    //   676	692	1067	java/io/IOException
+    //   143	157	1078	java/lang/Exception
+    //   157	182	1078	java/lang/Exception
+    //   184	194	1094	java/lang/Exception
+    //   196	207	1094	java/lang/Exception
+    //   209	217	1094	java/lang/Exception
+    //   219	227	1094	java/lang/Exception
+    //   229	235	1094	java/lang/Exception
+    //   237	244	1094	java/lang/Exception
+    //   246	253	1094	java/lang/Exception
+    //   255	266	1094	java/lang/Exception
+    //   274	283	1094	java/lang/Exception
+    //   285	291	1094	java/lang/Exception
+    //   293	300	1094	java/lang/Exception
+    //   302	312	1094	java/lang/Exception
+    //   314	323	1094	java/lang/Exception
+    //   325	332	1094	java/lang/Exception
+    //   334	346	1094	java/lang/Exception
+    //   424	434	1094	java/lang/Exception
+    //   436	443	1094	java/lang/Exception
+    //   445	457	1094	java/lang/Exception
+    //   501	508	1094	java/lang/Exception
+    //   866	873	1094	java/lang/Exception
+    //   875	886	1094	java/lang/Exception
+    //   888	902	1094	java/lang/Exception
+    //   916	935	1094	java/lang/Exception
+    //   508	526	1115	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.basic.b.c
  * JD-Core Version:    0.7.0.1
  */

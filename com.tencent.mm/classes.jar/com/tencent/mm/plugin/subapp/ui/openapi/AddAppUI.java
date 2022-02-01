@@ -10,135 +10,145 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.al.n;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.base.preference.f;
 
 public class AddAppUI
   extends MMPreference
-  implements com.tencent.mm.ai.f
+  implements com.tencent.mm.al.g
 {
-  private AppPreference sYH;
-  private AppPreference sYI;
-  private com.tencent.mm.ui.base.preference.f screen;
+  private f screen;
+  private AppPreference yFh;
+  private AppPreference yFi;
   
   public int getResourceId()
   {
-    return 2131165188;
+    return 2131951620;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(25423);
-    setMMTitle(2131296432);
+    AppMethodBeat.i(29118);
+    setMMTitle(2131755160);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(25416);
+        AppMethodBeat.i(29111);
         AddAppUI.this.finish();
-        AppMethodBeat.o(25416);
+        AppMethodBeat.o(29111);
         return true;
       }
     });
     this.screen = getPreferenceScreen();
     this.screen.removeAll();
     this.screen.addPreferencesFromResource(getResourceId());
-    this.sYH = ((AppPreference)this.screen.atx("addapp_added"));
-    this.sYH.sYL = 1;
-    this.sYH.sYO = new AdapterView.OnItemClickListener()
+    this.yFh = ((AppPreference)this.screen.aKk("addapp_added"));
+    this.yFh.yFl = 1;
+    this.yFh.yFo = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(25417);
-        paramAnonymousAdapterView = AddAppUI.a(AddAppUI.this).Gn(paramAnonymousInt);
+        AppMethodBeat.i(29112);
+        paramAnonymousAdapterView = AddAppUI.a(AddAppUI.this).OU(paramAnonymousInt);
         AddAppUI.a(AddAppUI.this, paramAnonymousAdapterView.field_appId);
-        AppMethodBeat.o(25417);
+        AppMethodBeat.o(29112);
       }
     };
-    this.sYH.sYP = new AdapterView.OnItemClickListener()
+    this.yFh.yFp = new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(25418);
-        AddAppUI.h(AddAppUI.a(AddAppUI.this).Gn(paramAnonymousInt));
+        AppMethodBeat.i(29113);
+        AddAppUI.h(AddAppUI.a(AddAppUI.this).OU(paramAnonymousInt));
         AddAppUI.this.initView();
-        AppMethodBeat.o(25418);
+        AppMethodBeat.o(29113);
       }
     };
-    this.sYI = ((AppPreference)this.screen.atx("addapp_available"));
-    this.sYI.sYL = 0;
-    this.sYI.sYO = new AddAppUI.4(this);
-    AppMethodBeat.o(25423);
+    this.yFi = ((AppPreference)this.screen.aKk("addapp_available"));
+    this.yFi.yFl = 0;
+    this.yFi.yFo = new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(29114);
+        paramAnonymousAdapterView = AddAppUI.b(AddAppUI.this).OU(paramAnonymousInt);
+        AddAppUI.a(AddAppUI.this, paramAnonymousAdapterView.field_appId);
+        AppMethodBeat.o(29114);
+      }
+    };
+    AppMethodBeat.o(29118);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(25420);
+    AppMethodBeat.i(29115);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(25420);
+    AppMethodBeat.o(29115);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(25422);
+    AppMethodBeat.i(29117);
     super.onPause();
-    if (this.sYH != null) {
-      this.sYH.onPause();
+    if (this.yFh != null) {
+      this.yFh.onPause();
     }
-    if (this.sYI != null) {
-      this.sYI.onPause();
+    if (this.yFi != null) {
+      this.yFi.onPause();
     }
-    AppMethodBeat.o(25422);
+    AppMethodBeat.o(29117);
   }
   
-  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(25425);
+    AppMethodBeat.i(29119);
     if (paramPreference.mKey.equals("addapp_recommend"))
     {
-      paramf = getContext().getSharedPreferences(ah.dsP(), 0);
+      paramf = getContext().getSharedPreferences(aj.eFD(), 0);
       getContext();
-      paramf = aa.f(paramf);
-      paramf = getString(2131296437, new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.whH), paramf, aa.dsF() });
+      paramf = ac.f(paramf);
+      paramf = getString(2131755165, new Object[] { Integer.valueOf(com.tencent.mm.protocal.d.CpK), paramf, ac.eFt() });
       paramPreference = new Intent();
       paramPreference.putExtra("rawUrl", paramf);
-      com.tencent.mm.bq.d.b(this, "webview", ".ui.tools.WebViewUI", paramPreference);
-      AppMethodBeat.o(25425);
+      com.tencent.mm.bs.d.b(this, "webview", ".ui.tools.WebViewUI", paramPreference);
+      AppMethodBeat.o(29119);
       return true;
     }
-    AppMethodBeat.o(25425);
+    AppMethodBeat.o(29119);
     return false;
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(25421);
+    AppMethodBeat.i(29116);
     super.onResume();
     initView();
-    if (this.sYH != null) {
-      this.sYH.onResume();
+    if (this.yFh != null) {
+      this.yFh.onResume();
     }
-    if (this.sYI != null) {
-      this.sYI.onResume();
+    if (this.yFi != null) {
+      this.yFi.onResume();
     }
-    AppMethodBeat.o(25421);
+    AppMethodBeat.o(29116);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(25426);
-    ab.d("MicroMsg.AddAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    AppMethodBeat.i(29120);
+    ad.d("MicroMsg.AddAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      AppMethodBeat.o(25426);
+      AppMethodBeat.o(29120);
       return;
     }
-    ab.e("MicroMsg.AddAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
-    AppMethodBeat.o(25426);
+    ad.e("MicroMsg.AddAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    AppMethodBeat.o(29120);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -149,7 +159,7 @@ public class AddAppUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.AddAppUI
  * JD-Core Version:    0.7.0.1
  */

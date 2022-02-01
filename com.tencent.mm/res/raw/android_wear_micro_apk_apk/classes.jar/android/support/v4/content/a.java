@@ -7,7 +7,7 @@ import java.io.File;
 
 public class a
 {
-  private static final Object ef = new Object();
+  private static final Object fZ = new Object();
   
   public static File[] a(Context paramContext)
   {

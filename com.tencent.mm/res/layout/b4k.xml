@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/afy" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/fb0" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/bm8" android:scaleType="fitXY" />
-    <ImageView android:id="@id/fb1" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/bm8" android:scaleType="fitXY" />
-    <ImageView android:id="@id/fb2" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/bm8" android:scaleType="fitXY" />
-    <ImageView android:id="@id/fb3" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/bm8" android:scaleType="fitXY" />
-    <ImageView android:id="@id/fb4" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/bm8" android:scaleType="fitXY" />
+    <ImageView android:id="@id/h_4" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c6" android:layout_marginBottom="@dimen/c5" android:src="@drawable/c3v" />
+    <TextView android:ellipsize="end" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f8t" android:singleLine="true" style="@style/ya" />
+    <TextView android:textStyle="bold" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/h_w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:singleLine="true" style="@style/ko" />
+    <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c8" android:text="@string/f7t" style="@style/ya" />
+    <com.tencent.mm.view.CheckBoxLicenseView android:layout_gravity="center_horizontal" android:id="@id/ds1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/br" />
+    <Button android:enabled="false" android:layout_gravity="center_horizontal" android:id="@id/e3i" android:layout_marginTop="@dimen/c8" android:layout_marginBottom="@dimen/c8" android:text="@string/v1" style="@style/o7" />
 </LinearLayout>

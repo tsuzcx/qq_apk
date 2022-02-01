@@ -10,9 +10,9 @@ public final class cm
   static void a(zzayx paramzzayx, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 2, paramzzayx.Qh);
-    c.a(paramParcel, 3, paramzzayx.Qi, paramInt);
-    c.a(paramParcel, 4, paramzzayx.Qj);
+    c.c(paramParcel, 2, paramzzayx.RW);
+    c.a(paramParcel, 3, paramzzayx.RX, paramInt);
+    c.a(paramParcel, 4, paramzzayx.RY);
     c.v(paramParcel, i);
   }
 }

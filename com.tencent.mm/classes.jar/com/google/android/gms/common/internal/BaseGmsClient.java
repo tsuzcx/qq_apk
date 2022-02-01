@@ -913,28 +913,28 @@ public abstract class BaseGmsClient<T extends IInterface>
     
     public final void onAccountValidationComplete(int paramInt, Bundle paramBundle)
     {
-      AppMethodBeat.i(89570);
+      AppMethodBeat.i(4592);
       Log.wtf("GmsClient", "received deprecated onAccountValidationComplete callback, ignoring", new Exception());
-      AppMethodBeat.o(89570);
+      AppMethodBeat.o(4592);
     }
     
     public final void onPostInitComplete(int paramInt, IBinder paramIBinder, Bundle paramBundle)
     {
-      AppMethodBeat.i(89571);
+      AppMethodBeat.i(4593);
       Preconditions.checkNotNull(this.zzrw, "onPostInitComplete can be called only once per call to getRemoteService");
       this.zzrw.onPostInitHandler(paramInt, paramIBinder, paramBundle, this.zzrx);
       this.zzrw = null;
-      AppMethodBeat.o(89571);
+      AppMethodBeat.o(4593);
     }
     
     public final void onPostInitCompleteWithConnectionInfo(int paramInt, IBinder paramIBinder, ConnectionInfo paramConnectionInfo)
     {
-      AppMethodBeat.i(89572);
+      AppMethodBeat.i(4594);
       Preconditions.checkNotNull(this.zzrw, "onPostInitCompleteWithConnectionInfo can be called only once per call togetRemoteService");
       Preconditions.checkNotNull(paramConnectionInfo);
       BaseGmsClient.zza(this.zzrw, paramConnectionInfo);
       onPostInitComplete(paramInt, paramIBinder, paramConnectionInfo.getResolutionBundle());
-      AppMethodBeat.o(89572);
+      AppMethodBeat.o(4594);
     }
   }
   
@@ -951,30 +951,30 @@ public abstract class BaseGmsClient<T extends IInterface>
     
     public final void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
     {
-      AppMethodBeat.i(89573);
+      AppMethodBeat.i(4595);
       if (paramIBinder == null)
       {
         BaseGmsClient.zza(BaseGmsClient.this, 16);
-        AppMethodBeat.o(89573);
+        AppMethodBeat.o(4595);
         return;
       }
       synchronized (BaseGmsClient.zza(BaseGmsClient.this))
       {
         BaseGmsClient.zza(BaseGmsClient.this, IGmsServiceBroker.Stub.asInterface(paramIBinder));
         BaseGmsClient.this.onPostServiceBindingHandler(0, null, this.zzrx);
-        AppMethodBeat.o(89573);
+        AppMethodBeat.o(4595);
         return;
       }
     }
     
     public final void onServiceDisconnected(ComponentName arg1)
     {
-      AppMethodBeat.i(89574);
+      AppMethodBeat.i(4596);
       synchronized (BaseGmsClient.zza(BaseGmsClient.this))
       {
         BaseGmsClient.zza(BaseGmsClient.this, null);
         BaseGmsClient.this.mHandler.sendMessage(BaseGmsClient.this.mHandler.obtainMessage(6, this.zzrx, 1));
-        AppMethodBeat.o(89574);
+        AppMethodBeat.o(4596);
         return;
       }
     }
@@ -987,17 +987,17 @@ public abstract class BaseGmsClient<T extends IInterface>
     
     public void onReportServiceBinding(ConnectionResult paramConnectionResult)
     {
-      AppMethodBeat.i(89575);
+      AppMethodBeat.i(4597);
       if (paramConnectionResult.isSuccess())
       {
         BaseGmsClient.this.getRemoteService(null, BaseGmsClient.this.getScopes());
-        AppMethodBeat.o(89575);
+        AppMethodBeat.o(4597);
         return;
       }
       if (BaseGmsClient.zzg(BaseGmsClient.this) != null) {
         BaseGmsClient.zzg(BaseGmsClient.this).onConnectionFailed(paramConnectionResult);
       }
-      AppMethodBeat.o(89575);
+      AppMethodBeat.o(4597);
     }
   }
   
@@ -1014,17 +1014,17 @@ public abstract class BaseGmsClient<T extends IInterface>
     
     protected final void handleServiceFailure(ConnectionResult paramConnectionResult)
     {
-      AppMethodBeat.i(89576);
+      AppMethodBeat.i(4598);
       if (BaseGmsClient.zzg(BaseGmsClient.this) != null) {
         BaseGmsClient.zzg(BaseGmsClient.this).onConnectionFailed(paramConnectionResult);
       }
       BaseGmsClient.this.onConnectionFailed(paramConnectionResult);
-      AppMethodBeat.o(89576);
+      AppMethodBeat.o(4598);
     }
     
     protected final boolean handleServiceSuccess()
     {
-      AppMethodBeat.i(89577);
+      AppMethodBeat.i(4599);
       try
       {
         String str1 = this.service.getInterfaceDescriptor();
@@ -1032,13 +1032,13 @@ public abstract class BaseGmsClient<T extends IInterface>
         {
           String str2 = BaseGmsClient.this.getServiceDescriptor();
           new StringBuilder(String.valueOf(str2).length() + 34 + String.valueOf(str1).length()).append("service descriptor mismatch: ").append(str2).append(" vs. ").append(str1);
-          AppMethodBeat.o(89577);
+          AppMethodBeat.o(4599);
           return false;
         }
       }
       catch (RemoteException localRemoteException)
       {
-        AppMethodBeat.o(89577);
+        AppMethodBeat.o(4599);
         return false;
       }
       Object localObject = BaseGmsClient.this.createServiceInterface(this.service);
@@ -1049,10 +1049,10 @@ public abstract class BaseGmsClient<T extends IInterface>
         if (BaseGmsClient.zze(BaseGmsClient.this) != null) {
           BaseGmsClient.zze(BaseGmsClient.this).onConnected((Bundle)localObject);
         }
-        AppMethodBeat.o(89577);
+        AppMethodBeat.o(4599);
         return true;
       }
-      AppMethodBeat.o(89577);
+      AppMethodBeat.o(4599);
       return false;
     }
   }
@@ -1067,17 +1067,17 @@ public abstract class BaseGmsClient<T extends IInterface>
     
     protected final void handleServiceFailure(ConnectionResult paramConnectionResult)
     {
-      AppMethodBeat.i(89578);
+      AppMethodBeat.i(4600);
       BaseGmsClient.this.mConnectionProgressReportCallbacks.onReportServiceBinding(paramConnectionResult);
       BaseGmsClient.this.onConnectionFailed(paramConnectionResult);
-      AppMethodBeat.o(89578);
+      AppMethodBeat.o(4600);
     }
     
     protected final boolean handleServiceSuccess()
     {
-      AppMethodBeat.i(89579);
+      AppMethodBeat.i(4601);
       BaseGmsClient.this.mConnectionProgressReportCallbacks.onReportServiceBinding(ConnectionResult.RESULT_SUCCESS);
-      AppMethodBeat.o(89579);
+      AppMethodBeat.o(4601);
       return true;
     }
   }
@@ -1145,11 +1145,11 @@ public abstract class BaseGmsClient<T extends IInterface>
     
     private static void zza(Message paramMessage)
     {
-      AppMethodBeat.i(89581);
+      AppMethodBeat.i(4603);
       paramMessage = (BaseGmsClient.CallbackProxy)paramMessage.obj;
       paramMessage.onDeliverCallbackFailed();
       paramMessage.unregister();
-      AppMethodBeat.o(89581);
+      AppMethodBeat.o(4603);
     }
     
     private static boolean zzb(Message paramMessage)
@@ -1160,19 +1160,19 @@ public abstract class BaseGmsClient<T extends IInterface>
     public final void handleMessage(Message paramMessage)
     {
       PendingIntent localPendingIntent = null;
-      AppMethodBeat.i(89580);
+      AppMethodBeat.i(4602);
       if (BaseGmsClient.this.mDisconnectCount.get() != paramMessage.arg1)
       {
         if (zzb(paramMessage)) {
           zza(paramMessage);
         }
-        AppMethodBeat.o(89580);
+        AppMethodBeat.o(4602);
         return;
       }
       if (((paramMessage.what == 1) || (paramMessage.what == 7) || (paramMessage.what == 4) || (paramMessage.what == 5)) && (!BaseGmsClient.this.isConnecting()))
       {
         zza(paramMessage);
-        AppMethodBeat.o(89580);
+        AppMethodBeat.o(4602);
         return;
       }
       if (paramMessage.what == 4)
@@ -1181,7 +1181,7 @@ public abstract class BaseGmsClient<T extends IInterface>
         if ((BaseGmsClient.zzb(BaseGmsClient.this)) && (!BaseGmsClient.zzc(BaseGmsClient.this)))
         {
           BaseGmsClient.zza(BaseGmsClient.this, 3, null);
-          AppMethodBeat.o(89580);
+          AppMethodBeat.o(4602);
           return;
         }
         if (BaseGmsClient.zzd(BaseGmsClient.this) != null) {}
@@ -1189,7 +1189,7 @@ public abstract class BaseGmsClient<T extends IInterface>
         {
           BaseGmsClient.this.mConnectionProgressReportCallbacks.onReportServiceBinding(paramMessage);
           BaseGmsClient.this.onConnectionFailed(paramMessage);
-          AppMethodBeat.o(89580);
+          AppMethodBeat.o(4602);
           return;
         }
       }
@@ -1200,7 +1200,7 @@ public abstract class BaseGmsClient<T extends IInterface>
         {
           BaseGmsClient.this.mConnectionProgressReportCallbacks.onReportServiceBinding(paramMessage);
           BaseGmsClient.this.onConnectionFailed(paramMessage);
-          AppMethodBeat.o(89580);
+          AppMethodBeat.o(4602);
           return;
         }
       }
@@ -1212,7 +1212,7 @@ public abstract class BaseGmsClient<T extends IInterface>
         paramMessage = new ConnectionResult(paramMessage.arg2, localPendingIntent);
         BaseGmsClient.this.mConnectionProgressReportCallbacks.onReportServiceBinding(paramMessage);
         BaseGmsClient.this.onConnectionFailed(paramMessage);
-        AppMethodBeat.o(89580);
+        AppMethodBeat.o(4602);
         return;
       }
       if (paramMessage.what == 6)
@@ -1223,24 +1223,24 @@ public abstract class BaseGmsClient<T extends IInterface>
         }
         BaseGmsClient.this.onConnectionSuspended(paramMessage.arg2);
         BaseGmsClient.zza(BaseGmsClient.this, 5, 1, null);
-        AppMethodBeat.o(89580);
+        AppMethodBeat.o(4602);
         return;
       }
       if ((paramMessage.what == 2) && (!BaseGmsClient.this.isConnected()))
       {
         zza(paramMessage);
-        AppMethodBeat.o(89580);
+        AppMethodBeat.o(4602);
         return;
       }
       if (zzb(paramMessage))
       {
         ((BaseGmsClient.CallbackProxy)paramMessage.obj).deliverCallback();
-        AppMethodBeat.o(89580);
+        AppMethodBeat.o(4602);
         return;
       }
       int i = paramMessage.what;
       Log.wtf("GmsClient", 45 + "Don't know how to handle message: " + i, new Exception());
-      AppMethodBeat.o(89580);
+      AppMethodBeat.o(4602);
     }
   }
 }

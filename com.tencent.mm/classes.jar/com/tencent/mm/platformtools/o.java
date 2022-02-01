@@ -3,58 +3,57 @@ package com.tencent.mm.platformtools;
 import android.app.Activity;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.n;
 
 public final class o
-  extends d
+  extends c
 {
   public o(Activity paramActivity)
   {
     super(paramActivity);
   }
   
-  public final boolean b(ag paramag)
+  public final boolean b(ad paramad)
   {
-    AppMethodBeat.i(124556);
-    ab.d("MicroMsg.ErrorTextStripleProcessor", "handleOpenUrl");
-    Toast.makeText(this.activity, paramag.content, 0).show();
-    AppMethodBeat.o(124556);
+    AppMethodBeat.i(127719);
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ErrorYesNoProcessor", "handleOpenUrl");
+    Toast.makeText(this.activity, paramad.content, 0).show();
+    AppMethodBeat.o(127719);
     return true;
   }
   
-  public final boolean c(ag paramag)
+  public final boolean c(ad paramad)
   {
-    AppMethodBeat.i(124557);
-    ab.d("MicroMsg.ErrorTextStripleProcessor", "handleIgnore");
-    Toast.makeText(this.activity, paramag.content, 0).show();
-    AppMethodBeat.o(124557);
+    AppMethodBeat.i(127720);
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ErrorYesNoProcessor", "handleIgnore");
+    Toast.makeText(this.activity, paramad.content, 0).show();
+    AppMethodBeat.o(127720);
     return true;
   }
   
-  public final boolean d(ag paramag)
+  public final boolean d(ad paramad)
   {
-    AppMethodBeat.i(124558);
-    ab.d("MicroMsg.ErrorTextStripleProcessor", "handleFalseLast");
-    Toast.makeText(this.activity, paramag.content, 0).show();
-    AppMethodBeat.o(124558);
+    AppMethodBeat.i(127721);
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ErrorYesNoProcessor", "handleFalseLast");
+    Toast.makeText(this.activity, paramad.content, 0).show();
+    AppMethodBeat.o(127721);
     return true;
   }
   
-  public final boolean e(ag paramag)
+  public final boolean e(ad paramad)
   {
-    AppMethodBeat.i(124559);
-    ab.d("MicroMsg.ErrorTextStripleProcessor", "handleFalseCancel");
-    Toast.makeText(this.activity, paramag.content, 0).show();
-    AppMethodBeat.o(124559);
+    AppMethodBeat.i(127722);
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ErrorYesNoProcessor", "handleFalseCancel");
+    Toast.makeText(this.activity, paramad.content, 0).show();
+    AppMethodBeat.o(127722);
     return true;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(124555);
-    ab.i("MicroMsg.ErrorTextStripleProcessor", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    AppMethodBeat.o(124555);
+    AppMethodBeat.i(127718);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ErrorYesNoProcessor", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    AppMethodBeat.o(127718);
   }
 }
 

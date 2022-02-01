@@ -9,16 +9,16 @@ public class QQMailHistoryExporter$ImageSpanData
   implements Parcelable
 {
   public static final Parcelable.Creator<ImageSpanData> CREATOR;
-  int chT;
+  int cWU;
   int endPos;
   String path;
   private int thumbnail = 0;
   
   static
   {
-    AppMethodBeat.i(30969);
+    AppMethodBeat.i(34850);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(30969);
+    AppMethodBeat.o(34850);
   }
   
   public int describeContents()
@@ -28,12 +28,12 @@ public class QQMailHistoryExporter$ImageSpanData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(30968);
-    paramParcel.writeInt(this.chT);
+    AppMethodBeat.i(34849);
+    paramParcel.writeInt(this.cWU);
     paramParcel.writeInt(this.endPos);
     paramParcel.writeString(this.path);
     paramParcel.writeInt(this.thumbnail);
-    AppMethodBeat.o(30968);
+    AppMethodBeat.o(34849);
   }
 }
 

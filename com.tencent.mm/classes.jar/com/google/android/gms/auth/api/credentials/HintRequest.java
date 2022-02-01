@@ -37,15 +37,15 @@ public final class HintRequest
   
   static
   {
-    AppMethodBeat.i(50350);
+    AppMethodBeat.i(88245);
     CREATOR = new zzk();
-    AppMethodBeat.o(50350);
+    AppMethodBeat.o(88245);
   }
   
   @SafeParcelable.Constructor
   HintRequest(@SafeParcelable.Param(id=1000) int paramInt, @SafeParcelable.Param(id=1) CredentialPickerConfig paramCredentialPickerConfig, @SafeParcelable.Param(id=2) boolean paramBoolean1, @SafeParcelable.Param(id=3) boolean paramBoolean2, @SafeParcelable.Param(id=4) String[] paramArrayOfString, @SafeParcelable.Param(id=5) boolean paramBoolean3, @SafeParcelable.Param(id=6) String paramString1, @SafeParcelable.Param(id=7) String paramString2)
   {
-    AppMethodBeat.i(50347);
+    AppMethodBeat.i(88242);
     this.zzy = paramInt;
     this.zzdc = ((CredentialPickerConfig)Preconditions.checkNotNull(paramCredentialPickerConfig));
     this.zzdd = paramBoolean1;
@@ -56,20 +56,20 @@ public final class HintRequest
       this.zzcy = true;
       this.zzcz = null;
       this.zzda = null;
-      AppMethodBeat.o(50347);
+      AppMethodBeat.o(88242);
       return;
     }
     this.zzcy = paramBoolean3;
     this.zzcz = paramString1;
     this.zzda = paramString2;
-    AppMethodBeat.o(50347);
+    AppMethodBeat.o(88242);
   }
   
-  private HintRequest(HintRequest.Builder paramBuilder)
+  private HintRequest(Builder paramBuilder)
   {
-    this(2, HintRequest.Builder.zzd(paramBuilder), HintRequest.Builder.zze(paramBuilder), HintRequest.Builder.zzf(paramBuilder), HintRequest.Builder.zzg(paramBuilder), HintRequest.Builder.zzh(paramBuilder), HintRequest.Builder.zzi(paramBuilder), HintRequest.Builder.zzj(paramBuilder));
-    AppMethodBeat.i(50348);
-    AppMethodBeat.o(50348);
+    this(2, Builder.zzd(paramBuilder), Builder.zze(paramBuilder), Builder.zzf(paramBuilder), Builder.zzg(paramBuilder), Builder.zzh(paramBuilder), Builder.zzi(paramBuilder), Builder.zzj(paramBuilder));
+    AppMethodBeat.i(88243);
+    AppMethodBeat.o(88243);
   }
   
   public final String[] getAccountTypes()
@@ -104,7 +104,7 @@ public final class HintRequest
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(50349);
+    AppMethodBeat.i(88244);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeParcelable(paramParcel, 1, getHintPickerConfig(), paramInt, false);
     SafeParcelWriter.writeBoolean(paramParcel, 2, isEmailAddressIdentifierSupported());
@@ -115,7 +115,91 @@ public final class HintRequest
     SafeParcelWriter.writeString(paramParcel, 7, getIdTokenNonce(), false);
     SafeParcelWriter.writeInt(paramParcel, 1000, this.zzy);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(50349);
+    AppMethodBeat.o(88244);
+  }
+  
+  public static final class Builder
+  {
+    private String[] zzcv;
+    private boolean zzcy;
+    private String zzcz;
+    private String zzda;
+    private CredentialPickerConfig zzdc;
+    private boolean zzdd;
+    private boolean zzde;
+    
+    public Builder()
+    {
+      AppMethodBeat.i(88239);
+      this.zzdc = new CredentialPickerConfig.Builder().build();
+      this.zzcy = false;
+      AppMethodBeat.o(88239);
+    }
+    
+    public final HintRequest build()
+    {
+      AppMethodBeat.i(88241);
+      if (this.zzcv == null) {
+        this.zzcv = new String[0];
+      }
+      if ((!this.zzdd) && (!this.zzde) && (this.zzcv.length == 0))
+      {
+        localObject = new IllegalStateException("At least one authentication method must be specified");
+        AppMethodBeat.o(88241);
+        throw ((Throwable)localObject);
+      }
+      Object localObject = new HintRequest(this, null);
+      AppMethodBeat.o(88241);
+      return localObject;
+    }
+    
+    public final Builder setAccountTypes(String... paramVarArgs)
+    {
+      String[] arrayOfString = paramVarArgs;
+      if (paramVarArgs == null) {
+        arrayOfString = new String[0];
+      }
+      this.zzcv = arrayOfString;
+      return this;
+    }
+    
+    public final Builder setEmailAddressIdentifierSupported(boolean paramBoolean)
+    {
+      this.zzdd = paramBoolean;
+      return this;
+    }
+    
+    public final Builder setHintPickerConfig(CredentialPickerConfig paramCredentialPickerConfig)
+    {
+      AppMethodBeat.i(88240);
+      this.zzdc = ((CredentialPickerConfig)Preconditions.checkNotNull(paramCredentialPickerConfig));
+      AppMethodBeat.o(88240);
+      return this;
+    }
+    
+    public final Builder setIdTokenNonce(String paramString)
+    {
+      this.zzda = paramString;
+      return this;
+    }
+    
+    public final Builder setIdTokenRequested(boolean paramBoolean)
+    {
+      this.zzcy = paramBoolean;
+      return this;
+    }
+    
+    public final Builder setPhoneNumberIdentifierSupported(boolean paramBoolean)
+    {
+      this.zzde = paramBoolean;
+      return this;
+    }
+    
+    public final Builder setServerClientId(String paramString)
+    {
+      this.zzcz = paramString;
+      return this;
+    }
   }
 }
 

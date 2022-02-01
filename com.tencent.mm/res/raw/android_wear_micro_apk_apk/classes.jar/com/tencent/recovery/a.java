@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public final class a
 {
-  public static Field ajm = null;
-  public static int ajn = 17;
+  public static Field amO = null;
+  public static int amP = 17;
   
   public static void a(Context paramContext, ArrayList<RecoveryHandleItem> paramArrayList, String paramString)
   {

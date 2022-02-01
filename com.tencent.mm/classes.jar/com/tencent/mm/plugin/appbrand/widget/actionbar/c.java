@@ -8,36 +8,36 @@ import java.util.Iterator;
 
 public final class c
 {
-  HashSet<View.OnClickListener> jbv;
-  HashSet<View.OnClickListener> jbw;
+  HashSet<View.OnClickListener> lRq;
+  HashSet<View.OnClickListener> lRr;
   
   public c()
   {
-    AppMethodBeat.i(87482);
-    this.jbv = new HashSet();
-    this.jbw = new HashSet();
-    AppMethodBeat.o(87482);
+    AppMethodBeat.i(135442);
+    this.lRq = new HashSet();
+    this.lRr = new HashSet();
+    AppMethodBeat.o(135442);
   }
   
-  public final boolean cE(View paramView)
+  public final boolean cQ(View paramView)
   {
-    AppMethodBeat.i(87483);
-    if (this.jbw.isEmpty())
+    AppMethodBeat.i(135443);
+    if (this.lRr.isEmpty())
     {
-      AppMethodBeat.o(87483);
+      AppMethodBeat.o(135443);
       return false;
     }
-    Iterator localIterator = this.jbw.iterator();
+    Iterator localIterator = this.lRr.iterator();
     while (localIterator.hasNext()) {
       ((View.OnClickListener)localIterator.next()).onClick(paramView);
     }
-    AppMethodBeat.o(87483);
+    AppMethodBeat.o(135443);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.c
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ final class p
   
   public final void onChanged()
   {
-    GridViewPager.d(this.Dj);
+    GridViewPager.d(this.EY);
   }
   
   public final void onInvalidated()
   {
-    GridViewPager.d(this.Dj);
+    GridViewPager.d(this.EY);
   }
 }
 

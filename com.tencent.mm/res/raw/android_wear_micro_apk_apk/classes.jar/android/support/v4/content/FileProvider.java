@@ -9,6 +9,7 @@ import android.content.res.XmlResourceParser;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
+import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.webkit.MimeTypeMap;
@@ -20,10 +21,10 @@ import org.xmlpull.v1.XmlPullParserException;
 public class FileProvider
   extends ContentProvider
 {
-  private static final String[] fK = { "_display_name", "_size" };
-  private static final File fL = new File("/");
-  private static HashMap<String, b> fM = new HashMap();
-  private b fN;
+  private static final String[] hH = { "_display_name", "_size" };
+  private static final File hI = new File("/");
+  private static HashMap<String, b> hJ = new HashMap();
+  private b hK;
   
   private static File a(File paramFile, String... paramVarArgs)
   {
@@ -49,9 +50,9 @@ public class FileProvider
   {
     Object localObject2;
     Object localObject1;
-    synchronized (fM)
+    synchronized (hJ)
     {
-      localObject2 = (b)fM.get(paramString);
+      localObject2 = (b)hJ.get(paramString);
       localObject1 = localObject2;
       if (localObject2 != null) {}
     }
@@ -73,7 +74,7 @@ public class FileProvider
         throw paramContext;
         int i = localXmlResourceParser.next();
         if (i == 1) {
-          break label297;
+          break label331;
         }
         if (i != 2) {
           continue;
@@ -83,7 +84,7 @@ public class FileProvider
         String str2 = localXmlResourceParser.getAttributeValue(null, "path");
         if ("root-path".equals(localObject1))
         {
-          localObject1 = fL;
+          localObject1 = hI;
           if (localObject1 == null) {
             continue;
           }
@@ -119,12 +120,19 @@ public class FileProvider
         else if ("external-cache-path".equals(localObject1))
         {
           localObject1 = a.b(paramContext);
+          if (localObject1.length > 0) {
+            localObject1 = localObject1[0];
+          }
+        }
+        else if ((Build.VERSION.SDK_INT >= 21) && ("external-media-path".equals(localObject1)))
+        {
+          localObject1 = paramContext.getExternalMediaDirs();
           if (localObject1.length > 0)
           {
             localObject1 = localObject1[0];
             continue;
-            label297:
-            fM.put(paramString, localObject2);
+            label331:
+            hJ.put(paramString, localObject2);
             localObject1 = localObject2;
             return localObject1;
           }
@@ -143,12 +151,12 @@ public class FileProvider
     if (!paramProviderInfo.grantUriPermissions) {
       throw new SecurityException("Provider must grant uri permissions");
     }
-    this.fN = c(paramContext, paramProviderInfo.authority);
+    this.hK = c(paramContext, paramProviderInfo.authority);
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    if (this.fN.a(paramUri).delete()) {
+    if (this.hK.a(paramUri).delete()) {
       return 1;
     }
     return 0;
@@ -156,7 +164,7 @@ public class FileProvider
   
   public String getType(Uri paramUri)
   {
-    paramUri = this.fN.a(paramUri);
+    paramUri = this.hK.a(paramUri);
     int i = paramUri.getName().lastIndexOf('.');
     if (i >= 0)
     {
@@ -181,7 +189,7 @@ public class FileProvider
   
   public ParcelFileDescriptor openFile(Uri paramUri, String paramString)
   {
-    paramUri = this.fN.a(paramUri);
+    paramUri = this.hK.a(paramUri);
     int i;
     if ("r".equals(paramString)) {
       i = 268435456;
@@ -209,15 +217,15 @@ public class FileProvider
         i = 1006632960;
       }
     }
-    throw new IllegalArgumentException("Invalid mode: " + paramString);
+    throw new IllegalArgumentException("Invalid mode: ".concat(String.valueOf(paramString)));
   }
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    paramString1 = this.fN.a(paramUri);
+    paramString1 = this.hK.a(paramUri);
     paramUri = paramArrayOfString1;
     if (paramArrayOfString1 == null) {
-      paramUri = fK;
+      paramUri = hH;
     }
     paramArrayOfString2 = new String[paramUri.length];
     paramArrayOfString1 = new Object[paramUri.length];

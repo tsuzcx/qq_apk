@@ -1,120 +1,247 @@
 package com.tencent.mm.plugin.exdevice.i;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.exdevice.e.e;
-import com.tencent.mm.plugin.exdevice.service.p;
-import com.tencent.mm.plugin.exdevice.service.u;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.al;
-import junit.framework.Assert;
+import com.tencent.mm.plugin.exdevice.k.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
-public class a
-  implements c
+public final class a
 {
-  private long lIf = -1L;
-  protected com.tencent.mm.plugin.exdevice.b.c lJl = null;
-  protected d lJm = null;
-  private m lJn = null;
-  
-  public a(com.tencent.mm.plugin.exdevice.b.c paramc, d paramd)
+  public static long[] UP(String paramString)
   {
-    this.lJl = paramc;
-    this.lJm = paramd;
-  }
-  
-  public final void a(long paramLong, int paramInt1, int paramInt2, String paramString, p paramp)
-  {
-    AppMethodBeat.i(19728);
-    ab.i("MicroMsg.exdevice.ExDeviceTask", "------onTaskEnd------ taskId = %d, errType = %d, errCode = %d, errMsg = %s, deviceId = %d, reqCmdId = %d, respCmdId = %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Long.valueOf(this.lJl.jRn), Short.valueOf(this.lJl.bpu()), Short.valueOf(this.lJl.lCu) });
-    long l = this.lJl.jRn;
-    if (paramInt1 == 0) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(23778);
+    ad.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "getListFromSharedPreferences, key = %s", new Object[] { paramString });
+    if (bt.isNullOrNil(paramString))
     {
-      com.tencent.mm.plugin.exdevice.g.a.p(l, i);
-      if ((paramp == null) || (paramp == this.lJn)) {
-        break;
-      }
-      ab.e("MicroMsg.exdevice.ExDeviceTask", "netCmd != mRemoteTask");
-      AppMethodBeat.o(19728);
-      return;
+      ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "key is null or nil");
+      AppMethodBeat.o(23778);
+      return null;
     }
-    if ((-1 == paramInt1) && (-2 == paramInt2)) {
-      ab.e("MicroMsg.exdevice.ExDeviceTask", "Time Out in local!!!");
-    }
-    if (this.lJl.lCv != null)
+    Object localObject = aj.getContext().getSharedPreferences("exdevice_pref", 0);
+    if (localObject == null)
     {
-      i = this.lJl.lCv.lGK;
-      if ((-5 == i) || (-3 == i) || (-4 == i))
+      ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "null == sp");
+      AppMethodBeat.o(23778);
+      return null;
+    }
+    b((SharedPreferences)localObject);
+    try
+    {
+      localObject = ((SharedPreferences)localObject).getString(paramString, new String()).split("\\|");
+      if ((localObject == null) || (localObject.length == 0))
       {
-        ab.w("MicroMsg.exdevice.ExDeviceTask", "ErrorCode = %d, destroy channel(deviceId = %d)", new Object[] { Integer.valueOf(this.lJl.lCv.lGK), Long.valueOf(this.lJl.jRn) });
-        if ((u.bqA().lCQ == null) || (!u.bqA().lCQ.jr(this.lJl.jRn))) {
-          break label329;
+        ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "null == strDeviceList || 0 == strDeviceList.length");
+        AppMethodBeat.o(23778);
+        return null;
+      }
+    }
+    catch (Exception paramString)
+    {
+      ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "split failed!!!, %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(23778);
+      return null;
+    }
+    long[] arrayOfLong = new long[localObject.length];
+    int m = localObject.length;
+    int j = 0;
+    i = 0;
+    if (j < m)
+    {
+      paramString = localObject[j];
+      for (;;)
+      {
+        try
+        {
+          ad.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "parse %s to long", new Object[] { paramString });
+          k = paramString.length();
+          if (k != 0) {
+            continue;
+          }
         }
+        catch (Exception paramString)
+        {
+          try
+          {
+            arrayOfLong[i] = bt.getLong(paramString, 0L);
+            i = k;
+          }
+          catch (Exception paramString)
+          {
+            for (;;)
+            {
+              int k;
+              i = k;
+            }
+          }
+          paramString = paramString;
+        }
+        j += 1;
+        break;
+        k = i + 1;
+        ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "try pase string device id to long failed : " + paramString.getMessage());
       }
     }
-    label329:
-    for (i = 1;; i = 0)
+    if (i == 0)
     {
-      if (i == 0) {
-        ab.e("MicroMsg.exdevice.ExDeviceTask", "stopChannel Failed!!!");
-      }
-      if (this.lJm != null) {
-        this.lJm.a(paramLong, paramInt1, paramInt2, paramString);
-      }
-      this.lJn = null;
-      AppMethodBeat.o(19728);
-      return;
-      i = 0;
-      break;
+      AppMethodBeat.o(23778);
+      return null;
     }
+    AppMethodBeat.o(23778);
+    return arrayOfLong;
   }
   
-  public final void a(d paramd)
+  public static boolean V(String paramString, long paramLong)
   {
-    this.lJm = paramd;
-  }
-  
-  public final boolean b(com.tencent.mm.plugin.exdevice.service.m paramm)
-  {
-    AppMethodBeat.i(19727);
-    if (paramm == null)
+    AppMethodBeat.i(23775);
+    ad.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "isItemInSharedPreferences, key = %s, device id = %d", new Object[] { paramString, Long.valueOf(paramLong) });
+    if (bt.isNullOrNil(paramString))
     {
-      ab.e("MicroMsg.exdevice.ExDeviceTask", "dispatcher is null");
-      AppMethodBeat.o(19727);
+      ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "key is null or nil");
+      AppMethodBeat.o(23775);
       return false;
     }
-    if (this.lJn != null)
+    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("exdevice_pref", 0);
+    if (localSharedPreferences == null)
     {
-      ab.e("MicroMsg.exdevice.ExDeviceTask", "Prev task is still working!!!");
-      AppMethodBeat.o(19727);
+      ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "null == sp");
+      AppMethodBeat.o(23775);
       return false;
     }
-    ab.i("MicroMsg.exdevice.ExDeviceTask", "------startTask begin------cmdReqId = %d, cmdRespId = %d, deviceId = %d", new Object[] { Short.valueOf(this.lJl.bpu()), Short.valueOf(this.lJl.lCu), Long.valueOf(this.lJl.jRn) });
-    m localm = new m(this.lJl, this);
-    long l = paramm.a(localm);
-    if (-1L == l)
+    b(localSharedPreferences);
+    if (!b.fm(String.valueOf(paramLong), localSharedPreferences.getString(paramString, new String())))
     {
-      ab.e("MicroMsg.exdevice.ExDeviceTask", "dispatcher.startTask Failed!!!");
-      AppMethodBeat.o(19727);
+      AppMethodBeat.o(23775);
       return false;
     }
-    this.lJn = localm;
-    this.lIf = l;
-    paramm = this.lJn;
-    Assert.assertNotNull(paramm.lJI);
-    paramm = paramm.lJI;
-    paramm.lJB = false;
-    paramm.lJC = false;
-    aw.RO().caB().postDelayed(paramm.lJD, 15000L);
-    AppMethodBeat.o(19727);
+    AppMethodBeat.o(23775);
     return true;
+  }
+  
+  public static boolean W(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(23776);
+    ad.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "addToSharedPreferences, key = %s, deviceId = %d", new Object[] { paramString, Long.valueOf(paramLong) });
+    if (bt.isNullOrNil(paramString))
+    {
+      ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "key is null or nil");
+      AppMethodBeat.o(23776);
+      return false;
+    }
+    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("exdevice_pref", 0);
+    if (localSharedPreferences == null)
+    {
+      ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "null == sp");
+      AppMethodBeat.o(23776);
+      return false;
+    }
+    b(localSharedPreferences);
+    String str = b.fn(String.valueOf(paramLong), localSharedPreferences.getString(paramString, new String()));
+    if (str == null)
+    {
+      ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "addDeviceToDeviceList failed!!!");
+      AppMethodBeat.o(23776);
+      return false;
+    }
+    if (!localSharedPreferences.edit().putString(paramString, str).commit())
+    {
+      ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "sp.edit().putString().commit() Failed!!!");
+      AppMethodBeat.o(23776);
+      return false;
+    }
+    ad.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "add to sharepreference successful, new device list is %s", new Object[] { str });
+    AppMethodBeat.o(23776);
+    return true;
+  }
+  
+  public static boolean X(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(23777);
+    ad.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "removeFromSharedPreferences, key = %s, deviceId = %d", new Object[] { paramString, Long.valueOf(paramLong) });
+    if (bt.isNullOrNil(paramString))
+    {
+      ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "key is null or nil");
+      AppMethodBeat.o(23777);
+      return false;
+    }
+    SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("exdevice_pref", 0);
+    if (localSharedPreferences == null)
+    {
+      ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "null == sp");
+      AppMethodBeat.o(23777);
+      return false;
+    }
+    b(localSharedPreferences);
+    String str = b.fo(String.valueOf(paramLong), localSharedPreferences.getString(paramString, new String()));
+    if (str == null)
+    {
+      ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "remove device from device list failed!!!");
+      AppMethodBeat.o(23777);
+      return false;
+    }
+    if (str.length() == 0) {}
+    for (boolean bool = localSharedPreferences.edit().remove(paramString).commit(); !bool; bool = localSharedPreferences.edit().putString(paramString, str).commit())
+    {
+      ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "sp.edit().putString().commit()");
+      AppMethodBeat.o(23777);
+      return false;
+    }
+    ad.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "remove from sharepreference successful, new device list is %s", new Object[] { str });
+    AppMethodBeat.o(23777);
+    return true;
+  }
+  
+  private static void b(SharedPreferences paramSharedPreferences)
+  {
+    int i = 0;
+    AppMethodBeat.i(23774);
+    ad.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "tryToClearDirtyData");
+    if (Build.VERSION.SDK_INT < 11)
+    {
+      AppMethodBeat.o(23774);
+      return;
+    }
+    if (paramSharedPreferences == null)
+    {
+      ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "null == aSP");
+      AppMethodBeat.o(23774);
+      return;
+    }
+    for (;;)
+    {
+      String str;
+      if (i < 2) {
+        str = new String[] { "conneted_device", "shut_down_device" }[i];
+      }
+      try
+      {
+        if (paramSharedPreferences.getStringSet(str, null) != null)
+        {
+          ad.i("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "find dirty data, remove it, key = %s", new Object[] { str });
+          if (!paramSharedPreferences.edit().remove(str).commit()) {
+            ad.e("MicroMsg.exdevice.ExdeviceSharePreferencesManager", "remove dirty data failed!!!");
+          }
+        }
+        label123:
+        i += 1;
+        continue;
+        AppMethodBeat.o(23774);
+        return;
+      }
+      catch (Exception localException)
+      {
+        break label123;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.i.a
  * JD-Core Version:    0.7.0.1
  */

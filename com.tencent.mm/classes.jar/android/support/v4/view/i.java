@@ -4,7 +4,7 @@ import android.view.MotionEvent;
 
 public final class i
 {
-  public static boolean d(MotionEvent paramMotionEvent)
+  public static boolean e(MotionEvent paramMotionEvent)
   {
     return (paramMotionEvent.getSource() & 0x2002) == 8194;
   }

@@ -1,62 +1,62 @@
 package com.tencent.mm.media.editor.a;
 
-import a.l;
 import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cqz;
-import com.tencent.mm.protocal.protobuf.zh;
+import com.tencent.mm.protocal.protobuf.acu;
+import com.tencent.mm.protocal.protobuf.dks;
 import com.tencent.mm.storage.emotion.EmojiInfo;
+import d.l;
 import java.util.LinkedList;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/editor/item/EmojiItem;", "Lcom/tencent/mm/media/editor/item/BaseEditorData;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "showMatrix", "Landroid/graphics/Matrix;", "editorMatrix", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Landroid/graphics/Matrix;Landroid/graphics/Matrix;)V", "getEditorMatrix", "()Landroid/graphics/Matrix;", "setEditorMatrix", "(Landroid/graphics/Matrix;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getShowMatrix", "setShowMatrix", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "plugin-mediaeditor_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/editor/item/EmojiItem;", "Lcom/tencent/mm/media/editor/item/BaseEditorData;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "showMatrix", "Landroid/graphics/Matrix;", "editorMatrix", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Landroid/graphics/Matrix;Landroid/graphics/Matrix;)V", "getEditorMatrix", "()Landroid/graphics/Matrix;", "setEditorMatrix", "(Landroid/graphics/Matrix;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getShowMatrix", "setShowMatrix", "toProtoBuf", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "plugin-mediaeditor_release"})
 public final class g
   extends a
 {
-  private Matrix eSJ;
-  private Matrix eSK;
-  public final EmojiInfo evH;
+  private final EmojiInfo fLP;
+  private Matrix goN;
+  private Matrix goO;
   
   public g(EmojiInfo paramEmojiInfo, Matrix paramMatrix1, Matrix paramMatrix2)
   {
-    super(e.eSD);
-    AppMethodBeat.i(12890);
-    this.evH = paramEmojiInfo;
-    this.eSJ = paramMatrix1;
-    this.eSK = paramMatrix2;
-    AppMethodBeat.o(12890);
+    super(e.goH, paramMatrix2);
+    AppMethodBeat.i(93574);
+    this.fLP = paramEmojiInfo;
+    this.goN = paramMatrix1;
+    this.goO = paramMatrix2;
+    AppMethodBeat.o(93574);
   }
   
-  public final com.tencent.mm.bv.a UF()
+  public final com.tencent.mm.bx.a ajx()
   {
     int j = 0;
-    AppMethodBeat.i(12889);
-    zh localzh = new zh();
+    AppMethodBeat.i(93573);
+    acu localacu = new acu();
     Object localObject = new float[9];
-    cqz localcqz1 = new cqz();
-    this.eSK.getValues((float[])localObject);
+    dks localdks1 = new dks();
+    this.goO.getValues((float[])localObject);
     int i = 0;
     float f;
     while (i < 9)
     {
       f = localObject[i];
-      localcqz1.xZD.add(Float.valueOf(f));
+      localdks1.DmV.add(Float.valueOf(f));
       i += 1;
     }
-    cqz localcqz2 = new cqz();
+    dks localdks2 = new dks();
     localObject = new float[9];
-    this.eSJ.getValues((float[])localObject);
+    this.goN.getValues((float[])localObject);
     i = j;
     while (i < 9)
     {
       f = localObject[i];
-      localcqz2.xZD.add(Float.valueOf(f));
+      localdks2.DmV.add(Float.valueOf(f));
       i += 1;
     }
-    localObject = this.evH;
+    localObject = this.fLP;
     String str;
     if (localObject != null)
     {
-      str = ((EmojiInfo)localObject).Al();
+      str = ((EmojiInfo)localObject).JS();
       localObject = str;
       if (str != null) {}
     }
@@ -64,8 +64,8 @@ public final class g
     {
       localObject = "";
     }
-    localzh.cqq = ((String)localObject);
-    localObject = this.evH;
+    localacu.md5 = ((String)localObject);
+    localObject = this.fLP;
     if (localObject != null)
     {
       str = ((EmojiInfo)localObject).getName();
@@ -76,17 +76,17 @@ public final class g
     {
       localObject = "";
     }
-    localzh.name = ((String)localObject);
-    localzh.wQk = localcqz1;
-    localzh.wQl = localcqz2;
-    localObject = (com.tencent.mm.bv.a)localzh;
-    AppMethodBeat.o(12889);
+    localacu.name = ((String)localObject);
+    localacu.Ddt = localdks1;
+    localacu.Ddu = localdks2;
+    localObject = (com.tencent.mm.bx.a)localacu;
+    AppMethodBeat.o(93573);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.editor.a.g
  * JD-Core Version:    0.7.0.1
  */

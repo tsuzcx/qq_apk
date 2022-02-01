@@ -4,7 +4,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tencentmap.mapsdk.a.g;
 
 public final class CameraPosition
   implements Parcelable
@@ -18,9 +17,28 @@ public final class CameraPosition
   
   static
   {
-    AppMethodBeat.i(101173);
-    CREATOR = new CameraPosition.1();
-    AppMethodBeat.o(101173);
+    AppMethodBeat.i(87571);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final CameraPosition createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(87546);
+        float f1 = paramAnonymousParcel.readFloat();
+        float f2 = paramAnonymousParcel.readFloat();
+        float f3 = paramAnonymousParcel.readFloat();
+        float f4 = paramAnonymousParcel.readFloat();
+        float f5 = paramAnonymousParcel.readFloat();
+        paramAnonymousParcel = new CameraPosition(new LatLng(f1, f2), f3, f4, f5);
+        AppMethodBeat.o(87546);
+        return paramAnonymousParcel;
+      }
+      
+      public final CameraPosition[] newArray(int paramAnonymousInt)
+      {
+        return new CameraPosition[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(87571);
   }
   
   public CameraPosition(LatLng paramLatLng, float paramFloat)
@@ -36,27 +54,27 @@ public final class CameraPosition
     this.bearing = paramFloat3;
   }
   
-  public static CameraPosition.Builder builder()
+  public static Builder builder()
   {
-    AppMethodBeat.i(101169);
-    CameraPosition.Builder localBuilder = new CameraPosition.Builder();
-    AppMethodBeat.o(101169);
+    AppMethodBeat.i(87567);
+    Builder localBuilder = new Builder();
+    AppMethodBeat.o(87567);
     return localBuilder;
   }
   
-  public static CameraPosition.Builder builder(CameraPosition paramCameraPosition)
+  public static Builder builder(CameraPosition paramCameraPosition)
   {
-    AppMethodBeat.i(101170);
-    paramCameraPosition = new CameraPosition.Builder(paramCameraPosition);
-    AppMethodBeat.o(101170);
+    AppMethodBeat.i(87568);
+    paramCameraPosition = new Builder(paramCameraPosition);
+    AppMethodBeat.o(87568);
     return paramCameraPosition;
   }
   
   public static final CameraPosition fromLatLngZoom(LatLng paramLatLng, float paramFloat)
   {
-    AppMethodBeat.i(101168);
+    AppMethodBeat.i(87566);
     paramLatLng = new CameraPosition(paramLatLng, paramFloat);
-    AppMethodBeat.o(101168);
+    AppMethodBeat.o(87566);
     return paramLatLng;
   }
   
@@ -67,24 +85,24 @@ public final class CameraPosition
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(101171);
+    AppMethodBeat.i(87569);
     if (this == paramObject)
     {
-      AppMethodBeat.o(101171);
+      AppMethodBeat.o(87569);
       return true;
     }
     if (!(paramObject instanceof CameraPosition))
     {
-      AppMethodBeat.o(101171);
+      AppMethodBeat.o(87569);
       return false;
     }
     paramObject = (CameraPosition)paramObject;
     if ((getTarget().equals(paramObject.getTarget())) && (Float.floatToIntBits(getZoom()) == Float.floatToIntBits(paramObject.getZoom())))
     {
-      AppMethodBeat.o(101171);
+      AppMethodBeat.o(87569);
       return true;
     }
-    AppMethodBeat.o(101171);
+    AppMethodBeat.o(87569);
     return false;
   }
   
@@ -110,34 +128,91 @@ public final class CameraPosition
   
   public final int hashCode()
   {
-    AppMethodBeat.i(101167);
+    AppMethodBeat.i(87565);
     int i = super.hashCode();
-    AppMethodBeat.o(101167);
+    AppMethodBeat.o(87565);
     return i;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(101172);
-    String str = g.a(new String[] { g.a("target", getTarget()), g.a("zoom", Float.valueOf(getZoom())) });
-    AppMethodBeat.o(101172);
+    AppMethodBeat.i(87570);
+    String str = "target" + this.target + "zoom" + this.zoom;
+    AppMethodBeat.o(87570);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(101166);
+    AppMethodBeat.i(87564);
     paramParcel.writeFloat((float)this.target.getLatitude());
     paramParcel.writeFloat((float)this.target.getLongitude());
     paramParcel.writeFloat(this.zoom);
     paramParcel.writeFloat(this.skew);
     paramParcel.writeFloat(this.bearing);
-    AppMethodBeat.o(101166);
+    AppMethodBeat.o(87564);
+  }
+  
+  public static final class Builder
+  {
+    private float bearing;
+    private float skew;
+    private LatLng target;
+    private float zoom;
+    
+    public Builder()
+    {
+      this.zoom = -1.0F;
+      this.skew = 0.0F;
+      this.bearing = 0.0F;
+    }
+    
+    public Builder(CameraPosition paramCameraPosition)
+    {
+      AppMethodBeat.i(87549);
+      this.zoom = -1.0F;
+      this.skew = 0.0F;
+      this.bearing = 0.0F;
+      target(paramCameraPosition.getTarget()).zoom(paramCameraPosition.getZoom());
+      AppMethodBeat.o(87549);
+    }
+    
+    public final Builder bearing(float paramFloat)
+    {
+      this.bearing = paramFloat;
+      return this;
+    }
+    
+    public final CameraPosition build()
+    {
+      AppMethodBeat.i(87550);
+      CameraPosition localCameraPosition = new CameraPosition(this.target, this.zoom, this.skew, this.bearing);
+      AppMethodBeat.o(87550);
+      return localCameraPosition;
+    }
+    
+    public final Builder skew(float paramFloat)
+    {
+      this.skew = paramFloat;
+      return this;
+    }
+    
+    public final Builder target(LatLng paramLatLng)
+    {
+      this.target = paramLatLng;
+      return this;
+    }
+    
+    public final Builder zoom(float paramFloat)
+    {
+      this.zoom = paramFloat;
+      return this;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.CameraPosition
  * JD-Core Version:    0.7.0.1
  */

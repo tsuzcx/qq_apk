@@ -19,14 +19,14 @@ final class LikeStatusClient
   
   public final void populateRequestBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(97122);
+    AppMethodBeat.i(8146);
     paramBundle.putString("com.facebook.platform.extra.OBJECT_ID", this.objectId);
-    AppMethodBeat.o(97122);
+    AppMethodBeat.o(8146);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.share.internal.LikeStatusClient
  * JD-Core Version:    0.7.0.1
  */

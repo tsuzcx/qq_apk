@@ -4,6 +4,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.cer;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletLqtDetailUI$20
   implements View.OnClickListener
@@ -12,10 +15,13 @@ final class WalletLqtDetailUI$20
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(45544);
-    WalletLqtDetailUI.f(this.tPQ);
-    h.qsU.e(17084, new Object[] { Integer.valueOf(3) });
-    AppMethodBeat.o(45544);
+    AppMethodBeat.i(68809);
+    if (!bt.isNullOrNil(WalletLqtDetailUI.d(this.zIT).EaU))
+    {
+      e.o(this.zIT, WalletLqtDetailUI.d(this.zIT).EaU, false);
+      h.vKh.f(17084, new Object[] { Integer.valueOf(2) });
+    }
+    AppMethodBeat.o(68809);
   }
 }
 

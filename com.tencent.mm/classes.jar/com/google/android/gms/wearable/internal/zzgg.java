@@ -18,14 +18,14 @@ final class zzgg
   
   public final void setFailedResult(Status paramStatus)
   {
-    AppMethodBeat.i(71365);
+    AppMethodBeat.i(101348);
     this.zzes.setException(new ApiException(paramStatus));
-    AppMethodBeat.o(71365);
+    AppMethodBeat.o(101348);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzgg
  * JD-Core Version:    0.7.0.1
  */

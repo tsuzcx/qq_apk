@@ -4,11 +4,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 
 public final class CursorJoiner
-  implements Iterable<CursorJoiner.Result>, Iterator<CursorJoiner.Result>
+  implements Iterable<Result>, Iterator<Result>
 {
   private int[] mColumnsLeft;
   private int[] mColumnsRight;
-  private CursorJoiner.Result mCompareResult;
+  private Result mCompareResult;
   private boolean mCompareResultIsValid;
   private Cursor mCursorLeft;
   private Cursor mCursorRight;
@@ -16,11 +16,11 @@ public final class CursorJoiner
   
   public CursorJoiner(Cursor paramCursor1, String[] paramArrayOfString1, Cursor paramCursor2, String[] paramArrayOfString2)
   {
-    AppMethodBeat.i(11994);
+    AppMethodBeat.i(2675);
     if (paramArrayOfString1.length != paramArrayOfString2.length)
     {
       paramCursor1 = new IllegalArgumentException("you must have the same number of columns on the left and right, " + paramArrayOfString1.length + " != " + paramArrayOfString2.length);
-      AppMethodBeat.o(11994);
+      AppMethodBeat.o(2675);
       throw paramCursor1;
     }
     this.mCursorLeft = paramCursor1;
@@ -31,12 +31,12 @@ public final class CursorJoiner
     this.mColumnsLeft = buildColumnIndiciesArray(paramCursor1, paramArrayOfString1);
     this.mColumnsRight = buildColumnIndiciesArray(paramCursor2, paramArrayOfString2);
     this.mValues = new String[this.mColumnsLeft.length * 2];
-    AppMethodBeat.o(11994);
+    AppMethodBeat.o(2675);
   }
   
   private int[] buildColumnIndiciesArray(Cursor paramCursor, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(11995);
+    AppMethodBeat.i(2676);
     int[] arrayOfInt = new int[paramArrayOfString.length];
     int i = 0;
     while (i < paramArrayOfString.length)
@@ -44,17 +44,17 @@ public final class CursorJoiner
       arrayOfInt[i] = paramCursor.getColumnIndexOrThrow(paramArrayOfString[i]);
       i += 1;
     }
-    AppMethodBeat.o(11995);
+    AppMethodBeat.o(2676);
     return arrayOfInt;
   }
   
   private static int compareStrings(String... paramVarArgs)
   {
-    AppMethodBeat.i(12001);
+    AppMethodBeat.i(2682);
     if (paramVarArgs.length % 2 != 0)
     {
       paramVarArgs = new IllegalArgumentException("you must specify an even number of values");
-      AppMethodBeat.o(12001);
+      AppMethodBeat.o(2682);
       throw paramVarArgs;
     }
     int i = 0;
@@ -64,7 +64,7 @@ public final class CursorJoiner
       {
         if (paramVarArgs[(i + 1)] != null)
         {
-          AppMethodBeat.o(12001);
+          AppMethodBeat.o(2682);
           return -1;
         }
       }
@@ -72,7 +72,7 @@ public final class CursorJoiner
       {
         if (paramVarArgs[(i + 1)] == null)
         {
-          AppMethodBeat.o(12001);
+          AppMethodBeat.o(2682);
           return 1;
         }
         int j = paramVarArgs[i].compareTo(paramVarArgs[(i + 1)]);
@@ -80,31 +80,31 @@ public final class CursorJoiner
         {
           if (j < 0)
           {
-            AppMethodBeat.o(12001);
+            AppMethodBeat.o(2682);
             return -1;
           }
-          AppMethodBeat.o(12001);
+          AppMethodBeat.o(2682);
           return 1;
         }
       }
       i += 2;
     }
-    AppMethodBeat.o(12001);
+    AppMethodBeat.o(2682);
     return 0;
   }
   
   private void incrementCursors()
   {
-    AppMethodBeat.i(12000);
+    AppMethodBeat.i(2681);
     if (this.mCompareResultIsValid) {
-      switch (CursorJoiner.1.$SwitchMap$com$tencent$wcdb$CursorJoiner$Result[this.mCompareResult.ordinal()])
+      switch (1.$SwitchMap$com$tencent$wcdb$CursorJoiner$Result[this.mCompareResult.ordinal()])
       {
       }
     }
     for (;;)
     {
       this.mCompareResultIsValid = false;
-      AppMethodBeat.o(12000);
+      AppMethodBeat.o(2681);
       return;
       this.mCursorLeft.moveToNext();
       continue;
@@ -117,74 +117,74 @@ public final class CursorJoiner
   
   private static void populateValues(String[] paramArrayOfString, Cursor paramCursor, int[] paramArrayOfInt, int paramInt)
   {
-    AppMethodBeat.i(11999);
+    AppMethodBeat.i(2680);
     int i = 0;
     while (i < paramArrayOfInt.length)
     {
       paramArrayOfString[(i * 2 + paramInt)] = paramCursor.getString(paramArrayOfInt[i]);
       i += 1;
     }
-    AppMethodBeat.o(11999);
+    AppMethodBeat.o(2680);
   }
   
   public final boolean hasNext()
   {
-    AppMethodBeat.i(11996);
+    AppMethodBeat.i(2677);
     if (this.mCompareResultIsValid)
     {
-      switch (CursorJoiner.1.$SwitchMap$com$tencent$wcdb$CursorJoiner$Result[this.mCompareResult.ordinal()])
+      switch (1.$SwitchMap$com$tencent$wcdb$CursorJoiner$Result[this.mCompareResult.ordinal()])
       {
       default: 
         IllegalStateException localIllegalStateException = new IllegalStateException("bad value for mCompareResult, " + this.mCompareResult);
-        AppMethodBeat.o(11996);
+        AppMethodBeat.o(2677);
         throw localIllegalStateException;
       case 1: 
         if ((!this.mCursorLeft.isLast()) || (!this.mCursorRight.isLast()))
         {
-          AppMethodBeat.o(11996);
+          AppMethodBeat.o(2677);
           return true;
         }
-        AppMethodBeat.o(11996);
+        AppMethodBeat.o(2677);
         return false;
       case 2: 
         if ((!this.mCursorLeft.isLast()) || (!this.mCursorRight.isAfterLast()))
         {
-          AppMethodBeat.o(11996);
+          AppMethodBeat.o(2677);
           return true;
         }
-        AppMethodBeat.o(11996);
+        AppMethodBeat.o(2677);
         return false;
       }
       if ((!this.mCursorLeft.isAfterLast()) || (!this.mCursorRight.isLast()))
       {
-        AppMethodBeat.o(11996);
+        AppMethodBeat.o(2677);
         return true;
       }
-      AppMethodBeat.o(11996);
+      AppMethodBeat.o(2677);
       return false;
     }
     if ((!this.mCursorLeft.isAfterLast()) || (!this.mCursorRight.isAfterLast()))
     {
-      AppMethodBeat.o(11996);
+      AppMethodBeat.o(2677);
       return true;
     }
-    AppMethodBeat.o(11996);
+    AppMethodBeat.o(2677);
     return false;
   }
   
-  public final Iterator<CursorJoiner.Result> iterator()
+  public final Iterator<Result> iterator()
   {
     return this;
   }
   
-  public final CursorJoiner.Result next()
+  public final Result next()
   {
-    AppMethodBeat.i(11997);
+    AppMethodBeat.i(2678);
     Object localObject;
     if (!hasNext())
     {
       localObject = new IllegalStateException("you must only call next() when hasNext() is true");
-      AppMethodBeat.o(11997);
+      AppMethodBeat.o(2678);
       throw ((Throwable)localObject);
     }
     incrementCursors();
@@ -211,39 +211,54 @@ public final class CursorJoiner
     {
       this.mCompareResultIsValid = true;
       localObject = this.mCompareResult;
-      AppMethodBeat.o(11997);
+      AppMethodBeat.o(2678);
       return localObject;
       i = 0;
       break;
       label159:
       j = 0;
       break label63;
-      this.mCompareResult = CursorJoiner.Result.LEFT;
+      this.mCompareResult = Result.LEFT;
       continue;
-      this.mCompareResult = CursorJoiner.Result.BOTH;
+      this.mCompareResult = Result.BOTH;
       continue;
-      this.mCompareResult = CursorJoiner.Result.RIGHT;
+      this.mCompareResult = Result.RIGHT;
       continue;
       label194:
       if (i != 0) {
-        this.mCompareResult = CursorJoiner.Result.LEFT;
+        this.mCompareResult = Result.LEFT;
       } else {
-        this.mCompareResult = CursorJoiner.Result.RIGHT;
+        this.mCompareResult = Result.RIGHT;
       }
     }
   }
   
   public final void remove()
   {
-    AppMethodBeat.i(11998);
+    AppMethodBeat.i(2679);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("not implemented");
-    AppMethodBeat.o(11998);
+    AppMethodBeat.o(2679);
     throw localUnsupportedOperationException;
+  }
+  
+  public static enum Result
+  {
+    static
+    {
+      AppMethodBeat.i(2674);
+      RIGHT = new Result("RIGHT", 0);
+      LEFT = new Result("LEFT", 1);
+      BOTH = new Result("BOTH", 2);
+      $VALUES = new Result[] { RIGHT, LEFT, BOTH };
+      AppMethodBeat.o(2674);
+    }
+    
+    private Result() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.wcdb.CursorJoiner
  * JD-Core Version:    0.7.0.1
  */

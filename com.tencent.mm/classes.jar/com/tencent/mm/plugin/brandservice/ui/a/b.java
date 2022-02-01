@@ -11,9 +11,9 @@ public final class b
 {
   public final e a(Context paramContext, e.b paramb, int paramInt)
   {
-    AppMethodBeat.i(14087);
+    AppMethodBeat.i(5824);
     paramContext = new c(paramContext, paramb, paramInt);
-    AppMethodBeat.o(14087);
+    AppMethodBeat.o(5824);
     return paramContext;
   }
   
@@ -29,7 +29,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

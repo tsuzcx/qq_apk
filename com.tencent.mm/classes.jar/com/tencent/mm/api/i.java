@@ -1,14 +1,10 @@
 package com.tencent.mm.api;
 
-import com.tencent.mm.aj.a.j;
-import com.tencent.mm.kernel.c.a;
-
 public abstract interface i
-  extends a
 {
-  public abstract j df(String paramString);
+  public abstract void onExit();
   
-  public abstract String dg(String paramString);
+  public abstract void onFinish();
 }
 
 

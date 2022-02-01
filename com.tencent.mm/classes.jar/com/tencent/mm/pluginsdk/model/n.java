@@ -1,37 +1,125 @@
 package com.tencent.mm.pluginsdk.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.network.q;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.pluginsdk.model.app.aa;
+import com.tencent.mm.protocal.protobuf.bby;
+import com.tencent.mm.protocal.protobuf.bbz;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public final class n
+  extends aa
 {
-  public String cqx;
-  private int vKv;
-  public String vKw;
-  public String vKx;
-  public String vKy;
-  public int vKz;
+  public String jzF;
   
-  n(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
+  public n(String paramString, LinkedList<String> paramLinkedList)
   {
-    this.vKv = paramInt1;
-    this.cqx = paramString1;
-    this.vKw = paramString2;
-    this.vKz = paramInt2;
-    this.vKx = paramString3;
-    this.vKy = paramString4;
+    AppMethodBeat.i(30993);
+    ad.i("MicroMsg.NetSceneGetUserInfoInApp", "appID: %s", new Object[] { paramString });
+    this.jzF = paramString;
+    Object localObject = new b.a();
+    ((b.a)localObject).gUU = new bby();
+    ((b.a)localObject).gUV = new bbz();
+    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getuserinfoinapp";
+    ((b.a)localObject).funcId = 452;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.fUF = ((b.a)localObject).atI();
+    localObject = (bby)this.fUF.gUS.gUX;
+    ((bby)localObject).fVC = paramString;
+    paramString = new LinkedList();
+    Iterator localIterator = paramLinkedList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (!bt.isNullOrNil(str)) {
+        paramString.add(z.BE(str));
+      }
+    }
+    ((bby)localObject).Cxc = paramString;
+    ((bby)localObject).DsF = paramLinkedList.size();
+    AppMethodBeat.o(30993);
   }
   
-  public final String toString()
+  public final void cb(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(79224);
-    String str = "id:" + this.vKv + ";productId:" + this.cqx + ";full:" + this.vKw + ";productState:" + this.vKz + ";priceCurrencyCode:" + this.vKx + ";priceAmountMicros:" + this.vKy;
-    AppMethodBeat.o(79224);
-    return str;
+    AppMethodBeat.i(30996);
+    if (paramArrayOfByte == null)
+    {
+      ad.e("MicroMsg.NetSceneGetUserInfoInApp", "buf is null");
+      AppMethodBeat.o(30996);
+      return;
+    }
+    b.c localc = this.fUF.gUT;
+    try
+    {
+      localc.fromProtoBuf(paramArrayOfByte);
+      AppMethodBeat.o(30996);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      ad.e("MicroMsg.NetSceneGetUserInfoInApp", paramArrayOfByte.getMessage());
+      ad.printErrStackTrace("MicroMsg.NetSceneGetUserInfoInApp", paramArrayOfByte, "", new Object[0]);
+      AppMethodBeat.o(30996);
+    }
+  }
+  
+  public final byte[] evp()
+  {
+    AppMethodBeat.i(30995);
+    try
+    {
+      byte[] arrayOfByte = ((b.b)this.fUF.getReqObj()).toProtoBuf();
+      AppMethodBeat.o(30995);
+      return arrayOfByte;
+    }
+    catch (Exception localException)
+    {
+      ad.e("MicroMsg.NetSceneGetUserInfoInApp", localException.getMessage());
+      ad.printErrStackTrace("MicroMsg.NetSceneGetUserInfoInApp", localException, "", new Object[0]);
+      AppMethodBeat.o(30995);
+    }
+    return null;
+  }
+  
+  public final bbz evq()
+  {
+    if (this.fUF == null) {
+      return null;
+    }
+    return (bbz)this.fUF.gUT.gUX;
+  }
+  
+  public final int getType()
+  {
+    return 14;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(30994);
+    ad.i("MicroMsg.NetSceneGetUserInfoInApp", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      ad.e("MicroMsg.NetSceneGetUserInfoInApp", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+      AppMethodBeat.o(30994);
+      return;
+    }
+    AppMethodBeat.o(30994);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.n
  * JD-Core Version:    0.7.0.1
  */

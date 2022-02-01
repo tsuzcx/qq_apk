@@ -8,16 +8,16 @@ final class LoginManager$2
 {
   LoginManager$2()
   {
-    AppMethodBeat.i(96871);
+    AppMethodBeat.i(7895);
     add("ads_management");
     add("create_event");
     add("rsvp_event");
-    AppMethodBeat.o(96871);
+    AppMethodBeat.o(7895);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.facebook.login.LoginManager.2
  * JD-Core Version:    0.7.0.1
  */

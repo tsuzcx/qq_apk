@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 public abstract class a<CONTEXT extends b>
 {
-  CONTEXT byD;
+  CONTEXT bZT;
   
   public abstract void a(a<CONTEXT>.a parama);
   
@@ -15,35 +15,35 @@ public abstract class a<CONTEXT extends b>
   
   public final class a
   {
-    public CONTEXT byE;
-    public k byF;
+    public CONTEXT bZU;
+    public k bZV;
     
     public a() {}
     
     public final void a(String paramString, JSONObject paramJSONObject)
     {
-      AppMethodBeat.i(90769);
-      this.byF.a(paramString, paramJSONObject);
-      AppMethodBeat.o(90769);
+      AppMethodBeat.i(140370);
+      this.bZV.a(paramString, paramJSONObject);
+      AppMethodBeat.o(140370);
     }
     
     public final void c(String paramString, Map<String, Object> paramMap)
     {
-      AppMethodBeat.i(90768);
-      k localk = this.byF;
+      AppMethodBeat.i(140369);
+      k localk = this.bZV;
       String str = paramString;
       if (paramString == null) {
         str = "";
       }
-      localk.byd = str;
+      localk.bZu = str;
       if (paramMap != null) {}
       for (paramString = new JSONObject(paramMap);; paramString = null)
       {
-        localk.bye = paramString;
-        if (localk.bxX != 0) {
-          localk.tU();
+        localk.bZv = paramString;
+        if (localk.bZo != 0) {
+          localk.AI();
         }
-        AppMethodBeat.o(90768);
+        AppMethodBeat.o(140369);
         return;
       }
     }
@@ -51,7 +51,7 @@ public abstract class a<CONTEXT extends b>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.d.a
  * JD-Core Version:    0.7.0.1
  */

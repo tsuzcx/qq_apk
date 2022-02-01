@@ -1,94 +1,103 @@
 package com.tencent.mm.plugin.appbrand.widget.e;
 
-import android.animation.AnimatorSet;
-import android.animation.ValueAnimator;
-import android.view.animation.LinearInterpolator;
-import com.tencent.mapsdk.raster.model.LatLng;
-import com.tencent.mapsdk.raster.model.Marker;
+import android.app.Activity;
+import android.content.Context;
+import android.text.Spannable.Factory;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.TextView;
+import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.g;
-import com.tencent.mm.plugin.location_soso.api.SoSoMapView;
-import com.tencent.tencentmap.mapsdk.map.Projection;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.ui.base.o;
+import d.g.b.k;
+import d.l;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/widget/prompt/AppBrandPopupToast;", "Lcom/tencent/mm/ui/base/MMPopupWindow;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mIconImage", "Landroid/widget/ImageView;", "mMessageText", "Landroid/widget/TextView;", "setIconDrawable", "drawable", "Landroid/graphics/drawable/Drawable;", "setMessage", "message", "", "show", "", "plugin-appbrand-integration_release"})
 public final class c
+  extends o
 {
-  private LinkedList<b.g> jru;
-  Marker jrv;
-  private SoSoMapView jrw;
-  f jrx;
-  public AnimatorSet nC;
+  private final TextView mkr;
+  private final ImageView mks;
   
-  public c(LinkedList<b.g> paramLinkedList, Marker paramMarker, SoSoMapView paramSoSoMapView)
+  public c(Context paramContext)
   {
-    AppMethodBeat.i(51262);
-    this.jru = paramLinkedList;
-    this.jrv = paramMarker;
-    this.jrw = paramSoSoMapView;
-    init();
-    AppMethodBeat.o(51262);
+    super(paramContext);
+    AppMethodBeat.i(51450);
+    Object localObject = new FrameLayout(paramContext);
+    View.inflate(paramContext, 2131493061, (ViewGroup)localObject);
+    setContentView((View)localObject);
+    localObject = getContentView().findViewById(2131303515);
+    k.g(localObject, "contentView.findViewById<View>(R.id.progress)");
+    ((View)localObject).setVisibility(8);
+    localObject = getContentView().findViewById(2131301215);
+    k.g(localObject, "contentView.findViewById(R.id.iv_icon)");
+    this.mks = ((ImageView)localObject);
+    localObject = getContentView().findViewById(2131305902);
+    k.g(localObject, "contentView.findViewById(R.id.title)");
+    this.mkr = ((TextView)localObject);
+    paramContext = com.tencent.mm.svg.a.a.g(paramContext.getResources(), 2131689649);
+    this.mks.setVisibility(0);
+    this.mks.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.mks.setImageDrawable(paramContext);
+    AppMethodBeat.o(51450);
   }
   
-  private ValueAnimator a(b.g paramg)
+  public final c H(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(51264);
-    Object localObject = new LatLng[2];
-    localObject[0] = new LatLng(paramg.hPj, paramg.hPi);
-    localObject[1] = new LatLng(paramg.latitude, paramg.longitude);
-    e locale1 = this.jrx.b(localObject[0]);
-    e locale2 = this.jrx.b(localObject[1]);
-    double[] arrayOfDouble = new double[1];
-    Projection localProjection = this.jrw.getProjection();
-    int i = 0;
-    double d = 0.0D;
-    while (i <= 0)
+    AppMethodBeat.i(51448);
+    int i;
+    if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
     {
-      arrayOfDouble[0] = localProjection.distanceBetween(localObject[0], localObject[1]);
-      d = arrayOfDouble[0] + 0.0D;
-      i += 1;
+      i = 1;
+      if (i != 0) {
+        break label143;
+      }
+      this.mkr.setLineSpacing(0.0F, 1.0F);
+      TextView localTextView = this.mkr;
+      View localView = getContentView();
+      k.g(localView, "contentView");
+      localTextView.setSpannableFactory((Spannable.Factory)new e(com.tencent.mm.cd.a.fromDPToPix(localView.getContext(), 18)));
+      this.mkr.setText(paramCharSequence, TextView.BufferType.SPANNABLE);
+      this.mkr.setVisibility(0);
+      paramCharSequence = getContentView();
+      k.g(paramCharSequence, "contentView");
+      i = com.tencent.mm.cd.a.fromDPToPix(paramCharSequence.getContext(), 27);
+      getContentView().findViewById(2131304793).setPadding(0, i, 0, 0);
     }
-    localObject = new ValueAnimator();
-    ((ValueAnimator)localObject).setDuration((paramg.duration * arrayOfDouble[0] / d));
-    ((ValueAnimator)localObject).setInterpolator(new LinearInterpolator());
-    ((ValueAnimator)localObject).setFloatValues(new float[] { (float)arrayOfDouble[0] });
-    ((ValueAnimator)localObject).addUpdateListener(new c.1(this, locale1, locale2, arrayOfDouble));
-    AppMethodBeat.o(51264);
-    return localObject;
+    for (;;)
+    {
+      AppMethodBeat.o(51448);
+      return this;
+      i = 0;
+      break;
+      label143:
+      this.mkr.setVisibility(4);
+    }
   }
   
-  private void init()
+  public final void show()
   {
-    AppMethodBeat.i(51263);
-    this.nC = new AnimatorSet();
-    this.jrx = new f();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jru.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(51449);
+    Object localObject = getContentView();
+    k.g(localObject, "contentView");
+    localObject = com.tencent.mm.ui.statusbar.d.kd(((View)localObject).getContext());
+    if (localObject != null)
     {
-      b.g localg = (b.g)localIterator.next();
-      if (localg.rotate != 0.0F)
-      {
-        ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { this.jrv.getRotation(), this.jrv.getRotation() + localg.rotate });
-        localValueAnimator.setDuration(localg.duration);
-        localValueAnimator.setInterpolator(new LinearInterpolator());
-        localValueAnimator.addUpdateListener(new c.2(this));
-        localArrayList.add(localValueAnimator);
-      }
-      else
-      {
-        localArrayList.add(a(localg));
-      }
+      super.showAtLocation(((Activity)localObject).findViewById(16908290), 17, 0, 0);
+      aq.n((Runnable)new d(this), 1500L);
+      AppMethodBeat.o(51449);
+      return;
     }
-    this.nC.playSequentially(localArrayList);
-    AppMethodBeat.o(51263);
+    AppMethodBeat.o(51449);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.e.c
  * JD-Core Version:    0.7.0.1
  */

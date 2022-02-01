@@ -1,271 +1,490 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import android.text.TextUtils;
+import android.util.Log;
+import android.webkit.URLUtil;
+import android.webkit.WebResourceResponse;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.a.d;
-import com.tencent.mm.plugin.appbrand.appcache.a.b.a.a;
-import com.tencent.mm.pluginsdk.g.a.c.l;
-import com.tencent.mm.pluginsdk.g.a.c.m;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.aa.d;
+import com.tencent.mm.plugin.appbrand.appstorage.m;
+import com.tencent.mm.plugin.appbrand.b.b;
+import com.tencent.mm.plugin.appbrand.b.c;
+import com.tencent.mm.plugin.appbrand.b.c.a;
+import com.tencent.mm.plugin.appbrand.config.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public final class be
+  implements r
 {
-  public static void a(bd parambd, m paramm, z.a parama)
+  private static final Map<AppBrandRuntime, be> iOy;
+  private final LinkedList<String> iOA;
+  private final q iOz;
+  private final String mAppId;
+  
+  static
   {
-    AppMethodBeat.i(59551);
-    ab.e("MicroMsg.AppBrand.ZstdLogic", "onZstdPkgDownloadFail, request(%s %d)", new Object[] { parambd.appId, Integer.valueOf(parambd.gXf) });
-    parama.a(paramm);
-    paramm = ((d)g.E(d.class)).we();
-    if (paramm == null)
+    AppMethodBeat.i(134709);
+    iOy = new HashMap();
+    AppMethodBeat.o(134709);
+  }
+  
+  private be(AppBrandRuntime paramAppBrandRuntime)
+  {
+    AppMethodBeat.i(134701);
+    this.mAppId = paramAppBrandRuntime.mAppId;
+    k localk = paramAppBrandRuntime.Ef();
+    ad.i("MicroMsg.WxaPkgRuntimeReader", "<init> appId[%s] sysConfig.class[%s], stacktrace=%s", new Object[] { this.mAppId, localk.getClass().getName(), Log.getStackTraceString(new Throwable()) });
+    this.iOA = new LinkedList();
+    this.iOz = bm.a(paramAppBrandRuntime, this);
+    this.iOz.aPy();
+    AppMethodBeat.o(134701);
+  }
+  
+  private static boolean Ek(String paramString)
+  {
+    AppMethodBeat.i(134706);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.e("MicroMsg.AppBrand.ZstdLogic", "onIncrementalPkgDownloadFail, before fallback full_pkg, nil storage");
-      ba.a(parambd.vMK, parambd.appId, b.a.a.gXs, null);
-      AppMethodBeat.o(59551);
+      AppMethodBeat.o(134706);
+      return true;
+    }
+    if (URLUtil.isAboutUrl(paramString))
+    {
+      AppMethodBeat.o(134706);
+      return true;
+    }
+    if (d.Ng(paramString))
+    {
+      AppMethodBeat.o(134706);
+      return true;
+    }
+    if (URLUtil.isFileUrl(paramString))
+    {
+      AppMethodBeat.o(134706);
+      return true;
+    }
+    AppMethodBeat.o(134706);
+    return false;
+  }
+  
+  public static void T(AppBrandRuntime paramAppBrandRuntime)
+  {
+    AppMethodBeat.i(134694);
+    U(paramAppBrandRuntime).aPy();
+    AppMethodBeat.o(134694);
+  }
+  
+  public static r U(AppBrandRuntime paramAppBrandRuntime)
+  {
+    AppMethodBeat.i(178545);
+    if ((paramAppBrandRuntime == null) || (paramAppBrandRuntime.isDestroyed()))
+    {
+      paramAppBrandRuntime = r.a.iLT;
+      AppMethodBeat.o(178545);
+      return paramAppBrandRuntime;
+    }
+    synchronized (iOy)
+    {
+      be localbe2 = (be)iOy.get(paramAppBrandRuntime);
+      be localbe1 = localbe2;
+      if (localbe2 == null)
+      {
+        localbe1 = new be(paramAppBrandRuntime);
+        iOy.put(paramAppBrandRuntime, localbe1);
+        paramAppBrandRuntime.iDK.a(new c.a()
+        {
+          public final void a(String arg1, b paramAnonymousb)
+          {
+            AppMethodBeat.i(178544);
+            if (b.iQN == paramAnonymousb) {}
+            synchronized (be.iOy)
+            {
+              paramAnonymousb = (be)be.iOy.remove(this.iOB);
+              if (paramAnonymousb != null) {
+                paramAnonymousb.close();
+              }
+              AppMethodBeat.o(178544);
+              return;
+            }
+          }
+        });
+      }
+      AppMethodBeat.o(178545);
+      return localbe1;
+    }
+  }
+  
+  public static String d(AppBrandRuntime paramAppBrandRuntime, String paramString)
+  {
+    AppMethodBeat.i(134696);
+    paramAppBrandRuntime = bt.nullAsNil((String)U(paramAppBrandRuntime).f(paramString, String.class));
+    AppMethodBeat.o(134696);
+    return paramAppBrandRuntime;
+  }
+  
+  public static WebResourceResponse e(AppBrandRuntime paramAppBrandRuntime, String paramString)
+  {
+    AppMethodBeat.i(134697);
+    paramAppBrandRuntime = (WebResourceResponse)U(paramAppBrandRuntime).f(paramString, WebResourceResponse.class);
+    AppMethodBeat.o(134697);
+    return paramAppBrandRuntime;
+  }
+  
+  public static InputStream f(AppBrandRuntime paramAppBrandRuntime, String paramString)
+  {
+    AppMethodBeat.i(134698);
+    paramAppBrandRuntime = (InputStream)U(paramAppBrandRuntime).f(paramString, InputStream.class);
+    AppMethodBeat.o(134698);
+    return paramAppBrandRuntime;
+  }
+  
+  public static boolean g(AppBrandRuntime paramAppBrandRuntime, String paramString)
+  {
+    AppMethodBeat.i(176544);
+    boolean bool = U(paramAppBrandRuntime).DR(paramString);
+    AppMethodBeat.o(176544);
+    return bool;
+  }
+  
+  public static String h(AppBrandRuntime paramAppBrandRuntime, String paramString)
+  {
+    AppMethodBeat.i(134699);
+    if (Ek(paramString))
+    {
+      AppMethodBeat.o(134699);
+      return null;
+    }
+    paramAppBrandRuntime = U(paramAppBrandRuntime).DQ(paramString);
+    if (paramAppBrandRuntime != null)
+    {
+      paramAppBrandRuntime = z.a(paramAppBrandRuntime.iLP, paramAppBrandRuntime.fileName);
+      AppMethodBeat.o(134699);
+      return paramAppBrandRuntime;
+    }
+    AppMethodBeat.o(134699);
+    return null;
+  }
+  
+  public final WxaPkg DO(String paramString)
+  {
+    AppMethodBeat.i(178550);
+    try
+    {
+      paramString = DS(paramString);
+      paramString = this.iOz.DO(paramString);
+      AppMethodBeat.o(178550);
+      return paramString;
+    }
+    catch (IllegalArgumentException paramString)
+    {
+      AppMethodBeat.o(178550);
+    }
+    return null;
+  }
+  
+  public final InputStream DP(String paramString)
+  {
+    AppMethodBeat.i(134707);
+    try
+    {
+      paramString = DS(paramString);
+      paramString = this.iOz.DP(paramString);
+      AppMethodBeat.o(134707);
+      return paramString;
+    }
+    catch (IllegalArgumentException paramString)
+    {
+      AppMethodBeat.o(134707);
+    }
+    return null;
+  }
+  
+  public final q.a DQ(String paramString)
+  {
+    AppMethodBeat.i(178548);
+    try
+    {
+      paramString = DS(paramString);
+      paramString = this.iOz.DQ(paramString);
+      AppMethodBeat.o(178548);
+      return paramString;
+    }
+    catch (IllegalArgumentException paramString)
+    {
+      AppMethodBeat.o(178548);
+    }
+    return null;
+  }
+  
+  public final boolean DR(String paramString)
+  {
+    AppMethodBeat.i(134702);
+    try
+    {
+      paramString = DS(paramString);
+      boolean bool = this.iOz.DR(paramString);
+      AppMethodBeat.o(134702);
+      return bool;
+    }
+    catch (IllegalArgumentException paramString)
+    {
+      AppMethodBeat.o(134702);
+    }
+    return false;
+  }
+  
+  public final String DS(String paramString)
+  {
+    AppMethodBeat.i(134705);
+    Object localObject = this.iOA.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (paramString.startsWith((String)((Iterator)localObject).next()))
+      {
+        AppMethodBeat.o(134705);
+        return paramString;
+      }
+    }
+    if (Ek(paramString))
+    {
+      paramString = new IllegalArgumentException("Invalid URL");
+      AppMethodBeat.o(134705);
+      throw paramString;
+    }
+    localObject = m.EV(paramString);
+    paramString = (String)localObject;
+    if (((String)localObject).startsWith("/__APP__")) {
+      paramString = m.EV(((String)localObject).substring(8));
+    }
+    AppMethodBeat.o(134705);
+    return paramString;
+  }
+  
+  public final void Ej(String paramString)
+  {
+    AppMethodBeat.i(178547);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(178547);
       return;
     }
-    ba.yI(parambd.vMK);
-    paramm = paramm.a(parambd.appId, parambd.gXf, parambd.cvs, new String[] { "downloadURL" });
-    if (paramm == null)
-    {
-      ab.e("MicroMsg.AppBrand.ZstdLogic", "onIncrementalPkgDownloadFail, before fallback full_pkg, nil record(%s %d)", new Object[] { parambd.appId, Integer.valueOf(parambd.gXf) });
-      AppMethodBeat.o(59551);
-      return;
-    }
-    ba.b(parambd.appId, parambd.cvs, parambd.gXf, paramm.field_downloadURL, parambd.gVA);
-    AppMethodBeat.o(59551);
+    this.iOA.add(paramString);
+    AppMethodBeat.o(178547);
+  }
+  
+  public final List<String> aPA()
+  {
+    AppMethodBeat.i(194463);
+    List localList = this.iOz.aPA();
+    AppMethodBeat.o(194463);
+    return localList;
+  }
+  
+  public final List<WxaPkg.Info> aPx()
+  {
+    AppMethodBeat.i(178549);
+    List localList = this.iOz.aPx();
+    AppMethodBeat.o(178549);
+    return localList;
+  }
+  
+  public final void aPy()
+  {
+    AppMethodBeat.i(178551);
+    this.iOz.aPy();
+    AppMethodBeat.o(178551);
+  }
+  
+  public final List<ModulePkgInfo> aPz()
+  {
+    AppMethodBeat.i(134703);
+    List localList = this.iOz.aPz();
+    AppMethodBeat.o(134703);
+    return localList;
+  }
+  
+  public final q aQw()
+  {
+    return this.iOz;
+  }
+  
+  public final void close()
+  {
+    AppMethodBeat.i(178552);
+    this.iOz.close();
+    AppMethodBeat.o(178552);
   }
   
   /* Error */
-  static boolean a(bd parambd)
+  public final <T> T f(String paramString, Class<T> paramClass)
   {
     // Byte code:
-    //   0: ldc 118
-    //   2: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: invokevirtual 122	com/tencent/mm/plugin/appbrand/appcache/bd:getFilePath	()Ljava/lang/String;
-    //   9: astore 5
-    //   11: new 124	java/io/File
-    //   14: dup
-    //   15: aload 5
-    //   17: invokespecial 128	java/io/File:<init>	(Ljava/lang/String;)V
-    //   20: astore_2
-    //   21: aload_2
-    //   22: invokevirtual 132	java/io/File:exists	()Z
-    //   25: ifne +17 -> 42
-    //   28: ldc 15
-    //   30: ldc 134
-    //   32: invokestatic 61	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   35: ldc 118
-    //   37: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   40: iconst_0
-    //   41: ireturn
-    //   42: new 124	java/io/File
-    //   45: dup
-    //   46: aload_0
-    //   47: invokevirtual 137	com/tencent/mm/plugin/appbrand/appcache/bd:awk	()Ljava/lang/String;
-    //   50: invokespecial 128	java/io/File:<init>	(Ljava/lang/String;)V
-    //   53: astore_0
-    //   54: aload_0
-    //   55: invokevirtual 132	java/io/File:exists	()Z
-    //   58: ifeq +24 -> 82
+    //   0: ldc_w 313
+    //   3: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: aload_1
+    //   8: invokevirtual 231	com/tencent/mm/plugin/appbrand/appcache/be:DS	(Ljava/lang/String;)Ljava/lang/String;
+    //   11: astore 7
+    //   13: invokestatic 319	java/lang/System:currentTimeMillis	()J
+    //   16: lstore 4
+    //   18: aconst_null
+    //   19: astore_1
+    //   20: aload_0
+    //   21: aload 7
+    //   23: invokevirtual 320	com/tencent/mm/plugin/appbrand/appcache/be:DP	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   26: astore 8
+    //   28: aload 8
+    //   30: ifnull +158 -> 188
+    //   33: aload 8
+    //   35: invokevirtual 324	java/io/InputStream:available	()I
+    //   38: istore_3
+    //   39: getstatic 327	com/tencent/mm/plugin/appbrand/appcache/be$b$a:iOC	Ljava/util/Map;
+    //   42: aload_2
+    //   43: invokeinterface 156 2 0
+    //   48: checkcast 13	com/tencent/mm/plugin/appbrand/appcache/be$b
+    //   51: aload 7
+    //   53: aload 8
+    //   55: invokeinterface 330 3 0
+    //   60: astore_1
     //   61: aload_0
-    //   62: invokevirtual 140	java/io/File:delete	()Z
-    //   65: ifne +17 -> 82
-    //   68: ldc 15
-    //   70: ldc 142
-    //   72: invokestatic 61	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   75: ldc 118
-    //   77: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   80: iconst_0
-    //   81: ireturn
-    //   82: new 144	com/tencent/mars/zstd/ZstdInputStream
-    //   85: dup
-    //   86: new 146	java/io/FileInputStream
+    //   62: getfield 62	com/tencent/mm/plugin/appbrand/appcache/be:mAppId	Ljava/lang/String;
+    //   65: astore 8
+    //   67: aload_1
+    //   68: ifnonnull +114 -> 182
+    //   71: iconst_1
+    //   72: istore 6
+    //   74: ldc 68
+    //   76: ldc_w 332
+    //   79: bipush 6
+    //   81: anewarray 4	java/lang/Object
+    //   84: dup
+    //   85: iconst_0
+    //   86: aload 8
+    //   88: aastore
     //   89: dup
-    //   90: aload_2
-    //   91: invokespecial 149	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   94: invokespecial 152	com/tencent/mars/zstd/ZstdInputStream:<init>	(Ljava/io/InputStream;)V
-    //   97: astore_2
-    //   98: new 154	java/io/FileOutputStream
-    //   101: dup
-    //   102: aload_0
-    //   103: invokespecial 155	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   106: astore_0
-    //   107: aload_0
-    //   108: astore 4
-    //   110: aload_2
-    //   111: astore_3
-    //   112: sipush 8192
-    //   115: newarray byte
-    //   117: astore 6
-    //   119: aload_0
-    //   120: astore 4
-    //   122: aload_2
-    //   123: astore_3
-    //   124: aload_2
-    //   125: aload 6
-    //   127: iconst_0
-    //   128: sipush 8192
-    //   131: invokevirtual 159	com/tencent/mars/zstd/ZstdInputStream:read	([BII)I
-    //   134: istore_1
-    //   135: iload_1
-    //   136: iconst_m1
-    //   137: if_icmpeq +65 -> 202
-    //   140: aload_0
-    //   141: astore 4
-    //   143: aload_2
-    //   144: astore_3
-    //   145: aload_0
-    //   146: aload 6
-    //   148: iconst_0
-    //   149: iload_1
-    //   150: invokevirtual 163	java/io/FileOutputStream:write	([BII)V
-    //   153: goto -34 -> 119
-    //   156: astore 5
-    //   158: aload_0
-    //   159: astore 4
-    //   161: aload_2
-    //   162: astore_3
-    //   163: ldc 15
-    //   165: ldc 165
-    //   167: iconst_1
-    //   168: anewarray 4	java/lang/Object
-    //   171: dup
-    //   172: iconst_0
-    //   173: aload 5
-    //   175: aastore
-    //   176: invokestatic 39	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   179: aload_0
-    //   180: ifnull +7 -> 187
-    //   183: aload_0
-    //   184: invokevirtual 169	java/io/FileOutputStream:close	()V
-    //   187: aload_2
-    //   188: ifnull +7 -> 195
-    //   191: aload_2
-    //   192: invokevirtual 170	com/tencent/mars/zstd/ZstdInputStream:close	()V
-    //   195: ldc 118
-    //   197: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   200: iconst_0
-    //   201: ireturn
-    //   202: aload_0
-    //   203: astore 4
-    //   205: aload_2
-    //   206: astore_3
-    //   207: aload_0
-    //   208: invokevirtual 173	java/io/FileOutputStream:flush	()V
-    //   211: aload_0
-    //   212: astore 4
-    //   214: aload_2
-    //   215: astore_3
-    //   216: aload 5
-    //   218: invokestatic 179	com/tencent/mm/vfs/e:deleteFile	(Ljava/lang/String;)Z
-    //   221: pop
-    //   222: aload_0
-    //   223: invokevirtual 169	java/io/FileOutputStream:close	()V
-    //   226: aload_2
-    //   227: invokevirtual 170	com/tencent/mars/zstd/ZstdInputStream:close	()V
-    //   230: ldc 118
-    //   232: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   235: iconst_1
-    //   236: ireturn
-    //   237: astore_0
-    //   238: aconst_null
-    //   239: astore 4
-    //   241: aconst_null
-    //   242: astore_2
-    //   243: aload 4
-    //   245: ifnull +8 -> 253
-    //   248: aload 4
-    //   250: invokevirtual 169	java/io/FileOutputStream:close	()V
-    //   253: aload_2
-    //   254: ifnull +7 -> 261
-    //   257: aload_2
-    //   258: invokevirtual 170	com/tencent/mars/zstd/ZstdInputStream:close	()V
-    //   261: ldc 118
-    //   263: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   266: aload_0
-    //   267: athrow
-    //   268: astore_0
-    //   269: goto -43 -> 226
-    //   272: astore_0
-    //   273: goto -43 -> 230
-    //   276: astore_0
-    //   277: goto -90 -> 187
-    //   280: astore_0
-    //   281: goto -86 -> 195
-    //   284: astore_3
-    //   285: goto -32 -> 253
-    //   288: astore_2
-    //   289: goto -28 -> 261
-    //   292: astore_0
-    //   293: aconst_null
-    //   294: astore 4
-    //   296: goto -53 -> 243
-    //   299: astore_0
-    //   300: aload_3
-    //   301: astore_2
-    //   302: goto -59 -> 243
-    //   305: astore 5
-    //   307: aconst_null
-    //   308: astore_0
-    //   309: aconst_null
-    //   310: astore_2
-    //   311: goto -153 -> 158
-    //   314: astore 5
-    //   316: aconst_null
-    //   317: astore_0
-    //   318: goto -160 -> 158
+    //   90: iconst_1
+    //   91: aload 7
+    //   93: aastore
+    //   94: dup
+    //   95: iconst_2
+    //   96: iload 6
+    //   98: invokestatic 338	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   101: aastore
+    //   102: dup
+    //   103: iconst_3
+    //   104: aload_2
+    //   105: invokevirtual 80	java/lang/Class:getName	()Ljava/lang/String;
+    //   108: aastore
+    //   109: dup
+    //   110: iconst_4
+    //   111: iload_3
+    //   112: invokestatic 343	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   115: aastore
+    //   116: dup
+    //   117: iconst_5
+    //   118: invokestatic 319	java/lang/System:currentTimeMillis	()J
+    //   121: lload 4
+    //   123: lsub
+    //   124: invokestatic 348	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   127: aastore
+    //   128: invokestatic 94	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   131: ldc_w 313
+    //   134: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   137: aload_1
+    //   138: areturn
+    //   139: astore_1
+    //   140: ldc_w 313
+    //   143: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   146: aconst_null
+    //   147: areturn
+    //   148: astore_1
+    //   149: ldc 68
+    //   151: ldc_w 350
+    //   154: iconst_3
+    //   155: anewarray 4	java/lang/Object
+    //   158: dup
+    //   159: iconst_0
+    //   160: aload_0
+    //   161: getfield 62	com/tencent/mm/plugin/appbrand/appcache/be:mAppId	Ljava/lang/String;
+    //   164: aastore
+    //   165: dup
+    //   166: iconst_1
+    //   167: aload 7
+    //   169: aastore
+    //   170: dup
+    //   171: iconst_2
+    //   172: aload_1
+    //   173: aastore
+    //   174: invokestatic 352	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   177: iconst_m1
+    //   178: istore_3
+    //   179: goto -140 -> 39
+    //   182: iconst_0
+    //   183: istore 6
+    //   185: goto -111 -> 74
+    //   188: iconst_m1
+    //   189: istore_3
+    //   190: goto -129 -> 61
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	321	0	parambd	bd
-    //   134	16	1	i	int
-    //   20	238	2	localObject1	Object
-    //   288	1	2	localIOException1	java.io.IOException
-    //   301	10	2	localObject2	Object
-    //   111	105	3	localObject3	Object
-    //   284	17	3	localIOException2	java.io.IOException
-    //   108	187	4	localbd	bd
-    //   9	7	5	str	String
-    //   156	61	5	localException1	java.lang.Exception
-    //   305	1	5	localException2	java.lang.Exception
-    //   314	1	5	localException3	java.lang.Exception
-    //   117	30	6	arrayOfByte	byte[]
+    //   0	193	0	this	be
+    //   0	193	1	paramString	String
+    //   0	193	2	paramClass	Class<T>
+    //   38	152	3	i	int
+    //   16	106	4	l	long
+    //   72	112	6	bool	boolean
+    //   11	157	7	str	String
+    //   26	61	8	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   112	119	156	java/lang/Exception
-    //   124	135	156	java/lang/Exception
-    //   145	153	156	java/lang/Exception
-    //   207	211	156	java/lang/Exception
-    //   216	222	156	java/lang/Exception
-    //   82	98	237	finally
-    //   222	226	268	java/io/IOException
-    //   226	230	272	java/io/IOException
-    //   183	187	276	java/io/IOException
-    //   191	195	280	java/io/IOException
-    //   248	253	284	java/io/IOException
-    //   257	261	288	java/io/IOException
-    //   98	107	292	finally
-    //   112	119	299	finally
-    //   124	135	299	finally
-    //   145	153	299	finally
-    //   163	179	299	finally
-    //   207	211	299	finally
-    //   216	222	299	finally
-    //   82	98	305	java/lang/Exception
-    //   98	107	314	java/lang/Exception
+    //   6	13	139	java/lang/IllegalArgumentException
+    //   33	39	148	java/io/IOException
   }
   
-  public static boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, ba.a parama)
+  static final class a
+    implements be.b<byte[]>
+  {}
+  
+  static abstract interface b<T>
   {
-    AppMethodBeat.i(59550);
-    boolean bool = ba.a(new bd(paramString1, paramString2, paramInt1, paramInt2, parama), parama);
-    AppMethodBeat.o(59550);
-    return bool;
+    public abstract T b(String paramString, InputStream paramInputStream);
+    
+    public static final class a
+    {
+      static final Map<Class, be.b> iOC;
+      
+      static
+      {
+        AppMethodBeat.i(134691);
+        HashMap localHashMap = new HashMap();
+        iOC = localHashMap;
+        localHashMap.put(InputStream.class, new be.c((byte)0));
+        iOC.put(WebResourceResponse.class, new be.e((byte)0));
+        iOC.put(String.class, new be.d((byte)0));
+        iOC.put([B.class, new be.a((byte)0));
+        AppMethodBeat.o(134691);
+      }
+    }
   }
+  
+  static final class c
+    implements be.b<InputStream>
+  {}
+  
+  static final class d
+    implements be.b<String>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.be
  * JD-Core Version:    0.7.0.1
  */

@@ -14,17 +14,17 @@ final class AppBrandDesktopView$i
     super(paramContext);
   }
   
-  public final PointF bI(int paramInt)
-  {
-    AppMethodBeat.i(133854);
-    PointF localPointF = AppBrandDesktopView.k(this.jfg).bI(paramInt);
-    AppMethodBeat.o(133854);
-    return localPointF;
-  }
-  
-  public final float c(DisplayMetrics paramDisplayMetrics)
+  public final float a(DisplayMetrics paramDisplayMetrics)
   {
     return 300.0F / paramDisplayMetrics.densityDpi;
+  }
+  
+  public final PointF bZ(int paramInt)
+  {
+    AppMethodBeat.i(49598);
+    PointF localPointF = AppBrandDesktopView.j(this.lVl).bZ(paramInt);
+    AppMethodBeat.o(49598);
+    return localPointF;
   }
   
   public final int e(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -34,7 +34,7 @@ final class AppBrandDesktopView$i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopView.i
  * JD-Core Version:    0.7.0.1
  */

@@ -2,33 +2,57 @@ package com.tencent.mm.plugin.backup.bakoldlogic.d;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.model.ar.a;
+import com.tencent.mm.model.ar.b;
+import com.tencent.mm.pluginsdk.model.app.i;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
 {
-  ak handler;
-  public LinkedList<a.a> jGk;
+  com.tencent.mm.sdk.platformtools.ap handler;
+  public LinkedList<a> mxD;
   
   public a()
   {
-    AppMethodBeat.i(18000);
-    this.jGk = new LinkedList();
-    this.handler = new ak(Looper.getMainLooper());
-    AppMethodBeat.o(18000);
+    AppMethodBeat.i(22056);
+    this.mxD = new LinkedList();
+    this.handler = new com.tencent.mm.sdk.platformtools.ap(Looper.getMainLooper());
+    AppMethodBeat.o(22056);
   }
   
-  public final boolean h(int paramInt, Object paramObject)
+  public final boolean i(final int paramInt, final Object paramObject)
   {
-    AppMethodBeat.i(18001);
-    this.handler.post(new a.1(this, paramInt, paramObject));
-    AppMethodBeat.o(18001);
+    AppMethodBeat.i(22057);
+    this.handler.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(22054);
+        a.this.mxD.add(new a.a(a.this, paramInt, paramObject));
+        AppMethodBeat.o(22054);
+      }
+    });
+    AppMethodBeat.o(22057);
     return true;
+  }
+  
+  public final class a
+  {
+    public Object obj;
+    public int type;
+    
+    public a(int paramInt, Object paramObject)
+    {
+      this.type = paramInt;
+      this.obj = paramObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.d.a
  * JD-Core Version:    0.7.0.1
  */

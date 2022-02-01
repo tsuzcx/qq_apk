@@ -15,26 +15,26 @@ import java.util.Set;
 public class g
   extends e<IBinder>
 {
-  private static Class<?> alJ = null;
-  private static Field alK = null;
-  private static Method alL = null;
-  private final Context alG;
-  private final String alH;
-  private final h alI;
+  private static Class<?> apj = null;
+  private static Field apk = null;
+  private static Method apl = null;
+  private final Context apg;
+  private final String aph;
+  private final h api;
   
   /* Error */
   static
   {
     // Byte code:
     //   0: aconst_null
-    //   1: putstatic 26	com/tencent/tinker/loader/hotplug/b/g:alJ	Ljava/lang/Class;
+    //   1: putstatic 26	com/tencent/tinker/loader/hotplug/b/g:apj	Ljava/lang/Class;
     //   4: aconst_null
-    //   5: putstatic 28	com/tencent/tinker/loader/hotplug/b/g:alK	Ljava/lang/reflect/Field;
+    //   5: putstatic 28	com/tencent/tinker/loader/hotplug/b/g:apk	Ljava/lang/reflect/Field;
     //   8: aconst_null
-    //   9: putstatic 30	com/tencent/tinker/loader/hotplug/b/g:alL	Ljava/lang/reflect/Method;
+    //   9: putstatic 30	com/tencent/tinker/loader/hotplug/b/g:apl	Ljava/lang/reflect/Method;
     //   12: ldc 2
     //   14: monitorenter
-    //   15: getstatic 26	com/tencent/tinker/loader/hotplug/b/g:alJ	Ljava/lang/Class;
+    //   15: getstatic 26	com/tencent/tinker/loader/hotplug/b/g:apj	Ljava/lang/Class;
     //   18: astore_0
     //   19: aload_0
     //   20: ifnonnull +42 -> 62
@@ -42,12 +42,12 @@ public class g
     //   25: invokestatic 38	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   28: astore_0
     //   29: aload_0
-    //   30: putstatic 26	com/tencent/tinker/loader/hotplug/b/g:alJ	Ljava/lang/Class;
+    //   30: putstatic 26	com/tencent/tinker/loader/hotplug/b/g:apj	Ljava/lang/Class;
     //   33: aload_0
     //   34: ldc 40
     //   36: invokestatic 46	com/tencent/tinker/loader/a/h:a	(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   39: putstatic 28	com/tencent/tinker/loader/hotplug/b/g:alK	Ljava/lang/reflect/Field;
-    //   42: getstatic 26	com/tencent/tinker/loader/hotplug/b/g:alJ	Ljava/lang/Class;
+    //   39: putstatic 28	com/tencent/tinker/loader/hotplug/b/g:apk	Ljava/lang/reflect/Field;
+    //   42: getstatic 26	com/tencent/tinker/loader/hotplug/b/g:apj	Ljava/lang/Class;
     //   45: ldc 48
     //   47: iconst_1
     //   48: anewarray 34	java/lang/Class
@@ -56,7 +56,7 @@ public class g
     //   53: ldc 50
     //   55: aastore
     //   56: invokestatic 53	com/tencent/tinker/loader/a/h:a	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   59: putstatic 30	com/tencent/tinker/loader/hotplug/b/g:alL	Ljava/lang/reflect/Method;
+    //   59: putstatic 30	com/tencent/tinker/loader/hotplug/b/g:apl	Ljava/lang/reflect/Method;
     //   62: ldc 2
     //   64: monitorexit
     //   65: return
@@ -92,9 +92,9 @@ public class g
     while ((paramContext != null) && ((paramContext instanceof ContextWrapper))) {
       paramContext = ((ContextWrapper)paramContext).getBaseContext();
     }
-    this.alG = paramContext;
-    this.alH = paramString;
-    this.alI = paramh;
+    this.apg = paramContext;
+    this.aph = paramString;
+    this.api = paramh;
   }
   
   private static <T> T a(Class<?>[] paramArrayOfClass, InvocationHandler paramInvocationHandler)
@@ -130,7 +130,7 @@ public class g
                   return localClass;
                 }
               }
-              throw new ClassNotFoundException("cannot find class: " + paramAnonymousString);
+              throw new ClassNotFoundException("cannot find class: ".concat(String.valueOf(paramAnonymousString)));
             }
           }) {
         try
@@ -140,13 +140,13 @@ public class g
         }
         catch (Throwable paramInvocationHandler)
         {
-          throw new RuntimeException("cl: " + paramArrayOfClass, localThrowable);
+          throw new RuntimeException("cl: ".concat(String.valueOf(paramArrayOfClass)), localThrowable);
         }
       }
     }
   }
   
-  private static Class<?>[] c(Class<?> paramClass)
+  private static Class<?>[] i(Class<?> paramClass)
   {
     if (paramClass == null) {
       return null;

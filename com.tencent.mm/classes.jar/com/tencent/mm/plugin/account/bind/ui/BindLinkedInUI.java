@@ -2,27 +2,33 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.Spannable.Factory;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.protocal.protobuf.aek;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.protocal.protobuf.amy;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
@@ -30,53 +36,75 @@ import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 
 public class BindLinkedInUI
   extends MMActivity
-  implements f
+  implements com.tencent.mm.al.g
 {
-  private String dqV;
-  private String dqW;
-  private ProgressDialog fsw;
-  private boolean gsM = false;
-  private String gsN;
-  private boolean gsO = false;
-  private boolean gsP = false;
-  private boolean gsQ = false;
-  private Bundle gsR;
-  private boolean gsS = false;
-  private boolean gsT = false;
-  private TextView gsU;
-  private TextView gsV;
-  private View gsW;
-  private MMSwitchBtn gsX;
-  private TextView gsY;
-  private TextView gsZ;
-  private TextView gta;
-  private String gtb;
-  private String gtc;
-  private String gtd;
-  private String gte;
+  private String evK;
+  private String evL;
+  private ProgressDialog gUr;
+  private boolean ifO = false;
+  private String ifP;
+  private boolean ifQ = false;
+  private boolean ifR = false;
+  private boolean ifS = false;
+  private Bundle ifT;
+  private boolean ifU = false;
+  private boolean ifV = false;
+  private TextView ifW;
+  private TextView ifX;
+  private View ifY;
+  private MMSwitchBtn ifZ;
+  private TextView iga;
+  private TextView igb;
+  private TextView igc;
+  private String igd;
+  private String ige;
+  private String igf;
+  private String igg;
   private String name;
   private int status;
   
-  private void Kc()
+  private void BU(String paramString)
+  {
+    AppMethodBeat.i(109837);
+    int i = getString(2131757701).indexOf("%s");
+    Object localObject = getString(2131757701, new Object[] { paramString });
+    localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
+    ((Spannable)localObject).setSpan(new ClickableSpan()
+    {
+      public final void onClick(View paramAnonymousView) {}
+      
+      public final void updateDrawState(TextPaint paramAnonymousTextPaint)
+      {
+        AppMethodBeat.i(109827);
+        paramAnonymousTextPaint.setColor(BindLinkedInUI.this.getResources().getColor(2131100547));
+        paramAnonymousTextPaint.setUnderlineText(false);
+        AppMethodBeat.o(109827);
+      }
+    }, i, paramString.length() + i, 33);
+    this.ifW.setText((CharSequence)localObject);
+    AppMethodBeat.o(109837);
+  }
+  
+  private void VL()
   {
     boolean bool2 = true;
-    AppMethodBeat.i(13405);
-    this.gsN = ((String)g.RL().Ru().get(286721, null));
-    if (!bo.isNullOrNil(this.gsN))
+    AppMethodBeat.i(109833);
+    this.ifP = ((String)com.tencent.mm.kernel.g.afB().afk().get(286721, null));
+    if (!bt.isNullOrNil(this.ifP))
     {
       bool1 = true;
-      this.gsM = bool1;
-      this.name = ((String)g.RL().Ru().get(286722, null));
-      this.status = r.Zr();
+      this.ifO = bool1;
+      this.name = ((String)com.tencent.mm.kernel.g.afB().afk().get(286722, null));
+      this.status = u.aqK();
       if ((this.status & 0x400000) == 0) {
-        break label99;
+        break label97;
       }
     }
-    label99:
+    label97:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.gsO = bool1;
-      AppMethodBeat.o(13405);
+      this.ifQ = bool1;
+      AppMethodBeat.o(109833);
       return;
       bool1 = false;
       break;
@@ -85,145 +113,172 @@ public class BindLinkedInUI
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, String paramString, boolean paramBoolean3)
   {
-    AppMethodBeat.i(13411);
-    this.gta.setVisibility(8);
+    AppMethodBeat.i(109839);
+    this.igc.setVisibility(8);
     if (paramBoolean1)
     {
-      this.gsV.setVisibility(8);
-      this.gsU.setVisibility(0);
-      wO(paramString);
-      this.gsW.setVisibility(0);
-      this.gsY.setVisibility(8);
+      this.ifX.setVisibility(8);
+      this.ifW.setVisibility(0);
+      BU(paramString);
+      this.ifY.setVisibility(0);
+      this.iga.setVisibility(8);
       if (paramBoolean2) {
-        this.gsZ.setVisibility(0);
+        this.igb.setVisibility(0);
       }
-      this.gsX.setCheck(paramBoolean3);
-      this.gsX.setSwitchListener(new BindLinkedInUI.3(this));
-      AppMethodBeat.o(13411);
+      this.ifZ.setCheck(paramBoolean3);
+      this.ifZ.setSwitchListener(new MMSwitchBtn.a()
+      {
+        public final void onStatusChange(boolean paramAnonymousBoolean)
+        {
+          AppMethodBeat.i(109817);
+          BindLinkedInUI.a(BindLinkedInUI.this, paramAnonymousBoolean, true);
+          AppMethodBeat.o(109817);
+        }
+      });
+      AppMethodBeat.o(109839);
       return;
     }
-    this.gsU.setVisibility(8);
-    this.gsU.setText(getString(2131298641));
-    this.gsV.setVisibility(0);
-    this.gsW.setVisibility(8);
-    this.gsY.setVisibility(0);
-    this.gsZ.setVisibility(8);
-    AppMethodBeat.o(13411);
+    this.ifW.setVisibility(8);
+    this.ifW.setText(getString(2131757702));
+    this.ifX.setVisibility(0);
+    this.ifY.setVisibility(8);
+    this.iga.setVisibility(0);
+    this.igb.setVisibility(8);
+    AppMethodBeat.o(109839);
   }
   
-  private void bJ()
+  private void cE()
   {
     boolean bool = true;
-    AppMethodBeat.i(13412);
-    if ((this.gsP) && (this.gsR == null))
+    AppMethodBeat.i(109840);
+    if ((this.ifR) && (this.ifT == null))
     {
-      ab.e("MicroMsg.BindLinkedInUI", "bindBundle is null");
-      AppMethodBeat.o(13412);
+      ad.e("MicroMsg.BindLinkedInUI", "bindBundle is null");
+      AppMethodBeat.o(109840);
       return;
     }
-    if (this.gsQ)
+    if (this.ifS)
     {
-      a(this.gsM, false, this.name, this.gsO);
-      AppMethodBeat.o(13412);
+      a(this.ifO, false, this.name, this.ifQ);
+      AppMethodBeat.o(109840);
       return;
     }
-    if (this.gsP)
+    if (this.ifR)
     {
-      if ((this.gsM) && (this.gsN.equals(this.dqV))) {}
+      if ((this.ifO) && (this.ifP.equals(this.evK))) {}
       for (;;)
       {
-        d(bool, this.dqW, this.gsO);
-        AppMethodBeat.o(13412);
+        d(bool, this.evL, this.ifQ);
+        AppMethodBeat.o(109840);
         return;
         bool = false;
       }
     }
-    a(this.gsM, true, this.name, this.gsO);
-    AppMethodBeat.o(13412);
+    a(this.ifO, true, this.name, this.ifQ);
+    AppMethodBeat.o(109840);
   }
   
   private void d(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    AppMethodBeat.i(13410);
-    this.gsU.setVisibility(0);
-    wO(paramString);
-    this.gsW.setVisibility(0);
-    this.gsZ.setVisibility(8);
+    AppMethodBeat.i(109838);
+    this.ifW.setVisibility(0);
+    BU(paramString);
+    this.ifY.setVisibility(0);
+    this.igb.setVisibility(8);
     if (paramBoolean1)
     {
-      this.gsV.setVisibility(8);
-      this.gsY.setVisibility(8);
-      this.gta.setVisibility(8);
-      this.gsX.setCheck(paramBoolean2);
-      this.gsX.setSwitchListener(new MMSwitchBtn.a()
+      this.ifX.setVisibility(8);
+      this.iga.setVisibility(8);
+      this.igc.setVisibility(8);
+      this.ifZ.setCheck(paramBoolean2);
+      this.ifZ.setSwitchListener(new MMSwitchBtn.a()
       {
         public final void onStatusChange(boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(13400);
+          AppMethodBeat.i(109828);
           BindLinkedInUI.a(BindLinkedInUI.this, paramAnonymousBoolean, true);
-          AppMethodBeat.o(13400);
+          AppMethodBeat.o(109828);
         }
       });
-      AppMethodBeat.o(13410);
+      AppMethodBeat.o(109838);
       return;
     }
-    this.gsV.setVisibility(0);
-    this.gsY.setVisibility(0);
-    this.gta.setVisibility(0);
-    this.gsX.setCheck(paramBoolean2);
-    this.gsX.setSwitchListener(new BindLinkedInUI.2(this));
-    AppMethodBeat.o(13410);
+    this.ifX.setVisibility(0);
+    this.iga.setVisibility(0);
+    this.igc.setVisibility(0);
+    this.ifZ.setCheck(paramBoolean2);
+    this.ifZ.setSwitchListener(new MMSwitchBtn.a()
+    {
+      public final void onStatusChange(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(109816);
+        BindLinkedInUI.a(BindLinkedInUI.this, paramAnonymousBoolean, false);
+        AppMethodBeat.o(109816);
+      }
+    });
+    AppMethodBeat.o(109838);
   }
   
-  private void dt(boolean paramBoolean)
+  private void eP(boolean paramBoolean)
   {
-    AppMethodBeat.i(13408);
-    if (this.gsR == null)
+    AppMethodBeat.i(109836);
+    if (this.ifT == null)
     {
-      ab.e("MicroMsg.BindLinkedInUI", "bindBundle is null !!");
-      AppMethodBeat.o(13408);
+      ad.e("MicroMsg.BindLinkedInUI", "bindBundle is null !!");
+      AppMethodBeat.o(109836);
       return;
     }
-    if (this.gsX.ADA) {}
+    if (this.ifZ.HAh) {}
     for (int i = 1;; i = 2)
     {
-      com.tencent.mm.plugin.account.bind.a.a locala = new com.tencent.mm.plugin.account.bind.a.a(i, this.dqV, this.dqW, "", this.gtb, this.gtc, this.gtd, this.gte);
+      final com.tencent.mm.plugin.account.bind.a.a locala = new com.tencent.mm.plugin.account.bind.a.a(i, this.evK, this.evL, "", this.igd, this.ige, this.igf, this.igg);
       if (!paramBoolean) {
-        this.fsw = h.b(this, getString(2131301086), false, new BindLinkedInUI.11(this, locala));
+        this.gUr = h.b(this, getString(2131760709), false, new DialogInterface.OnCancelListener()
+        {
+          public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+          {
+            AppMethodBeat.i(109826);
+            com.tencent.mm.kernel.g.aeS().a(locala);
+            AppMethodBeat.o(109826);
+          }
+        });
       }
-      g.Rc().a(locala, 0);
-      AppMethodBeat.o(13408);
+      com.tencent.mm.kernel.g.aeS().a(locala, 0);
+      AppMethodBeat.o(109836);
       return;
     }
   }
   
   private void goBack()
   {
-    AppMethodBeat.i(13407);
-    if (this.gsP)
+    AppMethodBeat.i(109835);
+    if (this.ifR)
     {
-      if (this.gsT)
+      if (this.ifV)
       {
-        Intent localIntent = com.tencent.mm.plugin.account.a.a.gmO.bm(this);
-        localIntent.addFlags(603979776);
-        localIntent.putExtra("preferred_tab", 2);
-        startActivity(localIntent);
-        AppMethodBeat.o(13407);
+        Object localObject = com.tencent.mm.plugin.account.a.a.hYt.bA(this);
+        ((Intent)localObject).addFlags(603979776);
+        ((Intent)localObject).putExtra("preferred_tab", 2);
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/account/bind/ui/BindLinkedInUI", "goBack", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindLinkedInUI", "goBack", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(109835);
         return;
       }
       setResult(-1);
       finish();
-      AppMethodBeat.o(13407);
+      AppMethodBeat.o(109835);
       return;
     }
     setResult(-1);
     finish();
-    AppMethodBeat.o(13407);
+    AppMethodBeat.o(109835);
   }
   
-  private void m(boolean paramBoolean1, boolean paramBoolean2)
+  private void n(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(13413);
+    AppMethodBeat.i(109841);
     if (paramBoolean1)
     {
       this.status |= 0x400000;
@@ -234,276 +289,302 @@ public class BindLinkedInUI
     label131:
     for (int i = 1;; i = 2)
     {
-      g.RL().Ru().set(7, Integer.valueOf(this.status));
+      com.tencent.mm.kernel.g.afB().afk().set(7, Integer.valueOf(this.status));
       if (paramBoolean2)
       {
-        aek localaek = new aek();
-        localaek.wXn = 33;
-        localaek.pKC = i;
-        ((j)g.E(j.class)).Yz().c(new j.a(23, localaek));
-        com.tencent.mm.plugin.account.a.a.gmP.BO();
+        amy localamy = new amy();
+        localamy.DnY = 33;
+        localamy.uMR = i;
+        ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new j.a(23, localamy));
+        com.tencent.mm.plugin.account.a.a.hYu.Ll();
       }
-      AppMethodBeat.o(13413);
+      AppMethodBeat.o(109841);
       return;
       this.status &= 0xFFBFFFFF;
       break;
     }
   }
   
-  private void wO(String paramString)
+  private boolean x(Intent paramIntent)
   {
-    AppMethodBeat.i(13409);
-    int i = getString(2131298640).indexOf("%s");
-    Object localObject = getString(2131298640, new Object[] { paramString });
-    localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
-    ((Spannable)localObject).setSpan(new BindLinkedInUI.12(this), i, paramString.length() + i, 33);
-    this.gsU.setText((CharSequence)localObject);
-    AppMethodBeat.o(13409);
-  }
-  
-  private boolean y(Intent paramIntent)
-  {
-    AppMethodBeat.i(13414);
+    AppMethodBeat.i(109842);
     Object localObject = paramIntent.getBundleExtra("result_data");
     paramIntent = ((Bundle)localObject).getString("ret");
     String str1 = ((Bundle)localObject).getString("limid");
     String str2 = ((Bundle)localObject).getString("liname");
     String str3 = ((Bundle)localObject).getString("liurl");
     localObject = ((Bundle)localObject).getString("liswitch");
-    if (bo.isNullOrNil(paramIntent))
+    if (bt.isNullOrNil(paramIntent))
     {
-      ab.e("MicroMsg.BindLinkedInUI", "linkedin oauth ret is null, maybe canceled");
-      AppMethodBeat.o(13414);
+      ad.e("MicroMsg.BindLinkedInUI", "linkedin oauth ret is null, maybe canceled");
+      AppMethodBeat.o(109842);
       return false;
     }
-    int i = bo.apV(paramIntent);
+    int i = bt.aGh(paramIntent);
     if (i != 0)
     {
-      ab.e("MicroMsg.BindLinkedInUI", "linkedin oauth bind failed ret %s ", new Object[] { Integer.valueOf(i) });
+      ad.e("MicroMsg.BindLinkedInUI", "linkedin oauth bind failed ret %s ", new Object[] { Integer.valueOf(i) });
       if (i == 1) {}
-      for (i = 2131298651;; i = 2131298650)
+      for (i = 2131757712;; i = 2131757711)
       {
-        h.b(this, getString(i), null, true);
-        AppMethodBeat.o(13414);
+        h.c(this, getString(i), null, true);
+        AppMethodBeat.o(109842);
         return false;
       }
     }
-    if (bo.isNullOrNil(str1))
+    if (bt.isNullOrNil(str1))
     {
-      ab.e("MicroMsg.BindLinkedInUI", "linkedin member id is null");
-      AppMethodBeat.o(13414);
+      ad.e("MicroMsg.BindLinkedInUI", "linkedin member id is null");
+      AppMethodBeat.o(109842);
       return false;
     }
-    ab.d("MicroMsg.BindLinkedInUI", "%s, %s, %s, %s", new Object[] { str1, str2, str3, localObject });
-    g.RL().Ru().set(286722, str2);
-    g.RL().Ru().set(286721, str1);
-    g.RL().Ru().set(286723, str3);
-    if (!bo.isNullOrNil((String)localObject)) {
-      if (bo.apV((String)localObject) != 1) {
-        break label311;
+    ad.d("MicroMsg.BindLinkedInUI", "%s, %s, %s, %s", new Object[] { str1, str2, str3, localObject });
+    com.tencent.mm.kernel.g.afB().afk().set(286722, str2);
+    com.tencent.mm.kernel.g.afB().afk().set(286721, str1);
+    com.tencent.mm.kernel.g.afB().afk().set(286723, str3);
+    if (!bt.isNullOrNil((String)localObject)) {
+      if (bt.aGh((String)localObject) != 1) {
+        break label315;
       }
     }
-    label311:
+    label315:
     for (boolean bool = true;; bool = false)
     {
-      m(bool, false);
-      Kc();
-      bJ();
-      paramIntent = getString(2131298647);
-      new BindLinkedInUI.4(this);
-      h.bO(this, paramIntent);
-      AppMethodBeat.o(13414);
+      n(bool, false);
+      VL();
+      cE();
+      paramIntent = getString(2131757708);
+      new DialogInterface.OnDismissListener()
+      {
+        public final void onDismiss(DialogInterface paramAnonymousDialogInterface) {}
+      };
+      h.cf(this, paramIntent);
+      AppMethodBeat.o(109842);
       return true;
     }
   }
   
   public int getLayoutId()
   {
-    return 2130968846;
+    return 2131493178;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(13406);
-    if (this.gsP) {
-      setMMTitle(2131298653);
+    AppMethodBeat.i(109834);
+    if (this.ifR) {
+      setMMTitle(2131757714);
     }
     for (;;)
     {
-      this.gsU = ((TextView)findViewById(2131821795));
-      this.gsV = ((TextView)findViewById(2131821794));
-      this.gsW = findViewById(2131821796);
-      this.gsX = ((MMSwitchBtn)findViewById(2131821797));
-      this.gsY = ((TextView)findViewById(2131821798));
-      this.gsZ = ((TextView)findViewById(2131821799));
-      this.gta = ((TextView)findViewById(2131821800));
-      this.gsU.setOnClickListener(new BindLinkedInUI.6(this));
-      this.gsY.setOnClickListener(new BindLinkedInUI.7(this));
-      this.gsZ.setOnClickListener(new BindLinkedInUI.8(this));
-      this.gta.setOnClickListener(new BindLinkedInUI.9(this));
+      this.ifW = ((TextView)findViewById(2131304619));
+      this.ifX = ((TextView)findViewById(2131304620));
+      this.ifY = findViewById(2131304788);
+      this.ifZ = ((MMSwitchBtn)findViewById(2131304787));
+      this.iga = ((TextView)findViewById(2131297231));
+      this.igb = ((TextView)findViewById(2131306181));
+      this.igc = ((TextView)findViewById(2131297689));
+      this.ifW.setOnClickListener(new BindLinkedInUI.6(this));
+      this.iga.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(109820);
+          if (!BindLinkedInUI.b(BindLinkedInUI.this))
+          {
+            BindLinkedInUI.c(BindLinkedInUI.this);
+            AppMethodBeat.o(109820);
+            return;
+          }
+          if (!BindLinkedInUI.d(BindLinkedInUI.this))
+          {
+            BindLinkedInUI.e(BindLinkedInUI.this);
+            AppMethodBeat.o(109820);
+            return;
+          }
+          h.a(BindLinkedInUI.this, BindLinkedInUI.this.getString(2131757703), null, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          {
+            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+            {
+              AppMethodBeat.i(109819);
+              BindLinkedInUI.e(BindLinkedInUI.this);
+              AppMethodBeat.o(109819);
+            }
+          }, new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
+          });
+          AppMethodBeat.o(109820);
+        }
+      });
+      this.igb.setOnClickListener(new BindLinkedInUI.8(this));
+      this.igc.setOnClickListener(new BindLinkedInUI.9(this));
       setBackBtn(new BindLinkedInUI.10(this));
-      bJ();
-      AppMethodBeat.o(13406);
+      cE();
+      AppMethodBeat.o(109834);
       return;
-      if (this.gsQ) {
-        setMMTitle(2131298656);
+      if (this.ifS) {
+        setMMTitle(2131757717);
       } else {
-        setMMTitle(2131298646);
+        setMMTitle(2131757707);
       }
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(13415);
-    ab.d("MicroMsg.BindLinkedInUI", "onActivityResult . requestCode:" + paramInt1 + "  resultCode:" + paramInt2);
+    AppMethodBeat.i(109843);
+    ad.d("MicroMsg.BindLinkedInUI", "onActivityResult . requestCode:" + paramInt1 + "  resultCode:" + paramInt2);
     if (paramIntent == null)
     {
-      AppMethodBeat.o(13415);
+      AppMethodBeat.o(109843);
       return;
     }
     switch (paramInt1)
     {
     default: 
-      ab.e("MicroMsg.BindLinkedInUI", "onActivityResult unknow request");
-      AppMethodBeat.o(13415);
+      ad.e("MicroMsg.BindLinkedInUI", "onActivityResult unknow request");
+      AppMethodBeat.o(109843);
       return;
     }
-    y(paramIntent);
-    AppMethodBeat.o(13415);
+    x(paramIntent);
+    AppMethodBeat.o(109843);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(13401);
+    AppMethodBeat.i(109829);
     super.onCreate(paramBundle);
-    g.Rc().a(549, this);
-    g.Rc().a(550, this);
-    this.gsR = getIntent().getBundleExtra("qrcode_bundle");
-    if (this.gsR != null) {}
+    com.tencent.mm.kernel.g.aeS().a(549, this);
+    com.tencent.mm.kernel.g.aeS().a(550, this);
+    this.ifT = getIntent().getBundleExtra("qrcode_bundle");
+    if (this.ifT != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.gsP = bool;
-      if (this.gsR != null)
+      this.ifR = bool;
+      if (this.ifT != null)
       {
-        this.dqV = this.gsR.getString("i");
-        this.dqW = this.gsR.getString("n");
-        this.gtb = this.gsR.getString("t");
-        this.gtc = this.gsR.getString("o");
-        this.gtd = this.gsR.getString("s");
-        this.gte = this.gsR.getString("r");
-        if ((this.dqV == null) || (this.dqW == null) || (this.gtb == null) || (this.gtd == null) || (this.gte == null)) {
-          h.a(this, getString(2131298643), null, false, new BindLinkedInUI.1(this));
+        this.evK = this.ifT.getString("i");
+        this.evL = this.ifT.getString("n");
+        this.igd = this.ifT.getString("t");
+        this.ige = this.ifT.getString("o");
+        this.igf = this.ifT.getString("s");
+        this.igg = this.ifT.getString("r");
+        if ((this.evK == null) || (this.evL == null) || (this.igd == null) || (this.igf == null) || (this.igg == null)) {
+          h.a(this, getString(2131757704), null, false, new BindLinkedInUI.1(this));
         }
       }
-      this.gsQ = getIntent().getBooleanExtra("oversea_entry", false);
-      Kc();
-      if (this.gsP) {
-        this.gsO = true;
+      this.ifS = getIntent().getBooleanExtra("oversea_entry", false);
+      VL();
+      if (this.ifR) {
+        this.ifQ = true;
       }
       initView();
-      if ((this.gsR != null) && (this.gsM) && (this.gsN.equals(this.dqV)))
+      if ((this.ifT != null) && (this.ifO) && (this.ifP.equals(this.evK)))
       {
-        this.gsS = true;
-        dt(true);
+        this.ifU = true;
+        eP(true);
       }
-      AppMethodBeat.o(13401);
+      AppMethodBeat.o(109829);
       return;
     }
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(13402);
-    g.Rc().b(550, this);
-    g.Rc().b(549, this);
+    AppMethodBeat.i(109830);
+    com.tencent.mm.kernel.g.aeS().b(550, this);
+    com.tencent.mm.kernel.g.aeS().b(549, this);
     super.onDestroy();
-    AppMethodBeat.o(13402);
+    AppMethodBeat.o(109830);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(13417);
+    AppMethodBeat.i(109845);
     if (paramInt == 4)
     {
       goBack();
-      AppMethodBeat.o(13417);
+      AppMethodBeat.o(109845);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(13417);
+    AppMethodBeat.o(109845);
     return bool;
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(13404);
+    AppMethodBeat.i(109832);
     super.onPause();
-    AppMethodBeat.o(13404);
+    AppMethodBeat.o(109832);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(13403);
+    AppMethodBeat.i(109831);
     super.onResume();
-    AppMethodBeat.o(13403);
+    AppMethodBeat.o(109831);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(13416);
-    if (this.fsw != null)
+    AppMethodBeat.i(109844);
+    if (this.gUr != null)
     {
-      this.fsw.dismiss();
-      this.fsw = null;
+      this.gUr.dismiss();
+      this.gUr = null;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      if (paramm.getType() == 549) {
+      if (paramn.getType() == 549) {
         if (paramInt2 == 1) {
-          paramInt1 = 2131298651;
+          paramInt1 = 2131757712;
         }
       }
       for (;;)
       {
-        h.b(this, getString(paramInt1), null, true);
-        AppMethodBeat.o(13416);
+        h.c(this, getString(paramInt1), null, true);
+        AppMethodBeat.o(109844);
         return;
-        paramInt1 = 2131298650;
+        paramInt1 = 2131757711;
         continue;
-        if (paramm.getType() != 550) {
+        if (paramn.getType() != 550) {
           break;
         }
-        paramInt1 = 2131298652;
+        paramInt1 = 2131757713;
       }
-      AppMethodBeat.o(13416);
+      AppMethodBeat.o(109844);
       return;
     }
-    if (paramm.getType() == 549)
+    if (paramn.getType() == 549)
     {
-      this.gsT = true;
-      if (!this.gsS) {
-        paramInt1 = 2131298647;
+      this.ifV = true;
+      if (!this.ifU) {
+        paramInt1 = 2131757708;
       }
     }
     for (;;)
     {
       paramString = getString(paramInt1);
-      new BindLinkedInUI.5(this);
-      h.bO(this, paramString);
-      Kc();
-      this.gsO = this.gsX.ADA;
-      bJ();
-      AppMethodBeat.o(13416);
+      new DialogInterface.OnDismissListener()
+      {
+        public final void onDismiss(DialogInterface paramAnonymousDialogInterface) {}
+      };
+      h.cf(this, paramString);
+      VL();
+      this.ifQ = this.ifZ.HAh;
+      cE();
+      AppMethodBeat.o(109844);
       return;
-      paramInt1 = 2131298648;
+      paramInt1 = 2131757709;
       continue;
-      if (paramm.getType() != 550) {
+      if (paramn.getType() != 550) {
         break;
       }
-      paramInt1 = 2131298658;
+      paramInt1 = 2131757719;
     }
-    AppMethodBeat.o(13416);
+    AppMethodBeat.o(109844);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

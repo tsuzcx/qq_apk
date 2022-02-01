@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/hk" android:paddingBottom="@dimen/hk" style="@style/go"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/qz" android:textColor="@color/ff" android:gravity="center" android:background="@drawable/bg" android:layout_width="fill_parent" android:layout_height="@dimen/qu" android:text="@string/id" />
+    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:layout_gravity="right" android:id="@id/aob" android:visibility="gone" style="@style/gu" />
+        <com.tencent.mm.ui.widget.MMTextView android:id="@id/ala" android:background="@drawable/mz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="215.0dip" android:minHeight="@dimen/aa" style="@style/h0" />
+    </LinearLayout>
+    <ImageView android:id="@id/aku" android:focusable="false" android:src="@drawable/dh" style="@style/gm" />
 </LinearLayout>

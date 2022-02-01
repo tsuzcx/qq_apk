@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:orientation="horizontal" android:background="@color/a6q" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cii" android:background="@drawable/bn4" android:layout_width="fill_parent" android:layout_height="@dimen/b5"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/a13" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/login_auth_state_default_select" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/fl" android:id="@id/a14" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ll" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gat" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/hs" android:id="@id/a92" style="@style/o4" />
+    </LinearLayout>
+    <View android:id="@id/bm9" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gau" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <TextView android:id="@id/a9h" android:layout_marginEnd="@dimen/bp" style="@style/o8" />
+    </LinearLayout>
 </LinearLayout>

@@ -1,87 +1,74 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
 
 public final class bwd
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int xJG;
-  private boolean xJH;
+  public int DSS;
+  public String hNI;
   
-  private bwd dqJ()
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(51846);
-    if (!this.xJH)
+    AppMethodBeat.i(152653);
+    if (paramInt == 0)
     {
-      b localb = new b("Not all required fields were included (false = not included in message),  uiVal:" + this.xJH);
-      AppMethodBeat.o(51846);
-      throw localb;
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.hNI != null) {
+        paramVarArgs.d(1, this.hNI);
+      }
+      paramVarArgs.aR(2, this.DSS);
+      AppMethodBeat.o(152653);
+      return 0;
     }
-    AppMethodBeat.o(51846);
-    return this;
-  }
-  
-  public final bwd MU(int paramInt)
-  {
-    this.xJG = paramInt;
-    this.xJH = true;
-    return this;
-  }
-  
-  public final int computeSize()
-  {
-    AppMethodBeat.i(51847);
-    int i = e.a.a.b.b.a.bl(1, this.xJG);
-    AppMethodBeat.o(51847);
-    return i + 0 + 0;
-  }
-  
-  public final boolean populateBuilderWithField(e.a.a.a.a parama, com.tencent.mm.bv.a parama1, int paramInt)
-  {
-    AppMethodBeat.i(51850);
-    parama1 = (bwd)parama1;
-    boolean bool = true;
-    switch (paramInt)
+    if (paramInt == 1) {
+      if (this.hNI == null) {
+        break label258;
+      }
+    }
+    label258:
+    for (paramInt = f.a.a.b.b.a.e(1, this.hNI) + 0;; paramInt = 0)
     {
-    default: 
-      bool = false;
+      int i = f.a.a.b.b.a.bA(2, this.DSS);
+      AppMethodBeat.o(152653);
+      return paramInt + i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.fMq();
+          }
+        }
+        AppMethodBeat.o(152653);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        bwd localbwd = (bwd)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(152653);
+          return -1;
+        case 1: 
+          localbwd.hNI = locala.KhF.readString();
+          AppMethodBeat.o(152653);
+          return 0;
+        }
+        localbwd.DSS = locala.KhF.xS();
+        AppMethodBeat.o(152653);
+        return 0;
+      }
+      AppMethodBeat.o(152653);
+      return -1;
     }
-    for (;;)
-    {
-      AppMethodBeat.o(51850);
-      return bool;
-      parama1.MU(parama.CLY.sl());
-    }
-  }
-  
-  public final byte[] toByteArray()
-  {
-    AppMethodBeat.i(51848);
-    dqJ();
-    byte[] arrayOfByte = super.toByteArray();
-    AppMethodBeat.o(51848);
-    return arrayOfByte;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(51845);
-    String str = new StringBuilder(String.valueOf(new StringBuilder(String.valueOf("")).append(getClass().getName()).append("(").toString())).append("uiVal = ").append(this.xJG).append("   ").toString() + ")";
-    AppMethodBeat.o(51845);
-    return str;
-  }
-  
-  public final void writeFields(e.a.a.c.a parama)
-  {
-    AppMethodBeat.i(51849);
-    parama.aO(1, this.xJG);
-    AppMethodBeat.o(51849);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bwd
  * JD-Core Version:    0.7.0.1
  */

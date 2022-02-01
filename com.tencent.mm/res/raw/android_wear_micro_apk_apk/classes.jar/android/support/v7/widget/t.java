@@ -5,47 +5,47 @@ import android.view.ViewGroup;
 
 public abstract class t<VH extends an>
 {
-  private final u ub = new u();
-  private boolean uc = false;
+  private final u vR = new u();
+  private boolean vS = false;
   
   public abstract void a(VH paramVH, int paramInt);
   
   public final void a(v paramv)
   {
-    this.ub.registerObserver(paramv);
+    this.vR.registerObserver(paramv);
   }
+  
+  public abstract VH b(ViewGroup paramViewGroup);
   
   public final void b(VH paramVH, int paramInt)
   {
-    paramVH.sx = paramInt;
-    if (this.uc) {
-      paramVH.vg = -1L;
+    paramVH.un = paramInt;
+    if (this.vS) {
+      paramVH.wV = -1L;
     }
     paramVH.setFlags(1, 519);
     f.beginSection("RV OnBindView");
-    paramVH.er();
+    paramVH.eG();
     a(paramVH, paramInt);
-    paramVH.eq();
+    paramVH.eF();
     f.endSection();
   }
   
   public final void b(v paramv)
   {
-    this.ub.unregisterObserver(paramv);
+    this.vR.unregisterObserver(paramv);
   }
-  
-  public abstract VH c(ViewGroup paramViewGroup);
   
   public abstract int getItemCount();
   
   public final boolean hasStableIds()
   {
-    return this.uc;
+    return this.vS;
   }
   
   public final void notifyDataSetChanged()
   {
-    this.ub.notifyChanged();
+    this.vR.notifyChanged();
   }
 }
 

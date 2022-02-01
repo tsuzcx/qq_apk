@@ -1,20 +1,35 @@
 package android.support.v4.app;
 
-public abstract class ae
+import android.arch.lifecycle.x;
+import java.util.List;
+
+public final class ae
 {
-  public abstract ae a(int paramInt, Fragment paramFragment, String paramString);
+  private final List<Fragment> eX;
+  private final List<ae> eY;
+  private final List<x> eZ;
   
-  public abstract ae a(Fragment paramFragment);
+  ae(List<Fragment> paramList, List<ae> paramList1, List<x> paramList2)
+  {
+    this.eX = paramList;
+    this.eY = paramList1;
+    this.eZ = paramList2;
+  }
   
-  public abstract ae a(Fragment paramFragment, String paramString);
+  final List<ae> aE()
+  {
+    return this.eY;
+  }
   
-  public abstract ae b(Fragment paramFragment);
+  final List<x> aF()
+  {
+    return this.eZ;
+  }
   
-  public abstract ae c(Fragment paramFragment);
-  
-  public abstract int commit();
-  
-  public abstract int commitAllowingStateLoss();
+  final List<Fragment> getFragments()
+  {
+    return this.eX;
+  }
 }
 
 

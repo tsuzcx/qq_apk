@@ -69,21 +69,21 @@ public abstract interface ICertData
       
       public IObjectWrapper getBytesWrapped()
       {
-        AppMethodBeat.i(89668);
+        AppMethodBeat.i(4690);
         Parcel localParcel = transactAndReadException(1, obtainAndWriteInterfaceToken());
         IObjectWrapper localIObjectWrapper = IObjectWrapper.Stub.asInterface(localParcel.readStrongBinder());
         localParcel.recycle();
-        AppMethodBeat.o(89668);
+        AppMethodBeat.o(4690);
         return localIObjectWrapper;
       }
       
       public int getHashCode()
       {
-        AppMethodBeat.i(89669);
+        AppMethodBeat.i(4691);
         Parcel localParcel = transactAndReadException(2, obtainAndWriteInterfaceToken());
         int i = localParcel.readInt();
         localParcel.recycle();
-        AppMethodBeat.o(89669);
+        AppMethodBeat.o(4691);
         return i;
       }
     }

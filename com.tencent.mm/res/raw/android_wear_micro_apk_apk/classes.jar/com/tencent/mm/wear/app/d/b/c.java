@@ -13,12 +13,12 @@ public final class c
     if (paramInt == 20001)
     {
       d.c("MicroMsg.PhoneStartHandler", "handle phone start", new Object[0]);
-      h.B(true);
-      h.mr();
+      h.E(true);
+      h.nd();
     }
   }
   
-  public final List<Integer> mS()
+  public final List<Integer> nE()
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(20001));

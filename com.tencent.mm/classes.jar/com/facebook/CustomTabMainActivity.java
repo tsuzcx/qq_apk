@@ -8,9 +8,10 @@ import android.os.Bundle;
 import android.support.v4.content.d;
 import com.facebook.internal.CustomTab;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 
 public class CustomTabMainActivity
-  extends Activity
+  extends HellActivity
 {
   public static final String EXTRA_CHROME_PACKAGE;
   public static final String EXTRA_PARAMS;
@@ -22,47 +23,47 @@ public class CustomTabMainActivity
   
   static
   {
-    AppMethodBeat.i(96587);
+    AppMethodBeat.i(7611);
     EXTRA_PARAMS = CustomTabMainActivity.class.getSimpleName() + ".extra_params";
     EXTRA_CHROME_PACKAGE = CustomTabMainActivity.class.getSimpleName() + ".extra_chromePackage";
     EXTRA_URL = CustomTabMainActivity.class.getSimpleName() + ".extra_url";
     REFRESH_ACTION = CustomTabMainActivity.class.getSimpleName() + ".action_refresh";
-    AppMethodBeat.o(96587);
+    AppMethodBeat.o(7611);
   }
   
   public static final String getRedirectUrl()
   {
-    AppMethodBeat.i(96582);
+    AppMethodBeat.i(7606);
     String str = "fb" + FacebookSdk.getApplicationId() + "://authorize";
-    AppMethodBeat.o(96582);
+    AppMethodBeat.o(7606);
     return str;
   }
   
   private void sendResult(int paramInt, Intent paramIntent)
   {
-    AppMethodBeat.i(96586);
-    d.R(this).unregisterReceiver(this.redirectReceiver);
+    AppMethodBeat.i(7610);
+    d.T(this).unregisterReceiver(this.redirectReceiver);
     if (paramIntent != null) {
       setResult(paramInt, paramIntent);
     }
     for (;;)
     {
       finish();
-      AppMethodBeat.o(96586);
+      AppMethodBeat.o(7610);
       return;
       setResult(paramInt);
     }
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(96583);
+    AppMethodBeat.i(7607);
     super.onCreate(paramBundle);
     if (CustomTabActivity.CUSTOM_TAB_REDIRECT_ACTION.equals(getIntent().getAction()))
     {
       setResult(0);
       finish();
-      AppMethodBeat.o(96583);
+      AppMethodBeat.o(7607);
       return;
     }
     if (paramBundle == null)
@@ -72,38 +73,38 @@ public class CustomTabMainActivity
       new CustomTab("oauth", paramBundle).openCustomTab(this, str);
       this.shouldCloseCustomTab = false;
       this.redirectReceiver = new CustomTabMainActivity.1(this);
-      d.R(this).a(this.redirectReceiver, new IntentFilter(CustomTabActivity.CUSTOM_TAB_REDIRECT_ACTION));
+      d.T(this).a(this.redirectReceiver, new IntentFilter(CustomTabActivity.CUSTOM_TAB_REDIRECT_ACTION));
     }
-    AppMethodBeat.o(96583);
+    AppMethodBeat.o(7607);
   }
   
-  protected void onNewIntent(Intent paramIntent)
+  public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(96584);
+    AppMethodBeat.i(7608);
     super.onNewIntent(paramIntent);
     if (REFRESH_ACTION.equals(paramIntent.getAction()))
     {
       Intent localIntent = new Intent(CustomTabActivity.DESTROY_ACTION);
-      d.R(this).c(localIntent);
+      d.T(this).b(localIntent);
       sendResult(-1, paramIntent);
-      AppMethodBeat.o(96584);
+      AppMethodBeat.o(7608);
       return;
     }
     if (CustomTabActivity.CUSTOM_TAB_REDIRECT_ACTION.equals(paramIntent.getAction())) {
       sendResult(-1, paramIntent);
     }
-    AppMethodBeat.o(96584);
+    AppMethodBeat.o(7608);
   }
   
-  protected void onResume()
+  public void onResume()
   {
-    AppMethodBeat.i(96585);
+    AppMethodBeat.i(7609);
     super.onResume();
     if (this.shouldCloseCustomTab) {
       sendResult(0, null);
     }
     this.shouldCloseCustomTab = true;
-    AppMethodBeat.o(96585);
+    AppMethodBeat.o(7609);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -114,7 +115,7 @@ public class CustomTabMainActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.facebook.CustomTabMainActivity
  * JD-Core Version:    0.7.0.1
  */

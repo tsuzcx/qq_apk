@@ -35,30 +35,30 @@ public class DefaultMediaHTTPConnection
   
   private boolean filterOutInternalHeaders(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(104790);
+    AppMethodBeat.i(76578);
     if ("android-allow-cross-domain-redirect".equalsIgnoreCase(paramString1))
     {
       this.mAllowCrossDomainRedirect = parseBoolean(paramString2);
       this.mAllowCrossProtocolRedirect = this.mAllowCrossDomainRedirect;
-      AppMethodBeat.o(104790);
+      AppMethodBeat.o(76578);
       return true;
     }
-    AppMethodBeat.o(104790);
+    AppMethodBeat.o(76578);
     return false;
   }
   
   private static final boolean isLocalHost(URL paramURL)
   {
-    AppMethodBeat.i(104793);
+    AppMethodBeat.i(76581);
     if (paramURL == null)
     {
-      AppMethodBeat.o(104793);
+      AppMethodBeat.o(76581);
       return false;
     }
     paramURL = paramURL.getHost();
     if (paramURL == null)
     {
-      AppMethodBeat.o(104793);
+      AppMethodBeat.o(76581);
       return false;
     }
     try
@@ -66,46 +66,46 @@ public class DefaultMediaHTTPConnection
       boolean bool = paramURL.equalsIgnoreCase("localhost");
       if (bool)
       {
-        AppMethodBeat.o(104793);
+        AppMethodBeat.o(76581);
         return true;
       }
     }
     catch (IllegalArgumentException paramURL)
     {
       Logger.e("MediaHTTPConnection", "isLocalHost", paramURL);
-      AppMethodBeat.o(104793);
+      AppMethodBeat.o(76581);
     }
     return false;
   }
   
   private boolean parseBoolean(String paramString)
   {
-    AppMethodBeat.i(104789);
+    AppMethodBeat.i(76577);
     try
     {
       if (Long.parseLong(paramString) != 0L)
       {
-        AppMethodBeat.o(104789);
+        AppMethodBeat.o(76577);
         return true;
       }
-      AppMethodBeat.o(104789);
+      AppMethodBeat.o(76577);
       return false;
     }
     catch (NumberFormatException localNumberFormatException)
     {
       if (("true".equalsIgnoreCase(paramString)) || ("yes".equalsIgnoreCase(paramString)))
       {
-        AppMethodBeat.o(104789);
+        AppMethodBeat.o(76577);
         return true;
       }
-      AppMethodBeat.o(104789);
+      AppMethodBeat.o(76577);
     }
     return false;
   }
   
   private void seekTo(long paramLong)
   {
-    AppMethodBeat.i(104794);
+    AppMethodBeat.i(76582);
     teardownConnection();
     label288:
     label693:
@@ -161,7 +161,7 @@ public class DefaultMediaHTTPConnection
         this.mConnection = null;
         this.mCurrentOffset = -1L;
         Logger.e("MediaHTTPConnection", "seekTo", localIOException);
-        AppMethodBeat.o(104794);
+        AppMethodBeat.o(76582);
         throw localIOException;
       }
       this.mConnection.setRequestProperty("Range", "bytes=" + paramLong + "-");
@@ -178,49 +178,49 @@ public class DefaultMediaHTTPConnection
         if (j > 20)
         {
           NoRouteToHostException localNoRouteToHostException = new NoRouteToHostException("Too many redirects: ".concat(String.valueOf(j)));
-          AppMethodBeat.o(104794);
+          AppMethodBeat.o(76582);
           throw localNoRouteToHostException;
         }
       }
       catch (Exception localException)
       {
         localObject2 = new IOException("An suspicious exception occurred: " + localException.getMessage());
-        AppMethodBeat.o(104794);
+        AppMethodBeat.o(76582);
         throw ((Throwable)localObject2);
       }
       Object localObject2 = this.mConnection.getRequestMethod();
       if ((i == 307) && (!((String)localObject2).equals("GET")) && (!((String)localObject2).equals("HEAD")))
       {
         localObject2 = new NoRouteToHostException("Invalid redirect");
-        AppMethodBeat.o(104794);
+        AppMethodBeat.o(76582);
         throw ((Throwable)localObject2);
       }
       localObject2 = this.mConnection.getHeaderField("Location");
       if (localObject2 == null)
       {
         localObject2 = new NoRouteToHostException("Invalid redirect");
-        AppMethodBeat.o(104794);
+        AppMethodBeat.o(76582);
         throw ((Throwable)localObject2);
       }
       localObject2 = new URL(this.mURL, (String)localObject2);
       if ((!((URL)localObject2).getProtocol().equals("https")) && (!((URL)localObject2).getProtocol().equals("http")))
       {
         localObject2 = new NoRouteToHostException("Unsupported protocol redirect");
-        AppMethodBeat.o(104794);
+        AppMethodBeat.o(76582);
         throw ((Throwable)localObject2);
       }
       boolean bool2 = this.mURL.getProtocol().equals(((URL)localObject2).getProtocol());
       if ((!this.mAllowCrossProtocolRedirect) && (!bool2))
       {
         localObject2 = new NoRouteToHostException("Cross-protocol redirects are disallowed");
-        AppMethodBeat.o(104794);
+        AppMethodBeat.o(76582);
         throw ((Throwable)localObject2);
       }
       bool2 = this.mURL.getHost().equals(((URL)localObject2).getHost());
       if ((!this.mAllowCrossDomainRedirect) && (!bool2))
       {
         localObject2 = new NoRouteToHostException("Cross-domain redirects are disallowed");
-        AppMethodBeat.o(104794);
+        AppMethodBeat.o(76582);
         throw ((Throwable)localObject2);
       }
       if (i != 307)
@@ -247,18 +247,18 @@ public class DefaultMediaHTTPConnection
           for (this.mTotalSize = Long.parseLong((String)localObject2); (paramLong > 0L) && (i != 206); this.mTotalSize = this.mConnection.getContentLength())
           {
             localObject2 = new ProtocolException();
-            AppMethodBeat.o(104794);
+            AppMethodBeat.o(76582);
             throw ((Throwable)localObject2);
             if (i != 200)
             {
               localObject2 = new IOException("failed! status code: ".concat(String.valueOf(i)));
-              AppMethodBeat.o(104794);
+              AppMethodBeat.o(76582);
               throw ((Throwable)localObject2);
             }
           }
           this.mInputStream = new BufferedInputStream(this.mConnection.getInputStream());
           this.mCurrentOffset = paramLong;
-          AppMethodBeat.o(104794);
+          AppMethodBeat.o(76582);
           return;
         }
         catch (NumberFormatException localNumberFormatException)
@@ -271,7 +271,7 @@ public class DefaultMediaHTTPConnection
   
   private void teardownConnection()
   {
-    AppMethodBeat.i(104792);
+    AppMethodBeat.i(76580);
     if (this.mConnection != null)
     {
       this.mInputStream = null;
@@ -279,78 +279,78 @@ public class DefaultMediaHTTPConnection
       this.mConnection = null;
       this.mCurrentOffset = -1L;
     }
-    AppMethodBeat.o(104792);
+    AppMethodBeat.o(76580);
   }
   
   public boolean connect(URL paramURL, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(104788);
+    AppMethodBeat.i(76576);
     disconnect();
     this.mAllowCrossDomainRedirect = true;
     this.mURL = paramURL;
     this.mHeaders = paramMap;
-    AppMethodBeat.o(104788);
+    AppMethodBeat.o(76576);
     return true;
   }
   
   public void disconnect()
   {
-    AppMethodBeat.i(104791);
+    AppMethodBeat.i(76579);
     teardownConnection();
     this.mHeaders = null;
     this.mURL = null;
-    AppMethodBeat.o(104791);
+    AppMethodBeat.o(76579);
   }
   
   public String getMIMEType()
   {
-    AppMethodBeat.i(104797);
+    AppMethodBeat.i(76585);
     if (this.mConnection == null) {}
     try
     {
       seekTo(0L);
       String str = this.mConnection.getContentType();
-      AppMethodBeat.o(104797);
+      AppMethodBeat.o(76585);
       return str;
     }
     catch (IOException localIOException)
     {
       Logger.e("MediaHTTPConnection", "getMIMEType", localIOException);
-      AppMethodBeat.o(104797);
+      AppMethodBeat.o(76585);
     }
     return "application/octet-stream";
   }
   
   public long getSize()
   {
-    AppMethodBeat.i(104796);
+    AppMethodBeat.i(76584);
     if (this.mConnection == null) {}
     try
     {
       seekTo(0L);
       long l = this.mTotalSize;
-      AppMethodBeat.o(104796);
+      AppMethodBeat.o(76584);
       return l;
     }
     catch (IOException localIOException)
     {
       Logger.e("MediaHTTPConnection", "getSize", localIOException);
-      AppMethodBeat.o(104796);
+      AppMethodBeat.o(76584);
     }
     return -1L;
   }
   
   public String getUri()
   {
-    AppMethodBeat.i(104798);
+    AppMethodBeat.i(76586);
     String str = this.mURL.toString();
-    AppMethodBeat.o(104798);
+    AppMethodBeat.o(76586);
     return str;
   }
   
   public int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(104795);
+    AppMethodBeat.i(76583);
     try
     {
       if (paramLong != this.mCurrentOffset) {
@@ -362,42 +362,42 @@ public class DefaultMediaHTTPConnection
         paramInt1 = 0;
       }
       this.mCurrentOffset += paramInt1;
-      AppMethodBeat.o(104795);
+      AppMethodBeat.o(76583);
       return paramInt1;
     }
     catch (ProtocolException paramArrayOfByte)
     {
       Logger.w("MediaHTTPConnection", "readAt " + paramLong + " / " + paramInt2 + " => " + paramArrayOfByte);
-      AppMethodBeat.o(104795);
+      AppMethodBeat.o(76583);
       return -1010;
     }
     catch (NoRouteToHostException paramArrayOfByte)
     {
       Logger.w("MediaHTTPConnection", "readAt " + paramLong + " / " + paramInt2 + " => " + paramArrayOfByte);
-      AppMethodBeat.o(104795);
+      AppMethodBeat.o(76583);
       return -1010;
     }
     catch (UnknownServiceException paramArrayOfByte)
     {
       Logger.w("MediaHTTPConnection", "readAt " + paramLong + " / " + paramInt2 + " => " + paramArrayOfByte);
-      AppMethodBeat.o(104795);
+      AppMethodBeat.o(76583);
       return -1010;
     }
     catch (IOException paramArrayOfByte)
     {
-      AppMethodBeat.o(104795);
+      AppMethodBeat.o(76583);
       return -2;
     }
     catch (Exception paramArrayOfByte)
     {
-      AppMethodBeat.o(104795);
+      AppMethodBeat.o(76583);
     }
     return -3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.network.DefaultMediaHTTPConnection
  * JD-Core Version:    0.7.0.1
  */

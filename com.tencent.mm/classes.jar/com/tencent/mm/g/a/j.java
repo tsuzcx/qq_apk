@@ -1,14 +1,15 @@
 package com.tencent.mm.g.a;
 
 import android.content.Context;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class j
   extends b
 {
-  public a cmo;
-  public j.b cmp;
+  public a dba;
+  public b dbb;
   
   public j()
   {
@@ -17,26 +18,31 @@ public final class j
   
   private j(byte paramByte)
   {
-    AppMethodBeat.i(77529);
-    this.cmo = new a();
-    this.cmp = new j.b();
-    this.ymq = false;
+    AppMethodBeat.i(149847);
+    this.dba = new a();
+    this.dbb = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77529);
+    AppMethodBeat.o(149847);
   }
   
   public static final class a
   {
     public int actionCode;
-    public String cmq;
-    public boolean cmr;
-    public boolean cms;
     public Context context;
+    public String dbc;
+    public boolean dbd;
+    public boolean dbe;
+  }
+  
+  public static final class b
+  {
+    public Bundle dbf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.mm.plugin.sns.ui.PhotosContent android:id="@id/ed3" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/fvg" android:layout_width="20.0dip" android:layout_height="20.0dip" />
-    <TextView android:textSize="13.0sp" android:textColor="#ff888888" android:ellipsize="end" android:id="@id/fvh" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginRight="1.0dip" android:text="由**小程序提供" android:layout_weight="1.0" />
-    <ImageView android:id="@id/fvn" android:paddingTop="1.0dip" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/icons_outlined_arrow" android:rotation="90.0" />
-</LinearLayout>
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/hx" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="0.0dip" android:layout_marginTop="0.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/hy" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="76.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/hz" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="152.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+</com.tencent.mm.plugin.sns.ui.PhotosContent>

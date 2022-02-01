@@ -8,87 +8,87 @@ public class XWalkInitializer
 {
   private static final String TAG = "XWalkLib";
   private Context mContext;
-  private XWalkInitializer.XWalkInitListener mInitListener;
+  private XWalkInitListener mInitListener;
   private boolean mIsXWalkReady;
   
-  public XWalkInitializer(XWalkInitializer.XWalkInitListener paramXWalkInitListener, Context paramContext)
+  public XWalkInitializer(XWalkInitListener paramXWalkInitListener, Context paramContext)
   {
-    AppMethodBeat.i(85658);
+    AppMethodBeat.i(154753);
     this.mInitListener = paramXWalkInitListener;
     this.mContext = paramContext;
     XWalkLibraryLoader.prepareToInit(this.mContext);
-    AppMethodBeat.o(85658);
+    AppMethodBeat.o(154753);
   }
   
   public static void addXWalkInitializeLog(String paramString)
   {
-    AppMethodBeat.i(85661);
+    AppMethodBeat.i(154756);
     XWalkEnvironment.addXWalkInitializeLog(paramString);
-    AppMethodBeat.o(85661);
+    AppMethodBeat.o(154756);
   }
   
   public static void addXWalkInitializeLog(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(85660);
+    AppMethodBeat.i(154755);
     XWalkEnvironment.addXWalkInitializeLog(paramString1, paramString2);
-    AppMethodBeat.o(85660);
+    AppMethodBeat.o(154755);
   }
   
   public static String getXWalkInitializeLog()
   {
-    AppMethodBeat.i(85662);
+    AppMethodBeat.i(154757);
     Object localObject = XWalkEnvironment.getSharedPreferencesForLog();
     if (localObject == null)
     {
-      AppMethodBeat.o(85662);
+      AppMethodBeat.o(154757);
       return "";
     }
     localObject = ((SharedPreferences)localObject).getString("log", "");
-    AppMethodBeat.o(85662);
+    AppMethodBeat.o(154757);
     return localObject;
   }
   
   public boolean initAsync_remove()
   {
-    AppMethodBeat.i(85659);
+    AppMethodBeat.i(154754);
     if (this.mIsXWalkReady)
     {
-      AppMethodBeat.o(85659);
+      AppMethodBeat.o(154754);
       return false;
     }
     if ((XWalkLibraryLoader.isInitializing()) || (XWalkLibraryLoader.isDownloading()))
     {
       Log.i("XWalkLib", "Other initialization or download is proceeding");
-      AppMethodBeat.o(85659);
+      AppMethodBeat.o(154754);
       return false;
     }
     Log.i("XWalkLib", "Initialized by XWalkInitializer");
     this.mInitListener.onXWalkInitStarted();
-    AppMethodBeat.o(85659);
+    AppMethodBeat.o(154754);
     return true;
   }
   
   public boolean isDownloadMode()
   {
-    AppMethodBeat.i(85665);
+    AppMethodBeat.i(154760);
     if ((this.mIsXWalkReady) && (XWalkEnvironment.isDownloadMode()))
     {
-      AppMethodBeat.o(85665);
+      AppMethodBeat.o(154760);
       return true;
     }
-    AppMethodBeat.o(85665);
+    AppMethodBeat.o(154760);
     return false;
   }
   
   public boolean isSharedMode()
   {
-    AppMethodBeat.i(85664);
+    AppMethodBeat.i(154759);
     if ((this.mIsXWalkReady) && (XWalkLibraryLoader.isSharedLibrary()))
     {
-      AppMethodBeat.o(85664);
+      AppMethodBeat.o(154759);
       return true;
     }
-    AppMethodBeat.o(85664);
+    AppMethodBeat.o(154759);
     return false;
   }
   
@@ -99,7 +99,7 @@ public class XWalkInitializer
   
   public boolean tryInitSync()
   {
-    AppMethodBeat.i(85663);
+    AppMethodBeat.i(154758);
     if (!XWalkEnvironment.hasAvailableVersion())
     {
       if (XWalkEnvironment.getAvailableVersion() == -1) {
@@ -107,7 +107,7 @@ public class XWalkInitializer
       }
       for (;;)
       {
-        AppMethodBeat.o(85663);
+        AppMethodBeat.o(154758);
         return false;
         addXWalkInitializeLog("sdk not support this apk, need update new");
       }
@@ -121,16 +121,62 @@ public class XWalkInitializer
       this.mIsXWalkReady = true;
       XWalkLibraryLoader.finishInit(this.mContext);
       this.mInitListener.onXWalkInitCompleted();
-      AppMethodBeat.o(85663);
+      AppMethodBeat.o(154758);
       return true;
     }
-    AppMethodBeat.o(85663);
+    AppMethodBeat.o(154758);
     return false;
+  }
+  
+  public static abstract interface XWalkInitListener
+  {
+    public abstract void onXWalkInitCancelled();
+    
+    public abstract void onXWalkInitCompleted();
+    
+    public abstract void onXWalkInitFailed();
+    
+    public abstract void onXWalkInitStarted();
+  }
+  
+  class XWalkLibraryListener
+    implements XWalkLibraryLoader.ActivateListener, XWalkLibraryLoader.DecompressListener
+  {
+    private XWalkLibraryListener() {}
+    
+    public void onActivateCompleted()
+    {
+      AppMethodBeat.i(154752);
+      XWalkInitializer.access$102(XWalkInitializer.this, true);
+      XWalkLibraryLoader.finishInit(XWalkInitializer.this.mContext);
+      XWalkInitializer.this.mInitListener.onXWalkInitCompleted();
+      AppMethodBeat.o(154752);
+    }
+    
+    public void onActivateFailed()
+    {
+      AppMethodBeat.i(154751);
+      XWalkInitializer.this.mInitListener.onXWalkInitFailed();
+      AppMethodBeat.o(154751);
+    }
+    
+    public void onActivateStarted() {}
+    
+    public void onDecompressCancelled()
+    {
+      AppMethodBeat.i(154750);
+      XWalkInitializer.this.mInitListener.onXWalkInitCancelled();
+      AppMethodBeat.o(154750);
+    }
+    
+    public void onDecompressCompleted() {}
+    
+    public void onDecompressStarted() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkInitializer
  * JD-Core Version:    0.7.0.1
  */

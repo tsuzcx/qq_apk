@@ -1,7 +1,8 @@
 package com.tencent.mm.audio.mix.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.b.d;
+import com.tencent.mm.audio.mix.a.d;
+import com.tencent.mm.audio.mix.b.e;
 import com.tencent.mm.audio.mix.h.a;
 import com.tencent.mm.audio.mix.h.b;
 import java.util.ArrayList;
@@ -19,43 +20,43 @@ public final class c
     this.appId = paramString;
   }
   
-  public final void Dh()
+  public final void MQ()
   {
-    AppMethodBeat.i(137004);
+    AppMethodBeat.i(136752);
     b.i("MicroMsg.Mix.AudioPcmDataTrackRecycleCacheTask", "runTask, appId:%s", new Object[] { this.appId });
-    d locald = d.De();
-    synchronized (locald.ceG)
+    e locale = e.MN();
+    synchronized (locale.cTF)
     {
-      Iterator localIterator = locald.ceF.iterator();
+      Iterator localIterator = locale.cTE.iterator();
       while (localIterator.hasNext())
       {
         Object localObject3 = (String)localIterator.next();
-        localObject3 = (com.tencent.mm.audio.mix.a.c)locald.cache.get(localObject3);
+        localObject3 = (d)locale.cache.get(localObject3);
         if (localObject3 != null) {
-          ((com.tencent.mm.audio.mix.a.c)localObject3).recycle();
+          ((d)localObject3).recycle();
         }
       }
     }
-    localObject2.ceF.clear();
+    localObject2.cTE.clear();
     localObject2.cache.clear();
     b.i("MicroMsg.Mix.AudioPcmDataTrackRecycleCacheTask", "delete all pcm cache File");
-    ??? = d.De().Dg();
+    ??? = e.MN().MP();
     if (((ArrayList)???).size() > 0) {
       a.b(this.appId, (ArrayList)???);
     }
-    AppMethodBeat.o(137004);
+    AppMethodBeat.o(136752);
   }
   
   public final void end()
   {
-    AppMethodBeat.i(137005);
+    AppMethodBeat.i(136753);
     b.i("MicroMsg.Mix.AudioPcmDataTrackRecycleCacheTask", "end task");
-    AppMethodBeat.o(137005);
+    AppMethodBeat.o(136753);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.b.a.c
  * JD-Core Version:    0.7.0.1
  */

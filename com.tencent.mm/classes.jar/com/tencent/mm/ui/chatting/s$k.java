@@ -2,7 +2,7 @@ package com.tencent.mm.ui.chatting;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.ui.chatting.d.a;
 
 public final class s$k
@@ -13,16 +13,16 @@ public final class s$k
     super(parama);
   }
   
-  public final void a(View paramView, a parama, bi parambi)
+  public final void a(View paramView, a parama, bl parambl)
   {
-    AppMethodBeat.i(30729);
-    r.a(paramView, parama.zJz.getContext(), parama.getTalkerUserName());
-    AppMethodBeat.o(30729);
+    AppMethodBeat.i(34603);
+    r.a(paramView, parama.GzJ.getContext(), parama.getTalkerUserName());
+    AppMethodBeat.o(34603);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.s.k
  * JD-Core Version:    0.7.0.1
  */

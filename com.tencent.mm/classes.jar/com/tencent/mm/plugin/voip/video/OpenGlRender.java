@@ -3,26 +3,28 @@ package com.tencent.mm.plugin.voip.video;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
-import android.opengl.GLSurfaceView.Renderer;
 import android.os.Looper;
+import android.os.Message;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.k;
-import com.tencent.mm.plugin.voip.model.s;
+import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.plugin.voip.model.t;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.plugin.voip.video.a.c;
-import com.tencent.mm.plugin.voip.video.a.e;
+import com.tencent.mm.plugin.voip.video.a.b;
 import com.tencent.mm.plugin.voip.video.b.a.b;
-import com.tencent.mm.plugin.voip.video.b.d;
-import com.tencent.mm.plugin.voip.video.b.d.a;
-import com.tencent.mm.plugin.voip.video.b.f;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.voip.video.b.c;
+import com.tencent.mm.plugin.voip.video.b.e;
+import com.tencent.mm.plugin.voip.video.b.e.a;
+import com.tencent.mm.plugin.voip.video.b.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.lang.ref.WeakReference;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 public final class OpenGlRender
-  implements GLSurfaceView.Renderer
+  implements GLTextureView.m
 {
   public static int FLAG_Angle270;
   public static int FLAG_Angle90;
@@ -39,56 +41,60 @@ public final class OpenGlRender
   public static int RenderLocal;
   public static int RenderRemote;
   static String TAG;
-  public static int tGO;
-  private static final Object tGX;
-  private static final Object tGY;
-  private static final Object tGZ;
-  static boolean tHc;
+  private static final Object zvG;
+  private static final Object zvH;
+  private static final Object zvI;
+  private static final Object zvJ;
+  static boolean zvP;
+  public static int zvx;
   public float mBrightness;
   public float mContrast;
   int mRenderMode;
   public float mSaturation;
-  boolean tGA;
-  boolean tGB;
-  int tGC;
-  int tGD;
-  WeakReference<OpenGlView> tGE;
-  public boolean tGF;
-  public Bitmap tGG;
-  private int tGH;
-  private int tGI;
-  private byte[] tGJ;
-  private int[] tGK;
-  private int tGL;
-  private int tGM;
-  private int tGN;
-  private c tGP;
-  f tGQ;
-  private boolean tGR;
-  private int tGS;
-  private int tGT;
-  private volatile boolean tGU;
-  private volatile boolean tGV;
-  public int tGW;
-  boolean tGr;
-  int tGs;
-  long tGt;
-  long tGu;
-  int tGv;
-  OpenGlRender.a tGw;
-  boolean tGx;
-  boolean tGy;
-  boolean tGz;
-  public int tHa;
-  WeakReference<Object> tHb;
-  private boolean tHd;
-  boolean tHe;
-  public int txY;
-  public int txZ;
+  public int zhL;
+  public int zhM;
+  private boolean zvA;
+  private int zvB;
+  private int zvC;
+  private volatile boolean zvD;
+  private volatile boolean zvE;
+  public int zvF;
+  public int zvK;
+  public boolean zvL;
+  long zvM;
+  public b zvN;
+  WeakReference<Object> zvO;
+  private boolean zvQ;
+  boolean zvR;
+  boolean zva;
+  int zvb;
+  long zvc;
+  long zvd;
+  int zve;
+  a zvf;
+  boolean zvg;
+  boolean zvh;
+  boolean zvi;
+  boolean zvj;
+  boolean zvk;
+  int zvl;
+  int zvm;
+  WeakReference<OpenGlView> zvn;
+  public boolean zvo;
+  public Bitmap zvp;
+  private int zvq;
+  private int zvr;
+  private byte[] zvs;
+  private int[] zvt;
+  private int zvu;
+  private int zvv;
+  private int zvw;
+  private b zvy;
+  g zvz;
   
   static
   {
-    AppMethodBeat.i(140210);
+    AppMethodBeat.i(115668);
     TAG = "OpenGlRender";
     MSG_RENDER = 0;
     MSG_FLUSH = 1;
@@ -104,73 +110,78 @@ public final class OpenGlRender
     FLAG_Mirror = 16;
     RenderLocal = 0;
     RenderRemote = 1;
-    tGO = 0;
-    tGX = new Object();
-    tGY = new Object();
-    tGZ = new Object();
-    tHc = false;
-    AppMethodBeat.o(140210);
+    zvx = 0;
+    zvG = new Object();
+    zvH = new Object();
+    zvI = new Object();
+    zvJ = new Object();
+    zvP = false;
+    AppMethodBeat.o(115668);
   }
   
   public OpenGlRender(OpenGlView paramOpenGlView, int paramInt)
   {
-    AppMethodBeat.i(5072);
-    this.tGr = false;
-    this.tGs = 0;
-    this.tGt = 0L;
-    this.tGu = 0L;
-    this.tGv = 0;
+    AppMethodBeat.i(115648);
+    this.zva = false;
+    this.zvb = 0;
+    this.zvc = 0L;
+    this.zvd = 0L;
+    this.zve = 0;
     this.mBrightness = 1.2F;
     this.mContrast = 1.93F;
     this.mSaturation = 1.05F;
-    this.tGx = false;
-    this.tGy = false;
-    this.tGz = false;
-    this.tGA = false;
-    this.tGB = false;
-    this.tGC = 0;
-    this.tGD = 0;
+    this.zvg = false;
+    this.zvh = false;
+    this.zvi = false;
+    this.zvj = false;
+    this.zvk = false;
+    this.zvl = 0;
+    this.zvm = 0;
     this.mRenderMode = RenderLocal;
-    this.tGF = false;
-    this.tGG = null;
-    this.tGH = 0;
-    this.tGI = 0;
-    this.tGJ = null;
-    this.tGK = null;
-    this.tGU = false;
-    this.tGV = false;
-    this.tGW = 0;
-    this.tHa = 0;
-    this.txY = 0;
-    this.txZ = 0;
-    this.tHd = false;
-    this.tHe = false;
-    if (!tHc)
+    this.zvo = false;
+    this.zvp = null;
+    this.zvq = 0;
+    this.zvr = 0;
+    this.zvs = null;
+    this.zvt = null;
+    this.zvy = null;
+    this.zvD = false;
+    this.zvE = false;
+    this.zvF = 0;
+    this.zvK = 0;
+    this.zhL = 0;
+    this.zhM = 0;
+    this.zvL = false;
+    this.zvM = -1L;
+    this.zvQ = false;
+    this.zvR = false;
+    if (!zvP)
     {
-      k.a("mm_gl_disp", OpenGlRender.class.getClassLoader());
-      tHc = true;
+      OpenGlRender.class.getClassLoader();
+      j.pq("mm_gl_disp");
+      zvP = true;
     }
     this.mRenderMode = paramInt;
-    this.tGE = new WeakReference(paramOpenGlView);
+    this.zvn = new WeakReference(paramOpenGlView);
     paramOpenGlView = Looper.myLooper();
     if (paramOpenGlView != null) {
-      this.tGw = new OpenGlRender.a(this, paramOpenGlView);
+      this.zvf = new a(paramOpenGlView);
     }
     for (;;)
     {
-      this.tHb = null;
+      this.zvO = null;
       if (getGLVersion() == 2) {
-        this.tGP = new c();
+        this.zvy = new b();
       }
-      this.tGS = 0;
-      this.tGQ = new f();
-      AppMethodBeat.o(5072);
+      this.zvB = 0;
+      this.zvz = new g();
+      AppMethodBeat.o(115648);
       return;
       paramOpenGlView = Looper.getMainLooper();
       if (paramOpenGlView != null) {
-        this.tGw = new OpenGlRender.a(this, paramOpenGlView);
+        this.zvf = new a(paramOpenGlView);
       } else {
-        this.tGw = null;
+        this.zvf = null;
       }
     }
   }
@@ -179,108 +190,118 @@ public final class OpenGlRender
   
   private native void Uninit(int paramInt);
   
-  private void cPH()
+  private void dXi()
   {
-    AppMethodBeat.i(140206);
-    if (this.tGP != null)
+    AppMethodBeat.i(115662);
+    if (this.zvy != null)
     {
-      if (this.tGE != null)
+      if (this.zvn != null)
       {
-        OpenGlView localOpenGlView = (OpenGlView)this.tGE.get();
+        OpenGlView localOpenGlView = (OpenGlView)this.zvn.get();
         if (localOpenGlView != null)
         {
-          localOpenGlView.queueEvent(new OpenGlRender.3(this));
-          AppMethodBeat.o(140206);
+          localOpenGlView.queueEvent(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(115643);
+              if (OpenGlRender.a(OpenGlRender.this) != null) {
+                OpenGlRender.a(OpenGlRender.this).destroy();
+              }
+              AppMethodBeat.o(115643);
+            }
+          });
+          AppMethodBeat.o(115662);
           return;
         }
       }
-      if (this.tGP != null) {
-        this.tGP.destroy();
+      if (this.zvy != null) {
+        this.zvy.destroy();
       }
     }
-    AppMethodBeat.o(140206);
+    AppMethodBeat.o(115662);
   }
   
   public static int getGLVersion()
   {
-    AppMethodBeat.i(5071);
-    if (tGO == 0)
+    AppMethodBeat.i(115647);
+    if (zvx == 0)
     {
-      tGO = 2;
-      ab.i(TAG, "init gl version: %s", new Object[] { Integer.valueOf(tGO) });
+      zvx = 2;
+      ad.i(TAG, "init gl version: %s", new Object[] { Integer.valueOf(zvx) });
     }
-    int i = tGO;
-    AppMethodBeat.o(5071);
+    int i = zvx;
+    AppMethodBeat.o(115647);
     return i;
   }
   
-  private void ne(boolean paramBoolean)
+  private void rU(boolean paramBoolean)
   {
-    AppMethodBeat.i(140208);
-    if ((this.tGE != null) && (this.tGE.get() != null))
+    AppMethodBeat.i(115664);
+    if ((this.zvn != null) && (this.zvn.get() != null))
     {
       if (!paramBoolean)
       {
-        ??? = (OpenGlView)this.tGE.get();
-        ab.i(TAG, "attachGLContext:%s", new Object[] { ??? });
+        ??? = (OpenGlView)this.zvn.get();
+        ad.i(TAG, "attachGLContext:%s", new Object[] { ??? });
         ((OpenGlView)???).queueEvent(new Runnable()
         {
           public final void run()
           {
             boolean bool = false;
-            AppMethodBeat.i(140197);
+            AppMethodBeat.i(161661);
             if (OpenGlRender.g(OpenGlRender.this))
             {
-              ab.i(OpenGlRender.TAG, "attachGLContext");
+              ad.i(OpenGlRender.TAG, "attachGLContext");
               ??? = OpenGlRender.this;
-              if (!OpenGlRender.b(OpenGlRender.this).cPZ()) {
+              if (!OpenGlRender.b(OpenGlRender.this).dXE()) {
                 bool = true;
               }
               OpenGlRender.a((OpenGlRender)???, bool);
               OpenGlRender.e(OpenGlRender.this);
               OpenGlRender.f(OpenGlRender.this);
-              ab.i(OpenGlRender.TAG, "attach finish");
+              ad.i(OpenGlRender.TAG, "attach finish");
             }
-            synchronized (OpenGlRender.cPK())
+            synchronized (OpenGlRender.Ij())
             {
               try
               {
-                OpenGlRender.cPK().notifyAll();
-                AppMethodBeat.o(140197);
+                OpenGlRender.Ij().notifyAll();
+                AppMethodBeat.o(161661);
                 return;
               }
               catch (Exception localException)
               {
                 for (;;)
                 {
-                  ab.printErrStackTrace(OpenGlRender.TAG, localException, "", new Object[0]);
+                  ad.printErrStackTrace(OpenGlRender.TAG, localException, "", new Object[0]);
                 }
               }
             }
           }
         });
-        synchronized (tGY)
+        synchronized (zvH)
         {
           try
           {
-            tGY.wait(100L);
-            ab.i(TAG, "attachGLContext wait finish, bNeedAttach:%s", new Object[] { Boolean.valueOf(this.tHd) });
-            AppMethodBeat.o(140208);
+            zvH.wait(100L);
+            ad.i(TAG, "attachGLContext wait finish, bNeedAttach:%s", new Object[] { Boolean.valueOf(this.zvQ) });
+            AppMethodBeat.o(115664);
             return;
           }
           catch (Exception localException)
           {
             for (;;)
             {
-              ab.printErrStackTrace(TAG, localException, "", new Object[0]);
+              ad.printErrStackTrace(TAG, localException, "", new Object[0]);
             }
           }
         }
       }
-      if (this.tHd)
+      if (this.zvQ)
       {
-        ab.i(TAG, "attachGLContext");
-        if (this.tGQ.cPZ()) {
+        ad.i(TAG, "attachGLContext");
+        if (this.zvz.dXE()) {
           break label202;
         }
       }
@@ -288,11 +309,11 @@ public final class OpenGlRender
     label202:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      this.tHd = paramBoolean;
-      this.tGJ = null;
-      this.tGK = null;
-      ab.i(TAG, "attach finish");
-      AppMethodBeat.o(140208);
+      this.zvQ = paramBoolean;
+      this.zvs = null;
+      this.zvt = null;
+      ad.i(TAG, "attach finish");
+      AppMethodBeat.o(115664);
       return;
     }
   }
@@ -305,1518 +326,1641 @@ public final class OpenGlRender
   
   private native void setParam(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt);
   
-  public final void HV(int paramInt)
+  public final void QR(int paramInt)
   {
-    AppMethodBeat.i(140198);
-    this.tGW = paramInt;
-    if (this.tGQ != null)
+    AppMethodBeat.i(115650);
+    this.zvF = paramInt;
+    if (this.zvz != null)
     {
-      ab.i(TAG, "setShowMode, mode:%d, uiWidth: %s, uiHeight: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.tGC), Integer.valueOf(this.tGD) });
+      ad.m(TAG, "setShowMode, mode:%d, uiWidth: %s, uiHeight: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.zvl), Integer.valueOf(this.zvm) });
       if (paramInt == 1) {
         break label90;
       }
-      this.tHe = true;
-      cPI();
+      this.zvR = true;
+      dXj();
     }
     for (;;)
     {
-      this.tGQ.HY(this.tGW);
-      AppMethodBeat.o(140198);
+      this.zvz.QT(this.zvF);
+      AppMethodBeat.o(115650);
       return;
       label90:
-      this.tHd = true;
-      ne(false);
+      if (this.zvR)
+      {
+        ad.i(TAG, "is need to detach");
+        dXj();
+      }
+      this.zvQ = true;
+      rU(false);
     }
   }
   
-  public final void a(SurfaceTexture paramSurfaceTexture, int paramInt)
+  public final void a(int paramInt, a.b paramb)
   {
-    AppMethodBeat.i(140199);
-    if (this.tGQ != null) {
-      this.tGQ.a(paramSurfaceTexture, paramInt);
+    AppMethodBeat.i(115667);
+    switch (paramInt)
+    {
     }
-    AppMethodBeat.o(140199);
+    for (;;)
+    {
+      AppMethodBeat.o(115667);
+      return;
+      if ((this.zvz != null) && (this.zvz.dXB() != null))
+      {
+        paramb.a(this.zvz.dXB());
+        AppMethodBeat.o(115667);
+        return;
+        if ((this.zvy != null) && (this.zvy.dXv() != null)) {
+          paramb.a(this.zvy.dXv());
+        }
+      }
+    }
   }
   
-  public final void a(e parame)
+  public final void a(SurfaceTexture paramSurfaceTexture, com.tencent.mm.media.f.d paramd)
   {
-    AppMethodBeat.i(5082);
-    if ((this.tGP != null) && (this.tGP.cPS() != null)) {
-      parame.bx(this.tGP.cPS());
+    AppMethodBeat.i(115651);
+    if (this.zvz != null) {
+      this.zvz.a(paramSurfaceTexture, paramd);
     }
-    AppMethodBeat.o(5082);
-  }
-  
-  public final void a(a.b paramb)
-  {
-    AppMethodBeat.i(140209);
-    if ((this.tGQ != null) && (this.tGQ.cPW() != null)) {
-      paramb.a(this.tGQ.cPW());
-    }
-    AppMethodBeat.o(140209);
+    AppMethodBeat.o(115651);
   }
   
   public final void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4)
   {
-    AppMethodBeat.i(140201);
-    if ((this.tGx) && (this.tGJ == null))
+    AppMethodBeat.i(115653);
+    if ((this.zvg) && (this.zvs == null))
     {
-      this.tGL = paramInt1;
-      this.tGM = paramInt2;
-      this.tGN = paramInt3;
-      this.tGJ = paramArrayOfByte;
-      this.tGR = paramBoolean;
-      this.tGT = paramInt4;
+      this.zvu = paramInt1;
+      this.zvv = paramInt2;
+      this.zvw = paramInt3;
+      this.zvs = paramArrayOfByte;
+      this.zvA = paramBoolean;
+      this.zvC = paramInt4;
       requestRender();
     }
-    AppMethodBeat.o(140201);
+    AppMethodBeat.o(115653);
   }
   
   public final void a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    AppMethodBeat.i(5076);
-    if ((this.tGx) && (this.tGK == null))
+    AppMethodBeat.i(115655);
+    if ((this.zvg) && (this.zvt == null))
     {
-      this.tGL = paramInt1;
-      this.tGM = paramInt2;
-      this.tGN = paramInt3;
-      this.tGK = paramArrayOfInt;
-      this.tGR = paramBoolean;
+      this.zvu = paramInt1;
+      this.zvv = paramInt2;
+      this.zvw = paramInt3;
+      this.zvt = paramArrayOfInt;
+      this.zvA = paramBoolean;
       requestRender();
     }
-    AppMethodBeat.o(5076);
+    AppMethodBeat.o(115655);
   }
   
-  public final void cOQ()
+  public final void dXg()
   {
-    AppMethodBeat.i(140200);
-    if ((this.tGE != null) && (this.tGE.get() != null))
+    AppMethodBeat.i(115660);
+    ad.i(TAG, "%s onStop, renderMode: %s", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.mRenderMode) });
+    this.zvh = false;
+    this.zvk = false;
+    AppMethodBeat.o(115660);
+  }
+  
+  public final void dXh()
+  {
+    AppMethodBeat.i(115661);
+    ad.i(TAG, "%s steve: try to reset GLRender mode=%d, inited:%b, started:%b", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.mRenderMode), Boolean.valueOf(this.zvg), Boolean.valueOf(this.zvh) });
+    if ((this.zvg) && (this.zvh))
     {
-      ??? = (OpenGlView)this.tGE.get();
-      ab.b(TAG, "releaseSurfaceTexture:%s", new Object[] { ??? });
-      ((OpenGlView)???).queueEvent(new OpenGlRender.1(this));
-      synchronized (tGZ)
+      ad.i(TAG, "%s steve: Reset GLRender first! mode=%d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.mRenderMode) });
+      if (this.zvz != null)
+      {
+        ad.i(TAG, "onResetRender need detach");
+        this.zvR = true;
+        dXj();
+      }
+      this.zvg = false;
+      this.zvh = false;
+      dXi();
+    }
+    AppMethodBeat.o(115661);
+  }
+  
+  final void dXj()
+  {
+    AppMethodBeat.i(115663);
+    if ((this.zvn != null) && (this.zvn.get() != null))
+    {
+      ??? = (OpenGlView)this.zvn.get();
+      ad.i(TAG, "detachGLContext:%s", new Object[] { ??? });
+      ((OpenGlView)???).queueEvent(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(115644);
+          if (OpenGlRender.c(OpenGlRender.this))
+          {
+            OpenGlRender.b(OpenGlRender.this).dXF();
+            OpenGlRender.d(OpenGlRender.this);
+            OpenGlRender.e(OpenGlRender.this);
+            OpenGlRender.f(OpenGlRender.this);
+            ad.i(OpenGlRender.TAG, "detach finish");
+          }
+          synchronized (OpenGlRender.zvG)
+          {
+            try
+            {
+              OpenGlRender.zvG.notifyAll();
+              AppMethodBeat.o(115644);
+              return;
+            }
+            catch (Exception localException)
+            {
+              for (;;)
+              {
+                ad.printErrStackTrace(OpenGlRender.TAG, localException, "", new Object[0]);
+              }
+            }
+          }
+        }
+      });
+      synchronized (zvG)
       {
         try
         {
-          tGZ.wait(100L);
-          ab.i(TAG, "releaseSurfaceTexture wait finish");
-          AppMethodBeat.o(140200);
+          zvG.wait(100L);
+          ad.i(TAG, "detachGLContext wait finish, bNeedDetach:%s", new Object[] { Boolean.valueOf(this.zvR) });
+          AppMethodBeat.o(115663);
           return;
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            ab.printErrStackTrace(TAG, localException, "", new Object[0]);
+            ad.printErrStackTrace(TAG, localException, "", new Object[0]);
           }
         }
       }
     }
-    AppMethodBeat.o(140200);
-  }
-  
-  public final void cPF()
-  {
-    AppMethodBeat.i(5078);
-    ab.i(TAG, "%s onStop, renderMode: %s", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.mRenderMode) });
-    this.tGy = false;
-    this.tGB = false;
-    AppMethodBeat.o(5078);
-  }
-  
-  public final void cPG()
-  {
-    AppMethodBeat.i(5079);
-    ab.i(TAG, "%s steve: try to reset GLRender mode=%d, inited:%b, started:%b", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.mRenderMode), Boolean.valueOf(this.tGx), Boolean.valueOf(this.tGy) });
-    if ((this.tGx) && (this.tGy))
-    {
-      ab.i(TAG, "%s steve: Reset GLRender first! mode=%d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(this.mRenderMode) });
-      if (this.tGQ != null)
+    if (this.zvR) {
+      ((OpenGlView)this.zvn.get()).queueEvent(new Runnable()
       {
-        ab.i(TAG, "onResetRender need detach");
-        this.tHe = true;
-        cPI();
-      }
-      this.tGx = false;
-      this.tGy = false;
-      cPH();
-    }
-    AppMethodBeat.o(5079);
-  }
-  
-  final void cPI()
-  {
-    AppMethodBeat.i(140207);
-    if ((this.tGE != null) && (this.tGE.get() != null))
-    {
-      ??? = (OpenGlView)this.tGE.get();
-      ab.i(TAG, "detachGLContext:%s", new Object[] { ??? });
-      ((OpenGlView)???).queueEvent(new OpenGlRender.4(this));
-      synchronized (tGX)
-      {
-        try
+        public final void run()
         {
-          tGX.wait(100L);
-          ab.i(TAG, "detachGLContext wait finish, bNeedDetach:%s", new Object[] { Boolean.valueOf(this.tHe) });
-          AppMethodBeat.o(140207);
-          return;
+          AppMethodBeat.i(115645);
+          OpenGlRender.b(OpenGlRender.this).dXF();
+          OpenGlRender.d(OpenGlRender.this);
+          OpenGlRender.e(OpenGlRender.this);
+          OpenGlRender.f(OpenGlRender.this);
+          ad.i(OpenGlRender.TAG, "detach finish");
+          AppMethodBeat.o(115645);
         }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            ab.printErrStackTrace(TAG, localException, "", new Object[0]);
-          }
-        }
-      }
+      });
     }
-    if (this.tHe)
-    {
-      this.tGQ.cQa();
-      this.tHe = false;
-      this.tGJ = null;
-      this.tGK = null;
-      ab.i(TAG, "detach finish");
-    }
-    AppMethodBeat.o(140207);
+    AppMethodBeat.o(115663);
   }
   
   public final void g(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(140202);
-    if ((this.tGx) && (this.tGJ == null))
+    AppMethodBeat.i(115654);
+    if ((this.zvg) && (this.zvs == null))
     {
-      this.tGL = paramInt1;
-      this.tGM = paramInt2;
-      this.tGN = paramInt3;
-      this.tGJ = paramArrayOfByte;
-      this.tGR = false;
+      this.zvu = paramInt1;
+      this.zvv = paramInt2;
+      this.zvw = paramInt3;
+      this.zvs = paramArrayOfByte;
+      this.zvA = false;
       requestRender();
     }
-    AppMethodBeat.o(140202);
+    AppMethodBeat.o(115654);
   }
   
-  public final void gj(int paramInt1, int paramInt2)
+  public final void hP(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(140203);
-    ab.i(TAG, "video=" + paramInt1 + "x" + paramInt2);
+    AppMethodBeat.i(115656);
+    ad.i(TAG, "video=" + paramInt1 + "x" + paramInt2);
     if ((paramInt1 > 0) && (paramInt2 > 0))
     {
-      this.txY = paramInt1;
-      this.txZ = paramInt2;
-      if (this.tGQ != null) {
-        this.tGQ.gr(paramInt1, paramInt2);
+      this.zhL = paramInt1;
+      this.zhM = paramInt2;
+      if (this.zvz != null) {
+        this.zvz.ia(paramInt1, paramInt2);
       }
-      AppMethodBeat.o(140203);
+      AppMethodBeat.o(115656);
       return;
     }
-    ab.e(TAG, "ERROR video size:%dx%d, lastviddeosize:%dx%d ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.txY), Integer.valueOf(this.txZ) });
-    AppMethodBeat.o(140203);
-  }
-  
-  public final void nd(boolean paramBoolean)
-  {
-    AppMethodBeat.i(5074);
-    ab.i(TAG, "drawTransparent: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.tGU = paramBoolean;
-    requestRender();
-    AppMethodBeat.o(5074);
+    ad.e(TAG, "ERROR video size:%dx%d, lastviddeosize:%dx%d ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.zhL), Integer.valueOf(this.zhM) });
+    AppMethodBeat.o(115656);
   }
   
   /* Error */
   public final void onDrawFrame(GL10 paramGL10)
   {
     // Byte code:
-    //   0: sipush 5073
-    //   3: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 495
+    //   3: invokestatic 114	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 198	com/tencent/mm/plugin/voip/video/OpenGlRender:tGW	I
-    //   10: ifne +2138 -> 2148
+    //   7: getfield 222	com/tencent/mm/plugin/voip/video/OpenGlRender:zvF	I
+    //   10: ifne +2197 -> 2207
     //   13: aload_0
-    //   14: getfield 168	com/tencent/mm/plugin/voip/video/OpenGlRender:tGy	Z
+    //   14: getfield 190	com/tencent/mm/plugin/voip/video/OpenGlRender:zvh	Z
     //   17: ifeq +20 -> 37
     //   20: aload_0
-    //   21: getfield 166	com/tencent/mm/plugin/voip/video/OpenGlRender:tGx	Z
+    //   21: getfield 188	com/tencent/mm/plugin/voip/video/OpenGlRender:zvg	Z
     //   24: ifeq +13 -> 37
     //   27: aload_0
-    //   28: getfield 229	com/tencent/mm/plugin/voip/video/OpenGlRender:tGE	Ljava/lang/ref/WeakReference;
-    //   31: invokevirtual 279	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   28: getfield 259	com/tencent/mm/plugin/voip/video/OpenGlRender:zvn	Ljava/lang/ref/WeakReference;
+    //   31: invokevirtual 308	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
     //   34: ifnonnull +63 -> 97
     //   37: aload_0
     //   38: aconst_null
-    //   39: putfield 190	com/tencent/mm/plugin/voip/video/OpenGlRender:tGJ	[B
+    //   39: putfield 212	com/tencent/mm/plugin/voip/video/OpenGlRender:zvs	[B
     //   42: aload_0
     //   43: aconst_null
-    //   44: putfield 192	com/tencent/mm/plugin/voip/video/OpenGlRender:tGK	[I
-    //   47: getstatic 99	com/tencent/mm/plugin/voip/video/OpenGlRender:TAG	Ljava/lang/String;
-    //   50: ldc_w 491
+    //   44: putfield 214	com/tencent/mm/plugin/voip/video/OpenGlRender:zvt	[I
+    //   47: getstatic 118	com/tencent/mm/plugin/voip/video/OpenGlRender:TAG	Ljava/lang/String;
+    //   50: ldc_w 497
     //   53: iconst_3
     //   54: anewarray 4	java/lang/Object
     //   57: dup
     //   58: iconst_0
     //   59: aload_0
-    //   60: getfield 168	com/tencent/mm/plugin/voip/video/OpenGlRender:tGy	Z
-    //   63: invokestatic 335	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   60: getfield 190	com/tencent/mm/plugin/voip/video/OpenGlRender:zvh	Z
+    //   63: invokestatic 361	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   66: aastore
     //   67: dup
     //   68: iconst_1
     //   69: aload_0
-    //   70: getfield 166	com/tencent/mm/plugin/voip/video/OpenGlRender:tGx	Z
-    //   73: invokestatic 335	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   70: getfield 188	com/tencent/mm/plugin/voip/video/OpenGlRender:zvg	Z
+    //   73: invokestatic 361	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   76: aastore
     //   77: dup
     //   78: iconst_2
     //   79: aload_0
-    //   80: getfield 408	com/tencent/mm/plugin/voip/video/OpenGlRender:tGR	Z
-    //   83: invokestatic 335	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   80: getfield 431	com/tencent/mm/plugin/voip/video/OpenGlRender:zvA	Z
+    //   83: invokestatic 361	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   86: aastore
-    //   87: invokestatic 493	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   90: sipush 5073
-    //   93: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   87: invokestatic 499	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   90: ldc_w 495
+    //   93: invokestatic 164	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   96: return
     //   97: aload_0
-    //   98: getfield 190	com/tencent/mm/plugin/voip/video/OpenGlRender:tGJ	[B
-    //   101: ifnull +623 -> 724
+    //   98: getfield 212	com/tencent/mm/plugin/voip/video/OpenGlRender:zvs	[B
+    //   101: ifnull +662 -> 763
     //   104: aload_0
-    //   105: getfield 406	com/tencent/mm/plugin/voip/video/OpenGlRender:tGN	I
-    //   108: getstatic 123	com/tencent/mm/plugin/voip/video/OpenGlRender:FLAG_Mirror	I
-    //   111: iand
-    //   112: ifeq +646 -> 758
-    //   115: iconst_1
-    //   116: istore_2
-    //   117: aload_0
-    //   118: getfield 253	com/tencent/mm/plugin/voip/video/OpenGlRender:tGS	I
-    //   121: bipush 8
-    //   123: iand
-    //   124: ifeq +639 -> 763
-    //   127: iconst_1
-    //   128: istore_3
-    //   129: aload_0
-    //   130: getfield 251	com/tencent/mm/plugin/voip/video/OpenGlRender:tGP	Lcom/tencent/mm/plugin/voip/video/a/c;
-    //   133: ifnull +665 -> 798
+    //   105: invokestatic 505	com/tencent/mm/sdk/platformtools/bt:GC	()J
+    //   108: putfield 234	com/tencent/mm/plugin/voip/video/OpenGlRender:zvM	J
+    //   111: aload_0
+    //   112: getfield 429	com/tencent/mm/plugin/voip/video/OpenGlRender:zvw	I
+    //   115: getstatic 142	com/tencent/mm/plugin/voip/video/OpenGlRender:FLAG_Mirror	I
+    //   118: iand
+    //   119: ifeq +679 -> 798
+    //   122: iconst_1
+    //   123: istore_2
+    //   124: aload_0
+    //   125: getfield 281	com/tencent/mm/plugin/voip/video/OpenGlRender:zvB	I
+    //   128: bipush 8
+    //   130: iand
+    //   131: ifeq +672 -> 803
+    //   134: iconst_1
+    //   135: istore_3
     //   136: aload_0
-    //   137: getfield 408	com/tencent/mm/plugin/voip/video/OpenGlRender:tGR	Z
-    //   140: ifeq +658 -> 798
+    //   137: getfield 216	com/tencent/mm/plugin/voip/video/OpenGlRender:zvy	Lcom/tencent/mm/plugin/voip/video/a/b;
+    //   140: ifnull +698 -> 838
     //   143: aload_0
-    //   144: getfield 253	com/tencent/mm/plugin/voip/video/OpenGlRender:tGS	I
-    //   147: ifeq +651 -> 798
-    //   150: iload_3
-    //   151: ifne +647 -> 798
-    //   154: aload_0
-    //   155: getfield 251	com/tencent/mm/plugin/voip/video/OpenGlRender:tGP	Lcom/tencent/mm/plugin/voip/video/a/c;
-    //   158: astore_1
-    //   159: aload_0
-    //   160: getfield 253	com/tencent/mm/plugin/voip/video/OpenGlRender:tGS	I
-    //   163: istore_3
-    //   164: aload_1
-    //   165: getfield 496	com/tencent/mm/plugin/voip/video/a/c:eLc	Z
-    //   168: ifne +508 -> 676
+    //   144: getfield 431	com/tencent/mm/plugin/voip/video/OpenGlRender:zvA	Z
+    //   147: ifeq +691 -> 838
+    //   150: aload_0
+    //   151: getfield 281	com/tencent/mm/plugin/voip/video/OpenGlRender:zvB	I
+    //   154: ifeq +684 -> 838
+    //   157: iload_3
+    //   158: ifne +680 -> 838
+    //   161: aload_0
+    //   162: getfield 216	com/tencent/mm/plugin/voip/video/OpenGlRender:zvy	Lcom/tencent/mm/plugin/voip/video/a/b;
+    //   165: astore_1
+    //   166: aload_0
+    //   167: getfield 281	com/tencent/mm/plugin/voip/video/OpenGlRender:zvB	I
+    //   170: istore_3
     //   171: aload_1
-    //   172: ldc_w 498
-    //   175: ldc_w 500
-    //   178: invokestatic 503	com/tencent/mm/plugin/voip/video/a/c:Z	(Ljava/lang/String;Ljava/lang/String;)I
-    //   181: putfield 506	com/tencent/mm/plugin/voip/video/a/c:eZg	I
-    //   184: aload_1
-    //   185: getfield 506	com/tencent/mm/plugin/voip/video/a/c:eZg	I
-    //   188: ifne +12 -> 200
-    //   191: ldc_w 508
-    //   194: ldc_w 510
-    //   197: invokestatic 512	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   200: aload_1
-    //   201: aload_1
-    //   202: getfield 506	com/tencent/mm/plugin/voip/video/a/c:eZg	I
-    //   205: ldc_w 514
-    //   208: invokestatic 520	android/opengl/GLES20:glGetAttribLocation	(ILjava/lang/String;)I
-    //   211: putfield 523	com/tencent/mm/plugin/voip/video/a/c:eZi	I
-    //   214: aload_1
-    //   215: aload_1
-    //   216: getfield 506	com/tencent/mm/plugin/voip/video/a/c:eZg	I
-    //   219: ldc_w 525
-    //   222: invokestatic 520	android/opengl/GLES20:glGetAttribLocation	(ILjava/lang/String;)I
-    //   225: putfield 528	com/tencent/mm/plugin/voip/video/a/c:eZh	I
-    //   228: aload_1
-    //   229: aload_1
-    //   230: getfield 506	com/tencent/mm/plugin/voip/video/a/c:eZg	I
-    //   233: ldc_w 530
-    //   236: invokestatic 533	android/opengl/GLES20:glGetUniformLocation	(ILjava/lang/String;)I
-    //   239: putfield 536	com/tencent/mm/plugin/voip/video/a/c:eZj	I
-    //   242: aload_1
-    //   243: aload_1
-    //   244: getfield 506	com/tencent/mm/plugin/voip/video/a/c:eZg	I
-    //   247: ldc_w 538
-    //   250: invokestatic 533	android/opengl/GLES20:glGetUniformLocation	(ILjava/lang/String;)I
-    //   253: putfield 541	com/tencent/mm/plugin/voip/video/a/c:eZk	I
-    //   256: aload_1
-    //   257: aload_1
-    //   258: getfield 506	com/tencent/mm/plugin/voip/video/a/c:eZg	I
-    //   261: ldc_w 543
-    //   264: invokestatic 533	android/opengl/GLES20:glGetUniformLocation	(ILjava/lang/String;)I
-    //   267: putfield 546	com/tencent/mm/plugin/voip/video/a/c:eZl	I
-    //   270: aload_1
-    //   271: invokestatic 549	com/tencent/mm/plugin/voip/video/a/c:Vm	()I
-    //   274: putfield 552	com/tencent/mm/plugin/voip/video/a/c:eZe	I
+    //   172: getfield 508	com/tencent/mm/plugin/voip/video/a/b:ggj	Z
+    //   175: ifne +509 -> 684
+    //   178: aload_1
+    //   179: ldc_w 510
+    //   182: ldc_w 512
+    //   185: invokestatic 516	com/tencent/mm/plugin/voip/video/a/b:ap	(Ljava/lang/String;Ljava/lang/String;)I
+    //   188: putfield 519	com/tencent/mm/plugin/voip/video/a/b:gvT	I
+    //   191: aload_1
+    //   192: getfield 519	com/tencent/mm/plugin/voip/video/a/b:gvT	I
+    //   195: ifne +12 -> 207
+    //   198: ldc_w 521
+    //   201: ldc_w 523
+    //   204: invokestatic 525	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   207: aload_1
+    //   208: aload_1
+    //   209: getfield 519	com/tencent/mm/plugin/voip/video/a/b:gvT	I
+    //   212: ldc_w 527
+    //   215: invokestatic 533	android/opengl/GLES20:glGetAttribLocation	(ILjava/lang/String;)I
+    //   218: putfield 536	com/tencent/mm/plugin/voip/video/a/b:gvV	I
+    //   221: aload_1
+    //   222: aload_1
+    //   223: getfield 519	com/tencent/mm/plugin/voip/video/a/b:gvT	I
+    //   226: ldc_w 538
+    //   229: invokestatic 533	android/opengl/GLES20:glGetAttribLocation	(ILjava/lang/String;)I
+    //   232: putfield 541	com/tencent/mm/plugin/voip/video/a/b:gvU	I
+    //   235: aload_1
+    //   236: aload_1
+    //   237: getfield 519	com/tencent/mm/plugin/voip/video/a/b:gvT	I
+    //   240: ldc_w 543
+    //   243: invokestatic 546	android/opengl/GLES20:glGetUniformLocation	(ILjava/lang/String;)I
+    //   246: putfield 549	com/tencent/mm/plugin/voip/video/a/b:gvW	I
+    //   249: aload_1
+    //   250: aload_1
+    //   251: getfield 519	com/tencent/mm/plugin/voip/video/a/b:gvT	I
+    //   254: ldc_w 551
+    //   257: invokestatic 546	android/opengl/GLES20:glGetUniformLocation	(ILjava/lang/String;)I
+    //   260: putfield 554	com/tencent/mm/plugin/voip/video/a/b:gvX	I
+    //   263: aload_1
+    //   264: aload_1
+    //   265: getfield 519	com/tencent/mm/plugin/voip/video/a/b:gvT	I
+    //   268: ldc_w 556
+    //   271: invokestatic 546	android/opengl/GLES20:glGetUniformLocation	(ILjava/lang/String;)I
+    //   274: putfield 559	com/tencent/mm/plugin/voip/video/a/b:gvY	I
     //   277: aload_1
-    //   278: invokestatic 549	com/tencent/mm/plugin/voip/video/a/c:Vm	()I
-    //   281: putfield 555	com/tencent/mm/plugin/voip/video/a/c:eZf	I
+    //   278: invokestatic 563	com/tencent/mm/plugin/voip/video/a/b:dXt	()Lcom/tencent/mm/media/f/d;
+    //   281: putfield 567	com/tencent/mm/plugin/voip/video/a/b:zwK	Lcom/tencent/mm/media/f/d;
     //   284: aload_1
-    //   285: ldc_w 498
-    //   288: ldc_w 557
-    //   291: invokestatic 503	com/tencent/mm/plugin/voip/video/a/c:Z	(Ljava/lang/String;Ljava/lang/String;)I
-    //   294: putfield 560	com/tencent/mm/plugin/voip/video/a/c:tHP	I
-    //   297: aload_1
-    //   298: aload_1
-    //   299: getfield 560	com/tencent/mm/plugin/voip/video/a/c:tHP	I
-    //   302: ldc_w 514
-    //   305: invokestatic 520	android/opengl/GLES20:glGetAttribLocation	(ILjava/lang/String;)I
-    //   308: putfield 563	com/tencent/mm/plugin/voip/video/a/c:lBy	I
-    //   311: aload_1
-    //   312: aload_1
-    //   313: getfield 560	com/tencent/mm/plugin/voip/video/a/c:tHP	I
-    //   316: ldc_w 525
-    //   319: invokestatic 520	android/opengl/GLES20:glGetAttribLocation	(ILjava/lang/String;)I
-    //   322: putfield 566	com/tencent/mm/plugin/voip/video/a/c:lBx	I
-    //   325: aload_1
-    //   326: aload_1
-    //   327: getfield 560	com/tencent/mm/plugin/voip/video/a/c:tHP	I
-    //   330: ldc_w 568
-    //   333: invokestatic 533	android/opengl/GLES20:glGetUniformLocation	(ILjava/lang/String;)I
-    //   336: putfield 571	com/tencent/mm/plugin/voip/video/a/c:lBz	I
-    //   339: aload_1
-    //   340: aload_1
-    //   341: getfield 560	com/tencent/mm/plugin/voip/video/a/c:tHP	I
-    //   344: ldc_w 543
-    //   347: invokestatic 533	android/opengl/GLES20:glGetUniformLocation	(ILjava/lang/String;)I
-    //   350: putfield 574	com/tencent/mm/plugin/voip/video/a/c:lBA	I
-    //   353: aload_1
-    //   354: invokestatic 549	com/tencent/mm/plugin/voip/video/a/c:Vm	()I
-    //   357: putfield 577	com/tencent/mm/plugin/voip/video/a/c:lBw	I
+    //   285: invokestatic 563	com/tencent/mm/plugin/voip/video/a/b:dXt	()Lcom/tencent/mm/media/f/d;
+    //   288: putfield 570	com/tencent/mm/plugin/voip/video/a/b:zwL	Lcom/tencent/mm/media/f/d;
+    //   291: aload_1
+    //   292: ldc_w 510
+    //   295: ldc_w 572
+    //   298: invokestatic 516	com/tencent/mm/plugin/voip/video/a/b:ap	(Ljava/lang/String;Ljava/lang/String;)I
+    //   301: putfield 575	com/tencent/mm/plugin/voip/video/a/b:zwM	I
+    //   304: aload_1
+    //   305: aload_1
+    //   306: getfield 575	com/tencent/mm/plugin/voip/video/a/b:zwM	I
+    //   309: ldc_w 527
+    //   312: invokestatic 533	android/opengl/GLES20:glGetAttribLocation	(ILjava/lang/String;)I
+    //   315: putfield 578	com/tencent/mm/plugin/voip/video/a/b:zwP	I
+    //   318: aload_1
+    //   319: aload_1
+    //   320: getfield 575	com/tencent/mm/plugin/voip/video/a/b:zwM	I
+    //   323: ldc_w 538
+    //   326: invokestatic 533	android/opengl/GLES20:glGetAttribLocation	(ILjava/lang/String;)I
+    //   329: putfield 581	com/tencent/mm/plugin/voip/video/a/b:zwO	I
+    //   332: aload_1
+    //   333: aload_1
+    //   334: getfield 575	com/tencent/mm/plugin/voip/video/a/b:zwM	I
+    //   337: ldc_w 583
+    //   340: invokestatic 546	android/opengl/GLES20:glGetUniformLocation	(ILjava/lang/String;)I
+    //   343: putfield 586	com/tencent/mm/plugin/voip/video/a/b:zwQ	I
+    //   346: aload_1
+    //   347: aload_1
+    //   348: getfield 575	com/tencent/mm/plugin/voip/video/a/b:zwM	I
+    //   351: ldc_w 556
+    //   354: invokestatic 546	android/opengl/GLES20:glGetUniformLocation	(ILjava/lang/String;)I
+    //   357: putfield 589	com/tencent/mm/plugin/voip/video/a/b:zwR	I
     //   360: aload_1
-    //   361: invokestatic 549	com/tencent/mm/plugin/voip/video/a/c:Vm	()I
-    //   364: putfield 580	com/tencent/mm/plugin/voip/video/a/c:lBM	I
-    //   367: getstatic 584	com/tencent/mm/plugin/voip/video/a/c:eZq	[F
-    //   370: astore 11
-    //   372: aload_1
-    //   373: aload 11
-    //   375: aload 11
-    //   377: arraylength
-    //   378: invokestatic 590	java/util/Arrays:copyOf	([FI)[F
-    //   381: putfield 593	com/tencent/mm/plugin/voip/video/a/c:gNF	[F
-    //   384: aload_1
-    //   385: aload_1
-    //   386: getfield 593	com/tencent/mm/plugin/voip/video/a/c:gNF	[F
-    //   389: arraylength
-    //   390: iconst_4
-    //   391: imul
-    //   392: invokestatic 599	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
-    //   395: invokestatic 605	java/nio/ByteOrder:nativeOrder	()Ljava/nio/ByteOrder;
-    //   398: invokevirtual 609	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
-    //   401: invokevirtual 613	java/nio/ByteBuffer:asFloatBuffer	()Ljava/nio/FloatBuffer;
-    //   404: putfield 617	com/tencent/mm/plugin/voip/video/a/c:eYv	Ljava/nio/FloatBuffer;
-    //   407: aload_1
-    //   408: getfield 617	com/tencent/mm/plugin/voip/video/a/c:eYv	Ljava/nio/FloatBuffer;
-    //   411: aload_1
-    //   412: getfield 593	com/tencent/mm/plugin/voip/video/a/c:gNF	[F
-    //   415: invokevirtual 623	java/nio/FloatBuffer:put	([F)Ljava/nio/FloatBuffer;
-    //   418: pop
-    //   419: aload_1
-    //   420: getfield 617	com/tencent/mm/plugin/voip/video/a/c:eYv	Ljava/nio/FloatBuffer;
-    //   423: iconst_0
-    //   424: invokevirtual 627	java/nio/FloatBuffer:position	(I)Ljava/nio/Buffer;
-    //   427: pop
-    //   428: aload_1
-    //   429: getstatic 630	com/tencent/mm/plugin/voip/video/a/c:eZr	[F
-    //   432: arraylength
-    //   433: iconst_4
-    //   434: imul
-    //   435: invokestatic 599	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
-    //   438: invokestatic 605	java/nio/ByteOrder:nativeOrder	()Ljava/nio/ByteOrder;
-    //   441: invokevirtual 609	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
-    //   444: invokevirtual 613	java/nio/ByteBuffer:asFloatBuffer	()Ljava/nio/FloatBuffer;
-    //   447: putfield 633	com/tencent/mm/plugin/voip/video/a/c:eYu	Ljava/nio/FloatBuffer;
-    //   450: aload_1
-    //   451: getfield 633	com/tencent/mm/plugin/voip/video/a/c:eYu	Ljava/nio/FloatBuffer;
-    //   454: getstatic 630	com/tencent/mm/plugin/voip/video/a/c:eZr	[F
-    //   457: invokevirtual 623	java/nio/FloatBuffer:put	([F)Ljava/nio/FloatBuffer;
-    //   460: pop
-    //   461: aload_1
-    //   462: getfield 633	com/tencent/mm/plugin/voip/video/a/c:eYu	Ljava/nio/FloatBuffer;
-    //   465: iconst_0
-    //   466: invokevirtual 627	java/nio/FloatBuffer:position	(I)Ljava/nio/Buffer;
-    //   469: pop
-    //   470: getstatic 636	com/tencent/mm/plugin/voip/video/a/c:tHO	[F
-    //   473: astore 11
-    //   475: aload_1
-    //   476: aload 11
-    //   478: aload 11
-    //   480: arraylength
-    //   481: invokestatic 590	java/util/Arrays:copyOf	([FI)[F
-    //   484: putfield 639	com/tencent/mm/plugin/voip/video/a/c:lBJ	[F
-    //   487: aload_1
-    //   488: aload_1
-    //   489: getfield 639	com/tencent/mm/plugin/voip/video/a/c:lBJ	[F
-    //   492: arraylength
-    //   493: iconst_4
-    //   494: imul
-    //   495: invokestatic 599	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
-    //   498: invokestatic 605	java/nio/ByteOrder:nativeOrder	()Ljava/nio/ByteOrder;
-    //   501: invokevirtual 609	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
-    //   504: invokevirtual 613	java/nio/ByteBuffer:asFloatBuffer	()Ljava/nio/FloatBuffer;
-    //   507: putfield 642	com/tencent/mm/plugin/voip/video/a/c:lBE	Ljava/nio/FloatBuffer;
-    //   510: aload_1
-    //   511: getfield 642	com/tencent/mm/plugin/voip/video/a/c:lBE	Ljava/nio/FloatBuffer;
-    //   514: aload_1
-    //   515: getfield 639	com/tencent/mm/plugin/voip/video/a/c:lBJ	[F
-    //   518: invokevirtual 623	java/nio/FloatBuffer:put	([F)Ljava/nio/FloatBuffer;
-    //   521: pop
-    //   522: aload_1
-    //   523: getfield 642	com/tencent/mm/plugin/voip/video/a/c:lBE	Ljava/nio/FloatBuffer;
-    //   526: iconst_0
-    //   527: invokevirtual 627	java/nio/FloatBuffer:position	(I)Ljava/nio/Buffer;
-    //   530: pop
-    //   531: getstatic 584	com/tencent/mm/plugin/voip/video/a/c:eZq	[F
-    //   534: astore 11
-    //   536: aload_1
-    //   537: aload 11
-    //   539: aload 11
-    //   541: arraylength
-    //   542: invokestatic 590	java/util/Arrays:copyOf	([FI)[F
-    //   545: putfield 645	com/tencent/mm/plugin/voip/video/a/c:lBI	[F
-    //   548: aload_1
-    //   549: aload_1
-    //   550: getfield 645	com/tencent/mm/plugin/voip/video/a/c:lBI	[F
-    //   553: arraylength
-    //   554: iconst_4
-    //   555: imul
-    //   556: invokestatic 599	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
-    //   559: invokestatic 605	java/nio/ByteOrder:nativeOrder	()Ljava/nio/ByteOrder;
-    //   562: invokevirtual 609	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
-    //   565: invokevirtual 613	java/nio/ByteBuffer:asFloatBuffer	()Ljava/nio/FloatBuffer;
-    //   568: putfield 648	com/tencent/mm/plugin/voip/video/a/c:lBF	Ljava/nio/FloatBuffer;
-    //   571: aload_1
-    //   572: getfield 648	com/tencent/mm/plugin/voip/video/a/c:lBF	Ljava/nio/FloatBuffer;
-    //   575: aload_1
-    //   576: getfield 645	com/tencent/mm/plugin/voip/video/a/c:lBI	[F
-    //   579: invokevirtual 623	java/nio/FloatBuffer:put	([F)Ljava/nio/FloatBuffer;
-    //   582: pop
-    //   583: aload_1
-    //   584: getfield 648	com/tencent/mm/plugin/voip/video/a/c:lBF	Ljava/nio/FloatBuffer;
-    //   587: iconst_0
-    //   588: invokevirtual 627	java/nio/FloatBuffer:position	(I)Ljava/nio/Buffer;
-    //   591: pop
-    //   592: aload_1
-    //   593: invokestatic 651	com/tencent/mm/plugin/voip/video/a/c:Vn	()I
-    //   596: putfield 654	com/tencent/mm/plugin/voip/video/a/c:lBK	I
+    //   361: invokestatic 563	com/tencent/mm/plugin/voip/video/a/b:dXt	()Lcom/tencent/mm/media/f/d;
+    //   364: putfield 592	com/tencent/mm/plugin/voip/video/a/b:zwN	Lcom/tencent/mm/media/f/d;
+    //   367: aload_1
+    //   368: invokestatic 563	com/tencent/mm/plugin/voip/video/a/b:dXt	()Lcom/tencent/mm/media/f/d;
+    //   371: putfield 595	com/tencent/mm/plugin/voip/video/a/b:zwZ	Lcom/tencent/mm/media/f/d;
+    //   374: getstatic 599	com/tencent/mm/plugin/voip/video/a/b:gwe	[F
+    //   377: astore 11
+    //   379: aload_1
+    //   380: aload 11
+    //   382: aload 11
+    //   384: arraylength
+    //   385: invokestatic 605	java/util/Arrays:copyOf	([FI)[F
+    //   388: putfield 608	com/tencent/mm/plugin/voip/video/a/b:iBp	[F
+    //   391: aload_1
+    //   392: aload_1
+    //   393: getfield 608	com/tencent/mm/plugin/voip/video/a/b:iBp	[F
+    //   396: arraylength
+    //   397: iconst_4
+    //   398: imul
+    //   399: invokestatic 614	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
+    //   402: invokestatic 620	java/nio/ByteOrder:nativeOrder	()Ljava/nio/ByteOrder;
+    //   405: invokevirtual 624	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   408: invokevirtual 628	java/nio/ByteBuffer:asFloatBuffer	()Ljava/nio/FloatBuffer;
+    //   411: putfield 632	com/tencent/mm/plugin/voip/video/a/b:guT	Ljava/nio/FloatBuffer;
+    //   414: aload_1
+    //   415: getfield 632	com/tencent/mm/plugin/voip/video/a/b:guT	Ljava/nio/FloatBuffer;
+    //   418: aload_1
+    //   419: getfield 608	com/tencent/mm/plugin/voip/video/a/b:iBp	[F
+    //   422: invokevirtual 638	java/nio/FloatBuffer:put	([F)Ljava/nio/FloatBuffer;
+    //   425: pop
+    //   426: aload_1
+    //   427: getfield 632	com/tencent/mm/plugin/voip/video/a/b:guT	Ljava/nio/FloatBuffer;
+    //   430: iconst_0
+    //   431: invokevirtual 642	java/nio/FloatBuffer:position	(I)Ljava/nio/Buffer;
+    //   434: pop
+    //   435: aload_1
+    //   436: getstatic 645	com/tencent/mm/plugin/voip/video/a/b:gwf	[F
+    //   439: arraylength
+    //   440: iconst_4
+    //   441: imul
+    //   442: invokestatic 614	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
+    //   445: invokestatic 620	java/nio/ByteOrder:nativeOrder	()Ljava/nio/ByteOrder;
+    //   448: invokevirtual 624	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   451: invokevirtual 628	java/nio/ByteBuffer:asFloatBuffer	()Ljava/nio/FloatBuffer;
+    //   454: putfield 648	com/tencent/mm/plugin/voip/video/a/b:guS	Ljava/nio/FloatBuffer;
+    //   457: aload_1
+    //   458: getfield 648	com/tencent/mm/plugin/voip/video/a/b:guS	Ljava/nio/FloatBuffer;
+    //   461: getstatic 645	com/tencent/mm/plugin/voip/video/a/b:gwf	[F
+    //   464: invokevirtual 638	java/nio/FloatBuffer:put	([F)Ljava/nio/FloatBuffer;
+    //   467: pop
+    //   468: aload_1
+    //   469: getfield 648	com/tencent/mm/plugin/voip/video/a/b:guS	Ljava/nio/FloatBuffer;
+    //   472: iconst_0
+    //   473: invokevirtual 642	java/nio/FloatBuffer:position	(I)Ljava/nio/Buffer;
+    //   476: pop
+    //   477: getstatic 651	com/tencent/mm/plugin/voip/video/a/b:zwJ	[F
+    //   480: astore 11
+    //   482: aload_1
+    //   483: aload 11
+    //   485: aload 11
+    //   487: arraylength
+    //   488: invokestatic 605	java/util/Arrays:copyOf	([FI)[F
+    //   491: putfield 654	com/tencent/mm/plugin/voip/video/a/b:zwW	[F
+    //   494: aload_1
+    //   495: aload_1
+    //   496: getfield 654	com/tencent/mm/plugin/voip/video/a/b:zwW	[F
+    //   499: arraylength
+    //   500: iconst_4
+    //   501: imul
+    //   502: invokestatic 614	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
+    //   505: invokestatic 620	java/nio/ByteOrder:nativeOrder	()Ljava/nio/ByteOrder;
+    //   508: invokevirtual 624	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   511: invokevirtual 628	java/nio/ByteBuffer:asFloatBuffer	()Ljava/nio/FloatBuffer;
+    //   514: putfield 657	com/tencent/mm/plugin/voip/video/a/b:zwS	Ljava/nio/FloatBuffer;
+    //   517: aload_1
+    //   518: getfield 657	com/tencent/mm/plugin/voip/video/a/b:zwS	Ljava/nio/FloatBuffer;
+    //   521: aload_1
+    //   522: getfield 654	com/tencent/mm/plugin/voip/video/a/b:zwW	[F
+    //   525: invokevirtual 638	java/nio/FloatBuffer:put	([F)Ljava/nio/FloatBuffer;
+    //   528: pop
+    //   529: aload_1
+    //   530: getfield 657	com/tencent/mm/plugin/voip/video/a/b:zwS	Ljava/nio/FloatBuffer;
+    //   533: iconst_0
+    //   534: invokevirtual 642	java/nio/FloatBuffer:position	(I)Ljava/nio/Buffer;
+    //   537: pop
+    //   538: getstatic 599	com/tencent/mm/plugin/voip/video/a/b:gwe	[F
+    //   541: astore 11
+    //   543: aload_1
+    //   544: aload 11
+    //   546: aload 11
+    //   548: arraylength
+    //   549: invokestatic 605	java/util/Arrays:copyOf	([FI)[F
+    //   552: putfield 660	com/tencent/mm/plugin/voip/video/a/b:zwV	[F
+    //   555: aload_1
+    //   556: aload_1
+    //   557: getfield 660	com/tencent/mm/plugin/voip/video/a/b:zwV	[F
+    //   560: arraylength
+    //   561: iconst_4
+    //   562: imul
+    //   563: invokestatic 614	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
+    //   566: invokestatic 620	java/nio/ByteOrder:nativeOrder	()Ljava/nio/ByteOrder;
+    //   569: invokevirtual 624	java/nio/ByteBuffer:order	(Ljava/nio/ByteOrder;)Ljava/nio/ByteBuffer;
+    //   572: invokevirtual 628	java/nio/ByteBuffer:asFloatBuffer	()Ljava/nio/FloatBuffer;
+    //   575: putfield 663	com/tencent/mm/plugin/voip/video/a/b:zwT	Ljava/nio/FloatBuffer;
+    //   578: aload_1
+    //   579: getfield 663	com/tencent/mm/plugin/voip/video/a/b:zwT	Ljava/nio/FloatBuffer;
+    //   582: aload_1
+    //   583: getfield 660	com/tencent/mm/plugin/voip/video/a/b:zwV	[F
+    //   586: invokevirtual 638	java/nio/FloatBuffer:put	([F)Ljava/nio/FloatBuffer;
+    //   589: pop
+    //   590: aload_1
+    //   591: getfield 663	com/tencent/mm/plugin/voip/video/a/b:zwT	Ljava/nio/FloatBuffer;
+    //   594: iconst_0
+    //   595: invokevirtual 642	java/nio/FloatBuffer:position	(I)Ljava/nio/Buffer;
+    //   598: pop
     //   599: aload_1
-    //   600: aconst_null
-    //   601: putfield 657	com/tencent/mm/plugin/voip/video/a/c:tCl	[B
-    //   604: aload_1
-    //   605: invokestatic 651	com/tencent/mm/plugin/voip/video/a/c:Vn	()I
-    //   608: putfield 660	com/tencent/mm/plugin/voip/video/a/c:lBL	I
+    //   600: invokestatic 667	com/tencent/mm/plugin/voip/video/a/b:dXu	()Lcom/tencent/mm/media/f/a;
+    //   603: putfield 671	com/tencent/mm/plugin/voip/video/a/b:zwX	Lcom/tencent/mm/media/f/a;
+    //   606: aload_1
+    //   607: aconst_null
+    //   608: putfield 674	com/tencent/mm/plugin/voip/video/a/b:zxf	[B
     //   611: aload_1
-    //   612: invokestatic 549	com/tencent/mm/plugin/voip/video/a/c:Vm	()I
-    //   615: putfield 663	com/tencent/mm/plugin/voip/video/a/c:lBO	I
-    //   618: iload_3
-    //   619: ifeq +29 -> 648
-    //   622: aload_1
-    //   623: new 665	com/tencent/mm/plugin/voip/video/a/b
-    //   626: dup
-    //   627: invokespecial 666	com/tencent/mm/plugin/voip/video/a/b:<init>	()V
-    //   630: putfield 670	com/tencent/mm/plugin/voip/video/a/c:tHT	Lcom/tencent/mm/plugin/voip/video/a/b;
-    //   633: aload_1
-    //   634: getfield 670	com/tencent/mm/plugin/voip/video/a/c:tHT	Lcom/tencent/mm/plugin/voip/video/a/b;
-    //   637: aload_1
-    //   638: getfield 580	com/tencent/mm/plugin/voip/video/a/c:lBM	I
-    //   641: aload_1
-    //   642: getfield 663	com/tencent/mm/plugin/voip/video/a/c:lBO	I
-    //   645: invokevirtual 673	com/tencent/mm/plugin/voip/video/a/b:initial	(II)V
-    //   648: ldc_w 508
-    //   651: ldc_w 675
-    //   654: iconst_1
-    //   655: anewarray 4	java/lang/Object
-    //   658: dup
-    //   659: iconst_0
-    //   660: aload_1
-    //   661: invokevirtual 431	java/lang/Object:hashCode	()I
-    //   664: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   667: aastore
-    //   668: invokestatic 314	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   671: aload_1
-    //   672: iconst_1
-    //   673: putfield 496	com/tencent/mm/plugin/voip/video/a/c:eLc	Z
-    //   676: aload_0
-    //   677: getfield 251	com/tencent/mm/plugin/voip/video/OpenGlRender:tGP	Lcom/tencent/mm/plugin/voip/video/a/c;
-    //   680: aload_0
-    //   681: getfield 176	com/tencent/mm/plugin/voip/video/OpenGlRender:tGC	I
+    //   612: invokestatic 667	com/tencent/mm/plugin/voip/video/a/b:dXu	()Lcom/tencent/mm/media/f/a;
+    //   615: putfield 677	com/tencent/mm/plugin/voip/video/a/b:zwY	Lcom/tencent/mm/media/f/a;
+    //   618: aload_1
+    //   619: invokestatic 563	com/tencent/mm/plugin/voip/video/a/b:dXt	()Lcom/tencent/mm/media/f/d;
+    //   622: putfield 680	com/tencent/mm/plugin/voip/video/a/b:oSo	Lcom/tencent/mm/media/f/d;
+    //   625: iload_3
+    //   626: ifeq +30 -> 656
+    //   629: aload_1
+    //   630: new 682	com/tencent/mm/plugin/voip/video/a/a
+    //   633: dup
+    //   634: invokespecial 683	com/tencent/mm/plugin/voip/video/a/a:<init>	()V
+    //   637: putfield 687	com/tencent/mm/plugin/voip/video/a/b:zxc	Lcom/tencent/mm/plugin/voip/video/a/a;
+    //   640: aload_1
+    //   641: getfield 687	com/tencent/mm/plugin/voip/video/a/b:zxc	Lcom/tencent/mm/plugin/voip/video/a/a;
+    //   644: aload_1
+    //   645: getfield 595	com/tencent/mm/plugin/voip/video/a/b:zwZ	Lcom/tencent/mm/media/f/d;
+    //   648: aload_1
+    //   649: getfield 680	com/tencent/mm/plugin/voip/video/a/b:oSo	Lcom/tencent/mm/media/f/d;
+    //   652: iload_3
+    //   653: invokevirtual 690	com/tencent/mm/plugin/voip/video/a/a:a	(Lcom/tencent/mm/media/f/d;Lcom/tencent/mm/media/f/d;I)V
+    //   656: ldc_w 521
+    //   659: ldc_w 692
+    //   662: iconst_1
+    //   663: anewarray 4	java/lang/Object
+    //   666: dup
+    //   667: iconst_0
+    //   668: aload_1
+    //   669: invokevirtual 445	java/lang/Object:hashCode	()I
+    //   672: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   675: aastore
+    //   676: invokestatic 340	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   679: aload_1
+    //   680: iconst_1
+    //   681: putfield 508	com/tencent/mm/plugin/voip/video/a/b:ggj	Z
     //   684: aload_0
-    //   685: getfield 178	com/tencent/mm/plugin/voip/video/OpenGlRender:tGD	I
-    //   688: invokevirtual 678	com/tencent/mm/plugin/voip/video/a/c:updateSize	(II)V
-    //   691: iload_2
-    //   692: ifne +76 -> 768
-    //   695: aload_0
-    //   696: getfield 251	com/tencent/mm/plugin/voip/video/OpenGlRender:tGP	Lcom/tencent/mm/plugin/voip/video/a/c;
-    //   699: aload_0
-    //   700: getfield 190	com/tencent/mm/plugin/voip/video/OpenGlRender:tGJ	[B
+    //   685: getfield 216	com/tencent/mm/plugin/voip/video/OpenGlRender:zvy	Lcom/tencent/mm/plugin/voip/video/a/b;
+    //   688: aload_0
+    //   689: getfield 198	com/tencent/mm/plugin/voip/video/OpenGlRender:zvl	I
+    //   692: aload_0
+    //   693: getfield 200	com/tencent/mm/plugin/voip/video/OpenGlRender:zvm	I
+    //   696: invokevirtual 695	com/tencent/mm/plugin/voip/video/a/b:hY	(II)V
+    //   699: iload_2
+    //   700: ifne +108 -> 808
     //   703: aload_0
-    //   704: getfield 402	com/tencent/mm/plugin/voip/video/OpenGlRender:tGL	I
+    //   704: getfield 216	com/tencent/mm/plugin/voip/video/OpenGlRender:zvy	Lcom/tencent/mm/plugin/voip/video/a/b;
     //   707: aload_0
-    //   708: getfield 404	com/tencent/mm/plugin/voip/video/OpenGlRender:tGM	I
+    //   708: getfield 212	com/tencent/mm/plugin/voip/video/OpenGlRender:zvs	[B
     //   711: aload_0
-    //   712: getfield 406	com/tencent/mm/plugin/voip/video/OpenGlRender:tGN	I
-    //   715: iconst_0
-    //   716: invokevirtual 680	com/tencent/mm/plugin/voip/video/a/c:c	([BIIII)V
+    //   712: getfield 425	com/tencent/mm/plugin/voip/video/OpenGlRender:zvu	I
+    //   715: aload_0
+    //   716: getfield 427	com/tencent/mm/plugin/voip/video/OpenGlRender:zvv	I
     //   719: aload_0
-    //   720: aconst_null
-    //   721: putfield 190	com/tencent/mm/plugin/voip/video/OpenGlRender:tGJ	[B
-    //   724: aload_0
-    //   725: getfield 194	com/tencent/mm/plugin/voip/video/OpenGlRender:tGU	Z
-    //   728: ifeq +1541 -> 2269
-    //   731: invokestatic 246	com/tencent/mm/plugin/voip/video/OpenGlRender:getGLVersion	()I
-    //   734: iconst_2
-    //   735: if_icmpne +1534 -> 2269
-    //   738: fconst_0
-    //   739: fconst_0
-    //   740: fconst_0
-    //   741: fconst_0
-    //   742: invokestatic 684	android/opengl/GLES20:glClearColor	(FFFF)V
-    //   745: sipush 16640
-    //   748: invokestatic 687	android/opengl/GLES20:glClear	(I)V
-    //   751: sipush 5073
-    //   754: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   757: return
-    //   758: iconst_0
-    //   759: istore_2
-    //   760: goto -643 -> 117
-    //   763: iconst_0
-    //   764: istore_3
-    //   765: goto -636 -> 129
-    //   768: aload_0
-    //   769: getfield 251	com/tencent/mm/plugin/voip/video/OpenGlRender:tGP	Lcom/tencent/mm/plugin/voip/video/a/c;
-    //   772: aload_0
-    //   773: getfield 190	com/tencent/mm/plugin/voip/video/OpenGlRender:tGJ	[B
-    //   776: aload_0
-    //   777: getfield 402	com/tencent/mm/plugin/voip/video/OpenGlRender:tGL	I
-    //   780: aload_0
-    //   781: getfield 404	com/tencent/mm/plugin/voip/video/OpenGlRender:tGM	I
-    //   784: aload_0
-    //   785: getfield 406	com/tencent/mm/plugin/voip/video/OpenGlRender:tGN	I
-    //   788: aload_0
-    //   789: getfield 253	com/tencent/mm/plugin/voip/video/OpenGlRender:tGS	I
-    //   792: invokevirtual 680	com/tencent/mm/plugin/voip/video/a/c:c	([BIIII)V
-    //   795: goto -76 -> 719
-    //   798: aload_0
-    //   799: getfield 258	com/tencent/mm/plugin/voip/video/OpenGlRender:tGQ	Lcom/tencent/mm/plugin/voip/video/b/f;
-    //   802: ifnull -83 -> 719
-    //   805: iconst_0
-    //   806: istore 4
-    //   808: iload 4
-    //   810: istore_2
-    //   811: aload_0
-    //   812: getfield 408	com/tencent/mm/plugin/voip/video/OpenGlRender:tGR	Z
-    //   815: ifeq +15 -> 830
-    //   818: iload 4
-    //   820: istore_2
-    //   821: iload_3
-    //   822: ifeq +8 -> 830
-    //   825: aload_0
-    //   826: getfield 253	com/tencent/mm/plugin/voip/video/OpenGlRender:tGS	I
-    //   829: istore_2
-    //   830: aload_0
-    //   831: getfield 258	com/tencent/mm/plugin/voip/video/OpenGlRender:tGQ	Lcom/tencent/mm/plugin/voip/video/b/f;
-    //   834: iconst_0
-    //   835: invokevirtual 370	com/tencent/mm/plugin/voip/video/b/f:HY	(I)V
+    //   720: getfield 429	com/tencent/mm/plugin/voip/video/OpenGlRender:zvw	I
+    //   723: iconst_0
+    //   724: invokevirtual 697	com/tencent/mm/plugin/voip/video/a/b:d	([BIIII)V
+    //   727: aload_0
+    //   728: aconst_null
+    //   729: putfield 212	com/tencent/mm/plugin/voip/video/OpenGlRender:zvs	[B
+    //   732: aload_0
+    //   733: getfield 699	com/tencent/mm/plugin/voip/video/OpenGlRender:zvN	Lcom/tencent/mm/plugin/voip/video/OpenGlRender$b;
+    //   736: ifnull +27 -> 763
+    //   739: aload_0
+    //   740: getfield 433	com/tencent/mm/plugin/voip/video/OpenGlRender:zvC	I
+    //   743: iconst_3
+    //   744: if_icmpne +1444 -> 2188
+    //   747: aload_0
+    //   748: getfield 699	com/tencent/mm/plugin/voip/video/OpenGlRender:zvN	Lcom/tencent/mm/plugin/voip/video/OpenGlRender$b;
+    //   751: aload_0
+    //   752: getfield 234	com/tencent/mm/plugin/voip/video/OpenGlRender:zvM	J
+    //   755: invokestatic 703	com/tencent/mm/sdk/platformtools/bt:aS	(J)J
+    //   758: invokeinterface 706 3 0
+    //   763: aload_0
+    //   764: getfield 230	com/tencent/mm/plugin/voip/video/OpenGlRender:zvL	Z
+    //   767: ifeq +24 -> 791
+    //   770: aload_0
+    //   771: getfield 699	com/tencent/mm/plugin/voip/video/OpenGlRender:zvN	Lcom/tencent/mm/plugin/voip/video/OpenGlRender$b;
+    //   774: ifnull +17 -> 791
+    //   777: aload_0
+    //   778: iconst_0
+    //   779: putfield 230	com/tencent/mm/plugin/voip/video/OpenGlRender:zvL	Z
+    //   782: aload_0
+    //   783: getfield 699	com/tencent/mm/plugin/voip/video/OpenGlRender:zvN	Lcom/tencent/mm/plugin/voip/video/OpenGlRender$b;
+    //   786: invokeinterface 709 1 0
+    //   791: ldc_w 495
+    //   794: invokestatic 164	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   797: return
+    //   798: iconst_0
+    //   799: istore_2
+    //   800: goto -676 -> 124
+    //   803: iconst_0
+    //   804: istore_3
+    //   805: goto -669 -> 136
+    //   808: aload_0
+    //   809: getfield 216	com/tencent/mm/plugin/voip/video/OpenGlRender:zvy	Lcom/tencent/mm/plugin/voip/video/a/b;
+    //   812: aload_0
+    //   813: getfield 212	com/tencent/mm/plugin/voip/video/OpenGlRender:zvs	[B
+    //   816: aload_0
+    //   817: getfield 425	com/tencent/mm/plugin/voip/video/OpenGlRender:zvu	I
+    //   820: aload_0
+    //   821: getfield 427	com/tencent/mm/plugin/voip/video/OpenGlRender:zvv	I
+    //   824: aload_0
+    //   825: getfield 429	com/tencent/mm/plugin/voip/video/OpenGlRender:zvw	I
+    //   828: aload_0
+    //   829: getfield 281	com/tencent/mm/plugin/voip/video/OpenGlRender:zvB	I
+    //   832: invokevirtual 697	com/tencent/mm/plugin/voip/video/a/b:d	([BIIII)V
+    //   835: goto -108 -> 727
     //   838: aload_0
-    //   839: getfield 258	com/tencent/mm/plugin/voip/video/OpenGlRender:tGQ	Lcom/tencent/mm/plugin/voip/video/b/f;
-    //   842: astore 11
-    //   844: aload_0
-    //   845: getfield 402	com/tencent/mm/plugin/voip/video/OpenGlRender:tGL	I
-    //   848: istore_3
-    //   849: aload_0
-    //   850: getfield 404	com/tencent/mm/plugin/voip/video/OpenGlRender:tGM	I
-    //   853: istore 4
-    //   855: aload_0
-    //   856: getfield 176	com/tencent/mm/plugin/voip/video/OpenGlRender:tGC	I
-    //   859: istore 6
-    //   861: aload_0
-    //   862: getfield 178	com/tencent/mm/plugin/voip/video/OpenGlRender:tGD	I
-    //   865: istore 7
-    //   867: aload_0
-    //   868: getfield 410	com/tencent/mm/plugin/voip/video/OpenGlRender:tGT	I
-    //   871: istore 5
-    //   873: aload_0
-    //   874: getfield 406	com/tencent/mm/plugin/voip/video/OpenGlRender:tGN	I
-    //   877: istore 8
-    //   879: iload_3
-    //   880: ifle +531 -> 1411
-    //   883: iload 4
-    //   885: ifle +526 -> 1411
-    //   888: iload 8
-    //   890: iconst_2
-    //   891: ishr
-    //   892: iconst_3
-    //   893: iand
-    //   894: istore 9
-    //   896: iload 8
-    //   898: iconst_4
-    //   899: ishr
-    //   900: iconst_1
-    //   901: iand
-    //   902: iconst_1
-    //   903: if_icmpne +715 -> 1618
-    //   906: iconst_1
-    //   907: istore 10
-    //   909: aload 11
-    //   911: iload_2
-    //   912: putfield 690	com/tencent/mm/plugin/voip/video/b/f:tIV	I
-    //   915: iload_3
-    //   916: aload 11
-    //   918: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   921: if_icmpne +63 -> 984
-    //   924: iload 4
-    //   926: aload 11
-    //   928: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   931: if_icmpne +53 -> 984
-    //   934: iload 6
-    //   936: aload 11
-    //   938: getfield 699	com/tencent/mm/plugin/voip/video/b/f:mScreenWidth	I
-    //   941: if_icmpne +43 -> 984
-    //   944: iload 7
-    //   946: aload 11
-    //   948: getfield 702	com/tencent/mm/plugin/voip/video/b/f:mScreenHeight	I
-    //   951: if_icmpne +33 -> 984
-    //   954: aload 11
-    //   956: getfield 705	com/tencent/mm/plugin/voip/video/b/f:tIU	I
-    //   959: iload 9
-    //   961: if_icmpne +23 -> 984
-    //   964: aload 11
-    //   966: getfield 708	com/tencent/mm/plugin/voip/video/b/f:bHo	Z
-    //   969: iload 10
-    //   971: if_icmpne +13 -> 984
-    //   974: aload 11
-    //   976: getfield 711	com/tencent/mm/plugin/voip/video/b/f:tIP	I
-    //   979: iload 5
-    //   981: if_icmpeq +430 -> 1411
-    //   984: aload 11
-    //   986: iload 9
-    //   988: putfield 705	com/tencent/mm/plugin/voip/video/b/f:tIU	I
-    //   991: aload 11
-    //   993: iload 10
-    //   995: putfield 708	com/tencent/mm/plugin/voip/video/b/f:bHo	Z
-    //   998: aload 11
-    //   1000: iload 5
-    //   1002: putfield 711	com/tencent/mm/plugin/voip/video/b/f:tIP	I
-    //   1005: ldc_w 713
-    //   1008: ldc_w 715
-    //   1011: bipush 11
-    //   1013: anewarray 4	java/lang/Object
-    //   1016: dup
-    //   1017: iconst_0
-    //   1018: iload 5
-    //   1020: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1023: aastore
-    //   1024: dup
-    //   1025: iconst_1
-    //   1026: aload 11
-    //   1028: getfield 705	com/tencent/mm/plugin/voip/video/b/f:tIU	I
-    //   1031: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1034: aastore
-    //   1035: dup
-    //   1036: iconst_2
-    //   1037: aload 11
-    //   1039: getfield 708	com/tencent/mm/plugin/voip/video/b/f:bHo	Z
-    //   1042: invokestatic 335	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   1045: aastore
-    //   1046: dup
-    //   1047: iconst_3
-    //   1048: iload_3
-    //   1049: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1052: aastore
-    //   1053: dup
-    //   1054: iconst_4
-    //   1055: iload 4
-    //   1057: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1060: aastore
-    //   1061: dup
-    //   1062: iconst_5
-    //   1063: iload 6
-    //   1065: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1068: aastore
-    //   1069: dup
-    //   1070: bipush 6
-    //   1072: iload 7
-    //   1074: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1077: aastore
-    //   1078: dup
-    //   1079: bipush 7
-    //   1081: aload 11
-    //   1083: getfield 718	com/tencent/mm/plugin/voip/video/b/f:tIO	I
-    //   1086: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1089: aastore
-    //   1090: dup
-    //   1091: bipush 8
-    //   1093: aload 11
-    //   1095: getfield 721	com/tencent/mm/plugin/voip/video/b/f:tIY	I
-    //   1098: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1101: aastore
-    //   1102: dup
-    //   1103: bipush 9
-    //   1105: aload 11
-    //   1107: getfield 724	com/tencent/mm/plugin/voip/video/b/f:tIZ	I
-    //   1110: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1113: aastore
-    //   1114: dup
-    //   1115: bipush 10
-    //   1117: aload 11
-    //   1119: getfield 690	com/tencent/mm/plugin/voip/video/b/f:tIV	I
-    //   1122: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1125: aastore
-    //   1126: invokestatic 314	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1129: aload 11
-    //   1131: iload_3
-    //   1132: putfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   1135: aload 11
-    //   1137: iload 4
-    //   1139: putfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   1142: aload 11
-    //   1144: iload 6
-    //   1146: putfield 699	com/tencent/mm/plugin/voip/video/b/f:mScreenWidth	I
-    //   1149: aload 11
-    //   1151: iload 7
-    //   1153: putfield 702	com/tencent/mm/plugin/voip/video/b/f:mScreenHeight	I
-    //   1156: aload 11
-    //   1158: aload 11
-    //   1160: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   1163: aload 11
-    //   1165: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   1168: invokevirtual 727	com/tencent/mm/plugin/voip/video/b/f:gs	(II)V
+    //   839: getfield 286	com/tencent/mm/plugin/voip/video/OpenGlRender:zvz	Lcom/tencent/mm/plugin/voip/video/b/g;
+    //   842: ifnull -115 -> 727
+    //   845: iconst_0
+    //   846: istore 4
+    //   848: iload 4
+    //   850: istore_2
+    //   851: aload_0
+    //   852: getfield 431	com/tencent/mm/plugin/voip/video/OpenGlRender:zvA	Z
+    //   855: ifeq +15 -> 870
+    //   858: iload 4
+    //   860: istore_2
+    //   861: iload_3
+    //   862: ifeq +8 -> 870
+    //   865: aload_0
+    //   866: getfield 281	com/tencent/mm/plugin/voip/video/OpenGlRender:zvB	I
+    //   869: istore_2
+    //   870: aload_0
+    //   871: getfield 286	com/tencent/mm/plugin/voip/video/OpenGlRender:zvz	Lcom/tencent/mm/plugin/voip/video/b/g;
+    //   874: iconst_0
+    //   875: invokevirtual 399	com/tencent/mm/plugin/voip/video/b/g:QT	(I)V
+    //   878: aload_0
+    //   879: getfield 286	com/tencent/mm/plugin/voip/video/OpenGlRender:zvz	Lcom/tencent/mm/plugin/voip/video/b/g;
+    //   882: astore 11
+    //   884: aload_0
+    //   885: getfield 425	com/tencent/mm/plugin/voip/video/OpenGlRender:zvu	I
+    //   888: istore_3
+    //   889: aload_0
+    //   890: getfield 427	com/tencent/mm/plugin/voip/video/OpenGlRender:zvv	I
+    //   893: istore 4
+    //   895: aload_0
+    //   896: getfield 198	com/tencent/mm/plugin/voip/video/OpenGlRender:zvl	I
+    //   899: istore 6
+    //   901: aload_0
+    //   902: getfield 200	com/tencent/mm/plugin/voip/video/OpenGlRender:zvm	I
+    //   905: istore 7
+    //   907: aload_0
+    //   908: getfield 433	com/tencent/mm/plugin/voip/video/OpenGlRender:zvC	I
+    //   911: istore 5
+    //   913: aload_0
+    //   914: getfield 429	com/tencent/mm/plugin/voip/video/OpenGlRender:zvw	I
+    //   917: istore 8
+    //   919: iload_3
+    //   920: ifle +531 -> 1451
+    //   923: iload 4
+    //   925: ifle +526 -> 1451
+    //   928: iload 8
+    //   930: iconst_2
+    //   931: ishr
+    //   932: iconst_3
+    //   933: iand
+    //   934: istore 9
+    //   936: iload 8
+    //   938: iconst_4
+    //   939: ishr
+    //   940: iconst_1
+    //   941: iand
+    //   942: iconst_1
+    //   943: if_icmpne +715 -> 1658
+    //   946: iconst_1
+    //   947: istore 10
+    //   949: aload 11
+    //   951: iload_2
+    //   952: putfield 712	com/tencent/mm/plugin/voip/video/b/g:zyo	I
+    //   955: iload_3
+    //   956: aload 11
+    //   958: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   961: if_icmpne +63 -> 1024
+    //   964: iload 4
+    //   966: aload 11
+    //   968: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   971: if_icmpne +53 -> 1024
+    //   974: iload 6
+    //   976: aload 11
+    //   978: getfield 721	com/tencent/mm/plugin/voip/video/b/g:mScreenWidth	I
+    //   981: if_icmpne +43 -> 1024
+    //   984: iload 7
+    //   986: aload 11
+    //   988: getfield 724	com/tencent/mm/plugin/voip/video/b/g:mScreenHeight	I
+    //   991: if_icmpne +33 -> 1024
+    //   994: aload 11
+    //   996: getfield 727	com/tencent/mm/plugin/voip/video/b/g:xYz	I
+    //   999: iload 9
+    //   1001: if_icmpne +23 -> 1024
+    //   1004: aload 11
+    //   1006: getfield 730	com/tencent/mm/plugin/voip/video/b/g:zyn	Z
+    //   1009: iload 10
+    //   1011: if_icmpne +13 -> 1024
+    //   1014: aload 11
+    //   1016: getfield 733	com/tencent/mm/plugin/voip/video/b/g:zyi	I
+    //   1019: iload 5
+    //   1021: if_icmpeq +430 -> 1451
+    //   1024: aload 11
+    //   1026: iload 9
+    //   1028: putfield 727	com/tencent/mm/plugin/voip/video/b/g:xYz	I
+    //   1031: aload 11
+    //   1033: iload 10
+    //   1035: putfield 730	com/tencent/mm/plugin/voip/video/b/g:zyn	Z
+    //   1038: aload 11
+    //   1040: iload 5
+    //   1042: putfield 733	com/tencent/mm/plugin/voip/video/b/g:zyi	I
+    //   1045: ldc_w 735
+    //   1048: ldc_w 737
+    //   1051: bipush 11
+    //   1053: anewarray 4	java/lang/Object
+    //   1056: dup
+    //   1057: iconst_0
+    //   1058: iload 5
+    //   1060: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1063: aastore
+    //   1064: dup
+    //   1065: iconst_1
+    //   1066: aload 11
+    //   1068: getfield 727	com/tencent/mm/plugin/voip/video/b/g:xYz	I
+    //   1071: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1074: aastore
+    //   1075: dup
+    //   1076: iconst_2
+    //   1077: aload 11
+    //   1079: getfield 730	com/tencent/mm/plugin/voip/video/b/g:zyn	Z
+    //   1082: invokestatic 361	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   1085: aastore
+    //   1086: dup
+    //   1087: iconst_3
+    //   1088: iload_3
+    //   1089: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1092: aastore
+    //   1093: dup
+    //   1094: iconst_4
+    //   1095: iload 4
+    //   1097: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1100: aastore
+    //   1101: dup
+    //   1102: iconst_5
+    //   1103: iload 6
+    //   1105: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1108: aastore
+    //   1109: dup
+    //   1110: bipush 6
+    //   1112: iload 7
+    //   1114: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1117: aastore
+    //   1118: dup
+    //   1119: bipush 7
+    //   1121: aload 11
+    //   1123: getfield 740	com/tencent/mm/plugin/voip/video/b/g:zyg	I
+    //   1126: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1129: aastore
+    //   1130: dup
+    //   1131: bipush 8
+    //   1133: aload 11
+    //   1135: getfield 743	com/tencent/mm/plugin/voip/video/b/g:zyr	I
+    //   1138: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1141: aastore
+    //   1142: dup
+    //   1143: bipush 9
+    //   1145: aload 11
+    //   1147: getfield 746	com/tencent/mm/plugin/voip/video/b/g:zys	I
+    //   1150: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1153: aastore
+    //   1154: dup
+    //   1155: bipush 10
+    //   1157: aload 11
+    //   1159: getfield 712	com/tencent/mm/plugin/voip/video/b/g:zyo	I
+    //   1162: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1165: aastore
+    //   1166: invokestatic 340	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1169: aload 11
     //   1171: iload_3
-    //   1172: iload 4
-    //   1174: imul
-    //   1175: istore_2
-    //   1176: iload_2
-    //   1177: iconst_4
-    //   1178: idiv
-    //   1179: istore 6
-    //   1181: aload 11
-    //   1183: monitorenter
-    //   1184: aload 11
-    //   1186: iload 6
-    //   1188: iconst_2
-    //   1189: imul
-    //   1190: iload_2
-    //   1191: iadd
-    //   1192: invokestatic 730	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
-    //   1195: putfield 734	com/tencent/mm/plugin/voip/video/b/f:tIQ	Ljava/nio/ByteBuffer;
+    //   1172: putfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   1175: aload 11
+    //   1177: iload 4
+    //   1179: putfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   1182: aload 11
+    //   1184: iload 6
+    //   1186: putfield 721	com/tencent/mm/plugin/voip/video/b/g:mScreenWidth	I
+    //   1189: aload 11
+    //   1191: iload 7
+    //   1193: putfield 724	com/tencent/mm/plugin/voip/video/b/g:mScreenHeight	I
+    //   1196: aload 11
     //   1198: aload 11
-    //   1200: iload_2
-    //   1201: invokestatic 730	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
-    //   1204: putfield 737	com/tencent/mm/plugin/voip/video/b/f:y	Ljava/nio/ByteBuffer;
-    //   1207: aload 11
-    //   1209: iload 6
-    //   1211: invokestatic 730	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
-    //   1214: putfield 740	com/tencent/mm/plugin/voip/video/b/f:tIR	Ljava/nio/ByteBuffer;
-    //   1217: aload 11
-    //   1219: iload 6
-    //   1221: invokestatic 730	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
-    //   1224: putfield 743	com/tencent/mm/plugin/voip/video/b/f:tIS	Ljava/nio/ByteBuffer;
-    //   1227: aload 11
-    //   1229: iload 6
-    //   1231: iconst_2
-    //   1232: imul
-    //   1233: invokestatic 730	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
-    //   1236: putfield 746	com/tencent/mm/plugin/voip/video/b/f:tIT	Ljava/nio/ByteBuffer;
-    //   1239: aload 11
-    //   1241: monitorexit
-    //   1242: aload 11
-    //   1244: getfield 750	com/tencent/mm/plugin/voip/video/b/f:tIK	Lcom/tencent/mm/plugin/voip/video/b/c;
-    //   1247: ifnull +164 -> 1411
-    //   1250: iload 5
-    //   1252: iconst_3
-    //   1253: if_icmpne +158 -> 1411
-    //   1256: aload 11
-    //   1258: getfield 750	com/tencent/mm/plugin/voip/video/b/f:tIK	Lcom/tencent/mm/plugin/voip/video/b/c;
-    //   1261: astore 11
-    //   1263: ldc_w 752
-    //   1266: ldc_w 754
-    //   1269: iconst_4
-    //   1270: anewarray 4	java/lang/Object
-    //   1273: dup
-    //   1274: iconst_0
-    //   1275: iload_3
-    //   1276: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1279: aastore
-    //   1280: dup
-    //   1281: iconst_1
-    //   1282: iload 4
-    //   1284: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1287: aastore
-    //   1288: dup
-    //   1289: iconst_2
-    //   1290: aload 11
-    //   1292: getfield 759	com/tencent/mm/plugin/voip/video/b/c:eXo	I
-    //   1295: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1298: aastore
-    //   1299: dup
-    //   1300: iconst_3
-    //   1301: aload 11
-    //   1303: getfield 762	com/tencent/mm/plugin/voip/video/b/c:eXp	I
-    //   1306: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1309: aastore
-    //   1310: invokestatic 314	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1313: iload_3
-    //   1314: aload 11
-    //   1316: getfield 759	com/tencent/mm/plugin/voip/video/b/c:eXo	I
-    //   1319: if_icmpne +13 -> 1332
-    //   1322: aload 11
-    //   1324: getfield 762	com/tencent/mm/plugin/voip/video/b/c:eXp	I
-    //   1327: iload 4
-    //   1329: if_icmpeq +82 -> 1411
-    //   1332: aload 11
-    //   1334: iload_3
-    //   1335: putfield 759	com/tencent/mm/plugin/voip/video/b/c:eXo	I
-    //   1338: aload 11
-    //   1340: iload 4
-    //   1342: putfield 762	com/tencent/mm/plugin/voip/video/b/c:eXp	I
-    //   1345: aload 11
-    //   1347: getfield 766	com/tencent/mm/plugin/voip/video/b/c:tIA	Lcom/tencent/mm/plugin/voip/video/b/a;
-    //   1350: astore 11
-    //   1352: ldc_w 752
-    //   1355: ldc_w 768
-    //   1358: iconst_4
-    //   1359: anewarray 4	java/lang/Object
-    //   1362: dup
-    //   1363: iconst_0
-    //   1364: iload_3
-    //   1365: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1368: aastore
-    //   1369: dup
-    //   1370: iconst_1
-    //   1371: iload 4
-    //   1373: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1376: aastore
-    //   1377: dup
-    //   1378: iconst_2
-    //   1379: aload 11
-    //   1381: getfield 773	com/tencent/mm/plugin/voip/video/b/a:fbH	I
-    //   1384: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1387: aastore
-    //   1388: dup
-    //   1389: iconst_3
-    //   1390: aload 11
-    //   1392: getfield 776	com/tencent/mm/plugin/voip/video/b/a:fbI	I
-    //   1395: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1398: aastore
-    //   1399: invokestatic 314	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1402: iload_3
-    //   1403: ifle +8 -> 1411
-    //   1406: iload 4
-    //   1408: ifgt +228 -> 1636
-    //   1411: aload_0
-    //   1412: getfield 258	com/tencent/mm/plugin/voip/video/OpenGlRender:tGQ	Lcom/tencent/mm/plugin/voip/video/b/f;
-    //   1415: astore 11
-    //   1417: aload_0
-    //   1418: getfield 190	com/tencent/mm/plugin/voip/video/OpenGlRender:tGJ	[B
-    //   1421: astore 12
-    //   1423: aload_0
-    //   1424: getfield 410	com/tencent/mm/plugin/voip/video/OpenGlRender:tGT	I
-    //   1427: istore_2
-    //   1428: aload 11
-    //   1430: monitorenter
-    //   1431: aload 11
-    //   1433: iconst_0
-    //   1434: putfield 779	com/tencent/mm/plugin/voip/video/b/f:tIX	Z
-    //   1437: aload 11
-    //   1439: getfield 782	com/tencent/mm/plugin/voip/video/b/f:tIW	Z
-    //   1442: ifeq +162 -> 1604
-    //   1445: aload 12
-    //   1447: ifnull +157 -> 1604
-    //   1450: aload 11
-    //   1452: iload_2
-    //   1453: putfield 711	com/tencent/mm/plugin/voip/video/b/f:tIP	I
-    //   1456: aload 11
-    //   1458: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   1461: aload 11
-    //   1463: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   1466: imul
-    //   1467: iconst_3
-    //   1468: imul
-    //   1469: iconst_2
-    //   1470: idiv
-    //   1471: istore 5
-    //   1473: iload_2
-    //   1474: iconst_3
-    //   1475: if_icmpne +327 -> 1802
-    //   1478: aload 12
-    //   1480: arraylength
-    //   1481: iload 5
-    //   1483: if_icmpne +238 -> 1721
-    //   1486: aload 11
-    //   1488: getfield 734	com/tencent/mm/plugin/voip/video/b/f:tIQ	Ljava/nio/ByteBuffer;
-    //   1491: invokevirtual 786	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-    //   1494: pop
-    //   1495: aload 11
-    //   1497: getfield 737	com/tencent/mm/plugin/voip/video/b/f:y	Ljava/nio/ByteBuffer;
-    //   1500: invokevirtual 786	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-    //   1503: pop
-    //   1504: aload 11
-    //   1506: getfield 746	com/tencent/mm/plugin/voip/video/b/f:tIT	Ljava/nio/ByteBuffer;
-    //   1509: invokevirtual 786	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-    //   1512: pop
-    //   1513: aload 11
-    //   1515: getfield 734	com/tencent/mm/plugin/voip/video/b/f:tIQ	Ljava/nio/ByteBuffer;
+    //   1200: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   1203: aload 11
+    //   1205: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   1208: invokevirtual 749	com/tencent/mm/plugin/voip/video/b/g:ib	(II)V
+    //   1211: iload_3
+    //   1212: iload 4
+    //   1214: imul
+    //   1215: istore_2
+    //   1216: iload_2
+    //   1217: iconst_4
+    //   1218: idiv
+    //   1219: istore 6
+    //   1221: aload 11
+    //   1223: monitorenter
+    //   1224: aload 11
+    //   1226: iload 6
+    //   1228: iconst_2
+    //   1229: imul
+    //   1230: iload_2
+    //   1231: iadd
+    //   1232: invokestatic 752	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   1235: putfield 756	com/tencent/mm/plugin/voip/video/b/g:zyj	Ljava/nio/ByteBuffer;
+    //   1238: aload 11
+    //   1240: iload_2
+    //   1241: invokestatic 752	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   1244: putfield 759	com/tencent/mm/plugin/voip/video/b/g:y	Ljava/nio/ByteBuffer;
+    //   1247: aload 11
+    //   1249: iload 6
+    //   1251: invokestatic 752	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   1254: putfield 762	com/tencent/mm/plugin/voip/video/b/g:zyk	Ljava/nio/ByteBuffer;
+    //   1257: aload 11
+    //   1259: iload 6
+    //   1261: invokestatic 752	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   1264: putfield 765	com/tencent/mm/plugin/voip/video/b/g:zyl	Ljava/nio/ByteBuffer;
+    //   1267: aload 11
+    //   1269: iload 6
+    //   1271: iconst_2
+    //   1272: imul
+    //   1273: invokestatic 752	java/nio/ByteBuffer:allocate	(I)Ljava/nio/ByteBuffer;
+    //   1276: putfield 768	com/tencent/mm/plugin/voip/video/b/g:zym	Ljava/nio/ByteBuffer;
+    //   1279: aload 11
+    //   1281: monitorexit
+    //   1282: aload 11
+    //   1284: getfield 772	com/tencent/mm/plugin/voip/video/b/g:zyc	Lcom/tencent/mm/plugin/voip/video/b/d;
+    //   1287: ifnull +164 -> 1451
+    //   1290: iload 5
+    //   1292: iconst_3
+    //   1293: if_icmpne +158 -> 1451
+    //   1296: aload 11
+    //   1298: getfield 772	com/tencent/mm/plugin/voip/video/b/g:zyc	Lcom/tencent/mm/plugin/voip/video/b/d;
+    //   1301: astore 11
+    //   1303: ldc_w 774
+    //   1306: ldc_w 776
+    //   1309: iconst_4
+    //   1310: anewarray 4	java/lang/Object
+    //   1313: dup
+    //   1314: iconst_0
+    //   1315: iload_3
+    //   1316: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1319: aastore
+    //   1320: dup
+    //   1321: iconst_1
+    //   1322: iload 4
+    //   1324: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1327: aastore
+    //   1328: dup
+    //   1329: iconst_2
+    //   1330: aload 11
+    //   1332: getfield 781	com/tencent/mm/plugin/voip/video/b/d:gtF	I
+    //   1335: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1338: aastore
+    //   1339: dup
+    //   1340: iconst_3
+    //   1341: aload 11
+    //   1343: getfield 784	com/tencent/mm/plugin/voip/video/b/d:gtG	I
+    //   1346: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1349: aastore
+    //   1350: invokestatic 340	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1353: iload_3
+    //   1354: aload 11
+    //   1356: getfield 781	com/tencent/mm/plugin/voip/video/b/d:gtF	I
+    //   1359: if_icmpne +13 -> 1372
+    //   1362: aload 11
+    //   1364: getfield 784	com/tencent/mm/plugin/voip/video/b/d:gtG	I
+    //   1367: iload 4
+    //   1369: if_icmpeq +82 -> 1451
+    //   1372: aload 11
+    //   1374: iload_3
+    //   1375: putfield 781	com/tencent/mm/plugin/voip/video/b/d:gtF	I
+    //   1378: aload 11
+    //   1380: iload 4
+    //   1382: putfield 784	com/tencent/mm/plugin/voip/video/b/d:gtG	I
+    //   1385: aload 11
+    //   1387: getfield 788	com/tencent/mm/plugin/voip/video/b/d:zxP	Lcom/tencent/mm/plugin/voip/video/b/b;
+    //   1390: astore 11
+    //   1392: ldc_w 774
+    //   1395: ldc_w 790
+    //   1398: iconst_4
+    //   1399: anewarray 4	java/lang/Object
+    //   1402: dup
+    //   1403: iconst_0
+    //   1404: iload_3
+    //   1405: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1408: aastore
+    //   1409: dup
+    //   1410: iconst_1
+    //   1411: iload 4
+    //   1413: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1416: aastore
+    //   1417: dup
+    //   1418: iconst_2
+    //   1419: aload 11
+    //   1421: getfield 795	com/tencent/mm/plugin/voip/video/b/b:surfaceWidth	I
+    //   1424: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1427: aastore
+    //   1428: dup
+    //   1429: iconst_3
+    //   1430: aload 11
+    //   1432: getfield 798	com/tencent/mm/plugin/voip/video/b/b:surfaceHeight	I
+    //   1435: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1438: aastore
+    //   1439: invokestatic 340	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1442: iload_3
+    //   1443: ifle +8 -> 1451
+    //   1446: iload 4
+    //   1448: ifgt +228 -> 1676
+    //   1451: aload_0
+    //   1452: getfield 286	com/tencent/mm/plugin/voip/video/OpenGlRender:zvz	Lcom/tencent/mm/plugin/voip/video/b/g;
+    //   1455: astore 11
+    //   1457: aload_0
+    //   1458: getfield 212	com/tencent/mm/plugin/voip/video/OpenGlRender:zvs	[B
+    //   1461: astore 12
+    //   1463: aload_0
+    //   1464: getfield 433	com/tencent/mm/plugin/voip/video/OpenGlRender:zvC	I
+    //   1467: istore_2
+    //   1468: aload 11
+    //   1470: monitorenter
+    //   1471: aload 11
+    //   1473: iconst_0
+    //   1474: putfield 801	com/tencent/mm/plugin/voip/video/b/g:zyq	Z
+    //   1477: aload 11
+    //   1479: getfield 804	com/tencent/mm/plugin/voip/video/b/g:zyp	Z
+    //   1482: ifeq +162 -> 1644
+    //   1485: aload 12
+    //   1487: ifnull +157 -> 1644
+    //   1490: aload 11
+    //   1492: iload_2
+    //   1493: putfield 733	com/tencent/mm/plugin/voip/video/b/g:zyi	I
+    //   1496: aload 11
+    //   1498: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   1501: aload 11
+    //   1503: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   1506: imul
+    //   1507: iconst_3
+    //   1508: imul
+    //   1509: iconst_2
+    //   1510: idiv
+    //   1511: istore 5
+    //   1513: iload_2
+    //   1514: iconst_3
+    //   1515: if_icmpne +327 -> 1842
     //   1518: aload 12
-    //   1520: iconst_0
-    //   1521: aload 11
-    //   1523: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
+    //   1520: arraylength
+    //   1521: iload 5
+    //   1523: if_icmpne +238 -> 1761
     //   1526: aload 11
-    //   1528: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   1531: imul
-    //   1532: iconst_3
-    //   1533: imul
-    //   1534: iconst_2
-    //   1535: idiv
-    //   1536: invokevirtual 789	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
-    //   1539: pop
-    //   1540: aload 11
-    //   1542: getfield 737	com/tencent/mm/plugin/voip/video/b/f:y	Ljava/nio/ByteBuffer;
-    //   1545: aload 12
-    //   1547: iconst_0
-    //   1548: aload 11
-    //   1550: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
+    //   1528: getfield 756	com/tencent/mm/plugin/voip/video/b/g:zyj	Ljava/nio/ByteBuffer;
+    //   1531: invokevirtual 808	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   1534: pop
+    //   1535: aload 11
+    //   1537: getfield 759	com/tencent/mm/plugin/voip/video/b/g:y	Ljava/nio/ByteBuffer;
+    //   1540: invokevirtual 808	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   1543: pop
+    //   1544: aload 11
+    //   1546: getfield 768	com/tencent/mm/plugin/voip/video/b/g:zym	Ljava/nio/ByteBuffer;
+    //   1549: invokevirtual 808	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   1552: pop
     //   1553: aload 11
-    //   1555: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   1558: imul
-    //   1559: invokevirtual 789	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
-    //   1562: pop
-    //   1563: aload 11
-    //   1565: getfield 746	com/tencent/mm/plugin/voip/video/b/f:tIT	Ljava/nio/ByteBuffer;
-    //   1568: aload 12
-    //   1570: aload 11
-    //   1572: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   1575: aload 11
-    //   1577: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   1580: imul
-    //   1581: aload 11
-    //   1583: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   1586: aload 11
-    //   1588: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   1591: imul
-    //   1592: iconst_2
-    //   1593: idiv
-    //   1594: invokevirtual 789	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
-    //   1597: pop
-    //   1598: aload 11
-    //   1600: iconst_1
-    //   1601: putfield 779	com/tencent/mm/plugin/voip/video/b/f:tIX	Z
-    //   1604: aload 11
-    //   1606: monitorexit
-    //   1607: aload_0
-    //   1608: getfield 258	com/tencent/mm/plugin/voip/video/OpenGlRender:tGQ	Lcom/tencent/mm/plugin/voip/video/b/f;
-    //   1611: aload_1
-    //   1612: invokevirtual 791	com/tencent/mm/plugin/voip/video/b/f:onDrawFrame	(Ljavax/microedition/khronos/opengles/GL10;)V
-    //   1615: goto -896 -> 719
-    //   1618: iconst_0
-    //   1619: istore 10
-    //   1621: goto -712 -> 909
-    //   1624: astore_1
-    //   1625: aload 11
-    //   1627: monitorexit
-    //   1628: sipush 5073
-    //   1631: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1634: aload_1
-    //   1635: athrow
-    //   1636: aload 11
-    //   1638: getfield 792	com/tencent/mm/plugin/voip/video/b/a:eXo	I
-    //   1641: iload_3
-    //   1642: if_icmpne +13 -> 1655
-    //   1645: aload 11
-    //   1647: getfield 793	com/tencent/mm/plugin/voip/video/b/a:eXp	I
-    //   1650: iload 4
-    //   1652: if_icmpeq -241 -> 1411
-    //   1655: aload 11
-    //   1657: iload_3
-    //   1658: putfield 792	com/tencent/mm/plugin/voip/video/b/a:eXo	I
-    //   1661: aload 11
-    //   1663: iload 4
-    //   1665: putfield 793	com/tencent/mm/plugin/voip/video/b/a:eXp	I
-    //   1668: ldc_w 752
-    //   1671: ldc_w 795
-    //   1674: iconst_2
-    //   1675: anewarray 4	java/lang/Object
-    //   1678: dup
-    //   1679: iconst_0
-    //   1680: aload 11
-    //   1682: getfield 792	com/tencent/mm/plugin/voip/video/b/a:eXo	I
-    //   1685: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1688: aastore
-    //   1689: dup
-    //   1690: iconst_1
-    //   1691: aload 11
-    //   1693: getfield 793	com/tencent/mm/plugin/voip/video/b/a:eXp	I
-    //   1696: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1699: aastore
-    //   1700: invokestatic 314	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1703: aload 11
-    //   1705: aload 11
-    //   1707: getfield 792	com/tencent/mm/plugin/voip/video/b/a:eXo	I
-    //   1710: aload 11
-    //   1712: getfield 793	com/tencent/mm/plugin/voip/video/b/a:eXp	I
-    //   1715: invokevirtual 798	com/tencent/mm/plugin/voip/video/b/a:gq	(II)V
-    //   1718: goto -307 -> 1411
-    //   1721: ldc_w 713
-    //   1724: ldc_w 800
-    //   1727: iconst_4
-    //   1728: anewarray 4	java/lang/Object
-    //   1731: dup
-    //   1732: iconst_0
-    //   1733: aload 12
-    //   1735: arraylength
-    //   1736: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1555: getfield 756	com/tencent/mm/plugin/voip/video/b/g:zyj	Ljava/nio/ByteBuffer;
+    //   1558: aload 12
+    //   1560: iconst_0
+    //   1561: aload 11
+    //   1563: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   1566: aload 11
+    //   1568: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   1571: imul
+    //   1572: iconst_3
+    //   1573: imul
+    //   1574: iconst_2
+    //   1575: idiv
+    //   1576: invokevirtual 811	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
+    //   1579: pop
+    //   1580: aload 11
+    //   1582: getfield 759	com/tencent/mm/plugin/voip/video/b/g:y	Ljava/nio/ByteBuffer;
+    //   1585: aload 12
+    //   1587: iconst_0
+    //   1588: aload 11
+    //   1590: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   1593: aload 11
+    //   1595: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   1598: imul
+    //   1599: invokevirtual 811	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
+    //   1602: pop
+    //   1603: aload 11
+    //   1605: getfield 768	com/tencent/mm/plugin/voip/video/b/g:zym	Ljava/nio/ByteBuffer;
+    //   1608: aload 12
+    //   1610: aload 11
+    //   1612: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   1615: aload 11
+    //   1617: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   1620: imul
+    //   1621: aload 11
+    //   1623: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   1626: aload 11
+    //   1628: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   1631: imul
+    //   1632: iconst_2
+    //   1633: idiv
+    //   1634: invokevirtual 811	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
+    //   1637: pop
+    //   1638: aload 11
+    //   1640: iconst_1
+    //   1641: putfield 801	com/tencent/mm/plugin/voip/video/b/g:zyq	Z
+    //   1644: aload 11
+    //   1646: monitorexit
+    //   1647: aload_0
+    //   1648: getfield 286	com/tencent/mm/plugin/voip/video/OpenGlRender:zvz	Lcom/tencent/mm/plugin/voip/video/b/g;
+    //   1651: aload_1
+    //   1652: invokevirtual 813	com/tencent/mm/plugin/voip/video/b/g:onDrawFrame	(Ljavax/microedition/khronos/opengles/GL10;)V
+    //   1655: goto -928 -> 727
+    //   1658: iconst_0
+    //   1659: istore 10
+    //   1661: goto -712 -> 949
+    //   1664: astore_1
+    //   1665: aload 11
+    //   1667: monitorexit
+    //   1668: ldc_w 495
+    //   1671: invokestatic 164	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1674: aload_1
+    //   1675: athrow
+    //   1676: aload 11
+    //   1678: getfield 814	com/tencent/mm/plugin/voip/video/b/b:gtF	I
+    //   1681: iload_3
+    //   1682: if_icmpne +13 -> 1695
+    //   1685: aload 11
+    //   1687: getfield 815	com/tencent/mm/plugin/voip/video/b/b:gtG	I
+    //   1690: iload 4
+    //   1692: if_icmpeq -241 -> 1451
+    //   1695: aload 11
+    //   1697: iload_3
+    //   1698: putfield 814	com/tencent/mm/plugin/voip/video/b/b:gtF	I
+    //   1701: aload 11
+    //   1703: iload 4
+    //   1705: putfield 815	com/tencent/mm/plugin/voip/video/b/b:gtG	I
+    //   1708: ldc_w 774
+    //   1711: ldc_w 817
+    //   1714: iconst_2
+    //   1715: anewarray 4	java/lang/Object
+    //   1718: dup
+    //   1719: iconst_0
+    //   1720: aload 11
+    //   1722: getfield 814	com/tencent/mm/plugin/voip/video/b/b:gtF	I
+    //   1725: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1728: aastore
+    //   1729: dup
+    //   1730: iconst_1
+    //   1731: aload 11
+    //   1733: getfield 815	com/tencent/mm/plugin/voip/video/b/b:gtG	I
+    //   1736: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1739: aastore
-    //   1740: dup
-    //   1741: iconst_1
-    //   1742: iload 5
-    //   1744: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1747: aastore
-    //   1748: dup
-    //   1749: iconst_2
+    //   1740: invokestatic 340	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1743: aload 11
+    //   1745: aload 11
+    //   1747: getfield 814	com/tencent/mm/plugin/voip/video/b/b:gtF	I
     //   1750: aload 11
-    //   1752: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   1755: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1758: aastore
-    //   1759: dup
-    //   1760: iconst_3
-    //   1761: aload 11
-    //   1763: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   1766: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1769: aastore
-    //   1770: invokestatic 484	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1773: aload 11
-    //   1775: iconst_0
-    //   1776: putfield 779	com/tencent/mm/plugin/voip/video/b/f:tIX	Z
-    //   1779: getstatic 806	com/tencent/mm/plugin/voip/model/s:tyN	Lcom/tencent/mm/plugin/voip/model/s;
-    //   1782: astore 12
-    //   1784: invokestatic 809	com/tencent/mm/plugin/voip/model/s:cNO	()V
-    //   1787: goto -183 -> 1604
-    //   1790: astore_1
-    //   1791: aload 11
-    //   1793: monitorexit
-    //   1794: sipush 5073
-    //   1797: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1800: aload_1
-    //   1801: athrow
-    //   1802: aload 11
-    //   1804: aload 11
-    //   1806: getfield 721	com/tencent/mm/plugin/voip/video/b/f:tIY	I
-    //   1809: iconst_1
-    //   1810: iadd
-    //   1811: putfield 721	com/tencent/mm/plugin/voip/video/b/f:tIY	I
-    //   1814: aload 11
-    //   1816: getfield 721	com/tencent/mm/plugin/voip/video/b/f:tIY	I
-    //   1819: bipush 100
-    //   1821: irem
-    //   1822: ifne +60 -> 1882
-    //   1825: ldc_w 713
-    //   1828: ldc_w 811
-    //   1831: iconst_4
-    //   1832: anewarray 4	java/lang/Object
-    //   1835: dup
-    //   1836: iconst_0
-    //   1837: aload 11
-    //   1839: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   1842: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1845: aastore
-    //   1846: dup
-    //   1847: iconst_1
-    //   1848: aload 11
-    //   1850: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   1853: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1856: aastore
-    //   1857: dup
-    //   1858: iconst_2
-    //   1859: aload 11
-    //   1861: getfield 721	com/tencent/mm/plugin/voip/video/b/f:tIY	I
-    //   1864: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1867: aastore
-    //   1868: dup
-    //   1869: iconst_3
-    //   1870: aload 11
-    //   1872: getfield 690	com/tencent/mm/plugin/voip/video/b/f:tIV	I
-    //   1875: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1878: aastore
-    //   1879: invokestatic 314	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1882: aload 12
-    //   1884: arraylength
-    //   1885: iload 5
-    //   1887: if_icmplt +192 -> 2079
-    //   1890: aload 11
-    //   1892: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   1895: istore 6
-    //   1897: aload 11
-    //   1899: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   1902: istore 7
-    //   1904: aload 11
-    //   1906: getfield 721	com/tencent/mm/plugin/voip/video/b/f:tIY	I
-    //   1909: bipush 100
-    //   1911: irem
-    //   1912: ifne +417 -> 2329
-    //   1915: aload 12
-    //   1917: ifnull +407 -> 2324
-    //   1920: aload 12
-    //   1922: arraylength
-    //   1923: iload 6
-    //   1925: iload 7
-    //   1927: imul
-    //   1928: iconst_3
-    //   1929: imul
-    //   1930: iconst_2
-    //   1931: idiv
-    //   1932: if_icmple +392 -> 2324
-    //   1935: iconst_0
-    //   1936: istore_2
-    //   1937: iconst_0
-    //   1938: istore_3
-    //   1939: goto +337 -> 2276
-    //   1942: iload_2
-    //   1943: ifeq +136 -> 2079
-    //   1946: aload 11
-    //   1948: getfield 737	com/tencent/mm/plugin/voip/video/b/f:y	Ljava/nio/ByteBuffer;
-    //   1951: invokevirtual 786	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-    //   1954: pop
-    //   1955: aload 11
-    //   1957: getfield 740	com/tencent/mm/plugin/voip/video/b/f:tIR	Ljava/nio/ByteBuffer;
-    //   1960: invokevirtual 786	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-    //   1963: pop
-    //   1964: aload 11
-    //   1966: getfield 743	com/tencent/mm/plugin/voip/video/b/f:tIS	Ljava/nio/ByteBuffer;
-    //   1969: invokevirtual 786	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-    //   1972: pop
-    //   1973: aload 11
-    //   1975: getfield 737	com/tencent/mm/plugin/voip/video/b/f:y	Ljava/nio/ByteBuffer;
-    //   1978: aload 12
-    //   1980: iconst_0
-    //   1981: aload 11
-    //   1983: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
+    //   1752: getfield 815	com/tencent/mm/plugin/voip/video/b/b:gtG	I
+    //   1755: invokevirtual 820	com/tencent/mm/plugin/voip/video/b/b:hZ	(II)V
+    //   1758: goto -307 -> 1451
+    //   1761: ldc_w 735
+    //   1764: ldc_w 822
+    //   1767: iconst_4
+    //   1768: anewarray 4	java/lang/Object
+    //   1771: dup
+    //   1772: iconst_0
+    //   1773: aload 12
+    //   1775: arraylength
+    //   1776: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1779: aastore
+    //   1780: dup
+    //   1781: iconst_1
+    //   1782: iload 5
+    //   1784: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1787: aastore
+    //   1788: dup
+    //   1789: iconst_2
+    //   1790: aload 11
+    //   1792: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   1795: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1798: aastore
+    //   1799: dup
+    //   1800: iconst_3
+    //   1801: aload 11
+    //   1803: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   1806: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1809: aastore
+    //   1810: invokestatic 492	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1813: aload 11
+    //   1815: iconst_0
+    //   1816: putfield 801	com/tencent/mm/plugin/voip/video/b/g:zyq	Z
+    //   1819: getstatic 828	com/tencent/mm/plugin/voip/model/t:zlN	Lcom/tencent/mm/plugin/voip/model/t;
+    //   1822: astore 12
+    //   1824: invokestatic 831	com/tencent/mm/plugin/voip/model/t:dUq	()V
+    //   1827: goto -183 -> 1644
+    //   1830: astore_1
+    //   1831: aload 11
+    //   1833: monitorexit
+    //   1834: ldc_w 495
+    //   1837: invokestatic 164	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1840: aload_1
+    //   1841: athrow
+    //   1842: aload 11
+    //   1844: aload 11
+    //   1846: getfield 743	com/tencent/mm/plugin/voip/video/b/g:zyr	I
+    //   1849: iconst_1
+    //   1850: iadd
+    //   1851: putfield 743	com/tencent/mm/plugin/voip/video/b/g:zyr	I
+    //   1854: aload 11
+    //   1856: getfield 743	com/tencent/mm/plugin/voip/video/b/g:zyr	I
+    //   1859: bipush 100
+    //   1861: irem
+    //   1862: ifne +60 -> 1922
+    //   1865: ldc_w 735
+    //   1868: ldc_w 833
+    //   1871: iconst_4
+    //   1872: anewarray 4	java/lang/Object
+    //   1875: dup
+    //   1876: iconst_0
+    //   1877: aload 11
+    //   1879: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   1882: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1885: aastore
+    //   1886: dup
+    //   1887: iconst_1
+    //   1888: aload 11
+    //   1890: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   1893: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1896: aastore
+    //   1897: dup
+    //   1898: iconst_2
+    //   1899: aload 11
+    //   1901: getfield 743	com/tencent/mm/plugin/voip/video/b/g:zyr	I
+    //   1904: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1907: aastore
+    //   1908: dup
+    //   1909: iconst_3
+    //   1910: aload 11
+    //   1912: getfield 712	com/tencent/mm/plugin/voip/video/b/g:zyo	I
+    //   1915: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1918: aastore
+    //   1919: invokestatic 340	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1922: aload 12
+    //   1924: arraylength
+    //   1925: iload 5
+    //   1927: if_icmplt +192 -> 2119
+    //   1930: aload 11
+    //   1932: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   1935: istore 6
+    //   1937: aload 11
+    //   1939: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   1942: istore 7
+    //   1944: aload 11
+    //   1946: getfield 743	com/tencent/mm/plugin/voip/video/b/g:zyr	I
+    //   1949: bipush 100
+    //   1951: irem
+    //   1952: ifne +462 -> 2414
+    //   1955: aload 12
+    //   1957: ifnull +452 -> 2409
+    //   1960: aload 12
+    //   1962: arraylength
+    //   1963: iload 6
+    //   1965: iload 7
+    //   1967: imul
+    //   1968: iconst_3
+    //   1969: imul
+    //   1970: iconst_2
+    //   1971: idiv
+    //   1972: if_icmple +437 -> 2409
+    //   1975: iconst_0
+    //   1976: istore_2
+    //   1977: iconst_0
+    //   1978: istore_3
+    //   1979: goto +382 -> 2361
+    //   1982: iload_2
+    //   1983: ifeq +136 -> 2119
     //   1986: aload 11
-    //   1988: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   1991: imul
-    //   1992: invokevirtual 789	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
-    //   1995: pop
-    //   1996: aload 11
-    //   1998: getfield 740	com/tencent/mm/plugin/voip/video/b/f:tIR	Ljava/nio/ByteBuffer;
-    //   2001: aload 12
-    //   2003: aload 11
-    //   2005: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   2008: aload 11
-    //   2010: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   2013: imul
-    //   2014: aload 11
-    //   2016: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   2019: aload 11
-    //   2021: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   2024: imul
-    //   2025: iconst_4
-    //   2026: idiv
-    //   2027: invokevirtual 789	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
-    //   2030: pop
-    //   2031: aload 11
-    //   2033: getfield 743	com/tencent/mm/plugin/voip/video/b/f:tIS	Ljava/nio/ByteBuffer;
-    //   2036: aload 12
-    //   2038: aload 11
-    //   2040: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
+    //   1988: getfield 759	com/tencent/mm/plugin/voip/video/b/g:y	Ljava/nio/ByteBuffer;
+    //   1991: invokevirtual 808	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   1994: pop
+    //   1995: aload 11
+    //   1997: getfield 762	com/tencent/mm/plugin/voip/video/b/g:zyk	Ljava/nio/ByteBuffer;
+    //   2000: invokevirtual 808	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   2003: pop
+    //   2004: aload 11
+    //   2006: getfield 765	com/tencent/mm/plugin/voip/video/b/g:zyl	Ljava/nio/ByteBuffer;
+    //   2009: invokevirtual 808	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
+    //   2012: pop
+    //   2013: aload 11
+    //   2015: getfield 759	com/tencent/mm/plugin/voip/video/b/g:y	Ljava/nio/ByteBuffer;
+    //   2018: aload 12
+    //   2020: iconst_0
+    //   2021: aload 11
+    //   2023: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   2026: aload 11
+    //   2028: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   2031: imul
+    //   2032: invokevirtual 811	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
+    //   2035: pop
+    //   2036: aload 11
+    //   2038: getfield 762	com/tencent/mm/plugin/voip/video/b/g:zyk	Ljava/nio/ByteBuffer;
+    //   2041: aload 12
     //   2043: aload 11
-    //   2045: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   2048: imul
-    //   2049: iconst_5
-    //   2050: imul
-    //   2051: iconst_4
-    //   2052: idiv
-    //   2053: aload 11
-    //   2055: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   2058: aload 11
-    //   2060: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   2063: imul
-    //   2064: iconst_4
-    //   2065: idiv
-    //   2066: invokevirtual 789	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
-    //   2069: pop
-    //   2070: aload 11
-    //   2072: iconst_1
-    //   2073: putfield 779	com/tencent/mm/plugin/voip/video/b/f:tIX	Z
-    //   2076: goto -472 -> 1604
-    //   2079: ldc_w 713
-    //   2082: ldc_w 813
-    //   2085: iconst_4
-    //   2086: anewarray 4	java/lang/Object
-    //   2089: dup
-    //   2090: iconst_0
-    //   2091: aload 12
-    //   2093: arraylength
-    //   2094: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2097: aastore
-    //   2098: dup
-    //   2099: iconst_1
-    //   2100: iload 5
-    //   2102: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2105: aastore
-    //   2106: dup
-    //   2107: iconst_2
-    //   2108: aload 11
-    //   2110: getfield 693	com/tencent/mm/plugin/voip/video/b/f:mVideoWidth	I
-    //   2113: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2116: aastore
-    //   2117: dup
-    //   2118: iconst_3
-    //   2119: aload 11
-    //   2121: getfield 696	com/tencent/mm/plugin/voip/video/b/f:mVideoHeight	I
-    //   2124: invokestatic 309	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   2127: aastore
-    //   2128: invokestatic 484	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   2131: aload 11
-    //   2133: iconst_0
-    //   2134: putfield 779	com/tencent/mm/plugin/voip/video/b/f:tIX	Z
-    //   2137: getstatic 806	com/tencent/mm/plugin/voip/model/s:tyN	Lcom/tencent/mm/plugin/voip/model/s;
-    //   2140: astore 12
-    //   2142: invokestatic 816	com/tencent/mm/plugin/voip/model/s:cNP	()V
-    //   2145: goto -541 -> 1604
-    //   2148: aload_0
-    //   2149: getfield 168	com/tencent/mm/plugin/voip/video/OpenGlRender:tGy	Z
-    //   2152: ifeq +20 -> 2172
-    //   2155: aload_0
-    //   2156: getfield 166	com/tencent/mm/plugin/voip/video/OpenGlRender:tGx	Z
-    //   2159: ifeq +13 -> 2172
-    //   2162: aload_0
-    //   2163: getfield 229	com/tencent/mm/plugin/voip/video/OpenGlRender:tGE	Ljava/lang/ref/WeakReference;
-    //   2166: invokevirtual 279	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   2169: ifnonnull +63 -> 2232
-    //   2172: aload_0
-    //   2173: aconst_null
-    //   2174: putfield 190	com/tencent/mm/plugin/voip/video/OpenGlRender:tGJ	[B
-    //   2177: aload_0
-    //   2178: aconst_null
-    //   2179: putfield 192	com/tencent/mm/plugin/voip/video/OpenGlRender:tGK	[I
-    //   2182: getstatic 99	com/tencent/mm/plugin/voip/video/OpenGlRender:TAG	Ljava/lang/String;
-    //   2185: ldc_w 818
-    //   2188: iconst_3
-    //   2189: anewarray 4	java/lang/Object
-    //   2192: dup
-    //   2193: iconst_0
-    //   2194: aload_0
-    //   2195: getfield 168	com/tencent/mm/plugin/voip/video/OpenGlRender:tGy	Z
-    //   2198: invokestatic 335	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   2201: aastore
-    //   2202: dup
-    //   2203: iconst_1
-    //   2204: aload_0
-    //   2205: getfield 166	com/tencent/mm/plugin/voip/video/OpenGlRender:tGx	Z
-    //   2208: invokestatic 335	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   2211: aastore
-    //   2212: dup
-    //   2213: iconst_2
+    //   2045: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   2048: aload 11
+    //   2050: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   2053: imul
+    //   2054: aload 11
+    //   2056: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   2059: aload 11
+    //   2061: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   2064: imul
+    //   2065: iconst_4
+    //   2066: idiv
+    //   2067: invokevirtual 811	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
+    //   2070: pop
+    //   2071: aload 11
+    //   2073: getfield 765	com/tencent/mm/plugin/voip/video/b/g:zyl	Ljava/nio/ByteBuffer;
+    //   2076: aload 12
+    //   2078: aload 11
+    //   2080: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   2083: aload 11
+    //   2085: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   2088: imul
+    //   2089: iconst_5
+    //   2090: imul
+    //   2091: iconst_4
+    //   2092: idiv
+    //   2093: aload 11
+    //   2095: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   2098: aload 11
+    //   2100: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   2103: imul
+    //   2104: iconst_4
+    //   2105: idiv
+    //   2106: invokevirtual 811	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
+    //   2109: pop
+    //   2110: aload 11
+    //   2112: iconst_1
+    //   2113: putfield 801	com/tencent/mm/plugin/voip/video/b/g:zyq	Z
+    //   2116: goto -472 -> 1644
+    //   2119: ldc_w 735
+    //   2122: ldc_w 835
+    //   2125: iconst_4
+    //   2126: anewarray 4	java/lang/Object
+    //   2129: dup
+    //   2130: iconst_0
+    //   2131: aload 12
+    //   2133: arraylength
+    //   2134: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2137: aastore
+    //   2138: dup
+    //   2139: iconst_1
+    //   2140: iload 5
+    //   2142: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2145: aastore
+    //   2146: dup
+    //   2147: iconst_2
+    //   2148: aload 11
+    //   2150: getfield 715	com/tencent/mm/plugin/voip/video/b/g:mVideoWidth	I
+    //   2153: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2156: aastore
+    //   2157: dup
+    //   2158: iconst_3
+    //   2159: aload 11
+    //   2161: getfield 718	com/tencent/mm/plugin/voip/video/b/g:mVideoHeight	I
+    //   2164: invokestatic 335	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   2167: aastore
+    //   2168: invokestatic 492	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   2171: aload 11
+    //   2173: iconst_0
+    //   2174: putfield 801	com/tencent/mm/plugin/voip/video/b/g:zyq	Z
+    //   2177: getstatic 828	com/tencent/mm/plugin/voip/model/t:zlN	Lcom/tencent/mm/plugin/voip/model/t;
+    //   2180: astore 12
+    //   2182: invokestatic 838	com/tencent/mm/plugin/voip/model/t:dUr	()V
+    //   2185: goto -541 -> 1644
+    //   2188: aload_0
+    //   2189: getfield 699	com/tencent/mm/plugin/voip/video/OpenGlRender:zvN	Lcom/tencent/mm/plugin/voip/video/OpenGlRender$b;
+    //   2192: aload_0
+    //   2193: getfield 234	com/tencent/mm/plugin/voip/video/OpenGlRender:zvM	J
+    //   2196: invokestatic 703	com/tencent/mm/sdk/platformtools/bt:aS	(J)J
+    //   2199: invokeinterface 841 3 0
+    //   2204: goto -1441 -> 763
+    //   2207: aload_0
+    //   2208: invokestatic 505	com/tencent/mm/sdk/platformtools/bt:GC	()J
+    //   2211: putfield 234	com/tencent/mm/plugin/voip/video/OpenGlRender:zvM	J
     //   2214: aload_0
-    //   2215: getfield 408	com/tencent/mm/plugin/voip/video/OpenGlRender:tGR	Z
-    //   2218: invokestatic 335	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   2221: aastore
-    //   2222: invokestatic 493	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   2225: sipush 5073
-    //   2228: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   2231: return
-    //   2232: aload_0
-    //   2233: getfield 258	com/tencent/mm/plugin/voip/video/OpenGlRender:tGQ	Lcom/tencent/mm/plugin/voip/video/b/f;
-    //   2236: ifnull +33 -> 2269
-    //   2239: aload_0
-    //   2240: getfield 206	com/tencent/mm/plugin/voip/video/OpenGlRender:tHd	Z
-    //   2243: ifeq +8 -> 2251
-    //   2246: aload_0
-    //   2247: iconst_1
-    //   2248: invokespecial 372	com/tencent/mm/plugin/voip/video/OpenGlRender:ne	(Z)V
-    //   2251: aload_0
-    //   2252: getfield 258	com/tencent/mm/plugin/voip/video/OpenGlRender:tGQ	Lcom/tencent/mm/plugin/voip/video/b/f;
-    //   2255: aload_1
-    //   2256: invokevirtual 791	com/tencent/mm/plugin/voip/video/b/f:onDrawFrame	(Ljavax/microedition/khronos/opengles/GL10;)V
-    //   2259: aload_0
-    //   2260: aconst_null
-    //   2261: putfield 190	com/tencent/mm/plugin/voip/video/OpenGlRender:tGJ	[B
-    //   2264: aload_0
-    //   2265: aconst_null
-    //   2266: putfield 192	com/tencent/mm/plugin/voip/video/OpenGlRender:tGK	[I
-    //   2269: sipush 5073
-    //   2272: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   2275: return
-    //   2276: iload_3
-    //   2277: iload 6
-    //   2279: iload 7
-    //   2281: imul
-    //   2282: if_icmpge +28 -> 2310
-    //   2285: iload_2
-    //   2286: istore 4
-    //   2288: aload 12
-    //   2290: iload_3
-    //   2291: baload
-    //   2292: ifne +8 -> 2300
-    //   2295: iload_2
-    //   2296: iconst_1
-    //   2297: iadd
-    //   2298: istore 4
-    //   2300: iload_3
-    //   2301: iconst_1
-    //   2302: iadd
-    //   2303: istore_3
-    //   2304: iload 4
-    //   2306: istore_2
-    //   2307: goto -31 -> 2276
-    //   2310: iload_2
-    //   2311: iload 6
-    //   2313: iload 7
-    //   2315: imul
-    //   2316: if_icmplt +13 -> 2329
-    //   2319: iconst_0
-    //   2320: istore_2
-    //   2321: goto -379 -> 1942
-    //   2324: iconst_0
-    //   2325: istore_2
-    //   2326: goto -384 -> 1942
-    //   2329: iconst_1
-    //   2330: istore_2
-    //   2331: goto -389 -> 1942
+    //   2215: getfield 190	com/tencent/mm/plugin/voip/video/OpenGlRender:zvh	Z
+    //   2218: ifeq +20 -> 2238
+    //   2221: aload_0
+    //   2222: getfield 188	com/tencent/mm/plugin/voip/video/OpenGlRender:zvg	Z
+    //   2225: ifeq +13 -> 2238
+    //   2228: aload_0
+    //   2229: getfield 259	com/tencent/mm/plugin/voip/video/OpenGlRender:zvn	Ljava/lang/ref/WeakReference;
+    //   2232: invokevirtual 308	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   2235: ifnonnull +63 -> 2298
+    //   2238: aload_0
+    //   2239: aconst_null
+    //   2240: putfield 212	com/tencent/mm/plugin/voip/video/OpenGlRender:zvs	[B
+    //   2243: aload_0
+    //   2244: aconst_null
+    //   2245: putfield 214	com/tencent/mm/plugin/voip/video/OpenGlRender:zvt	[I
+    //   2248: getstatic 118	com/tencent/mm/plugin/voip/video/OpenGlRender:TAG	Ljava/lang/String;
+    //   2251: ldc_w 843
+    //   2254: iconst_3
+    //   2255: anewarray 4	java/lang/Object
+    //   2258: dup
+    //   2259: iconst_0
+    //   2260: aload_0
+    //   2261: getfield 190	com/tencent/mm/plugin/voip/video/OpenGlRender:zvh	Z
+    //   2264: invokestatic 361	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   2267: aastore
+    //   2268: dup
+    //   2269: iconst_1
+    //   2270: aload_0
+    //   2271: getfield 188	com/tencent/mm/plugin/voip/video/OpenGlRender:zvg	Z
+    //   2274: invokestatic 361	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   2277: aastore
+    //   2278: dup
+    //   2279: iconst_2
+    //   2280: aload_0
+    //   2281: getfield 431	com/tencent/mm/plugin/voip/video/OpenGlRender:zvA	Z
+    //   2284: invokestatic 361	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   2287: aastore
+    //   2288: invokestatic 499	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   2291: ldc_w 495
+    //   2294: invokestatic 164	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   2297: return
+    //   2298: aload_0
+    //   2299: getfield 286	com/tencent/mm/plugin/voip/video/OpenGlRender:zvz	Lcom/tencent/mm/plugin/voip/video/b/g;
+    //   2302: ifnull +33 -> 2335
+    //   2305: aload_0
+    //   2306: getfield 236	com/tencent/mm/plugin/voip/video/OpenGlRender:zvQ	Z
+    //   2309: ifeq +8 -> 2317
+    //   2312: aload_0
+    //   2313: iconst_1
+    //   2314: invokespecial 403	com/tencent/mm/plugin/voip/video/OpenGlRender:rU	(Z)V
+    //   2317: aload_0
+    //   2318: getfield 286	com/tencent/mm/plugin/voip/video/OpenGlRender:zvz	Lcom/tencent/mm/plugin/voip/video/b/g;
+    //   2321: aload_1
+    //   2322: invokevirtual 813	com/tencent/mm/plugin/voip/video/b/g:onDrawFrame	(Ljavax/microedition/khronos/opengles/GL10;)V
+    //   2325: aload_0
+    //   2326: aconst_null
+    //   2327: putfield 212	com/tencent/mm/plugin/voip/video/OpenGlRender:zvs	[B
+    //   2330: aload_0
+    //   2331: aconst_null
+    //   2332: putfield 214	com/tencent/mm/plugin/voip/video/OpenGlRender:zvt	[I
+    //   2335: aload_0
+    //   2336: getfield 699	com/tencent/mm/plugin/voip/video/OpenGlRender:zvN	Lcom/tencent/mm/plugin/voip/video/OpenGlRender$b;
+    //   2339: ifnull -1576 -> 763
+    //   2342: aload_0
+    //   2343: getfield 699	com/tencent/mm/plugin/voip/video/OpenGlRender:zvN	Lcom/tencent/mm/plugin/voip/video/OpenGlRender$b;
+    //   2346: aload_0
+    //   2347: getfield 234	com/tencent/mm/plugin/voip/video/OpenGlRender:zvM	J
+    //   2350: invokestatic 703	com/tencent/mm/sdk/platformtools/bt:aS	(J)J
+    //   2353: invokeinterface 846 3 0
+    //   2358: goto -1595 -> 763
+    //   2361: iload_3
+    //   2362: iload 6
+    //   2364: iload 7
+    //   2366: imul
+    //   2367: if_icmpge +28 -> 2395
+    //   2370: iload_2
+    //   2371: istore 4
+    //   2373: aload 12
+    //   2375: iload_3
+    //   2376: baload
+    //   2377: ifne +8 -> 2385
+    //   2380: iload_2
+    //   2381: iconst_1
+    //   2382: iadd
+    //   2383: istore 4
+    //   2385: iload_3
+    //   2386: iconst_1
+    //   2387: iadd
+    //   2388: istore_3
+    //   2389: iload 4
+    //   2391: istore_2
+    //   2392: goto -31 -> 2361
+    //   2395: iload_2
+    //   2396: iload 6
+    //   2398: iload 7
+    //   2400: imul
+    //   2401: if_icmplt +13 -> 2414
+    //   2404: iconst_0
+    //   2405: istore_2
+    //   2406: goto -424 -> 1982
+    //   2409: iconst_0
+    //   2410: istore_2
+    //   2411: goto -429 -> 1982
+    //   2414: iconst_1
+    //   2415: istore_2
+    //   2416: goto -434 -> 1982
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	2334	0	this	OpenGlRender
-    //   0	2334	1	paramGL10	GL10
-    //   116	2215	2	i	int
-    //   128	2176	3	j	int
-    //   806	1499	4	k	int
-    //   871	1230	5	m	int
-    //   859	1457	6	n	int
-    //   865	1451	7	i1	int
-    //   877	23	8	i2	int
-    //   894	93	9	i3	int
-    //   907	713	10	bool	boolean
-    //   370	1762	11	localObject1	Object
-    //   1421	868	12	localObject2	Object
+    //   0	2419	0	this	OpenGlRender
+    //   0	2419	1	paramGL10	GL10
+    //   123	2293	2	i	int
+    //   135	2254	3	j	int
+    //   846	1544	4	k	int
+    //   911	1230	5	m	int
+    //   899	1502	6	n	int
+    //   905	1496	7	i1	int
+    //   917	23	8	i2	int
+    //   934	93	9	i3	int
+    //   947	713	10	bool	boolean
+    //   377	1795	11	localObject1	Object
+    //   1461	913	12	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   1184	1242	1624	finally
-    //   1625	1628	1624	finally
-    //   1431	1445	1790	finally
-    //   1450	1473	1790	finally
-    //   1478	1604	1790	finally
-    //   1604	1607	1790	finally
-    //   1721	1787	1790	finally
-    //   1791	1794	1790	finally
-    //   1802	1882	1790	finally
-    //   1882	1915	1790	finally
-    //   1920	1935	1790	finally
-    //   1946	2076	1790	finally
-    //   2079	2145	1790	finally
+    //   1224	1282	1664	finally
+    //   1665	1668	1664	finally
+    //   1471	1485	1830	finally
+    //   1490	1513	1830	finally
+    //   1518	1644	1830	finally
+    //   1644	1647	1830	finally
+    //   1761	1827	1830	finally
+    //   1831	1834	1830	finally
+    //   1842	1922	1830	finally
+    //   1922	1955	1830	finally
+    //   1960	1975	1830	finally
+    //   1986	2116	1830	finally
+    //   2119	2185	1830	finally
   }
   
   public final void onStarted()
   {
-    AppMethodBeat.i(140205);
-    this.tGy = true;
+    AppMethodBeat.i(115659);
+    this.zvh = true;
     requestRender();
-    AppMethodBeat.o(140205);
+    AppMethodBeat.o(115659);
   }
   
   public final void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(5077);
-    ab.i(TAG, "%s onSurfaceChanged, width: %s, height: %s, self:%b, UI:%dx%d,mode:%d, lastHWDecSize:%dx%d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.tGR), Integer.valueOf(this.tGC), Integer.valueOf(this.tGD), Integer.valueOf(this.mRenderMode), Integer.valueOf(this.txY), Integer.valueOf(this.txZ) });
-    if ((this.tGC != paramInt1) || (this.tGD != paramInt2))
+    AppMethodBeat.i(115657);
+    ad.i(TAG, "%s onSurfaceChanged, width: %s, height: %s, self:%b, UI:%dx%d,mode:%d, lastHWDecSize:%dx%d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.zvA), Integer.valueOf(this.zvl), Integer.valueOf(this.zvm), Integer.valueOf(this.mRenderMode), Integer.valueOf(this.zhL), Integer.valueOf(this.zhM) });
+    if ((this.zvl != paramInt1) || (this.zvm != paramInt2))
     {
       paramGL10.glViewport(0, 0, paramInt1, paramInt2);
-      this.tGC = paramInt1;
-      this.tGD = paramInt2;
+      this.zvl = paramInt1;
+      this.zvm = paramInt2;
     }
-    if (this.tGP != null) {
-      this.tGP.updateSize(paramInt1, paramInt2);
+    if (this.zvy != null) {
+      this.zvy.hY(paramInt1, paramInt2);
     }
-    if (this.tGQ != null) {
-      this.tGQ.onSurfaceChanged(paramGL10, paramInt1, paramInt2);
+    if (this.zvz != null) {
+      this.zvz.onSurfaceChanged(paramGL10, paramInt1, paramInt2);
     }
-    HV(this.tGW);
-    gj(this.txY, this.txZ);
-    AppMethodBeat.o(5077);
+    QR(this.zvF);
+    hP(this.zhL, this.zhM);
+    AppMethodBeat.o(115657);
   }
   
   public final void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    AppMethodBeat.i(140204);
-    ab.i(TAG, "onSurfaceCreated...");
+    AppMethodBeat.i(115658);
+    ad.i(TAG, "onSurfaceCreated...");
     if (getGLVersion() == 2)
     {
       GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
       GLES20.glDisable(2929);
     }
-    if (this.tGQ != null) {
-      this.tGQ.onSurfaceCreated(paramGL10, paramEGLConfig);
+    if (this.zvz != null) {
+      this.zvz.onSurfaceCreated(paramGL10, paramEGLConfig);
     }
-    if (v2protocal.tBR == null)
+    if (v2protocal.zpw == null)
     {
-      paramGL10 = d.cPX();
+      paramGL10 = e.dXC();
       try
       {
-        paramEGLConfig = new int[1];
-        GLES20.glGenTextures(1, paramEGLConfig, 0);
-        GLES20.glBindTexture(36197, paramEGLConfig[0]);
-        GLES20.glTexParameterf(36197, 10241, 9729.0F);
-        GLES20.glTexParameterf(36197, 10240, 9729.0F);
-        GLES20.glTexParameteri(36197, 10242, 33071);
-        GLES20.glTexParameteri(36197, 10243, 33071);
-        ab.i("MicroMsg.VoipHardDecodeUtil", "init texture id is %s", new Object[] { Integer.valueOf(paramEGLConfig[0]) });
-        paramGL10.textureId = paramEGLConfig[0];
-        paramEGLConfig = s.tyN;
-        s.cNz();
-        if (paramGL10.textureId <= 0)
-        {
-          paramEGLConfig = s.tyN;
-          s.cNA();
-        }
-        paramGL10.mSurfaceTexture = new SurfaceTexture(paramGL10.textureId);
-        paramGL10.mSurfaceTexture.detachFromGLContext();
-        GLES20.glDeleteTextures(1, new int[] { paramGL10.textureId }, 0);
-        paramGL10.textureId = -1;
-        paramGL10.mSurfaceTexture = paramGL10.mSurfaceTexture;
-        paramGL10.tIH = false;
-        paramEGLConfig = new Surface(paramGL10.mSurfaceTexture);
-        v2protocal.mSurfaceTexture = paramGL10.mSurfaceTexture;
-        v2protocal.textureId = paramGL10.textureId;
-        v2protocal.tBR = paramEGLConfig;
-        paramGL10.tII.tW();
-        AppMethodBeat.o(140204);
+        paramGL10.zxZ = paramGL10.dXD();
+        paramGL10.zxY.set(false);
+        paramEGLConfig = new Surface(paramGL10.zxZ);
+        v2protocal.mSurfaceTexture = paramGL10.zxZ;
+        v2protocal.zpx = null;
+        v2protocal.zpw = paramEGLConfig;
+        paramGL10.zya.Ca();
+        AppMethodBeat.o(115658);
         return;
       }
       catch (Exception paramGL10)
       {
-        ab.printErrStackTrace("MicroMsg.VoipHardDecodeUtil", paramGL10, "initSurfaceTexutre error", new Object[0]);
-        paramGL10 = s.tyN;
-        s.cNB();
+        ad.printErrStackTrace("MicroMsg.VoipHardDecodeUtil", paramGL10, "initSurfaceTexutre error", new Object[0]);
+        paramGL10 = t.zlN;
+        t.dUd();
       }
     }
-    AppMethodBeat.o(140204);
+    AppMethodBeat.o(115658);
+  }
+  
+  public final void releaseSurfaceTexture()
+  {
+    AppMethodBeat.i(115652);
+    if ((this.zvn != null) && (this.zvn.get() != null))
+    {
+      ??? = (OpenGlView)this.zvn.get();
+      ad.m(TAG, "releaseSurfaceTexture:%s", new Object[] { ??? });
+      ((OpenGlView)???).queueEvent(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(115641);
+          ??? = e.dXC();
+          try
+          {
+            if (((e)???).zxZ != null)
+            {
+              t localt2 = t.zlN;
+              t.dUe();
+              if (((e)???).zpx != null) {
+                ((e)???).zpx.close();
+              }
+              ((e)???).zxZ.release();
+              ((e)???).zxZ = null;
+              ad.i("MicroMsg.VoipHardDecodeUtil", "uninit surface texture");
+            }
+          }
+          catch (Exception localException1)
+          {
+            t localt1;
+            synchronized (OpenGlRender.dXk())
+            {
+              try
+              {
+                OpenGlRender.dXk().notifyAll();
+                AppMethodBeat.o(115641);
+                return;
+                localException1 = localException1;
+                ad.printErrStackTrace("MicroMsg.VoipHardDecodeUtil", localException1, "uninitSurfaceTexture error", new Object[0]);
+                localt1 = t.zlN;
+                t.dUf();
+              }
+              catch (Exception localException2)
+              {
+                for (;;)
+                {
+                  ad.printErrStackTrace(OpenGlRender.TAG, localException2, "", new Object[0]);
+                }
+              }
+            }
+          }
+          ad.i(OpenGlRender.TAG, "releaseSurfaceTexture call finish");
+        }
+      });
+      synchronized (zvI)
+      {
+        try
+        {
+          zvI.wait(100L);
+          ad.i(TAG, "releaseSurfaceTexture wait finish");
+          AppMethodBeat.o(115652);
+          return;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            ad.printErrStackTrace(TAG, localException, "", new Object[0]);
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(115652);
   }
   
   public final void requestRender()
   {
-    AppMethodBeat.i(5081);
-    if (this.tGE.get() != null) {
-      ((OpenGlView)this.tGE.get()).cPL();
+    AppMethodBeat.i(115666);
+    if (this.zvn.get() != null) {
+      ((OpenGlView)this.zvn.get()).dXl();
     }
-    AppMethodBeat.o(5081);
+    AppMethodBeat.o(115666);
   }
   
   public final void setVoipBeauty(int paramInt)
   {
-    AppMethodBeat.i(5080);
-    ab.i(TAG, "steve: isDrawingSelf:%b, set voipbeauty:%d, beautyParam:%d", new Object[] { Boolean.valueOf(this.tGR), Integer.valueOf(paramInt), Integer.valueOf(this.tGS) });
-    this.tGS = paramInt;
-    AppMethodBeat.o(5080);
+    AppMethodBeat.i(115665);
+    ad.i(TAG, "steve: isDrawingSelf:%b, set voipbeauty:%d, beautyParam:%d", new Object[] { Boolean.valueOf(this.zvA), Integer.valueOf(paramInt), Integer.valueOf(this.zvB) });
+    this.zvB = paramInt;
+    AppMethodBeat.o(115665);
+  }
+  
+  final class a
+    extends ap
+  {
+    public a(Looper paramLooper)
+    {
+      super();
+    }
+    
+    public final void handleMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(115646);
+      OpenGlRender.this.requestRender();
+      AppMethodBeat.o(115646);
+    }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void dWf();
+    
+    public abstract void uo(long paramLong);
+    
+    public abstract void up(long paramLong);
+    
+    public abstract void uq(long paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.OpenGlRender
  * JD-Core Version:    0.7.0.1
  */

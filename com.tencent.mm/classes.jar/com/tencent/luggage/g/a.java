@@ -1,156 +1,106 @@
 package com.tencent.luggage.g;
 
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
 
 public final class a
-  extends InputStream
+  extends ContextThemeWrapper
 {
-  public final ByteBuffer bFu;
-  private int bFv;
+  private static final b ciW;
+  private Resources ciU;
+  private LayoutInflater ciV;
+  private final b ciX;
   
-  public a(ByteBuffer paramByteBuffer)
+  static
   {
-    this.bFu = paramByteBuffer;
-  }
-  
-  public static void f(ByteBuffer paramByteBuffer)
-  {
-    AppMethodBeat.i(90872);
-    if (paramByteBuffer.getClass().getName().equals("java.nio.DirectByteBuffer")) {}
-    try
+    AppMethodBeat.i(169479);
+    ciW = new b()
     {
-      org.a.a.ep(paramByteBuffer).azS("free");
-      System.gc();
-      AppMethodBeat.o(90872);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      public final DisplayMetrics a(DisplayMetrics paramAnonymousDisplayMetrics, Configuration paramAnonymousConfiguration)
       {
-        ab.v("MicroMsg.ByteBufferBackedInputStream", "free() try reflect free e = %s", new Object[] { localException });
-        try
-        {
-          org.a.a.ep(org.a.a.ep(paramByteBuffer).azS("cleaner").object).azS("clean");
-        }
-        catch (Exception paramByteBuffer)
-        {
-          ab.v("MicroMsg.ByteBufferBackedInputStream", "free() try reflect cleaner e = %s", new Object[] { paramByteBuffer });
-        }
+        AppMethodBeat.i(169462);
+        paramAnonymousConfiguration = new DisplayMetrics();
+        paramAnonymousConfiguration.setTo(paramAnonymousDisplayMetrics);
+        AppMethodBeat.o(169462);
+        return paramAnonymousConfiguration;
       }
+    };
+    AppMethodBeat.o(169479);
+  }
+  
+  public a(Context paramContext, b paramb)
+  {
+    AppMethodBeat.i(169474);
+    super.attachBaseContext(paramContext);
+    paramContext = paramb;
+    if (paramb == null) {
+      paramContext = ciW;
     }
+    this.ciX = paramContext;
+    AppMethodBeat.o(169474);
   }
   
-  public final int available()
+  private DisplayMetrics a(DisplayMetrics paramDisplayMetrics, Configuration paramConfiguration)
   {
-    AppMethodBeat.i(90864);
-    int i = this.bFu.remaining();
-    AppMethodBeat.o(90864);
-    return i;
+    AppMethodBeat.i(169477);
+    paramDisplayMetrics = this.ciX.a(paramDisplayMetrics, paramConfiguration);
+    AppMethodBeat.o(169477);
+    return paramDisplayMetrics;
   }
   
-  public final void close()
+  public final Resources getResources()
   {
-    AppMethodBeat.i(90867);
-    super.close();
-    f(this.bFu);
-    AppMethodBeat.o(90867);
-  }
-  
-  public final long getLength()
-  {
-    AppMethodBeat.i(90871);
-    long l = this.bFu.limit();
-    AppMethodBeat.o(90871);
-    return l;
-  }
-  
-  public final void mark(int paramInt)
-  {
-    try
+    AppMethodBeat.i(169476);
+    if (getAssets() != null)
     {
-      AppMethodBeat.i(90868);
-      this.bFv = this.bFu.position();
-      AppMethodBeat.o(90868);
-      return;
+      if (this.ciU == null)
+      {
+        localResources = super.getResources();
+        this.ciU = new a.a(this, localResources, a(localResources.getDisplayMetrics(), localResources.getConfiguration()));
+      }
+      localResources = this.ciU;
+      AppMethodBeat.o(169476);
+      return localResources;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    Resources localResources = super.getResources();
+    AppMethodBeat.o(169476);
+    return localResources;
   }
   
-  public final boolean markSupported()
+  public final Object getSystemService(String paramString)
   {
-    return true;
+    AppMethodBeat.i(169475);
+    if ("layout_inflater".equals(paramString))
+    {
+      if (this.ciV != null)
+      {
+        paramString = this.ciV;
+        AppMethodBeat.o(169475);
+        return paramString;
+      }
+      paramString = (LayoutInflater)super.getSystemService("layout_inflater");
+      this.ciV = paramString;
+      AppMethodBeat.o(169475);
+      return paramString;
+    }
+    paramString = super.getSystemService(paramString);
+    AppMethodBeat.o(169475);
+    return paramString;
   }
   
-  public final int read()
+  public static abstract interface b
   {
-    AppMethodBeat.i(90865);
-    if (this.bFu.hasRemaining())
-    {
-      int i = this.bFu.get();
-      AppMethodBeat.o(90865);
-      return i & 0xFF;
-    }
-    AppMethodBeat.o(90865);
-    return -1;
-  }
-  
-  public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(90866);
-    if (!this.bFu.hasRemaining())
-    {
-      AppMethodBeat.o(90866);
-      return -1;
-    }
-    paramInt2 = Math.min(paramInt2, this.bFu.remaining());
-    this.bFu.get(paramArrayOfByte, paramInt1, paramInt2);
-    AppMethodBeat.o(90866);
-    return paramInt2;
-  }
-  
-  public final void reset()
-  {
-    try
-    {
-      AppMethodBeat.i(90870);
-      this.bFu.position(this.bFv);
-      AppMethodBeat.o(90870);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void seek(int paramInt)
-  {
-    try
-    {
-      AppMethodBeat.i(90869);
-      this.bFu.position(paramInt);
-      AppMethodBeat.o(90869);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    public abstract DisplayMetrics a(DisplayMetrics paramDisplayMetrics, Configuration paramConfiguration);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.g.a
  * JD-Core Version:    0.7.0.1
  */

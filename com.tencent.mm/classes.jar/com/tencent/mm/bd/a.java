@@ -1,167 +1,111 @@
 package com.tencent.mm.bd;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.SpellMap;
-import com.tencent.mm.plugin.appbrand.s.r;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.model.u;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.ayy;
+import com.tencent.mm.protocal.protobuf.ayz;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 
 public final class a
+  extends n
+  implements k
 {
-  public static int a(JSONObject paramJSONObject, String paramString, Context paramContext)
+  private com.tencent.mm.al.g callback;
+  public String hpO;
+  public String hpP;
+  public byte[] hpQ;
+  private final b rr;
+  
+  public a()
   {
-    AppMethodBeat.i(91302);
-    int j;
-    int i;
-    if (paramJSONObject == null)
+    this(u.aqG(), bt.l((Integer)com.tencent.mm.kernel.g.afB().afk().get(66561, null)), 0);
+    AppMethodBeat.i(150870);
+    AppMethodBeat.o(150870);
+  }
+  
+  public a(String paramString, int paramInt)
+  {
+    this(paramString, paramInt, 0);
+  }
+  
+  public a(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(150871);
+    this.callback = null;
+    this.hpO = null;
+    this.hpP = null;
+    this.hpQ = null;
+    Object localObject = new b.a();
+    ((b.a)localObject).gUU = new ayy();
+    ((b.a)localObject).gUV = new ayz();
+    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getqrcode";
+    ((b.a)localObject).funcId = 168;
+    ((b.a)localObject).reqCmdId = 67;
+    ((b.a)localObject).respCmdId = 1000000067;
+    this.rr = ((b.a)localObject).atI();
+    localObject = (ayy)this.rr.gUS.gUX;
+    ((ayy)localObject).Dby = z.BE(paramString);
+    ((ayy)localObject).Dxp = paramInt1;
+    ((ayy)localObject).OpCode = paramInt2;
+    ad.i("MicroMsg.NetSceneGetQRCode", "username:%s, style:%d, opcode:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(150871);
+  }
+  
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
+  {
+    AppMethodBeat.i(150872);
+    this.callback = paramg;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(150872);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 168;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(150873);
+    ad.d("MicroMsg.NetSceneGetQRCode", "onGYNetEnd errType:" + paramInt2 + " errCode" + paramInt3);
+    if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      j = 0;
-      i = j;
-      if (j == 0)
+      paramArrayOfByte = (ayy)this.rr.gUS.gUX;
+      paramq = (ayz)this.rr.gUT.gUX;
+      paramArrayOfByte = z.a(paramArrayOfByte.Dby);
+      this.hpQ = z.a(paramq.Dxq, new byte[0]);
+      this.hpO = paramq.Dxr;
+      ad.i("MicroMsg.NetSceneGetQRCode", "expiredWording:%s, revokeId:%s, revokeWording:%s", new Object[] { this.hpO, paramq.Dxs, paramq.Dxt });
+      if (u.aqG().equals(paramArrayOfByte))
       {
-        if (!paramString.equals(paramContext.getString(2131302999))) {
-          break label53;
+        paramArrayOfByte = paramq.Dxs;
+        String str = (String)com.tencent.mm.kernel.g.afB().afk().get(66563, "");
+        if ((paramArrayOfByte != null) && (!str.equals(paramArrayOfByte)))
+        {
+          com.tencent.mm.kernel.g.afB().afk().set(66563, paramArrayOfByte);
+          this.hpP = paramq.Dxt;
         }
-        i = 2;
+        com.tencent.mm.kernel.g.afB().afk().set(66561, Integer.valueOf(paramq.Dxp));
       }
     }
-    for (;;)
-    {
-      AppMethodBeat.o(91302);
-      return i;
-      j = paramJSONObject.optInt("businessType");
-      break;
-      label53:
-      if (paramString.equals(paramContext.getString(2131303003)))
-      {
-        i = 8;
-      }
-      else if (paramString.equals(paramContext.getString(2131303000)))
-      {
-        i = 1;
-      }
-      else
-      {
-        ab.i("MicroMsg.FTS.FTSExportLogic", "option " + paramString + " no type");
-        i = j;
-      }
-    }
-  }
-  
-  public static boolean aR(String paramString1, String paramString2)
-  {
-    int i = 0;
-    AppMethodBeat.i(91304);
-    if (paramString1 == paramString2)
-    {
-      AppMethodBeat.o(91304);
-      return true;
-    }
-    if (TextUtils.isEmpty(paramString1))
-    {
-      AppMethodBeat.o(91304);
-      return false;
-    }
-    if (paramString1.startsWith(paramString2))
-    {
-      AppMethodBeat.o(91304);
-      return true;
-    }
-    if (TextUtils.isEmpty(paramString1)) {}
-    StringBuilder localStringBuilder;
-    for (paramString1 = "";; paramString1 = localStringBuilder.toString())
-    {
-      boolean bool = paramString1.startsWith(paramString2);
-      AppMethodBeat.o(91304);
-      return bool;
-      localStringBuilder = new StringBuilder(paramString1.length());
-      while (i < paramString1.length())
-      {
-        localStringBuilder.append(SpellMap.u(paramString1.charAt(i)));
-        i += 1;
-      }
-    }
-  }
-  
-  public static Drawable b(int paramInt, Context paramContext)
-  {
-    AppMethodBeat.i(91303);
-    int i = 2131232053;
-    switch (paramInt)
-    {
-    default: 
-      paramInt = i;
-    }
-    for (;;)
-    {
-      paramContext = paramContext.getResources().getDrawable(paramInt);
-      AppMethodBeat.o(91303);
-      return paramContext;
-      paramInt = 2131232051;
-      continue;
-      paramInt = 2131232048;
-      continue;
-      paramInt = 2131232037;
-      continue;
-      paramInt = 2131232047;
-      continue;
-      paramInt = 2131232042;
-      continue;
-      paramInt = 2131232049;
-      continue;
-      paramInt = 2131232050;
-      continue;
-      paramInt = 2131232056;
-      continue;
-      paramInt = 2131232057;
-      continue;
-      paramInt = 2131232052;
-    }
-  }
-  
-  public static String b(int paramInt, Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(91301);
-    switch (paramInt)
-    {
-    default: 
-      paramMap = aa.F(paramMap);
-      AppMethodBeat.o(91301);
-      return paramMap;
-    case 201: 
-      paramMap = r.F(paramMap);
-      AppMethodBeat.o(91301);
-      return paramMap;
-    }
-    paramMap = aa.d(paramMap, 1);
-    AppMethodBeat.o(91301);
-    return paramMap;
-  }
-  
-  public static Map<String, String> cE(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(91300);
-    switch (paramInt1)
-    {
-    default: 
-      localMap = aa.d(paramInt1, false, paramInt2);
-      AppMethodBeat.o(91300);
-      return localMap;
-    }
-    Map localMap = r.d(paramInt1, false, paramInt2);
-    AppMethodBeat.o(91300);
-    return localMap;
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(150873);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.bd.a
  * JD-Core Version:    0.7.0.1
  */

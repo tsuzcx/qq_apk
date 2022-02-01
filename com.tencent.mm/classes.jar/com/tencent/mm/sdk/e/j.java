@@ -2,8 +2,8 @@ package com.tencent.mm.sdk.e;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,10 +28,10 @@ public abstract class j<T extends c>
     this.db = parame;
     this.dbInfo = parama;
     parama = this.dbInfo;
-    if (bo.isNullOrNil(this.dbInfo.yrL)) {}
-    for (parame = "rowid";; parame = this.dbInfo.yrL)
+    if (bt.isNullOrNil(this.dbInfo.EYu)) {}
+    for (parame = "rowid";; parame = this.dbInfo.EYu)
     {
-      parama.yrL = parame;
+      parama.EYu = parame;
       this.table = paramString;
       updateColumnSQLs(paramArrayOfString);
       return;
@@ -40,12 +40,12 @@ public abstract class j<T extends c>
   
   private void LOGD(String paramString)
   {
-    ab.d("MicroMsg.SDK.MAutoStorage", getTableName() + ":" + paramString);
+    ad.d("MicroMsg.SDK.MAutoStorage", getTableName() + ":" + paramString);
   }
   
   private void LOGE(String paramString)
   {
-    ab.e("MicroMsg.SDK.MAutoStorage", getTableName() + ":" + paramString);
+    ad.e("MicroMsg.SDK.MAutoStorage", getTableName() + ":" + paramString);
   }
   
   private static StringBuilder checkKeysWithValues(ContentValues paramContentValues, String... paramVarArgs)
@@ -68,7 +68,7 @@ public abstract class j<T extends c>
   
   private boolean checkOld(ContentValues paramContentValues)
   {
-    Cursor localCursor = this.db.query(getTableName(), this.dbInfo.columns, this.dbInfo.yrL + " = ?", new String[] { bo.nullAsNil(paramContentValues.getAsString(this.dbInfo.yrL)) }, null, null, null);
+    Cursor localCursor = this.db.query(getTableName(), this.dbInfo.columns, this.dbInfo.EYu + " = ?", new String[] { bt.nullAsNil(paramContentValues.getAsString(this.dbInfo.EYu)) }, null, null, null);
     boolean bool = c.checkIOEqual(paramContentValues, localCursor);
     localCursor.close();
     return bool;
@@ -91,7 +91,7 @@ public abstract class j<T extends c>
       if (parame == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ab.e("MicroMsg.SDK.MAutoStorage", "dk getUpdateSQLs db==null :%b  table:%s", new Object[] { Boolean.valueOf(bool), paramString });
+        ad.e("MicroMsg.SDK.MAutoStorage", "dk getUpdateSQLs db==null :%b  table:%s", new Object[] { Boolean.valueOf(bool), paramString });
         return localArrayList;
       }
     }
@@ -106,7 +106,7 @@ public abstract class j<T extends c>
       parame.put(((Cursor)localObject1).getString(i), ((Cursor)localObject1).getString(j));
     }
     ((Cursor)localObject1).close();
-    parama = parama.yrM.entrySet().iterator();
+    parama = parama.EYv.entrySet().iterator();
     while (parama.hasNext())
     {
       Object localObject2 = (Map.Entry)parama.next();
@@ -122,7 +122,7 @@ public abstract class j<T extends c>
         }
         else if (!((String)localObject1).toLowerCase().startsWith(str.toLowerCase()))
         {
-          ab.e("MicroMsg.SDK.MAutoStorage", "conflicting alter table on column: " + (String)localObject2 + ", " + str + "<o-n>" + (String)localObject1);
+          ad.e("MicroMsg.SDK.MAutoStorage", "conflicting alter table on column: " + (String)localObject2 + ", " + str + "<o-n>" + (String)localObject1);
           parame.remove(localObject2);
         }
       }
@@ -138,7 +138,7 @@ public abstract class j<T extends c>
     while (i < localList.size())
     {
       if (!this.db.execSQL(this.table, (String)localList.get(i))) {
-        ab.i("MicroMsg.SDK.MAutoStorage", "updateColumnSQLs table failed %s, sql %s", new Object[] { this.table, localList.get(i) });
+        ad.i("MicroMsg.SDK.MAutoStorage", "updateColumnSQLs table failed %s, sql %s", new Object[] { this.table, localList.get(i) });
       }
       i += 1;
     }
@@ -159,7 +159,7 @@ public abstract class j<T extends c>
     int i = 0;
     while (i < arrayOfString.length)
     {
-      arrayOfString[i] = bo.nullAsNil(paramContentValues.getAsString(paramArrayOfString[i]));
+      arrayOfString[i] = bt.nullAsNil(paramContentValues.getAsString(paramArrayOfString[i]));
       i += 1;
     }
     return arrayOfString;
@@ -187,7 +187,7 @@ public abstract class j<T extends c>
           break;
         }
         LOGD("delete with primary key");
-        if (this.db.delete(getTableName(), this.dbInfo.yrL + " = ?", new String[] { bo.nullAsNil(paramT.getAsString(this.dbInfo.yrL)) }) > 0) {
+        if (this.db.delete(getTableName(), this.dbInfo.EYu + " = ?", new String[] { bt.nullAsNil(paramT.getAsString(this.dbInfo.EYu)) }) > 0) {
           bool1 = true;
         }
         bool2 = bool1;
@@ -204,7 +204,7 @@ public abstract class j<T extends c>
     }
     if ((this.db.delete(getTableName(), localStringBuilder.toString(), valuesFromKeys(paramVarArgs, paramT)) > 0) && (paramBoolean))
     {
-      doNotify(this.dbInfo.yrL);
+      doNotify(this.dbInfo.EYu);
       return true;
     }
     LOGE("delete failed");
@@ -269,7 +269,7 @@ public abstract class j<T extends c>
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0))
     {
       LOGD("get with primary key");
-      paramVarArgs = this.db.a(getTableName(), this.dbInfo.columns, this.dbInfo.yrL + " = ?", new String[] { bo.nullAsNil(localContentValues.getAsString(this.dbInfo.yrL)) }, null, null, null, 2);
+      paramVarArgs = this.db.a(getTableName(), this.dbInfo.columns, this.dbInfo.EYu + " = ?", new String[] { bt.nullAsNil(localContentValues.getAsString(this.dbInfo.EYu)) }, null, null, null, 2);
       if (paramVarArgs.moveToFirst())
       {
         paramT.convertFrom(paramVarArgs);
@@ -317,7 +317,7 @@ public abstract class j<T extends c>
   
   public String getPrimaryKey()
   {
-    return this.dbInfo.yrL;
+    return this.dbInfo.EYu;
   }
   
   public String getTableName()
@@ -338,7 +338,7 @@ public abstract class j<T extends c>
       LOGE("insert failed, value.size <= 0");
       return false;
     }
-    paramT.systemRowid = this.db.insert(getTableName(), this.dbInfo.yrL, localContentValues);
+    paramT.systemRowid = this.db.insert(getTableName(), this.dbInfo.EYu, localContentValues);
     if (paramT.systemRowid <= 0L)
     {
       LOGE("insert failed");
@@ -346,7 +346,7 @@ public abstract class j<T extends c>
     }
     localContentValues.put("rowid", Long.valueOf(paramT.systemRowid));
     if (paramBoolean) {
-      doNotify(localContentValues.getAsString(this.dbInfo.yrL));
+      doNotify(localContentValues.getAsString(this.dbInfo.EYu));
     }
     return true;
   }
@@ -358,48 +358,59 @@ public abstract class j<T extends c>
   
   public boolean replace(T paramT)
   {
-    boolean bool;
+    return replace(paramT, true);
+  }
+  
+  public boolean replace(T paramT, boolean paramBoolean)
+  {
+    boolean bool2 = false;
     ContentValues localContentValues;
     int j;
     int k;
-    if (!bo.isNullOrNil(this.dbInfo.yrL))
+    if (!bt.isNullOrNil(this.dbInfo.EYu))
     {
-      bool = true;
-      Assert.assertTrue("replace primaryKey == null", bool);
+      bool1 = true;
+      Assert.assertTrue("replace primaryKey == null", bool1);
       localContentValues = paramT.convertTo();
       if (localContentValues != null)
       {
         j = localContentValues.size();
-        k = paramT.getDBInfo().yrK.length;
+        k = paramT.getDBInfo().EYt.length;
         if (!localContentValues.containsKey("rowid")) {
-          break label86;
+          break label91;
         }
       }
     }
-    label86:
+    label91:
     for (int i = 1;; i = 0)
     {
       if (j == i + k) {
-        break label91;
+        break label96;
       }
       LOGE("replace failed, cv.size() != item.fields().length");
       return false;
-      bool = false;
+      bool1 = false;
       break;
     }
-    label91:
+    label96:
     if (checkOld(localContentValues))
     {
       LOGD("no need replace , fields no change");
       return true;
     }
-    if (this.db.replace(getTableName(), this.dbInfo.yrL, localContentValues) > 0L)
+    boolean bool1 = bool2;
+    if (this.db.replace(getTableName(), this.dbInfo.EYu, localContentValues) > 0L) {
+      bool1 = true;
+    }
+    if ((bool1) && (paramBoolean))
     {
-      doNotify(this.dbInfo.yrL);
+      doNotify(this.dbInfo.EYu);
       return true;
     }
-    LOGE("replace failed");
-    return false;
+    if (!bool1) {
+      LOGE("replace failed");
+    }
+    return bool1;
   }
   
   public boolean update(long paramLong, T paramT)
@@ -468,7 +479,7 @@ public abstract class j<T extends c>
           LOGD("no need replace , fields no change");
           return true;
         }
-        if (this.db.update(getTableName(), paramT, this.dbInfo.yrL + " = ?", new String[] { bo.nullAsNil(paramT.getAsString(this.dbInfo.yrL)) }) > 0) {
+        if (this.db.update(getTableName(), paramT, this.dbInfo.EYu + " = ?", new String[] { bt.nullAsNil(paramT.getAsString(this.dbInfo.EYu)) }) > 0) {
           bool1 = true;
         }
         bool2 = bool1;
@@ -486,7 +497,7 @@ public abstract class j<T extends c>
     if (this.db.update(getTableName(), paramT, localStringBuilder.toString(), valuesFromKeys(paramVarArgs, paramT)) > 0)
     {
       if (paramBoolean) {
-        doNotify(paramT.getAsString(this.dbInfo.yrL));
+        doNotify(paramT.getAsString(this.dbInfo.EYu));
       }
       return true;
     }

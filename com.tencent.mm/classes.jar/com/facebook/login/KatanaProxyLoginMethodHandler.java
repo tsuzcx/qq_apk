@@ -12,9 +12,23 @@ class KatanaProxyLoginMethodHandler
   
   static
   {
-    AppMethodBeat.i(96785);
-    CREATOR = new KatanaProxyLoginMethodHandler.1();
-    AppMethodBeat.o(96785);
+    AppMethodBeat.i(7809);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final KatanaProxyLoginMethodHandler createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(7804);
+        paramAnonymousParcel = new KatanaProxyLoginMethodHandler(paramAnonymousParcel);
+        AppMethodBeat.o(7804);
+        return paramAnonymousParcel;
+      }
+      
+      public final KatanaProxyLoginMethodHandler[] newArray(int paramAnonymousInt)
+      {
+        return new KatanaProxyLoginMethodHandler[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(7809);
   }
   
   KatanaProxyLoginMethodHandler(Parcel paramParcel)
@@ -39,25 +53,25 @@ class KatanaProxyLoginMethodHandler
   
   boolean tryAuthorize(LoginClient.Request paramRequest)
   {
-    AppMethodBeat.i(96783);
+    AppMethodBeat.i(7807);
     String str = LoginClient.getE2E();
     paramRequest = NativeProtocol.createProxyAuthIntent(this.loginClient.getActivity(), paramRequest.getApplicationId(), paramRequest.getPermissions(), str, paramRequest.isRerequest(), paramRequest.hasPublishPermission(), paramRequest.getDefaultAudience(), getClientState(paramRequest.getAuthId()), paramRequest.getAuthType());
     addLoggingExtra("e2e", str);
     boolean bool = tryIntent(paramRequest, LoginClient.getLoginRequestCode());
-    AppMethodBeat.o(96783);
+    AppMethodBeat.o(7807);
     return bool;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(96784);
+    AppMethodBeat.i(7808);
     super.writeToParcel(paramParcel, paramInt);
-    AppMethodBeat.o(96784);
+    AppMethodBeat.o(7808);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.login.KatanaProxyLoginMethodHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -6,103 +6,87 @@ import com.tencent.mm.plugin.report.a;
 public final class p
   extends a
 {
-  public int cRR = 0;
-  public String cRS;
-  public String cRT = "";
-  public long cRU = 0L;
-  public long cRV = 0L;
-  public long cRW = 0L;
-  public String cRX;
-  public int cRY = 0;
-  public int cRZ = 0;
-  public int cSa = 0;
-  public int cSb = 0;
+  public int dHR = 0;
+  public int dHS = 0;
+  public int dHT = 0;
+  public String dHU;
+  public String dHV;
+  public String dHW;
+  public String dHX;
+  public String dHY;
+  public String dHZ;
+  public String dIa;
+  public String dIb;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(73289);
+    AppMethodBeat.i(63297);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cRR);
+    ((StringBuffer)localObject).append(this.dHR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cRS);
+    ((StringBuffer)localObject).append(this.dHS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cRT);
+    ((StringBuffer)localObject).append(this.dHT);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cRU);
+    ((StringBuffer)localObject).append(this.dHU);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cRV);
+    ((StringBuffer)localObject).append(this.dHV);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cRW);
+    ((StringBuffer)localObject).append(this.dHW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cRX);
+    ((StringBuffer)localObject).append(this.dHX);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cRY);
+    ((StringBuffer)localObject).append(this.dHY);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cRZ);
+    ((StringBuffer)localObject).append(this.dHZ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cSa);
+    ((StringBuffer)localObject).append(this.dIa);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cSb);
+    ((StringBuffer)localObject).append(this.dIb);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(73289);
+    ams((String)localObject);
+    AppMethodBeat.o(63297);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(73290);
+    AppMethodBeat.i(63298);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("PID:").append(this.cRR);
+    ((StringBuffer)localObject).append("CgiCmd:").append(this.dHR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PName:").append(this.cRS);
+    ((StringBuffer)localObject).append("ErrType:").append(this.dHS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("sessionId:").append(this.cRT);
+    ((StringBuffer)localObject).append("ErrCode:").append(this.dHT);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("frontTime:").append(this.cRU);
+    ((StringBuffer)localObject).append("EncryptKey:").append(this.dHU);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("stayTotalTime:").append(this.cRV);
+    ((StringBuffer)localObject).append("EncryptUserinfo:").append(this.dHV);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("scrollTotalTime:").append(this.cRW);
+    ((StringBuffer)localObject).append("EncryptCellinfoLength:").append(this.dHW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("reportFeedList:").append(this.cRX);
+    ((StringBuffer)localObject).append("EncryptCellinfo_01:").append(this.dHX);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("reportFeedCount:").append(this.cRY);
+    ((StringBuffer)localObject).append("EncryptCellinfo_02:").append(this.dHY);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Seq:").append(this.cRZ);
+    ((StringBuffer)localObject).append("EncryptCellinfo_03:").append(this.dHZ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SubSeq:").append(this.cSa);
+    ((StringBuffer)localObject).append("EncryptCellinfo_04:").append(this.dIa);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SubSeqSum:").append(this.cSb);
+    ((StringBuffer)localObject).append("EncryptCellinfo_05:").append(this.dIb);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(73290);
+    AppMethodBeat.o(63298);
     return localObject;
-  }
-  
-  public final p fh(String paramString)
-  {
-    AppMethodBeat.i(73287);
-    this.cRS = t("PName", paramString, true);
-    AppMethodBeat.o(73287);
-    return this;
-  }
-  
-  public final p fi(String paramString)
-  {
-    AppMethodBeat.i(73288);
-    this.cRT = t("sessionId", paramString, true);
-    AppMethodBeat.o(73288);
-    return this;
   }
   
   public final int getId()
   {
-    return 16242;
+    return 15548;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.b.a.p
  * JD-Core Version:    0.7.0.1
  */

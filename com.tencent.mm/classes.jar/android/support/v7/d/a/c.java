@@ -89,7 +89,7 @@ public class c
   
   public boolean isAutoMirrored()
   {
-    return a.a(this.mDrawable);
+    return a.e(this.mDrawable);
   }
   
   public boolean isStateful()

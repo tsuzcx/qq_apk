@@ -2,31 +2,36 @@ package com.tencent.mm.plugin.aa.ui;
 
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.d.n;
+import com.tencent.mm.pluginsdk.ui.span.o;
 
 public final class a
-  extends n
+  extends o
 {
-  private a.a gpk;
+  private a ibo;
   
-  public a(a.a parama)
+  public a(a parama)
   {
     super(2, null);
-    this.gpk = parama;
+    this.ibo = parama;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(40707);
-    if (this.gpk != null) {
-      this.gpk.aoW();
+    AppMethodBeat.i(63470);
+    if (this.ibo != null) {
+      this.ibo.aHn();
     }
-    AppMethodBeat.o(40707);
+    AppMethodBeat.o(63470);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void aHn();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.a
  * JD-Core Version:    0.7.0.1
  */

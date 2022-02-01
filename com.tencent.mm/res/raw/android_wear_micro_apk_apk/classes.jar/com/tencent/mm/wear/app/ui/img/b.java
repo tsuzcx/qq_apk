@@ -11,28 +11,28 @@ final class b
   
   protected final void execute()
   {
-    if (DetailImgUI.c(this.aga) != null)
+    if (DetailImgUI.c(this.ajC) != null)
     {
-      DetailImgUI.a(this.aga).setImageBitmap(DetailImgUI.c(this.aga));
-      DetailImgUI.d(this.aga).nD();
+      DetailImgUI.a(this.ajC).setImageBitmap(DetailImgUI.c(this.ajC));
+      DetailImgUI.d(this.ajC).or();
       return;
     }
     com.tencent.mm.wear.app.c.a locala = new com.tencent.mm.wear.app.c.a();
-    locala.acM = 2131427357;
-    locala.acL = DetailImgUI.a(this.aga);
+    locala.agn = 2131427357;
+    locala.agm = DetailImgUI.a(this.ajC);
     locala.type = 2;
-    locala.acG = DetailImgUI.b(this.aga);
-    locala.width = MMActivity.nc();
-    locala.height = MMActivity.nb();
-    h.me().a(locala);
-    DetailImgUI.a(this.aga, h.me().b(locala));
-    if (DetailImgUI.c(this.aga) != null)
+    locala.agh = DetailImgUI.b(this.ajC);
+    locala.width = MMActivity.nP();
+    locala.height = MMActivity.nO();
+    h.mR().a(locala);
+    DetailImgUI.a(this.ajC, h.mR().b(locala));
+    if (DetailImgUI.c(this.ajC) != null)
     {
-      DetailImgUI.a(this.aga).setImageBitmap(DetailImgUI.c(this.aga));
-      DetailImgUI.d(this.aga).nD();
+      DetailImgUI.a(this.ajC).setImageBitmap(DetailImgUI.c(this.ajC));
+      DetailImgUI.d(this.ajC).or();
       return;
     }
-    DetailImgUI.d(this.aga).setError();
+    DetailImgUI.d(this.ajC).setError();
   }
   
   protected final String getName()

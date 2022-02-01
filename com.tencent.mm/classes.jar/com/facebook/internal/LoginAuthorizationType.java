@@ -6,11 +6,11 @@ public enum LoginAuthorizationType
 {
   static
   {
-    AppMethodBeat.i(96653);
+    AppMethodBeat.i(7677);
     READ = new LoginAuthorizationType("READ", 0);
     PUBLISH = new LoginAuthorizationType("PUBLISH", 1);
     $VALUES = new LoginAuthorizationType[] { READ, PUBLISH };
-    AppMethodBeat.o(96653);
+    AppMethodBeat.o(7677);
   }
   
   private LoginAuthorizationType() {}

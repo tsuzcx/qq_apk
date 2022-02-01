@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.facedetect.ui;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class FaceDetectConfirmUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -12,16 +12,16 @@ final class FaceDetectConfirmUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(363);
-    ab.i("MicroMsg.FaceDetectConfirmUI", "alvinluo cancel with back button");
-    FaceDetectConfirmUI.a(this.mkL);
-    AppMethodBeat.o(363);
+    AppMethodBeat.i(103882);
+    ad.i("MicroMsg.FaceDetectConfirmUI", "alvinluo cancel with back button");
+    FaceDetectConfirmUI.a(this.pRw);
+    AppMethodBeat.o(103882);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.FaceDetectConfirmUI.1
  * JD-Core Version:    0.7.0.1
  */

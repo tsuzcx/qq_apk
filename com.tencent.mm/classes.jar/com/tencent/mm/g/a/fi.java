@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class fi
   extends b
 {
-  public fi.a ctn;
-  public fi.b cto;
+  public a dhG;
   
   public fi()
   {
@@ -16,12 +15,16 @@ public final class fi
   
   private fi(byte paramByte)
   {
-    AppMethodBeat.i(15771);
-    this.ctn = new fi.a();
-    this.cto = new fi.b();
-    this.ymq = false;
+    AppMethodBeat.i(116015);
+    this.dhG = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15771);
+    AppMethodBeat.o(116015);
+  }
+  
+  public static final class a
+  {
+    public int op;
   }
 }
 

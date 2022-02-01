@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.freewifi.f;
 
 public final class a
 {
-  public String coY;
-  public int mLM;
-  public int mLN;
-  public String mLO;
-  public String mLP;
-  public long mLQ;
-  public String mLR;
-  public String mLS;
-  public int mLT;
-  public String mLU;
-  public String mLV;
-  public int mLW;
-  public long mLX;
-  public long mLY;
-  public int mLZ;
-  public int mMa;
-  public int mMb;
-  public String mMc;
-  public String mMd;
-  public String mMe;
-  public int mMf;
+  public String ddV;
+  public int riQ;
+  public int riR;
+  public String riS;
+  public String riT;
+  public long riU;
+  public String riV;
+  public String riW;
+  public int riX;
+  public String riY;
+  public String riZ;
+  public int rja;
+  public long rjb;
+  public long rjc;
+  public int rjd;
+  public int rje;
+  public int rjf;
+  public String rjg;
+  public String rjh;
+  public String rji;
+  public int rjj;
 }
 
 

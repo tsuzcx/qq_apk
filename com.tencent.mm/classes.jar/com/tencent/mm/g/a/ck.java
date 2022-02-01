@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ck
   extends b
 {
+  public a dez;
+  
   public ck()
   {
     this((byte)0);
@@ -12,13 +16,24 @@ public final class ck
   
   private ck(byte paramByte)
   {
-    this.ymq = false;
+    AppMethodBeat.i(19794);
+    this.dez = new a();
+    this.ESR = false;
     this.callback = null;
+    AppMethodBeat.o(19794);
+  }
+  
+  public static final class a
+  {
+    public int action = 0;
+    public Context context;
+    public String[] daV;
+    public String[] selectionArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.ck
  * JD-Core Version:    0.7.0.1
  */

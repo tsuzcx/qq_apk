@@ -11,8 +11,8 @@ public final class cc
   {
     int i = c.b(paramParcel);
     c.c(paramParcel, 1, paramzzacz.getVersionCode());
-    c.a(paramParcel, paramzzacz.jB());
-    c.a(paramParcel, 3, paramzzacz.jC(), paramInt);
+    c.a(paramParcel, paramzzacz.jK());
+    c.a(paramParcel, 3, paramzzacz.jL(), paramInt);
     c.v(paramParcel, i);
   }
 }

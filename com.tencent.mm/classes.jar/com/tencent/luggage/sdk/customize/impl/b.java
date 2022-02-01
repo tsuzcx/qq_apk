@@ -1,27 +1,26 @@
 package com.tencent.luggage.sdk.customize.impl;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.q.a;
+import com.tencent.mm.plugin.appbrand.aa.o.a;
 
 public class b
-  implements q.a
+  implements o.a
 {
-  public String vV()
+  public String CU()
   {
     return " Luggage/";
   }
   
   public final String version()
   {
-    AppMethodBeat.i(114301);
-    String str = String.format("%s-nano", new Object[] { "unknown" });
-    AppMethodBeat.o(114301);
-    return str;
+    AppMethodBeat.i(139820);
+    AppMethodBeat.o(139820);
+    return "unknown";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.sdk.customize.impl.b
  * JD-Core Version:    0.7.0.1
  */

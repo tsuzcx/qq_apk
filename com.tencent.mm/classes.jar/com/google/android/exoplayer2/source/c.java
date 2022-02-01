@@ -9,59 +9,59 @@ import com.google.android.exoplayer2.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
-  implements h, h.a
+  implements i, i.a
 {
-  private h.a aOX;
-  private long aOY;
-  private long aOZ;
-  private a[] aPa;
-  private boolean aPb;
-  public final h awn;
+  public final i aRF;
+  private a[] bkA;
+  private boolean bkB;
+  private i.a bkx;
+  private long bky;
+  private long bkz;
   
-  public c(h paramh, boolean paramBoolean)
+  public c(i parami, boolean paramBoolean)
   {
-    AppMethodBeat.i(95449);
-    this.awn = paramh;
-    this.aOY = -9223372036854775807L;
-    this.aOZ = -9223372036854775807L;
-    this.aPa = new a[0];
-    this.aPb = paramBoolean;
-    AppMethodBeat.o(95449);
+    AppMethodBeat.i(92615);
+    this.aRF = parami;
+    this.bky = -9223372036854775807L;
+    this.bkz = -9223372036854775807L;
+    this.bkA = new a[0];
+    this.bkB = paramBoolean;
+    AppMethodBeat.o(92615);
   }
   
-  public final void O(long paramLong)
+  public final void U(long paramLong)
   {
-    AppMethodBeat.i(95454);
-    this.awn.O(this.aOY + paramLong);
-    AppMethodBeat.o(95454);
+    AppMethodBeat.i(92620);
+    this.aRF.U(this.bky + paramLong);
+    AppMethodBeat.o(92620);
   }
   
-  public final long P(long paramLong)
+  public final long V(long paramLong)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(95457);
-    a[] arrayOfa = this.aPa;
+    AppMethodBeat.i(92623);
+    a[] arrayOfa = this.bkA;
     int j = arrayOfa.length;
     int i = 0;
     while (i < j)
     {
       a locala = arrayOfa[i];
       if (locala != null) {
-        locala.aPd = false;
+        locala.bkD = false;
       }
       i += 1;
     }
-    long l = this.awn.P(this.aOY + paramLong);
-    if (l != this.aOY + paramLong)
+    long l = this.aRF.V(this.bky + paramLong);
+    if (l != this.bky + paramLong)
     {
       bool1 = bool2;
-      if (l < this.aOY) {
+      if (l < this.bky) {
         break label122;
       }
-      if (this.aOZ != -9223372036854775808L)
+      if (this.bkz != -9223372036854775808L)
       {
         bool1 = bool2;
-        if (l > this.aOZ) {
+        if (l > this.bkz) {
           break label122;
         }
       }
@@ -69,42 +69,42 @@ public final class c
     boolean bool1 = true;
     label122:
     a.checkState(bool1);
-    paramLong = this.aOY;
-    AppMethodBeat.o(95457);
+    paramLong = this.bky;
+    AppMethodBeat.o(92623);
     return l - paramLong;
   }
   
-  public final boolean Q(long paramLong)
+  public final boolean W(long paramLong)
   {
-    AppMethodBeat.i(95459);
-    boolean bool = this.awn.Q(this.aOY + paramLong);
-    AppMethodBeat.o(95459);
+    AppMethodBeat.i(92625);
+    boolean bool = this.aRF.W(this.bky + paramLong);
+    AppMethodBeat.o(92625);
     return bool;
   }
   
-  public final long a(f[] paramArrayOff, boolean[] paramArrayOfBoolean1, l[] paramArrayOfl, boolean[] paramArrayOfBoolean2, long paramLong)
+  public final long a(f[] paramArrayOff, boolean[] paramArrayOfBoolean1, m[] paramArrayOfm, boolean[] paramArrayOfBoolean2, long paramLong)
   {
-    AppMethodBeat.i(95453);
-    this.aPa = new a[paramArrayOfl.length];
-    l[] arrayOfl = new l[paramArrayOfl.length];
+    AppMethodBeat.i(92619);
+    this.bkA = new a[paramArrayOfm.length];
+    m[] arrayOfm = new m[paramArrayOfm.length];
     int i = 0;
-    if (i < paramArrayOfl.length)
+    if (i < paramArrayOfm.length)
     {
-      this.aPa[i] = ((a)paramArrayOfl[i]);
-      if (this.aPa[i] != null) {}
-      for (l locall = this.aPa[i].auZ;; locall = null)
+      this.bkA[i] = ((a)paramArrayOfm[i]);
+      if (this.bkA[i] != null) {}
+      for (m localm = this.bkA[i].aQs;; localm = null)
       {
-        arrayOfl[i] = locall;
+        arrayOfm[i] = localm;
         i += 1;
         break;
       }
     }
-    long l = this.awn.a(paramArrayOff, paramArrayOfBoolean1, arrayOfl, paramArrayOfBoolean2, paramLong + this.aOY);
+    long l = this.aRF.a(paramArrayOff, paramArrayOfBoolean1, arrayOfm, paramArrayOfBoolean2, paramLong + this.bky);
     label170:
     boolean bool;
-    if (this.aPb)
+    if (this.bkB)
     {
-      if (this.aOY == 0L) {
+      if (this.bky == 0L) {
         break label297;
       }
       int j = paramArrayOff.length;
@@ -113,7 +113,7 @@ public final class c
         break label291;
       }
       paramArrayOfBoolean1 = paramArrayOff[i];
-      if ((paramArrayOfBoolean1 != null) && (!j.aG(paramArrayOfBoolean1.qh().awK)))
+      if ((paramArrayOfBoolean1 != null) && (!j.aJ(paramArrayOfBoolean1.vb().aSd)))
       {
         i = 1;
         if (i == 0) {
@@ -121,12 +121,12 @@ public final class c
         }
         bool = true;
         label178:
-        this.aPb = bool;
+        this.bkB = bool;
       }
     }
     else
     {
-      if ((l != this.aOY + paramLong) && ((l < this.aOY) || ((this.aOZ != -9223372036854775808L) && (l > this.aOZ)))) {
+      if ((l != this.bky + paramLong) && ((l < this.bky) || ((this.bkz != -9223372036854775808L) && (l > this.bkz)))) {
         break label303;
       }
       bool = true;
@@ -134,17 +134,17 @@ public final class c
       a.checkState(bool);
       i = 0;
       label239:
-      if (i >= paramArrayOfl.length) {
+      if (i >= paramArrayOfm.length) {
         break label369;
       }
-      if (arrayOfl[i] != null) {
+      if (arrayOfm[i] != null) {
         break label309;
       }
-      this.aPa[i] = null;
+      this.bkA[i] = null;
     }
     for (;;)
     {
-      paramArrayOfl[i] = this.aPa[i];
+      paramArrayOfm[i] = this.bkA[i];
       i += 1;
       break label239;
       i += 1;
@@ -159,214 +159,214 @@ public final class c
       bool = false;
       break label231;
       label309:
-      if ((paramArrayOfl[i] == null) || (this.aPa[i].auZ != arrayOfl[i])) {
-        this.aPa[i] = new a(this, arrayOfl[i], this.aOY, this.aOZ, this.aPb);
+      if ((paramArrayOfm[i] == null) || (this.bkA[i].aQs != arrayOfm[i])) {
+        this.bkA[i] = new a(this, arrayOfm[i], this.bky, this.bkz, this.bkB);
       }
     }
     label369:
-    paramLong = this.aOY;
-    AppMethodBeat.o(95453);
+    paramLong = this.bky;
+    AppMethodBeat.o(92619);
     return l - paramLong;
   }
   
-  public final void a(h.a parama, long paramLong)
+  public final void a(i.a parama, long paramLong)
   {
-    AppMethodBeat.i(95450);
-    this.aOX = parama;
-    this.awn.a(this, this.aOY + paramLong);
-    AppMethodBeat.o(95450);
+    AppMethodBeat.i(92616);
+    this.bkx = parama;
+    this.aRF.a(this, this.bky + paramLong);
+    AppMethodBeat.o(92616);
   }
   
-  public final void a(h paramh)
+  public final void a(i parami)
   {
-    AppMethodBeat.i(95460);
-    if ((this.aOY != -9223372036854775807L) && (this.aOZ != -9223372036854775807L)) {}
+    AppMethodBeat.i(92626);
+    if ((this.bky != -9223372036854775807L) && (this.bkz != -9223372036854775807L)) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      this.aOX.a(this);
-      AppMethodBeat.o(95460);
+      this.bkx.a(this);
+      AppMethodBeat.o(92626);
       return;
     }
   }
   
-  public final void i(long paramLong1, long paramLong2)
+  public final void h(long paramLong1, long paramLong2)
   {
-    this.aOY = paramLong1;
-    this.aOZ = paramLong2;
+    this.bky = paramLong1;
+    this.bkz = paramLong2;
   }
   
-  public final void oS()
+  public final void tA()
   {
-    AppMethodBeat.i(95451);
-    this.awn.oS();
-    AppMethodBeat.o(95451);
+    AppMethodBeat.i(92617);
+    this.aRF.tA();
+    AppMethodBeat.o(92617);
   }
   
-  public final p oT()
+  public final q tB()
   {
-    AppMethodBeat.i(95452);
-    p localp = this.awn.oT();
-    AppMethodBeat.o(95452);
-    return localp;
+    AppMethodBeat.i(92618);
+    q localq = this.aRF.tB();
+    AppMethodBeat.o(92618);
+    return localq;
   }
   
-  public final long oU()
+  public final long tC()
   {
     boolean bool2 = false;
-    AppMethodBeat.i(95455);
-    if (this.aPb)
+    AppMethodBeat.i(92621);
+    if (this.bkB)
     {
-      a[] arrayOfa = this.aPa;
+      a[] arrayOfa = this.bkA;
       int j = arrayOfa.length;
       int i = 0;
       while (i < j)
       {
         a locala = arrayOfa[i];
         if (locala != null) {
-          locala.aPc = false;
+          locala.bkC = false;
         }
         i += 1;
       }
-      this.aPb = false;
-      l1 = oU();
+      this.bkB = false;
+      l1 = tC();
       if (l1 != -9223372036854775807L)
       {
-        AppMethodBeat.o(95455);
+        AppMethodBeat.o(92621);
         return l1;
       }
-      AppMethodBeat.o(95455);
+      AppMethodBeat.o(92621);
       return 0L;
     }
-    long l1 = this.awn.oU();
+    long l1 = this.aRF.tC();
     if (l1 == -9223372036854775807L)
     {
-      AppMethodBeat.o(95455);
+      AppMethodBeat.o(92621);
       return -9223372036854775807L;
     }
-    if (l1 >= this.aOY) {}
+    if (l1 >= this.bky) {}
     for (boolean bool1 = true;; bool1 = false)
     {
       a.checkState(bool1);
-      if (this.aOZ != -9223372036854775808L)
+      if (this.bkz != -9223372036854775808L)
       {
         bool1 = bool2;
-        if (l1 > this.aOZ) {}
+        if (l1 > this.bkz) {}
       }
       else
       {
         bool1 = true;
       }
       a.checkState(bool1);
-      long l2 = this.aOY;
-      AppMethodBeat.o(95455);
+      long l2 = this.bky;
+      AppMethodBeat.o(92621);
       return l1 - l2;
     }
   }
   
-  public final long oV()
+  public final long tD()
   {
-    AppMethodBeat.i(95456);
-    long l = this.awn.oV();
-    if ((l == -9223372036854775808L) || ((this.aOZ != -9223372036854775808L) && (l >= this.aOZ)))
+    AppMethodBeat.i(92622);
+    long l = this.aRF.tD();
+    if ((l == -9223372036854775808L) || ((this.bkz != -9223372036854775808L) && (l >= this.bkz)))
     {
-      AppMethodBeat.o(95456);
+      AppMethodBeat.o(92622);
       return -9223372036854775808L;
     }
-    l = Math.max(0L, l - this.aOY);
-    AppMethodBeat.o(95456);
+    l = Math.max(0L, l - this.bky);
+    AppMethodBeat.o(92622);
     return l;
   }
   
-  public final long oW()
+  public final long tE()
   {
-    AppMethodBeat.i(95458);
-    long l1 = this.awn.oW();
-    if ((l1 == -9223372036854775808L) || ((this.aOZ != -9223372036854775808L) && (l1 >= this.aOZ)))
+    AppMethodBeat.i(92624);
+    long l1 = this.aRF.tE();
+    if ((l1 == -9223372036854775808L) || ((this.bkz != -9223372036854775808L) && (l1 >= this.bkz)))
     {
-      AppMethodBeat.o(95458);
+      AppMethodBeat.o(92624);
       return -9223372036854775808L;
     }
-    long l2 = this.aOY;
-    AppMethodBeat.o(95458);
+    long l2 = this.bky;
+    AppMethodBeat.o(92624);
     return l1 - l2;
   }
   
   static final class a
-    implements l
+    implements m
   {
-    private final long aOY;
-    private final long aOZ;
-    boolean aPc;
-    boolean aPd;
-    final l auZ;
-    private final h awn;
+    final m aQs;
+    private final i aRF;
+    boolean bkC;
+    boolean bkD;
+    private final long bky;
+    private final long bkz;
     
-    public a(h paramh, l paraml, long paramLong1, long paramLong2, boolean paramBoolean)
+    public a(i parami, m paramm, long paramLong1, long paramLong2, boolean paramBoolean)
     {
-      this.awn = paramh;
-      this.auZ = paraml;
-      this.aOY = paramLong1;
-      this.aOZ = paramLong2;
-      this.aPc = paramBoolean;
+      this.aRF = parami;
+      this.aQs = paramm;
+      this.bky = paramLong1;
+      this.bkz = paramLong2;
+      this.bkC = paramBoolean;
     }
     
-    public final void R(long paramLong)
+    public final void X(long paramLong)
     {
-      AppMethodBeat.i(95448);
-      this.auZ.R(this.aOY + paramLong);
-      AppMethodBeat.o(95448);
+      AppMethodBeat.i(92614);
+      this.aQs.X(this.bky + paramLong);
+      AppMethodBeat.o(92614);
     }
     
     public final int b(k paramk, e parame, boolean paramBoolean)
     {
-      AppMethodBeat.i(95447);
-      if (this.aPc)
+      AppMethodBeat.i(92613);
+      if (this.bkC)
       {
-        AppMethodBeat.o(95447);
+        AppMethodBeat.o(92613);
         return -3;
       }
-      if (this.aPd)
+      if (this.bkD)
       {
         parame.flags = 4;
-        AppMethodBeat.o(95447);
+        AppMethodBeat.o(92613);
         return -4;
       }
-      int i = this.auZ.b(paramk, parame, paramBoolean);
-      if ((this.aOZ != -9223372036854775808L) && (((i == -4) && (parame.aAT >= this.aOZ)) || ((i == -3) && (this.awn.oV() == -9223372036854775808L))))
+      int i = this.aQs.b(paramk, parame, paramBoolean);
+      if ((this.bkz != -9223372036854775808L) && (((i == -4) && (parame.timeUs >= this.bkz)) || ((i == -3) && (this.aRF.tD() == -9223372036854775808L))))
       {
         parame.clear();
         parame.flags = 4;
-        this.aPd = true;
-        AppMethodBeat.o(95447);
+        this.bkD = true;
+        AppMethodBeat.o(92613);
         return -4;
       }
-      if ((i == -4) && (!parame.nE())) {
-        parame.aAT -= this.aOY;
+      if ((i == -4) && (!parame.sq())) {
+        parame.timeUs -= this.bky;
       }
-      AppMethodBeat.o(95447);
+      AppMethodBeat.o(92613);
       return i;
     }
     
     public final boolean isReady()
     {
-      AppMethodBeat.i(95445);
-      boolean bool = this.auZ.isReady();
-      AppMethodBeat.o(95445);
+      AppMethodBeat.i(92611);
+      boolean bool = this.aQs.isReady();
+      AppMethodBeat.o(92611);
       return bool;
     }
     
-    public final void oX()
+    public final void tF()
     {
-      AppMethodBeat.i(95446);
-      this.auZ.oX();
-      AppMethodBeat.o(95446);
+      AppMethodBeat.i(92612);
+      this.aQs.tF();
+      AppMethodBeat.o(92612);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.source.c
  * JD-Core Version:    0.7.0.1
  */

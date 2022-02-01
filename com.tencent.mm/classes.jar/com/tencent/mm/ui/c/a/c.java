@@ -8,20 +8,20 @@ public final class c
 {
   public final float getInterpolation(float paramFloat)
   {
-    AppMethodBeat.i(106220);
+    AppMethodBeat.i(141580);
     if (paramFloat <= 0.5D)
     {
       paramFloat = super.getInterpolation(2.0F * paramFloat);
-      AppMethodBeat.o(106220);
+      AppMethodBeat.o(141580);
       return paramFloat;
     }
-    AppMethodBeat.o(106220);
+    AppMethodBeat.o(141580);
     return 1.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.c.a.c
  * JD-Core Version:    0.7.0.1
  */

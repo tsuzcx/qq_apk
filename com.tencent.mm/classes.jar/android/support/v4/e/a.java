@@ -7,10 +7,10 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class a<K, V>
-  extends m<K, V>
+  extends n<K, V>
   implements Map<K, V>
 {
-  h<K, V> EF;
+  i<K, V> LE;
   
   public a() {}
   
@@ -19,81 +19,77 @@ public class a<K, V>
     super(paramInt);
   }
   
-  public a(m paramm)
+  public a(n paramn)
   {
-    super(paramm);
+    super(paramn);
   }
   
-  private h<K, V> dv()
+  private i<K, V> eM()
   {
-    if (this.EF == null) {
-      this.EF = new h()
+    if (this.LE == null) {
+      this.LE = new i()
       {
-        protected final int C(Object paramAnonymousObject)
+        protected final int B(Object paramAnonymousObject)
         {
           return a.this.indexOfKey(paramAnonymousObject);
         }
         
-        protected final int D(Object paramAnonymousObject)
+        protected final int C(Object paramAnonymousObject)
         {
           return a.this.indexOfValue(paramAnonymousObject);
         }
         
-        protected final void ao(int paramAnonymousInt)
+        protected final V a(int paramAnonymousInt, V paramAnonymousV)
+        {
+          return a.this.setValueAt(paramAnonymousInt, paramAnonymousV);
+        }
+        
+        protected final void aG(int paramAnonymousInt)
         {
           a.this.removeAt(paramAnonymousInt);
         }
         
-        protected final V b(int paramAnonymousInt, V paramAnonymousV)
-        {
-          a locala = a.this;
-          paramAnonymousInt = (paramAnonymousInt << 1) + 1;
-          Object localObject = locala.EO[paramAnonymousInt];
-          locala.EO[paramAnonymousInt] = paramAnonymousV;
-          return localObject;
-        }
-        
-        protected final void c(K paramAnonymousK, V paramAnonymousV)
+        protected final void b(K paramAnonymousK, V paramAnonymousV)
         {
           a.this.put(paramAnonymousK, paramAnonymousV);
         }
         
-        protected final int dw()
+        protected final int eN()
         {
           return a.this.mSize;
         }
         
-        protected final Map<K, V> dx()
+        protected final Map<K, V> eO()
         {
           return a.this;
         }
         
-        protected final void dy()
+        protected final void eP()
         {
           a.this.clear();
         }
         
-        protected final Object q(int paramAnonymousInt1, int paramAnonymousInt2)
+        protected final Object s(int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          return a.this.EO[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
+          return a.this.LN[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
         }
       };
     }
-    return this.EF;
+    return this.LE;
   }
   
   public Set<Map.Entry<K, V>> entrySet()
   {
-    h localh = dv();
-    if (localh.EY == null) {
-      localh.EY = new h.b(localh);
+    i locali = eM();
+    if (locali.LW == null) {
+      locali.LW = new i.b(locali);
     }
-    return localh.EY;
+    return locali.LW;
   }
   
   public Set<K> keySet()
   {
-    return dv().getKeySet();
+    return eM().getKeySet();
   }
   
   public void putAll(Map<? extends K, ? extends V> paramMap)
@@ -109,11 +105,11 @@ public class a<K, V>
   
   public Collection<V> values()
   {
-    h localh = dv();
-    if (localh.Fa == null) {
-      localh.Fa = new h.e(localh);
+    i locali = eM();
+    if (locali.LY == null) {
+      locali.LY = new i.e(locali);
     }
-    return localh.Fa;
+    return locali.LY;
   }
 }
 

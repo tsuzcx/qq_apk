@@ -1,19 +1,20 @@
 package com.tencent.mm.plugin.sns.a.b;
 
-import android.view.View;
-import com.tencent.mm.protocal.protobuf.SnsObject;
+import com.tencent.mm.plugin.sns.storage.p;
 
-public abstract interface b
+public final class b
 {
-  public abstract void a(int paramInt1, String paramString, boolean paramBoolean, View paramView, long paramLong, SnsObject paramSnsObject, int paramInt2, int paramInt3);
-  
-  public abstract void clear();
-  
-  public abstract void k(int paramInt1, String paramString, int paramInt2);
+  static int kvn;
+  static int kvo;
+  public int wwO;
+  public p wwP;
+  public int wwQ;
+  public long wwR;
+  public long wwS;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.a.b.b
  * JD-Core Version:    0.7.0.1
  */

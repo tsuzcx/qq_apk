@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.nearby.ui;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
@@ -10,13 +11,13 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bp;
-import com.tencent.mm.model.s;
-import com.tencent.mm.plugin.nearby.a;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.model.bs;
+import com.tencent.mm.model.v;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.ui.base.preference.ChoicePreference;
 import com.tencent.mm.ui.base.preference.KeyValuePreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -27,43 +28,86 @@ import com.tencent.mm.ui.base.preference.f;
 public class NearbyPersonalInfoUI
   extends MMPreference
 {
-  private int dqC = -1;
+  private int evp = -1;
   private f screen;
   
   public int getResourceId()
   {
-    return 2131165252;
+    return 2131951694;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(55491);
-    setMMTitle(2131301777);
+    AppMethodBeat.i(89888);
+    setMMTitle(2131761524);
     this.screen = getPreferenceScreen();
-    ((KeyValuePreference)this.screen.atx("settings_signature")).zrr = false;
+    ((KeyValuePreference)this.screen.aKk("settings_signature")).Gfe = false;
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(55483);
+        AppMethodBeat.i(89883);
         NearbyPersonalInfoUI.this.finish();
-        AppMethodBeat.o(55483);
+        AppMethodBeat.o(89883);
         return true;
       }
     });
-    addTextOptionMenu(0, getString(2131297013), new NearbyPersonalInfoUI.2(this));
-    ((ChoicePreference)this.screen.atx("settings_sex")).zqD = new Preference.a()
+    addTextOptionMenu(0, getString(2131755830), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(89884);
+        if (NearbyPersonalInfoUI.a(NearbyPersonalInfoUI.this) != -1)
+        {
+          paramAnonymousMenuItem = bs.asB();
+          paramAnonymousMenuItem.evp = NearbyPersonalInfoUI.a(NearbyPersonalInfoUI.this);
+          bs.a(paramAnonymousMenuItem);
+        }
+        paramAnonymousMenuItem = bs.asC();
+        if (paramAnonymousMenuItem == null) {
+          NearbyPersonalInfoUI.b(NearbyPersonalInfoUI.this);
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(89884);
+          return true;
+          Object localObject = bt.nullAsNil(paramAnonymousMenuItem.getProvince());
+          bt.nullAsNil(paramAnonymousMenuItem.getCity());
+          int i = paramAnonymousMenuItem.evp;
+          if ((bt.isNullOrNil((String)localObject)) || (i == 0))
+          {
+            NearbyPersonalInfoUI.b(NearbyPersonalInfoUI.this);
+          }
+          else
+          {
+            paramAnonymousMenuItem = NearbyPersonalInfoUI.this;
+            localObject = new Intent(NearbyPersonalInfoUI.this, NearbyFriendsUI.class);
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/nearby/ui/NearbyPersonalInfoUI$2", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousMenuItem.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousMenuItem, "com/tencent/mm/plugin/nearby/ui/NearbyPersonalInfoUI$2", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousMenuItem = bs.asB();
+            if (i != -1) {
+              paramAnonymousMenuItem.evp = i;
+            }
+            ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new j.a(1, bs.a(paramAnonymousMenuItem)));
+            NearbyPersonalInfoUI.this.finish();
+          }
+        }
+      }
+    });
+    ((ChoicePreference)this.screen.aKk("settings_sex")).Gee = new Preference.a()
     {
       public final boolean a(Preference paramAnonymousPreference, Object paramAnonymousObject)
       {
-        AppMethodBeat.i(55485);
+        AppMethodBeat.i(89885);
         paramAnonymousPreference = (String)paramAnonymousObject;
         if ("male".equalsIgnoreCase(paramAnonymousPreference)) {
           NearbyPersonalInfoUI.a(NearbyPersonalInfoUI.this, 1);
         }
         for (;;)
         {
-          AppMethodBeat.o(55485);
+          AppMethodBeat.o(89885);
           return false;
           if ("female".equalsIgnoreCase(paramAnonymousPreference)) {
             NearbyPersonalInfoUI.a(NearbyPersonalInfoUI.this, 2);
@@ -71,78 +115,78 @@ public class NearbyPersonalInfoUI
         }
       }
     };
-    int i = bo.a((Integer)g.RL().Ru().get(12290, null), 0);
-    ChoicePreference localChoicePreference = (ChoicePreference)this.screen.atx("settings_sex");
-    localChoicePreference.setTitle(Html.fromHtml(getString(2131303418) + "<font color='red'>*</font>"));
+    int i = bt.a((Integer)g.afB().afk().get(12290, null), 0);
+    ChoicePreference localChoicePreference = (ChoicePreference)this.screen.aKk("settings_sex");
+    localChoicePreference.setTitle(Html.fromHtml(getString(2131763400) + "<font color='red'>*</font>"));
     switch (i)
     {
     default: 
       localChoicePreference.setValue("unknown");
-      AppMethodBeat.o(55491);
+      AppMethodBeat.o(89888);
       return;
     case 1: 
       localChoicePreference.setValue("male");
-      AppMethodBeat.o(55491);
+      AppMethodBeat.o(89888);
       return;
     }
     localChoicePreference.setValue("female");
-    AppMethodBeat.o(55491);
+    AppMethodBeat.o(89888);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(55486);
+    AppMethodBeat.i(89886);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(55486);
+    AppMethodBeat.o(89886);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(55487);
+    AppMethodBeat.i(89887);
     super.onDestroy();
-    AppMethodBeat.o(55487);
+    AppMethodBeat.o(89887);
   }
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(55490);
+    AppMethodBeat.i(89890);
     paramf = paramPreference.mKey;
     if ("settings_district".equals(paramf))
     {
-      a.gmO.b(null, this);
-      AppMethodBeat.o(55490);
+      com.tencent.mm.plugin.nearby.a.hYt.b(null, this);
+      AppMethodBeat.o(89890);
       return true;
     }
     if ("settings_signature".equals(paramf))
     {
-      a.gmO.bk(this);
-      overridePendingTransition(2131034230, 2131034229);
-      AppMethodBeat.o(55490);
+      com.tencent.mm.plugin.nearby.a.hYt.by(this);
+      overridePendingTransition(2130772108, 2130772107);
+      AppMethodBeat.o(89890);
       return true;
     }
-    AppMethodBeat.o(55490);
+    AppMethodBeat.o(89890);
     return false;
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(55489);
-    Object localObject2 = bp.aba();
-    Object localObject1 = ((bp)localObject2).getProvince();
-    localObject2 = ((bp)localObject2).getCity();
-    Preference localPreference = this.screen.atx("settings_district");
-    localPreference.setSummary(s.nG((String)localObject1) + " " + (String)localObject2);
-    localPreference.setTitle(Html.fromHtml(getString(2131303238) + "<font color='red'>*</font>"));
-    localPreference = this.screen.atx("settings_signature");
-    localObject2 = bo.nullAsNil((String)g.RL().Ru().get(12291, null));
+    AppMethodBeat.i(89889);
+    Object localObject2 = bs.asB();
+    Object localObject1 = ((bs)localObject2).getProvince();
+    localObject2 = ((bs)localObject2).getCity();
+    Preference localPreference = this.screen.aKk("settings_district");
+    localPreference.setSummary(v.sj((String)localObject1) + " " + (String)localObject2);
+    localPreference.setTitle(Html.fromHtml(getString(2131763207) + "<font color='red'>*</font>"));
+    localPreference = this.screen.aKk("settings_signature");
+    localObject2 = bt.nullAsNil((String)g.afB().afk().get(12291, null));
     localObject1 = localObject2;
     if (((String)localObject2).length() <= 0) {
-      localObject1 = getString(2131303427);
+      localObject1 = getString(2131763409);
     }
-    localPreference.setSummary(j.b(this, (CharSequence)localObject1));
+    localPreference.setSummary(com.tencent.mm.pluginsdk.ui.span.k.c(this, (CharSequence)localObject1));
     super.onResume();
-    AppMethodBeat.o(55489);
+    AppMethodBeat.o(89889);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -153,7 +197,7 @@ public class NearbyPersonalInfoUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.NearbyPersonalInfoUI
  * JD-Core Version:    0.7.0.1
  */

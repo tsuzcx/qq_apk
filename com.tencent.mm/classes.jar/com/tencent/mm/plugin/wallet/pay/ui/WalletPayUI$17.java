@@ -12,15 +12,15 @@ final class WalletPayUI$17
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(46055);
-    this.tXq.tWK.putInt("key_pay_flag", 3);
-    this.tXq.Z(this.tXq.tWK);
-    AppMethodBeat.o(46055);
+    AppMethodBeat.i(69406);
+    this.zRD.zQX.putInt("key_pay_flag", 3);
+    this.zRD.al(this.zRD.zQX);
+    AppMethodBeat.o(69406);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletPayUI.17
  * JD-Core Version:    0.7.0.1
  */

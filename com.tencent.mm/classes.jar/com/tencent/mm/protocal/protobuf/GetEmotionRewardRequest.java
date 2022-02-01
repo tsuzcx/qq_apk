@@ -1,31 +1,31 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import f.a.a.b;
 
 public class GetEmotionRewardRequest
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
   public int OpCode;
   public String ProductID;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(62566);
+    AppMethodBeat.i(104802);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.ProductID == null)
       {
         paramVarArgs = new b("Not all required fields were included: ProductID");
-        AppMethodBeat.o(62566);
+        AppMethodBeat.o(104802);
         throw paramVarArgs;
       }
       if (this.ProductID != null) {
-        paramVarArgs.e(1, this.ProductID);
+        paramVarArgs.d(1, this.ProductID);
       }
-      paramVarArgs.aO(2, this.OpCode);
-      AppMethodBeat.o(62566);
+      paramVarArgs.aR(2, this.OpCode);
+      AppMethodBeat.o(104802);
       return 0;
     }
     if (paramInt == 1) {
@@ -34,54 +34,54 @@ public class GetEmotionRewardRequest
       }
     }
     label306:
-    for (paramInt = e.a.a.b.b.a.f(1, this.ProductID) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.ProductID) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.bl(2, this.OpCode);
-      AppMethodBeat.o(62566);
+      int i = f.a.a.b.b.a.bA(2, this.OpCode);
+      AppMethodBeat.o(104802);
       return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
         if (this.ProductID == null)
         {
           paramVarArgs = new b("Not all required fields were included: ProductID");
-          AppMethodBeat.o(62566);
+          AppMethodBeat.o(104802);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(62566);
+        AppMethodBeat.o(104802);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         GetEmotionRewardRequest localGetEmotionRewardRequest = (GetEmotionRewardRequest)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(62566);
+          AppMethodBeat.o(104802);
           return -1;
         case 1: 
-          localGetEmotionRewardRequest.ProductID = locala.CLY.readString();
-          AppMethodBeat.o(62566);
+          localGetEmotionRewardRequest.ProductID = locala.KhF.readString();
+          AppMethodBeat.o(104802);
           return 0;
         }
-        localGetEmotionRewardRequest.OpCode = locala.CLY.sl();
-        AppMethodBeat.o(62566);
+        localGetEmotionRewardRequest.OpCode = locala.KhF.xS();
+        AppMethodBeat.o(104802);
         return 0;
       }
-      AppMethodBeat.o(62566);
+      AppMethodBeat.o(104802);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.GetEmotionRewardRequest
  * JD-Core Version:    0.7.0.1
  */

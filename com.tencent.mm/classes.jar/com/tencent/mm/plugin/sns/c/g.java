@@ -1,0 +1,32 @@
+package com.tencent.mm.plugin.sns.c;
+
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mm.protocal.protobuf.bpi;
+import com.tencent.mm.storage.bc;
+
+public abstract interface g
+{
+  public abstract Bitmap a(bpi parambpi);
+  
+  public abstract void a(bpi parambpi, View paramView, int paramInt, bc parambc);
+  
+  public abstract void az(Activity paramActivity);
+  
+  public abstract void b(bpi parambpi, View paramView, int paramInt, bc parambc);
+  
+  public abstract void drP();
+  
+  public abstract void eo(View paramView);
+  
+  public abstract void pause();
+  
+  public abstract void start();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+ * Qualified Name:     com.tencent.mm.plugin.sns.c.g
+ * JD-Core Version:    0.7.0.1
+ */

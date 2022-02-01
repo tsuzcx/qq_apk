@@ -1,69 +1,67 @@
 package com.tencent.mm.plugin.account.bind.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.p;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.b.p;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bx;
-import com.tencent.mm.model.r;
+import com.tencent.mm.model.ca;
+import com.tencent.mm.model.u;
 import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.ju;
-import com.tencent.mm.protocal.protobuf.jv;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.protocal.protobuf.cmf;
+import com.tencent.mm.protocal.protobuf.lc;
+import com.tencent.mm.protocal.protobuf.ld;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.aa;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class b
-  extends m
+  extends n
   implements com.tencent.mm.network.k
 {
-  private f callback;
-  private String cxl;
-  private String cxn;
-  public long fQd;
-  public final com.tencent.mm.ai.b rr;
+  private com.tencent.mm.al.g callback;
+  private String dmQ;
+  private String dmS;
+  public long hsH;
+  public final com.tencent.mm.al.b rr;
   
   public b(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(13320);
-    this.fQd = 0L;
+    AppMethodBeat.i(109745);
+    this.hsH = 0L;
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new ju();
-    ((b.a)localObject).fsY = new jv();
+    ((b.a)localObject).gUU = new lc();
+    ((b.a)localObject).gUV = new ld();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/bindqq";
     ((b.a)localObject).funcId = 144;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    this.fQd = paramLong;
-    localObject = (ju)this.rr.fsV.fta;
-    ((ju)localObject).wwi = new p(paramLong).intValue();
-    ((ju)localObject).wvW = "";
-    ((ju)localObject).wwj = "";
-    ((ju)localObject).wwk = "";
-    ((ju)localObject).wwl = "";
-    ((ju)localObject).wwn = new bwc().aoF("");
-    ((ju)localObject).wwm = 1;
+    this.rr = ((b.a)localObject).atI();
+    this.hsH = paramLong;
+    localObject = (lc)this.rr.gUS.gUX;
+    ((lc)localObject).CGr = new p(paramLong).intValue();
+    ((lc)localObject).CGf = "";
+    ((lc)localObject).CGs = "";
+    ((lc)localObject).CGt = "";
+    ((lc)localObject).CGu = "";
+    ((lc)localObject).CGw = new cmf().aEE("");
+    ((lc)localObject).CGv = 1;
     if (paramBoolean == true) {}
-    for (paramString1 = g.RJ().QN().d(paramLong, paramString3);; paramString1 = g.RJ().QN().a(paramLong, bo.apP(paramString1), true))
+    for (paramString1 = com.tencent.mm.kernel.g.afz().aeA().e(paramLong, paramString3);; paramString1 = com.tencent.mm.kernel.g.afz().aeA().a(paramLong, bt.aGc(paramString1), true))
     {
-      ((ju)localObject).wuh = new SKBuiltinBuffer_t().setBuffer(paramString1);
-      String str = bo.nullAsNil((String)g.RL().Ru().get(47, null));
-      ((ju)localObject).wwo = new SKBuiltinBuffer_t().setBuffer(bo.apQ(str));
-      ab.i("MicroMsg.NetSceneBindQQ", "init opcode:%d qq:%d  wtbuf:%d img[%s,%s,%s] ksid:%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Integer.valueOf(bo.cf(paramString1)), paramString3, paramString2, paramString4, str });
-      AppMethodBeat.o(13320);
+      ((lc)localObject).CDX = new SKBuiltinBuffer_t().setBuffer(paramString1);
+      String str = bt.nullAsNil((String)com.tencent.mm.kernel.g.afB().afk().get(47, null));
+      ((lc)localObject).CGx = new SKBuiltinBuffer_t().setBuffer(bt.aGd(str));
+      ad.i("MicroMsg.NetSceneBindQQ", "init opcode:%d qq:%d  wtbuf:%d img[%s,%s,%s] ksid:%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Integer.valueOf(bt.cx(paramString1)), paramString3, paramString2, paramString4, str });
+      AppMethodBeat.o(109745);
       return;
     }
   }
@@ -71,21 +69,21 @@ public final class b
   public b(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean)
   {
     this(paramLong, paramString1, paramString2, paramString3, paramString4, 1, paramBoolean);
-    AppMethodBeat.i(13321);
-    this.cxl = paramString5;
-    this.cxn = paramString6;
-    paramString1 = (ju)this.rr.fsV.fta;
-    paramString1.wvL = paramString5;
-    paramString1.wvM = paramString6;
-    AppMethodBeat.o(13321);
+    AppMethodBeat.i(109746);
+    this.dmQ = paramString5;
+    this.dmS = paramString6;
+    paramString1 = (lc)this.rr.gUS.gUX;
+    paramString1.CFS = paramString5;
+    paramString1.CFT = paramString6;
+    AppMethodBeat.o(109746);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(13322);
-    this.callback = paramf;
+    AppMethodBeat.i(109747);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(13322);
+    AppMethodBeat.o(109747);
     return i;
   }
   
@@ -96,80 +94,80 @@ public final class b
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(13323);
-    paramq = (ju)this.rr.fsV.fta;
-    paramArrayOfByte = (jv)this.rr.fsW.fta;
-    Object localObject = aa.a(paramArrayOfByte.wrN);
-    if (!bo.ce((byte[])localObject)) {}
-    for (boolean bool1 = g.RJ().QN().a(new p(paramq.wwi).longValue(), (byte[])localObject);; bool1 = false)
+    AppMethodBeat.i(109748);
+    paramq = (lc)this.rr.gUS.gUX;
+    paramArrayOfByte = (ld)this.rr.gUT.gUX;
+    Object localObject = com.tencent.mm.platformtools.z.a(paramArrayOfByte.CBe);
+    if (!bt.cw((byte[])localObject)) {}
+    for (boolean bool1 = com.tencent.mm.kernel.g.afz().aeA().a(new p(paramq.CGr).longValue(), (byte[])localObject);; bool1 = false)
     {
-      ab.i("MicroMsg.NetSceneBindQQ", "onGYNetEnd[%d,%d] wtret:%b wtRespBuf:%d imgsid:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(bool1), Integer.valueOf(bo.cf((byte[])localObject)), paramArrayOfByte.wwk });
+      ad.i("MicroMsg.NetSceneBindQQ", "onGYNetEnd[%d,%d] wtret:%b wtRespBuf:%d imgsid:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(bool1), Integer.valueOf(bt.cx((byte[])localObject)), paramArrayOfByte.CGt });
       boolean bool2;
       if ((paramInt2 == 0) && (paramInt3 == 0))
       {
-        paramInt1 = g.RL().Ru().getInt(9, 0);
-        g.RL().Ru().set(9, Integer.valueOf(paramq.wwi));
+        paramInt1 = com.tencent.mm.kernel.g.afB().afk().getInt(9, 0);
+        com.tencent.mm.kernel.g.afB().afk().set(9, Integer.valueOf(paramq.CGr));
         if (paramInt1 != 0)
         {
-          if (g.RL().Ru().get(ac.a.yJS, "").equals(String.valueOf(paramInt1))) {
-            g.RL().Ru().set(ac.a.yJS, r.Zn());
+          if (com.tencent.mm.kernel.g.afB().afk().get(ae.a.Ftd, "").equals(String.valueOf(paramInt1))) {
+            com.tencent.mm.kernel.g.afB().afk().set(ae.a.Ftd, u.aqG());
           }
-          localObject = bx.fnO.abf().iterator();
+          localObject = ca.gPq.asG().iterator();
           while (((Iterator)localObject).hasNext())
           {
             str = (String)((Iterator)localObject).next();
-            if (String.valueOf(paramInt1).equals(bx.fnO.getString(str, "login_user_name"))) {
-              bx.fnO.n(str, "login_user_name", str);
+            if (String.valueOf(paramInt1).equals(ca.gPq.getString(str, "login_user_name"))) {
+              ca.gPq.m(str, "login_user_name", str);
             }
           }
         }
-        if (paramq.wwm == 1) {
-          g.RL().Ru().set(17, Integer.valueOf(paramArrayOfByte.wmz));
+        if (paramq.CGv == 1) {
+          com.tencent.mm.kernel.g.afB().afk().set(17, Integer.valueOf(paramArrayOfByte.CuO));
         }
-        localObject = ((j)g.E(j.class)).YI();
-        String str = paramArrayOfByte.wwr;
-        if (paramArrayOfByte.wwq == 1)
+        localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apU();
+        String str = paramArrayOfByte.CGA;
+        if (paramArrayOfByte.CGz == 1)
         {
           bool2 = true;
-          ((com.tencent.mm.plugin.messenger.foundation.a.a.k)localObject).aZ(str, bool2);
-          paramInt1 = paramq.wwi;
+          ((com.tencent.mm.plugin.messenger.foundation.a.a.k)localObject).bi(str, bool2);
+          paramInt1 = paramq.CGr;
           if (paramInt1 != 0) {
-            ((j)g.E(j.class)).YI().cO(new p(paramInt1) + "@qqim", 3);
+            ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apU().dQ(new p(paramInt1) + "@qqim", 3);
           }
-          com.tencent.mm.ah.b.d(paramInt1, 3);
-          g.RL().Ru().set(32, paramq.wvW);
-          g.RL().Ru().set(33, paramq.wwj);
-          localObject = bo.cg(g.RJ().QN().gD(new p(paramq.wwi).longValue()));
-          ab.i("MicroMsg.NetSceneBindQQ", "onGYNetEnd wtret:%b newa2key:%s ", new Object[] { Boolean.valueOf(bool1), bo.aqg((String)localObject) });
-          g.RL().Ru().set(72, localObject);
-          g.RL().Ru().set(46, bo.cg(aa.a(paramArrayOfByte.wrT)));
-          localObject = bo.cg(aa.a(paramq.wwo));
-          g.RL().Ru().set(47, localObject);
-          g.RL().eHM.set(18, localObject);
-          g.RL().Ru().set(-1535680990, paramArrayOfByte.wws);
+          c.e(paramInt1, 3);
+          com.tencent.mm.kernel.g.afB().afk().set(32, paramq.CGf);
+          com.tencent.mm.kernel.g.afB().afk().set(33, paramq.CGs);
+          localObject = bt.cy(com.tencent.mm.kernel.g.afz().aeA().md(new p(paramq.CGr).longValue()));
+          ad.i("MicroMsg.NetSceneBindQQ", "onGYNetEnd wtret:%b newa2key:%s ", new Object[] { Boolean.valueOf(bool1), bt.aGs((String)localObject) });
+          com.tencent.mm.kernel.g.afB().afk().set(72, localObject);
+          com.tencent.mm.kernel.g.afB().afk().set(46, bt.cy(com.tencent.mm.platformtools.z.a(paramArrayOfByte.CBk)));
+          localObject = bt.cy(com.tencent.mm.platformtools.z.a(paramq.CGx));
+          com.tencent.mm.kernel.g.afB().afk().set(47, localObject);
+          com.tencent.mm.kernel.g.afB().gcR.set(18, localObject);
+          com.tencent.mm.kernel.g.afB().afk().set(-1535680990, paramArrayOfByte.CGB);
         }
       }
       for (;;)
       {
         paramInt1 = paramInt3;
-        if (paramq.wwm == 3)
+        if (paramq.CGv == 3)
         {
           paramInt1 = paramInt3;
           if (paramInt3 == -3)
           {
             paramInt1 = 10000;
-            ab.d("MicroMsg.NetSceneBindQQ", "onGYNetEnd : retCode = 10000");
+            ad.d("MicroMsg.NetSceneBindQQ", "onGYNetEnd : retCode = 10000");
           }
         }
         this.callback.onSceneEnd(paramInt2, paramInt1, paramString, this);
-        AppMethodBeat.o(13323);
+        AppMethodBeat.o(109748);
         return;
         bool2 = false;
         break;
         if (paramInt2 == 4)
         {
-          g.RL().Ru().set(32, "");
-          g.RL().Ru().set(33, "");
+          com.tencent.mm.kernel.g.afB().afk().set(32, "");
+          com.tencent.mm.kernel.g.afB().afk().set(33, "");
         }
       }
     }
@@ -177,7 +175,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.a.b
  * JD-Core Version:    0.7.0.1
  */

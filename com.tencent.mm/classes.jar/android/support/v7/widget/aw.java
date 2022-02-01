@@ -12,15 +12,15 @@ import java.util.ArrayList;
 public final class aw
   extends ContextWrapper
 {
-  private static final Object aol = new Object();
-  private static ArrayList<WeakReference<aw>> aom;
+  private static final Object avM = new Object();
+  private static ArrayList<WeakReference<aw>> avN;
   private final Resources mResources;
   private final Resources.Theme mTheme;
   
   private aw(Context paramContext)
   {
     super(paramContext);
-    if (be.kZ())
+    if (be.mG())
     {
       this.mResources = new be(this, paramContext.getResources());
       this.mTheme = this.mResources.newTheme();
@@ -31,7 +31,7 @@ public final class aw
     this.mTheme = null;
   }
   
-  public static Context Z(Context paramContext)
+  public static Context ab(Context paramContext)
   {
     int j = 0;
     int i = j;
@@ -50,40 +50,40 @@ public final class aw
     if (i != 0) {}
     for (;;)
     {
-      synchronized (aol)
+      synchronized (avM)
       {
-        if (aom == null)
+        if (avN == null)
         {
-          aom = new ArrayList();
+          avN = new ArrayList();
           localObject1 = new aw(paramContext);
-          aom.add(new WeakReference(localObject1));
+          avN.add(new WeakReference(localObject1));
           return localObject1;
           label94:
           if (Build.VERSION.SDK_INT >= 21)
           {
             i = j;
-            if (!be.kZ()) {
+            if (!be.mG()) {
               break;
             }
           }
           i = 1;
           break;
         }
-        i = aom.size() - 1;
+        i = avN.size() - 1;
         if (i >= 0)
         {
-          localObject1 = (WeakReference)aom.get(i);
+          localObject1 = (WeakReference)avN.get(i);
           if ((localObject1 == null) || (((WeakReference)localObject1).get() == null)) {
-            aom.remove(i);
+            avN.remove(i);
           }
         }
         else
         {
-          i = aom.size() - 1;
+          i = avN.size() - 1;
           if (i < 0) {
             continue;
           }
-          localObject1 = (WeakReference)aom.get(i);
+          localObject1 = (WeakReference)avN.get(i);
           if (localObject1 == null) {
             break label227;
           }

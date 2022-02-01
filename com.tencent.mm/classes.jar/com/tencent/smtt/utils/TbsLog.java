@@ -29,18 +29,18 @@ public class TbsLog
   
   static
   {
-    AppMethodBeat.i(65337);
-    a = false;
+    AppMethodBeat.i(54000);
+    a = true;
     b = true;
     c = null;
     sTbsLogList = new LinkedList();
     sLogMaxCount = 10;
-    AppMethodBeat.o(65337);
+    AppMethodBeat.o(54000);
   }
   
   public static void addLog(int paramInt, String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(65336);
+    AppMethodBeat.i(53999);
     for (;;)
     {
       try
@@ -77,10 +77,10 @@ public class TbsLog
         }
         paramString = String.format("[%d][%d][%c][%d]%s", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(1), Character.valueOf('0'), Integer.valueOf(paramInt), paramString });
         sTbsLogList.add(paramString);
-        AppMethodBeat.o(65336);
+        AppMethodBeat.o(53999);
         return;
         paramString = finally;
-        AppMethodBeat.o(65336);
+        AppMethodBeat.o(53999);
         throw paramString;
       }
       catch (Exception paramString)
@@ -93,7 +93,7 @@ public class TbsLog
   public static void app_extra(String paramString, Context paramContext)
   {
     int i = 0;
-    AppMethodBeat.i(65322);
+    AppMethodBeat.i(53983);
     try
     {
       paramContext = paramContext.getApplicationContext();
@@ -110,7 +110,7 @@ public class TbsLog
           if (i == 6) {
             i(paramString, "app_extra pid:" + Process.myPid() + "; APP_TAG:OTHER!");
           }
-          AppMethodBeat.o(65322);
+          AppMethodBeat.o(53983);
           return;
         }
         i += 1;
@@ -120,100 +120,100 @@ public class TbsLog
     catch (Throwable paramContext)
     {
       w(paramString, "app_extra exception:" + Log.getStackTraceString(paramContext));
-      AppMethodBeat.o(65322);
+      AppMethodBeat.o(53983);
     }
   }
   
   public static void d(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(139525);
+    AppMethodBeat.i(53990);
     if (c == null)
     {
-      AppMethodBeat.o(139525);
+      AppMethodBeat.o(53990);
       return;
     }
     c.d(paramString1, "TBS:".concat(String.valueOf(paramString2)));
-    AppMethodBeat.o(139525);
+    AppMethodBeat.o(53990);
   }
   
   public static void d(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(65329);
+    AppMethodBeat.i(53991);
     d(paramString1, paramString2);
     if ((c != null) && (a) && (paramBoolean)) {
       c.showLog(paramString1 + ": " + paramString2);
     }
-    AppMethodBeat.o(65329);
+    AppMethodBeat.o(53991);
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(65325);
+    AppMethodBeat.i(53986);
     if (c == null)
     {
-      AppMethodBeat.o(65325);
+      AppMethodBeat.o(53986);
       return;
     }
     c.e(paramString1, "TBS:".concat(String.valueOf(paramString2)));
     c.writeLog("(E)-" + paramString1 + "-TBS:" + paramString2);
-    AppMethodBeat.o(65325);
+    AppMethodBeat.o(53986);
   }
   
   public static void e(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(65326);
+    AppMethodBeat.i(53987);
     e(paramString1, paramString2);
     if ((c != null) && (a) && (paramBoolean)) {
       c.showLog(paramString1 + ": " + paramString2);
     }
-    AppMethodBeat.o(65326);
+    AppMethodBeat.o(53987);
   }
   
   public static String getTbsLogFilePath()
   {
-    AppMethodBeat.i(65333);
+    AppMethodBeat.i(53996);
     if (TbsLogClient.c != null)
     {
       String str = TbsLogClient.c.getAbsolutePath();
-      AppMethodBeat.o(65333);
+      AppMethodBeat.o(53996);
       return str;
     }
-    AppMethodBeat.o(65333);
+    AppMethodBeat.o(53996);
     return null;
   }
   
   public static void i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(65323);
+    AppMethodBeat.i(53984);
     if (c == null)
     {
-      AppMethodBeat.o(65323);
+      AppMethodBeat.o(53984);
       return;
     }
     c.i(paramString1, "TBS:".concat(String.valueOf(paramString2)));
     c.writeLog("(I)-" + paramString1 + "-TBS:" + paramString2);
-    AppMethodBeat.o(65323);
+    AppMethodBeat.o(53984);
   }
   
   public static void i(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(65324);
+    AppMethodBeat.i(53985);
     i(paramString1, paramString2);
     if ((c != null) && (a) && (paramBoolean)) {
       c.showLog(paramString1 + ": " + paramString2);
     }
-    AppMethodBeat.o(65324);
+    AppMethodBeat.o(53985);
   }
   
   public static void initIfNeed(Context paramContext)
   {
     try
     {
-      AppMethodBeat.i(65334);
+      AppMethodBeat.i(53997);
       if (c == null) {
         setTbsLogClient(new TbsLogClient(paramContext));
       }
-      AppMethodBeat.o(65334);
+      AppMethodBeat.o(53997);
       return;
     }
     finally {}
@@ -221,97 +221,97 @@ public class TbsLog
   
   public static void setLogView(TextView paramTextView)
   {
-    AppMethodBeat.i(65331);
+    AppMethodBeat.i(53994);
     if ((paramTextView == null) || (c == null))
     {
-      AppMethodBeat.o(65331);
+      AppMethodBeat.o(53994);
       return;
     }
     c.setLogView(paramTextView);
-    AppMethodBeat.o(65331);
+    AppMethodBeat.o(53994);
   }
   
   public static boolean setTbsLogClient(TbsLogClient paramTbsLogClient)
   {
-    AppMethodBeat.i(65332);
+    AppMethodBeat.i(53995);
     if (paramTbsLogClient == null)
     {
-      AppMethodBeat.o(65332);
+      AppMethodBeat.o(53995);
       return false;
     }
     c = paramTbsLogClient;
     TbsLogClient.setWriteLogJIT(b);
-    AppMethodBeat.o(65332);
+    AppMethodBeat.o(53995);
     return true;
   }
   
   public static void setWriteLogJIT(boolean paramBoolean)
   {
-    AppMethodBeat.i(65321);
+    AppMethodBeat.i(53982);
     b = paramBoolean;
     if (c == null)
     {
-      AppMethodBeat.o(65321);
+      AppMethodBeat.o(53982);
       return;
     }
     TbsLogClient.setWriteLogJIT(paramBoolean);
-    AppMethodBeat.o(65321);
+    AppMethodBeat.o(53982);
   }
   
   public static void v(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(139526);
+    AppMethodBeat.i(53992);
     if (c == null)
     {
-      AppMethodBeat.o(139526);
+      AppMethodBeat.o(53992);
       return;
     }
     c.v(paramString1, "TBS:".concat(String.valueOf(paramString2)));
-    AppMethodBeat.o(139526);
+    AppMethodBeat.o(53992);
   }
   
   public static void v(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(65330);
+    AppMethodBeat.i(53993);
     v(paramString1, paramString2);
     if ((c != null) && (a) && (paramBoolean)) {
       c.showLog(paramString1 + ": " + paramString2);
     }
-    AppMethodBeat.o(65330);
+    AppMethodBeat.o(53993);
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(65327);
+    AppMethodBeat.i(53988);
     if (c == null)
     {
-      AppMethodBeat.o(65327);
+      AppMethodBeat.o(53988);
       return;
     }
     c.w(paramString1, "TBS:".concat(String.valueOf(paramString2)));
     c.writeLog("(W)-" + paramString1 + "-TBS:" + paramString2);
-    AppMethodBeat.o(65327);
+    AppMethodBeat.o(53988);
   }
   
   public static void w(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(65328);
+    AppMethodBeat.i(53989);
     w(paramString1, paramString2);
     if ((c != null) && (a) && (paramBoolean)) {
       c.showLog(paramString1 + ": " + paramString2);
     }
-    AppMethodBeat.o(65328);
+    AppMethodBeat.o(53989);
   }
   
   public static void writeLogToDisk()
   {
     try
     {
-      AppMethodBeat.i(65335);
+      AppMethodBeat.i(53998);
       if (c != null) {
         c.writeLogToDisk();
       }
-      AppMethodBeat.o(65335);
+      AppMethodBeat.o(53998);
       return;
     }
     finally {}
@@ -319,7 +319,7 @@ public class TbsLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.utils.TbsLog
  * JD-Core Version:    0.7.0.1
  */

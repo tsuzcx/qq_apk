@@ -10,48 +10,61 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fts.a.a.h;
 import com.tencent.mm.plugin.fts.ui.b.b;
 import com.tencent.mm.plugin.fts.ui.m;
 
 public final class g
   extends a
 {
-  private a.b Agn;
-  a.a Ago;
-  private CharSequence mZb;
+  private a.b GZK;
+  a.a GZL;
+  private CharSequence rvA;
   
   public g(int paramInt)
   {
     super(5, paramInt);
-    AppMethodBeat.i(105291);
-    this.Agn = new b();
-    this.Ago = new g.a(this);
-    AppMethodBeat.o(105291);
+    AppMethodBeat.i(102956);
+    this.GZK = new b();
+    this.GZL = new a();
+    AppMethodBeat.o(102956);
   }
   
   public final void a(Context paramContext, a.a parama)
   {
-    AppMethodBeat.i(105292);
+    AppMethodBeat.i(102957);
     parama = new SpannableStringBuilder();
-    String[] arrayOfString = this.mRX.mSy;
+    String[] arrayOfString = this.roS.rps;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
       String str = arrayOfString[i];
       SpannableString localSpannableString = new SpannableString(str);
-      localSpannableString.setSpan(new ForegroundColorSpan(b.b.mVQ), 0, str.length(), 33);
+      localSpannableString.setSpan(new ForegroundColorSpan(b.b.rsF), 0, str.length(), 33);
       parama.append(localSpannableString);
       parama.append("、");
       i += 1;
     }
-    this.mZb = TextUtils.concat(new CharSequence[] { paramContext.getString(2131303040), parama.subSequence(0, parama.length() - 1), paramContext.getString(2131303040) });
-    AppMethodBeat.o(105292);
+    this.rvA = TextUtils.concat(new CharSequence[] { paramContext.getString(2131762984), parama.subSequence(0, parama.length() - 1), paramContext.getString(2131762984) });
+    AppMethodBeat.o(102957);
   }
   
-  public final a.b aoY()
+  public final a.b aHr()
   {
-    return this.Agn;
+    return this.GZK;
+  }
+  
+  public final class a
+    extends a.a
+  {
+    public TextView hJe;
+    public View jpE;
+    
+    public a()
+    {
+      super();
+    }
   }
   
   public final class b
@@ -64,32 +77,32 @@ public final class g
     
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
-      AppMethodBeat.i(105289);
-      paramContext = LayoutInflater.from(paramContext).inflate(2130970666, paramViewGroup, false);
-      paramViewGroup = (g.a)g.this.Ago;
-      paramViewGroup.gpM = ((TextView)paramContext.findViewById(2131821007));
-      paramViewGroup.hrR = paramContext.findViewById(2131827558);
+      AppMethodBeat.i(102954);
+      paramContext = LayoutInflater.from(paramContext).inflate(2131495361, paramViewGroup, false);
+      paramViewGroup = (g.a)g.this.GZL;
+      paramViewGroup.hJe = ((TextView)paramContext.findViewById(2131299008));
+      paramViewGroup.jpE = paramContext.findViewById(2131300716);
       paramContext.setTag(paramViewGroup);
-      AppMethodBeat.o(105289);
+      AppMethodBeat.o(102954);
       return paramContext;
     }
     
     public final void a(Context paramContext, a.a parama, a parama1, boolean paramBoolean1, boolean paramBoolean2)
     {
-      AppMethodBeat.i(105290);
+      AppMethodBeat.i(102955);
       paramContext = (g.a)parama;
-      m.a(g.a((g)parama1), paramContext.gpM);
+      m.a(g.a((g)parama1), paramContext.hJe);
       if (g.this.position == 0)
       {
-        paramContext.hrR.setVisibility(8);
-        AppMethodBeat.o(105290);
+        paramContext.jpE.setVisibility(8);
+        AppMethodBeat.o(102955);
         return;
       }
-      paramContext.hrR.setVisibility(0);
-      AppMethodBeat.o(105290);
+      paramContext.jpE.setVisibility(0);
+      AppMethodBeat.o(102955);
     }
     
-    public final boolean aoZ()
+    public final boolean aHs()
     {
       return false;
     }

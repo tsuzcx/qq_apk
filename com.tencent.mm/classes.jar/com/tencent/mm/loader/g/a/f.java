@@ -1,38 +1,62 @@
 package com.tencent.mm.loader.g.a;
 
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.l;
+import java.util.concurrent.BlockingQueue;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/loader/cfg/TaskLoaderConfiguration;", "Lcom/tencent/mm/loader/loader/cfg/ITaskLoaderConfiguration;", "lightWork", "Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;", "parallelTask", "", "name", "", "(Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;ILjava/lang/String;)V", "retrySg", "Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;", "(Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;ILjava/lang/String;)V", "heavyWork", "ioWork", "(Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;ILjava/lang/String;)V", "(Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;Lcom/tencent/mm/loader/loader/cfg/ThreadConfiguration;ILjava/lang/String;)V", "TAG", "createHeavyExecutor", "Lcom/tencent/mm/loader/loader/ILoaderExecutor;", "createIoExecutor", "createLightExecutor", "retryStrategy", "libimageloader_release"})
 public final class f
-  implements ThreadFactory
+  implements d
 {
-  private static final AtomicInteger ePN = new AtomicInteger(1);
-  private final ThreadGroup cfU;
-  private final AtomicInteger cfV = new AtomicInteger(1);
-  private final String cfW;
-  private final int ePO;
+  private final String TAG;
+  private final c gls;
+  private final g glt;
+  private final g glu;
+  private final g glv;
+  private final int glw;
+  private final String name;
   
-  public f(int paramInt, String paramString)
+  public f(c paramc, g paramg, int paramInt, String paramString)
   {
-    this.ePO = paramInt;
-    Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
-    {
-      this.cfU = ((ThreadGroup)localObject);
-      this.cfW = (paramString + ePN.getAndIncrement() + "-thread-");
-      return;
-    }
+    this(paramc, paramg, paramg, paramg, paramInt, paramString);
   }
   
-  public final Thread newThread(Runnable paramRunnable)
+  public f(c paramc, g paramg1, g paramg2, g paramg3, int paramInt, String paramString)
   {
-    paramRunnable = new Thread(this.cfU, paramRunnable, this.cfW + this.cfV.getAndIncrement(), 0L);
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
-    }
-    paramRunnable.setPriority(this.ePO);
-    return paramRunnable;
+    this.gls = paramc;
+    this.glt = paramg1;
+    this.glu = paramg2;
+    this.glv = paramg3;
+    this.glw = paramInt;
+    this.name = paramString;
+    this.TAG = "MicroMsg.Loader.TaskLoaderConfiguration";
+  }
+  
+  public final com.tencent.mm.loader.g.a ahA()
+  {
+    ad.i(this.TAG, "pool light poolSize " + this.glt.glx + " priority " + this.glt.glx + " name: " + this.name);
+    return (com.tencent.mm.loader.g.a)new b(this.name, this.glt.glx, this.glt.glx, (BlockingQueue)new com.tencent.mm.loader.i.a());
+  }
+  
+  public final com.tencent.mm.loader.g.a ahB()
+  {
+    ad.i(this.TAG, "pool heavy poolSize " + this.glu.glx + " priority " + this.glu.glx + " name: " + this.name);
+    return (com.tencent.mm.loader.g.a)new b(this.name, this.glu.glx, this.glu.glx, (BlockingQueue)new com.tencent.mm.loader.i.a());
+  }
+  
+  public final int ahC()
+  {
+    return this.glw;
+  }
+  
+  public final c ahD()
+  {
+    return this.gls;
+  }
+  
+  public final String name()
+  {
+    return this.name;
   }
 }
 

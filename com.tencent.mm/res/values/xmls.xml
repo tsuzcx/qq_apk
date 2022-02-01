@@ -1,31 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="xml" name="cv">false</item>
-    <item type="xml" name="c8">false</item>
     <item type="xml" name="d">false</item>
     <item type="xml" name="f">false</item>
-    <item type="xml" name="ci">false</item>
-    <item type="xml" name="r">false</item>
-    <item type="xml" name="ag">false</item>
-    <item type="xml" name="a7">false</item>
-    <item type="xml" name="ah">false</item>
-    <item type="xml" name="y">false</item>
-    <item type="xml" name="aa">false</item>
-    <item type="xml" name="ad">false</item>
-    <item type="xml" name="n">false</item>
-    <item type="xml" name="av">false</item>
-    <item type="xml" name="APKTOOL_DUMMY_3" />
-    <item type="xml" name="APKTOOL_DUMMY_5" />
-    <item type="xml" name="APKTOOL_DUMMY_d" />
-    <item type="xml" name="APKTOOL_DUMMY_11" />
-    <item type="xml" name="APKTOOL_DUMMY_18" />
-    <item type="xml" name="APKTOOL_DUMMY_21" />
-    <item type="xml" name="APKTOOL_DUMMY_25" />
-    <item type="xml" name="APKTOOL_DUMMY_28" />
-    <item type="xml" name="APKTOOL_DUMMY_2b" />
-    <item type="xml" name="APKTOOL_DUMMY_2c" />
-    <item type="xml" name="APKTOOL_DUMMY_3a" />
-    <item type="xml" name="APKTOOL_DUMMY_6c" />
-    <item type="xml" name="APKTOOL_DUMMY_77" />
-    <item type="xml" name="APKTOOL_DUMMY_84" />
+    <item type="xml" name="g">false</item>
+    <item type="xml" name="o">false</item>
+    <item type="xml" name="t">false</item>
+    <item type="xml" name="a0">false</item>
+    <item type="xml" name="a9">false</item>
+    <item type="xml" name="ac">false</item>
+    <item type="xml" name="af">false</item>
+    <item type="xml" name="ai">false</item>
+    <item type="xml" name="aj">false</item>
+    <item type="xml" name="b5">false</item>
+    <item type="xml" name="bk">false</item>
+    <item type="xml" name="cj">false</item>
+    <item type="xml" name="cu">false</item>
+    <item type="xml" name="d8">false</item>
 </resources>

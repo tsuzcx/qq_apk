@@ -1,36 +1,40 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.view.View;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.luckymoney.model.s;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vending.g.d.a;
 
 final class LuckyMoneyDetailUI$16
-  implements DialogInterface.OnCancelListener
+  implements d.a
 {
-  LuckyMoneyDetailUI$16(LuckyMoneyDetailUI paramLuckyMoneyDetailUI) {}
+  LuckyMoneyDetailUI$16(LuckyMoneyDetailUI paramLuckyMoneyDetailUI, Dialog paramDialog) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void ce(Object paramObject)
   {
-    AppMethodBeat.i(42665);
-    if ((LuckyMoneyDetailUI.F(this.otz) != null) && (LuckyMoneyDetailUI.F(this.otz).isShowing())) {
-      LuckyMoneyDetailUI.F(this.otz).dismiss();
+    AppMethodBeat.i(163729);
+    if (this.qcu != null) {
+      this.qcu.dismiss();
     }
-    this.otz.orz.forceCancel();
-    if ((LuckyMoneyDetailUI.G(this.otz).getVisibility() == 8) || (LuckyMoneyDetailUI.H(this.otz).getVisibility() == 4))
+    ad.i("MicroMsg.LuckyMoneyDetailUI", "fetch detail failed: %s", new Object[] { paramObject });
+    if (paramObject != null) {
+      if (!(paramObject instanceof String)) {
+        break label71;
+      }
+    }
+    label71:
+    for (paramObject = paramObject.toString();; paramObject = this.tme.getString(2131765420))
     {
-      ab.i("MicroMsg.LuckyMoneyDetailUI", "user cancel & finish");
-      this.otz.finish();
+      Toast.makeText(this.tme.getContext(), paramObject, 1).show();
+      AppMethodBeat.o(163729);
+      return;
     }
-    AppMethodBeat.o(42665);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyDetailUI.16
  * JD-Core Version:    0.7.0.1
  */

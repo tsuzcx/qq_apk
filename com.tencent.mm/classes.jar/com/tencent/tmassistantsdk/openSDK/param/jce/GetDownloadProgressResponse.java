@@ -28,7 +28,7 @@ public final class GetDownloadProgressResponse
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(75983);
+    AppMethodBeat.i(102229);
     if (cache_requestParam == null) {
       cache_requestParam = new IPCBaseParam();
     }
@@ -37,23 +37,23 @@ public final class GetDownloadProgressResponse
     this.totalLen = paramJceInputStream.read(this.totalLen, 2, false);
     this.allTaskTotalProgress = paramJceInputStream.read(this.allTaskTotalProgress, 3, false);
     this.allTaskTotalLength = paramJceInputStream.read(this.allTaskTotalLength, 4, false);
-    AppMethodBeat.o(75983);
+    AppMethodBeat.o(102229);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(75982);
+    AppMethodBeat.i(102228);
     paramJceOutputStream.write(this.requestParam, 0);
     paramJceOutputStream.write(this.receivedLen, 1);
     paramJceOutputStream.write(this.totalLen, 2);
     paramJceOutputStream.write(this.allTaskTotalProgress, 3);
     paramJceOutputStream.write(this.allTaskTotalLength, 4);
-    AppMethodBeat.o(75982);
+    AppMethodBeat.o(102228);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.GetDownloadProgressResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -1,164 +1,187 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class cxf
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String Nickname;
-  public int nqW;
-  public String ntu;
-  public long wsC;
-  public long wsz;
-  public String xlH;
-  public boolean yeN;
-  public com.tencent.mm.bv.b yeO;
+  public String Epo;
+  public String Epp;
+  public String Epq;
+  public String Epr;
+  public int htj;
+  public int htk;
+  public int htl;
+  public int htm;
+  public int opType;
+  public long timeStamp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28740);
+    AppMethodBeat.i(125841);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.Nickname == null)
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.Epo == null)
       {
-        paramVarArgs = new e.a.a.b("Not all required fields were included: Nickname");
-        AppMethodBeat.o(28740);
+        paramVarArgs = new b("Not all required fields were included: StatusDesc1");
+        AppMethodBeat.o(125841);
         throw paramVarArgs;
       }
-      if (this.ntu == null)
+      if (this.Epp == null)
       {
-        paramVarArgs = new e.a.a.b("Not all required fields were included: Content");
-        AppMethodBeat.o(28740);
+        paramVarArgs = new b("Not all required fields were included: StatusDesc2");
+        AppMethodBeat.o(125841);
         throw paramVarArgs;
       }
-      if (this.xlH == null)
+      if (this.Epq == null)
       {
-        paramVarArgs = new e.a.a.b("Not all required fields were included: Talker");
-        AppMethodBeat.o(28740);
+        paramVarArgs = new b("Not all required fields were included: DataFlowSourceInfo");
+        AppMethodBeat.o(125841);
         throw paramVarArgs;
       }
-      paramVarArgs.am(1, this.wsz);
-      if (this.Nickname != null) {
-        paramVarArgs.e(2, this.Nickname);
+      if (this.Epr == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: DataFlowResultInfo");
+        AppMethodBeat.o(125841);
+        throw paramVarArgs;
       }
-      if (this.ntu != null) {
-        paramVarArgs.e(3, this.ntu);
+      paramVarArgs.aR(1, this.opType);
+      paramVarArgs.aR(2, this.htm);
+      paramVarArgs.aR(3, this.htj);
+      paramVarArgs.aG(4, this.timeStamp);
+      paramVarArgs.aR(5, this.htk);
+      paramVarArgs.aR(6, this.htl);
+      if (this.Epo != null) {
+        paramVarArgs.d(7, this.Epo);
       }
-      paramVarArgs.aO(4, this.nqW);
-      if (this.xlH != null) {
-        paramVarArgs.e(5, this.xlH);
+      if (this.Epp != null) {
+        paramVarArgs.d(8, this.Epp);
       }
-      paramVarArgs.am(6, this.wsC);
-      paramVarArgs.aS(7, this.yeN);
-      if (this.yeO != null) {
-        paramVarArgs.c(8, this.yeO);
+      if (this.Epq != null) {
+        paramVarArgs.d(9, this.Epq);
       }
-      AppMethodBeat.o(28740);
+      if (this.Epr != null) {
+        paramVarArgs.d(10, this.Epr);
+      }
+      AppMethodBeat.o(125841);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = e.a.a.b.b.a.p(1, this.wsz) + 0;
+      int i = f.a.a.b.b.a.bA(1, this.opType) + 0 + f.a.a.b.b.a.bA(2, this.htm) + f.a.a.b.b.a.bA(3, this.htj) + f.a.a.b.b.a.q(4, this.timeStamp) + f.a.a.b.b.a.bA(5, this.htk) + f.a.a.b.b.a.bA(6, this.htl);
       paramInt = i;
-      if (this.Nickname != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.Nickname);
+      if (this.Epo != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.Epo);
       }
       i = paramInt;
-      if (this.ntu != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.ntu);
+      if (this.Epp != null) {
+        i = paramInt + f.a.a.b.b.a.e(8, this.Epp);
       }
-      i += e.a.a.b.b.a.bl(4, this.nqW);
       paramInt = i;
-      if (this.xlH != null) {
-        paramInt = i + e.a.a.b.b.a.f(5, this.xlH);
+      if (this.Epq != null) {
+        paramInt = i + f.a.a.b.b.a.e(9, this.Epq);
       }
-      i = paramInt + e.a.a.b.b.a.p(6, this.wsC) + (e.a.a.b.b.a.eW(7) + 1);
-      paramInt = i;
-      if (this.yeO != null) {
-        paramInt = i + e.a.a.b.b.a.b(8, this.yeO);
+      i = paramInt;
+      if (this.Epr != null) {
+        i = paramInt + f.a.a.b.b.a.e(10, this.Epr);
       }
-      AppMethodBeat.o(28740);
-      return paramInt;
+      AppMethodBeat.o(125841);
+      return i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      if (this.Nickname == null)
+      if (this.Epo == null)
       {
-        paramVarArgs = new e.a.a.b("Not all required fields were included: Nickname");
-        AppMethodBeat.o(28740);
+        paramVarArgs = new b("Not all required fields were included: StatusDesc1");
+        AppMethodBeat.o(125841);
         throw paramVarArgs;
       }
-      if (this.ntu == null)
+      if (this.Epp == null)
       {
-        paramVarArgs = new e.a.a.b("Not all required fields were included: Content");
-        AppMethodBeat.o(28740);
+        paramVarArgs = new b("Not all required fields were included: StatusDesc2");
+        AppMethodBeat.o(125841);
         throw paramVarArgs;
       }
-      if (this.xlH == null)
+      if (this.Epq == null)
       {
-        paramVarArgs = new e.a.a.b("Not all required fields were included: Talker");
-        AppMethodBeat.o(28740);
+        paramVarArgs = new b("Not all required fields were included: DataFlowSourceInfo");
+        AppMethodBeat.o(125841);
         throw paramVarArgs;
       }
-      AppMethodBeat.o(28740);
+      if (this.Epr == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: DataFlowResultInfo");
+        AppMethodBeat.o(125841);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(125841);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       cxf localcxf = (cxf)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(28740);
+        AppMethodBeat.o(125841);
         return -1;
       case 1: 
-        localcxf.wsz = locala.CLY.sm();
-        AppMethodBeat.o(28740);
+        localcxf.opType = locala.KhF.xS();
+        AppMethodBeat.o(125841);
         return 0;
       case 2: 
-        localcxf.Nickname = locala.CLY.readString();
-        AppMethodBeat.o(28740);
+        localcxf.htm = locala.KhF.xS();
+        AppMethodBeat.o(125841);
         return 0;
       case 3: 
-        localcxf.ntu = locala.CLY.readString();
-        AppMethodBeat.o(28740);
+        localcxf.htj = locala.KhF.xS();
+        AppMethodBeat.o(125841);
         return 0;
       case 4: 
-        localcxf.nqW = locala.CLY.sl();
-        AppMethodBeat.o(28740);
+        localcxf.timeStamp = locala.KhF.xT();
+        AppMethodBeat.o(125841);
         return 0;
       case 5: 
-        localcxf.xlH = locala.CLY.readString();
-        AppMethodBeat.o(28740);
+        localcxf.htk = locala.KhF.xS();
+        AppMethodBeat.o(125841);
         return 0;
       case 6: 
-        localcxf.wsC = locala.CLY.sm();
-        AppMethodBeat.o(28740);
+        localcxf.htl = locala.KhF.xS();
+        AppMethodBeat.o(125841);
         return 0;
       case 7: 
-        localcxf.yeN = locala.CLY.emu();
-        AppMethodBeat.o(28740);
+        localcxf.Epo = locala.KhF.readString();
+        AppMethodBeat.o(125841);
+        return 0;
+      case 8: 
+        localcxf.Epp = locala.KhF.readString();
+        AppMethodBeat.o(125841);
+        return 0;
+      case 9: 
+        localcxf.Epq = locala.KhF.readString();
+        AppMethodBeat.o(125841);
         return 0;
       }
-      localcxf.yeO = locala.CLY.eqS();
-      AppMethodBeat.o(28740);
+      localcxf.Epr = locala.KhF.readString();
+      AppMethodBeat.o(125841);
       return 0;
     }
-    AppMethodBeat.o(28740);
+    AppMethodBeat.o(125841);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cxf
  * JD-Core Version:    0.7.0.1
  */

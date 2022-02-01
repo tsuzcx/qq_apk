@@ -15,11 +15,11 @@ import android.view.ViewGroup.MarginLayoutParams;
 
 public abstract class ActionBar
 {
-  public void K(boolean paramBoolean) {}
+  public void Q(boolean paramBoolean) {}
   
-  public void L(boolean paramBoolean) {}
+  public void R(boolean paramBoolean) {}
   
-  public void M(boolean paramBoolean) {}
+  public void S(boolean paramBoolean) {}
   
   public b a(b.a parama)
   {
@@ -36,30 +36,30 @@ public abstract class ActionBar
     return false;
   }
   
-  public abstract void es();
+  public abstract void fK();
   
-  public abstract void et();
+  public abstract void fL();
   
-  public abstract void eu();
+  public abstract void fM();
   
-  public abstract void ev();
+  public abstract void fN();
   
-  public void ew()
+  public void fO()
   {
     throw new UnsupportedOperationException("Hide on content scroll is not supported in this action bar configuration.");
   }
   
-  public boolean ex()
+  public boolean fP()
   {
     return false;
   }
   
-  public boolean ey()
+  public boolean fQ()
   {
     return false;
   }
   
-  public boolean ez()
+  public boolean fR()
   {
     return false;
   }

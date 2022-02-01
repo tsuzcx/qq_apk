@@ -13,7 +13,7 @@ import android.view.ViewGroup.LayoutParams;
 
 public abstract class d
 {
-  static int Ot = -1;
+  static int Vy = -1;
   
   public static d a(Activity paramActivity, c paramc)
   {
@@ -27,11 +27,11 @@ public abstract class d
   
   public abstract void addContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams);
   
-  public abstract void eB();
+  public abstract void fT();
   
-  public abstract void eC();
+  public abstract void fU();
   
-  public abstract boolean eD();
+  public abstract boolean fV();
   
   public abstract <T extends View> T findViewById(int paramInt);
   

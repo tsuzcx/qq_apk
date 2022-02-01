@@ -1,98 +1,91 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.os.Bundle;
-import android.os.Parcelable.Creator;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import com.tencent.luggage.sdk.d.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyTransparentUIProcessTask.a;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.protocal.protobuf.axf;
-import com.tencent.mm.protocal.protobuf.axg;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.bik;
+import com.tencent.mm.protocal.protobuf.bil;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import org.json.JSONObject;
 
 public class JsApiLaunchApplication
-  extends a<r>
+  extends a<q>
 {
   private static final int CTRL_INDEX = 427;
   private static final String NAME = "launchApplication";
   
-  public void a(final r paramr, JSONObject paramJSONObject, final int paramInt)
+  public void a(q paramq, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(130450);
+    AppMethodBeat.i(45509);
     if (paramJSONObject == null)
     {
-      ab.e("MicroMsg.JsApiLaunchApplication", "data is null");
-      paramr.h(paramInt, j("fail:data is null", null));
-      AppMethodBeat.o(130450);
+      ad.e("MicroMsg.JsApiLaunchApplication", "data is null");
+      paramq.h(paramInt, e("fail:data is null", null));
+      AppMethodBeat.o(45509);
       return;
     }
-    final String str1 = paramJSONObject.optString("appId");
-    final String str2 = paramJSONObject.optString("schemeUrl");
-    final String str3 = paramJSONObject.optString("parameter");
-    int i = bo.getInt(paramJSONObject.optString("alertType"), 0);
-    int j = bo.getInt(paramJSONObject.optString("operateDirectly"), 0);
-    final String str4 = paramJSONObject.optString("extInfo");
-    final String str5 = paramJSONObject.optString("packageName");
-    final String str6 = paramJSONObject.optString("signature");
-    ab.i("MicroMsg.JsApiLaunchApplication", "doLaunchApplication, appid : %s, scheme : %s, extinfo:[%s], parameter : %s, pkg:%s, signature:%s", new Object[] { str1, str2, str4, str3, str5, str6 });
-    if ((bo.isNullOrNil(str1)) && (bo.isNullOrNil(str2)) && (bo.isNullOrNil(str5)))
+    String str1 = paramJSONObject.optString("appId");
+    String str2 = paramJSONObject.optString("schemeUrl");
+    String str3 = paramJSONObject.optString("parameter");
+    int i = bt.getInt(paramJSONObject.optString("alertType"), 0);
+    int j = bt.getInt(paramJSONObject.optString("operateDirectly"), 0);
+    String str4 = paramJSONObject.optString("extInfo");
+    String str5 = paramJSONObject.optString("packageName");
+    String str6 = paramJSONObject.optString("signature");
+    ad.i("MicroMsg.JsApiLaunchApplication", "doLaunchApplication, appid : %s, scheme : %s, extinfo:[%s], parameter : %s, pkg:%s, signature:%s", new Object[] { str1, str2, str4, str3, str5, str6 });
+    if ((bt.isNullOrNil(str1)) && (bt.isNullOrNil(str2)) && (bt.isNullOrNil(str5)))
     {
-      ab.e("MicroMsg.JsApiLaunchApplication", "appid and scheme is null or nil");
-      paramr.h(paramInt, j("fail:appid and scheme is null or nil", null));
-      AppMethodBeat.o(130450);
+      ad.e("MicroMsg.JsApiLaunchApplication", "appid and scheme is null or nil");
+      paramq.h(paramInt, e("fail:appid and scheme is null or nil", null));
+      AppMethodBeat.o(45509);
       return;
     }
-    String str7 = paramr.getAppId();
-    paramJSONObject = paramr.getCurrentPageView();
+    String str7 = paramq.getAppId();
+    paramJSONObject = paramq.getCurrentPageView();
     if (paramJSONObject != null) {
-      paramJSONObject = paramJSONObject.hzM;
+      paramJSONObject = paramJSONObject.jzm;
     }
     for (;;)
     {
-      final Bundle localBundle = new Bundle();
-      if (!bo.isNullOrNil(paramJSONObject)) {}
+      Bundle localBundle = new Bundle();
+      if (!bt.isNullOrNil(paramJSONObject)) {}
       try
       {
         localBundle.putString("current_page_url", URLEncoder.encode(paramJSONObject, "UTF-8"));
         label246:
         localBundle.putString("current_page_appid", str7);
-        com.tencent.mm.ai.b.a locala = new com.tencent.mm.ai.b.a();
-        locala.fsX = new axf();
-        locala.fsY = new axg();
+        b.a locala = new b.a();
+        locala.gUU = new bik();
+        locala.gUV = new bil();
         locala.uri = "/cgi-bin/mmbiz-bin/checklaunchapp";
         locala.funcId = 1125;
-        axf localaxf = (axf)locala.ado().fsV.fta;
-        localaxf.cwc = str7;
-        localaxf.xmy = str1;
-        localaxf.scene = ((o)paramr.getRuntime()).wS().bDh.scene;
-        localaxf.url = paramJSONObject;
-        localaxf.xmz = str2;
-        localaxf.kNx = i;
-        localaxf.xmA = 1;
-        localaxf.xmB = j;
-        localaxf.packageName = str5;
-        ab.i("MicroMsg.JsApiLaunchApplication", "run cgi to check(appId : %s, toAppId : %s, scene : %s, url : %s, schemeUrl : %s, alertType : %s, operateDirectly : %s)", new Object[] { str7, str1, Integer.valueOf(localaxf.scene), localaxf.url, localaxf.xmz, Integer.valueOf(localaxf.kNx), Integer.valueOf(localaxf.xmB) });
-        com.tencent.mm.ipcinvoker.wx_extension.b.a(locala.ado(), new com.tencent.mm.ipcinvoker.wx_extension.b.a()
-        {
-          public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ai.b paramAnonymousb)
-          {
-            AppMethodBeat.i(130439);
-            ab.i("MicroMsg.JsApiLaunchApplication", "on RunCgi callback errType:%d errCode:%d msg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-            com.tencent.mm.ch.a.post(new JsApiLaunchApplication.1.1(this, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousb));
-            AppMethodBeat.o(130439);
-          }
-        });
-        AppMethodBeat.o(130450);
+        bik localbik = (bik)locala.atI().gUS.gUX;
+        localbik.dlB = str7;
+        localbik.DGa = str1;
+        localbik.scene = ((o)paramq.getRuntime()).DZ().cfo.scene;
+        localbik.url = paramJSONObject;
+        localbik.DGb = str2;
+        localbik.nTM = i;
+        localbik.DGc = 1;
+        localbik.DGd = j;
+        localbik.packageName = str5;
+        ad.i("MicroMsg.JsApiLaunchApplication", "run cgi to check(appId : %s, toAppId : %s, scene : %s, url : %s, schemeUrl : %s, alertType : %s, operateDirectly : %s)", new Object[] { str7, str1, Integer.valueOf(localbik.scene), localbik.url, localbik.DGb, Integer.valueOf(localbik.nTM), Integer.valueOf(localbik.DGd) });
+        IPCRunCgi.a(locala.atI(), new JsApiLaunchApplication.1(this, paramq, paramInt, str2, localBundle, str5, str6, str3, str1, str4));
+        AppMethodBeat.o(45509);
         return;
-        ab.e("MicroMsg.JsApiLaunchApplication", "getCurrentPageView is null");
+        ad.e("MicroMsg.JsApiLaunchApplication", "getCurrentPageView is null");
         paramJSONObject = null;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -104,7 +97,7 @@ public class JsApiLaunchApplication
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiLaunchApplication
  * JD-Core Version:    0.7.0.1
  */

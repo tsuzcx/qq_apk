@@ -2,128 +2,127 @@ package com.tencent.mm.plugin.voiceprint.model;
 
 import android.os.Handler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m.b;
-import com.tencent.mm.modelvoice.g;
-import com.tencent.mm.modelvoice.n;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n.b;
+import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cqn;
-import com.tencent.mm.protocal.protobuf.cqo;
-import com.tencent.mm.protocal.protobuf.cre;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.djz;
+import com.tencent.mm.protocal.protobuf.dka;
+import com.tencent.mm.protocal.protobuf.dkz;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vfs.i;
 
 public final class j
-  extends com.tencent.mm.ai.m
+  extends com.tencent.mm.al.n
   implements k
 {
-  int DW;
-  private int Fb;
-  private f callback;
+  int KI;
+  private int LZ;
+  private com.tencent.mm.al.g callback;
   private String filename;
-  private String gEl;
+  private String iri;
   private final b rr;
-  public boolean tre;
-  private boolean trf;
-  private Handler trg;
-  private int trh;
+  public boolean zdo;
+  private boolean zdp;
+  private Handler zdq;
+  private int zdr;
   
   public j(String paramString, int paramInt)
   {
-    AppMethodBeat.i(26104);
-    this.Fb = 0;
-    this.tre = false;
-    this.trf = false;
-    this.trg = null;
-    this.trh = 0;
-    this.DW = 0;
-    this.gEl = "";
-    ab.d("MicroMsg.NetSceneVerifyVoicePrint", "resid %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(29785);
+    this.LZ = 0;
+    this.zdo = false;
+    this.zdp = false;
+    this.zdq = null;
+    this.zdr = 0;
+    this.KI = 0;
+    this.iri = "";
+    ad.d("MicroMsg.NetSceneVerifyVoicePrint", "resid %d", new Object[] { Integer.valueOf(paramInt) });
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new cqn();
-    ((b.a)localObject).fsY = new cqo();
+    ((b.a)localObject).gUU = new djz();
+    ((b.a)localObject).gUV = new dka();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/verifyvoiceprint";
     ((b.a)localObject).funcId = 613;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (cqn)this.rr.fsV.fta;
+    this.rr = ((b.a)localObject).atI();
+    localObject = (djz)this.rr.gUS.gUX;
     this.filename = paramString;
-    this.Fb = 0;
-    ((cqn)localObject).xGP = paramInt;
-    this.trh = 0;
-    ((cqn)localObject).xGN = 0;
-    ab.i("MicroMsg.NetSceneVerifyVoicePrint", "voiceRegist %d %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(0) });
-    this.tre = true;
-    cLe();
-    AppMethodBeat.o(26104);
+    this.LZ = 0;
+    ((djz)localObject).EdY = paramInt;
+    this.zdr = 0;
+    ((djz)localObject).EdW = 0;
+    ad.i("MicroMsg.NetSceneVerifyVoicePrint", "voiceRegist %d %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(0) });
+    this.zdo = true;
+    dRm();
+    AppMethodBeat.o(29785);
   }
   
-  private int cLe()
+  private int dRm()
   {
-    AppMethodBeat.i(26106);
-    cqn localcqn = (cqn)this.rr.fsV.fta;
-    cre localcre = new cre();
-    new g();
-    localcqn.xZe = localcre;
-    Object localObject = new n(m.bE(this.filename, false));
-    int i = (int)com.tencent.mm.vfs.e.avI(m.bE(this.filename, false));
-    if (i - this.Fb >= 6000) {}
+    AppMethodBeat.i(29787);
+    djz localdjz = (djz)this.rr.gUS.gUX;
+    dkz localdkz = new dkz();
+    new com.tencent.mm.modelvoice.g();
+    localdjz.EzQ = localdkz;
+    Object localObject = new com.tencent.mm.modelvoice.n(m.bP(this.filename, false));
+    int i = (int)i.aMN(m.bP(this.filename, false));
+    if (i - this.LZ >= 6000) {}
     int j;
-    for (localObject = ((n)localObject).cJ(this.Fb, 6000);; localObject = ((n)localObject).cJ(j, i - j))
+    for (localObject = ((com.tencent.mm.modelvoice.n)localObject).dp(this.LZ, 6000);; localObject = ((com.tencent.mm.modelvoice.n)localObject).dp(j, i - j))
     {
-      ab.d("MicroMsg.NetSceneVerifyVoicePrint", "read offset %d, ret %d , buf len %d, totallen %d finish %b", new Object[] { Integer.valueOf(this.Fb), Integer.valueOf(((g)localObject).ret), Integer.valueOf(((g)localObject).ckj), Integer.valueOf(i), Boolean.valueOf(this.tre) });
-      if (((g)localObject).ckj != 0) {
+      ad.d("MicroMsg.NetSceneVerifyVoicePrint", "read offset %d, ret %d , buf len %d, totallen %d finish %b", new Object[] { Integer.valueOf(this.LZ), Integer.valueOf(((com.tencent.mm.modelvoice.g)localObject).ret), Integer.valueOf(((com.tencent.mm.modelvoice.g)localObject).cZc), Integer.valueOf(i), Boolean.valueOf(this.zdo) });
+      if (((com.tencent.mm.modelvoice.g)localObject).cZc != 0) {
         break;
       }
-      AppMethodBeat.o(26106);
+      AppMethodBeat.o(29787);
       return -2;
-      j = this.Fb;
+      j = this.LZ;
     }
-    if (((g)localObject).ret < 0)
+    if (((com.tencent.mm.modelvoice.g)localObject).ret < 0)
     {
-      ab.w("MicroMsg.NetSceneVerifyVoicePrint", "readerror %d", new Object[] { Integer.valueOf(((g)localObject).ret) });
-      AppMethodBeat.o(26106);
+      ad.w("MicroMsg.NetSceneVerifyVoicePrint", "readerror %d", new Object[] { Integer.valueOf(((com.tencent.mm.modelvoice.g)localObject).ret) });
+      AppMethodBeat.o(29787);
       return -1;
     }
-    if (this.Fb >= 469000)
+    if (this.LZ >= 469000)
     {
-      ab.i("MicroMsg.NetSceneVerifyVoicePrint", "moffset > maxfile %d", new Object[] { Integer.valueOf(this.Fb) });
-      AppMethodBeat.o(26106);
+      ad.i("MicroMsg.NetSceneVerifyVoicePrint", "moffset > maxfile %d", new Object[] { Integer.valueOf(this.LZ) });
+      AppMethodBeat.o(29787);
       return -1;
     }
-    localcre.xZN = new SKBuiltinBuffer_t().setBuffer(((g)localObject).buf);
-    localcre.pIy = this.Fb;
-    localcre.xZL = ((g)localObject).ckj;
-    localcre.xZM = 0;
-    localcqn.xGN = this.trh;
-    if (this.tre)
+    localdkz.EAK = new SKBuiltinBuffer_t().setBuffer(((com.tencent.mm.modelvoice.g)localObject).buf);
+    localdkz.uKR = this.LZ;
+    localdkz.EAI = ((com.tencent.mm.modelvoice.g)localObject).cZc;
+    localdkz.EAJ = 0;
+    localdjz.EdW = this.zdr;
+    if (this.zdo)
     {
-      j = (int)com.tencent.mm.vfs.e.avI(m.bE(this.filename, false));
-      if (((g)localObject).fXX >= j)
+      j = (int)i.aMN(m.bP(this.filename, false));
+      if (((com.tencent.mm.modelvoice.g)localObject).hAL >= j)
       {
-        localcre.xZM = 1;
-        this.trf = true;
-        ab.i("MicroMsg.NetSceneVerifyVoicePrint", "the last one pack for uploading totallen %d", new Object[] { Integer.valueOf(i) });
+        localdkz.EAJ = 1;
+        this.zdp = true;
+        ad.i("MicroMsg.NetSceneVerifyVoicePrint", "the last one pack for uploading totallen %d", new Object[] { Integer.valueOf(i) });
       }
     }
-    this.Fb = ((g)localObject).fXX;
-    localcqn.xZe = localcre;
-    AppMethodBeat.o(26106);
+    this.LZ = ((com.tencent.mm.modelvoice.g)localObject).hAL;
+    localdjz.EzQ = localdkz;
+    AppMethodBeat.o(29787);
     return 0;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(26105);
-    this.callback = paramf;
+    AppMethodBeat.i(29786);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(26105);
+    AppMethodBeat.o(29786);
     return i;
   }
   
@@ -134,28 +133,28 @@ public final class j
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(26107);
-    ab.d("MicroMsg.NetSceneVerifyVoicePrint", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
-    paramq = (cqo)((b)paramq).fsW.fta;
+    AppMethodBeat.i(29788);
+    ad.d("MicroMsg.NetSceneVerifyVoicePrint", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
+    paramq = (dka)((b)paramq).gUT.gUX;
     if ((paramInt2 != 0) && (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(26107);
+      AppMethodBeat.o(29788);
       return;
     }
-    this.trh = paramq.xGN;
-    this.DW = paramq.wKy;
-    ab.i("MicroMsg.NetSceneVerifyVoicePrint", "voice VoiceTicket %d mResult %d", new Object[] { Integer.valueOf(paramq.xGN), Integer.valueOf(this.DW) });
-    if (this.trf)
+    this.zdr = paramq.EdW;
+    this.KI = paramq.CWL;
+    ad.i("MicroMsg.NetSceneVerifyVoicePrint", "voice VoiceTicket %d mResult %d", new Object[] { Integer.valueOf(paramq.EdW), Integer.valueOf(this.KI) });
+    if (this.zdp)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(26107);
+      AppMethodBeat.o(29788);
       return;
     }
-    ab.i("MicroMsg.NetSceneVerifyVoicePrint", "tryDoScene ret %d", new Object[] { Integer.valueOf(cLe()) });
+    ad.i("MicroMsg.NetSceneVerifyVoicePrint", "tryDoScene ret %d", new Object[] { Integer.valueOf(dRm()) });
     doScene(dispatcher(), this.callback);
-    ab.i("MicroMsg.NetSceneVerifyVoicePrint", "loop doscene");
-    AppMethodBeat.o(26107);
+    ad.i("MicroMsg.NetSceneVerifyVoicePrint", "loop doscene");
+    AppMethodBeat.o(29788);
   }
   
   public final int securityLimitCount()
@@ -163,14 +162,14 @@ public final class j
     return 240;
   }
   
-  public final m.b securityVerificationChecked(q paramq)
+  public final n.b securityVerificationChecked(q paramq)
   {
-    return m.b.ftu;
+    return n.b.gVB;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.j
  * JD-Core Version:    0.7.0.1
  */

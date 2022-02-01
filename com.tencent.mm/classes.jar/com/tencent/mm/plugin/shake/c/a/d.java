@@ -7,41 +7,41 @@ import java.util.Map;
 
 public final class d
 {
-  public float dZu;
-  public float dZv;
-  Map<String, Object> kln;
-  String qNA;
-  int qNy;
-  long qNz;
+  public float fjD;
+  public float fjE;
+  Map<String, Object> nqs;
+  int wmo;
+  long wmp;
+  String wmq;
   
   public d()
   {
-    AppMethodBeat.i(24517);
-    this.kln = new HashMap();
-    this.qNy = 0;
-    this.qNz = 0L;
-    this.dZu = -85.0F;
-    this.dZv = -1000.0F;
-    this.qNA = "";
-    this.kln.clear();
-    AppMethodBeat.o(24517);
+    AppMethodBeat.i(28188);
+    this.nqs = new HashMap();
+    this.wmo = 0;
+    this.wmp = 0L;
+    this.fjD = -85.0F;
+    this.fjE = -1000.0F;
+    this.wmq = "";
+    this.nqs.clear();
+    AppMethodBeat.o(28188);
   }
   
   public final void putValue(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(24518);
+    AppMethodBeat.i(28189);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(24518);
+      AppMethodBeat.o(28189);
       return;
     }
-    this.kln.put(paramString, paramObject);
-    AppMethodBeat.o(24518);
+    this.nqs.put(paramString, paramObject);
+    AppMethodBeat.o(28189);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.c.a.d
  * JD-Core Version:    0.7.0.1
  */

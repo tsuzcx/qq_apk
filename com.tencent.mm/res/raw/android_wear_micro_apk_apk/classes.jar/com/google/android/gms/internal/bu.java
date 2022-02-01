@@ -10,8 +10,8 @@ public final class bu
   static void a(zzacn paramzzacn, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramzzacn.Hc);
-    c.a(paramParcel, 2, paramzzacn.ji(), paramInt);
+    c.c(paramParcel, 1, paramzzacn.IR);
+    c.a(paramParcel, 2, paramzzacn.jr(), paramInt);
     c.v(paramParcel, i);
   }
 }

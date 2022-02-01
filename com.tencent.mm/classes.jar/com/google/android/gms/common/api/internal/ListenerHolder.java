@@ -17,11 +17,11 @@ public final class ListenerHolder<L>
   @KeepForSdk
   ListenerHolder(Looper paramLooper, L paramL, String paramString)
   {
-    AppMethodBeat.i(60642);
+    AppMethodBeat.i(11134);
     this.zzlh = new zza(paramLooper);
     this.zzli = Preconditions.checkNotNull(paramL, "Listener must not be null");
     this.zzlj = new ListenerKey(paramL, Preconditions.checkNotEmpty(paramString));
-    AppMethodBeat.o(60642);
+    AppMethodBeat.o(11134);
   }
   
   @KeepForSdk
@@ -45,34 +45,34 @@ public final class ListenerHolder<L>
   @KeepForSdk
   public final void notifyListener(Notifier<? super L> paramNotifier)
   {
-    AppMethodBeat.i(60643);
+    AppMethodBeat.i(11135);
     Preconditions.checkNotNull(paramNotifier, "Notifier must not be null");
     paramNotifier = this.zzlh.obtainMessage(1, paramNotifier);
     this.zzlh.sendMessage(paramNotifier);
-    AppMethodBeat.o(60643);
+    AppMethodBeat.o(11135);
   }
   
   @KeepForSdk
   final void notifyListenerInternal(Notifier<? super L> paramNotifier)
   {
-    AppMethodBeat.i(60644);
+    AppMethodBeat.i(11136);
     Object localObject = this.zzli;
     if (localObject == null)
     {
       paramNotifier.onNotifyListenerFailed();
-      AppMethodBeat.o(60644);
+      AppMethodBeat.o(11136);
       return;
     }
     try
     {
       paramNotifier.notifyListener(localObject);
-      AppMethodBeat.o(60644);
+      AppMethodBeat.o(11136);
       return;
     }
     catch (RuntimeException localRuntimeException)
     {
       paramNotifier.onNotifyListenerFailed();
-      AppMethodBeat.o(60644);
+      AppMethodBeat.o(11136);
       throw localRuntimeException;
     }
   }
@@ -92,33 +92,33 @@ public final class ListenerHolder<L>
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(60639);
+      AppMethodBeat.i(11131);
       if (this == paramObject)
       {
-        AppMethodBeat.o(60639);
+        AppMethodBeat.o(11131);
         return true;
       }
       if (!(paramObject instanceof ListenerKey))
       {
-        AppMethodBeat.o(60639);
+        AppMethodBeat.o(11131);
         return false;
       }
       paramObject = (ListenerKey)paramObject;
       if ((this.zzli == paramObject.zzli) && (this.zzll.equals(paramObject.zzll)))
       {
-        AppMethodBeat.o(60639);
+        AppMethodBeat.o(11131);
         return true;
       }
-      AppMethodBeat.o(60639);
+      AppMethodBeat.o(11131);
       return false;
     }
     
     public final int hashCode()
     {
-      AppMethodBeat.i(60640);
+      AppMethodBeat.i(11132);
       int i = System.identityHashCode(this.zzli);
       int j = this.zzll.hashCode();
-      AppMethodBeat.o(60640);
+      AppMethodBeat.o(11132);
       return i * 31 + j;
     }
   }
@@ -144,13 +144,13 @@ public final class ListenerHolder<L>
     public final void handleMessage(Message paramMessage)
     {
       boolean bool = true;
-      AppMethodBeat.i(60641);
+      AppMethodBeat.i(11133);
       if (paramMessage.what == 1) {}
       for (;;)
       {
         Preconditions.checkArgument(bool);
         ListenerHolder.this.notifyListenerInternal((ListenerHolder.Notifier)paramMessage.obj);
-        AppMethodBeat.o(60641);
+        AppMethodBeat.o(11133);
         return;
         bool = false;
       }

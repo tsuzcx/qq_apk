@@ -6,17 +6,17 @@ public enum i
 {
   static
   {
-    AppMethodBeat.i(24469);
-    qMY = new i("INSTANCE");
-    qMZ = new i[] { qMY };
-    AppMethodBeat.o(24469);
+    AppMethodBeat.i(28144);
+    wlO = new i("INSTANCE");
+    wlP = new i[] { wlO };
+    AppMethodBeat.o(28144);
   }
   
   private i() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.i
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/aqw" android:background="@color/kh" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="64.0dip" android:layout_height="47.0dip" android:src="@raw/card_empty_icon" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/y4" android:id="@id/aqx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="14.0dip" android:text="@string/ann" android:alpha="0.2" />
+</LinearLayout>

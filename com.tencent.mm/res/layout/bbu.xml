@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/fyy" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.story.ui.view.gallery.GalleryRecyclerView android:id="@id/fzh" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <View android:id="@id/fza" android:background="@color/a5e" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0dip" android:textColor="#e6ffffff" android:gravity="center" android:id="@id/g0v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="160.0dip" android:text="@string/fy3" android:layout_centerHorizontal="true" />
+    <com.tencent.mm.plugin.story.ui.view.gallery.GalleryVerticalControlView android:id="@id/fyz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.story.ui.view.gallery.GalleryHolderView android:id="@id/fz7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

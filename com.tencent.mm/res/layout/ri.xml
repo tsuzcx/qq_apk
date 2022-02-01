@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="18.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/b4c" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_begin="24.0dip" />
-    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/b4d" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_end="28.0dip" />
-    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/a7l" android:gravity="center" android:id="@id/b6o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/awe" app:layout_constraintBottom_toBottomOf="@id/b4d" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toTopOf="@id/b4c" />
-    <View android:id="@id/b4h" android:background="@color/tb" android:layout_width="0.0dip" android:layout_height="0.5dip" app:layout_constraintBottom_toBottomOf="dn" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintRight_toRightOf="dn" />
-</android.support.constraint.ConstraintLayout>
+<LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:background="#ffdfe0e0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/d0v" android:background="@raw/sns_shoot_location_normal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i_" android:layout_marginTop="@dimen/i_" android:layout_marginBottom="@dimen/i_" />
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/a4d" android:id="@id/ciq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginTop="@dimen/i_" android:layout_marginBottom="@dimen/i_" android:singleLine="true" />
+</LinearLayout>

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.choosemsgfile.b.b;
 import android.support.v7.widget.RecyclerView.v;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -14,51 +15,98 @@ import com.tencent.mm.ui.widget.MMPinProgressBtn;
 public final class m
   extends RecyclerView.v
 {
-  public final ProgressBar gvS;
-  public final View kFe;
-  public final MMPinProgressBtn kFf;
-  public final TextView kFg;
-  public final TextView kFh;
-  public final View kFi;
-  public final TextView kFj;
-  public final ImageView kFk;
-  public final CheckBox kFl;
-  public final View kFm;
-  public ImageView kFn;
-  public final ImageView kha;
+  public final CheckBox fti;
+  public final ProgressBar iiP;
+  public final View nMf;
+  public final ImageView nMg;
+  public final MMPinProgressBtn nMh;
+  public final TextView nMi;
+  public final TextView nMj;
+  public final View nMk;
+  public final TextView nMl;
+  public final ImageView nMm;
+  public final View nMn;
+  public ImageView nMo;
   
   private m(View paramView)
   {
     super(paramView);
-    AppMethodBeat.i(54329);
-    this.kFe = paramView.findViewById(2131822806);
-    this.kha = ((ImageView)paramView.findViewById(2131821891));
-    this.kFf = ((MMPinProgressBtn)paramView.findViewById(2131822683));
-    this.gvS = ((ProgressBar)paramView.findViewById(2131821643));
-    this.kFi = paramView.findViewById(2131822811);
-    this.kFj = ((TextView)paramView.findViewById(2131822813));
-    this.kFg = ((TextView)paramView.findViewById(2131822809));
-    this.kFh = ((TextView)paramView.findViewById(2131822810));
-    this.kFk = ((ImageView)paramView.findViewById(2131822779));
-    this.kFl = ((CheckBox)paramView.findViewById(2131821631));
-    this.kFm = paramView.findViewById(2131822814);
-    this.kFn = ((ImageView)paramView.findViewById(2131822491));
-    this.kha.setOnClickListener(new m.1(this));
-    this.kFm.setOnClickListener(new m.2(this));
-    AppMethodBeat.o(54329);
+    AppMethodBeat.i(123301);
+    this.nMf = paramView.findViewById(2131298738);
+    this.nMg = ((ImageView)paramView.findViewById(2131298824));
+    this.nMh = ((MMPinProgressBtn)paramView.findViewById(2131299229));
+    this.iiP = ((ProgressBar)paramView.findViewById(2131301506));
+    this.nMk = paramView.findViewById(2131306391);
+    this.nMl = ((TextView)paramView.findViewById(2131306401));
+    this.nMi = ((TextView)paramView.findViewById(2131299933));
+    this.nMj = ((TextView)paramView.findViewById(2131299934));
+    this.nMm = ((ImageView)paramView.findViewById(2131302165));
+    this.fti = ((CheckBox)paramView.findViewById(2131304502));
+    this.nMn = paramView.findViewById(2131304539);
+    this.nMo = ((ImageView)paramView.findViewById(2131299520));
+    this.nMg.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(123299);
+        a locala = (a)paramAnonymousView.getTag();
+        if (locala == null)
+        {
+          AppMethodBeat.o(123299);
+          return;
+        }
+        locala.a(paramAnonymousView, locala);
+        AppMethodBeat.o(123299);
+      }
+    });
+    this.nMn.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(123300);
+        paramAnonymousView = (a)paramAnonymousView.getTag();
+        if (paramAnonymousView == null)
+        {
+          AppMethodBeat.o(123300);
+          return;
+        }
+        boolean bool;
+        if (!m.this.fti.isChecked()) {
+          bool = true;
+        }
+        while (paramAnonymousView.isEnable())
+        {
+          m.this.fti.setChecked(bool);
+          paramAnonymousView.a(bool, paramAnonymousView, m.this);
+          if (!bool)
+          {
+            m.this.nMm.setVisibility(0);
+            AppMethodBeat.o(123300);
+            return;
+            bool = false;
+          }
+          else
+          {
+            m.this.nMm.setVisibility(8);
+          }
+        }
+        AppMethodBeat.o(123300);
+      }
+    });
+    AppMethodBeat.o(123301);
   }
   
-  public static RecyclerView.v m(ViewGroup paramViewGroup)
+  public static RecyclerView.v o(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(54330);
-    paramViewGroup = new m(LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969150, paramViewGroup, false));
-    AppMethodBeat.o(54330);
+    AppMethodBeat.i(123302);
+    paramViewGroup = new m(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131493532, paramViewGroup, false));
+    AppMethodBeat.o(123302);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.m
  * JD-Core Version:    0.7.0.1
  */

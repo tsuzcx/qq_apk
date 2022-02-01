@@ -24,7 +24,7 @@ public final class i
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2130903069, paramViewGroup, false);
     paramViewGroup = new j(this);
-    paramViewGroup.ahj = ((ImageView)paramContext.findViewById(2131558448));
+    paramViewGroup.akL = ((ImageView)paramContext.findViewById(2131558449));
     paramContext.setTag(paramViewGroup);
     return paramContext;
   }
@@ -33,20 +33,20 @@ public final class i
   {
     paramContext = (j)paramb;
     paramb = new com.tencent.mm.wear.app.c.a();
-    paramb.acM = 2131427357;
-    paramb.acL = paramContext.ahj;
+    paramb.agn = 2131427357;
+    paramb.agm = paramContext.akL;
     paramb.type = 2;
-    paramb.acG = this.ahe.afg.VO;
-    paramb.width = MMActivity.nc();
-    paramb.height = MMActivity.nb();
-    h.me().a(paramb);
+    paramb.agh = this.akG.aiI.XJ;
+    paramb.width = MMActivity.nP();
+    paramb.height = MMActivity.nO();
+    h.mR().a(paramb);
   }
   
   public final boolean a(Context paramContext, a parama)
   {
-    com.tencent.mm.wear.app.d.a.bN(6);
+    com.tencent.mm.wear.app.d.a.cj(6);
     parama = new Intent(paramContext, DetailImgUI.class);
-    parama.putExtra("key_msg_id", this.ahe.afg.VO);
+    parama.putExtra("key_msg_id", this.akG.aiI.XJ);
     paramContext.startActivity(parama);
     return true;
   }

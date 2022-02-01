@@ -1,43 +1,89 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
+import android.content.Context;
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.base.t;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.c.b.aj;
-import com.tencent.mm.ui.chatting.d;
-import com.tencent.mm.ui.chatting.d.a;
-import com.tencent.mm.ui.chatting.s.e;
+import com.tencent.mm.an.a.a;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.storage.bl;
 
-final class ar$a
-  extends s.e
+public final class ar$a
+  extends av.a
 {
-  public ar$a(ar paramar, a parama)
+  private com.tencent.mm.ui.chatting.d.a Gob;
+  
+  public final View a(LayoutInflater paramLayoutInflater, View paramView)
   {
-    super(parama);
+    AppMethodBeat.i(37367);
+    Object localObject;
+    if (paramView != null)
+    {
+      localObject = paramView;
+      if (paramView.getTag() != null) {}
+    }
+    else
+    {
+      localObject = new af(paramLayoutInflater, 2131493473);
+      ((View)localObject).setTag(new ar.c().ge((View)localObject));
+    }
+    AppMethodBeat.o(37367);
+    return localObject;
   }
   
-  public final void a(View paramView, a parama, bi parambi)
+  public final void a(c.a parama, int paramInt, com.tencent.mm.ui.chatting.d.a parama1, bl parambl, String paramString)
   {
-    AppMethodBeat.i(33402);
-    paramView = (az)paramView.getTag();
-    aw.aaz();
-    if (!c.isSDCardAvailable())
+    AppMethodBeat.i(37368);
+    this.Gob = parama1;
+    parama = (ar.c)parama;
+    paramString = a.a.xB(parambl.field_content);
+    if (paramString == null)
     {
-      t.ii(this.zzP.zJz.getContext());
-      AppMethodBeat.o(33402);
+      AppMethodBeat.o(37368);
       return;
     }
-    ((aj)this.zzP.ay(aj.class)).dJv().a(paramView.position, paramView.cEE);
-    AppMethodBeat.o(33402);
+    String str = paramString.dpv;
+    a(parama, parama1, parambl, str);
+    a(parama, parama1, str, parambl);
+    k.a(parama.GOh.getContext(), com.tencent.mm.an.a.a(paramString), (int)parama.GOh.getTextSize(), 1, null, "");
+    parama.GOh.setTag(new bi(parambl, parama1.eZb(), paramInt, null, '\000'));
+    parama.GOh.setOnLongClickListener(c(parama1));
+    AppMethodBeat.o(37368);
+  }
+  
+  public final boolean a(ContextMenu paramContextMenu, View paramView, bl parambl)
+  {
+    AppMethodBeat.i(37369);
+    if (parambl.eMf())
+    {
+      int i = ((bi)paramView.getTag()).position;
+      if (parambl.field_status == 5) {
+        paramContextMenu.add(i, 103, 0, paramView.getContext().getString(2131757286));
+      }
+      if (!this.Gob.eZc()) {
+        paramContextMenu.add(i, 100, 0, paramView.getContext().getString(2131757221));
+      }
+    }
+    AppMethodBeat.o(37369);
+    return true;
+  }
+  
+  public final boolean aX(int paramInt, boolean paramBoolean)
+  {
+    return (!paramBoolean) && ((paramInt == 55) || (paramInt == 57));
+  }
+  
+  protected final boolean faD()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.ar.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,65 +3,72 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cpg
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int csV;
-  public String csW;
+  public String Ddo;
+  public String mAQ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127738);
+    AppMethodBeat.i(32430);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.csV);
-      if (this.csW != null) {
-        paramVarArgs.e(2, this.csW);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.mAQ != null) {
+        paramVarArgs.d(1, this.mAQ);
       }
-      AppMethodBeat.o(127738);
+      if (this.Ddo != null) {
+        paramVarArgs.d(2, this.Ddo);
+      }
+      AppMethodBeat.o(32430);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = e.a.a.b.b.a.bl(1, this.csV) + 0;
-      paramInt = i;
-      if (this.csW != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.csW);
+    if (paramInt == 1) {
+      if (this.mAQ == null) {
+        break label282;
       }
-      AppMethodBeat.o(127738);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label282:
+    for (paramInt = f.a.a.b.b.a.e(1, this.mAQ) + 0;; paramInt = 0)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
+      int i = paramInt;
+      if (this.Ddo != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.Ddo);
       }
-      AppMethodBeat.o(127738);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      cpg localcpg = (cpg)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      AppMethodBeat.o(32430);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(127738);
-        return -1;
-      case 1: 
-        localcpg.csV = locala.CLY.sl();
-        AppMethodBeat.o(127738);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.fMq();
+          }
+        }
+        AppMethodBeat.o(32430);
         return 0;
       }
-      localcpg.csW = locala.CLY.readString();
-      AppMethodBeat.o(127738);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        cpg localcpg = (cpg)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(32430);
+          return -1;
+        case 1: 
+          localcpg.mAQ = locala.KhF.readString();
+          AppMethodBeat.o(32430);
+          return 0;
+        }
+        localcpg.Ddo = locala.KhF.readString();
+        AppMethodBeat.o(32430);
+        return 0;
+      }
+      AppMethodBeat.o(32430);
+      return -1;
     }
-    AppMethodBeat.o(127738);
-    return -1;
   }
 }
 

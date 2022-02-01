@@ -11,7 +11,7 @@ public final class ck
   {
     int i = c.b(paramParcel);
     c.a(paramParcel, 2, paramzzo.getName());
-    c.a(paramParcel, 3, paramzzo.kX());
+    c.a(paramParcel, 3, paramzzo.lg());
     c.v(paramParcel, i);
   }
 }

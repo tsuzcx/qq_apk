@@ -1,0 +1,12 @@
+package com.tencent.mm.plugin.emojicapture.d;
+
+import d.l;
+
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/filter/EmojiFilterProcess$Companion;", "", "()V", "TAG", "", "plugin-emojicapture_release"})
+public final class a$a {}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.emojicapture.d.a.a
+ * JD-Core Version:    0.7.0.1
+ */

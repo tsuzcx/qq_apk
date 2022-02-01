@@ -1,6 +1,156 @@
 package com.tencent.mm.sandbox.monitor;
 
-public final class b {}
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.os.SystemClock;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sandbox.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+
+public final class b
+{
+  private static a ENA = null;
+  public static int ENB = 0;
+  public static long glk = 0L;
+  private long ENC;
+  private ap ENE;
+  private Runnable ENF;
+  private long ENG;
+  
+  public b()
+  {
+    AppMethodBeat.i(32596);
+    this.ENC = 300000L;
+    this.ENE = new ap();
+    this.ENF = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(32594);
+        ad.d("MicroMsg.ExceptionMonitor", "stopSelf");
+        if (b.eDw() != null) {
+          b.eDw().stopSelf();
+        }
+        AppMethodBeat.o(32594);
+      }
+    };
+    AppMethodBeat.o(32596);
+  }
+  
+  public static void hY(Context paramContext)
+  {
+    AppMethodBeat.i(32600);
+    Intent localIntent = new Intent(paramContext, CrashUploadAlarmReceiver.class);
+    PendingIntent localPendingIntent = com.tencent.mm.a.a.b(paramContext, 108, localIntent);
+    if (localPendingIntent == null)
+    {
+      long l = bt.eGO() + 1800000L;
+      com.tencent.mm.a.a.set(paramContext, 108, 0, l, localIntent, 0);
+      ad.i("MicroMsg.ExceptionMonitor", "dkcrash startAlarmMgr pendingIntent:%d %d", new Object[] { Integer.valueOf(localPendingIntent.hashCode()), Long.valueOf(l) });
+    }
+    AppMethodBeat.o(32600);
+  }
+  
+  public final void a(a parama)
+  {
+    AppMethodBeat.i(32597);
+    ENA = parama;
+    c.o(hashCode(), this);
+    this.ENE.postDelayed(this.ENF, this.ENC);
+    AppMethodBeat.o(32597);
+  }
+  
+  public final void o(Intent paramIntent)
+  {
+    AppMethodBeat.i(32599);
+    ad.i("MicroMsg.ExceptionMonitor", "handleCommand()");
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(32599);
+      return;
+    }
+    this.ENE.removeCallbacks(this.ENF);
+    this.ENE.postDelayed(this.ENF, this.ENC);
+    String str3 = paramIntent.getAction();
+    ad.d("MicroMsg.ExceptionMonitor", "dkcrash handleCommand action:".concat(String.valueOf(str3)));
+    String str1;
+    String str4;
+    String str5;
+    String str6;
+    boolean bool;
+    for (;;)
+    {
+      String str2;
+      try
+      {
+        str2 = paramIntent.getStringExtra("tag");
+        str1 = str2;
+        if (str2 == null) {
+          str1 = "exception";
+        }
+        str2 = paramIntent.getStringExtra("exceptionProcess");
+        if (bt.kU(str2, "mm"))
+        {
+          h.vKh.idkeyStat(1185L, 11L, 1L, true);
+          int i = paramIntent.getIntExtra("exceptionPid", 0);
+          str1.equals("exception");
+          ENB = i;
+          glk = paramIntent.getLongExtra("exceptionTime", SystemClock.elapsedRealtime());
+          str4 = paramIntent.getStringExtra("exceptionMsg");
+          str5 = paramIntent.getStringExtra("userName");
+          str6 = paramIntent.getStringExtra("exceptionPreventPath");
+          bool = paramIntent.getBooleanExtra("exceptionWriteSdcard", true);
+          ad.d("MicroMsg.ExceptionMonitor", "dkcrash handleCommand. action=" + str3 + " pid:" + i + " tag=" + str1 + ", userName=" + str5 + ", crashPreventPath=" + bt.by(str6, "null") + ", message" + str4);
+          ad.i("MicroMsg.ExceptionMonitor", "processName:%s crashPreventPath:%s", new Object[] { str2, str6 });
+          if (!bt.isNullOrNil(str4)) {
+            break;
+          }
+          AppMethodBeat.o(32599);
+          return;
+        }
+      }
+      catch (Exception paramIntent)
+      {
+        ad.printErrStackTrace("MicroMsg.ExceptionMonitor", paramIntent, "", new Object[0]);
+        AppMethodBeat.o(32599);
+        return;
+      }
+      if (bt.kU(str2, "push")) {
+        h.vKh.idkeyStat(1185L, 12L, 1L, true);
+      } else if (bt.kU(str2, "other")) {
+        h.vKh.idkeyStat(1185L, 13L, 1L, true);
+      }
+    }
+    if (a.a(str5, str1, new ErrLog.Error(str5, str1, bt.aGK(), str4, bool), str6, false) == 0) {
+      hY(aj.getContext());
+    }
+    if (System.currentTimeMillis() - this.ENG > 600000L)
+    {
+      this.ENG = System.currentTimeMillis();
+      com.tencent.mm.sdk.g.b.c(new b.2(this), "RecoveryWriteLogThread");
+    }
+    AppMethodBeat.o(32599);
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(32598);
+    c.p(hashCode(), this);
+    this.ENE.removeCallbacks(this.ENF);
+    ENA = null;
+    AppMethodBeat.o(32598);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void stopSelf();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar

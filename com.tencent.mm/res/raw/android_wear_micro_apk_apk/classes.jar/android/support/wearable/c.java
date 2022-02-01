@@ -2,7 +2,7 @@ package android.support.wearable;
 
 public final class c
 {
-  public static final int wd = 2131230721;
+  public static final int xS = 2131230721;
 }
 
 

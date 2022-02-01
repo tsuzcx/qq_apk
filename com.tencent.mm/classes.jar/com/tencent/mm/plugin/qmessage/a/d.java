@@ -6,108 +6,100 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  public int bsY;
+  public int dtM;
   String extInfo;
-  private int fCK;
-  private int fns;
-  private int fsh;
-  private int fsi;
-  private long gyE;
-  public int pHM;
-  public long pHN;
-  public long pHO;
-  private String pHP;
-  private String pHQ;
-  private String pHR;
-  private String pHS;
+  private int gOT;
+  private int gUc;
+  private int gUd;
+  private int hfl;
+  private long ilB;
+  public int uKc;
+  public long uKd;
+  public long uKe;
+  private String uKf;
+  private String uKg;
+  private String uKh;
+  private String uKi;
   public String username;
   
   public d()
   {
-    AppMethodBeat.i(24079);
-    this.bsY = -1;
+    AppMethodBeat.i(27719);
+    this.dtM = -1;
     this.username = "";
-    this.gyE = 0L;
+    this.ilB = 0L;
     this.extInfo = "";
-    this.pHM = 0;
-    this.pHN = 0L;
-    this.pHO = 0L;
-    this.fns = 0;
-    this.fCK = 0;
-    this.fsh = 0;
-    this.fsi = 0;
-    this.pHP = "";
-    this.pHQ = "";
-    this.pHR = "";
-    this.pHS = "";
-    AppMethodBeat.o(24079);
-  }
-  
-  public final String cdp()
-  {
-    if (this.extInfo == null) {
-      return "";
-    }
-    return this.extInfo;
+    this.uKc = 0;
+    this.uKd = 0L;
+    this.uKe = 0L;
+    this.gOT = 0;
+    this.hfl = 0;
+    this.gUc = 0;
+    this.gUd = 0;
+    this.uKf = "";
+    this.uKg = "";
+    this.uKh = "";
+    this.uKi = "";
+    AppMethodBeat.o(27719);
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(24080);
+    AppMethodBeat.i(27720);
     this.username = paramCursor.getString(0);
-    this.gyE = paramCursor.getLong(1);
+    this.ilB = paramCursor.getLong(1);
     this.extInfo = paramCursor.getString(2);
-    this.pHM = paramCursor.getInt(3);
-    this.pHN = paramCursor.getLong(4);
-    this.pHO = paramCursor.getLong(5);
-    this.fns = paramCursor.getInt(6);
-    this.fCK = paramCursor.getInt(7);
-    this.fsh = paramCursor.getInt(8);
-    this.fsi = paramCursor.getInt(9);
-    this.pHP = paramCursor.getString(10);
-    this.pHQ = paramCursor.getString(11);
-    this.pHR = paramCursor.getString(12);
-    this.pHS = paramCursor.getString(13);
-    AppMethodBeat.o(24080);
+    this.uKc = paramCursor.getInt(3);
+    this.uKd = paramCursor.getLong(4);
+    this.uKe = paramCursor.getLong(5);
+    this.gOT = paramCursor.getInt(6);
+    this.hfl = paramCursor.getInt(7);
+    this.gUc = paramCursor.getInt(8);
+    this.gUd = paramCursor.getInt(9);
+    this.uKf = paramCursor.getString(10);
+    this.uKg = paramCursor.getString(11);
+    this.uKh = paramCursor.getString(12);
+    this.uKi = paramCursor.getString(13);
+    AppMethodBeat.o(27720);
   }
   
   public final ContentValues convertTo()
   {
-    AppMethodBeat.i(24081);
+    AppMethodBeat.i(27721);
     ContentValues localContentValues = new ContentValues();
-    if ((this.bsY & 0x1) != 0) {
+    if ((this.dtM & 0x1) != 0) {
       localContentValues.put("username", getUsername());
     }
-    if ((this.bsY & 0x2) != 0) {
-      localContentValues.put("qq", Long.valueOf(this.gyE));
+    if ((this.dtM & 0x2) != 0) {
+      localContentValues.put("qq", Long.valueOf(this.ilB));
     }
-    if ((this.bsY & 0x4) != 0) {
-      localContentValues.put("extinfo", cdp());
+    if ((this.dtM & 0x4) != 0) {
+      localContentValues.put("extinfo", ddH());
     }
-    if ((this.bsY & 0x8) != 0) {
-      localContentValues.put("needupdate", Integer.valueOf(this.pHM));
+    if ((this.dtM & 0x8) != 0) {
+      localContentValues.put("needupdate", Integer.valueOf(this.uKc));
     }
-    if ((this.bsY & 0x10) != 0) {
-      localContentValues.put("extupdateseq", Long.valueOf(this.pHN));
+    if ((this.dtM & 0x10) != 0) {
+      localContentValues.put("extupdateseq", Long.valueOf(this.uKd));
     }
-    if ((this.bsY & 0x20) != 0) {
-      localContentValues.put("imgupdateseq", Long.valueOf(this.pHO));
+    if ((this.dtM & 0x20) != 0) {
+      localContentValues.put("imgupdateseq", Long.valueOf(this.uKe));
     }
-    if ((this.bsY & 0x40) != 0) {
-      localContentValues.put("reserved1", Integer.valueOf(this.fns));
+    if ((this.dtM & 0x40) != 0) {
+      localContentValues.put("reserved1", Integer.valueOf(this.gOT));
     }
-    if ((this.bsY & 0x80) != 0) {
-      localContentValues.put("reserved2", Integer.valueOf(this.fCK));
+    if ((this.dtM & 0x80) != 0) {
+      localContentValues.put("reserved2", Integer.valueOf(this.hfl));
     }
-    if ((this.bsY & 0x100) != 0) {
-      localContentValues.put("reserved3", Integer.valueOf(this.fsh));
+    if ((this.dtM & 0x100) != 0) {
+      localContentValues.put("reserved3", Integer.valueOf(this.gUc));
     }
-    if ((this.bsY & 0x200) != 0) {
-      localContentValues.put("reserved4", Integer.valueOf(this.fsi));
+    if ((this.dtM & 0x200) != 0) {
+      localContentValues.put("reserved4", Integer.valueOf(this.gUd));
     }
-    if ((this.bsY & 0x400) != 0)
+    if ((this.dtM & 0x400) != 0)
     {
-      if (this.pHP == null)
+      if (this.uKf == null)
       {
         str = "";
         localContentValues.put("reserved5", str);
@@ -115,26 +107,26 @@ public final class d
     }
     else
     {
-      if ((this.bsY & 0x800) != 0)
+      if ((this.dtM & 0x800) != 0)
       {
-        if (this.pHQ != null) {
+        if (this.uKg != null) {
           break label366;
         }
         str = "";
         label287:
         localContentValues.put("reserved6", str);
       }
-      if ((this.bsY & 0x1000) != 0)
+      if ((this.dtM & 0x1000) != 0)
       {
-        if (this.pHR != null) {
+        if (this.uKh != null) {
           break label374;
         }
         str = "";
         label315:
         localContentValues.put("reserved7", str);
       }
-      if ((this.bsY & 0x2000) != 0) {
-        if (this.pHS != null) {
+      if ((this.dtM & 0x2000) != 0) {
+        if (this.uKi != null) {
           break label382;
         }
       }
@@ -142,18 +134,26 @@ public final class d
     label366:
     label374:
     label382:
-    for (String str = "";; str = this.pHS)
+    for (String str = "";; str = this.uKi)
     {
       localContentValues.put("reserved8", str);
-      AppMethodBeat.o(24081);
+      AppMethodBeat.o(27721);
       return localContentValues;
-      str = this.pHP;
+      str = this.uKf;
       break;
-      str = this.pHQ;
+      str = this.uKg;
       break label287;
-      str = this.pHR;
+      str = this.uKh;
       break label315;
     }
+  }
+  
+  public final String ddH()
+  {
+    if (this.extInfo == null) {
+      return "";
+    }
+    return this.extInfo;
   }
   
   public final String getUsername()

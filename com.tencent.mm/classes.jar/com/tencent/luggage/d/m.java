@@ -3,93 +3,93 @@ package com.tencent.luggage.d;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.luggage.bridge.o;
-import com.tencent.luggage.g.d;
 import com.tencent.luggage.webview.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class m
 {
-  private static ConcurrentHashMap<Integer, k> bzr;
+  private static ConcurrentHashMap<Integer, k> caH;
   
   static
   {
-    AppMethodBeat.i(90840);
-    bzr = new ConcurrentHashMap();
-    AppMethodBeat.o(90840);
+    AppMethodBeat.i(140441);
+    caH = new ConcurrentHashMap();
+    AppMethodBeat.o(140441);
   }
   
   public static k a(Context paramContext, Integer paramInteger)
   {
-    AppMethodBeat.i(90838);
-    if ((paramInteger == null) || (!bzr.containsKey(paramInteger)))
+    AppMethodBeat.i(140439);
+    if ((paramInteger == null) || (!caH.containsKey(paramInteger)))
     {
-      AppMethodBeat.o(90838);
+      AppMethodBeat.o(140439);
       return null;
     }
-    paramInteger = (k)bzr.remove(paramInteger);
+    paramInteger = (k)caH.remove(paramInteger);
     paramInteger.setContext(paramContext);
-    paramInteger.uu();
-    d.i(m.class.getSimpleName(), "retrieve, holding size: %d", new Object[] { Integer.valueOf(bzr.size()) });
-    AppMethodBeat.o(90838);
-    return paramInteger;
-  }
-  
-  public static k a(Integer paramInteger)
-  {
-    AppMethodBeat.i(90839);
-    if ((paramInteger == null) || (!bzr.containsKey(paramInteger)))
-    {
-      AppMethodBeat.o(90839);
-      return null;
-    }
-    paramInteger = (k)bzr.remove(paramInteger);
-    paramInteger.uu();
-    AppMethodBeat.o(90839);
+    paramInteger.Bi();
+    ad.i(m.class.getSimpleName(), "retrieve, holding size: %d", new Object[] { Integer.valueOf(caH.size()) });
+    AppMethodBeat.o(140439);
     return paramInteger;
   }
   
   public static Integer a(Context paramContext, k paramk)
   {
-    AppMethodBeat.i(90837);
+    AppMethodBeat.i(140438);
     paramk.setContext(paramContext);
-    paramContext = paramk.bzk.keySet().iterator();
+    paramContext = paramk.caB.keySet().iterator();
     while (paramContext.hasNext())
     {
-      o localo = paramk.byf;
+      o localo = paramk.bZw;
       String str = (String)paramContext.next();
-      localo.byo.remove(str);
+      localo.bZE.remove(str);
     }
-    paramk.bzk.clear();
-    paramk.bze = null;
-    paramk.bzh = null;
-    paramk.bzg = true;
-    bzr.put(Integer.valueOf(paramk.hashCode()), paramk);
-    d.i(m.class.getSimpleName(), "stash, holding size: %d", new Object[] { Integer.valueOf(bzr.size()) });
+    paramk.caB.clear();
+    paramk.cau = null;
+    paramk.cax = null;
+    paramk.caw = true;
+    caH.put(Integer.valueOf(paramk.hashCode()), paramk);
+    ad.i(m.class.getSimpleName(), "stash, holding size: %d", new Object[] { Integer.valueOf(caH.size()) });
     int i = paramk.hashCode();
-    AppMethodBeat.o(90837);
+    AppMethodBeat.o(140438);
     return Integer.valueOf(i);
   }
   
-  public static Integer a(Context paramContext, Class<? extends a> paramClass)
+  public static k b(Integer paramInteger)
   {
-    AppMethodBeat.i(90836);
+    AppMethodBeat.i(140440);
+    if ((paramInteger == null) || (!caH.containsKey(paramInteger)))
+    {
+      AppMethodBeat.o(140440);
+      return null;
+    }
+    paramInteger = (k)caH.remove(paramInteger);
+    paramInteger.Bi();
+    AppMethodBeat.o(140440);
+    return paramInteger;
+  }
+  
+  public static Integer b(Context paramContext, Class<? extends a> paramClass)
+  {
+    AppMethodBeat.i(140437);
     paramContext = new k(paramContext, paramClass);
     if (!TextUtils.isEmpty(null)) {
       paramContext.loadUrl(null);
     }
-    bzr.put(Integer.valueOf(paramContext.hashCode()), paramContext);
-    d.i(m.class.getSimpleName(), "preload, url: %s, holding size: %d", new Object[] { null, Integer.valueOf(bzr.size()) });
+    caH.put(Integer.valueOf(paramContext.hashCode()), paramContext);
+    ad.i(m.class.getSimpleName(), "preload, url: %s, holding size: %d", new Object[] { null, Integer.valueOf(caH.size()) });
     int i = paramContext.hashCode();
-    AppMethodBeat.o(90836);
+    AppMethodBeat.o(140437);
     return Integer.valueOf(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.d.m
  * JD-Core Version:    0.7.0.1
  */

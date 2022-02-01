@@ -7,34 +7,36 @@ import android.os.Message;
 import com.google.android.exoplayer2.g.g;
 import com.google.android.exoplayer2.i.a;
 import com.google.android.exoplayer2.i.x;
+import com.google.android.exoplayer2.source.j.b;
+import com.google.android.exoplayer2.source.q;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-public final class h
+final class h
   implements f
 {
-  private final i avA;
-  final CopyOnWriteArraySet<q.a> avB;
-  private final w.b avC;
-  private final w.a avD;
-  boolean avE;
-  boolean avF;
-  int avG;
-  int avH;
-  int avI;
-  w avJ;
-  Object avK;
-  com.google.android.exoplayer2.source.p avL;
-  g avM;
-  p avN;
-  i.b avO;
-  int avP;
-  int avQ;
-  long avR;
-  private final r[] avx;
-  final com.google.android.exoplayer2.g.h avy;
-  private final g avz;
+  private final r[] aQP;
+  final com.google.android.exoplayer2.g.h aQQ;
+  private final g aQR;
+  private final i aQS;
+  final CopyOnWriteArraySet<q.a> aQT;
+  private final w.b aQU;
+  private final w.a aQV;
+  boolean aQW;
+  boolean aQX;
+  int aQY;
+  int aQZ;
+  int aRa;
+  w aRb;
+  Object aRc;
+  q aRd;
+  g aRe;
+  p aRf;
+  i.b aRg;
+  int aRh;
+  int aRi;
+  long aRj;
   private final Handler eventHandler;
   boolean isLoading;
   private int repeatMode;
@@ -42,26 +44,26 @@ public final class h
   @SuppressLint({"HandlerLeak"})
   public h(r[] paramArrayOfr, com.google.android.exoplayer2.g.h paramh, m paramm)
   {
-    AppMethodBeat.i(94778);
-    new StringBuilder("Init ").append(Integer.toHexString(System.identityHashCode(this))).append(" [ExoPlayerLib/2.5.4] [").append(x.bbt).append("]");
+    AppMethodBeat.i(91891);
+    new StringBuilder("Init ").append(Integer.toHexString(System.identityHashCode(this))).append(" [ExoPlayerLib/2.5.4] [").append(x.bzu).append("]");
     boolean bool;
     if (paramArrayOfr.length > 0)
     {
       bool = true;
       a.checkState(bool);
-      this.avx = ((r[])a.checkNotNull(paramArrayOfr));
-      this.avy = ((com.google.android.exoplayer2.g.h)a.checkNotNull(paramh));
-      this.avF = false;
+      this.aQP = ((r[])a.checkNotNull(paramArrayOfr));
+      this.aQQ = ((com.google.android.exoplayer2.g.h)a.checkNotNull(paramh));
+      this.aQX = false;
       this.repeatMode = 0;
-      this.avG = 1;
-      this.avB = new CopyOnWriteArraySet();
-      this.avz = new g(new com.google.android.exoplayer2.g.f[paramArrayOfr.length]);
-      this.avJ = w.axJ;
-      this.avC = new w.b();
-      this.avD = new w.a();
-      this.avL = com.google.android.exoplayer2.source.p.aQG;
-      this.avM = this.avz;
-      this.avN = p.axk;
+      this.aQY = 1;
+      this.aQT = new CopyOnWriteArraySet();
+      this.aQR = new g(new com.google.android.exoplayer2.g.f[paramArrayOfr.length]);
+      this.aRb = w.aTc;
+      this.aQU = new w.b();
+      this.aQV = new w.a();
+      this.aRd = q.bmg;
+      this.aRe = this.aQR;
+      this.aRf = p.aSC;
       if (Looper.myLooper() == null) {
         break label253;
       }
@@ -69,209 +71,342 @@ public final class h
     label253:
     for (Looper localLooper = Looper.myLooper();; localLooper = Looper.getMainLooper())
     {
-      this.eventHandler = new h.1(this, localLooper);
-      this.avO = new i.b(0L);
-      this.avA = new i(paramArrayOfr, paramh, paramm, this.avF, this.repeatMode, this.eventHandler, this.avO, this);
-      AppMethodBeat.o(94778);
+      this.eventHandler = new Handler(localLooper)
+      {
+        public final void handleMessage(Message paramAnonymousMessage)
+        {
+          AppMethodBeat.i(91890);
+          Object localObject = h.this;
+          switch (paramAnonymousMessage.what)
+          {
+          default: 
+            paramAnonymousMessage = new IllegalStateException();
+            AppMethodBeat.o(91890);
+            throw paramAnonymousMessage;
+          case 0: 
+            ((h)localObject).aRa -= 1;
+            AppMethodBeat.o(91890);
+            return;
+          case 1: 
+            ((h)localObject).aQY = paramAnonymousMessage.arg1;
+            paramAnonymousMessage = ((h)localObject).aQT.iterator();
+            while (paramAnonymousMessage.hasNext()) {
+              ((q.a)paramAnonymousMessage.next()).e(((h)localObject).aQX, ((h)localObject).aQY);
+            }
+            AppMethodBeat.o(91890);
+            return;
+          case 2: 
+            if (paramAnonymousMessage.arg1 != 0) {}
+            for (boolean bool = true;; bool = false)
+            {
+              ((h)localObject).isLoading = bool;
+              paramAnonymousMessage = ((h)localObject).aQT.iterator();
+              while (paramAnonymousMessage.hasNext()) {
+                ((q.a)paramAnonymousMessage.next()).aR(((h)localObject).isLoading);
+              }
+            }
+            AppMethodBeat.o(91890);
+            return;
+          case 3: 
+            if (((h)localObject).aRa == 0)
+            {
+              paramAnonymousMessage = (com.google.android.exoplayer2.g.i)paramAnonymousMessage.obj;
+              ((h)localObject).aQW = true;
+              ((h)localObject).aRd = paramAnonymousMessage.bwp;
+              ((h)localObject).aRe = paramAnonymousMessage.bwq;
+              ((h)localObject).aQQ.ad(paramAnonymousMessage.info);
+              paramAnonymousMessage = ((h)localObject).aQT.iterator();
+              while (paramAnonymousMessage.hasNext()) {
+                ((q.a)paramAnonymousMessage.next()).rK();
+              }
+              AppMethodBeat.o(91890);
+              return;
+            }
+            break;
+          case 4: 
+            int i = ((h)localObject).aQZ - 1;
+            ((h)localObject).aQZ = i;
+            if (i == 0)
+            {
+              ((h)localObject).aRg = ((i.b)paramAnonymousMessage.obj);
+              if (((h)localObject).aRb.isEmpty())
+              {
+                ((h)localObject).aRi = 0;
+                ((h)localObject).aRh = 0;
+                ((h)localObject).aRj = 0L;
+              }
+              if (paramAnonymousMessage.arg1 != 0)
+              {
+                paramAnonymousMessage = ((h)localObject).aQT.iterator();
+                while (paramAnonymousMessage.hasNext()) {
+                  ((q.a)paramAnonymousMessage.next()).rL();
+                }
+                AppMethodBeat.o(91890);
+                return;
+              }
+            }
+            break;
+          case 5: 
+            if (((h)localObject).aQZ == 0)
+            {
+              ((h)localObject).aRg = ((i.b)paramAnonymousMessage.obj);
+              paramAnonymousMessage = ((h)localObject).aQT.iterator();
+              while (paramAnonymousMessage.hasNext()) {
+                ((q.a)paramAnonymousMessage.next()).rL();
+              }
+              AppMethodBeat.o(91890);
+              return;
+            }
+            break;
+          case 6: 
+            paramAnonymousMessage = (i.d)paramAnonymousMessage.obj;
+            ((h)localObject).aQZ -= paramAnonymousMessage.aRX;
+            if (((h)localObject).aRa == 0)
+            {
+              ((h)localObject).aRb = paramAnonymousMessage.aRb;
+              ((h)localObject).aRc = paramAnonymousMessage.aRc;
+              ((h)localObject).aRg = paramAnonymousMessage.aRg;
+              if ((((h)localObject).aQZ == 0) && (((h)localObject).aRb.isEmpty()))
+              {
+                ((h)localObject).aRi = 0;
+                ((h)localObject).aRh = 0;
+                ((h)localObject).aRj = 0L;
+              }
+              paramAnonymousMessage = ((h)localObject).aQT.iterator();
+              while (paramAnonymousMessage.hasNext()) {
+                ((q.a)paramAnonymousMessage.next()).rJ();
+              }
+              AppMethodBeat.o(91890);
+              return;
+            }
+            break;
+          case 7: 
+            paramAnonymousMessage = (p)paramAnonymousMessage.obj;
+            if (!((h)localObject).aRf.equals(paramAnonymousMessage))
+            {
+              ((h)localObject).aRf = paramAnonymousMessage;
+              localObject = ((h)localObject).aQT.iterator();
+              while (((Iterator)localObject).hasNext()) {
+                ((q.a)((Iterator)localObject).next()).b(paramAnonymousMessage);
+              }
+              AppMethodBeat.o(91890);
+              return;
+            }
+            break;
+          case 8: 
+            paramAnonymousMessage = (e)paramAnonymousMessage.obj;
+            localObject = ((h)localObject).aQT.iterator();
+            while (((Iterator)localObject).hasNext()) {
+              ((q.a)((Iterator)localObject).next()).a(paramAnonymousMessage);
+            }
+            AppMethodBeat.o(91890);
+            return;
+          }
+          AppMethodBeat.o(91890);
+        }
+      };
+      this.aRg = new i.b(0L);
+      this.aQS = new i(paramArrayOfr, paramh, paramm, this.aQX, this.repeatMode, this.eventHandler, this.aRg, this);
+      AppMethodBeat.o(91891);
       return;
       bool = false;
       break;
     }
   }
   
-  private int mL()
+  private int rv()
   {
-    AppMethodBeat.i(94789);
-    if ((this.avJ.isEmpty()) || (this.avH > 0))
+    AppMethodBeat.i(91903);
+    if ((this.aRb.isEmpty()) || (this.aQZ > 0))
     {
-      i = this.avP;
-      AppMethodBeat.o(94789);
+      i = this.aRh;
+      AppMethodBeat.o(91903);
       return i;
     }
-    int i = this.avJ.a(this.avO.awx.aPX, this.avD, false).awC;
-    AppMethodBeat.o(94789);
+    int i = this.aRb.a(this.aRg.aRQ.blw, this.aQV, false).aRV;
+    AppMethodBeat.o(91903);
     return i;
   }
   
-  private long r(long paramLong)
+  private long w(long paramLong)
   {
-    AppMethodBeat.i(94794);
-    long l = b.o(paramLong);
+    AppMethodBeat.i(91908);
+    long l = b.t(paramLong);
     paramLong = l;
-    if (!this.avO.awx.pi())
+    if (!this.aRg.aRQ.tQ())
     {
-      this.avJ.a(this.avO.awx.aPX, this.avD, false);
-      paramLong = l + b.o(this.avD.axL);
+      this.aRb.a(this.aRg.aRQ.blw, this.aQV, false);
+      paramLong = l + b.t(this.aQV.aTe);
     }
-    AppMethodBeat.o(94794);
+    AppMethodBeat.o(91908);
     return paramLong;
   }
   
   public final void a(p paramp)
   {
-    AppMethodBeat.i(151935);
+    AppMethodBeat.i(91898);
     p localp = paramp;
     if (paramp == null) {
-      localp = p.axk;
+      localp = p.aSC;
     }
-    this.avA.handler.obtainMessage(4, localp).sendToTarget();
-    AppMethodBeat.o(151935);
+    this.aQS.handler.obtainMessage(4, localp).sendToTarget();
+    AppMethodBeat.o(91898);
   }
   
   public final void a(q.a parama)
   {
-    AppMethodBeat.i(94779);
-    this.avB.add(parama);
-    AppMethodBeat.o(94779);
+    AppMethodBeat.i(91892);
+    this.aQT.add(parama);
+    AppMethodBeat.o(91892);
   }
   
-  public final void a(com.google.android.exoplayer2.source.i parami)
+  public final void a(com.google.android.exoplayer2.source.j paramj)
   {
-    AppMethodBeat.i(94781);
+    AppMethodBeat.i(91894);
     Iterator localIterator;
-    if ((!this.avJ.isEmpty()) || (this.avK != null))
+    if ((!this.aRb.isEmpty()) || (this.aRc != null))
     {
-      this.avJ = w.axJ;
-      this.avK = null;
-      localIterator = this.avB.iterator();
+      this.aRb = w.aTc;
+      this.aRc = null;
+      localIterator = this.aQT.iterator();
       while (localIterator.hasNext()) {
-        ((q.a)localIterator.next()).na();
+        ((q.a)localIterator.next()).rJ();
       }
     }
-    if (this.avE)
+    if (this.aQW)
     {
-      this.avE = false;
-      this.avL = com.google.android.exoplayer2.source.p.aQG;
-      this.avM = this.avz;
-      this.avy.Q(null);
-      localIterator = this.avB.iterator();
+      this.aQW = false;
+      this.aRd = q.bmg;
+      this.aRe = this.aQR;
+      this.aQQ.ad(null);
+      localIterator = this.aQT.iterator();
       while (localIterator.hasNext()) {
-        ((q.a)localIterator.next()).nb();
+        ((q.a)localIterator.next()).rK();
       }
     }
-    this.avI += 1;
-    this.avA.handler.obtainMessage(0, 1, 0, parami).sendToTarget();
-    AppMethodBeat.o(94781);
+    this.aRa += 1;
+    this.aQS.handler.obtainMessage(0, 1, 0, paramj).sendToTarget();
+    AppMethodBeat.o(91894);
   }
   
   public final void a(f.c... paramVarArgs)
   {
-    AppMethodBeat.i(94787);
-    i locali = this.avA;
+    AppMethodBeat.i(91901);
+    i locali = this.aQS;
     if (!locali.released)
     {
-      locali.awe += 1;
+      locali.aRw += 1;
       locali.handler.obtainMessage(11, paramVarArgs).sendToTarget();
     }
-    AppMethodBeat.o(94787);
+    AppMethodBeat.o(91901);
   }
   
-  public final void aC(boolean paramBoolean)
+  public final void aO(boolean paramBoolean)
   {
-    AppMethodBeat.i(94782);
-    if (this.avF != paramBoolean)
+    AppMethodBeat.i(91895);
+    if (this.aQX != paramBoolean)
     {
-      this.avF = paramBoolean;
-      Object localObject = this.avA.handler;
+      this.aQX = paramBoolean;
+      Object localObject = this.aQS.handler;
       if (paramBoolean) {}
       for (int i = 1;; i = 0)
       {
         ((Handler)localObject).obtainMessage(1, i, 0).sendToTarget();
-        localObject = this.avB.iterator();
+        localObject = this.aQT.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((q.a)((Iterator)localObject).next()).b(paramBoolean, this.avG);
+          ((q.a)((Iterator)localObject).next()).e(paramBoolean, this.aQY);
         }
       }
     }
-    AppMethodBeat.o(94782);
+    AppMethodBeat.o(91895);
   }
   
   public final void b(q.a parama)
   {
-    AppMethodBeat.i(94780);
-    this.avB.remove(parama);
-    AppMethodBeat.o(94780);
+    AppMethodBeat.i(91893);
+    this.aQT.remove(parama);
+    AppMethodBeat.o(91893);
   }
   
   public final void b(f.c... paramVarArgs)
   {
-    AppMethodBeat.i(94788);
-    this.avA.b(paramVarArgs);
-    AppMethodBeat.o(94788);
+    AppMethodBeat.i(91902);
+    this.aQS.b(paramVarArgs);
+    AppMethodBeat.o(91902);
   }
   
   public final int getBufferedPercentage()
   {
-    AppMethodBeat.i(94793);
-    if (this.avJ.isEmpty())
+    AppMethodBeat.i(91907);
+    if (this.aRb.isEmpty())
     {
-      AppMethodBeat.o(94793);
+      AppMethodBeat.o(91907);
       return 0;
     }
     long l1 = getBufferedPosition();
     long l2 = getDuration();
     if ((l1 == -9223372036854775807L) || (l2 == -9223372036854775807L))
     {
-      AppMethodBeat.o(94793);
+      AppMethodBeat.o(91907);
       return 0;
     }
     if (l2 == 0L)
     {
-      AppMethodBeat.o(94793);
+      AppMethodBeat.o(91907);
       return 100;
     }
-    int i = x.t((int)(l1 * 100L / l2), 0, 100);
-    AppMethodBeat.o(94793);
+    int i = x.v((int)(l1 * 100L / l2), 0, 100);
+    AppMethodBeat.o(91907);
     return i;
   }
   
   public final long getBufferedPosition()
   {
-    AppMethodBeat.i(94792);
-    if ((this.avJ.isEmpty()) || (this.avH > 0))
+    AppMethodBeat.i(91906);
+    if ((this.aRb.isEmpty()) || (this.aQZ > 0))
     {
-      l = this.avR;
-      AppMethodBeat.o(94792);
+      l = this.aRj;
+      AppMethodBeat.o(91906);
       return l;
     }
-    long l = r(this.avO.awB);
-    AppMethodBeat.o(94792);
+    long l = w(this.aRg.aRU);
+    AppMethodBeat.o(91906);
     return l;
   }
   
   public final long getCurrentPosition()
   {
-    AppMethodBeat.i(94791);
-    if ((this.avJ.isEmpty()) || (this.avH > 0))
+    AppMethodBeat.i(91905);
+    if ((this.aRb.isEmpty()) || (this.aQZ > 0))
     {
-      l = this.avR;
-      AppMethodBeat.o(94791);
+      l = this.aRj;
+      AppMethodBeat.o(91905);
       return l;
     }
-    long l = r(this.avO.awA);
-    AppMethodBeat.o(94791);
+    long l = w(this.aRg.aRT);
+    AppMethodBeat.o(91905);
     return l;
   }
   
   public final long getDuration()
   {
-    AppMethodBeat.i(94790);
-    if (this.avJ.isEmpty())
+    AppMethodBeat.i(91904);
+    if (this.aRb.isEmpty())
     {
-      AppMethodBeat.o(94790);
+      AppMethodBeat.o(91904);
       return -9223372036854775807L;
     }
-    if ((!this.avJ.isEmpty()) && (this.avH == 0) && (this.avO.awx.pi())) {}
+    if ((!this.aRb.isEmpty()) && (this.aQZ == 0) && (this.aRg.aRQ.tQ())) {}
     for (int i = 1; i != 0; i = 0)
     {
-      com.google.android.exoplayer2.source.i.b localb = this.avO.awx;
-      this.avJ.a(localb.aPX, this.avD, false);
-      l = b.o(this.avD.aU(localb.aPY, localb.aPZ));
-      AppMethodBeat.o(94790);
+      j.b localb = this.aRg.aRQ;
+      this.aRb.a(localb.blw, this.aQV, false);
+      l = b.t(this.aQV.bf(localb.blx, localb.bly));
+      AppMethodBeat.o(91904);
       return l;
     }
-    long l = b.o(this.avJ.a(mL(), this.avC).axh);
-    AppMethodBeat.o(94790);
+    long l = b.t(this.aRb.a(rv(), this.aQU).aSz);
+    AppMethodBeat.o(91904);
     return l;
   }
   
@@ -280,93 +415,93 @@ public final class h
     return this.isLoading;
   }
   
-  public final int mJ()
-  {
-    return this.avG;
-  }
-  
-  public final boolean mK()
-  {
-    return this.avF;
-  }
-  
   public final void release()
   {
-    AppMethodBeat.i(94786);
-    new StringBuilder("Release ").append(Integer.toHexString(System.identityHashCode(this))).append(" [ExoPlayerLib/2.5.4] [").append(x.bbt).append("] [").append(j.mW()).append("]");
-    this.avA.release();
+    AppMethodBeat.i(91900);
+    new StringBuilder("Release ").append(Integer.toHexString(System.identityHashCode(this))).append(" [ExoPlayerLib/2.5.4] [").append(x.bzu).append("] [").append(j.rF()).append("]");
+    this.aQS.release();
     this.eventHandler.removeCallbacksAndMessages(null);
-    AppMethodBeat.o(94786);
+    AppMethodBeat.o(91900);
+  }
+  
+  public final int rt()
+  {
+    return this.aQY;
+  }
+  
+  public final boolean ru()
+  {
+    return this.aQX;
   }
   
   public final void seekTo(long paramLong)
   {
-    AppMethodBeat.i(94784);
-    int j = mL();
-    if ((j < 0) || ((!this.avJ.isEmpty()) && (j >= this.avJ.ne())))
+    AppMethodBeat.i(91897);
+    int j = rv();
+    if ((j < 0) || ((!this.aRb.isEmpty()) && (j >= this.aRb.rP())))
     {
-      localObject = new l(this.avJ, j, paramLong);
-      AppMethodBeat.o(94784);
+      localObject = new l(this.aRb, j, paramLong);
+      AppMethodBeat.o(91897);
       throw ((Throwable)localObject);
     }
-    this.avH += 1;
-    this.avP = j;
-    if (this.avJ.isEmpty()) {}
+    this.aQZ += 1;
+    this.aRh = j;
+    if (this.aRb.isEmpty()) {}
     int i;
-    for (this.avQ = 0; paramLong == -9223372036854775807L; this.avQ = i)
+    for (this.aRi = 0; paramLong == -9223372036854775807L; this.aRi = i)
     {
-      this.avR = 0L;
-      this.avA.a(this.avJ, j, -9223372036854775807L);
-      AppMethodBeat.o(94784);
+      this.aRj = 0L;
+      this.aQS.a(this.aRb, j, -9223372036854775807L);
+      AppMethodBeat.o(91897);
       return;
-      this.avJ.a(j, this.avC);
+      this.aRb.a(j, this.aQU);
       if (paramLong == -9223372036854775807L) {}
-      for (long l1 = this.avC.axY;; l1 = b.p(paramLong))
+      for (long l1 = this.aQU.aTr;; l1 = b.u(paramLong))
       {
-        i = this.avC.axW;
-        long l2 = this.avC.axZ + l1;
-        for (l1 = this.avJ.a(i, this.avD, false).axh; (l1 != -9223372036854775807L) && (l2 >= l1) && (i < this.avC.axX); l1 = ((w)localObject).a(i, this.avD, false).axh)
+        i = this.aQU.aTp;
+        long l2 = this.aQU.aTs + l1;
+        for (l1 = this.aRb.a(i, this.aQV, false).aSz; (l1 != -9223372036854775807L) && (l2 >= l1) && (i < this.aQU.aTq); l1 = ((w)localObject).a(i, this.aQV, false).aSz)
         {
           l2 -= l1;
-          localObject = this.avJ;
+          localObject = this.aRb;
           i += 1;
         }
       }
     }
-    this.avR = paramLong;
-    this.avA.a(this.avJ, j, b.p(paramLong));
-    Object localObject = this.avB.iterator();
+    this.aRj = paramLong;
+    this.aQS.a(this.aRb, j, b.u(paramLong));
+    Object localObject = this.aQT.iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((q.a)((Iterator)localObject).next()).nc();
+      ((q.a)((Iterator)localObject).next()).rL();
     }
-    AppMethodBeat.o(94784);
+    AppMethodBeat.o(91897);
   }
   
   public final void setRepeatMode(int paramInt)
   {
-    AppMethodBeat.i(94783);
+    AppMethodBeat.i(91896);
     if (this.repeatMode != paramInt)
     {
       this.repeatMode = paramInt;
-      this.avA.handler.obtainMessage(12, paramInt, 0).sendToTarget();
-      Iterator localIterator = this.avB.iterator();
+      this.aQS.handler.obtainMessage(12, paramInt, 0).sendToTarget();
+      Iterator localIterator = this.aQT.iterator();
       while (localIterator.hasNext()) {
-        ((q.a)localIterator.next()).ai(paramInt);
+        ((q.a)localIterator.next()).aA(paramInt);
       }
     }
-    AppMethodBeat.o(94783);
+    AppMethodBeat.o(91896);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(94785);
-    this.avA.handler.sendEmptyMessage(5);
-    AppMethodBeat.o(94785);
+    AppMethodBeat.i(91899);
+    this.aQS.handler.sendEmptyMessage(5);
+    AppMethodBeat.o(91899);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.h
  * JD-Core Version:    0.7.0.1
  */

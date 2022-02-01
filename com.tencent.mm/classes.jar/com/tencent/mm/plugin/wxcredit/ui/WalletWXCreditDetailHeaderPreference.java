@@ -12,9 +12,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class WalletWXCreditDetailHeaderPreference
   extends Preference
 {
-  TextView gpq;
+  TextView BLk;
+  TextView ibG;
   private LayoutInflater mInflater;
-  TextView vIy;
   
   public WalletWXCreditDetailHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,35 +24,35 @@ public class WalletWXCreditDetailHeaderPreference
   public WalletWXCreditDetailHeaderPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(48717);
+    AppMethodBeat.i(72361);
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(48717);
+    setLayoutResource(2131494804);
+    AppMethodBeat.o(72361);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(48719);
+    AppMethodBeat.i(72363);
     super.onBindView(paramView);
-    this.gpq = ((TextView)paramView.findViewById(2131829432));
-    this.vIy = ((TextView)paramView.findViewById(2131829431));
-    AppMethodBeat.o(48719);
+    this.ibG = ((TextView)paramView.findViewById(2131306853));
+    this.BLk = ((TextView)paramView.findViewById(2131306860));
+    AppMethodBeat.o(72363);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(48718);
+    AppMethodBeat.i(72362);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    this.mInflater.inflate(2130971270, localViewGroup);
-    AppMethodBeat.o(48718);
+    this.mInflater.inflate(2131496047, localViewGroup);
+    AppMethodBeat.o(72362);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditDetailHeaderPreference
  * JD-Core Version:    0.7.0.1
  */

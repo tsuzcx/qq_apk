@@ -1,9 +1,11 @@
 package com.tencent.mm.plugin.game.luggage.c.a;
 
 import android.content.Context;
+import com.tencent.luggage.d.e;
 import com.tencent.luggage.d.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bcz;
+import com.tencent.mm.plugin.webview.luggage.f;
+import com.tencent.mm.protocal.protobuf.bpp;
 
 public final class h
   extends a
@@ -13,16 +15,16 @@ public final class h
     super(1);
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.e parame, bcz parambcz)
+  public final void a(Context paramContext, f paramf, bpp parambpp)
   {
-    AppMethodBeat.i(135908);
-    parame.byJ.un().bC(parambcz.wXs);
-    AppMethodBeat.o(135908);
+    AppMethodBeat.i(83113);
+    paramf.bZZ.Bb().bS(parambpp.Doo);
+    AppMethodBeat.o(83113);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.c.a.h
  * JD-Core Version:    0.7.0.1
  */

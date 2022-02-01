@@ -3,11 +3,14 @@ package com.tencent.mm.plugin.emoji.a;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.o;
+import com.tencent.mm.aw.o;
 import com.tencent.mm.plugin.emoji.a.a.f;
-import com.tencent.mm.plugin.emoji.e.g;
-import com.tencent.mm.pluginsdk.f.h;
+import com.tencent.mm.plugin.emoji.e.e;
+import com.tencent.mm.pluginsdk.g.h;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
 
 public final class d
@@ -18,60 +21,108 @@ public final class d
     super(paramContext);
   }
   
+  public final void Ap(int paramInt) {}
+  
+  public final void Aq(int paramInt) {}
+  
+  public final void Ar(int paramInt) {}
+  
   public final View b(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(52738);
-    paramViewGroup = (d.a)paramView.getTag();
-    Object localObject = uj(paramInt);
+    AppMethodBeat.i(108314);
+    paramViewGroup = (a)paramView.getTag();
+    Object localObject = As(paramInt);
     if ((paramViewGroup != null) && (localObject != null))
     {
-      ((f)localObject).lfe = false;
-      ((f)localObject).lff = false;
-      localObject = ((f)localObject).lfa;
+      ((f)localObject).ouP = false;
+      ((f)localObject).ouQ = false;
+      localObject = ((f)localObject).ouL;
       if (localObject != null)
       {
         paramViewGroup.setTitle(((EmotionSummary)localObject).PackName);
-        o.ahG().a(((EmotionSummary)localObject).IconUrl, paramViewGroup.bko(), g.dK(((EmotionSummary)localObject).ProductID, ((EmotionSummary)localObject).IconUrl));
-        paramViewGroup.Kg(h.aY("yyyy-MM-dd", ((EmotionSummary)localObject).Timestamp * 1000L));
+        o.ayJ().a(((EmotionSummary)localObject).IconUrl, paramViewGroup.bUd(), e.eX(((EmotionSummary)localObject).ProductID, ((EmotionSummary)localObject).IconUrl));
+        paramViewGroup.Tm(h.bI("yyyy-MM-dd", ((EmotionSummary)localObject).Timestamp * 1000L));
       }
     }
-    AppMethodBeat.o(52738);
+    AppMethodBeat.o(108314);
     return paramView;
   }
   
-  public final int bkC()
+  public final int bUr()
   {
     return 0;
   }
   
-  public final int bkD()
+  public final int bUs()
   {
     return 0;
   }
   
-  public final int bkE()
+  public final int bUt()
   {
     return 0;
   }
   
   public final a d(Context paramContext, View paramView)
   {
-    AppMethodBeat.i(52737);
-    paramContext = new d.a(this, paramContext, paramView);
-    paramContext.a(this.leP);
-    AppMethodBeat.o(52737);
+    AppMethodBeat.i(108313);
+    paramContext = new a(paramContext, paramView);
+    paramContext.a(this.ouA);
+    AppMethodBeat.o(108313);
     return paramContext;
   }
   
-  public final void ug(int paramInt) {}
-  
-  public final void uh(int paramInt) {}
-  
-  public final void ui(int paramInt) {}
+  public final class a
+    extends a
+  {
+    public a(Context paramContext, View paramView)
+    {
+      super(paramView);
+    }
+    
+    protected final void bTZ()
+    {
+      AppMethodBeat.i(108310);
+      this.otm.setVisibility(8);
+      this.otp.setVisibility(8);
+      this.oto.setVisibility(0);
+      this.otq.setVisibility(8);
+      this.otu.setVisibility(8);
+      this.otv.setVisibility(8);
+      this.otl.setVisibility(0);
+      this.kEu.setVisibility(0);
+      this.ots.setVisibility(0);
+      this.otr.setVisibility(0);
+      this.otr.setBackgroundDrawable(null);
+      this.ott.setVisibility(0);
+      AppMethodBeat.o(108310);
+    }
+    
+    protected final int[] bUa()
+    {
+      AppMethodBeat.i(108311);
+      int i = com.tencent.mm.cd.a.ao(this.mContext, 2131166238);
+      AppMethodBeat.o(108311);
+      return new int[] { i, i };
+    }
+    
+    protected final int bUb()
+    {
+      AppMethodBeat.i(108312);
+      int i = com.tencent.mm.cd.a.ao(this.mContext, 2131166239);
+      AppMethodBeat.o(108312);
+      return i;
+    }
+    
+    protected final boolean bUk()
+    {
+      return true;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.d
  * JD-Core Version:    0.7.0.1
  */

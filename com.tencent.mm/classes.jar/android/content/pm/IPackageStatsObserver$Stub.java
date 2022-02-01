@@ -27,7 +27,7 @@ public abstract class IPackageStatsObserver$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IPackageStatsObserver))) {
       return (IPackageStatsObserver)localIInterface;
     }
-    return new IPackageStatsObserver.Stub.Proxy(paramIBinder);
+    return new Proxy(paramIBinder);
   }
   
   public IBinder asBinder()
@@ -62,10 +62,66 @@ public abstract class IPackageStatsObserver$Stub
       break;
     }
   }
+  
+  static class Proxy
+    implements IPackageStatsObserver
+  {
+    private IBinder mRemote;
+    
+    Proxy(IBinder paramIBinder)
+    {
+      this.mRemote = paramIBinder;
+    }
+    
+    public IBinder asBinder()
+    {
+      return this.mRemote;
+    }
+    
+    public String getInterfaceDescriptor()
+    {
+      return "IPackageStatsObserver";
+    }
+    
+    public void onGetStatsCompleted(PackageStats paramPackageStats, boolean paramBoolean)
+    {
+      int i = 1;
+      Parcel localParcel = Parcel.obtain();
+      for (;;)
+      {
+        try
+        {
+          localParcel.writeInterfaceToken("IPackageStatsObserver");
+          if (paramPackageStats != null)
+          {
+            localParcel.writeInt(1);
+            paramPackageStats.writeToParcel(localParcel, 0);
+            break label83;
+            localParcel.writeInt(i);
+            this.mRemote.transact(1, localParcel, null, 1);
+          }
+          else
+          {
+            localParcel.writeInt(0);
+          }
+        }
+        finally
+        {
+          localParcel.recycle();
+        }
+        label83:
+        while (!paramBoolean)
+        {
+          i = 0;
+          break;
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.content.pm.IPackageStatsObserver.Stub
  * JD-Core Version:    0.7.0.1
  */

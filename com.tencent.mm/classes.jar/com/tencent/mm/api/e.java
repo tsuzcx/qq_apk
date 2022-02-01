@@ -1,28 +1,58 @@
 package com.tencent.mm.api;
 
+import android.content.Context;
+import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
 
-public enum e
+public abstract class e
+  extends FrameLayout
 {
-  static
+  w cJp = new w()
   {
-    AppMethodBeat.i(73801);
-    bVV = new e("DEFAULT", 0);
-    bVW = new e("DOODLE", 1);
-    bVX = new e("TEXT", 2);
-    bVY = new e("EMOJI", 3);
-    bVZ = new e("MOSAIC", 4);
-    bWa = new e("CROP_PHOTO", 5);
-    bWb = new e("CROP_VIDEO", 6);
-    bWc = new e[] { bVV, bVW, bVX, bVY, bVZ, bWa, bWb };
-    AppMethodBeat.o(73801);
+    public final void a(g paramAnonymousg)
+    {
+      AppMethodBeat.i(149423);
+      ad.i("MicroMsg.DrawingView", "Default [onSelectedFeature] features:%s", new Object[] { paramAnonymousg.name() });
+      AppMethodBeat.o(149423);
+    }
+    
+    public final void a(g paramAnonymousg, int paramAnonymousInt, Object paramAnonymousObject)
+    {
+      AppMethodBeat.i(169116);
+      ad.i("MicroMsg.DrawingView", "Default [onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymousg.name(), Integer.valueOf(paramAnonymousInt) });
+      AppMethodBeat.o(169116);
+    }
+    
+    public final void bV(boolean paramAnonymousBoolean) {}
+  };
+  
+  public e(Context paramContext)
+  {
+    super(paramContext);
   }
   
-  private e() {}
+  public w getSelectedFeatureListener()
+  {
+    return this.cJp;
+  }
+  
+  public abstract void setActionBarCallback(i parami);
+  
+  public abstract void setActionBarVisible(boolean paramBoolean);
+  
+  public abstract void setAutoShowFooterAndBar(boolean paramBoolean);
+  
+  public abstract void setFooterVisible(boolean paramBoolean);
+  
+  public void setSelectedFeatureListener(w paramw)
+  {
+    this.cJp = paramw;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.api.e
  * JD-Core Version:    0.7.0.1
  */

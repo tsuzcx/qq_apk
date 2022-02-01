@@ -3,77 +3,108 @@ package com.tencent.mm.roomsdk.a.c;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.p;
 
 public final class b
   extends a
 {
-  f fur;
-  public m uAW;
+  public n AxZ;
+  com.tencent.mm.al.g gWw;
   
   public b(boolean paramBoolean)
   {
-    AppMethodBeat.i(80258);
-    this.fur = new b.1(this);
-    this.yjH = paramBoolean;
-    AppMethodBeat.o(80258);
+    AppMethodBeat.i(152775);
+    this.gWw = new com.tencent.mm.al.g()
+    {
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+      {
+        AppMethodBeat.i(152774);
+        com.tencent.mm.kernel.g.afC();
+        com.tencent.mm.kernel.g.afA().gcy.b(paramAnonymousn.getType(), b.this.gWw);
+        if (b.this.tipDialog != null) {
+          b.this.tipDialog.dismiss();
+        }
+        if (b.this.AxZ.equals(paramAnonymousn))
+        {
+          if ((paramAnonymousn instanceof com.tencent.mm.roomsdk.a.a)) {
+            ((com.tencent.mm.roomsdk.a.a)paramAnonymousn).a(b.this.ENl);
+          }
+          if (b.this.ENl != null) {
+            b.this.ENl.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, b.this.ENl);
+          }
+          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+          {
+            if (b.this.ENj != null)
+            {
+              b.this.ENj.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, b.this.ENj);
+              AppMethodBeat.o(152774);
+            }
+          }
+          else if (b.this.ENk != null) {
+            b.this.ENk.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, b.this.ENk);
+          }
+        }
+        AppMethodBeat.o(152774);
+      }
+    };
+    this.ENi = paramBoolean;
+    AppMethodBeat.o(152775);
   }
   
   public final void a(Context paramContext, String paramString, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(80261);
-    if (this.uAW == null)
+    AppMethodBeat.i(152778);
+    if (this.AxZ == null)
     {
-      AppMethodBeat.o(80261);
+      AppMethodBeat.o(152778);
       return;
     }
     this.tipDialog = h.b(paramContext, paramString, paramBoolean, paramOnCancelListener);
-    drn();
-    AppMethodBeat.o(80261);
+    eDp();
+    AppMethodBeat.o(152778);
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(80259);
-    if (this.uAW == null)
+    AppMethodBeat.i(152776);
+    if (this.AxZ == null)
     {
-      AppMethodBeat.o(80259);
+      AppMethodBeat.o(152776);
       return;
     }
-    g.RM();
-    g.RK().eHt.a(this.uAW);
-    g.RM();
-    g.RK().eHt.b(this.uAW.getType(), this.fur);
-    AppMethodBeat.o(80259);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a(this.AxZ);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.b(this.AxZ.getType(), this.gWw);
+    AppMethodBeat.o(152776);
   }
   
-  public final void drn()
+  public final void eDp()
   {
-    AppMethodBeat.i(80260);
-    if (this.uAW == null)
+    AppMethodBeat.i(152777);
+    if (this.AxZ == null)
     {
-      AppMethodBeat.o(80260);
+      AppMethodBeat.o(152777);
       return;
     }
-    ab.i("MicroMsg.RoomCallbackFactory", "request scene %s", new Object[] { this.uAW });
-    if ((this.tipDialog != null) || (this.yjI != null) || (this.yjJ != null) || (this.yjK != null))
+    ad.i("MicroMsg.RoomCallbackFactory", "request scene %s", new Object[] { this.AxZ });
+    if ((this.tipDialog != null) || (this.ENj != null) || (this.ENk != null) || (this.ENl != null))
     {
-      g.RM();
-      g.RK().eHt.a(this.uAW.getType(), this.fur);
+      com.tencent.mm.kernel.g.afC();
+      com.tencent.mm.kernel.g.afA().gcy.a(this.AxZ.getType(), this.gWw);
     }
-    g.RM();
-    g.RK().eHt.a(this.uAW, 0);
-    AppMethodBeat.o(80260);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a(this.AxZ, 0);
+    AppMethodBeat.o(152777);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.roomsdk.a.c.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,66 +5,67 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 
 public class SplashFallbackActivity
-  extends Activity
+  extends HellActivity
 {
+  private Runnable FbJ;
   private Handler mHandler;
-  private Runnable yvI;
   
   public SplashFallbackActivity()
   {
-    AppMethodBeat.i(114874);
-    this.yvI = new Runnable()
+    AppMethodBeat.i(40668);
+    this.FbJ = new Runnable()
     {
-      private long yvJ = -1L;
+      private long FbK = -1L;
       
       public final void run()
       {
-        AppMethodBeat.i(114873);
-        if (this.yvJ == -1L) {
-          this.yvJ = System.currentTimeMillis();
+        AppMethodBeat.i(40667);
+        if (this.FbK == -1L) {
+          this.FbK = System.currentTimeMillis();
         }
-        if (!SplashFallbackActivity.dvH())
+        if (!SplashFallbackActivity.eIw())
         {
-          if (System.currentTimeMillis() - this.yvJ >= 80000L)
+          if (System.currentTimeMillis() - this.FbK >= 80000L)
           {
-            h.c("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone timeout", new Object[0]);
+            h.b("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone timeout", new Object[0]);
             SplashFallbackActivity.this.finish();
-            SplashFallbackActivity.this.overridePendingTransition(2131034276, 2131034274);
-            AppMethodBeat.o(114873);
+            SplashFallbackActivity.this.overridePendingTransition(2130772154, 2130772152);
+            AppMethodBeat.o(40667);
             return;
           }
           SplashFallbackActivity.b(SplashFallbackActivity.this).postDelayed(SplashFallbackActivity.a(SplashFallbackActivity.this), 100L);
-          AppMethodBeat.o(114873);
+          AppMethodBeat.o(40667);
           return;
         }
-        h.c("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone true", new Object[0]);
+        h.b("MicroMsg.FallbackSplash", "checkIfMainProcessStartupDone true", new Object[0]);
         SplashFallbackActivity.this.finish();
-        SplashFallbackActivity.this.overridePendingTransition(2131034276, 2131034274);
-        AppMethodBeat.o(114873);
+        SplashFallbackActivity.this.overridePendingTransition(2130772154, 2130772152);
+        AppMethodBeat.o(40667);
       }
     };
-    AppMethodBeat.o(114874);
+    AppMethodBeat.o(40668);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(114876);
-    h.c("MicroMsg.FallbackSplash", "block onBackPressed", new Object[0]);
-    AppMethodBeat.o(114876);
+    AppMethodBeat.i(40670);
+    h.b("MicroMsg.FallbackSplash", "block onBackPressed", new Object[0]);
+    AppMethodBeat.o(40670);
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(114875);
+    AppMethodBeat.i(40669);
     super.onCreate(paramBundle);
-    h.c("MicroMsg.FallbackSplash", "onCreate", new Object[0]);
+    h.b("MicroMsg.FallbackSplash", "onCreate", new Object[0]);
     paramBundle = new HandlerThread("splash-activity");
     paramBundle.start();
     this.mHandler = new Handler(paramBundle.getLooper());
-    this.mHandler.postDelayed(this.yvI, 100L);
-    AppMethodBeat.o(114875);
+    this.mHandler.postDelayed(this.FbJ, 100L);
+    AppMethodBeat.o(40669);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

@@ -19,23 +19,37 @@ public class FaceProNative$FaceStatus
   
   static
   {
-    AppMethodBeat.i(43);
-    CREATOR = new FaceProNative.FaceStatus.1();
-    AppMethodBeat.o(43);
+    AppMethodBeat.i(103562);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final FaceProNative.FaceStatus createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(103556);
+        paramAnonymousParcel = new FaceProNative.FaceStatus(paramAnonymousParcel);
+        AppMethodBeat.o(103556);
+        return paramAnonymousParcel;
+      }
+      
+      public final FaceProNative.FaceStatus[] newArray(int paramAnonymousInt)
+      {
+        return new FaceProNative.FaceStatus[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(103562);
   }
   
   public FaceProNative$FaceStatus() {}
   
   protected FaceProNative$FaceStatus(Parcel paramParcel)
   {
-    AppMethodBeat.i(40);
+    AppMethodBeat.i(103559);
     this.result = paramParcel.readInt();
     this.facerect = ((Rect)paramParcel.readParcelable(Rect.class.getClassLoader()));
     this.xys = paramParcel.createFloatArray();
     this.pitch = paramParcel.readFloat();
     this.yaw = paramParcel.readFloat();
     this.roll = paramParcel.readFloat();
-    AppMethodBeat.o(40);
+    AppMethodBeat.o(103559);
   }
   
   public int describeContents()
@@ -45,27 +59,27 @@ public class FaceProNative$FaceStatus
   
   public String toString()
   {
-    AppMethodBeat.i(42);
+    AppMethodBeat.i(103561);
     String str = "FaceStatus{result=" + this.result + ", facerect=" + this.facerect + ", pitch=" + this.pitch + ", yaw=" + this.yaw + ", roll=" + this.roll + '}';
-    AppMethodBeat.o(42);
+    AppMethodBeat.o(103561);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(41);
+    AppMethodBeat.i(103560);
     paramParcel.writeInt(this.result);
     paramParcel.writeParcelable(this.facerect, paramInt);
     paramParcel.writeFloatArray(this.xys);
     paramParcel.writeFloat(this.pitch);
     paramParcel.writeFloat(this.yaw);
     paramParcel.writeFloat(this.roll);
-    AppMethodBeat.o(41);
+    AppMethodBeat.o(103560);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.FaceProNative.FaceStatus
  * JD-Core Version:    0.7.0.1
  */

@@ -2,28 +2,33 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.Context;
 import com.tencent.mm.plugin.account.friend.a.a;
-import com.tencent.mm.ui.p;
+import com.tencent.mm.ui.q;
 
 public abstract class b
-  extends p<a>
+  extends q<a>
 {
   public b(Context paramContext, a parama)
   {
     super(paramContext, parama);
   }
   
-  public void a(b.a parama) {}
+  public void BW(String paramString) {}
   
-  public void wQ(String paramString) {}
+  public void a(a parama) {}
+  
+  public static abstract interface a
+  {
+    public abstract void pY(int paramInt);
+  }
   
   public static abstract interface b
   {
-    public abstract void c(int paramInt1, String paramString, int paramInt2);
+    public abstract void d(int paramInt1, String paramString, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.b
  * JD-Core Version:    0.7.0.1
  */

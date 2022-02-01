@@ -6,33 +6,33 @@ import oicq.wlogin_sdk.tools.util;
 public final class z
   extends a
 {
-  public int CNL = 0;
-  public int CNM = 0;
+  public int Kjs = 0;
+  public int Kjt = 0;
   
   public z()
   {
-    this.CMD = 293;
+    this.Kik = 293;
   }
   
-  public final Boolean erf()
+  public final Boolean fMI()
   {
-    AppMethodBeat.i(96476);
-    if (this.CNn < 2)
+    AppMethodBeat.i(88115);
+    if (this.KiU < 2)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96476);
+      AppMethodBeat.o(88115);
       return localBoolean;
     }
-    this.CNL = util.ae(this.CMx, this.CNm);
-    if (this.CNn < this.CNL + 2 + 2)
+    this.Kjs = util.ai(this.Kie, this.KiT);
+    if (this.KiU < this.Kjs + 2 + 2)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96476);
+      AppMethodBeat.o(88115);
       return localBoolean;
     }
-    this.CNM = util.ae(this.CMx, this.CNm + 2 + this.CNL);
+    this.Kjt = util.ai(this.Kie, this.KiT + 2 + this.Kjs);
     Boolean localBoolean = Boolean.TRUE;
-    AppMethodBeat.o(96476);
+    AppMethodBeat.o(88115);
     return localBoolean;
   }
 }

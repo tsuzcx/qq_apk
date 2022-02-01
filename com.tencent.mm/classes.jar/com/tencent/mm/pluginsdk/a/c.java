@@ -1,34 +1,34 @@
 package com.tencent.mm.pluginsdk.a;
 
-import com.tencent.mm.pluginsdk.p.b;
+import com.tencent.mm.pluginsdk.n.b;
 
 public final class c
-  implements p.b
+  implements n.b
 {
-  public final int clg()
+  public final int doU()
   {
     return 0;
   }
   
-  public final void clh() {}
+  public final void doV() {}
   
-  public final boolean cli()
+  public final boolean doW()
   {
     return false;
   }
   
-  public final void clj() {}
+  public final void doX() {}
   
-  public final void clk() {}
+  public final void doY() {}
   
-  public final boolean cll()
+  public final boolean doZ()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.a.c
  * JD-Core Version:    0.7.0.1
  */

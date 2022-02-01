@@ -7,69 +7,102 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Looper;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class MaskImageButton
   extends ImageView
 {
-  private RectF Awn;
-  private int Awo;
-  private int Awp;
+  private RectF Hsr;
+  private int Hss;
+  private int Hst;
   private int a;
   private int b;
-  public Object eQq;
   private int g;
+  public Object glT;
   private Paint paint;
   private int r;
-  private ak rER;
-  private Runnable rES;
+  private ap xkC;
+  private Runnable xkD;
   
   public MaskImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(107743);
-    this.Awn = new RectF();
+    AppMethodBeat.i(143201);
+    this.Hsr = new RectF();
     this.paint = null;
     this.a = 90;
     this.r = 0;
     this.g = 0;
     this.b = 0;
-    this.Awo = 0;
-    this.Awp = 0;
+    this.Hss = 0;
+    this.Hst = 0;
     this.paint = new Paint();
     this.paint.setColor(Color.argb(this.a, this.r, this.g, this.b));
-    this.rER = new ak(Looper.getMainLooper());
-    this.rES = new MaskImageButton.1(this);
-    super.setOnTouchListener(new MaskImageButton.2(this));
-    AppMethodBeat.o(107743);
+    this.xkC = new ap(Looper.getMainLooper());
+    this.xkD = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(143199);
+        MaskImageButton.this.setPressed(false);
+        MaskImageButton.this.invalidate();
+        AppMethodBeat.o(143199);
+      }
+    };
+    super.setOnTouchListener(new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(143200);
+        switch (paramAnonymousMotionEvent.getAction())
+        {
+        }
+        while ((!MaskImageButton.this.isClickable()) && (!MaskImageButton.this.isLongClickable()))
+        {
+          AppMethodBeat.o(143200);
+          return true;
+          paramAnonymousView.setPressed(true);
+          paramAnonymousView.invalidate();
+          MaskImageButton.b(MaskImageButton.this).removeCallbacks(MaskImageButton.a(MaskImageButton.this));
+          continue;
+          MaskImageButton.b(MaskImageButton.this).post(MaskImageButton.a(MaskImageButton.this));
+        }
+        AppMethodBeat.o(143200);
+        return false;
+      }
+    });
+    AppMethodBeat.o(143201);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(107744);
+    AppMethodBeat.i(143202);
     super.onDraw(paramCanvas);
     if (isPressed())
     {
-      this.Awn.set(getPaddingLeft() + 0, getPaddingTop() + 0, this.Awo - getPaddingRight(), this.Awp - getPaddingBottom());
-      paramCanvas.drawRoundRect(this.Awn, getMeasuredHeight() / 10, getMeasuredHeight() / 10, this.paint);
+      this.Hsr.set(getPaddingLeft() + 0, getPaddingTop() + 0, this.Hss - getPaddingRight(), this.Hst - getPaddingBottom());
+      paramCanvas.drawRoundRect(this.Hsr, getMeasuredHeight() / 10, getMeasuredHeight() / 10, this.paint);
     }
-    AppMethodBeat.o(107744);
+    AppMethodBeat.o(143202);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(107745);
+    AppMethodBeat.i(143203);
     super.onMeasure(paramInt1, paramInt2);
-    this.Awo = getMeasuredWidth();
-    this.Awp = getMeasuredHeight();
-    AppMethodBeat.o(107745);
+    this.Hss = getMeasuredWidth();
+    this.Hst = getMeasuredHeight();
+    AppMethodBeat.o(143203);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MaskImageButton
  * JD-Core Version:    0.7.0.1
  */

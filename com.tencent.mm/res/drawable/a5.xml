@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_window_focused="false" android:drawable="@android:color/transparent" />
-    <item android:state_focused="true" android:state_enabled="false" android:state_pressed="true" android:drawable="@drawable/aae" />
-    <item android:state_focused="true" android:state_enabled="false" android:drawable="@drawable/aae" />
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/a3" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/a3" />
-    <item android:state_focused="true" android:drawable="@drawable/aa_" />
+    <item android:state_focused="true" android:state_enabled="false" android:state_pressed="true" android:drawable="@drawable/al4" />
+    <item android:state_focused="true" android:state_enabled="false" android:drawable="@drawable/al4" />
+    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/a8" />
+    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/a8" />
+    <item android:state_focused="true" android:drawable="@drawable/al0" />
+    <item android:drawable="@android:color/transparent" />
 </selector>

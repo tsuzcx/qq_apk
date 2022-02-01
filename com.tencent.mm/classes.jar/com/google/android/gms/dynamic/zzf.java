@@ -14,14 +14,14 @@ final class zzf
   
   public final void zza(LifecycleDelegate paramLifecycleDelegate)
   {
-    AppMethodBeat.i(61640);
+    AppMethodBeat.i(12132);
     DeferredLifecycleHelper.zzb(this.zzabg).onStart();
-    AppMethodBeat.o(61640);
+    AppMethodBeat.o(12132);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.dynamic.zzf
  * JD-Core Version:    0.7.0.1
  */

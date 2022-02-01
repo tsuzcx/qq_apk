@@ -27,14 +27,14 @@ public class TMAssistantDownloadSDKClient
   public TMAssistantDownloadSDKClient(Context paramContext, String paramString)
   {
     super(paramContext, paramString, "com.tencent.tmassistantsdk.downloadservice.TMAssistantDownloadSDKService");
-    AppMethodBeat.i(75635);
+    AppMethodBeat.i(101881);
     this.mListenerReferenceQueue = new ReferenceQueue();
     this.mWeakListenerArrayList = new ArrayList();
     this.mServiceCallback = new ITMAssistantDownloadSDKServiceCallback.Stub()
     {
       public void OnDownloadSDKServiceTaskProgressChanged(String paramAnonymousString1, String paramAnonymousString2, long paramAnonymousLong1, long paramAnonymousLong2)
       {
-        AppMethodBeat.i(75634);
+        AppMethodBeat.i(101880);
         TMLog.i("TMAssistantDownloadSDKClient", "OnDownloadProgressChanged,clientKey:" + paramAnonymousString1 + ",receivedLen:" + paramAnonymousLong1 + ",totalLen:" + paramAnonymousLong2 + ",url:" + paramAnonymousString2);
         paramAnonymousString1 = TMAssistantDownloadSDKClient.this.mWeakListenerArrayList.iterator();
         while (paramAnonymousString1.hasNext())
@@ -46,12 +46,12 @@ public class TMAssistantDownloadSDKClient
           }
           TMAssistantDownloadSDKMessageThread.getInstance().postTaskProgressChangedMessage(TMAssistantDownloadSDKClient.this, localITMAssistantDownloadSDKClientListener, paramAnonymousString2, paramAnonymousLong1, paramAnonymousLong2);
         }
-        AppMethodBeat.o(75634);
+        AppMethodBeat.o(101880);
       }
       
       public void OnDownloadSDKServiceTaskStateChanged(String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString3, boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
       {
-        AppMethodBeat.i(75633);
+        AppMethodBeat.i(101879);
         TMLog.i("TMAssistantDownloadSDKClient", "OnDownloadStateChanged,clientKey:" + paramAnonymousString1 + ",state:" + paramAnonymousInt1 + ", errorcode" + paramAnonymousInt2 + ",url:" + paramAnonymousString2);
         paramAnonymousString1 = TMAssistantDownloadSDKClient.this.mWeakListenerArrayList.iterator();
         while (paramAnonymousString1.hasNext())
@@ -63,10 +63,10 @@ public class TMAssistantDownloadSDKClient
           }
           TMAssistantDownloadSDKMessageThread.getInstance().postTaskStateChangedMessage(TMAssistantDownloadSDKClient.this, localITMAssistantDownloadSDKClientListener, paramAnonymousString2, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString3, paramAnonymousBoolean1, paramAnonymousBoolean2);
         }
-        AppMethodBeat.o(75633);
+        AppMethodBeat.o(101879);
       }
     };
-    AppMethodBeat.o(75635);
+    AppMethodBeat.o(101881);
   }
   
   public static String about()
@@ -78,12 +78,12 @@ public class TMAssistantDownloadSDKClient
   {
     try
     {
-      AppMethodBeat.i(75642);
+      AppMethodBeat.i(101888);
       TMLog.i("TMAssistantDownloadSDKClient", "cancelDownloadTask,clientKey:" + this.mClientKey + ",url:" + paramString);
       if (paramString == null)
       {
         paramString = new IllegalArgumentException("TMAssistantDownloadSDKClient.startDownloadTask url is null");
-        AppMethodBeat.o(75642);
+        AppMethodBeat.o(101888);
         throw paramString;
       }
     }
@@ -92,22 +92,22 @@ public class TMAssistantDownloadSDKClient
     if (localITMAssistantDownloadSDKServiceInterface != null)
     {
       localITMAssistantDownloadSDKServiceInterface.cancelDownloadTask(this.mClientKey, paramString);
-      AppMethodBeat.o(75642);
+      AppMethodBeat.o(101888);
     }
     for (;;)
     {
       return;
       TMLog.i("TMAssistantDownloadSDKClient", "cancelDownloadTask, serviceInterface is null");
       super.initTMAssistantDownloadSDK();
-      AppMethodBeat.o(75642);
+      AppMethodBeat.o(101888);
     }
   }
   
   protected Intent getBindServiceIntent()
   {
-    AppMethodBeat.i(75648);
+    AppMethodBeat.i(101894);
     Intent localIntent = new Intent(this.mContext, Class.forName(this.mDwonloadServiceName));
-    AppMethodBeat.o(75648);
+    AppMethodBeat.o(101894);
     return localIntent;
   }
   
@@ -115,12 +115,12 @@ public class TMAssistantDownloadSDKClient
   {
     try
     {
-      AppMethodBeat.i(75636);
+      AppMethodBeat.i(101882);
       TMLog.i("TMAssistantDownloadSDKClient", "getDownloadTaskState,clientKey:" + this.mClientKey + ",url:" + paramString);
       if (paramString == null)
       {
         paramString = new IllegalArgumentException("TMAssistantDownloadSDKClient.getDownloadTaskState url is null");
-        AppMethodBeat.o(75636);
+        AppMethodBeat.o(101882);
         throw paramString;
       }
     }
@@ -129,39 +129,39 @@ public class TMAssistantDownloadSDKClient
     if (localITMAssistantDownloadSDKServiceInterface != null)
     {
       paramString = localITMAssistantDownloadSDKServiceInterface.getDownloadTaskInfo(this.mClientKey, paramString);
-      AppMethodBeat.o(75636);
+      AppMethodBeat.o(101882);
     }
     for (;;)
     {
       return paramString;
       super.initTMAssistantDownloadSDK();
       paramString = null;
-      AppMethodBeat.o(75636);
+      AppMethodBeat.o(101882);
     }
   }
   
   protected void onDownloadSDKServiceInvalid()
   {
-    AppMethodBeat.i(75645);
+    AppMethodBeat.i(101891);
     Iterator localIterator = this.mWeakListenerArrayList.iterator();
     while (localIterator.hasNext())
     {
       ITMAssistantDownloadSDKClientListener localITMAssistantDownloadSDKClientListener = (ITMAssistantDownloadSDKClientListener)((WeakReference)localIterator.next()).get();
       TMAssistantDownloadSDKMessageThread.getInstance().postSDKServiceInvalidMessage(this, localITMAssistantDownloadSDKClientListener);
     }
-    AppMethodBeat.o(75645);
+    AppMethodBeat.o(101891);
   }
   
   public void pauseDownloadTask(String paramString)
   {
     try
     {
-      AppMethodBeat.i(75641);
+      AppMethodBeat.i(101887);
       TMLog.i("TMAssistantDownloadSDKClient", "pauseDownloadTask,clientKey:" + this.mClientKey + ",url:" + paramString);
       if (paramString == null)
       {
         paramString = new IllegalArgumentException("TMAssistantDownloadSDKClient.startDownloadTask url is null");
-        AppMethodBeat.o(75641);
+        AppMethodBeat.o(101887);
         throw paramString;
       }
     }
@@ -170,14 +170,14 @@ public class TMAssistantDownloadSDKClient
     if (localITMAssistantDownloadSDKServiceInterface != null)
     {
       localITMAssistantDownloadSDKServiceInterface.pauseDownloadTask(this.mClientKey, paramString);
-      AppMethodBeat.o(75641);
+      AppMethodBeat.o(101887);
     }
     for (;;)
     {
       return;
       TMLog.i("TMAssistantDownloadSDKClient", "pauseDownloadTask, serviceInterface is null");
       super.initTMAssistantDownloadSDK();
-      AppMethodBeat.o(75641);
+      AppMethodBeat.o(101887);
     }
   }
   
@@ -188,11 +188,11 @@ public class TMAssistantDownloadSDKClient
       Object localObject;
       try
       {
-        AppMethodBeat.i(75643);
+        AppMethodBeat.i(101889);
         if (paramITMAssistantDownloadSDKClientListener == null)
         {
           bool = false;
-          AppMethodBeat.o(75643);
+          AppMethodBeat.o(101889);
           return bool;
         }
         localObject = this.mListenerReferenceQueue.poll();
@@ -210,7 +210,7 @@ public class TMAssistantDownloadSDKClient
         if (((Iterator)localObject).hasNext()) {
           if ((ITMAssistantDownloadSDKClientListener)((WeakReference)((Iterator)localObject).next()).get() == paramITMAssistantDownloadSDKClientListener)
           {
-            AppMethodBeat.o(75643);
+            AppMethodBeat.o(101889);
             bool = true;
             break;
           }
@@ -218,25 +218,25 @@ public class TMAssistantDownloadSDKClient
       }
       paramITMAssistantDownloadSDKClientListener = new WeakReference(paramITMAssistantDownloadSDKClientListener, this.mListenerReferenceQueue);
       this.mWeakListenerArrayList.add(paramITMAssistantDownloadSDKClientListener);
-      AppMethodBeat.o(75643);
+      AppMethodBeat.o(101889);
       boolean bool = true;
     }
   }
   
   protected void registerServiceCallback()
   {
-    AppMethodBeat.i(75647);
+    AppMethodBeat.i(101893);
     ((ITMAssistantDownloadSDKServiceInterface)this.mServiceInterface).registerDownloadTaskCallback(this.mClientKey, (ITMAssistantDownloadSDKServiceCallback)this.mServiceCallback);
-    AppMethodBeat.o(75647);
+    AppMethodBeat.o(101893);
   }
   
   public int startDownloadTask(String paramString1, String paramString2)
   {
     try
     {
-      AppMethodBeat.i(75637);
+      AppMethodBeat.i(101883);
       int i = startDownloadTask(paramString1, "", 0L, 0, paramString2, null, true, null);
-      AppMethodBeat.o(75637);
+      AppMethodBeat.o(101883);
       return i;
     }
     finally
@@ -250,12 +250,12 @@ public class TMAssistantDownloadSDKClient
   {
     try
     {
-      AppMethodBeat.i(75640);
+      AppMethodBeat.i(101886);
       TMLog.i("TMAssistantDownloadSDKClient", "startDownloadTask,clientKey:" + this.mClientKey + ",url:" + paramString1 + ",contentType:" + paramString3);
       if (paramString1 == null)
       {
         paramString1 = new IllegalArgumentException("TMAssistantDownloadSDKClient.startDownloadTask url is null");
-        AppMethodBeat.o(75640);
+        AppMethodBeat.o(101886);
         throw paramString1;
       }
     }
@@ -263,7 +263,7 @@ public class TMAssistantDownloadSDKClient
     if ((paramString3.equals("resource/tm.android.unknown")) && (TextUtils.isEmpty(paramString4)))
     {
       paramString1 = new IllegalArgumentException("if contentType is others, filename shouldn't be null!");
-      AppMethodBeat.o(75640);
+      AppMethodBeat.o(101886);
       throw paramString1;
     }
     ITMAssistantDownloadSDKServiceInterface localITMAssistantDownloadSDKServiceInterface = (ITMAssistantDownloadSDKServiceInterface)super.getServiceInterface();
@@ -271,7 +271,7 @@ public class TMAssistantDownloadSDKClient
     {
       localITMAssistantDownloadSDKServiceInterface.setServiceSetingIsDownloadWifiOnly(paramBoolean);
       paramInt = localITMAssistantDownloadSDKServiceInterface.startDownloadTask(this.mClientKey, paramString1, paramString2, paramLong, 0, paramString3, paramString4, paramMap);
-      AppMethodBeat.o(75640);
+      AppMethodBeat.o(101886);
     }
     for (;;)
     {
@@ -279,7 +279,7 @@ public class TMAssistantDownloadSDKClient
       TMLog.i("TMAssistantDownloadSDKClient", "startDownloadTask, serviceInterface is null");
       super.initTMAssistantDownloadSDK();
       paramInt = 0;
-      AppMethodBeat.o(75640);
+      AppMethodBeat.o(101886);
     }
   }
   
@@ -287,9 +287,9 @@ public class TMAssistantDownloadSDKClient
   {
     try
     {
-      AppMethodBeat.i(75639);
+      AppMethodBeat.i(101885);
       int i = startDownloadTask(paramString1, "", 0L, 0, paramString2, paramString3, true, null);
-      AppMethodBeat.o(75639);
+      AppMethodBeat.o(101885);
       return i;
     }
     finally
@@ -303,9 +303,9 @@ public class TMAssistantDownloadSDKClient
   {
     try
     {
-      AppMethodBeat.i(75638);
+      AppMethodBeat.i(101884);
       int i = startDownloadTask(paramString1, "", 0L, 0, paramString2, null, true, paramMap);
-      AppMethodBeat.o(75638);
+      AppMethodBeat.o(101884);
       return i;
     }
     finally
@@ -317,9 +317,9 @@ public class TMAssistantDownloadSDKClient
   
   protected void stubAsInterface(IBinder paramIBinder)
   {
-    AppMethodBeat.i(75646);
+    AppMethodBeat.i(101892);
     this.mServiceInterface = ITMAssistantDownloadSDKServiceInterface.Stub.asInterface(paramIBinder);
-    AppMethodBeat.o(75646);
+    AppMethodBeat.o(101892);
   }
   
   public boolean unRegisterDownloadTaskListener(ITMAssistantDownloadSDKClientListener paramITMAssistantDownloadSDKClientListener)
@@ -328,10 +328,10 @@ public class TMAssistantDownloadSDKClient
     {
       try
       {
-        AppMethodBeat.i(75644);
+        AppMethodBeat.i(101890);
         if (paramITMAssistantDownloadSDKClientListener == null)
         {
-          AppMethodBeat.o(75644);
+          AppMethodBeat.o(101890);
           bool = false;
           return bool;
         }
@@ -344,10 +344,10 @@ public class TMAssistantDownloadSDKClient
           }
           this.mWeakListenerArrayList.remove(localWeakReference);
           bool = true;
-          AppMethodBeat.o(75644);
+          AppMethodBeat.o(101890);
           continue;
         }
-        AppMethodBeat.o(75644);
+        AppMethodBeat.o(101890);
       }
       finally {}
       boolean bool = false;
@@ -356,14 +356,14 @@ public class TMAssistantDownloadSDKClient
   
   protected void unRegisterServiceCallback()
   {
-    AppMethodBeat.i(75649);
+    AppMethodBeat.i(101895);
     ((ITMAssistantDownloadSDKServiceInterface)this.mServiceInterface).unregisterDownloadTaskCallback(this.mClientKey, (ITMAssistantDownloadSDKServiceCallback)this.mServiceCallback);
-    AppMethodBeat.o(75649);
+    AppMethodBeat.o(101895);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient
  * JD-Core Version:    0.7.0.1
  */

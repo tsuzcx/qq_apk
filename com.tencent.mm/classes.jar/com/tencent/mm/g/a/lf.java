@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class lf
   extends b
 {
-  public lf.a cBp;
+  public a dpM;
   
   public lf()
   {
@@ -15,11 +15,16 @@ public final class lf
   
   private lf(byte paramByte)
   {
-    AppMethodBeat.i(5606);
-    this.cBp = new lf.a();
-    this.ymq = false;
+    AppMethodBeat.i(91209);
+    this.dpM = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(5606);
+    AppMethodBeat.o(91209);
+  }
+  
+  public static final class a
+  {
+    public String dcE;
   }
 }
 

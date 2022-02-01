@@ -15,12 +15,12 @@ public class SingleRefDataBufferIterator<T>
   
   public T next()
   {
-    AppMethodBeat.i(61172);
+    AppMethodBeat.i(11664);
     if (!hasNext())
     {
       int i = this.mPosition;
       localObject = new NoSuchElementException(46 + "Cannot advance the iterator beyond " + i);
-      AppMethodBeat.o(61172);
+      AppMethodBeat.o(11664);
       throw ((Throwable)localObject);
     }
     this.mPosition += 1;
@@ -31,7 +31,7 @@ public class SingleRefDataBufferIterator<T>
       {
         localObject = String.valueOf(this.zzoj.getClass());
         localObject = new IllegalStateException(String.valueOf(localObject).length() + 44 + "DataBuffer reference of type " + (String)localObject + " is not movable");
-        AppMethodBeat.o(61172);
+        AppMethodBeat.o(11664);
         throw ((Throwable)localObject);
       }
     }
@@ -40,13 +40,13 @@ public class SingleRefDataBufferIterator<T>
       ((DataBufferRef)this.zzoj).setDataRow(this.mPosition);
     }
     Object localObject = this.zzoj;
-    AppMethodBeat.o(61172);
+    AppMethodBeat.o(11664);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.data.SingleRefDataBufferIterator
  * JD-Core Version:    0.7.0.1
  */

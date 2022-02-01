@@ -8,9 +8,9 @@ final class b$2
 {
   public final void run()
   {
-    AppMethodBeat.i(10946);
+    AppMethodBeat.i(121427);
     Process.killProcess(Process.myPid());
-    AppMethodBeat.o(10946);
+    AppMethodBeat.o(121427);
   }
 }
 

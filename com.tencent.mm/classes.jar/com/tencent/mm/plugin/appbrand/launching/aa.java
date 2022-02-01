@@ -1,194 +1,99 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
+import com.tencent.luggage.sdk.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.azn;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.al.c.a;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.appcache.j.a;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
+import com.tencent.mm.protocal.protobuf.bdq;
+import com.tencent.mm.protocal.protobuf.ckp;
 
-public final class aa
-  extends j<ab>
+public abstract interface aa
 {
-  public static final String ime;
+  public abstract void a(b paramb);
   
-  static
-  {
-    AppMethodBeat.i(131920);
-    ime = j.getCreateSQLs(ab.gUb, "LaunchWxaAppRespTable");
-    AppMethodBeat.o(131920);
-  }
+  public abstract void a(e parame);
   
-  public aa(e parame)
-  {
-    super(parame, ab.gUb, "LaunchWxaAppRespTable", ab.INDEX_CREATE);
-  }
+  public abstract void a(QualitySession paramQualitySession);
   
-  private boolean a(ab paramab, boolean paramBoolean)
-  {
-    AppMethodBeat.i(131914);
-    paramab.field_appIdHash = paramab.field_appId.hashCode();
-    super.insertNotify(paramab, paramBoolean);
-    paramBoolean = a(paramab, new String[] { "appId" });
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.LaunchWxaAppCacheStorage", "insertNotify appId %s ret %B", new Object[] { paramab.field_appId, Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(131914);
-    return paramBoolean;
-  }
+  public abstract void prepareAsync();
   
-  private boolean a(ab paramab, boolean paramBoolean, String... paramVarArgs)
+  public static final class a
   {
-    AppMethodBeat.i(131912);
-    int i;
-    if (!bo.Q(paramVarArgs)) {
-      i = 0;
-    }
-    for (;;)
+    static aa a(String paramString1, String paramString2, int paramInt1, int paramInt2, b paramb)
     {
-      if (i < paramVarArgs.length)
+      AppMethodBeat.i(196007);
+      if (j.a.qD(paramInt1))
       {
-        if (paramVarArgs[i].equals("appId"))
-        {
-          paramVarArgs[i] = "appIdHash";
-          paramab.field_appIdHash = paramab.field_appId.hashCode();
-        }
+        paramString1 = new ap(paramString1, paramString2, paramInt2, paramb);
+        AppMethodBeat.o(196007);
+        return paramString1;
       }
-      else
-      {
-        paramBoolean = super.delete(paramab, paramBoolean, paramVarArgs);
-        AppMethodBeat.o(131912);
-        return paramBoolean;
-      }
-      i += 1;
+      paramString1 = new aq(paramString1, paramString2, paramInt1);
+      AppMethodBeat.o(196007);
+      return paramString1;
     }
   }
   
-  private boolean b(ab paramab, boolean paramBoolean, String... paramVarArgs)
+  public static abstract interface b
   {
-    AppMethodBeat.i(131915);
-    int i;
-    if (!bo.Q(paramVarArgs)) {
-      i = 0;
-    }
-    for (;;)
+    public abstract void b(WxaPkgLoadProgress paramWxaPkgLoadProgress);
+  }
+  
+  public static final class c
+  {
+    static aa a(u paramu)
     {
-      if (i < paramVarArgs.length)
+      AppMethodBeat.i(174937);
+      if (j.a.qD(paramu.kII.CLK))
       {
-        if (paramVarArgs[i].equals("appId"))
-        {
-          paramVarArgs[i] = "appIdHash";
-          paramab.field_appIdHash = paramab.field_appId.hashCode();
-        }
+        paramu = new an(paramu);
+        AppMethodBeat.o(174937);
+        return paramu;
       }
-      else
-      {
-        paramBoolean = super.updateNotify(paramab, paramBoolean, paramVarArgs);
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.LaunchWxaAppCacheStorage", "updateNotify appId %s, ret %B", new Object[] { paramab.field_appId, Boolean.valueOf(paramBoolean) });
-        AppMethodBeat.o(131915);
-        return paramBoolean;
-      }
-      i += 1;
+      paramu = new ao(paramu);
+      AppMethodBeat.o(174937);
+      return paramu;
     }
   }
   
-  public final ab a(String paramString, azn paramazn)
+  public static final class d
   {
-    AppMethodBeat.i(131910);
-    if ((bo.isNullOrNil(paramString)) || (paramazn == null))
+    static aa c(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.o(131910);
-      return null;
-    }
-    ab localab = new ab();
-    localab.a(paramazn);
-    localab.field_appId = paramString;
-    paramazn = new ab();
-    paramazn.field_appId = paramString;
-    boolean bool1;
-    boolean bool2;
-    if (!a(paramazn, new String[] { "appId" }))
-    {
-      bool1 = true;
-      if ((!bool1) && (paramazn.equals(localab))) {
-        break label173;
-      }
-      bool2 = true;
-      label92:
-      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.LaunchWxaAppCacheStorage", "flush resp, appId %s, apply %B, insert %B", new Object[] { paramString, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-      if (bool2)
+      AppMethodBeat.i(47169);
+      if (j.a.qD(paramInt1))
       {
-        if (!bool1) {
-          break label179;
-        }
-        a(localab, false);
+        paramString1 = new ap(paramString1, paramString2, paramInt2, paramInt3);
+        AppMethodBeat.o(47169);
+        return paramString1;
       }
-    }
-    for (;;)
-    {
-      if (!bool2) {
-        break label199;
-      }
-      if (!a(paramazn, new String[] { "appId" })) {
-        break label199;
-      }
-      AppMethodBeat.o(131910);
-      return paramazn;
-      bool1 = false;
-      break;
-      label173:
-      bool2 = false;
-      break label92;
-      label179:
-      b(localab, false, new String[] { "appId" });
-    }
-    label199:
-    AppMethodBeat.o(131910);
-    return localab;
-  }
-  
-  public final boolean a(ab paramab, String... paramVarArgs)
-  {
-    AppMethodBeat.i(131913);
-    int i;
-    if (!bo.Q(paramVarArgs)) {
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < paramVarArgs.length)
-      {
-        if (paramVarArgs[i].equals("appId"))
-        {
-          paramVarArgs[i] = "appIdHash";
-          paramab.field_appIdHash = paramab.field_appId.hashCode();
-        }
-      }
-      else
-      {
-        boolean bool = super.get(paramab, paramVarArgs);
-        AppMethodBeat.o(131913);
-        return bool;
-      }
-      i += 1;
+      paramString1 = new aq(paramString1, paramString2, paramInt1, paramInt3);
+      AppMethodBeat.o(47169);
+      return paramString1;
     }
   }
   
-  public final boolean qD(String paramString)
+  public static abstract class e
   {
-    AppMethodBeat.i(131911);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(131911);
-      return false;
-    }
-    ab localab = new ab();
-    localab.field_appId = paramString;
-    boolean bool = a(localab, false, new String[] { "appId" });
-    AppMethodBeat.o(131911);
-    return bool;
+    public void b(c.a<bdq> parama) {}
+    
+    void bgC() {}
+    
+    void bgD() {}
+    
+    void bgE() {}
+    
+    public void c(WxaPkgWrappingInfo paramWxaPkgWrappingInfo) {}
+    
+    void d(WxaPkgWrappingInfo paramWxaPkgWrappingInfo) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.aa
  * JD-Core Version:    0.7.0.1
  */

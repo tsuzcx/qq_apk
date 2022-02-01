@@ -32,9 +32,9 @@ public final class WebImage
   
   static
   {
-    AppMethodBeat.i(61254);
+    AppMethodBeat.i(11746);
     CREATOR = new WebImageCreator();
-    AppMethodBeat.o(61254);
+    AppMethodBeat.o(11746);
   }
   
   @SafeParcelable.Constructor
@@ -54,39 +54,39 @@ public final class WebImage
   public WebImage(Uri paramUri, int paramInt1, int paramInt2)
   {
     this(1, paramUri, paramInt1, paramInt2);
-    AppMethodBeat.i(61246);
+    AppMethodBeat.i(11738);
     if (paramUri == null)
     {
       paramUri = new IllegalArgumentException("url cannot be null");
-      AppMethodBeat.o(61246);
+      AppMethodBeat.o(11738);
       throw paramUri;
     }
     if ((paramInt1 < 0) || (paramInt2 < 0))
     {
       paramUri = new IllegalArgumentException("width and height must not be negative");
-      AppMethodBeat.o(61246);
+      AppMethodBeat.o(11738);
       throw paramUri;
     }
-    AppMethodBeat.o(61246);
+    AppMethodBeat.o(11738);
   }
   
   public WebImage(JSONObject paramJSONObject)
   {
     this(zza(paramJSONObject), paramJSONObject.optInt("width", 0), paramJSONObject.optInt("height", 0));
-    AppMethodBeat.i(61247);
-    AppMethodBeat.o(61247);
+    AppMethodBeat.i(11739);
+    AppMethodBeat.o(11739);
   }
   
   private static Uri zza(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(61248);
+    AppMethodBeat.i(11740);
     Object localObject2 = null;
     Object localObject1 = localObject2;
     if (paramJSONObject.has("url")) {}
     try
     {
       localObject1 = Uri.parse(paramJSONObject.getString("url"));
-      AppMethodBeat.o(61248);
+      AppMethodBeat.o(11740);
       return localObject1;
     }
     catch (JSONException paramJSONObject)
@@ -100,24 +100,24 @@ public final class WebImage
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(61251);
+    AppMethodBeat.i(11743);
     if (this == paramObject)
     {
-      AppMethodBeat.o(61251);
+      AppMethodBeat.o(11743);
       return true;
     }
     if ((paramObject == null) || (!(paramObject instanceof WebImage)))
     {
-      AppMethodBeat.o(61251);
+      AppMethodBeat.o(11743);
       return false;
     }
     paramObject = (WebImage)paramObject;
     if ((Objects.equal(this.zzpu, paramObject.zzpu)) && (this.zzps == paramObject.zzps) && (this.zzpt == paramObject.zzpt))
     {
-      AppMethodBeat.o(61251);
+      AppMethodBeat.o(11743);
       return true;
     }
-    AppMethodBeat.o(61251);
+    AppMethodBeat.o(11743);
     return false;
   }
   
@@ -138,54 +138,54 @@ public final class WebImage
   
   public final int hashCode()
   {
-    AppMethodBeat.i(61252);
+    AppMethodBeat.i(11744);
     int i = Objects.hashCode(new Object[] { this.zzpu, Integer.valueOf(this.zzps), Integer.valueOf(this.zzpt) });
-    AppMethodBeat.o(61252);
+    AppMethodBeat.o(11744);
     return i;
   }
   
   public final JSONObject toJson()
   {
-    AppMethodBeat.i(61250);
+    AppMethodBeat.i(11742);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("url", this.zzpu.toString());
       localJSONObject.put("width", this.zzps);
       localJSONObject.put("height", this.zzpt);
-      label49:
-      AppMethodBeat.o(61250);
+      label50:
+      AppMethodBeat.o(11742);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
-      break label49;
+      break label50;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(61249);
+    AppMethodBeat.i(11741);
     String str = String.format(Locale.US, "Image %dx%d %s", new Object[] { Integer.valueOf(this.zzps), Integer.valueOf(this.zzpt), this.zzpu.toString() });
-    AppMethodBeat.o(61249);
+    AppMethodBeat.o(11741);
     return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(61253);
+    AppMethodBeat.i(11745);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     SafeParcelWriter.writeParcelable(paramParcel, 2, getUrl(), paramInt, false);
     SafeParcelWriter.writeInt(paramParcel, 3, getWidth());
     SafeParcelWriter.writeInt(paramParcel, 4, getHeight());
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(61253);
+    AppMethodBeat.o(11745);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.images.WebImage
  * JD-Core Version:    0.7.0.1
  */

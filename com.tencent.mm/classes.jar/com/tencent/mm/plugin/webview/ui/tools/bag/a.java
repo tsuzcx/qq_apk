@@ -2,85 +2,115 @@ package com.tencent.mm.plugin.webview.ui.tools.bag;
 
 import android.content.Context;
 import android.graphics.PointF;
+import android.os.Vibrator;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.ui.widget.c;
 
 public final class a
 {
-  static final int vhf;
+  static final int BiX;
+  a BiY;
+  final b BiZ;
+  boolean Bja;
+  PointF Bjb;
+  boolean Bjc;
+  boolean Bjd;
   boolean mIsShowing;
   int mScreenHeight;
   int mScreenWidth;
-  a.a vhg;
-  final a.b vhh;
-  boolean vhi;
-  PointF vhj;
-  boolean vhk;
-  boolean vhl;
   
   static
   {
-    int i = b.vhv;
-    vhf = i * i;
+    int i = b.Bjl;
+    BiX = i * i;
   }
   
-  public a(a.b paramb)
+  public a(b paramb)
   {
-    AppMethodBeat.i(8145);
-    this.vhj = new PointF();
-    this.vhh = paramb;
-    paramb = (WindowManager)ah.getContext().getSystemService("window");
+    AppMethodBeat.i(80412);
+    this.Bjb = new PointF();
+    this.BiZ = paramb;
+    paramb = (WindowManager)aj.getContext().getSystemService("window");
     WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
-    if (d.fv(26)) {}
+    if (d.lf(26)) {}
     for (localLayoutParams.type = 2038;; localLayoutParams.type = 2002)
     {
       localLayoutParams.format = 1;
       localLayoutParams.flags = 40;
       localLayoutParams.gravity = 85;
-      localLayoutParams.width = b.vhw;
-      localLayoutParams.height = b.vhw;
+      localLayoutParams.width = b.Bjm;
+      localLayoutParams.height = b.Bjm;
       localLayoutParams.x = 0;
       localLayoutParams.y = 0;
-      this.vhg = new a.a(ah.getContext());
+      this.BiY = new a(aj.getContext());
       try
       {
-        this.vhg.setVisibility(8);
-        paramb.addView(this.vhg, localLayoutParams);
-        AppMethodBeat.o(8145);
+        this.BiY.setVisibility(8);
+        paramb.addView(this.BiY, localLayoutParams);
+        AppMethodBeat.o(80412);
         return;
       }
       catch (Exception paramb)
       {
-        ab.e("MicroMsg.BagCancelController", "showCanceller add failed %s", new Object[] { paramb });
-        AppMethodBeat.o(8145);
+        ad.e("MicroMsg.BagCancelController", "showCanceller add failed %s", new Object[] { paramb });
+        AppMethodBeat.o(80412);
       }
     }
   }
   
-  public final void dfa()
+  static final class a
+    extends FrameLayout
   {
-    AppMethodBeat.i(8146);
-    WindowManager localWindowManager = (WindowManager)ah.getContext().getSystemService("window");
-    try
+    Vibrator lRO;
+    View mContentView;
+    ImageView pev;
+    
+    public a(Context paramContext)
     {
-      localWindowManager.removeView(this.vhg);
-      AppMethodBeat.o(8146);
-      return;
+      super();
+      AppMethodBeat.i(80409);
+      this.lRO = ((Vibrator)paramContext.getSystemService("vibrator"));
+      LayoutInflater.from(paramContext).inflate(2131496081, this);
+      this.pev = ((ImageView)findViewById(2131297203));
+      paramContext = (RelativeLayout.LayoutParams)this.pev.getLayoutParams();
+      paramContext.height = b.Bjl;
+      paramContext.width = b.Bjl;
+      this.pev.setLayoutParams(paramContext);
+      this.mContentView = findViewById(2131298739);
+      AppMethodBeat.o(80409);
     }
-    catch (Exception localException)
+    
+    final void ab(float paramFloat1, float paramFloat2)
     {
-      ab.e("MicroMsg.BagCancelController", "whenBagUnAttach remove failed %s", new Object[] { localException });
-      AppMethodBeat.o(8146);
+      AppMethodBeat.i(80410);
+      ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat1, paramFloat2, 1, 1.0F, 1, 1.0F);
+      localScaleAnimation.setFillAfter(true);
+      localScaleAnimation.setDuration(50L);
+      this.pev.startAnimation(localScaleAnimation);
+      AppMethodBeat.o(80410);
     }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void epn();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.bag.a
  * JD-Core Version:    0.7.0.1
  */

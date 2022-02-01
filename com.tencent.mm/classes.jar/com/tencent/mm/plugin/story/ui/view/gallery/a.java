@@ -1,59 +1,58 @@
 package com.tencent.mm.plugin.story.ui.view.gallery;
 
-import a.f.b.j;
-import a.l;
-import a.y;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.design.widget.c;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.ui.am;
+import d.g.b.k;
+import d.l;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog;", "Landroid/support/design/widget/BottomSheetDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "delete", "Landroid/view/View;", "deleteIcon", "Landroid/widget/ImageView;", "favorite", "favoriteIcon", "favoriteTv", "Landroid/widget/TextView;", "isFavorite", "", "()Z", "setFavorite", "(Z)V", "isPrivacy", "setPrivacy", "onDelete", "Lkotlin/Function0;", "", "getOnDelete", "()Lkotlin/jvm/functions/Function0;", "setOnDelete", "(Lkotlin/jvm/functions/Function0;)V", "onResend", "getOnResend", "setOnResend", "onSetFavorite", "getOnSetFavorite", "setOnSetFavorite", "onSetPrivacy", "getOnSetPrivacy", "setOnSetPrivacy", "privacy", "privacyIcon", "privacyTv", "resend", "resendIcon", "showDelete", "getShowDelete", "setShowDelete", "showFavorite", "getShowFavorite", "setShowFavorite", "showPrivacy", "getShowPrivacy", "setShowPrivacy", "showResend", "getShowResend", "setShowResend", "initDelBtn", "initFavoriteBtn", "initPrivacyBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/GalleryDeleteDialog;", "Landroid/support/design/widget/BottomSheetDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "delete", "Landroid/view/View;", "deleteIcon", "Landroid/widget/ImageView;", "favorite", "favoriteIcon", "favoriteTv", "Landroid/widget/TextView;", "isFavorite", "", "()Z", "setFavorite", "(Z)V", "isPrivacy", "setPrivacy", "onDelete", "Lkotlin/Function0;", "", "getOnDelete", "()Lkotlin/jvm/functions/Function0;", "setOnDelete", "(Lkotlin/jvm/functions/Function0;)V", "onResend", "getOnResend", "setOnResend", "onSetFavorite", "getOnSetFavorite", "setOnSetFavorite", "onSetPrivacy", "getOnSetPrivacy", "setOnSetPrivacy", "privacy", "privacyIcon", "privacyTv", "resend", "resendIcon", "showDelete", "getShowDelete", "setShowDelete", "showFavorite", "getShowFavorite", "setShowFavorite", "showPrivacy", "getShowPrivacy", "setShowPrivacy", "showResend", "getShowResend", "setShowResend", "initDelBtn", "initFavoriteBtn", "initPrivacyBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-story_release"})
 public final class a
-  extends c
+  extends android.support.design.widget.a
 {
-  boolean iDd;
-  private ImageView lzq;
-  boolean rUw;
-  boolean sAB;
-  private View sPt;
-  private TextView sPu;
-  private ImageView sPv;
-  boolean sRA;
-  boolean sRB;
-  boolean sRC;
-  private View sRq;
-  private View sRr;
-  private View sRs;
-  private ImageView sRt;
-  private ImageView sRu;
-  private TextView sRv;
-  a.f.a.a<y> sRw;
-  a.f.a.a<y> sRx;
-  a.f.a.a<y> sRy;
-  a.f.a.a<y> sRz;
+  boolean ljQ;
+  private ImageView oQg;
+  private View vrS;
+  private TextView vrT;
+  private ImageView vrU;
+  boolean xDc;
+  d.g.a.a<y> yxA;
+  d.g.a.a<y> yxB;
+  boolean yxC;
+  boolean yxD;
+  boolean yxE;
+  boolean yxF;
+  private View yxs;
+  private View yxt;
+  private View yxu;
+  private ImageView yxv;
+  private ImageView yxw;
+  private TextView yxx;
+  d.g.a.a<y> yxy;
+  d.g.a.a<y> yxz;
   
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(110703);
-    this.iDd = true;
-    this.sRB = true;
-    this.sRC = true;
-    setContentView(2130970942);
-    AppMethodBeat.o(110703);
+    AppMethodBeat.i(120325);
+    this.ljQ = true;
+    this.yxD = true;
+    this.yxF = true;
+    setContentView(2131495680);
+    AppMethodBeat.o(120325);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(110702);
+    AppMethodBeat.i(120324);
     super.onCreate(paramBundle);
     paramBundle = getWindow();
     if (paramBundle != null)
@@ -61,148 +60,238 @@ public final class a
       paramBundle.addFlags(134218752);
       paramBundle.clearFlags(2);
     }
-    this.sRq = findViewById(2131828348);
-    this.sRr = findViewById(2131828340);
-    this.sRs = findViewById(2131828345);
-    this.lzq = ((ImageView)findViewById(2131828349));
-    this.sRt = ((ImageView)findViewById(2131828341));
-    this.sRu = ((ImageView)findViewById(2131828346));
-    this.sRv = ((TextView)findViewById(2131828347));
-    this.sPt = findViewById(2131828342);
-    this.sPt = findViewById(2131828342);
-    this.sPu = ((TextView)findViewById(2131828344));
-    this.sPv = ((ImageView)findViewById(2131828343));
+    this.yxs = findViewById(2131305335);
+    this.yxt = findViewById(2131305343);
+    this.yxu = findViewById(2131305340);
+    this.oQg = ((ImageView)findViewById(2131305336));
+    this.yxv = ((ImageView)findViewById(2131305344));
+    this.yxw = ((ImageView)findViewById(2131305341));
+    this.yxx = ((TextView)findViewById(2131305342));
+    this.vrS = findViewById(2131305337);
+    this.vrS = findViewById(2131305337);
+    this.vrT = ((TextView)findViewById(2131305339));
+    this.vrU = ((ImageView)findViewById(2131305338));
     paramBundle = getContext();
-    j.p(paramBundle, "context");
-    int i = paramBundle.getResources().getColor(2131689604);
-    paramBundle = this.lzq;
+    k.g(paramBundle, "context");
+    int i = paramBundle.getResources().getColor(2131099803);
+    paramBundle = this.oQg;
     if (paramBundle != null) {
-      paramBundle.setImageDrawable(aj.g(getContext(), 2131231238, i));
+      paramBundle.setImageDrawable(am.i(getContext(), 2131690044, i));
     }
-    paramBundle = this.sRt;
-    if (paramBundle != null) {
-      paramBundle.setImageDrawable(aj.g(getContext(), 2131231531, -16777216));
-    }
-    paramBundle = this.sPv;
-    if (paramBundle != null) {
-      paramBundle.setImageDrawable(aj.g(getContext(), 2131231538, -16777216));
-    }
-    paramBundle = this.sRr;
-    if (paramBundle != null) {
-      paramBundle.setOnClickListener((View.OnClickListener)new a.d(this));
-    }
-    if (this.sRA)
+    paramBundle = this.yxv;
+    Context localContext1;
+    Context localContext2;
+    if (paramBundle != null)
     {
-      paramBundle = this.sRr;
+      localContext1 = getContext();
+      localContext2 = getContext();
+      k.g(localContext2, "context");
+      paramBundle.setImageDrawable(am.i(localContext1, 2131690644, localContext2.getResources().getColor(2131099664)));
+    }
+    paramBundle = this.vrU;
+    if (paramBundle != null)
+    {
+      localContext1 = getContext();
+      localContext2 = getContext();
+      k.g(localContext2, "context");
+      paramBundle.setImageDrawable(am.i(localContext1, 2131690657, localContext2.getResources().getColor(2131099664)));
+    }
+    paramBundle = this.yxt;
+    if (paramBundle != null) {
+      paramBundle.setOnClickListener((View.OnClickListener)new d(this));
+    }
+    if (this.yxC)
+    {
+      paramBundle = this.yxt;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
     }
-    if (this.iDd)
+    if (this.ljQ)
     {
-      paramBundle = this.sRq;
+      paramBundle = this.yxs;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.sRq;
+      paramBundle = this.yxs;
       if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new a.a(this));
+        paramBundle.setOnClickListener((View.OnClickListener)new a(this));
       }
-      if (!this.sRB) {
-        break label625;
+      if (!this.yxD) {
+        break label717;
       }
-      paramBundle = this.sRs;
-      if (paramBundle != null) {
-        paramBundle.setVisibility(0);
-      }
-      paramBundle = this.sRs;
-      if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new a.c(this));
-      }
-      if (!this.rUw) {
-        break label571;
-      }
-      paramBundle = this.sRu;
-      if (paramBundle != null) {
-        paramBundle.setImageDrawable(aj.g(getContext(), 2131231539, -16777216));
-      }
-      paramBundle = this.sRv;
-      if (paramBundle != null) {
-        paramBundle.setText((CharSequence)getContext().getString(2131304132));
-      }
-      label441:
-      if ((!this.sRC) || (!com.tencent.mm.plugin.story.c.a.a.srz.czq())) {
-        break label672;
-      }
-      paramBundle = this.sPt;
+      paramBundle = this.yxu;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.sPt;
+      paramBundle = this.yxu;
       if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new a.b(this));
+        paramBundle.setOnClickListener((View.OnClickListener)new c(this));
       }
-      if (!this.sAB) {
-        break label643;
+      if (!this.xDc) {
+        break label640;
       }
-      paramBundle = this.sPu;
+      paramBundle = this.yxw;
+      if (paramBundle != null)
+      {
+        localContext1 = getContext();
+        localContext2 = getContext();
+        k.g(localContext2, "context");
+        paramBundle.setImageDrawable(am.i(localContext1, 2131690671, localContext2.getResources().getColor(2131099664)));
+      }
+      paramBundle = this.yxx;
       if (paramBundle != null) {
-        paramBundle.setText((CharSequence)getContext().getString(2131304131));
+        paramBundle.setText((CharSequence)getContext().getString(2131764233));
+      }
+      label510:
+      if ((!this.yxF) || (!com.tencent.mm.plugin.story.c.a.a.ydB.dGf())) {
+        break label764;
+      }
+      paramBundle = this.vrS;
+      if (paramBundle != null) {
+        paramBundle.setVisibility(0);
+      }
+      paramBundle = this.vrS;
+      if (paramBundle != null) {
+        paramBundle.setOnClickListener((View.OnClickListener)new b(this));
+      }
+      if (!this.yxE) {
+        break label735;
+      }
+      paramBundle = this.vrT;
+      if (paramBundle != null) {
+        paramBundle.setText((CharSequence)getContext().getString(2131764232));
       }
     }
     for (;;)
     {
-      paramBundle = findViewById(2131823375);
+      paramBundle = findViewById(2131299011);
       if (paramBundle == null) {
-        break label690;
+        break label782;
       }
-      paramBundle.setBackgroundResource(2131690605);
-      AppMethodBeat.o(110702);
+      paramBundle.setBackgroundResource(2131101053);
+      AppMethodBeat.o(120324);
       return;
-      paramBundle = this.sRq;
+      paramBundle = this.yxs;
       if (paramBundle == null) {
         break;
       }
       paramBundle.setVisibility(8);
       break;
-      label571:
-      paramBundle = this.sRu;
-      if (paramBundle != null) {
-        paramBundle.setImageDrawable(aj.g(getContext(), 2131231512, -16777216));
-      }
-      paramBundle = this.sRv;
-      if (paramBundle == null) {
-        break label441;
-      }
-      paramBundle.setText((CharSequence)getContext().getString(2131304133));
-      break label441;
-      label625:
-      paramBundle = this.sRs;
-      if (paramBundle == null) {
-        break label441;
-      }
-      paramBundle.setVisibility(8);
-      break label441;
-      label643:
-      paramBundle = this.sPu;
+      label640:
+      paramBundle = this.yxw;
       if (paramBundle != null)
       {
-        paramBundle.setText((CharSequence)getContext().getString(2131304130));
+        localContext1 = getContext();
+        localContext2 = getContext();
+        k.g(localContext2, "context");
+        paramBundle.setImageDrawable(am.i(localContext1, 2131690590, localContext2.getResources().getColor(2131099664)));
+      }
+      paramBundle = this.yxx;
+      if (paramBundle == null) {
+        break label510;
+      }
+      paramBundle.setText((CharSequence)getContext().getString(2131764234));
+      break label510;
+      label717:
+      paramBundle = this.yxu;
+      if (paramBundle == null) {
+        break label510;
+      }
+      paramBundle.setVisibility(8);
+      break label510;
+      label735:
+      paramBundle = this.vrT;
+      if (paramBundle != null)
+      {
+        paramBundle.setText((CharSequence)getContext().getString(2131764231));
         continue;
-        label672:
-        paramBundle = this.sPt;
+        label764:
+        paramBundle = this.vrS;
         if (paramBundle != null) {
           paramBundle.setVisibility(8);
         }
       }
     }
-    label690:
-    AppMethodBeat.o(110702);
+    label782:
+    AppMethodBeat.o(120324);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class a
+    implements View.OnClickListener
+  {
+    a(a parama) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(120320);
+      paramView = this.yxG.yxy;
+      if (paramView != null) {
+        paramView.invoke();
+      }
+      this.yxG.dismiss();
+      AppMethodBeat.o(120320);
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class b
+    implements View.OnClickListener
+  {
+    b(a parama) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(120321);
+      paramView = this.yxG.yxB;
+      if (paramView != null) {
+        paramView.invoke();
+      }
+      this.yxG.dismiss();
+      AppMethodBeat.o(120321);
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class c
+    implements View.OnClickListener
+  {
+    c(a parama) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(120322);
+      paramView = this.yxG.yxA;
+      if (paramView != null) {
+        paramView.invoke();
+      }
+      this.yxG.dismiss();
+      AppMethodBeat.o(120322);
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class d
+    implements View.OnClickListener
+  {
+    d(a parama) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(120323);
+      paramView = this.yxG.yxz;
+      if (paramView != null) {
+        paramView.invoke();
+      }
+      this.yxG.dismiss();
+      AppMethodBeat.o(120323);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.gallery.a
  * JD-Core Version:    0.7.0.1
  */

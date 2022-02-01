@@ -14,7 +14,7 @@ public class TestTimeForSns
   public final String TAG = "MicroMsg.TestTimeForSns";
   public long beginTime;
   private boolean hasDrawed;
-  private TestTimeForSns.a listener;
+  private a listener;
   
   public TestTimeForSns(Context paramContext)
   {
@@ -28,18 +28,18 @@ public class TestTimeForSns
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(39842);
+    AppMethodBeat.i(99702);
     super.dispatchDraw(paramCanvas);
     if (!this.hasDrawed)
     {
       this.hasDrawed = true;
       if (this.listener != null) {
-        this.listener.bEm();
+        this.listener.cAy();
       }
     }
-    g.Cy(10);
-    g.Cy(22);
-    AppMethodBeat.o(39842);
+    g.KJ(10);
+    g.KJ(22);
+    AppMethodBeat.o(99702);
   }
   
   public boolean hasDrawed()
@@ -47,9 +47,14 @@ public class TestTimeForSns
     return this.hasDrawed;
   }
   
-  public void setListener(TestTimeForSns.a parama)
+  public void setListener(a parama)
   {
     this.listener = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void cAy();
   }
 }
 

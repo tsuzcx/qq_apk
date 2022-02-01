@@ -5,11 +5,11 @@ import android.os.IInterface;
 public abstract interface l<T extends IInterface>
   extends g
 {
-  public abstract String gv();
+  public abstract String gF();
   
-  public abstract String gw();
+  public abstract String gG();
   
-  public abstract T gx();
+  public abstract T gH();
 }
 
 

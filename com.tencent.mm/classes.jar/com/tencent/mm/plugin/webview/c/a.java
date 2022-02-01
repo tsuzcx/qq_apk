@@ -1,113 +1,76 @@
 package com.tencent.mm.plugin.webview.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.a.mw;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.h;
-import com.tencent.mm.protocal.protobuf.bxl;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import d.f;
+import d.g;
+import d.g.b.u;
+import d.g.b.w;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/jsapi/DefaultJsApiPool;", "", "()V", "jsApis", "", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "getJsApis", "()Ljava/util/Map;", "jsApis$delegate", "Lkotlin/Lazy;", "initJsApiPool", "", "toMap", "Ljava/util/HashMap;", "", "plugin-webview_release"})
 public final class a
-  implements f
 {
-  a.a uOh;
-  private c uOi;
+  private static final f AQZ;
+  public static final a ARa;
   
-  public a()
+  static
   {
-    AppMethodBeat.i(5653);
-    this.uOh = new a.a(this, (byte)0);
-    this.uOi = new c() {};
-    com.tencent.mm.sdk.b.a.ymk.c(this.uOi);
-    AppMethodBeat.o(5653);
+    AppMethodBeat.i(188878);
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(a.class), "jsApis", "getJsApis()Ljava/util/Map;")) };
+    ARa = new a();
+    AQZ = g.E((d.g.a.a)a.ARb);
+    AppMethodBeat.o(188878);
   }
   
-  public static String t(Map<String, Object> paramMap, String paramString)
+  public static void ekk()
   {
-    AppMethodBeat.i(5656);
-    if (paramMap.containsKey(paramString))
-    {
-      if (paramMap.get(paramString) != null)
-      {
-        paramMap = paramMap.get(paramString).toString();
-        AppMethodBeat.o(5656);
-        return paramMap;
-      }
-      AppMethodBeat.o(5656);
-      return "";
-    }
-    AppMethodBeat.o(5656);
-    return "";
+    AppMethodBeat.i(188880);
+    m localm = m.ASm;
+    m.bu((Map)AQZ.getValue());
+    AppMethodBeat.o(188880);
   }
   
-  public static int v(Map<String, Object> paramMap, String paramString)
+  public static HashMap<String, com.tencent.mm.plugin.webview.c.c.a> gv(List<? extends com.tencent.mm.plugin.webview.c.c.a> paramList)
   {
-    AppMethodBeat.i(5657);
-    paramMap = t(paramMap, paramString);
-    if (bo.isNullOrNil(paramMap))
+    AppMethodBeat.i(188879);
+    d.g.b.k.h(paramList, "$this$toMap");
+    HashMap localHashMap = new HashMap();
+    paramList = ((Iterable)paramList).iterator();
+    while (paramList.hasNext())
     {
-      AppMethodBeat.o(5657);
-      return 0;
+      com.tencent.mm.plugin.webview.c.c.a locala = (com.tencent.mm.plugin.webview.c.c.a)paramList.next();
+      ((Map)localHashMap).put(locala.ekC(), locala);
     }
-    int i = Integer.valueOf(paramMap).intValue();
-    AppMethodBeat.o(5657);
-    return i;
+    AppMethodBeat.o(188879);
+    return localHashMap;
   }
   
-  public final boolean ar(Map<String, Object> paramMap)
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "invoke"})
+  static final class a
+    extends d.g.b.l
+    implements d.g.a.a<HashMap<String, com.tencent.mm.plugin.webview.c.c.a>>
   {
-    AppMethodBeat.i(5654);
-    ab.i("MicroMsg.emoji.EmojiStoreWebViewLogic", "getSearchEmotionData: %s", new Object[] { paramMap.toString() });
-    String str1 = t(paramMap, "keyword");
-    String str2 = t(paramMap, "nextPageBuffer");
-    int i = v(paramMap, "type");
-    int j = v(paramMap, "webview_instance_id");
-    paramMap = t(paramMap, "searchID");
-    if (bo.isNullOrNil(paramMap)) {}
-    for (long l = 0L;; l = Long.valueOf(paramMap).longValue())
+    public static final a ARb;
+    
+    static
     {
-      this.uOh.a(i, str1, str2, j, l);
-      AppMethodBeat.o(5654);
-      return false;
+      AppMethodBeat.i(188877);
+      ARb = new a();
+      AppMethodBeat.o(188877);
     }
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    AppMethodBeat.i(5655);
-    if ((paramm instanceof b))
+    
+    a()
     {
-      com.tencent.mm.kernel.g.Rc().b(234, this);
-      this.uOh.isRunning = false;
-      paramString = (b)paramm;
-      if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        break label130;
-      }
-      this.uOh.csk = false;
-      h.KW(paramString.uOn).a("{}", paramString.uOo, "", 0L);
-    }
-    for (;;)
-    {
-      paramm = paramString.dax().xKp;
-      String str = aa.b(paramString.dax().xaZ);
-      long l = paramString.dax().xbc;
-      h.KW(paramString.uOn).a(paramm, paramString.uOo, str, l);
-      AppMethodBeat.o(5655);
-      return;
-      label130:
-      this.uOh.csk = true;
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.c.a
  * JD-Core Version:    0.7.0.1
  */

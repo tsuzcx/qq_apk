@@ -13,17 +13,17 @@ public class PlaceReport
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<PlaceReport> CREATOR = new a();
-  final int Hc;
-  private final String RU;
-  private final String RV;
-  private final String bf;
+  final int IR;
+  private final String TJ;
+  private final String TK;
+  private final String cQ;
   
   PlaceReport(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    this.Hc = paramInt;
-    this.RU = paramString1;
-    this.bf = paramString2;
-    this.RV = paramString3;
+    this.IR = paramInt;
+    this.TJ = paramString1;
+    this.cQ = paramString2;
+    this.TK = paramString3;
   }
   
   public boolean equals(Object paramObject)
@@ -33,37 +33,37 @@ public class PlaceReport
     {
       return false;
       paramObject = (PlaceReport)paramObject;
-    } while ((!b.b(this.RU, paramObject.RU)) || (!b.b(this.bf, paramObject.bf)) || (!b.b(this.RV, paramObject.RV)));
+    } while ((!b.c(this.TJ, paramObject.TJ)) || (!b.c(this.cQ, paramObject.cQ)) || (!b.c(this.TK, paramObject.TK)));
     return true;
   }
   
   public final String getSource()
   {
-    return this.RV;
+    return this.TK;
   }
   
   public final String getTag()
   {
-    return this.bf;
+    return this.cQ;
   }
   
   public int hashCode()
   {
-    return Arrays.hashCode(new Object[] { this.RU, this.bf, this.RV });
+    return Arrays.hashCode(new Object[] { this.TJ, this.cQ, this.TK });
   }
   
-  public final String kl()
+  public final String ku()
   {
-    return this.RU;
+    return this.TJ;
   }
   
   public String toString()
   {
-    c localc = b.t(this);
-    localc.a("placeId", this.RU);
-    localc.a("tag", this.bf);
-    if (!"unknown".equals(this.RV)) {
-      localc.a("source", this.RV);
+    c localc = b.C(this);
+    localc.a("placeId", this.TJ);
+    localc.a("tag", this.cQ);
+    if (!"unknown".equals(this.TK)) {
+      localc.a("source", this.TK);
     }
     return localc.toString();
   }

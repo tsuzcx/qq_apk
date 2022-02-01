@@ -9,12 +9,12 @@ public final class y
 {
   public static final class a
   {
+    public ArrayList<String> FM;
+    public ArrayList<String> FN;
+    public ArrayList<String> FO;
+    public ArrayList<Uri> FP;
     private Activity mActivity;
     public Intent mIntent;
-    public ArrayList<String> zt;
-    public ArrayList<String> zu;
-    public ArrayList<String> zv;
-    public ArrayList<Uri> zw;
     
     public a(Activity paramActivity)
     {

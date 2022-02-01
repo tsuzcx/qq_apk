@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class dz
   extends b
 {
-  public dz.a crP;
+  public a dgt;
+  public b dgu;
   
   public dz()
   {
@@ -15,11 +16,23 @@ public final class dz
   
   private dz(byte paramByte)
   {
-    AppMethodBeat.i(70161);
-    this.crP = new dz.a();
-    this.ymq = false;
+    AppMethodBeat.i(115991);
+    this.dgt = new a();
+    this.dgu = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70161);
+    AppMethodBeat.o(115991);
+  }
+  
+  public static final class a
+  {
+    public boolean dgs = false;
+    public String dgv;
+  }
+  
+  public static final class b
+  {
+    public boolean dgw = false;
   }
 }
 

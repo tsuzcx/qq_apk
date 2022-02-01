@@ -2,34 +2,34 @@ package com.tencent.mm.protocal;
 
 public abstract class c$g
 {
+  protected String CpA = "";
+  protected int CpB = -1;
+  protected boolean CpC = false;
   protected String NAME = "noName";
-  protected String whx = "";
-  protected int why = -1;
-  protected boolean whz = false;
   
   public c$g() {}
   
   public c$g(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
     this.NAME = paramString1;
-    this.whx = paramString2;
-    this.why = paramInt;
-    this.whz = paramBoolean;
+    this.CpA = paramString2;
+    this.CpB = paramInt;
+    this.CpC = paramBoolean;
   }
   
-  public final String dql()
+  public final String eBC()
   {
-    return this.whx;
+    return this.CpA;
   }
   
-  public final int dqm()
+  public final int eBD()
   {
-    return this.why;
+    return this.CpB;
   }
   
-  public final boolean dqn()
+  public final boolean eBE()
   {
-    return this.whz;
+    return this.CpC;
   }
   
   public final String getName()
@@ -39,7 +39,7 @@ public abstract class c$g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.g
  * JD-Core Version:    0.7.0.1
  */

@@ -16,14 +16,14 @@ public class MaxGridView
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(44174);
+    AppMethodBeat.i(67081);
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(536870911, -2147483648));
-    AppMethodBeat.o(44174);
+    AppMethodBeat.o(67081);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.MaxGridView
  * JD-Core Version:    0.7.0.1
  */

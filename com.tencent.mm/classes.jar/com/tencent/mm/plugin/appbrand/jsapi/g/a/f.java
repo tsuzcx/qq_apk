@@ -7,51 +7,51 @@ import org.json.JSONObject;
 
 public final class f
 {
-  private static double hPR = -85.0D;
-  private static double hPS = -1000.0D;
-  private static double hPT = -85.0D;
-  private static double hPU = -1000.0D;
+  private static double jVG = -85.0D;
+  private static double jVH = -1000.0D;
+  private static double jVI = -85.0D;
+  private static double jVJ = -1000.0D;
   
-  public static int G(JSONObject paramJSONObject)
+  public static int Q(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(93892);
+    AppMethodBeat.i(143714);
     try
     {
       int i = paramJSONObject.optInt("mapId");
-      AppMethodBeat.o(93892);
+      AppMethodBeat.o(143714);
       return i;
     }
     catch (Exception paramJSONObject)
     {
-      AppMethodBeat.o(93892);
+      AppMethodBeat.o(143714);
     }
     return -1;
   }
   
   public static int a(Map<String, Object> paramMap, String paramString, int paramInt)
   {
-    AppMethodBeat.i(93894);
-    paramMap = bk(paramMap.get(paramString));
+    AppMethodBeat.i(143716);
+    paramMap = cw(paramMap.get(paramString));
     if (paramMap != null)
     {
       paramInt = paramMap.intValue();
-      AppMethodBeat.o(93894);
+      AppMethodBeat.o(143716);
       return paramInt;
     }
-    AppMethodBeat.o(93894);
+    AppMethodBeat.o(143716);
     return paramInt;
   }
   
   public static String a(Map<String, Object> paramMap, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(93893);
+    AppMethodBeat.i(143715);
     paramMap = paramMap.get(paramString1);
     if ((paramMap instanceof String)) {
       paramMap = (String)paramMap;
     }
     while (paramMap != null)
     {
-      AppMethodBeat.o(93893);
+      AppMethodBeat.o(143715);
       return paramMap;
       if (paramMap != null) {
         paramMap = String.valueOf(paramMap);
@@ -59,22 +59,22 @@ public final class f
         paramMap = null;
       }
     }
-    AppMethodBeat.o(93893);
+    AppMethodBeat.o(143715);
     return paramString2;
   }
   
   public static boolean a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, String paramString, double paramDouble5)
   {
-    AppMethodBeat.i(93889);
+    AppMethodBeat.i(143711);
     boolean bool = false;
-    if (a.hPV.name().equalsIgnoreCase(paramString))
+    if (f.a.jVK.name().equalsIgnoreCase(paramString))
     {
       if (paramDouble5 == 0.0D) {
         bool = false;
       }
       while (paramDouble5 <= 0.0D)
       {
-        AppMethodBeat.o(93889);
+        AppMethodBeat.o(143711);
         return bool;
       }
     }
@@ -83,7 +83,7 @@ public final class f
     {
       bool = true;
       break;
-      if (!a.hPW.name().equalsIgnoreCase(paramString)) {
+      if (!f.a.jVL.name().equalsIgnoreCase(paramString)) {
         break;
       }
       int i;
@@ -117,7 +117,7 @@ public final class f
     }
   }
   
-  public static float av(float paramFloat)
+  public static float au(float paramFloat)
   {
     if (paramFloat > 0.0F) {
       return paramFloat % 360.0F;
@@ -125,81 +125,67 @@ public final class f
     return (((int)paramFloat * -1 / 360 + 1) * 360 + paramFloat) % 360.0F;
   }
   
-  private static Integer bk(Object paramObject)
+  private static Integer cw(Object paramObject)
   {
-    AppMethodBeat.i(93895);
+    AppMethodBeat.i(143717);
     if ((paramObject instanceof Integer))
     {
       paramObject = (Integer)paramObject;
-      AppMethodBeat.o(93895);
+      AppMethodBeat.o(143717);
       return paramObject;
     }
     int i;
     if ((paramObject instanceof Number))
     {
       i = ((Number)paramObject).intValue();
-      AppMethodBeat.o(93895);
+      AppMethodBeat.o(143717);
       return Integer.valueOf(i);
     }
     if ((paramObject instanceof String)) {
       try
       {
         i = (int)Double.parseDouble((String)paramObject);
-        AppMethodBeat.o(93895);
+        AppMethodBeat.o(143717);
         return Integer.valueOf(i);
       }
       catch (NumberFormatException paramObject) {}
     }
-    AppMethodBeat.o(93895);
+    AppMethodBeat.o(143717);
     return null;
-  }
-  
-  public static String g(c paramc, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(93891);
-    int i = G(paramJSONObject);
-    if (i == -1)
-    {
-      AppMethodBeat.o(93891);
-      return "invalid_map_id";
-    }
-    paramc = paramc.aAN() + "&" + i;
-    AppMethodBeat.o(93891);
-    return paramc;
   }
   
   public static double h(double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(93890);
-    hPT = paramDouble1;
-    hPU = paramDouble2;
-    if ((hPR == -85.0D) || (hPS == -1000.0D)) {}
-    for (paramDouble1 = 0.0D;; paramDouble1 = Math.atan2(hPU - hPS, hPT - hPR) * 180.0D / 3.141592D)
+    AppMethodBeat.i(143712);
+    jVI = paramDouble1;
+    jVJ = paramDouble2;
+    if ((jVG == -85.0D) || (jVH == -1000.0D)) {}
+    for (paramDouble1 = 0.0D;; paramDouble1 = Math.atan2(jVJ - jVH, jVI - jVG) * 180.0D / 3.141592D)
     {
-      hPR = hPT;
-      hPS = hPU;
-      AppMethodBeat.o(93890);
+      jVG = jVI;
+      jVH = jVJ;
+      AppMethodBeat.o(143712);
       return paramDouble1;
     }
   }
   
-  static enum a
+  public static String i(c paramc, JSONObject paramJSONObject)
   {
-    static
+    AppMethodBeat.i(143713);
+    int i = Q(paramJSONObject);
+    if (i == -1)
     {
-      AppMethodBeat.i(93888);
-      hPV = new a("GPS", 0);
-      hPW = new a("NETWORK", 1);
-      hPX = new a[] { hPV, hPW };
-      AppMethodBeat.o(93888);
+      AppMethodBeat.o(143713);
+      return "invalid_map_id";
     }
-    
-    private a() {}
+    paramc = paramc.aOd() + "&" + i;
+    AppMethodBeat.o(143713);
+    return paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.a.f
  * JD-Core Version:    0.7.0.1
  */

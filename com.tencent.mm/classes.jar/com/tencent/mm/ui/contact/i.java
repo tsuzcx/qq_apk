@@ -1,145 +1,77 @@
 package com.tencent.mm.ui.contact;
 
-import android.content.Context;
 import android.database.Cursor;
-import android.view.View;
-import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.d;
-import com.tencent.mm.aj.e;
-import com.tencent.mm.aj.e.a;
-import com.tencent.mm.aj.e.a.b;
-import com.tencent.mm.aj.z;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.ui.contact.a.a;
+import com.tencent.mm.ui.contact.a.e;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public final class i
-  extends LinearLayout
-  implements e.a
+  extends q
 {
-  private List<String> AcH;
-  private Map<String, View> AcI;
-  private i.a AcJ;
-  private Context context;
-  private LinearLayout mDJ;
+  private List<String> GVg;
+  private Cursor icq;
   
-  public i(Context paramContext, i.a parama)
+  public i(MMBaseSelectContactUI paramMMBaseSelectContactUI, boolean paramBoolean, List<String> paramList)
   {
-    super(paramContext);
-    AppMethodBeat.i(33704);
-    this.mDJ = null;
-    this.context = paramContext;
-    this.AcJ = parama;
-    init();
-    AppMethodBeat.o(33704);
+    super(paramMMBaseSelectContactUI, new ArrayList(), true, paramBoolean);
+    AppMethodBeat.i(102840);
+    this.GVg = paramList;
+    g.afC();
+    this.icq = ((k)g.ab(k.class)).apM().gY(this.GVg);
+    AppMethodBeat.o(102840);
   }
   
-  private void init()
+  public final void finish()
   {
-    AppMethodBeat.i(33706);
-    Object localObject2 = z.afi();
-    Object localObject1 = new ArrayList();
-    Object localObject3 = new StringBuilder();
-    e.a((StringBuilder)localObject3);
-    e.c((StringBuilder)localObject3);
-    ((StringBuilder)localObject3).append(" and bizinfo.type = 2 ");
-    ((StringBuilder)localObject3).append(" order by ");
-    ((StringBuilder)localObject3).append(e.aeK());
-    localObject3 = ((StringBuilder)localObject3).toString();
-    ab.i("MicroMsg.BizInfoStorage", "getEnterpriseFatherBizLst sql %s", new Object[] { localObject3 });
-    localObject2 = ((e)localObject2).rawQuery((String)localObject3, new String[0]);
-    if (localObject2 != null)
+    AppMethodBeat.i(102843);
+    super.finish();
+    ad.i("MicroMsg.CustomContactAdapter", "finish!");
+    if (this.icq != null)
     {
-      if (((Cursor)localObject2).moveToFirst()) {
-        do
-        {
-          ((ArrayList)localObject1).add(((Cursor)localObject2).getString(0));
-        } while (((Cursor)localObject2).moveToNext());
-      }
-      ((Cursor)localObject2).close();
+      this.icq.close();
+      this.icq = null;
     }
-    this.AcH = ((List)localObject1);
-    if ((this.AcH == null) || (this.AcH.size() <= 0))
-    {
-      ab.e("MicroMsg.EnterpriseBizView", "bizList is null");
-      AppMethodBeat.o(33706);
-      return;
-    }
-    ab.i("MicroMsg.EnterpriseBizView", "biz list size = %s", new Object[] { Integer.valueOf(this.AcH.size()) });
-    this.AcI = new HashMap();
-    if (this.mDJ == null)
-    {
-      View.inflate(getContext(), 2130969425, this);
-      this.mDJ = ((LinearLayout)findViewById(2131821084));
-    }
-    int i = 0;
-    if (i < this.AcH.size())
-    {
-      localObject1 = (String)this.AcH.get(i);
-      localObject2 = new j(getContext(), (String)localObject1);
-      this.mDJ.addView((View)localObject2);
-      this.AcI.put(localObject1, localObject2);
-      int j;
-      if (i == this.AcH.size() - 1)
-      {
-        localObject1 = ((j)localObject2).findViewById(2131823728);
-        j = ((View)localObject1).getPaddingLeft();
-        ((View)localObject1).setBackgroundResource(2130839276);
-        ((View)localObject1).findViewById(2131823729).setBackground(null);
-        ((View)localObject1).setPadding(j, 0, 0, 0);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        ((j)localObject2).findViewById(2131823728).setBackground(null);
-        localObject1 = ((j)localObject2).findViewById(2131823728).findViewById(2131823729);
-        j = ((View)localObject1).getPaddingRight();
-        ((View)localObject1).setBackgroundResource(2130839276);
-        ((View)localObject1).setPadding(0, 0, j, 0);
-      }
-    }
-    AppMethodBeat.o(33706);
+    AppMethodBeat.o(102843);
   }
   
-  public final void a(e.a.b paramb)
+  public final int getCount()
   {
-    AppMethodBeat.i(33707);
-    if (paramb.fwl == null)
-    {
-      AppMethodBeat.o(33707);
-      return;
-    }
-    if (!paramb.fwl.aeg())
-    {
-      ab.i("MicroMsg.EnterpriseBizView", "onEvent, not enterprise father");
-      AppMethodBeat.o(33707);
-      return;
-    }
-    al.d(new i.1(this, paramb));
-    AppMethodBeat.o(33707);
-  }
-  
-  public final int getEnterpriseFriendCount()
-  {
-    AppMethodBeat.i(33705);
-    if (this.AcH == null)
-    {
-      AppMethodBeat.o(33705);
-      return 0;
-    }
-    int i = this.AcH.size();
-    AppMethodBeat.o(33705);
+    AppMethodBeat.i(102841);
+    int i = this.icq.getCount();
+    AppMethodBeat.o(102841);
     return i;
+  }
+  
+  protected final a pU(int paramInt)
+  {
+    AppMethodBeat.i(102842);
+    e locale = null;
+    if ((paramInt >= 0) && (this.icq.moveToPosition(paramInt)))
+    {
+      locale = new e(paramInt);
+      af localaf = new af();
+      localaf.convertFrom(this.icq);
+      locale.contact = localaf;
+      locale.GVT = dqZ();
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(102842);
+      return locale;
+      ad.e("MicroMsg.CustomContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.contact.i
  * JD-Core Version:    0.7.0.1
  */

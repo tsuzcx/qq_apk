@@ -1,104 +1,65 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ag;
-import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
+import com.tencent.mm.plugin.aa.model.i;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.contact.a.a;
-import com.tencent.mm.ui.contact.r;
+import com.tencent.mm.ui.contact.n;
+import com.tencent.mm.ui.contact.q;
+import java.util.List;
 
 public final class e
-  extends r
+  extends q
 {
   private String chatroomName;
-  private String[] gpZ;
-  private Cursor gqa;
-  private String query;
+  private List<String> ico;
   
-  public e(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
+  public e(n paramn, String paramString)
   {
-    super(paramMMBaseSelectContactUI, null, true, 0);
-    AppMethodBeat.i(40770);
+    super(paramn, null, true, true);
+    AppMethodBeat.i(63553);
     this.chatroomName = paramString;
-    paramMMBaseSelectContactUI = ((c)g.E(c.class)).YJ().oY(this.chatroomName);
-    if (paramMMBaseSelectContactUI != null) {
-      this.gpZ = bo.er(paramMMBaseSelectContactUI);
-    }
-    AppMethodBeat.o(40770);
+    VP();
+    AppMethodBeat.o(63553);
   }
   
-  public final void a(String paramString, int[] paramArrayOfInt, boolean paramBoolean)
+  public final void VP()
   {
-    AppMethodBeat.i(40771);
-    ab.i("MicroMsg.AASelectSearchContactItem", "doSearch: %s", new Object[] { paramString });
-    clearCache();
-    this.query = paramString;
-    if (this.gqa != null)
-    {
-      this.gqa.close();
-      this.gqa = null;
-    }
-    if ((!bo.isNullOrNil(this.query)) && (this.gpZ != null))
-    {
-      g.RM();
-      this.gqa = ((j)g.E(j.class)).YA().a(this.gpZ, "@all.chatroom", this.query, null, null);
-    }
-    notifyDataSetChanged();
-    cp(paramString, true);
-    AppMethodBeat.o(40771);
-  }
-  
-  public final void finish()
-  {
-    AppMethodBeat.i(40773);
-    super.finish();
-    if (this.gqa != null)
-    {
-      this.gqa.close();
-      this.gqa = null;
-    }
-    AppMethodBeat.o(40773);
+    AppMethodBeat.i(63554);
+    ad.i("MicroMsg.AASelectInitAdapter", "resetData");
+    this.ico = i.BL(this.chatroomName);
+    AppMethodBeat.o(63554);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(40774);
-    if (this.gqa == null)
-    {
-      AppMethodBeat.o(40774);
-      return 0;
-    }
-    int i = this.gqa.getCount();
-    AppMethodBeat.o(40774);
+    AppMethodBeat.i(63556);
+    int i = this.ico.size();
+    AppMethodBeat.o(63556);
     return i;
   }
   
-  public final a mM(int paramInt)
+  public final a pU(int paramInt)
   {
-    AppMethodBeat.i(40772);
-    com.tencent.mm.ui.contact.a.e locale = null;
-    if (this.gqa.moveToPosition(paramInt))
-    {
-      ad localad = new ad();
-      localad.convertFrom(this.gqa);
-      locale = new com.tencent.mm.ui.contact.a.e(paramInt);
-      locale.contact = localad;
-      locale.Adl = true;
-    }
-    AppMethodBeat.o(40772);
-    return locale;
+    AppMethodBeat.i(63555);
+    Object localObject = (String)this.ico.get(paramInt);
+    g.afC();
+    localObject = ((k)g.ab(k.class)).apM().aHY((String)localObject);
+    c localc = new c(paramInt);
+    localc.dec = this.chatroomName;
+    localc.contact = ((af)localObject);
+    localc.GVT = true;
+    AppMethodBeat.o(63555);
+    return localc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.e
  * JD-Core Version:    0.7.0.1
  */

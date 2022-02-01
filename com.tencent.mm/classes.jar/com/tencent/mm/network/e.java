@@ -1,7 +1,7 @@
 package com.tencent.mm.network;
 
 import com.tencent.mm.network.a.b;
-import com.tencent.mm.protocal.z;
+import com.tencent.mm.protocal.ab;
 import java.util.List;
 
 public abstract interface e
@@ -18,31 +18,35 @@ public abstract interface e
   
   public abstract void a(o paramo);
   
-  public abstract void a(z paramz);
+  public abstract void a(ab paramab);
   
   public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, String paramString3, String paramString4);
   
-  public abstract c adI();
-  
-  public abstract i adJ();
-  
-  public abstract void adK();
-  
-  public abstract void adL();
-  
   public abstract void addHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
   
-  public abstract boolean adu();
+  public abstract boolean auS();
   
-  public abstract void cQ(boolean paramBoolean);
+  public abstract c avg();
   
-  public abstract void cR(boolean paramBoolean);
+  public abstract i avh();
   
-  public abstract void cS(boolean paramBoolean);
+  public abstract void avi();
   
-  public abstract void cT(boolean paramBoolean);
+  public abstract void avj();
+  
+  public abstract void c(String paramString1, long paramLong, String paramString2);
   
   public abstract void cancel(int paramInt);
+  
+  public abstract void ei(boolean paramBoolean);
+  
+  public abstract void ej(boolean paramBoolean);
+  
+  public abstract void ek(boolean paramBoolean);
+  
+  public abstract void el(boolean paramBoolean);
+  
+  public abstract void forceUseV6(boolean paramBoolean);
   
   public abstract int getHostByName(String paramString, List<String> paramList);
   
@@ -56,17 +60,23 @@ public abstract interface e
   
   public abstract void reportFailIp(String paramString);
   
+  public abstract void reportV6Status(boolean paramBoolean);
+  
   public abstract void reset();
-  
-  public abstract void rr(String paramString);
-  
-  public abstract void rs(String paramString);
   
   public abstract void setHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
   
   public abstract void setSignallingStrategy(long paramLong1, long paramLong2);
   
   public abstract void stopSignalling();
+  
+  public abstract void switchProcessActiveState(boolean paramBoolean);
+  
+  public abstract void wm(String paramString);
+  
+  public abstract void wn(String paramString);
+  
+  public abstract void wo(String paramString);
 }
 
 

@@ -8,25 +8,25 @@ import android.os.Message;
 public abstract class h
   implements IBinder.DeathRecipient
 {
-  private final Object hV;
-  i hW;
-  boolean hX;
+  private final Object jU;
+  i jV;
+  boolean jW;
   
   public h()
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.hV = new t(new j(this));
+      this.jU = new t(new j(this));
       return;
     }
-    this.hV = new k(this);
+    this.jU = new k(this);
   }
   
   final void a(int paramInt, Object paramObject, Bundle paramBundle)
   {
-    if (this.hW != null)
+    if (this.jV != null)
     {
-      paramObject = this.hW.obtainMessage(paramInt, paramObject);
+      paramObject = this.jV.obtainMessage(paramInt, paramObject);
       paramObject.setData(paramBundle);
       paramObject.sendToTarget();
     }

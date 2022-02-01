@@ -1,10 +1,16 @@
 package com.tencent.mm.plugin.game.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.game.report.e;
+import com.tencent.mm.plugin.game.f.c;
+import com.tencent.mm.plugin.game.model.a.a;
 
 public class GameIndexSearchView
   extends LinearLayout
@@ -15,11 +21,11 @@ public class GameIndexSearchView
   public GameIndexSearchView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(111987);
+    AppMethodBeat.i(42171);
     setOrientation(0);
     this.mContext = paramContext;
     this.mInflater = ((LayoutInflater)this.mContext.getSystemService("layout_inflater"));
-    AppMethodBeat.o(111987);
+    AppMethodBeat.o(42171);
   }
 }
 

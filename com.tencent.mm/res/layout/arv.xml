@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:scrollbars="none" style="@style/q1"
+<LinearLayout android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" style="@style/l0">
-        <TextView android:gravity="center" android:id="@id/ec_" android:text="@string/e0i" style="@style/mm" />
-        <TextView android:gravity="center" android:id="@id/eca" android:layout_marginTop="5.0dip" style="@style/mm" />
-        <EditText android:gravity="center" android:id="@id/a77" android:layout_width="180.0dip" android:layout_marginTop="5.0dip" android:hint="@string/e09" android:inputType="phone" style="@style/ml" />
-        <TextView android:gravity="center" android:id="@id/ecb" android:layout_marginTop="10.0dip" android:text="@string/e0f" style="@style/mm" />
-        <Button android:id="@id/ecc" android:visibility="gone" android:layout_marginTop="15.0dip" android:text="@string/e0f" style="@style/nq" />
-        <Button android:layout_gravity="center" android:id="@id/ec8" android:text="@string/e0e" style="@style/kd" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:id="@id/dpy" android:visibility="gone" style="@style/lv" />
+        <ListView android:id="@id/dq0" android:background="@color/a_r" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/a7c" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
+        <TextView android:textColor="@color/wb" android:gravity="center_horizontal" android:id="@id/bm0" android:background="@color/BW_93" android:paddingTop="40.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/lv" />
+        <LinearLayout android:gravity="center_vertical" android:id="@id/dq1" android:background="@drawable/a31" android:visibility="gone" style="@style/n5">
+            <TextView android:id="@id/dq2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="3.0dip" android:text="@string/dqe" android:singleLine="false" android:layout_weight="1.0" style="@style/lw" />
+        </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

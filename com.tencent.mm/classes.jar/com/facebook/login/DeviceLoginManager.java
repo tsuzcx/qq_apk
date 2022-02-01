@@ -13,7 +13,7 @@ public class DeviceLoginManager
   
   public static DeviceLoginManager getInstance()
   {
-    AppMethodBeat.i(92627);
+    AppMethodBeat.i(40394);
     if (instance == null) {}
     try
     {
@@ -21,18 +21,18 @@ public class DeviceLoginManager
         instance = new DeviceLoginManager();
       }
       DeviceLoginManager localDeviceLoginManager = instance;
-      AppMethodBeat.o(92627);
+      AppMethodBeat.o(40394);
       return localDeviceLoginManager;
     }
     finally
     {
-      AppMethodBeat.o(92627);
+      AppMethodBeat.o(40394);
     }
   }
   
   protected LoginClient.Request createLoginRequest(Collection<String> paramCollection)
   {
-    AppMethodBeat.i(92628);
+    AppMethodBeat.i(40395);
     paramCollection = super.createLoginRequest(paramCollection);
     Object localObject = getDeviceRedirectUri();
     if (localObject != null) {
@@ -42,7 +42,7 @@ public class DeviceLoginManager
     if (localObject != null) {
       paramCollection.setDeviceAuthTargetUserId((String)localObject);
     }
-    AppMethodBeat.o(92628);
+    AppMethodBeat.o(40395);
     return paramCollection;
   }
   
@@ -68,7 +68,7 @@ public class DeviceLoginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.login.DeviceLoginManager
  * JD-Core Version:    0.7.0.1
  */

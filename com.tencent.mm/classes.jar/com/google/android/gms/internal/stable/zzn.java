@@ -12,37 +12,37 @@ final class zzn
   public zzn(Throwable paramThrowable, ReferenceQueue<Throwable> paramReferenceQueue)
   {
     super(paramThrowable, paramReferenceQueue);
-    AppMethodBeat.i(90498);
+    AppMethodBeat.i(5519);
     if (paramThrowable == null)
     {
       paramThrowable = new NullPointerException("The referent cannot be null");
-      AppMethodBeat.o(90498);
+      AppMethodBeat.o(5519);
       throw paramThrowable;
     }
     this.zzahl = System.identityHashCode(paramThrowable);
-    AppMethodBeat.o(90498);
+    AppMethodBeat.o(5519);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(90499);
+    AppMethodBeat.i(5520);
     if ((paramObject == null) || (paramObject.getClass() != getClass()))
     {
-      AppMethodBeat.o(90499);
+      AppMethodBeat.o(5520);
       return false;
     }
     if (this == paramObject)
     {
-      AppMethodBeat.o(90499);
+      AppMethodBeat.o(5520);
       return true;
     }
     paramObject = (zzn)paramObject;
     if ((this.zzahl == paramObject.zzahl) && (get() == paramObject.get()))
     {
-      AppMethodBeat.o(90499);
+      AppMethodBeat.o(5520);
       return true;
     }
-    AppMethodBeat.o(90499);
+    AppMethodBeat.o(5520);
     return false;
   }
   
@@ -53,7 +53,7 @@ final class zzn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.internal.stable.zzn
  * JD-Core Version:    0.7.0.1
  */

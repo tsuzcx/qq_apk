@@ -5,62 +5,62 @@ import java.util.concurrent.Executor;
 public class a
   extends c
 {
-  private static volatile a bG;
-  private static final Executor bJ = new Executor()
+  private static volatile a bJ;
+  private static final Executor bM = new Executor()
   {
     public final void execute(Runnable paramAnonymousRunnable)
     {
-      a.aa().d(paramAnonymousRunnable);
+      a.P().f(paramAnonymousRunnable);
     }
   };
-  private static final Executor bK = new Executor()
+  private static final Executor bN = new Executor()
   {
     public final void execute(Runnable paramAnonymousRunnable)
     {
-      a.aa().c(paramAnonymousRunnable);
+      a.P().e(paramAnonymousRunnable);
     }
   };
-  public c bH = this.bI;
-  private c bI = new b();
+  public c bK = this.bL;
+  private c bL = new b();
   
-  public static a aa()
+  public static a P()
   {
-    if (bG != null) {
-      return bG;
+    if (bJ != null) {
+      return bJ;
     }
     try
     {
-      if (bG == null) {
-        bG = new a();
+      if (bJ == null) {
+        bJ = new a();
       }
-      return bG;
+      return bJ;
     }
     finally {}
   }
   
-  public static Executor ad()
+  public static Executor Q()
   {
-    return bK;
+    return bN;
   }
   
-  public final void c(Runnable paramRunnable)
+  public final void e(Runnable paramRunnable)
   {
-    this.bH.c(paramRunnable);
+    this.bK.e(paramRunnable);
   }
   
-  public final void d(Runnable paramRunnable)
+  public final void f(Runnable paramRunnable)
   {
-    this.bH.d(paramRunnable);
+    this.bK.f(paramRunnable);
   }
   
   public final boolean isMainThread()
   {
-    return this.bH.isMainThread();
+    return this.bK.isMainThread();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.arch.a.a.a
  * JD-Core Version:    0.7.0.1
  */

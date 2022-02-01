@@ -4,7 +4,7 @@ import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.u;
 
 public final class c
-  extends f
+  extends g
 {
   public c(u paramu, Orders paramOrders)
   {
@@ -23,7 +23,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.d.c
  * JD-Core Version:    0.7.0.1
  */

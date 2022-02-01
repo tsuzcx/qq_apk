@@ -7,6 +7,7 @@ import com.tencent.recovery.option.IOptionsCreator;
 import com.tencent.recovery.option.ProcessOptions;
 import com.tencent.recovery.util.Util;
 import com.tencent.recovery.wx.WXConstantsRecovery;
+import com.tencent.recovery.wx.WXRecoveryVersion;
 import com.tencent.recovery.wx.service.WXRecoveryHandleService;
 import com.tencent.recovery.wx.service.WXRecoveryUploadService;
 import com.tencent.recovery.wx.util.FileUtil;
@@ -18,17 +19,17 @@ public class DefaultOptionsCreator
 {
   private String clientVersion;
   
-  private String getClientVersion()
+  private String getClientVersion(Context paramContext)
   {
     if (Util.isNullOrNil(this.clientVersion))
     {
-      File localFile = new File(WXConstantsRecovery.BiJ, "version.info");
+      File localFile = new File(WXConstantsRecovery.RecoverySDCardDir, "version.info");
       if (localFile.exists()) {
-        this.clientVersion = FileUtil.ac(localFile);
+        this.clientVersion = FileUtil.readStringFromFile(localFile);
       }
     }
     if (Util.isNullOrNil(this.clientVersion)) {
-      this.clientVersion = "0x27000536";
+      this.clientVersion = WXRecoveryVersion.getBaseClientVersion(paramContext);
     }
     return this.clientVersion;
   }
@@ -36,15 +37,15 @@ public class DefaultOptionsCreator
   public CommonOptions createCommonOptions(Context paramContext)
   {
     CommonOptions.Builder localBuilder = new CommonOptions.Builder();
-    localBuilder.Bix = WXRecoveryHandleService.class.getName();
-    localBuilder.Biy = WXRecoveryUploadService.class.getName();
-    localBuilder.clientVersion = getClientVersion();
-    localBuilder.Biu = String.format("http://dldir1.qq.com/weixin/android/recovery-%s.conf", new Object[] { getClientVersion() });
-    localBuilder.eAx = WXUtil.iY(paramContext);
-    localBuilder.Biz = true;
-    localBuilder.BiA = 600000L;
-    localBuilder.BiB = 600000L;
-    return localBuilder.dUs();
+    localBuilder.setRecoveryHandleService(WXRecoveryHandleService.class.getName());
+    localBuilder.setRecoveryUploadService(WXRecoveryUploadService.class.getName());
+    localBuilder.setClientVersion(getClientVersion(paramContext));
+    localBuilder.setConfigUrl(String.format("http://dldir1.qq.com/weixin/android/recovery-%s.conf", new Object[] { getClientVersion(paramContext) }));
+    localBuilder.setUUID(WXUtil.getWXUin(paramContext));
+    localBuilder.setDebugMode(true);
+    localBuilder.setUploadInterval(600000L);
+    localBuilder.setHandleRetryInterval(600000L);
+    return localBuilder.build();
   }
   
   public ProcessOptions createProcessOptions(String paramString, int paramInt)
@@ -54,7 +55,7 @@ public class DefaultOptionsCreator
   
   public String toString()
   {
-    return String.format("Creator: [ClientVersion=%s] ", new Object[] { getClientVersion() });
+    return String.format("Creator: [ClientVersion=%s] ", new Object[] { getClientVersion(null) });
   }
 }
 

@@ -4,17 +4,17 @@ import android.os.Bundle;
 
 public final class aa
 {
-  private final Bundle ew;
-  private final String gE;
+  private final Bundle gl;
+  private final String iC;
   
   public final Bundle getExtras()
   {
-    return this.ew;
+    return this.gl;
   }
   
   public final String getRootId()
   {
-    return this.gE;
+    return this.iC;
   }
 }
 

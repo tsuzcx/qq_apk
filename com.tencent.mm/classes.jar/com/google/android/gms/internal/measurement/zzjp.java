@@ -12,31 +12,31 @@ class zzjp
   zzjp(zzjr paramzzjr)
   {
     super(paramzzjr.zzla());
-    AppMethodBeat.i(69428);
+    AppMethodBeat.i(1951);
     Preconditions.checkNotNull(paramzzjr);
     this.zzajp = paramzzjr;
-    AppMethodBeat.o(69428);
+    AppMethodBeat.o(1951);
   }
   
   public zzeb zziw()
   {
-    AppMethodBeat.i(69430);
+    AppMethodBeat.i(1953);
     zzeb localzzeb = this.zzajp.zziw();
-    AppMethodBeat.o(69430);
+    AppMethodBeat.o(1953);
     return localzzeb;
   }
   
   public zzei zzix()
   {
-    AppMethodBeat.i(69429);
+    AppMethodBeat.i(1952);
     zzei localzzei = this.zzajp.zzix();
-    AppMethodBeat.o(69429);
+    AppMethodBeat.o(1952);
     return localzzei;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzjp
  * JD-Core Version:    0.7.0.1
  */

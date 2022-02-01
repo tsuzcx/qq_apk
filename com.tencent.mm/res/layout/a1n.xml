@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" style="@style/q1"
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/l0">
-        <ImageView android:src="@drawable/agg" style="@style/j9" />
-        <TextView android:id="@id/bze" android:text="@string/c35" style="@style/j_" />
-        <TextView android:id="@id/bzf" android:text="@string/c2q" style="@style/ja" />
-        <LinearLayout android:gravity="left" android:orientation="horizontal" android:layout_marginTop="@dimen/l2" style="@style/mj">
-            <CheckBox android:id="@id/bzg" android:text="@string/c1v" style="@style/j6" />
-            <Button android:id="@id/bzh" android:text="@string/c37" style="@style/jx" />
-        </LinearLayout>
-        <Button android:id="@id/bzi" android:text="@string/c2p" style="@style/jy" />
-    </LinearLayout>
-    <Button android:id="@id/bzj" android:text="@string/c2m" style="@style/jc" />
-</LinearLayout>
+    <com.tencent.mm.plugin.gif.MMAnimateView android:layout_gravity="center_horizontal" android:id="@id/bsf" android:layout_width="173.0dip" android:layout_height="253.0dip" android:layout_marginTop="100.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:layout_gravity="center_horizontal" android:id="@id/bsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/by9" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/o2" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/bsh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/by_" />
+    <Button android:textSize="18.0dip" android:layout_gravity="center_horizontal" android:id="@id/bse" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_marginLeft="27.0dip" android:layout_marginTop="53.0dip" android:layout_marginRight="27.0dip" android:text="@string/bwn" android:layout_centerHorizontal="true" style="@style/o6" />
+</merge>

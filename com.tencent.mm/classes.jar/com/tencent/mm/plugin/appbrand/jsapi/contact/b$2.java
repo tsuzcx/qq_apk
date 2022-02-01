@@ -1,40 +1,20 @@
 package com.tencent.mm.plugin.appbrand.jsapi.contact;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.provider.ContactsContract.Contacts;
-import android.view.MenuItem;
-import com.tencent.luggage.g.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
 
 final class b$2
-  implements n.d
+  implements n.c
 {
-  b$2(b paramb, Activity paramActivity, c paramc1, c paramc2, int paramInt) {}
+  b$2(b paramb, String[] paramArrayOfString) {}
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public final void onCreateMMMenu(l paraml)
   {
-    AppMethodBeat.i(126263);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(126263);
-      return;
-      paramMenuItem = new Intent("android.intent.action.INSERT", ContactsContract.Contacts.CONTENT_URI);
-      b.a(this.hKj, paramMenuItem, this.val$activity, this.hKk);
-      this.val$activity.startActivity(paramMenuItem);
-      e.at(this.val$activity).a(paramMenuItem, new b.2.1(this));
-      AppMethodBeat.o(126263);
-      return;
-      paramMenuItem = new Intent("android.intent.action.INSERT_OR_EDIT", ContactsContract.Contacts.CONTENT_URI);
-      paramMenuItem.setType("vnd.android.cursor.item/person");
-      b.a(this.hKj, paramMenuItem, this.val$activity, this.hKk);
-      e.at(this.val$activity).a(paramMenuItem, new b.2.2(this));
-    }
+    AppMethodBeat.i(186005);
+    paraml.c(0, this.jOm[0]);
+    paraml.c(1, this.jOm[1]);
+    AppMethodBeat.o(186005);
   }
 }
 

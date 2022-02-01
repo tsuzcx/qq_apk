@@ -11,22 +11,22 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.b;
 public final class i
   extends ArrowKeyMovementMethod
 {
-  private static i vBa;
+  private static i BEJ;
   
-  public static i djE()
+  public static i esX()
   {
-    AppMethodBeat.i(26943);
-    if (vBa == null) {
-      vBa = new i();
+    AppMethodBeat.i(30637);
+    if (BEJ == null) {
+      BEJ = new i();
     }
-    i locali = vBa;
-    AppMethodBeat.o(26943);
+    i locali = BEJ;
+    AppMethodBeat.o(30637);
     return locali;
   }
   
   public final boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(26944);
+    AppMethodBeat.i(30638);
     int i = paramMotionEvent.getAction();
     if ((i == 1) || (i == 0))
     {
@@ -39,22 +39,22 @@ public final class i
       Object localObject = paramTextView.getLayout();
       j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(n + (j - k)), m);
       localObject = (k[])paramSpannable.getSpans(j, j + 1, k.class);
-      if ((m < b.dim()) && (localObject.length != 0))
+      if ((m < b.bSG()) && (localObject.length != 0))
       {
         if (i == 0) {
           localObject[0].a(paramTextView, paramSpannable, paramMotionEvent, localObject[0]);
         }
-        AppMethodBeat.o(26944);
+        AppMethodBeat.o(30638);
         return false;
       }
     }
-    AppMethodBeat.o(26944);
+    AppMethodBeat.o(30638);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.spans.i
  * JD-Core Version:    0.7.0.1
  */

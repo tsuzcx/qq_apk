@@ -1,18 +1,15 @@
 package com.tencent.mm.media.g;
 
-import android.graphics.Bitmap;
+import d.l;
 
-public abstract class d
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/mix/FrameRetriever;", "", "requestNextFrame", "Lcom/tencent/mm/media/mix/FrameInfo;", "plugin-mediaeditor_release"})
+public abstract interface d
 {
-  public static d.a eWu = null;
-  
-  public abstract int Va();
-  
-  public abstract void p(Bitmap paramBitmap);
+  public abstract c aka();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.g.d
  * JD-Core Version:    0.7.0.1
  */

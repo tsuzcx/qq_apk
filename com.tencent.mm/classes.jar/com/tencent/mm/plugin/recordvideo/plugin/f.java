@@ -1,83 +1,77 @@
 package com.tencent.mm.plugin.recordvideo.plugin;
 
-import a.f.b.j;
-import a.l;
-import android.content.Context;
-import android.view.MotionEvent;
-import android.widget.FrameLayout;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.e;
-import com.tencent.mm.api.r;
-import com.tencent.mm.api.s;
-import com.tencent.mm.api.s.b;
-import com.tencent.mm.e.b.a;
-import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
+import com.tencent.mm.g.b.a.dc;
+import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager;
+import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
+import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoContainerPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "photoLayout", "Landroid/widget/FrameLayout;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/FrameLayout;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "captureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "curIndex", "", "curType", "Lcom/tencent/mm/api/FeaturesType;", "drawingView", "Lcom/tencent/mm/view/PhotoDrawingView;", "isFinishing", "", "moved", "photoEditor", "Lcom/tencent/mm/api/MMPhotoEditor;", "presenter", "Lcom/tencent/mm/presenter/IPresenter;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "addEmoji", "", "emojiInfo", "Lcom/tencent/mm/api/IEmojiInfo;", "addText", "text", "Landroid/text/Editable;", "color", "bgcolor", "cropCancel", "cropFinish", "cropRotate", "cropUndo", "doBrush", "doCrop", "doDoodle", "index", "doFinish", "doMosaic", "handleDispatch", "event", "Landroid/view/MotionEvent;", "isCanRevert", "loadPhotoEditLogic", "path", "", "onBackPress", "release", "reset", "setup", "showEmojiPanel", "showTextPanel", "unDo", "Companion", "plugin-recordvideo_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "onAttach", "", "onClick", "v", "onDetach", "resetStyle", "bgResId", "", "textColor", "text", "height", "(Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/String;Ljava/lang/Integer;)V", "plugin-recordvideo_release"})
 public final class f
-  implements q
+  implements View.OnClickListener, t
 {
-  public static final f.a qbY;
-  public final Context context;
-  public int eSO;
-  public boolean mwZ;
-  public s oOG;
-  public RecordConfigProvider qaF;
-  d qbI;
-  public com.tencent.mm.media.widget.camerarecordview.a.b qbS;
-  public com.tencent.mm.view.b qbT;
-  public com.tencent.mm.bs.b qbU;
-  private boolean qbV;
-  public e qbW;
-  public FrameLayout qbX;
+  private final String TAG;
+  private View view;
+  d vjo;
   
-  static
+  public f(View paramView, d paramd)
   {
-    AppMethodBeat.i(150629);
-    qbY = new f.a((byte)0);
-    AppMethodBeat.o(150629);
+    AppMethodBeat.i(75489);
+    this.view = paramView;
+    this.vjo = paramd;
+    this.TAG = "MicroMsg.EditFinishPlugin";
+    this.view.setOnClickListener((View.OnClickListener)this);
+    AppMethodBeat.o(75489);
   }
   
-  public f(FrameLayout paramFrameLayout, d paramd)
+  public final void a(Integer paramInteger1, Integer paramInteger2, String paramString, Integer paramInteger3)
   {
-    AppMethodBeat.i(150628);
-    this.qbX = paramFrameLayout;
-    this.qbI = paramd;
-    paramFrameLayout = s.bWe.Ab();
-    j.p(paramFrameLayout, "MMPhotoEditor.mFactory.get()");
-    this.oOG = paramFrameLayout;
-    this.context = this.qbX.getContext();
-    this.qbW = e.bVV;
-    this.eSO = -1;
-    AppMethodBeat.o(150628);
-  }
-  
-  public final boolean cgq()
-  {
-    AppMethodBeat.i(150627);
-    if (this.qbW == e.bWa)
-    {
-      cgw();
-      AppMethodBeat.o(150627);
-      return true;
+    AppMethodBeat.i(75488);
+    ad.i(this.TAG, paramString + ' ' + paramInteger3);
+    View localView = this.view;
+    if ((paramInteger1 != null) && (paramInteger1.intValue() != 0)) {
+      localView.setBackgroundResource(paramInteger1.intValue());
     }
-    AppMethodBeat.o(150627);
-    return false;
-  }
-  
-  public final void cgw()
-  {
-    AppMethodBeat.i(150624);
-    this.qbW = e.bVV;
-    com.tencent.mm.bs.b localb = this.qbU;
-    if (localb != null)
+    if (paramInteger3 != null)
     {
-      localb.getSelectedFeatureListener().a(e.bWa, 1);
-      AppMethodBeat.o(150624);
+      i = ((Number)paramInteger3).intValue();
+      if (i > 0) {
+        this.view.getLayoutParams().height = i;
+      }
+    }
+    if ((paramInteger2 != null) && (paramInteger2.intValue() != 0) && ((localView instanceof TextView))) {
+      ((TextView)localView).setTextColor(android.support.v4.content.b.n(((TextView)localView).getContext(), paramInteger2.intValue()));
+    }
+    paramInteger1 = (CharSequence)paramString;
+    if ((paramInteger1 == null) || (paramInteger1.length() == 0)) {}
+    for (int i = 1;; i = 0)
+    {
+      if ((i == 0) && ((localView instanceof TextView))) {
+        ((TextView)localView).setText((CharSequence)paramString);
+      }
+      AppMethodBeat.o(75488);
       return;
     }
-    AppMethodBeat.o(150624);
+  }
+  
+  public final void apt()
+  {
+    AppMethodBeat.i(204077);
+    this.view.setVisibility(0);
+    AppMethodBeat.o(204077);
+  }
+  
+  public final boolean dia()
+  {
+    return false;
   }
   
   public final String name()
@@ -85,66 +79,56 @@ public final class f
     return null;
   }
   
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(75487);
+    ad.i(this.TAG, "on click edit finish");
+    paramView = com.tencent.mm.plugin.recordvideo.d.b.vpp;
+    com.tencent.mm.plugin.recordvideo.d.b.Ko(12);
+    paramView = com.tencent.mm.plugin.recordvideo.d.b.vpp;
+    com.tencent.mm.plugin.recordvideo.d.b.diy().fm(System.currentTimeMillis());
+    if (!CaptureDataManager.vhw.a(this.view.getContext(), (CaptureDataManager.a)new a(this))) {
+      d.b.a(this.vjo, d.c.vog);
+    }
+    AppMethodBeat.o(75487);
+  }
+  
+  public final void onDetach()
+  {
+    AppMethodBeat.i(204078);
+    this.view.setVisibility(4);
+    AppMethodBeat.o(204078);
+  }
+  
   public final void onPause() {}
   
   public final void onResume() {}
   
-  public final void release()
-  {
-    AppMethodBeat.i(150626);
-    this.oOG.onDestroy();
-    this.qbX.removeAllViews();
-    this.qbX.setVisibility(8);
-    com.tencent.mm.bs.b localb = this.qbU;
-    if (localb != null)
-    {
-      localb.onDestroy();
-      AppMethodBeat.o(150626);
-      return;
-    }
-    AppMethodBeat.o(150626);
-  }
+  public final void release() {}
   
-  public final void reset()
-  {
-    AppMethodBeat.i(150625);
-    this.qbW = e.bVV;
-    com.tencent.mm.bs.b localb = this.qbU;
-    if (localb != null) {
-      localb.getSelectedFeatureListener().a(e.bVV);
-    }
-    localb = this.qbU;
-    if (localb != null)
-    {
-      localb.getSelectedFeatureListener().a(e.bVV, -1);
-      AppMethodBeat.o(150625);
-      return;
-    }
-    AppMethodBeat.o(150625);
-  }
+  public final void reset() {}
   
   public final void setVisibility(int paramInt) {}
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/MotionEvent;", "kotlin.jvm.PlatformType", "onDispatchTouch"})
-  public static final class f
-    implements b.a
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "onRequestFinish"})
+  static final class a
+    implements CaptureDataManager.a
   {
-    public f(f paramf) {}
+    a(f paramf) {}
     
-    public final boolean o(MotionEvent paramMotionEvent)
+    public final void dhE()
     {
-      AppMethodBeat.i(150623);
-      f localf = this.qbZ;
-      j.p(paramMotionEvent, "it");
-      f.a(localf, paramMotionEvent);
-      AppMethodBeat.o(150623);
-      return false;
+      AppMethodBeat.i(75486);
+      d.b.a(this.vjB.vjo, d.c.vog);
+      AppMethodBeat.o(75486);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.f
  * JD-Core Version:    0.7.0.1
  */

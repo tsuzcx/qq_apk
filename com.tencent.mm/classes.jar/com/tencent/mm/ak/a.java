@@ -1,57 +1,33 @@
 package com.tencent.mm.ak;
 
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.r;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.b.f;
+import com.tencent.mm.cache.g.a;
+import com.tencent.mm.memory.a.c;
 
 public final class a
 {
-  private static int fyi = 0;
-  private static int fyj = 0;
+  f<String, Bitmap> gTg;
   
-  public static String a(a.a parama)
+  public a(int paramInt)
   {
-    AppMethodBeat.i(16427);
-    if (parama == null)
-    {
-      AppMethodBeat.o(16427);
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder("");
-    localStringBuilder.append(bo.nullAsNil(parama.fys));
-    localStringBuilder.append("\n-------------------\n");
-    localStringBuilder.append(bo.nullAsNil(parama.fyq));
-    localStringBuilder.append("\n-------------------\n");
-    localStringBuilder.append(bo.nullAsNil(parama.fyn));
-    parama = localStringBuilder.toString();
-    AppMethodBeat.o(16427);
-    return parama;
+    AppMethodBeat.i(150193);
+    this.gTg = new c(paramInt);
+    AppMethodBeat.o(150193);
   }
   
-  public static String b(a.a parama)
+  public final void d(String paramString, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(16428);
-    StringBuilder localStringBuilder = new StringBuilder("");
-    if (!r.nB(parama.czp))
+    AppMethodBeat.i(150194);
+    if (this.gTg != null)
     {
-      localStringBuilder.append(parama.fyk);
-      localStringBuilder.append(": ");
+      this.gTg.o(paramString, paramBitmap);
+      AppMethodBeat.o(150194);
+      return;
     }
-    if (bo.isNullOrNil(parama.fys)) {
-      if (bo.isNullOrNil(parama.fyq)) {
-        parama = parama.fyn;
-      }
-    }
-    for (;;)
-    {
-      localStringBuilder.append(parama);
-      parama = localStringBuilder.toString();
-      AppMethodBeat.o(16428);
-      return parama;
-      parama = parama.fyq;
-      continue;
-      parama = parama.fys;
-    }
+    g.a.b("avatar_cache", paramString, paramBitmap);
+    AppMethodBeat.o(150194);
   }
 }
 

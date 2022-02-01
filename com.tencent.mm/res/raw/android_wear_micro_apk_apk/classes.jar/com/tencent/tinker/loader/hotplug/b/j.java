@@ -8,23 +8,23 @@ import java.lang.reflect.Method;
 final class j
   implements InvocationHandler
 {
-  private final h alI;
-  private final IBinder alN;
-  private final IInterface alO;
+  private final h api;
+  private final IBinder apn;
+  private final IInterface apo;
   
   j(IInterface paramIInterface, IBinder paramIBinder, h paramh)
   {
-    this.alO = paramIInterface;
-    this.alN = paramIBinder;
-    this.alI = paramh;
+    this.apo = paramIInterface;
+    this.apn = paramIBinder;
+    this.api = paramh;
   }
   
   public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
     if ("asBinder".equals(paramMethod.getName())) {
-      return this.alN;
+      return this.apn;
     }
-    return this.alI.invoke(this.alO, paramMethod, paramArrayOfObject);
+    return this.api.invoke(this.apo, paramMethod, paramArrayOfObject);
   }
 }
 

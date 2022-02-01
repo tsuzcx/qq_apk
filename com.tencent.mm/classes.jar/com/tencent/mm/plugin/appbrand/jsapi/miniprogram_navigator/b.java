@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public enum b
 {
-  public final int hcr;
+  public final int gXn;
   
   static
   {
-    AppMethodBeat.i(101978);
-    hSP = new b("RELEASE", 0, 0);
-    hSQ = new b("DEVELOP", 1, 1);
-    hSR = new b("TRIAL", 2, 2);
-    hSS = new b[] { hSP, hSQ, hSR };
-    AppMethodBeat.o(101978);
+    AppMethodBeat.i(147177);
+    jYT = new b("RELEASE", 0, 0);
+    jYU = new b("DEVELOP", 1, 1);
+    jYV = new b("TRIAL", 2, 2);
+    jYW = new b[] { jYT, jYU, jYV };
+    AppMethodBeat.o(147177);
   }
   
   private b(int paramInt)
   {
-    this.hcr = paramInt;
+    this.gXn = paramInt;
   }
   
   public static b a(String paramString, b paramb)
   {
-    AppMethodBeat.i(101976);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(147175);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(101976);
+      AppMethodBeat.o(147175);
       return paramb;
     }
     b[] arrayOfb = values();
@@ -38,39 +38,39 @@ public enum b
       b localb = arrayOfb[i];
       if (localb.name().toLowerCase().equals(paramString))
       {
-        AppMethodBeat.o(101976);
+        AppMethodBeat.o(147175);
         return localb;
       }
       i += 1;
     }
-    AppMethodBeat.o(101976);
+    AppMethodBeat.o(147175);
     return paramb;
   }
   
-  public static b oh(int paramInt)
+  public static b rR(int paramInt)
   {
-    AppMethodBeat.i(101977);
+    AppMethodBeat.i(147176);
     Object localObject = values();
     int j = localObject.length;
     int i = 0;
     while (i < j)
     {
       b localb = localObject[i];
-      if (localb.hcr == paramInt)
+      if (localb.gXn == paramInt)
       {
-        AppMethodBeat.o(101977);
+        AppMethodBeat.o(147176);
         return localb;
       }
       i += 1;
     }
-    localObject = hSP;
-    AppMethodBeat.o(101977);
+    localObject = jYT;
+    AppMethodBeat.o(147176);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.b
  * JD-Core Version:    0.7.0.1
  */

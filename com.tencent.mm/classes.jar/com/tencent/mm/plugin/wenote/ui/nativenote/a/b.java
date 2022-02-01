@@ -1,57 +1,52 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote.a;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.m;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wenote.model.a.c;
+import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 
-public abstract class b
-  extends RecyclerView.m
+public final class b
+  extends j
 {
-  private int vDk;
-  
-  public final void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public b(View paramView, k paramk)
   {
-    if (Math.abs(paramInt2) > this.vDk)
-    {
-      paramInt1 = 1;
-      if (paramInt1 != 0)
-      {
-        if (paramRecyclerView.canScrollVertically(-1)) {
-          break label35;
-        }
-        djV();
-      }
-    }
-    label35:
-    do
-    {
-      return;
-      paramInt1 = 0;
-      break;
-      if (!paramRecyclerView.canScrollVertically(1))
-      {
-        djW();
-        return;
-      }
-      if (paramInt2 < 0)
-      {
-        djT();
-        return;
-      }
-    } while (paramInt2 <= 0);
-    djU();
+    super(paramView, paramk);
+    AppMethodBeat.i(30847);
+    this.oln.setVisibility(8);
+    this.djK.setVisibility(8);
+    this.irQ.setVisibility(8);
+    this.oln.setOnClickListener(null);
+    AppMethodBeat.o(30847);
   }
   
-  public abstract void djT();
+  public final void a(c paramc, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(30848);
+    super.a(paramc, paramInt1, paramInt2);
+    if (paramc.getType() != -2)
+    {
+      AppMethodBeat.o(30848);
+      return;
+    }
+    if (this.BFc.BEu != 3)
+    {
+      AppMethodBeat.o(30848);
+      return;
+    }
+    this.olv.setVisibility(0);
+    AppMethodBeat.o(30848);
+  }
   
-  public abstract void djU();
-  
-  public abstract void djV();
-  
-  public abstract void djW();
+  public final int bSa()
+  {
+    return -2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.b
  * JD-Core Version:    0.7.0.1
  */

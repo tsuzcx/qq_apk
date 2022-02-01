@@ -16,7 +16,7 @@ public class GoogleSignInOptionsCreator
   
   public GoogleSignInOptions createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(60380);
+    AppMethodBeat.i(10872);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     ArrayList localArrayList1 = null;
     String str1 = null;
@@ -65,7 +65,7 @@ public class GoogleSignInOptionsCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new GoogleSignInOptions(i, localArrayList2, localAccount, bool3, bool2, bool1, str2, str1, localArrayList1);
-    AppMethodBeat.o(60380);
+    AppMethodBeat.o(10872);
     return paramParcel;
   }
   

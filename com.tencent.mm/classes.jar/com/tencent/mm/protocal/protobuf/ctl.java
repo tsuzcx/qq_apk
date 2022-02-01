@@ -3,65 +3,82 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ctl
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String Username;
-  public int jJS;
+  public String Ele;
+  public String Elf;
+  public String Elg;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(5278);
+    AppMethodBeat.i(32455);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.Username != null) {
-        paramVarArgs.e(1, this.Username);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.Ele != null) {
+        paramVarArgs.d(1, this.Ele);
       }
-      paramVarArgs.aO(2, this.jJS);
-      AppMethodBeat.o(5278);
+      if (this.Elf != null) {
+        paramVarArgs.d(2, this.Elf);
+      }
+      if (this.Elg != null) {
+        paramVarArgs.d(3, this.Elg);
+      }
+      AppMethodBeat.o(32455);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Username == null) {
-        break label266;
+      if (this.Ele == null) {
+        break label343;
       }
     }
-    label266:
-    for (paramInt = e.a.a.b.b.a.f(1, this.Username) + 0;; paramInt = 0)
+    label343:
+    for (int i = f.a.a.b.b.a.e(1, this.Ele) + 0;; i = 0)
     {
-      int i = e.a.a.b.b.a.bl(2, this.jJS);
-      AppMethodBeat.o(5278);
-      return paramInt + i;
+      paramInt = i;
+      if (this.Elf != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Elf);
+      }
+      i = paramInt;
+      if (this.Elg != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.Elg);
+      }
+      AppMethodBeat.o(32455);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(5278);
+        AppMethodBeat.o(32455);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         ctl localctl = (ctl)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(5278);
+          AppMethodBeat.o(32455);
           return -1;
         case 1: 
-          localctl.Username = locala.CLY.readString();
-          AppMethodBeat.o(5278);
+          localctl.Ele = locala.KhF.readString();
+          AppMethodBeat.o(32455);
+          return 0;
+        case 2: 
+          localctl.Elf = locala.KhF.readString();
+          AppMethodBeat.o(32455);
           return 0;
         }
-        localctl.jJS = locala.CLY.sl();
-        AppMethodBeat.o(5278);
+        localctl.Elg = locala.KhF.readString();
+        AppMethodBeat.o(32455);
         return 0;
       }
-      AppMethodBeat.o(5278);
+      AppMethodBeat.o(32455);
       return -1;
     }
   }

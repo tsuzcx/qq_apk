@@ -6,43 +6,43 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 
 public final class a
   implements b
 {
-  public final boolean bcu()
+  public final boolean bJs()
   {
-    AppMethodBeat.i(87965);
-    boolean bool = l.bfA();
-    AppMethodBeat.o(87965);
+    AppMethodBeat.i(112904);
+    boolean bool = l.bML();
+    AppMethodBeat.o(112904);
     return bool;
   }
   
-  public final boolean bcv()
+  public final boolean bJt()
   {
-    AppMethodBeat.i(87966);
-    boolean bool = l.bfC();
-    AppMethodBeat.o(87966);
+    AppMethodBeat.i(112905);
+    boolean bool = l.bMN();
+    AppMethodBeat.o(112905);
     return bool;
   }
   
-  public final String bcw()
+  public final String bJu()
   {
-    AppMethodBeat.i(87967);
-    String str = (String)g.RL().Ru().get(ac.a.yyT, null);
-    AppMethodBeat.o(87967);
+    AppMethodBeat.i(112906);
+    String str = (String)g.afB().afk().get(ae.a.Fho, null);
+    AppMethodBeat.o(112906);
     return str;
   }
   
-  public final int bcx()
+  public final int bJv()
   {
     int j = 0;
     int i = 0;
-    AppMethodBeat.i(87968);
-    Object localObject1 = am.bcd();
+    AppMethodBeat.i(112907);
+    Object localObject1 = am.bIV();
     Object localObject2 = new StringBuilder();
     ((StringBuilder)localObject2).append(" where (status=0 OR status=5) and (block_mask= '1' OR block_mask= '0' )");
     localObject2 = "select count(*) from UserCardInfo" + ((StringBuilder)localObject2).toString();
@@ -50,8 +50,8 @@ public final class a
     if (localObject1 == null) {}
     for (;;)
     {
-      ab.i("MicroMsg.CardMgrImpl", "getGiftCardCount:".concat(String.valueOf(i)));
-      AppMethodBeat.o(87968);
+      ad.i("MicroMsg.CardMgrImpl", "getGiftCardCount:".concat(String.valueOf(i)));
+      AppMethodBeat.o(112907);
       return i;
       i = j;
       if (((Cursor)localObject1).moveToFirst()) {
@@ -61,11 +61,11 @@ public final class a
     }
   }
   
-  public final boolean sX(int paramInt)
+  public final boolean yQ(int paramInt)
   {
-    AppMethodBeat.i(87969);
-    boolean bool = l.sX(paramInt);
-    AppMethodBeat.o(87969);
+    AppMethodBeat.i(112908);
+    boolean bool = l.yQ(paramInt);
+    AppMethodBeat.o(112908);
     return bool;
   }
 }

@@ -5,17 +5,16 @@ import android.util.Log;
 import android.view.ViewConfiguration;
 import java.lang.reflect.Method;
 
-@Deprecated
 public final class ac
 {
-  private static Method kT;
+  private static Method mP;
   
   static
   {
     if (Build.VERSION.SDK_INT == 25) {}
     try
     {
-      kT = ViewConfiguration.class.getDeclaredMethod("getScaledScrollFactor", new Class[0]);
+      mP = ViewConfiguration.class.getDeclaredMethod("getScaledScrollFactor", new Class[0]);
       return;
     }
     catch (Exception localException)

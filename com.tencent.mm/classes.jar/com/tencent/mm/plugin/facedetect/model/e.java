@@ -1,107 +1,107 @@
 package com.tencent.mm.plugin.facedetect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.av;
+import com.tencent.mm.model.ay;
 
 public final class e
 {
-  private static long mhV = -1L;
-  private static long mhW = -1L;
-  private static float mhX = -1.0F;
+  private static long pOJ = -1L;
+  private static long pOK = -1L;
+  private static float pOL = -1.0F;
   
-  public static boolean bul()
+  public static boolean cfF()
   {
-    AppMethodBeat.i(188);
-    boolean bool = Boolean.parseBoolean(av.flM.Y("last_login_face_use_debug_mode", "false"));
-    AppMethodBeat.o(188);
+    AppMethodBeat.i(103713);
+    boolean bool = Boolean.parseBoolean(ay.gNa.ao("last_login_face_use_debug_mode", "false"));
+    AppMethodBeat.o(103713);
     return bool;
   }
   
-  public static boolean bum()
+  public static boolean cfG()
   {
-    AppMethodBeat.i(189);
-    boolean bool = Boolean.parseBoolean(av.flM.Y("last_login_face_is_force_upload_face", "false"));
-    AppMethodBeat.o(189);
+    AppMethodBeat.i(103714);
+    boolean bool = Boolean.parseBoolean(ay.gNa.ao("last_login_face_is_force_upload_face", "false"));
+    AppMethodBeat.o(103714);
     return bool;
   }
   
-  public static boolean bun()
+  public static boolean cfH()
   {
-    AppMethodBeat.i(190);
-    boolean bool = Boolean.parseBoolean(av.flM.Y("last_login_face_save_correct_debug_mode", "false"));
-    AppMethodBeat.o(190);
+    AppMethodBeat.i(103715);
+    boolean bool = Boolean.parseBoolean(ay.gNa.ao("last_login_face_save_correct_debug_mode", "false"));
+    AppMethodBeat.o(103715);
     return bool;
   }
   
-  public static boolean buo()
+  public static boolean cfI()
   {
-    AppMethodBeat.i(191);
-    boolean bool = Boolean.parseBoolean(av.flM.Y("last_login_face_save_final_debug_mode", "false"));
-    AppMethodBeat.o(191);
+    AppMethodBeat.i(103716);
+    boolean bool = Boolean.parseBoolean(ay.gNa.ao("last_login_face_save_final_debug_mode", "false"));
+    AppMethodBeat.o(103716);
     return bool;
   }
   
-  public static boolean bup()
+  public static boolean cfJ()
   {
-    AppMethodBeat.i(192);
-    boolean bool = Boolean.parseBoolean(av.flM.Y("last_login_face_save_lip_reading", "false"));
-    AppMethodBeat.o(192);
+    AppMethodBeat.i(103717);
+    boolean bool = Boolean.parseBoolean(ay.gNa.ao("last_login_face_save_lip_reading", "false"));
+    AppMethodBeat.o(103717);
     return bool;
   }
   
-  public static boolean buq()
+  public static boolean cfK()
   {
-    AppMethodBeat.i(193);
-    boolean bool = Boolean.parseBoolean(av.flM.Y("last_login_face_save_final_voice", "false"));
-    AppMethodBeat.o(193);
+    AppMethodBeat.i(103718);
+    boolean bool = Boolean.parseBoolean(ay.gNa.ao("last_login_face_save_final_voice", "false"));
+    AppMethodBeat.o(103718);
     return bool;
   }
   
-  public static void hl(boolean paramBoolean)
+  public static void ko(boolean paramBoolean)
   {
-    AppMethodBeat.i(194);
-    av.flM.ao("last_login_face_use_debug_mode", String.valueOf(paramBoolean));
-    AppMethodBeat.o(194);
+    AppMethodBeat.i(103719);
+    ay.gNa.aD("last_login_face_use_debug_mode", String.valueOf(paramBoolean));
+    AppMethodBeat.o(103719);
   }
   
-  public static void hm(boolean paramBoolean)
+  public static void kp(boolean paramBoolean)
   {
-    AppMethodBeat.i(195);
-    av.flM.ao("last_login_face_save_correct_debug_mode", String.valueOf(paramBoolean));
-    AppMethodBeat.o(195);
+    AppMethodBeat.i(103720);
+    ay.gNa.aD("last_login_face_save_correct_debug_mode", String.valueOf(paramBoolean));
+    AppMethodBeat.o(103720);
   }
   
-  public static void hn(boolean paramBoolean)
+  public static void kq(boolean paramBoolean)
   {
-    AppMethodBeat.i(196);
-    av.flM.ao("last_login_face_save_final_debug_mode", String.valueOf(paramBoolean));
-    AppMethodBeat.o(196);
+    AppMethodBeat.i(103721);
+    ay.gNa.aD("last_login_face_save_final_debug_mode", String.valueOf(paramBoolean));
+    AppMethodBeat.o(103721);
   }
   
-  public static void ho(boolean paramBoolean)
+  public static void kr(boolean paramBoolean)
   {
-    AppMethodBeat.i(197);
-    av.flM.ao("last_login_face_save_lip_reading", String.valueOf(paramBoolean));
-    AppMethodBeat.o(197);
+    AppMethodBeat.i(103722);
+    ay.gNa.aD("last_login_face_save_lip_reading", String.valueOf(paramBoolean));
+    AppMethodBeat.o(103722);
   }
   
-  public static void hp(boolean paramBoolean)
+  public static void ks(boolean paramBoolean)
   {
-    AppMethodBeat.i(198);
-    av.flM.ao("last_login_face_save_final_voice", String.valueOf(paramBoolean));
-    AppMethodBeat.o(198);
+    AppMethodBeat.i(103723);
+    ay.gNa.aD("last_login_face_save_final_voice", String.valueOf(paramBoolean));
+    AppMethodBeat.o(103723);
   }
   
-  public static void hq(boolean paramBoolean)
+  public static void kt(boolean paramBoolean)
   {
-    AppMethodBeat.i(199);
-    av.flM.ao("last_login_face_is_force_upload_face", String.valueOf(paramBoolean));
-    AppMethodBeat.o(199);
+    AppMethodBeat.i(103724);
+    ay.gNa.aD("last_login_face_is_force_upload_face", String.valueOf(paramBoolean));
+    AppMethodBeat.o(103724);
   }
   
-  public static void jI(long paramLong)
+  public static void pz(long paramLong)
   {
-    mhV = paramLong;
+    pOJ = paramLong;
   }
 }
 

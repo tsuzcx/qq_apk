@@ -8,127 +8,148 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.e;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.a.cs;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.messenger.a.j;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.PhotoEditProxy;
+import com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.n.c;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.vfs.i;
 
 public final class b
   implements CaptureDataManager.b
 {
-  PhotoEditProxy qaM;
-  private com.tencent.mm.remoteservice.d qaN;
-  String qaO;
+  String vgb;
   
-  public b(Context paramContext)
+  public final void L(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(150534);
-    this.qaN = new com.tencent.mm.remoteservice.d(paramContext);
-    this.qaM = new PhotoEditProxy(this.qaN);
-    this.qaN.connect(new b.1(this));
-    AppMethodBeat.o(150534);
-  }
-  
-  final void A(Context paramContext, Intent paramIntent)
-  {
-    AppMethodBeat.i(150537);
+    AppMethodBeat.i(75021);
     String str = paramIntent.getStringExtra("Select_Conv_User");
-    ab.d("MicroMsg.MMRecordUI", "select %s for sending imagePath:%s", new Object[] { str, this.qaO });
-    p localp = h.b(paramContext, paramContext.getResources().getString(2131306205), false, null);
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.MMRecordUI", "select %s for sending imagePath:%s", new Object[] { str, this.vgb });
+    com.tencent.mm.ui.base.p localp = h.b(paramContext, paramContext.getResources().getString(2131761896), false, null);
     paramIntent = paramIntent.getStringExtra("custom_send_text");
-    this.qaM.sendImage(paramIntent, this.qaO, this.qaM.getSelfUsername(), str);
-    localp.dismiss();
+    com.tencent.mm.aw.l locall = new com.tencent.mm.aw.l(4, u.aqG(), str, this.vgb, 0, null, 0, "", "", true, 2131231564);
+    g.aeS().a(locall, 0);
+    if (((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pqx, true))
+    {
+      com.tencent.mm.plugin.recordvideo.e.b localb = com.tencent.mm.plugin.recordvideo.e.b.vtE;
+      com.tencent.mm.plugin.recordvideo.e.b.jdMethod_if(String.valueOf(locall.dbD.field_msgId), this.vgb);
+    }
+    j.cOB().hm(paramIntent, str);
+    if (localp != null) {
+      localp.dismiss();
+    }
     ((Activity)paramContext).finish();
-    AppMethodBeat.o(150537);
+    AppMethodBeat.o(75021);
   }
   
   public final void a(final Context paramContext, final CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel, Bundle paramBundle)
   {
-    AppMethodBeat.i(150535);
+    AppMethodBeat.i(75020);
     paramBundle = new com.tencent.mm.ui.tools.l(paramContext);
-    paramBundle.sao = new n.c()
+    paramBundle.HrX = new n.c()
     {
       public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
       {
-        AppMethodBeat.i(150531);
-        paramAnonymousl.e(0, paramContext.getResources().getString(2131302657));
-        paramAnonymousl.e(1, paramContext.getResources().getString(2131302102));
-        paramAnonymousl.e(2, paramContext.getResources().getString(2131302869));
-        AppMethodBeat.o(150531);
+        AppMethodBeat.i(75018);
+        paramAnonymousl.c(0, paramContext.getResources().getString(2131762566));
+        paramAnonymousl.c(1, paramContext.getResources().getString(2131761941));
+        paramAnonymousl.c(2, paramContext.getResources().getString(2131762781));
+        AppMethodBeat.o(75018);
       }
     };
-    paramBundle.sap = new n.d()
+    paramBundle.HrY = new n.d()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
-        AppMethodBeat.i(150532);
-        String str;
+        AppMethodBeat.i(75019);
+        Object localObject1;
         if (paramAnonymousInt == 0)
         {
-          Object localObject = b.this;
+          Object localObject2 = b.this;
           paramAnonymousMenuItem = paramContext;
-          str = paramCaptureVideoNormalModel.thumbPath;
-          ((b)localObject).qaO = str;
-          localObject = new Intent();
-          ((Intent)localObject).putExtra("scene", 8);
-          ((Intent)localObject).putExtra("select_is_ret", true);
-          ((Intent)localObject).putExtra("Select_Conv_Type", 3);
-          ((Intent)localObject).putExtra("image_path", str);
-          ((Intent)localObject).putExtra("Retr_Msg_Type", 0);
-          com.tencent.mm.bq.d.b(paramAnonymousMenuItem, ".ui.transmit.SelectConversationUI", (Intent)localObject, 1);
-          AppMethodBeat.o(150532);
+          localObject1 = paramCaptureVideoNormalModel.thumbPath;
+          ((b)localObject2).vgb = ((String)localObject1);
+          localObject2 = new Intent();
+          ((Intent)localObject2).putExtra("scene", 8);
+          ((Intent)localObject2).putExtra("select_is_ret", true);
+          ((Intent)localObject2).putExtra("Select_Conv_Type", 3);
+          ((Intent)localObject2).putExtra("image_path", (String)localObject1);
+          ((Intent)localObject2).putExtra("Retr_Msg_Type", 0);
+          d.c(paramAnonymousMenuItem, ".ui.transmit.SelectConversationUI", (Intent)localObject2, 1);
+          AppMethodBeat.o(75019);
           return;
         }
         if (paramAnonymousInt == 1)
         {
-          paramAnonymousMenuItem = b.this;
-          str = paramCaptureVideoNormalModel.thumbPath;
-          paramAnonymousMenuItem.qaM.doFav(str);
-          Toast.makeText(ah.getContext(), paramContext.getResources().getString(2131306165), 1).show();
+          paramAnonymousMenuItem = paramCaptureVideoNormalModel.thumbPath;
+          localObject1 = new cs();
+          ((com.tencent.mm.plugin.fav.a.ad)g.ab(com.tencent.mm.plugin.fav.a.ad.class)).a((cs)localObject1, 2, paramAnonymousMenuItem);
+          ((cs)localObject1).deQ.deW = 44;
+          a.ESL.l((com.tencent.mm.sdk.b.b)localObject1);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMRecordUI", "[doFavInMM] path:%s", new Object[] { paramAnonymousMenuItem });
+          Toast.makeText(aj.getContext(), paramContext.getResources().getString(2131758829), 1).show();
           ((Activity)paramContext).finish();
-          AppMethodBeat.o(150532);
+          AppMethodBeat.o(75019);
           return;
         }
-        if (paramAnonymousInt == 2)
-        {
-          Toast.makeText(ah.getContext(), paramContext.getResources().getString(2131306161, new Object[] { e.esr }), 1).show();
-          ((Activity)paramContext).finish();
+        if (paramAnonymousInt == 2) {
+          com.tencent.mm.platformtools.p.a(paramContext, new Runnable()new Runnable
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(190812);
+              Object localObject = Boolean.valueOf(g.afB().afk().getBoolean(ae.a.Fno, true));
+              com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMRecordUI", "save pic ,imageState : %s", new Object[] { localObject });
+              Boolean localBoolean = (Boolean)b.2.this.rTz.dhD().w("KEY_PHOTO_IS_EDITED_BOOLEAN", Boolean.TRUE);
+              if ((!((Boolean)localObject).booleanValue()) || ((((Boolean)localObject).booleanValue()) && (!localBoolean.booleanValue())))
+              {
+                localObject = com.tencent.mm.sdk.f.b.ahd("jpg");
+                i.lC(b.2.this.rTz.thumbPath, (String)localObject);
+                com.tencent.mm.sdk.f.b.k((String)localObject, aj.getContext());
+              }
+              Toast.makeText(aj.getContext(), b.2.this.val$context.getResources().getString(2131758632, new Object[] { com.tencent.mm.loader.j.b.ais() }), 1).show();
+              ((Activity)b.2.this.val$context).finish();
+              AppMethodBeat.o(190812);
+            }
+          }, new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(190813);
+              Toast.makeText(aj.getContext(), b.2.this.val$context.getResources().getString(2131762779), 1).show();
+              AppMethodBeat.o(190813);
+            }
+          });
         }
-        AppMethodBeat.o(150532);
+        AppMethodBeat.o(75019);
       }
     };
-    h.a(paramContext, paramBundle.cwt());
-    AppMethodBeat.o(150535);
+    h.a(paramContext, paramBundle.fdQ());
+    AppMethodBeat.o(75020);
   }
   
   public final boolean a(Context paramContext, Bundle paramBundle, CaptureDataManager.a parama)
   {
     return false;
   }
-  
-  public final void z(Context paramContext, Intent paramIntent)
-  {
-    AppMethodBeat.i(150536);
-    if (this.qaN.isConnected())
-    {
-      A(paramContext, paramIntent);
-      AppMethodBeat.o(150536);
-      return;
-    }
-    this.qaN.connect(new b.4(this, paramContext, paramIntent));
-    AppMethodBeat.o(150536);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.a.b
  * JD-Core Version:    0.7.0.1
  */

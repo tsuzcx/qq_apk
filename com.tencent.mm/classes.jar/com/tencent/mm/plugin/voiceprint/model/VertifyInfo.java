@@ -4,28 +4,28 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class VertifyInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<VertifyInfo> CREATOR;
-  public String gEl = "";
+  public String iri = "";
   public String mFileName = "";
   public String mText = "";
-  public boolean mqT = false;
-  public String trb = "";
-  public int tri = 0;
-  public int trp;
-  public int trq;
-  public int trr = 0;
-  public boolean trs = false;
+  public boolean pXx = false;
+  public int zdA;
+  public int zdB = 0;
+  public boolean zdC = false;
+  public String zdl = "";
+  public int zds = 0;
+  public int zdz;
   
   static
   {
-    AppMethodBeat.i(26110);
-    CREATOR = new VertifyInfo.1();
-    AppMethodBeat.o(26110);
+    AppMethodBeat.i(29791);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(29791);
   }
   
   public int describeContents()
@@ -36,19 +36,19 @@ public class VertifyInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(26109);
-    paramParcel.writeInt(this.trp);
-    paramParcel.writeInt(this.trq);
-    paramParcel.writeInt(this.trr);
-    paramParcel.writeInt(this.tri);
-    paramParcel.writeString(bo.bf(this.mText, ""));
-    paramParcel.writeString(bo.bf(this.trb, ""));
-    paramParcel.writeString(bo.bf(this.mFileName, ""));
-    if (this.trs)
+    AppMethodBeat.i(29790);
+    paramParcel.writeInt(this.zdz);
+    paramParcel.writeInt(this.zdA);
+    paramParcel.writeInt(this.zdB);
+    paramParcel.writeInt(this.zds);
+    paramParcel.writeString(bt.by(this.mText, ""));
+    paramParcel.writeString(bt.by(this.zdl, ""));
+    paramParcel.writeString(bt.by(this.mFileName, ""));
+    if (this.zdC)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.mqT) {
+      if (!this.pXx) {
         break label119;
       }
     }
@@ -56,7 +56,7 @@ public class VertifyInfo
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      AppMethodBeat.o(26109);
+      AppMethodBeat.o(29790);
       return;
       paramInt = 0;
       break;
@@ -65,7 +65,7 @@ public class VertifyInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.VertifyInfo
  * JD-Core Version:    0.7.0.1
  */

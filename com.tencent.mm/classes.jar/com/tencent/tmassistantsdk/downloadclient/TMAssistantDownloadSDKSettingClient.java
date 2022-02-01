@@ -20,9 +20,9 @@ public class TMAssistantDownloadSDKSettingClient
   
   protected Intent getBindServiceIntent()
   {
-    AppMethodBeat.i(75669);
+    AppMethodBeat.i(101915);
     Intent localIntent = new Intent(this.mContext, Class.forName(this.mDwonloadServiceName));
-    AppMethodBeat.o(75669);
+    AppMethodBeat.o(101915);
     return localIntent;
   }
   
@@ -128,9 +128,9 @@ public class TMAssistantDownloadSDKSettingClient
   
   protected void registerServiceCallback()
   {
-    AppMethodBeat.i(75668);
+    AppMethodBeat.i(101914);
     ((ITMAssistantDownloadSDKServiceInterface)this.mServiceInterface).registerDownloadTaskCallback(this.mClientKey, (ITMAssistantDownloadSDKServiceCallback)this.mServiceCallback);
-    AppMethodBeat.o(75668);
+    AppMethodBeat.o(101914);
   }
   
   public void setDownloadSDKMaxTaskNum(int paramInt)
@@ -139,23 +139,23 @@ public class TMAssistantDownloadSDKSettingClient
     {
       try
       {
-        AppMethodBeat.i(75665);
+        AppMethodBeat.i(101911);
         if ((paramInt <= 0) || (paramInt > 10))
         {
-          AppMethodBeat.o(75665);
+          AppMethodBeat.o(101911);
           return;
         }
         ITMAssistantDownloadSDKServiceInterface localITMAssistantDownloadSDKServiceInterface = (ITMAssistantDownloadSDKServiceInterface)super.getServiceInterface();
         if (localITMAssistantDownloadSDKServiceInterface != null)
         {
           localITMAssistantDownloadSDKServiceInterface.setServiceSetingMaxTaskNum(paramInt);
-          AppMethodBeat.o(75665);
+          AppMethodBeat.o(101911);
           continue;
         }
         super.initTMAssistantDownloadSDK();
       }
       finally {}
-      AppMethodBeat.o(75665);
+      AppMethodBeat.o(101911);
     }
   }
   
@@ -207,21 +207,21 @@ public class TMAssistantDownloadSDKSettingClient
   
   protected void stubAsInterface(IBinder paramIBinder)
   {
-    AppMethodBeat.i(75667);
+    AppMethodBeat.i(101913);
     this.mServiceInterface = ITMAssistantDownloadSDKServiceInterface.Stub.asInterface(paramIBinder);
-    AppMethodBeat.o(75667);
+    AppMethodBeat.o(101913);
   }
   
   protected void unRegisterServiceCallback()
   {
-    AppMethodBeat.i(75670);
+    AppMethodBeat.i(101916);
     ((ITMAssistantDownloadSDKServiceInterface)this.mServiceInterface).unregisterDownloadTaskCallback(this.mClientKey, (ITMAssistantDownloadSDKServiceCallback)this.mServiceCallback);
-    AppMethodBeat.o(75670);
+    AppMethodBeat.o(101916);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKSettingClient
  * JD-Core Version:    0.7.0.1
  */

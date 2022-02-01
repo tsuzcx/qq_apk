@@ -1,8 +1,10 @@
 package android.support.v4.widget;
 
 import android.content.Context;
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.DataSetObserver;
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -14,29 +16,29 @@ public abstract class f
   extends BaseAdapter
   implements g.a, Filterable
 {
-  protected boolean Jq = false;
-  protected boolean Jr = true;
-  protected Cursor Js = null;
-  protected int Jt;
-  protected f.a Ju;
-  protected DataSetObserver Jv;
-  protected g Jw;
-  protected FilterQueryProvider Jx;
+  protected boolean Qq = false;
+  protected boolean Qr = true;
+  protected Cursor Qs = null;
+  protected int Qt;
+  protected a Qu;
+  protected DataSetObserver Qv;
+  protected g Qw;
+  protected FilterQueryProvider Qx;
   protected Context mContext;
   
   public f(Context paramContext)
   {
     this.mContext = paramContext;
-    this.Jt = -1;
-    this.Ju = new f.a(this);
-    this.Jv = new f.b(this);
+    this.Qt = -1;
+    this.Qu = new a();
+    this.Qv = new b();
   }
   
   public abstract void a(View paramView, Cursor paramCursor);
   
   public void changeCursor(Cursor paramCursor)
   {
-    if (paramCursor == this.Js) {
+    if (paramCursor == this.Qs) {
       paramCursor = null;
     }
     for (;;)
@@ -45,34 +47,34 @@ public abstract class f
         paramCursor.close();
       }
       return;
-      Cursor localCursor = this.Js;
+      Cursor localCursor = this.Qs;
       if (localCursor != null)
       {
-        if (this.Ju != null) {
-          localCursor.unregisterContentObserver(this.Ju);
+        if (this.Qu != null) {
+          localCursor.unregisterContentObserver(this.Qu);
         }
-        if (this.Jv != null) {
-          localCursor.unregisterDataSetObserver(this.Jv);
+        if (this.Qv != null) {
+          localCursor.unregisterDataSetObserver(this.Qv);
         }
       }
-      this.Js = paramCursor;
+      this.Qs = paramCursor;
       if (paramCursor != null)
       {
-        if (this.Ju != null) {
-          paramCursor.registerContentObserver(this.Ju);
+        if (this.Qu != null) {
+          paramCursor.registerContentObserver(this.Qu);
         }
-        if (this.Jv != null) {
-          paramCursor.registerDataSetObserver(this.Jv);
+        if (this.Qv != null) {
+          paramCursor.registerDataSetObserver(this.Qv);
         }
-        this.Jt = paramCursor.getColumnIndexOrThrow("_id");
-        this.Jq = true;
+        this.Qt = paramCursor.getColumnIndexOrThrow("_id");
+        this.Qq = true;
         notifyDataSetChanged();
         paramCursor = localCursor;
       }
       else
       {
-        this.Jt = -1;
-        this.Jq = false;
+        this.Qt = -1;
+        this.Qq = false;
         notifyDataSetInvalidated();
         paramCursor = localCursor;
       }
@@ -89,27 +91,27 @@ public abstract class f
   
   public int getCount()
   {
-    if ((this.Jq) && (this.Js != null)) {
-      return this.Js.getCount();
+    if ((this.Qq) && (this.Qs != null)) {
+      return this.Qs.getCount();
     }
     return 0;
   }
   
   public final Cursor getCursor()
   {
-    return this.Js;
+    return this.Qs;
   }
   
   public View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.Jq)
+    if (this.Qq)
     {
-      this.Js.moveToPosition(paramInt);
+      this.Qs.moveToPosition(paramInt);
       View localView = paramView;
       if (paramView == null) {
-        localView = newDropDownView(this.mContext, this.Js, paramViewGroup);
+        localView = newDropDownView(this.mContext, this.Qs, paramViewGroup);
       }
-      a(localView, this.Js);
+      a(localView, this.Qs);
       return localView;
     }
     return null;
@@ -117,18 +119,18 @@ public abstract class f
   
   public Filter getFilter()
   {
-    if (this.Jw == null) {
-      this.Jw = new g(this);
+    if (this.Qw == null) {
+      this.Qw = new g(this);
     }
-    return this.Jw;
+    return this.Qw;
   }
   
   public Object getItem(int paramInt)
   {
-    if ((this.Jq) && (this.Js != null))
+    if ((this.Qq) && (this.Qs != null))
     {
-      this.Js.moveToPosition(paramInt);
-      return this.Js;
+      this.Qs.moveToPosition(paramInt);
+      return this.Qs;
     }
     return null;
   }
@@ -137,14 +139,14 @@ public abstract class f
   {
     long l2 = 0L;
     long l1 = l2;
-    if (this.Jq)
+    if (this.Qq)
     {
       l1 = l2;
-      if (this.Js != null)
+      if (this.Qs != null)
       {
         l1 = l2;
-        if (this.Js.moveToPosition(paramInt)) {
-          l1 = this.Js.getLong(this.Jt);
+        if (this.Qs.moveToPosition(paramInt)) {
+          l1 = this.Qs.getLong(this.Qt);
         }
       }
     }
@@ -153,17 +155,17 @@ public abstract class f
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (!this.Jq) {
+    if (!this.Qq) {
       throw new IllegalStateException("this should only be called when the cursor is valid");
     }
-    if (!this.Js.moveToPosition(paramInt)) {
+    if (!this.Qs.moveToPosition(paramInt)) {
       throw new IllegalStateException("couldn't move cursor to position ".concat(String.valueOf(paramInt)));
     }
     View localView = paramView;
     if (paramView == null) {
-      localView = newView(this.mContext, this.Js, paramViewGroup);
+      localView = newView(this.mContext, this.Qs, paramViewGroup);
     }
-    a(localView, this.Js);
+    a(localView, this.Qs);
     return localView;
   }
   
@@ -181,22 +183,59 @@ public abstract class f
   
   protected final void onContentChanged()
   {
-    if ((this.Jr) && (this.Js != null) && (!this.Js.isClosed())) {
-      this.Jq = this.Js.requery();
+    if ((this.Qr) && (this.Qs != null) && (!this.Qs.isClosed())) {
+      this.Qq = this.Qs.requery();
     }
   }
   
   public Cursor runQueryOnBackgroundThread(CharSequence paramCharSequence)
   {
-    if (this.Jx != null) {
-      return this.Jx.runQuery(paramCharSequence);
+    if (this.Qx != null) {
+      return this.Qx.runQuery(paramCharSequence);
     }
-    return this.Js;
+    return this.Qs;
+  }
+  
+  final class a
+    extends ContentObserver
+  {
+    a()
+    {
+      super();
+    }
+    
+    public final boolean deliverSelfNotifications()
+    {
+      return true;
+    }
+    
+    public final void onChange(boolean paramBoolean)
+    {
+      f.this.onContentChanged();
+    }
+  }
+  
+  final class b
+    extends DataSetObserver
+  {
+    b() {}
+    
+    public final void onChanged()
+    {
+      f.this.Qq = true;
+      f.this.notifyDataSetChanged();
+    }
+    
+    public final void onInvalidated()
+    {
+      f.this.Qq = false;
+      f.this.notifyDataSetInvalidated();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.widget.f
  * JD-Core Version:    0.7.0.1
  */

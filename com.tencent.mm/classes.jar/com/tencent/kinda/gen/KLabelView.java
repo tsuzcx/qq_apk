@@ -5,6 +5,8 @@ public abstract interface KLabelView
 {
   public abstract boolean getAdjustsFontSizeToFitWidth();
   
+  public abstract BaselineAdjustmentAlign getBaselineAdjustment();
+  
   public abstract Ellipsize getEllipsize();
   
   public abstract FontStyle getFontStyle();
@@ -17,13 +19,15 @@ public abstract interface KLabelView
   
   public abstract TextAlign getTextAlign();
   
-  public abstract long getTextColor();
+  public abstract DynamicColor getTextColor();
   
   public abstract String getTextFont();
   
   public abstract float getTextSize();
   
   public abstract void setAdjustsFontSizeToFitWidth(boolean paramBoolean);
+  
+  public abstract void setBaselineAdjustment(BaselineAdjustmentAlign paramBaselineAdjustmentAlign);
   
   public abstract void setEllipsize(Ellipsize paramEllipsize);
   
@@ -37,7 +41,7 @@ public abstract interface KLabelView
   
   public abstract void setTextAlign(TextAlign paramTextAlign);
   
-  public abstract void setTextColor(long paramLong);
+  public abstract void setTextColor(DynamicColor paramDynamicColor);
   
   public abstract void setTextFont(String paramString);
   
@@ -45,7 +49,7 @@ public abstract interface KLabelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.gen.KLabelView
  * JD-Core Version:    0.7.0.1
  */

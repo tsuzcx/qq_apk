@@ -12,18 +12,18 @@ final class d$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(44049);
-    if (this.pvG != null) {
-      this.pvG.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    AppMethodBeat.i(66956);
+    if (this.uxq != null) {
+      this.uxq.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
-    this.pvH.pvJ = paramInt;
-    this.pvH.notifyDataSetChanged();
-    AppMethodBeat.o(44049);
+    this.uxr.uxs = paramInt;
+    this.uxr.notifyDataSetChanged();
+    AppMethodBeat.o(66956);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.d.1
  * JD-Core Version:    0.7.0.1
  */

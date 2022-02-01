@@ -3,145 +3,145 @@ package com.tencent.mm.cache;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Stack;
 
 public final class a
-  implements e<com.tencent.mm.y.a>
+  implements f<com.tencent.mm.aa.a>
 {
-  public Stack<com.tencent.mm.y.a> ecq;
-  private Stack<com.tencent.mm.y.a> ecr;
-  public Matrix ecs;
-  private int ect;
+  public Stack<com.tencent.mm.aa.a> fmC;
+  private Stack<com.tencent.mm.aa.a> fmD;
+  public Matrix fmE;
+  private int fmF;
   
   public a()
   {
-    AppMethodBeat.i(116215);
-    this.ecs = new Matrix();
-    AppMethodBeat.o(116215);
+    AppMethodBeat.i(9187);
+    this.fmE = new Matrix();
+    AppMethodBeat.o(9187);
   }
   
-  public final void CH()
+  public final void Mj()
   {
-    this.ect += 1;
+    this.fmF += 1;
   }
   
-  public final void Jd()
+  public final void Ut()
   {
-    AppMethodBeat.i(116219);
-    ab.i("MicroMsg.CropCache", "[onRestore] size:%s", new Object[] { Integer.valueOf(this.ecq.size()) });
-    this.ecq.clear();
-    if (this.ecr != null)
+    AppMethodBeat.i(9191);
+    ad.i("MicroMsg.CropCache", "[onRestore] size:%s", new Object[] { Integer.valueOf(this.fmC.size()) });
+    this.fmC.clear();
+    if (this.fmD != null)
     {
-      ab.i("MicroMsg.CropCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.ecr.size()) });
-      this.ecq.addAll(this.ecr);
+      ad.i("MicroMsg.CropCache", "[onRestore] %s", new Object[] { Integer.valueOf(this.fmD.size()) });
+      this.fmC.addAll(this.fmD);
     }
-    AppMethodBeat.o(116219);
+    AppMethodBeat.o(9191);
   }
   
-  public final com.tencent.mm.y.a Je()
+  public final com.tencent.mm.aa.a Uu()
   {
-    AppMethodBeat.i(116220);
-    if (this.ecq.size() <= 0)
+    AppMethodBeat.i(9192);
+    if (this.fmC.size() <= 0)
     {
-      ab.e("MicroMsg.CropCache", "[pop]");
-      AppMethodBeat.o(116220);
+      ad.e("MicroMsg.CropCache", "[pop]");
+      AppMethodBeat.o(9192);
       return null;
     }
-    com.tencent.mm.y.a locala = (com.tencent.mm.y.a)this.ecq.pop();
-    AppMethodBeat.o(116220);
+    com.tencent.mm.aa.a locala = (com.tencent.mm.aa.a)this.fmC.pop();
+    AppMethodBeat.o(9192);
     return locala;
   }
   
-  public final com.tencent.mm.y.a Jf()
+  public final com.tencent.mm.aa.a Uv()
   {
-    AppMethodBeat.i(116222);
-    if ((this.ecq != null) && (this.ecq.size() > 0))
+    AppMethodBeat.i(9194);
+    if ((this.fmC != null) && (this.fmC.size() > 0))
     {
-      com.tencent.mm.y.a locala = (com.tencent.mm.y.a)this.ecq.peek();
-      AppMethodBeat.o(116222);
+      com.tencent.mm.aa.a locala = (com.tencent.mm.aa.a)this.fmC.peek();
+      AppMethodBeat.o(9194);
       return locala;
     }
-    AppMethodBeat.o(116222);
+    AppMethodBeat.o(9194);
     return null;
   }
   
   public final void a(Canvas paramCanvas, boolean paramBoolean) {}
   
-  public final void a(com.tencent.mm.y.a parama)
+  public final void a(com.tencent.mm.aa.a parama)
   {
-    AppMethodBeat.i(116221);
-    if (this.ecq != null) {
-      this.ecq.push(parama);
+    AppMethodBeat.i(9193);
+    if (this.fmC != null) {
+      this.fmC.push(parama);
     }
-    AppMethodBeat.o(116221);
+    AppMethodBeat.o(9193);
   }
   
-  public final int ad(boolean paramBoolean)
+  public final int aj(boolean paramBoolean)
   {
-    AppMethodBeat.i(116223);
+    AppMethodBeat.i(9195);
     int i;
     if (paramBoolean)
     {
-      if (this.ecq != null)
+      if (this.fmC != null)
       {
-        i = this.ecq.size();
-        AppMethodBeat.o(116223);
+        i = this.fmC.size();
+        AppMethodBeat.o(9195);
         return i;
       }
-      AppMethodBeat.o(116223);
+      AppMethodBeat.o(9195);
       return 0;
     }
-    if (this.ecr != null)
+    if (this.fmD != null)
     {
-      i = this.ecr.size();
-      AppMethodBeat.o(116223);
+      i = this.fmD.size();
+      AppMethodBeat.o(9195);
       return i;
     }
-    AppMethodBeat.o(116223);
+    AppMethodBeat.o(9195);
     return 0;
   }
   
-  public final void bH(boolean paramBoolean)
+  public final void cA(boolean paramBoolean)
   {
-    AppMethodBeat.i(116218);
-    ab.i("MicroMsg.CropCache", "[onSave] size:%s", new Object[] { Integer.valueOf(this.ecq.size()) });
-    if (this.ecr != null) {
-      this.ecr.clear();
+    AppMethodBeat.i(9190);
+    ad.i("MicroMsg.CropCache", "[onSave] size:%s", new Object[] { Integer.valueOf(this.fmC.size()) });
+    if (this.fmD != null) {
+      this.fmD.clear();
     }
-    this.ecr = ((Stack)this.ecq.clone());
+    this.fmD = ((Stack)this.fmC.clone());
     if (paramBoolean) {
-      this.ecq.clear();
+      this.fmC.clear();
     }
-    AppMethodBeat.o(116218);
+    AppMethodBeat.o(9190);
   }
   
-  public final void c(Canvas paramCanvas) {}
+  public final void e(Canvas paramCanvas) {}
   
   public final void onCreate()
   {
-    AppMethodBeat.i(116216);
-    ab.i("MicroMsg.CropCache", "[onCreate]");
-    this.ecq = new Stack();
-    AppMethodBeat.o(116216);
+    AppMethodBeat.i(9188);
+    ad.i("MicroMsg.CropCache", "[onCreate]");
+    this.fmC = new Stack();
+    AppMethodBeat.o(9188);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(116217);
-    if (this.ecq != null) {
-      this.ecq.clear();
+    AppMethodBeat.i(9189);
+    if (this.fmC != null) {
+      this.fmC.clear();
     }
-    if (this.ecr != null) {
-      this.ecr.clear();
+    if (this.fmD != null) {
+      this.fmD.clear();
     }
-    this.ecs.reset();
-    AppMethodBeat.o(116217);
+    this.fmE.reset();
+    AppMethodBeat.o(9189);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.cache.a
  * JD-Core Version:    0.7.0.1
  */

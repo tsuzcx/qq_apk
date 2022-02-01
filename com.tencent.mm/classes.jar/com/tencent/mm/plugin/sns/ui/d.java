@@ -1,32 +1,44 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract class d<T>
 {
-  private ak handler = null;
-  List<Integer> rDY = new LinkedList();
+  private ap handler = null;
+  List<Integer> xjI = new LinkedList();
   
   public d()
   {
-    this.rDY.clear();
+    this.xjI.clear();
   }
   
-  public abstract List<T> Kq();
+  public abstract List<T> VZ();
   
-  final void dk(List<T> paramList)
+  final void fA(final List<T> paramList)
   {
-    this.handler.post(new d.2(this, paramList));
+    this.handler.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(97699);
+        d.this.fB(paramList);
+        d locald = d.this;
+        boolean bool = this.xjM;
+        af.dhI().post(new d.3(locald, bool));
+        AppMethodBeat.o(97699);
+      }
+    });
   }
   
-  public abstract void dl(List<T> paramList);
+  public abstract void fB(List<T> paramList);
   
-  protected final void ie(boolean paramBoolean)
+  protected final void lQ(final boolean paramBoolean)
   {
     int i;
     int j;
@@ -36,7 +48,7 @@ public abstract class d<T>
       if (i != 1) {
         break label73;
       }
-      Iterator localIterator = this.rDY.iterator();
+      Iterator localIterator = this.xjI.iterator();
       while (localIterator.hasNext()) {
         if (((Integer)localIterator.next()).intValue() == 1)
         {
@@ -45,7 +57,7 @@ public abstract class d<T>
           if (j == 0) {
             break label73;
           }
-          ab.e("MicroMsg.AdapterLoader", "thread is loading ui should be not load any");
+          ad.e("MicroMsg.AdapterLoader", "thread is loading ui should be not load any");
         }
       }
     }
@@ -58,26 +70,35 @@ public abstract class d<T>
       break label51;
       label73:
       if (!paramBoolean) {
-        ab.d("MicroMsg.AdapterLoader", "ui load");
+        ad.d("MicroMsg.AdapterLoader", "ui load");
       }
-      while (this.rDY.size() <= 1)
+      while (this.xjI.size() <= 1)
       {
-        this.rDY.add(Integer.valueOf(i));
+        this.xjI.add(Integer.valueOf(i));
         if (!paramBoolean) {
           break label164;
         }
-        ag.coO().post(new d.1(this, paramBoolean));
+        af.dhI().post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(97698);
+            List localList = d.this.VZ();
+            d.this.fA(localList);
+            AppMethodBeat.o(97698);
+          }
+        });
         return;
-        ab.d("MicroMsg.AdapterLoader", "thread load" + this.rDY.size());
+        ad.d("MicroMsg.AdapterLoader", "thread load" + this.xjI.size());
       }
     }
     label164:
-    dk(Kq());
+    fA(VZ());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.d
  * JD-Core Version:    0.7.0.1
  */

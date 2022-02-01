@@ -7,8 +7,8 @@ import android.provider.Settings.System;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 import org.json.JSONArray;
@@ -17,69 +17,86 @@ import org.json.JSONObject;
 
 public final class c
 {
+  public static int F(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(78163);
+    if (paramJSONObject.has("visible"))
+    {
+      if (paramJSONObject.optBoolean("visible"))
+      {
+        AppMethodBeat.o(78163);
+        return 0;
+      }
+      AppMethodBeat.o(78163);
+      return 1;
+    }
+    AppMethodBeat.o(78163);
+    return 2147483647;
+  }
+  
   public static float[] a(JSONObject paramJSONObject, Context paramContext)
   {
-    AppMethodBeat.i(5948);
+    AppMethodBeat.i(78162);
     float[] arrayOfFloat = new float[5];
     if (paramJSONObject.has("x"))
     {
       arrayOfFloat[0] = a.fromDPToPix(paramContext, paramJSONObject.optInt("x"));
       if (!paramJSONObject.has("y")) {
-        break label122;
+        break label120;
       }
       arrayOfFloat[1] = a.fromDPToPix(paramContext, paramJSONObject.optInt("y"));
-      label56:
+      label55:
       if (!paramJSONObject.has("width")) {
-        break label130;
+        break label128;
       }
       arrayOfFloat[2] = a.fromDPToPix(paramContext, paramJSONObject.optInt("width"));
-      label79:
+      label78:
       if (!paramJSONObject.has("height")) {
-        break label138;
+        break label136;
       }
       arrayOfFloat[3] = a.fromDPToPix(paramContext, paramJSONObject.optInt("height"));
     }
     for (;;)
     {
       arrayOfFloat[4] = 0.0F;
-      AppMethodBeat.o(5948);
+      AppMethodBeat.o(78162);
       return arrayOfFloat;
       arrayOfFloat[0] = 3.4028235E+38F;
       break;
-      label122:
+      label120:
       arrayOfFloat[1] = 3.4028235E+38F;
-      break label56;
-      label130:
+      break label55;
+      label128:
       arrayOfFloat[2] = 3.4028235E+38F;
-      break label79;
-      label138:
+      break label78;
+      label136:
       arrayOfFloat[3] = 3.4028235E+38F;
     }
   }
   
-  public static String aQ(JSONObject paramJSONObject)
+  public static String bo(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(5950);
+    AppMethodBeat.i(78164);
     paramJSONObject = paramJSONObject.optJSONArray("playUrl");
     if ((paramJSONObject != null) && (paramJSONObject.length() > 0)) {
       try
       {
         paramJSONObject = paramJSONObject.getString(0);
-        AppMethodBeat.o(5950);
+        AppMethodBeat.o(78164);
         return paramJSONObject;
       }
       catch (JSONException paramJSONObject)
       {
-        ab.e("MicroMsg.FTS.FtsVideoPlayerUtils", "ex %s", new Object[] { paramJSONObject.getMessage() });
+        ad.e("MicroMsg.FTS.FtsVideoPlayerUtils", "ex %s", new Object[] { paramJSONObject.getMessage() });
       }
     }
-    AppMethodBeat.o(5950);
+    AppMethodBeat.o(78164);
     return "";
   }
   
-  private static float cN(Context paramContext)
+  private static float dn(Context paramContext)
   {
-    AppMethodBeat.i(5945);
+    AppMethodBeat.i(78159);
     paramContext = paramContext.getContentResolver();
     float f = 0.0F;
     try
@@ -91,62 +108,45 @@ public final class c
     {
       for (;;)
       {
-        ab.e("MicroMsg.FTS.FtsVideoPlayerUtils", "ex %s", new Object[] { paramContext.getMessage() });
+        ad.e("MicroMsg.FTS.FtsVideoPlayerUtils", "ex %s", new Object[] { paramContext.getMessage() });
       }
     }
-    AppMethodBeat.o(5945);
+    AppMethodBeat.o(78159);
     return f;
   }
   
-  public static float cP(Context paramContext)
+  public static float dp(Context paramContext)
   {
-    AppMethodBeat.i(5946);
+    AppMethodBeat.i(78160);
     WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
     if (localLayoutParams.screenBrightness < 0.0F)
     {
-      f = cN(paramContext);
-      AppMethodBeat.o(5946);
+      f = dn(paramContext);
+      AppMethodBeat.o(78160);
       return f;
     }
     float f = localLayoutParams.screenBrightness;
-    AppMethodBeat.o(5946);
+    AppMethodBeat.o(78160);
     return f;
   }
   
-  public static String ha(long paramLong)
+  public static String mz(long paramLong)
   {
-    AppMethodBeat.i(5947);
+    AppMethodBeat.i(78161);
     if (paramLong < 3600000L) {}
     for (Object localObject = "mm:ss";; localObject = "HH:mm:ss")
     {
       localObject = new SimpleDateFormat((String)localObject);
       ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT+0:00"));
       localObject = ((SimpleDateFormat)localObject).format(Long.valueOf(paramLong));
-      AppMethodBeat.o(5947);
+      AppMethodBeat.o(78161);
       return localObject;
     }
-  }
-  
-  public static int y(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(5949);
-    if (paramJSONObject.has("visible"))
-    {
-      if (paramJSONObject.optBoolean("visible"))
-      {
-        AppMethodBeat.o(5949);
-        return 0;
-      }
-      AppMethodBeat.o(5949);
-      return 1;
-    }
-    AppMethodBeat.o(5949);
-    return 2147483647;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.c.c
  * JD-Core Version:    0.7.0.1
  */

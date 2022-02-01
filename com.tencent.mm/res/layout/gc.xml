@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.base.MMSlideDelView android:id="@id/a5b" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_gravity="center" android:layout_width="@dimen/i4" android:layout_height="@dimen/i4"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/a5c" android:background="@drawable/vl" android:layout_width="112.0dip" android:layout_height="fill_parent">
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@drawable/akd" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/a6q" android:id="@id/od" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/emw" />
-    </LinearLayout>
-</com.tencent.mm.ui.base.MMSlideDelView>
+    <ImageView android:id="@id/tk" android:layout_width="@dimen/i2" android:layout_height="@dimen/i2" android:src="@drawable/aq8" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/a_u" android:id="@id/gk3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:maxWidth="@dimen/i2" android:singleLine="true" android:layout_below="@id/tk" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -4,22 +4,24 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class ExceptionMonitorBroadcastReceiver
   extends BroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(28786);
-    paramIntent.setClass(paramContext, ExceptionMonitorService.class);
-    d.j(paramIntent, "sandbox");
-    AppMethodBeat.o(28786);
+    AppMethodBeat.i(32601);
+    ad.i("MicroMsg.ExceptionMonitorBroadcastReceiver", "onReceive()");
+    paramIntent.setClass(paramContext, ExceptionMonitorMMService.class);
+    d.l(paramIntent, "sandbox");
+    AppMethodBeat.o(32601);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.ExceptionMonitorBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

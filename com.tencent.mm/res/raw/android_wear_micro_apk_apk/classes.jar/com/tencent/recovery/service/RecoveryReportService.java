@@ -13,7 +13,7 @@ public class RecoveryReportService
     super(RecoveryReportService.class.getName());
   }
   
-  private void f(Intent paramIntent)
+  private void h(Intent paramIntent)
   {
     int i = 0;
     for (;;)
@@ -36,7 +36,7 @@ public class RecoveryReportService
         switch (str2.hashCode())
         {
         case -1125171110: 
-          RecoveryUploadService.i(this, str3);
+          RecoveryUploadService.j(this, str3);
           stopSelf();
           continue;
         }
@@ -65,13 +65,13 @@ public class RecoveryReportService
   
   public void onDestroy()
   {
-    d.nK();
+    d.oy();
     super.onDestroy();
   }
   
   protected void onHandleIntent(Intent paramIntent)
   {
-    f(paramIntent);
+    h(paramIntent);
   }
 }
 

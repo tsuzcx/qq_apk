@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="drawable" name="amx">false</item>
+    <item type="drawable" name="amy">false</item>
+    <item type="drawable" name="amz">false</item>
+    <item type="drawable" name="an0">false</item>
+    <item type="drawable" name="an1">false</item>
+    <item type="drawable" name="an7">false</item>
+</resources>

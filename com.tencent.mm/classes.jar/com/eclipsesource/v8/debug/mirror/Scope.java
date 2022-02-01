@@ -20,7 +20,7 @@ public class Scope
   public ObjectMirror getScopeObject()
   {
     Object localObject1 = null;
-    AppMethodBeat.i(74908);
+    AppMethodBeat.i(61531);
     try
     {
       V8Object localV8Object = this.v8Object.executeObjectFunction("scopeObject", null);
@@ -33,21 +33,21 @@ public class Scope
       if (localObject1 != null) {
         localObject1.release();
       }
-      AppMethodBeat.o(74908);
+      AppMethodBeat.o(61531);
     }
   }
   
   public Scope.ScopeType getType()
   {
-    AppMethodBeat.i(74902);
+    AppMethodBeat.i(61525);
     Scope.ScopeType localScopeType = Scope.ScopeType.values()[this.v8Object.executeIntegerFunction("scopeType", null)];
-    AppMethodBeat.o(74902);
+    AppMethodBeat.o(61525);
     return localScopeType;
   }
   
   public void setVariableValue(String paramString, double paramDouble)
   {
-    AppMethodBeat.i(74907);
+    AppMethodBeat.i(61530);
     V8Array localV8Array = new V8Array(this.v8Object.getRuntime());
     localV8Array.push(paramString);
     localV8Array.push(paramDouble);
@@ -59,13 +59,13 @@ public class Scope
     finally
     {
       localV8Array.release();
-      AppMethodBeat.o(74907);
+      AppMethodBeat.o(61530);
     }
   }
   
   public void setVariableValue(String paramString, int paramInt)
   {
-    AppMethodBeat.i(74903);
+    AppMethodBeat.i(61526);
     V8Array localV8Array = new V8Array(this.v8Object.getRuntime());
     localV8Array.push(paramString);
     localV8Array.push(paramInt);
@@ -77,13 +77,13 @@ public class Scope
     finally
     {
       localV8Array.release();
-      AppMethodBeat.o(74903);
+      AppMethodBeat.o(61526);
     }
   }
   
   public void setVariableValue(String paramString, V8Value paramV8Value)
   {
-    AppMethodBeat.i(74904);
+    AppMethodBeat.i(61527);
     V8Array localV8Array = new V8Array(this.v8Object.getRuntime());
     localV8Array.push(paramString);
     localV8Array.push(paramV8Value);
@@ -95,13 +95,13 @@ public class Scope
     finally
     {
       localV8Array.release();
-      AppMethodBeat.o(74904);
+      AppMethodBeat.o(61527);
     }
   }
   
   public void setVariableValue(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(74906);
+    AppMethodBeat.i(61529);
     V8Array localV8Array = new V8Array(this.v8Object.getRuntime());
     localV8Array.push(paramString1);
     localV8Array.push(paramString2);
@@ -113,13 +113,13 @@ public class Scope
     finally
     {
       localV8Array.release();
-      AppMethodBeat.o(74906);
+      AppMethodBeat.o(61529);
     }
   }
   
   public void setVariableValue(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(74905);
+    AppMethodBeat.i(61528);
     V8Array localV8Array = new V8Array(this.v8Object.getRuntime());
     localV8Array.push(paramString);
     localV8Array.push(paramBoolean);
@@ -131,7 +131,7 @@ public class Scope
     finally
     {
       localV8Array.release();
-      AppMethodBeat.o(74905);
+      AppMethodBeat.o(61528);
     }
   }
 }

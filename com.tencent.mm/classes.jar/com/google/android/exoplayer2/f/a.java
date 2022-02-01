@@ -5,14 +5,14 @@ import android.text.Layout.Alignment;
 
 public class a
 {
-  public final Layout.Alignment aTC;
-  public final float aTD;
-  public final int aTE;
-  public final float aTF;
-  public final int aTG;
-  public final float aTH;
-  public final boolean aTI;
   public final Bitmap bitmap;
+  public final Layout.Alignment brF;
+  public final float brG;
+  public final int brH;
+  public final float brI;
+  public final int brJ;
+  public final float brK;
+  public final boolean brL;
   public final int lineType;
   public final float size;
   public final CharSequence text;
@@ -41,16 +41,16 @@ public class a
   private a(CharSequence paramCharSequence, Layout.Alignment paramAlignment, Bitmap paramBitmap, float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, float paramFloat4, boolean paramBoolean, int paramInt4)
   {
     this.text = paramCharSequence;
-    this.aTC = paramAlignment;
+    this.brF = paramAlignment;
     this.bitmap = paramBitmap;
-    this.aTD = paramFloat1;
+    this.brG = paramFloat1;
     this.lineType = paramInt1;
-    this.aTE = paramInt2;
-    this.aTF = paramFloat2;
-    this.aTG = paramInt3;
+    this.brH = paramInt2;
+    this.brI = paramFloat2;
+    this.brJ = paramInt3;
     this.size = paramFloat3;
-    this.aTH = paramFloat4;
-    this.aTI = paramBoolean;
+    this.brK = paramFloat4;
+    this.brL = paramBoolean;
     this.windowColor = paramInt4;
   }
 }

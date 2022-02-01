@@ -1,19 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.a;
 
-import a.l;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.widget.b.g;
-import com.tencent.mm.vending.c.a;
+import com.tencent.mm.plugin.appbrand.phonenumber.PhoneItem;
+import com.tencent.mm.vending.g.b;
+import d.g.a.r;
+import d.y;
+import java.util.List;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
-final class c$c<_Ret, _Var>
-  implements a<_Ret, _Var>
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "isSuccess", "", "errMsg", "", "phoneItems", "", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "info", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetCustomPhoneNumber$Info;", "invoke"})
+final class c$c
+  extends d.g.b.l
+  implements r<Boolean, String, List<? extends PhoneItem>, c.b, y>
 {
-  c$c(c paramc, g paramg, v paramv) {}
+  c$c(b paramb, List paramList)
+  {
+    super(4);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.a.c.c
  * JD-Core Version:    0.7.0.1
  */

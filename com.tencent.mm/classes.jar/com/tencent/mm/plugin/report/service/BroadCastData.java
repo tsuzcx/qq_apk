@@ -10,53 +10,53 @@ class BroadCastData
   implements Parcelable
 {
   public static final Parcelable.Creator<BroadCastData> CREATOR;
-  ArrayList<KVReportDataInfo> qse;
-  ArrayList<StIDKeyDataInfo> qsf;
-  ArrayList<GroupIDKeyDataInfo> qsg;
+  ArrayList<KVReportDataInfo> vJt;
+  ArrayList<StIDKeyDataInfo> vJu;
+  ArrayList<GroupIDKeyDataInfo> vJv;
   
   static
   {
-    AppMethodBeat.i(72694);
+    AppMethodBeat.i(143810);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(72694);
+    AppMethodBeat.o(143810);
   }
   
   public BroadCastData()
   {
-    AppMethodBeat.i(72690);
-    this.qse = new ArrayList();
-    this.qsf = new ArrayList();
-    this.qsg = new ArrayList();
-    AppMethodBeat.o(72690);
+    AppMethodBeat.i(143806);
+    this.vJt = new ArrayList();
+    this.vJu = new ArrayList();
+    this.vJv = new ArrayList();
+    AppMethodBeat.o(143806);
   }
   
   protected BroadCastData(Parcel paramParcel)
   {
-    AppMethodBeat.i(72692);
-    this.qse = new ArrayList();
-    this.qsf = new ArrayList();
-    this.qsg = new ArrayList();
-    paramParcel.readTypedList(this.qse, KVReportDataInfo.CREATOR);
-    paramParcel.readTypedList(this.qsf, StIDKeyDataInfo.CREATOR);
-    paramParcel.readTypedList(this.qsg, GroupIDKeyDataInfo.CREATOR);
-    AppMethodBeat.o(72692);
+    AppMethodBeat.i(143808);
+    this.vJt = new ArrayList();
+    this.vJu = new ArrayList();
+    this.vJv = new ArrayList();
+    paramParcel.readTypedList(this.vJt, KVReportDataInfo.CREATOR);
+    paramParcel.readTypedList(this.vJu, StIDKeyDataInfo.CREATOR);
+    paramParcel.readTypedList(this.vJv, GroupIDKeyDataInfo.CREATOR);
+    AppMethodBeat.o(143808);
   }
   
   public BroadCastData(BroadCastData paramBroadCastData)
   {
-    AppMethodBeat.i(72691);
-    this.qse = new ArrayList();
-    this.qsf = new ArrayList();
-    this.qsg = new ArrayList();
+    AppMethodBeat.i(143807);
+    this.vJt = new ArrayList();
+    this.vJu = new ArrayList();
+    this.vJv = new ArrayList();
     if (paramBroadCastData == null)
     {
-      AppMethodBeat.o(72691);
+      AppMethodBeat.o(143807);
       return;
     }
-    this.qse = new ArrayList(paramBroadCastData.qse);
-    this.qsf = new ArrayList(paramBroadCastData.qsf);
-    this.qsg = new ArrayList(paramBroadCastData.qsg);
-    AppMethodBeat.o(72691);
+    this.vJt = new ArrayList(paramBroadCastData.vJt);
+    this.vJu = new ArrayList(paramBroadCastData.vJu);
+    this.vJv = new ArrayList(paramBroadCastData.vJv);
+    AppMethodBeat.o(143807);
   }
   
   public int describeContents()
@@ -66,11 +66,11 @@ class BroadCastData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(72693);
-    paramParcel.writeTypedList(this.qse);
-    paramParcel.writeTypedList(this.qsf);
-    paramParcel.writeTypedList(this.qsg);
-    AppMethodBeat.o(72693);
+    AppMethodBeat.i(143809);
+    paramParcel.writeTypedList(this.vJt);
+    paramParcel.writeTypedList(this.vJu);
+    paramParcel.writeTypedList(this.vJv);
+    AppMethodBeat.o(143809);
   }
 }
 

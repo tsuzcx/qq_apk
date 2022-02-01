@@ -3,29 +3,32 @@ package com.tencent.mm.ui.chatting;
 import android.content.Context;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.g.a.jm;
-import com.tencent.mm.g.a.jm.b;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.n;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.s;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.g.a.kp;
+import com.tencent.mm.g.a.kp.b;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.bi;
+import com.tencent.mm.model.q;
+import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.w;
 import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.pluginsdk.model.app.al;
-import com.tencent.mm.pluginsdk.model.app.f;
+import com.tencent.mm.modelvideo.t;
+import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.pluginsdk.model.app.d;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.bi.a;
-import com.tencent.mm.storage.z;
-import java.io.File;
+import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.m;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bl.a;
+import com.tencent.mm.vfs.e;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,302 +37,316 @@ import java.util.List;
 
 public final class ai
 {
+  List<bl> GmU;
+  private String Gqq;
+  String Gqr;
+  ArrayList<Uri> Gqs;
   private Context context;
-  private ad czH;
-  private SimpleDateFormat jCL;
-  String mVj;
-  private String zBZ;
-  ArrayList<Uri> zCa;
-  List<bi> zyt;
+  private af dpQ;
+  private SimpleDateFormat mug;
   
-  public ai(Context paramContext, List<bi> paramList, ad paramad)
+  public ai(Context paramContext, List<bl> paramList, af paramaf)
   {
-    AppMethodBeat.i(30962);
-    this.zBZ = null;
-    this.czH = null;
-    this.jCL = new SimpleDateFormat("yyyy-MM-dd");
-    this.mVj = null;
-    this.zCa = new ArrayList();
+    AppMethodBeat.i(34842);
+    this.Gqq = null;
+    this.dpQ = null;
+    this.mug = new SimpleDateFormat("yyyy-MM-dd");
+    this.Gqr = null;
+    this.Gqs = new ArrayList();
     this.context = paramContext;
-    this.zyt = paramList;
-    this.czH = paramad;
-    AppMethodBeat.o(30962);
+    this.GmU = paramList;
+    this.dpQ = paramaf;
+    AppMethodBeat.o(34842);
   }
   
-  private String aQ(bi parambi)
+  private String bj(bl parambl)
   {
-    AppMethodBeat.i(30965);
-    String str = null;
-    if (!com.tencent.mm.model.t.lA(this.czH.field_username)) {
-      str = s.nE(parambi.field_talker);
+    AppMethodBeat.i(34845);
+    Object localObject1 = null;
+    if (parambl.eJN()) {
+      localObject1 = String.format("[%s]", new Object[] { this.context.getString(2131758203) });
     }
     for (;;)
     {
-      if (parambi.field_isSend == 1)
+      ad.i("MicroMsg.OtherMailHistoryExporter", "formatOtherMsg, msgStr = %s", new Object[] { localObject1 });
+      parambl = String.format("%s\n\n%s\n\n", new Object[] { bk(parambl), localObject1 });
+      AppMethodBeat.o(34845);
+      return parambl;
+      if (parambl.eLT())
       {
-        ab.i("MicroMsg.OtherMailHistoryExporter", "isSend");
-        str = r.Zp();
+        if (parambl.field_isSend == 1) {
+          localObject1 = this.context.getString(2131758201);
+        } else {
+          localObject1 = this.context.getString(2131758200);
+        }
       }
-      long l = parambi.field_createTime;
-      parambi = new SimpleDateFormat("HH:mm").format(new Date(l));
-      Object localObject = new StringBuilder("");
-      ((StringBuilder)localObject).append(str);
-      ((StringBuilder)localObject).append("  ");
-      ((StringBuilder)localObject).append(parambi);
-      parambi = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(30965);
-      return parambi;
-      localObject = parambi.field_content;
-      int i = bf.pt((String)localObject);
-      if (i != -1) {
-        str = s.nE(((String)localObject).substring(0, i).trim());
+      else if (parambl.cxD())
+      {
+        localObject1 = new kp();
+        ((kp)localObject1).dpf.doZ = 1;
+        ((kp)localObject1).dpf.dbD = parambl;
+        a.ESL.l((b)localObject1);
+        localObject1 = String.format("[%s]", new Object[] { ((kp)localObject1).dpg.dld });
+      }
+      else
+      {
+        Object localObject2;
+        if (parambl.cxB())
+        {
+          localObject2 = k.b.rx(bt.aGg(parambl.field_content));
+          if (localObject2 != null)
+          {
+            switch (((k.b)localObject2).type)
+            {
+            }
+            for (;;)
+            {
+              localObject1 = com.tencent.mm.pluginsdk.model.app.h.j(((k.b)localObject2).appId, true, false);
+              if (localObject1 != null) {
+                break label309;
+              }
+              localObject1 = "";
+              break;
+              localObject1 = ap.bxS().aAL(((k.b)localObject2).dbA);
+              if (localObject1 != null)
+              {
+                localObject1 = new e(((com.tencent.mm.pluginsdk.model.app.c)localObject1).field_fileFullPath);
+                if (((e)localObject1).exists()) {
+                  this.Gqs.add(m.a(this.context, (e)localObject1));
+                }
+              }
+            }
+            label309:
+            localObject1 = ((g)localObject1).field_appName;
+            if (6 == ((k.b)localObject2).type) {
+              localObject1 = String.format("[%s: %s(%s)]", new Object[] { this.context.getString(2131758193), localObject1, this.context.getString(2131758194) });
+            } else {
+              localObject1 = String.format("[%s: %s]", new Object[] { this.context.getString(2131758193), localObject1 });
+            }
+          }
+        }
+        else if (parambl.eLX())
+        {
+          az.arV();
+          localObject1 = com.tencent.mm.model.c.apO().agC(parambl.field_content).nickname;
+          localObject1 = String.format("[%s: %s]", new Object[] { this.context.getString(2131758195), localObject1 });
+        }
+        else if (parambl.cjM())
+        {
+          localObject1 = this.context.getString(2131758202);
+          o.aCI();
+          localObject2 = String.format("[%s: %s(%s)]", new Object[] { localObject1, new e(t.zQ(parambl.field_imgPath)).getName(), this.context.getString(2131758194) });
+          o.aCI();
+          e locale = new e(t.zQ(parambl.field_imgPath));
+          localObject1 = localObject2;
+          if (locale.exists())
+          {
+            this.Gqs.add(m.a(this.context, locale));
+            localObject1 = localObject2;
+          }
+        }
+        else if ((parambl.eLY()) || (parambl.eLZ()))
+        {
+          localObject1 = String.format("[%s]", new Object[] { this.context.getString(2131758196) });
+        }
       }
     }
   }
   
-  private String dGW()
+  private String bk(bl parambl)
   {
-    AppMethodBeat.i(30964);
-    Object localObject;
-    if (!com.tencent.mm.model.t.lA(this.czH.field_username))
-    {
-      str1 = this.context.getString(2131303111);
-      localObject = this.czH.Oe();
-      aw.aaz();
-      str1 = String.format(str1, new Object[] { localObject, com.tencent.mm.model.c.Ru().get(4, null) });
-      AppMethodBeat.o(30964);
-      return str1;
+    AppMethodBeat.i(34846);
+    String str = null;
+    if (!w.pF(this.dpQ.field_username)) {
+      str = v.sh(parambl.field_talker);
     }
-    if (bo.isNullOrNil(this.czH.field_nickname))
+    for (;;)
     {
-      localObject = n.nt(this.czH.field_username).iterator();
-      String str2;
-      for (str1 = ""; ((Iterator)localObject).hasNext(); str1 = str1 + str2 + ", ") {
-        str2 = s.nE((String)((Iterator)localObject).next());
+      if (parambl.field_isSend == 1)
+      {
+        ad.i("MicroMsg.OtherMailHistoryExporter", "isSend");
+        str = u.aqI();
+      }
+      long l = parambl.field_createTime;
+      parambl = new SimpleDateFormat("HH:mm").format(new Date(l));
+      Object localObject = new StringBuilder("");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("  ");
+      ((StringBuilder)localObject).append(parambl);
+      parambl = ((StringBuilder)localObject).toString();
+      AppMethodBeat.o(34846);
+      return parambl;
+      localObject = parambl.field_content;
+      int i = bi.uc((String)localObject);
+      if (i != -1) {
+        str = v.sh(((String)localObject).substring(0, i).trim());
       }
     }
-    for (String str1 = str1.substring(0, str1.length() - 2);; str1 = this.czH.Oe())
+  }
+  
+  private String eWd()
+  {
+    AppMethodBeat.i(34844);
+    Object localObject;
+    if (!w.pF(this.dpQ.field_username))
     {
-      str1 = String.format(this.context.getString(2131303110), new Object[] { str1 });
+      str1 = this.context.getString(2131763060);
+      localObject = this.dpQ.ZW();
+      az.arV();
+      str1 = String.format(str1, new Object[] { localObject, com.tencent.mm.model.c.afk().get(4, null) });
+      AppMethodBeat.o(34844);
+      return str1;
+    }
+    if (bt.isNullOrNil(this.dpQ.field_nickname))
+    {
+      localObject = q.rW(this.dpQ.field_username).iterator();
+      String str2;
+      for (str1 = ""; ((Iterator)localObject).hasNext(); str1 = str1 + str2 + ", ") {
+        str2 = v.sh((String)((Iterator)localObject).next());
+      }
+    }
+    for (String str1 = str1.substring(0, str1.length() - 2);; str1 = this.dpQ.ZW())
+    {
+      str1 = String.format(this.context.getString(2131763059), new Object[] { str1 });
       break;
     }
   }
   
-  private String oA(long paramLong)
+  private String wy(long paramLong)
   {
-    AppMethodBeat.i(30966);
-    String str = this.jCL.format(new Date(paramLong));
-    AppMethodBeat.o(30966);
+    AppMethodBeat.i(34847);
+    String str = this.mug.format(new Date(paramLong));
+    AppMethodBeat.o(34847);
     return str;
   }
   
-  public final String dGV()
+  public final String eWc()
   {
-    AppMethodBeat.i(30963);
-    if (this.mVj == null) {}
+    AppMethodBeat.i(34843);
+    if (this.Gqr == null) {}
     Object localObject1;
     for (boolean bool = true;; bool = false)
     {
-      ab.d("MicroMsg.OtherMailHistoryExporter", "export: history is null? %B, selectItems.size = %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.zyt.size()) });
-      if (this.mVj == null) {
+      ad.d("MicroMsg.OtherMailHistoryExporter", "export: history is null? %B, selectItems.size = %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.GmU.size()) });
+      if (this.Gqr == null) {
         break;
       }
-      localObject1 = this.mVj;
-      AppMethodBeat.o(30963);
+      localObject1 = this.Gqr;
+      AppMethodBeat.o(34843);
       return localObject1;
     }
-    this.zCa.clear();
+    this.Gqs.clear();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(dGW());
+    localStringBuilder.append(eWd());
     localStringBuilder.append("\n\n");
-    Iterator localIterator = this.zyt.iterator();
-    bi localbi;
+    Iterator localIterator = this.GmU.iterator();
+    bl localbl;
     if (localIterator.hasNext())
     {
-      localbi = (bi)localIterator.next();
-      if (this.zBZ == null)
+      localbl = (bl)localIterator.next();
+      if (this.Gqq == null)
       {
-        this.zBZ = oA(localbi.field_createTime);
-        localStringBuilder.append(String.format("—————  %s  —————\n\n", new Object[] { this.zBZ }));
+        this.Gqq = wy(localbl.field_createTime);
+        localStringBuilder.append(String.format("—————  %s  —————\n\n", new Object[] { this.Gqq }));
         localStringBuilder.append("\n");
-        label194:
-        if (!localbi.isText()) {
-          break label429;
+        label196:
+        if (!localbl.isText()) {
+          break label428;
         }
-        if (!localbi.isText()) {
-          break label423;
+        if (!localbl.isText()) {
+          break label422;
         }
-        if (localbi.field_isSend != 1) {
-          break label323;
+        if (localbl.field_isSend != 1) {
+          break label324;
         }
-        localObject1 = String.format("%s\n\n%s\n\n", new Object[] { aQ(localbi), localbi.field_content });
+        localObject1 = String.format("%s\n\n%s\n\n", new Object[] { bk(localbl), localbl.field_content });
       }
     }
-    label423:
-    label429:
+    label422:
+    label428:
     for (;;)
     {
       localStringBuilder.append((String)localObject1);
       break;
-      localObject1 = oA(localbi.field_createTime);
-      if (((String)localObject1).equals(this.zBZ)) {
-        break label194;
+      localObject1 = wy(localbl.field_createTime);
+      if (((String)localObject1).equals(this.Gqq)) {
+        break label196;
       }
-      this.zBZ = ((String)localObject1);
-      localStringBuilder.append(String.format("—————  %s  —————\n\n", new Object[] { this.zBZ }));
+      this.Gqq = ((String)localObject1);
+      localStringBuilder.append(String.format("—————  %s  —————\n\n", new Object[] { this.Gqq }));
       localStringBuilder.append("\n");
-      break label194;
-      label323:
-      if (!com.tencent.mm.model.t.lA(this.czH.field_username))
+      break label196;
+      label324:
+      if (!w.pF(this.dpQ.field_username))
       {
-        localObject1 = String.format("%s\n\n%s\n\n", new Object[] { aQ(localbi), localbi.field_content });
+        localObject1 = String.format("%s\n\n%s\n\n", new Object[] { bk(localbl), localbl.field_content });
       }
       else
       {
-        int i = bf.pt(localbi.field_content);
+        int i = bi.uc(localbl.field_content);
         if (i != -1)
         {
-          localObject1 = String.format("%s\n\n%s\n\n", new Object[] { aQ(localbi), localbi.field_content.substring(i + 1).trim() });
+          localObject1 = String.format("%s\n\n%s\n\n", new Object[] { bk(localbl), localbl.field_content.substring(i + 1).trim() });
           continue;
           localObject1 = null;
           continue;
-          Object localObject2;
-          if (localbi.dvX())
+          if (localbl.eJO())
           {
-            if (localbi.dvX())
+            if (localbl.eJO())
             {
-              long l1 = localbi.field_msgId;
-              long l2 = localbi.field_msgSvrId;
-              localObject2 = ac.oy(l1);
+              long l1 = localbl.field_msgId;
+              long l2 = localbl.field_msgSvrId;
+              Object localObject2 = ac.ww(l1);
               localObject1 = localObject2;
-              if (bo.isNullOrNil((String)localObject2)) {
-                localObject1 = ac.oz(l2);
+              if (bt.isNullOrNil((String)localObject2)) {
+                localObject1 = ac.wx(l2);
               }
-              ab.d("MicroMsg.OtherMailHistoryExporter", "hdPath[%s]", new Object[] { localObject1 });
-              if (!bo.isNullOrNil((String)localObject1))
+              ad.d("MicroMsg.OtherMailHistoryExporter", "imgPath[%s]", new Object[] { localObject1 });
+              if (!bt.isNullOrNil((String)localObject1))
               {
-                localObject2 = "content://".concat(String.valueOf(localObject1));
-                this.zCa.add(Uri.parse((String)localObject2));
-                localObject1 = String.format("[%s: %s(%s)]", new Object[] { this.context.getString(2131299087), new File((String)localObject1).getName(), this.context.getString(2131299083) });
+                localObject1 = new e((String)localObject1);
+                localObject2 = m.a(this.context, (e)localObject1);
+                this.Gqs.add(localObject2);
+                localObject1 = String.format("[%s: %s(%s)]", new Object[] { this.context.getString(2131758198), ((e)localObject1).getName(), this.context.getString(2131758194) });
               }
             }
-            for (localObject1 = String.format("%s\n\n%s\n\n", new Object[] { aQ(localbi), localObject1 });; localObject1 = null)
+            for (localObject1 = String.format("%s\n\n%s\n\n", new Object[] { bk(localbl), localObject1 });; localObject1 = null)
             {
               localStringBuilder.append((String)localObject1);
               break;
             }
           }
-          if (localbi.dvW()) {
-            localObject1 = String.format("[%s]", new Object[] { this.context.getString(2131299092) });
-          }
-          for (;;)
+          if (localbl.cxB())
           {
-            ab.i("MicroMsg.OtherMailHistoryExporter", "formatOtherMsg, msgStr = %s", new Object[] { localObject1 });
-            localStringBuilder.append(String.format("%s\n\n%s\n\n", new Object[] { aQ(localbi), localObject1 }));
+            localObject1 = k.b.rx(localbl.field_content);
+            if ((localObject1 != null) && ((((k.b)localObject1).type == 53) || (((k.b)localObject1).type == 57)))
+            {
+              if ((localObject1 != null) && ((((k.b)localObject1).type == 53) || (((k.b)localObject1).type == 57))) {}
+              for (localObject1 = String.format("%s\n\n%s\n\n", new Object[] { bk(localbl), ((k.b)localObject1).title });; localObject1 = null)
+              {
+                localStringBuilder.append((String)localObject1);
+                break;
+              }
+            }
+            localStringBuilder.append(bj(localbl));
             break;
-            if (localbi.dxN())
-            {
-              if (localbi.field_isSend == 1) {
-                localObject1 = this.context.getString(2131299090);
-              } else {
-                localObject1 = this.context.getString(2131299089);
-              }
-            }
-            else if (localbi.bCp())
-            {
-              localObject1 = new jm();
-              ((jm)localObject1).cyZ.cyU = 1;
-              ((jm)localObject1).cyZ.cmQ = localbi;
-              a.ymk.l((com.tencent.mm.sdk.b.b)localObject1);
-              localObject1 = String.format("[%s]", new Object[] { ((jm)localObject1).cza.cvF });
-            }
-            else
-            {
-              if (localbi.bCn())
-              {
-                localObject1 = j.b.mY(bo.apU(localbi.field_content));
-                if (localObject1 != null)
-                {
-                  switch (((j.b)localObject1).type)
-                  {
-                  }
-                  for (;;)
-                  {
-                    localObject2 = g.ca(((j.b)localObject1).appId, true);
-                    if (localObject2 != null) {
-                      break label967;
-                    }
-                    localObject1 = "";
-                    break;
-                    localObject2 = al.aUJ().alo(((j.b)localObject1).cmN);
-                    if (localObject2 != null)
-                    {
-                      localObject2 = new File(((com.tencent.mm.pluginsdk.model.app.b)localObject2).field_fileFullPath);
-                      if (((File)localObject2).exists()) {
-                        this.zCa.add(Uri.fromFile((File)localObject2));
-                      }
-                    }
-                  }
-                  label967:
-                  localObject2 = ((f)localObject2).field_appName;
-                  if (6 == ((j.b)localObject1).type)
-                  {
-                    localObject1 = String.format("[%s: %s(%s)]", new Object[] { this.context.getString(2131299082), localObject2, this.context.getString(2131299083) });
-                    continue;
-                  }
-                  localObject1 = String.format("[%s: %s]", new Object[] { this.context.getString(2131299082), localObject2 });
-                }
-              }
-              else
-              {
-                if (localbi.dxR())
-                {
-                  aw.aaz();
-                  localObject1 = com.tencent.mm.model.c.YC().Ty(localbi.field_content).nickname;
-                  localObject1 = String.format("[%s: %s]", new Object[] { this.context.getString(2131299084), localObject1 });
-                  continue;
-                }
-                if (localbi.byj())
-                {
-                  localObject1 = this.context.getString(2131299091);
-                  o.alE();
-                  localObject2 = String.format("[%s: %s(%s)]", new Object[] { localObject1, new File(com.tencent.mm.modelvideo.t.vf(localbi.field_imgPath)).getName(), this.context.getString(2131299083) });
-                  o.alE();
-                  File localFile = new File(com.tencent.mm.modelvideo.t.vf(localbi.field_imgPath));
-                  localObject1 = localObject2;
-                  if (!localFile.exists()) {
-                    continue;
-                  }
-                  this.zCa.add(Uri.fromFile(localFile));
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if ((localbi.dxS()) || (localbi.dxT()))
-                {
-                  localObject1 = String.format("[%s]", new Object[] { this.context.getString(2131299085) });
-                  continue;
-                  localStringBuilder.append("\n\n");
-                  this.mVj = localStringBuilder.toString();
-                  localObject1 = this.mVj;
-                  AppMethodBeat.o(30963);
-                  return localObject1;
-                }
-              }
-              localObject1 = null;
-            }
           }
+          localStringBuilder.append(bj(localbl));
+          break;
+          localStringBuilder.append("\n\n");
+          this.Gqr = localStringBuilder.toString();
+          localObject1 = this.Gqr;
+          AppMethodBeat.o(34843);
+          return localObject1;
         }
-        else
-        {
-          localObject1 = null;
-        }
+        localObject1 = null;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ai
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ph
   extends b
 {
+  public a duQ;
+  
   public ph()
   {
     this((byte)0);
@@ -12,9 +15,14 @@ public final class ph
   
   private ph(byte paramByte)
   {
-    this.ymq = false;
+    AppMethodBeat.i(19825);
+    this.duQ = new a();
+    this.ESR = false;
     this.callback = null;
+    AppMethodBeat.o(19825);
   }
+  
+  public static final class a {}
 }
 
 

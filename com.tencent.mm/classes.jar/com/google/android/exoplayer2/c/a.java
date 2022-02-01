@@ -1,56 +1,65 @@
 package com.google.android.exoplayer2.c;
 
+import com.google.android.exoplayer2.i.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
   implements l
 {
-  public final int[] aBk;
-  public final long[] aBl;
-  public final long[] aBm;
-  private final long axh;
+  private final long aSz;
+  public final int[] aWC;
+  public final long[] aWD;
+  public final long[] aWE;
   public final int length;
   public final long[] offsets;
   
   public a(int[] paramArrayOfInt, long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
   {
-    AppMethodBeat.i(94840);
-    this.aBk = paramArrayOfInt;
+    AppMethodBeat.i(91954);
+    this.aWC = paramArrayOfInt;
     this.offsets = paramArrayOfLong1;
-    this.aBl = paramArrayOfLong2;
-    this.aBm = paramArrayOfLong3;
+    this.aWD = paramArrayOfLong2;
+    this.aWE = paramArrayOfLong3;
     this.length = paramArrayOfInt.length;
     if (this.length > 0)
     {
-      this.axh = (paramArrayOfLong2[(this.length - 1)] + paramArrayOfLong3[(this.length - 1)]);
-      AppMethodBeat.o(94840);
+      this.aSz = (paramArrayOfLong2[(this.length - 1)] + paramArrayOfLong3[(this.length - 1)]);
+      AppMethodBeat.o(91954);
       return;
     }
-    this.axh = 0L;
-    AppMethodBeat.o(94840);
+    this.aSz = 0L;
+    AppMethodBeat.o(91954);
   }
   
-  public final long E(long paramLong)
+  public final int J(long paramLong)
   {
-    AppMethodBeat.i(94841);
-    paramLong = this.offsets[com.google.android.exoplayer2.i.x.a(this.aBm, paramLong, true)];
-    AppMethodBeat.o(94841);
+    AppMethodBeat.i(91955);
+    int i = x.a(this.aWE, paramLong, true);
+    AppMethodBeat.o(91955);
+    return i;
+  }
+  
+  public final long K(long paramLong)
+  {
+    AppMethodBeat.i(91956);
+    paramLong = this.offsets[J(paramLong)];
+    AppMethodBeat.o(91956);
     return paramLong;
   }
   
   public final long getDurationUs()
   {
-    return this.axh;
+    return this.aSz;
   }
   
-  public final boolean nV()
+  public final boolean sH()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.c.a
  * JD-Core Version:    0.7.0.1
  */

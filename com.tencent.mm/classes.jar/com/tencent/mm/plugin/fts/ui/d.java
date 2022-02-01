@@ -9,79 +9,84 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class d
   extends BaseAdapter
   implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener
 {
   private int count;
-  private AbsListView.OnScrollListener kHL;
-  private e mWG;
-  private SparseArray<a> mWH;
-  long mWI;
-  d.a mWJ;
+  private AbsListView.OnScrollListener nOo;
   String query;
+  e rtw;
+  private SparseArray<a> rtx;
+  long rty;
+  a rtz;
   
   public d(e parame)
   {
-    ab.i("MicroMsg.FTS.FTSBaseAdapter", "Create FTSBaseAdapter");
-    this.mWG = parame;
-    this.mWH = new SparseArray();
+    ad.i("MicroMsg.FTS.FTSBaseAdapter", "Create FTSBaseAdapter");
+    this.rtw = parame;
+    this.rtx = new SparseArray();
   }
   
-  private a ww(int paramInt)
+  private a DI(int paramInt)
   {
     Object localObject2 = null;
-    if (this.mWH.indexOfKey(paramInt) >= 0) {
-      return (a)this.mWH.get(paramInt);
+    if (this.rtx.indexOfKey(paramInt) >= 0) {
+      return (a)this.rtx.get(paramInt);
     }
     Object localObject1 = localObject2;
     if (paramInt >= 0)
     {
       localObject1 = localObject2;
       if (paramInt < getCount()) {
-        localObject1 = wu(paramInt);
+        localObject1 = DG(paramInt);
       }
     }
     if (localObject1 == null) {
-      return (a)this.mWH.get(0);
+      return (a)this.rtx.get(0);
     }
-    this.mWH.put(paramInt, localObject1);
+    this.rtx.put(paramInt, localObject1);
     return localObject1;
   }
   
-  public final void Pu(String paramString)
+  protected abstract a DG(int paramInt);
+  
+  public final void Zl(String paramString)
   {
     stopSearch();
-    this.mWI = System.currentTimeMillis();
+    this.rty = System.currentTimeMillis();
     this.query = paramString;
-    ab.i("MicroMsg.FTS.FTSBaseAdapter", "start search query=%s", new Object[] { paramString });
-    bCy();
-  }
-  
-  protected final void V(int paramInt, boolean paramBoolean)
-  {
-    if (this.mWJ != null) {
-      this.mWJ.W(paramInt, paramBoolean);
-    }
+    ad.i("MicroMsg.FTS.FTSBaseAdapter", "start search query=%s", new Object[] { paramString });
+    cxM();
   }
   
   protected abstract boolean a(View paramView, a parama, boolean paramBoolean);
   
-  protected int bCf()
+  protected final void ae(int paramInt, boolean paramBoolean)
   {
-    return getCount();
+    if (this.rtz != null) {
+      this.rtz.af(paramInt, paramBoolean);
+    }
   }
   
-  protected abstract void bCy();
+  protected void b(Context paramContext, a parama) {}
   
   protected void clearCache()
   {
-    this.mWH.clear();
+    this.rtx.clear();
+  }
+  
+  protected abstract void cxM();
+  
+  protected int cxt()
+  {
+    return getCount();
   }
   
   public void finish()
@@ -91,7 +96,7 @@ public abstract class d
   
   public final Context getContext()
   {
-    return this.mWG.getContext();
+    return this.rtw.getContext();
   }
   
   public int getCount()
@@ -106,63 +111,64 @@ public abstract class d
   
   public int getItemViewType(int paramInt)
   {
-    if (ww(paramInt) != null) {
-      return ww(paramInt).kwo;
+    if (DI(paramInt) != null) {
+      return DI(paramInt).nBH;
     }
-    ab.e("MicroMsg.FTS.FTSBaseAdapter", "getItemViewType: get data item fail, return unknown Type, count=%d | position = %s", new Object[] { Integer.valueOf(getCount()), Integer.valueOf(paramInt) });
+    ad.e("MicroMsg.FTS.FTSBaseAdapter", "getItemViewType: get data item fail, return unknown Type, count=%d | position = %s", new Object[] { Integer.valueOf(getCount()), Integer.valueOf(paramInt) });
     return -1;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    a locala = ww(paramInt);
+    a locala = DI(paramInt);
     View localView = paramView;
     if (paramView == null) {
-      localView = locala.Pr().a(getContext(), paramViewGroup);
+      localView = locala.acQ().a(getContext(), paramViewGroup);
     }
     paramView = (a.a)localView.getTag();
-    if (!locala.mTG)
+    if (!locala.rqy)
     {
       locala.a(getContext(), paramView, new Object[0]);
-      locala.mTG = true;
+      b(getContext(), locala);
+      locala.rqy = true;
     }
-    locala.Pr().a(getContext(), paramView, locala, new Object[0]);
+    locala.acQ().a(getContext(), paramView, locala, new Object[0]);
     return localView;
   }
   
   public int getViewTypeCount()
   {
-    return 22;
+    return 15;
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.mWG.hideVKB();
-    if (paramInt >= getCount()) {
-      return;
+    this.rtw.hideVKB();
+    paramAdapterView = DI(paramInt - this.rtw.getListView().getHeaderViewsCount());
+    if (paramAdapterView != null)
+    {
+      boolean bool = a(paramView, paramAdapterView, paramAdapterView.acQ().a(getContext(), paramAdapterView));
+      this.rtw.a(paramAdapterView, bool);
     }
-    paramAdapterView = ww(paramInt);
-    a(paramView, paramAdapterView, paramAdapterView.Pr().a(getContext(), paramAdapterView));
-    this.mWG.a(paramAdapterView);
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.kHL != null) {
-      this.kHL.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.nOo != null) {
+      this.nOo.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.kHL != null) {
-      this.kHL.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.nOo != null) {
+      this.nOo.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
   protected final void setCount(int paramInt)
   {
-    ab.i("MicroMsg.FTS.FTSBaseAdapter", "setCount %d", new Object[] { Integer.valueOf(paramInt) });
+    ad.i("MicroMsg.FTS.FTSBaseAdapter", "setCount %d", new Object[] { Integer.valueOf(paramInt) });
     this.count = paramInt;
   }
   
@@ -174,11 +180,14 @@ public abstract class d
     notifyDataSetChanged();
   }
   
-  protected abstract a wu(int paramInt);
+  public static abstract interface a
+  {
+    public abstract void af(int paramInt, boolean paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.d
  * JD-Core Version:    0.7.0.1
  */

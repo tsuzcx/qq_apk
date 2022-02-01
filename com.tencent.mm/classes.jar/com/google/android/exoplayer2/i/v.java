@@ -7,25 +7,25 @@ public final class v
 {
   public static void beginSection(String paramString)
   {
-    AppMethodBeat.i(95946);
+    AppMethodBeat.i(93210);
     if (x.SDK_INT >= 18) {
       Trace.beginSection(paramString);
     }
-    AppMethodBeat.o(95946);
+    AppMethodBeat.o(93210);
   }
   
   public static void endSection()
   {
-    AppMethodBeat.i(95947);
+    AppMethodBeat.i(93211);
     if (x.SDK_INT >= 18) {
       Trace.endSection();
     }
-    AppMethodBeat.o(95947);
+    AppMethodBeat.o(93211);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.i.v
  * JD-Core Version:    0.7.0.1
  */

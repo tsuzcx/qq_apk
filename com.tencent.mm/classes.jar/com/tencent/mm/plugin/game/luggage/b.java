@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.game.luggage;
 
+import android.os.Build.VERSION;
+import android.webkit.WebResourceResponse;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.commlib.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Map;
+import com.tencent.mm.plugin.game.luggage.d.e;
+import com.tencent.mm.plugin.webview.ui.tools.game.d;
 
 public final class b
+  implements com.tencent.luggage.webview.a.c
 {
-  public static long Dt;
-  public static Map<String, String> mHeaders;
-  public static String nji;
-  public static boolean njj;
+  private e rOP;
   
-  public static boolean bFl()
+  public b(e parame)
   {
-    AppMethodBeat.i(135808);
-    if (bo.isNullOrNil(nji))
+    this.rOP = parame;
+  }
+  
+  public final String Eu()
+  {
+    return "weixin://game.js";
+  }
+  
+  public final WebResourceResponse bW(String paramString)
+  {
+    AppMethodBeat.i(82986);
+    if (Build.VERSION.SDK_INT < 21)
     {
-      ab.i("MicroMsg.LuggageGameUinKeyHolder", "fullUrl is null");
-      AppMethodBeat.o(135808);
-      return false;
+      AppMethodBeat.o(82986);
+      return null;
     }
-    if (a.bFh() <= 0)
-    {
-      AppMethodBeat.o(135808);
-      return false;
+    boolean bool = false;
+    if (this.rOP.getWePkgPlugin() != null) {
+      bool = this.rOP.getWePkgPlugin().BHg;
     }
-    if (System.currentTimeMillis() / 1000L - Dt > a.bFh())
-    {
-      ab.i("MicroMsg.LuggageGameUinKeyHolder", "updateTime bigger that one hour");
-      AppMethodBeat.o(135808);
-      return false;
-    }
-    ab.d("MicroMsg.LuggageGameUinKeyHolder", "hasValidCache");
-    AppMethodBeat.o(135808);
-    return true;
+    paramString = d.tw(bool);
+    AppMethodBeat.o(82986);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.b
  * JD-Core Version:    0.7.0.1
  */

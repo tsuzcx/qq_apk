@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ga
   extends b
 {
-  public ga.a cuu;
-  public ga.b cuv;
+  public a diX;
   
   public ga()
   {
@@ -16,12 +15,18 @@ public final class ga
   
   private ga(byte paramByte)
   {
-    AppMethodBeat.i(73665);
-    this.cuu = new ga.a();
-    this.cuv = new ga.b();
-    this.ymq = false;
+    AppMethodBeat.i(116026);
+    this.diX = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(73665);
+    AppMethodBeat.o(116026);
+  }
+  
+  public static final class a
+  {
+    public int diY;
+    public String fileName;
+    public int scene;
   }
 }
 

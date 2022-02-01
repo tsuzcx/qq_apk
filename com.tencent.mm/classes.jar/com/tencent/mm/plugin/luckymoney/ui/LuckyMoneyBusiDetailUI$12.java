@@ -8,18 +8,18 @@ final class LuckyMoneyBusiDetailUI$12
 {
   LuckyMoneyBusiDetailUI$12(LuckyMoneyBusiDetailUI paramLuckyMoneyBusiDetailUI) {}
   
-  public final void sJ(int paramInt)
+  public final void DK(int paramInt)
   {
-    AppMethodBeat.i(42594);
-    if ((paramInt == -2) && (LuckyMoneyBusiDetailUI.f(this.orQ).oxo)) {
-      LuckyMoneyBusiDetailUI.f(this.orQ).setModeClick(false);
+    AppMethodBeat.i(65461);
+    if ((paramInt == -2) && (LuckyMoneyBusiDetailUI.f(this.tkt).tqw)) {
+      LuckyMoneyBusiDetailUI.f(this.tkt).setModeClick(false);
     }
-    AppMethodBeat.o(42594);
+    AppMethodBeat.o(65461);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBusiDetailUI.12
  * JD-Core Version:    0.7.0.1
  */

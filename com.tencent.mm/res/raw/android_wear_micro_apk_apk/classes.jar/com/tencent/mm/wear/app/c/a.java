@@ -4,25 +4,25 @@ import android.widget.ImageView;
 
 public final class a
 {
-  public long acG;
-  public String acH;
-  public String acI;
-  public String acJ;
-  protected String acK;
-  public ImageView acL;
-  public int acM;
-  public int acN;
-  public int acO;
-  public long acP;
-  public int acQ;
-  public boolean acR;
+  public long agh;
+  public String agi;
+  public String agj;
+  public String agk;
+  protected String agl;
+  public ImageView agm;
+  public int agn;
+  public int ago;
+  public int agp;
+  public long agq;
+  public int agr;
+  public boolean ags;
   public int height;
   public int type;
   public int width;
   
   public final String toString()
   {
-    return "ImageRequest{type=" + this.type + ", msgId=" + this.acG + ", username='" + this.acH + '\'' + ", emojiProductId='" + this.acI + '\'' + ", emojiMd5='" + this.acJ + '\'' + ", cacheKey='" + this.acK + '\'' + ", width=" + this.width + ", height=" + this.height + ", defaultImageRes=" + this.acM + ", blurRadius=" + this.acN + ", roundRadius=" + this.acO + ", lastModified=" + this.acP + ", emojiType=" + this.acQ + ", hdImg=" + this.acR + '}';
+    return "ImageRequest{type=" + this.type + ", msgId=" + this.agh + ", username='" + this.agi + '\'' + ", emojiProductId='" + this.agj + '\'' + ", emojiMd5='" + this.agk + '\'' + ", cacheKey='" + this.agl + '\'' + ", width=" + this.width + ", height=" + this.height + ", defaultImageRes=" + this.agn + ", blurRadius=" + this.ago + ", roundRadius=" + this.agp + ", lastModified=" + this.agq + ", emojiType=" + this.agr + ", hdImg=" + this.ags + '}';
   }
 }
 

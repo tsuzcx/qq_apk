@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class pd
   extends b
 {
-  public pd.a cFL;
+  public a duJ;
   
   public pd()
   {
@@ -15,16 +15,24 @@ public final class pd
   
   private pd(byte paramByte)
   {
-    AppMethodBeat.i(94430);
-    this.cFL = new pd.a();
-    this.ymq = false;
+    AppMethodBeat.i(91214);
+    this.duJ = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(94430);
+    AppMethodBeat.o(91214);
+  }
+  
+  public static final class a
+  {
+    public long duG;
+    public String duK;
+    public String duk;
+    public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.pd
  * JD-Core Version:    0.7.0.1
  */

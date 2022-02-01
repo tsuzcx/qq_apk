@@ -19,18 +19,18 @@ public class MessengerCompat
   
   static
   {
-    AppMethodBeat.i(57527);
+    AppMethodBeat.i(2481);
     CREATOR = new zzq();
-    AppMethodBeat.o(57527);
+    AppMethodBeat.o(2481);
   }
   
   public MessengerCompat(IBinder paramIBinder)
   {
-    AppMethodBeat.i(57521);
+    AppMethodBeat.i(2475);
     if (Build.VERSION.SDK_INT >= 21)
     {
       this.zzab = new Messenger(paramIBinder);
-      AppMethodBeat.o(57521);
+      AppMethodBeat.o(2475);
       return;
     }
     if (paramIBinder == null) {
@@ -39,7 +39,7 @@ public class MessengerCompat
     for (;;)
     {
       this.zzby = paramIBinder;
-      AppMethodBeat.o(57521);
+      AppMethodBeat.o(2475);
       return;
       IInterface localIInterface = paramIBinder.queryLocalInterface("com.google.android.gms.iid.IMessengerCompat");
       if ((localIInterface instanceof zzl)) {
@@ -52,15 +52,15 @@ public class MessengerCompat
   
   private final IBinder getBinder()
   {
-    AppMethodBeat.i(57523);
+    AppMethodBeat.i(2477);
     if (this.zzab != null)
     {
       localIBinder = this.zzab.getBinder();
-      AppMethodBeat.o(57523);
+      AppMethodBeat.o(2477);
       return localIBinder;
     }
     IBinder localIBinder = this.zzby.asBinder();
-    AppMethodBeat.o(57523);
+    AppMethodBeat.o(2477);
     return localIBinder;
   }
   
@@ -71,57 +71,57 @@ public class MessengerCompat
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(57524);
+    AppMethodBeat.i(2478);
     if (paramObject == null)
     {
-      AppMethodBeat.o(57524);
+      AppMethodBeat.o(2478);
       return false;
     }
     try
     {
       boolean bool = getBinder().equals(((MessengerCompat)paramObject).getBinder());
-      AppMethodBeat.o(57524);
+      AppMethodBeat.o(2478);
       return bool;
     }
     catch (ClassCastException paramObject)
     {
-      AppMethodBeat.o(57524);
+      AppMethodBeat.o(2478);
     }
     return false;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(57525);
+    AppMethodBeat.i(2479);
     int i = getBinder().hashCode();
-    AppMethodBeat.o(57525);
+    AppMethodBeat.o(2479);
     return i;
   }
   
   public final void send(Message paramMessage)
   {
-    AppMethodBeat.i(57522);
+    AppMethodBeat.i(2476);
     if (this.zzab != null)
     {
       this.zzab.send(paramMessage);
-      AppMethodBeat.o(57522);
+      AppMethodBeat.o(2476);
       return;
     }
     this.zzby.send(paramMessage);
-    AppMethodBeat.o(57522);
+    AppMethodBeat.o(2476);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(57526);
+    AppMethodBeat.i(2480);
     if (this.zzab != null)
     {
       paramParcel.writeStrongBinder(this.zzab.getBinder());
-      AppMethodBeat.o(57526);
+      AppMethodBeat.o(2480);
       return;
     }
     paramParcel.writeStrongBinder(this.zzby.asBinder());
-    AppMethodBeat.o(57526);
+    AppMethodBeat.o(2480);
   }
 }
 

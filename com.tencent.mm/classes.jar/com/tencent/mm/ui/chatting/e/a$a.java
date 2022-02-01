@@ -4,40 +4,40 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.i;
-import com.tencent.mm.ui.chatting.i.c;
+import com.tencent.mm.ui.chatting.j.c;
 
 public abstract interface a$a
   extends c<a.b>
 {
-  public abstract String apc();
+  public abstract void Cu(int paramInt);
   
-  public abstract <T extends RecyclerView.i> T bgA();
+  public abstract void D(boolean paramBoolean, int paramInt);
   
-  public abstract RecyclerView.a bi(String paramString, long paramLong);
+  public abstract String aHv();
   
-  public abstract void byh();
+  public abstract <T extends RecyclerView.i> T bNL();
   
-  public abstract void byi();
+  public abstract RecyclerView.a cd(String paramString, long paramLong);
   
-  public abstract <T extends RecyclerView.a> T byo();
+  public abstract boolean cjJ();
   
-  public abstract boolean byp();
+  public abstract void cjK();
   
-  public abstract int dJK();
+  public abstract void cjL();
   
-  public abstract void dJL();
+  public abstract <T extends RecyclerView.a> T cjS();
   
-  public abstract RecyclerView.h dR(Context paramContext);
+  public abstract RecyclerView.h eC(Context paramContext);
+  
+  public abstract int eZe();
+  
+  public abstract void eZf();
   
   public abstract void onResume();
-  
-  public abstract void v(boolean paramBoolean, int paramInt);
-  
-  public abstract void wc(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.e.a.a
  * JD-Core Version:    0.7.0.1
  */

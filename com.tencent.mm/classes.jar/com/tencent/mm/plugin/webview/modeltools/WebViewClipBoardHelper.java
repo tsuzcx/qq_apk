@@ -6,78 +6,136 @@ import android.content.ClipboardManager;
 import android.content.ClipboardManager.OnPrimaryClipChangedListener;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.lang.ref.WeakReference;
 import java.nio.charset.Charset;
 
 public final class WebViewClipBoardHelper
   implements ClipboardManager.OnPrimaryClipChangedListener
 {
+  private WeakReference<WebViewUI> Bau;
   private long lastReportTime;
-  private WebViewUI uYn;
-  public ClipboardManager uYo;
   
   public WebViewClipBoardHelper(WebViewUI paramWebViewUI)
   {
-    AppMethodBeat.i(7019);
+    AppMethodBeat.i(79200);
     this.lastReportTime = 0L;
-    this.uYn = paramWebViewUI;
-    this.uYo = ((ClipboardManager)paramWebViewUI.getApplicationContext().getSystemService("clipboard"));
+    this.Bau = new WeakReference(paramWebViewUI);
+    paramWebViewUI = (ClipboardManager)paramWebViewUI.getApplicationContext().getSystemService("clipboard");
     try
     {
-      this.uYo.addPrimaryClipChangedListener(this);
-      AppMethodBeat.o(7019);
+      paramWebViewUI.addPrimaryClipChangedListener(this);
+      AppMethodBeat.o(79200);
       return;
     }
     catch (Exception paramWebViewUI)
     {
-      AppMethodBeat.o(7019);
+      AppMethodBeat.o(79200);
     }
   }
   
   public final void onPrimaryClipChanged()
   {
-    AppMethodBeat.i(7020);
+    AppMethodBeat.i(79201);
+    if (this.Bau.get() == null)
+    {
+      AppMethodBeat.o(79201);
+      return;
+    }
     long l = System.currentTimeMillis();
     if (l - this.lastReportTime < 200L)
     {
-      AppMethodBeat.o(7020);
+      AppMethodBeat.o(79201);
       return;
     }
     this.lastReportTime = l;
-    Object localObject = this.uYo.getPrimaryClip();
+    Object localObject = ((ClipboardManager)aj.getContext().getSystemService("clipboard")).getPrimaryClip();
     if (localObject == null)
     {
-      AppMethodBeat.o(7020);
+      AppMethodBeat.o(79201);
       return;
     }
     localObject = ((ClipData)localObject).getItemAt(0);
     if (localObject == null)
     {
-      AppMethodBeat.o(7020);
+      AppMethodBeat.o(79201);
       return;
     }
-    WebViewClipBoardHelper.ClipBoardDataWrapper localClipBoardDataWrapper = new WebViewClipBoardHelper.ClipBoardDataWrapper();
-    localClipBoardDataWrapper.url = this.uYn.dek();
-    if (bo.aa(((ClipData.Item)localObject).getText()))
+    ClipBoardDataWrapper localClipBoardDataWrapper = new ClipBoardDataWrapper();
+    localClipBoardDataWrapper.url = ((WebViewUI)this.Bau.get()).ejo();
+    if (bt.ai(((ClipData.Item)localObject).getText()))
     {
-      ab.w("MicroMsg.WebViewClipBoardHelper", "onPrimaryClipChanged text is null");
-      AppMethodBeat.o(7020);
+      ad.w("MicroMsg.WebViewClipBoardHelper", "onPrimaryClipChanged text is null");
+      AppMethodBeat.o(79201);
       return;
     }
     localClipBoardDataWrapper.length = ((ClipData.Item)localObject).getText().toString().getBytes(Charset.forName("UTF-8")).length;
-    localClipBoardDataWrapper.fromScene = this.uYn.getIntent().getIntExtra("from_scence", 0);
-    localClipBoardDataWrapper.username = this.uYn.getIntent().getStringExtra("geta8key_username");
-    XIPCInvoker.a("com.tencent.mm", localClipBoardDataWrapper, WebViewClipBoardHelper.a.class, null);
-    AppMethodBeat.o(7020);
+    localClipBoardDataWrapper.fromScene = ((WebViewUI)this.Bau.get()).getIntent().getIntExtra("from_scence", 0);
+    localClipBoardDataWrapper.username = ((WebViewUI)this.Bau.get()).getIntent().getStringExtra("geta8key_username");
+    XIPCInvoker.a("com.tencent.mm", localClipBoardDataWrapper, a.class, null);
+    AppMethodBeat.o(79201);
   }
+  
+  static final class ClipBoardDataWrapper
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<ClipBoardDataWrapper> CREATOR;
+    int fromScene;
+    int length;
+    String url;
+    String username;
+    
+    static
+    {
+      AppMethodBeat.i(79198);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(79198);
+    }
+    
+    ClipBoardDataWrapper() {}
+    
+    ClipBoardDataWrapper(Parcel paramParcel)
+    {
+      AppMethodBeat.i(79197);
+      this.url = paramParcel.readString();
+      this.length = paramParcel.readInt();
+      this.fromScene = paramParcel.readInt();
+      this.username = paramParcel.readString();
+      AppMethodBeat.o(79197);
+    }
+    
+    public final int describeContents()
+    {
+      return 0;
+    }
+    
+    public final void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(79196);
+      paramParcel.writeString(this.url);
+      paramParcel.writeInt(this.length);
+      paramParcel.writeInt(this.fromScene);
+      paramParcel.writeString(this.username);
+      AppMethodBeat.o(79196);
+    }
+  }
+  
+  static final class a
+    implements b<WebViewClipBoardHelper.ClipBoardDataWrapper, Object>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.modeltools.WebViewClipBoardHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -14,23 +14,37 @@ public class CameraEffectArguments
   
   static
   {
-    AppMethodBeat.i(97353);
-    CREATOR = new CameraEffectArguments.1();
-    AppMethodBeat.o(97353);
+    AppMethodBeat.i(8377);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final CameraEffectArguments createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(8359);
+        paramAnonymousParcel = new CameraEffectArguments(paramAnonymousParcel);
+        AppMethodBeat.o(8359);
+        return paramAnonymousParcel;
+      }
+      
+      public final CameraEffectArguments[] newArray(int paramAnonymousInt)
+      {
+        return new CameraEffectArguments[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(8377);
   }
   
   CameraEffectArguments(Parcel paramParcel)
   {
-    AppMethodBeat.i(97347);
+    AppMethodBeat.i(8371);
     this.params = paramParcel.readBundle(getClass().getClassLoader());
-    AppMethodBeat.o(97347);
+    AppMethodBeat.o(8371);
   }
   
   private CameraEffectArguments(Builder paramBuilder)
   {
-    AppMethodBeat.i(97346);
+    AppMethodBeat.i(8370);
     this.params = paramBuilder.params;
-    AppMethodBeat.o(97346);
+    AppMethodBeat.o(8370);
   }
   
   public int describeContents()
@@ -40,41 +54,41 @@ public class CameraEffectArguments
   
   public Object get(String paramString)
   {
-    AppMethodBeat.i(97350);
+    AppMethodBeat.i(8374);
     paramString = this.params.get(paramString);
-    AppMethodBeat.o(97350);
+    AppMethodBeat.o(8374);
     return paramString;
   }
   
   public String getString(String paramString)
   {
-    AppMethodBeat.i(97348);
+    AppMethodBeat.i(8372);
     paramString = this.params.getString(paramString);
-    AppMethodBeat.o(97348);
+    AppMethodBeat.o(8372);
     return paramString;
   }
   
   public String[] getStringArray(String paramString)
   {
-    AppMethodBeat.i(97349);
+    AppMethodBeat.i(8373);
     paramString = this.params.getStringArray(paramString);
-    AppMethodBeat.o(97349);
+    AppMethodBeat.o(8373);
     return paramString;
   }
   
   public Set<String> keySet()
   {
-    AppMethodBeat.i(97351);
+    AppMethodBeat.i(8375);
     Set localSet = this.params.keySet();
-    AppMethodBeat.o(97351);
+    AppMethodBeat.o(8375);
     return localSet;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(97352);
+    AppMethodBeat.i(8376);
     paramParcel.writeBundle(this.params);
-    AppMethodBeat.o(97352);
+    AppMethodBeat.o(8376);
   }
   
   public static class Builder
@@ -84,50 +98,50 @@ public class CameraEffectArguments
     
     public Builder()
     {
-      AppMethodBeat.i(97338);
+      AppMethodBeat.i(8362);
       this.params = new Bundle();
-      AppMethodBeat.o(97338);
+      AppMethodBeat.o(8362);
     }
     
     public CameraEffectArguments build()
     {
-      AppMethodBeat.i(97343);
+      AppMethodBeat.i(8367);
       CameraEffectArguments localCameraEffectArguments = new CameraEffectArguments(this, null);
-      AppMethodBeat.o(97343);
+      AppMethodBeat.o(8367);
       return localCameraEffectArguments;
     }
     
     public Builder putArgument(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(97339);
+      AppMethodBeat.i(8363);
       this.params.putString(paramString1, paramString2);
-      AppMethodBeat.o(97339);
+      AppMethodBeat.o(8363);
       return this;
     }
     
     public Builder putArgument(String paramString, String[] paramArrayOfString)
     {
-      AppMethodBeat.i(97340);
+      AppMethodBeat.i(8364);
       this.params.putStringArray(paramString, paramArrayOfString);
-      AppMethodBeat.o(97340);
+      AppMethodBeat.o(8364);
       return this;
     }
     
     public Builder readFrom(Parcel paramParcel)
     {
-      AppMethodBeat.i(97342);
+      AppMethodBeat.i(8366);
       paramParcel = readFrom((CameraEffectArguments)paramParcel.readParcelable(CameraEffectArguments.class.getClassLoader()));
-      AppMethodBeat.o(97342);
+      AppMethodBeat.o(8366);
       return paramParcel;
     }
     
     public Builder readFrom(CameraEffectArguments paramCameraEffectArguments)
     {
-      AppMethodBeat.i(97341);
+      AppMethodBeat.i(8365);
       if (paramCameraEffectArguments != null) {
         this.params.putAll(paramCameraEffectArguments.params);
       }
-      AppMethodBeat.o(97341);
+      AppMethodBeat.o(8365);
       return this;
     }
   }

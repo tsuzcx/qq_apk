@@ -10,10 +10,10 @@ public class WeChatSplashFallbackActivity
 {
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(137977);
+    AppMethodBeat.i(160094);
     super.onCreate(paramBundle);
-    setContentView(2130971311);
-    AppMethodBeat.o(137977);
+    setContentView(2131496094);
+    AppMethodBeat.o(160094);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

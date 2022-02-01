@@ -8,6 +8,17 @@ import android.widget.ImageView;
 
 public final class l
 {
+  public static ColorStateList a(ImageView paramImageView)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      return paramImageView.getImageTintList();
+    }
+    if ((paramImageView instanceof s)) {
+      return ((s)paramImageView).getSupportImageTintList();
+    }
+    return null;
+  }
+  
   public static void a(ImageView paramImageView, ColorStateList paramColorStateList)
   {
     if (Build.VERSION.SDK_INT >= 21)
@@ -72,18 +83,7 @@ public final class l
     ((s)paramImageView).setSupportImageTintMode(paramMode);
   }
   
-  public static ColorStateList b(ImageView paramImageView)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return paramImageView.getImageTintList();
-    }
-    if ((paramImageView instanceof s)) {
-      return ((s)paramImageView).getSupportImageTintList();
-    }
-    return null;
-  }
-  
-  public static PorterDuff.Mode c(ImageView paramImageView)
+  public static PorterDuff.Mode b(ImageView paramImageView)
   {
     if (Build.VERSION.SDK_INT >= 21) {
       return paramImageView.getImageTintMode();

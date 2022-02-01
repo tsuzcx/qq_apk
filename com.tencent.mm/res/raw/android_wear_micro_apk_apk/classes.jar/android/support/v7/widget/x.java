@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 public abstract class x
 {
-  private y ud = null;
-  private ArrayList<Object> ue = new ArrayList();
-  private long uf = 120L;
-  private long ug = 120L;
-  private long uh = 250L;
-  private long ui = 250L;
-  private boolean uj = true;
+  private y vT = null;
+  private ArrayList<Object> vU = new ArrayList();
+  private long vV = 120L;
+  private long vW = 120L;
+  private long vX = 250L;
+  private long vY = 250L;
+  private boolean vZ = true;
   
   final void a(y paramy)
   {
-    this.ud = paramy;
+    this.vT = paramy;
   }
   
   public abstract boolean a(an paraman);
@@ -27,65 +27,65 @@ public abstract class x
   
   public abstract void c(an paraman);
   
-  public abstract void cG();
+  public abstract void cO();
   
-  public abstract void cI();
+  public abstract void cQ();
   
-  public final long dG()
+  public final long dU()
   {
-    return this.uh;
+    return this.vX;
   }
   
-  public final long dH()
+  public final long dV()
   {
-    return this.uf;
+    return this.vV;
   }
   
-  public final long dI()
+  public final long dW()
   {
-    return this.ug;
+    return this.vW;
   }
   
-  public final long dJ()
+  public final long dX()
   {
-    return this.ui;
+    return this.vY;
   }
   
-  public final boolean dK()
+  public final boolean dY()
   {
-    return this.uj;
+    return this.vZ;
   }
   
-  public final void dL()
+  public final void dZ()
   {
-    int j = this.ue.size();
+    int j = this.vU.size();
     int i = 0;
     while (i < j)
     {
-      this.ue.get(i);
+      this.vU.get(i);
       i += 1;
     }
-    this.ue.clear();
+    this.vU.clear();
   }
   
   public final void g(an paraman)
   {
-    if (this.ud != null) {
-      this.ud.k(paraman);
+    if (this.vT != null) {
+      this.vT.k(paraman);
     }
   }
   
   public final void h(an paraman)
   {
-    if (this.ud != null) {
-      this.ud.m(paraman);
+    if (this.vT != null) {
+      this.vT.m(paraman);
     }
   }
   
   public final void i(an paraman)
   {
-    if (this.ud != null) {
-      this.ud.l(paraman);
+    if (this.vT != null) {
+      this.vT.l(paraman);
     }
   }
   
@@ -93,8 +93,8 @@ public abstract class x
   
   public final void j(an paraman)
   {
-    if (this.ud != null) {
-      this.ud.n(paraman);
+    if (this.vT != null) {
+      this.vT.n(paraman);
     }
   }
 }

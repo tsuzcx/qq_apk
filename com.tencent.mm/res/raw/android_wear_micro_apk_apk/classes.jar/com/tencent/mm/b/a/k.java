@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.a.d;
 public final class k
   extends d
 {
-  public l Vf = new l();
+  public l WV = new l();
   
   public k()
   {
@@ -14,8 +14,8 @@ public final class k
   
   private k(byte paramByte)
   {
-    this.WQ = false;
-    this.WP = null;
+    this.YS = false;
+    this.YK = null;
   }
 }
 

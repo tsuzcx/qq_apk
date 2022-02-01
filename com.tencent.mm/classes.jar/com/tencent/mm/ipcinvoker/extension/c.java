@@ -10,74 +10,74 @@ import java.util.Map;
 
 public final class c
 {
-  private static List<a> eEG;
-  private static Map<String, a> eEH;
+  private static List<a> fZJ;
+  private static Map<String, a> fZK;
   
   static
   {
-    AppMethodBeat.i(114085);
-    eEG = new LinkedList();
-    eEH = new HashMap();
-    AppMethodBeat.o(114085);
+    AppMethodBeat.i(158796);
+    fZJ = new LinkedList();
+    fZK = new HashMap();
+    AppMethodBeat.o(158796);
   }
   
   public static Object a(String paramString, Parcel paramParcel)
   {
-    AppMethodBeat.i(114083);
-    paramString = (a)eEH.get(paramString);
+    AppMethodBeat.i(158794);
+    paramString = (a)fZK.get(paramString);
     if (paramString != null)
     {
-      paramString = paramString.d(paramParcel);
-      AppMethodBeat.o(114083);
+      paramString = paramString.c(paramParcel);
+      AppMethodBeat.o(158794);
       return paramString;
     }
-    AppMethodBeat.o(114083);
+    AppMethodBeat.o(158794);
     return null;
   }
   
   public static void a(a parama)
   {
-    AppMethodBeat.i(114084);
-    if ((parama == null) || (eEG.contains(parama)))
+    AppMethodBeat.i(158795);
+    if ((parama == null) || (fZJ.contains(parama)))
     {
-      AppMethodBeat.o(114084);
+      AppMethodBeat.o(158795);
       return;
     }
-    eEH.put(parama.getClass().getName(), parama);
-    eEG.add(parama);
-    AppMethodBeat.o(114084);
+    fZK.put(parama.getClass().getName(), parama);
+    fZJ.add(parama);
+    AppMethodBeat.o(158795);
   }
   
   public static void a(Object paramObject, Parcel paramParcel)
   {
-    AppMethodBeat.i(114082);
-    a locala = ag(paramObject);
+    AppMethodBeat.i(158793);
+    a locala = bi(paramObject);
     if (locala != null) {
       locala.a(paramObject, paramParcel);
     }
-    AppMethodBeat.o(114082);
+    AppMethodBeat.o(158793);
   }
   
-  public static a ag(Object paramObject)
+  public static a bi(Object paramObject)
   {
-    AppMethodBeat.i(114081);
-    Iterator localIterator = eEG.iterator();
+    AppMethodBeat.i(158792);
+    Iterator localIterator = fZJ.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      if (locala.af(paramObject))
+      if (locala.bh(paramObject))
       {
-        AppMethodBeat.o(114081);
+        AppMethodBeat.o(158792);
         return locala;
       }
     }
-    AppMethodBeat.o(114081);
+    AppMethodBeat.o(158792);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.extension.c
  * JD-Core Version:    0.7.0.1
  */

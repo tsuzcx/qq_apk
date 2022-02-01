@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/jn" android:paddingTop="@dimen/js" android:paddingRight="@dimen/jn" android:paddingBottom="@dimen/js" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:gravity="center" android:id="@id/d1b" android:layout_width="20.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/jn" />
+        <TextView android:id="@id/b4d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textIsSelectable="true" />
+    </LinearLayout>
+    <View android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

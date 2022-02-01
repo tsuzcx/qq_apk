@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.NumberPicker;
+import android.widget.NumberPicker.OnValueChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -14,296 +15,239 @@ import java.util.Locale;
 public class CustomDatePicker
   extends YADatePicker
 {
-  private boolean jsa;
-  private boolean jsb;
-  private NumberPicker jsc;
-  private NumberPicker jsd;
-  private NumberPicker jse;
-  private Date jsf;
-  private Date jsg;
-  private Calendar jsh;
-  private String[] jsi;
+  private boolean mhQ;
+  private boolean mhR;
+  private NumberPicker mhS;
+  private NumberPicker mhT;
+  private NumberPicker mhU;
+  private Date mhV;
+  private Date mhW;
+  private Calendar mhX;
+  private String[] mhY;
   
   public CustomDatePicker(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(112782);
-    this.jsa = true;
-    this.jsb = true;
+    AppMethodBeat.i(159492);
+    this.mhQ = true;
+    this.mhR = true;
     initView();
-    AppMethodBeat.o(112782);
+    AppMethodBeat.o(159492);
   }
   
   public CustomDatePicker(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(112783);
-    this.jsa = true;
-    this.jsb = true;
+    AppMethodBeat.i(159493);
+    this.mhQ = true;
+    this.mhR = true;
     initView();
-    AppMethodBeat.o(112783);
+    AppMethodBeat.o(159493);
   }
   
-  private void dPn()
+  private void ffW()
   {
-    AppMethodBeat.i(112785);
-    Drawable localDrawable = getResources().getDrawable(2130839945);
-    e.a(this.jsc, localDrawable);
-    e.a(this.jsd, localDrawable);
-    e.a(this.jse, localDrawable);
-    AppMethodBeat.o(112785);
+    AppMethodBeat.i(159495);
+    Drawable localDrawable = getResources().getDrawable(2131233617);
+    f.a(this.mhS, localDrawable);
+    f.a(this.mhT, localDrawable);
+    f.a(this.mhU, localDrawable);
+    AppMethodBeat.o(159495);
   }
   
   private void initView()
   {
-    AppMethodBeat.i(112784);
-    this.jsi = new String[12];
+    AppMethodBeat.i(159494);
+    this.mhY = new String[12];
     int i = 0;
-    while (i < this.jsi.length)
+    while (i < this.mhY.length)
     {
-      this.jsi[i] = (i + 1);
+      this.mhY[i] = (i + 1);
       i += 1;
     }
-    this.jsh = Calendar.getInstance(Locale.US);
+    this.mhX = Calendar.getInstance(Locale.US);
     setCalendarViewShown(false);
     setSpinnersShown(true);
-    this.jsc = ((YADatePicker.c)getUIDelegate()).AJv;
-    this.jsd = ((YADatePicker.c)getUIDelegate()).AJu;
-    this.jse = ((YADatePicker.c)getUIDelegate()).AJt;
-    dPn();
-    e.c(this.jsc);
-    e.c(this.jsd);
-    e.c(this.jse);
-    CustomDatePicker.1 local1 = new CustomDatePicker.1(this);
-    if (this.jsc != null)
+    this.mhS = ((YADatePicker.c)getUIDelegate()).HJX;
+    this.mhT = ((YADatePicker.c)getUIDelegate()).HJW;
+    this.mhU = ((YADatePicker.c)getUIDelegate()).HJV;
+    ffW();
+    f.d(this.mhS);
+    f.d(this.mhT);
+    f.d(this.mhU);
+    f.b(this.mhS, getResources().getColor(2131100711));
+    f.b(this.mhT, getResources().getColor(2131100711));
+    f.b(this.mhU, getResources().getColor(2131100711));
+    NumberPicker.OnValueChangeListener local1 = new NumberPicker.OnValueChangeListener()
     {
-      this.jsc.setOnValueChangedListener(local1);
-      this.jsc.setMinValue(1900);
+      public final void onValueChange(NumberPicker paramAnonymousNumberPicker, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(159491);
+        CustomDatePicker.a(CustomDatePicker.this);
+        AppMethodBeat.o(159491);
+      }
+    };
+    if (this.mhS != null)
+    {
+      this.mhS.setOnValueChangedListener(local1);
+      this.mhS.setMinValue(1900);
     }
-    if (this.jsd != null) {
-      this.jsd.setOnValueChangedListener(local1);
+    if (this.mhT != null) {
+      this.mhT.setOnValueChangedListener(local1);
     }
-    if (this.jse != null) {
-      this.jse.setOnValueChangedListener(local1);
+    if (this.mhU != null) {
+      this.mhU.setOnValueChangedListener(local1);
     }
-    aRQ();
-    e.e(this.jsc);
-    e.e(this.jsd);
-    e.e(this.jse);
-    AppMethodBeat.o(112784);
+    bui();
+    f.f(this.mhS);
+    f.f(this.mhT);
+    f.f(this.mhU);
+    AppMethodBeat.o(159494);
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, YADatePicker.d paramd)
   {
-    AppMethodBeat.i(112790);
+    AppMethodBeat.i(159500);
     super.a(paramInt1, Math.max(paramInt2 - 1, 0), paramInt3, paramd);
-    aRQ();
-    AppMethodBeat.o(112790);
+    bui();
+    AppMethodBeat.o(159500);
   }
   
-  final void aRQ()
+  public final void bui()
   {
     int j = 0;
-    AppMethodBeat.i(112786);
-    if ((this.jsc == null) || (this.jsd == null) || (this.jse == null))
+    AppMethodBeat.i(159496);
+    if ((this.mhS == null) || (this.mhT == null) || (this.mhU == null))
     {
-      AppMethodBeat.o(112786);
+      AppMethodBeat.o(159496);
       return;
     }
-    this.jsd.setDisplayedValues(null);
-    if ((this.jsc.getValue() == this.jsc.getMaxValue()) && (this.jsg != null))
+    this.mhT.setDisplayedValues(null);
+    if ((this.mhS.getValue() == this.mhS.getMaxValue()) && (this.mhW != null))
     {
-      this.jsd.setMaxValue(this.jsg.getMonth());
-      if ((this.jsd.getValue() != this.jsd.getMaxValue()) || (this.jsg == null)) {
+      this.mhT.setMaxValue(this.mhW.getMonth());
+      if ((this.mhT.getValue() != this.mhT.getMaxValue()) || (this.mhW == null)) {
         break label333;
       }
-      this.jse.setMaxValue(this.jsg.getDate());
+      this.mhU.setMaxValue(this.mhW.getDate());
       i = 1;
       if (i == 0)
       {
-        i = this.jsc.getValue();
-        int k = this.jsd.getValue();
-        this.jsh.set(i, k, 1);
-        i = this.jsh.getActualMaximum(5);
-        this.jse.setMaxValue(i);
+        i = this.mhS.getValue();
+        int k = this.mhT.getValue();
+        this.mhX.set(i, k, 1);
+        i = this.mhX.getActualMaximum(5);
+        this.mhU.setMaxValue(i);
       }
-      if ((this.jsc.getValue() != this.jsc.getMinValue()) || (this.jsf == null)) {
+      if ((this.mhS.getValue() != this.mhS.getMinValue()) || (this.mhV == null)) {
         break label338;
       }
-      this.jsd.setMinValue(this.jsf.getMonth());
+      this.mhT.setMinValue(this.mhV.getMonth());
       i = j;
-      if (this.jsd.getValue() == this.jsd.getMinValue())
+      if (this.mhT.getValue() == this.mhT.getMinValue())
       {
         i = j;
-        if (this.jsf != null) {
-          this.jse.setMinValue(this.jsf.getDate());
+        if (this.mhV != null) {
+          this.mhU.setMinValue(this.mhV.getDate());
         }
       }
     }
     for (int i = 1;; i = j)
     {
       if (i == 0) {
-        this.jse.setMinValue(1);
+        this.mhU.setMinValue(1);
       }
-      this.jsd.setDisplayedValues((String[])Arrays.copyOfRange(this.jsi, this.jsd.getMinValue(), this.jsd.getMaxValue() + 1));
-      this.jsc.setWrapSelectorWheel(true);
-      this.jsd.setWrapSelectorWheel(true);
-      this.jse.setWrapSelectorWheel(true);
-      AppMethodBeat.o(112786);
+      this.mhT.setDisplayedValues((String[])Arrays.copyOfRange(this.mhY, this.mhT.getMinValue(), this.mhT.getMaxValue() + 1));
+      this.mhS.setWrapSelectorWheel(true);
+      this.mhT.setWrapSelectorWheel(true);
+      this.mhU.setWrapSelectorWheel(true);
+      AppMethodBeat.o(159496);
       return;
-      this.jsd.setMaxValue(11);
+      this.mhT.setMaxValue(11);
       label333:
       i = 0;
       break;
       label338:
-      this.jsd.setMinValue(0);
+      this.mhT.setMinValue(0);
     }
-  }
-  
-  public final String aRR()
-  {
-    AppMethodBeat.i(139659);
-    if (this.jsb)
-    {
-      str = String.format(Locale.US, "%04d-%02d-%02d", new Object[] { Integer.valueOf(getYear()), Integer.valueOf(getMonth()), Integer.valueOf(getDayOfMonth()) });
-      AppMethodBeat.o(139659);
-      return str;
-    }
-    if (this.jsa)
-    {
-      str = String.format(Locale.US, "%04d-%02d", new Object[] { Integer.valueOf(getYear()), Integer.valueOf(getMonth()) });
-      AppMethodBeat.o(139659);
-      return str;
-    }
-    String str = String.format(Locale.US, "%04d", new Object[] { Integer.valueOf(getYear()) });
-    AppMethodBeat.o(139659);
-    return str;
-  }
-  
-  public final void am(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int j = 0;
-    AppMethodBeat.i(112795);
-    this.jsa = paramBoolean1;
-    this.jsb = paramBoolean2;
-    if (this.jsc != null)
-    {
-      this.jsc.setEnabled(true);
-      this.jsc.setVisibility(0);
-    }
-    NumberPicker localNumberPicker;
-    if (this.jsd != null)
-    {
-      this.jsd.setEnabled(paramBoolean1);
-      localNumberPicker = this.jsd;
-      if (paramBoolean1)
-      {
-        i = 0;
-        localNumberPicker.setVisibility(i);
-      }
-    }
-    else if (this.jse != null)
-    {
-      this.jse.setEnabled(paramBoolean2);
-      localNumberPicker = this.jse;
-      if (!paramBoolean2) {
-        break label120;
-      }
-    }
-    label120:
-    for (int i = j;; i = 8)
-    {
-      localNumberPicker.setVisibility(i);
-      AppMethodBeat.o(112795);
-      return;
-      i = 8;
-      break;
-    }
-  }
-  
-  public final void az(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(112789);
-    a(paramInt1, paramInt2, paramInt3, null);
-    AppMethodBeat.o(112789);
   }
   
   public int getDayOfMonth()
   {
-    AppMethodBeat.i(112793);
-    if (this.jse != null)
+    AppMethodBeat.i(159503);
+    if (this.mhU != null)
     {
-      i = this.jse.getValue();
-      AppMethodBeat.o(112793);
+      i = this.mhU.getValue();
+      AppMethodBeat.o(159503);
       return i;
     }
     int i = super.getDayOfMonth();
-    AppMethodBeat.o(112793);
+    AppMethodBeat.o(159503);
     return i;
   }
   
   public int getMonth()
   {
-    AppMethodBeat.i(112792);
-    if (this.jsd != null) {}
-    for (int i = this.jsd.getValue() + 1;; i = super.getMonth() + 1)
+    AppMethodBeat.i(159502);
+    if (this.mhT != null) {}
+    for (int i = this.mhT.getValue() + 1;; i = super.getMonth() + 1)
     {
       i = Math.max(Math.min(i, 12), 0);
-      AppMethodBeat.o(112792);
+      AppMethodBeat.o(159502);
       return i;
     }
   }
   
   public int getYear()
   {
-    AppMethodBeat.i(112791);
-    if (this.jsc != null)
+    AppMethodBeat.i(159501);
+    if (this.mhS != null)
     {
-      i = this.jsc.getValue();
-      AppMethodBeat.o(112791);
+      i = this.mhS.getValue();
+      AppMethodBeat.o(159501);
       return i;
     }
     int i = super.getYear();
-    AppMethodBeat.o(112791);
+    AppMethodBeat.o(159501);
     return i;
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(112794);
+    AppMethodBeat.i(159504);
     super.onAttachedToWindow();
-    e.d(this.jsc);
-    e.d(this.jsd);
-    e.d(this.jse);
-    AppMethodBeat.o(112794);
+    f.e(this.mhS);
+    f.e(this.mhT);
+    f.e(this.mhU);
+    AppMethodBeat.o(159504);
   }
   
   public void setMaxDate(long paramLong)
   {
-    AppMethodBeat.i(112787);
+    AppMethodBeat.i(159497);
     super.setMaxDate(paramLong);
-    this.jsg = new Date(paramLong);
-    if (this.jsc != null) {
-      this.jsc.setMaxValue(this.jsg.getYear() + 1900);
+    this.mhW = new Date(paramLong);
+    if (this.mhS != null) {
+      this.mhS.setMaxValue(this.mhW.getYear() + 1900);
     }
-    aRQ();
-    AppMethodBeat.o(112787);
+    bui();
+    AppMethodBeat.o(159497);
   }
   
   public void setMinDate(long paramLong)
   {
-    AppMethodBeat.i(112788);
+    AppMethodBeat.i(159498);
     super.setMinDate(paramLong);
-    this.jsf = new Date(paramLong);
-    if (this.jsc != null) {
-      this.jsc.setMinValue(this.jsf.getYear() + 1900);
+    this.mhV = new Date(paramLong);
+    if (this.mhS != null) {
+      this.mhS.setMinValue(this.mhV.getYear() + 1900);
     }
-    AppMethodBeat.o(112788);
+    AppMethodBeat.o(159498);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.CustomDatePicker
  * JD-Core Version:    0.7.0.1
  */

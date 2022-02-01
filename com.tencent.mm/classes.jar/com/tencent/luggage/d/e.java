@@ -1,55 +1,97 @@
 package com.tencent.luggage.d;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class e
 {
-  protected i byI;
-  public g byJ;
-  protected e.a byK;
+  protected i bZY;
+  public g bZZ;
+  protected a caa;
   public Context mContext;
   
   public e(g paramg)
   {
     this.mContext = paramg.getContext();
-    this.byI = new i();
-    this.byJ = paramg;
+    this.bZY = new i();
+    this.bZZ = paramg;
   }
   
-  final void a(Animator paramAnimator, Runnable paramRunnable)
+  protected abstract View AN();
+  
+  final void AO()
   {
-    paramAnimator.addListener(new e.1(this, paramRunnable));
+    this.bZY.O(i.e.class);
+  }
+  
+  public final void AP()
+  {
+    onForeground();
+    this.bZY.O(i.d.class);
+  }
+  
+  final void AQ()
+  {
+    onBackground();
+    this.bZY.O(i.b.class);
+  }
+  
+  final boolean AR()
+  {
+    return (this.bZY.O(i.a.class)) || (onBackPressed());
+  }
+  
+  final void AS()
+  {
+    onDestroy();
+    this.bZY.O(i.c.class);
+  }
+  
+  final void a(Animator paramAnimator, final Runnable paramRunnable)
+  {
+    paramAnimator.addListener(new AnimatorListenerAdapter()
+    {
+      public final void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(140373);
+        if (paramRunnable != null) {
+          paramRunnable.run();
+        }
+        AppMethodBeat.o(140373);
+      }
+    });
     paramAnimator.start();
   }
   
-  public void a(e.a parama)
+  public void a(a parama)
   {
-    this.byK = parama;
+    this.caa = parama;
   }
   
-  abstract void destroy();
+  protected abstract void destroy();
   
-  final void f(Runnable paramRunnable)
+  public abstract void g(String paramString, Bundle paramBundle);
+  
+  public abstract View getContentView();
+  
+  final void h(Runnable paramRunnable)
   {
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(getContentView(), "translationX", new float[] { -(getContentView().getWidth() * 0.25F), 0.0F });
     localObjectAnimator.setDuration(250L);
     a(localObjectAnimator, paramRunnable);
   }
   
-  final void g(Runnable paramRunnable)
+  final void i(Runnable paramRunnable)
   {
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(getContentView(), "translationX", new float[] { 0.0F, getContentView().getWidth() });
     localObjectAnimator.setDuration(250L);
     a(localObjectAnimator, paramRunnable);
   }
-  
-  public abstract void g(String paramString, Bundle paramBundle);
-  
-  public abstract View getContentView();
   
   protected boolean onBackPressed()
   {
@@ -62,39 +104,21 @@ public abstract class e
   
   protected void onForeground() {}
   
-  protected abstract View tZ();
-  
-  final void ua()
+  public static class a
   {
-    this.byI.u(i.e.class);
-  }
-  
-  public final void ub()
-  {
-    onForeground();
-    this.byI.u(i.d.class);
-  }
-  
-  final void uc()
-  {
-    onBackground();
-    this.byI.u(i.b.class);
-  }
-  
-  final boolean ud()
-  {
-    return (this.byI.u(i.a.class)) || (onBackPressed());
-  }
-  
-  final void ue()
-  {
-    onDestroy();
-    this.byI.u(i.c.class);
+    protected a cac;
+    
+    public a() {}
+    
+    protected a(a parama)
+    {
+      this.cac = parama;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.d.e
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ final class FreeWifiFrontPageUI$7
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(20965);
-    d.cc(this.mND);
-    AppMethodBeat.o(20965);
+    AppMethodBeat.i(25024);
+    d.cv(this.rkv);
+    AppMethodBeat.o(25024);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.7
  * JD-Core Version:    0.7.0.1
  */

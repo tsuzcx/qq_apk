@@ -1,38 +1,24 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import com.tencent.tencentmap.mapsdk.maps.a.fn;
+import android.content.Context;
 
-public abstract class c
-  implements d
+public class c
 {
-  private cz a;
-  private cz b;
+  private static volatile Context a;
   
-  public abstract String a();
-  
-  protected String a(cz paramcz)
+  public static Context a()
   {
-    return paramcz.a + "," + paramcz.b;
+    return a;
   }
   
-  public boolean b()
+  public static void a(Context paramContext)
   {
-    return (this.a != null) && (this.b != null);
+    a = paramContext;
   }
-  
-  public fn c()
-  {
-    fn localfn = new fn();
-    localfn.a("from", a(this.a));
-    localfn.a("to", a(this.b));
-    return localfn;
-  }
-  
-  public abstract Class<?> d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.c
  * JD-Core Version:    0.7.0.1
  */

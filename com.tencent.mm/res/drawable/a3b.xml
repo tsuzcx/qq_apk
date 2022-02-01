@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/sos_clear_pressed" />
-    <item android:drawable="@raw/sos_clear" />
-</selector>
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="#00ffffff" />
+        </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape>
+                <solid android:color="@color/a_j" />
+            </shape>
+        </clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="@color/a_j" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

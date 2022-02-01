@@ -8,28 +8,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class s$g
   implements View.OnTouchListener
 {
-  private int[] zzX;
+  private int[] Gok;
   
   public s$g()
   {
-    AppMethodBeat.i(30724);
-    this.zzX = new int[2];
-    AppMethodBeat.o(30724);
+    AppMethodBeat.i(34598);
+    this.Gok = new int[2];
+    AppMethodBeat.o(34598);
   }
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(30725);
+    AppMethodBeat.i(34599);
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(30725);
+      AppMethodBeat.o(34599);
       return false;
-      this.zzX[0] = ((int)paramMotionEvent.getRawX());
-      this.zzX[1] = ((int)paramMotionEvent.getRawY());
-      paramView.setTag(2131820681, this.zzX);
+      this.Gok[0] = ((int)paramMotionEvent.getRawX());
+      this.Gok[1] = ((int)paramMotionEvent.getRawY());
+      paramView.setTag(2131306044, this.Gok);
     }
   }
 }

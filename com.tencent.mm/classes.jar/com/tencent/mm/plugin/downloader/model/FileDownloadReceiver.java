@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 @JgClassChecked(author=20, fComment="checked", lastDate="20150202", reviewer=20, vComment={com.jg.EType.RECEIVERCHECK})
 public class FileDownloadReceiver
@@ -14,22 +14,22 @@ public class FileDownloadReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(2440);
+    AppMethodBeat.i(89006);
     if ((paramContext == null) || (paramIntent == null))
     {
-      AppMethodBeat.o(2440);
+      AppMethodBeat.o(89006);
       return;
     }
     paramContext = paramIntent.getAction();
-    ab.i("MicroMsg.FileDownloadReceiver", paramContext);
-    if (bo.isNullOrNil(paramContext))
+    ad.i("MicroMsg.FileDownloadReceiver", paramContext);
+    if (bt.isNullOrNil(paramContext))
     {
-      ab.e("MicroMsg.FileDownloadReceiver", "action is null or nill, ignore");
-      AppMethodBeat.o(2440);
+      ad.e("MicroMsg.FileDownloadReceiver", "action is null or nill, ignore");
+      AppMethodBeat.o(89006);
       return;
     }
     paramContext.equals("android.intent.action.DOWNLOAD_COMPLETE");
-    AppMethodBeat.o(2440);
+    AppMethodBeat.o(89006);
   }
 }
 

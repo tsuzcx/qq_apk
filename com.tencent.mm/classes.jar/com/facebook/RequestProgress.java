@@ -14,21 +14,21 @@ class RequestProgress
   
   RequestProgress(Handler paramHandler, GraphRequest paramGraphRequest)
   {
-    AppMethodBeat.i(71848);
+    AppMethodBeat.i(17284);
     this.request = paramGraphRequest;
     this.callbackHandler = paramHandler;
     this.threshold = FacebookSdk.getOnProgressThreshold();
-    AppMethodBeat.o(71848);
+    AppMethodBeat.o(17284);
   }
   
   void addProgress(long paramLong)
   {
-    AppMethodBeat.i(71849);
+    AppMethodBeat.i(17285);
     this.progress += paramLong;
     if ((this.progress >= this.lastReportedProgress + this.threshold) || (this.progress >= this.maxProgress)) {
       reportProgress();
     }
-    AppMethodBeat.o(71849);
+    AppMethodBeat.o(17285);
   }
   
   void addToMax(long paramLong)
@@ -48,9 +48,9 @@ class RequestProgress
   
   void reportProgress()
   {
-    AppMethodBeat.i(71850);
+    AppMethodBeat.i(17286);
     Object localObject;
-    long l1;
+    final long l1;
     long l2;
     if (this.progress > this.lastReportedProgress)
     {
@@ -61,7 +61,7 @@ class RequestProgress
         l2 = this.maxProgress;
         localObject = (GraphRequest.OnProgressCallback)localObject;
         if (this.callbackHandler != null) {
-          break label90;
+          break label92;
         }
         ((GraphRequest.OnProgressCallback)localObject).onProgress(l1, l2);
       }
@@ -69,16 +69,24 @@ class RequestProgress
     for (;;)
     {
       this.lastReportedProgress = this.progress;
-      AppMethodBeat.o(71850);
+      AppMethodBeat.o(17286);
       return;
-      label90:
-      this.callbackHandler.post(new RequestProgress.1(this, (GraphRequest.OnProgressCallback)localObject, l1, l2));
+      label92:
+      this.callbackHandler.post(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(17283);
+          this.val$callbackCopy.onProgress(l1, this.val$maxProgressCopy);
+          AppMethodBeat.o(17283);
+        }
+      });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.RequestProgress
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class md
   extends b
 {
-  public md.a cCj;
+  public a dro;
   
   public md()
   {
@@ -15,16 +15,21 @@ public final class md
   
   private md(byte paramByte)
   {
-    AppMethodBeat.i(77555);
-    this.cCj = new md.a();
-    this.ymq = false;
+    AppMethodBeat.i(116035);
+    this.dro = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77555);
+    AppMethodBeat.o(116035);
+  }
+  
+  public static final class a
+  {
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.md
  * JD-Core Version:    0.7.0.1
  */

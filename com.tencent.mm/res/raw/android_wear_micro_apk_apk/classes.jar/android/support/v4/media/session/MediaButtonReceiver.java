@@ -37,7 +37,7 @@ public class MediaButtonReceiver
   {
     if ((paramIntent == null) || (!"android.intent.action.MEDIA_BUTTON".equals(paramIntent.getAction())) || (!paramIntent.hasExtra("android.intent.extra.KEY_EVENT")))
     {
-      Log.d("MediaButtonReceiver", "Ignore unsupported intent: " + paramIntent);
+      Log.d("MediaButtonReceiver", "Ignore unsupported intent: ".concat(String.valueOf(paramIntent)));
       return;
     }
     ComponentName localComponentName = d(paramContext, "android.intent.action.MEDIA_BUTTON");

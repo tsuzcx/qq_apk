@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:paddingTop="@dimen/hj" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/gx" android:textColor="@color/km" android:gravity="center_horizontal" android:id="@id/f1o" android:background="@drawable/afj" android:paddingBottom="@dimen/d" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <Button android:id="@id/f1p" android:layout_marginTop="@dimen/h" android:layout_marginBottom="@dimen/h" android:minWidth="@dimen/jj" android:text="@string/bnc" style="@style/oa" />
+    <TextView android:textSize="@dimen/gx" android:textColor="@color/km" android:gravity="center_horizontal" android:id="@id/f1t" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.emoji.ui.v2.DonorsAvatarView android:layout_gravity="center" android:id="@id/f1n" android:paddingTop="@dimen/h" android:paddingBottom="@dimen/h3" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

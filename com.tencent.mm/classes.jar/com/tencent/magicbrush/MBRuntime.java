@@ -1,99 +1,90 @@
 package com.tencent.magicbrush;
 
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.Keep;
+import android.view.Surface;
+import com.github.henryye.nativeiv.BaseImageDecodeService;
+import com.github.henryye.nativeiv.ImageDecodeConfig;
+import com.github.henryye.nativeiv.api.IImageDecodeService;
+import com.github.henryye.nativeiv.api.IImageDecodeService.c;
 import com.tencent.magicbrush.a.c.c;
-import com.tencent.magicbrush.c.a.b;
-import com.tencent.magicbrush.c.g;
-import com.tencent.magicbrush.d.c;
 import com.tencent.magicbrush.handler.JsTouchEventHandler.a;
-import com.tencent.magicbrush.handler.MBCanvasHandler;
-import com.tencent.magicbrush.handler.MBJsThreadHandler;
+import com.tencent.magicbrush.handler.fs.IMBFileSystem;
 import com.tencent.magicbrush.handler.glfont.IMBFontHandler;
 import com.tencent.magicbrush.handler.glfont.h;
-import com.tencent.magicbrush.handler.image.IMBImageHandler;
-import com.tencent.magicbrush.handler.image.IMBImageHandler.a;
+import com.tencent.magicbrush.internal.EventDispatcher;
+import com.tencent.magicbrush.ui.MBViewManager;
+import com.tencent.magicbrush.ui.MagicBrushView;
+import com.tencent.magicbrush.ui.a.b;
+import com.tencent.magicbrush.utils.e;
+import com.tencent.magicbrush.utils.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import d.g.b.k;
+import java.util.Arrays;
+import java.util.concurrent.FutureTask;
 
-@Keep
-public class MBRuntime
+public abstract class MBRuntime
 {
-  private static final String TAG = "MicroMsg.MagicBrush.MBRuntime";
-  private int __filed_touchJava;
-  protected com.tencent.magicbrush.c.a mAnimationFrameHandler;
-  private final MBCanvasHandler mCanvasHandler;
-  private MBRuntime.IMBEventListener mClientEventListener;
-  private IMBFontHandler mFontHandler;
-  private IMBImageHandler mImageHandler;
-  private volatile MBJsThreadHandler mJsThreadHandler;
-  private ConcurrentLinkedQueue<MBRuntime.IMBEventListener> mListenerQueue;
-  public volatile long mNativeInst;
-  private MBParams mParams;
-  private volatile int mScreenCanvasId;
-  private volatile int mSystemDisplayHeight;
-  private volatile int mSystemDisplayWidth;
-  private boolean mainThreadWaitingFlag;
-  private a mbInspector;
-  private g mbView;
+  public c cem = new c(this);
+  protected MBParams coI;
+  private a coJ = null;
+  protected IMBFileSystem coK = null;
+  protected BaseImageDecodeService coL = null;
+  protected IMBFontHandler coM = null;
+  public com.tencent.magicbrush.handler.b coN = null;
+  public volatile com.tencent.magicbrush.handler.c coO;
+  protected com.tencent.magicbrush.ui.a coP;
+  private int coQ = 0;
+  protected volatile long mNativeInst;
   
-  static
-  {
-    AppMethodBeat.i(115838);
-    com.tencent.magicbrush.a.b.loadLibraries();
-    AppMethodBeat.o(115838);
-  }
+  static {}
   
-  public MBRuntime(MBParams paramMBParams)
+  private static void hc(int paramInt)
   {
-    AppMethodBeat.i(115804);
-    this.mainThreadWaitingFlag = false;
-    this.mImageHandler = null;
-    this.mFontHandler = null;
-    this.mListenerQueue = null;
-    this.mClientEventListener = null;
-    this.mSystemDisplayWidth = 0;
-    this.mSystemDisplayHeight = 0;
-    this.mScreenCanvasId = -1;
-    this.mbInspector = new a(this);
-    this.__filed_touchJava = 0;
-    this.mParams = paramMBParams;
-    if ((this.mParams.device_pixel_ratio_ <= 0.0D) || (this.mParams.screen_width_ <= 0) || (this.mParams.screen_height_ <= 0))
-    {
-      paramMBParams = new IllegalArgumentException("MBRuntime can only accept positive screen.");
-      AppMethodBeat.o(115804);
-      throw paramMBParams;
+    if (paramInt < 0) {
+      throw new IllegalArgumentException("windowId < 0");
     }
-    if ((this.mParams.gc_factor < 0.0F) || (this.mParams.gc_factor > 1.0F))
-    {
-      paramMBParams = new IllegalArgumentException("MBRuntime gc_factor can only accept [0, 1].");
-      AppMethodBeat.o(115804);
-      throw paramMBParams;
-    }
-    this.mNativeInst = nativeCreate(this.mParams);
-    this.mClientEventListener = new MBRuntime.b(this, (byte)0);
-    nativeSetEventListener(this.mNativeInst, this.mClientEventListener);
-    this.mCanvasHandler = new MBCanvasHandler(this, this.mNativeInst);
-    AppMethodBeat.o(115804);
   }
   
-  @Keep
-  private Bitmap captureScreen(Bitmap paramBitmap)
+  private boolean m(final Runnable paramRunnable)
   {
-    AppMethodBeat.i(115828);
-    paramBitmap = getCanvasHandler().a(paramBitmap, true);
-    AppMethodBeat.o(115828);
-    return paramBitmap;
+    if (this.mNativeInst == 0L) {}
+    com.tencent.magicbrush.handler.c localc;
+    do
+    {
+      return false;
+      localc = this.coO;
+    } while (localc == null);
+    localc.a(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139943);
+        if (MBRuntime.this.mNativeInst == 0L)
+        {
+          AppMethodBeat.o(139943);
+          return;
+        }
+        paramRunnable.run();
+        AppMethodBeat.o(139943);
+      }
+    }, true);
+    return true;
   }
   
-  private native void nativeBindTo(long paramLong1, long paramLong2, long paramLong3);
-  
-  private native long nativeCreate(MBParams paramMBParams);
-  
-  private native void nativeDebug(long paramLong, int paramInt);
-  
-  private native void nativeDestroy(long paramLong);
+  private boolean n(Runnable paramRunnable)
+  {
+    paramRunnable = new e(paramRunnable);
+    if (!m(paramRunnable)) {
+      return false;
+    }
+    paramRunnable.aR(3000L);
+    return paramRunnable.cgx.isDone();
+  }
   
   private native int[] nativeGetCanvasSize(long paramLong, int paramInt);
   
@@ -101,423 +92,510 @@ public class MBRuntime
   
   private native int nativeGetJsThreadTid(long paramLong);
   
-  private native void nativeInit(long paramLong);
+  private native void nativeMarkNeedCallbackBeforeSwapThisFrame(long paramLong);
   
-  private native void nativeNotifyAnimationFrame(long paramLong, double paramDouble);
+  private native void nativeRequestV8GarbageCollectionForTest(long paramLong);
   
-  private native void nativeNotifyImageDecoded(long paramLong, String paramString, Object paramObject);
+  private native void nativeRunOnJsThread(long paramLong, int paramInt);
   
-  private native void nativeNotifyTouchEvent(long paramLong1, long paramLong2);
-  
-  private native void nativeNotifyWindowAvailable(long paramLong, SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2);
-  
-  private native void nativeNotifyWindowChanged(long paramLong, SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2);
-  
-  private native void nativeNotifyWindowDestroyed(long paramLong);
-  
-  private native void nativePause(long paramLong);
-  
-  private native void nativeResetScreenCanvasFlag(long paramLong);
-  
-  private native void nativeResume(long paramLong);
-  
-  private native void nativeSetEventListener(long paramLong, MBRuntime.IMBEventListener paramIMBEventListener);
-  
-  private native void nativeSetFontHandler(long paramLong, IMBFontHandler paramIMBFontHandler);
-  
-  private native void nativeSetImageHandler(long paramLong, IMBImageHandler paramIMBImageHandler);
-  
-  private native void nativeSetJsThreadHandler(long paramLong1, long paramLong2);
-  
-  private native void nativeSetUserPreferredFps(long paramLong, double paramDouble);
-  
-  private void resetJavaClientRes()
+  protected final void FY()
   {
-    AppMethodBeat.i(115817);
-    if (this.mListenerQueue != null)
-    {
-      this.mListenerQueue.clear();
-      this.mListenerQueue = null;
+    if (this.coI.enable_request_animation_frame) {
+      this.coP = com.tencent.magicbrush.ui.a.a(this, this.coO, this.coI.animationFrameHandlerStrategy);
     }
-    this.mClientEventListener = null;
-    this.mImageHandler = null;
-    this.mFontHandler = null;
-    AppMethodBeat.o(115817);
-  }
-  
-  @Keep
-  private void touchJava()
-  {
-    this.__filed_touchJava += 1;
-  }
-  
-  public void bindTo(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(115806);
-    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.BindTo", new Object[0]);
-    if (this.mNativeInst == 0L)
+    if (this.coM == null)
     {
-      AppMethodBeat.o(115806);
-      return;
+      this.coM = new h();
+      nativeSetFontHandler(this.mNativeInst, this.coM);
     }
-    MBJsThreadHandler localMBJsThreadHandler = this.mJsThreadHandler;
-    if (localMBJsThreadHandler == null)
-    {
-      AppMethodBeat.o(115806);
-      return;
+    if (this.coO == null) {
+      throw new IllegalStateException("[MBRuntime] JsThreadHandler not registered.");
     }
-    localMBJsThreadHandler.i(new MBRuntime.1(this, paramLong1, paramLong2));
-    AppMethodBeat.o(115806);
-  }
-  
-  public void debug(int paramInt)
-  {
-    AppMethodBeat.i(115809);
-    nativeDebug(this.mNativeInst, paramInt);
-    AppMethodBeat.o(115809);
-  }
-  
-  /* Error */
-  public void destroy()
-  {
-    // Byte code:
-    //   0: ldc_w 273
-    //   3: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc 20
-    //   8: ldc_w 275
-    //   11: iconst_0
-    //   12: anewarray 4	java/lang/Object
-    //   15: invokestatic 256	com/tencent/magicbrush/a/c$c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   18: aload_0
-    //   19: getfield 129	com/tencent/magicbrush/MBRuntime:mNativeInst	J
-    //   22: lconst_0
-    //   23: lcmp
-    //   24: ifne +22 -> 46
-    //   27: ldc 20
-    //   29: ldc_w 277
-    //   32: iconst_0
-    //   33: anewarray 4	java/lang/Object
-    //   36: invokestatic 256	com/tencent/magicbrush/a/c$c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   39: ldc_w 273
-    //   42: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   45: return
-    //   46: invokestatic 283	java/lang/System:currentTimeMillis	()J
-    //   49: lstore_1
-    //   50: aload_0
-    //   51: monitorenter
-    //   52: aload_0
-    //   53: getfield 129	com/tencent/magicbrush/MBRuntime:mNativeInst	J
-    //   56: lconst_0
-    //   57: lcmp
-    //   58: ifne +35 -> 93
-    //   61: ldc 20
-    //   63: ldc_w 285
-    //   66: iconst_1
-    //   67: anewarray 4	java/lang/Object
-    //   70: dup
-    //   71: iconst_0
-    //   72: invokestatic 283	java/lang/System:currentTimeMillis	()J
-    //   75: lload_1
-    //   76: lsub
-    //   77: invokestatic 291	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   80: aastore
-    //   81: invokestatic 256	com/tencent/magicbrush/a/c$c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   84: aload_0
-    //   85: monitorexit
-    //   86: ldc_w 273
-    //   89: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   92: return
-    //   93: invokestatic 283	java/lang/System:currentTimeMillis	()J
-    //   96: lstore_3
-    //   97: aload_0
-    //   98: getfield 100	com/tencent/magicbrush/MBRuntime:mParams	Lcom/tencent/magicbrush/MBRuntime$MBParams;
-    //   101: getfield 294	com/tencent/magicbrush/MBRuntime$MBParams:enable_request_animation_frame	Z
-    //   104: ifeq +88 -> 192
-    //   107: aload_0
-    //   108: getfield 296	com/tencent/magicbrush/MBRuntime:mAnimationFrameHandler	Lcom/tencent/magicbrush/c/a;
-    //   111: astore 6
-    //   113: ldc_w 298
-    //   116: ldc_w 300
-    //   119: iconst_1
-    //   120: anewarray 4	java/lang/Object
-    //   123: dup
-    //   124: iconst_0
-    //   125: aload 6
-    //   127: invokevirtual 306	com/tencent/magicbrush/c/a:yx	()Lcom/tencent/magicbrush/c/a$b;
-    //   130: invokevirtual 312	com/tencent/magicbrush/c/a$b:name	()Ljava/lang/String;
-    //   133: aastore
-    //   134: invokestatic 256	com/tencent/magicbrush/a/c$c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   137: aload 6
-    //   139: getfield 316	com/tencent/magicbrush/c/a:bLl	Ljava/lang/Object;
-    //   142: astore 5
-    //   144: aload 5
-    //   146: monitorenter
-    //   147: aload 6
-    //   149: getfield 319	com/tencent/magicbrush/c/a:isRunning	Z
-    //   152: ifeq +32 -> 184
-    //   155: ldc_w 298
-    //   158: ldc_w 321
-    //   161: iconst_1
-    //   162: anewarray 4	java/lang/Object
-    //   165: dup
-    //   166: iconst_0
-    //   167: aload 6
-    //   169: invokevirtual 306	com/tencent/magicbrush/c/a:yx	()Lcom/tencent/magicbrush/c/a$b;
-    //   172: invokevirtual 312	com/tencent/magicbrush/c/a$b:name	()Ljava/lang/String;
-    //   175: aastore
-    //   176: invokestatic 256	com/tencent/magicbrush/a/c$c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   179: aload 6
-    //   181: invokevirtual 324	com/tencent/magicbrush/c/a:pause	()V
-    //   184: getstatic 330	a/y:BMg	La/y;
-    //   187: astore 6
-    //   189: aload 5
-    //   191: monitorexit
-    //   192: aload_0
-    //   193: aload_0
-    //   194: getfield 129	com/tencent/magicbrush/MBRuntime:mNativeInst	J
-    //   197: invokespecial 332	com/tencent/magicbrush/MBRuntime:nativeDestroy	(J)V
-    //   200: aload_0
-    //   201: aconst_null
-    //   202: putfield 258	com/tencent/magicbrush/MBRuntime:mJsThreadHandler	Lcom/tencent/magicbrush/handler/MBJsThreadHandler;
-    //   205: aload_0
-    //   206: invokespecial 334	com/tencent/magicbrush/MBRuntime:resetJavaClientRes	()V
-    //   209: aload_0
-    //   210: lconst_0
-    //   211: putfield 129	com/tencent/magicbrush/MBRuntime:mNativeInst	J
-    //   214: aload_0
-    //   215: aconst_null
-    //   216: putfield 336	com/tencent/magicbrush/MBRuntime:mbView	Lcom/tencent/magicbrush/c/g;
-    //   219: aload_0
-    //   220: monitorexit
-    //   221: ldc 20
-    //   223: ldc_w 338
-    //   226: iconst_2
-    //   227: anewarray 4	java/lang/Object
-    //   230: dup
-    //   231: iconst_0
-    //   232: invokestatic 283	java/lang/System:currentTimeMillis	()J
-    //   235: lload_1
-    //   236: lsub
-    //   237: invokestatic 291	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   240: aastore
-    //   241: dup
-    //   242: iconst_1
-    //   243: lload_3
-    //   244: lload_1
-    //   245: lsub
-    //   246: invokestatic 291	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   249: aastore
-    //   250: invokestatic 256	com/tencent/magicbrush/a/c$c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   253: ldc_w 273
-    //   256: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   259: return
-    //   260: astore 6
-    //   262: aload 5
-    //   264: monitorexit
-    //   265: ldc_w 273
-    //   268: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   271: aload 6
-    //   273: athrow
-    //   274: astore 5
-    //   276: aload_0
-    //   277: monitorexit
-    //   278: ldc_w 273
-    //   281: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   284: aload 5
-    //   286: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	287	0	this	MBRuntime
-    //   49	196	1	l1	long
-    //   96	148	3	l2	long
-    //   274	11	5	localObject2	Object
-    //   111	77	6	localObject3	Object
-    //   260	12	6	localObject4	Object
-    // Exception table:
-    //   from	to	target	type
-    //   147	184	260	finally
-    //   184	189	260	finally
-    //   52	86	274	finally
-    //   93	147	274	finally
-    //   189	192	274	finally
-    //   192	221	274	finally
-    //   262	274	274	finally
-    //   276	278	274	finally
-  }
-  
-  public MBCanvasHandler getCanvasHandler()
-  {
-    return this.mCanvasHandler;
-  }
-  
-  public int[] getCanvasSize(int paramInt)
-  {
-    AppMethodBeat.i(115824);
-    if (this.mNativeInst == 0L)
-    {
-      AppMethodBeat.o(115824);
-      return null;
+    if (this.coL == null) {
+      throw new IllegalStateException("[MBRuntime] ImageHandler not registered.");
     }
-    int[] arrayOfInt = nativeGetCanvasSize(this.mNativeInst, paramInt);
-    if ((arrayOfInt != null) && (arrayOfInt.length != 2))
-    {
-      AppMethodBeat.o(115824);
-      return null;
-    }
-    AppMethodBeat.o(115824);
-    return arrayOfInt;
-  }
-  
-  public a.a getCurrentFps()
-  {
-    AppMethodBeat.i(115820);
-    a.a locala = getInspector().getCurrentFps();
-    AppMethodBeat.o(115820);
-    return locala;
-  }
-  
-  public IMBFontHandler getFontHandler()
-  {
-    return this.mFontHandler;
-  }
-  
-  public int getGLThreadTid()
-  {
-    AppMethodBeat.i(115816);
-    if (this.mNativeInst == 0L)
-    {
-      AppMethodBeat.o(115816);
-      return 0;
-    }
-    try
-    {
-      if (this.mNativeInst == 0L) {
-        return 0;
-      }
-      int i = nativeGetGLThreadTid(this.mNativeInst);
-      return i;
-    }
-    finally
-    {
-      AppMethodBeat.o(115816);
-    }
-  }
-  
-  public IMBImageHandler getImageHandler()
-  {
-    return this.mImageHandler;
-  }
-  
-  public a getInspector()
-  {
-    return this.mbInspector;
-  }
-  
-  public MBJsThreadHandler getJsThreadHandler()
-  {
-    return this.mJsThreadHandler;
-  }
-  
-  public int getJsThreadTid()
-  {
-    AppMethodBeat.i(115815);
-    if (this.mNativeInst == 0L)
-    {
-      AppMethodBeat.o(115815);
-      return 0;
-    }
-    try
-    {
-      if (this.mNativeInst == 0L) {
-        return 0;
-      }
-      int i = nativeGetJsThreadTid(this.mNativeInst);
-      return i;
-    }
-    finally
-    {
-      AppMethodBeat.o(115815);
-    }
-  }
-  
-  public g getMBRuntimeView()
-  {
-    return this.mbView;
-  }
-  
-  public MBParams getParams()
-  {
-    return this.mParams;
-  }
-  
-  public int getScreenCanvasId()
-  {
-    return this.mScreenCanvasId;
-  }
-  
-  public int getSystemDisplayHeight()
-  {
-    return this.mSystemDisplayHeight;
-  }
-  
-  public int getSystemDisplayWidth()
-  {
-    return this.mSystemDisplayWidth;
-  }
-  
-  public void init()
-  {
-    AppMethodBeat.i(115805);
-    if (this.mParams.enable_request_animation_frame) {
-      this.mAnimationFrameHandler = com.tencent.magicbrush.c.a.a(this, this.mJsThreadHandler, getParams().animationFrameHandlerStrategy);
-    }
-    if (this.mFontHandler == null)
-    {
-      this.mFontHandler = new h();
-      nativeSetFontHandler(this.mNativeInst, this.mFontHandler);
-    }
-    if (this.mImageHandler == null)
-    {
-      this.mImageHandler = new com.tencent.magicbrush.handler.image.a(this, this.mJsThreadHandler);
-      nativeSetImageHandler(this.mNativeInst, this.mImageHandler);
-    }
-    IllegalStateException localIllegalStateException;
-    if (this.mJsThreadHandler == null)
-    {
-      localIllegalStateException = new IllegalStateException("[MBRuntime] JsThreadHandler not registered.");
-      AppMethodBeat.o(115805);
-      throw localIllegalStateException;
-    }
-    if (this.mImageHandler == null)
-    {
-      localIllegalStateException = new IllegalStateException("[MBRuntime] ImageHandler not registered.");
-      AppMethodBeat.o(115805);
-      throw localIllegalStateException;
-    }
-    if (this.mFontHandler == null)
-    {
-      localIllegalStateException = new IllegalStateException("[MBRuntime] FontHandler not registered.");
-      AppMethodBeat.o(115805);
-      throw localIllegalStateException;
+    if (this.coM == null) {
+      throw new IllegalStateException("[MBRuntime] FontHandler not registered.");
     }
     if (this.mNativeInst == 0L)
     {
       c.c.i("MicroMsg.MagicBrush.MBRuntime", "init. mNativeInst == 0", new Object[0]);
-      AppMethodBeat.o(115805);
       return;
     }
-    nativeInit(this.mNativeInst);
-    AppMethodBeat.o(115805);
+    l(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139940);
+        MBRuntime.this.nativeInit(MBRuntime.this.mNativeInst);
+        AppMethodBeat.o(139940);
+      }
+    });
+  }
+  
+  public final void FZ()
+  {
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.resume ", new Object[0]);
+    c localc = this.cem;
+    if (localc.handler == null)
+    {
+      localc.handler = new Handler(Looper.getMainLooper());
+      localc.handler.post(localc.cox);
+    }
+    m(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139946);
+        MBRuntime.this.nativeResume(MBRuntime.this.mNativeInst);
+        if (MBRuntime.this.coI.enable_request_animation_frame) {
+          MBRuntime.this.coP.resume();
+        }
+        AppMethodBeat.o(139946);
+      }
+    });
+  }
+  
+  public final void Ga()
+  {
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.pause ", new Object[0]);
+    this.cem.FN();
+    m(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139947);
+        if (MBRuntime.this.coI.enable_request_animation_frame) {
+          MBRuntime.this.coP.pause();
+        }
+        MBRuntime.this.nativePause(MBRuntime.this.mNativeInst);
+        AppMethodBeat.o(139947);
+      }
+    });
+  }
+  
+  public final void Gb()
+  {
+    if (this.mNativeInst == 0L) {}
+    com.tencent.magicbrush.handler.c localc;
+    do
+    {
+      return;
+      localc = this.coO;
+    } while (localc == null);
+    localc.a(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(193558);
+        if (MBRuntime.this.mNativeInst == 0L)
+        {
+          AppMethodBeat.o(193558);
+          return;
+        }
+        MBRuntime.a(MBRuntime.this, MBRuntime.this.mNativeInst);
+        AppMethodBeat.o(193558);
+      }
+    }, false);
+  }
+  
+  public final BaseImageDecodeService Gc()
+  {
+    return this.coL;
+  }
+  
+  public final IMBFontHandler Gd()
+  {
+    return this.coM;
+  }
+  
+  abstract b Ge();
+  
+  abstract MBViewManager Gf();
+  
+  public final MBParams Gg()
+  {
+    return this.coI;
+  }
+  
+  public final com.tencent.magicbrush.handler.c Gh()
+  {
+    return this.coO;
+  }
+  
+  public final void a(int paramInt, final long paramLong, final JsTouchEventHandler.a parama)
+  {
+    if (this.mNativeInst == 0L)
+    {
+      parama.aQ(paramLong);
+      return;
+    }
+    com.tencent.magicbrush.handler.c localc = this.coO;
+    if (localc == null)
+    {
+      parama.aQ(paramLong);
+      return;
+    }
+    localc.a(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139944);
+        if (MBRuntime.this.mNativeInst == 0L)
+        {
+          parama.aQ(paramLong);
+          AppMethodBeat.o(139944);
+          return;
+        }
+        MBRuntime.this.nativeNotifyTouchEvent(MBRuntime.this.mNativeInst, this.coS, paramLong);
+        AppMethodBeat.o(139944);
+      }
+    }, false);
+  }
+  
+  public final void a(final int paramInt, final SurfaceTexture paramSurfaceTexture)
+  {
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.notifyWindowDestroyed shouldDestroySync: %b", new Object[] { Boolean.TRUE });
+    if (this.mNativeInst == 0L) {
+      return;
+    }
+    hc(paramInt);
+    Runnable local2 = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139941);
+        if (MBRuntime.this.mNativeInst == 0L)
+        {
+          AppMethodBeat.o(139941);
+          return;
+        }
+        MBRuntime.this.nativeNotifyWindowDestroyed(MBRuntime.this.mNativeInst, paramInt);
+        if (paramSurfaceTexture == null)
+        {
+          c.c.printStackTrace("MicroMsg.MagicBrush.MBRuntime", new RuntimeException("Stub here!"), "hy: text is null, do not release. maybe released by other module", new Object[0]);
+          AppMethodBeat.o(139941);
+          return;
+        }
+        paramSurfaceTexture.release();
+        AppMethodBeat.o(139941);
+      }
+    };
+    boolean bool = this.coI.sync_surface_destroy;
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "[surface] destroy window(surfacetexture) param:true windowId:%d sync?%b %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool), paramSurfaceTexture });
+    if (bool) {
+      n(local2);
+    }
+    for (;;)
+    {
+      c.c.i("MicroMsg.MagicBrush.MBRuntime", "[surface] destroy window(surfacetexture) done. windowId:%d", new Object[] { Integer.valueOf(paramInt) });
+      return;
+      m(local2);
+    }
+  }
+  
+  public final void a(final int paramInt1, final SurfaceTexture paramSurfaceTexture, final int paramInt2, final int paramInt3)
+  {
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.notifyWindowChanged ", new Object[0]);
+    hc(paramInt1);
+    m(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139952);
+        if (paramSurfaceTexture == null)
+        {
+          c.c.printStackTrace("MicroMsg.MagicBrush.MBRuntime", new RuntimeException("Stub here!"), "hy: text is null, do not notifyWindowChanged. maybe released by other module", new Object[0]);
+          AppMethodBeat.o(139952);
+          return;
+        }
+        MBRuntime.this.nativeNotifyWindowChanged(MBRuntime.this.mNativeInst, paramInt1, paramSurfaceTexture, paramInt2, paramInt3);
+        AppMethodBeat.o(139952);
+      }
+    });
+  }
+  
+  public final void a(final int paramInt1, final SurfaceTexture paramSurfaceTexture, final int paramInt2, final int paramInt3, final boolean paramBoolean)
+  {
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.notifyWindowAvailable windowId:%d %s", new Object[] { Integer.valueOf(paramInt1), paramSurfaceTexture });
+    if (paramInt1 < 0) {
+      throw new IllegalArgumentException("windowId < 0");
+    }
+    m(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139948);
+        if (paramSurfaceTexture == null)
+        {
+          c.c.printStackTrace("MicroMsg.MagicBrush.MBRuntime", new RuntimeException("Stub here!"), "hy: text is null, do not notifyWindowAvailable. maybe released by other module", new Object[0]);
+          AppMethodBeat.o(139948);
+          return;
+        }
+        MBRuntime.this.nativeNotifyWindowAvailable(MBRuntime.this.mNativeInst, paramInt1, paramSurfaceTexture, paramInt2, paramInt3, paramBoolean);
+        AppMethodBeat.o(139948);
+      }
+    });
+  }
+  
+  public final void a(final int paramInt1, final Surface paramSurface, final int paramInt2, final int paramInt3)
+  {
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "hy: notifyWindowAvailable: %d, %d, %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if (paramSurface == null) {
+      throw new RuntimeException("surface == null");
+    }
+    m(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139951);
+        MBRuntime.this.nativeNotifyWindowAvailableForSurface(MBRuntime.this.mNativeInst, paramInt1, paramSurface, paramInt2, paramInt3);
+        AppMethodBeat.o(139951);
+      }
+    });
+  }
+  
+  public final void a(BaseImageDecodeService paramBaseImageDecodeService)
+  {
+    this.coL = paramBaseImageDecodeService;
+    nativeSetImageHandler(this.mNativeInst, paramBaseImageDecodeService);
+  }
+  
+  final void a(a parama)
+  {
+    this.coJ = parama;
+    nativeMarkNeedCallbackBeforeSwapThisFrame(this.mNativeInst);
+  }
+  
+  public final void a(com.tencent.magicbrush.handler.a parama)
+  {
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.set_jsthread_handler ", new Object[0]);
+    if (this.coO != null)
+    {
+      c.c.e("MicroMsg.MagicBrush.MBRuntime", "Why you set_jsthread_handler twice, unexpected behaviour.", new Object[0]);
+      return;
+    }
+    long l = this.mNativeInst;
+    this.coO = new com.tencent.magicbrush.handler.c(parama);
+  }
+  
+  public final void a(IMBFontHandler paramIMBFontHandler)
+  {
+    this.coM = paramIMBFontHandler;
+    nativeSetFontHandler(this.mNativeInst, paramIMBFontHandler);
+  }
+  
+  @Keep
+  protected void applyWindowAttributes(final int paramInt, final boolean paramBoolean)
+  {
+    f.runOnUiThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(175885);
+        MagicBrushView localMagicBrushView = MBRuntime.this.Gf().findOrNull(paramInt);
+        if (localMagicBrushView != null) {
+          if (paramBoolean) {
+            break label44;
+          }
+        }
+        label44:
+        for (boolean bool = true;; bool = false)
+        {
+          localMagicBrushView.setOpaque(bool);
+          AppMethodBeat.o(175885);
+          return;
+        }
+      }
+    });
+  }
+  
+  public final void b(final int paramInt1, final Surface paramSurface, final int paramInt2, final int paramInt3)
+  {
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.notifyWindowChanged Surface[%s] %d, %d", new Object[] { paramSurface, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    hc(paramInt1);
+    m(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139953);
+        if (paramSurface == null)
+        {
+          c.c.printStackTrace("MicroMsg.MagicBrush.MBRuntime", new RuntimeException("Stub here!"), "hy: text is null, do not notifyWindowChanged. maybe released by other module", new Object[0]);
+          AppMethodBeat.o(139953);
+          return;
+        }
+        MBRuntime.this.nativeNotifyWindowChangedForSurface(MBRuntime.this.mNativeInst, paramInt1, paramSurface, paramInt2, paramInt3);
+        AppMethodBeat.o(139953);
+      }
+    });
+  }
+  
+  public final void b(final String paramString, final Object paramObject, final IImageDecodeService.c paramc, final ImageDecodeConfig paramImageDecodeConfig)
+  {
+    if (this.mNativeInst == 0L)
+    {
+      paramc.Z(paramObject);
+      return;
+    }
+    com.tencent.magicbrush.handler.c localc = this.coO;
+    if (localc == null)
+    {
+      paramc.Z(paramObject);
+      return;
+    }
+    localc.a(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139945);
+        if (MBRuntime.this.mNativeInst == 0L)
+        {
+          paramc.Z(paramObject);
+          AppMethodBeat.o(139945);
+          return;
+        }
+        MBRuntime.this.nativeNotifyImageDecoded(MBRuntime.this.mNativeInst, paramString, paramObject, paramImageDecodeConfig);
+        AppMethodBeat.o(139945);
+      }
+    }, false);
+  }
+  
+  @Keep
+  protected void beforeSwap(boolean paramBoolean)
+  {
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "hy: beforeSwap! %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (this.coJ != null) {
+      this.coJ.beforeSwap(paramBoolean);
+    }
+  }
+  
+  @Keep
+  protected Bitmap captureScreen(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
+  {
+    Object localObject = Ge();
+    if ((paramInt2 > 0) && (paramInt3 > 0)) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      paramBitmap = String.format("captureScreenCanvas of [%d] [%d, %d]", Arrays.copyOf(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }, 3));
+      k.g(paramBitmap, "java.lang.String.format(this, *args)");
+      throw ((Throwable)new IllegalStateException(paramBitmap.toString()));
+    }
+    localObject = ((b)localObject).ha(paramInt1);
+    if (localObject == null) {
+      return null;
+    }
+    f localf = f.csP;
+    return (Bitmap)f.e((d.g.a.a)new b.d((MagicBrushView)localObject, paramInt2, paramInt3, paramBitmap));
+  }
+  
+  @Keep
+  protected void delayLoadLibrary(String paramString)
+  {
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "hy: delayLoadLibrary ".concat(String.valueOf(paramString)), new Object[0]);
+    com.tencent.magicbrush.a.b.loadLibrary(paramString);
+  }
+  
+  public void destroy()
+  {
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.destroy", new Object[0]);
+    this.cem.FN();
+    if (this.mNativeInst == 0L)
+    {
+      c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.destroy skip outside", new Object[0]);
+      return;
+    }
+    long l = System.currentTimeMillis();
+    try
+    {
+      if (this.mNativeInst == 0L)
+      {
+        c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.destroy skip inside, lock [%d]ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+        return;
+      }
+    }
+    finally {}
+    if (this.coI.enable_request_animation_frame) {
+      this.coP.destroy();
+    }
+    nativeDestroy(this.mNativeInst);
+    this.coO = null;
+    this.coL = null;
+    this.coM = null;
+    this.mNativeInst = 0L;
+  }
+  
+  public final void g(double paramDouble)
+  {
+    if (this.mNativeInst == 0L) {
+      return;
+    }
+    nativeNotifyAnimationFrame(this.mNativeInst, paramDouble);
+  }
+  
+  @Keep
+  protected String[] getAsyncableJsApis()
+  {
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "hy: trigger get asyncable jsapis", new Object[0]);
+    try
+    {
+      if (this.coN != null) {
+        return this.coN.getAsyncableJsApis();
+      }
+      c.c.e("MicroMsg.MagicBrush.MBRuntime", "hy: invoke handler not set!", new Object[0]);
+      return null;
+    }
+    catch (Throwable localThrowable)
+    {
+      c.c.printStackTrace("MicroMsg.MagicBrush.MBRuntime", localThrowable, "hy: get acyncable jsapis failed!", new Object[0]);
+    }
+    return null;
+  }
+  
+  final Bitmap h(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (this.mNativeInst == 0L) {
+      return null;
+    }
+    if (paramBoolean) {
+      return nativeCaptureScreen(this.mNativeInst, paramInt1);
+    }
+    return nativeCaptureCanvas(this.mNativeInst, paramInt2);
+  }
+  
+  public final void hd(final int paramInt)
+  {
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "hy: notifyWindowDestroyed: %d", new Object[] { Integer.valueOf(paramInt) });
+    hc(paramInt);
+    boolean bool = this.coI.sync_surface_destroy;
+    Runnable local3 = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139942);
+        MBRuntime.this.nativeNotifyWindowDestroyed(MBRuntime.this.mNativeInst, paramInt);
+        AppMethodBeat.o(139942);
+      }
+    };
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "[surface] destroy window(surface) windowId:%d sync?%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+    if (bool)
+    {
+      if (!n(local3)) {
+        c.c.e("MicroMsg.MagicBrush.MBRuntime", "notifyWindowDestroyed, but await fail. [deadlock]:    %s", new Object[] { this.coO.Br() });
+      }
+      return;
+    }
+    m(local3);
   }
   
   /* Error */
-  public boolean isDestroyed()
+  public final boolean isDestroyed()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 129	com/tencent/magicbrush/MBRuntime:mNativeInst	J
+    //   3: getfield 117	com/tencent/magicbrush/MBRuntime:mNativeInst	J
     //   6: lstore_1
     //   7: lload_1
     //   8: lconst_0
@@ -548,15 +626,43 @@ public class MBRuntime
     //   2	7	24	finally
   }
   
-  public boolean isDestroyedUnlock()
+  protected final boolean l(final Runnable paramRunnable)
   {
-    return this.mNativeInst == 0L;
+    if (this.mNativeInst == 0L) {}
+    com.tencent.magicbrush.handler.c localc;
+    do
+    {
+      return false;
+      localc = this.coO;
+    } while (localc == null);
+    localc.a(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(139949);
+        if (MBRuntime.this.mNativeInst == 0L)
+        {
+          AppMethodBeat.o(139949);
+          return;
+        }
+        paramRunnable.run();
+        AppMethodBeat.o(139949);
+      }
+    }, false);
+    return true;
   }
   
-  public boolean isMainThreadWaiting()
-  {
-    return this.mainThreadWaitingFlag;
-  }
+  protected native void nativeBindTo(long paramLong1, long paramLong2, long paramLong3, long paramLong4);
+  
+  protected native Bitmap nativeCaptureCanvas(long paramLong, int paramInt);
+  
+  protected native Bitmap nativeCaptureScreen(long paramLong, int paramInt);
+  
+  protected native long nativeCreate(MBParams paramMBParams);
+  
+  protected native void nativeDebug(long paramLong, int paramInt);
+  
+  protected native void nativeDestroy(long paramLong);
   
   native float[] nativeGetCurrentFps(long paramLong);
   
@@ -570,293 +676,131 @@ public class MBRuntime
   
   native int nativeGetVertexes(long paramLong);
   
-  public native void nativeSetEnableInspectFpsVariance(long paramLong, boolean paramBoolean);
+  protected native void nativeInit(long paramLong);
   
-  public void notifyAnimationFrame(double paramDouble)
+  @Keep
+  protected String nativeInvokeHandler(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(115810);
-    if (this.mNativeInst == 0L)
-    {
-      AppMethodBeat.o(115810);
-      return;
-    }
-    nativeNotifyAnimationFrame(this.mNativeInst, paramDouble);
-    AppMethodBeat.o(115810);
-  }
-  
-  public void notifyImageDecoded(final String paramString, final Object paramObject, final IMBImageHandler.a parama)
-  {
-    AppMethodBeat.i(115823);
-    if (this.mNativeInst == 0L)
-    {
-      parama.U(paramObject);
-      AppMethodBeat.o(115823);
-      return;
-    }
-    MBJsThreadHandler localMBJsThreadHandler = this.mJsThreadHandler;
-    if (localMBJsThreadHandler == null)
-    {
-      parama.U(paramObject);
-      AppMethodBeat.o(115823);
-      return;
-    }
-    localMBJsThreadHandler.post(new Runnable()
-    {
-      public final void run()
+    if (this.coN != null) {
+      try
       {
-        AppMethodBeat.i(151470);
-        if (MBRuntime.this.mNativeInst == 0L)
-        {
-          parama.U(paramObject);
-          AppMethodBeat.o(151470);
-          return;
-        }
-        MBRuntime.access$1100(MBRuntime.this, MBRuntime.this.mNativeInst, paramString, paramObject);
-        AppMethodBeat.o(151470);
+        paramString1 = this.coN.a(paramString1, paramString2, paramInt, paramBoolean);
+        return paramString1;
       }
-    });
-    AppMethodBeat.o(115823);
+      catch (Throwable paramString1)
+      {
+        c.c.printStackTrace("MicroMsg.MagicBrush.MBRuntime", paramString1, "hy: crash when invoke jsapi!", new Object[0]);
+        throw paramString1;
+      }
+    }
+    c.c.e("MicroMsg.MagicBrush.MBRuntime", "hy: no native invoke handler", new Object[0]);
+    return "";
   }
   
-  public void notifyTouchEvent(long paramLong, JsTouchEventHandler.a parama)
+  protected native void nativeNotifyAnimationFrame(long paramLong, double paramDouble);
+  
+  protected native void nativeNotifyImageDecoded(long paramLong, String paramString, Object paramObject, ImageDecodeConfig paramImageDecodeConfig);
+  
+  protected native void nativeNotifyTouchEvent(long paramLong1, int paramInt, long paramLong2);
+  
+  protected native void nativeNotifyWindowAvailable(long paramLong, int paramInt1, SurfaceTexture paramSurfaceTexture, int paramInt2, int paramInt3, boolean paramBoolean);
+  
+  protected native void nativeNotifyWindowAvailableForSurface(long paramLong, int paramInt1, Surface paramSurface, int paramInt2, int paramInt3);
+  
+  protected native void nativeNotifyWindowChanged(long paramLong, int paramInt1, SurfaceTexture paramSurfaceTexture, int paramInt2, int paramInt3);
+  
+  protected native void nativeNotifyWindowChangedForSurface(long paramLong, int paramInt1, Surface paramSurface, int paramInt2, int paramInt3);
+  
+  protected native void nativeNotifyWindowDestroyed(long paramLong, int paramInt);
+  
+  protected native void nativePause(long paramLong);
+  
+  protected native void nativeResume(long paramLong);
+  
+  native void nativeSetEnableInspectFpsVariance(long paramLong, boolean paramBoolean);
+  
+  protected native void nativeSetEventListener(long paramLong, EventDispatcher paramEventDispatcher);
+  
+  protected native void nativeSetFontHandler(long paramLong, IMBFontHandler paramIMBFontHandler);
+  
+  protected native void nativeSetImageHandler(long paramLong, IImageDecodeService paramIImageDecodeService);
+  
+  protected native void nativeSetJsThreadHandler(long paramLong1, long paramLong2);
+  
+  protected native void nativeSetUserPreferredFps(long paramLong, double paramDouble);
+  
+  @Keep
+  protected void switchToJsThread(final int paramInt)
   {
-    AppMethodBeat.i(115822);
-    if (this.mNativeInst == 0L)
-    {
-      parama.au(paramLong);
-      AppMethodBeat.o(115822);
-      return;
+    c.c.i("MicroMsg.MagicBrush.MBRuntime", "switchToJsThread taskId: ".concat(String.valueOf(paramInt)), new Object[0]);
+    if (this.coO != null) {
+      try
+      {
+        this.coO.o(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(193559);
+            c.c.i("MicroMsg.MagicBrush.MBRuntime", "switchToJsThread Runnable taskId: " + paramInt, new Object[0]);
+            MBRuntime.a(MBRuntime.this, MBRuntime.this.mNativeInst, paramInt);
+            AppMethodBeat.o(193559);
+          }
+        });
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        c.c.printStackTrace("MicroMsg.MagicBrush.MBRuntime", localThrowable, "hy: switchToJsThread crash!", new Object[0]);
+        throw localThrowable;
+      }
     }
-    MBJsThreadHandler localMBJsThreadHandler = this.mJsThreadHandler;
-    if (localMBJsThreadHandler == null)
-    {
-      parama.au(paramLong);
-      AppMethodBeat.o(115822);
-      return;
-    }
-    localMBJsThreadHandler.post(new MBRuntime.10(this, parama, paramLong));
-    AppMethodBeat.o(115822);
+    c.c.e("MicroMsg.MagicBrush.MBRuntime", "hy: switchToJsThread no js thread handler", new Object[0]);
   }
   
-  public void notifyWindowAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
+  @Keep
+  protected void touchJava()
   {
-    AppMethodBeat.i(115811);
-    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.notifyWindowAvailable ", new Object[0]);
-    if (this.mNativeInst == 0L)
-    {
-      AppMethodBeat.o(115811);
-      return;
-    }
-    MBJsThreadHandler localMBJsThreadHandler = this.mJsThreadHandler;
-    if (localMBJsThreadHandler == null)
-    {
-      AppMethodBeat.o(115811);
-      return;
-    }
-    localMBJsThreadHandler.post(new MBRuntime.5(this, paramSurfaceTexture, paramInt1, paramInt2));
-    AppMethodBeat.o(115811);
-  }
-  
-  public void notifyWindowChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(115812);
-    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.notifyWindowChanged ", new Object[0]);
-    if (this.mNativeInst == 0L)
-    {
-      AppMethodBeat.o(115812);
-      return;
-    }
-    MBJsThreadHandler localMBJsThreadHandler = this.mJsThreadHandler;
-    if (localMBJsThreadHandler == null)
-    {
-      AppMethodBeat.o(115812);
-      return;
-    }
-    localMBJsThreadHandler.post(new MBRuntime.6(this, paramSurfaceTexture, paramInt1, paramInt2));
-    AppMethodBeat.o(115812);
-  }
-  
-  public void notifyWindowDestroyed(SurfaceTexture paramSurfaceTexture, boolean paramBoolean)
-  {
-    AppMethodBeat.i(155608);
-    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.notifyWindowDestroyed shouldDestroySync: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (this.mNativeInst == 0L)
-    {
-      AppMethodBeat.o(155608);
-      return;
-    }
-    MBJsThreadHandler localMBJsThreadHandler = this.mJsThreadHandler;
-    if (localMBJsThreadHandler == null)
-    {
-      AppMethodBeat.o(155608);
-      return;
-    }
-    paramSurfaceTexture = new MBRuntime.7(this, paramSurfaceTexture);
-    if (paramBoolean)
-    {
-      paramSurfaceTexture = new com.tencent.magicbrush.d.b(paramSurfaceTexture);
-      localMBJsThreadHandler.i(paramSurfaceTexture);
-      paramSurfaceTexture.await();
-      AppMethodBeat.o(155608);
-      return;
-    }
-    localMBJsThreadHandler.post(paramSurfaceTexture);
-    AppMethodBeat.o(155608);
-  }
-  
-  public void pause()
-  {
-    AppMethodBeat.i(115808);
-    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.pause ", new Object[0]);
-    if (this.mNativeInst == 0L)
-    {
-      AppMethodBeat.o(115808);
-      return;
-    }
-    MBJsThreadHandler localMBJsThreadHandler = this.mJsThreadHandler;
-    if (localMBJsThreadHandler == null)
-    {
-      AppMethodBeat.o(115808);
-      return;
-    }
-    localMBJsThreadHandler.post(new MBRuntime.4(this));
-    AppMethodBeat.o(115808);
-  }
-  
-  public void registerEventListener(MBRuntime.IMBEventListener paramIMBEventListener)
-  {
-    AppMethodBeat.i(115825);
-    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.registerEventListener ", new Object[0]);
-    if (this.mListenerQueue == null) {
-      this.mListenerQueue = new ConcurrentLinkedQueue();
-    }
-    this.mListenerQueue.add(paramIMBEventListener);
-    AppMethodBeat.o(115825);
-  }
-  
-  @Deprecated
-  public void resetScreenCanvasFlag()
-  {
-    AppMethodBeat.i(151471);
-    c.a(this, new MBRuntime.8(this));
-    AppMethodBeat.o(151471);
-  }
-  
-  public void resume()
-  {
-    AppMethodBeat.i(115807);
-    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.resume ", new Object[0]);
-    if (this.mbView == null)
-    {
-      localObject = new IllegalStateException("MBRuntime can not resume, before a MBRuntimeView attached.");
-      AppMethodBeat.o(115807);
-      throw ((Throwable)localObject);
-    }
-    if (this.mNativeInst == 0L)
-    {
-      AppMethodBeat.o(115807);
-      return;
-    }
-    Object localObject = this.mJsThreadHandler;
-    if (localObject == null)
-    {
-      AppMethodBeat.o(115807);
-      return;
-    }
-    ((com.tencent.magicbrush.handler.a)localObject).post(new MBRuntime.3(this));
-    AppMethodBeat.o(115807);
-  }
-  
-  public void setFontHandler(IMBFontHandler paramIMBFontHandler)
-  {
-    AppMethodBeat.i(115819);
-    this.mFontHandler = paramIMBFontHandler;
-    nativeSetFontHandler(this.mNativeInst, paramIMBFontHandler);
-    AppMethodBeat.o(115819);
-  }
-  
-  public void setImageHandler(IMBImageHandler paramIMBImageHandler)
-  {
-    AppMethodBeat.i(115818);
-    this.mImageHandler = paramIMBImageHandler;
-    nativeSetImageHandler(this.mNativeInst, paramIMBImageHandler);
-    AppMethodBeat.o(115818);
-  }
-  
-  public void setJsThreadHandler(com.tencent.magicbrush.handler.a parama)
-  {
-    AppMethodBeat.i(115827);
-    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.set_jsthread_handler ", new Object[0]);
-    if (this.mJsThreadHandler != null)
-    {
-      c.c.e("MicroMsg.MagicBrush.MBRuntime", "Why you set_jsthread_handler twice, unexpected behaviour.", new Object[0]);
-      AppMethodBeat.o(115827);
-      return;
-    }
-    long l = this.mNativeInst;
-    this.mJsThreadHandler = new MBJsThreadHandler(parama);
-    AppMethodBeat.o(115827);
-  }
-  
-  public void setMBRuntimeView(g paramg)
-  {
-    this.mbView = paramg;
-  }
-  
-  public void setUserPreferredFps(double paramDouble)
-  {
-    AppMethodBeat.i(115821);
-    if (this.mNativeInst == 0L)
-    {
-      AppMethodBeat.o(115821);
-      return;
-    }
-    MBJsThreadHandler localMBJsThreadHandler = this.mJsThreadHandler;
-    if (localMBJsThreadHandler == null)
-    {
-      AppMethodBeat.o(115821);
-      return;
-    }
-    localMBJsThreadHandler.post(new MBRuntime.9(this, paramDouble));
-    AppMethodBeat.o(115821);
-  }
-  
-  public void unregisterEventListener(MBRuntime.IMBEventListener paramIMBEventListener)
-  {
-    AppMethodBeat.i(115826);
-    c.c.i("MicroMsg.MagicBrush.MBRuntime", "MBRuntime.unregisterEventListener ", new Object[0]);
-    if (this.mListenerQueue == null)
-    {
-      paramIMBEventListener = new IllegalStateException("[MBRuntime:unregisterEventListener] You may make a mistake.");
-      AppMethodBeat.o(115826);
-      throw paramIMBEventListener;
-    }
-    this.mListenerQueue.remove(paramIMBEventListener);
-    AppMethodBeat.o(115826);
+    this.coQ += 1;
   }
   
   @Keep
   public static class MBParams
   {
-    public boolean adjust_thread_priority;
-    public boolean allow_antialias_;
-    public boolean allow_opengl3;
-    public a.b animationFrameHandlerStrategy = a.b.bLp;
-    public double device_pixel_ratio_;
+    public boolean adjust_thread_priority = true;
+    public boolean allow_antialias_ = false;
+    public boolean allow_opengl3 = true;
+    public a.b animationFrameHandlerStrategy = a.b.crO;
+    AssetManager asset_manager;
+    public int cmd_pool_type = 1;
+    public float device_pixel_ratio_ = -1.0F;
     public boolean enable_2d = true;
-    public boolean enable_request_animation_frame;
-    public boolean enable_wxbindcanvastexture;
-    public float gc_factor;
-    public boolean perf_crazy_mode;
-    public boolean render_thread_profiler;
-    public int screen_height_;
-    public int screen_width_;
-    public boolean use_command_buffer;
+    public boolean enable_font_batch = false;
+    public boolean enable_gfx = true;
+    public boolean enable_request_animation_frame = true;
+    public boolean enable_switch_thread_native_for_jsapis = true;
+    public boolean enable_window_attributes_alpha = false;
+    public boolean enable_wxbindcanvastexture = false;
+    public IMBFileSystem file_system_ = null;
+    public float gc_factor = 0.0F;
+    public boolean is_game = false;
+    public boolean perf_crazy_mode = false;
+    public boolean render_thread_profiler = false;
+    public boolean revert_cpu_optimizer_test = false;
+    public int screen_height_ = -1;
+    public int screen_width_ = -1;
+    public String sdcard_path;
+    public boolean sync_surface_destroy = true;
+    public boolean use_command_buffer = true;
+  }
+  
+  static abstract interface a
+  {
+    public abstract void beforeSwap(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.magicbrush.MBRuntime
  * JD-Core Version:    0.7.0.1
  */

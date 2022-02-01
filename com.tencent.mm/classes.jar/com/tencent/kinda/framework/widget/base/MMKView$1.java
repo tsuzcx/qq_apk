@@ -1,8 +1,11 @@
 package com.tencent.kinda.framework.widget.base;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.gen.KViewOnTouchCallback;
 import com.tencent.kinda.gen.TouchAction;
 import com.tencent.kinda.gen.TouchEvent;
@@ -15,13 +18,13 @@ class MMKView$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(144962);
+    AppMethodBeat.i(19121);
     if (MMKView.access$000(this.this$0))
     {
       if (paramMotionEvent.getAction() == 0)
       {
         MMKView.access$102(this.this$0, this.this$0.backgroundColor);
-        this.this$0.getView().setBackgroundColor(-3355444);
+        this.this$0.getView().setBackgroundColor(this.this$0.mContext.getResources().getColor(2131099735));
       }
     }
     else if (MMKView.access$200(this.this$0) != null)
@@ -35,12 +38,12 @@ class MMKView$1
     {
       paramView = new TouchEvent(paramMotionEvent.getX(), paramMotionEvent.getY(), paramView);
       MMKView.access$200(this.this$0).onTouch(paramView);
-      AppMethodBeat.o(144962);
+      AppMethodBeat.o(19121);
       return false;
       if ((paramMotionEvent.getAction() != 1) && (paramMotionEvent.getAction() != 2) && (paramMotionEvent.getAction() != 3)) {
         break;
       }
-      this.this$0.getView().setBackgroundColor((int)MMKView.access$100(this.this$0));
+      this.this$0.getView().setBackgroundColor((int)ColorUtil.getColorByMode(MMKView.access$100(this.this$0)));
       break;
       paramView = TouchAction.DOWN;
       continue;
@@ -52,7 +55,7 @@ class MMKView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/f47" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="82.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/u7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/b3x" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/e95" android:background="@drawable/a90" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layerType="software" />
+        <RelativeLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
+            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/d6b" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:id="@id/dyh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_toRightOf="@id/d6b" />
+            <TextView android:textSize="13.0dip" android:textColor="#ffb2b2b2" android:id="@id/b_l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_toRightOf="@id/d6b" android:layout_below="@id/dyh" />
+            <Button android:textSize="13.0dip" android:textColor="@color/a_u" android:gravity="center" android:id="@id/a_c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="60.0dip" android:minHeight="30.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/o6" />
+        </RelativeLayout>
+        <View android:id="@id/e96" android:background="@drawable/a90" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layerType="software" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.wallet_core.ui.view.WalletScratchShakeView android:id="@id/f7e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.wallet_core.ui.view.WalletAwardShakeAnimView android:layout_gravity="center_vertical" android:id="@id/fgf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="1.0px" android:layout_marginBottom="1.0px" />
+</FrameLayout>

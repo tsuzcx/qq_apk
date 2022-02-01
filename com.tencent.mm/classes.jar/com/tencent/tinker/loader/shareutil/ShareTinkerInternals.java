@@ -14,6 +14,7 @@ import android.os.Process;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.PrintStream;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,343 +24,366 @@ import java.util.regex.Pattern;
 
 public class ShareTinkerInternals
 {
-  private static final boolean Bwm = axg(System.getProperty("java.vm.version"));
-  private static final boolean Bwn = dWI();
-  private static Boolean Bwo = null;
-  private static String Bwp = null;
-  private static String Bwq = null;
-  private static String processName = null;
+  private static final String PATCH_PROCESS_NAME = ":patch";
+  private static final String TAG = "Tinker.TinkerInternals";
+  private static final boolean VM_IS_ART = isVmArt(System.getProperty("java.vm.version"));
+  private static final boolean VM_IS_JIT = isVmJitInternal();
+  private static String currentInstructionSet = null;
+  private static Boolean isARKHotRunning;
+  private static Boolean isPatchProcess = null;
+  private static String processName;
+  private static String tinkerID;
   
-  /* Error */
-  public static java.util.Properties S(File paramFile)
+  static
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 56	java/io/File:isFile	()Z
-    //   4: ifeq +12 -> 16
-    //   7: aload_0
-    //   8: invokevirtual 60	java/io/File:length	()J
-    //   11: lconst_0
-    //   12: lcmp
-    //   13: ifne +5 -> 18
-    //   16: aconst_null
-    //   17: areturn
-    //   18: new 62	java/util/zip/ZipFile
-    //   21: dup
-    //   22: aload_0
-    //   23: invokespecial 65	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
-    //   26: astore_1
-    //   27: aload_1
-    //   28: ldc 67
-    //   30: invokevirtual 71	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   33: astore_0
-    //   34: aload_0
-    //   35: ifnonnull +9 -> 44
-    //   38: aload_1
-    //   39: invokestatic 77	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:a	(Ljava/util/zip/ZipFile;)V
-    //   42: aconst_null
-    //   43: areturn
-    //   44: aload_1
-    //   45: aload_0
-    //   46: invokevirtual 81	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   49: astore_0
-    //   50: new 83	java/util/Properties
-    //   53: dup
-    //   54: invokespecial 84	java/util/Properties:<init>	()V
-    //   57: astore_2
-    //   58: aload_2
-    //   59: aload_0
-    //   60: invokevirtual 88	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   63: aload_0
-    //   64: invokestatic 92	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:V	(Ljava/lang/Object;)V
-    //   67: aload_1
-    //   68: invokestatic 77	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:a	(Ljava/util/zip/ZipFile;)V
-    //   71: aload_2
-    //   72: areturn
-    //   73: astore_2
-    //   74: aconst_null
-    //   75: astore_0
-    //   76: aload_0
-    //   77: invokestatic 92	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:V	(Ljava/lang/Object;)V
-    //   80: aload_2
-    //   81: athrow
-    //   82: astore_2
-    //   83: aload_1
-    //   84: astore_0
-    //   85: aload_2
-    //   86: astore_1
-    //   87: new 94	java/lang/StringBuilder
-    //   90: dup
-    //   91: ldc 96
-    //   93: invokespecial 99	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   96: aload_1
-    //   97: invokevirtual 103	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   100: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   103: pop
-    //   104: aload_0
-    //   105: invokestatic 77	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:a	(Ljava/util/zip/ZipFile;)V
-    //   108: aconst_null
-    //   109: areturn
-    //   110: astore_0
-    //   111: aconst_null
-    //   112: astore_1
-    //   113: aload_1
-    //   114: invokestatic 77	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:a	(Ljava/util/zip/ZipFile;)V
-    //   117: aload_0
-    //   118: athrow
-    //   119: astore_0
-    //   120: goto -7 -> 113
-    //   123: astore_1
-    //   124: aload_0
-    //   125: astore_2
-    //   126: aload_1
-    //   127: astore_0
-    //   128: aload_2
-    //   129: astore_1
-    //   130: goto -17 -> 113
-    //   133: astore_1
-    //   134: aconst_null
-    //   135: astore_0
-    //   136: goto -49 -> 87
-    //   139: astore_2
-    //   140: goto -64 -> 76
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	143	0	paramFile	File
-    //   26	88	1	localObject1	Object
-    //   123	4	1	localObject2	Object
-    //   129	1	1	localObject3	Object
-    //   133	1	1	localIOException1	java.io.IOException
-    //   57	15	2	localProperties	java.util.Properties
-    //   73	8	2	localObject4	Object
-    //   82	4	2	localIOException2	java.io.IOException
-    //   125	4	2	localFile	File
-    //   139	1	2	localObject5	Object
-    // Exception table:
-    //   from	to	target	type
-    //   44	50	73	finally
-    //   27	34	82	java/io/IOException
-    //   63	67	82	java/io/IOException
-    //   76	82	82	java/io/IOException
-    //   18	27	110	finally
-    //   27	34	119	finally
-    //   63	67	119	finally
-    //   76	82	119	finally
-    //   87	104	123	finally
-    //   18	27	133	java/io/IOException
-    //   50	63	139	finally
+    isARKHotRunning = null;
+    processName = null;
+    tinkerID = null;
   }
   
-  public static boolean Te(int paramInt)
+  public static ShareDexDiffPatchInfo changeTestDexToClassN(ShareDexDiffPatchInfo paramShareDexDiffPatchInfo, int paramInt)
   {
-    return (paramInt & 0x1) != 0;
-  }
-  
-  public static boolean Tf(int paramInt)
-  {
-    return (paramInt & 0x2) != 0;
-  }
-  
-  public static boolean Tg(int paramInt)
-  {
-    return (paramInt & 0x4) != 0;
-  }
-  
-  public static String Th(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "unknown";
-    case 3: 
-      return "dex";
-    case 4: 
-      return "dex_opt";
-    case 5: 
-      return "lib";
-    case 1: 
-      return "patch_file";
-    case 2: 
-      return "patch_info";
-    }
-    return "resource";
-  }
-  
-  public static boolean Ti(int paramInt)
-  {
-    return paramInt != 0;
-  }
-  
-  public static int a(Context paramContext, int paramInt, File paramFile, ShareSecurityCheck paramShareSecurityCheck)
-  {
-    int i;
-    int j;
-    if (!paramShareSecurityCheck.at(paramFile))
-    {
-      i = -1;
-      j = i;
-      if (i == 0)
-      {
-        if (paramInt != 7) {
-          break label159;
-        }
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      if (i == 0)
-      {
-        paramContext = paramShareSecurityCheck.Bwk;
-        if ((!Te(paramInt)) && (paramContext.containsKey("assets/dex_meta.txt")))
-        {
-          j = -9;
-          return j;
-          paramContext = jC(paramContext);
-          if (paramContext == null)
-          {
-            i = -5;
-            break;
-          }
-          paramFile = paramShareSecurityCheck.dWD();
-          if (paramFile == null)
-          {
-            i = -2;
-            break;
-          }
-          paramFile = (String)paramFile.get("TINKER_ID");
-          if (paramFile == null)
-          {
-            i = -6;
-            break;
-          }
-          if (!paramContext.equals(paramFile))
-          {
-            new StringBuilder("tinkerId is not equal, base is ").append(paramContext).append(", but patch is ").append(paramFile);
-            i = -7;
-            break;
-          }
-          i = 0;
-          break;
-          label159:
-          i = 0;
-          continue;
-        }
-        if ((!Tf(paramInt)) && (paramContext.containsKey("assets/so_meta.txt"))) {
-          return -9;
-        }
-        if ((!Tg(paramInt)) && (paramContext.containsKey("assets/res_meta.txt"))) {
-          return -9;
-        }
-      }
-    }
-    return 0;
-  }
-  
-  public static ShareDexDiffPatchInfo a(ShareDexDiffPatchInfo paramShareDexDiffPatchInfo, int paramInt)
-  {
-    if (paramShareDexDiffPatchInfo.BuQ.startsWith("test.dex"))
+    if (paramShareDexDiffPatchInfo.rawName.startsWith("test.dex"))
     {
       if (paramInt != 1) {}
       for (String str = "classes" + paramInt + ".dex";; str = "classes.dex") {
-        return new ShareDexDiffPatchInfo(str, paramShareDexDiffPatchInfo.path, paramShareDexDiffPatchInfo.BuR, paramShareDexDiffPatchInfo.BuS, paramShareDexDiffPatchInfo.BuV, paramShareDexDiffPatchInfo.BuT, paramShareDexDiffPatchInfo.BuU, paramShareDexDiffPatchInfo.BuW);
+        return new ShareDexDiffPatchInfo(str, paramShareDexDiffPatchInfo.path, paramShareDexDiffPatchInfo.destMd5InDvm, paramShareDexDiffPatchInfo.destMd5InArt, paramShareDexDiffPatchInfo.dexDiffMd5, paramShareDexDiffPatchInfo.oldDexCrC, paramShareDexDiffPatchInfo.newOrPatchedDexCrC, paramShareDexDiffPatchInfo.dexMode);
       }
     }
     return null;
   }
   
-  public static void aG(Context paramContext, int paramInt)
+  public static int checkPackageAndTinkerFlag(ShareSecurityCheck paramShareSecurityCheck, int paramInt)
   {
-    String str = "tinker_own_config_".concat(String.valueOf(aI(paramContext)));
-    paramContext.getSharedPreferences(str, 0).edit().putInt("safe_mode_count_1.9.13.1", paramInt).commit();
-    new StringBuilder("setSafeModeCount: preferName:").append(str).append(" count:").append(paramInt);
+    if (isTinkerEnabledAll(paramInt)) {}
+    do
+    {
+      return 0;
+      paramShareSecurityCheck = paramShareSecurityCheck.getMetaContentMap();
+      if ((!isTinkerEnabledForDex(paramInt)) && (paramShareSecurityCheck.containsKey("assets/dex_meta.txt"))) {
+        return -9;
+      }
+      if ((!isTinkerEnabledForNativeLib(paramInt)) && (paramShareSecurityCheck.containsKey("assets/so_meta.txt"))) {
+        return -9;
+      }
+    } while ((isTinkerEnabledForResource(paramInt)) || (!paramShareSecurityCheck.containsKey("assets/res_meta.txt")));
+    return -9;
   }
   
-  public static String aI(Context paramContext)
+  public static int checkSignatureAndTinkerID(Context paramContext, File paramFile, ShareSecurityCheck paramShareSecurityCheck)
+  {
+    if (!paramShareSecurityCheck.verifyPatchMetaSignature(paramFile)) {
+      return -1;
+    }
+    paramContext = getManifestTinkerID(paramContext);
+    if (paramContext == null) {
+      return -5;
+    }
+    paramFile = paramShareSecurityCheck.getPackagePropertiesIfPresent();
+    if (paramFile == null) {
+      return -2;
+    }
+    paramFile = (String)paramFile.get("TINKER_ID");
+    if (paramFile == null) {
+      return -6;
+    }
+    if (!paramContext.equals(paramFile))
+    {
+      new StringBuilder("tinkerId is not equal, base is ").append(paramContext).append(", but patch is ").append(paramFile);
+      return -7;
+    }
+    return 0;
+  }
+  
+  public static int checkTinkerPackage(Context paramContext, int paramInt, File paramFile, ShareSecurityCheck paramShareSecurityCheck)
+  {
+    int j = checkSignatureAndTinkerID(paramContext, paramFile, paramShareSecurityCheck);
+    int i = j;
+    if (j == 0) {
+      i = checkPackageAndTinkerFlag(paramShareSecurityCheck, paramInt);
+    }
+    return i;
+  }
+  
+  /* Error */
+  public static java.util.Properties fastGetPatchPackageMeta(File paramFile)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: ifnull +19 -> 20
+    //   4: aload_0
+    //   5: invokevirtual 190	java/io/File:isFile	()Z
+    //   8: ifeq +12 -> 20
+    //   11: aload_0
+    //   12: invokevirtual 194	java/io/File:length	()J
+    //   15: lconst_0
+    //   16: lcmp
+    //   17: ifne +5 -> 22
+    //   20: aconst_null
+    //   21: areturn
+    //   22: new 196	java/util/zip/ZipFile
+    //   25: dup
+    //   26: aload_0
+    //   27: invokespecial 199	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
+    //   30: astore_1
+    //   31: aload_1
+    //   32: ldc 201
+    //   34: invokevirtual 205	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   37: astore_0
+    //   38: aload_0
+    //   39: ifnonnull +9 -> 48
+    //   42: aload_1
+    //   43: invokestatic 211	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   46: aconst_null
+    //   47: areturn
+    //   48: aload_1
+    //   49: aload_0
+    //   50: invokevirtual 215	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   53: astore_0
+    //   54: new 217	java/util/Properties
+    //   57: dup
+    //   58: invokespecial 218	java/util/Properties:<init>	()V
+    //   61: astore_2
+    //   62: aload_2
+    //   63: aload_0
+    //   64: invokevirtual 222	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   67: aload_0
+    //   68: invokestatic 226	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
+    //   71: aload_1
+    //   72: invokestatic 211	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   75: aload_2
+    //   76: areturn
+    //   77: astore_2
+    //   78: aconst_null
+    //   79: astore_0
+    //   80: aload_0
+    //   81: invokestatic 226	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeQuietly	(Ljava/lang/Object;)V
+    //   84: aload_2
+    //   85: athrow
+    //   86: astore_2
+    //   87: aload_1
+    //   88: astore_0
+    //   89: aload_2
+    //   90: astore_1
+    //   91: new 72	java/lang/StringBuilder
+    //   94: dup
+    //   95: ldc 228
+    //   97: invokespecial 77	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   100: aload_1
+    //   101: invokevirtual 231	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   104: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   107: pop
+    //   108: aload_0
+    //   109: invokestatic 211	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   112: aconst_null
+    //   113: areturn
+    //   114: astore_0
+    //   115: aconst_null
+    //   116: astore_1
+    //   117: aload_1
+    //   118: invokestatic 211	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:closeZip	(Ljava/util/zip/ZipFile;)V
+    //   121: aload_0
+    //   122: athrow
+    //   123: astore_0
+    //   124: goto -7 -> 117
+    //   127: astore_1
+    //   128: aload_0
+    //   129: astore_2
+    //   130: aload_1
+    //   131: astore_0
+    //   132: aload_2
+    //   133: astore_1
+    //   134: goto -17 -> 117
+    //   137: astore_1
+    //   138: aconst_null
+    //   139: astore_0
+    //   140: goto -49 -> 91
+    //   143: astore_2
+    //   144: goto -64 -> 80
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	147	0	paramFile	File
+    //   30	88	1	localObject1	Object
+    //   127	4	1	localObject2	Object
+    //   133	1	1	localObject3	Object
+    //   137	1	1	localIOException1	java.io.IOException
+    //   61	15	2	localProperties	java.util.Properties
+    //   77	8	2	localObject4	Object
+    //   86	4	2	localIOException2	java.io.IOException
+    //   129	4	2	localFile	File
+    //   143	1	2	localObject5	Object
+    // Exception table:
+    //   from	to	target	type
+    //   48	54	77	finally
+    //   31	38	86	java/io/IOException
+    //   67	71	86	java/io/IOException
+    //   80	86	86	java/io/IOException
+    //   22	31	114	finally
+    //   31	38	123	finally
+    //   67	71	123	finally
+    //   80	86	123	finally
+    //   91	108	127	finally
+    //   22	31	137	java/io/IOException
+    //   54	67	143	finally
+  }
+  
+  public static String getCurrentInstructionSet()
+  {
+    if (currentInstructionSet != null) {
+      return currentInstructionSet;
+    }
+    currentInstructionSet = (String)Class.forName("dalvik.system.VMRuntime").getDeclaredMethod("getCurrentInstructionSet", new Class[0]).invoke(null, new Object[0]);
+    new StringBuilder("getCurrentInstructionSet:").append(currentInstructionSet);
+    return currentInstructionSet;
+  }
+  
+  public static String getCurrentOatMode(Context paramContext, String paramString)
+  {
+    String str = paramString;
+    if (paramString.equals("changing"))
+    {
+      if (isInMainProcess(paramContext)) {
+        str = "odex";
+      }
+    }
+    else {
+      return str;
+    }
+    return "interpet";
+  }
+  
+  public static String getExceptionCauseString(Throwable paramThrowable)
+  {
+    if (paramThrowable == null) {
+      return "";
+    }
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    PrintStream localPrintStream = new PrintStream(localByteArrayOutputStream);
+    try
+    {
+      for (;;)
+      {
+        Throwable localThrowable = paramThrowable.getCause();
+        if (localThrowable == null) {
+          break;
+        }
+        paramThrowable = localThrowable;
+      }
+      paramThrowable.printStackTrace(localPrintStream);
+      paramThrowable = toVisualString(localByteArrayOutputStream.toString());
+      return paramThrowable;
+    }
+    finally
+    {
+      SharePatchFileUtil.closeQuietly(localPrintStream);
+    }
+  }
+  
+  public static String getManifestTinkerID(Context paramContext)
+  {
+    if (tinkerID != null) {
+      return tinkerID;
+    }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData.get("TINKER_ID");
+      if (paramContext != null) {}
+      for (tinkerID = String.valueOf(paramContext);; tinkerID = null) {
+        return tinkerID;
+      }
+      return null;
+    }
+    catch (Exception paramContext)
+    {
+      new StringBuilder("getManifestTinkerID exception:").append(paramContext.getMessage());
+    }
+  }
+  
+  public static String getProcessName(Context paramContext)
   {
     if (processName != null) {
       return processName;
     }
-    paramContext = aJ(paramContext);
+    paramContext = getProcessNameInternal(paramContext);
     processName = paramContext;
     return paramContext;
   }
   
   /* Error */
-  private static String aJ(Context paramContext)
+  private static String getProcessNameInternal(Context paramContext)
   {
     // Byte code:
-    //   0: invokestatic 279	android/os/Process:myPid	()I
+    //   0: invokestatic 336	android/os/Process:myPid	()I
     //   3: istore_1
     //   4: aload_0
     //   5: ifnull +7 -> 12
     //   8: iload_1
     //   9: ifgt +7 -> 16
-    //   12: ldc_w 281
+    //   12: ldc_w 269
     //   15: areturn
     //   16: aload_0
-    //   17: ldc_w 283
-    //   20: invokevirtual 287	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   23: checkcast 289	android/app/ActivityManager
+    //   17: ldc_w 338
+    //   20: invokevirtual 341	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   23: checkcast 343	android/app/ActivityManager
     //   26: astore_0
     //   27: aload_0
     //   28: ifnull +79 -> 107
     //   31: aload_0
-    //   32: invokevirtual 293	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
+    //   32: invokevirtual 347	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
     //   35: astore_0
     //   36: aload_0
     //   37: ifnull +70 -> 107
     //   40: aload_0
-    //   41: invokeinterface 299 1 0
+    //   41: invokeinterface 353 1 0
     //   46: astore 4
     //   48: aload 4
-    //   50: invokeinterface 304 1 0
+    //   50: invokeinterface 358 1 0
     //   55: ifeq +232 -> 287
     //   58: aload 4
-    //   60: invokeinterface 308 1 0
-    //   65: checkcast 310	android/app/ActivityManager$RunningAppProcessInfo
+    //   60: invokeinterface 362 1 0
+    //   65: checkcast 364	android/app/ActivityManager$RunningAppProcessInfo
     //   68: astore_0
     //   69: aload_0
-    //   70: getfield 314	android/app/ActivityManager$RunningAppProcessInfo:pid	I
+    //   70: getfield 368	android/app/ActivityManager$RunningAppProcessInfo:pid	I
     //   73: iload_1
     //   74: if_icmpne -26 -> 48
     //   77: aload_0
     //   78: ifnull +29 -> 107
     //   81: aload_0
-    //   82: getfield 315	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
+    //   82: getfield 369	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
     //   85: astore_0
     //   86: aload_0
     //   87: areturn
     //   88: astore_0
-    //   89: new 94	java/lang/StringBuilder
+    //   89: new 72	java/lang/StringBuilder
     //   92: dup
-    //   93: ldc_w 317
-    //   96: invokespecial 99	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   93: ldc_w 371
+    //   96: invokespecial 77	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   99: aload_0
-    //   100: invokevirtual 318	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   103: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   100: invokevirtual 326	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   103: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   106: pop
     //   107: sipush 128
     //   110: newarray byte
     //   112: astore 5
-    //   114: new 320	java/io/FileInputStream
+    //   114: new 373	java/io/FileInputStream
     //   117: dup
-    //   118: new 94	java/lang/StringBuilder
+    //   118: new 72	java/lang/StringBuilder
     //   121: dup
-    //   122: ldc_w 322
-    //   125: invokespecial 99	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   122: ldc_w 375
+    //   125: invokespecial 77	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   128: iload_1
-    //   129: invokevirtual 196	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   132: ldc_w 324
-    //   135: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   138: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   141: invokespecial 325	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   129: invokevirtual 81	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   132: ldc_w 377
+    //   135: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: invokevirtual 90	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   141: invokespecial 378	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   144: astore 4
     //   146: aload 4
     //   148: astore_0
     //   149: aload 4
     //   151: aload 5
-    //   153: invokevirtual 329	java/io/FileInputStream:read	([B)I
+    //   153: invokevirtual 382	java/io/FileInputStream:read	([B)I
     //   156: istore_3
     //   157: iload_3
     //   158: ifle +43 -> 201
@@ -368,15 +392,15 @@ public class ShareTinkerInternals
     //   163: goto +129 -> 292
     //   166: aload 4
     //   168: astore_0
-    //   169: new 165	java/lang/String
+    //   169: new 67	java/lang/String
     //   172: dup
     //   173: aload 5
     //   175: iconst_0
     //   176: iload_2
-    //   177: invokespecial 332	java/lang/String:<init>	([BII)V
+    //   177: invokespecial 385	java/lang/String:<init>	([BII)V
     //   180: astore 5
     //   182: aload 4
-    //   184: invokevirtual 335	java/io/FileInputStream:close	()V
+    //   184: invokevirtual 388	java/io/FileInputStream:close	()V
     //   187: aload 5
     //   189: areturn
     //   190: astore_0
@@ -388,26 +412,26 @@ public class ShareTinkerInternals
     //   197: istore_1
     //   198: goto +94 -> 292
     //   201: aload 4
-    //   203: invokevirtual 335	java/io/FileInputStream:close	()V
-    //   206: ldc_w 281
+    //   203: invokevirtual 388	java/io/FileInputStream:close	()V
+    //   206: ldc_w 269
     //   209: areturn
     //   210: astore 5
     //   212: aconst_null
     //   213: astore 4
     //   215: aload 4
     //   217: astore_0
-    //   218: new 94	java/lang/StringBuilder
+    //   218: new 72	java/lang/StringBuilder
     //   221: dup
-    //   222: ldc_w 317
-    //   225: invokespecial 99	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   222: ldc_w 371
+    //   225: invokespecial 77	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   228: aload 5
-    //   230: invokevirtual 318	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   233: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: invokevirtual 326	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   233: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   236: pop
     //   237: aload 4
     //   239: ifnull -33 -> 206
     //   242: aload 4
-    //   244: invokevirtual 335	java/io/FileInputStream:close	()V
+    //   244: invokevirtual 388	java/io/FileInputStream:close	()V
     //   247: goto -41 -> 206
     //   250: astore_0
     //   251: goto -45 -> 206
@@ -417,7 +441,7 @@ public class ShareTinkerInternals
     //   258: aload_0
     //   259: ifnull +7 -> 266
     //   262: aload_0
-    //   263: invokevirtual 335	java/io/FileInputStream:close	()V
+    //   263: invokevirtual 388	java/io/FileInputStream:close	()V
     //   266: aload 4
     //   268: athrow
     //   269: astore_0
@@ -481,38 +505,129 @@ public class ShareTinkerInternals
     //   169	182	282	java/lang/Exception
   }
   
-  private static String apn(String paramString)
+  public static int getSafeModeCount(Context paramContext)
   {
-    if (paramString == null) {
-      paramString = null;
+    String str = "tinker_own_config_".concat(String.valueOf(getProcessName(paramContext)));
+    int i = paramContext.getSharedPreferences(str, 0).getInt("safe_mode_count_1.9.14.6-INTERNALv1-mz", 0);
+    new StringBuilder("getSafeModeCount: preferName:").append(str).append(" count:").append(i);
+    return i;
+  }
+  
+  private static String getTinkerSwitchSPKey(Context paramContext)
+  {
+    String str = getManifestTinkerID(paramContext);
+    paramContext = str;
+    if (isNullOrNil(str)) {
+      paramContext = "@@";
     }
-    label66:
-    for (;;)
+    return "tinker_enable_1.9.14.6-INTERNALv1-mz_".concat(String.valueOf(paramContext));
+  }
+  
+  public static String getTypeString(int paramInt)
+  {
+    switch (paramInt)
     {
-      return paramString;
-      char[] arrayOfChar = paramString.toCharArray();
-      if (arrayOfChar == null) {
-        return null;
-      }
-      int i = 0;
-      if (i < arrayOfChar.length) {
-        if (arrayOfChar[i] > '') {
-          arrayOfChar[i] = '\000';
-        }
-      }
-      for (int j = 1;; j = 0)
-      {
-        if (j == 0) {
-          break label66;
-        }
-        return new String(arrayOfChar, 0, i);
-        i += 1;
-        break;
-      }
+    default: 
+      return "unknown";
+    case 3: 
+      return "dex";
+    case 4: 
+      return "dex_opt";
+    case 5: 
+      return "lib";
+    case 1: 
+      return "patch_file";
+    case 2: 
+      return "patch_info";
+    }
+    return "resource";
+  }
+  
+  public static boolean isAfterAndroidO()
+  {
+    return Build.VERSION.SDK_INT > 25;
+  }
+  
+  public static boolean isArkHotRuning()
+  {
+    if (isARKHotRunning != null) {
+      return isARKHotRunning.booleanValue();
+    }
+    isARKHotRunning = Boolean.FALSE;
+    try
+    {
+      Method localMethod = ClassLoader.getSystemClassLoader().getParent().loadClass("com.huawei.ark.app.ArkApplicationInfo").getDeclaredMethod("isRunningInArk", new Class[0]);
+      localMethod.setAccessible(true);
+      isARKHotRunning = (Boolean)localMethod.invoke(null, new Object[0]);
+      label62:
+      return isARKHotRunning.booleanValue();
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      break label62;
+    }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      break label62;
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      break label62;
+    }
+    catch (SecurityException localSecurityException)
+    {
+      break label62;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      break label62;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      break label62;
     }
   }
   
-  public static boolean axf(String paramString)
+  public static boolean isInMainProcess(Context paramContext)
+  {
+    String str = null;
+    Object localObject = paramContext.getApplicationInfo();
+    if (localObject != null) {
+      str = ((ApplicationInfo)localObject).processName;
+    }
+    localObject = str;
+    if (isNullOrNil(str)) {
+      localObject = paramContext.getPackageName();
+    }
+    str = getProcessName(paramContext);
+    if (str != null)
+    {
+      paramContext = str;
+      if (str.length() != 0) {}
+    }
+    else
+    {
+      paramContext = "";
+    }
+    return ((String)localObject).equals(paramContext);
+  }
+  
+  public static boolean isInPatchProcess(Context paramContext)
+  {
+    if (isPatchProcess != null) {
+      return isPatchProcess.booleanValue();
+    }
+    paramContext = Boolean.valueOf(getProcessName(paramContext).endsWith(":patch"));
+    isPatchProcess = paramContext;
+    return paramContext.booleanValue();
+  }
+  
+  public static boolean isNullOrNil(String paramString)
+  {
+    return (paramString == null) || (paramString.length() <= 0);
+  }
+  
+  public static boolean isSystemOTA(String paramString)
   {
     String str = Build.FINGERPRINT;
     if ((paramString == null) || (paramString.equals("")) || (str == null) || (str.equals(""))) {
@@ -525,7 +640,50 @@ public class ShareTinkerInternals
     return true;
   }
   
-  private static boolean axg(String paramString)
+  public static boolean isTinkerEnableWithSharedPreferences(Context paramContext)
+  {
+    if (paramContext == null) {
+      return false;
+    }
+    return paramContext.getSharedPreferences("tinker_share_config", 4).getBoolean(getTinkerSwitchSPKey(paramContext), true);
+  }
+  
+  public static boolean isTinkerEnabled(int paramInt)
+  {
+    return paramInt != 0;
+  }
+  
+  public static boolean isTinkerEnabledAll(int paramInt)
+  {
+    return paramInt == 15;
+  }
+  
+  public static boolean isTinkerEnabledForArkHot(int paramInt)
+  {
+    return (paramInt & 0x8) != 0;
+  }
+  
+  public static boolean isTinkerEnabledForDex(int paramInt)
+  {
+    return (paramInt & 0x1) != 0;
+  }
+  
+  public static boolean isTinkerEnabledForNativeLib(int paramInt)
+  {
+    return (paramInt & 0x2) != 0;
+  }
+  
+  public static boolean isTinkerEnabledForResource(int paramInt)
+  {
+    return (paramInt & 0x4) != 0;
+  }
+  
+  public static boolean isVmArt()
+  {
+    return (VM_IS_ART) || (Build.VERSION.SDK_INT >= 21);
+  }
+  
+  private static boolean isVmArt(String paramString)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -558,47 +716,12 @@ public class ShareTinkerInternals
     return false;
   }
   
-  public static String cg(Context paramContext, String paramString)
+  public static boolean isVmJit()
   {
-    String str = paramString;
-    if (paramString.equals("changing"))
-    {
-      if (jH(paramContext)) {
-        str = "odex";
-      }
-    }
-    else {
-      return str;
-    }
-    return "interpet";
+    return (VM_IS_JIT) && (Build.VERSION.SDK_INT < 24);
   }
   
-  public static boolean dWE()
-  {
-    return (Bwm) || (Build.VERSION.SDK_INT >= 21);
-  }
-  
-  public static boolean dWF()
-  {
-    return (Bwn) && (Build.VERSION.SDK_INT < 24);
-  }
-  
-  public static boolean dWG()
-  {
-    return Build.VERSION.SDK_INT > 25;
-  }
-  
-  public static String dWH()
-  {
-    if (Bwq != null) {
-      return Bwq;
-    }
-    Bwq = (String)Class.forName("dalvik.system.VMRuntime").getDeclaredMethod("getCurrentInstructionSet", new Class[0]).invoke(null, new Object[0]);
-    new StringBuilder("getCurrentInstructionSet:").append(Bwq);
-    return Bwq;
-  }
-  
-  private static boolean dWI()
+  private static boolean isVmJitInternal()
   {
     try
     {
@@ -620,99 +743,7 @@ public class ShareTinkerInternals
     return false;
   }
   
-  public static boolean isNullOrNil(String paramString)
-  {
-    return (paramString == null) || (paramString.length() <= 0);
-  }
-  
-  private static String jC(Context paramContext)
-  {
-    if (Bwp != null) {
-      return Bwp;
-    }
-    try
-    {
-      paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData.get("TINKER_ID");
-      if (paramContext != null) {}
-      for (Bwp = String.valueOf(paramContext);; Bwp = null) {
-        return Bwp;
-      }
-      return null;
-    }
-    catch (Exception paramContext)
-    {
-      new StringBuilder("getManifestTinkerID exception:").append(paramContext.getMessage());
-    }
-  }
-  
-  public static void jD(Context paramContext)
-  {
-    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("tinker_share_config", 4);
-    paramContext = jF(paramContext);
-    localSharedPreferences.edit().putBoolean(paramContext, false).commit();
-  }
-  
-  public static boolean jE(Context paramContext)
-  {
-    if (paramContext == null) {
-      return false;
-    }
-    return paramContext.getSharedPreferences("tinker_share_config", 4).getBoolean(jF(paramContext), true);
-  }
-  
-  private static String jF(Context paramContext)
-  {
-    String str = jC(paramContext);
-    paramContext = str;
-    if (isNullOrNil(str)) {
-      paramContext = "@@";
-    }
-    return "tinker_enable_1.9.13.1_".concat(String.valueOf(paramContext));
-  }
-  
-  public static int jG(Context paramContext)
-  {
-    String str = "tinker_own_config_".concat(String.valueOf(aI(paramContext)));
-    int i = paramContext.getSharedPreferences(str, 0).getInt("safe_mode_count_1.9.13.1", 0);
-    new StringBuilder("getSafeModeCount: preferName:").append(str).append(" count:").append(i);
-    return i;
-  }
-  
-  public static boolean jH(Context paramContext)
-  {
-    String str = null;
-    Object localObject = paramContext.getApplicationInfo();
-    if (localObject != null) {
-      str = ((ApplicationInfo)localObject).processName;
-    }
-    localObject = str;
-    if (isNullOrNil(str)) {
-      localObject = paramContext.getPackageName();
-    }
-    str = aI(paramContext);
-    if (str != null)
-    {
-      paramContext = str;
-      if (str.length() != 0) {}
-    }
-    else
-    {
-      paramContext = "";
-    }
-    return ((String)localObject).equals(paramContext);
-  }
-  
-  public static boolean jI(Context paramContext)
-  {
-    if (Bwo != null) {
-      return Bwo.booleanValue();
-    }
-    paramContext = Boolean.valueOf(aI(paramContext).endsWith(":patch"));
-    Bwo = paramContext;
-    return paramContext.booleanValue();
-  }
-  
-  public static void jJ(Context paramContext)
+  public static void killAllOtherProcess(Context paramContext)
   {
     paramContext = (ActivityManager)paramContext.getSystemService("activity");
     if (paramContext == null) {}
@@ -734,7 +765,7 @@ public class ShareTinkerInternals
     }
   }
   
-  public static void jK(Context paramContext)
+  public static void killProcessExceptMain(Context paramContext)
   {
     Object localObject = (ActivityManager)paramContext.getSystemService("activity");
     if (localObject == null) {}
@@ -756,30 +787,48 @@ public class ShareTinkerInternals
     }
   }
   
-  public static String m(Throwable paramThrowable)
+  public static void setSafeModeCount(Context paramContext, int paramInt)
   {
-    if (paramThrowable == null) {
-      return "";
+    String str = "tinker_own_config_".concat(String.valueOf(getProcessName(paramContext)));
+    paramContext.getSharedPreferences(str, 0).edit().putInt("safe_mode_count_1.9.14.6-INTERNALv1-mz", paramInt).commit();
+    new StringBuilder("setSafeModeCount: preferName:").append(str).append(" count:").append(paramInt);
+  }
+  
+  public static void setTinkerDisableWithSharedPreferences(Context paramContext)
+  {
+    SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("tinker_share_config", 4);
+    paramContext = getTinkerSwitchSPKey(paramContext);
+    localSharedPreferences.edit().putBoolean(paramContext, false).commit();
+  }
+  
+  public static String toVisualString(String paramString)
+  {
+    if (paramString == null) {
+      paramString = null;
     }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    PrintStream localPrintStream = new PrintStream(localByteArrayOutputStream);
-    try
+    label66:
+    for (;;)
     {
-      for (;;)
-      {
-        Throwable localThrowable = paramThrowable.getCause();
-        if (localThrowable == null) {
-          break;
-        }
-        paramThrowable = localThrowable;
+      return paramString;
+      char[] arrayOfChar = paramString.toCharArray();
+      if (arrayOfChar == null) {
+        return null;
       }
-      paramThrowable.printStackTrace(localPrintStream);
-      paramThrowable = apn(localByteArrayOutputStream.toString());
-      return paramThrowable;
-    }
-    finally
-    {
-      SharePatchFileUtil.V(localPrintStream);
+      int i = 0;
+      if (i < arrayOfChar.length) {
+        if (arrayOfChar[i] > '') {
+          arrayOfChar[i] = '\000';
+        }
+      }
+      for (int j = 1;; j = 0)
+      {
+        if (j == 0) {
+          break label66;
+        }
+        return new String(arrayOfChar, 0, i);
+        i += 1;
+        break;
+      }
     }
   }
 }

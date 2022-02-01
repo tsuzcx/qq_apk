@@ -1,21 +1,18 @@
 package com.tencent.mm.ui.tools;
 
+import android.view.View.OnFocusChangeListener;
 import android.widget.TextView.OnEditorActionListener;
 import java.util.ArrayList;
 
 public abstract interface d
 {
-  public abstract void dNx();
+  public abstract void fdv();
   
-  public abstract boolean dNy();
+  public abstract boolean fdw();
   
-  public abstract boolean dNz();
+  public abstract boolean fdx();
   
   public abstract String getSearchContent();
-  
-  public abstract void rr(boolean paramBoolean);
-  
-  public abstract void rs(boolean paramBoolean);
   
   public abstract void setAutoMatchKeywords(boolean paramBoolean);
   
@@ -24,6 +21,8 @@ public abstract interface d
   public abstract void setCallBack(ActionBarSearchView.b paramb);
   
   public abstract void setEditTextEnabled(boolean paramBoolean);
+  
+  public abstract void setFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener);
   
   public abstract void setHint(CharSequence paramCharSequence);
   
@@ -40,6 +39,10 @@ public abstract interface d
   public abstract void setSelectedTag(String paramString);
   
   public abstract void setStatusBtnEnabled(boolean paramBoolean);
+  
+  public abstract void wE(boolean paramBoolean);
+  
+  public abstract void wF(boolean paramBoolean);
 }
 
 

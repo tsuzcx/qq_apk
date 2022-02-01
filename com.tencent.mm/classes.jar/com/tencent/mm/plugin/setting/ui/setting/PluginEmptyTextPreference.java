@@ -12,48 +12,48 @@ public final class PluginEmptyTextPreference
   extends Preference
 {
   private Context context;
-  private TextView ehx;
+  private TextView ful;
   private String text;
   
   public PluginEmptyTextPreference(Context paramContext)
   {
     this(paramContext, null, 0);
-    AppMethodBeat.i(126975);
-    this.text = paramContext.getString(2131303373);
-    AppMethodBeat.o(126975);
+    AppMethodBeat.i(73906);
+    this.text = paramContext.getString(2131763355);
+    AppMethodBeat.o(73906);
   }
   
   public PluginEmptyTextPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(126976);
-    this.ehx = null;
+    AppMethodBeat.i(73907);
+    this.ful = null;
     this.context = paramContext;
-    setLayoutResource(2130970421);
-    AppMethodBeat.o(126976);
+    setLayoutResource(2131495094);
+    AppMethodBeat.o(73907);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(126978);
+    AppMethodBeat.i(73909);
     super.onBindView(paramView);
-    this.ehx = ((TextView)paramView.findViewById(2131821495));
-    this.ehx.setText(this.text);
-    AppMethodBeat.o(126978);
+    this.ful = ((TextView)paramView.findViewById(2131299477));
+    this.ful.setText(this.text);
+    AppMethodBeat.o(73909);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(126977);
+    AppMethodBeat.i(73908);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    View.inflate(this.context, 2130970421, null);
-    AppMethodBeat.o(126977);
+    View.inflate(this.context, 2131495094, null);
+    AppMethodBeat.o(73908);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.PluginEmptyTextPreference
  * JD-Core Version:    0.7.0.1
  */

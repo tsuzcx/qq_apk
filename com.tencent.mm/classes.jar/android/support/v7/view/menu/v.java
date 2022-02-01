@@ -18,53 +18,53 @@ final class v
   
   public final void clearHeader()
   {
-    ((c)this.Vj).clearHeader();
+    ((c)this.aco).clearHeader();
   }
   
   public final MenuItem getItem()
   {
-    return b(((c)this.Vj).getItem());
+    return b(((c)this.aco).getItem());
   }
   
   public final SubMenu setHeaderIcon(int paramInt)
   {
-    ((c)this.Vj).setHeaderIcon(paramInt);
+    ((c)this.aco).setHeaderIcon(paramInt);
     return this;
   }
   
   public final SubMenu setHeaderIcon(Drawable paramDrawable)
   {
-    ((c)this.Vj).setHeaderIcon(paramDrawable);
+    ((c)this.aco).setHeaderIcon(paramDrawable);
     return this;
   }
   
   public final SubMenu setHeaderTitle(int paramInt)
   {
-    ((c)this.Vj).setHeaderTitle(paramInt);
+    ((c)this.aco).setHeaderTitle(paramInt);
     return this;
   }
   
   public final SubMenu setHeaderTitle(CharSequence paramCharSequence)
   {
-    ((c)this.Vj).setHeaderTitle(paramCharSequence);
+    ((c)this.aco).setHeaderTitle(paramCharSequence);
     return this;
   }
   
   public final SubMenu setHeaderView(View paramView)
   {
-    ((c)this.Vj).setHeaderView(paramView);
+    ((c)this.aco).setHeaderView(paramView);
     return this;
   }
   
   public final SubMenu setIcon(int paramInt)
   {
-    ((c)this.Vj).setIcon(paramInt);
+    ((c)this.aco).setIcon(paramInt);
     return this;
   }
   
   public final SubMenu setIcon(Drawable paramDrawable)
   {
-    ((c)this.Vj).setIcon(paramDrawable);
+    ((c)this.aco).setIcon(paramDrawable);
     return this;
   }
 }

@@ -12,13 +12,13 @@ public final class ca
   
   private ca(byte paramByte)
   {
-    this.ymq = false;
+    this.ESR = false;
     this.callback = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ca
  * JD-Core Version:    0.7.0.1
  */

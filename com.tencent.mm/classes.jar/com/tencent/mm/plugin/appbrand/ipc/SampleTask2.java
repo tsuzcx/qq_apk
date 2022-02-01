@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.ipc;
 
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class SampleTask2
   extends MainProcessTask
@@ -11,21 +11,21 @@ public class SampleTask2
   
   static
   {
-    AppMethodBeat.i(86963);
-    CREATOR = new SampleTask2.1();
-    AppMethodBeat.o(86963);
+    AppMethodBeat.i(134867);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(134867);
   }
   
-  public final void ata()
+  public final void aEz()
   {
-    AppMethodBeat.i(86962);
-    ab.e("SampleTask2", "Run in Main Process");
-    AppMethodBeat.o(86962);
+    AppMethodBeat.i(134866);
+    ad.e("SampleTask2", "Run in Main Process");
+    AppMethodBeat.o(134866);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.SampleTask2
  * JD-Core Version:    0.7.0.1
  */

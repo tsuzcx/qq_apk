@@ -1,50 +1,49 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.address.a.a;
-import com.tencent.mm.protocal.protobuf.bro;
-import com.tencent.mm.protocal.protobuf.bru;
-import com.tencent.mm.protocal.protobuf.brv;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.cgn;
+import com.tencent.mm.protocal.protobuf.cgt;
+import com.tencent.mm.protocal.protobuf.cgu;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 
 public final class g
-  extends m
+  extends n
   implements k
 {
-  private f callback;
+  private com.tencent.mm.al.g callback;
   private b rr;
   
   public g(int paramInt)
   {
-    AppMethodBeat.i(16740);
+    AppMethodBeat.i(20783);
     b.a locala = new b.a();
-    locala.fsX = new bru();
-    locala.fsY = new brv();
+    locala.gUU = new cgt();
+    locala.gUV = new cgu();
     locala.uri = "/cgi-bin/micromsg-bin/rcptinfotouch";
     locala.funcId = 419;
     locala.reqCmdId = 204;
     locala.respCmdId = 1000000204;
-    this.rr = locala.ado();
-    ((bru)this.rr.fsV.fta).id = paramInt;
-    AppMethodBeat.o(16740);
+    this.rr = locala.atI();
+    ((cgt)this.rr.gUS.gUX).id = paramInt;
+    AppMethodBeat.o(20783);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(16742);
-    this.callback = paramf;
+    AppMethodBeat.i(20785);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(16742);
+    AppMethodBeat.o(20785);
     return i;
   }
   
@@ -55,27 +54,27 @@ public final class g
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(16741);
-    ab.d("MicroMsg.NetSceneRcptInfoTouch", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    AppMethodBeat.i(20784);
+    ad.d("MicroMsg.NetSceneRcptInfoTouch", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (brv)((b)paramq).fsW.fta;
-      if (paramq.xFf.xFi != null)
+      paramq = (cgu)((b)paramq).gUT.gUX;
+      if (paramq.Ece.Ech != null)
       {
-        ab.d("MicroMsg.NetSceneRcptInfoTouch", "resp.rImpl.rcptinfolist.rcptinfolist " + paramq.xFf.xFi.size());
-        a.asl();
-        a.asn().s(paramq.xFf.xFi);
-        a.asl();
-        a.asn().asp();
+        ad.d("MicroMsg.NetSceneRcptInfoTouch", "resp.rImpl.rcptinfolist.rcptinfolist " + paramq.Ece.Ech.size());
+        a.aKO();
+        a.aKQ().t(paramq.Ece.Ech);
+        a.aKO();
+        a.aKQ().aKS();
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(16741);
+    AppMethodBeat.o(20784);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.address.model.g
  * JD-Core Version:    0.7.0.1
  */

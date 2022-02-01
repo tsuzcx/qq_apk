@@ -60,9 +60,9 @@ final class LegacyTokenHelper
   
   static
   {
-    AppMethodBeat.i(71800);
+    AppMethodBeat.i(17236);
     TAG = LegacyTokenHelper.class.getSimpleName();
-    AppMethodBeat.o(71800);
+    AppMethodBeat.o(17236);
   }
   
   public LegacyTokenHelper(Context paramContext)
@@ -72,7 +72,7 @@ final class LegacyTokenHelper
   
   public LegacyTokenHelper(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(71774);
+    AppMethodBeat.i(17210);
     Validate.notNull(paramContext, "context");
     String str = paramString;
     if (Utility.isNullOrEmpty(paramString)) {
@@ -84,7 +84,7 @@ final class LegacyTokenHelper
       paramContext = paramString;
     }
     this.cache = paramContext.getSharedPreferences(this.cacheKey, 0);
-    AppMethodBeat.o(71774);
+    AppMethodBeat.o(17210);
   }
   
   private void deserializeKey(String paramString, Bundle paramBundle)
@@ -96,13 +96,13 @@ final class LegacyTokenHelper
     int i1 = 0;
     int i2 = 0;
     int i = 0;
-    AppMethodBeat.i(71799);
+    AppMethodBeat.i(17235);
     Object localObject1 = new JSONObject(this.cache.getString(paramString, "{}"));
     Object localObject2 = ((JSONObject)localObject1).getString("valueType");
     if (((String)localObject2).equals("bool"))
     {
       paramBundle.putBoolean(paramString, ((JSONObject)localObject1).getBoolean("value"));
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("bool[]"))
@@ -115,13 +115,13 @@ final class LegacyTokenHelper
         i += 1;
       }
       paramBundle.putBooleanArray(paramString, (boolean[])localObject2);
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("byte"))
     {
       paramBundle.putByte(paramString, (byte)((JSONObject)localObject1).getInt("value"));
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("byte[]"))
@@ -135,13 +135,13 @@ final class LegacyTokenHelper
         i += 1;
       }
       paramBundle.putByteArray(paramString, (byte[])localObject2);
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("short"))
     {
       paramBundle.putShort(paramString, (short)((JSONObject)localObject1).getInt("value"));
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("short[]"))
@@ -155,13 +155,13 @@ final class LegacyTokenHelper
         i += 1;
       }
       paramBundle.putShortArray(paramString, (short[])localObject2);
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("int"))
     {
       paramBundle.putInt(paramString, ((JSONObject)localObject1).getInt("value"));
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("int[]"))
@@ -175,13 +175,13 @@ final class LegacyTokenHelper
         i += 1;
       }
       paramBundle.putIntArray(paramString, (int[])localObject2);
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("long"))
     {
       paramBundle.putLong(paramString, ((JSONObject)localObject1).getLong("value"));
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("long[]"))
@@ -195,13 +195,13 @@ final class LegacyTokenHelper
         i += 1;
       }
       paramBundle.putLongArray(paramString, (long[])localObject2);
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("float"))
     {
       paramBundle.putFloat(paramString, (float)((JSONObject)localObject1).getDouble("value"));
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("float[]"))
@@ -215,13 +215,13 @@ final class LegacyTokenHelper
         i += 1;
       }
       paramBundle.putFloatArray(paramString, (float[])localObject2);
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("double"))
     {
       paramBundle.putDouble(paramString, ((JSONObject)localObject1).getDouble("value"));
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("double[]"))
@@ -235,7 +235,7 @@ final class LegacyTokenHelper
         i += 1;
       }
       paramBundle.putDoubleArray(paramString, (double[])localObject2);
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("char"))
@@ -244,7 +244,7 @@ final class LegacyTokenHelper
       if ((localObject1 != null) && (((String)localObject1).length() == 1)) {
         paramBundle.putChar(paramString, ((String)localObject1).charAt(0));
       }
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     Object localObject3;
@@ -262,13 +262,13 @@ final class LegacyTokenHelper
         i += 1;
       }
       paramBundle.putCharArray(paramString, (char[])localObject2);
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("string"))
     {
       paramBundle.putString(paramString, ((JSONObject)localObject1).getString("value"));
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("stringList"))
@@ -289,240 +289,240 @@ final class LegacyTokenHelper
         }
       }
       paramBundle.putStringArrayList(paramString, (ArrayList)localObject3);
-      AppMethodBeat.o(71799);
+      AppMethodBeat.o(17235);
       return;
     }
     if (((String)localObject2).equals("enum")) {
       try
       {
         paramBundle.putSerializable(paramString, Enum.valueOf(Class.forName(((JSONObject)localObject1).getString("enumType")), ((JSONObject)localObject1).getString("value")));
-        AppMethodBeat.o(71799);
+        AppMethodBeat.o(17235);
         return;
       }
       catch (ClassNotFoundException paramString)
       {
-        AppMethodBeat.o(71799);
+        AppMethodBeat.o(17235);
         return;
       }
       catch (IllegalArgumentException paramString) {}
     }
-    AppMethodBeat.o(71799);
+    AppMethodBeat.o(17235);
   }
   
   public static String getApplicationId(Bundle paramBundle)
   {
-    AppMethodBeat.i(71794);
+    AppMethodBeat.i(17230);
     Validate.notNull(paramBundle, "bundle");
     paramBundle = paramBundle.getString("com.facebook.TokenCachingStrategy.ApplicationId");
-    AppMethodBeat.o(71794);
+    AppMethodBeat.o(17230);
     return paramBundle;
   }
   
   static Date getDate(Bundle paramBundle, String paramString)
   {
-    AppMethodBeat.i(71796);
+    AppMethodBeat.i(17232);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(71796);
+      AppMethodBeat.o(17232);
       return null;
     }
     long l = paramBundle.getLong(paramString, -9223372036854775808L);
     if (l == -9223372036854775808L)
     {
-      AppMethodBeat.o(71796);
+      AppMethodBeat.o(17232);
       return null;
     }
     paramBundle = new Date(l);
-    AppMethodBeat.o(71796);
+    AppMethodBeat.o(17232);
     return paramBundle;
   }
   
   public static Date getExpirationDate(Bundle paramBundle)
   {
-    AppMethodBeat.i(71781);
+    AppMethodBeat.i(17217);
     Validate.notNull(paramBundle, "bundle");
     paramBundle = getDate(paramBundle, "com.facebook.TokenCachingStrategy.ExpirationDate");
-    AppMethodBeat.o(71781);
+    AppMethodBeat.o(17217);
     return paramBundle;
   }
   
   public static long getExpirationMilliseconds(Bundle paramBundle)
   {
-    AppMethodBeat.i(71783);
+    AppMethodBeat.i(17219);
     Validate.notNull(paramBundle, "bundle");
     long l = paramBundle.getLong("com.facebook.TokenCachingStrategy.ExpirationDate");
-    AppMethodBeat.o(71783);
+    AppMethodBeat.o(17219);
     return l;
   }
   
   public static Date getLastRefreshDate(Bundle paramBundle)
   {
-    AppMethodBeat.i(71790);
+    AppMethodBeat.i(17226);
     Validate.notNull(paramBundle, "bundle");
     paramBundle = getDate(paramBundle, "com.facebook.TokenCachingStrategy.LastRefreshDate");
-    AppMethodBeat.o(71790);
+    AppMethodBeat.o(17226);
     return paramBundle;
   }
   
   public static long getLastRefreshMilliseconds(Bundle paramBundle)
   {
-    AppMethodBeat.i(71792);
+    AppMethodBeat.i(17228);
     Validate.notNull(paramBundle, "bundle");
     long l = paramBundle.getLong("com.facebook.TokenCachingStrategy.LastRefreshDate");
-    AppMethodBeat.o(71792);
+    AppMethodBeat.o(17228);
     return l;
   }
   
   public static Set<String> getPermissions(Bundle paramBundle)
   {
-    AppMethodBeat.i(71785);
+    AppMethodBeat.i(17221);
     Validate.notNull(paramBundle, "bundle");
     paramBundle = paramBundle.getStringArrayList("com.facebook.TokenCachingStrategy.Permissions");
     if (paramBundle == null)
     {
-      AppMethodBeat.o(71785);
+      AppMethodBeat.o(17221);
       return null;
     }
     paramBundle = new HashSet(paramBundle);
-    AppMethodBeat.o(71785);
+    AppMethodBeat.o(17221);
     return paramBundle;
   }
   
   public static AccessTokenSource getSource(Bundle paramBundle)
   {
-    AppMethodBeat.i(71788);
+    AppMethodBeat.i(17224);
     Validate.notNull(paramBundle, "bundle");
     if (paramBundle.containsKey("com.facebook.TokenCachingStrategy.AccessTokenSource"))
     {
       paramBundle = (AccessTokenSource)paramBundle.getSerializable("com.facebook.TokenCachingStrategy.AccessTokenSource");
-      AppMethodBeat.o(71788);
+      AppMethodBeat.o(17224);
       return paramBundle;
     }
     if (paramBundle.getBoolean("com.facebook.TokenCachingStrategy.IsSSO"))
     {
       paramBundle = AccessTokenSource.FACEBOOK_APPLICATION_WEB;
-      AppMethodBeat.o(71788);
+      AppMethodBeat.o(17224);
       return paramBundle;
     }
     paramBundle = AccessTokenSource.WEB_VIEW;
-    AppMethodBeat.o(71788);
+    AppMethodBeat.o(17224);
     return paramBundle;
   }
   
   public static String getToken(Bundle paramBundle)
   {
-    AppMethodBeat.i(71779);
+    AppMethodBeat.i(17215);
     Validate.notNull(paramBundle, "bundle");
     paramBundle = paramBundle.getString("com.facebook.TokenCachingStrategy.Token");
-    AppMethodBeat.o(71779);
+    AppMethodBeat.o(17215);
     return paramBundle;
   }
   
   public static boolean hasTokenInformation(Bundle paramBundle)
   {
-    AppMethodBeat.i(71778);
+    AppMethodBeat.i(17214);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(71778);
+      AppMethodBeat.o(17214);
       return false;
     }
     String str = paramBundle.getString("com.facebook.TokenCachingStrategy.Token");
     if ((str == null) || (str.length() == 0))
     {
-      AppMethodBeat.o(71778);
+      AppMethodBeat.o(17214);
       return false;
     }
     if (paramBundle.getLong("com.facebook.TokenCachingStrategy.ExpirationDate", 0L) == 0L)
     {
-      AppMethodBeat.o(71778);
+      AppMethodBeat.o(17214);
       return false;
     }
-    AppMethodBeat.o(71778);
+    AppMethodBeat.o(17214);
     return true;
   }
   
   public static void putApplicationId(Bundle paramBundle, String paramString)
   {
-    AppMethodBeat.i(71795);
+    AppMethodBeat.i(17231);
     Validate.notNull(paramBundle, "bundle");
     paramBundle.putString("com.facebook.TokenCachingStrategy.ApplicationId", paramString);
-    AppMethodBeat.o(71795);
+    AppMethodBeat.o(17231);
   }
   
   static void putDate(Bundle paramBundle, String paramString, Date paramDate)
   {
-    AppMethodBeat.i(71797);
+    AppMethodBeat.i(17233);
     paramBundle.putLong(paramString, paramDate.getTime());
-    AppMethodBeat.o(71797);
+    AppMethodBeat.o(17233);
   }
   
   public static void putDeclinedPermissions(Bundle paramBundle, Collection<String> paramCollection)
   {
-    AppMethodBeat.i(71787);
+    AppMethodBeat.i(17223);
     Validate.notNull(paramBundle, "bundle");
     Validate.notNull(paramCollection, "value");
     paramBundle.putStringArrayList("com.facebook.TokenCachingStrategy.DeclinedPermissions", new ArrayList(paramCollection));
-    AppMethodBeat.o(71787);
+    AppMethodBeat.o(17223);
   }
   
   public static void putExpirationDate(Bundle paramBundle, Date paramDate)
   {
-    AppMethodBeat.i(71782);
+    AppMethodBeat.i(17218);
     Validate.notNull(paramBundle, "bundle");
     Validate.notNull(paramDate, "value");
     putDate(paramBundle, "com.facebook.TokenCachingStrategy.ExpirationDate", paramDate);
-    AppMethodBeat.o(71782);
+    AppMethodBeat.o(17218);
   }
   
   public static void putExpirationMilliseconds(Bundle paramBundle, long paramLong)
   {
-    AppMethodBeat.i(71784);
+    AppMethodBeat.i(17220);
     Validate.notNull(paramBundle, "bundle");
     paramBundle.putLong("com.facebook.TokenCachingStrategy.ExpirationDate", paramLong);
-    AppMethodBeat.o(71784);
+    AppMethodBeat.o(17220);
   }
   
   public static void putLastRefreshDate(Bundle paramBundle, Date paramDate)
   {
-    AppMethodBeat.i(71791);
+    AppMethodBeat.i(17227);
     Validate.notNull(paramBundle, "bundle");
     Validate.notNull(paramDate, "value");
     putDate(paramBundle, "com.facebook.TokenCachingStrategy.LastRefreshDate", paramDate);
-    AppMethodBeat.o(71791);
+    AppMethodBeat.o(17227);
   }
   
   public static void putLastRefreshMilliseconds(Bundle paramBundle, long paramLong)
   {
-    AppMethodBeat.i(71793);
+    AppMethodBeat.i(17229);
     Validate.notNull(paramBundle, "bundle");
     paramBundle.putLong("com.facebook.TokenCachingStrategy.LastRefreshDate", paramLong);
-    AppMethodBeat.o(71793);
+    AppMethodBeat.o(17229);
   }
   
   public static void putPermissions(Bundle paramBundle, Collection<String> paramCollection)
   {
-    AppMethodBeat.i(71786);
+    AppMethodBeat.i(17222);
     Validate.notNull(paramBundle, "bundle");
     Validate.notNull(paramCollection, "value");
     paramBundle.putStringArrayList("com.facebook.TokenCachingStrategy.Permissions", new ArrayList(paramCollection));
-    AppMethodBeat.o(71786);
+    AppMethodBeat.o(17222);
   }
   
   public static void putSource(Bundle paramBundle, AccessTokenSource paramAccessTokenSource)
   {
-    AppMethodBeat.i(71789);
+    AppMethodBeat.i(17225);
     Validate.notNull(paramBundle, "bundle");
     paramBundle.putSerializable("com.facebook.TokenCachingStrategy.AccessTokenSource", paramAccessTokenSource);
-    AppMethodBeat.o(71789);
+    AppMethodBeat.o(17225);
   }
   
   public static void putToken(Bundle paramBundle, String paramString)
   {
-    AppMethodBeat.i(71780);
+    AppMethodBeat.i(17216);
     Validate.notNull(paramBundle, "bundle");
     Validate.notNull(paramString, "value");
     paramBundle.putString("com.facebook.TokenCachingStrategy.Token", paramString);
-    AppMethodBeat.o(71780);
+    AppMethodBeat.o(17216);
   }
   
   private void serializeKey(String paramString, Bundle paramBundle, SharedPreferences.Editor paramEditor)
@@ -535,11 +535,11 @@ final class LegacyTokenHelper
     int i2 = 0;
     int i3 = 0;
     int i = 0;
-    AppMethodBeat.i(71798);
+    AppMethodBeat.i(17234);
     Object localObject = paramBundle.get(paramString);
     if (localObject == null)
     {
-      AppMethodBeat.o(71798);
+      AppMethodBeat.o(17234);
       return;
     }
     JSONObject localJSONObject = new JSONObject();
@@ -559,7 +559,7 @@ final class LegacyTokenHelper
         }
         paramEditor.putString(paramString, localJSONObject.toString());
       }
-      AppMethodBeat.o(71798);
+      AppMethodBeat.o(17234);
       return;
       if ((localObject instanceof Short))
       {
@@ -739,14 +739,14 @@ final class LegacyTokenHelper
   
   public final void clear()
   {
-    AppMethodBeat.i(71777);
+    AppMethodBeat.i(17213);
     this.cache.edit().clear().apply();
-    AppMethodBeat.o(71777);
+    AppMethodBeat.o(17213);
   }
   
   public final Bundle load()
   {
-    AppMethodBeat.i(71775);
+    AppMethodBeat.i(17211);
     Bundle localBundle = new Bundle();
     Iterator localIterator = this.cache.getAll().keySet().iterator();
     while (localIterator.hasNext())
@@ -759,17 +759,17 @@ final class LegacyTokenHelper
       catch (JSONException localJSONException)
       {
         Logger.log(LoggingBehavior.CACHE, 5, TAG, "Error reading cached value for key: '" + str + "' -- " + localJSONException);
-        AppMethodBeat.o(71775);
+        AppMethodBeat.o(17211);
         return null;
       }
     }
-    AppMethodBeat.o(71775);
+    AppMethodBeat.o(17211);
     return localJSONException;
   }
   
   public final void save(Bundle paramBundle)
   {
-    AppMethodBeat.i(71776);
+    AppMethodBeat.i(17212);
     Validate.notNull(paramBundle, "bundle");
     SharedPreferences.Editor localEditor = this.cache.edit();
     Iterator localIterator = paramBundle.keySet().iterator();
@@ -783,17 +783,17 @@ final class LegacyTokenHelper
       catch (JSONException paramBundle)
       {
         Logger.log(LoggingBehavior.CACHE, 5, TAG, "Error processing value for key: '" + str + "' -- " + paramBundle);
-        AppMethodBeat.o(71776);
+        AppMethodBeat.o(17212);
         return;
       }
     }
     localEditor.apply();
-    AppMethodBeat.o(71776);
+    AppMethodBeat.o(17212);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.LegacyTokenHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,14 @@ final class m$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(37100);
-    m.a(this.rvI).sendMessage(0);
-    this.rvI.crh();
-    AppMethodBeat.o(37100);
+    AppMethodBeat.i(187395);
+    this.xar.dwl();
+    AppMethodBeat.o(187395);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m.1
  * JD-Core Version:    0.7.0.1
  */

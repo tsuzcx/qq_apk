@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class au
   extends b
 {
-  public a cof;
+  public a dcT;
   
   public au()
   {
@@ -15,22 +15,21 @@ public final class au
   
   private au(byte paramByte)
   {
-    AppMethodBeat.i(128341);
-    this.cof = new a();
-    this.ymq = false;
+    AppMethodBeat.i(91197);
+    this.dcT = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(128341);
+    AppMethodBeat.o(91197);
   }
   
   public static final class a
   {
-    public String cog;
-    public String username;
+    public boolean dcU;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.au
  * JD-Core Version:    0.7.0.1
  */

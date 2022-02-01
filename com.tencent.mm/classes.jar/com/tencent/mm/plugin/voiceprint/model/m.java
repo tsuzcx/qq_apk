@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac;
-import java.io.File;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.vfs.e;
 
 public final class m
 {
-  public static String bE(String paramString, boolean paramBoolean)
+  public static String bP(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(26113);
-    String str = ac.eQv;
-    ab.i("MicroMsg.VoicePrintLogic", "dbCachePath ".concat(String.valueOf(str)));
-    if (str.endsWith(File.separator)) {}
-    for (paramString = str + paramString;; paramString = str + File.separator + paramString)
+    AppMethodBeat.i(29794);
+    String str = ae.FfH;
+    ad.i("MicroMsg.VoicePrintLogic", "dbCachePath ".concat(String.valueOf(str)));
+    if (str.endsWith("/")) {}
+    for (paramString = str + paramString;; paramString = str + "/" + paramString)
     {
-      ab.i("MicroMsg.VoicePrintLogic", "genpath ".concat(String.valueOf(paramString)));
-      if (!bo.isNullOrNil(paramString)) {
+      ad.i("MicroMsg.VoicePrintLogic", "genpath ".concat(String.valueOf(paramString)));
+      if (!bt.isNullOrNil(paramString)) {
         break;
       }
-      AppMethodBeat.o(26113);
+      AppMethodBeat.o(29794);
       return null;
     }
     if (paramBoolean)
     {
-      AppMethodBeat.o(26113);
+      AppMethodBeat.o(29794);
       return paramString;
     }
-    if (new File(paramString).exists())
+    if (new e(paramString).exists())
     {
-      AppMethodBeat.o(26113);
+      AppMethodBeat.o(29794);
       return paramString;
     }
-    AppMethodBeat.o(26113);
+    AppMethodBeat.o(29794);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.m
  * JD-Core Version:    0.7.0.1
  */

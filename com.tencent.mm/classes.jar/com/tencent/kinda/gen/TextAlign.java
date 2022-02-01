@@ -6,19 +6,19 @@ public enum TextAlign
 {
   static
   {
-    AppMethodBeat.i(141472);
+    AppMethodBeat.i(135992);
     LEFT = new TextAlign("LEFT", 0);
     CENTER = new TextAlign("CENTER", 1);
     RIGHT = new TextAlign("RIGHT", 2);
     $VALUES = new TextAlign[] { LEFT, CENTER, RIGHT };
-    AppMethodBeat.o(141472);
+    AppMethodBeat.o(135992);
   }
   
   private TextAlign() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.gen.TextAlign
  * JD-Core Version:    0.7.0.1
  */

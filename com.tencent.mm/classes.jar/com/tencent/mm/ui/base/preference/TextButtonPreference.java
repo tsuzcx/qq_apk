@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.y;
 
 public class TextButtonPreference
   extends Preference
@@ -24,12 +24,12 @@ public class TextButtonPreference
   
   public final int getLayoutResource()
   {
-    return 2130970183;
+    return 2131494808;
   }
   
   protected final void onBindView(View paramView)
   {
-    AppMethodBeat.i(107297);
+    AppMethodBeat.i(142680);
     super.onBindView(paramView);
     paramView = (TextView)paramView.findViewById(16908310);
     if (paramView != null)
@@ -37,21 +37,21 @@ public class TextButtonPreference
       paramView.setText(getTitle());
       paramView.setEnabled(isEnabled());
     }
-    AppMethodBeat.o(107297);
+    AppMethodBeat.o(142680);
   }
   
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107296);
+    AppMethodBeat.i(142679);
     super.onCreateView(paramViewGroup);
-    paramViewGroup = w.hM(this.mContext).inflate(2130970183, paramViewGroup, false);
-    AppMethodBeat.o(107296);
+    paramViewGroup = y.js(this.mContext).inflate(2131494808, paramViewGroup, false);
+    AppMethodBeat.o(142679);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.TextButtonPreference
  * JD-Core Version:    0.7.0.1
  */

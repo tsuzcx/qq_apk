@@ -2,60 +2,66 @@ package com.tencent.mm.model.gdpr;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.cm.g;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.co.f;
+import com.tencent.mm.co.g;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.i;
+import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
+import com.tencent.mm.protocal.protobuf.auj;
+import com.tencent.mm.protocal.protobuf.cld;
+import com.tencent.mm.protocal.protobuf.duw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class c
 {
-  public static void a(Context paramContext, a parama, String paramString, b paramb)
+  public static void a(Context paramContext, final a parama, final String paramString, final b paramb)
   {
-    AppMethodBeat.i(1494);
-    Context localContext = paramContext;
+    AppMethodBeat.i(40088);
+    final Context localContext = paramContext;
     if (paramContext == null) {
-      localContext = ah.getContext();
+      localContext = aj.getContext();
     }
-    if (abL())
+    if (atn())
     {
-      if (bo.isNullOrNil(paramString))
+      if (bt.isNullOrNil(paramString))
       {
-        paramb.kK(1);
-        AppMethodBeat.o(1494);
+        paramb.ns(1);
+        AppMethodBeat.o(40088);
         return;
       }
-      g.dTg().h(new c.2(parama, paramString, paramb)).g(new c.1(paramb, localContext, parama, paramString));
-      AppMethodBeat.o(1494);
+      g.fkM().h(new com.tencent.mm.vending.c.a() {}).g(new com.tencent.mm.vending.c.a() {});
+      AppMethodBeat.o(40088);
       return;
     }
-    paramb.kK(0);
-    AppMethodBeat.o(1494);
+    paramb.ns(0);
+    AppMethodBeat.o(40088);
   }
   
-  public static boolean abL()
+  public static boolean atn()
   {
-    AppMethodBeat.i(1493);
-    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", IPCVoid.eER, a.class);
+    AppMethodBeat.i(40087);
+    IPCBoolean localIPCBoolean = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", IPCVoid.fZS, a.class);
     if ((localIPCBoolean != null) && (localIPCBoolean.value))
     {
-      AppMethodBeat.o(1493);
+      AppMethodBeat.o(40087);
       return true;
     }
-    AppMethodBeat.o(1493);
+    AppMethodBeat.o(40087);
     return false;
   }
   
   static final class a
-    implements i<IPCVoid, IPCBoolean>
+    implements k<IPCVoid, IPCBoolean>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.gdpr.c
  * JD-Core Version:    0.7.0.1
  */

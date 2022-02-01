@@ -2,7 +2,7 @@ package com.tencent.mm.wear.app.d.a.b;
 
 public abstract interface e
 {
-  public abstract void bP(int paramInt);
+  public abstract void cl(int paramInt);
 }
 
 

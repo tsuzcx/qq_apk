@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="@dimen/s8"
+<LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/hk" android:paddingBottom="@dimen/hk" style="@style/go"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/q_" android:paddingLeft="20.0dip" android:paddingRight="16.0dip" android:layout_width="56.0dip" android:layout_height="fill_parent" android:src="@raw/app_brand_star_delete" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-    <ImageView android:id="@id/g" android:paddingLeft="16.0dip" android:paddingRight="20.0dip" android:layout_width="52.0dip" android:layout_height="fill_parent" android:src="@raw/app_brand_collection_sort_handle_mark" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <View android:id="@id/qa" android:layout_alignLeft="@id/g" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/ww" />
-    <ViewStub android:id="@id/qb" android:background="@null" android:layout="@layout/ci" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/g" android:layout_toRightOf="@id/q_" android:layout_alignParentTop="true" />
-</RelativeLayout>
+    <ImageView android:id="@id/aku" android:focusable="false" android:src="@drawable/dh" style="@style/gi" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
+        <com.tencent.mm.ui.widget.MMTextView android:id="@id/ala" android:background="@drawable/l8" android:maxWidth="225.0dip" android:minHeight="@dimen/aa" style="@style/h0" />
+    </LinearLayout>
+</LinearLayout>

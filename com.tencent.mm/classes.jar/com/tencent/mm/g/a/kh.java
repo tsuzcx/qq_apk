@@ -1,16 +1,17 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.c;
-import com.tencent.mm.aw.e;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.pluginsdk.model.app.am;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class kh
   extends b
 {
-  public a czU;
-  public b czV;
+  public a doE;
+  public b doF;
   
   public kh()
   {
@@ -19,37 +20,32 @@ public final class kh
   
   private kh(byte paramByte)
   {
-    AppMethodBeat.i(137226);
-    this.czU = new a();
-    this.czV = new b();
-    this.ymq = false;
+    AppMethodBeat.i(149868);
+    this.doE = new a();
+    this.doF = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(137226);
+    AppMethodBeat.o(149868);
   }
   
   public static final class a
   {
-    public int action;
-    public List cvl;
-    public e czW;
-    public int czX;
-    public boolean czY;
-    public String czZ;
-    public int position;
+    public String appId;
+    public Context context;
+    public int dcz;
+    public Bundle deG;
+    public WXMediaMessage doG;
+    public am doH;
   }
   
   public static final class b
   {
-    public c cAa;
-    public String cAb;
-    public boolean cmX;
-    public List cvl;
-    public e czW;
+    public boolean doI;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.kh
  * JD-Core Version:    0.7.0.1
  */

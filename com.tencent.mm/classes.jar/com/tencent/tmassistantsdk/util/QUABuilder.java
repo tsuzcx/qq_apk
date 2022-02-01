@@ -17,19 +17,19 @@ public final class QUABuilder
   
   private String getAppSpec()
   {
-    AppMethodBeat.i(76273);
+    AppMethodBeat.i(102516);
     Object localObject = new StringBuffer();
     ((StringBuffer)localObject).append("0");
     ((StringBuffer)localObject).append(this.mVersionName.subSequence(0, 1));
     ((StringBuffer)localObject).append(this.mBuildNo);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(76273);
+    AppMethodBeat.o(102516);
     return localObject;
   }
   
   public final String get()
   {
-    AppMethodBeat.i(76272);
+    AppMethodBeat.i(102515);
     String str = getAppSpec();
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append("TMASDK_");
@@ -61,13 +61,13 @@ public final class QUABuilder
     localStringBuffer.append("&");
     localStringBuffer.append("V3");
     str = localStringBuffer.toString();
-    AppMethodBeat.o(76272);
+    AppMethodBeat.o(102515);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.util.QUABuilder
  * JD-Core Version:    0.7.0.1
  */

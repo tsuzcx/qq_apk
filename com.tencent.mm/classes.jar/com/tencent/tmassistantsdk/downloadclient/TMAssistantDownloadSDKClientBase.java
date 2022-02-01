@@ -158,7 +158,7 @@ public abstract class TMAssistantDownloadSDKClientBase
     //   193: ldc 144
     //   195: iconst_0
     //   196: anewarray 4	java/lang/Object
-    //   199: invokestatic 150	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   199: invokestatic 150	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   202: iload_2
     //   203: istore_1
     //   204: goto -41 -> 163
@@ -344,7 +344,7 @@ public abstract class TMAssistantDownloadSDKClientBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClientBase
  * JD-Core Version:    0.7.0.1
  */

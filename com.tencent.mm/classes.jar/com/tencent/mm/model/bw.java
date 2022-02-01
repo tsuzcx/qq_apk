@@ -1,52 +1,79 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.k;
 
-@Deprecated
-public class bw
+public final class bw
+  extends com.tencent.mm.bx.a
 {
-  static
-  {
-    AppMethodBeat.i(16350);
-    k.a("txmapengine", bw.class.getClassLoader());
-    AppMethodBeat.o(16350);
-  }
+  public String gPh;
+  public long glk;
+  public int key;
   
-  public static at pF(String paramString)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(16349);
-    paramString = q.nA(paramString);
-    if (paramString == null)
+    AppMethodBeat.i(143730);
+    if (paramInt == 0)
     {
-      AppMethodBeat.o(16349);
-      return null;
-    }
-    paramString = paramString.Zk();
-    AppMethodBeat.o(16349);
-    return paramString;
-  }
-  
-  public final boolean a(String paramString, at paramat)
-  {
-    try
-    {
-      AppMethodBeat.i(16348);
-      q localq2 = q.nA(paramString);
-      q localq1 = localq2;
-      if (localq2 == null) {
-        localq1 = q.a(paramString, new q(paramat.getClass()));
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.key);
+      if (this.gPh != null) {
+        paramVarArgs.d(2, this.gPh);
       }
-      localq1.a(paramat);
-      AppMethodBeat.o(16348);
-      return true;
+      paramVarArgs.aG(3, this.glk);
+      AppMethodBeat.o(143730);
+      return 0;
     }
-    finally {}
+    if (paramInt == 1)
+    {
+      int i = f.a.a.b.b.a.bA(1, this.key) + 0;
+      paramInt = i;
+      if (this.gPh != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.gPh);
+      }
+      i = f.a.a.b.b.a.q(3, this.glk);
+      AppMethodBeat.o(143730);
+      return paramInt + i;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.fMq();
+        }
+      }
+      AppMethodBeat.o(143730);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      bw localbw = (bw)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(143730);
+        return -1;
+      case 1: 
+        localbw.key = locala.KhF.xS();
+        AppMethodBeat.o(143730);
+        return 0;
+      case 2: 
+        localbw.gPh = locala.KhF.readString();
+        AppMethodBeat.o(143730);
+        return 0;
+      }
+      localbw.glk = locala.KhF.xT();
+      AppMethodBeat.o(143730);
+      return 0;
+    }
+    AppMethodBeat.o(143730);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.bw
  * JD-Core Version:    0.7.0.1
  */

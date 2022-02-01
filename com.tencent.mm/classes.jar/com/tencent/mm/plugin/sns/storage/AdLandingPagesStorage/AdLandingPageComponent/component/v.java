@@ -1,81 +1,158 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public final class v
-  extends h
+  extends a
 {
-  TextView euY;
-  private RelativeLayout rxv;
-  ImageView rxw;
+  private l wZJ;
+  LinearLayout xbO;
   
-  public v(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v paramv, ViewGroup paramViewGroup)
+  public v(Context paramContext, y paramy, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramv, paramViewGroup);
-    this.rve = paramv;
+    super(paramContext, paramy, paramViewGroup);
   }
   
-  public final void cqA()
+  public final void dvA()
   {
-    AppMethodBeat.i(37261);
-    super.cqA();
-    AppMethodBeat.o(37261);
-  }
-  
-  public final void cqB()
-  {
-    AppMethodBeat.i(37262);
-    super.cqB();
-    AppMethodBeat.o(37262);
-  }
-  
-  public final void cqK()
-  {
-    AppMethodBeat.i(37260);
-    View localView = this.contentView;
-    localView.setBackgroundColor(this.backgroundColor);
-    this.euY = ((TextView)localView.findViewById(2131827861));
-    this.rxv = ((RelativeLayout)localView.findViewById(2131827862));
-    this.rxw = ((ImageView)localView.findViewById(2131827863));
-    AppMethodBeat.o(37260);
-  }
-  
-  protected final void cqP()
-  {
-    AppMethodBeat.i(37259);
-    this.euY.setText(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v)this.rve).label);
-    this.euY.setTextSize(0, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v)this.rve).fontSize);
-    if ((((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v)this.rve).hhh != null) && (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v)this.rve).hhh.length() > 0))
-    {
-      int i = Color.parseColor(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v)this.rve).hhh);
-      this.rxv.setBackgroundColor(i);
+    AppMethodBeat.i(96620);
+    Iterator localIterator = this.wZJ.dwO().iterator();
+    while (localIterator.hasNext()) {
+      ((k)localIterator.next()).dvA();
     }
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v)this.rve).rsU, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v)this.rve).rsJ, new v.1(this));
-    AppMethodBeat.o(37259);
+    super.dvA();
+    AppMethodBeat.o(96620);
   }
   
-  public final void cqz()
+  public final void dvB()
   {
-    AppMethodBeat.i(37258);
-    super.cqz();
-    AppMethodBeat.o(37258);
+    AppMethodBeat.i(96617);
+    Iterator localIterator = this.wZJ.dwO().iterator();
+    while (localIterator.hasNext())
+    {
+      k localk = (k)localIterator.next();
+      if (localk.dwd()) {
+        localk.dvB();
+      }
+    }
+    super.dvB();
+    AppMethodBeat.o(96617);
+  }
+  
+  protected final void dvN()
+  {
+    AppMethodBeat.i(96622);
+    if (((y)this.xab).wWP == 0) {
+      this.xbO.setOrientation(1);
+    }
+    while (this.wZJ == null)
+    {
+      this.wZJ = new l(((y)this.xab).wWO, this.context, this.xbO);
+      this.wZJ.layout();
+      AppMethodBeat.o(96622);
+      return;
+      if (((y)this.xab).wWP == 1) {
+        this.xbO.setOrientation(0);
+      }
+    }
+    this.wZJ.fw(((y)this.xab).wWO);
+    AppMethodBeat.o(96622);
+  }
+  
+  protected final void dvT()
+  {
+    AppMethodBeat.i(96619);
+    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.xab.paddingLeft, (int)this.xab.paddingTop, (int)this.xab.paddingRight, (int)this.xab.paddingBottom);
+    }
+    this.contentView.setLayoutParams(localLayoutParams);
+    AppMethodBeat.o(96619);
+  }
+  
+  public final void dvU()
+  {
+    AppMethodBeat.i(96618);
+    Iterator localIterator = this.wZJ.dwO().iterator();
+    while (localIterator.hasNext())
+    {
+      k localk = (k)localIterator.next();
+      if (localk.dwd())
+      {
+        localk.dvz();
+        localk.dvB();
+      }
+      else
+      {
+        localk.dvA();
+      }
+    }
+    AppMethodBeat.o(96618);
+  }
+  
+  public final List<k> dvV()
+  {
+    AppMethodBeat.i(96624);
+    ArrayList localArrayList = new ArrayList(this.wZJ.dwO());
+    AppMethodBeat.o(96624);
+    return localArrayList;
+  }
+  
+  public final void dvx()
+  {
+    AppMethodBeat.i(96623);
+    this.xbO = ((LinearLayout)this.contentView.findViewById(2131304906));
+    AppMethodBeat.o(96623);
+  }
+  
+  public final void dvy()
+  {
+    AppMethodBeat.i(96621);
+    super.dvy();
+    Iterator localIterator = this.wZJ.dwO().iterator();
+    while (localIterator.hasNext()) {
+      ((k)localIterator.next()).dvy();
+    }
+    AppMethodBeat.o(96621);
+  }
+  
+  public final void dvz()
+  {
+    AppMethodBeat.i(96616);
+    Iterator localIterator = this.wZJ.dwO().iterator();
+    while (localIterator.hasNext())
+    {
+      k localk = (k)localIterator.next();
+      if (localk.dwd()) {
+        localk.dvz();
+      }
+    }
+    super.dvz();
+    AppMethodBeat.o(96616);
   }
   
   protected final int getLayout()
   {
-    return 2130970786;
+    return 2131495504;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.v
  * JD-Core Version:    0.7.0.1
  */

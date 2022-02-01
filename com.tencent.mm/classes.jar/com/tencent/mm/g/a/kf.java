@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class kf
   extends b
 {
-  public kf.a czQ;
-  public kf.b czR;
+  public a doB;
   
   public kf()
   {
@@ -16,17 +15,22 @@ public final class kf
   
   private kf(byte paramByte)
   {
-    AppMethodBeat.i(77552);
-    this.czQ = new kf.a();
-    this.czR = new kf.b();
-    this.ymq = false;
+    AppMethodBeat.i(193469);
+    this.doB = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77552);
+    AppMethodBeat.o(193469);
+  }
+  
+  public static final class a
+  {
+    public String content;
+    public long doC;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.kf
  * JD-Core Version:    0.7.0.1
  */

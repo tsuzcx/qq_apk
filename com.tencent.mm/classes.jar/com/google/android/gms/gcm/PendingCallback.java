@@ -17,16 +17,16 @@ public class PendingCallback
   
   static
   {
-    AppMethodBeat.i(69996);
+    AppMethodBeat.i(3672);
     CREATOR = new zzj();
-    AppMethodBeat.o(69996);
+    AppMethodBeat.o(3672);
   }
   
   public PendingCallback(Parcel paramParcel)
   {
-    AppMethodBeat.i(69994);
+    AppMethodBeat.i(3670);
     this.zzal = paramParcel.readStrongBinder();
-    AppMethodBeat.o(69994);
+    AppMethodBeat.o(3670);
   }
   
   public int describeContents()
@@ -36,14 +36,14 @@ public class PendingCallback
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(69995);
+    AppMethodBeat.i(3671);
     paramParcel.writeStrongBinder(this.zzal);
-    AppMethodBeat.o(69995);
+    AppMethodBeat.o(3671);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.gcm.PendingCallback
  * JD-Core Version:    0.7.0.1
  */

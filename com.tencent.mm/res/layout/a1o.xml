@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/l0">
-        <ImageView android:id="@id/bzk" android:src="@drawable/ag9" style="@style/jd" />
-        <TextView android:id="@id/bzl" android:text="正在获取Wi-Fi信息..." style="@style/k0" />
-        <Button android:textSize="15.0sp" android:id="@id/bzm" android:visibility="invisible" android:layout_width="220.0dip" android:layout_marginTop="70.0dip" android:minHeight="34.0dip" android:text="@string/c31" style="@style/jz" />
-    </LinearLayout>
-</LinearLayout>
+    <RelativeLayout android:id="@id/bt4" android:background="@color/nk" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/brl" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/bhz" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="21.0dip" android:textColor="@color/a_u" android:id="@id/brp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="328.0dip" android:text="@string/byn" android:layout_centerHorizontal="true" />
+        <Button android:textSize="18.0dip" android:textColor="@color/a_u" android:id="@id/brm" android:background="@drawable/rw" android:layout_width="200.0dip" android:layout_height="44.0dip" android:layout_marginTop="525.0dip" android:text="@string/ti" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/bt6" android:background="@color/nk" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/brq" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/bir" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/brr" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="237.0dip" android:layout_marginTop="253.0dip" android:src="@drawable/biq" />
+        <TextView android:textSize="24.0dip" android:textColor="@color/a_u" android:id="@id/brs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:text="@string/byo" android:layout_below="@id/brq" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/brh" android:layout_width="100.0dip" android:layout_height="wrap_content" android:layout_marginTop="148.0dip" android:src="@drawable/bio" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/brk" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/biv" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="21.0dip" android:textColor="@color/a_u" android:id="@id/brj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="323.0dip" android:text="@string/byl" android:layout_centerHorizontal="true" />
+</merge>

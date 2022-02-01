@@ -15,10 +15,10 @@ public class StatisticsUtils
 {
   private static String encryptUid(String paramString)
   {
-    AppMethodBeat.i(118062);
+    AppMethodBeat.i(73349);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(118062);
+      AppMethodBeat.o(73349);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -32,24 +32,24 @@ public class StatisticsUtils
     }
     localStringBuilder.reverse();
     paramString = localStringBuilder.toString();
-    AppMethodBeat.o(118062);
+    AppMethodBeat.o(73349);
     return paramString;
   }
   
   private static char getChar(byte paramByte, int paramInt)
   {
-    AppMethodBeat.i(118061);
+    AppMethodBeat.i(73348);
     char c = (char)(paramByte - getOffset(paramInt & 0x1));
-    AppMethodBeat.o(118061);
+    AppMethodBeat.o(73348);
     return c;
   }
   
   public static String getDeviceUid(Context paramContext)
   {
-    AppMethodBeat.i(118057);
+    AppMethodBeat.i(73344);
     if (paramContext.getPackageName().startsWith("com.tencent"))
     {
-      AppMethodBeat.o(118057);
+      AppMethodBeat.o(73344);
       return "com.tencent";
     }
     String str = getIMEI(paramContext.getApplicationContext());
@@ -70,7 +70,7 @@ public class StatisticsUtils
     for (;;)
     {
       paramContext = toMD5(encryptUid(paramContext));
-      AppMethodBeat.o(118057);
+      AppMethodBeat.o(73344);
       return paramContext;
       i = 0;
       break;
@@ -81,7 +81,7 @@ public class StatisticsUtils
   
   public static String getIMEI(Context paramContext)
   {
-    AppMethodBeat.i(118059);
+    AppMethodBeat.i(73346);
     String str = Settings.Secure.getString(paramContext.getContentResolver(), "android_id");
     if (TextUtils.isEmpty(str))
     {
@@ -90,17 +90,17 @@ public class StatisticsUtils
     }
     for (paramContext = paramContext.getDeviceId();; paramContext = str)
     {
-      AppMethodBeat.o(118059);
+      AppMethodBeat.o(73346);
       return paramContext;
     }
   }
   
   public static String getMacAddr(Context paramContext)
   {
-    AppMethodBeat.i(118058);
+    AppMethodBeat.i(73345);
     if (paramContext == null)
     {
-      AppMethodBeat.o(118058);
+      AppMethodBeat.o(73345);
       return null;
     }
     paramContext = (WifiManager)paramContext.getApplicationContext().getSystemService("wifi");
@@ -111,7 +111,7 @@ public class StatisticsUtils
     }
     for (paramContext = paramContext.getMacAddress();; paramContext = null)
     {
-      AppMethodBeat.o(118058);
+      AppMethodBeat.o(73345);
       return paramContext;
     }
   }
@@ -126,10 +126,10 @@ public class StatisticsUtils
   
   public static String toMD5(String paramString)
   {
-    AppMethodBeat.i(118060);
+    AppMethodBeat.i(73347);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(118060);
+      AppMethodBeat.o(73347);
       return "";
     }
     try
@@ -149,13 +149,13 @@ public class StatisticsUtils
     catch (NoSuchAlgorithmException paramString)
     {
       localObject = "";
-      AppMethodBeat.o(118060);
+      AppMethodBeat.o(73347);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.youtu.ytcommon.auth.StatisticsUtils
  * JD-Core Version:    0.7.0.1
  */

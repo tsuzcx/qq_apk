@@ -1,7 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sns.ui.PhotosContent android:id="@id/esy" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/ep_" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="0.0dip" android:layout_marginTop="0.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/esz" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="76.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/et0" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="152.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-</com.tencent.mm.plugin.sns.ui.PhotosContent>
+<com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center_vertical" android:background="@drawable/a7t" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="fill_parent" android:layout_height="60.0dip" android:minWidth="100.0dip" android:hint="@string/da4" wallet:contentGravity="ahg" wallet:contentTextColor="@color/y4" wallet:layoutRes="@layout/ayj" wallet:titleText="@string/eci" wallet:typeface="gut" style="@style/zm"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" />

@@ -26,25 +26,25 @@ public class WXEmojiSharedObject
   
   public boolean checkArgs()
   {
-    AppMethodBeat.i(128296);
+    AppMethodBeat.i(3996);
     if ((TextUtils.isEmpty(this.packageid)) || (TextUtils.isEmpty(this.thumburl)) || (TextUtils.isEmpty(this.url)) || (this.packageflag == -1))
     {
       Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, packageid or thumburl is invalid");
-      AppMethodBeat.o(128296);
+      AppMethodBeat.o(3996);
       return false;
     }
-    AppMethodBeat.o(128296);
+    AppMethodBeat.o(3996);
     return true;
   }
   
   public void serialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128294);
+    AppMethodBeat.i(3994);
     paramBundle.putString("_wxemojisharedobject_thumburl", this.thumburl);
     paramBundle.putInt("_wxemojisharedobject_packageflag", this.packageflag);
     paramBundle.putString("_wxemojisharedobject_packageid", this.packageid);
     paramBundle.putString("_wxemojisharedobject_url", this.url);
-    AppMethodBeat.o(128294);
+    AppMethodBeat.o(3994);
   }
   
   public int type()
@@ -54,17 +54,17 @@ public class WXEmojiSharedObject
   
   public void unserialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128295);
+    AppMethodBeat.i(3995);
     this.thumburl = paramBundle.getString("_wxwebpageobject_thumburl");
     this.packageflag = paramBundle.getInt("_wxwebpageobject_packageflag");
     this.packageid = paramBundle.getString("_wxwebpageobject_packageid");
     this.url = paramBundle.getString("_wxwebpageobject_url");
-    AppMethodBeat.o(128295);
+    AppMethodBeat.o(3995);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXEmojiSharedObject
  * JD-Core Version:    0.7.0.1
  */

@@ -1,144 +1,175 @@
 package com.google.android.exoplayer2.c.f;
 
+import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.c.e;
 import com.google.android.exoplayer2.c.f;
 import com.google.android.exoplayer2.c.g;
-import com.google.android.exoplayer2.c.h;
 import com.google.android.exoplayer2.c.k;
 import com.google.android.exoplayer2.c.l.a;
-import com.google.android.exoplayer2.i.m;
 import com.google.android.exoplayer2.i.x;
+import com.google.android.exoplayer2.o;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.IOException;
 
 public final class a
   implements e
 {
-  public static final h aBP;
-  private static final int aJO;
-  private final long aJP;
-  private final b aJQ;
-  private final m aJR;
-  private boolean aJS;
+  private static final int bfi;
+  private final Format aSv;
+  private int aXo;
+  private int aYG;
+  private com.google.android.exoplayer2.c.m aZw;
+  private final com.google.android.exoplayer2.i.m bfj;
+  private long bfk;
+  private int bfl;
+  private int version;
   
   static
   {
-    AppMethodBeat.i(95074);
-    aBP = new a.1();
-    aJO = x.aS("ID3");
-    AppMethodBeat.o(95074);
+    AppMethodBeat.i(92187);
+    bfi = x.aY("RCC\001");
+    AppMethodBeat.o(92187);
   }
   
-  public a()
+  public a(Format paramFormat)
   {
-    this(0L);
+    AppMethodBeat.i(92182);
+    this.aSv = paramFormat;
+    this.bfj = new com.google.android.exoplayer2.i.m(9);
+    this.aXo = 0;
+    AppMethodBeat.o(92182);
   }
   
-  public a(long paramLong)
+  private void m(f paramf)
   {
-    AppMethodBeat.i(95069);
-    this.aJP = paramLong;
-    this.aJQ = new b();
-    this.aJR = new m(2786);
-    AppMethodBeat.o(95069);
+    AppMethodBeat.i(92186);
+    while (this.bfl > 0)
+    {
+      this.bfj.reset();
+      paramf.readFully(this.bfj.data, 0, 3);
+      this.aZw.a(this.bfj, 3);
+      this.aYG += 3;
+      this.bfl -= 1;
+    }
+    if (this.aYG > 0) {
+      this.aZw.a(this.bfk, 1, this.aYG, 0, null);
+    }
+    AppMethodBeat.o(92186);
   }
   
   public final int a(f paramf, k paramk)
   {
-    AppMethodBeat.i(95073);
-    int i = paramf.read(this.aJR.data, 0, 2786);
-    if (i == -1)
+    AppMethodBeat.i(92185);
+    int i;
+    for (;;)
     {
-      AppMethodBeat.o(95073);
-      return -1;
+      switch (this.aXo)
+      {
+      default: 
+        paramf = new IllegalStateException();
+        AppMethodBeat.o(92185);
+        throw paramf;
+      case 0: 
+        this.bfj.reset();
+        if (paramf.a(this.bfj.data, 0, 8, true))
+        {
+          if (this.bfj.readInt() != bfi)
+          {
+            paramf = new IOException("Input not RawCC");
+            AppMethodBeat.o(92185);
+            throw paramf;
+          }
+          this.version = this.bfj.readUnsignedByte();
+        }
+        for (i = 1;; i = 0)
+        {
+          if (i == 0) {
+            break label138;
+          }
+          this.aXo = 1;
+          break;
+        }
+        AppMethodBeat.o(92185);
+        return -1;
+      case 1: 
+        label138:
+        this.bfj.reset();
+        if (this.version != 0) {
+          break label232;
+        }
+        if (paramf.a(this.bfj.data, 0, 5, true)) {
+          break label192;
+        }
+        i = 0;
+        if (i == 0) {
+          break label313;
+        }
+        this.aXo = 2;
+      }
     }
-    this.aJR.setPosition(0);
-    this.aJR.em(i);
-    if (!this.aJS)
+    label192:
+    for (this.bfk = (this.bfj.df() * 1000L / 45L);; this.bfk = this.bfj.readLong())
     {
-      this.aJQ.aAT = this.aJP;
-      this.aJS = true;
+      this.bfl = this.bfj.readUnsignedByte();
+      this.aYG = 0;
+      i = 1;
+      break;
+      label232:
+      if (this.version != 1) {
+        break label279;
+      }
+      if (!paramf.a(this.bfj.data, 0, 9, true))
+      {
+        i = 0;
+        break;
+      }
     }
-    this.aJQ.t(this.aJR);
-    AppMethodBeat.o(95073);
+    label279:
+    paramf = new o("Unsupported version number: " + this.version);
+    AppMethodBeat.o(92185);
+    throw paramf;
+    label313:
+    this.aXo = 0;
+    AppMethodBeat.o(92185);
+    return -1;
+    m(paramf);
+    this.aXo = 1;
+    AppMethodBeat.o(92185);
     return 0;
   }
   
   public final void a(g paramg)
   {
-    AppMethodBeat.i(95071);
-    this.aJQ.a(paramg, new v.d(0, 1));
-    paramg.nZ();
+    AppMethodBeat.i(92183);
     paramg.a(new l.a(-9223372036854775807L));
-    AppMethodBeat.o(95071);
+    this.aZw = paramg.bh(0, 3);
+    paramg.sL();
+    this.aZw.f(this.aSv);
+    AppMethodBeat.o(92183);
   }
   
   public final boolean a(f paramf)
   {
-    AppMethodBeat.i(95070);
-    m localm = new m(10);
-    int i = 0;
-    for (;;)
+    AppMethodBeat.i(92184);
+    this.bfj.reset();
+    paramf.b(this.bfj.data, 0, 8);
+    if (this.bfj.readInt() == bfi)
     {
-      paramf.b(localm.data, 0, 10);
-      localm.setPosition(0);
-      if (localm.qO() != aJO) {
-        break;
-      }
-      localm.en(3);
-      j = localm.qS();
-      i += j + 10;
-      paramf.dh(j);
+      AppMethodBeat.o(92184);
+      return true;
     }
-    paramf.nW();
-    paramf.dh(i);
-    int j = 0;
-    int k = i;
-    for (;;)
-    {
-      paramf.b(localm.data, 0, 5);
-      localm.setPosition(0);
-      if (localm.readUnsignedShort() != 2935)
-      {
-        paramf.nW();
-        k += 1;
-        if (k - i >= 8192)
-        {
-          AppMethodBeat.o(95070);
-          return false;
-        }
-        paramf.dh(k);
-        j = 0;
-      }
-      else
-      {
-        j += 1;
-        if (j >= 4)
-        {
-          AppMethodBeat.o(95070);
-          return true;
-        }
-        int m = com.google.android.exoplayer2.a.a.i(localm.data);
-        if (m == -1)
-        {
-          AppMethodBeat.o(95070);
-          return false;
-        }
-        paramf.dh(m - 5);
-      }
-    }
+    AppMethodBeat.o(92184);
+    return false;
   }
   
-  public final void g(long paramLong1, long paramLong2)
+  public final void f(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(95072);
-    this.aJS = false;
-    this.aJQ.ol();
-    AppMethodBeat.o(95072);
+    this.aXo = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.a
  * JD-Core Version:    0.7.0.1
  */

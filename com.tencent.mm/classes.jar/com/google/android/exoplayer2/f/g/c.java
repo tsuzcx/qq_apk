@@ -8,16 +8,16 @@ import java.util.List;
 final class c
   implements d
 {
-  private final List<com.google.android.exoplayer2.f.a> aUg;
+  private final List<com.google.android.exoplayer2.f.a> bsj;
   
   public c(List<com.google.android.exoplayer2.f.a> paramList)
   {
-    AppMethodBeat.i(95720);
-    this.aUg = Collections.unmodifiableList(paramList);
-    AppMethodBeat.o(95720);
+    AppMethodBeat.i(92888);
+    this.bsj = Collections.unmodifiableList(paramList);
+    AppMethodBeat.o(92888);
   }
   
-  public final int ab(long paramLong)
+  public final int am(long paramLong)
   {
     if (paramLong < 0L) {
       return 0;
@@ -25,33 +25,33 @@ final class c
     return -1;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> ac(long paramLong)
+  public final List<com.google.android.exoplayer2.f.a> an(long paramLong)
   {
-    AppMethodBeat.i(95722);
+    AppMethodBeat.i(92890);
     if (paramLong >= 0L)
     {
-      localList = this.aUg;
-      AppMethodBeat.o(95722);
+      localList = this.bsj;
+      AppMethodBeat.o(92890);
       return localList;
     }
     List localList = Collections.emptyList();
-    AppMethodBeat.o(95722);
+    AppMethodBeat.o(92890);
     return localList;
   }
   
-  public final long dT(int paramInt)
+  public final long eR(int paramInt)
   {
-    AppMethodBeat.i(95721);
+    AppMethodBeat.i(92889);
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkArgument(bool);
-      AppMethodBeat.o(95721);
+      AppMethodBeat.o(92889);
       return 0L;
     }
   }
   
-  public final int pH()
+  public final int uB()
   {
     return 1;
   }

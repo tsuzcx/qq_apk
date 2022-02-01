@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="right" android:layout_gravity="right" style="@style/go"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/b3i" android:background="@drawable/ep" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/fx" android:layout_marginTop="@dimen/fx" android:layout_marginRight="@dimen/fx" />
+    <ImageView android:id="@id/ao1" style="@style/gy" />
+    <LinearLayout android:orientation="vertical" android:id="@id/al7" android:background="@drawable/mz" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gq">
+        <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/b4v" style="@style/h3" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/y4" android:gravity="center" android:id="@id/ap1" android:paddingTop="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gc_" />
+    </LinearLayout>
+    <include android:layout_marginTop="5.0dip" layout="@layout/o7" style="@style/gl" />
 </LinearLayout>

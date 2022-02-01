@@ -8,182 +8,198 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.b.a;
 import com.tencent.mm.memory.i;
 import com.tencent.mm.memory.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class PictureView
   extends ImageView
 {
   private boolean DEBUG;
-  private i feX;
-  private boolean feY;
-  private Runnable feZ;
+  private i gFh;
+  private boolean gFi;
+  private Runnable gFj;
   
   public PictureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(115484);
+    AppMethodBeat.i(156531);
     this.DEBUG = false;
-    this.feX = null;
-    this.feY = false;
-    this.feZ = new PictureView.1(this);
-    AppMethodBeat.o(115484);
+    this.gFh = null;
+    this.gFi = false;
+    this.gFj = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(156530);
+        PictureView.a(PictureView.this);
+        AppMethodBeat.o(156530);
+      }
+    };
+    AppMethodBeat.o(156531);
   }
   
   public PictureView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(115485);
+    AppMethodBeat.i(156532);
     this.DEBUG = false;
-    this.feX = null;
-    this.feY = false;
-    this.feZ = new PictureView.1(this);
-    AppMethodBeat.o(115485);
+    this.gFh = null;
+    this.gFi = false;
+    this.gFj = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(156530);
+        PictureView.a(PictureView.this);
+        AppMethodBeat.o(156530);
+      }
+    };
+    AppMethodBeat.o(156532);
   }
   
-  private void Yj()
+  private void apt()
   {
-    AppMethodBeat.i(115491);
-    removeCallbacks(this.feZ);
+    AppMethodBeat.i(156538);
+    removeCallbacks(this.gFj);
     if (this.DEBUG) {
-      ab.i("MicroMsg.PictureView", "onAttach" + hashCode() + " " + bo.dtY().toString());
+      ad.i("MicroMsg.PictureView", "onAttach" + hashCode() + " " + bt.eGN().toString());
     }
-    if (this.feY)
+    if (this.gFi)
     {
-      AppMethodBeat.o(115491);
+      AppMethodBeat.o(156538);
       return;
     }
-    this.feY = true;
-    AppMethodBeat.o(115491);
+    this.gFi = true;
+    AppMethodBeat.o(156538);
   }
   
-  private static String aO(Object paramObject)
+  private static String bT(Object paramObject)
   {
-    AppMethodBeat.i(115486);
+    AppMethodBeat.i(156533);
     if (paramObject == null)
     {
-      AppMethodBeat.o(115486);
+      AppMethodBeat.o(156533);
       return "NULL";
     }
     if ((paramObject instanceof a))
     {
-      paramObject = paramObject + " hashcode " + paramObject.hashCode() + " " + ((a)paramObject).Yi() + " " + ((a)paramObject).Yi().hashCode();
-      AppMethodBeat.o(115486);
+      paramObject = paramObject + " hashcode " + paramObject.hashCode() + " " + ((a)paramObject).aps() + " " + ((a)paramObject).aps().hashCode();
+      AppMethodBeat.o(156533);
       return paramObject;
     }
     paramObject = String.valueOf(paramObject);
-    AppMethodBeat.o(115486);
+    AppMethodBeat.o(156533);
     return paramObject;
   }
   
-  private static void aP(Object paramObject)
+  private static void bU(Object paramObject)
   {
-    AppMethodBeat.i(115489);
+    AppMethodBeat.i(156536);
     if ((paramObject != null) && ((paramObject instanceof i))) {
-      ((i)paramObject).XO();
+      ((i)paramObject).aoX();
     }
-    AppMethodBeat.o(115489);
+    AppMethodBeat.o(156536);
   }
   
-  private static void aQ(Object paramObject)
+  private static void bV(Object paramObject)
   {
-    AppMethodBeat.i(115490);
+    AppMethodBeat.i(156537);
     if ((paramObject != null) && ((paramObject instanceof i))) {
-      ((i)paramObject).XP();
+      ((i)paramObject).aoY();
     }
-    AppMethodBeat.o(115490);
+    AppMethodBeat.o(156537);
   }
   
   private void onDetach()
   {
-    AppMethodBeat.i(115492);
+    AppMethodBeat.i(156539);
     if (this.DEBUG) {
-      ab.i("MicroMsg.PictureView", "onDetach " + hashCode() + " " + bo.dtY().toString());
+      ad.i("MicroMsg.PictureView", "onDetach " + hashCode() + " " + bt.eGN().toString());
     }
-    if (!this.feY)
+    if (!this.gFi)
     {
-      AppMethodBeat.o(115492);
+      AppMethodBeat.o(156539);
       return;
     }
-    this.feY = false;
-    removeCallbacks(this.feZ);
-    postDelayed(this.feZ, 500L);
-    AppMethodBeat.o(115492);
+    this.gFi = false;
+    removeCallbacks(this.gFj);
+    postDelayed(this.gFj, 500L);
+    AppMethodBeat.o(156539);
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(115493);
+    AppMethodBeat.i(156540);
     super.onAttachedToWindow();
-    Yj();
-    AppMethodBeat.o(115493);
+    apt();
+    AppMethodBeat.o(156540);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(115494);
+    AppMethodBeat.i(156541);
     super.onDetachedFromWindow();
     onDetach();
-    AppMethodBeat.o(115494);
+    AppMethodBeat.o(156541);
   }
   
   public void onFinishTemporaryDetach()
   {
-    AppMethodBeat.i(115496);
+    AppMethodBeat.i(156543);
     super.onFinishTemporaryDetach();
-    Yj();
-    AppMethodBeat.o(115496);
+    apt();
+    AppMethodBeat.o(156543);
   }
   
   public void onStartTemporaryDetach()
   {
-    AppMethodBeat.i(115495);
+    AppMethodBeat.i(156542);
     super.onStartTemporaryDetach();
     onDetach();
-    AppMethodBeat.o(115495);
+    AppMethodBeat.o(156542);
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(115488);
-    removeCallbacks(this.feZ);
-    if ((paramDrawable == null) || (paramDrawable.equals(this.feX)))
+    AppMethodBeat.i(156535);
+    removeCallbacks(this.gFj);
+    if ((paramDrawable == null) || (paramDrawable.equals(this.gFh)))
     {
-      AppMethodBeat.o(115488);
+      AppMethodBeat.o(156535);
       return;
     }
     if (this.DEBUG) {
-      ab.i("MicroMsg.PictureView", "setImageDrawable " + hashCode() + " old: " + aO(this.feX) + " new:" + aO(paramDrawable) + " " + bo.dtY().toString());
+      ad.i("MicroMsg.PictureView", "setImageDrawable " + hashCode() + " old: " + bT(this.gFh) + " new:" + bT(paramDrawable) + " " + bt.eGN().toString());
     }
-    aQ(this.feX);
+    bV(this.gFh);
     if ((paramDrawable instanceof i)) {}
-    for (this.feX = ((i)paramDrawable);; this.feX = null)
+    for (this.gFh = ((i)paramDrawable);; this.gFh = null)
     {
-      aP(paramDrawable);
+      bU(paramDrawable);
       super.setImageDrawable(paramDrawable);
-      AppMethodBeat.o(115488);
+      AppMethodBeat.o(156535);
       return;
     }
   }
   
   public void setReleasableBitmap(n paramn)
   {
-    AppMethodBeat.i(115487);
-    if ((paramn == null) || (paramn.equals(this.feX)))
+    AppMethodBeat.i(156534);
+    if ((paramn == null) || (paramn.equals(this.gFh)))
     {
-      AppMethodBeat.o(115487);
+      AppMethodBeat.o(156534);
       return;
     }
-    setImageBitmap(paramn.XT());
-    this.feX = paramn;
-    aP(this.feX);
-    AppMethodBeat.o(115487);
+    setImageBitmap(paramn.apc());
+    this.gFh = paramn;
+    bU(this.gFh);
+    AppMethodBeat.o(156534);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.memory.ui.PictureView
  * JD-Core Version:    0.7.0.1
  */

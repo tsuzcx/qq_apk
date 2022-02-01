@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ep
   extends b
 {
-  public ep.a csv;
-  public b csw;
+  public a dha;
+  public b dhb;
   
   public ep()
   {
@@ -16,22 +16,29 @@ public final class ep
   
   private ep(byte paramByte)
   {
-    AppMethodBeat.i(15761);
-    this.csv = new ep.a();
-    this.csw = new b();
-    this.ymq = false;
+    AppMethodBeat.i(116007);
+    this.dha = new a();
+    this.dhb = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15761);
+    AppMethodBeat.o(116007);
+  }
+  
+  public static final class a
+  {
+    public String cLR;
+    public String data;
+    public String dfM;
   }
   
   public static final class b
   {
-    public boolean cqS;
+    public boolean dfO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ep
  * JD-Core Version:    0.7.0.1
  */

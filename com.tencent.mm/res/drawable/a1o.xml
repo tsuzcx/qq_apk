@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/amb" />
-    <item android:drawable="@drawable/ama" />
+    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/azk" />
+    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/azk" />
+    <item android:state_focused="true" android:drawable="@drawable/azi" />
+    <item android:state_focused="false" android:drawable="@drawable/azj" />
 </selector>

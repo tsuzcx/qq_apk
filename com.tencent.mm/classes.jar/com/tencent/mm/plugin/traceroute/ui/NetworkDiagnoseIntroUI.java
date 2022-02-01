@@ -3,70 +3,99 @@ package com.tencent.mm.plugin.traceroute.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.sdk.platformtools.ac;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
 
 public class NetworkDiagnoseIntroUI
   extends MMActivity
 {
-  private Button tnw;
-  private TextView tnx;
+  private Button yUl;
+  private TextView yUm;
   
   public int getLayoutId()
   {
-    return 2130970353;
+    return 2131495010;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(26015);
-    this.tnw = ((Button)findViewById(2131826520));
-    this.tnw.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(29698);
+    this.yUl = ((Button)findViewById(2131305175));
+    this.yUl.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(26011);
-        aw.aaz();
+        AppMethodBeat.i(29694);
+        az.arV();
         if (!c.isSDCardAvailable())
         {
-          t.ii(NetworkDiagnoseIntroUI.this);
-          AppMethodBeat.o(26011);
+          t.g(NetworkDiagnoseIntroUI.this, null);
+          AppMethodBeat.o(29694);
           return;
         }
-        if (aw.Rc().adt() == 0)
+        if (az.aeS().auR() == 0)
         {
-          Toast.makeText(NetworkDiagnoseIntroUI.this, NetworkDiagnoseIntroUI.this.getString(2131300044), 0).show();
-          AppMethodBeat.o(26011);
+          Toast.makeText(NetworkDiagnoseIntroUI.this, NetworkDiagnoseIntroUI.this.getString(2131759511), 0).show();
+          AppMethodBeat.o(29694);
           return;
         }
-        paramAnonymousView = new Intent(NetworkDiagnoseIntroUI.this, NetworkDiagnoseUI.class);
-        NetworkDiagnoseIntroUI.this.startActivity(paramAnonymousView);
+        Object localObject = new Intent(NetworkDiagnoseIntroUI.this, NetworkDiagnoseUI.class);
+        paramAnonymousView = NetworkDiagnoseIntroUI.this;
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseIntroUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseIntroUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         NetworkDiagnoseIntroUI.this.finish();
-        AppMethodBeat.o(26011);
+        AppMethodBeat.o(29694);
       }
     });
-    this.tnx = ((TextView)findViewById(2131826521));
-    this.tnx.setOnClickListener(new NetworkDiagnoseIntroUI.2(this));
+    this.yUm = ((TextView)findViewById(2131302706));
+    this.yUm.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(29695);
+        paramAnonymousView = new Intent();
+        paramAnonymousView.putExtra("title", NetworkDiagnoseIntroUI.this.getString(2131762012));
+        paramAnonymousView.putExtra("rawUrl", NetworkDiagnoseIntroUI.this.getString(2131764600, new Object[] { ac.eFu(), ac.eFt() }));
+        paramAnonymousView.putExtra("showShare", false);
+        com.tencent.mm.plugin.traceroute.a.a.hYt.i(paramAnonymousView, NetworkDiagnoseIntroUI.this.getContext());
+        AppMethodBeat.o(29695);
+      }
+    });
     setMMTitle("");
-    setBackBtn(new NetworkDiagnoseIntroUI.3(this));
-    AppMethodBeat.o(26015);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(29696);
+        NetworkDiagnoseIntroUI.this.finish();
+        AppMethodBeat.o(29696);
+        return true;
+      }
+    });
+    AppMethodBeat.o(29698);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(26014);
+    AppMethodBeat.i(29697);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(26014);
+    AppMethodBeat.o(29697);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -77,7 +106,7 @@ public class NetworkDiagnoseIntroUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.traceroute.ui.NetworkDiagnoseIntroUI
  * JD-Core Version:    0.7.0.1
  */

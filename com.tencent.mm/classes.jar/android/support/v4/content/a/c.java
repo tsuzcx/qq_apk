@@ -112,11 +112,11 @@ public final class c
   {
     Object localObject = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), a.a.FontFamily);
     String str1 = ((TypedArray)localObject).getString(0);
-    String str2 = ((TypedArray)localObject).getString(1);
-    String str3 = ((TypedArray)localObject).getString(2);
-    int i = ((TypedArray)localObject).getResourceId(3, 0);
-    int j = ((TypedArray)localObject).getInteger(4, 1);
-    int k = ((TypedArray)localObject).getInteger(5, 500);
+    String str2 = ((TypedArray)localObject).getString(4);
+    String str3 = ((TypedArray)localObject).getString(5);
+    int i = ((TypedArray)localObject).getResourceId(1, 0);
+    int j = ((TypedArray)localObject).getInteger(2, 1);
+    int k = ((TypedArray)localObject).getInteger(3, 500);
     ((TypedArray)localObject).recycle();
     if ((str1 != null) && (str2 != null) && (str3 != null))
     {
@@ -158,21 +158,21 @@ public final class c
   {
     paramResources = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), a.a.FontFamilyFont);
     int k;
-    label44:
+    label46:
     boolean bool;
-    label57:
-    label69:
+    label59:
+    label71:
     int j;
-    label81:
+    label83:
     String str1;
-    if (paramResources.hasValue(7))
+    if (paramResources.hasValue(8))
     {
-      i = 7;
+      i = 8;
       k = paramResources.getInt(i, 400);
-      if (!paramResources.hasValue(5)) {
+      if (!paramResources.hasValue(6)) {
         break label148;
       }
-      i = 5;
+      i = 6;
       if (1 != paramResources.getInt(i, 0)) {
         break label153;
       }
@@ -181,13 +181,13 @@ public final class c
         break label159;
       }
       i = 9;
-      if (!paramResources.hasValue(8)) {
+      if (!paramResources.hasValue(7)) {
         break label164;
       }
-      j = 8;
+      j = 7;
       str1 = paramResources.getString(j);
       j = paramResources.getInt(i, 0);
-      if (!paramResources.hasValue(6)) {
+      if (!paramResources.hasValue(5)) {
         break label169;
       }
     }
@@ -198,7 +198,7 @@ public final class c
     label159:
     label164:
     label169:
-    for (int i = 6;; i = 0)
+    for (int i = 5;; i = 0)
     {
       m = paramResources.getResourceId(i, 0);
       str2 = paramResources.getString(i);
@@ -209,13 +209,13 @@ public final class c
       i = 1;
       break;
       i = 2;
-      break label44;
+      break label46;
       bool = false;
-      break label57;
+      break label59;
       i = 3;
-      break label69;
+      break label71;
       j = 4;
-      break label81;
+      break label83;
     }
     return new c(str2, k, bool, str1, j, m);
   }
@@ -225,46 +225,46 @@ public final class c
   public static final class b
     implements c.a
   {
-    public final c.c[] Ah;
+    public final c.c[] GD;
     
     public b(c.c[] paramArrayOfc)
     {
-      this.Ah = paramArrayOfc;
+      this.GD = paramArrayOfc;
     }
   }
   
   public static final class c
   {
-    public int Ai;
-    public boolean Aj;
-    public String Ak;
-    public int Al;
-    public int Am;
+    public int GE;
+    public boolean GF;
+    public String GG;
+    public int GH;
+    public int GI;
     public final String mFileName;
     
     public c(String paramString1, int paramInt1, boolean paramBoolean, String paramString2, int paramInt2, int paramInt3)
     {
       this.mFileName = paramString1;
-      this.Ai = paramInt1;
-      this.Aj = paramBoolean;
-      this.Ak = paramString2;
-      this.Al = paramInt2;
-      this.Am = paramInt3;
+      this.GE = paramInt1;
+      this.GF = paramBoolean;
+      this.GG = paramString2;
+      this.GH = paramInt2;
+      this.GI = paramInt3;
     }
   }
   
   public static final class d
     implements c.a
   {
-    public final a An;
-    public final int Ao;
-    public final int Ap;
+    public final a GJ;
+    public final int GK;
+    public final int GL;
     
     public d(a parama, int paramInt1, int paramInt2)
     {
-      this.An = parama;
-      this.Ap = paramInt1;
-      this.Ao = paramInt2;
+      this.GJ = parama;
+      this.GL = paramInt1;
+      this.GK = paramInt2;
     }
   }
 }

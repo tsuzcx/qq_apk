@@ -7,84 +7,103 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.MMVideoView;
 import com.tencent.mm.plugin.sight.decode.ui.b;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerSeekBar;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 
 public class SnsAdStreamVideoView
   extends MMVideoView
 {
-  public ap smN;
+  public av xXA;
   
   public SnsAdStreamVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(145785);
-    this.smN = new ap(new SnsAdStreamVideoView.2(this), false);
-    AppMethodBeat.o(145785);
+    AppMethodBeat.i(100473);
+    this.xXA = new av(new av.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(100472);
+        SnsAdStreamVideoView.this.setIsShowBasicControls(false);
+        AppMethodBeat.o(100472);
+        return true;
+      }
+    }, false);
+    AppMethodBeat.o(100473);
   }
   
   public SnsAdStreamVideoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(145786);
-    this.smN = new ap(new SnsAdStreamVideoView.2(this), false);
-    AppMethodBeat.o(145786);
+    AppMethodBeat.i(100474);
+    this.xXA = new av(new av.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(100472);
+        SnsAdStreamVideoView.this.setIsShowBasicControls(false);
+        AppMethodBeat.o(100472);
+        return true;
+      }
+    }, false);
+    AppMethodBeat.o(100474);
   }
   
-  public final int cxE()
+  public final int csg()
   {
-    return 2130970799;
+    return 2131495519;
   }
   
-  public final void cxF()
+  public final void dEd()
   {
-    AppMethodBeat.i(145787);
-    this.mwF.setVisibility(0);
-    AppMethodBeat.o(145787);
+    AppMethodBeat.i(100475);
+    this.kuM.setVisibility(0);
+    AppMethodBeat.o(100475);
   }
   
-  public final void cxG()
+  public final void dEe()
   {
-    AppMethodBeat.i(145788);
-    this.mwF.setVisibility(4);
-    AppMethodBeat.o(145788);
+    AppMethodBeat.i(100476);
+    this.kuM.setVisibility(4);
+    AppMethodBeat.o(100476);
   }
   
-  public final b cxH()
+  public final b dEf()
   {
-    AppMethodBeat.i(145789);
+    AppMethodBeat.i(100477);
     b local1 = new b()
     {
-      public final void aFf()
+      public final void bcv()
       {
-        AppMethodBeat.i(145782);
+        AppMethodBeat.i(100470);
         SnsAdStreamVideoView.a(SnsAdStreamVideoView.this).stopTimer();
-        AppMethodBeat.o(145782);
+        AppMethodBeat.o(100470);
       }
       
-      public final void on(int paramAnonymousInt)
+      public final void rZ(int paramAnonymousInt)
       {
-        AppMethodBeat.i(145783);
-        if (SnsAdStreamVideoView.this.d(paramAnonymousInt, true)) {
+        AppMethodBeat.i(100471);
+        if (SnsAdStreamVideoView.a(SnsAdStreamVideoView.this, paramAnonymousInt)) {
           SnsAdStreamVideoView.b(SnsAdStreamVideoView.this);
         }
         SnsAdStreamVideoView.c(SnsAdStreamVideoView.this).setIsPlay(true);
-        AppMethodBeat.o(145783);
+        AppMethodBeat.o(100471);
       }
     };
-    AppMethodBeat.o(145789);
+    AppMethodBeat.o(100477);
     return local1;
   }
   
-  public final void cxI()
+  public final void dEg()
   {
-    AppMethodBeat.i(145790);
-    this.smN.ag(5000L, 0L);
-    AppMethodBeat.o(145790);
+    AppMethodBeat.i(100478);
+    this.xXA.av(5000L, 0L);
+    AppMethodBeat.o(100478);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsAdStreamVideoView
  * JD-Core Version:    0.7.0.1
  */

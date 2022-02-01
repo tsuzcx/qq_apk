@@ -11,19 +11,22 @@ import android.os.Message;
 import android.os.StatFs;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.compatible.util.f;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.kernel.k;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.platformtools.ah;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.y;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.aa;
+import com.tencent.mm.storage.ae;
 import com.tencent.mm.ui.base.t;
+import com.tencent.mm.vfs.o;
 import java.io.File;
+import java.io.IOException;
 
 @k
 @JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.RECEIVERCHECK})
@@ -32,63 +35,80 @@ public class MountReceiver
 {
   private String action;
   private Context context;
-  private ak dYX;
+  private ap fiK;
   
   public MountReceiver()
   {
-    AppMethodBeat.i(15848);
+    AppMethodBeat.i(19882);
     this.context = null;
     this.action = "";
-    this.dYX = new ak(Looper.getMainLooper())
+    this.fiK = new ap(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         boolean bool1 = true;
-        AppMethodBeat.i(15845);
+        AppMethodBeat.i(19879);
         paramAnonymousMessage = MountReceiver.a(MountReceiver.this);
-        boolean bool2 = aw.RG();
+        boolean bool2 = az.afw();
         if (MountReceiver.b(MountReceiver.this) == null) {}
         for (;;)
         {
-          ab.d("MicroMsg.MountReceiver", "dkmount action:%s hasuin:%b ContextNull:%b SdcardFull:%b", new Object[] { paramAnonymousMessage, Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(f.Mj()) });
+          ad.d("MicroMsg.MountReceiver", "dkmount action:%s hasuin:%b ContextNull:%b SdcardFull:%b", new Object[] { paramAnonymousMessage, Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(com.tencent.mm.compatible.util.e.XH()) });
           if (MountReceiver.b(MountReceiver.this) != null) {
             break;
           }
-          AppMethodBeat.o(15845);
+          AppMethodBeat.o(19879);
           return;
           bool1 = false;
         }
-        if (!f.Mj())
+        if (!com.tencent.mm.compatible.util.e.XH())
         {
-          AppMethodBeat.o(15845);
+          AppMethodBeat.o(19879);
           return;
         }
-        t.ij(MountReceiver.b(MountReceiver.this));
-        AppMethodBeat.o(15845);
+        t.jL(MountReceiver.b(MountReceiver.this));
+        AppMethodBeat.o(19879);
       }
     };
-    AppMethodBeat.o(15848);
+    AppMethodBeat.o(19882);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(15849);
-    if ((paramContext == null) || (paramIntent == null) || (ah.isNullOrNil(paramIntent.getAction())))
+    AppMethodBeat.i(19883);
+    if ((paramContext == null) || (paramIntent == null) || (bt.isNullOrNil(paramIntent.getAction())))
     {
-      AppMethodBeat.o(15849);
+      AppMethodBeat.o(19883);
       return;
     }
     this.context = paramContext;
     this.action = paramIntent.getAction();
-    String str1 = Environment.getExternalStorageDirectory().getAbsolutePath();
-    ab.i("MicroMsg.MountReceiver", "dkmount action:%s hasuin:%b SDCARD_ROOT[%s] primaryExtStg[%s]", new Object[] { this.action, Boolean.valueOf(aw.RG()), e.eQx, str1 });
-    boolean bool = this.action.equals("android.intent.action.MEDIA_MOUNTED");
-    if ((!bool) && (!this.action.equals("android.intent.action.MEDIA_EJECT")) && (!this.action.equals("android.intent.action.MEDIA_SHARED")))
-    {
-      AppMethodBeat.o(15849);
-      return;
+    Object localObject1 = Environment.getExternalStorageDirectory();
+    if (localObject1 != null) {
+      localObject1 = ((File)localObject1).getAbsolutePath();
     }
-    if (!e.eQx.equalsIgnoreCase("/dev/null")) {}
+    boolean bool;
+    String str1;
+    for (;;)
+    {
+      ad.i("MicroMsg.MountReceiver", "dkmount action:%s hasuin:%b SDCARD_ROOT[%s] primaryExtStg[%s]", new Object[] { this.action, Boolean.valueOf(az.afw()), b.aib(), localObject1 });
+      bool = this.action.equals("android.intent.action.MEDIA_MOUNTED");
+      if ((bool) || (this.action.equals("android.intent.action.MEDIA_EJECT")) || (this.action.equals("android.intent.action.MEDIA_SHARED"))) {
+        break;
+      }
+      AppMethodBeat.o(19883);
+      return;
+      try
+      {
+        localObject1 = new File("/sdcard/").getCanonicalPath();
+      }
+      catch (IOException localIOException)
+      {
+        ad.printErrStackTrace("MicroMsg.MountReceiver", localIOException, "Fail to resolve canonical path for sdcard root.", new Object[0]);
+        str1 = "/sdcard/";
+      }
+    }
+    if (!b.aib().equalsIgnoreCase("/dev/null")) {}
     int j;
     for (int i = 1;; i = 0)
     {
@@ -96,88 +116,121 @@ public class MountReceiver
       if (i != 0) {}
       try
       {
-        localObject = new StatFs(e.eQx);
-        ab.i("MicroMsg.MountReceiver", "CheckSD path[%s] blocksize:%d blockcount:%d availcount:%d", new Object[] { e.eQx, Integer.valueOf(((StatFs)localObject).getBlockSize()), Integer.valueOf(((StatFs)localObject).getBlockCount()), Integer.valueOf(((StatFs)localObject).getAvailableBlocks()) });
+        localObject2 = new StatFs(b.aib());
+        ad.i("MicroMsg.MountReceiver", "CheckSD path[%s] blocksize:%d blockcount:%d availcount:%d", new Object[] { b.aib(), Integer.valueOf(((StatFs)localObject2).getBlockSize()), Integer.valueOf(((StatFs)localObject2).getBlockCount()), Integer.valueOf(((StatFs)localObject2).getAvailableBlocks()) });
         j = i;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          Object localObject;
-          ab.e("MicroMsg.MountReceiver", "CheckSD failed :%s", new Object[] { localException.getMessage() });
+          Object localObject2;
+          ad.e("MicroMsg.MountReceiver", "CheckSD failed :%s", new Object[] { localException.getMessage() });
           j = 0;
           continue;
           l = 12L;
           continue;
-          paramIntent = new y(ac.eQv + "SdcardInfo.cfg");
+          paramIntent = new aa(ae.FfH + "SdcardInfo.cfg");
           String str2 = (String)paramIntent.get(1, "");
           i = ((Integer)paramIntent.get(2, Integer.valueOf(0))).intValue();
           j = Build.VERSION.SDK_INT;
-          String str3 = e.eQx;
+          String str3 = b.aib();
           paramIntent.set(1, str1);
           paramIntent.set(2, Integer.valueOf(j));
-          e.lo(str1);
-          ab.w("MicroMsg.MountReceiver", "summermount init sdcard root old [%d, %s] to new [%d, %s], [%s] to [%s]", new Object[] { Integer.valueOf(i), str2, Integer.valueOf(j), str1, str3, e.eQx });
+          b.y(str1, false);
+          ad.w("MicroMsg.MountReceiver", "summermount init sdcard root old [%d, %s] to new [%d, %s], [%s] to [%s]", new Object[] { Integer.valueOf(i), str2, Integer.valueOf(j), str1, str3, b.aib() });
         }
-        AppMethodBeat.o(15849);
+        AppMethodBeat.o(19883);
         return;
       }
       paramIntent = paramIntent.getData();
       if (paramIntent == null) {
-        break label602;
+        break label651;
       }
       paramIntent = paramIntent.getPath();
-      if (!e.eQx.equalsIgnoreCase(paramIntent))
+      if (!b.aib().equalsIgnoreCase(paramIntent))
       {
         if ((!bool) || (j != 0)) {
-          break label595;
+          break label644;
         }
-        localObject = h.qsU;
-        if (!e.eQx.equalsIgnoreCase("/dev/null")) {
+        localObject2 = h.vKh;
+        if (!b.aib().equalsIgnoreCase("/dev/null")) {
           break;
         }
         l = 9L;
-        ((h)localObject).idkeyStat(340L, l, 1L, false);
-        if ((ah.isNullOrNil(str1)) || (!str1.equalsIgnoreCase(paramIntent))) {
-          break label588;
+        ((h)localObject2).idkeyStat(340L, l, 1L, false);
+        if ((bt.isNullOrNil(str1)) || (!str1.equalsIgnoreCase(paramIntent))) {
+          break label637;
         }
-        if (new File(ac.eQv + "SdcardInfo.cfg").exists()) {
-          break label448;
+        if (new com.tencent.mm.vfs.e(ae.FfH + "SdcardInfo.cfg").exists()) {
+          break label495;
         }
-        ab.w("MicroMsg.MountReceiver", "summermount init sdcard root old [%s] to new [%s], ver[%d]", new Object[] { e.eQx, str1, Integer.valueOf(Build.VERSION.SDK_INT) });
-        e.eQx = str1;
-        e.lo(str1);
+        ad.w("MicroMsg.MountReceiver", "summermount init sdcard root old [%s] to new [%s], ver[%d]", new Object[] { b.aib(), str1, Integer.valueOf(Build.VERSION.SDK_INT) });
+        b.y(str1, false);
       }
+      o.fih();
       if (!bool) {
-        break label638;
+        break label687;
       }
-      aw.RO().ac(new MountReceiver.2(this));
-      AppMethodBeat.o(15849);
+      az.afE().ax(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(19880);
+          ad.d("MicroMsg.MountReceiver", "dkmount [MOUNT] action:%s hasuin:%b", new Object[] { MountReceiver.a(MountReceiver.this), Boolean.valueOf(az.afw()) });
+          if (!az.afw())
+          {
+            AppMethodBeat.o(19880);
+            return;
+          }
+          g.afB().afn();
+          az.arV();
+          c.afm();
+          MountReceiver.c(MountReceiver.this).sendEmptyMessage(0);
+          AppMethodBeat.o(19880);
+        }
+      });
+      AppMethodBeat.o(19883);
       return;
     }
-    label448:
-    label588:
-    label595:
-    AppMethodBeat.o(15849);
+    label495:
+    label637:
+    AppMethodBeat.o(19883);
+    label644:
     return;
-    label602:
-    paramIntent = h.qsU;
+    label651:
+    paramIntent = h.vKh;
     if (bool) {}
     for (long l = 13L;; l = 14L)
     {
       paramIntent.idkeyStat(340L, l, 1L, false);
       break;
     }
-    label638:
-    t.ii(paramContext);
-    aw.RO().ac(new MountReceiver.3(this));
-    AppMethodBeat.o(15849);
+    label687:
+    t.g(paramContext, null);
+    az.afE().ax(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(19881);
+        ad.d("MicroMsg.MountReceiver", "dkmount [EJECT] action:%s hasuin:%b", new Object[] { MountReceiver.a(MountReceiver.this), Boolean.valueOf(az.afw()) });
+        if (!az.afw())
+        {
+          AppMethodBeat.o(19881);
+          return;
+        }
+        g.afB().afn();
+        az.arV();
+        c.afm();
+        AppMethodBeat.o(19881);
+      }
+    });
+    AppMethodBeat.o(19883);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.booter.MountReceiver
  * JD-Core Version:    0.7.0.1
  */

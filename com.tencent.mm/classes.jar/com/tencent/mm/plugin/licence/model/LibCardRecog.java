@@ -6,9 +6,9 @@ public final class LibCardRecog
 {
   static
   {
-    AppMethodBeat.i(72866);
+    AppMethodBeat.i(40586);
     System.loadLibrary("IDCardRecog");
-    AppMethodBeat.o(72866);
+    AppMethodBeat.o(40586);
   }
   
   public static native int recognizeBankCardGetVersion();
@@ -29,7 +29,7 @@ public final class LibCardRecog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.licence.model.LibCardRecog
  * JD-Core Version:    0.7.0.1
  */

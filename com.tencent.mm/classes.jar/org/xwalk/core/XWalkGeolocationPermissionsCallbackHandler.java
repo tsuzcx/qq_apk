@@ -15,11 +15,11 @@ public class XWalkGeolocationPermissionsCallbackHandler
   
   public XWalkGeolocationPermissionsCallbackHandler(Object paramObject)
   {
-    AppMethodBeat.i(85639);
+    AppMethodBeat.i(154734);
     this.invokeStringbooleanbooleanMethod = new ReflectMethod(null, "invoke", new Class[0]);
     this.bridge = paramObject;
     reflectionInit();
-    AppMethodBeat.o(85639);
+    AppMethodBeat.o(154734);
   }
   
   protected Object getBridge()
@@ -29,11 +29,11 @@ public class XWalkGeolocationPermissionsCallbackHandler
   
   public void invoke(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(85640);
+    AppMethodBeat.i(154735);
     try
     {
       this.invokeStringbooleanbooleanMethod.invoke(new Object[] { paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-      AppMethodBeat.o(85640);
+      AppMethodBeat.o(154735);
       return;
     }
     catch (UnsupportedOperationException paramString)
@@ -41,32 +41,32 @@ public class XWalkGeolocationPermissionsCallbackHandler
       if (this.coreWrapper == null)
       {
         paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85640);
+        AppMethodBeat.o(154735);
         throw paramString;
       }
       XWalkCoreWrapper.handleRuntimeError(paramString);
-      AppMethodBeat.o(85640);
+      AppMethodBeat.o(154735);
     }
   }
   
   void reflectionInit()
   {
-    AppMethodBeat.i(85641);
+    AppMethodBeat.i(154736);
     XWalkCoreWrapper.initEmbeddedMode();
     this.coreWrapper = XWalkCoreWrapper.getInstance();
     if (this.coreWrapper == null)
     {
       XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(85641);
+      AppMethodBeat.o(154736);
       return;
     }
     this.invokeStringbooleanbooleanMethod.init(this.bridge, null, "invokeSuper", new Class[] { String.class, Boolean.TYPE, Boolean.TYPE });
-    AppMethodBeat.o(85641);
+    AppMethodBeat.o(154736);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkGeolocationPermissionsCallbackHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.view.View;
 
 public abstract interface MMSlideDelView$c
 {
-  public abstract int dc(View paramView);
+  public abstract int dw(View paramView);
 }
 
 

@@ -6,23 +6,23 @@ import com.google.android.gms.wearable.Channel;
 final class cm
   implements com.google.android.gms.wearable.d
 {
-  private final Status HS;
-  private final Channel UR;
+  private final Status JH;
+  private final Channel WG;
   
   cm(Status paramStatus, Channel paramChannel)
   {
-    this.HS = ((Status)com.google.android.gms.common.internal.d.u(paramStatus));
-    this.UR = paramChannel;
+    this.JH = ((Status)com.google.android.gms.common.internal.d.D(paramStatus));
+    this.WG = paramChannel;
   }
   
-  public final Status gC()
+  public final Status gM()
   {
-    return this.HS;
+    return this.JH;
   }
   
-  public final Channel kr()
+  public final Channel kA()
   {
-    return this.UR;
+    return this.WG;
   }
 }
 

@@ -1,93 +1,93 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.atc;
-import com.tencent.mm.protocal.protobuf.atd;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.bed;
+import com.tencent.mm.protocal.protobuf.bee;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class af
-  extends m
+  extends n
   implements k
 {
-  public String cHo;
-  private f callback;
-  public int koj;
-  public String kok;
+  private g callback;
+  public String dyd;
+  public int ntx;
+  public String nty;
   private final b rr;
   
   public af(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(87910);
+    AppMethodBeat.i(112852);
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new atc();
-    ((b.a)localObject).fsY = new atd();
+    ((b.a)localObject).gUU = new bed();
+    ((b.a)localObject).gUV = new bee();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/giftcarditem";
-    ((b.a)localObject).funcId = 652;
+    ((b.a)localObject).funcId = 1045;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (atc)this.rr.fsV.fta;
-    ((atc)localObject).cHn = paramString1;
-    ((atc)localObject).xit = paramString2;
-    ((atc)localObject).xiu = paramInt;
-    AppMethodBeat.o(87910);
+    this.rr = ((b.a)localObject).atI();
+    localObject = (bed)this.rr.gUS.gUX;
+    ((bed)localObject).dyc = paramString1;
+    ((bed)localObject).DBL = paramString2;
+    ((bed)localObject).DBM = paramInt;
+    AppMethodBeat.o(112852);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(87911);
-    this.callback = paramf;
+    AppMethodBeat.i(112853);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(87911);
+    AppMethodBeat.o(112853);
     return i;
   }
   
   public final int getType()
   {
-    return 652;
+    return 1045;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(87912);
-    ab.i("MicroMsg.NetSceneGiftCardItem", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
+    AppMethodBeat.i(112854);
+    ad.i("MicroMsg.NetSceneGiftCardItem", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (atd)this.rr.fsW.fta;
+      paramq = (bee)this.rr.gUT.gUX;
       if (paramq != null)
       {
-        this.cHo = paramq.cHo;
-        this.kok = paramq.kok;
-        this.koj = paramq.koj;
+        this.dyd = paramq.dyd;
+        this.nty = paramq.nty;
+        this.ntx = paramq.ntx;
       }
     }
     for (;;)
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(87912);
+      AppMethodBeat.o(112854);
       return;
-      paramq = (atd)this.rr.fsW.fta;
+      paramq = (bee)this.rr.gUT.gUX;
       if (paramq != null)
       {
-        this.cHo = paramq.cHo;
-        this.kok = paramq.kok;
-        this.koj = paramq.koj;
+        this.dyd = paramq.dyd;
+        this.nty = paramq.nty;
+        this.ntx = paramq.ntx;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.af
  * JD-Core Version:    0.7.0.1
  */

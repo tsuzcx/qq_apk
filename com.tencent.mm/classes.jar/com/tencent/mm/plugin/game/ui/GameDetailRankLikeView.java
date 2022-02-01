@@ -13,159 +13,147 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.w;
-import com.tencent.mm.ai.w.a;
-import com.tencent.mm.game.report.c;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.game.d.dj;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.x;
+import com.tencent.mm.game.report.e;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.game.d.dk;
+import com.tencent.mm.plugin.game.d.dl;
 import com.tencent.mm.plugin.game.model.aa;
 import com.tencent.mm.plugin.game.model.aa.a;
-import com.tencent.mm.sdk.platformtools.ab;
 
 public class GameDetailRankLikeView
   extends LinearLayout
   implements View.OnClickListener
 {
   String mAppId;
-  private int nok;
-  aa nwW;
-  aa.a nwX;
-  private Drawable nwY;
-  private Drawable nwZ;
-  private Animation nxa;
-  private ImageView nxb;
-  private TextView nxc;
+  private int rXI;
+  private Drawable sgA;
+  private Animation sgB;
+  private ImageView sgC;
+  private TextView sgD;
+  aa sgx;
+  aa.a sgy;
+  private Drawable sgz;
   
   public GameDetailRankLikeView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  private void im(boolean paramBoolean)
+  private void lZ(boolean paramBoolean)
   {
-    AppMethodBeat.i(111820);
+    AppMethodBeat.i(41989);
     if (paramBoolean)
     {
-      this.nxb.setImageDrawable(this.nwY);
-      AppMethodBeat.o(111820);
+      this.sgC.setImageDrawable(this.sgz);
+      AppMethodBeat.o(41989);
       return;
     }
-    this.nxb.setImageDrawable(this.nwZ);
-    AppMethodBeat.o(111820);
+    this.sgC.setImageDrawable(this.sgA);
+    AppMethodBeat.o(41989);
   }
   
   private void setCount(int paramInt)
   {
-    AppMethodBeat.i(111821);
+    AppMethodBeat.i(41990);
     if (paramInt > 99)
     {
-      this.nxc.setText("99+");
-      AppMethodBeat.o(111821);
+      this.sgD.setText("99+");
+      AppMethodBeat.o(41990);
       return;
     }
     if (paramInt == 0)
     {
-      this.nxc.setText("");
-      AppMethodBeat.o(111821);
+      this.sgD.setText("");
+      AppMethodBeat.o(41990);
       return;
     }
-    this.nxc.setText(String.valueOf(paramInt));
-    AppMethodBeat.o(111821);
+    this.sgD.setText(String.valueOf(paramInt));
+    AppMethodBeat.o(41990);
+  }
+  
+  final void cEf()
+  {
+    AppMethodBeat.i(41988);
+    if (this.sgy != null)
+    {
+      lZ(this.sgy.rXU);
+      setCount(this.sgy.rXT);
+      AppMethodBeat.o(41988);
+      return;
+    }
+    setVisibility(8);
+    AppMethodBeat.o(41988);
   }
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(111822);
-    if (r.Zn().equals(this.nwX.cDt))
+    AppMethodBeat.i(41991);
+    Object localObject1;
+    if (u.aqG().equals(this.sgy.dtV))
     {
-      if (this.nwX.noy > 0)
+      if (this.sgy.rXT > 0)
       {
-        paramView = new Intent(getContext(), GameDetailRankLikedUI.class);
-        paramView.putExtra("extra_appdi", this.mAppId);
-        getContext().startActivity(paramView);
-        AppMethodBeat.o(111822);
+        localObject1 = new Intent(getContext(), GameDetailRankLikedUI.class);
+        ((Intent)localObject1).putExtra("extra_appdi", this.mAppId);
+        paramView = getContext();
+        localObject1 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject1);
+        com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject1).adn(), "com/tencent/mm/plugin/game/ui/GameDetailRankLikeView", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lS(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/game/ui/GameDetailRankLikeView", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(41991);
       }
     }
-    else if (!this.nwX.noz)
+    else if (!this.sgy.rXU)
     {
-      this.nwX.noz = true;
-      paramView = this.nwX;
-      paramView.noy += 1;
-      this.nwW.bGJ();
+      this.sgy.rXU = true;
+      paramView = this.sgy;
+      paramView.rXT += 1;
+      this.sgx.cDE();
       paramView = this.mAppId;
-      String str = this.nwX.cDt;
-      Object localObject = new b.a();
-      ((b.a)localObject).fsX = new dj();
-      ((b.a)localObject).fsY = new dk();
-      ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/upfriend";
-      ((b.a)localObject).funcId = 1330;
-      localObject = ((b.a)localObject).ado();
-      dj localdj = (dj)((b)localObject).fsV.fta;
-      localdj.npZ = paramView;
-      localdj.nul = str;
-      w.a((b)localObject, new w.a()
-      {
-        public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb, m paramAnonymousm)
-        {
-          AppMethodBeat.i(111817);
-          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
-          {
-            ab.e("MicroMsg.GameDetailRankLikeView", "CGI return is not OK. (%d, %d)(%s)", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-            AppMethodBeat.o(111817);
-            return 0;
-          }
-          AppMethodBeat.o(111817);
-          return 0;
-        }
-      });
-      c.a(getContext(), 12, 1203, 1, 2, this.mAppId, this.nok, null);
-      resetState();
-      this.nxb.startAnimation(this.nxa);
+      localObject1 = this.sgy.dtV;
+      Object localObject2 = new b.a();
+      ((b.a)localObject2).gUU = new dk();
+      ((b.a)localObject2).gUV = new dl();
+      ((b.a)localObject2).uri = "/cgi-bin/mmgame-bin/upfriend";
+      ((b.a)localObject2).funcId = 1330;
+      localObject2 = ((b.a)localObject2).atI();
+      dk localdk = (dk)((b)localObject2).gUS.gUX;
+      localdk.fVC = paramView;
+      localdk.sdP = ((String)localObject1);
+      x.a((b)localObject2, new GameDetailRankLikeView.1(this));
+      e.a(getContext(), 12, 1203, 1, 2, this.mAppId, this.rXI, null);
+      cEf();
+      this.sgC.startAnimation(this.sgB);
     }
-    AppMethodBeat.o(111822);
+    AppMethodBeat.o(41991);
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(111818);
+    AppMethodBeat.i(41987);
     super.onFinishInflate();
-    this.nwY = getContext().getResources().getDrawable(2130839028);
-    this.nwZ = getContext().getResources().getDrawable(2130839027);
-    this.nxa = AnimationUtils.loadAnimation(getContext(), 2131034246);
-    inflate(getContext(), 2130969733, this);
+    this.sgz = getContext().getResources().getDrawable(2131232567);
+    this.sgA = getContext().getResources().getDrawable(2131232566);
+    this.sgB = AnimationUtils.loadAnimation(getContext(), 2130772124);
+    inflate(getContext(), 2131494286, this);
     setOnClickListener(this);
-    this.nxb = ((ImageView)findViewById(2131824587));
-    this.nxc = ((TextView)findViewById(2131824588));
-    AppMethodBeat.o(111818);
-  }
-  
-  final void resetState()
-  {
-    AppMethodBeat.i(111819);
-    if (this.nwX != null)
-    {
-      im(this.nwX.noz);
-      setCount(this.nwX.noy);
-      AppMethodBeat.o(111819);
-      return;
-    }
-    setVisibility(8);
-    AppMethodBeat.o(111819);
+    this.sgC = ((ImageView)findViewById(2131301413));
+    this.sgD = ((TextView)findViewById(2131301415));
+    AppMethodBeat.o(41987);
   }
   
   public void setSourceScene(int paramInt)
   {
-    this.nok = paramInt;
+    this.rXI = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDetailRankLikeView
  * JD-Core Version:    0.7.0.1
  */

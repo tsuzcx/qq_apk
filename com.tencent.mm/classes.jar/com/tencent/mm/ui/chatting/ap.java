@@ -1,20 +1,12 @@
 package com.tencent.mm.ui.chatting;
 
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-final class ap
+public abstract interface ap
 {
-  TextView gzk;
-  ImageView ivs;
-  View lNh;
-  TextView zBd;
-  SendDataToDeviceProgressBar zCQ;
+  public abstract void cAy();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ap
  * JD-Core Version:    0.7.0.1
  */

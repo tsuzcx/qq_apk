@@ -9,14 +9,14 @@ public final class k
   
   static
   {
-    AppMethodBeat.i(24471);
+    AppMethodBeat.i(28146);
     SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(j.info, "ShakeNewYearFriendInfo") };
-    AppMethodBeat.o(24471);
+    AppMethodBeat.o(28146);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.k
  * JD-Core Version:    0.7.0.1
  */

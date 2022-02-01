@@ -12,23 +12,23 @@ public class TenpayTTSUtil
   
   public static void destroy()
   {
-    AppMethodBeat.i(5499);
+    AppMethodBeat.i(130963);
     if (sTts != null)
     {
       sTts.stop();
       sTts.shutdown();
       sTts = null;
     }
-    AppMethodBeat.o(5499);
+    AppMethodBeat.o(130963);
   }
   
   public static void init(Context paramContext)
   {
-    AppMethodBeat.i(5495);
+    AppMethodBeat.i(130959);
     if (sTts == null) {
       sTts = new TextToSpeech(paramContext.getApplicationContext(), null);
     }
-    AppMethodBeat.o(5495);
+    AppMethodBeat.o(130959);
   }
   
   public static void setEnabled(boolean paramBoolean)
@@ -38,34 +38,34 @@ public class TenpayTTSUtil
   
   public static void speak(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(5497);
+    AppMethodBeat.i(130961);
     if ((sEnabled) && (sTts != null) && (!TextUtils.isEmpty(paramCharSequence))) {
       sTts.speak(paramCharSequence.toString(), 1, null);
     }
-    AppMethodBeat.o(5497);
+    AppMethodBeat.o(130961);
   }
   
   public static void speak(String paramString)
   {
-    AppMethodBeat.i(5496);
+    AppMethodBeat.i(130960);
     if ((sEnabled) && (sTts != null) && (!TextUtils.isEmpty(paramString))) {
       sTts.speak(paramString, 1, null);
     }
-    AppMethodBeat.o(5496);
+    AppMethodBeat.o(130960);
   }
   
   public static void stop()
   {
-    AppMethodBeat.i(5498);
+    AppMethodBeat.i(130962);
     if (sTts != null) {
       sTts.stop();
     }
-    AppMethodBeat.o(5498);
+    AppMethodBeat.o(130962);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tenpay.android.wechat.TenpayTTSUtil
  * JD-Core Version:    0.7.0.1
  */

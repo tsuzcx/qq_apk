@@ -6,35 +6,49 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.d;
 import com.tencent.mm.plugin.appbrand.canvas.e;
 import com.tencent.mm.plugin.appbrand.canvas.e.a;
-import com.tencent.mm.plugin.appbrand.e.a;
-import com.tencent.mm.plugin.appbrand.e.b;
+import com.tencent.mm.plugin.appbrand.g.a;
+import com.tencent.mm.plugin.appbrand.g.a.b;
+import com.tencent.mm.plugin.appbrand.g.b;
 
 public final class c
   implements e
 {
   public final Bitmap a(d paramd, String paramString)
   {
-    AppMethodBeat.i(132092);
+    AppMethodBeat.i(47473);
     paramd = a(paramd, paramString, null);
-    AppMethodBeat.o(132092);
+    AppMethodBeat.o(47473);
     return paramd;
   }
   
-  public final Bitmap a(d paramd, String paramString, Rect paramRect, e.a parama)
+  public final Bitmap a(final d paramd, final String paramString, Rect paramRect, final e.a parama)
   {
-    AppMethodBeat.i(132094);
-    com.tencent.mm.plugin.appbrand.jsapi.c localc = paramd.bDN;
-    String str = ((b)localc.q(b.class)).b(localc, paramString);
-    paramd = ((a)localc.q(a.class)).a(str, paramRect, new c.1(this, parama, paramd, paramString));
-    AppMethodBeat.o(132094);
+    AppMethodBeat.i(47475);
+    com.tencent.mm.plugin.appbrand.jsapi.c localc = paramd.cfX;
+    String str = ((b)localc.K(b.class)).b(localc, paramString);
+    paramd = ((a)localc.K(a.class)).a(str, paramRect, new a.b()
+    {
+      public final void M(Bitmap paramAnonymousBitmap)
+      {
+        AppMethodBeat.i(47472);
+        if ((parama == null) || (paramAnonymousBitmap == null) || (paramAnonymousBitmap.isRecycled()))
+        {
+          AppMethodBeat.o(47472);
+          return;
+        }
+        parama.a(paramd);
+        AppMethodBeat.o(47472);
+      }
+    });
+    AppMethodBeat.o(47475);
     return paramd;
   }
   
   public final Bitmap a(d paramd, String paramString, e.a parama)
   {
-    AppMethodBeat.i(132093);
+    AppMethodBeat.i(47474);
     paramd = a(paramd, paramString, null, parama);
-    AppMethodBeat.o(132093);
+    AppMethodBeat.o(47474);
     return paramd;
   }
 }

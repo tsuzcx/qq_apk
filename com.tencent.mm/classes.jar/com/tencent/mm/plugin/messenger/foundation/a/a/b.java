@@ -3,61 +3,54 @@ package com.tencent.mm.plugin.messenger.foundation.a.a;
 import com.tencent.mm.j.a.a.c;
 import com.tencent.mm.j.a.a.d;
 import com.tencent.mm.sdk.e.h;
-import com.tencent.mm.storage.w;
+import com.tencent.mm.storage.y;
 
 public abstract interface b
   extends h
 {
-  public abstract long SQ(String paramString);
+  public abstract int A(String paramString, long paramLong1, long paramLong2);
   
-  public abstract long SR(String paramString);
+  public abstract long a(y paramy);
   
-  public abstract long SS(String paramString);
-  
-  public abstract long ST(String paramString);
-  
-  public abstract long SU(String paramString);
-  
-  public abstract d SV(String paramString);
-  
-  public abstract boolean SW(String paramString);
-  
-  public abstract c SX(String paramString);
-  
-  public abstract w SY(String paramString);
-  
-  public abstract StringBuilder SZ(String paramString);
-  
-  public abstract boolean Y(String paramString, long paramLong);
-  
-  public abstract boolean Z(String paramString, long paramLong);
-  
-  public abstract long a(w paramw);
-  
-  public abstract long a(w paramw, boolean paramBoolean);
+  public abstract long a(y paramy, boolean paramBoolean);
   
   public abstract boolean a(String paramString, d paramd);
   
-  public abstract boolean aa(String paramString, long paramLong);
+  public abstract long afT(String paramString);
   
-  public abstract boolean ab(String paramString, long paramLong);
+  public abstract long afU(String paramString);
   
-  public abstract c ac(String paramString, long paramLong);
+  public abstract long afV(String paramString);
   
-  public abstract long b(w paramw);
+  public abstract long afW(String paramString);
   
-  public abstract boolean bPT();
+  public abstract long afX(String paramString);
+  
+  public abstract d afY(String paramString);
+  
+  public abstract boolean afZ(String paramString);
+  
+  public abstract c aga(String paramString);
+  
+  public abstract y agb(String paramString);
+  
+  public abstract StringBuilder agc(String paramString);
+  
+  public abstract boolean av(String paramString, long paramLong);
+  
+  public abstract boolean aw(String paramString, long paramLong);
+  
+  public abstract boolean ax(String paramString, long paramLong);
+  
+  public abstract boolean ay(String paramString, long paramLong);
+  
+  public abstract c az(String paramString, long paramLong);
+  
+  public abstract long b(y paramy);
+  
+  public abstract boolean cOL();
   
   public abstract c f(String paramString, long paramLong, boolean paramBoolean);
-  
-  public abstract int v(String paramString, long paramLong1, long paramLong2);
-  
-  public static final class a
-  {
-    public int id;
-    public boolean oDK;
-    public String username;
-  }
 }
 
 

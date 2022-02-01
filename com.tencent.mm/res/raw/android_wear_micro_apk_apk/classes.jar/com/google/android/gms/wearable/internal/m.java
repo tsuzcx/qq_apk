@@ -17,7 +17,7 @@ public final class m
     return getString("asset_id");
   }
   
-  public final String kw()
+  public final String kF()
   {
     return getString("asset_key");
   }

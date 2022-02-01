@@ -1,18 +1,9 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.widget.ImageView;
-import android.widget.TextView;
-
-final class aw
-{
-  TextView gui;
-  ImageView iTH;
-  TextView nxi;
-  TextView zYv;
-}
+public final class aw {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.aw
  * JD-Core Version:    0.7.0.1
  */

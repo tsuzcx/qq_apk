@@ -15,7 +15,7 @@ class MMKView$4
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(144965);
+    AppMethodBeat.i(19124);
     if (MMKView.access$200(this.this$0) != null)
     {
       paramView = TouchAction.DOWN;
@@ -27,7 +27,7 @@ class MMKView$4
     {
       paramView = new TouchEvent(paramMotionEvent.getX(), paramMotionEvent.getY(), paramView);
       MMKView.access$200(this.this$0).onTouch(paramView);
-      AppMethodBeat.o(144965);
+      AppMethodBeat.o(19124);
       return false;
       paramView = TouchAction.DOWN;
       continue;
@@ -39,7 +39,7 @@ class MMKView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKView.4
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.h;
 
 public class ShortcutBroadCastReceiver
@@ -12,15 +12,15 @@ public class ShortcutBroadCastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(79060);
+    AppMethodBeat.i(151431);
     if (paramIntent == null)
     {
-      ab.e("MicroMsg.ShortcutBroadCastReceiver", "alvinluo shortcut receiver intent is null");
-      AppMethodBeat.o(79060);
+      ad.e("MicroMsg.ShortcutBroadCastReceiver", "alvinluo shortcut receiver intent is null");
+      AppMethodBeat.o(151431);
       return;
     }
-    h.bO(paramContext, paramContext.getString(2131296540));
-    AppMethodBeat.o(79060);
+    h.cf(paramContext, paramContext.getString(2131755275));
+    AppMethodBeat.o(151431);
   }
 }
 

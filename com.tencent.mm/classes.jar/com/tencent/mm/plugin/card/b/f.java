@@ -4,204 +4,208 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.protocal.protobuf.adv;
-import com.tencent.mm.protocal.protobuf.oj;
-import com.tencent.mm.protocal.protobuf.oz;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.protocal.protobuf.uo;
-import com.tencent.mm.protocal.protobuf.ye;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.abm;
+import com.tencent.mm.protocal.protobuf.amg;
+import com.tencent.mm.protocal.protobuf.qo;
+import com.tencent.mm.protocal.protobuf.rh;
+import com.tencent.mm.protocal.protobuf.ro;
+import com.tencent.mm.protocal.protobuf.xo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class f
 {
-  private int ejF;
-  private MMActivity jpX;
-  public com.tencent.mm.plugin.card.base.b klk;
-  public List<com.tencent.mm.plugin.card.model.b> klo;
-  public com.tencent.mm.plugin.card.model.b klp;
-  private ArrayList<oz> klq;
+  private int fsv;
+  public com.tencent.mm.plugin.card.base.b nqp;
+  private MMActivity nqt;
+  public List<com.tencent.mm.plugin.card.model.b> nqu;
+  public com.tencent.mm.plugin.card.model.b nqv;
+  private ArrayList<rh> nqw;
   
   public f(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(87674);
-    this.ejF = 3;
-    this.klo = new ArrayList();
-    this.jpX = paramMMActivity;
-    AppMethodBeat.o(87674);
+    AppMethodBeat.i(112618);
+    this.fsv = 3;
+    this.nqu = new ArrayList();
+    this.nqt = paramMMActivity;
+    AppMethodBeat.o(112618);
   }
   
-  private boolean bbF()
+  private boolean bIx()
   {
-    AppMethodBeat.i(87676);
-    if ((l.tt(this.ejF)) || (l.tu(this.ejF)) || (this.ejF == 23))
+    AppMethodBeat.i(112620);
+    if ((l.zn(this.fsv)) || (l.zo(this.fsv)) || (this.fsv == 23))
     {
-      if ((this.klk.isAcceptable()) && (this.klk.bbd().wGt != null) && (!TextUtils.isEmpty(this.klk.bbd().wGt.text)) && (!TextUtils.isEmpty(this.klk.bbd().wFW)))
+      if ((this.nqp.isAcceptable()) && (this.nqp.bHV().CRY != null) && (!TextUtils.isEmpty(this.nqp.bHV().CRY.text)) && (!TextUtils.isEmpty(this.nqp.bHV().CRC)))
       {
-        AppMethodBeat.o(87676);
+        AppMethodBeat.o(112620);
         return true;
       }
     }
-    else if ((this.ejF == 6) && (this.klk.bba()) && (this.klk.bbd().wGt != null) && (!TextUtils.isEmpty(this.klk.bbd().wGt.text)) && (!TextUtils.isEmpty(this.klk.bbd().wFW)))
+    else if ((this.fsv == 6) && (this.nqp.bHS()) && (this.nqp.bHV().CRY != null) && (!TextUtils.isEmpty(this.nqp.bHV().CRY.text)) && (!TextUtils.isEmpty(this.nqp.bHV().CRC)))
     {
-      AppMethodBeat.o(87676);
+      AppMethodBeat.o(112620);
       return true;
     }
-    AppMethodBeat.o(87676);
+    AppMethodBeat.o(112620);
     return false;
   }
   
   private String getString(int paramInt)
   {
-    AppMethodBeat.i(87679);
-    String str = this.jpX.getString(paramInt);
-    AppMethodBeat.o(87679);
+    AppMethodBeat.i(112623);
+    String str = this.nqt.getString(paramInt);
+    AppMethodBeat.o(112623);
     return str;
   }
   
-  public final void a(com.tencent.mm.plugin.card.base.b paramb, ArrayList<oz> paramArrayList, int paramInt)
+  public final void a(com.tencent.mm.plugin.card.base.b paramb, ArrayList<rh> paramArrayList, int paramInt)
   {
-    this.klk = paramb;
-    this.klq = paramArrayList;
-    this.ejF = paramInt;
+    this.nqp = paramb;
+    this.nqw = paramArrayList;
+    this.fsv = paramInt;
   }
   
-  public final List<com.tencent.mm.plugin.card.model.b> bbE()
+  public final List<com.tencent.mm.plugin.card.model.b> bIw()
   {
-    AppMethodBeat.i(87675);
-    this.klo.clear();
-    if ((this.klk.bbe().wEf != null) && (!bo.isNullOrNil(this.klk.bbe().wEf.title)))
+    AppMethodBeat.i(112619);
+    this.nqu.clear();
+    if ((this.nqp.bHW().CPG != null) && (!bt.isNullOrNil(this.nqp.bHW().CPG.title)))
     {
       localObject1 = new com.tencent.mm.plugin.card.model.b();
-      ((com.tencent.mm.plugin.card.model.b)localObject1).kmx = 1;
-      ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.klk.bbe().wEf.title;
-      ((com.tencent.mm.plugin.card.model.b)localObject1).kqb = "";
+      ((com.tencent.mm.plugin.card.model.b)localObject1).nrC = 1;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.nqp.bHW().CPG.title;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).nvv = "";
       ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_card_gift";
-      ((com.tencent.mm.plugin.card.model.b)localObject1).kWy = this.klk.bbe().wEf.kWy;
-      this.klo.add(localObject1);
+      ((com.tencent.mm.plugin.card.model.b)localObject1).odo = this.nqp.bHW().CPG.odo;
+      this.nqu.add(localObject1);
     }
-    if ((this.klk.bbe().wDO != null) && (this.klk.bbe().wDO.size() > 0))
+    if ((this.nqp.bHW().CPp != null) && (this.nqp.bHW().CPp.size() > 0))
     {
-      localObject1 = l.bg(this.klk.bbe().wDO);
+      localObject1 = l.cC(this.nqp.bHW().CPp);
       if (localObject1 != null)
       {
-        ((com.tencent.mm.plugin.card.model.b)((List)localObject1).get(0)).kmy = false;
-        this.klo.addAll((Collection)localObject1);
+        ((com.tencent.mm.plugin.card.model.b)((List)localObject1).get(0)).nrD = false;
+        this.nqu.addAll((Collection)localObject1);
       }
     }
     int i;
-    if (((this.ejF == 6) && (this.klk.bbe().wDS <= 0)) || ((l.tv(this.ejF)) && (this.klk.isNormal()) && (this.klk.baJ()) && (this.klk.baR())))
+    if (((this.fsv == 6) && (this.nqp.bHW().CPt <= 0)) || ((l.zp(this.fsv)) && (this.nqp.bHR()) && (this.nqp.bHA()) && (this.nqp.bHI())))
     {
       localObject1 = new com.tencent.mm.plugin.card.model.b();
-      ((com.tencent.mm.plugin.card.model.b)localObject1).kmx = 1;
-      if (!bo.isNullOrNil(this.klk.bbd().wGL))
+      ((com.tencent.mm.plugin.card.model.b)localObject1).nrC = 1;
+      if (!bt.isNullOrNil(this.nqp.bHV().CSq))
       {
-        ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.klk.bbd().wGL;
-        ((com.tencent.mm.plugin.card.model.b)localObject1).kqb = "";
+        ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.nqp.bHV().CSq;
+        ((com.tencent.mm.plugin.card.model.b)localObject1).nvv = "";
         ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_gift";
-        this.klo.add(localObject1);
+        this.nqu.add(localObject1);
       }
     }
     else
     {
-      if ((this.klk.bbe().status != 0) && (this.klk.bbe().status != 1)) {
-        this.klk.bbe();
+      if ((this.nqp.bHW().status != 0) && (this.nqp.bHW().status != 1)) {
+        this.nqp.bHW();
       }
-      if ((this.ejF != 3) && (this.ejF == 6)) {
-        this.klk.bbe();
+      if ((this.fsv != 3) && (this.fsv == 6)) {
+        this.nqp.bHW();
       }
-      localObject2 = this.klk.bbd().wGr;
-      if (this.klk.bbe().wDY != null) {
-        TextUtils.isEmpty(this.klk.bbe().wDY.title);
+      localObject2 = this.nqp.bHV().CRW;
+      if (this.nqp.bHW().CPz != null) {
+        TextUtils.isEmpty(this.nqp.bHW().CPz.title);
       }
       localObject1 = new com.tencent.mm.plugin.card.model.b();
-      if (!this.klk.baP()) {
-        break label1041;
+      if (!this.nqp.bHG()) {
+        break label1076;
       }
       i = 0;
       label479:
-      ((com.tencent.mm.plugin.card.model.b)localObject1).kmy = false;
-      ((com.tencent.mm.plugin.card.model.b)localObject1).kmx = 1;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).nrD = false;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).nrC = 1;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(getTitle());
-      ((StringBuilder)localObject2).append(getString(2131297897));
+      ((StringBuilder)localObject2).append(getString(2131756829));
       ((com.tencent.mm.plugin.card.model.b)localObject1).title = ((StringBuilder)localObject2).toString();
-      ((com.tencent.mm.plugin.card.model.b)localObject1).kmn = "";
-      ((com.tencent.mm.plugin.card.model.b)localObject1).kqb = "";
+      ((com.tencent.mm.plugin.card.model.b)localObject1).nrs = "";
+      ((com.tencent.mm.plugin.card.model.b)localObject1).nvv = "";
       ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_detail";
       if (i != 0) {
-        this.klo.add(localObject1);
+        this.nqu.add(localObject1);
       }
-      if ((!this.klk.baN()) || (this.klk.bbd().wGd <= 0))
+      if ((!this.nqp.bHE()) || (this.nqp.bHV().CRJ <= 0))
       {
-        if ((!this.klk.baL()) || (this.klk.bbd().wGd <= 0))
+        if ((!this.nqp.bHC()) || (this.nqp.bHV().CRJ <= 0))
         {
-          if (this.klk.bbd().wGd <= 0) {
+          if (this.nqp.bHV().CRJ <= 0) {
             break label925;
           }
-          ab.e("MicroMsg.CardDetailDataMgr", "shop_count:" + this.klk.bbd().wGd);
-          if ((this.klk.bbd().wGd > 0) && (this.klq != null) && (this.klq.size() > 0))
+          ad.e("MicroMsg.CardDetailDataMgr", "shop_count:" + this.nqp.bHV().CRJ);
+          if ((this.nqp.bHV().CRJ > 0) && (this.nqw != null) && (this.nqw.size() > 0))
           {
-            localObject1 = (oz)this.klq.get(0);
-            if ((localObject1 == null) || (((oz)localObject1).rqZ >= 50000.0F)) {
-              break label1089;
+            localObject1 = (rh)this.nqw.get(0);
+            if ((localObject1 == null) || (((rh)localObject1).wUu >= 50000.0F)) {
+              break label1124;
             }
             localObject2 = new com.tencent.mm.plugin.card.model.b();
-            ((com.tencent.mm.plugin.card.model.b)localObject2).kmx = 2;
-            ((com.tencent.mm.plugin.card.model.b)localObject2).title = ((oz)localObject1).name;
-            ((com.tencent.mm.plugin.card.model.b)localObject2).kmn = this.jpX.getString(2131298054, new Object[] { l.g(this.jpX, ((oz)localObject1).rqZ), ((oz)localObject1).fBq });
-            ((com.tencent.mm.plugin.card.model.b)localObject2).kqb = "";
+            ((com.tencent.mm.plugin.card.model.b)localObject2).nrC = 2;
+            ((com.tencent.mm.plugin.card.model.b)localObject2).title = ((rh)localObject1).name;
+            ((com.tencent.mm.plugin.card.model.b)localObject2).nrs = this.nqt.getString(2131756996, new Object[] { l.f(this.nqt, ((rh)localObject1).wUu), ((rh)localObject1).hdQ });
+            ((com.tencent.mm.plugin.card.model.b)localObject2).nvv = "";
             ((com.tencent.mm.plugin.card.model.b)localObject2).url = "card://jump_shop";
-            ((com.tencent.mm.plugin.card.model.b)localObject2).kmA = ((oz)localObject1).kmA;
-            ((com.tencent.mm.plugin.card.model.b)localObject2).color = this.klk.bbd().color;
-            this.klo.add(localObject2);
+            ((com.tencent.mm.plugin.card.model.b)localObject2).nrG = ((rh)localObject1).nrG;
+            ((com.tencent.mm.plugin.card.model.b)localObject2).gHT = this.nqp.bHV().gHT;
+            this.nqu.add(localObject2);
           }
         }
         label826:
-        if ((this.klk.bbd().wGd <= 0) || (this.klq != null)) {
-          break label1135;
+        if ((this.nqp.bHV().CRJ <= 0) || (this.nqw != null)) {
+          break label1170;
         }
         localObject1 = new com.tencent.mm.plugin.card.model.b();
-        ((com.tencent.mm.plugin.card.model.b)localObject1).kmx = 1;
-        if (TextUtils.isEmpty(this.klk.bbd().wGC)) {
-          break label1121;
+        ((com.tencent.mm.plugin.card.model.b)localObject1).nrC = 1;
+        if (TextUtils.isEmpty(this.nqp.bHV().CSh)) {
+          break label1156;
         }
-        ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.klk.bbd().wGC;
-        ((com.tencent.mm.plugin.card.model.b)localObject1).kmn = "";
-        ((com.tencent.mm.plugin.card.model.b)localObject1).kqb = "";
+        ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.nqp.bHV().CSh;
+        ((com.tencent.mm.plugin.card.model.b)localObject1).nrs = "";
+        ((com.tencent.mm.plugin.card.model.b)localObject1).nvv = "";
         ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_shop_list";
-        this.klo.add(localObject1);
+        this.nqu.add(localObject1);
       }
     }
     label925:
-    label1089:
-    label1121:
-    label1135:
-    while ((this.klk.bbd().wGd <= 0) || (this.klq == null) || (this.klq.size() <= 0)) {
+    label1076:
+    label1124:
+    while ((this.nqp.bHV().CRJ <= 0) || (this.nqw == null) || (this.nqw.size() <= 0)) {
       for (;;)
       {
-        if (((!this.klk.baP()) || (this.klk.bbe().status != 3)) && (!TextUtils.isEmpty(this.klk.bbd().wFW))) {
-          this.klo.add(bbH());
+        if (((!this.nqp.bHG()) || (this.nqp.bHW().status != 3)) && (!TextUtils.isEmpty(this.nqp.bHV().CRC))) {
+          this.nqu.add(bIz());
         }
-        localObject1 = this.klo;
-        AppMethodBeat.o(87675);
-        return localObject1;
-        if (this.klk.baP())
+        if (!this.nqp.bHC()) {
+          break label1493;
+        }
+        localObject1 = this.nqu.iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          ((com.tencent.mm.plugin.card.model.b)((Iterator)localObject1).next()).nrF = true;
+        }
+        if (this.nqp.bHG())
         {
-          ((com.tencent.mm.plugin.card.model.b)localObject1).title = ah.getResources().getString(2131297995);
+          ((com.tencent.mm.plugin.card.model.b)localObject1).title = aj.getResources().getString(2131756937);
           break;
         }
-        ((com.tencent.mm.plugin.card.model.b)localObject1).title = ah.getContext().getString(2131297994);
+        ((com.tencent.mm.plugin.card.model.b)localObject1).title = aj.getContext().getString(2131756936);
         break;
-        if ((localObject2 != null) && (((ye)localObject2).wPk != null) && (((ye)localObject2).wPk.size() > 0) && (!TextUtils.isEmpty((CharSequence)((ye)localObject2).wPk.get(0))))
+        if ((localObject2 != null) && (((abm)localObject2).DbO != null) && (((abm)localObject2).DbO.size() > 0) && (!TextUtils.isEmpty((CharSequence)((abm)localObject2).DbO.get(0))))
         {
           i = 0;
           break label479;
@@ -211,121 +215,126 @@ public final class f
         if (localObject1 == null) {
           break label826;
         }
-        ab.e("MicroMsg.CardDetailDataMgr", "distance:" + ((oz)localObject1).rqZ);
+        ad.e("MicroMsg.CardDetailDataMgr", "distance:" + ((rh)localObject1).wUu);
         break label826;
-        ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(2131297868);
+        ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(2131756800);
       }
     }
-    label1041:
+    label1156:
+    label1170:
     Object localObject1 = new com.tencent.mm.plugin.card.model.b();
-    ((com.tencent.mm.plugin.card.model.b)localObject1).kmx = 1;
-    Object localObject2 = (oz)this.klq.get(0);
-    if (!TextUtils.isEmpty(this.klk.bbd().wGC))
+    ((com.tencent.mm.plugin.card.model.b)localObject1).nrC = 1;
+    Object localObject2 = (rh)this.nqw.get(0);
+    if (!TextUtils.isEmpty(this.nqp.bHV().CSh))
     {
-      ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.klk.bbd().wGC;
-      label1226:
-      if ((!this.klk.baL()) || (((oz)localObject2).rqZ >= 2000.0F)) {
-        break label1449;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.nqp.bHV().CSh;
+      label1261:
+      if ((!this.nqp.bHC()) || (((rh)localObject2).wUu >= 2000.0F)) {
+        break label1484;
       }
-      if ((this.klk.bbd().wGd <= 1) && ((this.klq == null) || (this.klq.size() <= 1))) {
-        break label1431;
+      if ((this.nqp.bHV().CRJ <= 1) && ((this.nqw == null) || (this.nqw.size() <= 1))) {
+        break label1466;
       }
-      ((com.tencent.mm.plugin.card.model.b)localObject1).kmn = this.jpX.getString(2131297990, new Object[] { l.g(this.jpX, ((oz)localObject2).rqZ) });
+      ((com.tencent.mm.plugin.card.model.b)localObject1).nrs = this.nqt.getString(2131756932, new Object[] { l.f(this.nqt, ((rh)localObject2).wUu) });
     }
     for (;;)
     {
-      ((com.tencent.mm.plugin.card.model.b)localObject1).kqb = "";
+      ((com.tencent.mm.plugin.card.model.b)localObject1).nvv = "";
       ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_shop_list";
-      this.klo.add(localObject1);
+      this.nqu.add(localObject1);
       break;
-      if ((!this.klk.baL()) && (((oz)localObject2).rqZ < 5000.0F))
+      if ((!this.nqp.bHC()) && (((rh)localObject2).wUu < 5000.0F))
       {
-        if ((this.klk.bbd().wGd == 1) || (this.klq.size() == 1))
+        if ((this.nqp.bHV().CRJ == 1) || (this.nqw.size() == 1))
         {
-          ab.i("MicroMsg.CardDetailDataMgr", "shop_count is 1 or mShopList size is 1");
+          ad.i("MicroMsg.CardDetailDataMgr", "shop_count is 1 or mShopList size is 1");
           break;
         }
-        ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(2131297875);
-        break label1226;
+        ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(2131756807);
+        break label1261;
       }
-      ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(2131297868);
-      break label1226;
-      label1431:
-      ((com.tencent.mm.plugin.card.model.b)localObject1).kmn = l.g(this.jpX, ((oz)localObject2).rqZ);
+      ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(2131756800);
+      break label1261;
+      label1466:
+      ((com.tencent.mm.plugin.card.model.b)localObject1).nrs = l.f(this.nqt, ((rh)localObject2).wUu);
       continue;
-      label1449:
-      ((com.tencent.mm.plugin.card.model.b)localObject1).kmn = "";
+      label1484:
+      ((com.tencent.mm.plugin.card.model.b)localObject1).nrs = "";
     }
+    label1493:
+    localObject1 = this.nqu;
+    AppMethodBeat.o(112619);
+    return localObject1;
   }
   
-  public final boolean bbG()
+  public final boolean bIy()
   {
-    if (this.klp == null) {
+    if (this.nqv == null) {
       return false;
     }
-    return this.klp.cJz;
+    return this.nqv.dAt;
   }
   
-  public final com.tencent.mm.plugin.card.model.b bbH()
+  public final com.tencent.mm.plugin.card.model.b bIz()
   {
-    AppMethodBeat.i(87677);
+    AppMethodBeat.i(112621);
     com.tencent.mm.plugin.card.model.b localb = new com.tencent.mm.plugin.card.model.b();
-    localb.kmx = 1;
-    localb.kmz = bbF();
-    if ((localb.kmz) || (TextUtils.isEmpty(this.klk.bbd().wGm))) {
-      if (t.nT(this.klk.bbd().wFW))
+    localb.nrC = 1;
+    localb.nrE = bIx();
+    if ((localb.nrE) || (TextUtils.isEmpty(this.nqp.bHV().CRR))) {
+      if (w.sD(this.nqp.bHV().CRC))
       {
-        localb.title = getString(2131297993);
-        localb.kmz = false;
+        localb.title = getString(2131756935);
+        localb.nrE = false;
       }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(this.klk.bbd().wGo)) {
-        localb.kmn = this.klk.bbd().wGo;
+      if (!TextUtils.isEmpty(this.nqp.bHV().CRT)) {
+        localb.nrs = this.nqp.bHV().CRT;
       }
-      localb.kqb = "";
+      localb.nvv = "";
       localb.url = "card://jump_service";
-      this.klp = localb;
-      localb = this.klp;
-      AppMethodBeat.o(87677);
+      this.nqv = localb;
+      localb = this.nqv;
+      AppMethodBeat.o(112621);
       return localb;
-      localb.title = getString(2131297992);
-      if ((this.klk.bbd().wGt != null) && (this.klk.bbd().wGt.wWN == 1))
+      localb.title = getString(2131756934);
+      if ((this.nqp.bHV().CRY != null) && (this.nqp.bHV().CRY.Dnr == 1))
       {
-        localb.cJz = true;
+        localb.dAt = true;
       }
       else
       {
-        localb.cJz = false;
+        localb.dAt = false;
         continue;
-        localb.title = this.klk.bbd().wGm;
+        localb.title = this.nqp.bHV().CRR;
       }
     }
   }
   
   public final String getTitle()
   {
-    AppMethodBeat.i(87678);
+    AppMethodBeat.i(112622);
     Object localObject = new StringBuilder();
-    if (!TextUtils.isEmpty(this.klk.bbd().knv)) {
-      ((StringBuilder)localObject).append(this.klk.bbd().knv);
+    if (!TextUtils.isEmpty(this.nqp.bHV().nsJ)) {
+      ((StringBuilder)localObject).append(this.nqp.bHV().nsJ);
     }
     for (;;)
     {
       localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(87678);
+      AppMethodBeat.o(112622);
       return localObject;
-      if (this.klk.baL()) {
-        ((StringBuilder)localObject).append(getString(2131297988));
-      } else if (this.klk.baM()) {
-        ((StringBuilder)localObject).append(getString(2131297892));
-      } else if (this.klk.baN()) {
-        ((StringBuilder)localObject).append(getString(2131297873));
-      } else if (this.klk.baO()) {
-        ((StringBuilder)localObject).append(getString(2131297902));
-      } else if (this.klk.baP()) {
-        ((StringBuilder)localObject).append(getString(2131297957));
+      if (this.nqp.bHC()) {
+        ((StringBuilder)localObject).append(getString(2131756930));
+      } else if (this.nqp.bHD()) {
+        ((StringBuilder)localObject).append(getString(2131756824));
+      } else if (this.nqp.bHE()) {
+        ((StringBuilder)localObject).append(getString(2131756805));
+      } else if (this.nqp.bHF()) {
+        ((StringBuilder)localObject).append(getString(2131756834));
+      } else if (this.nqp.bHG()) {
+        ((StringBuilder)localObject).append(getString(2131756899));
       }
     }
   }

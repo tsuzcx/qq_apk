@@ -8,78 +8,78 @@ import java.util.List;
 public final class a
   extends c.a
 {
-  private List<g> BwP;
-  private List<g> BwQ;
+  private List<g> IFT;
+  private List<g> IFU;
   
   public a(List<g> paramList1, List<g> paramList2)
   {
-    this.BwP = paramList1;
-    this.BwQ = paramList2;
+    this.IFT = paramList1;
+    this.IFU = paramList2;
   }
   
-  public final boolean F(int paramInt1, int paramInt2)
+  public final boolean H(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(113177);
-    g localg1 = (g)this.BwP.get(paramInt1);
-    g localg2 = (g)this.BwQ.get(paramInt2);
+    AppMethodBeat.i(159914);
+    g localg1 = (g)this.IFT.get(paramInt1);
+    g localg2 = (g)this.IFU.get(paramInt2);
     if ((localg1 == null) || (localg2 == null))
     {
-      AppMethodBeat.o(113177);
+      AppMethodBeat.o(159914);
       return false;
     }
     if (localg1.hashCode() == localg2.hashCode())
     {
-      AppMethodBeat.o(113177);
+      AppMethodBeat.o(159914);
       return true;
     }
-    AppMethodBeat.o(113177);
+    AppMethodBeat.o(159914);
     return false;
   }
   
-  public final boolean G(int paramInt1, int paramInt2)
+  public final boolean I(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(113178);
-    g localg1 = (g)this.BwP.get(paramInt1);
-    g localg2 = (g)this.BwQ.get(paramInt2);
+    AppMethodBeat.i(159915);
+    g localg1 = (g)this.IFT.get(paramInt1);
+    g localg2 = (g)this.IFU.get(paramInt2);
     if ((localg1 == null) || (localg2 == null))
     {
-      AppMethodBeat.o(113178);
+      AppMethodBeat.o(159915);
       return false;
     }
     boolean bool = localg1.equals(localg2);
-    AppMethodBeat.o(113178);
+    AppMethodBeat.o(159915);
     return bool;
   }
   
-  public final int fv()
+  public final int gR()
   {
-    AppMethodBeat.i(113175);
-    if (this.BwP == null)
+    AppMethodBeat.i(159912);
+    if (this.IFT == null)
     {
-      AppMethodBeat.o(113175);
+      AppMethodBeat.o(159912);
       return 0;
     }
-    int i = this.BwP.size();
-    AppMethodBeat.o(113175);
+    int i = this.IFT.size();
+    AppMethodBeat.o(159912);
     return i;
   }
   
-  public final int fw()
+  public final int gS()
   {
-    AppMethodBeat.i(113176);
-    if (this.BwQ == null)
+    AppMethodBeat.i(159913);
+    if (this.IFU == null)
     {
-      AppMethodBeat.o(113176);
+      AppMethodBeat.o(159913);
       return 0;
     }
-    int i = this.BwQ.size();
-    AppMethodBeat.o(113176);
+    int i = this.IFU.size();
+    AppMethodBeat.o(159913);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.toybrick.a.a
  * JD-Core Version:    0.7.0.1
  */

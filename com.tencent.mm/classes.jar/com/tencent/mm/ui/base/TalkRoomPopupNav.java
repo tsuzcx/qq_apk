@@ -9,210 +9,232 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.a;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 public class TalkRoomPopupNav
   extends LinearLayout
 {
-  public View mwU;
-  public LinearLayout zdB;
-  private a zpG;
-  public LinearLayout zpH;
-  private LinearLayout zpI;
-  private ImageView zpJ;
-  private ImageView zpK;
-  public ScaleAnimation zpL;
-  public Animation zpM;
-  public int zpN;
-  public int zpO;
-  private ScaleAnimation zpP;
-  private Animation zpQ;
-  private AlphaAnimation zpR;
-  private AlphaAnimation zpS;
+  public LinearLayout FQJ;
+  private a Gdf;
+  public LinearLayout Gdg;
+  private LinearLayout Gdh;
+  private WeImageView Gdi;
+  private WeImageView Gdj;
+  public ScaleAnimation Gdk;
+  public Animation Gdl;
+  public int Gdm;
+  public int Gdn;
+  private ScaleAnimation Gdo;
+  private Animation Gdp;
+  private AlphaAnimation Gdq;
+  private AlphaAnimation Gdr;
+  public View qeH;
   
   public TalkRoomPopupNav(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(30017);
-    this.zpN = 0;
-    this.zpO = 0;
+    AppMethodBeat.i(33876);
+    this.Gdm = 0;
+    this.Gdn = 0;
     initView();
-    AppMethodBeat.o(30017);
+    AppMethodBeat.o(33876);
   }
   
   @TargetApi(11)
   public TalkRoomPopupNav(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(30016);
-    this.zpN = 0;
-    this.zpO = 0;
+    AppMethodBeat.i(33875);
+    this.Gdm = 0;
+    this.Gdn = 0;
     initView();
-    AppMethodBeat.o(30016);
+    AppMethodBeat.o(33875);
   }
   
   private void initView()
   {
-    AppMethodBeat.i(30023);
-    inflate(getContext(), 2130970987, this);
-    this.zdB = ((LinearLayout)findViewById(2131828480));
-    this.zpH = ((LinearLayout)findViewById(2131828484));
-    this.zpI = ((LinearLayout)findViewById(2131828486));
-    this.mwU = findViewById(2131828479);
-    this.zpJ = ((ImageView)findViewById(2131828481));
-    this.zpK = ((ImageView)findViewById(2131828482));
-    this.zpK.setVisibility(8);
-    this.zdB.setOnClickListener(new TalkRoomPopupNav.1(this));
-    ((Button)findViewById(2131828487)).setOnClickListener(new TalkRoomPopupNav.2(this));
-    ((Button)findViewById(2131828488)).setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(33882);
+    inflate(getContext(), 2131495743, this);
+    this.FQJ = ((LinearLayout)findViewById(2131302675));
+    this.Gdg = ((LinearLayout)findViewById(2131299126));
+    this.Gdh = ((LinearLayout)findViewById(2131299117));
+    this.qeH = findViewById(2131302670);
+    this.Gdi = ((WeImageView)findViewById(2131305651));
+    this.Gdj = ((WeImageView)findViewById(2131305652));
+    this.Gdj.setVisibility(8);
+    this.FQJ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(30008);
-        TalkRoomPopupNav.b(TalkRoomPopupNav.this);
+        AppMethodBeat.i(33865);
         if (TalkRoomPopupNav.a(TalkRoomPopupNav.this) != null) {
-          TalkRoomPopupNav.a(TalkRoomPopupNav.this).dEF();
+          TalkRoomPopupNav.a(TalkRoomPopupNav.this).eTt();
         }
-        AppMethodBeat.o(30008);
+        AppMethodBeat.o(33865);
       }
     });
-    this.zpN = this.mwU.getLayoutParams().height;
-    this.zpO = this.zpH.getLayoutParams().height;
-    AppMethodBeat.o(30023);
+    ((Button)findViewById(2131297584)).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(33866);
+        TalkRoomPopupNav.b(TalkRoomPopupNav.this);
+        AppMethodBeat.o(33866);
+      }
+    });
+    ((Button)findViewById(2131297585)).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(33867);
+        TalkRoomPopupNav.b(TalkRoomPopupNav.this);
+        if (TalkRoomPopupNav.a(TalkRoomPopupNav.this) != null) {
+          TalkRoomPopupNav.a(TalkRoomPopupNav.this).eTu();
+        }
+        AppMethodBeat.o(33867);
+      }
+    });
+    this.Gdm = this.qeH.getLayoutParams().height;
+    this.Gdn = this.Gdg.getLayoutParams().height;
+    AppMethodBeat.o(33882);
+  }
+  
+  public final void jo(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(191427);
+    if (paramInt1 < 0)
+    {
+      if (this.Gdj != null) {
+        this.Gdj.setVisibility(8);
+      }
+      AppMethodBeat.o(191427);
+      return;
+    }
+    if (this.Gdj != null)
+    {
+      this.Gdj.setImageResource(paramInt1);
+      this.Gdj.setIconColor(paramInt2);
+      this.Gdj.setVisibility(0);
+    }
+    AppMethodBeat.o(191427);
   }
   
   public void setBgViewResource(int paramInt)
   {
-    AppMethodBeat.i(30020);
-    if (this.mwU != null) {
-      this.mwU.setBackgroundResource(paramInt);
+    AppMethodBeat.i(33879);
+    if (this.qeH != null) {
+      this.qeH.setBackgroundResource(paramInt);
     }
-    AppMethodBeat.o(30020);
+    AppMethodBeat.o(33879);
   }
   
   public void setDialogContent(String paramString)
   {
-    AppMethodBeat.i(30019);
-    ((TextView)findViewById(2131828485)).setText(paramString);
-    AppMethodBeat.o(30019);
+    AppMethodBeat.i(33878);
+    ((TextView)findViewById(2131306121)).setText(paramString);
+    AppMethodBeat.o(33878);
   }
   
-  public void setIconAnim(int paramInt)
+  public final void setIconRes$255f295(int paramInt)
   {
-    AppMethodBeat.i(30022);
-    if (paramInt < 0)
+    AppMethodBeat.i(191426);
+    if (this.Gdi != null)
     {
-      if (this.zpK != null) {
-        this.zpK.setVisibility(8);
-      }
-      AppMethodBeat.o(30022);
-      return;
+      this.Gdi.setImageResource(2131690422);
+      this.Gdi.setIconColor(paramInt);
     }
-    if (this.zpK != null)
-    {
-      this.zpK.setImageResource(paramInt);
-      this.zpK.setVisibility(0);
-    }
-    AppMethodBeat.o(30022);
-  }
-  
-  public void setIconRes(int paramInt)
-  {
-    AppMethodBeat.i(30021);
-    if (this.zpJ != null) {
-      this.zpJ.setImageResource(paramInt);
-    }
-    AppMethodBeat.o(30021);
+    AppMethodBeat.o(191426);
   }
   
   public void setNavContent(String paramString)
   {
-    AppMethodBeat.i(30018);
-    ((TextView)findViewById(2131828483)).setText(paramString);
-    AppMethodBeat.o(30018);
+    AppMethodBeat.i(33877);
+    ((TextView)findViewById(2131306140)).setText(paramString);
+    AppMethodBeat.o(33877);
   }
   
   public void setOnClickListener(a parama)
   {
-    this.zpG = parama;
+    this.Gdf = parama;
   }
   
   public final void start()
   {
-    AppMethodBeat.i(30024);
-    if ((this.zpR == null) || (this.zpS == null))
+    AppMethodBeat.i(33883);
+    if ((this.Gdq == null) || (this.Gdr == null))
     {
-      this.zpR = new AlphaAnimation(0.0F, 1.0F);
-      this.zpR.setDuration(1000L);
-      this.zpR.setStartOffset(0L);
-      this.zpS = new AlphaAnimation(1.0F, 0.0F);
-      this.zpS.setDuration(1000L);
-      this.zpS.setStartOffset(0L);
-      this.zpR.setAnimationListener(new Animation.AnimationListener()
+      this.Gdq = new AlphaAnimation(0.0F, 1.0F);
+      this.Gdq.setDuration(1000L);
+      this.Gdq.setStartOffset(0L);
+      this.Gdr = new AlphaAnimation(1.0F, 0.0F);
+      this.Gdr.setDuration(1000L);
+      this.Gdr.setStartOffset(0L);
+      this.Gdq.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
-          AppMethodBeat.i(30014);
+          AppMethodBeat.i(33873);
           if (TalkRoomPopupNav.f(TalkRoomPopupNav.this) != null) {
             TalkRoomPopupNav.g(TalkRoomPopupNav.this).startAnimation(TalkRoomPopupNav.f(TalkRoomPopupNav.this));
           }
-          AppMethodBeat.o(30014);
+          AppMethodBeat.o(33873);
         }
         
         public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
         
         public final void onAnimationStart(Animation paramAnonymousAnimation) {}
       });
-      this.zpS.setAnimationListener(new Animation.AnimationListener()
+      this.Gdr.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
-          AppMethodBeat.i(30015);
+          AppMethodBeat.i(33874);
           if (TalkRoomPopupNav.h(TalkRoomPopupNav.this) != null) {
             TalkRoomPopupNav.g(TalkRoomPopupNav.this).startAnimation(TalkRoomPopupNav.h(TalkRoomPopupNav.this));
           }
-          AppMethodBeat.o(30015);
+          AppMethodBeat.o(33874);
         }
         
         public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
         
         public final void onAnimationStart(Animation paramAnonymousAnimation) {}
       });
-      this.zpK.startAnimation(this.zpR);
+      this.Gdj.startAnimation(this.Gdq);
     }
-    AppMethodBeat.o(30024);
+    AppMethodBeat.o(33883);
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(30025);
-    if ((this.zpR != null) && (this.zpS != null))
+    AppMethodBeat.i(33884);
+    if ((this.Gdq != null) && (this.Gdr != null))
     {
-      BackwardSupportUtil.a.a(this.zpK, this.zpR);
-      BackwardSupportUtil.a.a(this.zpK, this.zpS);
-      this.zpK.clearAnimation();
-      this.zpR = null;
-      this.zpS = null;
+      BackwardSupportUtil.a.a(this.Gdj, this.Gdq);
+      BackwardSupportUtil.a.a(this.Gdj, this.Gdr);
+      this.Gdj.clearAnimation();
+      this.Gdq = null;
+      this.Gdr = null;
     }
-    AppMethodBeat.o(30025);
+    AppMethodBeat.o(33884);
   }
   
   public static abstract interface a
   {
-    public abstract void dEE();
+    public abstract void eTt();
     
-    public abstract void dEF();
+    public abstract void eTu();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.TalkRoomPopupNav
  * JD-Core Version:    0.7.0.1
  */

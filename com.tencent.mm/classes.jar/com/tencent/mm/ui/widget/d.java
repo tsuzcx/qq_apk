@@ -1,10 +1,11 @@
 package com.tencent.mm.ui.widget;
 
 import android.content.Context;
+import com.tencent.mm.ui.widget.a.e;
 
 @Deprecated
 public final class d
-  extends com.tencent.mm.ui.widget.b.d
+  extends e
 {
   public d(Context paramContext, int paramInt, boolean paramBoolean)
   {
@@ -13,7 +14,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.d
  * JD-Core Version:    0.7.0.1
  */

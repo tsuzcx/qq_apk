@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.story.ui.view;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
 final class CommentsContainer$c
   implements Runnable
 {
@@ -11,9 +11,9 @@ final class CommentsContainer$c
   
   public final void run()
   {
-    AppMethodBeat.i(110369);
-    CommentsContainer.h(this.sLS);
-    AppMethodBeat.o(110369);
+    AppMethodBeat.i(120051);
+    CommentsContainer.h(this.ytZ);
+    AppMethodBeat.o(120051);
   }
 }
 

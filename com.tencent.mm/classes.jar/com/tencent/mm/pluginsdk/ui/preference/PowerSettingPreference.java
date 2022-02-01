@@ -8,20 +8,17 @@ import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.plugin.sns.b.k;
-import com.tencent.mm.plugin.sns.b.n;
-import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.af;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class PowerSettingPreference
   extends Preference
 {
-  private ad lpe;
-  private View ozm;
-  private ImageView pBA;
-  private ImageView pBB;
-  private ImageView pBz;
+  private af oFt;
+  private View ttN;
+  private ImageView uDh;
+  private ImageView uDi;
+  private ImageView uDj;
   
   public PowerSettingPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,69 +32,45 @@ public class PowerSettingPreference
   
   public final void onBindView(View paramView)
   {
-    int j = 0;
-    AppMethodBeat.i(28114);
+    AppMethodBeat.i(31903);
     super.onBindView(paramView);
-    if (this.lpe == null)
+    if (this.oFt == null)
     {
-      AppMethodBeat.o(28114);
+      AppMethodBeat.o(31903);
       return;
     }
-    if (this.pBz == null) {
-      this.pBz = ((ImageView)paramView.findViewById(2131823193));
+    if (this.uDh == null) {
+      this.uDh = ((ImageView)paramView.findViewById(2131298685));
     }
-    if (this.pBA == null) {
-      this.pBA = ((ImageView)paramView.findViewById(2131823192));
+    if (this.uDi == null) {
+      this.uDi = ((ImageView)paramView.findViewById(2131298683));
     }
-    if (this.pBB == null) {
-      this.pBB = ((ImageView)paramView.findViewById(2131823191));
+    if (this.uDj == null) {
+      this.uDj = ((ImageView)paramView.findViewById(2131298684));
     }
-    boolean bool1 = this.lpe.NZ();
-    boolean bool2 = n.raT.Xh(this.lpe.field_username);
-    paramView = this.pBA;
-    if (bool1)
-    {
-      i = 0;
-      paramView.setVisibility(i);
-      paramView = this.pBB;
-      if (!bool2) {
-        break label182;
-      }
-      i = 0;
-      label142:
-      paramView.setVisibility(i);
-      paramView = this.pBz;
-      if (!this.lpe.NY()) {
-        break label188;
-      }
-    }
-    label182:
-    label188:
-    for (int i = j;; i = 8)
+    paramView = this.uDh;
+    if (this.oFt.ZO()) {}
+    for (int i = 0;; i = 8)
     {
       paramView.setVisibility(i);
-      AppMethodBeat.o(28114);
+      AppMethodBeat.o(31903);
       return;
-      i = 8;
-      break;
-      i = 8;
-      break label142;
     }
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(28113);
-    if (this.ozm == null)
+    AppMethodBeat.i(31902);
+    if (this.ttN == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
       localViewGroup.removeAllViews();
-      localViewGroup.addView(LayoutInflater.from(this.mContext).inflate(2130970471, null), new AbsListView.LayoutParams(-1, -2));
-      this.ozm = paramViewGroup;
+      localViewGroup.addView(LayoutInflater.from(this.mContext).inflate(2131495144, null), new AbsListView.LayoutParams(-1, -2));
+      this.ttN = paramViewGroup;
     }
-    paramViewGroup = this.ozm;
-    AppMethodBeat.o(28113);
+    paramViewGroup = this.ttN;
+    AppMethodBeat.o(31902);
     return paramViewGroup;
   }
 }

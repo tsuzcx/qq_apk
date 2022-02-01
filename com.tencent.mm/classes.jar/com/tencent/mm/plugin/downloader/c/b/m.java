@@ -3,72 +3,67 @@ package com.tencent.mm.plugin.downloader.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class m
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String kXh;
-  public String kXi;
+  public long duration;
+  public long interval;
+  public long odW;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(35539);
+    AppMethodBeat.i(153073);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.kXh != null) {
-        paramVarArgs.e(1, this.kXh);
-      }
-      if (this.kXi != null) {
-        paramVarArgs.e(2, this.kXi);
-      }
-      AppMethodBeat.o(35539);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aG(1, this.duration);
+      paramVarArgs.aG(2, this.interval);
+      paramVarArgs.aG(3, this.odW);
+      AppMethodBeat.o(153073);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.kXh == null) {
-        break label274;
-      }
-    }
-    label274:
-    for (paramInt = e.a.a.b.b.a.f(1, this.kXh) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt;
-      if (this.kXi != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.kXi);
-      }
-      AppMethodBeat.o(35539);
-      return i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
-          }
-        }
-        AppMethodBeat.o(35539);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-        m localm = (m)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(35539);
-          return -1;
-        case 1: 
-          localm.kXh = locala.CLY.readString();
-          AppMethodBeat.o(35539);
-          return 0;
-        }
-        localm.kXi = locala.CLY.readString();
-        AppMethodBeat.o(35539);
-        return 0;
-      }
-      AppMethodBeat.o(35539);
-      return -1;
+      paramInt = f.a.a.b.b.a.q(1, this.duration);
+      int i = f.a.a.b.b.a.q(2, this.interval);
+      int j = f.a.a.b.b.a.q(3, this.odW);
+      AppMethodBeat.o(153073);
+      return paramInt + 0 + i + j;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.fMq();
+        }
+      }
+      AppMethodBeat.o(153073);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      m localm = (m)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(153073);
+        return -1;
+      case 1: 
+        localm.duration = locala.KhF.xT();
+        AppMethodBeat.o(153073);
+        return 0;
+      case 2: 
+        localm.interval = locala.KhF.xT();
+        AppMethodBeat.o(153073);
+        return 0;
+      }
+      localm.odW = locala.KhF.xT();
+      AppMethodBeat.o(153073);
+      return 0;
+    }
+    AppMethodBeat.o(153073);
+    return -1;
   }
 }
 

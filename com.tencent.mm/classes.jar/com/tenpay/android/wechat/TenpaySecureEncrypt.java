@@ -8,23 +8,23 @@ public final class TenpaySecureEncrypt
 {
   public final String desedeEncode(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(49505);
+    AppMethodBeat.i(73253);
     paramString1 = new Encrypt().desedeEncode(paramString1);
-    AppMethodBeat.o(49505);
+    AppMethodBeat.o(73253);
     return paramString1;
   }
   
   public final String desedeVerifyCode(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(49506);
+    AppMethodBeat.i(73254);
     paramString1 = new Encrypt().desedeVerifyCode(paramString1);
-    AppMethodBeat.o(49506);
+    AppMethodBeat.o(73254);
     return paramString1;
   }
   
   public final String encryptPasswd(boolean paramBoolean, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(49504);
+    AppMethodBeat.i(73252);
     String str = paramString1;
     if (paramBoolean) {
       str = TenpayUtil.md5HexDigest(paramString1);
@@ -34,13 +34,13 @@ public final class TenpaySecureEncrypt
       paramString1.setTimeStamp(paramString2);
     }
     paramString1 = paramString1.encryptPasswd(str);
-    AppMethodBeat.o(49504);
+    AppMethodBeat.o(73252);
     return paramString1;
   }
   
   public final String encryptPasswdWithRSA2048(boolean paramBoolean, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(49503);
+    AppMethodBeat.i(73251);
     String str = paramString1;
     if (paramBoolean) {
       str = TenpayUtil.md5HexDigest(paramString1);
@@ -50,13 +50,13 @@ public final class TenpaySecureEncrypt
       paramString1.setTimeStamp(paramString2);
     }
     paramString1 = paramString1.encryptPasswdWithRSA2048(str);
-    AppMethodBeat.o(49503);
+    AppMethodBeat.o(73251);
     return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tenpay.android.wechat.TenpaySecureEncrypt
  * JD-Core Version:    0.7.0.1
  */

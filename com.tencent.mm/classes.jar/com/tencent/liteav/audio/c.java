@@ -2,15 +2,13 @@ package com.tencent.liteav.audio;
 
 public abstract interface c
 {
-  public abstract void onPlayError(int paramInt, String paramString);
+  public abstract void onAudioJitterBufferError(String paramString1, int paramInt, String paramString2);
   
-  public abstract void onPlayJitterStateNotify(int paramInt);
-  
-  public abstract void onPlayPcmData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2);
+  public abstract void onAudioJitterBufferNotify(String paramString1, int paramInt, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.c
  * JD-Core Version:    0.7.0.1
  */

@@ -15,46 +15,46 @@ public class UnityReflection
   
   static
   {
-    AppMethodBeat.i(72116);
+    AppMethodBeat.i(17552);
     TAG = UnityReflection.class.getCanonicalName();
-    AppMethodBeat.o(72116);
+    AppMethodBeat.o(17552);
   }
   
   public static void captureViewHierarchy()
   {
-    AppMethodBeat.i(72114);
+    AppMethodBeat.i(17550);
     sendMessage("UnityFacebookSDKPlugin", "CaptureViewHierarchy", "");
-    AppMethodBeat.o(72114);
+    AppMethodBeat.o(17550);
   }
   
   public static void sendEventMapping(String paramString)
   {
-    AppMethodBeat.i(72115);
+    AppMethodBeat.i(17551);
     sendMessage("UnityFacebookSDKPlugin", "OnReceiveMapping", paramString);
-    AppMethodBeat.o(72115);
+    AppMethodBeat.o(17551);
   }
   
   public static void sendMessage(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(72113);
+    AppMethodBeat.i(17549);
     try
     {
       if (unityPlayer == null) {
         unityPlayer = Class.forName("com.unity3d.player.UnityPlayer");
       }
       unityPlayer.getMethod("UnitySendMessage", new Class[] { String.class, String.class, String.class }).invoke(unityPlayer, new Object[] { paramString1, paramString2, paramString3 });
-      AppMethodBeat.o(72113);
+      AppMethodBeat.o(17549);
       return;
     }
     catch (Exception paramString1)
     {
-      AppMethodBeat.o(72113);
+      AppMethodBeat.o(17549);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.facebook.appevents.codeless.internal.UnityReflection
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:background="@drawable/en" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:paddingTop="@dimen/c8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="17.0sp" android:textColor="@color/a_u" android:gravity="center" android:id="@id/hak" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="@string/r5" android:layout_marginStart="@dimen/ahh" />
+        <Button android:textSize="17.0sp" android:id="@id/hap" android:background="@drawable/ach" android:text="@string/ti" android:layout_marginEnd="@dimen/ahh" android:layout_alignParentEnd="true" style="@style/o8" />
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/han" android:fadingEdge="vertical" android:fadingEdgeLength="@dimen/c8" android:layout_width="fill_parent" android:layout_height="@dimen/c7" android:layout_marginTop="@dimen/ci" />
+    <CheckBox android:textSize="13.0dip" android:textColor="@color/a_r" android:id="@id/hao" android:padding="@dimen/c5" android:paddingLeft="25.0dip" android:checked="false" android:text="@string/hqu" android:drawableLeft="@drawable/c71" style="@style/fa" />
+</LinearLayout>

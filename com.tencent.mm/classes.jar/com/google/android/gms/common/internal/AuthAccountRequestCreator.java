@@ -15,7 +15,7 @@ public class AuthAccountRequestCreator
   
   public AuthAccountRequest createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61306);
+    AppMethodBeat.i(11798);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     int i = 0;
     Account localAccount = null;
@@ -52,7 +52,7 @@ public class AuthAccountRequestCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new AuthAccountRequest(i, localIBinder, arrayOfScope, localInteger2, localInteger1, localAccount);
-    AppMethodBeat.o(61306);
+    AppMethodBeat.o(11798);
     return paramParcel;
   }
   

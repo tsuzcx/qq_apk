@@ -4,19 +4,26 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.honey_pay.a.l;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.honey_pay.a.m;
+import com.tencent.mm.protocal.protobuf.bgk;
+import com.tencent.mm.protocal.protobuf.bgl;
+import com.tencent.mm.protocal.protobuf.cej;
+import com.tencent.mm.protocal.protobuf.cel;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.wallet_core.c.p;
+import com.tencent.mm.wallet_core.c.r;
+import com.tencent.mm.wallet_core.c.r.a;
 
 @a(3)
 public class HoneyPayProxyUI
   extends HoneyPayBaseUI
 {
-  private String nHE;
-  private boolean nJo;
+  private String svk;
+  private boolean swU;
   
-  protected final void bHV() {}
+  protected final void cFM() {}
   
   public int getLayoutId()
   {
@@ -25,35 +32,35 @@ public class HoneyPayProxyUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(41929);
+    AppMethodBeat.i(64818);
     super.onCreate(paramBundle);
     addSceneEndListener(2876);
     addSceneEndListener(2613);
-    this.nJo = getIntent().getBooleanExtra("key_is_payer", false);
-    this.nHE = getIntent().getStringExtra("key_card_no");
-    ab.i(this.TAG, "is payer: %s", new Object[] { Boolean.valueOf(this.nJo) });
-    if (this.nJo)
+    this.swU = getIntent().getBooleanExtra("key_is_payer", false);
+    this.svk = getIntent().getStringExtra("key_card_no");
+    ad.i(this.TAG, "is payer: %s", new Object[] { Boolean.valueOf(this.swU) });
+    if (this.swU)
     {
-      ab.i(this.TAG, "do qry payer detail");
-      paramBundle = new l(this.nHE);
-      paramBundle.o(this);
+      ad.i(this.TAG, "do qry payer detail");
+      paramBundle = new l(this.svk);
+      paramBundle.q(this);
       doSceneProgress(paramBundle, true);
-      AppMethodBeat.o(41929);
+      AppMethodBeat.o(64818);
       return;
     }
-    paramBundle = new com.tencent.mm.plugin.honey_pay.a.m(this.nHE);
-    paramBundle.o(this);
+    paramBundle = new m(this.svk);
+    paramBundle.q(this);
     doSceneProgress(paramBundle, true);
-    AppMethodBeat.o(41929);
+    AppMethodBeat.o(64818);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(41930);
+    AppMethodBeat.i(64819);
     super.onDestroy();
     removeSceneEndListener(2876);
     removeSceneEndListener(2613);
-    AppMethodBeat.o(41930);
+    AppMethodBeat.o(64819);
   }
   
   public boolean onProgressFinish()
@@ -61,22 +68,73 @@ public class HoneyPayProxyUI
     return true;
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, n paramn)
   {
-    AppMethodBeat.i(41931);
-    if ((paramm instanceof l))
+    AppMethodBeat.i(64820);
+    if ((paramn instanceof l))
     {
-      paramString = (l)paramm;
-      paramString.a(new HoneyPayProxyUI.3(this, paramString)).b(new HoneyPayProxyUI.2(this)).c(new HoneyPayProxyUI.1(this));
+      paramString = (l)paramn;
+      paramString.a(new r.a()
+      {
+        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+        {
+          AppMethodBeat.i(64815);
+          if (paramString.suU.Dbf != null) {
+            ad.i(HoneyPayProxyUI.this.TAG, "state: %s", new Object[] { Integer.valueOf(paramString.suU.Dbf.state) });
+          }
+          HoneyPayProxyUI.a(HoneyPayProxyUI.this, paramString.suU);
+          HoneyPayProxyUI.this.finish();
+          AppMethodBeat.o(64815);
+        }
+      }).b(new r.a()
+      {
+        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+        {
+          AppMethodBeat.i(64814);
+          HoneyPayProxyUI.this.finish();
+          AppMethodBeat.o(64814);
+        }
+      }).c(new r.a()
+      {
+        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn) {}
+      });
     }
     for (;;)
     {
-      AppMethodBeat.o(41931);
+      AppMethodBeat.o(64820);
       return true;
-      if ((paramm instanceof com.tencent.mm.plugin.honey_pay.a.m))
+      if ((paramn instanceof m))
       {
-        paramString = (com.tencent.mm.plugin.honey_pay.a.m)paramm;
-        paramString.a(new HoneyPayProxyUI.6(this, paramString)).b(new HoneyPayProxyUI.5(this)).c(new HoneyPayProxyUI.4(this));
+        paramString = (m)paramn;
+        paramString.a(new r.a()
+        {
+          public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+          {
+            AppMethodBeat.i(64817);
+            ad.i(HoneyPayProxyUI.this.TAG, "state: %s", new Object[] { Integer.valueOf(paramString.suV.DuB.state) });
+            if (paramString.suV.DuB.state == 1) {
+              HoneyPayProxyUI.a(HoneyPayProxyUI.this, paramString.suV);
+            }
+            for (;;)
+            {
+              HoneyPayProxyUI.this.finish();
+              AppMethodBeat.o(64817);
+              return;
+              HoneyPayProxyUI.b(HoneyPayProxyUI.this, paramString.suV);
+            }
+          }
+        }).b(new r.a()
+        {
+          public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+          {
+            AppMethodBeat.i(64816);
+            HoneyPayProxyUI.this.finish();
+            AppMethodBeat.o(64816);
+          }
+        }).c(new r.a()
+        {
+          public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn) {}
+        });
       }
     }
   }
@@ -89,7 +147,7 @@ public class HoneyPayProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.ui.HoneyPayProxyUI
  * JD-Core Version:    0.7.0.1
  */

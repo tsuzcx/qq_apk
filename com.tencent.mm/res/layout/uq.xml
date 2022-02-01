@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/bhi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+<LinearLayout style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/ur" />
-    <include android:id="@id/bhj" layout="@layout/us" />
-    <include layout="@layout/ur" />
+    <ScrollView style="@style/ny">
+        <LinearLayout style="@style/ld">
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:gravity="left" android:id="@id/b0b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ds1" />
+            <TextView android:textColor="@color/y4" android:id="@id/b0j" android:background="@drawable/oc" android:paddingBottom="@dimen/js" android:layout_marginTop="@dimen/i_" style="@style/n1" />
+            <LinearLayout android:orientation="vertical" android:id="@id/b2i" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hd">
+                <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:gravity="left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/drx" />
+                <TextView android:textColor="@color/y4" android:gravity="top" android:id="@id/b0h" android:background="@drawable/oc" android:paddingBottom="@dimen/js" android:layout_width="fill_parent" android:layout_marginTop="@dimen/i_" android:singleLine="false" style="@style/lp" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/b2j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hd">
+                <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:gravity="left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/drz" />
+                <ImageView android:id="@id/ex3" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_marginTop="@dimen/i_" android:scaleType="centerCrop" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

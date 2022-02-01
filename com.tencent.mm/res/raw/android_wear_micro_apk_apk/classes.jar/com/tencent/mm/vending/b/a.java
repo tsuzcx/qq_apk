@@ -1,34 +1,34 @@
 package com.tencent.mm.vending.b;
 
-import com.tencent.mm.vending.g.d;
-import com.tencent.mm.vending.g.f;
-import com.tencent.mm.vending.g.h;
+import com.tencent.mm.vending.h.d;
+import com.tencent.mm.vending.h.f;
+import com.tencent.mm.vending.h.h;
 import java.util.LinkedList;
 import junit.framework.Assert;
 
 public abstract class a<_Callback>
 {
-  private LinkedList<b> ZK = new LinkedList();
-  protected d ZL;
-  protected f ZM;
+  private LinkedList<b> adk = new LinkedList();
+  protected d adl;
+  protected f adm;
   
   public a()
   {
-    this(h.lG());
+    this(h.mt());
   }
   
   public a(d paramd)
   {
     Assert.assertNotNull(paramd);
-    this.ZL = paramd;
-    this.ZM = new f(paramd);
+    this.adl = paramd;
+    this.adm = new f(paramd);
   }
   
   protected final b a(b paramb)
   {
     try
     {
-      this.ZK.add(paramb);
+      this.adk.add(paramb);
       return paramb;
     }
     finally
@@ -40,23 +40,23 @@ public abstract class a<_Callback>
   
   protected final void b(b paramb)
   {
-    if (paramb == null) {}
-    for (;;)
+    try
     {
+      this.adk.remove(paramb);
       return;
-      try
-      {
-        this.ZK.remove(paramb);
-      }
-      finally {}
+    }
+    finally
+    {
+      paramb = finally;
+      throw paramb;
     }
   }
   
-  public final LinkedList<b> lD()
+  public final LinkedList<b> mk()
   {
     try
     {
-      LinkedList localLinkedList = new LinkedList(this.ZK);
+      LinkedList localLinkedList = ml();
       return localLinkedList;
     }
     finally
@@ -64,6 +64,11 @@ public abstract class a<_Callback>
       localObject = finally;
       throw localObject;
     }
+  }
+  
+  protected final LinkedList<b> ml()
+  {
+    return new LinkedList(this.adk);
   }
 }
 

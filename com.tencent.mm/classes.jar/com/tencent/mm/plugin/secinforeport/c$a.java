@@ -6,17 +6,17 @@ import java.util.Map;
 
 final class c$a
 {
-  private static final Map<Integer, Long> qEk;
+  private static final Map<Integer, Long> wcA;
   
   static
   {
-    AppMethodBeat.i(57493);
-    qEk = new HashMap();
-    AppMethodBeat.o(57493);
+    AppMethodBeat.i(89170);
+    wcA = new HashMap();
+    AppMethodBeat.o(89170);
   }
   
   /* Error */
-  static boolean ac(int paramInt, long paramLong)
+  static boolean as(int paramInt, long paramLong)
   {
     // Byte code:
     //   0: ldc 2
@@ -36,7 +36,7 @@ final class c$a
     //   24: lload_1
     //   25: invokestatic 43	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   28: aastore
-    //   29: invokestatic 49	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   29: invokestatic 49	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   32: ldc 33
     //   34: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: iconst_0
@@ -45,13 +45,13 @@ final class c$a
     //   42: monitorexit
     //   43: iload 5
     //   45: ireturn
-    //   46: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:qEk	Ljava/util/Map;
+    //   46: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:wcA	Ljava/util/Map;
     //   49: iload_0
     //   50: invokestatic 54	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   53: invokeinterface 60 2 0
     //   58: ifne +6 -> 64
-    //   61: invokestatic 63	com/tencent/mm/plugin/secinforeport/c$a:ph	()V
-    //   64: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:qEk	Ljava/util/Map;
+    //   61: invokestatic 63	com/tencent/mm/plugin/secinforeport/c$a:tP	()V
+    //   64: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:wcA	Ljava/util/Map;
     //   67: iload_0
     //   68: invokestatic 54	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   71: invokeinterface 67 2 0
@@ -65,306 +65,77 @@ final class c$a
     //   91: aload 6
     //   93: invokevirtual 76	java/lang/Long:longValue	()J
     //   96: lcmp
-    //   97: ifge +34 -> 131
-    //   100: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:qEk	Ljava/util/Map;
+    //   97: ifge +50 -> 147
+    //   100: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:wcA	Ljava/util/Map;
     //   103: iload_0
     //   104: invokestatic 54	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   107: lconst_0
+    //   107: lload_3
     //   108: invokestatic 43	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   111: invokeinterface 80 3 0
     //   116: pop
     //   117: invokestatic 83	com/tencent/mm/plugin/secinforeport/c$a:save	()V
-    //   120: ldc 33
-    //   122: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   125: iconst_0
-    //   126: istore 5
-    //   128: goto -88 -> 40
-    //   131: lload_3
-    //   132: aload 6
-    //   134: invokevirtual 76	java/lang/Long:longValue	()J
-    //   137: lsub
-    //   138: lload_1
-    //   139: lcmp
-    //   140: ifle +34 -> 174
-    //   143: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:qEk	Ljava/util/Map;
-    //   146: iload_0
-    //   147: invokestatic 54	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   150: lload_3
-    //   151: invokestatic 43	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   154: invokeinterface 80 3 0
-    //   159: pop
-    //   160: invokestatic 83	com/tencent/mm/plugin/secinforeport/c$a:save	()V
-    //   163: ldc 33
-    //   165: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   168: iconst_1
-    //   169: istore 5
-    //   171: goto -131 -> 40
-    //   174: ldc 33
-    //   176: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   179: iconst_0
-    //   180: istore 5
-    //   182: goto -142 -> 40
-    //   185: astore 6
-    //   187: ldc 2
-    //   189: monitorexit
-    //   190: aload 6
-    //   192: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	193	0	paramInt	int
-    //   0	193	1	paramLong	long
-    //   84	67	3	l	long
-    //   38	143	5	bool	boolean
-    //   79	54	6	localLong	Long
-    //   185	6	6	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	8	185	finally
-    //   14	37	185	finally
-    //   46	64	185	finally
-    //   64	85	185	finally
-    //   90	100	185	finally
-    //   100	125	185	finally
-    //   131	168	185	finally
-    //   174	179	185	finally
-  }
-  
-  /* Error */
-  private static void ph()
-  {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_0
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: ldc 86
-    //   7: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: new 88	java/io/File
-    //   13: dup
-    //   14: invokestatic 94	com/tencent/mm/kernel/g:RL	()Lcom/tencent/mm/kernel/e;
-    //   17: getfield 100	com/tencent/mm/kernel/e:cachePath	Ljava/lang/String;
-    //   20: getstatic 106	com/tencent/mm/plugin/normsg/a/b:pgQ	Lcom/tencent/mm/plugin/normsg/a/b;
-    //   23: ldc 108
-    //   25: invokevirtual 112	com/tencent/mm/plugin/normsg/a/b:Wd	(Ljava/lang/String;)Ljava/lang/String;
-    //   28: invokespecial 115	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   31: astore 5
-    //   33: new 117	java/io/DataInputStream
-    //   36: dup
-    //   37: new 119	java/io/FileInputStream
-    //   40: dup
-    //   41: aload 5
-    //   43: invokespecial 122	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   46: invokespecial 125	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   49: astore 6
-    //   51: aload 6
-    //   53: astore 5
-    //   55: aload 6
-    //   57: invokevirtual 129	java/io/DataInputStream:readShort	()S
-    //   60: sipush -774
-    //   63: if_icmpeq +75 -> 138
-    //   66: aload 6
-    //   68: astore 5
-    //   70: new 131	java/lang/IllegalStateException
-    //   73: dup
-    //   74: ldc 133
-    //   76: invokespecial 136	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
-    //   79: astore 7
-    //   81: aload 6
-    //   83: astore 5
-    //   85: ldc 86
-    //   87: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   90: aload 6
-    //   92: astore 5
-    //   94: aload 7
-    //   96: athrow
-    //   97: astore 7
-    //   99: aload 6
-    //   101: astore 5
-    //   103: ldc 35
-    //   105: ldc 138
-    //   107: iconst_1
-    //   108: anewarray 4	java/lang/Object
-    //   111: dup
-    //   112: iconst_0
-    //   113: aload 7
-    //   115: aastore
-    //   116: invokestatic 141	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   119: aload 6
-    //   121: ifnull +205 -> 326
-    //   124: aload 6
-    //   126: invokevirtual 144	java/io/DataInputStream:close	()V
-    //   129: ldc 86
-    //   131: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   134: ldc 2
-    //   136: monitorexit
-    //   137: return
-    //   138: aload 6
-    //   140: astore 5
-    //   142: aload 6
-    //   144: invokevirtual 129	java/io/DataInputStream:readShort	()S
-    //   147: pop
+    //   120: aload 6
+    //   122: ifnonnull +14 -> 136
+    //   125: ldc 33
+    //   127: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   130: iconst_1
+    //   131: istore 5
+    //   133: goto -93 -> 40
+    //   136: ldc 33
+    //   138: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   141: iconst_0
+    //   142: istore 5
+    //   144: goto -104 -> 40
+    //   147: lload_3
     //   148: aload 6
-    //   150: astore 5
-    //   152: aload 6
-    //   154: invokevirtual 148	java/io/DataInputStream:readInt	()I
-    //   157: istore_1
-    //   158: iload_1
-    //   159: ifge +70 -> 229
-    //   162: aload 6
-    //   164: astore 5
-    //   166: new 131	java/lang/IllegalStateException
-    //   169: dup
-    //   170: ldc 150
-    //   172: invokespecial 136	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
-    //   175: astore 7
-    //   177: aload 6
-    //   179: astore 5
-    //   181: ldc 86
-    //   183: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   186: aload 6
-    //   188: astore 5
-    //   190: aload 7
-    //   192: athrow
-    //   193: astore 7
-    //   195: aload 5
-    //   197: astore 6
-    //   199: aload 7
-    //   201: astore 5
-    //   203: aload 6
-    //   205: ifnull +8 -> 213
-    //   208: aload 6
-    //   210: invokevirtual 144	java/io/DataInputStream:close	()V
-    //   213: ldc 86
-    //   215: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   218: aload 5
-    //   220: athrow
-    //   221: astore 5
-    //   223: ldc 2
-    //   225: monitorexit
-    //   226: aload 5
-    //   228: athrow
-    //   229: iload_0
-    //   230: iload_1
-    //   231: if_icmpge +51 -> 282
-    //   234: aload 6
-    //   236: astore 5
-    //   238: aload 6
-    //   240: invokevirtual 148	java/io/DataInputStream:readInt	()I
-    //   243: istore_2
-    //   244: aload 6
-    //   246: astore 5
-    //   248: aload 6
-    //   250: invokevirtual 153	java/io/DataInputStream:readLong	()J
-    //   253: lstore_3
-    //   254: aload 6
-    //   256: astore 5
-    //   258: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:qEk	Ljava/util/Map;
-    //   261: iload_2
-    //   262: invokestatic 54	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   265: lload_3
-    //   266: invokestatic 43	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   269: invokeinterface 80 3 0
-    //   274: pop
-    //   275: iload_0
-    //   276: iconst_1
-    //   277: iadd
-    //   278: istore_0
-    //   279: goto -50 -> 229
-    //   282: aload 6
-    //   284: astore 5
-    //   286: ldc 35
-    //   288: ldc 155
-    //   290: invokestatic 157	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   293: aload 6
-    //   295: invokevirtual 144	java/io/DataInputStream:close	()V
-    //   298: ldc 86
-    //   300: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   303: goto -169 -> 134
-    //   306: astore 5
-    //   308: ldc 86
-    //   310: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   313: goto -179 -> 134
-    //   316: astore 5
-    //   318: ldc 86
-    //   320: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   323: goto -189 -> 134
-    //   326: ldc 86
-    //   328: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   331: goto -197 -> 134
-    //   334: astore 6
-    //   336: goto -123 -> 213
-    //   339: astore 5
-    //   341: aconst_null
-    //   342: astore 6
-    //   344: goto -141 -> 203
-    //   347: astore 7
-    //   349: aconst_null
-    //   350: astore 6
-    //   352: goto -253 -> 99
+    //   150: invokevirtual 76	java/lang/Long:longValue	()J
+    //   153: lsub
+    //   154: lload_1
+    //   155: lcmp
+    //   156: ifle +34 -> 190
+    //   159: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:wcA	Ljava/util/Map;
+    //   162: iload_0
+    //   163: invokestatic 54	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   166: lload_3
+    //   167: invokestatic 43	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   170: invokeinterface 80 3 0
+    //   175: pop
+    //   176: invokestatic 83	com/tencent/mm/plugin/secinforeport/c$a:save	()V
+    //   179: ldc 33
+    //   181: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   184: iconst_1
+    //   185: istore 5
+    //   187: goto -147 -> 40
+    //   190: ldc 33
+    //   192: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   195: iconst_0
+    //   196: istore 5
+    //   198: goto -158 -> 40
+    //   201: astore 6
+    //   203: ldc 2
+    //   205: monitorexit
+    //   206: aload 6
+    //   208: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   1	278	0	i	int
-    //   157	75	1	j	int
-    //   243	19	2	k	int
-    //   253	13	3	l	long
-    //   31	188	5	localObject1	Object
-    //   221	6	5	localObject2	Object
-    //   236	49	5	localObject3	Object
-    //   306	1	5	localException1	java.lang.Exception
-    //   316	1	5	localException2	java.lang.Exception
-    //   339	1	5	localObject4	Object
-    //   49	245	6	localObject5	Object
-    //   334	1	6	localException3	java.lang.Exception
-    //   342	9	6	localObject6	Object
-    //   79	16	7	localIllegalStateException1	java.lang.IllegalStateException
-    //   97	17	7	localException4	java.lang.Exception
-    //   175	16	7	localIllegalStateException2	java.lang.IllegalStateException
-    //   193	7	7	localObject7	Object
-    //   347	1	7	localException5	java.lang.Exception
+    //   0	209	0	paramInt	int
+    //   0	209	1	paramLong	long
+    //   84	83	3	l	long
+    //   38	159	5	bool	boolean
+    //   79	70	6	localLong	Long
+    //   201	6	6	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   55	66	97	java/lang/Exception
-    //   70	81	97	java/lang/Exception
-    //   85	90	97	java/lang/Exception
-    //   94	97	97	java/lang/Exception
-    //   142	148	97	java/lang/Exception
-    //   152	158	97	java/lang/Exception
-    //   166	177	97	java/lang/Exception
-    //   181	186	97	java/lang/Exception
-    //   190	193	97	java/lang/Exception
-    //   238	244	97	java/lang/Exception
-    //   248	254	97	java/lang/Exception
-    //   258	275	97	java/lang/Exception
-    //   286	293	97	java/lang/Exception
-    //   55	66	193	finally
-    //   70	81	193	finally
-    //   85	90	193	finally
-    //   94	97	193	finally
-    //   103	119	193	finally
-    //   142	148	193	finally
-    //   152	158	193	finally
-    //   166	177	193	finally
-    //   181	186	193	finally
-    //   190	193	193	finally
-    //   238	244	193	finally
-    //   248	254	193	finally
-    //   258	275	193	finally
-    //   286	293	193	finally
-    //   5	33	221	finally
-    //   124	129	221	finally
-    //   129	134	221	finally
-    //   208	213	221	finally
-    //   213	221	221	finally
-    //   293	298	221	finally
-    //   298	303	221	finally
-    //   308	313	221	finally
-    //   318	323	221	finally
-    //   326	331	221	finally
-    //   293	298	306	java/lang/Exception
-    //   124	129	316	java/lang/Exception
-    //   208	213	334	java/lang/Exception
-    //   33	51	339	finally
-    //   33	51	347	java/lang/Exception
+    //   3	8	201	finally
+    //   14	37	201	finally
+    //   46	64	201	finally
+    //   64	85	201	finally
+    //   90	100	201	finally
+    //   100	120	201	finally
+    //   125	130	201	finally
+    //   136	141	201	finally
+    //   147	184	201	finally
+    //   190	195	201	finally
   }
   
   /* Error */
@@ -373,176 +144,410 @@ final class c$a
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 158
+    //   3: ldc 86
     //   5: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: new 88	java/io/File
+    //   8: new 88	com/tencent/mm/vfs/e
     //   11: dup
-    //   12: invokestatic 94	com/tencent/mm/kernel/g:RL	()Lcom/tencent/mm/kernel/e;
+    //   12: invokestatic 94	com/tencent/mm/kernel/g:afB	()Lcom/tencent/mm/kernel/e;
     //   15: getfield 100	com/tencent/mm/kernel/e:cachePath	Ljava/lang/String;
-    //   18: getstatic 106	com/tencent/mm/plugin/normsg/a/b:pgQ	Lcom/tencent/mm/plugin/normsg/a/b;
+    //   18: getstatic 106	com/tencent/mm/plugin/normsg/a/b:ufs	Lcom/tencent/mm/plugin/normsg/a/b;
     //   21: ldc 108
-    //   23: invokevirtual 112	com/tencent/mm/plugin/normsg/a/b:Wd	(Ljava/lang/String;)Ljava/lang/String;
-    //   26: invokespecial 115	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   23: invokevirtual 112	com/tencent/mm/plugin/normsg/a/b:ajp	(Ljava/lang/String;)Ljava/lang/String;
+    //   26: invokespecial 115	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   29: astore_1
     //   30: aload_1
-    //   31: invokevirtual 162	java/io/File:exists	()Z
+    //   31: invokevirtual 119	com/tencent/mm/vfs/e:exists	()Z
     //   34: ifne +11 -> 45
     //   37: aload_1
-    //   38: invokevirtual 166	java/io/File:getParentFile	()Ljava/io/File;
-    //   41: invokevirtual 169	java/io/File:mkdirs	()Z
+    //   38: invokevirtual 123	com/tencent/mm/vfs/e:fhT	()Lcom/tencent/mm/vfs/e;
+    //   41: invokevirtual 126	com/tencent/mm/vfs/e:mkdirs	()Z
     //   44: pop
     //   45: aconst_null
     //   46: astore_0
-    //   47: new 171	java/io/DataOutputStream
+    //   47: new 128	java/io/DataOutputStream
     //   50: dup
-    //   51: new 173	java/io/FileOutputStream
-    //   54: dup
-    //   55: aload_1
-    //   56: invokespecial 174	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   59: invokespecial 177	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   62: astore_1
-    //   63: aload_1
-    //   64: sipush -774
-    //   67: invokevirtual 180	java/io/DataOutputStream:writeShort	(I)V
-    //   70: aload_1
-    //   71: iconst_1
-    //   72: invokevirtual 180	java/io/DataOutputStream:writeShort	(I)V
-    //   75: aload_1
-    //   76: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:qEk	Ljava/util/Map;
-    //   79: invokeinterface 183 1 0
-    //   84: invokevirtual 186	java/io/DataOutputStream:writeInt	(I)V
-    //   87: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:qEk	Ljava/util/Map;
-    //   90: invokeinterface 190 1 0
-    //   95: invokeinterface 196 1 0
-    //   100: astore_0
-    //   101: aload_0
-    //   102: invokeinterface 201 1 0
-    //   107: ifeq +75 -> 182
-    //   110: aload_0
-    //   111: invokeinterface 205 1 0
-    //   116: checkcast 207	java/util/Map$Entry
-    //   119: astore_2
-    //   120: aload_1
-    //   121: aload_2
-    //   122: invokeinterface 210 1 0
-    //   127: checkcast 51	java/lang/Integer
-    //   130: invokevirtual 213	java/lang/Integer:intValue	()I
-    //   133: invokevirtual 186	java/io/DataOutputStream:writeInt	(I)V
-    //   136: aload_1
-    //   137: aload_2
-    //   138: invokeinterface 216 1 0
-    //   143: checkcast 39	java/lang/Long
-    //   146: invokevirtual 76	java/lang/Long:longValue	()J
-    //   149: invokevirtual 220	java/io/DataOutputStream:writeLong	(J)V
-    //   152: goto -51 -> 101
-    //   155: astore_0
-    //   156: aload_1
-    //   157: astore_0
-    //   158: ldc 35
-    //   160: ldc 222
-    //   162: invokestatic 224	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   51: aload_1
+    //   52: invokestatic 134	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   55: invokespecial 137	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   58: astore_1
+    //   59: aload_1
+    //   60: sipush -774
+    //   63: invokevirtual 140	java/io/DataOutputStream:writeShort	(I)V
+    //   66: aload_1
+    //   67: iconst_1
+    //   68: invokevirtual 140	java/io/DataOutputStream:writeShort	(I)V
+    //   71: aload_1
+    //   72: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:wcA	Ljava/util/Map;
+    //   75: invokeinterface 144 1 0
+    //   80: invokevirtual 147	java/io/DataOutputStream:writeInt	(I)V
+    //   83: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:wcA	Ljava/util/Map;
+    //   86: invokeinterface 151 1 0
+    //   91: invokeinterface 157 1 0
+    //   96: astore_0
+    //   97: aload_0
+    //   98: invokeinterface 162 1 0
+    //   103: ifeq +75 -> 178
+    //   106: aload_0
+    //   107: invokeinterface 166 1 0
+    //   112: checkcast 168	java/util/Map$Entry
+    //   115: astore_2
+    //   116: aload_1
+    //   117: aload_2
+    //   118: invokeinterface 171 1 0
+    //   123: checkcast 51	java/lang/Integer
+    //   126: invokevirtual 174	java/lang/Integer:intValue	()I
+    //   129: invokevirtual 147	java/io/DataOutputStream:writeInt	(I)V
+    //   132: aload_1
+    //   133: aload_2
+    //   134: invokeinterface 177 1 0
+    //   139: checkcast 39	java/lang/Long
+    //   142: invokevirtual 76	java/lang/Long:longValue	()J
+    //   145: invokevirtual 181	java/io/DataOutputStream:writeLong	(J)V
+    //   148: goto -51 -> 97
+    //   151: astore_0
+    //   152: aload_1
+    //   153: astore_0
+    //   154: ldc 35
+    //   156: ldc 183
+    //   158: invokestatic 186	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   161: aload_0
+    //   162: ifnull +77 -> 239
     //   165: aload_0
-    //   166: ifnull +77 -> 243
-    //   169: aload_0
-    //   170: invokevirtual 225	java/io/DataOutputStream:close	()V
-    //   173: ldc 158
-    //   175: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   178: ldc 2
-    //   180: monitorexit
-    //   181: return
-    //   182: ldc 35
-    //   184: ldc 227
-    //   186: invokestatic 157	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   189: aload_1
-    //   190: invokevirtual 225	java/io/DataOutputStream:close	()V
-    //   193: ldc 158
-    //   195: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   198: goto -20 -> 178
-    //   201: astore_0
-    //   202: ldc 2
-    //   204: monitorexit
-    //   205: aload_0
-    //   206: athrow
-    //   207: astore_0
-    //   208: ldc 158
-    //   210: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   213: goto -35 -> 178
-    //   216: astore_0
-    //   217: ldc 158
-    //   219: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   222: goto -44 -> 178
-    //   225: astore_0
-    //   226: aconst_null
-    //   227: astore_1
+    //   166: invokevirtual 189	java/io/DataOutputStream:close	()V
+    //   169: ldc 86
+    //   171: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   174: ldc 2
+    //   176: monitorexit
+    //   177: return
+    //   178: ldc 35
+    //   180: ldc 191
+    //   182: invokestatic 193	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   185: aload_1
+    //   186: invokevirtual 189	java/io/DataOutputStream:close	()V
+    //   189: ldc 86
+    //   191: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   194: goto -20 -> 174
+    //   197: astore_0
+    //   198: ldc 2
+    //   200: monitorexit
+    //   201: aload_0
+    //   202: athrow
+    //   203: astore_0
+    //   204: ldc 86
+    //   206: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   209: goto -35 -> 174
+    //   212: astore_0
+    //   213: ldc 86
+    //   215: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   218: goto -44 -> 174
+    //   221: astore_0
+    //   222: aconst_null
+    //   223: astore_1
+    //   224: aload_1
+    //   225: ifnull +7 -> 232
     //   228: aload_1
-    //   229: ifnull +7 -> 236
-    //   232: aload_1
-    //   233: invokevirtual 225	java/io/DataOutputStream:close	()V
-    //   236: ldc 158
-    //   238: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   241: aload_0
-    //   242: athrow
-    //   243: ldc 158
-    //   245: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   248: goto -70 -> 178
-    //   251: astore_1
-    //   252: goto -16 -> 236
-    //   255: astore_0
-    //   256: goto -28 -> 228
-    //   259: astore_2
-    //   260: aload_0
-    //   261: astore_1
-    //   262: aload_2
-    //   263: astore_0
-    //   264: goto -36 -> 228
-    //   267: astore_1
-    //   268: goto -110 -> 158
+    //   229: invokevirtual 189	java/io/DataOutputStream:close	()V
+    //   232: ldc 86
+    //   234: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   237: aload_0
+    //   238: athrow
+    //   239: ldc 86
+    //   241: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   244: goto -70 -> 174
+    //   247: astore_1
+    //   248: goto -16 -> 232
+    //   251: astore_0
+    //   252: goto -28 -> 224
+    //   255: astore_2
+    //   256: aload_0
+    //   257: astore_1
+    //   258: aload_2
+    //   259: astore_0
+    //   260: goto -36 -> 224
+    //   263: astore_1
+    //   264: goto -110 -> 154
     // Local variable table:
     //   start	length	slot	name	signature
-    //   46	65	0	localIterator	java.util.Iterator
-    //   155	1	0	localException1	java.lang.Exception
-    //   157	13	0	localObject1	Object
-    //   201	5	0	localObject2	Object
-    //   207	1	0	localException2	java.lang.Exception
-    //   216	1	0	localException3	java.lang.Exception
-    //   225	17	0	localObject3	Object
-    //   255	6	0	localObject4	Object
-    //   263	1	0	localObject5	Object
-    //   29	204	1	localObject6	Object
-    //   251	1	1	localException4	java.lang.Exception
-    //   261	1	1	localObject7	Object
-    //   267	1	1	localException5	java.lang.Exception
-    //   119	19	2	localEntry	java.util.Map.Entry
-    //   259	4	2	localObject8	Object
+    //   46	61	0	localIterator	java.util.Iterator
+    //   151	1	0	localException1	java.lang.Exception
+    //   153	13	0	localObject1	Object
+    //   197	5	0	localObject2	Object
+    //   203	1	0	localException2	java.lang.Exception
+    //   212	1	0	localException3	java.lang.Exception
+    //   221	17	0	localObject3	Object
+    //   251	6	0	localObject4	Object
+    //   259	1	0	localObject5	Object
+    //   29	200	1	localObject6	Object
+    //   247	1	1	localException4	java.lang.Exception
+    //   257	1	1	localObject7	Object
+    //   263	1	1	localException5	java.lang.Exception
+    //   115	19	2	localEntry	java.util.Map.Entry
+    //   255	4	2	localObject8	Object
     // Exception table:
     //   from	to	target	type
-    //   63	101	155	java/lang/Exception
-    //   101	152	155	java/lang/Exception
-    //   182	189	155	java/lang/Exception
-    //   3	45	201	finally
-    //   169	173	201	finally
-    //   173	178	201	finally
-    //   189	193	201	finally
-    //   193	198	201	finally
-    //   208	213	201	finally
-    //   217	222	201	finally
-    //   232	236	201	finally
-    //   236	243	201	finally
-    //   243	248	201	finally
-    //   189	193	207	java/lang/Exception
-    //   169	173	216	java/lang/Exception
-    //   47	63	225	finally
-    //   232	236	251	java/lang/Exception
-    //   63	101	255	finally
-    //   101	152	255	finally
-    //   182	189	255	finally
-    //   158	165	259	finally
-    //   47	63	267	java/lang/Exception
+    //   59	97	151	java/lang/Exception
+    //   97	148	151	java/lang/Exception
+    //   178	185	151	java/lang/Exception
+    //   3	45	197	finally
+    //   165	169	197	finally
+    //   169	174	197	finally
+    //   185	189	197	finally
+    //   189	194	197	finally
+    //   204	209	197	finally
+    //   213	218	197	finally
+    //   228	232	197	finally
+    //   232	239	197	finally
+    //   239	244	197	finally
+    //   185	189	203	java/lang/Exception
+    //   165	169	212	java/lang/Exception
+    //   47	59	221	finally
+    //   228	232	247	java/lang/Exception
+    //   59	97	251	finally
+    //   97	148	251	finally
+    //   178	185	251	finally
+    //   154	161	255	finally
+    //   47	59	263	java/lang/Exception
+  }
+  
+  /* Error */
+  private static void tP()
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_0
+    //   2: ldc 2
+    //   4: monitorenter
+    //   5: ldc 194
+    //   7: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   10: new 88	com/tencent/mm/vfs/e
+    //   13: dup
+    //   14: invokestatic 94	com/tencent/mm/kernel/g:afB	()Lcom/tencent/mm/kernel/e;
+    //   17: getfield 100	com/tencent/mm/kernel/e:cachePath	Ljava/lang/String;
+    //   20: getstatic 106	com/tencent/mm/plugin/normsg/a/b:ufs	Lcom/tencent/mm/plugin/normsg/a/b;
+    //   23: ldc 108
+    //   25: invokevirtual 112	com/tencent/mm/plugin/normsg/a/b:ajp	(Ljava/lang/String;)Ljava/lang/String;
+    //   28: invokespecial 115	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   31: astore 5
+    //   33: new 196	java/io/DataInputStream
+    //   36: dup
+    //   37: aload 5
+    //   39: invokestatic 200	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   42: invokespecial 203	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   45: astore 6
+    //   47: aload 6
+    //   49: astore 5
+    //   51: aload 6
+    //   53: invokevirtual 207	java/io/DataInputStream:readShort	()S
+    //   56: sipush -774
+    //   59: if_icmpeq +75 -> 134
+    //   62: aload 6
+    //   64: astore 5
+    //   66: new 209	java/lang/IllegalStateException
+    //   69: dup
+    //   70: ldc 211
+    //   72: invokespecial 214	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   75: astore 7
+    //   77: aload 6
+    //   79: astore 5
+    //   81: ldc 194
+    //   83: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   86: aload 6
+    //   88: astore 5
+    //   90: aload 7
+    //   92: athrow
+    //   93: astore 7
+    //   95: aload 6
+    //   97: astore 5
+    //   99: ldc 35
+    //   101: ldc 216
+    //   103: iconst_1
+    //   104: anewarray 4	java/lang/Object
+    //   107: dup
+    //   108: iconst_0
+    //   109: aload 7
+    //   111: aastore
+    //   112: invokestatic 218	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   115: aload 6
+    //   117: ifnull +205 -> 322
+    //   120: aload 6
+    //   122: invokevirtual 219	java/io/DataInputStream:close	()V
+    //   125: ldc 194
+    //   127: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   130: ldc 2
+    //   132: monitorexit
+    //   133: return
+    //   134: aload 6
+    //   136: astore 5
+    //   138: aload 6
+    //   140: invokevirtual 207	java/io/DataInputStream:readShort	()S
+    //   143: pop
+    //   144: aload 6
+    //   146: astore 5
+    //   148: aload 6
+    //   150: invokevirtual 222	java/io/DataInputStream:readInt	()I
+    //   153: istore_1
+    //   154: iload_1
+    //   155: ifge +70 -> 225
+    //   158: aload 6
+    //   160: astore 5
+    //   162: new 209	java/lang/IllegalStateException
+    //   165: dup
+    //   166: ldc 224
+    //   168: invokespecial 214	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   171: astore 7
+    //   173: aload 6
+    //   175: astore 5
+    //   177: ldc 194
+    //   179: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   182: aload 6
+    //   184: astore 5
+    //   186: aload 7
+    //   188: athrow
+    //   189: astore 7
+    //   191: aload 5
+    //   193: astore 6
+    //   195: aload 7
+    //   197: astore 5
+    //   199: aload 6
+    //   201: ifnull +8 -> 209
+    //   204: aload 6
+    //   206: invokevirtual 219	java/io/DataInputStream:close	()V
+    //   209: ldc 194
+    //   211: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   214: aload 5
+    //   216: athrow
+    //   217: astore 5
+    //   219: ldc 2
+    //   221: monitorexit
+    //   222: aload 5
+    //   224: athrow
+    //   225: iload_0
+    //   226: iload_1
+    //   227: if_icmpge +51 -> 278
+    //   230: aload 6
+    //   232: astore 5
+    //   234: aload 6
+    //   236: invokevirtual 222	java/io/DataInputStream:readInt	()I
+    //   239: istore_2
+    //   240: aload 6
+    //   242: astore 5
+    //   244: aload 6
+    //   246: invokevirtual 227	java/io/DataInputStream:readLong	()J
+    //   249: lstore_3
+    //   250: aload 6
+    //   252: astore 5
+    //   254: getstatic 26	com/tencent/mm/plugin/secinforeport/c$a:wcA	Ljava/util/Map;
+    //   257: iload_2
+    //   258: invokestatic 54	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   261: lload_3
+    //   262: invokestatic 43	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   265: invokeinterface 80 3 0
+    //   270: pop
+    //   271: iload_0
+    //   272: iconst_1
+    //   273: iadd
+    //   274: istore_0
+    //   275: goto -50 -> 225
+    //   278: aload 6
+    //   280: astore 5
+    //   282: ldc 35
+    //   284: ldc 229
+    //   286: invokestatic 193	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   289: aload 6
+    //   291: invokevirtual 219	java/io/DataInputStream:close	()V
+    //   294: ldc 194
+    //   296: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   299: goto -169 -> 130
+    //   302: astore 5
+    //   304: ldc 194
+    //   306: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   309: goto -179 -> 130
+    //   312: astore 5
+    //   314: ldc 194
+    //   316: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   319: goto -189 -> 130
+    //   322: ldc 194
+    //   324: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   327: goto -197 -> 130
+    //   330: astore 6
+    //   332: goto -123 -> 209
+    //   335: astore 5
+    //   337: aconst_null
+    //   338: astore 6
+    //   340: goto -141 -> 199
+    //   343: astore 7
+    //   345: aconst_null
+    //   346: astore 6
+    //   348: goto -253 -> 95
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   1	274	0	i	int
+    //   153	75	1	j	int
+    //   239	19	2	k	int
+    //   249	13	3	l	long
+    //   31	184	5	localObject1	Object
+    //   217	6	5	localObject2	Object
+    //   232	49	5	localObject3	Object
+    //   302	1	5	localException1	java.lang.Exception
+    //   312	1	5	localException2	java.lang.Exception
+    //   335	1	5	localObject4	Object
+    //   45	245	6	localObject5	Object
+    //   330	1	6	localException3	java.lang.Exception
+    //   338	9	6	localObject6	Object
+    //   75	16	7	localIllegalStateException1	java.lang.IllegalStateException
+    //   93	17	7	localException4	java.lang.Exception
+    //   171	16	7	localIllegalStateException2	java.lang.IllegalStateException
+    //   189	7	7	localObject7	Object
+    //   343	1	7	localException5	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   51	62	93	java/lang/Exception
+    //   66	77	93	java/lang/Exception
+    //   81	86	93	java/lang/Exception
+    //   90	93	93	java/lang/Exception
+    //   138	144	93	java/lang/Exception
+    //   148	154	93	java/lang/Exception
+    //   162	173	93	java/lang/Exception
+    //   177	182	93	java/lang/Exception
+    //   186	189	93	java/lang/Exception
+    //   234	240	93	java/lang/Exception
+    //   244	250	93	java/lang/Exception
+    //   254	271	93	java/lang/Exception
+    //   282	289	93	java/lang/Exception
+    //   51	62	189	finally
+    //   66	77	189	finally
+    //   81	86	189	finally
+    //   90	93	189	finally
+    //   99	115	189	finally
+    //   138	144	189	finally
+    //   148	154	189	finally
+    //   162	173	189	finally
+    //   177	182	189	finally
+    //   186	189	189	finally
+    //   234	240	189	finally
+    //   244	250	189	finally
+    //   254	271	189	finally
+    //   282	289	189	finally
+    //   5	33	217	finally
+    //   120	125	217	finally
+    //   125	130	217	finally
+    //   204	209	217	finally
+    //   209	217	217	finally
+    //   289	294	217	finally
+    //   294	299	217	finally
+    //   304	309	217	finally
+    //   314	319	217	finally
+    //   322	327	217	finally
+    //   289	294	302	java/lang/Exception
+    //   120	125	312	java/lang/Exception
+    //   204	209	330	java/lang/Exception
+    //   33	47	335	finally
+    //   33	47	343	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.secinforeport.c.a
  * JD-Core Version:    0.7.0.1
  */

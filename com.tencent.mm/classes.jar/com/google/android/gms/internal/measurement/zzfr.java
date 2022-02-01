@@ -45,15 +45,15 @@ final class zzfr
   
   static
   {
-    AppMethodBeat.i(68959);
+    AppMethodBeat.i(1482);
     zzajs = new Pair("", Long.valueOf(0L));
-    AppMethodBeat.o(68959);
+    AppMethodBeat.o(1482);
   }
   
   zzfr(zzgl paramzzgl)
   {
     super(paramzzgl);
-    AppMethodBeat.i(68942);
+    AppMethodBeat.i(1465);
     this.zzaju = new zzfu(this, "last_upload", 0L);
     this.zzajv = new zzfu(this, "last_upload_attempt", 0L);
     this.zzajw = new zzfu(this, "backoff", 0L);
@@ -68,39 +68,39 @@ final class zzfr
     this.zzaka = new zzfu(this, "app_install_time", 0L);
     this.zzakb = new zzfw(this, "app_instance_id", null);
     this.zzakh = new Object();
-    AppMethodBeat.o(68942);
+    AppMethodBeat.o(1465);
   }
   
   private final SharedPreferences zziy()
   {
-    AppMethodBeat.i(68944);
+    AppMethodBeat.i(1467);
     zzab();
     zzch();
     SharedPreferences localSharedPreferences = this.zzabf;
-    AppMethodBeat.o(68944);
+    AppMethodBeat.o(1467);
     return localSharedPreferences;
   }
   
   final void setMeasurementEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(68952);
+    AppMethodBeat.i(1475);
     zzab();
     zzge().zzit().zzg("Setting measurementEnabled", Boolean.valueOf(paramBoolean));
     SharedPreferences.Editor localEditor = zziy().edit();
     localEditor.putBoolean("measurement_enabled", paramBoolean);
     localEditor.apply();
-    AppMethodBeat.o(68952);
+    AppMethodBeat.o(1475);
   }
   
   final Pair<String, Boolean> zzbo(String paramString)
   {
-    AppMethodBeat.i(68940);
+    AppMethodBeat.i(1463);
     zzab();
     long l = zzbt().elapsedRealtime();
     if ((this.zzakc != null) && (l < this.zzake))
     {
       paramString = new Pair(this.zzakc, Boolean.valueOf(this.zzakd));
-      AppMethodBeat.o(68940);
+      AppMethodBeat.o(1463);
       return paramString;
     }
     this.zzake = (l + zzgg().zza(paramString, zzew.zzagj));
@@ -127,77 +127,77 @@ final class zzfr
     }
     AdvertisingIdClient.setShouldSkipGmsCoreVersionCheck(false);
     paramString = new Pair(this.zzakc, Boolean.valueOf(this.zzakd));
-    AppMethodBeat.o(68940);
+    AppMethodBeat.o(1463);
     return paramString;
   }
   
   final String zzbp(String paramString)
   {
-    AppMethodBeat.i(68941);
+    AppMethodBeat.i(1464);
     zzab();
     paramString = (String)zzbo(paramString).first;
     MessageDigest localMessageDigest = zzka.getMessageDigest("MD5");
     if (localMessageDigest == null)
     {
-      AppMethodBeat.o(68941);
+      AppMethodBeat.o(1464);
       return null;
     }
     paramString = String.format(Locale.US, "%032X", new Object[] { new BigInteger(1, localMessageDigest.digest(paramString.getBytes())) });
-    AppMethodBeat.o(68941);
+    AppMethodBeat.o(1464);
     return paramString;
   }
   
   final void zzbq(String paramString)
   {
-    AppMethodBeat.i(68945);
+    AppMethodBeat.i(1468);
     zzab();
     SharedPreferences.Editor localEditor = zziy().edit();
     localEditor.putString("gmp_app_id", paramString);
     localEditor.apply();
-    AppMethodBeat.o(68945);
+    AppMethodBeat.o(1468);
   }
   
   final void zzbr(String paramString)
   {
-    AppMethodBeat.i(68947);
+    AppMethodBeat.i(1470);
     synchronized (this.zzakh)
     {
       this.zzakf = paramString;
       this.zzakg = zzbt().elapsedRealtime();
-      AppMethodBeat.o(68947);
+      AppMethodBeat.o(1470);
       return;
     }
   }
   
   final void zzf(boolean paramBoolean)
   {
-    AppMethodBeat.i(68950);
+    AppMethodBeat.i(1473);
     zzab();
     zzge().zzit().zzg("Setting useService", Boolean.valueOf(paramBoolean));
     SharedPreferences.Editor localEditor = zziy().edit();
     localEditor.putBoolean("use_service", paramBoolean);
     localEditor.apply();
-    AppMethodBeat.o(68950);
+    AppMethodBeat.o(1473);
   }
   
   final boolean zzg(boolean paramBoolean)
   {
-    AppMethodBeat.i(68953);
+    AppMethodBeat.i(1476);
     zzab();
     paramBoolean = zziy().getBoolean("measurement_enabled", paramBoolean);
-    AppMethodBeat.o(68953);
+    AppMethodBeat.o(1476);
     return paramBoolean;
   }
   
   final void zzh(boolean paramBoolean)
   {
-    AppMethodBeat.i(68955);
+    AppMethodBeat.i(1478);
     zzab();
     zzge().zzit().zzg("Updating deferred analytics collection", Boolean.valueOf(paramBoolean));
     SharedPreferences.Editor localEditor = zziy().edit();
     localEditor.putBoolean("deferred_analytics_collection", paramBoolean);
     localEditor.apply();
-    AppMethodBeat.o(68955);
+    AppMethodBeat.o(1478);
   }
   
   protected final boolean zzhf()
@@ -207,7 +207,7 @@ final class zzfr
   
   protected final void zzih()
   {
-    AppMethodBeat.i(68943);
+    AppMethodBeat.i(1466);
     this.zzabf = getContext().getSharedPreferences("com.google.android.gms.measurement.prefs", 0);
     this.zzakn = this.zzabf.getBoolean("has_been_opened", false);
     if (!this.zzakn)
@@ -217,52 +217,52 @@ final class zzfr
       localEditor.apply();
     }
     this.zzajt = new zzfv(this, "health_monitor", Math.max(0L, ((Long)zzew.zzagk.get()).longValue()), null);
-    AppMethodBeat.o(68943);
+    AppMethodBeat.o(1466);
   }
   
   final String zziz()
   {
-    AppMethodBeat.i(68946);
+    AppMethodBeat.i(1469);
     zzab();
     String str = zziy().getString("gmp_app_id", null);
-    AppMethodBeat.o(68946);
+    AppMethodBeat.o(1469);
     return str;
   }
   
   final String zzja()
   {
-    AppMethodBeat.i(68948);
+    AppMethodBeat.i(1471);
     synchronized (this.zzakh)
     {
       if (Math.abs(zzbt().elapsedRealtime() - this.zzakg) < 1000L)
       {
         String str = this.zzakf;
-        AppMethodBeat.o(68948);
+        AppMethodBeat.o(1471);
         return str;
       }
-      AppMethodBeat.o(68948);
+      AppMethodBeat.o(1471);
       return null;
     }
   }
   
   final Boolean zzjb()
   {
-    AppMethodBeat.i(68949);
+    AppMethodBeat.i(1472);
     zzab();
     if (!zziy().contains("use_service"))
     {
-      AppMethodBeat.o(68949);
+      AppMethodBeat.o(1472);
       return null;
     }
     boolean bool = zziy().getBoolean("use_service", false);
-    AppMethodBeat.o(68949);
+    AppMethodBeat.o(1472);
     return Boolean.valueOf(bool);
   }
   
   final void zzjc()
   {
     boolean bool1 = true;
-    AppMethodBeat.i(68951);
+    AppMethodBeat.i(1474);
     zzab();
     zzge().zzit().log("Clearing collection preferences.");
     boolean bool2 = zziy().contains("measurement_enabled");
@@ -275,12 +275,12 @@ final class zzfr
     if (bool2) {
       setMeasurementEnabled(bool1);
     }
-    AppMethodBeat.o(68951);
+    AppMethodBeat.o(1474);
   }
   
   protected final String zzjd()
   {
-    AppMethodBeat.i(68954);
+    AppMethodBeat.i(1477);
     zzab();
     String str1 = zziy().getString("previous_os_version", null);
     zzfw().zzch();
@@ -291,30 +291,30 @@ final class zzfr
       localEditor.putString("previous_os_version", str2);
       localEditor.apply();
     }
-    AppMethodBeat.o(68954);
+    AppMethodBeat.o(1477);
     return str1;
   }
   
   final boolean zzje()
   {
-    AppMethodBeat.i(68956);
+    AppMethodBeat.i(1479);
     zzab();
     boolean bool = zziy().getBoolean("deferred_analytics_collection", false);
-    AppMethodBeat.o(68956);
+    AppMethodBeat.o(1479);
     return bool;
   }
   
   final boolean zzjf()
   {
-    AppMethodBeat.i(68957);
+    AppMethodBeat.i(1480);
     boolean bool = this.zzabf.contains("deferred_analytics_collection");
-    AppMethodBeat.o(68957);
+    AppMethodBeat.o(1480);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzfr
  * JD-Core Version:    0.7.0.1
  */

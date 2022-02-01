@@ -22,12 +22,12 @@ public class XWalkExternalExtension
   
   static
   {
-    AppMethodBeat.i(86189);
+    AppMethodBeat.i(155303);
     if (!XWalkExternalExtension.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(86189);
+      AppMethodBeat.o(155303);
       return;
     }
   }
@@ -39,11 +39,11 @@ public class XWalkExternalExtension
   
   public XWalkExternalExtension(String paramString1, String paramString2, String[] paramArrayOfString, XWalkExtensionContextClient paramXWalkExtensionContextClient)
   {
-    AppMethodBeat.i(86176);
+    AppMethodBeat.i(155290);
     if ((!$assertionsDisabled) && (paramXWalkExtensionContextClient == null))
     {
       paramString1 = new AssertionError();
-      AppMethodBeat.o(86176);
+      AppMethodBeat.o(155290);
       throw paramString1;
     }
     this.mName = paramString1;
@@ -60,7 +60,7 @@ public class XWalkExternalExtension
       if ((this.mJsApi == null) || (this.mJsApi.length() == 0))
       {
         Log.e("Extension-" + this.mName, "Can't generate JavaScript stub for this extension.");
-        AppMethodBeat.o(86176);
+        AppMethodBeat.o(155290);
       }
     }
     else
@@ -69,14 +69,14 @@ public class XWalkExternalExtension
       this.useJsStubGeneration = false;
     }
     this.mExtensionContext.registerExtension(this);
-    AppMethodBeat.o(86176);
+    AppMethodBeat.o(155290);
   }
   
   public final void broadcastMessage(String paramString)
   {
-    AppMethodBeat.i(86187);
+    AppMethodBeat.i(155301);
     this.mExtensionContext.broadcastMessage(this, paramString);
-    AppMethodBeat.o(86187);
+    AppMethodBeat.o(155301);
   }
   
   public final String[] getEntryPoints()
@@ -91,9 +91,9 @@ public class XWalkExternalExtension
   
   protected ExtensionInstanceHelper getInstanceHelper(int paramInt)
   {
-    AppMethodBeat.i(86183);
+    AppMethodBeat.i(155297);
     ExtensionInstanceHelper localExtensionInstanceHelper = (ExtensionInstanceHelper)this.instanceHelpers.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(86183);
+    AppMethodBeat.o(155297);
     return localExtensionInstanceHelper;
   }
   
@@ -114,15 +114,15 @@ public class XWalkExternalExtension
   
   public ReflectionHelper getTargetReflect(String paramString)
   {
-    AppMethodBeat.i(86182);
+    AppMethodBeat.i(155296);
     paramString = this.mReflection.getConstructorReflection(paramString);
     if (paramString != null)
     {
-      AppMethodBeat.o(86182);
+      AppMethodBeat.o(155296);
       return paramString;
     }
     paramString = this.mReflection;
-    AppMethodBeat.o(86182);
+    AppMethodBeat.o(155296);
     return paramString;
   }
   
@@ -135,36 +135,36 @@ public class XWalkExternalExtension
   
   public void onBinaryMessage(int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(86180);
+    AppMethodBeat.i(155294);
     if (this.useJsStubGeneration) {
       getInstanceHelper(paramInt).handleMessage(paramArrayOfByte);
     }
-    AppMethodBeat.o(86180);
+    AppMethodBeat.o(155294);
   }
   
   public void onDestroy() {}
   
   public void onInstanceCreated(int paramInt)
   {
-    AppMethodBeat.i(86177);
+    AppMethodBeat.i(155291);
     this.instanceHelpers.put(Integer.valueOf(paramInt), new ExtensionInstanceHelper(this, paramInt));
-    AppMethodBeat.o(86177);
+    AppMethodBeat.o(155291);
   }
   
   public void onInstanceDestroyed(int paramInt)
   {
-    AppMethodBeat.i(86178);
+    AppMethodBeat.i(155292);
     this.instanceHelpers.remove(Integer.valueOf(paramInt));
-    AppMethodBeat.o(86178);
+    AppMethodBeat.o(155292);
   }
   
   public void onMessage(int paramInt, String paramString)
   {
-    AppMethodBeat.i(86179);
+    AppMethodBeat.i(155293);
     if (this.useJsStubGeneration) {
       getInstanceHelper(paramInt).handleMessage(paramString);
     }
-    AppMethodBeat.o(86179);
+    AppMethodBeat.o(155293);
   }
   
   public void onNewIntent(Intent paramIntent) {}
@@ -179,7 +179,7 @@ public class XWalkExternalExtension
   
   public String onSyncMessage(int paramInt, String paramString)
   {
-    AppMethodBeat.i(86181);
+    AppMethodBeat.i(155295);
     Object localObject = null;
     if (this.useJsStubGeneration) {
       localObject = getInstanceHelper(paramInt).handleMessage(paramString);
@@ -187,30 +187,30 @@ public class XWalkExternalExtension
     if (localObject != null)
     {
       paramString = ReflectionHelper.objToJSON(localObject);
-      AppMethodBeat.o(86181);
+      AppMethodBeat.o(155295);
       return paramString;
     }
-    AppMethodBeat.o(86181);
+    AppMethodBeat.o(155295);
     return "";
   }
   
   public final void postBinaryMessage(int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(86186);
+    AppMethodBeat.i(155300);
     this.mExtensionContext.postBinaryMessage(this, paramInt, paramArrayOfByte);
-    AppMethodBeat.o(86186);
+    AppMethodBeat.o(155300);
   }
   
   public final void postMessage(int paramInt, String paramString)
   {
-    AppMethodBeat.i(86185);
+    AppMethodBeat.i(155299);
     this.mExtensionContext.postMessage(this, paramInt, paramString);
-    AppMethodBeat.o(86185);
+    AppMethodBeat.o(155299);
   }
   
   public void sendEvent(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(86184);
+    AppMethodBeat.i(155298);
     try
     {
       JSONObject localJSONObject = new JSONObject();
@@ -218,26 +218,26 @@ public class XWalkExternalExtension
       localJSONObject.put("type", paramString);
       localJSONObject.put("event", ReflectionHelper.objToJSON(paramObject));
       broadcastMessage(localJSONObject.toString());
-      AppMethodBeat.o(86184);
+      AppMethodBeat.o(155298);
       return;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(86184);
+      AppMethodBeat.o(155298);
     }
   }
   
   public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(86188);
+    AppMethodBeat.i(155302);
     paramIntent = new ActivityNotFoundException("This method is no longer supported");
-    AppMethodBeat.o(86188);
+    AppMethodBeat.o(155302);
     throw paramIntent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.extension.XWalkExternalExtension
  * JD-Core Version:    0.7.0.1
  */

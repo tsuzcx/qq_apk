@@ -1,703 +1,424 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.wallet.a.f;
-import com.tencent.mm.plugin.wallet.a.h;
-import com.tencent.mm.plugin.wallet.a.i;
-import com.tencent.mm.plugin.wallet.a.j;
-import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
-import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.api.l;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.b.a.gl;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.model.ar.a;
+import com.tencent.mm.model.ar.b;
+import com.tencent.mm.model.w;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.plugin.wallet_core.c.i;
+import com.tencent.mm.pluginsdk.b.a;
+import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
+import com.tencent.mm.protocal.protobuf.bif;
+import com.tencent.mm.protocal.protobuf.bzq;
+import com.tencent.mm.protocal.protobuf.cmc;
+import com.tencent.mm.protocal.protobuf.dav;
+import com.tencent.mm.protocal.protobuf.daw;
+import com.tencent.mm.protocal.protobuf.dbm;
+import com.tencent.mm.protocal.protobuf.dbp;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.preference.CheckBoxPreference;
+import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.base.preference.Preference.b;
+import com.tencent.mm.ui.base.preference.PreferenceSmallCategory;
+import com.tencent.mm.ui.base.preference.f;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import junit.framework.Assert;
 
 public final class b
+  implements com.tencent.mm.al.g, a
 {
-  public h umI;
-  private Map<String, com.tencent.mm.plugin.wallet.a.t> umJ;
-  private Map<String, j> umK;
+  private CheckBoxPreference Ajc;
+  af contact;
+  Context context;
+  private p lAj;
+  private CheckBoxPreference okn;
+  private f screen;
   
-  public b(h paramh)
+  public b(Context paramContext)
   {
-    AppMethodBeat.i(47100);
-    this.umI = null;
-    this.umJ = null;
-    this.umK = null;
-    Assert.assertNotNull(paramh);
-    this.umI = paramh;
-    Kc();
-    AppMethodBeat.o(47100);
+    this.context = paramContext;
   }
   
-  private void Kc()
+  private static void sw(int paramInt)
   {
-    int j = 0;
-    AppMethodBeat.i(47101);
-    this.umJ = new HashMap();
-    LinkedList localLinkedList = this.umI.tUg;
-    int i;
-    Object localObject;
-    if (localLinkedList != null)
+    AppMethodBeat.i(70644);
+    gl localgl = new gl();
+    localgl.dZv = paramInt;
+    localgl.aBj();
+    AppMethodBeat.o(70644);
+  }
+  
+  public final boolean SN(String paramString)
+  {
+    AppMethodBeat.i(70641);
+    ad.i("MicroMsg.WxPay.ContactWidgetWxPayNotify", "handleEvent key:%s", new Object[] { paramString });
+    if (bt.kU("contact_info_wxpay_notify_go_to", paramString))
     {
-      i = 0;
-      while (i < localLinkedList.size())
+      paramString = new Intent();
+      paramString.putExtra("Chat_User", this.contact.field_username);
+      paramString.putExtra("finish_direct", true);
+      d.e(this.context, ".ui.chatting.ChattingUI", paramString);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(70641);
+      return false;
+      if (bt.kU("contact_info_wxpay_notify_top", paramString))
       {
-        localObject = (com.tencent.mm.plugin.wallet.a.t)localLinkedList.get(i);
-        this.umJ.put(((com.tencent.mm.plugin.wallet.a.t)localObject).tTZ, localObject);
-        i += 1;
+        if (this.Ajc.isChecked())
+        {
+          w.C(this.contact.field_username, true);
+          sw(3);
+        }
+        else
+        {
+          w.D(this.contact.field_username, true);
+          sw(4);
+        }
+      }
+      else if (bt.kU("contact_info_wxpay_notify_not_disturb", paramString))
+      {
+        if (this.okn.isChecked())
+        {
+          w.s(this.contact);
+          sw(5);
+        }
+        else
+        {
+          w.t(this.contact);
+          sw(6);
+        }
+      }
+      else if (bt.kU("contact_info_wxpay_notify_help", paramString))
+      {
+        com.tencent.mm.wallet_core.ui.e.aS(this.context, "https://kf.qq.com/touch/scene_product.html?scene_id=kf1");
+        sw(7);
+      }
+      else if (bt.kU("contact_info_wxpay_notify_clear_data", paramString))
+      {
+        com.tencent.mm.ui.base.h.d(this.context, this.context.getString(2131757630), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(70635);
+            ((k)com.tencent.mm.kernel.g.ab(k.class)).cOI().agw("gh_3dfda90e39d6");
+            AppMethodBeat.o(70635);
+          }
+        }, null);
+        sw(8);
+      }
+      else if (bt.kU("contact_info_wxpay_notify_install", paramString))
+      {
+        paramString = this.context;
+        this.context.getString(2131755906);
+        this.lAj = com.tencent.mm.ui.base.h.b(paramString, this.context.getString(2131763362), true, null);
+        this.lAj.show();
+        com.tencent.mm.kernel.g.aeS().a(30, this);
+        paramString = new LinkedList();
+        paramString.add("gh_3dfda90e39d6");
+        LinkedList localLinkedList = new LinkedList();
+        localLinkedList.add(Integer.valueOf(1));
+        paramString = new com.tencent.mm.pluginsdk.model.o(paramString, localLinkedList, "", "");
+        com.tencent.mm.kernel.g.aeS().a(paramString, 0);
+        sw(10);
+      }
+      else if (bt.kU("contact_info_wxpay_notify_uninstall", paramString))
+      {
+        com.tencent.mm.ui.base.h.d(this.context, this.context.getString(2131763366), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(70636);
+            paramAnonymousDialogInterface = ((com.tencent.mm.api.o)com.tencent.mm.kernel.g.ab(com.tencent.mm.api.o.class)).ei(b.this.contact.field_username);
+            ((l)com.tencent.mm.kernel.g.ab(l.class)).a(paramAnonymousDialogInterface, (Activity)b.this.context, b.this.contact);
+            b.this.bRv();
+            AppMethodBeat.o(70636);
+          }
+        }, null);
+        sw(9);
       }
     }
-    ab.w("MicroMsg.FavorLogicHelper", "func[initData] favorList null");
-    this.umK = new HashMap();
-    if ((this.umI.tUh != null) && (this.umI.tUh.tUt != null))
+  }
+  
+  public final boolean a(f paramf, af paramaf, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(70640);
+    this.screen = paramf;
+    this.contact = paramaf;
+    paramf.addPreferencesFromResource(2131951664);
+    this.Ajc = ((CheckBoxPreference)paramf.aKk("contact_info_wxpay_notify_top"));
+    this.okn = ((CheckBoxPreference)paramf.aKk("contact_info_wxpay_notify_not_disturb"));
+    bRv();
+    com.tencent.mm.kernel.g.aeS().a(1820, this);
+    paramf = new i();
+    com.tencent.mm.kernel.g.aeS().a(paramf, 0);
+    AppMethodBeat.o(70640);
+    return true;
+  }
+  
+  public final boolean bRu()
+  {
+    return true;
+  }
+  
+  final void bRv()
+  {
+    AppMethodBeat.i(70642);
+    HelperHeaderPreference localHelperHeaderPreference = (HelperHeaderPreference)this.screen.aKk("contact_info_header_helper");
+    localHelperHeaderPreference.aO(this.contact.field_username, this.contact.ZX(), this.context.getString(2131757911));
+    if (com.tencent.mm.n.b.ls(this.contact.field_type))
     {
-      localLinkedList = this.umI.tUh.tUt;
-      i = j;
-      while (i < localLinkedList.size())
+      localHelperHeaderPreference.updateStatus(1);
+      this.screen.cE("contact_info_wxpay_notify_install", true);
+      this.screen.cE("contact_info_wxpay_notify_uninstall", false);
+      this.screen.cE("contact_info_wxpay_notify_go_to", false);
+      this.screen.cE("contact_info_wxpay_notify_top", false);
+      this.screen.cE("contact_info_wxpay_notify_not_disturb", false);
+      this.screen.cE("contact_info_wxpay_notify_help", false);
+      this.screen.cE("contact_info_wxpay_notify_clear_data", false);
+      if (((k)com.tencent.mm.kernel.g.ab(k.class)).apR().aIv(this.contact.field_username)) {}
+      for (this.Ajc.lG = true; this.contact.Ny(); this.Ajc.lG = false)
       {
-        localObject = (j)localLinkedList.get(i);
-        this.umK.put(((j)localObject).tUv, localObject);
-        i += 1;
+        this.okn.lG = true;
+        AppMethodBeat.o(70642);
+        return;
       }
-      AppMethodBeat.o(47101);
+      this.okn.lG = false;
+      AppMethodBeat.o(70642);
       return;
     }
-    ab.w("MicroMsg.FavorLogicHelper", "func[initData] favorComposeList null");
-    AppMethodBeat.o(47101);
+    localHelperHeaderPreference.updateStatus(0);
+    this.screen.cE("contact_info_wxpay_notify_install", false);
+    this.screen.cE("contact_info_wxpay_notify_uninstall", true);
+    this.screen.cE("contact_info_wxpay_notify_go_to", true);
+    this.screen.cE("contact_info_wxpay_notify_top", true);
+    this.screen.cE("contact_info_wxpay_notify_not_disturb", true);
+    this.screen.cE("contact_info_wxpay_notify_help", true);
+    this.screen.cE("contact_info_wxpay_notify_clear_data", true);
+    AppMethodBeat.o(70642);
   }
   
-  public static boolean a(FavorPayInfo paramFavorPayInfo, Bankcard paramBankcard)
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(47114);
-    if (paramBankcard == null)
+    AppMethodBeat.i(70643);
+    ad.i("MicroMsg.WxPay.ContactWidgetWxPayNotify", "errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " scenetype:" + paramn.getType());
+    Object localObject1;
+    Object localObject2;
+    if ((paramn instanceof com.tencent.mm.pluginsdk.model.o))
     {
-      ab.w("MicroMsg.FavorLogicHelper", "curBankcard null");
-      AppMethodBeat.o(47114);
-      return true;
-    }
-    if ((paramFavorPayInfo != null) && (!bo.isNullOrNil(paramFavorPayInfo.uhU)))
-    {
-      if (paramFavorPayInfo.uhV != 0) {}
-      for (i = 1; (i != 0) && (!bo.isNullOrNil(paramFavorPayInfo.uhW)) && (paramFavorPayInfo.uhZ != null) && (paramFavorPayInfo.uhZ.contains(paramBankcard.field_bindSerial)); i = 0)
+      com.tencent.mm.kernel.g.aeS().b(30, this);
+      if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        AppMethodBeat.o(47114);
-        return false;
-      }
-    }
-    if (paramFavorPayInfo.uhV != 0) {}
-    for (int i = 1; (i != 0) && (((!bo.isNullOrNil(paramFavorPayInfo.uhW)) && (paramBankcard.field_bankcardType != null) && (!paramBankcard.field_bankcardType.equals(paramFavorPayInfo.uhW))) || ((bo.isNullOrNil(paramFavorPayInfo.uhW)) && (paramBankcard.field_bankcardType.equals("CFT")))); i = 0)
-    {
-      AppMethodBeat.o(47114);
-      return true;
-    }
-    AppMethodBeat.o(47114);
-    return false;
-  }
-  
-  public static String[] afE(String paramString)
-  {
-    AppMethodBeat.i(47110);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(47110);
-      return null;
-    }
-    paramString = paramString.split("-");
-    AppMethodBeat.o(47110);
-    return paramString;
-  }
-  
-  public static List<Bankcard> bt(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(47115);
-    ArrayList localArrayList1 = com.tencent.mm.plugin.wallet_core.model.t.cTN().nH(true);
-    if (paramInt != 0) {}
-    for (paramInt = 1; paramInt == 0; paramInt = 0)
-    {
-      AppMethodBeat.o(47115);
-      return localArrayList1;
-    }
-    ArrayList localArrayList2 = new ArrayList();
-    int i = 0;
-    if (i < localArrayList1.size()) {
-      if (bo.isNullOrNil(paramString))
-      {
-        if (((Bankcard)localArrayList1.get(i)).field_bankcardType.equals("CFT")) {
-          break label140;
-        }
-        paramInt = 1;
-      }
-    }
-    for (;;)
-    {
-      if (paramInt != 0) {
-        localArrayList2.add((Bankcard)localArrayList1.get(i));
-      }
-      i += 1;
-      break;
-      if (((Bankcard)localArrayList1.get(i)).field_bankcardType.equals(paramString))
-      {
-        paramInt = 1;
-        continue;
-        AppMethodBeat.o(47115);
-        return localArrayList2;
-      }
-      else
-      {
-        label140:
-        paramInt = 0;
-      }
-    }
-  }
-  
-  private static String dZ(List<String> paramList)
-  {
-    AppMethodBeat.i(47116);
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramList.size())
-    {
-      localStringBuilder.append((String)paramList.get(i));
-      if (i < paramList.size() - 1) {
-        localStringBuilder.append("-");
-      }
-      i += 1;
-    }
-    paramList = localStringBuilder.toString();
-    AppMethodBeat.o(47116);
-    return paramList;
-  }
-  
-  public final Map<String, b.a> afA(String paramString)
-  {
-    AppMethodBeat.i(47102);
-    paramString = bI(paramString, false);
-    AppMethodBeat.o(47102);
-    return paramString;
-  }
-  
-  public final Map<String, b.a> afB(String paramString)
-  {
-    AppMethodBeat.i(47104);
-    HashMap localHashMap = new HashMap();
-    LinkedList localLinkedList;
-    if ((this.umI.tUh != null) && (this.umI.tUh.tUt != null))
-    {
-      localLinkedList = this.umI.tUh.tUt;
-      if (!this.umK.containsKey(paramString)) {
-        break label437;
-      }
-    }
-    label406:
-    label412:
-    label437:
-    for (double d = ((j)this.umK.get(paramString)).tUw;; d = 0.0D)
-    {
-      int i = 0;
-      while (i < localLinkedList.size())
-      {
-        j localj = (j)localLinkedList.get(i);
-        Iterator localIterator = null;
-        Object localObject;
-        if ((paramString.equals("0")) && (!localj.equals("0")))
-        {
-          localObject = localj.tUv;
-          localObject = afE((String)localObject);
-          if ((localObject == null) || (localObject.length <= 0)) {
-            break label412;
-          }
-          localObject = (com.tencent.mm.plugin.wallet.a.t)this.umJ.get(localObject[0]);
-          if (localObject == null) {
-            break label412;
-          }
-          if (((com.tencent.mm.plugin.wallet.a.t)localObject).tVc == 0) {
-            break label406;
-          }
-        }
-        for (int j = 1;; j = 0)
-        {
-          if ((j == 0) || (((com.tencent.mm.plugin.wallet.a.t)localObject).tVf.size() <= 0)) {
-            break label412;
-          }
-          localIterator = ((com.tencent.mm.plugin.wallet.a.t)localObject).tVf.iterator();
-          while (localIterator.hasNext())
-          {
-            String str = aa.a((com.tencent.mm.bv.b)localIterator.next());
-            b.a locala = (b.a)localHashMap.get(str);
-            if ((locala == null) || (localj.tUw > locala.umL.tUw))
-            {
-              locala = new b.a();
-              locala.umL = localj;
-              locala.ppn = ((com.tencent.mm.plugin.wallet.a.t)localObject).ppn;
-              locala.umM = (localj.tUw - d);
-              locala.umN = ((com.tencent.mm.plugin.wallet.a.t)localObject).tVd;
-              localHashMap.put(str, locala);
-            }
-          }
-          localObject = localIterator;
-          if (!localj.tUv.startsWith(paramString)) {
-            break;
-          }
-          localObject = localIterator;
-          if (paramString.equals(localj.tUv)) {
-            break;
-          }
-          localObject = localj.tUv.replace(paramString + "-", "");
-          break;
-        }
-        i += 1;
-        continue;
-        ab.w("MicroMsg.FavorLogicHelper", "favorComposeList null or favorComposeList.favorComposeInfo null");
-      }
-      AppMethodBeat.o(47104);
-      return localHashMap;
-    }
-  }
-  
-  public final List<com.tencent.mm.plugin.wallet.a.t> afC(String paramString)
-  {
-    AppMethodBeat.i(47106);
-    LinkedList localLinkedList = new LinkedList();
-    if (this.umI.tUg != null)
-    {
-      paramString = afA(paramString);
-      int i = 0;
-      if (i < this.umI.tUg.size())
-      {
-        com.tencent.mm.plugin.wallet.a.t localt = (com.tencent.mm.plugin.wallet.a.t)this.umI.tUg.get(i);
-        if (localt != null) {
-          if (localt.tVc == 0) {
-            break label113;
-          }
-        }
-        label113:
-        for (int j = 1;; j = 0)
-        {
-          if ((j != 0) && (paramString.containsKey(localt.tVd))) {
-            localLinkedList.add(localt);
-          }
-          i += 1;
-          break;
-        }
-      }
-    }
-    else
-    {
-      ab.w("MicroMsg.FavorLogicHelper", "fucn[getBankFavorListWithSelectedCompId] mFavorInfo.tradeFavList null");
-    }
-    AppMethodBeat.o(47106);
-    return localLinkedList;
-  }
-  
-  public final j afD(String paramString)
-  {
-    AppMethodBeat.i(47109);
-    paramString = (j)this.umK.get(paramString);
-    AppMethodBeat.o(47109);
-    return paramString;
-  }
-  
-  public final String afF(String paramString)
-  {
-    AppMethodBeat.i(47111);
-    paramString = bJ(paramString, false);
-    AppMethodBeat.o(47111);
-    return paramString;
-  }
-  
-  public final FavorPayInfo afG(String paramString)
-  {
-    AppMethodBeat.i(47113);
-    FavorPayInfo localFavorPayInfo = new FavorPayInfo();
-    if (this.umK.get(paramString) == null)
-    {
-      localFavorPayInfo.uhU = "0";
-      if (this.umI != null) {
-        localFavorPayInfo.uhX = this.umI.tUf;
-      }
-      localFavorPayInfo.uhV = 0;
-      AppMethodBeat.o(47113);
-      return localFavorPayInfo;
-    }
-    localFavorPayInfo.uhU = paramString;
-    if (this.umI != null) {
-      localFavorPayInfo.uhX = this.umI.tUf;
-    }
-    localFavorPayInfo.uhV = 0;
-    paramString = afE(paramString);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(47113);
-      return localFavorPayInfo;
-    }
-    int i = paramString.length - 1;
-    for (;;)
-    {
-      if (i >= 0)
-      {
-        com.tencent.mm.plugin.wallet.a.t localt = (com.tencent.mm.plugin.wallet.a.t)this.umJ.get(paramString[i]);
-        if (localt != null)
-        {
-          int j;
-          if (localt.tVc != 0) {
-            j = 1;
-          }
-          while (j != 0)
-          {
-            localFavorPayInfo.uhV = 1;
-            if ((localt.tVf != null) && (localt.tVf.size() > 0))
-            {
-              localFavorPayInfo.uhZ = new LinkedList();
-              Iterator localIterator = localt.tVf.iterator();
-              for (;;)
-              {
-                if (localIterator.hasNext())
-                {
-                  com.tencent.mm.bv.b localb = (com.tencent.mm.bv.b)localIterator.next();
-                  localFavorPayInfo.uhZ.add(aa.a(localb));
-                  continue;
-                  j = 0;
-                  break;
-                }
-              }
-            }
-            if (bo.isNullOrNil(localt.tVd)) {
-              break label286;
-            }
-            localFavorPayInfo.uhW = localt.tVd;
-          }
-        }
-      }
-      else
-      {
-        AppMethodBeat.o(47113);
-        return localFavorPayInfo;
-      }
-      label286:
-      i -= 1;
-    }
-  }
-  
-  public final String afH(String paramString)
-  {
-    AppMethodBeat.i(47117);
-    ArrayList localArrayList2 = com.tencent.mm.plugin.wallet_core.model.t.cTN().nH(true);
-    HashMap localHashMap = new HashMap();
-    ArrayList localArrayList1 = new ArrayList();
-    int i = 0;
-    while (i < localArrayList2.size())
-    {
-      localHashMap.put(((Bankcard)localArrayList2.get(i)).field_bankcardType, Integer.valueOf(0));
-      i += 1;
-    }
-    paramString = afE(paramString);
-    if (paramString != null)
-    {
-      i = 0;
-      if (i < paramString.length)
-      {
-        localArrayList2 = paramString[i];
-        com.tencent.mm.plugin.wallet.a.t localt = (com.tencent.mm.plugin.wallet.a.t)this.umJ.get(localArrayList2);
-        int j;
-        if (localt != null) {
-          if (localt.tVc != 0)
-          {
-            j = 1;
-            label128:
-            if (j == 0) {
-              break label180;
-            }
-            if ((localHashMap.containsKey(localt.tVd)) || (bo.isNullOrNil(localt.tVd))) {
-              localArrayList1.add(localArrayList2);
-            }
-          }
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          j = 0;
-          break label128;
-          label180:
-          localArrayList1.add(localArrayList2);
-        }
-      }
-    }
-    if (localArrayList1.size() == 0)
-    {
-      AppMethodBeat.o(47117);
-      return "0";
-    }
-    paramString = dZ(localArrayList1);
-    AppMethodBeat.o(47117);
-    return paramString;
-  }
-  
-  public final j bH(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(47103);
-    if ((!"0".equals(paramString)) && (this.umK.containsKey(paramString)))
-    {
-      paramString = (j)this.umK.get(paramString);
-      AppMethodBeat.o(47103);
-      return paramString;
-    }
-    paramString = this.umK.keySet().iterator();
-    label271:
-    label272:
-    for (;;)
-    {
-      Object localObject1;
-      int j;
-      int i;
-      if (paramString.hasNext())
-      {
-        localObject1 = (String)paramString.next();
-        localObject1 = (j)this.umK.get(localObject1);
-        if ((((j)localObject1).tUx == null) || (((j)localObject1).tUx.size() == 0)) {
-          continue;
-        }
-        j = ((j)localObject1).tUx.size();
-        Iterator localIterator = ((j)localObject1).tUx.iterator();
-        i = 0;
-        if (localIterator.hasNext())
-        {
-          Object localObject2 = (f)localIterator.next();
-          if (this.umJ.containsKey(((f)localObject2).tTZ))
-          {
-            localObject2 = (com.tencent.mm.plugin.wallet.a.t)this.umJ.get(((f)localObject2).tTZ);
-            if ((!((com.tencent.mm.plugin.wallet.a.t)localObject2).tVd.equals("")) || (((com.tencent.mm.plugin.wallet.a.t)localObject2).tVf.size() != 0) || ((paramBoolean) && (((com.tencent.mm.plugin.wallet.a.t)localObject2).tVc != 0))) {
-              break label271;
-            }
-            i += 1;
-          }
+        ad.e("MicroMsg.WxPay.ContactWidgetWxPayNotify", "errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        if ((paramInt1 == 4) && (paramInt2 == -24) && (!bt.isNullOrNil(paramString))) {
+          Toast.makeText(aj.getContext(), paramString, 1).show();
         }
       }
       for (;;)
       {
-        break;
-        if ((i <= 0) || (i != j)) {
-          break label272;
+        if (this.lAj != null) {
+          this.lAj.dismiss();
         }
-        AppMethodBeat.o(47103);
-        return localObject1;
-        AppMethodBeat.o(47103);
-        return null;
+        bRv();
+        AppMethodBeat.o(70643);
+        return;
+        localObject1 = ((com.tencent.mm.pluginsdk.model.o)paramn).evr();
+        ad.i("MicroMsg.WxPay.ContactWidgetWxPayNotify", "bind fitness contact %s success", new Object[] { localObject1 });
+        paramn = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHY("gh_3dfda90e39d6");
+        if ((paramn != null) && (!bt.isNullOrNil((String)localObject1))) {
+          break;
+        }
+        ad.e("MicroMsg.WxPay.ContactWidgetWxPayNotify", "respUsername == " + (String)localObject1 + ", contact = " + paramn);
+        paramString = ((com.tencent.mm.api.o)com.tencent.mm.kernel.g.ab(com.tencent.mm.api.o.class)).ei(paramn.field_username);
+        if (paramString != null) {
+          ((com.tencent.mm.api.o)com.tencent.mm.kernel.g.ab(com.tencent.mm.api.o.class)).a(paramString);
+        }
+        com.tencent.mm.kernel.g.afB().afk().set(327825, Boolean.TRUE);
       }
-    }
-  }
-  
-  public final Map<String, b.a> bI(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(47105);
-    HashMap localHashMap = new HashMap();
-    LinkedList localLinkedList;
-    if ((this.umI.tUh != null) && (this.umI.tUh.tUt != null))
-    {
-      localLinkedList = this.umI.tUh.tUt;
-      if (!this.umK.containsKey(paramString)) {
-        break label435;
+      if (!w.sC(paramn.field_username)) {
+        break label1140;
       }
+      localObject2 = bt.nullAsNil(paramn.field_username);
+      paramString = ((com.tencent.mm.api.o)com.tencent.mm.kernel.g.ab(com.tencent.mm.api.o.class)).ei((String)localObject2);
+      if (paramString != null) {
+        paramString.field_username = ((String)localObject1);
+      }
+      ((com.tencent.mm.api.o)com.tencent.mm.kernel.g.ab(com.tencent.mm.api.o.class)).ej((String)localObject2);
+      paramn.nj((String)localObject2);
     }
-    label138:
-    label412:
-    label435:
-    for (double d = ((j)this.umK.get(paramString)).tUw;; d = 0.0D)
+    for (;;)
     {
-      int i = 0;
-      if (i < localLinkedList.size())
+      paramn.setUsername((String)localObject1);
+      if ((int)paramn.fId == 0) {
+        ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().ag(paramn);
+      }
+      if ((int)paramn.fId <= 0)
       {
-        j localj = (j)localLinkedList.get(i);
-        b.a locala = null;
-        Object localObject;
-        if ((paramString.equals("0")) && (!localj.equals("0")))
+        ad.e("MicroMsg.WxPay.ContactWidgetWxPayNotify", "addContact : insert contact failed");
+        break;
+      }
+      w.u(paramn);
+      localObject1 = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHY(paramn.field_username);
+      if (paramString != null)
+      {
+        ((com.tencent.mm.api.o)com.tencent.mm.kernel.g.ab(com.tencent.mm.api.o.class)).b(paramString);
+        break;
+      }
+      paramString = ((com.tencent.mm.api.o)com.tencent.mm.kernel.g.ab(com.tencent.mm.api.o.class)).ei(((au)localObject1).field_username);
+      if ((paramString == null) || (paramString.IY()))
+      {
+        ad.d("MicroMsg.WxPay.ContactWidgetWxPayNotify", "shouldUpdate");
+        ar.a.gMW.aB(((au)localObject1).field_username, "");
+        com.tencent.mm.ak.c.vO(((au)localObject1).field_username);
+        break;
+      }
+      if (!((af)localObject1).eKF()) {
+        break;
+      }
+      ad.d("MicroMsg.WxPay.ContactWidgetWxPayNotify", "update contact, last check time=%d", new Object[] { Integer.valueOf(((au)localObject1).evG) });
+      ar.a.gMW.aB(((au)localObject1).field_username, "");
+      com.tencent.mm.ak.c.vO(((au)localObject1).field_username);
+      break;
+      if ((paramn instanceof i))
+      {
+        com.tencent.mm.kernel.g.aeS().b(1820, this);
+        if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          localObject = localj.tUv;
-          localObject = afE((String)localObject);
-          if ((localObject != null) && (localObject.length > 0))
+          paramString = (i)paramn;
+          if (paramString.zVZ == null) {
+            paramString = new bzq();
+          }
+          while ((paramString != null) && (paramString.DxU != null) && (paramString.DxU.DxQ != null) && (!paramString.DxU.DxQ.isEmpty()))
           {
-            localObject = (com.tencent.mm.plugin.wallet.a.t)this.umJ.get(localObject[0]);
-            if (localObject != null) {
-              if (((com.tencent.mm.plugin.wallet.a.t)localObject).tVc == 0) {
-                break label412;
+            paramInt2 = this.screen.indexOf("contact_info_wxpay_notify_clear_data");
+            paramString = paramString.DxU.DxQ.iterator();
+            for (;;)
+            {
+              if (paramString.hasNext())
+              {
+                paramn = (bif)paramString.next();
+                if (paramn.DFN.isEmpty())
+                {
+                  ad.i("MicroMsg.WxPay.ContactWidgetWxPayNotify", "ItemSectionViewData is null");
+                  continue;
+                  paramString = paramString.zVZ;
+                  break;
+                }
+                paramInt1 = paramInt2 + 1;
+                localObject1 = new PreferenceSmallCategory(this.context);
+                this.screen.a((Preference)localObject1, paramInt1);
+                paramn = paramn.DFN.iterator();
+                for (;;)
+                {
+                  paramInt2 = paramInt1;
+                  if (!paramn.hasNext()) {
+                    break;
+                  }
+                  Object localObject3 = (dav)paramn.next();
+                  if ((((dav)localObject3).EsD.isEmpty()) || (((dav)localObject3).EsE.isEmpty()))
+                  {
+                    ad.i("MicroMsg.WxPay.ContactWidgetWxPayNotify", "TableCellViewData data null");
+                  }
+                  else
+                  {
+                    localObject1 = (dbp)((dav)localObject3).EsD.get(0);
+                    localObject2 = (dbp)((dav)localObject3).EsE.get(0);
+                    localObject3 = ((dav)localObject3).Cvq;
+                    if ((((dbp)localObject1).Eth.isEmpty()) || (bt.isNullOrNil(((dbm)((dbp)localObject1).Eth.get(0)).text)) || (localObject3 == null))
+                    {
+                      ad.i("MicroMsg.WxPay.ContactWidgetWxPayNotify", "TableCellViewData inner data null");
+                    }
+                    else
+                    {
+                      paramInt1 += 1;
+                      Preference local3 = new Preference(this.context)
+                      {
+                        public final void onBindView(View paramAnonymousView)
+                        {
+                          AppMethodBeat.i(70638);
+                          super.onBindView(paramAnonymousView);
+                          if (this.GfO != null) {
+                            paramAnonymousView.setOnClickListener(new View.OnClickListener()
+                            {
+                              public final void onClick(View paramAnonymous2View)
+                              {
+                                AppMethodBeat.i(70637);
+                                b.3.this.GfO.dbW();
+                                AppMethodBeat.o(70637);
+                              }
+                            });
+                          }
+                          AppMethodBeat.o(70638);
+                        }
+                      };
+                      local3.setTitle(((dbm)((dbp)localObject1).Eth.get(0)).text);
+                      local3.setLayoutResource(2131494804);
+                      if ((!((dbp)localObject2).Eth.isEmpty()) && (!bt.isNullOrNil(((dbm)((dbp)localObject2).Eth.get(0)).text))) {
+                        local3.setSummary(((dbm)((dbp)localObject2).Eth.get(0)).text);
+                      }
+                      this.screen.a(local3, paramInt1);
+                      local3.GfO = new Preference.b()
+                      {
+                        public final boolean dbW()
+                        {
+                          AppMethodBeat.i(70639);
+                          ad.i("MicroMsg.WxPay.ContactWidgetWxPayNotify", "text(%s) click!", new Object[] { ((dbm)this.Ajf.Eth.get(0)).text });
+                          Bundle localBundle = new Bundle();
+                          localBundle.putInt("key_tiny_app_scene", 1000);
+                          com.tencent.mm.plugin.wallet_core.utils.g.a(b.this.context, this.Ajg, localBundle);
+                          AppMethodBeat.o(70639);
+                          return true;
+                        }
+                      };
+                    }
+                  }
+                }
               }
             }
+            this.screen.notifyDataSetChanged();
+            AppMethodBeat.o(70643);
+            return;
           }
+          ad.i("MicroMsg.WxPay.ContactWidgetWxPayNotify", "NetSceneGetPayPlugin no data");
+          AppMethodBeat.o(70643);
+          return;
         }
-        for (int j = 1;; j = 0)
-        {
-          if ((j != 0) && (!bo.isNullOrNil(((com.tencent.mm.plugin.wallet.a.t)localObject).tVd)) && (((com.tencent.mm.plugin.wallet.a.t)localObject).tVf.size() <= 0) && ((paramBoolean) || (!((com.tencent.mm.plugin.wallet.a.t)localObject).tVd.equalsIgnoreCase("CFT"))))
-          {
-            locala = (b.a)localHashMap.get(((com.tencent.mm.plugin.wallet.a.t)localObject).tVd);
-            if ((locala == null) || (localj.tUw > locala.umL.tUw))
-            {
-              locala = new b.a();
-              locala.umL = localj;
-              locala.ppn = ((com.tencent.mm.plugin.wallet.a.t)localObject).ppn;
-              locala.umM = (localj.tUw - d);
-              locala.umN = ((com.tencent.mm.plugin.wallet.a.t)localObject).tVd;
-              localHashMap.put(((com.tencent.mm.plugin.wallet.a.t)localObject).tVd, locala);
-            }
-          }
-          i += 1;
-          break;
-          localObject = locala;
-          if (!localj.tUv.startsWith(paramString)) {
-            break label138;
-          }
-          localObject = locala;
-          if (paramString.equals(localj.tUv)) {
-            break label138;
-          }
-          localObject = localj.tUv.replace(paramString + "-", "");
-          break label138;
-        }
-        ab.w("MicroMsg.FavorLogicHelper", "favorComposeList null or favorComposeList.favorComposeInfo null");
+        ad.i("MicroMsg.WxPay.ContactWidgetWxPayNotify", "NetSceneGetPayPlugin fail!");
       }
-      AppMethodBeat.o(47105);
-      return localHashMap;
+      AppMethodBeat.o(70643);
+      return;
+      label1140:
+      paramString = null;
     }
-  }
-  
-  public final String bJ(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(47112);
-    paramString = afE(paramString);
-    if (paramString != null)
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      int i = 0;
-      if (i < paramString.length)
-      {
-        com.tencent.mm.plugin.wallet.a.t localt = (com.tencent.mm.plugin.wallet.a.t)this.umJ.get(paramString[i]);
-        if (localt != null) {
-          if (localt.tVc == 0) {
-            break label122;
-          }
-        }
-        label122:
-        for (int j = 1;; j = 0)
-        {
-          if ((j == 0) || ((bo.isNullOrNil(localt.tVd)) && (!paramBoolean)))
-          {
-            localStringBuilder.append(paramString[i]);
-            localStringBuilder.append("-");
-          }
-          i += 1;
-          break;
-        }
-      }
-      if (localStringBuilder.length() == 0)
-      {
-        AppMethodBeat.o(47112);
-        return "0";
-      }
-      paramString = localStringBuilder.delete(localStringBuilder.length() - 1, localStringBuilder.length()).toString();
-      AppMethodBeat.o(47112);
-      return paramString;
-    }
-    AppMethodBeat.o(47112);
-    return "0";
-  }
-  
-  public final boolean cVm()
-  {
-    AppMethodBeat.i(47099);
-    if ((this.umJ != null) && (this.umJ.size() > 0))
-    {
-      AppMethodBeat.o(47099);
-      return true;
-    }
-    AppMethodBeat.o(47099);
-    return false;
-  }
-  
-  public final int cVn()
-  {
-    AppMethodBeat.i(47107);
-    int i = this.umK.size();
-    AppMethodBeat.o(47107);
-    return i;
-  }
-  
-  public final j cVo()
-  {
-    AppMethodBeat.i(47108);
-    if (!this.umK.isEmpty())
-    {
-      Object localObject = this.umK.entrySet().iterator();
-      if (((Iterator)localObject).hasNext())
-      {
-        localObject = (j)((Map.Entry)((Iterator)localObject).next()).getValue();
-        AppMethodBeat.o(47108);
-        return localObject;
-      }
-    }
-    AppMethodBeat.o(47108);
-    return null;
-  }
-  
-  public final List<com.tencent.mm.plugin.wallet.a.t> cVp()
-  {
-    AppMethodBeat.i(47118);
-    Object localObject = com.tencent.mm.plugin.wallet_core.model.t.cTN().nH(true);
-    HashMap localHashMap = new HashMap();
-    int i = 0;
-    while (i < ((ArrayList)localObject).size())
-    {
-      localHashMap.put(((Bankcard)((ArrayList)localObject).get(i)).field_bankcardType, Integer.valueOf(0));
-      i += 1;
-    }
-    localObject = new LinkedList();
-    LinkedList localLinkedList = this.umI.tUg;
-    if (localLinkedList != null)
-    {
-      i = 0;
-      if (i < localLinkedList.size())
-      {
-        com.tencent.mm.plugin.wallet.a.t localt = (com.tencent.mm.plugin.wallet.a.t)localLinkedList.get(i);
-        int j;
-        if (localt != null) {
-          if (localt.tVc != 0)
-          {
-            j = 1;
-            label128:
-            if (j == 0) {
-              break label179;
-            }
-            if ((localHashMap.containsKey(localt.tVd)) || (bo.isNullOrNil(localt.tVd))) {
-              ((List)localObject).add(localt);
-            }
-          }
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          j = 0;
-          break label128;
-          label179:
-          ((List)localObject).add(localt);
-        }
-      }
-    }
-    AppMethodBeat.o(47118);
-    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.b
  * JD-Core Version:    0.7.0.1
  */

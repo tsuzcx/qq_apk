@@ -88,16 +88,16 @@ public class XWalkDecompressor
     //   120: invokevirtual 95	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   123: invokestatic 98	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   126: aload_3
-    //   127: invokestatic 104	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
+    //   127: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   130: aload_0
-    //   131: invokestatic 104	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
+    //   131: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   134: ldc 40
     //   136: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   139: return
     //   140: aload_3
-    //   141: invokestatic 104	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
+    //   141: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   144: aload_0
-    //   145: invokestatic 104	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
+    //   145: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   148: ldc 40
     //   150: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   153: return
@@ -107,9 +107,9 @@ public class XWalkDecompressor
     //   158: aconst_null
     //   159: astore_1
     //   160: aload_1
-    //   161: invokestatic 104	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
+    //   161: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   164: aload 4
-    //   166: invokestatic 104	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
+    //   166: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   169: ldc 40
     //   171: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   174: aload_0
@@ -604,7 +604,7 @@ public class XWalkDecompressor
     //   201: aload 7
     //   203: astore 8
     //   205: aload_0
-    //   206: invokestatic 104	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
+    //   206: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   209: aload_0
     //   210: astore 10
     //   212: aload 6
@@ -684,7 +684,7 @@ public class XWalkDecompressor
     //   352: aload 7
     //   354: astore 8
     //   356: aload 6
-    //   358: invokestatic 104	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
+    //   358: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   361: aload_0
     //   362: astore 10
     //   364: aload 6
@@ -756,9 +756,9 @@ public class XWalkDecompressor
     //   493: aload 7
     //   495: invokevirtual 218	java/util/zip/ZipFile:close	()V
     //   498: aload_1
-    //   499: invokestatic 104	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
+    //   499: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   502: aload_0
-    //   503: invokestatic 104	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
+    //   503: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   506: ldc 237
     //   508: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   511: iconst_0
@@ -769,9 +769,9 @@ public class XWalkDecompressor
     //   520: aload 7
     //   522: invokevirtual 218	java/util/zip/ZipFile:close	()V
     //   525: aload 6
-    //   527: invokestatic 104	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
+    //   527: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   530: aload_0
-    //   531: invokestatic 104	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
+    //   531: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   534: invokestatic 225	java/lang/System:gc	()V
     //   537: ldc 18
     //   539: new 114	java/lang/StringBuilder
@@ -800,9 +800,9 @@ public class XWalkDecompressor
     //   583: aload 7
     //   585: invokevirtual 218	java/util/zip/ZipFile:close	()V
     //   588: aload 6
-    //   590: invokestatic 104	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
+    //   590: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   593: aload_0
-    //   594: invokestatic 104	com/tencent/xweb/util/b:tryClose	(Ljava/io/Closeable;)V
+    //   594: invokestatic 104	com/tencent/xweb/util/c:tryClose	(Ljava/io/Closeable;)V
     //   597: ldc 237
     //   599: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   602: aload_1
@@ -1044,7 +1044,7 @@ public class XWalkDecompressor
     //   204: astore 8
     //   206: aload 10
     //   208: aload 9
-    //   210: invokevirtual 273	g/a/b/a:cV	([B)Z
+    //   210: invokevirtual 273	g/a/b/a:dn	([B)Z
     //   213: ifne +250 -> 463
     //   216: aload_0
     //   217: astore 7
@@ -1723,50 +1723,50 @@ public class XWalkDecompressor
   
   private static boolean isAsset(String paramString)
   {
-    AppMethodBeat.i(85596);
+    AppMethodBeat.i(154687);
     if ((paramString.endsWith(".dat")) || (paramString.endsWith(".pak")) || (paramString.endsWith(".js")))
     {
-      AppMethodBeat.o(85596);
+      AppMethodBeat.o(154687);
       return true;
     }
-    AppMethodBeat.o(85596);
+    AppMethodBeat.o(154687);
     return false;
   }
   
   private static boolean isClassesDex(String paramString)
   {
-    AppMethodBeat.i(85597);
+    AppMethodBeat.i(154688);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(85597);
+      AppMethodBeat.o(154688);
       return false;
     }
     boolean bool = paramString.endsWith("classes.dex");
-    AppMethodBeat.o(85597);
+    AppMethodBeat.o(154688);
     return bool;
   }
   
   private static boolean isNativeLibrary(String paramString)
   {
-    AppMethodBeat.i(85595);
+    AppMethodBeat.i(154686);
     boolean bool = paramString.endsWith(".so");
-    AppMethodBeat.o(85595);
+    AppMethodBeat.o(154686);
     return bool;
   }
   
   private static InputStream openRawResource(String paramString)
   {
-    AppMethodBeat.i(85598);
+    AppMethodBeat.i(154689);
     Context localContext = XWalkEnvironment.getApplicationContext();
     Resources localResources = localContext.getResources();
     paramString = localResources.openRawResource(localResources.getIdentifier(paramString.split("\\.")[0], "raw", localContext.getPackageName()));
-    AppMethodBeat.o(85598);
+    AppMethodBeat.o(154689);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.xwalk.core.XWalkDecompressor
  * JD-Core Version:    0.7.0.1
  */

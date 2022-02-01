@@ -7,14 +7,17 @@ import com.tencent.mm.sdk.e.c;
 public abstract class i
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandAppLaunchRecordUpdateTimeIndex ON AppBrandAppLaunchUsernameDuplicateRecord(updateTime)" };
-  private static final int dhU = "username".hashCode();
-  private static final int dhV = "updateTime".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandAppLaunchRecordUpdateTimeIndex ON AppBrandAppLaunchUsernameDuplicateRecord2(updateTime)" };
+  private static final int emd = "usernameHash".hashCode();
+  private static final int eme = "username".hashCode();
+  private static final int emf = "updateTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dhS = true;
-  private boolean dhT = true;
+  private boolean ema = true;
+  private boolean emb = true;
+  private boolean emc = true;
   public long field_updateTime;
   public String field_username;
+  public int field_usernameHash;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,11 +32,11 @@ public abstract class i
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dhU != k) {
+      if (emd != k) {
         break label65;
       }
-      this.field_username = paramCursor.getString(i);
-      this.dhS = true;
+      this.field_usernameHash = paramCursor.getInt(i);
+      this.ema = true;
     }
     for (;;)
     {
@@ -41,7 +44,9 @@ public abstract class i
       break label20;
       break;
       label65:
-      if (dhV == k) {
+      if (eme == k) {
+        this.field_username = paramCursor.getString(i);
+      } else if (emf == k) {
         this.field_updateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,10 +57,13 @@ public abstract class i
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dhS) {
+    if (this.ema) {
+      localContentValues.put("usernameHash", Integer.valueOf(this.field_usernameHash));
+    }
+    if (this.emb) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.dhT) {
+    if (this.emc) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
     if (this.systemRowid > 0L) {

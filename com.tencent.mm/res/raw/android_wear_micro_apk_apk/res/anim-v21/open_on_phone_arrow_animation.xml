@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator android:interpolator="@interpolator/open_on_phone_animation_interpolator_0" android:duration="433" android:valueFrom="20.86372" android:valueTo="31.75" android:valueType="floatType" android:propertyName="translateX" />
+</set>

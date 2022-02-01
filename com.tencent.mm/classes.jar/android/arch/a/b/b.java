@@ -8,37 +8,37 @@ import java.util.WeakHashMap;
 public class b<K, V>
   implements Iterable<Map.Entry<K, V>>
 {
-  public b.c<K, V> bN;
-  public b.c<K, V> bO;
-  public WeakHashMap<b.f<K, V>, Boolean> bP = new WeakHashMap();
+  public c<K, V> bQ;
+  public c<K, V> bR;
+  public WeakHashMap<f<K, V>, Boolean> bS = new WeakHashMap();
   public int mSize = 0;
   
-  public final b<K, V>.d af()
+  public final b<K, V>.d R()
   {
-    b.d locald = new b.d(this, (byte)0);
-    this.bP.put(locald, Boolean.FALSE);
+    d locald = new d((byte)0);
+    this.bS.put(locald, Boolean.FALSE);
     return locald;
   }
   
-  protected final b.c<K, V> b(K paramK, V paramV)
+  protected final c<K, V> a(K paramK, V paramV)
   {
-    paramK = new b.c(paramK, paramV);
+    paramK = new c(paramK, paramV);
     this.mSize += 1;
-    if (this.bO == null)
+    if (this.bR == null)
     {
-      this.bN = paramK;
-      this.bO = this.bN;
+      this.bQ = paramK;
+      this.bR = this.bQ;
       return paramK;
     }
-    this.bO.bR = paramK;
-    paramK.bS = this.bO;
-    this.bO = paramK;
+    this.bR.bU = paramK;
+    paramK.bV = this.bR;
+    this.bR = paramK;
     return paramK;
   }
   
-  protected b.c<K, V> d(K paramK)
+  protected c<K, V> c(K paramK)
   {
-    for (b.c localc = this.bN; (localc != null) && (!localc.bQ.equals(paramK)); localc = localc.bR) {}
+    for (c localc = this.bQ; (localc != null) && (!localc.bT.equals(paramK)); localc = localc.bU) {}
     return localc;
   }
   
@@ -69,52 +69,52 @@ public class b<K, V>
   
   public Iterator<Map.Entry<K, V>> iterator()
   {
-    b.a locala = new b.a(this.bN, this.bO);
-    this.bP.put(locala, Boolean.FALSE);
+    a locala = new a(this.bQ, this.bR);
+    this.bS.put(locala, Boolean.FALSE);
     return locala;
   }
   
   public V putIfAbsent(K paramK, V paramV)
   {
-    b.c localc = d(paramK);
+    c localc = c(paramK);
     if (localc != null) {
       return localc.mValue;
     }
-    b(paramK, paramV);
+    a(paramK, paramV);
     return null;
   }
   
   public V remove(K paramK)
   {
-    paramK = d(paramK);
+    paramK = c(paramK);
     if (paramK == null) {
       return null;
     }
     this.mSize -= 1;
-    if (!this.bP.isEmpty())
+    if (!this.bS.isEmpty())
     {
-      Iterator localIterator = this.bP.keySet().iterator();
+      Iterator localIterator = this.bS.keySet().iterator();
       while (localIterator.hasNext()) {
-        ((b.f)localIterator.next()).c(paramK);
+        ((f)localIterator.next()).c(paramK);
       }
     }
-    if (paramK.bS != null)
+    if (paramK.bV != null)
     {
-      paramK.bS.bR = paramK.bR;
-      if (paramK.bR == null) {
+      paramK.bV.bU = paramK.bU;
+      if (paramK.bU == null) {
         break label134;
       }
-      paramK.bR.bS = paramK.bS;
+      paramK.bU.bV = paramK.bV;
     }
     for (;;)
     {
-      paramK.bR = null;
-      paramK.bS = null;
+      paramK.bU = null;
+      paramK.bV = null;
       return paramK.mValue;
-      this.bN = paramK.bR;
+      this.bQ = paramK.bU;
       break;
       label134:
-      this.bO = paramK.bS;
+      this.bR = paramK.bV;
     }
   }
   
@@ -133,10 +133,186 @@ public class b<K, V>
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
+  
+  static final class a<K, V>
+    extends b.e<K, V>
+  {
+    a(b.c<K, V> paramc1, b.c<K, V> paramc2)
+    {
+      super(paramc2);
+    }
+    
+    final b.c<K, V> a(b.c<K, V> paramc)
+    {
+      return paramc.bU;
+    }
+    
+    final b.c<K, V> b(b.c<K, V> paramc)
+    {
+      return paramc.bV;
+    }
+  }
+  
+  public static final class b<K, V>
+    extends b.e<K, V>
+  {
+    public b(b.c<K, V> paramc1, b.c<K, V> paramc2)
+    {
+      super(paramc2);
+    }
+    
+    final b.c<K, V> a(b.c<K, V> paramc)
+    {
+      return paramc.bV;
+    }
+    
+    final b.c<K, V> b(b.c<K, V> paramc)
+    {
+      return paramc.bU;
+    }
+  }
+  
+  public static final class c<K, V>
+    implements Map.Entry<K, V>
+  {
+    final K bT;
+    c<K, V> bU;
+    public c<K, V> bV;
+    final V mValue;
+    
+    c(K paramK, V paramV)
+    {
+      this.bT = paramK;
+      this.mValue = paramV;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      if (paramObject == this) {}
+      do
+      {
+        return true;
+        if (!(paramObject instanceof c)) {
+          return false;
+        }
+        paramObject = (c)paramObject;
+      } while ((this.bT.equals(paramObject.bT)) && (this.mValue.equals(paramObject.mValue)));
+      return false;
+    }
+    
+    public final K getKey()
+    {
+      return this.bT;
+    }
+    
+    public final V getValue()
+    {
+      return this.mValue;
+    }
+    
+    public final V setValue(V paramV)
+    {
+      throw new UnsupportedOperationException("An entry modification is not supported");
+    }
+    
+    public final String toString()
+    {
+      return this.bT + "=" + this.mValue;
+    }
+  }
+  
+  public final class d
+    implements b.f<K, V>, Iterator<Map.Entry<K, V>>
+  {
+    private b.c<K, V> bW;
+    private boolean bX = true;
+    
+    private d() {}
+    
+    public final void c(b.c<K, V> paramc)
+    {
+      if (paramc == this.bW)
+      {
+        this.bW = this.bW.bV;
+        if (this.bW != null) {
+          break label34;
+        }
+      }
+      label34:
+      for (boolean bool = true;; bool = false)
+      {
+        this.bX = bool;
+        return;
+      }
+    }
+    
+    public final boolean hasNext()
+    {
+      if (this.bX) {
+        if (b.a(b.this) == null) {}
+      }
+      while ((this.bW != null) && (this.bW.bU != null))
+      {
+        return true;
+        return false;
+      }
+      return false;
+    }
+  }
+  
+  static abstract class e<K, V>
+    implements b.f<K, V>, Iterator<Map.Entry<K, V>>
+  {
+    b.c<K, V> bU;
+    b.c<K, V> bZ;
+    
+    e(b.c<K, V> paramc1, b.c<K, V> paramc2)
+    {
+      this.bZ = paramc2;
+      this.bU = paramc1;
+    }
+    
+    private b.c<K, V> S()
+    {
+      if ((this.bU == this.bZ) || (this.bZ == null)) {
+        return null;
+      }
+      return a(this.bU);
+    }
+    
+    abstract b.c<K, V> a(b.c<K, V> paramc);
+    
+    abstract b.c<K, V> b(b.c<K, V> paramc);
+    
+    public final void c(b.c<K, V> paramc)
+    {
+      if ((this.bZ == paramc) && (paramc == this.bU))
+      {
+        this.bU = null;
+        this.bZ = null;
+      }
+      if (this.bZ == paramc) {
+        this.bZ = b(this.bZ);
+      }
+      if (this.bU == paramc) {
+        this.bU = S();
+      }
+    }
+    
+    public boolean hasNext()
+    {
+      return this.bU != null;
+    }
+  }
+  
+  static abstract interface f<K, V>
+  {
+    public abstract void c(b.c<K, V> paramc);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.arch.a.b.b
  * JD-Core Version:    0.7.0.1
  */

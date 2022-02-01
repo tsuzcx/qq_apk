@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.masssend.ui.MassSendLayout android:id="@id/db9" style="@style/q1"
+<RelativeLayout android:orientation="vertical" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:background="@color/k8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <LinearLayout android:orientation="vertical" android:background="@color/lj" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:id="@id/db_" android:paddingLeft="@dimen/n0" android:paddingTop="@dimen/n0" android:paddingRight="@dimen/n0" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-                <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:id="@id/dba" android:paddingLeft="@dimen/n0" android:paddingTop="@dimen/n_" android:paddingRight="@dimen/n0" android:paddingBottom="@dimen/n0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingMultiplier="1.2" />
-            </LinearLayout>
-        </ScrollView>
+    <ImageView android:id="@id/ci9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="wrap_content" android:layout_height="@dimen/i5" android:layout_marginBottom="@dimen/w" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:id="@id/gjg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fc9" />
     </LinearLayout>
-    <com.tencent.mm.pluginsdk.ui.chat.ChatFooter android:orientation="vertical" android:id="@id/anl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</com.tencent.mm.plugin.masssend.ui.MassSendLayout>
+</RelativeLayout>

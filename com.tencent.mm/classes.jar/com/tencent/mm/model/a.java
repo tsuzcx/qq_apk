@@ -1,150 +1,150 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.i;
-import com.tencent.mm.ai.p;
+import com.tencent.mm.al.q;
+import com.tencent.mm.b.i;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
 {
-  public byte[] fkn;
-  public long fko;
+  public byte[] gLv;
+  public long gLw;
   
   public a()
   {
-    AppMethodBeat.i(58084);
-    this.fko = -1L;
-    if (Yt()) {
-      al.p(new Runnable()
+    AppMethodBeat.i(132228);
+    this.gLw = -1L;
+    if (apG()) {
+      aq.n(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(58083);
+          AppMethodBeat.i(132227);
           try
           {
-            if (a.Yt()) {
-              com.tencent.mm.plugin.report.e.qrI.idkeyStat(226L, 1L, 1L, false);
+            if (a.apG()) {
+              com.tencent.mm.plugin.report.e.vIY.idkeyStat(226L, 1L, 1L, false);
             }
-            AppMethodBeat.o(58083);
+            AppMethodBeat.o(132227);
             return;
           }
           catch (Exception localException)
           {
-            ab.e("MicroMsg.AccInfoCacheInWorker", "init Exception:%s", new Object[] { bo.l(localException) });
-            AppMethodBeat.o(58083);
+            ad.e("MicroMsg.AccInfoCacheInWorker", "init Exception:%s", new Object[] { bt.m(localException) });
+            AppMethodBeat.o(132227);
           }
         }
       }, 5000L);
     }
-    AppMethodBeat.o(58084);
+    AppMethodBeat.o(132228);
   }
   
-  public static boolean Yt()
+  public static boolean apG()
   {
-    AppMethodBeat.i(58085);
-    if ((com.tencent.mm.kernel.a.QP()) || (!g.RG()))
+    AppMethodBeat.i(132229);
+    if ((com.tencent.mm.kernel.a.aeC()) || (!g.afw()))
     {
-      AppMethodBeat.o(58085);
+      AppMethodBeat.o(132229);
       return false;
     }
-    int i = bo.getInt(((com.tencent.mm.plugin.zero.b.a)g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("AndroidUseWorkerAuthCache"), 0);
-    g.RM();
-    g.RJ();
-    int j = i.bQ(com.tencent.mm.kernel.a.getUin(), 100);
-    boolean bool = com.tencent.mm.sdk.a.b.dsf();
-    g.RM();
-    g.RJ();
-    ab.i("MicroMsg.AccInfoCacheInWorker", "checkUse debug:%s dyVal:%s uin:%d  uinHash:%d init:%b", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(com.tencent.mm.kernel.a.getUin()), Integer.valueOf(j), Boolean.valueOf(g.RJ().QU()) });
+    int i = bt.getInt(((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).Zd().getValue("AndroidUseWorkerAuthCache"), 0);
+    g.afC();
+    g.afz();
+    int j = i.cf(com.tencent.mm.kernel.a.getUin(), 100);
+    boolean bool = com.tencent.mm.sdk.a.b.eEQ();
+    g.afC();
+    g.afz();
+    ad.i("MicroMsg.AccInfoCacheInWorker", "checkUse debug:%s dyVal:%s uin:%d  uinHash:%d init:%b", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(com.tencent.mm.kernel.a.getUin()), Integer.valueOf(j), Boolean.valueOf(g.afz().aeI()) });
     if (bool)
     {
-      AppMethodBeat.o(58085);
+      AppMethodBeat.o(132229);
       return true;
     }
     if (i > j)
     {
-      AppMethodBeat.o(58085);
+      AppMethodBeat.o(132229);
       return true;
     }
-    AppMethodBeat.o(58085);
+    AppMethodBeat.o(132229);
     return false;
   }
   
-  public static void Yu()
+  public static void apH()
   {
-    AppMethodBeat.i(58086);
-    if (!Yt())
+    AppMethodBeat.i(132230);
+    if (!apG())
     {
-      AppMethodBeat.o(58086);
+      AppMethodBeat.o(132230);
       return;
     }
     long l2;
     try
     {
-      g.RM();
-      a locala = g.RJ().eGV;
-      g.RM();
-      localObject = g.RK().eHt.ftA.adI();
-      l2 = bo.aoy();
+      g.afC();
+      a locala = g.afz().gcc;
+      g.afC();
+      localObject = g.afA().gcy.gVH.avg();
+      l2 = bt.eGO();
       if (localObject == null)
       {
-        ab.e("MicroMsg.AccInfoCacheInWorker", "backupToWorker  accinfo == null");
-        com.tencent.mm.plugin.report.e.qrI.idkeyStat(226L, 2L, 1L, false);
-        AppMethodBeat.o(58086);
+        ad.e("MicroMsg.AccInfoCacheInWorker", "backupToWorker  accinfo == null");
+        com.tencent.mm.plugin.report.e.vIY.idkeyStat(226L, 2L, 1L, false);
+        AppMethodBeat.o(132230);
         return;
       }
     }
     catch (Throwable localThrowable)
     {
-      ab.e("MicroMsg.AccInfoCacheInWorker", "tryBackupToWorker Exception:%s", new Object[] { bo.l(localThrowable) });
-      AppMethodBeat.o(58086);
+      ad.e("MicroMsg.AccInfoCacheInWorker", "tryBackupToWorker Exception:%s", new Object[] { bt.m(localThrowable) });
+      AppMethodBeat.o(132230);
       return;
     }
-    ab.i("MicroMsg.AccInfoCacheInWorker", "backupToWorker islogin:%b cache:%s", new Object[] { Boolean.valueOf(((c)localObject).adC()), Integer.valueOf(localThrowable.Ys()) });
-    if (!((c)localObject).adC())
+    ad.i("MicroMsg.AccInfoCacheInWorker", "backupToWorker islogin:%b cache:%s", new Object[] { Boolean.valueOf(((c)localObject).ava()), Integer.valueOf(localThrowable.apF()) });
+    if (!((c)localObject).ava())
     {
-      com.tencent.mm.plugin.report.e.qrI.idkeyStat(226L, 3L, 1L, false);
-      ab.e("MicroMsg.AccInfoCacheInWorker", "backupToWorker ERR: Is Not Login");
-      AppMethodBeat.o(58086);
+      com.tencent.mm.plugin.report.e.vIY.idkeyStat(226L, 3L, 1L, false);
+      ad.e("MicroMsg.AccInfoCacheInWorker", "backupToWorker ERR: Is Not Login");
+      AppMethodBeat.o(132230);
       return;
     }
-    localThrowable.fkn = ((c)localObject).adF();
-    Object localObject = com.tencent.mm.plugin.report.e.qrI;
-    if (localThrowable.Ys() > 0)
+    localThrowable.gLv = ((c)localObject).avd();
+    Object localObject = com.tencent.mm.plugin.report.e.vIY;
+    if (localThrowable.apF() > 0)
     {
       l1 = 4L;
       ((com.tencent.mm.plugin.report.e)localObject).idkeyStat(226L, l1, 1L, false);
-      ab.i("MicroMsg.AccInfoCacheInWorker", "backupToWorker time:%s cache:%s useCacheCount:%s ", new Object[] { Long.valueOf(bo.hl(l2)), Integer.valueOf(localThrowable.Ys()), Long.valueOf(localThrowable.fko) });
-      if (localThrowable.Ys() > 0)
+      ad.i("MicroMsg.AccInfoCacheInWorker", "backupToWorker time:%s cache:%s useCacheCount:%s ", new Object[] { Long.valueOf(bt.vM(l2)), Integer.valueOf(localThrowable.apF()), Long.valueOf(localThrowable.gLw) });
+      if (localThrowable.apF() > 0)
       {
-        localObject = com.tencent.mm.plugin.report.e.qrI;
-        if (localThrowable.fko <= 5L) {
+        localObject = com.tencent.mm.plugin.report.e.vIY;
+        if (localThrowable.gLw <= 5L) {
           break label365;
         }
       }
     }
     label365:
-    for (long l1 = 5L;; l1 = localThrowable.fko)
+    for (long l1 = 5L;; l1 = localThrowable.gLw)
     {
       ((com.tencent.mm.plugin.report.e)localObject).idkeyStat(226L, 31L - l1, 1L, false);
-      com.tencent.mm.plugin.report.e.qrI.e(11098, new Object[] { Integer.valueOf(2000), Long.valueOf(localThrowable.fko) });
-      localThrowable.fko = -1L;
-      AppMethodBeat.o(58086);
+      com.tencent.mm.plugin.report.e.vIY.f(11098, new Object[] { Integer.valueOf(2000), Long.valueOf(localThrowable.gLw) });
+      localThrowable.gLw = -1L;
+      AppMethodBeat.o(132230);
       return;
       l1 = 5L;
       break;
     }
   }
   
-  public final int Ys()
+  public final int apF()
   {
-    if (this.fkn == null) {
+    if (this.gLv == null) {
       return -1;
     }
-    return this.fkn.length;
+    return this.gLv.length;
   }
 }
 

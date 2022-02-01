@@ -3,63 +3,62 @@ package com.tencent.mm.platformtools;
 import android.app.Activity;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.n;
 
 public final class l
-  extends d
+  extends c
 {
   public l(Activity paramActivity)
   {
     super(paramActivity);
   }
   
-  public final boolean b(ag paramag)
+  public final boolean b(ad paramad)
   {
-    AppMethodBeat.i(124541);
-    ab.d("MicroMsg.ErrorConfirmProcessor", "handleOpenUrl");
-    Toast.makeText(this.activity, paramag.content, 0).show();
-    AppMethodBeat.o(124541);
+    AppMethodBeat.i(127704);
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ErrorLabelProcessor", "handleOpenUrl");
+    Toast.makeText(this.activity, paramad.content, 0).show();
+    AppMethodBeat.o(127704);
     return true;
   }
   
-  public final boolean c(ag paramag)
+  public final boolean c(ad paramad)
   {
-    AppMethodBeat.i(124542);
-    ab.d("MicroMsg.ErrorConfirmProcessor", "handleIgnore");
-    Toast.makeText(this.activity, paramag.content, 0).show();
-    AppMethodBeat.o(124542);
+    AppMethodBeat.i(127705);
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ErrorLabelProcessor", "handleIgnore");
+    Toast.makeText(this.activity, paramad.content, 0).show();
+    AppMethodBeat.o(127705);
     return true;
   }
   
-  public final boolean d(ag paramag)
+  public final boolean d(ad paramad)
   {
-    AppMethodBeat.i(124543);
-    ab.d("MicroMsg.ErrorConfirmProcessor", "handleFalseLast");
-    Toast.makeText(this.activity, paramag.content, 0).show();
-    AppMethodBeat.o(124543);
+    AppMethodBeat.i(127706);
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ErrorLabelProcessor", "handleFalseLast");
+    Toast.makeText(this.activity, paramad.content, 0).show();
+    AppMethodBeat.o(127706);
     return true;
   }
   
-  public final boolean e(ag paramag)
+  public final boolean e(ad paramad)
   {
-    AppMethodBeat.i(124544);
-    ab.d("MicroMsg.ErrorConfirmProcessor", "handleFalseCancel");
-    Toast.makeText(this.activity, paramag.content, 0).show();
-    AppMethodBeat.o(124544);
+    AppMethodBeat.i(127707);
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.ErrorLabelProcessor", "handleFalseCancel");
+    Toast.makeText(this.activity, paramad.content, 0).show();
+    AppMethodBeat.o(127707);
     return true;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(124540);
-    ab.i("MicroMsg.ErrorConfirmProcessor", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    AppMethodBeat.o(124540);
+    AppMethodBeat.i(127703);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.ErrorLabelProcessor", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    AppMethodBeat.o(127703);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.platformtools.l
  * JD-Core Version:    0.7.0.1
  */

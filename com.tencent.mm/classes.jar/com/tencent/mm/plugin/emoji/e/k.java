@@ -1,238 +1,195 @@
 package com.tencent.mm.plugin.emoji.e;
 
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.emoji.f.o;
-import com.tencent.mm.plugin.emoji.model.i;
+import com.tencent.mm.g.b.a.u;
+import com.tencent.mm.plugin.emoji.b;
+import com.tencent.mm.plugin.emoji.ui.EmojiStoreDetailUI;
+import com.tencent.mm.plugin.emoji.ui.EmojiStoreTopicUI;
+import com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2SingleProductUI;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.emotion.m;
-import com.tencent.mm.storage.emotion.n;
-import java.util.HashMap;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
+import com.tencent.mm.protocal.protobuf.EmotionSummary;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class k
 {
-  public int ejZ;
-  public boolean lgB;
-  public long lgC;
-  public int lgD;
-  public m lgE;
-  public HashMap<String, m> lgF;
-  
-  public k()
+  private static void a(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(52977);
-    this.lgB = true;
-    this.lgC = 863913600000L;
-    this.lgD = 19;
-    this.ejZ = 79;
-    this.lgF = new HashMap();
-    AppMethodBeat.o(52977);
+    AppMethodBeat.i(108538);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("set_id", paramInt);
+    localIntent.putExtra("headurl", paramString4);
+    localIntent.putExtra("set_title", paramString1);
+    localIntent.putExtra("set_iconURL", paramString3);
+    localIntent.putExtra("set_desc", paramString2);
+    localIntent.setClass(paramContext, EmojiStoreV2SingleProductUI.class);
+    paramString1 = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.adn(), "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startEmojiList", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString1.lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startEmojiList", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(108538);
   }
   
-  private void a(m paramm, boolean paramBoolean)
+  private static void a(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
-    AppMethodBeat.i(52980);
-    if (paramm == null)
-    {
-      ab.w("MicroMsg.emoji.EmojiRewardTipMgr", "updateLastRewardTipInfo failed. reward tip info is null.");
-      AppMethodBeat.o(52980);
-      return;
+    AppMethodBeat.i(108539);
+    Intent localIntent = new Intent();
+    localIntent.setClass(paramContext, EmojiStoreTopicUI.class);
+    localIntent.putExtra("topic_id", paramInt);
+    localIntent.putExtra("topic_name", paramString1);
+    localIntent.putExtra("topic_ad_url", paramString4);
+    localIntent.putExtra("topic_icon_url", paramString3);
+    localIntent.putExtra("topic_desc", paramString2);
+    if (paramBoolean) {
+      localIntent.putExtra("extra_scence", 15);
     }
-    if ((this.lgE == null) || (this.lgE.field_prodcutID.equalsIgnoreCase(paramm.field_prodcutID))) {}
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      if (i == 0)
-      {
-        this.lgE.field_continuCount = 0;
-        this.lgF.put(this.lgE.field_prodcutID, this.lgE);
-        i.getEmojiStorageMgr().yNu.a(this.lgE);
-      }
-      this.lgE = paramm;
-      if (!paramBoolean) {
-        break;
-      }
-      this.lgE.field_modifyTime = 0L;
-      this.lgE.field_showTipsTime = System.currentTimeMillis();
-      this.lgE.field_totalCount = 0;
-      this.lgE.field_continuCount = 0;
-      this.lgF.put(this.lgE.field_prodcutID, this.lgE);
-      i.getEmojiStorageMgr().yNu.a(this.lgE);
-      AppMethodBeat.o(52980);
+      paramString1 = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString1.adn(), "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startEmotionList", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramString1.lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startEmotionList", "(Landroid/content/Context;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(108539);
       return;
-    }
-    if (i != 0) {}
-    for (this.lgE.field_continuCount += 1;; this.lgE.field_continuCount = 1)
-    {
-      this.lgE.field_totalCount += 1;
-      this.lgE.field_modifyTime = System.currentTimeMillis();
-      break;
+      localIntent.putExtra("extra_scence", 3);
     }
   }
   
-  public final boolean KI(String paramString)
+  private static void a(Context paramContext, EmotionBannerSet paramEmotionBannerSet, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(52979);
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip product id is null.");
-      AppMethodBeat.o(52979);
-      return false;
-    }
-    if ((!this.lgB) && (!r.Zw()))
-    {
-      ab.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip reward tip is disable. mRewardTipEnable:%b isOpenForWallet:%b", new Object[] { Boolean.valueOf(this.lgB), Boolean.valueOf(r.Zw()) });
-      AppMethodBeat.o(52979);
-      return false;
-    }
-    Object localObject;
-    if ((this.lgF != null) && (this.lgF.containsKey(paramString))) {
-      localObject = (m)this.lgF.get(paramString);
-    }
-    while (System.currentTimeMillis() - ((m)localObject).field_showTipsTime < this.lgC)
-    {
-      ab.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip in cool down time.");
-      blj();
-      AppMethodBeat.o(52979);
-      return false;
-      localObject = new m();
-      ((m)localObject).field_prodcutID = paramString;
-    }
-    if ((localObject != null) && (System.currentTimeMillis() - ((m)localObject).field_setFlagTime > 86400000L)) {
-      if ((this.lgE != null) && (paramString.equalsIgnoreCase(this.lgE.field_prodcutID)) && (this.lgE.field_continuCount >= this.lgD - 1) && (this.lgE.field_continuCount <= this.lgD + 5 - 1)) {
-        g.RK().eHt.a(new o(paramString, o.liT), 0);
-      }
-    }
-    int i;
-    label469:
-    int j;
-    while ((this.lgE != null) && (paramString.equalsIgnoreCase(this.lgE.field_prodcutID)) && (this.lgE.field_continuCount >= this.lgD)) {
-      if (((this.lgE.field_flag & o.liU) == o.liU) && ((this.lgE.field_flag & o.liV) != o.liV))
-      {
-        ab.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip:%b productid:%s  continue count:%d", new Object[] { Boolean.TRUE, paramString, Integer.valueOf(this.lgE.field_continuCount) });
-        a((m)localObject, true);
-        h.qsU.e(12953, new Object[] { Integer.valueOf(0), this.lgE.field_prodcutID });
-        AppMethodBeat.o(52979);
-        return true;
-        if ((((m)localObject).field_totalCount >= this.ejZ - 1) && (((m)localObject).field_totalCount <= this.ejZ + 5 - 1))
-        {
-          g.RK().eHt.a(new o(paramString, o.liT), 0);
-          continue;
-          if (this.lgE == null)
-          {
-            i = 0;
-            if (this.lgE != null) {
-              break label517;
-            }
-          }
-          label517:
-          for (j = 0;; j = this.lgE.field_totalCount)
-          {
-            ab.d("MicroMsg.emoji.EmojiRewardTipMgr", "no need to get reward today. continue count:%d total count:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-            break;
-            i = this.lgE.field_continuCount;
-            break label469;
-          }
-        }
-      }
-      else
-      {
-        ab.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip:%b productid:%s  continue count:%d flag:%d", new Object[] { Boolean.FALSE, paramString, Integer.valueOf(this.lgE.field_continuCount), Integer.valueOf(this.lgE.field_flag) });
-        a((m)localObject, false);
-        AppMethodBeat.o(52979);
-        return false;
-      }
-    }
-    if ((localObject != null) && (((m)localObject).field_totalCount >= this.ejZ))
-    {
-      if (((((m)localObject).field_flag & o.liU) == o.liU) && ((((m)localObject).field_flag & o.liV) != o.liV))
-      {
-        localBoolean = Boolean.TRUE;
-        if (this.lgE == null)
-        {
-          i = 0;
-          ab.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip:%b productid:%s  total count :%d", new Object[] { localBoolean, paramString, Integer.valueOf(i) });
-          a((m)localObject, true);
-          localObject = h.qsU;
-          if (this.lgE != null) {
-            break label740;
-          }
-        }
-        label740:
-        for (paramString = "";; paramString = this.lgE.field_prodcutID)
-        {
-          ((h)localObject).e(12953, new Object[] { Integer.valueOf(0), paramString });
-          AppMethodBeat.o(52979);
-          return true;
-          i = this.lgE.field_totalCount;
-          break;
-        }
-      }
-      Boolean localBoolean = Boolean.FALSE;
-      if (this.lgE == null)
-      {
-        i = 0;
-        if (this.lgE != null) {
-          break label833;
-        }
-      }
-      label833:
-      for (j = 0;; j = this.lgE.field_flag)
-      {
-        ab.i("MicroMsg.emoji.EmojiRewardTipMgr", "isNeedShowTip:%b productid:%s  total count :%d flag:%d", new Object[] { localBoolean, paramString, Integer.valueOf(i), Integer.valueOf(j) });
-        a((m)localObject, false);
-        AppMethodBeat.o(52979);
-        return false;
-        i = this.lgE.field_totalCount;
-        break;
-      }
-    }
-    a((m)localObject, false);
-    AppMethodBeat.o(52979);
-    return false;
+    AppMethodBeat.i(108536);
+    Intent localIntent = new Intent();
+    localIntent.setClass(paramContext, EmojiStoreDetailUI.class);
+    localIntent.putExtra("extra_id", paramEmotionBannerSet.ProductID);
+    localIntent.putExtra("extra_name", paramEmotionBannerSet.Title);
+    localIntent.putExtra("extra_description", paramEmotionBannerSet.Desc);
+    localIntent.putExtra("preceding_scence", paramInt2);
+    localIntent.putExtra("call_by", 1);
+    localIntent.putExtra("download_entrance_scene", paramInt1);
+    localIntent.putExtra("check_clickflag", true);
+    paramEmotionBannerSet = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramEmotionBannerSet.adn(), "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startDetailByBannerSet", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/EmotionBannerSet;ZII)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramEmotionBannerSet.lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startDetailByBannerSet", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/EmotionBannerSet;ZII)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(108536);
   }
   
-  public final void blj()
+  public static void a(Context paramContext, EmotionBannerSet paramEmotionBannerSet, boolean paramBoolean)
   {
-    AppMethodBeat.i(52978);
-    if (this.lgE != null)
+    AppMethodBeat.i(108537);
+    if (paramEmotionBannerSet == null)
     {
-      this.lgE.field_continuCount = 0;
-      this.lgF.put(this.lgE.field_prodcutID, this.lgE);
-      i.getEmojiStorageMgr().yNu.a(this.lgE);
-      this.lgE = null;
+      ad.i("MicroMsg.emoji.EmojiUINavigatorMgr", "banner is null. do nothing");
+      AppMethodBeat.o(108537);
+      return;
     }
-    AppMethodBeat.o(52978);
+    switch (paramEmotionBannerSet.SetType)
+    {
+    default: 
+      ad.i("MicroMsg.emoji.EmojiUINavigatorMgr", "Unkown type do nothing. SetType:%d", new Object[] { Integer.valueOf(paramEmotionBannerSet.SetType) });
+      AppMethodBeat.o(108537);
+      return;
+    case 0: 
+      ad.i("MicroMsg.emoji.EmojiUINavigatorMgr", "MM_EMOTION_BANNER_SET_NULL do nothing");
+      h.vKh.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(0) });
+      AppMethodBeat.o(108537);
+      return;
+    case 4: 
+      a(paramContext, paramEmotionBannerSet.ID, paramEmotionBannerSet.Title, paramEmotionBannerSet.Desc, paramEmotionBannerSet.IconUrl, paramEmotionBannerSet.SecondUrl);
+      h.vKh.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(1) });
+      AppMethodBeat.o(108537);
+      return;
+    case 3: 
+      a(paramContext, paramEmotionBannerSet.ID, paramEmotionBannerSet.Title, paramEmotionBannerSet.Desc, paramEmotionBannerSet.IconUrl, paramEmotionBannerSet.SecondUrl, paramBoolean);
+      h.vKh.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(2) });
+      AppMethodBeat.o(108537);
+      return;
+    case 2: 
+      w(paramContext, paramEmotionBannerSet.LocateUrl, paramEmotionBannerSet.Title);
+      h.vKh.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(3) });
+      AppMethodBeat.o(108537);
+      return;
+    }
+    if (paramBoolean) {
+      a(paramContext, paramEmotionBannerSet, 15, 8);
+    }
+    for (;;)
+    {
+      h.vKh.f(13223, new Object[] { Integer.valueOf(1), Integer.valueOf(paramEmotionBannerSet.ID), paramEmotionBannerSet.Title, Integer.valueOf(0), Integer.valueOf(4) });
+      AppMethodBeat.o(108537);
+      return;
+      a(paramContext, paramEmotionBannerSet, 3, 5);
+    }
   }
   
-  public final void cc(String paramString, int paramInt)
+  public static void a(Context paramContext, EmotionSummary paramEmotionSummary, int paramInt1, int paramInt2, int paramInt3, String paramString, int paramInt4)
   {
-    AppMethodBeat.i(52981);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(108534);
+    a(paramContext, paramEmotionSummary, paramInt1, paramInt2, paramInt3, paramString, paramInt4, null);
+    AppMethodBeat.o(108534);
+  }
+  
+  public static void a(Context paramContext, EmotionSummary paramEmotionSummary, int paramInt1, int paramInt2, int paramInt3, String paramString, int paramInt4, u paramu)
+  {
+    AppMethodBeat.i(108535);
+    Intent localIntent = new Intent();
+    localIntent.setClass(paramContext, EmojiStoreDetailUI.class);
+    if (paramEmotionSummary != null)
     {
-      ab.w("MicroMsg.emoji.EmojiRewardTipMgr", "updateProductFlag failed. no such product id.");
-      AppMethodBeat.o(52981);
-      return;
+      localIntent.putExtra("extra_id", paramEmotionSummary.ProductID);
+      localIntent.putExtra("extra_name", paramEmotionSummary.PackName);
+      localIntent.putExtra("extra_copyright", paramEmotionSummary.PackCopyright);
+      localIntent.putExtra("extra_coverurl", paramEmotionSummary.CoverUrl);
+      localIntent.putExtra("extra_description", paramEmotionSummary.PackDesc);
+      localIntent.putExtra("extra_price", paramEmotionSummary.PackPrice);
+      localIntent.putExtra("extra_type", paramEmotionSummary.PackType);
+      localIntent.putExtra("extra_flag", paramEmotionSummary.PackFlag);
+      localIntent.putExtra("preceding_scence", paramInt4);
+      localIntent.putExtra("call_by", 1);
+      localIntent.putExtra("check_clickflag", false);
+      localIntent.putExtra("download_entrance_scene", paramInt1);
+      if (paramu != null) {
+        localIntent.putExtra("action_report", paramu.PV());
+      }
+      if (paramInt2 != -1) {
+        localIntent.putExtra("extra_status", paramInt2);
+      }
+      if (paramInt3 != -1) {
+        localIntent.putExtra("extra_progress", -1);
+      }
+      if (!bt.isNullOrNil(paramString)) {
+        localIntent.putExtra("to_talker_name", paramString);
+      }
     }
-    if ((this.lgF != null) && (this.lgF.containsKey(paramString)))
+    for (;;)
     {
-      ((m)this.lgF.get(paramString)).field_flag = paramInt;
-      ((m)this.lgF.get(paramString)).field_setFlagTime = System.currentTimeMillis();
-      AppMethodBeat.o(52981);
+      paramEmotionSummary = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramEmotionSummary.adn(), "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startDetailBySummary", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/EmotionSummary;ZIIILjava/lang/String;ILcom/tencent/mm/autogen/mmdata/rpt/EmoticonStoreActionStruct;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramEmotionSummary.lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/emoji/mgr/EmojiUINavigatorMgr", "startDetailBySummary", "(Landroid/content/Context;Lcom/tencent/mm/protocal/protobuf/EmotionSummary;ZIIILjava/lang/String;ILcom/tencent/mm/autogen/mmdata/rpt/EmoticonStoreActionStruct;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(108535);
       return;
+      ad.i("MicroMsg.emoji.EmojiUINavigatorMgr", "get detail intent failed. summary is null.");
     }
-    ab.i("MicroMsg.emoji.EmojiRewardTipMgr", "updateProductFlag map no contains this product id :%s", new Object[] { paramString });
-    AppMethodBeat.o(52981);
+  }
+  
+  private static void w(Context paramContext, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(108540);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("rawUrl", paramString1);
+    localIntent.putExtra("title", paramString2);
+    b.hYt.i(localIntent, paramContext);
+    AppMethodBeat.o(108540);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e.k
  * JD-Core Version:    0.7.0.1
  */

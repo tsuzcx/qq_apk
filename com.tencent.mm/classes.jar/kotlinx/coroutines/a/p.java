@@ -1,33 +1,17 @@
 package kotlinx.coroutines.a;
 
-import a.f.a.a;
-import a.l;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/internal/ThreadLocalWithInitialValue;", "T", "Ljava/lang/ThreadLocal;", "supplier", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)V", "initialValue", "()Ljava/lang/Object;", "kotlinx-coroutines-core"})
-public final class p<T>
-  extends ThreadLocal<T>
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"systemProp", "", "propertyName", "", "defaultValue", "", "minValue", "maxValue", "", "kotlinx-coroutines-core"})
+public final class p
 {
-  private final a<T> CJE;
+  public static final boolean aWl(String arg0) {}
   
-  public p(a<? extends T> parama)
-  {
-    AppMethodBeat.i(118383);
-    this.CJE = parama;
-    AppMethodBeat.o(118383);
-  }
-  
-  protected final T initialValue()
-  {
-    AppMethodBeat.i(118382);
-    Object localObject = this.CJE.invoke();
-    AppMethodBeat.o(118382);
-    return localObject;
-  }
+  public static final long e(String arg0, long arg1, long arg3, long arg5) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.a.p
  * JD-Core Version:    0.7.0.1
  */

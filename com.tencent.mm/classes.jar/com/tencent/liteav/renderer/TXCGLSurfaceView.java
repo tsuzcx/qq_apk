@@ -3,6 +3,7 @@ package com.tencent.liteav.renderer;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
+import android.graphics.Matrix;
 import android.graphics.SurfaceTexture;
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 import android.opengl.GLES20;
@@ -38,16 +39,15 @@ public class TXCGLSurfaceView
   private n A;
   private int B;
   private int C;
-  private int D;
-  private int E;
-  private boolean F;
-  private boolean G;
-  private m H;
-  private byte[] I;
-  private long J;
+  private boolean D;
+  private boolean E;
+  private m F;
+  private long G;
+  private byte[] H;
+  private long I;
+  private int J;
   private int K;
-  private int L;
-  private final Queue<Runnable> M;
+  private final Queue<Runnable> L;
   WeakReference<a> a;
   private SurfaceTexture g;
   private EGLContext h;
@@ -73,7 +73,7 @@ public class TXCGLSurfaceView
   public TXCGLSurfaceView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(67183);
+    AppMethodBeat.i(16757);
     this.k = new float[16];
     this.l = 0;
     this.m = false;
@@ -92,23 +92,23 @@ public class TXCGLSurfaceView
     this.A = null;
     this.B = 0;
     this.C = 0;
-    this.F = true;
-    this.G = true;
-    this.I = null;
-    this.J = 0L;
+    this.D = true;
+    this.E = true;
+    this.H = null;
+    this.I = 0L;
+    this.J = 0;
     this.K = 0;
-    this.L = 0;
-    this.M = new LinkedList();
+    this.L = new LinkedList();
     setEGLContextClientVersion(2);
     a(8, 8, 8, 8, 16, 0);
     setRenderer(this);
-    AppMethodBeat.o(67183);
+    AppMethodBeat.o(16757);
   }
   
   public TXCGLSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(67184);
+    AppMethodBeat.i(16758);
     this.k = new float[16];
     this.l = 0;
     this.m = false;
@@ -127,37 +127,129 @@ public class TXCGLSurfaceView
     this.A = null;
     this.B = 0;
     this.C = 0;
-    this.F = true;
-    this.G = true;
-    this.I = null;
-    this.J = 0L;
+    this.D = true;
+    this.E = true;
+    this.H = null;
+    this.I = 0L;
+    this.J = 0;
     this.K = 0;
-    this.L = 0;
-    this.M = new LinkedList();
+    this.L = new LinkedList();
     setEGLContextClientVersion(2);
     a(8, 8, 8, 8, 16, 0);
     setRenderer(this);
-    AppMethodBeat.o(67184);
+    AppMethodBeat.o(16758);
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(182254);
+    final int i3;
+    final int i1;
+    label56:
+    int i2;
+    if (this.z) {
+      if ((this.x != 0) && (this.y != 0))
+      {
+        if (this.x > this.y) {
+          break label183;
+        }
+        i3 = 1;
+        if (this.y < this.x) {
+          break label189;
+        }
+        i1 = this.y;
+        if (this.y < this.x) {
+          break label197;
+        }
+        i2 = this.x;
+        label73:
+        if (i3 == 0) {
+          break label206;
+        }
+        i3 = i1;
+        i1 = i2;
+      }
+    }
+    for (;;)
+    {
+      final ByteBuffer localByteBuffer = ByteBuffer.allocate(i1 * i3 * 4);
+      final Bitmap localBitmap = Bitmap.createBitmap(i1, i3, Bitmap.Config.ARGB_8888);
+      localByteBuffer.position(0);
+      GLES20.glReadPixels(paramInt1, paramInt2, i1, i3, 6408, 5121, localByteBuffer);
+      final n localn = this.A;
+      if (localn != null) {
+        new Thread(new Runnable()
+        {
+          public void run()
+          {
+            AppMethodBeat.i(16823);
+            try
+            {
+              localByteBuffer.position(0);
+              localBitmap.copyPixelsFromBuffer(localByteBuffer);
+              Object localObject1 = new Matrix();
+              ((Matrix)localObject1).setScale(1.0F, -1.0F);
+              localObject1 = Bitmap.createBitmap(localBitmap, 0, 0, i1, i3, (Matrix)localObject1, false);
+              localn.onTakePhotoComplete((Bitmap)localObject1);
+              localBitmap.recycle();
+              AppMethodBeat.o(16823);
+              return;
+            }
+            catch (Exception localException)
+            {
+              for (;;)
+              {
+                TXCLog.w("TXCGLSurfaceView", "takePhoto error ".concat(String.valueOf(localException)));
+                Object localObject2 = null;
+              }
+            }
+            catch (Error localError)
+            {
+              for (;;)
+              {
+                TXCLog.w("TXCGLSurfaceView", "takePhoto error ".concat(String.valueOf(localError)));
+                Object localObject3 = null;
+              }
+            }
+          }
+        }).start();
+      }
+      this.A = null;
+      this.z = false;
+      AppMethodBeat.o(182254);
+      return;
+      label183:
+      i3 = 0;
+      break;
+      label189:
+      i1 = this.x;
+      break label56;
+      label197:
+      i2 = this.y;
+      break label73;
+      label206:
+      i3 = i2;
+    }
   }
   
   private void a(long paramLong)
   {
-    AppMethodBeat.i(146750);
+    AppMethodBeat.i(16777);
     try
     {
       Thread.sleep(paramLong);
-      AppMethodBeat.o(146750);
+      AppMethodBeat.o(16777);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(146750);
+      AppMethodBeat.o(16777);
     }
   }
   
   private boolean a(Queue<Runnable> paramQueue)
   {
-    AppMethodBeat.i(67197);
+    AppMethodBeat.i(16772);
     try
     {
       if (paramQueue.isEmpty()) {
@@ -166,16 +258,16 @@ public class TXCGLSurfaceView
       Runnable localRunnable = (Runnable)paramQueue.poll();
       if (localRunnable == null)
       {
-        AppMethodBeat.o(67197);
+        AppMethodBeat.o(16772);
         return false;
       }
     }
     finally
     {
-      AppMethodBeat.o(67197);
+      AppMethodBeat.o(16772);
     }
     localObject.run();
-    AppMethodBeat.o(67197);
+    AppMethodBeat.o(16772);
     return true;
   }
   
@@ -200,64 +292,10 @@ public class TXCGLSurfaceView
     }
   }
   
-  private void f()
-  {
-    AppMethodBeat.i(67200);
-    int i3;
-    int i1;
-    label55:
-    int i2;
-    if (this.z) {
-      if ((this.x != 0) && (this.y != 0))
-      {
-        if (getWidth() > getHeight()) {
-          break label162;
-        }
-        i3 = 1;
-        if (this.y < this.x) {
-          break label167;
-        }
-        i1 = this.y;
-        if (this.y < this.x) {
-          break label175;
-        }
-        i2 = this.x;
-        label71:
-        if (i3 == 0) {
-          break label183;
-        }
-        i3 = i1;
-        i1 = i2;
-      }
-    }
-    for (;;)
-    {
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(i1 * i3 * 4);
-      Bitmap localBitmap = Bitmap.createBitmap(i1, i3, Bitmap.Config.ARGB_8888);
-      localByteBuffer.position(0);
-      GLES20.glReadPixels(this.D, this.E, i1, i3, 6408, 5121, localByteBuffer);
-      new Thread(new TXCGLSurfaceView.5(this, localByteBuffer, localBitmap, i1, i3)).start();
-      this.z = false;
-      AppMethodBeat.o(67200);
-      return;
-      label162:
-      i3 = 0;
-      break;
-      label167:
-      i1 = this.x;
-      break label55;
-      label175:
-      i2 = this.y;
-      break label71;
-      label183:
-      i3 = i2;
-    }
-  }
-  
   private void g()
   {
-    AppMethodBeat.i(67203);
-    if (this.G)
+    AppMethodBeat.i(16778);
+    if (this.E)
     {
       if (this.g != null)
       {
@@ -270,139 +308,154 @@ public class TXCGLSurfaceView
             this.w = new Handler(localHandlerThread.getLooper());
           }
           this.g.setOnFrameAvailableListener(this, this.w);
-          AppMethodBeat.o(67203);
+          AppMethodBeat.o(16778);
           return;
         }
         this.g.setOnFrameAvailableListener(this);
-        AppMethodBeat.o(67203);
+        AppMethodBeat.o(16778);
       }
     }
     else if (this.g != null) {
       this.g.setOnFrameAvailableListener(null);
     }
-    AppMethodBeat.o(67203);
+    AppMethodBeat.o(16778);
   }
   
   public void a()
   {
-    AppMethodBeat.i(67192);
+    AppMethodBeat.i(16767);
     b(false);
-    AppMethodBeat.o(67192);
+    AppMethodBeat.o(16767);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(146749);
+    AppMethodBeat.i(16766);
     this.p = paramInt;
-    this.A = null;
-    this.z = false;
-    this.K = 0;
-    this.J = 0L;
-    this.L = 0;
-    b(true);
-    this.G = paramBoolean;
-    g();
-    AppMethodBeat.o(146749);
+    if (this.p <= 0) {
+      this.p = 1;
+    }
+    for (;;)
+    {
+      this.A = null;
+      this.z = false;
+      this.J = 0;
+      this.I = 0L;
+      this.K = 0;
+      b(true);
+      this.E = paramBoolean;
+      this.G = 0L;
+      g();
+      AppMethodBeat.o(16766);
+      return;
+      if (this.p > 60) {
+        this.p = 60;
+      }
+    }
   }
   
   public void a(int paramInt1, boolean paramBoolean1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2)
   {
-    AppMethodBeat.i(146748);
+    AppMethodBeat.i(16765);
     if (this.i == null)
     {
-      AppMethodBeat.o(146748);
+      AppMethodBeat.o(16765);
       return;
     }
     for (;;)
     {
-      int i4;
+      int i5;
       int i1;
+      int i3;
+      int i4;
       int i2;
       boolean bool;
       float f1;
       float f2;
-      int i3;
       try
       {
         if (this.c) {
           return;
         }
         GLES20.glClear(16640);
-        i4 = getWidth();
+        i5 = getWidth();
         i1 = getHeight();
         if (this.B == 0)
         {
-          this.D = 0;
-          this.E = 0;
-          i2 = i4;
+          i3 = 0;
+          i4 = 0;
+          i2 = i5;
           this.x = i2;
           this.y = i1;
-          GLES20.glViewport(this.D, this.E, i2, i1);
+          GLES20.glViewport(i4, i3, i2, i1);
           if (this.C != 1) {
-            break label511;
+            break label520;
           }
           bool = paramBoolean1;
           if (!paramBoolean2)
           {
             if (paramBoolean1) {
-              break label506;
+              break label515;
             }
             paramBoolean1 = true;
             bool = paramBoolean1;
           }
           if (i1 == 0) {
-            break label547;
+            break label556;
           }
           f1 = i2 / i1;
           if (paramInt4 == 0) {
-            break label553;
+            break label562;
           }
           f2 = paramInt3 / paramInt4;
-          if ((this.m != bool) || (this.l != paramInt2) || (this.n != f1) || (this.o != f2) || (this.F != paramBoolean2))
+          if ((this.m != bool) || (this.l != paramInt2) || (this.n != f1) || (this.o != f2) || (this.D != paramBoolean2))
           {
             this.m = bool;
             this.l = paramInt2;
             this.n = f1;
             this.o = f2;
-            this.F = paramBoolean2;
-            i4 = (720 - this.l) % 360;
-            if ((i4 != 90) && (i4 != 270)) {
-              break label559;
+            this.D = paramBoolean2;
+            int i6 = (720 - this.l) % 360;
+            if ((i6 != 90) && (i6 != 270)) {
+              break label568;
             }
             paramInt2 = 1;
             if (paramInt2 == 0) {
-              break label564;
+              break label573;
             }
-            i3 = i1;
+            i5 = i1;
             if (paramInt2 == 0) {
-              break label571;
+              break label580;
             }
             g localg = this.i;
             float[] arrayOfFloat = k.a(j.a, false, true);
-            f1 = i3 / i2;
+            f1 = i5 / i2;
             if (paramInt2 == 0) {
-              break label578;
+              break label587;
             }
             paramBoolean1 = false;
             if (paramInt2 == 0) {
-              break label586;
+              break label595;
             }
             paramBoolean2 = this.m;
-            localg.a(paramInt3, paramInt4, i4, arrayOfFloat, f1, paramBoolean1, paramBoolean2);
+            localg.a(paramInt3, paramInt4, i6, arrayOfFloat, f1, paramBoolean1, paramBoolean2);
             if (paramInt2 == 0) {
-              break label592;
+              break label601;
             }
             this.i.g();
           }
           GLES20.glBindFramebuffer(36160, 0);
+          GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+          GLES20.glClear(16640);
           this.i.a(paramInt1);
-          AppMethodBeat.o(146748);
+          a(i4, i3);
+          AppMethodBeat.o(16765);
           return;
         }
       }
       finally
       {
-        AppMethodBeat.o(146748);
+        AppMethodBeat.o(16765);
       }
       if (this.B == 1)
       {
@@ -410,35 +463,35 @@ public class TXCGLSurfaceView
         if ((i2 == 90) || (i2 == 270))
         {
           i3 = 1;
-          label423:
+          label436:
           if (i3 == 0) {
-            break label492;
+            break label501;
           }
           i2 = paramInt4;
-          label432:
+          label445:
           if (i3 == 0) {
-            break label499;
+            break label508;
           }
         }
-        label492:
-        label499:
+        label501:
+        label508:
         for (i3 = paramInt3;; i3 = paramInt4)
         {
-          int[] arrayOfInt = a(i4, i1, i2, i3);
+          int[] arrayOfInt = a(i5, i1, i2, i3);
           i2 = arrayOfInt[0];
           i1 = arrayOfInt[1];
-          this.D = arrayOfInt[2];
-          this.E = arrayOfInt[3];
+          i4 = arrayOfInt[2];
+          i3 = arrayOfInt[3];
           break;
           i3 = 0;
-          break label423;
+          break label436;
           i2 = paramInt3;
-          break label432;
+          break label445;
         }
-        label506:
+        label515:
         paramBoolean1 = false;
         continue;
-        label511:
+        label520:
         bool = paramBoolean1;
         if (this.C == 2)
         {
@@ -451,35 +504,37 @@ public class TXCGLSurfaceView
               bool = paramBoolean1;
               break;
             }
-            label547:
+            label556:
             f1 = 1.0F;
             continue;
-            label553:
+            label562:
             f2 = 1.0F;
             continue;
-            label559:
+            label568:
             paramInt2 = 0;
             continue;
-            label564:
-            i3 = i2;
+            label573:
+            i5 = i2;
             continue;
-            label571:
+            label580:
             i2 = i1;
             continue;
-            label578:
+            label587:
             paramBoolean1 = this.m;
             continue;
-            label586:
+            label595:
             paramBoolean2 = false;
             continue;
-            label592:
+            label601:
             this.i.h();
           }
         }
       }
       else
       {
-        i2 = i4;
+        i3 = 0;
+        i4 = 0;
+        i2 = i5;
       }
     }
   }
@@ -492,24 +547,24 @@ public class TXCGLSurfaceView
   
   public void a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(67193);
-    synchronized (this.M)
+    AppMethodBeat.i(16768);
+    synchronized (this.L)
     {
-      this.M.add(paramRunnable);
-      AppMethodBeat.o(67193);
+      this.L.add(paramRunnable);
+      AppMethodBeat.o(16768);
       return;
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    AppMethodBeat.i(67202);
+    AppMethodBeat.i(16776);
     this.t = true;
     if (paramBoolean)
     {
       GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
       GLES20.glClear(16384);
-      this.s = d();
+      this.s = e();
     }
     try
     {
@@ -524,7 +579,7 @@ public class TXCGLSurfaceView
     }
     finally
     {
-      AppMethodBeat.o(67202);
+      AppMethodBeat.o(16776);
     }
   }
   
@@ -532,7 +587,7 @@ public class TXCGLSurfaceView
   {
     try
     {
-      this.I = paramArrayOfByte;
+      this.H = paramArrayOfByte;
       this.t = false;
       this.u = true;
       return;
@@ -542,38 +597,38 @@ public class TXCGLSurfaceView
   
   protected void b()
   {
-    AppMethodBeat.i(67187);
-    TXCLog.i("TXCGLSurfaceView", "surfaceDestroyed-->enter with mSurfaceTextureListener:" + this.H);
-    if (this.H != null) {
-      this.H.b(this.g);
+    AppMethodBeat.i(16762);
+    TXCLog.i("TXCGLSurfaceView", "surfaceDestroyed-->enter with mSurfaceTextureListener:" + this.F);
+    if (this.F != null) {
+      this.F.b(this.g);
     }
     if (this.g != null)
     {
       this.g.release();
       this.g = null;
     }
-    AppMethodBeat.o(67187);
+    AppMethodBeat.o(16762);
   }
   
   public void b(Runnable paramRunnable)
   {
-    AppMethodBeat.i(67196);
-    synchronized (this.M)
+    AppMethodBeat.i(16771);
+    synchronized (this.L)
     {
-      this.M.add(paramRunnable);
-      AppMethodBeat.o(67196);
+      this.L.add(paramRunnable);
+      AppMethodBeat.o(16771);
       return;
     }
   }
   
   protected int c()
   {
-    AppMethodBeat.i(67194);
+    AppMethodBeat.i(16769);
     if (this.s != 12288) {
       TXCLog.e("TXCGLSurfaceView", "background capture swapbuffer error : " + this.s);
     }
     int i1 = this.s;
-    AppMethodBeat.o(67194);
+    AppMethodBeat.o(16769);
     return i1;
   }
   
@@ -589,322 +644,365 @@ public class TXCGLSurfaceView
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(67195);
+    AppMethodBeat.i(16770);
     super.onDetachedFromWindow();
     if ((Build.VERSION.SDK_INT >= 21) && (this.w != null))
     {
       this.w.getLooper().quitSafely();
       this.w = null;
     }
-    AppMethodBeat.o(67195);
+    AppMethodBeat.o(16770);
   }
   
   /* Error */
   public void onDrawFrame(GL10 paramGL10)
   {
     // Byte code:
-    //   0: ldc_w 395
-    //   3: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: sipush 16774
+    //   3: invokestatic 77	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: aload_0
-    //   8: getfield 127	com/tencent/liteav/renderer/TXCGLSurfaceView:M	Ljava/util/Queue;
-    //   11: invokespecial 397	com/tencent/liteav/renderer/TXCGLSurfaceView:a	(Ljava/util/Queue;)Z
+    //   8: getfield 135	com/tencent/liteav/renderer/TXCGLSurfaceView:L	Ljava/util/Queue;
+    //   11: invokespecial 385	com/tencent/liteav/renderer/TXCGLSurfaceView:a	(Ljava/util/Queue;)Z
     //   14: pop
     //   15: iconst_0
     //   16: istore_3
     //   17: iconst_1
     //   18: istore_2
-    //   19: invokestatic 403	java/lang/System:currentTimeMillis	()J
+    //   19: invokestatic 391	java/lang/System:currentTimeMillis	()J
     //   22: lstore 5
     //   24: aload_0
-    //   25: getfield 85	com/tencent/liteav/renderer/TXCGLSurfaceView:r	J
+    //   25: getfield 93	com/tencent/liteav/renderer/TXCGLSurfaceView:r	J
     //   28: lconst_0
     //   29: lcmp
-    //   30: ifne +9 -> 39
-    //   33: aload_0
-    //   34: lload 5
-    //   36: putfield 85	com/tencent/liteav/renderer/TXCGLSurfaceView:r	J
-    //   39: lload 5
-    //   41: aload_0
-    //   42: getfield 85	com/tencent/liteav/renderer/TXCGLSurfaceView:r	J
-    //   45: lsub
-    //   46: aload_0
-    //   47: getfield 83	com/tencent/liteav/renderer/TXCGLSurfaceView:q	J
-    //   50: ldc2_w 404
-    //   53: lmul
-    //   54: aload_0
-    //   55: getfield 81	com/tencent/liteav/renderer/TXCGLSurfaceView:p	I
-    //   58: i2l
-    //   59: ldiv
-    //   60: lcmp
-    //   61: ifge +15 -> 76
+    //   30: ifeq +13 -> 43
+    //   33: lload 5
+    //   35: aload_0
+    //   36: getfield 93	com/tencent/liteav/renderer/TXCGLSurfaceView:r	J
+    //   39: lcmp
+    //   40: ifge +9 -> 49
+    //   43: aload_0
+    //   44: lload 5
+    //   46: putfield 93	com/tencent/liteav/renderer/TXCGLSurfaceView:r	J
+    //   49: lload 5
+    //   51: aload_0
+    //   52: getfield 93	com/tencent/liteav/renderer/TXCGLSurfaceView:r	J
+    //   55: lsub
+    //   56: aload_0
+    //   57: getfield 91	com/tencent/liteav/renderer/TXCGLSurfaceView:q	J
+    //   60: ldc2_w 392
+    //   63: lmul
     //   64: aload_0
-    //   65: ldc2_w 406
-    //   68: invokespecial 409	com/tencent/liteav/renderer/TXCGLSurfaceView:a	(J)V
-    //   71: iconst_0
-    //   72: istore_2
-    //   73: goto -54 -> 19
-    //   76: lload 5
-    //   78: aload_0
-    //   79: getfield 85	com/tencent/liteav/renderer/TXCGLSurfaceView:r	J
-    //   82: lsub
-    //   83: ldc2_w 404
-    //   86: lcmp
-    //   87: ifle +17 -> 104
-    //   90: aload_0
-    //   91: lconst_1
-    //   92: putfield 83	com/tencent/liteav/renderer/TXCGLSurfaceView:q	J
-    //   95: iconst_1
-    //   96: istore_3
-    //   97: aload_0
-    //   98: invokestatic 403	java/lang/System:currentTimeMillis	()J
-    //   101: putfield 85	com/tencent/liteav/renderer/TXCGLSurfaceView:r	J
-    //   104: aload_0
-    //   105: getfield 89	com/tencent/liteav/renderer/TXCGLSurfaceView:t	Z
-    //   108: ifeq +10 -> 118
-    //   111: ldc_w 395
-    //   114: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   117: return
-    //   118: aconst_null
-    //   119: astore_1
-    //   120: aload_0
-    //   121: monitorenter
-    //   122: aload_0
-    //   123: getfield 91	com/tencent/liteav/renderer/TXCGLSurfaceView:u	Z
-    //   126: ifne +37 -> 163
-    //   129: iconst_1
-    //   130: istore 4
-    //   132: iload_2
-    //   133: istore_3
-    //   134: iload 4
-    //   136: istore_2
-    //   137: aload_0
-    //   138: monitorexit
+    //   65: getfield 89	com/tencent/liteav/renderer/TXCGLSurfaceView:p	I
+    //   68: i2l
+    //   69: ldiv
+    //   70: lcmp
+    //   71: ifge +15 -> 86
+    //   74: aload_0
+    //   75: ldc2_w 394
+    //   78: invokespecial 397	com/tencent/liteav/renderer/TXCGLSurfaceView:a	(J)V
+    //   81: iconst_0
+    //   82: istore_2
+    //   83: goto -64 -> 19
+    //   86: lload 5
+    //   88: aload_0
+    //   89: getfield 93	com/tencent/liteav/renderer/TXCGLSurfaceView:r	J
+    //   92: lsub
+    //   93: ldc2_w 392
+    //   96: lcmp
+    //   97: ifle +17 -> 114
+    //   100: aload_0
+    //   101: lconst_1
+    //   102: putfield 91	com/tencent/liteav/renderer/TXCGLSurfaceView:q	J
+    //   105: iconst_1
+    //   106: istore_3
+    //   107: aload_0
+    //   108: invokestatic 391	java/lang/System:currentTimeMillis	()J
+    //   111: putfield 93	com/tencent/liteav/renderer/TXCGLSurfaceView:r	J
+    //   114: aload_0
+    //   115: getfield 97	com/tencent/liteav/renderer/TXCGLSurfaceView:t	Z
+    //   118: ifeq +10 -> 128
+    //   121: sipush 16774
+    //   124: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   127: return
+    //   128: aconst_null
+    //   129: astore_1
+    //   130: aload_0
+    //   131: monitorenter
+    //   132: aload_0
+    //   133: getfield 99	com/tencent/liteav/renderer/TXCGLSurfaceView:u	Z
+    //   136: ifne +37 -> 173
     //   139: iconst_1
-    //   140: iload_2
-    //   141: if_icmpne +149 -> 290
-    //   144: iconst_1
-    //   145: iload_3
-    //   146: if_icmpne +10 -> 156
-    //   149: aload_0
-    //   150: ldc2_w 410
-    //   153: invokespecial 409	com/tencent/liteav/renderer/TXCGLSurfaceView:a	(J)V
-    //   156: ldc_w 395
-    //   159: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   162: return
-    //   163: iconst_0
-    //   164: istore 4
-    //   166: aload_0
-    //   167: getfield 116	com/tencent/liteav/renderer/TXCGLSurfaceView:I	[B
-    //   170: ifnull +65 -> 235
-    //   173: aload_0
-    //   174: getfield 116	com/tencent/liteav/renderer/TXCGLSurfaceView:I	[B
-    //   177: astore_1
-    //   178: aload_0
-    //   179: aconst_null
-    //   180: putfield 116	com/tencent/liteav/renderer/TXCGLSurfaceView:I	[B
+    //   140: istore 4
+    //   142: iload_2
+    //   143: istore_3
+    //   144: iload 4
+    //   146: istore_2
+    //   147: aload_0
+    //   148: monitorexit
+    //   149: iconst_1
+    //   150: iload_2
+    //   151: if_icmpne +149 -> 300
+    //   154: iconst_1
+    //   155: iload_3
+    //   156: if_icmpne +10 -> 166
+    //   159: aload_0
+    //   160: ldc2_w 398
+    //   163: invokespecial 397	com/tencent/liteav/renderer/TXCGLSurfaceView:a	(J)V
+    //   166: sipush 16774
+    //   169: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   172: return
+    //   173: iconst_0
+    //   174: istore 4
+    //   176: aload_0
+    //   177: getfield 124	com/tencent/liteav/renderer/TXCGLSurfaceView:H	[B
+    //   180: ifnull +65 -> 245
     //   183: aload_0
-    //   184: getfield 235	com/tencent/liteav/renderer/TXCGLSurfaceView:g	Landroid/graphics/SurfaceTexture;
-    //   187: ifnull +270 -> 457
-    //   190: aload_0
-    //   191: getfield 235	com/tencent/liteav/renderer/TXCGLSurfaceView:g	Landroid/graphics/SurfaceTexture;
-    //   194: invokevirtual 334	android/graphics/SurfaceTexture:updateTexImage	()V
-    //   197: aload_0
-    //   198: getfield 235	com/tencent/liteav/renderer/TXCGLSurfaceView:g	Landroid/graphics/SurfaceTexture;
-    //   201: aload_0
-    //   202: getfield 71	com/tencent/liteav/renderer/TXCGLSurfaceView:k	[F
-    //   205: invokevirtual 415	android/graphics/SurfaceTexture:getTransformMatrix	([F)V
-    //   208: iload_3
-    //   209: ifne +54 -> 263
-    //   212: aload_0
-    //   213: aload_0
-    //   214: getfield 83	com/tencent/liteav/renderer/TXCGLSurfaceView:q	J
-    //   217: lconst_1
-    //   218: ladd
-    //   219: putfield 83	com/tencent/liteav/renderer/TXCGLSurfaceView:q	J
+    //   184: getfield 124	com/tencent/liteav/renderer/TXCGLSurfaceView:H	[B
+    //   187: astore_1
+    //   188: aload_0
+    //   189: aconst_null
+    //   190: putfield 124	com/tencent/liteav/renderer/TXCGLSurfaceView:H	[B
+    //   193: aload_0
+    //   194: getfield 224	com/tencent/liteav/renderer/TXCGLSurfaceView:g	Landroid/graphics/SurfaceTexture;
+    //   197: ifnull +365 -> 562
+    //   200: aload_0
+    //   201: getfield 224	com/tencent/liteav/renderer/TXCGLSurfaceView:g	Landroid/graphics/SurfaceTexture;
+    //   204: invokevirtual 328	android/graphics/SurfaceTexture:updateTexImage	()V
+    //   207: aload_0
+    //   208: getfield 224	com/tencent/liteav/renderer/TXCGLSurfaceView:g	Landroid/graphics/SurfaceTexture;
+    //   211: aload_0
+    //   212: getfield 79	com/tencent/liteav/renderer/TXCGLSurfaceView:k	[F
+    //   215: invokevirtual 403	android/graphics/SurfaceTexture:getTransformMatrix	([F)V
+    //   218: iload_3
+    //   219: ifne +54 -> 273
     //   222: aload_0
-    //   223: iconst_0
-    //   224: putfield 91	com/tencent/liteav/renderer/TXCGLSurfaceView:u	Z
-    //   227: iconst_0
-    //   228: istore_2
-    //   229: iload 4
-    //   231: istore_3
-    //   232: goto -95 -> 137
-    //   235: aload_0
-    //   236: getfield 235	com/tencent/liteav/renderer/TXCGLSurfaceView:g	Landroid/graphics/SurfaceTexture;
-    //   239: ifnull +221 -> 460
-    //   242: aload_0
-    //   243: getfield 235	com/tencent/liteav/renderer/TXCGLSurfaceView:g	Landroid/graphics/SurfaceTexture;
-    //   246: invokevirtual 334	android/graphics/SurfaceTexture:updateTexImage	()V
-    //   249: aload_0
-    //   250: getfield 235	com/tencent/liteav/renderer/TXCGLSurfaceView:g	Landroid/graphics/SurfaceTexture;
-    //   253: aload_0
-    //   254: getfield 71	com/tencent/liteav/renderer/TXCGLSurfaceView:k	[F
-    //   257: invokevirtual 415	android/graphics/SurfaceTexture:getTransformMatrix	([F)V
-    //   260: goto +200 -> 460
+    //   223: aload_0
+    //   224: getfield 91	com/tencent/liteav/renderer/TXCGLSurfaceView:q	J
+    //   227: lconst_1
+    //   228: ladd
+    //   229: putfield 91	com/tencent/liteav/renderer/TXCGLSurfaceView:q	J
+    //   232: aload_0
+    //   233: iconst_0
+    //   234: putfield 99	com/tencent/liteav/renderer/TXCGLSurfaceView:u	Z
+    //   237: iconst_0
+    //   238: istore_2
+    //   239: iload 4
+    //   241: istore_3
+    //   242: goto -95 -> 147
+    //   245: aload_0
+    //   246: getfield 224	com/tencent/liteav/renderer/TXCGLSurfaceView:g	Landroid/graphics/SurfaceTexture;
+    //   249: ifnull +316 -> 565
+    //   252: aload_0
+    //   253: getfield 224	com/tencent/liteav/renderer/TXCGLSurfaceView:g	Landroid/graphics/SurfaceTexture;
+    //   256: invokevirtual 328	android/graphics/SurfaceTexture:updateTexImage	()V
+    //   259: aload_0
+    //   260: getfield 224	com/tencent/liteav/renderer/TXCGLSurfaceView:g	Landroid/graphics/SurfaceTexture;
     //   263: aload_0
-    //   264: lconst_1
-    //   265: putfield 83	com/tencent/liteav/renderer/TXCGLSurfaceView:q	J
-    //   268: goto -46 -> 222
-    //   271: astore_1
-    //   272: aload_0
-    //   273: monitorexit
-    //   274: ldc_w 395
-    //   277: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   280: aload_1
-    //   281: athrow
-    //   282: astore_1
-    //   283: ldc_w 395
-    //   286: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   289: return
-    //   290: invokestatic 403	java/lang/System:currentTimeMillis	()J
-    //   293: lstore 5
-    //   295: lload 5
-    //   297: l2d
-    //   298: aload_0
-    //   299: getfield 118	com/tencent/liteav/renderer/TXCGLSurfaceView:J	J
-    //   302: l2d
-    //   303: ldc2_w 416
-    //   306: dadd
-    //   307: dcmpl
-    //   308: ifle +39 -> 347
-    //   311: aload_0
-    //   312: aload_0
-    //   313: getfield 122	com/tencent/liteav/renderer/TXCGLSurfaceView:L	I
-    //   316: i2d
-    //   317: ldc2_w 416
-    //   320: dmul
-    //   321: lload 5
-    //   323: aload_0
-    //   324: getfield 118	com/tencent/liteav/renderer/TXCGLSurfaceView:J	J
-    //   327: lsub
-    //   328: l2d
-    //   329: ddiv
-    //   330: d2i
-    //   331: iconst_1
-    //   332: iadd
-    //   333: putfield 120	com/tencent/liteav/renderer/TXCGLSurfaceView:K	I
-    //   336: aload_0
-    //   337: lload 5
-    //   339: putfield 118	com/tencent/liteav/renderer/TXCGLSurfaceView:J	J
-    //   342: aload_0
-    //   343: iconst_0
-    //   344: putfield 122	com/tencent/liteav/renderer/TXCGLSurfaceView:L	I
-    //   347: aload_0
-    //   348: aload_0
-    //   349: getfield 122	com/tencent/liteav/renderer/TXCGLSurfaceView:L	I
-    //   352: iconst_1
-    //   353: iadd
-    //   354: putfield 122	com/tencent/liteav/renderer/TXCGLSurfaceView:L	I
+    //   264: getfield 79	com/tencent/liteav/renderer/TXCGLSurfaceView:k	[F
+    //   267: invokevirtual 403	android/graphics/SurfaceTexture:getTransformMatrix	([F)V
+    //   270: goto +295 -> 565
+    //   273: aload_0
+    //   274: lconst_1
+    //   275: putfield 91	com/tencent/liteav/renderer/TXCGLSurfaceView:q	J
+    //   278: goto -46 -> 232
+    //   281: astore_1
+    //   282: aload_0
+    //   283: monitorexit
+    //   284: sipush 16774
+    //   287: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   290: aload_1
+    //   291: athrow
+    //   292: astore_1
+    //   293: sipush 16774
+    //   296: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   299: return
+    //   300: invokestatic 391	java/lang/System:currentTimeMillis	()J
+    //   303: lstore 5
+    //   305: lload 5
+    //   307: l2d
+    //   308: aload_0
+    //   309: getfield 126	com/tencent/liteav/renderer/TXCGLSurfaceView:I	J
+    //   312: l2d
+    //   313: ldc2_w 404
+    //   316: dadd
+    //   317: dcmpl
+    //   318: ifle +39 -> 357
+    //   321: aload_0
+    //   322: aload_0
+    //   323: getfield 130	com/tencent/liteav/renderer/TXCGLSurfaceView:K	I
+    //   326: i2d
+    //   327: ldc2_w 404
+    //   330: dmul
+    //   331: lload 5
+    //   333: aload_0
+    //   334: getfield 126	com/tencent/liteav/renderer/TXCGLSurfaceView:I	J
+    //   337: lsub
+    //   338: l2d
+    //   339: ddiv
+    //   340: d2i
+    //   341: iconst_1
+    //   342: iadd
+    //   343: putfield 128	com/tencent/liteav/renderer/TXCGLSurfaceView:J	I
+    //   346: aload_0
+    //   347: lload 5
+    //   349: putfield 126	com/tencent/liteav/renderer/TXCGLSurfaceView:I	J
+    //   352: aload_0
+    //   353: iconst_0
+    //   354: putfield 130	com/tencent/liteav/renderer/TXCGLSurfaceView:K	I
     //   357: aload_0
-    //   358: getfield 345	com/tencent/liteav/renderer/TXCGLSurfaceView:H	Lcom/tencent/liteav/basic/d/m;
-    //   361: ifnull +21 -> 382
-    //   364: aload_1
-    //   365: ifnull +53 -> 418
-    //   368: aload_0
-    //   369: getfield 345	com/tencent/liteav/renderer/TXCGLSurfaceView:H	Lcom/tencent/liteav/basic/d/m;
-    //   372: aload_1
-    //   373: aload_0
-    //   374: getfield 71	com/tencent/liteav/renderer/TXCGLSurfaceView:k	[F
-    //   377: invokeinterface 420 3 0
-    //   382: aload_0
-    //   383: invokespecial 422	com/tencent/liteav/renderer/TXCGLSurfaceView:f	()V
-    //   386: aload_0
-    //   387: monitorenter
-    //   388: aload_0
-    //   389: getfield 282	com/tencent/liteav/renderer/TXCGLSurfaceView:c	Z
-    //   392: ifne +49 -> 441
-    //   395: iconst_1
-    //   396: istore_2
-    //   397: aload_0
-    //   398: monitorexit
-    //   399: iload_2
-    //   400: ifeq +11 -> 411
+    //   358: aload_0
+    //   359: getfield 130	com/tencent/liteav/renderer/TXCGLSurfaceView:K	I
+    //   362: iconst_1
+    //   363: iadd
+    //   364: putfield 130	com/tencent/liteav/renderer/TXCGLSurfaceView:K	I
+    //   367: aload_0
+    //   368: getfield 338	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/d/m;
+    //   371: ifnull +21 -> 392
+    //   374: aload_1
+    //   375: ifnull +148 -> 523
+    //   378: aload_0
+    //   379: getfield 338	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/d/m;
+    //   382: aload_1
+    //   383: aload_0
+    //   384: getfield 79	com/tencent/liteav/renderer/TXCGLSurfaceView:k	[F
+    //   387: invokeinterface 408 3 0
+    //   392: aload_0
+    //   393: monitorenter
+    //   394: aload_0
+    //   395: getfield 270	com/tencent/liteav/renderer/TXCGLSurfaceView:c	Z
+    //   398: ifne +148 -> 546
+    //   401: iconst_1
+    //   402: istore_2
     //   403: aload_0
-    //   404: aload_0
-    //   405: invokevirtual 331	com/tencent/liteav/renderer/TXCGLSurfaceView:d	()I
-    //   408: putfield 87	com/tencent/liteav/renderer/TXCGLSurfaceView:s	I
-    //   411: ldc_w 395
-    //   414: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   417: return
-    //   418: aload_0
-    //   419: getfield 345	com/tencent/liteav/renderer/TXCGLSurfaceView:H	Lcom/tencent/liteav/basic/d/m;
-    //   422: aload_0
-    //   423: getfield 424	com/tencent/liteav/renderer/TXCGLSurfaceView:j	[I
-    //   426: iconst_0
-    //   427: iaload
-    //   428: aload_0
-    //   429: getfield 71	com/tencent/liteav/renderer/TXCGLSurfaceView:k	[F
-    //   432: invokeinterface 427 3 0
-    //   437: pop
-    //   438: goto -56 -> 382
-    //   441: iconst_0
-    //   442: istore_2
-    //   443: goto -46 -> 397
-    //   446: astore_1
-    //   447: aload_0
-    //   448: monitorexit
-    //   449: ldc_w 395
-    //   452: invokestatic 139	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   455: aload_1
-    //   456: athrow
-    //   457: goto -249 -> 208
-    //   460: aconst_null
-    //   461: astore_1
-    //   462: goto -254 -> 208
+    //   404: monitorexit
+    //   405: iload_2
+    //   406: ifeq +110 -> 516
+    //   409: aload_0
+    //   410: invokevirtual 325	com/tencent/liteav/renderer/TXCGLSurfaceView:e	()I
+    //   413: istore_2
+    //   414: iload_2
+    //   415: sipush 12288
+    //   418: if_icmpeq +98 -> 516
+    //   421: invokestatic 391	java/lang/System:currentTimeMillis	()J
+    //   424: aload_0
+    //   425: getfield 263	com/tencent/liteav/renderer/TXCGLSurfaceView:G	J
+    //   428: lsub
+    //   429: ldc2_w 409
+    //   432: lcmp
+    //   433: ifle +83 -> 516
+    //   436: ldc_w 331
+    //   439: ldc_w 412
+    //   442: iload_2
+    //   443: invokestatic 418	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   446: invokevirtual 422	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   449: invokestatic 424	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   452: aload_0
+    //   453: invokestatic 391	java/lang/System:currentTimeMillis	()J
+    //   456: putfield 263	com/tencent/liteav/renderer/TXCGLSurfaceView:G	J
+    //   459: new 426	android/os/Bundle
+    //   462: dup
+    //   463: invokespecial 427	android/os/Bundle:<init>	()V
+    //   466: astore_1
+    //   467: aload_1
+    //   468: ldc_w 429
+    //   471: iload_2
+    //   472: invokevirtual 433	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   475: aload_1
+    //   476: ldc_w 435
+    //   479: sipush 2110
+    //   482: invokevirtual 433	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   485: aload_1
+    //   486: ldc_w 437
+    //   489: invokestatic 442	com/tencent/liteav/basic/util/TXCTimeUtil:getTimeTick	()J
+    //   492: invokevirtual 446	android/os/Bundle:putLong	(Ljava/lang/String;J)V
+    //   495: aload_1
+    //   496: ldc_w 448
+    //   499: ldc_w 450
+    //   502: invokevirtual 454	android/os/Bundle:putCharSequence	(Ljava/lang/String;Ljava/lang/CharSequence;)V
+    //   505: aload_0
+    //   506: getfield 456	com/tencent/liteav/renderer/TXCGLSurfaceView:a	Ljava/lang/ref/WeakReference;
+    //   509: sipush 2110
+    //   512: aload_1
+    //   513: invokestatic 461	com/tencent/liteav/basic/util/d:a	(Ljava/lang/ref/WeakReference;ILandroid/os/Bundle;)V
+    //   516: sipush 16774
+    //   519: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   522: return
+    //   523: aload_0
+    //   524: getfield 338	com/tencent/liteav/renderer/TXCGLSurfaceView:F	Lcom/tencent/liteav/basic/d/m;
+    //   527: aload_0
+    //   528: getfield 463	com/tencent/liteav/renderer/TXCGLSurfaceView:j	[I
+    //   531: iconst_0
+    //   532: iaload
+    //   533: aload_0
+    //   534: getfield 79	com/tencent/liteav/renderer/TXCGLSurfaceView:k	[F
+    //   537: invokeinterface 466 3 0
+    //   542: pop
+    //   543: goto -151 -> 392
+    //   546: iconst_0
+    //   547: istore_2
+    //   548: goto -145 -> 403
+    //   551: astore_1
+    //   552: aload_0
+    //   553: monitorexit
+    //   554: sipush 16774
+    //   557: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   560: aload_1
+    //   561: athrow
+    //   562: goto -344 -> 218
+    //   565: aconst_null
+    //   566: astore_1
+    //   567: goto -349 -> 218
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	465	0	this	TXCGLSurfaceView
-    //   0	465	1	paramGL10	GL10
-    //   18	425	2	i1	int
-    //   16	216	3	i2	int
-    //   130	100	4	i3	int
-    //   22	316	5	l1	long
+    //   0	570	0	this	TXCGLSurfaceView
+    //   0	570	1	paramGL10	GL10
+    //   18	530	2	i1	int
+    //   16	226	3	i2	int
+    //   140	100	4	i3	int
+    //   22	326	5	l1	long
     // Exception table:
     //   from	to	target	type
-    //   122	129	271	finally
-    //   137	139	271	finally
-    //   166	208	271	finally
-    //   212	222	271	finally
-    //   222	227	271	finally
-    //   235	260	271	finally
-    //   263	268	271	finally
-    //   272	274	271	finally
-    //   120	122	282	java/lang/Exception
-    //   149	156	282	java/lang/Exception
-    //   274	282	282	java/lang/Exception
-    //   290	347	282	java/lang/Exception
-    //   347	364	282	java/lang/Exception
-    //   368	382	282	java/lang/Exception
-    //   382	388	282	java/lang/Exception
-    //   403	411	282	java/lang/Exception
-    //   418	438	282	java/lang/Exception
-    //   449	457	282	java/lang/Exception
-    //   388	395	446	finally
-    //   397	399	446	finally
-    //   447	449	446	finally
+    //   132	139	281	finally
+    //   147	149	281	finally
+    //   176	218	281	finally
+    //   222	232	281	finally
+    //   232	237	281	finally
+    //   245	270	281	finally
+    //   273	278	281	finally
+    //   282	284	281	finally
+    //   130	132	292	java/lang/Exception
+    //   159	166	292	java/lang/Exception
+    //   284	292	292	java/lang/Exception
+    //   300	357	292	java/lang/Exception
+    //   357	374	292	java/lang/Exception
+    //   378	392	292	java/lang/Exception
+    //   392	394	292	java/lang/Exception
+    //   409	414	292	java/lang/Exception
+    //   421	516	292	java/lang/Exception
+    //   523	543	292	java/lang/Exception
+    //   554	562	292	java/lang/Exception
+    //   394	401	551	finally
+    //   403	405	551	finally
+    //   552	554	551	finally
   }
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(67201);
     this.t = false;
     try
     {
       this.u = true;
       return;
     }
-    finally
-    {
-      AppMethodBeat.o(67201);
-    }
+    finally {}
   }
   
   public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2) {}
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    AppMethodBeat.i(67198);
+    AppMethodBeat.i(16773);
     this.h = ((EGL10)EGLContext.getEGL()).eglGetCurrentContext();
     this.j = new int[1];
     this.j[0] = i.b();
@@ -912,7 +1010,7 @@ public class TXCGLSurfaceView
     {
       this.j = null;
       TXCLog.e("TXCGLSurfaceView", "create oes texture error!! at glsurfaceview");
-      AppMethodBeat.o(67198);
+      AppMethodBeat.o(16773);
       return;
     }
     this.g = new SurfaceTexture(this.j[0]);
@@ -920,71 +1018,127 @@ public class TXCGLSurfaceView
     this.i = new g();
     if (!this.i.a())
     {
-      AppMethodBeat.o(67198);
+      AppMethodBeat.o(16773);
       return;
     }
     this.i.a(k.e, k.a(j.a, false, false));
-    if (this.H != null) {
-      this.H.a(this.g);
+    if (this.F != null) {
+      this.F.a(this.g);
     }
-    AppMethodBeat.o(67198);
+    AppMethodBeat.o(16773);
   }
   
-  public void setFPS(int paramInt)
+  public void setFPS(final int paramInt)
   {
-    AppMethodBeat.i(67185);
-    b(new TXCGLSurfaceView.1(this, paramInt));
-    AppMethodBeat.o(67185);
+    AppMethodBeat.i(16759);
+    b(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(16782);
+        TXCGLSurfaceView.a(TXCGLSurfaceView.this, paramInt);
+        if (TXCGLSurfaceView.a(TXCGLSurfaceView.this) <= 0) {
+          TXCGLSurfaceView.a(TXCGLSurfaceView.this, 1);
+        }
+        for (;;)
+        {
+          TXCGLSurfaceView.a(TXCGLSurfaceView.this, 0L);
+          TXCGLSurfaceView.b(TXCGLSurfaceView.this, 0L);
+          AppMethodBeat.o(16782);
+          return;
+          if (TXCGLSurfaceView.a(TXCGLSurfaceView.this) > 60) {
+            TXCGLSurfaceView.a(TXCGLSurfaceView.this, 60);
+          }
+        }
+      }
+    });
+    AppMethodBeat.o(16759);
   }
   
   public void setNotifyListener(a parama)
   {
-    AppMethodBeat.i(146747);
+    AppMethodBeat.i(16764);
     this.a = new WeakReference(parama);
-    AppMethodBeat.o(146747);
+    AppMethodBeat.o(16764);
   }
   
-  public void setRendMirror(int paramInt)
+  public void setRendMirror(final int paramInt)
   {
-    AppMethodBeat.i(146746);
-    b(new TXCGLSurfaceView.3(this, paramInt));
-    AppMethodBeat.o(146746);
+    AppMethodBeat.i(16761);
+    b(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(16841);
+        TXCGLSurfaceView.c(TXCGLSurfaceView.this, paramInt);
+        GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+        GLES20.glClear(16640);
+        AppMethodBeat.o(16841);
+      }
+    });
+    AppMethodBeat.o(16761);
   }
   
-  public void setRendMode(int paramInt)
+  public void setRendMode(final int paramInt)
   {
-    AppMethodBeat.i(67186);
-    b(new TXCGLSurfaceView.2(this, paramInt));
-    AppMethodBeat.o(67186);
+    AppMethodBeat.i(16760);
+    b(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(16822);
+        TXCGLSurfaceView.b(TXCGLSurfaceView.this, paramInt);
+        GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+        GLES20.glClear(16640);
+        AppMethodBeat.o(16822);
+      }
+    });
+    AppMethodBeat.o(16760);
   }
   
   protected void setRunInBackground(boolean paramBoolean)
   {
-    AppMethodBeat.i(67188);
+    AppMethodBeat.i(16763);
     if (paramBoolean) {
       try
       {
-        TXCLog.d("TXCGLSurfaceView", "background capture enter background");
+        TXCLog.i("TXCGLSurfaceView", "background capture enter background");
         this.c = true;
         return;
       }
       finally
       {
-        AppMethodBeat.o(67188);
+        AppMethodBeat.o(16763);
       }
     }
-    b(new TXCGLSurfaceView.4(this));
-    AppMethodBeat.o(67188);
+    b(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(16839);
+        try
+        {
+          TXCLog.i("TXCGLSurfaceView", "background capture exit background");
+          TXCGLSurfaceView.this.c = false;
+          return;
+        }
+        finally
+        {
+          AppMethodBeat.o(16839);
+        }
+      }
+    });
+    AppMethodBeat.o(16763);
   }
   
   public void setSurfaceTextureListener(m paramm)
   {
-    this.H = paramm;
+    this.F = paramm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.renderer.TXCGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

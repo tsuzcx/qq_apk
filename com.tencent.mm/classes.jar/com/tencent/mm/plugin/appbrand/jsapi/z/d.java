@@ -1,0 +1,79 @@
+package com.tencent.mm.plugin.appbrand.jsapi.z;
+
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.xweb.u;
+import d.l;
+
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/AppBrandXWVideoJsCallbackIMPL;", "Lcom/tencent/xweb/VideoJsCallback;", "()V", "webView", "Lcom/tencent/mm/plugin/appbrand/jsapi/webview/AppBrandHTMLWebView;", "getWebView", "()Lcom/tencent/mm/plugin/appbrand/jsapi/webview/AppBrandHTMLWebView;", "setWebView", "(Lcom/tencent/mm/plugin/appbrand/jsapi/webview/AppBrandHTMLWebView;)V", "onVideoEmptied", "", "onVideoEnded", "onVideoEnterFullscreen", "isVideoTag", "", "id", "", "width", "", "height", "paused", "seeking", "currentTime", "duration", "buffered", "", "onVideoError", "error", "", "msg", "", "onVideoExitFullscreen", "onVideoPause", "onVideoPlay", "onVideoPlaying", "onVideoSeeked", "onVideoSeeking", "onVideoSizeUpdate", "onVideoTimeUpdate", "onVideoWaiting", "Companion", "plugin-appbrand-integration_release"})
+public abstract class d
+  implements u
+{
+  @Deprecated
+  public static final a kxb = new a((byte)0);
+  private a kxa;
+  
+  public final void beC() {}
+  
+  public final void onVideoEnded() {}
+  
+  public final void onVideoEnterFullscreen(boolean paramBoolean1, long paramLong, double paramDouble1, double paramDouble2, boolean paramBoolean2, boolean paramBoolean3, double paramDouble3, double paramDouble4, double[] paramArrayOfDouble)
+  {
+    paramArrayOfDouble = new StringBuilder("onVideoEnterFullScreen isVideoTag:").append(paramBoolean1).append(", view[");
+    a locala = this.kxa;
+    if (locala != null) {}
+    for (int i = locala.hashCode();; i = 0)
+    {
+      ad.i("MicroMsg.AppBrandXWVideoJsCallbackIMPL", i + ']');
+      return;
+    }
+  }
+  
+  public final void onVideoError(int paramInt, String paramString)
+  {
+    paramString = new StringBuilder("onVideoError error:").append(paramInt).append(" msg:").append(paramString).append(", view[");
+    a locala = this.kxa;
+    if (locala != null) {}
+    for (paramInt = locala.hashCode();; paramInt = 0)
+    {
+      ad.e("MicroMsg.AppBrandXWVideoJsCallbackIMPL", paramInt + ']');
+      return;
+    }
+  }
+  
+  public final void onVideoExitFullscreen()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("onVideoExitFullscreen, view[");
+    a locala = this.kxa;
+    if (locala != null) {}
+    for (int i = locala.hashCode();; i = 0)
+    {
+      ad.i("MicroMsg.AppBrandXWVideoJsCallbackIMPL", i + ']');
+      return;
+    }
+  }
+  
+  public final void onVideoPause() {}
+  
+  public final void onVideoPlay() {}
+  
+  public final void onVideoPlaying() {}
+  
+  public final void onVideoSeeked() {}
+  
+  public final void onVideoSeeking() {}
+  
+  public final void onVideoSizeUpdate(double paramDouble1, double paramDouble2) {}
+  
+  public final void onVideoTimeUpdate(double paramDouble1, double paramDouble2, double[] paramArrayOfDouble) {}
+  
+  public final void onVideoWaiting() {}
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/webview/AppBrandXWVideoJsCallbackIMPL$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  static final class a {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.z.d
+ * JD-Core Version:    0.7.0.1
+ */

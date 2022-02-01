@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@raw/webview_search_pre_word_disable" />
-    <item android:drawable="@raw/webview_search_pre_word" />
-</selector>
+    <solid android:color="@color/FG_3" />
+    <corners android:radius="@dimen/b6" />
+</shape>

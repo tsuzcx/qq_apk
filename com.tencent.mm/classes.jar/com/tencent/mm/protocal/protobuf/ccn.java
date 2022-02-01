@@ -1,81 +1,87 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class ccn
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String username;
-  public int wwX;
-  public int xmQ;
+  public String DKe;
+  public int DYT;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(114988);
+    AppMethodBeat.i(32371);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.username != null) {
-        paramVarArgs.e(1, this.username);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.DKe == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Ip");
+        AppMethodBeat.o(32371);
+        throw paramVarArgs;
       }
-      paramVarArgs.aO(2, this.xmQ);
-      paramVarArgs.aO(3, this.wwX);
-      AppMethodBeat.o(114988);
+      if (this.DKe != null) {
+        paramVarArgs.d(1, this.DKe);
+      }
+      paramVarArgs.aR(2, this.DYT);
+      AppMethodBeat.o(32371);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.username == null) {
-        break label306;
+      if (this.DKe == null) {
+        break label318;
       }
     }
-    label306:
-    for (paramInt = e.a.a.b.b.a.f(1, this.username) + 0;; paramInt = 0)
+    label318:
+    for (paramInt = f.a.a.b.b.a.e(1, this.DKe) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.bl(2, this.xmQ);
-      int j = e.a.a.b.b.a.bl(3, this.wwX);
-      AppMethodBeat.o(114988);
-      return paramInt + i + j;
+      int i = f.a.a.b.b.a.bA(2, this.DYT);
+      AppMethodBeat.o(32371);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(114988);
+        if (this.DKe == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: Ip");
+          AppMethodBeat.o(32371);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32371);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         ccn localccn = (ccn)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(114988);
+          AppMethodBeat.o(32371);
           return -1;
         case 1: 
-          localccn.username = locala.CLY.readString();
-          AppMethodBeat.o(114988);
-          return 0;
-        case 2: 
-          localccn.xmQ = locala.CLY.sl();
-          AppMethodBeat.o(114988);
+          localccn.DKe = locala.KhF.readString();
+          AppMethodBeat.o(32371);
           return 0;
         }
-        localccn.wwX = locala.CLY.sl();
-        AppMethodBeat.o(114988);
+        localccn.DYT = locala.KhF.xS();
+        AppMethodBeat.o(32371);
         return 0;
       }
-      AppMethodBeat.o(114988);
+      AppMethodBeat.o(32371);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ccn
  * JD-Core Version:    0.7.0.1
  */

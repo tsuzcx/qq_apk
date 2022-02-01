@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.backup;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.b.b;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public m createApplication()
   {
-    AppMethodBeat.i(17111);
+    AppMethodBeat.i(21163);
     a locala = new a();
-    AppMethodBeat.o(17111);
+    AppMethodBeat.o(21163);
     return locala;
   }
   
-  public at createSubCore()
+  public aw createSubCore()
   {
     return null;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.Plugin
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ok
   extends b
 {
-  public ok.a cEV;
+  public a dtB;
   
   public ok()
   {
@@ -15,16 +15,22 @@ public final class ok
   
   private ok(byte paramByte)
   {
-    AppMethodBeat.i(56570);
-    this.cEV = new ok.a();
-    this.ymq = false;
+    AppMethodBeat.i(117615);
+    this.dtB = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(56570);
+    AppMethodBeat.o(117615);
+  }
+  
+  public static final class a
+  {
+    public int scene;
+    public String sessionId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ok
  * JD-Core Version:    0.7.0.1
  */

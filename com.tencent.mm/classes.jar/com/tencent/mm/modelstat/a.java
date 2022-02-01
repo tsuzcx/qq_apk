@@ -1,68 +1,68 @@
 package com.tencent.mm.modelstat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.t;
-import com.tencent.mm.modelsns.d;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.model.bi;
+import com.tencent.mm.model.u;
+import com.tencent.mm.model.w;
+import com.tencent.mm.modelsns.f;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
 
 public final class a
 {
-  public static void a(bi parambi, a.a parama)
+  public static void a(bl parambl, a parama)
   {
-    AppMethodBeat.i(16612);
-    if (bo.isNullOrNil(parambi.dHa))
+    AppMethodBeat.i(20656);
+    if (bt.isNullOrNil(parambl.ePc))
     {
-      AppMethodBeat.o(16612);
+      AppMethodBeat.o(20656);
       return;
     }
-    d locald = new d();
-    locald.k("20ExpIdStr", parambi.dHa + ",");
-    locald.k("21OpType", parama.value + ",");
-    locald.k("22msgId", parambi.field_msgSvrId + ",");
-    locald.k("23MessageType", parambi.getType() + ",");
+    f localf = new f();
+    localf.o("20ExpIdStr", parambl.ePc + ",");
+    localf.o("21OpType", parama.value + ",");
+    localf.o("22msgId", parambl.field_msgSvrId + ",");
+    localf.o("23MessageType", parambl.getType() + ",");
     int i;
-    if (parambi.bCn())
+    if (parambl.cxB())
     {
-      parama = j.b.ab(parambi.field_content, parambi.field_reserved);
+      parama = k.b.ar(parambl.field_content, parambl.field_reserved);
       if (parama == null) {
         i = 0;
       }
     }
     for (;;)
     {
-      parama = parambi.field_talker;
-      locald.k("24AppMsgInnerType", i + ",");
-      locald.k("25curUsername", parama + ",");
+      parama = parambl.field_talker;
+      localf.o("24AppMsgInnerType", i + ",");
+      localf.o("25curUsername", parama + ",");
       String str = "";
-      if (parambi.field_isSend == 1) {
-        parama = r.Zn();
+      if (parambl.field_isSend == 1) {
+        parama = u.aqG();
       }
       for (;;)
       {
-        locald.k("26msgPostUserName", parama + ",");
-        locald.k("27MediaState", parambi.dHb + ",");
-        ab.v("MicroMsg.ChattingExpUtil", "report logbuffer(13564): [chatting_exp]" + locald.Fg());
-        h.qsU.e(13564, new Object[] { locald });
-        AppMethodBeat.o(16612);
+        localf.o("26msgPostUserName", parama + ",");
+        localf.o("27MediaState", parambl.ePd + ",");
+        ad.v("MicroMsg.ChattingExpUtil", "report logbuffer(13564): [chatting_exp]" + localf.PW());
+        h.vKh.f(13564, new Object[] { localf });
+        AppMethodBeat.o(20656);
         return;
         i = parama.type;
         break;
-        if ((parama != null) && (t.lA(parama)))
+        if ((parama != null) && (w.pF(parama)))
         {
           parama = str;
-          if (parambi.field_content != null)
+          if (parambl.field_content != null)
           {
-            i = bf.pt(parambi.field_content);
+            i = bi.uc(parambl.field_content);
             parama = str;
             if (i != -1) {
-              parama = parambi.field_content.substring(0, i).trim();
+              parama = parambl.field_content.substring(0, i).trim();
             }
           }
         }
@@ -70,10 +70,29 @@ public final class a
       i = 0;
     }
   }
+  
+  public static enum a
+  {
+    public int value = 0;
+    
+    static
+    {
+      AppMethodBeat.i(20655);
+      htY = new a("Expose", 0, 1);
+      htZ = new a("Click", 1, 2);
+      hua = new a[] { htY, htZ };
+      AppMethodBeat.o(20655);
+    }
+    
+    private a(int paramInt)
+    {
+      this.value = paramInt;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelstat.a
  * JD-Core Version:    0.7.0.1
  */

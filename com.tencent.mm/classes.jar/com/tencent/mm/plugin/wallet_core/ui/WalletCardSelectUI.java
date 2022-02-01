@@ -1,22 +1,32 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
 import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.plugin.wallet_core.model.v;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.wallet_core.model.s;
+import com.tencent.mm.plugin.wallet_core.model.w;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.MaxListView;
-import com.tencent.mm.ui.q.b;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.r.b;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -24,67 +34,67 @@ import java.util.List;
 public class WalletCardSelectUI
   extends WalletBaseUI
 {
-  private int tTs;
-  private int tZc;
-  private List<ElementQuery> upl;
-  private List<ElementQuery> upm;
-  private CheckedTextView upn;
-  private CheckedTextView upo;
-  private String upp;
-  private int upq;
-  private int upr;
-  private int ups;
-  private WalletCardSelectUI.a upt;
-  private MaxListView upu;
+  private List<ElementQuery> Amg;
+  private List<ElementQuery> Amh;
+  private CheckedTextView Ami;
+  private CheckedTextView Amj;
+  private String Amk;
+  private int Aml;
+  private int Amm;
+  private int Amn;
+  private a Amo;
+  private MaxListView Amp;
+  private int zNC;
+  private int zTt;
   
   public WalletCardSelectUI()
   {
-    AppMethodBeat.i(47307);
-    this.upl = new LinkedList();
-    this.upm = new LinkedList();
-    this.tZc = 3;
-    this.upr = -1;
-    this.ups = -1;
-    this.tTs = -1;
-    AppMethodBeat.o(47307);
+    AppMethodBeat.i(70870);
+    this.Amg = new LinkedList();
+    this.Amh = new LinkedList();
+    this.zTt = 3;
+    this.Amm = -1;
+    this.Amn = -1;
+    this.zNC = -1;
+    AppMethodBeat.o(70870);
   }
   
-  private void nL(boolean paramBoolean)
+  private void sG(boolean paramBoolean)
   {
-    AppMethodBeat.i(47310);
-    this.upu.setVisibility(0);
+    AppMethodBeat.i(70873);
+    this.Amp.setVisibility(0);
     if (paramBoolean)
     {
-      this.upn.setChecked(true);
-      this.upo.setChecked(false);
-      this.upt.items = this.upl;
-      this.upt.notifyDataSetChanged();
-      this.upu.clearChoices();
-      if (this.upr >= 0)
+      this.Ami.setChecked(true);
+      this.Amj.setChecked(false);
+      this.Amo.gQr = this.Amg;
+      this.Amo.notifyDataSetChanged();
+      this.Amp.clearChoices();
+      if (this.Amm >= 0)
       {
-        this.upu.setItemChecked(this.upr, true);
+        this.Amp.setItemChecked(this.Amm, true);
         enableOptionMenu(true);
-        AppMethodBeat.o(47310);
+        AppMethodBeat.o(70873);
         return;
       }
       enableOptionMenu(false);
-      AppMethodBeat.o(47310);
+      AppMethodBeat.o(70873);
       return;
     }
-    this.upn.setChecked(false);
-    this.upo.setChecked(true);
-    this.upt.items = this.upm;
-    this.upt.notifyDataSetChanged();
-    this.upu.clearChoices();
-    if (this.ups >= 0)
+    this.Ami.setChecked(false);
+    this.Amj.setChecked(true);
+    this.Amo.gQr = this.Amh;
+    this.Amo.notifyDataSetChanged();
+    this.Amp.clearChoices();
+    if (this.Amn >= 0)
     {
-      this.upu.setItemChecked(this.ups, true);
+      this.Amp.setItemChecked(this.Amn, true);
       enableOptionMenu(true);
-      AppMethodBeat.o(47310);
+      AppMethodBeat.o(70873);
       return;
     }
     enableOptionMenu(false);
-    AppMethodBeat.o(47310);
+    AppMethodBeat.o(70873);
   }
   
   public boolean checkProcLife()
@@ -99,28 +109,60 @@ public class WalletCardSelectUI
   
   public int getLayoutId()
   {
-    return 2130971157;
+    return 2131495931;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(47309);
-    this.upp = getInput().getString("key_bank_type");
-    this.upq = getInput().getInt("key_bankcard_type", 1);
-    this.tZc = getInput().getInt("key_support_bankcard", 1);
-    this.tTs = getInput().getInt("key_bind_scene", -1);
-    this.upu = ((MaxListView)findViewById(2131829075));
-    this.upn = ((CheckedTextView)findViewById(2131829073));
-    this.upo = ((CheckedTextView)findViewById(2131829074));
-    this.upt = new WalletCardSelectUI.a(this, this);
-    this.upu.setAdapter(this.upt);
-    this.upu.setOnItemClickListener(new WalletCardSelectUI.1(this));
-    setBackBtn(new WalletCardSelectUI.2(this));
-    addTextOptionMenu(0, getString(2131296964), new MenuItem.OnMenuItemClickListener()
+    AppMethodBeat.i(70872);
+    this.Amk = getInput().getString("key_bank_type");
+    this.Aml = getInput().getInt("key_bankcard_type", 1);
+    this.zTt = getInput().getInt("key_support_bankcard", 1);
+    this.zNC = getInput().getInt("key_bind_scene", -1);
+    this.Amp = ((MaxListView)findViewById(2131304653));
+    this.Ami = ((CheckedTextView)findViewById(2131298251));
+    this.Amj = ((CheckedTextView)findViewById(2131298252));
+    this.Amo = new a(this);
+    this.Amp.setAdapter(this.Amo);
+    this.Amp.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(70859);
+        paramAnonymousAdapterView = WalletCardSelectUI.a(WalletCardSelectUI.this).RE(paramAnonymousInt);
+        if (!bt.isNullOrNil(paramAnonymousAdapterView.AdK))
+        {
+          h.a(WalletCardSelectUI.this, paramAnonymousAdapterView.AdK, null, true, null);
+          AppMethodBeat.o(70859);
+          return;
+        }
+        if (paramAnonymousAdapterView.ebL()) {
+          WalletCardSelectUI.a(WalletCardSelectUI.this, paramAnonymousInt);
+        }
+        for (;;)
+        {
+          WalletCardSelectUI.this.enableOptionMenu(true);
+          AppMethodBeat.o(70859);
+          return;
+          WalletCardSelectUI.b(WalletCardSelectUI.this, paramAnonymousInt);
+        }
+      }
+    });
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(47298);
+        AppMethodBeat.i(70860);
+        WalletCardSelectUI.this.finish();
+        AppMethodBeat.o(70860);
+        return true;
+      }
+    });
+    addTextOptionMenu(0, getString(2131755779), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(70861);
         Object localObject = null;
         Intent localIntent = new Intent();
         if ((WalletCardSelectUI.b(WalletCardSelectUI.this).isChecked()) && (WalletCardSelectUI.c(WalletCardSelectUI.this) >= 0))
@@ -135,7 +177,7 @@ public class WalletCardSelectUI
         for (;;)
         {
           WalletCardSelectUI.this.finish();
-          AppMethodBeat.o(47298);
+          AppMethodBeat.o(70861);
           return true;
           paramAnonymousMenuItem = localObject;
           if (!WalletCardSelectUI.e(WalletCardSelectUI.this).isChecked()) {
@@ -151,143 +193,159 @@ public class WalletCardSelectUI
           WalletCardSelectUI.this.setResult(0);
         }
       }
-    }, null, q.b.zby);
+    }, null, r.b.FOB);
     enableOptionMenu(false);
-    this.upn.setOnClickListener(new WalletCardSelectUI.4(this));
-    this.upo.setOnClickListener(new WalletCardSelectUI.5(this));
-    AppMethodBeat.o(47309);
+    this.Ami.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(70862);
+        WalletCardSelectUI.a(WalletCardSelectUI.this, true);
+        AppMethodBeat.o(70862);
+      }
+    });
+    this.Amj.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(70863);
+        WalletCardSelectUI.a(WalletCardSelectUI.this, false);
+        AppMethodBeat.o(70863);
+      }
+    });
+    AppMethodBeat.o(70872);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(47308);
+    AppMethodBeat.i(70871);
     super.onCreate(paramBundle);
-    setMMTitle(2131304986);
+    setMMTitle(2131765178);
     initView();
-    this.upm.clear();
-    this.upl.clear();
-    if (t.cTV().ubS != null)
+    this.Amh.clear();
+    this.Amg.clear();
+    if (s.eck().zWy != null)
     {
-      paramBundle = t.cTV().ubS.iterator();
+      paramBundle = s.eck().zWy.iterator();
       while (paramBundle.hasNext())
       {
         ElementQuery localElementQuery = (ElementQuery)paramBundle.next();
-        if ((this.tTs == 5) && (!localElementQuery.uhT)) {
-          localElementQuery.uhD = getString(2131305749);
+        if ((this.zNC == 5) && (!localElementQuery.Aea)) {
+          localElementQuery.AdK = getString(2131765969);
         }
-        if (localElementQuery.cTh()) {
-          this.upm.add(localElementQuery);
-        } else if (localElementQuery.cTv()) {
-          this.upl.add(localElementQuery);
+        if (localElementQuery.ebx()) {
+          this.Amh.add(localElementQuery);
+        } else if (localElementQuery.ebL()) {
+          this.Amg.add(localElementQuery);
         }
       }
     }
-    if ((this.tZc == 3) && (!this.upm.isEmpty()))
+    if ((this.zTt == 3) && (!this.Amh.isEmpty()))
     {
-      if (!t.cTN().cUu()) {
+      if (!s.ecc().ecO()) {
         break label249;
       }
-      Collections.sort(this.upm, new WalletCardSelectUI.6(this));
+      Collections.sort(this.Amh, new Comparator() {});
     }
-    while (!this.upl.isEmpty()) {
-      if (bo.isNullOrNil(this.upp))
+    while (!this.Amg.isEmpty()) {
+      if (bt.isNullOrNil(this.Amk))
       {
-        this.upn.setChecked(false);
-        this.upo.setChecked(false);
-        this.upu.setVisibility(8);
-        AppMethodBeat.o(47308);
+        this.Ami.setChecked(false);
+        this.Amj.setChecked(false);
+        this.Amp.setVisibility(8);
+        AppMethodBeat.o(70871);
         return;
         label249:
-        Collections.sort(this.upm, new WalletCardSelectUI.7(this));
+        Collections.sort(this.Amh, new Comparator() {});
       }
       else
       {
-        if (this.upq == 2)
+        if (this.Aml == 2)
         {
-          j = this.upm.size();
+          j = this.Amh.size();
           i = 0;
           for (;;)
           {
             if (i < j)
             {
-              if (((ElementQuery)this.upm.get(i)).poq.equals(this.upp))
+              if (((ElementQuery)this.Amh.get(i)).dca.equals(this.Amk))
               {
-                this.ups = i;
-                nL(false);
+                this.Amn = i;
+                sG(false);
                 enableOptionMenu(true);
               }
             }
             else
             {
-              if (this.ups < 0)
+              if (this.Amn < 0)
               {
-                nL(false);
+                sG(false);
                 enableOptionMenu(false);
               }
-              AppMethodBeat.o(47308);
+              AppMethodBeat.o(70871);
               return;
             }
             i += 1;
           }
         }
-        j = this.upl.size();
+        j = this.Amg.size();
         i = 0;
         for (;;)
         {
           if (i < j)
           {
-            if (((ElementQuery)this.upl.get(i)).poq.equals(this.upp))
+            if (((ElementQuery)this.Amg.get(i)).dca.equals(this.Amk))
             {
-              this.upr = i;
-              nL(true);
+              this.Amm = i;
+              sG(true);
               enableOptionMenu(true);
             }
           }
           else
           {
-            if (this.upr < 0)
+            if (this.Amm < 0)
             {
-              nL(false);
+              sG(false);
               enableOptionMenu(false);
             }
-            AppMethodBeat.o(47308);
+            AppMethodBeat.o(70871);
             return;
           }
           i += 1;
         }
       }
     }
-    int j = this.upm.size();
+    int j = this.Amh.size();
     int i = 0;
     for (;;)
     {
       if (i < j)
       {
-        if (((ElementQuery)this.upm.get(i)).poq.equals(this.upp))
+        if (((ElementQuery)this.Amh.get(i)).dca.equals(this.Amk))
         {
-          this.ups = i;
-          nL(false);
+          this.Amn = i;
+          sG(false);
           enableOptionMenu(true);
         }
       }
       else
       {
-        if (this.ups < 0)
+        if (this.Amn < 0)
         {
-          nL(false);
+          sG(false);
           enableOptionMenu(false);
         }
-        this.upn.setVisibility(8);
-        this.upo.setBackgroundResource(2130838445);
-        this.upo.setCheckMarkDrawable(2130840179);
-        AppMethodBeat.o(47308);
+        this.Ami.setVisibility(8);
+        this.Amj.setBackgroundResource(2131231818);
+        this.Amj.setCheckMarkDrawable(2131233872);
+        AppMethodBeat.o(70871);
         return;
       }
       i += 1;
     }
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     return false;
   }
@@ -297,10 +355,83 @@ public class WalletCardSelectUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  public final class a
+    extends BaseAdapter
+  {
+    private Context context;
+    List<ElementQuery> gQr;
+    
+    public a(Context paramContext)
+    {
+      AppMethodBeat.i(70864);
+      this.gQr = new ArrayList();
+      this.context = paramContext;
+      AppMethodBeat.o(70864);
+    }
+    
+    public final ElementQuery RE(int paramInt)
+    {
+      AppMethodBeat.i(70868);
+      ElementQuery localElementQuery = (ElementQuery)this.gQr.get(paramInt);
+      AppMethodBeat.o(70868);
+      return localElementQuery;
+    }
+    
+    public final int getCount()
+    {
+      AppMethodBeat.i(70867);
+      int i = this.gQr.size();
+      AppMethodBeat.o(70867);
+      return i;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(70866);
+      paramViewGroup = new a();
+      View localView = View.inflate(this.context, 2131495910, null);
+      paramViewGroup.Amr = ((CheckedTextView)localView.findViewById(2131298250));
+      ElementQuery localElementQuery = (ElementQuery)this.gQr.get(paramInt);
+      paramView = bt.by(localElementQuery.szi, "");
+      if (!bt.isNullOrNil(localElementQuery.AdK))
+      {
+        paramView = paramView + "[" + localElementQuery.AdK + "]";
+        paramViewGroup.Amr.setEnabled(false);
+      }
+      for (;;)
+      {
+        paramViewGroup.Amr.setText(paramView);
+        AppMethodBeat.o(70866);
+        return localView;
+        paramViewGroup.Amr.setEnabled(true);
+      }
+    }
+    
+    public final boolean isEnabled(int paramInt)
+    {
+      AppMethodBeat.i(70865);
+      boolean bool = bt.isNullOrNil(((ElementQuery)this.gQr.get(paramInt)).AdK);
+      AppMethodBeat.o(70865);
+      return bool;
+    }
+    
+    final class a
+    {
+      CheckedTextView Amr;
+      
+      a() {}
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletCardSelectUI
  * JD-Core Version:    0.7.0.1
  */

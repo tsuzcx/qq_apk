@@ -10,7 +10,7 @@ final class zzl
   
   public final void run()
   {
-    AppMethodBeat.i(71482);
+    AppMethodBeat.i(101465);
     DataEventBuffer localDataEventBuffer = new DataEventBuffer(this.zzan);
     try
     {
@@ -20,13 +20,13 @@ final class zzl
     finally
     {
       localDataEventBuffer.release();
-      AppMethodBeat.o(71482);
+      AppMethodBeat.o(101465);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.zzl
  * JD-Core Version:    0.7.0.1
  */

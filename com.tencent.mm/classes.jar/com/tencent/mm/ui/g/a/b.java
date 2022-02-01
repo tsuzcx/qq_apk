@@ -3,14 +3,14 @@ package com.tencent.mm.ui.g.a;
 public final class b
   extends Throwable
 {
-  private String AnM;
+  private String Hiq;
   private int mErrorCode;
   
   public b(String paramString1, int paramInt, String paramString2)
   {
     super(paramString1);
     this.mErrorCode = paramInt;
-    this.AnM = paramString2;
+    this.Hiq = paramString2;
   }
 }
 

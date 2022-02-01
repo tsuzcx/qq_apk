@@ -12,18 +12,18 @@ final class TextPreviewUI$1
   
   public final boolean onPreDraw()
   {
-    AppMethodBeat.i(31043);
-    TextPreviewUI.a(this.zCJ).getViewTreeObserver().removeOnPreDrawListener(this);
-    if (TextPreviewUI.a(this.zCJ).getLineCount() == 1) {
-      TextPreviewUI.a(this.zCJ).setGravity(1);
+    AppMethodBeat.i(34929);
+    TextPreviewUI.a(this.Gre).getViewTreeObserver().removeOnPreDrawListener(this);
+    if (TextPreviewUI.a(this.Gre).getLineCount() == 1) {
+      TextPreviewUI.a(this.Gre).setGravity(1);
     }
-    AppMethodBeat.o(31043);
+    AppMethodBeat.o(34929);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.TextPreviewUI.1
  * JD-Core Version:    0.7.0.1
  */

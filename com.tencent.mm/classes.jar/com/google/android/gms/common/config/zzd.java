@@ -14,18 +14,18 @@ final class zzd
   
   private static Double zza(Context paramContext, String paramString, Double paramDouble)
   {
-    AppMethodBeat.i(89545);
+    AppMethodBeat.i(4567);
     paramContext = paramContext.getSharedPreferences("gservices-direboot-cache", 0).getString(paramString, null);
     if (paramContext != null) {
       try
       {
         double d = Double.parseDouble(paramContext);
-        AppMethodBeat.o(89545);
+        AppMethodBeat.o(4567);
         return Double.valueOf(d);
       }
       catch (NumberFormatException paramContext) {}
     }
-    AppMethodBeat.o(89545);
+    AppMethodBeat.o(4567);
     return paramDouble;
   }
 }

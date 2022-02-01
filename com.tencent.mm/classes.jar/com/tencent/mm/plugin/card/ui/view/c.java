@@ -7,50 +7,50 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.protocal.protobuf.ye;
+import com.tencent.mm.protocal.protobuf.abm;
+import com.tencent.mm.protocal.protobuf.ro;
 
 public final class c
   extends i
 {
-  private View kAU;
-  private TextView kAV;
+  private View nHT;
+  private TextView nHU;
   
-  public final void bfq()
+  public final void bMB()
   {
-    AppMethodBeat.i(88737);
-    if (this.kAU != null) {
-      this.kAU.setVisibility(8);
+    AppMethodBeat.i(113664);
+    if (this.nHT != null) {
+      this.nHT.setVisibility(8);
     }
-    AppMethodBeat.o(88737);
+    AppMethodBeat.o(113664);
   }
   
   public final void initView() {}
   
   public final void update()
   {
-    AppMethodBeat.i(88736);
-    if (this.kAU == null)
+    AppMethodBeat.i(113663);
+    if (this.nHT == null)
     {
-      this.kAU = ((ViewStub)findViewById(2131822077)).inflate();
-      this.kAV = ((TextView)this.kAU.findViewById(2131821995));
+      this.nHT = ((ViewStub)findViewById(2131297728)).inflate();
+      this.nHU = ((TextView)this.nHT.findViewById(2131297729));
     }
-    this.kAU.setVisibility(0);
-    this.kAU.setOnClickListener(this.kBh.bdz());
-    b localb = this.kBh.bdv();
-    if (!TextUtils.isEmpty(localb.bbd().wGr.wPl))
+    this.nHT.setVisibility(0);
+    this.nHT.setOnClickListener(this.nIg.bKx());
+    b localb = this.nIg.bKt();
+    if (!TextUtils.isEmpty(localb.bHV().CRW.DbP))
     {
-      this.kAV.setText(localb.bbd().wGr.wPl);
-      AppMethodBeat.o(88736);
+      this.nHU.setText(localb.bHV().CRW.DbP);
+      AppMethodBeat.o(113663);
       return;
     }
-    this.kAV.setText(getString(2131297991));
-    AppMethodBeat.o(88736);
+    this.nHU.setText(getString(2131756933));
+    AppMethodBeat.o(113663);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.c
  * JD-Core Version:    0.7.0.1
  */

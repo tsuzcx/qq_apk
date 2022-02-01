@@ -9,13 +9,13 @@ public class ViewIndexingTrigger
   implements SensorEventListener
 {
   private static final double SHAKE_THRESHOLD_GRAVITY = 2.299999952316284D;
-  private ViewIndexingTrigger.OnShakeListener mListener;
+  private OnShakeListener mListener;
   
   public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    AppMethodBeat.i(72090);
+    AppMethodBeat.i(17526);
     if (this.mListener != null)
     {
       float f1 = paramSensorEvent.values[0];
@@ -28,17 +28,22 @@ public class ViewIndexingTrigger
         this.mListener.onShake();
       }
     }
-    AppMethodBeat.o(72090);
+    AppMethodBeat.o(17526);
   }
   
-  public void setOnShakeListener(ViewIndexingTrigger.OnShakeListener paramOnShakeListener)
+  public void setOnShakeListener(OnShakeListener paramOnShakeListener)
   {
     this.mListener = paramOnShakeListener;
+  }
+  
+  public static abstract interface OnShakeListener
+  {
+    public abstract void onShake();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.codeless.ViewIndexingTrigger
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,46 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.j;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
+import com.tencent.mm.plugin.appbrand.appstorage.l;
+import com.tencent.mm.plugin.appbrand.appstorage.p;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import org.json.JSONObject;
 
 final class ay
-  extends f
+  extends g
 {
-  final h.a a(c paramc, String paramString, JSONObject paramJSONObject)
+  final i.a a(c paramc, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(102838);
-    paramc = paramc.wX().zf(paramString);
-    switch (ay.1.hMg[paramc.ordinal()])
+    AppMethodBeat.i(128915);
+    boolean bool = paramJSONObject.optBoolean("recursive", false);
+    paramc = paramc.Ee().af(paramString, bool);
+    switch (1.jQL[paramc.ordinal()])
     {
     default: 
-      paramc = new h.a("fail " + paramc.name(), new Object[0]);
-      AppMethodBeat.o(102838);
+      paramc = new i.a("fail " + paramc.name(), new Object[0]);
+      AppMethodBeat.o(128915);
       return paramc;
     case 1: 
-      paramc = new h.a("fail permission denied, open \"%s\"", new Object[] { paramString });
-      AppMethodBeat.o(102838);
+      paramc = new i.a("fail no such file or directory \"%s\"", new Object[] { paramString });
+      AppMethodBeat.o(128915);
       return paramc;
     case 2: 
-      paramc = new h.a("fail no such file or directory \"%s\"", new Object[] { paramString });
-      AppMethodBeat.o(102838);
+      paramc = new i.a("fail permission denied, open \"%s\"", new Object[] { paramString });
+      AppMethodBeat.o(128915);
       return paramc;
     case 3: 
-      paramc = new h.a("fail operation not permitted, unlink \"%s\"", new Object[] { paramString });
-      AppMethodBeat.o(102838);
+      paramc = new i.a("fail file already exists \"%s\"", new Object[] { paramString });
+      AppMethodBeat.o(128915);
       return paramc;
     }
-    paramc = new h.a("ok", new Object[0]);
-    AppMethodBeat.o(102838);
+    paramc = new i.a("ok", new Object[0]);
+    AppMethodBeat.o(128915);
     return paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.ay
  * JD-Core Version:    0.7.0.1
  */

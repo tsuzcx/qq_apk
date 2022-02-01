@@ -4,18 +4,16 @@ public abstract class f
   extends com.tencent.matrix.trace.e.c
   implements d
 {
-  private volatile boolean bRn = false;
+  public volatile boolean cBX = false;
   
-  public void onForeground(boolean paramBoolean) {}
-  
-  public final void zA()
+  public final void Ig()
   {
     try
     {
-      if (!this.bRn)
+      if (!this.cBX)
       {
-        this.bRn = true;
-        zy();
+        this.cBX = true;
+        onAlive();
       }
       return;
     }
@@ -26,14 +24,14 @@ public abstract class f
     }
   }
   
-  public final void zB()
+  public final void Ih()
   {
     try
     {
-      if (this.bRn)
+      if (this.cBX)
       {
-        this.bRn = false;
-        zz();
+        this.cBX = false;
+        onDead();
       }
       return;
     }
@@ -44,19 +42,21 @@ public abstract class f
     }
   }
   
-  protected void zy()
+  protected void onAlive()
   {
     com.tencent.matrix.g.c.i("Matrix.Tracer", "[onAlive] %s", new Object[] { getClass().getName() });
   }
   
-  protected void zz()
+  protected void onDead()
   {
     com.tencent.matrix.g.c.i("Matrix.Tracer", "[onDead] %s", new Object[] { getClass().getName() });
   }
+  
+  public void onForeground(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.matrix.trace.f.f
  * JD-Core Version:    0.7.0.1
  */

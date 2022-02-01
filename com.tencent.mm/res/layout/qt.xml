@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="@dimen/dp" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/go"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/b3x" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t"
-      xmlns:android="http://schemas.android.com/apk/res/android" />
+    <include layout="@layout/o5" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gp">
+        <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
+        <com.tencent.mm.ui.widget.MMTextView android:id="@id/ala" android:background="@drawable/l8" android:paddingLeft="20.0dip" android:paddingRight="15.0dip" android:maxWidth="225.0dip" android:minHeight="@dimen/aa" style="@style/h0" />
+    </LinearLayout>
 </LinearLayout>

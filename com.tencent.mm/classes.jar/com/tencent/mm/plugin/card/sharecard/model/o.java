@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +16,9 @@ public final class o
   
   static
   {
-    AppMethodBeat.i(88088);
+    AppMethodBeat.i(113027);
     SQL_CREATE = new String[] { j.getCreateSQLs(n.info, "ShareCardSyncItemInfo") };
-    AppMethodBeat.o(88088);
+    AppMethodBeat.o(113027);
   }
   
   public o(e parame)
@@ -27,9 +27,9 @@ public final class o
     this.db = parame;
   }
   
-  public final List<n> bcb()
+  public final List<n> bIT()
   {
-    AppMethodBeat.i(88087);
+    AppMethodBeat.i(113026);
     ArrayList localArrayList = new ArrayList();
     Cursor localCursor = this.db.a("select * from ShareCardSyncItemInfo where retryCount < 10", null, 2);
     while (localCursor.moveToNext())
@@ -39,14 +39,14 @@ public final class o
       localArrayList.add(localn);
     }
     localCursor.close();
-    ab.d("MicroMsg.ShareCardSyncItemInfoStorage", "getAll, share card count = %d", new Object[] { Integer.valueOf(localArrayList.size()) });
-    AppMethodBeat.o(88087);
+    ad.d("MicroMsg.ShareCardSyncItemInfoStorage", "getAll, share card count = %d", new Object[] { Integer.valueOf(localArrayList.size()) });
+    AppMethodBeat.o(113026);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.o
  * JD-Core Version:    0.7.0.1
  */

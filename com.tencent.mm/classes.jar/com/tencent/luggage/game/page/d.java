@@ -1,12 +1,19 @@
 package com.tencent.luggage.game.page;
 
 import android.graphics.Bitmap;
+import com.tencent.magicbrush.ui.MagicBrushView;
 
 public abstract interface d
 {
-  public abstract Bitmap r(int paramInt, boolean paramBoolean);
+  public abstract void Cm();
   
-  public abstract void vr();
+  public abstract MagicBrushView Cn();
+  
+  public abstract void Co();
+  
+  public abstract Bitmap Cp();
+  
+  public abstract Bitmap r(int paramInt, boolean paramBoolean);
 }
 
 

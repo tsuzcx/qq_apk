@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.u;
 
 final class r
   implements HelperHeaderPreference.a
@@ -15,27 +16,27 @@ final class r
   
   public final void a(HelperHeaderPreference paramHelperHeaderPreference)
   {
-    AppMethodBeat.i(23618);
-    if ((com.tencent.mm.model.r.Zy() & 0x8000) == 0) {}
+    AppMethodBeat.i(27261);
+    if ((u.aqS() & 0x1000000) == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      paramHelperHeaderPreference.kf(bool);
-      AppMethodBeat.o(23618);
+      paramHelperHeaderPreference.oa(bool);
+      AppMethodBeat.o(27261);
       return;
     }
   }
   
   public final CharSequence getHint()
   {
-    AppMethodBeat.i(23617);
-    String str = this.context.getString(2131298615);
-    AppMethodBeat.o(23617);
+    AppMethodBeat.i(27260);
+    String str = this.context.getString(2131757716);
+    AppMethodBeat.o(27260);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.r
  * JD-Core Version:    0.7.0.1
  */

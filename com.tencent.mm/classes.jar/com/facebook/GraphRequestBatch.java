@@ -15,32 +15,32 @@ public class GraphRequestBatch
   private static AtomicInteger idGenerator;
   private String batchApplicationId;
   private Handler callbackHandler;
-  private List<GraphRequestBatch.Callback> callbacks;
+  private List<Callback> callbacks;
   private final String id;
   private List<GraphRequest> requests;
   private int timeoutInMilliseconds;
   
   static
   {
-    AppMethodBeat.i(71758);
+    AppMethodBeat.i(17194);
     idGenerator = new AtomicInteger();
-    AppMethodBeat.o(71758);
+    AppMethodBeat.o(17194);
   }
   
   public GraphRequestBatch()
   {
-    AppMethodBeat.i(71735);
+    AppMethodBeat.i(17171);
     this.requests = new ArrayList();
     this.timeoutInMilliseconds = 0;
     this.id = Integer.valueOf(idGenerator.incrementAndGet()).toString();
     this.callbacks = new ArrayList();
     this.requests = new ArrayList();
-    AppMethodBeat.o(71735);
+    AppMethodBeat.o(17171);
   }
   
   public GraphRequestBatch(GraphRequestBatch paramGraphRequestBatch)
   {
-    AppMethodBeat.i(71738);
+    AppMethodBeat.i(17174);
     this.requests = new ArrayList();
     this.timeoutInMilliseconds = 0;
     this.id = Integer.valueOf(idGenerator.incrementAndGet()).toString();
@@ -49,99 +49,99 @@ public class GraphRequestBatch
     this.callbackHandler = paramGraphRequestBatch.callbackHandler;
     this.timeoutInMilliseconds = paramGraphRequestBatch.timeoutInMilliseconds;
     this.callbacks = new ArrayList(paramGraphRequestBatch.callbacks);
-    AppMethodBeat.o(71738);
+    AppMethodBeat.o(17174);
   }
   
   public GraphRequestBatch(Collection<GraphRequest> paramCollection)
   {
-    AppMethodBeat.i(71736);
+    AppMethodBeat.i(17172);
     this.requests = new ArrayList();
     this.timeoutInMilliseconds = 0;
     this.id = Integer.valueOf(idGenerator.incrementAndGet()).toString();
     this.callbacks = new ArrayList();
     this.requests = new ArrayList(paramCollection);
-    AppMethodBeat.o(71736);
+    AppMethodBeat.o(17172);
   }
   
   public GraphRequestBatch(GraphRequest... paramVarArgs)
   {
-    AppMethodBeat.i(71737);
+    AppMethodBeat.i(17173);
     this.requests = new ArrayList();
     this.timeoutInMilliseconds = 0;
     this.id = Integer.valueOf(idGenerator.incrementAndGet()).toString();
     this.callbacks = new ArrayList();
     this.requests = Arrays.asList(paramVarArgs);
-    AppMethodBeat.o(71737);
+    AppMethodBeat.o(17173);
   }
   
   public final void add(int paramInt, GraphRequest paramGraphRequest)
   {
-    AppMethodBeat.i(71743);
+    AppMethodBeat.i(17179);
     this.requests.add(paramInt, paramGraphRequest);
-    AppMethodBeat.o(71743);
+    AppMethodBeat.o(17179);
   }
   
   public final boolean add(GraphRequest paramGraphRequest)
   {
-    AppMethodBeat.i(71742);
+    AppMethodBeat.i(17178);
     boolean bool = this.requests.add(paramGraphRequest);
-    AppMethodBeat.o(71742);
+    AppMethodBeat.o(17178);
     return bool;
   }
   
-  public void addCallback(GraphRequestBatch.Callback paramCallback)
+  public void addCallback(Callback paramCallback)
   {
-    AppMethodBeat.i(71740);
+    AppMethodBeat.i(17176);
     if (!this.callbacks.contains(paramCallback)) {
       this.callbacks.add(paramCallback);
     }
-    AppMethodBeat.o(71740);
+    AppMethodBeat.o(17176);
   }
   
   public final void clear()
   {
-    AppMethodBeat.i(71744);
+    AppMethodBeat.i(17180);
     this.requests.clear();
-    AppMethodBeat.o(71744);
+    AppMethodBeat.o(17180);
   }
   
   public final List<GraphResponse> executeAndWait()
   {
-    AppMethodBeat.i(71749);
+    AppMethodBeat.i(17185);
     List localList = executeAndWaitImpl();
-    AppMethodBeat.o(71749);
+    AppMethodBeat.o(17185);
     return localList;
   }
   
   List<GraphResponse> executeAndWaitImpl()
   {
-    AppMethodBeat.i(71751);
+    AppMethodBeat.i(17187);
     List localList = GraphRequest.executeBatchAndWait(this);
-    AppMethodBeat.o(71751);
+    AppMethodBeat.o(17187);
     return localList;
   }
   
   public final GraphRequestAsyncTask executeAsync()
   {
-    AppMethodBeat.i(71750);
+    AppMethodBeat.i(17186);
     GraphRequestAsyncTask localGraphRequestAsyncTask = executeAsyncImpl();
-    AppMethodBeat.o(71750);
+    AppMethodBeat.o(17186);
     return localGraphRequestAsyncTask;
   }
   
   GraphRequestAsyncTask executeAsyncImpl()
   {
-    AppMethodBeat.i(71752);
+    AppMethodBeat.i(17188);
     GraphRequestAsyncTask localGraphRequestAsyncTask = GraphRequest.executeBatchAsync(this);
-    AppMethodBeat.o(71752);
+    AppMethodBeat.o(17188);
     return localGraphRequestAsyncTask;
   }
   
   public final GraphRequest get(int paramInt)
   {
-    AppMethodBeat.i(71745);
+    AppMethodBeat.i(17181);
     GraphRequest localGraphRequest = (GraphRequest)this.requests.get(paramInt);
-    AppMethodBeat.o(71745);
+    AppMethodBeat.o(17181);
     return localGraphRequest;
   }
   
@@ -155,7 +155,7 @@ public class GraphRequestBatch
     return this.callbackHandler;
   }
   
-  final List<GraphRequestBatch.Callback> getCallbacks()
+  final List<Callback> getCallbacks()
   {
     return this.callbacks;
   }
@@ -177,24 +177,24 @@ public class GraphRequestBatch
   
   public final GraphRequest remove(int paramInt)
   {
-    AppMethodBeat.i(71746);
+    AppMethodBeat.i(17182);
     GraphRequest localGraphRequest = (GraphRequest)this.requests.remove(paramInt);
-    AppMethodBeat.o(71746);
+    AppMethodBeat.o(17182);
     return localGraphRequest;
   }
   
-  public void removeCallback(GraphRequestBatch.Callback paramCallback)
+  public void removeCallback(Callback paramCallback)
   {
-    AppMethodBeat.i(71741);
+    AppMethodBeat.i(17177);
     this.callbacks.remove(paramCallback);
-    AppMethodBeat.o(71741);
+    AppMethodBeat.o(17177);
   }
   
   public final GraphRequest set(int paramInt, GraphRequest paramGraphRequest)
   {
-    AppMethodBeat.i(71747);
+    AppMethodBeat.i(17183);
     paramGraphRequest = (GraphRequest)this.requests.set(paramInt, paramGraphRequest);
-    AppMethodBeat.o(71747);
+    AppMethodBeat.o(17183);
     return paramGraphRequest;
   }
   
@@ -210,28 +210,39 @@ public class GraphRequestBatch
   
   public void setTimeout(int paramInt)
   {
-    AppMethodBeat.i(71739);
+    AppMethodBeat.i(17175);
     if (paramInt < 0)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Argument timeoutInMilliseconds must be >= 0.");
-      AppMethodBeat.o(71739);
+      AppMethodBeat.o(17175);
       throw localIllegalArgumentException;
     }
     this.timeoutInMilliseconds = paramInt;
-    AppMethodBeat.o(71739);
+    AppMethodBeat.o(17175);
   }
   
   public final int size()
   {
-    AppMethodBeat.i(71748);
+    AppMethodBeat.i(17184);
     int i = this.requests.size();
-    AppMethodBeat.o(71748);
+    AppMethodBeat.o(17184);
     return i;
+  }
+  
+  public static abstract interface Callback
+  {
+    public abstract void onBatchCompleted(GraphRequestBatch paramGraphRequestBatch);
+  }
+  
+  public static abstract interface OnProgressCallback
+    extends GraphRequestBatch.Callback
+  {
+    public abstract void onBatchProgress(GraphRequestBatch paramGraphRequestBatch, long paramLong1, long paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.GraphRequestBatch
  * JD-Core Version:    0.7.0.1
  */

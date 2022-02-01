@@ -8,14 +8,14 @@ public final class a
 {
   public int id;
   public String name;
-  public com.tencent.mm.plugin.nfc.a.a pgm;
-  public c pgn;
+  public com.tencent.mm.plugin.nfc.a.a ueQ;
+  public c ueR;
   
   public a(int paramInt, String paramString, com.tencent.mm.plugin.nfc.a.a parama)
   {
     this.id = paramInt;
     this.name = paramString;
-    this.pgm = parama;
+    this.ueQ = parama;
   }
 }
 

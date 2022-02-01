@@ -8,66 +8,66 @@ import java.util.Map;
 
 public final class i
 {
-  private static final i hnC;
-  private Map<String, String> hnB;
+  private static final i jkK;
+  private Map<String, String> jkJ;
   
   static
   {
-    AppMethodBeat.i(10702);
-    hnC = new i();
-    AppMethodBeat.o(10702);
+    AppMethodBeat.i(121183);
+    jkK = new i();
+    AppMethodBeat.o(121183);
   }
   
   public i()
   {
-    AppMethodBeat.i(10697);
-    this.hnB = new HashMap();
-    AppMethodBeat.o(10697);
+    AppMethodBeat.i(121178);
+    this.jkJ = new HashMap();
+    AppMethodBeat.o(121178);
   }
   
-  public static i azB()
+  public static i aVi()
   {
-    return hnC;
+    return jkK;
   }
   
-  public final String AY(String paramString)
+  public final String GW(String paramString)
   {
-    AppMethodBeat.i(10699);
-    paramString = (String)this.hnB.get(paramString);
-    AppMethodBeat.o(10699);
+    AppMethodBeat.i(121180);
+    paramString = (String)this.jkJ.get(paramString);
+    AppMethodBeat.o(121180);
     return paramString;
   }
   
-  public final void AZ(String paramString)
+  public final void GX(String paramString)
   {
-    AppMethodBeat.i(10700);
-    this.hnB.remove(paramString);
-    AppMethodBeat.o(10700);
+    AppMethodBeat.i(121181);
+    this.jkJ.remove(paramString);
+    AppMethodBeat.o(121181);
   }
   
-  public final Collection<String> azC()
+  public final Collection<String> aVj()
   {
-    AppMethodBeat.i(10701);
-    Collection localCollection = this.hnB.values();
-    AppMethodBeat.o(10701);
+    AppMethodBeat.i(121182);
+    Collection localCollection = this.jkJ.values();
+    AppMethodBeat.o(121182);
     return localCollection;
   }
   
-  public final void bN(String paramString1, String paramString2)
+  public final void cw(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(10698);
+    AppMethodBeat.i(121179);
     if (TextUtils.isEmpty(paramString2))
     {
-      AppMethodBeat.o(10698);
+      AppMethodBeat.o(121179);
       return;
     }
-    this.hnB.put(paramString1, paramString2);
-    AppMethodBeat.o(10698);
+    this.jkJ.put(paramString1, paramString2);
+    AppMethodBeat.o(121179);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.i
  * JD-Core Version:    0.7.0.1
  */

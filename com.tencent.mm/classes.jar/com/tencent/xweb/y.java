@@ -1,18 +1,97 @@
 package com.tencent.xweb;
 
+import android.webkit.WebSettings.LayoutAlgorithm;
+import android.webkit.WebSettings.RenderPriority;
+
 public abstract class y
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7);
+  public abstract void fqW();
   
-  public abstract void aF(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void fqX();
   
-  public abstract void j(long paramLong1, long paramLong2, long paramLong3);
+  public abstract void fqY();
   
-  public abstract void kvStat(int paramInt, String paramString);
+  @Deprecated
+  public abstract void fqZ();
+  
+  public abstract void fra();
+  
+  public abstract void frb();
+  
+  public abstract void frc();
+  
+  public abstract void frd();
+  
+  @Deprecated
+  public abstract void fre();
+  
+  public abstract void frf();
+  
+  public abstract void frg();
+  
+  public abstract void frh();
+  
+  public abstract void fri();
+  
+  public abstract boolean getBlockNetworkImage();
+  
+  public abstract int getForceDarkBehavior();
+  
+  public abstract int getForceDarkMode();
+  
+  public abstract String getUserAgentString();
+  
+  public abstract void setAppCachePath(String paramString);
+  
+  public abstract void setAudioPlaybackRequiresUserGesture(boolean paramBoolean);
+  
+  public abstract void setBlockNetworkImage(boolean paramBoolean);
+  
+  public abstract void setBuiltInZoomControls(boolean paramBoolean);
+  
+  @Deprecated
+  public abstract void setDatabasePath(String paramString);
+  
+  public abstract void setDefaultTextEncodingName(String paramString);
+  
+  public abstract void setForceDarkBehavior(int paramInt);
+  
+  public abstract void setForceDarkMode(int paramInt);
+  
+  public abstract void setGeolocationEnabled(boolean paramBoolean);
+  
+  public abstract void setJavaScriptCanOpenWindowsAutomatically(boolean paramBoolean);
+  
+  public abstract void setJavaScriptEnabled(boolean paramBoolean);
+  
+  public abstract void setLayoutAlgorithm(WebSettings.LayoutAlgorithm paramLayoutAlgorithm);
+  
+  public abstract void setLoadWithOverviewMode(boolean paramBoolean);
+  
+  public abstract void setLoadsImagesAutomatically(boolean paramBoolean);
+  
+  public abstract void setMediaPlaybackRequiresUserGesture(boolean paramBoolean);
+  
+  public abstract void setPluginsEnabled(boolean paramBoolean);
+  
+  @Deprecated
+  public abstract void setRenderPriority(WebSettings.RenderPriority paramRenderPriority);
+  
+  public abstract void setSupportZoom(boolean paramBoolean);
+  
+  public abstract void setTextZoom(int paramInt);
+  
+  public abstract void setUseWideViewPort(boolean paramBoolean);
+  
+  public abstract void setUserAgentString(String paramString);
+  
+  public abstract void setUsingForAppBrand(int paramInt);
+  
+  public abstract void setVideoPlaybackRequiresUserGesture(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.y
  * JD-Core Version:    0.7.0.1
  */

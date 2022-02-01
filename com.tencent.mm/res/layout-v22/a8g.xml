@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/b3b" android:paddingLeft="@dimen/c_" android:paddingRight="@dimen/c_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:layout_marginBottom="@dimen/c8">
+        <ImageView android:background="@drawable/za" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginRight="@dimen/c0" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/a_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cjx" />
+    </LinearLayout>
+    <View android:background="#4cffffff" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <LinearLayout android:gravity="top" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_">
+        <ImageView android:id="@id/tm" android:background="@drawable/aq8" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:layout_marginRight="@dimen/c0" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="22.0dip" android:textStyle="bold" android:textColor="@color/a_u" android:id="@id/e3x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="3" android:textFontWeight="1" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/a_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/f1m" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="bottom|center" android:background="#00000000" android:paddingBottom="@dimen/bt" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <Button android:textSize="@dimen/c5" android:textColor="@color/a_u" android:id="@id/cmz" android:background="@drawable/yn" android:layout_width="@dimen/c1" android:layout_height="@dimen/cb" android:text="@string/hah" />
+    </LinearLayout>
+</LinearLayout>

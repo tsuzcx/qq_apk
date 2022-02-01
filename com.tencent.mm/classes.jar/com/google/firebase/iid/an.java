@@ -3,8 +3,8 @@ package com.google.firebase.iid;
 final class an
   implements Runnable
 {
-  private final aj bgC;
-  private final c bgD;
+  private final aj bEB;
+  private final c bEC;
   
   an(aj arg1, c arg2) {}
   
@@ -12,7 +12,7 @@ final class an
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.an
  * JD-Core Version:    0.7.0.1
  */

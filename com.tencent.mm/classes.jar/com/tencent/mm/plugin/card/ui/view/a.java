@@ -10,107 +10,107 @@ import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.e.a;
 import com.tencent.mm.plugin.card.ui.n;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.ccf;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.protocal.protobuf.csx;
+import com.tencent.mm.protocal.protobuf.ro;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.MMActivity;
 
 public final class a
   extends i
 {
-  private View kAO;
+  private View nHN;
   
-  public final void bfq()
+  public final void bMB()
   {
-    AppMethodBeat.i(88730);
-    this.kAO.setVisibility(8);
-    AppMethodBeat.o(88730);
+    AppMethodBeat.i(113657);
+    this.nHN.setVisibility(8);
+    AppMethodBeat.o(113657);
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(88728);
-    this.kAO = findViewById(2131822073);
-    AppMethodBeat.o(88728);
+    AppMethodBeat.i(113655);
+    this.nHN = findViewById(2131297718);
+    AppMethodBeat.o(113655);
   }
   
   public final void update()
   {
-    AppMethodBeat.i(88729);
-    Object localObject = this.kBh.bdA();
-    b localb = this.kBh.bdv();
-    MMActivity localMMActivity = this.kBh.bdy();
-    e.a locala = this.kBh.bdC();
-    f localf = this.kBh.bdD();
-    if (((com.tencent.mm.plugin.card.ui.a.g)localObject).beO())
+    AppMethodBeat.i(113656);
+    Object localObject = this.nIg.bKy();
+    b localb = this.nIg.bKt();
+    MMActivity localMMActivity = this.nIg.bKw();
+    e.a locala = this.nIg.bKA();
+    f localf = this.nIg.bKB();
+    if (((com.tencent.mm.plugin.card.ui.a.g)localObject).bLK())
     {
-      this.kAO.setVisibility(0);
-      findViewById(2131821988).setVisibility(0);
-      localObject = (ImageView)findViewById(2131821989);
-      TextView localTextView1 = (TextView)findViewById(2131821990);
-      TextView localTextView2 = (TextView)findViewById(2131821991);
-      if (locala.ktc != null) {
-        localTextView1.setText(com.tencent.mm.pluginsdk.ui.d.j.b(localMMActivity, ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(locala.ktc).Oe(), localTextView1.getTextSize()));
+      this.nHN.setVisibility(0);
+      findViewById(2131296318).setVisibility(0);
+      localObject = (ImageView)findViewById(2131296317);
+      TextView localTextView1 = (TextView)findViewById(2131296319);
+      TextView localTextView2 = (TextView)findViewById(2131296323);
+      if (locala.nys != null) {
+        localTextView1.setText(com.tencent.mm.pluginsdk.ui.span.k.b(localMMActivity, ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(locala.nys).ZW(), localTextView1.getTextSize()));
       }
-      if (locala.ejF == 23) {
-        if (!TextUtils.isEmpty(localb.bbd().wGz)) {
-          localTextView2.setText(localb.bbd().wGz);
+      if (locala.fsv == 23) {
+        if (!TextUtils.isEmpty(localb.bHV().CSe)) {
+          localTextView2.setText(localb.bHV().CSe);
         }
       }
       for (;;)
       {
-        a.b.a((ImageView)localObject, locala.ktc, 0.15F, false);
-        ((ImageView)localObject).setOnClickListener(this.kBh.bdz());
-        AppMethodBeat.o(88729);
+        a.b.a((ImageView)localObject, locala.nys, 0.15F, false);
+        ((ImageView)localObject).setOnClickListener(this.nIg.bKx());
+        AppMethodBeat.o(113656);
         return;
-        if (!TextUtils.isEmpty(localb.bbd().knv))
+        if (!TextUtils.isEmpty(localb.bHV().nsJ))
         {
-          localTextView2.setText(localMMActivity.getString(2131298012, new Object[] { localb.bbd().knv }));
+          localTextView2.setText(localMMActivity.getString(2131756954, new Object[] { localb.bHV().nsJ }));
         }
         else
         {
-          localTextView2.setText(localMMActivity.getString(2131298012, new Object[] { localf.getTitle() }));
+          localTextView2.setText(localMMActivity.getString(2131756954, new Object[] { localf.getTitle() }));
           continue;
-          if ((localb.bbf() != null) && (!TextUtils.isEmpty(localb.bbf().xMB))) {
-            localTextView2.setText(localb.bbf().xMB);
-          } else if (!TextUtils.isEmpty(localb.bbd().knv))
+          if ((localb.bHX() != null) && (!TextUtils.isEmpty(localb.bHX().Ekz))) {
+            localTextView2.setText(localb.bHX().Ekz);
+          } else if (!TextUtils.isEmpty(localb.bHV().nsJ))
           {
-            if (localb.baP()) {
-              localTextView2.setText(localMMActivity.getString(2131297965, new Object[] { localb.bbd().knv }));
+            if (localb.bHG()) {
+              localTextView2.setText(localMMActivity.getString(2131756907, new Object[] { localb.bHV().nsJ }));
             } else {
-              localTextView2.setText(localMMActivity.getString(2131297938, new Object[] { localb.bbd().knv }));
+              localTextView2.setText(localMMActivity.getString(2131756870, new Object[] { localb.bHV().nsJ }));
             }
           }
-          else if (localb.baP()) {
-            localTextView2.setText(localMMActivity.getString(2131297965, new Object[] { localf.getTitle() }));
+          else if (localb.bHG()) {
+            localTextView2.setText(localMMActivity.getString(2131756907, new Object[] { localf.getTitle() }));
           } else {
-            localTextView2.setText(localMMActivity.getString(2131297938, new Object[] { localf.getTitle() }));
+            localTextView2.setText(localMMActivity.getString(2131756870, new Object[] { localf.getTitle() }));
           }
         }
       }
     }
-    if (((com.tencent.mm.plugin.card.ui.a.g)localObject).beP())
+    if (((com.tencent.mm.plugin.card.ui.a.g)localObject).bLL())
     {
-      if (!TextUtils.isEmpty(localb.bbd().wGz))
+      if (!TextUtils.isEmpty(localb.bHV().CSe))
       {
-        this.kAO.setVisibility(0);
-        findViewById(2131821988).setVisibility(8);
-        ((TextView)findViewById(2131821991)).setText(localb.bbd().wGz);
-        AppMethodBeat.o(88729);
+        this.nHN.setVisibility(0);
+        findViewById(2131296318).setVisibility(8);
+        ((TextView)findViewById(2131296323)).setText(localb.bHV().CSe);
+        AppMethodBeat.o(113656);
         return;
       }
-      this.kAO.setVisibility(8);
-      AppMethodBeat.o(88729);
+      this.nHN.setVisibility(8);
+      AppMethodBeat.o(113656);
       return;
     }
-    bfq();
-    AppMethodBeat.o(88729);
+    bMB();
+    AppMethodBeat.o(113656);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.a
  * JD-Core Version:    0.7.0.1
  */

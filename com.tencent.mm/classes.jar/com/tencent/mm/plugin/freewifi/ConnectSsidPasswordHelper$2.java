@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.net.NetworkInfo;
 import android.net.wifi.SupplicantState;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
@@ -17,40 +17,40 @@ public final class ConnectSsidPasswordHelper$2
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(20566);
+    AppMethodBeat.i(24643);
     if ("android.net.wifi.STATE_CHANGE".equals(paramIntent.getAction()))
     {
       paramContext = (NetworkInfo)paramIntent.getParcelableExtra("networkInfo");
       if (paramContext != null) {
-        ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "WifiManager.NETWORK_STATE_CHANGED_ACTION broadcastReceiver, targetssid=%s, Utils.getConnectedWifiSsid(TAG)=%s, networkInfo.isConnected()=%b, networkInfo.isConnectedOrConnecting()=%b, networkInfo.getExtraInfo()=%s, networkInfo.getType()=%d, networkInfo.toString()=%s", new Object[] { this.mIi.ssid, m.Ow("MicroMsg.FreeWifi.ConnectSsidPasswordHelper"), Boolean.valueOf(paramContext.isConnected()), Boolean.valueOf(paramContext.isConnectedOrConnecting()), paramContext.getExtraInfo(), Integer.valueOf(paramContext.getType()), paramContext.toString() });
+        ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "WifiManager.NETWORK_STATE_CHANGED_ACTION broadcastReceiver, targetssid=%s, Utils.getConnectedWifiSsid(TAG)=%s, networkInfo.isConnected()=%b, networkInfo.isConnectedOrConnecting()=%b, networkInfo.getExtraInfo()=%s, networkInfo.getType()=%d, networkInfo.toString()=%s", new Object[] { this.rfq.ssid, m.aau("MicroMsg.FreeWifi.ConnectSsidPasswordHelper"), Boolean.valueOf(paramContext.isConnected()), Boolean.valueOf(paramContext.isConnectedOrConnecting()), paramContext.getExtraInfo(), Integer.valueOf(paramContext.getType()), paramContext.toString() });
       }
-      if ((paramContext != null) && (paramContext.isConnected()) && (paramContext.getType() == 1) && (this.mIi.ssid.equals(m.Ou(paramContext.getExtraInfo())))) {
+      if ((paramContext != null) && (paramContext.isConnected()) && (paramContext.getType() == 1) && (this.rfq.ssid.equals(m.aas(paramContext.getExtraInfo())))) {
         try
         {
-          this.mIi.mHZ.lock();
-          this.mIi.connected = true;
-          this.mIi.mIg = false;
-          this.mIi.bVg.signalAll();
-          ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "WifiManager connect successs! signal success!");
+          this.rfq.aGr.lock();
+          this.rfq.connected = true;
+          this.rfq.rfo = false;
+          this.rfq.cHn.signalAll();
+          ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "WifiManager connect successs! signal success!");
           return;
         }
         finally
         {
-          this.mIi.bzQ();
-          this.mIi.mHZ.unlock();
-          AppMethodBeat.o(20566);
+          this.rfq.cvf();
+          this.rfq.aGr.unlock();
+          AppMethodBeat.o(24643);
         }
       }
-      AppMethodBeat.o(20566);
+      AppMethodBeat.o(24643);
       return;
     }
     if ("android.net.wifi.supplicant.STATE_CHANGE".equals(paramIntent.getAction()))
     {
       paramContext = (SupplicantState)paramIntent.getParcelableExtra("newState");
-      switch (c.2.mIj[paramContext.ordinal()])
+      switch (c.2.rfr[paramContext.ordinal()])
       {
       default: 
-        ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, Unknown");
+        ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, Unknown");
       }
     }
     for (;;)
@@ -58,51 +58,51 @@ public final class ConnectSsidPasswordHelper$2
       if (paramIntent.getIntExtra("supplicantError", -1) == 1) {}
       try
       {
-        this.mIi.mHZ.lock();
-        this.mIi.connected = false;
-        this.mIi.mIg = true;
-        this.mIi.bVg.signalAll();
-        ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "WifiManager connect AUTHENTICATING error! signal error!");
-        this.mIi.bzQ();
+        this.rfq.aGr.lock();
+        this.rfq.connected = false;
+        this.rfq.rfo = true;
+        this.rfq.cHn.signalAll();
+        ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "WifiManager connect AUTHENTICATING error! signal error!");
+        this.rfq.cvf();
         return;
       }
       finally
       {
-        this.mIi.bzQ();
-        this.mIi.mHZ.unlock();
-        AppMethodBeat.o(20566);
+        this.rfq.cvf();
+        this.rfq.aGr.unlock();
+        AppMethodBeat.o(24643);
       }
-      ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, ASSOCIATED");
+      ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, ASSOCIATED");
       continue;
-      ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, ASSOCIATING");
+      ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, ASSOCIATING");
       continue;
-      ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, Authenticating...");
+      ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, Authenticating...");
       continue;
-      ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, Connected");
+      ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, Connected");
       continue;
-      ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, Disconnected");
+      ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, Disconnected");
       continue;
-      ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, DORMANT");
+      ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, DORMANT");
       continue;
-      ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, FOUR_WAY_HANDSHAKE");
+      ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, FOUR_WAY_HANDSHAKE");
       continue;
-      ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, GROUP_HANDSHAKE");
+      ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, GROUP_HANDSHAKE");
       continue;
-      ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, INACTIVE");
+      ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, INACTIVE");
       continue;
-      ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, INTERFACE_DISABLED");
+      ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, INTERFACE_DISABLED");
       continue;
-      ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, INVALID");
+      ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, INVALID");
       continue;
-      ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, SCANNING");
+      ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, SCANNING");
       continue;
-      ab.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, UNINITIALIZED");
+      ad.i("MicroMsg.FreeWifi.ConnectSsidPasswordHelper", "SupplicantState, UNINITIALIZED");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ConnectSsidPasswordHelper.2
  * JD-Core Version:    0.7.0.1
  */

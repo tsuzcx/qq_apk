@@ -1,6 +1,7 @@
 package com.google.android.gms.security;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources.NotFoundException;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -20,16 +21,16 @@ public class ProviderInstaller
   
   static
   {
-    AppMethodBeat.i(90505);
+    AppMethodBeat.i(5526);
     zzacw = GoogleApiAvailabilityLight.getInstance();
     sLock = new Object();
     zzacx = null;
-    AppMethodBeat.o(90505);
+    AppMethodBeat.o(5526);
   }
   
   public static void installIfNeeded(Context paramContext)
   {
-    AppMethodBeat.i(90503);
+    AppMethodBeat.i(5524);
     Preconditions.checkNotNull(paramContext, "Context must not be null");
     zzacw.verifyGooglePlayServicesIsAvailable(paramContext, 11925000);
     try
@@ -39,7 +40,7 @@ public class ProviderInstaller
       {
         Log.isLoggable("ProviderInstaller", 6);
         paramContext = new GooglePlayServicesNotAvailableException(8);
-        AppMethodBeat.o(90503);
+        AppMethodBeat.o(5524);
         throw paramContext;
       }
     }
@@ -47,7 +48,7 @@ public class ProviderInstaller
     {
       Log.isLoggable("ProviderInstaller", 6);
       paramContext = new GooglePlayServicesNotAvailableException(8);
-      AppMethodBeat.o(90503);
+      AppMethodBeat.o(5524);
       throw paramContext;
     }
     for (;;)
@@ -61,7 +62,7 @@ public class ProviderInstaller
             zzacx = paramContext.getClassLoader().loadClass("com.google.android.gms.common.security.ProviderInstallerImpl").getMethod("insertProvider", new Class[] { Context.class });
           }
           zzacx.invoke(null, new Object[] { paramContext });
-          AppMethodBeat.o(90503);
+          AppMethodBeat.o(5524);
           return;
         }
         catch (Exception paramContext)
@@ -76,34 +77,41 @@ public class ProviderInstaller
           paramContext = paramContext.getMessage();
           paramContext = String.valueOf(paramContext);
           if (paramContext.length() == 0) {
-            break label222;
+            break label228;
           }
           "Failed to install provider: ".concat(paramContext);
           paramContext = new GooglePlayServicesNotAvailableException(8);
-          AppMethodBeat.o(90503);
+          AppMethodBeat.o(5524);
           throw paramContext;
         }
       }
       paramContext = localThrowable.getMessage();
       continue;
-      label222:
+      label228:
       new String("Failed to install provider: ");
     }
   }
   
-  public static void installIfNeededAsync(Context paramContext, ProviderInstaller.ProviderInstallListener paramProviderInstallListener)
+  public static void installIfNeededAsync(Context paramContext, ProviderInstallListener paramProviderInstallListener)
   {
-    AppMethodBeat.i(90504);
+    AppMethodBeat.i(5525);
     Preconditions.checkNotNull(paramContext, "Context must not be null");
     Preconditions.checkNotNull(paramProviderInstallListener, "Listener must not be null");
     Preconditions.checkMainThread("Must be called on the UI thread");
     new zza(paramContext, paramProviderInstallListener).execute(new Void[0]);
-    AppMethodBeat.o(90504);
+    AppMethodBeat.o(5525);
+  }
+  
+  public static abstract interface ProviderInstallListener
+  {
+    public abstract void onProviderInstallFailed(int paramInt, Intent paramIntent);
+    
+    public abstract void onProviderInstalled();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.security.ProviderInstaller
  * JD-Core Version:    0.7.0.1
  */

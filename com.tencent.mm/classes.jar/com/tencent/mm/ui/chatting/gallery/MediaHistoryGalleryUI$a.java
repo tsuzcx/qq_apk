@@ -4,20 +4,20 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.chatting.e.a.a;
 import com.tencent.mm.ui.chatting.e.a.c;
-import com.tencent.mm.ui.chatting.i.e;
+import com.tencent.mm.ui.chatting.j.e;
 
 final class MediaHistoryGalleryUI$a
 {
   public static a.a a(Context paramContext, a.c paramc)
   {
-    AppMethodBeat.i(32416);
+    AppMethodBeat.i(36357);
     Object localObject = null;
-    switch (MediaHistoryGalleryUI.7.zNY[paramc.ordinal()])
+    switch (MediaHistoryGalleryUI.6.GEt[paramc.ordinal()])
     {
     }
     for (paramContext = localObject;; paramContext = new e(paramContext))
     {
-      AppMethodBeat.o(32416);
+      AppMethodBeat.o(36357);
       return paramContext;
     }
   }

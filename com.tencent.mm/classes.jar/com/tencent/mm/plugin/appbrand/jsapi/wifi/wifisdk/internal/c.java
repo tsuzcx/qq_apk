@@ -9,123 +9,171 @@ import java.util.List;
 
 public final class c
 {
-  public static WifiManager bmz;
+  public static WifiManager bOZ;
   
   public static int addNetwork(WifiConfiguration paramWifiConfiguration)
   {
-    AppMethodBeat.i(94404);
+    AppMethodBeat.i(144719);
     int i;
     try
     {
-      i = bmz.addNetwork(paramWifiConfiguration);
-      AppMethodBeat.o(94404);
+      i = bOZ.addNetwork(paramWifiConfiguration);
+      AppMethodBeat.o(144719);
       return i;
     }
     catch (Throwable paramWifiConfiguration)
     {
-      i = d.ihY;
-      AppMethodBeat.o(94404);
+      i = d.kys;
+      AppMethodBeat.o(144719);
     }
     return i;
   }
   
   public static boolean disableNetwork(int paramInt)
   {
-    AppMethodBeat.i(94407);
+    AppMethodBeat.i(144722);
     try
     {
-      boolean bool = bmz.disableNetwork(paramInt);
-      AppMethodBeat.o(94407);
+      boolean bool = bOZ.disableNetwork(paramInt);
+      AppMethodBeat.o(144722);
       return bool;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(94407);
+      AppMethodBeat.o(144722);
     }
     return false;
   }
   
   public static List<WifiConfiguration> getConfiguredNetworks()
   {
-    AppMethodBeat.i(94403);
+    AppMethodBeat.i(144718);
     try
     {
-      List localList = bmz.getConfiguredNetworks();
-      AppMethodBeat.o(94403);
+      List localList = bOZ.getConfiguredNetworks();
+      AppMethodBeat.o(144718);
       return localList;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(94403);
+      AppMethodBeat.o(144718);
     }
     return null;
   }
   
   public static WifiInfo getConnectionInfo()
   {
-    AppMethodBeat.i(94409);
+    AppMethodBeat.i(144724);
     try
     {
-      WifiInfo localWifiInfo = bmz.getConnectionInfo();
-      AppMethodBeat.o(94409);
+      WifiInfo localWifiInfo = bOZ.getConnectionInfo();
+      AppMethodBeat.o(144724);
       return localWifiInfo;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(94409);
+      AppMethodBeat.o(144724);
     }
     return null;
   }
   
   public static List<ScanResult> getScanResults()
   {
-    AppMethodBeat.i(94410);
+    AppMethodBeat.i(144725);
     try
     {
-      List localList = bmz.getScanResults();
-      AppMethodBeat.o(94410);
+      List localList = bOZ.getScanResults();
+      AppMethodBeat.o(144725);
       return localList;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(94410);
+      AppMethodBeat.o(144725);
     }
     return null;
   }
   
   public static boolean isWifiEnabled()
   {
-    AppMethodBeat.i(94412);
+    AppMethodBeat.i(144727);
     try
     {
-      boolean bool = bmz.isWifiEnabled();
-      AppMethodBeat.o(94412);
+      boolean bool = bOZ.isWifiEnabled();
+      AppMethodBeat.o(144727);
       return bool;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(94412);
+      AppMethodBeat.o(144727);
     }
     return false;
   }
   
-  public static boolean ot(int paramInt)
+  public static boolean removeNetwork(int paramInt)
   {
-    AppMethodBeat.i(94406);
+    AppMethodBeat.i(144720);
     try
     {
-      boolean bool = bmz.enableNetwork(paramInt, true);
-      AppMethodBeat.o(94406);
+      boolean bool = bOZ.removeNetwork(paramInt);
+      AppMethodBeat.o(144720);
       return bool;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(94406);
+      AppMethodBeat.o(144720);
     }
     return false;
   }
   
-  public static int ou(int paramInt)
+  public static boolean saveConfiguration()
+  {
+    AppMethodBeat.i(144726);
+    try
+    {
+      boolean bool = bOZ.saveConfiguration();
+      AppMethodBeat.o(144726);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(144726);
+    }
+    return false;
+  }
+  
+  public static boolean st(int paramInt)
+  {
+    AppMethodBeat.i(144721);
+    try
+    {
+      boolean bool = bOZ.enableNetwork(paramInt, true);
+      AppMethodBeat.o(144721);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(144721);
+    }
+    return false;
+  }
+  
+  public static boolean startScan()
+  {
+    AppMethodBeat.i(144723);
+    try
+    {
+      boolean bool = bOZ.startScan();
+      AppMethodBeat.o(144723);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(144723);
+    }
+    return false;
+  }
+  
+  public static int su(int paramInt)
   {
     if (paramInt <= -100) {
       return 0;
@@ -135,58 +183,10 @@ public final class c
     }
     return (int)((paramInt + 100) * 99.0F / 45.0F);
   }
-  
-  public static boolean removeNetwork(int paramInt)
-  {
-    AppMethodBeat.i(94405);
-    try
-    {
-      boolean bool = bmz.removeNetwork(paramInt);
-      AppMethodBeat.o(94405);
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(94405);
-    }
-    return false;
-  }
-  
-  public static boolean saveConfiguration()
-  {
-    AppMethodBeat.i(94411);
-    try
-    {
-      boolean bool = bmz.saveConfiguration();
-      AppMethodBeat.o(94411);
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(94411);
-    }
-    return false;
-  }
-  
-  public static boolean startScan()
-  {
-    AppMethodBeat.i(94408);
-    try
-    {
-      boolean bool = bmz.startScan();
-      AppMethodBeat.o(94408);
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(94408);
-    }
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:id="@id/gam" style="@style/m8" />
+    <com.tencent.mm.ui.base.MMClearEditText android:id="@id/bhn" style="@style/m7" />
+</merge>

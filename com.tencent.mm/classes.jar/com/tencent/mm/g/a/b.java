@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b
   extends com.tencent.mm.sdk.b.b
 {
-  public a clZ;
+  public a daM;
   
   public b()
   {
@@ -14,22 +14,22 @@ public final class b
   
   private b(byte paramByte)
   {
-    AppMethodBeat.i(114423);
-    this.clZ = new a();
-    this.ymq = false;
+    AppMethodBeat.i(93321);
+    this.daM = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(114423);
+    AppMethodBeat.o(93321);
   }
   
   public static final class a
   {
-    public int bpE = 0;
-    public String cma;
+    public int bRZ = 0;
+    public String daN;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.b
  * JD-Core Version:    0.7.0.1
  */

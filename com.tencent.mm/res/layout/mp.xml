@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/js" android:layout_width="fill_parent" android:layout_height="80.0dip" android:minHeight="80.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.card.widget.MemberCardTopCropImageView android:id="@id/b7b" android:background="#ffdc6f49" android:layout_width="fill_parent" android:layout_height="80.0dip" android:scaleType="centerCrop" android:minHeight="80.0dip" />
+    <ImageView android:id="@id/b7c" android:background="@drawable/bdn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="80.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="80.0dip">
+        <com.tencent.mm.plugin.card.ui.v2.CardCdnImageView android:id="@id/b7e" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:layout_marginLeft="@dimen/c5" android:src="@drawable/bt6" android:scaleType="fitCenter" />
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="@dimen/d">
+            <TextView android:textSize="@dimen/i" android:textStyle="bold" android:textColor="@color/aj" android:ellipsize="end" android:id="@id/b7g" android:layout_marginBottom="2.0dip" android:singleLine="true" android:shadowColor="@color/a_" android:shadowRadius="4.0" style="@style/fv" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/aj" android:ellipsize="end" android:id="@id/b7d" android:singleLine="true" android:shadowColor="@color/a_" android:shadowRadius="4.0" style="@style/fv" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/b7f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:layout_marginRight="@dimen/hu" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <ImageView android:background="@drawable/jw" android:layout_width="fill_parent" android:layout_height="94.0dip" />
+</RelativeLayout>

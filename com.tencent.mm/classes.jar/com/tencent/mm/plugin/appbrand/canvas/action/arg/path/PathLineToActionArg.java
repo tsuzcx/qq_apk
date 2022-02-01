@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg.path;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.g;
+import com.tencent.mm.plugin.appbrand.aa.g;
 import org.json.JSONObject;
 
 public class PathLineToActionArg
@@ -15,9 +15,9 @@ public class PathLineToActionArg
   
   static
   {
-    AppMethodBeat.i(103615);
-    CREATOR = new PathLineToActionArg.1();
-    AppMethodBeat.o(103615);
+    AppMethodBeat.i(145298);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145298);
   }
   
   public PathLineToActionArg() {}
@@ -34,10 +34,10 @@ public class PathLineToActionArg
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(103614);
+    AppMethodBeat.i(145297);
     if (!super.equals(paramObject))
     {
-      AppMethodBeat.o(103614);
+      AppMethodBeat.o(145297);
       return false;
     }
     if ((paramObject instanceof PathLineToActionArg))
@@ -45,42 +45,42 @@ public class PathLineToActionArg
       paramObject = (PathLineToActionArg)paramObject;
       if ((paramObject.x == this.x) && (paramObject.y == this.y))
       {
-        AppMethodBeat.o(103614);
+        AppMethodBeat.o(145297);
         return true;
       }
-      AppMethodBeat.o(103614);
+      AppMethodBeat.o(145297);
       return false;
     }
-    AppMethodBeat.o(103614);
+    AppMethodBeat.o(145297);
     return false;
   }
   
   public final void h(Parcel paramParcel)
   {
-    AppMethodBeat.i(103613);
+    AppMethodBeat.i(145296);
     super.h(paramParcel);
     this.x = paramParcel.readFloat();
     this.y = paramParcel.readFloat();
-    AppMethodBeat.o(103613);
+    AppMethodBeat.o(145296);
   }
   
-  public final void p(JSONObject paramJSONObject)
+  public final void parse(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(103611);
-    super.p(paramJSONObject);
+    AppMethodBeat.i(145294);
+    super.parse(paramJSONObject);
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    this.x = g.d(paramJSONObject, 0);
-    this.y = g.d(paramJSONObject, 1);
-    AppMethodBeat.o(103611);
+    this.x = g.f(paramJSONObject, 0);
+    this.y = g.f(paramJSONObject, 1);
+    AppMethodBeat.o(145294);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(103612);
+    AppMethodBeat.i(145295);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeFloat(this.x);
     paramParcel.writeFloat(this.y);
-    AppMethodBeat.o(103612);
+    AppMethodBeat.o(145295);
   }
 }
 

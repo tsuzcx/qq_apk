@@ -1,80 +1,83 @@
 package com.tencent.mm.v;
 
-import a.f.b.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cb;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ba;
+import com.tencent.mm.api.h;
+import com.tencent.mm.api.q;
+import com.tencent.mm.model.ce;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.u.d;
 import com.tencent.mm.u.e;
+import d.g.b.k;
+import d.l;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/executor/OpShowExecutor;", "Lcom/tencent/mm/executor/IOpExecutor;", "()V", "execute", "", "timer", "Lcom/tencent/mm/engine/FunctionMsgTimer;", "dispatcher", "Lcom/tencent/mm/api/IFunctionMsgDispatcher;", "storage", "Lcom/tencent/mm/storage/FunctionMsgStorage;", "newFunctionMsgItem", "Lcom/tencent/mm/api/FunctionMsgItem;", "oldFunctionMsgItem", "newXmlCreateTime", "", "onTaskExpired", "task", "Lcom/tencent/mm/engine/FunctionMsgTask;", "Companion", "plugin-functionmsg_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/executor/OpShowExecutor;", "Lcom/tencent/mm/executor/IOpExecutor;", "()V", "execute", "", "timer", "Lcom/tencent/mm/engine/FunctionMsgTimer;", "dispatcher", "Lcom/tencent/mm/api/IFunctionMsgDispatcher;", "storage", "Lcom/tencent/mm/storage/FunctionMsgStorage;", "newFunctionMsgItem", "Lcom/tencent/mm/api/FunctionMsgItem;", "oldFunctionMsgItem", "newXmlCreateTime", "", "onTaskExpired", "task", "Lcom/tencent/mm/engine/FunctionMsgTask;", "Companion", "plugin-functionmsg_release"})
 public final class f
   implements b
 {
-  public static final f.a ezc;
+  public static final f.a fTH;
   
   static
   {
-    AppMethodBeat.i(35491);
-    ezc = new f.a((byte)0);
-    AppMethodBeat.o(35491);
+    AppMethodBeat.i(114144);
+    fTH = new f.a((byte)0);
+    AppMethodBeat.o(114144);
   }
   
-  public final void a(e parame, com.tencent.mm.api.l paraml, ba paramba, com.tencent.mm.api.f paramf1, com.tencent.mm.api.f paramf2, long paramLong)
+  public final void a(e parame, q paramq, bd parambd, h paramh1, h paramh2, long paramLong)
   {
-    AppMethodBeat.i(35489);
-    j.q(parame, "timer");
-    j.q(paraml, "dispatcher");
-    j.q(paramba, "storage");
-    j.q(paramf1, "newFunctionMsgItem");
-    ab.i("FunctionMsg.OpShowExecutor", "[OpShowExecutor] op show, old functionMsgItem:".concat(String.valueOf(paramf2)));
-    paramf1.bl(true);
-    if (paramf2 != null)
+    AppMethodBeat.i(114142);
+    k.h(parame, "timer");
+    k.h(paramq, "dispatcher");
+    k.h(parambd, "storage");
+    k.h(paramh1, "newFunctionMsgItem");
+    ad.i("FunctionMsg.OpShowExecutor", "[OpShowExecutor] op show, old functionMsgItem:".concat(String.valueOf(paramh2)));
+    paramh1.bW(true);
+    if (paramh2 != null)
     {
-      paraml = new StringBuilder("[OpShowExecutor] op show!,").append(paramf1.getVersion()).append(", ").append(paramf2.getVersion()).append(',');
-      if (paramf2.Ag() != null) {
+      paramq = new StringBuilder("[OpShowExecutor] op show!,").append(paramh1.getVersion()).append(", ").append(paramh2.getVersion()).append(',');
+      if (paramh2.JN() != null) {
         break label236;
       }
     }
     label236:
     for (boolean bool = true;; bool = false)
     {
-      ab.i("FunctionMsg.OpShowExecutor", bool);
-      paramf2.bl(true);
-      if ((paramf2.Ag() != null) && (paramf2.getStatus() == 2))
+      ad.i("FunctionMsg.OpShowExecutor", bool);
+      paramh2.bW(true);
+      if ((paramh2.JN() != null) && (paramh2.getStatus() == 2))
       {
-        ab.i("FunctionMsg.OpShowExecutor", "show, update create time to: %s", new Object[] { Long.valueOf(paramLong) });
-        paraml = paramf2.Ag();
-        if (paraml != null) {
-          paraml.CreateTime = ((int)(cb.abp() / 1000L));
+        ad.i("FunctionMsg.OpShowExecutor", "show, update create time to: %s", new Object[] { Long.valueOf(paramLong) });
+        paramq = paramh2.JN();
+        if (paramq != null) {
+          paramq.CreateTime = ((int)(ce.asQ() / 1000L));
         }
       }
-      paramf2.aF(paramf1.Ai());
-      paramf2.cY(paramf1.Af());
-      paraml = paramf2.Ad();
-      j.p(paraml, "oldFunctionMsgItem!!.functionMsgId");
-      ba.a(paraml, paramf2);
-      parame.a(3, paramf2, (b)this);
-      AppMethodBeat.o(35489);
+      paramh2.setActionTime(paramh1.getActionTime());
+      paramh2.dY(paramh1.JM());
+      paramq = paramh2.JK();
+      k.g(paramq, "oldFunctionMsgItem!!.functionMsgId");
+      bd.a(paramq, paramh2);
+      parame.a(3, paramh2, (b)this);
+      AppMethodBeat.o(114142);
       return;
     }
   }
   
-  public final void a(e parame, com.tencent.mm.api.l paraml, d paramd)
+  public final void a(e parame, q paramq, d paramd)
   {
-    AppMethodBeat.i(35490);
-    j.q(parame, "timer");
-    j.q(paraml, "dispatcher");
-    j.q(paramd, "task");
-    parame = paramd.eyP;
-    paraml.a(parame.Ad(), parame, parame.Ag());
-    AppMethodBeat.o(35490);
+    AppMethodBeat.i(114143);
+    k.h(parame, "timer");
+    k.h(paramq, "dispatcher");
+    k.h(paramd, "task");
+    parame = paramd.fTu;
+    paramq.a(parame.JK(), parame, parame.JN());
+    AppMethodBeat.o(114143);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.v.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
-import a.f.b.j;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,149 +18,205 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.b.k;
-import com.tencent.mm.plugin.appbrand.widget.b.m;
-import com.tencent.mm.plugin.appbrand.widget.b.m.a;
+import com.tencent.mm.plugin.appbrand.widget.dialog.m;
+import com.tencent.mm.plugin.appbrand.widget.dialog.n;
+import d.l;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog;", "Landroid/app/Dialog;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "value", "", "acceptWording", "getAcceptWording", "()Ljava/lang/String;", "setAcceptWording", "(Ljava/lang/String;)V", "appBrandName", "getAppBrandName", "setAppBrandName", "applyWording", "getApplyWording", "setApplyWording", "cancelWording", "getCancelWording", "setCancelWording", "Landroid/graphics/Bitmap;", "icon", "getIcon", "()Landroid/graphics/Bitmap;", "setIcon", "(Landroid/graphics/Bitmap;)V", "iconUrl", "getIconUrl", "setIconUrl", "mApplyWordingTv", "Landroid/widget/TextView;", "mBtnAccept", "Landroid/widget/Button;", "mBtnReject", "mButtonGroup", "Landroid/view/View;", "mContentLayout", "Landroid/widget/LinearLayout;", "getMContentLayout", "()Landroid/widget/LinearLayout;", "setMContentLayout", "(Landroid/widget/LinearLayout;)V", "mDialogContainer", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;", "mFuncTv", "getMFuncTv", "()Landroid/widget/TextView;", "setMFuncTv", "(Landroid/widget/TextView;)V", "mIconIv", "Landroid/widget/ImageView;", "mListener", "Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog$Listener;", "getMListener", "()Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog$Listener;", "setMListener", "(Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog$Listener;)V", "mLoadingView", "getMLoadingView", "()Landroid/view/View;", "setMLoadingView", "(Landroid/view/View;)V", "mNameTv", "mOnDismissListener", "Landroid/content/DialogInterface$OnDismissListener;", "mOnShowListener", "Landroid/content/DialogInterface$OnShowListener;", "mRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "getMRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "setMRecyclerView", "(Landroid/support/v7/widget/RecyclerView;)V", "mRequestDescTv", "mRightIconIv", "mRootView", "getMRootView", "setMRootView", "mSimpleDetailDescTv", "requestDesc", "getRequestDesc", "setRequestDesc", "Landroid/graphics/drawable/Drawable;", "rightIcon", "getRightIcon", "()Landroid/graphics/drawable/Drawable;", "setRightIcon", "(Landroid/graphics/drawable/Drawable;)V", "Landroid/view/View$OnClickListener;", "rightIconListener", "getRightIconListener", "()Landroid/view/View$OnClickListener;", "setRightIconListener", "(Landroid/view/View$OnClickListener;)V", "rightIconUrl", "getRightIconUrl", "setRightIconUrl", "simpleDetailDesc", "getSimpleDetailDesc", "setSimpleDetailDesc", "dismiss", "", "getContentView", "getPosition", "", "isCancelable", "", "isCanceledOnTouchOutside", "onCancel", "onDismiss", "onScreenOrientationChanged", "rotation", "onShow", "dialogHelper", "Companion", "Listener", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog;", "Landroid/app/Dialog;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "_position", "", "value", "", "acceptWording", "getAcceptWording", "()Ljava/lang/String;", "setAcceptWording", "(Ljava/lang/String;)V", "appBrandName", "getAppBrandName", "setAppBrandName", "applyWording", "getApplyWording", "setApplyWording", "cancelWording", "getCancelWording", "setCancelWording", "Landroid/graphics/Bitmap;", "icon", "getIcon", "()Landroid/graphics/Bitmap;", "setIcon", "(Landroid/graphics/Bitmap;)V", "iconUrl", "getIconUrl", "setIconUrl", "mApplyWordingTv", "Landroid/widget/TextView;", "mBtnAccept", "Landroid/widget/Button;", "mBtnReject", "mButtonGroup", "Landroid/view/View;", "mContentLayout", "Landroid/widget/LinearLayout;", "getMContentLayout", "()Landroid/widget/LinearLayout;", "setMContentLayout", "(Landroid/widget/LinearLayout;)V", "mDialogContainer", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;", "mFuncTv", "getMFuncTv", "()Landroid/widget/TextView;", "setMFuncTv", "(Landroid/widget/TextView;)V", "mIconIv", "Landroid/widget/ImageView;", "mListener", "Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog$Listener;", "getMListener", "()Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog$Listener;", "setMListener", "(Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog$Listener;)V", "mLoadingView", "getMLoadingView", "()Landroid/view/View;", "setMLoadingView", "(Landroid/view/View;)V", "mNameTv", "mOnDismissListener", "Landroid/content/DialogInterface$OnDismissListener;", "mOnShowListener", "Landroid/content/DialogInterface$OnShowListener;", "mRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "getMRecyclerView", "()Landroid/support/v7/widget/RecyclerView;", "setMRecyclerView", "(Landroid/support/v7/widget/RecyclerView;)V", "mRequestDescTv", "mRightIconIv", "mRootView", "getMRootView", "setMRootView", "mSimpleDetailDescTv", "requestDesc", "getRequestDesc", "setRequestDesc", "Landroid/graphics/drawable/Drawable;", "rightIcon", "getRightIcon", "()Landroid/graphics/drawable/Drawable;", "setRightIcon", "(Landroid/graphics/drawable/Drawable;)V", "Landroid/view/View$OnClickListener;", "rightIconListener", "getRightIconListener", "()Landroid/view/View$OnClickListener;", "setRightIconListener", "(Landroid/view/View$OnClickListener;)V", "rightIconUrl", "getRightIconUrl", "setRightIconUrl", "simpleDetailDesc", "getSimpleDetailDesc", "setSimpleDetailDesc", "dismiss", "", "getContentView", "getPosition", "isCancelable", "", "isCanceledOnTouchOutside", "onBackPressedEvent", "onCancel", "onDismiss", "onScreenOrientationChanged", "rotation", "onShow", "dialogHelper", "setPosition", "position", "showRightIcon", "show", "Companion", "Listener", "luggage-wechat-full-sdk_release"})
 public class a
   extends Dialog
-  implements k
+  implements com.tencent.mm.plugin.appbrand.widget.dialog.k
 {
-  public static final a iCB;
-  private DialogInterface.OnDismissListener NX;
-  RecyclerView adt;
-  View ejC;
-  public String iCA;
-  public View iCk;
-  public ImageView iCl;
-  public TextView iCm;
-  private Button iCn;
-  private Button iCo;
-  private TextView iCp;
-  private TextView iCq;
-  ImageView iCr;
-  private TextView iCs;
-  LinearLayout iCt;
-  TextView iCu;
-  private View iCv;
-  private DialogInterface.OnShowListener iCw;
-  private com.tencent.mm.plugin.appbrand.widget.b.l iCx;
-  b iCy;
-  Drawable iCz;
+  public static final a.a ljs;
+  private DialogInterface.OnDismissListener Vc;
+  RecyclerView akA;
+  View fwo;
+  public View hIZ;
+  public int hJH;
   public String iconUrl;
+  public ImageView jFL;
+  public TextView jFM;
+  private View jFZ;
+  private Button jGa;
+  private Button jGb;
+  private m jGc;
+  public String jGe;
+  private TextView ljj;
+  private TextView ljk;
+  ImageView ljl;
+  private TextView ljm;
+  LinearLayout ljn;
+  TextView ljo;
+  private DialogInterface.OnShowListener ljp;
+  b ljq;
+  Drawable ljr;
   
   static
   {
-    AppMethodBeat.i(143914);
-    iCB = new a((byte)0);
-    AppMethodBeat.o(143914);
+    AppMethodBeat.i(148016);
+    ljs = new a.a((byte)0);
+    AppMethodBeat.o(148016);
   }
   
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(143913);
-    paramContext = View.inflate(paramContext, 2130968732, null);
-    j.p(paramContext, "View.inflate(context, R.…and_request_dialog, null)");
-    this.iCk = paramContext;
-    paramContext = this.iCk.findViewById(2131821387);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_icon)");
-    this.iCl = ((ImageView)paramContext);
-    paramContext = this.iCk.findViewById(2131821388);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_name)");
-    this.iCm = ((TextView)paramContext);
-    paramContext = this.iCk.findViewById(2131821398);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_cancel)");
-    this.iCo = ((Button)paramContext);
-    paramContext = this.iCk.findViewById(2131821399);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_ok)");
-    this.iCn = ((Button)paramContext);
-    paramContext = this.iCk.findViewById(2131821391);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_desc)");
-    this.iCp = ((TextView)paramContext);
-    paramContext = this.iCk.findViewById(2131821392);
-    j.p(paramContext, "mRootView.findViewById(R.id.simple_detail_desc)");
-    this.iCq = ((TextView)paramContext);
-    paramContext = this.iCk.findViewById(2131821393);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_content)");
-    this.iCt = ((LinearLayout)paramContext);
-    paramContext = this.iCk.findViewById(2131821390);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_right_icon)");
-    this.iCr = ((ImageView)paramContext);
-    paramContext = this.iCk.findViewById(2131821389);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_apply_wording)");
-    this.iCs = ((TextView)paramContext);
-    paramContext = this.iCk.findViewById(2131821394);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_recyclerview)");
-    this.adt = ((RecyclerView)paramContext);
-    this.adt.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-    paramContext = this.iCk.findViewById(2131821395);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_loading)");
-    this.ejC = paramContext;
-    paramContext = this.iCk.findViewById(2131821397);
-    j.p(paramContext, "mRootView.findViewById(R.id.button_group)");
-    this.iCv = paramContext;
-    paramContext = this.iCk.findViewById(2131821396);
-    j.p(paramContext, "mRootView.findViewById(R.id.request_function)");
-    this.iCu = ((TextView)paramContext);
-    this.iCn.setOnClickListener((View.OnClickListener)new a.1(this));
-    this.iCo.setOnClickListener((View.OnClickListener)new a.2(this));
-    this.adt.setItemAnimator(null);
-    AppMethodBeat.o(143913);
+    AppMethodBeat.i(148015);
+    paramContext = View.inflate(n.kP(paramContext), 2131493051, null);
+    d.g.b.k.g(paramContext, "View.inflate(context.wra…and_request_dialog, null)");
+    this.hIZ = paramContext;
+    paramContext = this.hIZ.findViewById(2131304100);
+    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_icon)");
+    this.jFL = ((ImageView)paramContext);
+    paramContext = this.hIZ.findViewById(2131304102);
+    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_name)");
+    this.jFM = ((TextView)paramContext);
+    paramContext = this.hIZ.findViewById(2131304096);
+    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_cancel)");
+    this.jGb = ((Button)paramContext);
+    paramContext = this.hIZ.findViewById(2131304103);
+    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_ok)");
+    this.jGa = ((Button)paramContext);
+    paramContext = this.hIZ.findViewById(2131304098);
+    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_desc)");
+    this.ljj = ((TextView)paramContext);
+    paramContext = this.hIZ.findViewById(2131304825);
+    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.simple_detail_desc)");
+    this.ljk = ((TextView)paramContext);
+    paramContext = this.hIZ.findViewById(2131304097);
+    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_content)");
+    this.ljn = ((LinearLayout)paramContext);
+    paramContext = this.hIZ.findViewById(2131304106);
+    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_right_icon)");
+    this.ljl = ((ImageView)paramContext);
+    paramContext = this.hIZ.findViewById(2131304095);
+    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_apply_wording)");
+    this.ljm = ((TextView)paramContext);
+    paramContext = this.hIZ.findViewById(2131304104);
+    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_recyclerview)");
+    this.akA = ((RecyclerView)paramContext);
+    this.akA.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
+    paramContext = this.hIZ.findViewById(2131304101);
+    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_loading)");
+    this.fwo = paramContext;
+    paramContext = this.hIZ.findViewById(2131297653);
+    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.button_group)");
+    this.jFZ = paramContext;
+    paramContext = this.hIZ.findViewById(2131304099);
+    d.g.b.k.g(paramContext, "mRootView.findViewById(R.id.request_function)");
+    this.ljo = ((TextView)paramContext);
+    this.jGa.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(148007);
+        paramAnonymousView = this.ljt.ljq;
+        if (paramAnonymousView != null) {
+          paramAnonymousView.tD(1);
+        }
+        paramAnonymousView = a.a(this.ljt);
+        if (paramAnonymousView != null)
+        {
+          paramAnonymousView.c((com.tencent.mm.plugin.appbrand.widget.dialog.k)this.ljt);
+          AppMethodBeat.o(148007);
+          return;
+        }
+        AppMethodBeat.o(148007);
+      }
+    });
+    this.jGb.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(148008);
+        paramAnonymousView = this.ljt.ljq;
+        if (paramAnonymousView != null) {
+          paramAnonymousView.tD(2);
+        }
+        paramAnonymousView = a.a(this.ljt);
+        if (paramAnonymousView != null)
+        {
+          paramAnonymousView.c((com.tencent.mm.plugin.appbrand.widget.dialog.k)this.ljt);
+          AppMethodBeat.o(148008);
+          return;
+        }
+        AppMethodBeat.o(148008);
+      }
+    });
+    this.akA.setItemAnimator(null);
+    this.hJH = 2;
+    AppMethodBeat.o(148015);
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.widget.b.l paraml)
+  public final void a(m paramm)
   {
-    AppMethodBeat.i(143908);
-    Object localObject = this.iCw;
+    AppMethodBeat.i(148009);
+    Object localObject = this.ljp;
     if (localObject != null) {
       ((DialogInterface.OnShowListener)localObject).onShow((DialogInterface)this);
     }
-    this.iCx = paraml;
+    this.jGc = paramm;
     localObject = getContext().getSystemService("window");
-    paraml = (com.tencent.mm.plugin.appbrand.widget.b.l)localObject;
+    paramm = (m)localObject;
     if (!(localObject instanceof WindowManager)) {
-      paraml = null;
+      paramm = null;
     }
-    paraml = (WindowManager)paraml;
-    if (paraml != null)
+    paramm = (WindowManager)paramm;
+    if (paramm != null)
     {
-      localObject = m.jkc;
-      localObject = getContext();
-      j.p(localObject, "context");
-      View localView1 = this.iCk;
-      View localView2 = this.iCv;
-      paraml = paraml.getDefaultDisplay();
-      j.p(paraml, "it.defaultDisplay");
-      m.a.a((Context)localObject, localView1, localView2, paraml.getRotation());
-      AppMethodBeat.o(143908);
+      localObject = n.KDx;
+      localObject = this.hIZ.getContext();
+      d.g.b.k.g(localObject, "mRootView.context");
+      View localView1 = this.hIZ;
+      View localView2 = this.jFZ;
+      paramm = paramm.getDefaultDisplay();
+      d.g.b.k.g(paramm, "it.defaultDisplay");
+      n.a((Context)localObject, localView1, localView2, paramm.getRotation(), false);
+      AppMethodBeat.o(148009);
       return;
     }
-    AppMethodBeat.o(143908);
+    AppMethodBeat.o(148009);
   }
   
-  public final boolean aKF()
+  public boolean aEu()
+  {
+    return false;
+  }
+  
+  public final boolean aEv()
   {
     return false;
   }
   
   public void dismiss()
   {
-    AppMethodBeat.i(143911);
+    AppMethodBeat.i(148012);
     super.dismiss();
     onDismiss();
-    AppMethodBeat.o(143911);
+    AppMethodBeat.o(148012);
+  }
+  
+  public final void gO(boolean paramBoolean)
+  {
+    AppMethodBeat.i(148014);
+    ImageView localImageView = this.ljl;
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      localImageView.setVisibility(i);
+      AppMethodBeat.o(148014);
+      return;
+    }
   }
   
   public final View getContentView()
   {
-    return this.iCk;
+    return this.hIZ;
   }
   
-  public int getPosition()
+  public final int getPosition()
   {
-    return 2;
+    return this.hJH;
   }
   
   public final boolean isCancelable()
@@ -171,52 +226,49 @@ public class a
   
   public final void onCancel()
   {
-    AppMethodBeat.i(143912);
-    b localb = this.iCy;
+    AppMethodBeat.i(148013);
+    b localb = this.ljq;
     if (localb != null)
     {
-      localb.pr(3);
-      AppMethodBeat.o(143912);
+      localb.tD(3);
+      AppMethodBeat.o(148013);
       return;
     }
-    AppMethodBeat.o(143912);
+    AppMethodBeat.o(148013);
   }
   
   public void onDismiss()
   {
-    AppMethodBeat.i(143909);
-    DialogInterface.OnDismissListener localOnDismissListener = this.NX;
+    AppMethodBeat.i(148010);
+    DialogInterface.OnDismissListener localOnDismissListener = this.Vc;
     if (localOnDismissListener != null)
     {
       localOnDismissListener.onDismiss((DialogInterface)this);
-      AppMethodBeat.o(143909);
+      AppMethodBeat.o(148010);
       return;
     }
-    AppMethodBeat.o(143909);
+    AppMethodBeat.o(148010);
   }
   
-  public final void pq(int paramInt)
+  public final void pi(int paramInt)
   {
-    AppMethodBeat.i(143910);
-    Object localObject = m.jkc;
-    localObject = getContext();
-    j.p(localObject, "context");
-    m.a.a((Context)localObject, this.iCk, this.iCv, paramInt);
-    AppMethodBeat.o(143910);
+    AppMethodBeat.i(148011);
+    Object localObject = n.KDx;
+    localObject = this.hIZ.getContext();
+    d.g.b.k.g(localObject, "mRootView.context");
+    n.a((Context)localObject, this.hIZ, this.jFZ, paramInt, false);
+    AppMethodBeat.o(148011);
   }
   
-  @a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog$Companion;", "", "()V", "ALERT_RESULT_CODE_ACCEPT", "", "ALERT_RESULT_CODE_CANCEL", "ALERT_RESULT_CODE_REJECT", "plugin-appbrand-integration_release"})
-  public static final class a {}
-  
-  @a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog$Listener;", "", "onMsg", "", "resultCode", "", "plugin-appbrand-integration_release"})
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/phonenumber/BaseRequestDialog$Listener;", "", "onMsg", "", "resultCode", "", "luggage-wechat-full-sdk_release"})
   public static abstract interface b
   {
-    public abstract void pr(int paramInt);
+    public abstract void tD(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.a
  * JD-Core Version:    0.7.0.1
  */

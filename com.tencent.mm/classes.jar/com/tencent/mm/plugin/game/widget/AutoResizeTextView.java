@@ -11,130 +11,130 @@ public class AutoResizeTextView
   extends TextView
   implements a.b
 {
-  private a nEy;
+  private a soH;
   
   public AutoResizeTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(112354);
-    g(paramAttributeSet);
-    AppMethodBeat.o(112354);
+    AppMethodBeat.i(42558);
+    h(paramAttributeSet);
+    AppMethodBeat.o(42558);
   }
   
   public AutoResizeTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(112355);
-    g(paramAttributeSet);
-    AppMethodBeat.o(112355);
+    AppMethodBeat.i(42559);
+    h(paramAttributeSet);
+    AppMethodBeat.o(42559);
   }
   
-  private void g(AttributeSet paramAttributeSet)
+  private void h(AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(112356);
-    this.nEy = a.a(this, paramAttributeSet).a(this);
-    AppMethodBeat.o(112356);
+    AppMethodBeat.i(42560);
+    this.soH = a.a(this, paramAttributeSet).a(this);
+    AppMethodBeat.o(42560);
   }
   
   public a getAutofitHelper()
   {
-    return this.nEy;
+    return this.soH;
   }
   
   public float getMaxTextSize()
   {
-    return this.nEy.nEE;
+    return this.soH.soM;
   }
   
   public float getMinTextSize()
   {
-    return this.nEy.nED;
+    return this.soH.soL;
   }
   
   public float getPrecision()
   {
-    return this.nEy.nEF;
+    return this.soH.soN;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(112357);
+    AppMethodBeat.i(42561);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.nEy != null) {
-      this.nEy.bHG();
+    if (this.soH != null) {
+      this.soH.cED();
     }
-    AppMethodBeat.o(112357);
+    AppMethodBeat.o(42561);
   }
   
   public void setLines(int paramInt)
   {
-    AppMethodBeat.i(112359);
+    AppMethodBeat.i(42563);
     super.setLines(paramInt);
-    if (this.nEy != null) {
-      this.nEy.xo(paramInt);
+    if (this.soH != null) {
+      this.soH.EO(paramInt);
     }
-    AppMethodBeat.o(112359);
+    AppMethodBeat.o(42563);
   }
   
   public void setMaxLines(int paramInt)
   {
-    AppMethodBeat.i(112360);
+    AppMethodBeat.i(42564);
     super.setMaxLines(paramInt);
-    if (this.nEy != null) {
-      this.nEy.xo(paramInt);
+    if (this.soH != null) {
+      this.soH.EO(paramInt);
     }
-    AppMethodBeat.o(112360);
+    AppMethodBeat.o(42564);
   }
   
   public void setMaxTextSize(float paramFloat)
   {
-    AppMethodBeat.i(112362);
-    a locala = this.nEy;
-    Context localContext = locala.md.getContext();
+    AppMethodBeat.i(42566);
+    a locala = this.soH;
+    Context localContext = locala.Tu.getContext();
     Resources localResources = Resources.getSystem();
     if (localContext != null) {
       localResources = localContext.getResources();
     }
     paramFloat = TypedValue.applyDimension(2, paramFloat, localResources.getDisplayMetrics());
-    if (paramFloat != locala.nEE)
+    if (paramFloat != locala.soM)
     {
-      locala.nEE = paramFloat;
-      locala.bHG();
+      locala.soM = paramFloat;
+      locala.cED();
     }
-    AppMethodBeat.o(112362);
+    AppMethodBeat.o(42566);
   }
   
   public void setMinTextSize(int paramInt)
   {
-    AppMethodBeat.i(112363);
-    this.nEy.m(2, paramInt);
-    AppMethodBeat.o(112363);
+    AppMethodBeat.i(42567);
+    this.soH.p(2, paramInt);
+    AppMethodBeat.o(42567);
   }
   
   public void setPrecision(float paramFloat)
   {
-    AppMethodBeat.i(112364);
-    this.nEy.aK(paramFloat);
-    AppMethodBeat.o(112364);
+    AppMethodBeat.i(42568);
+    this.soH.aV(paramFloat);
+    AppMethodBeat.o(42568);
   }
   
   public void setSizeToFit(boolean paramBoolean)
   {
-    AppMethodBeat.i(112361);
-    this.nEy.in(paramBoolean);
-    AppMethodBeat.o(112361);
+    AppMethodBeat.i(42565);
+    this.soH.ma(paramBoolean);
+    AppMethodBeat.o(42565);
   }
   
   public void setTextSize(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(112358);
+    AppMethodBeat.i(42562);
     super.setTextSize(paramInt, paramFloat);
-    if (this.nEy != null)
+    if (this.soH != null)
     {
-      a locala = this.nEy;
-      if (!locala.nEG)
+      a locala = this.soH;
+      if (!locala.soO)
       {
-        Context localContext = locala.md.getContext();
+        Context localContext = locala.Tu.getContext();
         Resources localResources = Resources.getSystem();
         if (localContext != null) {
           localResources = localContext.getResources();
@@ -142,12 +142,12 @@ public class AutoResizeTextView
         locala.setRawTextSize(TypedValue.applyDimension(paramInt, paramFloat, localResources.getDisplayMetrics()));
       }
     }
-    AppMethodBeat.o(112358);
+    AppMethodBeat.o(42562);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.AutoResizeTextView
  * JD-Core Version:    0.7.0.1
  */

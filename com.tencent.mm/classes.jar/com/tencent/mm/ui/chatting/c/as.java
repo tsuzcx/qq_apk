@@ -1,538 +1,463 @@
 package com.tencent.mm.ui.chatting.c;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Looper;
-import android.view.Display;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Toast;
+import android.widget.AbsListView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.aj.a.j;
-import com.tencent.mm.aj.d.b;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.ae;
-import com.tencent.mm.model.ao.a;
-import com.tencent.mm.model.ao.d;
-import com.tencent.mm.model.ao.f;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.modelvoice.s;
-import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.LauncherUI;
-import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.c.b.o;
-import com.tencent.mm.ui.v;
-import com.tencent.mm.ui.v.a;
-import org.json.JSONObject;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.ay;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.az;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bh.a;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.ui.chatting.c.b.ah;
+import com.tencent.mm.ui.chatting.c.b.i;
+import com.tencent.mm.ui.chatting.c.b.w;
+import com.tencent.mm.ui.chatting.c.b.x;
 
-@com.tencent.mm.ui.chatting.c.a.a(dJy=com.tencent.mm.ui.chatting.c.b.aj.class)
-public class as
+@com.tencent.mm.ui.chatting.c.a.a(eYT=ah.class)
+@Deprecated
+public final class as
   extends a
-  implements com.tencent.mm.ai.f, com.tencent.mm.ui.chatting.c.b.aj
+  implements bh.a, ah
 {
-  public boolean mtW;
-  private ao.d sZW;
-  private com.tencent.mm.ui.chatting.d zJh;
-  private View zJi;
-  public ChatFooter.d zJj;
+  public static int Gyj = 350;
+  public boolean Gyk;
+  public boolean Gyl;
+  public boolean Gym;
+  private com.tencent.mm.sdk.b.c Gyn;
+  private boolean Gyo;
   
-  public as()
+  public final void a(final am paramam, final bh parambh)
   {
-    AppMethodBeat.i(31868);
-    this.zJh = null;
-    this.mtW = false;
-    this.sZW = new as.1(this);
-    this.zJi = null;
-    this.zJj = new as.2(this);
-    AppMethodBeat.o(31868);
-  }
-  
-  private boolean d(int paramInt, KeyEvent paramKeyEvent)
-  {
-    int j = 0;
-    int i = 0;
-    AppMethodBeat.i(31869);
-    if ((paramInt == 25) && (this.zJh != null) && (this.zJh.isPlaying()) && ((this.mtW) || (!this.zJh.mtV)))
+    AppMethodBeat.i(35617);
+    ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr onMsgChangeNotify cvs.getUsername[%s] tid[%d]", new Object[] { paramam.field_username, Long.valueOf(Thread.currentThread().getId()) });
+    if (!this.cOd.ctF)
     {
-      if (paramKeyEvent.getAction() == 0)
-      {
-        paramInt = i;
-        if (aw.aaA().KH())
-        {
-          paramInt = i;
-          if (!aw.aaA().KN()) {
-            paramInt = aw.aaA().KU();
-          }
-        }
-        aw.aaA().iG(paramInt);
-      }
-      AppMethodBeat.o(31869);
-      return true;
+      ad.w("MicroMsg.ChattingUI.SilenceMsgComponent", "[onMsgChangeNotify] ChattingUI is not in Foreground!!");
+      AppMethodBeat.o(35617);
+      return;
     }
-    if ((paramInt == 24) && (this.zJh != null) && (this.zJh.isPlaying()) && ((this.mtW) || (!this.zJh.mtV)))
+    bl localbl1;
+    final int k;
+    int m;
+    label725:
+    label737:
+    bl localbl2;
+    bl localbl3;
+    int i2;
+    final int i3;
+    if ((this.cOd.eZb()) && (this.cOd.zgX.field_username.equals(paramam.field_username)))
     {
-      if (paramKeyEvent.getAction() == 0)
+      parambh = (i)this.cOd.be(i.class);
+      int i = paramam.field_msgCount;
+      final int j = parambh.eKa();
+      ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr onMsgChangeNotify newCvsCount[%d], total[%d], dealHistoryGetMsg[%b], UnDeliverCount[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(this.Gyk), Integer.valueOf(paramam.field_UnDeliverCount) });
+      if (i > j)
       {
-        paramInt = j;
-        if (aw.aaA().KH())
+        localbl1 = paramam.FxX;
+        if ((localbl1 == null) || (localbl1.field_msgId == 0L))
         {
-          paramInt = j;
-          if (!aw.aaA().KN()) {
-            paramInt = aw.aaA().KU();
-          }
-        }
-        aw.aaA().iF(paramInt);
-      }
-      AppMethodBeat.o(31869);
-      return true;
-    }
-    AppMethodBeat.o(31869);
-    return false;
-  }
-  
-  public final boolean DP()
-  {
-    AppMethodBeat.i(31870);
-    boolean bool1 = ((com.tencent.mm.ui.chatting.c.b.d)this.caz.ay(com.tencent.mm.ui.chatting.c.b.d.class)).dHv();
-    boolean bool2 = ((com.tencent.mm.ui.chatting.c.b.d)this.caz.ay(com.tencent.mm.ui.chatting.c.b.d.class)).dHw();
-    int i;
-    if ((this.caz.dJF()) || (bool2)) {
-      i = 1;
-    }
-    while (bool1) {
-      if (bool2)
-      {
-        bool1 = ((com.tencent.mm.ui.chatting.c.b.d)this.caz.ay(com.tencent.mm.ui.chatting.c.b.d.class)).dHt().kY(1);
-        AppMethodBeat.o(31870);
-        return bool1;
-        i = 0;
-      }
-      else
-      {
-        bool1 = ((com.tencent.mm.ui.chatting.c.b.d)this.caz.ay(com.tencent.mm.ui.chatting.c.b.d.class)).dHu().kY(1);
-        AppMethodBeat.o(31870);
-        return bool1;
-      }
-    }
-    if (((i != 0) && (this.caz.txj.dqK == 0)) || (this.caz.txj.DP()))
-    {
-      AppMethodBeat.o(31870);
-      return true;
-    }
-    AppMethodBeat.o(31870);
-    return false;
-  }
-  
-  @TargetApi(9)
-  public final void a(MMFragment paramMMFragment, boolean paramBoolean)
-  {
-    AppMethodBeat.i(31877);
-    if (paramMMFragment.getLandscapeMode()) {
-      if (paramBoolean)
-      {
-        if (Build.VERSION.SDK_INT >= 9)
-        {
-          ab.i("MicroMsg.ChattingUI.VoiceComponent", "rotation %d", new Object[] { Integer.valueOf(paramMMFragment.getWindowManager().getDefaultDisplay().getOrientation()) });
-          switch (paramMMFragment.getWindowManager().getDefaultDisplay().getOrientation())
-          {
-          default: 
-            AppMethodBeat.o(31877);
-            return;
-          case 0: 
-            paramMMFragment.setRequestedOrientation(1);
-            AppMethodBeat.o(31877);
-            return;
-          case 1: 
-            paramMMFragment.setRequestedOrientation(0);
-            AppMethodBeat.o(31877);
-            return;
-          case 2: 
-            paramMMFragment.setRequestedOrientation(9);
-            AppMethodBeat.o(31877);
-            return;
-          }
-          paramMMFragment.setRequestedOrientation(8);
-          AppMethodBeat.o(31877);
+          AppMethodBeat.o(35617);
           return;
         }
-        if (this.caz.zJz.getMMResources().getConfiguration().orientation == 2)
+        if (i - j > 1) {
+          this.Gyo = true;
+        }
+        k = localbl1.field_flag;
+        ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr onMsgChangeNotify receive get msg svrId[%d], seq[%d], flag[%d], stack[%s]", new Object[] { Long.valueOf(localbl1.field_msgSvrId), Long.valueOf(localbl1.field_msgSeq), Integer.valueOf(k), bt.eGN() });
+        if ((k & 0x2) == 0)
         {
-          paramMMFragment.setRequestedOrientation(0);
-          AppMethodBeat.o(31877);
+          AppMethodBeat.o(35617);
           return;
         }
-        if (this.caz.zJz.getMMResources().getConfiguration().orientation == 1)
+        if ((this.cOd.getListView() == null) || (parambh == null) || (this.cOd.GzL == null))
         {
-          paramMMFragment.setRequestedOrientation(1);
-          AppMethodBeat.o(31877);
+          ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr something is null %s %s %s", new Object[] { this.cOd.getListView(), parambh, this.cOd.GzL });
+          AppMethodBeat.o(35617);
+          return;
         }
-      }
-      else
-      {
-        paramMMFragment.setRequestedOrientation(-1);
-      }
-    }
-    AppMethodBeat.o(31877);
-  }
-  
-  public final void acquireWakeLock()
-  {
-    AppMethodBeat.i(31872);
-    this.caz.setKeepScreenOn(true);
-    AppMethodBeat.o(31872);
-  }
-  
-  public final boolean bo(bi parambi)
-  {
-    AppMethodBeat.i(31875);
-    if (parambi.dvW())
-    {
-      if (parambi.field_msgId == this.zJh.zwt) {
-        this.zJh.dFN();
-      }
-      AppMethodBeat.o(31875);
-      return true;
-    }
-    AppMethodBeat.o(31875);
-    return false;
-  }
-  
-  public final boolean bp(bi parambi)
-  {
-    AppMethodBeat.i(31876);
-    if (parambi.dvW())
-    {
-      aw.aaz();
-      if (!com.tencent.mm.model.c.isSDCardAvailable())
-      {
-        com.tencent.mm.ui.base.t.ii(this.caz.zJz.getContext());
-        AppMethodBeat.o(31876);
-        return true;
-      }
-      if (parambi.field_msgId == this.zJh.zwt) {
-        this.zJh.dFN();
-      }
-      if (!this.caz.getTalkerUserName().equals("medianote"))
-      {
-        aw.aaz();
-        com.tencent.mm.model.c.Yz().c(new com.tencent.mm.az.e(parambi.field_talker, parambi.field_msgSvrId));
-      }
-      com.tencent.mm.ui.chatting.aj.aR(parambi);
-      AppMethodBeat.o(31876);
-      return true;
-    }
-    AppMethodBeat.o(31876);
-    return false;
-  }
-  
-  public final void dBZ()
-  {
-    AppMethodBeat.i(31880);
-    dJw();
-    AppMethodBeat.o(31880);
-  }
-  
-  public final void dCa()
-  {
-    AppMethodBeat.i(31881);
-    aw.Rc().a(127, this);
-    AppMethodBeat.o(31881);
-  }
-  
-  public final void dCb()
-  {
-    AppMethodBeat.i(31882);
-    ab.i("MicroMsg.ChattingUI.VoiceComponent", "summeranrt resetAutoPlay looper[%s]", new Object[] { Looper.myLooper() });
-    long l = System.currentTimeMillis();
-    ab.i("MicroMsg.ChattingUI.VoiceComponent", "resetAutoPlay autoPlay is:%s tid:%d looper:%s", new Object[] { this.zJh, Long.valueOf(Thread.currentThread().getId()), Looper.myLooper() });
-    Object localObject;
-    if (this.zJh == null)
-    {
-      this.zJh = new com.tencent.mm.ui.chatting.d(this.caz, this, this.caz.getTalkerUserName());
-      com.tencent.mm.modelvoice.t.c(this.zJh);
-      com.tencent.mm.modelvoice.e.a(this.zJh);
-      aw.aaz();
-      bool = bo.a((Boolean)com.tencent.mm.model.c.Ru().get(16387, null), true);
-      localObject = this.zJh;
-      if (!((com.tencent.mm.ui.chatting.d)localObject).zwz)
-      {
-        ((com.tencent.mm.ui.chatting.d)localObject).zwx = bool;
-        ((com.tencent.mm.ui.chatting.d)localObject).dFI();
-      }
-      localObject = ((com.tencent.mm.ui.chatting.c.b.d)this.caz.ay(com.tencent.mm.ui.chatting.c.b.d.class)).dHs();
-      if (localObject != null)
-      {
-        localObject = ((com.tencent.mm.aj.d)localObject).cU(false);
-        if (localObject != null)
+        if ((k & 0x4) == 0)
         {
-          if (((d.b)localObject).fvc != null)
+          ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr onMsgChangeNotify down dealHistoryGetMsg: %b", new Object[] { Boolean.valueOf(this.Gyk) });
+          if (this.Gyk)
           {
-            if (((d.b)localObject).fvc.optInt("AudioPlayType", 0) != 1) {
-              break label380;
+            ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr onMsgChangeNotify down but dealHistoryGetMsg so ignore");
+            AppMethodBeat.o(35617);
+            return;
+          }
+          k = this.cOd.getFirstVisiblePosition();
+          m = parambh.getCount();
+          n = parambh.getCount();
+          i1 = n - m;
+          ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr onMsgChangeNotify down talker[%s],firstVisiblePosition:%d, new oldTotal[%d,%d,%d], now preCount:[%d,%d,%d] fromcount:%d, needCheckHistoryTips:%b", new Object[] { this.cOd.zgX.field_username, Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(i - j), Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(i1), Integer.valueOf(0), Boolean.valueOf(this.Gyl) });
+          if (i1 > 1)
+          {
+            paramam = this.cOd.getListView();
+            i = paramam.getFirstVisiblePosition();
+            j = paramam.getChildCount();
+            if ((k >= i) && (k <= j + i - 1)) {
+              break label725;
             }
-            bool = true;
-            label219:
-            ((d.b)localObject).fvr = bool;
+            paramam = paramam.getAdapter().getView(k, null, paramam);
+            if (paramam != null) {
+              break label737;
+            }
           }
-          if (((d.b)localObject).fvr) {
-            this.zJh.zwy = false;
+          for (i = 0;; i = paramam.getTop())
+          {
+            j = i - this.cOd.GzL.getBottomHeight();
+            this.cOd.getListView().setAdapter(this.cOd.getListView().getAdapter());
+            this.cOd.jt(k, j);
+            ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr firstVisiblePosition %s firstView %s scrollY %s %s", new Object[] { Integer.valueOf(k), paramam, Integer.valueOf(i), Integer.valueOf(j) });
+            this.cOd.getListView().post(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(35613);
+                as.this.cOd.jt(k, j);
+                ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr firstVisiblePosition 111 %s %s %s", new Object[] { Integer.valueOf(as.this.cOd.getFirstVisiblePosition()), Integer.valueOf(as.this.cOd.getLastVisiblePosition()), Integer.valueOf(parambh.getCount()) });
+                AppMethodBeat.o(35613);
+              }
+            });
+            this.cOd.getListView().postDelayed(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(35614);
+                as.this.cOd.jt(k, j);
+                ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr firstVisiblePosition 222 %s %s %s", new Object[] { Integer.valueOf(as.this.cOd.getFirstVisiblePosition()), Integer.valueOf(as.this.cOd.getLastVisiblePosition()), Integer.valueOf(parambh.getCount()) });
+                AppMethodBeat.o(35614);
+              }
+            }, 200L);
+            AppMethodBeat.o(35617);
+            return;
+            paramam = paramam.getChildAt(k - i);
+            break;
+          }
+        }
+        k = this.cOd.getFirstVisiblePosition();
+        m = this.cOd.getLastVisiblePosition();
+        localbl2 = parambh.YE(k);
+        localbl3 = parambh.YE(m);
+        int n = parambh.getCount();
+        int i1 = parambh.getCount();
+        i2 = i - j;
+        i3 = i1 - n;
+        ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr onMsgChangeNotify up talker[%s],new oldTotal[%d,%d,%d], now preCount:[%d,%d,%d] fromcount:%d needCheckHistoryTips:%b", new Object[] { this.cOd.zgX.field_username, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(i2), Integer.valueOf(i1), Integer.valueOf(n), Integer.valueOf(i3), Integer.valueOf(0), Boolean.valueOf(this.Gyl) });
+        if ((localbl3 == null) || (localbl3.field_msgId == 0L) || (localbl3.field_createTime >= localbl1.field_createTime)) {
+          break label1098;
+        }
+        ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr lastVisibleMsg getCreateTime < lastInsert msg");
+      }
+    }
+    for (;;)
+    {
+      this.cOd.GzL.eVS();
+      if (paramam.field_UnDeliverCount <= 0) {
+        ((x)this.cOd.be(x.class)).eYd();
+      }
+      if (this.Gyl)
+      {
+        this.Gyl = false;
+        this.cOd.GzL.setIsBottomShowAll(false);
+        boolean bool = ((com.tencent.mm.ui.chatting.c.b.ae)this.cOd.be(com.tencent.mm.ui.chatting.c.b.ae.class)).eYw();
+        this.cOd.GzL.setBottomViewVisible(bool);
+        this.cOd.GzL.vM(false);
+        ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr onMsgChangeNotify set needCheckHistoryTips[%b]", new Object[] { Boolean.valueOf(this.Gyl) });
+        com.tencent.mm.ui.chatting.d.a.eZd().postDelayed(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(35616);
+            ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr onMsgChangeNotify updateGoBackToHistoryMessage up UnDeliver:%d, UnRead:%d", new Object[] { Integer.valueOf(paramam.field_UnDeliverCount), Integer.valueOf(paramam.field_unReadCount) });
+            AppMethodBeat.o(35616);
+          }
+        }, 500L);
+      }
+      AppMethodBeat.o(35617);
+      return;
+      label1098:
+      if (i3 > 0)
+      {
+        parambh.YG(i3);
+        long l1;
+        if (localbl2 == null)
+        {
+          l1 = -1L;
+          label1121:
+          if (localbl3 != null) {
+            break label1292;
+          }
+        }
+        for (long l2 = -1L;; l2 = localbl3.field_createTime)
+        {
+          ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr firstVisiblePosition %s, lastVisiblePosition %s, createtime[%s, %s, %s]", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(localbl1.field_createTime) });
+          ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr onMsgChangeNotify up nowCount > preCount on set select:%d position %d, firstVisiblePosition %s", new Object[] { Integer.valueOf(i3), Integer.valueOf(i3 + 1), Integer.valueOf(k) });
+          this.cOd.jt(i3 + 1, ((w)this.cOd.be(w.class)).eYb() + this.cOd.GzL.getTopHeight());
+          aq.f(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(35615);
+              as.this.cOd.jt(i3 + 1, ((w)as.this.cOd.be(w.class)).eYb() + as.this.cOd.GzL.getTopHeight());
+              AppMethodBeat.o(35615);
+            }
+          });
+          break;
+          l1 = localbl2.field_createTime;
+          break label1121;
+        }
+      }
+      label1292:
+      ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr onMsgChangeNotify up incTotal incCount[%d, %d, %d] keep same", new Object[] { Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(0) });
+    }
+  }
+  
+  public final void bJ(bl parambl)
+  {
+    AppMethodBeat.i(35618);
+    long l3;
+    boolean bool;
+    Object localObject;
+    long l1;
+    label78:
+    int i;
+    label96:
+    long l2;
+    int j;
+    if ((parambl != null) && (parambl.field_msgId != 0L))
+    {
+      l3 = parambl.field_msgSeq;
+      if ((parambl.field_flag & 0x4) == 0) {
+        break label330;
+      }
+      bool = true;
+      az.arV();
+      localObject = com.tencent.mm.model.c.apR().aIn(this.cOd.zgX.field_username);
+      if (localObject == null) {
+        break label356;
+      }
+      if (!bool) {
+        break label336;
+      }
+      l1 = ((ay)localObject).field_firstUnDeliverSeq;
+      if ((!bool) || (l1 != 0L)) {
+        break label351;
+      }
+      i = ((ay)localObject).field_UnDeliverCount;
+      l2 = l1;
+      j = i;
+      if (bool)
+      {
+        l2 = l1;
+        j = i;
+        if (l1 > l3)
+        {
+          localObject = ((k)g.ab(k.class)).cOI().aT(this.cOd.zgX.field_username, l3);
+          l2 = l1;
+          j = i;
+          if (localObject != null)
+          {
+            l2 = l1;
+            j = i;
+            if (((du)localObject).field_msgSeq < l3)
+            {
+              ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr getChatroomMsgWithFaultMsg revised filterSeq[%d] to [%d]", new Object[] { Long.valueOf(l1), Long.valueOf(((du)localObject).field_msgSeq) });
+              l2 = ((du)localObject).field_msgSeq;
+              j = i;
+            }
           }
         }
       }
-      localObject = this.zJh;
-      if (this.mtW) {
-        break label385;
-      }
     }
-    label385:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      ((com.tencent.mm.ui.chatting.d)localObject).mtV = bool;
-      this.zJh.qR(true);
-      ab.i("MicroMsg.ChattingUI.VoiceComponent", "summeranrt resetAutoPlay end take[%s]ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-      if ((com.tencent.mm.model.t.or(this.caz.getTalkerUserName())) && (ao.a.flL != null)) {
-        ao.a.flL.a(this.sZW);
-      }
-      if (!com.tencent.mm.au.b.aic()) {
-        ((o)this.caz.ay(o.class)).setVoiceInputShowCallback(this.zJj);
-      }
-      dJw();
-      AppMethodBeat.o(31882);
-      return;
-      this.zJh.atI(this.caz.getTalkerUserName());
-      break;
-      label380:
-      bool = false;
-      break label219;
-    }
-  }
-  
-  public final void dCc()
-  {
-    AppMethodBeat.i(31883);
-    if ((com.tencent.mm.model.t.or(this.caz.getTalkerUserName())) && (ao.a.flL != null)) {
-      ao.a.flL.b(this.sZW);
-    }
-    if ((this.zJi != null) && (this.zJi.getVisibility() == 0))
-    {
-      ab.i("MicroMsg.ChattingUI.VoiceComponent", "doPause set voiceinputMask GONE");
-      this.zJi.setVisibility(8);
-    }
-    ((o)this.caz.ay(o.class)).setVoiceInputShowCallback(null);
-    aw.aaz();
-    com.tencent.mm.model.c.Ru().set(26, Boolean.valueOf(this.mtW));
-    if (this.zJh != null)
-    {
-      this.zJh.dFI();
-      this.zJh.dFN();
-      this.zJh.release();
-    }
-    AppMethodBeat.o(31883);
-  }
-  
-  public final void dCd()
-  {
-    AppMethodBeat.i(31884);
-    aw.Rc().b(127, this);
-    AppMethodBeat.o(31884);
-  }
-  
-  public final void dHq()
-  {
-    AppMethodBeat.i(31878);
-    super.dHq();
-    com.tencent.mm.modelvoice.t.b(this.zJh);
-    com.tencent.mm.modelvoice.e.b(this.zJh);
-    aw.Rc().b(127, this);
-    releaseWakeLock();
-    if (this.zJh != null)
-    {
-      this.zJh.dFI();
-      com.tencent.mm.ui.chatting.d locald = this.zJh;
-      locald.release();
-      locald.context = null;
-      locald.zwz = false;
-      com.tencent.mm.sdk.b.a.ymk.d(locald.zwE);
-      aw.BY().b(locald);
-    }
-    AppMethodBeat.o(31878);
-  }
-  
-  public final com.tencent.mm.ui.chatting.d dJv()
-  {
-    return this.zJh;
-  }
-  
-  public final void dJw()
-  {
-    AppMethodBeat.i(31871);
-    com.tencent.mm.ui.chatting.c.b.r localr = (com.tencent.mm.ui.chatting.c.b.r)this.caz.ay(com.tencent.mm.ui.chatting.c.b.r.class);
-    if (((com.tencent.mm.ui.chatting.c.b.i)this.caz.ay(com.tencent.mm.ui.chatting.c.b.i.class)).dHW())
-    {
-      ab.d("MicroMsg.ChattingUI.VoiceComponent", "trigger title icon, in show mode");
-      this.caz.qZ(false);
-      localr.setTitlePhoneIconVisibility(8);
-      localr.setTitleMuteIconVisibility(8);
-      AppMethodBeat.o(31871);
-      return;
-    }
-    label119:
-    Boolean localBoolean;
-    if (((com.tencent.mm.plugin.forcenotify.a.b)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.forcenotify.a.b.class)).On(this.caz.getTalkerUserName()))
-    {
-      localr.setTitleForceNotifyIconVisibility(0);
-      localr.setTitleMuteIconVisibility(8);
-      aw.aaz();
-      localBoolean = (Boolean)com.tencent.mm.model.c.Ru().get(26, null);
-      if (localBoolean != null) {
-        break label193;
-      }
-      this.mtW = false;
-      label145:
-      if (!this.mtW) {
-        break label204;
-      }
-    }
-    label193:
-    label204:
-    for (int i = 0;; i = 8)
-    {
-      localr.setTitlePhoneIconVisibility(i);
-      AppMethodBeat.o(31871);
-      return;
-      localr.setTitleForceNotifyIconVisibility(8);
-      if (!DP()) {
-        break;
-      }
-      localr.setTitleMuteIconVisibility(0);
-      break label119;
-      this.mtW = localBoolean.booleanValue();
-      break label145;
-    }
-  }
-  
-  public final boolean dJx()
-  {
-    return this.mtW;
-  }
-  
-  public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
-  {
-    AppMethodBeat.i(31879);
-    boolean bool = d(paramInt, paramKeyEvent);
-    AppMethodBeat.o(31879);
-    return bool;
-  }
-  
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    int i = 1;
-    AppMethodBeat.i(31885);
-    ab.i("MicroMsg.ChattingUI.VoiceComponent", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " sceneType:" + paramm.getType());
-    this.caz.dismissDialog();
-    if (!this.caz.bSe)
-    {
-      ab.i("MicroMsg.ChattingUI.VoiceComponent", "onSceneEnd fragment not foreground, return");
-      AppMethodBeat.o(31885);
-      return;
-    }
-    if (!bo.cB(this.caz.zJz.getContext()))
-    {
-      AppMethodBeat.o(31885);
-      return;
-    }
-    Activity localActivity = this.caz.zJz.getContext();
-    if (v.a.a(localActivity, paramInt1, paramInt2, paramString, 7)) {}
-    while (i != 0)
-    {
-      AppMethodBeat.o(31885);
-      return;
-      if (!v.a(localActivity, paramInt1, paramInt2, new Intent().setClass(localActivity, LauncherUI.class).putExtra("Intro_Switch", true).putExtra("animation_pop_in", true).addFlags(67108864), paramString)) {
-        i = 0;
-      }
-    }
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      switch (paramm.getType())
+      ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr getChatroomMsgWithFaultMsg filterSeq[%d], lastSeq[%d], needCount[%d], flag[%d], up[%b]", new Object[] { Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(j), Integer.valueOf(parambl.field_flag), Boolean.valueOf(bool) });
+      this.Gyk = false;
+      parambl = this.cOd.zgX.field_username;
+      int k = (int)l2;
+      int m = (int)l3;
+      if (bool) {}
+      for (i = 1;; i = 0)
       {
+        new com.tencent.mm.plugin.chatroom.a.a(parambl, k, m, j, i);
+        AppMethodBeat.o(35618);
+        return;
+        label330:
+        bool = false;
+        break;
+        label336:
+        l1 = ((ay)localObject).field_lastSeq;
+        break label78;
       }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(31885);
-      return;
-      paramString = s.vT(((com.tencent.mm.modelvoice.f)paramm).fileName);
-      if ((paramString != null) && (paramString.status == 99)) {
-        ay.ax(this.caz.zJz.getContext(), 2131296514);
-      }
+      label351:
+      i = 0;
+      break label96;
+      label356:
+      j = 0;
+      l2 = 0L;
     }
   }
   
-  public final void qY(boolean paramBoolean)
+  public final void eQA()
   {
-    AppMethodBeat.i(31874);
-    if (this.zJh == null)
+    AppMethodBeat.i(35620);
+    this.Gyk = false;
+    this.Gym = this.cOd.eZb();
+    this.Gyk = false;
+    this.Gyl = false;
+    AppMethodBeat.o(35620);
+  }
+  
+  public final void eQE() {}
+  
+  public final void eQF()
+  {
+    AppMethodBeat.i(35621);
+    com.tencent.mm.sdk.b.a.ESL.d(this.Gyn);
+    az.arV();
+    com.tencent.mm.model.c.apR().b(this);
+    AppMethodBeat.o(35621);
+  }
+  
+  public final void onScrollStateChanged(final AbsListView paramAbsListView, int paramInt)
+  {
+    AppMethodBeat.i(35619);
+    super.onScrollStateChanged(paramAbsListView, paramInt);
+    Object localObject;
+    if (paramInt == 0)
     {
-      ab.e("MicroMsg.ChattingUI.VoiceComponent", "setForceSpeakOff error, autoPlay is null!!!");
-      AppMethodBeat.o(31874);
+      for (;;)
+      {
+        try
+        {
+          paramAbsListView = this.cOd.getChildAt(this.cOd.getFirstVisiblePosition());
+          if ((paramAbsListView != null) && (paramAbsListView.getTop() == 0))
+          {
+            ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr handleScrollChange forceTopLoadData true");
+            if (!this.cOd.eZb()) {
+              break label873;
+            }
+            paramAbsListView = ((i)this.cOd.be(i.class)).YE(0);
+            if ((paramAbsListView != null) && (paramAbsListView.field_msgId != 0L))
+            {
+              ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr handleScrollChange check fault[%d, %d, %d, %d, %d, %d, %d, %s]", new Object[] { Integer.valueOf(paramAbsListView.field_flag), Integer.valueOf(paramAbsListView.field_isSend), Long.valueOf(paramAbsListView.field_msgId), Long.valueOf(paramAbsListView.field_msgSvrId), Long.valueOf(paramAbsListView.field_msgSeq), Long.valueOf(paramAbsListView.field_createTime), Integer.valueOf(paramAbsListView.getType()), paramAbsListView.field_talker });
+              if (((paramAbsListView.field_flag & 0x1) != 0) && ((paramAbsListView.field_flag & 0x4) != 0)) {
+                this.cOd.GzL.eVR();
+              }
+            }
+            AppMethodBeat.o(35619);
+            return;
+          }
+          if ((!this.cOd.eZb()) || (this.cOd.getChildAt(this.cOd.getListView().getChildCount() - 1) == null)) {
+            break label873;
+          }
+          localObject = (i)this.cOd.be(i.class);
+          if (this.cOd.getLastVisiblePosition() != this.cOd.getListView().getAdapter().getCount() - 1) {
+            break label873;
+          }
+          paramAbsListView = null;
+          paramInt = 1;
+          if (paramInt >= 5) {
+            break label890;
+          }
+          paramAbsListView = ((i)this.cOd.be(i.class)).YE(((i)localObject).getCount() - paramInt);
+          if ((paramAbsListView != null) && (paramAbsListView.field_msgId != 0L) && ((paramAbsListView.field_flag & 0x1) != 0))
+          {
+            ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr handleScrollChange bottom check fault found i[%s]", new Object[] { Integer.valueOf(paramInt) });
+            if ((paramAbsListView == null) || (paramAbsListView.field_msgId == 0L)) {
+              break label893;
+            }
+            localObject = ((k)g.ab(k.class)).cOI().aE(paramAbsListView.field_talker, paramAbsListView.field_msgSeq);
+            if ((((du)localObject).field_msgId == 0L) || (((du)localObject).field_msgId != paramAbsListView.field_msgId) || ((((du)localObject).field_flag & 0x1) != 0)) {
+              break;
+            }
+            ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr handleScrollChange found msg not fault msgId[%s] flag[%s]", new Object[] { Long.valueOf(((du)localObject).field_msgId), Integer.valueOf(((du)localObject).field_flag) });
+            AppMethodBeat.o(35619);
+            return;
+          }
+        }
+        catch (Exception paramAbsListView)
+        {
+          ad.printErrStackTrace("MicroMsg.ChattingUI.SilenceMsgComponent", paramAbsListView, "silenceMsgImp handleIdelScrollChange", new Object[0]);
+          AppMethodBeat.o(35619);
+          return;
+        }
+        paramInt += 1;
+      }
+      ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr handleScrollChange bottom check fault[%d, %d, %d, %d, %d, %d, %d, %s]", new Object[] { Integer.valueOf(paramAbsListView.field_flag), Integer.valueOf(paramAbsListView.field_isSend), Long.valueOf(paramAbsListView.field_msgId), Long.valueOf(paramAbsListView.field_msgSvrId), Long.valueOf(paramAbsListView.field_msgSeq), Long.valueOf(paramAbsListView.field_createTime), Integer.valueOf(paramAbsListView.getType()), paramAbsListView.field_talker });
+      if (((paramAbsListView.field_flag & 0x1) != 0) && ((paramAbsListView.field_flag & 0x4) == 0))
+      {
+        ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr handleScrollChange forceBottomLoadData");
+        this.cOd.GzL.setIsBottomShowAll(false);
+        this.cOd.GzL.setBottomViewVisible(true);
+        this.cOd.GzL.vM(true);
+        ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr handleScrollChange bottom check fault found");
+        az.afE().ax(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(35612);
+            e.vIY.idkeyStat(403L, 7L, 1L, false);
+            as.this.bJ(paramAbsListView);
+            AppMethodBeat.o(35612);
+          }
+        });
+        AppMethodBeat.o(35619);
+        return;
+      }
+      AppMethodBeat.o(35619);
       return;
-    }
-    com.tencent.mm.ui.chatting.c.b.r localr = (com.tencent.mm.ui.chatting.c.b.r)this.caz.ay(com.tencent.mm.ui.chatting.c.b.r.class);
-    if (paramBoolean)
-    {
-      this.zJh.mtV = false;
-      this.mtW = true;
-      aw.aaz();
-      com.tencent.mm.model.c.Ru().set(26, Boolean.TRUE);
-      localr.setTitlePhoneIconVisibility(0);
-      Toast.makeText(this.caz.zJz.getContext(), this.caz.zJz.getMMResources().getString(2131300090), 0).show();
-      this.zJh.dFM();
-      this.caz.PN(2131230730);
-      AppMethodBeat.o(31874);
-      return;
-    }
-    if (!aw.aaA().KH()) {
-      this.zJh.mtV = true;
     }
     for (;;)
     {
-      this.mtW = false;
-      aw.aaz();
-      com.tencent.mm.model.c.Ru().set(26, Boolean.FALSE);
-      localr.setTitlePhoneIconVisibility(8);
-      Toast.makeText(this.caz.zJz.getContext(), this.caz.zJz.getMMResources().getString(2131300091), 0).show();
-      this.zJh.dFM();
-      this.caz.PN(2131230750);
-      AppMethodBeat.o(31874);
-      return;
-      ab.i("MicroMsg.ChattingUI.VoiceComponent", "setForceSpeakOff true but isBluetoothOn");
+      label710:
+      int i;
+      if ((paramAbsListView.field_flag & 0x2) != 0)
+      {
+        i = 1;
+        label721:
+        if ((i & paramInt) != 0)
+        {
+          az.arV();
+          localObject = com.tencent.mm.model.c.apO().agq(paramAbsListView.field_talker);
+          if ((localObject != null) && (((du)localObject).field_msgId != 0L) && (((du)localObject).field_createTime > paramAbsListView.field_createTime)) {
+            ad.i("MicroMsg.ChattingUI.SilenceMsgComponent", "summerbadcr handleScrollChange bottom check fault[%d, %d, %d, %d, %d, %d, %d, %s] not need notify", new Object[] { Integer.valueOf(((du)localObject).field_flag), Integer.valueOf(((du)localObject).field_isSend), Long.valueOf(((du)localObject).field_msgId), Long.valueOf(((du)localObject).field_msgSvrId), Long.valueOf(((du)localObject).field_msgSeq), Long.valueOf(((du)localObject).field_createTime), Integer.valueOf(((bl)localObject).getType()), ((du)localObject).field_talker });
+          }
+        }
+        label873:
+        AppMethodBeat.o(35619);
+        return;
+      }
+      label890:
+      label893:
+      do
+      {
+        paramInt = 0;
+        break label710;
+        i = 0;
+        break label721;
+        break;
+      } while (paramAbsListView == null);
+      paramInt = 1;
     }
-  }
-  
-  public final void releaseWakeLock()
-  {
-    AppMethodBeat.i(31873);
-    this.caz.setKeepScreenOn(false);
-    AppMethodBeat.o(31873);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.as
  * JD-Core Version:    0.7.0.1
  */

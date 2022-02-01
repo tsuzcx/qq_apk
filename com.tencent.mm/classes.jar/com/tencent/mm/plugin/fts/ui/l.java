@@ -3,98 +3,98 @@ package com.tencent.mm.plugin.fts.ui;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d.e.b;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.HashSet;
 
 public final class l
   extends d
   implements e.b
 {
-  private ak ipC;
-  private boolean mXb;
-  private com.tencent.mm.plugin.fts.ui.d.l mYl;
+  private ap kQO;
+  private boolean rtQ;
+  private com.tencent.mm.plugin.fts.ui.d.l ruM;
   
   public l(e parame, String paramString, int paramInt)
   {
     super(parame);
-    AppMethodBeat.i(61943);
-    this.ipC = new ak();
-    this.mYl = new com.tencent.mm.plugin.fts.ui.d.l(parame.getContext(), this, paramInt);
-    this.mYl.mSO = paramString;
-    AppMethodBeat.o(61943);
+    AppMethodBeat.i(112024);
+    this.kQO = new ap();
+    this.ruM = new com.tencent.mm.plugin.fts.ui.d.l(parame.getContext(), this, paramInt);
+    this.ruM.rpI = paramString;
+    AppMethodBeat.o(112024);
+  }
+  
+  protected final com.tencent.mm.plugin.fts.a.d.a.a DG(int paramInt)
+  {
+    AppMethodBeat.i(112025);
+    com.tencent.mm.plugin.fts.a.d.a.a locala = this.ruM.DG(paramInt);
+    if (locala != null) {
+      locala.pageType = 3;
+    }
+    AppMethodBeat.o(112025);
+    return locala;
   }
   
   public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString)
   {
-    AppMethodBeat.i(61947);
-    setCount(parame.wt(0));
+    AppMethodBeat.i(112028);
+    setCount(parame.DF(0));
     notifyDataSetChanged();
-    V(getCount(), true);
-    AppMethodBeat.o(61947);
+    ae(getCount(), true);
+    AppMethodBeat.o(112028);
   }
   
   protected final boolean a(View paramView, com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(61946);
-    paramBoolean = this.mYl.a(paramView, parama, paramBoolean);
-    if ((parama.mTP) && (!this.mXb))
+    AppMethodBeat.i(112027);
+    paramBoolean = this.ruM.a(paramView, parama, paramBoolean);
+    if ((parama.rqI) && (!this.rtQ))
     {
-      this.mXb = true;
-      k.c(this.query, true, this.mYl.bCx(), -2);
+      this.rtQ = true;
+      k.c(this.query, true, this.ruM.cxL(), -2);
     }
     if (paramBoolean)
     {
       clearCache();
-      setCount(this.mYl.wt(0));
+      setCount(this.ruM.DF(0));
       notifyDataSetChanged();
-      V(getCount(), true);
+      ae(getCount(), true);
     }
-    AppMethodBeat.o(61946);
+    AppMethodBeat.o(112027);
     return paramBoolean;
   }
   
-  protected final int bCf()
+  protected final void cxM()
   {
-    AppMethodBeat.i(156823);
-    int i = this.mYl.bCx();
-    AppMethodBeat.o(156823);
-    return i;
+    AppMethodBeat.i(112026);
+    this.rtQ = false;
+    this.ruM.a(this.query, this.kQO, new HashSet(), 0L);
+    AppMethodBeat.o(112026);
   }
   
-  protected final void bCy()
+  protected final int cxt()
   {
-    AppMethodBeat.i(61945);
-    this.mXb = false;
-    this.mYl.a(this.query, this.ipC, new HashSet(), 0L);
-    AppMethodBeat.o(61945);
+    AppMethodBeat.i(205071);
+    int i = this.ruM.cxL();
+    AppMethodBeat.o(205071);
+    return i;
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(61948);
+    AppMethodBeat.i(112029);
     super.finish();
-    if (!this.mXb)
+    if (!this.rtQ)
     {
-      this.mXb = true;
-      k.c(this.query, false, this.mYl.bCx(), -2);
+      this.rtQ = true;
+      k.c(this.query, false, this.ruM.cxL(), -2);
     }
-    AppMethodBeat.o(61948);
-  }
-  
-  protected final com.tencent.mm.plugin.fts.a.d.a.a wu(int paramInt)
-  {
-    AppMethodBeat.i(61944);
-    com.tencent.mm.plugin.fts.a.d.a.a locala = this.mYl.wu(paramInt);
-    if (locala != null) {
-      locala.pageType = 3;
-    }
-    AppMethodBeat.o(61944);
-    return locala;
+    AppMethodBeat.o(112029);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.l
  * JD-Core Version:    0.7.0.1
  */

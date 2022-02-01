@@ -4,20 +4,18 @@ import android.app.Activity;
 import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.BroadcastReceiver;
 import android.content.ComponentCallbacks2;
-import android.content.ContentProvider;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -26,111 +24,64 @@ import java.util.Set;
 
 public enum AppForegroundDelegate
 {
-  private Set<j> bLQ;
-  public volatile boolean bLR;
-  volatile boolean bRB;
-  Handler bTu;
-  private Runnable bXl;
-  b bXm;
-  private boolean bXn;
+  Handler azU;
+  Handler cKF;
+  private Runnable cKG;
+  public final Set<o> cKH;
+  b cKI;
+  private boolean cKJ;
+  private final Set<n> csT;
+  public volatile boolean csU;
+  volatile boolean csX;
   
   static
   {
-    AppMethodBeat.i(146094);
-    bXk = new AppForegroundDelegate("INSTANCE");
-    bXo = new AppForegroundDelegate[] { bXk };
-    AppMethodBeat.o(146094);
+    AppMethodBeat.i(131766);
+    cKE = new AppForegroundDelegate("INSTANCE");
+    cKK = new AppForegroundDelegate[] { cKE };
+    AppMethodBeat.o(131766);
   }
   
   private AppForegroundDelegate()
   {
-    AppMethodBeat.i(146089);
-    this.bTu = new Handler(Looper.getMainLooper());
-    this.bLQ = new HashSet();
-    this.bLR = false;
-    this.bXm = new b((byte)0);
-    this.bRB = false;
-    this.bXn = false;
-    AppMethodBeat.o(146089);
+    AppMethodBeat.i(131761);
+    this.azU = new Handler(Looper.getMainLooper());
+    this.csT = new HashSet();
+    this.cKH = new HashSet();
+    this.csU = false;
+    this.cKI = new b((byte)0);
+    this.csX = false;
+    this.cKJ = false;
+    AppMethodBeat.o(131761);
   }
   
-  public final boolean AX()
+  public final boolean Kx()
   {
-    return this.bLR;
+    return this.csU;
   }
   
-  public final void a(j paramj)
+  public final void a(n paramn)
   {
-    AppMethodBeat.i(146090);
-    if (this.bLR) {
-      paramj.onAppForeground(this.bXm.bXz.activity);
+    AppMethodBeat.i(131762);
+    if (this.csU) {
+      paramn.onAppForeground(this.cKI.cKU.activity);
     }
-    synchronized (this.bLQ)
+    synchronized (this.csT)
     {
-      this.bLQ.add(paramj);
-      AppMethodBeat.o(146090);
+      this.csT.add(paramn);
+      AppMethodBeat.o(131762);
       return;
     }
   }
   
-  public final void b(j paramj)
+  public final void b(n paramn)
   {
-    AppMethodBeat.i(146091);
-    synchronized (this.bLQ)
+    AppMethodBeat.i(131763);
+    synchronized (this.csT)
     {
-      this.bLQ.remove(paramj);
-      AppMethodBeat.o(146091);
+      this.csT.remove(paramn);
+      AppMethodBeat.o(131763);
       return;
-    }
-  }
-  
-  public static class Provider
-    extends ContentProvider
-  {
-    public Bundle call(String paramString1, String paramString2, Bundle paramBundle)
-    {
-      AppMethodBeat.i(146086);
-      if (paramString1.equals("isAppForeground"))
-      {
-        paramString1 = new Bundle();
-        paramString1.putString("com.tencent.mm.AppForegroundDelegate.ACTIVITY_NAME", AppForegroundDelegate.a(AppForegroundDelegate.bXk).bXz.activity);
-        paramString1.putBoolean("isAppForeground", AppForegroundDelegate.c(AppForegroundDelegate.bXk));
-        AppMethodBeat.o(146086);
-        return paramString1;
-      }
-      paramString1 = super.call(paramString1, paramString2, paramBundle);
-      AppMethodBeat.o(146086);
-      return paramString1;
-    }
-    
-    public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
-    {
-      return 0;
-    }
-    
-    public String getType(Uri paramUri)
-    {
-      return null;
-    }
-    
-    public Uri insert(Uri paramUri, ContentValues paramContentValues)
-    {
-      return null;
-    }
-    
-    public boolean onCreate()
-    {
-      return true;
-    }
-    
-    public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
-    {
-      return null;
-    }
-    
-    public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
-    {
-      return 0;
     }
   }
   
@@ -140,15 +91,15 @@ public enum AppForegroundDelegate
     
     static
     {
-      AppMethodBeat.i(146069);
-      bXr = new a("CREATED", 0, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_CREATED");
-      bXs = new a("STARTED", 1, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_STARTED");
-      bXt = new a("RESUMED", 2, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_RESUMED");
-      bXu = new a("PAUSED", 3, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_PAUSED");
-      bXv = new a("STOPPED", 4, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_STOPPED");
-      bXw = new a("DESTROY", 5, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_DESTROY");
-      bXx = new a[] { bXr, bXs, bXt, bXu, bXv, bXw };
-      AppMethodBeat.o(146069);
+      AppMethodBeat.i(131741);
+      cKM = new a("CREATED", 0, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_CREATED");
+      cKN = new a("STARTED", 1, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_STARTED");
+      cKO = new a("RESUMED", 2, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_RESUMED");
+      cKP = new a("PAUSED", 3, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_PAUSED");
+      cKQ = new a("STOPPED", 4, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_STOPPED");
+      cKR = new a("DESTROY", 5, "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVITY_DESTROY");
+      cKS = new a[] { cKM, cKN, cKO, cKP, cKQ, cKR };
+      AppMethodBeat.o(131741);
     }
     
     private a(String paramString)
@@ -156,234 +107,234 @@ public enum AppForegroundDelegate
       this.value = paramString;
     }
     
-    public static a ds(String paramString)
+    public static a ev(String paramString)
     {
-      AppMethodBeat.i(146068);
-      if (paramString.equals(bXs.value))
+      AppMethodBeat.i(131740);
+      if (paramString.equals(cKN.value))
       {
-        paramString = bXs;
-        AppMethodBeat.o(146068);
+        paramString = cKN;
+        AppMethodBeat.o(131740);
         return paramString;
       }
-      if (paramString.equals(bXt.value))
+      if (paramString.equals(cKO.value))
       {
-        paramString = bXt;
-        AppMethodBeat.o(146068);
+        paramString = cKO;
+        AppMethodBeat.o(131740);
         return paramString;
       }
-      if (paramString.equals(bXu.value))
+      if (paramString.equals(cKP.value))
       {
-        paramString = bXu;
-        AppMethodBeat.o(146068);
+        paramString = cKP;
+        AppMethodBeat.o(131740);
         return paramString;
       }
-      if (paramString.equals(bXv.value))
+      if (paramString.equals(cKQ.value))
       {
-        paramString = bXv;
-        AppMethodBeat.o(146068);
+        paramString = cKQ;
+        AppMethodBeat.o(131740);
         return paramString;
       }
-      AppMethodBeat.o(146068);
+      AppMethodBeat.o(131740);
       return null;
     }
   }
   
   final class b
   {
-    a bXy;
-    AppForegroundDelegate.c bXz;
+    a cKT;
+    AppForegroundDelegate.c cKU;
     
     private b()
     {
-      AppMethodBeat.i(146083);
-      this.bXy = new a((byte)0);
-      this.bXz = new AppForegroundDelegate.c(AppForegroundDelegate.this, (byte)0);
-      AppMethodBeat.o(146083);
+      AppMethodBeat.i(131755);
+      this.cKT = new a((byte)0);
+      this.cKU = new AppForegroundDelegate.c(AppForegroundDelegate.this, (byte)0);
+      AppMethodBeat.o(131755);
     }
     
     final class a
       extends BroadcastReceiver
       implements Application.ActivityLifecycleCallbacks, ComponentCallbacks2
     {
-      private HashSet<String> bXA;
+      private HashSet<String> cKV;
       
       private a()
       {
-        AppMethodBeat.i(146073);
-        this.bXA = new HashSet();
-        AppMethodBeat.o(146073);
+        AppMethodBeat.i(131745);
+        this.cKV = new HashSet();
+        AppMethodBeat.o(131745);
       }
       
       private static void a(AppForegroundDelegate.a parama, String paramString)
       {
-        AppMethodBeat.i(146075);
+        AppMethodBeat.i(131747);
         Intent localIntent = new Intent();
         localIntent.setAction(AppForegroundDelegate.a.a(parama));
-        localIntent.putExtra("_application_context_process_", ah.getProcessName());
+        localIntent.putExtra("_application_context_process_", aj.getProcessName());
         localIntent.putExtra("com.tencent.mm.AppForegroundDelegate.ACTIVITY_NAME", paramString);
-        ah.getContext().sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
-        AppMethodBeat.o(146075);
+        aj.getContext().sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
+        AppMethodBeat.o(131747);
       }
       
       private void a(final String paramString1, String paramString2, AppForegroundDelegate.a parama)
       {
-        AppMethodBeat.i(146076);
-        ab.i("MicroMsg.AppForegroundDelegate", "[checkAlive] activityName:%s process:%s action:%s", new Object[] { paramString1, paramString2, parama.name() });
-        if (parama == AppForegroundDelegate.a.bXs)
+        AppMethodBeat.i(131748);
+        ad.i("MicroMsg.AppForegroundDelegate", "[checkAlive] activityName:%s process:%s action:%s", new Object[] { paramString1, paramString2, parama.name() });
+        if (parama == AppForegroundDelegate.a.cKN)
         {
           if (!AppForegroundDelegate.c(AppForegroundDelegate.this)) {
             AppForegroundDelegate.c.c(true, paramString1);
           }
-          this.bXA.remove(paramString1);
+          this.cKV.remove(paramString1);
         }
-        if (((parama == AppForegroundDelegate.a.bXr) || (parama == AppForegroundDelegate.a.bXs) || (parama == AppForegroundDelegate.a.bXt) || (parama == AppForegroundDelegate.a.bXu)) && (AppForegroundDelegate.d(AppForegroundDelegate.this) != null))
+        if (((parama == AppForegroundDelegate.a.cKM) || (parama == AppForegroundDelegate.a.cKN) || (parama == AppForegroundDelegate.a.cKO) || (parama == AppForegroundDelegate.a.cKP)) && (AppForegroundDelegate.f(AppForegroundDelegate.this) != null))
         {
-          AppForegroundDelegate.e(AppForegroundDelegate.this).removeCallbacks(AppForegroundDelegate.d(AppForegroundDelegate.this));
+          AppForegroundDelegate.g(AppForegroundDelegate.this).removeCallbacks(AppForegroundDelegate.f(AppForegroundDelegate.this));
           AppForegroundDelegate.a(AppForegroundDelegate.this, null);
         }
-        if (parama == AppForegroundDelegate.a.bXt)
+        if (parama == AppForegroundDelegate.a.cKO)
         {
-          AppForegroundDelegate.e(AppForegroundDelegate.this).postDelayed(AppForegroundDelegate.a(AppForegroundDelegate.this, new Runnable()
+          AppForegroundDelegate.g(AppForegroundDelegate.this).postDelayed(AppForegroundDelegate.a(AppForegroundDelegate.this, new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(146070);
+              AppMethodBeat.i(131743);
               if (!AppForegroundDelegate.c(AppForegroundDelegate.this)) {
                 AppForegroundDelegate.c.c(true, paramString1);
               }
-              AppMethodBeat.o(146070);
+              AppMethodBeat.o(131743);
             }
           }), 600L);
-          AppMethodBeat.o(146076);
+          AppMethodBeat.o(131748);
           return;
         }
-        if (parama == AppForegroundDelegate.a.bXu)
+        if (parama == AppForegroundDelegate.a.cKP)
         {
-          AppForegroundDelegate.e(AppForegroundDelegate.this).postDelayed(AppForegroundDelegate.a(AppForegroundDelegate.this, new Runnable()
+          AppForegroundDelegate.g(AppForegroundDelegate.this).postDelayed(AppForegroundDelegate.a(AppForegroundDelegate.this, new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(146071);
+              AppMethodBeat.i(131744);
               if ((AppForegroundDelegate.c(AppForegroundDelegate.this)) && (AppForegroundDelegate.b.a.a(AppForegroundDelegate.b.a.this).remove(paramString1)))
               {
                 AppForegroundDelegate.c.c(false, paramString1);
-                AppMethodBeat.o(146071);
+                AppMethodBeat.o(131744);
                 return;
               }
               AppForegroundDelegate.a(AppForegroundDelegate.this, null);
-              ab.w("MicroMsg.AppForegroundDelegate", "[PAUSED] delay to check background in stop!");
-              AppMethodBeat.o(146071);
+              ad.w("MicroMsg.AppForegroundDelegate", "[PAUSED] delay to check background in stop!");
+              AppMethodBeat.o(131744);
             }
           }), 600L);
-          AppMethodBeat.o(146076);
+          AppMethodBeat.o(131748);
           return;
         }
-        if ((parama == AppForegroundDelegate.a.bXv) || (parama == AppForegroundDelegate.a.bXw))
+        if ((parama == AppForegroundDelegate.a.cKQ) || (parama == AppForegroundDelegate.a.cKR))
         {
-          if (parama == AppForegroundDelegate.a.bXv) {
-            this.bXA.add(paramString1);
+          if (parama == AppForegroundDelegate.a.cKQ) {
+            this.cKV.add(paramString1);
           }
-          if (AppForegroundDelegate.d(AppForegroundDelegate.this) == null) {
-            AppForegroundDelegate.e(AppForegroundDelegate.this).postDelayed(AppForegroundDelegate.a(AppForegroundDelegate.this, new Runnable()
+          if (AppForegroundDelegate.f(AppForegroundDelegate.this) == null) {
+            AppForegroundDelegate.g(AppForegroundDelegate.this).postDelayed(AppForegroundDelegate.a(AppForegroundDelegate.this, new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(146072);
+                AppMethodBeat.i(182866);
                 if (AppForegroundDelegate.c(AppForegroundDelegate.this)) {
                   AppForegroundDelegate.c.c(false, paramString1);
                 }
-                AppMethodBeat.o(146072);
+                AppMethodBeat.o(182866);
               }
             }), 600L);
           }
         }
-        AppMethodBeat.o(146076);
+        AppMethodBeat.o(131748);
       }
       
       public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
       {
-        AppMethodBeat.i(146077);
-        paramActivity = paramActivity.getClass().getName();
-        if (ah.dsT())
+        AppMethodBeat.i(131749);
+        paramActivity = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
+        if (aj.cbe())
         {
-          a(paramActivity, ah.getProcessName(), AppForegroundDelegate.a.bXr);
-          AppMethodBeat.o(146077);
+          a(paramActivity, aj.getProcessName(), AppForegroundDelegate.a.cKM);
+          AppMethodBeat.o(131749);
           return;
         }
-        a(AppForegroundDelegate.a.bXr, paramActivity);
-        AppMethodBeat.o(146077);
+        a(AppForegroundDelegate.a.cKM, paramActivity);
+        AppMethodBeat.o(131749);
       }
       
       public final void onActivityDestroyed(Activity paramActivity)
       {
-        AppMethodBeat.i(146082);
-        paramActivity = paramActivity.getClass().getName();
-        if (ah.dsT())
+        AppMethodBeat.i(131754);
+        paramActivity = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
+        if (aj.cbe())
         {
-          a(paramActivity, ah.getProcessName(), AppForegroundDelegate.a.bXw);
-          AppMethodBeat.o(146082);
+          a(paramActivity, aj.getProcessName(), AppForegroundDelegate.a.cKR);
+          AppMethodBeat.o(131754);
           return;
         }
-        a(AppForegroundDelegate.a.bXw, paramActivity);
-        AppMethodBeat.o(146082);
+        a(AppForegroundDelegate.a.cKR, paramActivity);
+        AppMethodBeat.o(131754);
       }
       
       public final void onActivityPaused(Activity paramActivity)
       {
-        AppMethodBeat.i(146080);
-        paramActivity = paramActivity.getClass().getName();
-        if (ah.dsT())
+        AppMethodBeat.i(131752);
+        paramActivity = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
+        if (aj.cbe())
         {
-          a(paramActivity, ah.getProcessName(), AppForegroundDelegate.a.bXu);
-          AppMethodBeat.o(146080);
+          a(paramActivity, aj.getProcessName(), AppForegroundDelegate.a.cKP);
+          AppMethodBeat.o(131752);
           return;
         }
-        a(AppForegroundDelegate.a.bXu, paramActivity);
-        AppMethodBeat.o(146080);
+        a(AppForegroundDelegate.a.cKP, paramActivity);
+        AppMethodBeat.o(131752);
       }
       
       public final void onActivityResumed(Activity paramActivity)
       {
-        AppMethodBeat.i(146079);
-        paramActivity = paramActivity.getClass().getName();
-        if (ah.dsT())
+        AppMethodBeat.i(131751);
+        paramActivity = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
+        if (aj.cbe())
         {
-          a(paramActivity, ah.getProcessName(), AppForegroundDelegate.a.bXt);
-          AppMethodBeat.o(146079);
+          a(paramActivity, aj.getProcessName(), AppForegroundDelegate.a.cKO);
+          AppMethodBeat.o(131751);
           return;
         }
-        a(AppForegroundDelegate.a.bXt, paramActivity);
-        AppMethodBeat.o(146079);
+        a(AppForegroundDelegate.a.cKO, paramActivity);
+        AppMethodBeat.o(131751);
       }
       
       public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
       
       public final void onActivityStarted(Activity paramActivity)
       {
-        AppMethodBeat.i(146078);
-        paramActivity = paramActivity.getClass().getName();
-        if (ah.dsT())
+        AppMethodBeat.i(131750);
+        paramActivity = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
+        if (aj.cbe())
         {
-          a(paramActivity, ah.getProcessName(), AppForegroundDelegate.a.bXs);
-          AppMethodBeat.o(146078);
+          a(paramActivity, aj.getProcessName(), AppForegroundDelegate.a.cKN);
+          AppMethodBeat.o(131750);
           return;
         }
-        a(AppForegroundDelegate.a.bXs, paramActivity);
-        AppMethodBeat.o(146078);
+        a(AppForegroundDelegate.a.cKN, paramActivity);
+        AppMethodBeat.o(131750);
       }
       
       public final void onActivityStopped(Activity paramActivity)
       {
-        AppMethodBeat.i(146081);
-        paramActivity = paramActivity.getClass().getName();
-        if (ah.dsT())
+        AppMethodBeat.i(131753);
+        paramActivity = paramActivity.getClass().getName() + "@" + paramActivity.hashCode();
+        if (aj.cbe())
         {
-          a(paramActivity, ah.getProcessName(), AppForegroundDelegate.a.bXv);
-          AppMethodBeat.o(146081);
+          a(paramActivity, aj.getProcessName(), AppForegroundDelegate.a.cKQ);
+          AppMethodBeat.o(131753);
           return;
         }
-        a(AppForegroundDelegate.a.bXv, paramActivity);
-        AppMethodBeat.o(146081);
+        a(AppForegroundDelegate.a.cKQ, paramActivity);
+        AppMethodBeat.o(131753);
       }
       
       public final void onConfigurationChanged(Configuration paramConfiguration) {}
@@ -392,33 +343,49 @@ public enum AppForegroundDelegate
       
       public final void onReceive(Context paramContext, Intent paramIntent)
       {
-        AppMethodBeat.i(146074);
+        AppMethodBeat.i(131746);
         if (paramIntent == null)
         {
-          AppMethodBeat.o(146074);
+          AppMethodBeat.o(131746);
           return;
         }
         paramContext = paramIntent.getAction();
         if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("android.intent.action.SCREEN_ON".equals(paramContext)))
         {
-          ab.i("MicroMsg.AppForegroundDelegate", "ACTION_SCREEN:%s", new Object[] { paramContext });
-          if ("android.intent.action.SCREEN_OFF".equals(paramContext))
-          {
+          ad.i("MicroMsg.AppForegroundDelegate", "ACTION_SCREEN:%s", new Object[] { paramContext });
+          if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
             AppForegroundDelegate.a(AppForegroundDelegate.this, true);
-            AppMethodBeat.o(146074);
-            return;
           }
-          AppForegroundDelegate.a(AppForegroundDelegate.this, false);
-          AppMethodBeat.o(146074);
-          return;
+          for (;;)
+          {
+            h.Iye.f(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(131742);
+                synchronized (AppForegroundDelegate.d(AppForegroundDelegate.this))
+                {
+                  LinkedList localLinkedList = new LinkedList(AppForegroundDelegate.d(AppForegroundDelegate.this));
+                  ??? = localLinkedList.iterator();
+                  if (((Iterator)???).hasNext()) {
+                    ((o)((Iterator)???).next()).ca(AppForegroundDelegate.e(AppForegroundDelegate.this));
+                  }
+                }
+                AppMethodBeat.o(131742);
+              }
+            }, "MicroMsg.AppForegroundDelegate");
+            AppMethodBeat.o(131746);
+            return;
+            AppForegroundDelegate.a(AppForegroundDelegate.this, false);
+          }
         }
-        paramContext = AppForegroundDelegate.a.ds(paramContext);
+        paramContext = AppForegroundDelegate.a.ev(paramContext);
         if (paramContext != null)
         {
           String str = paramIntent.getStringExtra("_application_context_process_");
           a(paramIntent.getStringExtra("com.tencent.mm.AppForegroundDelegate.ACTIVITY_NAME"), str, paramContext);
         }
-        AppMethodBeat.o(146074);
+        AppMethodBeat.o(131746);
       }
       
       public final void onTrimMemory(int paramInt) {}
@@ -434,25 +401,25 @@ public enum AppForegroundDelegate
     
     public static void c(boolean paramBoolean, String paramString)
     {
-      AppMethodBeat.i(146085);
+      AppMethodBeat.i(131757);
       Intent localIntent = new Intent();
       if (paramBoolean) {}
       for (String str = "com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVE";; str = "com.tencent.mm.AppForegroundDelegate.ACTION_DEAD")
       {
         localIntent.setAction(str);
         localIntent.putExtra("com.tencent.mm.AppForegroundDelegate.ACTIVITY_NAME", paramString);
-        ah.getContext().sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
-        AppMethodBeat.o(146085);
+        aj.getContext().sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
+        AppMethodBeat.o(131757);
         return;
       }
     }
     
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
-      AppMethodBeat.i(146084);
+      AppMethodBeat.i(131756);
       if (paramIntent == null)
       {
-        AppMethodBeat.o(146084);
+        AppMethodBeat.o(131756);
         return;
       }
       paramContext = paramIntent.getAction();
@@ -460,11 +427,11 @@ public enum AppForegroundDelegate
       if ("com.tencent.mm.AppForegroundDelegate.ACTION_ACTIVE".equalsIgnoreCase(paramContext))
       {
         AppForegroundDelegate.a(AppForegroundDelegate.this, this.activity);
-        AppMethodBeat.o(146084);
+        AppMethodBeat.o(131756);
         return;
       }
       AppForegroundDelegate.b(AppForegroundDelegate.this, this.activity);
-      AppMethodBeat.o(146084);
+      AppMethodBeat.o(131756);
     }
   }
 }

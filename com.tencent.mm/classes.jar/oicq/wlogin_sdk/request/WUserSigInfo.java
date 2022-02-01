@@ -32,7 +32,7 @@ public class WUserSigInfo
   
   public void get_clone(WloginSigInfo paramWloginSigInfo)
   {
-    AppMethodBeat.i(96425);
+    AppMethodBeat.i(88064);
     byte[] arrayOfByte;
     if (paramWloginSigInfo._userStSig == null)
     {
@@ -152,7 +152,7 @@ public class WUserSigInfo
     for (paramWloginSigInfo = new byte[0];; paramWloginSigInfo = (byte[])paramWloginSigInfo._noPicSig.clone())
     {
       this._noPicSig = paramWloginSigInfo;
-      AppMethodBeat.o(96425);
+      AppMethodBeat.o(88064);
       return;
       arrayOfByte = (byte[])paramWloginSigInfo._userStSig.clone();
       break;

@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ci
   extends b
 {
-  public a cpN;
-  
   public ci()
   {
     this((byte)0);
@@ -15,18 +12,8 @@ public final class ci
   
   private ci(byte paramByte)
   {
-    AppMethodBeat.i(59606);
-    this.cpN = new a();
-    this.ymq = false;
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(59606);
-  }
-  
-  public static final class a
-  {
-    public long cpO;
-    public int msgType;
-    public String talker;
   }
 }
 

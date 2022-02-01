@@ -1,13 +1,9 @@
 package com.tencent.mm.plugin.webview.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.d.k;
-import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.plugin.webview.luggage.jsapi.au;
-import com.tencent.mm.plugin.webview.luggage.permission.c;
+import com.tencent.mm.plugin.webview.luggage.f;
 import com.tencent.mm.ui.base.l;
 
 public final class j
@@ -15,31 +11,27 @@ public final class j
 {
   public j()
   {
-    super(1);
+    super(28);
   }
   
-  public final void a(Context paramContext, e parame)
+  public final void a(Context paramContext, f paramf)
   {
-    AppMethodBeat.i(6443);
-    au.JS(0);
-    parame.dbb().agX("sendAppMessage");
-    parame.bzs.a(new j.1(this));
-    h.qsU.cT(982, 9);
-    AppMethodBeat.o(6443);
+    AppMethodBeat.i(78702);
+    paramf.reload();
+    h.vKh.dB(982, 7);
+    AppMethodBeat.o(78702);
   }
   
-  public final void a(Context paramContext, e parame, l paraml)
+  public final void a(Context paramContext, f paramf, l paraml)
   {
-    AppMethodBeat.i(6442);
-    if (parame.wZ(21)) {
-      paraml.a(this.id, paramContext.getString(2131302282), 2131231038);
-    }
-    AppMethodBeat.o(6442);
+    AppMethodBeat.i(78701);
+    paraml.a(28, paramContext.getString(2131766077), 2131689825);
+    AppMethodBeat.o(78701);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.b.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,234 +1,169 @@
 package com.tencent.mm.plugin.appbrand.jsapi.b;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.util.Log;
-import android.view.View;
+import com.tencent.magicbrush.ui.MagicBrushView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.af;
-import com.tencent.mm.plugin.appbrand.s.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.nio.ByteBuffer;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.g.c;
+import d.g.b.k;
+import d.l;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/HTMLCanvasElementManager;", "", "appId", "", "(Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "map", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/HTMLCanvasElementManager$Entity;", "add", "", "canvasId", "view", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "background", "canvasId2VirtualElementIdOrNull", "foreground", "foregroundCount", "get", "remove", "Companion", "Entity", "plugin-appbrand-integration_release"})
 public final class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<c>
 {
-  public static final int CTRL_INDEX = 372;
-  public static final String NAME = "canvasGetImageData";
+  private static final HashMap<String, a> jNl;
+  public static final a jNm;
+  final String appId;
+  public final ConcurrentHashMap<Integer, b> cit;
   
-  private static Map<String, Object> e(int[] paramArrayOfInt, int paramInt1, int paramInt2)
+  static
   {
-    AppMethodBeat.i(103839);
-    paramArrayOfInt = q(paramArrayOfInt);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("data", paramArrayOfInt);
-    localHashMap.put("width", Integer.valueOf(paramInt1));
-    localHashMap.put("height", Integer.valueOf(paramInt2));
-    AppMethodBeat.o(103839);
-    return localHashMap;
+    AppMethodBeat.i(50490);
+    jNm = new a((byte)0);
+    jNl = new HashMap();
+    AppMethodBeat.o(50490);
   }
   
-  private static ByteBuffer q(int[] paramArrayOfInt)
+  public a(String paramString)
   {
-    AppMethodBeat.i(103840);
-    byte[] arrayOfByte = new byte[paramArrayOfInt.length * 4];
+    AppMethodBeat.i(50489);
+    this.appId = paramString;
+    g.a(this.appId, (g.c)new g.c()
+    {
+      public final void onDestroy()
+      {
+        AppMethodBeat.i(50483);
+        a.a locala = a.jNm;
+        a.a.Ia(this.jNn.appId);
+        AppMethodBeat.o(50483);
+      }
+    });
+    this.cit = new ConcurrentHashMap();
+    AppMethodBeat.o(50489);
+  }
+  
+  public static final a HZ(String paramString)
+  {
+    AppMethodBeat.i(50491);
+    paramString = a.HZ(paramString);
+    AppMethodBeat.o(50491);
+    return paramString;
+  }
+  
+  public final void a(int paramInt, MagicBrushView paramMagicBrushView)
+  {
+    AppMethodBeat.i(196280);
+    k.h(paramMagicBrushView, "view");
+    ((Map)this.cit).put(Integer.valueOf(paramInt), new b(paramMagicBrushView));
+    AppMethodBeat.o(196280);
+  }
+  
+  public final int aZB()
+  {
     int i = 0;
-    int k;
-    for (int j = 0; i < paramArrayOfInt.length; j = k + 1)
+    AppMethodBeat.i(50488);
+    Object localObject = (Map)this.cit;
+    if (((Map)localObject).isEmpty())
     {
-      k = j + 1;
-      arrayOfByte[j] = ((byte)(paramArrayOfInt[i] >> 16 & 0xFF));
-      j = k + 1;
-      arrayOfByte[k] = ((byte)(paramArrayOfInt[i] >> 8 & 0xFF));
-      k = j + 1;
-      arrayOfByte[j] = ((byte)(paramArrayOfInt[i] & 0xFF));
-      arrayOfByte[k] = ((byte)(paramArrayOfInt[i] >> 24 & 0xFF));
-      i += 1;
+      AppMethodBeat.o(50488);
+      return 0;
     }
-    paramArrayOfInt = ByteBuffer.wrap(arrayOfByte);
-    AppMethodBeat.o(103840);
-    return paramArrayOfInt;
+    localObject = ((Map)localObject).entrySet().iterator();
+    while (((Iterator)localObject).hasNext()) {
+      if (((b)((Map.Entry)((Iterator)localObject).next()).getValue()).foreground) {
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(50488);
+    return i;
   }
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void rJ(int paramInt)
   {
-    AppMethodBeat.i(103838);
-    int i7;
-    try
+    AppMethodBeat.i(50487);
+    Object localObject = this.cit.get(Integer.valueOf(paramInt));
+    if (localObject == null) {
+      k.fvU();
+    }
+    ((b)localObject).foreground = true;
+    AppMethodBeat.o(50487);
+  }
+  
+  public final void rK(int paramInt)
+  {
+    AppMethodBeat.i(196281);
+    Object localObject = this.cit.get(Integer.valueOf(paramInt));
+    if (localObject == null) {
+      k.fvU();
+    }
+    ((b)localObject).foreground = false;
+    AppMethodBeat.o(196281);
+  }
+  
+  public final void remove(int paramInt)
+  {
+    AppMethodBeat.i(196282);
+    this.cit.remove(Integer.valueOf(paramInt));
+    AppMethodBeat.o(196282);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/HTMLCanvasElementManager$Companion;", "", "()V", "holder", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/HTMLCanvasElementManager;", "Lkotlin/collections/HashMap;", "instance", "appId", "release", "plugin-appbrand-integration_release"})
+  public static final class a
+  {
+    public static a HZ(String paramString)
     {
-      i7 = paramJSONObject.getInt("canvasId");
-      localObject = ((com.tencent.mm.plugin.appbrand.jsapi.base.f)paramc.q(com.tencent.mm.plugin.appbrand.jsapi.base.f.class)).d(paramc);
-      if (localObject == null)
+      AppMethodBeat.i(50484);
+      k.h(paramString, "appId");
+      synchronized (a.aZC())
       {
-        ab.w("MicroMsg.JsApiCanvasGetImageData", "invoke JsApi canvasGetImageData failed, component view is null.");
-        paramc.h(paramInt, j("fail:page is null", null));
-        AppMethodBeat.o(103838);
-        return;
-      }
-    }
-    catch (JSONException paramJSONObject)
-    {
-      ab.i("MicroMsg.JsApiCanvasGetImageData", "get canvas id failed, %s", new Object[] { Log.getStackTraceString(paramJSONObject) });
-      paramc.h(paramInt, j("fail:illegal canvasId", null));
-      AppMethodBeat.o(103838);
-      return;
-    }
-    Object localObject = ((e)localObject).vC().getViewById(i7);
-    if (localObject == null)
-    {
-      ab.w("MicroMsg.JsApiCanvasGetImageData", "view(%s) is null.", new Object[] { Integer.valueOf(i7) });
-      paramc.h(paramInt, j("fail:view is null", null));
-      AppMethodBeat.o(103838);
-      return;
-    }
-    if (!(localObject instanceof CoverViewContainer))
-    {
-      ab.w("MicroMsg.JsApiCanvasGetImageData", "the viewId is not a canvas(%s).", new Object[] { Integer.valueOf(i7) });
-      paramc.h(paramInt, j("fail:illegal view type", null));
-      AppMethodBeat.o(103838);
-      return;
-    }
-    localObject = (View)((CoverViewContainer)localObject).aa(View.class);
-    if (!(localObject instanceof com.tencent.mm.plugin.appbrand.canvas.widget.a))
-    {
-      ab.i("MicroMsg.JsApiCanvasGetImageData", "the view is not a instance of CanvasView.(%s)", new Object[] { Integer.valueOf(i7) });
-      paramc.h(paramInt, j("fail:illegal view type", null));
-      AppMethodBeat.o(103838);
-      return;
-    }
-    float f = g.aNP();
-    int m = paramJSONObject.optInt("x");
-    int n = paramJSONObject.optInt("y");
-    int i = paramJSONObject.optInt("width");
-    int i1 = paramJSONObject.optInt("height");
-    if ((i == 0) || (i1 == 0))
-    {
-      ab.i("MicroMsg.JsApiCanvasGetImageData", "width(%s) or height(%s) is 0.(%s)", new Object[] { Integer.valueOf(i), Integer.valueOf(i1), Integer.valueOf(i7) });
-      paramc.h(paramInt, j("fail:width or height is 0", null));
-      AppMethodBeat.o(103838);
-      return;
-    }
-    int k;
-    if (i < 0)
-    {
-      k = -i;
-      m += i;
-    }
-    for (;;)
-    {
-      if (i1 < 0)
-      {
-        i = -i1;
-        n += i1;
-        i1 = i;
-      }
-      for (;;)
-      {
-        int j = Math.round(m * f);
-        int i4 = Math.round(n * f);
-        int i6 = Math.round(k * f);
-        int i5 = Math.round(i1 * f);
-        i = ((View)localObject).getMeasuredWidth();
-        int i8 = ((View)localObject).getMeasuredHeight();
-        if (j < 0) {}
-        label944:
-        label951:
-        for (int i2 = 0;; i2 = j)
+        a locala = (a)a.aZC().get(paramString);
+        if (locala != null)
         {
-          if (i4 < 0) {}
-          for (int i3 = 0;; i3 = i4)
-          {
-            if (j + i6 > i)
-            {
-              i -= i2;
-              if (i4 + i5 <= i8) {
-                break label839;
-              }
-              j = i8 - i3;
-            }
-            for (;;)
-            {
-              i4 = Math.round(i2 / f);
-              i5 = Math.round(i3 / f);
-              i6 = Math.round(i / f);
-              i8 = Math.round(j / f);
-              try
-              {
-                paramJSONObject = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-                com.tencent.mm.plugin.appbrand.canvas.f localf = new com.tencent.mm.plugin.appbrand.canvas.f(paramJSONObject);
-                localf.save();
-                localf.translate(-i2, -i3);
-                ((com.tencent.mm.plugin.appbrand.canvas.widget.a)localObject).f(localf);
-                localf.restore();
-                paramJSONObject = Bitmap.createScaledBitmap(paramJSONObject, i6, i8, false);
-                localObject = new int[k * i1];
-                paramJSONObject.getPixels((int[])localObject, (i5 - n) * k + (i4 - m), k, 0, 0, i6, i8);
-                paramc.h(paramInt, a(paramc, "ok", e((int[])localObject, k, i1)));
-                AppMethodBeat.o(103838);
-                return;
-              }
-              catch (Exception paramJSONObject)
-              {
-                ab.w("MicroMsg.JsApiCanvasGetImageData", "create bitmap failed, viewId(%s). Exception : %s", new Object[] { Integer.valueOf(i7), paramJSONObject });
-                paramc.h(paramInt, j("fail:create bitmap failed", null));
-                AppMethodBeat.o(103838);
-                return;
-              }
-              if (j < i) {
-                break label951;
-              }
-              paramc.h(paramInt, a(paramc, "ok", e(new int[k * i1], k, i1)));
-              AppMethodBeat.o(103838);
-              return;
-              if (i4 < i8) {
-                break label944;
-              }
-              paramc.h(paramInt, a(paramc, "ok", e(new int[k * i1], k, i1)));
-              AppMethodBeat.o(103838);
-              return;
-              if (j + i6 <= 0)
-              {
-                paramc.h(paramInt, a(paramc, "ok", e(new int[k * i1], k, i1)));
-                AppMethodBeat.o(103838);
-                return;
-              }
-              i = i6;
-              if (j >= 0) {
-                break;
-              }
-              i = i6 + j;
-              break;
-              label839:
-              if (i4 + i5 <= 0)
-              {
-                paramc.h(paramInt, a(paramc, "ok", e(new int[k * i1], k, i1)));
-                AppMethodBeat.o(103838);
-                return;
-              }
-              j = i5;
-              if (i4 < 0) {
-                j = i5 + i4;
-              }
-            }
-          }
+          AppMethodBeat.o(50484);
+          return locala;
         }
+        locala = new a(paramString);
+        ((Map)a.aZC()).put(paramString, locala);
+        AppMethodBeat.o(50484);
+        return locala;
       }
-      k = i;
+    }
+    
+    public static a Ia(String paramString)
+    {
+      AppMethodBeat.i(50485);
+      k.h(paramString, "appId");
+      synchronized (a.aZC())
+      {
+        paramString = (a)a.aZC().remove(paramString);
+        AppMethodBeat.o(50485);
+        return paramString;
+      }
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/HTMLCanvasElementManager$Entity;", "", "view", "Lcom/tencent/magicbrush/ui/MagicBrushView;", "(Lcom/tencent/magicbrush/ui/MagicBrushView;)V", "foreground", "", "getForeground", "()Z", "setForeground", "(Z)V", "getView", "()Lcom/tencent/magicbrush/ui/MagicBrushView;", "plugin-appbrand-integration_release"})
+  public static final class b
+  {
+    boolean foreground;
+    public final MagicBrushView jNo;
+    
+    public b(MagicBrushView paramMagicBrushView)
+    {
+      AppMethodBeat.i(50486);
+      this.jNo = paramMagicBrushView;
+      AppMethodBeat.o(50486);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.b.a
  * JD-Core Version:    0.7.0.1
  */

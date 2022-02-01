@@ -11,14 +11,14 @@ final class HomeUI$21
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(153780);
-    HomeUI.x(this.yYw);
-    AppMethodBeat.o(153780);
+    AppMethodBeat.i(204893);
+    HomeUI.B(this.FLD);
+    AppMethodBeat.o(204893);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.HomeUI.21
  * JD-Core Version:    0.7.0.1
  */

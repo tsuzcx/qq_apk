@@ -5,86 +5,86 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 
 public class TopStoryTabHomeUI
   extends MMActivity
 {
-  private c thi;
+  private c yNN;
   
   public TopStoryTabHomeUI()
   {
-    AppMethodBeat.i(1671);
-    this.thi = new c(this);
-    AppMethodBeat.o(1671);
+    AppMethodBeat.i(126028);
+    this.yNN = new c(this);
+    AppMethodBeat.o(126028);
   }
   
   public int getLayoutId()
   {
-    return 2130971022;
+    return 2131495786;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(1672);
+    AppMethodBeat.i(126029);
     super.onCreate(paramBundle);
-    ab.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
-    this.thi.onCreate(paramBundle);
-    AppMethodBeat.o(1672);
+    ad.i("MicroMsg.TopStory.TopStoryHomeUI", "use TopStoryHomeUI");
+    this.yNN.onCreate(paramBundle);
+    AppMethodBeat.o(126029);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(1676);
-    this.thi.onDestroy();
+    AppMethodBeat.i(126033);
+    this.yNN.onDestroy();
     super.onDestroy();
-    AppMethodBeat.o(1676);
+    AppMethodBeat.o(126033);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(1673);
-    if (this.thi.Gx(paramInt))
+    AppMethodBeat.i(126030);
+    if (this.yNN.Pf(paramInt))
     {
-      AppMethodBeat.o(1673);
+      AppMethodBeat.o(126030);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(1673);
+    AppMethodBeat.o(126030);
     return bool;
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(1677);
-    this.thi.onNewIntent(paramIntent);
+    AppMethodBeat.i(126034);
+    this.yNN.onNewIntent(paramIntent);
     super.onNewIntent(paramIntent);
-    AppMethodBeat.o(1677);
+    AppMethodBeat.o(126034);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(1675);
-    this.thi.onPause();
+    AppMethodBeat.i(126032);
+    this.yNN.onPause();
     super.onPause();
-    AppMethodBeat.o(1675);
+    AppMethodBeat.o(126032);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(1674);
+    AppMethodBeat.i(126031);
     super.onResume();
-    this.thi.onResume();
-    AppMethodBeat.o(1674);
+    this.yNN.onResume();
+    AppMethodBeat.o(126031);
   }
   
   public void onSaveInstanceState(Bundle paramBundle)
   {
-    AppMethodBeat.i(1678);
+    AppMethodBeat.i(126035);
     super.onSaveInstanceState(paramBundle);
-    this.thi.onSaveInstanceState(paramBundle);
-    AppMethodBeat.o(1678);
+    this.yNN.onSaveInstanceState(paramBundle);
+    AppMethodBeat.o(126035);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -95,7 +95,7 @@ public class TopStoryTabHomeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.TopStoryTabHomeUI
  * JD-Core Version:    0.7.0.1
  */

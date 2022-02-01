@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 public abstract interface c
 {
-  public abstract int bMP();
+  public abstract String FI(int paramInt);
+  
+  public abstract int cKY();
   
   public abstract void onError();
   
   public abstract void restore();
-  
-  public abstract String yf(int paramInt);
 }
 
 

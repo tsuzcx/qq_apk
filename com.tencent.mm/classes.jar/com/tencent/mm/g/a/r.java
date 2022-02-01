@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class r
   extends b
 {
-  public r.a cmP;
+  public a dbz;
   
   public r()
   {
@@ -15,16 +15,23 @@ public final class r
   
   private r(byte paramByte)
   {
-    AppMethodBeat.i(15752);
-    this.cmP = new r.a();
-    this.ymq = false;
+    AppMethodBeat.i(104408);
+    this.dbz = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15752);
+    AppMethodBeat.o(104408);
+  }
+  
+  public static final class a
+  {
+    public String dbA;
+    public int dbB;
+    public int status;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.r
  * JD-Core Version:    0.7.0.1
  */

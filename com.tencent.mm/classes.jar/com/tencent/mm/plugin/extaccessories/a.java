@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.extaccessories;
 
+import com.tencent.mm.pluginsdk.k;
+import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.pluginsdk.o;
 
 public final class a
-  implements o
+  implements m
 {
-  public static n gmO;
-  public static m gmP;
+  public static l hYt;
+  public static k hYu;
   
-  public final void a(m paramm)
+  public final void a(k paramk)
   {
-    gmP = paramm;
+    hYu = paramk;
   }
   
-  public final void a(n paramn)
+  public final void a(l paraml)
   {
-    gmO = paramn;
+    hYt = paraml;
   }
 }
 

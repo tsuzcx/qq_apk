@@ -8,13 +8,16 @@ public abstract class be
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dgT = "content".hashCode();
-  private static final int duU = "designerIDAndType".hashCode();
+  private static final int exh = "designerUin".hashCode();
+  private static final int exi = "productId".hashCode();
+  private static final int exj = "syncTime".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dgw = true;
-  private boolean duT = true;
-  public byte[] field_content;
-  public String field_designerIDAndType;
+  private boolean exe = true;
+  private boolean exf = true;
+  private boolean exg = true;
+  public int field_designerUin;
+  public String field_productId;
+  public int field_syncTime;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,20 +32,21 @@ public abstract class be
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (duU != k) {
-        break label65;
+      if (exh != k) {
+        break label60;
       }
-      this.field_designerIDAndType = paramCursor.getString(i);
-      this.duT = true;
+      this.field_designerUin = paramCursor.getInt(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (dgT == k) {
-        this.field_content = paramCursor.getBlob(i);
+      label60:
+      if (exi == k) {
+        this.field_productId = paramCursor.getString(i);
+      } else if (exj == k) {
+        this.field_syncTime = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +56,14 @@ public abstract class be
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.duT) {
-      localContentValues.put("designerIDAndType", this.field_designerIDAndType);
+    if (this.exe) {
+      localContentValues.put("designerUin", Integer.valueOf(this.field_designerUin));
     }
-    if (this.dgw) {
-      localContentValues.put("content", this.field_content);
+    if (this.exf) {
+      localContentValues.put("productId", this.field_productId);
+    }
+    if (this.exg) {
+      localContentValues.put("syncTime", Integer.valueOf(this.field_syncTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -66,7 +73,7 @@ public abstract class be
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.be
  * JD-Core Version:    0.7.0.1
  */

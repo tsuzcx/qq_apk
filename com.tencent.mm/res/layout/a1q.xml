@@ -1,10 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/l0">
-        <ImageView android:id="@id/bz2" android:src="@drawable/ag8" style="@style/jd" />
-        <TextView android:id="@id/bzn" android:text="@string/c2x" style="@style/je" />
-        <TextView android:id="@id/bzo" android:text="@string/c2y" style="@style/jf" />
-        <TextView android:id="@id/bzp" android:text="@string/c2z" style="@style/jg" />
-    </LinearLayout>
-</LinearLayout>
+<com.tencent.mm.plugin.facedetect.views.FaceNumberItemView style="@style/ip" />

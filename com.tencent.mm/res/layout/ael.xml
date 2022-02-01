@@ -1,6 +1,324 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<ScrollView android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/m2" android:textColor="@color/w_" android:textColorHint="@color/s5" android:id="@id/lh" android:background="@drawable/b9e" android:padding="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" android:maxLength="128" android:inputType="text" android:textCursorDrawable="@null" />
-    <TextView android:textSize="@dimen/nf" android:textColor="@color/s4" android:id="@id/bq1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:paddingLeft="4.0dip" android:paddingTop="16.0dip" android:paddingRight="2.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="1.0">
+        <LinearLayout android:orientation="horizontal" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <CheckBox android:id="@id/api" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="CLIENT ENABLE" style="@style/oj" />
+            <CheckBox android:id="@id/apc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:checked="true" android:text="DEBUG LOG" style="@style/oj" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <CheckBox android:id="@id/apa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="DAY SWITCH" style="@style/oj" />
+            <TextView android:paddingLeft="16.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="cinterval" />
+            <EditText android:gravity="end" android:id="@id/f1j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+        </LinearLayout>
+        <CheckBox android:id="@id/ape" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="ENABLE TIME LIMIT" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:paddingTop="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="2.0">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BEGIN" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="right" android:id="@id/ys" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="2.0">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="END" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="right" android:id="@id/bmm" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:layout_weight="1.0" />
+        </LinearLayout>
+        <CheckBox android:id="@id/ap8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="BOOT" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/bx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b5y" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/ct8" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g87" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/aq7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="ENCODE_VIDEO" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/d0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b6c" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/ctm" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g8l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/apf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="ENTER_CHATTING" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/c7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b61" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/cta" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g8_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/app" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="QUIT_CHATTING" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/cl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b65" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/cte" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g8d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/apt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="SEND_PIC_MSG" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/cp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b68" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/cth" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g8g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/aps" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="SEND_MSG" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/co" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b67" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/ctg" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g8f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/apq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="RECEIVE_MSG" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/cm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b66" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/ctf" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g8e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip">
+            <CheckBox android:id="@id/aq6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="UPDATE_CHATROOM" style="@style/oj" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="count" />
+            <EditText android:gravity="end" android:id="@id/giq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="2" android:maxLength="3" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b6b" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/ctl" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g8k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/apb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="DB" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="qdelay" />
+            <EditText android:gravity="end" android:id="@id/b9g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="qaction" />
+            <EditText android:gravity="end" android:id="@id/c2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="btimeout" />
+            <EditText android:gravity="end" android:id="@id/g9n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="wdelay" />
+            <EditText android:gravity="end" android:id="@id/b9h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="waction" />
+            <EditText android:gravity="end" android:id="@id/c3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b5z" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/ct9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g88" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/apd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="DECODE_PIC" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/c4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b60" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/ct_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g89" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/apg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="GIF_INIT" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/c8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b62" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/ctb" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g8a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/aph" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="GIF_DROP_FRAME" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/c9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b63" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/ctc" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g8b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/apx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="SNS_SCROLL" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/cs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b6_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/ctj" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g8i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/apy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="SNS_USER_SCROLL" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/ct" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b6a" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/ctk" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g8j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/apw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="SNS_MSG_SCROLL" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/cr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b69" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/cti" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g8h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/apk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="MEDIA_GALLERY_SCROLL" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/cb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b64" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/ctd" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g8c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/ap6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="ALBUM_SCROLL" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/bm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b5w" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/ct6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g85" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+        <CheckBox android:id="@id/ap7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:checked="true" android:text="BIZ" style="@style/oj" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="timeout" />
+            <EditText android:gravity="end" android:id="@id/g9k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="delay" />
+            <EditText android:gravity="end" android:id="@id/b9e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="3" android:maxLength="5" android:inputType="number" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="action" />
+            <EditText android:gravity="end" android:id="@id/bw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:ems="4" android:maxLength="7" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="CPU" />
+            <Spinner android:entries="@array/e" android:id="@id/b5x" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IO" />
+            <Spinner android:entries="@array/o" android:id="@id/ct7" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <CheckBox android:id="@id/g86" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BIND THR" style="@style/oj" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

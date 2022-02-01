@@ -11,7 +11,7 @@ import java.util.Map;
 final class c
   extends d
 {
-  long axh = -9223372036854775807L;
+  long aSz = -9223372036854775807L;
   
   public c()
   {
@@ -21,11 +21,11 @@ final class c
   private static Boolean b(m paramm)
   {
     boolean bool = true;
-    AppMethodBeat.i(94870);
+    AppMethodBeat.i(91985);
     if (paramm.readUnsignedByte() == 1) {}
     for (;;)
     {
-      AppMethodBeat.o(94870);
+      AppMethodBeat.o(91985);
       return Boolean.valueOf(bool);
       bool = false;
     }
@@ -33,7 +33,7 @@ final class c
   
   private static Object b(m paramm, int paramInt)
   {
-    AppMethodBeat.i(94877);
+    AppMethodBeat.i(91992);
     switch (paramInt)
     {
     case 4: 
@@ -42,61 +42,61 @@ final class c
     case 7: 
     case 9: 
     default: 
-      AppMethodBeat.o(94877);
+      AppMethodBeat.o(91992);
       return null;
     case 0: 
       paramm = c(paramm);
-      AppMethodBeat.o(94877);
+      AppMethodBeat.o(91992);
       return paramm;
     case 1: 
       paramm = b(paramm);
-      AppMethodBeat.o(94877);
+      AppMethodBeat.o(91992);
       return paramm;
     case 2: 
       paramm = d(paramm);
-      AppMethodBeat.o(94877);
+      AppMethodBeat.o(91992);
       return paramm;
     case 3: 
       paramm = f(paramm);
-      AppMethodBeat.o(94877);
+      AppMethodBeat.o(91992);
       return paramm;
     case 8: 
       paramm = g(paramm);
-      AppMethodBeat.o(94877);
+      AppMethodBeat.o(91992);
       return paramm;
     case 10: 
       paramm = e(paramm);
-      AppMethodBeat.o(94877);
+      AppMethodBeat.o(91992);
       return paramm;
     }
     paramm = h(paramm);
-    AppMethodBeat.o(94877);
+    AppMethodBeat.o(91992);
     return paramm;
   }
   
   private static Double c(m paramm)
   {
-    AppMethodBeat.i(94871);
+    AppMethodBeat.i(91986);
     double d = Double.longBitsToDouble(paramm.readLong());
-    AppMethodBeat.o(94871);
+    AppMethodBeat.o(91986);
     return Double.valueOf(d);
   }
   
   private static String d(m paramm)
   {
-    AppMethodBeat.i(94872);
+    AppMethodBeat.i(91987);
     int i = paramm.readUnsignedShort();
     int j = paramm.position;
-    paramm.en(i);
+    paramm.fl(i);
     paramm = new String(paramm.data, j, i);
-    AppMethodBeat.o(94872);
+    AppMethodBeat.o(91987);
     return paramm;
   }
   
   private static ArrayList<Object> e(m paramm)
   {
-    AppMethodBeat.i(94873);
-    int j = paramm.qT();
+    AppMethodBeat.i(91988);
+    int j = paramm.vQ();
     ArrayList localArrayList = new ArrayList(j);
     int i = 0;
     while (i < j)
@@ -104,13 +104,13 @@ final class c
       localArrayList.add(b(paramm, paramm.readUnsignedByte()));
       i += 1;
     }
-    AppMethodBeat.o(94873);
+    AppMethodBeat.o(91988);
     return localArrayList;
   }
   
   private static HashMap<String, Object> f(m paramm)
   {
-    AppMethodBeat.i(94874);
+    AppMethodBeat.i(91989);
     HashMap localHashMap = new HashMap();
     for (;;)
     {
@@ -121,14 +121,14 @@ final class c
       }
       localHashMap.put(str, b(paramm, i));
     }
-    AppMethodBeat.o(94874);
+    AppMethodBeat.o(91989);
     return localHashMap;
   }
   
   private static HashMap<String, Object> g(m paramm)
   {
-    AppMethodBeat.i(94875);
-    int j = paramm.qT();
+    AppMethodBeat.i(91990);
+    int j = paramm.vQ();
     HashMap localHashMap = new HashMap(j);
     int i = 0;
     while (i < j)
@@ -136,36 +136,36 @@ final class c
       localHashMap.put(d(paramm), b(paramm, paramm.readUnsignedByte()));
       i += 1;
     }
-    AppMethodBeat.o(94875);
+    AppMethodBeat.o(91990);
     return localHashMap;
   }
   
   private static Date h(m paramm)
   {
-    AppMethodBeat.i(94876);
+    AppMethodBeat.i(91991);
     Date localDate = new Date(c(paramm).doubleValue());
-    paramm.en(2);
-    AppMethodBeat.o(94876);
+    paramm.fl(2);
+    AppMethodBeat.o(91991);
     return localDate;
   }
   
   protected final void a(m paramm, long paramLong)
   {
-    AppMethodBeat.i(94869);
+    AppMethodBeat.i(91984);
     if (paramm.readUnsignedByte() != 2)
     {
       paramm = new o();
-      AppMethodBeat.o(94869);
+      AppMethodBeat.o(91984);
       throw paramm;
     }
     if (!"onMetaData".equals(d(paramm)))
     {
-      AppMethodBeat.o(94869);
+      AppMethodBeat.o(91984);
       return;
     }
     if (paramm.readUnsignedByte() != 8)
     {
-      AppMethodBeat.o(94869);
+      AppMethodBeat.o(91984);
       return;
     }
     paramm = g(paramm);
@@ -173,10 +173,10 @@ final class c
     {
       double d = ((Double)paramm.get("duration")).doubleValue();
       if (d > 0.0D) {
-        this.axh = ((d * 1000000.0D));
+        this.aSz = ((d * 1000000.0D));
       }
     }
-    AppMethodBeat.o(94869);
+    AppMethodBeat.o(91984);
   }
   
   protected final boolean a(m paramm)
@@ -186,7 +186,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.c.a.c
  * JD-Core Version:    0.7.0.1
  */

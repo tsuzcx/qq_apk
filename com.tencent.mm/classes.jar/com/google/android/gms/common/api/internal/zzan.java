@@ -15,9 +15,9 @@ final class zzan
   @GuardedBy("mLock")
   public final void zzaq()
   {
-    AppMethodBeat.i(60753);
+    AppMethodBeat.i(11245);
     zzaj.zza(this.zzhz.zzhv, this.zzhy);
-    AppMethodBeat.o(60753);
+    AppMethodBeat.o(11245);
   }
 }
 

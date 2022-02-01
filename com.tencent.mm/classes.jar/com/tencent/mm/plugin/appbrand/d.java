@@ -1,64 +1,120 @@
 package com.tencent.mm.plugin.appbrand;
 
 import android.content.Context;
-import com.tencent.mm.plugin.appbrand.appstorage.n;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
-import com.tencent.mm.plugin.appbrand.b.c;
+import com.tencent.mm.plugin.appbrand.appcache.be;
+import com.tencent.mm.plugin.appbrand.appcache.q;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.plugin.appbrand.jsapi.i;
 import com.tencent.mm.plugin.appbrand.jsapi.j;
 import com.tencent.mm.plugin.appbrand.jsapi.k;
-import com.tencent.mm.plugin.appbrand.widget.b.l;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.plugin.appbrand.widget.dialog.m;
+import com.tencent.mm.sdk.f.a;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public abstract class d
-  extends com.tencent.mm.plugin.appbrand.jsapi.i
+  extends i
 {
-  public final <T extends j> T U(Class<T> paramClass)
+  public p Ee()
   {
-    if (isRunning())
+    if (!isRunning()) {
+      return super.Ee();
+    }
+    return getRuntime().Ee();
+  }
+  
+  public final <T extends com.tencent.luggage.a.b> T K(Class<T> paramClass)
+  {
+    Object localObject;
+    if (ICommLibReader.class == paramClass) {
+      localObject = super.K(paramClass);
+    }
+    com.tencent.luggage.a.b localb;
+    do
     {
-      j localj = getRuntime().d(paramClass, false);
+      return localObject;
+      localObject = getRuntime();
+      if (localObject == null) {
+        break;
+      }
+      localb = (com.tencent.luggage.a.b)((AppBrandRuntime)localObject).ab(paramClass);
+      localObject = localb;
+    } while (localb != null);
+    return super.K(paramClass);
+  }
+  
+  public final void a(ICommLibReader paramICommLibReader)
+  {
+    if (paramICommLibReader == null) {
+      throw new NullPointerException();
+    }
+    super.a(ICommLibReader.class, paramICommLibReader);
+  }
+  
+  public final boolean a(k paramk)
+  {
+    if ((!isRunning()) || (!getRuntime().a(paramk))) {
+      return super.a(paramk);
+    }
+    return true;
+  }
+  
+  public final com.tencent.mm.plugin.appbrand.b.b aLA()
+  {
+    if (!isRunning()) {
+      return com.tencent.mm.plugin.appbrand.b.b.iQN;
+    }
+    return getRuntime().iDK.iQP.aQO();
+  }
+  
+  public final m aLB()
+  {
+    if (!isRunning()) {
+      return super.aLB();
+    }
+    return getRuntime().hKb;
+  }
+  
+  public final ICommLibReader aLC()
+  {
+    return (ICommLibReader)K(ICommLibReader.class);
+  }
+  
+  public final q aLz()
+  {
+    AppBrandRuntime localAppBrandRuntime = getRuntime();
+    if (localAppBrandRuntime == null) {
+      return null;
+    }
+    return be.U(localAppBrandRuntime);
+  }
+  
+  public final <T extends j> T ar(Class<T> paramClass)
+  {
+    if (getRuntime() != null)
+    {
+      j localj = getRuntime().c(paramClass, false);
       if (localj != null) {
         return localj;
       }
     }
-    return super.U(paramClass);
+    return super.ar(paramClass);
   }
   
-  public final <T extends k> T V(Class<T> paramClass)
+  public final <T extends k> T as(Class<T> paramClass)
   {
     k localk1;
     if (isRunning())
     {
-      k localk2 = getRuntime().V(paramClass);
+      k localk2 = getRuntime().as(paramClass);
       localk1 = localk2;
       if (localk2 != null) {}
     }
     else
     {
-      localk1 = super.V(paramClass);
+      localk1 = super.as(paramClass);
     }
     return localk1;
-  }
-  
-  public final com.tencent.mm.plugin.appbrand.b.b asW()
-  {
-    if (!isRunning()) {
-      return com.tencent.mm.plugin.appbrand.b.b.gYh;
-    }
-    return getRuntime().gPL.gYj.awr();
-  }
-  
-  public final l asX()
-  {
-    if (!isRunning()) {
-      return super.asX();
-    }
-    return getRuntime().gPE;
-  }
-  
-  public final n asY()
-  {
-    return (n)q(n.class);
   }
   
   public final String getAppId()
@@ -73,7 +129,7 @@ public abstract class d
   {
     Object localObject1;
     if (getRuntime() == null) {
-      localObject1 = ah.getContext();
+      localObject1 = aj.getContext();
     }
     Object localObject2;
     do
@@ -81,48 +137,26 @@ public abstract class d
       do
       {
         return localObject1;
-        localObject2 = getRuntime().getContext();
+        localObject2 = a.iV(getRuntime().mContext);
         localObject1 = localObject2;
       } while (localObject2 != null);
       localObject2 = getRuntime().mContext;
       localObject1 = localObject2;
     } while (localObject2 != null);
-    return ah.getContext();
+    return aj.getContext();
   }
+  
+  public abstract com.tencent.mm.plugin.appbrand.s.a.c getWindowAndroid();
   
   public boolean isRunning()
   {
-    i locali = getRuntime();
-    return (locali != null) && (!locali.mFinished);
-  }
-  
-  public final <T extends com.tencent.luggage.a.b> T q(Class<T> paramClass)
-  {
-    Object localObject = getRuntime();
-    if (localObject != null)
-    {
-      com.tencent.luggage.a.b localb = (com.tencent.luggage.a.b)((i)localObject).E(paramClass);
-      localObject = localb;
-      if (localb != null) {}
-    }
-    else
-    {
-      localObject = super.q(paramClass);
-    }
-    return localObject;
-  }
-  
-  public final o wX()
-  {
-    if (!isRunning()) {
-      return super.wX();
-    }
-    return getRuntime().wX();
+    AppBrandRuntime localAppBrandRuntime = getRuntime();
+    return (localAppBrandRuntime != null) && (!localAppBrandRuntime.isDestroyed());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.d
  * JD-Core Version:    0.7.0.1
  */

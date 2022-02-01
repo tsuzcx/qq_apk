@@ -18,87 +18,101 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 public class BindMobileOrQQHeaderView
   extends LinearLayout
 {
-  private TextView pcA;
-  private WeImageView pcB;
-  private BindMobileOrQQHeaderView.a pcC;
-  private View.OnClickListener pcD;
+  private TextView tZY;
+  private WeImageView tZZ;
+  private a uaa;
+  private View.OnClickListener uab;
   
   public BindMobileOrQQHeaderView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(55406);
-    this.pcD = new View.OnClickListener()
+    AppMethodBeat.i(89803);
+    this.uab = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(55400);
+        AppMethodBeat.i(89797);
         paramAnonymousView = new Intent();
         paramAnonymousView.setClass(BindMobileOrQQHeaderView.this.getContext(), BindMContactIntroUI.class);
         paramAnonymousView.putExtra("key_upload_scene", 7);
-        MMWizardActivity.J(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
-        if (g.abw().pL("3") != null)
+        MMWizardActivity.V(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
+        if (g.asX().uz("3") != null)
         {
-          g.abw().pL("3").result = "1";
-          f.pQ("3");
+          g.asX().uz("3").result = "1";
+          f.uE("3");
         }
-        AppMethodBeat.o(55400);
+        AppMethodBeat.o(89797);
       }
     };
-    this.pcC = BindMobileOrQQHeaderView.a.pcG;
-    aA(paramContext);
-    AppMethodBeat.o(55406);
+    this.uaa = a.uae;
+    aL(paramContext);
+    AppMethodBeat.o(89803);
   }
   
   public BindMobileOrQQHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(55405);
-    this.pcD = new View.OnClickListener()
+    AppMethodBeat.i(89802);
+    this.uab = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(55400);
+        AppMethodBeat.i(89797);
         paramAnonymousView = new Intent();
         paramAnonymousView.setClass(BindMobileOrQQHeaderView.this.getContext(), BindMContactIntroUI.class);
         paramAnonymousView.putExtra("key_upload_scene", 7);
-        MMWizardActivity.J(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
-        if (g.abw().pL("3") != null)
+        MMWizardActivity.V(BindMobileOrQQHeaderView.this.getContext(), paramAnonymousView);
+        if (g.asX().uz("3") != null)
         {
-          g.abw().pL("3").result = "1";
-          f.pQ("3");
+          g.asX().uz("3").result = "1";
+          f.uE("3");
         }
-        AppMethodBeat.o(55400);
+        AppMethodBeat.o(89797);
       }
     };
-    aA(paramContext);
-    AppMethodBeat.o(55405);
+    aL(paramContext);
+    AppMethodBeat.o(89802);
   }
   
-  private void aA(Context paramContext)
+  private void aL(Context paramContext)
   {
-    AppMethodBeat.i(55407);
-    paramContext = View.inflate(paramContext, 2130970342, this);
-    this.pcA = ((TextView)paramContext.findViewById(2131826487));
-    this.pcB = ((WeImageView)paramContext.findViewById(2131826486));
-    switch (2.pcF[this.pcC.ordinal()])
+    AppMethodBeat.i(89804);
+    paramContext = View.inflate(paramContext, 2131494999, this);
+    this.tZY = ((TextView)paramContext.findViewById(2131302701));
+    this.tZZ = ((WeImageView)paramContext.findViewById(2131302683));
+    switch (2.uad[this.uaa.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(55407);
+      AppMethodBeat.o(89804);
       return;
-      setOnClickListener(this.pcD);
-      this.pcB.setImageResource(2131231491);
-      AppMethodBeat.o(55407);
+      setOnClickListener(this.uab);
+      this.tZZ.setImageResource(2131690530);
+      AppMethodBeat.o(89804);
       return;
-      setOnClickListener(this.pcD);
-      this.pcB.setImageResource(2131231498);
+      setOnClickListener(this.uab);
+      this.tZZ.setImageResource(2131690548);
     }
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(89801);
+      uae = new a("Mobile", 0);
+      uaf = new a("UploadContact", 1);
+      uag = new a[] { uae, uaf };
+      AppMethodBeat.o(89801);
+    }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.ui.BindMobileOrQQHeaderView
  * JD-Core Version:    0.7.0.1
  */

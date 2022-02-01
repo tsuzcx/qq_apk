@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/amv" android:paddingTop="@dimen/i_" android:paddingBottom="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.game.widget.AutoResizeTextView android:textSize="24.0dip" android:textColor="@color/s5" android:gravity="center" android:id="@id/cak" android:layout_width="24.0dip" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:singleLine="true" />
+        <ImageView android:id="@id/cah" android:layout_width="@dimen/i2" android:layout_height="@dimen/i2" android:layout_marginRight="4.0dip" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/caj" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:singleLine="true" android:layout_weight="1.0" />
+                <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:id="@id/cam" android:background="@drawable/wn" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:singleLine="true" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:ellipsize="end" android:id="@id/cal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:singleLine="true" />
+        <com.tencent.mm.plugin.game.ui.GameDetailRankLikeView android:id="@id/cai" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    </LinearLayout>
+</LinearLayout>

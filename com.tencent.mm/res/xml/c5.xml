@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.DialogPreference mm:persistent="false" mm:title="@string/eee" mm:entries="@array/ae" mm:entryValues="@array/af" mm:key="settings_sex" mm:layout="@layout/afi" />
-    <Preference mm:title="@string/e_k" mm:key="settings_district" mm:layout="@layout/afi" />
-    <com.tencent.mm.chatroom.ui.preference.SignaturePreference mm:title="@string/eem" mm:key="settings_signature" mm:layout="@layout/afi" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference android:key="settings_account_info" android:layout="@layout/aop" android:title="@string/f4g" />
     <PreferenceSmallCategory />
-    <Preference mm:title="@string/eax" mm:key="settings_linkedin" mm:layout="@layout/afi" />
+    <Preference android:key="settings_notification_preference" android:layout="@layout/aop" android:title="@string/f92" />
+    <Preference android:key="settings_active_time" android:layout="@layout/aop" android:title="@string/f4j" />
+    <Preference android:key="settings_chatting" android:layout="@layout/aop" android:title="@string/f5d" />
+    <IconPreference android:key="settings_about_privacy" android:layout="@layout/aop" android:title="@string/f4d" />
+    <Preference android:key="settings_about_device" android:layout="@layout/aop" android:title="@string/f4a" />
+    <IconPreference android:key="settings_about_system" android:layout="@layout/aop" android:title="@string/f4f" />
     <PreferenceSmallCategory />
+    <IconPreference android:key="settings_about_micromsg" android:title="@string/f4c" />
+    <Preference android:key="settings_feedback" android:layout="@layout/aop" android:title="@string/f67" />
+    <PreferenceSmallCategory />
+    <IconPreference android:key="settings_welab" android:layout="@layout/aop" android:title="@string/fcs" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/fax" android:key="settings_switch_account" android:title_color="?i" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/f76" android:key="settings_logout" android:layout="@layout/aop" />
+    <PreferenceCategory />
 </PreferenceScreen>

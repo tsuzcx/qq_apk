@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
+<RelativeLayout android:id="@id/gmi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip">
-        <TextView android:textColor="@color/re" android:id="@android:id/title" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" style="@style/lg" />
-        <TextView android:textColor="@color/h6" android:id="@id/ddk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/lg" />
-        <TextView android:textSize="15.0dip" android:textColor="@color/a8h" android:id="@id/ddl" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/gny" android:background="@drawable/y8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerSeekBar android:id="@id/gne" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:onClick="onClick" />
     </LinearLayout>
-    <TextView android:textSize="10.0dip" android:textColor="@color/a6q" android:gravity="center" android:id="@id/amd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sn" />
-</LinearLayout>
+</RelativeLayout>

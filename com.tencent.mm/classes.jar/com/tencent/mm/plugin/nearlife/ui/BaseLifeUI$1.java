@@ -11,14 +11,14 @@ final class BaseLifeUI$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(22936);
-    BaseLifeUI.a(this.pfa);
-    AppMethodBeat.o(22936);
+    AppMethodBeat.i(26560);
+    BaseLifeUI.a(this.ucz);
+    AppMethodBeat.o(26560);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.BaseLifeUI.1
  * JD-Core Version:    0.7.0.1
  */

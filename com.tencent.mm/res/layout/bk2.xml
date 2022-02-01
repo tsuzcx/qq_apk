@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/a_r" android:paddingLeft="@dimen/ha" android:paddingTop="@dimen/ha" android:paddingRight="@dimen/ha" android:paddingBottom="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/gx" android:textColor="@color/tl" android:gravity="center|left" android:id="@id/gyv" android:layout_width="60.0dip" android:layout_height="wrap_content" android:text="@string/gui" android:layout_alignBottom="@id/gyu" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <TextView android:textSize="@dimen/gx" android:textColor="@color/y4" android:gravity="center|right" android:id="@id/gyu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/gyv" />
+    <TextView android:textSize="@dimen/gx" android:textColor="@color/tl" android:gravity="center|left" android:id="@id/gyb" android:layout_width="90.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/gtq" android:layout_below="@id/gyv" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="@dimen/gx" android:textColor="@color/y4" android:gravity="center|right" android:id="@id/gy_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/gyb" android:layout_below="@id/gyu" android:layout_alignTop="@id/gyb" android:lineSpacingExtra="6.0dip" />
+</RelativeLayout>

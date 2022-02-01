@@ -1,64 +1,80 @@
 package com.tencent.mm.emoji.loader.d;
 
-import a.l;
-import android.graphics.drawable.Drawable;
-import android.view.View;
+import com.tencent.mm.emoji.loader.e;
+import com.tencent.mm.emoji.loader.e.c;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import java.lang.ref.WeakReference;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/loader/request/ViewRequest;", "V", "Landroid/view/View;", "Lcom/tencent/mm/emoji/loader/request/Request;", "Landroid/graphics/drawable/Drawable;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "view", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Landroid/view/View;)V", "weakView", "Ljava/lang/ref/WeakReference;", "getWeakView", "()Ljava/lang/ref/WeakReference;", "setWeakView", "(Ljava/lang/ref/WeakReference;)V", "cancel", "", "onLoad", "success", "", "Companion", "plugin-emojisdk_release"})
-public abstract class i<V extends View>
-  extends h<Drawable>
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/request/Request;", "T", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "task", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "getTask", "()Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "setTask", "(Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;)V", "cancel", "", "createTask", "onLoad", "success", "", "reload", "async", "start", "Callback", "Companion", "StateCallback", "plugin-emojisdk_release"})
+public abstract class i<T>
 {
-  private static final int ewa = 2131820596;
-  public static final a ewb = new a((byte)0);
-  WeakReference<V> evZ;
+  private static final int fMj = 1;
+  private static final int fMk = -1;
+  public static final b fMl = new b((byte)0);
+  final EmojiInfo fLP;
+  private c fMi;
   
-  public i(EmojiInfo paramEmojiInfo, V paramV)
+  public i(EmojiInfo paramEmojiInfo)
   {
-    super(paramEmojiInfo);
-    this.evZ = new WeakReference(paramV);
-    paramEmojiInfo = (h)paramV.getTag(ewa);
-    if (paramEmojiInfo != null) {
-      paramEmojiInfo.cancel();
+    this.fLP = paramEmojiInfo;
+  }
+  
+  private void dh(boolean paramBoolean)
+  {
+    c localc = this.fMi;
+    if (localc != null) {
+      localc.d(this);
     }
-    paramV.setTag(ewa, this);
+    this.fMi = abd();
+    localc = this.fMi;
+    if (localc != null) {
+      localc.c(this);
+    }
+    localc = this.fMi;
+    if (localc != null) {
+      localc.start(paramBoolean);
+    }
+  }
+  
+  protected c abd()
+  {
+    e locale = e.fLn;
+    return e.c(this.fLP);
   }
   
   public void cancel()
   {
-    super.cancel();
-    Object localObject = this.evZ;
-    if (localObject != null) {}
-    for (localObject = (View)((WeakReference)localObject).get();; localObject = null)
-    {
-      if (localObject != null) {
-        ((View)localObject).setTag(ewa, null);
-      }
-      this.evZ = null;
-      return;
+    c localc = this.fMi;
+    if (localc != null) {
+      localc.d(this);
     }
   }
   
-  public void cf(boolean paramBoolean)
+  public abstract void dg(boolean paramBoolean);
+  
+  public void start(boolean paramBoolean)
   {
-    Object localObject = this.evZ;
-    if (localObject != null) {}
-    for (localObject = (View)((WeakReference)localObject).get();; localObject = null)
-    {
-      if (localObject != null) {
-        ((View)localObject).setTag(ewa, null);
-      }
-      return;
-    }
+    dh(paramBoolean);
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/loader/request/ViewRequest$Companion;", "", "()V", "TAG_ID", "", "getTAG_ID", "()I", "plugin-emojisdk_release"})
-  public static final class a {}
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "", "onResult", "", "success", "", "plugin-emojisdk_release"})
+  public static abstract interface a
+  {
+    public abstract void df(boolean paramBoolean);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/request/Request$Companion;", "", "()V", "StateFailed", "", "StateFailed$annotations", "getStateFailed", "()I", "StateLoading", "StateLoading$annotations", "getStateLoading", "StateSuccess", "StateSuccess$annotations", "getStateSuccess", "plugin-emojisdk_release"})
+  public static final class b {}
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/request/Request$StateCallback;", "T", "", "onState", "", "state", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "result", "(ILcom/tencent/mm/storage/emotion/EmojiInfo;Ljava/lang/Object;)V", "plugin-emojisdk_release"})
+  public static abstract interface c<T>
+  {
+    public abstract void aS(T paramT);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.d.i
  * JD-Core Version:    0.7.0.1
  */

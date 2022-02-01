@@ -10,11 +10,11 @@ public final class h
   static void a(DataHolder paramDataHolder, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.a(paramParcel, 1, paramDataHolder.gM());
-    c.a(paramParcel, 2, paramDataHolder.gN(), paramInt);
+    c.a(paramParcel, 1, paramDataHolder.gW());
+    c.a(paramParcel, 2, paramDataHolder.gX(), paramInt);
     c.c(paramParcel, 3, paramDataHolder.getStatusCode());
-    c.a(paramParcel, 4, paramDataHolder.gO());
-    c.c(paramParcel, 1000, paramDataHolder.Hc);
+    c.a(paramParcel, 4, paramDataHolder.gY());
+    c.c(paramParcel, 1000, paramDataHolder.IR);
     c.v(paramParcel, i);
   }
 }

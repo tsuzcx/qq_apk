@@ -11,15 +11,15 @@ final class WalletLqtSaveFetchUI$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(45644);
-    this.tRZ.hideTenpayKB();
-    WalletLqtSaveFetchUI.a(this.tRZ);
-    AppMethodBeat.o(45644);
+    AppMethodBeat.i(68967);
+    this.zMe.hideTenpayKB();
+    WalletLqtSaveFetchUI.a(this.zMe);
+    AppMethodBeat.o(68967);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSaveFetchUI.1
  * JD-Core Version:    0.7.0.1
  */

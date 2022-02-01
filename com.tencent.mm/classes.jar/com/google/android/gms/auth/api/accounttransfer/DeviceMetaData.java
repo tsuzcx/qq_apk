@@ -27,9 +27,9 @@ public class DeviceMetaData
   
   static
   {
-    AppMethodBeat.i(76991);
+    AppMethodBeat.i(10650);
     CREATOR = new zzy();
-    AppMethodBeat.o(76991);
+    AppMethodBeat.o(10650);
   }
   
   @SafeParcelable.Constructor
@@ -58,19 +58,19 @@ public class DeviceMetaData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(76990);
+    AppMethodBeat.i(10649);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzy);
     SafeParcelWriter.writeBoolean(paramParcel, 2, isLockScreenSolved());
     SafeParcelWriter.writeLong(paramParcel, 3, getMinAgeOfLockScreen());
     SafeParcelWriter.writeBoolean(paramParcel, 4, isChallengeAllowed());
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(76990);
+    AppMethodBeat.o(10649);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.accounttransfer.DeviceMetaData
  * JD-Core Version:    0.7.0.1
  */

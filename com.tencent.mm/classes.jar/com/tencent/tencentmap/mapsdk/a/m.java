@@ -1,70 +1,125 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import android.util.Log;
-import com.tencent.map.lib.d;
+import android.graphics.Point;
+import com.tencent.mapsdk.raster.model.GeoPoint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import org.json.JSONArray;
-import org.json.JSONException;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLngBounds;
 
 public class m
+  implements com.tencent.tencentmap.mapsdk.map.Projection
 {
-  private int a;
-  private int b;
-  private JSONArray c;
-  private String[] d;
+  private com.tencent.tencentmap.mapsdk.maps.Projection a;
+  private TencentMap b;
   
-  public m(int paramInt1, int paramInt2, JSONArray paramJSONArray)
+  public m(TencentMap paramTencentMap)
   {
-    AppMethodBeat.i(147044);
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramJSONArray;
-    if (this.c == null)
+    AppMethodBeat.i(186354);
+    this.a = paramTencentMap.getProjection();
+    this.b = paramTencentMap;
+    AppMethodBeat.o(186354);
+  }
+  
+  public double distanceBetween(com.tencent.mapsdk.raster.model.LatLng paramLatLng1, com.tencent.mapsdk.raster.model.LatLng paramLatLng2)
+  {
+    AppMethodBeat.i(186358);
+    double d = e.a(paramLatLng1, paramLatLng2);
+    AppMethodBeat.o(186358);
+    return d;
+  }
+  
+  public com.tencent.mapsdk.raster.model.LatLng fromScreenLocation(Point paramPoint)
+  {
+    AppMethodBeat.i(186355);
+    paramPoint = q.a(this.a.fromScreenLocation(paramPoint));
+    AppMethodBeat.o(186355);
+    return paramPoint;
+  }
+  
+  public double getLatitudeSpan()
+  {
+    AppMethodBeat.i(186361);
+    com.tencent.tencentmap.mapsdk.maps.model.VisibleRegion localVisibleRegion = this.a.getVisibleRegion();
+    if (localVisibleRegion == null)
     {
-      this.d = null;
-      AppMethodBeat.o(147044);
-      return;
+      AppMethodBeat.o(186361);
+      return -1.0D;
     }
-    paramInt2 = this.c.length();
-    this.d = new String[paramInt2];
-    paramInt1 = 0;
-    for (;;)
+    double d1 = localVisibleRegion.latLngBounds.southwest.latitude;
+    double d2 = localVisibleRegion.latLngBounds.northeast.latitude;
+    AppMethodBeat.o(186361);
+    return d1 - d2;
+  }
+  
+  public double getLongitudeSpan()
+  {
+    AppMethodBeat.i(186362);
+    com.tencent.tencentmap.mapsdk.maps.model.VisibleRegion localVisibleRegion = this.a.getVisibleRegion();
+    if (localVisibleRegion == null)
     {
-      if (paramInt1 < paramInt2) {}
-      try
-      {
-        this.d[paramInt1] = this.c.getString(paramInt1);
-        paramInt1 += 1;
-      }
-      catch (JSONException paramJSONArray)
-      {
-        this.d = null;
-        d.b(Log.getStackTraceString(paramJSONArray));
-        AppMethodBeat.o(147044);
-      }
+      AppMethodBeat.o(186362);
+      return -1.0D;
     }
-    AppMethodBeat.o(147044);
-    return;
+    double d1 = localVisibleRegion.latLngBounds.southwest.longitude;
+    double d2 = localVisibleRegion.latLngBounds.northeast.longitude;
+    AppMethodBeat.o(186362);
+    return d1 - d2;
   }
   
-  public int a()
+  public float getScalePerPixel()
   {
-    return this.a;
+    AppMethodBeat.i(186363);
+    float f = (float)this.a.metersPerPixel(this.b.getCameraPosition().target.latitude);
+    AppMethodBeat.o(186363);
+    return f;
   }
   
-  public int b()
+  public com.tencent.mapsdk.raster.model.VisibleRegion getVisibleRegion()
   {
-    return this.b;
+    AppMethodBeat.i(186357);
+    com.tencent.mapsdk.raster.model.VisibleRegion localVisibleRegion = q.a(this.a.getVisibleRegion());
+    AppMethodBeat.o(186357);
+    return localVisibleRegion;
   }
   
-  public JSONArray c()
+  public float metersToEquatorPixels(float paramFloat)
   {
-    return this.c;
+    AppMethodBeat.i(186359);
+    paramFloat = metersToPixels(0.0D, paramFloat);
+    AppMethodBeat.o(186359);
+    return paramFloat;
   }
   
-  public String[] d()
+  public float metersToPixels(double paramDouble1, double paramDouble2)
   {
-    return this.d;
+    AppMethodBeat.i(186360);
+    float f = (float)(paramDouble2 / this.a.metersPerPixel(paramDouble1));
+    AppMethodBeat.o(186360);
+    return f;
+  }
+  
+  @Deprecated
+  public Point toPixels(GeoPoint paramGeoPoint, Point paramPoint)
+  {
+    AppMethodBeat.i(186364);
+    paramGeoPoint = GeoPoint.g2l(paramGeoPoint);
+    if (paramGeoPoint == null)
+    {
+      AppMethodBeat.o(186364);
+      return null;
+    }
+    paramGeoPoint = toScreenLocation(paramGeoPoint);
+    AppMethodBeat.o(186364);
+    return paramGeoPoint;
+  }
+  
+  public Point toScreenLocation(com.tencent.mapsdk.raster.model.LatLng paramLatLng)
+  {
+    AppMethodBeat.i(186356);
+    paramLatLng = this.a.toScreenLocation(q.a(paramLatLng));
+    AppMethodBeat.o(186356);
+    return paramLatLng;
   }
 }
 

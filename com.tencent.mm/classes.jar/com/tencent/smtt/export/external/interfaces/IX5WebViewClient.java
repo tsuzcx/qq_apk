@@ -23,6 +23,7 @@ public abstract interface IX5WebViewClient
   public static final int ERROR_UNSUPPORTED_AUTH_SCHEME = -3;
   public static final int ERROR_UNSUPPORTED_SCHEME = -10;
   public static final int INTERCEPT_BY_ISP = -16;
+  public static final int INTERCEPT_BY_USER = -50;
   
   public abstract void doUpdateVisitedHistory(IX5WebViewBase paramIX5WebViewBase, String paramString, boolean paramBoolean);
   
@@ -33,6 +34,8 @@ public abstract interface IX5WebViewClient
   public abstract void onFormResubmission(IX5WebViewBase paramIX5WebViewBase, Message paramMessage1, Message paramMessage2);
   
   public abstract void onLoadResource(IX5WebViewBase paramIX5WebViewBase, String paramString);
+  
+  public abstract void onPageCommitVisible(IX5WebViewBase paramIX5WebViewBase, String paramString);
   
   public abstract void onPageFinished(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2, String paramString);
   
@@ -77,7 +80,7 @@ public abstract interface IX5WebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.export.external.interfaces.IX5WebViewClient
  * JD-Core Version:    0.7.0.1
  */

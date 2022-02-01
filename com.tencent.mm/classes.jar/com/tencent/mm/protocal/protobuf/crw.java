@@ -4,171 +4,114 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class crw
-  extends buy
+  extends ckq
 {
-  public int wLO;
-  public long xCj;
-  public int xCk;
-  public String yaH;
-  public com.tencent.mm.bv.b yaI;
-  public com.tencent.mm.bv.b yaJ;
-  public String yaK;
+  public LinkedList<dvt> DBE;
+  public int scene;
+  
+  public crw()
+  {
+    AppMethodBeat.i(187829);
+    this.DBE = new LinkedList();
+    AppMethodBeat.o(187829);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(135447);
+    AppMethodBeat.i(187830);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.yaH == null)
-      {
-        paramVarArgs = new e.a.a.b("Not all required fields were included: ToBizUserName");
-        AppMethodBeat.o(135447);
-        throw paramVarArgs;
-      }
-      if (this.yaJ == null)
-      {
-        paramVarArgs = new e.a.a.b("Not all required fields were included: CapInfo");
-        AppMethodBeat.o(135447);
-        throw paramVarArgs;
-      }
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.iQ(1, this.BaseRequest.computeSize());
+        paramVarArgs.kX(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aO(2, this.xCk);
-      if (this.yaH != null) {
-        paramVarArgs.e(3, this.yaH);
-      }
-      paramVarArgs.aO(4, this.wLO);
-      if (this.yaI != null) {
-        paramVarArgs.c(5, this.yaI);
-      }
-      if (this.yaJ != null) {
-        paramVarArgs.c(6, this.yaJ);
-      }
-      paramVarArgs.am(7, this.xCj);
-      if (this.yaK != null) {
-        paramVarArgs.e(8, this.yaK);
-      }
-      AppMethodBeat.o(135447);
+      paramVarArgs.e(2, 8, this.DBE);
+      paramVarArgs.aR(3, this.scene);
+      AppMethodBeat.o(187830);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label786;
+        break label498;
       }
     }
-    label786:
-    for (paramInt = e.a.a.a.iP(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label498:
+    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + e.a.a.b.b.a.bl(2, this.xCk);
-      paramInt = i;
-      if (this.yaH != null) {
-        paramInt = i + e.a.a.b.b.a.f(3, this.yaH);
-      }
-      i = paramInt + e.a.a.b.b.a.bl(4, this.wLO);
-      paramInt = i;
-      if (this.yaI != null) {
-        paramInt = i + e.a.a.b.b.a.b(5, this.yaI);
-      }
-      i = paramInt;
-      if (this.yaJ != null) {
-        i = paramInt + e.a.a.b.b.a.b(6, this.yaJ);
-      }
-      i += e.a.a.b.b.a.p(7, this.xCj);
-      paramInt = i;
-      if (this.yaK != null) {
-        paramInt = i + e.a.a.b.b.a.f(8, this.yaK);
-      }
-      AppMethodBeat.o(135447);
-      return paramInt;
+      int i = f.a.a.a.c(2, 8, this.DBE);
+      int j = f.a.a.b.b.a.bA(3, this.scene);
+      AppMethodBeat.o(187830);
+      return paramInt + i + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = buy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = buy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.DBE.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        if (this.yaH == null)
-        {
-          paramVarArgs = new e.a.a.b("Not all required fields were included: ToBizUserName");
-          AppMethodBeat.o(135447);
-          throw paramVarArgs;
-        }
-        if (this.yaJ == null)
-        {
-          paramVarArgs = new e.a.a.b("Not all required fields were included: CapInfo");
-          AppMethodBeat.o(135447);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(135447);
+        AppMethodBeat.o(187830);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         crw localcrw = (crw)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(135447);
+          AppMethodBeat.o(187830);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new hq();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((hq)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localcrw.BaseRequest = ((hq)localObject1);
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new ip();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcrw.BaseRequest = ((ip)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(135447);
+          AppMethodBeat.o(187830);
           return 0;
         case 2: 
-          localcrw.xCk = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(135447);
-          return 0;
-        case 3: 
-          localcrw.yaH = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(135447);
-          return 0;
-        case 4: 
-          localcrw.wLO = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(135447);
-          return 0;
-        case 5: 
-          localcrw.yaI = ((e.a.a.a.a)localObject1).CLY.eqS();
-          AppMethodBeat.o(135447);
-          return 0;
-        case 6: 
-          localcrw.yaJ = ((e.a.a.a.a)localObject1).CLY.eqS();
-          AppMethodBeat.o(135447);
-          return 0;
-        case 7: 
-          localcrw.xCj = ((e.a.a.a.a)localObject1).CLY.sm();
-          AppMethodBeat.o(135447);
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new dvt();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((dvt)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcrw.DBE.add(localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(187830);
           return 0;
         }
-        localcrw.yaK = ((e.a.a.a.a)localObject1).CLY.readString();
-        AppMethodBeat.o(135447);
+        localcrw.scene = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(187830);
         return 0;
       }
-      AppMethodBeat.o(135447);
+      AppMethodBeat.o(187830);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.crw
  * JD-Core Version:    0.7.0.1
  */

@@ -4,18 +4,18 @@ import android.os.IBinder;
 
 public final class c
 {
-  private final d dJ;
-  private final a dK;
+  private final d dK;
+  private final a dL;
   
   c(d paramd)
   {
-    this.dJ = paramd;
-    this.dK = new c.1(this);
+    this.dK = paramd;
+    this.dL = new a() {};
   }
   
-  final IBinder aD()
+  final IBinder at()
   {
-    return this.dJ.asBinder();
+    return this.dK.asBinder();
   }
   
   public final boolean equals(Object paramObject)
@@ -23,17 +23,17 @@ public final class c
     if (!(paramObject instanceof c)) {
       return false;
     }
-    return ((c)paramObject).aD().equals(this.dJ.asBinder());
+    return ((c)paramObject).at().equals(this.dK.asBinder());
   }
   
   public final int hashCode()
   {
-    return aD().hashCode();
+    return at().hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.customtabs.c
  * JD-Core Version:    0.7.0.1
  */

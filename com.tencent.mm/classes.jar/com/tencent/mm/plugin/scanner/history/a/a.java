@@ -1,51 +1,51 @@
 package com.tencent.mm.plugin.scanner.history.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ef;
+import com.tencent.mm.g.c.fa;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends ef
+  extends fa
 {
   public static c.a info;
   
   static
   {
-    AppMethodBeat.i(80799);
+    AppMethodBeat.i(51587);
     c.a locala = new c.a();
-    locala.yrK = new Field[6];
+    locala.EYt = new Field[6];
     locala.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "productId";
-    locala.yrM.put("productId", "TEXT PRIMARY KEY ");
+    locala.EYv.put("productId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" productId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.yrL = "productId";
+    locala.EYu = "productId";
     locala.columns[1] = "xmlContent";
-    locala.yrM.put("xmlContent", "TEXT");
+    locala.EYv.put("xmlContent", "TEXT");
     localStringBuilder.append(" xmlContent TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "ScanTime";
-    locala.yrM.put("ScanTime", "LONG");
+    locala.EYv.put("ScanTime", "LONG");
     localStringBuilder.append(" ScanTime LONG");
     localStringBuilder.append(", ");
     locala.columns[3] = "funcType";
-    locala.yrM.put("funcType", "INTEGER");
+    locala.EYv.put("funcType", "INTEGER");
     localStringBuilder.append(" funcType INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "qrcodeUrl";
-    locala.yrM.put("qrcodeUrl", "TEXT");
+    locala.EYv.put("qrcodeUrl", "TEXT");
     localStringBuilder.append(" qrcodeUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "scene";
-    locala.yrM.put("scene", "INTEGER");
+    locala.EYv.put("scene", "INTEGER");
     localStringBuilder.append(" scene INTEGER");
     locala.columns[6] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    AppMethodBeat.o(80799);
+    AppMethodBeat.o(51587);
   }
   
   public final c.a getDBInfo()

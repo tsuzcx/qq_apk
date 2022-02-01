@@ -1,40 +1,32 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.video.videoview.a.c;
+import com.tencent.mm.sdk.platformtools.ad;
+
 public final class b
 {
-  public static int c(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
+  public static void init()
   {
-    int i = 180;
-    paramFloat1 /= paramFloat2;
-    if (paramInt2 > 180) {
-      if (paramInt2 > 600) {}
-    }
-    for (;;)
+    AppMethodBeat.i(195949);
+    AppBrandVideoWrapper.setVideoViewFactory(new f()
     {
-      i = (int)(i * paramFloat1) + paramInt1;
-      if (i < 0) {
-        paramInt1 = 0;
-      }
-      do
+      public final e jdMethod_do(Context paramAnonymousContext)
       {
-        return paramInt1;
-        if (paramInt2 <= 1800)
-        {
-          i = 300;
-          break;
-        }
-        i = 600;
-        break;
-        paramInt1 = paramInt2;
-      } while (i > paramInt2);
-      return i;
-      i = paramInt2;
-    }
+        AppMethodBeat.i(195948);
+        ad.i("MicroMsg.NonSameLayer.AppBrandVideoNonSameLayerStrategy", "init, use ExoVideoViewWrapper");
+        paramAnonymousContext = new c(paramAnonymousContext);
+        AppMethodBeat.o(195948);
+        return paramAnonymousContext;
+      }
+    });
+    AppMethodBeat.o(195949);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b
  * JD-Core Version:    0.7.0.1
  */

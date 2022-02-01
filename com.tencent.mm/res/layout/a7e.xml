@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/cdg" android:background="@drawable/ap9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp"
+<FrameLayout android:background="#f2222222" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.MMImageView android:id="@id/cdh" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@raw/default_avatar" android:scaleType="centerCrop" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/a6q" android:layout_gravity="center_vertical" android:id="@id/cdi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:singleLine="true" />
-</LinearLayout>
+    <ImageView android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/bgx" android:scaleType="centerCrop" />
+    <TextView android:textSize="@dimen/i" android:textColor="@color/aj" android:layout_gravity="bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="216.0dip" android:text="@string/ceh" />
+    <Button android:layout_gravity="bottom|center" android:id="@id/bmt" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginBottom="144.0dip" android:text="@string/cef" style="@style/o6" />
+</FrameLayout>

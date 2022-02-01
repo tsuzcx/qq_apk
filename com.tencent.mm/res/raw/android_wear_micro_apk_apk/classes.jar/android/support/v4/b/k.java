@@ -6,19 +6,19 @@ import java.util.Map.Entry;
 final class k
   implements Iterator<Map.Entry<K, V>>, Map.Entry<K, V>
 {
-  int ac;
-  int js;
-  boolean jt = false;
+  int bL;
+  int lp;
+  boolean lq = false;
   
   k(g paramg)
   {
-    this.js = (paramg.bf() - 1);
-    this.ac = -1;
+    this.lp = (paramg.bw() - 1);
+    this.bL = -1;
   }
   
   public final boolean equals(Object paramObject)
   {
-    if (!this.jt) {
+    if (!this.lq) {
       throw new IllegalStateException("This container does not support retaining Map.Entry objects");
     }
     if (!(paramObject instanceof Map.Entry)) {}
@@ -26,39 +26,39 @@ final class k
     {
       return false;
       paramObject = (Map.Entry)paramObject;
-    } while ((!c.b(paramObject.getKey(), this.jr.b(this.ac, 0))) || (!c.b(paramObject.getValue(), this.jr.b(this.ac, 1))));
+    } while ((!c.c(paramObject.getKey(), this.lo.b(this.bL, 0))) || (!c.c(paramObject.getValue(), this.lo.b(this.bL, 1))));
     return true;
   }
   
   public final K getKey()
   {
-    if (!this.jt) {
+    if (!this.lq) {
       throw new IllegalStateException("This container does not support retaining Map.Entry objects");
     }
-    return this.jr.b(this.ac, 0);
+    return this.lo.b(this.bL, 0);
   }
   
   public final V getValue()
   {
-    if (!this.jt) {
+    if (!this.lq) {
       throw new IllegalStateException("This container does not support retaining Map.Entry objects");
     }
-    return this.jr.b(this.ac, 1);
+    return this.lo.b(this.bL, 1);
   }
   
   public final boolean hasNext()
   {
-    return this.ac < this.js;
+    return this.bL < this.lp;
   }
   
   public final int hashCode()
   {
     int j = 0;
-    if (!this.jt) {
+    if (!this.lq) {
       throw new IllegalStateException("This container does not support retaining Map.Entry objects");
     }
-    Object localObject1 = this.jr.b(this.ac, 0);
-    Object localObject2 = this.jr.b(this.ac, 1);
+    Object localObject1 = this.lo.b(this.bL, 0);
+    Object localObject2 = this.lo.b(this.bL, 1);
     int i;
     if (localObject1 == null)
     {
@@ -79,21 +79,21 @@ final class k
   
   public final void remove()
   {
-    if (!this.jt) {
+    if (!this.lq) {
       throw new IllegalStateException();
     }
-    this.jr.p(this.ac);
-    this.ac -= 1;
-    this.js -= 1;
-    this.jt = false;
+    this.lo.z(this.bL);
+    this.bL -= 1;
+    this.lp -= 1;
+    this.lq = false;
   }
   
   public final V setValue(V paramV)
   {
-    if (!this.jt) {
+    if (!this.lq) {
       throw new IllegalStateException("This container does not support retaining Map.Entry objects");
     }
-    return this.jr.a(this.ac, paramV);
+    return this.lo.a(this.bL, paramV);
   }
   
   public final String toString()

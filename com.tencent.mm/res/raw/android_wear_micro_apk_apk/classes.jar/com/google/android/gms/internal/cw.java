@@ -10,9 +10,9 @@ public final class cw
   static void a(zzban paramzzban, Parcel paramParcel)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramzzban.Hc);
-    c.a(paramParcel, 2, paramzzban.QG);
-    c.a(paramParcel, 3, paramzzban.QH);
+    c.c(paramParcel, 1, paramzzban.IR);
+    c.a(paramParcel, 2, paramzzban.Sv);
+    c.a(paramParcel, 3, paramzzban.Sw);
     c.v(paramParcel, i);
   }
 }

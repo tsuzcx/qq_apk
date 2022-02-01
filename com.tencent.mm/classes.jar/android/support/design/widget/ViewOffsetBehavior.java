@@ -7,9 +7,9 @@ import android.view.View;
 class ViewOffsetBehavior<V extends View>
   extends CoordinatorLayout.Behavior<V>
 {
-  private o na;
-  private int nb = 0;
-  private int nc = 0;
+  private p tA;
+  private int tB = 0;
+  private int tC = 0;
   
   public ViewOffsetBehavior() {}
   
@@ -18,57 +18,57 @@ class ViewOffsetBehavior<V extends View>
     super(paramContext, paramAttributeSet);
   }
   
+  public boolean G(int paramInt)
+  {
+    if (this.tA != null) {
+      return this.tA.G(paramInt);
+    }
+    this.tB = paramInt;
+    return false;
+  }
+  
   public boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt)
   {
-    d(paramCoordinatorLayout, paramV, paramInt);
-    if (this.na == null) {
-      this.na = new o(paramV);
+    c(paramCoordinatorLayout, paramV, paramInt);
+    if (this.tA == null) {
+      this.tA = new p(paramV);
     }
-    this.na.bS();
-    if (this.nb != 0)
+    this.tA.cY();
+    if (this.tB != 0)
     {
-      this.na.p(this.nb);
-      this.nb = 0;
+      this.tA.G(this.tB);
+      this.tB = 0;
     }
-    if (this.nc != 0)
+    if (this.tC != 0)
     {
-      paramCoordinatorLayout = this.na;
-      paramInt = this.nc;
-      if (paramCoordinatorLayout.ng != paramInt)
+      paramCoordinatorLayout = this.tA;
+      paramInt = this.tC;
+      if (paramCoordinatorLayout.tG != paramInt)
       {
-        paramCoordinatorLayout.ng = paramInt;
-        paramCoordinatorLayout.bT();
+        paramCoordinatorLayout.tG = paramInt;
+        paramCoordinatorLayout.cZ();
       }
-      this.nc = 0;
+      this.tC = 0;
     }
     return true;
   }
   
-  public int aO()
+  public int bv()
   {
-    if (this.na != null) {
-      return this.na.nf;
+    if (this.tA != null) {
+      return this.tA.tF;
     }
     return 0;
   }
   
-  protected void d(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt)
+  protected void c(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt)
   {
-    paramCoordinatorLayout.e(paramV, paramInt);
-  }
-  
-  public boolean p(int paramInt)
-  {
-    if (this.na != null) {
-      return this.na.p(paramInt);
-    }
-    this.nb = paramInt;
-    return false;
+    paramCoordinatorLayout.f(paramV, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.design.widget.ViewOffsetBehavior
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/radar/ui/RadarPressDetector;", "", "()V", "PressIsClickDuringThreshold", "", "getPressIsClickDuringThreshold", "()I", "PressTooShortDuringThreshold", "getPressTooShortDuringThreshold", "isClick", "", "during", "", "isPress", "isTooShort", "plugin-radar_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/ui/RadarPressDetector;", "", "()V", "PressIsClickDuringThreshold", "", "getPressIsClickDuringThreshold", "()I", "PressTooShortDuringThreshold", "getPressTooShortDuringThreshold", "isClick", "", "during", "", "isPress", "isTooShort", "plugin-radar_release"})
 public final class d
 {
-  public static final d pRA;
-  private static final int pRy = 1000;
-  private static final int pRz = 500;
+  private static final int uTu = 1000;
+  private static final int uTv = 500;
+  public static final d uTw;
   
   static
   {
-    AppMethodBeat.i(102988);
-    pRA = new d();
-    pRy = 1000;
-    pRz = 500;
-    AppMethodBeat.o(102988);
+    AppMethodBeat.i(138634);
+    uTw = new d();
+    uTu = 1000;
+    uTv = 500;
+    AppMethodBeat.o(138634);
   }
   
-  public static int ceT()
+  public static int dfh()
   {
-    return pRy;
+    return uTu;
   }
   
-  public static boolean kU(long paramLong)
+  public static boolean rL(long paramLong)
   {
-    return paramLong <= pRz;
+    return paramLong <= uTv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.d
  * JD-Core Version:    0.7.0.1
  */

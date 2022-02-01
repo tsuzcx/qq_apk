@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="oval">
-            <stroke android:width="2.0dip" android:color="@color/r5" />
-            <solid android:color="@color/a3x" />
-            <size android:height="120.0dip" android:width="120.0dip" />
-        </shape>
-    </item>
-</layer-list>
+    <item android:state_pressed="true" android:drawable="@raw/editor_ol_unpress" />
+    <item android:drawable="@raw/editor_ol_unpress" />
+</selector>

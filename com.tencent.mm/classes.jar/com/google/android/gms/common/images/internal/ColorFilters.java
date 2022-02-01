@@ -12,17 +12,17 @@ public final class ColorFilters
   
   static
   {
-    AppMethodBeat.i(61258);
+    AppMethodBeat.i(11750);
     ColorMatrix localColorMatrix = new ColorMatrix();
     zzpv = localColorMatrix;
     localColorMatrix.setSaturation(0.0F);
     COLOR_FILTER_BW = new ColorMatrixColorFilter(zzpv);
-    AppMethodBeat.o(61258);
+    AppMethodBeat.o(11750);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.gms.common.images.internal.ColorFilters
  * JD-Core Version:    0.7.0.1
  */

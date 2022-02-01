@@ -4,28 +4,28 @@ import android.os.Handler;
 
 public class ServiceLifecycleDispatcher
 {
-  private final LifecycleRegistry dd;
-  private DispatchRunnable dm;
+  private final LifecycleRegistry dh;
+  private DispatchRunnable dp;
   private final Handler mHandler;
   
   public ServiceLifecycleDispatcher(LifecycleOwner paramLifecycleOwner)
   {
-    this.dd = new LifecycleRegistry(paramLifecycleOwner);
+    this.dh = new LifecycleRegistry(paramLifecycleOwner);
     this.mHandler = new Handler();
   }
   
   private void c(Lifecycle.Event paramEvent)
   {
-    if (this.dm != null) {
-      this.dm.run();
+    if (this.dp != null) {
+      this.dp.run();
     }
-    this.dm = new DispatchRunnable(this.dd, paramEvent);
-    this.mHandler.postAtFrontOfQueue(this.dm);
+    this.dp = new DispatchRunnable(this.dh, paramEvent);
+    this.mHandler.postAtFrontOfQueue(this.dp);
   }
   
   public Lifecycle getLifecycle()
   {
-    return this.dd;
+    return this.dh;
   }
   
   public void onServicePreSuperOnBind()
@@ -52,22 +52,22 @@ public class ServiceLifecycleDispatcher
   static class DispatchRunnable
     implements Runnable
   {
-    private final LifecycleRegistry dd;
-    final Lifecycle.Event dn;
-    private boolean jdField_do = false;
+    private final LifecycleRegistry dh;
+    final Lifecycle.Event dq;
+    private boolean dr = false;
     
     DispatchRunnable(LifecycleRegistry paramLifecycleRegistry, Lifecycle.Event paramEvent)
     {
-      this.dd = paramLifecycleRegistry;
-      this.dn = paramEvent;
+      this.dh = paramLifecycleRegistry;
+      this.dq = paramEvent;
     }
     
     public void run()
     {
-      if (!this.jdField_do)
+      if (!this.dr)
       {
-        this.dd.handleLifecycleEvent(this.dn);
-        this.jdField_do = true;
+        this.dh.handleLifecycleEvent(this.dq);
+        this.dr = true;
       }
     }
   }

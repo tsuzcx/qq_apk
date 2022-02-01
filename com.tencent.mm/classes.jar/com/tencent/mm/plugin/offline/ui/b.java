@@ -6,66 +6,88 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.h;
+import com.tencent.mm.wallet_core.ui.e;
 
 public final class b
 {
-  public static void Z(Activity paramActivity)
+  public static void ar(Activity paramActivity)
   {
-    AppMethodBeat.i(43471);
-    ab.e("MicroMsg.OfflineErrorHelper", "offline code size is 0, show check network error dialog");
-    h.a(paramActivity, paramActivity.getString(2131305731), null, false, new b.4(paramActivity));
-    AppMethodBeat.o(43471);
-  }
-  
-  public static void c(Activity paramActivity, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(43470);
-    if (TextUtils.isEmpty(paramString1)) {
-      paramString1 = paramActivity.getString(2131305682);
-    }
-    for (;;)
+    AppMethodBeat.i(66371);
+    ad.e("MicroMsg.OfflineErrorHelper", "offline code size is 0, show check network error dialog");
+    h.a(paramActivity, paramActivity.getString(2131765951), null, false, new DialogInterface.OnClickListener()
     {
-      if (!bo.isNullOrNil(paramString2))
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        ab.i("MicroMsg.OfflineErrorHelper", "error_detail_url is not null ");
-        h.a(paramActivity, paramString1, null, paramActivity.getResources().getString(2131305057), paramActivity.getResources().getString(2131297018), true, new b.2(paramString2, paramActivity), new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(43467);
-            paramAnonymousDialogInterface.dismiss();
-            AppMethodBeat.o(43467);
-          }
-        });
-        AppMethodBeat.o(43470);
-        return;
+        AppMethodBeat.i(66368);
+        if ((this.val$activity instanceof WalletOfflineCoinPurseUI)) {
+          ((WalletOfflineCoinPurseUI)this.val$activity).umy = false;
+        }
+        paramAnonymousDialogInterface.dismiss();
+        AppMethodBeat.o(66368);
       }
-      d(paramActivity, paramString1);
-      AppMethodBeat.o(43470);
-      return;
-    }
+    });
+    AppMethodBeat.o(66371);
   }
   
   public static void d(Activity paramActivity, String paramString)
   {
-    AppMethodBeat.i(43469);
+    AppMethodBeat.i(66369);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = paramActivity.getString(2131305682);
+      str = paramActivity.getString(2131765901);
     }
     h.a(paramActivity, str, null, false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        AppMethodBeat.i(43465);
+        AppMethodBeat.i(66365);
         paramAnonymousDialogInterface.dismiss();
-        AppMethodBeat.o(43465);
+        AppMethodBeat.o(66365);
       }
     });
-    AppMethodBeat.o(43469);
+    AppMethodBeat.o(66369);
+  }
+  
+  public static void d(Activity paramActivity, String paramString1, final String paramString2)
+  {
+    AppMethodBeat.i(66370);
+    if (TextUtils.isEmpty(paramString1)) {
+      paramString1 = paramActivity.getString(2131765901);
+    }
+    for (;;)
+    {
+      if (!bt.isNullOrNil(paramString2))
+      {
+        ad.i("MicroMsg.OfflineErrorHelper", "error_detail_url is not null ");
+        h.a(paramActivity, paramString1, null, paramActivity.getResources().getString(2131765249), paramActivity.getResources().getString(2131755835), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(66366);
+            e.aS(this.val$activity, paramString2);
+            e.aby(3);
+            paramAnonymousDialogInterface.dismiss();
+            AppMethodBeat.o(66366);
+          }
+        }, new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(66367);
+            paramAnonymousDialogInterface.dismiss();
+            AppMethodBeat.o(66367);
+          }
+        });
+        AppMethodBeat.o(66370);
+        return;
+      }
+      d(paramActivity, paramString1);
+      AppMethodBeat.o(66370);
+      return;
+    }
   }
 }
 

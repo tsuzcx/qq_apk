@@ -55,15 +55,15 @@ public final class Wording
   
   public final String toString()
   {
-    AppMethodBeat.i(141544);
+    AppMethodBeat.i(136069);
     String str = "Wording{mNeedshow=" + this.mNeedshow + ",mEntryTip=" + this.mEntryTip + ",mTitle=" + this.mTitle + ",mSubTitle=" + this.mSubTitle + ",mDesc=" + this.mDesc + ",mSubDesc=" + this.mSubDesc + "}";
-    AppMethodBeat.o(141544);
+    AppMethodBeat.o(136069);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.kinda.gen.Wording
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,32 @@
 package com.tencent.mm.media.widget.b;
 
-import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.mmsight.model.a.d.c;
-import com.tencent.mm.plugin.mmsight.model.a.s;
-import com.tencent.mm.plugin.mmsight.model.f;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ak;
+import d.g.a.q;
+import d.y;
+import java.util.ArrayList;
 
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "request", "Ljava/util/ArrayList;", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "Lkotlin/collections/ArrayList;", "result", "Lcom/tencent/mm/media/widget/camera2/effect/result/WCCameraEffectResultTag;", "sessionType", "Lcom/tencent/mm/media/widget/camera2/effect/sessionType/WCCameraEffectSessionType;", "invoke"})
 final class e$1
-  implements f
+  extends d.g.b.l
+  implements q<ArrayList<com.tencent.mm.media.widget.b.a.a.a>, ArrayList<com.tencent.mm.media.widget.b.a.b.a>, ArrayList<com.tencent.mm.media.widget.b.a.c.a>, y>
 {
-  e$1(e parame) {}
+  public static final 1 gzc;
   
-  public final boolean N(byte[] paramArrayOfByte)
+  static
   {
-    AppMethodBeat.i(152044);
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
-    {
-      AppMethodBeat.o(152044);
-      return false;
-    }
-    if (this.fdq.fcm.oJP == d.c.oIG)
-    {
-      Object localObject = this.fdq;
-      if ((!((e)localObject).fcp) && (((e)localObject).fcC))
-      {
-        ((e)localObject).fcp = true;
-        byte[] arrayOfByte = new byte[paramArrayOfByte.length];
-        System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramArrayOfByte.length);
-        d.post(new e.7((e)localObject, arrayOfByte), "BigSightMediaCodecMP4MuxRecorder_saveThumb");
-      }
-      if (this.fdq.fdi != null)
-      {
-        localObject = Message.obtain();
-        ((Message)localObject).what = 1;
-        ((Message)localObject).obj = paramArrayOfByte;
-        this.fdq.fdi.sendMessage((Message)localObject);
-      }
-      AppMethodBeat.o(152044);
-      return true;
-    }
-    AppMethodBeat.o(152044);
-    return false;
+    AppMethodBeat.i(94116);
+    gzc = new 1();
+    AppMethodBeat.o(94116);
+  }
+  
+  e$1()
+  {
+    super(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.widget.b.e.1
  * JD-Core Version:    0.7.0.1
  */

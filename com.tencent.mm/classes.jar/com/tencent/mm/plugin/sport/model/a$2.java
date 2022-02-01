@@ -4,7 +4,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class a$2
   implements Runnable
@@ -13,23 +13,23 @@ final class a$2
   
   public final void run()
   {
-    AppMethodBeat.i(93629);
+    AppMethodBeat.i(149272);
     try
     {
       Uri localUri = Uri.parse("content://com.tencent.mm.plugin.sport");
-      ah.getContext().getContentResolver().query(localUri, null, "updateConfig", new String[] { this.spr }, null);
-      AppMethodBeat.o(93629);
+      aj.getContext().getContentResolver().query(localUri, null, "updateConfig", new String[] { this.ybM }, null);
+      AppMethodBeat.o(149272);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(93629);
+      AppMethodBeat.o(149272);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.a.2
  * JD-Core Version:    0.7.0.1
  */

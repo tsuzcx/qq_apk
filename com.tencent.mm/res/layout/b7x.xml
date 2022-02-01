@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<FrameLayout android:orientation="vertical" android:id="@id/f40" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/n9">
-        <TextView android:id="@id/de" style="@style/vo" />
-        <TextView android:id="@id/dc" style="@style/vm" />
-        <com.tenpay.android.wechat.TenpaySecureEditText android:textColor="@color/w_" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/foz" android:layout_width="50.0dip" android:maxLength="4" android:layout_weight="0.0" style="@style/vj" />
-        <com.tenpay.android.wechat.TenpaySecureEditText android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/d8" android:layout_marginLeft="2.0dip" style="@style/vj" />
-        <com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView android:id="@id/db" android:src="@drawable/ami" style="@style/vk" />
-    </LinearLayout>
-</merge>
+    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/ekz" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true" style="@style/a4p" />
+</FrameLayout>

@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.wenote.model.a;
 public class l
   extends v
 {
-  public Boolean vxk = Boolean.FALSE;
-  public Boolean vxl = Boolean.FALSE;
+  public Boolean omS = Boolean.FALSE;
+  public Boolean omT = Boolean.FALSE;
   
-  public final String dhR()
+  public final String bSi()
   {
-    return this.vxi;
+    return this.omK;
   }
   
   public int getType()
@@ -18,7 +18,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.a.l
  * JD-Core Version:    0.7.0.1
  */

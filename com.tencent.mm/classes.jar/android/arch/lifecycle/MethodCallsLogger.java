@@ -5,11 +5,11 @@ import java.util.Map;
 
 public class MethodCallsLogger
 {
-  private Map<String, Integer> cX = new HashMap();
+  private Map<String, Integer> da = new HashMap();
   
   public boolean approveCall(String paramString, int paramInt)
   {
-    Integer localInteger = (Integer)this.cX.get(paramString);
+    Integer localInteger = (Integer)this.da.get(paramString);
     int i;
     if (localInteger != null)
     {
@@ -21,7 +21,7 @@ public class MethodCallsLogger
     label64:
     for (int j = 1;; j = 0)
     {
-      this.cX.put(paramString, Integer.valueOf(i | paramInt));
+      this.da.put(paramString, Integer.valueOf(i | paramInt));
       if (j != 0) {
         break label70;
       }

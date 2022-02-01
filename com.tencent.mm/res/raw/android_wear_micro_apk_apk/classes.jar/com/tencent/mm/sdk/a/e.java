@@ -6,7 +6,7 @@ import java.lang.reflect.Type;
 
 public abstract class e<T extends d>
 {
-  protected int WS = 0;
+  protected int YU = 0;
   private final int priority;
   
   public e()
@@ -26,9 +26,9 @@ public abstract class e<T extends d>
     return this.priority;
   }
   
-  final int lb()
+  final int ln()
   {
-    if (this.WS == 0)
+    if (this.YU == 0)
     {
       long l = System.currentTimeMillis();
       Type localType2 = getClass().getGenericSuperclass();
@@ -37,10 +37,10 @@ public abstract class e<T extends d>
         localType1 = getClass().getSuperclass().getGenericSuperclass();
       }
       localType1 = ((ParameterizedType)localType1).getActualTypeArguments()[0];
-      this.WS = ((Class)localType1).getName().hashCode();
-      f.d("IListener", "genEventID, %s<%s>, useTime:%d", new Object[] { getClass().getName(), localType1, Long.valueOf(System.currentTimeMillis() - l) });
+      this.YU = ((Class)localType1).getName().hashCode();
+      f.e("IListener", "genEventID, %s<%s>, useTime:%d", new Object[] { getClass().getName(), localType1, Long.valueOf(System.currentTimeMillis() - l) });
     }
-    return this.WS;
+    return this.YU;
   }
 }
 

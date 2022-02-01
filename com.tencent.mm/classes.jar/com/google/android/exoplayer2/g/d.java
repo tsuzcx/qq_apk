@@ -1,48 +1,48 @@
 package com.google.android.exoplayer2.g;
 
-import com.google.android.exoplayer2.source.o;
+import com.google.android.exoplayer2.source.p;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
   extends b
 {
-  private final int aXG;
+  private final int bvJ;
   private final Object data;
   
-  public d(o paramo, int paramInt)
+  public d(p paramp, int paramInt)
   {
-    this(paramo, paramInt, (byte)0);
+    this(paramp, paramInt, (byte)0);
   }
   
-  private d(o paramo, int paramInt, byte paramByte)
+  private d(p paramp, int paramInt, byte paramByte)
   {
-    super(paramo, new int[] { paramInt });
-    AppMethodBeat.i(95779);
-    this.aXG = 0;
+    super(paramp, new int[] { paramInt });
+    AppMethodBeat.i(92947);
+    this.bvJ = 0;
     this.data = null;
-    AppMethodBeat.o(95779);
+    AppMethodBeat.o(92947);
   }
   
-  public final void Y(long paramLong) {}
+  public final void aj(long paramLong) {}
   
-  public final int pv()
+  public final int getSelectedIndex()
   {
     return 0;
   }
   
-  public final int pw()
+  public final int up()
   {
-    return this.aXG;
+    return this.bvJ;
   }
   
-  public final Object px()
+  public final Object uq()
   {
     return this.data;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.g.d
  * JD-Core Version:    0.7.0.1
  */

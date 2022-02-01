@@ -10,11 +10,11 @@ final class aq
       return 0;
     }
     if (!paramBoolean) {
-      return Math.abs(RecyclerView.i.bv(paramView1) - RecyclerView.i.bv(paramView2)) + 1;
+      return Math.abs(RecyclerView.i.bB(paramView1) - RecyclerView.i.bB(paramView2)) + 1;
     }
-    int i = paramaj.bi(paramView2);
-    int j = paramaj.bh(paramView1);
-    return Math.min(paramaj.iK(), i - j);
+    int i = paramaj.bo(paramView2);
+    int j = paramaj.bn(paramView1);
+    return Math.min(paramaj.kf(), i - j);
   }
   
   static int a(RecyclerView.s params, aj paramaj, View paramView1, View paramView2, RecyclerView.i parami, boolean paramBoolean1, boolean paramBoolean2)
@@ -38,8 +38,8 @@ final class aq
     }
     return j;
     label45:
-    i = Math.min(RecyclerView.i.bv(paramView1), RecyclerView.i.bv(paramView2));
-    j = Math.max(RecyclerView.i.bv(paramView1), RecyclerView.i.bv(paramView2));
+    i = Math.min(RecyclerView.i.bB(paramView1), RecyclerView.i.bB(paramView2));
+    j = Math.max(RecyclerView.i.bB(paramView1), RecyclerView.i.bB(paramView2));
     if (paramBoolean2) {}
     for (i = Math.max(0, params.getItemCount() - j - 1);; i = Math.max(0, i))
     {
@@ -47,10 +47,10 @@ final class aq
       if (!paramBoolean1) {
         break;
       }
-      j = Math.abs(paramaj.bi(paramView2) - paramaj.bh(paramView1));
-      int k = Math.abs(RecyclerView.i.bv(paramView1) - RecyclerView.i.bv(paramView2));
+      j = Math.abs(paramaj.bo(paramView2) - paramaj.bn(paramView1));
+      int k = Math.abs(RecyclerView.i.bB(paramView1) - RecyclerView.i.bB(paramView2));
       float f = j / (k + 1);
-      return Math.round(i * f + (paramaj.iI() - paramaj.bh(paramView1)));
+      return Math.round(i * f + (paramaj.kd() - paramaj.bn(paramView1)));
     }
   }
   
@@ -62,15 +62,15 @@ final class aq
     if (!paramBoolean) {
       return params.getItemCount();
     }
-    int i = paramaj.bi(paramView2);
-    int j = paramaj.bh(paramView1);
-    int k = Math.abs(RecyclerView.i.bv(paramView1) - RecyclerView.i.bv(paramView2));
+    int i = paramaj.bo(paramView2);
+    int j = paramaj.bn(paramView1);
+    int k = Math.abs(RecyclerView.i.bB(paramView1) - RecyclerView.i.bB(paramView2));
     return (int)((i - j) / (k + 1) * params.getItemCount());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v7.widget.aq
  * JD-Core Version:    0.7.0.1
  */

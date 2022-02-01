@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ow
   extends b
 {
-  public ow.b cFA;
-  public ow.a cFz;
+  public a dul;
+  public b dum;
   
   public ow()
   {
@@ -16,17 +16,27 @@ public final class ow
   
   private ow(byte paramByte)
   {
-    AppMethodBeat.i(77563);
-    this.cFz = new ow.a();
-    this.cFA = new ow.b();
-    this.ymq = false;
+    AppMethodBeat.i(149881);
+    this.dul = new a();
+    this.dum = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77563);
+    AppMethodBeat.o(149881);
+  }
+  
+  public static final class a
+  {
+    public String dun;
+  }
+  
+  public static final class b
+  {
+    public int ret = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.ow
  * JD-Core Version:    0.7.0.1
  */

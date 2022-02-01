@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.af;
+import android.view.View;
 
 public abstract interface e
   extends c, f
 {
-  public abstract af vC();
+  public abstract e.a aOg();
+  
+  public abstract View getContentView();
 }
 
 

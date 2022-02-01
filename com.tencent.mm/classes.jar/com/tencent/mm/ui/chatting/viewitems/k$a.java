@@ -1,51 +1,58 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.d.a;
-import com.tencent.mm.ui.chatting.s.e;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.i.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Map;
 
-public final class k$a
-  extends s.e
+public class k$a
+  extends f
 {
-  k$a(a parama)
+  public int GKW;
+  public String appId;
+  public String appName;
+  public String iconUrl;
+  public int state;
+  
+  private static String z(Map<String, String> paramMap, String paramString)
   {
-    super(parama);
+    AppMethodBeat.i(36915);
+    paramMap = bt.nullAsNil((String)paramMap.get(".msg.appmsg.downloaderapp.".concat(String.valueOf(paramString))));
+    AppMethodBeat.o(36915);
+    return paramMap;
   }
   
-  public final void a(View paramView, a parama, bi parambi)
+  public final void a(Map<String, String> paramMap, k.b paramb)
   {
-    AppMethodBeat.i(32936);
-    paramView = (az)paramView.getTag();
-    aw.aaz();
-    if (c.isSDCardAvailable())
+    AppMethodBeat.i(36914);
+    if (paramb.type == 671088689)
     {
-      parama = paramView.cEE;
-      if (!t.lA(parama.field_talker)) {
-        break label102;
-      }
+      ad.i("MicroMsg.ChattingItemAppMsgDownloader", "values: %s", new Object[] { paramMap.toString() });
+      this.state = bt.getInt(z(paramMap, "state"), 0);
+      this.appId = z(paramMap, "appid");
+      this.appName = z(paramMap, "appname");
+      this.GKW = bt.getInt(z(paramMap, "appsize"), 0);
+      this.iconUrl = z(paramMap, "iconurl");
     }
-    label102:
-    for (paramView = this.zzP.getTalkerUserName();; paramView = null)
-    {
-      ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(this.zzP.zJz.getContext(), parama, paramView);
-      h.qsU.e(11592, new Object[] { Integer.valueOf(0) });
-      AppMethodBeat.o(32936);
-      return;
-    }
+    AppMethodBeat.o(36914);
   }
+  
+  public final f apu()
+  {
+    AppMethodBeat.i(36913);
+    a locala = new a();
+    AppMethodBeat.o(36913);
+    return locala;
+  }
+  
+  public final void b(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.k.a
  * JD-Core Version:    0.7.0.1
  */

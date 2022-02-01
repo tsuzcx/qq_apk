@@ -1,34 +1,25 @@
 package com.tencent.mm.plugin.topstory.ui.home;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.topstory.ui.webview.TopStoryWebView;
+import com.tencent.mm.opensdk.modelbiz.WXOpenBusinessView.Resp;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.pluginsdk.ui.tools.l;
 
 final class b$9
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  b$9(b paramb) {}
+  b$9(b paramb, Bundle paramBundle, String paramString) {}
   
-  public final void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(1587);
-    long l = System.currentTimeMillis();
-    if (l - this.tgw.tgj < 300L) {}
-    try
-    {
-      if ((this.tgw.tgc != null) && (this.tgw.tgc.getView() != null)) {
-        this.tgw.tgc.getView().scrollTo(this.tgw.tgc.getView().getScrollX(), 0);
-      }
-      label76:
-      this.tgw.tgj = l;
-      AppMethodBeat.o(1587);
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      break label76;
-    }
+    AppMethodBeat.i(125939);
+    e.vIY.f(17080, new Object[] { Integer.valueOf(43), Integer.valueOf(1) });
+    paramDialogInterface = new WXOpenBusinessView.Resp(this.yNr);
+    l.a(this.yNr, paramDialogInterface, this.cug);
+    AppMethodBeat.o(125939);
   }
 }
 

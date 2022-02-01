@@ -3,86 +3,86 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class bha
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int nox;
-  public String wyW;
-  public int xwe;
-  public int xwf;
+  public double hqY;
+  public int major;
+  public int minor;
+  public String uuid;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(14733);
+    AppMethodBeat.i(82426);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wyW != null) {
-        paramVarArgs.e(1, this.wyW);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.uuid != null) {
+        paramVarArgs.d(1, this.uuid);
       }
-      paramVarArgs.aO(2, this.xwe);
-      paramVarArgs.aO(3, this.nox);
-      paramVarArgs.aO(4, this.xwf);
-      AppMethodBeat.o(14733);
+      paramVarArgs.aR(2, this.major);
+      paramVarArgs.aR(3, this.minor);
+      paramVarArgs.e(4, this.hqY);
+      AppMethodBeat.o(82426);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.wyW == null) {
-        break label360;
+      if (this.uuid == null) {
+        break label353;
       }
     }
-    label360:
-    for (paramInt = e.a.a.b.b.a.f(1, this.wyW) + 0;; paramInt = 0)
+    label353:
+    for (paramInt = f.a.a.b.b.a.e(1, this.uuid) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.bl(2, this.xwe);
-      int j = e.a.a.b.b.a.bl(3, this.nox);
-      int k = e.a.a.b.b.a.bl(4, this.xwf);
-      AppMethodBeat.o(14733);
-      return paramInt + i + j + k;
+      int i = f.a.a.b.b.a.bA(2, this.major);
+      int j = f.a.a.b.b.a.bA(3, this.minor);
+      int k = f.a.a.b.b.a.fY(4);
+      AppMethodBeat.o(82426);
+      return paramInt + i + j + (k + 8);
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(14733);
+        AppMethodBeat.o(82426);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         bha localbha = (bha)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(14733);
+          AppMethodBeat.o(82426);
           return -1;
         case 1: 
-          localbha.wyW = locala.CLY.readString();
-          AppMethodBeat.o(14733);
+          localbha.uuid = locala.KhF.readString();
+          AppMethodBeat.o(82426);
           return 0;
         case 2: 
-          localbha.xwe = locala.CLY.sl();
-          AppMethodBeat.o(14733);
+          localbha.major = locala.KhF.xS();
+          AppMethodBeat.o(82426);
           return 0;
         case 3: 
-          localbha.nox = locala.CLY.sl();
-          AppMethodBeat.o(14733);
+          localbha.minor = locala.KhF.xS();
+          AppMethodBeat.o(82426);
           return 0;
         }
-        localbha.xwf = locala.CLY.sl();
-        AppMethodBeat.o(14733);
+        localbha.hqY = Double.longBitsToDouble(locala.KhF.fHy());
+        AppMethodBeat.o(82426);
         return 0;
       }
-      AppMethodBeat.o(14733);
+      AppMethodBeat.o(82426);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bha
  * JD-Core Version:    0.7.0.1
  */

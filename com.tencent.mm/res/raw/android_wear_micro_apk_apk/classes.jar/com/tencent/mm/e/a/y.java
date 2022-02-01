@@ -5,41 +5,41 @@ import a.a.a.b;
 public final class y
   extends com.tencent.mm.d.a
 {
-  public long VY;
-  public String Vm;
+  public long XT;
+  public String Xh;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.Vm == null) {
+      if (this.Xh == null) {
         throw new b("Not all required fields were included: Username");
       }
-      if (this.Vm != null) {
-        paramVarArgs.d(1, this.Vm);
+      if (this.Xh != null) {
+        paramVarArgs.d(1, this.Xh);
       }
-      paramVarArgs.g(2, this.VY);
+      paramVarArgs.g(2, this.XT);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Vm == null) {
+      if (this.Xh == null) {
         break label238;
       }
     }
     label238:
-    for (paramInt = a.a.a.b.b.a.e(1, this.Vm) + 0;; paramInt = 0)
+    for (paramInt = a.a.a.b.b.a.e(1, this.Xh) + 0;; paramInt = 0)
     {
-      return paramInt + a.a.a.a.e(2, this.VY);
+      return paramInt + a.a.a.b.b.a.f(2, this.XT);
       if (paramInt == 2)
       {
-        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-        for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+        for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
           if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.oz();
+            paramVarArgs.pm();
           }
         }
-        if (this.Vm != null) {
+        if (this.Xh != null) {
           break;
         }
         throw new b("Not all required fields were included: Username");
@@ -53,10 +53,10 @@ public final class y
         default: 
           return -1;
         case 1: 
-          localy.Vm = locala.ou();
+          localy.Xh = locala.ph();
           return 0;
         }
-        localy.VY = locala.ow();
+        localy.XT = locala.pj();
         return 0;
       }
       return -1;

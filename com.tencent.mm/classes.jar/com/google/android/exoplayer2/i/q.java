@@ -21,17 +21,17 @@ public final class q
   
   public final void a(OutputStream paramOutputStream)
   {
-    AppMethodBeat.i(152029);
+    AppMethodBeat.i(93195);
     a.checkState(this.closed);
     this.out = paramOutputStream;
     this.count = 0;
     this.closed = false;
-    AppMethodBeat.o(152029);
+    AppMethodBeat.o(93195);
   }
   
   public final void close()
   {
-    AppMethodBeat.i(152028);
+    AppMethodBeat.i(93194);
     this.closed = true;
     Object localObject1 = null;
     try
@@ -56,7 +56,7 @@ public final class q
       if (localObject2 != null) {
         x.d(localObject2);
       }
-      AppMethodBeat.o(152028);
+      AppMethodBeat.o(93194);
       return;
     }
     catch (Throwable localThrowable1)
@@ -67,7 +67,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.i.q
  * JD-Core Version:    0.7.0.1
  */

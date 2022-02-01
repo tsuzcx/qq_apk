@@ -10,41 +10,41 @@ import java.net.URLDecoder;
 
 public final class a
 {
-  final Integer arl;
-  public boolean arm;
-  public int arn;
-  public int aro;
-  public Rect arp;
-  boolean arq;
+  final Integer aLW;
+  public boolean aLX;
+  public int aLY;
+  public int aLZ;
+  public Rect aMa;
+  boolean aMb;
   public final Bitmap bitmap;
   public final Uri uri;
   
   a(int paramInt)
   {
-    AppMethodBeat.i(115638);
+    AppMethodBeat.i(157373);
     this.bitmap = null;
     this.uri = null;
-    this.arl = Integer.valueOf(paramInt);
-    this.arm = true;
-    AppMethodBeat.o(115638);
+    this.aLW = Integer.valueOf(paramInt);
+    this.aLX = true;
+    AppMethodBeat.o(157373);
   }
   
-  public a(Bitmap paramBitmap)
+  private a(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(115636);
+    AppMethodBeat.i(157371);
     this.bitmap = paramBitmap;
     this.uri = null;
-    this.arl = null;
-    this.arm = false;
-    this.arn = paramBitmap.getWidth();
-    this.aro = paramBitmap.getHeight();
-    this.arq = true;
-    AppMethodBeat.o(115636);
+    this.aLW = null;
+    this.aLX = false;
+    this.aLY = paramBitmap.getWidth();
+    this.aLZ = paramBitmap.getHeight();
+    this.aMb = true;
+    AppMethodBeat.o(157371);
   }
   
   private a(Uri paramUri)
   {
-    AppMethodBeat.i(115637);
+    AppMethodBeat.i(157372);
     String str = paramUri.toString();
     Uri localUri1 = paramUri;
     if (str.startsWith("file:///"))
@@ -57,9 +57,9 @@ public final class a
       localUri1 = Uri.parse(URLDecoder.decode(str, "UTF-8"));
       this.bitmap = null;
       this.uri = localUri1;
-      this.arl = null;
-      this.arm = true;
-      AppMethodBeat.o(115637);
+      this.aLW = null;
+      this.aLX = true;
+      AppMethodBeat.o(157372);
       return;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
@@ -71,13 +71,13 @@ public final class a
     }
   }
   
-  public static a Y(String paramString)
+  public static a U(String paramString)
   {
-    AppMethodBeat.i(115639);
+    AppMethodBeat.i(157374);
     if (paramString == null)
     {
       paramString = new NullPointerException("Uri must not be null");
-      AppMethodBeat.o(115639);
+      AppMethodBeat.o(157374);
       throw paramString;
     }
     String str = paramString;
@@ -90,19 +90,33 @@ public final class a
       str = "file:///".concat(String.valueOf(str));
     }
     paramString = new a(Uri.parse(str));
-    AppMethodBeat.o(115639);
+    AppMethodBeat.o(157374);
     return paramString;
   }
   
-  public final a lr()
+  public static a l(Bitmap paramBitmap)
   {
-    this.arm = true;
+    AppMethodBeat.i(182604);
+    if (paramBitmap == null)
+    {
+      paramBitmap = new NullPointerException("Bitmap must not be null");
+      AppMethodBeat.o(182604);
+      throw paramBitmap;
+    }
+    paramBitmap = new a(paramBitmap);
+    AppMethodBeat.o(182604);
+    return paramBitmap;
+  }
+  
+  public final a qb()
+  {
+    this.aLX = true;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.davemorrissey.labs.subscaleview.view.a
  * JD-Core Version:    0.7.0.1
  */

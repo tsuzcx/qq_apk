@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval" android:useLevel="false" android:innerRadius="2.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/icons_outlined_addoutline" />
-    <item android:state_selected="true" android:drawable="@raw/icons_outlined_addoutline" />
-    <item android:state_focused="true" android:drawable="@raw/icons_outlined_addoutline" />
-    <item android:drawable="@raw/icons_outlined_addoutline" />
-</selector>
+    <solid android:color="@color/BW_0_Alpha_0_1" />
+    <size android:height="6.0dip" android:width="6.0dip" />
+</shape>

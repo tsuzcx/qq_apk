@@ -1,100 +1,71 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aq.c;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bw;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.storage.be;
-import java.util.HashMap;
+import com.tencent.mm.co.a;
+import com.tencent.mm.co.a.a;
+import com.tencent.mm.plugin.messenger.foundation.a.g;
+import com.tencent.mm.plugin.messenger.foundation.a.t;
+import com.tencent.mm.protocal.protobuf.bps;
+import com.tencent.mm.storage.bl;
 
-public class n
-  implements at
+public final class n
+  implements t
 {
-  public static HashMap<Integer, h.d> baseDBFactories;
-  private c fJt;
+  private final a hms;
+  private g hmt;
   
-  static
+  public n()
   {
-    AppMethodBeat.i(16510);
-    baseDBFactories = new HashMap();
-    AppMethodBeat.o(16510);
+    AppMethodBeat.i(116833);
+    this.hms = new a((byte)0);
+    AppMethodBeat.o(116833);
   }
   
-  public static com.tencent.mm.plugin.messenger.foundation.a.a.n ain()
+  public final String N(bl parambl)
   {
-    AppMethodBeat.i(16506);
-    g.RM();
-    g.RJ().QQ();
-    com.tencent.mm.plugin.messenger.foundation.a.a.n localn = ((j)g.E(j.class)).ain();
-    AppMethodBeat.o(16506);
-    return localn;
-  }
-  
-  public static o aio()
-  {
-    AppMethodBeat.i(16507);
-    o localo = ((com.tencent.mm.plugin.zero.b.b)g.E(com.tencent.mm.plugin.zero.b.b.class)).aio();
-    AppMethodBeat.o(16507);
-    return localo;
-  }
-  
-  public static n aip()
-  {
-    AppMethodBeat.i(16508);
-    aw.aat();
-    n localn2 = (n)bw.pF(n.class.getName());
-    n localn1 = localn2;
-    if (localn2 == null)
+    AppMethodBeat.i(116834);
+    if (this.hmt != null)
     {
-      localn1 = new n();
-      aw.aat().a(n.class.getName(), localn1);
+      parambl = this.hmt.N(parambl);
+      AppMethodBeat.o(116834);
+      return parambl;
     }
-    AppMethodBeat.o(16508);
-    return localn1;
+    AppMethodBeat.o(116834);
+    return null;
   }
   
-  public void clearPluginData(int paramInt) {}
-  
-  public HashMap<Integer, h.d> getBaseDBFactories()
+  public final void a(g paramg)
   {
-    return baseDBFactories;
+    this.hmt = paramg;
   }
   
-  public void onAccountPostReset(boolean paramBoolean)
+  public final void a(com.tencent.mm.plugin.messenger.foundation.a.n paramn)
   {
-    AppMethodBeat.i(16505);
-    com.tencent.mm.sdk.b.a locala = com.tencent.mm.sdk.b.a.ymk;
-    c localc = new c();
-    this.fJt = localc;
-    locala.c(localc);
-    AppMethodBeat.o(16505);
+    AppMethodBeat.i(116835);
+    this.hms.bv(paramn);
+    AppMethodBeat.o(116835);
   }
   
-  public void onAccountRelease()
+  public final com.tencent.mm.plugin.messenger.foundation.a.n azt()
   {
-    AppMethodBeat.i(16509);
-    if (this.fJt != null)
+    return this.hms;
+  }
+  
+  static final class a
+    extends a<com.tencent.mm.plugin.messenger.foundation.a.n>
+    implements com.tencent.mm.plugin.messenger.foundation.a.n
+  {
+    public final void a(final bps parambps, final bl parambl)
     {
-      c localc = this.fJt;
-      com.tencent.mm.sdk.b.a.ymk.d(localc.fCE);
-      com.tencent.mm.aq.b.agX().fCx = null;
-      ((j)g.E(j.class)).YF().b(localc);
-      aip();
-      ain().remove(localc);
-      com.tencent.mm.sdk.b.a.ymk.d(this.fJt);
+      AppMethodBeat.i(116832);
+      a(new a.a() {});
+      AppMethodBeat.o(116832);
     }
-    AppMethodBeat.o(16509);
   }
-  
-  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelmulti.n
  * JD-Core Version:    0.7.0.1
  */

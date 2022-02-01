@@ -17,23 +17,23 @@ import java.util.List;
 public final class b
   extends BaseAdapter
 {
-  private List<p> agf;
+  private List<p> ajH;
   private Context context;
   
   public b(Context paramContext)
   {
     this.context = paramContext;
-    this.agf = new ArrayList();
+    this.ajH = new ArrayList();
   }
   
-  private p bZ(int paramInt)
+  private p cv(int paramInt)
   {
-    return (p)this.agf.get(paramInt);
+    return (p)this.ajH.get(paramInt);
   }
   
   public final int getCount()
   {
-    return this.agf.size();
+    return this.ajH.size();
   }
   
   public final long getItemId(int paramInt)
@@ -49,27 +49,27 @@ public final class b
       localObject = (c)paramView.getTag();
       paramViewGroup = paramView;
       paramView = (View)localObject;
-      localObject = bZ(paramInt);
+      localObject = cv(paramInt);
       a locala = new a();
-      locala.acL = paramView.aeA;
-      locala.acM = 2130837531;
+      locala.agm = paramView.aic;
+      locala.agn = 2130837531;
       locala.width = 60;
       locala.height = 60;
       locala.type = 3;
-      locala.acH = ((p)localObject).VN;
-      locala.acO = 10;
-      h.me().a(locala);
-      paramView.agg.setText(this.context.getString(2131165215, new Object[] { String.format("%.2f", new Object[] { Float.valueOf((float)((p)localObject).VP / 100.0F) }) }));
-      paramView.afL.setText(((p)localObject).Vp);
+      locala.agi = ((p)localObject).XI;
+      locala.agp = 10;
+      h.mR().a(locala);
+      paramView.ajI.setText(this.context.getString(2131165215, new Object[] { String.format("%.2f", new Object[] { Float.valueOf((float)((p)localObject).XK / 100.0F) }) }));
+      paramView.ajn.setText(((p)localObject).Xk);
       return paramViewGroup;
     }
     if (MMActivity.isRect()) {}
     for (paramView = LayoutInflater.from(this.context).inflate(2130903059, paramViewGroup, false);; paramView = LayoutInflater.from(this.context).inflate(2130903060, paramViewGroup, false))
     {
       paramViewGroup = new c(this, (byte)0);
-      paramViewGroup.aeA = ((ImageView)paramView.findViewById(2131558467));
-      paramViewGroup.agg = ((TextView)paramView.findViewById(2131558469));
-      paramViewGroup.afL = ((TextView)paramView.findViewById(2131558468));
+      paramViewGroup.aic = ((ImageView)paramView.findViewById(2131558468));
+      paramViewGroup.ajI = ((TextView)paramView.findViewById(2131558470));
+      paramViewGroup.ajn = ((TextView)paramView.findViewById(2131558469));
       paramView.setTag(paramViewGroup);
       localObject = paramView;
       paramView = paramViewGroup;
@@ -80,7 +80,7 @@ public final class b
   
   public final void l(List<p> paramList)
   {
-    this.agf.addAll(paramList);
+    this.ajH.addAll(paramList);
   }
 }
 

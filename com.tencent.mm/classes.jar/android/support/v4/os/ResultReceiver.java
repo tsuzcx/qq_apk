@@ -10,14 +10,14 @@ import android.os.RemoteException;
 public class ResultReceiver
   implements Parcelable
 {
-  public static final Parcelable.Creator<ResultReceiver> CREATOR = new ResultReceiver.1();
-  final boolean DD = false;
-  a DE;
+  public static final Parcelable.Creator<ResultReceiver> CREATOR = new Parcelable.Creator() {};
+  final boolean Ks = false;
+  a Kt;
   final Handler mHandler = null;
   
   ResultReceiver(Parcel paramParcel)
   {
-    this.DE = a.a.e(paramParcel.readStrongBinder());
+    this.Kt = a.a.e(paramParcel.readStrongBinder());
   }
   
   public int describeContents()
@@ -29,12 +29,12 @@ public class ResultReceiver
   
   public final void send(int paramInt, Bundle paramBundle)
   {
-    if (this.DD) {
+    if (this.Ks) {
       if (this.mHandler != null) {
-        this.mHandler.post(new ResultReceiver.b(this, paramInt, paramBundle));
+        this.mHandler.post(new b(paramInt, paramBundle));
       }
     }
-    while (this.DE == null)
+    while (this.Kt == null)
     {
       return;
       onReceiveResult(paramInt, paramBundle);
@@ -42,7 +42,7 @@ public class ResultReceiver
     }
     try
     {
-      this.DE.send(paramInt, paramBundle);
+      this.Kt.send(paramInt, paramBundle);
       return;
     }
     catch (RemoteException paramBundle) {}
@@ -52,10 +52,10 @@ public class ResultReceiver
   {
     try
     {
-      if (this.DE == null) {
-        this.DE = new a();
+      if (this.Kt == null) {
+        this.Kt = new a();
       }
-      paramParcel.writeStrongBinder(this.DE.asBinder());
+      paramParcel.writeStrongBinder(this.Kt.asBinder());
       return;
     }
     finally {}
@@ -76,10 +76,28 @@ public class ResultReceiver
       ResultReceiver.this.onReceiveResult(paramInt, paramBundle);
     }
   }
+  
+  final class b
+    implements Runnable
+  {
+    final Bundle Kv;
+    final int mResultCode;
+    
+    b(int paramInt, Bundle paramBundle)
+    {
+      this.mResultCode = paramInt;
+      this.Kv = paramBundle;
+    }
+    
+    public final void run()
+    {
+      ResultReceiver.this.onReceiveResult(this.mResultCode, this.Kv);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.os.ResultReceiver
  * JD-Core Version:    0.7.0.1
  */

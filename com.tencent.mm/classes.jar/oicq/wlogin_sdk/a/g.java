@@ -6,43 +6,43 @@ import oicq.wlogin_sdk.tools.util;
 public final class g
   extends a
 {
-  public int CNA = 0;
-  public int CNx = 0;
-  public int CNy = 0;
-  public int CNz = 0;
+  public int Kje = 0;
+  public int Kjf = 0;
+  public int Kjg = 0;
+  public int Kjh = 0;
   
   public g()
   {
-    this.CMD = 261;
+    this.Kik = 261;
   }
   
-  public final Boolean erf()
+  public final Boolean fMI()
   {
-    AppMethodBeat.i(96469);
-    if (this.CNn < 2)
+    AppMethodBeat.i(88108);
+    if (this.KiU < 2)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96469);
+      AppMethodBeat.o(88108);
       return localBoolean;
     }
-    this.CNy = util.ae(this.CMx, this.CNm);
-    if (this.CNn < this.CNy + 2 + 2)
+    this.Kjf = util.ai(this.Kie, this.KiT);
+    if (this.KiU < this.Kjf + 2 + 2)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96469);
+      AppMethodBeat.o(88108);
       return localBoolean;
     }
-    this.CNx = util.ae(this.CMx, this.CNm + 2 + this.CNy);
-    if (this.CNn < this.CNy + 2 + 2 + this.CNx)
+    this.Kje = util.ai(this.Kie, this.KiT + 2 + this.Kjf);
+    if (this.KiU < this.Kjf + 2 + 2 + this.Kje)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96469);
+      AppMethodBeat.o(88108);
       return localBoolean;
     }
-    this.CNA = (this.CNm + 2);
-    this.CNz = (this.CNy + 2 + 2 + this.CNm);
+    this.Kjh = (this.KiT + 2);
+    this.Kjg = (this.Kjf + 2 + 2 + this.KiT);
     Boolean localBoolean = Boolean.TRUE;
-    AppMethodBeat.o(96469);
+    AppMethodBeat.o(88108);
     return localBoolean;
   }
 }

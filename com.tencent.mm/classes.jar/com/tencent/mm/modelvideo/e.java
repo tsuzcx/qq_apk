@@ -2,95 +2,97 @@ package com.tencent.mm.modelvideo;
 
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.i.d;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bzf;
-import com.tencent.mm.protocal.protobuf.bzg;
-import com.tencent.mm.protocal.protobuf.ckl;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.cpn;
+import com.tencent.mm.protocal.protobuf.cpo;
+import com.tencent.mm.protocal.protobuf.dck;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.f;
 import java.util.LinkedList;
 
 public final class e
-  extends m
+  extends n
   implements k
 {
-  private f callback;
+  private g callback;
   private String clientId;
-  private long fVM;
-  private s fVN;
-  private com.tencent.mm.i.d fVO;
+  private long hyw;
+  private s hyx;
+  private d hyy;
   private b rr;
   
-  public e(long paramLong, s params, com.tencent.mm.i.d paramd, String paramString)
+  public e(long paramLong, s params, d paramd, String paramString)
   {
-    AppMethodBeat.i(50679);
-    this.fVM = -1L;
-    this.fVN = null;
-    this.fVO = null;
+    AppMethodBeat.i(126838);
+    this.hyw = -1L;
+    this.hyx = null;
+    this.hyy = null;
     this.clientId = "";
-    ab.i("MicroMsg.NetSceneMassUploadSight", "massSendId %d, clientId %s", new Object[] { Long.valueOf(paramLong), paramString });
-    this.fVM = paramLong;
-    this.fVN = params;
-    this.fVO = paramd;
+    ad.i("MicroMsg.NetSceneMassUploadSight", "massSendId %d, clientId %s", new Object[] { Long.valueOf(paramLong), paramString });
+    this.hyw = paramLong;
+    this.hyx = params;
+    this.hyy = paramd;
     this.clientId = paramString;
-    AppMethodBeat.o(50679);
+    AppMethodBeat.o(126838);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, g paramg)
   {
     int i = 0;
-    AppMethodBeat.i(50680);
-    this.callback = paramf;
-    paramf = new b.a();
-    paramf.fsX = new bzf();
-    paramf.fsY = new bzg();
-    paramf.uri = "/cgi-bin/micromsg-bin/sendsight";
-    paramf.funcId = 245;
-    this.rr = paramf.ado();
-    paramf = (bzf)this.rr.fsV.fta;
-    paramf.ewj = this.fVO.field_aesKey;
-    paramf.rlS = this.clientId;
-    paramf.cqq = this.fVN.cHH;
-    paramf.xLj = this.fVN.fXx;
-    o.alE();
-    Object localObject = t.vg(this.fVN.getFileName());
-    BitmapFactory.Options localOptions = com.tencent.mm.sdk.platformtools.d.aoT((String)localObject);
+    AppMethodBeat.i(126839);
+    this.callback = paramg;
+    paramg = new b.a();
+    paramg.gUU = new cpn();
+    paramg.gUV = new cpo();
+    paramg.uri = "/cgi-bin/micromsg-bin/sendsight";
+    paramg.funcId = 245;
+    this.rr = paramg.atI();
+    paramg = (cpn)this.rr.gUS.gUX;
+    paramg.fMw = this.hyy.field_aesKey;
+    paramg.wNY = this.clientId;
+    paramg.md5 = this.hyx.dyw;
+    paramg.Ejb = this.hyx.gOY;
+    o.aCI();
+    Object localObject = t.zR(this.hyx.getFileName());
+    BitmapFactory.Options localOptions = f.aFf((String)localObject);
     if (localOptions != null)
     {
-      paramf.fgR = localOptions.outWidth;
-      paramf.fgQ = localOptions.outHeight;
+      paramg.thumbWidth = localOptions.outWidth;
+      paramg.thumbHeight = localOptions.outHeight;
     }
     for (;;)
     {
-      paramf.fWd = this.fVN.fXu;
-      localObject = bo.bf(this.fVN.fXF, "").split(",");
+      paramg.hyP = this.hyx.hAf;
+      localObject = bt.by(this.hyx.hAp, "").split(",");
       if ((localObject != null) && (localObject.length > 0)) {
         break;
       }
-      ab.e("MicroMsg.NetSceneMassUploadSight", "cdn upload video done, massSendId[%d], split username fail", new Object[] { Long.valueOf(this.fVM) });
-      AppMethodBeat.o(50680);
+      ad.e("MicroMsg.NetSceneMassUploadSight", "cdn upload video done, massSendId[%d], split username fail", new Object[] { Long.valueOf(this.hyw) });
+      AppMethodBeat.o(126839);
       return -1;
-      ab.w("MicroMsg.NetSceneMassUploadSight", "sight send getImageOptions for thumb failed path:%s", new Object[] { localObject });
+      ad.w("MicroMsg.NetSceneMassUploadSight", "sight send getImageOptions for thumb failed path:%s", new Object[] { localObject });
     }
     int j = localObject.length;
     while (i < j)
     {
       localOptions = localObject[i];
-      ckl localckl = new ckl();
-      localckl.username = localOptions;
-      paramf.xLi.add(localckl);
+      dck localdck = new dck();
+      localdck.username = localOptions;
+      paramg.Eja.add(localdck);
       i += 1;
     }
-    paramf.url = this.fVO.field_fileId;
-    paramf.fXx = this.fVN.fsd;
+    paramg.url = this.hyy.field_fileId;
+    paramg.gOY = this.hyx.gTY;
     i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(50680);
+    AppMethodBeat.o(126839);
     return i;
   }
   
@@ -101,15 +103,15 @@ public final class e
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(50681);
-    ab.i("MicroMsg.NetSceneMassUploadSight", "cdntra onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " useCdnTransClientId:" + this.clientId + " massSendId " + this.fVM);
+    AppMethodBeat.i(126840);
+    ad.i("MicroMsg.NetSceneMassUploadSight", "cdntra onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " useCdnTransClientId:" + this.clientId + " massSendId " + this.hyw);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(50681);
+    AppMethodBeat.o(126840);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelvideo.e
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,9 @@ import android.os.PowerManager.WakeLock;
 import android.os.StatFs;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.q;
 import com.tencent.tmassistantsdk.storage.TMAssistantFile;
 import com.tencent.tmassistantsdk.util.GlobalUtil;
 import com.tencent.tmassistantsdk.util.TMLog;
@@ -29,22 +31,22 @@ public class DownloadHelper
   
   static
   {
-    AppMethodBeat.i(75713);
+    AppMethodBeat.i(101959);
     TAG = DownloadHelper.class.getSimpleName();
-    AppMethodBeat.o(75713);
+    AppMethodBeat.o(101959);
   }
   
   public static String correctFileName(String paramString)
   {
-    AppMethodBeat.i(75703);
+    AppMethodBeat.i(101949);
     paramString = paramString.replace("?", "_").replace("*", "_").replace(" ", "_").replace("$", "_").replace("&", "_").replace("@", "_").replace("#", "_").replace("<", "_").replace(">", "_").replace("|", "_").replace(":", "_").replace("/", "_").replace("\\", "_").replace("\"", "_");
-    AppMethodBeat.o(75703);
+    AppMethodBeat.o(101949);
     return paramString;
   }
   
   public static String correctURL(String paramString)
   {
-    AppMethodBeat.i(75700);
+    AppMethodBeat.i(101946);
     paramString = paramString.replace("\r", "").replace("\n", "").trim();
     str1 = new String(paramString);
     try
@@ -64,30 +66,30 @@ public class DownloadHelper
     {
       for (;;)
       {
-        ab.printErrStackTrace(TAG, paramString, "", new Object[0]);
+        ad.printErrStackTrace(TAG, paramString, "", new Object[0]);
         paramString = str1;
       }
     }
-    AppMethodBeat.o(75700);
+    AppMethodBeat.o(101946);
     return paramString;
   }
   
   public static String decodeFileName(String paramString)
   {
-    AppMethodBeat.i(75702);
+    AppMethodBeat.i(101948);
     if (paramString != null)
     {
       paramString = URLDecoder.decode(paramString);
-      AppMethodBeat.o(75702);
+      AppMethodBeat.o(101948);
       return paramString;
     }
-    AppMethodBeat.o(75702);
+    AppMethodBeat.o(101948);
     return null;
   }
   
   public static String genAPKFileName(String paramString)
   {
-    AppMethodBeat.i(75701);
+    AppMethodBeat.i(101947);
     if (paramString.contains(".apk"))
     {
       String str = paramString.trim().substring(paramString.lastIndexOf("/") + 1).trim();
@@ -99,17 +101,17 @@ public class DownloadHelper
       {
         TMLog.i(TAG, "file name = ".concat(String.valueOf(paramString)));
         paramString = renameAPKFileName(paramString);
-        AppMethodBeat.o(75701);
+        AppMethodBeat.o(101947);
         return paramString;
       }
     }
-    AppMethodBeat.o(75701);
+    AppMethodBeat.o(101947);
     return null;
   }
   
   public static String generateFileNameFromURL(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(75706);
+    AppMethodBeat.i(101952);
     String str2 = GlobalUtil.calcMD5AsString(paramString1);
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
@@ -127,7 +129,7 @@ public class DownloadHelper
     for (;;)
     {
       paramString1 = str1 + paramString1;
-      AppMethodBeat.o(75706);
+      AppMethodBeat.o(101952);
       return paramString1;
       label80:
       if (paramString2.equals("application/tm.android.apkdiff"))
@@ -150,13 +152,13 @@ public class DownloadHelper
     {
       try
       {
-        AppMethodBeat.i(75707);
+        AppMethodBeat.i(101953);
         localObject1 = GlobalUtil.getInstance().getContext();
         if (localObject1 != null) {
           continue;
         }
         localObject1 = "";
-        AppMethodBeat.o(75707);
+        AppMethodBeat.o(101953);
       }
       finally
       {
@@ -166,12 +168,12 @@ public class DownloadHelper
             break label70;
           }
           Object localObject1 = "";
-          AppMethodBeat.o(75707);
+          AppMethodBeat.o(101953);
         }
         catch (Exception localException)
         {
           localObject3 = "";
-          AppMethodBeat.o(75707);
+          AppMethodBeat.o(101953);
         }
         localObject2 = finally;
       }
@@ -182,12 +184,12 @@ public class DownloadHelper
       if (localObject3 == null)
       {
         localObject3 = "";
-        AppMethodBeat.o(75707);
+        AppMethodBeat.o(101953);
       }
       else if (((NetworkInfo)localObject3).getType() == 1)
       {
         localObject3 = "wifi";
-        AppMethodBeat.o(75707);
+        AppMethodBeat.o(101953);
       }
       else
       {
@@ -195,13 +197,13 @@ public class DownloadHelper
         if (localObject3 == null)
         {
           localObject3 = "";
-          AppMethodBeat.o(75707);
+          AppMethodBeat.o(101953);
         }
         else
         {
           localObject3 = ((String)localObject3).toLowerCase();
           TMLog.v(TAG, "netInfo  =  ".concat(String.valueOf(localObject3)));
-          AppMethodBeat.o(75707);
+          AppMethodBeat.o(101953);
         }
       }
     }
@@ -209,23 +211,23 @@ public class DownloadHelper
   
   public static int getStorePosition(String paramString)
   {
-    AppMethodBeat.i(75712);
+    AppMethodBeat.i(101958);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(75712);
+      AppMethodBeat.o(101958);
       return 0;
     }
     if ((paramString != null) && (paramString.startsWith("/data")))
     {
-      AppMethodBeat.o(75712);
+      AppMethodBeat.o(101958);
       return 1;
     }
     if (TMAssistantFile.isSDCardExistAndCanWrite())
     {
-      AppMethodBeat.o(75712);
+      AppMethodBeat.o(101958);
       return 2;
     }
-    AppMethodBeat.o(75712);
+    AppMethodBeat.o(101958);
     return 0;
   }
   
@@ -237,15 +239,15 @@ public class DownloadHelper
   public static boolean isDownloadFileExisted(String paramString)
   {
     boolean bool1 = false;
-    AppMethodBeat.i(75710);
+    AppMethodBeat.i(101956);
     if (paramString == null)
     {
-      AppMethodBeat.o(75710);
+      AppMethodBeat.o(101956);
       return false;
     }
     try
     {
-      boolean bool2 = new File(TMAssistantFile.getSaveFilePath(paramString)).exists();
+      boolean bool2 = new e(TMAssistantFile.getSaveFilePath(paramString)).exists();
       if (bool2) {
         bool1 = true;
       }
@@ -254,24 +256,24 @@ public class DownloadHelper
     {
       for (;;)
       {
-        ab.printErrStackTrace(TAG, paramString, "", new Object[0]);
+        ad.printErrStackTrace(TAG, paramString, "", new Object[0]);
       }
     }
     finally
     {
-      AppMethodBeat.o(75710);
+      AppMethodBeat.o(101956);
     }
-    AppMethodBeat.o(75710);
+    AppMethodBeat.o(101956);
     return bool1;
   }
   
   public static boolean isDownloadFileExisted(String paramString1, String paramString2)
   {
     boolean bool1 = false;
-    AppMethodBeat.i(75709);
+    AppMethodBeat.i(101955);
     try
     {
-      boolean bool2 = new File(TMAssistantFile.getSaveFilePath(generateFileNameFromURL(paramString1, paramString2))).exists();
+      boolean bool2 = new e(TMAssistantFile.getSaveFilePath(generateFileNameFromURL(paramString1, paramString2))).exists();
       if (bool2) {
         bool1 = true;
       }
@@ -280,32 +282,32 @@ public class DownloadHelper
     {
       for (;;)
       {
-        ab.printErrStackTrace(TAG, paramString1, "", new Object[0]);
+        ad.printErrStackTrace(TAG, paramString1, "", new Object[0]);
       }
     }
     finally
     {
-      AppMethodBeat.o(75709);
+      AppMethodBeat.o(101955);
     }
-    AppMethodBeat.o(75709);
+    AppMethodBeat.o(101955);
     return bool1;
   }
   
   public static boolean isNetworkConncted()
   {
-    AppMethodBeat.i(75708);
+    AppMethodBeat.i(101954);
     Object localObject = GlobalUtil.getInstance().getContext();
     if (localObject == null)
     {
       TMLog.w(TAG, "GlobalUtil.getInstance().getContext() == null.");
-      AppMethodBeat.o(75708);
+      AppMethodBeat.o(101954);
       return false;
     }
     localObject = ((ConnectivityManager)((Context)localObject).getSystemService("connectivity")).getActiveNetworkInfo();
     if (localObject != null) {}
     for (boolean bool = ((NetworkInfo)localObject).isAvailable();; bool = false)
     {
-      AppMethodBeat.o(75708);
+      AppMethodBeat.o(101954);
       return bool;
     }
   }
@@ -313,7 +315,7 @@ public class DownloadHelper
   public static boolean isSpaceEnough(String paramString, long paramLong)
   {
     long l2 = 0L;
-    AppMethodBeat.i(75711);
+    AppMethodBeat.i(101957);
     long l1 = -1L;
     int i = getStorePosition(paramString);
     long l3;
@@ -324,28 +326,28 @@ public class DownloadHelper
       l3 = (paramString.getAvailableBlocks() - 4L) * l1;
       l1 = l3;
       if (l3 >= 0L) {
-        break label185;
+        break label188;
       }
       l1 = l2;
     }
-    label185:
+    label188:
     for (;;)
     {
       paramLong = ((float)paramLong * 1.5F);
       if (paramLong <= 104857600L) {
-        break label196;
+        break label199;
       }
       if (l1 < paramLong) {
         break;
       }
-      AppMethodBeat.o(75711);
+      AppMethodBeat.o(101957);
       return true;
       if (i == 2)
       {
         l1 = l2;
         if ("mounted".equals(Environment.getExternalStorageState()))
         {
-          paramString = new StatFs(new File(Environment.getExternalStorageDirectory().getPath()).getPath());
+          paramString = new StatFs(q.B(new e(Environment.getExternalStorageDirectory().getPath()).mUri));
           l1 = paramString.getBlockSize();
           l3 = (paramString.getAvailableBlocks() - 4L) * l1;
           l1 = l2;
@@ -355,22 +357,22 @@ public class DownloadHelper
         }
       }
     }
-    AppMethodBeat.o(75711);
+    AppMethodBeat.o(101957);
     return false;
-    label196:
+    label199:
     if (l1 >= 104857600L)
     {
-      AppMethodBeat.o(75711);
+      AppMethodBeat.o(101957);
       return true;
     }
-    AppMethodBeat.o(75711);
+    AppMethodBeat.o(101957);
     return false;
   }
   
   public static boolean isValidURL(String paramString)
   {
     boolean bool = false;
-    AppMethodBeat.i(75705);
+    AppMethodBeat.i(101951);
     try
     {
       new URI(correctURL(paramString));
@@ -380,25 +382,25 @@ public class DownloadHelper
     {
       for (;;)
       {
-        ab.printErrStackTrace(TAG, paramString, "", new Object[0]);
+        ad.printErrStackTrace(TAG, paramString, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(75705);
+    AppMethodBeat.o(101951);
     return bool;
   }
   
   public static String renameAPKFileName(String paramString)
   {
-    AppMethodBeat.i(75704);
+    AppMethodBeat.i(101950);
     if (paramString == null)
     {
-      AppMethodBeat.o(75704);
+      AppMethodBeat.o(101950);
       return null;
     }
     int i = paramString.lastIndexOf('.');
     if ((i <= 0) || (i == paramString.length() - 1))
     {
-      AppMethodBeat.o(75704);
+      AppMethodBeat.o(101950);
       return paramString;
     }
     String[] arrayOfString = new String[2];
@@ -409,17 +411,17 @@ public class DownloadHelper
     for (String str = paramString;; str = arrayOfString[0] + "(" + i + ")" + arrayOfString[1])
     {
       i += 1;
-      if (new File(TMAssistantFile.getSavePathRootDir() + File.separator + str).exists()) {
+      if (new e(TMAssistantFile.getSavePathRootDir() + "/" + str).exists()) {
         break;
       }
-      AppMethodBeat.o(75704);
+      AppMethodBeat.o(101950);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.DownloadHelper
  * JD-Core Version:    0.7.0.1
  */

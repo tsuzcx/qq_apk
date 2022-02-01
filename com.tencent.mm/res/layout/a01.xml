@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/f9v" android:background="@color/a_r" android:padding="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/agf" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <RelativeLayout android:id="@id/bl" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="@dimen/dq" android:textColor="#ccf2f2f2" android:id="@id/agh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/agi" android:visibility="gone" android:layout_width="@dimen/a81" android:layout_height="@dimen/a81" android:layout_centerInParent="true" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/a82" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a01" />
-    <TextView android:textColor="@color/y5" android:id="@id/agk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <include layout="@layout/yy" />
-</RelativeLayout>
+    <ProgressBar android:gravity="center" android:layout_width="@dimen/d1" android:layout_height="@dimen/d1" android:progressDrawable="@drawable/a7h" />
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/ga6" android:paddingLeft="@dimen/i_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bu2" />
+</LinearLayout>

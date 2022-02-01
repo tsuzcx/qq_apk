@@ -1,111 +1,50 @@
 package com.tencent.mm.plugin.webview.model;
 
-import android.net.Uri;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.platformtools.ae;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.plugin.websearch.api.n;
-import com.tencent.mm.pluginsdk.ui.tools.u;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.io.File;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import d.l;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/webview/model/TopStoryWebViewVisitReporter;", "Lcom/tencent/mm/plugin/webview/model/IWebviewReporter;", "()V", "enterTime", "", "getEnterTime", "()J", "lastResumeTime", "maxScrollY", "", "publishId", "", "scene", "stayTime", "totalScrollY", "onPause", "", "onResume", "report", "setMaxScrollY", "setPublishId", "setScene", "setTotalScrollY", "plugin-webview_release"})
 public final class aj
 {
-  private static final Set<String> uWd;
+  public int AYn;
+  public long dsf;
+  public final long enterTime;
+  public String gKw;
+  public long lastResumeTime;
+  public int scene;
+  public int xJD;
   
-  static
+  public aj()
   {
-    AppMethodBeat.i(6696);
-    Object localObject = new HashSet();
-    uWd = (Set)localObject;
-    ((Set)localObject).add("file:///android_asset/");
-    localObject = e.eQw;
-    if (!bo.isNullOrNil((String)localObject)) {
-      localObject = e.eQw.replace("/data/user/0", "/data/data");
-    }
-    for (;;)
-    {
-      File localFile1 = new File(aa.Jk(0));
-      uWd.add("file://" + localFile1.getAbsolutePath());
-      uWd.add("file://" + ((n)g.E(n.class)).cYZ());
-      File localFile2 = new File(e.eQz, aa.Ji(0));
-      uWd.add("file://" + localFile2.getAbsolutePath());
-      File localFile3 = new File((String)localObject, "wenote/res");
-      uWd.add("file://" + localFile3.getAbsolutePath());
-      localFile3 = new File(e.eQz, "wenote/res");
-      uWd.add("file://" + localFile3.getAbsolutePath());
-      ab.i("MicroMsg.URLFilter", "add webview UI FILE URL WHITE LIST data: %s sdcard:%s", new Object[] { localFile1.getAbsolutePath(), localFile2.getAbsolutePath() });
-      localObject = new File((String)localObject, "emoji/res");
-      uWd.add("file://" + ((File)localObject).getAbsolutePath());
-      localFile1 = new File(e.eQz, "emoji/res");
-      uWd.add("file://" + localFile1.getAbsolutePath());
-      ab.i("MicroMsg.URLFilter", "add webview UI FILE URL WHITE LIST data: %s sdcard:%s", new Object[] { ((File)localObject).getAbsolutePath(), localFile1.getAbsolutePath() });
-      localObject = uWd.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ab.i("MicroMsg.URLFilter", "WebViewUI white list path : %s", new Object[] { (String)((Iterator)localObject).next() });
-      }
-      AppMethodBeat.o(6696);
-      return;
-    }
+    AppMethodBeat.i(188883);
+    this.lastResumeTime = -1L;
+    this.enterTime = System.currentTimeMillis();
+    this.AYn = a.hW(com.tencent.mm.sdk.platformtools.aj.getContext());
+    this.xJD = a.hW(com.tencent.mm.sdk.platformtools.aj.getContext());
+    AppMethodBeat.o(188883);
   }
   
-  public static boolean ahc(String paramString)
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  static final class a<InputType, ResultType>
+    implements b<Bundle, IPCVoid>
   {
-    AppMethodBeat.i(6695);
-    if (ae.gkH)
+    public static final a AYo;
+    
+    static
     {
-      ab.w("MicroMsg.URLFilter", "skipLoadUrlCheck");
-      AppMethodBeat.o(6695);
-      return true;
+      AppMethodBeat.i(188882);
+      AYo = new a();
+      AppMethodBeat.o(188882);
     }
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(6695);
-      return true;
-    }
-    paramString = paramString.toLowerCase();
-    if (paramString.startsWith("about:blank"))
-    {
-      AppMethodBeat.o(6695);
-      return false;
-    }
-    if (!paramString.startsWith("file://"))
-    {
-      paramString = Uri.parse(paramString);
-      if (bo.isNullOrNil(paramString.getHost()))
-      {
-        AppMethodBeat.o(6695);
-        return true;
-      }
-      if (!paramString.getHost().contains(u.bQm()))
-      {
-        AppMethodBeat.o(6695);
-        return true;
-      }
-      AppMethodBeat.o(6695);
-      return false;
-    }
-    Iterator localIterator = uWd.iterator();
-    while (localIterator.hasNext()) {
-      if (paramString.startsWith((String)localIterator.next()))
-      {
-        AppMethodBeat.o(6695);
-        return true;
-      }
-    }
-    AppMethodBeat.o(6695);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.aj
  * JD-Core Version:    0.7.0.1
  */

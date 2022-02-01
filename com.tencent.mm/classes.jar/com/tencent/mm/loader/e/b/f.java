@@ -10,13 +10,16 @@ public abstract class f<V>
     super(paramg);
   }
   
-  protected void a(Bitmap paramBitmap, g<?> paramg) {}
-  
   public void a(g<?> paramg, com.tencent.mm.loader.f<?, ?> paramf) {}
+  
+  protected boolean a(Bitmap paramBitmap, g<?> paramg)
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.e.b.f
  * JD-Core Version:    0.7.0.1
  */

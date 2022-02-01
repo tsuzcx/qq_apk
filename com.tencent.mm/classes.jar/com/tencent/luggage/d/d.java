@@ -7,30 +7,30 @@ import java.util.List;
 
 public final class d
 {
-  final LinkedList<Class<? extends a>> byH;
+  final LinkedList<Class<? extends a>> bZX;
   
   public d()
   {
-    AppMethodBeat.i(90770);
-    this.byH = new LinkedList();
-    AppMethodBeat.o(90770);
+    AppMethodBeat.i(140371);
+    this.bZX = new LinkedList();
+    AppMethodBeat.o(140371);
   }
   
-  public final void z(List<Class<? extends a>> paramList)
+  public final void J(List<Class<? extends a>> paramList)
   {
-    AppMethodBeat.i(90771);
+    AppMethodBeat.i(140372);
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       Class localClass = (Class)paramList.next();
-      this.byH.add(localClass);
+      this.bZX.add(localClass);
     }
-    AppMethodBeat.o(90771);
+    AppMethodBeat.o(140372);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.d.d
  * JD-Core Version:    0.7.0.1
  */

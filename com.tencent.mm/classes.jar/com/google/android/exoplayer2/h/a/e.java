@@ -1,67 +1,49 @@
 package com.google.android.exoplayer2.h.a;
 
+import com.google.android.exoplayer2.h.f;
+import com.google.android.exoplayer2.h.f.a;
+import com.google.android.exoplayer2.h.g;
+import com.google.android.exoplayer2.h.g.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.File;
 
-public class e
-  implements Comparable<e>
+public final class e
+  implements g.a
 {
-  public final long aPF;
-  public final boolean aZZ;
-  public final long baa;
-  public final File file;
-  public final String key;
-  public final long position;
+  private final a bxF;
+  private final d.a bxO;
+  private final g.a bxZ;
+  private final g.a bya;
+  private final f.a byb;
+  private final int flags;
   
-  public e(String paramString, long paramLong1, long paramLong2, long paramLong3, File paramFile)
+  public e(a parama, g.a parama1, g.a parama2, f.a parama3, d.a parama4)
   {
-    AppMethodBeat.i(151973);
-    this.key = paramString;
-    this.position = paramLong1;
-    this.aPF = paramLong2;
-    if (paramFile != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.aZZ = bool;
-      this.file = paramFile;
-      this.baa = paramLong3;
-      AppMethodBeat.o(151973);
-      return;
-    }
+    this.bxF = parama;
+    this.bxZ = parama1;
+    this.bya = parama2;
+    this.byb = parama3;
+    this.flags = 3;
+    this.bxO = parama4;
   }
   
-  public final int d(e parame)
+  public final d vv()
   {
-    AppMethodBeat.i(151974);
-    if (!this.key.equals(parame.key))
+    AppMethodBeat.i(92974);
+    a locala = this.bxF;
+    g localg1 = this.bxZ.vi();
+    g localg2 = this.bya.vi();
+    if (this.byb != null) {}
+    for (Object localObject = this.byb.vh();; localObject = null)
     {
-      int i = this.key.compareTo(parame.key);
-      AppMethodBeat.o(151974);
-      return i;
+      localObject = new d(locala, localg1, localg2, (f)localObject, this.flags, this.bxO);
+      AppMethodBeat.o(92974);
+      return localObject;
     }
-    long l = this.position - parame.position;
-    if (l == 0L)
-    {
-      AppMethodBeat.o(151974);
-      return 0;
-    }
-    if (l < 0L)
-    {
-      AppMethodBeat.o(151974);
-      return -1;
-    }
-    AppMethodBeat.o(151974);
-    return 1;
-  }
-  
-  public final boolean qA()
-  {
-    return this.aPF == -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.e
  * JD-Core Version:    0.7.0.1
  */

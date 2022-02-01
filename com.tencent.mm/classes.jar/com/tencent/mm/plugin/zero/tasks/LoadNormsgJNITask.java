@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.zero.tasks;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.k;
+import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.kernel.a.c.a;
 import com.tencent.mm.kernel.b.g;
 
@@ -10,11 +10,14 @@ public final class LoadNormsgJNITask
 {
   public final void execute(g paramg)
   {
-    AppMethodBeat.i(58780);
-    k.a("stlport_shared", getClass().getClassLoader());
-    k.a("wechatxlog", getClass().getClassLoader());
-    k.a("wechatnormsg", getClass().getClassLoader());
-    AppMethodBeat.o(58780);
+    AppMethodBeat.i(133030);
+    getClass().getClassLoader();
+    j.pq("stlport_shared");
+    getClass().getClassLoader();
+    j.pq("wechatxlog");
+    getClass().getClassLoader();
+    j.pq("wechatnormsg");
+    AppMethodBeat.o(133030);
   }
   
   public final String name()
@@ -24,7 +27,7 @@ public final class LoadNormsgJNITask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.tasks.LoadNormsgJNITask
  * JD-Core Version:    0.7.0.1
  */

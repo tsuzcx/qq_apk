@@ -58,11 +58,11 @@ public abstract interface IAccountAccessor
       
       public Account getAccount()
       {
-        AppMethodBeat.i(89666);
+        AppMethodBeat.i(4688);
         Parcel localParcel = transactAndReadException(2, obtainAndWriteInterfaceToken());
         Account localAccount = (Account)zzc.zza(localParcel, Account.CREATOR);
         localParcel.recycle();
-        AppMethodBeat.o(89666);
+        AppMethodBeat.o(4688);
         return localAccount;
       }
     }

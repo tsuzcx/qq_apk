@@ -1,31 +1,32 @@
 package com.tencent.mm.console;
 
+import android.content.Context;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bk.a;
-import com.tencent.mm.network.e;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.plugin.eggspring.c.a;
 
 final class b$7
-  implements bk.a
+  implements com.tencent.mm.al.g
 {
-  public final void a(e parame)
+  b$7(Context paramContext) {}
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(16087);
-    if (parame == null)
+    AppMethodBeat.i(20119);
+    if (2812 == paramn.getType())
     {
-      AppMethodBeat.o(16087);
-      return;
+      com.tencent.mm.kernel.g.aeS().b(2812, this);
+      paramString = (a)paramn;
+      Toast.makeText(this.val$context, "errType:" + paramInt1 + ", errCode:" + paramInt2 + ", coupon ret_code:" + paramString.osa + ", coupon ret_msg:" + paramString.osb + ".", 1).show();
     }
-    parame = parame.adI();
-    aw.aaz();
-    int i = com.tencent.mm.model.c.getUin();
-    parame.a(new byte[0], new byte[0], new byte[0], i);
-    AppMethodBeat.o(16087);
+    AppMethodBeat.o(20119);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.b.7
  * JD-Core Version:    0.7.0.1
  */

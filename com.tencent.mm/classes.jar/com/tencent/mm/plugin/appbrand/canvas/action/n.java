@@ -12,44 +12,44 @@ public final class n
 {
   private static boolean a(Canvas paramCanvas, float paramFloat)
   {
-    AppMethodBeat.i(103222);
+    AppMethodBeat.i(144905);
     paramCanvas.rotate((float)(paramFloat / 3.141592653589793D * 180.0D));
-    AppMethodBeat.o(103222);
+    AppMethodBeat.o(144905);
     return true;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    AppMethodBeat.i(103223);
+    AppMethodBeat.i(144906);
     paramd = (RotateActionArg)paramDrawActionArg;
     if (paramd == null)
     {
-      AppMethodBeat.o(103223);
+      AppMethodBeat.o(144906);
       return false;
     }
-    boolean bool = a(paramCanvas, paramd.heZ);
-    AppMethodBeat.o(103223);
+    boolean bool = a(paramCanvas, paramd.degrees);
+    AppMethodBeat.o(144906);
     return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103221);
+    AppMethodBeat.i(144904);
     if (paramJSONArray.length() <= 0)
     {
-      AppMethodBeat.o(103221);
+      AppMethodBeat.o(144904);
       return false;
     }
     boolean bool = a(paramCanvas, (float)paramJSONArray.optDouble(0));
-    AppMethodBeat.o(103221);
+    AppMethodBeat.o(144904);
     return bool;
   }
   
-  public final BaseDrawActionArg axW()
+  public final BaseDrawActionArg aSP()
   {
-    AppMethodBeat.i(103220);
+    AppMethodBeat.i(144903);
     RotateActionArg localRotateActionArg = new RotateActionArg();
-    AppMethodBeat.o(103220);
+    AppMethodBeat.o(144903);
     return localRotateActionArg;
   }
   
@@ -60,7 +60,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.n
  * JD-Core Version:    0.7.0.1
  */

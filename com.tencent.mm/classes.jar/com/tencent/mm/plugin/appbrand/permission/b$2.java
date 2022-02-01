@@ -1,53 +1,54 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.page.o;
-import com.tencent.mm.plugin.appbrand.page.r;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.widget.f.a;
-import com.tencent.mm.plugin.appbrand.widget.f.b;
-import com.tencent.mm.plugin.appbrand.widget.f.b.a;
-import com.tencent.mm.plugin.appbrand.widget.f.f;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.plugin.appbrand.page.t;
+import com.tencent.mm.plugin.appbrand.widget.e.a;
+import com.tencent.mm.plugin.appbrand.widget.e.b;
+import com.tencent.mm.plugin.appbrand.widget.e.b.a;
+import com.tencent.mm.plugin.appbrand.widget.e.f;
 
 final class b$2
   implements Runnable
 {
-  b$2(i parami, String paramString) {}
+  b$2(AppBrandRuntime paramAppBrandRuntime, String paramString) {}
   
   public final void run()
   {
-    AppMethodBeat.i(132506);
-    Object localObject = this.gQE.atj();
+    AppMethodBeat.i(47992);
+    Object localObject = this.iFn.aLK();
     if (localObject != null)
     {
-      localObject = ((r)localObject).getCurrentPage();
+      localObject = ((t)localObject).getCurrentPage();
       if (localObject != null)
       {
-        localObject = ((o)localObject).getCurrentPageView();
+        localObject = ((q)localObject).getCurrentPageView();
         if (localObject != null)
         {
-          localObject = ((v)localObject).ixr;
+          localObject = ((aa)localObject).lbc;
           String str = this.val$message;
-          if (((b)localObject).jug.isRunning())
+          if (((b)localObject).mkl.isRunning())
           {
-            b.a locala = ((b)localObject).aSg();
-            if (((b)localObject).jui == null)
+            b.a locala = ((b)localObject).buy();
+            ((b)localObject).buz();
+            if (((b)localObject).mkn == null)
             {
-              ((b)localObject).jui = new a(((b)localObject).jug.getContext());
-              ((b)localObject).jui.a(locala);
+              ((b)localObject).mkn = new a(((b)localObject).mkl.getContext());
+              ((b)localObject).mkn.b(locala);
             }
-            ((b)localObject).jui.FX(str);
+            ((b)localObject).mkn.NU(str);
           }
         }
       }
     }
-    AppMethodBeat.o(132506);
+    AppMethodBeat.o(47992);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.b.2
  * JD-Core Version:    0.7.0.1
  */

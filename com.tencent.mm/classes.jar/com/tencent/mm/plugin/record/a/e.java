@@ -9,9 +9,7 @@ public abstract interface e
 {
   public static final String[] SQL_CREATE = { j.getCreateSQLs(i.info, "RecordCDNInfo") };
   
-  public abstract List<i> Ck(int paramInt);
-  
-  public abstract i XR(String paramString);
+  public abstract List<i> Ka(int paramInt);
   
   public abstract void a(d paramd);
   
@@ -19,17 +17,19 @@ public abstract interface e
   
   public abstract boolean a(i parami, String... paramVarArgs);
   
+  public abstract i als(String paramString);
+  
   public abstract void b(d paramd);
   
   public abstract boolean b(i parami);
   
   public abstract boolean b(i parami, String... paramVarArgs);
   
-  public abstract List<i> cfM();
+  public abstract List<i> dgc();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a.e
  * JD-Core Version:    0.7.0.1
  */

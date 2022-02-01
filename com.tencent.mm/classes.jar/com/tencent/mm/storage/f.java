@@ -2,15 +2,18 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.p;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.b.p;
+import com.tencent.mm.n.b;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storagebase.a.a;
 
 public final class f
-  implements com.tencent.mm.cg.a.a<String>
+  implements a<String>
 {
-  public long euF;
+  public CharSequence Feg;
+  public long fId;
   private String field_alias;
   public String field_conRemark;
   public int field_deleteFlag;
@@ -26,14 +29,13 @@ public final class f
   public String field_username;
   public int field_verifyFlag;
   public int field_weiboFlag;
-  public CharSequence ywx;
   
-  private void dvO()
+  private void eJz()
   {
-    AppMethodBeat.i(136950);
+    AppMethodBeat.i(90781);
     if (this.field_lvbuff == null)
     {
-      AppMethodBeat.o(136950);
+      AppMethodBeat.o(90781);
       return;
     }
     try
@@ -45,76 +47,76 @@ public final class f
       }
       else
       {
-        AppMethodBeat.o(136950);
+        AppMethodBeat.o(90781);
         return;
       }
-      y localy = new y();
-      int i = localy.ca(this.field_lvbuff);
+      aa localaa = new aa();
+      int i = localaa.cs(this.field_lvbuff);
       if (i != 0)
       {
-        AppMethodBeat.o(136950);
+        AppMethodBeat.o(90781);
         return;
       }
-      localy.Nb(4);
-      localy.Nb(4);
-      localy.dst();
-      localy.Nb(8);
-      localy.Nb(4);
-      localy.dst();
-      localy.dst();
-      localy.Nb(4);
-      localy.Nb(4);
-      localy.dst();
-      localy.dst();
-      localy.Nb(4);
-      localy.Nb(4);
-      this.field_signature = localy.getString();
-      localy.dst();
-      localy.dst();
-      localy.dst();
-      localy.Nb(4);
-      localy.Nb(4);
-      localy.dst();
-      localy.Nb(4);
-      localy.dst();
-      localy.dst();
-      localy.Nb(4);
-      localy.Nb(4);
-      if (!localy.dsu()) {
-        this.field_remarkDesc = localy.getString();
+      localaa.Wg(4);
+      localaa.Wg(4);
+      localaa.eFj();
+      localaa.Wg(8);
+      localaa.Wg(4);
+      localaa.eFj();
+      localaa.eFj();
+      localaa.Wg(4);
+      localaa.Wg(4);
+      localaa.eFj();
+      localaa.eFj();
+      localaa.Wg(4);
+      localaa.Wg(4);
+      this.field_signature = localaa.getString();
+      localaa.eFj();
+      localaa.eFj();
+      localaa.eFj();
+      localaa.Wg(4);
+      localaa.Wg(4);
+      localaa.eFj();
+      localaa.Wg(4);
+      localaa.eFj();
+      localaa.eFj();
+      localaa.Wg(4);
+      localaa.Wg(4);
+      if (!localaa.eFk()) {
+        this.field_remarkDesc = localaa.getString();
       }
       this.field_lvbuff = null;
-      AppMethodBeat.o(136950);
+      AppMethodBeat.o(90781);
       return;
     }
     catch (Exception localException)
     {
-      ab.e("MicroMsg.AddressUIContact", "exception:%s", new Object[] { bo.l(localException) });
-      AppMethodBeat.o(136950);
+      ad.e("MicroMsg.AddressUIContact", "exception:%s", new Object[] { bt.m(localException) });
+      AppMethodBeat.o(90781);
     }
   }
   
-  public final String Of()
+  public final String ZX()
   {
-    AppMethodBeat.i(136949);
+    AppMethodBeat.i(90780);
     if ((this.field_conRemark != null) && (!this.field_conRemark.trim().equals("")))
     {
       localObject = this.field_conRemark;
-      AppMethodBeat.o(136949);
+      AppMethodBeat.o(90780);
       return localObject;
     }
-    Object localObject = com.tencent.mm.n.a.lG(this.field_username);
+    Object localObject = b.pL(this.field_username);
     if (localObject != null)
     {
-      AppMethodBeat.o(136949);
+      AppMethodBeat.o(90780);
       return localObject;
     }
     if ((this.field_nickname == null) || (this.field_nickname.length() <= 0))
     {
       localObject = this.field_alias;
-      if (!bo.isNullOrNil((String)localObject))
+      if (!bt.isNullOrNil((String)localObject))
       {
-        AppMethodBeat.o(136949);
+        AppMethodBeat.o(90780);
         return localObject;
       }
       String str = this.field_username;
@@ -123,7 +125,7 @@ public final class f
       }
       while ((localObject != null) && (((String)localObject).length() != 0))
       {
-        AppMethodBeat.o(136949);
+        AppMethodBeat.o(90780);
         return localObject;
         if (str.toLowerCase().endsWith("@t.qq.com"))
         {
@@ -143,15 +145,15 @@ public final class f
         }
       }
       localObject = this.field_username;
-      AppMethodBeat.o(136949);
+      AppMethodBeat.o(90780);
       return localObject;
     }
     localObject = this.field_nickname;
-    AppMethodBeat.o(136949);
+    AppMethodBeat.o(90780);
     return localObject;
   }
   
-  public final void ak(int paramInt, long paramLong)
+  public final void aE(int paramInt, long paramLong)
   {
     switch (paramInt)
     {
@@ -167,13 +169,13 @@ public final class f
       this.field_weiboFlag = ((int)paramLong);
       return;
     case 7: 
-      this.euF = paramLong;
+      this.fId = paramLong;
       return;
     }
     this.field_deleteFlag = ((int)paramLong);
   }
   
-  public final void bJ(int paramInt, String paramString)
+  public final void cD(int paramInt, String paramString)
   {
     switch (paramInt)
     {
@@ -212,7 +214,7 @@ public final class f
   
   public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(136948);
+    AppMethodBeat.i(90779);
     this.field_username = paramCursor.getString(0);
     this.field_nickname = paramCursor.getString(1);
     this.field_alias = paramCursor.getString(2);
@@ -220,7 +222,7 @@ public final class f
     this.field_verifyFlag = paramCursor.getInt(4);
     this.field_showHead = paramCursor.getInt(5);
     this.field_weiboFlag = paramCursor.getInt(6);
-    this.euF = paramCursor.getLong(7);
+    this.fId = paramCursor.getLong(7);
     this.field_deleteFlag = paramCursor.getInt(8);
     this.field_lvbuff = paramCursor.getBlob(9);
     this.field_descWordingId = paramCursor.getString(10);
@@ -230,18 +232,18 @@ public final class f
       this.field_descWording = paramCursor.getString(12);
       this.field_descWordingQuanpin = paramCursor.getString(13);
     }
-    dvO();
-    AppMethodBeat.o(136948);
+    eJz();
+    AppMethodBeat.o(90779);
   }
   
-  public final void dvP()
+  public final void eJA()
   {
-    AppMethodBeat.i(136951);
-    dvO();
-    AppMethodBeat.o(136951);
+    AppMethodBeat.i(90782);
+    eJz();
+    AppMethodBeat.o(90782);
   }
   
-  public final void r(int paramInt, byte[] paramArrayOfByte)
+  public final void t(int paramInt, byte[] paramArrayOfByte)
   {
     if (paramInt == 9) {
       this.field_lvbuff = paramArrayOfByte;
@@ -250,7 +252,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.f
  * JD-Core Version:    0.7.0.1
  */

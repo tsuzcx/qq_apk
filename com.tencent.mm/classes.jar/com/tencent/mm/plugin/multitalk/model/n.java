@@ -4,12 +4,12 @@ import com.tencent.wecall.talkroom.model.TalkRoom;
 
 public final class n
 {
-  public static n oUG;
-  public TalkRoom oUH;
+  public static n tQb;
+  public TalkRoom tQc;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.n
  * JD-Core Version:    0.7.0.1
  */

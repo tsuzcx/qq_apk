@@ -2,134 +2,95 @@ package com.tencent.mm.plugin.sport;
 
 import android.app.Activity;
 import android.content.Context;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sport.a.c;
 import com.tencent.mm.plugin.sport.model.a;
 import com.tencent.mm.plugin.sport.model.a.3;
 import com.tencent.mm.plugin.sport.model.f;
 import com.tencent.mm.plugin.sport.model.j;
 import com.tencent.mm.plugin.sport.model.l;
-import com.tencent.mm.plugin.sport.model.m;
-import com.tencent.mm.plugin.sport.model.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class b
   implements com.tencent.mm.plugin.sport.a.b
 {
-  public final List<com.tencent.mm.plugin.sport.a.e> X(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(93623);
-    Object localObject = ((PluginSport)g.G(PluginSport.class)).getSportStepManager();
-    ab.i("MicroMsg.Sport.SportStepManager", "getSportItemListByPeriod: begin=%s end=%s", new Object[] { ((l)localObject).spW.format(new Date(paramLong1)), ((l)localObject).spW.format(new Date(paramLong2)) });
-    ((PluginSport)g.G(PluginSport.class)).getSportStepStorage();
-    localObject = m.Y(paramLong1, paramLong2);
-    AppMethodBeat.o(93623);
-    return localObject;
-  }
-  
-  public final void a(long paramLong1, long paramLong2, c paramc)
-  {
-    AppMethodBeat.i(93625);
-    l locall = ((PluginSport)g.G(PluginSport.class)).getSportStepManager();
-    ab.i("MicroMsg.Sport.SportStepManager", "updateSportStepFromServer: begin=%s end=%s", new Object[] { locall.spW.format(new Date(paramLong1)), locall.spW.format(new Date(paramLong2)) });
-    paramc = new com.tencent.mm.plugin.sport.model.d(paramLong1, paramLong2, paramc);
-    g.Rc().a(1734, locall.fur);
-    g.Rc().a(paramc, 0);
-    AppMethodBeat.o(93625);
-  }
-  
   public final void b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3)
   {
-    AppMethodBeat.i(93617);
-    if (g.RG())
+    AppMethodBeat.i(149261);
+    if (g.afw())
     {
       paramString1 = new f(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramString3, 1);
-      g.Rc().a(paramString1, 0);
+      g.aeS().a(paramString1, 0);
     }
-    AppMethodBeat.o(93617);
+    AppMethodBeat.o(149261);
   }
   
-  public final void cyt()
+  public final void dFi()
   {
-    AppMethodBeat.i(93616);
-    if (((PluginSport)g.G(PluginSport.class)).getDeviceStepManager() != null) {
-      ((PluginSport)g.G(PluginSport.class)).getDeviceStepManager().cyz();
+    AppMethodBeat.i(149260);
+    if (((PluginSport)g.ad(PluginSport.class)).getDeviceStepManager() != null) {
+      ((PluginSport)g.ad(PluginSport.class)).getDeviceStepManager().dFm();
     }
-    AppMethodBeat.o(93616);
+    AppMethodBeat.o(149260);
   }
   
-  public final boolean cyu()
+  public final boolean dFj()
   {
-    AppMethodBeat.i(93619);
-    boolean bool = n.cyu();
-    AppMethodBeat.o(93619);
+    AppMethodBeat.i(149263);
+    boolean bool = l.dFj();
+    AppMethodBeat.o(149263);
     return bool;
   }
   
-  public final void cyv()
+  public final void dFk()
   {
-    AppMethodBeat.i(93620);
-    if (ah.brt())
+    AppMethodBeat.i(149264);
+    if (aj.cbe())
     {
-      ((PluginSport)g.G(PluginSport.class)).getSportFileStorage().reset();
-      a locala = ((PluginSport)g.G(PluginSport.class)).getDeviceStepManager();
-      com.tencent.mm.sdk.g.d.ysm.b(new a.3(locala), "Sport.clearConfigToPush");
+      ((PluginSport)g.ad(PluginSport.class)).getSportFileStorage().reset();
+      a locala = ((PluginSport)g.ad(PluginSport.class)).getDeviceStepManager();
+      h.Iye.f(new a.3(locala), "Sport.clearConfigToPush");
     }
-    AppMethodBeat.o(93620);
+    AppMethodBeat.o(149264);
   }
   
-  public final void cyw()
+  public final void dFl()
   {
-    AppMethodBeat.i(93622);
-    n.czc();
-    AppMethodBeat.o(93622);
+    AppMethodBeat.i(149266);
+    l.cFn();
+    AppMethodBeat.o(149266);
   }
   
-  public final com.tencent.mm.plugin.sport.a.e cyx()
+  public final void g(final Activity paramActivity, final String paramString)
   {
-    AppMethodBeat.i(93624);
-    ((PluginSport)g.G(PluginSport.class)).getSportStepManager();
-    ((PluginSport)g.G(PluginSport.class)).getSportStepStorage();
-    com.tencent.mm.plugin.sport.a.e locale = m.cyx();
-    AppMethodBeat.o(93624);
-    return locale;
+    AppMethodBeat.i(149265);
+    aq.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(149259);
+        l.g(paramActivity, paramString);
+        AppMethodBeat.o(149259);
+      }
+    });
+    AppMethodBeat.o(149265);
   }
   
-  public final void cyy()
+  public final boolean gb(Context paramContext)
   {
-    AppMethodBeat.i(93626);
-    ((PluginSport)g.G(PluginSport.class)).getSportStepManager();
-    ab.i("MicroMsg.Sport.SportStepManager", "clearAllSportStep");
-    ((PluginSport)g.G(PluginSport.class)).getSportStepStorage();
-    m.cyy();
-    AppMethodBeat.o(93626);
-  }
-  
-  public final void f(Activity paramActivity, String paramString)
-  {
-    AppMethodBeat.i(93621);
-    al.d(new b.1(this, paramActivity, paramString));
-    AppMethodBeat.o(93621);
-  }
-  
-  public final boolean fa(Context paramContext)
-  {
-    AppMethodBeat.i(93618);
-    boolean bool = n.fa(paramContext);
-    AppMethodBeat.o(93618);
+    AppMethodBeat.i(149262);
+    boolean bool = l.gb(paramContext);
+    AppMethodBeat.o(149262);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.b
  * JD-Core Version:    0.7.0.1
  */

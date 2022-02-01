@@ -23,18 +23,18 @@ import java.util.concurrent.TimeoutException;
 public class FirebaseMessagingService
   extends zzb
 {
-  private static final Queue<String> bgH;
+  private static final Queue<String> bEG;
   
   static
   {
-    AppMethodBeat.i(77214);
-    bgH = new ArrayDeque(10);
-    AppMethodBeat.o(77214);
+    AppMethodBeat.i(116785);
+    bEG = new ArrayDeque(10);
+    AppMethodBeat.o(116785);
   }
   
-  static void i(Bundle paramBundle)
+  static void k(Bundle paramBundle)
   {
-    AppMethodBeat.i(77212);
+    AppMethodBeat.i(116783);
     paramBundle = paramBundle.keySet().iterator();
     while (paramBundle.hasNext())
     {
@@ -43,19 +43,19 @@ public class FirebaseMessagingService
         paramBundle.remove();
       }
     }
-    AppMethodBeat.o(77212);
+    AppMethodBeat.o(116783);
   }
   
-  static boolean j(Bundle paramBundle)
+  static boolean l(Bundle paramBundle)
   {
-    AppMethodBeat.i(77213);
+    AppMethodBeat.i(116784);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(77213);
+      AppMethodBeat.o(116784);
       return false;
     }
     boolean bool = "1".equals(paramBundle.getString("google.c.a.e"));
-    AppMethodBeat.o(77213);
+    AppMethodBeat.o(116784);
     return bool;
   }
   
@@ -63,19 +63,19 @@ public class FirebaseMessagingService
   
   public void a(String paramString, Exception paramException) {}
   
-  public final Intent f(Intent paramIntent)
+  public final Intent e(Intent paramIntent)
   {
-    AppMethodBeat.i(77209);
-    paramIntent = (Intent)o.sa().bfE.poll();
-    AppMethodBeat.o(77209);
+    AppMethodBeat.i(116780);
+    paramIntent = (Intent)o.wZ().bDD.poll();
+    AppMethodBeat.o(116780);
     return paramIntent;
   }
   
-  public final void g(Intent paramIntent)
+  public final void f(Intent paramIntent)
   {
     int k = -1;
     int j = 0;
-    AppMethodBeat.i(77211);
+    AppMethodBeat.i(116782);
     Object localObject2 = paramIntent.getAction();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
@@ -98,7 +98,7 @@ public class FirebaseMessagingService
           break label806;
         }
         "Unknown intent action: ".concat(paramIntent);
-        AppMethodBeat.o(77211);
+        AppMethodBeat.o(116782);
         return;
         if (!((String)localObject1).equals("com.google.android.c2dm.intent.RECEIVE")) {
           break label60;
@@ -151,23 +151,23 @@ public class FirebaseMessagingService
       try
       {
         Tasks.await((Task)localObject1, 1L, TimeUnit.SECONDS);
-        AppMethodBeat.o(77211);
+        AppMethodBeat.o(116782);
         return;
       }
       catch (InterruptedException paramIntent)
       {
         paramIntent = String.valueOf(paramIntent);
         new StringBuilder(String.valueOf(paramIntent).length() + 20).append("Message ack failed: ").append(paramIntent);
-        AppMethodBeat.o(77211);
+        AppMethodBeat.o(116782);
         return;
-        if (!j(paramIntent.getExtras())) {
+        if (!l(paramIntent.getExtras())) {
           continue;
         }
         d.a("_nd", paramIntent);
-        AppMethodBeat.o(77211);
+        AppMethodBeat.o(116782);
         return;
         new String("Unknown intent action: ");
-        AppMethodBeat.o(77211);
+        AppMethodBeat.o(116782);
         return;
       }
       catch (ExecutionException paramIntent)
@@ -181,10 +181,10 @@ public class FirebaseMessagingService
       }
       localObject1 = new Bundle();
       ((Bundle)localObject1).putString("google.message_id", (String)localObject2);
-      localObject3 = ai.aj(this);
-      localObject1 = ((ai)localObject3).a(new com.google.firebase.iid.b(((ai)localObject3).sf(), (Bundle)localObject1));
+      localObject3 = ai.ap(this);
+      localObject1 = ((ai)localObject3).a(new com.google.firebase.iid.b(((ai)localObject3).xe(), (Bundle)localObject1));
       break;
-      if (bgH.contains(localObject2))
+      if (bEG.contains(localObject2))
       {
         if (Log.isLoggable("FirebaseMessaging", 3))
         {
@@ -201,10 +201,10 @@ public class FirebaseMessagingService
         new String("Received duplicate message: ");
         continue;
       }
-      if (bgH.size() >= 10) {
-        bgH.remove();
+      if (bEG.size() >= 10) {
+        bEG.remove();
       }
-      bgH.add(localObject2);
+      bEG.add(localObject2);
       i = 0;
       break label174;
       i = k;
@@ -231,7 +231,7 @@ public class FirebaseMessagingService
       }
       i = 3;
       break label251;
-      if (j(paramIntent.getExtras())) {
+      if (l(paramIntent.getExtras())) {
         d.a("_nr", paramIntent);
       }
       localObject3 = paramIntent.getExtras();
@@ -251,10 +251,10 @@ public class FirebaseMessagingService
       }
       if (i != 0)
       {
-        if (c.ak(this).k((Bundle)localObject2)) {
+        if (c.aq(this).m((Bundle)localObject2)) {
           continue;
         }
-        if (j((Bundle)localObject2)) {
+        if (l((Bundle)localObject2)) {
           d.a("_nf", paramIntent);
         }
       }
@@ -275,9 +275,9 @@ public class FirebaseMessagingService
     }
   }
   
-  public final boolean i(Intent paramIntent)
+  public final boolean h(Intent paramIntent)
   {
-    AppMethodBeat.i(77210);
+    AppMethodBeat.i(116781);
     Object localObject;
     if ("com.google.firebase.messaging.NOTIFICATION_OPEN".equals(paramIntent.getAction()))
     {
@@ -288,13 +288,13 @@ public class FirebaseMessagingService
     {
       ((PendingIntent)localObject).send();
       label38:
-      if (j(paramIntent.getExtras())) {
+      if (l(paramIntent.getExtras())) {
         if (paramIntent != null)
         {
           if (!"1".equals(paramIntent.getStringExtra("google.c.a.tc"))) {
             break label181;
           }
-          localObject = (com.google.firebase.analytics.connector.a)com.google.firebase.a.rB().m(com.google.firebase.analytics.connector.a.class);
+          localObject = (com.google.firebase.analytics.connector.a)com.google.firebase.a.wA().w(com.google.firebase.analytics.connector.a.class);
           Log.isLoggable("FirebaseMessaging", 3);
           if (localObject != null)
           {
@@ -311,12 +311,12 @@ public class FirebaseMessagingService
       for (;;)
       {
         d.a("_no", paramIntent);
-        AppMethodBeat.o(77210);
+        AppMethodBeat.o(116781);
         return true;
         label181:
         Log.isLoggable("FirebaseMessaging", 3);
       }
-      AppMethodBeat.o(77210);
+      AppMethodBeat.o(116781);
       return false;
     }
     catch (PendingIntent.CanceledException localCanceledException)
@@ -329,7 +329,7 @@ public class FirebaseMessagingService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.messaging.FirebaseMessagingService
  * JD-Core Version:    0.7.0.1
  */

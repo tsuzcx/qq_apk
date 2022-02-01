@@ -9,11 +9,11 @@ public abstract interface i
 {
   public abstract void a(Canvas paramCanvas, boolean paramBoolean, int paramInt);
   
-  public abstract void aT(View paramView);
+  public abstract void aZ(View paramView);
   
-  public abstract View.OnClickListener czr();
+  public abstract View.OnClickListener dGg();
   
-  public abstract void dw(String paramString, int paramInt);
+  public abstract void eE(String paramString, int paramInt);
   
   public abstract void setOnClickListener(View.OnClickListener paramOnClickListener);
   
@@ -25,12 +25,12 @@ public abstract interface i
   
   public static abstract interface a
   {
-    public abstract boolean eg(View paramView);
+    public abstract boolean eY(View paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.i
  * JD-Core Version:    0.7.0.1
  */

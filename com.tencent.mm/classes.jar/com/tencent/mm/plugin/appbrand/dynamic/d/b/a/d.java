@@ -7,23 +7,23 @@ import org.json.JSONObject;
 public final class d
   extends a
 {
-  public final int azU()
+  public final int aVB()
   {
     return 0;
   }
   
-  public final DrawCanvasArg c(JSONObject paramJSONObject, String paramString)
+  public final DrawCanvasArg b(JSONObject paramJSONObject, String paramString)
   {
-    AppMethodBeat.i(10898);
-    paramString = super.c(paramJSONObject, paramString);
+    AppMethodBeat.i(121378);
+    paramString = super.b(paramJSONObject, paramString);
     paramString.h(paramJSONObject.optJSONArray("actions"));
-    AppMethodBeat.o(10898);
+    AppMethodBeat.o(121378);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.b.a.d
  * JD-Core Version:    0.7.0.1
  */

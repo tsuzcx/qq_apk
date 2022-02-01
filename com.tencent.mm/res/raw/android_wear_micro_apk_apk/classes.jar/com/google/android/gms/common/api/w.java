@@ -2,7 +2,7 @@ package com.google.android.gms.common.api;
 
 public abstract interface w
 {
-  public abstract Status gC();
+  public abstract Status gM();
 }
 
 

@@ -17,34 +17,34 @@ import java.util.WeakHashMap;
 
 public final class b
 {
-  private static final Map<Object, Set<c>> WU = new WeakHashMap();
-  private static final byte[] WV = new byte[0];
-  private static Field WW = null;
-  private static HandlerThread WX = null;
-  private static j WY = null;
-  private static volatile boolean WZ = false;
-  private static final String Xa = Activity.class.getName();
-  private static final Runnable Xb = new Runnable()
+  private static final Map<Object, Set<c>> YW = new WeakHashMap();
+  private static final byte[] YX = new byte[0];
+  private static Field YY = null;
+  private static HandlerThread YZ = null;
+  private static j Za = null;
+  private static volatile boolean Zb = false;
+  private static final String Zc = Activity.class.getName();
+  private static final Runnable Zd = new Runnable()
   {
     public final void run()
     {
       synchronized ()
       {
-        if (!b.lf()) {
+        if (!b.ls()) {
           return;
         }
       }
       for (;;)
       {
-        synchronized (b.lh())
+        synchronized (b.lu())
         {
-          if (b.li().isEmpty())
+          if (b.lv().isEmpty())
           {
             f.f("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: no listener or cb was added, skip rest logic.");
-            synchronized (b.le())
+            synchronized (b.lr())
             {
-              if (b.lf()) {
-                b.lg().c(this);
+              if (b.ls()) {
+                b.lt().e(this);
               }
               return;
             }
@@ -67,9 +67,9 @@ public final class b
             Object localObject6;
             Object localObject7;
             Object localObject8;
-            synchronized (b.lh())
+            synchronized (b.lu())
             {
-              Iterator localIterator1 = b.li().entrySet().iterator();
+              Iterator localIterator1 = b.lv().entrySet().iterator();
               if (!localIterator1.hasNext()) {
                 break;
               }
@@ -78,11 +78,11 @@ public final class b
                 continue;
               }
               localObject6 = (c)localIterator2.next();
-              localObject7 = ((c)localObject6).Xc.get();
-              localObject8 = (Activity)((c)localObject6).Xd.get();
+              localObject7 = ((c)localObject6).Ze.get();
+              localObject8 = (Activity)((c)localObject6).Zf.get();
               if (localObject8 == null)
               {
-                f.c("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: Ok, ui [%s] was recycled.", new Object[] { ((c)localObject6).Xe.getName() });
+                f.c("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: Ok, ui [%s] was recycled.", new Object[] { ((c)localObject6).Zg.getName() });
                 localIterator2.remove();
               }
             }
@@ -93,18 +93,18 @@ public final class b
             }
             while ((k != 0) && (localObject7 == null))
             {
-              if (((c)localObject6).Xh <= 3) {
+              if (((c)localObject6).Zj <= 3) {
                 break label451;
               }
               localIterator2.remove();
-              if (r.ls()) {
+              if (r.lE()) {
                 break label510;
               }
-              if (!r.lr()) {
+              if (!r.lD()) {
                 break label522;
               }
               break label510;
-              localObject6 = new d(((c)localObject6).lk(), ((c)localObject6).Xg);
+              localObject6 = new d(((c)localObject6).lx(), ((c)localObject6).Zi);
               if (i == 0) {
                 break label435;
               }
@@ -116,7 +116,7 @@ public final class b
               if (i < j)
               {
                 Object localObject9 = localObject8[i];
-                if ((!b.lj().equals(localObject9.getClassName())) || (!"performDestroy".equals(localObject9.getMethodName()))) {
+                if ((!b.lw().equals(localObject9.getClassName())) || (!"performDestroy".equals(localObject9.getMethodName()))) {
                   break label515;
                 }
                 k = 0;
@@ -127,8 +127,8 @@ public final class b
             f.a("MicroMsg.ListenerInstanceMonitor", (Throwable)localObject6, "", new Object[0]);
             continue;
             label451:
-            ((c)localObject6).Xh += 1;
-            f.b("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: ui [%s] was recycled, but its instance is still exists in %s time(s) check.", new Object[] { ((c)localObject6).Xe.getName(), Integer.valueOf(((c)localObject6).Xh) });
+            ((c)localObject6).Zj += 1;
+            f.b("MicroMsg.ListenerInstanceMonitor", "[tomys] monitor task: ui [%s] was recycled, but its instance is still exists in %s time(s) check.", new Object[] { ((c)localObject6).Zg.getName(), Integer.valueOf(((c)localObject6).Zj) });
           }
         }
         catch (Throwable localThrowable)
@@ -152,29 +152,16 @@ public final class b
   
   static
   {
-    if ((r.ls()) || (r.lr()))
+    if ((r.lE()) || (r.lD()))
     {
-      if (i.lp()) {
+      if (i.lB()) {
         try
         {
-          ??? = View.class.getDeclaredField("mContext");
-          WW = (Field)???;
-          ((Field)???).setAccessible(true);
-          synchronized (Xb)
-          {
-            if (!WZ)
-            {
-              Object localObject2 = com.tencent.mm.sdk.b.c.E("ListenerInstanceMonitor");
-              WX = (HandlerThread)localObject2;
-              ((HandlerThread)localObject2).start();
-              localObject2 = new j(WX.getLooper());
-              WY = (j)localObject2;
-              ((j)localObject2).c(Xb);
-              WZ = true;
-            }
-            return;
-          }
-          f.d("MicroMsg.ListenerInstanceMonitor", "Not mm process, keep disabled.");
+          Field localField = View.class.getDeclaredField("mContext");
+          YY = localField;
+          localField.setAccessible(true);
+          lq();
+          return;
         }
         catch (Throwable localThrowable)
         {
@@ -182,12 +169,13 @@ public final class b
           return;
         }
       }
+      f.d("MicroMsg.ListenerInstanceMonitor", "Not mm process, keep disabled.");
       return;
     }
     f.d("MicroMsg.ListenerInstanceMonitor", "Not debug, assist or monkey env, keep disabled.");
   }
   
-  public static void D(Object paramObject)
+  public static void M(Object paramObject)
   {
     if (paramObject == null) {
       return;
@@ -241,14 +229,14 @@ public final class b
     }
   }
   
-  public static void E(Object paramObject)
+  public static void N(Object paramObject)
   {
     if (paramObject == null) {
       return;
     }
-    synchronized (WV)
+    synchronized (YX)
     {
-      WU.remove(paramObject);
+      YW.remove(paramObject);
       return;
     }
   }
@@ -265,7 +253,7 @@ public final class b
         break label200;
       }
       localObject2 = paramActivity.getClass();
-      localObject1 = ((a)localObject1).ld();
+      localObject1 = ((a)localObject1).lp();
       if ((localObject1 != null) && (localObject1.length > 0))
       {
         j = localObject1.length;
@@ -305,15 +293,15 @@ public final class b
       f.b("MicroMsg.ListenerInstanceMonitor", "Activity %s held by %s is ignored !!", new Object[] { paramActivity, paramObject });
       return;
     }
-    synchronized (WV)
+    synchronized (YX)
     {
       label200:
-      localObject2 = (Set)WU.get(paramObject);
+      localObject2 = (Set)YW.get(paramObject);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new HashSet();
-        WU.put(paramObject, localObject1);
+        YW.put(paramObject, localObject1);
       }
       ((Set)localObject1).add(new c(paramActivity, paramField, paramThrowable));
       return;
@@ -357,9 +345,9 @@ public final class b
     //   11: aload_0
     //   12: checkcast 73	android/view/View
     //   15: astore_3
-    //   16: getstatic 38	com/tencent/mm/sdk/platformtools/b:WW	Ljava/lang/reflect/Field;
+    //   16: getstatic 38	com/tencent/mm/sdk/platformtools/b:YY	Ljava/lang/reflect/Field;
     //   19: aload_3
-    //   20: invokevirtual 220	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   20: invokevirtual 198	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   23: astore_3
     //   24: aload_3
     //   25: instanceof 46
@@ -369,19 +357,19 @@ public final class b
     //   33: checkcast 46	android/app/Activity
     //   36: aload_1
     //   37: aload_2
-    //   38: invokestatic 216	com/tencent/mm/sdk/platformtools/b:a	(Ljava/lang/Object;Landroid/app/Activity;Ljava/lang/reflect/Field;Ljava/lang/Throwable;)V
+    //   38: invokestatic 194	com/tencent/mm/sdk/platformtools/b:a	(Ljava/lang/Object;Landroid/app/Activity;Ljava/lang/reflect/Field;Ljava/lang/Throwable;)V
     //   41: return
-    //   42: getstatic 38	com/tencent/mm/sdk/platformtools/b:WW	Ljava/lang/reflect/Field;
+    //   42: getstatic 38	com/tencent/mm/sdk/platformtools/b:YY	Ljava/lang/reflect/Field;
     //   45: ifnull -4 -> 41
     //   48: aload_1
-    //   49: invokevirtual 219	java/lang/reflect/Field:isAccessible	()Z
+    //   49: invokevirtual 197	java/lang/reflect/Field:isAccessible	()Z
     //   52: ifne +8 -> 60
     //   55: aload_1
     //   56: iconst_1
     //   57: invokevirtual 85	java/lang/reflect/Field:setAccessible	(Z)V
     //   60: aload_1
     //   61: aload_0
-    //   62: invokevirtual 220	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   62: invokevirtual 198	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   65: checkcast 73	android/view/View
     //   68: astore 4
     //   70: aload 4
@@ -404,6 +392,24 @@ public final class b
     //   from	to	target	type
     //   16	41	79	java/lang/Throwable
     //   60	70	81	java/lang/Throwable
+  }
+  
+  private static void lq()
+  {
+    synchronized (Zd)
+    {
+      if (!Zb)
+      {
+        Object localObject1 = com.tencent.mm.sdk.b.d.F("ListenerInstanceMonitor");
+        YZ = (HandlerThread)localObject1;
+        ((HandlerThread)localObject1).start();
+        localObject1 = new j(YZ.getLooper());
+        Za = (j)localObject1;
+        ((j)localObject1).e(Zd);
+        Zb = true;
+      }
+      return;
+    }
   }
 }
 

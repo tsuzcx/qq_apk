@@ -8,11 +8,11 @@ public enum ObjectMirror$PropertyKind
   
   static
   {
-    AppMethodBeat.i(74889);
+    AppMethodBeat.i(61512);
     Named = new PropertyKind("Named", 0, 1);
     Indexed = new PropertyKind("Indexed", 1, 2);
     $VALUES = new PropertyKind[] { Named, Indexed };
-    AppMethodBeat.o(74889);
+    AppMethodBeat.o(61512);
   }
   
   private ObjectMirror$PropertyKind(int paramInt)
@@ -22,7 +22,7 @@ public enum ObjectMirror$PropertyKind
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.eclipsesource.v8.debug.mirror.ObjectMirror.PropertyKind
  * JD-Core Version:    0.7.0.1
  */

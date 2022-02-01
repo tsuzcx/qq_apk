@@ -22,9 +22,9 @@ public final class zzbt
   
   static
   {
-    AppMethodBeat.i(71106);
+    AppMethodBeat.i(101089);
     CREATOR = new zzbu();
-    AppMethodBeat.o(71106);
+    AppMethodBeat.o(101089);
   }
   
   @SafeParcelable.Constructor
@@ -35,16 +35,16 @@ public final class zzbt
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(71105);
+    AppMethodBeat.i(101088);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 2, this.statusCode);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(71105);
+    AppMethodBeat.o(101088);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzbt
  * JD-Core Version:    0.7.0.1
  */

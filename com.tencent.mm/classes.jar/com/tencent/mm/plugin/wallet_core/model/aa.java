@@ -1,261 +1,259 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.a.vf;
-import com.tencent.mm.g.a.vf.a;
-import com.tencent.mm.g.a.vf.b;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.xf;
+import com.tencent.mm.g.a.xf.a;
+import com.tencent.mm.g.a.xf.b;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.wallet_core.c.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class aa
-  extends c<vf>
-  implements f
+  extends c<xf>
+  implements com.tencent.mm.al.g
 {
-  private boolean cLL;
-  private boolean cLM;
-  private boolean mFK;
-  private vf ulo;
-  private m ulp;
+  private xf AhF;
+  private n AhG;
+  private boolean dCJ;
+  private boolean dCK;
+  private boolean rbD;
   
   public aa()
   {
-    AppMethodBeat.i(46904);
-    this.mFK = false;
-    this.cLL = false;
-    this.cLM = false;
-    this.__eventId = vf.class.getName().hashCode();
-    AppMethodBeat.o(46904);
+    AppMethodBeat.i(160877);
+    this.rbD = false;
+    this.dCJ = false;
+    this.dCK = false;
+    this.__eventId = xf.class.getName().hashCode();
+    AppMethodBeat.o(160877);
   }
   
-  private static boolean Iz(int paramInt)
+  private static boolean Ry(int paramInt)
   {
     return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 6) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10) || (paramInt == 11) || (paramInt == 12) || (paramInt == 13) || (paramInt == 14) || (paramInt == 15) || (paramInt == 16) || (paramInt == 17) || (paramInt == 18) || (paramInt == 19) || (paramInt == 20) || (paramInt == 21) || (paramInt == 22) || (paramInt == 23);
   }
   
-  private void a(int paramInt, String paramString, m paramm)
+  private void a(int paramInt, String paramString, n paramn)
   {
-    AppMethodBeat.i(142488);
-    g.Rc().b(385, this);
-    g.Rc().b(1518, this);
-    if ((!this.cLM) && (this.cLL) && (this.mFK))
+    AppMethodBeat.i(70425);
+    com.tencent.mm.kernel.g.aeS().b(385, this);
+    com.tencent.mm.kernel.g.aeS().b(1518, this);
+    if ((!this.dCK) && (this.dCJ) && (this.rbD))
     {
-      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletGetUserInfoEventListener", "onSceneEnd, useCache and event end");
-      AppMethodBeat.o(142488);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletGetUserInfoEventListener", "onSceneEnd, useCache and event end");
+      AppMethodBeat.o(70425);
       return;
     }
-    this.mFK = true;
-    a(paramInt, paramString, paramm, true);
-    AppMethodBeat.o(142488);
+    this.rbD = true;
+    a(paramInt, paramString, paramn, true);
+    AppMethodBeat.o(70425);
   }
   
-  private void a(int paramInt, String paramString, m paramm, boolean paramBoolean)
+  private void a(int paramInt, String paramString, n paramn, boolean paramBoolean)
   {
-    AppMethodBeat.i(46907);
-    if (this.ulo != null)
+    AppMethodBeat.i(70426);
+    if (this.AhF != null)
     {
-      this.ulo.cLK.errCode = paramInt;
-      this.ulo.cLK.errMsg = paramString;
-      this.ulo.cLK.cMp = paramm;
-      this.ulo.cLK.cLN = t.cTN().cUl();
-      this.ulo.cLK.cLO = t.cTN().cUK();
-      this.ulo.cLK.cLP = t.cTN().cUM();
-      this.ulo.cLK.cLQ = t.cTN().cUt().cUb();
-      this.ulo.cLK.cLR = t.cTN().cUs();
-      this.ulo.cLK.cLS = t.cTN().getTrueName();
-      this.ulo.cLK.cLT = t.cTN().cUm();
-      this.ulo.cLK.cLU = t.cTN().cUt().cUf();
-      this.ulo.cLK.cLV = "";
-      this.ulo.cLK.cMi = t.cTN().cUE();
-      if ((paramm != null) && ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.ab)))
+      this.AhF.dCI.errCode = paramInt;
+      this.AhF.dCI.errMsg = paramString;
+      this.AhF.dCI.dDn = paramn;
+      this.AhF.dCI.dCL = s.ecc().ecF();
+      this.AhF.dCI.dCM = s.ecc().ede();
+      this.AhF.dCI.dCN = s.ecc().edg();
+      this.AhF.dCI.dCO = s.ecc().ecN().ecs();
+      this.AhF.dCI.dCP = s.ecc().ecM();
+      this.AhF.dCI.dCQ = s.ecc().getTrueName();
+      this.AhF.dCI.dCR = s.ecc().ecG();
+      this.AhF.dCI.dCS = s.ecc().ecN().ecw();
+      this.AhF.dCI.dCT = "";
+      this.AhF.dCI.dDg = s.ecc().ecY();
+      if ((paramn != null) && ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.ad)))
       {
-        this.ulo.cLK.cLV = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).cLV;
-        this.ulo.cLK.cLW = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).cLW;
-        this.ulo.cLK.cLX = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).cLX;
-        this.ulo.cLK.cLY = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).cLY;
-        this.ulo.cLK.cLZ = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).cLZ;
-        this.ulo.cLK.scene = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).scene;
-        this.ulo.cLK.cMa = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).cMa;
-        this.ulo.cLK.cMb = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).cMb;
-        this.ulo.cLK.cMc = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).cMc;
-        this.ulo.cLK.cMd = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).cMd;
-        this.ulo.cLK.cMe = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).cMe;
-        this.ulo.cLK.cMf = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).cMf;
-        this.ulo.cLK.subtitle = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).subtitle;
-        this.ulo.cLK.title = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).title;
-        this.ulo.cLK.cMg = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).cMg;
-        this.ulo.cLK.cMh = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).cMh;
-        this.ulo.cLK.cMn = ((com.tencent.mm.plugin.wallet_core.c.ab)paramm).ucb;
+        this.AhF.dCI.dCT = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).dCT;
+        this.AhF.dCI.dCU = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).dCU;
+        this.AhF.dCI.dCV = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).dCV;
+        this.AhF.dCI.dCW = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).dCW;
+        this.AhF.dCI.dCX = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).dCX;
+        this.AhF.dCI.scene = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).scene;
+        this.AhF.dCI.dCY = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).dCY;
+        this.AhF.dCI.dCZ = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).dCZ;
+        this.AhF.dCI.dDa = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).dDa;
+        this.AhF.dCI.dDb = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).dDb;
+        this.AhF.dCI.dDc = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).dDc;
+        this.AhF.dCI.dDd = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).dDd;
+        this.AhF.dCI.subtitle = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).subtitle;
+        this.AhF.dCI.title = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).title;
+        this.AhF.dCI.dDe = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).dDe;
+        this.AhF.dCI.dDf = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).dDf;
+        this.AhF.dCI.dDl = ((com.tencent.mm.plugin.wallet_core.c.ad)paramn).zWI;
       }
-      paramString = this.ulo.cLK;
-      if (!t.cTN().cUA()) {
+      paramString = this.AhF.dCI;
+      if (!s.ecc().ecU()) {
         break label728;
       }
     }
     label728:
     for (paramInt = 1;; paramInt = 0)
     {
-      paramString.cMj = paramInt;
-      this.ulo.cLK.cMk = t.cTN().cUB();
-      this.ulo.cLK.cMl = t.cTN().cUC();
-      this.ulo.cLK.cMm = t.cTN().cUD();
-      this.ulo.cLK.cMo = paramBoolean;
-      com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletGetUserInfoEventListener", "mUserInfo needBind : " + this.ulo.cLK.cLO + " hasNewTips : " + this.ulo.cLK.cLP + " swipeOn : " + this.ulo.cLK.cLQ);
-      if (this.ulo.callback != null) {
-        this.ulo.callback.run();
+      paramString.dDh = paramInt;
+      this.AhF.dCI.dDi = s.ecc().ecV();
+      this.AhF.dCI.dDj = s.ecc().ecW();
+      this.AhF.dCI.dDk = s.ecc().ecX();
+      this.AhF.dCI.dDm = paramBoolean;
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.WalletGetUserInfoEventListener", "mUserInfo needBind : " + this.AhF.dCI.dCM + " hasNewTips : " + this.AhF.dCI.dCN + " swipeOn : " + this.AhF.dCI.dCO);
+      if (this.AhF.callback != null) {
+        this.AhF.callback.run();
       }
-      if (this.ulo.cLK.cLC != null) {
-        this.ulo.cLK.cLC.run();
+      if (this.AhF.dCI.dCz != null) {
+        this.AhF.dCI.dCz.run();
       }
-      if (this.mFK) {
-        this.ulo = null;
+      if (this.rbD) {
+        this.AhF = null;
       }
-      AppMethodBeat.o(46907);
+      AppMethodBeat.o(70426);
       return;
     }
   }
   
-  private boolean a(vf paramvf)
+  private boolean a(xf paramxf)
   {
-    AppMethodBeat.i(46905);
-    if (!(paramvf instanceof vf))
+    AppMethodBeat.i(70422);
+    if (!(paramxf instanceof xf))
     {
-      com.tencent.mm.sdk.platformtools.ab.f("MicroMsg.WalletGetUserInfoEventListener", "mismatched event");
-      AppMethodBeat.o(46905);
+      com.tencent.mm.sdk.platformtools.ad.f("MicroMsg.WalletGetUserInfoEventListener", "mismatched event");
+      AppMethodBeat.o(70422);
       return false;
     }
-    this.mFK = false;
-    this.ulo = paramvf;
-    this.cLL = paramvf.cLJ.cLL;
-    this.cLM = paramvf.cLJ.cLM;
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletGetUserInfoEventListener", "mustNotifyAfterNetEnd: %s", new Object[] { Boolean.valueOf(this.cLM) });
-    g.RM();
-    g.RK().eHt.a(385, this);
-    g.RM();
-    g.RK().eHt.a(1518, this);
-    if (t.cTN().cUq())
+    this.rbD = false;
+    this.AhF = paramxf;
+    this.dCJ = paramxf.dCH.dCJ;
+    this.dCK = paramxf.dCH.dCK;
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletGetUserInfoEventListener", "mustNotifyAfterNetEnd: %s", new Object[] { Boolean.valueOf(this.dCK) });
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a(385, this);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a(1518, this);
+    if (s.ecc().ecK())
     {
-      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletGetUserInfoEventListener", "data is invalid. doScene");
-      b(paramvf);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletGetUserInfoEventListener", "data is invalid. doScene");
+      b(paramxf);
     }
     for (;;)
     {
-      AppMethodBeat.o(46905);
+      AppMethodBeat.o(70422);
       return true;
       am localam;
       long l;
       int i;
-      if (paramvf.cLJ.cLL)
+      if (paramxf.dCH.dCJ)
       {
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletGetUserInfoEventListener", "use cache");
-        localam = t.cTN();
-        l = bo.aox();
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletUserInfoManger", "checkCacheTimeout, nowSecs: %s, cacheDeadTime: %s", new Object[] { Long.valueOf(l), Long.valueOf(localam.ulV) });
-        if ((localam.ulV <= 0L) || (l > localam.ulV)) {}
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletGetUserInfoEventListener", "use cache");
+        localam = s.ecc();
+        l = bt.aGK();
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletUserInfoManger", "checkCacheTimeout, nowSecs: %s, cacheDeadTime: %s", new Object[] { Long.valueOf(l), Long.valueOf(localam.Aiq) });
+        if ((localam.Aiq <= 0L) || (l > localam.Aiq)) {}
         for (i = 1;; i = 0)
         {
           if (i != 0) {
             break label273;
           }
-          if (!this.cLM) {
-            this.mFK = true;
+          if (!this.dCK) {
+            this.rbD = true;
           }
-          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletGetUserInfoEventListener", "cache data is ok. doCallback");
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletGetUserInfoEventListener", "cache data is ok. doCallback");
           a(0, "", null, false);
-          b(paramvf);
+          b(paramxf);
           break;
         }
         label273:
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletGetUserInfoEventListener", "cache timeout, do NetSceneTenpayQueryBoundBankcard");
-        b(paramvf);
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletGetUserInfoEventListener", "cache timeout, do NetSceneTenpayQueryBoundBankcard");
+        b(paramxf);
       }
       else
       {
-        localam = t.cTN();
-        l = bo.gz(localam.ulU);
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletUserInfoManger", "dead time : %d, nowSec: %d, pass time ".concat(String.valueOf(l)), new Object[] { Long.valueOf(localam.ulU), Long.valueOf(System.currentTimeMillis() / 1000L) });
+        localam = s.ecc();
+        l = bt.lZ(localam.Aip);
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletUserInfoManger", "dead time : %d, nowSec: %d, pass time ".concat(String.valueOf(l)), new Object[] { Long.valueOf(localam.Aip), Long.valueOf(System.currentTimeMillis() / 1000L) });
         if (l > 0L) {}
         for (i = 1;; i = 0)
         {
           if (i == 0) {
             break label380;
           }
-          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletGetUserInfoEventListener", "data is checkTimeOut, do NetSceneTenpayQueryBoundBankcard");
-          b(paramvf);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletGetUserInfoEventListener", "data is checkTimeOut, do NetSceneTenpayQueryBoundBankcard");
+          b(paramxf);
           break;
         }
         label380:
-        this.mFK = true;
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletGetUserInfoEventListener", "data is ok. doCallback");
+        this.rbD = true;
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletGetUserInfoEventListener", "data is ok. doCallback");
         a(0, "", null, false);
       }
     }
   }
   
-  private void b(vf paramvf)
+  private void b(xf paramxf)
   {
-    AppMethodBeat.i(142487);
-    if (r.ZB())
+    AppMethodBeat.i(70423);
+    if (u.aqV())
     {
-      this.ulp = new a();
-      g.Rc().a(this.ulp, 0);
-      AppMethodBeat.o(142487);
+      this.AhG = new a();
+      com.tencent.mm.kernel.g.aeS().a(this.AhG, 0);
+      AppMethodBeat.o(70423);
       return;
     }
-    if (Iz(paramvf.cLJ.scene)) {}
-    for (int i = paramvf.cLJ.scene;; i = 0)
+    if (Ry(paramxf.dCH.scene)) {}
+    for (int i = paramxf.dCH.scene;; i = 0)
     {
-      this.ulp = new com.tencent.mm.plugin.wallet_core.c.ab(null, i);
-      g.Rc().a(this.ulp, 0);
-      AppMethodBeat.o(142487);
+      this.AhG = new com.tencent.mm.plugin.wallet_core.c.ad(null, i);
+      com.tencent.mm.kernel.g.aeS().a(this.AhG, 0);
+      AppMethodBeat.o(70423);
       return;
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(46906);
-    if ((this.ulo == null) || (this.ulo.cLJ == null))
+    AppMethodBeat.i(70424);
+    if ((this.AhF == null) || (this.AhF.dCH == null))
     {
-      AppMethodBeat.o(46906);
+      AppMethodBeat.o(70424);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletGetUserInfoEventListener", "onSceneEnd, errType: %s, errCode: %s, scene: %s, retry: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramm, Integer.valueOf(this.ulo.cLJ.retryCount) });
-    if (paramm != this.ulp)
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.WalletGetUserInfoEventListener", "onSceneEnd, errType: %s, errCode: %s, scene: %s, retry: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramn, Integer.valueOf(this.AhF.dCH.retryCount) });
+    if (paramn != this.AhG)
     {
-      AppMethodBeat.o(46906);
+      AppMethodBeat.o(70424);
       return;
     }
-    if (((paramm instanceof com.tencent.mm.plugin.wallet_core.c.ab)) || ((paramm instanceof a)))
+    if (((paramn instanceof com.tencent.mm.plugin.wallet_core.c.ad)) || ((paramn instanceof a)))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        a(paramInt2, paramString, paramm);
-        AppMethodBeat.o(46906);
+        a(paramInt2, paramString, paramn);
+        AppMethodBeat.o(70424);
         return;
       }
-      if (this.ulo.cLJ.retryCount == 0)
+      if (this.AhF.dCH.retryCount == 0)
       {
-        a(paramInt2, paramString, paramm);
-        AppMethodBeat.o(46906);
+        a(paramInt2, paramString, paramn);
+        AppMethodBeat.o(70424);
         return;
       }
-      paramString = this.ulo.cLJ;
+      paramString = this.AhF.dCH;
       paramString.retryCount -= 1;
-      b(this.ulo);
+      b(this.AhF);
     }
-    AppMethodBeat.o(46906);
+    AppMethodBeat.o(70424);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.aa
  * JD-Core Version:    0.7.0.1
  */

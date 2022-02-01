@@ -29,7 +29,7 @@ public class zzi
   
   static
   {
-    AppMethodBeat.i(90491);
+    AppMethodBeat.i(5512);
     CONTENT_URI = Uri.parse("content://com.google.android.gsf.gservices");
     zzagv = Uri.parse("content://com.google.android.gsf.gservices/prefix");
     zzagw = Pattern.compile("^(1|true|t|on|yes|y)$", 2);
@@ -40,18 +40,18 @@ public class zzi
     zzahb = new HashMap();
     zzahc = new HashMap();
     zzahf = new String[0];
-    AppMethodBeat.o(90491);
+    AppMethodBeat.o(5512);
   }
   
   public static int getInt(ContentResolver paramContentResolver, String paramString, int paramInt)
   {
-    AppMethodBeat.i(90484);
+    AppMethodBeat.i(5505);
     Object localObject = zzb(paramContentResolver);
     Integer localInteger = (Integer)zza(zzaha, paramString, Integer.valueOf(paramInt));
     if (localInteger != null)
     {
       paramInt = localInteger.intValue();
-      AppMethodBeat.o(90484);
+      AppMethodBeat.o(5505);
       return paramInt;
     }
     paramContentResolver = zza(paramContentResolver, paramString, null);
@@ -61,7 +61,7 @@ public class zzi
     for (;;)
     {
       zza(localObject, zzaha, paramString, paramContentResolver);
-      AppMethodBeat.o(90484);
+      AppMethodBeat.o(5505);
       return paramInt;
       try
       {
@@ -78,13 +78,13 @@ public class zzi
   
   public static long getLong(ContentResolver paramContentResolver, String paramString, long paramLong)
   {
-    AppMethodBeat.i(90485);
+    AppMethodBeat.i(5506);
     Object localObject = zzb(paramContentResolver);
     Long localLong = (Long)zza(zzahb, paramString, Long.valueOf(paramLong));
     if (localLong != null)
     {
       paramLong = localLong.longValue();
-      AppMethodBeat.o(90485);
+      AppMethodBeat.o(5506);
       return paramLong;
     }
     paramContentResolver = zza(paramContentResolver, paramString, null);
@@ -94,7 +94,7 @@ public class zzi
     for (;;)
     {
       zza(localObject, zzahb, paramString, paramContentResolver);
-      AppMethodBeat.o(90485);
+      AppMethodBeat.o(5506);
       return paramLong;
       try
       {
@@ -111,7 +111,7 @@ public class zzi
   
   private static <T> T zza(HashMap<String, T> paramHashMap, String paramString, T paramT)
   {
-    AppMethodBeat.i(90489);
+    AppMethodBeat.i(5510);
     try
     {
       if (paramHashMap.containsKey(paramString))
@@ -128,7 +128,7 @@ public class zzi
     }
     finally
     {
-      AppMethodBeat.o(90489);
+      AppMethodBeat.o(5510);
     }
   }
   
@@ -136,209 +136,209 @@ public class zzi
   public static String zza(ContentResolver paramContentResolver, String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: ldc 154
-    //   2: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 2
-    //   7: monitorenter
-    //   8: aload_0
-    //   9: invokestatic 157	com/google/android/gms/internal/stable/zzi:zza	(Landroid/content/ContentResolver;)V
-    //   12: getstatic 159	com/google/android/gms/internal/stable/zzi:zzahd	Ljava/lang/Object;
-    //   15: astore 7
-    //   17: getstatic 161	com/google/android/gms/internal/stable/zzi:zzagq	Ljava/util/HashMap;
-    //   20: aload_1
-    //   21: invokevirtual 147	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   24: ifeq +30 -> 54
-    //   27: getstatic 161	com/google/android/gms/internal/stable/zzi:zzagq	Ljava/util/HashMap;
-    //   30: aload_1
-    //   31: invokevirtual 151	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   34: checkcast 86	java/lang/String
-    //   37: astore_0
-    //   38: aload_0
-    //   39: ifnull +5 -> 44
-    //   42: aload_0
-    //   43: astore_2
-    //   44: ldc 2
-    //   46: monitorexit
-    //   47: ldc 154
-    //   49: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   52: aload_2
-    //   53: areturn
-    //   54: getstatic 88	com/google/android/gms/internal/stable/zzi:zzahf	[Ljava/lang/String;
-    //   57: astore 5
-    //   59: aload 5
-    //   61: arraylength
-    //   62: istore 4
-    //   64: iconst_0
-    //   65: istore_3
-    //   66: iload_3
-    //   67: iload 4
-    //   69: if_icmpge +104 -> 173
-    //   72: aload_1
-    //   73: aload 5
-    //   75: iload_3
-    //   76: aaload
-    //   77: invokevirtual 165	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   80: ifeq +86 -> 166
-    //   83: getstatic 167	com/google/android/gms/internal/stable/zzi:zzahe	Z
-    //   86: ifeq +12 -> 98
-    //   89: getstatic 161	com/google/android/gms/internal/stable/zzi:zzagq	Ljava/util/HashMap;
-    //   92: invokevirtual 171	java/util/HashMap:isEmpty	()Z
-    //   95: ifeq +61 -> 156
-    //   98: getstatic 88	com/google/android/gms/internal/stable/zzi:zzahf	[Ljava/lang/String;
-    //   101: astore 5
-    //   103: getstatic 161	com/google/android/gms/internal/stable/zzi:zzagq	Ljava/util/HashMap;
-    //   106: aload_0
-    //   107: aload 5
-    //   109: invokestatic 174	com/google/android/gms/internal/stable/zzi:zza	(Landroid/content/ContentResolver;[Ljava/lang/String;)Ljava/util/Map;
-    //   112: invokevirtual 178	java/util/HashMap:putAll	(Ljava/util/Map;)V
-    //   115: iconst_1
-    //   116: putstatic 167	com/google/android/gms/internal/stable/zzi:zzahe	Z
-    //   119: getstatic 161	com/google/android/gms/internal/stable/zzi:zzagq	Ljava/util/HashMap;
-    //   122: aload_1
-    //   123: invokevirtual 147	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   126: ifeq +30 -> 156
-    //   129: getstatic 161	com/google/android/gms/internal/stable/zzi:zzagq	Ljava/util/HashMap;
-    //   132: aload_1
-    //   133: invokevirtual 151	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   136: checkcast 86	java/lang/String
-    //   139: astore_0
-    //   140: aload_0
-    //   141: ifnull +5 -> 146
-    //   144: aload_0
-    //   145: astore_2
-    //   146: ldc 2
-    //   148: monitorexit
-    //   149: ldc 154
-    //   151: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   154: aload_2
-    //   155: areturn
-    //   156: ldc 2
-    //   158: monitorexit
-    //   159: ldc 154
-    //   161: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   164: aload_2
-    //   165: areturn
-    //   166: iload_3
-    //   167: iconst_1
-    //   168: iadd
-    //   169: istore_3
-    //   170: goto -104 -> 66
-    //   173: ldc 2
-    //   175: monitorexit
-    //   176: aload_0
-    //   177: getstatic 48	com/google/android/gms/internal/stable/zzi:CONTENT_URI	Landroid/net/Uri;
-    //   180: aconst_null
-    //   181: aconst_null
-    //   182: iconst_1
-    //   183: anewarray 86	java/lang/String
-    //   186: dup
-    //   187: iconst_0
-    //   188: aload_1
-    //   189: aastore
-    //   190: aconst_null
-    //   191: invokevirtual 184	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   194: astore 6
-    //   196: aload 6
-    //   198: ifnull +13 -> 211
-    //   201: aload 6
-    //   203: invokeinterface 189 1 0
-    //   208: ifne +40 -> 248
-    //   211: aload 7
-    //   213: aload_1
-    //   214: aconst_null
-    //   215: invokestatic 192	com/google/android/gms/internal/stable/zzi:zza	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
-    //   218: aload 6
-    //   220: ifnull +10 -> 230
-    //   223: aload 6
-    //   225: invokeinterface 195 1 0
-    //   230: ldc 154
-    //   232: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   235: aload_2
-    //   236: areturn
-    //   237: astore_0
-    //   238: ldc 2
-    //   240: monitorexit
-    //   241: ldc 154
-    //   243: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   246: aload_0
-    //   247: athrow
-    //   248: aload 6
-    //   250: iconst_1
-    //   251: invokeinterface 199 2 0
-    //   256: astore 5
-    //   258: aload 5
-    //   260: astore_0
-    //   261: aload 5
-    //   263: ifnull +17 -> 280
-    //   266: aload 5
-    //   268: astore_0
-    //   269: aload 5
-    //   271: aload_2
-    //   272: invokevirtual 202	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   275: ifeq +5 -> 280
-    //   278: aload_2
-    //   279: astore_0
-    //   280: aload 7
-    //   282: aload_1
-    //   283: aload_0
-    //   284: invokestatic 192	com/google/android/gms/internal/stable/zzi:zza	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
-    //   287: aload_0
-    //   288: ifnull +5 -> 293
-    //   291: aload_0
-    //   292: astore_2
-    //   293: aload 6
-    //   295: ifnull +10 -> 305
-    //   298: aload 6
-    //   300: invokeinterface 195 1 0
-    //   305: ldc 154
-    //   307: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   310: aload_2
-    //   311: areturn
-    //   312: astore_0
-    //   313: aload 6
-    //   315: ifnull +10 -> 325
-    //   318: aload 6
-    //   320: invokeinterface 195 1 0
-    //   325: ldc 154
-    //   327: invokestatic 91	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   330: aload_0
-    //   331: athrow
+    //   0: sipush 5503
+    //   3: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 2
+    //   8: monitorenter
+    //   9: aload_0
+    //   10: invokestatic 152	com/google/android/gms/internal/stable/zzi:zza	(Landroid/content/ContentResolver;)V
+    //   13: getstatic 154	com/google/android/gms/internal/stable/zzi:zzahd	Ljava/lang/Object;
+    //   16: astore 7
+    //   18: getstatic 156	com/google/android/gms/internal/stable/zzi:zzagq	Ljava/util/HashMap;
+    //   21: aload_1
+    //   22: invokevirtual 143	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   25: ifeq +31 -> 56
+    //   28: getstatic 156	com/google/android/gms/internal/stable/zzi:zzagq	Ljava/util/HashMap;
+    //   31: aload_1
+    //   32: invokevirtual 147	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   35: checkcast 85	java/lang/String
+    //   38: astore_0
+    //   39: aload_0
+    //   40: ifnull +5 -> 45
+    //   43: aload_0
+    //   44: astore_2
+    //   45: ldc 2
+    //   47: monitorexit
+    //   48: sipush 5503
+    //   51: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   54: aload_2
+    //   55: areturn
+    //   56: getstatic 87	com/google/android/gms/internal/stable/zzi:zzahf	[Ljava/lang/String;
+    //   59: astore 5
+    //   61: aload 5
+    //   63: arraylength
+    //   64: istore 4
+    //   66: iconst_0
+    //   67: istore_3
+    //   68: iload_3
+    //   69: iload 4
+    //   71: if_icmpge +106 -> 177
+    //   74: aload_1
+    //   75: aload 5
+    //   77: iload_3
+    //   78: aaload
+    //   79: invokevirtual 160	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   82: ifeq +88 -> 170
+    //   85: getstatic 162	com/google/android/gms/internal/stable/zzi:zzahe	Z
+    //   88: ifeq +12 -> 100
+    //   91: getstatic 156	com/google/android/gms/internal/stable/zzi:zzagq	Ljava/util/HashMap;
+    //   94: invokevirtual 166	java/util/HashMap:isEmpty	()Z
+    //   97: ifeq +62 -> 159
+    //   100: getstatic 87	com/google/android/gms/internal/stable/zzi:zzahf	[Ljava/lang/String;
+    //   103: astore 5
+    //   105: getstatic 156	com/google/android/gms/internal/stable/zzi:zzagq	Ljava/util/HashMap;
+    //   108: aload_0
+    //   109: aload 5
+    //   111: invokestatic 169	com/google/android/gms/internal/stable/zzi:zza	(Landroid/content/ContentResolver;[Ljava/lang/String;)Ljava/util/Map;
+    //   114: invokevirtual 173	java/util/HashMap:putAll	(Ljava/util/Map;)V
+    //   117: iconst_1
+    //   118: putstatic 162	com/google/android/gms/internal/stable/zzi:zzahe	Z
+    //   121: getstatic 156	com/google/android/gms/internal/stable/zzi:zzagq	Ljava/util/HashMap;
+    //   124: aload_1
+    //   125: invokevirtual 143	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   128: ifeq +31 -> 159
+    //   131: getstatic 156	com/google/android/gms/internal/stable/zzi:zzagq	Ljava/util/HashMap;
+    //   134: aload_1
+    //   135: invokevirtual 147	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   138: checkcast 85	java/lang/String
+    //   141: astore_0
+    //   142: aload_0
+    //   143: ifnull +5 -> 148
+    //   146: aload_0
+    //   147: astore_2
+    //   148: ldc 2
+    //   150: monitorexit
+    //   151: sipush 5503
+    //   154: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   157: aload_2
+    //   158: areturn
+    //   159: ldc 2
+    //   161: monitorexit
+    //   162: sipush 5503
+    //   165: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   168: aload_2
+    //   169: areturn
+    //   170: iload_3
+    //   171: iconst_1
+    //   172: iadd
+    //   173: istore_3
+    //   174: goto -106 -> 68
+    //   177: ldc 2
+    //   179: monitorexit
+    //   180: aload_0
+    //   181: getstatic 47	com/google/android/gms/internal/stable/zzi:CONTENT_URI	Landroid/net/Uri;
+    //   184: aconst_null
+    //   185: aconst_null
+    //   186: iconst_1
+    //   187: anewarray 85	java/lang/String
+    //   190: dup
+    //   191: iconst_0
+    //   192: aload_1
+    //   193: aastore
+    //   194: aconst_null
+    //   195: invokevirtual 179	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   198: astore 6
+    //   200: aload 6
+    //   202: ifnull +13 -> 215
+    //   205: aload 6
+    //   207: invokeinterface 184 1 0
+    //   212: ifne +42 -> 254
+    //   215: aload 7
+    //   217: aload_1
+    //   218: aconst_null
+    //   219: invokestatic 187	com/google/android/gms/internal/stable/zzi:zza	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   222: aload 6
+    //   224: ifnull +10 -> 234
+    //   227: aload 6
+    //   229: invokeinterface 190 1 0
+    //   234: sipush 5503
+    //   237: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   240: aload_2
+    //   241: areturn
+    //   242: astore_0
+    //   243: ldc 2
+    //   245: monitorexit
+    //   246: sipush 5503
+    //   249: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   252: aload_0
+    //   253: athrow
+    //   254: aload 6
+    //   256: iconst_1
+    //   257: invokeinterface 194 2 0
+    //   262: astore 5
+    //   264: aload 5
+    //   266: astore_0
+    //   267: aload 5
+    //   269: ifnull +17 -> 286
+    //   272: aload 5
+    //   274: astore_0
+    //   275: aload 5
+    //   277: aload_2
+    //   278: invokevirtual 197	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   281: ifeq +5 -> 286
+    //   284: aload_2
+    //   285: astore_0
+    //   286: aload 7
+    //   288: aload_1
+    //   289: aload_0
+    //   290: invokestatic 187	com/google/android/gms/internal/stable/zzi:zza	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    //   293: aload_0
+    //   294: ifnull +5 -> 299
+    //   297: aload_0
+    //   298: astore_2
+    //   299: aload 6
+    //   301: ifnull +10 -> 311
+    //   304: aload 6
+    //   306: invokeinterface 190 1 0
+    //   311: sipush 5503
+    //   314: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   317: aload_2
+    //   318: areturn
+    //   319: astore_0
+    //   320: aload 6
+    //   322: ifnull +10 -> 332
+    //   325: aload 6
+    //   327: invokeinterface 190 1 0
+    //   332: sipush 5503
+    //   335: invokestatic 90	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   338: aload_0
+    //   339: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	332	0	paramContentResolver	ContentResolver
-    //   0	332	1	paramString1	String
-    //   0	332	2	paramString2	String
-    //   65	105	3	i	int
-    //   62	8	4	j	int
-    //   57	213	5	localObject1	Object
-    //   194	125	6	localCursor	Cursor
-    //   15	266	7	localObject2	Object
+    //   0	340	0	paramContentResolver	ContentResolver
+    //   0	340	1	paramString1	String
+    //   0	340	2	paramString2	String
+    //   67	107	3	i	int
+    //   64	8	4	j	int
+    //   59	217	5	localObject1	Object
+    //   198	128	6	localCursor	Cursor
+    //   16	271	7	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   8	38	237	finally
-    //   44	47	237	finally
-    //   54	64	237	finally
-    //   72	98	237	finally
-    //   98	140	237	finally
-    //   146	149	237	finally
-    //   156	159	237	finally
-    //   173	176	237	finally
-    //   238	241	237	finally
-    //   201	211	312	finally
-    //   211	218	312	finally
-    //   248	258	312	finally
-    //   269	278	312	finally
-    //   280	287	312	finally
+    //   9	39	242	finally
+    //   45	48	242	finally
+    //   56	66	242	finally
+    //   74	100	242	finally
+    //   100	142	242	finally
+    //   148	151	242	finally
+    //   159	162	242	finally
+    //   177	180	242	finally
+    //   243	246	242	finally
+    //   205	215	319	finally
+    //   215	222	319	finally
+    //   254	264	319	finally
+    //   275	284	319	finally
+    //   286	293	319	finally
   }
   
   private static Map<String, String> zza(ContentResolver paramContentResolver, String... paramVarArgs)
   {
-    AppMethodBeat.i(90487);
+    AppMethodBeat.i(5508);
     paramContentResolver = paramContentResolver.query(zzagv, null, null, paramVarArgs, null);
     paramVarArgs = new TreeMap();
     if (paramContentResolver == null)
     {
-      AppMethodBeat.o(90487);
+      AppMethodBeat.o(5508);
       return paramVarArgs;
     }
     try
@@ -349,13 +349,13 @@ public class zzi
     finally
     {
       paramContentResolver.close();
-      AppMethodBeat.o(90487);
+      AppMethodBeat.o(5508);
     }
   }
   
   private static void zza(ContentResolver paramContentResolver)
   {
-    AppMethodBeat.i(90481);
+    AppMethodBeat.i(5502);
     if (zzagq == null)
     {
       zzagy.set(false);
@@ -363,7 +363,7 @@ public class zzi
       zzahd = new Object();
       zzahe = false;
       paramContentResolver.registerContentObserver(CONTENT_URI, true, new zzj(null));
-      AppMethodBeat.o(90481);
+      AppMethodBeat.o(5502);
       return;
     }
     if (zzagy.getAndSet(false))
@@ -376,12 +376,12 @@ public class zzi
       zzahd = new Object();
       zzahe = false;
     }
-    AppMethodBeat.o(90481);
+    AppMethodBeat.o(5502);
   }
   
   private static void zza(Object paramObject, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(90483);
+    AppMethodBeat.i(5504);
     try
     {
       if (paramObject == zzahd) {
@@ -391,13 +391,13 @@ public class zzi
     }
     finally
     {
-      AppMethodBeat.o(90483);
+      AppMethodBeat.o(5504);
     }
   }
   
   private static <T> void zza(Object paramObject, HashMap<String, T> paramHashMap, String paramString, T paramT)
   {
-    AppMethodBeat.i(90490);
+    AppMethodBeat.i(5511);
     try
     {
       if (paramObject == zzahd)
@@ -409,19 +409,19 @@ public class zzi
     }
     finally
     {
-      AppMethodBeat.o(90490);
+      AppMethodBeat.o(5511);
     }
   }
   
   public static boolean zza(ContentResolver paramContentResolver, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(90486);
+    AppMethodBeat.i(5507);
     Object localObject = zzb(paramContentResolver);
     Boolean localBoolean = (Boolean)zza(zzagz, paramString, Boolean.valueOf(paramBoolean));
     if (localBoolean != null)
     {
       paramBoolean = localBoolean.booleanValue();
-      AppMethodBeat.o(90486);
+      AppMethodBeat.o(5507);
       return paramBoolean;
     }
     String str = zza(paramContentResolver, paramString, null);
@@ -430,7 +430,7 @@ public class zzi
     if (str != null)
     {
       if (!str.equals("")) {
-        break label95;
+        break label98;
       }
       bool = paramBoolean;
       paramContentResolver = localBoolean;
@@ -438,9 +438,9 @@ public class zzi
     for (;;)
     {
       zza(localObject, zzagz, paramString, paramContentResolver);
-      AppMethodBeat.o(90486);
+      AppMethodBeat.o(5507);
       return bool;
-      label95:
+      label98:
       if (zzagw.matcher(str).matches())
       {
         bool = true;
@@ -462,7 +462,7 @@ public class zzi
   
   private static Object zzb(ContentResolver paramContentResolver)
   {
-    AppMethodBeat.i(90488);
+    AppMethodBeat.i(5509);
     try
     {
       zza(paramContentResolver);
@@ -471,13 +471,13 @@ public class zzi
     }
     finally
     {
-      AppMethodBeat.o(90488);
+      AppMethodBeat.o(5509);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.internal.stable.zzi
  * JD-Core Version:    0.7.0.1
  */

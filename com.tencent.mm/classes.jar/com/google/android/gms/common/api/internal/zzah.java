@@ -12,9 +12,9 @@ final class zzah
   
   public final void zzaq()
   {
-    AppMethodBeat.i(60718);
+    AppMethodBeat.i(11210);
     this.zzhh.onConnectionSuspended(1);
-    AppMethodBeat.o(60718);
+    AppMethodBeat.o(11210);
   }
 }
 

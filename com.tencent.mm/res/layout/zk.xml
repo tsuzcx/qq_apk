@@ -1,40 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/iu"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/bws" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:padding="@dimen/hx" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/im">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <LinearLayout android:orientation="horizontal" android:id="@id/btg" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <FrameLayout android:id="@id/bth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hs">
-                        <ImageView android:id="@id/bti" style="@style/il" />
-                        <View android:layout_gravity="bottom" android:id="@id/btj" android:background="@drawable/on" android:layout_width="@dimen/hu" android:layout_height="45.0dip" />
-                        <ImageView android:layout_gravity="center" android:id="@id/bt9" android:src="@drawable/x4" android:contentDescription="@string/gd" style="@style/is" />
-                        <TextView android:layout_gravity="bottom|center|right" android:id="@id/btk" android:paddingRight="3.0dip" android:paddingBottom="3.0dip" android:text="{11:32}" style="@style/ip" />
-                    </FrameLayout>
-                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                        <TextView android:id="@id/btl" android:text="{title}" style="@style/ir" />
-                        <TextView android:id="@id/btm" android:layout_marginTop="@dimen/i2" android:text="{desc}" android:maxLines="3" style="@style/io" />
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout android:orientation="horizontal" android:id="@id/btn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <ImageView android:src="@raw/app_attach_file_icon_sound" style="@style/ik" />
-                    <TextView android:layout_gravity="center_vertical" android:id="@id/bto" android:layout_marginLeft="@dimen/hs" android:text="{title}" style="@style/ir" />
-                </LinearLayout>
-                <LinearLayout android:orientation="horizontal" android:id="@id/btp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <ImageView android:src="@raw/app_attach_file_icon_voice" style="@style/ik" />
-                    <TextView android:layout_gravity="center_vertical" android:id="@id/btq" android:layout_marginLeft="@dimen/hs" android:text="{title}" style="@style/ir" />
-                </LinearLayout>
-                <LinearLayout android:orientation="horizontal" android:id="@id/btr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <ImageView android:id="@id/bts" style="@style/ik" />
-                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs">
-                        <TextView android:id="@id/btt" android:text="{title}" style="@style/ir" />
-                        <TextView android:id="@id/btu" android:layout_marginTop="@dimen/i2" android:text="{desc}" style="@style/io" />
-                    </LinearLayout>
-                </LinearLayout>
-            </FrameLayout>
-            <include layout="@layout/zd" />
-            <include layout="@layout/zc" />
-        </LinearLayout>
-        <include layout="@layout/zb" />
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ar0" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
+        <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/dbu" />
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>

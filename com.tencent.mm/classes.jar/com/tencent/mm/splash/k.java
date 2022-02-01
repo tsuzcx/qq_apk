@@ -4,71 +4,72 @@ import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdcard_migrate.ExtStorageMigrateAuxActivity;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 final class k
   extends Instrumentation
 {
-  public Instrumentation yvZ;
+  public Instrumentation FbZ;
   
   public k(Instrumentation paramInstrumentation)
   {
-    AppMethodBeat.i(114885);
-    this.yvZ = paramInstrumentation;
-    brK();
-    AppMethodBeat.o(114885);
+    AppMethodBeat.i(40679);
+    this.FbZ = paramInstrumentation;
+    eIy();
+    AppMethodBeat.o(40679);
   }
   
-  private void brK()
+  private void eIy()
   {
-    AppMethodBeat.i(114887);
+    AppMethodBeat.i(40681);
     Field[] arrayOfField = Instrumentation.class.getDeclaredFields();
     int i = 0;
     while (i < arrayOfField.length)
     {
       arrayOfField[i].setAccessible(true);
-      Object localObject = arrayOfField[i].get(this.yvZ);
+      Object localObject = arrayOfField[i].get(this.FbZ);
       arrayOfField[i].set(this, localObject);
       i += 1;
     }
-    AppMethodBeat.o(114887);
+    AppMethodBeat.o(40681);
   }
   
   public final Activity newActivity(ClassLoader paramClassLoader, String paramString, Intent paramIntent)
   {
-    AppMethodBeat.i(114886);
-    if (h.yvp != null) {
-      h.yvp.dD(paramString);
+    AppMethodBeat.i(40680);
+    if (h.Fbr != null) {
+      h.Fbr.eJ(paramString);
     }
-    if ((h.dvu()) && (!h.dvA().getCanonicalName().equals(paramString)))
+    if ((h.eIk()) && (!h.eIq().getCanonicalName().equals(paramString)) && (!ExtStorageMigrateAuxActivity.class.getName().equals(paramString)))
     {
       paramClassLoader = new i();
-      paramClassLoader.yvL = paramString;
-      h.c("WxSplash.SplashHackInstrumentation", "new splash hack activity. replace activity %s", new Object[] { paramString });
-      h.yvj.add(paramClassLoader);
-      AppMethodBeat.o(114886);
+      paramClassLoader.FbM = paramString;
+      h.b("WxSplash.SplashHackInstrumentation", "new splash hack activity. replace activity %s", new Object[] { paramString });
+      h.Fbm.add(paramClassLoader);
+      AppMethodBeat.o(40680);
       return paramClassLoader;
     }
     paramClassLoader = super.newActivity(paramClassLoader, paramString, paramIntent);
-    Object localObject = h.bYM;
+    Object localObject = h.cMp;
     if (localObject != null)
     {
-      localObject = ((d)localObject).l(paramClassLoader);
+      localObject = ((d)localObject).q(paramClassLoader);
       if (localObject != paramClassLoader)
       {
-        h.c("WxSplash.SplashHackInstrumentation", "Activity %s is intercepted by %s.", new Object[] { paramString, localObject });
+        h.b("WxSplash.SplashHackInstrumentation", "Activity %s is intercepted by %s.", new Object[] { paramString, localObject });
         paramClassLoader = (ClassLoader)localObject;
       }
     }
     for (;;)
     {
-      if (j.dvI())
+      if (j.eIx())
       {
-        h.c("WxSplash.SplashHackInstrumentation", "processing relaunch activity.", new Object[0]);
+        h.b("WxSplash.SplashHackInstrumentation", "processing relaunch activity.", new Object[0]);
         paramIntent.putExtra("splash-hack-activity-recreate", true);
       }
-      AppMethodBeat.o(114886);
+      AppMethodBeat.o(40680);
       return paramClassLoader;
     }
   }

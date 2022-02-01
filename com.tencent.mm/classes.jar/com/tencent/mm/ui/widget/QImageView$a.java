@@ -4,31 +4,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum QImageView$a
 {
-  final int AEF;
+  final int HBA;
   
   static
   {
-    AppMethodBeat.i(115515);
-    AEx = new a("MATRIX", 0, 0);
-    AEy = new a("FIT_XY", 1, 1);
-    AEz = new a("FIT_START", 2, 2);
-    AEA = new a("FIT_CENTER", 3, 3);
-    AEB = new a("FIT_END", 4, 4);
-    AEC = new a("CENTER", 5, 5);
-    AED = new a("CENTER_CROP", 6, 6);
-    AEE = new a("CENTER_INSIDE", 7, 7);
-    AEG = new a[] { AEx, AEy, AEz, AEA, AEB, AEC, AED, AEE };
-    AppMethodBeat.o(115515);
+    AppMethodBeat.i(156563);
+    HBs = new a("MATRIX", 0, 0);
+    HBt = new a("FIT_XY", 1, 1);
+    HBu = new a("FIT_START", 2, 2);
+    HBv = new a("FIT_CENTER", 3, 3);
+    HBw = new a("FIT_END", 4, 4);
+    HBx = new a("CENTER", 5, 5);
+    HBy = new a("CENTER_CROP", 6, 6);
+    HBz = new a("CENTER_INSIDE", 7, 7);
+    HBB = new a[] { HBs, HBt, HBu, HBv, HBw, HBx, HBy, HBz };
+    AppMethodBeat.o(156563);
   }
   
   private QImageView$a(int paramInt)
   {
-    this.AEF = paramInt;
+    this.HBA = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.QImageView.a
  * JD-Core Version:    0.7.0.1
  */

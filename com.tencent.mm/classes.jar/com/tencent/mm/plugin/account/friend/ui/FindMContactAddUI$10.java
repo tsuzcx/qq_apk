@@ -11,15 +11,15 @@ final class FindMContactAddUI$10
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(108523);
-    FindMContactAddUI.i(this.gzd);
-    AppMethodBeat.o(108523);
+    AppMethodBeat.i(131184);
+    FindMContactAddUI.i(this.imm);
+    AppMethodBeat.o(131184);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.FindMContactAddUI.10
  * JD-Core Version:    0.7.0.1
  */

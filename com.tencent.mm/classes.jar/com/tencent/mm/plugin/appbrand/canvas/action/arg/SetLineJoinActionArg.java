@@ -11,13 +11,13 @@ public class SetLineJoinActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetLineJoinActionArg> CREATOR;
-  public String hfh;
+  public String iZq;
   
   static
   {
-    AppMethodBeat.i(103526);
+    AppMethodBeat.i(145209);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(103526);
+    AppMethodBeat.o(145209);
   }
   
   public SetLineJoinActionArg() {}
@@ -34,63 +34,63 @@ public class SetLineJoinActionArg
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(103524);
+    AppMethodBeat.i(145207);
     if (this == paramObject)
     {
-      AppMethodBeat.o(103524);
+      AppMethodBeat.o(145207);
       return true;
     }
     if (!(paramObject instanceof SetLineJoinActionArg))
     {
-      AppMethodBeat.o(103524);
+      AppMethodBeat.o(145207);
       return false;
     }
     if (!super.equals(paramObject))
     {
-      AppMethodBeat.o(103524);
+      AppMethodBeat.o(145207);
       return false;
     }
     paramObject = (SetLineJoinActionArg)paramObject;
-    boolean bool = Objects.equals(this.hfh, paramObject.hfh);
-    AppMethodBeat.o(103524);
+    boolean bool = Objects.equals(this.iZq, paramObject.iZq);
+    AppMethodBeat.o(145207);
     return bool;
   }
   
   public final void h(Parcel paramParcel)
   {
-    AppMethodBeat.i(103521);
+    AppMethodBeat.i(145204);
     super.h(paramParcel);
-    this.hfh = paramParcel.readString();
-    AppMethodBeat.o(103521);
+    this.iZq = paramParcel.readString();
+    AppMethodBeat.o(145204);
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(103525);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.hfh });
-    AppMethodBeat.o(103525);
+    AppMethodBeat.i(145208);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.iZq });
+    AppMethodBeat.o(145208);
     return i;
   }
   
-  public final void p(JSONObject paramJSONObject)
+  public final void parse(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(103522);
-    super.p(paramJSONObject);
-    this.hfh = paramJSONObject.optJSONArray("data").optString(0);
-    AppMethodBeat.o(103522);
+    AppMethodBeat.i(145205);
+    super.parse(paramJSONObject);
+    this.iZq = paramJSONObject.optJSONArray("data").optString(0);
+    AppMethodBeat.o(145205);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(103523);
+    AppMethodBeat.i(145206);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.hfh);
-    AppMethodBeat.o(103523);
+    paramParcel.writeString(this.iZq);
+    AppMethodBeat.o(145206);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetLineJoinActionArg
  * JD-Core Version:    0.7.0.1
  */

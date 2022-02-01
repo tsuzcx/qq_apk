@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.profile.ui.newbizinfo.b;
 
 public final class b
 {
-  public int eVA;
-  public String fgl;
-  public String hBL;
-  public int oLs;
-  public String pEm;
-  public int pEn;
-  public String pEo;
-  public String pEp;
-  public String pEq;
-  public String pEr;
+  public String coverImgUrl;
+  public String gGC;
+  public int tGD;
   public String title;
   public int type;
+  public String uGt;
+  public int uGu;
+  public String uGv;
+  public String uGw;
+  public String uGx;
+  public String uGy;
+  public int videoDuration;
   public int videoHeight;
   public int videoWidth;
 }

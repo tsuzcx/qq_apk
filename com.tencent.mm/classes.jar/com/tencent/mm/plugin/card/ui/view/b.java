@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewStub;
 import android.widget.Button;
@@ -17,58 +18,58 @@ import com.tencent.mm.plugin.card.b.f;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.ui.a.g;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.adv;
-import com.tencent.mm.protocal.protobuf.ax;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.amg;
+import com.tencent.mm.protocal.protobuf.ba;
+import com.tencent.mm.protocal.protobuf.ro;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 
 public final class b
   extends i
 {
-  private MMActivity jpX;
-  private View kAP;
-  private TextView kAQ;
-  private g kAR;
-  private com.tencent.mm.plugin.card.base.b klk;
+  private View nHO;
+  private TextView nHP;
+  private g nHQ;
+  private com.tencent.mm.plugin.card.base.b nqp;
+  private MMActivity nqt;
   
-  public final void bfq()
+  public final void bMB()
   {
-    AppMethodBeat.i(88735);
-    this.kAP.setVisibility(8);
-    AppMethodBeat.o(88735);
+    AppMethodBeat.i(113662);
+    this.nHO.setVisibility(8);
+    AppMethodBeat.o(113662);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(88733);
+    AppMethodBeat.i(113660);
     super.destroy();
-    this.jpX = null;
-    this.kAR = null;
-    AppMethodBeat.o(88733);
+    this.nqt = null;
+    this.nHQ = null;
+    AppMethodBeat.o(113660);
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(88732);
-    this.jpX = this.kBh.bdy();
-    this.kAR = this.kBh.bdA();
-    AppMethodBeat.o(88732);
+    AppMethodBeat.i(113659);
+    this.nqt = this.nIg.bKw();
+    this.nHQ = this.nIg.bKy();
+    AppMethodBeat.o(113659);
   }
   
   public final void update()
   {
-    AppMethodBeat.i(88734);
-    if (this.kAP == null)
+    AppMethodBeat.i(113661);
+    if (this.nHO == null)
     {
-      this.kAP = ((ViewStub)findViewById(2131822080)).inflate();
-      this.kAP.findViewById(2131821984).setOnClickListener(this.kBh.bdz());
+      this.nHO = ((ViewStub)findViewById(2131297720)).inflate();
+      this.nHO.findViewById(2131297710).setOnClickListener(this.nIg.bKx());
     }
-    this.klk = this.kBh.bdv();
-    this.kAR = this.kBh.bdA();
-    boolean bool1 = this.kAR.beD();
-    boolean bool2 = this.kAR.beE();
+    this.nqp = this.nIg.bKt();
+    this.nHQ = this.nIg.bKy();
+    boolean bool1 = this.nHQ.bLz();
+    boolean bool2 = this.nHQ.bLA();
     Object localObject2;
     Object localObject1;
     int i;
@@ -76,147 +77,162 @@ public final class b
     StateListDrawable localStateListDrawable;
     if (bool1)
     {
-      this.kAP.setVisibility(0);
-      ab.i("MicroMsg.CardAcceptView", "updateAcceptView() acceptViewVisible:" + bool1 + " acceptViewEnabled:" + bool2);
-      localObject2 = (Button)this.kAP.findViewById(2131821984);
-      localObject1 = this.kAP.findViewById(2131821983);
+      this.nHO.setVisibility(0);
+      ad.i("MicroMsg.CardAcceptView", "updateAcceptView() acceptViewVisible:" + bool1 + " acceptViewEnabled:" + bool2);
+      localObject2 = (Button)this.nHO.findViewById(2131297710);
+      localObject1 = this.nHO.findViewById(2131297719);
       ((View)localObject1).setBackgroundDrawable(null);
       ((View)localObject1).setOnClickListener(null);
-      i = this.jpX.getResources().getDimensionPixelSize(2131428185);
+      i = this.nqt.getResources().getDimensionPixelSize(2131165984);
       if (!bool2) {
-        break label1112;
+        break label1132;
       }
-      if (!TextUtils.isEmpty(this.klk.bbd().wGi)) {
-        ((Button)localObject2).setText(this.klk.bbd().wGi);
+      if (!TextUtils.isEmpty(this.nqp.bHV().CRN)) {
+        ((Button)localObject2).setText(this.nqp.bHV().CRN);
       }
-      if (!this.klk.baL()) {
-        break label839;
+      if (!this.nqp.bHC()) {
+        break label859;
       }
-      ((Button)localObject2).setTextColor(l.IB(this.klk.bbd().color));
-      localObject1 = l.b(this.jpX, l.IB(this.klk.bbd().color), i);
-      localObject3 = l.dR(l.IB(this.klk.bbd().color), i);
+      ((Button)localObject2).setTextColor(l.Rm(this.nqp.bHV().gHT));
+      localObject1 = l.d(this.nqt, l.Rm(this.nqp.bHV().gHT), i);
+      localObject3 = l.eN(l.Rm(this.nqp.bHV().gHT), i);
       localStateListDrawable = new StateListDrawable();
       localStateListDrawable.addState(new int[] { 16842919 }, (Drawable)localObject3);
       localStateListDrawable.addState(new int[0], (Drawable)localObject1);
-      i = this.jpX.getResources().getColor(2131690709);
-      int j = l.IB(this.klk.bbd().color);
+      i = this.nqt.getResources().getColor(2131101179);
+      int j = l.Rm(this.nqp.bHV().gHT);
       ((Button)localObject2).setBackgroundDrawable(localStateListDrawable);
       ((Button)localObject2).setTextColor(new ColorStateList(new int[][] { { 16842919, 16842910 }, new int[0] }, new int[] { i, j }));
-      localObject1 = (LinearLayout.LayoutParams)this.kAP.getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject1).topMargin = this.jpX.getResources().getDimensionPixelSize(2131428158);
-      this.kAP.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      this.kAP.findViewById(2131821993).setVisibility(8);
-      localObject1 = this.kBh.bdD();
-      localObject2 = (CheckBox)this.kAP.findViewById(2131821994);
-      if ((((f)localObject1).bbH() == null) || (!((f)localObject1).bbH().kmz)) {
-        break label821;
+      localObject1 = (LinearLayout.LayoutParams)this.nHO.getLayoutParams();
+      ((LinearLayout.LayoutParams)localObject1).topMargin = this.nqt.getResources().getDimensionPixelSize(2131165957);
+      this.nHO.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      this.nHO.findViewById(2131299164).setVisibility(8);
+      localObject1 = this.nIg.bKB();
+      this.nHO.setBackgroundColor(this.nqt.getResources().getColor(2131101179));
+      localObject2 = (CheckBox)this.nHO.findViewById(2131297795);
+      if ((((f)localObject1).bIz() == null) || (!((f)localObject1).bIz().nrE)) {
+        break label841;
       }
-      ab.i("MicroMsg.CardAcceptView", "updateFollowBox() show followbox");
+      ad.i("MicroMsg.CardAcceptView", "updateFollowBox() show followbox");
       ((CheckBox)localObject2).setVisibility(0);
-      localObject3 = this.klk.bbd().wGt;
-      if ((localObject3 == null) || (TextUtils.isEmpty(((adv)localObject3).text))) {
-        break label805;
+      localObject3 = this.nqp.bHV().CRY;
+      if ((localObject3 == null) || (TextUtils.isEmpty(((amg)localObject3).text))) {
+        break label825;
       }
-      ((CheckBox)localObject2).setText(((adv)localObject3).text);
-      ((CheckBox)localObject2).setChecked(((f)localObject1).bbH().cJz);
-      ((CheckBox)localObject2).setOnClickListener(new b.1(this, (f)localObject1));
+      ((CheckBox)localObject2).setText(((amg)localObject3).text);
+      ((CheckBox)localObject2).setChecked(((f)localObject1).bIz().dAt);
+      ((CheckBox)localObject2).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(113658);
+          if (((CheckBox)paramAnonymousView).isChecked())
+          {
+            this.nHR.bIz().dAt = true;
+            AppMethodBeat.o(113658);
+            return;
+          }
+          this.nHR.bIz().dAt = false;
+          AppMethodBeat.o(113658);
+        }
+      });
     }
     for (;;)
     {
-      if ((!this.klk.baM()) && (!this.klk.baK()))
+      if ((!this.nqp.bHD()) && (!this.nqp.bHB()))
       {
-        if ((this.klk.bbd().wGu != null) && (!bo.isNullOrNil(this.klk.bbd().wGu.text)))
+        if ((this.nqp.bHV().CRZ != null) && (!bt.isNullOrNil(this.nqp.bHV().CRZ.text)))
         {
-          if (this.kAQ == null) {
-            this.kAQ = ((TextView)this.kAP.findViewById(2131821992));
+          if (this.nHP == null) {
+            this.nHP = ((TextView)this.nHO.findViewById(2131297717));
           }
-          this.kAQ.setText(this.klk.bbd().wGu.text);
-          if (!bo.isNullOrNil(this.klk.bbd().wGu.url))
+          this.nHP.setText(this.nqp.bHV().CRZ.text);
+          if (!bt.isNullOrNil(this.nqp.bHV().CRZ.url))
           {
-            this.kAQ.setOnClickListener(this.kBh.bdz());
-            this.kAQ.setTextColor(l.IB(this.klk.bbd().color));
+            this.nHP.setOnClickListener(this.nIg.bKx());
+            this.nHP.setTextColor(l.Rm(this.nqp.bHV().gHT));
           }
-          this.kAQ.setVisibility(0);
-          AppMethodBeat.o(88734);
+          this.nHP.setVisibility(0);
+          AppMethodBeat.o(113661);
           return;
-          ab.i("MicroMsg.CardAcceptView", "updateAcceptView(), mAcceptCardView is Gone");
-          this.kAP.setVisibility(8);
-          AppMethodBeat.o(88734);
+          ad.i("MicroMsg.CardAcceptView", "updateAcceptView(), mAcceptCardView is Gone");
+          this.nHO.setVisibility(8);
+          AppMethodBeat.o(113661);
           return;
-          label805:
-          ((CheckBox)localObject2).setText(((f)localObject1).bbH().title);
+          label825:
+          ((CheckBox)localObject2).setText(((f)localObject1).bIz().title);
           break;
-          label821:
-          ab.i("MicroMsg.CardAcceptView", "updateFollowBox() not show followbox");
+          label841:
+          ad.i("MicroMsg.CardAcceptView", "updateFollowBox() not show followbox");
           ((CheckBox)localObject2).setVisibility(8);
           continue;
-          label839:
-          if ((this.klk.baM()) || (this.klk.baK()) || (this.klk.baN()))
+          label859:
+          if ((this.nqp.bHD()) || (this.nqp.bHB()) || (this.nqp.bHE()))
           {
-            localObject1 = l.dR(l.IB(this.klk.bbd().color), i);
-            localObject3 = l.dR(l.bS(this.klk.bbd().color, 175), i);
+            localObject1 = l.eN(l.Rm(this.nqp.bHV().gHT), i);
+            localObject3 = l.eN(l.cB(this.nqp.bHV().gHT, 175), i);
             localStateListDrawable = new StateListDrawable();
             localStateListDrawable.addState(new int[] { 16842919 }, (Drawable)localObject3);
             localStateListDrawable.addState(new int[0], (Drawable)localObject1);
             ((Button)localObject2).setBackgroundDrawable(localStateListDrawable);
-            ((Button)localObject2).setTextColor(this.jpX.getResources().getColor(2131690799));
+            ((Button)localObject2).setTextColor(this.nqt.getResources().getColor(2131101185));
             localObject1 = (LinearLayout.LayoutParams)((Button)localObject2).getLayoutParams();
             ((LinearLayout.LayoutParams)localObject1).width = -1;
             ((Button)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
             continue;
           }
-          localObject1 = l.dR(l.IB(this.klk.bbd().color), i);
-          localObject3 = l.dR(l.bS(this.klk.bbd().color, 175), i);
+          localObject1 = l.eN(l.Rm(this.nqp.bHV().gHT), i);
+          localObject3 = l.eN(l.cB(this.nqp.bHV().gHT, 175), i);
           localStateListDrawable = new StateListDrawable();
           localStateListDrawable.addState(new int[] { 16842919 }, (Drawable)localObject3);
           localStateListDrawable.addState(new int[0], (Drawable)localObject1);
           ((Button)localObject2).setBackgroundDrawable(localStateListDrawable);
-          ((Button)localObject2).setTextColor(this.jpX.getResources().getColor(2131690799));
+          ((Button)localObject2).setTextColor(this.nqt.getResources().getColor(2131101185));
           continue;
-          label1112:
-          this.kAP.setEnabled(false);
+          label1132:
+          this.nHO.setEnabled(false);
           ((View)localObject1).setEnabled(false);
           ((Button)localObject2).setEnabled(false);
-          if (this.klk.baL()) {}
-          for (localObject1 = this.klk.bbd().wGi;; localObject1 = this.kAR.bew())
+          if (this.nqp.bHC()) {}
+          for (localObject1 = this.nqp.bHV().CRN;; localObject1 = this.nHQ.bLs())
           {
             ((Button)localObject2).setText((CharSequence)localObject1);
-            if (!this.klk.baL()) {
-              break label1299;
+            if (!this.nqp.bHC()) {
+              break label1319;
             }
-            ((Button)localObject2).setTextColor(l.bS(this.klk.bbd().color, 125));
-            ((Button)localObject2).setBackgroundDrawable(l.b(this.jpX, l.bS(this.klk.bbd().color, 125), i));
-            localObject1 = (LinearLayout.LayoutParams)this.kAP.getLayoutParams();
-            ((LinearLayout.LayoutParams)localObject1).topMargin = this.jpX.getResources().getDimensionPixelSize(2131428159);
-            this.kAP.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-            this.kAP.findViewById(2131821993).setVisibility(8);
+            ((Button)localObject2).setTextColor(l.cB(this.nqp.bHV().gHT, 125));
+            ((Button)localObject2).setBackgroundDrawable(l.d(this.nqt, l.cB(this.nqp.bHV().gHT, 125), i));
+            localObject1 = (LinearLayout.LayoutParams)this.nHO.getLayoutParams();
+            ((LinearLayout.LayoutParams)localObject1).topMargin = this.nqt.getResources().getDimensionPixelSize(2131165958);
+            this.nHO.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+            this.nHO.findViewById(2131299164).setVisibility(8);
             break;
           }
-          label1299:
-          if ((this.klk.baM()) || (this.klk.baK()) || (this.klk.baN()))
+          label1319:
+          if ((this.nqp.bHD()) || (this.nqp.bHB()) || (this.nqp.bHE()))
           {
-            ((Button)localObject2).setTextColor(this.jpX.getResources().getColor(2131690143));
-            ((Button)localObject2).setBackgroundDrawable(l.I(this.jpX, this.jpX.getResources().getColor(2131689821)));
+            ((Button)localObject2).setTextColor(this.nqt.getResources().getColor(2131100469));
+            ((Button)localObject2).setBackgroundDrawable(l.K(this.nqt, this.nqt.getResources().getColor(2131100081)));
             localObject1 = (LinearLayout.LayoutParams)((Button)localObject2).getLayoutParams();
             ((LinearLayout.LayoutParams)localObject1).width = -1;
             ((Button)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
             continue;
           }
-          ((Button)localObject2).setTextColor(this.jpX.getResources().getColor(2131690143));
-          ((Button)localObject2).setBackgroundDrawable(l.I(this.jpX, this.jpX.getResources().getColor(2131689821)));
+          ((Button)localObject2).setTextColor(this.nqt.getResources().getColor(2131100469));
+          ((Button)localObject2).setBackgroundDrawable(l.K(this.nqt, this.nqt.getResources().getColor(2131100081)));
           continue;
         }
-        if (this.kAQ != null) {
-          this.kAQ.setVisibility(8);
+        if (this.nHP != null) {
+          this.nHP.setVisibility(8);
         }
       }
     }
-    AppMethodBeat.o(88734);
+    AppMethodBeat.o(113661);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.b
  * JD-Core Version:    0.7.0.1
  */

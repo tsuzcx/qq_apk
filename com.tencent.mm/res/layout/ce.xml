@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/s1" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/m2" android:id="@id/s2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/ll" android:layout_marginRight="@dimen/l2" />
-        <TextView android:textSize="@dimen/na" android:textStyle="bold" android:id="@id/s3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/ll" android:layout_marginRight="@dimen/l2" android:layout_below="@id/s2" />
-        <TextView android:textSize="@dimen/na" android:textColor="@color/tc" android:id="@id/s4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/ll" android:layout_marginRight="@dimen/l2" android:text="@string/k7" android:layout_toRightOf="@id/s3" android:layout_below="@id/s2" />
-        <com.tencent.mm.ui.base.MMFormVerifyCodeInputView android:id="@id/s5" android:focusableInTouchMode="false" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/ll" android:layout_marginRight="@dimen/l2" android:layout_below="@id/s3" form:form_layout="@layout/af9" form:form_title="@string/ka" form:form_hint="@string/k8" form:form_btn_title="@string/k4" style="@style/lt" />
-        <Button android:id="@id/rx" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/l2" android:layout_marginRight="@dimen/l2" android:layout_marginBottom="@dimen/l2" android:text="@string/k3" android:layout_below="@id/s5" style="@style/nq" />
-        <com.tenpay.android.wechat.MyKeyboardWindow android:id="@id/s6" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-</LinearLayout>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dslv="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.sortlist.DragSortListView android:id="@android:id/list" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" dslv:collapsed_height="2.0dip" dslv:drag_enabled="true" dslv:drag_handle_id="@id/l2" dslv:drag_scroll_start="0.33" dslv:drag_start_mode="e7r" dslv:float_alpha="0.4" dslv:max_drag_scroll_speed="0.5" dslv:remove_enabled="false" dslv:remove_mode="c3y" dslv:slide_shuffle_speed="0.3" dslv:sort_enabled="true" dslv:track_drag_sort="false" dslv:use_default_controller="true" />
+</FrameLayout>

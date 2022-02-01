@@ -18,7 +18,7 @@ class AppEventStore$MovedClassObjectInputStream
   
   protected ObjectStreamClass readClassDescriptor()
   {
-    AppMethodBeat.i(71900);
+    AppMethodBeat.i(17336);
     ObjectStreamClass localObjectStreamClass2 = super.readClassDescriptor();
     ObjectStreamClass localObjectStreamClass1;
     if (localObjectStreamClass2.getName().equals("com.facebook.appevents.AppEventsLogger$AccessTokenAppIdPair$SerializationProxyV1")) {
@@ -26,7 +26,7 @@ class AppEventStore$MovedClassObjectInputStream
     }
     for (;;)
     {
-      AppMethodBeat.o(71900);
+      AppMethodBeat.o(17336);
       return localObjectStreamClass1;
       localObjectStreamClass1 = localObjectStreamClass2;
       if (localObjectStreamClass2.getName().equals("com.facebook.appevents.AppEventsLogger$AppEvent$SerializationProxyV1")) {
@@ -37,7 +37,7 @@ class AppEventStore$MovedClassObjectInputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.facebook.appevents.AppEventStore.MovedClassObjectInputStream
  * JD-Core Version:    0.7.0.1
  */

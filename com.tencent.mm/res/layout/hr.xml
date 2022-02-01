@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/a_h" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/a_i" android:background="@drawable/fb" android:paddingLeft="@dimen/uk" android:paddingRight="@dimen/uk" android:paddingBottom="@dimen/uk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="140.0dip">
-        <LinearLayout android:gravity="center" android:id="@id/a_j" android:paddingLeft="@dimen/ug" android:paddingRight="@dimen/ug" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-            <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/m2" android:textColor="@color/o" android:ellipsize="end" android:id="@id/a9p" android:paddingBottom="@dimen/ll" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="3" android:lineSpacingExtra="5.0dip" />
+    <ScrollView android:scrollbars="none" style="@style/ny">
+        <LinearLayout android:gravity="center_horizontal" style="@style/ld">
+            <ImageView android:id="@id/fd8" android:paddingBottom="33.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/atw" />
+            <TextView android:gravity="center" android:id="@id/fd9" android:background="@drawable/bvc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" style="@style/le" />
+            <Button android:textSize="20.0dip" android:id="@id/fd7" android:visibility="gone" android:text="@string/a_w" style="@style/o6" />
+            <Button android:id="@id/fdn" android:visibility="gone" android:text="@string/g4m" style="@style/ob" />
         </LinearLayout>
-        <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <include android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true" layout="@layout/hh" />
-            <TextView android:textSize="@dimen/m2" android:textColor="#ff4f729c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a_o" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        </RelativeLayout>
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

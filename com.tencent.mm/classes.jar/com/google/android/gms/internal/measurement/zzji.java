@@ -14,7 +14,7 @@ final class zzji
   
   public final void run()
   {
-    AppMethodBeat.i(69392);
+    AppMethodBeat.i(1915);
     zzjh localzzjh = this.zzapx;
     localzzjh.zzab();
     long l = localzzjh.zzbt().elapsedRealtime();
@@ -22,12 +22,12 @@ final class zzji
     localzzjh.zzgf().zzakk.set(false);
     localzzjh.zzfu().zza("auto", "_s", new Bundle());
     localzzjh.zzgf().zzakl.set(localzzjh.zzbt().currentTimeMillis());
-    AppMethodBeat.o(69392);
+    AppMethodBeat.o(1915);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzji
  * JD-Core Version:    0.7.0.1
  */

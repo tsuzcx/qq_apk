@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.luckymoney;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.b.b;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
 
 public final class Plugin
-  implements c
+  implements d
 {
-  public final o createApplication()
+  public final m createApplication()
   {
-    AppMethodBeat.i(41965);
+    AppMethodBeat.i(64854);
     a locala = new a();
-    AppMethodBeat.o(41965);
+    AppMethodBeat.o(64854);
     return locala;
   }
   
-  public final at createSubCore()
+  public final aw createSubCore()
   {
-    AppMethodBeat.i(41966);
+    AppMethodBeat.i(64855);
     com.tencent.mm.plugin.luckymoney.b.a locala = new com.tencent.mm.plugin.luckymoney.b.a();
-    AppMethodBeat.o(41966);
+    AppMethodBeat.o(64855);
     return locala;
   }
   
-  public final b getContactWidgetFactory()
+  public final c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.Plugin
  * JD-Core Version:    0.7.0.1
  */

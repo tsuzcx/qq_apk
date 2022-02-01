@@ -20,74 +20,74 @@ public class IssueDetailActivity
   
   private void initView(final SQLiteLintIssue paramSQLiteLintIssue)
   {
-    AppMethodBeat.i(94065);
+    AppMethodBeat.i(52909);
     if (paramSQLiteLintIssue == null)
     {
-      AppMethodBeat.o(94065);
+      AppMethodBeat.o(52909);
       return;
     }
-    setTitle(getString(2131306147));
-    Object localObject = (TextView)findViewById(2131821004);
-    TextView localTextView = (TextView)findViewById(2131821005);
+    setTitle(getString(2131758064));
+    Object localObject = (TextView)findViewById(2131305822);
+    TextView localTextView = (TextView)findViewById(2131299094);
     ((TextView)localObject).setText(SQLiteLintUtil.formatTime("yyyy-MM-dd HH:mm", paramSQLiteLintIssue.createTime));
     localTextView.setText(SQLiteLintIssue.getLevelText(paramSQLiteLintIssue.level, getBaseContext()));
     if (!SQLiteLintUtil.isNullOrNil(paramSQLiteLintIssue.desc))
     {
-      localObject = (LinearLayout)findViewById(2131821006);
-      ((TextView)findViewById(2131821007)).setText(paramSQLiteLintIssue.desc);
+      localObject = (LinearLayout)findViewById(2131299005);
+      ((TextView)findViewById(2131299008)).setText(paramSQLiteLintIssue.desc);
       ((LinearLayout)localObject).setVisibility(0);
       ((LinearLayout)localObject).setOnClickListener(new View.OnClickListener()
       {
         public void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(94062);
+          AppMethodBeat.i(52906);
           SLog.v("MicroMsg.IssueDetailActivity", paramSQLiteLintIssue.desc.replace("%", "###"), new Object[0]);
-          AppMethodBeat.o(94062);
+          AppMethodBeat.o(52906);
         }
       });
     }
     if (!SQLiteLintUtil.isNullOrNil(paramSQLiteLintIssue.detail))
     {
-      localObject = (LinearLayout)findViewById(2131821008);
-      localTextView = (TextView)findViewById(2131821009);
+      localObject = (LinearLayout)findViewById(2131299048);
+      localTextView = (TextView)findViewById(2131299061);
       localTextView.setText(paramSQLiteLintIssue.detail);
       ((LinearLayout)localObject).setVisibility(0);
       localTextView.setOnClickListener(new View.OnClickListener()
       {
         public void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(94063);
+          AppMethodBeat.i(52907);
           SLog.v("MicroMsg.IssueDetailActivity", paramSQLiteLintIssue.detail.replace("%", "###"), new Object[0]);
-          AppMethodBeat.o(94063);
+          AppMethodBeat.o(52907);
         }
       });
     }
     if (!SQLiteLintUtil.isNullOrNil(paramSQLiteLintIssue.advice))
     {
-      localObject = (LinearLayout)findViewById(2131821010);
-      ((TextView)findViewById(2131821011)).setText(paramSQLiteLintIssue.advice);
+      localObject = (LinearLayout)findViewById(2131296511);
+      ((TextView)findViewById(2131296512)).setText(paramSQLiteLintIssue.advice);
       ((LinearLayout)localObject).setVisibility(0);
     }
     if (!SQLiteLintUtil.isNullOrNil(paramSQLiteLintIssue.extInfo))
     {
-      localObject = (LinearLayout)findViewById(2131821012);
-      ((TextView)findViewById(2131821013)).setText(getString(2131306148, new Object[] { paramSQLiteLintIssue.extInfo }));
+      localObject = (LinearLayout)findViewById(2131299618);
+      ((TextView)findViewById(2131299619)).setText(getString(2131758065, new Object[] { paramSQLiteLintIssue.extInfo }));
       ((LinearLayout)localObject).setVisibility(0);
     }
-    AppMethodBeat.o(94065);
+    AppMethodBeat.o(52909);
   }
   
   protected int getLayoutId()
   {
-    return 2130968624;
+    return 2131492932;
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(94064);
+    AppMethodBeat.i(52908);
     super.onCreate(paramBundle);
     initView((SQLiteLintIssue)getIntent().getParcelableExtra("issue"));
-    AppMethodBeat.o(94064);
+    AppMethodBeat.o(52908);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -98,7 +98,7 @@ public class IssueDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.alert.IssueDetailActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-public final class c$hl
+final class c$hl
   extends c.g
 {
-  public c$hl()
+  c$hl()
   {
-    super("removeVideoPlayer", "", 10000, false);
+    super("privateOpenWeappFunctionalPage", "privateOpenWeappFunctionalPage", 333, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.hl
  * JD-Core Version:    0.7.0.1
  */

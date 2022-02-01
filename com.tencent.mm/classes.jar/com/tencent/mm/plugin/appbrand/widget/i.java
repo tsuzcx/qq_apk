@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
-import a.l;
 import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.a;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/widget/IconProviderWC;", "Lcom/tencent/mm/plugin/appbrand/widget/IconProvider;", "()V", "getDefaultAppIcon", "Landroid/graphics/drawable/Drawable;", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/widget/IconProviderWC;", "Lcom/tencent/mm/plugin/appbrand/widget/IconProvider;", "()V", "getDefaultAppIcon", "Landroid/graphics/drawable/Drawable;", "plugin-appbrand-integration_release"})
 public final class i
   implements h
 {
-  public static final i jaC;
+  public static final i lQw;
   
   static
   {
-    AppMethodBeat.i(135220);
-    jaC = new i();
-    AppMethodBeat.o(135220);
+    AppMethodBeat.i(51406);
+    lQw = new i();
+    AppMethodBeat.o(51406);
   }
   
-  public final Drawable aOD()
+  public final Drawable bra()
   {
-    AppMethodBeat.i(135219);
-    Drawable localDrawable = a.acC();
-    AppMethodBeat.o(135219);
+    AppMethodBeat.i(51405);
+    Drawable localDrawable = a.aua();
+    AppMethodBeat.o(51405);
     return localDrawable;
   }
 }

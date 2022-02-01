@@ -12,53 +12,55 @@ import java.lang.reflect.Proxy;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 public class ServiceBinderInterceptor
   extends Interceptor<IBinder>
 {
-  private static Class<?> BuF = null;
-  private static Field BuG = null;
-  private static Method BuH = null;
-  private final Context BuD;
-  private final BinderInvocationHandler BuE;
-  private final String bNw;
+  private static final String TAG = "Tinker.SvcBndrIntrcptr";
+  private static Method sGetServiceMethod;
+  private static Field sSCacheField;
+  private static Class<?> sServiceManagerClazz = null;
+  private final Context mBaseContext;
+  private final BinderInvocationHandler mBinderInvocationHandler;
+  private final String mServiceName;
   
   /* Error */
   static
   {
     // Byte code:
     //   0: aconst_null
-    //   1: putstatic 35	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:BuF	Ljava/lang/Class;
+    //   1: putstatic 38	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:sServiceManagerClazz	Ljava/lang/Class;
     //   4: aconst_null
-    //   5: putstatic 37	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:BuG	Ljava/lang/reflect/Field;
+    //   5: putstatic 40	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:sSCacheField	Ljava/lang/reflect/Field;
     //   8: aconst_null
-    //   9: putstatic 39	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:BuH	Ljava/lang/reflect/Method;
+    //   9: putstatic 42	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:sGetServiceMethod	Ljava/lang/reflect/Method;
     //   12: ldc 2
     //   14: monitorenter
-    //   15: getstatic 35	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:BuF	Ljava/lang/Class;
+    //   15: getstatic 38	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:sServiceManagerClazz	Ljava/lang/Class;
     //   18: astore_0
     //   19: aload_0
     //   20: ifnonnull +42 -> 62
-    //   23: ldc 41
-    //   25: invokestatic 47	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   23: ldc 44
+    //   25: invokestatic 50	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   28: astore_0
     //   29: aload_0
-    //   30: putstatic 35	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:BuF	Ljava/lang/Class;
+    //   30: putstatic 38	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:sServiceManagerClazz	Ljava/lang/Class;
     //   33: aload_0
-    //   34: ldc 49
-    //   36: invokestatic 55	com/tencent/tinker/loader/shareutil/ShareReflectUtil:g	(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   39: putstatic 37	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:BuG	Ljava/lang/reflect/Field;
-    //   42: getstatic 35	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:BuF	Ljava/lang/Class;
-    //   45: ldc 57
+    //   34: ldc 52
+    //   36: invokestatic 58	com/tencent/tinker/loader/shareutil/ShareReflectUtil:findField	(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   39: putstatic 40	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:sSCacheField	Ljava/lang/reflect/Field;
+    //   42: getstatic 38	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:sServiceManagerClazz	Ljava/lang/Class;
+    //   45: ldc 60
     //   47: iconst_1
-    //   48: anewarray 43	java/lang/Class
+    //   48: anewarray 46	java/lang/Class
     //   51: dup
     //   52: iconst_0
-    //   53: ldc 59
+    //   53: ldc 62
     //   55: aastore
-    //   56: invokestatic 63	com/tencent/tinker/loader/shareutil/ShareReflectUtil:d	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   59: putstatic 39	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:BuH	Ljava/lang/reflect/Method;
+    //   56: invokestatic 66	com/tencent/tinker/loader/shareutil/ShareReflectUtil:findMethod	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   59: putstatic 42	com/tencent/tinker/loader/hotplug/interceptor/ServiceBinderInterceptor:sGetServiceMethod	Ljava/lang/reflect/Method;
     //   62: ldc 2
     //   64: monitorexit
     //   65: return
@@ -88,12 +90,12 @@ public class ServiceBinderInterceptor
     while ((paramContext != null) && ((paramContext instanceof ContextWrapper))) {
       paramContext = ((ContextWrapper)paramContext).getBaseContext();
     }
-    this.BuD = paramContext;
-    this.bNw = paramString;
-    this.BuE = paramBinderInvocationHandler;
+    this.mBaseContext = paramContext;
+    this.mServiceName = paramString;
+    this.mBinderInvocationHandler = paramBinderInvocationHandler;
   }
   
-  private static <T> T a(Class<?>[] paramArrayOfClass, InvocationHandler paramInvocationHandler)
+  private static <T> T createProxy(Class<?>[] paramArrayOfClass, InvocationHandler paramInvocationHandler)
   {
     Class[] arrayOfClass = new Class[paramArrayOfClass.length + 1];
     System.arraycopy(paramArrayOfClass, 0, arrayOfClass, 0, paramArrayOfClass.length);
@@ -118,12 +120,23 @@ public class ServiceBinderInterceptor
           {
             protected final Class<?> loadClass(String paramAnonymousString, boolean paramAnonymousBoolean)
             {
-              Iterator localIterator = this.BuI.iterator();
+              Iterator localIterator = this.val$uniqueCls.iterator();
+              Object localObject1 = null;
               while (localIterator.hasNext())
               {
-                Class localClass = ((ClassLoader)localIterator.next()).loadClass(paramAnonymousString);
-                if (localClass != null) {
-                  return localClass;
+                Object localObject2 = (ClassLoader)localIterator.next();
+                try
+                {
+                  localObject2 = ((ClassLoader)localObject2).loadClass(paramAnonymousString);
+                  localObject1 = localObject2;
+                }
+                catch (Throwable localThrowable)
+                {
+                  label46:
+                  break label46;
+                }
+                if (localObject1 != null) {
+                  return localObject1;
                 }
               }
               throw new ClassNotFoundException("cannot find class: ".concat(String.valueOf(paramAnonymousString)));
@@ -142,7 +155,59 @@ public class ServiceBinderInterceptor
     }
   }
   
-  private static Class<?>[] aD(Class<?> paramClass)
+  private static void fixAMSBinderCache(IBinder paramIBinder)
+  {
+    try
+    {
+      Object localObject1 = ShareReflectUtil.findField(Class.forName("android.app.ActivityManagerNative"), "gDefault").get(null);
+      localField = ShareReflectUtil.findField(localObject1, "mInstance");
+      localIInterface = (IInterface)localField.get(localObject1);
+      if ((localIInterface == null) || (Interceptor.ITinkerHotplugProxy.class.isAssignableFrom(localIInterface.getClass()))) {
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      Field localField;
+      Object localObject2;
+      for (;;)
+      {
+        localObject2 = ShareReflectUtil.findField(Class.forName("android.app.ActivityManager"), "IActivityManagerSingleton").get(null);
+      }
+      IInterface localIInterface = paramIBinder.queryLocalInterface(paramIBinder.getInterfaceDescriptor());
+      if ((localIInterface == null) || (!Interceptor.ITinkerHotplugProxy.class.isAssignableFrom(localIInterface.getClass()))) {
+        throw new IllegalStateException("fakeBinder does not return fakeInterface, binder: " + paramIBinder + ", itf: " + localIInterface);
+      }
+      localField.set(localObject2, localIInterface);
+    }
+  }
+  
+  private static void fixPMSBinderCache(Context paramContext, IBinder paramIBinder)
+  {
+    Field localField = ShareReflectUtil.findField(Class.forName("android.app.ActivityThread"), "sPackageManager");
+    IInterface localIInterface = (IInterface)localField.get(null);
+    if ((localIInterface != null) && (!Interceptor.ITinkerHotplugProxy.class.isAssignableFrom(localIInterface.getClass())))
+    {
+      localIInterface = paramIBinder.queryLocalInterface(paramIBinder.getInterfaceDescriptor());
+      if ((localIInterface == null) || (!Interceptor.ITinkerHotplugProxy.class.isAssignableFrom(localIInterface.getClass()))) {
+        throw new IllegalStateException("fakeBinder does not return fakeInterface, binder: " + paramIBinder + ", itf: " + localIInterface);
+      }
+      localField.set(null, localIInterface);
+    }
+    localField = ShareReflectUtil.findField(Class.forName("android.app.ApplicationPackageManager"), "mPM");
+    paramContext = paramContext.getPackageManager();
+    localIInterface = (IInterface)localField.get(paramContext);
+    if ((localIInterface != null) && (!Interceptor.ITinkerHotplugProxy.class.isAssignableFrom(localIInterface.getClass())))
+    {
+      localIInterface = paramIBinder.queryLocalInterface(paramIBinder.getInterfaceDescriptor());
+      if ((localIInterface == null) || (!Interceptor.ITinkerHotplugProxy.class.isAssignableFrom(localIInterface.getClass()))) {
+        throw new IllegalStateException("fakeBinder does not return fakeInterface, binder: " + paramIBinder + ", itf: " + localIInterface);
+      }
+      localField.set(paramContext, localIInterface);
+    }
+  }
+  
+  private static Class<?>[] getAllInterfacesThroughDeriveChain(Class<?> paramClass)
   {
     if (paramClass == null) {
       return null;
@@ -156,6 +221,34 @@ public class ServiceBinderInterceptor
     return (Class[])localHashSet.toArray(new Class[localHashSet.size()]);
   }
   
+  protected IBinder decorate(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      throw new IllegalStateException("target is null.");
+    }
+    if (Interceptor.ITinkerHotplugProxy.class.isAssignableFrom(paramIBinder.getClass())) {
+      return paramIBinder;
+    }
+    return (IBinder)createProxy(getAllInterfacesThroughDeriveChain(paramIBinder.getClass()), new FakeClientBinderHandler(paramIBinder, this.mBinderInvocationHandler));
+  }
+  
+  protected IBinder fetchTarget()
+  {
+    return (IBinder)sGetServiceMethod.invoke(null, new Object[] { this.mServiceName });
+  }
+  
+  protected void inject(IBinder paramIBinder)
+  {
+    ((Map)sSCacheField.get(null)).put(this.mServiceName, paramIBinder);
+    if ("activity".equals(this.mServiceName)) {
+      fixAMSBinderCache(paramIBinder);
+    }
+    while (!"package".equals(this.mServiceName)) {
+      return;
+    }
+    fixPMSBinderCache(this.mBaseContext, paramIBinder);
+  }
+  
   public static abstract interface BinderInvocationHandler
   {
     public abstract Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject);
@@ -164,52 +257,52 @@ public class ServiceBinderInterceptor
   static class FakeClientBinderHandler
     implements InvocationHandler
   {
-    private final ServiceBinderInterceptor.BinderInvocationHandler BuE;
-    private final IBinder BuJ;
+    private final ServiceBinderInterceptor.BinderInvocationHandler mBinderInvocationHandler;
+    private final IBinder mOriginalClientBinder;
     
     FakeClientBinderHandler(IBinder paramIBinder, ServiceBinderInterceptor.BinderInvocationHandler paramBinderInvocationHandler)
     {
-      this.BuJ = paramIBinder;
-      this.BuE = paramBinderInvocationHandler;
+      this.mOriginalClientBinder = paramIBinder;
+      this.mBinderInvocationHandler = paramBinderInvocationHandler;
     }
     
     public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
     {
       if ("queryLocalInterface".equals(paramMethod.getName()))
       {
-        paramMethod = this.BuJ.getInterfaceDescriptor();
+        paramMethod = this.mOriginalClientBinder.getInterfaceDescriptor();
         if (paramMethod.equals("android.app.IActivityManager")) {}
         for (paramMethod = "android.app.ActivityManagerNative";; paramMethod = paramMethod + "$Stub")
         {
-          paramMethod = (IInterface)ShareReflectUtil.d(Class.forName(paramMethod), "asInterface", new Class[] { IBinder.class }).invoke(null, new Object[] { this.BuJ });
-          paramObject = new ServiceBinderInterceptor.FakeInterfaceHandler(paramMethod, (IBinder)paramObject, this.BuE);
-          return ServiceBinderInterceptor.b(ServiceBinderInterceptor.aE(paramMethod.getClass()), paramObject);
+          paramMethod = (IInterface)ShareReflectUtil.findMethod(Class.forName(paramMethod), "asInterface", new Class[] { IBinder.class }).invoke(null, new Object[] { this.mOriginalClientBinder });
+          paramObject = new ServiceBinderInterceptor.FakeInterfaceHandler(paramMethod, (IBinder)paramObject, this.mBinderInvocationHandler);
+          return ServiceBinderInterceptor.createProxy(ServiceBinderInterceptor.access$000(paramMethod.getClass()), paramObject);
         }
       }
-      return paramMethod.invoke(this.BuJ, paramArrayOfObject);
+      return paramMethod.invoke(this.mOriginalClientBinder, paramArrayOfObject);
     }
   }
   
   static class FakeInterfaceHandler
     implements InvocationHandler
   {
-    private final ServiceBinderInterceptor.BinderInvocationHandler BuE;
-    private final IBinder BuJ;
-    private final IInterface BuK;
+    private final ServiceBinderInterceptor.BinderInvocationHandler mBinderInvocationHandler;
+    private final IBinder mOriginalClientBinder;
+    private final IInterface mOriginalInterface;
     
     FakeInterfaceHandler(IInterface paramIInterface, IBinder paramIBinder, ServiceBinderInterceptor.BinderInvocationHandler paramBinderInvocationHandler)
     {
-      this.BuK = paramIInterface;
-      this.BuJ = paramIBinder;
-      this.BuE = paramBinderInvocationHandler;
+      this.mOriginalInterface = paramIInterface;
+      this.mOriginalClientBinder = paramIBinder;
+      this.mBinderInvocationHandler = paramBinderInvocationHandler;
     }
     
     public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
     {
       if ("asBinder".equals(paramMethod.getName())) {
-        return this.BuJ;
+        return this.mOriginalClientBinder;
       }
-      return this.BuE.invoke(this.BuK, paramMethod, paramArrayOfObject);
+      return this.mBinderInvocationHandler.invoke(this.mOriginalInterface, paramMethod, paramArrayOfObject);
     }
   }
 }

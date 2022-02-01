@@ -8,34 +8,24 @@ public abstract class fp
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dAN = "expireTime".hashCode();
-  private static final int dAR;
-  private static final int dPO = "timeStamp".hashCode();
-  private static final int dVy;
-  private static final int dhB = "appId".hashCode();
-  private static final int dij = "size".hashCode();
+  private static final int eCC = "timestamp".hashCode();
+  private static final int eKG;
+  private static final int eOw;
+  private static final int exb = "id".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int value_HASHCODE;
-  private boolean __hadSetvalue = true;
-  private boolean dAF = true;
-  private boolean dAJ = true;
-  private boolean dPI = true;
-  private boolean dVx = true;
-  private boolean dhk = true;
-  private boolean dih = true;
-  public String field_appId;
-  public String field_appIdKey;
-  public long field_expireTime;
-  public long field_size;
-  public long field_timeStamp;
-  public String field_value;
-  public String field_weight;
+  private boolean eCs = true;
+  private boolean eKF = true;
+  private boolean eOv = true;
+  private boolean ewY = true;
+  public String field_date;
+  public int field_id;
+  public int field_step;
+  public long field_timestamp;
   
   static
   {
-    dVy = "appIdKey".hashCode();
-    value_HASHCODE = "value".hashCode();
-    dAR = "weight".hashCode();
+    eOw = "date".hashCode();
+    eKG = "step".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -51,44 +41,25 @@ public abstract class fp
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dhB != k) {
-        break label60;
+      if (exb != k) {
+        break label65;
       }
-      this.field_appId = paramCursor.getString(i);
+      this.field_id = paramCursor.getInt(i);
+      this.ewY = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (dVy == k)
-      {
-        this.field_appIdKey = paramCursor.getString(i);
-        this.dVx = true;
-      }
-      else if (value_HASHCODE == k)
-      {
-        this.field_value = paramCursor.getString(i);
-      }
-      else if (dAR == k)
-      {
-        this.field_weight = paramCursor.getString(i);
-      }
-      else if (dAN == k)
-      {
-        this.field_expireTime = paramCursor.getLong(i);
-      }
-      else if (dPO == k)
-      {
-        this.field_timeStamp = paramCursor.getLong(i);
-      }
-      else if (dij == k)
-      {
-        this.field_size = paramCursor.getLong(i);
-      }
-      else if (rowid_HASHCODE == k)
-      {
+      label65:
+      if (eOw == k) {
+        this.field_date = paramCursor.getString(i);
+      } else if (eKG == k) {
+        this.field_step = paramCursor.getInt(i);
+      } else if (eCC == k) {
+        this.field_timestamp = paramCursor.getLong(i);
+      } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
     }
@@ -97,26 +68,17 @@ public abstract class fp
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dhk) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.ewY) {
+      localContentValues.put("id", Integer.valueOf(this.field_id));
     }
-    if (this.dVx) {
-      localContentValues.put("appIdKey", this.field_appIdKey);
+    if (this.eOv) {
+      localContentValues.put("date", this.field_date);
     }
-    if (this.__hadSetvalue) {
-      localContentValues.put("value", this.field_value);
+    if (this.eKF) {
+      localContentValues.put("step", Integer.valueOf(this.field_step));
     }
-    if (this.dAJ) {
-      localContentValues.put("weight", this.field_weight);
-    }
-    if (this.dAF) {
-      localContentValues.put("expireTime", Long.valueOf(this.field_expireTime));
-    }
-    if (this.dPI) {
-      localContentValues.put("timeStamp", Long.valueOf(this.field_timeStamp));
-    }
-    if (this.dih) {
-      localContentValues.put("size", Long.valueOf(this.field_size));
+    if (this.eCs) {
+      localContentValues.put("timestamp", Long.valueOf(this.field_timestamp));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -126,7 +88,7 @@ public abstract class fp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.fp
  * JD-Core Version:    0.7.0.1
  */

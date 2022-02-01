@@ -1,9 +1,11 @@
 package com.tencent.tmassistantsdk.logreport;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.tmassistantsdk.downloadservice.DownloadHelper;
 import com.tencent.tmassistantsdk.downloadservice.NetworkMonitorReceiver;
 import com.tencent.tmassistantsdk.downloadservice.NetworkMonitorReceiver.INetworkChangedObserver;
+import com.tencent.tmassistantsdk.util.TMLog;
 
 public class LogReportManager
 {
@@ -14,22 +16,60 @@ public class LogReportManager
   
   private LogReportManager()
   {
-    AppMethodBeat.i(75819);
-    this.mNetworkChangedObserver = new LogReportManager.1(this);
+    AppMethodBeat.i(102065);
+    this.mNetworkChangedObserver = new NetworkMonitorReceiver.INetworkChangedObserver()
+    {
+      public void onNetworkChanged()
+      {
+        AppMethodBeat.i(102063);
+        TMLog.i("LogReportManager", "onNetworkChanged,netState:" + DownloadHelper.getNetStatus());
+        Class[] arrayOfClass = LogReportManager.REPORT_MANAGERS;
+        int j = arrayOfClass.length;
+        int i = 0;
+        for (;;)
+        {
+          if (i < j)
+          {
+            Class localClass = arrayOfClass[i];
+            try
+            {
+              if (localClass.equals(DownloadReportManager.class)) {
+                DownloadReportManager.getInstance().resetMaxReportCount();
+              } else if (localClass.equals(TipsInfoReportManager.class)) {
+                TipsInfoReportManager.getInstance().resetMaxReportCount();
+              }
+            }
+            catch (Exception localException)
+            {
+              ad.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
+            }
+          }
+          else
+          {
+            if (DownloadHelper.isNetworkConncted()) {
+              DownloadHelper.getNetStatus().equalsIgnoreCase("wifi");
+            }
+            AppMethodBeat.o(102063);
+            return;
+          }
+          i += 1;
+        }
+      }
+    };
     NetworkMonitorReceiver.getInstance().addNetworkChangedObserver(this.mNetworkChangedObserver);
-    AppMethodBeat.o(75819);
+    AppMethodBeat.o(102065);
   }
   
   public static LogReportManager getInstance()
   {
     try
     {
-      AppMethodBeat.i(75818);
+      AppMethodBeat.i(102064);
       if (mInstance == null) {
         mInstance = new LogReportManager();
       }
       LogReportManager localLogReportManager = mInstance;
-      AppMethodBeat.o(75818);
+      AppMethodBeat.o(102064);
       return localLogReportManager;
     }
     finally {}
@@ -37,7 +77,7 @@ public class LogReportManager
   
   public void cancleReport()
   {
-    AppMethodBeat.i(75822);
+    AppMethodBeat.i(102068);
     Class[] arrayOfClass = REPORT_MANAGERS;
     int j = arrayOfClass.length;
     int i = 0;
@@ -56,12 +96,12 @@ public class LogReportManager
         }
         catch (Exception localException)
         {
-          ab.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
+          ad.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
         }
       }
       else
       {
-        AppMethodBeat.o(75822);
+        AppMethodBeat.o(102068);
         return;
       }
       i += 1;
@@ -70,7 +110,7 @@ public class LogReportManager
   
   public void destory()
   {
-    AppMethodBeat.i(75820);
+    AppMethodBeat.i(102066);
     Class[] arrayOfClass = REPORT_MANAGERS;
     int j = arrayOfClass.length;
     int i = 0;
@@ -89,13 +129,13 @@ public class LogReportManager
         }
         catch (Exception localException)
         {
-          ab.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
+          ad.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
         }
       }
       else
       {
         NetworkMonitorReceiver.getInstance().removeNetworkChangedObserver(this.mNetworkChangedObserver);
-        AppMethodBeat.o(75820);
+        AppMethodBeat.o(102066);
         return;
       }
       i += 1;
@@ -104,7 +144,7 @@ public class LogReportManager
   
   public void reportLog()
   {
-    AppMethodBeat.i(75821);
+    AppMethodBeat.i(102067);
     Class[] arrayOfClass = REPORT_MANAGERS;
     int j = arrayOfClass.length;
     int i = 0;
@@ -123,7 +163,7 @@ public class LogReportManager
         }
         catch (Exception localException)
         {
-          ab.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
+          ad.printErrStackTrace("LogReportManager", localException, "", new Object[0]);
         }
         if (localException.equals(UpdateInfoReportManager.class)) {
           UpdateInfoReportManager.getInstance().reportLogData();
@@ -131,7 +171,7 @@ public class LogReportManager
       }
       else
       {
-        AppMethodBeat.o(75821);
+        AppMethodBeat.o(102067);
         return;
       }
       i += 1;
@@ -140,7 +180,7 @@ public class LogReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.logreport.LogReportManager
  * JD-Core Version:    0.7.0.1
  */

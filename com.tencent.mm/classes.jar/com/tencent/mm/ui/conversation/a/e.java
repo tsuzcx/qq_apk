@@ -2,30 +2,29 @@ package com.tencent.mm.ui.conversation.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.b.b.b;
 import com.tencent.mm.model.b.d;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.be;
-import com.tencent.mm.model.be.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bh;
+import com.tencent.mm.model.bh.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 
 public final class e
 {
-  public static com.tencent.mm.pluginsdk.ui.b.a a(Context paramContext, e.a parama, Object[] paramArrayOfObject)
+  public static com.tencent.mm.pluginsdk.ui.b.a a(Context paramContext, a parama, Object[] paramArrayOfObject)
   {
     Object localObject = null;
     boolean bool2 = false;
     boolean bool1 = false;
-    AppMethodBeat.i(34649);
+    AppMethodBeat.i(38776);
     String str1;
-    label128:
-    label220:
-    label255:
+    label132:
+    label224:
     String str2;
-    switch (e.1.Aml[parama.ordinal()])
+    switch (1.Hgw[parama.ordinal()])
     {
     default: 
       parama = localObject;
@@ -39,7 +38,7 @@ public final class e
           {
             do
             {
-              AppMethodBeat.o(34649);
+              AppMethodBeat.o(38776);
               return parama;
               parama = localObject;
             } while (paramArrayOfObject == null);
@@ -49,29 +48,29 @@ public final class e
           {
             str1 = paramArrayOfObject[0].toString();
             if (paramArrayOfObject[1] == null) {
-              break label220;
+              break label224;
             }
           }
           for (paramArrayOfObject = paramArrayOfObject[1].toString();; paramArrayOfObject = null)
           {
-            if (aw.aaz().YY() == null) {
-              ab.w("MicroMsg.BannerFactory", "recommend banner stg is null. this may be caused by account async init.");
+            if (az.arV().aqk() == null) {
+              ad.w("MicroMsg.BannerFactory", "recommend banner stg is null. this may be caused by account async init.");
             }
             parama = localObject;
-            if (aw.aaz().YY() == null) {
+            if (az.arV().aqk() == null) {
               break;
             }
-            if (!aw.aaz().YY().pR(str1))
+            if (!az.arV().aqk().uF(str1))
             {
               parama = localObject;
-              if (!aw.aaz().YY().pR(paramArrayOfObject)) {
+              if (!az.arV().aqk().uF(paramArrayOfObject)) {
                 break;
               }
             }
             parama = new f(paramContext, str1, paramArrayOfObject);
             break;
             str1 = null;
-            break label128;
+            break label132;
           }
           parama = localObject;
         } while (paramArrayOfObject == null);
@@ -80,60 +79,63 @@ public final class e
       if (paramArrayOfObject[0] != null)
       {
         str1 = paramArrayOfObject[0].toString();
+        label259:
         if (paramArrayOfObject[1] == null) {
-          break label363;
+          break label367;
         }
         str2 = paramArrayOfObject[1].toString();
-        label269:
+        label273:
         if ((paramArrayOfObject[2] == null) || (!(paramArrayOfObject[2] instanceof Boolean))) {
-          break label809;
+          break label825;
         }
       }
       break;
     }
-    label809:
+    label825:
     for (bool1 = ((Boolean)paramArrayOfObject[2]).booleanValue();; bool1 = false)
     {
-      if ((!aw.RG()) || (aw.aaz().YZ() == null) || (!aw.aaz().YZ().pR(str1)))
+      if ((!az.afw()) || (az.arV().aql() == null) || (!az.arV().aql().uF(str1)))
       {
         parama = localObject;
-        if (!aw.aaz().YZ().pR(str2)) {
+        if (!az.arV().aql().uF(str2)) {
           break;
         }
       }
       parama = new g(paramContext, str1, str2, bool1);
       break;
       str1 = null;
-      break label255;
-      label363:
+      break label259;
+      label367:
       str2 = null;
-      break label269;
+      break label273;
       parama = new o(paramContext);
       break;
       parama = new p(paramContext);
       break;
       parama = new i(paramContext);
       break;
+      parama = new q(paramContext);
+      break;
       parama = new h(paramContext);
       break;
       parama = new a(paramContext);
       break;
-      be.aaG();
-      paramArrayOfObject = be.aaH();
+      bh.asb();
+      paramArrayOfObject = bh.asc();
       parama = localObject;
       if (paramArrayOfObject == null) {
         break;
       }
       parama = new l(paramContext, paramArrayOfObject);
       break;
-      paramArrayOfObject = com.tencent.mm.model.a.g.abw().pL("4");
+      paramArrayOfObject = com.tencent.mm.model.a.g.asX().uz("4");
       parama = localObject;
       if (paramArrayOfObject == null) {
         break;
       }
       paramArrayOfObject = paramArrayOfObject.value;
       parama = localObject;
-      if (bo.isNullOrNil(paramArrayOfObject)) {
+      if (bt.isNullOrNil(paramArrayOfObject)) {
         break;
       }
       parama = localObject;
@@ -142,26 +144,26 @@ public final class e
       }
       if (paramArrayOfObject.equals("1"))
       {
-        aw.aaz();
-        parama = com.tencent.mm.model.c.Ru().get(328195, Boolean.FALSE);
+        az.arV();
+        parama = com.tencent.mm.model.c.afk().get(328195, Boolean.FALSE);
         if ((parama instanceof Boolean)) {
           bool1 = ((Boolean)parama).booleanValue();
         }
         if (!bool1)
         {
-          be.aaG();
-          parama = be.aaJ();
-          if ((parama == be.a.fmu) || (parama == be.a.fmv))
+          bh.asb();
+          parama = bh.ase();
+          if ((parama == bh.a.gNI) || (parama == bh.a.gNJ))
           {
-            ab.i("MicroMsg.BannerFactory", "already Bind the Mobile");
+            ad.i("MicroMsg.BannerFactory", "already Bind the Mobile");
             parama = localObject;
             break;
           }
-          parama = new l(paramContext, new bd(1, 1, ""));
-          com.tencent.mm.model.a.f.pP("4");
+          parama = new l(paramContext, new bg(1, 1, ""));
+          com.tencent.mm.model.a.f.uD("4");
           break;
         }
-        ab.i("MicroMsg.BannerFactory", "[cpan] banner type bind mobile has clicked.");
+        ad.i("MicroMsg.BannerFactory", "[cpan] banner type bind mobile has clicked.");
         parama = localObject;
         break;
       }
@@ -169,46 +171,72 @@ public final class e
       if (!paramArrayOfObject.equals("2")) {
         break;
       }
-      aw.aaz();
-      parama = com.tencent.mm.model.c.Ru().get(328196, Boolean.FALSE);
+      az.arV();
+      parama = com.tencent.mm.model.c.afk().get(328196, Boolean.FALSE);
       bool1 = bool2;
       if ((parama instanceof Boolean)) {
         bool1 = ((Boolean)parama).booleanValue();
       }
       if (!bool1)
       {
-        be.aaG();
-        if (be.aaJ() == be.a.fmu)
+        bh.asb();
+        if (bh.ase() == bh.a.gNI)
         {
-          ab.i("MicroMsg.BannerFactory", "already upload the Mobile");
+          ad.i("MicroMsg.BannerFactory", "already upload the Mobile");
           parama = localObject;
           break;
         }
-        parama = new l(paramContext, new bd(2, 1, ""));
-        com.tencent.mm.model.a.f.pP("4");
+        parama = new l(paramContext, new bg(2, 1, ""));
+        com.tencent.mm.model.a.f.uD("4");
         break;
       }
-      ab.i("MicroMsg.BannerFactory", "[cpan] banner type upload contact has clicked.");
+      ad.i("MicroMsg.BannerFactory", "[cpan] banner type upload contact has clicked.");
       parama = localObject;
       break;
       parama = new m(paramContext);
       break;
-      parama = new q(paramContext);
+      parama = new r(paramContext);
       break;
       parama = new k(paramContext);
       break;
       if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0)) {}
-      for (parama = (b.b)paramArrayOfObject[0];; parama = b.b.fou)
+      for (parama = (b.b)paramArrayOfObject[0];; parama = b.b.gPW)
       {
         parama = new com.tencent.mm.ui.d.a(paramContext, parama);
         break;
       }
     }
   }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(38775);
+      Hgx = new a("MAIN_FRAME_BANNER", 0);
+      Hgy = new a("CHATTING_RECOMMEND_BANNER", 1);
+      Hgz = new a("CHATTING_SECURITY_BANNER", 2);
+      HgA = new a("NET_WARN_BANNER", 3);
+      HgB = new a("OTHER_ONLINE_BANNER", 4);
+      HgC = new a("FORCE_NOTIFY_BANNER", 5);
+      HgD = new a("STORAGE_PERMISSION_BANNER", 6);
+      HgE = new a("FACEBOOK_BANNER", 7);
+      HgF = new a("AD_BANNER", 8);
+      HgG = new a("ABTEST_BANNER", 9);
+      HgH = new a("MASS_SEND_SIGHT_BANNER", 10);
+      HgI = new a("TRY_NEW_INIT_BANNER", 11);
+      HgJ = new a("MAIN_FRAME_AND_ABTEST_BANNER", 12);
+      HgK = new a("CHATTING_MONITORED_HINT", 13);
+      HgL = new a[] { Hgx, Hgy, Hgz, HgA, HgB, HgC, HgD, HgE, HgF, HgG, HgH, HgI, HgJ, HgK };
+      AppMethodBeat.o(38775);
+    }
+    
+    private a() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.e
  * JD-Core Version:    0.7.0.1
  */

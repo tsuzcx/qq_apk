@@ -3,79 +3,107 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ts
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public double latitude;
-  public double longitude;
-  public String wMo;
+  public String CVB;
+  public double CVC;
+  public double CVD;
+  public double CVE;
+  public double CVF;
+  public double CVG;
+  public int sdA;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(134426);
+    AppMethodBeat.i(87874);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wMo != null) {
-        paramVarArgs.e(1, this.wMo);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.CVB != null) {
+        paramVarArgs.d(1, this.CVB);
       }
-      paramVarArgs.f(2, this.longitude);
-      paramVarArgs.f(3, this.latitude);
-      AppMethodBeat.o(134426);
+      paramVarArgs.e(2, this.CVC);
+      paramVarArgs.e(3, this.CVD);
+      paramVarArgs.e(4, this.CVE);
+      paramVarArgs.e(5, this.CVF);
+      paramVarArgs.e(6, this.CVG);
+      paramVarArgs.aR(7, this.sdA);
+      AppMethodBeat.o(87874);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.wMo == null) {
-        break label308;
+      if (this.CVB == null) {
+        break label501;
       }
     }
-    label308:
-    for (paramInt = e.a.a.b.b.a.f(1, this.wMo) + 0;; paramInt = 0)
+    label501:
+    for (paramInt = f.a.a.b.b.a.e(1, this.CVB) + 0;; paramInt = 0)
     {
-      int i = e.a.a.b.b.a.eW(2);
-      int j = e.a.a.b.b.a.eW(3);
-      AppMethodBeat.o(134426);
-      return paramInt + (i + 8) + (j + 8);
+      int i = f.a.a.b.b.a.fY(2);
+      int j = f.a.a.b.b.a.fY(3);
+      int k = f.a.a.b.b.a.fY(4);
+      int m = f.a.a.b.b.a.fY(5);
+      int n = f.a.a.b.b.a.fY(6);
+      int i1 = f.a.a.b.b.a.bA(7, this.sdA);
+      AppMethodBeat.o(87874);
+      return paramInt + (i + 8) + (j + 8) + (k + 8) + (m + 8) + (n + 8) + i1;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(134426);
+        AppMethodBeat.o(87874);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         ts localts = (ts)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(134426);
+          AppMethodBeat.o(87874);
           return -1;
         case 1: 
-          localts.wMo = locala.CLY.readString();
-          AppMethodBeat.o(134426);
+          localts.CVB = locala.KhF.readString();
+          AppMethodBeat.o(87874);
           return 0;
         case 2: 
-          localts.longitude = Double.longBitsToDouble(locala.CLY.emy());
-          AppMethodBeat.o(134426);
+          localts.CVC = Double.longBitsToDouble(locala.KhF.fHy());
+          AppMethodBeat.o(87874);
+          return 0;
+        case 3: 
+          localts.CVD = Double.longBitsToDouble(locala.KhF.fHy());
+          AppMethodBeat.o(87874);
+          return 0;
+        case 4: 
+          localts.CVE = Double.longBitsToDouble(locala.KhF.fHy());
+          AppMethodBeat.o(87874);
+          return 0;
+        case 5: 
+          localts.CVF = Double.longBitsToDouble(locala.KhF.fHy());
+          AppMethodBeat.o(87874);
+          return 0;
+        case 6: 
+          localts.CVG = Double.longBitsToDouble(locala.KhF.fHy());
+          AppMethodBeat.o(87874);
           return 0;
         }
-        localts.latitude = Double.longBitsToDouble(locala.CLY.emy());
-        AppMethodBeat.o(134426);
+        localts.sdA = locala.KhF.xS();
+        AppMethodBeat.o(87874);
         return 0;
       }
-      AppMethodBeat.o(134426);
+      AppMethodBeat.o(87874);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ts
  * JD-Core Version:    0.7.0.1
  */

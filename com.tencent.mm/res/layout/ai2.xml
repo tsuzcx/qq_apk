@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/lp" android:background="@drawable/a4b" android:paddingLeft="@dimen/g2" android:layout_width="fill_parent" android:layout_height="@dimen/fd" android:minWidth="170.0dip"
+<FrameLayout android:layout_width="@dimen/a4y" android:layout_height="@dimen/a4y"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/jp" android:layout_width="@dimen/lq" android:layout_height="@dimen/lq" android:layout_marginRight="@dimen/gc" />
-    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingRight="@dimen/g2" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/m2" android:textColor="@color/a6q" android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <TextView android:id="@id/bj9" android:visibility="gone" android:layout_marginLeft="@dimen/n_" style="@style/q2" />
-            <ImageView android:id="@id/cns" android:visibility="gone" android:layout_marginLeft="@dimen/n_" style="@style/v9" />
-            <TextView android:id="@id/dfy" android:visibility="gone" android:layout_marginLeft="@dimen/n_" style="@style/v8" />
-        </LinearLayout>
-        <ImageView android:id="@id/dfz" android:background="@color/ld" android:layout_width="fill_parent" android:layout_height="@dimen/fq" />
+    <ImageView android:layout_gravity="end|bottom|center" android:id="@id/u8" android:layout_width="@dimen/a4z" android:layout_height="@dimen/a4z" android:src="@drawable/e2" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@null" android:paddingLeft="@dimen/a4x" android:paddingTop="@dimen/a4x" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/cqi" android:layout_width="@dimen/a4w" android:layout_height="@dimen/a4w" android:src="@raw/float_indicator_icon" />
+        <TextView android:textSize="@dimen/jv" android:textColor="@color/p2" android:layout_gravity="center_horizontal" android:id="@id/cqj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/bp9" />
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>

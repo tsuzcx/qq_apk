@@ -1,85 +1,104 @@
 package com.tencent.mm.plugin.qqmail.b;
 
+import android.content.Context;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.ArrayList;
+import com.tencent.mm.model.bi;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.bl;
+import java.io.IOException;
 import java.util.LinkedList;
 
 public final class z
 {
-  ArrayList<aa> pJW;
-  ab pJX;
-  y pJY;
-  boolean pJZ;
-  ab.f pKa;
-  ab.e pKb;
+  public y uMo;
   
   public z()
   {
-    AppMethodBeat.i(68033);
-    this.pJW = new ArrayList();
-    this.pJX = ac.cdR();
-    this.pJY = null;
-    this.pJZ = false;
-    this.pKa = new z.1(this);
-    this.pKb = new z.2(this);
-    AppMethodBeat.o(68033);
-  }
-  
-  public final void a(aa paramaa)
-  {
-    AppMethodBeat.i(68034);
-    if (!g.RJ().QU())
+    AppMethodBeat.i(122760);
+    String str = (String)g.afB().afk().get(282625, "");
+    try
     {
-      AppMethodBeat.o(68034);
+      this.uMo = new y();
+      this.uMo.parseFrom(Base64.decode(str, 0));
+      AppMethodBeat.o(122760);
       return;
     }
-    if (this.pJY == null) {
-      this.pJY = new y();
+    catch (Exception localException)
+    {
+      ad.printErrStackTrace("MicroMsg.ShareMailInfoMgr", localException, "", new Object[0]);
+      ad.w("MicroMsg.ShareMailInfoMgr", "parse from config fail");
+      this.uMo = new y();
+      AppMethodBeat.o(122760);
     }
-    y localy = this.pJY;
-    String str = paramaa.pIO;
-    if (bo.isNullOrNil(str)) {
-      com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.ShareMailInfoMgr", "add info fail, info is null");
+  }
+  
+  public static void akZ(String paramString)
+  {
+    AppMethodBeat.i(122762);
+    bl localbl = new bl();
+    localbl.nY("qqmail");
+    localbl.kY(bi.uj("qqmail"));
+    localbl.jV(0);
+    localbl.setContent(String.format(aj.getContext().getString(2131763061), new Object[] { paramString }));
+    localbl.setType(1);
+    localbl.setStatus(3);
+    ad.d("MicroMsg.ShareMailInfoMgr", "send mail fail, publish fail message, id: %d", new Object[] { Long.valueOf(((k)g.ab(k.class)).cOI().an(localbl)) });
+    AppMethodBeat.o(122762);
+  }
+  
+  public final void akY(String paramString)
+  {
+    AppMethodBeat.i(122761);
+    if (bt.isNullOrNil(paramString))
+    {
+      ad.w("MicroMsg.ShareMailInfoMgr", "remove info fail, info is null");
+      AppMethodBeat.o(122761);
+      return;
     }
+    int i = 0;
     for (;;)
     {
-      this.pJW.add(paramaa);
-      com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.ShareMailQueue", "add a new job, queue.size: %d", new Object[] { Integer.valueOf(this.pJW.size()) });
-      if (!this.pJZ)
+      if (i < this.uMo.tvP.size())
       {
-        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.ShareMailQueue", "start execute");
-        if (this.pJW.size() > 0)
-        {
-          this.pJZ = true;
-          b((aa)this.pJW.remove(0));
-          this.pJX.a(this.pKa, this.pKb);
+        if (((x)this.uMo.tvP.get(i)).uLh.equals(paramString)) {
+          this.uMo.tvP.remove(i);
         }
       }
-      AppMethodBeat.o(68034);
-      return;
-      w localw = new w();
-      localw.pIO = str;
-      localy.pJV.oBk.add(localw);
-      localy.save();
+      else
+      {
+        save();
+        AppMethodBeat.o(122761);
+        return;
+      }
+      i += 1;
     }
   }
   
-  final void b(aa paramaa)
+  public final void save()
   {
-    AppMethodBeat.i(68035);
-    this.pJX.clearData();
-    this.pJX.czp = paramaa.czp;
-    this.pJX.pIO = paramaa.pIO;
-    this.pJX.pJq = paramaa.pJq;
-    this.pJX.pJr = paramaa.pJr;
-    this.pJX.pKd = paramaa.pKd;
-    this.pJX.X(paramaa.pKe);
-    this.pJX.Y(paramaa.pKf);
-    this.pJX.Z(paramaa.pKg);
-    AppMethodBeat.o(68035);
+    AppMethodBeat.i(122763);
+    try
+    {
+      String str = Base64.encodeToString(this.uMo.toByteArray(), 0);
+      ad.d("MicroMsg.ShareMailInfoMgr", "save %s", new Object[] { str });
+      g.afB().afk().set(282625, str);
+      AppMethodBeat.o(122763);
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      ad.printErrStackTrace("MicroMsg.ShareMailInfoMgr", localIOException, "", new Object[0]);
+      ad.w("MicroMsg.ShareMailInfoMgr", "save to config fail");
+      AppMethodBeat.o(122763);
+    }
   }
 }
 

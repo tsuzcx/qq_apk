@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.story.ui.album;
 
-import a.l;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
 final class StoryFavSelectUI$b
   implements MenuItem.OnMenuItemClickListener
 {
@@ -13,10 +13,10 @@ final class StoryFavSelectUI$b
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(110187);
-    StoryFavSelectUI.a(this.sJA);
-    this.sJA.finish();
-    AppMethodBeat.o(110187);
+    AppMethodBeat.i(119863);
+    StoryFavSelectUI.a(this.ysc);
+    this.ysc.finish();
+    AppMethodBeat.o(119863);
     return true;
   }
 }

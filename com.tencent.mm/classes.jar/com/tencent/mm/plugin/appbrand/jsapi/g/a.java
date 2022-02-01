@@ -1,47 +1,81 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g;
 
-import com.tencent.luggage.g.d;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.g.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.g;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.aa;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.h;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.i;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public abstract class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.a
+public final class a
 {
-  protected final void a(c paramc, int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public static void a(b paramb, JSONObject paramJSONObject)
   {
-    paramc.h(paramInt, paramString);
-    com.tencent.mm.plugin.appbrand.jsapi.g.a.e.d(getName(), paramBoolean1, paramBoolean2);
+    AppMethodBeat.i(195146);
+    paramb = paramb.baq().jVu;
+    if (paramb == null) {
+      ad.e("MicroMsg.AppBrandMapUtils", "visibleRegion is  null");
+    }
+    Object localObject = paramb.jVv;
+    if (localObject == null) {
+      ad.e("MicroMsg.AppBrandMapUtils", "latLngBounds is  null");
+    }
+    paramb = ((b.i)localObject).jUX;
+    localObject = ((b.i)localObject).jUY;
+    JSONObject localJSONObject1 = new JSONObject();
+    if (paramb != null) {}
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("latitude", paramb.latitude);
+      localJSONObject2.put("longitude", paramb.longitude);
+      localJSONObject1.put("southwest", localJSONObject2);
+      if (localObject != null)
+      {
+        paramb = new JSONObject();
+        paramb.put("latitude", ((b.h)localObject).latitude);
+        paramb.put("longitude", ((b.h)localObject).longitude);
+        localJSONObject1.put("northeast", paramb);
+      }
+      paramJSONObject.remove("region");
+      paramJSONObject.put("region", localJSONObject1);
+      AppMethodBeat.o(195146);
+      return;
+    }
+    catch (JSONException paramb)
+    {
+      ad.printErrStackTrace("MicroMsg.AppBrandMapUtils", paramb, "", new Object[0]);
+      AppMethodBeat.o(195146);
+    }
   }
   
-  public void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public static void b(b paramb, JSONObject paramJSONObject)
   {
-    com.tencent.mm.plugin.appbrand.jsapi.g.a.e.Cj(getName());
-  }
-  
-  protected final b f(c paramc, JSONObject paramJSONObject)
-  {
-    if ((paramc instanceof com.tencent.mm.plugin.appbrand.jsapi.e)) {
-      return g.cl(paramc.getAppId(), com.tencent.mm.plugin.appbrand.jsapi.g.a.f.g(paramc, paramJSONObject));
-    }
-    if (paramc.q(com.tencent.mm.plugin.appbrand.jsapi.base.f.class) == null)
+    AppMethodBeat.i(195147);
+    paramb = paramb.bau();
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      d.e("MicroMsg.BaseMapJsApi", "name:%s IComponentConverter is null, return", new Object[] { getName() });
-      return null;
+      localJSONObject.put("latitude", paramb.latitude);
+      localJSONObject.put("longitude", paramb.longitude);
+      paramJSONObject.remove("centerLocation");
+      paramJSONObject.put("centerLocation", localJSONObject);
+      AppMethodBeat.o(195147);
+      return;
     }
-    paramc = ((com.tencent.mm.plugin.appbrand.jsapi.base.f)paramc.q(com.tencent.mm.plugin.appbrand.jsapi.base.f.class)).d(paramc);
-    if (paramc == null)
+    catch (JSONException paramb)
     {
-      d.e("MicroMsg.BaseMapJsApi", "name:%s is not componentView", new Object[] { getName() });
-      return null;
+      ad.printErrStackTrace("MicroMsg.AppBrandMapUtils", paramb, "", new Object[0]);
+      AppMethodBeat.o(195147);
     }
-    return g.cl(paramc.getAppId(), com.tencent.mm.plugin.appbrand.jsapi.g.a.f.g(paramc, paramJSONObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.a
  * JD-Core Version:    0.7.0.1
  */

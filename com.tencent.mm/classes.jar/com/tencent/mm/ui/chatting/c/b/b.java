@@ -1,23 +1,23 @@
 package com.tencent.mm.ui.chatting.c.b;
 
-import com.tencent.mm.pluginsdk.model.app.ai;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.pluginsdk.ui.tools.o;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.c.v;
+import com.tencent.mm.pluginsdk.model.app.am;
+import com.tencent.mm.pluginsdk.model.app.g;
+import com.tencent.mm.pluginsdk.ui.tools.r;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.ui.chatting.c.ab;
 
 public abstract interface b
-  extends v
+  extends ab
 {
-  public abstract void a(o paramo);
+  public abstract void a(r paramr);
   
-  public abstract void a(bi parambi, ai paramai);
+  public abstract void a(bl parambl, am paramam);
   
-  public abstract void s(f paramf);
+  public abstract void t(g paramg);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,10 @@ import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.DexLoader;
 import com.tencent.smtt.utils.TbsLog;
-import com.tencent.smtt.utils.r;
+import com.tencent.smtt.utils.k;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 public class TbsExtensionFunctionManager
 {
@@ -29,7 +30,7 @@ public class TbsExtensionFunctionManager
   
   public static TbsExtensionFunctionManager getInstance()
   {
-    AppMethodBeat.i(64385);
+    AppMethodBeat.i(54674);
     if (b == null) {}
     try
     {
@@ -37,12 +38,12 @@ public class TbsExtensionFunctionManager
         b = new TbsExtensionFunctionManager();
       }
       TbsExtensionFunctionManager localTbsExtensionFunctionManager = b;
-      AppMethodBeat.o(64385);
+      AppMethodBeat.o(54674);
       return localTbsExtensionFunctionManager;
     }
     finally
     {
-      AppMethodBeat.o(64385);
+      AppMethodBeat.o(54674);
     }
   }
   
@@ -162,16 +163,16 @@ public class TbsExtensionFunctionManager
     {
       try
       {
-        AppMethodBeat.i(64386);
+        AppMethodBeat.i(54675);
         if (this.a)
         {
-          AppMethodBeat.o(64386);
+          AppMethodBeat.o(54675);
           return;
         }
         if (!canUseFunction(paramContext, "bugly_switch.txt"))
         {
           TbsLog.i("TbsExtensionFunMana", "bugly is forbiden!!");
-          AppMethodBeat.o(64386);
+          AppMethodBeat.o(54675);
           continue;
         }
         if (!TbsShareManager.isThirdPartyApp(paramContext)) {}
@@ -183,46 +184,48 @@ public class TbsExtensionFunctionManager
           break label151;
         }
         TbsLog.i("TbsExtensionFunMana", "bugly init ,corePath is null");
-        AppMethodBeat.o(64386);
+        AppMethodBeat.o(54675);
         break;
-        localObject1 = ao.a().q(paramContext);
+        localObject1 = o.a().q(paramContext);
         if (localObject1 == null) {
           TbsLog.i("TbsExtensionFunMana", "getTbsCoreShareDir is null");
         }
         if ((((File)localObject1).listFiles() == null) || (((File)localObject1).listFiles().length <= 0))
         {
           TbsLog.i("TbsExtensionFunMana", "getTbsCoreShareDir is empty!");
-          AppMethodBeat.o(64386);
+          AppMethodBeat.o(54675);
           break;
         }
       }
       label151:
-      Object localObject3 = ao.a().q(paramContext);
-      if (localObject3 == null)
+      Object localObject4 = o.a().q(paramContext);
+      if (localObject4 == null)
       {
         TbsLog.i("TbsExtensionFunMana", "bugly init ,optDir is null");
-        AppMethodBeat.o(64386);
+        AppMethodBeat.o(54675);
       }
       else
       {
-        Object localObject4 = new File((String)localObject1, "tbs_bugly_dex.jar");
+        Object localObject3 = new File((String)localObject1, "tbs_bugly_dex.jar");
+        TbsLog.d("TbsExtensionFunMana", "optDir:" + localObject4 + ",tbsCorePath:" + (String)localObject1 + ",dexFile:" + ((File)localObject3).getAbsolutePath());
         try
         {
-          Object localObject2 = ((File)localObject4).getParent();
-          localObject4 = ((File)localObject4).getAbsolutePath();
+          Object localObject2 = ((File)localObject3).getParent();
           localObject3 = ((File)localObject3).getAbsolutePath();
-          localObject2 = new DexLoader((String)localObject2, paramContext, new String[] { localObject4 }, (String)localObject3, null).loadClass("com.tencent.smtt.tbs.bugly.TBSBuglyManager");
+          localObject4 = ((File)localObject4).getAbsolutePath();
+          Map localMap = QbSdk.getSettings();
+          localObject2 = new DexLoader((String)localObject2, paramContext, new String[] { localObject3 }, (String)localObject4, localMap).loadClass("com.tencent.smtt.tbs.bugly.TBSBuglyManager");
           int i = WebView.getTbsSDKVersion(paramContext);
           int j = WebView.getTbsCoreVersion(paramContext);
-          r.a((Class)localObject2, "initBugly", new Class[] { Context.class, String.class, String.class, String.class }, new Object[] { paramContext, localObject1, String.valueOf(i), String.valueOf(j) });
+          k.a((Class)localObject2, "initBugly", new Class[] { Context.class, String.class, String.class, String.class }, new Object[] { paramContext, localObject1, String.valueOf(i), String.valueOf(j) });
           this.a = true;
           TbsLog.i("TbsExtensionFunMana", "initTbsBuglyIfNeed success!");
-          AppMethodBeat.o(64386);
+          AppMethodBeat.o(54675);
         }
         catch (Throwable paramContext)
         {
           TbsLog.i("TbsExtensionFunMana", "bugly init ,try init bugly failed(need new core):" + Log.getStackTraceString(paramContext));
-          AppMethodBeat.o(64386);
+          AppMethodBeat.o(54675);
         }
       }
     }
@@ -235,55 +238,56 @@ public class TbsExtensionFunctionManager
     {
       try
       {
-        AppMethodBeat.i(64387);
+        AppMethodBeat.i(54676);
         if (paramContext == null)
         {
-          AppMethodBeat.o(64387);
+          AppMethodBeat.o(54676);
           paramBoolean = bool;
           return paramBoolean;
         }
         paramContext = new File(paramContext.getFilesDir(), paramString);
+        TbsLog.d("TbsExtensionFunMana", paramContext.getAbsolutePath());
         if (paramBoolean)
         {
           paramBoolean = paramContext.exists();
           if (paramBoolean) {
-            break label151;
+            break label161;
           }
           try
           {
             paramBoolean = paramContext.createNewFile();
             if (!paramBoolean) {
-              break label151;
+              break label161;
             }
-            AppMethodBeat.o(64387);
+            AppMethodBeat.o(54676);
             paramBoolean = true;
           }
           catch (IOException paramContext)
           {
             TbsLog.e("TbsExtensionFunMana", "setFunctionEnable,createNewFile fail:".concat(String.valueOf(paramString)));
-            AppMethodBeat.o(64387);
+            AppMethodBeat.o(54676);
             paramBoolean = bool;
           }
           continue;
         }
         if (!paramContext.exists()) {
-          break label151;
+          break label161;
         }
       }
       finally {}
       if (paramContext.delete())
       {
-        AppMethodBeat.o(64387);
+        AppMethodBeat.o(54676);
         paramBoolean = true;
       }
       else
       {
         TbsLog.e("TbsExtensionFunMana", "setFunctionEnable,file.delete fail:".concat(String.valueOf(paramString)));
-        AppMethodBeat.o(64387);
+        AppMethodBeat.o(54676);
         paramBoolean = bool;
         continue;
-        label151:
-        AppMethodBeat.o(64387);
+        label161:
+        AppMethodBeat.o(54676);
         paramBoolean = true;
       }
     }
@@ -291,7 +295,7 @@ public class TbsExtensionFunctionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsExtensionFunctionManager
  * JD-Core Version:    0.7.0.1
  */

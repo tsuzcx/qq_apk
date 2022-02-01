@@ -10,35 +10,35 @@ public class VorbisRecognition
 {
   public AudioFormat.AudioType getAudioType(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(128587);
+    AppMethodBeat.i(114313);
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0) && (new String(paramArrayOfByte).startsWith("OggS")))
     {
       paramString = AudioFormat.AudioType.OGG;
-      AppMethodBeat.o(128587);
+      AppMethodBeat.o(114313);
       return paramString;
     }
     paramString = AudioFormat.AudioType.UNSUPPORT;
-    AppMethodBeat.o(128587);
+    AppMethodBeat.o(114313);
     return paramString;
   }
   
   public AudioFormat.AudioType guessAudioType(String paramString)
   {
-    AppMethodBeat.i(128588);
+    AppMethodBeat.i(114314);
     if ((!TextUtils.isEmpty(paramString)) && (paramString.toLowerCase().contains(".ogg")))
     {
       paramString = AudioFormat.AudioType.OGG;
-      AppMethodBeat.o(128588);
+      AppMethodBeat.o(114314);
       return paramString;
     }
     paramString = AudioFormat.AudioType.UNSUPPORT;
-    AppMethodBeat.o(128588);
+    AppMethodBeat.o(114314);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.codec.ogg.VorbisRecognition
  * JD-Core Version:    0.7.0.1
  */

@@ -1,132 +1,74 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.wallet_core.b.a.a;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.sx;
+import com.tencent.mm.protocal.protobuf.sy;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class m
-  extends a
+  extends n
+  implements k
 {
-  public long cNd;
-  public int cnK;
-  public String desc;
-  public String kNA;
-  public String kNB;
-  public String kNC;
-  public String kND;
-  public int kNE;
-  public String kNF;
-  public String kNG;
-  public String kNH;
-  public String kNI;
-  public int kNJ;
-  public String kNv;
-  public String kNw;
-  public int kNx;
-  public String kNy;
-  public String kNz;
+  private g callback;
+  private sy nTI;
+  private sx nTJ;
+  private final com.tencent.mm.al.b rr;
   
-  public m(int paramInt)
+  public m(int paramInt1, int paramInt2, String paramString1, String paramString2, com.tencent.mm.bx.b paramb)
   {
-    AppMethodBeat.i(40980);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("set_amount", "0");
-    localHashMap.put("wallet_type", String.valueOf(paramInt));
-    setRequestData(localHashMap);
-    ab.i("MicroMsg.NetSceneH5F2fTransferGetQrCode", "setAmount: %s, walletType: %s", new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt) });
-    AppMethodBeat.o(40980);
+    AppMethodBeat.i(186987);
+    b.a locala = new b.a();
+    locala.gUU = new sx();
+    locala.gUV = new sy();
+    locala.funcId = 3781;
+    locala.uri = "/cgi-bin/mmpay-bin/qrcodesavenotify";
+    this.rr = locala.atI();
+    this.nTJ = ((sx)this.rr.gUS.gUX);
+    this.nTJ.CUG = paramInt1;
+    this.nTJ.tav = paramInt2;
+    this.nTJ.CUH = paramString1;
+    this.nTJ.url = paramString2;
+    this.nTJ.CUI = ((int)(System.currentTimeMillis() / 1000L));
+    this.nTJ.CUd = paramb;
+    AppMethodBeat.o(186987);
   }
   
-  public m(long paramLong, String paramString, int paramInt)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(40981);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("amount", String.valueOf(paramLong));
-    localHashMap.put("set_amount", "1");
-    try
-    {
-      if (!bo.isNullOrNil(paramString)) {
-        localHashMap.put("desc", URLEncoder.encode(paramString, "UTF-8"));
-      }
-      localHashMap.put("wallet_type", String.valueOf(paramInt));
-      setRequestData(localHashMap);
-      this.cNd = paramLong;
-      this.desc = paramString;
-      ab.i("MicroMsg.NetSceneH5F2fTransferGetQrCode", "amount: %d, setAmount: %s, desc: %s, walletType: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(1), paramString, Integer.valueOf(paramInt) });
-      AppMethodBeat.o(40981);
-      return;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.NetSceneH5F2fTransferGetQrCode", localUnsupportedEncodingException, "", new Object[0]);
-      }
-    }
-  }
-  
-  public final String bhG()
-  {
-    return "/cgi-bin/mmpay-bin/h5f2ftransfergetqrcode";
-  }
-  
-  public final int bhH()
-  {
-    return 1335;
-  }
-  
-  public final boolean bhI()
-  {
-    return true;
+    AppMethodBeat.i(186988);
+    this.callback = paramg;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(186988);
+    return i;
   }
   
   public final int getType()
   {
-    return 1335;
+    return 3781;
   }
   
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(40982);
-    this.cnK = paramJSONObject.optInt("retcode", 0);
-    this.kNv = paramJSONObject.optString("retmsg", "");
-    this.kNw = paramJSONObject.optString("qrcode_url", "");
-    this.kNx = paramJSONObject.optInt("alert_type", 0);
-    this.kNy = paramJSONObject.optString("alert_title", "");
-    this.kNz = paramJSONObject.optString("left_button_text", "");
-    this.kNA = paramJSONObject.optString("right_button_text", "");
-    this.kNB = paramJSONObject.optString("right_button_url", "");
-    this.kNC = paramJSONObject.optString("bottom_text", "");
-    this.kND = paramJSONObject.optString("bottom_url", "");
-    this.kNE = paramJSONObject.optInt("currency", 0);
-    this.kNF = paramJSONObject.optString("currencyunit", "");
-    this.kNG = paramJSONObject.optString("notice", "");
-    this.kNH = paramJSONObject.optString("notice_url", "");
-    this.kNI = paramJSONObject.optString("recv_realname", "");
-    this.kNJ = paramJSONObject.optInt("set_amount", 0);
-    if (this.kNJ == 0)
-    {
-      g.RM();
-      g.RL().Ru().set(ac.a.yGJ, this.kNw);
-      ab.i("MicroMsg.NetSceneH5F2fTransferGetQrCode", "set payurl: %s", new Object[] { this.kNw });
+    AppMethodBeat.i(186989);
+    ad.i("MicroMsg.NetSceneF2fQrcodeSaveNotify", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      this.nTI = ((sy)((com.tencent.mm.al.b)paramq).gUT.gUX);
     }
-    ab.d("MicroMsg.NetSceneH5F2fTransferGetQrCode", "url: %s, currency: %s", new Object[] { this.kNw, Integer.valueOf(this.kNE) });
-    AppMethodBeat.o(40982);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(186989);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,127 +1,114 @@
 package com.tencent.mm.ai;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.bi;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.i.d;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Map;
 
-public abstract interface e
+public class e
+  extends f
 {
-  public abstract void a(c paramc);
+  public int duration = -1;
+  public int gGA = 0;
+  public int gGB = 0;
+  public String gGC = "";
+  public boolean gGD = false;
+  public y gGE;
+  public int gGF = 0;
+  public int gGx = -1;
+  public int gGy = -1;
+  public int gGz = 0;
+  public int videoHeight = -1;
+  public int videoWidth = -1;
   
-  public abstract b b(a parama);
-  
-  public static final class a
+  public final void a(Map<String, String> paramMap, k.b paramb)
   {
-    public cm eyJ;
-    public boolean fte = false;
-    public boolean ftf = false;
-    public boolean ftg = false;
-    public long fth = 0L;
-    public Object fti;
-    
-    public a(cm paramcm, Object paramObject)
+    AppMethodBeat.i(123936);
+    this.gGA = bt.getInt((String)paramMap.get(".msg.appmsg.mmreadershare.ispaysubscribe"), 0);
+    this.gGx = bt.getInt((String)paramMap.get(".msg.appmsg.mmreadershare.itemshowtype"), -1);
+    this.gGF = bt.getInt((String)paramMap.get(".msg.appmsg.mmreadershare.showsourceinfo"), 0);
+    if (this.gGx == 5)
     {
-      this.eyJ = paramcm;
-      this.fti = paramObject;
+      this.gGy = bt.getInt((String)paramMap.get(".msg.appmsg.mmreadershare.pubtime"), 0);
+      this.duration = bt.getInt((String)paramMap.get(".msg.appmsg.mmreadershare.duration"), 0);
+      this.videoWidth = bt.getInt((String)paramMap.get(".msg.appmsg.mmreadershare.width"), 0);
+      this.videoHeight = bt.getInt((String)paramMap.get(".msg.appmsg.mmreadershare.height"), 0);
+      this.gGz = bt.getInt((String)paramMap.get(".msg.appmsg.mmreadershare.nativepage"), 0);
+      this.gGB = bt.getInt((String)paramMap.get(".msg.appmsg.mmreadershare.funcflag"), 0);
+      this.gGC = ((String)paramMap.get(".msg.appmsg.mmreadershare.vid"));
     }
-    
-    public a(cm paramcm, boolean paramBoolean, long paramLong)
+    if ((!bt.isNullOrNil((String)paramMap.get(".msg.appmsg.mmbrandmpvideo.mpurl"))) && (!bt.isNullOrNil((String)paramMap.get(".msg.appmsg.mmbrandmpvideo.videourl"))))
     {
-      this.eyJ = paramcm;
-      this.fte = true;
-      this.ftf = false;
-      this.ftg = paramBoolean;
-      this.fth = paramLong;
+      this.gGD = true;
+      this.gGE = new y();
+      this.gGE.CEg = ((String)paramMap.get(".msg.appmsg.mmbrandmpvideo.vid"));
+      this.gGE.videoUrl = ((String)paramMap.get(".msg.appmsg.mmbrandmpvideo.videourl"));
+      this.gGE.CEf = ((String)paramMap.get(".msg.appmsg.mmbrandmpvideo.mpurl"));
+      this.gGE.gKD = ((String)paramMap.get(".msg.appmsg.thumburl"));
+      this.gGE.title = ((String)paramMap.get(".msg.appmsg.title"));
+      this.gGE.url = ((String)paramMap.get(".msg.appmsg.url"));
+      this.gGE.dfT = ((String)paramMap.get(".msg.appmsg.sourceusername"));
+      this.gGE.gKv = ((String)paramMap.get(".msg.appmsg.sourcedisplayname"));
+      this.gGE.videoDuration = ((int)bt.getFloat((String)paramMap.get(".msg.appmsg.mmbrandmpvideo.duration"), 0.0F));
+      this.gGE.width = ((int)bt.getFloat((String)paramMap.get(".msg.appmsg.mmbrandmpvideo.thumbwidth"), 0.0F));
+      this.gGE.height = ((int)bt.getFloat((String)paramMap.get(".msg.appmsg.mmbrandmpvideo.thumbheight"), 0.0F));
     }
-    
-    public a(cm paramcm, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-    {
-      this.eyJ = paramcm;
-      this.fte = paramBoolean1;
-      this.ftf = paramBoolean2;
-      this.ftg = paramBoolean3;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(59945);
-      String str = String.format("AddMsgInfo(%d), get[%b], fault[%b], up[%b] fixTime[%s]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.fte), Boolean.valueOf(this.ftf), Boolean.valueOf(this.ftg), Long.valueOf(this.fth) });
-      AppMethodBeat.o(59945);
-      return str;
-    }
+    AppMethodBeat.o(123936);
   }
   
-  public static final class b
+  public final f apu()
   {
-    public bi cmQ;
-    public boolean ftj;
-    
-    public b(bi parambi, boolean paramBoolean)
+    AppMethodBeat.i(123934);
+    if ((this.gGx == -1) && (!this.gGD) && (this.gGF != 1))
     {
-      this.cmQ = parambi;
-      this.ftj = paramBoolean;
+      AppMethodBeat.o(123934);
+      return null;
     }
+    e locale = new e();
+    locale.gGx = this.gGx;
+    locale.gGy = this.gGy;
+    locale.duration = this.duration;
+    locale.videoWidth = this.videoWidth;
+    locale.videoHeight = this.videoHeight;
+    locale.gGz = this.gGz;
+    locale.gGC = this.gGC;
+    locale.gGB = this.gGB;
+    locale.gGD = this.gGD;
+    locale.gGE = this.gGE;
+    locale.gGA = this.gGA;
+    locale.gGF = this.gGF;
+    AppMethodBeat.o(123934);
+    return locale;
   }
   
-  public static final class c
+  public final void b(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2)
   {
-    public bi cEE;
-    public cm eyJ;
-    public Object fti;
-    
-    public c(cm paramcm, Object paramObject)
+    AppMethodBeat.i(123935);
+    if ((this.gGx != -1) || (this.gGF == 1))
     {
-      this.eyJ = paramcm;
-      this.fti = paramObject;
+      if (!bt.isNullOrNil(this.gGC)) {
+        this.gGz = 1;
+      }
+      paramStringBuilder.append("<mmreadershare><itemshowtype>").append(this.gGx).append("</itemshowtype><ispaysubscribe>").append(this.gGA).append("</ispaysubscribe>");
+      if (this.gGF == 1) {
+        paramStringBuilder.append("<showsourceinfo>").append(this.gGF).append("</showsourceinfo>");
+      }
+      if (this.gGx == 5) {
+        paramStringBuilder.append("<pubtime>").append(this.gGy).append("</pubtime><duration>").append(this.duration).append("</duration><width>").append(this.videoWidth).append("</width><height>").append(this.videoHeight).append("</height><nativepage>").append(this.gGz).append("</nativepage><funcflag>").append(this.gGB).append("</funcflag><vid>").append(bt.aGf(this.gGC)).append("</vid>");
+      }
+      paramStringBuilder.append("</mmreadershare>");
     }
-    
-    public c(bi parambi)
+    if ((this.gGD) && (this.gGE != null))
     {
-      this.cEE = parambi;
+      paramStringBuilder.append("<mmbrandmpvideo><vid>").append(bt.aGf(this.gGE.CEg)).append("</vid><videourl>").append(bt.aGf(this.gGE.videoUrl)).append("</videourl><mpurl>").append(bt.aGf(this.gGE.CEf)).append("</mpurl><thumbwidth>").append(this.gGE.width).append("</thumbwidth><thumbheight>").append(this.gGE.height).append("</thumbheight><duration>").append(this.gGE.videoDuration).append("</duration>");
+      paramStringBuilder.append("</mmbrandmpvideo>");
     }
-  }
-  
-  public static final class d
-  {
-    private static ConcurrentHashMap<Object, e> ftb;
-    
-    static
-    {
-      AppMethodBeat.i(59949);
-      ftb = new ConcurrentHashMap();
-      AppMethodBeat.o(59949);
-    }
-    
-    public static void a(Object paramObject, e parame)
-    {
-      AppMethodBeat.i(59946);
-      ab.i("MicroMsg.IMessageExtension.Factory", "registerExtensionFor %s, %s", new Object[] { paramObject, parame });
-      ftb.put(paramObject, parame);
-      AppMethodBeat.o(59946);
-    }
-    
-    public static e aV(Object paramObject)
-    {
-      AppMethodBeat.i(59948);
-      paramObject = (e)ftb.get(paramObject);
-      AppMethodBeat.o(59948);
-      return paramObject;
-    }
-    
-    public static void b(Object paramObject, e parame)
-    {
-      AppMethodBeat.i(59947);
-      ab.i("MicroMsg.IMessageExtension.Factory", "unregisterExtensionFor %s, %s", new Object[] { paramObject, parame });
-      ftb.remove(paramObject);
-      AppMethodBeat.o(59947);
-    }
+    AppMethodBeat.o(123935);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ai.e
  * JD-Core Version:    0.7.0.1
  */

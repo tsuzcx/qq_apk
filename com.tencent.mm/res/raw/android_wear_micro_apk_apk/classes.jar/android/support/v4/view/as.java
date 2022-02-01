@@ -9,14 +9,14 @@ import java.lang.ref.WeakReference;
 
 public final class as
 {
-  private WeakReference<View> mg;
-  Runnable mh = null;
-  Runnable mi = null;
-  int mj = -1;
+  private WeakReference<View> oc;
+  Runnable od = null;
+  Runnable oe = null;
+  int of = -1;
   
   as(View paramView)
   {
-    this.mg = new WeakReference(paramView);
+    this.oc = new WeakReference(paramView);
   }
   
   private void a(final View paramView, final au paramau)
@@ -27,17 +27,17 @@ public final class as
       {
         public final void onAnimationCancel(Animator paramAnonymousAnimator)
         {
-          paramau.A(paramView);
+          paramau.F(paramView);
         }
         
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          paramau.z(paramView);
+          paramau.E(paramView);
         }
         
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
-          paramau.y(paramView);
+          paramau.D(paramView);
         }
       });
       return;
@@ -45,18 +45,9 @@ public final class as
     paramView.animate().setListener(null);
   }
   
-  public final as a(long paramLong)
-  {
-    View localView = (View)this.mg.get();
-    if (localView != null) {
-      localView.animate().setDuration(paramLong);
-    }
-    return this;
-  }
-  
   public final as a(au paramau)
   {
-    View localView = (View)this.mg.get();
+    View localView = (View)this.oc.get();
     if (localView != null)
     {
       if (Build.VERSION.SDK_INT >= 16) {
@@ -71,27 +62,27 @@ public final class as
     return this;
   }
   
-  public final as b(float paramFloat)
+  public final as b(long paramLong)
   {
-    View localView = (View)this.mg.get();
+    View localView = (View)this.oc.get();
     if (localView != null) {
-      localView.animate().alpha(paramFloat);
+      localView.animate().setDuration(paramLong);
     }
     return this;
   }
   
   public final as c(float paramFloat)
   {
-    View localView = (View)this.mg.get();
+    View localView = (View)this.oc.get();
     if (localView != null) {
-      localView.animate().translationX(paramFloat);
+      localView.animate().alpha(paramFloat);
     }
     return this;
   }
   
   public final void cancel()
   {
-    View localView = (View)this.mg.get();
+    View localView = (View)this.oc.get();
     if (localView != null) {
       localView.animate().cancel();
     }
@@ -99,7 +90,16 @@ public final class as
   
   public final as d(float paramFloat)
   {
-    View localView = (View)this.mg.get();
+    View localView = (View)this.oc.get();
+    if (localView != null) {
+      localView.animate().translationX(paramFloat);
+    }
+    return this;
+  }
+  
+  public final as e(float paramFloat)
+  {
+    View localView = (View)this.oc.get();
     if (localView != null) {
       localView.animate().translationY(paramFloat);
     }
@@ -108,7 +108,7 @@ public final class as
   
   public final void start()
   {
-    View localView = (View)this.mg.get();
+    View localView = (View)this.oc.get();
     if (localView != null) {
       localView.animate().start();
     }

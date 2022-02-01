@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class kg
   extends b
 {
-  public kg.a czS;
+  public a doD;
   
   public kg()
   {
@@ -15,11 +15,16 @@ public final class kg
   
   private kg(byte paramByte)
   {
-    AppMethodBeat.i(146020);
-    this.czS = new kg.a();
-    this.ymq = false;
+    AppMethodBeat.i(89746);
+    this.doD = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(146020);
+    AppMethodBeat.o(89746);
+  }
+  
+  public static final class a
+  {
+    public String dcx;
   }
 }
 

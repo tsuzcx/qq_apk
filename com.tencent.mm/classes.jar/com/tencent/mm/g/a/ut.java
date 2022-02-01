@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ut
   extends b
 {
-  public ut.a cLj;
+  public a dAq;
   
   public ut()
   {
@@ -15,16 +15,21 @@ public final class ut
   
   private ut(byte paramByte)
   {
-    AppMethodBeat.i(15813);
-    this.cLj = new ut.a();
-    this.ymq = false;
+    AppMethodBeat.i(19839);
+    this.dAq = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15813);
+    AppMethodBeat.o(19839);
+  }
+  
+  public static final class a
+  {
+    public boolean dAr = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.ut
  * JD-Core Version:    0.7.0.1
  */

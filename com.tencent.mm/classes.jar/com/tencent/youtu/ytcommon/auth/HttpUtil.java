@@ -16,17 +16,17 @@ public class HttpUtil
   
   private static HttpURLConnection buildConnection(String paramString, int paramInt)
   {
-    AppMethodBeat.i(118055);
+    AppMethodBeat.i(73342);
     paramString = (HttpURLConnection)new URL(paramString).openConnection();
     paramString.setConnectTimeout(paramInt);
     paramString.setReadTimeout(paramInt);
-    AppMethodBeat.o(118055);
+    AppMethodBeat.o(73342);
     return paramString;
   }
   
-  private static String getResponse(HttpURLConnection paramHttpURLConnection, HttpUtil.HttpResponseListener paramHttpResponseListener)
+  private static String getResponse(HttpURLConnection paramHttpURLConnection, HttpResponseListener paramHttpResponseListener)
   {
-    AppMethodBeat.i(118056);
+    AppMethodBeat.i(73343);
     int i;
     StringBuilder localStringBuilder;
     try
@@ -50,26 +50,26 @@ public class HttpUtil
     }
     catch (Exception paramHttpURLConnection)
     {
-      AppMethodBeat.o(118056);
+      AppMethodBeat.o(73343);
       return null;
     }
     paramHttpURLConnection = localStringBuilder.toString();
     if (paramHttpResponseListener != null) {
       paramHttpResponseListener.onSuccess(paramHttpURLConnection);
     }
-    AppMethodBeat.o(118056);
+    AppMethodBeat.o(73343);
     return paramHttpURLConnection;
     label103:
     if (paramHttpResponseListener != null) {
       paramHttpResponseListener.onFail(i);
     }
-    AppMethodBeat.o(118056);
+    AppMethodBeat.o(73343);
     return null;
   }
   
-  public static String post(String paramString1, String paramString2, HttpUtil.HttpResponseListener paramHttpResponseListener)
+  public static String post(String paramString1, String paramString2, HttpResponseListener paramHttpResponseListener)
   {
-    AppMethodBeat.i(118054);
+    AppMethodBeat.i(73341);
     paramString1 = buildConnection(paramString1, 10000);
     paramString1.setRequestProperty("Content-Type", "application/json");
     paramString1.setRequestMethod("POST");
@@ -83,13 +83,20 @@ public class HttpUtil
       localOutputStream.close();
     }
     paramString1 = getResponse(paramString1, paramHttpResponseListener);
-    AppMethodBeat.o(118054);
+    AppMethodBeat.o(73341);
     return paramString1;
+  }
+  
+  public static abstract interface HttpResponseListener
+  {
+    public abstract void onFail(int paramInt);
+    
+    public abstract void onSuccess(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.youtu.ytcommon.auth.HttpUtil
  * JD-Core Version:    0.7.0.1
  */

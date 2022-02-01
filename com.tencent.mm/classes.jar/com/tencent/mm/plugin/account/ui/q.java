@@ -4,12 +4,12 @@ import com.tencent.mm.ui.base.t;
 
 public final class q
 {
-  t gHA;
+  t iva;
   String text;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.q
  * JD-Core Version:    0.7.0.1
  */

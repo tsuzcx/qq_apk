@@ -4,59 +4,61 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.plugin.game.d.an;
 import com.tencent.mm.plugin.game.d.bg;
 import com.tencent.mm.plugin.game.model.GameTabData;
 import com.tencent.mm.plugin.game.model.GameTabData.TabItem;
 import com.tencent.mm.plugin.game.model.aj;
 import com.tencent.mm.plugin.game.ui.GameCenterActivity;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMFragmentActivity.a;
 import java.util.List;
-import java.util.List<Lcom.tencent.mm.plugin.game.d.al;>;
+import java.util.List<Lcom.tencent.mm.plugin.game.d.an;>;
 
 @com.tencent.mm.ui.base.a(19)
 public class GameRouteUI
   extends GameCenterActivity
-  implements f
+  implements com.tencent.mm.al.g
 {
-  private int nok;
+  private int rXI;
   
   /* Error */
-  private static bg bHw()
+  private static bg cEt()
   {
     // Byte code:
-    //   0: ldc 42
-    //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: ldc 44
-    //   7: invokestatic 50	com/tencent/mm/kernel/g:E	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-    //   10: checkcast 44	com/tencent/mm/plugin/game/api/e
-    //   13: invokeinterface 54 1 0
-    //   18: ldc 56
-    //   20: invokevirtual 62	com/tencent/mm/plugin/game/model/w:PN	(Ljava/lang/String;)[B
+    //   0: ldc 46
+    //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 48
+    //   7: invokestatic 54	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   10: checkcast 48	com/tencent/mm/plugin/game/api/e
+    //   13: invokeinterface 58 1 0
+    //   18: ldc 60
+    //   20: invokevirtual 66	com/tencent/mm/plugin/game/model/w:abW	(Ljava/lang/String;)[B
     //   23: astore_1
     //   24: aload_1
-    //   25: invokestatic 68	com/tencent/mm/sdk/platformtools/bo:ce	([B)Z
+    //   25: invokestatic 72	com/tencent/mm/sdk/platformtools/bt:cw	([B)Z
     //   28: ifeq +10 -> 38
-    //   31: ldc 42
-    //   33: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   31: ldc 46
+    //   33: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   36: aconst_null
     //   37: areturn
-    //   38: new 70	com/tencent/mm/plugin/game/d/bg
+    //   38: new 74	com/tencent/mm/plugin/game/d/bg
     //   41: dup
-    //   42: invokespecial 71	com/tencent/mm/plugin/game/d/bg:<init>	()V
+    //   42: invokespecial 75	com/tencent/mm/plugin/game/d/bg:<init>	()V
     //   45: astore_0
     //   46: aload_0
     //   47: aload_1
-    //   48: invokevirtual 75	com/tencent/mm/plugin/game/d/bg:parseFrom	([B)Lcom/tencent/mm/bv/a;
+    //   48: invokevirtual 79	com/tencent/mm/plugin/game/d/bg:parseFrom	([B)Lcom/tencent/mm/bx/a;
     //   51: pop
-    //   52: ldc 42
-    //   54: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   52: ldc 46
+    //   54: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   57: aload_0
     //   58: areturn
     //   59: astore_0
@@ -78,20 +80,20 @@ public class GameRouteUI
     //   46	52	65	java/io/IOException
   }
   
-  private void c(List<com.tencent.mm.plugin.game.d.al> paramList, boolean paramBoolean)
+  private void d(List<an> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(112228);
+    AppMethodBeat.i(42426);
     if ((isFinishing()) || (isDestroyed()))
     {
-      AppMethodBeat.o(112228);
+      AppMethodBeat.o(42426);
       return;
     }
-    GameTabData localGameTabData = GameTabData.ca(paramList);
-    if ((localGameTabData == null) || (bo.es(localGameTabData.getItemList())))
+    GameTabData localGameTabData = GameTabData.dQ(paramList);
+    if ((localGameTabData == null) || (bt.gL(localGameTabData.getItemList())))
     {
-      ab.e("MicroMsg.GameRouteUI", "game tab data is null");
+      ad.e("MicroMsg.GameRouteUI", "game tab data is null");
       exit();
-      AppMethodBeat.o(112228);
+      AppMethodBeat.o(42426);
       return;
     }
     Object localObject2 = localGameTabData.getItemList();
@@ -104,12 +106,12 @@ public class GameRouteUI
       if (localObject1 == null) {
         break label253;
       }
-      if (!((GameTabData.TabItem)localObject1).noY) {
+      if (!((GameTabData.TabItem)localObject1).rYt) {
         break label250;
       }
-      paramList = (List<com.tencent.mm.plugin.game.d.al>)localObject1;
+      paramList = (List<an>)localObject1;
       label115:
-      com.tencent.mm.plugin.game.e.a.a(this, 18, ((GameTabData.TabItem)localObject1).cFj, ((GameTabData.TabItem)localObject1).npg, null, this.nok, com.tencent.mm.plugin.game.e.a.lR(((GameTabData.TabItem)localObject1).nml));
+      com.tencent.mm.plugin.game.e.a.a(this, 18, ((GameTabData.TabItem)localObject1).dvS, ((GameTabData.TabItem)localObject1).rYB, null, this.rXI, com.tencent.mm.plugin.game.e.a.qh(((GameTabData.TabItem)localObject1).rVj));
     }
     label250:
     label253:
@@ -123,20 +125,20 @@ public class GameRouteUI
       }
       if (localObject1 == null)
       {
-        ab.e("MicroMsg.GameRouteUI", "game tab entry item is null");
+        ad.e("MicroMsg.GameRouteUI", "game tab entry item is null");
         exit();
-        AppMethodBeat.o(112228);
+        AppMethodBeat.o(42426);
         return;
       }
       localObject2 = getIntent().getExtras();
-      paramList = (List<com.tencent.mm.plugin.game.d.al>)localObject2;
+      paramList = (List<an>)localObject2;
       if (localObject2 == null) {
         paramList = new Bundle();
       }
       paramList.putParcelable("tab_data", localGameTabData);
       getIntent().putExtras(paramList);
       GameTabWidget.a(this, (GameTabData.TabItem)localObject1, paramBoolean, true, true);
-      AppMethodBeat.o(112228);
+      AppMethodBeat.o(42426);
       return;
       break label115;
     }
@@ -144,33 +146,33 @@ public class GameRouteUI
   
   private void exit()
   {
-    AppMethodBeat.i(112227);
+    AppMethodBeat.i(42425);
     if ((!isFinishing()) && (!isDestroyed()))
     {
       finish();
-      overridePendingTransition(MMFragmentActivity.a.zbZ, MMFragmentActivity.a.zca);
+      overridePendingTransition(MMFragmentActivity.a.lLH, MMFragmentActivity.a.lLI);
     }
-    AppMethodBeat.o(112227);
+    AppMethodBeat.o(42425);
   }
   
-  public final boolean bHf()
+  public final boolean cDZ()
   {
     return false;
   }
   
-  public final int bHg()
+  public final int cEa()
   {
     return 0;
   }
   
-  public final int bHh()
+  public final int cEb()
   {
     return 0;
   }
   
   public int getLayoutId()
   {
-    return 2130969811;
+    return 2131494376;
   }
   
   public final int getScene()
@@ -180,75 +182,100 @@ public class GameRouteUI
   
   public void initView()
   {
-    AppMethodBeat.i(112223);
-    setBackBtn(new GameRouteUI.1(this));
-    setMMTitle(2131300478);
-    AppMethodBeat.o(112223);
+    AppMethodBeat.i(42421);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(42418);
+        GameRouteUI.a(GameRouteUI.this);
+        AppMethodBeat.o(42418);
+        return true;
+      }
+    });
+    setMMTitle(2131760012);
+    AppMethodBeat.o(42421);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     boolean bool1 = false;
-    AppMethodBeat.i(112222);
+    AppMethodBeat.i(42420);
     super.onCreate(paramBundle);
     initView();
-    this.nok = getIntent().getIntExtra("game_report_from_scene", 0);
-    paramBundle = bHw();
-    if ((paramBundle != null) && (!bo.es(paramBundle.nrw)))
+    this.rXI = getIntent().getIntExtra("game_report_from_scene", 0);
+    paramBundle = cEt();
+    if ((paramBundle != null) && (!bt.gL(paramBundle.saZ)))
     {
-      ab.i("MicroMsg.GameRouteUI", "use cache data");
+      ad.i("MicroMsg.GameRouteUI", "use cache data");
       aj.updateData();
       boolean bool2 = getIntent().getBooleanExtra("switch_country_no_anim", false);
       getIntent().removeExtra("switch_country_no_anim");
-      paramBundle = paramBundle.nrw;
+      paramBundle = paramBundle.saZ;
       if (!bool2) {
         bool1 = true;
       }
-      c(paramBundle, bool1);
-      AppMethodBeat.o(112222);
+      d(paramBundle, bool1);
+      AppMethodBeat.o(42420);
       return;
     }
-    g.Rc().a(2641, this);
+    com.tencent.mm.kernel.g.aeS().a(2641, this);
     paramBundle = new aj();
-    g.Rc().a(paramBundle, 0);
-    AppMethodBeat.o(112222);
+    com.tencent.mm.kernel.g.aeS().a(paramBundle, 0);
+    AppMethodBeat.o(42420);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(112224);
-    g.Rc().b(2641, this);
+    AppMethodBeat.i(42422);
+    com.tencent.mm.kernel.g.aeS().b(2641, this);
     super.onDestroy();
-    AppMethodBeat.o(112224);
+    AppMethodBeat.o(42422);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(112226);
+    AppMethodBeat.i(42424);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
       exit();
-      AppMethodBeat.o(112226);
+      AppMethodBeat.o(42424);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(112226);
+    AppMethodBeat.o(42424);
     return bool;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(112225);
+    AppMethodBeat.i(42423);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      ab.i("MicroMsg.GameRouteUI", "pull gameIndexTabNav data success");
-      com.tencent.mm.sdk.platformtools.al.d(new GameRouteUI.2(this, ((aj)paramm).bGU()));
-      AppMethodBeat.o(112225);
+      ad.i("MicroMsg.GameRouteUI", "pull gameIndexTabNav data success");
+      aq.f(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(42419);
+          aj.a(this.rYD);
+          if ((this.rYD != null) && (!bt.gL(this.rYD.saZ)))
+          {
+            GameRouteUI.a(GameRouteUI.this, this.rYD.saZ);
+            AppMethodBeat.o(42419);
+            return;
+          }
+          ad.e("MicroMsg.GameRouteUI", "get GameIndex4TabNavData err");
+          GameRouteUI.a(GameRouteUI.this);
+          AppMethodBeat.o(42419);
+        }
+      });
+      AppMethodBeat.o(42423);
       return;
     }
-    ab.i("MicroMsg.GameRouteUI", "pull gameIndexTabNav data fail");
+    ad.i("MicroMsg.GameRouteUI", "pull gameIndexTabNav data fail");
     exit();
-    AppMethodBeat.o(112225);
+    AppMethodBeat.o(42423);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -259,7 +286,7 @@ public class GameRouteUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.tab.GameRouteUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,43 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
-import android.app.Activity;
 import android.content.Context;
-import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cm.g;
-import com.tencent.mm.model.gdpr.a;
-import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.widget.b.k.a;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.launching.e.f;
+import com.tencent.mm.plugin.appbrand.o;
+import d.l;
 
-public class k
-  extends h
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/miniprogram_navigator/MiniProgramNavigatorUglyLogic;", "", "()V", "loadNewRuntimeUglyMaybe", "", "from", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "to", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "plugin-appbrand-integration_release"})
+public final class k
 {
-  public static final k hTv;
+  public static final k jZr;
   
   static
   {
-    AppMethodBeat.i(131360);
-    hTv = new k();
-    AppMethodBeat.o(131360);
+    AppMethodBeat.i(50584);
+    jZr = new k();
+    AppMethodBeat.o(50584);
   }
   
-  protected final k.a B(i parami)
+  public static final boolean a(o paramo1, o paramo2, AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
-    AppMethodBeat.i(143420);
-    Activity localActivity = parami.getContext();
-    Object localObject = localActivity;
-    if (localActivity == null) {
-      localObject = parami.mContext;
-    }
-    parami = new com.tencent.mm.plugin.appbrand.widget.b.h((Context)localObject);
-    AppMethodBeat.o(143420);
-    return parami;
-  }
-  
-  public final com.tencent.mm.vending.g.c<AppBrandInitConfigLU> a(d paramd, LaunchParcel paramLaunchParcel)
-  {
-    AppMethodBeat.i(131359);
-    String str = com.tencent.mm.plugin.appbrand.report.quality.f.b(paramd, paramLaunchParcel);
-    paramd = g.dTg().b(new k.2(this, paramd, paramLaunchParcel, str));
-    AppMethodBeat.o(131359);
-    return paramd;
-  }
-  
-  public boolean a(d paramd, LaunchParcel paramLaunchParcel, c.b paramb)
-  {
-    AppMethodBeat.i(131358);
-    if (com.tencent.mm.model.gdpr.c.abL())
+    AppMethodBeat.i(50583);
+    d.g.b.k.h(paramo1, "from");
+    d.g.b.k.h(paramo2, "to");
+    d.g.b.k.h(paramAppBrandInitConfigWC, "config");
+    if ((paramo1.CZ()) && (paramAppBrandInitConfigWC.CZ()))
     {
-      com.tencent.mm.model.gdpr.c.a(paramd.getContext(), a.foy, paramLaunchParcel.appId, new k.1(this, paramb, paramd));
-      AppMethodBeat.o(131358);
+      f.kOI.a((Context)paramo1.getContext(), null, paramAppBrandInitConfigWC.appId, paramAppBrandInitConfigWC.iJb, paramAppBrandInitConfigWC.iOP, paramAppBrandInitConfigWC.aAS, paramAppBrandInitConfigWC.CY(), paramAppBrandInitConfigWC.cfi, null);
+      AppMethodBeat.o(50583);
       return true;
     }
-    AppMethodBeat.o(131358);
+    AppMethodBeat.o(50583);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.k
  * JD-Core Version:    0.7.0.1
  */

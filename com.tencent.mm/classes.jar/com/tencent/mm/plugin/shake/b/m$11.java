@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.shake.b;
 
-import com.tencent.mm.cg.h.d;
+import com.tencent.mm.storagebase.h.b;
 
 final class m$11
-  implements h.d
+  implements h.b
 {
   public final String[] getSQLs()
   {
@@ -12,7 +12,7 @@ final class m$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.m.11
  * JD-Core Version:    0.7.0.1
  */

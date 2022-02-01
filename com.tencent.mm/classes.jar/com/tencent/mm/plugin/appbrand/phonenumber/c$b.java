@@ -1,44 +1,36 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
-import a.f.a.r;
-import a.f.b.j;
-import a.l;
-import a.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ipcinvoker.wx_extension.b.a;
-import com.tencent.mm.protocal.protobuf.tg;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vending.g.d.a;
+import d.g.a.b;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "errType", "", "errCode", "errMsg", "", "kotlin.jvm.PlatformType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "callback"})
-final class c$b
-  implements b.a
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onInterrupt"})
+final class c$b<T>
+  implements d.a<Object>
 {
-  c$b(r paramr) {}
+  c$b(b paramb) {}
   
-  public final void a(int paramInt1, int paramInt2, String paramString, b paramb)
+  public final void ce(Object paramObject)
   {
-    AppMethodBeat.i(143920);
-    r localr = this.iCH;
-    if (localr != null)
+    AppMethodBeat.i(148022);
+    if ((paramObject instanceof Exception)) {
+      ad.e("Luggage.FULL.CgiPhoneNumber", "CgiCheckVerifyCodeWxaPhone " + ((Exception)paramObject).getMessage());
+    }
+    paramObject = this.fLH;
+    if (paramObject != null)
     {
-      j.p(paramb, "rr");
-      paramb = paramb.adn();
-      if (paramb == null)
-      {
-        paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.CheckVerifyCodeResp");
-        AppMethodBeat.o(143920);
-        throw paramString;
-      }
-      localr.a(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, (tg)paramb);
-      AppMethodBeat.o(143920);
+      paramObject.aA(null);
+      AppMethodBeat.o(148022);
       return;
     }
-    AppMethodBeat.o(143920);
+    AppMethodBeat.o(148022);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.c.b
  * JD-Core Version:    0.7.0.1
  */

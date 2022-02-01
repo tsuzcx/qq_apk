@@ -9,17 +9,17 @@ public final class d
 {
   public Intent mIntent;
   
-  public static PendingIntent b(Context paramContext, int paramInt, Intent paramIntent)
+  public static PendingIntent c(Context paramContext, int paramInt, Intent paramIntent)
   {
-    AppMethodBeat.i(16011);
+    AppMethodBeat.i(20043);
     paramContext = PendingIntent.getActivity(paramContext, paramInt, paramIntent, 134217728);
-    AppMethodBeat.o(16011);
+    AppMethodBeat.o(20043);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a.d
  * JD-Core Version:    0.7.0.1
  */

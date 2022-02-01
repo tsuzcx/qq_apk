@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameBestSellingItemView android:orientation="vertical" android:paddingLeft="@dimen/jr" android:paddingRight="@dimen/jr" android:paddingBottom="@dimen/jr" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.plugin.game.widget.AutoResizeTextView android:textSize="20.0dip" android:textStyle="bold" android:textColor="@color/s4" android:gravity="center|left" android:id="@id/c3r" android:layout_width="20.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/jy" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/a0s" android:layout_width="@dimen/jk" android:layout_height="@dimen/jk" android:layout_marginRight="@dimen/jw" android:src="@drawable/ah1" android:scaleType="fitXY" android:layout_centerVertical="true" android:layout_toEndOf="@id/c3r" />
-            <com.tencent.mm.plugin.game.ui.GameDownloadView android:id="@id/c3s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jy" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
-            <TextView android:textSize="@dimen/j_" android:textColor="@color/qj" android:ellipsize="end" android:gravity="center|left" android:id="@id/a0u" android:layout_width="wrap_content" android:layout_height="25.0dip" android:singleLine="true" android:layout_toLeftOf="@id/c3s" android:layout_toRightOf="@id/a0s" android:layout_alignTop="@id/a0s" />
-            <com.tencent.mm.plugin.game.widget.GameTagListView android:orientation="horizontal" android:id="@id/c3t" android:layout_width="wrap_content" android:layout_height="25.0dip" android:layout_toLeftOf="@id/c3s" android:layout_toRightOf="@id/a0s" android:layout_alignBottom="@id/a0s" />
-        </RelativeLayout>
-        <ViewStub android:id="@id/c3u" android:layout="@layout/a6w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="93.0dip" android:layout_marginTop="@dimen/jy" />
-    </com.tencent.mm.plugin.game.ui.GameBestSellingItemView>
-</FrameLayout>
+<com.tencent.mm.plugin.fav.ui.widget.FavSearchActionView android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/ajp" android:layout_width="0.0dip" android:layout_height="@dimen/c_" android:layout_marginLeft="@dimen/c0" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/ci" android:layout_weight="1.0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/bq" android:src="@raw/icons_outlined_search" flowlayout:iconColor="@color/BW_70" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingRight="0.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ScrollView android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:overScrollMode="never">
+                <com.tencent.mm.plugin.fav.ui.widget.FavTagPanel android:id="@id/bw6" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/h" flowlayout:verticalSpacing="@dimen/h" />
+            </ScrollView>
+            <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/f8d" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bq" android:src="@drawable/a9r" android:contentDescription="@string/azz" flowlayout:iconColor="@color/ee" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/fx" android:id="@id/aay" android:paddingLeft="@dimen/c0" android:paddingRight="@dimen/c0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r5" />
+</com.tencent.mm.plugin.fav.ui.widget.FavSearchActionView>

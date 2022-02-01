@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/am2" />
+    <com.tencent.mm.plugin.profile.ui.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/u0" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/azi" android:key="contact_info_medianote_view" android:layout="@layout/afi" />
-    <CheckBoxPreference android:persistent="false" android:title="@string/azf" android:key="contact_info_medianote_sync_to_qqmail" android:layout="@layout/afi" />
-    <Preference android:title="@string/awy" android:key="contact_info_medianote_clear_data" android:layout="@layout/afi" />
+    <Preference android:key="contact_info_linkedin_account" android:layout="@layout/aop" android:title="@string/b77" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/eda" android:key="contact_info_medianote_install" android:layout="@layout/a95" />
-    <Preference android:title="@string/edg" android:key="contact_info_medianote_uninstall" android:layout="@layout/aap" />
+    <Preference android:key="contact_info_linkedin_install" android:layout="@layout/ag2" android:title="@string/f9r" android:widgetLayout="@layout/aqs" />
+    <Preference android:key="contact_info_linkedin_uninstall" android:layout="@layout/ajc" android:title="@string/f9x" />
     <PreferenceCategory />
 </PreferenceScreen>

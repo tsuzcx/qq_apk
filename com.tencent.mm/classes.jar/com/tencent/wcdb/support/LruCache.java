@@ -21,29 +21,29 @@ public class LruCache<K, V>
   
   public LruCache(int paramInt)
   {
-    AppMethodBeat.i(12725);
+    AppMethodBeat.i(3411);
     if (paramInt <= 0)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("maxSize <= 0");
-      AppMethodBeat.o(12725);
+      AppMethodBeat.o(3411);
       throw localIllegalArgumentException;
     }
     this.maxSize = paramInt;
     this.map = new LinkedHashMap(0, 0.75F, true);
-    AppMethodBeat.o(12725);
+    AppMethodBeat.o(3411);
   }
   
   private int safeSizeOf(K paramK, V paramV)
   {
-    AppMethodBeat.i(12731);
+    AppMethodBeat.i(3417);
     int i = sizeOf(paramK, paramV);
     if (i < 0)
     {
       paramK = new IllegalStateException("Negative size: " + paramK + "=" + paramV);
-      AppMethodBeat.o(12731);
+      AppMethodBeat.o(3417);
       throw paramK;
     }
-    AppMethodBeat.o(12731);
+    AppMethodBeat.o(3417);
     return i;
   }
   
@@ -70,9 +70,9 @@ public class LruCache<K, V>
   
   public final void evictAll()
   {
-    AppMethodBeat.i(12732);
+    AppMethodBeat.i(3418);
     trimToSize(-1);
-    AppMethodBeat.o(12732);
+    AppMethodBeat.o(3418);
   }
   
   public final int evictionCount()
@@ -91,11 +91,11 @@ public class LruCache<K, V>
   
   public final V get(K paramK)
   {
-    AppMethodBeat.i(12727);
+    AppMethodBeat.i(3413);
     if (paramK == null)
     {
       paramK = new NullPointerException("key == null");
-      AppMethodBeat.o(12727);
+      AppMethodBeat.o(3413);
       throw paramK;
     }
     Object localObject1;
@@ -111,13 +111,13 @@ public class LruCache<K, V>
       localObject1 = create(paramK);
       if (localObject1 == null)
       {
-        AppMethodBeat.o(12727);
+        AppMethodBeat.o(3413);
         return null;
       }
     }
     finally
     {
-      AppMethodBeat.o(12727);
+      AppMethodBeat.o(3413);
     }
     try
     {
@@ -132,7 +132,7 @@ public class LruCache<K, V>
           break;
         }
         entryRemoved(false, paramK, localObject1, localObject2);
-        AppMethodBeat.o(12727);
+        AppMethodBeat.o(3413);
         return localObject2;
         this.size += safeSizeOf(paramK, localObject1);
       }
@@ -140,9 +140,9 @@ public class LruCache<K, V>
     }
     finally
     {
-      AppMethodBeat.o(12727);
+      AppMethodBeat.o(3413);
     }
-    AppMethodBeat.o(12727);
+    AppMethodBeat.o(3413);
     return localObject1;
   }
   
@@ -190,11 +190,11 @@ public class LruCache<K, V>
   
   public final V put(K paramK, V paramV)
   {
-    AppMethodBeat.i(12728);
+    AppMethodBeat.i(3414);
     if ((paramK == null) || (paramV == null))
     {
       paramK = new NullPointerException("key == null || value == null");
-      AppMethodBeat.o(12728);
+      AppMethodBeat.o(3414);
       throw paramK;
     }
     try
@@ -209,12 +209,12 @@ public class LruCache<K, V>
         entryRemoved(false, paramK, localObject, paramV);
       }
       trimToSize(this.maxSize);
-      AppMethodBeat.o(12728);
+      AppMethodBeat.o(3414);
       return localObject;
     }
     finally
     {
-      AppMethodBeat.o(12728);
+      AppMethodBeat.o(3414);
     }
   }
   
@@ -234,11 +234,11 @@ public class LruCache<K, V>
   
   public final V remove(K paramK)
   {
-    AppMethodBeat.i(12730);
+    AppMethodBeat.i(3416);
     if (paramK == null)
     {
       paramK = new NullPointerException("key == null");
-      AppMethodBeat.o(12730);
+      AppMethodBeat.o(3416);
       throw paramK;
     }
     try
@@ -250,34 +250,34 @@ public class LruCache<K, V>
       if (localObject != null) {
         entryRemoved(false, paramK, localObject, null);
       }
-      AppMethodBeat.o(12730);
+      AppMethodBeat.o(3416);
       return localObject;
     }
     finally
     {
-      AppMethodBeat.o(12730);
+      AppMethodBeat.o(3416);
     }
   }
   
   public void resize(int paramInt)
   {
-    AppMethodBeat.i(12726);
+    AppMethodBeat.i(3412);
     if (paramInt <= 0)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("maxSize <= 0");
-      AppMethodBeat.o(12726);
+      AppMethodBeat.o(3412);
       throw localIllegalArgumentException;
     }
     try
     {
       this.maxSize = paramInt;
       trimToSize(paramInt);
-      AppMethodBeat.o(12726);
+      AppMethodBeat.o(3412);
       return;
     }
     finally
     {
-      AppMethodBeat.o(12726);
+      AppMethodBeat.o(3412);
     }
   }
   
@@ -304,9 +304,9 @@ public class LruCache<K, V>
   {
     try
     {
-      AppMethodBeat.i(12733);
+      AppMethodBeat.i(3419);
       LinkedHashMap localLinkedHashMap = new LinkedHashMap(this.map);
-      AppMethodBeat.o(12733);
+      AppMethodBeat.o(3419);
       return localLinkedHashMap;
     }
     finally
@@ -322,13 +322,13 @@ public class LruCache<K, V>
     int i = 0;
     try
     {
-      AppMethodBeat.i(12734);
+      AppMethodBeat.i(3420);
       int j = this.hitCount + this.missCount;
       if (j != 0) {
         i = this.hitCount * 100 / j;
       }
       String str = String.format("LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.maxSize), Integer.valueOf(this.hitCount), Integer.valueOf(this.missCount), Integer.valueOf(i) });
-      AppMethodBeat.o(12734);
+      AppMethodBeat.o(3420);
       return str;
     }
     finally {}
@@ -336,23 +336,23 @@ public class LruCache<K, V>
   
   public void trimToSize(int paramInt)
   {
-    AppMethodBeat.i(12729);
+    AppMethodBeat.i(3415);
     try
     {
       if ((this.size < 0) || ((this.map.isEmpty()) && (this.size != 0)))
       {
         IllegalStateException localIllegalStateException = new IllegalStateException(getClass().getName() + ".sizeOf() is reporting inconsistent results!");
-        AppMethodBeat.o(12729);
+        AppMethodBeat.o(3415);
         throw localIllegalStateException;
       }
     }
     finally
     {
-      AppMethodBeat.o(12729);
+      AppMethodBeat.o(3415);
     }
     if ((this.size <= paramInt) || (this.map.isEmpty()))
     {
-      AppMethodBeat.o(12729);
+      AppMethodBeat.o(3415);
       return;
     }
     if (this.map.entrySet().iterator().hasNext()) {}
@@ -360,7 +360,7 @@ public class LruCache<K, V>
     {
       if (localObject2 == null)
       {
-        AppMethodBeat.o(12729);
+        AppMethodBeat.o(3415);
         return;
       }
       Object localObject3 = ((Map.Entry)localObject2).getKey();

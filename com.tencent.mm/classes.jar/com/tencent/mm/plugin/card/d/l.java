@@ -19,35 +19,29 @@ import android.net.NetworkInfo.State;
 import android.text.TextUtils;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.g.a.qj;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.g.a.sb;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.s;
-import com.tencent.mm.model.t;
-import com.tencent.mm.platformtools.x;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.card.model.CardInfo;
-import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.c;
 import com.tencent.mm.plugin.card.model.m;
 import com.tencent.mm.plugin.card.sharecard.model.ShareCardInfo;
-import com.tencent.mm.plugin.card.sharecard.model.k;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.protobuf.ccf;
-import com.tencent.mm.protocal.protobuf.ccj;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.protocal.protobuf.pn;
-import com.tencent.mm.protocal.protobuf.uo;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.d;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.protocal.protobuf.csx;
+import com.tencent.mm.protocal.protobuf.ctb;
+import com.tencent.mm.protocal.protobuf.ro;
+import com.tencent.mm.protocal.protobuf.rw;
+import com.tencent.mm.protocal.protobuf.xo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.base.h;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -65,157 +59,127 @@ import java.util.regex.Pattern;
 
 public final class l
 {
-  private static SimpleDateFormat kCj = null;
-  private static SimpleDateFormat kCk = null;
-  private static SimpleDateFormat kCl = null;
+  private static SimpleDateFormat nJi = null;
+  private static SimpleDateFormat nJj = null;
+  private static SimpleDateFormat nJk = null;
   
-  public static Bitmap H(Bitmap paramBitmap)
+  public static ShapeDrawable K(Context paramContext, int paramInt)
   {
-    boolean bool = true;
-    AppMethodBeat.i(88892);
-    Object localObject = new Matrix();
-    ((Matrix)localObject).reset();
-    ((Matrix)localObject).setRotate(90.0F, paramBitmap.getWidth() / 2, paramBitmap.getHeight() / 2);
-    paramBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, true);
-    localObject = new StringBuilder("resultBmp is null: ");
-    if (paramBitmap == null) {}
-    for (;;)
-    {
-      ab.d("MicroMsg.CardUtil", bool + "  degree:90.0");
-      AppMethodBeat.o(88892);
-      return paramBitmap;
-      bool = false;
-    }
+    AppMethodBeat.i(113814);
+    paramContext = eN(paramInt, paramContext.getResources().getDimensionPixelOffset(2131165956));
+    AppMethodBeat.o(113814);
+    return paramContext;
   }
   
-  public static String H(String paramString, long paramLong)
+  public static String R(String paramString, long paramLong)
   {
-    AppMethodBeat.i(88918);
+    AppMethodBeat.i(113846);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(88918);
+      AppMethodBeat.o(113846);
       return "";
     }
-    float f1 = am.bcj().dZv;
-    float f2 = am.bcj().dZu;
+    float f1 = com.tencent.mm.plugin.card.model.am.bJb().fjE;
+    float f2 = com.tencent.mm.plugin.card.model.am.bJb().fjD;
     if ((f1 == -1000.0F) || (f2 == -85.0F))
     {
-      ab.e("MicroMsg.CardUtil", "getRedirectUrl() location info is empty!");
-      AppMethodBeat.o(88918);
+      ad.e("MicroMsg.CardUtil", "getRedirectUrl() location info is empty!");
+      AppMethodBeat.o(113846);
       return paramString;
     }
     if ((0x10 & paramLong) > 0L)
     {
       String str = "&longitude=" + f1 + "&latitude=" + f2;
       str = paramString.replace("#", str + "#");
-      ab.i("MicroMsg.CardUtil", "getRedirectUrl originalUrl:".concat(String.valueOf(paramString)));
-      ab.i("MicroMsg.CardUtil", "getRedirectUrl afterwardsUrl:".concat(String.valueOf(str)));
-      AppMethodBeat.o(88918);
+      ad.i("MicroMsg.CardUtil", "getRedirectUrl originalUrl:".concat(String.valueOf(paramString)));
+      ad.i("MicroMsg.CardUtil", "getRedirectUrl afterwardsUrl:".concat(String.valueOf(str)));
+      AppMethodBeat.o(113846);
       return str;
     }
-    AppMethodBeat.o(88918);
+    AppMethodBeat.o(113846);
     return paramString;
   }
   
-  public static ShapeDrawable I(Context paramContext, int paramInt)
+  public static int Rm(String paramString)
   {
-    AppMethodBeat.i(88886);
-    paramContext = dR(paramInt, paramContext.getResources().getDimensionPixelOffset(2131428157));
-    AppMethodBeat.o(88886);
-    return paramContext;
-  }
-  
-  public static void I(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(88893);
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
-    {
-      ab.i("MicroMsg.CardUtil", "bitmap recycle %s", new Object[] { paramBitmap });
-      paramBitmap.recycle();
-    }
-    AppMethodBeat.o(88893);
-  }
-  
-  public static int IB(String paramString)
-  {
-    AppMethodBeat.i(88884);
+    AppMethodBeat.i(113812);
     int i = Color.rgb(66, 66, 66);
     if ((paramString == null) || (paramString.length() < 7) || (!paramString.startsWith("#")))
     {
-      ab.e("MicroMsg.CardUtil", "string format error");
-      AppMethodBeat.o(88884);
+      ad.e("MicroMsg.CardUtil", "string format error");
+      AppMethodBeat.o(113812);
       return i;
     }
     try
     {
       paramString = paramString.substring(1).toUpperCase();
       int j = Color.argb(255, Integer.parseInt(paramString.substring(0, 2), 16), Integer.parseInt(paramString.substring(2, 4), 16), Integer.parseInt(paramString.substring(4, 6), 16));
-      AppMethodBeat.o(88884);
+      AppMethodBeat.o(113812);
       return j;
     }
     catch (Exception paramString)
     {
-      ab.e("MicroMsg.CardUtil", paramString.toString());
-      AppMethodBeat.o(88884);
+      ad.e("MicroMsg.CardUtil", paramString.toString());
+      AppMethodBeat.o(113812);
     }
     return i;
   }
   
-  public static void IC(String paramString)
+  public static void Rn(String paramString)
   {
-    AppMethodBeat.i(88906);
-    g.RL().Ru().set(ac.a.yzb, paramString);
-    AppMethodBeat.o(88906);
+    AppMethodBeat.i(113834);
+    g.afB().afk().set(ae.a.Fhw, paramString);
+    AppMethodBeat.o(113834);
   }
   
-  public static String ID(String paramString)
+  public static String Ro(String paramString)
   {
-    AppMethodBeat.i(88908);
+    AppMethodBeat.i(113836);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(88908);
+      AppMethodBeat.o(113836);
       return "";
     }
-    String str1 = s.nF(paramString);
-    String str2 = s.nE(paramString);
+    String str1 = v.si(paramString);
+    String str2 = v.sh(paramString);
     if (!TextUtils.isEmpty(str1))
     {
-      AppMethodBeat.o(88908);
+      AppMethodBeat.o(113836);
       return str1;
     }
     if (!TextUtils.isEmpty(str2))
     {
-      AppMethodBeat.o(88908);
+      AppMethodBeat.o(113836);
       return str2;
     }
-    AppMethodBeat.o(88908);
+    AppMethodBeat.o(113836);
     return paramString;
   }
   
-  public static String IE(String paramString)
+  public static String Rp(String paramString)
   {
-    AppMethodBeat.i(88911);
+    AppMethodBeat.i(113839);
     paramString = Arrays.asList(paramString.split(","));
     LinkedList localLinkedList = new LinkedList();
-    if (g.RG()) {
+    if (g.afw()) {
       if ((paramString != null) && (paramString.size() != 0)) {}
     }
     for (;;)
     {
-      paramString = bo.d(localLinkedList, ",");
-      AppMethodBeat.o(88911);
+      paramString = bt.n(localLinkedList, ",");
+      AppMethodBeat.o(113839);
       return paramString;
       Iterator localIterator = paramString.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        ad localad = ((j)g.E(j.class)).YA().arw(str);
+        af localaf = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(str);
         paramString = str;
-        if (localad != null)
+        if (localaf != null)
         {
           paramString = str;
-          if ((int)localad.euF != 0) {
-            paramString = localad.Of();
+          if ((int)localaf.fId != 0) {
+            paramString = localaf.ZX();
           }
         }
         localLinkedList.add(paramString);
@@ -223,28 +187,28 @@ public final class l
     }
   }
   
-  private static boolean IF(String paramString)
+  private static boolean Rq(String paramString)
   {
-    AppMethodBeat.i(88916);
+    AppMethodBeat.i(113844);
     if (TextUtils.isEmpty(paramString))
     {
-      ab.e("MicroMsg.CardUtil", "hasShowTheWarning card_id or title is empty!");
-      AppMethodBeat.o(88916);
+      ad.e("MicroMsg.CardUtil", "hasShowTheWarning card_id or title is empty!");
+      AppMethodBeat.o(113844);
       return true;
     }
-    ab.i("MicroMsg.CardUtil", "hasShowWarning()");
-    Object localObject = (String)g.RL().Ru().get(ac.a.yzi, "");
+    ad.i("MicroMsg.CardUtil", "hasShowWarning()");
+    Object localObject = (String)g.afB().afk().get(ae.a.FhD, "");
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      ab.e("MicroMsg.CardUtil", "hasShowTheWarning cardIdListStr list is empty!");
-      AppMethodBeat.o(88916);
+      ad.e("MicroMsg.CardUtil", "hasShowTheWarning cardIdListStr list is empty!");
+      AppMethodBeat.o(113844);
       return false;
     }
     localObject = ((String)localObject).split(",");
     if ((localObject == null) || (localObject.length == 0))
     {
-      ab.e("MicroMsg.CardUtil", "hasShowTheWarning cardIds is empty!");
-      AppMethodBeat.o(88916);
+      ad.e("MicroMsg.CardUtil", "hasShowTheWarning cardIds is empty!");
+      AppMethodBeat.o(113844);
       return false;
     }
     int j = localObject.length;
@@ -253,38 +217,38 @@ public final class l
     {
       if (paramString.equals(localObject[i]))
       {
-        AppMethodBeat.o(88916);
+        AppMethodBeat.o(113844);
         return true;
       }
       i += 1;
     }
-    AppMethodBeat.o(88916);
+    AppMethodBeat.o(113844);
     return false;
   }
   
-  public static void IG(String paramString)
+  public static void Rr(String paramString)
   {
-    AppMethodBeat.i(88917);
+    AppMethodBeat.i(113845);
     if (TextUtils.isEmpty(paramString))
     {
-      ab.e("MicroMsg.CardUtil", "setShowWarningFlag card_id or title is empty!");
-      AppMethodBeat.o(88917);
+      ad.e("MicroMsg.CardUtil", "setShowWarningFlag card_id or title is empty!");
+      AppMethodBeat.o(113845);
       return;
     }
-    ab.i("MicroMsg.CardUtil", "setShowWarningFlag()");
-    String str = (String)g.RL().Ru().get(ac.a.yzi, "");
+    ad.i("MicroMsg.CardUtil", "setShowWarningFlag()");
+    String str = (String)g.afB().afk().get(ae.a.FhD, "");
     if (TextUtils.isEmpty(str)) {
-      ab.e("MicroMsg.CardUtil", "hasShowTheWarning cardIdListStr list is empty!");
+      ad.e("MicroMsg.CardUtil", "hasShowTheWarning cardIdListStr list is empty!");
     }
     for (;;)
     {
-      g.RL().Ru().set(ac.a.yzi, paramString);
-      AppMethodBeat.o(88917);
+      g.afB().afk().set(ae.a.FhD, paramString);
+      AppMethodBeat.o(113845);
       return;
       String[] arrayOfString = str.split(",");
       if ((arrayOfString == null) || (arrayOfString.length == 0))
       {
-        ab.e("MicroMsg.CardUtil", "hasShowTheWarning cardIds is empty!");
+        ad.e("MicroMsg.CardUtil", "hasShowTheWarning cardIds is empty!");
         str = paramString;
       }
       int k = arrayOfString.length;
@@ -305,28 +269,58 @@ public final class l
     }
   }
   
-  public static int IH(String paramString)
+  public static int Rs(String paramString)
   {
-    AppMethodBeat.i(88919);
-    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(r.Zn())))
+    AppMethodBeat.i(113847);
+    if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals(com.tencent.mm.model.u.aqG())))
     {
-      AppMethodBeat.o(88919);
+      AppMethodBeat.o(113847);
       return 1;
     }
-    AppMethodBeat.o(88919);
+    AppMethodBeat.o(113847);
     return 0;
   }
   
-  public static ccj a(int paramInt, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
+  public static Bitmap S(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(88912);
-    ab.i("MicroMsg.CardUtil", "getShareTag()");
-    ccj localccj = new ccj();
+    boolean bool = true;
+    AppMethodBeat.i(113820);
+    Object localObject = new Matrix();
+    ((Matrix)localObject).reset();
+    ((Matrix)localObject).setRotate(90.0F, paramBitmap.getWidth() / 2, paramBitmap.getHeight() / 2);
+    paramBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, true);
+    localObject = new StringBuilder("resultBmp is null: ");
+    if (paramBitmap == null) {}
+    for (;;)
+    {
+      ad.d("MicroMsg.CardUtil", bool + "  degree:90.0");
+      AppMethodBeat.o(113820);
+      return paramBitmap;
+      bool = false;
+    }
+  }
+  
+  public static void T(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(113821);
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
+    {
+      ad.i("MicroMsg.CardUtil", "bitmap recycle %s", new Object[] { paramBitmap });
+      paramBitmap.recycle();
+    }
+    AppMethodBeat.o(113821);
+  }
+  
+  public static ctb a(int paramInt, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
+  {
+    AppMethodBeat.i(113840);
+    ad.i("MicroMsg.CardUtil", "getShareTag()");
+    ctb localctb = new ctb();
     String str;
     if (paramInt == 2)
     {
       if ((paramArrayList1 != null) && (paramArrayList1.size() > 0)) {
-        localccj.xML.addAll(paramArrayList1);
+        localctb.EkJ.addAll(paramArrayList1);
       }
       if ((paramArrayList2 != null) && (paramArrayList2.size() > 0))
       {
@@ -336,21 +330,21 @@ public final class l
         {
           str = (String)paramArrayList2.get(paramInt);
           if ((!TextUtils.isEmpty(str)) && (isNumeric(str))) {
-            paramArrayList1.add(Integer.valueOf(str));
+            paramArrayList1.add(Integer.valueOf(bt.getInt(str, 0)));
           }
           paramInt += 1;
         }
-        localccj.xMN.addAll(paramArrayList1);
+        localctb.EkL.addAll(paramArrayList1);
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(88912);
-      return localccj;
+      AppMethodBeat.o(113840);
+      return localctb;
       if (paramInt == 3)
       {
         if ((paramArrayList1 != null) && (paramArrayList1.size() > 0)) {
-          localccj.xMM.addAll(paramArrayList1);
+          localctb.EkK.addAll(paramArrayList1);
         }
         if ((paramArrayList2 != null) && (paramArrayList2.size() > 0))
         {
@@ -360,11 +354,11 @@ public final class l
           {
             str = (String)paramArrayList2.get(paramInt);
             if ((!TextUtils.isEmpty(str)) && (isNumeric(str))) {
-              paramArrayList1.add(Integer.valueOf(str));
+              paramArrayList1.add(Integer.valueOf(bt.getInt(str, 0)));
             }
             paramInt += 1;
           }
-          localccj.xMO.addAll(paramArrayList1);
+          localctb.EkM.addAll(paramArrayList1);
         }
       }
     }
@@ -372,18 +366,18 @@ public final class l
   
   public static void a(com.tencent.mm.plugin.card.base.b paramb, String paramString1, String paramString2, int paramInt)
   {
-    j.b localb = null;
-    AppMethodBeat.i(88895);
-    Object localObject = x.a(new m(paramb.bbd().kmm));
+    k.b localb = null;
+    AppMethodBeat.i(113823);
+    Object localObject = com.tencent.mm.platformtools.u.a(new m(paramb.bHV().gGR));
     if (localObject != null) {}
-    for (localObject = d.ai((Bitmap)localObject);; localObject = null)
+    for (localObject = f.Bitmap2Bytes((Bitmap)localObject);; localObject = null)
     {
-      com.tencent.mm.plugin.card.compat.a.a locala = (com.tencent.mm.plugin.card.compat.a.a)g.E(com.tencent.mm.plugin.card.compat.a.a.class);
+      com.tencent.mm.plugin.card.compat.a.a locala = (com.tencent.mm.plugin.card.compat.a.a)g.ab(com.tencent.mm.plugin.card.compat.a.a.class);
       if (paramb == null)
       {
         paramString2 = localb;
-        locala.b(paramString2, paramb.bbd().cwc, paramb.bbd().knw, paramString1, (byte[])localObject);
-        AppMethodBeat.o(88895);
+        locala.a(paramString2, paramb.bHV().dlB, paramb.bHV().nsK, paramString1, (byte[])localObject);
+        AppMethodBeat.o(113823);
         return;
       }
       if (paramInt == 23) {
@@ -392,32 +386,32 @@ public final class l
       for (int i = 1;; i = 0)
       {
         StringBuilder localStringBuilder1 = new StringBuilder();
-        localb = new j.b();
-        if (paramb.bbd() != null)
+        localb = new k.b();
+        if (paramb.bHV() != null)
         {
-          localb.title = paramb.bbf().xMB;
-          localb.description = paramb.bbd().title;
+          localb.title = paramb.bHX().Ekz;
+          localb.description = paramb.bHV().title;
           localb.type = 16;
-          localb.showType = 0;
-          localb.fgz = 3;
-          localb.appId = paramb.bbd().cwc;
-          localb.fgh = 0;
-          localb.thumburl = paramb.bbd().kmm;
-          localb.fhL = paramInt;
-          localb.fhK = paramb.bbd().knw;
-          localb.url = paramb.bbd().wGf;
+          localb.dcz = 0;
+          localb.gHh = 3;
+          localb.appId = paramb.bHV().dlB;
+          localb.gGx = 0;
+          localb.thumburl = paramb.bHV().gGR;
+          localb.gIs = paramInt;
+          localb.gIr = paramb.bHV().nsK;
+          localb.url = paramb.bHV().CRK;
         }
         StringBuilder localStringBuilder2 = new StringBuilder();
-        localStringBuilder2.append("<from_username>").append(paramb.bbj()).append("</from_username>");
-        if (tt(paramInt))
+        localStringBuilder2.append("<from_username>").append(paramb.bIb()).append("</from_username>");
+        if (zn(paramInt))
         {
-          localStringBuilder2.append("<card_id>").append(paramb.bbi()).append("</card_id>");
+          localStringBuilder2.append("<card_id>").append(paramb.bIa()).append("</card_id>");
           label314:
-          localStringBuilder2.append("<card_type>").append(paramb.bbd().iFL).append("</card_type>");
+          localStringBuilder2.append("<card_type>").append(paramb.bHV().lpz).append("</card_type>");
           localStringBuilder2.append("<from_scene>").append(paramInt).append("</from_scene>");
-          localStringBuilder2.append("<color>").append(paramb.bbd().color).append("</color>");
-          localStringBuilder2.append("<card_type_name>").append(paramb.bbd().knv).append("</card_type_name>");
-          localStringBuilder2.append("<brand_name>").append(paramb.bbd().knw).append("</brand_name>");
+          localStringBuilder2.append("<color>").append(paramb.bHV().gHT).append("</color>");
+          localStringBuilder2.append("<card_type_name>").append(paramb.bHV().nsJ).append("</card_type_name>");
+          localStringBuilder2.append("<brand_name>").append(paramb.bHV().nsK).append("</brand_name>");
           if (!TextUtils.isEmpty(paramString2)) {
             break label569;
           }
@@ -426,15 +420,15 @@ public final class l
         for (;;)
         {
           localStringBuilder2.append("<is_recommend>").append(i).append("</is_recommend>");
-          localStringBuilder2.append("<recommend_card_id>").append(paramb.bbh()).append("</recommend_card_id>");
-          localb.fhJ = localStringBuilder2.toString();
-          localb.cxK = j.b.a(localb, null, null);
+          localStringBuilder2.append("<recommend_card_id>").append(paramb.bHZ()).append("</recommend_card_id>");
+          localb.gIq = localStringBuilder2.toString();
+          localb.dnn = k.b.a(localb, null, null);
           paramString2 = localb;
           break;
           if (paramInt != 5) {
             break label314;
           }
-          localStringBuilder2.append("<card_id>").append(paramb.bbh()).append("</card_id>");
+          localStringBuilder2.append("<card_id>").append(paramb.bHZ()).append("</card_id>");
           break label314;
           label569:
           localStringBuilder2.append("<card_ext>").append(paramString2).append("</card_ext>");
@@ -445,149 +439,357 @@ public final class l
   
   public static boolean a(com.tencent.mm.plugin.card.model.b paramb, String paramString)
   {
-    AppMethodBeat.i(88914);
-    if (!ig(paramb.wGZ))
+    AppMethodBeat.i(113842);
+    if (!nO(paramb.CSH))
     {
-      ab.i("MicroMsg.CardUtil", "ShowWarning not support show the warning!");
-      AppMethodBeat.o(88914);
+      ad.i("MicroMsg.CardUtil", "ShowWarning not support show the warning!");
+      AppMethodBeat.o(113842);
       return false;
     }
-    if (IF(paramString))
+    if (Rq(paramString))
     {
-      ab.i("MicroMsg.CardUtil", "ShowWarning has show the warning!");
-      AppMethodBeat.o(88914);
+      ad.i("MicroMsg.CardUtil", "ShowWarning has show the warning!");
+      AppMethodBeat.o(113842);
       return false;
     }
-    ab.i("MicroMsg.CardUtil", "ShowWarning has not show the warning!");
-    AppMethodBeat.o(88914);
+    ad.i("MicroMsg.CardUtil", "ShowWarning has not show the warning!");
+    AppMethodBeat.o(113842);
     return true;
   }
   
   public static boolean a(ShareCardInfo paramShareCardInfo)
   {
-    AppMethodBeat.i(88904);
+    AppMethodBeat.i(113832);
     if (paramShareCardInfo == null)
     {
-      ab.e("MicroMsg.CardUtil", "processShareCardObject fail, card is null");
-      AppMethodBeat.o(88904);
+      ad.e("MicroMsg.CardUtil", "processShareCardObject fail, card is null");
+      AppMethodBeat.o(113832);
       return false;
     }
-    ShareCardInfo localShareCardInfo = am.bcl().HZ(paramShareCardInfo.field_card_id);
+    ShareCardInfo localShareCardInfo = com.tencent.mm.plugin.card.model.am.bJd().QJ(paramShareCardInfo.field_card_id);
     if (localShareCardInfo == null)
     {
-      bool = am.bcl().insert(paramShareCardInfo);
-      ab.d("MicroMsg.CardUtil", "processShareCardObject, insertRet = %b", new Object[] { Boolean.valueOf(bool) });
+      bool = com.tencent.mm.plugin.card.model.am.bJd().insert(paramShareCardInfo);
+      ad.d("MicroMsg.CardUtil", "processShareCardObject, insertRet = %b", new Object[] { Boolean.valueOf(bool) });
       if (!bool) {
-        ab.e("MicroMsg.CardUtil", "processShareCardObject, insert fail");
+        ad.e("MicroMsg.CardUtil", "processShareCardObject, insert fail");
       }
       for (;;)
       {
-        AppMethodBeat.o(88904);
+        AppMethodBeat.o(113832);
         return bool;
-        com.tencent.mm.plugin.card.sharecard.a.b.dr(paramShareCardInfo.field_card_id, paramShareCardInfo.field_card_tp_id);
+        com.tencent.mm.plugin.card.sharecard.a.b.eB(paramShareCardInfo.field_card_id, paramShareCardInfo.field_card_tp_id);
       }
     }
     paramShareCardInfo.field_categoryType = localShareCardInfo.field_categoryType;
     paramShareCardInfo.field_itemIndex = localShareCardInfo.field_itemIndex;
-    boolean bool = am.bcl().update(paramShareCardInfo, new String[0]);
-    ab.d("MicroMsg.CardUtil", "processShareCardObject, updateRet = %b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(88904);
+    boolean bool = com.tencent.mm.plugin.card.model.am.bJd().update(paramShareCardInfo, new String[0]);
+    ad.d("MicroMsg.CardUtil", "processShareCardObject, updateRet = %b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(113832);
     return bool;
   }
   
-  public static boolean a(uo paramuo, String paramString)
+  public static boolean a(xo paramxo, String paramString)
   {
-    AppMethodBeat.i(88913);
-    if (!ig(paramuo.wGZ))
+    AppMethodBeat.i(113841);
+    if (!nO(paramxo.CSH))
     {
-      ab.i("MicroMsg.CardUtil", "ShowWarning not support show the warning!");
-      AppMethodBeat.o(88913);
+      ad.i("MicroMsg.CardUtil", "ShowWarning not support show the warning!");
+      AppMethodBeat.o(113841);
       return false;
     }
-    if (IF(paramString))
+    if (Rq(paramString))
     {
-      ab.i("MicroMsg.CardUtil", "ShowWarning has show the warning!");
-      AppMethodBeat.o(88913);
+      ad.i("MicroMsg.CardUtil", "ShowWarning has show the warning!");
+      AppMethodBeat.o(113841);
       return false;
     }
-    ab.i("MicroMsg.CardUtil", "ShowWarning has not show the warning!");
-    AppMethodBeat.o(88913);
+    ad.i("MicroMsg.CardUtil", "ShowWarning has not show the warning!");
+    AppMethodBeat.o(113841);
     return true;
   }
   
-  public static ColorStateList ag(Context paramContext, String paramString)
+  public static ColorStateList af(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(88921);
-    int i = paramContext.getResources().getColor(2131690709);
-    int j = IB(paramString);
-    paramContext = new int[0];
-    paramContext = new ColorStateList(new int[][] { { 16842919, 16842910 }, paramContext }, new int[] { i, j });
-    AppMethodBeat.o(88921);
+    AppMethodBeat.i(113849);
+    int i = paramContext.getResources().getColor(2131101182);
+    int j = Rm(paramString);
+    paramContext = new ColorStateList(new int[][] { { 16842919, 16842910 }, new int[0] }, new int[] { i, j });
+    AppMethodBeat.o(113849);
     return paramContext;
   }
   
-  public static boolean agR()
+  public static void ag(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(88902);
-    try
+    AppMethodBeat.i(113852);
+    if (!bt.isNullOrNil(paramString))
     {
-      boolean bool = ((LocationManager)ah.getContext().getSystemService("location")).isProviderEnabled("gps");
-      AppMethodBeat.o(88902);
-      return bool;
+      Toast.makeText(aj.getContext(), paramString, 1).show();
+      AppMethodBeat.o(113852);
+      return;
     }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace("MicroMsg.CardUtil", localException, "", new Object[0]);
-      AppMethodBeat.o(88902);
-    }
-    return false;
-  }
-  
-  public static boolean agS()
-  {
-    AppMethodBeat.i(88903);
-    try
-    {
-      boolean bool = ((LocationManager)ah.getContext().getSystemService("location")).isProviderEnabled("network");
-      AppMethodBeat.o(88903);
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace("MicroMsg.CardUtil", localException, "", new Object[0]);
-      AppMethodBeat.o(88903);
-    }
-    return false;
+    h.c(paramContext, paramContext.getString(2131757027), "", false);
+    AppMethodBeat.o(113852);
   }
   
   public static void ah(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(88924);
-    if (!bo.isNullOrNil(paramString))
+    AppMethodBeat.i(113853);
+    String str = paramString;
+    if (bt.isNullOrNil(paramString)) {
+      str = paramContext.getString(2131757027);
+    }
+    h.c(paramContext, str, "", false);
+    AppMethodBeat.o(113853);
+  }
+  
+  public static boolean axU()
+  {
+    AppMethodBeat.i(113830);
+    try
     {
-      Toast.makeText(ah.getContext(), paramString, 1).show();
-      AppMethodBeat.o(88924);
+      boolean bool = ((LocationManager)aj.getContext().getSystemService("location")).isProviderEnabled("gps");
+      AppMethodBeat.o(113830);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      ad.printErrStackTrace("MicroMsg.CardUtil", localException, "", new Object[0]);
+      AppMethodBeat.o(113830);
+    }
+    return false;
+  }
+  
+  public static boolean axV()
+  {
+    AppMethodBeat.i(113831);
+    try
+    {
+      boolean bool = ((LocationManager)aj.getContext().getSystemService("location")).isProviderEnabled("network");
+      AppMethodBeat.o(113831);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      ad.printErrStackTrace("MicroMsg.CardUtil", localException, "", new Object[0]);
+      AppMethodBeat.o(113831);
+    }
+    return false;
+  }
+  
+  public static boolean b(CardInfo paramCardInfo)
+  {
+    AppMethodBeat.i(113822);
+    if (paramCardInfo == null)
+    {
+      ad.e("MicroMsg.CardUtil", "processCardObject fail, card is null");
+      AppMethodBeat.o(113822);
+      return false;
+    }
+    CardInfo localCardInfo = com.tencent.mm.plugin.card.model.am.bIV().Qt(paramCardInfo.field_card_id);
+    if (localCardInfo == null)
+    {
+      bool = com.tencent.mm.plugin.card.model.am.bIV().insert(paramCardInfo);
+      ad.d("MicroMsg.CardUtil", "processCardObject, insertRet = %b", new Object[] { Boolean.valueOf(bool) });
+      if (!bool) {
+        ad.e("MicroMsg.CardUtil", "processCardObject, insert fail");
+      }
+      AppMethodBeat.o(113822);
+      return bool;
+    }
+    paramCardInfo.field_stickyIndex = localCardInfo.field_stickyIndex;
+    paramCardInfo.field_stickyEndTime = localCardInfo.field_stickyEndTime;
+    paramCardInfo.field_stickyAnnouncement = localCardInfo.field_stickyAnnouncement;
+    boolean bool = com.tencent.mm.plugin.card.model.am.bIV().update(paramCardInfo, new String[0]);
+    ad.d("MicroMsg.CardUtil", "processCardObject, updateRet = %b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(113822);
+    return bool;
+  }
+  
+  public static void bMK()
+  {
+    AppMethodBeat.i(113825);
+    Integer localInteger = (Integer)g.afB().afk().get(282883, null);
+    if ((localInteger != null) && (localInteger.intValue() == 1))
+    {
+      ad.i("MicroMsg.CardUtil", "card entrance is open");
+      AppMethodBeat.o(113825);
       return;
     }
-    h.b(paramContext, paramContext.getString(2131298085), "", false);
-    AppMethodBeat.o(88924);
+    ad.i("MicroMsg.CardUtil", "open card entrance");
+    g.afB().afk().set(282883, Integer.valueOf(1));
+    AppMethodBeat.o(113825);
   }
   
-  public static void ai(Context paramContext, String paramString)
+  public static boolean bML()
   {
-    AppMethodBeat.i(88925);
-    String str = paramString;
-    if (bo.isNullOrNil(paramString)) {
-      str = paramContext.getString(2131298085);
+    AppMethodBeat.i(113826);
+    Integer localInteger = (Integer)g.afB().afk().get(282883, null);
+    if ((localInteger != null) && (localInteger.intValue() == 1))
+    {
+      AppMethodBeat.o(113826);
+      return true;
     }
-    h.b(paramContext, str, "", false);
-    AppMethodBeat.o(88925);
+    AppMethodBeat.o(113826);
+    return false;
   }
   
-  public static ShapeDrawable b(Context paramContext, int paramInt1, int paramInt2)
+  public static void bMM()
   {
-    AppMethodBeat.i(88888);
-    int i = paramContext.getResources().getDimensionPixelSize(2131427811);
+    AppMethodBeat.i(113827);
+    Integer localInteger = (Integer)g.afB().afk().get(ae.a.Fhy, Integer.valueOf(0));
+    if ((localInteger != null) && (localInteger.intValue() == 1))
+    {
+      ad.i("MicroMsg.CardUtil", "share card entrance is open");
+      AppMethodBeat.o(113827);
+      return;
+    }
+    ad.i("MicroMsg.CardUtil", "open share card entrance");
+    g.afB().afk().set(ae.a.Fhy, Integer.valueOf(1));
+    AppMethodBeat.o(113827);
+  }
+  
+  public static boolean bMN()
+  {
+    AppMethodBeat.i(113828);
+    Integer localInteger = (Integer)g.afB().afk().get(ae.a.Fhy, null);
+    if ((localInteger != null) && (localInteger.intValue() == 1))
+    {
+      AppMethodBeat.o(113828);
+      return true;
+    }
+    AppMethodBeat.o(113828);
+    return false;
+  }
+  
+  public static String bMO()
+  {
+    AppMethodBeat.i(113835);
+    String str = (String)g.afB().afk().get(ae.a.Fhw, "");
+    AppMethodBeat.o(113835);
+    return str;
+  }
+  
+  public static int cB(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(113813);
+    int i = Color.rgb(66, 66, 66);
+    if ((paramString == null) || (paramString.length() < 7) || (!paramString.startsWith("#")))
+    {
+      ad.e("MicroMsg.CardUtil", "string format error");
+      AppMethodBeat.o(113813);
+      return i;
+    }
+    try
+    {
+      paramString = paramString.substring(1).toUpperCase();
+      paramInt = Color.argb(paramInt, Integer.parseInt(paramString.substring(0, 2), 16), Integer.parseInt(paramString.substring(2, 4), 16), Integer.parseInt(paramString.substring(4, 6), 16));
+      AppMethodBeat.o(113813);
+      return paramInt;
+    }
+    catch (Exception paramString)
+    {
+      ad.e("MicroMsg.CardUtil", paramString.toString());
+      AppMethodBeat.o(113813);
+    }
+    return i;
+  }
+  
+  public static int cC(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(113850);
+    paramInt = eO(Color.parseColor(paramString), paramInt);
+    AppMethodBeat.o(113850);
+    return paramInt;
+  }
+  
+  public static List<com.tencent.mm.plugin.card.model.b> cC(List<rw> paramList)
+  {
+    AppMethodBeat.i(113817);
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      AppMethodBeat.o(113817);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramList.size())
+    {
+      rw localrw = (rw)paramList.get(i);
+      com.tencent.mm.plugin.card.model.b localb = new com.tencent.mm.plugin.card.model.b();
+      localb.title = localrw.title;
+      localb.nrs = localrw.nrs;
+      localb.nvv = localrw.nvv;
+      localb.url = localrw.url;
+      localb.CSH = localrw.CSH;
+      localb.nrD = false;
+      localb.CSI = localrw.CSI;
+      localb.CSJ = localrw.CSJ;
+      localb.odo = localrw.odo;
+      localb.CRq = localrw.CRq;
+      localb.CRr = localrw.CRr;
+      localb.nrC = 1;
+      localArrayList.add(localb);
+      i += 1;
+    }
+    AppMethodBeat.o(113817);
+    return localArrayList;
+  }
+  
+  public static ArrayList<String> cD(List<String> paramList)
+  {
+    AppMethodBeat.i(113837);
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      ad.e("MicroMsg.CardUtil", "getContactNamesFromLabels labels is empty!");
+      AppMethodBeat.o(113837);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    HashSet localHashSet = new HashSet();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject = (String)paramList.next();
+      localObject = com.tencent.mm.plugin.label.a.a.cIS().aeL(com.tencent.mm.plugin.label.a.a.cIS().aeI((String)localObject));
+      if ((localObject == null) || (((List)localObject).size() == 0)) {
+        ad.e("MicroMsg.CardUtil", "getContactNamesFromLabels, namelist get bu label is null");
+      } else {
+        localHashSet.addAll((Collection)localObject);
+      }
+    }
+    localArrayList.addAll(localHashSet);
+    AppMethodBeat.o(113837);
+    return localArrayList;
+  }
+  
+  public static ArrayList<String> cE(List<String> paramList)
+  {
+    AppMethodBeat.i(113838);
+    if ((paramList == null) || (paramList.isEmpty()))
+    {
+      ad.e("MicroMsg.CardUtil", "getContactIdsFromLabels labels is empty!");
+      AppMethodBeat.o(113838);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      String str = (String)paramList.next();
+      str = com.tencent.mm.plugin.label.a.a.cIS().aeI(str);
+      if (!TextUtils.isEmpty(str)) {
+        localArrayList.add(str);
+      }
+    }
+    AppMethodBeat.o(113838);
+    return localArrayList;
+  }
+  
+  public static ShapeDrawable d(Context paramContext, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(113816);
+    int i = paramContext.getResources().getDimensionPixelSize(2131165519);
     paramContext = new float[8];
     paramContext[0] = paramInt2;
     paramContext[1] = paramInt2;
@@ -601,320 +803,111 @@ public final class l
     Paint localPaint = paramContext.getPaint();
     localPaint.setColor(paramInt1);
     localPaint.setStrokeWidth(i);
-    AppMethodBeat.o(88888);
+    AppMethodBeat.o(113816);
     return paramContext;
   }
   
-  public static boolean b(CardInfo paramCardInfo)
+  public static void eJ(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(88894);
-    if (paramCardInfo == null)
+    AppMethodBeat.i(113824);
+    if (!bt.isNullOrNil(paramString1))
     {
-      ab.e("MicroMsg.CardUtil", "processCardObject fail, card is null");
-      AppMethodBeat.o(88894);
-      return false;
+      sb localsb = new sb();
+      localsb.dxJ.dxK = paramString2;
+      localsb.dxJ.content = paramString1;
+      localsb.dxJ.type = w.tq(paramString2);
+      localsb.dxJ.flags = 0;
+      com.tencent.mm.sdk.b.a.ESL.l(localsb);
     }
-    CardInfo localCardInfo = am.bcd().HJ(paramCardInfo.field_card_id);
-    if (localCardInfo == null)
-    {
-      bool = am.bcd().insert(paramCardInfo);
-      ab.d("MicroMsg.CardUtil", "processCardObject, insertRet = %b", new Object[] { Boolean.valueOf(bool) });
-      if (!bool) {
-        ab.e("MicroMsg.CardUtil", "processCardObject, insert fail");
-      }
-      AppMethodBeat.o(88894);
-      return bool;
-    }
-    paramCardInfo.field_stickyIndex = localCardInfo.field_stickyIndex;
-    paramCardInfo.field_stickyEndTime = localCardInfo.field_stickyEndTime;
-    paramCardInfo.field_stickyAnnouncement = localCardInfo.field_stickyAnnouncement;
-    boolean bool = am.bcd().update(paramCardInfo, new String[0]);
-    ab.d("MicroMsg.CardUtil", "processCardObject, updateRet = %b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(88894);
-    return bool;
+    AppMethodBeat.o(113824);
   }
   
-  public static int bS(String paramString, int paramInt)
+  public static ShapeDrawable eN(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(88885);
-    int i = Color.rgb(66, 66, 66);
-    if ((paramString == null) || (paramString.length() < 7) || (!paramString.startsWith("#")))
-    {
-      ab.e("MicroMsg.CardUtil", "string format error");
-      AppMethodBeat.o(88885);
-      return i;
-    }
-    try
-    {
-      paramString = paramString.substring(1).toUpperCase();
-      paramInt = Color.argb(paramInt, Integer.parseInt(paramString.substring(0, 2), 16), Integer.parseInt(paramString.substring(2, 4), 16), Integer.parseInt(paramString.substring(4, 6), 16));
-      AppMethodBeat.o(88885);
-      return paramInt;
-    }
-    catch (Exception paramString)
-    {
-      ab.e("MicroMsg.CardUtil", paramString.toString());
-      AppMethodBeat.o(88885);
-    }
-    return i;
-  }
-  
-  public static int bT(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(88922);
-    paramInt = dS(Color.parseColor(paramString), paramInt);
-    AppMethodBeat.o(88922);
-    return paramInt;
-  }
-  
-  public static boolean bfA()
-  {
-    AppMethodBeat.i(88898);
-    Integer localInteger = (Integer)g.RL().Ru().get(282883, null);
-    if ((localInteger != null) && (localInteger.intValue() == 1))
-    {
-      AppMethodBeat.o(88898);
-      return true;
-    }
-    AppMethodBeat.o(88898);
-    return false;
-  }
-  
-  public static void bfB()
-  {
-    AppMethodBeat.i(88899);
-    Integer localInteger = (Integer)g.RL().Ru().get(ac.a.yzd, Integer.valueOf(0));
-    if ((localInteger != null) && (localInteger.intValue() == 1))
-    {
-      ab.i("MicroMsg.CardUtil", "share card entrance is open");
-      AppMethodBeat.o(88899);
-      return;
-    }
-    ab.i("MicroMsg.CardUtil", "open share card entrance");
-    g.RL().Ru().set(ac.a.yzd, Integer.valueOf(1));
-    AppMethodBeat.o(88899);
-  }
-  
-  public static boolean bfC()
-  {
-    AppMethodBeat.i(88900);
-    Integer localInteger = (Integer)g.RL().Ru().get(ac.a.yzd, null);
-    if ((localInteger != null) && (localInteger.intValue() == 1))
-    {
-      AppMethodBeat.o(88900);
-      return true;
-    }
-    AppMethodBeat.o(88900);
-    return false;
-  }
-  
-  public static String bfD()
-  {
-    AppMethodBeat.i(88907);
-    String str = (String)g.RL().Ru().get(ac.a.yzb, "");
-    AppMethodBeat.o(88907);
-    return str;
-  }
-  
-  public static void bfz()
-  {
-    AppMethodBeat.i(88897);
-    Integer localInteger = (Integer)g.RL().Ru().get(282883, null);
-    if ((localInteger != null) && (localInteger.intValue() == 1))
-    {
-      ab.i("MicroMsg.CardUtil", "card entrance is open");
-      AppMethodBeat.o(88897);
-      return;
-    }
-    ab.i("MicroMsg.CardUtil", "open card entrance");
-    g.RL().Ru().set(282883, Integer.valueOf(1));
-    AppMethodBeat.o(88897);
-  }
-  
-  public static List<com.tencent.mm.plugin.card.model.b> bg(List<pn> paramList)
-  {
-    AppMethodBeat.i(88889);
-    if ((paramList == null) || (paramList.size() == 0))
-    {
-      AppMethodBeat.o(88889);
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramList.size())
-    {
-      pn localpn = (pn)paramList.get(i);
-      com.tencent.mm.plugin.card.model.b localb = new com.tencent.mm.plugin.card.model.b();
-      localb.title = localpn.title;
-      localb.kmn = localpn.kmn;
-      localb.kqb = localpn.kqb;
-      localb.url = localpn.url;
-      localb.wGZ = localpn.wGZ;
-      localb.kmy = false;
-      localb.wHa = localpn.wHa;
-      localb.wHb = localpn.wHb;
-      localb.kWy = localpn.kWy;
-      localb.wFL = localpn.wFL;
-      localb.wFM = localpn.wFM;
-      localb.kmx = 1;
-      localArrayList.add(localb);
-      i += 1;
-    }
-    AppMethodBeat.o(88889);
-    return localArrayList;
-  }
-  
-  public static ArrayList<String> bh(List<String> paramList)
-  {
-    AppMethodBeat.i(88909);
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      ab.e("MicroMsg.CardUtil", "getContactNamesFromLabels labels is empty!");
-      AppMethodBeat.o(88909);
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    HashSet localHashSet = new HashSet();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Object localObject = (String)paramList.next();
-      localObject = com.tencent.mm.plugin.label.a.a.bKV().RR(com.tencent.mm.plugin.label.a.a.bKV().RO((String)localObject));
-      if ((localObject == null) || (((List)localObject).size() == 0)) {
-        ab.e("MicroMsg.CardUtil", "getContactNamesFromLabels, namelist get bu label is null");
-      } else {
-        localHashSet.addAll((Collection)localObject);
-      }
-    }
-    localArrayList.addAll(localHashSet);
-    AppMethodBeat.o(88909);
-    return localArrayList;
-  }
-  
-  public static ArrayList<String> bi(List<String> paramList)
-  {
-    AppMethodBeat.i(88910);
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      ab.e("MicroMsg.CardUtil", "getContactIdsFromLabels labels is empty!");
-      AppMethodBeat.o(88910);
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      String str = (String)paramList.next();
-      str = com.tencent.mm.plugin.label.a.a.bKV().RO(str);
-      if (!TextUtils.isEmpty(str)) {
-        localArrayList.add(str);
-      }
-    }
-    AppMethodBeat.o(88910);
-    return localArrayList;
-  }
-  
-  public static ShapeDrawable dR(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(88887);
+    AppMethodBeat.i(113815);
     ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { paramInt2, paramInt2, paramInt2, paramInt2, paramInt2, paramInt2, paramInt2, paramInt2 }, null, null));
     localShapeDrawable.getPaint().setColor(paramInt1);
-    AppMethodBeat.o(88887);
+    AppMethodBeat.o(113815);
     return localShapeDrawable;
   }
   
-  public static int dS(int paramInt1, int paramInt2)
+  public static int eO(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(88923);
+    AppMethodBeat.i(113851);
     if (paramInt2 <= 0)
     {
-      AppMethodBeat.o(88923);
+      AppMethodBeat.o(113851);
       return paramInt1;
     }
-    paramInt1 = aj.dS(paramInt1, paramInt2);
-    AppMethodBeat.o(88923);
+    paramInt1 = com.tencent.mm.ui.am.eO(paramInt1, paramInt2);
+    AppMethodBeat.o(113851);
     return paramInt1;
   }
   
-  public static void dz(String paramString1, String paramString2)
+  public static String f(Context paramContext, float paramFloat)
   {
-    AppMethodBeat.i(88896);
-    if (!bo.isNullOrNil(paramString1))
-    {
-      qj localqj = new qj();
-      localqj.cGX.cGY = paramString2;
-      localqj.cGX.content = paramString1;
-      localqj.cGX.type = t.oF(paramString2);
-      localqj.cGX.flags = 0;
-      com.tencent.mm.sdk.b.a.ymk.l(localqj);
-    }
-    AppMethodBeat.o(88896);
-  }
-  
-  public static Drawable g(Context paramContext, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(88920);
-    paramContext = b(paramContext, IB(paramString), paramInt);
-    paramString = dR(IB(paramString), paramInt);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramString);
-    localStateListDrawable.addState(new int[0], paramContext);
-    AppMethodBeat.o(88920);
-    return localStateListDrawable;
-  }
-  
-  public static String g(Context paramContext, float paramFloat)
-  {
-    AppMethodBeat.i(88901);
+    AppMethodBeat.i(113829);
     if (paramFloat <= 0.0F)
     {
-      AppMethodBeat.o(88901);
+      AppMethodBeat.o(113829);
       return "";
     }
     if ((paramFloat > 0.0F) && (paramFloat < 1000.0F))
     {
-      paramContext = paramContext.getString(2131297900, new Object[] { (int)paramFloat });
-      AppMethodBeat.o(88901);
+      paramContext = paramContext.getString(2131756832, new Object[] { (int)paramFloat });
+      AppMethodBeat.o(113829);
       return paramContext;
     }
     if (paramFloat >= 1000.0F)
     {
       StringBuilder localStringBuilder = new StringBuilder();
       paramFloat /= 1000.0F;
-      paramContext = paramContext.getString(2131297899, new Object[] { new DecimalFormat("0.00").format(paramFloat) });
-      AppMethodBeat.o(88901);
+      paramContext = paramContext.getString(2131756831, new Object[] { new DecimalFormat("0.00").format(paramFloat) });
+      AppMethodBeat.o(113829);
       return paramContext;
     }
-    AppMethodBeat.o(88901);
+    AppMethodBeat.o(113829);
     return "";
+  }
+  
+  public static Drawable h(Context paramContext, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(113848);
+    paramContext = d(paramContext, Rm(paramString), paramInt);
+    paramString = eN(Rm(paramString), paramInt);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, paramString);
+    localStateListDrawable.addState(new int[0], paramContext);
+    AppMethodBeat.o(113848);
+    return localStateListDrawable;
   }
   
   public static boolean h(com.tencent.mm.plugin.card.base.b paramb)
   {
-    AppMethodBeat.i(88905);
+    AppMethodBeat.i(113833);
     boolean bool2;
     boolean bool1;
     if ((paramb instanceof CardInfo))
     {
-      bool2 = am.bcd().update((CardInfo)paramb, new String[0]);
+      bool2 = com.tencent.mm.plugin.card.model.am.bIV().update((CardInfo)paramb, new String[0]);
       bool1 = bool2;
       if (!bool2)
       {
-        ab.e("MicroMsg.CardUtil", "update mCardInfo fail, cardId = %s", new Object[] { paramb.bbh() });
+        ad.e("MicroMsg.CardUtil", "update mCardInfo fail, cardId = %s", new Object[] { paramb.bHZ() });
         bool1 = bool2;
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(88905);
+      AppMethodBeat.o(113833);
       return bool1;
       if ((paramb instanceof ShareCardInfo))
       {
-        bool2 = am.bcl().update((ShareCardInfo)paramb, new String[0]);
+        bool2 = com.tencent.mm.plugin.card.model.am.bJd().update((ShareCardInfo)paramb, new String[0]);
         bool1 = bool2;
         if (!bool2)
         {
-          ab.e("MicroMsg.CardUtil", "update mCardInfo fail, cardId = %s", new Object[] { paramb.bbh() });
+          ad.e("MicroMsg.CardUtil", "update mCardInfo fail, cardId = %s", new Object[] { paramb.bHZ() });
           bool1 = bool2;
         }
       }
@@ -925,58 +918,58 @@ public final class l
     }
   }
   
-  public static String ha(long paramLong)
-  {
-    AppMethodBeat.i(88890);
-    paramLong = 1000L * paramLong;
-    new GregorianCalendar().setTimeInMillis(paramLong);
-    if (kCj == null) {
-      kCj = new SimpleDateFormat("yyyy.MM.dd");
-    }
-    String str = kCj.format(new Date(paramLong));
-    AppMethodBeat.o(88890);
-    return str;
-  }
-  
-  private static boolean ig(long paramLong)
-  {
-    AppMethodBeat.i(88915);
-    if ((0x8 & paramLong) > 0L)
-    {
-      ab.i("MicroMsg.CardUtil", "shouldShowWarning show the warning!");
-      AppMethodBeat.o(88915);
-      return true;
-    }
-    AppMethodBeat.o(88915);
-    return false;
-  }
-  
   public static boolean isNetworkAvailable(Context paramContext)
   {
-    AppMethodBeat.i(88883);
+    AppMethodBeat.i(113811);
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
     if (paramContext != null)
     {
       paramContext = paramContext.getActiveNetworkInfo();
       if ((paramContext != null) && (paramContext.isConnected()) && (paramContext.getState() == NetworkInfo.State.CONNECTED))
       {
-        AppMethodBeat.o(88883);
+        AppMethodBeat.o(113811);
         return true;
       }
     }
-    AppMethodBeat.o(88883);
+    AppMethodBeat.o(113811);
     return false;
   }
   
   public static boolean isNumeric(String paramString)
   {
-    AppMethodBeat.i(88891);
+    AppMethodBeat.i(113819);
     boolean bool = Pattern.compile("[0-9]*").matcher(paramString).matches();
-    AppMethodBeat.o(88891);
+    AppMethodBeat.o(113819);
     return bool;
   }
   
-  public static boolean sX(int paramInt)
+  public static String mz(long paramLong)
+  {
+    AppMethodBeat.i(113818);
+    paramLong = 1000L * paramLong;
+    new GregorianCalendar().setTimeInMillis(paramLong);
+    if (nJi == null) {
+      nJi = new SimpleDateFormat("yyyy.MM.dd");
+    }
+    String str = nJi.format(new Date(paramLong));
+    AppMethodBeat.o(113818);
+    return str;
+  }
+  
+  private static boolean nO(long paramLong)
+  {
+    AppMethodBeat.i(113843);
+    if ((0x8 & paramLong) > 0L)
+    {
+      ad.i("MicroMsg.CardUtil", "shouldShowWarning show the warning!");
+      AppMethodBeat.o(113843);
+      return true;
+    }
+    AppMethodBeat.o(113843);
+    return false;
+  }
+  
+  public static boolean yQ(int paramInt)
   {
     switch (paramInt)
     {
@@ -986,17 +979,17 @@ public final class l
     return true;
   }
   
-  public static boolean tt(int paramInt)
+  public static boolean zn(int paramInt)
   {
     return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 9) || (paramInt == 12) || (paramInt == 17) || (paramInt == 21);
   }
   
-  public static boolean tu(int paramInt)
+  public static boolean zo(int paramInt)
   {
     return (paramInt == 7) || (paramInt == 8) || (paramInt == 16) || (paramInt == 26);
   }
   
-  public static boolean tv(int paramInt)
+  public static boolean zp(int paramInt)
   {
     return (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 15);
   }

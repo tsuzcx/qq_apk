@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.sns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ie;
-import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.mm.g.a.ja;
+import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
 import com.tencent.mm.sdk.b.c;
 
 public final class f
-  extends c<ie>
+  extends c<ja>
 {
-  private n qXp;
-  private String qXs;
-  private TimeLineObject qXt;
+  private p wvM;
+  private String wvP;
+  private TimeLineObject wvQ;
   
   public f()
   {
-    AppMethodBeat.i(35610);
-    this.__eventId = ie.class.getName().hashCode();
-    AppMethodBeat.o(35610);
+    AppMethodBeat.i(160634);
+    this.__eventId = ja.class.getName().hashCode();
+    AppMethodBeat.o(160634);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.f
  * JD-Core Version:    0.7.0.1
  */

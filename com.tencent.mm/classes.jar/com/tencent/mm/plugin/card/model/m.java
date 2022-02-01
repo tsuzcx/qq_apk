@@ -3,30 +3,30 @@ package com.tencent.mm.plugin.card.model;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.platformtools.v;
-import com.tencent.mm.platformtools.v.a;
-import com.tencent.mm.platformtools.v.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.d;
-import java.io.File;
+import com.tencent.mm.b.g;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.platformtools.s;
+import com.tencent.mm.platformtools.s.a;
+import com.tencent.mm.platformtools.s.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.vfs.e;
 import java.io.IOException;
 
 public final class m
-  implements v
+  implements s
 {
-  public static final String knX;
-  public static final String knY;
+  public static final String ntl;
+  public static final String ntm;
   private final String TAG = "MicroMsg.CardSimpleGetPicStrategy";
   private String mPicUrl = null;
   
   static
   {
-    AppMethodBeat.i(87853);
-    knX = e.eQz + "card";
-    knY = knX + File.separator + "video";
-    AppMethodBeat.o(87853);
+    AppMethodBeat.i(112795);
+    ntl = b.aih() + "card";
+    ntm = ntl + "/video";
+    AppMethodBeat.o(112795);
   }
   
   public m(String paramString)
@@ -34,25 +34,25 @@ public final class m
     this.mPicUrl = paramString;
   }
   
-  public static String HO(String paramString)
+  public static String Qy(String paramString)
   {
-    AppMethodBeat.i(87850);
-    paramString = String.format("%s/%s", new Object[] { knX, g.w(paramString.getBytes()) });
-    AppMethodBeat.o(87850);
+    AppMethodBeat.i(112792);
+    paramString = String.format("%s/%s", new Object[] { ntl, g.getMessageDigest(paramString.getBytes()) });
+    AppMethodBeat.o(112792);
     return paramString;
   }
   
-  public final void W(String paramString, boolean paramBoolean) {}
+  public final void Z(String paramString, boolean paramBoolean) {}
   
-  public final Bitmap a(Bitmap paramBitmap, v.a parama, String paramString)
+  public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
-    AppMethodBeat.i(87852);
-    if (v.a.gjx == parama) {}
+    AppMethodBeat.i(112794);
+    if (s.a.hUk == parama) {}
     try
     {
-      d.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aon(), false);
-      ab.d("MicroMsg.CardSimpleGetPicStrategy", "get bitmap, from %s", new Object[] { parama.toString() });
-      AppMethodBeat.o(87852);
+      f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aGy(), false);
+      ad.d("MicroMsg.CardSimpleGetPicStrategy", "get bitmap, from %s", new Object[] { parama.toString() });
+      AppMethodBeat.o(112794);
       return paramBitmap;
     }
     catch (IOException paramString)
@@ -61,66 +61,66 @@ public final class m
       {
         try
         {
-          paramString = new File(aon());
+          paramString = new e(aGy());
           if (!paramString.exists()) {
             paramString.mkdirs();
           }
-          ab.w("MicroMsg.CardSimpleGetPicStrategy", " retry saving bitmap");
-          d.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aon(), false);
+          ad.w("MicroMsg.CardSimpleGetPicStrategy", " retry saving bitmap");
+          f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aGy(), false);
         }
         catch (IOException paramString)
         {
-          ab.printErrStackTrace("MicroMsg.CardSimpleGetPicStrategy", paramString, "", new Object[0]);
-          ab.w("MicroMsg.CardSimpleGetPicStrategy", "save bitmap fail");
+          ad.printErrStackTrace("MicroMsg.CardSimpleGetPicStrategy", paramString, "", new Object[0]);
+          ad.w("MicroMsg.CardSimpleGetPicStrategy", "save bitmap fail");
         }
       }
     }
   }
   
-  public final void a(v.a parama, String paramString) {}
+  public final void a(s.a parama, String paramString) {}
   
-  public final v.b aom()
-  {
-    return null;
-  }
-  
-  public final String aon()
-  {
-    AppMethodBeat.i(87849);
-    String str = String.format("%s/%s", new Object[] { knX, g.w(this.mPicUrl.getBytes()) });
-    AppMethodBeat.o(87849);
-    return str;
-  }
-  
-  public final String aoo()
+  public final String aGA()
   {
     return this.mPicUrl;
   }
   
-  public final String aop()
-  {
-    return this.mPicUrl;
-  }
-  
-  public final boolean aoq()
+  public final boolean aGB()
   {
     return true;
   }
   
-  public final boolean aor()
+  public final boolean aGC()
   {
     return false;
   }
   
-  public final Bitmap aos()
+  public final Bitmap aGD()
   {
-    AppMethodBeat.i(87851);
-    ab.d("MicroMsg.CardSimpleGetPicStrategy", "no sd card!");
-    AppMethodBeat.o(87851);
+    AppMethodBeat.i(112793);
+    ad.d("MicroMsg.CardSimpleGetPicStrategy", "no sd card!");
+    AppMethodBeat.o(112793);
     return null;
   }
   
-  public final void aot() {}
+  public final void aGE() {}
+  
+  public final s.b aGx()
+  {
+    return null;
+  }
+  
+  public final String aGy()
+  {
+    AppMethodBeat.i(112791);
+    String str = String.format("%s/%s", new Object[] { ntl, g.getMessageDigest(this.mPicUrl.getBytes()) });
+    AppMethodBeat.o(112791);
+    return str;
+  }
+  
+  public final String aGz()
+  {
+    return this.mPicUrl;
+  }
   
   public final String getCacheKey()
   {
@@ -129,7 +129,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.m
  * JD-Core Version:    0.7.0.1
  */

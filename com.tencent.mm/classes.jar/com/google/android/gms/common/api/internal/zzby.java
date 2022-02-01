@@ -40,18 +40,18 @@ public final class zzby
   
   public zzby(Context paramContext, Handler paramHandler, ClientSettings paramClientSettings, Api.AbstractClientBuilder<? extends SignInClient, SignInOptions> paramAbstractClientBuilder)
   {
-    AppMethodBeat.i(60864);
+    AppMethodBeat.i(11356);
     this.mContext = paramContext;
     this.mHandler = paramHandler;
     this.zzgf = ((ClientSettings)Preconditions.checkNotNull(paramClientSettings, "ClientSettings must not be null"));
     this.mScopes = paramClientSettings.getRequiredScopes();
     this.zzby = paramAbstractClientBuilder;
-    AppMethodBeat.o(60864);
+    AppMethodBeat.o(11356);
   }
   
   private final void zzb(SignInResponse paramSignInResponse)
   {
-    AppMethodBeat.i(60871);
+    AppMethodBeat.i(11363);
     Object localObject = paramSignInResponse.getConnectionResult();
     if (((ConnectionResult)localObject).isSuccess())
     {
@@ -63,7 +63,7 @@ public final class zzby
         Log.wtf("SignInCoordinator", String.valueOf(localObject).length() + 48 + "Sign-in succeeded with resolve account failure: " + (String)localObject, new Exception());
         this.zzlw.zzg(paramSignInResponse);
         this.zzhn.disconnect();
-        AppMethodBeat.o(60871);
+        AppMethodBeat.o(11363);
         return;
       }
       this.zzlw.zza(((ResolveAccountResponse)localObject).getAccountAccessor(), this.mScopes);
@@ -71,7 +71,7 @@ public final class zzby
     for (;;)
     {
       this.zzhn.disconnect();
-      AppMethodBeat.o(60871);
+      AppMethodBeat.o(11363);
       return;
       this.zzlw.zzg((ConnectionResult)localObject);
     }
@@ -79,35 +79,35 @@ public final class zzby
   
   public final void onConnected(Bundle paramBundle)
   {
-    AppMethodBeat.i(60867);
+    AppMethodBeat.i(11359);
     this.zzhn.signIn(this);
-    AppMethodBeat.o(60867);
+    AppMethodBeat.o(11359);
   }
   
   public final void onConnectionFailed(ConnectionResult paramConnectionResult)
   {
-    AppMethodBeat.i(60869);
+    AppMethodBeat.i(11361);
     this.zzlw.zzg(paramConnectionResult);
-    AppMethodBeat.o(60869);
+    AppMethodBeat.o(11361);
   }
   
   public final void onConnectionSuspended(int paramInt)
   {
-    AppMethodBeat.i(60868);
+    AppMethodBeat.i(11360);
     this.zzhn.disconnect();
-    AppMethodBeat.o(60868);
+    AppMethodBeat.o(11360);
   }
   
   public final void onSignInComplete(SignInResponse paramSignInResponse)
   {
-    AppMethodBeat.i(60870);
+    AppMethodBeat.i(11362);
     this.mHandler.post(new zzca(this, paramSignInResponse));
-    AppMethodBeat.o(60870);
+    AppMethodBeat.o(11362);
   }
   
   public final void zza(zzcb paramzzcb)
   {
-    AppMethodBeat.i(60865);
+    AppMethodBeat.i(11357);
     if (this.zzhn != null) {
       this.zzhn.disconnect();
     }
@@ -117,11 +117,11 @@ public final class zzby
     if ((this.mScopes == null) || (this.mScopes.isEmpty()))
     {
       this.mHandler.post(new zzbz(this));
-      AppMethodBeat.o(60865);
+      AppMethodBeat.o(11357);
       return;
     }
     this.zzhn.connect();
-    AppMethodBeat.o(60865);
+    AppMethodBeat.o(11357);
   }
   
   public final SignInClient zzbt()
@@ -131,11 +131,11 @@ public final class zzby
   
   public final void zzbz()
   {
-    AppMethodBeat.i(60866);
+    AppMethodBeat.i(11358);
     if (this.zzhn != null) {
       this.zzhn.disconnect();
     }
-    AppMethodBeat.o(60866);
+    AppMethodBeat.o(11358);
   }
 }
 

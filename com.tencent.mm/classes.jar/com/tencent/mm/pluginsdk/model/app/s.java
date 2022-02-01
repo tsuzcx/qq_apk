@@ -1,40 +1,47 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
 
 final class s
-  implements Runnable
 {
-  private String appId = null;
-  private int fPp = 0;
-  private ak handler = null;
-  private String url = null;
+  public String appId;
+  public int hrU;
   
-  public s(ak paramak, String paramString1, int paramInt, String paramString2)
+  public s(String paramString, int paramInt)
   {
-    this.handler = paramak;
-    this.appId = paramString1;
-    this.fPp = paramInt;
-    this.url = paramString2;
+    this.appId = paramString;
+    this.hrU = paramInt;
   }
   
-  public final void run()
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(79362);
-    if ((this.appId == null) || (this.appId.length() == 0) || (this.url == null) || (this.url.length() == 0))
+    AppMethodBeat.i(151791);
+    if (paramObject == null)
     {
-      AppMethodBeat.o(79362);
-      return;
+      AppMethodBeat.o(151791);
+      return false;
     }
-    Object localObject = bo.apZ(this.url);
-    localObject = new v(this.appId, this.fPp, (byte[])localObject);
-    Message localMessage = Message.obtain();
-    localMessage.obj = localObject;
-    this.handler.sendMessage(localMessage);
-    AppMethodBeat.o(79362);
+    if (!(paramObject instanceof s))
+    {
+      AppMethodBeat.o(151791);
+      return false;
+    }
+    paramObject = (s)paramObject;
+    if ((paramObject.appId.equals(this.appId)) && (paramObject.hrU == this.hrU))
+    {
+      AppMethodBeat.o(151791);
+      return true;
+    }
+    AppMethodBeat.o(151791);
+    return false;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(151792);
+    String str = this.appId + this.hrU;
+    AppMethodBeat.o(151792);
+    return str;
   }
 }
 

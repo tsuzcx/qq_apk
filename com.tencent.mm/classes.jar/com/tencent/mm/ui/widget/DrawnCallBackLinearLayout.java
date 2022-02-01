@@ -12,9 +12,9 @@ import org.xwalk.core.Log;
 public class DrawnCallBackLinearLayout
   extends LinearLayout
 {
-  private DrawnCallBackLinearLayout.a ABY;
-  private DrawnCallBackLinearLayout.b ABZ;
   public final boolean DEBUG = true;
+  private a HyB;
+  private b HyC;
   public final String TAG = "MicroMsg.TestTimeForChatting";
   
   public DrawnCallBackLinearLayout(Context paramContext)
@@ -35,49 +35,56 @@ public class DrawnCallBackLinearLayout
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(107845);
+    AppMethodBeat.i(143316);
     super.dispatchDraw(paramCanvas);
-    if (this.ABY != null)
+    if (this.HyB != null)
     {
-      this.ABY.dJg();
-      this.ABY = null;
+      this.HyB.eYB();
+      this.HyB = null;
     }
-    AppMethodBeat.o(107845);
+    AppMethodBeat.o(143316);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(107843);
-    if (this.ABZ != null) {
-      this.ABZ = null;
+    AppMethodBeat.i(143314);
+    if (this.HyC != null) {
+      this.HyC = null;
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(107843);
+    AppMethodBeat.o(143314);
     return bool;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(107844);
+    AppMethodBeat.i(143315);
     long l = System.currentTimeMillis();
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     Log.i("MicroMsg.TestTimeForChatting", "[onLayout] " + (System.currentTimeMillis() - l));
-    AppMethodBeat.o(107844);
+    AppMethodBeat.o(143315);
   }
   
-  public void setListener(DrawnCallBackLinearLayout.a parama)
+  public void setListener(a parama)
   {
-    this.ABY = parama;
+    this.HyB = parama;
   }
   
-  public void setTouchedCallback(DrawnCallBackLinearLayout.b paramb)
+  public void setTouchedCallback(b paramb)
   {
-    this.ABZ = paramb;
+    this.HyC = paramb;
   }
+  
+  public static abstract interface a
+  {
+    public abstract void eYB();
+  }
+  
+  public static abstract interface b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.widget.DrawnCallBackLinearLayout
  * JD-Core Version:    0.7.0.1
  */

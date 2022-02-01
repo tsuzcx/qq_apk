@@ -1,240 +1,355 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.SpannableString;
-import android.text.style.ImageSpan;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.c.c;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.sns.data.c;
+import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.storage.p;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.yk;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public final class bc
+  extends d<p>
 {
-  private String nZZ;
-  private LinearLayout scl;
-  public TextView scm;
-  public TextView scn;
-  private View sco;
-  private View scp;
-  public com.tencent.mm.plugin.sns.storage.b scq;
-  public com.tencent.mm.plugin.sns.storage.a scr;
-  private View view;
+  private boolean diE;
+  List<p> list;
+  private String pLA;
+  private String userName;
+  private Comparator<p> wDj;
+  private boolean xEc;
+  private a xEd;
+  private c xEe;
+  private int xjP;
+  private int xjQ;
   
-  public bc(View paramView)
+  public bc(a parama, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(39857);
-    this.view = paramView;
-    this.nZZ = aa.gP(ah.getContext());
-    ab.i("MicroMsg.TimeLineAdView", "adView init lan " + this.nZZ);
-    this.scm = ((TextView)this.view.findViewById(2131827887));
-    this.scn = ((TextView)this.view.findViewById(2131827888));
-    this.sco = this.view.findViewById(2131827942);
-    this.scp = this.view.findViewById(2131827941);
-    this.scl = ((LinearLayout)this.view.findViewById(2131827940));
-    paramView = " " + this.view.getResources().getString(2131303763) + " ";
-    this.scm.setText(paramView);
-    AppMethodBeat.o(39857);
+    AppMethodBeat.i(99057);
+    this.userName = "";
+    this.list = new ArrayList();
+    this.diE = false;
+    this.xjP = 0;
+    this.xjQ = 0;
+    this.pLA = "";
+    this.xEc = false;
+    this.wDj = new Comparator() {};
+    this.xEd = parama;
+    this.userName = paramString;
+    this.diE = paramBoolean;
+    AppMethodBeat.o(99057);
   }
   
-  public final void a(View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
+  private int b(int paramInt1, int paramInt2, List<p> paramList)
   {
-    AppMethodBeat.i(39858);
-    this.scn.setOnClickListener(paramOnClickListener1);
-    this.scm.setOnClickListener(paramOnClickListener2);
-    if (this.sco != null) {
-      this.sco.setOnClickListener(paramOnClickListener2);
-    }
-    if (this.scl != null) {
-      this.scl.setOnClickListener(paramOnClickListener2);
-    }
-    AppMethodBeat.o(39858);
-  }
-  
-  public final void a(com.tencent.mm.plugin.sns.storage.b paramb, com.tencent.mm.plugin.sns.storage.a parama)
-  {
-    AppMethodBeat.i(39860);
-    this.scr = parama;
-    this.scq = paramb;
-    Object localObject1 = "";
-    Context localContext;
-    if (paramb != null)
+    AppMethodBeat.i(99065);
+    this.xEe.drT();
+    if ((this.diE) && (paramInt1 == 0))
     {
-      if ("zh_CN".equals(this.nZZ)) {
-        localObject1 = paramb.rpU;
+      AppMethodBeat.o(99065);
+      return 1;
+    }
+    Object localObject;
+    TimeLineObject localTimeLineObject;
+    if (paramInt1 + 1 < paramInt2)
+    {
+      localObject = (p)paramList.get(paramInt1 + 1);
+      this.xEe.wAh = ((p)localObject).field_head;
+      localTimeLineObject = ((p)localObject).dxy();
+      this.xEe.wAl = localTimeLineObject.Etj;
+      this.xEe.wAi = aj.ap(((p)localObject).field_localPrivate, this.diE);
+      this.xEe.wAj = ((p)localObject).field_type;
+      if (localTimeLineObject.Etm != null) {
+        this.xEe.wAk = localTimeLineObject.Etm.DaC.size();
       }
     }
     else
     {
-      Object localObject2 = localObject1;
-      if (paramb != null)
+      if (paramInt1 + 2 < paramInt2)
       {
-        localObject2 = localObject1;
-        if (bo.isNullOrNil((String)localObject1)) {
-          localObject2 = paramb.rpS;
+        localObject = (p)paramList.get(paramInt1 + 2);
+        this.xEe.wAr = ((p)localObject).field_head;
+        localTimeLineObject = ((p)localObject).dxy();
+        this.xEe.wAm = localTimeLineObject.Etj;
+        this.xEe.wAs = aj.ap(((p)localObject).field_localPrivate, this.diE);
+        this.xEe.wAt = ((p)localObject).field_type;
+        if (localTimeLineObject.Etm == null) {
+          break label371;
         }
+        this.xEe.wAu = localTimeLineObject.Etm.DaC.size();
       }
-      localContext = this.scn.getContext();
-      localObject1 = localObject2;
-      if (bo.isNullOrNil((String)localObject2)) {
-        localObject1 = localContext.getString(2131303769);
-      }
-      localObject1 = (String)localObject1 + " ";
-      int i = ((String)localObject1).length();
-      localObject2 = new SpannableString((String)localObject1 + "ad_");
-      if ((parama == null) || (!parama.cqi())) {
-        break label383;
-      }
-      localObject1 = localContext.getResources().getDrawable(2131230770);
-      ((Drawable)localObject1).setBounds(0, 0, (int)(this.scn.getTextSize() * 0.8D), (int)(this.scn.getTextSize() * 0.8D));
-      localObject1 = new ImageSpan((Drawable)localObject1, 1);
-      label222:
-      if (!bo.isNullOrNil(paramb.rpT)) {
-        h.c("adId", paramb.rpT, false, 41, new bc.1(this, (SpannableString)localObject2, i));
-      }
-      ((SpannableString)localObject2).setSpan(localObject1, i, i + 3, 33);
-      this.scn.setText((CharSequence)localObject2);
-      if ((parama == null) || (bo.isNullOrNil(parama.rpn))) {
-        break label443;
-      }
-      this.scp.setVisibility(0);
-      label299:
-      if (paramb != null)
-      {
-        if (!"zh_CN".equals(this.nZZ)) {
-          break label455;
-        }
-        paramb = paramb.rqd;
+      label248:
+      paramList = (p)paramList.get(paramInt1);
+      this.xEe.wAg = paramList.field_head;
+      localObject = paramList.dxy();
+      this.xEe.wAn = ((TimeLineObject)localObject).Etj;
+      this.xEe.wAo = paramList.field_type;
+      this.xEe.wAq = aj.ap(paramList.field_localPrivate, this.diE);
+      if (((TimeLineObject)localObject).Etm == null) {
+        break label382;
       }
     }
-    for (;;)
+    label371:
+    label382:
+    for (this.xEe.wAp = ((TimeLineObject)localObject).Etm.DaC.size();; this.xEe.wAp = 0)
     {
-      if (!bo.isNullOrNil(paramb)) {
-        this.scm.setText(paramb);
+      if (!this.xEe.drU()) {
+        break label393;
       }
-      AppMethodBeat.o(39860);
-      return;
-      if (("zh_TW".equals(this.nZZ)) || ("zh_HK".equals(this.nZZ)))
-      {
-        localObject1 = paramb.rpW;
-        break;
-      }
-      localObject1 = paramb.rpV;
+      AppMethodBeat.o(99065);
+      return 1;
+      this.xEe.wAk = 0;
       break;
-      label383:
-      localObject1 = localContext.getResources().getDrawable(2131230771);
-      ((Drawable)localObject1).setBounds(0, 0, (int)(this.scn.getTextSize() * 1.3D), (int)(this.scn.getTextSize() * 1.3D));
-      localObject1 = new ImageSpan((Drawable)localObject1, 0);
-      break label222;
-      label443:
-      this.scp.setVisibility(8);
-      break label299;
-      label455:
-      if (("zh_TW".equals(this.nZZ)) || ("zh_HK".equals(this.nZZ))) {
-        paramb = paramb.rqf;
-      } else {
-        paramb = paramb.rqe;
-      }
+      this.xEe.wAu = 0;
+      break label248;
     }
+    label393:
+    if (this.xEe.drV())
+    {
+      AppMethodBeat.o(99065);
+      return 2;
+    }
+    AppMethodBeat.o(99065);
+    return 3;
   }
   
-  public final String cwG()
+  private void e(boolean paramBoolean, List<p> paramList)
   {
-    if (this.scr == null) {
-      return "";
-    }
-    if (this.scr.cFe == null) {
-      return "";
-    }
-    return this.scr.cFe;
-  }
-  
-  public final int[] cwH()
-  {
-    AppMethodBeat.i(39856);
-    int[] arrayOfInt = new int[2];
-    if (this.scl != null)
+    AppMethodBeat.i(99066);
+    if (!paramBoolean)
     {
-      this.sco.getLocationInWindow(arrayOfInt);
-      arrayOfInt[0] += this.sco.getMeasuredWidth();
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(39856);
-      return arrayOfInt;
-      if (this.sco != null)
-      {
-        this.sco.getLocationInWindow(arrayOfInt);
-        arrayOfInt[0] += this.sco.getMeasuredWidth();
-      }
-    }
-  }
-  
-  public final void setVisibility(int paramInt)
-  {
-    AppMethodBeat.i(39861);
-    com.tencent.mm.storage.a locala;
-    if ((this.scq != null) && (this.scq.rpR == 1))
-    {
-      this.scn.setVisibility(8);
-      locala = c.abV().aqM("Sns_CanvasAd_DetailLink_JumpWay");
-      if (!locala.isValid()) {
-        break label202;
-      }
-    }
-    label202:
-    for (int i = bo.getInt(locala.field_value, -1);; i = -1)
-    {
-      if ((i != -1) && (this.scq != null) && (this.scq.cqk()) && (i.abq(this.scq.cBW))) {
-        this.scn.setVisibility(paramInt);
-      }
-      this.scm.setVisibility(paramInt);
-      if (this.sco != null) {
-        this.sco.setVisibility(paramInt);
-      }
-      if (this.scl != null) {
-        this.scl.setVisibility(paramInt);
-      }
-      if ((this.scr != null) && (!bo.isNullOrNil(this.scr.rpn)))
-      {
-        this.scp.setVisibility(paramInt);
-        AppMethodBeat.o(39861);
-        return;
-        this.scn.setVisibility(paramInt);
-        break;
-      }
-      this.scp.setVisibility(8);
-      AppMethodBeat.o(39861);
+      AppMethodBeat.o(99066);
       return;
     }
+    if (this.diE)
+    {
+      p localp = new p((byte)0);
+      localp.field_snsId = 0L;
+      localp.xiB = -1;
+      localp.setCreateTime((int)(System.currentTimeMillis() / 1000L));
+      paramList.add(0, localp);
+    }
+    AppMethodBeat.o(99066);
   }
   
-  public final void w(Object paramObject1, Object paramObject2)
+  private void f(boolean paramBoolean, List<p> paramList)
   {
-    AppMethodBeat.i(39859);
-    this.scn.setTag(paramObject1);
-    this.scm.setTag(paramObject2);
-    if (this.sco != null) {
-      this.sco.setTag(paramObject2);
+    AppMethodBeat.i(99067);
+    this.xEe = new c();
+    HashMap localHashMap1 = new HashMap();
+    HashMap localHashMap2 = new HashMap();
+    HashMap localHashMap3 = new HashMap();
+    long l = System.currentTimeMillis();
+    int m = 0;
+    int k = 0;
+    int i = 0;
+    e(paramBoolean, paramList);
+    int n = paramList.size();
+    ad.d("MicroMsg.SnsSelfHelper", "initFixType ".concat(String.valueOf(n)));
+    int j = 0;
+    while (j < n)
+    {
+      int i1 = b(j, n, paramList);
+      localHashMap1.put(Integer.valueOf(i), Integer.valueOf(m));
+      localHashMap2.put(Integer.valueOf(i), Integer.valueOf(i1));
+      m += i1;
+      localHashMap3.put(Integer.valueOf(i), Integer.valueOf(k));
+      k += hs(j, i1);
+      j += i1;
+      i += 1;
     }
-    if (this.scl != null) {
-      this.scl.setTag(paramObject2);
+    this.xjP = i;
+    this.xjQ = paramList.size();
+    ad.d("MicroMsg.SnsSelfHelper", "icount " + this.xjP);
+    this.list = paramList;
+    com.tencent.mm.plugin.sns.data.q.be("SnsphotoAdapter initFixType ", l);
+    this.xEd.b(this.list, localHashMap1, localHashMap2, localHashMap3, this.xjQ, this.xjP);
+    AppMethodBeat.o(99067);
+  }
+  
+  private int hs(int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    int j = 0;
+    if ((this.diE) && (paramInt1 == 0)) {
+      paramInt1 = j;
     }
-    AppMethodBeat.o(39859);
+    do
+    {
+      do
+      {
+        return paramInt1;
+        paramInt1 = i;
+        if (paramInt2 > 0)
+        {
+          paramInt1 = i;
+          if (this.xEe.wAo == 1) {
+            paramInt1 = 1;
+          }
+        }
+        i = paramInt1;
+        if (paramInt2 >= 2)
+        {
+          i = paramInt1;
+          if (this.xEe.wAj == 1) {
+            i = paramInt1 + 1;
+          }
+        }
+        paramInt1 = i;
+      } while (paramInt2 < 3);
+      paramInt1 = i;
+    } while (this.xEe.wAt != 1);
+    return i + 1;
+  }
+  
+  public final List<p> VZ()
+  {
+    AppMethodBeat.i(99059);
+    List localList = aj.a(this.userName, this.diE, this.pLA, this.xEc);
+    ad.i("MicroMsg.SnsSelfHelper", "loadData thread: %d count: %d", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(localList.size()) });
+    AppMethodBeat.o(99059);
+    return localList;
+  }
+  
+  public final void dBN()
+  {
+    AppMethodBeat.i(99062);
+    Collections.sort(this.list, this.wDj);
+    AppMethodBeat.o(99062);
+  }
+  
+  final void dBO()
+  {
+    AppMethodBeat.i(99063);
+    f(false, this.list);
+    AppMethodBeat.o(99063);
+  }
+  
+  public final void fB(List<p> paramList)
+  {
+    AppMethodBeat.i(99058);
+    if (this.xEd != null)
+    {
+      if (paramList != null) {
+        f(true, paramList);
+      }
+      this.xEd.dBL();
+    }
+    AppMethodBeat.o(99058);
+  }
+  
+  final boolean fF(List<Integer> paramList)
+  {
+    AppMethodBeat.i(99060);
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      AppMethodBeat.o(99060);
+      return false;
+    }
+    ad.d("MicroMsg.SnsSelfHelper", "remove Items");
+    paramList = paramList.iterator();
+    boolean bool = false;
+    label137:
+    while (paramList.hasNext())
+    {
+      int j = ((Integer)paramList.next()).intValue();
+      int k = this.list.size();
+      int i = 1;
+      for (;;)
+      {
+        if (i >= k) {
+          break label137;
+        }
+        p localp = (p)this.list.get(i);
+        if ((localp != null) && (localp.xiB == j))
+        {
+          this.list.remove(i);
+          bool = true;
+          break;
+        }
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(99060);
+    return bool;
+  }
+  
+  final boolean fG(List<Integer> paramList)
+  {
+    AppMethodBeat.i(99061);
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      AppMethodBeat.o(99061);
+      return false;
+    }
+    ad.d("MicroMsg.SnsSelfHelper", "change Items");
+    Object localObject = new LinkedList();
+    int i = 1;
+    boolean bool = false;
+    if (i < this.list.size())
+    {
+      p localp = (p)this.list.get(i);
+      if (localp == null) {
+        break label226;
+      }
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        int j = ((Integer)localIterator.next()).intValue();
+        if (localp.xiB == j)
+        {
+          ad.d("MicroMsg.SnsSelfHelper", "update list localId ".concat(String.valueOf(j)));
+          this.list.remove(i);
+          ((LinkedList)localObject).add(af.dtu().Ne(j));
+          i -= 1;
+          bool = true;
+        }
+      }
+    }
+    label226:
+    for (;;)
+    {
+      i += 1;
+      break;
+      paramList = ((LinkedList)localObject).iterator();
+      while (paramList.hasNext())
+      {
+        localObject = (p)paramList.next();
+        this.list.add(localObject);
+      }
+      AppMethodBeat.o(99061);
+      return bool;
+    }
+  }
+  
+  public final void g(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(99064);
+    ad.d("MicroMsg.SnsSelfHelper", "limitSeq ".concat(String.valueOf(paramString)));
+    this.pLA = paramString;
+    this.xEc = paramBoolean1;
+    lQ(paramBoolean2);
+    AppMethodBeat.o(99064);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void b(List<p> paramList, Map<Integer, Integer> paramMap1, Map<Integer, Integer> paramMap2, Map<Integer, Integer> paramMap3, int paramInt1, int paramInt2);
+    
+    public abstract void dBL();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.bc
  * JD-Core Version:    0.7.0.1
  */

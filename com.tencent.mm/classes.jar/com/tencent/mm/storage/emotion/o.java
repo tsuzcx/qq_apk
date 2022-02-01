@@ -1,54 +1,55 @@
 package com.tencent.mm.storage.emotion;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cd;
+import com.tencent.mm.g.c.bm;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class o
-  extends cd
+  extends bm
 {
-  public static c.a info;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(62868);
+    AppMethodBeat.i(105121);
     c.a locala = new c.a();
-    locala.yrK = new Field[2];
-    locala.columns = new String[3];
+    locala.EYt = new Field[7];
+    locala.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "reqType";
-    locala.yrM.put("reqType", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" reqType TEXT PRIMARY KEY ");
+    locala.columns[0] = "prodcutID";
+    locala.EYv.put("prodcutID", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" prodcutID TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.yrL = "reqType";
-    locala.columns[1] = "cache";
-    locala.yrM.put("cache", "BLOB default '' ");
-    localStringBuilder.append(" cache BLOB default '' ");
-    locala.columns[2] = "rowid";
+    locala.EYu = "prodcutID";
+    locala.columns[1] = "totalCount";
+    locala.EYv.put("totalCount", "INTEGER");
+    localStringBuilder.append(" totalCount INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "continuCount";
+    locala.EYv.put("continuCount", "INTEGER");
+    localStringBuilder.append(" continuCount INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "flag";
+    locala.EYv.put("flag", "INTEGER");
+    localStringBuilder.append(" flag INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "modifyTime";
+    locala.EYv.put("modifyTime", "LONG");
+    localStringBuilder.append(" modifyTime LONG");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "showTipsTime";
+    locala.EYv.put("showTipsTime", "LONG");
+    localStringBuilder.append(" showTipsTime LONG");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "setFlagTime";
+    locala.EYv.put("setFlagTime", "LONG");
+    localStringBuilder.append(" setFlagTime LONG");
+    locala.columns[7] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    AppMethodBeat.o(62868);
-  }
-  
-  public o(Cursor paramCursor)
-  {
-    AppMethodBeat.i(62867);
-    if (paramCursor == null)
-    {
-      AppMethodBeat.o(62867);
-      return;
-    }
-    convertFrom(paramCursor);
-    AppMethodBeat.o(62867);
-  }
-  
-  public o(String paramString, byte[] paramArrayOfByte)
-  {
-    this.field_reqType = paramString;
-    this.field_cache = paramArrayOfByte;
+    AppMethodBeat.o(105121);
   }
   
   public final c.a getDBInfo()
@@ -58,7 +59,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.o
  * JD-Core Version:    0.7.0.1
  */

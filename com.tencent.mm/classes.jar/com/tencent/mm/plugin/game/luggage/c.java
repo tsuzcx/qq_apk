@@ -1,31 +1,57 @@
 package com.tencent.mm.plugin.game.luggage;
 
-import com.tencent.luggage.d.k;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
-import com.tencent.mm.plugin.webview.luggage.permission.LuggageGetA8Key;
-import com.tencent.mm.plugin.webview.luggage.permission.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.plugin.game.luggage.a.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import org.json.JSONArray;
 
 public final class c
+  implements a
 {
-  public static void a(k paramk, String paramString, boolean paramBoolean)
+  private static void acc(String paramString)
   {
-    AppMethodBeat.i(135828);
-    GameWebPerformanceInfo localGameWebPerformanceInfo = GameWebPerformanceInfo.lN(paramString);
-    ab.i("MicroMsg.LuggageGetA8KeyUtil", "getA8Key begin, time: %d", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-    localGameWebPerformanceInfo.eAn = System.currentTimeMillis();
-    LuggageGetA8Key localLuggageGetA8Key = new LuggageGetA8Key();
-    localLuggageGetA8Key.a(paramString, new c.1(localGameWebPerformanceInfo, paramk));
-    if (paramBoolean) {
-      b.a(paramk.hashCode(), localLuggageGetA8Key);
-    }
-    AppMethodBeat.o(135828);
+    AppMethodBeat.i(82990);
+    ad.i("MicroMsg.LuggageGameService", "clearGameCache key:%s", new Object[] { paramString });
+    JSONArray localJSONArray = new JSONArray();
+    localJSONArray.put(paramString);
+    com.tencent.mm.plugin.webview.b.b.ejJ().b("wx62d9035fd4fd2059", localJSONArray);
+    AppMethodBeat.o(82990);
   }
+  
+  public final String aca(String paramString)
+  {
+    AppMethodBeat.i(82988);
+    com.tencent.mm.plugin.webview.b.b.ejJ();
+    paramString = com.tencent.mm.plugin.webview.b.b.avL(paramString);
+    AppMethodBeat.o(82988);
+    return paramString;
+  }
+  
+  public final boolean acb(String paramString)
+  {
+    AppMethodBeat.i(82989);
+    if (aj.cbe()) {
+      acc(paramString);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(82989);
+      return false;
+      h.a("com.tencent.mm", new IPCString(paramString), a.class, null);
+    }
+  }
+  
+  static class a
+    implements com.tencent.mm.ipcinvoker.b<IPCString, Bundle>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.c
  * JD-Core Version:    0.7.0.1
  */

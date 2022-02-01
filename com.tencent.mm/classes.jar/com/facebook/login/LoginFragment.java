@@ -26,20 +26,20 @@ public class LoginFragment
   
   private void initializeCallingPackage(Activity paramActivity)
   {
-    AppMethodBeat.i(96855);
+    AppMethodBeat.i(7879);
     paramActivity = paramActivity.getCallingActivity();
     if (paramActivity == null)
     {
-      AppMethodBeat.o(96855);
+      AppMethodBeat.o(7879);
       return;
     }
     this.callingPackage = paramActivity.getPackageName();
-    AppMethodBeat.o(96855);
+    AppMethodBeat.o(7879);
   }
   
   private void onLoginClientCompleted(LoginClient.Result paramResult)
   {
-    AppMethodBeat.i(96850);
+    AppMethodBeat.i(7874);
     this.request = null;
     if (paramResult.code == LoginClient.Result.Code.CANCEL) {}
     for (int i = 0;; i = -1)
@@ -53,22 +53,22 @@ public class LoginFragment
         getActivity().setResult(i, paramResult);
         getActivity().finish();
       }
-      AppMethodBeat.o(96850);
+      AppMethodBeat.o(7874);
       return;
     }
   }
   
   protected LoginClient createLoginClient()
   {
-    AppMethodBeat.i(96847);
+    AppMethodBeat.i(7871);
     LoginClient localLoginClient = new LoginClient(this);
-    AppMethodBeat.o(96847);
+    AppMethodBeat.o(7871);
     return localLoginClient;
   }
   
   protected int getLayoutResId()
   {
-    return 2130969187;
+    return 2131493569;
   }
   
   LoginClient getLoginClient()
@@ -78,15 +78,15 @@ public class LoginFragment
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(96853);
+    AppMethodBeat.i(7877);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     this.loginClient.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(96853);
+    AppMethodBeat.o(7877);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(96846);
+    AppMethodBeat.i(7870);
     super.onCreate(paramBundle);
     if (paramBundle != null)
     {
@@ -95,12 +95,20 @@ public class LoginFragment
     }
     for (;;)
     {
-      this.loginClient.setOnCompletedListener(new LoginFragment.1(this));
+      this.loginClient.setOnCompletedListener(new LoginClient.OnCompletedListener()
+      {
+        public void onCompleted(LoginClient.Result paramAnonymousResult)
+        {
+          AppMethodBeat.i(7867);
+          LoginFragment.access$000(LoginFragment.this, paramAnonymousResult);
+          AppMethodBeat.o(7867);
+        }
+      });
       paramBundle = getActivity();
       if (paramBundle != null) {
         break;
       }
-      AppMethodBeat.o(96846);
+      AppMethodBeat.o(7870);
       return;
       this.loginClient = createLoginClient();
     }
@@ -113,62 +121,77 @@ public class LoginFragment
         this.request = ((LoginClient.Request)paramBundle.getParcelable("request"));
       }
     }
-    AppMethodBeat.o(96846);
+    AppMethodBeat.o(7870);
   }
   
-  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  public View onCreateView(LayoutInflater paramLayoutInflater, final ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    AppMethodBeat.i(96849);
+    AppMethodBeat.i(7873);
     paramLayoutInflater = paramLayoutInflater.inflate(getLayoutResId(), paramViewGroup, false);
-    paramViewGroup = paramLayoutInflater.findViewById(2131822965);
-    this.loginClient.setBackgroundProcessingListener(new LoginFragment.2(this, paramViewGroup));
-    AppMethodBeat.o(96849);
+    paramViewGroup = paramLayoutInflater.findViewById(2131298500);
+    this.loginClient.setBackgroundProcessingListener(new LoginClient.BackgroundProcessingListener()
+    {
+      public void onBackgroundProcessingStarted()
+      {
+        AppMethodBeat.i(7868);
+        paramViewGroup.setVisibility(0);
+        AppMethodBeat.o(7868);
+      }
+      
+      public void onBackgroundProcessingStopped()
+      {
+        AppMethodBeat.i(7869);
+        paramViewGroup.setVisibility(8);
+        AppMethodBeat.o(7869);
+      }
+    });
+    AppMethodBeat.o(7873);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(96848);
+    AppMethodBeat.i(7872);
     this.loginClient.cancelCurrentHandler();
     super.onDestroy();
-    AppMethodBeat.o(96848);
+    AppMethodBeat.o(7872);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(96852);
+    AppMethodBeat.i(7876);
     super.onPause();
     if (getView() == null) {}
-    for (View localView = null;; localView = getView().findViewById(2131822965))
+    for (View localView = null;; localView = getView().findViewById(2131298500))
     {
       if (localView != null) {
         localView.setVisibility(8);
       }
-      AppMethodBeat.o(96852);
+      AppMethodBeat.o(7876);
       return;
     }
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(96851);
+    AppMethodBeat.i(7875);
     super.onResume();
     if (this.callingPackage == null)
     {
       getActivity().finish();
-      AppMethodBeat.o(96851);
+      AppMethodBeat.o(7875);
       return;
     }
     this.loginClient.startOrContinueAuth(this.request);
-    AppMethodBeat.o(96851);
+    AppMethodBeat.o(7875);
   }
   
   public void onSaveInstanceState(Bundle paramBundle)
   {
-    AppMethodBeat.i(96854);
+    AppMethodBeat.i(7878);
     super.onSaveInstanceState(paramBundle);
     paramBundle.putParcelable("loginClient", this.loginClient);
-    AppMethodBeat.o(96854);
+    AppMethodBeat.o(7878);
   }
 }
 

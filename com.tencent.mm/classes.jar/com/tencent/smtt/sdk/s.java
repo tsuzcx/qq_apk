@@ -1,28 +1,55 @@
 package com.tencent.smtt.sdk;
 
-import android.os.Message;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.WebViewTransport;
+import com.tencent.smtt.export.external.DexLoader;
 
 class s
-  implements Runnable
 {
-  s(r paramr, WebView.WebViewTransport paramWebViewTransport, Message paramMessage) {}
+  private DexLoader a = null;
   
-  public void run()
+  public s(DexLoader paramDexLoader)
   {
-    AppMethodBeat.i(139058);
-    WebView localWebView = this.a.getWebView();
-    if (localWebView != null) {
-      ((IX5WebViewBase.WebViewTransport)this.b.obj).setWebView(localWebView.c());
+    this.a = paramDexLoader;
+  }
+  
+  public String a(Context paramContext)
+  {
+    AppMethodBeat.i(54692);
+    if (this.a != null)
+    {
+      Object localObject = this.a.newInstance("com.tencent.tbs.utils.TbsVideoUtilsProxy", new Class[0], new Object[0]);
+      if (localObject != null)
+      {
+        paramContext = this.a.invokeMethod(localObject, "com.tencent.tbs.utils.TbsVideoUtilsProxy", "getCurWDPDecodeType", new Class[] { Context.class }, new Object[] { paramContext });
+        if (paramContext != null)
+        {
+          paramContext = String.valueOf(paramContext);
+          AppMethodBeat.o(54692);
+          return paramContext;
+        }
+      }
     }
-    this.b.sendToTarget();
-    AppMethodBeat.o(139058);
+    AppMethodBeat.o(54692);
+    return "";
+  }
+  
+  public void a(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(54691);
+    if (this.a != null)
+    {
+      Object localObject = this.a.newInstance("com.tencent.tbs.utils.TbsVideoUtilsProxy", new Class[0], new Object[0]);
+      if (localObject != null) {
+        this.a.invokeMethod(localObject, "com.tencent.tbs.utils.TbsVideoUtilsProxy", "deleteVideoCache", new Class[] { Context.class, String.class }, new Object[] { paramContext, paramString });
+      }
+    }
+    AppMethodBeat.o(54691);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.s
  * JD-Core Version:    0.7.0.1
  */

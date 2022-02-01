@@ -4,45 +4,43 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class DownloadStateChangedReceiver
   extends BroadcastReceiver
 {
   private static final String TAG = "DownloadStateChangedReceiver";
   protected static DownloadStateChangedReceiver mInstance = null;
-  protected ak handler;
-  protected HandlerThread handlerThread;
+  protected ap handler;
   protected boolean isRegisted;
   ArrayList<IDownloadStateChangedListener> mListeners;
   
   public DownloadStateChangedReceiver()
   {
-    AppMethodBeat.i(75840);
-    this.handlerThread = new HandlerThread("downloadStateChangedThread");
+    AppMethodBeat.i(102086);
     this.handler = null;
     this.isRegisted = false;
     this.mListeners = new ArrayList();
-    this.handlerThread.start();
-    this.handler = new ak(this.handlerThread.getLooper());
-    AppMethodBeat.o(75840);
+    this.handler = new ap("downloadStateChangedThread");
+    AppMethodBeat.o(102086);
   }
   
   public static DownloadStateChangedReceiver getInstance()
   {
     try
     {
-      AppMethodBeat.i(75841);
+      AppMethodBeat.i(102087);
       if (mInstance == null) {
         mInstance = new DownloadStateChangedReceiver();
       }
       DownloadStateChangedReceiver localDownloadStateChangedReceiver = mInstance;
-      AppMethodBeat.o(75841);
+      AppMethodBeat.o(102087);
       return localDownloadStateChangedReceiver;
     }
     finally {}
@@ -50,25 +48,53 @@ public class DownloadStateChangedReceiver
   
   public void addDownloadStateChangedListener(IDownloadStateChangedListener paramIDownloadStateChangedListener)
   {
-    AppMethodBeat.i(75845);
+    AppMethodBeat.i(102091);
     if ((paramIDownloadStateChangedListener != null) && (!this.mListeners.contains(paramIDownloadStateChangedListener))) {
       this.mListeners.add(paramIDownloadStateChangedListener);
     }
-    AppMethodBeat.o(75845);
+    AppMethodBeat.o(102091);
   }
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onReceive(Context paramContext, final Intent paramIntent)
   {
-    AppMethodBeat.i(75842);
+    AppMethodBeat.i(102088);
     if (this.handler != null) {
-      this.handler.post(new DownloadStateChangedReceiver.1(this, paramIntent));
+      this.handler.post(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(102085);
+          TMQQDownloaderStateChangeParam localTMQQDownloaderStateChangeParam = new TMQQDownloaderStateChangeParam();
+          localTMQQDownloaderStateChangeParam.hostPackageName = paramIntent.getStringExtra("hostPackageName");
+          localTMQQDownloaderStateChangeParam.hostVersion = paramIntent.getStringExtra("hostVersion");
+          localTMQQDownloaderStateChangeParam.taskId = paramIntent.getStringExtra("taskId");
+          localTMQQDownloaderStateChangeParam.errorCode = bt.getInt(paramIntent.getStringExtra("errorCode"), 0);
+          localTMQQDownloaderStateChangeParam.errorMsg = paramIntent.getStringExtra("errorMsg");
+          localTMQQDownloaderStateChangeParam.state = bt.getInt(paramIntent.getStringExtra("state"), 0);
+          Object localObject = new TMQQDownloaderOpenSDKParam();
+          ((TMQQDownloaderOpenSDKParam)localObject).SNGAppId = paramIntent.getStringExtra("sngAppId");
+          ((TMQQDownloaderOpenSDKParam)localObject).taskAppId = paramIntent.getStringExtra("taskAppId");
+          ((TMQQDownloaderOpenSDKParam)localObject).taskApkId = paramIntent.getStringExtra("taskApkId");
+          ((TMQQDownloaderOpenSDKParam)localObject).taskPackageName = paramIntent.getStringExtra("taskPackageName");
+          ((TMQQDownloaderOpenSDKParam)localObject).taskVersion = bt.getInt(paramIntent.getStringExtra("taskVersion"), 0);
+          ((TMQQDownloaderOpenSDKParam)localObject).via = paramIntent.getStringExtra("via");
+          ((TMQQDownloaderOpenSDKParam)localObject).uin = paramIntent.getStringExtra("uin");
+          ((TMQQDownloaderOpenSDKParam)localObject).uinType = paramIntent.getStringExtra("uinType");
+          localTMQQDownloaderStateChangeParam.param = ((TMQQDownloaderOpenSDKParam)localObject);
+          localObject = DownloadStateChangedReceiver.this.mListeners.iterator();
+          while (((Iterator)localObject).hasNext()) {
+            ((IDownloadStateChangedListener)((Iterator)localObject).next()).onDownloadStateChanged(localTMQQDownloaderStateChangeParam);
+          }
+          AppMethodBeat.o(102085);
+        }
+      });
     }
-    AppMethodBeat.o(75842);
+    AppMethodBeat.o(102088);
   }
   
   public void registeReceiver(Context paramContext)
   {
-    AppMethodBeat.i(75843);
+    AppMethodBeat.i(102089);
     if (!this.isRegisted)
     {
       TMLog.i("DownloadStateChangedReceiver", "registeReceiver   context" + paramContext + "  receiver:" + this);
@@ -77,34 +103,34 @@ public class DownloadStateChangedReceiver
       {
         TMLog.i("DownloadStateChangedReceiver", String.valueOf(paramContext.registerReceiver(this, localIntentFilter)));
         this.isRegisted = true;
-        AppMethodBeat.o(75843);
+        AppMethodBeat.o(102089);
         return;
       }
       catch (Throwable paramContext)
       {
         TMLog.i("DownloadStateChangedReceiver", "registeReceiver exception!!!");
         this.isRegisted = false;
-        ab.printErrStackTrace("DownloadStateChangedReceiver", paramContext, "", new Object[0]);
+        ad.printErrStackTrace("DownloadStateChangedReceiver", paramContext, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(75843);
+    AppMethodBeat.o(102089);
   }
   
   public void removeDownloadStateChangedListener(IDownloadStateChangedListener paramIDownloadStateChangedListener)
   {
-    AppMethodBeat.i(75846);
+    AppMethodBeat.i(102092);
     if (paramIDownloadStateChangedListener != null) {
       this.mListeners.remove(paramIDownloadStateChangedListener);
     }
-    AppMethodBeat.o(75846);
+    AppMethodBeat.o(102092);
   }
   
   public void unRegisteReceiver(Context paramContext)
   {
-    AppMethodBeat.i(75844);
+    AppMethodBeat.i(102090);
     if ((paramContext == null) || (mInstance == null))
     {
-      AppMethodBeat.o(75844);
+      AppMethodBeat.o(102090);
       return;
     }
     if (this.isRegisted)
@@ -114,22 +140,22 @@ public class DownloadStateChangedReceiver
       {
         paramContext.unregisterReceiver(this);
         this.isRegisted = false;
-        AppMethodBeat.o(75844);
+        AppMethodBeat.o(102090);
         return;
       }
       catch (Throwable paramContext)
       {
         TMLog.i("DownloadStateChangedReceiver", "unRegisteReceiver exception!!!");
         this.isRegisted = false;
-        ab.printErrStackTrace("DownloadStateChangedReceiver", paramContext, "", new Object[0]);
+        ad.printErrStackTrace("DownloadStateChangedReceiver", paramContext, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(75844);
+    AppMethodBeat.o(102090);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.DownloadStateChangedReceiver
  * JD-Core Version:    0.7.0.1
  */

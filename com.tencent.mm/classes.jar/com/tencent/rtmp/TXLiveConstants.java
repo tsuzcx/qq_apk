@@ -4,6 +4,9 @@ public class TXLiveConstants
 {
   public static final int AUDIO_ROUTE_RECEIVER = 1;
   public static final int AUDIO_ROUTE_SPEAKER = 0;
+  public static final int AUDIO_VOLUME_TYPE_AUTO = 0;
+  public static final int AUDIO_VOLUME_TYPE_MEDIA = 1;
+  public static final int AUDIO_VOLUME_TYPE_VOIP = 2;
   public static final int AUTO_ADJUST_BITRATE_RESOLUTION_STRATEGY_1 = 1;
   public static final int AUTO_ADJUST_BITRATE_RESOLUTION_STRATEGY_2 = 3;
   public static final int AUTO_ADJUST_BITRATE_STRATEGY_1 = 0;
@@ -38,6 +41,9 @@ public class TXLiveConstants
   public static final String EVT_PLAY_PROGRESS_MS = "EVT_PLAY_PROGRESS_MS";
   public static final String EVT_PLAY_URL = "EVT_PLAY_URL";
   public static final String EVT_TIME = "EVT_TIME";
+  public static final int LOCAL_VIDEO_MIRROR_TYPE_AUTO = 0;
+  public static final int LOCAL_VIDEO_MIRROR_TYPE_DISABLE = 2;
+  public static final int LOCAL_VIDEO_MIRROR_TYPE_ENABLE = 1;
   public static final int LOG_LEVEL_DEBUG = 1;
   public static final int LOG_LEVEL_ERROR = 4;
   public static final int LOG_LEVEL_FATAL = 5;
@@ -55,6 +61,7 @@ public class TXLiveConstants
   public static final String NET_STATUS_CPU_USAGE = "CPU_USAGE";
   public static final String NET_STATUS_NET_JITTER = "NET_JITTER";
   public static final String NET_STATUS_NET_SPEED = "NET_SPEED";
+  public static final String NET_STATUS_QUALITY_LEVEL = "NET_QUALITY_LEVEL";
   public static final String NET_STATUS_SERVER_IP = "SERVER_IP";
   public static final String NET_STATUS_VIDEO_BITRATE = "VIDEO_BITRATE";
   public static final String NET_STATUS_VIDEO_CACHE = "VIDEO_CACHE";
@@ -79,6 +86,7 @@ public class TXLiveConstants
   public static final int PLAY_EVT_CHANGE_ROTATION = 2011;
   public static final int PLAY_EVT_CONNECT_SUCC = 2001;
   public static final int PLAY_EVT_GET_MESSAGE = 2012;
+  public static final int PLAY_EVT_GET_METADATA = 2028;
   public static final int PLAY_EVT_GET_PLAYINFO_SUCC = 2010;
   public static final int PLAY_EVT_PLAY_BEGIN = 2004;
   public static final int PLAY_EVT_PLAY_END = 2006;
@@ -122,9 +130,14 @@ public class TXLiveConstants
   public static final int PUSH_EVT_OPEN_CAMERA_SUCC = 1003;
   public static final int PUSH_EVT_PUSH_BEGIN = 1002;
   public static final int PUSH_EVT_ROOM_IN = 1018;
+  public static final int PUSH_EVT_ROOM_IN_FAILED = 1022;
   public static final int PUSH_EVT_ROOM_NEED_REENTER = 1021;
   public static final int PUSH_EVT_ROOM_OUT = 1019;
   public static final int PUSH_EVT_ROOM_USERLIST = 1020;
+  public static final int PUSH_EVT_ROOM_USER_AUDIO_STATE = 1034;
+  public static final int PUSH_EVT_ROOM_USER_ENTER = 1031;
+  public static final int PUSH_EVT_ROOM_USER_EXIT = 1032;
+  public static final int PUSH_EVT_ROOM_USER_VIDEO_STATE = 1033;
   public static final int PUSH_EVT_SCREEN_CAPTURE_SUCC = 1004;
   public static final int PUSH_EVT_START_VIDEO_ENCODER = 1008;
   public static final int PUSH_WARNING_BEAUTYSURFACE_VIEW_INIT_FAIL = 1105;
@@ -139,6 +152,7 @@ public class TXLiveConstants
   public static final int PUSH_WARNING_VIDEO_ENCODE_BITRATE_OVERFLOW = 1106;
   public static final int PUSH_WARNING_VIDEO_ENCODE_FAIL = 1104;
   public static final int PUSH_WARNING_VIDEO_ENCODE_SW_SWITCH_HW = 1107;
+  public static final int PUSH_WARNING_VIDEO_RENDER_FAIL = 2110;
   public static final int RENDER_MODE_ADJUST_RESOLUTION = 1;
   public static final int RENDER_MODE_FULL_FILL_SCREEN = 0;
   public static final int RENDER_ROTATION_0 = 0;
@@ -171,9 +185,12 @@ public class TXLiveConstants
   public static final int VIDEO_QUALITY_REALTIEM_VIDEOCHAT = 6;
   public static final int VIDEO_QUALITY_STANDARD_DEFINITION = 1;
   public static final int VIDEO_QUALITY_SUPER_DEFINITION = 3;
+  public static final int VIDEO_QUALITY_ULTRA_DEFINITION = 7;
+  public static final int VIDEO_RESOLUTION_TYPE_1080_1920 = 30;
   public static final int VIDEO_RESOLUTION_TYPE_1280_720 = 5;
   public static final int VIDEO_RESOLUTION_TYPE_160_160 = 19;
   public static final int VIDEO_RESOLUTION_TYPE_180_320 = 7;
+  public static final int VIDEO_RESOLUTION_TYPE_1920_1080 = 31;
   public static final int VIDEO_RESOLUTION_TYPE_240_320 = 11;
   public static final int VIDEO_RESOLUTION_TYPE_270_270 = 18;
   public static final int VIDEO_RESOLUTION_TYPE_270_480 = 8;
@@ -206,7 +223,7 @@ public class TXLiveConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.rtmp.TXLiveConstants
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.support.v4.app.s.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class v
   extends b
 {
-  public a cnb;
+  public a dbN;
   
   public v()
   {
@@ -16,18 +15,64 @@ public final class v
   
   private v(byte paramByte)
   {
-    AppMethodBeat.i(15753);
-    this.cnb = new a();
-    this.ymq = false;
+    AppMethodBeat.i(136973);
+    this.dbN = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15753);
+    AppMethodBeat.o(136973);
+  }
+  
+  public static String in(int paramInt)
+  {
+    if (paramInt == 0) {
+      return "play";
+    }
+    if (paramInt == 1) {
+      return "play";
+    }
+    if (paramInt == 2) {
+      return "pause";
+    }
+    if (paramInt == 3) {
+      return "stop";
+    }
+    if (paramInt == 4) {
+      return "error";
+    }
+    if (paramInt == 5) {
+      return "ended";
+    }
+    if (paramInt == 6) {
+      return "seeked";
+    }
+    if (paramInt == 7) {
+      return "canplay";
+    }
+    if (paramInt == 9) {
+      return "waiting";
+    }
+    if (paramInt == 10) {
+      return "seeking";
+    }
+    if (paramInt == 11) {
+      return "real_play";
+    }
+    if (paramInt == 12) {
+      return "mix_play_ready";
+    }
+    return "";
   }
   
   public static final class a
   {
-    public s.e cnc;
-    public String title;
-    public String username;
+    public int action;
+    public String appId;
+    public String cTr;
+    public String cUD;
+    public long duration;
+    public int errCode;
+    public String errMsg;
+    public String state;
   }
 }
 

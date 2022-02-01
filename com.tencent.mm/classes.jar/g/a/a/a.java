@@ -5,50 +5,50 @@ import java.io.OutputStream;
 
 public final class a
 {
-  public int CMs;
-  public byte[] CSm;
-  public int CSn = 0;
-  public int CSo;
-  public OutputStream CSp;
+  public int KhZ;
+  public byte[] Ktk;
+  public int Ktl = 0;
+  public int Ktm;
+  public OutputStream Ktn;
   
-  public final byte Wv(int paramInt)
+  public final byte agu(int paramInt)
   {
-    int i = this.CMs - paramInt - 1;
+    int i = this.KhZ - paramInt - 1;
     paramInt = i;
     if (i < 0) {
-      paramInt = i + this.CSn;
+      paramInt = i + this.Ktl;
     }
-    return this.CSm[paramInt];
+    return this.Ktk[paramInt];
   }
   
-  public final void erO()
+  public final void fOk()
   {
-    AppMethodBeat.i(86235);
-    erP();
-    this.CSp = null;
-    AppMethodBeat.o(86235);
+    AppMethodBeat.i(155350);
+    fOl();
+    this.Ktn = null;
+    AppMethodBeat.o(155350);
   }
   
-  public final void erP()
+  public final void fOl()
   {
-    AppMethodBeat.i(86236);
-    int i = this.CMs - this.CSo;
+    AppMethodBeat.i(155351);
+    int i = this.KhZ - this.Ktm;
     if (i == 0)
     {
-      AppMethodBeat.o(86236);
+      AppMethodBeat.o(155351);
       return;
     }
-    this.CSp.write(this.CSm, this.CSo, i);
-    if (this.CMs >= this.CSn) {
-      this.CMs = 0;
+    this.Ktn.write(this.Ktk, this.Ktm, i);
+    if (this.KhZ >= this.Ktl) {
+      this.KhZ = 0;
     }
-    this.CSo = this.CMs;
-    AppMethodBeat.o(86236);
+    this.Ktm = this.KhZ;
+    AppMethodBeat.o(155351);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     g.a.a.a
  * JD-Core Version:    0.7.0.1
  */

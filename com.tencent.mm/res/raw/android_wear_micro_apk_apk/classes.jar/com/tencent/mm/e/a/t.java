@@ -5,43 +5,43 @@ import a.a.a.b;
 public final class t
   extends com.tencent.mm.d.a
 {
-  public long VY;
-  public boolean VZ;
-  public String Vm;
+  public long XT;
+  public boolean XU;
+  public String Xh;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.Vm == null) {
+      if (this.Xh == null) {
         throw new b("Not all required fields were included: Username");
       }
-      if (this.Vm != null) {
-        paramVarArgs.d(1, this.Vm);
+      if (this.Xh != null) {
+        paramVarArgs.d(1, this.Xh);
       }
-      paramVarArgs.g(2, this.VY);
-      paramVarArgs.g(3, this.VZ);
+      paramVarArgs.g(2, this.XT);
+      paramVarArgs.h(3, this.XU);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Vm == null) {
+      if (this.Xh == null) {
         break label269;
       }
     }
     label269:
-    for (paramInt = a.a.a.b.b.a.e(1, this.Vm) + 0;; paramInt = 0)
+    for (paramInt = a.a.a.b.b.a.e(1, this.Xh) + 0;; paramInt = 0)
     {
-      return paramInt + a.a.a.a.e(2, this.VY) + (a.a.a.b.b.a.cp(3) + 1);
+      return paramInt + a.a.a.b.b.a.f(2, this.XT) + (a.a.a.b.b.a.cK(3) + 1);
       if (paramInt == 2)
       {
-        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-        for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+        for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
           if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.oz();
+            paramVarArgs.pm();
           }
         }
-        if (this.Vm != null) {
+        if (this.Xh != null) {
           break;
         }
         throw new b("Not all required fields were included: Username");
@@ -55,13 +55,13 @@ public final class t
         default: 
           return -1;
         case 1: 
-          localt.Vm = locala.ou();
+          localt.Xh = locala.ph();
           return 0;
         case 2: 
-          localt.VY = locala.ow();
+          localt.XT = locala.pj();
           return 0;
         }
-        localt.VZ = locala.ov();
+        localt.XU = locala.pi();
         return 0;
       }
       return -1;

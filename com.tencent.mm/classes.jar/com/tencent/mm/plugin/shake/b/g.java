@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +17,10 @@ public final class g
   
   static
   {
-    AppMethodBeat.i(24460);
+    AppMethodBeat.i(28135);
     INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS  shakemessage_status_index ON shakemessage ( status )", "CREATE INDEX IF NOT EXISTS shakemessage_type_index ON shakemessage ( type )" };
     SQL_CREATE = new String[] { j.getCreateSQLs(f.info, "shakemessage") };
-    AppMethodBeat.o(24460);
+    AppMethodBeat.o(28135);
   }
   
   public g(e parame)
@@ -29,37 +29,37 @@ public final class g
     this.db = parame;
   }
   
-  public final Cursor Dk(int paramInt)
+  public final Cursor LJ(int paramInt)
   {
-    AppMethodBeat.i(24455);
+    AppMethodBeat.i(28130);
     Object localObject = "SELECT * FROM " + getTableName() + " ORDER BY rowid DESC LIMIT " + paramInt;
     localObject = this.db.rawQuery((String)localObject, null);
-    AppMethodBeat.o(24455);
+    AppMethodBeat.o(28130);
     return localObject;
   }
   
   public final boolean a(f paramf)
   {
-    AppMethodBeat.i(24454);
+    AppMethodBeat.i(28129);
     if (paramf == null)
     {
-      ab.e("MicroMsg.ShakeMessageStorage", "insert fail, shakeMsg is null");
-      AppMethodBeat.o(24454);
+      ad.e("MicroMsg.ShakeMessageStorage", "insert fail, shakeMsg is null");
+      AppMethodBeat.o(28129);
       return false;
     }
     if (super.insert(paramf))
     {
       doNotify(paramf.systemRowid);
-      AppMethodBeat.o(24454);
+      AppMethodBeat.o(28129);
       return true;
     }
-    AppMethodBeat.o(24454);
+    AppMethodBeat.o(28129);
     return false;
   }
   
-  public final int bbZ()
+  public final int bIR()
   {
-    AppMethodBeat.i(24456);
+    AppMethodBeat.i(28131);
     Cursor localCursor = this.db.a("select count(*) from " + getTableName() + " where status != 1", null, 2);
     if (localCursor.moveToFirst()) {}
     for (int i = localCursor.getInt(0);; i = 0)
@@ -67,23 +67,23 @@ public final class g
       localCursor.close();
       if (i > 0)
       {
-        AppMethodBeat.o(24456);
+        AppMethodBeat.o(28131);
         return i;
       }
-      AppMethodBeat.o(24456);
+      AppMethodBeat.o(28131);
       return 0;
     }
   }
   
-  public final f cle()
+  public final f doS()
   {
     f localf = null;
-    AppMethodBeat.i(24457);
+    AppMethodBeat.i(28132);
     Object localObject = "SELECT * FROM " + getTableName() + " where status != 1 ORDER BY rowid DESC LIMIT 1";
     localObject = this.db.a((String)localObject, null, 2);
     if (localObject == null)
     {
-      AppMethodBeat.o(24457);
+      AppMethodBeat.o(28132);
       return null;
     }
     if (((Cursor)localObject).moveToFirst())
@@ -92,13 +92,13 @@ public final class g
       localf.convertFrom((Cursor)localObject);
     }
     ((Cursor)localObject).close();
-    AppMethodBeat.o(24457);
+    AppMethodBeat.o(28132);
     return localf;
   }
   
-  public final List<f> clf()
+  public final List<f> doT()
   {
-    AppMethodBeat.i(24458);
+    AppMethodBeat.i(28133);
     ArrayList localArrayList = new ArrayList();
     Object localObject = "SELECT * FROM " + getTableName() + " where status != 1";
     localObject = this.db.a((String)localObject, null, 2);
@@ -112,7 +112,7 @@ public final class g
       }
       ((Cursor)localObject).close();
     }
-    AppMethodBeat.o(24458);
+    AppMethodBeat.o(28133);
     return localArrayList;
   }
 }

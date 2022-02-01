@@ -11,18 +11,18 @@ import org.json.JSONObject;
 public final class i
   extends m
 {
-  public String czF;
-  public String plm;
-  private String pln;
-  private boolean plo;
+  public String dpO;
+  public String ujS;
+  private String ujT;
+  private boolean ujU;
   
   public i(Bankcard paramBankcard, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    AppMethodBeat.i(43397);
-    this.plm = "0";
-    this.pln = "0";
-    this.czF = "";
-    this.plo = false;
+    AppMethodBeat.i(66296);
+    this.ujS = "0";
+    this.ujT = "0";
+    this.dpO = "";
+    this.ujU = false;
     HashMap localHashMap = new HashMap();
     localHashMap.put("passwd", paramString1);
     localHashMap.put("oper", paramString2);
@@ -39,9 +39,9 @@ public final class i
       localHashMap.put("bind_serialno", paramBankcard.field_bindSerial);
       localHashMap.put("bank_type", paramBankcard.field_bankcardType);
       localHashMap.put("card_tail", paramBankcard.field_bankcardTail);
-      this.czF = paramBankcard.field_mobile;
+      this.dpO = paramBankcard.field_mobile;
       setRequestData(localHashMap);
-      AppMethodBeat.o(43397);
+      AppMethodBeat.o(66296);
       return;
       label169:
       localHashMap.put("verify_code", paramString3);
@@ -55,13 +55,13 @@ public final class i
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(43398);
+    AppMethodBeat.i(66297);
     if (paramJSONObject != null)
     {
-      this.plm = paramJSONObject.optString("verify_flag");
-      this.pln = paramJSONObject.optString("limit_fee");
+      this.ujS = paramJSONObject.optString("verify_flag");
+      this.ujT = paramJSONObject.optString("limit_fee");
     }
-    AppMethodBeat.o(43398);
+    AppMethodBeat.o(66297);
   }
 }
 

@@ -11,6 +11,8 @@ import android.os.Looper;
 public final class a
   extends android.support.v4.content.a
 {
+  private static c bw;
+  
   public static void a(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle)
   {
     if (Build.VERSION.SDK_INT >= 16)
@@ -23,16 +25,19 @@ public final class a
   
   public static void a(final Activity paramActivity, String[] paramArrayOfString)
   {
-    if (Build.VERSION.SDK_INT >= 23)
+    if ((bw != null) && (bw.A())) {}
+    do
     {
-      if ((paramActivity instanceof c)) {
-        ((c)paramActivity).a(0);
-      }
-      paramActivity.requestPermissions(paramArrayOfString, 0);
-    }
-    while (!(paramActivity instanceof b)) {
       return;
-    }
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        if ((paramActivity instanceof d)) {
+          ((d)paramActivity).j(0);
+        }
+        paramActivity.requestPermissions(paramArrayOfString, 0);
+        return;
+      }
+    } while (!(paramActivity instanceof b));
     new Handler(Looper.getMainLooper()).post(new Runnable()
     {
       public final void run()
@@ -47,9 +52,14 @@ public final class a
           arrayOfInt[i] = localPackageManager.checkPermission(a.this[i], str);
           i += 1;
         }
-        ((b)paramActivity).onRequestPermissionsResult(this.P, a.this, arrayOfInt);
+        ((b)paramActivity).onRequestPermissionsResult(this.bz, a.this, arrayOfInt);
       }
     });
+  }
+  
+  public static c z()
+  {
+    return bw;
   }
 }
 

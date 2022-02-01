@@ -3,67 +3,84 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public abstract class eu
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int dPB = "storyId".hashCode();
-  private static final int dPC = "readCommentId".hashCode();
-  private static final int dPD = "syncCommentId".hashCode();
-  private static final int dPE = "readCommentTime".hashCode();
-  private static final int dPF = "syncCommentTime".hashCode();
-  private static final int dPG = "commentFlag".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS record_localid_index ON RecordCDNInfo(recordLocalId)" };
+  private static final int eBN;
+  private static final int eBi;
+  private static final int eBk;
+  private static final int eBr = "localId".hashCode();
+  private static final int eDk;
+  private static final int eDt;
+  private static final int eTU = "recordLocalId".hashCode();
+  private static final int eTV;
+  private static final int eTW;
+  private static final int eTX = "tpdataurl".hashCode();
+  private static final int ejR;
+  private static final int elM;
+  private static final int elO;
+  private static final int elP;
+  private static final int eml;
+  private static final int ezo;
+  private static final int ezx;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dPA = true;
-  private boolean dPv = true;
-  private boolean dPw = true;
-  private boolean dPx = true;
-  private boolean dPy = true;
-  private boolean dPz = true;
-  public int field_commentFlag;
-  public int field_readCommentId;
-  public int field_readCommentTime;
-  public long field_storyId;
-  public int field_syncCommentId;
-  public int field_syncCommentTime;
+  private static final int type_HASHCODE;
+  private boolean __hadSettype = true;
+  private boolean eBd = true;
+  private boolean eBf = true;
+  private boolean eBp = true;
+  private boolean eBz = true;
+  private boolean eCH = true;
+  private boolean eCQ = true;
+  private boolean eTQ = true;
+  private boolean eTR = true;
+  private boolean eTS = true;
+  private boolean eTT = true;
+  private boolean ejO = true;
+  private boolean elv = true;
+  private boolean elx = true;
+  private boolean ely = true;
+  private boolean emh = true;
+  private boolean eyC = true;
+  private boolean eyL = true;
+  public String field_cdnKey;
+  public String field_cdnUrl;
+  public String field_dataId;
+  public int field_errCode;
+  public int field_fileType;
+  public boolean field_isThumb;
+  public int field_localId;
+  public String field_mediaId;
+  public int field_offset;
+  public String field_path;
+  public int field_recordLocalId;
+  public int field_status;
+  public String field_toUser;
+  public int field_totalLen;
+  public String field_tpaeskey;
+  public String field_tpauthkey;
+  public String field_tpdataurl;
+  public int field_type;
   
-  public static c.a Hm()
+  static
   {
-    c.a locala = new c.a();
-    locala.yrK = new Field[6];
-    locala.columns = new String[7];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "storyId";
-    locala.yrM.put("storyId", "LONG PRIMARY KEY ");
-    localStringBuilder.append(" storyId LONG PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "storyId";
-    locala.columns[1] = "readCommentId";
-    locala.yrM.put("readCommentId", "INTEGER");
-    localStringBuilder.append(" readCommentId INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "syncCommentId";
-    locala.yrM.put("syncCommentId", "INTEGER");
-    localStringBuilder.append(" syncCommentId INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "readCommentTime";
-    locala.yrM.put("readCommentTime", "INTEGER");
-    localStringBuilder.append(" readCommentTime INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "syncCommentTime";
-    locala.yrM.put("syncCommentTime", "INTEGER");
-    localStringBuilder.append(" syncCommentTime INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "commentFlag";
-    locala.yrM.put("commentFlag", "INTEGER");
-    localStringBuilder.append(" commentFlag INTEGER");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    eBN = "toUser".hashCode();
+    eBi = "dataId".hashCode();
+    elM = "mediaId".hashCode();
+    eml = "path".hashCode();
+    ezo = "cdnUrl".hashCode();
+    eBk = "cdnKey".hashCode();
+    elO = "totalLen".hashCode();
+    eTV = "isThumb".hashCode();
+    elP = "offset".hashCode();
+    type_HASHCODE = "type".hashCode();
+    eDk = "fileType".hashCode();
+    ejR = "status".hashCode();
+    eDt = "errCode".hashCode();
+    eTW = "tpaeskey".hashCode();
+    ezx = "tpauthkey".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -72,18 +89,18 @@ public abstract class eu
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dPB != k) {
+      if (eBr != k) {
         break label65;
       }
-      this.field_storyId = paramCursor.getLong(i);
-      this.dPv = true;
+      this.field_localId = paramCursor.getInt(i);
+      this.eBp = true;
     }
     for (;;)
     {
@@ -91,18 +108,68 @@ public abstract class eu
       break label20;
       break;
       label65:
-      if (dPC == k) {
-        this.field_readCommentId = paramCursor.getInt(i);
-      } else if (dPD == k) {
-        this.field_syncCommentId = paramCursor.getInt(i);
-      } else if (dPE == k) {
-        this.field_readCommentTime = paramCursor.getInt(i);
-      } else if (dPF == k) {
-        this.field_syncCommentTime = paramCursor.getInt(i);
-      } else if (dPG == k) {
-        this.field_commentFlag = paramCursor.getInt(i);
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
+      if (eTU == k)
+      {
+        this.field_recordLocalId = paramCursor.getInt(i);
+      }
+      else if (eBN == k)
+      {
+        this.field_toUser = paramCursor.getString(i);
+      }
+      else if (eBi == k)
+      {
+        this.field_dataId = paramCursor.getString(i);
+      }
+      else if (elM == k)
+      {
+        this.field_mediaId = paramCursor.getString(i);
+      }
+      else if (eml == k)
+      {
+        this.field_path = paramCursor.getString(i);
+      }
+      else if (ezo == k)
+      {
+        this.field_cdnUrl = paramCursor.getString(i);
+      }
+      else if (eBk == k)
+      {
+        this.field_cdnKey = paramCursor.getString(i);
+      }
+      else if (elO == k)
+      {
+        this.field_totalLen = paramCursor.getInt(i);
+      }
+      else
+      {
+        if (eTV == k)
+        {
+          if (paramCursor.getInt(i) != 0) {}
+          for (boolean bool = true;; bool = false)
+          {
+            this.field_isThumb = bool;
+            break;
+          }
+        }
+        if (elP == k) {
+          this.field_offset = paramCursor.getInt(i);
+        } else if (type_HASHCODE == k) {
+          this.field_type = paramCursor.getInt(i);
+        } else if (eDk == k) {
+          this.field_fileType = paramCursor.getInt(i);
+        } else if (ejR == k) {
+          this.field_status = paramCursor.getInt(i);
+        } else if (eDt == k) {
+          this.field_errCode = paramCursor.getInt(i);
+        } else if (eTW == k) {
+          this.field_tpaeskey = paramCursor.getString(i);
+        } else if (ezx == k) {
+          this.field_tpauthkey = paramCursor.getString(i);
+        } else if (eTX == k) {
+          this.field_tpdataurl = paramCursor.getString(i);
+        } else if (rowid_HASHCODE == k) {
+          this.systemRowid = paramCursor.getLong(i);
+        }
       }
     }
   }
@@ -110,23 +177,62 @@ public abstract class eu
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dPv) {
-      localContentValues.put("storyId", Long.valueOf(this.field_storyId));
+    if (this.eBp) {
+      localContentValues.put("localId", Integer.valueOf(this.field_localId));
     }
-    if (this.dPw) {
-      localContentValues.put("readCommentId", Integer.valueOf(this.field_readCommentId));
+    if (this.eTQ) {
+      localContentValues.put("recordLocalId", Integer.valueOf(this.field_recordLocalId));
     }
-    if (this.dPx) {
-      localContentValues.put("syncCommentId", Integer.valueOf(this.field_syncCommentId));
+    if (this.field_toUser == null) {
+      this.field_toUser = "";
     }
-    if (this.dPy) {
-      localContentValues.put("readCommentTime", Integer.valueOf(this.field_readCommentTime));
+    if (this.eBz) {
+      localContentValues.put("toUser", this.field_toUser);
     }
-    if (this.dPz) {
-      localContentValues.put("syncCommentTime", Integer.valueOf(this.field_syncCommentTime));
+    if (this.eBd) {
+      localContentValues.put("dataId", this.field_dataId);
     }
-    if (this.dPA) {
-      localContentValues.put("commentFlag", Integer.valueOf(this.field_commentFlag));
+    if (this.elv) {
+      localContentValues.put("mediaId", this.field_mediaId);
+    }
+    if (this.emh) {
+      localContentValues.put("path", this.field_path);
+    }
+    if (this.eyC) {
+      localContentValues.put("cdnUrl", this.field_cdnUrl);
+    }
+    if (this.eBf) {
+      localContentValues.put("cdnKey", this.field_cdnKey);
+    }
+    if (this.elx) {
+      localContentValues.put("totalLen", Integer.valueOf(this.field_totalLen));
+    }
+    if (this.eTR) {
+      localContentValues.put("isThumb", Boolean.valueOf(this.field_isThumb));
+    }
+    if (this.ely) {
+      localContentValues.put("offset", Integer.valueOf(this.field_offset));
+    }
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
+    }
+    if (this.eCH) {
+      localContentValues.put("fileType", Integer.valueOf(this.field_fileType));
+    }
+    if (this.ejO) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
+    }
+    if (this.eCQ) {
+      localContentValues.put("errCode", Integer.valueOf(this.field_errCode));
+    }
+    if (this.eTS) {
+      localContentValues.put("tpaeskey", this.field_tpaeskey);
+    }
+    if (this.eyL) {
+      localContentValues.put("tpauthkey", this.field_tpauthkey);
+    }
+    if (this.eTT) {
+      localContentValues.put("tpdataurl", this.field_tpdataurl);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -136,7 +242,7 @@ public abstract class eu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.eu
  * JD-Core Version:    0.7.0.1
  */

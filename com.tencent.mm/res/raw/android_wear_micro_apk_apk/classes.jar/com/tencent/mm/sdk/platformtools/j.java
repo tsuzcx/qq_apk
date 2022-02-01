@@ -8,65 +8,72 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class j
   implements l
 {
-  private k Xs;
-  private ConcurrentHashMap<Runnable, WeakReference<n>> Xt = new ConcurrentHashMap();
-  private int Xu;
-  private LinkedList<WeakReference<n>> Xv = new LinkedList();
-  private String Xw = null;
+  private com.tencent.mm.sdk.a Zu;
+  private ConcurrentHashMap<Runnable, WeakReference<n>> Zv = new ConcurrentHashMap();
+  private int Zw;
+  private LinkedList<WeakReference<n>> Zx = new LinkedList();
+  private String Zy = null;
   
   public j()
   {
-    this.Xs = new k(this);
-    if (this.Xs.getLooper().getThread().getName().equals("initThread")) {
-      f.a("MicroMsg.MMHandler", "MMHandler can not init handler with initThread looper, stack %s", new Object[] { q.lq() });
+    if (Looper.myLooper() == null)
+    {
+      f.b("MicroMsg.MMHandler", "[MMHandler] myLooper() == null loopTag:%s", new Object[] { com.tencent.mm.sdk.b.a.getTag() });
+      this.Zu = new com.tencent.mm.sdk.a(q.l(com.tencent.mm.sdk.b.a.getTag(), "MicroMsg.MMHandler"), this);
     }
+    do
+    {
+      return;
+      this.Zu = new com.tencent.mm.sdk.a(this);
+    } while (!this.Zu.lm().getThread().getName().equals("initThread"));
+    f.a("MicroMsg.MMHandler", "MMHandler can not init handler with initThread looper, stack %s", new Object[] { q.lC() });
   }
   
   public j(Looper paramLooper)
   {
-    this.Xs = new k(paramLooper, this);
+    this.Zu = new com.tencent.mm.sdk.a(paramLooper, this);
     if (paramLooper.getThread().getName().equals("initThread")) {
-      f.a("MicroMsg.MMHandler", "MMHandler can not init handler with initThread looper, stack %s", new Object[] { q.lq() });
+      f.a("MicroMsg.MMHandler", "MMHandler can not init handler with initThread looper, stack %s", new Object[] { q.lC() });
     }
   }
   
   public final void a(Runnable paramRunnable, n paramn)
   {
-    this.Xt.put(paramRunnable, new WeakReference(paramn));
+    this.Zv.put(paramRunnable, new WeakReference(paramn));
   }
   
   public final void b(Runnable paramRunnable, n paramn)
   {
-    WeakReference localWeakReference = (WeakReference)this.Xt.get(paramRunnable);
+    WeakReference localWeakReference = (WeakReference)this.Zv.get(paramRunnable);
     if ((localWeakReference != null) && (localWeakReference.get() != null) && (localWeakReference.get() == paramn))
     {
-      this.Xt.remove(paramRunnable);
-      if (this.Xu > 0)
+      this.Zv.remove(paramRunnable);
+      if (this.Zw > 0)
       {
-        if (this.Xv.size() == this.Xu) {
-          this.Xv.pop();
+        if (this.Zx.size() == this.Zw) {
+          this.Zx.pop();
         }
-        this.Xv.add(localWeakReference);
+        this.Zx.add(localWeakReference);
       }
     }
   }
   
-  public final boolean c(Runnable paramRunnable)
+  public final boolean e(Runnable paramRunnable)
   {
-    return this.Xs.postDelayed(paramRunnable, 10000L);
+    return this.Zu.postDelayed(paramRunnable, 10000L);
   }
   
   public final boolean post(Runnable paramRunnable)
   {
-    return this.Xs.post(paramRunnable);
+    return this.Zu.post(paramRunnable);
   }
   
   public final String toString()
   {
-    if (this.Xw == null) {
-      this.Xw = ("MMHandler(" + getClass().getName() + ")");
+    if (this.Zy == null) {
+      this.Zy = ("MMHandler(" + getClass().getName() + ")");
     }
-    return this.Xw;
+    return this.Zy;
   }
 }
 

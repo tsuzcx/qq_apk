@@ -23,7 +23,7 @@ public final class GetAppSimpleDetailResponse
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76045);
+    AppMethodBeat.i(102291);
     this.ret = paramJceInputStream.read(this.ret, 0, true);
     if (cache_appSimpleDetailList == null)
     {
@@ -32,20 +32,20 @@ public final class GetAppSimpleDetailResponse
       cache_appSimpleDetailList.add(localAppSimpleDetail);
     }
     this.appSimpleDetailList = ((ArrayList)paramJceInputStream.read(cache_appSimpleDetailList, 1, true));
-    AppMethodBeat.o(76045);
+    AppMethodBeat.o(102291);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76044);
+    AppMethodBeat.i(102290);
     paramJceOutputStream.write(this.ret, 0);
     paramJceOutputStream.write(this.appSimpleDetailList, 1);
-    AppMethodBeat.o(76044);
+    AppMethodBeat.o(102290);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.GetAppSimpleDetailResponse
  * JD-Core Version:    0.7.0.1
  */

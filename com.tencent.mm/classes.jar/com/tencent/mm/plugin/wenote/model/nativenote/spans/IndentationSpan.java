@@ -6,22 +6,22 @@ public class IndentationSpan
   extends LeadingMarginSpan.Standard
   implements f<Integer>, g<Integer>
 {
-  private final boolean vAY;
-  private final int vAZ;
+  private final boolean opY;
+  private final int oqa;
   
   private IndentationSpan(int paramInt, boolean paramBoolean)
   {
     super(paramInt);
-    this.vAZ = paramInt;
-    this.vAY = paramBoolean;
+    this.oqa = paramInt;
+    this.opY = paramBoolean;
   }
   
   public int getLeadingMargin(boolean paramBoolean)
   {
-    if (this.vAY) {
+    if (this.opY) {
       return 0;
     }
-    return this.vAZ;
+    return this.oqa;
   }
 }
 

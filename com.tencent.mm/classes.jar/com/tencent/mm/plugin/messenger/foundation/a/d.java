@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.protocal.protobuf.bdt;
+import com.tencent.mm.protocal.protobuf.bqj;
 import com.tencent.mm.vending.b.b;
 
 public abstract interface d
   extends a
 {
-  public abstract b a(c paramc);
+  public abstract b addContactAssembler(c paramc);
   
-  public abstract void a(bdt parambdt, String paramString);
+  public abstract void processModContact(bqj parambqj, String paramString, byte[] paramArrayOfByte, boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

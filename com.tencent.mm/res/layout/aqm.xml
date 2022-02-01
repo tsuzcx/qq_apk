@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/a9m" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="48.0dip" style="@style/su"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center_horizontal" android:id="@id/e9t" android:src="@drawable/aex" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/r1" />
-    <ImageView android:gravity="center" android:id="@id/e9u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cv" android:layout_alignLeft="@id/e9t" android:layout_alignTop="@id/e9t" />
-    <ImageView android:id="@id/e9v" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_alignRight="@id/e9t" android:layout_alignBottom="@id/e9t" />
-    <ImageView android:id="@id/awz" android:visibility="gone" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/ap6" android:layout_alignRight="@id/e9t" android:layout_alignBottom="@id/e9t" />
-    <RelativeLayout android:id="@id/e9w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/e9t" android:layout_centerHorizontal="true">
-        <TextView android:id="@id/e9x" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/r2" />
-        <TextView android:id="@id/e9y" android:paddingTop="@dimen/dl" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/r2" />
-    </RelativeLayout>
-    <TextView android:textColor="#fffd8f44" android:id="@id/e9z" android:visibility="gone" android:layout_below="@id/e9w" android:layout_centerHorizontal="true" style="@style/r2" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:background="@drawable/a9m" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:ellipsize="end" android:gravity="center|left" android:id="@android:id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:singleLine="true" android:layout_weight="1.0" style="@style/lw" />
+        <ImageButton android:id="@id/ego" android:background="@android:color/transparent" android:focusable="false" android:layout_width="50.0dip" android:layout_height="fill_parent" android:src="@drawable/b0o" />
+    </LinearLayout>
+</LinearLayout>

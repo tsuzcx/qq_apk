@@ -4,53 +4,53 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.ui.i;
+import com.tencent.mm.plugin.wallet_core.ui.k;
 import java.util.ArrayList;
 
 public final class a
-  extends i
+  extends k
 {
   public a(Context paramContext, ArrayList<Bankcard> paramArrayList, int paramInt, Orders paramOrders)
   {
     super(paramContext, paramArrayList, paramInt, paramOrders);
   }
   
-  public final Bankcard Il(int paramInt)
+  public final Bankcard Rk(int paramInt)
   {
-    AppMethodBeat.i(48459);
+    AppMethodBeat.i(72100);
     Bankcard localBankcard;
-    if ((this.tNG != null) && (this.tNG.size() != 0))
+    if ((this.zGg != null) && (this.zGg.size() != 0))
     {
-      localBankcard = (Bankcard)this.tNG.get(paramInt);
-      AppMethodBeat.o(48459);
+      localBankcard = (Bankcard)this.zGg.get(paramInt);
+      AppMethodBeat.o(72100);
       return localBankcard;
     }
     if (paramInt != getCount() - 1)
     {
-      localBankcard = (Bankcard)this.tNG.get(paramInt);
-      AppMethodBeat.o(48459);
+      localBankcard = (Bankcard)this.zGg.get(paramInt);
+      AppMethodBeat.o(72100);
       return localBankcard;
     }
-    AppMethodBeat.o(48459);
+    AppMethodBeat.o(72100);
     return null;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(48458);
-    if ((this.tNG != null) && (this.tNG.size() != 0))
+    AppMethodBeat.i(72099);
+    if ((this.zGg != null) && (this.zGg.size() != 0))
     {
-      int i = this.tNG.size();
-      AppMethodBeat.o(48458);
+      int i = this.zGg.size();
+      AppMethodBeat.o(72099);
       return i;
     }
-    AppMethodBeat.o(48458);
+    AppMethodBeat.o(72099);
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pay.ui.a
  * JD-Core Version:    0.7.0.1
  */

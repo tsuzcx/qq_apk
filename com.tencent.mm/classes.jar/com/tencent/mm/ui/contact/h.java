@@ -2,76 +2,96 @@ package com.tencent.mm.ui.contact;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.ay;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.contact.a.a;
-import com.tencent.mm.ui.contact.a.e;
+import com.tencent.mm.model.w;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bh;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class h
-  extends p
 {
-  private List<String> AcC;
-  private Cursor gqa;
-  
-  public h(MMBaseSelectContactUI paramMMBaseSelectContactUI, boolean paramBoolean, List<String> paramList)
+  private static final boolean aqA(String paramString)
   {
-    super(paramMMBaseSelectContactUI, new ArrayList(), true, paramBoolean);
-    AppMethodBeat.i(105204);
-    this.AcC = paramList;
-    g.RM();
-    this.gqa = ((j)g.E(j.class)).YA().eE(this.AcC);
-    AppMethodBeat.o(105204);
+    AppMethodBeat.i(102839);
+    String[] arrayOfString = w.gMw;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (paramString.equals(arrayOfString[i]))
+      {
+        AppMethodBeat.o(102839);
+        return false;
+      }
+      i += 1;
+    }
+    if (w.pF(paramString))
+    {
+      AppMethodBeat.o(102839);
+      return false;
+    }
+    if (w.sE(paramString))
+    {
+      AppMethodBeat.o(102839);
+      return false;
+    }
+    AppMethodBeat.o(102839);
+    return true;
   }
   
-  public final void finish()
+  public static final Cursor hU(List<String> paramList)
   {
-    AppMethodBeat.i(105207);
-    super.finish();
-    ab.i("MicroMsg.CustomContactAdapter", "finish!");
-    if (this.gqa != null)
+    AppMethodBeat.i(102837);
+    paramList = hV(paramList);
+    if (paramList.size() == 0)
     {
-      this.gqa.close();
-      this.gqa = null;
+      g.afC();
+      paramList = ((k)g.ab(k.class)).apM().eLc();
+      AppMethodBeat.o(102837);
+      return paramList;
     }
-    AppMethodBeat.o(105207);
+    g.afC();
+    paramList = ((k)g.ab(k.class)).apM().gY(paramList);
+    AppMethodBeat.o(102837);
+    return paramList;
   }
   
-  public final int getCount()
+  private static final List<String> hV(List<String> paramList)
   {
-    AppMethodBeat.i(105205);
-    int i = this.gqa.getCount();
-    AppMethodBeat.o(105205);
-    return i;
-  }
-  
-  protected final a mM(int paramInt)
-  {
-    AppMethodBeat.i(105206);
-    e locale = null;
-    if ((paramInt >= 0) && (this.gqa.moveToPosition(paramInt)))
+    AppMethodBeat.i(102838);
+    ArrayList localArrayList = new ArrayList();
+    paramList = ((k)g.ab(k.class)).apR().a(w.gMn, paramList, true, null);
+    if (paramList.moveToFirst())
     {
-      locale = new e(paramInt);
-      ad localad = new ad();
-      localad.convertFrom(this.gqa);
-      locale.contact = localad;
-      locale.Adl = cni();
+      int i = 0;
+      do
+      {
+        am localam = new am();
+        localam.convertFrom(paramList);
+        int j = i;
+        if (aqA(localam.field_username))
+        {
+          localArrayList.add(localam.field_username);
+          j = i + 1;
+          if (j >= 4) {
+            break;
+          }
+        }
+        i = j;
+      } while (paramList.moveToNext());
     }
-    for (;;)
-    {
-      AppMethodBeat.o(105206);
-      return locale;
-      ab.e("MicroMsg.CustomContactAdapter", "create Data Item Error position=%d", new Object[] { Integer.valueOf(paramInt) });
-    }
+    paramList.close();
+    AppMethodBeat.o(102838);
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.contact.h
  * JD-Core Version:    0.7.0.1
  */

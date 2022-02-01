@@ -56,7 +56,7 @@ public final class c
           Log.i("Tinker.PMSIntrcptHndlr", "locate componentName field of " + paramMethod.getName() + " done at idx: " + i);
           paramObject = (ComponentName)paramArrayOfObject[i];
           if (paramObject != null) {
-            return com.tencent.tinker.loader.hotplug.c.ab(paramObject.getClassName());
+            return com.tencent.tinker.loader.hotplug.c.af(paramObject.getClassName());
           }
           Log.w("Tinker.PMSIntrcptHndlr", "failed to locate componentName field of " + paramMethod.getName() + ", notice any crashes or mistakes after resolve works.");
           return null;
@@ -96,7 +96,7 @@ public final class c
           Log.i("Tinker.PMSIntrcptHndlr", "locate intent field of " + paramMethod.getName() + " done at idx: " + i);
           paramObject = (Intent)paramArrayOfObject[i];
           if (paramObject != null) {
-            return com.tencent.tinker.loader.hotplug.c.i(paramObject);
+            return com.tencent.tinker.loader.hotplug.c.k(paramObject);
           }
           Log.w("Tinker.PMSIntrcptHndlr", "failed to locate intent field of " + paramMethod.getName() + ", notice any crashes or mistakes after resolve works.");
           return null;

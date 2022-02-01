@@ -1,47 +1,85 @@
 package com.tencent.mm.plugin.talkroom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.g.a.kr;
+import com.tencent.mm.g.a.vi;
+import com.tencent.mm.g.a.vj;
+import com.tencent.mm.g.a.vl;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.plugin.talkroom.model.b;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
 
 public class Plugin
-  implements c
+  implements d
 {
   public Plugin()
   {
-    AppMethodBeat.i(25689);
-    com.tencent.mm.sdk.b.a.ymk.c(new Plugin.1(this));
-    com.tencent.mm.sdk.b.a.ymk.c(new Plugin.b((byte)0));
-    com.tencent.mm.sdk.b.a.ymk.c(new Plugin.a(this, (byte)0));
-    com.tencent.mm.sdk.b.a.ymk.c(new Plugin.c(this, (byte)0));
-    AppMethodBeat.o(25689);
+    AppMethodBeat.i(29370);
+    com.tencent.mm.sdk.b.a.ESL.c(new com.tencent.mm.sdk.b.c() {});
+    com.tencent.mm.sdk.b.a.ESL.c(new b((byte)0));
+    com.tencent.mm.sdk.b.a.ESL.c(new a((byte)0));
+    com.tencent.mm.sdk.b.a.ESL.c(new c((byte)0));
+    AppMethodBeat.o(29370);
   }
   
-  public o createApplication()
+  public m createApplication()
   {
-    AppMethodBeat.i(25690);
+    AppMethodBeat.i(29371);
     a locala = new a();
-    AppMethodBeat.o(25690);
+    AppMethodBeat.o(29371);
     return locala;
   }
   
-  public at createSubCore()
+  public aw createSubCore()
   {
-    AppMethodBeat.i(25691);
-    com.tencent.mm.plugin.talkroom.model.b localb = new com.tencent.mm.plugin.talkroom.model.b();
-    AppMethodBeat.o(25691);
+    AppMethodBeat.i(29372);
+    b localb = new b();
+    AppMethodBeat.o(29372);
     return localb;
   }
   
-  public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public com.tencent.mm.pluginsdk.b.c getContactWidgetFactory()
   {
     return null;
+  }
+  
+  final class a
+    extends com.tencent.mm.sdk.b.c<vi>
+  {
+    private a()
+    {
+      AppMethodBeat.i(161452);
+      this.__eventId = vi.class.getName().hashCode();
+      AppMethodBeat.o(161452);
+    }
+  }
+  
+  static final class b
+    extends com.tencent.mm.sdk.b.c<vj>
+  {
+    private b()
+    {
+      AppMethodBeat.i(161454);
+      this.__eventId = vj.class.getName().hashCode();
+      AppMethodBeat.o(161454);
+    }
+  }
+  
+  final class c
+    extends com.tencent.mm.sdk.b.c<vl>
+  {
+    private c()
+    {
+      AppMethodBeat.i(161456);
+      this.__eventId = vl.class.getName().hashCode();
+      AppMethodBeat.o(161456);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.Plugin
  * JD-Core Version:    0.7.0.1
  */

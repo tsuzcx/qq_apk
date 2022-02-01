@@ -28,7 +28,7 @@ public class AstSDKDBHelper_V2
   {
     try
     {
-      AppMethodBeat.i(76183);
+      AppMethodBeat.i(102429);
       if (mInstance == null)
       {
         localObject1 = GlobalUtil.getInstance().getContext();
@@ -37,7 +37,7 @@ public class AstSDKDBHelper_V2
         }
       }
       Object localObject1 = mInstance;
-      AppMethodBeat.o(76183);
+      AppMethodBeat.o(102429);
       return localObject1;
     }
     finally {}

@@ -13,8 +13,8 @@ import com.tencent.mm.svg.c;
 public final class arn
   extends c
 {
-  private final int height = 96;
-  private final int width = 96;
+  private final int height = 72;
+  private final int width = 72;
   
   public final int a(int paramInt, Object... paramVarArgs)
   {
@@ -24,16 +24,16 @@ public final class arn
     for (;;)
     {
       return 0;
-      return 96;
-      return 96;
+      return 72;
+      return 72;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      c.h(paramVarArgs);
-      c.g(paramVarArgs);
-      Paint localPaint = c.k(paramVarArgs);
+      c.j(paramVarArgs);
+      c.i(paramVarArgs);
+      Paint localPaint = c.m(paramVarArgs);
       localPaint.setFlags(385);
       localPaint.setStyle(Paint.Style.FILL);
-      Object localObject = c.k(paramVarArgs);
+      Object localObject = c.m(paramVarArgs);
       ((Paint)localObject).setFlags(385);
       ((Paint)localObject).setStyle(Paint.Style.STROKE);
       localPaint.setColor(-16777216);
@@ -44,42 +44,50 @@ public final class arn
       ((Paint)localObject).setPathEffect(null);
       c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
       localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-1);
+      localPaint.setColor(-16777216);
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
-      localObject = c.l(paramVarArgs);
-      ((Path)localObject).moveTo(27.334614F, 45.865097F);
-      ((Path)localObject).cubicTo(25.343315F, 46.878971F, 21.187138F, 52.730484F, 20.731934F, 57.04248F);
-      ((Path)localObject).cubicTo(20.231934F, 61.778809F, 21.082403F, 65.689941F, 22.739258F, 65.689941F);
-      ((Path)localObject).cubicTo(23.691587F, 65.689941F, 25.924526F, 64.051163F, 27.651304F, 61.766052F);
-      ((Path)localObject).cubicTo(28.861832F, 64.05024F, 30.447872F, 66.10601F, 32.327477F, 67.851654F);
-      ((Path)localObject).cubicTo(28.999271F, 69.187904F, 26.0F, 71.200111F, 26.0F, 73.5F);
-      ((Path)localObject).cubicTo(26.0F, 77.520508F, 31.528564F, 80.111816F, 35.64502F, 80.111816F);
-      ((Path)localObject).cubicTo(38.931198F, 80.111816F, 45.607635F, 78.173347F, 48.0F, 75.379387F);
-      ((Path)localObject).lineTo(48.0F, 75.379387F);
-      ((Path)localObject).cubicTo(50.392365F, 78.173347F, 57.068802F, 80.111816F, 60.35498F, 80.111816F);
-      ((Path)localObject).cubicTo(64.471436F, 80.111816F, 70.0F, 77.520508F, 70.0F, 73.5F);
-      ((Path)localObject).cubicTo(70.0F, 71.200111F, 67.000725F, 69.187904F, 63.672523F, 67.851654F);
-      ((Path)localObject).lineTo(63.672523F, 67.851654F);
-      ((Path)localObject).cubicTo(65.605003F, 66.0569F, 67.227173F, 63.934326F, 68.449966F, 61.572731F);
-      ((Path)localObject).cubicTo(70.388344F, 63.958172F, 72.979736F, 65.689941F, 74.06749F, 65.689941F);
-      ((Path)localObject).cubicTo(75.90844F, 65.689941F, 76.853409F, 61.778809F, 76.297852F, 57.04248F);
-      ((Path)localObject).cubicTo(75.769608F, 52.539017F, 70.755882F, 46.356285F, 68.68161F, 45.759216F);
-      ((Path)localObject).cubicTo(68.890808F, 44.375946F, 69.0F, 42.95274F, 69.0F, 41.5F);
-      ((Path)localObject).cubicTo(69.0F, 27.969023F, 59.59798F, 17.0F, 48.0F, 17.0F);
-      ((Path)localObject).cubicTo(36.40202F, 17.0F, 27.0F, 27.969023F, 27.0F, 41.5F);
-      ((Path)localObject).cubicTo(27.0F, 42.989834F, 27.11484F, 44.448605F, 27.334614F, 45.865097F);
+      localObject = c.n(paramVarArgs);
+      ((Path)localObject).moveTo(36.0F, 7.5F);
+      ((Path)localObject).lineTo(60.0F, 16.5F);
+      ((Path)localObject).lineTo(60.0F, 33.761368F);
+      ((Path)localObject).cubicTo(60.0F, 48.30043F, 50.104965F, 60.973759F, 36.0F, 64.5F);
+      ((Path)localObject).cubicTo(21.895035F, 60.973759F, 12.0F, 48.30043F, 12.0F, 33.761368F);
+      ((Path)localObject).lineTo(12.0F, 16.5F);
+      ((Path)localObject).lineTo(36.0F, 7.5F);
       ((Path)localObject).close();
-      WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
+      ((Path)localObject).moveTo(36.0F, 11.210795F);
+      ((Path)localObject).lineTo(15.6F, 19.310795F);
+      ((Path)localObject).lineTo(15.6F, 33.761368F);
+      ((Path)localObject).cubicTo(15.6F, 46.346371F, 23.964329F, 57.354259F, 36.0F, 60.774364F);
+      ((Path)localObject).cubicTo(48.035671F, 57.354259F, 56.400002F, 46.346371F, 56.400002F, 33.761368F);
+      ((Path)localObject).lineTo(56.400734F, 30.980385F);
+      ((Path)localObject).cubicTo(46.563309F, 36.305576F, 30.986734F, 44.73748F, 30.986734F, 44.73748F);
+      ((Path)localObject).lineTo(30.807501F, 44.834969F);
+      ((Path)localObject).cubicTo(30.586174F, 44.938831F, 30.337011F, 45.0F, 30.072912F, 45.0F);
+      ((Path)localObject).cubicTo(29.45985F, 45.0F, 28.926901F, 44.683319F, 28.647186F, 44.21563F);
+      ((Path)localObject).lineTo(28.540596F, 43.996437F);
+      ((Path)localObject).lineTo(24.078075F, 34.806988F);
+      ((Path)localObject).cubicTo(24.029873F, 34.706947F, 24.0F, 34.593529F, 24.0F, 34.483295F);
+      ((Path)localObject).cubicTo(24.0F, 34.060207F, 24.365936F, 33.717403F, 24.816736F, 33.717403F);
+      ((Path)localObject).cubicTo(25.001402F, 33.717403F, 25.169094F, 33.774113F, 25.306236F, 33.86969F);
+      ((Path)localObject).lineTo(30.571238F, 37.387577F);
+      ((Path)localObject).cubicTo(30.954824F, 37.623333F, 31.41581F, 37.762241F, 31.910061F, 37.762241F);
+      ((Path)localObject).cubicTo(32.204033F, 37.762241F, 32.485783F, 37.711266F, 32.747166F, 37.621422F);
+      ((Path)localObject).cubicTo(32.747166F, 37.621422F, 49.806355F, 30.513344F, 56.400188F, 27.771275F);
+      ((Path)localObject).lineTo(56.400002F, 19.310795F);
+      ((Path)localObject).lineTo(36.0F, 11.210795F);
+      ((Path)localObject).close();
+      WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
       localCanvas.drawPath((Path)localObject, localPaint);
       localCanvas.restore();
-      c.j(paramVarArgs);
+      c.l(paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.arn
  * JD-Core Version:    0.7.0.1
  */

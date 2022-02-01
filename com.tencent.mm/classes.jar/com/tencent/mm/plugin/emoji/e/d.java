@@ -1,106 +1,116 @@
 package com.tencent.mm.plugin.emoji.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.plugin.emoji.model.c;
-import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.storage.emotion.a;
-import com.tencent.mm.ui.widget.b.e.c;
-import java.util.ArrayList;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.vfs.q;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class d
 {
-  public static d lfC;
-  public ArrayList<String> lfD;
-  public boolean lfE;
-  public boolean lfF;
+  public static d ovq;
+  public boolean ovr;
+  private Pattern ovs;
   
   public d()
   {
-    AppMethodBeat.i(52852);
-    this.lfD = new ArrayList();
-    this.lfE = true;
-    this.lfF = false;
-    AppMethodBeat.o(52852);
+    AppMethodBeat.i(108423);
+    this.ovr = false;
+    this.ovs = Pattern.compile("_\\d");
+    AppMethodBeat.o(108423);
   }
   
-  public static void a(EmojiInfo paramEmojiInfo, boolean paramBoolean)
+  public static d bUB()
   {
-    AppMethodBeat.i(52854);
-    if (paramEmojiInfo != null)
-    {
-      paramEmojiInfo.field_reserved4 = 0;
-      i.getEmojiStorageMgr().yNn.K(paramEmojiInfo);
-      i.blo().t(paramEmojiInfo);
-      if (paramBoolean)
-      {
-        h.qsU.idkeyStat(231L, 0L, 1L, false);
-        AppMethodBeat.o(52854);
-        return;
-      }
-      h.qsU.idkeyStat(231L, 1L, 1L, false);
-    }
-    AppMethodBeat.o(52854);
-  }
-  
-  private void b(EmojiInfo paramEmojiInfo, boolean paramBoolean)
-  {
-    AppMethodBeat.i(52855);
-    if (this.lfD == null) {
-      this.lfD = new ArrayList();
-    }
-    this.lfD.add(paramEmojiInfo.field_groupId);
-    paramEmojiInfo = new com.tencent.mm.plugin.emoji.f.g(paramEmojiInfo.field_groupId);
-    com.tencent.mm.kernel.g.RK().eHt.a(paramEmojiInfo, 0);
-    if (paramBoolean)
-    {
-      h.qsU.idkeyStat(231L, 3L, 1L, false);
-      AppMethodBeat.o(52855);
-      return;
-    }
-    h.qsU.idkeyStat(231L, 2L, 1L, false);
-    AppMethodBeat.o(52855);
-  }
-  
-  public static d bkN()
-  {
-    AppMethodBeat.i(52853);
-    if (lfC == null) {}
+    AppMethodBeat.i(108424);
+    if (ovq == null) {}
     try
     {
-      lfC = new d();
-      d locald = lfC;
-      AppMethodBeat.o(52853);
+      ovq = new d();
+      d locald = ovq;
+      AppMethodBeat.o(108424);
       return locald;
     }
     finally
     {
-      AppMethodBeat.o(52853);
+      AppMethodBeat.o(108424);
     }
   }
   
-  private static boolean bkO()
+  public final void Tx(String paramString)
   {
-    AppMethodBeat.i(52856);
-    if ((com.tencent.mm.sdk.platformtools.at.is3G(ah.getContext())) || (com.tencent.mm.sdk.platformtools.at.is4G(ah.getContext())) || (com.tencent.mm.sdk.platformtools.at.is2G(ah.getContext())))
+    AppMethodBeat.i(108425);
+    paramString = new com.tencent.mm.vfs.e(paramString);
+    if ((paramString.exists()) && (paramString.isDirectory()))
     {
-      AppMethodBeat.o(52856);
-      return true;
+      paramString = paramString.fhW();
+      if ((paramString != null) && (paramString.length > 0))
+      {
+        int j = paramString.length;
+        int i = 0;
+        if (i < j)
+        {
+          Object localObject = paramString[i];
+          if (this.ovr)
+          {
+            if (localObject.isDirectory()) {
+              Tx(q.B(localObject.mUri));
+            }
+            for (;;)
+            {
+              i += 1;
+              break;
+              String str = localObject.getName();
+              if ((this.ovs.matcher(str).find()) || (str.startsWith("temp"))) {
+                localObject.delete();
+              }
+            }
+          }
+          ad.i("MicroMsg.emoji.EmojiFileCleanTaskManager", "stop run");
+          AppMethodBeat.o(108425);
+          return;
+        }
+      }
     }
-    AppMethodBeat.o(52856);
-    return false;
+    AppMethodBeat.o(108425);
+  }
+  
+  public final void Ty(String paramString)
+  {
+    AppMethodBeat.i(108426);
+    paramString = new com.tencent.mm.vfs.e(paramString);
+    if ((paramString.exists()) && (paramString.isDirectory()))
+    {
+      paramString = paramString.fhW();
+      if ((paramString != null) && (paramString.length > 0))
+      {
+        int j = paramString.length;
+        int i = 0;
+        if (i < j)
+        {
+          Object localObject = paramString[i];
+          if (localObject.isDirectory()) {
+            Ty(q.B(localObject.mUri));
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            localObject.getName();
+            localObject.delete();
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(108426);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e.d
  * JD-Core Version:    0.7.0.1
  */

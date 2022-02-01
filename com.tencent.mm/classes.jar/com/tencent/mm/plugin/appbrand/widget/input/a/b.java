@@ -13,7 +13,14 @@ public abstract interface b
   
   public abstract SpannableString a(Context paramContext, CharSequence paramCharSequence, float paramFloat);
   
-  public abstract b.a oM(int paramInt);
+  public abstract a ta(int paramInt);
+  
+  public static final class a
+  {
+    public int mfv;
+    public int mfw;
+    public int mfx;
+  }
 }
 
 

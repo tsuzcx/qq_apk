@@ -1,31 +1,34 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.model.bz.a;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.al.f.c;
+import com.tencent.mm.model.cc.a;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class am$6
-  implements bz.a
+  implements cc.a
 {
   am$6(am paramam) {}
   
-  public final void a(e.a parama)
+  public final void a(f.a parama)
   {
-    AppMethodBeat.i(87939);
-    String str = aa.a(parama.eyJ.woR);
+    AppMethodBeat.i(112878);
+    String str = z.a(parama.fTo.Cxz);
     if ((str == null) || (str.length() == 0))
     {
-      ab.e("MicroMsg.SubCoreCard.CardMsgListener", "onReceiveMsg, msgContent is null");
-      AppMethodBeat.o(87939);
+      ad.e("MicroMsg.SubCoreCard.CardMsgListener", "onReceiveMsg, msgContent is null");
+      AppMethodBeat.o(112878);
       return;
     }
-    am.a(this.kpm).post(new am.6.1(this, str, parama));
-    AppMethodBeat.o(87939);
+    am.a(this.nuz).post(new am.6.1(this, str, parama));
+    AppMethodBeat.o(112878);
   }
+  
+  public final void a(f.c paramc) {}
 }
 
 

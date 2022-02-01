@@ -6,26 +6,26 @@ import java.util.ArrayList;
 
 public final class ae
 {
-  private SparseArray<ArrayList<an>> ur = new SparseArray();
-  private SparseIntArray us = new SparseIntArray();
-  private int ut = 0;
+  private SparseArray<ArrayList<an>> wg = new SparseArray();
+  private SparseIntArray wh = new SparseIntArray();
+  private int wi = 0;
   
   final void a(t paramt1, t paramt2, boolean paramBoolean)
   {
     if (paramt1 != null) {
-      this.ut -= 1;
+      this.wi -= 1;
     }
-    if (this.ut == 0) {
-      this.ur.clear();
+    if (this.wi == 0) {
+      this.wg.clear();
     }
     if (paramt2 != null) {
-      this.ut += 1;
+      this.wi += 1;
     }
   }
   
-  public final an ar(int paramInt)
+  public final an aD(int paramInt)
   {
-    ArrayList localArrayList = (ArrayList)this.ur.get(0);
+    ArrayList localArrayList = (ArrayList)this.wg.get(0);
     if ((localArrayList != null) && (!localArrayList.isEmpty()))
     {
       paramInt = localArrayList.size() - 1;
@@ -38,24 +38,24 @@ public final class ae
   
   public final void o(an paraman)
   {
-    int i = paraman.vh;
-    ArrayList localArrayList2 = (ArrayList)this.ur.get(i);
+    int i = paraman.wW;
+    ArrayList localArrayList2 = (ArrayList)this.wg.get(i);
     ArrayList localArrayList1 = localArrayList2;
     if (localArrayList2 == null)
     {
       localArrayList2 = new ArrayList();
-      this.ur.put(i, localArrayList2);
+      this.wg.put(i, localArrayList2);
       localArrayList1 = localArrayList2;
-      if (this.us.indexOfKey(i) < 0)
+      if (this.wh.indexOfKey(i) < 0)
       {
-        this.us.put(i, 5);
+        this.wh.put(i, 5);
         localArrayList1 = localArrayList2;
       }
     }
-    if (this.us.get(i) <= localArrayList1.size()) {
+    if (this.wh.get(i) <= localArrayList1.size()) {
       return;
     }
-    paraman.es();
+    paraman.df();
     localArrayList1.add(paraman);
   }
 }

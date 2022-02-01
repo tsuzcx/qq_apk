@@ -4,11 +4,11 @@ import android.content.Context;
 
 public abstract interface a
 {
-  public abstract int bW(String paramString, int paramInt);
-  
   public abstract CharSequence c(Context paramContext, CharSequence paramCharSequence, float paramFloat);
   
-  public abstract CharSequence h(CharSequence paramCharSequence, int paramInt);
+  public abstract int cJ(String paramString, int paramInt);
+  
+  public abstract CharSequence i(CharSequence paramCharSequence, int paramInt);
 }
 
 

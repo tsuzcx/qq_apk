@@ -6,23 +6,23 @@ public enum n$a
 {
   static
   {
-    AppMethodBeat.i(87856);
-    koa = new a("NORMAL_TYPE", 0);
-    kob = new a("INVALID_TYPE", 1);
-    koc = new a("CAN_GIFT_TYPE", 2);
-    kod = new a("GENERAL_TYPE", 3);
-    koe = new a("MEMBER_CARD_TYPE", 4);
-    kof = new a("HOME_MEMBER_CARD_TYPE", 5);
-    kog = new a("GENERAL_WITHOUT_INVOICE_TYPE", 6);
-    koh = new a[] { koa, kob, koc, kod, koe, kof, kog };
-    AppMethodBeat.o(87856);
+    AppMethodBeat.i(112798);
+    nto = new a("NORMAL_TYPE", 0);
+    ntp = new a("INVALID_TYPE", 1);
+    ntq = new a("CAN_GIFT_TYPE", 2);
+    ntr = new a("GENERAL_TYPE", 3);
+    nts = new a("MEMBER_CARD_TYPE", 4);
+    ntt = new a("HOME_MEMBER_CARD_TYPE", 5);
+    ntu = new a("GENERAL_WITHOUT_INVOICE_TYPE", 6);
+    ntv = new a[] { nto, ntp, ntq, ntr, nts, ntt, ntu };
+    AppMethodBeat.o(112798);
   }
   
   private n$a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.n.a
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ public final class b
     }
     paramApplicationLike = paramApplicationLike.getTinkerResultIntent();
     if (paramApplicationLike == null) {}
-    while (ShareIntentUtil.bc(paramApplicationLike) != 0) {
+    while (ShareIntentUtil.getIntentReturnCode(paramApplicationLike) != 0) {
       return false;
     }
     return true;
@@ -37,9 +37,9 @@ public final class b
     do
     {
       return null;
-      str = ShareIntentUtil.n((Intent)localObject, "intent_patch_old_version");
-      localObject = ShareIntentUtil.n((Intent)localObject, "intent_patch_new_version");
-      bool = ShareTinkerInternals.jH(paramApplicationLike.getApplication());
+      str = ShareIntentUtil.getStringExtra((Intent)localObject, "intent_patch_old_version");
+      localObject = ShareIntentUtil.getStringExtra((Intent)localObject, "intent_patch_new_version");
+      bool = ShareTinkerInternals.isInMainProcess(paramApplicationLike.getApplication());
     } while ((str == null) || (localObject == null));
     if (bool) {
       return localObject;
@@ -52,7 +52,7 @@ public final class b
     if ((paramApplicationLike == null) || (paramApplicationLike.getApplication() == null)) {
       throw new TinkerRuntimeException("tinkerApplication is null");
     }
-    File localFile = SharePatchFileUtil.jy(paramApplicationLike.getApplication());
+    File localFile = SharePatchFileUtil.getPatchDirectory(paramApplicationLike.getApplication());
     if (!localFile.exists()) {
       a.w("Tinker.TinkerApplicationHelper", "try to clean patch while there're not any applied patches.", new Object[0]);
     }
@@ -60,17 +60,17 @@ public final class b
     do
     {
       return;
-      paramApplicationLike = SharePatchFileUtil.awZ(localFile.getAbsolutePath());
+      paramApplicationLike = SharePatchFileUtil.getPatchInfoFile(localFile.getAbsolutePath());
       if (!paramApplicationLike.exists())
       {
         a.w("Tinker.TinkerApplicationHelper", "try to clean patch while patch info file does not exist.", new Object[0]);
         return;
       }
-      localFile = SharePatchFileUtil.axa(localFile.getAbsolutePath());
-      localSharePatchInfo = SharePatchInfo.l(paramApplicationLike, localFile);
+      localFile = SharePatchFileUtil.getPatchInfoLockFile(localFile.getAbsolutePath());
+      localSharePatchInfo = SharePatchInfo.readAndCheckPropertyWithLock(paramApplicationLike, localFile);
     } while (localSharePatchInfo == null);
-    localSharePatchInfo.BvX = true;
-    SharePatchInfo.a(paramApplicationLike, localSharePatchInfo, localFile);
+    localSharePatchInfo.isRemoveNewVersion = true;
+    SharePatchInfo.rewritePatchInfoFileWithLock(paramApplicationLike, localSharePatchInfo, localFile);
   }
 }
 

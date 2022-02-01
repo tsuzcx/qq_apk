@@ -7,7 +7,7 @@ import java.util.zip.ZipException;
 
 final class c
 {
-  private static long a(RandomAccessFile paramRandomAccessFile, c.a parama)
+  private static long a(RandomAccessFile paramRandomAccessFile, a parama)
   {
     CRC32 localCRC32 = new CRC32();
     long l = parama.size;
@@ -25,7 +25,7 @@ final class c
     return localCRC32.getValue();
   }
   
-  private static c.a a(RandomAccessFile paramRandomAccessFile)
+  private static a b(RandomAccessFile paramRandomAccessFile)
   {
     long l1 = 0L;
     long l2 = paramRandomAccessFile.length() - 22L;
@@ -51,7 +51,7 @@ final class c
       paramRandomAccessFile.skipBytes(2);
       paramRandomAccessFile.skipBytes(2);
       paramRandomAccessFile.skipBytes(2);
-      c.a locala = new c.a();
+      a locala = new a();
       locala.size = (Integer.reverseBytes(paramRandomAccessFile.readInt()) & 0xFFFFFFFF);
       locala.offset = (Integer.reverseBytes(paramRandomAccessFile.readInt()) & 0xFFFFFFFF);
       return locala;
@@ -59,18 +59,24 @@ final class c
     }
   }
   
-  static long g(File paramFile)
+  static long m(File paramFile)
   {
     paramFile = new RandomAccessFile(paramFile, "r");
     try
     {
-      long l = a(paramFile, a(paramFile));
+      long l = a(paramFile, b(paramFile));
       return l;
     }
     finally
     {
       paramFile.close();
     }
+  }
+  
+  static final class a
+  {
+    long offset;
+    long size;
   }
 }
 

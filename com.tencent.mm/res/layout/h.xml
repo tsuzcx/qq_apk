@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="@dimen/of" />
-</FrameLayout>
+    <include layout="@layout/a50" />
+    <include layout="@layout/a5_" />
+    <include layout="@layout/a57" />
+    <include layout="@layout/a53" />
+    <include layout="@layout/a54" />
+    <include android:id="@id/c66" android:visibility="gone" layout="@layout/a4z" />
+</LinearLayout>

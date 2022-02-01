@@ -11,14 +11,14 @@ final class WalletPayUI$19
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(46057);
-    this.tXq.finish();
-    AppMethodBeat.o(46057);
+    AppMethodBeat.i(69408);
+    this.zRD.finish();
+    AppMethodBeat.o(69408);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletPayUI.19
  * JD-Core Version:    0.7.0.1
  */

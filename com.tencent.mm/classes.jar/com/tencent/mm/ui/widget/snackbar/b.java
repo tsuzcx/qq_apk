@@ -7,96 +7,96 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static boolean AKA = false;
-  
-  public static boolean Pk()
-  {
-    return AKA;
-  }
+  private static boolean HLq = false;
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, a.b paramb)
   {
-    AppMethodBeat.i(112984);
+    AppMethodBeat.i(159712);
     paramActivity = new a.a(paramActivity);
-    paramActivity.nGF = paramString1;
-    paramActivity.AKn = paramString2;
+    paramActivity.ste = paramString1;
+    paramActivity.HLd = paramString2;
     a(paramActivity.a(Short.valueOf((short)2500)), paramb, null);
-    AppMethodBeat.o(112984);
+    AppMethodBeat.o(159712);
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, a.b paramb, a.c paramc)
   {
-    AppMethodBeat.i(112986);
+    AppMethodBeat.i(159715);
     paramActivity = new a.a(paramActivity);
-    paramActivity.nGF = paramString1;
-    paramActivity.AKn = paramString2;
+    paramActivity.ste = paramString1;
+    paramActivity.HLd = paramString2;
     a(paramActivity.a(Short.valueOf((short)2500)), paramb, paramc);
-    AppMethodBeat.o(112986);
+    AppMethodBeat.o(159715);
   }
   
   public static void a(Context paramContext, View paramView, String paramString, a.c paramc)
   {
-    AppMethodBeat.i(112988);
+    AppMethodBeat.i(159716);
     paramContext = new a.a(paramContext, paramView);
-    paramContext.nGF = paramString;
+    paramContext.ste = paramString;
     paramContext = paramContext.a(Short.valueOf((short)1500));
     if (paramc != null) {
       paramContext.a(paramc);
     }
-    paramContext.dPA();
-    AppMethodBeat.o(112988);
+    paramContext.fgp();
+    AppMethodBeat.o(159716);
   }
   
-  public static void a(Context paramContext, View paramView, String paramString1, String paramString2)
+  public static void a(Context paramContext, View paramView, String paramString1, String paramString2, a.b paramb)
   {
-    AppMethodBeat.i(112985);
+    AppMethodBeat.i(168815);
     paramContext = new a.a(paramContext, paramView);
-    paramContext.nGF = paramString1;
-    paramContext.AKn = paramString2;
-    a(paramContext.a(Short.valueOf((short)2500)), null, null);
-    AppMethodBeat.o(112985);
+    paramContext.ste = paramString1;
+    paramContext.HLd = paramString2;
+    a(paramContext.a(Short.valueOf((short)2500)), paramb, null);
+    AppMethodBeat.o(168815);
   }
   
   public static void a(Context paramContext, View paramView, String paramString1, String paramString2, a.b paramb, a.c paramc)
   {
-    AppMethodBeat.i(139662);
+    AppMethodBeat.i(159714);
     paramContext = new a.a(paramContext, paramView);
-    paramContext.nGF = paramString1;
-    paramContext.AKn = paramString2;
+    paramContext.ste = paramString1;
+    paramContext.HLd = paramString2;
     a(paramContext.a(Short.valueOf((short)2500)), paramb, paramc);
-    AppMethodBeat.o(139662);
+    AppMethodBeat.o(159714);
   }
   
   private static void a(a.a parama, a.b paramb, a.c paramc)
   {
-    AppMethodBeat.i(112990);
+    AppMethodBeat.i(159718);
     if (paramb != null) {
       parama.a(paramb);
     }
     if (paramc != null) {
       parama.a(paramc);
     }
-    parama.dPA();
-    AppMethodBeat.o(112990);
+    parama.fgp();
+    AppMethodBeat.o(159718);
   }
   
-  public static void l(Activity paramActivity, String paramString)
+  public static boolean bcB()
   {
-    AppMethodBeat.i(112989);
+    return HLq;
+  }
+  
+  public static void n(Activity paramActivity, String paramString)
+  {
+    AppMethodBeat.i(159717);
     paramActivity = new a.a(paramActivity);
-    paramActivity.nGF = paramString;
+    paramActivity.ste = paramString;
     a(paramActivity.a(Short.valueOf((short)1500)), null, null);
-    AppMethodBeat.o(112989);
+    AppMethodBeat.o(159717);
   }
   
-  public static void rJ(boolean paramBoolean)
+  public static void xb(boolean paramBoolean)
   {
-    AKA = paramBoolean;
+    HLq = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.snackbar.b
  * JD-Core Version:    0.7.0.1
  */

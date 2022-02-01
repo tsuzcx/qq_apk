@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="@dimen/m0" android:minHeight="@dimen/f1"
+<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/ra" android:layout_width="@dimen/ey" android:layout_height="@dimen/ey" android:layout_marginLeft="@dimen/m1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="5.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="@dimen/dj" android:layout_toRightOf="@id/ra" android:layout_centerVertical="true">
-        <TextView android:textSize="@dimen/m2" android:id="@id/sh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/ln" />
-    </LinearLayout>
-</RelativeLayout>
+    <com.tencent.mm.plugin.downloader_app.ui.ExpandView android:layout_width="fill_parent" android:layout_height="@dimen/cd">
+        <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:id="@id/bpn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bh7" android:layout_centerInParent="true" />
+        <ImageView android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:layout_marginLeft="@dimen/ci" android:src="@drawable/rm" android:layout_toRightOf="@id/bpn" android:layout_centerVertical="true" />
+    </com.tencent.mm.plugin.downloader_app.ui.ExpandView>
+</LinearLayout>

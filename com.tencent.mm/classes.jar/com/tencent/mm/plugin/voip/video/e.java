@@ -8,39 +8,39 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
   extends View
 {
-  public int gu;
+  private RectF lEo;
   private Matrix mMatrix;
   private Paint mPaint;
-  private int mRotateAngle;
-  public int tFW;
-  public int tFX;
-  public int tFY;
-  private int tFZ;
-  private int tGa;
-  private int tGb;
-  private int tGc;
-  private RectF tGd;
-  private boolean tGe;
+  public int pU;
+  private int zuA;
+  private boolean zuB;
+  private int zuC;
+  public int zuu;
+  public int zuv;
+  public int zuw;
+  private int zux;
+  private int zuy;
+  private int zuz;
   
   public e(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(5061);
+    AppMethodBeat.i(115580);
     this.mPaint = new Paint();
     this.mPaint.setStyle(Paint.Style.STROKE);
     this.mPaint.setColor(-65536);
     this.mPaint.setStrokeWidth(a.fromDPToPix(getContext(), 3));
     this.mMatrix = new Matrix();
-    AppMethodBeat.o(5061);
+    AppMethodBeat.o(115580);
   }
   
-  private static int ef(int paramInt1, int paramInt2)
+  private static int cX(int paramInt1, int paramInt2)
   {
     if (paramInt1 < 0) {
       paramInt1 = 0;
@@ -56,20 +56,20 @@ public final class e
   
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(5063);
-    if (this.tGd != null)
+    AppMethodBeat.i(115582);
+    if (this.lEo != null)
     {
       paramCanvas.save();
       paramCanvas.rotate(0.0F);
-      paramCanvas.drawRect(this.tGd, this.mPaint);
+      paramCanvas.drawRect(this.lEo, this.mPaint);
       paramCanvas.restore();
     }
-    AppMethodBeat.o(5063);
+    AppMethodBeat.o(115582);
   }
   
   public final void setFaceLocation(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(5062);
+    AppMethodBeat.i(115581);
     int m;
     int n;
     int i1;
@@ -78,50 +78,50 @@ public final class e
     int j;
     if (paramArrayOfInt != null)
     {
-      this.tFZ = paramArrayOfInt[0];
-      this.tGa = paramArrayOfInt[1];
-      this.tGb = paramArrayOfInt[2];
-      this.tGc = paramArrayOfInt[3];
-      if ((this.tFX != 0) && (this.tFY != 0) && (this.gu != 0) && (this.tFW != 0))
+      this.zux = paramArrayOfInt[0];
+      this.zuy = paramArrayOfInt[1];
+      this.zuz = paramArrayOfInt[2];
+      this.zuA = paramArrayOfInt[3];
+      if ((this.zuv != 0) && (this.zuw != 0) && (this.pU != 0) && (this.zuu != 0))
       {
-        m = this.tGb;
-        n = this.tFZ;
-        i1 = this.tGc;
-        i2 = this.tGa;
-        ab.d("MicroMsg.FaceRectView", "mLeftTopX:%d, mLeftTopY:%d, mRightBottomX:%d, mRightBottomY:%d", new Object[] { Integer.valueOf(this.tFZ), Integer.valueOf(this.tGa), Integer.valueOf(this.tGb), Integer.valueOf(this.tGb) });
-        ab.d("MicroMsg.FaceRectView", "mPicWidth:%d, mPicHeight:%d, mirror:%b, angle:%d", new Object[] { Integer.valueOf(this.tFX), Integer.valueOf(this.tFY), Boolean.valueOf(this.tGe), Integer.valueOf(this.mRotateAngle) });
-        i = (this.tGb + this.tFZ) / 2;
-        j = (this.tGc + this.tGa) / 2;
-        if ((this.mRotateAngle != 90) && (this.mRotateAngle != 270)) {
-          break label554;
+        m = this.zuz;
+        n = this.zux;
+        i1 = this.zuA;
+        i2 = this.zuy;
+        ad.d("MicroMsg.FaceRectView", "mLeftTopX:%d, mLeftTopY:%d, mRightBottomX:%d, mRightBottomY:%d", new Object[] { Integer.valueOf(this.zux), Integer.valueOf(this.zuy), Integer.valueOf(this.zuz), Integer.valueOf(this.zuz) });
+        ad.d("MicroMsg.FaceRectView", "mPicWidth:%d, mPicHeight:%d, mirror:%b, angle:%d", new Object[] { Integer.valueOf(this.zuv), Integer.valueOf(this.zuw), Boolean.valueOf(this.zuB), Integer.valueOf(this.zuC) });
+        i = (this.zuz + this.zux) / 2;
+        j = (this.zuA + this.zuy) / 2;
+        if ((this.zuC != 90) && (this.zuC != 270)) {
+          break label552;
         }
       }
     }
     for (;;)
     {
-      ab.d("MicroMsg.FaceRectView", "centerX:%d, centerY:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+      ad.d("MicroMsg.FaceRectView", "centerX:%d, centerY:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
       float f2;
-      if ((this.mRotateAngle == 90) || (this.mRotateAngle == 270)) {
-        f2 = this.gu / this.tFX;
+      if ((this.zuC == 90) || (this.zuC == 270)) {
+        f2 = this.pU / this.zuv;
       }
-      for (float f1 = this.tFW / this.tFY;; f1 = this.gu / this.tFY)
+      for (float f1 = this.zuu / this.zuw;; f1 = this.pU / this.zuw)
       {
         f1 = Math.max(f2, f1);
         f2 = (int)((m - n) * f1);
         float f3 = (int)((i1 - i2) * f1);
         j = (int)(j * f1);
         i = (int)(i * f1);
-        this.tFZ = ef((int)(j - f2 / 2.0F), this.tFW);
-        this.tGa = ef((int)(i - f3 / 2.0F), this.gu);
-        this.tGb = ef((int)(j + f2 / 2.0F), this.tFW);
-        this.tGc = ef((int)(i + f3 / 2.0F), this.gu);
-        this.tGd = new RectF(this.tFZ, this.tGa, this.tGb, this.tGc);
-        ab.d("MicroMsg.FaceRectView", "after translate, mLeftTopX:%.2f, mLeftTopY:%.2f, mRightBottomX:%.2f, mRightBottomY:%.2f", new Object[] { Float.valueOf(this.tGd.left), Float.valueOf(this.tGd.top), Float.valueOf(this.tGd.right), Float.valueOf(this.tGd.bottom) });
-        AppMethodBeat.o(5062);
+        this.zux = cX((int)(j - f2 / 2.0F), this.zuu);
+        this.zuy = cX((int)(i - f3 / 2.0F), this.pU);
+        this.zuz = cX((int)(j + f2 / 2.0F), this.zuu);
+        this.zuA = cX((int)(i + f3 / 2.0F), this.pU);
+        this.lEo = new RectF(this.zux, this.zuy, this.zuz, this.zuA);
+        ad.d("MicroMsg.FaceRectView", "after translate, mLeftTopX:%.2f, mLeftTopY:%.2f, mRightBottomX:%.2f, mRightBottomY:%.2f", new Object[] { Float.valueOf(this.lEo.left), Float.valueOf(this.lEo.top), Float.valueOf(this.lEo.right), Float.valueOf(this.lEo.bottom) });
+        AppMethodBeat.o(115581);
         return;
-        f2 = this.tFW / this.tFX;
+        f2 = this.zuu / this.zuv;
       }
-      label554:
+      label552:
       int k = i;
       i = j;
       j = k;
@@ -130,17 +130,17 @@ public final class e
   
   public final void setMirror(boolean paramBoolean)
   {
-    this.tGe = paramBoolean;
+    this.zuB = paramBoolean;
   }
   
   public final void setRotateAngle(int paramInt)
   {
-    this.mRotateAngle = paramInt;
+    this.zuC = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.e
  * JD-Core Version:    0.7.0.1
  */

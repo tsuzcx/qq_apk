@@ -9,20 +9,20 @@ public final class d
 {
   public final int a(f paramf, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(94859);
-    paramInt = paramf.df(paramInt);
+    AppMethodBeat.i(91974);
+    paramInt = paramf.dQ(paramInt);
     if (paramInt == -1)
     {
       if (paramBoolean)
       {
-        AppMethodBeat.o(94859);
+        AppMethodBeat.o(91974);
         return -1;
       }
       paramf = new EOFException();
-      AppMethodBeat.o(94859);
+      AppMethodBeat.o(91974);
       throw paramf;
     }
-    AppMethodBeat.o(94859);
+    AppMethodBeat.o(91974);
     return paramInt;
   }
   
@@ -30,16 +30,16 @@ public final class d
   
   public final void a(com.google.android.exoplayer2.i.m paramm, int paramInt)
   {
-    AppMethodBeat.i(94860);
-    paramm.en(paramInt);
-    AppMethodBeat.o(94860);
+    AppMethodBeat.i(91975);
+    paramm.fl(paramInt);
+    AppMethodBeat.o(91975);
   }
   
   public final void f(Format paramFormat) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d
  * JD-Core Version:    0.7.0.1
  */

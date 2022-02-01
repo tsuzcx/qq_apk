@@ -1,19 +1,20 @@
 package com.tencent.mm.plugin.topstory.ui.home;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.e;
 
 final class b$10
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   b$10(b paramb) {}
   
-  public final void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(1588);
-    this.tgw.onBackBtnClick();
-    AppMethodBeat.o(1588);
+    AppMethodBeat.i(125940);
+    e.vIY.f(17080, new Object[] { Integer.valueOf(44), Integer.valueOf(1) });
+    AppMethodBeat.o(125940);
   }
 }
 

@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.exdevice.jni;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.k;
+import com.tencent.mm.compatible.util.j;
 
 public final class Java2CExDevice
 {
   static
   {
-    AppMethodBeat.i(19086);
-    k.a("wechataccessory", Java2CExDevice.class.getClassLoader());
+    AppMethodBeat.i(23194);
+    Java2CExDevice.class.getClassLoader();
+    j.pq("wechataccessory");
     onCreate();
     initBluetoothAccessoryLib();
-    AppMethodBeat.o(19086);
+    AppMethodBeat.o(23194);
   }
   
   public static native void cancelWCLanDeviceTask(int paramInt);
@@ -20,7 +21,7 @@ public final class Java2CExDevice
   
   public static native int connectWCLanDevice(byte[] paramArrayOfByte, boolean paramBoolean);
   
-  public static native int createChannel(long paramLong, Java2CExDevice.LongWrapper paramLongWrapper);
+  public static native int createChannel(long paramLong, LongWrapper paramLongWrapper);
   
   public static native void destroyChannel(long paramLong);
   
@@ -62,7 +63,7 @@ public final class Java2CExDevice
   
   public static native void startScanWCLanDevice(byte[] paramArrayOfByte, int paramInt);
   
-  public static native int startTask(long paramLong, short paramShort, Java2CExDevice.AccessoryCmd paramAccessoryCmd, byte[] paramArrayOfByte);
+  public static native int startTask(long paramLong, short paramShort, AccessoryCmd paramAccessoryCmd, byte[] paramArrayOfByte);
   
   public static native void stopAirKiss();
   
@@ -75,10 +76,22 @@ public final class Java2CExDevice
   public static native int useWCLanDeviceService(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
   public static native int writeFileDataToWCLanDevice(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
+  
+  public static class AccessoryCmd
+  {
+    public long channelID;
+    public int reqCmdID;
+    public int respCmdID;
+  }
+  
+  public static class LongWrapper
+  {
+    public long value;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.jni.Java2CExDevice
  * JD-Core Version:    0.7.0.1
  */

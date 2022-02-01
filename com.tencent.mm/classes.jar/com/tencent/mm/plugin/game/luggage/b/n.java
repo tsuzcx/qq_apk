@@ -1,53 +1,74 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.bridge.k;
+import android.content.Intent;
 import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.a.a;
-import com.tencent.luggage.d.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bh.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bi;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.plugin.downloader_app.api.a.c;
+import com.tencent.mm.plugin.downloader_app.api.c;
+import com.tencent.mm.plugin.game.luggage.d.f;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
 public class n
-  extends bi<com.tencent.mm.plugin.game.luggage.d.f>
+  extends bn<f>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama) {}
-  
-  public final void b(a<com.tencent.mm.plugin.game.luggage.d.f>.a parama)
+  public final void a(Context paramContext, String paramString, final bn.a parama)
   {
-    AppMethodBeat.i(154151);
-    String str1 = parama.byF.bxK.optString("videoUrl");
-    String str2 = parama.byF.bxK.optString("thumbUrl");
-    String str3 = parama.byF.bxK.optString("appId");
-    if (bo.isNullOrNil(str1))
+    AppMethodBeat.i(83076);
+    try
     {
-      parama.a("invalid_videoUrl", null);
-      AppMethodBeat.o(154151);
-      return;
+      paramString = new JSONObject(paramString);
+      if (paramString != null)
+      {
+        paramString = paramString.optString("appId");
+        Intent localIntent = new Intent();
+        localIntent.putExtra("appId", paramString);
+        localIntent.putExtra("view_task", true);
+        localIntent.addFlags(268435456);
+        ((c)g.ab(c.class)).a(paramContext, localIntent, new a.c()
+        {
+          public final void aYa()
+          {
+            AppMethodBeat.i(83075);
+            parama.f(null, null);
+            AppMethodBeat.o(83075);
+          }
+        });
+        AppMethodBeat.o(83076);
+        return;
+      }
     }
-    ((com.tencent.mm.plugin.game.api.f)g.E(com.tencent.mm.plugin.game.api.f.class)).b(((com.tencent.mm.plugin.game.luggage.d.f)parama.byE).mContext, str1, str2, str3, 510);
-    ((MMActivity)((com.tencent.mm.plugin.game.luggage.d.f)parama.byE).mContext).mmSetOnActivityResultCallback(new n.1(this, parama));
-    AppMethodBeat.o(154151);
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.JsApiJumpDownloaderWidget", paramString, "", new Object[0]);
+        paramString = null;
+        continue;
+        paramString = "";
+      }
+    }
   }
   
-  public final int bjL()
+  public final void b(a<f>.a parama) {}
+  
+  public final int bQV()
   {
-    return 0;
+    return 2;
   }
   
   public final String name()
   {
-    return "launchGameVideoEditor";
+    return "jumpDownloaderWidget";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.b.n
  * JD-Core Version:    0.7.0.1
  */

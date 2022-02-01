@@ -1,183 +1,149 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.graphics.Color;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appusage.l;
-import com.tencent.mm.plugin.appbrand.appusage.l.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.Set;
+import com.tencent.mm.g.a.un;
+import com.tencent.mm.plugin.appbrand.appusage.ap.b;
+import com.tencent.mm.plugin.appbrand.appusage.ap.c;
+import com.tencent.mm.plugin.appbrand.appusage.t.d;
+import com.tencent.mm.plugin.appbrand.report.AppBrandLauncherDesktopReporter;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.report.d;
+import com.tencent.mm.plugin.appbrand.report.model.l;
+import com.tencent.mm.plugin.appbrand.report.model.l.a;
+import com.tencent.mm.plugin.appbrand.report.model.l.b;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherUI;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandNearbyEmptyUI;
+import com.tencent.mm.protocal.protobuf.ado;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
 
 final class j
-  extends a
-  implements l.b, h.b
+  extends f
+  implements View.OnClickListener, ap.c
 {
-  Activity gQx;
-  private j.a iUN;
-  h iUO;
-  private boolean iUP;
-  private View.OnClickListener iUQ;
-  volatile boolean mFinished;
+  private boolean lJc;
   
-  j(Activity paramActivity, ViewGroup paramViewGroup)
+  j(FragmentActivity paramFragmentActivity, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(133473);
-    this.iUN = new j.a((byte)0);
-    this.mFinished = false;
-    this.iUP = false;
-    this.iUQ = null;
-    this.iUO = new h(paramViewGroup);
-    this.iUO.iUf = this;
-    this.gQx = paramActivity;
-    AppMethodBeat.o(133473);
+    super(paramFragmentActivity, paramViewGroup);
+    AppMethodBeat.i(180409);
+    this.lJc = com.tencent.mm.pluginsdk.permission.b.o(paramFragmentActivity, "android.permission.ACCESS_COARSE_LOCATION");
+    AppMethodBeat.o(180409);
   }
   
-  private static Integer Fi(String paramString)
+  private void bpL()
   {
-    AppMethodBeat.i(133477);
-    try
+    AppMethodBeat.i(49193);
+    Object localObject = this.mActivity;
+    if (localObject == null)
     {
-      int i = Color.parseColor(paramString);
-      AppMethodBeat.o(133477);
-      return Integer.valueOf(i);
+      AppMethodBeat.o(49193);
+      return;
     }
-    catch (Exception paramString)
+    localObject = ((AppBrandLauncherUI)localObject).lzI;
+    if (localObject != null) {
+      ((t.d)localObject).aRT();
+    }
+    if (this.lHg != null)
     {
-      AppMethodBeat.o(133477);
+      localObject = d.lpj;
+      d.b(this.mActivity).bmg();
     }
-    return null;
+    AppMethodBeat.o(49193);
   }
   
-  public final void a(h.c paramc, View paramView)
+  public final void a(ado paramado)
   {
-    AppMethodBeat.i(133478);
-    if ((paramc == null) || (paramc == h.c.iUo) || (paramc == h.c.iUn))
-    {
-      ab.v("MicroMsg.AppBrandListRecentsListWAGameHeader", "onClick ");
-      AppMethodBeat.o(133478);
-      return;
-    }
-    if (paramc == h.c.iUq)
-    {
-      this.iUO.showLoading();
-      l.axc().refresh();
-      AppMethodBeat.o(133478);
-      return;
-    }
-    if ((paramc == h.c.iUp) && (this.iUQ != null))
-    {
-      this.iUQ.onClick(paramView);
-      if (this.iUP)
-      {
-        paramc = this.iUO;
-        if (paramc.iUh.iUv != null) {
-          paramc.iUh.iUv.animate().alpha(0.0F).setDuration(200L).start();
-        }
-      }
-    }
-    AppMethodBeat.o(133478);
+    AppMethodBeat.i(180412);
+    b(paramado);
+    AppMethodBeat.o(180412);
   }
   
-  public final void aNd()
+  @SuppressLint({"ResourceType"})
+  protected final void a(WeImageView paramWeImageView)
   {
-    AppMethodBeat.i(133474);
-    l locall = l.axc();
-    eR(l.enabled());
-    if (!l.enabled())
-    {
-      AppMethodBeat.o(133474);
-      return;
-    }
-    synchronized (locall.mLock)
-    {
-      locall.hbl.add(this);
-      locall.refresh();
-      this.iUO.showLoading();
-      this.mFinished = false;
-      AppMethodBeat.o(133474);
-      return;
-    }
+    AppMethodBeat.i(180411);
+    paramWeImageView.setVisibility(0);
+    paramWeImageView.setImageResource(2131690589);
+    paramWeImageView.setIconColor(this.mActivity.getResources().getColor(2131099689));
+    AppMethodBeat.o(180411);
   }
   
-  public final View aNe()
+  public final ap.b aSh()
   {
-    return this.iUO.iUh.aku;
+    return ap.b.iVX;
   }
   
-  public final void axd()
+  public final void bpt()
   {
-    AppMethodBeat.i(133476);
-    ab.i("MicroMsg.AppBrandListRecentsListWAGameHeader", "AppBrandListRecentsListWAGameHeader.onWAGameDataUpdate");
-    l.axc();
-    if (!l.enabled())
-    {
-      AppMethodBeat.o(133476);
-      return;
-    }
-    if (this.mFinished)
-    {
-      AppMethodBeat.o(133476);
-      return;
-    }
-    View localView = this.iUO.iUh.aku;
-    if (localView == null)
-    {
-      AppMethodBeat.o(133476);
-      return;
-    }
-    localView.post(new j.1(this));
-    AppMethodBeat.o(133476);
+    AppMethodBeat.i(49182);
+    super.bpt();
+    he(true);
+    AppMethodBeat.o(49182);
   }
   
-  public final void eS(boolean paramBoolean) {}
-  
-  public final void onDetached()
+  protected final String getTitle()
   {
-    AppMethodBeat.i(133475);
-    this.mFinished = true;
-    l locall = l.axc();
-    synchronized (locall.mLock)
+    AppMethodBeat.i(180410);
+    String str = this.mActivity.getResources().getString(2131755529);
+    AppMethodBeat.o(180410);
+    return str;
+  }
+  
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(49192);
+    paramView = this.mActivity;
+    if (paramView == null)
     {
-      locall.hbl.remove(this);
-      AppMethodBeat.o(133475);
+      AppMethodBeat.o(49192);
       return;
     }
-  }
-  
-  public final void onResume() {}
-  
-  public final void pF(int paramInt)
-  {
-    AppMethodBeat.i(133479);
-    if (this.iUO != null)
+    if (!this.lJc)
     {
-      h localh = this.iUO;
-      if ((localh.iUh != null) && (localh.iUh.iUx != null)) {
-        localh.iUh.iUx.setVisibility(paramInt);
-      }
+      bpL();
+      paramView.startActivityForResult(new Intent(paramView, AppBrandNearbyEmptyUI.class).putExtra("extra_enter_reason", 1), 3);
+      AppMethodBeat.o(49192);
+      return;
     }
-    AppMethodBeat.o(133479);
+    Object localObject = new un();
+    a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
+    localObject = new AppBrandStatObject();
+    ((AppBrandStatObject)localObject).scene = 1001;
+    com.tencent.mm.plugin.appbrand.launching.e.f.kOI.a(paramView, "gh_2b2e3862a1fb@app", null, "pages/index/index.html", 0, 0, (AppBrandStatObject)localObject, null, null);
+    bpL();
+    paramView = new l();
+    paramView.lrw = l.b.lrJ;
+    paramView.lrx = 0;
+    paramView.lry = "";
+    paramView.lrA = l.a.lrE;
+    paramView.report();
+    AppMethodBeat.o(49192);
   }
   
-  public final void pG(int paramInt)
+  public final void onResume()
   {
-    AppMethodBeat.i(133480);
-    h localh = this.iUO;
-    if ((localh.iUh != null) && (localh.iUh.aku != null)) {
-      localh.iUh.aku.setBackgroundResource(paramInt);
+    AppMethodBeat.i(49181);
+    super.onResume();
+    if ((!this.lJc) && (com.tencent.mm.pluginsdk.permission.b.o(this.mActivity, "android.permission.ACCESS_COARSE_LOCATION")))
+    {
+      this.lJc = true;
+      bpt();
     }
-    AppMethodBeat.o(133480);
+    AppMethodBeat.o(49181);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.j
  * JD-Core Version:    0.7.0.1
  */

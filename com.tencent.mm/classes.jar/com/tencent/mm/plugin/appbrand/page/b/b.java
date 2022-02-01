@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.appbrand.page.b;
 
-import android.content.Context;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.ap;
-import java.util.Map;
+import android.content.res.Configuration;
 
 public abstract interface b
 {
-  public abstract ap ar(Context paramContext);
+  public abstract void a(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb);
   
-  public abstract boolean b(String paramString1, String paramString2, int paramInt);
+  public abstract void onBackground();
   
-  public abstract Map<String, m> vF();
+  public abstract void onConfigurationChanged(Configuration paramConfiguration);
+  
+  public abstract void onDestroy();
+  
+  public abstract void onForeground();
 }
 
 

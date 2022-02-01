@@ -2,13 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import org.json.JSONArray;
 
 public final class do
   extends b
 {
-  public do.a crg;
-  public b crh;
+  public a dfK;
+  public b dfL;
   
   public do()
   {
@@ -17,23 +16,29 @@ public final class do
   
   private do(byte paramByte)
   {
-    AppMethodBeat.i(70150);
-    this.crg = new do.a();
-    this.crh = new b();
-    this.ymq = false;
+    AppMethodBeat.i(115980);
+    this.dfK = new a();
+    this.dfL = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70150);
+    AppMethodBeat.o(115980);
+  }
+  
+  public static final class a
+  {
+    public String cLR;
+    public String dfM;
+    public boolean dfN = false;
   }
   
   public static final class b
   {
-    public boolean cqS;
-    public JSONArray crf;
+    public boolean dfO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.do
  * JD-Core Version:    0.7.0.1
  */

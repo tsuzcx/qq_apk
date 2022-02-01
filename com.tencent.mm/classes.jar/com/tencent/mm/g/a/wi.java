@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class wi
   extends b
 {
-  public wi.a cNO;
+  public a dBP;
   
   public wi()
   {
@@ -15,11 +15,16 @@ public final class wi
   
   private wi(byte paramByte)
   {
-    AppMethodBeat.i(63337);
-    this.cNO = new wi.a();
-    this.ymq = false;
+    AppMethodBeat.i(131617);
+    this.dBP = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(63337);
+    AppMethodBeat.o(131617);
+  }
+  
+  public static final class a
+  {
+    public long ed = 800L;
   }
 }
 

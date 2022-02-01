@@ -38,8 +38,6 @@ public abstract interface IX5WebSettings
   
   public abstract IX5WebSettings.ZoomDensity getDefaultZoom();
   
-  public abstract int getDisabledActionModeMenuItems();
-  
   public abstract boolean getDisplayZoomControls();
   
   public abstract boolean getDomStorageEnabled();
@@ -69,8 +67,6 @@ public abstract interface IX5WebSettings
   public abstract int getMixedContentMode();
   
   public abstract boolean getNavDump();
-  
-  public abstract boolean getOffscreenPreRaster();
   
   public abstract IX5WebSettings.PluginState getPluginState();
   
@@ -140,8 +136,6 @@ public abstract interface IX5WebSettings
   
   public abstract void setDefaultZoom(IX5WebSettings.ZoomDensity paramZoomDensity);
   
-  public abstract void setDisabledActionModeMenuItems(int paramInt);
-  
   public abstract void setDisplayZoomControls(boolean paramBoolean);
   
   public abstract void setDomStorageEnabled(boolean paramBoolean);
@@ -177,8 +171,6 @@ public abstract interface IX5WebSettings
   public abstract void setNavDump(boolean paramBoolean);
   
   public abstract void setNeedInitialFocus(boolean paramBoolean);
-  
-  public abstract void setOffscreenPreRaster(boolean paramBoolean);
   
   public abstract void setPluginEnabled(boolean paramBoolean);
   
@@ -226,7 +218,7 @@ public abstract interface IX5WebSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.export.external.interfaces.IX5WebSettings
  * JD-Core Version:    0.7.0.1
  */

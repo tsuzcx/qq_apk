@@ -1,109 +1,74 @@
 package com.tencent.mm.plugin.gallery.model;
 
+import android.support.v4.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.HashSet;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.k;
+import java.util.Set;
 
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/gallery/model/LinearPreload;", "Lcom/tencent/mm/plugin/gallery/model/IPreload;", "()V", "preloadOnlyOnIdle", "", "retrievePreloadItems", "", "", "state", "Lcom/tencent/mm/plugin/gallery/model/PreLoadManager$State;", "lastState", "first", "last", "limit", "Companion", "plugin-gallery_release"})
 public final class l
+  implements j
 {
-  public int hQK;
-  HashSet<i.a> ndv;
-  public HashSet<i.c> ndw;
-  public HashSet<i.b> ndx;
-  public i ndy;
-  public int ndz;
+  public static final a rBy;
   
-  public l()
+  static
   {
-    AppMethodBeat.i(21323);
-    this.hQK = 3;
-    this.ndz = 1;
-    this.ndv = new HashSet();
-    this.ndw = new HashSet();
-    this.ndx = new HashSet();
-    AppMethodBeat.o(21323);
+    AppMethodBeat.i(111789);
+    rBy = new a((byte)0);
+    AppMethodBeat.o(111789);
   }
   
-  private void bEk()
+  public final Set<Integer> a(p.c paramc1, p.c paramc2, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(21325);
-    ab.i("MicroMsg.MediaQueryService", "initQueryType: %d", new Object[] { Integer.valueOf(this.ndz) });
-    switch (this.ndz)
+    int j = 0;
+    int i = 0;
+    AppMethodBeat.i(111788);
+    k.h(paramc1, "state");
+    k.h(paramc2, "lastState");
+    b localb = new b();
+    if ((paramInt1 != -1) && (paramInt2 != -1) && (paramInt1 < paramInt2) && (p.c.rBR == paramc1))
     {
-    default: 
-      this.ndy = new a();
-      AppMethodBeat.o(21325);
-      return;
-    case 1: 
-      this.ndy = new j();
-      AppMethodBeat.o(21325);
-      return;
-    case 2: 
-      this.ndy = new n();
-      AppMethodBeat.o(21325);
-      return;
+      ad.d("MicroMsg.LinearPreload", "start LinearPreload!!!");
+      switch (m.ciE[paramc2.ordinal()])
+      {
+      }
     }
-    this.ndy = new a();
-    AppMethodBeat.o(21325);
-  }
-  
-  public final void a(i.a parama)
-  {
-    AppMethodBeat.i(21326);
-    this.ndv.add(parama);
-    AppMethodBeat.o(21326);
-  }
-  
-  public final void b(i.a parama)
-  {
-    AppMethodBeat.i(21327);
-    this.ndv.remove(parama);
-    AppMethodBeat.o(21327);
-  }
-  
-  public final void bEl()
-  {
-    AppMethodBeat.i(21328);
-    if (this.ndy == null)
+    for (;;)
     {
-      ab.f("MicroMsg.MediaQueryService", "media query not init, init again");
-      bEk();
+      paramc1 = (Set)localb;
+      AppMethodBeat.o(111788);
+      return paramc1;
+      paramInt2 = paramInt1 - 1 + 0;
+      paramInt3 = i;
+      while ((paramInt3 > -32) && (paramInt2 >= 0))
+      {
+        localb.add(Integer.valueOf(paramInt2));
+        paramInt3 -= 1;
+        paramInt2 = paramInt1 - 1 + paramInt3;
+      }
+      paramInt1 = paramInt2 + 1 + 0;
+      i = j;
+      while ((i < 32) && (paramInt1 < paramInt3))
+      {
+        localb.add(Integer.valueOf(paramInt1));
+        i += 1;
+        paramInt1 = paramInt2 + 1 + i;
+      }
     }
-    e.bDR().T(new l.1(this));
-    AppMethodBeat.o(21328);
   }
   
-  public final void i(String paramString, int paramInt, long paramLong)
+  public final boolean czK()
   {
-    AppMethodBeat.i(21329);
-    if (this.ndy == null)
-    {
-      ab.e("MicroMsg.MediaQueryService", "media query not init, init again");
-      bEk();
-    }
-    ab.i("MicroMsg.MediaQueryService", "queryMediaInAlbums %s", new Object[] { bo.dtY().toString() });
-    e.bDR().bEe().removeCallbacksAndMessages(null);
-    this.ndy.bDK();
-    g localg = e.bDR();
-    paramString = new l.2(this, paramString, paramInt, paramLong);
-    localg.bEe().post(paramString);
-    AppMethodBeat.o(21329);
+    return true;
   }
   
-  public final void wM(int paramInt)
-  {
-    AppMethodBeat.i(21324);
-    this.ndz = paramInt;
-    bEk();
-    AppMethodBeat.o(21324);
-  }
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/gallery/model/LinearPreload$Companion;", "", "()V", "TAG", "", "plugin-gallery_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.l
  * JD-Core Version:    0.7.0.1
  */

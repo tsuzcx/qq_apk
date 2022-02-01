@@ -1,63 +1,63 @@
 package com.tencent.mm.plugin.luckymoney.f2f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.abk;
-import com.tencent.mm.protocal.protobuf.abl;
-import com.tencent.mm.protocal.protobuf.aw;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.i;
+import com.tencent.mm.protocal.protobuf.afc;
+import com.tencent.mm.protocal.protobuf.afd;
+import com.tencent.mm.protocal.protobuf.az;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.wallet_core.c.j;
 
 public final class d
-  extends com.tencent.mm.ai.m
-  implements k, i
+  extends n
+  implements com.tencent.mm.network.k, j
 {
-  private f callback;
-  public String cnI;
-  private b goo;
-  public String ojA;
-  private abk okO;
-  private abl okP;
-  public String okQ;
+  private g callback;
+  public String dcE;
+  private b iaa;
+  public String sZn;
+  private afc taE;
+  private afd taF;
+  public String taG;
   
   public d(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(42154);
+    AppMethodBeat.i(65044);
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new abk();
-    ((b.a)localObject).fsY = new abl();
+    ((b.a)localObject).gUU = new afc();
+    ((b.a)localObject).gUV = new afd();
     ((b.a)localObject).funcId = getType();
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/ftfhb/ffrequestwxhb";
-    this.goo = ((b.a)localObject).ado();
-    this.okO = ((abk)this.goo.fsV.fta);
-    this.okO.kNn = paramInt1;
-    this.okO.pwn = paramInt2;
-    this.okO.cMP = paramInt3;
-    this.okO.wRN = paramInt4;
-    localObject = com.tencent.mm.plugin.wallet_core.model.m.cTC();
+    this.iaa = ((b.a)localObject).atI();
+    this.taE = ((afc)this.iaa.gUS.gUX);
+    this.taE.nTB = paramInt1;
+    this.taE.uxV = paramInt2;
+    this.taE.dDN = paramInt3;
+    this.taE.Dff = paramInt4;
+    localObject = com.tencent.mm.plugin.wallet_core.model.k.ebS();
     if (localObject != null)
     {
-      this.okO.latitude = ((aw)localObject).latitude;
-      this.okO.longitude = ((aw)localObject).longitude;
+      this.taE.latitude = ((az)localObject).latitude;
+      this.taE.longitude = ((az)localObject).longitude;
     }
-    AppMethodBeat.o(42154);
+    AppMethodBeat.o(65044);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(42156);
-    this.callback = paramf;
-    int i = dispatch(parame, this.goo, this);
-    AppMethodBeat.o(42156);
+    AppMethodBeat.i(65046);
+    this.callback = paramg;
+    int i = dispatch(parame, this.iaa, this);
+    AppMethodBeat.o(65046);
     return i;
   }
   
@@ -68,16 +68,16 @@ public final class d
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(42155);
-    ab.i("NetSceneF2FLuckyMoneyPrepare", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.okP = ((abl)((b)paramq).fsW.fta);
-    this.cnI = this.okP.opy;
-    this.ojA = this.okP.ojA;
-    this.okQ = this.okP.opF;
+    AppMethodBeat.i(65045);
+    ad.i("NetSceneF2FLuckyMoneyPrepare", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.taF = ((afd)((b)paramq).gUT.gUX);
+    this.dcE = this.taF.rcq;
+    this.sZn = this.taF.sZn;
+    this.taG = this.taF.tfK;
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(42155);
+    AppMethodBeat.o(65045);
   }
 }
 

@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-public class v
-  implements o.a
+public final class v
+  extends FileStructStat
+  implements p.a
 {
-  public String ctV;
-  public String elt;
-  public String fod;
-  public boolean gZm;
-  public long gZn;
-  public long gmb;
-  public String mimeType;
+  public final String iSZ;
   
-  public final long awE()
+  public v(String paramString)
   {
-    return this.gmb;
+    this.iSZ = paramString;
+  }
+  
+  public final long aRb()
+  {
+    return this.st_size;
   }
   
   public final String getFileName()
   {
-    return this.ctV;
+    return this.iSZ;
   }
   
   public final long lastModified()
   {
-    return this.gZn;
+    return this.st_mtime;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.v
  * JD-Core Version:    0.7.0.1
  */

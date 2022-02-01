@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/l" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="48.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:padding="10.0dip" style="@style/l0">
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/b47" style="@style/mm" />
-        <EditText android:id="@id/b8s" style="@style/ml" />
-    </LinearLayout>
+    <ProgressBar android:layout_width="16.0dip" android:layout_height="16.0dip" style="@style/a4p" />
+    <TextView android:textSize="@dimen/kg" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/dbu" />
 </LinearLayout>

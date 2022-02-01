@@ -1,107 +1,166 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.luggage.g.d;
-import com.tencent.luggage.wxa.storage.a;
+import android.content.SharedPreferences.Editor;
+import android.content.res.AssetManager;
+import com.tencent.luggage.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.plugin.appbrand.appstorage.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.q;
+import java.io.File;
+import java.io.InputStream;
+import org.json.JSONObject;
 
 public final class aw
 {
-  private static final Uri CONTENT_URI;
-  private static final aw gWL;
+  public static final int VERSION;
+  public static final String[] iNs;
+  static final a iNt;
+  private static Boolean iNu;
   
   static
   {
-    AppMethodBeat.i(139653);
-    gWL = new aw();
-    CONTENT_URI = Uri.parse("content://" + a.AUTHORITY + "/AppBrandWxaPkgManifestRecord");
-    AppMethodBeat.o(139653);
-  }
-  
-  public static aw awe()
-  {
-    return gWL;
-  }
-  
-  public static void b(String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    AppMethodBeat.i(139652);
+    j = -1;
+    AppMethodBeat.i(139836);
     try
     {
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("CONTENT_KEY_ACTION", "ACIION_UPDATE_WITHOUT_CODELIB_INFO");
-      localContentValues.put("CONTENT_KEY_APPID", paramString1);
-      localContentValues.put("CONTENT_KEY_MODULE_NAME", paramString2);
-      localContentValues.put("CONTENT_KEY_PKG_VERSION", Integer.valueOf(0));
-      localContentValues.put("CONTENT_KEY_CODE_TYPE", Integer.valueOf(paramInt));
-      localContentValues.put("CONTENT_KEY_PKG_VERSION_MD5", paramString3);
-      localContentValues.put("CONTENT_KEY_PKG_TYPE", Integer.valueOf(12));
-      ah.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
-      AppMethodBeat.o(139652);
-      return;
+      String str = aQb();
+      i = j;
+      if (!bt.isNullOrNil(str))
+      {
+        i = j;
+        if (i.eK(str)) {
+          i = new JSONObject(i.aMP(str)).optInt("version");
+        }
+      }
     }
     catch (Exception localException)
     {
-      d.printErrStackTrace("Luggage.DevPkgLaunchExtInfoContentResolver", localException, "updateWithoutCodeLibInfo, appId[%s] module[%s], version[%d], codeType[%d], md5[%s], pkgType[%d]", new Object[] { paramString1, paramString2, Integer.valueOf(0), Integer.valueOf(paramInt), paramString3, Integer.valueOf(12) });
-      AppMethodBeat.o(139652);
+      for (;;)
+      {
+        int i = j;
+      }
+    }
+    if (i > 0)
+    {
+      VERSION = i;
+      iNs = a.cjx;
+    }
+    for (iNt = a.iNy;; iNt = a.iNy)
+    {
+      iNu = null;
+      AppMethodBeat.o(139836);
+      return;
+      VERSION = 407;
+      iNs = a.cjx;
     }
   }
   
-  public static boolean g(String paramString1, int paramInt, String paramString2)
+  private static InputStream DY(String paramString)
   {
-    AppMethodBeat.i(139650);
+    AppMethodBeat.i(139834);
+    Object localObject = aj.getContext().getAssets();
     try
     {
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("CONTENT_KEY_ACTION", "ACTION_UPDATE_MODULE_LIST");
-      localContentValues.put("CONTENT_KEY_APPID", paramString1);
-      localContentValues.put("CONTENT_KEY_PKG_TYPE", Integer.valueOf(paramInt));
-      localContentValues.put("CONTENT_KEY_PKG_VERSION", Integer.valueOf(-1));
-      localContentValues.put("CONTENT_KEY_MODULE_LIST_JSON", paramString2);
-      ah.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
-      AppMethodBeat.o(139650);
-      return true;
+      localObject = ((AssetManager)localObject).open(paramString, 3);
+      AppMethodBeat.o(139834);
+      return localObject;
     }
-    catch (Exception paramString1)
+    catch (Exception localException)
     {
-      d.e("Luggage.DevPkgLaunchExtInfoContentResolver", "setExtInfo fail");
-      AppMethodBeat.o(139650);
+      ad.v("MicroMsg.AppBrand.WxaLocalLibPkg", "openRead file( %s ) failed, exp = %s", new Object[] { paramString, localException });
+      AppMethodBeat.o(139834);
     }
-    return false;
+    return null;
   }
   
-  public static void yB(String paramString)
+  public static void aQa()
   {
-    AppMethodBeat.i(139651);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(139651);
-      return;
+    AppMethodBeat.i(139829);
+    i.deleteFile(aQb());
+    AppMethodBeat.o(139829);
+  }
+  
+  static String aQb()
+  {
+    AppMethodBeat.i(139830);
+    String str = q.B(new e(aj.getContext().getCacheDir().getAbsolutePath() + "/MockLibInfo.json").fhU());
+    AppMethodBeat.o(139830);
+    return str;
+  }
+  
+  public static boolean aQc()
+  {
+    AppMethodBeat.i(139831);
+    if (iNu == null) {
+      iNu = Boolean.FALSE;
     }
-    try
+    boolean bool = iNu.booleanValue();
+    AppMethodBeat.o(139831);
+    return bool;
+  }
+  
+  public static WxaPkgWrappingInfo aQd()
+  {
+    AppMethodBeat.i(139835);
+    WxaPkgWrappingInfo localWxaPkgWrappingInfo = new WxaPkgWrappingInfo();
+    localWxaPkgWrappingInfo.pkgVersion = VERSION;
+    localWxaPkgWrappingInfo.iOS = true;
+    AppMethodBeat.o(139835);
+    return localWxaPkgWrappingInfo;
+  }
+  
+  public static void fn(boolean paramBoolean)
+  {
+    AppMethodBeat.i(139832);
+    ax.aFC("__appbrand_comm_lib__prefs").putBoolean("disable_develop_lib", paramBoolean).commit();
+    AppMethodBeat.o(139832);
+  }
+  
+  public static InputStream openRead(String paramString)
+  {
+    AppMethodBeat.i(139833);
+    paramString = m.EV(paramString);
+    switch (1.iNv[iNt.ordinal()])
     {
-      ContentValues localContentValues = new ContentValues();
-      localContentValues.put("CONTENT_KEY_ACTION", "ACTION_UPDATE_CODELIB_LIST");
-      localContentValues.put("CONTENT_KEY_CODELIB_LIST", paramString);
-      ah.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
-      AppMethodBeat.o(139651);
-      return;
+    default: 
+      paramString = DY("wxa_library".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(139833);
+      return paramString;
+    case 1: 
+      paramString = DY("wxa_library/custom".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(139833);
+      return paramString;
     }
-    catch (Exception paramString)
+    paramString = DY("wxa_library/develop".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(139833);
+    return paramString;
+  }
+  
+  static enum a
+  {
+    static
     {
-      d.printErrStackTrace("Luggage.DevPkgLaunchExtInfoContentResolver", paramString, "updateCodeLibList", new Object[0]);
-      AppMethodBeat.o(139651);
+      AppMethodBeat.i(139828);
+      iNw = new a("CUSTOM", 0);
+      iNx = new a("DEVELOP", 1);
+      iNy = new a("STABLE", 2);
+      iNz = new a[] { iNw, iNx, iNy };
+      AppMethodBeat.o(139828);
     }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.aw
  * JD-Core Version:    0.7.0.1
  */

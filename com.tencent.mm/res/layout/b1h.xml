@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:textSize="@dimen/m2" android:textColor="@color/io" android:id="@id/azb" android:background="@drawable/b_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ex" android:minHeight="48.0dip" android:text="@string/acy" android:layout_alignParentLeft="true" />
-        <Button android:textSize="@dimen/m2" android:textColor="@color/hk" android:id="@id/b_e" android:background="@drawable/b_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ex" android:minHeight="48.0dip" android:text="@string/acz" android:layout_alignParentRight="true" />
+    <ImageView android:gravity="center_horizontal" android:id="@id/f3y" android:src="@drawable/aq9" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/s2" />
+    <ImageView android:gravity="center" android:id="@id/f39" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dr" android:layout_alignLeft="@id/f3y" android:layout_alignTop="@id/f3y" />
+    <ImageView android:id="@id/f3a" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_alignRight="@id/f3y" android:layout_alignBottom="@id/f3y" />
+    <ImageView android:id="@id/f3_" android:visibility="gone" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/b0k" android:layout_alignRight="@id/f3y" android:layout_alignBottom="@id/f3y" />
+    <RelativeLayout android:id="@id/f3w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/f3y" android:layout_centerHorizontal="true">
+        <TextView android:id="@id/f3u" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/s3" />
+        <TextView android:id="@id/f3v" android:paddingTop="@dimen/d" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/s3" />
     </RelativeLayout>
-    <com.tencent.mm.ui.widget.picker.CustomTimePicker android:gravity="center" android:layout_gravity="center" android:id="@id/f2p" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="250.0dip" android:layout_height="200.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" />
-</LinearLayout>
+    <TextView android:textColor="@color/Orange" android:id="@id/f3x" android:visibility="gone" android:layout_below="@id/f3w" android:layout_centerHorizontal="true" style="@style/s3" />
+</RelativeLayout>

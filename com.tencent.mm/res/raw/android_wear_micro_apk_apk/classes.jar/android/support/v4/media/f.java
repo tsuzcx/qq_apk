@@ -4,7 +4,7 @@ import android.support.v4.media.session.MediaSessionCompat.Token;
 
 abstract interface f
 {
-  public abstract MediaSessionCompat.Token aG();
+  public abstract MediaSessionCompat.Token aW();
   
   public abstract void connect();
   

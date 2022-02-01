@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class bx
   extends b
 {
-  public bx.a cpl;
-  public bx.b cpm;
+  public a dea;
   
   public bx()
   {
@@ -16,17 +15,23 @@ public final class bx
   
   private bx(byte paramByte)
   {
-    AppMethodBeat.i(128629);
-    this.cpl = new bx.a();
-    this.cpm = new bx.b();
-    this.ymq = false;
+    AppMethodBeat.i(91199);
+    this.dea = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(128629);
+    AppMethodBeat.o(91199);
+  }
+  
+  public static final class a
+  {
+    public String deb;
+    public String dec;
+    public long ded;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.bx
  * JD-Core Version:    0.7.0.1
  */

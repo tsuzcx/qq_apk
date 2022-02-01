@@ -1,9 +1,20 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
 public final class aa
-  extends t
+  extends x
 {
-  public String nDe;
+  public String desc;
+  public String gIA;
+  public String iconUrl;
+  public String jbK;
+  public String title;
+  public String wWR;
+  public String wWS;
+  public boolean wWT;
+  public int wWU;
+  public int wWV;
+  public int wWW;
+  public x wWX;
 }
 
 

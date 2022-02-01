@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-public final class c$r
+final class c$r
   extends c.g
 {
-  public c$r()
+  c$r()
   {
-    super("batchViewCard", "batchViewCard", 111, true);
+    super("batchPreloadMiniProgram", "batchPreloadMiniProgram", 366, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.r
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class cc
   extends b
 {
-  public cc.a cpB;
+  public a dei;
+  public b dej;
   
   public cc()
   {
@@ -15,16 +16,29 @@ public final class cc
   
   private cc(byte paramByte)
   {
-    AppMethodBeat.i(114424);
-    this.cpB = new cc.a();
-    this.ymq = false;
+    AppMethodBeat.i(43440);
+    this.dei = new a();
+    this.dej = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(114424);
+    AppMethodBeat.o(43440);
+  }
+  
+  public static final class a
+  {
+    public String username;
+  }
+  
+  public static final class b
+  {
+    public String appId;
+    public String[] cfS;
+    public String nickname;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.cc
  * JD-Core Version:    0.7.0.1
  */

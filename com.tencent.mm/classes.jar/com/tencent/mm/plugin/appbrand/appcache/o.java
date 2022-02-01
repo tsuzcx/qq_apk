@@ -4,17 +4,17 @@ import java.io.InputStream;
 
 public abstract interface o
 {
-  public abstract String avc();
+  public abstract String DH(String paramString);
   
-  public abstract String avd();
+  public abstract String aPa();
   
-  public abstract WxaPkgWrappingInfo ave();
+  public abstract String aPb();
   
-  public abstract void init();
+  public abstract int aPc();
+  
+  public abstract IPkgInfo aPd();
   
   public abstract InputStream openRead(String paramString);
-  
-  public abstract String yl(String paramString);
 }
 
 

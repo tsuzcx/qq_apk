@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.f.b.j;
-import a.l;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/radar/ui/RadarStateView$slideOutAnim$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/radar/ui/RadarStateView$slideOutAnim$2$1$1", "Landroid/view/animation/Animation$AnimationListener;", "onAnimationEnd", "", "animation", "Landroid/view/animation/Animation;", "onAnimationRepeat", "onAnimationStart", "plugin-radar_release"})
 public final class RadarStateView$c$a
   implements Animation.AnimationListener
 {
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    AppMethodBeat.i(103038);
-    j.q(paramAnimation, "animation");
-    AppMethodBeat.o(103038);
+    AppMethodBeat.i(138687);
+    k.h(paramAnimation, "animation");
+    AppMethodBeat.o(138687);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation)
   {
-    AppMethodBeat.i(103039);
-    j.q(paramAnimation, "animation");
-    AppMethodBeat.o(103039);
+    AppMethodBeat.i(138688);
+    k.h(paramAnimation, "animation");
+    AppMethodBeat.o(138688);
   }
   
   public final void onAnimationStart(Animation paramAnimation)
   {
-    AppMethodBeat.i(103037);
-    j.q(paramAnimation, "animation");
-    AppMethodBeat.o(103037);
+    AppMethodBeat.i(138686);
+    k.h(paramAnimation, "animation");
+    AppMethodBeat.o(138686);
   }
 }
 

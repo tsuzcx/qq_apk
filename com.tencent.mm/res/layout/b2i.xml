@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/zm" android:paddingLeft="@dimen/ft" android:paddingRight="@dimen/ft" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center|left" android:orientation="horizontal" android:background="@color/a_r" android:paddingTop="@dimen/o" android:paddingBottom="@dimen/o" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/rf" android:gravity="center" android:id="@android:id/title" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/dl" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/l1" />
+    <ImageView android:id="@id/kt" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/login_auth_state_radar_default_select" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/y4" android:layout_gravity="center" android:id="@id/ks" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_centerVertical="true" />
 </LinearLayout>

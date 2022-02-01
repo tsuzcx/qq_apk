@@ -17,8 +17,8 @@ public final class q$a
   public q$a()
   {
     this(Color.argb(255, 136, 136, 136));
-    AppMethodBeat.i(30694);
-    AppMethodBeat.o(30694);
+    AppMethodBeat.i(34564);
+    AppMethodBeat.o(34564);
   }
   
   private q$a(int paramInt)
@@ -28,7 +28,7 @@ public final class q$a
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(30695);
+    AppMethodBeat.i(34565);
     int i = paramMotionEvent.getAction();
     if ((paramView instanceof ImageView))
     {
@@ -36,18 +36,18 @@ public final class q$a
       if (paramView != null)
       {
         if (i != 0) {
-          break label61;
+          break label59;
         }
         paramView.setColorFilter(this.mColor, PorterDuff.Mode.MULTIPLY);
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(30695);
+      AppMethodBeat.o(34565);
       return false;
       paramView = paramView.getBackground();
       break;
-      label61:
+      label59:
       if ((i == 3) || (i == 1)) {
         paramView.clearColorFilter();
       }
@@ -56,7 +56,7 @@ public final class q$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.q.a
  * JD-Core Version:    0.7.0.1
  */

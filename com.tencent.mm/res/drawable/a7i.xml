@@ -2,13 +2,12 @@
 <layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <shape>
-            <solid android:color="#ffe2e2e2" />
+        <shape android:shape="oval">
+            <solid android:color="@color/tv" />
+            <size android:height="88.0dip" android:width="88.0dip" />
         </shape>
     </item>
-    <item android:bottom="1.0px">
-        <shape>
-            <solid android:color="@color/a6q" />
-        </shape>
+    <item>
+        <rotate android:drawable="@drawable/bzb" android:fromDegrees="0.0" android:toDegrees="1080.0" android:pivotX="50.0%" android:pivotY="50.0%" />
     </item>
 </layer-list>

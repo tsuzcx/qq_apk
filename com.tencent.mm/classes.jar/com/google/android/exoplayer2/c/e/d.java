@@ -8,36 +8,36 @@ import java.util.Arrays;
 
 final class d
 {
-  final m aIP;
-  int aIQ;
-  boolean aIR;
-  final e aIx;
-  private int segmentCount;
+  final e bdP;
+  final m beh;
+  int bei;
+  private int bej;
+  boolean bek;
   
   d()
   {
-    AppMethodBeat.i(95039);
-    this.aIx = new e();
-    this.aIP = new m(new byte[65025], 0);
-    this.aIQ = -1;
-    AppMethodBeat.o(95039);
+    AppMethodBeat.i(92155);
+    this.bdP = new e();
+    this.beh = new m(new byte[65025], 0);
+    this.bei = -1;
+    AppMethodBeat.o(92155);
   }
   
-  private int dC(int paramInt)
+  private int en(int paramInt)
   {
     int i = 0;
-    this.segmentCount = 0;
+    this.bej = 0;
     int j;
     int k;
     do
     {
       j = i;
-      if (this.segmentCount + paramInt >= this.aIx.aIY) {
+      if (this.bej + paramInt >= this.bdP.ber) {
         break;
       }
-      int[] arrayOfInt = this.aIx.aJa;
-      j = this.segmentCount;
-      this.segmentCount = (j + 1);
+      int[] arrayOfInt = this.bdP.bet;
+      j = this.bej;
+      this.bej = (j + 1);
       k = arrayOfInt[(j + paramInt)];
       j = i + k;
       i = j;
@@ -47,56 +47,56 @@ final class d
   
   public final boolean k(f paramf)
   {
-    AppMethodBeat.i(95040);
+    AppMethodBeat.i(92156);
     if (paramf != null) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      if (this.aIR)
+      if (this.bek)
       {
-        this.aIR = false;
-        this.aIP.reset();
+        this.bek = false;
+        this.beh.reset();
       }
-      if (this.aIR) {
+      if (this.bek) {
         break label294;
       }
-      if (this.aIQ >= 0) {
+      if (this.bei >= 0) {
         break label133;
       }
-      if (this.aIx.c(paramf, true)) {
+      if (this.bdP.c(paramf, true)) {
         break;
       }
-      AppMethodBeat.o(95040);
+      AppMethodBeat.o(92156);
       return false;
     }
-    int i = this.aIx.aEo;
-    if (((this.aIx.type & 0x1) == 1) && (this.aIP.limit == 0)) {
-      i += dC(0);
+    int i = this.bdP.aZG;
+    if (((this.bdP.type & 0x1) == 1) && (this.beh.limit == 0)) {
+      i += en(0);
     }
-    for (int j = this.segmentCount + 0;; j = 0)
+    for (int j = this.bej + 0;; j = 0)
     {
-      paramf.dg(i);
-      this.aIQ = j;
+      paramf.dR(i);
+      this.bei = j;
       label133:
-      j = dC(this.aIQ);
-      i = this.aIQ + this.segmentCount;
+      j = en(this.bei);
+      i = this.bei + this.bej;
       if (j > 0)
       {
-        if (this.aIP.capacity() < this.aIP.limit + j) {
-          this.aIP.data = Arrays.copyOf(this.aIP.data, this.aIP.limit + j);
+        if (this.beh.capacity() < this.beh.limit + j) {
+          this.beh.data = Arrays.copyOf(this.beh.data, this.beh.limit + j);
         }
-        paramf.readFully(this.aIP.data, this.aIP.limit, j);
-        this.aIP.em(j + this.aIP.limit);
-        if (this.aIx.aJa[(i - 1)] != 255)
+        paramf.readFully(this.beh.data, this.beh.limit, j);
+        this.beh.fk(j + this.beh.limit);
+        if (this.bdP.bet[(i - 1)] != 255)
         {
           bool = true;
           label258:
-          this.aIR = bool;
+          this.bek = bool;
         }
       }
       else
       {
-        if (i != this.aIx.aIY) {
+        if (i != this.bdP.ber) {
           break label291;
         }
         i = -1;
@@ -104,20 +104,20 @@ final class d
       label291:
       for (;;)
       {
-        this.aIQ = i;
+        this.bei = i;
         break;
         bool = false;
         break label258;
       }
       label294:
-      AppMethodBeat.o(95040);
+      AppMethodBeat.o(92156);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.c.e.d
  * JD-Core Version:    0.7.0.1
  */

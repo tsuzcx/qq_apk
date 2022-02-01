@@ -1,149 +1,142 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class cmu
-  extends buy
+  extends ckq
 {
-  public String dCJ;
-  public String devicetype;
-  public String plt;
-  public int xWt;
+  public cbe EhD;
+  public float EhE;
+  public float EhF;
+  public int Scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28680);
+    AppMethodBeat.i(152679);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.devicetype == null)
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.EhD == null)
       {
-        paramVarArgs = new b("Not all required fields were included: devicetype");
-        AppMethodBeat.o(28680);
-        throw paramVarArgs;
-      }
-      if (this.plt == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: deviceid");
-        AppMethodBeat.o(28680);
+        paramVarArgs = new b("Not all required fields were included: UserPos");
+        AppMethodBeat.o(152679);
         throw paramVarArgs;
       }
       if (this.BaseRequest != null)
       {
-        paramVarArgs.iQ(1, this.BaseRequest.computeSize());
+        paramVarArgs.kX(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.devicetype != null) {
-        paramVarArgs.e(2, this.devicetype);
+      if (this.EhD != null)
+      {
+        paramVarArgs.kX(2, this.EhD.computeSize());
+        this.EhD.writeFields(paramVarArgs);
       }
-      if (this.plt != null) {
-        paramVarArgs.e(3, this.plt);
-      }
-      if (this.dCJ != null) {
-        paramVarArgs.e(4, this.dCJ);
-      }
-      paramVarArgs.aO(5, this.xWt);
-      AppMethodBeat.o(28680);
+      paramVarArgs.aR(3, this.Scene);
+      paramVarArgs.x(4, this.EhE);
+      paramVarArgs.x(5, this.EhF);
+      AppMethodBeat.o(152679);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label645;
+        break label652;
       }
     }
-    label645:
-    for (int i = e.a.a.a.iP(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label652:
+    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
-      if (this.devicetype != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.devicetype);
+      int i = paramInt;
+      if (this.EhD != null) {
+        i = paramInt + f.a.a.a.kW(2, this.EhD.computeSize());
       }
-      i = paramInt;
-      if (this.plt != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.plt);
-      }
-      paramInt = i;
-      if (this.dCJ != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.dCJ);
-      }
-      i = e.a.a.b.b.a.bl(5, this.xWt);
-      AppMethodBeat.o(28680);
-      return paramInt + i;
+      paramInt = f.a.a.b.b.a.bA(3, this.Scene);
+      int j = f.a.a.b.b.a.fY(4);
+      int k = f.a.a.b.b.a.fY(5);
+      AppMethodBeat.o(152679);
+      return i + paramInt + (j + 4) + (k + 4);
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = buy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = buy.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        if (this.devicetype == null)
+        if (this.EhD == null)
         {
-          paramVarArgs = new b("Not all required fields were included: devicetype");
-          AppMethodBeat.o(28680);
+          paramVarArgs = new b("Not all required fields were included: UserPos");
+          AppMethodBeat.o(152679);
           throw paramVarArgs;
         }
-        if (this.plt == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: deviceid");
-          AppMethodBeat.o(28680);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(28680);
+        AppMethodBeat.o(152679);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         cmu localcmu = (cmu)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(28680);
+          AppMethodBeat.o(152679);
           return -1;
         case 1: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new hq();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((hq)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, buy.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            localcmu.BaseRequest = ((hq)localObject1);
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new ip();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcmu.BaseRequest = ((ip)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(28680);
+          AppMethodBeat.o(152679);
           return 0;
         case 2: 
-          localcmu.devicetype = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(28680);
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new cbe();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((cbe)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcmu.EhD = ((cbe)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(152679);
           return 0;
         case 3: 
-          localcmu.plt = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(28680);
+          localcmu.Scene = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(152679);
           return 0;
         case 4: 
-          localcmu.dCJ = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(28680);
+          localcmu.EhE = Float.intBitsToFloat(((f.a.a.a.a)localObject1).KhF.fHx());
+          AppMethodBeat.o(152679);
           return 0;
         }
-        localcmu.xWt = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(28680);
+        localcmu.EhF = Float.intBitsToFloat(((f.a.a.a.a)localObject1).KhF.fHx());
+        AppMethodBeat.o(152679);
         return 0;
       }
-      AppMethodBeat.o(28680);
+      AppMethodBeat.o(152679);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cmu
  * JD-Core Version:    0.7.0.1
  */

@@ -5,22 +5,22 @@ import java.util.ArrayList;
 
 public final class w
 {
-  public String vxH;
-  public ArrayList<o> vxI;
-  public boolean vxJ;
+  public String omO;
+  public ArrayList<o> omP;
+  public boolean omQ;
   
   public w()
   {
-    AppMethodBeat.i(26685);
-    this.vxH = "";
-    this.vxI = new ArrayList();
-    this.vxJ = false;
-    AppMethodBeat.o(26685);
+    AppMethodBeat.i(30378);
+    this.omO = "";
+    this.omP = new ArrayList();
+    this.omQ = false;
+    AppMethodBeat.o(30378);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.a.w
  * JD-Core Version:    0.7.0.1
  */

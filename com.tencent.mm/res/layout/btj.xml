@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/hd3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/ca" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/ath" android:padding="@dimen/ci" android:focusable="true" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_back2" android:contentDescription="@string/eft" android:rotation="270.0" />
+    </FrameLayout>
+    <com.tencent.mm.plugin.mmsight.ui.MMSightRecordButton android:layout_gravity="center|top" android:id="@id/eud" android:background="@null" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/a_v" android:minHeight="@dimen/a_v" android:contentDescription="@string/dq1" />
+    <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <FrameLayout android:layout_gravity="center" android:id="@id/hpx" android:layout_width="@dimen/ca" android:layout_height="@dimen/ca" />
+    </FrameLayout>
+</LinearLayout>

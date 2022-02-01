@@ -1,113 +1,140 @@
 package com.tencent.mm.plugin.masssend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.model.at;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.al.f.c;
 import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bw;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.bz;
-import com.tencent.mm.model.bz.a;
+import com.tencent.mm.model.cc;
+import com.tencent.mm.model.cc.a;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public final class h
-  implements at
+  implements aw
 {
-  private static HashMap<Integer, h.d> baseDBFactories;
-  private b oBn;
-  private c oBo;
-  private i oBp;
-  private g oBq;
-  private bz.a oxY;
+  private static HashMap<Integer, h.b> baseDBFactories;
+  private cc.a tsz;
+  private b tvS;
+  private c tvT;
+  private i tvU;
+  private g tvV;
   
   static
   {
-    AppMethodBeat.i(22751);
+    AppMethodBeat.i(26372);
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("MASSENDINFO_TABLE".hashCode()), new h.1());
-    AppMethodBeat.o(22751);
+    localHashMap.put(Integer.valueOf("MASSENDINFO_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return b.SQL_CREATE;
+      }
+    });
+    AppMethodBeat.o(26372);
   }
   
   public h()
   {
-    AppMethodBeat.i(22745);
-    this.oBp = new i();
-    this.oBq = new g();
-    this.oxY = new h.2(this);
-    AppMethodBeat.o(22745);
+    AppMethodBeat.i(26366);
+    this.tvU = new i();
+    this.tvV = new g();
+    this.tsz = new cc.a()
+    {
+      public final void a(f.a paramAnonymousa)
+      {
+        AppMethodBeat.i(26365);
+        paramAnonymousa = z.a(paramAnonymousa.fTo.Cxz);
+        ad.i("MicroMsg.SubCoreMassSend", "MassSendTopConfXml:".concat(String.valueOf(paramAnonymousa)));
+        h.cNT().afF(paramAnonymousa);
+        h.cNT().cNO();
+        h.cNT();
+        c.rk(bt.eGO());
+        AppMethodBeat.o(26365);
+      }
+      
+      public final void a(f.c paramAnonymousc) {}
+    };
+    AppMethodBeat.o(26366);
   }
   
-  private static h bPb()
+  private static h cNR()
   {
-    AppMethodBeat.i(22746);
-    aw.aat();
-    h localh2 = (h)bw.pF("plugin.masssend");
+    AppMethodBeat.i(26367);
+    az.arP();
+    h localh2 = (h)bz.ut("plugin.masssend");
     h localh1 = localh2;
     if (localh2 == null)
     {
       localh1 = new h();
-      aw.aat().a("plugin.favorite", localh1);
+      az.arP().a("plugin.favorite", localh1);
     }
-    AppMethodBeat.o(22746);
+    AppMethodBeat.o(26367);
     return localh1;
   }
   
-  public static b bPc()
+  public static b cNS()
   {
-    AppMethodBeat.i(22747);
-    com.tencent.mm.kernel.g.RJ().QQ();
-    if (bPb().oBn == null)
+    AppMethodBeat.i(26368);
+    com.tencent.mm.kernel.g.afz().aeD();
+    if (cNR().tvS == null)
     {
-      localObject = bPb();
-      aw.aaz();
-      ((h)localObject).oBn = new b(com.tencent.mm.model.c.Rq());
+      localObject = cNR();
+      az.arV();
+      ((h)localObject).tvS = new b(com.tencent.mm.model.c.afg());
     }
-    Object localObject = bPb().oBn;
-    AppMethodBeat.o(22747);
+    Object localObject = cNR().tvS;
+    AppMethodBeat.o(26368);
     return localObject;
   }
   
-  public static c bPd()
+  public static c cNT()
   {
-    AppMethodBeat.i(22748);
-    if (bPb().oBo == null) {
-      bPb().oBo = new c();
+    AppMethodBeat.i(26369);
+    if (cNR().tvT == null) {
+      cNR().tvT = new c();
     }
-    c localc = bPb().oBo;
-    AppMethodBeat.o(22748);
+    c localc = cNR().tvT;
+    AppMethodBeat.o(26369);
     return localc;
   }
   
   public final void clearPluginData(int paramInt) {}
   
-  public final HashMap<Integer, h.d> getBaseDBFactories()
+  public final HashMap<Integer, h.b> getBaseDBFactories()
   {
     return baseDBFactories;
   }
   
   public final void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(22750);
-    aw.getSysCmdMsgExtension().a("masssendapp", this.oxY, false);
-    com.tencent.mm.sdk.b.a.ymk.c(this.oBp);
-    com.tencent.mm.sdk.b.a.ymk.c(this.oBq);
-    AppMethodBeat.o(22750);
+    AppMethodBeat.i(26371);
+    az.getSysCmdMsgExtension().a("masssendapp", this.tsz, false);
+    com.tencent.mm.sdk.b.a.ESL.c(this.tvU);
+    com.tencent.mm.sdk.b.a.ESL.c(this.tvV);
+    AppMethodBeat.o(26371);
   }
   
   public final void onAccountRelease()
   {
-    AppMethodBeat.i(22749);
-    aw.getSysCmdMsgExtension().b("masssendapp", this.oxY, false);
-    com.tencent.mm.sdk.b.a.ymk.d(this.oBp);
-    com.tencent.mm.sdk.b.a.ymk.d(this.oBq);
-    AppMethodBeat.o(22749);
+    AppMethodBeat.i(26370);
+    az.getSysCmdMsgExtension().b("masssendapp", this.tsz, false);
+    com.tencent.mm.sdk.b.a.ESL.d(this.tvU);
+    com.tencent.mm.sdk.b.a.ESL.d(this.tvV);
+    AppMethodBeat.o(26370);
   }
   
   public final void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.a.h
  * JD-Core Version:    0.7.0.1
  */

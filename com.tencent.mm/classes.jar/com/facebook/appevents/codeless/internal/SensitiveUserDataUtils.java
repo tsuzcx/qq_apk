@@ -12,12 +12,12 @@ public class SensitiveUserDataUtils
 {
   private static boolean isCreditCard(TextView paramTextView)
   {
-    AppMethodBeat.i(72112);
+    AppMethodBeat.i(17548);
     paramTextView = ViewHierarchy.getTextOfView(paramTextView).replaceAll("\\s", "");
     int i = paramTextView.length();
     if ((i < 12) || (i > 19))
     {
-      AppMethodBeat.o(72112);
+      AppMethodBeat.o(17548);
       return false;
     }
     int k = 0;
@@ -28,7 +28,7 @@ public class SensitiveUserDataUtils
       i = paramTextView.charAt(j);
       if ((i < 48) || (i > 57))
       {
-        AppMethodBeat.o(72112);
+        AppMethodBeat.o(17548);
         return false;
       }
       int n = i - 48;
@@ -52,102 +52,102 @@ public class SensitiveUserDataUtils
     }
     if (m % 10 == 0)
     {
-      AppMethodBeat.o(72112);
+      AppMethodBeat.o(17548);
       return true;
     }
-    AppMethodBeat.o(72112);
+    AppMethodBeat.o(17548);
     return false;
   }
   
   private static boolean isEmail(TextView paramTextView)
   {
-    AppMethodBeat.i(72108);
+    AppMethodBeat.i(17544);
     if (paramTextView.getInputType() == 32)
     {
-      AppMethodBeat.o(72108);
+      AppMethodBeat.o(17544);
       return true;
     }
     paramTextView = ViewHierarchy.getTextOfView(paramTextView);
     if ((paramTextView == null) || (paramTextView.length() == 0))
     {
-      AppMethodBeat.o(72108);
+      AppMethodBeat.o(17544);
       return false;
     }
     boolean bool = Patterns.EMAIL_ADDRESS.matcher(paramTextView).matches();
-    AppMethodBeat.o(72108);
+    AppMethodBeat.o(17544);
     return bool;
   }
   
   private static boolean isPassword(TextView paramTextView)
   {
-    AppMethodBeat.i(72107);
+    AppMethodBeat.i(17543);
     if (paramTextView.getInputType() == 128)
     {
-      AppMethodBeat.o(72107);
+      AppMethodBeat.o(17543);
       return true;
     }
     boolean bool = paramTextView.getTransformationMethod() instanceof PasswordTransformationMethod;
-    AppMethodBeat.o(72107);
+    AppMethodBeat.o(17543);
     return bool;
   }
   
   private static boolean isPersonName(TextView paramTextView)
   {
-    AppMethodBeat.i(72109);
+    AppMethodBeat.i(17545);
     if (paramTextView.getInputType() == 96)
     {
-      AppMethodBeat.o(72109);
+      AppMethodBeat.o(17545);
       return true;
     }
-    AppMethodBeat.o(72109);
+    AppMethodBeat.o(17545);
     return false;
   }
   
   private static boolean isPhoneNumber(TextView paramTextView)
   {
-    AppMethodBeat.i(72111);
+    AppMethodBeat.i(17547);
     if (paramTextView.getInputType() == 3)
     {
-      AppMethodBeat.o(72111);
+      AppMethodBeat.o(17547);
       return true;
     }
-    AppMethodBeat.o(72111);
+    AppMethodBeat.o(17547);
     return false;
   }
   
   private static boolean isPostalAddress(TextView paramTextView)
   {
-    AppMethodBeat.i(72110);
+    AppMethodBeat.i(17546);
     if (paramTextView.getInputType() == 112)
     {
-      AppMethodBeat.o(72110);
+      AppMethodBeat.o(17546);
       return true;
     }
-    AppMethodBeat.o(72110);
+    AppMethodBeat.o(17546);
     return false;
   }
   
   public static boolean isSensitiveUserData(View paramView)
   {
-    AppMethodBeat.i(72106);
+    AppMethodBeat.i(17542);
     if ((paramView instanceof TextView))
     {
       paramView = (TextView)paramView;
       if ((isPassword(paramView)) || (isCreditCard(paramView)) || (isPersonName(paramView)) || (isPostalAddress(paramView)) || (isPhoneNumber(paramView)) || (isEmail(paramView)))
       {
-        AppMethodBeat.o(72106);
+        AppMethodBeat.o(17542);
         return true;
       }
-      AppMethodBeat.o(72106);
+      AppMethodBeat.o(17542);
       return false;
     }
-    AppMethodBeat.o(72106);
+    AppMethodBeat.o(17542);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.codeless.internal.SensitiveUserDataUtils
  * JD-Core Version:    0.7.0.1
  */

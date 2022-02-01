@@ -13,106 +13,106 @@ public final class e
   extends com.google.android.exoplayer2.a
   implements Handler.Callback
 {
-  private final k aMM;
-  private final c aNF;
-  private final e.a aNG;
-  private final Handler aNH;
-  private final d aNI;
-  private final Metadata[] aNJ;
-  private final long[] aNK;
-  private int aNL;
-  private int aNM;
-  private a aNN;
-  private boolean aNl;
+  private boolean biL;
+  private final k bil;
+  private final c bjf;
+  private final a bjg;
+  private final Handler bjh;
+  private final d bji;
+  private final Metadata[] bjj;
+  private final long[] bjk;
+  private int bjl;
+  private int bjm;
+  private a bjn;
   
-  public e(e.a parama, Looper paramLooper)
+  public e(a parama, Looper paramLooper)
   {
-    this(parama, paramLooper, c.aNE);
+    this(parama, paramLooper, c.bje);
   }
   
-  private e(e.a parama, Looper paramLooper, c paramc)
+  private e(a parama, Looper paramLooper, c paramc)
   {
     super(4);
-    AppMethodBeat.i(95349);
-    this.aNG = ((e.a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
+    AppMethodBeat.i(92471);
+    this.bjg = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
     if (paramLooper == null) {}
     for (parama = null;; parama = new Handler(paramLooper, this))
     {
-      this.aNH = parama;
-      this.aNF = ((c)com.google.android.exoplayer2.i.a.checkNotNull(paramc));
-      this.aMM = new k();
-      this.aNI = new d();
-      this.aNJ = new Metadata[5];
-      this.aNK = new long[5];
-      AppMethodBeat.o(95349);
+      this.bjh = parama;
+      this.bjf = ((c)com.google.android.exoplayer2.i.a.checkNotNull(paramc));
+      this.bil = new k();
+      this.bji = new d();
+      this.bjj = new Metadata[5];
+      this.bjk = new long[5];
+      AppMethodBeat.o(92471);
       return;
     }
   }
   
   private void d(Metadata paramMetadata)
   {
-    AppMethodBeat.i(95357);
-    this.aNG.b(paramMetadata);
-    AppMethodBeat.o(95357);
+    AppMethodBeat.i(92479);
+    this.bjg.b(paramMetadata);
+    AppMethodBeat.o(92479);
   }
   
-  private void oL()
+  private void tx()
   {
-    AppMethodBeat.i(95355);
-    Arrays.fill(this.aNJ, null);
-    this.aNL = 0;
-    this.aNM = 0;
-    AppMethodBeat.o(95355);
+    AppMethodBeat.i(92477);
+    Arrays.fill(this.bjj, null);
+    this.bjl = 0;
+    this.bjm = 0;
+    AppMethodBeat.o(92477);
+  }
+  
+  public final void a(long paramLong, boolean paramBoolean)
+  {
+    AppMethodBeat.i(92474);
+    tx();
+    this.biL = false;
+    AppMethodBeat.o(92474);
   }
   
   public final void a(Format[] paramArrayOfFormat, long paramLong)
   {
-    AppMethodBeat.i(95351);
-    this.aNN = this.aNF.h(paramArrayOfFormat[0]);
-    AppMethodBeat.o(95351);
+    AppMethodBeat.i(92473);
+    this.bjn = this.bjf.h(paramArrayOfFormat[0]);
+    AppMethodBeat.o(92473);
   }
   
   public final int b(Format paramFormat)
   {
-    AppMethodBeat.i(95350);
-    if (this.aNF.g(paramFormat))
+    AppMethodBeat.i(92472);
+    if (this.bjf.g(paramFormat))
     {
-      AppMethodBeat.o(95350);
+      AppMethodBeat.o(92472);
       return 4;
     }
-    AppMethodBeat.o(95350);
+    AppMethodBeat.o(92472);
     return 0;
   }
   
-  public final void b(long paramLong, boolean paramBoolean)
+  public final void e(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(95352);
-    oL();
-    this.aNl = false;
-    AppMethodBeat.o(95352);
-  }
-  
-  public final void f(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(95353);
-    if ((!this.aNl) && (this.aNM < 5))
+    AppMethodBeat.i(92475);
+    if ((!this.biL) && (this.bjm < 5))
     {
-      this.aNI.clear();
-      if (a(this.aMM, this.aNI, false) == -4)
+      this.bji.clear();
+      if (a(this.bil, this.bji, false) == -4)
       {
-        if (!this.aNI.nE()) {
+        if (!this.bji.sq()) {
           break label150;
         }
-        this.aNl = true;
+        this.biL = true;
       }
     }
-    if ((this.aNM > 0) && (this.aNK[this.aNL] <= paramLong1))
+    if ((this.bjm > 0) && (this.bjk[this.bjl] <= paramLong1))
     {
-      Metadata localMetadata = this.aNJ[this.aNL];
-      if (this.aNH == null) {
+      Metadata localMetadata = this.bjj[this.bjl];
+      if (this.bjh == null) {
         break label265;
       }
-      this.aNH.obtainMessage(0, localMetadata).sendToTarget();
+      this.bjh.obtainMessage(0, localMetadata).sendToTarget();
     }
     for (;;)
     {
@@ -120,27 +120,27 @@ public final class e
       com.google.android.exoplayer2.e locale;
       for (;;)
       {
-        this.aNJ[this.aNL] = null;
-        this.aNL = ((this.aNL + 1) % 5);
-        this.aNM -= 1;
-        AppMethodBeat.o(95353);
+        this.bjj[this.bjl] = null;
+        this.bjl = ((this.bjl + 1) % 5);
+        this.bjm -= 1;
+        AppMethodBeat.o(92475);
         return;
-        if (this.aNI.nD()) {
+        if (this.bji.sp()) {
           break;
         }
-        this.aNI.awY = this.aMM.axd.awY;
-        this.aNI.nJ();
+        this.bji.aSr = this.bil.aSv.aSr;
+        this.bji.sv();
         try
         {
-          int i = (this.aNL + this.aNM) % 5;
-          this.aNJ[i] = this.aNN.a(this.aNI);
-          this.aNK[i] = this.aNI.aAT;
-          this.aNM += 1;
+          int i = (this.bjl + this.bjm) % 5;
+          this.bjj[i] = this.bjn.a(this.bji);
+          this.bjk[i] = this.bji.timeUs;
+          this.bjm += 1;
         }
         catch (b localb)
         {
           locale = com.google.android.exoplayer2.e.b(localb, this.index);
-          AppMethodBeat.o(95353);
+          AppMethodBeat.o(92475);
           throw locale;
         }
       }
@@ -151,16 +151,16 @@ public final class e
   
   public final boolean handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(95356);
+    AppMethodBeat.i(92478);
     switch (paramMessage.what)
     {
     default: 
       paramMessage = new IllegalStateException();
-      AppMethodBeat.o(95356);
+      AppMethodBeat.o(92478);
       throw paramMessage;
     }
     d((Metadata)paramMessage.obj);
-    AppMethodBeat.o(95356);
+    AppMethodBeat.o(92478);
     return true;
   }
   
@@ -169,22 +169,27 @@ public final class e
     return true;
   }
   
-  public final void mF()
+  public final boolean rM()
   {
-    AppMethodBeat.i(95354);
-    oL();
-    this.aNN = null;
-    AppMethodBeat.o(95354);
+    return this.biL;
   }
   
-  public final boolean nd()
+  public final void rp()
   {
-    return this.aNl;
+    AppMethodBeat.i(92476);
+    tx();
+    this.bjn = null;
+    AppMethodBeat.o(92476);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void b(Metadata paramMetadata);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.e
  * JD-Core Version:    0.7.0.1
  */

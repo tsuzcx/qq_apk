@@ -6,19 +6,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  String blZ;
-  int bsY;
-  String city;
-  String dCJ;
-  int dqC;
-  public long dqE;
-  private String dqF;
-  int dqL;
-  String gwI;
-  String gwJ;
-  String gxi;
-  int gxj;
-  String province;
+  String bNK;
+  int dtM;
+  String eKn;
+  String evA;
+  int evp;
+  public long evr;
+  private String evs;
+  int evy;
+  String evz;
+  String ijF;
+  String ijG;
+  String ikf;
+  int ikg;
   String signature;
   public int status;
   private int type;
@@ -26,90 +26,82 @@ public final class g
   
   public g()
   {
-    AppMethodBeat.i(108331);
-    this.bsY = -1;
-    this.dqE = 0L;
-    this.gxi = "";
-    this.gxj = 0;
+    AppMethodBeat.i(130993);
+    this.dtM = -1;
+    this.evr = 0L;
+    this.ikf = "";
+    this.ikg = 0;
     this.status = 0;
     this.username = "";
-    this.blZ = "";
-    this.gwI = "";
-    this.gwJ = "";
-    this.dqC = 0;
-    this.dqL = 0;
-    this.province = "";
-    this.city = "";
+    this.bNK = "";
+    this.ijF = "";
+    this.ijG = "";
+    this.evp = 0;
+    this.evy = 0;
+    this.evz = "";
+    this.evA = "";
     this.signature = "";
-    this.dCJ = "";
+    this.eKn = "";
     this.type = 0;
-    this.dqF = "";
-    AppMethodBeat.o(108331);
+    this.evs = "";
+    AppMethodBeat.o(130993);
   }
   
-  public final String aqc()
+  public final String aIF()
   {
-    if (this.blZ == null) {
+    if (this.ikf == null) {
       return "";
     }
-    return this.blZ;
-  }
-  
-  public final String aqk()
-  {
-    if (this.gxi == null) {
-      return "";
-    }
-    return this.gxi;
+    return this.ikf;
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(108332);
-    this.dqE = paramCursor.getLong(0);
-    this.gxi = paramCursor.getString(1);
-    this.gxj = paramCursor.getInt(2);
+    AppMethodBeat.i(130994);
+    this.evr = paramCursor.getLong(0);
+    this.ikf = paramCursor.getString(1);
+    this.ikg = paramCursor.getInt(2);
     this.status = paramCursor.getInt(3);
     this.username = paramCursor.getString(4);
-    this.blZ = paramCursor.getString(5);
-    this.gwI = paramCursor.getString(6);
-    this.gwJ = paramCursor.getString(7);
-    this.dqC = paramCursor.getInt(8);
-    this.dqL = paramCursor.getInt(9);
-    this.province = paramCursor.getString(10);
-    this.city = paramCursor.getString(11);
+    this.bNK = paramCursor.getString(5);
+    this.ijF = paramCursor.getString(6);
+    this.ijG = paramCursor.getString(7);
+    this.evp = paramCursor.getInt(8);
+    this.evy = paramCursor.getInt(9);
+    this.evz = paramCursor.getString(10);
+    this.evA = paramCursor.getString(11);
     this.signature = paramCursor.getString(12);
-    this.dCJ = paramCursor.getString(13);
+    this.eKn = paramCursor.getString(13);
     this.type = paramCursor.getInt(14);
-    this.dqF = paramCursor.getString(15);
-    AppMethodBeat.o(108332);
+    this.evs = paramCursor.getString(15);
+    AppMethodBeat.o(130994);
   }
   
   public final ContentValues convertTo()
   {
-    AppMethodBeat.i(108333);
+    AppMethodBeat.i(130995);
     ContentValues localContentValues = new ContentValues();
-    if ((this.bsY & 0x1) != 0) {
-      localContentValues.put("fbid", Long.valueOf(this.dqE));
+    if ((this.dtM & 0x1) != 0) {
+      localContentValues.put("fbid", Long.valueOf(this.evr));
     }
-    if ((this.bsY & 0x2) != 0) {
-      localContentValues.put("fbname", aqk());
+    if ((this.dtM & 0x2) != 0) {
+      localContentValues.put("fbname", aIF());
     }
-    if ((this.bsY & 0x4) != 0) {
-      localContentValues.put("fbimgkey", Integer.valueOf(this.gxj));
+    if ((this.dtM & 0x4) != 0) {
+      localContentValues.put("fbimgkey", Integer.valueOf(this.ikg));
     }
-    if ((this.bsY & 0x8) != 0) {
+    if ((this.dtM & 0x8) != 0) {
       localContentValues.put("status", Integer.valueOf(this.status));
     }
-    if ((this.bsY & 0x10) != 0) {
+    if ((this.dtM & 0x10) != 0) {
       localContentValues.put("username", getUsername());
     }
-    if ((this.bsY & 0x20) != 0) {
-      localContentValues.put("nickname", aqc());
+    if ((this.dtM & 0x20) != 0) {
+      localContentValues.put("nickname", getNickName());
     }
-    if ((this.bsY & 0x40) != 0)
+    if ((this.dtM & 0x40) != 0)
     {
-      if (this.gwI == null)
+      if (this.ijF == null)
       {
         str = "";
         localContentValues.put("nicknamepyinitial", str);
@@ -117,40 +109,40 @@ public final class g
     }
     else
     {
-      if ((this.bsY & 0x80) != 0)
+      if ((this.dtM & 0x80) != 0)
       {
-        if (this.gwJ != null) {
+        if (this.ijG != null) {
           break label420;
         }
         str = "";
         label187:
         localContentValues.put("nicknamequanpin", str);
       }
-      if ((this.bsY & 0x100) != 0) {
-        localContentValues.put("sex", Integer.valueOf(this.dqC));
+      if ((this.dtM & 0x100) != 0) {
+        localContentValues.put("sex", Integer.valueOf(this.evp));
       }
-      if ((this.bsY & 0x200) != 0) {
-        localContentValues.put("personalcard", Integer.valueOf(this.dqL));
+      if ((this.dtM & 0x200) != 0) {
+        localContentValues.put("personalcard", Integer.valueOf(this.evy));
       }
-      if ((this.bsY & 0x400) != 0)
+      if ((this.dtM & 0x400) != 0)
       {
-        if (this.province != null) {
+        if (this.evz != null) {
           break label428;
         }
         str = "";
         label263:
         localContentValues.put("province", str);
       }
-      if ((this.bsY & 0x800) != 0)
+      if ((this.dtM & 0x800) != 0)
       {
-        if (this.city != null) {
+        if (this.evA != null) {
           break label436;
         }
         str = "";
         label291:
         localContentValues.put("city", str);
       }
-      if ((this.bsY & 0x1000) != 0)
+      if ((this.dtM & 0x1000) != 0)
       {
         if (this.signature != null) {
           break label444;
@@ -159,20 +151,20 @@ public final class g
         label319:
         localContentValues.put("signature", str);
       }
-      if ((this.bsY & 0x2000) != 0)
+      if ((this.dtM & 0x2000) != 0)
       {
-        if (this.dCJ != null) {
+        if (this.eKn != null) {
           break label452;
         }
         str = "";
         label347:
         localContentValues.put("alias", str);
       }
-      if ((this.bsY & 0x4000) != 0) {
+      if ((this.dtM & 0x4000) != 0) {
         localContentValues.put("type", Integer.valueOf(this.type));
       }
-      if ((this.bsY & 0x8000) != 0) {
-        if (this.dqF != null) {
+      if ((this.dtM & 0x8000) != 0) {
+        if (this.evs != null) {
           break label460;
         }
       }
@@ -183,24 +175,32 @@ public final class g
     label444:
     label452:
     label460:
-    for (String str = "";; str = this.dqF)
+    for (String str = "";; str = this.evs)
     {
       localContentValues.put("email", str);
-      AppMethodBeat.o(108333);
+      AppMethodBeat.o(130995);
       return localContentValues;
-      str = this.gwI;
+      str = this.ijF;
       break;
-      str = this.gwJ;
+      str = this.ijG;
       break label187;
-      str = this.province;
+      str = this.evz;
       break label263;
-      str = this.city;
+      str = this.evA;
       break label291;
       str = this.signature;
       break label319;
-      str = this.dCJ;
+      str = this.eKn;
       break label347;
     }
+  }
+  
+  public final String getNickName()
+  {
+    if (this.bNK == null) {
+      return "";
+    }
+    return this.bNK;
   }
   
   public final String getUsername()
@@ -213,7 +213,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -9,21 +9,21 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Timer;
 
 public class FaceNumberView
   extends LinearLayout
 {
-  private String mpq;
-  private int mpr;
-  private ViewGroup mps;
-  public FaceNumberItemView[] mpt;
-  private int mpu;
-  private Animation mpv;
-  private FaceNumberView.a mpw;
+  private String pVZ;
+  private int pWa;
+  private ViewGroup pWb;
+  public FaceNumberItemView[] pWc;
+  private int pWd;
+  private Animation pWe;
+  private FaceNumberView.a pWf;
   
   public FaceNumberView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,226 +33,226 @@ public class FaceNumberView
   public FaceNumberView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(654);
-    this.mpq = null;
-    this.mpt = null;
-    this.mpu = 0;
-    this.mpv = null;
-    this.mpw = FaceNumberView.a.mpy;
-    this.mps = ((ViewGroup)inflate(getContext(), 2130969502, null));
-    addView(this.mps);
-    this.mpv = AnimationUtils.loadAnimation(getContext(), 2131034217);
-    AppMethodBeat.o(654);
+    AppMethodBeat.i(104176);
+    this.pVZ = null;
+    this.pWc = null;
+    this.pWd = 0;
+    this.pWe = null;
+    this.pWf = FaceNumberView.a.pWh;
+    this.pWb = ((ViewGroup)inflate(getContext(), 2131493915, null));
+    addView(this.pWb);
+    this.pWe = AnimationUtils.loadAnimation(getContext(), 2130772095);
+    AppMethodBeat.o(104176);
   }
   
   private static void a(FaceNumberItemView paramFaceNumberItemView, String paramString)
   {
-    AppMethodBeat.i(656);
+    AppMethodBeat.i(104178);
     if (paramFaceNumberItemView == null)
     {
-      AppMethodBeat.o(656);
+      AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("0"))
     {
-      paramFaceNumberItemView.setImageResource(2130838700);
-      AppMethodBeat.o(656);
+      paramFaceNumberItemView.setImageResource(2131232141);
+      AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("1"))
     {
-      paramFaceNumberItemView.setImageResource(2130838701);
-      AppMethodBeat.o(656);
+      paramFaceNumberItemView.setImageResource(2131232142);
+      AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("2"))
     {
-      paramFaceNumberItemView.setImageResource(2130838702);
-      AppMethodBeat.o(656);
+      paramFaceNumberItemView.setImageResource(2131232143);
+      AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("3"))
     {
-      paramFaceNumberItemView.setImageResource(2130838703);
-      AppMethodBeat.o(656);
+      paramFaceNumberItemView.setImageResource(2131232144);
+      AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("4"))
     {
-      paramFaceNumberItemView.setImageResource(2130838704);
-      AppMethodBeat.o(656);
+      paramFaceNumberItemView.setImageResource(2131232145);
+      AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("5"))
     {
-      paramFaceNumberItemView.setImageResource(2130838705);
-      AppMethodBeat.o(656);
+      paramFaceNumberItemView.setImageResource(2131232146);
+      AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("6"))
     {
-      paramFaceNumberItemView.setImageResource(2130838706);
-      AppMethodBeat.o(656);
+      paramFaceNumberItemView.setImageResource(2131232147);
+      AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("7"))
     {
-      paramFaceNumberItemView.setImageResource(2130838707);
-      AppMethodBeat.o(656);
+      paramFaceNumberItemView.setImageResource(2131232148);
+      AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("8"))
     {
-      paramFaceNumberItemView.setImageResource(2130838708);
-      AppMethodBeat.o(656);
+      paramFaceNumberItemView.setImageResource(2131232149);
+      AppMethodBeat.o(104178);
       return;
     }
     if (paramString.equals("9"))
     {
-      paramFaceNumberItemView.setImageResource(2130838709);
-      AppMethodBeat.o(656);
+      paramFaceNumberItemView.setImageResource(2131232150);
+      AppMethodBeat.o(104178);
       return;
     }
-    paramFaceNumberItemView.setImageResource(2130838710);
-    AppMethodBeat.o(656);
+    paramFaceNumberItemView.setImageResource(2131232151);
+    AppMethodBeat.o(104178);
   }
   
-  private void bvC()
+  private void cgX()
   {
     int i = 0;
-    AppMethodBeat.i(655);
-    if ((this.mpt != null) && (this.mpt.length > 0))
+    AppMethodBeat.i(104177);
+    if ((this.pWc != null) && (this.pWc.length > 0))
     {
-      if (!bo.isNullOrNil(this.mpq))
+      if (!bt.isNullOrNil(this.pVZ))
       {
         i = 0;
-        if (i < this.mpt.length)
+        if (i < this.pWc.length)
         {
           String str;
           FaceNumberItemView localFaceNumberItemView;
-          if (this.mpr > i)
+          if (this.pWa > i)
           {
-            str = this.mpq.charAt(i);
-            if (this.mpr == i + 1)
+            str = this.pVZ.charAt(i);
+            if (this.pWa == i + 1)
             {
-              localFaceNumberItemView = this.mpt[i];
-              if (localFaceNumberItemView.mpf != null) {
-                localFaceNumberItemView.bvB();
+              localFaceNumberItemView = this.pWc[i];
+              if (localFaceNumberItemView.pVO != null) {
+                localFaceNumberItemView.cgW();
               }
-              localFaceNumberItemView.mpf = new Timer("FaceNumberItemView_karaoke", true);
-              FaceNumberItemView.a locala = new FaceNumberItemView.a(localFaceNumberItemView, localFaceNumberItemView.mpn, (byte)0);
-              localFaceNumberItemView.mpf.scheduleAtFixedRate(locala, 0L, FaceNumberItemView.mpg);
+              localFaceNumberItemView.pVO = new Timer("FaceNumberItemView_karaoke", true);
+              FaceNumberItemView.a locala = new FaceNumberItemView.a(localFaceNumberItemView, localFaceNumberItemView.pVW, (byte)0);
+              localFaceNumberItemView.pVO.scheduleAtFixedRate(locala, 0L, FaceNumberItemView.pVP);
             }
           }
           for (;;)
           {
-            a(this.mpt[i], str);
+            a(this.pWc[i], str);
             i += 1;
             break;
-            this.mpt[i].bvB();
-            localFaceNumberItemView = this.mpt[i];
-            localFaceNumberItemView.mpm = 30;
+            this.pWc[i].cgW();
+            localFaceNumberItemView = this.pWc[i];
+            localFaceNumberItemView.pVV = 30;
             localFaceNumberItemView.invalidate();
             continue;
             str = "";
           }
         }
-        AppMethodBeat.o(655);
+        AppMethodBeat.o(104177);
         return;
       }
-      while (i < this.mpt.length)
+      while (i < this.pWc.length)
       {
-        a(this.mpt[i], "point");
+        a(this.pWc[i], "point");
         i += 1;
       }
     }
-    AppMethodBeat.o(655);
+    AppMethodBeat.o(104177);
   }
   
-  private void bvD()
+  private void cgY()
   {
-    AppMethodBeat.i(657);
-    if (this.mpq != null)
+    AppMethodBeat.i(104179);
+    if (this.pVZ != null)
     {
-      this.mpr = this.mpq.length();
-      AppMethodBeat.o(657);
+      this.pWa = this.pVZ.length();
+      AppMethodBeat.o(104179);
       return;
     }
-    this.mpr = 0;
-    AppMethodBeat.o(657);
+    this.pWa = 0;
+    AppMethodBeat.o(104179);
   }
   
-  public final void Nu(String paramString)
+  public final void XO(String paramString)
   {
-    AppMethodBeat.i(658);
-    this.mpq = paramString;
-    bvD();
-    bvC();
-    AppMethodBeat.o(658);
+    AppMethodBeat.i(104180);
+    this.pVZ = paramString;
+    cgY();
+    cgX();
+    AppMethodBeat.o(104180);
   }
   
   public void setNumberLengthAndInflate(int paramInt)
   {
-    AppMethodBeat.i(653);
+    AppMethodBeat.i(104175);
     if (paramInt > 12)
     {
-      ab.e("MicroMsg.Facing.MMPwdInputView", "hy: number length exceed max length: %d", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(653);
+      ad.e("MicroMsg.Facing.MMPwdInputView", "hy: number length exceed max length: %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(104175);
       return;
     }
     if (paramInt <= 0)
     {
-      ab.e("MicroMsg.Facing.MMPwdInputView", "hy: number length exceed min length: %d", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(653);
+      ad.e("MicroMsg.Facing.MMPwdInputView", "hy: number length exceed min length: %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(104175);
       return;
     }
-    if (paramInt == this.mpu)
+    if (paramInt == this.pWd)
     {
-      ab.i("MicroMsg.Facing.MMPwdInputView", "hy: already correct length. quit");
-      Nu(null);
-      AppMethodBeat.o(653);
+      ad.i("MicroMsg.Facing.MMPwdInputView", "hy: already correct length. quit");
+      XO(null);
+      AppMethodBeat.o(104175);
       return;
     }
-    this.mps.removeAllViews();
-    this.mpu = paramInt;
-    this.mpt = new FaceNumberItemView[this.mpu];
+    this.pWb.removeAllViews();
+    this.pWd = paramInt;
+    this.pWc = new FaceNumberItemView[this.pWd];
     int k = 0;
     if (k < paramInt)
     {
-      FaceNumberItemView localFaceNumberItemView = (FaceNumberItemView)inflate(getContext(), 2130969503, null);
-      localFaceNumberItemView.setImageResource(2130838710);
+      FaceNumberItemView localFaceNumberItemView = (FaceNumberItemView)inflate(getContext(), 2131493916, null);
+      localFaceNumberItemView.setImageResource(2131232151);
       int j;
       int i;
       if (k == 0)
       {
         j = 3;
-        i = (getResources().getDimensionPixelSize(2131428413) + a.fromDPToPix(getContext(), 48)) / 2;
+        i = (getResources().getDimensionPixelSize(2131166279) + a.fromDPToPix(getContext(), 48)) / 2;
       }
       for (;;)
       {
         localFaceNumberItemView.setGravity(j);
-        this.mpt[k] = localFaceNumberItemView;
-        this.mps.addView(localFaceNumberItemView, new ViewGroup.LayoutParams(i, getResources().getDimensionPixelSize(2131428411)));
+        this.pWc[k] = localFaceNumberItemView;
+        this.pWb.addView(localFaceNumberItemView, new ViewGroup.LayoutParams(i, getResources().getDimensionPixelSize(2131166277)));
         k += 1;
         break;
         if (k == paramInt - 1)
         {
           j = 5;
-          i = (getResources().getDimensionPixelSize(2131428413) + a.fromDPToPix(getContext(), 48)) / 2;
+          i = (getResources().getDimensionPixelSize(2131166279) + a.fromDPToPix(getContext(), 48)) / 2;
         }
         else
         {
           j = 17;
-          i = getResources().getDimensionPixelSize(2131428413);
+          i = getResources().getDimensionPixelSize(2131166279);
         }
       }
     }
-    AppMethodBeat.o(653);
+    AppMethodBeat.o(104175);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceNumberView
  * JD-Core Version:    0.7.0.1
  */

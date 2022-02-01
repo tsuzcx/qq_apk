@@ -10,10 +10,10 @@ public final class co
   static void a(zzs paramzzs, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.a(paramParcel, 2, paramzzs.TP, paramInt);
+    c.a(paramParcel, 2, paramzzs.VE, paramInt);
     c.c(paramParcel, 3, paramzzs.type);
-    c.c(paramParcel, 4, paramzzs.UT);
-    c.c(paramParcel, 5, paramzzs.UU);
+    c.c(paramParcel, 4, paramzzs.WI);
+    c.c(paramParcel, 5, paramzzs.WJ);
     c.v(paramParcel, i);
   }
 }

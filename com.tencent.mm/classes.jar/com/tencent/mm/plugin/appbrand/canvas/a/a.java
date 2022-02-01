@@ -5,66 +5,66 @@ import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.l;
+import com.tencent.mm.plugin.appbrand.aa.k;
 import java.io.Serializable;
 
 public final class a
   extends Paint
   implements Serializable
 {
-  public a.a hfC;
-  private float hfD;
-  private String hfE;
-  private int hfF;
-  private float hfG;
-  private int hfH;
+  public a iZN;
+  private float iZO;
+  private String iZP;
+  private int iZQ;
+  private float iZR;
+  private int iZS;
   private int mColor;
   
   public a()
   {
-    AppMethodBeat.i(103653);
-    this.hfC = a.a.hfI;
-    this.hfG = 3.4028235E+38F;
-    this.hfH = 2147483647;
+    AppMethodBeat.i(145336);
+    this.iZN = a.iZT;
+    this.iZR = 3.4028235E+38F;
+    this.iZS = 2147483647;
     init();
-    AppMethodBeat.o(103653);
+    AppMethodBeat.o(145336);
   }
   
   private void init()
   {
-    AppMethodBeat.i(103654);
-    this.hfD = 0.0F;
+    AppMethodBeat.i(145337);
+    this.iZO = 0.0F;
     this.mColor = 0;
-    this.hfE = null;
-    this.hfF = 0;
-    if (this.hfG == 3.4028235E+38F)
+    this.iZP = null;
+    this.iZQ = 0;
+    if (this.iZR == 3.4028235E+38F)
     {
-      this.hfD = (getAlpha() / 255.0F);
-      this.hfG = this.hfD;
+      this.iZO = (getAlpha() / 255.0F);
+      this.iZR = this.iZO;
     }
-    while (this.hfH == 2147483647)
+    while (this.iZS == 2147483647)
     {
       this.mColor = getColor();
-      this.hfH = this.mColor;
-      AppMethodBeat.o(103654);
+      this.iZS = this.mColor;
+      AppMethodBeat.o(145337);
       return;
-      this.hfD = this.hfG;
+      this.iZO = this.iZR;
     }
-    this.mColor = this.hfH;
-    AppMethodBeat.o(103654);
+    this.mColor = this.iZS;
+    AppMethodBeat.o(145337);
   }
   
-  public final void ao(float paramFloat)
+  public final void Ft(String paramString)
   {
-    AppMethodBeat.i(103658);
-    this.hfD = paramFloat;
-    setColor(this.mColor);
-    AppMethodBeat.o(103658);
+    AppMethodBeat.i(145345);
+    this.iZP = paramString;
+    setTypeface(Typeface.create(paramString, this.iZQ));
+    AppMethodBeat.o(145345);
   }
   
-  public final a ayh()
+  public final a aTa()
   {
-    AppMethodBeat.i(103656);
+    AppMethodBeat.i(145339);
     a locala = new a();
     locala.setColor(getColor());
     locala.setFlags(getFlags());
@@ -72,7 +72,7 @@ public final class a
     Shader localShader = getShader();
     if (localShader != null)
     {
-      Object localObject = l.a(Shader.class, "copy", localShader, new Class[0], new Object[0]);
+      Object localObject = k.a(Shader.class, "copy", localShader, new Class[0], new Object[0]);
       if ((localObject == null) || (!(localObject instanceof Shader))) {
         break label165;
       }
@@ -90,22 +90,30 @@ public final class a
       locala.setTextSize(getTextSize());
       locala.setTextAlign(getTextAlign());
       locala.setTypeface(getTypeface());
-      locala.hfC = this.hfC;
-      AppMethodBeat.o(103656);
+      locala.iZN = this.iZN;
+      AppMethodBeat.o(145339);
       return locala;
     }
   }
   
+  public final void ap(float paramFloat)
+  {
+    AppMethodBeat.i(145341);
+    this.iZO = paramFloat;
+    setColor(this.mColor);
+    AppMethodBeat.o(145341);
+  }
+  
   public final a b(a parama)
   {
-    AppMethodBeat.i(103657);
+    AppMethodBeat.i(145340);
     parama.setColor(getColor());
     parama.setFlags(getFlags());
     parama.setDither(isDither());
     Shader localShader = getShader();
     if (localShader != null)
     {
-      Object localObject = l.a(Shader.class, "copy", localShader, new Class[0], new Object[0]);
+      Object localObject = k.a(Shader.class, "copy", localShader, new Class[0], new Object[0]);
       if ((localObject == null) || (!(localObject instanceof Shader))) {
         break label157;
       }
@@ -123,63 +131,71 @@ public final class a
       parama.setTextSize(getTextSize());
       parama.setTextAlign(getTextAlign());
       parama.setTypeface(getTypeface());
-      parama.hfC = this.hfC;
-      AppMethodBeat.o(103657);
+      parama.iZN = this.iZN;
+      AppMethodBeat.o(145340);
       return parama;
     }
   }
   
   protected final Object clone()
   {
-    AppMethodBeat.i(103655);
+    AppMethodBeat.i(145338);
     Object localObject = super.clone();
-    AppMethodBeat.o(103655);
+    AppMethodBeat.o(145338);
     return localObject;
   }
   
-  public final void ny(int paramInt)
+  public final void qS(int paramInt)
   {
-    AppMethodBeat.i(103663);
-    this.hfF = paramInt;
-    setTypeface(Typeface.create(this.hfE, paramInt));
-    AppMethodBeat.o(103663);
+    AppMethodBeat.i(145346);
+    this.iZQ = paramInt;
+    setTypeface(Typeface.create(this.iZP, paramInt));
+    AppMethodBeat.o(145346);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(103661);
+    AppMethodBeat.i(145344);
     reset();
     init();
-    AppMethodBeat.o(103661);
+    AppMethodBeat.o(145344);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(103660);
+    AppMethodBeat.i(145343);
     super.reset();
-    this.hfC = a.a.hfI;
-    AppMethodBeat.o(103660);
+    this.iZN = a.iZT;
+    AppMethodBeat.o(145343);
   }
   
   public final void setColor(int paramInt)
   {
-    AppMethodBeat.i(103659);
+    AppMethodBeat.i(145342);
     this.mColor = paramInt;
-    super.setColor(((int)(Color.alpha(paramInt) * this.hfD) & 0xFF) << 24 | 0xFFFFFF & paramInt);
-    AppMethodBeat.o(103659);
+    super.setColor(((int)(Color.alpha(paramInt) * this.iZO) & 0xFF) << 24 | 0xFFFFFF & paramInt);
+    AppMethodBeat.o(145342);
   }
   
-  public final void zD(String paramString)
+  public static enum a
   {
-    AppMethodBeat.i(103662);
-    this.hfE = paramString;
-    setTypeface(Typeface.create(paramString, this.hfF));
-    AppMethodBeat.o(103662);
+    static
+    {
+      AppMethodBeat.i(145335);
+      iZT = new a("NORMAL", 0);
+      iZU = new a("TOP", 1);
+      iZV = new a("BOTTOM", 2);
+      iZW = new a("MIDDLE", 3);
+      iZX = new a[] { iZT, iZU, iZV, iZW };
+      AppMethodBeat.o(145335);
+    }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ import org.json.JSONException;
 
 public final class c
 {
-  private static final Lock GX = new ReentrantLock();
-  private static c GY;
-  private final Lock GZ = new ReentrantLock();
-  private final SharedPreferences Ha;
+  private static final Lock IM = new ReentrantLock();
+  private static c IN;
+  private final Lock IO = new ReentrantLock();
+  private final SharedPreferences IP;
   
   private c(Context paramContext)
   {
-    this.Ha = paramContext.getSharedPreferences("com.google.android.gms.signin", 0);
+    this.IP = paramContext.getSharedPreferences("com.google.android.gms.signin", 0);
   }
   
   private static String a(String paramString1, String paramString2)
@@ -30,19 +30,19 @@ public final class c
   
   public static c c(Context paramContext)
   {
-    d.u(paramContext);
-    GX.lock();
+    d.D(paramContext);
+    IM.lock();
     try
     {
-      if (GY == null) {
-        GY = new c(paramContext.getApplicationContext());
+      if (IN == null) {
+        IN = new c(paramContext.getApplicationContext());
       }
-      paramContext = GY;
+      paramContext = IN;
       return paramContext;
     }
     finally
     {
-      GX.unlock();
+      IM.unlock();
     }
   }
   
@@ -82,24 +82,24 @@ public final class c
   
   private String k(String paramString)
   {
-    this.GZ.lock();
+    this.IO.lock();
     try
     {
-      paramString = this.Ha.getString(paramString, null);
+      paramString = this.IP.getString(paramString, null);
       return paramString;
     }
     finally
     {
-      this.GZ.unlock();
+      this.IO.unlock();
     }
   }
   
-  public final GoogleSignInAccount gj()
+  public final GoogleSignInAccount gt()
   {
     return i(k("defaultGoogleSignInAccount"));
   }
   
-  public final GoogleSignInOptions gk()
+  public final GoogleSignInOptions gu()
   {
     return j(k("defaultGoogleSignInAccount"));
   }

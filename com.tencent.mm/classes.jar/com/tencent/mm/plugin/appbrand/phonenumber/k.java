@@ -1,247 +1,142 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
-import a.f.b.j;
-import a.l;
-import android.os.Parcelable;
-import com.tencent.luggage.g.d;
+import android.content.Context;
+import android.graphics.Color;
+import android.text.method.LinkMovementMethod;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.luggage.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.ac;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.utils.html.c;
+import com.tencent.mm.plugin.appbrand.utils.html.c.a;
+import com.tencent.mm.plugin.appbrand.widget.dialog.m;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItemsManager;", "", "()V", "PHONE_ITEMS", "", "TAG", "addPhone", "", "phoneItem", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "getPhoneNumbers", "", "process", "phoneItems", "oldPhoneItems", "removePhone", "delPhoneItems", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "savePhoneNumbers", "selectPhone", "updatePhoneItem", "IPCInvoke_GetCommonDataValue", "IPCInvoke_SetCommonDataValue", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/phonenumber/DialogExplainDialog;", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IAppBrandDialog;", "dialogContainer", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;", "service", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "content", "", "context", "Landroid/content/Context;", "height", "", "(Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;Ljava/lang/String;Landroid/content/Context;I)V", "_position", "backIv", "Landroid/widget/ImageView;", "getContent", "()Ljava/lang/String;", "contentTv", "Landroid/widget/TextView;", "contentV", "Landroid/view/View;", "getContext", "()Landroid/content/Context;", "getHeight", "()I", "rootView", "getService", "()Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "titleTv", "cancel", "", "dismiss", "getContentView", "getPosition", "isCancelable", "", "isCanceledOnTouchOutside", "onBackPressedEvent", "onCancel", "onDismiss", "onScreenOrientationChanged", "rotation", "onShow", "dialogHelper", "setPosition", "position", "luggage-wechat-full-sdk_release"})
 public final class k
+  implements com.tencent.mm.plugin.appbrand.widget.dialog.k
 {
-  public static final k iDv;
+  private final String content;
+  public final Context context;
+  public int hJH;
+  private final int height;
+  private final TextView izX;
+  final h jDf;
+  private final View jGE;
+  private final ImageView jGF;
+  public final View jGG;
+  private final m jGH;
+  private final TextView titleTv;
   
-  static
+  public k(m paramm, h paramh, String paramString, Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(134813);
-    iDv = new k();
-    AppMethodBeat.o(134813);
-  }
-  
-  public static void a(PhoneItem paramPhoneItem)
-  {
-    AppMethodBeat.i(143944);
-    List localList = aKP();
-    if (paramPhoneItem != null)
-    {
-      Iterator localIterator = localList.iterator();
-      while (localIterator.hasNext()) {
-        ((PhoneItem)localIterator.next()).iDt = false;
-      }
-      localIterator = localList.iterator();
-      while (localIterator.hasNext())
+    AppMethodBeat.i(148062);
+    this.jGH = paramm;
+    this.jDf = paramh;
+    this.content = paramString;
+    this.context = paramContext;
+    this.height = paramInt;
+    this.hJH = 2;
+    paramm = View.inflate(this.context, 2131493018, null);
+    d.g.b.k.g(paramm, "View.inflate(context, R.…ber_explain_dialog, null)");
+    this.jGG = paramm;
+    paramm = this.jGG.findViewById(2131303220);
+    d.g.b.k.g(paramm, "rootView.findViewById(R.…e_number_explain_content)");
+    this.jGE = paramm;
+    paramm = this.jGE;
+    if (paramm != null) {
+      paramm.setLayoutParams((ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, this.height));
+    }
+    paramm = this.jGG.findViewById(2131303221);
+    d.g.b.k.g(paramm, "rootView.findViewById(R.…mber_explain_dialog_back)");
+    this.jGF = ((ImageView)paramm);
+    paramm = this.jGF;
+    if (paramm != null) {
+      paramm.setOnClickListener((View.OnClickListener)new View.OnClickListener()
       {
-        PhoneItem localPhoneItem = (PhoneItem)localIterator.next();
-        if (j.e(paramPhoneItem.czF, localPhoneItem.czF)) {
-          localPhoneItem.iDt = true;
-        }
-      }
-    }
-    aK(localList);
-    d.v("MicroMsg.PhoneItemsManager", "uninit phoneItems:%s", new Object[] { localList });
-    AppMethodBeat.o(143944);
-  }
-  
-  public static void aK(List<PhoneItem> paramList)
-  {
-    AppMethodBeat.i(143943);
-    if (paramList == null)
-    {
-      AppMethodBeat.o(143943);
-      return;
-    }
-    JSONArray localJSONArray = new JSONArray();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Object localObject = (PhoneItem)paramList.next();
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("mobile", ((PhoneItem)localObject).czF);
-      localJSONObject.put("show_mobile", ((PhoneItem)localObject).iDo);
-      localJSONObject.put("need_auth", ((PhoneItem)localObject).iDq);
-      localJSONObject.put("allow_send_sms", ((PhoneItem)localObject).iDr);
-      localJSONObject.put("encryptedData", ((PhoneItem)localObject).iDp);
-      localJSONObject.put("iv", ((PhoneItem)localObject).aRj);
-      localJSONObject.put("is_wechat", ((PhoneItem)localObject).iDs);
-      localJSONObject.put("is_check", ((PhoneItem)localObject).iDt);
-      localObject = localJSONObject.toString();
-      j.p(localObject, "jsonObject.toString()");
-      localJSONArray.put(localObject);
-    }
-    f.a("com.tencent.mm", (Parcelable)new IPCString(localJSONArray.toString()), k.b.class);
-    AppMethodBeat.o(143943);
-  }
-  
-  public static List<PhoneItem> aKP()
-  {
-    AppMethodBeat.i(143942);
-    Object localObject1 = (IPCString)f.a("com.tencent.mm", (Parcelable)new IPCString("PhoneItemsManager#PhoneItems"), k.a.class);
-    Object localObject3;
-    if (localObject1 != null)
-    {
-      localObject3 = ((IPCString)localObject1).value;
-      localObject1 = localObject3;
-      if (localObject3 != null) {}
-    }
-    else
-    {
-      localObject1 = "{}";
-    }
-    try
-    {
-      localObject1 = new JSONArray((String)localObject1);
-      localObject3 = new ArrayList();
-      if (localObject1 != null)
-      {
-        int j = ((JSONArray)localObject1).length() - 1;
-        if (j >= 0)
+        public final void onClick(View paramAnonymousView)
         {
-          int i = 0;
-          for (;;)
+          AppMethodBeat.i(148060);
+          paramAnonymousView = k.a(this.ljY);
+          if (paramAnonymousView != null)
           {
-            Object localObject4 = PhoneItem.iDu;
-            localObject4 = ((JSONArray)localObject1).getString(i);
-            j.p(localObject4, "jsonArray.getString(i)");
-            localObject4 = PhoneItem.a.EB((String)localObject4);
-            if (localObject4 != null) {
-              ((ArrayList)localObject3).add(localObject4);
-            }
-            if (i == j) {
-              break;
-            }
-            i += 1;
+            paramAnonymousView.c((com.tencent.mm.plugin.appbrand.widget.dialog.k)this.ljY);
+            AppMethodBeat.o(148060);
+            return;
           }
+          AppMethodBeat.o(148060);
         }
-      }
+      });
     }
-    catch (Exception localException)
+    paramm = this.jGG.findViewById(2131303223);
+    d.g.b.k.g(paramm, "rootView.findViewById(R.…ber_explain_dialog_title)");
+    this.titleTv = ((TextView)paramm);
+    this.titleTv.setText(this.jGG.getContext().getText(2131756008));
+    paramm = this.jGG.findViewById(2131303222);
+    d.g.b.k.g(paramm, "rootView.findViewById(R.…r_explain_dialog_content)");
+    this.izX = ((TextView)paramm);
+    this.izX.setText(c.a(this.content, false, (c.a)new c.a()
     {
-      for (;;)
+      public final void Ho(String paramAnonymousString)
       {
-        d.e("MicroMsg.PhoneItemsManager", "e:%s", new Object[] { localException });
-        localObject2 = null;
-      }
-      d.d("MicroMsg.PhoneItemsManager", "get %s", new Object[] { String.valueOf(localObject2) });
-      Object localObject2 = (List)localObject3;
-      AppMethodBeat.o(143942);
-      return localObject2;
-    }
-  }
-  
-  public static void b(PhoneItem paramPhoneItem)
-  {
-    AppMethodBeat.i(143945);
-    j.q(paramPhoneItem, "phoneItem");
-    ArrayList localArrayList = (ArrayList)aKP();
-    Iterator localIterator = localArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((PhoneItem)localIterator.next()).iDt = false;
-    }
-    if (localArrayList.contains(paramPhoneItem)) {
-      localArrayList.set(localArrayList.indexOf(paramPhoneItem), paramPhoneItem);
-    }
-    for (;;)
-    {
-      aK((List)localArrayList);
-      AppMethodBeat.o(143945);
-      return;
-      localArrayList.add(paramPhoneItem);
-    }
-  }
-  
-  public static List<PhoneItem> f(List<PhoneItem> paramList1, List<PhoneItem> paramList2)
-  {
-    AppMethodBeat.i(143941);
-    if (paramList1 == null)
-    {
-      AppMethodBeat.o(143941);
-      return null;
-    }
-    int i;
-    if (paramList2 != null)
-    {
-      Iterator localIterator = paramList2.iterator();
-      while (localIterator.hasNext())
-      {
-        PhoneItem localPhoneItem1 = (PhoneItem)localIterator.next();
-        if (localPhoneItem1.iDt)
-        {
-          localIterator = paramList1.iterator();
-          while (localIterator.hasNext())
-          {
-            PhoneItem localPhoneItem2 = (PhoneItem)localIterator.next();
-            if (j.e(localPhoneItem1.czF, localPhoneItem2.czF))
-            {
-              localPhoneItem2.iDt = true;
-              i = 1;
-            }
-          }
+        AppMethodBeat.i(148061);
+        b localb = this.ljY.jDf.K(ac.class);
+        if (localb == null) {
+          d.g.b.k.fvU();
         }
+        ((ac)localb).a(this.ljY.context, paramAnonymousString, null);
+        AppMethodBeat.o(148061);
       }
-    }
-    for (;;)
-    {
-      if ((i == 0) && (paramList1.size() > 0)) {
-        ((PhoneItem)paramList1.get(0)).iDt = true;
-      }
-      d.v("MicroMsg.PhoneItemsManager", "init oldphoneItems:%s", new Object[] { paramList2 });
-      d.v("MicroMsg.PhoneItemsManager", "init phoneItems:%s", new Object[] { paramList1 });
-      AppMethodBeat.o(143941);
-      return paramList1;
-      i = 0;
-      continue;
-      i = 0;
-    }
+    }));
+    this.izX.setMovementMethod(LinkMovementMethod.getInstance());
+    this.izX.setLinkTextColor(Color.parseColor("#FF576B95"));
+    AppMethodBeat.o(148062);
   }
   
-  public final void o(ArrayList<PhoneItem> paramArrayList)
+  public final void a(m paramm) {}
+  
+  public final boolean aEu()
   {
-    ArrayList localArrayList;
-    try
-    {
-      AppMethodBeat.i(143946);
-      if (paramArrayList == null)
-      {
-        d.w("MicroMsg.PhoneItemsManager", "delPhoneItems is null");
-        AppMethodBeat.o(143946);
-        return;
-      }
-      localArrayList = (ArrayList)aKP();
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext()) {
-        localArrayList.remove((PhoneItem)paramArrayList.next());
-      }
-      paramArrayList = localArrayList.iterator();
-    }
-    finally {}
-    do
-    {
-      if (!paramArrayList.hasNext()) {
-        break;
-      }
-    } while (!((PhoneItem)paramArrayList.next()).iDt);
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) && (localArrayList.size() > 0)) {
-        ((PhoneItem)localArrayList.get(0)).iDt = true;
-      }
-      d.v("MicroMsg.PhoneItemsManager", "remove phoneItems:%s", new Object[] { localArrayList });
-      aK((List)localArrayList);
-      AppMethodBeat.o(143946);
-      break;
-    }
+    return false;
   }
+  
+  public final boolean aEv()
+  {
+    return true;
+  }
+  
+  public final void cancel() {}
+  
+  public final void dismiss() {}
+  
+  public final View getContentView()
+  {
+    return this.jGG;
+  }
+  
+  public final int getPosition()
+  {
+    return this.hJH;
+  }
+  
+  public final boolean isCancelable()
+  {
+    return true;
+  }
+  
+  public final void onCancel() {}
+  
+  public final void pi(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.k
  * JD-Core Version:    0.7.0.1
  */

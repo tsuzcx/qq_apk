@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <IconPreference android:title="@string/e6v" android:key="share_micromsg_qzone" />
-    <IconPreference android:title="@string/e6w" android:key="share_micromsg_to_sina" />
-    <IconPreference android:title="@string/e6u" android:key="share_micromsg_to_fuckbook" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceSmallCategory android:key="settings_notification_top" />
+    <PreferenceTitleCategory android:key="settings_notification_title" android:title="@string/f93" />
+    <CheckBoxPreference android:key="settings_new_msg_notification" android:persistent="false" android:title="@string/f8v" />
+    <CheckBoxPreference android:key="settings_new_voip_msg_notification" android:persistent="false" android:title="@string/f8z" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android1:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_show_detail" android:persistent="false" android:summary="@string/f5c" android:title="@string/f8w" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_sound" android:persistent="false" android:title="@string/fao" />
+    <Preference android:dependency="settings_sound" android:key="settings_notification_ringtone" android:persistent="false" android:title="@string/f95" />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_shake" android:layout="@layout/aqx" android:persistent="false" android:title="@string/f_w" />
+    <PreferenceTitleCategory android:key="settings_notification_sound_shake" android:title="@string/f98" />
+    <SummaryBelowPreference android:key="settings_notification_sound_and_shake" android:summary="@string/f96" android:title="@string/f97" />
+    <SummaryBelowPreference android:key="settings_voip_sound_and_shake" android:summary="@string/fco" android:title="@string/fcp" />
+    <SummaryBelowPreference android:key="settings_special_scene_notification_sound_and_shake" android:summary="@string/faq" android:title="@string/far" />
+    <PreferenceSmallCategory />
+    <PreferenceTitleCategory android:title="@string/hqq" />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_sns_notify" android:key="settings_sns_notify" android:summary="@string/faf" android:title="@string/fae" />
+    <CheckBoxPreference android:key="settings_notification_finder" android:summary="@string/hqo" android:title="@string/hqp" />
 </PreferenceScreen>

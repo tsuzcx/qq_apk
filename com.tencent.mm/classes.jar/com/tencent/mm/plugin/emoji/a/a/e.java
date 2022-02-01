@@ -5,90 +5,90 @@ import com.tencent.mm.protocal.protobuf.EmotionSummary;
 
 public final class e
 {
+  public static boolean Ay(int paramInt)
+  {
+    AppMethodBeat.i(108375);
+    if ((fd(paramInt, 4)) || (fd(paramInt, 8)))
+    {
+      AppMethodBeat.o(108375);
+      return true;
+    }
+    AppMethodBeat.o(108375);
+    return false;
+  }
+  
   public static boolean a(EmotionSummary paramEmotionSummary)
   {
-    AppMethodBeat.i(52797);
+    AppMethodBeat.i(108373);
     if (paramEmotionSummary == null)
     {
-      AppMethodBeat.o(52797);
+      AppMethodBeat.o(108373);
       return false;
     }
-    boolean bool = ea(paramEmotionSummary.PackFlag, 1);
-    AppMethodBeat.o(52797);
+    boolean bool = fd(paramEmotionSummary.PackFlag, 1);
+    AppMethodBeat.o(108373);
     return bool;
   }
   
   public static boolean b(EmotionSummary paramEmotionSummary)
   {
-    AppMethodBeat.i(52798);
+    AppMethodBeat.i(108374);
     if ((c(paramEmotionSummary)) || (d(paramEmotionSummary)))
     {
-      AppMethodBeat.o(52798);
+      AppMethodBeat.o(108374);
       return true;
     }
-    AppMethodBeat.o(52798);
+    AppMethodBeat.o(108374);
     return false;
   }
   
   private static boolean c(EmotionSummary paramEmotionSummary)
   {
-    AppMethodBeat.i(52800);
+    AppMethodBeat.i(108376);
     if (paramEmotionSummary == null)
     {
-      AppMethodBeat.o(52800);
+      AppMethodBeat.o(108376);
       return false;
     }
-    boolean bool = ea(paramEmotionSummary.PackType, 4);
-    AppMethodBeat.o(52800);
+    boolean bool = fd(paramEmotionSummary.PackType, 4);
+    AppMethodBeat.o(108376);
     return bool;
   }
   
   private static boolean d(EmotionSummary paramEmotionSummary)
   {
-    AppMethodBeat.i(52801);
+    AppMethodBeat.i(108377);
     if (paramEmotionSummary == null)
     {
-      AppMethodBeat.o(52801);
+      AppMethodBeat.o(108377);
       return false;
     }
-    boolean bool = ea(paramEmotionSummary.PackType, 8);
-    AppMethodBeat.o(52801);
+    boolean bool = fd(paramEmotionSummary.PackType, 8);
+    AppMethodBeat.o(108377);
     return bool;
   }
   
   public static boolean e(EmotionSummary paramEmotionSummary)
   {
-    AppMethodBeat.i(52802);
+    AppMethodBeat.i(108378);
     if (paramEmotionSummary == null)
     {
-      AppMethodBeat.o(52802);
+      AppMethodBeat.o(108378);
       return false;
     }
-    boolean bool = ea(paramEmotionSummary.PackFlag, 8);
-    AppMethodBeat.o(52802);
+    boolean bool = fd(paramEmotionSummary.PackFlag, 8);
+    AppMethodBeat.o(108378);
     return bool;
   }
   
-  public static boolean ea(int paramInt1, int paramInt2)
+  public static boolean fd(int paramInt1, int paramInt2)
   {
     return (paramInt1 & paramInt2) == paramInt2;
-  }
-  
-  public static boolean uo(int paramInt)
-  {
-    AppMethodBeat.i(52799);
-    if ((ea(paramInt, 4)) || (ea(paramInt, 8)))
-    {
-      AppMethodBeat.o(52799);
-      return true;
-    }
-    AppMethodBeat.o(52799);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -3,23 +3,23 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_enabled="false">
         <shape android:shape="rectangle">
-            <corners android:radius="@dimen/e3" />
-            <solid android:color="@color/hz" />
-            <stroke android:width="@dimen/e5" android:color="@color/i2" />
+            <corners android:radius="@dimen/x" />
+            <solid android:color="@color/ga" />
+            <stroke android:width="@dimen/z" android:color="@color/gd" />
         </shape>
     </item>
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <corners android:radius="@dimen/e3" />
-            <solid android:color="@color/i1" />
-            <stroke android:width="@dimen/e5" android:color="@color/i4" />
+            <corners android:radius="@dimen/x" />
+            <solid android:color="@color/gc" />
+            <stroke android:width="@dimen/z" android:color="@color/gf" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
-            <corners android:radius="@dimen/e3" />
-            <solid android:color="@color/i0" />
-            <stroke android:width="@dimen/e5" android:color="@color/i3" />
+            <corners android:radius="@dimen/x" />
+            <solid android:color="@color/gb" />
+            <stroke android:width="@dimen/z" android:color="@color/ge" />
         </shape>
     </item>
 </selector>

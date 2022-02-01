@@ -2,15 +2,10 @@ package com.tencent.mm.plugin.appbrand;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.luggage.a.e;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager;
-import com.tencent.mm.plugin.appbrand.appstorage.c;
-import com.tencent.mm.plugin.appbrand.appstorage.c.a;
-import com.tencent.mm.plugin.appbrand.appstorage.f;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class ReportStorageSizeTask
   extends MainProcessTask
@@ -20,47 +15,60 @@ public class ReportStorageSizeTask
   
   static
   {
-    AppMethodBeat.i(129148);
-    CREATOR = new ReportStorageSizeTask.1();
-    AppMethodBeat.o(129148);
+    AppMethodBeat.i(43984);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(43984);
   }
   
-  public final void ata()
+  public final void aEz()
   {
-    AppMethodBeat.i(129145);
-    Object localObject = g.wf();
-    if (localObject == null)
+    AppMethodBeat.i(43981);
+    com.tencent.e.h.Iye.aP(new com.tencent.e.i.h()
     {
-      AppMethodBeat.o(129145);
-      return;
-    }
-    c.a locala = c.gZf;
-    if (c.a.yV(this.appId) != 1) {}
-    for (localObject = Integer.valueOf(((com.tencent.luggage.sdk.customize.b)e.q(com.tencent.luggage.sdk.customize.b.class)).cc(this.appId).yT(this.appId));; localObject = Integer.valueOf(((com.tencent.mm.plugin.appbrand.appstorage.b)localObject).yT(this.appId)))
-    {
-      h.qsU.e(14073, new Object[] { this.appId, "", "", localObject, Long.valueOf(AppBrandLocalMediaObjectManager.yW(this.appId)), Long.valueOf(AppBrandLocalMediaObjectManager.yX(this.appId)) });
-      AppMethodBeat.o(129145);
-      return;
-    }
+      public final String getKey()
+      {
+        AppMethodBeat.i(195576);
+        String str = "MicroMsg.AppBrand.ReportStorageSizeTask#" + ReportStorageSizeTask.b(ReportStorageSizeTask.this);
+        AppMethodBeat.o(195576);
+        return str;
+      }
+      
+      public final void run()
+      {
+        AppMethodBeat.i(195575);
+        try
+        {
+          ReportStorageSizeTask.a(ReportStorageSizeTask.this);
+          AppMethodBeat.o(195575);
+          return;
+        }
+        catch (Throwable localThrowable)
+        {
+          ad.e("MicroMsg.AppBrand.ReportStorageSizeTask", "doReport appId:%s, e:%s", new Object[] { ReportStorageSizeTask.b(ReportStorageSizeTask.this), localThrowable });
+          AppMethodBeat.o(195575);
+        }
+      }
+    });
+    AppMethodBeat.o(43981);
   }
   
-  public final void f(Parcel paramParcel)
+  public final void e(Parcel paramParcel)
   {
-    AppMethodBeat.i(129147);
+    AppMethodBeat.i(43983);
     this.appId = paramParcel.readString();
-    AppMethodBeat.o(129147);
+    AppMethodBeat.o(43983);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(129146);
+    AppMethodBeat.i(43982);
     paramParcel.writeString(this.appId);
-    AppMethodBeat.o(129146);
+    AppMethodBeat.o(43982);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ReportStorageSizeTask
  * JD-Core Version:    0.7.0.1
  */

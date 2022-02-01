@@ -1,45 +1,85 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.l;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.k;
+import d.l;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandAppConfigTrimHelper;", "", "()V", "TAG", "", "trimOffInjectConfigFields", "", "appId", "injectConfig", "Lorg/json/JSONObject;", "pruneWxConfigByPage", "", "luggage-wxa-app_release"})
 public final class b
-  extends l
 {
-  public static final c.a fkk;
+  public static final b jce;
   
   static
   {
-    AppMethodBeat.i(101783);
-    c.a locala = new c.a();
-    locala.yrK = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "key";
-    locala.yrM.put("key", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" key TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "key";
-    locala.columns[1] = "value";
-    locala.yrM.put("value", "TEXT");
-    localStringBuilder.append(" value TEXT");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    fkk = locala;
-    AppMethodBeat.o(101783);
+    AppMethodBeat.i(135557);
+    jce = new b();
+    AppMethodBeat.o(135557);
   }
   
-  public final c.a getDBInfo()
+  public static final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    return fkk;
+    int j = 0;
+    AppMethodBeat.i(135556);
+    k.h(paramString, "appId");
+    k.h(paramJSONObject, "injectConfig");
+    long l1 = bt.eGO();
+    Object localObject = paramJSONObject.optJSONObject("tabBar");
+    int k;
+    int i;
+    if (localObject != null)
+    {
+      localObject = ((JSONObject)localObject).optJSONArray("list");
+      if (localObject != null)
+      {
+        k = ((JSONArray)localObject).length();
+        i = 0;
+        while (i < k)
+        {
+          ((JSONArray)localObject).getJSONObject(i).remove("iconData");
+          ((JSONArray)localObject).getJSONObject(i).remove("selectedIconData");
+          i += 1;
+        }
+      }
+    }
+    localObject = paramJSONObject.optJSONArray("subPackages");
+    if (localObject != null)
+    {
+      k = ((JSONArray)localObject).length();
+      i = 0;
+      while (i < k)
+      {
+        ((JSONArray)localObject).getJSONObject(i).remove("pages");
+        i += 1;
+      }
+    }
+    localObject = paramJSONObject.optJSONArray("subpackages");
+    if (localObject != null)
+    {
+      k = ((JSONArray)localObject).length();
+      i = j;
+      while (i < k)
+      {
+        ((JSONArray)localObject).getJSONObject(i).remove("pages");
+        i += 1;
+      }
+    }
+    if (paramBoolean)
+    {
+      paramJSONObject.remove("page");
+      paramJSONObject.remove("preloadRule");
+    }
+    long l2 = bt.eGO();
+    ad.d("Luggage.WXA.AppBrandAppConfigTrimHelper", "trimOffInjectConfigFields appId[" + paramString + "] cost[" + (l2 - l1) + "ms]");
+    AppMethodBeat.o(135556);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.b
  * JD-Core Version:    0.7.0.1
  */

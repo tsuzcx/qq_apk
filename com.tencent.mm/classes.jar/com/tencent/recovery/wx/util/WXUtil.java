@@ -7,17 +7,11 @@ import java.util.UUID;
 
 public class WXUtil
 {
-  public static final String Se(int paramInt)
-  {
-    return "KeyConfigHttpCode[" + paramInt + "]";
-  }
+  public static final String LAST_LOGIN_UIN = "last_login_uin";
+  public static final String LAST_LOGIN_USERNAME = "login_user_name";
+  public static final String LAST_LOGIN_WEXIN_USERNAME = "login_weixin_username";
   
-  public static final String Sf(int paramInt)
-  {
-    return "KeyPatchHttpCode[" + paramInt + "]";
-  }
-  
-  public static final String awx(String paramString)
+  public static final String appendRandomParams(String paramString)
   {
     if (paramString.contains("?")) {
       return paramString + "uuid=" + UUID.randomUUID().toString();
@@ -25,12 +19,22 @@ public class WXUtil
     return paramString + "?uuid=" + UUID.randomUUID().toString();
   }
   
-  public static String iY(Context paramContext)
+  public static final String getHttpConfigCodeKey(int paramInt)
+  {
+    return "KeyConfigHttpCode[" + paramInt + "]";
+  }
+  
+  public static final String getHttpPatchCodeKey(int paramInt)
+  {
+    return "KeyPatchHttpCode[" + paramInt + "]";
+  }
+  
+  public static String getWXUin(Context paramContext)
   {
     return paramContext.getSharedPreferences(paramContext.getPackageName() + "_preferences", 0).getString("last_login_uin", "0");
   }
   
-  public static String iZ(Context paramContext)
+  public static String getWXUserName(Context paramContext)
   {
     SharedPreferences localSharedPreferences = paramContext.getSharedPreferences(paramContext.getPackageName() + "_preferences", 0);
     Object localObject2 = localSharedPreferences.getString("login_weixin_username", "");
@@ -40,7 +44,7 @@ public class WXUtil
     }
     localObject2 = localObject1;
     if (Util.isNullOrNil((String)localObject1)) {
-      localObject2 = String.valueOf(Util.iT(paramContext));
+      localObject2 = String.valueOf(Util.getUUID(paramContext));
     }
     return localObject2;
   }

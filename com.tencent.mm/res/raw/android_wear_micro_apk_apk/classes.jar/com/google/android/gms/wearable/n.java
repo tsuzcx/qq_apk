@@ -10,21 +10,21 @@ import java.util.Set;
 
 public final class n
 {
-  private final HashMap<String, Object> Sr = new HashMap();
+  private final HashMap<String, Object> Ug = new HashMap();
   
   public final void a(String paramString, Asset paramAsset)
   {
-    this.Sr.put(paramString, paramAsset);
+    this.Ug.put(paramString, paramAsset);
   }
   
   public final void a(String paramString, n paramn)
   {
-    this.Sr.put(paramString, paramn);
+    this.Ug.put(paramString, paramn);
   }
   
   public final void a(String paramString, ArrayList<n> paramArrayList)
   {
-    this.Sr.put(paramString, paramArrayList);
+    this.Ug.put(paramString, paramArrayList);
   }
   
   public final boolean equals(Object paramObject)
@@ -33,10 +33,10 @@ public final class n
       return false;
     }
     paramObject = (n)paramObject;
-    if (this.Sr.size() != paramObject.Sr.size()) {
+    if (this.Ug.size() != paramObject.Ug.size()) {
       return false;
     }
-    Iterator localIterator = this.Sr.keySet().iterator();
+    Iterator localIterator = this.Ug.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject2 = (String)localIterator.next();
@@ -60,8 +60,8 @@ public final class n
           return false;
           bool = false;
           continue;
-          if (!TextUtils.isEmpty(((Asset)localObject1).kp())) {
-            bool = ((Asset)localObject1).kp().equals(((Asset)localObject2).kp());
+          if (!TextUtils.isEmpty(((Asset)localObject1).ky())) {
+            bool = ((Asset)localObject1).ky().equals(((Asset)localObject2).ky());
           } else {
             bool = Arrays.equals(((Asset)localObject1).getData(), ((Asset)localObject2).getData());
           }
@@ -119,92 +119,92 @@ public final class n
   
   public final <T> T get(String paramString)
   {
-    return this.Sr.get(paramString);
+    return this.Ug.get(paramString);
   }
   
   public final int hashCode()
   {
-    return this.Sr.hashCode() * 29;
+    return this.Ug.hashCode() * 29;
   }
   
   public final Set<String> keySet()
   {
-    return this.Sr.keySet();
+    return this.Ug.keySet();
   }
   
   public final void putBoolean(String paramString, boolean paramBoolean)
   {
-    this.Sr.put(paramString, Boolean.valueOf(paramBoolean));
+    this.Ug.put(paramString, Boolean.valueOf(paramBoolean));
   }
   
   public final void putByte(String paramString, byte paramByte)
   {
-    this.Sr.put(paramString, Byte.valueOf(paramByte));
+    this.Ug.put(paramString, Byte.valueOf(paramByte));
   }
   
   public final void putByteArray(String paramString, byte[] paramArrayOfByte)
   {
-    this.Sr.put(paramString, paramArrayOfByte);
+    this.Ug.put(paramString, paramArrayOfByte);
   }
   
   public final void putDouble(String paramString, double paramDouble)
   {
-    this.Sr.put(paramString, Double.valueOf(paramDouble));
+    this.Ug.put(paramString, Double.valueOf(paramDouble));
   }
   
   public final void putFloat(String paramString, float paramFloat)
   {
-    this.Sr.put(paramString, Float.valueOf(paramFloat));
+    this.Ug.put(paramString, Float.valueOf(paramFloat));
   }
   
   public final void putFloatArray(String paramString, float[] paramArrayOfFloat)
   {
-    this.Sr.put(paramString, paramArrayOfFloat);
+    this.Ug.put(paramString, paramArrayOfFloat);
   }
   
   public final void putInt(String paramString, int paramInt)
   {
-    this.Sr.put(paramString, Integer.valueOf(paramInt));
+    this.Ug.put(paramString, Integer.valueOf(paramInt));
   }
   
   public final void putIntegerArrayList(String paramString, ArrayList<Integer> paramArrayList)
   {
-    this.Sr.put(paramString, paramArrayList);
+    this.Ug.put(paramString, paramArrayList);
   }
   
   public final void putLong(String paramString, long paramLong)
   {
-    this.Sr.put(paramString, Long.valueOf(paramLong));
+    this.Ug.put(paramString, Long.valueOf(paramLong));
   }
   
   public final void putLongArray(String paramString, long[] paramArrayOfLong)
   {
-    this.Sr.put(paramString, paramArrayOfLong);
+    this.Ug.put(paramString, paramArrayOfLong);
   }
   
   public final void putString(String paramString1, String paramString2)
   {
-    this.Sr.put(paramString1, paramString2);
+    this.Ug.put(paramString1, paramString2);
   }
   
   public final void putStringArray(String paramString, String[] paramArrayOfString)
   {
-    this.Sr.put(paramString, paramArrayOfString);
+    this.Ug.put(paramString, paramArrayOfString);
   }
   
   public final void putStringArrayList(String paramString, ArrayList<String> paramArrayList)
   {
-    this.Sr.put(paramString, paramArrayList);
+    this.Ug.put(paramString, paramArrayList);
   }
   
   public final String toString()
   {
-    return this.Sr.toString();
+    return this.Ug.toString();
   }
   
   public final Asset u(String paramString)
   {
-    Object localObject = this.Sr.get(paramString);
+    Object localObject = this.Ug.get(paramString);
     if (localObject == null) {
       return null;
     }

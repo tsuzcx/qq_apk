@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/a3a"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:background="@color/q4" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <TextView android:background="@color/q3" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <TextView android:background="@color/q2" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <TextView android:background="@color/q5" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <FrameLayout android:id="@id/d48" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/cb">
+        <ProgressBar android:layout_gravity="center" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:indeterminateDrawable="@drawable/a7e" />
+    </FrameLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <android.support.v7.widget.RecyclerView android:id="@id/dv3" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never" />
+        <TextView android:gravity="center_horizontal" android:id="@id/dv5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/c2" style="@style/yn" />
+    </FrameLayout>
 </LinearLayout>

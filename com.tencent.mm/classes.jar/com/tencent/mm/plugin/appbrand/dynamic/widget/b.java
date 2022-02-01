@@ -1,33 +1,30 @@
 package com.tencent.mm.plugin.appbrand.dynamic.widget;
 
 import android.content.Context;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.wx_extension.a.a.b;
+import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.plugin.appbrand.canvas.widget.MCanvasView;
 import com.tencent.mm.plugin.appbrand.canvas.widget.MDrawableView;
 import com.tencent.mm.plugin.appbrand.canvas.widget.MHardwareAccelerateDrawableView;
 import com.tencent.mm.plugin.appbrand.canvas.widget.MSurfaceView;
 import com.tencent.mm.plugin.appbrand.canvas.widget.MTextureView;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.c;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
-  private static volatile boolean eGH = false;
-  private static volatile int hrs = 0;
+  private static volatile int joB = 0;
+  private static volatile boolean sInitialized = false;
   
-  public static int aAk()
+  public static int aVR()
   {
-    return hrs;
+    return joB;
   }
   
-  public static String aAl()
+  public static String aVS()
   {
-    switch (hrs)
+    switch (joB)
     {
     default: 
       return "MHADrawableView";
@@ -41,95 +38,284 @@ public final class b
     return "MDrawableView";
   }
   
-  public static View bX(Context paramContext)
+  public static View cq(Context paramContext)
   {
-    AppMethodBeat.i(11120);
-    if (!eGH) {
+    AppMethodBeat.i(121603);
+    if (!sInitialized) {
       initialize();
     }
-    ab.d("MicroMsg.WidgetDrawableViewFactory", "inflate(mode : %d)", new Object[] { Integer.valueOf(hrs) });
-    switch (hrs)
+    ad.d("MicroMsg.WidgetDrawableViewFactory", "inflate(mode : %d)", new Object[] { Integer.valueOf(joB) });
+    switch (joB)
     {
     default: 
       paramContext = new MHardwareAccelerateDrawableView(paramContext);
-      paramContext.getDrawContext().heH = com.tencent.mm.plugin.appbrand.dynamic.b.b.azN();
-      paramContext.setDrawActionReportable(new b.6(paramContext));
-      AppMethodBeat.o(11120);
+      paramContext.getDrawContext().iYR = com.tencent.mm.plugin.appbrand.dynamic.b.b.aVu();
+      paramContext.setDrawActionReportable(new com.tencent.mm.plugin.appbrand.canvas.c.a()
+      {
+        public final void aTc()
+        {
+          AppMethodBeat.i(121601);
+          u.va(this.joG.getTraceId());
+          AppMethodBeat.o(121601);
+        }
+        
+        public final void aq(float paramAnonymousFloat)
+        {
+          AppMethodBeat.i(121599);
+          b.b(paramAnonymousFloat, 2, this.joG.getTraceId());
+          AppMethodBeat.o(121599);
+        }
+        
+        public final void ar(float paramAnonymousFloat)
+        {
+          AppMethodBeat.i(121600);
+          b.b(paramAnonymousFloat, 3, this.joG.getTraceId());
+          AppMethodBeat.o(121600);
+        }
+        
+        public final void d(long paramAnonymousLong1, long paramAnonymousLong2, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(121598);
+          com.tencent.mm.plugin.appbrand.widget.f.a.d(0, paramAnonymousLong1, paramAnonymousLong2, paramAnonymousInt);
+          AppMethodBeat.o(121598);
+        }
+        
+        public final void mV(long paramAnonymousLong)
+        {
+          AppMethodBeat.i(121596);
+          com.tencent.mm.plugin.appbrand.widget.f.a.G(667, paramAnonymousLong);
+          AppMethodBeat.o(121596);
+        }
+        
+        public final void mW(long paramAnonymousLong)
+        {
+          AppMethodBeat.i(121597);
+          com.tencent.mm.plugin.appbrand.widget.f.a.H(668, paramAnonymousLong);
+          AppMethodBeat.o(121597);
+        }
+      });
+      AppMethodBeat.o(121603);
       return paramContext;
     case 1: 
       paramContext = new MTextureView(paramContext);
-      paramContext.getDrawContext().heH = com.tencent.mm.plugin.appbrand.dynamic.b.b.azN();
-      paramContext.setDrawActionReportable(new b.2(paramContext));
-      AppMethodBeat.o(11120);
+      paramContext.getDrawContext().iYR = com.tencent.mm.plugin.appbrand.dynamic.b.b.aVu();
+      paramContext.setDrawActionReportable(new com.tencent.mm.plugin.appbrand.canvas.c.a()
+      {
+        public final void aTc()
+        {
+          AppMethodBeat.i(121577);
+          u.va(this.joC.getTraceId());
+          AppMethodBeat.o(121577);
+        }
+        
+        public final void aq(float paramAnonymousFloat)
+        {
+          AppMethodBeat.i(121575);
+          b.b(paramAnonymousFloat, 2, this.joC.getTraceId());
+          AppMethodBeat.o(121575);
+        }
+        
+        public final void ar(float paramAnonymousFloat)
+        {
+          AppMethodBeat.i(121576);
+          b.b(paramAnonymousFloat, 3, this.joC.getTraceId());
+          AppMethodBeat.o(121576);
+        }
+        
+        public final void d(long paramAnonymousLong1, long paramAnonymousLong2, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(121574);
+          com.tencent.mm.plugin.appbrand.widget.f.a.d(1, paramAnonymousLong1, paramAnonymousLong2, paramAnonymousInt);
+          AppMethodBeat.o(121574);
+        }
+        
+        public final void mV(long paramAnonymousLong)
+        {
+          AppMethodBeat.i(121572);
+          com.tencent.mm.plugin.appbrand.widget.f.a.G(682, paramAnonymousLong);
+          AppMethodBeat.o(121572);
+        }
+        
+        public final void mW(long paramAnonymousLong)
+        {
+          AppMethodBeat.i(121573);
+          com.tencent.mm.plugin.appbrand.widget.f.a.H(683, paramAnonymousLong);
+          AppMethodBeat.o(121573);
+        }
+      });
+      AppMethodBeat.o(121603);
       return paramContext;
     case 2: 
       paramContext = new MSurfaceView(paramContext);
-      paramContext.getDrawContext().heH = com.tencent.mm.plugin.appbrand.dynamic.b.b.azN();
-      paramContext.setDrawActionReportable(new b.3(paramContext));
-      AppMethodBeat.o(11120);
+      paramContext.getDrawContext().iYR = com.tencent.mm.plugin.appbrand.dynamic.b.b.aVu();
+      paramContext.setDrawActionReportable(new com.tencent.mm.plugin.appbrand.canvas.c.a()
+      {
+        public final void aTc()
+        {
+          AppMethodBeat.i(121583);
+          if (TextUtils.isEmpty(this.joD.getTraceId()))
+          {
+            u.i("MicroMsg.WidgetDrawableViewFactory", "traceId is null return", new Object[0]);
+            AppMethodBeat.o(121583);
+            return;
+          }
+          u.va(this.joD.getTraceId());
+          AppMethodBeat.o(121583);
+        }
+        
+        public final void aq(float paramAnonymousFloat)
+        {
+          AppMethodBeat.i(121581);
+          b.b(paramAnonymousFloat, 2, this.joD.getTraceId());
+          AppMethodBeat.o(121581);
+        }
+        
+        public final void ar(float paramAnonymousFloat)
+        {
+          AppMethodBeat.i(121582);
+          b.b(paramAnonymousFloat, 3, this.joD.getTraceId());
+          AppMethodBeat.o(121582);
+        }
+        
+        public final void d(long paramAnonymousLong1, long paramAnonymousLong2, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(121580);
+          com.tencent.mm.plugin.appbrand.widget.f.a.d(2, paramAnonymousLong1, paramAnonymousLong2, paramAnonymousInt);
+          AppMethodBeat.o(121580);
+        }
+        
+        public final void mV(long paramAnonymousLong)
+        {
+          AppMethodBeat.i(121578);
+          com.tencent.mm.plugin.appbrand.widget.f.a.G(667, paramAnonymousLong);
+          AppMethodBeat.o(121578);
+        }
+        
+        public final void mW(long paramAnonymousLong)
+        {
+          AppMethodBeat.i(121579);
+          com.tencent.mm.plugin.appbrand.widget.f.a.H(668, paramAnonymousLong);
+          AppMethodBeat.o(121579);
+        }
+      });
+      AppMethodBeat.o(121603);
       return paramContext;
     case 3: 
       paramContext = new MCanvasView(paramContext);
-      paramContext.getDrawContext().heH = com.tencent.mm.plugin.appbrand.dynamic.b.b.azN();
-      paramContext.setDrawActionReportable(new b.4(paramContext));
-      AppMethodBeat.o(11120);
+      paramContext.getDrawContext().iYR = com.tencent.mm.plugin.appbrand.dynamic.b.b.aVu();
+      paramContext.setDrawActionReportable(new com.tencent.mm.plugin.appbrand.canvas.c.a()
+      {
+        public final void aTc()
+        {
+          AppMethodBeat.i(121589);
+          u.va(this.joE.getTraceId());
+          AppMethodBeat.o(121589);
+        }
+        
+        public final void aq(float paramAnonymousFloat)
+        {
+          AppMethodBeat.i(121587);
+          b.b(paramAnonymousFloat, 2, this.joE.getTraceId());
+          AppMethodBeat.o(121587);
+        }
+        
+        public final void ar(float paramAnonymousFloat)
+        {
+          AppMethodBeat.i(121588);
+          b.b(paramAnonymousFloat, 3, this.joE.getTraceId());
+          AppMethodBeat.o(121588);
+        }
+        
+        public final void d(long paramAnonymousLong1, long paramAnonymousLong2, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(121586);
+          com.tencent.mm.plugin.appbrand.widget.f.a.d(3, paramAnonymousLong1, paramAnonymousLong2, paramAnonymousInt);
+          AppMethodBeat.o(121586);
+        }
+        
+        public final void mV(long paramAnonymousLong)
+        {
+          AppMethodBeat.i(121584);
+          com.tencent.mm.plugin.appbrand.widget.f.a.G(685, paramAnonymousLong);
+          AppMethodBeat.o(121584);
+        }
+        
+        public final void mW(long paramAnonymousLong)
+        {
+          AppMethodBeat.i(121585);
+          com.tencent.mm.plugin.appbrand.widget.f.a.H(684, paramAnonymousLong);
+          AppMethodBeat.o(121585);
+        }
+      });
+      AppMethodBeat.o(121603);
       return paramContext;
     }
     paramContext = new MDrawableView(paramContext);
-    paramContext.getDrawContext().heH = com.tencent.mm.plugin.appbrand.dynamic.b.b.azN();
-    paramContext.setDrawActionReportable(new b.5(paramContext));
-    AppMethodBeat.o(11120);
+    paramContext.getDrawContext().iYR = com.tencent.mm.plugin.appbrand.dynamic.b.b.aVu();
+    paramContext.setDrawActionReportable(new com.tencent.mm.plugin.appbrand.canvas.c.a()
+    {
+      public final void aTc()
+      {
+        AppMethodBeat.i(121595);
+        u.va(this.joF.getTraceId());
+        AppMethodBeat.o(121595);
+      }
+      
+      public final void aq(float paramAnonymousFloat)
+      {
+        AppMethodBeat.i(121593);
+        b.b(paramAnonymousFloat, 2, this.joF.getTraceId());
+        AppMethodBeat.o(121593);
+      }
+      
+      public final void ar(float paramAnonymousFloat)
+      {
+        AppMethodBeat.i(121594);
+        b.b(paramAnonymousFloat, 3, this.joF.getTraceId());
+        AppMethodBeat.o(121594);
+      }
+      
+      public final void d(long paramAnonymousLong1, long paramAnonymousLong2, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(121592);
+        com.tencent.mm.plugin.appbrand.widget.f.a.d(4, paramAnonymousLong1, paramAnonymousLong2, paramAnonymousInt);
+        AppMethodBeat.o(121592);
+      }
+      
+      public final void mV(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(121590);
+        com.tencent.mm.plugin.appbrand.widget.f.a.G(667, paramAnonymousLong);
+        AppMethodBeat.o(121590);
+      }
+      
+      public final void mW(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(121591);
+        com.tencent.mm.plugin.appbrand.widget.f.a.H(668, paramAnonymousLong);
+        AppMethodBeat.o(121591);
+      }
+    });
+    AppMethodBeat.o(121603);
     return paramContext;
   }
   
   public static void initialize()
   {
-    AppMethodBeat.i(11119);
-    com.tencent.mm.ch.a.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(11088);
-        Object localObject = a.b.eEW;
-        localObject = com.tencent.mm.ipcinvoker.wx_extension.a.a.me("100284");
-        if (localObject == null)
-        {
-          ab.i("MicroMsg.WidgetDrawableViewFactory", "widget canvas mode ABTest item is null.");
-          AppMethodBeat.o(11088);
-          return;
-        }
-        if (!((c)localObject).isValid())
-        {
-          b.nL(0);
-          AppMethodBeat.o(11088);
-          return;
-        }
-        try
-        {
-          b.nL(bo.getInt((String)((c)localObject).dvN().get("mode"), 0));
-          ab.i("MicroMsg.WidgetDrawableViewFactory", "current canvas mode is : %d", new Object[] { Integer.valueOf(b.hrs) });
-          AppMethodBeat.o(11088);
-          return;
-        }
-        catch (Exception localException)
-        {
-          ab.w("MicroMsg.WidgetDrawableViewFactory", "parse widget canvas mode error : %s", new Object[] { Log.getStackTraceString(localException) });
-          AppMethodBeat.o(11088);
-        }
-      }
-    });
-    AppMethodBeat.o(11119);
+    AppMethodBeat.i(121602);
+    com.tencent.mm.cj.a.post(new b.1());
+    AppMethodBeat.o(121602);
   }
   
-  public static void nL(int paramInt)
+  public static void rf(int paramInt)
   {
-    hrs = paramInt;
-    eGH = true;
+    joB = paramInt;
+    sInitialized = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.widget.b
  * JD-Core Version:    0.7.0.1
  */

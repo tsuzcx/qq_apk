@@ -1,10 +1,10 @@
 package com.tencent.mm.compatible.util;
 
-import android.support.d.a;
+import androidx.a.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.i;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.text.ParseException;
@@ -52,29 +52,29 @@ public class Exif
   
   public static Exif fromFile(String paramString)
   {
-    AppMethodBeat.i(93095);
+    AppMethodBeat.i(155900);
     Exif localExif = new Exif();
     localExif.parseFromFile(paramString);
-    AppMethodBeat.o(93095);
+    AppMethodBeat.o(155900);
     return localExif;
   }
   
   public static Exif fromStream(InputStream paramInputStream)
   {
-    AppMethodBeat.i(93096);
+    AppMethodBeat.i(155901);
     Exif localExif = new Exif();
     localExif.parseFromStream(paramInputStream);
-    AppMethodBeat.o(93096);
+    AppMethodBeat.o(155901);
     return localExif;
   }
   
   private void readExifFromInterface()
   {
     int i = -1;
-    AppMethodBeat.i(93091);
+    AppMethodBeat.i(155896);
     if (this.mExif == null)
     {
-      AppMethodBeat.o(93091);
+      AppMethodBeat.o(155896);
       return;
     }
     this.imageDescription = this.mExif.getAttribute("ImageDescription");
@@ -96,7 +96,7 @@ public class Exif
     this.imageHeight = this.mExif.getAttributeInt("ImageLength", 0);
     this.fileSource = this.mExif.getAttributeInt("FileSource", 0);
     this.sceneType = this.mExif.getAttributeInt("SceneType", 0);
-    Object localObject = this.mExif.bX();
+    Object localObject = this.mExif.mQ();
     if (localObject != null)
     {
       this.latitude = localObject[0];
@@ -111,7 +111,7 @@ public class Exif
     for (d = i * d;; d = 0.0D)
     {
       this.altitude = d;
-      AppMethodBeat.o(93091);
+      AppMethodBeat.o(155896);
       return;
       i = 1;
       break;
@@ -120,37 +120,37 @@ public class Exif
   
   public a getLocation()
   {
-    AppMethodBeat.i(93093);
+    AppMethodBeat.i(155898);
     if ((this.latitude < 0.0D) || (this.longitude < 0.0D))
     {
-      AppMethodBeat.o(93093);
+      AppMethodBeat.o(155898);
       return null;
     }
     a locala = new a(this.latitude, this.longitude, this.altitude);
-    AppMethodBeat.o(93093);
+    AppMethodBeat.o(155898);
     return locala;
   }
   
   public int getOrientationInDegree()
   {
-    AppMethodBeat.i(93092);
+    AppMethodBeat.i(155897);
     if (this.mExif != null)
     {
       switch (this.mExif.getAttributeInt("Orientation", 1))
       {
       default: 
-        AppMethodBeat.o(93092);
+        AppMethodBeat.o(155897);
         return 0;
       case 6: 
       case 7: 
-        AppMethodBeat.o(93092);
+        AppMethodBeat.o(155897);
         return 90;
       case 3: 
       case 4: 
-        AppMethodBeat.o(93092);
+        AppMethodBeat.o(155897);
         return 180;
       }
-      AppMethodBeat.o(93092);
+      AppMethodBeat.o(155897);
       return 270;
     }
     switch (this.orientation)
@@ -159,66 +159,66 @@ public class Exif
     case 5: 
     case 7: 
     default: 
-      AppMethodBeat.o(93092);
+      AppMethodBeat.o(155897);
       return 0;
     case 6: 
-      AppMethodBeat.o(93092);
+      AppMethodBeat.o(155897);
       return 90;
     case 3: 
-      AppMethodBeat.o(93092);
+      AppMethodBeat.o(155897);
       return 180;
     }
-    AppMethodBeat.o(93092);
+    AppMethodBeat.o(155897);
     return 270;
   }
   
   public long getUxtimeDatatimeOriginal()
   {
-    AppMethodBeat.i(93094);
+    AppMethodBeat.i(155899);
     try
     {
       String str = this.dateTimeOriginal;
       if (str == null)
       {
-        AppMethodBeat.o(93094);
+        AppMethodBeat.o(155899);
         return 0L;
       }
       long l = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss").parse(this.dateTimeOriginal).getTime() / 1000L;
-      AppMethodBeat.o(93094);
+      AppMethodBeat.o(155899);
       return l;
     }
     catch (ParseException localParseException)
     {
-      ab.printErrStackTrace("MicroMsg.Exif", localParseException, "", new Object[0]);
-      AppMethodBeat.o(93094);
+      ad.printErrStackTrace("MicroMsg.Exif", localParseException, "", new Object[0]);
+      AppMethodBeat.o(155899);
     }
     return 0L;
   }
   
   public int parseFrom(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(93089);
+    AppMethodBeat.i(155894);
     int i = parseFromStream(new ByteArrayInputStream(paramArrayOfByte));
-    AppMethodBeat.o(93089);
+    AppMethodBeat.o(155894);
     return i;
   }
   
   public int parseFrom(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(93090);
+    AppMethodBeat.i(155895);
     paramInt1 = parseFromStream(new ByteArrayInputStream(paramArrayOfByte, paramInt1, paramInt2));
-    AppMethodBeat.o(93090);
+    AppMethodBeat.o(155895);
     return paramInt1;
   }
   
   public int parseFromFile(String paramString)
   {
-    AppMethodBeat.i(93087);
+    AppMethodBeat.i(155892);
     Object localObject2 = null;
     Object localObject1 = null;
     try
     {
-      InputStream localInputStream = e.openRead(paramString);
+      InputStream localInputStream = i.openRead(paramString);
       localObject1 = localInputStream;
       localObject2 = localInputStream;
       this.mExif = new a(localInputStream);
@@ -230,30 +230,30 @@ public class Exif
     catch (Exception localException)
     {
       localObject2 = localObject1;
-      ab.w("MicroMsg.Exif", "Cannot read EXIF from file '%s': %s", new Object[] { paramString, localException.getMessage() });
+      ad.w("MicroMsg.Exif", "Cannot read EXIF from file '%s': %s", new Object[] { paramString, localException.getMessage() });
       return -1;
     }
     finally
     {
-      bo.b(localObject2);
-      AppMethodBeat.o(93087);
+      bt.d(localObject2);
+      AppMethodBeat.o(155892);
     }
   }
   
   public int parseFromStream(InputStream paramInputStream)
   {
-    AppMethodBeat.i(93088);
+    AppMethodBeat.i(155893);
     try
     {
       this.mExif = new a(paramInputStream);
       readExifFromInterface();
-      AppMethodBeat.o(93088);
+      AppMethodBeat.o(155893);
       return 0;
     }
     catch (Exception localException)
     {
-      ab.w("MicroMsg.Exif", "Cannot read EXIF from stream '%s': %s", new Object[] { paramInputStream, localException.getMessage() });
-      AppMethodBeat.o(93088);
+      ad.w("MicroMsg.Exif", "Cannot read EXIF from stream '%s': %s", new Object[] { paramInputStream, localException.getMessage() });
+      AppMethodBeat.o(155893);
     }
     return -1;
   }

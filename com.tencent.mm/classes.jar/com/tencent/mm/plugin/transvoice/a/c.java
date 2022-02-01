@@ -1,151 +1,155 @@
 package com.tencent.mm.plugin.transvoice.a;
 
-import a.f.b.j;
-import a.l;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelvoiceaddr.g;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter;", "", "()V", "clickChangeLanguageTime", "", "getClickChangeLanguageTime", "()J", "setClickChangeLanguageTime", "(J)V", "defaultLanguageType", "", "getDefaultLanguageType", "()I", "setDefaultLanguageType", "(I)V", "enableReport", "", "getEnableReport", "()Z", "setEnableReport", "(Z)V", "value", "exitType", "getExitType", "setExitType", "isTrans2TxtAvailable", "setTrans2TxtAvailable", "isTransEdited", "setTransEdited", "isTransFinished", "setTransFinished", "isTransGotoEditPanel", "setTransGotoEditPanel", "isTransTimeout", "setTransTimeout", "networkType", "getNetworkType", "setNetworkType", "sendLanguageType", "getSendLanguageType", "setSendLanguageType", "startRecordPressLocX", "getStartRecordPressLocX", "setStartRecordPressLocX", "startRecordPressLocY", "getStartRecordPressLocY", "setStartRecordPressLocY", "startRecordTime", "getStartRecordTime", "setStartRecordTime", "stopRecordPressLocX", "getStopRecordPressLocX", "setStopRecordPressLocX", "stopRecordPressLocY", "getStopRecordPressLocY", "setStopRecordPressLocY", "stopRecordTime", "getStopRecordTime", "setStopRecordTime", "transEndTime", "getTransEndTime", "setTransEndTime", "txtCountFinallySend", "getTxtCountFinallySend", "setTxtCountFinallySend", "txtCountFromServer", "getTxtCountFromServer", "setTxtCountFromServer", "voiceDuration", "getVoiceDuration", "setVoiceDuration", "report", "", "reset", "Companion", "SingletonHolder", "plugin-transvoice_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter;", "", "()V", "clickChangeLanguageTime", "", "getClickChangeLanguageTime", "()J", "setClickChangeLanguageTime", "(J)V", "defaultLanguageType", "", "getDefaultLanguageType", "()I", "setDefaultLanguageType", "(I)V", "enableReport", "", "getEnableReport", "()Z", "setEnableReport", "(Z)V", "value", "exitType", "getExitType", "setExitType", "isTrans2TxtAvailable", "setTrans2TxtAvailable", "isTransEdited", "setTransEdited", "isTransFinished", "setTransFinished", "isTransGotoEditPanel", "setTransGotoEditPanel", "isTransTimeout", "setTransTimeout", "networkType", "getNetworkType", "setNetworkType", "sendLanguageType", "getSendLanguageType", "setSendLanguageType", "startRecordPressLocX", "getStartRecordPressLocX", "setStartRecordPressLocX", "startRecordPressLocY", "getStartRecordPressLocY", "setStartRecordPressLocY", "startRecordTime", "getStartRecordTime", "setStartRecordTime", "stopRecordPressLocX", "getStopRecordPressLocX", "setStopRecordPressLocX", "stopRecordPressLocY", "getStopRecordPressLocY", "setStopRecordPressLocY", "stopRecordTime", "getStopRecordTime", "setStopRecordTime", "transEndTime", "getTransEndTime", "setTransEndTime", "txtCountFinallySend", "getTxtCountFinallySend", "setTxtCountFinallySend", "txtCountFromServer", "getTxtCountFromServer", "setTxtCountFromServer", "voiceDuration", "getVoiceDuration", "setVoiceDuration", "report", "", "reset", "Companion", "SingletonHolder", "plugin-transvoice_release"})
 public final class c
 {
-  private static final c tpC;
-  public static final c.a tpD;
-  private int dZJ;
-  public long iWt;
+  private static final c yWw;
+  public static final a yWx;
+  private int fjS;
+  public long lKF;
   private int networkType;
-  public int tpA;
-  public int tpB;
-  public boolean tpk;
-  public int tpl;
-  public int tpm;
-  public long tpn;
-  public int tpo;
-  public int tpp;
-  public long tpq;
-  public long tpr;
-  public int tps;
-  public int tpt;
-  public int tpu;
-  public long tpv;
-  public int tpw;
-  public int tpx;
-  public int tpy;
-  public int tpz;
+  public boolean yWe;
+  public int yWf;
+  public int yWg;
+  public long yWh;
+  public int yWi;
+  public int yWj;
+  public long yWk;
+  public long yWl;
+  public int yWm = g.hEl;
+  public int yWn = g.hEl;
+  public int yWo;
+  public long yWp;
+  public int yWq;
+  public int yWr;
+  public int yWs;
+  public int yWt;
+  public int yWu;
+  public int yWv;
   
   static
   {
-    AppMethodBeat.i(155211);
-    tpD = new c.a((byte)0);
-    b localb = b.tpF;
-    tpC = b.cKZ();
-    AppMethodBeat.o(155211);
+    AppMethodBeat.i(102548);
+    yWx = new a((byte)0);
+    b localb = b.yWz;
+    yWw = b.dQF();
+    AppMethodBeat.o(102548);
   }
   
-  private void IE()
+  private void report()
   {
-    AppMethodBeat.i(155210);
-    h localh = h.qsU;
-    long l1 = this.iWt;
-    int i = this.tpl;
-    int j = this.tpm;
-    long l2 = this.tpn;
-    int k = this.tpo;
-    int m = this.tpp;
-    int n = this.dZJ;
+    AppMethodBeat.i(102547);
+    h localh = h.vKh;
+    long l1 = this.lKF;
+    int i = this.yWf;
+    int j = this.yWg;
+    long l2 = this.yWh;
+    int k = this.yWi;
+    int m = this.yWj;
+    int n = this.fjS;
     int i1 = this.networkType;
-    long l3 = this.tpq;
-    long l4 = this.tpr;
-    int i2 = this.tps;
-    int i3 = this.tpt;
-    int i4 = this.tpu;
-    long l5 = this.tpv;
-    int i5 = this.tpw;
-    int i6 = this.tpx;
-    int i7 = this.tpy;
-    int i8 = this.tpz;
-    int i9 = this.tpA;
-    int i10 = this.tpB;
-    Object localObject = ah.getContext();
-    j.p(localObject, "MMApplicationContext.getContext()");
+    long l3 = this.yWk;
+    long l4 = this.yWl;
+    int i2 = this.yWm;
+    int i3 = this.yWn;
+    int i4 = this.yWo;
+    long l5 = this.yWp;
+    int i5 = this.yWq;
+    int i6 = this.yWr;
+    int i7 = this.yWs;
+    int i8 = this.yWt;
+    int i9 = this.yWu;
+    int i10 = this.yWv;
+    Object localObject = aj.getContext();
+    k.g(localObject, "MMApplicationContext.getContext()");
     localObject = ((Context)localObject).getResources();
-    j.p(localObject, "MMApplicationContext.getContext().resources");
+    k.g(localObject, "MMApplicationContext.getContext().resources");
     int i11 = ((Resources)localObject).getDisplayMetrics().widthPixels;
-    localObject = ah.getContext();
-    j.p(localObject, "MMApplicationContext.getContext()");
+    localObject = aj.getContext();
+    k.g(localObject, "MMApplicationContext.getContext()");
     localObject = ((Context)localObject).getResources();
-    j.p(localObject, "MMApplicationContext.getContext().resources");
-    localh.e(17164, new Object[] { Long.valueOf(l1), Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(l2), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Long.valueOf(l3), Long.valueOf(l4), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i4), Long.valueOf(l5), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(i7), Integer.valueOf(i8), Integer.valueOf(i9), Integer.valueOf(i10), Integer.valueOf(i11), Integer.valueOf(((Resources)localObject).getDisplayMetrics().heightPixels) });
+    k.g(localObject, "MMApplicationContext.getContext().resources");
+    localh.f(17164, new Object[] { Long.valueOf(l1), Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(l2), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Long.valueOf(l3), Long.valueOf(l4), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i4), Long.valueOf(l5), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(i7), Integer.valueOf(i8), Integer.valueOf(i9), Integer.valueOf(i10), Integer.valueOf(i11), Integer.valueOf(((Resources)localObject).getDisplayMetrics().heightPixels) });
     reset();
-    AppMethodBeat.o(155210);
+    AppMethodBeat.o(102547);
   }
   
   private void reset()
   {
-    this.iWt = 0L;
-    this.tpl = 0;
-    this.tpm = 0;
-    this.tpn = 0L;
-    this.tpo = 0;
-    this.tpp = 0;
+    this.lKF = 0L;
+    this.yWf = 0;
+    this.yWg = 0;
+    this.yWh = 0L;
+    this.yWi = 0;
+    this.yWj = 0;
     this.networkType = 0;
-    this.tpq = 0L;
-    this.tpr = 0L;
-    this.tps = 0;
-    this.tpt = 0;
-    this.tpu = 0;
-    this.tpv = 0L;
-    this.tpw = 0;
-    this.tpx = 0;
-    this.tpy = 0;
-    this.tpz = 0;
-    this.tpA = 0;
-    this.tpB = 0;
+    this.yWk = 0L;
+    this.yWl = 0L;
+    this.yWm = g.hEl;
+    this.yWn = g.hEl;
+    this.yWo = 0;
+    this.yWp = 0L;
+    this.yWq = 0;
+    this.yWr = 0;
+    this.yWs = 0;
+    this.yWt = 0;
+    this.yWu = 0;
+    this.yWv = 0;
   }
   
-  public final void GV(int paramInt)
+  public final void setExitType(int paramInt)
   {
-    AppMethodBeat.i(155209);
-    if (this.tpk)
+    AppMethodBeat.i(102546);
+    if (this.yWe)
     {
-      this.tpk = false;
-      this.dZJ = paramInt;
-      this.networkType = at.gV(ah.getContext());
-      IE();
-      AppMethodBeat.o(155209);
+      this.yWe = false;
+      this.fjS = paramInt;
+      this.networkType = ay.ix(aj.getContext());
+      report();
+      AppMethodBeat.o(102546);
       return;
     }
     reset();
-    AppMethodBeat.o(155209);
+    AppMethodBeat.o(102546);
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter$SingletonHolder;", "", "()V", "holder", "Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter;", "getHolder", "()Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter;", "plugin-transvoice_release"})
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter$Companion;", "", "()V", "MMNewVoiceInputExitCancel", "", "MMNewVoiceInputExitNormal", "MMNewVoiceInputExitTooShort", "MMNewVoiceInputExitTransNoData", "MMNewVoiceInputExitTransNoNetwork", "MMNewVoiceInputExitTransSend", "MMNewVoiceInputExitTransSendCancel", "MMNewVoiceInputExitTransSendEdited", "MMNewVoiceInputExitTransSendOriVoice", "instance", "Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter;", "getInstance", "()Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter;", "plugin-transvoice_release"})
+  public static final class a {}
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter$SingletonHolder;", "", "()V", "holder", "Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter;", "getHolder", "()Lcom/tencent/mm/plugin/transvoice/model/TransVoiceReporter;", "plugin-transvoice_release"})
   static final class b
   {
-    private static final c tpE;
-    public static final b tpF;
+    private static final c yWy;
+    public static final b yWz;
     
     static
     {
-      AppMethodBeat.i(155208);
-      tpF = new b();
-      tpE = new c((byte)0);
-      AppMethodBeat.o(155208);
+      AppMethodBeat.i(102545);
+      yWz = new b();
+      yWy = new c((byte)0);
+      AppMethodBeat.o(102545);
     }
     
-    public static c cKZ()
+    public static c dQF()
     {
-      return tpE;
+      return yWy;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.transvoice.a.c
  * JD-Core Version:    0.7.0.1
  */

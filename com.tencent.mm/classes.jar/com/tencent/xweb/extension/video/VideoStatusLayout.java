@@ -12,40 +12,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class VideoStatusLayout
   extends RelativeLayout
 {
-  private VideoDotPercentIndicator BEV;
-  private TextView BEW;
-  private TextView BEX;
-  private LinearLayout BEY;
-  private VideoStatusLayout.a BEZ;
+  private VideoDotPercentIndicator IOn;
+  private TextView IOo;
+  private TextView IOp;
+  private LinearLayout IOq;
+  private a IOr;
   private int duration;
-  private ImageView kvq;
+  private ImageView nAG;
   
   public VideoStatusLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(84568);
+    AppMethodBeat.i(153564);
     this.duration = 1000;
-    LayoutInflater.from(paramContext).inflate(2130970733, this);
-    this.kvq = ((ImageView)findViewById(2131827781));
-    this.BEV = ((VideoDotPercentIndicator)findViewById(2131827783));
-    this.BEW = ((TextView)findViewById(2131827779));
-    this.BEX = ((TextView)findViewById(2131827782));
-    this.BEY = ((LinearLayout)findViewById(2131827780));
-    this.BEZ = new VideoStatusLayout.a(this, (byte)0);
+    LayoutInflater.from(paramContext).inflate(2131495438, this);
+    this.nAG = ((ImageView)findViewById(2131300968));
+    this.IOn = ((VideoDotPercentIndicator)findViewById(2131303534));
+    this.IOo = ((TextView)findViewById(2131306145));
+    this.IOp = ((TextView)findViewById(2131305749));
+    this.IOq = ((LinearLayout)findViewById(2131301358));
+    this.IOr = new a((byte)0);
     setVisibility(8);
-    AppMethodBeat.o(84568);
+    AppMethodBeat.o(153564);
   }
   
   public void setBrightProgress(int paramInt)
   {
-    AppMethodBeat.i(84571);
-    this.BEV.setProgress(paramInt);
-    this.BEV.setVisibility(0);
-    this.BEX.setText(2131306278);
-    this.BEY.setVisibility(0);
-    this.kvq.setImageResource(2130840978);
-    this.BEW.setVisibility(8);
-    AppMethodBeat.o(84571);
+    AppMethodBeat.i(153567);
+    this.IOn.setProgress(paramInt);
+    this.IOn.setVisibility(0);
+    this.IOp.setText(2131766373);
+    this.IOq.setVisibility(0);
+    this.nAG.setImageResource(2131234811);
+    this.IOo.setVisibility(8);
+    AppMethodBeat.o(153567);
   }
   
   public void setDuration(int paramInt)
@@ -55,44 +55,57 @@ public class VideoStatusLayout
   
   public void setImageResource(int paramInt)
   {
-    AppMethodBeat.i(84573);
-    this.kvq.setImageResource(paramInt);
-    AppMethodBeat.o(84573);
+    AppMethodBeat.i(153569);
+    this.nAG.setImageResource(paramInt);
+    AppMethodBeat.o(153569);
   }
   
   public void setVideoTimeProgress(String paramString)
   {
-    AppMethodBeat.i(84572);
-    this.BEW.setText(paramString);
-    this.BEW.setVisibility(0);
-    this.BEY.setVisibility(8);
-    AppMethodBeat.o(84572);
+    AppMethodBeat.i(153568);
+    this.IOo.setText(paramString);
+    this.IOo.setVisibility(0);
+    this.IOq.setVisibility(8);
+    AppMethodBeat.o(153568);
   }
   
   public void setVolumnProgress(int paramInt)
   {
-    AppMethodBeat.i(84570);
-    this.BEV.setProgress(paramInt);
-    this.BEV.setVisibility(0);
-    this.BEX.setText(2131306279);
-    this.BEY.setVisibility(0);
-    this.kvq.setImageResource(2130840988);
-    this.BEW.setVisibility(8);
-    AppMethodBeat.o(84570);
+    AppMethodBeat.i(153566);
+    this.IOn.setProgress(paramInt);
+    this.IOn.setVisibility(0);
+    this.IOp.setText(2131766374);
+    this.IOq.setVisibility(0);
+    this.nAG.setImageResource(2131234821);
+    this.IOo.setVisibility(8);
+    AppMethodBeat.o(153566);
   }
   
   public final void show()
   {
-    AppMethodBeat.i(84569);
+    AppMethodBeat.i(153565);
     setVisibility(0);
-    removeCallbacks(this.BEZ);
-    postDelayed(this.BEZ, this.duration);
-    AppMethodBeat.o(84569);
+    removeCallbacks(this.IOr);
+    postDelayed(this.IOr, this.duration);
+    AppMethodBeat.o(153565);
+  }
+  
+  final class a
+    implements Runnable
+  {
+    private a() {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(153563);
+      VideoStatusLayout.this.setVisibility(8);
+      AppMethodBeat.o(153563);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.xweb.extension.video.VideoStatusLayout
  * JD-Core Version:    0.7.0.1
  */

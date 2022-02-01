@@ -26,11 +26,6 @@ import org.xmlpull.v1.XmlPullParser;
 
 public final class e
 {
-  private static boolean S(int paramInt)
-  {
-    return (paramInt >= 28) && (paramInt <= 31);
-  }
-  
   /* Error */
   public static Animator a(Context paramContext, Resources paramResources, Resources.Theme paramTheme, int paramInt)
   {
@@ -43,7 +38,7 @@ public final class e
     //   7: astore 5
     //   9: aload_1
     //   10: iload_3
-    //   11: invokevirtual 21	android/content/res/Resources:getAnimation	(I)Landroid/content/res/XmlResourceParser;
+    //   11: invokevirtual 18	android/content/res/Resources:getAnimation	(I)Landroid/content/res/XmlResourceParser;
     //   14: astore 7
     //   16: aload 7
     //   18: astore 5
@@ -56,38 +51,38 @@ public final class e
     //   30: aload_2
     //   31: aload 7
     //   33: aload 7
-    //   35: invokestatic 27	android/util/Xml:asAttributeSet	(Lorg/xmlpull/v1/XmlPullParser;)Landroid/util/AttributeSet;
+    //   35: invokestatic 24	android/util/Xml:asAttributeSet	(Lorg/xmlpull/v1/XmlPullParser;)Landroid/util/AttributeSet;
     //   38: aconst_null
     //   39: iconst_0
     //   40: fconst_1
-    //   41: invokestatic 30	android/support/c/a/e:a	(Landroid/content/Context;Landroid/content/res/Resources;Landroid/content/res/Resources$Theme;Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Landroid/animation/AnimatorSet;IF)Landroid/animation/Animator;
+    //   41: invokestatic 27	android/support/c/a/e:a	(Landroid/content/Context;Landroid/content/res/Resources;Landroid/content/res/Resources$Theme;Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Landroid/animation/AnimatorSet;IF)Landroid/animation/Animator;
     //   44: astore_0
     //   45: aload 7
     //   47: ifnull +10 -> 57
     //   50: aload 7
-    //   52: invokeinterface 36 1 0
+    //   52: invokeinterface 33 1 0
     //   57: aload_0
     //   58: areturn
     //   59: astore_0
     //   60: aload 5
     //   62: astore 4
-    //   64: new 38	android/content/res/Resources$NotFoundException
+    //   64: new 35	android/content/res/Resources$NotFoundException
     //   67: dup
-    //   68: new 40	java/lang/StringBuilder
+    //   68: new 37	java/lang/StringBuilder
     //   71: dup
-    //   72: ldc 42
-    //   74: invokespecial 46	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   72: ldc 39
+    //   74: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   77: iload_3
-    //   78: invokestatic 52	java/lang/Integer:toHexString	(I)Ljava/lang/String;
-    //   81: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   87: invokespecial 61	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
+    //   78: invokestatic 49	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   81: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   87: invokespecial 58	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
     //   90: astore_1
     //   91: aload 5
     //   93: astore 4
     //   95: aload_1
     //   96: aload_0
-    //   97: invokevirtual 65	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   97: invokevirtual 62	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
     //   100: pop
     //   101: aload 5
     //   103: astore 4
@@ -97,29 +92,29 @@ public final class e
     //   108: aload 4
     //   110: ifnull +10 -> 120
     //   113: aload 4
-    //   115: invokeinterface 36 1 0
+    //   115: invokeinterface 33 1 0
     //   120: aload_0
     //   121: athrow
     //   122: astore_0
     //   123: aload 6
     //   125: astore 4
-    //   127: new 38	android/content/res/Resources$NotFoundException
+    //   127: new 35	android/content/res/Resources$NotFoundException
     //   130: dup
-    //   131: new 40	java/lang/StringBuilder
+    //   131: new 37	java/lang/StringBuilder
     //   134: dup
-    //   135: ldc 42
-    //   137: invokespecial 46	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   135: ldc 39
+    //   137: invokespecial 43	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   140: iload_3
-    //   141: invokestatic 52	java/lang/Integer:toHexString	(I)Ljava/lang/String;
-    //   144: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   147: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   150: invokespecial 61	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
+    //   141: invokestatic 49	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   144: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: invokevirtual 57	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   150: invokespecial 58	android/content/res/Resources$NotFoundException:<init>	(Ljava/lang/String;)V
     //   153: astore_1
     //   154: aload 6
     //   156: astore 4
     //   158: aload_1
     //   159: aload_0
-    //   160: invokevirtual 65	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   160: invokevirtual 62	android/content/res/Resources$NotFoundException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
     //   163: pop
     //   164: aload 6
     //   166: astore 4
@@ -197,7 +192,7 @@ public final class e
       if (((String)localObject1).equals("set"))
       {
         localObject1 = new AnimatorSet();
-        localObject2 = g.a(paramResources, paramTheme, paramAttributeSet, a.nq);
+        localObject2 = g.a(paramResources, paramTheme, paramAttributeSet, a.tQ);
         i = g.a((TypedArray)localObject2, paramXmlPullParser, "ordering", 0, 0);
         a(paramContext, paramResources, paramTheme, paramXmlPullParser, paramAttributeSet, (AnimatorSet)localObject1, i, paramFloat);
         ((TypedArray)localObject2).recycle();
@@ -286,7 +281,7 @@ public final class e
       i = paramInt1;
       if (paramInt1 == 4)
       {
-        if (((j == 0) || (!S(m))) && ((k == 0) || (!S(n)))) {
+        if (((j == 0) || (!am(m))) && ((k == 0) || (!am(n)))) {
           break label227;
         }
         i = 3;
@@ -303,8 +298,8 @@ public final class e
       {
         localObject = paramTypedArray.getString(paramInt2);
         paramTypedArray = paramTypedArray.getString(paramInt3);
-        c.b[] arrayOfb1 = c.K((String)localObject);
-        c.b[] arrayOfb2 = c.K(paramTypedArray);
+        c.b[] arrayOfb1 = c.w((String)localObject);
+        c.b[] arrayOfb2 = c.w(paramTypedArray);
         if ((arrayOfb1 == null) && (arrayOfb2 == null)) {
           break label685;
         }
@@ -347,7 +342,7 @@ public final class e
     }
     localObject = null;
     if (i == 3) {
-      localObject = f.bU();
+      localObject = f.da();
     }
     float f1;
     label345:
@@ -413,7 +408,7 @@ public final class e
         {
           paramTypedArray = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1, paramInt2 });
           break;
-          if (S(m))
+          if (am(m))
           {
             paramInt1 = paramTypedArray.getColor(paramInt2, 0);
             break label506;
@@ -421,7 +416,7 @@ public final class e
           paramInt1 = paramTypedArray.getInt(paramInt2, 0);
           break label506;
           label573:
-          if (S(n)) {
+          if (am(n)) {
             paramInt2 = paramTypedArray.getColor(paramInt3, 0);
           } else {
             paramInt2 = paramTypedArray.getInt(paramInt3, 0);
@@ -441,7 +436,7 @@ public final class e
           {
             paramTypedArray = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1 });
             break;
-            if (S(n)) {
+            if (am(n)) {
               paramInt1 = paramTypedArray.getColor(paramInt3, 0);
             } else {
               paramInt1 = paramTypedArray.getInt(paramInt3, 0);
@@ -457,8 +452,8 @@ public final class e
   
   private static ValueAnimator a(Context paramContext, Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, ValueAnimator paramValueAnimator, float paramFloat, XmlPullParser paramXmlPullParser)
   {
-    TypedArray localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.np);
-    paramTheme = g.a(paramResources, paramTheme, paramAttributeSet, a.nt);
+    TypedArray localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.tP);
+    paramTheme = g.a(paramResources, paramTheme, paramAttributeSet, a.tT);
     paramResources = paramValueAnimator;
     if (paramValueAnimator == null) {
       paramResources = new ValueAnimator();
@@ -509,7 +504,7 @@ public final class e
         }
         m = ((TypedValue)localObject).type;
         label131:
-        if (((i == 0) || (!S(j))) && ((k == 0) || (!S(m)))) {
+        if (((i == 0) || (!am(j))) && ((k == 0) || (!am(m)))) {
           break label348;
         }
       }
@@ -553,7 +548,7 @@ public final class e
       break label131;
     }
     label354:
-    a(c.J(paramTypedArray1), paramValueAnimator, 0.5F * paramFloat, (String)localObject, paramXmlPullParser);
+    a(c.u(paramTypedArray1), paramValueAnimator, 0.5F * paramFloat, (String)localObject, paramXmlPullParser);
     label371:
     return;
     label372:
@@ -652,7 +647,7 @@ public final class e
     int j;
     if (paramXmlPullParser.getName().equals("propertyValuesHolder"))
     {
-      TypedArray localTypedArray1 = g.a(paramResources, paramTheme, paramAttributeSet, a.nr);
+      TypedArray localTypedArray1 = g.a(paramResources, paramTheme, paramAttributeSet, a.tR);
       String str = g.c(localTypedArray1, paramXmlPullParser, "propertyName", 3);
       int i1 = g.a(localTypedArray1, paramXmlPullParser, "valueType", 2, 4);
       localObject1 = null;
@@ -674,20 +669,20 @@ public final class e
           j = i;
           if (i == 4)
           {
-            localObject2 = g.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.ns);
+            localObject2 = g.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.tS);
             localObject3 = g.a((TypedArray)localObject2, paramXmlPullParser, "value");
             if (localObject3 == null) {
               break label418;
             }
             i = 1;
-            if ((i == 0) || (!S(((TypedValue)localObject3).type))) {
+            if ((i == 0) || (!am(((TypedValue)localObject3).type))) {
               break label424;
             }
             i = 3;
             ((TypedArray)localObject2).recycle();
             j = i;
           }
-          localTypedArray2 = g.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.ns);
+          localTypedArray2 = g.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.tS);
           localObject3 = null;
           f = g.a(localTypedArray2, paramXmlPullParser, "fraction", 3, -1.0F);
           localObject2 = g.a(localTypedArray2, paramXmlPullParser, "value");
@@ -699,7 +694,7 @@ public final class e
           if (j != 4) {
             break label981;
           }
-          if ((k == 0) || (!S(((TypedValue)localObject2).type))) {
+          if ((k == 0) || (!am(((TypedValue)localObject2).type))) {
             break label436;
           }
           i = 3;
@@ -833,7 +828,7 @@ public final class e
             localObject1 = localObject2;
             if (i == 3)
             {
-              ((PropertyValuesHolder)localObject2).setEvaluator(f.bU());
+              ((PropertyValuesHolder)localObject2).setEvaluator(f.da());
               localObject1 = localObject2;
             }
             label848:
@@ -886,10 +881,15 @@ public final class e
     }
   }
   
+  private static boolean am(int paramInt)
+  {
+    return (paramInt >= 28) && (paramInt <= 31);
+  }
+  
   static final class a
     implements TypeEvaluator<c.b[]>
   {
-    private c.b[] nG;
+    private c.b[] ug;
   }
 }
 

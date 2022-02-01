@@ -1,95 +1,111 @@
 package com.tencent.mm.ci;
 
-import android.os.Environment;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.io.File;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import com.tencent.mm.sdk.platformtools.ad;
 
-public final class c
+final class c
+  extends BroadcastReceiver
 {
-  private static boolean ySJ = false;
-  public static a ySK = null;
+  a<Boolean> Fcr;
+  a<Boolean> Fcs;
   
-  static boolean Mi()
+  c(Context paramContext)
   {
-    AppMethodBeat.i(76901);
-    try
+    AppMethodBeat.i(133217);
+    Object localObject = new IntentFilter();
+    ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
+    ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
+    ((IntentFilter)localObject).addAction("android.intent.action.ACTION_POWER_CONNECTED");
+    ((IntentFilter)localObject).addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
+    paramContext.registerReceiver(this, (IntentFilter)localObject);
+    localObject = paramContext.registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
+    boolean bool1 = bool2;
+    if (localObject != null)
     {
-      if ((Environment.getExternalStorageState().equals("mounted")) && (new File(Environment.getExternalStorageDirectory().getAbsolutePath()).canWrite()))
+      int i = ((Intent)localObject).getIntExtra("status", -1);
+      if (i != 2)
       {
-        AppMethodBeat.o(76901);
-        return true;
+        bool1 = bool2;
+        if (i != 5) {}
       }
-      AppMethodBeat.o(76901);
-      return false;
+      else
+      {
+        bool1 = true;
+      }
     }
-    catch (Exception localException)
-    {
-      AppMethodBeat.o(76901);
-    }
-    return false;
+    this.Fcr = new a("charging", Boolean.valueOf(bool1));
+    this.Fcs = new a("interactive", Boolean.valueOf(((PowerManager)paramContext.getSystemService("power")).isScreenOn()));
+    AppMethodBeat.o(133217);
   }
   
-  public static void NR(int paramInt)
+  public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(76900);
-    boolean bool1;
-    boolean bool2;
-    boolean bool3;
-    boolean bool4;
-    switch (paramInt)
+    AppMethodBeat.i(133218);
+    paramIntent = paramIntent.getAction();
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(133218);
+      return;
+    }
+    paramContext = null;
+    int i = -1;
+    switch (paramIntent.hashCode())
     {
     default: 
-      bool1 = false;
-      bool2 = false;
-      bool3 = false;
-      bool4 = false;
+      switch (i)
+      {
+      }
+      break;
     }
     for (;;)
     {
-      ab.d("MicroMsg.MemoryDumpOperation", "hprof operate: dump:%b, checkWifi:%b, uploadSingal:%b,uploadAll:%b,", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool3), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-      Executors.newSingleThreadExecutor().execute(new c.1(bool4, bool3, bool2, bool1));
-      AppMethodBeat.o(76900);
+      if (paramContext != null) {
+        ad.i("MicroMsg.SystemStatus", "System status changed: %s = %s", new Object[] { paramContext.name(), paramContext.get().toString() });
+      }
+      AppMethodBeat.o(133218);
       return;
-      ab.i("MicroMsg.MemoryDumpOperation", "GC NOW.");
-      System.gc();
-      bool1 = false;
-      bool2 = false;
-      bool3 = false;
-      bool4 = false;
+      if (!paramIntent.equals("android.intent.action.SCREEN_ON")) {
+        break;
+      }
+      i = 0;
+      break;
+      if (!paramIntent.equals("android.intent.action.SCREEN_OFF")) {
+        break;
+      }
+      i = 1;
+      break;
+      if (!paramIntent.equals("android.intent.action.ACTION_POWER_CONNECTED")) {
+        break;
+      }
+      i = 2;
+      break;
+      if (!paramIntent.equals("android.intent.action.ACTION_POWER_DISCONNECTED")) {
+        break;
+      }
+      i = 3;
+      break;
+      this.Fcs.set(Boolean.TRUE);
+      paramContext = this.Fcs;
       continue;
-      bool1 = false;
-      bool2 = true;
-      bool3 = false;
-      bool4 = true;
+      this.Fcs.set(Boolean.FALSE);
+      paramContext = this.Fcs;
       continue;
-      bool1 = false;
-      bool2 = true;
-      bool3 = true;
-      bool4 = true;
+      this.Fcr.set(Boolean.TRUE);
+      paramContext = this.Fcr;
       continue;
-      bool1 = false;
-      bool2 = false;
-      bool3 = false;
-      bool4 = true;
-      continue;
-      bool1 = true;
-      bool2 = false;
-      bool3 = false;
-      bool4 = false;
-      continue;
-      bool1 = true;
-      bool2 = false;
-      bool3 = true;
-      bool4 = false;
+      this.Fcr.set(Boolean.FALSE);
+      paramContext = this.Fcr;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ci.c
  * JD-Core Version:    0.7.0.1
  */

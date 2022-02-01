@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class Terminal
   extends JceStruct
@@ -21,12 +21,12 @@ public final class Terminal
   
   static
   {
-    AppMethodBeat.i(76149);
+    AppMethodBeat.i(102395);
     if (!Terminal.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(76149);
+      AppMethodBeat.o(102395);
       return;
     }
   }
@@ -49,7 +49,7 @@ public final class Terminal
   
   public final Object clone()
   {
-    AppMethodBeat.i(76144);
+    AppMethodBeat.i(102390);
     localObject1 = null;
     try
     {
@@ -60,52 +60,52 @@ public final class Terminal
     {
       while ($assertionsDisabled) {}
       localObject1 = new AssertionError();
-      AppMethodBeat.o(76144);
+      AppMethodBeat.o(102390);
       throw ((Throwable)localObject1);
     }
-    AppMethodBeat.o(76144);
+    AppMethodBeat.o(102390);
     return localObject1;
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
   {
-    AppMethodBeat.i(76147);
+    AppMethodBeat.i(102393);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.display(this.imei, "imei");
     paramStringBuilder.display(this.macAdress, "macAdress");
     paramStringBuilder.display(this.androidId, "androidId");
     paramStringBuilder.display(this.androidIdSdCard, "androidIdSdCard");
     paramStringBuilder.display(this.imsi, "imsi");
-    AppMethodBeat.o(76147);
+    AppMethodBeat.o(102393);
   }
   
   public final void displaySimple(StringBuilder paramStringBuilder, int paramInt)
   {
-    AppMethodBeat.i(76148);
+    AppMethodBeat.i(102394);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.displaySimple(this.imei, true);
     paramStringBuilder.displaySimple(this.macAdress, true);
     paramStringBuilder.displaySimple(this.androidId, true);
     paramStringBuilder.displaySimple(this.androidIdSdCard, true);
     paramStringBuilder.displaySimple(this.imsi, false);
-    AppMethodBeat.o(76148);
+    AppMethodBeat.o(102394);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(76142);
+    AppMethodBeat.i(102388);
     if (paramObject == null)
     {
-      AppMethodBeat.o(76142);
+      AppMethodBeat.o(102388);
       return false;
     }
     paramObject = (Terminal)paramObject;
     if ((JceUtil.equals(this.imei, paramObject.imei)) && (JceUtil.equals(this.macAdress, paramObject.macAdress)) && (JceUtil.equals(this.androidId, paramObject.androidId)) && (JceUtil.equals(this.androidIdSdCard, paramObject.androidIdSdCard)) && (JceUtil.equals(this.imsi, paramObject.imsi)))
     {
-      AppMethodBeat.o(76142);
+      AppMethodBeat.o(102388);
       return true;
     }
-    AppMethodBeat.o(76142);
+    AppMethodBeat.o(102388);
     return false;
   }
   
@@ -141,30 +141,30 @@ public final class Terminal
   
   public final int hashCode()
   {
-    AppMethodBeat.i(76143);
+    AppMethodBeat.i(102389);
     try
     {
       Exception localException1 = new Exception("Need define key first!");
-      AppMethodBeat.o(76143);
+      AppMethodBeat.o(102389);
       throw localException1;
     }
     catch (Exception localException2)
     {
-      ab.printErrStackTrace("Terminal", localException2, "", new Object[0]);
-      AppMethodBeat.o(76143);
+      ad.printErrStackTrace("Terminal", localException2, "", new Object[0]);
+      AppMethodBeat.o(102389);
     }
     return 0;
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76146);
+    AppMethodBeat.i(102392);
     this.imei = paramJceInputStream.readString(0, false);
     this.macAdress = paramJceInputStream.readString(1, false);
     this.androidId = paramJceInputStream.readString(2, false);
     this.androidIdSdCard = paramJceInputStream.readString(3, false);
     this.imsi = paramJceInputStream.readString(4, false);
-    AppMethodBeat.o(76146);
+    AppMethodBeat.o(102392);
   }
   
   public final void setAndroidId(String paramString)
@@ -194,7 +194,7 @@ public final class Terminal
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76145);
+    AppMethodBeat.i(102391);
     if (this.imei != null) {
       paramJceOutputStream.write(this.imei, 0);
     }
@@ -210,7 +210,7 @@ public final class Terminal
     if (this.imsi != null) {
       paramJceOutputStream.write(this.imsi, 4);
     }
-    AppMethodBeat.o(76145);
+    AppMethodBeat.o(102391);
   }
 }
 

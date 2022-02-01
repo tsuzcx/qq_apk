@@ -55,9 +55,9 @@ class Mp3DecodeBase
   
   static int readByte(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(128497);
+    AppMethodBeat.i(114245);
     paramInt = readByte(paramArrayOfByte, 0, paramInt);
-    AppMethodBeat.o(128497);
+    AppMethodBeat.o(114245);
     return paramInt;
   }
   
@@ -71,9 +71,9 @@ class Mp3DecodeBase
   
   static int readInt(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(128493);
+    AppMethodBeat.i(114241);
     paramInt = readInt(paramArrayOfByte, 0, paramInt);
-    AppMethodBeat.o(128493);
+    AppMethodBeat.o(114241);
     return paramInt;
   }
   
@@ -87,9 +87,9 @@ class Mp3DecodeBase
   
   static long readLong(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(128494);
+    AppMethodBeat.i(114242);
     long l = readLong(paramArrayOfByte, 0, paramInt);
-    AppMethodBeat.o(128494);
+    AppMethodBeat.o(114242);
     return l;
   }
   
@@ -103,9 +103,9 @@ class Mp3DecodeBase
   
   static int readShort(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(128496);
+    AppMethodBeat.i(114244);
     paramInt = readShort(paramArrayOfByte, 0, paramInt);
-    AppMethodBeat.o(128496);
+    AppMethodBeat.o(114244);
     return paramInt;
   }
   
@@ -119,9 +119,9 @@ class Mp3DecodeBase
   
   static int readUnsignedInt24(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(128495);
+    AppMethodBeat.i(114243);
     paramInt = readUnsignedInt24(paramArrayOfByte, 0, paramInt);
-    AppMethodBeat.o(128495);
+    AppMethodBeat.o(114243);
     return paramInt;
   }
   
@@ -135,7 +135,7 @@ class Mp3DecodeBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.mp3.Mp3DecodeBase
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public class RingBuffer
   
   public RingBuffer()
   {
-    AppMethodBeat.i(146896);
+    AppMethodBeat.i(13644);
     this.DEFAULT_SIZE = 1000;
     this.c_totalSize = 1000;
     this.m_read = 0;
@@ -25,12 +25,12 @@ public class RingBuffer
     this.m_read = 0;
     this.m_write = 0;
     this.m_pBuf = new byte[this.c_totalSize];
-    AppMethodBeat.o(146896);
+    AppMethodBeat.o(13644);
   }
   
   public RingBuffer(int paramInt)
   {
-    AppMethodBeat.i(146897);
+    AppMethodBeat.i(13645);
     this.DEFAULT_SIZE = 1000;
     this.c_totalSize = 1000;
     this.m_read = 0;
@@ -41,7 +41,7 @@ public class RingBuffer
     this.m_read = 0;
     this.m_write = 0;
     this.m_pBuf = new byte[this.c_totalSize];
-    AppMethodBeat.o(146897);
+    AppMethodBeat.o(13645);
   }
   
   public void Clear()
@@ -54,15 +54,15 @@ public class RingBuffer
   public boolean Pop(byte[] paramArrayOfByte, int paramInt)
   {
     boolean bool = false;
-    AppMethodBeat.i(146900);
+    AppMethodBeat.i(13648);
     if (this.m_pBuf == null)
     {
-      AppMethodBeat.o(146900);
+      AppMethodBeat.o(13648);
       return false;
     }
     if ((RemainRead() < paramInt) || (paramInt <= 0))
     {
-      AppMethodBeat.o(146900);
+      AppMethodBeat.o(13648);
       return false;
     }
     if (this.c_totalSize - this.m_read >= paramInt) {
@@ -75,7 +75,7 @@ public class RingBuffer
         bool = true;
       }
       this.m_isEmpty = bool;
-      AppMethodBeat.o(146900);
+      AppMethodBeat.o(13648);
       return true;
       System.arraycopy(this.m_pBuf, this.m_read, paramArrayOfByte, 0, this.c_totalSize - this.m_read);
       System.arraycopy(this.m_pBuf, 0, paramArrayOfByte, this.c_totalSize - this.m_read, paramInt - (this.c_totalSize - this.m_read));
@@ -84,15 +84,15 @@ public class RingBuffer
   
   public void Push(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(146898);
+    AppMethodBeat.i(13646);
     if (this.m_pBuf == null)
     {
-      AppMethodBeat.o(146898);
+      AppMethodBeat.o(13646);
       return;
     }
     if (RemainWrite() < paramInt)
     {
-      AppMethodBeat.o(146898);
+      AppMethodBeat.o(13646);
       return;
     }
     if (this.c_totalSize - this.m_write >= paramInt) {
@@ -102,7 +102,7 @@ public class RingBuffer
     {
       this.m_write = ((this.m_write + paramInt) % this.c_totalSize);
       this.m_isEmpty = false;
-      AppMethodBeat.o(146898);
+      AppMethodBeat.o(13646);
       return;
       System.arraycopy(paramArrayOfByte, 0, this.m_pBuf, this.m_write, this.c_totalSize - this.m_write);
       System.arraycopy(paramArrayOfByte, this.c_totalSize - this.m_write, this.m_pBuf, 0, paramInt - (this.c_totalSize - this.m_write));
@@ -125,16 +125,16 @@ public class RingBuffer
   
   public int RemainWrite()
   {
-    AppMethodBeat.i(146899);
+    AppMethodBeat.i(13647);
     int i = this.c_totalSize;
     int j = RemainRead();
-    AppMethodBeat.o(146899);
+    AppMethodBeat.o(13647);
     return i - j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.RingBuffer
  * JD-Core Version:    0.7.0.1
  */

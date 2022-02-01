@@ -22,25 +22,25 @@ class SourceApplicationInfo
   
   public static void clearSavedSourceApplicationInfoFromDisk()
   {
-    AppMethodBeat.i(72226);
+    AppMethodBeat.i(17662);
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(FacebookSdk.getApplicationContext()).edit();
     localEditor.remove("com.facebook.appevents.SourceApplicationInfo.callingApplicationPackage");
     localEditor.remove("com.facebook.appevents.SourceApplicationInfo.openedByApplink");
     localEditor.apply();
-    AppMethodBeat.o(72226);
+    AppMethodBeat.o(17662);
   }
   
   public static SourceApplicationInfo getStoredSourceApplicatioInfo()
   {
-    AppMethodBeat.i(72225);
+    AppMethodBeat.i(17661);
     Object localObject = PreferenceManager.getDefaultSharedPreferences(FacebookSdk.getApplicationContext());
     if (!((SharedPreferences)localObject).contains("com.facebook.appevents.SourceApplicationInfo.callingApplicationPackage"))
     {
-      AppMethodBeat.o(72225);
+      AppMethodBeat.o(17661);
       return null;
     }
     localObject = new SourceApplicationInfo(((SharedPreferences)localObject).getString("com.facebook.appevents.SourceApplicationInfo.callingApplicationPackage", null), ((SharedPreferences)localObject).getBoolean("com.facebook.appevents.SourceApplicationInfo.openedByApplink", false));
-    AppMethodBeat.o(72225);
+    AppMethodBeat.o(17661);
     return localObject;
   }
   
@@ -56,7 +56,7 @@ class SourceApplicationInfo
   
   public String toString()
   {
-    AppMethodBeat.i(72227);
+    AppMethodBeat.i(17663);
     String str = "Unclassified";
     if (this.openedByAppLink) {
       str = "Applink";
@@ -64,26 +64,26 @@ class SourceApplicationInfo
     if (this.callingApplicationPackage != null)
     {
       str = str + "(" + this.callingApplicationPackage + ")";
-      AppMethodBeat.o(72227);
+      AppMethodBeat.o(17663);
       return str;
     }
-    AppMethodBeat.o(72227);
+    AppMethodBeat.o(17663);
     return str;
   }
   
   public void writeSourceApplicationInfoToDisk()
   {
-    AppMethodBeat.i(72228);
+    AppMethodBeat.i(17664);
     SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(FacebookSdk.getApplicationContext()).edit();
     localEditor.putString("com.facebook.appevents.SourceApplicationInfo.callingApplicationPackage", this.callingApplicationPackage);
     localEditor.putBoolean("com.facebook.appevents.SourceApplicationInfo.openedByApplink", this.openedByAppLink);
     localEditor.apply();
-    AppMethodBeat.o(72228);
+    AppMethodBeat.o(17664);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.internal.SourceApplicationInfo
  * JD-Core Version:    0.7.0.1
  */

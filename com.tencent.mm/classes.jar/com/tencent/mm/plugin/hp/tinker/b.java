@@ -5,40 +5,40 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.luggage.g.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
 
 public final class b
 {
-  private final String nKF;
-  private final String nKG;
+  private final String sys;
+  private final String syt;
   
   private b(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(156035);
+    AppMethodBeat.i(117456);
     if (TextUtils.isEmpty(paramString1))
     {
       paramString1 = new IllegalArgumentException("baseClientVersion is empty.");
-      AppMethodBeat.o(156035);
+      AppMethodBeat.o(117456);
       throw paramString1;
     }
     if (TextUtils.isEmpty(paramString2))
     {
       paramString1 = new IllegalArgumentException("patchClientVersion is empty.");
-      AppMethodBeat.o(156035);
+      AppMethodBeat.o(117456);
       throw paramString1;
     }
-    this.nKF = paramString1;
-    this.nKG = paramString2;
-    AppMethodBeat.o(156035);
+    this.sys = paramString1;
+    this.syt = paramString2;
+    AppMethodBeat.o(117456);
   }
   
-  private static int QP(String paramString)
+  private static int adH(String paramString)
   {
-    AppMethodBeat.i(156038);
+    AppMethodBeat.i(117459);
     Object localObject = paramString;
     try
     {
@@ -52,7 +52,7 @@ public final class b
       {
         localObject = str;
         int i = Integer.parseInt(str, 16);
-        AppMethodBeat.o(156038);
+        AppMethodBeat.o(117459);
         return i;
         localObject = paramString;
         if (!paramString.endsWith("h"))
@@ -71,76 +71,76 @@ public final class b
     }
     catch (Throwable paramString)
     {
-      d.e("MicroMsg.TinkerDeployStatistic", "[-] Fail to parse hex string: %s", new Object[] { localObject });
-      AppMethodBeat.o(156038);
+      ad.e("MicroMsg.TinkerDeployStatistic", "[-] Fail to parse hex string: %s", new Object[] { localObject });
+      AppMethodBeat.o(117459);
     }
   }
   
   @SuppressLint({"ApplySharedPref"})
-  public static void ahe(String paramString)
+  public static void adI(String paramString)
   {
-    AppMethodBeat.i(156787);
-    SharedPreferences localSharedPreferences = bIl();
+    AppMethodBeat.i(117462);
+    SharedPreferences localSharedPreferences = cGd();
     if (!localSharedPreferences.contains(paramString))
     {
       long l = System.currentTimeMillis();
       localSharedPreferences.edit().putLong(paramString, l).commit();
     }
-    AppMethodBeat.o(156787);
+    AppMethodBeat.o(117462);
   }
   
-  public static SharedPreferences bIl()
+  public static SharedPreferences cGd()
   {
-    AppMethodBeat.i(156037);
+    AppMethodBeat.i(117458);
     try
     {
-      as localas = as.apr("tinker_deploy_stats_ts");
-      AppMethodBeat.o(156037);
-      return localas;
+      ax localax = ax.aFE("tinker_deploy_stats_ts");
+      AppMethodBeat.o(117458);
+      return localax;
     }
     catch (Throwable localThrowable)
     {
-      d.printErrStackTrace("MicroMsg.TinkerDeployStatistic", localThrowable, "[-] Fail to init mmkv storage, fallback to system sp.", new Object[0]);
-      SharedPreferences localSharedPreferences = ah.getContext().getSharedPreferences("tinker_deploy_stats_ts", 4);
-      AppMethodBeat.o(156037);
+      ad.printErrStackTrace("MicroMsg.TinkerDeployStatistic", localThrowable, "[-] Fail to init mmkv storage, fallback to system sp.", new Object[0]);
+      SharedPreferences localSharedPreferences = aj.getContext().getSharedPreferences("tinker_deploy_stats_ts", 4);
+      AppMethodBeat.o(117458);
       return localSharedPreferences;
     }
   }
   
-  public static b eP(String paramString1, String paramString2)
+  public static b gQ(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(156036);
+    AppMethodBeat.i(117457);
     paramString1 = new b(paramString1, paramString2);
-    AppMethodBeat.o(156036);
+    AppMethodBeat.o(117457);
     return paramString1;
   }
   
-  public final void T(int paramInt, long paramLong)
+  public final String Fe(int paramInt)
   {
-    AppMethodBeat.i(156040);
-    String str = String.valueOf(paramInt) + ',' + QP(this.nKF) + ',' + QP(this.nKG) + ',' + paramLong;
-    h.qsU.a(17676, str, true, true);
-    AppMethodBeat.o(156040);
-  }
-  
-  public final void dbX()
-  {
-    AppMethodBeat.i(156788);
-    ahe(xC(1));
-    AppMethodBeat.o(156788);
-  }
-  
-  public final String xC(int paramInt)
-  {
-    AppMethodBeat.i(156039);
-    String str = "mmkv_key_" + QP(this.nKF) + "_" + QP(this.nKG) + "_" + paramInt;
-    AppMethodBeat.o(156039);
+    AppMethodBeat.i(117460);
+    String str = "mmkv_key_" + adH(this.sys) + "_" + adH(this.syt) + "_" + paramInt;
+    AppMethodBeat.o(117460);
     return str;
+  }
+  
+  public final void ai(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(184835);
+    String str = String.valueOf(paramInt) + ',' + adH(this.sys) + ',' + adH(this.syt) + ',' + paramLong;
+    h.vKh.a(17676, str, true, true);
+    AppMethodBeat.o(184835);
+  }
+  
+  public final void cGe()
+  {
+    AppMethodBeat.i(117463);
+    adI(Fe(1));
+    AppMethodBeat.o(117463);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.tinker.b
  * JD-Core Version:    0.7.0.1
  */

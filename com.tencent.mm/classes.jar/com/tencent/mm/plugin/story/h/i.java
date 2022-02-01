@@ -1,112 +1,92 @@
 package com.tencent.mm.plugin.story.h;
 
-import a.l;
-import android.database.Cursor;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.db;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.g.b.a.dl;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.story.f.j;
+import com.tencent.mm.plugin.story.f.j.b;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "deleteByDate", "", "date", "", "getStoryHistoryByDate", "isDateExist", "onNotifyChange", "", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "replaceHistoryInfoByDate", "storyHistoryInfo", "set", "info", "Companion", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/report/StoryReporterUtil;", "", "()V", "Companion", "plugin-story_release"})
 public final class i
-  extends com.tencent.mm.sdk.e.j<h>
-  implements k.a
 {
-  private static final String[] SQL_CREATE;
-  private static final String TAG = "MicroMsg.StoryHistoryInfoStorage";
-  public static final String sGE = "MMStoryHistoryItem";
-  private static final String sGG = "select * from MMStoryHistoryItem ";
-  public static final i.a sGJ;
-  public final e db;
+  public static final a ynw;
   
   static
   {
-    AppMethodBeat.i(109912);
-    sGJ = new i.a((byte)0);
-    TAG = "MicroMsg.StoryHistoryInfoStorage";
-    sGE = "MMStoryHistoryItem";
-    h.a locala = h.sGI;
-    SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(h.cEM(), sGE) };
-    sGG = "select * from " + sGE + ' ';
-    AppMethodBeat.o(109912);
+    AppMethodBeat.i(119467);
+    ynw = new a((byte)0);
+    AppMethodBeat.o(119467);
   }
   
-  public i(e parame)
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/report/StoryReporterUtil$Companion;", "", "()V", "getContactType", "", "userName", "", "getEnterScene", "", "pageType", "plugin-story_release"})
+  public static final class a
   {
-    super(parame, h.cEM(), sGE, db.INDEX_CREATE);
-    AppMethodBeat.i(109911);
-    this.db = parame;
-    AppMethodBeat.o(109911);
-  }
-  
-  private boolean adD(String paramString)
-  {
-    AppMethodBeat.i(109908);
-    a.f.b.j.q(paramString, "date");
-    paramString = sGG + " WHERE " + sGE + ".date = '" + paramString + '\'';
-    paramString = this.db.rawQuery(paramString, null);
-    a.f.b.j.p(paramString, "cu");
-    int i = paramString.getCount();
-    paramString.close();
-    if (i > 0)
+    public static long OF(int paramInt)
     {
-      AppMethodBeat.o(109908);
-      return true;
+      AppMethodBeat.i(119466);
+      switch (paramInt)
+      {
+      case 1: 
+      case 2: 
+      case 3: 
+      default: 
+        AppMethodBeat.o(119466);
+        return 0L;
+      case 0: 
+        AppMethodBeat.o(119466);
+        return 7L;
+      case 4: 
+        AppMethodBeat.o(119466);
+        return 8L;
+      case 6: 
+        AppMethodBeat.o(119466);
+        return 9L;
+      }
+      h localh = h.ynv;
+      long l = h.dJj().QS();
+      AppMethodBeat.o(119466);
+      return l;
     }
-    AppMethodBeat.o(109908);
-    return false;
-  }
-  
-  private boolean b(h paramh)
-  {
-    AppMethodBeat.i(109910);
-    a.f.b.j.q(paramh, "info");
-    boolean bool = super.replace((c)paramh);
-    AppMethodBeat.o(109910);
-    return bool;
-  }
-  
-  public final void a(String paramString, m paramm) {}
-  
-  public final boolean a(h paramh)
-  {
-    AppMethodBeat.i(109907);
-    a.f.b.j.q(paramh, "storyHistoryInfo");
-    if (adD(paramh.cEX()))
+    
+    public static int arP(String paramString)
     {
-      bool = update((c)paramh, new String[] { "date" });
-      AppMethodBeat.o(109907);
-      return bool;
+      AppMethodBeat.i(119465);
+      d.g.b.k.h(paramString, "userName");
+      if (TextUtils.isEmpty((CharSequence)paramString))
+      {
+        AppMethodBeat.o(119465);
+        return 0;
+      }
+      j.b localb = j.yfh;
+      if (d.g.b.k.g(j.b.dta(), paramString))
+      {
+        AppMethodBeat.o(119465);
+        return 1;
+      }
+      paramString = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(paramString);
+      d.g.b.k.g(paramString, "ct");
+      if (paramString.ZO())
+      {
+        AppMethodBeat.o(119465);
+        return 3;
+      }
+      if (paramString.ZJ())
+      {
+        AppMethodBeat.o(119465);
+        return 4;
+      }
+      AppMethodBeat.o(119465);
+      return 5;
     }
-    boolean bool = b(paramh);
-    AppMethodBeat.o(109907);
-    return bool;
-  }
-  
-  public final h adE(String paramString)
-  {
-    AppMethodBeat.i(109909);
-    a.f.b.j.q(paramString, "date");
-    paramString = sGG + " WHERE " + sGE + ".date = '" + paramString + '\'';
-    paramString = this.db.rawQuery(paramString, null);
-    if (paramString.moveToFirst())
-    {
-      h localh = new h();
-      localh.convertFrom(paramString);
-      paramString.close();
-      AppMethodBeat.o(109909);
-      return localh;
-    }
-    paramString.close();
-    AppMethodBeat.o(109909);
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.story.h.i
  * JD-Core Version:    0.7.0.1
  */

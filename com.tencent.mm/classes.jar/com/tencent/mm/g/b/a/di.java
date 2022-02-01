@@ -6,115 +6,97 @@ import com.tencent.mm.plugin.report.a;
 public final class di
   extends a
 {
-  public long cTE = 0L;
-  private String cTJ = "";
-  private String cUs = "";
-  private String cYE = "";
-  private String dfc = "";
-  private String dfi = "";
-  private String dfj = "";
+  private long dIl = 0L;
+  private long dUc = 0L;
+  private long dUd = 0L;
+  private int dUe = 0;
+  private long dUf = 0L;
+  private long dUg = 0L;
+  private long dUh = 0L;
+  private long dUi = 0L;
+  private long dUj = 0L;
+  private long dUk = 0L;
+  private long dUl = 0L;
+  private long dUm = 0L;
+  private long dUn = 0L;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(91290);
+    AppMethodBeat.i(118498);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cTE);
+    ((StringBuffer)localObject).append(this.dUc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cYE);
+    ((StringBuffer)localObject).append(this.dUd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dfc);
+    ((StringBuffer)localObject).append(this.dUe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cTJ);
+    ((StringBuffer)localObject).append(this.dIl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cUs);
+    ((StringBuffer)localObject).append(this.dUf);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dfi);
+    ((StringBuffer)localObject).append(this.dUg);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dfj);
+    ((StringBuffer)localObject).append(this.dUh);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUi);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUj);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUk);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUl);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUm);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUn);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(91290);
+    ams((String)localObject);
+    AppMethodBeat.o(118498);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(91291);
+    AppMethodBeat.i(118499);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("scene:").append(this.cTE);
+    ((StringBuffer)localObject).append("ImageCount:").append(this.dUc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("content:").append(this.cYE);
+    ((StringBuffer)localObject).append("RemuxCostTime:").append(this.dUd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("searchid:").append(this.dfc);
+    ((StringBuffer)localObject).append("RemuxSucc:").append(this.dUe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("sessionid:").append(this.cTJ);
+    ((StringBuffer)localObject).append("VideoSize:").append(this.dIl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("query:").append(this.cUs);
+    ((StringBuffer)localObject).append("BitRateMode:").append(this.dUf);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("resulttype:").append(this.dfi);
+    ((StringBuffer)localObject).append("Fps:").append(this.dUg);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("resultsubtypelist:").append(this.dfj);
+    ((StringBuffer)localObject).append("BitRate:").append(this.dUh);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IFrameInterval:").append(this.dUi);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ContainMusic:").append(this.dUj);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("OutputWidth:").append(this.dUk);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("OutputHeight:").append(this.dUl);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SupportCQ:").append(this.dUm);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("useX264:").append(this.dUn);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(91291);
+    AppMethodBeat.o(118499);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16032;
-  }
-  
-  public final di iH(String paramString)
-  {
-    AppMethodBeat.i(91284);
-    this.cYE = t("content", paramString, true);
-    AppMethodBeat.o(91284);
-    return this;
-  }
-  
-  public final di iI(String paramString)
-  {
-    AppMethodBeat.i(91285);
-    this.dfc = t("searchid", paramString, true);
-    AppMethodBeat.o(91285);
-    return this;
-  }
-  
-  public final di iJ(String paramString)
-  {
-    AppMethodBeat.i(91286);
-    this.cTJ = t("sessionid", paramString, true);
-    AppMethodBeat.o(91286);
-    return this;
-  }
-  
-  public final di iK(String paramString)
-  {
-    AppMethodBeat.i(91287);
-    this.cUs = t("query", paramString, true);
-    AppMethodBeat.o(91287);
-    return this;
-  }
-  
-  public final di iL(String paramString)
-  {
-    AppMethodBeat.i(91288);
-    this.dfi = t("resulttype", paramString, true);
-    AppMethodBeat.o(91288);
-    return this;
-  }
-  
-  public final di iM(String paramString)
-  {
-    AppMethodBeat.i(91289);
-    this.dfj = t("resultsubtypelist", paramString, true);
-    AppMethodBeat.o(91289);
-    return this;
+    return 17653;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.di
  * JD-Core Version:    0.7.0.1
  */

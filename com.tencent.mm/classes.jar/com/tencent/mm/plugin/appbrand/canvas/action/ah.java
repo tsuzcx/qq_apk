@@ -6,6 +6,7 @@ import com.tencent.mm.plugin.appbrand.canvas.a.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetTextBaseLineActionArg;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONArray;
 
 public final class ah
@@ -13,67 +14,67 @@ public final class ah
 {
   private static boolean b(com.tencent.mm.plugin.appbrand.canvas.d paramd, String paramString)
   {
-    AppMethodBeat.i(103296);
-    com.tencent.luggage.g.d.i("MicroMsg.SetTextBaselineAction", "SetTextBaselineAction, align:%s", new Object[] { paramString });
+    AppMethodBeat.i(144979);
+    ad.i("MicroMsg.SetTextBaselineAction", "SetTextBaselineAction, align:%s", new Object[] { paramString });
     if ("top".equalsIgnoreCase(paramString))
     {
-      paramd.heB.hfC = a.a.hfJ;
-      paramd.heC.hfC = a.a.hfJ;
+      paramd.iYL.iZN = a.a.iZU;
+      paramd.iYM.iZN = a.a.iZU;
     }
     for (;;)
     {
-      AppMethodBeat.o(103296);
+      AppMethodBeat.o(144979);
       return true;
       if ("middle".equalsIgnoreCase(paramString))
       {
-        paramd.heB.hfC = a.a.hfL;
-        paramd.heC.hfC = a.a.hfL;
+        paramd.iYL.iZN = a.a.iZW;
+        paramd.iYM.iZN = a.a.iZW;
       }
       else if ("bottom".equalsIgnoreCase(paramString))
       {
-        paramd.heB.hfC = a.a.hfK;
-        paramd.heC.hfC = a.a.hfK;
+        paramd.iYL.iZN = a.a.iZV;
+        paramd.iYM.iZN = a.a.iZV;
       }
       else if ("normal".equalsIgnoreCase(paramString))
       {
-        paramd.heB.hfC = a.a.hfI;
-        paramd.heC.hfC = a.a.hfI;
+        paramd.iYL.iZN = a.a.iZT;
+        paramd.iYM.iZN = a.a.iZT;
       }
     }
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    AppMethodBeat.i(103297);
+    AppMethodBeat.i(144980);
     paramCanvas = (SetTextBaseLineActionArg)paramDrawActionArg;
     if (paramCanvas == null)
     {
-      AppMethodBeat.o(103297);
+      AppMethodBeat.o(144980);
       return false;
     }
-    boolean bool = b(paramd, paramCanvas.hfl);
-    AppMethodBeat.o(103297);
+    boolean bool = b(paramd, paramCanvas.iZu);
+    AppMethodBeat.o(144980);
     return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103295);
+    AppMethodBeat.i(144978);
     if (paramJSONArray.length() <= 0)
     {
-      AppMethodBeat.o(103295);
+      AppMethodBeat.o(144978);
       return false;
     }
     boolean bool = b(paramd, paramJSONArray.optString(0));
-    AppMethodBeat.o(103295);
+    AppMethodBeat.o(144978);
     return bool;
   }
   
-  public final BaseDrawActionArg axW()
+  public final BaseDrawActionArg aSP()
   {
-    AppMethodBeat.i(103294);
+    AppMethodBeat.i(144977);
     SetTextBaseLineActionArg localSetTextBaseLineActionArg = new SetTextBaseLineActionArg();
-    AppMethodBeat.o(103294);
+    AppMethodBeat.o(144977);
     return localSetTextBaseLineActionArg;
   }
   
@@ -84,7 +85,7 @@ public final class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ah
  * JD-Core Version:    0.7.0.1
  */

@@ -5,17 +5,17 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.loader.a;
+import com.tencent.mm.emoji.loader.e;
 import com.tencent.mm.emoji.view.EmojiStatusView;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public class ChattingEmojiView
   extends EmojiStatusView
 {
+  protected int Chy;
+  protected int Chz;
   private String cacheKey;
-  private EmojiInfo evH;
-  protected int vZY;
-  protected int vZZ;
+  private EmojiInfo fLP;
   
   public ChattingEmojiView(Context paramContext)
   {
@@ -30,41 +30,42 @@ public class ChattingEmojiView
   public ChattingEmojiView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(62470);
-    this.vZY = paramContext.getResources().getDimensionPixelSize(2131428398);
-    this.vZZ = paramContext.getResources().getDimensionPixelSize(2131428396);
+    AppMethodBeat.i(104704);
+    this.Chy = paramContext.getResources().getDimensionPixelSize(2131166264);
+    this.Chz = paramContext.getResources().getDimensionPixelSize(2131166262);
     setDefaultImageResource(0);
-    AppMethodBeat.o(62470);
+    setGameUseCover(false);
+    AppMethodBeat.o(104704);
   }
   
   public final void a(EmojiInfo paramEmojiInfo, long paramLong)
   {
-    AppMethodBeat.i(62471);
-    this.evH = paramEmojiInfo;
+    AppMethodBeat.i(104705);
+    this.fLP = paramEmojiInfo;
     this.cacheKey = String.valueOf(paramLong);
     setImageDrawable(null);
     reload();
-    AppMethodBeat.o(62471);
+    AppMethodBeat.o(104705);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(62474);
+    AppMethodBeat.i(104708);
     super.onMeasure(paramInt1, paramInt2);
     int i;
     int j;
     float f;
-    if ((getStatus() != 1) && (this.evH != null))
+    if ((getStatus() != 1) && (this.fLP != null))
     {
-      paramInt2 = (int)(this.evH.field_width * getEmojiDensityScale());
-      i = (int)(this.evH.field_height * getEmojiDensityScale());
+      paramInt2 = (int)(this.fLP.field_width * getEmojiDensityScale());
+      i = (int)(this.fLP.field_height * getEmojiDensityScale());
       paramInt1 = paramInt2;
       if (paramInt2 <= 0) {
-        paramInt1 = this.vZY;
+        paramInt1 = this.Chy;
       }
       paramInt2 = i;
       if (i <= 0) {
-        paramInt2 = this.vZY;
+        paramInt2 = this.Chy;
       }
       paramInt1 = Math.max(0, paramInt1);
       i = Math.max(0, paramInt2);
@@ -72,48 +73,48 @@ public class ChattingEmojiView
       paramInt1 = i;
       i = paramInt2;
       if (paramInt2 <= 0) {
-        i = this.vZY;
+        i = this.Chy;
       }
       j = paramInt1;
       if (paramInt1 <= 0) {
-        j = this.vZY;
+        j = this.Chy;
       }
-      if (j >= this.vZZ)
+      if (j >= this.Chz)
       {
         paramInt1 = j;
         paramInt2 = i;
-        if (i >= this.vZZ) {}
+        if (i >= this.Chz) {}
       }
       else
       {
         if (i >= j) {
           break label254;
         }
-        f = this.vZZ / i;
-        paramInt2 = this.vZZ;
+        f = this.Chz / i;
+        paramInt2 = this.Chz;
         paramInt1 = (int)(j * f);
       }
       label178:
-      if (paramInt2 <= this.vZY)
+      if (paramInt2 <= this.Chy)
       {
         i = paramInt1;
         j = paramInt2;
-        if (paramInt1 <= this.vZY) {}
+        if (paramInt1 <= this.Chy) {}
       }
       else
       {
         if (paramInt2 <= paramInt1) {
           break label299;
         }
-        f = this.vZY / paramInt2;
-        j = this.vZY;
+        f = this.Chy / paramInt2;
+        j = this.Chy;
         i = (int)(paramInt1 * f);
       }
     }
     for (;;)
     {
       setMeasuredDimension(j, i);
-      AppMethodBeat.o(62474);
+      AppMethodBeat.o(104708);
       return;
       paramInt2 = getIntrinsicWidth();
       paramInt1 = getIntrinsicHeight();
@@ -121,55 +122,55 @@ public class ChattingEmojiView
       label254:
       if (j < i)
       {
-        f = this.vZZ / j;
-        paramInt1 = this.vZZ;
+        f = this.Chz / j;
+        paramInt1 = this.Chz;
         paramInt2 = (int)(i * f);
         break label178;
       }
-      paramInt1 = this.vZZ;
-      paramInt2 = this.vZZ;
+      paramInt1 = this.Chz;
+      paramInt2 = this.Chz;
       break label178;
       label299:
       if (paramInt1 > paramInt2)
       {
-        f = this.vZY / paramInt1;
-        i = this.vZY;
+        f = this.Chy / paramInt1;
+        i = this.Chy;
         j = (int)(paramInt2 * f);
       }
       else
       {
-        j = this.vZY;
-        i = this.vZY;
+        j = this.Chy;
+        i = this.Chy;
       }
     }
   }
   
   public final void reload()
   {
-    AppMethodBeat.i(62472);
-    if (this.evH != null)
+    AppMethodBeat.i(104706);
+    if (this.fLP != null)
     {
       setStatusNotify(0);
-      locala = a.evk;
-      a.a(this.evH, this, this.cacheKey);
-      AppMethodBeat.o(62472);
+      locale = e.fLn;
+      e.a(this.fLP, this, this.cacheKey);
+      AppMethodBeat.o(104706);
       return;
     }
-    a locala = a.evk;
-    a.ck(this);
-    AppMethodBeat.o(62472);
+    e locale = e.fLn;
+    e.cv(this);
+    AppMethodBeat.o(104706);
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(62473);
+    AppMethodBeat.i(104707);
     super.setImageDrawable(paramDrawable);
-    AppMethodBeat.o(62473);
+    AppMethodBeat.o(104707);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.emoji.ChattingEmojiView
  * JD-Core Version:    0.7.0.1
  */

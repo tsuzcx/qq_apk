@@ -2,17 +2,19 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.stub.e.a;
+import com.tencent.mm.plugin.webview.stub.d;
+import com.tencent.mm.plugin.webview.stub.f.a;
+import com.tencent.mm.protocal.c;
 
 public class m
-  extends e.a
+  extends f.a
 {
-  public boolean Ke(int paramInt)
+  public boolean Tj(int paramInt)
   {
     return false;
   }
   
-  public boolean a(com.tencent.mm.plugin.webview.stub.c paramc)
+  public boolean a(d paramd)
   {
     return false;
   }
@@ -22,42 +24,47 @@ public class m
     return false;
   }
   
-  public void af(Bundle paramBundle) {}
+  public void axu(String paramString) {}
   
-  public void ag(Bundle paramBundle) {}
+  public void ay(Bundle paramBundle) {}
   
-  public void ahL(String paramString) {}
+  public void az(Bundle paramBundle) {}
   
-  public String dcW()
+  public final String dvR()
   {
     return null;
-  }
-  
-  public String dcX()
-  {
-    return null;
-  }
-  
-  public final int dcY()
-  {
-    return 0;
-  }
-  
-  public void dcZ() {}
-  
-  public void dda() {}
-  
-  public Bundle dm(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(10027);
-    paramString1 = com.tencent.mm.protocal.c.anl(null);
-    AppMethodBeat.o(10027);
-    return paramString1;
   }
   
   public void e(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
   
-  public boolean e(int paramInt, Bundle paramBundle)
+  public void ekt() {}
+  
+  public void eku() {}
+  
+  public String ene()
+  {
+    return null;
+  }
+  
+  public final int enf()
+  {
+    return 0;
+  }
+  
+  public String eng()
+  {
+    return null;
+  }
+  
+  public Bundle ev(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(82235);
+    paramString1 = c.aDg(null);
+    AppMethodBeat.o(82235);
+    return paramString1;
+  }
+  
+  public boolean f(int paramInt, Bundle paramBundle)
   {
     return false;
   }
@@ -67,26 +74,26 @@ public class m
     return null;
   }
   
-  public void hu(String paramString1, String paramString2) {}
-  
-  public void hv(String paramString1, String paramString2) {}
-  
-  public Bundle i(int paramInt, Bundle paramBundle)
+  public Bundle j(int paramInt, Bundle paramBundle)
   {
     return null;
   }
   
-  public void om(boolean paramBoolean) {}
+  public void kd(String paramString1, String paramString2) {}
   
-  public void on(boolean paramBoolean) {}
-  
-  public void oo(boolean paramBoolean) {}
+  public void ke(String paramString1, String paramString2) {}
   
   public void t(int paramInt, Bundle paramBundle) {}
+  
+  public void to(boolean paramBoolean) {}
+  
+  public void tp(boolean paramBoolean) {}
+  
+  public void tq(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.m
  * JD-Core Version:    0.7.0.1
  */

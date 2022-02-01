@@ -5,25 +5,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum d$a
 {
-  public final int iAo;
+  public final int lgD;
   
   static
   {
-    AppMethodBeat.i(87351);
-    iAm = new a("BLACK", 0, -16777216);
-    iAn = new a("WHITE", 1, -1);
-    iAp = new a[] { iAm, iAn };
-    AppMethodBeat.o(87351);
+    AppMethodBeat.i(135288);
+    lgB = new a("BLACK", 0, -16777216);
+    lgC = new a("WHITE", 1, -1);
+    lgE = new a[] { lgB, lgC };
+    AppMethodBeat.o(135288);
   }
   
   private d$a(int paramInt)
   {
-    this.iAo = paramInt;
+    this.lgD = paramInt;
   }
   
-  public static a Es(String paramString)
+  public static a LQ(String paramString)
   {
-    AppMethodBeat.i(87350);
+    AppMethodBeat.i(135287);
     if (!TextUtils.isEmpty(paramString))
     {
       a[] arrayOfa = values();
@@ -34,14 +34,14 @@ public enum d$a
         a locala = arrayOfa[i];
         if (locala.name().equalsIgnoreCase(paramString))
         {
-          AppMethodBeat.o(87350);
+          AppMethodBeat.o(135287);
           return locala;
         }
         i += 1;
       }
     }
-    paramString = iAn;
-    AppMethodBeat.o(87350);
+    paramString = lgC;
+    AppMethodBeat.o(135287);
     return paramString;
   }
 }

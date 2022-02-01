@@ -50,9 +50,9 @@ public class GetServiceRequest
   
   static
   {
-    AppMethodBeat.i(89610);
+    AppMethodBeat.i(4632);
     CREATOR = new GetServiceRequestCreator();
-    AppMethodBeat.o(89610);
+    AppMethodBeat.o(4632);
   }
   
   public GetServiceRequest(int paramInt)
@@ -66,7 +66,7 @@ public class GetServiceRequest
   @SafeParcelable.Constructor
   GetServiceRequest(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) int paramInt2, @SafeParcelable.Param(id=3) int paramInt3, @SafeParcelable.Param(id=4) String paramString, @SafeParcelable.Param(id=5) IBinder paramIBinder, @SafeParcelable.Param(id=6) Scope[] paramArrayOfScope, @SafeParcelable.Param(id=7) Bundle paramBundle, @SafeParcelable.Param(id=8) Account paramAccount, @SafeParcelable.Param(id=10) Feature[] paramArrayOfFeature1, @SafeParcelable.Param(id=11) Feature[] paramArrayOfFeature2, @SafeParcelable.Param(id=12) boolean paramBoolean)
   {
-    AppMethodBeat.i(89604);
+    AppMethodBeat.i(4626);
     this.version = paramInt1;
     this.zzst = paramInt2;
     this.zzsu = paramInt3;
@@ -74,7 +74,7 @@ public class GetServiceRequest
     {
       this.zzsv = "com.google.android.gms";
       if (paramInt1 >= 2) {
-        break label99;
+        break label101;
       }
     }
     for (this.zzsz = zzb(paramIBinder);; this.zzsz = paramAccount)
@@ -84,11 +84,11 @@ public class GetServiceRequest
       this.zzta = paramArrayOfFeature1;
       this.zztb = paramArrayOfFeature2;
       this.zztc = paramBoolean;
-      AppMethodBeat.o(89604);
+      AppMethodBeat.o(4626);
       return;
       this.zzsv = paramString;
       break;
-      label99:
+      label101:
       this.zzsw = paramIBinder;
     }
   }
@@ -100,20 +100,20 @@ public class GetServiceRequest
   
   private static Account zzb(IBinder paramIBinder)
   {
-    AppMethodBeat.i(89609);
+    AppMethodBeat.i(4631);
     Account localAccount = null;
     if (paramIBinder != null) {
       localAccount = AccountAccessor.getAccountBinderSafe(IAccountAccessor.Stub.asInterface(paramIBinder));
     }
-    AppMethodBeat.o(89609);
+    AppMethodBeat.o(4631);
     return localAccount;
   }
   
   public Account getAuthenticatedAccount()
   {
-    AppMethodBeat.i(89605);
+    AppMethodBeat.i(4627);
     Account localAccount = zzb(this.zzsw);
-    AppMethodBeat.o(89605);
+    AppMethodBeat.o(4627);
     return localAccount;
   }
   
@@ -164,11 +164,11 @@ public class GetServiceRequest
   
   public GetServiceRequest setAuthenticatedAccount(IAccountAccessor paramIAccountAccessor)
   {
-    AppMethodBeat.i(89606);
+    AppMethodBeat.i(4628);
     if (paramIAccountAccessor != null) {
       this.zzsw = paramIAccountAccessor.asBinder();
     }
-    AppMethodBeat.o(89606);
+    AppMethodBeat.o(4628);
     return this;
   }
   
@@ -216,15 +216,15 @@ public class GetServiceRequest
   
   public GetServiceRequest setScopes(Collection<Scope> paramCollection)
   {
-    AppMethodBeat.i(89607);
+    AppMethodBeat.i(4629);
     this.zzsx = ((Scope[])paramCollection.toArray(new Scope[paramCollection.size()]));
-    AppMethodBeat.o(89607);
+    AppMethodBeat.o(4629);
     return this;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(89608);
+    AppMethodBeat.i(4630);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.version);
     SafeParcelWriter.writeInt(paramParcel, 2, this.zzst);
@@ -238,7 +238,7 @@ public class GetServiceRequest
     SafeParcelWriter.writeTypedArray(paramParcel, 11, this.zztb, paramInt, false);
     SafeParcelWriter.writeBoolean(paramParcel, 12, this.zztc);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(89608);
+    AppMethodBeat.o(4630);
   }
 }
 

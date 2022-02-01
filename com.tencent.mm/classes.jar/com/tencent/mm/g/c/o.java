@@ -7,17 +7,25 @@ import com.tencent.mm.sdk.e.c;
 public abstract class o
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandLocalUsageRecordUpdateTimeIndex ON AppBrandLocalUsageRecord(updateTime)" };
-  private static final int dhU = "username".hashCode();
-  private static final int dhV = "updateTime".hashCode();
-  private static final int dip = "versionType".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int emA = "dataType".hashCode();
+  private static final int emB = "size".hashCode();
+  private static final int emn;
+  private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dhS = true;
-  private boolean dhT = true;
-  private boolean dim = true;
-  public long field_updateTime;
-  public String field_username;
-  public int field_versionType;
+  private boolean __hadSetkey = true;
+  private boolean emj = true;
+  private boolean emy = true;
+  private boolean emz = true;
+  public String field_data;
+  public String field_dataType;
+  public String field_key;
+  public int field_size;
+  
+  static
+  {
+    emn = "data".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,21 +40,24 @@ public abstract class o
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dhU != k) {
-        break label60;
+      if (key_HASHCODE != k) {
+        break label65;
       }
-      this.field_username = paramCursor.getString(i);
+      this.field_key = paramCursor.getString(i);
+      this.__hadSetkey = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (dip == k) {
-        this.field_versionType = paramCursor.getInt(i);
-      } else if (dhV == k) {
-        this.field_updateTime = paramCursor.getLong(i);
+      label65:
+      if (emn == k) {
+        this.field_data = paramCursor.getString(i);
+      } else if (emA == k) {
+        this.field_dataType = paramCursor.getString(i);
+      } else if (emB == k) {
+        this.field_size = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -56,14 +67,17 @@ public abstract class o
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dhS) {
-      localContentValues.put("username", this.field_username);
+    if (this.__hadSetkey) {
+      localContentValues.put("key", this.field_key);
     }
-    if (this.dim) {
-      localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
+    if (this.emj) {
+      localContentValues.put("data", this.field_data);
     }
-    if (this.dhT) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    if (this.emy) {
+      localContentValues.put("dataType", this.field_dataType);
+    }
+    if (this.emz) {
+      localContentValues.put("size", Integer.valueOf(this.field_size));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -73,7 +87,7 @@ public abstract class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.o
  * JD-Core Version:    0.7.0.1
  */

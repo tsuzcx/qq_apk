@@ -10,14 +10,14 @@ public class PersistenceBehaviour
 {
   public void onPublish(List<SQLiteLintIssue> paramList)
   {
-    AppMethodBeat.i(94078);
+    AppMethodBeat.i(52922);
     IssueStorage.saveIssues(paramList);
-    AppMethodBeat.o(94078);
+    AppMethodBeat.o(52922);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.persistence.PersistenceBehaviour
  * JD-Core Version:    0.7.0.1
  */

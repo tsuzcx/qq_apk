@@ -1,10 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="18.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/b4c" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_begin="24.0dip" />
-    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/b4d" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_end="28.0dip" />
-    <View android:id="@id/b4e" android:background="@color/tb" android:layout_width="0.5dip" android:layout_height="18.0dip" app:layout_constraintBottom_toBottomOf="@id/b4d" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toTopOf="@id/b4c" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/a7l" android:gravity="center" android:id="@id/b4f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:text="@string/aw7" android:singleLine="false" app:layout_constraintBottom_toBottomOf="@id/b4d" app:layout_constraintRight_toLeftOf="@id/b4e" app:layout_constraintTop_toTopOf="@id/b4c" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/a7l" android:gravity="center" android:id="@id/b4g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:text="@string/awd" android:singleLine="false" app:layout_constraintBottom_toBottomOf="@id/b4d" app:layout_constraintLeft_toRightOf="@id/b4e" app:layout_constraintTop_toTopOf="@id/b4c" />
-    <View android:id="@id/b4h" android:background="@color/tb" android:layout_width="0.0dip" android:layout_height="0.5dip" app:layout_constraintBottom_toBottomOf="dn" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintRight_toRightOf="dn" />
-</android.support.constraint.ConstraintLayout>
+<com.tencent.mm.ui.chatting.ChattingAnimFrame android:id="@id/aio" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

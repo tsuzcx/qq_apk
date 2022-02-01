@@ -15,86 +15,115 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.s.f;
+import com.tencent.mm.plugin.appbrand.jsapi.x.f;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class WxaScrollView
   extends FrameLayout
-  implements n, o, f
+  implements r, s, f
 {
-  private float gN;
-  private float hLe;
-  private int hLf;
-  private Paint hLg;
-  private FrameLayout hLq;
-  private ScrollView hLr;
-  private m hLs;
-  private boolean hLt;
-  private boolean hLu;
+  private boolean jPA;
+  private float jPi;
+  private float jPj;
+  private int jPk;
+  private Paint jPl;
+  private FrameLayout jPw;
+  private ScrollView jPx;
+  private q jPy;
+  private boolean jPz;
   private int mBgColor;
   
   public WxaScrollView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(126323);
-    this.hLt = true;
-    this.hLu = true;
-    this.hLg = new Paint();
+    AppMethodBeat.i(137552);
+    this.jPz = true;
+    this.jPA = true;
+    this.jPl = new Paint();
     init();
-    AppMethodBeat.o(126323);
+    AppMethodBeat.o(137552);
   }
   
   public WxaScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(126324);
-    this.hLt = true;
-    this.hLu = true;
-    this.hLg = new Paint();
+    AppMethodBeat.i(137553);
+    this.jPz = true;
+    this.jPA = true;
+    this.jPl = new Paint();
     init();
-    AppMethodBeat.o(126324);
+    AppMethodBeat.o(137553);
   }
   
   public WxaScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(126325);
-    this.hLt = true;
-    this.hLu = true;
-    this.hLg = new Paint();
+    AppMethodBeat.i(137554);
+    this.jPz = true;
+    this.jPA = true;
+    this.jPl = new Paint();
     init();
-    AppMethodBeat.o(126325);
+    AppMethodBeat.o(137554);
   }
   
   private void init()
   {
-    AppMethodBeat.i(126326);
-    this.hLr = new WxaScrollView.1(this, getContext());
-    this.hLq = new FrameLayout(getContext());
-    super.addView(this.hLr, 0, new ViewGroup.LayoutParams(-1, -1));
-    this.hLr.addView(this.hLq, 0, new ViewGroup.LayoutParams(-1, -2));
-    this.hLg.setStyle(Paint.Style.STROKE);
-    this.hLg.setAntiAlias(true);
+    AppMethodBeat.i(137555);
+    this.jPx = new ScrollView(getContext())
+    {
+      protected final void onScrollChanged(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4)
+      {
+        AppMethodBeat.i(137549);
+        super.onScrollChanged(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousInt4);
+        if (WxaScrollView.a(WxaScrollView.this) != null) {
+          WxaScrollView.a(WxaScrollView.this).p(WxaScrollView.this, paramAnonymousInt1, paramAnonymousInt2);
+        }
+        AppMethodBeat.o(137549);
+      }
+      
+      public final boolean onTouchEvent(MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(137550);
+        switch (paramAnonymousMotionEvent.getAction())
+        {
+        }
+        do
+        {
+          boolean bool = super.onTouchEvent(paramAnonymousMotionEvent);
+          AppMethodBeat.o(137550);
+          return bool;
+        } while (WxaScrollView.b(WxaScrollView.this));
+        ad.e("MicroMsg.WxaScrollView", "can not move");
+        AppMethodBeat.o(137550);
+        return false;
+      }
+    };
+    this.jPw = new FrameLayout(getContext());
+    super.addView(this.jPx, 0, new ViewGroup.LayoutParams(-1, -1));
+    this.jPx.addView(this.jPw, 0, new ViewGroup.LayoutParams(-1, -2));
+    this.jPl.setStyle(Paint.Style.STROKE);
+    this.jPl.setAntiAlias(true);
     setWillNotDraw(false);
-    AppMethodBeat.o(126326);
+    AppMethodBeat.o(137555);
   }
   
   public void addView(View paramView, int paramInt)
   {
-    AppMethodBeat.i(126329);
-    this.hLq.addView(paramView, paramInt);
-    AppMethodBeat.o(126329);
+    AppMethodBeat.i(137558);
+    this.jPw.addView(paramView, paramInt);
+    AppMethodBeat.o(137558);
   }
   
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(126330);
-    this.hLq.addView(paramView, paramInt, paramLayoutParams);
-    AppMethodBeat.o(126330);
+    AppMethodBeat.i(137559);
+    this.jPw.addView(paramView, paramInt, paramLayoutParams);
+    AppMethodBeat.o(137559);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(126334);
+    AppMethodBeat.i(137563);
     if (paramMotionEvent.getActionMasked() == 0)
     {
       float f1 = paramMotionEvent.getX();
@@ -104,16 +133,16 @@ public class WxaScrollView
       float f4;
       double d2;
       int i;
-      if (this.hLe > 0.0F)
+      if (this.jPi > 0.0F)
       {
-        d1 = Math.pow(this.hLe, 2.0D);
+        d1 = Math.pow(this.jPi, 2.0D);
         f3 = getWidth();
         f4 = getHeight();
-        if (f1 < this.hLe) {
-          if (f2 < this.hLe)
+        if (f1 < this.jPi) {
+          if (f2 < this.jPi)
           {
-            d2 = Math.pow(this.hLe - f1, 2.0D);
-            if (Math.pow(this.hLe - f2, 2.0D) + d2 <= d1) {
+            d2 = Math.pow(this.jPi - f1, 2.0D);
+            if (Math.pow(this.jPi - f2, 2.0D) + d2 <= d1) {
               break label325;
             }
             i = 0;
@@ -122,27 +151,27 @@ public class WxaScrollView
       }
       while (i == 0)
       {
-        AppMethodBeat.o(126334);
+        AppMethodBeat.o(137563);
         return false;
-        if (f2 > f4 - this.hLe)
+        if (f2 > f4 - this.jPi)
         {
-          d2 = Math.pow(this.hLe - f1, 2.0D);
-          if (Math.pow(this.hLe + f2 - f4, 2.0D) + d2 > d1)
+          d2 = Math.pow(this.jPi - f1, 2.0D);
+          if (Math.pow(this.jPi + f2 - f4, 2.0D) + d2 > d1)
           {
             i = 0;
             continue;
-            if (f1 > f3 - this.hLe) {
-              if (f2 < this.hLe)
+            if (f1 > f3 - this.jPi) {
+              if (f2 < this.jPi)
               {
-                d2 = Math.pow(f1 + this.hLe - f3, 2.0D);
-                if (Math.pow(this.hLe - f2, 2.0D) + d2 > d1) {
+                d2 = Math.pow(f1 + this.jPi - f3, 2.0D);
+                if (Math.pow(this.jPi - f2, 2.0D) + d2 > d1) {
                   i = 0;
                 }
               }
-              else if (f2 > f4 - this.hLe)
+              else if (f2 > f4 - this.jPi)
               {
-                d2 = Math.pow(f1 + this.hLe - f3, 2.0D);
-                if (Math.pow(this.hLe + f2 - f4, 2.0D) + d2 > d1)
+                d2 = Math.pow(f1 + this.jPi - f3, 2.0D);
+                if (Math.pow(this.jPi + f2 - f4, 2.0D) + d2 > d1)
                 {
                   i = 0;
                   continue;
@@ -156,47 +185,47 @@ public class WxaScrollView
       }
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(126334);
+    AppMethodBeat.o(137563);
     return bool;
   }
   
   public void draw(Canvas paramCanvas)
   {
     float f2 = 0.0F;
-    AppMethodBeat.i(126327);
+    AppMethodBeat.i(137556);
     int i;
-    if (this.hLe > 0.0F)
+    if (this.jPi > 0.0F)
     {
       i = 1;
       if (i != 0)
       {
         paramCanvas.save();
         localPath = new Path();
-        localPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.hLe, this.hLe, Path.Direction.CW);
+        localPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.jPi, this.jPi, Path.Direction.CW);
         paramCanvas.clipPath(localPath);
       }
       if (this.mBgColor != 0) {
         paramCanvas.drawColor(this.mBgColor);
       }
-      if (this.gN <= 0.0F) {
+      if (this.jPj <= 0.0F) {
         break label303;
       }
-      float f1 = this.gN / 2.0F;
-      paramCanvas.drawRoundRect(new RectF(f1, f1, getWidth() - f1, getHeight() - f1), this.hLe, this.hLe, this.hLg);
+      float f1 = this.jPj / 2.0F;
+      paramCanvas.drawRoundRect(new RectF(f1, f1, getWidth() - f1, getHeight() - f1), this.jPi, this.jPi, this.jPl);
       if (i != 0) {
         paramCanvas.restore();
       }
       paramCanvas.save();
       Path localPath = new Path();
       f1 = f2;
-      if (this.hLe > 0.0F)
+      if (this.jPi > 0.0F)
       {
         f1 = f2;
-        if (this.hLe - this.gN > 0.0F) {
-          f1 = this.hLe - this.gN;
+        if (this.jPi - this.jPj > 0.0F) {
+          f1 = this.jPi - this.jPj;
         }
       }
-      localPath.addRoundRect(new RectF(this.gN, this.gN, getWidth() - this.gN, getHeight() - this.gN), f1, f1, Path.Direction.CW);
+      localPath.addRoundRect(new RectF(this.jPj, this.jPj, getWidth() - this.jPj, getHeight() - this.jPj), f1, f1, Path.Direction.CW);
       paramCanvas.clipPath(localPath);
       i = 1;
     }
@@ -209,7 +238,7 @@ public class WxaScrollView
       if (i != 0) {
         paramCanvas.restore();
       }
-      AppMethodBeat.o(126327);
+      AppMethodBeat.o(137556);
       return;
       i = 0;
       break;
@@ -218,30 +247,30 @@ public class WxaScrollView
   
   public ViewGroup getTargetView()
   {
-    return this.hLq;
+    return this.jPw;
   }
   
   public int getTargetViewChildCount()
   {
-    AppMethodBeat.i(126328);
-    int i = this.hLq.getChildCount();
-    AppMethodBeat.o(126328);
+    AppMethodBeat.i(137557);
+    int i = this.jPw.getChildCount();
+    AppMethodBeat.o(137557);
     return i;
   }
   
   public void removeView(View paramView)
   {
-    AppMethodBeat.i(126331);
-    this.hLq.removeView(paramView);
-    AppMethodBeat.o(126331);
+    AppMethodBeat.i(137560);
+    this.jPw.removeView(paramView);
+    AppMethodBeat.o(137560);
   }
   
   public void scrollTo(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(126335);
-    this.hLr.scrollTo(paramInt1, paramInt2);
+    AppMethodBeat.i(137564);
+    this.jPx.scrollTo(paramInt1, paramInt2);
     invalidate();
-    AppMethodBeat.o(126335);
+    AppMethodBeat.o(137564);
   }
   
   public void setBgColor(int paramInt)
@@ -251,43 +280,43 @@ public class WxaScrollView
   
   public void setBorderColor(int paramInt)
   {
-    AppMethodBeat.i(126332);
-    this.hLf = paramInt;
-    this.hLg.setColor(paramInt);
-    AppMethodBeat.o(126332);
+    AppMethodBeat.i(137561);
+    this.jPk = paramInt;
+    this.jPl.setColor(paramInt);
+    AppMethodBeat.o(137561);
   }
   
   public void setBorderRadius(float paramFloat)
   {
-    this.hLe = paramFloat;
+    this.jPi = paramFloat;
   }
   
   public void setBorderWidth(float paramFloat)
   {
-    AppMethodBeat.i(126333);
-    this.gN = paramFloat;
-    this.hLg.setStrokeWidth(paramFloat);
-    AppMethodBeat.o(126333);
+    AppMethodBeat.i(137562);
+    this.jPj = paramFloat;
+    this.jPl.setStrokeWidth(paramFloat);
+    AppMethodBeat.o(137562);
   }
   
-  public void setOnScrollChangedListener(m paramm)
+  public void setOnScrollChangedListener(q paramq)
   {
-    this.hLs = paramm;
+    this.jPy = paramq;
   }
   
   public void setScrollHorizontal(boolean paramBoolean)
   {
-    this.hLu = paramBoolean;
+    this.jPA = paramBoolean;
   }
   
   public void setScrollVertical(boolean paramBoolean)
   {
-    this.hLt = paramBoolean;
+    this.jPz = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.WxaScrollView
  * JD-Core Version:    0.7.0.1
  */

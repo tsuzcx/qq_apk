@@ -2,15 +2,17 @@ package com.tencent.liteav.audio;
 
 public abstract interface e
 {
-  public abstract void onPlayEnd(int paramInt);
+  public abstract void onRecordEncData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract void onPlayProgress(long paramLong1, long paramLong2);
+  public abstract void onRecordError(int paramInt, String paramString);
   
-  public abstract void onPlayStart();
+  public abstract void onRecordPcmData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void onRecordRawPcmData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.e
  * JD-Core Version:    0.7.0.1
  */

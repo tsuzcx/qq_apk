@@ -8,32 +8,32 @@ public final class c
 {
   private static String TAG = "MicroMsg.BackupModelFactory";
   
-  public static d rH(int paramInt)
+  public static d wt(int paramInt)
   {
-    AppMethodBeat.i(18108);
+    AppMethodBeat.i(22163);
     switch (paramInt)
     {
     case 0: 
     default: 
-      AppMethodBeat.o(18108);
+      AppMethodBeat.o(22163);
       return null;
     case 1: 
-      localObject = com.tencent.mm.plugin.backup.backuppcmodel.b.aTX();
-      AppMethodBeat.o(18108);
+      localObject = com.tencent.mm.plugin.backup.backuppcmodel.b.bxe();
+      AppMethodBeat.o(22163);
       return localObject;
     case 2: 
-      localObject = com.tencent.mm.plugin.backup.d.b.aTr();
-      AppMethodBeat.o(18108);
+      localObject = com.tencent.mm.plugin.backup.d.b.bwC();
+      AppMethodBeat.o(22163);
       return localObject;
     }
-    Object localObject = a.aUU();
-    AppMethodBeat.o(18108);
+    Object localObject = a.byd();
+    AppMethodBeat.o(22163);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.j.c
  * JD-Core Version:    0.7.0.1
  */

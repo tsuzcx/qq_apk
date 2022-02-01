@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.exdevice.ui.DeviceProfileHeaderPreference android:key="device_profile_header" android:layout="@layout/ww" />
-    <Preference android:title="@string/bka" android:key="sub_device_desc" android:layout="@layout/xr" />
+    <com.tencent.mm.ui.base.preference.PluginTextPreference android:key="tip_other" android:plugin_layout="@layout/app" android:plugin_text="@string/eo3" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="common_chatroom" android:layout="@layout/aop" android:title="@string/b59" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="friend_source" android:layout="@layout/aop" android:title="@string/bap" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="district" android:layout="@layout/aop" android:title="@string/b5i" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="signature" android:layout="@layout/aop" android:title="@string/b_a" />
+    <com.tencent.mm.ui.base.preference.PluginTextPreference android:key="tip_about_account" android:plugin_layout="@layout/app" android:plugin_text="@string/b76" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="weishop" android:layout="@layout/aop" android:title="@string/b_j" />
+    <PreferenceSmallCategory android:key="contact_info_category_1" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="send_to_friend" android:layout="@layout/aop" android:title="@string/b9z" />
     <PreferenceSmallCategory />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/bir" android:key="message_manage" android:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/bhp" android:key="connect_setting" android:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/bkf" android:key="user_list" android:layout="@layout/afi" />
+    <CheckBoxPreference android:defaultValue="false" android:key="add_to_black" android:persistent="false" android:summary="@string/b80" android:title="@string/b7z" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="expose" android:layout="@layout/aop" android:title="@string/asw" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/aw7" android:key="contact_info_biz_go_chatting" android:layout="@layout/afi" />
+    <com.tencent.mm.ui.base.preference.Preference android:key="delete_contact" android:layout="@layout/aop" android:title="@string/b5f" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/bgn" android:key="bind_device" android:layout="@layout/a95" />
-    <Preference android:title="@string/biy" android:key="open_device_panel" android:layout="@layout/a95" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/bkb" android:key="unbind_device" android:layout="@layout/b_b" />
-    <PreferenceCategory />
 </PreferenceScreen>

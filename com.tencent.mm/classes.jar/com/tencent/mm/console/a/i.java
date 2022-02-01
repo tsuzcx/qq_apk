@@ -15,16 +15,16 @@ public final class i
 {
   static
   {
-    AppMethodBeat.i(16141);
+    AppMethodBeat.i(20186);
     b.a(new i(), new String[] { "//assert", "//netassert", "//jniassert", "//jnipushassert", "//pushassert" });
-    AppMethodBeat.o(16141);
+    AppMethodBeat.o(20186);
   }
   
   public static void init() {}
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(16140);
+    AppMethodBeat.i(20185);
     paramContext = paramArrayOfString[0];
     label64:
     int i;
@@ -38,7 +38,7 @@ public final class i
       switch (i)
       {
       default: 
-        AppMethodBeat.o(16140);
+        AppMethodBeat.o(20185);
         return false;
         if (!paramContext.equals("//assert")) {
           break label64;
@@ -67,25 +67,25 @@ public final class i
       }
     }
     Assert.assertTrue("test errlog " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()), false);
-    AppMethodBeat.o(16140);
+    AppMethodBeat.o(20185);
     return true;
     Assert.assertTrue("NetsceneQueue forbid in ", false);
-    AppMethodBeat.o(16140);
+    AppMethodBeat.o(20185);
     return true;
     MMProtocalJni.setClientPackVersion(-1);
-    AppMethodBeat.o(16140);
+    AppMethodBeat.o(20185);
     return true;
-    WatchDogPushReceiver.mg(2);
-    AppMethodBeat.o(16140);
+    WatchDogPushReceiver.oP(2);
+    AppMethodBeat.o(20185);
     return true;
-    WatchDogPushReceiver.mg(1);
-    AppMethodBeat.o(16140);
+    WatchDogPushReceiver.oP(1);
+    AppMethodBeat.o(20185);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.console.a.i
  * JD-Core Version:    0.7.0.1
  */

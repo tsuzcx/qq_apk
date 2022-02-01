@@ -11,21 +11,21 @@ public class AlphabetScrollBar
     super(paramContext, paramAttributeSet);
   }
   
-  protected void Kr()
+  protected void Wa()
   {
-    this.nSx = new String[] { "↑", "☆", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
-    this.nSv = 1.6F;
-    this.nSw = 79;
+    this.sGr = new String[] { "↑", "☆", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
+    this.sGp = 1.6F;
+    this.sGq = 79;
   }
   
   protected int getToastLayoutId()
   {
-    return 2130970734;
+    return 2131495439;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.AlphabetScrollBar
  * JD-Core Version:    0.7.0.1
  */

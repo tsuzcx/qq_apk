@@ -1,6 +1,9 @@
 package com.tencent.mm.plugin.q;
 
-public final class a {}
+public abstract interface a
+{
+  public abstract void update(int paramInt);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar

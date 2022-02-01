@@ -2,13 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import java.util.List;
 
 public final class dp
   extends b
 {
-  public dp.a cri;
-  public b crj;
+  public a dfP;
+  public b dfQ;
   
   public dp()
   {
@@ -17,23 +16,29 @@ public final class dp
   
   private dp(byte paramByte)
   {
-    AppMethodBeat.i(70151);
-    this.cri = new dp.a();
-    this.crj = new b();
-    this.ymq = false;
+    AppMethodBeat.i(115981);
+    this.dfP = new a();
+    this.dfQ = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70151);
+    AppMethodBeat.o(115981);
+  }
+  
+  public static final class a
+  {
+    public String cLR;
+    public String dfM;
+    public boolean dfN = false;
   }
   
   public static final class b
   {
-    public boolean cqS;
-    public List crn;
+    public boolean dfO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.dp
  * JD-Core Version:    0.7.0.1
  */

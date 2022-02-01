@@ -3,62 +3,72 @@ package com.tencent.mm.plugin.api;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
-import com.tencent.mm.plugin.mmsight.model.a.k;
 import com.tencent.mm.plugin.mmsight.model.a.l;
-import com.tencent.mm.plugin.mmsight.model.j;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
   extends com.tencent.mm.plugin.mmsight.api.b
 {
-  private com.tencent.mm.plugin.mmsight.model.a.d gNw;
-  private VideoTransPara gNx;
+  private com.tencent.mm.plugin.mmsight.model.a.d iBe;
+  private VideoTransPara iBf;
   
   public final void a(com.tencent.mm.remoteservice.d paramd, VideoTransPara paramVideoTransPara)
   {
-    AppMethodBeat.i(76305);
+    AppMethodBeat.i(89187);
     if (paramd != null) {
       CaptureMMProxy.createProxy(new CaptureMMProxy(paramd));
     }
-    j.d(paramVideoTransPara);
-    this.gNx = paramVideoTransPara;
-    AppMethodBeat.o(76305);
+    com.tencent.mm.plugin.mmsight.model.k.d(paramVideoTransPara);
+    this.iBf = paramVideoTransPara;
+    AppMethodBeat.o(89187);
   }
   
-  public final com.tencent.mm.plugin.mmsight.model.a.d asE()
+  public final com.tencent.mm.plugin.mmsight.model.a.d aLg()
   {
-    AppMethodBeat.i(76307);
-    if (this.gNx != null)
+    AppMethodBeat.i(89189);
+    if (this.iBf != null)
     {
-      k.bRq();
-      this.gNw = k.q(this.gNx);
+      com.tencent.mm.plugin.mmsight.model.a.k.cQk();
+      this.iBe = com.tencent.mm.plugin.mmsight.model.a.k.q(this.iBf);
     }
-    if ((this.gNw instanceof l))
+    if ((this.iBe instanceof l))
     {
-      localObject = (l)this.gNw;
-      ab.i("MicroMsg.MMSightFFMpegRecorder", "setStopOnCameraDataThread: %s", new Object[] { Boolean.TRUE });
-      ((l)localObject).fdo = true;
+      localObject = (l)this.iBe;
+      ad.i("MicroMsg.MMSightFFMpegRecorder", "setStopOnCameraDataThread: %s", new Object[] { Boolean.TRUE });
+      ((l)localObject).gDw = true;
     }
-    Object localObject = this.gNw;
-    AppMethodBeat.o(76307);
+    Object localObject = this.iBe;
+    AppMethodBeat.o(89189);
     return localObject;
   }
   
   public final void b(com.tencent.mm.remoteservice.d paramd, VideoTransPara paramVideoTransPara)
   {
-    AppMethodBeat.i(76306);
+    AppMethodBeat.i(89188);
     if (paramd != null) {
       CaptureMMProxy.createProxy(new CaptureMMProxy(paramd));
     }
-    j.d(paramVideoTransPara);
-    j.oHG.eqK = 1;
-    this.gNx = paramVideoTransPara;
-    AppMethodBeat.o(76306);
+    com.tencent.mm.plugin.mmsight.model.k.d(paramVideoTransPara);
+    com.tencent.mm.plugin.mmsight.model.k.tCN.fEc = 1;
+    this.iBf = paramVideoTransPara;
+    AppMethodBeat.o(89188);
+  }
+  
+  public static final class a
+    implements com.tencent.mm.plugin.mmsight.api.b.a
+  {
+    public final com.tencent.mm.plugin.mmsight.api.b aLh()
+    {
+      AppMethodBeat.i(89186);
+      b localb = new b();
+      AppMethodBeat.o(89186);
+      return localb;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.api.b
  * JD-Core Version:    0.7.0.1
  */

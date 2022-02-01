@@ -21,16 +21,16 @@ public final class a
   
   public final void a(Canvas paramCanvas, TextPaint paramTextPaint, List<d> paramList)
   {
-    AppMethodBeat.i(3241);
-    fH(paramList);
+    AppMethodBeat.i(39743);
+    in(paramList);
     int i = paramTextPaint.getColor();
-    paramTextPaint.setColor(((BackgroundColorSpan)this.Bbj).getBackgroundColor());
-    paramList = this.Bbi.iterator();
+    paramTextPaint.setColor(((BackgroundColorSpan)this.IhY).getBackgroundColor());
+    paramList = this.IhX.iterator();
     while (paramList.hasNext()) {
       paramCanvas.drawRect((RectF)paramList.next(), paramTextPaint);
     }
     paramTextPaint.setColor(i);
-    AppMethodBeat.o(3241);
+    AppMethodBeat.o(39743);
   }
 }
 

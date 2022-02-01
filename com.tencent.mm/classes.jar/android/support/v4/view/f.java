@@ -8,19 +8,19 @@ import java.lang.reflect.Field;
 
 public final class f
 {
-  private static Field FV;
-  private static boolean FW;
+  private static Field MV;
+  private static boolean MW;
   
   private static void a(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
   {
-    if (!FW) {}
+    if (!MW) {}
     try
     {
       Field localField = LayoutInflater.class.getDeclaredField("mFactory2");
-      FV = localField;
+      MV = localField;
       localField.setAccessible(true);
-      FW = true;
-      if (FV == null) {}
+      MW = true;
+      if (MV == null) {}
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
@@ -28,7 +28,7 @@ public final class f
       {
         try
         {
-          FV.set(paramLayoutInflater, paramFactory2);
+          MV.set(paramLayoutInflater, paramFactory2);
           return;
         }
         catch (IllegalAccessException paramFactory2)

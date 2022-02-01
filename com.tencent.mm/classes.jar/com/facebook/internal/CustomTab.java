@@ -14,33 +14,33 @@ public class CustomTab
   
   public CustomTab(String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(96613);
+    AppMethodBeat.i(7637);
     Bundle localBundle = paramBundle;
     if (paramBundle == null) {
       localBundle = new Bundle();
     }
     this.uri = Utility.buildUri(ServerProtocol.getDialogAuthority(), FacebookSdk.getGraphApiVersion() + "/dialog/" + paramString, localBundle);
-    AppMethodBeat.o(96613);
+    AppMethodBeat.o(7637);
   }
   
   public void openCustomTab(Activity paramActivity, String paramString)
   {
-    AppMethodBeat.i(96614);
+    AppMethodBeat.i(7638);
     Object localObject = new b.a();
-    if (((b.a)localObject).dA != null) {
-      ((b.a)localObject).mIntent.putParcelableArrayListExtra("android.support.customtabs.extra.MENU_ITEMS", ((b.a)localObject).dA);
+    if (((b.a)localObject).dB != null) {
+      ((b.a)localObject).mIntent.putParcelableArrayListExtra("android.support.customtabs.extra.MENU_ITEMS", ((b.a)localObject).dB);
     }
-    if (((b.a)localObject).dC != null) {
-      ((b.a)localObject).mIntent.putParcelableArrayListExtra("android.support.customtabs.extra.TOOLBAR_ITEMS", ((b.a)localObject).dC);
+    if (((b.a)localObject).dD != null) {
+      ((b.a)localObject).mIntent.putParcelableArrayListExtra("android.support.customtabs.extra.TOOLBAR_ITEMS", ((b.a)localObject).dD);
     }
-    ((b.a)localObject).mIntent.putExtra("android.support.customtabs.extra.EXTRA_ENABLE_INSTANT_APPS", ((b.a)localObject).dD);
-    localObject = new android.support.customtabs.b(((b.a)localObject).mIntent, ((b.a)localObject).dB, (byte)0);
+    ((b.a)localObject).mIntent.putExtra("android.support.customtabs.extra.EXTRA_ENABLE_INSTANT_APPS", ((b.a)localObject).dE);
+    localObject = new android.support.customtabs.b(((b.a)localObject).mIntent, ((b.a)localObject).dC, (byte)0);
     ((android.support.customtabs.b)localObject).intent.setPackage(paramString);
     ((android.support.customtabs.b)localObject).intent.addFlags(1073741824);
     paramString = this.uri;
     ((android.support.customtabs.b)localObject).intent.setData(paramString);
-    android.support.v4.content.b.startActivity(paramActivity, ((android.support.customtabs.b)localObject).intent, ((android.support.customtabs.b)localObject).dz);
-    AppMethodBeat.o(96614);
+    android.support.v4.content.b.startActivity(paramActivity, ((android.support.customtabs.b)localObject).intent, ((android.support.customtabs.b)localObject).dA);
+    AppMethodBeat.o(7638);
   }
 }
 

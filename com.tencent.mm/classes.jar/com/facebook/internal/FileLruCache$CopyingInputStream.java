@@ -18,15 +18,15 @@ final class FileLruCache$CopyingInputStream
   
   public final int available()
   {
-    AppMethodBeat.i(72336);
+    AppMethodBeat.i(17772);
     int i = this.input.available();
-    AppMethodBeat.o(72336);
+    AppMethodBeat.o(17772);
     return i;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(72337);
+    AppMethodBeat.i(17773);
     try
     {
       this.input.close();
@@ -35,15 +35,15 @@ final class FileLruCache$CopyingInputStream
     finally
     {
       this.output.close();
-      AppMethodBeat.o(72337);
+      AppMethodBeat.o(17773);
     }
   }
   
   public final void mark(int paramInt)
   {
-    AppMethodBeat.i(72338);
+    AppMethodBeat.i(17774);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
-    AppMethodBeat.o(72338);
+    AppMethodBeat.o(17774);
     throw localUnsupportedOperationException;
   }
   
@@ -54,34 +54,34 @@ final class FileLruCache$CopyingInputStream
   
   public final int read()
   {
-    AppMethodBeat.i(72340);
+    AppMethodBeat.i(17776);
     int i = this.input.read();
     if (i >= 0) {
       this.output.write(i);
     }
-    AppMethodBeat.o(72340);
+    AppMethodBeat.o(17776);
     return i;
   }
   
   public final int read(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(72339);
+    AppMethodBeat.i(17775);
     int i = this.input.read(paramArrayOfByte);
     if (i > 0) {
       this.output.write(paramArrayOfByte, 0, i);
     }
-    AppMethodBeat.o(72339);
+    AppMethodBeat.o(17775);
     return i;
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(72341);
+    AppMethodBeat.i(17777);
     paramInt2 = this.input.read(paramArrayOfByte, paramInt1, paramInt2);
     if (paramInt2 > 0) {
       this.output.write(paramArrayOfByte, paramInt1, paramInt2);
     }
-    AppMethodBeat.o(72341);
+    AppMethodBeat.o(17777);
     return paramInt2;
   }
   
@@ -89,9 +89,9 @@ final class FileLruCache$CopyingInputStream
   {
     try
     {
-      AppMethodBeat.i(72342);
+      AppMethodBeat.i(17778);
       UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
-      AppMethodBeat.o(72342);
+      AppMethodBeat.o(17778);
       throw localUnsupportedOperationException;
     }
     finally {}
@@ -99,7 +99,7 @@ final class FileLruCache$CopyingInputStream
   
   public final long skip(long paramLong)
   {
-    AppMethodBeat.i(72343);
+    AppMethodBeat.i(17779);
     byte[] arrayOfByte = new byte[1024];
     int i;
     for (long l = 0L; l < paramLong; l += i)
@@ -107,17 +107,17 @@ final class FileLruCache$CopyingInputStream
       i = read(arrayOfByte, 0, (int)Math.min(paramLong - l, 1024L));
       if (i < 0)
       {
-        AppMethodBeat.o(72343);
+        AppMethodBeat.o(17779);
         return l;
       }
     }
-    AppMethodBeat.o(72343);
+    AppMethodBeat.o(17779);
     return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.facebook.internal.FileLruCache.CopyingInputStream
  * JD-Core Version:    0.7.0.1
  */

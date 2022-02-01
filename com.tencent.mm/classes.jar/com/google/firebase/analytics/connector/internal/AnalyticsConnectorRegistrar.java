@@ -21,15 +21,15 @@ public class AnalyticsConnectorRegistrar
   @KeepForSdk
   public List<com.google.firebase.components.a<?>> getComponents()
   {
-    AppMethodBeat.i(67875);
-    List localList = Collections.singletonList(com.google.firebase.components.a.n(com.google.firebase.analytics.connector.a.class).a(f.p(com.google.firebase.a.class)).a(f.p(Context.class)).a(a.ber).rI());
-    AppMethodBeat.o(67875);
+    AppMethodBeat.i(116770);
+    List localList = Collections.singletonList(com.google.firebase.components.a.x(com.google.firebase.analytics.connector.a.class).a(f.z(com.google.firebase.a.class)).a(f.z(Context.class)).a(a.bCr).wH());
+    AppMethodBeat.o(116770);
     return localList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
  * JD-Core Version:    0.7.0.1
  */

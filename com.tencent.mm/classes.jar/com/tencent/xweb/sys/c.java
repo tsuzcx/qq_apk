@@ -1,28 +1,27 @@
 package com.tencent.xweb.sys;
 
 import android.os.Build.VERSION;
-import android.webkit.JsPromptResult;
-import android.webkit.WebResourceResponse;
+import android.webkit.SslErrorHandler;
+import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.i;
-import com.tencent.xweb.s;
+import com.tencent.xweb.q;
 import org.xwalk.core.Log;
 
 public final class c
 {
-  public static WebResourceResponse a(s params)
+  public static android.webkit.WebResourceResponse a(com.tencent.xweb.WebResourceResponse paramWebResourceResponse)
   {
-    AppMethodBeat.i(84659);
-    if (params == null)
+    AppMethodBeat.i(153667);
+    if (paramWebResourceResponse == null)
     {
-      AppMethodBeat.o(84659);
+      AppMethodBeat.o(153667);
       return null;
     }
-    if ((params.BDU) && (Build.VERSION.SDK_INT >= 21)) {
+    if ((paramWebResourceResponse.INl) && (Build.VERSION.SDK_INT >= 21)) {
       try
       {
-        WebResourceResponse localWebResourceResponse1 = new WebResourceResponse(params.mMimeType, params.mEncoding, params.mStatusCode, params.mReasonPhrase, params.mResponseHeaders, params.mInputStream);
-        AppMethodBeat.o(84659);
+        android.webkit.WebResourceResponse localWebResourceResponse1 = new android.webkit.WebResourceResponse(paramWebResourceResponse.mMimeType, paramWebResourceResponse.mEncoding, paramWebResourceResponse.mStatusCode, paramWebResourceResponse.mReasonPhrase, paramWebResourceResponse.mResponseHeaders, paramWebResourceResponse.mInputStream);
+        AppMethodBeat.o(153667);
         return localWebResourceResponse1;
       }
       catch (Exception localException)
@@ -30,52 +29,47 @@ public final class c
         Log.e("SysWebDataTrans", "create webkit WebResourceResponse error :" + localException.getMessage());
       }
     }
-    WebResourceResponse localWebResourceResponse2 = new WebResourceResponse(params.mMimeType, params.mEncoding, params.mInputStream);
+    android.webkit.WebResourceResponse localWebResourceResponse2 = new android.webkit.WebResourceResponse(paramWebResourceResponse.mMimeType, paramWebResourceResponse.mEncoding, paramWebResourceResponse.mInputStream);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      if ((params.mStatusCode > 100) && (params.mReasonPhrase != null) && (!params.mReasonPhrase.isEmpty())) {
-        localWebResourceResponse2.setStatusCodeAndReasonPhrase(params.mStatusCode, params.mReasonPhrase);
+      if ((paramWebResourceResponse.mStatusCode > 100) && (paramWebResourceResponse.mReasonPhrase != null) && (!paramWebResourceResponse.mReasonPhrase.isEmpty())) {
+        localWebResourceResponse2.setStatusCodeAndReasonPhrase(paramWebResourceResponse.mStatusCode, paramWebResourceResponse.mReasonPhrase);
       }
-      localWebResourceResponse2.setResponseHeaders(params.mResponseHeaders);
+      localWebResourceResponse2.setResponseHeaders(paramWebResourceResponse.mResponseHeaders);
     }
-    AppMethodBeat.o(84659);
+    AppMethodBeat.o(153667);
     return localWebResourceResponse2;
   }
   
-  public static final class c
-    extends i
+  @JgClassChecked(author=20001, fComment="checked", lastDate="20171024", reviewer=20001, vComment={com.jg.EType.JSEXECUTECHECK})
+  public static final class a
+    implements q
   {
-    public JsPromptResult BHk;
+    SslErrorHandler IQT;
     
-    public c(JsPromptResult paramJsPromptResult)
+    public a(SslErrorHandler paramSslErrorHandler)
     {
-      this.BHk = paramJsPromptResult;
+      this.IQT = paramSslErrorHandler;
     }
     
     public final void cancel()
     {
-      AppMethodBeat.i(84655);
-      if (this.BHk != null) {
-        this.BHk.cancel();
-      }
-      AppMethodBeat.o(84655);
+      AppMethodBeat.i(153658);
+      this.IQT.cancel();
+      AppMethodBeat.o(153658);
     }
     
-    public final void confirm()
+    public final void proceed()
     {
-      AppMethodBeat.i(84654);
-      if (this.BHk != null) {
-        this.BHk.confirm();
-      }
-      AppMethodBeat.o(84654);
+      AppMethodBeat.i(153657);
+      this.IQT.proceed();
+      AppMethodBeat.o(153657);
     }
-    
-    public final void confirmWithResult(String paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.sys.c
  * JD-Core Version:    0.7.0.1
  */

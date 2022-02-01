@@ -50,7 +50,7 @@
     <th-value><![CDATA[[Tea]]]></th-value>  
     <fileName>2_07.png</fileName>  
     <eggIndex>2007</eggIndex> 
-  </emoji>  
+  </emoji> 
   <emoji> 
     <key><![CDATA[[Packet]]]></key>
     <cn-value><![CDATA[[红包]]]></cn-value>  
@@ -70,7 +70,7 @@
     <th-value><![CDATA[[Candle]]]></th-value>  
     <fileName>2_10.png</fileName>  
     <eggIndex>2010</eggIndex> 
-  </emoji>  
+  </emoji> 
   <emoji> 
     <key><![CDATA[[Yeah!]]]></key>
     <cn-value><![CDATA[[耶]]]></cn-value>  
@@ -80,17 +80,17 @@
     <th-value><![CDATA[[Yeah!]]]></th-value>  
     <fileName>2_11.png</fileName>  
     <eggIndex>2011</eggIndex> 
-  </emoji>  
+  </emoji>   
   <emoji> 
-    <key><![CDATA[[Moue]]]></key>
+    <key><![CDATA[[Concerned]]]></key>
     <cn-value><![CDATA[[皱眉]]]></cn-value>  
     <qq-value><![CDATA[[皱眉]]]></qq-value>  
-    <en-value><![CDATA[[Moue]]]></en-value>  
+    <en-value><![CDATA[[Concerned]]]></en-value>  
     <tw-value><![CDATA[[皺眉]]]></tw-value>
-    <th-value><![CDATA[[Moue]]]></th-value>  
+    <th-value><![CDATA[[Concerned]]]></th-value>  
     <fileName>2_12.png</fileName>  
-    <eggIndex>2012</eggIndex> 
-  </emoji>  
+    <eggIndex>2018</eggIndex> 
+  </emoji> 
   <emoji> 
     <key><![CDATA[[Blush]]]></key>  
     <cn-value><![CDATA[[囧]]]></cn-value>  
@@ -120,7 +120,7 @@
     <th-value><![CDATA[[Chick]]]></th-value>  
     <fileName>2_14.png</fileName>  
     <eggIndex>2015</eggIndex> 
-  </emoji>  
+  </emoji> 
   <emoji> 
     <key><![CDATA[[Blessing]]]></key>  
     <cn-value><![CDATA[[福]]]></cn-value>  
@@ -141,16 +141,7 @@
     <fileName>smiley_39b.png</fileName>  
     <eggIndex>2017</eggIndex> 
   </emoji>  
-  <emoji> 
-    <key><![CDATA[[Concerned]]]></key>
-    <cn-value><![CDATA[[皱眉]]]></cn-value>  
-    <qq-value><![CDATA[[皱眉]]]></qq-value>  
-    <en-value><![CDATA[[Concerned]]]></en-value>  
-    <tw-value><![CDATA[[皺眉]]]></tw-value>
-    <th-value><![CDATA[[Concerned]]]></th-value>  
-    <fileName>2_12.png</fileName>  
-    <eggIndex>2018</eggIndex> 
-  </emoji>  
+ 
   <emoji> 
     <key><![CDATA[[Rich]]]></key>
     <cn-value><![CDATA[[發]]]></cn-value>  
@@ -170,5 +161,115 @@
     <th-value><![CDATA[[Pup]]]></th-value>  
     <fileName>2_17.png</fileName>  
     <eggIndex>2020</eggIndex> 
+  </emoji> 
+  <emoji> 
+    <key><![CDATA[[Onlooker]]]></key>
+    <cn-value><![CDATA[[吃瓜]]]></cn-value>  
+    <qq-value><![CDATA[[吃瓜]]]></qq-value>  
+    <en-value><![CDATA[[Onlooker]]]></en-value>  
+    <tw-value><![CDATA[[吃西瓜]]]></tw-value>
+    <th-value><![CDATA[[Onlooker]]]></th-value>  
+    <fileName>Watermelon.png</fileName>  
+    <eggIndex>2021</eggIndex> 
+ </emoji>
+  <emoji> 
+    <key><![CDATA[[GoForIt]]]></key>
+    <cn-value><![CDATA[[加油]]]></cn-value>  
+    <qq-value><![CDATA[[加油]]]></qq-value>  
+    <en-value><![CDATA[[GoForIt]]]></en-value>  
+    <tw-value><![CDATA[[加油]]]></tw-value>
+    <th-value><![CDATA[[GoForIt]]]></th-value>  
+    <fileName>Addoil.png</fileName>  
+    <eggIndex>2022</eggIndex> 
+  </emoji>
+    <emoji> 
+    <key><![CDATA[[Sweats]]]></key>
+    <cn-value><![CDATA[[汗]]]></cn-value>  
+    <qq-value><![CDATA[[汗]]]></qq-value>  
+    <en-value><![CDATA[[Sweats]]]></en-value>  
+    <tw-value><![CDATA[[汗]]]></tw-value>
+    <th-value><![CDATA[[Sweats]]]></th-value>  
+    <fileName>Sweat.png</fileName>  
+    <eggIndex>2023</eggIndex> 
+  </emoji>
+    <emoji> 
+    <key><![CDATA[[OMG]]]></key>
+    <cn-value><![CDATA[[天啊]]]></cn-value>  
+    <qq-value><![CDATA[[天啊]]]></qq-value>  
+    <en-value><![CDATA[[OMG]]]></en-value>  
+    <tw-value><![CDATA[[天啊]]]></tw-value>
+    <th-value><![CDATA[[OMG]]]></th-value>  
+    <fileName>Shocked!.png</fileName>  
+    <eggIndex>2025</eggIndex> 
   </emoji>  
+    <emoji> 
+    <key><![CDATA[[Emm]]]></key>
+    <cn-value><![CDATA[[Emm]]]></cn-value>  
+    <qq-value><![CDATA[[Emm]]]></qq-value>  
+    <en-value><![CDATA[[Emm]]]></en-value>  
+    <tw-value><![CDATA[[一言難盡]]]></tw-value>
+    <th-value><![CDATA[[Emm]]]></th-value>  
+    <fileName>Cold.png</fileName>  
+    <eggIndex>2027</eggIndex> 
+  </emoji>
+    <emoji> 
+    <key><![CDATA[[Respect]]]></key>
+    <cn-value><![CDATA[[社会社会]]]></cn-value>  
+    <qq-value><![CDATA[[社会社会]]]></qq-value>  
+    <en-value><![CDATA[[Respect]]]></en-value>  
+    <tw-value><![CDATA[[失敬失敬]]]></tw-value>
+    <th-value><![CDATA[[Respect]]]></th-value>  
+    <fileName>Social.png</fileName>  
+    <eggIndex>2028</eggIndex> 
+  </emoji>
+   <emoji> 
+    <key><![CDATA[[Doge]]]></key>
+    <cn-value><![CDATA[[旺柴]]]></cn-value>  
+    <qq-value><![CDATA[[旺柴]]]></qq-value>  
+    <en-value><![CDATA[[Doge]]]></en-value>  
+    <tw-value><![CDATA[[旺柴]]]></tw-value>
+    <th-value><![CDATA[[Doge]]]></th-value>  
+    <fileName>Yellowdog.png</fileName>  
+    <eggIndex>2030</eggIndex> 
+ </emoji>
+   <emoji> 
+    <key><![CDATA[[NoProb]]]></key>
+    <cn-value><![CDATA[[好的]]]></cn-value>  
+    <qq-value><![CDATA[[好的]]]></qq-value>  
+    <en-value><![CDATA[[NoProb]]]></en-value>  
+    <tw-value><![CDATA[[好的]]]></tw-value>
+    <th-value><![CDATA[[NoProb]]]></th-value>  
+    <fileName>NoProb.png</fileName>  
+    <eggIndex>2034</eggIndex> 
+ </emoji>
+    <emoji> 
+    <key><![CDATA[[MyBad]]]></key>
+    <cn-value><![CDATA[[打脸]]]></cn-value>  
+    <qq-value><![CDATA[[打脸]]]></qq-value>  
+    <en-value><![CDATA[[MyBad]]]></en-value>  
+    <tw-value><![CDATA[[打臉]]]></tw-value>
+    <th-value><![CDATA[[MyBad]]]></th-value>  
+    <fileName>Slap.png</fileName>  
+    <eggIndex>2036</eggIndex> 
+  </emoji>
+    <emoji> 
+    <key><![CDATA[[Wow]]]></key>
+    <cn-value><![CDATA[[哇]]]></cn-value>  
+    <qq-value><![CDATA[[哇]]]></qq-value>  
+    <en-value><![CDATA[[Wow]]]></en-value>  
+    <tw-value><![CDATA[[哇]]]></tw-value>
+    <th-value><![CDATA[[Wow]]]></th-value>  
+    <fileName>Wow!.png</fileName>  
+    <eggIndex>2037</eggIndex>
+  </emoji>	
+  <emoji> 
+    <key><![CDATA[[KeepFighting]]]></key>
+    <cn-value><![CDATA[[加油加油]]]></cn-value>  
+    <qq-value><![CDATA[[加油加油]]]></qq-value>  
+    <en-value><![CDATA[[KeepFighting]]]></en-value>  
+    <tw-value><![CDATA[[加油！]]]></tw-value>
+    <th-value><![CDATA[[KeepFighting]]]></th-value>  
+    <fileName>KeepFighting.png</fileName>  
+    <eggIndex>2038</eggIndex> 
+  </emoji> 
 </newemoji>

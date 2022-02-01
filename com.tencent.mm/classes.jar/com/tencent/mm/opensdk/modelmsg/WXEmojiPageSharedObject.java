@@ -34,20 +34,20 @@ public class WXEmojiPageSharedObject
   
   public boolean checkArgs()
   {
-    AppMethodBeat.i(128285);
+    AppMethodBeat.i(3985);
     if ((d.b(this.title)) || (d.b(this.iconUrl)))
     {
       Log.e("MicroMsg.SDK.WXEmojiSharedObject", "checkArgs fail, title or iconUrl is invalid");
-      AppMethodBeat.o(128285);
+      AppMethodBeat.o(3985);
       return false;
     }
-    AppMethodBeat.o(128285);
+    AppMethodBeat.o(3985);
     return true;
   }
   
   public void serialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128283);
+    AppMethodBeat.i(3983);
     paramBundle.putInt("_wxemojisharedobject_tid", this.tid);
     paramBundle.putString("_wxemojisharedobject_title", this.title);
     paramBundle.putString("_wxemojisharedobject_desc", this.desc);
@@ -55,7 +55,7 @@ public class WXEmojiPageSharedObject
     paramBundle.putString("_wxemojisharedobject_secondurl", this.secondUrl);
     paramBundle.putInt("_wxemojisharedobject_pagetype", this.pageType);
     paramBundle.putString("_wxwebpageobject_url", this.url);
-    AppMethodBeat.o(128283);
+    AppMethodBeat.o(3983);
   }
   
   public int type()
@@ -65,7 +65,7 @@ public class WXEmojiPageSharedObject
   
   public void unserialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128284);
+    AppMethodBeat.i(3984);
     this.tid = paramBundle.getInt("_wxemojisharedobject_tid");
     this.title = paramBundle.getString("_wxemojisharedobject_title");
     this.desc = paramBundle.getString("_wxemojisharedobject_desc");
@@ -73,12 +73,12 @@ public class WXEmojiPageSharedObject
     this.secondUrl = paramBundle.getString("_wxemojisharedobject_secondurl");
     this.pageType = paramBundle.getInt("_wxemojisharedobject_pagetype");
     this.url = paramBundle.getString("_wxwebpageobject_url");
-    AppMethodBeat.o(128284);
+    AppMethodBeat.o(3984);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXEmojiPageSharedObject
  * JD-Core Version:    0.7.0.1
  */

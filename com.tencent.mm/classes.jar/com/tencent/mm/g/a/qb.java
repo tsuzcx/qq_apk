@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class qb
   extends b
 {
-  public qb.a cGD;
+  public a dvF;
   
   public qb()
   {
@@ -15,11 +15,16 @@ public final class qb
   
   private qb(byte paramByte)
   {
-    AppMethodBeat.i(77568);
-    this.cGD = new qb.a();
-    this.ymq = false;
+    AppMethodBeat.i(125625);
+    this.dvF = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77568);
+    AppMethodBeat.o(125625);
+  }
+  
+  public static final class a
+  {
+    public int state = -1;
   }
 }
 

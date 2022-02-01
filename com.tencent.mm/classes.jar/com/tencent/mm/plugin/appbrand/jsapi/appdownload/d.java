@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.appdownload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.q;
 import java.util.HashMap;
 
 public final class d
@@ -10,26 +10,26 @@ public final class d
   public static final int CTRL_INDEX = 662;
   public static final String NAME = "onDownloadAppStateChangeForNative";
   
-  private d(r paramr)
+  private d(q paramq)
   {
-    super(paramr);
+    super(paramq);
   }
   
-  public static void l(r paramr)
+  public static void l(q paramq)
   {
-    AppMethodBeat.i(143279);
-    if (hAR.containsKey(paramr.getAppId()))
+    AppMethodBeat.i(45742);
+    if (jAv.containsKey(paramq.getAppId()))
     {
-      AppMethodBeat.o(143279);
+      AppMethodBeat.o(45742);
       return;
     }
-    a(paramr, new d(paramr));
-    AppMethodBeat.o(143279);
+    a(paramq, new d(paramq));
+    AppMethodBeat.o(45742);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.appdownload.d
  * JD-Core Version:    0.7.0.1
  */

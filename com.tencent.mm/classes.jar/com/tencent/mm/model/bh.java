@@ -1,285 +1,347 @@
 package com.tencent.mm.model;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.z;
-import java.util.Map;
+import com.tencent.mm.model.a.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class bh
+public class bh
 {
-  public static int fnb = 0;
+  private static bh gNF;
+  public b gNE;
   
-  public static void B(String paramString, boolean paramBoolean)
+  public static bh asb()
   {
-    AppMethodBeat.i(77813);
-    if ("bizflag".equals(paramString))
+    AppMethodBeat.i(20376);
+    try
     {
-      if (paramBoolean)
-      {
-        fnb |= 0x1;
-        AppMethodBeat.o(77813);
-        return;
+      if (gNF == null) {
+        gNF = new bh();
       }
-      fnb &= 0xFFFFFFFE;
+      bh localbh = gNF;
+      AppMethodBeat.o(20376);
+      return localbh;
     }
-    AppMethodBeat.o(77813);
+    finally
+    {
+      AppMethodBeat.o(20376);
+    }
   }
   
-  public static void a(bi parambi, int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2)
+  public static bg asc()
   {
-    AppMethodBeat.i(77823);
-    if (parambi != null)
+    AppMethodBeat.i(20378);
+    az.arV();
+    Object localObject = c.qR("banner");
+    if (localObject == null)
     {
-      Object localObject2 = parambi.dns;
-      Object localObject1;
-      if (!bo.isNullOrNil((String)localObject2))
+      AppMethodBeat.o(20378);
+      return null;
+    }
+    int i = ((SharedPreferences)localObject).getInt("CurrentType", -1);
+    int j = ((SharedPreferences)localObject).getInt("CurrentShowType", -1);
+    localObject = ((SharedPreferences)localObject).getString("CurrentData", "");
+    if (i != -1)
+    {
+      switch (i)
       {
-        localObject1 = localObject2;
-        if (((String)localObject2).trim().startsWith("<msgsource>")) {}
+      case 4: 
+      case 6: 
+      case 7: 
+      case 8: 
+      case 9: 
+      case 10: 
+      default: 
+      case 1: 
+      case 3: 
+      case 2: 
+        do
+        {
+          a locala;
+          do
+          {
+            localObject = new bg(i, j, (String)localObject);
+            AppMethodBeat.o(20378);
+            return localObject;
+            locala = ase();
+          } while ((locala != a.gNI) && (locala != a.gNJ) && (!g.asX().asV()));
+          if (g.asX().asV()) {
+            ad.i("MicorMsg.MainFrameBannerStorage", "has abtest case. ignore bind bind contacts banner.");
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(20378);
+            return null;
+            ad.i("MicorMsg.MainFrameBannerStorage", "already Bind the Mobile");
+          }
+          ad.i("MicorMsg.MainFrameBannerStorage", "avatar already existed");
+          AppMethodBeat.o(20378);
+          return null;
+        } while ((ase() != a.gNI) && (!g.asX().asV()));
+        if (g.asX().asV()) {
+          ad.i("MicorMsg.MainFrameBannerStorage", "has abtest case. ignore bind upload contacts banner.");
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(20378);
+          return null;
+          ad.i("MicorMsg.MainFrameBannerStorage", "already upload the contacts");
+        }
+      case 10000: 
+      case 57005: 
+        AppMethodBeat.o(20378);
+        return null;
       }
-      else
-      {
-        localObject1 = "<msgsource></msgsource>";
-      }
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("<sec_msg_node>");
-      ((StringBuilder)localObject2).append("<sfn>").append(paramInt1).append("</sfn>");
-      ((StringBuilder)localObject2).append("<fd>").append(paramInt2).append("</fd>");
-      ((StringBuilder)localObject2).append("<show-h5><![CDATA[").append(bo.nullAsNil(paramString1)).append("]]></show-h5>");
-      ((StringBuilder)localObject2).append("<clip-len>").append(paramInt3).append("</clip-len>");
-      ((StringBuilder)localObject2).append("<share-tip-url><![CDATA[").append(bo.nullAsNil(paramString2)).append("]]></share-tip-url>");
-      ((StringBuilder)localObject2).append("</sec_msg_node>");
-      parambi.jl(((String)localObject1).replaceAll("(?s)<sec_msg_node[^>]*>.*?</sec_msg_node>", "").replace("</msgsource>", ((StringBuilder)localObject2).toString() + "</msgsource>"));
-      ((j)g.E(j.class)).bPQ().b(parambi.field_msgSvrId, parambi);
+      AppMethodBeat.o(20378);
+      return null;
     }
-    AppMethodBeat.o(77823);
-  }
-  
-  public static String aaP()
-  {
-    AppMethodBeat.i(77814);
-    Object localObject = new StringBuilder();
-    if (fnb != 0)
-    {
-      ((StringBuilder)localObject).append("<");
-      ((StringBuilder)localObject).append("bizflag");
-      ((StringBuilder)localObject).append(">");
-      ((StringBuilder)localObject).append(fnb);
-      ((StringBuilder)localObject).append("</");
-      ((StringBuilder)localObject).append("bizflag");
-      ((StringBuilder)localObject).append(">");
-    }
-    localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(77814);
-    return localObject;
-  }
-  
-  public static String aaQ()
-  {
-    AppMethodBeat.i(77816);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(bo.nullAsNil(aaP()));
-    if (((StringBuilder)localObject).length() > 0)
-    {
-      ((StringBuilder)localObject).insert(0, "<msgsource>");
-      ((StringBuilder)localObject).append("</msgsource>");
-      localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(77816);
-      return localObject;
-    }
-    AppMethodBeat.o(77816);
+    AppMethodBeat.o(20378);
     return null;
   }
   
-  public static String aaR()
+  private static boolean asd()
   {
-    AppMethodBeat.i(77824);
-    String str = (String)g.RL().Ru().get(70, null);
-    if (!bo.isNullOrNil(str)) {
-      g.RL().Ru().set(70, "");
-    }
-    ab.d("MicroMsg.MsgSourceHelper", "getMsg ccr[%s]", new Object[] { str });
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("<msgsource>");
-    localStringBuilder.append(bo.nullAsNil(str));
-    if (fnb != 0)
+    AppMethodBeat.i(20380);
+    az.arV();
+    SharedPreferences localSharedPreferences = c.qR("banner");
+    if ((localSharedPreferences != null) && (localSharedPreferences.edit().clear().commit()))
     {
-      localStringBuilder.append("<");
-      localStringBuilder.append("bizflag");
-      localStringBuilder.append(">");
-      localStringBuilder.append(fnb);
-      localStringBuilder.append("</");
-      localStringBuilder.append("bizflag");
-      localStringBuilder.append(">");
+      AppMethodBeat.o(20380);
+      return true;
     }
-    localStringBuilder.append("</msgsource>");
-    str = localStringBuilder.toString();
-    if ("<msgsource></msgsource>".equals(str))
-    {
-      AppMethodBeat.o(77824);
-      return "";
-    }
-    ab.d("MicroMsg.MsgSourceHelper", "getAndResetMsgSrcIn msgsource[%s]", new Object[] { str });
-    AppMethodBeat.o(77824);
-    return str;
-  }
-  
-  public static int n(bi parambi)
-  {
-    AppMethodBeat.i(77815);
-    if (parambi == null)
-    {
-      AppMethodBeat.o(77815);
-      return 0;
-    }
-    parambi = br.F(parambi.dns, "msgsource");
-    if (parambi != null)
-    {
-      parambi = (String)parambi.get(".msgsource.bizflag");
-      if (bo.isNullOrNil(parambi)) {}
-    }
-    for (int i = bo.getInt(parambi, 0);; i = 0)
-    {
-      AppMethodBeat.o(77815);
-      return i;
-    }
-  }
-  
-  public static boolean o(bi parambi)
-  {
-    AppMethodBeat.i(77817);
-    if ((parambi != null) && (!bo.isNullOrNil(parambi.dns)))
-    {
-      parambi = br.F(parambi.dns, "msgsource");
-      if ((parambi != null) && (bo.apV((String)parambi.get(".msgsource.sec_msg_node.sfn")) == 1))
-      {
-        AppMethodBeat.o(77817);
-        return true;
-      }
-    }
-    AppMethodBeat.o(77817);
+    AppMethodBeat.o(20380);
     return false;
   }
   
-  public static void p(bi parambi)
+  public static a ase()
   {
-    AppMethodBeat.i(77818);
-    if ((parambi != null) && (!bo.isNullOrNil(parambi.dns)))
+    AppMethodBeat.i(20384);
+    for (;;)
     {
-      Object localObject = br.F(parambi.dns, "msgsource");
-      if ((localObject != null) && (bo.apV((String)((Map)localObject).get(".msgsource.sec_msg_node.sfn")) == 1)) {
-        try
+      try
+      {
+        az.arV();
+        localObject2 = (String)c.afk().get(4097, "");
+        az.arV();
+        String str = (String)c.afk().get(6, "");
+        boolean bool = u.arl();
+        ad.d("MicorMsg.MainFrameBannerStorage", "isUpload " + bool + " stat " + u.aqK());
+        if (localObject2 != null)
         {
-          localObject = parambi.dns.substring(parambi.dns.indexOf("<sec_msg_node"), parambi.dns.indexOf("</sec_msg_node") + 12 + 2);
-          ab.i("MicroMsg.MsgSourceHelper", (String)localObject);
-          if (!bo.isNullOrNil((String)localObject))
+          Object localObject1 = localObject2;
+          if (((String)localObject2).length() > 0)
           {
-            String str = ((String)localObject).substring(((String)localObject).indexOf("<sfn"), ((String)localObject).indexOf("</sfn") + 3 + 2);
-            parambi.jl(parambi.dns.replace((CharSequence)localObject, ((String)localObject).replace(str, "<sfn>0<sfn/>")));
+            if (str == null) {
+              break label197;
+            }
+            localObject2 = str;
+            if (str.length() <= 0) {
+              break label197;
+            }
+            if ((localObject1 == null) && (localObject2 == null))
+            {
+              localObject1 = a.gNG;
+              AppMethodBeat.o(20384);
+              return localObject1;
+            }
+            if ((localObject1 != null) && (localObject2 == null))
+            {
+              localObject1 = a.gNH;
+              AppMethodBeat.o(20384);
+              return localObject1;
+            }
+            if (bool)
+            {
+              localObject1 = a.gNI;
+              AppMethodBeat.o(20384);
+              return localObject1;
+            }
+            localObject1 = a.gNJ;
+            AppMethodBeat.o(20384);
+            return localObject1;
           }
-          AppMethodBeat.o(77818);
-          return;
-        }
-        catch (Exception parambi)
-        {
-          ab.printErrStackTrace("MicroMsg.MsgSourceHelper", parambi, "resetShareForbidden msg exception", new Object[0]);
         }
       }
-    }
-    AppMethodBeat.o(77818);
-  }
-  
-  public static void pC(String paramString)
-  {
-    AppMethodBeat.i(77825);
-    ab.i("MicroMsg.MsgSourceHelper", "parseMsgSource  has been Deprecated  by dk. at 20151218 [%s] %s ", new Object[] { paramString, "" });
-    AppMethodBeat.o(77825);
-  }
-  
-  public static boolean q(bi parambi)
-  {
-    AppMethodBeat.i(77819);
-    if ((parambi != null) && (!bo.isNullOrNil(parambi.dns)))
-    {
-      parambi = br.F(parambi.dns, "msgsource");
-      if ((parambi != null) && (bo.apV((String)parambi.get(".msgsource.sec_msg_node.fd")) == 1))
+      catch (Exception localException)
       {
-        AppMethodBeat.o(77819);
-        return true;
+        locala = a.gNG;
+        AppMethodBeat.o(20384);
+        return locala;
       }
+      a locala = null;
+      continue;
+      label197:
+      Object localObject2 = null;
     }
-    AppMethodBeat.o(77819);
-    return false;
   }
   
-  public static String r(bi parambi)
+  private static boolean b(bg parambg)
   {
-    AppMethodBeat.i(77820);
-    if ((parambi != null) && (!bo.isNullOrNil(parambi.dns)))
+    AppMethodBeat.i(20381);
+    boolean bool = ub("HistoryInfo").contains(Integer.valueOf(parambg.type));
+    AppMethodBeat.o(20381);
+    return bool;
+  }
+  
+  private static boolean f(String paramString, List<Integer> paramList)
+  {
+    AppMethodBeat.i(20382);
+    az.arV();
+    Object localObject = c.qR("banner");
+    if (localObject == null)
     {
-      parambi = br.F(parambi.dns, "msgsource");
-      if (parambi != null)
+      AppMethodBeat.o(20382);
+      return false;
+    }
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putInt(paramString + "ArraySize", paramList.size());
+    int i = 0;
+    while (i < paramList.size())
+    {
+      ((SharedPreferences.Editor)localObject).putInt(paramString + i, ((Integer)paramList.get(i)).intValue());
+      i += 1;
+    }
+    boolean bool = ((SharedPreferences.Editor)localObject).commit();
+    AppMethodBeat.o(20382);
+    return bool;
+  }
+  
+  private static List<Integer> ub(String paramString)
+  {
+    AppMethodBeat.i(20383);
+    az.arV();
+    SharedPreferences localSharedPreferences = c.qR("banner");
+    if (localSharedPreferences == null)
+    {
+      AppMethodBeat.o(20383);
+      return null;
+    }
+    int j = localSharedPreferences.getInt(paramString + "ArraySize", 0);
+    ArrayList localArrayList = new ArrayList(j);
+    int i = 0;
+    while (i < j)
+    {
+      localArrayList.add(Integer.valueOf(localSharedPreferences.getInt(paramString + i, 0)));
+      i += 1;
+    }
+    AppMethodBeat.o(20383);
+    return localArrayList;
+  }
+  
+  public final boolean a(bg parambg)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(20377);
+    if (parambg.type == 10000)
+    {
+      asd();
+      if (this.gNE != null) {
+        this.gNE.onNotify();
+      }
+      AppMethodBeat.o(20377);
+      return true;
+    }
+    if (parambg.type == 57005)
+    {
+      AppMethodBeat.o(20377);
+      return false;
+    }
+    az.arV();
+    Object localObject = c.qR("banner");
+    if (localObject == null)
+    {
+      AppMethodBeat.o(20377);
+      return false;
+    }
+    localObject = ((SharedPreferences)localObject).edit();
+    bg localbg = asc();
+    if (!b(parambg)) {}
+    for (;;)
+    {
+      if ((localbg != null) && (localbg.dcz == 2))
       {
-        parambi = (String)parambi.get(".msgsource.sec_msg_node.show-h5");
-        if (!bo.isNullOrNil(parambi))
-        {
-          AppMethodBeat.o(77820);
-          return parambi;
+        List localList = ub("HistoryInfo");
+        if (!localList.contains(Integer.valueOf(localbg.type))) {
+          localList.add(Integer.valueOf(localbg.type));
         }
+        f("HistoryInfo", localList);
       }
+      if (bool) {
+        ((SharedPreferences.Editor)localObject).putInt("CurrentType", parambg.type).putInt("CurrentShowType", parambg.dcz).putString("CurrentData", parambg.data).commit();
+      }
+      if (this.gNE != null) {
+        this.gNE.onNotify();
+      }
+      AppMethodBeat.o(20377);
+      return bool;
+      bool = false;
     }
-    AppMethodBeat.o(77820);
-    return "";
   }
   
-  public static String s(bi parambi)
+  public final void db(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(77821);
-    if ((parambi != null) && (!bo.isNullOrNil(parambi.dns)))
+    AppMethodBeat.i(20379);
+    az.arV();
+    Object localObject = c.qR("banner");
+    if (localObject == null)
     {
-      parambi = br.F(parambi.dns, "msgsource");
-      if (parambi != null)
-      {
-        parambi = (String)parambi.get(".msgsource.sec_msg_node.share-tip-url");
-        if (!bo.isNullOrNil(parambi))
-        {
-          AppMethodBeat.o(77821);
-          return parambi;
-        }
+      AppMethodBeat.o(20379);
+      return;
+    }
+    localObject = ((SharedPreferences)localObject).edit();
+    switch (paramInt2)
+    {
+    }
+    for (;;)
+    {
+      if (this.gNE != null) {
+        this.gNE.onNotify();
+      }
+      AppMethodBeat.o(20379);
+      return;
+      ((SharedPreferences.Editor)localObject).remove("CurrentType").remove("CurrentShowType").remove("CurrentData").commit();
+      continue;
+      ((SharedPreferences.Editor)localObject).remove("CurrentType").remove("CurrentShowType").remove("CurrentData").commit();
+      localObject = ub("HistoryInfo");
+      if (!((List)localObject).contains(Integer.valueOf(paramInt1))) {
+        ((List)localObject).add(Integer.valueOf(paramInt1));
+      }
+      f("HistoryInfo", (List)localObject);
+      continue;
+      if (paramInt1 == 3) {
+        ((SharedPreferences.Editor)localObject).remove("CurrentType").remove("CurrentShowType").remove("CurrentData").commit();
       }
     }
-    AppMethodBeat.o(77821);
-    return "";
   }
   
-  public static int t(bi parambi)
+  public static enum a
   {
-    AppMethodBeat.i(77822);
-    if ((parambi != null) && (!bo.isNullOrNil(parambi.dns)))
+    static
     {
-      parambi = br.F(parambi.dns, "msgsource");
-      if (parambi != null)
-      {
-        int i = bo.apV((String)parambi.get(".msgsource.sec_msg_node.clip-len"));
-        AppMethodBeat.o(77822);
-        return i;
-      }
+      AppMethodBeat.i(20375);
+      gNG = new a("NO_INIT", 0);
+      gNH = new a("SET_MOBILE", 1);
+      gNI = new a("SUCC", 2);
+      gNJ = new a("SUCC_UNLOAD", 3);
+      gNK = new a[] { gNG, gNH, gNI, gNJ };
+      AppMethodBeat.o(20375);
     }
-    AppMethodBeat.o(77822);
-    return 0;
+    
+    private a() {}
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void onNotify();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.model.bh
  * JD-Core Version:    0.7.0.1
  */

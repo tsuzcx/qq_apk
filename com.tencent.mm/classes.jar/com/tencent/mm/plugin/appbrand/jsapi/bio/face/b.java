@@ -6,24 +6,24 @@ public final class b
   public static final int CTRL_INDEX = 477;
   public static final String NAME = "startCustomFacialRecognitionVerify";
   
-  protected final boolean aCg()
+  protected final boolean aYB()
   {
     return false;
   }
   
-  protected final String aCh()
+  protected final String aYC()
   {
     return "startCustomFacialRecognitionVerify";
   }
   
-  protected final boolean aCi()
+  protected final boolean aYD()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bio.face.b
  * JD-Core Version:    0.7.0.1
  */

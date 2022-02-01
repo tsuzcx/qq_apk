@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.dynamic;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.h.b;
+import com.tencent.mm.ipcinvoker.d.a;
 import com.tencent.mm.plugin.report.service.h;
 import java.util.Iterator;
 import java.util.Map;
@@ -13,129 +13,129 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class j
 {
-  private static j hnD;
-  public Map<String, b> hnv;
+  private static j jkL;
+  public Map<String, b> jkD;
   
   static
   {
-    AppMethodBeat.i(10712);
-    hnD = new j();
-    AppMethodBeat.o(10712);
+    AppMethodBeat.i(121193);
+    jkL = new j();
+    AppMethodBeat.o(121193);
   }
   
   public j()
   {
-    AppMethodBeat.i(10706);
-    this.hnv = new ConcurrentHashMap();
-    AppMethodBeat.o(10706);
+    AppMethodBeat.i(121187);
+    this.jkD = new ConcurrentHashMap();
+    AppMethodBeat.o(121187);
   }
   
-  private String Bb(String paramString)
+  private String GZ(String paramString)
   {
-    AppMethodBeat.i(10710);
+    AppMethodBeat.i(121191);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(10710);
+      AppMethodBeat.o(121191);
       return "";
     }
-    Iterator localIterator = this.hnv.entrySet().iterator();
+    Iterator localIterator = this.jkD.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       if ((localEntry.getValue() != null) && (paramString.equals(((b)localEntry.getValue()).appId)))
       {
         paramString = (String)localEntry.getKey();
-        AppMethodBeat.o(10710);
+        AppMethodBeat.o(121191);
         return paramString;
       }
     }
-    AppMethodBeat.o(10710);
+    AppMethodBeat.o(121191);
     return "";
   }
   
-  public static j azD()
+  public static j aVk()
   {
-    return hnD;
+    return jkL;
   }
   
-  public final void Ba(String paramString)
+  public final void GY(String paramString)
   {
-    AppMethodBeat.i(10709);
-    O(Bb(paramString), 626, 7);
-    AppMethodBeat.o(10709);
+    AppMethodBeat.i(121190);
+    L(GZ(paramString), 626, 7);
+    AppMethodBeat.o(121190);
   }
   
-  public final void Bc(String paramString)
+  public final void Ha(String paramString)
   {
-    AppMethodBeat.i(10711);
-    O(paramString, 626, 26);
-    AppMethodBeat.o(10711);
+    AppMethodBeat.i(121192);
+    L(paramString, 626, 26);
+    AppMethodBeat.o(121192);
   }
   
-  public final void O(String paramString, int paramInt1, int paramInt2)
+  public final void L(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(10708);
-    b localb = (b)this.hnv.get(paramString);
+    AppMethodBeat.i(121189);
+    b localb = (b)this.jkD.get(paramString);
     if (localb != null)
     {
-      b.i("WidgetReporter_14443", "report %s, %s, %s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      h.qsU.e(14443, new Object[] { localb.appId, Integer.valueOf(0), Integer.valueOf(localb.cmE), Integer.valueOf(2), localb.cnI, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(localb.fmF) });
+      com.tencent.mm.ipcinvoker.h.b.i("WidgetReporter_14443", "report %s, %s, %s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      h.vKh.f(14443, new Object[] { localb.appId, Integer.valueOf(0), Integer.valueOf(localb.dbs), Integer.valueOf(2), localb.dcE, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(localb.cIB) });
     }
-    AppMethodBeat.o(10708);
+    AppMethodBeat.o(121189);
   }
   
-  public final void ba(String paramString, int paramInt)
+  public final void bs(String paramString, int paramInt)
   {
-    AppMethodBeat.i(10707);
-    O(Bb(paramString), 626, paramInt);
-    AppMethodBeat.o(10707);
+    AppMethodBeat.i(121188);
+    L(GZ(paramString), 626, paramInt);
+    AppMethodBeat.o(121188);
   }
   
   static class a
-    implements com.tencent.mm.ipcinvoker.a<Bundle, Bundle>
+    implements com.tencent.mm.ipcinvoker.b<Bundle, Bundle>
   {}
   
   public static final class b
-    implements com.tencent.mm.ipcinvoker.d.a
+    implements a
   {
     String appId = "";
-    int cmE;
-    String cnI;
-    int fmF;
-    String hny = "";
+    int cIB;
+    int dbs;
+    String dcE;
+    String jkG = "";
     
     public b() {}
     
     public b(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2)
     {
-      this.hny = paramString1;
+      this.jkG = paramString1;
       this.appId = paramString2;
-      this.cmE = paramInt1;
-      this.cnI = paramString3;
-      this.fmF = paramInt2;
+      this.dbs = paramInt1;
+      this.dcE = paramString3;
+      this.cIB = paramInt2;
     }
     
     public final void fromBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(10705);
-      this.hny = paramBundle.getString("widgetId");
+      AppMethodBeat.i(121186);
+      this.jkG = paramBundle.getString("widgetId");
       this.appId = paramBundle.getString("appid");
-      this.cmE = paramBundle.getInt("appState");
-      this.cnI = paramBundle.getString("reqKey");
-      this.fmF = paramBundle.getInt("serviceType");
-      AppMethodBeat.o(10705);
+      this.dbs = paramBundle.getInt("appState");
+      this.dcE = paramBundle.getString("reqKey");
+      this.cIB = paramBundle.getInt("serviceType");
+      AppMethodBeat.o(121186);
     }
     
     public final Bundle toBundle()
     {
-      AppMethodBeat.i(10704);
+      AppMethodBeat.i(121185);
       Bundle localBundle = new Bundle();
-      localBundle.putString("widgetId", this.hny);
+      localBundle.putString("widgetId", this.jkG);
       localBundle.putString("appid", this.appId);
-      localBundle.putInt("appState", this.cmE);
-      localBundle.putString("reqKey", this.cnI);
-      localBundle.putInt("serviceType", this.fmF);
-      AppMethodBeat.o(10704);
+      localBundle.putInt("appState", this.dbs);
+      localBundle.putString("reqKey", this.dcE);
+      localBundle.putInt("serviceType", this.cIB);
+      AppMethodBeat.o(121185);
       return localBundle;
     }
   }

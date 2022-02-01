@@ -12,10 +12,10 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class ContactMobileInfoPreference
   extends Preference
 {
-  private String gFX;
-  private TextView iJG;
+  private String ity;
+  private TextView kEu;
   private String mTitle;
-  private TextView pyM;
+  private TextView uAv;
   
   public ContactMobileInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,41 +25,41 @@ public class ContactMobileInfoPreference
   public ContactMobileInfoPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(23395);
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(23395);
+    AppMethodBeat.i(27015);
+    setLayoutResource(2131494804);
+    AppMethodBeat.o(27015);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(23397);
-    this.iJG = ((TextView)paramView.findViewById(2131820680));
-    this.pyM = ((TextView)paramView.findViewById(2131820794));
-    if (this.iJG != null) {
-      this.iJG.setText(this.mTitle);
+    AppMethodBeat.i(27017);
+    this.kEu = ((TextView)paramView.findViewById(2131305902));
+    this.uAv = ((TextView)paramView.findViewById(2131302344));
+    if (this.kEu != null) {
+      this.kEu.setText(this.mTitle);
     }
-    if (this.pyM != null) {
-      this.pyM.setText(this.gFX);
+    if (this.uAv != null) {
+      this.uAv.setText(this.ity);
     }
     super.onBindView(paramView);
-    AppMethodBeat.o(23397);
+    AppMethodBeat.o(27017);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(23396);
+    AppMethodBeat.i(27016);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130970208, localViewGroup);
-    AppMethodBeat.o(23396);
+    localLayoutInflater.inflate(2131494835, localViewGroup);
+    AppMethodBeat.o(27016);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.ContactMobileInfoPreference
  * JD-Core Version:    0.7.0.1
  */

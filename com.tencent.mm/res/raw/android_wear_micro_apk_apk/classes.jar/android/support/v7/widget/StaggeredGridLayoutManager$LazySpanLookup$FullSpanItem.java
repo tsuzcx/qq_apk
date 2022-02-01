@@ -9,38 +9,38 @@ class StaggeredGridLayoutManager$LazySpanLookup$FullSpanItem
   implements Parcelable
 {
   public static final Parcelable.Creator<FullSpanItem> CREATOR = new Parcelable.Creator() {};
-  int sx;
-  int vQ;
-  int[] vR;
-  boolean vS;
+  int un;
+  int xF;
+  int[] xG;
+  boolean xH;
   
   public StaggeredGridLayoutManager$LazySpanLookup$FullSpanItem() {}
   
   public StaggeredGridLayoutManager$LazySpanLookup$FullSpanItem(Parcel paramParcel)
   {
-    this.sx = paramParcel.readInt();
-    this.vQ = paramParcel.readInt();
+    this.un = paramParcel.readInt();
+    this.xF = paramParcel.readInt();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.vS = bool;
+      this.xH = bool;
       int i = paramParcel.readInt();
       if (i > 0)
       {
-        this.vR = new int[i];
-        paramParcel.readIntArray(this.vR);
+        this.xG = new int[i];
+        paramParcel.readIntArray(this.xG);
       }
       return;
       bool = false;
     }
   }
   
-  final int aH(int paramInt)
+  final int bb(int paramInt)
   {
-    if (this.vR == null) {
+    if (this.xG == null) {
       return 0;
     }
-    return this.vR[paramInt];
+    return this.xG[paramInt];
   }
   
   public int describeContents()
@@ -50,22 +50,22 @@ class StaggeredGridLayoutManager$LazySpanLookup$FullSpanItem
   
   public String toString()
   {
-    return "FullSpanItem{mPosition=" + this.sx + ", mGapDir=" + this.vQ + ", mHasUnwantedGapAfter=" + this.vS + ", mGapPerSpan=" + Arrays.toString(this.vR) + '}';
+    return "FullSpanItem{mPosition=" + this.un + ", mGapDir=" + this.xF + ", mHasUnwantedGapAfter=" + this.xH + ", mGapPerSpan=" + Arrays.toString(this.xG) + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.sx);
-    paramParcel.writeInt(this.vQ);
-    if (this.vS) {}
+    paramParcel.writeInt(this.un);
+    paramParcel.writeInt(this.xF);
+    if (this.xH) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      if ((this.vR == null) || (this.vR.length <= 0)) {
+      if ((this.xG == null) || (this.xG.length <= 0)) {
         break;
       }
-      paramParcel.writeInt(this.vR.length);
-      paramParcel.writeIntArray(this.vR);
+      paramParcel.writeInt(this.xG.length);
+      paramParcel.writeIntArray(this.xG);
       return;
     }
     paramParcel.writeInt(0);

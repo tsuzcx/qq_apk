@@ -1,47 +1,39 @@
 package com.tencent.mm.ui;
 
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.vending.g.c;
-import com.tencent.mm.vending.g.f;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.ui.base.b;
 
 final class x$1
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  x$1(x paramx) {}
+  x$1(Activity paramActivity) {}
   
-  public final void run()
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(29653);
-    if (!g.RJ().QU())
+    AppMethodBeat.i(33437);
+    h.vKh.idkeyStat(405L, 39L, 1L, true);
+    if (this.FPa != null)
     {
-      ab.e("MicroMsg.LauncherUI.MainTabUnreadMgr", "Account not Ready!!!");
-      AppMethodBeat.o(29653);
-      return;
+      this.hUJ.finish();
+      paramDialogInterface = this.hUJ;
+      Object localObject = this.FPa;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/MMErrorProcessor$10", "onCancel", "(Landroid/content/DialogInterface;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/ui/MMErrorProcessor$10", "onCancel", "(Landroid/content/DialogInterface;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      b.W(this.hUJ, this.FPa);
     }
-    if (this.zcS.zcL == null)
-    {
-      ab.w("MicroMsg.LauncherUI.MainTabUnreadMgr", "set tag job, but tab view is null");
-      AppMethodBeat.o(29653);
-      return;
-    }
-    f.dQr().d(new x.1.2(this)).f(new x.1.1(this)).a(this.zcS.yXg);
-    AppMethodBeat.o(29653);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(29654);
-    String str = super.toString() + "|setTagRunnable";
-    AppMethodBeat.o(29654);
-    return str;
+    AppMethodBeat.o(33437);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.x.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,59 +6,59 @@ import org.json.JSONObject;
 
 public final class c
 {
-  public String liu;
+  String AwW;
+  public String AwX;
+  long AwY;
+  int AwZ;
+  public String Axa;
+  public String Axb;
+  public String Axc;
+  public String Axd;
+  public String bXk;
   String mPackageName;
-  public String mSignature;
   public String mToken;
-  public String uAa;
-  public String uAb;
-  String uzU;
-  public String uzV;
-  long uzW;
-  int uzX;
-  public String uzY;
-  public String uzZ;
+  public String oyw;
   
   public c(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(48171);
-    this.uzU = paramString1;
-    this.uzZ = paramString2;
-    paramString1 = new JSONObject(this.uzZ);
-    this.uzV = paramString1.optString("orderId");
+    AppMethodBeat.i(71806);
+    this.AwW = paramString1;
+    this.Axb = paramString2;
+    paramString1 = new JSONObject(this.Axb);
+    this.AwX = paramString1.optString("orderId");
     this.mPackageName = paramString1.optString("packageName");
-    this.liu = paramString1.optString("productId");
-    this.uzW = paramString1.optLong("purchaseTime");
-    this.uzX = paramString1.optInt("purchaseState");
+    this.oyw = paramString1.optString("productId");
+    this.AwY = paramString1.optLong("purchaseTime");
+    this.AwZ = paramString1.optInt("purchaseState");
     paramString2 = paramString1.optString("developerPayload");
-    ArrayList localArrayList = afR(paramString2);
+    ArrayList localArrayList = auB(paramString2);
     if (localArrayList.size() == 3)
     {
-      this.uzY = ((String)localArrayList.get(0));
-      this.uAb = ((String)localArrayList.get(1));
-      this.uAa = ((String)localArrayList.get(2));
+      this.Axa = ((String)localArrayList.get(0));
+      this.Axd = ((String)localArrayList.get(1));
+      this.Axc = ((String)localArrayList.get(2));
     }
     for (;;)
     {
       this.mToken = paramString1.optString("token", paramString1.optString("purchaseToken"));
-      this.mSignature = paramString3;
-      AppMethodBeat.o(48171);
+      this.bXk = paramString3;
+      AppMethodBeat.o(71806);
       return;
-      this.uzY = paramString2;
+      this.Axa = paramString2;
     }
   }
   
   public c(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.liu = paramString1;
-    this.uzY = paramString2;
-    this.uAa = paramString3;
-    this.uAb = paramString4;
+    this.oyw = paramString1;
+    this.Axa = paramString2;
+    this.Axc = paramString3;
+    this.Axd = paramString4;
   }
   
-  private static ArrayList<String> afR(String paramString)
+  private static ArrayList<String> auB(String paramString)
   {
-    AppMethodBeat.i(48172);
+    AppMethodBeat.i(71807);
     ArrayList localArrayList = new ArrayList();
     while (paramString.indexOf("[#]") >= 0)
     {
@@ -67,15 +67,15 @@ public final class c
       localArrayList.add(str);
     }
     localArrayList.add(paramString);
-    AppMethodBeat.o(48172);
+    AppMethodBeat.o(71807);
     return localArrayList;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(48173);
-    String str = "PurchaseInfo(type:" + this.uzU + "):" + this.uzZ;
-    AppMethodBeat.o(48173);
+    AppMethodBeat.i(71808);
+    String str = "PurchaseInfo(type:" + this.AwW + "):" + this.Axb;
+    AppMethodBeat.o(71808);
     return str;
   }
 }

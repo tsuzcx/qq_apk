@@ -10,16 +10,16 @@ final class TalkRoomUI$14
     super(paramTalkRoomUI, (byte)0);
   }
   
-  public final void cHV()
+  public final void dNo()
   {
-    AppMethodBeat.i(25921);
-    this.tdT.onBackPressed();
-    AppMethodBeat.o(25921);
+    AppMethodBeat.i(29604);
+    this.yKo.onBackPressed();
+    AppMethodBeat.o(29604);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomUI.14
  * JD-Core Version:    0.7.0.1
  */

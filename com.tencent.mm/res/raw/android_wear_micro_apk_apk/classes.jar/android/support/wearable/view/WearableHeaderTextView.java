@@ -13,8 +13,8 @@ import android.widget.TextView;
 public class WearableHeaderTextView
   extends TextView
 {
-  private int EI = 0;
-  private int EJ = 0;
+  private int Gx = 0;
+  private int Gy = 0;
   
   public WearableHeaderTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,9 +24,9 @@ public class WearableHeaderTextView
   public WearableHeaderTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, k.yv, 0, 0);
-    this.EJ = paramContext.getInt(k.yw, 0);
-    this.EI = paramContext.getDimensionPixelSize(k.yx, 0);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, k.Ak, 0, 0);
+    this.Gy = paramContext.getInt(k.Al, 0);
+    this.Gx = paramContext.getDimensionPixelSize(k.Am, 0);
     paramContext.recycle();
   }
   
@@ -35,14 +35,14 @@ public class WearableHeaderTextView
     paramWindowInsets = super.onApplyWindowInsets(paramWindowInsets);
     if (paramWindowInsets.isRound())
     {
-      if (this.EJ != 0)
+      if (this.Gy != 0)
       {
         FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)getLayoutParams();
-        localLayoutParams.gravity = this.EJ;
+        localLayoutParams.gravity = this.Gy;
         setLayoutParams(localLayoutParams);
       }
-      if (this.EI != 0) {
-        setTextSize(this.EI);
+      if (this.Gx != 0) {
+        setTextSize(this.Gx);
       }
       requestLayout();
     }

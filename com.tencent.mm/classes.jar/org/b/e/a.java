@@ -14,125 +14,125 @@ import org.b.d.k;
 public final class a
   implements b
 {
-  private org.b.d.a CSe;
-  private org.b.a.a.b CSf;
+  private org.b.d.a KnT;
+  private org.b.a.a.b KnU;
   
   public a(org.b.a.a.b paramb, org.b.d.a parama)
   {
-    this.CSf = paramb;
-    this.CSe = parama;
+    this.KnU = paramb;
+    this.KnT = parama;
   }
   
   private void a(org.b.d.c paramc, i parami)
   {
-    AppMethodBeat.i(77293);
-    paramc.jH("oauth_timestamp", new org.b.f.d().erM());
-    paramc.jH("oauth_nonce", new org.b.f.d().getNonce());
-    paramc.jH("oauth_consumer_key", this.CSe.CRz);
-    paramc.jH("oauth_signature_method", new org.b.f.a().erL());
-    paramc.jH("oauth_version", "1.0");
-    if (this.CSe.ery()) {
-      paramc.jH("scope", this.CSe.scope);
+    AppMethodBeat.i(40562);
+    paramc.mN("oauth_timestamp", new org.b.f.d().fNo());
+    paramc.mN("oauth_nonce", new org.b.f.d().getNonce());
+    paramc.mN("oauth_consumer_key", this.KnT.Kno);
+    paramc.mN("oauth_signature_method", new org.b.f.a().fNn());
+    paramc.mN("oauth_version", "1.0");
+    if (this.KnT.fNa()) {
+      paramc.mN("scope", this.KnT.scope);
     }
-    paramc.jH("oauth_signature", b(paramc, parami));
-    this.CSe.log("appended additional OAuth parameters: " + org.b.g.b.y(paramc.CRI));
-    AppMethodBeat.o(77293);
+    paramc.mN("oauth_signature", b(paramc, parami));
+    this.KnT.log("appended additional OAuth parameters: " + org.b.g.b.D(paramc.Knx));
+    AppMethodBeat.o(40562);
   }
   
   private String b(org.b.d.c paramc, i parami)
   {
-    AppMethodBeat.i(77297);
-    this.CSe.log("generating signature...");
+    AppMethodBeat.i(40566);
+    this.KnT.log("generating signature...");
     paramc = new org.b.c.c().a(paramc);
-    parami = new org.b.f.a().aO(paramc, this.CSe.CRA, parami.xsy);
-    this.CSe.log("base string is: ".concat(String.valueOf(paramc)));
-    this.CSe.log("signature is: ".concat(String.valueOf(parami)));
-    AppMethodBeat.o(77297);
+    parami = new org.b.f.a().bf(paramc, this.KnT.Knp, parami.DNx);
+    this.KnT.log("base string is: ".concat(String.valueOf(paramc)));
+    this.KnT.log("signature is: ".concat(String.valueOf(parami)));
+    AppMethodBeat.o(40566);
     return parami;
   }
   
   private void b(org.b.d.c paramc)
   {
-    AppMethodBeat.i(77298);
-    switch (erK()[this.CSe.CRD.ordinal()])
+    AppMethodBeat.i(40567);
+    switch (fNm()[this.KnT.Kns.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(77298);
+      AppMethodBeat.o(40567);
       return;
-      this.CSe.log("using Http Header signature");
+      this.KnT.log("using Http Header signature");
       paramc.addHeader("Authorization", new e().a(paramc));
-      AppMethodBeat.o(77298);
+      AppMethodBeat.o(40567);
       return;
-      this.CSe.log("using Querystring signature");
-      Iterator localIterator = paramc.CRI.entrySet().iterator();
+      this.KnT.log("using Querystring signature");
+      Iterator localIterator = paramc.Knx.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        paramc.jI((String)localEntry.getKey(), (String)localEntry.getValue());
+        paramc.mO((String)localEntry.getKey(), (String)localEntry.getValue());
       }
     }
   }
   
   public final i a(i parami, k paramk)
   {
-    AppMethodBeat.i(77294);
-    this.CSe.log("obtaining access token from " + this.CSf.erx());
-    org.b.d.c localc = new org.b.d.c(j.CRW, this.CSf.erx());
-    localc.jH("oauth_token", parami.token);
-    localc.jH("oauth_verifier", paramk.value);
-    this.CSe.log("setting token to: " + parami + " and verifier to: " + paramk);
+    AppMethodBeat.i(40563);
+    this.KnT.log("obtaining access token from " + this.KnU.fMZ());
+    org.b.d.c localc = new org.b.d.c(j.KnL, this.KnU.fMZ());
+    localc.mN("oauth_token", parami.token);
+    localc.mN("oauth_verifier", paramk.value);
+    this.KnT.log("setting token to: " + parami + " and verifier to: " + paramk);
     a(localc, parami);
     b(localc);
-    parami = localc.erD();
-    parami = new org.b.c.g().azT(parami.getBody());
-    AppMethodBeat.o(77294);
+    parami = localc.fNf();
+    parami = new org.b.c.g().aRE(parami.getBody());
+    AppMethodBeat.o(40563);
     return parami;
   }
   
   public final void a(i parami, org.b.d.c paramc)
   {
-    AppMethodBeat.i(77295);
-    this.CSe.log("signing request: " + paramc.erB());
-    if (("".equals(parami.token)) && ("".equals(parami.xsy))) {}
+    AppMethodBeat.i(40564);
+    this.KnT.log("signing request: " + paramc.fNd());
+    if (("".equals(parami.token)) && ("".equals(parami.DNx))) {}
     for (int i = 1;; i = 0)
     {
       if (i == 0) {
-        paramc.jH("oauth_token", parami.token);
+        paramc.mN("oauth_token", parami.token);
       }
-      this.CSe.log("setting token to: ".concat(String.valueOf(parami)));
+      this.KnT.log("setting token to: ".concat(String.valueOf(parami)));
       a(paramc, parami);
       b(paramc);
-      AppMethodBeat.o(77295);
+      AppMethodBeat.o(40564);
       return;
     }
   }
   
   public final String b(i parami)
   {
-    AppMethodBeat.i(77296);
-    parami = this.CSf.b(parami);
-    AppMethodBeat.o(77296);
+    AppMethodBeat.i(40565);
+    parami = this.KnU.b(parami);
+    AppMethodBeat.o(40565);
     return parami;
   }
   
-  public final i erJ()
+  public final i fNl()
   {
-    AppMethodBeat.i(77292);
-    this.CSe.log("obtaining request token from " + this.CSf.erw());
-    Object localObject = new org.b.d.c(j.CRW, this.CSf.erw());
-    this.CSe.log("setting oauth_callback to " + this.CSe.CRB);
-    ((org.b.d.c)localObject).jH("oauth_callback", this.CSe.CRB);
-    a((org.b.d.c)localObject, org.b.d.b.CRH);
+    AppMethodBeat.i(40561);
+    this.KnT.log("obtaining request token from " + this.KnU.fMY());
+    Object localObject = new org.b.d.c(j.KnL, this.KnU.fMY());
+    this.KnT.log("setting oauth_callback to " + this.KnT.Knq);
+    ((org.b.d.c)localObject).mN("oauth_callback", this.KnT.Knq);
+    a((org.b.d.c)localObject, org.b.d.b.Knw);
     b((org.b.d.c)localObject);
-    this.CSe.log("sending request...");
-    localObject = ((org.b.d.c)localObject).erD();
+    this.KnT.log("sending request...");
+    localObject = ((org.b.d.c)localObject).fNf();
     String str = ((org.b.d.g)localObject).getBody();
-    this.CSe.log("response status code: " + ((org.b.d.g)localObject).code);
-    this.CSe.log("response body: ".concat(String.valueOf(str)));
-    localObject = new org.b.c.g().azT(str);
-    AppMethodBeat.o(77292);
+    this.KnT.log("response status code: " + ((org.b.d.g)localObject).code);
+    this.KnT.log("response body: ".concat(String.valueOf(str)));
+    localObject = new org.b.c.g().aRE(str);
+    AppMethodBeat.o(40561);
     return localObject;
   }
 }

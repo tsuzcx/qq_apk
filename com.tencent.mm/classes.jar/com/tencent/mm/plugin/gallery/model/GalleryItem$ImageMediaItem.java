@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.gallery.model;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class GalleryItem$ImageMediaItem
   extends GalleryItem.MediaItem
@@ -12,9 +12,9 @@ public class GalleryItem$ImageMediaItem
   
   static
   {
-    AppMethodBeat.i(21291);
+    AppMethodBeat.i(111318);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(21291);
+    AppMethodBeat.o(111318);
   }
   
   public GalleryItem$ImageMediaItem() {}
@@ -29,17 +29,17 @@ public class GalleryItem$ImageMediaItem
     super(paramLong, paramString1, paramString2, paramString3);
   }
   
-  public final String Xi()
+  public final String anX()
   {
-    AppMethodBeat.i(21289);
-    if (!bo.isNullOrNil(this.mnt))
+    AppMethodBeat.i(111316);
+    if (!bt.isNullOrNil(this.pUe))
     {
-      str = this.mnt;
-      AppMethodBeat.o(21289);
+      str = this.pUe;
+      AppMethodBeat.o(111316);
       return str;
     }
-    String str = this.fQn;
-    AppMethodBeat.o(21289);
+    String str = this.rBp;
+    AppMethodBeat.o(111316);
     return str;
   }
   
@@ -55,18 +55,19 @@ public class GalleryItem$ImageMediaItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(21290);
-    paramParcel.writeString(this.fQn);
-    paramParcel.writeString(this.mnt);
-    paramParcel.writeLong(this.ndp);
-    paramParcel.writeLong(this.ndq);
+    AppMethodBeat.i(111317);
+    paramParcel.writeString(this.rBp);
+    paramParcel.writeString(this.pUe);
+    paramParcel.writeLong(this.rBs);
+    paramParcel.writeLong(this.rBt);
     paramParcel.writeString(this.mMimeType);
-    AppMethodBeat.o(21290);
+    paramParcel.writeSerializable(this.Lmm);
+    AppMethodBeat.o(111317);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.GalleryItem.ImageMediaItem
  * JD-Core Version:    0.7.0.1
  */

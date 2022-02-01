@@ -12,223 +12,322 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import junit.framework.Assert;
 
 public final class MMGridPaper
   extends LinearLayout
 {
-  protected View Ww;
-  protected int hkz;
-  protected MMDotView jpZ;
-  protected ak mHV;
+  protected int FUZ;
+  protected int FVa;
+  final MMFlipper.b FWM;
+  final MMFlipper.a FWN;
+  protected MMFlipper FXb;
+  protected j FXc;
+  protected int FXd;
+  protected int FXe;
+  protected int FXf;
+  protected int FXg;
+  protected int FXh;
+  protected int FXi;
+  protected int FXj;
+  protected int FXk;
+  protected boolean FXl;
+  protected int FXm;
+  protected int FXn;
+  protected int FXo;
+  protected int FXp;
+  protected int FXq;
+  protected boolean FXr;
+  protected boolean FXs;
+  protected int FXt;
+  protected int FXu;
+  protected boolean FXv;
+  protected int FXw;
+  protected int FXx;
+  protected a FXy;
+  protected View adC;
+  protected int mCurrentOrientation;
   protected int mMaxColumns;
   protected int mMaxRows;
   protected int mNumColumns;
   protected int mNumRows;
-  protected int zhv;
-  protected int zhw;
-  protected MMFlipper zjD;
-  protected j zjE;
-  protected int zjF;
-  protected int zjG;
-  protected int zjH;
-  protected int zjI;
-  protected int zjJ;
-  protected int zjK;
-  protected int zjL;
-  protected int zjM;
-  protected boolean zjN;
-  protected int zjO;
-  protected int zjP;
-  protected int zjQ;
-  protected int zjR;
-  protected int zjS;
-  protected boolean zjT;
-  protected boolean zjU;
-  protected int zjV;
-  protected int zjW;
-  protected boolean zjX;
-  protected int zjY;
-  protected int zjZ;
-  final MMFlipper.b zji;
-  final MMFlipper.a zjj;
-  protected a zka;
+  protected MMDotView mfR;
+  protected ap rfb;
   
   public MMGridPaper(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(106623);
-    this.zjH = 0;
-    this.zjI = 0;
-    this.zjJ = 3;
-    this.zjK = 0;
-    this.zjL = (this.zjJ - 1);
-    this.zjM = 0;
+    AppMethodBeat.i(141969);
+    this.FXf = 0;
+    this.FXg = 0;
+    this.FXh = 3;
+    this.FXi = 0;
+    this.FXj = (this.FXh - 1);
+    this.FXk = 0;
     this.mNumColumns = 0;
     this.mNumRows = 0;
-    this.zjN = false;
-    this.zjO = 9;
-    this.zjP = -1;
-    this.zjQ = -1;
-    this.zjR = 96;
-    this.zjS = 96;
-    this.zhv = 10;
-    this.zhw = 10;
-    this.zjT = false;
-    this.zjU = false;
-    this.zjV = -1;
-    this.zjW = -1;
-    this.hkz = 0;
+    this.FXl = false;
+    this.FXm = 9;
+    this.FXn = -1;
+    this.FXo = -1;
+    this.FXp = 96;
+    this.FXq = 96;
+    this.FUZ = 10;
+    this.FVa = 10;
+    this.FXr = false;
+    this.FXs = false;
+    this.FXt = -1;
+    this.FXu = -1;
+    this.mCurrentOrientation = 0;
     this.mMaxColumns = -1;
     this.mMaxRows = -1;
-    this.zjX = false;
-    this.zjY = 0;
-    this.zjZ = 0;
-    this.zjj = new MMGridPaper.4(this);
-    this.zji = new MMGridPaper.5(this);
-    this.mHV = new ak(Looper.getMainLooper());
-    View.inflate(getContext(), 2130970171, this);
-    this.hkz = getScreenOrientation();
-    AppMethodBeat.o(106623);
+    this.FXv = false;
+    this.FXw = 0;
+    this.FXx = 0;
+    this.FWN = new MMFlipper.a()
+    {
+      public final void gQ(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(141965);
+        ad.v("MicroMsg.MMGridPaper", "onMeasure width:[new %d, old %d] height:[new %d, old %d], dialogMode[%B], orientationChange[%B]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(MMGridPaper.this.FXd), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(MMGridPaper.this.FXe), Boolean.valueOf(MMGridPaper.this.FXs), Boolean.valueOf(MMGridPaper.this.FXr) });
+        if (((Math.abs(MMGridPaper.this.FXe - paramAnonymousInt2) < 50) && (Math.abs(MMGridPaper.this.FXd - paramAnonymousInt1) < 50)) || (paramAnonymousInt2 == 0) || (paramAnonymousInt1 == 0))
+        {
+          ad.d("MicroMsg.MMGridPaper", "match width height limit, return");
+          AppMethodBeat.o(141965);
+          return;
+        }
+        if ((MMGridPaper.this.FXs) && (MMGridPaper.this.FXd > paramAnonymousInt1) && (!MMGridPaper.this.FXr))
+        {
+          ad.d("MicroMsg.MMGridPaper", "match ori limit, return");
+          AppMethodBeat.o(141965);
+          return;
+        }
+        ad.v("MicroMsg.MMGridPaper", "onMeasure: match");
+        ad.v("MicroMsg.MMGridPaper", "onMeasure: mIsManualMeasureMode[%b]", new Object[] { Boolean.valueOf(MMGridPaper.this.FXv) });
+        MMGridPaper.this.FXr = false;
+        if (!MMGridPaper.this.FXv)
+        {
+          MMGridPaper.this.FXe = paramAnonymousInt2;
+          MMGridPaper.this.FXd = paramAnonymousInt1;
+        }
+        MMGridPaper.this.refresh();
+        AppMethodBeat.o(141965);
+      }
+    };
+    this.FWM = new MMFlipper.b()
+    {
+      public final void u(int paramAnonymousInt1, final int paramAnonymousInt2, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(164148);
+        ad.d("MicroMsg.MMGridPaper", "onScreenChanged:curScreen[%d], topEdge[%d], bottomEdge[%d], virtualPage[%d]", new Object[] { Integer.valueOf(paramAnonymousInt2), Integer.valueOf(MMGridPaper.this.FXi), Integer.valueOf(MMGridPaper.this.FXj), Integer.valueOf(MMGridPaper.this.FXk) });
+        if ((paramAnonymousInt2 <= MMGridPaper.this.FXi) && (MMGridPaper.this.FXi > 0)) {
+          MMGridPaper.this.rfb.post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(141966);
+              MMGridPaperGridView localMMGridPaperGridView = (MMGridPaperGridView)MMGridPaper.this.FXb.getChildAt(MMGridPaper.this.FXb.getChildCount() - 1);
+              int i = paramAnonymousInt2 - (MMGridPaper.this.FXb.getChildCount() >> 1);
+              ad.i("MicroMsg.MMGridPaper", "move up, old index[%d], new index[%d]", new Object[] { Integer.valueOf(MMGridPaper.this.FXb.getChildCount() - 1), Integer.valueOf(i) });
+              MMGridPaper.this.FXb.removeViewAt(MMGridPaper.this.FXb.getChildCount() - 1);
+              localMMGridPaperGridView.a(i, MMGridPaper.this.mNumRows, MMGridPaper.this.mNumColumns, MMGridPaper.this.FXc);
+              MMGridPaper.this.FXb.addView(localMMGridPaperGridView, 0);
+              i = MMGridPaper.this.FXb.getChildCount();
+              MMGridPaper.this.FXb.XL(i >> 1);
+              MMGridPaper.a(MMGridPaper.this, -1);
+              AppMethodBeat.o(141966);
+            }
+          });
+        }
+        for (;;)
+        {
+          MMGridPaper.this.FXg = paramAnonymousInt2;
+          MMGridPaper.this.mfR.setSelectedDot(paramAnonymousInt2);
+          AppMethodBeat.o(164148);
+          return;
+          if ((paramAnonymousInt2 >= MMGridPaper.this.FXj) && (MMGridPaper.this.FXj < MMGridPaper.this.FXk - 1)) {
+            MMGridPaper.this.rfb.post(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(141967);
+                MMGridPaperGridView localMMGridPaperGridView = (MMGridPaperGridView)MMGridPaper.this.FXb.getChildAt(0);
+                int i = paramAnonymousInt2 + (MMGridPaper.this.FXb.getChildCount() >> 1);
+                ad.i("MicroMsg.MMGridPaper", "move down, old index[0], new index[%d]", new Object[] { Integer.valueOf(i) });
+                MMGridPaper.this.FXb.removeViewAt(0);
+                localMMGridPaperGridView.a(i, MMGridPaper.this.mNumRows, MMGridPaper.this.mNumColumns, MMGridPaper.this.FXc);
+                MMGridPaper.this.FXb.addView(localMMGridPaperGridView);
+                i = MMGridPaper.this.FXb.getChildCount();
+                MMGridPaper.this.FXb.XL(i >> 1);
+                MMGridPaper.a(MMGridPaper.this, 1);
+                AppMethodBeat.o(141967);
+              }
+            });
+          }
+        }
+      }
+    };
+    this.rfb = new ap(Looper.getMainLooper());
+    View.inflate(getContext(), 2131494795, this);
+    this.mCurrentOrientation = getScreenOrientation();
+    AppMethodBeat.o(141969);
   }
   
-  private boolean OH(int paramInt)
+  private boolean XN(int paramInt)
   {
-    AppMethodBeat.i(106630);
-    ab.d("MicroMsg.MMGridPaper", "totalCount is %d, dialogMode is %B", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.zjU) });
+    AppMethodBeat.i(141976);
+    ad.d("MicroMsg.MMGridPaper", "totalCount is %d, dialogMode is %B", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.FXs) });
     if (paramInt >= 0) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (this.zjU) {
+      if (this.FXs) {
         break;
       }
-      AppMethodBeat.o(106630);
+      AppMethodBeat.o(141976);
       return true;
     }
-    int i = hv(paramInt, this.mNumColumns);
+    int i = jh(paramInt, this.mNumColumns);
     paramInt = getScreenOrientation();
     switch (paramInt)
     {
     default: 
-      AppMethodBeat.o(106630);
+      AppMethodBeat.o(141976);
       return true;
     case 2: 
-      i = Math.min(i, this.zjW);
-      j = (this.zjS + 10) * i + 8;
-      ab.d("MicroMsg.MMGridPaper", "orientation[%d], minRows[%d], targetHeight[%d], displayHeight[%d], orientationChange[%B]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.zjP), Boolean.valueOf(this.zjT) });
-      if (this.zjP != j)
+      i = Math.min(i, this.FXu);
+      j = (this.FXq + 10) * i + 8;
+      ad.d("MicroMsg.MMGridPaper", "orientation[%d], minRows[%d], targetHeight[%d], displayHeight[%d], orientationChange[%B]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.FXn), Boolean.valueOf(this.FXr) });
+      if (this.FXn != j)
       {
-        this.zjP = j;
-        AppMethodBeat.o(106630);
+        this.FXn = j;
+        AppMethodBeat.o(141976);
         return false;
       }
-      AppMethodBeat.o(106630);
+      AppMethodBeat.o(141976);
       return true;
     }
-    i = Math.min(i, this.zjV);
-    int j = (this.zjS + 10) * i + 8;
-    ab.d("MicroMsg.MMGridPaper", "orientation[%d], minRows[%d], targetHeight[%d], displayHeight[%d], orientationChange[%B]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.zjQ), Boolean.valueOf(this.zjT) });
-    if (this.zjQ != j)
+    i = Math.min(i, this.FXt);
+    int j = (this.FXq + 10) * i + 8;
+    ad.d("MicroMsg.MMGridPaper", "orientation[%d], minRows[%d], targetHeight[%d], displayHeight[%d], orientationChange[%B]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.FXo), Boolean.valueOf(this.FXr) });
+    if (this.FXo != j)
     {
-      this.zjQ = j;
-      AppMethodBeat.o(106630);
+      this.FXo = j;
+      AppMethodBeat.o(141976);
       return false;
     }
-    AppMethodBeat.o(106630);
+    AppMethodBeat.o(141976);
     return true;
   }
   
-  private void cjk()
+  private void dmH()
   {
-    AppMethodBeat.i(106634);
-    ab.v("MicroMsg.MMGridPaper", "set DotView");
+    AppMethodBeat.i(141980);
+    ad.v("MicroMsg.MMGridPaper", "set DotView");
     boolean bool;
-    if (this.zjM >= 0)
+    if (this.FXk >= 0)
     {
       bool = true;
       Assert.assertTrue(bool);
-      this.jpZ.setDotCount(this.zjM);
-      if ((this.zjE != null) && (this.zjM > 1)) {
+      this.mfR.setDotCount(this.FXk);
+      if ((this.FXc != null) && (this.FXk > 1)) {
         break label137;
       }
-      this.jpZ.setVisibility(8);
-      ab.v("MicroMsg.MMGridPaper", "set DotView gone");
+      this.mfR.setVisibility(8);
+      ad.v("MicroMsg.MMGridPaper", "set DotView gone");
     }
     for (;;)
     {
-      if (this.zjI >= this.zjM) {
-        this.zjI = (this.zjM - 1);
+      if (this.FXg >= this.FXk) {
+        this.FXg = (this.FXk - 1);
       }
-      this.zjD.OF(this.zjI - this.zjK);
-      this.zjD.OG(this.zjI);
-      this.jpZ.setSelectedDot(this.zjI);
-      AppMethodBeat.o(106634);
+      this.FXb.XL(this.FXg - this.FXi);
+      this.FXb.XM(this.FXg);
+      this.mfR.setSelectedDot(this.FXg);
+      AppMethodBeat.o(141980);
       return;
       bool = false;
       break;
       label137:
-      this.jpZ.setVisibility(0);
-      ab.v("MicroMsg.MMGridPaper", "set DotView visible");
+      this.mfR.setVisibility(0);
+      ad.v("MicroMsg.MMGridPaper", "set DotView visible");
     }
   }
   
-  private void dDU()
+  private void eSI()
   {
-    AppMethodBeat.i(106628);
+    AppMethodBeat.i(141974);
     View localView;
     LinearLayout.LayoutParams localLayoutParams;
     int i;
-    if ((-1 != this.zjP) && (getScreenOrientation() == 2))
+    if ((-1 != this.FXn) && (getScreenOrientation() == 2))
     {
-      localView = findViewById(2131826180);
+      localView = findViewById(2131300616);
       localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
-      i = a.fromDPToPix(getContext(), this.zjP);
+      i = a.fromDPToPix(getContext(), this.FXn);
       if (i != localLayoutParams.height)
       {
-        ab.i("MicroMsg.MMGridPaper", "set land mode, special height is %d", new Object[] { Integer.valueOf(this.zjP) });
+        ad.i("MicroMsg.MMGridPaper", "set land mode, special height is %d", new Object[] { Integer.valueOf(this.FXn) });
         localLayoutParams.height = i;
         localView.setLayoutParams(localLayoutParams);
-        this.mHV.post(new MMGridPaper.2(this));
+        this.rfb.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(141963);
+            ad.w("MicroMsg.MMGridPaper", "post do setDotView");
+            MMGridPaper.a(MMGridPaper.this);
+            AppMethodBeat.o(141963);
+          }
+        });
       }
-      AppMethodBeat.o(106628);
+      AppMethodBeat.o(141974);
       return;
     }
-    if ((-1 != this.zjQ) && (getScreenOrientation() == 1))
+    if ((-1 != this.FXo) && (getScreenOrientation() == 1))
     {
-      localView = findViewById(2131826180);
+      localView = findViewById(2131300616);
       localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
-      i = a.fromDPToPix(getContext(), this.zjQ);
+      i = a.fromDPToPix(getContext(), this.FXo);
       if (i != localLayoutParams.height)
       {
-        ab.i("MicroMsg.MMGridPaper", "set port mode, special height is %d", new Object[] { Integer.valueOf(this.zjQ) });
+        ad.i("MicroMsg.MMGridPaper", "set port mode, special height is %d", new Object[] { Integer.valueOf(this.FXo) });
         localLayoutParams.height = i;
         localView.setLayoutParams(localLayoutParams);
-        this.mHV.post(new MMGridPaper.3(this));
+        this.rfb.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(141964);
+            ad.w("MicroMsg.MMGridPaper", "post do setDotView");
+            MMGridPaper.a(MMGridPaper.this);
+            AppMethodBeat.o(141964);
+          }
+        });
       }
     }
-    AppMethodBeat.o(106628);
+    AppMethodBeat.o(141974);
   }
   
-  private void dDV()
+  private void eSJ()
   {
-    AppMethodBeat.i(106631);
-    ab.v("MicroMsg.MMGridPaper", "initSubGrid, grid width %d, grid height %d", new Object[] { Integer.valueOf(this.zjF), Integer.valueOf(this.zjG) });
-    if ((this.zjF == 0) || (this.zjG == 0))
+    AppMethodBeat.i(141977);
+    ad.v("MicroMsg.MMGridPaper", "initSubGrid, grid width %d, grid height %d", new Object[] { Integer.valueOf(this.FXd), Integer.valueOf(this.FXe) });
+    if ((this.FXd == 0) || (this.FXe == 0))
     {
-      ab.w("MicroMsg.MMGridPaper", "initSubGrid:gridWithd or gridHeight is 0");
-      AppMethodBeat.o(106631);
+      ad.w("MicroMsg.MMGridPaper", "initSubGrid:gridWithd or gridHeight is 0");
+      AppMethodBeat.o(141977);
       return;
     }
-    int j = a.fromDPToPix(getContext(), this.zjR);
-    int i = a.fromDPToPix(getContext(), this.zjS);
-    j = Math.max(this.zjF / j, 1);
-    i = Math.max(this.zjG / i, 1);
+    int j = a.fromDPToPix(getContext(), this.FXp);
+    int i = a.fromDPToPix(getContext(), this.FXq);
+    j = Math.max(this.FXd / j, 1);
+    i = Math.max(this.FXe / i, 1);
     if ((j != this.mNumColumns) || (i != this.mNumRows)) {
-      this.zjN = true;
+      this.FXl = true;
     }
     this.mNumColumns = j;
     if (this.mMaxColumns != -1) {
@@ -240,109 +339,109 @@ public final class MMGridPaper
     }
     i = this.mNumColumns;
     j = this.mNumRows * i;
-    this.zjM = 0;
-    if (this.zjE == null) {}
-    for (i = 0;; i = this.zjE.getCount())
+    this.FXk = 0;
+    if (this.FXc == null) {}
+    for (i = 0;; i = this.FXc.getCount())
     {
       i += 0;
-      if (OH(i)) {
+      if (XN(i)) {
         break;
       }
-      dDU();
-      AppMethodBeat.o(106631);
+      eSI();
+      AppMethodBeat.o(141977);
       return;
     }
-    this.zjM = hv(i, j);
-    this.zjI = Math.min(this.zjM - 1, hw(this.zjH, j));
-    this.zjJ = Math.min(3, this.zjM);
-    this.zjK = Math.min(this.zjM - this.zjJ, Math.max(0, this.zjI - (this.zjJ >> 1)));
-    this.zjL = (this.zjK + this.zjJ - 1);
-    ab.d("MicroMsg.MMGridPaper", "initSubGrid:item[%ddp,%ddp], row[%d], column[%d], activePage[%d], virtualPage[%d], curVirtualPage[%d], edge[%d, %d]", new Object[] { Integer.valueOf(this.zjR), Integer.valueOf(this.zjS), Integer.valueOf(this.mNumRows), Integer.valueOf(this.mNumColumns), Integer.valueOf(this.zjJ), Integer.valueOf(this.zjM), Integer.valueOf(this.zjI), Integer.valueOf(this.zjK), Integer.valueOf(this.zjL) });
-    if ((this.zjD.getChildCount() != this.zjJ) || (this.zjN))
+    this.FXk = jh(i, j);
+    this.FXg = Math.min(this.FXk - 1, ji(this.FXf, j));
+    this.FXh = Math.min(3, this.FXk);
+    this.FXi = Math.min(this.FXk - this.FXh, Math.max(0, this.FXg - (this.FXh >> 1)));
+    this.FXj = (this.FXi + this.FXh - 1);
+    ad.d("MicroMsg.MMGridPaper", "initSubGrid:item[%ddp,%ddp], row[%d], column[%d], activePage[%d], virtualPage[%d], curVirtualPage[%d], edge[%d, %d]", new Object[] { Integer.valueOf(this.FXp), Integer.valueOf(this.FXq), Integer.valueOf(this.mNumRows), Integer.valueOf(this.mNumColumns), Integer.valueOf(this.FXh), Integer.valueOf(this.FXk), Integer.valueOf(this.FXg), Integer.valueOf(this.FXi), Integer.valueOf(this.FXj) });
+    if ((this.FXb.getChildCount() != this.FXh) || (this.FXl))
     {
-      ab.w("MicroMsg.MMGridPaper", "error child count or RowOrColChanged(%B), reset child view", new Object[] { Boolean.valueOf(this.zjN) });
-      this.zjN = false;
-      this.zjD.removeAllViews();
-      i = this.zjK;
+      ad.w("MicroMsg.MMGridPaper", "error child count or RowOrColChanged(%B), reset child view", new Object[] { Boolean.valueOf(this.FXl) });
+      this.FXl = false;
+      this.FXb.removeAllViews();
+      i = this.FXi;
     }
-    while (i <= this.zjL)
+    while (i <= this.FXj)
     {
-      MMGridPaperGridView localMMGridPaperGridView = (MMGridPaperGridView)inflate(getContext(), 2130970162, null);
-      localMMGridPaperGridView.a(i, this.mNumRows, this.mNumColumns, this.zjE);
-      localMMGridPaperGridView.setHorizontalSpacing(a.fromDPToPix(getContext(), this.zhv));
-      localMMGridPaperGridView.setVerticalSpacing(a.fromDPToPix(getContext(), this.zhw));
-      this.zjD.addView(localMMGridPaperGridView, new LinearLayout.LayoutParams(-1, -1));
+      MMGridPaperGridView localMMGridPaperGridView = (MMGridPaperGridView)inflate(getContext(), 2131494785, null);
+      localMMGridPaperGridView.a(i, this.mNumRows, this.mNumColumns, this.FXc);
+      localMMGridPaperGridView.setHorizontalSpacing(a.fromDPToPix(getContext(), this.FUZ));
+      localMMGridPaperGridView.setVerticalSpacing(a.fromDPToPix(getContext(), this.FVa));
+      this.FXb.addView(localMMGridPaperGridView, new LinearLayout.LayoutParams(-1, -1));
       i += 1;
       continue;
-      i = this.zjK;
-      if (i <= this.zjL)
+      i = this.FXi;
+      if (i <= this.FXj)
       {
-        localMMGridPaperGridView = (MMGridPaperGridView)this.zjD.getChildAt(i - this.zjK);
+        localMMGridPaperGridView = (MMGridPaperGridView)this.FXb.getChildAt(i - this.FXi);
         if (localMMGridPaperGridView.getIndex() != i)
         {
-          ab.w("MicroMsg.MMGridPaper", "old index %d, new index %d, reset it", new Object[] { Integer.valueOf(localMMGridPaperGridView.getIndex()), Integer.valueOf(i) });
-          localMMGridPaperGridView.a(i, this.mNumRows, this.mNumColumns, this.zjE);
+          ad.w("MicroMsg.MMGridPaper", "old index %d, new index %d, reset it", new Object[] { Integer.valueOf(localMMGridPaperGridView.getIndex()), Integer.valueOf(i) });
+          localMMGridPaperGridView.a(i, this.mNumRows, this.mNumColumns, this.FXc);
           localMMGridPaperGridView.notifyDataSetChanged();
         }
         for (;;)
         {
           i += 1;
           break;
-          ab.v("MicroMsg.MMGridPaper", "same grid index, continus");
+          ad.v("MicroMsg.MMGridPaper", "same grid index, continus");
         }
       }
     }
-    cjk();
-    AppMethodBeat.o(106631);
+    dmH();
+    AppMethodBeat.o(141977);
   }
   
-  private void dnU()
+  private void eyF()
   {
-    AppMethodBeat.i(106629);
-    ab.v("MicroMsg.MMGridPaper", "MMGridPaper initFlipper");
-    if (this.jpZ == null)
+    AppMethodBeat.i(141975);
+    ad.v("MicroMsg.MMGridPaper", "MMGridPaper initFlipper");
+    if (this.mfR == null)
     {
-      this.jpZ = ((MMDotView)findViewById(2131826182));
-      this.jpZ.setMaxCount(this.zjO);
+      this.mfR = ((MMDotView)findViewById(2131300617));
+      this.mfR.setMaxCount(this.FXm);
     }
-    if (this.zjD == null)
+    if (this.FXb == null)
     {
-      this.zjD = ((MMFlipper)findViewById(2131826181));
-      this.zjD.setOnMeasureListener(this.zjj);
-      this.zjD.setOnScreenChangedListener(this.zji);
+      this.FXb = ((MMFlipper)findViewById(2131300618));
+      this.FXb.setOnMeasureListener(this.FWN);
+      this.FXb.setOnScreenChangedListener(this.FWM);
     }
-    dDU();
-    dDV();
-    AppMethodBeat.o(106629);
+    eSI();
+    eSJ();
+    AppMethodBeat.o(141975);
   }
   
   private MMGridPaperGridView getCurrentPage()
   {
-    AppMethodBeat.i(106637);
-    MMGridPaperGridView localMMGridPaperGridView = (MMGridPaperGridView)this.zjD.getChildAt(this.zjD.getCurScreen());
-    AppMethodBeat.o(106637);
+    AppMethodBeat.i(141983);
+    MMGridPaperGridView localMMGridPaperGridView = (MMGridPaperGridView)this.FXb.getChildAt(this.FXb.getCurScreen());
+    AppMethodBeat.o(141983);
     return localMMGridPaperGridView;
   }
   
   private int getScreenOrientation()
   {
-    AppMethodBeat.i(106627);
+    AppMethodBeat.i(141973);
     Display localDisplay = ((WindowManager)getContext().getSystemService("window")).getDefaultDisplay();
     if (localDisplay.getWidth() < localDisplay.getHeight()) {}
     for (int i = 1;; i = 2)
     {
-      AppMethodBeat.o(106627);
+      AppMethodBeat.o(141973);
       return i;
     }
   }
   
-  private static int hv(int paramInt1, int paramInt2)
+  private static int jh(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106632);
+    AppMethodBeat.i(141978);
     if (paramInt2 <= 0)
     {
-      ab.w("MicroMsg.MMGridPaper", "ceil:total[%d], length[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(106632);
+      ad.w("MicroMsg.MMGridPaper", "ceil:total[%d], length[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(141978);
       return 0;
     }
     for (;;)
@@ -356,8 +455,8 @@ public final class MMGridPaper
       }
       else
       {
-        ab.i("MicroMsg.MMGridPaper", "ceil:num[%d], length[%d], result[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
-        AppMethodBeat.o(106632);
+        ad.i("MicroMsg.MMGridPaper", "ceil:num[%d], length[%d], result[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
+        AppMethodBeat.o(141978);
         return i;
         j = paramInt1;
         i = 0;
@@ -365,13 +464,13 @@ public final class MMGridPaper
     }
   }
   
-  private static int hw(int paramInt1, int paramInt2)
+  private static int ji(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106633);
+    AppMethodBeat.i(141979);
     if ((paramInt1 == 0) || (paramInt2 <= 0))
     {
-      ab.w("MicroMsg.MMGridPaper", "floor:total[%d], length[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(106633);
+      ad.w("MicroMsg.MMGridPaper", "floor:total[%d], length[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(141979);
       return 0;
     }
     for (;;)
@@ -385,8 +484,8 @@ public final class MMGridPaper
       }
       else
       {
-        ab.i("MicroMsg.MMGridPaper", "floor:num[%d], length[%d], result[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
-        AppMethodBeat.o(106633);
+        ad.i("MicroMsg.MMGridPaper", "floor:num[%d], length[%d], result[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
+        AppMethodBeat.o(141979);
         return i;
         j = paramInt1;
         i = 0;
@@ -394,16 +493,16 @@ public final class MMGridPaper
     }
   }
   
-  public final void dDS()
+  public final void eSG()
   {
-    this.zjW = 3;
-    this.zjV = 3;
+    this.FXu = 3;
+    this.FXt = 3;
   }
   
-  public final void dDT()
+  public final void eSH()
   {
-    this.zhv = 8;
-    this.zhw = 15;
+    this.FUZ = 8;
+    this.FVa = 15;
   }
   
   public final int getItemsCountPerPage()
@@ -413,81 +512,89 @@ public final class MMGridPaper
   
   public final int getPageCount()
   {
-    return this.zjM;
+    return this.FXk;
   }
   
   @TargetApi(8)
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(106636);
+    AppMethodBeat.i(141982);
     if ((paramConfiguration.orientation == 1) || (paramConfiguration.orientation == 2))
     {
-      ab.d("MicroMsg.MMGridPaper", "onConfigChanged:" + paramConfiguration.orientation);
-      this.zjT = true;
+      ad.d("MicroMsg.MMGridPaper", "onConfigChanged:" + paramConfiguration.orientation);
+      this.FXr = true;
     }
-    AppMethodBeat.o(106636);
+    AppMethodBeat.o(141982);
   }
   
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(106635);
-    ab.d("MicroMsg.MMGridPaper", "onLayout left=%s top=%s right=%s bottom=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    if (this.hkz != getScreenOrientation())
+    AppMethodBeat.i(141981);
+    ad.d("MicroMsg.MMGridPaper", "onLayout left=%s top=%s right=%s bottom=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    if (this.mCurrentOrientation != getScreenOrientation())
     {
-      this.hkz = getScreenOrientation();
-      ab.d("MicroMsg.MMGridPaper", "onLayout, currentOrientation changed, reAdjustDisplayArea");
-      this.zjT = true;
+      this.mCurrentOrientation = getScreenOrientation();
+      ad.d("MicroMsg.MMGridPaper", "onLayout, currentOrientation changed, reAdjustDisplayArea");
+      this.FXr = true;
       clearAnimation();
-      dDU();
-      dDV();
+      eSI();
+      eSJ();
     }
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(106635);
+    AppMethodBeat.o(141981);
   }
   
   public final void refresh()
   {
-    AppMethodBeat.i(106626);
-    this.zjH = (this.zjI * this.mNumColumns * this.mNumRows);
-    ab.v("MicroMsg.MMGridPaper", "refreshed:virtualPage[%d], col[%d], row[%d], scrollCount[%d]", new Object[] { Integer.valueOf(this.zjI), Integer.valueOf(this.mNumColumns), Integer.valueOf(this.mNumRows), Integer.valueOf(this.zjH) });
-    dnU();
-    AppMethodBeat.o(106626);
+    AppMethodBeat.i(141972);
+    this.FXf = (this.FXg * this.mNumColumns * this.mNumRows);
+    ad.v("MicroMsg.MMGridPaper", "refreshed:virtualPage[%d], col[%d], row[%d], scrollCount[%d]", new Object[] { Integer.valueOf(this.FXg), Integer.valueOf(this.mNumColumns), Integer.valueOf(this.mNumRows), Integer.valueOf(this.FXf) });
+    eyF();
+    AppMethodBeat.o(141972);
   }
   
   public final void setDialogMode(boolean paramBoolean)
   {
-    this.zjU = paramBoolean;
+    this.FXs = paramBoolean;
   }
   
   public final void setDisplayHeightLandInDp(int paramInt)
   {
-    this.zjP = paramInt;
+    this.FXn = paramInt;
   }
   
   public final void setDisplayHeightPortInDp(int paramInt)
   {
-    this.zjQ = paramInt;
+    this.FXo = paramInt;
   }
   
   public final void setGridHeight(int paramInt)
   {
-    this.zjG = paramInt;
+    this.FXe = paramInt;
   }
   
   public final void setGridPaperAdapter(j paramj)
   {
     boolean bool = true;
-    AppMethodBeat.i(106625);
-    this.zjE = paramj;
+    AppMethodBeat.i(141971);
+    this.FXc = paramj;
     if (paramj == null) {}
     for (;;)
     {
-      ab.d("MicroMsg.MMGridPaper", "setGridPaperAdapter:adapter is null[%B]", new Object[] { Boolean.valueOf(bool) });
-      if (this.zjE != null) {
-        this.zjE.zke = new MMGridPaper.1(this);
+      ad.d("MicroMsg.MMGridPaper", "setGridPaperAdapter:adapter is null[%B]", new Object[] { Boolean.valueOf(bool) });
+      if (this.FXc != null) {
+        this.FXc.FXC = new j.a()
+        {
+          public final void bCM()
+          {
+            AppMethodBeat.i(141962);
+            MMGridPaper.this.refresh();
+            AppMethodBeat.o(141962);
+          }
+        };
       }
-      dnU();
-      AppMethodBeat.o(106625);
+      eyF();
+      AppMethodBeat.o(141971);
       return;
       bool = false;
     }
@@ -495,34 +602,34 @@ public final class MMGridPaper
   
   public final void setGridWidth(int paramInt)
   {
-    this.zjF = paramInt;
+    this.FXd = paramInt;
   }
   
   public final void setHeaderView(View paramView)
   {
-    AppMethodBeat.i(106624);
-    this.Ww = paramView;
-    paramView = (ViewGroup)findViewById(2131821060);
+    AppMethodBeat.i(141970);
+    this.adC = paramView;
+    paramView = (ViewGroup)findViewById(2131300705);
     paramView.removeAllViews();
-    if (this.Ww != null) {
-      paramView.addView(this.Ww);
+    if (this.adC != null) {
+      paramView.addView(this.adC);
     }
-    AppMethodBeat.o(106624);
+    AppMethodBeat.o(141970);
   }
   
   public final void setItemHeightInDp(int paramInt)
   {
-    this.zjS = paramInt;
+    this.FXq = paramInt;
   }
   
   public final void setItemWidthInDp(int paramInt)
   {
-    this.zjR = paramInt;
+    this.FXp = paramInt;
   }
   
   public final void setManualMeasureMode(boolean paramBoolean)
   {
-    this.zjX = paramBoolean;
+    this.FXv = paramBoolean;
   }
   
   public final void setMaxCol(int paramInt)
@@ -532,7 +639,7 @@ public final class MMGridPaper
   
   public final void setMaxDotCount(int paramInt)
   {
-    this.zjO = paramInt;
+    this.FXm = paramInt;
   }
   
   public final void setMaxRow(int paramInt)
@@ -542,14 +649,14 @@ public final class MMGridPaper
   
   public final void setOnPageSizeChangeListener(a parama)
   {
-    this.zka = parama;
+    this.FXy = parama;
   }
   
   public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMGridPaper
  * JD-Core Version:    0.7.0.1
  */

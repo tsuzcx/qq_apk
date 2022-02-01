@@ -1,125 +1,92 @@
 package com.tencent.mm.ai;
 
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.m.e;
-import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.f;
-import com.tencent.mm.protocal.j.e;
-import com.tencent.mm.protocal.j.e.a;
-import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.z;
+import com.tencent.mm.sdk.a.b;
+import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.Map;
+import junit.framework.Assert;
 
-public abstract class k
-  implements com.tencent.mm.network.q
+public final class k
+  extends z
 {
-  private static final String TAG = "MicroMsg.MMReqRespBase";
-  private boolean isSingleSession = true;
-  private boolean isUserCmd = false;
-  private l.d req;
+  public static c.a info;
   
-  public static void fillBaseReq(l.d paramd, k paramk)
+  static
   {
-    paramd.setDeviceID(com.tencent.mm.compatible.e.q.LK());
-    paramd.setDeviceType(d.eQs);
-    paramd.setClientVersion(d.whH);
-    paramd.setUin(j.e.a.wim.aaE());
-    if ((f.whQ) && (g.RG()))
-    {
-      int j = paramk.getType();
-      boolean bool;
-      int k;
-      int i;
-      if (((a)g.E(a.class)).Nq().getInt("UseAesGcmSessionKeySwitch", 1) == 0)
-      {
-        bool = true;
-        ab.i("MicroMsg.MMReqRespBase", "summerauths check cgi[%s] accHasReady openSwitch[%s] ", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool) });
-        if (bool)
-        {
-          paramd = ((a)g.E(a.class)).Nq().getValue("UseAesGcmSessionKeyCgiList");
-          if (!bo.isNullOrNil(paramd))
-          {
-            ab.i("MicroMsg.MMReqRespBase", "summerauths check cgi list[%s]", new Object[] { paramd });
-            paramd = paramd.trim().split(",");
-            if (paramd.length > 0)
-            {
-              k = paramd.length;
-              i = 0;
-            }
-          }
-        }
-      }
-      for (;;)
-      {
-        if (i < k)
-        {
-          String str = paramd[i];
-          if (j == bo.getInt(str, 0))
-          {
-            paramk.setSingleSession(false);
-            ab.i("MicroMsg.MMReqRespBase", "summerauths check cgi list found cgi[%s] singleSession[%s]", new Object[] { str, Boolean.valueOf(paramk.isSingleSession()) });
-          }
-        }
-        else
-        {
-          return;
-          bool = false;
-          break;
-        }
-        i += 1;
-      }
+    AppMethodBeat.i(150130);
+    c.a locala = new c.a();
+    locala.EYt = new Field[7];
+    locala.columns = new String[8];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "msgId";
+    locala.EYv.put("msgId", "LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(" msgId LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.EYu = "msgId";
+    locala.columns[1] = "xml";
+    locala.EYv.put("xml", "TEXT");
+    localStringBuilder.append(" xml TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "appId";
+    locala.EYv.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "title";
+    locala.EYv.put("title", "TEXT");
+    localStringBuilder.append(" title TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "description";
+    locala.EYv.put("description", "TEXT");
+    localStringBuilder.append(" description TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "source";
+    locala.EYv.put("source", "TEXT");
+    localStringBuilder.append(" source TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "type";
+    locala.EYv.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    locala.columns[7] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    if (b.eEQ()) {
+      Assert.assertTrue(apv());
     }
-    ab.i("MicroMsg.MMReqRespBase", "summerauths check cgi[%s] USE_ECDH[%s] accHasReady[%s] ", new Object[] { Integer.valueOf(paramd.getCmdId()), Boolean.valueOf(f.whQ), Boolean.valueOf(g.RG()) });
+    AppMethodBeat.o(150130);
   }
   
-  public boolean getIsUserCmd()
+  private static final boolean apv()
   {
-    return this.isUserCmd;
-  }
-  
-  public int getOptions()
-  {
-    return 0;
-  }
-  
-  public boolean getPush()
-  {
-    return false;
-  }
-  
-  public final l.d getReqObj()
-  {
-    if (this.req == null)
+    AppMethodBeat.i(150129);
+    Field[] arrayOfField = k.b.class.getDeclaredFields();
+    int i = 0;
+    int k;
+    for (int j = 0; i < arrayOfField.length; j = k)
     {
-      this.req = getReqObjImp();
-      fillBaseReq(this.req, this);
+      k = j;
+      if (!Modifier.isStatic(arrayOfField[i].getModifiers())) {
+        k = j + 1;
+      }
+      i += 1;
     }
-    return this.req;
+    if (j > 197)
+    {
+      ad.e("MicroMsg.AppMessage", "AppMessage.Content should not add new field!!! (%d) is over the limit(%d)!!!", new Object[] { Integer.valueOf(j), Integer.valueOf(197) });
+      AppMethodBeat.o(150129);
+      return false;
+    }
+    ad.i("MicroMsg.AppMessage", "AppMessage.Content nonStaticFieldCount: %d", new Object[] { Integer.valueOf(j) });
+    AppMethodBeat.o(150129);
+    return true;
   }
   
-  protected abstract l.d getReqObjImp();
-  
-  public int getTimeOut()
+  public final c.a getDBInfo()
   {
-    return 0;
-  }
-  
-  public boolean isSingleSession()
-  {
-    return this.isSingleSession;
-  }
-  
-  public void setConnectionInfo(String paramString) {}
-  
-  public void setIsUserCmd(boolean paramBoolean)
-  {
-    this.isUserCmd = paramBoolean;
-  }
-  
-  void setSingleSession(boolean paramBoolean)
-  {
-    this.isSingleSession = paramBoolean;
+    return info;
   }
 }
 

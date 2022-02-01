@@ -10,7 +10,7 @@ public final class w
   public static void a(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     if ((paramViewParent instanceof n)) {
-      ((n)paramViewParent).h(paramInt4, paramInt5);
+      ((n)paramViewParent).a(paramView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
     }
     do
     {
@@ -104,12 +104,12 @@ public final class w
   public static boolean a(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt1, int paramInt2)
   {
     if ((paramViewParent instanceof n)) {
-      return ((n)paramViewParent).e(paramView1, paramInt1, paramInt2);
+      return ((n)paramViewParent).a(paramView1, paramView2, paramInt1, paramInt2);
     }
     if (paramInt2 == 0)
     {
       if (Build.VERSION.SDK_INT < 21) {
-        break label70;
+        break label71;
       }
       try
       {
@@ -121,7 +121,7 @@ public final class w
         new StringBuilder("ViewParent ").append(paramViewParent).append(" does not implement interface method onStartNestedScroll");
       }
     }
-    label70:
+    label71:
     while (!(paramViewParent instanceof m))
     {
       boolean bool;

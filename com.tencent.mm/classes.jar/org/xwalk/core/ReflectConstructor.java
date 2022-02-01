@@ -15,20 +15,20 @@ class ReflectConstructor
   
   public ReflectConstructor(Class<?> paramClass, Class<?>... paramVarArgs)
   {
-    AppMethodBeat.i(85512);
+    AppMethodBeat.i(154602);
     init(paramClass, paramVarArgs);
-    AppMethodBeat.o(85512);
+    AppMethodBeat.o(154602);
   }
   
   public boolean init(Class<?> paramClass, Class<?>... paramVarArgs)
   {
-    AppMethodBeat.i(85513);
+    AppMethodBeat.i(154603);
     this.mClass = paramClass;
     this.mParameterTypes = paramVarArgs;
     this.mConstructor = null;
     if (this.mClass == null)
     {
-      AppMethodBeat.o(85513);
+      AppMethodBeat.o(154603);
       return false;
     }
     try
@@ -36,7 +36,7 @@ class ReflectConstructor
       this.mConstructor = this.mClass.getConstructor(this.mParameterTypes);
       if (this.mConstructor != null)
       {
-        AppMethodBeat.o(85513);
+        AppMethodBeat.o(154603);
         return true;
       }
     }
@@ -51,7 +51,7 @@ class ReflectConstructor
         }
         catch (NoSuchMethodException paramClass) {}
       }
-      AppMethodBeat.o(85513);
+      AppMethodBeat.o(154603);
     }
     return false;
   }
@@ -63,64 +63,64 @@ class ReflectConstructor
   
   public Object newInstance(Object... paramVarArgs)
   {
-    AppMethodBeat.i(85514);
+    AppMethodBeat.i(154604);
     if (this.mConstructor == null)
     {
       paramVarArgs = new UnsupportedOperationException(toString());
-      AppMethodBeat.o(85514);
+      AppMethodBeat.o(154604);
       throw paramVarArgs;
     }
     try
     {
       paramVarArgs = this.mConstructor.newInstance(paramVarArgs);
-      AppMethodBeat.o(85514);
+      AppMethodBeat.o(154604);
       return paramVarArgs;
     }
     catch (IllegalAccessException paramVarArgs)
     {
       paramVarArgs = new RejectedExecutionException(paramVarArgs);
-      AppMethodBeat.o(85514);
+      AppMethodBeat.o(154604);
       throw paramVarArgs;
     }
     catch (InstantiationException paramVarArgs)
     {
       paramVarArgs = new RejectedExecutionException(paramVarArgs);
-      AppMethodBeat.o(85514);
+      AppMethodBeat.o(154604);
       throw paramVarArgs;
     }
     catch (IllegalArgumentException paramVarArgs)
     {
-      AppMethodBeat.o(85514);
+      AppMethodBeat.o(154604);
       throw paramVarArgs;
     }
     catch (InvocationTargetException paramVarArgs)
     {
       paramVarArgs = new RuntimeException(paramVarArgs.getCause());
-      AppMethodBeat.o(85514);
+      AppMethodBeat.o(154604);
       throw paramVarArgs;
     }
   }
   
   public String toString()
   {
-    AppMethodBeat.i(85515);
+    AppMethodBeat.i(154605);
     if (this.mConstructor != null)
     {
       str = this.mConstructor.toString();
-      AppMethodBeat.o(85515);
+      AppMethodBeat.o(154605);
       return str;
     }
     String str = "";
     if (this.mClass != null) {
       str = "" + this.mClass.toString();
     }
-    AppMethodBeat.o(85515);
+    AppMethodBeat.o(154605);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.ReflectConstructor
  * JD-Core Version:    0.7.0.1
  */

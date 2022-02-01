@@ -7,8 +7,9 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class MaskImageView
   extends TagImageView
@@ -18,67 +19,90 @@ public class MaskImageView
   private boolean enable;
   private int g;
   private int r;
-  private ak rER;
-  private Runnable rES;
+  private ap xkC;
+  private Runnable xkD;
   
   public MaskImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(38309);
+    AppMethodBeat.i(97961);
     this.a = 90;
     this.r = 0;
     this.g = 0;
     this.b = 0;
     this.enable = true;
-    this.rER = new ak(Looper.getMainLooper());
-    this.rES = new MaskImageView.1(this);
-    super.setOnTouchListener(new MaskImageView.2(this));
-    super.setContentDescription(getContext().getResources().getString(2131303840));
-    AppMethodBeat.o(38309);
+    this.xkC = new ap(Looper.getMainLooper());
+    this.xkD = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(97959);
+        MaskImageView.this.setPressed(false);
+        MaskImageView.this.invalidate();
+        AppMethodBeat.o(97959);
+      }
+    };
+    super.setOnTouchListener(new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(97960);
+        if (!MaskImageView.a(MaskImageView.this))
+        {
+          AppMethodBeat.o(97960);
+          return false;
+        }
+        boolean bool = MaskImageView.this.e(paramAnonymousView, paramAnonymousMotionEvent);
+        AppMethodBeat.o(97960);
+        return bool;
+      }
+    });
+    super.setContentDescription(getContext().getResources().getString(2131763849));
+    AppMethodBeat.o(97961);
   }
   
-  public final boolean d(View paramView, MotionEvent paramMotionEvent)
+  public final boolean e(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(38310);
+    AppMethodBeat.i(97962);
     switch (paramMotionEvent.getAction())
     {
     }
     while ((!isClickable()) && (!isLongClickable()))
     {
-      AppMethodBeat.o(38310);
+      AppMethodBeat.o(97962);
       return true;
       paramView.setPressed(true);
       paramView.invalidate();
-      this.rER.removeCallbacks(this.rES);
+      this.xkC.removeCallbacks(this.xkD);
       continue;
-      this.rER.post(this.rES);
+      this.xkC.post(this.xkD);
     }
-    AppMethodBeat.o(38310);
+    AppMethodBeat.o(97962);
     return false;
   }
   
   public void onAttachedToWindow()
   {
-    AppMethodBeat.i(38312);
+    AppMethodBeat.i(97964);
     super.onAttachedToWindow();
-    AppMethodBeat.o(38312);
+    AppMethodBeat.o(97964);
   }
   
   public void onDetachedFromWindow()
   {
-    AppMethodBeat.i(38313);
+    AppMethodBeat.i(97965);
     super.onDetachedFromWindow();
-    AppMethodBeat.o(38313);
+    AppMethodBeat.o(97965);
   }
   
   public void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(38311);
+    AppMethodBeat.i(97963);
     super.onDraw(paramCanvas);
     if (isPressed()) {
       paramCanvas.drawARGB(this.a, this.r, this.g, this.b);
     }
-    AppMethodBeat.o(38311);
+    AppMethodBeat.o(97963);
   }
   
   public void settouchEnable(boolean paramBoolean)

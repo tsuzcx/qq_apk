@@ -29,9 +29,9 @@ public class ResolveAccountRequest
   
   static
   {
-    AppMethodBeat.i(61360);
+    AppMethodBeat.i(11852);
     CREATOR = new ResolveAccountRequestCreator();
-    AppMethodBeat.o(61360);
+    AppMethodBeat.o(11852);
   }
   
   @SafeParcelable.Constructor
@@ -65,14 +65,14 @@ public class ResolveAccountRequest
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(61359);
+    AppMethodBeat.i(11851);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     SafeParcelWriter.writeParcelable(paramParcel, 2, getAccount(), paramInt, false);
     SafeParcelWriter.writeInt(paramParcel, 3, getSessionId());
     SafeParcelWriter.writeParcelable(paramParcel, 4, getSignInAccountHint(), paramInt, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(61359);
+    AppMethodBeat.o(11851);
   }
 }
 

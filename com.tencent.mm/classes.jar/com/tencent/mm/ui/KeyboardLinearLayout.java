@@ -3,29 +3,29 @@ package com.tencent.mm.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.OnLayoutChangedLinearLayout;
 
 public class KeyboardLinearLayout
   extends OnLayoutChangedLinearLayout
 {
+  private boolean FLU;
+  private a FLV;
   public String TAG;
   private boolean mHasInit;
   private int mHeight;
-  private boolean yYM;
-  private KeyboardLinearLayout.a yYN;
   
   public KeyboardLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(105972);
+    AppMethodBeat.i(141302);
     this.TAG = "MicroMsg.KeyboardLinearLayout";
     this.mHasInit = false;
     this.mHasInit = false;
     this.mHeight = 0;
-    this.yYM = false;
+    this.FLU = false;
     this.TAG += getId();
-    AppMethodBeat.o(105972);
+    AppMethodBeat.o(141302);
   }
   
   public KeyboardLinearLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -35,38 +35,39 @@ public class KeyboardLinearLayout
     this.mHasInit = false;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void DK(int paramInt)
   {
-    AppMethodBeat.i(105973);
-    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    rM(paramInt4);
-    AppMethodBeat.o(105973);
+    AppMethodBeat.i(141305);
+    if (this.FLV != null) {
+      this.FLV.DK(paramInt);
+    }
+    AppMethodBeat.o(141305);
   }
   
-  protected void rM(int paramInt)
+  protected void Tw(int paramInt)
   {
-    AppMethodBeat.i(105974);
+    AppMethodBeat.i(141304);
     if (!this.mHasInit)
     {
       this.mHasInit = true;
       this.mHeight = paramInt;
-      ab.i(this.TAG, "init height:%d", new Object[] { Integer.valueOf(this.mHeight) });
-      if (this.yYN != null) {
-        this.yYN.sJ(-1);
+      ad.i(this.TAG, "init height:%d", new Object[] { Integer.valueOf(this.mHeight) });
+      if (this.FLV != null) {
+        this.FLV.DK(-1);
       }
-      if ((this.mHasInit) && (!this.yYM) && (this.mHeight - paramInt > 100))
+      if ((this.mHasInit) && (!this.FLU) && (this.mHeight - paramInt > 100))
       {
-        this.yYM = true;
-        sJ(-3);
-        ab.w(this.TAG, "show keyboard!! mHeight: " + this.mHeight + " b: " + paramInt);
+        this.FLU = true;
+        DK(-3);
+        ad.w(this.TAG, "show keyboard!! mHeight: " + this.mHeight + " b: " + paramInt);
       }
-      if ((this.mHasInit) && (this.yYM) && (this.mHeight - paramInt <= 100))
+      if ((this.mHasInit) && (this.FLU) && (this.mHeight - paramInt <= 100))
       {
-        this.yYM = false;
-        sJ(-2);
-        ab.w(this.TAG, "hide keyboard!! mHeight: " + this.mHeight + " b: " + paramInt);
+        this.FLU = false;
+        DK(-2);
+        ad.w(this.TAG, "hide keyboard!! mHeight: " + this.mHeight + " b: " + paramInt);
       }
-      AppMethodBeat.o(105974);
+      AppMethodBeat.o(141304);
       return;
     }
     if (this.mHeight < paramInt) {}
@@ -77,23 +78,27 @@ public class KeyboardLinearLayout
     }
   }
   
-  protected void sJ(int paramInt)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(105975);
-    if (this.yYN != null) {
-      this.yYN.sJ(paramInt);
-    }
-    AppMethodBeat.o(105975);
+    AppMethodBeat.i(141303);
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    Tw(paramInt4);
+    AppMethodBeat.o(141303);
   }
   
-  public void setOnkbdStateListener(KeyboardLinearLayout.a parama)
+  public void setOnkbdStateListener(a parama)
   {
-    this.yYN = parama;
+    this.FLV = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void DK(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.KeyboardLinearLayout
  * JD-Core Version:    0.7.0.1
  */

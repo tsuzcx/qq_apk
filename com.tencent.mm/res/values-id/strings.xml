@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="a4">Kunjungi &lt;b>facebook.com/device&lt;/b> dan masukkan kode yang ditampilkan di atas.</string>
-    <string name="a6">Masuk WebView memerlukan izin INTERNET</string>
-    <string name="a7">Kesalahan AndroidManifest</string>
-    <string name="a8">Disukai</string>
-    <string name="a9">Suka</string>
-    <string name="a_">Memuat…</string>
-    <string name="aa">Batal</string>
-    <string name="ab">Masuk</string>
-    <string name="ac">Lanjutkan dengan Facebook</string>
-    <string name="ae">Keluar</string>
-    <string name="af">Keluar</string>
-    <string name="ag">Masuk sebagai: %1$s</string>
-    <string name="ah">Masuk menggunakan Facebook</string>
-    <string name="ak">Untuk menghubungkan akun Anda, buka aplikasi Facebook di perangkat seluler Anda dan periksa pemberitahuan.</string>
-    <string name="al">- ATAU -</string>
-    <string name="am">Bukan Anda?</string>
-    <string name="ao">Konfirmasikan Masuk</string>
-    <string name="ap">Anda memegang kendali - pilih info yang ingin Anda bagikan dengan aplikasi.</string>
-    <string name="a5">Kesalahan yang tidak diharapkan saat mengunduh gambar.</string>
-    <string name="ad">Masuk menggunakan Facebook</string>
-    <string name="ai">Kirim</string>
-    <string name="aj">Berbagi</string>
+    <string name="b28">Kunjungi &lt;b>facebook.com/device&lt;/b> dan masukkan kode yang ditampilkan di atas.</string>
+    <string name="b29">Kesalahan yang tidak diharapkan saat mengunduh gambar.</string>
+    <string name="b2_">Masuk WebView memerlukan izin INTERNET</string>
+    <string name="b2a">Kesalahan AndroidManifest</string>
+    <string name="b2b">Disukai</string>
+    <string name="b2c">Suka</string>
+    <string name="b2d">Memuat…</string>
+    <string name="b2e">Batal</string>
+    <string name="b2f">Masuk</string>
+    <string name="b2g">Lanjutkan dengan Facebook</string>
+    <string name="b2h">Masuk menggunakan Facebook</string>
+    <string name="b2i">Keluar</string>
+    <string name="b2j">Keluar</string>
+    <string name="b2k">Masuk sebagai: %1$s</string>
+    <string name="b2l">Masuk menggunakan Facebook</string>
+    <string name="b2m">Kirim</string>
+    <string name="b2n">Berbagi</string>
+    <string name="b2o">Untuk menghubungkan akun Anda, buka aplikasi Facebook di perangkat seluler Anda dan periksa pemberitahuan.</string>
+    <string name="b2p">- ATAU -</string>
+    <string name="b2q">Bukan Anda?</string>
+    <string name="b2s">Konfirmasikan Masuk</string>
+    <string name="b2t">Anda memegang kendali - pilih info yang ingin Anda bagikan dengan aplikasi.</string>
 </resources>

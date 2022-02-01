@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout style="@style/g7"
+<LinearLayout android:orientation="horizontal" android:background="@color/h6" android:paddingLeft="@dimen/hd" android:paddingTop="@dimen/jd" android:paddingRight="@dimen/hd" android:paddingBottom="@dimen/jd" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/m0" />
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/ap9" style="@style/gg">
-        <TextView android:id="@id/ox" android:visibility="gone" style="@style/gl" />
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.widget.MMNeat7extView android:id="@id/oy" android:background="@drawable/j1" android:maxWidth="@dimen/xc" android:maxHeight="@dimen/fy" android:minHeight="@dimen/eg" style="@style/gr" />
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/y3" android:layout_gravity="center|left|top" android:id="@id/g7y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" />
+    <TextView android:textSize="@dimen/v7" android:textColor="@color/kl" android:gravity="right" android:layout_gravity="right" android:id="@id/g7x" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+</LinearLayout>

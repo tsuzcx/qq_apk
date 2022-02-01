@@ -9,14 +9,12 @@ import android.bluetooth.le.ScanCallback;
 import android.bluetooth.le.ScanRecord;
 import android.bluetooth.le.ScanResult;
 import android.content.Context;
-import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.exdevice.j.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bj;
+import com.tencent.mm.plugin.exdevice.k.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -26,66 +24,66 @@ import junit.framework.Assert;
 public final class g
   extends ScanCallback
 {
-  private static g jOP;
-  private BluetoothAdapter jNi;
-  private BluetoothManager jOQ;
-  private BluetoothLeScanner jOR;
-  private ArrayList<g.a> jOc;
-  private boolean jOd;
+  private static g mNS;
   private Context mContext;
-  private ak mHandler;
+  private ap mHandler;
+  private BluetoothAdapter mMl;
+  private BluetoothManager mNT;
+  private BluetoothLeScanner mNU;
+  private ArrayList<a> mNf;
+  private boolean mNg;
   
   private g(Context paramContext)
   {
-    AppMethodBeat.i(18449);
+    AppMethodBeat.i(22560);
     if (paramContext == null)
     {
-      ab.e("MicroMsg.exdevice.NewBluetoothLEScanner", "No context for scanner");
-      AppMethodBeat.o(18449);
+      ad.e("MicroMsg.exdevice.NewBluetoothLEScanner", "No context for scanner");
+      AppMethodBeat.o(22560);
       return;
     }
     this.mContext = paramContext;
-    this.jOc = new ArrayList();
-    this.jOd = false;
-    this.jNi = null;
-    this.jOR = null;
+    this.mNf = new ArrayList();
+    this.mNg = false;
+    this.mMl = null;
+    this.mNU = null;
     this.mHandler = null;
-    this.jOQ = ((BluetoothManager)this.mContext.getSystemService("bluetooth"));
-    this.jNi = this.jOQ.getAdapter();
-    if (this.jNi != null)
+    this.mNT = ((BluetoothManager)this.mContext.getSystemService("bluetooth"));
+    this.mMl = this.mNT.getAdapter();
+    if (this.mMl != null)
     {
-      ab.d("MicroMsg.exdevice.NewBluetoothLEScanner", "Get bluetoothLeScanner");
-      this.jOR = this.jNi.getBluetoothLeScanner();
+      ad.d("MicroMsg.exdevice.NewBluetoothLEScanner", "Get bluetoothLeScanner");
+      this.mNU = this.mMl.getBluetoothLeScanner();
     }
-    this.mHandler = new ak(new al("NewBluetoothLEScannerThread").oNc.getLooper());
-    AppMethodBeat.o(18449);
+    this.mHandler = new ap("NewBluetoothLEScannerThread");
+    AppMethodBeat.o(22560);
   }
   
-  private boolean a(g.a parama)
+  private boolean a(a parama)
   {
-    AppMethodBeat.i(18451);
+    AppMethodBeat.i(22562);
     if (parama == null)
     {
-      ab.e("MicroMsg.exdevice.NewBluetoothLEScanner", "callback is null");
-      AppMethodBeat.o(18451);
+      ad.e("MicroMsg.exdevice.NewBluetoothLEScanner", "callback is null");
+      AppMethodBeat.o(22562);
       return false;
     }
     int i = 0;
     label53:
     boolean bool;
-    if (i < this.jOc.size()) {
-      if ((g.a)this.jOc.get(i) == parama)
+    if (i < this.mNf.size()) {
+      if ((a)this.mNf.get(i) == parama)
       {
         if (i >= 0) {
           break label100;
         }
-        bool = this.jOc.add(parama);
-        ab.d("MicroMsg.exdevice.NewBluetoothLEScanner", "add callback ".concat(String.valueOf(bool)));
+        bool = this.mNf.add(parama);
+        ad.d("MicroMsg.exdevice.NewBluetoothLEScanner", "add callback ".concat(String.valueOf(bool)));
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(18451);
+      AppMethodBeat.o(22562);
       return bool;
       i += 1;
       break;
@@ -93,80 +91,113 @@ public final class g
       break label53;
       label100:
       bool = true;
-      ab.w("MicroMsg.exdevice.NewBluetoothLEScanner", "callback has in queue. pass");
+      ad.w("MicroMsg.exdevice.NewBluetoothLEScanner", "callback has in queue. pass");
     }
   }
   
-  public static g aWa()
+  public static g bBC()
   {
-    AppMethodBeat.i(18448);
-    if (jOP != null)
+    AppMethodBeat.i(22559);
+    if (mNS != null)
     {
-      localg = jOP;
-      AppMethodBeat.o(18448);
+      localg = mNS;
+      AppMethodBeat.o(22559);
       return localg;
     }
-    g localg = new g(ah.getContext());
-    jOP = localg;
-    AppMethodBeat.o(18448);
+    g localg = new g(aj.getContext());
+    mNS = localg;
+    AppMethodBeat.o(22559);
     return localg;
   }
   
-  public final boolean a(boolean paramBoolean, g.a parama)
+  public final boolean a(final boolean paramBoolean, final a parama)
   {
-    AppMethodBeat.i(18450);
-    ab.i("MicroMsg.exdevice.NewBluetoothLEScanner", "(API21)execute scan");
-    parama = (Boolean)new g.1(this, paramBoolean, parama).b(this.mHandler);
+    AppMethodBeat.i(22561);
+    ad.i("MicroMsg.exdevice.NewBluetoothLEScanner", "(API21)execute scan");
+    parama = (Boolean)new bo() {}.b(this.mHandler);
     if (parama != null) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
       Assert.assertTrue(paramBoolean);
       paramBoolean = parama.booleanValue();
-      AppMethodBeat.o(18450);
+      AppMethodBeat.o(22561);
       return paramBoolean;
     }
   }
   
   public final void onBatchScanResults(List<ScanResult> paramList)
   {
-    AppMethodBeat.i(18454);
+    AppMethodBeat.i(22565);
     if (paramList != null)
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         ScanResult localScanResult = (ScanResult)paramList.next();
-        ab.d("MicroMsg.exdevice.NewBluetoothLEScanner", "onLeScan. device addr = %s, name = %s, data = %s", new Object[] { localScanResult.getDevice().getAddress(), localScanResult.getDevice().getName(), b.aO(localScanResult.getScanRecord().getBytes()) });
+        ad.d("MicroMsg.exdevice.NewBluetoothLEScanner", "onLeScan. device addr = %s, name = %s, data = %s", new Object[] { localScanResult.getDevice().getAddress(), localScanResult.getDevice().getName(), b.be(localScanResult.getScanRecord().getBytes()) });
       }
     }
-    AppMethodBeat.o(18454);
+    AppMethodBeat.o(22565);
   }
   
-  public final void onScanFailed(int paramInt)
+  public final void onScanFailed(final int paramInt)
   {
-    AppMethodBeat.i(18452);
-    this.mHandler.post(new g.3(this, paramInt));
-    AppMethodBeat.o(18452);
+    AppMethodBeat.i(22563);
+    this.mHandler.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(22558);
+        int i = 0;
+        while (i < g.a(g.this).size())
+        {
+          ((g.a)g.a(g.this).get(i)).xu(paramInt);
+          i += 1;
+        }
+        AppMethodBeat.o(22558);
+      }
+    });
+    AppMethodBeat.o(22563);
   }
   
-  public final void onScanResult(int paramInt, ScanResult paramScanResult)
+  public final void onScanResult(final int paramInt, final ScanResult paramScanResult)
   {
-    AppMethodBeat.i(18453);
+    AppMethodBeat.i(22564);
     if ((paramScanResult != null) && (paramScanResult.getScanRecord() != null))
     {
-      ab.d("MicroMsg.exdevice.NewBluetoothLEScanner", "onLeScan. device addr = %s, name = %s, data = %s", new Object[] { paramScanResult.getDevice().getAddress(), paramScanResult.getDevice().getName(), b.aO(paramScanResult.getScanRecord().getBytes()) });
-      ab.d("MicroMsg.exdevice.NewBluetoothLEScanner", "callback size = %d", new Object[] { Integer.valueOf(this.jOc.size()) });
-      BluetoothDevice localBluetoothDevice = paramScanResult.getDevice();
+      ad.d("MicroMsg.exdevice.NewBluetoothLEScanner", "onLeScan. device addr = %s, name = %s, data = %s", new Object[] { paramScanResult.getDevice().getAddress(), paramScanResult.getDevice().getName(), b.be(paramScanResult.getScanRecord().getBytes()) });
+      ad.d("MicroMsg.exdevice.NewBluetoothLEScanner", "callback size = %d", new Object[] { Integer.valueOf(this.mNf.size()) });
+      final BluetoothDevice localBluetoothDevice = paramScanResult.getDevice();
       paramInt = paramScanResult.getRssi();
       paramScanResult = paramScanResult.getScanRecord().getBytes();
-      this.mHandler.post(new g.2(this, localBluetoothDevice, paramInt, paramScanResult));
+      this.mHandler.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(22557);
+          int i = 0;
+          while (i < g.a(g.this).size())
+          {
+            ((g.a)g.a(g.this).get(i)).a(localBluetoothDevice, paramInt, paramScanResult);
+            i += 1;
+          }
+          AppMethodBeat.o(22557);
+        }
+      });
     }
-    AppMethodBeat.o(18453);
+    AppMethodBeat.o(22564);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(BluetoothDevice paramBluetoothDevice, int paramInt, byte[] paramArrayOfByte);
+    
+    public abstract void xu(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.b.g
  * JD-Core Version:    0.7.0.1
  */

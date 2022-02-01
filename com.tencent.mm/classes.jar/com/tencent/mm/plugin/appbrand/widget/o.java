@@ -3,33 +3,33 @@ package com.tencent.mm.plugin.appbrand.widget;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class o
   extends j<n>
 {
-  public static final String[] fkl;
-  public static final String[] fkm;
+  public static final String[] gLs;
+  public static final String[] gLt;
   
   static
   {
-    AppMethodBeat.i(70664);
-    fkl = new String[] { j.getCreateSQLs(n.fkk, "WxaWidgetInfo") };
-    fkm = new String[0];
-    AppMethodBeat.o(70664);
+    AppMethodBeat.i(76413);
+    gLs = new String[] { j.getCreateSQLs(n.gLr, "WxaWidgetInfo") };
+    gLt = new String[0];
+    AppMethodBeat.o(76413);
   }
   
   public o(e parame)
   {
-    super(parame, n.fkk, "WxaWidgetInfo", fkm);
+    super(parame, n.gLr, "WxaWidgetInfo", gLt);
   }
   
-  public final n FC(String paramString)
+  public final n NA(String paramString)
   {
-    AppMethodBeat.i(70663);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(76412);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(70663);
+      AppMethodBeat.o(76412);
       return null;
     }
     n localn = new n();
@@ -37,10 +37,10 @@ public final class o
     localn.field_appIdHash = paramString.hashCode();
     if (!get(localn, new String[] { "appIdHash" }))
     {
-      AppMethodBeat.o(70663);
+      AppMethodBeat.o(76412);
       return null;
     }
-    AppMethodBeat.o(70663);
+    AppMethodBeat.o(76412);
     return localn;
   }
 }

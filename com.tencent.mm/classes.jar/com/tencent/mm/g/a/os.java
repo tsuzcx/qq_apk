@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class os
   extends b
 {
-  public os.a cFp;
+  public a dtY;
   
   public os()
   {
@@ -15,16 +15,21 @@ public final class os
   
   private os(byte paramByte)
   {
-    AppMethodBeat.i(94429);
-    this.cFp = new os.a();
-    this.ymq = false;
+    AppMethodBeat.i(19824);
+    this.dtY = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(94429);
+    AppMethodBeat.o(19824);
+  }
+  
+  public static final class a
+  {
+    public boolean dtZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.os
  * JD-Core Version:    0.7.0.1
  */

@@ -21,14 +21,14 @@ public class EmojiStoreV2HotBarListView
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(53626);
+    AppMethodBeat.i(109189);
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(536870911, -2147483648));
-    AppMethodBeat.o(53626);
+    AppMethodBeat.o(109189);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2HotBarListView
  * JD-Core Version:    0.7.0.1
  */

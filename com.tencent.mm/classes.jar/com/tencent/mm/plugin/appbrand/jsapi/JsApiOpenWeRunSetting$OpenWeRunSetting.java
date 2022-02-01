@@ -4,188 +4,191 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.luggage.h.e;
+import com.tencent.luggage.h.e.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.compat.a.a;
-import com.tencent.mm.plugin.appbrand.compat.a.a.a;
-import com.tencent.mm.plugin.appbrand.config.h;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.appbrand.config.k;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.sport.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandOpenWeRunSettingUI;
+import com.tencent.mm.plugin.exdevice.a.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 class JsApiOpenWeRunSetting$OpenWeRunSetting
   extends MainProcessTask
 {
   public static final Parcelable.Creator<OpenWeRunSetting> CREATOR;
-  private boolean cKK;
-  private int hry;
-  private m hxs;
-  private c hyO;
-  private boolean hzp;
-  private boolean hzq;
+  private boolean dBH;
+  private int joH;
+  private m jwG;
+  private boolean jyQ;
+  private boolean jyR;
+  private c jyl;
   
   static
   {
-    AppMethodBeat.i(130539);
-    CREATOR = new JsApiOpenWeRunSetting.OpenWeRunSetting.3();
-    AppMethodBeat.o(130539);
+    AppMethodBeat.i(45600);
+    CREATOR = new JsApiOpenWeRunSetting.OpenWeRunSetting.4();
+    AppMethodBeat.o(45600);
   }
   
   public JsApiOpenWeRunSetting$OpenWeRunSetting(Parcel paramParcel)
   {
-    AppMethodBeat.i(130532);
-    this.hzp = false;
-    this.cKK = false;
-    f(paramParcel);
-    AppMethodBeat.o(130532);
+    AppMethodBeat.i(45593);
+    this.jyQ = false;
+    this.dBH = false;
+    e(paramParcel);
+    AppMethodBeat.o(45593);
   }
   
   public JsApiOpenWeRunSetting$OpenWeRunSetting(m paramm, c paramc, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(130531);
-    this.hzp = false;
-    this.cKK = false;
-    ab.i("MicroMsg.JsApiOpenWeRunSetting", "OpenWeRunSetting");
-    this.hxs = paramm;
-    this.hyO = paramc;
-    this.hry = paramInt;
-    this.hzq = paramBoolean;
-    AppMethodBeat.o(130531);
+    AppMethodBeat.i(45592);
+    this.jyQ = false;
+    this.dBH = false;
+    ad.i("MicroMsg.JsApiOpenWeRunSetting", "OpenWeRunSetting");
+    this.jwG = paramm;
+    this.jyl = paramc;
+    this.joH = paramInt;
+    this.jyR = paramBoolean;
+    AppMethodBeat.o(45592);
   }
   
-  private void aBA()
+  public final void aEA()
   {
-    AppMethodBeat.i(130534);
-    if ((!this.hzq) || (this.hzp))
+    AppMethodBeat.i(45596);
+    if ((this.jyR) && (!this.jyQ))
     {
-      this.cKK = ((b)g.E(b.class)).cyu();
-      if ((this.hzq) && (this.cKK)) {
-        ((b)g.E(b.class)).cyt();
-      }
-    }
-    aBp();
-    AppMethodBeat.o(130534);
-  }
-  
-  public final void ata()
-  {
-    AppMethodBeat.i(130533);
-    this.hzp = ((b)g.E(b.class)).fa(ah.getContext());
-    if ((this.hzq) && (!this.hzp))
-    {
-      ((a)g.E(a.class)).a(new a.a()
-      {
-        public final void q(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
-        {
-          AppMethodBeat.i(130528);
-          JsApiOpenWeRunSetting.OpenWeRunSetting localOpenWeRunSetting = JsApiOpenWeRunSetting.OpenWeRunSetting.this;
-          if ((paramAnonymousBoolean1) && (paramAnonymousBoolean2)) {}
-          for (boolean bool = true;; bool = false)
-          {
-            JsApiOpenWeRunSetting.OpenWeRunSetting.a(localOpenWeRunSetting, bool);
-            ab.i("MicroMsg.JsApiOpenWeRunSetting", "After getUserState requestOk %b, hasStep %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean1), Boolean.valueOf(paramAnonymousBoolean2) });
-            JsApiOpenWeRunSetting.OpenWeRunSetting.a(JsApiOpenWeRunSetting.OpenWeRunSetting.this);
-            AppMethodBeat.o(130528);
-            return;
-          }
-        }
-      });
-      AppMethodBeat.o(130533);
+      this.jyl.h(this.joH, this.jwG.e("fail device not support", null));
+      aXn();
+      AppMethodBeat.o(45596);
       return;
     }
-    aBA();
-    AppMethodBeat.o(130533);
-  }
-  
-  public final void atb()
-  {
-    AppMethodBeat.i(130535);
-    if ((this.hzq) && (!this.hzp))
+    if (this.dBH)
     {
-      this.hyO.h(this.hry, this.hxs.j("fail device not support", null));
-      aBk();
-      AppMethodBeat.o(130535);
+      this.jyl.h(this.joH, this.jwG.e("ok", null));
+      aXn();
+      AppMethodBeat.o(45596);
       return;
     }
-    if (this.cKK)
+    Context localContext = this.jyl.getContext();
+    if (localContext == null)
     {
-      this.hyO.h(this.hry, this.hxs.j("ok", null));
-      aBk();
-      AppMethodBeat.o(130535);
+      this.jyl.h(this.joH, this.jwG.e("fail:internal error invalid android context", null));
+      aXn();
+      AppMethodBeat.o(45596);
       return;
     }
-    Context localContext = this.hyO.getContext();
-    if ((localContext == null) || (!(localContext instanceof MMActivity)))
+    k localk = (k)this.jyl.ar(k.class);
+    if ((localk == null) || (bt.isNullOrNil(localk.dfM)))
     {
-      this.hyO.h(this.hry, this.hxs.j("fail", null));
-      aBk();
-      AppMethodBeat.o(130535);
-      return;
-    }
-    h localh = (h)this.hyO.U(h.class);
-    if ((localh == null) || (bo.isNullOrNil(localh.cqQ)))
-    {
-      this.hyO.h(this.hry, this.hxs.j("fail", null));
-      aBk();
-      AppMethodBeat.o(130535);
+      this.jyl.h(this.joH, this.jwG.e("fail", null));
+      aXn();
+      AppMethodBeat.o(45596);
       return;
     }
     Intent localIntent = new Intent();
-    localIntent.putExtra("OpenWeRunSettingName", localh.cqQ);
-    ((MMActivity)localContext).mmSetOnActivityResultCallback(new MMActivity.a()
+    localIntent.putExtra("OpenWeRunSettingName", localk.dfM);
+    localIntent.setClass(localContext, AppBrandOpenWeRunSettingUI.class);
+    e.az(localContext).a(localIntent, new e.a()
     {
-      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      public final void a(int paramAnonymousInt, Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(130529);
-        if (paramAnonymousInt1 != (JsApiOpenWeRunSetting.OpenWeRunSetting.this.hashCode() & 0xFFFF))
+        AppMethodBeat.i(174770);
+        if (paramAnonymousInt == -1)
         {
-          JsApiOpenWeRunSetting.OpenWeRunSetting.this.aBk();
-          AppMethodBeat.o(130529);
+          JsApiOpenWeRunSetting.OpenWeRunSetting.f(JsApiOpenWeRunSetting.OpenWeRunSetting.this).h(JsApiOpenWeRunSetting.OpenWeRunSetting.d(JsApiOpenWeRunSetting.OpenWeRunSetting.this), JsApiOpenWeRunSetting.OpenWeRunSetting.e(JsApiOpenWeRunSetting.OpenWeRunSetting.this).e("ok", null));
+          JsApiOpenWeRunSetting.OpenWeRunSetting.this.aXn();
+          AppMethodBeat.o(174770);
           return;
         }
-        if (paramAnonymousInt2 == -1)
+        if (paramAnonymousInt == 0)
         {
-          JsApiOpenWeRunSetting.OpenWeRunSetting.d(JsApiOpenWeRunSetting.OpenWeRunSetting.this).h(JsApiOpenWeRunSetting.OpenWeRunSetting.b(JsApiOpenWeRunSetting.OpenWeRunSetting.this), JsApiOpenWeRunSetting.OpenWeRunSetting.c(JsApiOpenWeRunSetting.OpenWeRunSetting.this).j("ok", null));
-          JsApiOpenWeRunSetting.OpenWeRunSetting.this.aBk();
-          AppMethodBeat.o(130529);
+          JsApiOpenWeRunSetting.OpenWeRunSetting.f(JsApiOpenWeRunSetting.OpenWeRunSetting.this).h(JsApiOpenWeRunSetting.OpenWeRunSetting.d(JsApiOpenWeRunSetting.OpenWeRunSetting.this), JsApiOpenWeRunSetting.OpenWeRunSetting.e(JsApiOpenWeRunSetting.OpenWeRunSetting.this).e("cancel", null));
+          JsApiOpenWeRunSetting.OpenWeRunSetting.this.aXn();
+          AppMethodBeat.o(174770);
           return;
         }
-        if (paramAnonymousInt2 == 0)
-        {
-          JsApiOpenWeRunSetting.OpenWeRunSetting.d(JsApiOpenWeRunSetting.OpenWeRunSetting.this).h(JsApiOpenWeRunSetting.OpenWeRunSetting.b(JsApiOpenWeRunSetting.OpenWeRunSetting.this), JsApiOpenWeRunSetting.OpenWeRunSetting.c(JsApiOpenWeRunSetting.OpenWeRunSetting.this).j("cancel", null));
-          JsApiOpenWeRunSetting.OpenWeRunSetting.this.aBk();
-          AppMethodBeat.o(130529);
-          return;
-        }
-        JsApiOpenWeRunSetting.OpenWeRunSetting.d(JsApiOpenWeRunSetting.OpenWeRunSetting.this).h(JsApiOpenWeRunSetting.OpenWeRunSetting.b(JsApiOpenWeRunSetting.OpenWeRunSetting.this), JsApiOpenWeRunSetting.OpenWeRunSetting.c(JsApiOpenWeRunSetting.OpenWeRunSetting.this).j("fail", null));
-        JsApiOpenWeRunSetting.OpenWeRunSetting.this.aBk();
-        AppMethodBeat.o(130529);
+        JsApiOpenWeRunSetting.OpenWeRunSetting.f(JsApiOpenWeRunSetting.OpenWeRunSetting.this).h(JsApiOpenWeRunSetting.OpenWeRunSetting.d(JsApiOpenWeRunSetting.OpenWeRunSetting.this), JsApiOpenWeRunSetting.OpenWeRunSetting.e(JsApiOpenWeRunSetting.OpenWeRunSetting.this).e("fail", null));
+        JsApiOpenWeRunSetting.OpenWeRunSetting.this.aXn();
+        AppMethodBeat.o(174770);
       }
     });
-    d.a(localContext, "appbrand", ".ui.AppBrandOpenWeRunSettingUI", localIntent, hashCode() & 0xFFFF, false);
-    aBk();
-    AppMethodBeat.o(130535);
+    aXn();
+    AppMethodBeat.o(45596);
   }
   
-  public final void f(Parcel paramParcel)
+  public final void aEz()
+  {
+    AppMethodBeat.i(45594);
+    final Runnable local1 = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(174768);
+        JsApiOpenWeRunSetting.OpenWeRunSetting.a(JsApiOpenWeRunSetting.OpenWeRunSetting.this, ((com.tencent.mm.plugin.sport.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.sport.a.b.class)).gb(aj.getContext()));
+        if ((JsApiOpenWeRunSetting.OpenWeRunSetting.a(JsApiOpenWeRunSetting.OpenWeRunSetting.this)) && (!JsApiOpenWeRunSetting.OpenWeRunSetting.b(JsApiOpenWeRunSetting.OpenWeRunSetting.this)))
+        {
+          ((com.tencent.mm.plugin.exdevice.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.exdevice.a.b.class)).a(new b.a()
+          {
+            public final void v(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2)
+            {
+              AppMethodBeat.i(174767);
+              JsApiOpenWeRunSetting.OpenWeRunSetting localOpenWeRunSetting = JsApiOpenWeRunSetting.OpenWeRunSetting.this;
+              if ((paramAnonymous2Boolean1) && (paramAnonymous2Boolean2)) {}
+              for (boolean bool = true;; bool = false)
+              {
+                JsApiOpenWeRunSetting.OpenWeRunSetting.a(localOpenWeRunSetting, bool);
+                ad.i("MicroMsg.JsApiOpenWeRunSetting", "After getUserState requestOk %b, hasStep %b", new Object[] { Boolean.valueOf(paramAnonymous2Boolean1), Boolean.valueOf(paramAnonymous2Boolean2) });
+                JsApiOpenWeRunSetting.OpenWeRunSetting.c(JsApiOpenWeRunSetting.OpenWeRunSetting.this);
+                AppMethodBeat.o(174767);
+                return;
+              }
+            }
+          });
+          AppMethodBeat.o(174768);
+          return;
+        }
+        JsApiOpenWeRunSetting.OpenWeRunSetting.c(JsApiOpenWeRunSetting.OpenWeRunSetting.this);
+        AppMethodBeat.o(174768);
+      }
+    };
+    if (com.tencent.mm.kernel.g.afC().gdw.gdQ)
+    {
+      local1.run();
+      AppMethodBeat.o(45594);
+      return;
+    }
+    com.tencent.mm.kernel.g.afC().a(new com.tencent.mm.kernel.api.g()
+    {
+      public final void Lk()
+      {
+        AppMethodBeat.i(174769);
+        local1.run();
+        AppMethodBeat.o(174769);
+      }
+      
+      public final void ce(boolean paramAnonymousBoolean) {}
+    });
+    AppMethodBeat.o(45594);
+  }
+  
+  public final void e(Parcel paramParcel)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(130536);
+    AppMethodBeat.i(45597);
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.hzp = bool1;
+      this.jyQ = bool1;
       if (paramParcel.readByte() == 0) {
         break label60;
       }
       bool1 = true;
       label30:
-      this.cKK = bool1;
+      this.dBH = bool1;
       if (paramParcel.readByte() == 0) {
         break label65;
       }
@@ -194,8 +197,8 @@ class JsApiOpenWeRunSetting$OpenWeRunSetting
     label65:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.hzq = bool1;
-      AppMethodBeat.o(130536);
+      this.jyR = bool1;
+      AppMethodBeat.o(45597);
       return;
       bool1 = false;
       break;
@@ -207,18 +210,18 @@ class JsApiOpenWeRunSetting$OpenWeRunSetting
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     byte b2 = 1;
-    AppMethodBeat.i(130537);
-    if (this.hzp)
+    AppMethodBeat.i(45598);
+    if (this.jyQ)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
-      if (!this.cKK) {
+      if (!this.dBH) {
         break label62;
       }
       b1 = 1;
       label31:
       paramParcel.writeByte(b1);
-      if (!this.hzq) {
+      if (!this.jyR) {
         break label67;
       }
     }
@@ -227,7 +230,7 @@ class JsApiOpenWeRunSetting$OpenWeRunSetting
     for (byte b1 = b2;; b1 = 0)
     {
       paramParcel.writeByte(b1);
-      AppMethodBeat.o(130537);
+      AppMethodBeat.o(45598);
       return;
       b1 = 0;
       break;
@@ -238,7 +241,7 @@ class JsApiOpenWeRunSetting$OpenWeRunSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiOpenWeRunSetting.OpenWeRunSetting
  * JD-Core Version:    0.7.0.1
  */

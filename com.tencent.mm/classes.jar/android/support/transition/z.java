@@ -1,19 +1,13 @@
 package android.support.transition;
 
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
+import android.view.View;
 
-final class z
-  implements TypeEvaluator<Rect>
+abstract interface z
+  extends af
 {
-  private Rect mRect;
+  public abstract void add(View paramView);
   
-  z() {}
-  
-  z(Rect paramRect)
-  {
-    this.mRect = paramRect;
-  }
+  public abstract void remove(View paramView);
 }
 
 

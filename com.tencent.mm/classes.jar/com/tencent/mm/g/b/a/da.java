@@ -6,60 +6,52 @@ import com.tencent.mm.plugin.report.a;
 public final class da
   extends a
 {
-  private String cUk = "";
-  public long cUm = 0L;
-  private String cUs = "";
-  public long dea = 0L;
+  public String dTc = "";
+  public long dTd = 0L;
+  public long dTe = 0L;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(91275);
+    AppMethodBeat.i(118481);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cUk);
+    ((StringBuffer)localObject).append(this.dTc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cUs);
+    ((StringBuffer)localObject).append(this.dTd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dea);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cUm);
+    ((StringBuffer)localObject).append(this.dTe);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(91275);
+    ams((String)localObject);
+    AppMethodBeat.o(118481);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(91276);
+    AppMethodBeat.i(118482);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("appid:").append(this.cUk);
+    ((StringBuffer)localObject).append("UserName:").append(this.dTc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("query:").append(this.cUs);
+    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.dTd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("timecost:").append(this.dea);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("hasInitData:").append(this.cUm);
+    ((StringBuffer)localObject).append("HasUnreadStoryTips:").append(this.dTe);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(91276);
+    AppMethodBeat.o(118482);
     return localObject;
   }
   
   public final int getId()
   {
-    return 15831;
+    return 16656;
   }
   
-  public final da im(String paramString)
+  public final String getUserName()
   {
-    AppMethodBeat.i(91274);
-    this.cUk = t("appid", paramString, true);
-    AppMethodBeat.o(91274);
-    return this;
+    return this.dTc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.da
  * JD-Core Version:    0.7.0.1
  */

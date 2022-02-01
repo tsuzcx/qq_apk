@@ -12,11 +12,11 @@ public final class ConnectionResult
   extends zza
 {
   public static final Parcelable.Creator<ConnectionResult> CREATOR = new f();
-  public static final ConnectionResult Hb = new ConnectionResult(0);
-  final int Hc;
-  private final int Hd;
-  private final PendingIntent He;
-  private final String Hf;
+  public static final ConnectionResult IQ = new ConnectionResult(0);
+  final int IR;
+  private final int IS;
+  private final PendingIntent IT;
+  private final String IU;
   
   public ConnectionResult(int paramInt)
   {
@@ -25,10 +25,10 @@ public final class ConnectionResult
   
   ConnectionResult(int paramInt1, int paramInt2, PendingIntent paramPendingIntent, String paramString)
   {
-    this.Hc = paramInt1;
-    this.Hd = paramInt2;
-    this.He = paramPendingIntent;
-    this.Hf = paramString;
+    this.IR = paramInt1;
+    this.IS = paramInt2;
+    this.IT = paramPendingIntent;
+    this.IU = paramString;
   }
   
   public ConnectionResult(int paramInt, PendingIntent paramPendingIntent)
@@ -41,7 +41,7 @@ public final class ConnectionResult
     this(1, paramInt, paramPendingIntent, null);
   }
   
-  static String aY(int paramInt)
+  static String bs(int paramInt)
   {
     switch (paramInt)
     {
@@ -107,43 +107,43 @@ public final class ConnectionResult
         return false;
       }
       paramObject = (ConnectionResult)paramObject;
-    } while ((this.Hd == paramObject.Hd) && (b.b(this.He, paramObject.He)) && (b.b(this.Hf, paramObject.Hf)));
+    } while ((this.IS == paramObject.IS) && (b.c(this.IT, paramObject.IT)) && (b.c(this.IU, paramObject.IU)));
     return false;
   }
   
   public final int getErrorCode()
   {
-    return this.Hd;
+    return this.IS;
   }
   
-  public final boolean gl()
+  public final boolean gv()
   {
-    return (this.Hd != 0) && (this.He != null);
+    return (this.IS != 0) && (this.IT != null);
   }
   
-  public final boolean gm()
+  public final boolean gw()
   {
-    return this.Hd == 0;
+    return this.IS == 0;
   }
   
-  public final PendingIntent gn()
+  public final PendingIntent gx()
   {
-    return this.He;
+    return this.IT;
   }
   
-  public final String go()
+  public final String gy()
   {
-    return this.Hf;
+    return this.IU;
   }
   
   public final int hashCode()
   {
-    return Arrays.hashCode(new Object[] { Integer.valueOf(this.Hd), this.He, this.Hf });
+    return Arrays.hashCode(new Object[] { Integer.valueOf(this.IS), this.IT, this.IU });
   }
   
   public final String toString()
   {
-    return b.t(this).a("statusCode", aY(this.Hd)).a("resolution", this.He).a("message", this.Hf).toString();
+    return b.C(this).a("statusCode", bs(this.IS)).a("resolution", this.IT).a("message", this.IU).toString();
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)

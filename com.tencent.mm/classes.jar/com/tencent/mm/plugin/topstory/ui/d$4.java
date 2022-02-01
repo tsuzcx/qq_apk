@@ -2,39 +2,37 @@ package com.tencent.mm.plugin.topstory.ui;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.arm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.protocal.protobuf.bcf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class d$4
-  implements f
+  implements com.tencent.mm.al.g
 {
   d$4(com.tencent.mm.plugin.topstory.a.c.d paramd) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(1531);
-    g.Rc().b(this.tfI.getType(), this);
+    AppMethodBeat.i(125868);
+    com.tencent.mm.kernel.g.aeS().b(this.yMr.getType(), this);
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ab.e("MicroMsg.TopStory.TopStoryUILogic", "goUserProfile failed, NetSceneTopStoryGetUsername errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-      AppMethodBeat.o(1531);
+      ad.e("MicroMsg.TopStory.TopStoryUILogic", "goUserProfile failed, NetSceneTopStoryGetUsername errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      AppMethodBeat.o(125868);
       return;
     }
-    paramString = ((arm)((com.tencent.mm.plugin.topstory.a.c.d)paramm).rr.fsW.fta).username;
-    paramm = new Intent();
-    paramm.putExtra("Contact_User", paramString);
-    paramm.putExtra("Contact_Scene", 3);
+    paramString = ((bcf)((com.tencent.mm.plugin.topstory.a.c.d)paramn).rr.gUT.gUX).username;
+    paramn = new Intent();
+    paramn.putExtra("Contact_User", paramString);
+    paramn.putExtra("Contact_Scene", 3);
     if ((paramString != null) && (paramString.length() > 0)) {
-      com.tencent.mm.bq.d.b(ah.getContext(), "profile", ".ui.ContactInfoUI", paramm);
+      com.tencent.mm.bs.d.b(aj.getContext(), "profile", ".ui.ContactInfoUI", paramn);
     }
-    AppMethodBeat.o(1531);
+    AppMethodBeat.o(125868);
   }
 }
 

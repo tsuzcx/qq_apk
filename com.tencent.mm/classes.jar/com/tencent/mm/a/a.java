@@ -1,313 +1,329 @@
 package com.tencent.mm.a;
 
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
 {
-  @Deprecated
-  public static String B(String paramString1, String paramString2)
+  public static a.a cHj = null;
+  public static int cHk = 0;
+  
+  private static String IQ()
   {
-    if (bo.isNullOrNil(paramString1)) {
-      return "";
-    }
-    try
+    AppMethodBeat.i(192580);
+    if (cHj != null)
     {
-      paramString2 = new String(c(cK(paramString1), paramString2));
-      return paramString2;
+      str = cHj.getStack();
+      AppMethodBeat.o(192580);
+      return str;
     }
-    catch (Exception paramString2)
-    {
-      ab.e("MicroMsg.AESUtils", bo.l(paramString2));
-    }
-    return paramString1;
+    String str = bt.eGN().toString();
+    AppMethodBeat.o(192580);
+    return str;
   }
   
-  /* Error */
-  private static boolean a(String paramString1, String paramString2, String paramString3, String paramString4)
+  public static PendingIntent a(Context paramContext, int paramInt1, int paramInt2, long paramLong1, long paramLong2, Intent paramIntent)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore 6
-    //   3: aload_1
-    //   4: invokestatic 15	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
-    //   7: ifeq +13 -> 20
-    //   10: new 49	java/security/InvalidParameterException
-    //   13: dup
-    //   14: ldc 51
-    //   16: invokespecial 54	java/security/InvalidParameterException:<init>	(Ljava/lang/String;)V
-    //   19: athrow
-    //   20: new 56	java/io/File
-    //   23: dup
-    //   24: aload_2
-    //   25: invokespecial 57	java/io/File:<init>	(Ljava/lang/String;)V
-    //   28: astore_2
-    //   29: new 56	java/io/File
-    //   32: dup
-    //   33: aload_3
-    //   34: invokespecial 57	java/io/File:<init>	(Ljava/lang/String;)V
-    //   37: astore 7
-    //   39: iload 6
-    //   41: istore 5
-    //   43: aload_2
-    //   44: invokevirtual 61	java/io/File:exists	()Z
-    //   47: ifeq +253 -> 300
-    //   50: iload 6
-    //   52: istore 5
-    //   54: aload_2
-    //   55: invokevirtual 64	java/io/File:isFile	()Z
-    //   58: ifeq +242 -> 300
-    //   61: aload 7
-    //   63: invokevirtual 68	java/io/File:getParentFile	()Ljava/io/File;
-    //   66: invokevirtual 61	java/io/File:exists	()Z
-    //   69: ifne +12 -> 81
-    //   72: aload 7
-    //   74: invokevirtual 68	java/io/File:getParentFile	()Ljava/io/File;
-    //   77: invokevirtual 71	java/io/File:mkdirs	()Z
-    //   80: pop
-    //   81: aload 7
-    //   83: invokevirtual 74	java/io/File:createNewFile	()Z
-    //   86: pop
-    //   87: new 76	java/io/FileInputStream
-    //   90: dup
-    //   91: aload_2
-    //   92: invokespecial 79	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   95: astore_3
-    //   96: new 81	java/io/FileOutputStream
-    //   99: dup
-    //   100: aload 7
-    //   102: invokespecial 82	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   105: astore_2
-    //   106: aload_0
-    //   107: invokevirtual 86	java/lang/String:getBytes	()[B
-    //   110: iconst_0
-    //   111: invokestatic 92	android/util/Base64:decode	([BI)[B
-    //   114: astore_0
-    //   115: new 94	javax/crypto/spec/SecretKeySpec
-    //   118: dup
-    //   119: aload_0
-    //   120: ldc 96
-    //   122: invokespecial 99	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
-    //   125: astore 7
-    //   127: aload_1
-    //   128: invokestatic 105	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
-    //   131: astore_1
-    //   132: aload_1
-    //   133: iconst_2
-    //   134: aload 7
-    //   136: new 107	javax/crypto/spec/IvParameterSpec
-    //   139: dup
-    //   140: aload_0
-    //   141: aload_0
-    //   142: arraylength
-    //   143: invokestatic 112	java/util/Arrays:copyOf	([BI)[B
-    //   146: invokespecial 113	javax/crypto/spec/IvParameterSpec:<init>	([B)V
-    //   149: invokevirtual 117	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
-    //   152: new 119	javax/crypto/CipherOutputStream
-    //   155: dup
-    //   156: aload_2
-    //   157: aload_1
-    //   158: invokespecial 122	javax/crypto/CipherOutputStream:<init>	(Ljava/io/OutputStream;Ljavax/crypto/Cipher;)V
-    //   161: astore_1
-    //   162: aload_1
-    //   163: astore_0
-    //   164: aload_2
-    //   165: astore 7
-    //   167: aload_3
-    //   168: astore 8
-    //   170: sipush 1024
-    //   173: newarray byte
-    //   175: astore 9
-    //   177: aload_1
-    //   178: astore_0
-    //   179: aload_2
-    //   180: astore 7
-    //   182: aload_3
-    //   183: astore 8
-    //   185: aload_3
-    //   186: aload 9
-    //   188: invokevirtual 126	java/io/FileInputStream:read	([B)I
-    //   191: istore 4
-    //   193: iload 4
-    //   195: iconst_m1
-    //   196: if_icmpeq +89 -> 285
-    //   199: aload_1
-    //   200: astore_0
-    //   201: aload_2
-    //   202: astore 7
-    //   204: aload_3
-    //   205: astore 8
-    //   207: aload_1
-    //   208: aload 9
-    //   210: iconst_0
-    //   211: iload 4
-    //   213: invokevirtual 130	javax/crypto/CipherOutputStream:write	([BII)V
-    //   216: aload_1
-    //   217: astore_0
-    //   218: aload_2
-    //   219: astore 7
-    //   221: aload_3
-    //   222: astore 8
-    //   224: aload_1
-    //   225: invokevirtual 134	javax/crypto/CipherOutputStream:flush	()V
-    //   228: goto -51 -> 177
-    //   231: astore 7
-    //   233: aload_1
-    //   234: astore_0
-    //   235: aload 7
-    //   237: astore_1
-    //   238: aload_2
-    //   239: astore 7
-    //   241: aload_3
-    //   242: astore 8
-    //   244: aload_1
-    //   245: athrow
-    //   246: astore 9
-    //   248: aload 8
-    //   250: astore_3
-    //   251: aload 7
-    //   253: astore_2
-    //   254: aload_0
-    //   255: astore_1
-    //   256: aload 9
-    //   258: astore_0
-    //   259: aload_1
-    //   260: ifnull +7 -> 267
-    //   263: aload_1
-    //   264: invokevirtual 137	javax/crypto/CipherOutputStream:close	()V
-    //   267: aload_2
-    //   268: ifnull +7 -> 275
-    //   271: aload_2
-    //   272: invokevirtual 138	java/io/FileOutputStream:close	()V
-    //   275: aload_3
-    //   276: ifnull +7 -> 283
-    //   279: aload_3
-    //   280: invokevirtual 139	java/io/FileInputStream:close	()V
-    //   283: aload_0
-    //   284: athrow
-    //   285: aload_1
-    //   286: invokevirtual 137	javax/crypto/CipherOutputStream:close	()V
-    //   289: aload_2
-    //   290: invokevirtual 138	java/io/FileOutputStream:close	()V
-    //   293: aload_3
-    //   294: invokevirtual 139	java/io/FileInputStream:close	()V
-    //   297: iconst_1
-    //   298: istore 5
-    //   300: iload 5
-    //   302: ireturn
-    //   303: astore_0
-    //   304: aconst_null
-    //   305: astore_1
-    //   306: aconst_null
-    //   307: astore_2
-    //   308: aconst_null
-    //   309: astore_3
-    //   310: goto -51 -> 259
-    //   313: astore_0
-    //   314: aconst_null
-    //   315: astore_1
-    //   316: aconst_null
-    //   317: astore_2
-    //   318: goto -59 -> 259
-    //   321: astore_0
-    //   322: aconst_null
-    //   323: astore_1
-    //   324: goto -65 -> 259
-    //   327: astore_1
-    //   328: aconst_null
-    //   329: astore_0
-    //   330: aconst_null
-    //   331: astore_2
-    //   332: aconst_null
-    //   333: astore_3
-    //   334: goto -96 -> 238
-    //   337: astore_1
-    //   338: aconst_null
-    //   339: astore_0
-    //   340: aconst_null
-    //   341: astore_2
-    //   342: goto -104 -> 238
-    //   345: astore_1
-    //   346: aconst_null
-    //   347: astore_0
-    //   348: goto -110 -> 238
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	351	0	paramString1	String
-    //   0	351	1	paramString2	String
-    //   0	351	2	paramString3	String
-    //   0	351	3	paramString4	String
-    //   191	21	4	i	int
-    //   41	260	5	bool1	boolean
-    //   1	50	6	bool2	boolean
-    //   37	183	7	localObject1	Object
-    //   231	5	7	localException	Exception
-    //   239	13	7	str1	String
-    //   168	81	8	str2	String
-    //   175	34	9	arrayOfByte	byte[]
-    //   246	11	9	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   170	177	231	java/lang/Exception
-    //   185	193	231	java/lang/Exception
-    //   207	216	231	java/lang/Exception
-    //   224	228	231	java/lang/Exception
-    //   170	177	246	finally
-    //   185	193	246	finally
-    //   207	216	246	finally
-    //   224	228	246	finally
-    //   244	246	246	finally
-    //   87	96	303	finally
-    //   96	106	313	finally
-    //   106	162	321	finally
-    //   87	96	327	java/lang/Exception
-    //   96	106	337	java/lang/Exception
-    //   106	162	345	java/lang/Exception
+    AppMethodBeat.i(182034);
+    paramContext = b(paramContext, paramInt1, paramInt2, paramLong1, paramLong2, paramIntent);
+    AppMethodBeat.o(182034);
+    return paramContext;
   }
   
-  @Deprecated
-  private static byte[] c(byte[] paramArrayOfByte, String paramString)
+  public static PendingIntent a(Context paramContext, int paramInt1, int paramInt2, long paramLong, Intent paramIntent, int paramInt3, boolean paramBoolean)
   {
-    try
+    AppMethodBeat.i(185210);
+    if (paramIntent != null) {}
+    for (Object localObject = paramIntent;; localObject = "null")
     {
-      paramString = new SecretKeySpec(paramString.getBytes(), "AES");
-      Cipher localCipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-      localCipher.init(2, paramString);
-      paramArrayOfByte = localCipher.doFinal(paramArrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      ab.e("MicroMsg.AESUtils", bo.l(paramArrayOfByte));
-    }
-    return null;
-  }
-  
-  private static byte[] cK(String paramString)
-  {
-    if (paramString.length() <= 0) {
+      ad.i("MicroMsg.AlarmHelper", "set(type:%s requestCode:%s triggerAtMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong), localObject, Integer.valueOf(paramInt3), IQ() });
+      if (paramContext != null) {
+        break;
+      }
+      ad.e("MicroMsg.AlarmHelper", "set(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(185210);
       return null;
     }
-    byte[] arrayOfByte = new byte[paramString.length() / 2];
-    int i = 0;
-    while (i < paramString.length() / 2)
+    localObject = (AlarmManager)paramContext.getSystemService("alarm");
+    if (localObject == null)
     {
-      arrayOfByte[i] = ((byte)(Integer.parseInt(paramString.substring(i * 2, i * 2 + 1), 16) * 16 + Integer.parseInt(paramString.substring(i * 2 + 1, i * 2 + 2), 16)));
-      i += 1;
+      ad.e("MicroMsg.AlarmHelper", "set(requestCode:%s): am == null", new Object[] { Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(185210);
+      return null;
     }
-    return arrayOfByte;
+    if (!isRequestCodeValid(paramInt1))
+    {
+      ad.e("MicroMsg.AlarmHelper", "set(requestCode:%s): requestCode invalid", new Object[] { Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(185210);
+      return null;
+    }
+    if (paramBoolean) {
+      paramContext = PendingIntent.getBroadcast(paramContext, paramInt1, paramIntent, paramInt3);
+    }
+    try
+    {
+      for (;;)
+      {
+        ((AlarmManager)localObject).set(paramInt2, paramLong, paramContext);
+        AppMethodBeat.o(185210);
+        return paramContext;
+        paramContext = PendingIntent.getActivity(paramContext, paramInt1, paramIntent, paramInt3);
+      }
+    }
+    catch (Exception paramIntent)
+    {
+      for (;;)
+      {
+        ad.e("MicroMsg.AlarmHelper", "set Exception:%s %s", new Object[] { paramIntent.getClass().getSimpleName(), paramIntent.getMessage() });
+        if (cHj != null)
+        {
+          paramIntent = cHj;
+          IQ();
+          paramIntent.ce(paramInt1, 1);
+        }
+      }
+    }
   }
   
-  public static boolean g(String paramString1, String paramString2, String paramString3)
+  public static PendingIntent a(Context paramContext, int paramInt, long paramLong, Intent paramIntent)
   {
-    return a(paramString1, "AES/CBC/PKCS7Padding", paramString2, paramString3);
+    AppMethodBeat.i(186105);
+    paramContext = b(paramContext, paramInt, paramLong, paramIntent);
+    AppMethodBeat.o(186105);
+    return paramContext;
+  }
+  
+  private static PendingIntent a(Context paramContext, int paramInt1, Intent paramIntent, int paramInt2)
+  {
+    AppMethodBeat.i(182037);
+    if (paramIntent != null) {}
+    for (Object localObject = paramIntent;; localObject = "null")
+    {
+      ad.i("MicroMsg.AlarmHelper", "getPendingIntent(requestCode:%s intent:%s flags:%s)", new Object[] { Integer.valueOf(paramInt1), localObject, Integer.valueOf(paramInt2) });
+      if (paramContext != null) {
+        break;
+      }
+      ad.e("MicroMsg.AlarmHelper", "getPendingIntent(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(182037);
+      return null;
+    }
+    if (!isRequestCodeValid(paramInt1))
+    {
+      ad.e("MicroMsg.AlarmHelper", "getPendingIntent(requestCode:%s): requestCode invalid", new Object[] { Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(182037);
+      return null;
+    }
+    paramContext = PendingIntent.getBroadcast(paramContext, paramInt1, paramIntent, paramInt2);
+    AppMethodBeat.o(182037);
+    return paramContext;
+  }
+  
+  private static PendingIntent b(Context paramContext, int paramInt1, int paramInt2, long paramLong1, long paramLong2, Intent paramIntent)
+  {
+    AppMethodBeat.i(186107);
+    if (paramIntent != null) {}
+    for (Object localObject = paramIntent;; localObject = "null")
+    {
+      ad.i("MicroMsg.AlarmHelper", "setRepeating(type:%s requestCode:%s triggerAtMillis:%s intervalMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Long.valueOf(paramLong2), localObject, Integer.valueOf(268435456), IQ() });
+      if (paramContext != null) {
+        break;
+      }
+      ad.e("MicroMsg.AlarmHelper", "setRepeating(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(186107);
+      return null;
+    }
+    localObject = (AlarmManager)paramContext.getSystemService("alarm");
+    if (localObject == null)
+    {
+      ad.e("MicroMsg.AlarmHelper", "setRepeating(requestCode:%s): am == null", new Object[] { Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(186107);
+      return null;
+    }
+    if (!isRequestCodeValid(paramInt1))
+    {
+      ad.e("MicroMsg.AlarmHelper", "setRepeating(requestCode:%s): requestCode invalid", new Object[] { Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(186107);
+      return null;
+    }
+    paramContext = PendingIntent.getBroadcast(paramContext, paramInt1, paramIntent, 268435456);
+    try
+    {
+      ((AlarmManager)localObject).setRepeating(paramInt2, paramLong1, paramLong2, paramContext);
+      AppMethodBeat.o(186107);
+      return paramContext;
+    }
+    catch (Exception paramIntent)
+    {
+      for (;;)
+      {
+        ad.e("MicroMsg.AlarmHelper", "setRepeating Exception:%s %s", new Object[] { paramIntent.getClass().getSimpleName(), paramIntent.getMessage() });
+        if (cHj != null)
+        {
+          paramIntent = cHj;
+          IQ();
+          paramIntent.ce(paramInt1, 1);
+        }
+      }
+    }
+  }
+  
+  private static PendingIntent b(Context paramContext, int paramInt, long paramLong, Intent paramIntent)
+  {
+    AppMethodBeat.i(186106);
+    if (paramIntent != null) {}
+    for (Object localObject = paramIntent;; localObject = "null")
+    {
+      ad.i("MicroMsg.AlarmHelper", "setExact(type:%s requestCode:%s triggerAtMillis:%s intent:%s flags:%s stack:%s)", new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt), Long.valueOf(paramLong), localObject, Integer.valueOf(268435456), IQ() });
+      cHk += 1;
+      if (paramContext != null) {
+        break;
+      }
+      ad.e("MicroMsg.AlarmHelper", "setExact(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(186106);
+      return null;
+    }
+    localObject = (AlarmManager)paramContext.getSystemService("alarm");
+    if (localObject == null)
+    {
+      ad.e("MicroMsg.AlarmHelper", "setExact(requestCode:%s): am == null", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(186106);
+      return null;
+    }
+    if (!isRequestCodeValid(paramInt))
+    {
+      ad.e("MicroMsg.AlarmHelper", "setExact(requestCode:%s): requestCode invalid", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(186106);
+      return null;
+    }
+    paramContext = PendingIntent.getBroadcast(paramContext, paramInt, paramIntent, 268435456);
+    try
+    {
+      ((AlarmManager)localObject).setExact(2, paramLong, paramContext);
+      AppMethodBeat.o(186106);
+      return paramContext;
+    }
+    catch (Exception paramIntent)
+    {
+      for (;;)
+      {
+        ad.e("MicroMsg.AlarmHelper", "setExact Exception:%s %s", new Object[] { paramIntent.getClass().getSimpleName(), paramIntent.getMessage() });
+        if (cHj != null)
+        {
+          paramIntent = cHj;
+          IQ();
+          paramIntent.ce(paramInt, 1);
+        }
+      }
+    }
+  }
+  
+  public static PendingIntent b(Context paramContext, int paramInt, Intent paramIntent)
+  {
+    AppMethodBeat.i(182036);
+    paramContext = a(paramContext, paramInt, paramIntent, 536870912);
+    AppMethodBeat.o(182036);
+    return paramContext;
+  }
+  
+  public static void c(Context paramContext, Intent paramIntent)
+  {
+    AppMethodBeat.i(186108);
+    ad.i("MicroMsg.AlarmHelper", "cancel(requestCode:%s intent:%s flags:%s)", new Object[] { Integer.valueOf(111), paramIntent, Integer.valueOf(268435456) });
+    if (paramContext == null)
+    {
+      ad.e("MicroMsg.AlarmHelper", "cancel(requestCode:%s): context == null", new Object[] { Integer.valueOf(111) });
+      AppMethodBeat.o(186108);
+      return;
+    }
+    AlarmManager localAlarmManager = (AlarmManager)paramContext.getSystemService("alarm");
+    if (localAlarmManager == null)
+    {
+      ad.e("MicroMsg.AlarmHelper", "cancel(requestCode:%s): am == null", new Object[] { Integer.valueOf(111) });
+      AppMethodBeat.o(186108);
+      return;
+    }
+    paramContext = a(paramContext, 111, paramIntent, 268435456);
+    try
+    {
+      localAlarmManager.cancel(paramContext);
+      AppMethodBeat.o(186108);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      ad.e("MicroMsg.AlarmHelper", "cancel Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
+      if (cHj != null)
+      {
+        paramContext = cHj;
+        IQ();
+        paramContext.ce(111, 2);
+      }
+      AppMethodBeat.o(186108);
+    }
+  }
+  
+  public static void cancel(Context paramContext, int paramInt, PendingIntent paramPendingIntent)
+  {
+    AppMethodBeat.i(182035);
+    if (paramPendingIntent != null) {}
+    for (String str = paramPendingIntent.toString();; str = "null")
+    {
+      ad.i("MicroMsg.AlarmHelper", "cancel(requestCode:%s operation:%s)", new Object[] { Integer.valueOf(paramInt), str });
+      if (paramContext != null) {
+        break;
+      }
+      ad.e("MicroMsg.AlarmHelper", "cancel(requestCode:%s): context == null", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(182035);
+      return;
+    }
+    paramContext = (AlarmManager)paramContext.getSystemService("alarm");
+    if (paramContext == null)
+    {
+      ad.e("MicroMsg.AlarmHelper", "cancel(requestCode:%s): am == null", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(182035);
+      return;
+    }
+    try
+    {
+      paramContext.cancel(paramPendingIntent);
+      AppMethodBeat.o(182035);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      ad.e("MicroMsg.AlarmHelper", "cancel Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
+      if (cHj != null)
+      {
+        paramContext = cHj;
+        IQ();
+        paramContext.ce(paramInt, 2);
+      }
+      AppMethodBeat.o(182035);
+    }
+  }
+  
+  private static boolean isRequestCodeValid(int paramInt)
+  {
+    return (paramInt >= 100) && (paramInt <= 119);
+  }
+  
+  public static PendingIntent set(Context paramContext, int paramInt1, int paramInt2, long paramLong, Intent paramIntent, int paramInt3)
+  {
+    AppMethodBeat.i(182032);
+    paramContext = a(paramContext, paramInt1, paramInt2, paramLong, paramIntent, paramInt3, true);
+    AppMethodBeat.o(182032);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -26,25 +26,25 @@ public class SQLiteQueryBuilder
   
   static
   {
-    AppMethodBeat.i(12600);
+    AppMethodBeat.i(3286);
     sLimitPattern = Pattern.compile("\\s*\\d+\\s*(,\\s*\\d+\\s*)?");
-    AppMethodBeat.o(12600);
+    AppMethodBeat.o(3286);
   }
   
   private static void appendClause(StringBuilder paramStringBuilder, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(12588);
+    AppMethodBeat.i(3274);
     if (!TextUtils.isEmpty(paramString2))
     {
       paramStringBuilder.append(paramString1);
       paramStringBuilder.append(paramString2);
     }
-    AppMethodBeat.o(12588);
+    AppMethodBeat.o(3274);
   }
   
   public static void appendColumns(StringBuilder paramStringBuilder, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(12589);
+    AppMethodBeat.i(3275);
     int j = paramArrayOfString.length;
     int i = 0;
     while (i < j)
@@ -60,22 +60,22 @@ public class SQLiteQueryBuilder
       i += 1;
     }
     paramStringBuilder.append(' ');
-    AppMethodBeat.o(12589);
+    AppMethodBeat.o(3275);
   }
   
   public static String buildQueryString(boolean paramBoolean, String paramString1, String[] paramArrayOfString, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    AppMethodBeat.i(12587);
+    AppMethodBeat.i(3273);
     if ((TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString4)))
     {
       paramString1 = new IllegalArgumentException("HAVING clauses are only permitted when using a groupBy clause");
-      AppMethodBeat.o(12587);
+      AppMethodBeat.o(3273);
       throw paramString1;
     }
     if ((!TextUtils.isEmpty(paramString6)) && (!sLimitPattern.matcher(paramString6).matches()))
     {
       paramString1 = new IllegalArgumentException("invalid LIMIT clauses:".concat(String.valueOf(paramString6)));
-      AppMethodBeat.o(12587);
+      AppMethodBeat.o(3273);
       throw paramString1;
     }
     StringBuilder localStringBuilder = new StringBuilder(120);
@@ -96,7 +96,7 @@ public class SQLiteQueryBuilder
       appendClause(localStringBuilder, " ORDER BY ", paramString5);
       appendClause(localStringBuilder, " LIMIT ", paramString6);
       paramString1 = localStringBuilder.toString();
-      AppMethodBeat.o(12587);
+      AppMethodBeat.o(3273);
       return paramString1;
       localStringBuilder.append("* ");
     }
@@ -104,7 +104,7 @@ public class SQLiteQueryBuilder
   
   private String[] computeProjection(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(12599);
+    AppMethodBeat.i(3285);
     Object localObject1;
     int i;
     Object localObject2;
@@ -133,13 +133,13 @@ public class SQLiteQueryBuilder
           }
           label114:
           paramArrayOfString = new IllegalArgumentException("Invalid column " + paramArrayOfString[i]);
-          AppMethodBeat.o(12599);
+          AppMethodBeat.o(3285);
           throw paramArrayOfString;
         }
-        AppMethodBeat.o(12599);
+        AppMethodBeat.o(3285);
         return localObject1;
       }
-      AppMethodBeat.o(12599);
+      AppMethodBeat.o(3285);
       return paramArrayOfString;
     }
     if (this.mProjectionMap != null)
@@ -157,23 +157,23 @@ public class SQLiteQueryBuilder
           i += 1;
         }
       }
-      AppMethodBeat.o(12599);
+      AppMethodBeat.o(3285);
       return paramArrayOfString;
     }
-    AppMethodBeat.o(12599);
+    AppMethodBeat.o(3285);
     return null;
   }
   
   private void validateQuerySql(SQLiteDatabase paramSQLiteDatabase, String paramString, CancellationSignal paramCancellationSignal)
   {
-    AppMethodBeat.i(12593);
+    AppMethodBeat.i(3279);
     paramSQLiteDatabase.getThreadSession().prepare(paramString, paramSQLiteDatabase.getThreadDefaultConnectionFlags(true), paramCancellationSignal, null);
-    AppMethodBeat.o(12593);
+    AppMethodBeat.o(3279);
   }
   
   public void appendWhere(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(12585);
+    AppMethodBeat.i(3271);
     if (this.mWhereClause == null) {
       this.mWhereClause = new StringBuilder(paramCharSequence.length() + 16);
     }
@@ -181,12 +181,12 @@ public class SQLiteQueryBuilder
       this.mWhereClause.append('(');
     }
     this.mWhereClause.append(paramCharSequence);
-    AppMethodBeat.o(12585);
+    AppMethodBeat.o(3271);
   }
   
   public void appendWhereEscapeString(String paramString)
   {
-    AppMethodBeat.i(12586);
+    AppMethodBeat.i(3272);
     if (this.mWhereClause == null) {
       this.mWhereClause = new StringBuilder(paramString.length() + 16);
     }
@@ -194,12 +194,12 @@ public class SQLiteQueryBuilder
       this.mWhereClause.append('(');
     }
     DatabaseUtils.appendEscapedSQLString(this.mWhereClause, paramString);
-    AppMethodBeat.o(12586);
+    AppMethodBeat.o(3272);
   }
   
   public String buildQuery(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(12594);
+    AppMethodBeat.i(3280);
     paramArrayOfString = computeProjection(paramArrayOfString);
     StringBuilder localStringBuilder = new StringBuilder();
     if ((this.mWhereClause != null) && (this.mWhereClause.length() > 0)) {}
@@ -220,7 +220,7 @@ public class SQLiteQueryBuilder
         localStringBuilder.append(')');
       }
       paramArrayOfString = buildQueryString(this.mDistinct, this.mTables, paramArrayOfString, localStringBuilder.toString(), paramString2, paramString3, paramString4, paramString5);
-      AppMethodBeat.o(12594);
+      AppMethodBeat.o(3280);
       return paramArrayOfString;
     }
   }
@@ -228,15 +228,15 @@ public class SQLiteQueryBuilder
   @Deprecated
   public String buildQuery(String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(12595);
+    AppMethodBeat.i(3281);
     paramArrayOfString1 = buildQuery(paramArrayOfString1, paramString1, paramString2, paramString3, paramString4, paramString5);
-    AppMethodBeat.o(12595);
+    AppMethodBeat.o(3281);
     return paramArrayOfString1;
   }
   
   public String buildUnionQuery(String[] paramArrayOfString, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(12598);
+    AppMethodBeat.i(3284);
     StringBuilder localStringBuilder = new StringBuilder(128);
     int j = paramArrayOfString.length;
     if (this.mDistinct) {}
@@ -255,13 +255,13 @@ public class SQLiteQueryBuilder
     appendClause(localStringBuilder, " ORDER BY ", paramString1);
     appendClause(localStringBuilder, " LIMIT ", paramString2);
     paramArrayOfString = localStringBuilder.toString();
-    AppMethodBeat.o(12598);
+    AppMethodBeat.o(3284);
     return paramArrayOfString;
   }
   
   public String buildUnionSubQuery(String paramString1, String[] paramArrayOfString, Set<String> paramSet, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(12596);
+    AppMethodBeat.i(3282);
     int j = paramArrayOfString.length;
     String[] arrayOfString = new String[j];
     int i = 0;
@@ -283,16 +283,16 @@ public class SQLiteQueryBuilder
       }
     }
     paramString1 = buildQuery(arrayOfString, paramString3, paramString4, paramString5, null, null);
-    AppMethodBeat.o(12596);
+    AppMethodBeat.o(3282);
     return paramString1;
   }
   
   @Deprecated
   public String buildUnionSubQuery(String paramString1, String[] paramArrayOfString1, Set<String> paramSet, int paramInt, String paramString2, String paramString3, String[] paramArrayOfString2, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(12597);
+    AppMethodBeat.i(3283);
     paramString1 = buildUnionSubQuery(paramString1, paramArrayOfString1, paramSet, paramInt, paramString2, paramString3, paramString4, paramString5);
-    AppMethodBeat.o(12597);
+    AppMethodBeat.o(3283);
     return paramString1;
   }
   
@@ -303,26 +303,26 @@ public class SQLiteQueryBuilder
   
   public Cursor query(SQLiteDatabase paramSQLiteDatabase, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(12590);
+    AppMethodBeat.i(3276);
     paramSQLiteDatabase = query(paramSQLiteDatabase, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, paramString3, paramString4, null, null);
-    AppMethodBeat.o(12590);
+    AppMethodBeat.o(3276);
     return paramSQLiteDatabase;
   }
   
   public Cursor query(SQLiteDatabase paramSQLiteDatabase, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(12591);
+    AppMethodBeat.i(3277);
     paramSQLiteDatabase = query(paramSQLiteDatabase, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2, paramString3, paramString4, paramString5, null);
-    AppMethodBeat.o(12591);
+    AppMethodBeat.o(3277);
     return paramSQLiteDatabase;
   }
   
   public Cursor query(SQLiteDatabase paramSQLiteDatabase, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2, String paramString3, String paramString4, String paramString5, CancellationSignal paramCancellationSignal)
   {
-    AppMethodBeat.i(12592);
+    AppMethodBeat.i(3278);
     if (this.mTables == null)
     {
-      AppMethodBeat.o(12592);
+      AppMethodBeat.o(3278);
       return null;
     }
     if ((this.mStrict) && (paramString1 != null) && (paramString1.length() > 0)) {
@@ -331,7 +331,7 @@ public class SQLiteQueryBuilder
     paramArrayOfString1 = buildQuery(paramArrayOfString1, paramString1, paramString2, paramString3, paramString4, paramString5);
     Log.d("WCDB.SQLiteQueryBuilder", "Performing query: ".concat(String.valueOf(paramArrayOfString1)));
     paramSQLiteDatabase = paramSQLiteDatabase.rawQueryWithFactory(this.mFactory, paramArrayOfString1, paramArrayOfString2, SQLiteDatabase.findEditTable(this.mTables), paramCancellationSignal);
-    AppMethodBeat.o(12592);
+    AppMethodBeat.o(3278);
     return paramSQLiteDatabase;
   }
   

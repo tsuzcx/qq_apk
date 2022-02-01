@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.e;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.modelvoice.s;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class f
   extends a
 {
-  protected final List<com.tencent.mm.plugin.f.b.a> Q(bi parambi)
+  protected final List<com.tencent.mm.plugin.f.b.a> ac(bl parambl)
   {
-    AppMethodBeat.i(18625);
-    if (parambi == null)
+    AppMethodBeat.i(22734);
+    if (parambl == null)
     {
-      AppMethodBeat.o(18625);
+      AppMethodBeat.o(22734);
       return null;
     }
-    com.tencent.mm.plugin.f.b.a locala = R(parambi);
-    parambi = s.getFullPath(parambi.field_imgPath);
-    long l = e.cM(parambi);
+    com.tencent.mm.plugin.f.b.a locala = ad(parambl);
+    parambl = s.getFullPath(parambl.field_imgPath);
+    long l = i.aMN(parambl);
     locala.field_msgSubType = 10;
-    locala.field_path = Hw(parambi);
+    locala.field_path = aUM(parambl);
     locala.field_size = l;
-    ab.i("MicroMsg.VoiceMsgHandler", "%s create voice wx file index voice[%s]", new Object[] { bau(), locala });
-    parambi = new ArrayList();
-    parambi.add(locala);
-    AppMethodBeat.o(18625);
-    return parambi;
+    ad.i("MicroMsg.VoiceMsgHandler", "%s create voice wx file index voice[%s]", new Object[] { info(), locala });
+    parambl = new ArrayList();
+    parambl.add(locala);
+    AppMethodBeat.o(22734);
+    return parambl;
   }
   
-  protected final String bau()
+  protected final String info()
   {
-    AppMethodBeat.i(18626);
+    AppMethodBeat.i(22735);
     String str = "voice_" + hashCode();
-    AppMethodBeat.o(18626);
+    AppMethodBeat.o(22735);
     return str;
   }
 }

@@ -3,11 +3,17 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import java.util.Map;
 
 public abstract class p
-  extends ai
+  extends ar
 {
-  public final p BM(String paramString)
+  public p B(Map<String, Object> paramMap)
   {
-    super.BN(paramString);
+    super.C(paramMap);
+    return this;
+  }
+  
+  public final p HJ(String paramString)
+  {
+    super.HK(paramString);
     return this;
   }
   
@@ -17,21 +23,15 @@ public abstract class p
     return this;
   }
   
-  public final p i(c paramc)
+  public final p g(c paramc)
   {
-    super.j(paramc);
-    return this;
-  }
-  
-  public p w(Map<String, Object> paramMap)
-  {
-    super.x(paramMap);
+    super.h(paramc);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p
  * JD-Core Version:    0.7.0.1
  */

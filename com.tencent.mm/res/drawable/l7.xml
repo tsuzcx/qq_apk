@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@color/tf" />
-    <item android:state_focused="true" android:drawable="@color/tf" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@color/tf" />
-    <item android:drawable="@color/th" />
-</selector>
+    <gradient android:startColor="@color/a7c" android:endColor="#4d000000" android:angle="270.0" />
+    <corners android:topLeftRadius="0.0dip" android:topRightRadius="0.0dip" android:bottomLeftRadius="4.0dip" android:bottomRightRadius="4.0dip" />
+</shape>

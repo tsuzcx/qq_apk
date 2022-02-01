@@ -3,41 +3,41 @@ package com.tencent.mm.modelvideo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class k
 {
-  public static final String alx()
+  public static final String aCB()
   {
-    AppMethodBeat.i(50727);
-    String str = g.RL().eHR + "draft/";
-    AppMethodBeat.o(50727);
+    AppMethodBeat.i(126889);
+    String str = g.afB().gcW + "draft/";
+    AppMethodBeat.o(126889);
     return str;
   }
   
-  public static final String uV(String paramString)
+  public static final String zH(String paramString)
   {
-    AppMethodBeat.i(50728);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(126890);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(50728);
+      AppMethodBeat.o(126890);
       return null;
     }
-    paramString = alx() + paramString;
-    AppMethodBeat.o(50728);
+    paramString = aCB() + paramString;
+    AppMethodBeat.o(126890);
     return paramString;
   }
   
-  public static final String uW(String paramString)
+  public static final String zI(String paramString)
   {
-    AppMethodBeat.i(50729);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(126891);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(50729);
+      AppMethodBeat.o(126891);
       return null;
     }
-    paramString = alx() + paramString + ".thumb";
-    AppMethodBeat.o(50729);
+    paramString = aCB() + paramString + ".thumb";
+    AppMethodBeat.o(126891);
     return paramString;
   }
 }

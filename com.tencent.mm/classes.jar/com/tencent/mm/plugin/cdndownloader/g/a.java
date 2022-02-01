@@ -1,43 +1,38 @@
 package com.tencent.mm.plugin.cdndownloader.g;
 
-import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.vending.h.g;
-import com.tencent.mm.vending.h.h;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class a
 {
-  private static volatile al ftB;
-  private static final Object iXt;
+  private static volatile ap cHo;
+  private static final Object lLU;
   
   static
   {
-    AppMethodBeat.i(965);
-    iXt = new Object();
-    AppMethodBeat.o(965);
+    AppMethodBeat.i(120817);
+    lLU = new Object();
+    AppMethodBeat.o(120817);
   }
   
-  public static al aNS()
+  public static ap bNl()
   {
-    AppMethodBeat.i(964);
-    if (ftB == null) {}
-    synchronized (iXt)
+    AppMethodBeat.i(184035);
+    if (cHo == null) {}
+    synchronized (lLU)
     {
-      if (ftB == null)
-      {
-        ftB = new al("CDNDownloader#WorkThread");
-        g.a("CDNDownloader#WorkThread", new h(ftB.oNc.getLooper(), "CDNDownloader#WorkThread"));
+      if (cHo == null) {
+        cHo = new ap("CDNDownloader#WorkThread");
       }
-      ??? = ftB;
-      AppMethodBeat.o(964);
+      ??? = cHo;
+      AppMethodBeat.o(184035);
       return ???;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.g.a
  * JD-Core Version:    0.7.0.1
  */

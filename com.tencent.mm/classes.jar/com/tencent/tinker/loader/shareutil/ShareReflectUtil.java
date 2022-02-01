@@ -9,7 +9,17 @@ import java.util.Arrays;
 
 public class ShareReflectUtil
 {
-  public static Constructor<?> a(Object paramObject, Class<?>... paramVarArgs)
+  public static void expandFieldArray(Object paramObject, String paramString, Object[] paramArrayOfObject)
+  {
+    paramString = findField(paramObject, paramString);
+    Object[] arrayOfObject1 = (Object[])paramString.get(paramObject);
+    Object[] arrayOfObject2 = (Object[])Array.newInstance(arrayOfObject1.getClass().getComponentType(), arrayOfObject1.length + paramArrayOfObject.length);
+    System.arraycopy(paramArrayOfObject, 0, arrayOfObject2, 0, paramArrayOfObject.length);
+    System.arraycopy(arrayOfObject1, 0, arrayOfObject2, paramArrayOfObject.length, arrayOfObject1.length);
+    paramString.set(paramObject, arrayOfObject2);
+  }
+  
+  public static Constructor<?> findConstructor(Object paramObject, Class<?>... paramVarArgs)
   {
     Class localClass = paramObject.getClass();
     while (localClass != null) {
@@ -29,24 +39,27 @@ public class ShareReflectUtil
     throw new NoSuchMethodException("Constructor with parameters " + Arrays.asList(paramVarArgs) + " not found in " + paramObject.getClass());
   }
   
-  public static void a(Object paramObject, String paramString, int paramInt)
+  public static Field findField(Class<?> paramClass, String paramString)
   {
-    if (paramInt <= 0) {}
-    Object[] arrayOfObject1;
-    int i;
-    do
-    {
-      return;
-      paramString = b(paramObject, paramString);
-      arrayOfObject1 = (Object[])paramString.get(paramObject);
-      i = arrayOfObject1.length - paramInt;
-    } while (i <= 0);
-    Object[] arrayOfObject2 = (Object[])Array.newInstance(arrayOfObject1.getClass().getComponentType(), i);
-    System.arraycopy(arrayOfObject1, paramInt, arrayOfObject2, 0, i);
-    paramString.set(paramObject, arrayOfObject2);
+    Object localObject = paramClass;
+    while (localObject != null) {
+      try
+      {
+        Field localField = ((Class)localObject).getDeclaredField(paramString);
+        if (!localField.isAccessible()) {
+          localField.setAccessible(true);
+        }
+        return localField;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        localObject = ((Class)localObject).getSuperclass();
+      }
+    }
+    throw new NoSuchFieldException("Field " + paramString + " not found in " + paramClass);
   }
   
-  public static Field b(Object paramObject, String paramString)
+  public static Field findField(Object paramObject, String paramString)
   {
     Class localClass = paramObject.getClass();
     while (localClass != null) {
@@ -66,7 +79,26 @@ public class ShareReflectUtil
     throw new NoSuchFieldException("Field " + paramString + " not found in " + paramObject.getClass());
   }
   
-  public static Method b(Object paramObject, String paramString, Class<?>... paramVarArgs)
+  public static Method findMethod(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
+  {
+    while (paramClass != null) {
+      try
+      {
+        Method localMethod = paramClass.getDeclaredMethod(paramString, paramVarArgs);
+        if (!localMethod.isAccessible()) {
+          localMethod.setAccessible(true);
+        }
+        return localMethod;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        paramClass = paramClass.getSuperclass();
+      }
+    }
+    throw new NoSuchMethodException("Method " + paramString + " with parameters " + Arrays.asList(paramVarArgs) + " not found in " + paramClass);
+  }
+  
+  public static Method findMethod(Object paramObject, String paramString, Class<?>... paramVarArgs)
   {
     Class localClass = paramObject.getClass();
     while (localClass != null) {
@@ -86,17 +118,7 @@ public class ShareReflectUtil
     throw new NoSuchMethodException("Method " + paramString + " with parameters " + Arrays.asList(paramVarArgs) + " not found in " + paramObject.getClass());
   }
   
-  public static void b(Object paramObject, String paramString, Object[] paramArrayOfObject)
-  {
-    paramString = b(paramObject, paramString);
-    Object[] arrayOfObject1 = (Object[])paramString.get(paramObject);
-    Object[] arrayOfObject2 = (Object[])Array.newInstance(arrayOfObject1.getClass().getComponentType(), arrayOfObject1.length + paramArrayOfObject.length);
-    System.arraycopy(paramArrayOfObject, 0, arrayOfObject2, 0, paramArrayOfObject.length);
-    System.arraycopy(arrayOfObject1, 0, arrayOfObject2, paramArrayOfObject.length, arrayOfObject1.length);
-    paramString.set(paramObject, arrayOfObject2);
-  }
-  
-  public static Object d(Context paramContext, Class<?> paramClass)
+  public static Object getActivityThread(Context paramContext, Class<?> paramClass)
   {
     Object localObject = paramClass;
     if (paramClass == null) {}
@@ -126,54 +148,32 @@ public class ShareReflectUtil
     return null;
   }
   
-  public static Method d(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
-  {
-    while (paramClass != null) {
-      try
-      {
-        Method localMethod = paramClass.getDeclaredMethod(paramString, paramVarArgs);
-        if (!localMethod.isAccessible()) {
-          localMethod.setAccessible(true);
-        }
-        return localMethod;
-      }
-      catch (NoSuchMethodException localNoSuchMethodException)
-      {
-        paramClass = paramClass.getSuperclass();
-      }
-    }
-    throw new NoSuchMethodException("Method " + paramString + " with parameters " + Arrays.asList(paramVarArgs) + " not found in " + paramClass);
-  }
-  
-  public static Field g(Class<?> paramClass, String paramString)
-  {
-    Object localObject = paramClass;
-    while (localObject != null) {
-      try
-      {
-        Field localField = ((Class)localObject).getDeclaredField(paramString);
-        if (!localField.isAccessible()) {
-          localField.setAccessible(true);
-        }
-        return localField;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        localObject = ((Class)localObject).getSuperclass();
-      }
-    }
-    throw new NoSuchFieldException("Field " + paramString + " not found in " + paramClass);
-  }
-  
-  public static int h(Class<?> paramClass, String paramString)
+  public static int getValueOfStaticIntField(Class<?> paramClass, String paramString, int paramInt)
   {
     try
     {
-      int i = g(paramClass, paramString).getInt(null);
+      int i = findField(paramClass, paramString).getInt(null);
       return i;
     }
     catch (Throwable paramClass) {}
-    return 0;
+    return paramInt;
+  }
+  
+  public static void reduceFieldArray(Object paramObject, String paramString, int paramInt)
+  {
+    if (paramInt <= 0) {}
+    Object[] arrayOfObject1;
+    int i;
+    do
+    {
+      return;
+      paramString = findField(paramObject, paramString);
+      arrayOfObject1 = (Object[])paramString.get(paramObject);
+      i = arrayOfObject1.length - paramInt;
+    } while (i <= 0);
+    Object[] arrayOfObject2 = (Object[])Array.newInstance(arrayOfObject1.getClass().getComponentType(), i);
+    System.arraycopy(arrayOfObject1, paramInt, arrayOfObject2, 0, i);
+    paramString.set(paramObject, arrayOfObject2);
   }
 }
 

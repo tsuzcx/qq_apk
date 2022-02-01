@@ -9,49 +9,49 @@ import java.util.Collections;
 public final class b
   extends com.google.android.exoplayer2.f.b
 {
-  private static final int aXb;
-  private static final int aXc;
-  private static final int aXd;
-  private final m aJR;
-  private final e.a aXe;
+  private static final int bve;
+  private static final int bvf;
+  private static final int bvg;
+  private final m bfp;
+  private final e.a bvh;
   
   static
   {
-    AppMethodBeat.i(95719);
-    aXb = x.aS("payl");
-    aXc = x.aS("sttg");
-    aXd = x.aS("vttc");
-    AppMethodBeat.o(95719);
+    AppMethodBeat.i(92887);
+    bve = x.aY("payl");
+    bvf = x.aY("sttg");
+    bvg = x.aY("vttc");
+    AppMethodBeat.o(92887);
   }
   
   public b()
   {
     super("Mp4WebvttDecoder");
-    AppMethodBeat.i(95716);
-    this.aJR = new m();
-    this.aXe = new e.a();
-    AppMethodBeat.o(95716);
+    AppMethodBeat.i(92884);
+    this.bfp = new m();
+    this.bvh = new e.a();
+    AppMethodBeat.o(92884);
   }
   
   private static a a(m paramm, e.a parama, int paramInt)
   {
-    AppMethodBeat.i(95717);
+    AppMethodBeat.i(92885);
     parama.reset();
     while (paramInt > 0)
     {
       if (paramInt < 8)
       {
         paramm = new com.google.android.exoplayer2.f.f("Incomplete vtt cue box header found.");
-        AppMethodBeat.o(95717);
+        AppMethodBeat.o(92885);
         throw paramm;
       }
       int i = paramm.readInt();
       int j = paramm.readInt();
       i -= 8;
       String str = new String(paramm.data, paramm.position, i);
-      paramm.en(i);
+      paramm.fl(i);
       i = paramInt - 8 - i;
-      if (j == aXc)
+      if (j == bvf)
       {
         f.a(str, parama);
         paramInt = i;
@@ -59,15 +59,15 @@ public final class b
       else
       {
         paramInt = i;
-        if (j == aXb)
+        if (j == bve)
         {
           f.a(null, str.trim(), parama, Collections.emptyList());
           paramInt = i;
         }
       }
     }
-    paramm = parama.qd();
-    AppMethodBeat.o(95717);
+    paramm = parama.uX();
+    AppMethodBeat.o(92885);
     return paramm;
   }
 }

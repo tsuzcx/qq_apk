@@ -2,19 +2,19 @@ package com.tencent.xweb.xwalk;
 
 public abstract interface b
 {
-  public abstract boolean aMw();
+  public abstract boolean boI();
   
-  public abstract void aMx();
+  public abstract void boJ();
   
-  public abstract void aMy();
+  public abstract void boK();
   
-  public abstract void aMz();
+  public abstract void boL();
   
-  public abstract void pD(int paramInt);
+  public abstract void ua(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.b
  * JD-Core Version:    0.7.0.1
  */

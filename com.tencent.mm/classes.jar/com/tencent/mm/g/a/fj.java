@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class fj
   extends b
 {
-  public fj.a ctr;
-  public fj.b cts;
+  public a dhH;
   
   public fj()
   {
@@ -16,12 +16,21 @@ public final class fj
   
   private fj(byte paramByte)
   {
-    AppMethodBeat.i(70182);
-    this.ctr = new fj.a();
-    this.cts = new fj.b();
-    this.ymq = false;
+    AppMethodBeat.i(19803);
+    this.dhH = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70182);
+    AppMethodBeat.o(19803);
+  }
+  
+  public static final class a
+  {
+    public Context context;
+    public String[] daV;
+    public int dep = -1;
+    public String dhI;
+    public int op = 0;
+    public String[] selectionArgs;
   }
 }
 

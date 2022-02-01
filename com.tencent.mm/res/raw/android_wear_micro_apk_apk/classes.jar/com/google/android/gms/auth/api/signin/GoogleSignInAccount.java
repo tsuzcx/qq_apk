@@ -27,81 +27,35 @@ public class GoogleSignInAccount
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<GoogleSignInAccount> CREATOR = new b();
-  private static Comparator<Scope> GB = new Comparator() {};
-  public static e Gp = f.hU();
-  private String GA;
-  private String Gq;
-  private String Gr;
-  private String Gs;
-  private String Gt;
-  private Uri Gu;
-  private String Gv;
-  private long Gw;
-  private String Gx;
-  List<Scope> Gy;
-  private String Gz;
+  public static e Ie = f.ic();
+  private static Comparator<Scope> Iq = new Comparator() {};
+  private String If;
+  private String Ig;
+  private String Ih;
+  private String Ii;
+  private Uri Ij;
+  private String Ik;
+  private long Il;
+  private String Im;
+  List<Scope> In;
+  private String Io;
+  private String Ip;
   final int versionCode;
   
   GoogleSignInAccount(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, Uri paramUri, String paramString5, long paramLong, String paramString6, List<Scope> paramList, String paramString7, String paramString8)
   {
     this.versionCode = paramInt;
-    this.Gq = paramString1;
-    this.Gr = paramString2;
-    this.Gs = paramString3;
-    this.Gt = paramString4;
-    this.Gu = paramUri;
-    this.Gv = paramString5;
-    this.Gw = paramLong;
-    this.Gx = paramString6;
-    this.Gy = paramList;
-    this.Gz = paramString7;
-    this.GA = paramString8;
-  }
-  
-  private JSONObject fV()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      if (this.Gq != null) {
-        localJSONObject.put("id", this.Gq);
-      }
-      if (this.Gr != null) {
-        localJSONObject.put("tokenId", this.Gr);
-      }
-      if (this.Gs != null) {
-        localJSONObject.put("email", this.Gs);
-      }
-      if (this.Gt != null) {
-        localJSONObject.put("displayName", this.Gt);
-      }
-      if (this.Gz != null) {
-        localJSONObject.put("givenName", this.Gz);
-      }
-      if (this.GA != null) {
-        localJSONObject.put("familyName", this.GA);
-      }
-      if (this.Gu != null) {
-        localJSONObject.put("photoUrl", this.Gu.toString());
-      }
-      if (this.Gv != null) {
-        localJSONObject.put("serverAuthCode", this.Gv);
-      }
-      localJSONObject.put("expirationTime", this.Gw);
-      localJSONObject.put("obfuscatedIdentifier", this.Gx);
-      JSONArray localJSONArray = new JSONArray();
-      Collections.sort(this.Gy, GB);
-      Iterator localIterator = this.Gy.iterator();
-      while (localIterator.hasNext()) {
-        localJSONArray.put(((Scope)localIterator.next()).gE());
-      }
-      localJSONException.put("grantedScopes", localJSONArray);
-    }
-    catch (JSONException localJSONException)
-    {
-      throw new RuntimeException(localJSONException);
-    }
-    return localJSONException;
+    this.If = paramString1;
+    this.Ig = paramString2;
+    this.Ih = paramString3;
+    this.Ii = paramString4;
+    this.Ij = paramUri;
+    this.Ik = paramString5;
+    this.Il = paramLong;
+    this.Im = paramString6;
+    this.In = paramList;
+    this.Io = paramString7;
+    this.Ip = paramString8;
   }
   
   public static GoogleSignInAccount g(String paramString)
@@ -134,14 +88,60 @@ public class GoogleSignInAccount
     localObject = Long.valueOf(l);
     String str7 = localJSONObject.getString("obfuscatedIdentifier");
     if (localObject == null) {
-      localObject = Long.valueOf(Gp.currentTimeMillis() / 1000L);
+      localObject = Long.valueOf(Ie.currentTimeMillis() / 1000L);
     }
     for (;;)
     {
-      paramString = new GoogleSignInAccount(3, str1, str2, str3, str4, paramString, null, ((Long)localObject).longValue(), d.l(str7), new ArrayList((Collection)d.u(localHashSet)), str5, str6);
-      paramString.Gv = localJSONObject.optString("serverAuthCode", null);
+      paramString = new GoogleSignInAccount(3, str1, str2, str3, str4, paramString, null, ((Long)localObject).longValue(), d.l(str7), new ArrayList((Collection)d.D(localHashSet)), str5, str6);
+      paramString.Ik = localJSONObject.optString("serverAuthCode", null);
       return paramString;
     }
+  }
+  
+  private JSONObject gg()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      if (this.If != null) {
+        localJSONObject.put("id", this.If);
+      }
+      if (this.Ig != null) {
+        localJSONObject.put("tokenId", this.Ig);
+      }
+      if (this.Ih != null) {
+        localJSONObject.put("email", this.Ih);
+      }
+      if (this.Ii != null) {
+        localJSONObject.put("displayName", this.Ii);
+      }
+      if (this.Io != null) {
+        localJSONObject.put("givenName", this.Io);
+      }
+      if (this.Ip != null) {
+        localJSONObject.put("familyName", this.Ip);
+      }
+      if (this.Ij != null) {
+        localJSONObject.put("photoUrl", this.Ij.toString());
+      }
+      if (this.Ik != null) {
+        localJSONObject.put("serverAuthCode", this.Ik);
+      }
+      localJSONObject.put("expirationTime", this.Il);
+      localJSONObject.put("obfuscatedIdentifier", this.Im);
+      JSONArray localJSONArray = new JSONArray();
+      Collections.sort(this.In, Iq);
+      Iterator localIterator = this.In.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray.put(((Scope)localIterator.next()).gO());
+      }
+      localJSONException.put("grantedScopes", localJSONArray);
+    }
+    catch (JSONException localJSONException)
+    {
+      throw new RuntimeException(localJSONException);
+    }
+    return localJSONException;
   }
   
   public boolean equals(Object paramObject)
@@ -149,62 +149,62 @@ public class GoogleSignInAccount
     if (!(paramObject instanceof GoogleSignInAccount)) {
       return false;
     }
-    return ((GoogleSignInAccount)paramObject).fV().toString().equals(fV().toString());
+    return ((GoogleSignInAccount)paramObject).gg().toString().equals(gg().toString());
   }
   
-  public final String fN()
+  public final String fX()
   {
-    return this.Gr;
+    return this.Ig;
   }
   
-  public final String fO()
+  public final String fY()
   {
-    return this.Gs;
+    return this.Ih;
   }
   
-  public final String fP()
+  public final String fZ()
   {
-    return this.Gz;
+    return this.Io;
   }
   
-  public final String fQ()
+  public final String ga()
   {
-    return this.GA;
+    return this.Ip;
   }
   
-  public final Uri fR()
+  public final Uri gb()
   {
-    return this.Gu;
+    return this.Ij;
   }
   
-  public final String fS()
+  public final String gd()
   {
-    return this.Gv;
+    return this.Ik;
   }
   
-  public final long fT()
+  public final long ge()
   {
-    return this.Gw;
-  }
-  
-  public final String fU()
-  {
-    return this.Gx;
+    return this.Il;
   }
   
   public final String getDisplayName()
   {
-    return this.Gt;
+    return this.Ii;
   }
   
   public final String getId()
   {
-    return this.Gq;
+    return this.If;
+  }
+  
+  public final String gf()
+  {
+    return this.Im;
   }
   
   public int hashCode()
   {
-    return fV().toString().hashCode();
+    return gg().toString().hashCode();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

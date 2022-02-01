@@ -17,15 +17,15 @@ final class zzjv
   
   private static long zza(zzkn paramzzkn)
   {
-    AppMethodBeat.i(69491);
+    AppMethodBeat.i(2014);
     long l = paramzzkn.zzatb.longValue() / 1000L / 60L / 60L;
-    AppMethodBeat.o(69491);
+    AppMethodBeat.o(2014);
     return l;
   }
   
   public final boolean zza(long paramLong, zzkn paramzzkn)
   {
-    AppMethodBeat.i(69490);
+    AppMethodBeat.i(2013);
     Preconditions.checkNotNull(paramzzkn);
     if (this.zzaqx == null) {
       this.zzaqx = new ArrayList();
@@ -35,13 +35,13 @@ final class zzjv
     }
     if ((this.zzaqx.size() > 0) && (zza((zzkn)this.zzaqx.get(0)) != zza(paramzzkn)))
     {
-      AppMethodBeat.o(69490);
+      AppMethodBeat.o(2013);
       return false;
     }
     long l = this.zzaqy + paramzzkn.zzvm();
     if (l >= Math.max(0, ((Integer)zzew.zzagq.get()).intValue()))
     {
-      AppMethodBeat.o(69490);
+      AppMethodBeat.o(2013);
       return false;
     }
     this.zzaqy = l;
@@ -49,24 +49,24 @@ final class zzjv
     this.zzaqw.add(Long.valueOf(paramLong));
     if (this.zzaqx.size() >= Math.max(1, ((Integer)zzew.zzagr.get()).intValue()))
     {
-      AppMethodBeat.o(69490);
+      AppMethodBeat.o(2013);
       return false;
     }
-    AppMethodBeat.o(69490);
+    AppMethodBeat.o(2013);
     return true;
   }
   
   public final void zzb(zzkq paramzzkq)
   {
-    AppMethodBeat.i(69489);
+    AppMethodBeat.i(2012);
     Preconditions.checkNotNull(paramzzkq);
     this.zzaqv = paramzzkq;
-    AppMethodBeat.o(69489);
+    AppMethodBeat.o(2012);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzjv
  * JD-Core Version:    0.7.0.1
  */

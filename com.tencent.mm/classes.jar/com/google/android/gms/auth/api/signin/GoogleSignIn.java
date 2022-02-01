@@ -23,7 +23,7 @@ public final class GoogleSignIn
 {
   public static GoogleSignInAccount getAccountForExtension(Context paramContext, GoogleSignInOptionsExtension paramGoogleSignInOptionsExtension)
   {
-    AppMethodBeat.i(50377);
+    AppMethodBeat.i(88272);
     Preconditions.checkNotNull(paramContext, "please provide a valid Context object");
     Preconditions.checkNotNull(paramGoogleSignInOptionsExtension, "please provide valid GoogleSignInOptionsExtension");
     GoogleSignInAccount localGoogleSignInAccount = getLastSignedInAccount(paramContext);
@@ -32,13 +32,13 @@ public final class GoogleSignIn
       paramContext = GoogleSignInAccount.createDefault();
     }
     paramContext = paramContext.requestExtraScopes(zzd(paramGoogleSignInOptionsExtension.getImpliedScopes()));
-    AppMethodBeat.o(50377);
+    AppMethodBeat.o(88272);
     return paramContext;
   }
   
   public static GoogleSignInAccount getAccountForScopes(Context paramContext, Scope paramScope, Scope... paramVarArgs)
   {
-    AppMethodBeat.i(50376);
+    AppMethodBeat.i(88271);
     Preconditions.checkNotNull(paramContext, "please provide a valid Context object");
     Preconditions.checkNotNull(paramScope, "please provide at least one valid scope");
     GoogleSignInAccount localGoogleSignInAccount = getLastSignedInAccount(paramContext);
@@ -48,118 +48,118 @@ public final class GoogleSignIn
     }
     paramContext.requestExtraScopes(new Scope[] { paramScope });
     paramContext.requestExtraScopes(paramVarArgs);
-    AppMethodBeat.o(50376);
+    AppMethodBeat.o(88271);
     return paramContext;
   }
   
   public static GoogleSignInClient getClient(Activity paramActivity, GoogleSignInOptions paramGoogleSignInOptions)
   {
-    AppMethodBeat.i(50373);
+    AppMethodBeat.i(88268);
     paramActivity = new GoogleSignInClient(paramActivity, (GoogleSignInOptions)Preconditions.checkNotNull(paramGoogleSignInOptions));
-    AppMethodBeat.o(50373);
+    AppMethodBeat.o(88268);
     return paramActivity;
   }
   
   public static GoogleSignInClient getClient(Context paramContext, GoogleSignInOptions paramGoogleSignInOptions)
   {
-    AppMethodBeat.i(50372);
+    AppMethodBeat.i(88267);
     paramContext = new GoogleSignInClient(paramContext, (GoogleSignInOptions)Preconditions.checkNotNull(paramGoogleSignInOptions));
-    AppMethodBeat.o(50372);
+    AppMethodBeat.o(88267);
     return paramContext;
   }
   
   public static GoogleSignInAccount getLastSignedInAccount(Context paramContext)
   {
-    AppMethodBeat.i(50375);
+    AppMethodBeat.i(88270);
     paramContext = zzq.zze(paramContext).zzo();
-    AppMethodBeat.o(50375);
+    AppMethodBeat.o(88270);
     return paramContext;
   }
   
   public static Task<GoogleSignInAccount> getSignedInAccountFromIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(50374);
+    AppMethodBeat.i(88269);
     paramIntent = zzi.getSignInResultFromIntent(paramIntent);
     if (paramIntent == null)
     {
       paramIntent = Tasks.forException(ApiExceptionUtil.fromStatus(Status.RESULT_INTERNAL_ERROR));
-      AppMethodBeat.o(50374);
+      AppMethodBeat.o(88269);
       return paramIntent;
     }
     if ((!paramIntent.getStatus().isSuccess()) || (paramIntent.getSignInAccount() == null))
     {
       paramIntent = Tasks.forException(ApiExceptionUtil.fromStatus(paramIntent.getStatus()));
-      AppMethodBeat.o(50374);
+      AppMethodBeat.o(88269);
       return paramIntent;
     }
     paramIntent = Tasks.forResult(paramIntent.getSignInAccount());
-    AppMethodBeat.o(50374);
+    AppMethodBeat.o(88269);
     return paramIntent;
   }
   
   public static boolean hasPermissions(GoogleSignInAccount paramGoogleSignInAccount, GoogleSignInOptionsExtension paramGoogleSignInOptionsExtension)
   {
-    AppMethodBeat.i(50378);
+    AppMethodBeat.i(88273);
     Preconditions.checkNotNull(paramGoogleSignInOptionsExtension, "Please provide a non-null GoogleSignInOptionsExtension");
     boolean bool = hasPermissions(paramGoogleSignInAccount, zzd(paramGoogleSignInOptionsExtension.getImpliedScopes()));
-    AppMethodBeat.o(50378);
+    AppMethodBeat.o(88273);
     return bool;
   }
   
   public static boolean hasPermissions(GoogleSignInAccount paramGoogleSignInAccount, Scope... paramVarArgs)
   {
-    AppMethodBeat.i(50379);
+    AppMethodBeat.i(88274);
     if (paramGoogleSignInAccount == null)
     {
-      AppMethodBeat.o(50379);
+      AppMethodBeat.o(88274);
       return false;
     }
     HashSet localHashSet = new HashSet();
     Collections.addAll(localHashSet, paramVarArgs);
     boolean bool = paramGoogleSignInAccount.getGrantedScopes().containsAll(localHashSet);
-    AppMethodBeat.o(50379);
+    AppMethodBeat.o(88274);
     return bool;
   }
   
   public static void requestPermissions(Activity paramActivity, int paramInt, GoogleSignInAccount paramGoogleSignInAccount, GoogleSignInOptionsExtension paramGoogleSignInOptionsExtension)
   {
-    AppMethodBeat.i(50380);
+    AppMethodBeat.i(88275);
     Preconditions.checkNotNull(paramActivity, "Please provide a non-null Activity");
     Preconditions.checkNotNull(paramGoogleSignInOptionsExtension, "Please provide a non-null GoogleSignInOptionsExtension");
     requestPermissions(paramActivity, paramInt, paramGoogleSignInAccount, zzd(paramGoogleSignInOptionsExtension.getImpliedScopes()));
-    AppMethodBeat.o(50380);
+    AppMethodBeat.o(88275);
   }
   
   public static void requestPermissions(Activity paramActivity, int paramInt, GoogleSignInAccount paramGoogleSignInAccount, Scope... paramVarArgs)
   {
-    AppMethodBeat.i(50382);
+    AppMethodBeat.i(88277);
     Preconditions.checkNotNull(paramActivity, "Please provide a non-null Activity");
     Preconditions.checkNotNull(paramVarArgs, "Please provide at least one scope");
     paramActivity.startActivityForResult(zzd(paramActivity, paramGoogleSignInAccount, paramVarArgs), paramInt);
-    AppMethodBeat.o(50382);
+    AppMethodBeat.o(88277);
   }
   
   public static void requestPermissions(Fragment paramFragment, int paramInt, GoogleSignInAccount paramGoogleSignInAccount, GoogleSignInOptionsExtension paramGoogleSignInOptionsExtension)
   {
-    AppMethodBeat.i(50381);
+    AppMethodBeat.i(88276);
     Preconditions.checkNotNull(paramFragment, "Please provide a non-null Fragment");
     Preconditions.checkNotNull(paramGoogleSignInOptionsExtension, "Please provide a non-null GoogleSignInOptionsExtension");
     requestPermissions(paramFragment, paramInt, paramGoogleSignInAccount, zzd(paramGoogleSignInOptionsExtension.getImpliedScopes()));
-    AppMethodBeat.o(50381);
+    AppMethodBeat.o(88276);
   }
   
   public static void requestPermissions(Fragment paramFragment, int paramInt, GoogleSignInAccount paramGoogleSignInAccount, Scope... paramVarArgs)
   {
-    AppMethodBeat.i(50383);
+    AppMethodBeat.i(88278);
     Preconditions.checkNotNull(paramFragment, "Please provide a non-null Fragment");
     Preconditions.checkNotNull(paramVarArgs, "Please provide at least one scope");
     paramFragment.startActivityForResult(zzd(paramFragment.getActivity(), paramGoogleSignInAccount, paramVarArgs), paramInt);
-    AppMethodBeat.o(50383);
+    AppMethodBeat.o(88278);
   }
   
   private static Intent zzd(Activity paramActivity, GoogleSignInAccount paramGoogleSignInAccount, Scope... paramVarArgs)
   {
-    AppMethodBeat.i(50384);
+    AppMethodBeat.i(88279);
     GoogleSignInOptions.Builder localBuilder = new GoogleSignInOptions.Builder();
     if (paramVarArgs.length > 0) {
       localBuilder.requestScopes(paramVarArgs[0], paramVarArgs);
@@ -168,26 +168,26 @@ public final class GoogleSignIn
       localBuilder.setAccountName(paramGoogleSignInAccount.getEmail());
     }
     paramActivity = new GoogleSignInClient(paramActivity, localBuilder.build()).getSignInIntent();
-    AppMethodBeat.o(50384);
+    AppMethodBeat.o(88279);
     return paramActivity;
   }
   
   private static Scope[] zzd(List<Scope> paramList)
   {
-    AppMethodBeat.i(50385);
+    AppMethodBeat.i(88280);
     if (paramList == null)
     {
-      AppMethodBeat.o(50385);
+      AppMethodBeat.o(88280);
       return new Scope[0];
     }
     paramList = (Scope[])paramList.toArray(new Scope[paramList.size()]);
-    AppMethodBeat.o(50385);
+    AppMethodBeat.o(88280);
     return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.GoogleSignIn
  * JD-Core Version:    0.7.0.1
  */

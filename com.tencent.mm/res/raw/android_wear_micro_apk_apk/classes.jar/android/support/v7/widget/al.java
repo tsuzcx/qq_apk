@@ -4,7 +4,7 @@ import android.view.View;
 
 public abstract class al
 {
-  public abstract View ec();
+  public abstract View eq();
 }
 
 

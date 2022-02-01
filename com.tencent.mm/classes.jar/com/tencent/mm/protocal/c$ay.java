@@ -5,12 +5,12 @@ public final class c$ay
 {
   public c$ay()
   {
-    super("disableBounceScroll", "disableBounceScroll", 188, false);
+    super("currentMpInfoHide", "currentMpInfoHide", 347, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ay
  * JD-Core Version:    0.7.0.1
  */

@@ -12,16 +12,16 @@ public final class G$netStats
   
   static
   {
-    AppMethodBeat.i(113977);
+    AppMethodBeat.i(73475);
     enabled = GservicesValue.value("gms:stats:netstats:enabled", true);
     recordIntervalSecs = GservicesValue.value("gms:stats:netstats:record_interval_secs", Long.valueOf(TimeUnit.DAYS.toSeconds(1L)));
     dataSourcePollIntervalMillis = GservicesValue.value("gms:stats:netstats:data_source_poll_millis", Long.valueOf(TimeUnit.MINUTES.toMillis(30L)));
-    AppMethodBeat.o(113977);
+    AppMethodBeat.o(73475);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.stats.internal.G.netStats
  * JD-Core Version:    0.7.0.1
  */

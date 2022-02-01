@@ -1,132 +1,189 @@
 package com.tencent.mm.emoji.loader.c;
 
-import a.f.b.j;
-import a.l;
-import a.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.d.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.plugin.emoji.b.d;
+import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.act;
+import com.tencent.mm.protocal.protobuf.ix;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.aw;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.vfs.e;
+import d.a.j;
+import d.g.a.a;
+import d.g.a.m;
+import d.g.b.k;
+import d.y;
+import java.util.Collection;
+import java.util.LinkedList;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiHttpFetcher;", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcher;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "", "fetcherConfig", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "fetch", "getEmojiData", "Lcom/tencent/mm/modelimage/loader/model/Response;", "reportResult", "reportStart", "plugin-emojisdk_release"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfigRetriever;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "callback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "success", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "config", "", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Lkotlin/jvm/functions/Function2;)V", "TAG", "", "getCallback", "()Lkotlin/jvm/functions/Function2;", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "scene", "Lcom/tencent/mm/plugin/emoji/net/NetSceneBatchEmojiDownLoad;", "createFetcherConfig", "onSceneEnd", "errType", "", "errCode", "errMsg", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-emojisdk_release"})
 public final class f
-  implements c
+  implements com.tencent.mm.al.g
 {
-  private final String TAG = "MicroMsg.EmojiLoader.EmojiHttpFetcher";
-  private d evu;
-  private a.f.a.b<? super Boolean, y> evv;
+  private final String TAG;
+  private final EmojiInfo fLP;
+  private final com.tencent.mm.plugin.emoji.f.e fLS;
+  final m<Boolean, e, y> fLT;
   
-  private final void ce(boolean paramBoolean)
+  public f(EmojiInfo paramEmojiInfo, m<? super Boolean, ? super e, y> paramm)
   {
-    AppMethodBeat.i(63190);
-    d locald = this.evu;
-    if (locald != null)
+    AppMethodBeat.i(105438);
+    this.fLP = paramEmojiInfo;
+    this.fLT = paramm;
+    this.TAG = "MicroMsg.EmojiFetcherConfigRetriever";
+    paramEmojiInfo = new LinkedList();
+    paramEmojiInfo.add(this.fLP.JS());
+    this.fLS = new com.tencent.mm.plugin.emoji.f.e(paramEmojiInfo);
+    paramEmojiInfo = g(this.fLP);
+    if (((CharSequence)paramEmojiInfo.url).length() > 0) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      if (paramBoolean)
-      {
-        com.tencent.mm.plugin.emoji.c.iX(2L);
-        AppMethodBeat.o(63190);
-        return;
-      }
-      com.tencent.mm.plugin.emoji.c.iX(3L);
-      switch (locald.evJ)
-      {
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(63190);
-        return;
-        com.tencent.mm.plugin.emoji.c.a(locald.evH.Al(), 4, 1, 1, locald.evH.avS(), 1, locald.evH.field_designerID);
-        AppMethodBeat.o(63190);
-        return;
-        com.tencent.mm.plugin.emoji.c.a(locald.evH.Al(), 2, 1, 1, locald.evH.avS(), 1, locald.evH.field_designerID);
-        AppMethodBeat.o(63190);
-        return;
-        com.tencent.mm.plugin.emoji.c.a(locald.evH.Al(), 4, 1, 1, locald.evH.avS(), 1, locald.evH.field_designerID);
-      }
-    }
-    AppMethodBeat.o(63190);
-  }
-  
-  public final void a(d paramd, a.f.a.b<? super Boolean, y> paramb)
-  {
-    AppMethodBeat.i(63189);
-    j.q(paramd, "fetcherConfig");
-    this.evu = paramd;
-    this.evv = paramb;
-    Object localObject = this.evu;
-    if (localObject != null) {}
-    label92:
-    label104:
-    int i;
-    switch (((d)localObject).evJ)
-    {
-    default: 
-      localObject = this.evu;
-      if (localObject != null)
-      {
-        localObject = new a().tB(((d)localObject).url);
-        if (localObject == null) {
-          break label206;
-        }
-        localObject = ((com.tencent.mm.at.a.d.b)localObject).data;
-        if (localObject != null)
-        {
-          if (localObject.length != 0) {
-            break label212;
-          }
-          i = 1;
-        }
-      }
-      break;
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        ab.i(this.TAG, "download fail " + paramd.evH.Al());
-        ce(false);
-        if (paramb != null)
-        {
-          paramb.S(Boolean.FALSE);
-          AppMethodBeat.o(63189);
-          return;
-          com.tencent.mm.plugin.emoji.c.iX(1L);
-          break;
-          com.tencent.mm.plugin.emoji.c.iX(6L);
-          break;
-          com.tencent.mm.plugin.emoji.c.iX(10L);
-          break;
-          localObject = null;
-          break label92;
-          label206:
-          localObject = null;
-          break label104;
-          label212:
-          i = 0;
-          continue;
-        }
-        AppMethodBeat.o(63189);
-        return;
-      }
-    }
-    ab.i(this.TAG, "download success " + paramd.evH.Al() + ", " + paramd.path);
-    new com.tencent.mm.vfs.b(paramd.path).dQI().mkdirs();
-    e.q(paramd.path, (byte[])localObject);
-    ce(true);
-    if (paramb != null)
-    {
-      paramb.S(Boolean.TRUE);
-      AppMethodBeat.o(63189);
+      this.fLT.n(Boolean.TRUE, paramEmojiInfo);
+      AppMethodBeat.o(105438);
       return;
     }
-    AppMethodBeat.o(63189);
+    ad.i(this.TAG, "config retriever: db url is empty");
+    com.tencent.mm.plugin.emoji.c.oF(9L);
+    paramEmojiInfo = com.tencent.mm.kernel.g.afA();
+    k.g(paramEmojiInfo, "network()");
+    paramEmojiInfo.aeS().a(697, (com.tencent.mm.al.g)this);
+    paramEmojiInfo = com.tencent.mm.kernel.g.afA();
+    k.g(paramEmojiInfo, "MMKernel.network()");
+    paramEmojiInfo.aeS().b((n)this.fLS);
+    AppMethodBeat.o(105438);
+  }
+  
+  private final e g(EmojiInfo paramEmojiInfo)
+  {
+    int i = 0;
+    AppMethodBeat.i(105436);
+    String str3 = paramEmojiInfo.gaa() + "_temp";
+    String str1;
+    if (i.h(paramEmojiInfo))
+    {
+      ad.i(this.TAG, "createFetcherConfig: " + paramEmojiInfo.JS() + " use tp url");
+      str1 = paramEmojiInfo.field_tpurl;
+      k.g(str1, "emojiInfo.field_tpurl");
+      i = 3;
+      if (paramEmojiInfo.field_tpauthkey != null) {
+        break label291;
+      }
+    }
+    label291:
+    for (String str2 = "";; str2 = paramEmojiInfo.field_tpauthkey)
+    {
+      k.g(str2, "if (null == emojiInfo.fi…emojiInfo.field_tpauthkey");
+      paramEmojiInfo = new e(paramEmojiInfo, str1, str3, str2, i);
+      AppMethodBeat.o(105436);
+      return paramEmojiInfo;
+      if (i.i(paramEmojiInfo))
+      {
+        ad.i(this.TAG, "createFetcherConfig: " + paramEmojiInfo.JS() + " use wxam");
+        str1 = paramEmojiInfo.field_externUrl;
+        k.g(str1, "emojiInfo.field_externUrl");
+        i = 2;
+        break;
+      }
+      if (i.j(paramEmojiInfo))
+      {
+        ad.i(this.TAG, "createFetcherConfig: " + paramEmojiInfo.JS() + " use encrypt");
+        str1 = paramEmojiInfo.field_encrypturl;
+        k.g(str1, "emojiInfo.field_encrypturl");
+        i = 1;
+        break;
+      }
+      if (!bt.isNullOrNil(paramEmojiInfo.field_cdnUrl))
+      {
+        ad.i(this.TAG, "createFetcherConfig: " + paramEmojiInfo.JS() + " use cdn url");
+        str1 = paramEmojiInfo.field_cdnUrl;
+        k.g(str1, "emojiInfo.field_cdnUrl");
+        break;
+      }
+      str1 = "";
+      break;
+    }
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, final String paramString, n paramn)
+  {
+    AppMethodBeat.i(105437);
+    k.h(paramn, "scene");
+    int i = paramn.getType();
+    ad.i(this.TAG, "onSceneEnd: " + paramInt1 + ", " + paramInt2 + ", " + i);
+    if ((i == 697) && (k.g(paramn, this.fLS)))
+    {
+      paramString = com.tencent.mm.kernel.g.afA();
+      k.g(paramString, "network()");
+      paramString.aeS().b(697, (com.tencent.mm.al.g)this);
+      paramn = this.fLS.bVk();
+      if (paramn != null)
+      {
+        paramString = paramn.CEq;
+        paramString = (Collection)paramString;
+        if ((paramString != null) && (!paramString.isEmpty())) {
+          break label307;
+        }
+      }
+      label307:
+      for (paramInt1 = 1;; paramInt1 = 0)
+      {
+        if (paramInt1 == 0) {
+          break label312;
+        }
+        ad.i(this.TAG, "onSceneEnd: response list is empty");
+        h.vKh.D(164L, 11L);
+        if (((((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.poB, 0) & 0x4) > 0) && (com.tencent.mm.plugin.emoji.h.b.x(this.fLP)))
+        {
+          paramString = new com.tencent.mm.plugin.emoji.f.c(0, 2, j.listOf(this.fLP.JS()));
+          paramn = com.tencent.mm.kernel.g.afA();
+          k.g(paramn, "MMKernel.network()");
+          paramn.aeS().b((n)paramString);
+          paramString = aw.eLx();
+          k.g(paramString, "EmojiStorageMgr.getInstance()");
+          paramString.bxR().z(j.listOf(this.fLP.JS()), 0);
+        }
+        this.fLT.n(Boolean.FALSE, null);
+        AppMethodBeat.o(105437);
+        return;
+        paramString = null;
+        break;
+      }
+      label312:
+      com.tencent.mm.plugin.emoji.h.b.a((act)paramn.CEq.get(0), this.fLP);
+      paramString = g(this.fLP);
+      if (((CharSequence)paramString.url).length() > 0) {}
+      for (paramInt1 = 1; paramInt1 != 0; paramInt1 = 0)
+      {
+        paramn = com.tencent.mm.kernel.g.ad(d.class);
+        k.g(paramn, "MMKernel.plugin(IPluginEmoji::class.java)");
+        ((d)paramn).getProvider().updateEmojiInfo(this.fLP);
+        com.tencent.mm.ad.c.b("EmojiFetcherConfigRetriever_onSceneEnd", (a)new a(this, paramString));
+        AppMethodBeat.o(105437);
+        return;
+      }
+      this.fLT.n(Boolean.FALSE, null);
+    }
+    AppMethodBeat.o(105437);
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  static final class a
+    extends d.g.b.l
+    implements a<y>
+  {
+    a(f paramf, e parame)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.c.f
  * JD-Core Version:    0.7.0.1
  */

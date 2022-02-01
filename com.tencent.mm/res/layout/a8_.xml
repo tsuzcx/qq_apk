@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="33.0dip" android:textColor="@color/a6q" android:gravity="left" android:id="@id/de" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" wallet:walletTypeFace="e2" />
-        <TextView android:id="@id/dc" style="@style/vm" />
-        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="33.0dip" android:textColor="@color/a6q" android:id="@id/d8" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="0.0dip" android:minWidth="2.0dip" android:text="" android:layout_weight="1.0" android:textCursorDrawable="@drawable/rh" />
-    </LinearLayout>
-</merge>
+<View android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="@dimen/a2z"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

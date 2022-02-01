@@ -5,11 +5,35 @@ import org.json.JSONObject;
 
 public abstract interface c
 {
-  public abstract void a(d paramd, String paramString1, int paramInt, String paramString2, c.a parama, JSONObject paramJSONObject1, JSONObject paramJSONObject2, c.c paramc);
+  public abstract void a(d paramd, String paramString1, int paramInt, String paramString2, a parama, JSONObject paramJSONObject, c paramc);
+  
+  public static final class a
+  {
+    public String businessType;
+    public String dbt;
+    public int dzS;
+    public String dzT;
+    public String jYX;
+    public String jdE;
+    public int scene;
+    public int sourceType;
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void cancel();
+    
+    public abstract void proceed();
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void k(boolean paramBoolean, String paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c
  * JD-Core Version:    0.7.0.1
  */

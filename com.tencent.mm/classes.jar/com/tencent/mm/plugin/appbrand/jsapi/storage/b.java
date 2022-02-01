@@ -1,43 +1,42 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
 import com.tencent.luggage.a.e;
+import com.tencent.luggage.sdk.customize.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.f;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.jsapi.u;
+import com.tencent.mm.plugin.appbrand.jsapi.y;
 
 public final class b
-  extends u<h>
+  extends y<com.tencent.mm.plugin.appbrand.jsapi.h>
 {
   public static final int CTRL_INDEX = 18;
   public static final String NAME = "clearStorageSync";
   
-  private String b(h paramh, int paramInt)
+  private String b(com.tencent.mm.plugin.appbrand.jsapi.h paramh, int paramInt)
   {
-    AppMethodBeat.i(102025);
+    AppMethodBeat.i(147231);
     JsApiClearStorageTask localJsApiClearStorageTask = new JsApiClearStorageTask();
     localJsApiClearStorageTask.appId = paramh.getAppId();
-    localJsApiClearStorageTask.ias = paramInt;
+    localJsApiClearStorageTask.kkZ = paramInt;
     AppBrandMainProcessService.b(localJsApiClearStorageTask);
-    paramh = j("ok", null);
-    AppMethodBeat.o(102025);
+    paramh = e("ok", null);
+    AppMethodBeat.o(147231);
     return paramh;
   }
   
-  private String c(h paramh, int paramInt)
+  private String c(com.tencent.mm.plugin.appbrand.jsapi.h paramh, int paramInt)
   {
-    AppMethodBeat.i(102026);
-    ((com.tencent.luggage.sdk.customize.b)e.q(com.tencent.luggage.sdk.customize.b.class)).cc(paramh.getAppId()).I(paramInt, paramh.getAppId());
-    paramh = j("ok", null);
-    AppMethodBeat.o(102026);
+    AppMethodBeat.i(147232);
+    ((a)e.K(a.class)).cs(paramh.getAppId()).R(paramInt, paramh.getAppId());
+    paramh = e("ok", null);
+    AppMethodBeat.o(147232);
     return paramh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.b
  * JD-Core Version:    0.7.0.1
  */

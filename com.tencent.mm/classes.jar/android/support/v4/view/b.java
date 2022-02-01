@@ -7,8 +7,8 @@ import android.view.View;
 
 public abstract class b
 {
-  public a Fq;
-  public b Fr;
+  public a Mo;
+  public b Mp;
   private final Context mContext;
   
   public b(Context paramContext)
@@ -16,19 +16,19 @@ public abstract class b
     this.mContext = paramContext;
   }
   
-  public final void E(boolean paramBoolean)
+  public final void K(boolean paramBoolean)
   {
-    if (this.Fq != null) {
-      this.Fq.F(paramBoolean);
+    if (this.Mo != null) {
+      this.Mo.L(paramBoolean);
     }
   }
   
   public void a(b paramb)
   {
-    if (this.Fr != null) {
+    if (this.Mp != null) {
       new StringBuilder("setVisibilityListener: Setting a new ActionProvider.VisibilityListener when one is already set. Are you reusing this ").append(getClass().getSimpleName()).append(" instance while it is still in use somewhere else?");
     }
-    this.Fr = paramb;
+    this.Mp = paramb;
   }
   
   public boolean hasSubMenu()
@@ -62,12 +62,12 @@ public abstract class b
   
   public static abstract interface a
   {
-    public abstract void F(boolean paramBoolean);
+    public abstract void L(boolean paramBoolean);
   }
   
   public static abstract interface b
   {
-    public abstract void dC();
+    public abstract void eU();
   }
 }
 

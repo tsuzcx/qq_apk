@@ -1,0 +1,31 @@
+{
+  "emoticon_main_ui": {
+    "title": "表情商店",
+    "friend_emoticon": "朋友表情",
+    "friend_add_recent": "朋友最新添加",
+    "more_emoticon": "更多表情",
+    "animate": "动画",
+    "hot_rank": "热门排行",
+    "new_command": "新品推荐"
+  },
+  "emoticon_detail_ui": {
+    "animate": "动画",
+    "artist_homepage": "艺术家主页",
+    "people_donor": "人赞赏",
+    "service": "服务声明",
+    "complain": "侵权投诉",
+    "sendToFriend": "发送给朋友",
+    "shareToMoment": "分享到朋友圈",
+    "source": "-来自表情商店"
+  },
+  "common_action": {
+    "add": "添加",
+    "send_emoticon": "发表情",
+    "donor": "赞赏",
+    "use": "使用"
+  },
+  "emoticon_status": {
+    "added": "已添加",
+    "expired": "已过期"
+  }
+}

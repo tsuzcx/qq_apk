@@ -6,71 +6,87 @@ import com.tencent.mm.plugin.report.a;
 public final class dj
   extends a
 {
-  private String dfk = "";
-  private String dfl = "";
-  private String dfm = "";
+  private long dUo = 0L;
+  private long dUp = 0L;
+  private long dUq = 0L;
+  private long dUr = 0L;
+  private int dUs = 0;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(70625);
+    AppMethodBeat.i(118500);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dfk);
+    ((StringBuffer)localObject).append(this.dUo);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dfl);
+    ((StringBuffer)localObject).append(this.dUp);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dfm);
+    ((StringBuffer)localObject).append(this.dUq);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUr);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dUs);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(70625);
+    ams((String)localObject);
+    AppMethodBeat.o(118500);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(70626);
+    AppMethodBeat.i(118501);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("WidgetAppid:").append(this.dfk);
+    ((StringBuffer)localObject).append("StartZipTime:").append(this.dUo);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SrcAppid:").append(this.dfl);
+    ((StringBuffer)localObject).append("Enable:").append(this.dUp);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DrawData:").append(this.dfm);
+    ((StringBuffer)localObject).append("Exceed:").append(this.dUq);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Cost:").append(this.dUr);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Result:").append(this.dUs);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(70626);
+    AppMethodBeat.o(118501);
     return localObject;
+  }
+  
+  public final dj QQ()
+  {
+    this.dUq = 1L;
+    return this;
+  }
+  
+  public final dj fU(long paramLong)
+  {
+    this.dUo = paramLong;
+    return this;
+  }
+  
+  public final dj fV(long paramLong)
+  {
+    this.dUp = paramLong;
+    return this;
+  }
+  
+  public final dj fW(long paramLong)
+  {
+    this.dUr = paramLong;
+    return this;
   }
   
   public final int getId()
   {
-    return 16358;
+    return 17654;
   }
   
-  public final dj iN(String paramString)
+  public final dj iD(int paramInt)
   {
-    AppMethodBeat.i(70622);
-    this.dfk = t("WidgetAppid", paramString, true);
-    AppMethodBeat.o(70622);
-    return this;
-  }
-  
-  public final dj iO(String paramString)
-  {
-    AppMethodBeat.i(70623);
-    this.dfl = t("SrcAppid", paramString, true);
-    AppMethodBeat.o(70623);
-    return this;
-  }
-  
-  public final dj iP(String paramString)
-  {
-    AppMethodBeat.i(70624);
-    this.dfm = t("DrawData", paramString, true);
-    AppMethodBeat.o(70624);
+    this.dUs = paramInt;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.dj
  * JD-Core Version:    0.7.0.1
  */

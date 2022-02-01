@@ -1,4 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <CheckBoxPreference android:title="Actionbar" android:key="redesign_actionbar" android:layout="@layout/afi" />
-</PreferenceScreen>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" />

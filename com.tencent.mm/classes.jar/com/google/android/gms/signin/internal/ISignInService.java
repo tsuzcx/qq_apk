@@ -108,109 +108,109 @@ public abstract interface ISignInService
       
       public void authAccount(AuthAccountRequest paramAuthAccountRequest, ISignInCallbacks paramISignInCallbacks)
       {
-        AppMethodBeat.i(61671);
+        AppMethodBeat.i(12163);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramAuthAccountRequest);
         zzc.zza(localParcel, paramISignInCallbacks);
         transactAndReadExceptionReturnVoid(2, localParcel);
-        AppMethodBeat.o(61671);
+        AppMethodBeat.o(12163);
       }
       
       public void clearAccountFromSessionStore(int paramInt)
       {
-        AppMethodBeat.i(61675);
+        AppMethodBeat.i(12167);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         localParcel.writeInt(paramInt);
         transactAndReadExceptionReturnVoid(7, localParcel);
-        AppMethodBeat.o(61675);
+        AppMethodBeat.o(12167);
       }
       
       public void getCurrentAccount(ISignInCallbacks paramISignInCallbacks)
       {
-        AppMethodBeat.i(61679);
+        AppMethodBeat.i(12171);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramISignInCallbacks);
         transactAndReadExceptionReturnVoid(11, localParcel);
-        AppMethodBeat.o(61679);
+        AppMethodBeat.o(12171);
       }
       
       public void onCheckServerAuthorization(CheckServerAuthResult paramCheckServerAuthResult)
       {
-        AppMethodBeat.i(61672);
+        AppMethodBeat.i(12164);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramCheckServerAuthResult);
         transactAndReadExceptionReturnVoid(3, localParcel);
-        AppMethodBeat.o(61672);
+        AppMethodBeat.o(12164);
       }
       
       public void onUploadServerAuthCode(boolean paramBoolean)
       {
-        AppMethodBeat.i(61673);
+        AppMethodBeat.i(12165);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramBoolean);
         transactAndReadExceptionReturnVoid(4, localParcel);
-        AppMethodBeat.o(61673);
+        AppMethodBeat.o(12165);
       }
       
       public void recordConsent(RecordConsentRequest paramRecordConsentRequest, ISignInCallbacks paramISignInCallbacks)
       {
-        AppMethodBeat.i(61678);
+        AppMethodBeat.i(12170);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramRecordConsentRequest);
         zzc.zza(localParcel, paramISignInCallbacks);
         transactAndReadExceptionReturnVoid(10, localParcel);
-        AppMethodBeat.o(61678);
+        AppMethodBeat.o(12170);
       }
       
       public void resolveAccount(ResolveAccountRequest paramResolveAccountRequest, IResolveAccountCallbacks paramIResolveAccountCallbacks)
       {
-        AppMethodBeat.i(61674);
+        AppMethodBeat.i(12166);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramResolveAccountRequest);
         zzc.zza(localParcel, paramIResolveAccountCallbacks);
         transactAndReadExceptionReturnVoid(5, localParcel);
-        AppMethodBeat.o(61674);
+        AppMethodBeat.o(12166);
       }
       
       public void saveAccountToSessionStore(int paramInt, Account paramAccount, ISignInCallbacks paramISignInCallbacks)
       {
-        AppMethodBeat.i(61676);
+        AppMethodBeat.i(12168);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         localParcel.writeInt(paramInt);
         zzc.zza(localParcel, paramAccount);
         zzc.zza(localParcel, paramISignInCallbacks);
         transactAndReadExceptionReturnVoid(8, localParcel);
-        AppMethodBeat.o(61676);
+        AppMethodBeat.o(12168);
       }
       
       public void saveDefaultAccountToSharedPref(IAccountAccessor paramIAccountAccessor, int paramInt, boolean paramBoolean)
       {
-        AppMethodBeat.i(61677);
+        AppMethodBeat.i(12169);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramIAccountAccessor);
         localParcel.writeInt(paramInt);
         zzc.zza(localParcel, paramBoolean);
         transactAndReadExceptionReturnVoid(9, localParcel);
-        AppMethodBeat.o(61677);
+        AppMethodBeat.o(12169);
       }
       
       public void setGamesHasBeenGreeted(boolean paramBoolean)
       {
-        AppMethodBeat.i(61681);
+        AppMethodBeat.i(12173);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramBoolean);
         transactAndReadExceptionReturnVoid(13, localParcel);
-        AppMethodBeat.o(61681);
+        AppMethodBeat.o(12173);
       }
       
       public void signIn(SignInRequest paramSignInRequest, ISignInCallbacks paramISignInCallbacks)
       {
-        AppMethodBeat.i(61680);
+        AppMethodBeat.i(12172);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramSignInRequest);
         zzc.zza(localParcel, paramISignInCallbacks);
         transactAndReadExceptionReturnVoid(12, localParcel);
-        AppMethodBeat.o(61680);
+        AppMethodBeat.o(12172);
       }
     }
   }

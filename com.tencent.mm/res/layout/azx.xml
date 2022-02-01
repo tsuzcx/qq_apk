@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/rn"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView style="@style/ro" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/azt" />
+        <TextView android:id="@id/eun" android:paddingRight="@dimen/e7" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j6" />
+        <TextView android:id="@id/euu" android:paddingRight="@dimen/e7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hk" style="@style/j6" />
+        <ProgressBar android:gravity="center" android:layout_gravity="center|left" android:id="@id/euv" android:padding="@dimen/hu" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" style="@style/a5o" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/eur" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/js">
+            <ImageView android:id="@id/eus" android:paddingRight="@dimen/hk" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/agn" />
+            <TextView android:textSize="11.0dip" android:textColor="@color/ti" android:gravity="center_vertical" android:id="@id/eut" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g_s" android:includeFontPadding="false" />
+        </LinearLayout>
+        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/rr" />
+    </LinearLayout>
+</LinearLayout>

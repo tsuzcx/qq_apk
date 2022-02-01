@@ -1,22 +1,24 @@
 package com.tencent.mm.sandbox.updater;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.um;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.sandbox.monitor.c;
 
-public final class h
-  extends c<um>
+abstract interface h
 {
-  public h()
-  {
-    AppMethodBeat.i(28910);
-    this.__eventId = um.class.getName().hashCode();
-    AppMethodBeat.o(28910);
-  }
+  public abstract void a(c paramc);
+  
+  public abstract void apm(String paramString);
+  
+  public abstract void duP();
+  
+  public abstract void eDD();
+  
+  public abstract void eDE();
+  
+  public abstract void eS(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sandbox.updater.h
  * JD-Core Version:    0.7.0.1
  */

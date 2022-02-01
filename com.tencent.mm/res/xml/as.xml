@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<paths
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <external-path name="external" path="" />
-    <root-path name="root_path" path="" />
-</paths>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:defaultValue="true" android:key="join_rank" android:persistent="false" android:title="@string/bu4" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:defaultValue="true" android:key="notify_rank" android:layout="@layout/aop" android:persistent="false" android:title="@string/bu6" />
+    <CheckBoxPreference android:defaultValue="true" android:key="notify_like" android:persistent="false" android:title="@string/bu5" />
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <Preference android:key="black_contact_list" android:layout="@layout/aop" android:title="@string/bt9" />
+</PreferenceScreen>

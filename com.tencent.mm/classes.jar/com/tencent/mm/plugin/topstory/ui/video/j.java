@@ -10,9 +10,9 @@ public final class j
     super(paramView, paramb);
   }
   
-  public final void cJL() {}
+  public final void dPo() {}
   
-  public final f cJM()
+  public final f dPp()
   {
     return null;
   }
@@ -22,11 +22,11 @@ public final class j
     return null;
   }
   
-  public final void mA(boolean paramBoolean) {}
+  public final void rf(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.j
  * JD-Core Version:    0.7.0.1
  */

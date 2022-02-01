@@ -1,67 +1,78 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.tenpay.model.m;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.tj;
+import com.tencent.mm.protocal.protobuf.tk;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class t
-  extends m
+  extends n
+  implements k
 {
-  public t(String paramString1, String paramString2)
+  private g callback;
+  private b iaa;
+  public tk vAz;
+  
+  public t(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, String paramString5)
   {
-    AppMethodBeat.i(44767);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("receiver_user_name", paramString1);
-    localHashMap.put("transfer_qrcode_id", paramString2);
-    setRequestData(localHashMap);
-    AppMethodBeat.o(44767);
+    AppMethodBeat.i(67877);
+    Object localObject = new b.a();
+    ((b.a)localObject).gUU = new tj();
+    ((b.a)localObject).gUV = new tk();
+    ((b.a)localObject).funcId = 1779;
+    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/transferoldpaycheck";
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.iaa = ((b.a)localObject).atI();
+    localObject = (tj)this.iaa.gUS.gUX;
+    ((tj)localObject).dlJ = paramString1;
+    ((tj)localObject).vBw = paramString2;
+    ((tj)localObject).vBv = paramString3;
+    ((tj)localObject).vBp = paramString4;
+    ((tj)localObject).vDB = paramLong;
+    ((tj)localObject).CUC = paramString5;
+    ad.i("MicroMsg.NetSceneRemittancePayCheck", "reqKey: %s, transfer: %s, fee: %s", new Object[] { paramString1, paramString2, Long.valueOf(paramLong) });
+    AppMethodBeat.o(67877);
   }
   
-  public t(String paramString1, String paramString2, String paramString3, String paramString4)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(44768);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("receiver_user_name", paramString1);
-    localHashMap.put("transfer_qrcode_id", paramString2);
-    localHashMap.put("rcvr_ticket", paramString3);
-    localHashMap.put("receiver_openid", paramString4);
-    setRequestData(localHashMap);
-    AppMethodBeat.o(44768);
+    AppMethodBeat.i(67878);
+    this.callback = paramg;
+    int i = dispatch(parame, this.iaa, this);
+    AppMethodBeat.o(67878);
+    return i;
   }
   
-  public final int getFuncId()
+  public final int getType()
   {
-    return 1535;
+    return 1779;
   }
   
-  public final int getTenpayCgicmd()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    return 0;
-  }
-  
-  public final String getUri()
-  {
-    return "/cgi-bin/mmpay-bin/transfersendcancelf2f";
-  }
-  
-  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(44769);
-    ab.d("MicroMsg.NetSenceTenPayBase", "errCode " + paramInt + " errMsg: " + paramString);
-    if (paramInt != 0)
-    {
-      AppMethodBeat.o(44769);
-      return;
+    AppMethodBeat.i(67879);
+    ad.i("MicroMsg.NetSceneRemittancePayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.vAz = ((tk)((b)paramq).gUT.gUX);
+    ad.i("MicroMsg.NetSceneRemittancePayCheck", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.vAz.dcG), this.vAz.nTK });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(44769);
+    AppMethodBeat.o(67879);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.t
  * JD-Core Version:    0.7.0.1
  */

@@ -1,101 +1,103 @@
 package com.tencent.mm.emoji.loader.e;
 
-import a.f.b.j;
-import a.l;
-import a.y;
-import com.tencent.mm.emoji.loader.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.emoji.loader.d.i;
+import com.tencent.mm.emoji.loader.e;
+import com.tencent.mm.loader.g.h;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.storage.emotion.EmojiInfo;
+import d.g.b.k;
+import d.l;
+import d.y;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "Ljava/lang/Runnable;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "finished", "", "requests", "", "Lcom/tencent/mm/emoji/loader/request/Request;", "kotlin.jvm.PlatformType", "", "result", "running", "runningInQueue", "started", "addRequest", "", "request", "call", "getTaskKey", "", "onResult", "success", "removeRequest", "run", "start", "async", "uniqueId", "plugin-emojisdk_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "Ljava/lang/Runnable;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "finished", "", "requests", "", "Lcom/tencent/mm/emoji/loader/request/Request;", "kotlin.jvm.PlatformType", "", "result", "running", "runningInQueue", "started", "addRequest", "", "request", "call", "getTaskKey", "", "onResult", "success", "removeRequest", "run", "start", "async", "uniqueId", "plugin-emojisdk_release"})
 public abstract class c
   extends com.tencent.mm.loader.g.c
   implements Runnable
 {
-  private boolean bmx;
-  private boolean cmX;
-  final EmojiInfo evH;
-  private boolean ewg;
-  private final List<com.tencent.mm.emoji.loader.d.h<?>> requests;
+  private boolean bOX;
+  final EmojiInfo fLP;
+  private boolean fMt;
+  private final List<i<?>> requests;
+  private boolean result;
   private boolean running;
   private boolean started;
   
   public c(EmojiInfo paramEmojiInfo)
   {
-    this.evH = paramEmojiInfo;
+    this.fLP = paramEmojiInfo;
     this.requests = Collections.synchronizedList((List)new LinkedList());
   }
   
-  public abstract String Ox();
+  public abstract String abh();
   
-  public final String Oy()
+  public final String abi()
   {
-    return Ox();
+    return abh();
   }
   
-  public final void b(com.tencent.mm.emoji.loader.d.h<?> paramh)
+  public final void c(i<?> parami)
   {
-    j.q(paramh, "request");
-    if (this.bmx) {
-      paramh.cf(this.cmX);
+    k.h(parami, "request");
+    if (this.bOX) {
+      parami.dg(this.result);
     }
-    while (this.requests.contains(paramh)) {
+    while (this.requests.contains(parami)) {
       return;
     }
-    this.requests.add(paramh);
-  }
-  
-  public final void c(com.tencent.mm.emoji.loader.d.h<?> paramh)
-  {
-    j.q(paramh, "request");
-    this.requests.remove(paramh);
-    if (this.requests.size() == 0)
-    {
-      ab.d(d.Ot(), "cancel " + Ox() + ", " + this.running);
-      if (!this.running)
-      {
-        paramh = a.evk;
-        a.lI(Ox());
-        cd(false);
-      }
-    }
+    this.requests.add(parami);
   }
   
   public final void call()
   {
-    this.ewg = true;
+    this.fMt = true;
     run();
   }
   
-  public void cd(boolean paramBoolean)
+  public final void d(i<?> parami)
   {
-    this.cmX = paramBoolean;
-    this.bmx = true;
-    if (this.ewg) {
-      a(com.tencent.mm.loader.g.h.ePv);
+    k.h(parami, "request");
+    this.requests.remove(parami);
+    if (this.requests.size() == 0)
+    {
+      ad.d(d.abb(), "cancel " + abh() + ", " + this.running);
+      if (!this.running)
+      {
+        parami = e.fLn;
+        e.pR(abh());
+        df(false);
+      }
+    }
+  }
+  
+  public void df(boolean paramBoolean)
+  {
+    this.result = paramBoolean;
+    this.bOX = true;
+    if (this.fMt) {
+      a(h.gla);
     }
     for (;;)
     {
       LinkedList localLinkedList = new LinkedList();
       Object localObject1 = this.requests;
-      j.p(localObject1, "requests");
+      k.g(localObject1, "requests");
       try
       {
         localLinkedList.addAll((Collection)this.requests);
         this.requests.clear();
-        y localy = y.BMg;
+        y localy = y.JfV;
         localObject1 = ((Iterable)localLinkedList).iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          ((com.tencent.mm.emoji.loader.d.h)((Iterator)localObject1).next()).cf(paramBoolean);
+          ((i)((Iterator)localObject1).next()).dg(paramBoolean);
           continue;
-          localObject1 = a.evk;
-          a.lI(Ox());
+          localObject1 = e.fLn;
+          e.pR(abh());
         }
       }
       finally {}
@@ -112,14 +114,14 @@ public abstract class c
     if (!this.started)
     {
       this.started = true;
-      a locala = a.evk;
-      a.a(Ox(), this, paramBoolean);
+      e locale = e.fLn;
+      e.a(abh(), this, paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.e.c
  * JD-Core Version:    0.7.0.1
  */

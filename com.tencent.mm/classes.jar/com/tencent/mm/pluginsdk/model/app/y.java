@@ -1,86 +1,54 @@
 package com.tencent.mm.pluginsdk.model.app;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dn;
-import com.tencent.mm.protocal.protobuf.do;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.n;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.s.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.base.p;
 
 public final class y
-  extends m
-  implements k
+  implements u
 {
-  private f callback;
-  private b rr;
-  int vLw;
-  x vLx;
+  public a BQe;
+  n dfA;
+  public Context mContext;
+  public p tipDialog;
   
-  public y(int paramInt, x paramx)
+  public y(Context paramContext, a parama)
   {
-    AppMethodBeat.i(79366);
-    this.vLw = paramInt;
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new dn();
-    ((b.a)localObject).fsY = new do();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/appcenter";
-    ((b.a)localObject).funcId = 452;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (dn)this.rr.fsV.fta;
-    byte[] arrayOfByte = paramx.dli();
-    if (arrayOfByte != null) {
-      ((dn)localObject).ReqBuf = new SKBuiltinBuffer_t().setBuffer(arrayOfByte);
-    }
-    ((dn)localObject).jKs = paramInt;
-    this.vLx = paramx;
-    AppMethodBeat.o(79366);
+    this.mContext = paramContext;
+    this.BQe = parama;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final void a(int paramInt1, int paramInt2, String paramString, aa paramaa)
   {
-    AppMethodBeat.i(79368);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(79368);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 452;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(79367);
-    ab.d("MicroMsg.NetSceneAppCenter", "errType = " + paramInt2 + ", errCode = " + paramInt3);
-    if ((paramInt2 != 0) || (paramInt3 != 0))
+    AppMethodBeat.i(151803);
+    ad.i("MicroMsg.LoadAppInfoAfterLogin", "OnScenEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    a.cZT().b(7, this);
+    if ((this.tipDialog != null) && (this.tipDialog.isShowing()))
     {
-      ab.e("MicroMsg.NetSceneAppCenter", "errType = " + paramInt2 + ", errCode = " + paramInt3);
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(79367);
-      return;
+      this.tipDialog.dismiss();
+      this.tipDialog = null;
     }
-    this.vLx.bJ(aa.a(((do)this.rr.fsW.fta).wpD));
-    this.vLx.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, this.rr, paramArrayOfByte);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(79367);
+    if (this.BQe != null) {
+      this.BQe.aKJ();
+    }
+    q.evN();
+    AppMethodBeat.o(151803);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void aKJ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.y
  * JD-Core Version:    0.7.0.1
  */

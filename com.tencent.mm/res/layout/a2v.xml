@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j5"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/e4" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ix">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:id="@id/euk" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <FrameLayout android:id="@id/bvj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/dz">
+                        <ImageView android:id="@id/bvh" android:layout_width="@dimen/dy" android:layout_height="@dimen/dy" style="@style/iw" />
+                        <ImageView android:layout_gravity="start|center|top" android:id="@id/c0g" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="@dimen/ci" android:src="@null" android:layout_marginStart="@dimen/ci" />
+                    </FrameLayout>
+                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <TextView android:id="@id/bvn" android:text="{title}" style="@style/j2" />
+                        <TextView android:id="@id/bvi" android:layout_marginTop="@dimen/e9" android:text="{desc}" android:maxLines="3" style="@style/iz" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/gqi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:src="@raw/app_attach_file_icon_sound" style="@style/iv" />
+                    <TextView android:layout_gravity="center_vertical" android:id="@id/bwi" android:layout_marginLeft="@dimen/dz" android:text="{title}" style="@style/j2" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/ap3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:src="@raw/app_attach_file_icon_voice" style="@style/iv" />
+                    <TextView android:layout_gravity="center_vertical" android:id="@id/bu7" android:layout_marginLeft="@dimen/dz" android:text="{title}" style="@style/j2" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/ay3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/buc" style="@style/iv" />
+                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dz">
+                        <TextView android:id="@id/bu5" android:text="{title}" style="@style/j2" />
+                        <TextView android:id="@id/bu4" android:layout_marginTop="@dimen/e9" android:text="{desc}" style="@style/iz" />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+            <include layout="@layout/a2x" />
+            <include layout="@layout/a2w" />
+        </LinearLayout>
+        <include layout="@layout/a2u" />
+    </LinearLayout>
+</FrameLayout>

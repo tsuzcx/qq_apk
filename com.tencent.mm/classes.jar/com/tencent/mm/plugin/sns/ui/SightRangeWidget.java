@@ -20,7 +20,7 @@ public class SightRangeWidget
   
   public final boolean a(int paramInt1, int paramInt2, Intent paramIntent, AtContactWidget paramAtContactWidget)
   {
-    AppMethodBeat.i(38582);
+    AppMethodBeat.i(98271);
     super.a(paramInt1, paramInt2, paramIntent, paramAtContactWidget);
     if (paramAtContactWidget != null)
     {
@@ -28,11 +28,11 @@ public class SightRangeWidget
         break label46;
       }
       paramAtContactWidget.setVisibility(4);
-      paramAtContactWidget.cto();
+      paramAtContactWidget.dyI();
     }
     for (;;)
     {
-      AppMethodBeat.o(38582);
+      AppMethodBeat.o(98271);
       return true;
       label46:
       paramAtContactWidget.setVisibility(0);
@@ -41,7 +41,7 @@ public class SightRangeWidget
   
   protected int getLayoutResource()
   {
-    return 2130970753;
+    return 2131495459;
   }
   
   protected int getMaxTagNameLen()
@@ -51,7 +51,7 @@ public class SightRangeWidget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SightRangeWidget
  * JD-Core Version:    0.7.0.1
  */

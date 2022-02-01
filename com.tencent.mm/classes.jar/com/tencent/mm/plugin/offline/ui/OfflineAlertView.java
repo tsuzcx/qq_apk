@@ -1,217 +1,289 @@
 package com.tencent.mm.plugin.offline.ui;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.SpannableString;
-import android.text.style.ImageSpan;
+import android.os.CountDownTimer;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.au.b;
+import com.tencent.mm.ax.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.offline.c.a;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.ui.v;
 
 public class OfflineAlertView
   extends LinearLayout
 {
   private View contentView;
-  public int pmi;
-  private RelativeLayout pmj;
-  boolean pmk;
-  private OfflineAlertView.a pml;
+  ViewGroup hSI;
+  com.tencent.mm.pluginsdk.ui.span.h mYs;
+  public int ukO;
+  boolean ukP;
+  private a ukQ;
+  CountDownTimer ukR;
   
   public OfflineAlertView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(43452);
-    this.pmi = 0;
+    AppMethodBeat.i(66351);
+    this.ukO = 0;
     this.contentView = null;
-    this.pmj = null;
-    this.pmk = true;
-    this.pml = null;
+    this.hSI = null;
+    this.ukP = true;
+    this.ukQ = null;
     init();
-    AppMethodBeat.o(43452);
+    AppMethodBeat.o(66351);
   }
   
   public OfflineAlertView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(43453);
-    this.pmi = 0;
+    AppMethodBeat.i(66352);
+    this.ukO = 0;
     this.contentView = null;
-    this.pmj = null;
-    this.pmk = true;
-    this.pml = null;
+    this.hSI = null;
+    this.ukP = true;
+    this.ukQ = null;
     init();
-    AppMethodBeat.o(43453);
+    AppMethodBeat.o(66352);
   }
   
   private void init()
   {
-    AppMethodBeat.i(43454);
-    this.contentView = LayoutInflater.from(getContext()).inflate(2130971207, this);
-    this.pmj = ((RelativeLayout)this.contentView.findViewById(2131829216));
-    AppMethodBeat.o(43454);
+    AppMethodBeat.i(66353);
+    this.contentView = LayoutInflater.from(getContext()).inflate(2131495983, this);
+    this.hSI = ((ViewGroup)this.contentView.findViewById(2131302988));
+    AppMethodBeat.o(66353);
   }
   
-  public final boolean AZ(int paramInt)
+  public final boolean II(int paramInt)
   {
-    AppMethodBeat.i(43461);
+    AppMethodBeat.i(66360);
     if (isShowing())
     {
-      if (paramInt == this.pmi)
+      if (paramInt == this.ukO)
       {
-        AppMethodBeat.o(43461);
+        AppMethodBeat.o(66360);
         return true;
       }
-      if ((paramInt == 2) && ((this.pmi == 3) || (this.pmi == 4) || (this.pmi == 2) || (this.pmi == 5)))
+      if ((paramInt == 2) && ((this.ukO == 3) || (this.ukO == 4) || (this.ukO == 2) || (this.ukO == 5)))
       {
-        AppMethodBeat.o(43461);
+        AppMethodBeat.o(66360);
         return true;
       }
-      if ((paramInt == 5) && (this.pmi == 4))
+      if ((paramInt == 5) && (this.ukO == 4))
       {
-        AppMethodBeat.o(43461);
+        AppMethodBeat.o(66360);
         return true;
       }
       if (paramInt == 6)
       {
-        AppMethodBeat.o(43461);
+        AppMethodBeat.o(66360);
         return true;
       }
-      AppMethodBeat.o(43461);
+      if (paramInt == 7)
+      {
+        AppMethodBeat.o(66360);
+        return true;
+      }
+      AppMethodBeat.o(66360);
       return false;
     }
-    AppMethodBeat.o(43461);
+    AppMethodBeat.o(66360);
     return true;
   }
   
   public final void a(View paramView, View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(43457);
+    AppMethodBeat.i(66356);
     a(paramView, paramOnClickListener, 6);
-    AppMethodBeat.o(43457);
+    AppMethodBeat.o(66356);
   }
   
-  final void a(View paramView, View.OnClickListener paramOnClickListener, int paramInt)
+  final void a(final View paramView, View.OnClickListener paramOnClickListener, int paramInt)
   {
-    AppMethodBeat.i(43458);
-    this.pmi = paramInt;
+    AppMethodBeat.i(66357);
+    this.ukO = paramInt;
     setVisibility(0);
-    this.pmj.removeAllViews();
-    View localView = LayoutInflater.from(getContext()).inflate(2130971218, null);
+    this.hSI.removeAllViews();
+    View localView = LayoutInflater.from(getContext()).inflate(2131495995, null);
     if (paramInt == 6) {
-      ((TextView)localView.findViewById(2131829243)).setText(2131302006);
+      ((TextView)localView.findViewById(2131296636)).setText(2131761790);
     }
     for (;;)
     {
-      TextView localTextView = (TextView)localView.findViewById(2131829253);
-      if (localTextView != null)
-      {
-        SpannableString localSpannableString = new SpannableString("#  " + getContext().getResources().getString(2131305318));
-        Drawable localDrawable = getContext().getResources().getDrawable(2130839138);
-        localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-        localSpannableString.setSpan(new ImageSpan(localDrawable), 0, 1, 18);
-        localTextView.setText(localSpannableString, TextView.BufferType.SPANNABLE);
-        localTextView.setOnClickListener(new OfflineAlertView.7(this, paramView));
-        localTextView.setVisibility(0);
+      ViewGroup localViewGroup = (ViewGroup)localView.findViewById(2131304275);
+      if (localViewGroup != null) {
+        localViewGroup.setOnClickListener(new OfflineAlertView.11(this, paramView));
       }
-      this.pmj.addView(localView);
-      ((Button)this.contentView.findViewById(2131828490)).setOnClickListener(paramOnClickListener);
-      this.pmk = false;
-      paramView.post(new OfflineAlertView.8(this, paramView));
-      AppMethodBeat.o(43458);
+      this.hSI.addView(localView);
+      ((Button)this.contentView.findViewById(2131300871)).setOnClickListener(paramOnClickListener);
+      this.ukP = false;
+      paramView.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(66349);
+          ad.i("MicroMsg.OfflineAlertView", "qrCodeView.getHeight%s %s", new Object[] { Integer.valueOf(paramView.getHeight()), Integer.valueOf(paramView.getMeasuredHeight()) });
+          FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)OfflineAlertView.a(OfflineAlertView.this).getLayoutParams();
+          if (paramView.getHeight() > 0)
+          {
+            localLayoutParams.height = paramView.getHeight();
+            OfflineAlertView.a(OfflineAlertView.this).setLayoutParams(localLayoutParams);
+            OfflineAlertView.a(OfflineAlertView.this).invalidate();
+          }
+          if (OfflineAlertView.b(OfflineAlertView.this) != null) {
+            OfflineAlertView.b(OfflineAlertView.this).onShow();
+          }
+          AppMethodBeat.o(66349);
+        }
+      });
+      AppMethodBeat.o(66357);
       return;
-      if (((paramInt == 3) || (paramInt == 1)) && (b.tM((String)g.RL().Ru().get(274436, null)))) {
-        ((TextView)localView.findViewById(2131829243)).setText(2131302015);
+      if (((paramInt == 3) || (paramInt == 1)) && (b.yL((String)g.afB().afk().get(274436, null)))) {
+        ((TextView)localView.findViewById(2131296636)).setText(2131761799);
       }
     }
   }
   
-  public final void a(View paramView, Runnable paramRunnable1, Runnable paramRunnable2)
+  public final void a(final View paramView, final Runnable paramRunnable1, final Runnable paramRunnable2)
   {
-    AppMethodBeat.i(43455);
+    AppMethodBeat.i(66354);
     setVisibility(0);
-    this.pmj.removeAllViews();
-    View localView = LayoutInflater.from(getContext()).inflate(2130971215, null);
-    this.pmj.addView(localView);
-    paramView.post(new OfflineAlertView.1(this, paramView, paramRunnable1, paramRunnable2));
-    AppMethodBeat.o(43455);
+    this.hSI.removeAllViews();
+    View localView = LayoutInflater.from(getContext()).inflate(2131495992, null);
+    this.hSI.addView(localView);
+    paramView.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(66342);
+        OfflineAlertView.a(OfflineAlertView.this, paramView, paramRunnable1, paramRunnable2, this.val$type);
+        AppMethodBeat.o(66342);
+      }
+    });
+    AppMethodBeat.o(66354);
   }
   
-  public final void b(View paramView, View.OnClickListener paramOnClickListener)
+  public final void b(final View paramView, View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(43459);
-    this.pmi = 5;
+    AppMethodBeat.i(66358);
+    this.ukO = 5;
     setVisibility(0);
-    this.pmk = false;
-    this.pmj.removeAllViews();
-    Object localObject = LayoutInflater.from(getContext()).inflate(2130971218, null);
-    this.pmj.addView((View)localObject);
-    ((TextView)((View)localObject).findViewById(2131829243)).setText(2131302003);
-    localObject = (Button)((View)localObject).findViewById(2131828490);
-    ((Button)localObject).setText(2131302002);
-    ((Button)localObject).setOnClickListener(paramOnClickListener);
-    paramView.post(new OfflineAlertView.9(this, paramView));
-    AppMethodBeat.o(43459);
+    this.ukP = false;
+    this.hSI.removeAllViews();
+    View localView = LayoutInflater.from(getContext()).inflate(2131495995, null);
+    this.hSI.addView(localView);
+    ((TextView)localView.findViewById(2131296636)).setText(2131761787);
+    Button localButton = (Button)localView.findViewById(2131300871);
+    localButton.setText(2131761786);
+    localButton.setOnClickListener(paramOnClickListener);
+    paramOnClickListener = (ViewGroup)localView.findViewById(2131304275);
+    if (paramOnClickListener != null) {
+      paramOnClickListener.setVisibility(8);
+    }
+    paramView.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(66350);
+        ad.i("MicroMsg.OfflineAlertView", "qrCodeView.getHeight%s %s", new Object[] { Integer.valueOf(paramView.getHeight()), Integer.valueOf(paramView.getMeasuredHeight()) });
+        FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)OfflineAlertView.a(OfflineAlertView.this).getLayoutParams();
+        if (paramView.getHeight() > 0)
+        {
+          localLayoutParams.height = paramView.getHeight();
+          OfflineAlertView.a(OfflineAlertView.this).setLayoutParams(localLayoutParams);
+          OfflineAlertView.a(OfflineAlertView.this).invalidate();
+        }
+        if (OfflineAlertView.b(OfflineAlertView.this) != null) {
+          OfflineAlertView.b(OfflineAlertView.this).onShow();
+        }
+        AppMethodBeat.o(66350);
+      }
+    });
+    AppMethodBeat.o(66358);
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(43462);
-    if (this.pmj != null) {
-      this.pmj.removeAllViews();
+    AppMethodBeat.i(66361);
+    if (this.hSI != null) {
+      this.hSI.removeAllViews();
     }
     setVisibility(8);
-    if (this.pml != null) {
-      this.pml.onClose();
+    if (this.ukQ != null) {
+      this.ukQ.onClose();
     }
-    this.pmk = true;
-    AppMethodBeat.o(43462);
+    if (this.ukR != null) {
+      this.ukR.cancel();
+    }
+    if (this.mYs != null) {
+      k.b(this.mYs);
+    }
+    this.ukO = 0;
+    this.ukP = true;
+    AppMethodBeat.o(66361);
   }
   
-  public final void du(View paramView)
+  public final void ee(final View paramView)
   {
-    AppMethodBeat.i(43456);
+    AppMethodBeat.i(66355);
     setVisibility(0);
-    this.pmj.removeAllViews();
-    View localView = LayoutInflater.from(getContext()).inflate(2130971213, null);
-    this.pmj.addView(localView);
-    h.qsU.e(13750, new Object[] { Integer.valueOf(1) });
-    paramView.post(new OfflineAlertView.2(this, paramView));
-    AppMethodBeat.o(43456);
+    this.hSI.removeAllViews();
+    View localView = LayoutInflater.from(getContext()).inflate(2131495989, null);
+    this.hSI.addView(localView);
+    com.tencent.mm.plugin.report.service.h.vKh.f(13750, new Object[] { Integer.valueOf(1) });
+    paramView.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(66343);
+        OfflineAlertView.a(OfflineAlertView.this, paramView, this.val$type);
+        AppMethodBeat.o(66343);
+      }
+    });
+    AppMethodBeat.o(66355);
   }
   
   public final boolean isShowing()
   {
-    AppMethodBeat.i(43460);
+    AppMethodBeat.i(66359);
     if (getVisibility() == 0)
     {
-      AppMethodBeat.o(43460);
+      AppMethodBeat.o(66359);
       return true;
     }
-    AppMethodBeat.o(43460);
+    AppMethodBeat.o(66359);
     return false;
   }
   
-  public void setDialogState(OfflineAlertView.a parama)
+  public void setBlurDockerView(ViewGroup paramViewGroup) {}
+  
+  public void setDialogState(a parama)
   {
-    this.pml = parama;
+    this.ukQ = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onClose();
+    
+    public abstract void onShow();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.OfflineAlertView
  * JD-Core Version:    0.7.0.1
  */

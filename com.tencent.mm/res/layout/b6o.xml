@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/aae" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center" android:id="@id/atd" android:background="@drawable/aac" android:layout_width="48.0dip" android:layout_height="@dimen/c8" android:layout_marginTop="@dimen/c5" android:layout_centerHorizontal="true">
+        <ImageView android:layout_gravity="center" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bak" android:rotation="-90.0" />
+    </FrameLayout>
+    <com.tencent.mm.emoji.panel.EmojiPanelRecyclerView android:id="@id/bjp" android:background="@color/a7c" android:paddingBottom="0.0dip" android:fadingEdge="vertical" android:fadingEdgeLength="50.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="0.0dip" android:layout_below="@id/atd" android:requiresFadingEdge="vertical" />
+</RelativeLayout>

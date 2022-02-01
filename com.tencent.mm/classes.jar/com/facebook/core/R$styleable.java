@@ -2,12 +2,12 @@ package com.facebook.core;
 
 public final class R$styleable
 {
-  public static final int[] FontFamily = { 2130772436, 2130772437, 2130772438, 2130772439, 2130772440, 2130772441 };
-  public static final int[] FontFamilyFont = { 16844082, 16844083, 16844095, 16844143, 16844144, 2130772442, 2130772443, 2130772444, 2130772445, 2130772446 };
+  public static final int[] FontFamily = { 2130969014, 2130969015, 2130969016, 2130969017, 2130969018, 2130969019 };
+  public static final int[] FontFamilyFont = { 16844082, 16844083, 16844095, 16844143, 16844144, 2130969012, 2130969020, 2130969021, 2130969022, 2130969615 };
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.facebook.core.R.styleable
  * JD-Core Version:    0.7.0.1
  */

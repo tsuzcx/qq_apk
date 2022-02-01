@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a7c" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@color/a7c" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_width="@dimen/r8" android:layout_height="@dimen/r8" android:src="@raw/app_brand_single_page_mode_footer_corner_left" android:layout_alignParentLeft="true" />
+        <ImageView android:layout_width="@dimen/r8" android:layout_height="@dimen/r8" android:src="@raw/app_brand_single_page_mode_footer_corner_right" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout android:background="@color/e2" android:paddingLeft="@dimen/h" android:paddingRight="@dimen/h" android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <ImageView android:id="@id/cn1" android:layout_width="@dimen/b7" android:layout_height="@dimen/b7" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="#ccffffff" android:ellipsize="end" android:id="@id/dy6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/c0" android:maxLines="2" android:layout_toRightOf="@id/cn1" android:layout_centerVertical="true" />
+        <TextView android:gravity="center" android:id="@id/b8t" android:background="@drawable/cq" android:paddingLeft="4.0dip" android:paddingTop="1.0dip" android:paddingRight="4.0dip" android:paddingBottom="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_toRightOf="@id/dy6" android:layout_centerVertical="true" style="@style/u5" />
+        <ImageView android:id="@id/h_7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bq" android:src="@raw/app_brand_loading_game_original" android:minWidth="@dimen/pd" android:minHeight="@dimen/pb" android:layout_toRightOf="@id/dy6" android:layout_centerVertical="true" />
+        <Button android:textSize="@dimen/jo" android:textColor="#ccffffff" android:gravity="center" android:id="@id/a8t" android:background="@drawable/d2" android:paddingLeft="@dimen/c0" android:paddingTop="@dimen/bq" android:paddingRight="@dimen/c0" android:paddingBottom="@dimen/bq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a0n" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:lineSpacingExtra="1.0dip" android:lineHeight="20.0dip" />
+    </RelativeLayout>
+</LinearLayout>

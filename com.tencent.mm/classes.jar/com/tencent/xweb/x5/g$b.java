@@ -2,28 +2,26 @@ package com.tencent.xweb.x5;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.xweb.r;
 import java.util.Map;
 
 public final class g$b
-  implements r
+  implements com.tencent.xweb.WebResourceRequest
 {
-  private boolean BHm;
-  private boolean BHn;
+  private Map<String, String> BTs;
+  private boolean IQX;
+  private boolean IQY;
   private String method;
   private Uri url;
-  private Map<String, String> vOs;
   
-  public g$b(WebResourceRequest paramWebResourceRequest)
+  public g$b(com.tencent.smtt.export.external.interfaces.WebResourceRequest paramWebResourceRequest)
   {
-    AppMethodBeat.i(84824);
+    AppMethodBeat.i(153848);
     this.url = paramWebResourceRequest.getUrl();
-    this.BHm = paramWebResourceRequest.isForMainFrame();
-    this.BHn = paramWebResourceRequest.hasGesture();
+    this.IQX = paramWebResourceRequest.isForMainFrame();
+    this.IQY = paramWebResourceRequest.hasGesture();
     this.method = paramWebResourceRequest.getMethod();
-    this.vOs = paramWebResourceRequest.getRequestHeaders();
-    AppMethodBeat.o(84824);
+    this.BTs = paramWebResourceRequest.getRequestHeaders();
+    AppMethodBeat.o(153848);
   }
   
   public final String getMethod()
@@ -33,7 +31,7 @@ public final class g$b
   
   public final Map<String, String> getRequestHeaders()
   {
-    return this.vOs;
+    return this.BTs;
   }
   
   public final Uri getUrl()
@@ -43,17 +41,17 @@ public final class g$b
   
   public final boolean hasGesture()
   {
-    return this.BHn;
+    return this.IQY;
   }
   
   public final boolean isForMainFrame()
   {
-    return this.BHm;
+    return this.IQX;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.g.b
  * JD-Core Version:    0.7.0.1
  */

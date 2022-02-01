@@ -9,7 +9,7 @@ import com.google.android.gms.common.n;
 public final class a
   extends al
 {
-  int IY;
+  int KN;
   
   public static Account a(ak paramak)
   {
@@ -20,7 +20,7 @@ public final class a
     }
     try
     {
-      localAccount = paramak.fX();
+      localAccount = paramak.gi();
       return localAccount;
     }
     catch (RemoteException paramak)
@@ -45,15 +45,15 @@ public final class a
     throw new NullPointerException();
   }
   
-  public final Account fX()
+  public final Account gi()
   {
     int i = Binder.getCallingUid();
-    if (i == this.IY) {
+    if (i == this.KN) {
       return null;
     }
-    if (n.bi(i))
+    if (n.bC(i))
     {
-      this.IY = i;
+      this.KN = i;
       return null;
     }
     throw new SecurityException("Caller is not GooglePlayServices");

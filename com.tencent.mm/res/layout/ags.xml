@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/dep" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="?android:textColorSecondary" android:id="@android:id/message" android:layout_width="fill_parent" android:layout_height="wrap_content" style="?android:attr/textAppearanceSmall" />
+    <LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="16.0dip">
+        <RelativeLayout android:id="@id/bh" android:background="@drawable/a_c" android:padding="20.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="49.0dip" android:layout_alignParentLeft="true">
+                <TextView android:textSize="26.0dip" android:textColor="@color/y4" android:id="@id/ba" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                <TextView android:textSize="13.0dip" android:textColor="@color/km" android:id="@id/bg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+                    <ImageView android:layout_gravity="center" android:id="@id/gij" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/afx" />
+                    <TextView android:textSize="13.0dip" android:textColor="@color/km" android:id="@id/b8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+                </LinearLayout>
+            </LinearLayout>
+            <ImageView android:id="@id/b9" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@raw/ipcall_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <ImageView android:background="#26000000" android:layout_width="fill_parent" android:layout_height="@dimen/bm" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_weight="2.0">
+            <LinearLayout android:gravity="center" android:id="@id/b2k" android:background="@drawable/a_c" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <ImageView android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@raw/ipcall_contacts_icon" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/y4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/d59" />
+            </LinearLayout>
+            <ImageView android:layout_gravity="center_vertical" android:background="#26000000" android:layout_width="@dimen/bm" android:layout_height="40.0dip" />
+            <LinearLayout android:gravity="center" android:id="@id/bcf" android:background="@drawable/a_c" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <ImageView android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@raw/ip_call_dial_entrance" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/y4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/d5n" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:background="#26000000" android:layout_width="fill_parent" android:layout_height="@dimen/bm" />
+    </LinearLayout>
 </LinearLayout>

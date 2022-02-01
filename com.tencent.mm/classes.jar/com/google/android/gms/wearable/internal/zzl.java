@@ -50,9 +50,9 @@ public final class zzl
   
   static
   {
-    AppMethodBeat.i(71453);
+    AppMethodBeat.i(101436);
     CREATOR = new zzm();
-    AppMethodBeat.o(71453);
+    AppMethodBeat.o(101436);
   }
   
   @SafeParcelable.Constructor
@@ -74,46 +74,46 @@ public final class zzl
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(71451);
+    AppMethodBeat.i(101434);
     if (this == paramObject)
     {
-      AppMethodBeat.o(71451);
+      AppMethodBeat.o(101434);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(71451);
+      AppMethodBeat.o(101434);
       return false;
     }
     paramObject = (zzl)paramObject;
     if (this.id != paramObject.id)
     {
-      AppMethodBeat.o(71451);
+      AppMethodBeat.o(101434);
       return false;
     }
     if (this.zzbl != paramObject.zzbl)
     {
-      AppMethodBeat.o(71451);
+      AppMethodBeat.o(101434);
       return false;
     }
     if (this.zzbm != paramObject.zzbm)
     {
-      AppMethodBeat.o(71451);
+      AppMethodBeat.o(101434);
       return false;
     }
     if (this.zzbn != paramObject.zzbn)
     {
-      AppMethodBeat.o(71451);
+      AppMethodBeat.o(101434);
       return false;
     }
     if (this.zzbo != paramObject.zzbo)
     {
-      AppMethodBeat.o(71451);
+      AppMethodBeat.o(101434);
       return false;
     }
     if (!this.zzbf.equals(paramObject.zzbf))
     {
-      AppMethodBeat.o(71451);
+      AppMethodBeat.o(101434);
       return false;
     }
     if (this.zzbg != null)
@@ -123,23 +123,23 @@ public final class zzl
     else {
       while (paramObject.zzbg != null)
       {
-        AppMethodBeat.o(71451);
+        AppMethodBeat.o(101434);
         return false;
       }
     }
     if (!this.zzbh.equals(paramObject.zzbh))
     {
-      AppMethodBeat.o(71451);
+      AppMethodBeat.o(101434);
       return false;
     }
     if (!this.zzbi.equals(paramObject.zzbi))
     {
-      AppMethodBeat.o(71451);
+      AppMethodBeat.o(101434);
       return false;
     }
     if (!this.zzbj.equals(paramObject.zzbj))
     {
-      AppMethodBeat.o(71451);
+      AppMethodBeat.o(101434);
       return false;
     }
     if (this.zzbk != null)
@@ -149,29 +149,29 @@ public final class zzl
     else {
       while (paramObject.zzbk != null)
       {
-        AppMethodBeat.o(71451);
+        AppMethodBeat.o(101434);
         return false;
       }
     }
     if (this.packageName != null)
     {
       boolean bool = this.packageName.equals(paramObject.packageName);
-      AppMethodBeat.o(71451);
+      AppMethodBeat.o(101434);
       return bool;
     }
     if (paramObject.packageName == null)
     {
-      AppMethodBeat.o(71451);
+      AppMethodBeat.o(101434);
       return true;
     }
-    AppMethodBeat.o(71451);
+    AppMethodBeat.o(101434);
     return false;
   }
   
   public final int hashCode()
   {
     int k = 0;
-    AppMethodBeat.i(71452);
+    AppMethodBeat.i(101435);
     int m = this.id;
     int n = this.zzbf.hashCode();
     int i;
@@ -198,7 +198,7 @@ public final class zzl
       if (this.packageName != null) {
         k = this.packageName.hashCode();
       }
-      AppMethodBeat.o(71452);
+      AppMethodBeat.o(101435);
       return (((((j + ((((i + ((m + 31) * 31 + n) * 31) * 31 + i1) * 31 + i2) * 31 + i3) * 31) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7) * 31 + k;
       i = 0;
       break;
@@ -207,7 +207,7 @@ public final class zzl
   
   public final String toString()
   {
-    AppMethodBeat.i(71450);
+    AppMethodBeat.i(101433);
     int i = this.id;
     String str1 = this.zzbf;
     String str2 = this.zzbg;
@@ -221,13 +221,13 @@ public final class zzl
     int n = this.zzbo;
     String str7 = this.packageName;
     str1 = String.valueOf(str1).length() + 211 + String.valueOf(str2).length() + String.valueOf(str3).length() + String.valueOf(str4).length() + String.valueOf(str5).length() + String.valueOf(str6).length() + String.valueOf(str7).length() + "AncsNotificationParcelable{, id=" + i + ", appId='" + str1 + '\'' + ", dateTime='" + str2 + '\'' + ", notificationText='" + str3 + '\'' + ", title='" + str4 + '\'' + ", subtitle='" + str5 + '\'' + ", displayName='" + str6 + '\'' + ", eventId=" + j + ", eventFlags=" + k + ", categoryId=" + m + ", categoryCount=" + n + ", packageName='" + str7 + '\'' + '}';
-    AppMethodBeat.o(71450);
+    AppMethodBeat.o(101433);
     return str1;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(71449);
+    AppMethodBeat.i(101432);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 2, this.id);
     SafeParcelWriter.writeString(paramParcel, 3, this.zzbf, false);
@@ -245,14 +245,14 @@ public final class zzl
       SafeParcelWriter.writeByte(paramParcel, 12, this.zzbo);
       SafeParcelWriter.writeString(paramParcel, 13, this.packageName, false);
       SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-      AppMethodBeat.o(71449);
+      AppMethodBeat.o(101432);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzl
  * JD-Core Version:    0.7.0.1
  */

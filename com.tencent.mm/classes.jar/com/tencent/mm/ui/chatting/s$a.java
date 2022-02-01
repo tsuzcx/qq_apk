@@ -2,9 +2,9 @@ package com.tencent.mm.ui.chatting;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.chatting.d.a;
-import com.tencent.mm.ui.chatting.viewitems.az;
+import com.tencent.mm.ui.chatting.viewitems.bi;
 
 public final class s$a
   extends s.b
@@ -14,18 +14,18 @@ public final class s$a
     super(parama);
   }
   
-  public final void a(Intent paramIntent, az paramaz)
+  public final void a(Intent paramIntent, bi parambi)
   {
-    AppMethodBeat.i(30717);
-    if (!bo.isNullOrNil(paramaz.zYJ)) {
-      paramIntent.putExtra("Contact_BIZ_KF_WORKER_ID", paramaz.zYJ);
+    AppMethodBeat.i(34589);
+    if (!bt.isNullOrNil(parambi.GQT)) {
+      paramIntent.putExtra("Contact_BIZ_KF_WORKER_ID", parambi.GQT);
     }
-    AppMethodBeat.o(30717);
+    AppMethodBeat.o(34589);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.s.a
  * JD-Core Version:    0.7.0.1
  */

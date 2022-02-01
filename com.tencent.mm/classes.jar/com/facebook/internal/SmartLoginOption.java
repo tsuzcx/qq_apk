@@ -11,13 +11,13 @@ public enum SmartLoginOption
   
   static
   {
-    AppMethodBeat.i(72484);
+    AppMethodBeat.i(17920);
     None = new SmartLoginOption("None", 0, 0L);
     Enabled = new SmartLoginOption("Enabled", 1, 1L);
     RequireConfirm = new SmartLoginOption("RequireConfirm", 2, 2L);
     $VALUES = new SmartLoginOption[] { None, Enabled, RequireConfirm };
     ALL = EnumSet.allOf(SmartLoginOption.class);
-    AppMethodBeat.o(72484);
+    AppMethodBeat.o(17920);
   }
   
   private SmartLoginOption(long paramLong)
@@ -27,7 +27,7 @@ public enum SmartLoginOption
   
   public static EnumSet<SmartLoginOption> parseOptions(long paramLong)
   {
-    AppMethodBeat.i(72483);
+    AppMethodBeat.i(17919);
     EnumSet localEnumSet = EnumSet.noneOf(SmartLoginOption.class);
     Iterator localIterator = ALL.iterator();
     while (localIterator.hasNext())
@@ -37,7 +37,7 @@ public enum SmartLoginOption
         localEnumSet.add(localSmartLoginOption);
       }
     }
-    AppMethodBeat.o(72483);
+    AppMethodBeat.o(17919);
     return localEnumSet;
   }
   
@@ -48,7 +48,7 @@ public enum SmartLoginOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.facebook.internal.SmartLoginOption
  * JD-Core Version:    0.7.0.1
  */

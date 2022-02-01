@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="1.0" android:minHeight="48.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/dq" android:textStyle="bold" android:textColor="@color/h6" android:id="@id/evu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ex2" />
-    <TextView android:id="@id/evv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ex1" android:layout_centerInParent="true" android:layout_marginStart="@dimen/l2" android:layout_marginEnd="@dimen/l2" />
-    <android.support.v7.widget.RecyclerView android:id="@id/evw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/evu" android:overScrollMode="never" />
-</merge>
+    <AutoCompleteTextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:layout_gravity="center|left" android:id="@id/cji" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minWidth="130.0dip" android:minHeight="43.0dip" android:completionThreshold="1" android:dropDownSelector="@color/xo" android:layout_weight="1.0" android:dropDownWidth="fill_parent" android:dropDownHeight="wrap_content" android:dropDownHorizontalOffset="-20.0dip" android:dropDownVerticalOffset="-5.0dip" />
+    <TextView android:gravity="center|right" android:id="@id/gk4" android:paddingRight="5.0dip" android:focusable="false" android:visibility="gone" android:layout_width="120.0dip" android:layout_height="wrap_content" android:minWidth="120.0dip" android:minHeight="43.0dip" style="@style/m2" />
+    <ImageView android:layout_gravity="center|right" android:id="@id/cqp" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/b0f" android:scaleType="centerInside" android:minHeight="26.0dip" />
+</LinearLayout>

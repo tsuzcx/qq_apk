@@ -6,49 +6,44 @@ import android.os.Looper;
 
 public final class e
 {
-  private final Handler bQn;
-  private final long bQo;
+  private final Handler cAN;
+  long cAO;
   private final Handler mMainHandler;
   
   public e(long paramLong, HandlerThread paramHandlerThread)
   {
-    this.bQn = new Handler(paramHandlerThread.getLooper());
+    this.cAN = new Handler(paramHandlerThread.getLooper());
     this.mMainHandler = new Handler(Looper.getMainLooper());
-    this.bQo = paramLong;
+    this.cAO = paramLong;
+  }
+  
+  public final void HK()
+  {
+    this.cAN.removeCallbacksAndMessages(null);
+    this.mMainHandler.removeCallbacksAndMessages(null);
   }
   
   public final void a(final a parama, final int paramInt)
   {
-    this.bQn.postDelayed(new Runnable()
+    this.cAN.postDelayed(new Runnable()
     {
       public final void run()
       {
-        if (parama.zm() == e.a.a.bQt) {
+        if (parama.HF() == e.a.a.cAT) {
           e.this.a(parama, paramInt + 1);
         }
       }
-    }, this.bQo);
-  }
-  
-  public final void zp()
-  {
-    this.bQn.removeCallbacksAndMessages(null);
-    this.mMainHandler.removeCallbacksAndMessages(null);
+    }, this.cAO);
   }
   
   public static abstract interface a
   {
-    public abstract a zm();
-    
-    public static enum a
-    {
-      private a() {}
-    }
+    public abstract e.a.a HF();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.matrix.resource.e.e
  * JD-Core Version:    0.7.0.1
  */

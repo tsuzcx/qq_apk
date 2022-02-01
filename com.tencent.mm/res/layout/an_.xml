@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/n9"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="@dimen/ff" android:textColor="@color/hd" android:id="@id/dvg" android:background="@drawable/l_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <View android:id="@id/dvh" android:background="@color/tg" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/g2" android:layout_marginTop="@dimen/g2" android:layout_marginBottom="@dimen/g2" />
-    <Button android:textSize="@dimen/ff" android:textColor="@color/hd" android:id="@id/dvi" android:background="@drawable/l_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g2" />
-    <View android:id="@id/dvj" android:background="@color/tg" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/g2" android:layout_marginTop="@dimen/g2" android:layout_marginBottom="@dimen/g2" />
-    <Button android:textSize="@dimen/ff" android:textColor="@color/hd" android:id="@id/dvk" android:background="@drawable/l_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g2" />
-</LinearLayout>

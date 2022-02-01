@@ -9,7 +9,7 @@ final class AudioDeviceInterface$4
 {
   public final boolean accept(File paramFile)
   {
-    AppMethodBeat.i(146905);
+    AppMethodBeat.i(13910);
     paramFile = paramFile.getName();
     if (paramFile.startsWith("cpu"))
     {
@@ -18,15 +18,15 @@ final class AudioDeviceInterface$4
       {
         if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9'))
         {
-          AppMethodBeat.o(146905);
+          AppMethodBeat.o(13910);
           return false;
         }
         i += 1;
       }
-      AppMethodBeat.o(146905);
+      AppMethodBeat.o(13910);
       return true;
     }
-    AppMethodBeat.o(146905);
+    AppMethodBeat.o(13910);
     return false;
   }
 }

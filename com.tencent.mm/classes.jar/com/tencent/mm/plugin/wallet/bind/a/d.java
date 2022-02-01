@@ -11,7 +11,7 @@ public final class d
 {
   public d(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    AppMethodBeat.i(45730);
+    AppMethodBeat.i(69067);
     HashMap localHashMap = new HashMap();
     localHashMap.put("bank_type", paramString1);
     localHashMap.put("bind_serial", paramString2);
@@ -20,12 +20,12 @@ public final class d
       localHashMap.put("unbind_scene", "1");
     }
     setRequestData(localHashMap);
-    AppMethodBeat.o(45730);
+    AppMethodBeat.o(69067);
   }
   
   public d(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(45731);
+    AppMethodBeat.i(69068);
     HashMap localHashMap = new HashMap();
     localHashMap.put("bank_type", paramString1);
     localHashMap.put("bind_serial", paramString2);
@@ -34,7 +34,7 @@ public final class d
       localHashMap.put("unbind_scene", "1");
     }
     setRequestData(localHashMap);
-    AppMethodBeat.o(45731);
+    AppMethodBeat.o(69068);
   }
   
   public final int getFuncId()

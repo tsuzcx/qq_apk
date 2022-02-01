@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
-import android.app.Notification;
 import android.app.Notification.BigTextStyle;
 import android.app.Notification.Builder;
 import android.app.NotificationManager;
@@ -18,8 +17,8 @@ import android.content.res.Resources;
 import android.content.res.Resources.Theme;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.aq;
-import android.support.v4.app.ar;
+import android.support.v4.app.as;
+import android.support.v4.app.at;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -28,7 +27,7 @@ import com.google.android.gms.common.api.GoogleApiActivity;
 import com.google.android.gms.common.internal.aa;
 import com.google.android.gms.common.internal.z;
 import com.google.android.gms.common.util.g;
-import com.google.android.gms.common.util.j;
+import com.google.android.gms.common.util.k;
 import com.google.android.gms.internal.au;
 import com.google.android.gms.internal.az;
 import com.google.android.gms.internal.zzaaz;
@@ -37,8 +36,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public final class b
   extends h
 {
-  private static final b Hh = new b();
-  public static final int Hi = h.Hi;
+  private static final b IW = new b();
+  public static final int IX = h.IX;
   
   public static Dialog a(Activity paramActivity, DialogInterface.OnCancelListener paramOnCancelListener)
   {
@@ -94,7 +93,7 @@ public final class b
     localObject = localzzaaz;
     if (!n.h(paramContext, "com.google.android.gms"))
     {
-      paramau.jdMethod_if();
+      paramau.in();
       localzzaaz.unregister();
       localObject = null;
     }
@@ -105,7 +104,7 @@ public final class b
   {
     if ((paramActivity instanceof FragmentActivity))
     {
-      paramActivity = ((FragmentActivity)paramActivity).R();
+      paramActivity = ((FragmentActivity)paramActivity).ah();
       e.b(paramDialog, paramOnCancelListener).a(paramActivity, paramString);
       return;
     }
@@ -117,7 +116,7 @@ public final class b
   private void a(Context paramContext, int paramInt, String paramString, PendingIntent paramPendingIntent)
   {
     if (paramInt == 18) {
-      new c(this, paramContext).sendEmptyMessageDelayed(1, 120000L);
+      e(paramContext);
     }
     do
     {
@@ -130,11 +129,11 @@ public final class b
     return;
     paramString = z.d(paramContext, paramInt);
     String str = z.f(paramContext, paramInt);
-    Object localObject1 = paramContext.getResources();
-    if (g.j(paramContext))
+    Resources localResources = paramContext.getResources();
+    if (g.k(paramContext))
     {
-      com.google.android.gms.common.internal.d.v(j.hV());
-      paramString = new Notification.Builder(paramContext).setSmallIcon(paramContext.getApplicationInfo().icon).setPriority(2).setAutoCancel(true).setContentTitle(paramString).setStyle(new Notification.BigTextStyle().bigText(str)).addAction(com.google.android.gms.c.FR, ((Resources)localObject1).getString(com.google.android.gms.d.Gi), paramPendingIntent).build();
+      com.google.android.gms.common.internal.d.y(k.id());
+      paramString = new Notification.Builder(paramContext).setSmallIcon(paramContext.getApplicationInfo().icon).setPriority(2).setAutoCancel(true).setContentTitle(paramString).setStyle(new Notification.BigTextStyle().bigText(str)).addAction(com.google.android.gms.c.HG, localResources.getString(com.google.android.gms.d.HX), paramPendingIntent).build();
       switch (paramInt)
       {
       }
@@ -143,22 +142,20 @@ public final class b
     {
       ((NotificationManager)paramContext.getSystemService("notification")).notify(paramInt, paramString);
       return;
-      Object localObject2 = new ar(paramContext, (byte)0);
-      ((ar)localObject2).fm.icon = 17301642;
-      localObject1 = ((ar)localObject2).d(((Resources)localObject1).getString(com.google.android.gms.d.Ga));
-      long l = System.currentTimeMillis();
-      ((ar)localObject1).fm.when = l;
-      localObject2 = ((ar)localObject1).fm;
-      ((Notification)localObject2).flags |= 0x10;
-      paramString = ((ar)localObject1).a(paramPendingIntent).b(paramString).c(str).aB().a(new aq().a(str)).build();
+      paramString = new at(paramContext).t(17301642).d(localResources.getString(com.google.android.gms.d.HP)).a(System.currentTimeMillis()).aM().a(paramPendingIntent).b(paramString).c(str).aN().a(new as().a(str)).build();
       break;
-      n.Lx.set(false);
+      n.Nm.set(false);
     }
   }
   
-  public static b gp()
+  private void e(Context paramContext)
   {
-    return Hh;
+    new c(this, paramContext).sendEmptyMessageDelayed(1, 120000L);
+  }
+  
+  public static b gz()
+  {
+    return IW;
   }
   
   public final PendingIntent a(Context paramContext, int paramInt1, int paramInt2)
@@ -204,8 +201,8 @@ public final class b
   public final boolean a(Context paramContext, ConnectionResult paramConnectionResult, int paramInt)
   {
     boolean bool = false;
-    if (paramConnectionResult.gl()) {}
-    for (PendingIntent localPendingIntent = paramConnectionResult.gn();; localPendingIntent = super.a(paramContext, paramConnectionResult.getErrorCode(), 0))
+    if (paramConnectionResult.gv()) {}
+    for (PendingIntent localPendingIntent = paramConnectionResult.gx();; localPendingIntent = super.a(paramContext, paramConnectionResult.getErrorCode(), 0))
     {
       if (localPendingIntent != null)
       {
@@ -216,25 +213,25 @@ public final class b
     }
   }
   
-  public final boolean aZ(int paramInt)
-  {
-    return super.aZ(paramInt);
-  }
-  
   public final boolean b(Context paramContext, int paramInt)
   {
     return super.b(paramContext, paramInt);
   }
   
-  @Deprecated
-  public final Intent ba(int paramInt)
+  public final boolean bt(int paramInt)
   {
-    return super.ba(paramInt);
+    return super.bt(paramInt);
   }
   
-  public final String bb(int paramInt)
+  @Deprecated
+  public final Intent bu(int paramInt)
   {
-    return super.bb(paramInt);
+    return super.bu(paramInt);
+  }
+  
+  public final String bv(int paramInt)
+  {
+    return super.bv(paramInt);
   }
   
   public final int d(Context paramContext)

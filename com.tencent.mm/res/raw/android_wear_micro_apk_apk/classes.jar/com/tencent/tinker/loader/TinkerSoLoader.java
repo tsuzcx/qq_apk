@@ -15,7 +15,7 @@ public class TinkerSoLoader
 {
   public static boolean a(String paramString, j paramj, Intent paramIntent)
   {
-    paramj = (String)paramj.ol().get("assets/so_meta.txt");
+    paramj = (String)paramj.oY().get("assets/so_meta.txt");
     if (paramj == null) {
       return true;
     }
@@ -41,14 +41,14 @@ public class TinkerSoLoader
         e.a(paramIntent, -8);
         return false;
         String str1 = ((a)localObject2).name;
-        String str2 = ((a)localObject2).afE;
+        String str2 = ((a)localObject2).ajg;
         if ((str1 == null) || (str1.length() <= 0) || (str2 == null) || (str2.length() != 32)) {
           i = 0;
         } else {
           i = 1;
         }
       }
-      paramj.put(((a)localObject2).aat + "/" + ((a)localObject2).name, ((a)localObject2).afE);
+      paramj.put(((a)localObject2).adU + "/" + ((a)localObject2).name, ((a)localObject2).ajg);
     }
     localObject1 = new File(paramString);
     if ((!((File)localObject1).exists()) || (!((File)localObject1).isDirectory()))

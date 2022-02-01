@@ -6,19 +6,19 @@ public enum SelectBioType
 {
   static
   {
-    AppMethodBeat.i(141457);
+    AppMethodBeat.i(135977);
     NONE = new SelectBioType("NONE", 0);
     TOUCHID = new SelectBioType("TOUCHID", 1);
     FACEID = new SelectBioType("FACEID", 2);
     $VALUES = new SelectBioType[] { NONE, TOUCHID, FACEID };
-    AppMethodBeat.o(141457);
+    AppMethodBeat.o(135977);
   }
   
   private SelectBioType() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.gen.SelectBioType
  * JD-Core Version:    0.7.0.1
  */

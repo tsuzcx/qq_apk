@@ -7,41 +7,41 @@ import com.tencent.mm.plugin.card.model.am;
 public final class d
   implements a
 {
-  private c ksS;
+  private c nyl;
   
   public d(c paramc)
   {
-    this.ksS = paramc;
-  }
-  
-  public final void aaK()
-  {
-    AppMethodBeat.i(88253);
-    if (this.ksS != null) {
-      this.ksS.a(null, null);
-    }
-    AppMethodBeat.o(88253);
+    this.nyl = paramc;
   }
   
   public final void onCreate()
   {
-    AppMethodBeat.i(88251);
-    if (this.ksS != null) {
-      am.bcd().add(this.ksS);
+    AppMethodBeat.i(113185);
+    if (this.nyl != null) {
+      am.bIV().add(this.nyl);
     }
-    AppMethodBeat.o(88251);
+    AppMethodBeat.o(113185);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(88252);
-    if (this.ksS != null)
+    AppMethodBeat.i(113186);
+    if (this.nyl != null)
     {
-      am.bcd().remove(this.ksS);
-      this.ksS.release();
-      this.ksS = null;
+      am.bIV().remove(this.nyl);
+      this.nyl.release();
+      this.nyl = null;
     }
-    AppMethodBeat.o(88252);
+    AppMethodBeat.o(113186);
+  }
+  
+  public final void onNotify()
+  {
+    AppMethodBeat.i(113187);
+    if (this.nyl != null) {
+      this.nyl.a(null, null);
+    }
+    AppMethodBeat.o(113187);
   }
 }
 

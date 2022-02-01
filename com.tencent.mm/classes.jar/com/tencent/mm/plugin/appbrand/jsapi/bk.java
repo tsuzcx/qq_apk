@@ -1,27 +1,28 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.content.Intent;
+import com.tencent.luggage.h.e.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class bk
   extends a<h>
 {
-  public static final int CTRL_INDEX = 406;
-  public static final String NAME = "private_openUrl";
+  public static final int CTRL_INDEX = 403;
+  public static final String NAME = "openOfflinePayView";
+  final int jyE;
   
-  private void a(h paramh, int paramInt, String paramString)
+  public bk()
   {
-    AppMethodBeat.i(73170);
-    ab.e("MicroMsg.JsApiPrivateOpenUrl", "switchCallback msg:%s", new Object[] { paramString });
-    if (paramh != null) {
-      paramh.h(paramInt, j(paramString, null));
-    }
-    AppMethodBeat.o(73170);
+    AppMethodBeat.i(174758);
+    this.jyE = com.tencent.luggage.sdk.g.a.aD(this);
+    AppMethodBeat.o(174758);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bk
  * JD-Core Version:    0.7.0.1
  */

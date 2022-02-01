@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bi;
 
 public final class qm
   extends b
 {
-  public a cHb;
+  public a dwd;
   
   public qm()
   {
@@ -16,16 +17,17 @@ public final class qm
   
   private qm(byte paramByte)
   {
-    AppMethodBeat.i(59612);
-    this.cHb = new a();
-    this.ymq = false;
+    AppMethodBeat.i(91217);
+    this.dwd = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(59612);
+    AppMethodBeat.o(91217);
   }
   
   public static final class a
   {
-    public bi cmQ;
+    public Context context;
+    public Intent intent;
   }
 }
 

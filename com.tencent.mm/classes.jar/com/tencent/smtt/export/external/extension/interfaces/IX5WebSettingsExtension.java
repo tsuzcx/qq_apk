@@ -5,9 +5,23 @@ import java.util.Map;
 
 public abstract interface IX5WebSettingsExtension
 {
+  public static final int PicModel_NORMAL = 1;
+  public static final int PicModel_NetNoPic = 3;
+  public static final int PicModel_NoPic = 2;
+  
   public abstract void customDiskCachePathEnabled(boolean paramBoolean, String paramString);
   
+  public abstract void enableHSTSIgnore(String paramString);
+  
+  public abstract boolean getFeedsReadingEnabled();
+  
   public abstract boolean getPageSolarEnableFlag();
+  
+  public abstract boolean getShowTtsBar();
+  
+  public abstract boolean getUseWebViewBackgroundForOverscrollBackground();
+  
+  public abstract boolean getWebTranslation();
   
   public abstract boolean isFitScreen();
   
@@ -16,6 +30,8 @@ public abstract interface IX5WebSettingsExtension
   public abstract boolean isWapSitePreferred();
   
   public abstract boolean isWebViewInBackground();
+  
+  public abstract boolean isWrapLineLayoutEnabled();
   
   public abstract void setARModeEnable(boolean paramBoolean);
   
@@ -29,9 +45,23 @@ public abstract interface IX5WebSettingsExtension
   
   public abstract void setContentCacheEnable(boolean paramBoolean);
   
+  public abstract void setContentCacheFrameworkEnable(boolean paramBoolean);
+  
   public abstract void setDayOrNight(boolean paramBoolean);
   
+  public abstract void setDiskCahceSize(int paramInt);
+  
+  public abstract void setDisplayCutoutEnable(boolean paramBoolean);
+  
+  public abstract void setDoNotTrackEnabled(boolean paramBoolean);
+  
+  public abstract void setDynamicPageSaveEnabled(boolean paramBoolean);
+  
   public abstract void setEnableUnderLine(boolean paramBoolean);
+  
+  public abstract void setFeedsReadingEnabled(boolean paramBoolean);
+  
+  public abstract void setFingerSearchEnable(boolean paramBoolean);
   
   public abstract void setFirstScreenDetect(boolean paramBoolean);
   
@@ -43,17 +73,23 @@ public abstract interface IX5WebSettingsExtension
   
   public abstract void setFramePerformanceRecordEnable(boolean paramBoolean);
   
+  public abstract void setGifControl(boolean paramBoolean);
+  
   public abstract boolean setHttpDnsDomains(List<String> paramList);
   
   public abstract void setImageScanEnable(boolean paramBoolean);
   
   public abstract void setImgAsDownloadFile(boolean paramBoolean);
   
+  public abstract void setImgBrowser(boolean paramBoolean);
+  
   public abstract void setIsViewSourceMode(boolean paramBoolean);
   
   public abstract void setJSPerformanceRecordEnable(boolean paramBoolean);
   
   public abstract void setJavaScriptOpenWindowsBlockedNotifyEnabled(boolean paramBoolean);
+  
+  public abstract void setMSEEnable(boolean paramBoolean);
   
   public abstract void setOnContextMenuEnable(boolean paramBoolean);
   
@@ -62,6 +98,8 @@ public abstract interface IX5WebSettingsExtension
   public abstract void setPageCacheCapacity(int paramInt);
   
   public abstract void setPageSolarEnableFlag(boolean paramBoolean);
+  
+  public abstract void setPicModel(int paramInt);
   
   public abstract void setPreFectch(boolean paramBoolean);
   
@@ -79,6 +117,8 @@ public abstract interface IX5WebSettingsExtension
   
   public abstract void setShouldTrackVisitedLinks(boolean paramBoolean);
   
+  public abstract void setShowTtsBarEnable(boolean paramBoolean);
+  
   public abstract void setSmartFullScreenEnabled(boolean paramBoolean);
   
   public abstract void setTbsARShareType(int paramInt);
@@ -87,13 +127,21 @@ public abstract interface IX5WebSettingsExtension
   
   public abstract void setUseQProxy(boolean paramBoolean);
   
+  public abstract void setUseWebViewBackgroundForOverscrollBackground(boolean paramBoolean);
+  
+  public abstract void setVrImageEnable(boolean paramBoolean);
+  
   public abstract void setWapSitePreferred(boolean paramBoolean);
   
+  public abstract void setWebTranslationEnabled(boolean paramBoolean);
+  
   public abstract void setWebViewInBackground(boolean paramBoolean);
+  
+  public abstract void setWrapLineLayoutEnabled(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.interfaces.IX5WebSettingsExtension
  * JD-Core Version:    0.7.0.1
  */

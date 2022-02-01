@@ -3,72 +3,89 @@ package com.tencent.mm.plugin.nearlife.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
+import com.tencent.mm.al.g;
 import com.tencent.mm.modelgeo.Addr;
 import com.tencent.mm.modelgeo.c;
 import com.tencent.mm.modelgeo.c.a;
-import com.tencent.mm.protocal.protobuf.azs;
+import com.tencent.mm.protocal.protobuf.blc;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper.LatLongData;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class CheckInLifeUI
   extends BaseLifeUI
-  implements f
+  implements g
 {
-  private String city;
-  String color;
-  private View.OnClickListener nyO;
-  private boolean peV;
-  private String pff;
-  private b pfl;
-  private b pfm;
-  private ArrayList<BackwardSupportUtil.ExifHelper.LatLongData> pfn;
-  private c pfo;
-  private azs pfp;
-  private View.OnClickListener pfq;
-  private c.a pfr;
+  private String evA;
+  String gHT;
+  private View.OnClickListener olC;
+  private String ucE;
+  private b ucK;
+  private b ucL;
+  private ArrayList<BackwardSupportUtil.ExifHelper.LatLongData> ucM;
+  private c ucN;
+  private blc ucO;
+  private View.OnClickListener ucP;
+  private c.a ucQ;
+  private boolean ucu;
   
   public CheckInLifeUI()
   {
-    AppMethodBeat.i(22956);
-    this.pfo = null;
-    this.city = "";
-    this.pff = "";
-    this.peV = false;
-    this.nyO = new CheckInLifeUI.1(this);
-    this.pfq = new CheckInLifeUI.2(this);
-    this.pfr = new c.a()
+    AppMethodBeat.i(26580);
+    this.ucN = null;
+    this.evA = "";
+    this.ucE = "";
+    this.ucu = false;
+    this.olC = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(26577);
+        CheckInLifeUI.a(CheckInLifeUI.this, paramAnonymousView, false);
+        AppMethodBeat.o(26577);
+      }
+    };
+    this.ucP = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(26578);
+        CheckInLifeUI.a(CheckInLifeUI.this, paramAnonymousView, true);
+        AppMethodBeat.o(26578);
+      }
+    };
+    this.ucQ = new c.a()
     {
       public final void b(Addr paramAnonymousAddr)
       {
-        AppMethodBeat.i(22955);
-        ab.i("MicroMsg.CheckInLifeUI", "get info %s", new Object[] { paramAnonymousAddr.toString() });
-        if (!bo.isNullOrNil(CheckInLifeUI.a(CheckInLifeUI.this)))
+        AppMethodBeat.i(26579);
+        ad.i("MicroMsg.CheckInLifeUI", "get info %s", new Object[] { paramAnonymousAddr.toString() });
+        if (!bt.isNullOrNil(CheckInLifeUI.a(CheckInLifeUI.this)))
         {
-          AppMethodBeat.o(22955);
+          AppMethodBeat.o(26579);
           return;
         }
-        CheckInLifeUI.a(CheckInLifeUI.this, paramAnonymousAddr.fBs);
-        if (!bo.isNullOrNil(CheckInLifeUI.a(CheckInLifeUI.this))) {
-          CheckInLifeUI.b(CheckInLifeUI.this).fB(CheckInLifeUI.a(CheckInLifeUI.this), paramAnonymousAddr.fBA);
+        CheckInLifeUI.a(CheckInLifeUI.this, paramAnonymousAddr.hdS);
+        if (!bt.isNullOrNil(CheckInLifeUI.a(CheckInLifeUI.this))) {
+          CheckInLifeUI.b(CheckInLifeUI.this).hI(CheckInLifeUI.a(CheckInLifeUI.this), paramAnonymousAddr.hea);
         }
-        AppMethodBeat.o(22955);
+        AppMethodBeat.o(26579);
       }
     };
-    AppMethodBeat.o(22956);
+    AppMethodBeat.o(26580);
   }
   
-  private static ArrayList<BackwardSupportUtil.ExifHelper.LatLongData> L(ArrayList<String> paramArrayList)
+  private static ArrayList<BackwardSupportUtil.ExifHelper.LatLongData> ae(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(22965);
+    AppMethodBeat.i(26589);
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
-      AppMethodBeat.o(22965);
+      AppMethodBeat.o(26589);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
@@ -84,144 +101,144 @@ public class CheckInLifeUI
         catch (NumberFormatException localNumberFormatException) {}
       }
     }
-    ab.i("MicroMsg.CheckInLifeUI", "parse list end, size: " + localArrayList.size());
-    AppMethodBeat.o(22965);
+    ad.i("MicroMsg.CheckInLifeUI", "parse list end, size: " + localArrayList.size());
+    AppMethodBeat.o(26589);
     return localArrayList;
   }
   
-  public final a bWL()
+  public final a cWl()
   {
-    AppMethodBeat.i(22962);
-    if (this.pfn == null) {
-      this.pfn = L(getIntent().getStringArrayListExtra("lat_long_list"));
+    AppMethodBeat.i(26586);
+    if (this.ucM == null) {
+      this.ucM = ae(getIntent().getStringArrayListExtra("lat_long_list"));
     }
     if (getIntent().getStringExtra("select_radio_icon_color") != null) {
-      this.color = getIntent().getStringExtra("select_radio_icon_color");
+      this.gHT = getIntent().getStringExtra("select_radio_icon_color");
     }
     if ((getIntent().getStringExtra("select_radio_icon_color") != null) && (getIntent().getStringExtra("get_poi_from_scene").equals("story")))
     {
-      this.peV = true;
-      this.peV = true;
+      this.ucu = true;
+      this.ucu = true;
     }
-    if (this.pfl == null)
+    if (this.ucK == null)
     {
-      this.pfl = new b(this, this.nyO, "viewlist", this.peW, false, this.color);
-      if ((this.pfn != null) && (this.pfn.size() != 0))
+      this.ucK = new b(this, this.olC, "viewlist", this.ucv, false, this.gHT);
+      if ((this.ucM != null) && (this.ucM.size() != 0))
       {
         localObject = new ArrayList();
-        ((ArrayList)localObject).add(this.pfn.get(this.pfn.size() - 1));
-        this.pfl.K((ArrayList)localObject);
-        this.pfl.pew = false;
+        ((ArrayList)localObject).add(this.ucM.get(this.ucM.size() - 1));
+        this.ucK.ad((ArrayList)localObject);
+        this.ucK.ubV = false;
       }
-      localObject = this.pfl;
-      AppMethodBeat.o(22962);
+      localObject = this.ucK;
+      AppMethodBeat.o(26586);
       return localObject;
     }
-    Object localObject = this.pfl;
-    AppMethodBeat.o(22962);
+    Object localObject = this.ucK;
+    AppMethodBeat.o(26586);
     return localObject;
   }
   
-  public final a bWM()
+  public final a cWm()
   {
-    AppMethodBeat.i(22963);
-    if (this.pfn == null) {
-      this.pfn = L(getIntent().getStringArrayListExtra("lat_long_list"));
+    AppMethodBeat.i(26587);
+    if (this.ucM == null) {
+      this.ucM = ae(getIntent().getStringArrayListExtra("lat_long_list"));
     }
-    if (this.pfm == null)
+    if (this.ucL == null)
     {
-      this.pfm = new b(this, this.pfq, "searchlist", this.peW, true, this.color);
-      this.pfm.K(this.pfn);
-      this.pfm.pew = true;
-      localb = this.pfm;
-      AppMethodBeat.o(22963);
+      this.ucL = new b(this, this.ucP, "searchlist", this.ucv, true, this.gHT);
+      this.ucL.ad(this.ucM);
+      this.ucL.ubV = true;
+      localb = this.ucL;
+      AppMethodBeat.o(26587);
       return localb;
     }
-    b localb = this.pfm;
-    AppMethodBeat.o(22963);
+    b localb = this.ucL;
+    AppMethodBeat.o(26587);
     return localb;
   }
   
-  public final void bWN()
+  public final void cWn()
   {
-    AppMethodBeat.i(22958);
-    super.bWN();
-    AppMethodBeat.o(22958);
+    AppMethodBeat.i(26582);
+    super.cWn();
+    AppMethodBeat.o(26582);
   }
   
   public int getLayoutId()
   {
-    return 2130970341;
+    return 2131494998;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(22957);
+    AppMethodBeat.i(26581);
     super.onCreate(paramBundle);
-    setMMTitle(2131301739);
-    this.pfo = c.agN();
-    this.pfp = new azs();
-    this.pff = getIntent().getStringExtra("get_poi_classify_id");
+    setMMTitle(2131761485);
+    this.ucN = c.axQ();
+    this.ucO = new blc();
+    this.ucE = getIntent().getStringExtra("get_poi_classify_id");
     try
     {
-      this.pfp = ((azs)this.pfp.parseFrom(getIntent().getByteArrayExtra("get_poi_item_buf")));
-      if (this.pfp != null) {
-        this.pff = this.pfp.pdW;
+      this.ucO = ((blc)this.ucO.parseFrom(getIntent().getByteArrayExtra("get_poi_item_buf")));
+      if (this.ucO != null) {
+        this.ucE = this.ucO.ubw;
       }
-      if (bo.isNullOrNil(this.pff)) {
-        this.city = getIntent().getStringExtra("get_city");
+      if (bt.isNullOrNil(this.ucE)) {
+        this.evA = getIntent().getStringExtra("get_city");
       }
-      if (!bo.isNullOrNil(this.city)) {
-        this.pff = this.pfl.fB(this.city, "").pdW;
+      if (!bt.isNullOrNil(this.evA)) {
+        this.ucE = this.ucK.hI(this.evA, "").ubw;
       }
-      this.pfl.pff = this.pff;
-      if ((this.pfp != null) && (!bo.isNullOrNil(this.pfp.pdW)))
+      this.ucK.ucE = this.ucE;
+      if ((this.ucO != null) && (!bt.isNullOrNil(this.ucO.ubw)))
       {
-        paramBundle = this.pfl;
-        locala = new com.tencent.mm.plugin.nearlife.b.a("", this.pfp);
-        if (paramBundle.pfd == null)
+        paramBundle = this.ucK;
+        localb = new com.tencent.mm.plugin.nearlife.b.b("", this.ucO);
+        if (paramBundle.ucC == null)
         {
-          paramBundle.a(locala, 1);
-          AppMethodBeat.o(22957);
+          paramBundle.a(localb, 1);
+          AppMethodBeat.o(26581);
           return;
         }
       }
     }
     catch (Exception paramBundle)
     {
-      com.tencent.mm.plugin.nearlife.b.a locala;
+      com.tencent.mm.plugin.nearlife.b.b localb;
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.CheckInLifeUI", paramBundle, "", new Object[0]);
-        this.pfp = null;
+        ad.printErrStackTrace("MicroMsg.CheckInLifeUI", paramBundle, "", new Object[0]);
+        this.ucO = null;
       }
-      paramBundle.a(locala, 2);
-      AppMethodBeat.o(22957);
+      paramBundle.a(localb, 2);
+      AppMethodBeat.o(26581);
     }
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(22960);
+    AppMethodBeat.i(26584);
     super.onDestroy();
-    if (this.pfo != null) {
-      this.pfo.a(this.pfr);
+    if (this.ucN != null) {
+      this.ucN.a(this.ucQ);
     }
-    AppMethodBeat.o(22960);
+    AppMethodBeat.o(26584);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(22961);
+    AppMethodBeat.i(26585);
     super.onPause();
-    AppMethodBeat.o(22961);
+    AppMethodBeat.o(26585);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(22959);
+    AppMethodBeat.i(26583);
     super.onResume();
-    AppMethodBeat.o(22959);
+    AppMethodBeat.o(26583);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -232,17 +249,17 @@ public class CheckInLifeUI
   
   public final void p(double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(22964);
-    ab.i("MicroMsg.CheckInLifeUI", "checkinLife got address %f %f", new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) });
-    if ((this.pfo != null) && (bo.isNullOrNil(this.city))) {
-      this.pfo.a(paramDouble1, paramDouble2, this.pfr);
+    AppMethodBeat.i(26588);
+    ad.i("MicroMsg.CheckInLifeUI", "checkinLife got address %f %f", new Object[] { Double.valueOf(paramDouble1), Double.valueOf(paramDouble2) });
+    if ((this.ucN != null) && (bt.isNullOrNil(this.evA))) {
+      this.ucN.a(paramDouble1, paramDouble2, this.ucQ);
     }
-    AppMethodBeat.o(22964);
+    AppMethodBeat.o(26588);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.CheckInLifeUI
  * JD-Core Version:    0.7.0.1
  */

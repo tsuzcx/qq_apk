@@ -1,64 +1,71 @@
 package com.tencent.mm.emoji.loader.a;
 
-import a.l;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.b.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/loader/cache/CoverMemoryCache;", "", "()V", "cacheMap", "Lcom/tencent/mm/algorithm/MMLRUMap;", "", "Landroid/graphics/Bitmap;", "get", "key", "put", "", "bitmap", "plugin-emojisdk_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/cache/CoverMemoryCache;", "", "()V", "cacheMap", "Lcom/tencent/mm/algorithm/MMLRUMap;", "", "Landroid/graphics/Bitmap;", "clear", "", "get", "key", "put", "bitmap", "plugin-emojisdk_release"})
 public final class b
 {
-  private static final h<String, Bitmap> evs;
-  public static final b evt;
+  private static final h<String, Bitmap> fLv;
+  public static final b fLw;
   
   static
   {
-    AppMethodBeat.i(63170);
-    evt = new b();
-    evs = new h(60);
-    AppMethodBeat.o(63170);
+    AppMethodBeat.i(105416);
+    fLw = new b();
+    fLv = new h(300);
+    AppMethodBeat.o(105416);
   }
   
   public static void c(String paramString, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(63169);
-    ab.i(c.Ot(), "put: " + paramString + ", " + paramBitmap);
+    AppMethodBeat.i(105414);
+    ad.i(c.abb(), "put: " + paramString + ", " + paramBitmap);
     if (paramString != null)
     {
       if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
       {
-        evs.put(paramString, paramBitmap);
-        AppMethodBeat.o(63169);
+        fLv.put(paramString, paramBitmap);
+        AppMethodBeat.o(105414);
         return;
       }
-      evs.remove(paramString);
+      fLv.remove(paramString);
     }
-    AppMethodBeat.o(63169);
+    AppMethodBeat.o(105414);
   }
   
-  public static Bitmap lK(String paramString)
+  public static void clear()
   {
-    AppMethodBeat.i(63168);
-    ab.i(c.Ot(), "get: ".concat(String.valueOf(paramString)));
+    AppMethodBeat.i(105415);
+    fLv.clear();
+    AppMethodBeat.o(105415);
+  }
+  
+  public static Bitmap pT(String paramString)
+  {
+    AppMethodBeat.i(105413);
+    ad.i(c.abb(), "get: ".concat(String.valueOf(paramString)));
     if (paramString == null)
     {
-      AppMethodBeat.o(63168);
+      AppMethodBeat.o(105413);
       return null;
     }
-    paramString = (Bitmap)evs.get(paramString);
+    paramString = (Bitmap)fLv.get(paramString);
     if ((paramString == null) || (paramString.isRecycled()))
     {
-      AppMethodBeat.o(63168);
+      AppMethodBeat.o(105413);
       return null;
     }
-    AppMethodBeat.o(63168);
+    AppMethodBeat.o(105413);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -16,50 +16,50 @@ public class V8Object
   protected V8Object(V8 paramV8, Object paramObject)
   {
     super(paramV8);
-    AppMethodBeat.i(75541);
+    AppMethodBeat.i(62166);
     if (paramV8 != null)
     {
       this.v8.checkThread();
       initialize(this.v8.getV8RuntimePtr(), paramObject);
     }
-    AppMethodBeat.o(75541);
+    AppMethodBeat.o(62166);
   }
   
   private void checkKey(String paramString)
   {
-    AppMethodBeat.i(75577);
+    AppMethodBeat.i(62202);
     if (paramString == null)
     {
       paramString = new IllegalArgumentException("Key cannot be null");
-      AppMethodBeat.o(75577);
+      AppMethodBeat.o(62202);
       throw paramString;
     }
-    AppMethodBeat.o(75577);
+    AppMethodBeat.o(62202);
   }
   
   public V8Object add(String paramString, double paramDouble)
   {
-    AppMethodBeat.i(75566);
+    AppMethodBeat.i(62191);
     this.v8.checkThread();
     checkReleased();
     this.v8.add(this.v8.getV8RuntimePtr(), this.objectHandle, paramString, paramDouble);
-    AppMethodBeat.o(75566);
+    AppMethodBeat.o(62191);
     return this;
   }
   
   public V8Object add(String paramString, int paramInt)
   {
-    AppMethodBeat.i(75564);
+    AppMethodBeat.i(62189);
     this.v8.checkThread();
     checkReleased();
     this.v8.add(this.v8.getV8RuntimePtr(), this.objectHandle, paramString, paramInt);
-    AppMethodBeat.o(75564);
+    AppMethodBeat.o(62189);
     return this;
   }
   
   public V8Object add(String paramString, V8Value paramV8Value)
   {
-    AppMethodBeat.i(75568);
+    AppMethodBeat.i(62193);
     this.v8.checkThread();
     checkReleased();
     this.v8.checkRuntime(paramV8Value);
@@ -68,7 +68,7 @@ public class V8Object
     }
     for (;;)
     {
-      AppMethodBeat.o(75568);
+      AppMethodBeat.o(62193);
       return this;
       if (paramV8Value.equals(V8.getUndefined())) {
         this.v8.addUndefined(this.v8.getV8RuntimePtr(), this.objectHandle, paramString);
@@ -80,7 +80,7 @@ public class V8Object
   
   public V8Object add(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(75567);
+    AppMethodBeat.i(62192);
     this.v8.checkThread();
     checkReleased();
     if (paramString2 == null) {
@@ -88,7 +88,7 @@ public class V8Object
     }
     for (;;)
     {
-      AppMethodBeat.o(75567);
+      AppMethodBeat.o(62192);
       return this;
       if (paramString2.equals(V8.getUndefined())) {
         this.v8.addUndefined(this.v8.getV8RuntimePtr(), this.objectHandle, paramString1);
@@ -100,56 +100,56 @@ public class V8Object
   
   public V8Object add(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(75565);
+    AppMethodBeat.i(62190);
     this.v8.checkThread();
     checkReleased();
     this.v8.add(this.v8.getV8RuntimePtr(), this.objectHandle, paramString, paramBoolean);
-    AppMethodBeat.o(75565);
+    AppMethodBeat.o(62190);
     return this;
   }
   
   public V8Object addNull(String paramString)
   {
-    AppMethodBeat.i(75570);
+    AppMethodBeat.i(62195);
     this.v8.checkThread();
     checkReleased();
     this.v8.addNull(this.v8.getV8RuntimePtr(), this.objectHandle, paramString);
-    AppMethodBeat.o(75570);
+    AppMethodBeat.o(62195);
     return this;
   }
   
   public V8Object addUndefined(String paramString)
   {
-    AppMethodBeat.i(75569);
+    AppMethodBeat.i(62194);
     this.v8.checkThread();
     checkReleased();
     this.v8.addUndefined(this.v8.getV8RuntimePtr(), this.objectHandle, paramString);
-    AppMethodBeat.o(75569);
+    AppMethodBeat.o(62194);
     return this;
   }
   
   public boolean contains(String paramString)
   {
-    AppMethodBeat.i(75544);
+    AppMethodBeat.i(62169);
     this.v8.checkThread();
     checkReleased();
     checkKey(paramString);
     boolean bool = this.v8.contains(this.v8.getV8RuntimePtr(), this.objectHandle, paramString);
-    AppMethodBeat.o(75544);
+    AppMethodBeat.o(62169);
     return bool;
   }
   
   protected V8Value createTwin()
   {
-    AppMethodBeat.i(75542);
+    AppMethodBeat.i(62167);
     V8Object localV8Object = new V8Object(this.v8);
-    AppMethodBeat.o(75542);
+    AppMethodBeat.o(62167);
     return localV8Object;
   }
   
   public V8Array executeArrayFunction(String paramString, V8Array paramV8Array)
   {
-    AppMethodBeat.i(75558);
+    AppMethodBeat.i(62183);
     this.v8.checkThread();
     checkReleased();
     this.v8.checkRuntime(paramV8Array);
@@ -161,17 +161,17 @@ public class V8Object
         break;
       }
       paramString = (V8Array)paramString;
-      AppMethodBeat.o(75558);
+      AppMethodBeat.o(62183);
       return paramString;
     }
     paramString = new V8ResultUndefined();
-    AppMethodBeat.o(75558);
+    AppMethodBeat.o(62183);
     throw paramString;
   }
   
   public boolean executeBooleanFunction(String paramString, V8Array paramV8Array)
   {
-    AppMethodBeat.i(75557);
+    AppMethodBeat.i(62182);
     this.v8.checkThread();
     checkReleased();
     this.v8.checkRuntime(paramV8Array);
@@ -179,14 +179,14 @@ public class V8Object
     for (long l = 0L;; l = paramV8Array.getHandle())
     {
       boolean bool = this.v8.executeBooleanFunction(this.v8.getV8RuntimePtr(), getHandle(), paramString, l);
-      AppMethodBeat.o(75557);
+      AppMethodBeat.o(62182);
       return bool;
     }
   }
   
   public double executeDoubleFunction(String paramString, V8Array paramV8Array)
   {
-    AppMethodBeat.i(75555);
+    AppMethodBeat.i(62180);
     this.v8.checkThread();
     checkReleased();
     this.v8.checkRuntime(paramV8Array);
@@ -194,14 +194,14 @@ public class V8Object
     for (long l = 0L;; l = paramV8Array.getHandle())
     {
       double d = this.v8.executeDoubleFunction(this.v8.getV8RuntimePtr(), getHandle(), paramString, l);
-      AppMethodBeat.o(75555);
+      AppMethodBeat.o(62180);
       return d;
     }
   }
   
   public Object executeFunction(String paramString, V8Array paramV8Array)
   {
-    AppMethodBeat.i(75560);
+    AppMethodBeat.i(62185);
     this.v8.checkThread();
     checkReleased();
     this.v8.checkRuntime(paramV8Array);
@@ -209,14 +209,14 @@ public class V8Object
     for (long l = 0L;; l = paramV8Array.getHandle())
     {
       paramString = this.v8.executeFunction(this.v8.getV8RuntimePtr(), 0, this.objectHandle, paramString, l);
-      AppMethodBeat.o(75560);
+      AppMethodBeat.o(62185);
       return paramString;
     }
   }
   
   public int executeIntegerFunction(String paramString, V8Array paramV8Array)
   {
-    AppMethodBeat.i(75554);
+    AppMethodBeat.i(62179);
     this.v8.checkThread();
     checkReleased();
     this.v8.checkRuntime(paramV8Array);
@@ -224,26 +224,26 @@ public class V8Object
     for (long l = 0L;; l = paramV8Array.getHandle())
     {
       int i = this.v8.executeIntegerFunction(this.v8.getV8RuntimePtr(), getHandle(), paramString, l);
-      AppMethodBeat.o(75554);
+      AppMethodBeat.o(62179);
       return i;
     }
   }
   
   public Object executeJSFunction(String paramString)
   {
-    AppMethodBeat.i(75561);
+    AppMethodBeat.i(62186);
     paramString = executeFunction(paramString, null);
-    AppMethodBeat.o(75561);
+    AppMethodBeat.o(62186);
     return paramString;
   }
   
   public Object executeJSFunction(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(75562);
+    AppMethodBeat.i(62187);
     if (paramVarArgs == null)
     {
       paramString = executeFunction(paramString, null);
-      AppMethodBeat.o(75562);
+      AppMethodBeat.o(62187);
       return paramString;
     }
     V8Array localV8Array = new V8Array(this.v8.getRuntime());
@@ -268,7 +268,7 @@ public class V8Object
       finally
       {
         localV8Array.release();
-        AppMethodBeat.o(75562);
+        AppMethodBeat.o(62187);
       }
       if ((localObject instanceof Integer))
       {
@@ -297,12 +297,12 @@ public class V8Object
       else
       {
         paramString = new IllegalArgumentException("Unsupported Object of type: " + localObject.getClass());
-        AppMethodBeat.o(75562);
+        AppMethodBeat.o(62187);
         throw paramString;
         label279:
         paramString = executeFunction(paramString, localV8Array);
         localV8Array.release();
-        AppMethodBeat.o(75562);
+        AppMethodBeat.o(62187);
         return paramString;
       }
       i += 1;
@@ -311,7 +311,7 @@ public class V8Object
   
   public V8Object executeObjectFunction(String paramString, V8Array paramV8Array)
   {
-    AppMethodBeat.i(75559);
+    AppMethodBeat.i(62184);
     this.v8.checkThread();
     checkReleased();
     this.v8.checkRuntime(paramV8Array);
@@ -323,17 +323,17 @@ public class V8Object
         break;
       }
       paramString = (V8Object)paramString;
-      AppMethodBeat.o(75559);
+      AppMethodBeat.o(62184);
       return paramString;
     }
     paramString = new V8ResultUndefined();
-    AppMethodBeat.o(75559);
+    AppMethodBeat.o(62184);
     throw paramString;
   }
   
   public String executeStringFunction(String paramString, V8Array paramV8Array)
   {
-    AppMethodBeat.i(75556);
+    AppMethodBeat.i(62181);
     this.v8.checkThread();
     checkReleased();
     this.v8.checkRuntime(paramV8Array);
@@ -341,14 +341,14 @@ public class V8Object
     for (long l = 0L;; l = paramV8Array.getHandle())
     {
       paramString = this.v8.executeStringFunction(this.v8.getV8RuntimePtr(), getHandle(), paramString, l);
-      AppMethodBeat.o(75556);
+      AppMethodBeat.o(62181);
       return paramString;
     }
   }
   
   public void executeVoidFunction(String paramString, V8Array paramV8Array)
   {
-    AppMethodBeat.i(75563);
+    AppMethodBeat.i(62188);
     this.v8.checkThread();
     checkReleased();
     this.v8.checkRuntime(paramV8Array);
@@ -356,25 +356,25 @@ public class V8Object
     for (long l = 0L;; l = paramV8Array.getHandle())
     {
       this.v8.executeVoidFunction(this.v8.getV8RuntimePtr(), this.objectHandle, paramString, l);
-      AppMethodBeat.o(75563);
+      AppMethodBeat.o(62188);
       return;
     }
   }
   
   public Object get(String paramString)
   {
-    AppMethodBeat.i(75547);
+    AppMethodBeat.i(62172);
     this.v8.checkThread();
     checkReleased();
     checkKey(paramString);
     paramString = this.v8.get(this.v8.getV8RuntimePtr(), 6, this.objectHandle, paramString);
-    AppMethodBeat.o(75547);
+    AppMethodBeat.o(62172);
     return paramString;
   }
   
   public V8Array getArray(String paramString)
   {
-    AppMethodBeat.i(75552);
+    AppMethodBeat.i(62177);
     this.v8.checkThread();
     checkReleased();
     checkKey(paramString);
@@ -382,60 +382,60 @@ public class V8Object
     if ((paramString == null) || ((paramString instanceof V8Array)))
     {
       paramString = (V8Array)paramString;
-      AppMethodBeat.o(75552);
+      AppMethodBeat.o(62177);
       return paramString;
     }
     paramString = new V8ResultUndefined();
-    AppMethodBeat.o(75552);
+    AppMethodBeat.o(62177);
     throw paramString;
   }
   
   public boolean getBoolean(String paramString)
   {
-    AppMethodBeat.i(75549);
+    AppMethodBeat.i(62174);
     this.v8.checkThread();
     checkReleased();
     checkKey(paramString);
     boolean bool = this.v8.getBoolean(this.v8.getV8RuntimePtr(), this.objectHandle, paramString);
-    AppMethodBeat.o(75549);
+    AppMethodBeat.o(62174);
     return bool;
   }
   
   public double getDouble(String paramString)
   {
-    AppMethodBeat.i(75550);
+    AppMethodBeat.i(62175);
     this.v8.checkThread();
     checkReleased();
     checkKey(paramString);
     double d = this.v8.getDouble(this.v8.getV8RuntimePtr(), this.objectHandle, paramString);
-    AppMethodBeat.o(75550);
+    AppMethodBeat.o(62175);
     return d;
   }
   
   public int getInteger(String paramString)
   {
-    AppMethodBeat.i(75548);
+    AppMethodBeat.i(62173);
     this.v8.checkThread();
     checkReleased();
     checkKey(paramString);
     int i = this.v8.getInteger(this.v8.getV8RuntimePtr(), this.objectHandle, paramString);
-    AppMethodBeat.o(75548);
+    AppMethodBeat.o(62173);
     return i;
   }
   
   public String[] getKeys()
   {
-    AppMethodBeat.i(75545);
+    AppMethodBeat.i(62170);
     this.v8.checkThread();
     checkReleased();
     String[] arrayOfString = this.v8.getKeys(this.v8.getV8RuntimePtr(), this.objectHandle);
-    AppMethodBeat.o(75545);
+    AppMethodBeat.o(62170);
     return arrayOfString;
   }
   
   public V8Object getObject(String paramString)
   {
-    AppMethodBeat.i(75553);
+    AppMethodBeat.i(62178);
     this.v8.checkThread();
     checkReleased();
     checkKey(paramString);
@@ -443,67 +443,67 @@ public class V8Object
     if ((paramString == null) || ((paramString instanceof V8Object)))
     {
       paramString = (V8Object)paramString;
-      AppMethodBeat.o(75553);
+      AppMethodBeat.o(62178);
       return paramString;
     }
     paramString = new V8ResultUndefined();
-    AppMethodBeat.o(75553);
+    AppMethodBeat.o(62178);
     throw paramString;
   }
   
   public String getString(String paramString)
   {
-    AppMethodBeat.i(75551);
+    AppMethodBeat.i(62176);
     this.v8.checkThread();
     checkReleased();
     checkKey(paramString);
     paramString = this.v8.getString(this.v8.getV8RuntimePtr(), this.objectHandle, paramString);
-    AppMethodBeat.o(75551);
+    AppMethodBeat.o(62176);
     return paramString;
   }
   
   public int getType(String paramString)
   {
-    AppMethodBeat.i(75546);
+    AppMethodBeat.i(62171);
     this.v8.checkThread();
     checkReleased();
     checkKey(paramString);
     int i = this.v8.getType(this.v8.getV8RuntimePtr(), this.objectHandle, paramString);
-    AppMethodBeat.o(75546);
+    AppMethodBeat.o(62171);
     return i;
   }
   
   public V8Object registerJavaMethod(JavaCallback paramJavaCallback, String paramString)
   {
-    AppMethodBeat.i(75572);
+    AppMethodBeat.i(62197);
     this.v8.checkThread();
     checkReleased();
     this.v8.registerCallback(paramJavaCallback, getHandle(), paramString);
-    AppMethodBeat.o(75572);
+    AppMethodBeat.o(62197);
     return this;
   }
   
   public V8Object registerJavaMethod(JavaVoidCallback paramJavaVoidCallback, String paramString)
   {
-    AppMethodBeat.i(75573);
+    AppMethodBeat.i(62198);
     this.v8.checkThread();
     checkReleased();
     this.v8.registerVoidCallback(paramJavaVoidCallback, getHandle(), paramString);
-    AppMethodBeat.o(75573);
+    AppMethodBeat.o(62198);
     return this;
   }
   
   public V8Object registerJavaMethod(Object paramObject, String paramString1, String paramString2, Class<?>[] paramArrayOfClass)
   {
-    AppMethodBeat.i(75574);
+    AppMethodBeat.i(62199);
     paramObject = registerJavaMethod(paramObject, paramString1, paramString2, paramArrayOfClass, false);
-    AppMethodBeat.o(75574);
+    AppMethodBeat.o(62199);
     return paramObject;
   }
   
   public V8Object registerJavaMethod(Object paramObject, String paramString1, String paramString2, Class<?>[] paramArrayOfClass, boolean paramBoolean)
   {
-    AppMethodBeat.i(75575);
+    AppMethodBeat.i(62200);
     this.v8.checkThread();
     checkReleased();
     try
@@ -511,52 +511,52 @@ public class V8Object
       paramString1 = paramObject.getClass().getMethod(paramString1, paramArrayOfClass);
       paramString1.setAccessible(true);
       this.v8.registerCallback(paramObject, paramString1, getHandle(), paramString2, paramBoolean);
-      AppMethodBeat.o(75575);
+      AppMethodBeat.o(62200);
       return this;
     }
     catch (NoSuchMethodException paramObject)
     {
       paramObject = new IllegalStateException(paramObject);
-      AppMethodBeat.o(75575);
+      AppMethodBeat.o(62200);
       throw paramObject;
     }
     catch (SecurityException paramObject)
     {
       paramObject = new IllegalStateException(paramObject);
-      AppMethodBeat.o(75575);
+      AppMethodBeat.o(62200);
       throw paramObject;
     }
   }
   
   public V8Object setPrototype(V8Object paramV8Object)
   {
-    AppMethodBeat.i(75571);
+    AppMethodBeat.i(62196);
     this.v8.checkThread();
     checkReleased();
     this.v8.setPrototype(this.v8.getV8RuntimePtr(), this.objectHandle, paramV8Object.getHandle());
-    AppMethodBeat.o(75571);
+    AppMethodBeat.o(62196);
     return this;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(75576);
+    AppMethodBeat.i(62201);
     if ((isReleased()) || (this.v8.isReleased()))
     {
-      AppMethodBeat.o(75576);
+      AppMethodBeat.o(62201);
       return "[Object released]";
     }
     this.v8.checkThread();
     String str = this.v8.toString(this.v8.getV8RuntimePtr(), getHandle());
-    AppMethodBeat.o(75576);
+    AppMethodBeat.o(62201);
     return str;
   }
   
   public V8Object twin()
   {
-    AppMethodBeat.i(75543);
+    AppMethodBeat.i(62168);
     V8Object localV8Object = (V8Object)super.twin();
-    AppMethodBeat.o(75543);
+    AppMethodBeat.o(62168);
     return localV8Object;
   }
   
@@ -565,213 +565,213 @@ public class V8Object
   {
     public V8Object add(String paramString, double paramDouble)
     {
-      AppMethodBeat.i(75512);
+      AppMethodBeat.i(62137);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75512);
+      AppMethodBeat.o(62137);
       throw paramString;
     }
     
     public V8Object add(String paramString, int paramInt)
     {
-      AppMethodBeat.i(75513);
+      AppMethodBeat.i(62138);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75513);
+      AppMethodBeat.o(62138);
       throw paramString;
     }
     
     public V8Object add(String paramString, V8Value paramV8Value)
     {
-      AppMethodBeat.i(75517);
+      AppMethodBeat.i(62142);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75517);
+      AppMethodBeat.o(62142);
       throw paramString;
     }
     
     public V8Object add(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(75516);
+      AppMethodBeat.i(62141);
       paramString1 = new UnsupportedOperationException();
-      AppMethodBeat.o(75516);
+      AppMethodBeat.o(62141);
       throw paramString1;
     }
     
     public V8Object add(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(75510);
+      AppMethodBeat.i(62135);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75510);
+      AppMethodBeat.o(62135);
       throw paramString;
     }
     
     public V8Object addUndefined(String paramString)
     {
-      AppMethodBeat.i(75518);
+      AppMethodBeat.i(62143);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75518);
+      AppMethodBeat.o(62143);
       throw paramString;
     }
     
     public boolean contains(String paramString)
     {
-      AppMethodBeat.i(75519);
+      AppMethodBeat.i(62144);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75519);
+      AppMethodBeat.o(62144);
       throw paramString;
     }
     
     public boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(75509);
+      AppMethodBeat.i(62134);
       if (((paramObject instanceof V8Object)) && (((V8Object)paramObject).isUndefined()))
       {
-        AppMethodBeat.o(75509);
+        AppMethodBeat.o(62134);
         return true;
       }
-      AppMethodBeat.o(75509);
+      AppMethodBeat.o(62134);
       return false;
     }
     
     public V8Array executeArrayFunction(String paramString, V8Array paramV8Array)
     {
-      AppMethodBeat.i(75520);
+      AppMethodBeat.i(62145);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75520);
+      AppMethodBeat.o(62145);
       throw paramString;
     }
     
     public boolean executeBooleanFunction(String paramString, V8Array paramV8Array)
     {
-      AppMethodBeat.i(75521);
+      AppMethodBeat.i(62146);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75521);
+      AppMethodBeat.o(62146);
       throw paramString;
     }
     
     public double executeDoubleFunction(String paramString, V8Array paramV8Array)
     {
-      AppMethodBeat.i(75522);
+      AppMethodBeat.i(62147);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75522);
+      AppMethodBeat.o(62147);
       throw paramString;
     }
     
     public Object executeFunction(String paramString, V8Array paramV8Array)
     {
-      AppMethodBeat.i(75515);
+      AppMethodBeat.i(62140);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75515);
+      AppMethodBeat.o(62140);
       throw paramString;
     }
     
     public int executeIntegerFunction(String paramString, V8Array paramV8Array)
     {
-      AppMethodBeat.i(75523);
+      AppMethodBeat.i(62148);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75523);
+      AppMethodBeat.o(62148);
       throw paramString;
     }
     
     public Object executeJSFunction(String paramString, Object... paramVarArgs)
     {
-      AppMethodBeat.i(75514);
+      AppMethodBeat.i(62139);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75514);
+      AppMethodBeat.o(62139);
       throw paramString;
     }
     
     public V8Object executeObjectFunction(String paramString, V8Array paramV8Array)
     {
-      AppMethodBeat.i(75524);
+      AppMethodBeat.i(62149);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75524);
+      AppMethodBeat.o(62149);
       throw paramString;
     }
     
     public String executeStringFunction(String paramString, V8Array paramV8Array)
     {
-      AppMethodBeat.i(75525);
+      AppMethodBeat.i(62150);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75525);
+      AppMethodBeat.o(62150);
       throw paramString;
     }
     
     public void executeVoidFunction(String paramString, V8Array paramV8Array)
     {
-      AppMethodBeat.i(75526);
+      AppMethodBeat.i(62151);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75526);
+      AppMethodBeat.o(62151);
       throw paramString;
     }
     
     public V8Array getArray(String paramString)
     {
-      AppMethodBeat.i(75527);
+      AppMethodBeat.i(62152);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75527);
+      AppMethodBeat.o(62152);
       throw paramString;
     }
     
     public boolean getBoolean(String paramString)
     {
-      AppMethodBeat.i(75528);
+      AppMethodBeat.i(62153);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75528);
+      AppMethodBeat.o(62153);
       throw paramString;
     }
     
     public double getDouble(String paramString)
     {
-      AppMethodBeat.i(75529);
+      AppMethodBeat.i(62154);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75529);
+      AppMethodBeat.o(62154);
       throw paramString;
     }
     
     public int getInteger(String paramString)
     {
-      AppMethodBeat.i(75530);
+      AppMethodBeat.i(62155);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75530);
+      AppMethodBeat.o(62155);
       throw paramString;
     }
     
     public String[] getKeys()
     {
-      AppMethodBeat.i(75531);
+      AppMethodBeat.i(62156);
       UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
-      AppMethodBeat.o(75531);
+      AppMethodBeat.o(62156);
       throw localUnsupportedOperationException;
     }
     
     public V8Object getObject(String paramString)
     {
-      AppMethodBeat.i(75532);
+      AppMethodBeat.i(62157);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75532);
+      AppMethodBeat.o(62157);
       throw paramString;
     }
     
     public V8 getRuntime()
     {
-      AppMethodBeat.i(75511);
+      AppMethodBeat.i(62136);
       UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
-      AppMethodBeat.o(75511);
+      AppMethodBeat.o(62136);
       throw localUnsupportedOperationException;
     }
     
     public String getString(String paramString)
     {
-      AppMethodBeat.i(75533);
+      AppMethodBeat.i(62158);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75533);
+      AppMethodBeat.o(62158);
       throw paramString;
     }
     
     public int getType(String paramString)
     {
-      AppMethodBeat.i(75534);
+      AppMethodBeat.i(62159);
       paramString = new UnsupportedOperationException();
-      AppMethodBeat.o(75534);
+      AppMethodBeat.o(62159);
       throw paramString;
     }
     
@@ -792,25 +792,25 @@ public class V8Object
     
     public V8Object registerJavaMethod(JavaCallback paramJavaCallback, String paramString)
     {
-      AppMethodBeat.i(75535);
+      AppMethodBeat.i(62160);
       paramJavaCallback = new UnsupportedOperationException();
-      AppMethodBeat.o(75535);
+      AppMethodBeat.o(62160);
       throw paramJavaCallback;
     }
     
     public V8Object registerJavaMethod(JavaVoidCallback paramJavaVoidCallback, String paramString)
     {
-      AppMethodBeat.i(75536);
+      AppMethodBeat.i(62161);
       paramJavaVoidCallback = new UnsupportedOperationException();
-      AppMethodBeat.o(75536);
+      AppMethodBeat.o(62161);
       throw paramJavaVoidCallback;
     }
     
     public V8Object registerJavaMethod(Object paramObject, String paramString1, String paramString2, Class<?>[] paramArrayOfClass, boolean paramBoolean)
     {
-      AppMethodBeat.i(75537);
+      AppMethodBeat.i(62162);
       paramObject = new UnsupportedOperationException();
-      AppMethodBeat.o(75537);
+      AppMethodBeat.o(62162);
       throw paramObject;
     }
     
@@ -818,9 +818,9 @@ public class V8Object
     
     public V8Object setPrototype(V8Object paramV8Object)
     {
-      AppMethodBeat.i(75538);
+      AppMethodBeat.i(62163);
       paramV8Object = new UnsupportedOperationException();
-      AppMethodBeat.o(75538);
+      AppMethodBeat.o(62163);
       throw paramV8Object;
     }
     
@@ -831,9 +831,9 @@ public class V8Object
     
     public Undefined twin()
     {
-      AppMethodBeat.i(75508);
+      AppMethodBeat.i(62133);
       Undefined localUndefined = (Undefined)super.twin();
-      AppMethodBeat.o(75508);
+      AppMethodBeat.o(62133);
       return localUndefined;
     }
   }

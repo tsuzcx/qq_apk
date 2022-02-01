@@ -2,84 +2,84 @@ package com.tencent.mm.plugin.backup.b;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import com.tencent.mm.compatible.util.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public abstract class d
   extends a
 {
   private static String TAG = "MicroMsg.BackupModel";
-  private static boolean eGO = false;
-  private static int jyJ = 0;
-  private static byte[] jyK = "key".getBytes();
-  private static SharedPreferences jyM;
-  public String jyF = "id";
-  public String jyG = "hello";
-  public String jyH = "ok";
-  public e jyI;
-  public byte[] jyL;
+  private static boolean gbV = false;
+  private static int mqf = 0;
+  private static byte[] mqg = "key".getBytes();
+  private static SharedPreferences mqi;
+  public String mqb = "id";
+  public String mqc = "hello";
+  public String mqd = "ok";
+  public e mqe;
+  public byte[] mqh;
   
-  public static int aSO()
+  public static void aC(byte[] paramArrayOfByte)
   {
-    return jyJ;
+    mqg = paramArrayOfByte;
   }
   
-  public static byte[] aSP()
+  public static int bvW()
   {
-    return jyK;
+    return mqf;
   }
   
-  public static SharedPreferences aSQ()
+  public static byte[] bvX()
   {
-    if (jyM == null) {
-      jyM = ah.getContext().getSharedPreferences("BACKUP_CONFIG", h.Mp());
+    return mqg;
+  }
+  
+  public static SharedPreferences bvY()
+  {
+    if (mqi == null) {
+      mqi = aj.getContext().getSharedPreferences("BACKUP_CONFIG", g.XN());
     }
-    return jyM;
+    return mqi;
   }
   
-  public static void aSR()
+  public static void bvZ()
   {
-    ab.i(TAG, "holdReset");
-    eGO = true;
+    ad.i(TAG, "holdReset");
+    gbV = true;
   }
   
-  public static boolean aSS()
+  public static boolean bwa()
   {
-    return eGO;
+    return gbV;
   }
   
-  public static void aST()
+  public static void bwb()
   {
-    jyK = "key".getBytes();
-    jyJ = 0;
-    jyM = null;
-    eGO = false;
+    mqg = "key".getBytes();
+    mqf = 0;
+    mqi = null;
+    gbV = false;
   }
   
-  public static void an(byte[] paramArrayOfByte)
+  public static void vT(int paramInt)
   {
-    jyK = paramArrayOfByte;
+    mqf = paramInt;
   }
   
-  public static void rg(int paramInt)
+  public final e bvT()
   {
-    jyJ = paramInt;
-  }
-  
-  public final e aSL()
-  {
-    if (this.jyI == null) {
-      this.jyI = new e();
+    if (this.mqe == null) {
+      this.mqe = new e();
     }
-    return this.jyI;
+    return this.mqe;
   }
   
-  public abstract void aSM();
+  public abstract void bvU();
   
-  public abstract void aSN();
+  public abstract void bvV();
   
-  public abstract void m(Object... paramVarArgs);
+  public abstract void o(Object... paramVarArgs);
 }
 
 

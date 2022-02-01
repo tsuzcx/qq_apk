@@ -1,45 +1,47 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.storage.al;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.bj;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bm;
+import com.tencent.mm.storage.bs;
 
 public final class e
-  implements com.tencent.mm.plugin.messenger.foundation.a.k
+  implements l
 {
-  public final com.tencent.mm.plugin.messenger.foundation.a.a.h a(com.tencent.mm.cg.h paramh, bd parambd, be parambe)
+  public final com.tencent.mm.plugin.messenger.foundation.a.a.h a(com.tencent.mm.storagebase.h paramh, bg parambg, bh parambh)
   {
-    AppMethodBeat.i(1044);
-    paramh = new bj(paramh, parambd, parambe);
-    AppMethodBeat.o(1044);
+    AppMethodBeat.i(116895);
+    paramh = new bm(paramh, parambg, parambh);
+    AppMethodBeat.o(116895);
     return paramh;
   }
   
-  public final bd d(com.tencent.mm.cg.h paramh)
+  public final bg d(com.tencent.mm.storagebase.h paramh)
   {
-    AppMethodBeat.i(1042);
-    paramh = new aj(paramh);
-    AppMethodBeat.o(1042);
-    return paramh;
-  }
-  
-  public final be e(com.tencent.mm.cg.h paramh)
-  {
-    AppMethodBeat.i(1043);
+    AppMethodBeat.i(116893);
     paramh = new al(paramh);
-    AppMethodBeat.o(1043);
+    AppMethodBeat.o(116893);
     return paramh;
   }
   
-  public final com.tencent.mm.plugin.messenger.foundation.a.a.k f(com.tencent.mm.cg.h paramh)
+  public final bh e(com.tencent.mm.storagebase.h paramh)
   {
-    AppMethodBeat.i(1045);
-    paramh = new br(paramh);
-    AppMethodBeat.o(1045);
+    AppMethodBeat.i(116894);
+    paramh = new an(paramh);
+    AppMethodBeat.o(116894);
+    return paramh;
+  }
+  
+  public final k f(com.tencent.mm.storagebase.h paramh)
+  {
+    AppMethodBeat.i(116896);
+    paramh = new bs(paramh);
+    AppMethodBeat.o(116896);
     return paramh;
   }
 }

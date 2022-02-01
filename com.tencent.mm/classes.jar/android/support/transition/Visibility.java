@@ -1,27 +1,21 @@
 package android.support.transition;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.RectF;
+import android.os.Build.VERSION;
 import android.support.v4.content.a.g;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import java.util.Map;
 
 public abstract class Visibility
   extends Transition
 {
-  private static final String[] qo = { "android:visibility:visibility", "android:visibility:parent" };
+  private static final String[] wR = { "android:visibility:visibility", "android:visibility:parent" };
   int mMode = 3;
   
   public Visibility() {}
@@ -29,7 +23,7 @@ public abstract class Visibility
   public Visibility(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, ac.sG);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.yW);
     int i = g.a(paramContext, (XmlResourceParser)paramAttributeSet, "transitionVisibilityMode", 0, 0);
     paramContext.recycle();
     if (i != 0) {
@@ -37,41 +31,41 @@ public abstract class Visibility
     }
   }
   
-  private static Visibility.b b(ah paramah1, ah paramah2)
+  private static b b(u paramu1, u paramu2)
   {
-    Visibility.b localb = new Visibility.b((byte)0);
-    localb.uU = false;
-    localb.uV = false;
-    if ((paramah1 != null) && (paramah1.values.containsKey("android:visibility:visibility")))
+    b localb = new b();
+    localb.Bi = false;
+    localb.Bj = false;
+    if ((paramu1 != null) && (paramu1.values.containsKey("android:visibility:visibility")))
     {
-      localb.uW = ((Integer)paramah1.values.get("android:visibility:visibility")).intValue();
-      localb.rJ = ((ViewGroup)paramah1.values.get("android:visibility:parent"));
-      if ((paramah2 == null) || (!paramah2.values.containsKey("android:visibility:visibility"))) {
-        break label178;
+      localb.Bk = ((Integer)paramu1.values.get("android:visibility:visibility")).intValue();
+      localb.yi = ((ViewGroup)paramu1.values.get("android:visibility:parent"));
+      if ((paramu2 == null) || (!paramu2.values.containsKey("android:visibility:visibility"))) {
+        break label177;
       }
-      localb.uX = ((Integer)paramah2.values.get("android:visibility:visibility")).intValue();
-      localb.uY = ((ViewGroup)paramah2.values.get("android:visibility:parent"));
+      localb.Bl = ((Integer)paramu2.values.get("android:visibility:visibility")).intValue();
+      localb.Bm = ((ViewGroup)paramu2.values.get("android:visibility:parent"));
     }
     for (;;)
     {
-      if ((paramah1 != null) && (paramah2 != null))
+      if ((paramu1 != null) && (paramu2 != null))
       {
-        if ((localb.uW == localb.uX) && (localb.rJ == localb.uY))
+        if ((localb.Bk == localb.Bl) && (localb.yi == localb.Bm))
         {
           return localb;
-          localb.uW = -1;
-          localb.rJ = null;
+          localb.Bk = -1;
+          localb.yi = null;
           break;
-          label178:
-          localb.uX = -1;
-          localb.uY = null;
+          label177:
+          localb.Bl = -1;
+          localb.Bm = null;
           continue;
         }
-        if (localb.uW != localb.uX) {
-          if (localb.uW == 0)
+        if (localb.Bk != localb.Bl) {
+          if (localb.Bk == 0)
           {
-            localb.uV = false;
-            localb.uU = true;
+            localb.Bj = false;
+            localb.Bi = true;
           }
         }
       }
@@ -79,265 +73,248 @@ public abstract class Visibility
     for (;;)
     {
       return localb;
-      if (localb.uX == 0)
+      if (localb.Bl == 0)
       {
-        localb.uV = true;
-        localb.uU = true;
+        localb.Bj = true;
+        localb.Bi = true;
         continue;
-        if (localb.uY == null)
+        if (localb.Bm == null)
         {
-          localb.uV = false;
-          localb.uU = true;
+          localb.Bj = false;
+          localb.Bi = true;
         }
-        else if (localb.rJ == null)
+        else if (localb.yi == null)
         {
-          localb.uV = true;
-          localb.uU = true;
+          localb.Bj = true;
+          localb.Bi = true;
           continue;
-          if ((paramah1 == null) && (localb.uX == 0))
+          if ((paramu1 == null) && (localb.Bl == 0))
           {
-            localb.uV = true;
-            localb.uU = true;
+            localb.Bj = true;
+            localb.Bi = true;
           }
-          else if ((paramah2 == null) && (localb.uW == 0))
+          else if ((paramu2 == null) && (localb.Bk == 0))
           {
-            localb.uV = false;
-            localb.uU = true;
+            localb.Bj = false;
+            localb.Bi = true;
           }
         }
       }
     }
   }
   
-  private static void c(ah paramah)
+  private static void c(u paramu)
   {
-    int i = paramah.view.getVisibility();
-    paramah.values.put("android:visibility:visibility", Integer.valueOf(i));
-    paramah.values.put("android:visibility:parent", paramah.view.getParent());
+    int i = paramu.view.getVisibility();
+    paramu.values.put("android:visibility:visibility", Integer.valueOf(i));
+    paramu.values.put("android:visibility:parent", paramu.view.getParent());
     int[] arrayOfInt = new int[2];
-    paramah.view.getLocationOnScreen(arrayOfInt);
-    paramah.values.put("android:visibility:screenLocation", arrayOfInt);
+    paramu.view.getLocationOnScreen(arrayOfInt);
+    paramu.values.put("android:visibility:screenLocation", arrayOfInt);
   }
   
-  public final Animator a(ViewGroup paramViewGroup, ah paramah1, ah paramah2)
+  public final Animator a(ViewGroup paramViewGroup, u paramu1, final u paramu2)
   {
-    Object localObject1 = b(paramah1, paramah2);
-    int i;
-    label144:
-    Canvas localCanvas;
-    Object localObject3;
-    Object localObject2;
-    int j;
-    if ((((Visibility.b)localObject1).uU) && ((((Visibility.b)localObject1).rJ != null) || (((Visibility.b)localObject1).uY != null)))
+    Object localObject1 = b(paramu1, paramu2);
+    if ((((b)localObject1).Bi) && ((((b)localObject1).yi != null) || (((b)localObject1).Bm != null)))
     {
-      if (((Visibility.b)localObject1).uV)
-      {
-        if (((this.mMode & 0x1) != 1) || (paramah2 == null)) {
-          return null;
-        }
-        if (paramah1 == null)
-        {
-          localObject1 = (View)paramah2.view.getParent();
-          if (b(c((View)localObject1, false), b((View)localObject1, false)).uU) {
-            return null;
-          }
-        }
-        return a(paramViewGroup, paramah2.view, paramah1, paramah2);
+      if (!((b)localObject1).Bj) {
+        break label106;
       }
-      i = ((Visibility.b)localObject1).uX;
-      if ((this.mMode & 0x2) == 2)
-      {
-        if (paramah1 != null)
-        {
-          localObject1 = paramah1.view;
-          if (paramah2 == null) {
-            break label293;
-          }
-          paramah2 = paramah2.view;
-          localCanvas = null;
-          localObject3 = null;
-          if ((paramah2 != null) && (paramah2.getParent() != null)) {
-            break label739;
-          }
-          if (paramah2 == null) {
-            break label298;
-          }
-          localObject2 = localObject3;
-        }
-        for (;;)
-        {
-          if ((paramah2 != null) && (paramah1 != null))
-          {
-            localObject1 = (int[])paramah1.values.get("android:visibility:screenLocation");
-            i = localObject1[0];
-            j = localObject1[1];
-            localObject1 = new int[2];
-            paramViewGroup.getLocationOnScreen((int[])localObject1);
-            paramah2.offsetLeftAndRight(i - localObject1[0] - paramah2.getLeft());
-            paramah2.offsetTopAndBottom(j - localObject1[1] - paramah2.getTop());
-            localObject1 = an.c(paramViewGroup);
-            ((am)localObject1).add(paramah2);
-            paramViewGroup = a(paramViewGroup, paramah2, paramah1);
-            if (paramViewGroup == null)
-            {
-              ((am)localObject1).remove(paramah2);
-              return paramViewGroup;
-              localObject1 = null;
-              break;
-              label293:
-              paramah2 = null;
-              break label144;
-              label298:
-              paramah2 = localCanvas;
-              localObject2 = localObject3;
-              if (localObject1 == null) {
-                continue;
-              }
-              if (((View)localObject1).getParent() != null)
-              {
-                paramah2 = localCanvas;
-                localObject2 = localObject3;
-                if (!(((View)localObject1).getParent() instanceof View)) {
-                  continue;
-                }
-                paramah2 = (View)((View)localObject1).getParent();
-                if (!b(b(paramah2, true), c(paramah2, true)).uU)
-                {
-                  Matrix localMatrix = new Matrix();
-                  localMatrix.setTranslate(-paramah2.getScrollX(), -paramah2.getScrollY());
-                  au.a((View)localObject1, localMatrix);
-                  au.b(paramViewGroup, localMatrix);
-                  RectF localRectF = new RectF(0.0F, 0.0F, ((View)localObject1).getWidth(), ((View)localObject1).getHeight());
-                  localMatrix.mapRect(localRectF);
-                  j = Math.round(localRectF.left);
-                  int k = Math.round(localRectF.top);
-                  int m = Math.round(localRectF.right);
-                  int n = Math.round(localRectF.bottom);
-                  localObject2 = new ImageView(((View)localObject1).getContext());
-                  ((ImageView)localObject2).setScaleType(ImageView.ScaleType.CENTER_CROP);
-                  localCanvas = null;
-                  int i2 = Math.round(localRectF.width());
-                  int i1 = Math.round(localRectF.height());
-                  paramah2 = localCanvas;
-                  if (i2 > 0)
-                  {
-                    paramah2 = localCanvas;
-                    if (i1 > 0)
-                    {
-                      float f = Math.min(1.0F, 1048576.0F / (i2 * i1));
-                      i2 = (int)(i2 * f);
-                      i1 = (int)(i1 * f);
-                      localMatrix.postTranslate(-localRectF.left, -localRectF.top);
-                      localMatrix.postScale(f, f);
-                      paramah2 = Bitmap.createBitmap(i2, i1, Bitmap.Config.ARGB_8888);
-                      localCanvas = new Canvas(paramah2);
-                      localCanvas.concat(localMatrix);
-                      ((View)localObject1).draw(localCanvas);
-                    }
-                  }
-                  if (paramah2 != null) {
-                    ((ImageView)localObject2).setImageBitmap(paramah2);
-                  }
-                  ((ImageView)localObject2).measure(View.MeasureSpec.makeMeasureSpec(m - j, 1073741824), View.MeasureSpec.makeMeasureSpec(n - k, 1073741824));
-                  ((ImageView)localObject2).layout(j, k, m, n);
-                  paramah2 = (ah)localObject2;
-                  localObject2 = localObject3;
-                  continue;
-                }
-                if (paramah2.getParent() != null) {
-                  break label870;
-                }
-                j = paramah2.getId();
-                if ((j == -1) || (paramViewGroup.findViewById(j) == null) || (!this.tj)) {
-                  break label870;
-                }
-              }
-            }
-          }
-        }
+      if (((this.mMode & 0x1) == 1) && (paramu2 != null)) {
+        break label55;
       }
     }
-    label739:
-    label870:
-    for (paramah2 = (ah)localObject1;; paramah2 = null)
+    label55:
+    label106:
+    int i;
+    do
     {
-      localObject2 = localObject3;
-      break;
-      if (i == 4)
+      do
       {
-        localObject2 = paramah2;
-        paramah2 = localCanvas;
-        break;
+        return null;
+        if (paramu1 != null) {
+          break;
+        }
+        localObject1 = (View)paramu2.view.getParent();
+      } while (b(c((View)localObject1, false), b((View)localObject1, false)).Bi);
+      return a(paramViewGroup, paramu2.view, paramu1, paramu2);
+      i = ((b)localObject1).Bl;
+    } while ((this.mMode & 0x2) != 2);
+    label133:
+    label142:
+    Object localObject2;
+    if (paramu1 != null)
+    {
+      localObject1 = paramu1.view;
+      if (paramu2 == null) {
+        break label300;
       }
-      if (localObject1 == paramah2)
-      {
-        localObject2 = paramah2;
-        paramah2 = localCanvas;
-        break;
+      paramu2 = paramu2.view;
+      if ((paramu2 != null) && (paramu2.getParent() != null)) {
+        break label428;
       }
-      paramah2 = (ah)localObject1;
-      localObject2 = localObject3;
-      break;
-      paramViewGroup.addListener(new Visibility.1(this, (am)localObject1, paramah2));
-      return paramViewGroup;
-      if (localObject2 != null)
+      if (paramu2 == null) {
+        break label305;
+      }
+      localObject2 = null;
+      localObject1 = paramu2;
+      paramu2 = localObject2;
+    }
+    for (;;)
+    {
+      label166:
+      int j;
+      if ((localObject1 != null) && (paramu1 != null))
       {
-        j = ((View)localObject2).getVisibility();
-        au.l((View)localObject2, 0);
-        paramViewGroup = a(paramViewGroup, (View)localObject2, paramah1);
+        paramu2 = (int[])paramu1.values.get("android:visibility:screenLocation");
+        i = paramu2[0];
+        j = paramu2[1];
+        paramu2 = new int[2];
+        paramViewGroup.getLocationOnScreen(paramu2);
+        ((View)localObject1).offsetLeftAndRight(i - paramu2[0] - ((View)localObject1).getLeft());
+        ((View)localObject1).offsetTopAndBottom(j - paramu2[1] - ((View)localObject1).getTop());
+        if (Build.VERSION.SDK_INT >= 18)
+        {
+          paramu2 = new y(paramViewGroup);
+          label263:
+          paramu2.add((View)localObject1);
+          paramViewGroup = a(paramViewGroup, (View)localObject1, paramu1);
+          if (paramViewGroup != null) {
+            break label496;
+          }
+          paramu2.remove((View)localObject1);
+          return paramViewGroup;
+          localObject1 = null;
+          break label133;
+          label300:
+          paramu2 = null;
+          break label142;
+          label305:
+          if (localObject1 == null) {
+            break label582;
+          }
+          if (((View)localObject1).getParent() == null)
+          {
+            paramu2 = null;
+            continue;
+          }
+          if (!(((View)localObject1).getParent() instanceof View)) {
+            break label582;
+          }
+          paramu2 = (View)((View)localObject1).getParent();
+          if (!b(b(paramu2, true), c(paramu2, true)).Bi)
+          {
+            localObject1 = t.a(paramViewGroup, (View)localObject1, paramu2);
+            paramu2 = null;
+            continue;
+          }
+          if (paramu2.getParent() != null) {
+            break label577;
+          }
+          j = paramu2.getId();
+          if ((j == -1) || (paramViewGroup.findViewById(j) == null) || (!this.zB)) {
+            break label577;
+          }
+        }
+      }
+      label428:
+      label577:
+      for (paramu2 = (u)localObject1;; paramu2 = null)
+      {
+        localObject2 = null;
+        localObject1 = paramu2;
+        paramu2 = localObject2;
+        break label166;
+        if (i == 4)
+        {
+          localObject1 = null;
+          break label166;
+        }
+        if (localObject1 == paramu2)
+        {
+          localObject1 = null;
+          break label166;
+        }
+        if (this.zB)
+        {
+          paramu2 = null;
+          break label166;
+        }
+        localObject1 = t.a(paramViewGroup, (View)localObject1, (View)((View)localObject1).getParent());
+        paramu2 = null;
+        break label166;
+        paramu2 = (x)ad.L(paramViewGroup);
+        break label263;
+        label496:
+        paramViewGroup.addListener(new AnimatorListenerAdapter()
+        {
+          public final void onAnimationEnd(Animator paramAnonymousAnimator)
+          {
+            paramu2.remove(this.Bc);
+          }
+        });
+        return paramViewGroup;
+        if (paramu2 == null) {
+          break;
+        }
+        j = paramu2.getVisibility();
+        ag.m(paramu2, 0);
+        paramViewGroup = a(paramViewGroup, paramu2, paramu1);
         if (paramViewGroup != null)
         {
-          paramah1 = new Visibility.a((View)localObject2, i);
-          paramViewGroup.addListener(paramah1);
-          a.a(paramViewGroup, paramah1);
-          a(paramah1);
+          paramu1 = new a(paramu2, i);
+          paramViewGroup.addListener(paramu1);
+          a.a(paramViewGroup, paramu1);
+          a(paramu1);
           return paramViewGroup;
         }
-        au.l((View)localObject2, j);
+        ag.m(paramu2, j);
         return paramViewGroup;
       }
-      return null;
-      return null;
+      label582:
+      paramu2 = null;
+      localObject1 = null;
     }
   }
   
-  public Animator a(ViewGroup paramViewGroup, View paramView, ah paramah)
+  public Animator a(ViewGroup paramViewGroup, View paramView, u paramu)
   {
     return null;
   }
   
-  public Animator a(ViewGroup paramViewGroup, View paramView, ah paramah1, ah paramah2)
+  public Animator a(ViewGroup paramViewGroup, View paramView, u paramu1, u paramu2)
   {
     return null;
   }
   
-  public void a(ah paramah)
+  public void a(u paramu)
   {
-    c(paramah);
+    c(paramu);
   }
   
-  public final boolean a(ah paramah1, ah paramah2)
+  public final boolean a(u paramu1, u paramu2)
   {
-    if ((paramah1 == null) && (paramah2 == null)) {}
+    if ((paramu1 == null) && (paramu2 == null)) {}
     do
     {
       do
       {
         return false;
-      } while ((paramah1 != null) && (paramah2 != null) && (paramah2.values.containsKey("android:visibility:visibility") != paramah1.values.containsKey("android:visibility:visibility")));
-      paramah1 = b(paramah1, paramah2);
-    } while ((!paramah1.uU) || ((paramah1.uW != 0) && (paramah1.uX != 0)));
+      } while ((paramu1 != null) && (paramu2 != null) && (paramu2.values.containsKey("android:visibility:visibility") != paramu1.values.containsKey("android:visibility:visibility")));
+      paramu1 = b(paramu1, paramu2);
+    } while ((!paramu1.Bi) || ((paramu1.Bk != 0) && (paramu1.Bl != 0)));
     return true;
   }
   
-  public void b(ah paramah)
+  public void b(u paramu)
   {
-    c(paramah);
+    c(paramu);
   }
   
   public final String[] getTransitionProperties()
   {
-    return qo;
+    return wR;
   }
   
   public final void setMode(int paramInt)
@@ -347,10 +324,108 @@ public abstract class Visibility
     }
     this.mMode = paramInt;
   }
+  
+  static final class a
+    extends AnimatorListenerAdapter
+    implements Transition.c, a.a
+  {
+    private final int Be;
+    private final ViewGroup Bf;
+    private final boolean Bg;
+    private boolean Bh;
+    boolean mCanceled = false;
+    private final View mView;
+    
+    a(View paramView, int paramInt)
+    {
+      this.mView = paramView;
+      this.Be = paramInt;
+      this.Bf = ((ViewGroup)paramView.getParent());
+      this.Bg = true;
+      C(true);
+    }
+    
+    private void C(boolean paramBoolean)
+    {
+      if ((this.Bg) && (this.Bh != paramBoolean) && (this.Bf != null))
+      {
+        this.Bh = paramBoolean;
+        aa.c(this.Bf, paramBoolean);
+      }
+    }
+    
+    private void du()
+    {
+      if (!this.mCanceled)
+      {
+        ag.m(this.mView, this.Be);
+        if (this.Bf != null) {
+          this.Bf.invalidate();
+        }
+      }
+      C(false);
+    }
+    
+    public final void a(Transition paramTransition)
+    {
+      du();
+      paramTransition.b(this);
+    }
+    
+    public final void dg()
+    {
+      C(false);
+    }
+    
+    public final void dh()
+    {
+      C(true);
+    }
+    
+    public final void dl() {}
+    
+    public final void onAnimationCancel(Animator paramAnimator)
+    {
+      this.mCanceled = true;
+    }
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      du();
+    }
+    
+    public final void onAnimationPause(Animator paramAnimator)
+    {
+      if (!this.mCanceled) {
+        ag.m(this.mView, this.Be);
+      }
+    }
+    
+    public final void onAnimationRepeat(Animator paramAnimator) {}
+    
+    public final void onAnimationResume(Animator paramAnimator)
+    {
+      if (!this.mCanceled) {
+        ag.m(this.mView, 0);
+      }
+    }
+    
+    public final void onAnimationStart(Animator paramAnimator) {}
+  }
+  
+  static final class b
+  {
+    boolean Bi;
+    boolean Bj;
+    int Bk;
+    int Bl;
+    ViewGroup Bm;
+    ViewGroup yi;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.Visibility
  * JD-Core Version:    0.7.0.1
  */

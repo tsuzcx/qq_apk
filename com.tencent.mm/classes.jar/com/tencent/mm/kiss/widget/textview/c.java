@@ -8,84 +8,84 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class c
 {
-  public static c eLm;
-  public ConcurrentHashMap<Integer, b> eLn;
+  public static c ggt;
+  public ConcurrentHashMap<Integer, b> ggu;
   
   static
   {
-    AppMethodBeat.i(105699);
-    eLm = new c();
-    AppMethodBeat.o(105699);
+    AppMethodBeat.i(141017);
+    ggt = new c();
+    AppMethodBeat.o(141017);
   }
   
   public c()
   {
-    AppMethodBeat.i(105694);
-    this.eLn = new ConcurrentHashMap();
-    AppMethodBeat.o(105694);
+    AppMethodBeat.i(141012);
+    this.ggu = new ConcurrentHashMap();
+    AppMethodBeat.o(141012);
   }
   
   public static int a(a parama)
   {
-    AppMethodBeat.i(105698);
+    AppMethodBeat.i(141016);
     int i = parama.hashCode();
-    AppMethodBeat.o(105698);
+    AppMethodBeat.o(141016);
     return i;
-  }
-  
-  public final void SJ()
-  {
-    AppMethodBeat.i(105697);
-    Iterator localIterator = this.eLn.values().iterator();
-    while (localIterator.hasNext()) {
-      ((b)localIterator.next()).eLl.clear();
-    }
-    this.eLn.clear();
-    AppMethodBeat.o(105697);
   }
   
   public final f a(a parama, CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(105696);
+    AppMethodBeat.i(141014);
     if (parama != null)
     {
-      parama = (b)this.eLn.get(Integer.valueOf(parama.hashCode()));
+      parama = (b)this.ggu.get(Integer.valueOf(parama.hashCode()));
       if (parama != null)
       {
-        parama = parama.s(paramCharSequence);
-        AppMethodBeat.o(105696);
+        parama = parama.w(paramCharSequence);
+        AppMethodBeat.o(141014);
         return parama;
       }
     }
-    AppMethodBeat.o(105696);
+    AppMethodBeat.o(141014);
     return null;
   }
   
   public final void a(a parama, f paramf)
   {
-    AppMethodBeat.i(105695);
+    AppMethodBeat.i(141013);
     if (parama == null)
     {
-      AppMethodBeat.o(105695);
+      AppMethodBeat.o(141013);
       return;
     }
-    b localb = (b)this.eLn.get(Integer.valueOf(parama.hashCode()));
+    b localb = (b)this.ggu.get(Integer.valueOf(parama.hashCode()));
     if (localb != null)
     {
       localb.a(paramf);
-      this.eLn.put(Integer.valueOf(parama.hashCode()), localb);
-      AppMethodBeat.o(105695);
+      this.ggu.put(Integer.valueOf(parama.hashCode()), localb);
+      AppMethodBeat.o(141013);
       return;
     }
     localb = new b();
     localb.a(paramf);
-    this.eLn.put(Integer.valueOf(parama.hashCode()), localb);
-    AppMethodBeat.o(105695);
+    this.ggu.put(Integer.valueOf(parama.hashCode()), localb);
+    AppMethodBeat.o(141013);
+  }
+  
+  public final void agC()
+  {
+    AppMethodBeat.i(141015);
+    Iterator localIterator = this.ggu.values().iterator();
+    while (localIterator.hasNext()) {
+      ((b)localIterator.next()).ggs.clear();
+    }
+    this.ggu.clear();
+    AppMethodBeat.o(141015);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.c
  * JD-Core Version:    0.7.0.1
  */

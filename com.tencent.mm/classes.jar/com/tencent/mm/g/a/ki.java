@@ -1,12 +1,15 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import java.util.ArrayList;
 
 public final class ki
   extends b
 {
-  public ki.a cAc;
+  public a doJ;
+  public b doK;
   
   public ki()
   {
@@ -15,12 +18,22 @@ public final class ki
   
   private ki(byte paramByte)
   {
-    AppMethodBeat.i(137227);
-    this.cAc = new ki.a();
-    this.ymq = false;
+    AppMethodBeat.i(63290);
+    this.doJ = new a();
+    this.doK = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(137227);
+    AppMethodBeat.o(63290);
   }
+  
+  public static final class a
+  {
+    public Context context;
+    public ArrayList doL;
+    public String doM;
+  }
+  
+  public static final class b {}
 }
 
 

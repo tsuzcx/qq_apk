@@ -6,44 +6,44 @@ import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.a.a;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.o;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.o;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class PluginCloudVoice
   extends f
   implements c, a
 {
-  private static final String[] kJu = { "confService", "marsbridgenetwork", "marsbridgexlog" };
+  private static final String[] nPv = { "confService", "marsbridgenetwork", "marsbridgexlog" };
   
   public void configure(g paramg)
   {
-    AppMethodBeat.i(135464);
+    AppMethodBeat.i(90784);
     super.configure(paramg);
-    ab.i("MicroMsg.OpenVoice.PluginCloudVoice", "hy: PluginCloudVoice configure");
-    AppMethodBeat.o(135464);
+    ad.i("MicroMsg.OpenVoice.PluginCloudVoice", "hy: PluginCloudVoice configure");
+    AppMethodBeat.o(90784);
   }
   
   public void execute(g paramg)
   {
-    AppMethodBeat.i(135463);
-    ab.i("MicroMsg.OpenVoice.PluginCloudVoice", "hy: PluginCloudVoice execute");
-    AppMethodBeat.o(135463);
+    AppMethodBeat.i(90783);
+    ad.i("MicroMsg.OpenVoice.PluginCloudVoice", "hy: PluginCloudVoice execute");
+    AppMethodBeat.o(90783);
   }
   
   public void onAccountInitialized(e.c paramc) {}
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(135465);
-    ab.i("MicroMsg.OpenVoice.PluginCloudVoice", "hy: account release. uninit openvoice so");
-    o localo = o.kKN;
-    localo.O(localo.kLu);
-    AppMethodBeat.o(135465);
+    AppMethodBeat.i(90785);
+    ad.i("MicroMsg.OpenVoice.PluginCloudVoice", "hy: account release. uninit openvoice so");
+    o localo = o.nQO;
+    localo.ae(localo.nRy);
+    AppMethodBeat.o(90785);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.PluginCloudVoice
  * JD-Core Version:    0.7.0.1
  */

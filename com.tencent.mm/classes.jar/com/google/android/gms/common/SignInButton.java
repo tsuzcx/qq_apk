@@ -13,9 +13,6 @@ import com.google.android.gms.common.internal.SignInButtonCreator;
 import com.google.android.gms.common.internal.SignInButtonImpl;
 import com.google.android.gms.dynamic.RemoteCreator.RemoteCreatorException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 
 public final class SignInButton
   extends FrameLayout
@@ -45,7 +42,7 @@ public final class SignInButton
   public SignInButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(60463);
+    AppMethodBeat.i(10955);
     this.zzbx = null;
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.SignInButton, 0, 0);
     try
@@ -54,68 +51,68 @@ public final class SignInButton
       this.mColor = paramContext.getInt(1, 2);
       paramContext.recycle();
       setStyle(this.mSize, this.mColor);
-      AppMethodBeat.o(60463);
+      AppMethodBeat.o(10955);
       return;
     }
     finally
     {
       paramContext.recycle();
-      AppMethodBeat.o(60463);
+      AppMethodBeat.o(10955);
     }
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(60471);
+    AppMethodBeat.i(10963);
     if ((this.zzbx != null) && (paramView == this.zzbw)) {
       this.zzbx.onClick(this);
     }
-    AppMethodBeat.o(60471);
+    AppMethodBeat.o(10963);
   }
   
   public final void setColorScheme(int paramInt)
   {
-    AppMethodBeat.i(60465);
+    AppMethodBeat.i(10957);
     setStyle(this.mSize, paramInt);
-    AppMethodBeat.o(60465);
+    AppMethodBeat.o(10957);
   }
   
   public final void setEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(60470);
+    AppMethodBeat.i(10962);
     super.setEnabled(paramBoolean);
     this.zzbw.setEnabled(paramBoolean);
-    AppMethodBeat.o(60470);
+    AppMethodBeat.o(10962);
   }
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(60469);
+    AppMethodBeat.i(10961);
     this.zzbx = paramOnClickListener;
     if (this.zzbw != null) {
       this.zzbw.setOnClickListener(this);
     }
-    AppMethodBeat.o(60469);
+    AppMethodBeat.o(10961);
   }
   
   @Deprecated
   public final void setScopes(Scope[] paramArrayOfScope)
   {
-    AppMethodBeat.i(60466);
+    AppMethodBeat.i(10958);
     setStyle(this.mSize, this.mColor);
-    AppMethodBeat.o(60466);
+    AppMethodBeat.o(10958);
   }
   
   public final void setSize(int paramInt)
   {
-    AppMethodBeat.i(60464);
+    AppMethodBeat.i(10956);
     setStyle(paramInt, this.mColor);
-    AppMethodBeat.o(60464);
+    AppMethodBeat.o(10956);
   }
   
   public final void setStyle(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(60467);
+    AppMethodBeat.i(10959);
     this.mSize = paramInt1;
     this.mColor = paramInt2;
     Context localContext = getContext();
@@ -128,7 +125,7 @@ public final class SignInButton
       addView(this.zzbw);
       this.zzbw.setEnabled(isEnabled());
       this.zzbw.setOnClickListener(this);
-      AppMethodBeat.o(60467);
+      AppMethodBeat.o(10959);
       return;
     }
     catch (RemoteCreator.RemoteCreatorException localRemoteCreatorException)
@@ -147,17 +144,14 @@ public final class SignInButton
   @Deprecated
   public final void setStyle(int paramInt1, int paramInt2, Scope[] paramArrayOfScope)
   {
-    AppMethodBeat.i(60468);
+    AppMethodBeat.i(10960);
     setStyle(paramInt1, paramInt2);
-    AppMethodBeat.o(60468);
+    AppMethodBeat.o(10960);
   }
-  
-  @Retention(RetentionPolicy.SOURCE)
-  public static @interface ButtonSize {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.common.SignInButton
  * JD-Core Version:    0.7.0.1
  */

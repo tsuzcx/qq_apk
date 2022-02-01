@@ -5,6 +5,7 @@ import android.annotation.TargetApi;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaCodecInfo.CodecProfileLevel;
+import android.media.MediaCodecList;
 import android.util.Pair;
 import android.util.SparseIntArray;
 import com.google.android.exoplayer2.i.x;
@@ -21,79 +22,79 @@ import java.util.regex.Pattern;
 @TargetApi(16)
 public final class d
 {
-  private static int aNA;
-  private static final a aNu;
-  private static final Pattern aNv;
-  private static final HashMap<d.a, List<a>> aNw;
-  private static final SparseIntArray aNx;
-  private static final SparseIntArray aNy;
-  private static final Map<String, Integer> aNz;
+  private static final a biU;
+  private static final Pattern biV;
+  private static final HashMap<d.a, List<a>> biW;
+  private static final SparseIntArray biX;
+  private static final SparseIntArray biY;
+  private static final Map<String, Integer> biZ;
+  private static int bja;
   
   static
   {
-    AppMethodBeat.i(95256);
-    aNu = new a("OMX.google.raw.decoder", null, null, false, false);
-    aNv = Pattern.compile("^\\D?(\\d+)$");
-    aNw = new HashMap();
-    aNA = -1;
+    AppMethodBeat.i(92378);
+    biU = new a("OMX.google.raw.decoder", null, null, false, false);
+    biV = Pattern.compile("^\\D?(\\d+)$");
+    biW = new HashMap();
+    bja = -1;
     Object localObject = new SparseIntArray();
-    aNx = (SparseIntArray)localObject;
+    biX = (SparseIntArray)localObject;
     ((SparseIntArray)localObject).put(66, 1);
-    aNx.put(77, 2);
-    aNx.put(88, 4);
-    aNx.put(100, 8);
+    biX.put(77, 2);
+    biX.put(88, 4);
+    biX.put(100, 8);
     localObject = new SparseIntArray();
-    aNy = (SparseIntArray)localObject;
+    biY = (SparseIntArray)localObject;
     ((SparseIntArray)localObject).put(10, 1);
-    aNy.put(11, 4);
-    aNy.put(12, 8);
-    aNy.put(13, 16);
-    aNy.put(20, 32);
-    aNy.put(21, 64);
-    aNy.put(22, 128);
-    aNy.put(30, 256);
-    aNy.put(31, 512);
-    aNy.put(32, 1024);
-    aNy.put(40, 2048);
-    aNy.put(41, 4096);
-    aNy.put(42, 8192);
-    aNy.put(50, 16384);
-    aNy.put(51, 32768);
-    aNy.put(52, 65536);
+    biY.put(11, 4);
+    biY.put(12, 8);
+    biY.put(13, 16);
+    biY.put(20, 32);
+    biY.put(21, 64);
+    biY.put(22, 128);
+    biY.put(30, 256);
+    biY.put(31, 512);
+    biY.put(32, 1024);
+    biY.put(40, 2048);
+    biY.put(41, 4096);
+    biY.put(42, 8192);
+    biY.put(50, 16384);
+    biY.put(51, 32768);
+    biY.put(52, 65536);
     localObject = new HashMap();
-    aNz = (Map)localObject;
+    biZ = (Map)localObject;
     ((Map)localObject).put("L30", Integer.valueOf(1));
-    aNz.put("L60", Integer.valueOf(4));
-    aNz.put("L63", Integer.valueOf(16));
-    aNz.put("L90", Integer.valueOf(64));
-    aNz.put("L93", Integer.valueOf(256));
-    aNz.put("L120", Integer.valueOf(1024));
-    aNz.put("L123", Integer.valueOf(4096));
-    aNz.put("L150", Integer.valueOf(16384));
-    aNz.put("L153", Integer.valueOf(65536));
-    aNz.put("L156", Integer.valueOf(262144));
-    aNz.put("L180", Integer.valueOf(1048576));
-    aNz.put("L183", Integer.valueOf(4194304));
-    aNz.put("L186", Integer.valueOf(16777216));
-    aNz.put("H30", Integer.valueOf(2));
-    aNz.put("H60", Integer.valueOf(8));
-    aNz.put("H63", Integer.valueOf(32));
-    aNz.put("H90", Integer.valueOf(128));
-    aNz.put("H93", Integer.valueOf(512));
-    aNz.put("H120", Integer.valueOf(2048));
-    aNz.put("H123", Integer.valueOf(8192));
-    aNz.put("H150", Integer.valueOf(32768));
-    aNz.put("H153", Integer.valueOf(131072));
-    aNz.put("H156", Integer.valueOf(524288));
-    aNz.put("H180", Integer.valueOf(2097152));
-    aNz.put("H183", Integer.valueOf(8388608));
-    aNz.put("H186", Integer.valueOf(33554432));
-    AppMethodBeat.o(95256);
+    biZ.put("L60", Integer.valueOf(4));
+    biZ.put("L63", Integer.valueOf(16));
+    biZ.put("L90", Integer.valueOf(64));
+    biZ.put("L93", Integer.valueOf(256));
+    biZ.put("L120", Integer.valueOf(1024));
+    biZ.put("L123", Integer.valueOf(4096));
+    biZ.put("L150", Integer.valueOf(16384));
+    biZ.put("L153", Integer.valueOf(65536));
+    biZ.put("L156", Integer.valueOf(262144));
+    biZ.put("L180", Integer.valueOf(1048576));
+    biZ.put("L183", Integer.valueOf(4194304));
+    biZ.put("L186", Integer.valueOf(16777216));
+    biZ.put("H30", Integer.valueOf(2));
+    biZ.put("H60", Integer.valueOf(8));
+    biZ.put("H63", Integer.valueOf(32));
+    biZ.put("H90", Integer.valueOf(128));
+    biZ.put("H93", Integer.valueOf(512));
+    biZ.put("H120", Integer.valueOf(2048));
+    biZ.put("H123", Integer.valueOf(8192));
+    biZ.put("H150", Integer.valueOf(32768));
+    biZ.put("H153", Integer.valueOf(131072));
+    biZ.put("H156", Integer.valueOf(524288));
+    biZ.put("H180", Integer.valueOf(2097152));
+    biZ.put("H183", Integer.valueOf(8388608));
+    biZ.put("H186", Integer.valueOf(33554432));
+    AppMethodBeat.o(92378);
   }
   
-  private static List<a> a(d.a parama, d.c paramc)
+  private static List<a> a(d.a parama, c paramc)
   {
-    AppMethodBeat.i(95253);
+    AppMethodBeat.i(92375);
     for (;;)
     {
       ArrayList localArrayList;
@@ -103,28 +104,28 @@ public final class d
         localArrayList = new ArrayList();
         String str1 = parama.mimeType;
         int k = paramc.getCodecCount();
-        boolean bool2 = paramc.oJ();
+        boolean bool2 = paramc.tv();
         j = 0;
         if (j >= k) {
-          break label1102;
+          break label1104;
         }
         MediaCodecInfo localMediaCodecInfo = paramc.getCodecInfoAt(j);
         String str2 = localMediaCodecInfo.getName();
         if (localMediaCodecInfo.isEncoder()) {
-          break label1110;
+          break label1112;
         }
         String str3;
         if ((!bool2) && (str2.endsWith(".secure")))
         {
-          break label1110;
+          break label1112;
           if (i == 0) {
-            break label1095;
+            break label1097;
           }
           String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
           int m = arrayOfString.length;
           i = 0;
           if (i >= m) {
-            break label1095;
+            break label1097;
           }
           str3 = arrayOfString[i];
           bool1 = str3.equalsIgnoreCase(str1);
@@ -137,19 +138,19 @@ public final class d
           if ((x.SDK_INT <= 22) && ((x.MODEL.equals("ODROID-XU3")) || (x.MODEL.equals("Nexus 10"))))
           {
             if ("OMX.Exynos.AVC.Decoder".equals(str2)) {
-              break label1115;
+              break label1117;
             }
             if ("OMX.Exynos.AVC.Decoder.secure".equals(str2))
             {
-              break label1115;
-              if (((!bool2) || (parama.aMF != bool3)) && ((bool2) || (parama.aMF))) {
+              break label1117;
+              if (((!bool2) || (parama.bie != bool3)) && ((bool2) || (parama.bie))) {
                 continue;
               }
               localArrayList.add(a.a(str2, str1, localCodecCapabilities, bool1, false));
               i += 1;
               continue;
               if ((x.SDK_INT < 21) && (("CIPAACDecoder".equals(str2)) || ("CIPMP3Decoder".equals(str2)) || ("CIPVorbisDecoder".equals(str2)) || ("CIPAMRNBDecoder".equals(str2)) || ("AACDecoder".equals(str2)) || ("MP3Decoder".equals(str2)))) {
-                break label1121;
+                break label1123;
               }
               if ((x.SDK_INT < 18) && ("OMX.SEC.MP3.Decoder".equals(str2)))
               {
@@ -157,19 +158,19 @@ public final class d
                 continue;
               }
               if ((x.SDK_INT < 18) && ("OMX.MTK.AUDIO.DECODER.AAC".equals(str2)) && (("a70".equals(x.DEVICE)) || (("Xiaomi".equals(x.MANUFACTURER)) && (x.DEVICE.startsWith("HM"))))) {
-                break label1126;
+                break label1128;
               }
               if ((x.SDK_INT == 16) && ("OMX.qcom.audio.decoder.mp3".equals(str2)) && (("dlxu".equals(x.DEVICE)) || ("protou".equals(x.DEVICE)) || ("ville".equals(x.DEVICE)) || ("villeplus".equals(x.DEVICE)) || ("villec2".equals(x.DEVICE)) || (x.DEVICE.startsWith("gee")) || ("C6602".equals(x.DEVICE)) || ("C6603".equals(x.DEVICE)) || ("C6606".equals(x.DEVICE)) || ("C6616".equals(x.DEVICE)) || ("L36h".equals(x.DEVICE)) || ("SO-02E".equals(x.DEVICE)))) {
-                break label1131;
+                break label1133;
               }
               if ((x.SDK_INT == 16) && ("OMX.qcom.audio.decoder.aac".equals(str2)) && (("C1504".equals(x.DEVICE)) || ("C1505".equals(x.DEVICE)) || ("C1604".equals(x.DEVICE)) || ("C1605".equals(x.DEVICE)))) {
-                break label1136;
+                break label1138;
               }
               if ((x.SDK_INT < 24) && (("OMX.SEC.aac.dec".equals(str2)) || ("OMX.Exynos.AAC.Decoder".equals(str2))) && (x.MANUFACTURER.equals("samsung")) && ((x.DEVICE.startsWith("zeroflte")) || (x.DEVICE.startsWith("zerolte")) || (x.DEVICE.startsWith("zenlte")) || (x.DEVICE.equals("SC-05G")) || (x.DEVICE.equals("marinelteatt")) || (x.DEVICE.equals("404SC")) || (x.DEVICE.equals("SC-04G")) || (x.DEVICE.equals("SCV31")))) {
-                break label1141;
+                break label1143;
               }
               if ((x.SDK_INT <= 19) && ("OMX.SEC.vp8.dec".equals(str2)) && ("samsung".equals(x.MANUFACTURER)) && ((x.DEVICE.startsWith("d2")) || (x.DEVICE.startsWith("serrano")) || (x.DEVICE.startsWith("jflte")) || (x.DEVICE.startsWith("santos")) || (x.DEVICE.startsWith("t0")))) {
-                break label1146;
+                break label1148;
               }
               if ((x.SDK_INT <= 19) && (x.DEVICE.startsWith("jflte")))
               {
@@ -190,13 +191,13 @@ public final class d
             continue;
           }
           localArrayList.add(a.a(str2 + ".secure", str1, localCodecCapabilities, bool1, true));
-          AppMethodBeat.o(95253);
+          AppMethodBeat.o(92375);
           return localArrayList;
         }
         catch (Exception localException)
         {
           if (x.SDK_INT > 23) {
-            break label1054;
+            break label1056;
           }
         }
         if (!localArrayList.isEmpty())
@@ -208,52 +209,52 @@ public final class d
       }
       catch (Exception parama)
       {
-        parama = new d.b(parama, (byte)0);
-        AppMethodBeat.o(95253);
+        parama = new b(parama, (byte)0);
+        AppMethodBeat.o(92375);
         throw parama;
       }
-      label1054:
-      AppMethodBeat.o(95253);
+      label1056:
+      AppMethodBeat.o(92375);
       throw localException;
-      label1095:
+      label1097:
       j += 1;
       continue;
-      label1102:
-      AppMethodBeat.o(95253);
+      label1104:
+      AppMethodBeat.o(92375);
       return localArrayList;
-      label1110:
+      label1112:
       int i = 0;
       continue;
-      label1115:
+      label1117:
       boolean bool1 = true;
       continue;
-      label1121:
+      label1123:
       i = 0;
       continue;
-      label1126:
+      label1128:
       i = 0;
       continue;
-      label1131:
+      label1133:
       i = 0;
       continue;
-      label1136:
+      label1138:
       i = 0;
       continue;
-      label1141:
+      label1143:
       i = 0;
       continue;
-      label1146:
+      label1148:
       i = 0;
     }
   }
   
-  public static Pair<Integer, Integer> ar(String paramString)
+  public static Pair<Integer, Integer> an(String paramString)
   {
     int i = 0;
-    AppMethodBeat.i(95252);
+    AppMethodBeat.i(92374);
     if (paramString == null)
     {
-      AppMethodBeat.o(95252);
+      AppMethodBeat.o(92374);
       return null;
     }
     paramString = paramString.split("\\.");
@@ -269,7 +270,7 @@ public final class d
       switch (i)
       {
       default: 
-        AppMethodBeat.o(95252);
+        AppMethodBeat.o(92374);
         return null;
         if (!localMatcher.equals("hev1")) {
           break label80;
@@ -293,47 +294,47 @@ public final class d
     }
     if (paramString.length < 4)
     {
-      AppMethodBeat.o(95252);
+      AppMethodBeat.o(92374);
       return null;
     }
-    localMatcher = aNv.matcher(paramString[1]);
+    localMatcher = biV.matcher(paramString[1]);
     if (!localMatcher.matches())
     {
-      AppMethodBeat.o(95252);
+      AppMethodBeat.o(92374);
       return null;
     }
     String str = localMatcher.group(1);
     if ("1".equals(str)) {}
     for (i = 1;; i = 2)
     {
-      paramString = (Integer)aNz.get(paramString[3]);
+      paramString = (Integer)biZ.get(paramString[3]);
       if (paramString != null) {
         break label304;
       }
       new StringBuilder("Unknown HEVC level string: ").append(localMatcher.group(1));
-      AppMethodBeat.o(95252);
+      AppMethodBeat.o(92374);
       return null;
       if (!"2".equals(str)) {
         break;
       }
     }
-    AppMethodBeat.o(95252);
+    AppMethodBeat.o(92374);
     return null;
     label304:
     paramString = new Pair(Integer.valueOf(i), paramString);
-    AppMethodBeat.o(95252);
+    AppMethodBeat.o(92374);
     return paramString;
-    paramString = c(paramString);
-    AppMethodBeat.o(95252);
+    paramString = e(paramString);
+    AppMethodBeat.o(92374);
     return paramString;
   }
   
-  private static Pair<Integer, Integer> c(String[] paramArrayOfString)
+  private static Pair<Integer, Integer> e(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(95255);
+    AppMethodBeat.i(92377);
     if (paramArrayOfString.length < 2)
     {
-      AppMethodBeat.o(95255);
+      AppMethodBeat.o(92377);
       return null;
     }
     Integer localInteger2;
@@ -347,12 +348,12 @@ public final class d
       }
       for (paramArrayOfString = Integer.valueOf(i);; paramArrayOfString = Integer.valueOf(i))
       {
-        localInteger2 = Integer.valueOf(aNx.get(localInteger1.intValue()));
+        localInteger2 = Integer.valueOf(biX.get(localInteger1.intValue()));
         if (localInteger2 != null) {
           break label155;
         }
         new StringBuilder("Unknown AVC profile: ").append(localInteger1);
-        AppMethodBeat.o(95255);
+        AppMethodBeat.o(92377);
         return null;
         if (paramArrayOfString.length < 3) {
           break;
@@ -360,38 +361,38 @@ public final class d
         localInteger1 = Integer.valueOf(Integer.parseInt(paramArrayOfString[1]));
         i = Integer.parseInt(paramArrayOfString[2]);
       }
-      AppMethodBeat.o(95255);
+      AppMethodBeat.o(92377);
       return null;
     }
     catch (NumberFormatException paramArrayOfString)
     {
-      AppMethodBeat.o(95255);
+      AppMethodBeat.o(92377);
       return null;
     }
     label155:
-    Integer localInteger1 = Integer.valueOf(aNy.get(paramArrayOfString.intValue()));
+    Integer localInteger1 = Integer.valueOf(biY.get(paramArrayOfString.intValue()));
     if (localInteger1 == null)
     {
       new StringBuilder("Unknown AVC level: ").append(paramArrayOfString);
-      AppMethodBeat.o(95255);
+      AppMethodBeat.o(92377);
       return null;
     }
     paramArrayOfString = new Pair(localInteger2, localInteger1);
-    AppMethodBeat.o(95255);
+    AppMethodBeat.o(92377);
     return paramArrayOfString;
   }
   
   public static a f(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(95249);
+    AppMethodBeat.i(92371);
     paramString = g(paramString, paramBoolean);
     if (paramString.isEmpty())
     {
-      AppMethodBeat.o(95249);
+      AppMethodBeat.o(92371);
       return null;
     }
     paramString = (a)paramString.get(0);
-    AppMethodBeat.o(95249);
+    AppMethodBeat.o(92371);
     return paramString;
   }
   
@@ -402,19 +403,19 @@ public final class d
     {
       try
       {
-        AppMethodBeat.i(95250);
+        AppMethodBeat.i(92372);
         d.a locala = new d.a(paramString, paramBoolean);
-        Object localObject = (List)aNw.get(locala);
+        Object localObject = (List)biW.get(locala);
         if (localObject != null)
         {
-          AppMethodBeat.o(95250);
+          AppMethodBeat.o(92372);
           paramString = (String)localObject;
           return paramString;
         }
         if (x.SDK_INT >= 21)
         {
-          localObject = new d.e(paramBoolean);
-          List localList = a(locala, (d.c)localObject);
+          localObject = new e(paramBoolean);
+          List localList = a(locala, (c)localObject);
           localObject = localList;
           if (paramBoolean)
           {
@@ -427,7 +428,7 @@ public final class d
                 localObject = localList;
                 if (x.SDK_INT <= 23)
                 {
-                  localObject = a(locala, new d.d((byte)0));
+                  localObject = a(locala, new d((byte)0));
                   if (((List)localObject).isEmpty()) {
                     break label219;
                   }
@@ -437,34 +438,34 @@ public final class d
               }
             }
           }
-          t((List)localObject);
+          v((List)localObject);
           paramString = Collections.unmodifiableList((List)localObject);
-          aNw.put(locala, paramString);
-          AppMethodBeat.o(95250);
+          biW.put(locala, paramString);
+          AppMethodBeat.o(92372);
           continue;
         }
-        localObject = new d.d((byte)0);
+        localObject = new d((byte)0);
       }
       finally {}
     }
   }
   
-  public static a oH()
+  public static a tt()
   {
-    return aNu;
+    return biU;
   }
   
-  public static int oI()
+  public static int tu()
   {
     int i = 0;
-    AppMethodBeat.i(95251);
+    AppMethodBeat.i(92373);
     int j;
-    if (aNA == -1)
+    if (bja == -1)
     {
       Object localObject = f("video/avc", false);
       if (localObject != null)
       {
-        localObject = ((a)localObject).oB();
+        localObject = ((a)localObject).tn();
         int m = localObject.length;
         int k = 0;
         j = 0;
@@ -522,17 +523,17 @@ public final class d
     for (i = 345600;; i = 172800)
     {
       i = Math.max(j, i);
-      aNA = i;
-      i = aNA;
-      AppMethodBeat.o(95251);
+      bja = i;
+      i = bja;
+      AppMethodBeat.o(92373);
       return i;
     }
   }
   
-  private static void t(List<a> paramList)
+  private static void v(List<a> paramList)
   {
     int i = 1;
-    AppMethodBeat.i(95254);
+    AppMethodBeat.i(92376);
     if ((x.SDK_INT < 26) && (paramList.size() > 1) && ("OMX.MTK.AUDIO.DECODER.RAW".equals(((a)paramList.get(0)).name))) {
       while (i < paramList.size())
       {
@@ -541,18 +542,131 @@ public final class d
         {
           paramList.remove(i);
           paramList.add(0, locala);
-          AppMethodBeat.o(95254);
+          AppMethodBeat.o(92376);
           return;
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(95254);
+    AppMethodBeat.o(92376);
+  }
+  
+  public static final class b
+    extends Exception
+  {
+    private b(Throwable paramThrowable)
+    {
+      super(paramThrowable);
+    }
+  }
+  
+  static abstract interface c
+  {
+    public abstract boolean a(String paramString, MediaCodecInfo.CodecCapabilities paramCodecCapabilities);
+    
+    public abstract int getCodecCount();
+    
+    public abstract MediaCodecInfo getCodecInfoAt(int paramInt);
+    
+    public abstract boolean tv();
+  }
+  
+  static final class d
+    implements d.c
+  {
+    public final boolean a(String paramString, MediaCodecInfo.CodecCapabilities paramCodecCapabilities)
+    {
+      AppMethodBeat.i(92365);
+      boolean bool = "video/avc".equals(paramString);
+      AppMethodBeat.o(92365);
+      return bool;
+    }
+    
+    public final int getCodecCount()
+    {
+      AppMethodBeat.i(92363);
+      int i = MediaCodecList.getCodecCount();
+      AppMethodBeat.o(92363);
+      return i;
+    }
+    
+    public final MediaCodecInfo getCodecInfoAt(int paramInt)
+    {
+      AppMethodBeat.i(92364);
+      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(paramInt);
+      AppMethodBeat.o(92364);
+      return localMediaCodecInfo;
+    }
+    
+    public final boolean tv()
+    {
+      return false;
+    }
+  }
+  
+  @TargetApi(21)
+  static final class e
+    implements d.c
+  {
+    private final int bjb;
+    private MediaCodecInfo[] bjc;
+    
+    public e(boolean paramBoolean)
+    {
+      AppMethodBeat.i(92366);
+      if (paramBoolean) {}
+      for (int i = 1;; i = 0)
+      {
+        this.bjb = i;
+        AppMethodBeat.o(92366);
+        return;
+      }
+    }
+    
+    private void tw()
+    {
+      AppMethodBeat.i(92370);
+      if (this.bjc == null) {
+        this.bjc = new MediaCodecList(this.bjb).getCodecInfos();
+      }
+      AppMethodBeat.o(92370);
+    }
+    
+    public final boolean a(String paramString, MediaCodecInfo.CodecCapabilities paramCodecCapabilities)
+    {
+      AppMethodBeat.i(92369);
+      boolean bool = paramCodecCapabilities.isFeatureSupported("secure-playback");
+      AppMethodBeat.o(92369);
+      return bool;
+    }
+    
+    public final int getCodecCount()
+    {
+      AppMethodBeat.i(92367);
+      tw();
+      int i = this.bjc.length;
+      AppMethodBeat.o(92367);
+      return i;
+    }
+    
+    public final MediaCodecInfo getCodecInfoAt(int paramInt)
+    {
+      AppMethodBeat.i(92368);
+      tw();
+      MediaCodecInfo localMediaCodecInfo = this.bjc[paramInt];
+      AppMethodBeat.o(92368);
+      return localMediaCodecInfo;
+    }
+    
+    public final boolean tv()
+    {
+      return true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.e.d
  * JD-Core Version:    0.7.0.1
  */

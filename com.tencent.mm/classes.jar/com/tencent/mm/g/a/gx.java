@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class gx
   extends b
 {
-  public gx.a cvS;
+  public a dky;
   
   public gx()
   {
@@ -15,16 +15,22 @@ public final class gx
   
   private gx(byte paramByte)
   {
-    AppMethodBeat.i(54940);
-    this.cvS = new gx.a();
-    this.ymq = false;
+    AppMethodBeat.i(168879);
+    this.dky = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(54940);
+    AppMethodBeat.o(168879);
+  }
+  
+  public static final class a
+  {
+    public long deI;
+    public int progress;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.gx
  * JD-Core Version:    0.7.0.1
  */

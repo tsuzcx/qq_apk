@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 class JsApiLuggageStartSoterAuthentication$1
   extends ResultReceiver
@@ -17,46 +17,46 @@ class JsApiLuggageStartSoterAuthentication$1
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(73792);
+    AppMethodBeat.i(159050);
     if (paramInt == -1)
     {
-      ab.i("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter auth ok");
-      localb = this.hFr;
-      localc = this.hxW;
-      paramInt = this.bAX;
+      ad.i("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter auth ok");
+      localb = this.jHs;
+      localc = this.cgw;
+      paramInt = this.ccB;
       if (paramBundle != null) {}
       for (;;)
       {
         b.a(localb, localc, paramInt, paramBundle, "ok");
-        AppMethodBeat.o(73792);
+        AppMethodBeat.o(159050);
         return;
         paramBundle = null;
       }
     }
     if (paramInt == 1)
     {
-      ab.w("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter auth failed");
-      localb = this.hFr;
-      localc = this.hxW;
-      paramInt = this.bAX;
+      ad.w("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter auth failed");
+      localb = this.jHs;
+      localc = this.cgw;
+      paramInt = this.ccB;
       if (paramBundle != null) {}
       for (;;)
       {
         b.a(localb, localc, paramInt, paramBundle, "fail");
-        AppMethodBeat.o(73792);
+        AppMethodBeat.o(159050);
         return;
         paramBundle = null;
       }
     }
-    ab.e("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter user cancelled");
-    b localb = this.hFr;
-    c localc = this.hxW;
-    paramInt = this.bAX;
+    ad.e("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter user cancelled");
+    b localb = this.jHs;
+    c localc = this.cgw;
+    paramInt = this.ccB;
     if (paramBundle != null) {}
     for (;;)
     {
       b.a(localb, localc, paramInt, paramBundle, "cancel");
-      AppMethodBeat.o(73792);
+      AppMethodBeat.o(159050);
       return;
       paramBundle = null;
     }
@@ -64,7 +64,7 @@ class JsApiLuggageStartSoterAuthentication$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bio.soter.JsApiLuggageStartSoterAuthentication.1
  * JD-Core Version:    0.7.0.1
  */

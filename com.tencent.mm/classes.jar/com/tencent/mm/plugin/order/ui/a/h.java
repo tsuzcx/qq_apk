@@ -11,58 +11,58 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class h
   extends Preference
 {
-  boolean jts;
   private View mView;
-  boolean prQ;
-  boolean prR;
+  boolean mjw;
+  boolean uqQ;
+  boolean uqR;
   
   public h(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(43917);
+    AppMethodBeat.i(66824);
     this.mView = null;
-    this.prQ = false;
-    this.prR = false;
-    this.jts = true;
-    setLayoutResource(2130970098);
-    AppMethodBeat.o(43917);
+    this.uqQ = false;
+    this.uqR = false;
+    this.mjw = true;
+    setLayoutResource(2131494712);
+    AppMethodBeat.o(66824);
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(43918);
+    AppMethodBeat.i(66825);
     if (this.mView == null) {
       this.mView = onCreateView(paramViewGroup);
     }
     onBindView(this.mView);
     paramView = this.mView;
-    AppMethodBeat.o(43918);
+    AppMethodBeat.o(66825);
     return paramView;
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(43919);
+    AppMethodBeat.i(66826);
     super.onBindView(paramView);
-    paramView = paramView.findViewById(2131825995);
+    paramView = paramView.findViewById(2131302042);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    int i = BackwardSupportUtil.b.b(this.mContext, 10.0F);
-    if (this.prQ) {}
+    int i = BackwardSupportUtil.b.g(this.mContext, 10.0F);
+    if (this.uqQ) {}
     for (int j = i;; j = 0)
     {
-      if (this.prR) {}
+      if (this.uqR) {}
       for (;;)
       {
         localLayoutParams.setMargins(0, j, 0, i);
         paramView.setLayoutParams(localLayoutParams);
-        if (!this.jts)
+        if (!this.mjw)
         {
           paramView.setVisibility(4);
-          AppMethodBeat.o(43919);
+          AppMethodBeat.o(66826);
           return;
         }
         paramView.setVisibility(0);
-        AppMethodBeat.o(43919);
+        AppMethodBeat.o(66826);
         return;
         i = 0;
       }
@@ -71,7 +71,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.h
  * JD-Core Version:    0.7.0.1
  */

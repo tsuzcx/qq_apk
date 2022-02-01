@@ -10,25 +10,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class IconMsgPreference
   extends Preference
 {
+  private String GeA;
+  private int Geu;
+  private int Gev;
+  private int Gew;
+  private ImageView Gex;
+  private ViewGroup Gey;
+  private TextView Gez;
   private Context context;
   private Drawable drawable;
   private int height;
-  private String pAS;
-  private int qGe;
-  private int qGf;
-  private int zqL;
-  private int zqM;
-  private int zqN;
-  private ImageView zqO;
-  private ViewGroup zqP;
-  private TextView zqQ;
-  private String zqR;
+  private String uCA;
+  private int wey;
+  private int wez;
   
   public IconMsgPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,27 +38,27 @@ public class IconMsgPreference
   public IconMsgPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107163);
-    this.pAS = "";
-    this.qGe = -1;
-    this.qGf = 8;
-    this.zqL = 8;
-    this.zqM = 0;
-    this.zqN = 8;
-    this.zqO = null;
-    this.zqP = null;
+    AppMethodBeat.i(142540);
+    this.uCA = "";
+    this.wey = -1;
+    this.wez = 8;
+    this.Geu = 8;
+    this.Gev = 0;
+    this.Gew = 8;
+    this.Gex = null;
+    this.Gey = null;
     this.height = -1;
-    this.zqR = "";
+    this.GeA = "";
     this.context = paramContext;
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(107163);
+    setLayoutResource(2131494804);
+    AppMethodBeat.o(142540);
   }
   
   protected final void onBindView(View paramView)
   {
-    AppMethodBeat.i(107165);
+    AppMethodBeat.i(142542);
     super.onBindView(paramView);
-    Object localObject = (ImageView)paramView.findViewById(2131822243);
+    Object localObject = (ImageView)paramView.findViewById(2131300943);
     if (localObject != null)
     {
       if (this.drawable == null) {
@@ -69,35 +69,35 @@ public class IconMsgPreference
     }
     for (;;)
     {
-      localObject = (LinearLayout)paramView.findViewById(2131822408);
+      localObject = (LinearLayout)paramView.findViewById(2131302326);
       if (this.height != -1) {
         ((LinearLayout)localObject).setMinimumHeight(this.height);
       }
-      localObject = (TextView)paramView.findViewById(2131822409);
+      localObject = (TextView)paramView.findViewById(2131305745);
       if (localObject != null)
       {
-        ((TextView)localObject).setVisibility(this.qGf);
-        ((TextView)localObject).setText(this.pAS);
-        if (this.qGe != -1) {
-          ((TextView)localObject).setBackgroundDrawable(a.k(this.context, this.qGe));
+        ((TextView)localObject).setVisibility(this.wez);
+        ((TextView)localObject).setText(this.uCA);
+        if (this.wey != -1) {
+          ((TextView)localObject).setBackgroundDrawable(a.l(this.context, this.wey));
         }
       }
-      this.zqO = ((ImageView)paramView.findViewById(2131822410));
-      this.zqO.setVisibility(this.zqL);
-      this.zqP = ((ViewGroup)paramView.findViewById(2131822412));
-      this.zqP.setVisibility(this.zqM);
-      this.zqQ = ((TextView)paramView.findViewById(16908310));
-      paramView = (TextView)paramView.findViewById(2131826240);
-      if (!bo.isNullOrNil(this.zqR)) {
+      this.Gex = ((ImageView)paramView.findViewById(2131305740));
+      this.Gex.setVisibility(this.Geu);
+      this.Gey = ((ViewGroup)paramView.findViewById(2131304191));
+      this.Gey.setVisibility(this.Gev);
+      this.Gez = ((TextView)paramView.findViewById(16908310));
+      paramView = (TextView)paramView.findViewById(2131305746);
+      if (!bt.isNullOrNil(this.GeA)) {
         break;
       }
       paramView.setVisibility(8);
-      AppMethodBeat.o(107165);
+      AppMethodBeat.o(142542);
       return;
       label216:
-      if (this.UM != 0)
+      if (this.abP != 0)
       {
-        ((ImageView)localObject).setImageResource(this.UM);
+        ((ImageView)localObject).setImageResource(this.abP);
         ((ImageView)localObject).setVisibility(0);
       }
       else
@@ -106,25 +106,25 @@ public class IconMsgPreference
       }
     }
     paramView.setVisibility(0);
-    paramView.setText(this.zqR);
-    AppMethodBeat.o(107165);
+    paramView.setText(this.GeA);
+    AppMethodBeat.o(142542);
   }
   
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107164);
+    AppMethodBeat.i(142541);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2130970231, localViewGroup);
-    paramViewGroup.setMinimumHeight(paramViewGroup.getResources().getDimensionPixelSize(2131427853));
-    AppMethodBeat.o(107164);
+    View.inflate(this.mContext, 2131494858, localViewGroup);
+    paramViewGroup.setMinimumHeight(paramViewGroup.getResources().getDimensionPixelSize(2131165567));
+    AppMethodBeat.o(142541);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.IconMsgPreference
  * JD-Core Version:    0.7.0.1
  */

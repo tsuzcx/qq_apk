@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="58.0dip"
+<RelativeLayout android:id="@id/f4b" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MMHorList android:layout_gravity="center_horizontal" android:id="@id/f2a" android:layout_width="290.0dip" android:layout_height="58.0dip" />
-</FrameLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/bev" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/image_download_fail_icon" />
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/cd" android:id="@id/bex" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/d2h" />
+    </LinearLayout>
+</RelativeLayout>

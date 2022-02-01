@@ -13,17 +13,21 @@ final class CardHomePageUI$5
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(88487);
-    paramView = new Intent(this.kwf, CardIndexUI.class);
-    paramView.putExtra("key_card_type", 1);
-    this.kwf.startActivity(paramView);
-    h.qsU.e(11324, new Object[] { "GotoMemberCardUI", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) });
-    AppMethodBeat.o(88487);
+    AppMethodBeat.i(113414);
+    Object localObject = new Intent(this.nBy, CardIndexUI.class);
+    ((Intent)localObject).putExtra("key_card_type", 1);
+    paramView = this.nBy;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/card/ui/CardHomePageUI$5", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/card/ui/CardHomePageUI$5", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    h.vKh.f(11324, new Object[] { "GotoMemberCardUI", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) });
+    AppMethodBeat.o(113414);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardHomePageUI.5
  * JD-Core Version:    0.7.0.1
  */

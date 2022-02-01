@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout style="@style/q1"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/jm" style="@style/mc"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/by5" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a3x" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" style="@style/mn" />
-    <include android:id="@id/by6" android:visibility="gone" layout="@layout/a18" />
-    <include android:id="@id/by7" android:visibility="gone" layout="@layout/a19" />
-</FrameLayout>
+    <LinearLayout android:gravity="center|left" android:orientation="vertical" android:id="@id/b3b" android:paddingLeft="@dimen/i0" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/jm" android:layout_weight="1.0">
+        <ImageView android:background="@color/ts" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/y0" android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/lw" />
+        <TextView android:id="@android:id/summary" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/i0" android:paddingBottom="@dimen/jn" android:singleLine="true" style="@style/lz" />
+    </LinearLayout>
+</LinearLayout>

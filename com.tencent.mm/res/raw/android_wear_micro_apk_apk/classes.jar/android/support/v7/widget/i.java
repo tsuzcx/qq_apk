@@ -2,19 +2,19 @@ package android.support.v7.widget;
 
 final class i
 {
-  public int rL;
-  public int rM;
-  public int rN;
-  public int rO;
-  public an rP;
+  public int tB;
+  public int tC;
+  public int tD;
+  public int tE;
+  public an tF;
   
   private i(an paraman, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.rP = paraman;
-    this.rL = paramInt1;
-    this.rM = paramInt2;
-    this.rN = paramInt3;
-    this.rO = paramInt4;
+    this.tF = paraman;
+    this.tB = paramInt1;
+    this.tC = paramInt2;
+    this.tD = paramInt3;
+    this.tE = paramInt4;
   }
 }
 

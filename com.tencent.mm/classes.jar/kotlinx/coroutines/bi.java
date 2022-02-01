@@ -1,37 +1,42 @@
 package kotlinx.coroutines;
 
-import a.c.c;
-import a.c.e;
-import a.f.a.m;
-import a.l;
-import a.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlinx.coroutines.b.a;
+import d.g.a.b;
+import d.l;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/LazyStandaloneCoroutine;", "Lkotlinx/coroutines/StandaloneCoroutine;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "block", "Lkotlin/Function2;", "Lkotlinx/coroutines/CoroutineScope;", "Lkotlin/coroutines/Continuation;", "", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;)V", "Lkotlin/jvm/functions/Function2;", "onStart", "kotlinx-coroutines-core"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/InvokeOnCompletion;", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/Job;", "job", "handler", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "(Lkotlinx/coroutines/Job;Lkotlin/jvm/functions/Function1;)V", "invoke", "toString", "", "kotlinx-coroutines-core"})
 final class bi
-  extends bp
+  extends bm<bj>
 {
-  private final m<ac, c<? super y>, Object> CIB;
+  private final b<Throwable, y> jGI;
   
-  public bi(e parame, m<? super ac, ? super c<? super y>, ? extends Object> paramm)
+  public bi(bj parambj, b<? super Throwable, y> paramb)
   {
-    super(parame, false);
-    AppMethodBeat.i(118470);
-    this.CIB = paramm;
-    AppMethodBeat.o(118470);
+    super(parambj);
+    AppMethodBeat.i(118058);
+    this.jGI = paramb;
+    AppMethodBeat.o(118058);
   }
   
-  protected final void onStart()
+  public final String toString()
   {
-    AppMethodBeat.i(118469);
-    a.b(this.CIB, this, (c)this);
-    AppMethodBeat.o(118469);
+    AppMethodBeat.i(118057);
+    String str = "InvokeOnCompletion[" + getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this)) + ']';
+    AppMethodBeat.o(118057);
+    return str;
+  }
+  
+  public final void u(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(118055);
+    this.jGI.aA(paramThrowable);
+    AppMethodBeat.o(118055);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bi
  * JD-Core Version:    0.7.0.1
  */

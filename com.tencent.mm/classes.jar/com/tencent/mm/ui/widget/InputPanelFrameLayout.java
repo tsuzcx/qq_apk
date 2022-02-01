@@ -9,8 +9,8 @@ public class InputPanelFrameLayout
   extends FrameLayout
   implements b.a
 {
-  private b ACb;
-  private b.a ACc;
+  private b HyE;
+  private b.a HyF;
   
   public InputPanelFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -20,36 +20,36 @@ public class InputPanelFrameLayout
   public InputPanelFrameLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107849);
-    this.ACb = new b(this, this);
-    AppMethodBeat.o(107849);
+    AppMethodBeat.i(143322);
+    this.HyE = new b(this, this);
+    AppMethodBeat.o(143322);
+  }
+  
+  public void g(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(143323);
+    if (this.HyF != null) {
+      this.HyF.g(paramBoolean, paramInt);
+    }
+    AppMethodBeat.o(143323);
   }
   
   public b getInputPanelHelper()
   {
-    return this.ACb;
+    return this.HyE;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(107850);
-    this.ACb.QX(paramInt2);
+    AppMethodBeat.i(143324);
+    this.HyE.aao(paramInt2);
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(107850);
-  }
-  
-  public void p(boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(142774);
-    if (this.ACc != null) {
-      this.ACc.p(paramBoolean, paramInt);
-    }
-    AppMethodBeat.o(142774);
+    AppMethodBeat.o(143324);
   }
   
   public void setExternalListener(b.a parama)
   {
-    this.ACc = parama;
+    this.HyF = parama;
   }
 }
 

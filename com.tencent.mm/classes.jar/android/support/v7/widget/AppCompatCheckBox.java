@@ -13,69 +13,69 @@ public class AppCompatCheckBox
   extends CheckBox
   implements r
 {
-  private final f aag = new f(this);
+  private final f ahl = new f(this);
   
   public AppCompatCheckBox(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130772227);
+    this(paramContext, paramAttributeSet, 2130968744);
   }
   
   public AppCompatCheckBox(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.Z(paramContext), paramAttributeSet, paramInt);
-    this.aag.a(paramAttributeSet, paramInt);
+    super(aw.ab(paramContext), paramAttributeSet, paramInt);
+    this.ahl.a(paramAttributeSet, paramInt);
   }
   
   public int getCompoundPaddingLeft()
   {
     int j = super.getCompoundPaddingLeft();
     int i = j;
-    if (this.aag != null) {
-      i = this.aag.bp(j);
+    if (this.ahl != null) {
+      i = this.ahl.bH(j);
     }
     return i;
   }
   
   public ColorStateList getSupportButtonTintList()
   {
-    if (this.aag != null) {
-      return this.aag.aai;
+    if (this.ahl != null) {
+      return this.ahl.ahn;
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportButtonTintMode()
   {
-    if (this.aag != null) {
-      return this.aag.aaj;
+    if (this.ahl != null) {
+      return this.ahl.aho;
     }
     return null;
   }
   
   public void setButtonDrawable(int paramInt)
   {
-    setButtonDrawable(a.k(getContext(), paramInt));
+    setButtonDrawable(a.l(getContext(), paramInt));
   }
   
   public void setButtonDrawable(Drawable paramDrawable)
   {
     super.setButtonDrawable(paramDrawable);
-    if (this.aag != null) {
-      this.aag.he();
+    if (this.ahl != null) {
+      this.ahl.iB();
     }
   }
   
   public void setSupportButtonTintList(ColorStateList paramColorStateList)
   {
-    if (this.aag != null) {
-      this.aag.setSupportButtonTintList(paramColorStateList);
+    if (this.ahl != null) {
+      this.ahl.setSupportButtonTintList(paramColorStateList);
     }
   }
   
   public void setSupportButtonTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.aag != null) {
-      this.aag.setSupportButtonTintMode(paramMode);
+    if (this.ahl != null) {
+      this.ahl.setSupportButtonTintMode(paramMode);
     }
   }
 }

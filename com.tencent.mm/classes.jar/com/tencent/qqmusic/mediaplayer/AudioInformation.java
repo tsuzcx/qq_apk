@@ -26,9 +26,23 @@ public class AudioInformation
   
   static
   {
-    AppMethodBeat.i(105570);
-    CREATOR = new AudioInformation.1();
-    AppMethodBeat.o(105570);
+    AppMethodBeat.i(87764);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final AudioInformation createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(87752);
+        paramAnonymousParcel = new AudioInformation(paramAnonymousParcel);
+        AppMethodBeat.o(87752);
+        return paramAnonymousParcel;
+      }
+      
+      public final AudioInformation[] newArray(int paramAnonymousInt)
+      {
+        return new AudioInformation[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(87764);
   }
   
   public AudioInformation()
@@ -42,14 +56,14 @@ public class AudioInformation
   
   public AudioInformation(Parcel paramParcel)
   {
-    AppMethodBeat.i(105564);
+    AppMethodBeat.i(87758);
     this.duration = 0L;
     this.bitDept = 0;
     this.mPlaySample = 0L;
     this.isCbr = 0;
     this.durationIsCorrect = 2;
     readFromParcel(paramParcel);
-    AppMethodBeat.o(105564);
+    AppMethodBeat.o(87758);
   }
   
   public int describeContents()
@@ -64,13 +78,13 @@ public class AudioInformation
   
   public AudioFormat.AudioType getAudioType()
   {
-    AppMethodBeat.i(105565);
+    AppMethodBeat.i(87759);
     AudioFormat.AudioType localAudioType = AudioFormat.getAudioType(this.mAudioTypeValue);
-    AppMethodBeat.o(105565);
+    AppMethodBeat.o(87759);
     return localAudioType;
   }
   
-  public int getBitDept()
+  public int getBitDepth()
   {
     return this.bitDept;
   }
@@ -120,7 +134,7 @@ public class AudioInformation
   
   public void readFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(105568);
+    AppMethodBeat.i(87762);
     this.sampleRate = paramParcel.readLong();
     this.channels = paramParcel.readInt();
     this.duration = paramParcel.readLong();
@@ -130,14 +144,14 @@ public class AudioInformation
     this.mPlaySample = paramParcel.readLong();
     this.isCbr = paramParcel.readInt();
     this.durationIsCorrect = paramParcel.readInt();
-    AppMethodBeat.o(105568);
+    AppMethodBeat.o(87762);
   }
   
   public void setAudioType(AudioFormat.AudioType paramAudioType)
   {
-    AppMethodBeat.i(105566);
+    AppMethodBeat.i(87760);
     this.mAudioTypeValue = paramAudioType.getValue();
-    AppMethodBeat.o(105566);
+    AppMethodBeat.o(87760);
   }
   
   public void setBitDept(int paramInt)
@@ -180,15 +194,15 @@ public class AudioInformation
   
   public String toString()
   {
-    AppMethodBeat.i(105569);
+    AppMethodBeat.i(87763);
     String str = "[ sampleRate = " + this.sampleRate + ",channels = " + this.channels + ",bitrate = " + this.bitrate + ",bitDept = " + this.bitDept + ",isCbr = " + this.isCbr + ",durationIsCorrect = " + this.durationIsCorrect + ",duration = " + this.duration + "]";
-    AppMethodBeat.o(105569);
+    AppMethodBeat.o(87763);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(105567);
+    AppMethodBeat.i(87761);
     paramParcel.writeLong(this.sampleRate);
     paramParcel.writeInt(this.channels);
     paramParcel.writeLong(this.duration);
@@ -198,12 +212,12 @@ public class AudioInformation
     paramParcel.writeLong(this.mPlaySample);
     paramParcel.writeInt(this.isCbr);
     paramParcel.writeInt(this.durationIsCorrect);
-    AppMethodBeat.o(105567);
+    AppMethodBeat.o(87761);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.AudioInformation
  * JD-Core Version:    0.7.0.1
  */

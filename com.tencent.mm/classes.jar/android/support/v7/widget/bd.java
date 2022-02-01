@@ -17,40 +17,40 @@ import android.widget.TextView;
 
 final class bd
 {
-  private final View Qz;
-  private final int[] apA = new int[2];
-  private final WindowManager.LayoutParams apx = new WindowManager.LayoutParams();
-  private final Rect apy = new Rect();
-  private final int[] apz = new int[2];
-  private final TextView fc;
+  private final TextView UB;
+  private final WindowManager.LayoutParams awZ = new WindowManager.LayoutParams();
+  private final Rect axa = new Rect();
+  private final int[] axb = new int[2];
+  private final int[] axc = new int[2];
+  private final View mContentView;
   private final Context mContext;
   
   bd(Context paramContext)
   {
     this.mContext = paramContext;
-    this.Qz = LayoutInflater.from(this.mContext).inflate(2130968611, null);
-    this.fc = ((TextView)this.Qz.findViewById(2131820972));
-    this.apx.setTitle(getClass().getSimpleName());
-    this.apx.packageName = this.mContext.getPackageName();
-    this.apx.type = 1002;
-    this.apx.width = -2;
-    this.apx.height = -2;
-    this.apx.format = -3;
-    this.apx.windowAnimations = 2131493038;
-    this.apx.flags = 24;
+    this.mContentView = LayoutInflater.from(this.mContext).inflate(2131492918, null);
+    this.UB = ((TextView)this.mContentView.findViewById(2131302253));
+    this.awZ.setTitle(getClass().getSimpleName());
+    this.awZ.packageName = this.mContext.getPackageName();
+    this.awZ.type = 1002;
+    this.awZ.width = -2;
+    this.awZ.height = -2;
+    this.awZ.format = -3;
+    this.awZ.windowAnimations = 2131820554;
+    this.awZ.flags = 24;
   }
   
   private void a(View paramView, int paramInt1, int paramInt2, boolean paramBoolean, WindowManager.LayoutParams paramLayoutParams)
   {
     paramLayoutParams.token = paramView.getApplicationWindowToken();
-    int i = this.mContext.getResources().getDimensionPixelOffset(2131428758);
+    int i = this.mContext.getResources().getDimensionPixelOffset(2131166924);
     if (paramView.getWidth() < i) {
       paramInt1 = paramView.getWidth() / 2;
     }
     Object localObject1;
     if (paramView.getHeight() >= i)
     {
-      i = this.mContext.getResources().getDimensionPixelOffset(2131428757);
+      i = this.mContext.getResources().getDimensionPixelOffset(2131166923);
       j = paramInt2 + i;
       i = paramInt2 - i;
       paramInt2 = j;
@@ -62,10 +62,10 @@ final class bd
     }
     int k;
     label134:
-    for (int j = 2131428761;; j = 2131428760)
+    for (int j = 2131166927;; j = 2131166926)
     {
       k = ((Resources)localObject1).getDimensionPixelOffset(j);
-      localObject1 = bW(paramView);
+      localObject1 = ce(paramView);
       if (localObject1 != null) {
         break label141;
       }
@@ -75,9 +75,9 @@ final class bd
       break;
     }
     label141:
-    ((View)localObject1).getWindowVisibleDisplayFrame(this.apy);
+    ((View)localObject1).getWindowVisibleDisplayFrame(this.axa);
     Object localObject2;
-    if ((this.apy.left < 0) && (this.apy.top < 0))
+    if ((this.axa.left < 0) && (this.axa.top < 0))
     {
       localObject2 = this.mContext.getResources();
       j = ((Resources)localObject2).getIdentifier("status_bar_height", "dimen", "android");
@@ -89,19 +89,19 @@ final class bd
     for (j = ((Resources)localObject2).getDimensionPixelSize(j);; j = 0)
     {
       localObject2 = ((Resources)localObject2).getDisplayMetrics();
-      this.apy.set(0, j, ((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels);
-      ((View)localObject1).getLocationOnScreen(this.apA);
-      paramView.getLocationOnScreen(this.apz);
-      paramView = this.apz;
-      paramView[0] -= this.apA[0];
-      paramView = this.apz;
-      paramView[1] -= this.apA[1];
-      paramLayoutParams.x = (this.apz[0] + paramInt1 - ((View)localObject1).getWidth() / 2);
+      this.axa.set(0, j, ((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels);
+      ((View)localObject1).getLocationOnScreen(this.axc);
+      paramView.getLocationOnScreen(this.axb);
+      paramView = this.axb;
+      paramView[0] -= this.axc[0];
+      paramView = this.axb;
+      paramView[1] -= this.axc[1];
+      paramLayoutParams.x = (this.axb[0] + paramInt1 - ((View)localObject1).getWidth() / 2);
       paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);
-      this.Qz.measure(paramInt1, paramInt1);
-      paramInt1 = this.Qz.getMeasuredHeight();
-      i = i + this.apz[1] - k - paramInt1;
-      paramInt2 = paramInt2 + this.apz[1] + k;
+      this.mContentView.measure(paramInt1, paramInt1);
+      paramInt1 = this.mContentView.getMeasuredHeight();
+      i = i + this.axb[1] - k - paramInt1;
+      paramInt2 = paramInt2 + this.axb[1] + k;
       if (!paramBoolean) {
         break;
       }
@@ -111,7 +111,7 @@ final class bd
       paramLayoutParams.y = paramInt2;
       return;
     }
-    if (paramInt1 + paramInt2 <= this.apy.height())
+    if (paramInt1 + paramInt2 <= this.axa.height())
     {
       paramLayoutParams.y = paramInt2;
       return;
@@ -120,7 +120,7 @@ final class bd
     paramLayoutParams.y = i;
   }
   
-  private static View bW(View paramView)
+  private static View ce(View paramView)
   {
     View localView = paramView.getRootView();
     ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
@@ -137,7 +137,7 @@ final class bd
   
   private boolean isShowing()
   {
-    return this.Qz.getParent() != null;
+    return this.mContentView.getParent() != null;
   }
   
   final void a(View paramView, int paramInt1, int paramInt2, boolean paramBoolean, CharSequence paramCharSequence)
@@ -145,9 +145,9 @@ final class bd
     if (isShowing()) {
       hide();
     }
-    this.fc.setText(paramCharSequence);
-    a(paramView, paramInt1, paramInt2, paramBoolean, this.apx);
-    ((WindowManager)this.mContext.getSystemService("window")).addView(this.Qz, this.apx);
+    this.UB.setText(paramCharSequence);
+    a(paramView, paramInt1, paramInt2, paramBoolean, this.awZ);
+    ((WindowManager)this.mContext.getSystemService("window")).addView(this.mContentView, this.awZ);
   }
   
   final void hide()
@@ -155,7 +155,7 @@ final class bd
     if (!isShowing()) {
       return;
     }
-    ((WindowManager)this.mContext.getSystemService("window")).removeView(this.Qz);
+    ((WindowManager)this.mContext.getSystemService("window")).removeView(this.mContentView);
   }
 }
 

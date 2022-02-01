@@ -1,62 +1,40 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.v7.widget.ae;
+import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.recentview.a;
-import com.tencent.mm.plugin.appbrand.widget.recentview.b;
-import java.util.ArrayList;
-import java.util.List;
 
 final class AppBrandDesktopView$12
-  implements Runnable
+  extends ae
 {
-  AppBrandDesktopView$12(AppBrandDesktopView paramAppBrandDesktopView) {}
-  
-  public final void run()
+  AppBrandDesktopView$12(AppBrandDesktopView paramAppBrandDesktopView, Context paramContext)
   {
-    AppMethodBeat.i(143654);
-    if ((AppBrandDesktopView.s(this.jfg)) && (AppBrandDesktopView.t(this.jfg)))
-    {
-      if (AppBrandDesktopView.f(this.jfg) == null)
-      {
-        AppMethodBeat.o(143654);
-        return;
-      }
-      Object localObject1 = AppBrandDesktopView.f(this.jfg).getShowList();
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      Object localObject2;
-      while (i < ((List)localObject1).size())
-      {
-        localObject2 = (AppBrandDesktopView.c)((List)localObject1).get(i);
-        if ((localObject2 != null) && (((AppBrandDesktopView.c)localObject2).jfk != null))
-        {
-          localObject2 = new a(((AppBrandDesktopView.c)localObject2).jfk);
-          ((a)localObject2).position = i;
-          localArrayList.add(localObject2);
-        }
-        i += 1;
-      }
-      localObject1 = new ArrayList();
-      i = AppBrandDesktopView.g(this.jfg);
-      while (i < AppBrandDesktopView.n(this.jfg).size())
-      {
-        localObject2 = (AppBrandDesktopView.c)AppBrandDesktopView.n(this.jfg).get(i);
-        if ((localObject2 != null) && (((AppBrandDesktopView.c)localObject2).type == 1))
-        {
-          localObject2 = new a(((AppBrandDesktopView.c)localObject2).jfk);
-          ((a)localObject2).position = i;
-          ((List)localObject1).add(localObject2);
-        }
-        i += 1;
-      }
-      b.g(localArrayList, (List)localObject1);
-    }
-    AppMethodBeat.o(143654);
+    super(paramContext);
+  }
+  
+  public final float a(DisplayMetrics paramDisplayMetrics)
+  {
+    return 20.0F / paramDisplayMetrics.densityDpi;
+  }
+  
+  public final PointF bZ(int paramInt)
+  {
+    AppMethodBeat.i(49579);
+    PointF localPointF = AppBrandDesktopView.j(this.lVl).bZ(paramInt);
+    AppMethodBeat.o(49579);
+    return localPointF;
+  }
+  
+  public final int jW()
+  {
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopView.12
  * JD-Core Version:    0.7.0.1
  */

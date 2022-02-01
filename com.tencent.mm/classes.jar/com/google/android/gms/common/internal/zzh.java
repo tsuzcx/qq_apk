@@ -29,19 +29,19 @@ final class zzh
   
   zzh(Context paramContext)
   {
-    AppMethodBeat.i(89865);
+    AppMethodBeat.i(4887);
     this.zztr = new HashMap();
     this.zzau = paramContext.getApplicationContext();
     this.mHandler = new Handler(paramContext.getMainLooper(), this);
     this.zzts = ConnectionTracker.getInstance();
     this.zztt = 5000L;
     this.zztu = 300000L;
-    AppMethodBeat.o(89865);
+    AppMethodBeat.o(4887);
   }
   
   protected final boolean bindService(GmsClientSupervisor.ConnectionStatusConfig paramConnectionStatusConfig, ServiceConnection paramServiceConnection, String paramString)
   {
-    AppMethodBeat.i(89866);
+    AppMethodBeat.i(4888);
     Preconditions.checkNotNull(paramServiceConnection, "ServiceConnection must not be null");
     for (;;)
     {
@@ -57,7 +57,7 @@ final class zzh
           this.zztr.put(paramConnectionStatusConfig, localzzi);
           paramConnectionStatusConfig = localzzi;
           boolean bool = paramConnectionStatusConfig.isBound();
-          AppMethodBeat.o(89866);
+          AppMethodBeat.o(4888);
           return bool;
         }
         this.mHandler.removeMessages(0, paramConnectionStatusConfig);
@@ -65,7 +65,7 @@ final class zzh
         {
           paramConnectionStatusConfig = String.valueOf(paramConnectionStatusConfig);
           paramConnectionStatusConfig = new IllegalStateException(String.valueOf(paramConnectionStatusConfig).length() + 81 + "Trying to bind a GmsServiceConnection that was already connected before.  config=" + paramConnectionStatusConfig);
-          AppMethodBeat.o(89866);
+          AppMethodBeat.o(4888);
           throw paramConnectionStatusConfig;
         }
       }
@@ -88,11 +88,11 @@ final class zzh
   
   public final boolean handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(89868);
+    AppMethodBeat.i(4890);
     switch (paramMessage.what)
     {
     default: 
-      AppMethodBeat.o(89868);
+      AppMethodBeat.o(4890);
       return false;
     case 0: 
       synchronized (this.zztr)
@@ -106,7 +106,7 @@ final class zzh
           }
           this.zztr.remove(paramMessage);
         }
-        AppMethodBeat.o(89868);
+        AppMethodBeat.o(4890);
         return true;
       }
     }
@@ -133,7 +133,7 @@ final class zzh
         }
         else
         {
-          AppMethodBeat.o(89868);
+          AppMethodBeat.o(4890);
           return true;
         }
       }
@@ -143,7 +143,7 @@ final class zzh
   @VisibleForTesting
   public final void resetForTesting()
   {
-    AppMethodBeat.i(89869);
+    AppMethodBeat.i(4891);
     synchronized (this.zztr)
     {
       Iterator localIterator = this.zztr.values().iterator();
@@ -157,12 +157,12 @@ final class zzh
       }
     }
     this.zztr.clear();
-    AppMethodBeat.o(89869);
+    AppMethodBeat.o(4891);
   }
   
   protected final void unbindService(GmsClientSupervisor.ConnectionStatusConfig paramConnectionStatusConfig, ServiceConnection paramServiceConnection, String paramString)
   {
-    AppMethodBeat.i(89867);
+    AppMethodBeat.i(4889);
     Preconditions.checkNotNull(paramServiceConnection, "ServiceConnection must not be null");
     zzi localzzi;
     synchronized (this.zztr)
@@ -172,7 +172,7 @@ final class zzh
       {
         paramConnectionStatusConfig = String.valueOf(paramConnectionStatusConfig);
         paramConnectionStatusConfig = new IllegalStateException(String.valueOf(paramConnectionStatusConfig).length() + 50 + "Nonexistent connection status for service config: " + paramConnectionStatusConfig);
-        AppMethodBeat.o(89867);
+        AppMethodBeat.o(4889);
         throw paramConnectionStatusConfig;
       }
     }
@@ -180,7 +180,7 @@ final class zzh
     {
       paramConnectionStatusConfig = String.valueOf(paramConnectionStatusConfig);
       paramConnectionStatusConfig = new IllegalStateException(String.valueOf(paramConnectionStatusConfig).length() + 76 + "Trying to unbind a GmsServiceConnection  that was not bound before.  config=" + paramConnectionStatusConfig);
-      AppMethodBeat.o(89867);
+      AppMethodBeat.o(4889);
       throw paramConnectionStatusConfig;
     }
     localzzi.zzb(paramServiceConnection, paramString);
@@ -189,7 +189,7 @@ final class zzh
       paramConnectionStatusConfig = this.mHandler.obtainMessage(0, paramConnectionStatusConfig);
       this.mHandler.sendMessageDelayed(paramConnectionStatusConfig, this.zztt);
     }
-    AppMethodBeat.o(89867);
+    AppMethodBeat.o(4889);
   }
 }
 

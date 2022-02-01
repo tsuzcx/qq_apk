@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:gravity="center|left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9" android:drawableLeft="@raw/radio_off" android:drawablePadding="@dimen/m1"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:textSize="@dimen/gx" android:id="@id/h82" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="年" />
+        <Button android:textSize="@dimen/gx" android:id="@id/dso" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="月" />
+        <Button android:textSize="@dimen/gx" android:id="@id/b8n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="日" />
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.MMSpinnerDatePicker android:id="@id/dp6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:spinnersShown="true" android:calendarViewShown="false" android:datePickerMode="spinner" />
+</LinearLayout>

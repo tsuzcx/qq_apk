@@ -1,23 +1,25 @@
 package com.tencent.mm.plugin.biz.a;
 
-import com.tencent.mm.af.p;
+import com.tencent.mm.ai.u;
 
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract String ac(String paramString1, String paramString2);
+  public abstract u a(long paramLong, String paramString);
   
-  public abstract p b(long paramLong, String paramString);
+  public abstract String as(String paramString1, String paramString2);
   
-  public abstract boolean na(String paramString);
+  public abstract int b(long paramLong, String paramString);
   
-  public abstract String nb(String paramString);
+  public abstract String rA(String paramString);
   
-  public abstract String nc(String paramString);
+  public abstract String rB(String paramString);
+  
+  public abstract boolean rz(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.biz.a.a
  * JD-Core Version:    0.7.0.1
  */

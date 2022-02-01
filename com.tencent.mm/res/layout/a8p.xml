@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/cl3" android:background="@color/ei" style="@style/q1"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <GridView android:scrollbarStyle="outsideOverlay" android:gravity="center" android:layout_gravity="center" android:id="@id/cl4" android:paddingTop="1.0dip" android:fadingEdgeLength="0.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/w6" android:cacheColorHint="#00000000" android:horizontalSpacing="2.0dip" android:verticalSpacing="2.0dip" android:divider="@null" android:dividerHeight="0.0px" android:overScrollMode="never" />
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/a7e" android:gravity="center|left" android:id="@id/btz" android:background="@color/rv" android:paddingLeft="@dimen/n_" android:paddingTop="@dimen/ng" android:paddingRight="@dimen/n_" android:paddingBottom="@dimen/ng" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/w6" android:id="@id/cl5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="130.0dip" android:text="@string/fm" android:layout_centerHorizontal="true" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/cl6" android:background="#cc000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/n9" android:layout_alignParentBottom="true">
-        <ImageButton android:id="@id/btx" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/n9" android:src="@drawable/xs" android:scaleType="center" android:layout_weight="1.0" />
-        <ImageButton android:id="@id/cl7" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/n9" android:src="@drawable/xp" android:scaleType="center" android:layout_weight="1.0" />
-        <ImageButton android:id="@id/ay2" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/n9" android:src="@drawable/xq" android:scaleType="center" android:layout_weight="1.0" />
-        <ImageButton android:id="@id/cl8" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/n9" android:src="@drawable/xr" android:scaleType="center" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" style="@style/ld">
+        <ImageView android:src="@drawable/arr" style="@style/js" />
+        <TextView android:text="即将连接Wi-Fi" style="@style/ju" />
+        <TextView android:id="@id/c7p" android:text="本Wi-Fi由星巴克提供" style="@style/jt" />
     </LinearLayout>
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="0.0dip">
+        <Button android:textSize="14.0dip" android:textColor="@color/Brand" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/c7q" android:background="@drawable/vi" android:layout_width="136.0dip" android:layout_height="30.0dip" android:layout_marginBottom="60.0dip" android:minHeight="@dimen/i5" android:text="确认" />
+        <LinearLayout android:gravity="center" style="@style/mz">
+            <TextView android:text="@string/clb" style="@style/k7" />
+            <Button android:id="@id/c7r" android:layout_height="20.0dip" android:text="@string/cle" style="@style/k6" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_marginTop="0.0dip" style="@style/mz">
+        <TextView android:textSize="10.0dip" android:text="@string/cld" style="@style/k7" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="28.0dip" />
+</LinearLayout>

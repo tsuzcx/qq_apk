@@ -1,81 +1,81 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
-import a.f.b.j;
-import a.l;
-import a.y;
-import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ui.recents.e;
+import com.tencent.mm.plugin.appbrand.ui.recents.g;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView;
+import d.g.b.k;
+import d.l;
+import d.y;
 import java.util.LinkedList;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"value", "", "showFooter", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;", "getShowFooter", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;)Z", "setShowFooter", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;Z)V", "show", "showThreeDots", "getShowThreeDots", "setShowThreeDots", "configFooterWording", "", "runOnUiThread", "action", "Lkotlin/Function0;", "setWordingText", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListFooter;", "wording", "", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"value", "", "showFooter", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;", "getShowFooter", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;)Z", "setShowFooter", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;Z)V", "show", "showThreeDots", "getShowThreeDots", "setShowThreeDots", "configFooterWording", "", "runOnUiThread", "action", "Lkotlin/Function0;", "setWordingText", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListFooter;", "wording", "", "plugin-appbrand-integration_release"})
 public final class i
 {
-  private static void a(e parame, String paramString)
+  private static void a(g paramg, String paramString)
   {
-    AppMethodBeat.i(135206);
-    j.q(parame, "receiver$0");
-    j.q(paramString, "wording");
-    parame = parame.aku.findViewById(2131821348);
-    j.p(parame, "this.itemView.findViewBy…ents_list_footer_wording)");
-    ((TextView)parame).setText((CharSequence)paramString);
-    AppMethodBeat.o(135206);
+    AppMethodBeat.i(51382);
+    k.h(paramg, "$this$setWordingText");
+    k.h(paramString, "wording");
+    paramg = paramg.arI.findViewById(2131306108);
+    k.g(paramg, "this.itemView.findViewBy…ents_list_footer_wording)");
+    ((TextView)paramg).setText((CharSequence)paramString);
+    AppMethodBeat.o(51382);
   }
   
-  public static final void a(AppBrandRecommendUILogic paramAppBrandRecommendUILogic, a.f.a.a<y> parama)
+  public static final void a(AppBrandRecommendUILogic paramAppBrandRecommendUILogic, d.g.a.a<y> parama)
   {
-    AppMethodBeat.i(135207);
-    j.q(paramAppBrandRecommendUILogic, "receiver$0");
-    j.q(parama, "action");
-    paramAppBrandRecommendUILogic.activity.runOnUiThread((Runnable)new i.a(parama));
-    AppMethodBeat.o(135207);
+    AppMethodBeat.i(51383);
+    k.h(paramAppBrandRecommendUILogic, "$this$runOnUiThread");
+    k.h(parama, "action");
+    paramAppBrandRecommendUILogic.lLc.runOnUiThread((Runnable)new i.a(parama));
+    AppMethodBeat.o(51383);
   }
   
   public static final void a(AppBrandRecommendUILogic paramAppBrandRecommendUILogic, boolean paramBoolean)
   {
-    AppMethodBeat.i(135203);
-    j.q(paramAppBrandRecommendUILogic, "receiver$0");
-    paramAppBrandRecommendUILogic.aNK().fv(paramBoolean);
-    AppMethodBeat.o(135203);
+    AppMethodBeat.i(51379);
+    k.h(paramAppBrandRecommendUILogic, "$this$showFooter");
+    paramAppBrandRecommendUILogic.bqc().showLoading(paramBoolean);
+    AppMethodBeat.o(51379);
   }
   
   public static final void b(AppBrandRecommendUILogic paramAppBrandRecommendUILogic, boolean paramBoolean)
   {
-    AppMethodBeat.i(135204);
-    j.q(paramAppBrandRecommendUILogic, "receiver$0");
+    AppMethodBeat.i(51380);
+    k.h(paramAppBrandRecommendUILogic, "$this$showThreeDots");
     if (!paramBoolean) {
       h(paramAppBrandRecommendUILogic);
     }
-    paramAppBrandRecommendUILogic.aNM().eU(paramBoolean);
-    AppMethodBeat.o(135204);
+    paramAppBrandRecommendUILogic.bqe().hh(paramBoolean);
+    AppMethodBeat.o(51380);
   }
   
   public static final void h(AppBrandRecommendUILogic paramAppBrandRecommendUILogic)
   {
-    AppMethodBeat.i(135205);
-    j.q(paramAppBrandRecommendUILogic, "receiver$0");
-    if (paramAppBrandRecommendUILogic.iWC.aNz().isEmpty())
+    AppMethodBeat.i(51381);
+    k.h(paramAppBrandRecommendUILogic, "$this$configFooterWording");
+    if (paramAppBrandRecommendUILogic.lKO.bpS().isEmpty())
     {
-      locale = paramAppBrandRecommendUILogic.aNM();
-      paramAppBrandRecommendUILogic = com.tencent.mm.cb.a.aq(paramAppBrandRecommendUILogic.context, 2131296823);
-      j.p(paramAppBrandRecommendUILogic, "ResourceHelper.getString…ommend_null_list_wording)");
-      a(locale, paramAppBrandRecommendUILogic);
-      AppMethodBeat.o(135205);
+      localg = paramAppBrandRecommendUILogic.bqe();
+      paramAppBrandRecommendUILogic = com.tencent.mm.cd.a.aq(paramAppBrandRecommendUILogic.context, 2131755623);
+      k.g(paramAppBrandRecommendUILogic, "ResourceHelper.getString…ommend_null_list_wording)");
+      a(localg, paramAppBrandRecommendUILogic);
+      AppMethodBeat.o(51381);
       return;
     }
-    e locale = paramAppBrandRecommendUILogic.aNM();
-    paramAppBrandRecommendUILogic = com.tencent.mm.cb.a.aq(paramAppBrandRecommendUILogic.context, 2131296719);
-    j.p(paramAppBrandRecommendUILogic, "ResourceHelper.getString…ents_list_footer_no_more)");
-    a(locale, paramAppBrandRecommendUILogic);
-    AppMethodBeat.o(135205);
+    g localg = paramAppBrandRecommendUILogic.bqe();
+    paramAppBrandRecommendUILogic = com.tencent.mm.cd.a.aq(paramAppBrandRecommendUILogic.context, 2131755500);
+    k.g(paramAppBrandRecommendUILogic, "ResourceHelper.getString…ents_list_footer_no_more)");
+    a(localg, paramAppBrandRecommendUILogic);
+    AppMethodBeat.o(51381);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.i
  * JD-Core Version:    0.7.0.1
  */

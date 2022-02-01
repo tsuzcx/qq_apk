@@ -1,8 +1,18 @@
 package com.tencent.mm.ag;
 
-public final class a
+import com.tencent.mm.aa.f;
+
+public abstract interface a
 {
-  public boolean fqV = true;
+  public abstract void a(f paramf);
+  
+  public abstract void ad(float paramFloat);
+  
+  public abstract void agQ();
+  
+  public abstract void onHide();
+  
+  public abstract void onShow();
 }
 
 

@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class tl
   extends b
 {
-  public tl.a cJT;
-  public tl.b cJU;
+  public a dyN;
   
   public tl()
   {
@@ -16,17 +15,22 @@ public final class tl
   
   private tl(byte paramByte)
   {
-    AppMethodBeat.i(77571);
-    this.cJT = new tl.a();
-    this.cJU = new tl.b();
-    this.ymq = false;
+    AppMethodBeat.i(125639);
+    this.dyN = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77571);
+    AppMethodBeat.o(125639);
+  }
+  
+  public static final class a
+  {
+    public String dgg;
+    public String dpC;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.tl
  * JD-Core Version:    0.7.0.1
  */

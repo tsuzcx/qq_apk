@@ -1,93 +1,212 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.ai.e.b;
-import com.tencent.mm.ai.e.c;
-import com.tencent.mm.g.a.jh;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bf.b;
-import com.tencent.mm.model.c;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.aw.a.a.c;
+import com.tencent.mm.aw.a.c.h;
+import com.tencent.mm.aw.o;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.g.b.k;
+import d.l;
+import d.n.d;
+import java.util.HashMap;
+import java.util.Map;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/pluginsdk/model/BizImageLoader;", "", "()V", "TAG", "", "loadImage", "", "msgId", "", "msgIndex", "", "item", "Lcom/tencent/mm/message/BizReaderItem;", "scene", "url", "view", "Landroid/widget/ImageView;", "cellPosition", "isPreload", "", "options", "Lcom/tencent/mm/modelimage/loader/cfg/ImageLoaderOptions;", "imageLoaderListener", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoaderListener;", "imageLoadListener", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoadListener;", "ImageLoadListenerWrapper", "plugin-biz_release"})
 public final class b
-  implements e
 {
-  public final void a(e.c paramc) {}
+  public static final b BOz;
   
-  public final e.b b(e.a parama)
+  static
   {
-    AppMethodBeat.i(27234);
-    cm localcm = parama.eyJ;
-    if ((localcm == null) || (localcm.nqW != 47))
+    AppMethodBeat.i(124831);
+    BOz = new b();
+    AppMethodBeat.o(124831);
+  }
+  
+  public static void a(long paramLong, int paramInt1, com.tencent.mm.ai.v paramv, String paramString, ImageView paramImageView, int paramInt2, boolean paramBoolean, c paramc, h paramh)
+  {
+    AppMethodBeat.i(124830);
+    if (paramString == null)
     {
-      ab.f("MicroMsg.EmojiExtension", "parseEmojiMsg failed, invalid cmdAM");
-      AppMethodBeat.o(27234);
-      return null;
+      AppMethodBeat.o(124830);
+      return;
     }
-    Object localObject1 = aa.a(localcm.woP);
-    Object localObject2 = aa.a(localcm.woQ);
-    aw.aaz();
-    if (((String)c.Ru().get(2, null)).equals(localObject1))
+    Object localObject = a.BOa;
+    String str2 = a.aAB(paramString);
+    if (paramImageView != null) {
+      paramImageView.setTag(2131297288, paramString);
+    }
+    String str1;
+    label69:
+    long l;
+    int i;
+    if (paramImageView != null)
     {
-      localObject1 = localObject2;
-      localObject2 = aa.a(localcm.woR);
-      ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a((String)localObject1, (String)localObject2, localcm.pIG, localcm.woU, parama);
-      localObject1 = com.tencent.mm.model.bf.pA(localcm.woU);
-      if (localObject1 != null)
+      localObject = Integer.valueOf(paramImageView.hashCode());
+      if (paramc == null) {
+        break label350;
+      }
+      str1 = paramc.ayW();
+      ad.d("MicroMsg.BizImageLoader", "alvinluo BizImage loadImage imageView: %s, isPreload: %b, id: %s, url: %s, fullPath: %s", new Object[] { localObject, Boolean.valueOf(paramBoolean), str2, paramString, str1 });
+      localObject = com.tencent.mm.pluginsdk.ui.applet.g.BXQ;
+      if ((com.tencent.mm.pluginsdk.ui.applet.g.UJ(1)) && (!paramBoolean))
       {
-        ab.i("MicroMsg.EmojiExtension", "bizClientMsgId = %s", new Object[] { ((bf.b)localObject1).fmH });
-        if ((((bf.b)localObject1).fmL != null) && (((bf.b)localObject1).scene == 1))
+        l = System.currentTimeMillis();
+        if (paramv != null)
         {
-          parama = aa.a(localcm.woP);
-          aw.aaz();
-          c.Ru().set(73729, Integer.valueOf(1));
-          localObject2 = new com.tencent.mm.storage.bf();
-          ((com.tencent.mm.storage.bf)localObject2).field_content = ah.getContext().getString(2131301780);
-          ((com.tencent.mm.storage.bf)localObject2).field_createtime = bo.aox();
-          ((com.tencent.mm.storage.bf)localObject2).field_imgpath = "";
-          ((com.tencent.mm.storage.bf)localObject2).field_sayhicontent = ((com.tencent.mm.storage.bf)localObject2).field_content;
-          ((com.tencent.mm.storage.bf)localObject2).field_sayhiuser = parama;
-          ((com.tencent.mm.storage.bf)localObject2).field_scene = 18;
-          if (localcm.jJS <= 3) {
-            break label372;
+          localObject = a.BOa;
+          k.h(paramv, "item");
+          k.h(paramString, "url");
+          if (((CharSequence)paramString).length() != 0) {
+            break label356;
+          }
+          i = 1;
+          label168:
+          if ((i == 0) && (a.BNV.get(paramString) == null))
+          {
+            paramv = (String)a.BNW.get(a.aa(paramLong, paramInt1));
+            localObject = new a.b(paramString);
+            if (l == 0L) {
+              break label362;
+            }
           }
         }
       }
     }
-    label372:
-    for (int i = localcm.jJS;; i = 3)
+    label350:
+    label356:
+    label362:
+    for (paramLong = l;; paramLong = System.currentTimeMillis())
     {
-      ((com.tencent.mm.storage.bf)localObject2).field_status = i;
-      ((com.tencent.mm.storage.bf)localObject2).field_svrid = localcm.pIG;
-      ((com.tencent.mm.storage.bf)localObject2).field_talker = parama;
-      ((com.tencent.mm.storage.bf)localObject2).field_type = localcm.nqW;
-      ((com.tencent.mm.storage.bf)localObject2).field_isSend = 0;
-      ((com.tencent.mm.storage.bf)localObject2).field_sayhiencryptuser = parama;
-      ((com.tencent.mm.storage.bf)localObject2).field_ticket = ((bf.b)localObject1).fmL;
-      com.tencent.mm.bi.d.alj().a((com.tencent.mm.storage.bf)localObject2);
-      localObject1 = new jh();
-      ((jh)localObject1).cyK.cyL = parama;
-      a.ymk.l((com.tencent.mm.sdk.b.b)localObject1);
-      AppMethodBeat.o(27234);
-      return null;
+      ((a.b)localObject).position = paramInt2;
+      if (paramv != null) {
+        ((a.b)localObject).aAC(paramv);
+      }
+      ((a.b)localObject).aB(1, paramLong);
+      ((Map)a.BNV).put(paramString, localObject);
+      if (a.BNY)
+      {
+        ad.v("MicroMsg.BizImageBlankReporter", "alvinluo startLoad flinging id: %s, url: %s", new Object[] { a.aAB(paramString), paramString });
+        ((a.b)localObject).aB(9, paramLong);
+      }
+      paramv = a.BOa;
+      a.c(8, paramString, l);
+      o.ayJ().a(paramString, paramImageView, paramc, null, (h)new a(paramString, paramh));
+      AppMethodBeat.o(124830);
+      return;
+      localObject = null;
       break;
+      str1 = null;
+      break label69;
+      i = 0;
+      break label168;
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/pluginsdk/model/BizImageLoader$ImageLoadListenerWrapper;", "Lcom/tencent/mm/modelimage/loader/listener/IImageLoadListener;", "scene", "", "url", "", "imageLoadListener", "(ILjava/lang/String;Lcom/tencent/mm/modelimage/loader/listener/IImageLoadListener;)V", "id", "getImageLoadListener", "()Lcom/tencent/mm/modelimage/loader/listener/IImageLoadListener;", "getScene", "()I", "getUrl", "()Ljava/lang/String;", "onImageLoadFinish", "", "view", "Landroid/view/View;", "imageData", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onImageLoadStart", "onProcessBitmap", "Landroid/graphics/Bitmap;", "plugin-biz_release"})
+  public static final class a
+    implements h
+  {
+    private final String id;
+    private final int scene;
+    private final h tWJ;
+    private final String url;
+    
+    public a(String paramString, h paramh)
+    {
+      AppMethodBeat.i(124829);
+      this.scene = 1;
+      this.url = paramString;
+      this.tWJ = paramh;
+      paramString = this.url;
+      if (paramString != null)
+      {
+        paramh = d.UTF_8;
+        if (paramString == null)
+        {
+          paramString = new d.v("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(124829);
+          throw paramString;
+        }
+        paramString = paramString.getBytes(paramh);
+        k.g(paramString, "(this as java.lang.String).getBytes(charset)");
+      }
+      for (;;)
+      {
+        paramh = com.tencent.mm.b.g.getMessageDigest(paramString);
+        paramString = paramh;
+        if (paramh == null) {
+          paramString = "-1";
+        }
+        this.id = paramString;
+        AppMethodBeat.o(124829);
+        return;
+        paramString = null;
+      }
+    }
+    
+    public final Bitmap a(String paramString, View paramView, com.tencent.mm.aw.a.d.b paramb)
+    {
+      AppMethodBeat.i(124827);
+      Object localObject = com.tencent.mm.pluginsdk.ui.applet.g.BXQ;
+      if (com.tencent.mm.pluginsdk.ui.applet.g.UJ(this.scene))
+      {
+        localObject = a.BOa;
+        a.cz(7, paramString);
+      }
+      localObject = this.tWJ;
+      if (localObject != null) {}
+      for (paramView = ((h)localObject).a(paramString, paramView, paramb);; paramView = null)
+      {
+        paramb = com.tencent.mm.pluginsdk.ui.applet.g.BXQ;
+        if (com.tencent.mm.pluginsdk.ui.applet.g.UJ(this.scene))
+        {
+          paramb = a.BOa;
+          a.cA(7, paramString);
+        }
+        AppMethodBeat.o(124827);
+        return paramView;
+      }
+    }
+    
+    public final void b(String paramString, View paramView)
+    {
+      AppMethodBeat.i(124826);
+      h localh = this.tWJ;
+      if (localh != null)
+      {
+        localh.b(paramString, paramView);
+        AppMethodBeat.o(124826);
+        return;
+      }
+      AppMethodBeat.o(124826);
+    }
+    
+    public final void b(String paramString, View paramView, com.tencent.mm.aw.a.d.b paramb)
+    {
+      AppMethodBeat.i(124828);
+      k.h(paramString, "url");
+      h localh = this.tWJ;
+      if (localh != null) {
+        localh.b(paramString, paramView, paramb);
+      }
+      paramView = com.tencent.mm.pluginsdk.ui.applet.g.BXQ;
+      if (com.tencent.mm.pluginsdk.ui.applet.g.UJ(this.scene))
+      {
+        paramView = a.BOa;
+        k.h(paramString, "url");
+        a.u((Runnable)new a.e(paramString, System.currentTimeMillis(), paramb));
+      }
+      AppMethodBeat.o(124828);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,44 +5,44 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public b ebB;
-  public c ebC;
-  public d ebD;
-  public h ebE;
-  private f ebF;
-  public a ebG;
-  public int ebH;
-  public int ebI;
-  public int ebJ;
-  public int ebK;
-  public boolean ebL;
-  private int ebM;
-  private int ebN;
-  public boolean ebO;
-  public boolean ebP;
+  public b flN;
+  public c flO;
+  public d flP;
+  public h flQ;
+  private f flR;
+  public a flS;
+  public int flT;
+  public int flU;
+  public int flV;
+  public int flW;
+  public boolean flX;
+  private int flY;
+  private int flZ;
+  public boolean fma;
+  public boolean fmb;
   public Context mContext;
   
   public g(Context paramContext)
   {
-    AppMethodBeat.i(16035);
-    this.ebM = -1;
-    this.ebN = -1;
+    AppMethodBeat.i(20067);
+    this.flY = -1;
+    this.flZ = -1;
     this.mContext = paramContext;
-    this.ebB = new b();
-    this.ebC = new c();
-    this.ebD = new d();
-    this.ebE = new h();
-    this.ebG = new a();
-    this.ebF = f.a.IY();
-    AppMethodBeat.o(16035);
+    this.flN = new b();
+    this.flO = new c();
+    this.flP = new d();
+    this.flQ = new h();
+    this.flS = new a();
+    this.flR = f.a.Un();
+    AppMethodBeat.o(20067);
   }
   
-  public static String b(long[] paramArrayOfLong)
+  public static String a(long[] paramArrayOfLong)
   {
-    AppMethodBeat.i(16037);
+    AppMethodBeat.i(20069);
     if (paramArrayOfLong == null)
     {
-      AppMethodBeat.o(16037);
+      AppMethodBeat.o(20069);
       return null;
     }
     String str = "";
@@ -56,24 +56,24 @@ public final class g
     }
     if (str.isEmpty())
     {
-      AppMethodBeat.o(16037);
+      AppMethodBeat.o(20069);
       return str;
     }
     paramArrayOfLong = str.substring(0, str.length() - 1);
-    AppMethodBeat.o(16037);
+    AppMethodBeat.o(20069);
     return paramArrayOfLong;
   }
   
-  public final void kJ(String paramString)
+  public final void oB(String paramString)
   {
-    AppMethodBeat.i(16036);
-    this.ebF.kI(paramString);
-    AppMethodBeat.o(16036);
+    AppMethodBeat.i(20068);
+    this.flR.oA(paramString);
+    AppMethodBeat.o(20068);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a.g
  * JD-Core Version:    0.7.0.1
  */

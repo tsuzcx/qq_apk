@@ -1,24 +1,100 @@
 package com.tencent.smtt.sdk;
 
-import android.webkit.ValueCallback;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.export.external.jscore.interfaces.IX5JsError;
+import com.tencent.smtt.utils.c;
+import java.util.UnknownFormatConversionException;
 
-class d
-  implements ValueCallback<IX5JsError>
+public class d
 {
-  d(JsContext paramJsContext) {}
+  static int a = 5;
+  static int b = 16;
+  static char[] c = new char[16];
+  static String d = "dex2oat-cmdline";
+  static long e = 4096L;
   
-  public void a(IX5JsError paramIX5JsError)
+  public static String a(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(63911);
-    JsContext.a(this.a).handleException(this.a, new JsError(paramIX5JsError));
-    AppMethodBeat.o(63911);
+    boolean bool = true;
+    AppMethodBeat.i(54932);
+    paramContext = new c(paramString);
+    paramContext.a(c);
+    if (c[a] == '\001') {}
+    for (;;)
+    {
+      paramContext.a(bool);
+      paramContext.a(e);
+      paramContext = a(new String(a(paramContext)));
+      AppMethodBeat.o(54932);
+      return paramContext;
+      bool = false;
+    }
+  }
+  
+  private static String a(String paramString)
+  {
+    AppMethodBeat.i(54933);
+    paramString = paramString.split(new String(""));
+    int i = 0;
+    while (i < paramString.length)
+    {
+      int j = i + 1;
+      Object localObject = paramString[i];
+      i = j + 1;
+      String str = paramString[j];
+      if (localObject.equals(d))
+      {
+        AppMethodBeat.o(54933);
+        return str;
+      }
+    }
+    AppMethodBeat.o(54933);
+    return "";
+  }
+  
+  public static char[] a(c paramc)
+  {
+    AppMethodBeat.i(54934);
+    char[] arrayOfChar1 = new char[4];
+    char[] arrayOfChar2 = new char[4];
+    paramc.a(arrayOfChar1);
+    if ((arrayOfChar1[0] != 'o') || (arrayOfChar1[1] != 'a') || (arrayOfChar1[2] != 't'))
+    {
+      paramc = new UnknownFormatConversionException(String.format("Invalid art magic %c%c%c", new Object[] { Character.valueOf(arrayOfChar1[0]), Character.valueOf(arrayOfChar1[1]), Character.valueOf(arrayOfChar1[2]) }));
+      AppMethodBeat.o(54934);
+      throw paramc;
+    }
+    paramc.a(arrayOfChar2);
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    if (arrayOfChar2[1] <= '4')
+    {
+      paramc.b();
+      paramc.b();
+      paramc.b();
+    }
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    paramc.b();
+    arrayOfChar1 = new char[paramc.b()];
+    paramc.a(arrayOfChar1);
+    AppMethodBeat.o(54934);
+    return arrayOfChar1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.sdk.d
  * JD-Core Version:    0.7.0.1
  */

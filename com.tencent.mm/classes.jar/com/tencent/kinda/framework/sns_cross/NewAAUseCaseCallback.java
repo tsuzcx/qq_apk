@@ -14,12 +14,12 @@ public class NewAAUseCaseCallback
   
   public void call(ITransmitKvData paramITransmitKvData)
   {
-    AppMethodBeat.i(144601);
+    AppMethodBeat.i(18713);
     Object localObject = this.mBean.getContext();
     if (("1".equals(paramITransmitKvData.getString("closeLoading"))) && ((localObject instanceof PaylistAAUI)))
     {
       ((PaylistAAUI)localObject).hideLoading();
-      AppMethodBeat.o(144601);
+      AppMethodBeat.o(18713);
       return;
     }
     String str = paramITransmitKvData.getString("transaction_id");
@@ -31,18 +31,18 @@ public class NewAAUseCaseCallback
         paramITransmitKvData = (PaylistAAUI)localObject;
         localObject = new Intent();
         ((Intent)localObject).putExtra("key_trans_id", str);
-        paramITransmitKvData.c(i, (Intent)localObject);
+        paramITransmitKvData.b(i, (Intent)localObject);
       }
-      AppMethodBeat.o(144601);
+      AppMethodBeat.o(18713);
       return;
     }
   }
   
   public void setData(Context paramContext, PayInfo paramPayInfo)
   {
-    AppMethodBeat.i(144600);
+    AppMethodBeat.i(18712);
     this.mBean = new SnsServiceBean(paramContext, paramPayInfo);
-    AppMethodBeat.o(144600);
+    AppMethodBeat.o(18712);
   }
 }
 

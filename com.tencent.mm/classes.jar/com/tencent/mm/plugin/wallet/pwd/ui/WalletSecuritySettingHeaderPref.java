@@ -7,90 +7,90 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class WalletSecuritySettingHeaderPref
   extends Preference
 {
-  private MMActivity cmc;
-  private TextView iUs;
-  String mmp;
-  ImageView pdI;
-  private TextView uaf;
-  TextView uag;
-  String uah;
-  String uai;
-  View.OnClickListener uaj;
-  View.OnClickListener uak;
+  private MMActivity imP;
+  String pTa;
+  private TextView snS;
+  ImageView ubf;
+  private TextView zUH;
+  TextView zUI;
+  String zUJ;
+  String zUK;
+  View.OnClickListener zUL;
+  View.OnClickListener zUM;
   
   public WalletSecuritySettingHeaderPref(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(46389);
-    this.cmc = ((MMActivity)paramContext);
-    AppMethodBeat.o(46389);
+    AppMethodBeat.i(69786);
+    this.imP = ((MMActivity)paramContext);
+    AppMethodBeat.o(69786);
   }
   
   public WalletSecuritySettingHeaderPref(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(46390);
-    this.uaj = null;
-    this.uak = null;
-    this.cmc = ((MMActivity)paramContext);
-    setLayoutResource(2130971246);
-    AppMethodBeat.o(46390);
+    AppMethodBeat.i(69787);
+    this.zUL = null;
+    this.zUM = null;
+    this.imP = ((MMActivity)paramContext);
+    setLayoutResource(2131496023);
+    AppMethodBeat.o(69787);
   }
   
-  final void bJ()
+  final void cE()
   {
-    AppMethodBeat.i(46392);
-    if ((!bo.isNullOrNil(this.mmp)) && (this.iUs != null))
+    AppMethodBeat.i(69789);
+    if ((!bt.isNullOrNil(this.pTa)) && (this.snS != null))
     {
-      this.iUs.setText(this.mmp);
-      this.iUs.setVisibility(0);
+      this.snS.setText(this.pTa);
+      this.snS.setVisibility(0);
     }
-    if ((!bo.isNullOrNil(this.uah)) && (this.uaf != null))
+    if ((!bt.isNullOrNil(this.zUJ)) && (this.zUH != null))
     {
-      this.uaf.setText(this.uah);
-      this.uaf.setVisibility(0);
+      this.zUH.setText(this.zUJ);
+      this.zUH.setVisibility(0);
     }
-    if ((!bo.isNullOrNil(this.uai)) && (this.uag != null))
+    if ((!bt.isNullOrNil(this.zUK)) && (this.zUI != null))
     {
-      this.uag.setText(this.uai);
-      this.uag.setVisibility(0);
+      this.zUI.setText(this.zUK);
+      this.zUI.setVisibility(0);
     }
-    if ((bo.isNullOrNil(this.uai)) && (this.uag != null)) {
-      this.uag.setVisibility(8);
+    if ((bt.isNullOrNil(this.zUK)) && (this.zUI != null)) {
+      this.zUI.setVisibility(8);
     }
-    AppMethodBeat.o(46392);
+    AppMethodBeat.o(69789);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(46391);
+    AppMethodBeat.i(69788);
     super.onBindView(paramView);
-    ab.v("MicroMsg.WalletSecuritySettingHeaderPref", "alvinluo onBindView");
-    this.iUs = ((TextView)paramView.findViewById(2131824647));
-    this.uaf = ((TextView)paramView.findViewById(2131821115));
-    this.uag = ((TextView)paramView.findViewById(2131829388));
-    this.pdI = ((ImageView)paramView.findViewById(2131829387));
-    bJ();
-    if ((this.uag != null) && (this.uaj != null)) {
-      this.uag.setOnClickListener(this.uaj);
+    ad.v("MicroMsg.WalletSecuritySettingHeaderPref", "alvinluo onBindView");
+    this.snS = ((TextView)paramView.findViewById(2131301985));
+    this.zUH = ((TextView)paramView.findViewById(2131298996));
+    this.zUI = ((TextView)paramView.findViewById(2131299065));
+    this.ubf = ((ImageView)paramView.findViewById(2131306831));
+    cE();
+    if ((this.zUI != null) && (this.zUL != null)) {
+      this.zUI.setOnClickListener(this.zUL);
     }
-    if ((this.pdI != null) && (this.uak != null)) {
-      this.pdI.setOnClickListener(this.uak);
+    if ((this.ubf != null) && (this.zUM != null)) {
+      this.ubf.setOnClickListener(this.zUM);
     }
-    AppMethodBeat.o(46391);
+    AppMethodBeat.o(69788);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletSecuritySettingHeaderPref
  * JD-Core Version:    0.7.0.1
  */

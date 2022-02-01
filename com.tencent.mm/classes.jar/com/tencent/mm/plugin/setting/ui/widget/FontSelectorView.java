@@ -12,8 +12,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.ui.ao;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,190 +21,193 @@ import java.util.List;
 public class FontSelectorView
   extends View
 {
-  private static SoftReference<Bitmap> qLR = null;
-  private static int qMa = 8;
-  private int blU;
-  private int eAS;
-  private float nvl;
-  private float nvm;
-  private List<FontSelectorView.b> qLS;
-  private int qLT;
-  private int qLU;
-  private int qLV;
-  private int qLW;
-  private int qLX;
-  private int qLY;
-  private FontSelectorView.a qLZ;
-  private boolean qMb;
-  private boolean qMc;
+  private static SoftReference<Bitmap> wkM = null;
+  private static int wkV = 8;
+  private int fWw;
+  private float qXK;
+  private boolean qXU;
+  private float seQ;
+  private int ssk;
   private int topOffset;
+  private List<b> wkN;
+  private int wkO;
+  private int wkP;
+  private int wkQ;
+  private int wkR;
+  private int wkS;
+  private int wkT;
+  private FontSelectorView.a wkU;
+  private boolean wkW;
   
   public FontSelectorView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(127690);
-    this.qLS = new ArrayList(8);
-    this.qLT = 0;
+    AppMethodBeat.i(74626);
+    this.wkN = new ArrayList(8);
+    this.wkO = 0;
     this.topOffset = 0;
-    this.blU = 0;
-    this.eAS = 0;
-    this.nvl = 0.0F;
-    this.nvm = 0.0F;
-    this.qLU = 0;
-    this.qLV = 0;
-    this.qLW = 0;
-    this.qLX = 0;
-    this.qLY = 0;
-    this.qLZ = null;
-    this.qMb = false;
-    this.qMc = false;
-    AppMethodBeat.o(127690);
+    this.ssk = 0;
+    this.fWw = 0;
+    this.qXK = 0.0F;
+    this.seQ = 0.0F;
+    this.wkP = 0;
+    this.wkQ = 0;
+    this.wkR = 0;
+    this.wkS = 0;
+    this.wkT = 0;
+    this.wkU = null;
+    this.wkW = false;
+    this.qXU = false;
+    AppMethodBeat.o(74626);
   }
   
   public FontSelectorView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(127691);
-    this.qLS = new ArrayList(8);
-    this.qLT = 0;
+    AppMethodBeat.i(74627);
+    this.wkN = new ArrayList(8);
+    this.wkO = 0;
     this.topOffset = 0;
-    this.blU = 0;
-    this.eAS = 0;
-    this.nvl = 0.0F;
-    this.nvm = 0.0F;
-    this.qLU = 0;
-    this.qLV = 0;
-    this.qLW = 0;
-    this.qLX = 0;
-    this.qLY = 0;
-    this.qLZ = null;
-    this.qMb = false;
-    this.qMc = false;
-    AppMethodBeat.o(127691);
+    this.ssk = 0;
+    this.fWw = 0;
+    this.qXK = 0.0F;
+    this.seQ = 0.0F;
+    this.wkP = 0;
+    this.wkQ = 0;
+    this.wkR = 0;
+    this.wkS = 0;
+    this.wkT = 0;
+    this.wkU = null;
+    this.wkW = false;
+    this.qXU = false;
+    AppMethodBeat.o(74627);
   }
   
-  private static int aY(float paramFloat)
+  private static int bp(float paramFloat)
   {
-    AppMethodBeat.i(127697);
+    AppMethodBeat.i(74632);
     Paint localPaint = new Paint();
     localPaint.setTextSize(paramFloat);
     localPaint.setAntiAlias(true);
     int i = (int)Math.ceil(localPaint.getFontMetrics().bottom);
-    AppMethodBeat.o(127697);
+    AppMethodBeat.o(74632);
     return i;
   }
   
-  public static void ckM()
+  public static void doA()
   {
-    qMa = 8;
+    wkV = 8;
   }
   
-  private void ckN()
+  private void doB()
   {
-    AppMethodBeat.i(127693);
-    if ((qLR == null) || (qLR.get() == null)) {
-      qLR = new SoftReference(BitmapFactory.decodeResource(getResources(), 2130838884));
+    AppMethodBeat.i(74629);
+    if ((wkM == null) || (wkM.get() == null)) {
+      wkM = new SoftReference(BitmapFactory.decodeResource(getResources(), 2131232423));
     }
-    AppMethodBeat.o(127693);
+    AppMethodBeat.o(74629);
   }
   
   @SuppressLint({"DrawAllocation"})
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(127694);
+    AppMethodBeat.i(74630);
     super.onDraw(paramCanvas);
     if (paramCanvas == null)
     {
-      AppMethodBeat.o(127694);
+      AppMethodBeat.o(74630);
       return;
     }
-    ckN();
+    doB();
     Object localObject = new Paint();
     ((Paint)localObject).setARGB(255, 152, 152, 152);
     ((Paint)localObject).setStrokeWidth(2.0F);
     int i = getWidth();
     int j = a.fromDPToPix(getContext(), 5);
-    paramCanvas.drawLine(this.qLT, this.blU, i - this.qLT, this.blU, (Paint)localObject);
+    paramCanvas.drawLine(this.wkO, this.ssk, i - this.wkO, this.ssk, (Paint)localObject);
     i = 0;
-    while (i < qMa)
+    while (i < wkV)
     {
-      paramCanvas.drawLine(this.qLT + this.eAS * i, this.blU - j, this.qLT + this.eAS * i, this.blU + j, (Paint)localObject);
+      paramCanvas.drawLine(this.wkO + this.fWw * i, this.ssk - j, this.wkO + this.fWw * i, this.ssk + j, (Paint)localObject);
       i += 1;
     }
-    localObject = (Bitmap)qLR.get();
+    localObject = (Bitmap)wkM.get();
     if (localObject == null) {
-      ckN();
+      doB();
     }
-    paramCanvas.drawBitmap((Bitmap)localObject, this.qLV, this.qLW, null);
-    String str = getResources().getString(2131303159);
-    getResources().getString(2131303158);
-    getResources().getString(2131303161);
-    float f = al.ap(getContext(), 2131427809) * a.gf(getContext());
+    paramCanvas.drawBitmap((Bitmap)localObject, this.wkQ, this.wkR, null);
+    String str = getResources().getString(2131763125);
+    getResources().getString(2131763124);
+    getResources().getString(2131763127);
+    float f = ao.ap(getContext(), 2131165517) * a.hE(getContext());
     Paint localPaint = new Paint();
     localPaint.setTextSize(f);
     i = (int)localPaint.measureText("A");
-    j = aY(f);
-    localPaint.setColor(getResources().getColor(2131689763));
+    j = bp(f);
+    localPaint.setColor(getResources().getColor(2131100711));
     localPaint.setAntiAlias(true);
-    paramCanvas.drawText("A", this.qLT - i / 2, this.blU - j - ((Bitmap)localObject).getHeight() / 3, localPaint);
-    f = al.ap(getContext(), 2131427809) * a.gg(getContext());
+    paramCanvas.drawText("A", this.wkO - i / 2, this.ssk - j - ((Bitmap)localObject).getHeight() / 3, localPaint);
+    f = ao.ap(getContext(), 2131165517) * a.hF(getContext());
     localPaint.setTextSize(f);
     i = (int)localPaint.measureText(str);
-    j = aY(f);
-    paramCanvas.drawText(str, this.qLT + this.eAS * 1 - i / 2, this.blU - j - ((Bitmap)localObject).getHeight() / 3, localPaint);
-    f = al.ap(getContext(), 2131427809) * a.gm(getContext());
+    j = bp(f);
+    paramCanvas.drawText(str, this.wkO + this.fWw * 1 - i / 2, this.ssk - j - ((Bitmap)localObject).getHeight() / 3, localPaint);
+    f = ao.ap(getContext(), 2131165517) * a.hL(getContext());
     localPaint.setTextSize(f);
     i = (int)localPaint.measureText("A");
-    j = aY(f);
-    paramCanvas.drawText("A", this.qLT + this.eAS * (qMa - 1) - i / 2, this.blU - j - ((Bitmap)localObject).getHeight() / 3, localPaint);
-    AppMethodBeat.o(127694);
+    j = bp(f);
+    paramCanvas.drawText("A", this.wkO + this.fWw * (wkV - 1) - i / 2, this.ssk - j - ((Bitmap)localObject).getHeight() / 3, localPaint);
+    AppMethodBeat.o(74630);
   }
   
   @SuppressLint({"DrawAllocation"})
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(127692);
+    AppMethodBeat.i(74628);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    ckN();
-    this.qLS.clear();
+    doB();
+    this.wkN.clear();
     setClickable(true);
-    this.qLT = a.fromDPToPix(getContext(), 30);
+    this.wkO = a.fromDPToPix(getContext(), 30);
     this.topOffset = a.fromDPToPix(getContext(), 10);
     paramInt1 = getWidth();
     paramInt2 = getHeight();
     paramInt3 = this.topOffset;
-    this.blU = (paramInt2 / 2 + paramInt3);
-    qMa = 8;
-    this.eAS = ((paramInt1 - this.qLT * 2) / (qMa - 1));
-    Bitmap localBitmap = (Bitmap)qLR.get();
-    if (localBitmap == null) {
-      ckN();
+    this.ssk = (paramInt2 / 2 + paramInt3);
+    wkV = 8;
+    this.fWw = ((paramInt1 - this.wkO * 2) / (wkV - 1));
+    Object localObject2 = (Bitmap)wkM.get();
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      doB();
+      localObject1 = (Bitmap)wkM.get();
     }
     paramInt1 = 0;
-    while (paramInt1 < qMa)
+    while (paramInt1 < wkV)
     {
-      FontSelectorView.b localb = new FontSelectorView.b((byte)0);
-      localb.left = (this.qLT + this.eAS * paramInt1 - localBitmap.getWidth() / 2);
-      localb.top = (this.blU - localBitmap.getHeight() / 2);
-      localb.right = (this.qLT + this.eAS * paramInt1 + localBitmap.getWidth() / 2);
-      localb.bottom = (this.blU + localBitmap.getHeight() / 2);
-      this.qLS.add(localb);
+      localObject2 = new b((byte)0);
+      ((b)localObject2).left = (this.wkO + this.fWw * paramInt1 - ((Bitmap)localObject1).getWidth() / 2);
+      ((b)localObject2).top = (this.ssk - ((Bitmap)localObject1).getHeight() / 2);
+      ((b)localObject2).right = (this.wkO + this.fWw * paramInt1 + ((Bitmap)localObject1).getWidth() / 2);
+      ((b)localObject2).bottom = (this.ssk + ((Bitmap)localObject1).getHeight() / 2);
+      this.wkN.add(localObject2);
       paramInt1 += 1;
     }
-    this.qLU = this.qLY;
-    if (this.qLX >= 0) {
-      this.qLV = ((FontSelectorView.b)this.qLS.get(this.qLU)).left;
+    this.wkP = this.wkT;
+    if (this.wkS >= 0) {
+      this.wkQ = ((b)this.wkN.get(this.wkP)).left;
     }
     for (;;)
     {
-      this.qLW = ((FontSelectorView.b)this.qLS.get(this.qLU)).top;
+      this.wkR = ((b)this.wkN.get(this.wkP)).top;
       invalidate();
-      AppMethodBeat.o(127692);
+      AppMethodBeat.o(74628);
       return;
-      if (this.qLV <= ((FontSelectorView.b)this.qLS.get(this.qLU)).right - this.eAS / 2) {
-        this.qLV = ((FontSelectorView.b)this.qLS.get(this.qLU)).left;
+      if (this.wkQ <= ((b)this.wkN.get(this.wkP)).right - this.fWw / 2) {
+        this.wkQ = ((b)this.wkN.get(this.wkP)).left;
       } else {
-        this.qLV = ((FontSelectorView.b)this.qLS.get(this.qLU)).right;
+        this.wkQ = ((b)this.wkN.get(this.wkP)).right;
       }
     }
   }
@@ -212,9 +215,9 @@ public class FontSelectorView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int j = 0;
-    AppMethodBeat.i(127695);
+    AppMethodBeat.i(74631);
     boolean bool;
-    FontSelectorView.b localb;
+    b localb;
     int i;
     switch (paramMotionEvent.getAction())
     {
@@ -222,22 +225,22 @@ public class FontSelectorView
     case 0: 
       for (bool = true;; bool = true)
       {
-        AppMethodBeat.o(127695);
+        AppMethodBeat.o(74631);
         return bool;
-        this.nvl = paramMotionEvent.getX();
-        this.nvm = paramMotionEvent.getY();
-        localb = (FontSelectorView.b)this.qLS.get(this.qLU);
+        this.qXK = paramMotionEvent.getX();
+        this.seQ = paramMotionEvent.getY();
+        localb = (b)this.wkN.get(this.wkP);
         i = j;
-        if (this.nvl >= localb.left)
+        if (this.qXK >= localb.left)
         {
           i = j;
-          if (this.nvl <= localb.right)
+          if (this.qXK <= localb.right)
           {
             i = j;
-            if (this.nvm >= localb.top)
+            if (this.seQ >= localb.top)
             {
               i = j;
-              if (this.nvm <= localb.bottom) {
+              if (this.seQ <= localb.bottom) {
                 i = 1;
               }
             }
@@ -246,9 +249,9 @@ public class FontSelectorView
         if (i == 0) {
           break;
         }
-        this.qMb = true;
+        this.wkW = true;
       }
-      this.qMc = true;
+      this.qXU = true;
     }
     label424:
     label575:
@@ -257,45 +260,45 @@ public class FontSelectorView
     {
       bool = super.onTouchEvent(paramMotionEvent);
       break;
-      if (this.qMb)
+      if (this.wkW)
       {
         f1 = paramMotionEvent.getX();
         f2 = paramMotionEvent.getY();
-        this.qLX = ((int)(f1 - this.nvl));
-        this.qLV = ((int)(f1 - this.qLT));
-        this.nvl = f1;
-        this.nvm = f2;
-        paramMotionEvent = (FontSelectorView.b)this.qLS.get(0);
-        localb = (FontSelectorView.b)this.qLS.get(qMa - 1);
-        if (this.qLV <= paramMotionEvent.left) {
-          this.qLV = paramMotionEvent.left;
+        this.wkS = ((int)(f1 - this.qXK));
+        this.wkQ = ((int)(f1 - this.wkO));
+        this.qXK = f1;
+        this.seQ = f2;
+        paramMotionEvent = (b)this.wkN.get(0);
+        localb = (b)this.wkN.get(wkV - 1);
+        if (this.wkQ <= paramMotionEvent.left) {
+          this.wkQ = paramMotionEvent.left;
         }
         for (;;)
         {
           invalidate();
           bool = true;
           break;
-          if (this.qLV >= localb.left)
+          if (this.wkQ >= localb.left)
           {
-            this.qLV = localb.left;
+            this.wkQ = localb.left;
           }
           else
           {
             i = 0;
             for (;;)
             {
-              if (i >= qMa) {
+              if (i >= wkV) {
                 break label424;
               }
-              paramMotionEvent = (FontSelectorView.b)this.qLS.get(i);
-              if ((this.qLV >= paramMotionEvent.left - 5) && (this.qLV <= paramMotionEvent.right + 5))
+              paramMotionEvent = (b)this.wkN.get(i);
+              if ((this.wkQ >= paramMotionEvent.left - 5) && (this.wkQ <= paramMotionEvent.right + 5))
               {
-                this.qLU = i;
-                this.qLY = this.qLU;
-                if (this.qLZ == null) {
+                this.wkP = i;
+                this.wkT = this.wkP;
+                if (this.wkU == null) {
                   break;
                 }
-                this.qLZ.Da(this.qLU);
+                this.wkU.LB(this.wkP);
                 break;
               }
               i += 1;
@@ -305,60 +308,60 @@ public class FontSelectorView
       }
       bool = super.onTouchEvent(paramMotionEvent);
       break;
-      if (this.qMb)
+      if (this.wkW)
       {
         i = 0;
         for (;;)
         {
-          if (i < qMa - 1)
+          if (i < wkV - 1)
           {
-            paramMotionEvent = (FontSelectorView.b)this.qLS.get(i);
-            localb = (FontSelectorView.b)this.qLS.get(i + 1);
-            if ((this.qLV > paramMotionEvent.left + this.eAS / 2) || (this.qLV < paramMotionEvent.left)) {
+            paramMotionEvent = (b)this.wkN.get(i);
+            localb = (b)this.wkN.get(i + 1);
+            if ((this.wkQ > paramMotionEvent.left + this.fWw / 2) || (this.wkQ < paramMotionEvent.left)) {
               break label575;
             }
-            this.qLU = i;
+            this.wkP = i;
           }
-          for (this.qLV = paramMotionEvent.left;; this.qLV = localb.left)
+          for (this.wkQ = paramMotionEvent.left;; this.wkQ = localb.left)
           {
-            this.qLY = this.qLU;
-            if (this.qLZ != null) {
-              this.qLZ.Da(this.qLU);
+            this.wkT = this.wkP;
+            if (this.wkU != null) {
+              this.wkU.LB(this.wkP);
             }
             invalidate();
-            this.qMb = false;
+            this.wkW = false;
             bool = true;
             break;
-            if ((this.qLV < localb.left - this.eAS / 2) || (this.qLV > localb.left)) {
+            if ((this.wkQ < localb.left - this.fWw / 2) || (this.wkQ > localb.left)) {
               break label626;
             }
-            this.qLU = (i + 1);
+            this.wkP = (i + 1);
           }
           i += 1;
         }
       }
-    } while (!this.qMc);
+    } while (!this.qXU);
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    if ((Math.abs(f1 - this.nvl) <= 10.0F) && (Math.abs(f2 - this.nvm) <= 10.0F)) {
+    if ((Math.abs(f1 - this.qXK) <= 10.0F) && (Math.abs(f2 - this.seQ) <= 10.0F)) {
       i = 0;
     }
     for (;;)
     {
-      if (i < qMa)
+      if (i < wkV)
       {
-        paramMotionEvent = (FontSelectorView.b)this.qLS.get(i);
+        paramMotionEvent = (b)this.wkN.get(i);
         if ((f1 < paramMotionEvent.left - 5) || (f1 > paramMotionEvent.right + 5)) {
           break label791;
         }
-        this.qLU = i;
-        this.qLY = this.qLU;
-        this.qLV = paramMotionEvent.left;
-        if (this.qLZ != null) {
-          this.qLZ.Da(this.qLU);
+        this.wkP = i;
+        this.wkT = this.wkP;
+        this.wkQ = paramMotionEvent.left;
+        if (this.wkU != null) {
+          this.wkU.LB(this.wkP);
         }
       }
-      this.qMc = false;
+      this.qXU = false;
       invalidate();
       bool = true;
       break;
@@ -369,17 +372,25 @@ public class FontSelectorView
   
   public void setOnChangeListener(FontSelectorView.a parama)
   {
-    this.qLZ = parama;
+    this.wkU = parama;
   }
   
   public void setSliderIndex(int paramInt)
   {
-    this.qLY = paramInt;
+    this.wkT = paramInt;
+  }
+  
+  static final class b
+  {
+    public int bottom = 0;
+    public int left = 0;
+    public int right = 0;
+    public int top = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.widget.FontSelectorView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class EmotionCell
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
   public String CellTitle;
   public String IconUrl;
@@ -13,22 +13,22 @@ public class EmotionCell
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(62536);
+    AppMethodBeat.i(104772);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.CellTitle != null) {
-        paramVarArgs.e(1, this.CellTitle);
+        paramVarArgs.d(1, this.CellTitle);
       }
-      paramVarArgs.aO(2, this.ReqType);
-      paramVarArgs.aO(3, this.Position);
+      paramVarArgs.aR(2, this.ReqType);
+      paramVarArgs.aR(3, this.Position);
       if (this.IconUrl != null) {
-        paramVarArgs.e(4, this.IconUrl);
+        paramVarArgs.d(4, this.IconUrl);
       }
       if (this.TagUrl != null) {
-        paramVarArgs.e(5, this.TagUrl);
+        paramVarArgs.d(5, this.TagUrl);
       }
-      AppMethodBeat.o(62536);
+      AppMethodBeat.o(104772);
       return 0;
     }
     if (paramInt == 1) {
@@ -37,68 +37,68 @@ public class EmotionCell
       }
     }
     label422:
-    for (paramInt = e.a.a.b.b.a.f(1, this.CellTitle) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.CellTitle) + 0;; paramInt = 0)
     {
-      int i = paramInt + e.a.a.b.b.a.bl(2, this.ReqType) + e.a.a.b.b.a.bl(3, this.Position);
+      int i = paramInt + f.a.a.b.b.a.bA(2, this.ReqType) + f.a.a.b.b.a.bA(3, this.Position);
       paramInt = i;
       if (this.IconUrl != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.IconUrl);
+        paramInt = i + f.a.a.b.b.a.e(4, this.IconUrl);
       }
       i = paramInt;
       if (this.TagUrl != null) {
-        i = paramInt + e.a.a.b.b.a.f(5, this.TagUrl);
+        i = paramInt + f.a.a.b.b.a.e(5, this.TagUrl);
       }
-      AppMethodBeat.o(62536);
+      AppMethodBeat.o(104772);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(62536);
+        AppMethodBeat.o(104772);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         EmotionCell localEmotionCell = (EmotionCell)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(62536);
+          AppMethodBeat.o(104772);
           return -1;
         case 1: 
-          localEmotionCell.CellTitle = locala.CLY.readString();
-          AppMethodBeat.o(62536);
+          localEmotionCell.CellTitle = locala.KhF.readString();
+          AppMethodBeat.o(104772);
           return 0;
         case 2: 
-          localEmotionCell.ReqType = locala.CLY.sl();
-          AppMethodBeat.o(62536);
+          localEmotionCell.ReqType = locala.KhF.xS();
+          AppMethodBeat.o(104772);
           return 0;
         case 3: 
-          localEmotionCell.Position = locala.CLY.sl();
-          AppMethodBeat.o(62536);
+          localEmotionCell.Position = locala.KhF.xS();
+          AppMethodBeat.o(104772);
           return 0;
         case 4: 
-          localEmotionCell.IconUrl = locala.CLY.readString();
-          AppMethodBeat.o(62536);
+          localEmotionCell.IconUrl = locala.KhF.readString();
+          AppMethodBeat.o(104772);
           return 0;
         }
-        localEmotionCell.TagUrl = locala.CLY.readString();
-        AppMethodBeat.o(62536);
+        localEmotionCell.TagUrl = locala.KhF.readString();
+        AppMethodBeat.o(104772);
         return 0;
       }
-      AppMethodBeat.o(62536);
+      AppMethodBeat.o(104772);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionCell
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/avr" android:background="@drawable/b03" android:padding="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/gd2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <ImageView android:id="@id/avs" android:layout_width="@dimen/n2" android:layout_height="@dimen/n2" />
-        <TextView android:id="@id/avt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/a5t" />
+    <RelativeLayout android:id="@id/b5g" android:layout_width="fill_parent" android:layout_height="@dimen/vy">
+        <ImageView android:id="@id/b5b" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/b5t" android:background="@drawable/bb5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/vx" android:textColor="@color/a_u" android:ellipsize="end" android:id="@id/gbt" android:background="@drawable/fu" android:paddingLeft="@dimen/ha" android:paddingTop="20.0dip" android:paddingRight="@dimen/ha" android:paddingBottom="@dimen/hu" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/uo" android:maxLines="2" android:layout_alignParentBottom="true" android:lineSpacingExtra="@dimen/ju" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/a5a" android:background="@drawable/mg" android:paddingLeft="@dimen/ha" android:paddingTop="@dimen/ha" android:paddingRight="@dimen/ha" android:paddingBottom="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/b5g">
+        <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/vx" android:textColor="?i" android:ellipsize="end" android:id="@id/gam" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/uo" android:maxLines="4" />
+        <TextView android:ellipsize="end" android:id="@id/bd1" android:paddingTop="@dimen/d" android:layout_width="fill_parent" android:text="@string/uo" android:maxLines="15" style="@style/ym" />
     </LinearLayout>
-    <Button android:id="@id/avu" android:layout_marginLeft="@dimen/n6" android:minWidth="@dimen/n6" android:text="@string/ale" style="@style/ns" />
-</LinearLayout>
+    <ImageView android:orientation="vertical" android:id="@id/egz" android:background="@drawable/ms" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/vy" android:layout_alignTop="@id/b5g" android:layout_alignBottom="@id/a5a" />
+</RelativeLayout>

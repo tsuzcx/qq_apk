@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/mw" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.downloader_app.ui.BottomEntranceView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/us" android:layout_marginBottom="@dimen/us">
-        <TextView android:textSize="14.0dip" android:textColor="@color/a49" android:id="@id/bcs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="看看好友在玩什么" android:layout_centerInParent="true" />
-        <ImageView android:layout_width="5.0dip" android:layout_height="9.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/av3" android:layout_toRightOf="@id/bcs" android:layout_centerVertical="true" />
-    </com.tencent.mm.plugin.downloader_app.ui.BottomEntranceView>
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/a1u" app:layout_constraintDimensionRatio="235:100" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" style="@style/ff" />
+    <android.support.constraint.Barrier android:id="@id/a1q" android:layout_width="wrap_content" android:layout_height="wrap_content" app:barrierDirection="gcy" app:constraint_referenced_ids="biz_slot_show_desc_tv,biz_slot_title_neat_tv" />
+    <include layout="@layout/tm" />
+</android.support.constraint.ConstraintLayout>

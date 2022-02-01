@@ -3,10 +3,12 @@ package com.tencent.mm.plugin.wxcredit.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.al.n;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tencent.mm.wallet_core.ui.formview.a;
@@ -14,9 +16,9 @@ import com.tencent.mm.wallet_core.ui.formview.a;
 public class WalletCheckIdentityUI
   extends WalletBaseUI
 {
-  private WalletFormView tZx;
-  private WalletFormView unh;
-  private String vHZ;
+  private WalletFormView AjM;
+  private String BKL;
+  private WalletFormView zTO;
   
   public int getForceOrientation()
   {
@@ -25,44 +27,56 @@ public class WalletCheckIdentityUI
   
   public int getLayoutId()
   {
-    return 2130971268;
+    return 2131496045;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(48683);
-    setMMTitle(2131305000);
-    this.unh = ((WalletFormView)findViewById(2131829013));
-    a.e(this, this.unh);
-    this.tZx = ((WalletFormView)findViewById(2131829052));
-    a.c(this.tZx);
-    setEditFocusListener(this.tZx, 1, false);
+    AppMethodBeat.i(72327);
+    setMMTitle(2131765192);
+    this.AjM = ((WalletFormView)findViewById(2131302662));
+    a.e(this, this.AjM);
+    this.zTO = ((WalletFormView)findViewById(2131300910));
+    a.c(this.zTO);
+    setEditFocusListener(this.zTO, 1, false);
     String str = getInput().getString("key_pre_name");
-    this.vHZ = getInput().getString("key_pre_indentity");
-    if (!bo.isNullOrNil(str))
+    this.BKL = getInput().getString("key_pre_indentity");
+    if (!bt.isNullOrNil(str))
     {
-      this.unh.getPrefilledTv().setText(str);
-      this.unh.setHint(getString(2131304989));
+      this.AjM.getPrefilledTv().setText(str);
+      this.AjM.setHint(getString(2131765181));
     }
-    if (!bo.isNullOrNil(this.vHZ))
+    if (!bt.isNullOrNil(this.BKL))
     {
-      this.tZx.setMaxInputLength(4);
-      this.tZx.getPrefilledTv().setText(this.vHZ);
-      this.tZx.setHint(getString(2131304943));
+      this.zTO.setMaxInputLength(4);
+      this.zTO.getPrefilledTv().setText(this.BKL);
+      this.zTO.setHint(getString(2131765135));
     }
-    findViewById(2131822914).setOnClickListener(new WalletCheckIdentityUI.1(this));
-    AppMethodBeat.o(48683);
+    findViewById(2131302852).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(72325);
+        paramAnonymousView = WalletCheckIdentityUI.a(WalletCheckIdentityUI.this).getText();
+        String str = WalletCheckIdentityUI.b(WalletCheckIdentityUI.this).getText();
+        if (WalletCheckIdentityUI.a(WalletCheckIdentityUI.this, paramAnonymousView, str)) {
+          WalletCheckIdentityUI.this.getNetController().q(new Object[] { paramAnonymousView, str });
+        }
+        AppMethodBeat.o(72325);
+      }
+    });
+    AppMethodBeat.o(72327);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(48682);
+    AppMethodBeat.i(72326);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(48682);
+    AppMethodBeat.o(72326);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     return false;
   }
@@ -75,7 +89,7 @@ public class WalletCheckIdentityUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletCheckIdentityUI
  * JD-Core Version:    0.7.0.1
  */

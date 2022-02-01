@@ -12,11 +12,11 @@ import java.util.List;
 final class f
   implements d
 {
-  private IBinder hO;
+  private IBinder jN;
   
   f(IBinder paramIBinder)
   {
-    this.hO = paramIBinder;
+    this.jN = paramIBinder;
   }
   
   public final void a(int paramInt1, int paramInt2, String paramString)
@@ -29,7 +29,7 @@ final class f
       localParcel1.writeInt(paramInt1);
       localParcel1.writeInt(paramInt2);
       localParcel1.writeString(paramString);
-      this.hO.transact(11, localParcel1, localParcel2, 0);
+      this.jN.transact(11, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -61,7 +61,7 @@ final class f
     //   25: iconst_0
     //   26: invokevirtual 56	android/support/v4/media/MediaDescriptionCompat:writeToParcel	(Landroid/os/Parcel;I)V
     //   29: aload_0
-    //   30: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
+    //   30: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
     //   33: bipush 41
     //   35: aload_2
     //   36: aload_3
@@ -124,7 +124,7 @@ final class f
     //   31: iload_2
     //   32: invokevirtual 34	android/os/Parcel:writeInt	(I)V
     //   35: aload_0
-    //   36: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
+    //   36: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
     //   39: bipush 42
     //   41: aload_3
     //   42: aload 4
@@ -185,7 +185,7 @@ final class f
     //   25: iconst_0
     //   26: invokevirtual 61	android/support/v4/media/RatingCompat:writeToParcel	(Landroid/os/Parcel;I)V
     //   29: aload_0
-    //   30: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
+    //   30: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
     //   33: bipush 25
     //   35: aload_2
     //   36: aload_3
@@ -241,7 +241,7 @@ final class f
           {
             localParcel1.writeInt(1);
             paramBundle.writeToParcel(localParcel1, 0);
-            this.hO.transact(51, localParcel1, localParcel2, 0);
+            this.jN.transact(51, localParcel1, localParcel2, 0);
             localParcel2.readException();
           }
         }
@@ -280,7 +280,7 @@ final class f
     //   26: aload_1
     //   27: invokevirtual 75	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
     //   30: aload_0
-    //   31: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
+    //   31: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
     //   34: iconst_3
     //   35: aload_2
     //   36: aload_3
@@ -335,7 +335,7 @@ final class f
           {
             localParcel1.writeInt(1);
             paramResultReceiverWrapper.writeToParcel(localParcel1, 0);
-            this.hO.transact(1, localParcel1, localParcel2, 0);
+            this.jN.transact(1, localParcel1, localParcel2, 0);
             localParcel2.readException();
           }
         }
@@ -368,7 +368,7 @@ final class f
         {
           localParcel1.writeInt(1);
           paramKeyEvent.writeToParcel(localParcel1, 0);
-          this.hO.transact(2, localParcel1, localParcel2, 0);
+          this.jN.transact(2, localParcel1, localParcel2, 0);
           localParcel2.readException();
           int i = localParcel2.readInt();
           if (i != 0) {
@@ -390,361 +390,9 @@ final class f
     }
   }
   
-  public final boolean aP()
-  {
-    boolean bool = false;
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(5, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      if (i != 0) {
-        bool = true;
-      }
-      return bool;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  /* Error */
-  public final android.app.PendingIntent aQ()
-  {
-    // Byte code:
-    //   0: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 26
-    //   11: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_0
-    //   15: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
-    //   18: bipush 8
-    //   20: aload_2
-    //   21: aload_3
-    //   22: iconst_0
-    //   23: invokeinterface 43 5 0
-    //   28: pop
-    //   29: aload_3
-    //   30: invokevirtual 46	android/os/Parcel:readException	()V
-    //   33: aload_3
-    //   34: invokevirtual 87	android/os/Parcel:readInt	()I
-    //   37: ifeq +26 -> 63
-    //   40: getstatic 97	android/app/PendingIntent:CREATOR	Landroid/os/Parcelable$Creator;
-    //   43: aload_3
-    //   44: invokeinterface 103 2 0
-    //   49: checkcast 93	android/app/PendingIntent
-    //   52: astore_1
-    //   53: aload_3
-    //   54: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   57: aload_2
-    //   58: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   61: aload_1
-    //   62: areturn
-    //   63: aconst_null
-    //   64: astore_1
-    //   65: goto -12 -> 53
-    //   68: astore_1
-    //   69: aload_3
-    //   70: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   73: aload_2
-    //   74: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   77: aload_1
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	f
-    //   52	13	1	localPendingIntent	android.app.PendingIntent
-    //   68	10	1	localObject	Object
-    //   3	71	2	localParcel1	Parcel
-    //   7	63	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	53	68	finally
-  }
-  
-  /* Error */
-  public final ParcelableVolumeInfo aR()
-  {
-    // Byte code:
-    //   0: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 26
-    //   11: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_0
-    //   15: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
-    //   18: bipush 10
-    //   20: aload_2
-    //   21: aload_3
-    //   22: iconst_0
-    //   23: invokeinterface 43 5 0
-    //   28: pop
-    //   29: aload_3
-    //   30: invokevirtual 46	android/os/Parcel:readException	()V
-    //   33: aload_3
-    //   34: invokevirtual 87	android/os/Parcel:readInt	()I
-    //   37: ifeq +26 -> 63
-    //   40: getstatic 108	android/support/v4/media/session/ParcelableVolumeInfo:CREATOR	Landroid/os/Parcelable$Creator;
-    //   43: aload_3
-    //   44: invokeinterface 103 2 0
-    //   49: checkcast 107	android/support/v4/media/session/ParcelableVolumeInfo
-    //   52: astore_1
-    //   53: aload_3
-    //   54: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   57: aload_2
-    //   58: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   61: aload_1
-    //   62: areturn
-    //   63: aconst_null
-    //   64: astore_1
-    //   65: goto -12 -> 53
-    //   68: astore_1
-    //   69: aload_3
-    //   70: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   73: aload_2
-    //   74: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   77: aload_1
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	f
-    //   52	13	1	localParcelableVolumeInfo	ParcelableVolumeInfo
-    //   68	10	1	localObject	Object
-    //   3	71	2	localParcel1	Parcel
-    //   7	63	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	53	68	finally
-  }
-  
-  /* Error */
-  public final android.support.v4.media.MediaMetadataCompat aS()
-  {
-    // Byte code:
-    //   0: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 26
-    //   11: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_0
-    //   15: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
-    //   18: bipush 27
-    //   20: aload_2
-    //   21: aload_3
-    //   22: iconst_0
-    //   23: invokeinterface 43 5 0
-    //   28: pop
-    //   29: aload_3
-    //   30: invokevirtual 46	android/os/Parcel:readException	()V
-    //   33: aload_3
-    //   34: invokevirtual 87	android/os/Parcel:readInt	()I
-    //   37: ifeq +26 -> 63
-    //   40: getstatic 113	android/support/v4/media/MediaMetadataCompat:CREATOR	Landroid/os/Parcelable$Creator;
-    //   43: aload_3
-    //   44: invokeinterface 103 2 0
-    //   49: checkcast 112	android/support/v4/media/MediaMetadataCompat
-    //   52: astore_1
-    //   53: aload_3
-    //   54: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   57: aload_2
-    //   58: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   61: aload_1
-    //   62: areturn
-    //   63: aconst_null
-    //   64: astore_1
-    //   65: goto -12 -> 53
-    //   68: astore_1
-    //   69: aload_3
-    //   70: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   73: aload_2
-    //   74: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   77: aload_1
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	f
-    //   52	13	1	localMediaMetadataCompat	android.support.v4.media.MediaMetadataCompat
-    //   68	10	1	localObject	Object
-    //   3	71	2	localParcel1	Parcel
-    //   7	63	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	53	68	finally
-  }
-  
-  /* Error */
-  public final PlaybackStateCompat aT()
-  {
-    // Byte code:
-    //   0: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 26
-    //   11: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_0
-    //   15: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
-    //   18: bipush 28
-    //   20: aload_2
-    //   21: aload_3
-    //   22: iconst_0
-    //   23: invokeinterface 43 5 0
-    //   28: pop
-    //   29: aload_3
-    //   30: invokevirtual 46	android/os/Parcel:readException	()V
-    //   33: aload_3
-    //   34: invokevirtual 87	android/os/Parcel:readInt	()I
-    //   37: ifeq +26 -> 63
-    //   40: getstatic 118	android/support/v4/media/session/PlaybackStateCompat:CREATOR	Landroid/os/Parcelable$Creator;
-    //   43: aload_3
-    //   44: invokeinterface 103 2 0
-    //   49: checkcast 117	android/support/v4/media/session/PlaybackStateCompat
-    //   52: astore_1
-    //   53: aload_3
-    //   54: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   57: aload_2
-    //   58: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   61: aload_1
-    //   62: areturn
-    //   63: aconst_null
-    //   64: astore_1
-    //   65: goto -12 -> 53
-    //   68: astore_1
-    //   69: aload_3
-    //   70: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   73: aload_2
-    //   74: invokevirtual 49	android/os/Parcel:recycle	()V
-    //   77: aload_1
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	f
-    //   52	13	1	localPlaybackStateCompat	PlaybackStateCompat
-    //   68	10	1	localObject	Object
-    //   3	71	2	localParcel1	Parcel
-    //   7	63	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	53	68	finally
-  }
-  
-  public final boolean aU()
-  {
-    boolean bool = false;
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(45, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      if (i != 0) {
-        bool = true;
-      }
-      return bool;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public final boolean aV()
-  {
-    boolean bool = false;
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(38, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      if (i != 0) {
-        bool = true;
-      }
-      return bool;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public final int aW()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(47, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      int i = localParcel2.readInt();
-      return i;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public final void aX()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(20, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public final void aY()
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(21, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
   public final IBinder asBinder()
   {
-    return this.hO;
+    return this.jN;
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString)
@@ -757,7 +405,7 @@ final class f
       localParcel1.writeInt(paramInt1);
       localParcel1.writeInt(paramInt2);
       localParcel1.writeString(paramString);
-      this.hO.transact(12, localParcel1, localParcel2, 0);
+      this.jN.transact(12, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -789,7 +437,7 @@ final class f
     //   25: iconst_0
     //   26: invokevirtual 56	android/support/v4/media/MediaDescriptionCompat:writeToParcel	(Landroid/os/Parcel;I)V
     //   29: aload_0
-    //   30: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
+    //   30: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
     //   33: bipush 43
     //   35: aload_2
     //   36: aload_3
@@ -848,7 +496,7 @@ final class f
     //   26: aload_1
     //   27: invokevirtual 75	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
     //   30: aload_0
-    //   31: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
+    //   31: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
     //   34: iconst_4
     //   35: aload_2
     //   36: aload_3
@@ -885,14 +533,330 @@ final class f
     //   25	48	62	finally
   }
   
-  public final void fastForward()
+  public final boolean bg()
+  {
+    boolean bool = false;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+      this.jN.transact(5, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  /* Error */
+  public final android.app.PendingIntent bh()
+  {
+    // Byte code:
+    //   0: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   7: astore_3
+    //   8: aload_2
+    //   9: ldc 26
+    //   11: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   14: aload_0
+    //   15: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
+    //   18: bipush 8
+    //   20: aload_2
+    //   21: aload_3
+    //   22: iconst_0
+    //   23: invokeinterface 43 5 0
+    //   28: pop
+    //   29: aload_3
+    //   30: invokevirtual 46	android/os/Parcel:readException	()V
+    //   33: aload_3
+    //   34: invokevirtual 87	android/os/Parcel:readInt	()I
+    //   37: ifeq +26 -> 63
+    //   40: getstatic 98	android/app/PendingIntent:CREATOR	Landroid/os/Parcelable$Creator;
+    //   43: aload_3
+    //   44: invokeinterface 104 2 0
+    //   49: checkcast 94	android/app/PendingIntent
+    //   52: astore_1
+    //   53: aload_3
+    //   54: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   57: aload_2
+    //   58: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   61: aload_1
+    //   62: areturn
+    //   63: aconst_null
+    //   64: astore_1
+    //   65: goto -12 -> 53
+    //   68: astore_1
+    //   69: aload_3
+    //   70: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   73: aload_2
+    //   74: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   77: aload_1
+    //   78: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	79	0	this	f
+    //   52	13	1	localPendingIntent	android.app.PendingIntent
+    //   68	10	1	localObject	Object
+    //   3	71	2	localParcel1	Parcel
+    //   7	63	3	localParcel2	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   8	53	68	finally
+  }
+  
+  /* Error */
+  public final ParcelableVolumeInfo bi()
+  {
+    // Byte code:
+    //   0: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   7: astore_3
+    //   8: aload_2
+    //   9: ldc 26
+    //   11: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   14: aload_0
+    //   15: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
+    //   18: bipush 10
+    //   20: aload_2
+    //   21: aload_3
+    //   22: iconst_0
+    //   23: invokeinterface 43 5 0
+    //   28: pop
+    //   29: aload_3
+    //   30: invokevirtual 46	android/os/Parcel:readException	()V
+    //   33: aload_3
+    //   34: invokevirtual 87	android/os/Parcel:readInt	()I
+    //   37: ifeq +26 -> 63
+    //   40: getstatic 109	android/support/v4/media/session/ParcelableVolumeInfo:CREATOR	Landroid/os/Parcelable$Creator;
+    //   43: aload_3
+    //   44: invokeinterface 104 2 0
+    //   49: checkcast 108	android/support/v4/media/session/ParcelableVolumeInfo
+    //   52: astore_1
+    //   53: aload_3
+    //   54: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   57: aload_2
+    //   58: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   61: aload_1
+    //   62: areturn
+    //   63: aconst_null
+    //   64: astore_1
+    //   65: goto -12 -> 53
+    //   68: astore_1
+    //   69: aload_3
+    //   70: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   73: aload_2
+    //   74: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   77: aload_1
+    //   78: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	79	0	this	f
+    //   52	13	1	localParcelableVolumeInfo	ParcelableVolumeInfo
+    //   68	10	1	localObject	Object
+    //   3	71	2	localParcel1	Parcel
+    //   7	63	3	localParcel2	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   8	53	68	finally
+  }
+  
+  /* Error */
+  public final android.support.v4.media.MediaMetadataCompat bj()
+  {
+    // Byte code:
+    //   0: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   7: astore_3
+    //   8: aload_2
+    //   9: ldc 26
+    //   11: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   14: aload_0
+    //   15: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
+    //   18: bipush 27
+    //   20: aload_2
+    //   21: aload_3
+    //   22: iconst_0
+    //   23: invokeinterface 43 5 0
+    //   28: pop
+    //   29: aload_3
+    //   30: invokevirtual 46	android/os/Parcel:readException	()V
+    //   33: aload_3
+    //   34: invokevirtual 87	android/os/Parcel:readInt	()I
+    //   37: ifeq +26 -> 63
+    //   40: getstatic 114	android/support/v4/media/MediaMetadataCompat:CREATOR	Landroid/os/Parcelable$Creator;
+    //   43: aload_3
+    //   44: invokeinterface 104 2 0
+    //   49: checkcast 113	android/support/v4/media/MediaMetadataCompat
+    //   52: astore_1
+    //   53: aload_3
+    //   54: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   57: aload_2
+    //   58: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   61: aload_1
+    //   62: areturn
+    //   63: aconst_null
+    //   64: astore_1
+    //   65: goto -12 -> 53
+    //   68: astore_1
+    //   69: aload_3
+    //   70: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   73: aload_2
+    //   74: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   77: aload_1
+    //   78: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	79	0	this	f
+    //   52	13	1	localMediaMetadataCompat	android.support.v4.media.MediaMetadataCompat
+    //   68	10	1	localObject	Object
+    //   3	71	2	localParcel1	Parcel
+    //   7	63	3	localParcel2	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   8	53	68	finally
+  }
+  
+  /* Error */
+  public final PlaybackStateCompat bk()
+  {
+    // Byte code:
+    //   0: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   3: astore_2
+    //   4: invokestatic 24	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   7: astore_3
+    //   8: aload_2
+    //   9: ldc 26
+    //   11: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   14: aload_0
+    //   15: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
+    //   18: bipush 28
+    //   20: aload_2
+    //   21: aload_3
+    //   22: iconst_0
+    //   23: invokeinterface 43 5 0
+    //   28: pop
+    //   29: aload_3
+    //   30: invokevirtual 46	android/os/Parcel:readException	()V
+    //   33: aload_3
+    //   34: invokevirtual 87	android/os/Parcel:readInt	()I
+    //   37: ifeq +26 -> 63
+    //   40: getstatic 119	android/support/v4/media/session/PlaybackStateCompat:CREATOR	Landroid/os/Parcelable$Creator;
+    //   43: aload_3
+    //   44: invokeinterface 104 2 0
+    //   49: checkcast 118	android/support/v4/media/session/PlaybackStateCompat
+    //   52: astore_1
+    //   53: aload_3
+    //   54: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   57: aload_2
+    //   58: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   61: aload_1
+    //   62: areturn
+    //   63: aconst_null
+    //   64: astore_1
+    //   65: goto -12 -> 53
+    //   68: astore_1
+    //   69: aload_3
+    //   70: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   73: aload_2
+    //   74: invokevirtual 49	android/os/Parcel:recycle	()V
+    //   77: aload_1
+    //   78: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	79	0	this	f
+    //   52	13	1	localPlaybackStateCompat	PlaybackStateCompat
+    //   68	10	1	localObject	Object
+    //   3	71	2	localParcel1	Parcel
+    //   7	63	3	localParcel2	Parcel
+    // Exception table:
+    //   from	to	target	type
+    //   8	53	68	finally
+  }
+  
+  public final boolean bl()
+  {
+    boolean bool = false;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+      this.jN.transact(45, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public final boolean bm()
+  {
+    boolean bool = false;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+      this.jN.transact(38, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public final int bn()
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(22, localParcel1, localParcel2, 0);
+      this.jN.transact(47, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      return i;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public final void bo()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+      this.jN.transact(20, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -903,19 +867,32 @@ final class f
     }
   }
   
-  public final void g(boolean paramBoolean)
+  public final void bp()
   {
-    int i = 0;
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      if (paramBoolean) {
-        i = 1;
-      }
-      localParcel1.writeInt(i);
-      this.hO.transact(46, localParcel1, localParcel2, 0);
+      this.jN.transact(21, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public final void fastForward()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+      this.jN.transact(22, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -938,7 +915,7 @@ final class f
     //   9: ldc 26
     //   11: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
     //   14: aload_0
-    //   15: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
+    //   15: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
     //   18: bipush 31
     //   20: aload_2
     //   21: aload_3
@@ -950,9 +927,9 @@ final class f
     //   33: aload_3
     //   34: invokevirtual 87	android/os/Parcel:readInt	()I
     //   37: ifeq +26 -> 63
-    //   40: getstatic 130	android/os/Bundle:CREATOR	Landroid/os/Parcelable$Creator;
+    //   40: getstatic 128	android/os/Bundle:CREATOR	Landroid/os/Parcelable$Creator;
     //   43: aload_3
-    //   44: invokeinterface 103 2 0
+    //   44: invokeinterface 104 2 0
     //   49: checkcast 64	android/os/Bundle
     //   52: astore_1
     //   53: aload_3
@@ -990,7 +967,7 @@ final class f
     try
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(9, localParcel1, localParcel2, 0);
+      this.jN.transact(9, localParcel1, localParcel2, 0);
       localParcel2.readException();
       long l = localParcel2.readLong();
       return l;
@@ -1009,7 +986,7 @@ final class f
     try
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(6, localParcel1, localParcel2, 0);
+      this.jN.transact(6, localParcel1, localParcel2, 0);
       localParcel2.readException();
       String str = localParcel2.readString();
       return str;
@@ -1028,7 +1005,7 @@ final class f
     try
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(29, localParcel1, localParcel2, 0);
+      this.jN.transact(29, localParcel1, localParcel2, 0);
       localParcel2.readException();
       ArrayList localArrayList = localParcel2.createTypedArrayList(MediaSessionCompat.QueueItem.CREATOR);
       return localArrayList;
@@ -1052,7 +1029,7 @@ final class f
     //   9: ldc 26
     //   11: invokevirtual 30	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
     //   14: aload_0
-    //   15: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
+    //   15: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
     //   18: bipush 30
     //   20: aload_2
     //   21: aload_3
@@ -1064,10 +1041,10 @@ final class f
     //   33: aload_3
     //   34: invokevirtual 87	android/os/Parcel:readInt	()I
     //   37: ifeq +26 -> 63
-    //   40: getstatic 158	android/text/TextUtils:CHAR_SEQUENCE_CREATOR	Landroid/os/Parcelable$Creator;
+    //   40: getstatic 156	android/text/TextUtils:CHAR_SEQUENCE_CREATOR	Landroid/os/Parcelable$Creator;
     //   43: aload_3
-    //   44: invokeinterface 103 2 0
-    //   49: checkcast 160	java/lang/CharSequence
+    //   44: invokeinterface 104 2 0
+    //   49: checkcast 158	java/lang/CharSequence
     //   52: astore_1
     //   53: aload_3
     //   54: invokevirtual 49	android/os/Parcel:recycle	()V
@@ -1104,7 +1081,7 @@ final class f
     try
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(32, localParcel1, localParcel2, 0);
+      this.jN.transact(32, localParcel1, localParcel2, 0);
       localParcel2.readException();
       int i = localParcel2.readInt();
       return i;
@@ -1123,7 +1100,7 @@ final class f
     try
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(37, localParcel1, localParcel2, 0);
+      this.jN.transact(37, localParcel1, localParcel2, 0);
       localParcel2.readException();
       int i = localParcel2.readInt();
       return i;
@@ -1142,7 +1119,7 @@ final class f
     try
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(7, localParcel1, localParcel2, 0);
+      this.jN.transact(7, localParcel1, localParcel2, 0);
       localParcel2.readException();
       String str = localParcel2.readString();
       return str;
@@ -1154,7 +1131,7 @@ final class f
     }
   }
   
-  public final void h(boolean paramBoolean)
+  public final void j(boolean paramBoolean)
   {
     int i = 0;
     Parcel localParcel1 = Parcel.obtain();
@@ -1166,7 +1143,7 @@ final class f
         i = 1;
       }
       localParcel1.writeInt(i);
-      this.hO.transact(40, localParcel1, localParcel2, 0);
+      this.jN.transact(46, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -1177,34 +1154,19 @@ final class f
     }
   }
   
-  public final void n(int paramInt)
+  public final void k(boolean paramBoolean)
   {
+    int i = 0;
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      localParcel1.writeInt(paramInt);
-      this.hO.transact(44, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public final void o(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      localParcel1.writeInt(paramInt);
-      this.hO.transact(48, localParcel1, localParcel2, 0);
+      if (paramBoolean) {
+        i = 1;
+      }
+      localParcel1.writeInt(i);
+      this.jN.transact(40, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -1222,7 +1184,7 @@ final class f
     try
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(18, localParcel1, localParcel2, 0);
+      this.jN.transact(18, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -1240,7 +1202,7 @@ final class f
     try
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(13, localParcel1, localParcel2, 0);
+      this.jN.transact(13, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -1275,7 +1237,7 @@ final class f
     //   31: iconst_0
     //   32: invokevirtual 65	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
     //   35: aload_0
-    //   36: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
+    //   36: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
     //   39: bipush 14
     //   41: aload_3
     //   42: aload 4
@@ -1339,7 +1301,7 @@ final class f
     //   31: iconst_0
     //   32: invokevirtual 65	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
     //   35: aload_0
-    //   36: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
+    //   36: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
     //   39: bipush 15
     //   41: aload_3
     //   42: aload 4
@@ -1396,7 +1358,7 @@ final class f
           {
             localParcel1.writeInt(1);
             paramBundle.writeToParcel(localParcel1, 0);
-            this.hO.transact(16, localParcel1, localParcel2, 0);
+            this.jN.transact(16, localParcel1, localParcel2, 0);
             localParcel2.readException();
           }
         }
@@ -1422,7 +1384,7 @@ final class f
     try
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(33, localParcel1, localParcel2, 0);
+      this.jN.transact(33, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -1457,7 +1419,7 @@ final class f
     //   31: iconst_0
     //   32: invokevirtual 65	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
     //   35: aload_0
-    //   36: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
+    //   36: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
     //   39: bipush 34
     //   41: aload_3
     //   42: aload 4
@@ -1521,7 +1483,7 @@ final class f
     //   31: iconst_0
     //   32: invokevirtual 65	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
     //   35: aload_0
-    //   36: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
+    //   36: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
     //   39: bipush 35
     //   41: aload_3
     //   42: aload 4
@@ -1578,7 +1540,7 @@ final class f
           {
             localParcel1.writeInt(1);
             paramBundle.writeToParcel(localParcel1, 0);
-            this.hO.transact(36, localParcel1, localParcel2, 0);
+            this.jN.transact(36, localParcel1, localParcel2, 0);
             localParcel2.readException();
           }
         }
@@ -1604,7 +1566,7 @@ final class f
     try
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(23, localParcel1, localParcel2, 0);
+      this.jN.transact(23, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -1623,7 +1585,7 @@ final class f
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
       localParcel1.writeLong(paramLong);
-      this.hO.transact(24, localParcel1, localParcel2, 0);
+      this.jN.transact(24, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -1658,7 +1620,7 @@ final class f
     //   31: iconst_0
     //   32: invokevirtual 65	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
     //   35: aload_0
-    //   36: getfield 15	android/support/v4/media/session/f:hO	Landroid/os/IBinder;
+    //   36: getfield 15	android/support/v4/media/session/f:jN	Landroid/os/IBinder;
     //   39: bipush 26
     //   41: aload_3
     //   42: aload 4
@@ -1706,7 +1668,7 @@ final class f
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
       localParcel1.writeInt(paramInt);
-      this.hO.transact(39, localParcel1, localParcel2, 0);
+      this.jN.transact(39, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -1725,7 +1687,7 @@ final class f
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
       localParcel1.writeLong(paramLong);
-      this.hO.transact(17, localParcel1, localParcel2, 0);
+      this.jN.transact(17, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -1743,7 +1705,45 @@ final class f
     try
     {
       localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
-      this.hO.transact(19, localParcel1, localParcel2, 0);
+      this.jN.transact(19, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public final void x(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+      localParcel1.writeInt(paramInt);
+      this.jN.transact(44, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public final void y(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("android.support.v4.media.session.IMediaSession");
+      localParcel1.writeInt(paramInt);
+      this.jN.transact(48, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }

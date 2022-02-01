@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.facedetectaction.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ov;
+import com.tencent.mm.g.a.qn;
 
 public final class c
-  extends com.tencent.mm.sdk.b.c<ov>
+  extends com.tencent.mm.sdk.b.c<qn>
 {
   public c()
   {
-    AppMethodBeat.i(687);
-    this.__eventId = ov.class.getName().hashCode();
-    AppMethodBeat.o(687);
+    AppMethodBeat.i(161649);
+    this.__eventId = qn.class.getName().hashCode();
+    AppMethodBeat.o(161649);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.b.c
  * JD-Core Version:    0.7.0.1
  */

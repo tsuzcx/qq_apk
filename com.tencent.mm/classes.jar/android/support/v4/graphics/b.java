@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 public final class b
 {
-  private static final ThreadLocal<double[]> Av = new ThreadLocal();
+  private static final ThreadLocal<double[]> GQ = new ThreadLocal();
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, float[] paramArrayOfFloat)
   {
@@ -24,9 +24,9 @@ public final class b
       if (f3 < 0.0F) {
         f2 = f3 + 360.0F;
       }
-      paramArrayOfFloat[0] = s(f2, 360.0F);
-      paramArrayOfFloat[1] = s(f1, 1.0F);
-      paramArrayOfFloat[2] = s(f4, 1.0F);
+      paramArrayOfFloat[0] = i(f2, 360.0F);
+      paramArrayOfFloat[1] = i(f1, 1.0F);
+      paramArrayOfFloat[2] = i(f4, 1.0F);
       return;
     }
     if (f6 == f1) {
@@ -46,14 +46,14 @@ public final class b
     }
   }
   
-  private static double ae(int paramInt)
+  private static double aw(int paramInt)
   {
-    double[] arrayOfDouble2 = (double[])Av.get();
+    double[] arrayOfDouble2 = (double[])GQ.get();
     double[] arrayOfDouble1 = arrayOfDouble2;
     if (arrayOfDouble2 == null)
     {
       arrayOfDouble1 = new double[3];
-      Av.set(arrayOfDouble1);
+      GQ.set(arrayOfDouble1);
     }
     int i = Color.red(paramInt);
     int j = Color.green(paramInt);
@@ -93,6 +93,20 @@ public final class b
     }
   }
   
+  private static int ax(int paramInt)
+  {
+    int i;
+    if (paramInt < 0) {
+      i = 0;
+    }
+    do
+    {
+      return i;
+      i = paramInt;
+    } while (paramInt <= 255);
+    return 255;
+  }
+  
   private static int b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     if (paramInt5 == 0) {
@@ -101,13 +115,60 @@ public final class b
     return (paramInt1 * 255 * paramInt2 + paramInt3 * paramInt4 * (255 - paramInt2)) / (paramInt5 * 255);
   }
   
+  public static int c(float[] paramArrayOfFloat)
+  {
+    float f1 = paramArrayOfFloat[0];
+    float f2 = paramArrayOfFloat[1];
+    float f3 = paramArrayOfFloat[2];
+    f2 *= (1.0F - Math.abs(2.0F * f3 - 1.0F));
+    f3 -= 0.5F * f2;
+    float f4 = f2 * (1.0F - Math.abs(f1 / 60.0F % 2.0F - 1.0F));
+    int i;
+    int j;
+    int k;
+    switch ((int)f1 / 60)
+    {
+    default: 
+      i = 0;
+      j = 0;
+      k = 0;
+    }
+    for (;;)
+    {
+      return Color.rgb(ax(k), ax(j), ax(i));
+      k = Math.round((f2 + f3) * 255.0F);
+      j = Math.round((f4 + f3) * 255.0F);
+      i = Math.round(255.0F * f3);
+      continue;
+      k = Math.round((f4 + f3) * 255.0F);
+      j = Math.round((f2 + f3) * 255.0F);
+      i = Math.round(255.0F * f3);
+      continue;
+      k = Math.round(255.0F * f3);
+      j = Math.round((f2 + f3) * 255.0F);
+      i = Math.round((f4 + f3) * 255.0F);
+      continue;
+      k = Math.round(255.0F * f3);
+      j = Math.round((f4 + f3) * 255.0F);
+      i = Math.round((f2 + f3) * 255.0F);
+      continue;
+      k = Math.round((f4 + f3) * 255.0F);
+      j = Math.round(255.0F * f3);
+      i = Math.round((f2 + f3) * 255.0F);
+      continue;
+      k = Math.round((f2 + f3) * 255.0F);
+      j = Math.round(255.0F * f3);
+      i = Math.round((f4 + f3) * 255.0F);
+    }
+  }
+  
   public static int d(int paramInt1, int paramInt2, float paramFloat)
   {
     int i = 255;
     if (Color.alpha(paramInt2) != 255) {
       throw new IllegalArgumentException("background can not be translucent: #" + Integer.toHexString(paramInt2));
     }
-    if (o(p(paramInt1, 255), paramInt2) < paramFloat) {
+    if (p(q(paramInt1, 255), paramInt2) < paramFloat) {
       m = -1;
     }
     int k;
@@ -124,7 +185,7 @@ public final class b
       m = i;
     } while (i - k <= 1);
     int m = (k + i) / 2;
-    if (o(p(paramInt1, m), paramInt2) < paramFloat) {
+    if (p(q(paramInt1, m), paramInt2) < paramFloat) {
       k = m;
     }
     for (;;)
@@ -140,37 +201,7 @@ public final class b
     a(Color.red(paramInt), Color.green(paramInt), Color.blue(paramInt), paramArrayOfFloat);
   }
   
-  public static int n(int paramInt1, int paramInt2)
-  {
-    int i = Color.alpha(paramInt2);
-    int j = Color.alpha(paramInt1);
-    int k = 255 - (255 - i) * (255 - j) / 255;
-    return Color.argb(k, b(Color.red(paramInt1), j, Color.red(paramInt2), i, k), b(Color.green(paramInt1), j, Color.green(paramInt2), i, k), b(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
-  }
-  
-  private static double o(int paramInt1, int paramInt2)
-  {
-    if (Color.alpha(paramInt2) != 255) {
-      throw new IllegalArgumentException("background can not be translucent: #" + Integer.toHexString(paramInt2));
-    }
-    int i = paramInt1;
-    if (Color.alpha(paramInt1) < 255) {
-      i = n(paramInt1, paramInt2);
-    }
-    double d1 = ae(i) + 0.05D;
-    double d2 = ae(paramInt2) + 0.05D;
-    return Math.max(d1, d2) / Math.min(d1, d2);
-  }
-  
-  public static int p(int paramInt1, int paramInt2)
-  {
-    if ((paramInt2 < 0) || (paramInt2 > 255)) {
-      throw new IllegalArgumentException("alpha must be between 0 and 255.");
-    }
-    return 0xFFFFFF & paramInt1 | paramInt2 << 24;
-  }
-  
-  private static float s(float paramFloat1, float paramFloat2)
+  private static float i(float paramFloat1, float paramFloat2)
   {
     float f;
     if (paramFloat1 < 0.0F) {
@@ -182,6 +213,36 @@ public final class b
       f = paramFloat2;
     } while (paramFloat1 > paramFloat2);
     return paramFloat1;
+  }
+  
+  public static int o(int paramInt1, int paramInt2)
+  {
+    int i = Color.alpha(paramInt2);
+    int j = Color.alpha(paramInt1);
+    int k = 255 - (255 - i) * (255 - j) / 255;
+    return Color.argb(k, b(Color.red(paramInt1), j, Color.red(paramInt2), i, k), b(Color.green(paramInt1), j, Color.green(paramInt2), i, k), b(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
+  }
+  
+  private static double p(int paramInt1, int paramInt2)
+  {
+    if (Color.alpha(paramInt2) != 255) {
+      throw new IllegalArgumentException("background can not be translucent: #" + Integer.toHexString(paramInt2));
+    }
+    int i = paramInt1;
+    if (Color.alpha(paramInt1) < 255) {
+      i = o(paramInt1, paramInt2);
+    }
+    double d1 = aw(i) + 0.05D;
+    double d2 = aw(paramInt2) + 0.05D;
+    return Math.max(d1, d2) / Math.min(d1, d2);
+  }
+  
+  public static int q(int paramInt1, int paramInt2)
+  {
+    if ((paramInt2 < 0) || (paramInt2 > 255)) {
+      throw new IllegalArgumentException("alpha must be between 0 and 255.");
+    }
+    return 0xFFFFFF & paramInt1 | paramInt2 << 24;
   }
 }
 

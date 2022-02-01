@@ -12,30 +12,30 @@ public final class c
 {
   public final String a(org.b.d.c paramc)
   {
-    AppMethodBeat.i(77241);
-    d.s(paramc, "Cannot extract base string from null object");
-    if ((paramc.CRI == null) || (paramc.CRI.size() <= 0))
+    AppMethodBeat.i(40510);
+    d.j(paramc, "Cannot extract base string from null object");
+    if ((paramc.Knx == null) || (paramc.Knx.size() <= 0))
     {
       paramc = new org.b.b.c(paramc);
-      AppMethodBeat.o(77241);
+      AppMethodBeat.o(40510);
       throw paramc;
     }
-    String str1 = org.b.g.c.encode(paramc.erA().name());
-    String str2 = org.b.g.c.encode(paramc.erF());
+    String str1 = org.b.g.c.encode(paramc.fNc().name());
+    String str2 = org.b.g.c.encode(paramc.fNh());
     e locale = new e();
-    locale.a(paramc.erz());
-    locale.a(paramc.erE());
-    locale.a(new e(paramc.CRI));
-    paramc = new e(locale.CRJ);
-    Collections.sort(paramc.CRJ);
-    paramc = String.format("%s&%s&%s", new Object[] { str1, str2, org.b.g.c.encode(paramc.erH()) });
-    AppMethodBeat.o(77241);
+    locale.a(paramc.fNb());
+    locale.a(paramc.fNg());
+    locale.a(new e(paramc.Knx));
+    paramc = new e(locale.Kny);
+    Collections.sort(paramc.Kny);
+    paramc = String.format("%s&%s&%s", new Object[] { str1, str2, org.b.g.c.encode(paramc.fNj()) });
+    AppMethodBeat.o(40510);
     return paramc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.b.c.c
  * JD-Core Version:    0.7.0.1
  */

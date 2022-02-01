@@ -7,6 +7,8 @@ import android.os.Message;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.webkit.ValueCallback;
+import com.tencent.smtt.export.external.interfaces.CorePermissionRequest;
+import com.tencent.smtt.export.external.interfaces.CorePermissionRequest.CorePermissionRequestCallback;
 import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.HitTestResult;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.export.external.interfaces.MediaAccessPermissionsCallback;
@@ -21,6 +23,8 @@ public abstract interface IX5WebChromeClientExtension
   public abstract void acquireWakeLock();
   
   public abstract void addFlashView(View paramView, ViewGroup.LayoutParams paramLayoutParams);
+  
+  public abstract int checkPermission(String paramString);
   
   public abstract void exitFullScreenFlash();
   
@@ -45,6 +49,8 @@ public abstract interface IX5WebChromeClientExtension
   public abstract void onBackforwardFinished(int paramInt);
   
   public abstract void onColorModeChanged(long paramLong);
+  
+  public abstract boolean onGoToEntryOffset(int paramInt);
   
   public abstract void onHitTestResultFinished(IX5WebViewExtension paramIX5WebViewExtension, IX5WebViewBase.HitTestResult paramHitTestResult);
   
@@ -74,11 +80,13 @@ public abstract interface IX5WebChromeClientExtension
   
   public abstract void releaseWakeLock();
   
+  public abstract boolean requestAPPPermission(CorePermissionRequest paramCorePermissionRequest, CorePermissionRequest.CorePermissionRequestCallback paramCorePermissionRequestCallback);
+  
   public abstract void requestFullScreenFlash();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.interfaces.IX5WebChromeClientExtension
  * JD-Core Version:    0.7.0.1
  */

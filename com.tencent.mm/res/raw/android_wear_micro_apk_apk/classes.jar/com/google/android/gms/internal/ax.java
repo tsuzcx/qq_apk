@@ -5,21 +5,21 @@ import android.support.v4.app.FragmentActivity;
 
 public final class ax
 {
-  private final Object OQ;
+  private final Object QF;
   
-  public final boolean iY()
+  public final boolean jh()
   {
-    return this.OQ instanceof FragmentActivity;
+    return this.QF instanceof FragmentActivity;
   }
   
-  public final Activity iZ()
+  public final Activity ji()
   {
-    return (Activity)this.OQ;
+    return (Activity)this.QF;
   }
   
-  public final FragmentActivity ja()
+  public final FragmentActivity jj()
   {
-    return (FragmentActivity)this.OQ;
+    return (FragmentActivity)this.QF;
   }
 }
 

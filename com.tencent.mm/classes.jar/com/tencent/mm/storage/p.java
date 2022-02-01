@@ -1,604 +1,435 @@
 package com.tencent.mm.storage;
 
-import android.content.Context;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.a.b;
-import com.tencent.mm.aj.a.c;
-import com.tencent.mm.aj.a.d;
-import com.tencent.mm.aj.a.k;
-import com.tencent.mm.aj.z;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.am.a.a;
+import com.tencent.mm.am.a.b;
+import com.tencent.mm.am.a.j;
+import com.tencent.mm.am.a.l;
+import com.tencent.mm.am.af;
+import com.tencent.mm.am.f;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bh;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.model.bi.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h.c;
-import com.tencent.mm.plugin.messenger.foundation.a.e;
-import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
+import junit.framework.Assert;
 
 public final class p
-  implements e, com.tencent.mm.plugin.messenger.foundation.a.f
+  extends e
 {
-  private be ywz;
+  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS bizchatmessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT, bizChatId INTEGER DEFAULT -1, bizChatUserId TEXT ) ", "CREATE INDEX IF NOT EXISTS  bizmessageChatIdIndex ON bizchatmessage ( bizChatId )", "CREATE INDEX IF NOT EXISTS  bizmessageSvrIdIndex ON bizchatmessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  bizmessageTalkerIndex ON bizchatmessage ( talker )", "CREATE INDEX IF NOT EXISTS  bizmessageTalerStatusIndex ON bizchatmessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  bizmessageCreateTimeIndex ON bizchatmessage ( createTime )", "CREATE INDEX IF NOT EXISTS  bizmessageCreateTaklerTimeIndex ON bizchatmessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  bizmessageBizChatIdTypeCreateTimeIndex ON bizchatmessage ( bizChatId,type,createTime )", "CREATE INDEX IF NOT EXISTS  bizmessageSendCreateTimeIndex ON bizchatmessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  bizchatmessageTalkerTypeIndex ON bizchatmessage ( talker,type )" };
   
-  public p(be parambe)
+  public p(com.tencent.mm.plugin.messenger.foundation.a.a.h paramh)
   {
-    AppMethodBeat.i(11844);
-    z.afw();
-    this.ywz = parambe;
-    this.ywz.a(this);
-    this.ywz.a(this);
-    AppMethodBeat.o(11844);
+    super(paramh);
+    AppMethodBeat.i(124576);
+    c(getDB(), "bizchatmessage");
+    a(new h.b(16, "bizchatmessage", h.b.a(2500001L, 3000000L, 99000001L, 102000000L)));
+    AppMethodBeat.o(124576);
   }
   
-  private void a(String paramString, ak paramak, int paramInt1, int paramInt2, h.c paramc)
+  private static String aHn(String paramString)
   {
-    AppMethodBeat.i(11848);
-    bi localbi;
-    com.tencent.mm.aj.a.a locala;
-    c localc;
-    Object localObject1;
-    Object localObject2;
-    label375:
-    Object localObject3;
-    if ((paramak != null) && (paramc != null) && (paramc.jUy != -1L) && (paramak.ji(8388608)))
+    AppMethodBeat.i(176158);
+    long l = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).aqo().age(paramString);
+    if (l > 0L)
     {
-      localbi = ((com.tencent.mm.aj.o)g.E(com.tencent.mm.aj.o.class)).YD().bb(paramString, paramc.jUy);
-      locala = z.afl().gF(paramc.jUy);
-      localc = z.afk().aG(paramc.jUy);
-      if (localc.field_bizChatServId == null)
-      {
-        ab.w("MicroMsg.BizConversationStorage", "willen updateBizChatConversation bizChatInfo == null");
-        AppMethodBeat.o(11848);
-        return;
+      paramString = " createTime > " + l + " AND ";
+      AppMethodBeat.o(176158);
+      return paramString;
+    }
+    AppMethodBeat.o(176158);
+    return "";
+  }
+  
+  private static String bT(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(124578);
+    paramString = " bizChatId= " + paramLong + " AND talker= '" + paramString + "'";
+    AppMethodBeat.o(124578);
+    return paramString;
+  }
+  
+  public final int M(String paramString, long paramLong1, long paramLong2)
+  {
+    int i = 0;
+    AppMethodBeat.i(124593);
+    bl localbl = this.Fee.rm(paramLong2);
+    if (localbl.field_msgId == 0L)
+    {
+      ad.e("MicroMsg.BizChatMessageStorage", "getCountEarlyThan fail, msg does not exist");
+      AppMethodBeat.o(124593);
+      return 0;
+    }
+    String str = agG(paramString);
+    paramString = "SELECT COUNT(*) FROM " + str + " INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  WHERE " + aHn(paramString) + bT(paramString, paramLong1) + "AND " + this.Fee.cOW() + " AND createTime < " + localbl.field_createTime;
+    paramString = getDB().a(paramString, null, 0);
+    if (paramString.moveToLast()) {
+      i = paramString.getInt(0);
+    }
+    paramString.close();
+    AppMethodBeat.o(124593);
+    return i;
+  }
+  
+  protected final boolean a(bl parambl, bi.b paramb)
+  {
+    AppMethodBeat.i(124581);
+    if (parambl == null)
+    {
+      ad.w("MicroMsg.BizChatMessageStorage", "dealMsgSourceValue:message == null");
+      AppMethodBeat.o(124581);
+      return false;
+    }
+    parambl.kZ(-1L);
+    if (paramb != null)
+    {
+      if (!f.pc(parambl.field_talker)) {
+        break label406;
       }
-      if ((localbi == null) || (localbi.field_msgId == 0L))
+      if (bt.isNullOrNil(paramb.gOf))
       {
-        ab.i("MicroMsg.BizConversationStorage", "update null BizChatConversation with talker ".concat(String.valueOf(paramString)));
-        locala.field_status = 0;
-        locala.field_isSend = 0;
-        locala.field_content = "";
-        locala.field_msgType = "0";
-        locala.field_unReadCount = 0;
-        locala.field_digest = "";
-        locala.field_digestUser = "";
-        z.afl();
-        b.a(locala, paramInt2, paramInt1);
-        z.afl().b(locala);
-        AppMethodBeat.o(11848);
-        return;
+        ad.w("MicroMsg.BizChatMessageStorage", "EnterpriseChat msgSourceValue error: %s", new Object[] { parambl.esh });
+        AppMethodBeat.o(124581);
+        return false;
       }
-      boolean bool = localc.isGroup();
-      locala.field_brandUserName = paramString;
-      if (localbi.dxQ())
+      localObject = new com.tencent.mm.am.a.c();
+      ((com.tencent.mm.am.a.c)localObject).field_bizChatServId = paramb.gOf;
+      ((com.tencent.mm.am.a.c)localObject).field_brandUserName = parambl.field_talker;
+      if (!bt.isNullOrNil(paramb.gOg)) {
+        ((com.tencent.mm.am.a.c)localObject).field_chatVersion = bt.getInt(paramb.gOg, -1);
+      }
+      if (bt.isNullOrNil(paramb.gOe)) {
+        break label360;
+      }
+      i = bt.getInt(paramb.gOd, j.gZn.gZr);
+      ((com.tencent.mm.am.a.c)localObject).field_chatType = bt.getInt(paramb.gOe, i);
+      ad.d("MicroMsg.BizChatMessageStorage", "bizchatId:%s,userId:%s", new Object[] { paramb.gOf, paramb.userId });
+      localObject = com.tencent.mm.am.a.e.e((com.tencent.mm.am.a.c)localObject);
+      if (localObject == null) {
+        break label391;
+      }
+      parambl.kZ(((com.tencent.mm.am.a.c)localObject).field_bizChatLocalId);
+      parambl.field_bizChatUserId = bt.nullAsNil(paramb.userId);
+      parambl.eOL = true;
+      if (paramb.gOi.equals("1")) {
+        parambl.jV(1);
+      }
+      parambl.oc(paramb.gNX);
+      if ((parambl.field_isSend != 1) && (paramb.userId != null))
       {
-        locala.field_content = localbi.dyr();
-        localObject1 = new PString();
-        this.ywz.BX().a(localbi, (PString)localObject1, new PString(), new PInt(), false);
-        localObject1 = ((PString)localObject1).value;
-        localObject2 = z.afm().df(localbi.field_bizChatUserId);
-        if (!bool) {
-          break label920;
+        localObject = af.awi().eb(parambl.field_talker);
+        if (paramb.userId.equals(localObject)) {
+          parambl.jV(1);
         }
-        if ((localbi.field_isSend != 1) || (localObject2 == null)) {
-          break label848;
-        }
-        locala.field_digest = (ah.getContext().getString(2131296992) + ":" + (String)localObject1);
-        ((com.tencent.mm.aj.a.j)localObject2).field_userName = ah.getContext().getString(2131296992);
-        localObject1 = null;
-        localObject2 = this.ywz.ac(localbi.getType(), localbi.field_content);
-        localObject3 = bo.nullAsNil(locala.field_digest);
-        if (!bo.isNullOrNil((String)localObject2)) {
-          break label933;
-        }
-        localObject2 = "";
-        label418:
-        locala.field_digest = ((String)localObject3).concat((String)localObject2);
-        locala.field_digestUser = "";
-        locala.field_chatType = localc.field_chatType;
-        locala.field_lastMsgID = localbi.field_msgId;
-        if (!localbi.byk()) {
-          break label959;
-        }
+      }
+      if (!bt.isNullOrNil(paramb.userId))
+      {
+        localObject = new com.tencent.mm.am.a.k();
+        ((com.tencent.mm.am.a.k)localObject).field_userId = paramb.userId;
+        ((com.tencent.mm.am.a.k)localObject).field_userName = paramb.gOh;
+        ((com.tencent.mm.am.a.k)localObject).field_brandUserName = parambl.field_talker;
+        af.awi().c((com.tencent.mm.am.a.k)localObject);
       }
     }
-    label668:
-    label933:
-    label959:
-    label1095:
-    label1098:
-    for (;;)
+    label360:
+    while (bt.isNullOrNil(paramb.gOf))
     {
-      long l = localbi.field_createTime;
-      label472:
-      locala.field_lastMsgTime = l;
-      locala.field_status = localbi.field_status;
-      locala.field_isSend = localbi.field_isSend;
-      locala.field_msgType = Integer.toString(localbi.getType());
-      locala.field_flag = b.a(locala, 1, localbi.field_createTime);
-      int j = 0;
-      int i;
-      if ((!paramc.oDP.equals("insert")) || (paramc.oDR <= 0))
-      {
-        i = j;
-        if (paramc.oDP.equals("update"))
-        {
-          i = j;
-          if (locala.field_unReadCount + paramc.oDR < 0) {}
-        }
-      }
-      else
-      {
-        locala.field_unReadCount += paramc.oDR;
-        locala.field_newUnReadCount += paramc.oDR;
-        i = j;
-        if (paramc.oDR > 0)
-        {
-          i = j;
-          if (localc.kY(1))
-          {
-            i = paramak.field_unReadCount - paramc.oDR;
-            if (i > 0) {
-              break label976;
-            }
-            paramak.hJ(0);
-            paramak.hP(paramak.field_unReadMuteCount + paramc.oDR);
-            i = 1;
-          }
-        }
-      }
-      j = i;
-      if (paramc.oDP.equals("insert"))
-      {
-        j = i;
-        if (paramc.oDQ.size() > 0)
-        {
-          j = i;
-          if (localc.isGroup())
-          {
-            localObject2 = z.afm().dg(localbi.field_talker);
-            paramc = paramc.oDQ.iterator();
-            label753:
-            if (paramc.hasNext())
-            {
-              localObject3 = (bi)paramc.next();
-              if ((localObject2 == null) || (((dd)localObject3).field_isSend == 1) || (!((bi)localObject3).isText()) || (!((bi)localObject3).asi((String)localObject2))) {
-                break label1095;
-              }
-              locala.field_atCount += 1;
-              paramak.hO(paramak.field_atCount + 1);
-              i = 1;
-            }
-          }
-        }
-      }
       for (;;)
       {
-        break label753;
-        locala.field_content = localbi.field_content;
+        Object localObject;
+        int i;
+        AppMethodBeat.o(124581);
+        return true;
+        if (!bt.isNullOrNil(paramb.gOd)) {
+          ((com.tencent.mm.am.a.c)localObject).field_chatType = bt.getInt(paramb.gOd, j.gZn.gZr);
+        }
+      }
+      ad.w("MicroMsg.BizChatMessageStorage", "dealMsgSourceValue:bizChatInfo == null!");
+      AppMethodBeat.o(124581);
+      return false;
+    }
+    label391:
+    label406:
+    ad.i("MicroMsg.BizChatMessageStorage", "is EnterpriseChat but contact not ready");
+    AppMethodBeat.o(124581);
+    return false;
+  }
+  
+  public final String aHk(String paramString)
+  {
+    AppMethodBeat.i(124577);
+    if ((paramString != null) && (paramString.length() > 0)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue(bool);
+      if (!f.pc(paramString)) {
         break;
-        label848:
-        if ((localObject2 != null) && (!bo.isNullOrNil(((com.tencent.mm.aj.a.j)localObject2).field_userName)))
-        {
-          locala.field_digest = (((com.tencent.mm.aj.a.j)localObject2).field_userName + ":" + (String)localObject1);
-          localObject1 = ((com.tencent.mm.aj.a.j)localObject2).field_userName;
-          break label375;
-        }
-        locala.field_digest = ((String)localObject1);
-        localObject1 = null;
-        break label375;
-        locala.field_digest = ((String)localObject1);
-        localObject1 = null;
-        break label375;
-        localObject2 = " " + bo.nullAsNil((String)localObject2);
-        break label418;
-        if (localbi.field_status != 1) {
-          break label1098;
-        }
-        l = 9223372036854775807L;
-        break label472;
-        label976:
-        paramak.hJ(i);
-        break label668;
-        j = i;
-        z.afl();
-        b.a(locala, paramInt2, paramInt1);
-        paramc = (h.c)localObject1;
-        if (bo.isNullOrNil((String)localObject1)) {
-          paramc = localc.nE(localbi.field_bizChatUserId);
-        }
-        ab.i("MicroMsg.BizConversationStorage", "updateBizChatConversation brandUserName:%s, bizChatId:%s, userId:%s, displayName:%s", new Object[] { paramString, localc.field_bizChatServId, localbi.field_bizChatUserId, paramc });
-        z.afl().b(locala);
-        if (j != 0) {
-          this.ywz.a(paramak, paramString);
-        }
-        AppMethodBeat.o(11848);
-        return;
       }
+      AppMethodBeat.o(124577);
+      return "bizchatmessage";
     }
+    AppMethodBeat.o(124577);
+    return null;
   }
   
-  public static void aqS(String paramString)
+  public final int agw(String paramString)
   {
-    AppMethodBeat.i(11850);
-    be localbe = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YF();
-    paramString = new ak(paramString);
-    paramString.jY("officialaccounts");
-    b(paramString, localbe);
-    AppMethodBeat.o(11850);
+    AppMethodBeat.i(124587);
+    ad.w("MicroMsg.BizChatMessageStorage", "not attention  deleteEnterpriseMsgByTalker :%s  stack:%s", new Object[] { paramString, at.eFU() });
+    String str = "talker= '" + paramString + "'";
+    kX(agG(paramString), str);
+    int i = getDB().delete(agG(paramString), str, null);
+    if (i != 0)
+    {
+      this.Fee.doNotify("delete_talker ".concat(String.valueOf(paramString)));
+      paramString = new h.c(paramString, "delete", null, i, (byte)0);
+      paramString.tyH = -1L;
+      a(paramString);
+    }
+    AppMethodBeat.o(124587);
+    return i;
   }
   
-  public static void b(ak paramak, be parambe)
+  public final Cursor b(String paramString, long paramLong, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(11851);
-    if ((paramak == null) || (parambe == null))
+    AppMethodBeat.i(124584);
+    if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(11851);
-      return;
+      ad.e("MicroMsg.BizChatMessageStorage", "getImgMessage fail, argument is invalid");
+      AppMethodBeat.o(124584);
+      return null;
     }
-    ak localak;
-    if ((t.nU(paramak.field_username)) && (!bo.isNullOrNil(paramak.field_parentRef)))
-    {
-      if ((s.aWl()) && (t.ot(paramak.field_parentRef)))
-      {
-        AppMethodBeat.o(11851);
-        return;
-      }
-      localak = parambe.arH(paramak.field_parentRef);
-      ab.v("MicroMsg.BizConversationStorage", "postConvExt, username = %s, parentRef = %s", new Object[] { paramak.field_username, paramak.field_parentRef });
-      if (paramak.field_parentRef.equals("officialaccounts")) {
-        break label550;
-      }
-    }
-    label550:
-    for (int i = 1;; i = 0)
-    {
-      if (localak == null)
-      {
-        localak = new ak(paramak.field_parentRef);
-        if (i != 0) {
-          localak.jg(2097152);
-        }
-      }
-      for (int j = 1;; j = 0)
-      {
-        if ((i != 0) && (localak.field_attrflag == 0))
-        {
-          localak.jg(2097152);
-          ab.v("MicroMsg.BizConversationStorage", "Enterprise cvs reset attr flag!");
-        }
-        ab.i("MicroMsg.BizConversationStorage", "enterprise cvs count is %d", new Object[] { Integer.valueOf(localak.field_unReadCount) });
-        Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YF().arT(paramak.field_parentRef);
-        bi localbi = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().Tm((String)localObject);
-        if ((localbi != null) && (localbi.field_msgId > 0L))
-        {
-          localak.aq(localbi);
-          localak.setContent(localbi.field_talker + ":" + localbi.field_content);
-          localak.jV(Integer.toString(localbi.getType()));
-          localObject = parambe.BX();
-          if (localObject != null)
-          {
-            PString localPString1 = new PString();
-            PString localPString2 = new PString();
-            PInt localPInt = new PInt();
-            localbi.kj(paramak.field_parentRef);
-            localbi.setContent(localak.field_content);
-            ((be.b)localObject).a(localbi, localPString1, localPString2, localPInt, true);
-            localak.jW(localPString1.value);
-            localak.jX(localPString2.value);
-            localak.hM(localPInt.value);
-          }
-        }
-        for (;;)
-        {
-          int m = 0;
-          int k = m;
-          if (i != 0)
-          {
-            k = m;
-            if (parambe.arS(localak.field_username) <= 0) {
-              k = 1;
-            }
-          }
-          if (k == 0) {
-            break;
-          }
-          parambe.arF(localak.field_username);
-          AppMethodBeat.o(11851);
-          return;
-          localak.dxc();
-          ab.i("MicroMsg.BizConversationStorage", "lastOfMsg is null or MsgId <= 0, lastConvBiz is %s", new Object[] { localObject });
-        }
-        if (j != 0)
-        {
-          parambe.d(localak);
-          AppMethodBeat.o(11851);
-          return;
-        }
-        parambe.a(localak, localak.field_username);
-        AppMethodBeat.o(11851);
-        return;
-      }
-    }
+    String str = agG(paramString);
+    paramString = "select * from ( select * from " + str + "  INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + aHn(paramString) + bT(paramString, paramLong) + "AND " + this.Fee.cOW() + " order by createTime DESC limit " + paramInt2 + " OFFSET " + paramInt1 + ") order by createTime ASC ";
+    paramString = getDB().a(paramString, null, 0);
+    AppMethodBeat.o(124584);
+    return paramString;
   }
   
-  public final void a(bi parambi, ak paramak)
+  public final List<bl> b(String paramString, long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    Object localObject = null;
-    AppMethodBeat.i(11845);
-    if ((paramak != null) && (parambi != null) && (parambi.field_bizChatId != -1L) && (paramak.ji(8388608)))
+    AppMethodBeat.i(124582);
+    long l = System.currentTimeMillis();
+    if ((paramString == null) || (paramString.length() == 0))
     {
-      c localc = z.afk().aG(parambi.field_bizChatId);
-      String str2 = paramak.field_digest;
-      if (!bo.isNullOrNil(parambi.field_bizChatUserId))
-      {
-        com.tencent.mm.aj.a.j localj = z.afm().df(parambi.field_bizChatUserId);
-        String str1;
-        boolean bool;
-        if (localj != null)
-        {
-          str1 = localj.field_userName;
-          bool = parambi.field_bizChatUserId.equals(z.afm().dg(parambi.field_talker));
-          if ((localj == null) || (!bool)) {
-            break label218;
-          }
-          paramak.jW(ah.getContext().getString(2131296992) + ":" + str2);
-        }
-        for (;;)
-        {
-          if (!localc.isGroup())
-          {
-            if ((!bool) && (str1 != null) && (str1.length() > 0) && (!str1.equals(localc.field_chatName)))
-            {
-              localc.field_chatName = str1;
-              z.afk().b(localc);
-              AppMethodBeat.o(11845);
-              return;
-              str1 = null;
-              break;
-              label218:
-              if ((localj == null) || (bo.isNullOrNil(localj.field_userName))) {
-                continue;
-              }
-              paramak.jW(localj.field_userName + ":" + str2);
-              continue;
-            }
-            paramak = z.afm().df(localc.field_bizChatServId);
-            parambi = localObject;
-            if (paramak != null) {
-              parambi = paramak.field_userName;
-            }
-            if ((parambi != null) && (parambi.length() > 0) && (!parambi.equals(localc.field_chatName)))
-            {
-              localc.field_chatName = parambi;
-              z.afk().b(localc);
-            }
-          }
-        }
-        AppMethodBeat.o(11845);
-        return;
-      }
-      ab.w("MicroMsg.BizConversationStorage", "BizChatUserId is null:%s %s", new Object[] { localc.field_bizChatServId, localc.field_chatName });
+      ad.e("MicroMsg.BizChatMessageStorage", "getImgMessage fail, argument is invalid, limit = 10");
+      AppMethodBeat.o(124582);
+      return null;
     }
-    AppMethodBeat.o(11845);
-  }
-  
-  public final void a(bi parambi, ak paramak, boolean paramBoolean, h.c paramc)
-  {
-    AppMethodBeat.i(11846);
-    if (paramc == null)
+    paramLong2 = this.Fee.aN(paramString, paramLong2);
+    if (paramLong2 == 0L)
     {
-      ab.e("MicroMsg.BizConversationStorage", "compose notifyInfo is null");
-      AppMethodBeat.o(11846);
-      return;
+      ad.e("MicroMsg.BizChatMessageStorage", "getImgMessage fail, msg is null");
+      AppMethodBeat.o(124582);
+      return null;
     }
-    String str = paramc.talker;
+    ArrayList localArrayList = new ArrayList();
     if (paramBoolean)
     {
-      if ((parambi != null) && (parambi.field_isSend != 1) && ((bh.n(parambi) & 0x1) != 0))
-      {
-        ab.i("MicroMsg.BizConversationStorage", "create a temp session conversation.");
-        paramak.jg(4194304);
-      }
-      if ((parambi != null) && (com.tencent.mm.aj.f.lg(str)))
-      {
-        ab.i("MicroMsg.BizConversationStorage", "create a bitChat conversation.");
-        paramak.jg(8388608);
-      }
+      paramString = "select * from " + agG(paramString) + " INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + bT(paramString, paramLong1) + "AND " + this.Fee.cOW() + " AND createTime > " + paramLong2 + "  order by createTime ASC limit 10";
+      paramString = getDB().a(paramString, null, 0);
+      if (!paramString.moveToFirst()) {}
     }
-    for (;;)
+    else
     {
-      if ((paramc != null) && (!paramc.oDQ.isEmpty()) && (paramc.oDQ.get(0) != null))
+      for (;;)
       {
-        paramak.hL(((bi)paramc.oDQ.get(0)).field_isSend);
-        if (paramc.oDP.equals("insert")) {
-          paramak.yMq = ((bi)paramc.oDQ.get(paramc.oDQ.size() - 1));
+        if (paramString.isAfterLast()) {
+          break label313;
         }
-      }
-      AppMethodBeat.o(11846);
-      return;
-      ad localad = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(str);
-      if ((localad != null) && (localad.dwz()) && (!com.tencent.mm.n.a.je(localad.field_type)) && (parambi != null) && (parambi.field_isSend != 1) && (!paramak.ji(4194304)) && ((paramak.field_conversationTime < z.afw()) || ((bh.n(parambi) & 0x1) != 0)))
-      {
-        paramak.jg(4194304);
-        ab.i("MicroMsg.BizConversationStorage", "onNotifyChange is old temp session, %s", new Object[] { str });
-      }
-      if ((parambi != null) && (com.tencent.mm.aj.f.lg(str)))
-      {
-        ab.i("MicroMsg.BizConversationStorage", "onNotifyChange a bitChat conversation, %s", new Object[] { str });
-        paramak.jg(8388608);
-      }
-    }
-  }
-  
-  public final void aqR(String paramString)
-  {
-    AppMethodBeat.i(11849);
-    if ((paramString == null) || (!t.nU(paramString)) || (!com.tencent.mm.aj.f.rX(paramString)))
-    {
-      AppMethodBeat.o(11849);
-      return;
-    }
-    ak localak = this.ywz.arH(paramString);
-    if (localak == null)
-    {
-      AppMethodBeat.o(11849);
-      return;
-    }
-    Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YF().arT(paramString);
-    localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().Tm((String)localObject);
-    if ((localObject != null) && (((dd)localObject).field_msgId > 0L))
-    {
-      localak.aq((bi)localObject);
-      localak.setContent(((dd)localObject).field_talker + ":" + ((dd)localObject).field_content);
-      localak.jV(Integer.toString(((bi)localObject).getType()));
-      be.b localb = this.ywz.BX();
-      if (localb == null) {
-        break label277;
-      }
-      PString localPString1 = new PString();
-      PString localPString2 = new PString();
-      PInt localPInt = new PInt();
-      ((bi)localObject).kj(paramString);
-      ((bi)localObject).setContent(localak.field_content);
-      localb.a((bi)localObject, localPString1, localPString2, localPInt, true);
-      localak.jW(localPString1.value);
-      localak.jX(localPString2.value);
-      localak.hM(localPInt.value);
-    }
-    for (;;)
-    {
-      this.ywz.a(localak, localak.field_username);
-      AppMethodBeat.o(11849);
-      return;
-      label277:
-      localak.dxc();
-    }
-  }
-  
-  public final void b(bi parambi, ak paramak, boolean paramBoolean, h.c paramc)
-  {
-    AppMethodBeat.i(11847);
-    be localbe = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YF();
-    if (paramc == null)
-    {
-      parambi = null;
-      if ((paramc == null) || (!paramc.oDP.equals("delete")) || (paramc.oDT <= 0)) {
-        break label896;
-      }
-    }
-    label896:
-    for (int i = paramc.oDT;; i = 0)
-    {
-      if ((paramc != null) && (paramc.oDP.equals("insert")) && (paramc.oDS > 0)) {}
-      for (int j = paramc.oDS;; j = 0)
-      {
-        ak localak;
-        Object localObject1;
-        label239:
-        String str;
-        if (!bo.isNullOrNil(paramak.field_parentRef))
+        bl localbl = new bl();
+        localbl.convertFrom(paramString);
+        paramString.moveToNext();
+        if (paramBoolean)
         {
-          localak = localbe.arH(paramak.field_parentRef);
-          if ((localak == null) || (!localak.ji(2097152))) {
-            break label664;
-          }
-          if (j > 0)
-          {
-            if (((paramc.oDP.equals("insert")) && (paramc.oDR > 0)) || ((paramc.oDP.equals("update")) && (localak.field_unReadCount + paramc.oDR >= 0)))
-            {
-              localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(parambi);
-              if ((localObject1 == null) || (!((ad)localObject1).DP())) {
-                break label614;
-              }
-              localak.hP(localak.field_unReadMuteCount + j);
-            }
-            localbe.a(paramak, i, j);
-          }
-          localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YF().arT(paramak.field_parentRef);
-          Object localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().Tm((String)localObject1);
-          if ((localObject2 == null) || (((dd)localObject2).field_msgId <= 0L)) {
-            break label656;
-          }
-          localak.aq((bi)localObject2);
-          localak.setContent(((dd)localObject2).field_talker + ":" + ((dd)localObject2).field_content);
-          localak.jV(Integer.toString(((bi)localObject2).getType()));
-          if (localbe.BX() != null)
-          {
-            localObject1 = new PString();
-            PString localPString = new PString();
-            PInt localPInt = new PInt();
-            ((bi)localObject2).kj(paramak.field_parentRef);
-            ((bi)localObject2).setContent(localak.field_content);
-            localbe.BX().a((bi)localObject2, (PString)localObject1, localPString, localPInt, true);
-            str = localbe.ac(((bi)localObject2).getType(), ((dd)localObject2).field_content);
-            localObject2 = bo.nullAsNil(((PString)localObject1).value);
-            if (!bo.isNullOrNil(str)) {
-              break label630;
-            }
-            localObject1 = "";
-            label488:
-            localak.jW(((String)localObject2).concat((String)localObject1));
-            localak.jX(localPString.value);
-            localak.hM(localPInt.value);
-          }
-          label520:
-          if (localbe.a(localak, paramak.field_parentRef) > 0)
-          {
-            ab.d("MicroMsg.BizConversationStorage", "hakon update parent conversation's unread %s, %d", new Object[] { paramak.field_parentRef, Integer.valueOf(localak.field_unReadCount + j) });
-            localbe.b(3, (n)localbe, paramak.field_parentRef);
-          }
-        }
-        for (;;)
-        {
-          a(parambi, paramak, j, i, paramc);
-          AppMethodBeat.o(11847);
-          return;
-          parambi = paramc.talker;
+          localArrayList.add(localbl);
+          continue;
+          paramString = "select * from " + agG(paramString) + " INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + bT(paramString, paramLong1) + "AND " + this.Fee.cOW() + " AND createTime < " + paramLong2 + "  order by createTime DESC limit 10";
           break;
-          label614:
-          localak.hJ(localak.field_unReadCount + j);
-          break label239;
-          label630:
-          localObject1 = " " + bo.nullAsNil(str);
-          break label488;
-          label656:
-          localak.dxc();
-          break label520;
-          label664:
-          if ((localak != null) && ("officialaccounts".equals(localak.field_username)))
-          {
-            if ((j > 0) && (!s.aWl()) && (((paramc.oDP.equals("insert")) && (paramc.oDR > 0)) || ((paramc.oDP.equals("update")) && (localak.field_unReadCount + paramc.oDR >= 0))))
-            {
-              localak.hJ(localak.field_unReadCount + j);
-              localbe.a(localak, paramak.field_parentRef);
-            }
-          }
-          else if ((localak != null) && ("appbrandcustomerservicemsg".equals(localak.field_username)) && (j > 0))
-          {
-            if (((paramc.oDP.equals("insert")) && (paramc.oDR > 0)) || ((paramc.oDP.equals("update")) && (localak.field_unReadCount + paramc.oDR >= 0))) {
-              localak.hJ(localak.field_unReadCount + j);
-            }
-            localbe.a(paramak, i, j);
-            localbe.a(localak, paramak.field_parentRef);
-          }
+        }
+        localArrayList.add(0, localbl);
+      }
+    }
+    label313:
+    paramString.close();
+    ad.i("MicroMsg.BizChatMessageStorage", "getBizChatImgVideoMessage spent : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    AppMethodBeat.o(124582);
+    return localArrayList;
+  }
+  
+  public final bl bU(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(124579);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(124579);
+      return null;
+    }
+    bl localbl = new bl();
+    paramString = "select * from " + agG(paramString) + " where" + bT(paramString, paramLong) + "order by createTime DESC limit 1";
+    paramString = getDB().a(paramString, null, 0);
+    if (paramString.getCount() != 0)
+    {
+      paramString.moveToFirst();
+      localbl.convertFrom(paramString);
+    }
+    paramString.close();
+    AppMethodBeat.o(124579);
+    return localbl;
+  }
+  
+  public final Cursor bV(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(124583);
+    long l = System.currentTimeMillis();
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      ad.e("MicroMsg.BizChatMessageStorage", "getImgMessage fail, argument is invalid");
+      AppMethodBeat.o(124583);
+      return null;
+    }
+    Object localObject = agG(paramString);
+    paramString = "select * from " + (String)localObject + "  INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + bT(paramString, paramLong) + "AND " + this.Fee.cOX() + "  order by createTime";
+    localObject = getDB().a(paramString, null, 0);
+    ad.d("MicroMsg.BizChatMessageStorage", "all time: %d, sql: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramString });
+    AppMethodBeat.o(124583);
+    return localObject;
+  }
+  
+  public final int bW(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(124586);
+    ad.w("MicroMsg.BizChatMessageStorage", "deleteByTalker :%s  stack:%s", new Object[] { paramString, at.eFU() });
+    kX(agG(paramString), bT(paramString, paramLong));
+    int i = getDB().delete(agG(paramString), bT(paramString, paramLong), null);
+    if (i != 0)
+    {
+      this.Fee.doNotify("delete_talker ".concat(String.valueOf(paramString)));
+      paramString = new h.c(paramString, "delete", null, i, (byte)0);
+      paramString.tyH = -1L;
+      a(paramString);
+    }
+    AppMethodBeat.o(124586);
+    return i;
+  }
+  
+  public final Cursor bX(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(124588);
+    paramString = getDB().query(agG(paramString), null, bT(paramString, paramLong), null, null, null, "createTime ASC ");
+    AppMethodBeat.o(124588);
+    return paramString;
+  }
+  
+  public final int bY(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(124590);
+    if (paramString == null)
+    {
+      ad.w("MicroMsg.BizChatMessageStorage", "getBizMsgCountFromMsgTable talker:%s,bizChatId:%s", new Object[] { paramString, Long.valueOf(paramLong) });
+      AppMethodBeat.o(124590);
+      return -1;
+    }
+    a locala = af.awh().mf(paramLong);
+    if (locala.field_msgCount != 0)
+    {
+      i = locala.field_msgCount;
+      AppMethodBeat.o(124590);
+      return i;
+    }
+    ad.i("MicroMsg.BizChatMessageStorage", "geBiztMsgCount contactMsgCount is 0 ,go normal %s", new Object[] { paramString });
+    int i = bZ(paramString, paramLong);
+    AppMethodBeat.o(124590);
+    return i;
+  }
+  
+  public final int bZ(String paramString, long paramLong)
+  {
+    int i = 0;
+    AppMethodBeat.i(124591);
+    paramString = "SELECT COUNT(*) FROM " + agG(paramString) + " WHERE " + bT(paramString, paramLong);
+    ad.v("MicroMsg.BizChatMessageStorage", "getBizMsgCountFromMsgTable sql:[%s]", new Object[] { paramString });
+    paramString = getDB().a(paramString, null, 0);
+    if (paramString.moveToLast()) {
+      i = paramString.getInt(0);
+    }
+    paramString.close();
+    AppMethodBeat.o(124591);
+    return i;
+  }
+  
+  public final int ca(String paramString, long paramLong)
+  {
+    int i = 0;
+    AppMethodBeat.i(124592);
+    paramString = "SELECT COUNT(*) FROM " + this.Fee.agG(paramString) + " WHERE " + aHn(paramString) + bT(paramString, paramLong) + "AND " + this.Fee.cOW();
+    paramString = getDB().a(paramString, null, 0);
+    if (paramString.moveToLast()) {
+      i = paramString.getInt(0);
+    }
+    paramString.close();
+    AppMethodBeat.o(124592);
+    return i;
+  }
+  
+  public final Cursor d(String paramString, long paramLong1, long paramLong2, long paramLong3)
+  {
+    AppMethodBeat.i(124585);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      ad.e("MicroMsg.BizChatMessageStorage", "getImgMessage fail, argument is invalid");
+      AppMethodBeat.o(124585);
+      return null;
+    }
+    String str = agG(paramString);
+    paramString = "select * from " + str + "  INDEXED BY bizmessageBizChatIdTypeCreateTimeIndex  where" + bT(paramString, paramLong1) + "AND " + this.Fee.cOW() + " AND createTime >= " + paramLong2 + " AND createTime< " + paramLong3 + " order by createTime ASC";
+    paramString = getDB().a(paramString, null, 0);
+    AppMethodBeat.o(124585);
+    return paramString;
+  }
+  
+  public final List<bl> o(String paramString, long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(124580);
+    ArrayList localArrayList = new ArrayList();
+    paramString = "SELECT * FROM " + agG(paramString) + " WHERE" + bT(paramString, paramLong) + "AND isSend = 0 ORDER BY createTime DESC LIMIT " + paramInt;
+    paramString = getDB().a(paramString, null, 0);
+    if (paramString.moveToFirst()) {
+      while (!paramString.isAfterLast())
+      {
+        bl localbl = new bl();
+        localbl.convertFrom(paramString);
+        paramString.moveToNext();
+        if (localbl.isText()) {
+          localArrayList.add(localbl);
         }
       }
     }
+    paramString.close();
+    AppMethodBeat.o(124580);
+    return localArrayList;
+  }
+  
+  public final Cursor p(String paramString, long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(124589);
+    String str = "SELECT * FROM ( SELECT * FROM " + agG(paramString) + " WHERE" + bT(paramString, paramLong) + "ORDER BY createTime DESC LIMIT " + paramInt + ") ORDER BY createTime ASC";
+    ad.d("MicroMsg.BizChatMessageStorage", "getBizInitCursor talker:%s, bizChatId:%s, limitCount:%s, sql:[%s]", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt), str });
+    paramString = getDB().a(str, null, 0);
+    AppMethodBeat.o(124589);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.storage.p
  * JD-Core Version:    0.7.0.1
  */

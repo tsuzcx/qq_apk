@@ -1,195 +1,164 @@
 package com.tencent.mm.plugin.appbrand.launching.b;
 
-import android.content.Context;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Parcelable;
-import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.modelappbrand.LaunchParamsOptional;
+import android.util.Pair;
+import com.tencent.mars.cdn.CdnLogic;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ad.c;
+import com.tencent.mm.co.f;
+import com.tencent.mm.co.g;
+import com.tencent.mm.plugin.appbrand.app.j;
+import com.tencent.mm.plugin.appbrand.appcache.ab;
 import com.tencent.mm.plugin.appbrand.appcache.ay;
-import com.tencent.mm.plugin.appbrand.dynamic.j.a.d;
-import com.tencent.mm.plugin.appbrand.dynamic.k.b;
-import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
-import com.tencent.mm.plugin.appbrand.launching.aa;
-import com.tencent.mm.plugin.appbrand.launching.m;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.appcache.bb;
+import com.tencent.mm.plugin.appbrand.appcache.bf;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionModuleInfo;
+import com.tencent.mm.plugin.appbrand.config.w;
+import com.tencent.mm.plugin.appbrand.config.w.b;
+import com.tencent.mm.protocal.protobuf.bdp;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.vending.g.e;
+import com.tencent.mm.vfs.i;
+import d.g.b.k;
+import d.y;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class a
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/launching/data_prefetch/AppBrandLaunchDataPrefetchExportServiceImpl;", "Lcom/tencent/mm/plugin/appbrand/launching/data_prefetch/export/IAppBrandLaunchDataPrefetchService;", "()V", "TAG", "", "insertPrefetchedPkgInfos", "", "infos", "", "Landroid/util/Pair;", "Lcom/tencent/mm/plugin/appbrand/launching/data_prefetch/export/IAppBrandLaunchDataPrefetchService$PrefetchPkgDownloadInfo;", "prefetchContactAndPkgDownloadInfo", "Lcom/tencent/mm/vending/pipeline/Pipeline;", "username", "enterPath", "prefetchLaunchWxaAppResponse", "prefetchWxaAttrs", "fileExists", "", "toInfo", "Lcom/tencent/mm/protocal/protobuf/GetWxaAppCDNDownloadUrlRequest;", "plugin-appbrand-integration_release"})
+public final class a
+  implements com.tencent.mm.plugin.appbrand.launching.b.a.a
 {
-  static void a(Context paramContext, String paramString1, Uri paramUri, int paramInt, Bundle paramBundle, String paramString2)
+  public static final a kNq;
+  
+  static
   {
-    String str = bo.nullAsNil(paramUri.getQueryParameter("path"));
-    int i = bo.getInt(paramUri.getQueryParameter("version"), 0);
-    int j = bo.getInt(paramUri.getQueryParameter("type"), 0);
-    paramUri = new AppBrandStatObject();
-    a(paramString1, paramInt, paramUri, paramBundle);
-    AppBrandLaunchProxyUI.a(paramContext, paramString2, str, j, i, paramUri, null, null);
+    AppMethodBeat.i(50780);
+    kNq = new a();
+    AppMethodBeat.o(50780);
   }
   
-  private static void a(String paramString, int paramInt, AppBrandStatObject paramAppBrandStatObject, Bundle paramBundle)
+  public final void Kq(String paramString)
   {
-    paramAppBrandStatObject.scene = paramInt;
-    paramAppBrandStatObject.cmF = q.encode(paramString);
-    paramAppBrandStatObject.cJb = com.tencent.mm.plugin.appbrand.report.i.j(paramInt, paramBundle);
-    paramAppBrandStatObject.cJc = com.tencent.mm.plugin.appbrand.report.i.k(paramInt, paramBundle);
-    if ((paramInt != 1037) && (paramInt != 1018))
-    {
-      paramAppBrandStatObject.cIZ = paramInt;
-      return;
-    }
-    paramAppBrandStatObject.cIZ = 0;
+    AppMethodBeat.i(196396);
+    w.a(paramString, true, (w.b)new a.d(paramString));
+    AppMethodBeat.o(196396);
   }
   
-  public final a.a a(Context paramContext, String paramString, int paramInt, Bundle paramBundle)
+  public final void bw(List<? extends Pair<com.tencent.mm.plugin.appbrand.launching.b.a.a.a, String>> paramList)
   {
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.AppBrand.AbsLinkOpener", "handle url = %s", new Object[] { paramString });
-    String str2 = null;
-    String str1;
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(50779);
+    paramList = paramList.iterator();
+    label384:
+    while (paramList.hasNext())
     {
-      paramContext = a.a.inn;
-      str1 = paramString;
-      paramString = str2;
-    }
-    int i;
-    label196:
-    String str3;
-    String str5;
-    String str6;
-    long l;
-    for (;;)
-    {
-      a(str1, paramString, paramContext);
-      return paramContext;
-      i = paramString.indexOf('#');
-      int j = paramString.indexOf('?');
-      str1 = paramString;
-      if (i > 0)
+      Object localObject2 = (Pair)paramList.next();
+      Object localObject1 = com.tencent.mm.ad.a.ght;
+      localObject1 = (com.tencent.mm.plugin.appbrand.launching.b.a.a.a)com.tencent.mm.ad.a.a((Pair)localObject2);
+      Object localObject3 = com.tencent.mm.ad.a.ght;
+      localObject2 = (String)com.tencent.mm.ad.a.b((Pair)localObject2);
+      if (localObject1 != null)
       {
-        str1 = paramString;
-        if (j > 0)
+        localObject3 = (CharSequence)((com.tencent.mm.plugin.appbrand.launching.b.a.a.a)localObject1).appId;
+        if ((localObject3 == null) || (((CharSequence)localObject3).length() == 0))
         {
-          str1 = paramString;
-          if (i < j)
-          {
-            str1 = paramString.substring(0, i) + paramString.substring(j, paramString.length());
-            com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.AppBrand.AbsLinkOpener", "replace url for parsing %s", new Object[] { str1 });
+          i = 1;
+          label90:
+          if (i != 0) {
+            break label374;
+          }
+          localObject3 = (CharSequence)((com.tencent.mm.plugin.appbrand.launching.b.a.a.a)localObject1).kNB;
+          if ((localObject3 != null) && (((CharSequence)localObject3).length() != 0)) {
+            break label376;
+          }
+          i = 1;
+          label120:
+          if (i != 0) {
+            break label379;
+          }
+          if ((localObject2 == null) || (i.eK((String)localObject2) != true)) {
+            break label381;
           }
         }
-      }
-      paramString = Uri.parse(str1);
-      if (bo.getInt(paramString.getQueryParameter("debug"), 0) > 0) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label546;
-        }
-        i = bo.getInt(paramString.getQueryParameter("ret"), 0);
-        if (i != 1) {
-          break label196;
-        }
-        paramContext = a.a.ino;
-        break;
-      }
-      if (i == 2)
-      {
-        paramContext = a.a.inp;
-      }
-      else
-      {
-        localObject1 = paramString.getQueryParameter("appid");
-        str2 = paramString.getQueryParameter("username");
-        str3 = bo.nullAsNil(paramString.getQueryParameter("path"));
-        localObject2 = paramString.getQueryParameter("codeurl");
-        str4 = paramString.getQueryParameter("md5");
-        str5 = paramString.getQueryParameter("pageurl");
-        str6 = paramString.getQueryParameter("pagemd5");
-        l = bo.getLong(paramString.getQueryParameter("test_lifespan"), 7200L);
-        if ((!bo.isNullOrNil((String)localObject1)) && (!bo.isNullOrNil(str2)) && (!bo.isNullOrNil((String)localObject2))) {
-          break;
-        }
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.AppBrand.AbsLinkOpener", "appId = %s, username = %s, codeURL = %s, invalid, return", new Object[] { localObject1, str2, localObject2 });
-        paramContext = a.a.inn;
-      }
-    }
-    boolean bool = com.tencent.mm.plugin.appbrand.app.g.auM().a((String)localObject1, 1, (String)localObject2, str4, 0L, bo.aox() + l);
-    if ((!bo.isNullOrNil(str5)) && (!bo.isNullOrNil(str6)))
-    {
-      com.tencent.mm.plugin.appbrand.app.g.auM().a((String)localObject1, 10000, str5, str6, 0L, bo.aox() + l);
-      i = b.dc(0, 1);
-      if (i == 10000)
-      {
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putString("appId", (String)localObject1);
-        ((Bundle)localObject2).putInt("debugType", i);
-        f.a("com.tencent.mm", (Parcelable)localObject2, a.d.class, null);
-      }
-    }
-    if (bool) {
-      com.tencent.mm.plugin.appbrand.task.h.bt((String)localObject1, 1);
-    }
-    String str4 = paramString.getQueryParameter("json_extinfo");
-    Object localObject2 = new LaunchParamsOptional();
-    ((LaunchParamsOptional)localObject2).fpV = str4;
-    ((m)com.tencent.mm.plugin.appbrand.app.g.w(m.class)).n((String)localObject1, 1, str4);
-    Object localObject1 = new AppBrandStatObject();
-    a(str1, paramInt, (AppBrandStatObject)localObject1, paramBundle);
-    AppBrandLaunchProxyUI.a(paramContext, str2, str3, 1, -1, (AppBrandStatObject)localObject1, null, (LaunchParamsOptional)localObject2);
-    for (;;)
-    {
-      paramContext = a.a.inm;
-      break;
-      label546:
-      str3 = paramString.getQueryParameter("username");
-      if (bo.isNullOrNil(str3))
-      {
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.AppBrand.AbsLinkOpener", "username = %s, invalid, return", new Object[] { str3 });
-        paramContext = a.a.inn;
-        break;
-      }
-      if (paramBundle != null) {}
-      for (str2 = paramBundle.getString("stat_app_id");; str2 = null)
-      {
-        if (!bo.isNullOrNil(str2)) {
-          break label628;
-        }
-        a(paramContext, str1, paramString, paramInt, paramBundle, str3);
-        break;
-      }
-      label628:
-      paramContext = new a.1(this, str2, str3, paramContext, str1, paramString, paramInt, paramBundle);
-      paramBundle = new com.tencent.mm.plugin.appbrand.launching.ab();
-      paramBundle.field_appId = str2;
-      localObject1 = com.tencent.mm.plugin.appbrand.app.g.auG();
-      if (localObject1 == null)
-      {
-        com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.AppBrand.WxaBanJumpHelper", "[banjump] shouldBanJump false, wxapp cache storage is null");
-        h.a(paramContext);
-      }
-      else
-      {
-        if (((aa)localObject1).a(paramBundle, new String[] { "appId" }))
+        label374:
+        label376:
+        label379:
+        label381:
+        for (int i = 1;; i = 0)
         {
-          if ((paramBundle.Dn("banJumpApp")) || (paramBundle.Dn("banJumpGame"))) {}
-          for (paramInt = 1;; paramInt = 0)
-          {
-            if (paramInt == 0) {
-              break label771;
-            }
-            ((com.tencent.mm.plugin.appbrand.service.i)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.appbrand.service.i.class)).a(str3, new h.1(paramContext, paramBundle));
+          if (i == 0) {
+            break label384;
+          }
+          localObject3 = new ab(((com.tencent.mm.plugin.appbrand.launching.b.a.a.a)localObject1).appId, ((com.tencent.mm.plugin.appbrand.launching.b.a.a.a)localObject1).DYi, ((com.tencent.mm.plugin.appbrand.launching.b.a.a.a)localObject1).deP).toString();
+          k.g(localObject3, "PkgQueryKey(pkg.appId, p…g.packageType).toString()");
+          Object localObject4 = j.aOK().a((String)localObject3, ((com.tencent.mm.plugin.appbrand.launching.b.a.a.a)localObject1).DYj, 0, new String[] { "versionMd5" });
+          if ((localObject4 == null) || (!((com.tencent.mm.plugin.appbrand.launching.b.a.a.a)localObject1).kNB.equals(((bb)localObject4).field_versionMd5))) {
             break;
           }
+          localObject4 = ((com.tencent.mm.plugin.appbrand.launching.b.a.a.a)localObject1).kNB;
+          if (localObject2 == null) {
+            k.fvU();
+          }
+          if (!((String)localObject4).equals(CdnLogic.calcFileMD5(i.k((String)localObject2, false)))) {
+            break;
+          }
+          localObject4 = ay.aF((String)localObject3, ((com.tencent.mm.plugin.appbrand.launching.b.a.a.a)localObject1).DYj);
+          i.lD((String)localObject2, (String)localObject4);
+          j.aOK().d((String)localObject3, 0, ((com.tencent.mm.plugin.appbrand.launching.b.a.a.a)localObject1).DYj, (String)localObject4);
+          if ((!bu.eGT()) && (!h.IS_FLAVOR_RED)) {
+            break;
+          }
+          c.g((d.g.a.a)new a.a((com.tencent.mm.plugin.appbrand.launching.b.a.a.a)localObject1));
+          ad.i("MicroMsg.AppBrandLaunchDataPrefetchExportServiceImpl", "WxaPkg path from OpenSdk accepted appId[" + ((com.tencent.mm.plugin.appbrand.launching.b.a.a.a)localObject1).appId + "] key[" + ((com.tencent.mm.plugin.appbrand.launching.b.a.a.a)localObject1).DYi + "] version[" + ((com.tencent.mm.plugin.appbrand.launching.b.a.a.a)localObject1).DYj + ']');
+          break;
+          i = 0;
+          break label90;
+          break;
+          i = 0;
+          break label120;
+          break;
         }
-        label771:
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.AppBrand.WxaBanJumpHelper", "[banjump] shouldBanJump, no ban info for appid:%s", new Object[] { str2 });
-        h.a(paramContext);
       }
     }
+    AppMethodBeat.o(50779);
   }
   
-  abstract void a(String paramString, Uri paramUri, a.a parama);
+  public final void dx(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(50777);
+    new b(paramString1, paramString2).auK();
+    AppMethodBeat.o(50777);
+  }
+  
+  public final e<List<com.tencent.mm.plugin.appbrand.launching.b.a.a.a>> dy(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(50778);
+    CharSequence localCharSequence = (CharSequence)paramString1;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      ad.e("MicroMsg.AppBrandLaunchDataPrefetchExportServiceImpl", "prefetchContactAndPkgDownloadInfo EMPTY USERNAME");
+      paramString1 = g.c(null);
+      k.g(paramString1, "pipelineExt(null)");
+      paramString1 = (e)paramString1;
+      AppMethodBeat.o(50778);
+      return paramString1;
+    }
+    paramString1 = g.fkM().h((com.tencent.mm.vending.c.a)new a.b(paramString1)).h((com.tencent.mm.vending.c.a)new c(paramString2));
+    k.g(paramString1, "pipelineExt().`$logic`<W…n@`$logic` null\n        }");
+    paramString1 = (e)paramString1;
+    AppMethodBeat.o(50778);
+    return paramString1;
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "wxaAttrs", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "kotlin.jvm.PlatformType", "call"})
+  static final class c<_Ret, _Var>
+    implements com.tencent.mm.vending.c.a<_Ret, _Var>
+  {
+    c(String paramString) {}
+  }
 }
 
 

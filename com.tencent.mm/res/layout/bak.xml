@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0dip" android:textColor="@color/BW_0_Alpha_0_3" android:gravity="center_vertical" android:id="@id/hp" android:layout_width="fill_parent" android:layout_height="40.0dip" android:text="" android:paddingStart="16.0dip" android:paddingEnd="16.0dip" />
+    <View android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <com.tencent.mm.plugin.story.ui.album.StoryFavoritePanel android:id="@id/is" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_marginStart="8.0dip" android:layout_marginEnd="8.0dip" />
+</LinearLayout>

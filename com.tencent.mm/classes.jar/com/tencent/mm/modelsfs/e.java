@@ -1,55 +1,67 @@
 package com.tencent.mm.modelsfs;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class e
-  extends SFSOutputStream
 {
-  private a fOh;
-  
-  public e(long paramLong, String paramString)
+  public static String B(String paramString, long paramLong)
   {
-    super(paramLong);
-    AppMethodBeat.i(93171);
-    this.fOh = new a(paramString);
-    AppMethodBeat.o(93171);
-  }
-  
-  public final void close()
-  {
-    AppMethodBeat.i(93174);
-    super.close();
-    if (this.fOh != null) {
-      this.fOh.free();
+    AppMethodBeat.i(155998);
+    if (paramLong == 0L)
+    {
+      paramString = String.format(paramString + ";?enc=%d", new Object[] { Long.valueOf(314159265L) });
+      AppMethodBeat.o(155998);
+      return paramString;
     }
-    AppMethodBeat.o(93174);
+    paramString = String.format(paramString + ";?enc=%d", new Object[] { Long.valueOf(paramLong) });
+    AppMethodBeat.o(155998);
+    return paramString;
   }
   
-  protected final void finalize()
+  public static boolean yX(String paramString)
   {
-    AppMethodBeat.i(93175);
-    super.finalize();
-    AppMethodBeat.o(93175);
+    AppMethodBeat.i(155997);
+    if (paramString.lastIndexOf(";?enc=") > 0)
+    {
+      AppMethodBeat.o(155997);
+      return true;
+    }
+    AppMethodBeat.o(155997);
+    return false;
   }
   
-  public final void write(int paramInt)
+  public static String yY(String paramString)
   {
-    AppMethodBeat.i(93172);
-    super.write(paramInt);
-    AppMethodBeat.o(93172);
+    AppMethodBeat.i(155999);
+    int i = paramString.lastIndexOf(";?enc=");
+    if (i > 0)
+    {
+      paramString = paramString.substring(0, i);
+      AppMethodBeat.o(155999);
+      return paramString;
+    }
+    AppMethodBeat.o(155999);
+    return paramString;
   }
   
-  public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static long yZ(String paramString)
   {
-    AppMethodBeat.i(93173);
-    this.fOh.y(paramArrayOfByte, paramInt2);
-    super.write(paramArrayOfByte, paramInt1, paramInt2);
-    AppMethodBeat.o(93173);
+    AppMethodBeat.i(156000);
+    int i = paramString.lastIndexOf(";?enc=");
+    if (i > 0)
+    {
+      long l = bt.aGi(paramString.substring(i + 6));
+      AppMethodBeat.o(156000);
+      return l;
+    }
+    AppMethodBeat.o(156000);
+    return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsfs.e
  * JD-Core Version:    0.7.0.1
  */

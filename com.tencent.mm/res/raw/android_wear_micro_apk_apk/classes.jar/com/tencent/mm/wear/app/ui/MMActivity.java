@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.View.OnApplyWindowInsetsListener;
 import android.view.Window;
 import android.view.WindowInsets;
+import android.view.autofill.AutofillManager;
 import com.tencent.mm.sdk.platformtools.q;
 import com.tencent.mm.wear.a.c.d;
 import com.tencent.mm.wear.app.MMApplication;
@@ -27,14 +28,14 @@ import com.tencent.mm.wear.app.b.h;
 public abstract class MMActivity
   extends Activity
 {
-  private static String aeM = "";
-  private static int aeN;
-  private static int aeO;
-  private static boolean aeP;
-  private static e aeR;
-  private String acH;
-  private int ada;
-  private BroadcastReceiver aeQ = new BroadcastReceiver()
+  private static String aio = "";
+  private static int aip;
+  private static int aiq;
+  private static boolean air;
+  private static e ait;
+  private int agB;
+  private String agi;
+  private BroadcastReceiver ais = new BroadcastReceiver()
   {
     public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
     {
@@ -44,17 +45,23 @@ public abstract class MMActivity
     }
   };
   
+  public static void A(Context paramContext)
+  {
+    d.c("MicroMsg.MMActivity", "Update language=%s", new Object[] { h.mO().mI() });
+    com.tencent.mm.sdk.platformtools.e.a(paramContext, com.tencent.mm.sdk.platformtools.e.C(h.mO().mI()));
+  }
+  
   public static boolean isRect()
   {
-    return aeR == e.aeU;
+    return ait == e.aiw;
   }
   
   public static boolean isRound()
   {
-    return (!isRect()) && (aeR != e.aeT);
+    return (!isRect()) && (ait != e.aiv);
   }
   
-  public static void mZ()
+  public static void nM()
   {
     Object localObject = MMApplication.getContext().getPackageManager();
     AudioManager localAudioManager = (AudioManager)MMApplication.getContext().getSystemService("audio");
@@ -70,66 +77,60 @@ public abstract class MMActivity
     }
     for (boolean bool = true;; bool = false)
     {
-      aeP = bool;
+      air = bool;
       return;
       i += 1;
       break;
     }
   }
   
-  public static String na()
+  public static String nN()
   {
-    if (q.D(aeM))
+    if (q.D(aio))
     {
       SharedPreferences localSharedPreferences = MMApplication.getContext().getSharedPreferences("ui_core_shared_pre_name", 0);
-      aeM = (localSharedPreferences.getString("key_dp_metrics", "") + "\n" + localSharedPreferences.getString("key_dp_2_px", "")).trim();
+      aio = (localSharedPreferences.getString("key_dp_metrics", "") + "\n" + localSharedPreferences.getString("key_dp_2_px", "")).trim();
     }
-    return aeM;
+    return aio;
   }
   
-  public static int nb()
+  public static int nO()
   {
-    return aeN;
+    return aip;
   }
   
-  public static int nc()
+  public static int nP()
   {
-    return aeO;
+    return aiq;
   }
   
-  public static boolean ne()
+  public static boolean nR()
   {
-    return aeP;
+    return air;
   }
   
-  public static void z(Context paramContext)
+  public final void f(Intent paramIntent)
   {
-    d.c("MicroMsg.MMActivity", "Update language=%s", new Object[] { h.mb().lV() });
-    com.tencent.mm.sdk.platformtools.e.a(paramContext, com.tencent.mm.sdk.platformtools.e.C(h.mb().lV()));
-  }
-  
-  public final void d(Intent paramIntent)
-  {
-    paramIntent.putExtra("key_talker", this.acH);
-    paramIntent.putExtra("key_notification_id", this.ada);
+    paramIntent.putExtra("key_talker", this.agi);
+    paramIntent.putExtra("key_notification_id", this.agB);
     startActivity(paramIntent);
   }
   
-  public final void e(Intent paramIntent)
+  public final void g(Intent paramIntent)
   {
-    paramIntent.putExtra("key_talker", this.acH);
-    paramIntent.putExtra("key_notification_id", this.ada);
+    paramIntent.putExtra("key_talker", this.agi);
+    paramIntent.putExtra("key_notification_id", this.agB);
     startActivityForResult(paramIntent, 0);
   }
   
   public final String getUsername()
   {
-    return this.acH;
+    return this.agi;
   }
   
-  public final int nd()
+  public final int nQ()
   {
-    return this.ada;
+    return this.agB;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -138,31 +139,31 @@ public abstract class MMActivity
     d.c("MicroMsg.MMActivity", "OnCreate Name=%s, HashCode=%d, TaskId=%d", new Object[] { getClass().getSimpleName(), Integer.valueOf(hashCode()), Integer.valueOf(getTaskId()) });
     SharedPreferences localSharedPreferences = MMApplication.getContext().getSharedPreferences("ui_core_shared_pre_name", 0);
     paramBundle = getResources().getDisplayMetrics();
-    aeN = paramBundle.heightPixels;
-    aeO = paramBundle.widthPixels;
-    e locale = e.bU(localSharedPreferences.getInt("key_shape", e.aeT.value()));
-    aeR = locale;
-    if (locale == e.aeT) {
+    aip = paramBundle.heightPixels;
+    aiq = paramBundle.widthPixels;
+    e locale = e.cq(localSharedPreferences.getInt("key_shape", e.aiv.value()));
+    ait = locale;
+    if (locale == e.aiv) {
       getWindow().getDecorView().findViewById(16908290).setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener()
       {
         public final WindowInsets onApplyWindowInsets(View paramAnonymousView, WindowInsets paramAnonymousWindowInsets)
         {
           if (paramAnonymousWindowInsets.isRound())
           {
-            MMActivity.a(e.aeV);
-            if ((MMActivity.nf() == 320) && (MMActivity.ng() == 290)) {
-              MMActivity.a(e.aeW);
+            MMActivity.a(e.aix);
+            if ((MMActivity.nS() == 320) && (MMActivity.nT() == 290)) {
+              MMActivity.a(e.aiy);
             }
           }
           for (;;)
           {
-            MMApplication.getContext().getSharedPreferences("ui_core_shared_pre_name", 0).edit().putInt("key_shape", MMActivity.nh().value()).commit();
+            MMApplication.getContext().getSharedPreferences("ui_core_shared_pre_name", 0).edit().putInt("key_shape", MMActivity.nU().value()).commit();
             return paramAnonymousWindowInsets;
-            if ((MMActivity.nf() == 360) && (MMActivity.ng() == 325))
+            if ((MMActivity.nS() == 360) && (MMActivity.nT() == 325))
             {
-              MMActivity.a(e.aeX);
+              MMActivity.a(e.aiz);
               continue;
-              MMActivity.a(e.aeU);
+              MMActivity.a(e.aiw);
             }
           }
         }
@@ -184,9 +185,9 @@ public abstract class MMActivity
       d.c("MicroMsg.MMActivity", paramBundle, new Object[0]);
       paramBundle = new IntentFilter();
       paramBundle.addAction("android.intent.action.SCREEN_OFF");
-      registerReceiver(this.aeQ, paramBundle);
-      this.acH = getIntent().getStringExtra("key_talker");
-      this.ada = getIntent().getIntExtra("key_notification_id", 0);
+      registerReceiver(this.ais, paramBundle);
+      this.agi = getIntent().getStringExtra("key_talker");
+      this.agB = getIntent().getIntExtra("key_notification_id", 0);
       return;
       paramBundle = localSharedPreferences.getString("key_dp_metrics", "");
       break;
@@ -197,7 +198,14 @@ public abstract class MMActivity
   
   protected void onDestroy()
   {
-    unregisterReceiver(this.aeQ);
+    if (Build.VERSION.SDK_INT >= 26)
+    {
+      AutofillManager localAutofillManager = (AutofillManager)getSystemService(AutofillManager.class);
+      if (localAutofillManager != null) {
+        localAutofillManager.cancel();
+      }
+    }
+    unregisterReceiver(this.ais);
     d.c("MicroMsg.MMActivity", "OnDestory Name=%s, HashCode=%d, TaskId=%d", new Object[] { getClass().getSimpleName(), Integer.valueOf(hashCode()), Integer.valueOf(getTaskId()) });
     super.onDestroy();
   }

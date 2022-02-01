@@ -3,9 +3,10 @@ package com.tencent.mm.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
@@ -14,58 +15,71 @@ import com.tencent.mm.ui.base.p;
 public class DataTransferUI
   extends MMBaseActivity
 {
-  private p iMZ;
+  private p lAj;
   private long startTime = 0L;
   
-  private void aO(Intent paramIntent)
+  private void bh(Intent paramIntent)
   {
-    AppMethodBeat.i(29193);
+    AppMethodBeat.i(33018);
     boolean bool = paramIntent.getBooleanExtra("finish_data_transfer", false);
-    ab.d("MicroMsg.DataTransferUI", "tryFinish, timestamp = " + System.currentTimeMillis() + ", finish = " + bool);
+    ad.d("MicroMsg.DataTransferUI", "tryFinish, timestamp = " + System.currentTimeMillis() + ", finish = " + bool);
     if (bool) {
       finish();
     }
-    AppMethodBeat.o(29193);
+    AppMethodBeat.o(33018);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(29191);
+    AppMethodBeat.i(33016);
     super.onCreate(paramBundle);
-    ab.d("MicroMsg.DataTransferUI", "onCreate, timestamp = " + System.currentTimeMillis());
+    ad.d("MicroMsg.DataTransferUI", "onCreate, timestamp = " + System.currentTimeMillis());
     this.startTime = System.currentTimeMillis();
-    getString(2131297087);
-    this.iMZ = h.b(this, getString(2131296898), false, null);
-    new DataTransferUI.1(this).sendEmptyMessageDelayed(0, 60000L);
-    aO(getIntent());
-    AppMethodBeat.o(29191);
+    getString(2131755906);
+    this.lAj = h.b(this, getString(2131755704), false, null);
+    new ap()
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(33015);
+        if ((DataTransferUI.a(DataTransferUI.this) != null) && (DataTransferUI.a(DataTransferUI.this).isShowing()))
+        {
+          ad.e("MicroMsg.DataTransferUI", "dialog has shown for a long time, auto dismiss it...");
+          DataTransferUI.a(DataTransferUI.this).dismiss();
+          DataTransferUI.this.finish();
+        }
+        AppMethodBeat.o(33015);
+      }
+    }.sendEmptyMessageDelayed(0, 60000L);
+    bh(getIntent());
+    AppMethodBeat.o(33016);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    AppMethodBeat.i(29195);
+    AppMethodBeat.i(33020);
     super.onDestroy();
-    ab.d("MicroMsg.DataTransferUI", "onDestroy");
-    if ((this.iMZ != null) && (this.iMZ.isShowing())) {
-      this.iMZ.dismiss();
+    ad.d("MicroMsg.DataTransferUI", "onDestroy");
+    if ((this.lAj != null) && (this.lAj.isShowing())) {
+      this.lAj.dismiss();
     }
-    AppMethodBeat.o(29195);
+    AppMethodBeat.o(33020);
   }
   
-  protected void onNewIntent(Intent paramIntent)
+  public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(29192);
-    ab.d("MicroMsg.DataTransferUI", "onNewIntent, timestamp = " + System.currentTimeMillis());
-    aO(paramIntent);
-    AppMethodBeat.o(29192);
+    AppMethodBeat.i(33017);
+    ad.d("MicroMsg.DataTransferUI", "onNewIntent, timestamp = " + System.currentTimeMillis());
+    bh(paramIntent);
+    AppMethodBeat.o(33017);
   }
   
-  protected void onPause()
+  public void onPause()
   {
-    AppMethodBeat.i(29194);
-    ab.d("MicroMsg.DataTransferUI", "edw DataTransferUI duration time = " + (System.currentTimeMillis() - this.startTime));
+    AppMethodBeat.i(33019);
+    ad.d("MicroMsg.DataTransferUI", "edw DataTransferUI duration time = " + (System.currentTimeMillis() - this.startTime));
     super.onPause();
-    AppMethodBeat.o(29194);
+    AppMethodBeat.o(33019);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -76,7 +90,7 @@ public class DataTransferUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.DataTransferUI
  * JD-Core Version:    0.7.0.1
  */

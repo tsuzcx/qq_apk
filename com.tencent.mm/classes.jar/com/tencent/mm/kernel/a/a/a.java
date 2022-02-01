@@ -11,104 +11,109 @@ import junit.framework.Assert;
 
 public class a<T>
 {
-  protected final ConcurrentHashMap<T, a<T>> eJE;
+  protected final ConcurrentHashMap<T, a<T>> geN;
   
   public a()
   {
-    AppMethodBeat.i(123292);
-    this.eJE = new ConcurrentHashMap();
-    AppMethodBeat.o(123292);
+    AppMethodBeat.i(158345);
+    this.geN = new ConcurrentHashMap();
+    AppMethodBeat.o(158345);
   }
   
-  private static void ax(T paramT)
+  private static void bz(T paramT)
   {
-    AppMethodBeat.i(123296);
+    AppMethodBeat.i(158349);
     Assert.assertNotNull("Found a null object, maybe your component isn't installedor registered.", paramT);
-    Assert.assertFalse("Found a dummy object, maybe your component isn't installed or registered.", f.an(paramT));
-    AppMethodBeat.o(123296);
+    Assert.assertFalse("Found a dummy object, maybe your component isn't installed or registered.", f.bp(paramT));
+    AppMethodBeat.o(158349);
   }
   
-  protected a<T> au(T paramT)
+  protected a<T> bw(T paramT)
   {
-    AppMethodBeat.i(123293);
-    if (!this.eJE.containsKey(paramT)) {
-      this.eJE.putIfAbsent(paramT, new a(paramT));
+    AppMethodBeat.i(158346);
+    if (!this.geN.containsKey(paramT)) {
+      this.geN.putIfAbsent(paramT, new a(paramT));
     }
-    paramT = (a)this.eJE.get(paramT);
-    AppMethodBeat.o(123293);
+    paramT = (a)this.geN.get(paramT);
+    AppMethodBeat.o(158346);
     return paramT;
   }
   
-  public final a<T> av(T paramT)
+  public final a<T> bx(T paramT)
   {
-    AppMethodBeat.i(123294);
-    paramT = (a)this.eJE.get(paramT);
-    AppMethodBeat.o(123294);
+    AppMethodBeat.i(158347);
+    paramT = (a)this.geN.get(paramT);
+    AppMethodBeat.o(158347);
     return paramT;
   }
   
-  public final boolean aw(T paramT)
+  public final boolean by(T paramT)
   {
-    AppMethodBeat.i(123295);
-    paramT = (a)this.eJE.get(paramT);
-    if ((paramT != null) && ((paramT.Si()) || (paramT.Sk())))
+    AppMethodBeat.i(158348);
+    paramT = (a)this.geN.get(paramT);
+    if ((paramT != null) && ((paramT.afZ()) || (paramT.agb())))
     {
-      AppMethodBeat.o(123295);
+      AppMethodBeat.o(158348);
       return true;
     }
-    AppMethodBeat.o(123295);
+    AppMethodBeat.o(158348);
     return false;
   }
   
-  public final void i(T paramT1, T paramT2)
+  public final void q(T paramT1, T paramT2)
   {
-    AppMethodBeat.i(123297);
-    ax(paramT1);
-    ax(paramT2);
+    AppMethodBeat.i(158350);
+    bz(paramT1);
+    bz(paramT2);
     if (paramT1 == paramT2)
     {
-      au(paramT1).Sj();
-      AppMethodBeat.o(123297);
+      bw(paramT1).aga();
+      AppMethodBeat.o(158350);
       return;
     }
-    au(paramT1).a(au(paramT2));
-    AppMethodBeat.o(123297);
+    bw(paramT1).a(bw(paramT2));
+    AppMethodBeat.o(158350);
   }
   
   public void reset(boolean paramBoolean)
   {
-    AppMethodBeat.i(123298);
-    Iterator localIterator = this.eJE.entrySet().iterator();
+    AppMethodBeat.i(158351);
+    Iterator localIterator = this.geN.entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((a)((Map.Entry)localIterator.next()).getValue()).eJI = false;
+      ((a)((Map.Entry)localIterator.next()).getValue()).geR = false;
     }
-    AppMethodBeat.o(123298);
+    AppMethodBeat.o(158351);
   }
   
   public static class a<T>
   {
-    private HashSet<a> eJF;
-    private HashSet<a> eJG;
-    public T eJH;
-    public volatile boolean eJI = false;
-    private boolean eJJ = true;
+    private HashSet<a> geO;
+    private HashSet<a> geP;
+    public T geQ;
+    public volatile boolean geR;
+    private boolean geS;
     
     protected a(T paramT)
     {
-      this.eJH = paramT;
+      AppMethodBeat.i(176013);
+      this.geR = false;
+      this.geS = true;
+      Assert.assertNotNull("Subject should not be null!", paramT);
+      this.geQ = paramT;
+      AppMethodBeat.o(176013);
     }
     
     private void b(a parama)
     {
       try
       {
-        AppMethodBeat.i(123288);
-        this.eJJ = false;
-        if (this.eJF == null) {
-          this.eJF = new HashSet(4);
+        AppMethodBeat.i(158341);
+        this.geS = false;
+        if (this.geO == null) {
+          this.geO = new HashSet(4);
         }
-        this.eJF.add(parama);
-        AppMethodBeat.o(123288);
+        this.geO.add(parama);
+        AppMethodBeat.o(158341);
         return;
       }
       finally {}
@@ -118,44 +123,52 @@ public class a<T>
     {
       try
       {
-        AppMethodBeat.i(123289);
-        if (this.eJG == null) {
-          this.eJG = new HashSet(4);
+        AppMethodBeat.i(158342);
+        if (this.geP == null) {
+          this.geP = new HashSet(4);
         }
-        this.eJG.add(parama);
-        AppMethodBeat.o(123289);
+        this.geP.add(parama);
+        AppMethodBeat.o(158342);
         return;
       }
       finally {}
     }
     
+    public void a(a parama)
+    {
+      AppMethodBeat.i(158340);
+      b(parama);
+      parama.c(this);
+      AppMethodBeat.o(158340);
+    }
+    
     /* Error */
-    public final HashSet<a> Sf()
+    public final HashSet<a> afW()
     {
       // Byte code:
       //   0: aload_0
       //   1: monitorenter
-      //   2: ldc 61
-      //   4: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   2: ldc 75
+      //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 58	com/tencent/mm/kernel/a/a/a$a:eJG	Ljava/util/HashSet;
+      //   8: getfield 67	com/tencent/mm/kernel/a/a/a$a:geP	Ljava/util/HashSet;
       //   11: ifnonnull +14 -> 25
       //   14: aconst_null
       //   15: astore_1
-      //   16: ldc 61
-      //   18: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   16: ldc 75
+      //   18: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   21: aload_0
       //   22: monitorexit
       //   23: aload_1
       //   24: areturn
-      //   25: new 45	java/util/HashSet
+      //   25: new 57	java/util/HashSet
       //   28: dup
       //   29: aload_0
-      //   30: getfield 58	com/tencent/mm/kernel/a/a/a$a:eJG	Ljava/util/HashSet;
-      //   33: invokespecial 64	java/util/HashSet:<init>	(Ljava/util/Collection;)V
+      //   30: getfield 67	com/tencent/mm/kernel/a/a/a$a:geP	Ljava/util/HashSet;
+      //   33: invokespecial 78	java/util/HashSet:<init>	(Ljava/util/Collection;)V
       //   36: astore_1
-      //   37: ldc 61
-      //   39: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   37: ldc 75
+      //   39: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   42: goto -21 -> 21
       //   45: astore_1
       //   46: aload_0
@@ -175,32 +188,32 @@ public class a<T>
     }
     
     /* Error */
-    public final HashSet<a> Sg()
+    public final HashSet<a> afX()
     {
       // Byte code:
       //   0: aload_0
       //   1: monitorenter
-      //   2: ldc 67
-      //   4: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   2: ldc 81
+      //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 43	com/tencent/mm/kernel/a/a/a$a:eJF	Ljava/util/HashSet;
+      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:geO	Ljava/util/HashSet;
       //   11: ifnonnull +14 -> 25
       //   14: aconst_null
       //   15: astore_1
-      //   16: ldc 67
-      //   18: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   16: ldc 81
+      //   18: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   21: aload_0
       //   22: monitorexit
       //   23: aload_1
       //   24: areturn
-      //   25: new 45	java/util/HashSet
+      //   25: new 57	java/util/HashSet
       //   28: dup
       //   29: aload_0
-      //   30: getfield 43	com/tencent/mm/kernel/a/a/a$a:eJF	Ljava/util/HashSet;
-      //   33: invokespecial 64	java/util/HashSet:<init>	(Ljava/util/Collection;)V
+      //   30: getfield 55	com/tencent/mm/kernel/a/a/a$a:geO	Ljava/util/HashSet;
+      //   33: invokespecial 78	java/util/HashSet:<init>	(Ljava/util/Collection;)V
       //   36: astore_1
-      //   37: ldc 67
-      //   39: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   37: ldc 81
+      //   39: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   42: goto -21 -> 21
       //   45: astore_1
       //   46: aload_0
@@ -220,30 +233,30 @@ public class a<T>
     }
     
     /* Error */
-    public final int Sh()
+    public final int afY()
     {
       // Byte code:
       //   0: aload_0
       //   1: monitorenter
-      //   2: ldc 70
-      //   4: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   2: ldc 84
+      //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 43	com/tencent/mm/kernel/a/a/a$a:eJF	Ljava/util/HashSet;
+      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:geO	Ljava/util/HashSet;
       //   11: ifnonnull +14 -> 25
       //   14: iconst_0
       //   15: istore_1
-      //   16: ldc 70
-      //   18: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   16: ldc 84
+      //   18: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   21: aload_0
       //   22: monitorexit
       //   23: iload_1
       //   24: ireturn
       //   25: aload_0
-      //   26: getfield 43	com/tencent/mm/kernel/a/a/a$a:eJF	Ljava/util/HashSet;
-      //   29: invokevirtual 73	java/util/HashSet:size	()I
+      //   26: getfield 55	com/tencent/mm/kernel/a/a/a$a:geO	Ljava/util/HashSet;
+      //   29: invokevirtual 87	java/util/HashSet:size	()I
       //   32: istore_1
-      //   33: ldc 70
-      //   35: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   33: ldc 84
+      //   35: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   38: goto -17 -> 21
       //   41: astore_2
       //   42: aload_0
@@ -262,11 +275,11 @@ public class a<T>
       //   25	38	41	finally
     }
     
-    public final boolean Si()
+    public final boolean afZ()
     {
       try
       {
-        boolean bool = this.eJJ;
+        boolean bool = this.geS;
         return bool;
       }
       finally
@@ -276,47 +289,47 @@ public class a<T>
       }
     }
     
-    public final void Sj()
+    public final void aga()
     {
       try
       {
-        AppMethodBeat.i(123284);
-        if ((this.eJF == null) || (this.eJF.size() == 0)) {
-          this.eJJ = true;
+        AppMethodBeat.i(158337);
+        if ((this.geO == null) || (this.geO.size() == 0)) {
+          this.geS = true;
         }
-        AppMethodBeat.o(123284);
+        AppMethodBeat.o(158337);
         return;
       }
       finally {}
     }
     
     /* Error */
-    public final boolean Sk()
+    public final boolean agb()
     {
       // Byte code:
       //   0: aload_0
       //   1: monitorenter
-      //   2: ldc 79
-      //   4: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   2: ldc 93
+      //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 43	com/tencent/mm/kernel/a/a/a$a:eJF	Ljava/util/HashSet;
+      //   8: getfield 55	com/tencent/mm/kernel/a/a/a$a:geO	Ljava/util/HashSet;
       //   11: ifnull +24 -> 35
       //   14: aload_0
-      //   15: getfield 43	com/tencent/mm/kernel/a/a/a$a:eJF	Ljava/util/HashSet;
-      //   18: invokevirtual 73	java/util/HashSet:size	()I
+      //   15: getfield 55	com/tencent/mm/kernel/a/a/a$a:geO	Ljava/util/HashSet;
+      //   18: invokevirtual 87	java/util/HashSet:size	()I
       //   21: ifle +14 -> 35
       //   24: iconst_1
       //   25: istore_1
-      //   26: ldc 79
-      //   28: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   26: ldc 93
+      //   28: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   31: aload_0
       //   32: monitorexit
       //   33: iload_1
       //   34: ireturn
       //   35: iconst_0
       //   36: istore_1
-      //   37: ldc 79
-      //   39: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   37: ldc 93
+      //   39: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   42: goto -11 -> 31
       //   45: astore_2
       //   46: aload_0
@@ -335,41 +348,33 @@ public class a<T>
       //   37	42	45	finally
     }
     
-    public void a(a parama)
-    {
-      AppMethodBeat.i(123287);
-      b(parama);
-      parama.c(this);
-      AppMethodBeat.o(123287);
-    }
-    
     public boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(123291);
+      AppMethodBeat.i(158344);
       if ((paramObject instanceof a))
       {
-        bool = this.eJH.equals(((a)paramObject).eJH);
-        AppMethodBeat.o(123291);
+        bool = this.geQ.equals(((a)paramObject).geQ);
+        AppMethodBeat.o(158344);
         return bool;
       }
-      boolean bool = this.eJH.equals(paramObject);
-      AppMethodBeat.o(123291);
+      boolean bool = this.geQ.equals(paramObject);
+      AppMethodBeat.o(158344);
       return bool;
     }
     
     public int hashCode()
     {
-      AppMethodBeat.i(123290);
-      int i = this.eJH.hashCode();
-      AppMethodBeat.o(123290);
+      AppMethodBeat.i(158343);
+      int i = this.geQ.hashCode();
+      AppMethodBeat.o(158343);
       return i;
     }
     
     public String toString()
     {
-      AppMethodBeat.i(123286);
-      String str = "Ref-" + this.eJH.toString();
-      AppMethodBeat.o(123286);
+      AppMethodBeat.i(158339);
+      String str = "Ref-" + this.geQ.toString();
+      AppMethodBeat.o(158339);
       return str;
     }
   }

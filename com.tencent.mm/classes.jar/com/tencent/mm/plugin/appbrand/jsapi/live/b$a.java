@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
-import com.tencent.mm.plugin.appbrand.jsapi.ai;
+import com.tencent.mm.plugin.appbrand.jsapi.ar;
 
 final class b$a
-  extends ai
+  extends ar
 {
-  private static final int CTRL_INDEX = 515;
-  private static final String NAME = "onLivePusherBGMComplete";
+  private static final int CTRL_INDEX = 783;
+  private static final String NAME = "onLivePusherAudioVolume";
 }
 
 

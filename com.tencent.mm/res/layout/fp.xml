@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<LinearLayout android:orientation="horizontal" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/ku" android:layout_marginRight="@dimen/l2">
-        <ImageView android:layout_width="@dimen/l4" android:layout_height="@dimen/l4" android:src="@raw/chatting_backup_comfirm" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:id="@id/a36" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a30" />
-    </LinearLayout>
-    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <RelativeLayout android:background="@drawable/oc" android:layout_width="fill_parent" android:layout_height="@dimen/h_">
+        <ImageView android:id="@id/tc" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ha" />
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:ellipsize="end" android:id="@id/gaq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:singleLine="true" android:layout_toLeftOf="@id/qi" android:layout_toRightOf="@id/tc" android:layout_centerVertical="true" />
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/qi" android:layout_width="@dimen/k2" android:layout_height="@dimen/jz" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/hd" />
+        <View android:id="@id/qk" android:background="@drawable/x8" android:layout_width="fill_parent" android:layout_height="@dimen/bk" android:layout_alignParentBottom="true" android:layout_alignStart="@id/gaq" />
+    </RelativeLayout>
 </LinearLayout>

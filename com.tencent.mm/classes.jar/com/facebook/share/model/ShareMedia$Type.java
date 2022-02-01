@@ -6,18 +6,18 @@ public enum ShareMedia$Type
 {
   static
   {
-    AppMethodBeat.i(97433);
+    AppMethodBeat.i(8457);
     PHOTO = new Type("PHOTO", 0);
     VIDEO = new Type("VIDEO", 1);
     $VALUES = new Type[] { PHOTO, VIDEO };
-    AppMethodBeat.o(97433);
+    AppMethodBeat.o(8457);
   }
   
   private ShareMedia$Type() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.facebook.share.model.ShareMedia.Type
  * JD-Core Version:    0.7.0.1
  */

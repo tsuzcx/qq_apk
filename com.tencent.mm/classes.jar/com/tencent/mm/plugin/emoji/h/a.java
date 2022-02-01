@@ -1,71 +1,72 @@
 package com.tencent.mm.plugin.emoji.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.emoji.model.i;
+import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.storage.at;
+import com.tencent.mm.storage.aw;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.mm.storage.emotion.c;
 
 public final class a
 {
-  public static boolean Lj(String paramString)
+  public static boolean Up(String paramString)
   {
-    AppMethodBeat.i(53866);
+    AppMethodBeat.i(109441);
     if (paramString == null)
     {
-      AppMethodBeat.o(53866);
+      AppMethodBeat.o(109441);
       return false;
     }
-    boolean bool = paramString.equals(bnx());
-    AppMethodBeat.o(53866);
+    boolean bool = paramString.equals(bXj());
+    AppMethodBeat.o(109441);
     return bool;
   }
   
   public static boolean b(EmojiGroupInfo paramEmojiGroupInfo)
   {
-    AppMethodBeat.i(53865);
+    AppMethodBeat.i(109440);
     if (paramEmojiGroupInfo == null)
     {
-      AppMethodBeat.o(53865);
+      AppMethodBeat.o(109440);
       return false;
     }
-    boolean bool = Lj(paramEmojiGroupInfo.field_productID);
-    AppMethodBeat.o(53865);
+    boolean bool = Up(paramEmojiGroupInfo.field_productID);
+    AppMethodBeat.o(109440);
     return bool;
   }
   
-  public static boolean bmI()
+  public static boolean bWs()
   {
-    AppMethodBeat.i(53863);
-    boolean bool = i.getEmojiStorageMgr().yNo.dyT();
-    AppMethodBeat.o(53863);
+    AppMethodBeat.i(109438);
+    boolean bool = k.getEmojiStorageMgr().FyZ.eNf();
+    AppMethodBeat.o(109438);
     return bool;
   }
   
-  public static final String bnx()
+  public static final String bXj()
   {
-    AppMethodBeat.i(53867);
-    String str = EmojiGroupInfo.yPd;
-    AppMethodBeat.o(53867);
+    AppMethodBeat.i(109442);
+    String str = EmojiGroupInfo.LBN;
+    AppMethodBeat.o(109442);
     return str;
   }
   
   public static boolean g(EmotionSummary paramEmotionSummary)
   {
-    AppMethodBeat.i(53864);
+    AppMethodBeat.i(109439);
     if (paramEmotionSummary == null)
     {
-      AppMethodBeat.o(53864);
+      AppMethodBeat.o(109439);
       return false;
     }
-    boolean bool = Lj(paramEmotionSummary.ProductID);
-    AppMethodBeat.o(53864);
+    boolean bool = Up(paramEmotionSummary.ProductID);
+    AppMethodBeat.o(109439);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.h.a
  * JD-Core Version:    0.7.0.1
  */

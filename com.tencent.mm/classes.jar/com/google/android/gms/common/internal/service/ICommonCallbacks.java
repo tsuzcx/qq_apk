@@ -55,11 +55,11 @@ public abstract interface ICommonCallbacks
       
       public void onDefaultAccountCleared(int paramInt)
       {
-        AppMethodBeat.i(61397);
+        AppMethodBeat.i(11889);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         localParcel.writeInt(paramInt);
         transactAndReadExceptionReturnVoid(1, localParcel);
-        AppMethodBeat.o(61397);
+        AppMethodBeat.o(11889);
       }
     }
   }

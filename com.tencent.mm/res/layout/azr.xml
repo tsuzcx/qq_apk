@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/ex2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:gravity="center" android:id="@id/ex3" android:background="@drawable/dv" android:paddingLeft="32.0dip" android:paddingTop="16.0dip" android:paddingRight="32.0dip" android:paddingBottom="16.0dip" android:visibility="gone" android:layout_width="180.0dip" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-        <ImageView android:id="@id/ex4" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginBottom="8.0dip" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/a6q" android:id="@id/bg4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b_g" android:layout_below="@id/ex4" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</merge>
+    <ImageView android:layout_width="fill_parent" android:layout_height="144.0dip" android:src="@drawable/bwf" android:scaleType="centerCrop" />
+    <TextView android:textSize="@dimen/io" android:textColor="@color/a0_" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hk" android:layout_marginBottom="@dimen/hk" android:text="@string/h0f" />
+</LinearLayout>

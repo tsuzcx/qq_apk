@@ -8,27 +8,27 @@ import java.util.Arrays;
 final class g
   implements d
 {
+  private int aVk = -1;
+  int[] aVl;
+  private int[] aVm;
+  private boolean aVn;
   private boolean active;
-  private int awU = -1;
-  private int azR = -1;
-  int[] azS;
-  private int[] azT;
-  private boolean azU;
-  private ByteBuffer azt = ayo;
-  private ByteBuffer buffer = ayo;
+  private ByteBuffer buffer = aTH;
+  private int channelCount = -1;
+  private ByteBuffer outputBuffer = aTH;
   
-  public final void c(ByteBuffer paramByteBuffer)
+  public final void f(ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(94692);
+    AppMethodBeat.i(91803);
     int i = paramByteBuffer.position();
     int k = paramByteBuffer.limit();
-    int j = (k - i) / (this.awU * 2) * this.azT.length * 2;
+    int j = (k - i) / (this.channelCount * 2) * this.aVm.length * 2;
     if (this.buffer.capacity() < j) {
       this.buffer = ByteBuffer.allocateDirect(j).order(ByteOrder.nativeOrder());
     }
     while (i < k)
     {
-      int[] arrayOfInt = this.azT;
+      int[] arrayOfInt = this.aVm;
       int m = arrayOfInt.length;
       j = 0;
       for (;;)
@@ -43,18 +43,18 @@ final class g
           break;
         }
       }
-      i += this.awU * 2;
+      i += this.channelCount * 2;
     }
     paramByteBuffer.position(k);
     this.buffer.flip();
-    this.azt = this.buffer;
-    AppMethodBeat.o(94692);
+    this.outputBuffer = this.buffer;
+    AppMethodBeat.o(91803);
   }
   
   public final void flush()
   {
-    this.azt = ayo;
-    this.azU = false;
+    this.outputBuffer = aTH;
+    this.aVn = false;
   }
   
   public final boolean isActive()
@@ -62,74 +62,86 @@ final class g
     return this.active;
   }
   
-  public final boolean nd()
+  public final boolean rM()
   {
-    return (this.azU) && (this.azt == ayo);
+    return (this.aVn) && (this.outputBuffer == aTH);
   }
   
-  public final int ni()
+  public final int rU()
   {
-    if (this.azT == null) {
-      return this.awU;
+    if (this.aVm == null) {
+      return this.channelCount;
     }
-    return this.azT.length;
+    return this.aVm.length;
   }
   
-  public final void nj()
+  public final void rV()
   {
-    this.azU = true;
+    this.aVn = true;
   }
   
-  public final ByteBuffer nk()
+  public final ByteBuffer rW()
   {
-    ByteBuffer localByteBuffer = this.azt;
-    this.azt = ayo;
+    ByteBuffer localByteBuffer = this.outputBuffer;
+    this.outputBuffer = aTH;
     return localByteBuffer;
   }
   
-  public final boolean q(int paramInt1, int paramInt2, int paramInt3)
+  public final void reset()
   {
-    AppMethodBeat.i(94691);
-    if (!Arrays.equals(this.azS, this.azT)) {}
+    AppMethodBeat.i(91804);
+    flush();
+    this.buffer = aTH;
+    this.channelCount = -1;
+    this.aVk = -1;
+    this.aVm = null;
+    this.active = false;
+    AppMethodBeat.o(91804);
+  }
+  
+  public final boolean s(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(91802);
+    if (!Arrays.equals(this.aVl, this.aVm)) {}
     for (int k = 1;; k = 0)
     {
-      this.azT = this.azS;
-      if (this.azT != null) {
+      this.aVm = this.aVl;
+      if (this.aVm != null) {
         break;
       }
       this.active = false;
-      AppMethodBeat.o(94691);
+      AppMethodBeat.o(91802);
       return k;
     }
     d.a locala;
     if (paramInt3 != 2)
     {
       locala = new d.a(paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(94691);
+      AppMethodBeat.o(91802);
       throw locala;
     }
-    if ((k == 0) && (this.azR == paramInt1) && (this.awU == paramInt2))
+    if ((k == 0) && (this.aVk == paramInt1) && (this.channelCount == paramInt2))
     {
-      AppMethodBeat.o(94691);
+      AppMethodBeat.o(91802);
       return false;
     }
-    this.azR = paramInt1;
-    this.awU = paramInt2;
-    if (paramInt2 != this.azT.length) {}
+    this.aVk = paramInt1;
+    this.channelCount = paramInt2;
+    if (paramInt2 != this.aVm.length) {}
     int i;
     for (k = 1;; k = 0)
     {
       this.active = k;
       i = 0;
-      if (i >= this.azT.length) {
+      if (i >= this.aVm.length) {
         break label231;
       }
-      j = this.azT[i];
+      j = this.aVm[i];
       if (j < paramInt2) {
         break;
       }
       locala = new d.a(paramInt1, paramInt2, paramInt3);
-      AppMethodBeat.o(94691);
+      AppMethodBeat.o(91802);
       throw locala;
     }
     k = this.active;
@@ -141,25 +153,13 @@ final class g
       break;
     }
     label231:
-    AppMethodBeat.o(94691);
+    AppMethodBeat.o(91802);
     return true;
-  }
-  
-  public final void reset()
-  {
-    AppMethodBeat.i(94693);
-    flush();
-    this.buffer = ayo;
-    this.awU = -1;
-    this.azR = -1;
-    this.azT = null;
-    this.active = false;
-    AppMethodBeat.o(94693);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.a.g
  * JD-Core Version:    0.7.0.1
  */

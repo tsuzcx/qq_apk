@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.sns.ui.PhotosContent android:id="@id/ed3" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="224.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/hx" android:layout_width="73.0dip" android:layout_height="73.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/hy" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="76.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/hz" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="152.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/i0" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginTop="76.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/i1" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="76.0dip" android:layout_marginTop="76.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/i2" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="152.0dip" android:layout_marginTop="76.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/i3" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginTop="152.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/i4" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="76.0dip" android:layout_marginTop="152.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/i5" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginLeft="152.0dip" android:layout_marginTop="152.0dip" android:layout_marginRight="3.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+</com.tencent.mm.plugin.sns.ui.PhotosContent>

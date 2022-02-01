@@ -11,16 +11,16 @@ final class InvoiceListUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(16861);
-    this.gMn.setResult(0);
-    this.gMn.finish();
-    AppMethodBeat.o(16861);
+    AppMethodBeat.i(20904);
+    this.izV.setResult(0);
+    this.izV.finish();
+    AppMethodBeat.o(20904);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.address.ui.InvoiceListUI.4
  * JD-Core Version:    0.7.0.1
  */

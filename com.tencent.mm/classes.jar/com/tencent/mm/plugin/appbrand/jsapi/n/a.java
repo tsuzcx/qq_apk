@@ -1,83 +1,32 @@
 package com.tencent.mm.plugin.appbrand.jsapi.n;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.al;
-import java.util.Calendar;
-import java.util.Date;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+import d.l;
 import org.json.JSONObject;
 
-final class a
-  extends d
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/picker/BasePickerJsapi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentView;", "()V", "isEnableNewPicker", "", "()Z", "setEnableNewPicker", "(Z)V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-default-impl_release"})
+public class a
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<e>
 {
-  volatile int hWA = -1;
-  volatile int hWB = -1;
-  volatile a.a hWw;
-  volatile Long hWx = null;
-  volatile Long hWy = null;
-  volatile int hWz = -1;
+  public static final a kgo;
+  boolean kgn = true;
   
-  final void H(JSONObject paramJSONObject)
+  static
   {
-    AppMethodBeat.i(126343);
-    this.hWw = a.a.CL(paramJSONObject.optString("fields"));
-    Object localObject2 = paramJSONObject.optJSONObject("range");
-    if (localObject2 != null)
-    {
-      localObject1 = ((JSONObject)localObject2).optString("start", "");
-      localObject1 = this.hWw.parse((String)localObject1);
-      localObject2 = ((JSONObject)localObject2).optString("end", "");
-      localObject2 = this.hWw.parse((String)localObject2);
-      if (localObject1 != null) {
-        this.hWx = Long.valueOf(((Date)localObject1).getTime());
-      }
-      if (localObject2 != null) {
-        this.hWy = Long.valueOf(((Date)localObject2).getTime());
-      }
-    }
-    if (this.hWx == null)
-    {
-      localObject1 = Calendar.getInstance(aa.ynv);
-      ((Calendar)localObject1).set(1900, 0, 1);
-      this.hWx = Long.valueOf(((Calendar)localObject1).getTimeInMillis());
-    }
-    if (this.hWy == null)
-    {
-      localObject1 = Calendar.getInstance(aa.ynv);
-      ((Calendar)localObject1).set(2100, 11, 31);
-      this.hWy = Long.valueOf(((Calendar)localObject1).getTimeInMillis());
-    }
-    paramJSONObject = paramJSONObject.optString("current", "");
-    Object localObject1 = this.hWw.parse(paramJSONObject);
-    paramJSONObject = (JSONObject)localObject1;
-    if (localObject1 == null)
-    {
-      paramJSONObject = new Date(System.currentTimeMillis());
-      localObject1 = new Date(this.hWy.longValue());
-      localObject2 = new Date(this.hWx.longValue());
-      if (!paramJSONObject.after((Date)localObject1)) {
-        break label287;
-      }
-      paramJSONObject = (JSONObject)localObject1;
-    }
-    for (;;)
-    {
-      this.hWz = (paramJSONObject.getYear() + 1900);
-      this.hWA = (paramJSONObject.getMonth() + 1);
-      this.hWB = paramJSONObject.getDate();
-      al.d(new a.1(this));
-      AppMethodBeat.o(126343);
-      return;
-      label287:
-      if (paramJSONObject.before((Date)localObject2)) {
-        paramJSONObject = (JSONObject)localObject2;
-      }
-    }
+    AppMethodBeat.i(138163);
+    kgo = new a((byte)0);
+    AppMethodBeat.o(138163);
   }
+  
+  public void b(e parame, JSONObject paramJSONObject, int paramInt) {}
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/picker/BasePickerJsapi$Companion;", "", "()V", "TAG", "", "luggage-commons-jsapi-default-impl_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.n.a
  * JD-Core Version:    0.7.0.1
  */

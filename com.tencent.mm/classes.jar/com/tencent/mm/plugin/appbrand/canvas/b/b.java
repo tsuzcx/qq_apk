@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.appbrand.canvas.b;
 import android.graphics.Path;
 import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.BasePathActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathArcActionArg;
-import com.tencent.mm.plugin.appbrand.s.g;
 import org.json.JSONArray;
 
 public final class b
@@ -13,7 +13,7 @@ public final class b
 {
   private static boolean a(Path paramPath, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
   {
-    AppMethodBeat.i(103667);
+    AppMethodBeat.i(145350);
     float f1 = paramFloat1 - paramFloat3;
     float f2 = paramFloat2 - paramFloat3;
     float f3 = paramFloat1 + paramFloat3;
@@ -35,7 +35,7 @@ public final class b
     }
     for (;;)
     {
-      AppMethodBeat.o(103667);
+      AppMethodBeat.o(145350);
       return true;
       paramFloat2 = paramFloat4 % 360.0F;
       paramFloat3 = paramFloat1 % 360.0F;
@@ -83,36 +83,36 @@ public final class b
   
   public final boolean a(Path paramPath, BasePathActionArg paramBasePathActionArg)
   {
-    AppMethodBeat.i(103665);
+    AppMethodBeat.i(145348);
     if ((paramBasePathActionArg == null) || (!(paramBasePathActionArg instanceof PathArcActionArg)))
     {
-      AppMethodBeat.o(103665);
+      AppMethodBeat.o(145348);
       return false;
     }
     paramBasePathActionArg = (PathArcActionArg)paramBasePathActionArg;
-    boolean bool = a(paramPath, paramBasePathActionArg.x, paramBasePathActionArg.y, paramBasePathActionArg.radius, paramBasePathActionArg.heN, paramBasePathActionArg.hfo, paramBasePathActionArg.hfp);
-    AppMethodBeat.o(103665);
+    boolean bool = a(paramPath, paramBasePathActionArg.x, paramBasePathActionArg.y, paramBasePathActionArg.radius, paramBasePathActionArg.js, paramBasePathActionArg.iZz, paramBasePathActionArg.iZA);
+    AppMethodBeat.o(145348);
     return bool;
   }
   
   public final boolean a(Path paramPath, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103664);
+    AppMethodBeat.i(145347);
     if (paramJSONArray.length() < 5)
     {
-      AppMethodBeat.o(103664);
+      AppMethodBeat.o(145347);
       return false;
     }
-    boolean bool = a(paramPath, g.d(paramJSONArray, 0), g.d(paramJSONArray, 1), g.d(paramJSONArray, 2), (float)paramJSONArray.optDouble(3), (float)paramJSONArray.optDouble(4), paramJSONArray.optBoolean(5));
-    AppMethodBeat.o(103664);
+    boolean bool = a(paramPath, g.f(paramJSONArray, 0), g.f(paramJSONArray, 1), g.f(paramJSONArray, 2), (float)paramJSONArray.optDouble(3), (float)paramJSONArray.optDouble(4), paramJSONArray.optBoolean(5));
+    AppMethodBeat.o(145347);
     return bool;
   }
   
-  public final BasePathActionArg ayi()
+  public final BasePathActionArg aTb()
   {
-    AppMethodBeat.i(103666);
+    AppMethodBeat.i(145349);
     PathArcActionArg localPathArcActionArg = new PathArcActionArg();
-    AppMethodBeat.o(103666);
+    AppMethodBeat.o(145349);
     return localPathArcActionArg;
   }
   
@@ -123,7 +123,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.b
  * JD-Core Version:    0.7.0.1
  */

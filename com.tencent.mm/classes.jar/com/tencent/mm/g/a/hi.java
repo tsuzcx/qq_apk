@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class hi
   extends b
 {
-  public hi.a cwu;
+  public a dkW;
   
   public hi()
   {
@@ -15,16 +15,22 @@ public final class hi
   
   private hi(byte paramByte)
   {
-    AppMethodBeat.i(77542);
-    this.cwu = new hi.a();
-    this.ymq = false;
+    AppMethodBeat.i(140986);
+    this.dkW = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77542);
+    AppMethodBeat.o(140986);
+  }
+  
+  public static final class a
+  {
+    public float dkX = 0.0F;
+    public float dkY = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.hi
  * JD-Core Version:    0.7.0.1
  */

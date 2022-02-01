@@ -6,91 +6,55 @@ import com.tencent.mm.plugin.report.a;
 public final class ar
   extends a
 {
-  private long cSN = 0L;
-  private long cVc = 0L;
-  private long cVd = 0L;
-  private long cVe = 0L;
-  private String cVf;
-  private String cVg;
+  public long dKe;
+  private String dMG = "";
+  public long dMH = 0L;
+  public long dMI = 0L;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(108839);
+    AppMethodBeat.i(184627);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cVc);
+    ((StringBuffer)localObject).append(this.dMG);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVd);
+    ((StringBuffer)localObject).append(this.dKe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cSN);
+    ((StringBuffer)localObject).append(this.dMH);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVe);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVf);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVg);
+    ((StringBuffer)localObject).append(this.dMI);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(108839);
+    ams((String)localObject);
+    AppMethodBeat.o(184627);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(108840);
+    AppMethodBeat.i(184628);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ComposeTime:").append(this.cVc);
+    ((StringBuffer)localObject).append("Roomid:").append(this.dMG);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ComposeErrorType:").append(this.cVd);
+    ((StringBuffer)localObject).append("Scene:").append(this.dKe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadTime:").append(this.cSN);
+    ((StringBuffer)localObject).append("Result:").append(this.dMH);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadErrorType:").append(this.cVe);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ComposeErrorTypeStr:").append(this.cVf);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadErrorTypeStr:").append(this.cVg);
+    ((StringBuffer)localObject).append("ErrCode:").append(this.dMI);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(108840);
+    AppMethodBeat.o(184628);
     return localObject;
-  }
-  
-  public final long Fp()
-  {
-    return this.cVc;
-  }
-  
-  public final long Fq()
-  {
-    return this.cSN;
-  }
-  
-  public final ar bC(long paramLong)
-  {
-    this.cVc = paramLong;
-    return this;
-  }
-  
-  public final ar bD(long paramLong)
-  {
-    this.cVd = paramLong;
-    return this;
-  }
-  
-  public final ar bE(long paramLong)
-  {
-    this.cSN = paramLong;
-    return this;
-  }
-  
-  public final ar bF(long paramLong)
-  {
-    this.cVe = paramLong;
-    return this;
   }
   
   public final int getId()
   {
-    return 16688;
+    return 19353;
+  }
+  
+  public final ar hJ(String paramString)
+  {
+    AppMethodBeat.i(184626);
+    this.dMG = t("Roomid", paramString, true);
+    AppMethodBeat.o(184626);
+    return this;
   }
 }
 

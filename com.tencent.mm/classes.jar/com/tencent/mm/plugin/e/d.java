@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.k;
+import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.kernel.a.c.a;
 import com.tencent.mm.kernel.b.g;
 
@@ -10,9 +10,10 @@ public final class d
 {
   public final void execute(g paramg)
   {
-    AppMethodBeat.i(18524);
-    k.a("wechatvoicereco", getClass().getClassLoader());
-    AppMethodBeat.o(18524);
+    AppMethodBeat.i(22635);
+    getClass().getClassLoader();
+    j.pq("wechatvoicereco");
+    AppMethodBeat.o(22635);
   }
   
   public final String name()
@@ -22,7 +23,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.e.d
  * JD-Core Version:    0.7.0.1
  */

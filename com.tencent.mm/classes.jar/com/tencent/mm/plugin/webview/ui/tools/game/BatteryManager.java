@@ -1,13 +1,42 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class BatteryManager
 {
-  static boolean vme;
-  public static BatteryManager.BatteryChangedReceiver vmf;
+  static boolean Bmq;
+  public static BatteryChangedReceiver Bmr;
+  
+  public static final class BatteryChangedReceiver
+    extends BroadcastReceiver
+  {
+    public final void onReceive(Context paramContext, Intent paramIntent)
+    {
+      AppMethodBeat.i(80804);
+      if (paramIntent == null)
+      {
+        AppMethodBeat.o(80804);
+        return;
+      }
+      if ("android.intent.action.BATTERY_OKAY".equals(paramIntent.getAction()))
+      {
+        BatteryManager.Bmq = false;
+        AppMethodBeat.o(80804);
+        return;
+      }
+      if ("android.intent.action.BATTERY_LOW".equals(paramIntent.getAction())) {
+        BatteryManager.Bmq = true;
+      }
+      AppMethodBeat.o(80804);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.game.BatteryManager
  * JD-Core Version:    0.7.0.1
  */

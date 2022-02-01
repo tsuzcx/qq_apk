@@ -1,97 +1,127 @@
 package com.tencent.mm.ui.chatting.c;
 
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.widget.ListView;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.view.KeyEvent;
+import android.widget.AbsListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.chatting.c.b.l;
-import com.tencent.mm.ui.chatting.c.b.o;
-import com.tencent.mm.ui.chatting.c.b.z;
+import com.tencent.mm.ui.k;
+import java.util.HashSet;
+import java.util.Iterator;
 
-@com.tencent.mm.ui.chatting.c.a.a(dJy=l.class)
-public class n
-  extends a
+public final class n
+  extends k
   implements l
 {
-  @TargetApi(11)
-  public final void cwA()
+  private HashSet<k> iYb;
+  
+  public n()
   {
-    AppMethodBeat.i(31389);
-    boolean bool1 = ((z)this.caz.ay(z.class)).dJb();
-    boolean bool2 = ((z)this.caz.ay(z.class)).dJc();
-    if ((bool1) || (bool2))
-    {
-      AppMethodBeat.o(31389);
-      return;
+    AppMethodBeat.i(35256);
+    this.iYb = new HashSet();
+    AppMethodBeat.o(35256);
+  }
+  
+  public final void a(k paramk)
+  {
+    AppMethodBeat.i(35257);
+    if (!this.iYb.contains(paramk)) {
+      this.iYb.add(paramk);
     }
-    if (Build.VERSION.SDK_INT < 11)
-    {
-      ab.d("MicroMsg.ChattingUI.DragDropComponent", "sdk not support dragdrop event");
-      AppMethodBeat.o(31389);
-      return;
+    AppMethodBeat.o(35257);
+  }
+  
+  public final void b(k paramk)
+  {
+    AppMethodBeat.i(35258);
+    this.iYb.remove(paramk);
+    AppMethodBeat.o(35258);
+  }
+  
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(35259);
+    Iterator localIterator = this.iYb.iterator();
+    while (localIterator.hasNext()) {
+      ((k)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
-    new Runnable()
-    {
-      public final void run()
+    AppMethodBeat.o(35259);
+  }
+  
+  public final void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    AppMethodBeat.i(35262);
+    super.onConfigurationChanged(paramConfiguration);
+    Iterator localIterator = this.iYb.iterator();
+    while (localIterator.hasNext()) {
+      ((k)localIterator.next()).onConfigurationChanged(paramConfiguration);
+    }
+    AppMethodBeat.o(35262);
+  }
+  
+  public final void onFinish()
+  {
+    AppMethodBeat.i(191516);
+    super.onFinish();
+    Iterator localIterator = this.iYb.iterator();
+    while (localIterator.hasNext()) {
+      ((k)localIterator.next()).onFinish();
+    }
+    AppMethodBeat.o(191516);
+  }
+  
+  public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(35260);
+    Iterator localIterator = this.iYb.iterator();
+    while (localIterator.hasNext()) {
+      if (((k)localIterator.next()).onKeyDown(paramInt, paramKeyEvent))
       {
-        AppMethodBeat.i(31387);
-        n.1.1 local1 = new n.1.1(this);
-        if (n.this.caz.getListView() != null) {
-          n.this.caz.getListView().setOnDragListener(local1);
-        }
-        ChatFooter localChatFooter = ((o)n.this.caz.ay(o.class)).dIg();
-        if (localChatFooter != null)
-        {
-          localChatFooter.setOnDragListener(local1);
-          localChatFooter.setEditTextOnDragListener(local1);
-        }
-        AppMethodBeat.o(31387);
+        AppMethodBeat.o(35260);
+        return true;
       }
-    }.run();
-    AppMethodBeat.o(31389);
+    }
+    AppMethodBeat.o(35260);
+    return false;
   }
   
-  public final void dBZ()
+  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(31390);
-    cwA();
-    AppMethodBeat.o(31390);
+    AppMethodBeat.i(35261);
+    super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    Iterator localIterator = this.iYb.iterator();
+    while (localIterator.hasNext()) {
+      ((k)localIterator.next()).onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    }
+    AppMethodBeat.o(35261);
   }
   
-  public final void dCd()
+  public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(31391);
-    dIe();
-    AppMethodBeat.o(31391);
+    AppMethodBeat.i(35263);
+    super.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    Iterator localIterator = this.iYb.iterator();
+    while (localIterator.hasNext()) {
+      ((k)localIterator.next()).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+    AppMethodBeat.o(35263);
   }
   
-  @TargetApi(11)
-  public final void dIe()
+  public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    AppMethodBeat.i(31388);
-    if (Build.VERSION.SDK_INT < 11)
-    {
-      ab.d("MicroMsg.ChattingUI.DragDropComponent", "sdk not support dragdrop event");
-      AppMethodBeat.o(31388);
-      return;
+    AppMethodBeat.i(35264);
+    super.onScrollStateChanged(paramAbsListView, paramInt);
+    Iterator localIterator = this.iYb.iterator();
+    while (localIterator.hasNext()) {
+      ((k)localIterator.next()).onScrollStateChanged(paramAbsListView, paramInt);
     }
-    if (this.caz.getListView() != null) {
-      this.caz.getListView().setOnDragListener(null);
-    }
-    ChatFooter localChatFooter = ((o)this.caz.ay(o.class)).dIg();
-    if (localChatFooter != null)
-    {
-      localChatFooter.setOnDragListener(null);
-      localChatFooter.setEditTextOnDragListener(null);
-    }
-    AppMethodBeat.o(31388);
+    AppMethodBeat.o(35264);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.n
  * JD-Core Version:    0.7.0.1
  */

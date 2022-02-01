@@ -1,53 +1,34 @@
 package com.tencent.mm.storage;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h.b;
-import junit.framework.Assert;
-
 public final class au
-  extends e
 {
-  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS bottlemessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  bmessageSvrIdIndex ON bottlemessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  bmessageTalkerIndex ON bottlemessage ( talker )", "CREATE INDEX IF NOT EXISTS  bmessageTalerStatusIndex ON bottlemessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  bmessageCreateTimeIndex ON bottlemessage ( createTime )", "CREATE INDEX IF NOT EXISTS  bmessageCreateTaklerTimeIndex ON bottlemessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  bmessageSendCreateTimeIndex ON bottlemessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  bottlemessageTalkerTypeIndex ON bottlemessage ( talker,type )", "CREATE TABLE IF NOT EXISTS qmessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  qmessageSvrIdIndex ON qmessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerIndex ON qmessage ( talker )", "CREATE INDEX IF NOT EXISTS  qmessageTalerStatusIndex ON qmessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  qmessageCreateTimeIndex ON qmessage ( createTime )", "CREATE INDEX IF NOT EXISTS  qmessageCreateTaklerTimeIndex ON qmessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  qmessageSendCreateTimeIndex ON qmessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerSvrIdIndex ON qmessage ( talker,msgSvrId )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerTypeIndex ON qmessage ( talker,type )", "CREATE TABLE IF NOT EXISTS tmessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  tmessageSvrIdIndex ON tmessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  tmessageTalkerIndex ON tmessage ( talker )", "CREATE INDEX IF NOT EXISTS  tmessageTalerStatusIndex ON tmessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  tmessageCreateTimeIndex ON tmessage ( createTime )", "CREATE INDEX IF NOT EXISTS  tmessageCreateTaklerTimeIndex ON tmessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  tmessageSendCreateTimeIndex ON tmessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  tmessageTalkerTypeIndex ON tmessage ( talker,type )" };
+  public int FyG;
+  private boolean FyH = false;
+  public int FyI;
+  public int FyJ;
+  public String FyK;
+  public String FyL;
+  public String FyM;
+  public String dft;
+  public String oEN;
   
-  public au(h paramh)
+  public au()
   {
-    super(paramh);
-    AppMethodBeat.i(29062);
-    a(bPX(), "bottlemessage");
-    a(bPX(), "qmessage");
-    a(bPX(), "tmessage");
-    a(new h.b(8, "bottlemessage", h.b.a(2000001L, 2500000L, 96000001L, 99000000L)));
-    a(new h.b(2, "qmessage", h.b.a(1000001L, 1500000L, 90000001L, 93000000L)));
-    a(new h.b(4, "tmessage", h.b.a(1500001L, 2000000L, 93000001L, 96000000L)));
-    AppMethodBeat.o(29062);
+    this.FyG = -1;
   }
   
-  public final String aqO(String paramString)
+  public au(String paramString)
   {
-    AppMethodBeat.i(29063);
-    if ((paramString != null) && (paramString.length() > 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      if (!paramString.endsWith("@t.qq.com")) {
-        break;
-      }
-      AppMethodBeat.o(29063);
-      return "tmessage";
+    this.dft = paramString;
+    this.FyG = -1;
+  }
+  
+  public final void WA(int paramInt)
+  {
+    if ((this.FyG != -1) && (this.FyG != paramInt) && (paramInt == 7)) {
+      this.FyH = true;
     }
-    if (paramString.endsWith("@qqim"))
-    {
-      AppMethodBeat.o(29063);
-      return "qmessage";
-    }
-    if (ad.nM(paramString))
-    {
-      AppMethodBeat.o(29063);
-      return "bottlemessage";
-    }
-    AppMethodBeat.o(29063);
-    return null;
+    this.FyG = paramInt;
   }
 }
 

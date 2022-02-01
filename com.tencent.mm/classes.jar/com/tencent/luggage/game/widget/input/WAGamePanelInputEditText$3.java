@@ -12,15 +12,15 @@ final class WAGamePanelInputEditText$3
   
   public final Spannable newSpannable(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(140570);
+    AppMethodBeat.i(130723);
     paramCharSequence = new SpannableStringBuilder(paramCharSequence);
-    AppMethodBeat.o(140570);
+    AppMethodBeat.o(130723);
     return paramCharSequence;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.game.widget.input.WAGamePanelInputEditText.3
  * JD-Core Version:    0.7.0.1
  */

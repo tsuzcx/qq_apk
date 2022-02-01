@@ -1,21 +1,20 @@
 package com.tencent.mm.compatible.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.ad;
 
 public final class m
 {
-  public static boolean Ms()
+  public static <T> T checkNotNull(T paramT)
   {
-    AppMethodBeat.i(93106);
-    String str = ad.get("ro.mediatek.platform");
-    if ((str != null) && ((str.startsWith("MT")) || (str.startsWith("mt"))))
+    AppMethodBeat.i(155910);
+    if (paramT == null)
     {
-      AppMethodBeat.o(93106);
-      return true;
+      paramT = new NullPointerException();
+      AppMethodBeat.o(155910);
+      throw paramT;
     }
-    AppMethodBeat.o(93106);
-    return false;
+    AppMethodBeat.o(155910);
+    return paramT;
   }
 }
 

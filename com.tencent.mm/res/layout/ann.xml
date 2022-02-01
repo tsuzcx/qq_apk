@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/dw7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/a3x" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
-        <TextView android:textColor="@color/h6" android:gravity="center_horizontal" android:id="@id/dw8" android:background="@color/a6q" android:paddingTop="40.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/dgo" android:layout_weight="1.0" style="@style/lf" />
+    <LinearLayout android:orientation="vertical" android:id="@id/jh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/hx" android:minHeight="152.0dip" style="@style/r_">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/don" android:paddingTop="@dimen/bd" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <LinearLayout android:orientation="vertical" android:id="@id/dp1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bd" android:layout_marginRight="@dimen/bd">
+                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ha">
+                    <TextView android:textSize="@dimen/bi" android:textColor="@color/y4" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/dp0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="title" android:includeFontPadding="false" />
+                </LinearLayout>
+                <ViewStub android:id="@id/gbg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ha" />
+            </LinearLayout>
+            <FrameLayout android:id="@id/gbf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxHeight="@dimen/bh" />
+            <TextView android:textSize="@dimen/jv" android:textColor="@color/km" android:id="@id/b3p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bd" android:layout_marginRight="@dimen/bd" android:layout_marginBottom="@dimen/hk" android:includeFontPadding="false" />
+            <LinearLayout android:orientation="vertical" android:id="@id/dot" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bd" android:layout_marginRight="@dimen/bd">
+                <TextView android:textSize="@dimen/bg" android:textColor="@color/lg" android:ellipsize="end" android:id="@id/dos" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/d" android:text="msg_title" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/dov" android:visibility="gone" android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" android:layout_marginRight="@dimen/jn" android:scaleType="centerCrop" />
+                    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <TextView android:textSize="@dimen/bf" android:textColor="@color/km" android:ellipsize="end" android:id="@id/dox" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                        <TextView android:textSize="@dimen/bf" android:textColor="@color/km" android:ellipsize="end" android:id="@id/dow" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="msg_content" android:maxLines="2" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/doo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/dog" android:paddingLeft="@dimen/hj" android:paddingTop="@dimen/ha" android:paddingRight="@dimen/ha" android:paddingBottom="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="right" android:orientation="horizontal" android:id="@id/dol" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:textSize="@dimen/ia" android:textColor="@color/h1" android:id="@id/dom" android:background="@drawable/bo" android:visibility="gone" android:layout_width="wrap_content" android:minWidth="@dimen/ar" style="@style/of" />
+                <Button android:textSize="@dimen/ia" android:textColor="@color/fu" android:id="@id/doz" android:background="@drawable/bo" android:visibility="gone" android:layout_width="wrap_content" android:minWidth="@dimen/ar" style="@style/of" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-    <TextView android:textColor="@color/h6" android:id="@id/cmk" android:visibility="gone" android:text="@string/dgm" style="@style/lf" />
-</FrameLayout>
+</LinearLayout>

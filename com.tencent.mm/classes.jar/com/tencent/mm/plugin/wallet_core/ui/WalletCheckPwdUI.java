@@ -3,191 +3,282 @@ package com.tencent.mm.plugin.wallet_core.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Looper;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.Window;
+import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.g.a.ma;
-import com.tencent.mm.g.a.oh;
-import com.tencent.mm.plugin.wallet_core.c.d;
-import com.tencent.mm.plugin.wallet_core.c.e;
-import com.tencent.mm.plugin.wallet_core.c.u;
-import com.tencent.mm.plugin.wallet_core.c.v;
-import com.tencent.mm.plugin.wallet_core.model.x;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.protobuf.blm;
-import com.tencent.mm.protocal.protobuf.cla;
-import com.tencent.mm.protocal.protobuf.sp;
-import com.tencent.mm.protocal.protobuf.te;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.wallet_core.c;
-import com.tencent.mm.wallet_core.c.a;
+import com.tencent.mm.al.n;
+import com.tencent.mm.g.a.nm;
+import com.tencent.mm.g.a.nm.b;
+import com.tencent.mm.g.a.px;
+import com.tencent.mm.g.a.xa;
+import com.tencent.mm.plugin.wallet_core.c.w;
+import com.tencent.mm.plugin.wallet_core.c.x;
+import com.tencent.mm.protocal.protobuf.bzm;
+import com.tencent.mm.protocal.protobuf.dde;
+import com.tencent.mm.protocal.protobuf.vx;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.r;
+import com.tencent.mm.wallet_core.d.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
+import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
 
 @com.tencent.mm.ui.base.a(3)
 public class WalletCheckPwdUI
   extends WalletBaseUI
 {
-  private String cnI;
-  private int cwW = 0;
-  private String gGl;
-  private TextView gpt;
-  private ScrollView hLr;
-  protected EditHintPasswdView nID;
-  private boolean upR = false;
-  private LinearLayout upS;
-  private ImageView upT;
-  private TextView upU;
-  private TextView upV;
-  private TextView upW;
-  private boolean upX = false;
-  private boolean upY = false;
-  private String upZ;
-  private int uqa = 0;
-  private int uqb;
-  private String uqc;
-  private String uqd;
-  private Animation uqe;
-  private c.a uqf;
+  private boolean AmM = false;
+  private LinearLayout AmN;
+  private ImageView AmO;
+  private TextView AmP;
+  private TextView AmQ;
+  private TextView AmR;
+  private boolean AmS = false;
+  private boolean AmT = false;
+  private String AmU;
+  private int AmV = 0;
+  private int AmW;
+  private boolean AmX;
+  private String AmY;
+  private String AmZ;
+  private Animation Ana;
+  private d.a Anb;
+  private String dcE;
+  private int dmz = 0;
+  private TextView ibI;
+  private String itM;
+  private ScrollView jPx;
+  protected EditHintPasswdView swk;
   
-  private void a(blm paramblm)
+  private void Rm(int paramInt)
   {
-    AppMethodBeat.i(47348);
-    if ((paramblm != null) && (!bo.isNullOrNil(paramblm.title))) {
-      this.upV.setText(paramblm.title);
+    AppMethodBeat.i(70921);
+    if (getIntent().getBooleanExtra("from_kinda", false))
+    {
+      xa localxa = new xa();
+      localxa.dCA.result = paramInt;
+      com.tencent.mm.sdk.b.a.ESL.l(localxa);
     }
-    if ((paramblm != null) && (!bo.isNullOrNil(paramblm.xAi))) {
-      this.upW.setText(paramblm.xAi);
-    }
-    cVC();
-    AppMethodBeat.o(47348);
+    AppMethodBeat.o(70921);
   }
   
-  private void cVB()
+  private void a(bzm parambzm)
   {
-    AppMethodBeat.i(47349);
-    com.tencent.mm.sdk.platformtools.ab.i("Micromsg.WalletCheckPwdUI", "change mode: %s", new Object[] { Integer.valueOf(this.cwW) });
-    if (this.cwW == 1)
+    AppMethodBeat.i(70912);
+    if ((parambzm != null) && (!bt.isNullOrNil(parambzm.title))) {
+      this.AmQ.setText(parambzm.title);
+    }
+    if ((parambzm != null) && (!bt.isNullOrNil(parambzm.DWp))) {
+      this.AmR.setText(parambzm.DWp);
+    }
+    edZ();
+    AppMethodBeat.o(70912);
+  }
+  
+  private void edY()
+  {
+    AppMethodBeat.i(70913);
+    com.tencent.mm.sdk.platformtools.ad.i("Micromsg.WalletCheckPwdUI", "change mode: %s", new Object[] { Integer.valueOf(this.dmz) });
+    if (this.dmz == 1)
     {
-      this.upS.setVisibility(0);
-      this.nID.setVisibility(8);
-      this.gpt.setText(2131305002);
-      this.upS.postDelayed(new WalletCheckPwdUI.6(this), 300L);
-      if (!bo.isNullOrNil(this.uqd))
+      this.AmN.setVisibility(0);
+      this.swk.setVisibility(8);
+      this.ibI.setText(2131765194);
+      this.AmN.postDelayed(new WalletCheckPwdUI.7(this), 300L);
+      if (!bt.isNullOrNil(this.AmZ))
       {
-        this.upW.setText(this.uqd);
-        AppMethodBeat.o(47349);
+        this.AmR.setText(this.AmZ);
+        AppMethodBeat.o(70913);
         return;
       }
-      this.upW.setText(2131305006);
-      AppMethodBeat.o(47349);
+      this.AmR.setText(2131765198);
+      AppMethodBeat.o(70913);
       return;
     }
-    this.upS.setVisibility(8);
-    this.nID.cfK();
-    this.nID.setVisibility(0);
-    this.gpt.setText(2131305001);
+    this.AmN.setVisibility(8);
+    this.swk.dga();
+    this.swk.setVisibility(0);
+    this.ibI.setText(2131765193);
     showTenpayKB();
-    if (!bo.isNullOrNil(this.uqc))
+    if (!bt.isNullOrNil(this.AmY))
     {
-      this.upW.setText(this.uqc);
-      AppMethodBeat.o(47349);
+      this.AmR.setText(this.AmY);
+      AppMethodBeat.o(70913);
       return;
     }
-    this.upW.setText(2131305005);
-    AppMethodBeat.o(47349);
+    this.AmR.setText(2131765197);
+    AppMethodBeat.o(70913);
   }
   
-  private void cVC()
+  private void edZ()
   {
-    AppMethodBeat.i(47350);
-    c localc = getProcess();
-    if (localc != null)
+    AppMethodBeat.i(70914);
+    Object localObject = getProcess();
+    if (localObject != null)
     {
-      if ("UnbindProcess".equals(localc.bzC()))
+      if ("UnbindProcess".equals(((com.tencent.mm.wallet_core.d)localObject).cuB()))
       {
-        this.upV.setText(2131305128);
-        this.upW.setText(2131305011);
-        AppMethodBeat.o(47350);
+        localObject = ((com.tencent.mm.wallet_core.d)localObject).dow.getString("key_check_pwd_title");
+        if (!bt.isNullOrNil((String)localObject)) {
+          this.AmQ.setText((CharSequence)localObject);
+        }
+        for (;;)
+        {
+          this.AmR.setText(2131765203);
+          AppMethodBeat.o(70914);
+          return;
+          this.AmQ.setText(2131765320);
+        }
+      }
+      if ((localObject instanceof com.tencent.mm.plugin.wallet_core.b.b))
+      {
+        this.AmQ.setText(2131765301);
+        this.AmR.setText(2131765203);
+        AppMethodBeat.o(70914);
         return;
       }
-      if ((localc instanceof com.tencent.mm.plugin.wallet_core.b.b))
+      if ("ModifyPwdProcess".equals(((com.tencent.mm.wallet_core.d)localObject).cuB()))
       {
-        this.upV.setText(2131305109);
-        this.upW.setText(2131305011);
-        AppMethodBeat.o(47350);
+        this.AmQ.setText(2131765519);
+        this.AmR.setText(2131765203);
+        AppMethodBeat.o(70914);
         return;
       }
-      if ("ModifyPwdProcess".equals(localc.bzC()))
+      if ("OfflineProcess".equals(((com.tencent.mm.wallet_core.d)localObject).cuB()))
       {
-        this.upV.setText(2131305305);
-        this.upW.setText(2131305011);
-        AppMethodBeat.o(47350);
-        return;
-      }
-      if ("OfflineProcess".equals(localc.bzC()))
-      {
-        this.upV.setText(2131305010);
-        this.upW.setText(2131305011);
+        this.AmQ.setText(2131765202);
+        this.AmR.setText(2131765203);
       }
     }
-    AppMethodBeat.o(47350);
+    AppMethodBeat.o(70914);
   }
   
-  private void cVD()
+  private void eea()
   {
-    AppMethodBeat.i(47355);
-    com.tencent.mm.plugin.soter.d.a.cyb();
-    ma localma = new ma();
-    localma.cCa.cwk = this.cnI;
-    localma.cCa.cCc = 1;
-    localma.cCa.cCe = new WalletCheckPwdUI.8(this, localma);
-    com.tencent.mm.sdk.b.a.ymk.a(localma, Looper.getMainLooper());
-    AppMethodBeat.o(47355);
+    AppMethodBeat.i(70919);
+    this.AmX = true;
+    com.tencent.mm.plugin.soter.d.a.dEP();
+    final nm localnm = new nm();
+    localnm.dsz.dlJ = this.dcE;
+    localnm.dsz.dsB = 1;
+    localnm.dsz.dsD = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(70904);
+        com.tencent.mm.sdk.platformtools.ad.i("Micromsg.WalletCheckPwdUI", "hy: FingerPrintAuthEvent callback");
+        nm.b localb = localnm.dsA;
+        if (localb == null)
+        {
+          com.tencent.mm.sdk.platformtools.ad.i("Micromsg.WalletCheckPwdUI", "hy: FingerPrintAuthEvent callback, result == null");
+          AppMethodBeat.o(70904);
+          return;
+        }
+        int i = localb.errCode;
+        com.tencent.mm.sdk.platformtools.ad.v("Micromsg.WalletCheckPwdUI", "alvinluo errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(i), localb.errMsg });
+        if (i == 0)
+        {
+          com.tencent.mm.sdk.platformtools.ad.i("Micromsg.WalletCheckPwdUI", "hy: payInfo soterAuthReq: %s", new Object[] { localb.dsE });
+          WalletCheckPwdUI.i(WalletCheckPwdUI.this).setVisibility(8);
+          WalletCheckPwdUI.b(WalletCheckPwdUI.this, localb.dsE);
+          com.tencent.mm.plugin.soter.d.a.Oe(0);
+          AppMethodBeat.o(70904);
+          return;
+        }
+        com.tencent.mm.sdk.platformtools.ad.i("Micromsg.WalletCheckPwdUI", "hy: FingerPrintAuthEvent callback, encrypted_pay_info & encrypted_rsa_sign is empty, idetify fail!");
+        int j = (int)(System.currentTimeMillis() / 1000L);
+        int k = j - WalletCheckPwdUI.j(WalletCheckPwdUI.this);
+        if (k > 1)
+        {
+          WalletCheckPwdUI.b(WalletCheckPwdUI.this, j);
+          WalletCheckPwdUI.k(WalletCheckPwdUI.this);
+        }
+        boolean bool1;
+        if ((i == 2) || (i == 10308))
+        {
+          bool1 = true;
+          if (localb.dsF != 2) {
+            break label366;
+          }
+        }
+        label366:
+        for (boolean bool2 = true;; bool2 = false)
+        {
+          com.tencent.mm.sdk.platformtools.ad.v("Micromsg.WalletCheckPwdUI", "alvinluo shouldDirectlyFail: %b, mIdentifyFail: %d, errCode: %d, isSoter: %b", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(WalletCheckPwdUI.l(WalletCheckPwdUI.this)), Integer.valueOf(i), Boolean.valueOf(bool2) });
+          if (((!bool2) && ((WalletCheckPwdUI.l(WalletCheckPwdUI.this) >= 3) || (k <= 1))) || (bool1)) {
+            break label372;
+          }
+          com.tencent.mm.sdk.platformtools.ad.v("Micromsg.WalletCheckPwdUI", "alvinluo fingerprint pay");
+          if (WalletCheckPwdUI.m(WalletCheckPwdUI.this) == null) {
+            WalletCheckPwdUI.a(WalletCheckPwdUI.this, com.tencent.mm.ui.c.a.fZ(WalletCheckPwdUI.this.getContext()));
+          }
+          WalletCheckPwdUI.i(WalletCheckPwdUI.this).setVisibility(0);
+          WalletCheckPwdUI.i(WalletCheckPwdUI.this).startAnimation(WalletCheckPwdUI.m(WalletCheckPwdUI.this));
+          WalletCheckPwdUI.m(WalletCheckPwdUI.this).setFillAfter(true);
+          com.tencent.mm.plugin.soter.d.a.Oe(1);
+          AppMethodBeat.o(70904);
+          return;
+          bool1 = false;
+          break;
+        }
+        label372:
+        if ((WalletCheckPwdUI.l(WalletCheckPwdUI.this) >= 3) || (bool1))
+        {
+          com.tencent.mm.sdk.platformtools.ad.v("Micromsg.WalletCheckPwdUI", "alvinluo change to pwd pay");
+          WalletCheckPwdUI.eec();
+          WalletCheckPwdUI.a(WalletCheckPwdUI.this, 0);
+          WalletCheckPwdUI.g(WalletCheckPwdUI.this);
+          WalletCheckPwdUI.n(WalletCheckPwdUI.this).setVisibility(8);
+          com.tencent.mm.plugin.soter.d.a.Oe(2);
+        }
+        AppMethodBeat.o(70904);
+      }
+    };
+    com.tencent.mm.sdk.b.a.ESL.a(localnm, Looper.getMainLooper());
+    AppMethodBeat.o(70919);
   }
   
-  private static void cVE()
+  private static void eeb()
   {
-    AppMethodBeat.i(47356);
-    com.tencent.mm.sdk.platformtools.ab.i("Micromsg.WalletCheckPwdUI", "hy: send release FPManager");
-    oh localoh = new oh();
-    com.tencent.mm.sdk.b.a.ymk.l(localoh);
-    AppMethodBeat.o(47356);
+    AppMethodBeat.i(70920);
+    com.tencent.mm.sdk.platformtools.ad.i("Micromsg.WalletCheckPwdUI", "hy: send release FPManager");
+    px localpx = new px();
+    com.tencent.mm.sdk.b.a.ESL.l(localpx);
+    AppMethodBeat.o(70920);
   }
   
   public void cleanUiData(int paramInt)
   {
-    AppMethodBeat.i(47354);
-    if (this.upR)
+    AppMethodBeat.i(70918);
+    if (this.AmM)
     {
       finish();
-      AppMethodBeat.o(47354);
+      AppMethodBeat.o(70918);
       return;
     }
-    if (this.nID != null) {
-      this.nID.cfK();
+    if (this.swk != null) {
+      this.swk.dga();
     }
-    AppMethodBeat.o(47354);
+    AppMethodBeat.o(70918);
   }
   
   public void forceCancel()
   {
-    AppMethodBeat.i(47343);
-    com.tencent.mm.sdk.platformtools.ab.d("Micromsg.WalletCheckPwdUI", "check pwd ");
+    AppMethodBeat.i(70907);
+    com.tencent.mm.sdk.platformtools.ad.d("Micromsg.WalletCheckPwdUI", "check pwd ");
     cleanScenes();
-    AppMethodBeat.o(47343);
+    AppMethodBeat.o(70907);
   }
   
   public int getForceOrientation()
@@ -197,121 +288,209 @@ public class WalletCheckPwdUI
   
   public int getLayoutId()
   {
-    return 2130971163;
+    return 2131495937;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(47347);
-    bo.aa(getTips(0));
-    this.nID = ((EditHintPasswdView)findViewById(2131825034));
-    com.tencent.mm.wallet_core.ui.formview.a.a(this.nID);
-    this.nID.setOnInputValidListener(new WalletCheckPwdUI.3(this));
-    this.hLr = ((ScrollView)findViewById(2131829082));
-    this.upS = ((LinearLayout)findViewById(2131829087));
-    this.upT = ((ImageView)findViewById(2131829088));
-    this.upV = ((TextView)findViewById(2131825031));
-    this.upW = ((TextView)findViewById(2131829086));
-    this.upU = ((TextView)findViewById(2131829089));
-    this.gpt = ((TextView)findViewById(2131829090));
-    this.gpt.setOnClickListener(new WalletCheckPwdUI.4(this));
-    setTenpayKBStateListener(new WalletCheckPwdUI.5(this));
-    setEditFocusListener(this.nID, 0, false);
+    AppMethodBeat.i(70911);
+    bt.ai(getTips(0));
+    this.swk = ((EditHintPasswdView)findViewById(2131301026));
+    com.tencent.mm.wallet_core.ui.formview.a.a(this.swk);
+    this.swk.setOnInputValidListener(new EditHintPasswdView.a()
+    {
+      public final void onInputValidChange(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(70897);
+        if (paramAnonymousBoolean)
+        {
+          WalletCheckPwdUI.a(WalletCheckPwdUI.this, WalletCheckPwdUI.this.swk.getText());
+          com.tencent.mm.wallet_core.d locald = com.tencent.mm.wallet_core.a.bo(WalletCheckPwdUI.this);
+          String str = null;
+          if (locald != null) {
+            str = locald.cuB();
+          }
+          if ((WalletCheckPwdUI.b(WalletCheckPwdUI.this)) && (!"UnbindProcess".equals(str)))
+          {
+            WalletCheckPwdUI.this.doSceneProgress(new x(WalletCheckPwdUI.c(WalletCheckPwdUI.this), WalletCheckPwdUI.d(WalletCheckPwdUI.this), (byte)0));
+            com.tencent.mm.plugin.report.service.h.vKh.f(15021, new Object[] { Integer.valueOf(1) });
+            AppMethodBeat.o(70897);
+            return;
+          }
+          if (!WalletCheckPwdUI.this.getNetController().q(new Object[] { WalletCheckPwdUI.c(WalletCheckPwdUI.this), WalletCheckPwdUI.this.getPayReqKey() })) {
+            WalletCheckPwdUI.this.doSceneProgress(new w(WalletCheckPwdUI.c(WalletCheckPwdUI.this), 1, WalletCheckPwdUI.this.getPayReqKey()));
+          }
+        }
+        AppMethodBeat.o(70897);
+      }
+    });
+    this.jPx = ((ScrollView)findViewById(2131306881));
+    this.AmN = ((LinearLayout)findViewById(2131300088));
+    this.AmO = ((ImageView)findViewById(2131300087));
+    this.AmQ = ((TextView)findViewById(2131306825));
+    this.AmR = ((TextView)findViewById(2131306820));
+    this.AmP = ((TextView)findViewById(2131300091));
+    this.ibI = ((TextView)findViewById(2131306879));
+    this.ibI.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(70898);
+        WalletCheckPwdUI.eec();
+        if (WalletCheckPwdUI.e(WalletCheckPwdUI.this) == 0)
+        {
+          WalletCheckPwdUI.a(WalletCheckPwdUI.this, 1);
+          WalletCheckPwdUI.f(WalletCheckPwdUI.this);
+        }
+        for (;;)
+        {
+          WalletCheckPwdUI.g(WalletCheckPwdUI.this);
+          AppMethodBeat.o(70898);
+          return;
+          WalletCheckPwdUI.a(WalletCheckPwdUI.this, 0);
+        }
+      }
+    });
+    setTenpayKBStateListener(new com.tencent.mm.wallet_core.ui.a()
+    {
+      public final void onVisibleStateChange(final boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(70900);
+        com.tencent.mm.sdk.platformtools.ad.d("Micromsg.WalletCheckPwdUI", "kb visibility: %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        WalletCheckPwdUI.h(WalletCheckPwdUI.this).post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(70899);
+            if (paramAnonymousBoolean)
+            {
+              WalletCheckPwdUI.h(WalletCheckPwdUI.this).fullScroll(130);
+              AppMethodBeat.o(70899);
+              return;
+            }
+            WalletCheckPwdUI.h(WalletCheckPwdUI.this).fullScroll(33);
+            AppMethodBeat.o(70899);
+          }
+        });
+        AppMethodBeat.o(70900);
+      }
+    });
+    setEditFocusListener(this.swk, 0, false);
+    this.swk.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(70901);
+        WalletCheckPwdUI.this.swk.fkE();
+        AppMethodBeat.o(70901);
+      }
+    });
     showTenpayKB();
-    AppMethodBeat.o(47347);
+    AppMethodBeat.o(70911);
   }
   
   public boolean isTransparent()
   {
-    return this.upR;
+    return this.AmM;
   }
   
   public boolean needConfirmFinish()
   {
-    AppMethodBeat.i(47353);
+    AppMethodBeat.i(70917);
     if (getInput().getInt("key_pay_flag", 0) != 0)
     {
-      AppMethodBeat.o(47353);
+      AppMethodBeat.o(70917);
       return true;
     }
-    AppMethodBeat.o(47353);
+    AppMethodBeat.o(70917);
     return false;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     int i = -1;
-    AppMethodBeat.i(47342);
+    AppMethodBeat.i(70906);
     super.onCreate(paramBundle);
     hideTitleView();
     hideActionbarLine();
+    getController().q(this, getContext().getResources().getColor(2131101179));
     paramBundle = getIntent();
     Object localObject;
     if ((paramBundle != null) && (getIntent().hasExtra("scene")))
     {
       i = paramBundle.getIntExtra("scene", -1);
       if (i != 1) {
-        break label494;
+        break label465;
       }
-      this.upX = true;
-      com.tencent.mm.sdk.platformtools.ab.d("Micromsg.WalletCheckPwdUI", "check pwd jsapi");
+      this.AmS = true;
+      com.tencent.mm.sdk.platformtools.ad.d("Micromsg.WalletCheckPwdUI", "check pwd jsapi");
       setContentViewVisibility(4);
       paramBundle = null;
-      if (!this.upY) {
-        break label284;
+      if (!this.AmT) {
+        break label250;
       }
-      localObject = com.tencent.mm.wallet_core.a.aM(this);
+      localObject = com.tencent.mm.wallet_core.a.bo(this);
       if (localObject != null) {
-        paramBundle = ((c)localObject).mEJ;
+        paramBundle = ((com.tencent.mm.wallet_core.d)localObject).dow;
       }
       localObject = paramBundle;
       if (paramBundle != null) {
-        break label320;
+        break label291;
       }
-      com.tencent.mm.sdk.platformtools.ab.d("Micromsg.WalletCheckPwdUI", "func[doCheckPayNetscene] process.getContextData null");
+      com.tencent.mm.sdk.platformtools.ad.d("Micromsg.WalletCheckPwdUI", "func[doCheckPayNetscene] process.getContextData null");
       setResult(1);
+      Rm(1);
       finish();
     }
+    label291:
+    label465:
     for (;;)
     {
       initView();
-      cVC();
-      setBackBtn(new WalletCheckPwdUI.1(this));
-      findViewById(2131829085).setOnClickListener(new WalletCheckPwdUI.2(this));
-      if (Build.VERSION.SDK_INT >= 21)
+      edZ();
+      setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
-        paramBundle = getWindow();
-        paramBundle.addFlags(-2147483648);
-        paramBundle.setStatusBarColor(getResources().getColor(2131690316));
-        if (Build.VERSION.SDK_INT >= 23) {
-          paramBundle.getDecorView().setSystemUiVisibility(8192);
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(70895);
+          WalletCheckPwdUI.a(WalletCheckPwdUI.this);
+          AppMethodBeat.o(70895);
+          return false;
         }
-      }
-      getContentView().setFitsSystemWindows(true);
-      AppMethodBeat.o(47342);
+      });
+      findViewById(2131298365).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(70896);
+          WalletCheckPwdUI.a(WalletCheckPwdUI.this);
+          AppMethodBeat.o(70896);
+        }
+      });
+      AppMethodBeat.o(70906);
       return;
-      paramBundle = com.tencent.mm.wallet_core.a.aM(this);
+      paramBundle = com.tencent.mm.wallet_core.a.bo(this);
       if (paramBundle == null) {
         break;
       }
-      i = paramBundle.mEJ.getInt("scene", -1);
-      if ((i == 1) && ("UnbindProcess".equals(paramBundle.bzC()))) {}
+      i = paramBundle.dow.getInt("scene", -1);
+      if ((i == 1) && ("UnbindProcess".equals(paramBundle.cuB()))) {}
       for (boolean bool = true;; bool = false)
       {
-        this.upY = bool;
+        this.AmT = bool;
         break;
       }
-      label284:
+      label250:
       if (getIntent() == null)
       {
-        com.tencent.mm.sdk.platformtools.ab.d("Micromsg.WalletCheckPwdUI", "func[doCheckPayNetscene] intent null");
+        com.tencent.mm.sdk.platformtools.ad.d("Micromsg.WalletCheckPwdUI", "func[doCheckPayNetscene] intent null");
         setResult(0);
+        Rm(0);
         finish();
       }
       else
       {
         localObject = getIntent().getExtras();
-        label320:
         paramBundle = ((Bundle)localObject).getString("appId");
         String str1 = ((Bundle)localObject).getString("timeStamp");
         String str2 = ((Bundle)localObject).getString("nonceStr");
@@ -320,15 +499,14 @@ public class WalletCheckPwdUI
         String str5 = ((Bundle)localObject).getString("paySignature");
         String str6 = ((Bundle)localObject).getString("url");
         i = ((Bundle)localObject).getInt("pay_channel", 0);
-        if (this.upY) {
-          com.tencent.mm.sdk.platformtools.ab.i("Micromsg.WalletCheckPwdUI", "appId is null? " + bo.isNullOrNil(paramBundle));
+        if (this.AmT) {
+          com.tencent.mm.sdk.platformtools.ad.i("Micromsg.WalletCheckPwdUI", "appId is null? " + bt.isNullOrNil(paramBundle));
         }
-        for (paramBundle = new d(paramBundle, str1, str2, str3, str4, str5, str6, 10, "verifyWCPayPassword", i);; paramBundle = new e(paramBundle, str1, str2, str3, str4, str5, str6, "verifyWCPayPassword", i))
+        for (paramBundle = new com.tencent.mm.plugin.wallet_core.c.d(paramBundle, str1, str2, str3, str4, str5, str6, 10, "verifyWCPayPassword", i);; paramBundle = new com.tencent.mm.plugin.wallet_core.c.e(paramBundle, str1, str2, str3, str4, str5, str6, "verifyWCPayPassword", i))
         {
           doSceneForceProgress(paramBundle);
           break;
         }
-        label494:
         setContentViewVisibility(0);
       }
     }
@@ -336,179 +514,184 @@ public class WalletCheckPwdUI
   
   public void onDestroy()
   {
-    AppMethodBeat.i(47346);
+    AppMethodBeat.i(70910);
     super.onDestroy();
-    cVE();
-    AppMethodBeat.o(47346);
+    if (this.AmX) {
+      eeb();
+    }
+    AppMethodBeat.o(70910);
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(47352);
+    AppMethodBeat.i(70916);
     if ((this.mKBLayout != null) && (this.mKBLayout.isShown()))
     {
       this.mKBLayout.setVisibility(8);
-      AppMethodBeat.o(47352);
+      AppMethodBeat.o(70916);
       return true;
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
-    AppMethodBeat.o(47352);
+    AppMethodBeat.o(70916);
     return bool;
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(47345);
+    AppMethodBeat.i(70909);
     super.onPause();
-    this.cwW = 0;
-    cVB();
-    cVE();
+    this.dmz = 0;
+    edY();
+    eeb();
     removeSceneEndListener(580);
-    AppMethodBeat.o(47345);
+    AppMethodBeat.o(70909);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(47344);
-    if (this.nID != null) {
-      this.nID.cfK();
+    AppMethodBeat.i(70908);
+    if (this.swk != null) {
+      this.swk.dga();
     }
     addSceneEndListener(580);
     super.onResume();
-    AppMethodBeat.o(47344);
+    AppMethodBeat.o(70908);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(47351);
-    com.tencent.mm.sdk.platformtools.ab.d("Micromsg.WalletCheckPwdUI", " errCode: " + paramInt2 + " errMsg :" + paramString);
+    AppMethodBeat.i(70915);
+    com.tencent.mm.sdk.platformtools.ad.d("Micromsg.WalletCheckPwdUI", " errCode: " + paramInt2 + " errMsg :" + paramString);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if ((paramm instanceof u))
+      if ((paramn instanceof w))
       {
         paramString = getInput();
-        paramString.putString("key_pwd1", this.nID.getText());
-        com.tencent.mm.wallet_core.a.j(this, paramString);
-        if (this.nID != null) {
-          this.nID.cfK();
+        paramString.putString("key_pwd1", this.swk.getText());
+        paramString.putString("key_bind_card_user_token", ((w)paramn).token);
+        com.tencent.mm.wallet_core.a.k(this, paramString);
+        if (this.swk != null) {
+          this.swk.dga();
         }
         finish();
       }
       for (;;)
       {
-        AppMethodBeat.o(47351);
+        AppMethodBeat.o(70915);
         return true;
-        if ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.ab))
+        if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.ad))
         {
-          h.bO(this, getString(2131305018));
-          paramString = com.tencent.mm.wallet_core.a.aM(this);
+          com.tencent.mm.ui.base.h.cf(this, getString(2131765210));
+          paramString = com.tencent.mm.wallet_core.a.bo(this);
           if (paramString != null) {
-            paramString.mEJ.putInt("key_process_result_code", -1);
+            paramString.dow.putInt("key_process_result_code", -1);
           }
-          com.tencent.mm.wallet_core.a.j(this, paramString.mEJ);
-          if (this.nID != null) {
-            this.nID.cfK();
+          com.tencent.mm.wallet_core.a.k(this, paramString.dow);
+          if (this.swk != null) {
+            this.swk.dga();
           }
           finish();
         }
-        else if ((paramm instanceof d))
+        else if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.d))
         {
-          com.tencent.mm.pluginsdk.wallet.g.ana(((d)paramm).cSW());
-          this.upZ = ((d)paramm).getToken();
+          com.tencent.mm.pluginsdk.wallet.e.aCV(((com.tencent.mm.plugin.wallet_core.c.d)paramn).ebj());
+          this.AmU = ((com.tencent.mm.plugin.wallet_core.c.d)paramn).getToken();
           setResult(-1);
-          a(((sp)((d)paramm).rr.fsW.fta).wLd);
+          a(((com.tencent.mm.plugin.wallet_core.c.d)paramn).ebk());
           setContentViewVisibility(0);
         }
         else
         {
-          if ((paramm instanceof e))
+          if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.e))
           {
-            paramString = (e)paramm;
-            this.upZ = paramString.ubs.token;
-            this.cnI = paramString.ubs.wgF;
-            com.tencent.mm.pluginsdk.wallet.g.ana(paramString.ubs.wgF);
-            if (paramString.ubs.wLd != null)
+            paramString = (com.tencent.mm.plugin.wallet_core.c.e)paramn;
+            this.AmU = paramString.zVW.token;
+            this.dcE = paramString.zVW.CoC;
+            com.tencent.mm.pluginsdk.wallet.e.aCV(paramString.zVW.CoC);
+            if (paramString.zVW.CXs != null)
             {
-              this.uqc = paramString.ubs.wLd.xAi;
-              this.uqd = paramString.ubs.wLd.xAj;
+              this.AmY = paramString.zVW.CXs.DWp;
+              this.AmZ = paramString.zVW.CXs.DWq;
             }
             setResult(-1);
-            a(paramString.ubs.wLd);
-            paramString = paramString.ubs.wLF;
-            if ((paramString != null) && (paramString.wBy != null))
+            a(paramString.zVW.CXs);
+            paramString = paramString.zVW.CXX;
+            if ((paramString != null) && (paramString.CMO != null))
             {
-              paramm = (l)com.tencent.mm.kernel.g.E(l.class);
-              if ((paramString.xVv == 1) && (paramString.xVw == 1) && (paramm.bzb()) && (paramm.bza()) && (!paramm.byT()))
+              paramn = (com.tencent.mm.plugin.fingerprint.d.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.fingerprint.d.a.class);
+              if ((paramString.Evk == 1) && (paramString.Evl == 1) && (paramn.ctT()) && (paramn.ctS()) && (!paramn.ctO()))
               {
-                com.tencent.mm.sdk.platformtools.ab.i("Micromsg.WalletCheckPwdUI", "can use touch pay");
-                this.cwW = 1;
-                if (paramString.wBy != null) {
-                  x.uli.mGC = paramString.wBy.dqj();
+                com.tencent.mm.sdk.platformtools.ad.i("Micromsg.WalletCheckPwdUI", "can use touch pay");
+                this.dmz = 1;
+                if (paramString.CMO != null) {
+                  com.tencent.mm.plugin.fingerprint.b.p.rcp.rcj = paramString.CMO.eBA();
                 }
-                paramm = x.uli;
-                if (paramString.wBz != 1) {
-                  break label496;
+                paramn = com.tencent.mm.plugin.fingerprint.b.p.rcp;
+                if (paramString.CMP != 1) {
+                  break label499;
                 }
               }
             }
-            label496:
+            label499:
             for (boolean bool = true;; bool = false)
             {
-              paramm.mGD = bool;
-              cVD();
-              this.gpt.setVisibility(0);
-              cVB();
+              paramn.rcr = bool;
+              eea();
+              this.ibI.setVisibility(0);
+              edY();
               setContentViewVisibility(0);
               break;
             }
           }
-          if ((paramm instanceof v))
+          if ((paramn instanceof x))
           {
-            paramString = (v)paramm;
-            if (paramString.cSX())
+            paramString = (x)paramn;
+            if (paramString.ebl())
             {
-              com.tencent.mm.sdk.platformtools.ab.i("Micromsg.WalletCheckPwdUI", "need free sms");
-              paramm = new Bundle();
-              paramm.putString("key_pwd1", this.gGl);
-              paramm.putString("key_jsapi_token", this.upZ);
-              paramm.putString("key_relation_key", paramString.ubR);
-              paramm.putString("key_mobile", paramString.ubQ);
-              this.uqf = new WalletCheckPwdUI.7(this);
-              com.tencent.mm.wallet_core.a.a(this, n.class, paramm, this.uqf);
+              com.tencent.mm.sdk.platformtools.ad.i("Micromsg.WalletCheckPwdUI", "need free sms");
+              paramn = new Bundle();
+              paramn.putString("key_pwd1", this.itM);
+              paramn.putString("key_jsapi_token", this.AmU);
+              paramn.putString("key_relation_key", paramString.zWx);
+              paramn.putString("key_mobile", paramString.zWw);
+              this.Anb = new WalletCheckPwdUI.8(this);
+              com.tencent.mm.wallet_core.a.a(this, p.class, paramn, this.Anb);
             }
             else
             {
               paramString = new Intent();
-              paramString.putExtra("token", ((v)paramm).ubO);
+              paramString.putExtra("token", ((x)paramn).zWu);
               setResult(-1, paramString);
+              Rm(-1);
               finish();
             }
           }
         }
       }
     }
-    if (this.nID != null) {
-      this.nID.cfK();
+    if (this.swk != null) {
+      this.swk.dga();
     }
-    if (((paramm instanceof d)) || ((paramm instanceof e)))
+    if (((paramn instanceof com.tencent.mm.plugin.wallet_core.c.d)) || ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.e)))
     {
-      com.tencent.mm.sdk.platformtools.ab.i("Micromsg.WalletCheckPwdUI", "check jsapi fail");
-      paramString = com.tencent.mm.wallet_core.a.aM(this);
-      if ((paramString != null) && (paramString.bzC().equals("UnbindProcess")))
+      com.tencent.mm.sdk.platformtools.ad.i("Micromsg.WalletCheckPwdUI", "check jsapi fail");
+      paramString = com.tencent.mm.wallet_core.a.bo(this);
+      if ((paramString != null) && (paramString.cuB().equals("UnbindProcess")))
       {
         setResult(1);
-        paramString.mEJ.putInt("key_process_result_code", 1);
-        com.tencent.mm.wallet_core.a.j(this, paramString.mEJ);
+        paramString.dow.putInt("key_process_result_code", 1);
+        com.tencent.mm.wallet_core.a.k(this, paramString.dow);
       }
       for (;;)
       {
-        AppMethodBeat.o(47351);
+        AppMethodBeat.o(70915);
         return true;
         setResult(0);
+        Rm(0);
         finish();
       }
     }
-    AppMethodBeat.o(47351);
+    AppMethodBeat.o(70915);
     return false;
   }
   
@@ -520,14 +703,14 @@ public class WalletCheckPwdUI
   
   public void setContentViewVisibility(int paramInt)
   {
-    AppMethodBeat.i(47341);
+    AppMethodBeat.i(70905);
     getContentView().setVisibility(paramInt);
-    AppMethodBeat.o(47341);
+    AppMethodBeat.o(70905);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI
  * JD-Core Version:    0.7.0.1
  */

@@ -14,19 +14,19 @@ public class AppBrandBackgroundFetchDataTokenParcel
   
   static
   {
-    AppMethodBeat.i(143067);
-    CREATOR = new AppBrandBackgroundFetchDataTokenParcel.1();
-    AppMethodBeat.o(143067);
+    AppMethodBeat.i(44738);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(44738);
   }
   
   public AppBrandBackgroundFetchDataTokenParcel() {}
   
   protected AppBrandBackgroundFetchDataTokenParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(143065);
+    AppMethodBeat.i(44736);
     this.username = paramParcel.readString();
     this.token = paramParcel.readString();
-    AppMethodBeat.o(143065);
+    AppMethodBeat.o(44736);
   }
   
   public int describeContents()
@@ -36,15 +36,15 @@ public class AppBrandBackgroundFetchDataTokenParcel
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(143066);
+    AppMethodBeat.i(44737);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.token);
-    AppMethodBeat.o(143066);
+    AppMethodBeat.o(44737);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.AppBrandBackgroundFetchDataTokenParcel
  * JD-Core Version:    0.7.0.1
  */

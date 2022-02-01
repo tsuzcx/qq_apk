@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class fg
   extends b
 {
-  public fg.a csX;
-  public fg.b csY;
+  public a dhF;
   
   public fg()
   {
@@ -16,17 +15,21 @@ public final class fg
   
   private fg(byte paramByte)
   {
-    AppMethodBeat.i(70180);
-    this.csX = new fg.a();
-    this.csY = new fg.b();
-    this.ymq = false;
+    AppMethodBeat.i(55661);
+    this.dhF = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70180);
+    AppMethodBeat.o(55661);
+  }
+  
+  public static final class a
+  {
+    public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.fg
  * JD-Core Version:    0.7.0.1
  */

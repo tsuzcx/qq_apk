@@ -8,16 +8,25 @@ public abstract class aw
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dhB = "appId".hashCode();
-  private static final int dip = "versionType".hashCode();
-  private static final int drY = "extJson".hashCode();
+  private static final int ekU = "createTime".hashCode();
+  private static final int ewd = "labelID".hashCode();
+  private static final int ewe = "labelName".hashCode();
+  private static final int ewf = "labelPYFull".hashCode();
+  private static final int ewg = "labelPYShort".hashCode();
+  private static final int ewh = "isTemporary".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dhk = true;
-  private boolean dim = true;
-  private boolean drX = true;
-  public String field_appId;
-  public String field_extJson;
-  public int field_versionType;
+  private boolean ekx = true;
+  private boolean evY = true;
+  private boolean evZ = true;
+  private boolean ewa = true;
+  private boolean ewb = true;
+  private boolean ewc = true;
+  public long field_createTime;
+  public boolean field_isTemporary;
+  public int field_labelID;
+  public String field_labelName;
+  public String field_labelPYFull;
+  public String field_labelPYShort;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -25,30 +34,55 @@ public abstract class aw
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dhB != k) {
-        break label60;
+      if (ewd != k) {
+        break label65;
       }
-      this.field_appId = paramCursor.getString(i);
+      this.field_labelID = paramCursor.getInt(i);
+      this.evY = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (dip == k) {
-        this.field_versionType = paramCursor.getInt(i);
-      } else if (drY == k) {
-        this.field_extJson = paramCursor.getString(i);
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
+      label65:
+      if (ewe == k)
+      {
+        this.field_labelName = paramCursor.getString(i);
+      }
+      else if (ewf == k)
+      {
+        this.field_labelPYFull = paramCursor.getString(i);
+      }
+      else if (ewg == k)
+      {
+        this.field_labelPYShort = paramCursor.getString(i);
+      }
+      else if (ekU == k)
+      {
+        this.field_createTime = paramCursor.getLong(i);
+      }
+      else
+      {
+        if (ewh == k)
+        {
+          if (paramCursor.getInt(i) != 0) {}
+          for (boolean bool = true;; bool = false)
+          {
+            this.field_isTemporary = bool;
+            break;
+          }
+        }
+        if (rowid_HASHCODE == k) {
+          this.systemRowid = paramCursor.getLong(i);
+        }
       }
     }
   }
@@ -56,14 +90,23 @@ public abstract class aw
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dhk) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.evY) {
+      localContentValues.put("labelID", Integer.valueOf(this.field_labelID));
     }
-    if (this.dim) {
-      localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
+    if (this.evZ) {
+      localContentValues.put("labelName", this.field_labelName);
     }
-    if (this.drX) {
-      localContentValues.put("extJson", this.field_extJson);
+    if (this.ewa) {
+      localContentValues.put("labelPYFull", this.field_labelPYFull);
+    }
+    if (this.ewb) {
+      localContentValues.put("labelPYShort", this.field_labelPYShort);
+    }
+    if (this.ekx) {
+      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    }
+    if (this.ewc) {
+      localContentValues.put("isTemporary", Boolean.valueOf(this.field_isTemporary));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -73,7 +116,7 @@ public abstract class aw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.aw
  * JD-Core Version:    0.7.0.1
  */

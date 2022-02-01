@@ -7,19 +7,19 @@ public final class i
 {
   public static BigDecimal i(double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(18358);
+    AppMethodBeat.i(22469);
     BigDecimal localBigDecimal = new BigDecimal(paramDouble1).multiply(new BigDecimal(paramDouble2));
-    AppMethodBeat.o(18358);
+    AppMethodBeat.o(22469);
     return localBigDecimal;
   }
   
-  public static double r(int[] paramArrayOfInt)
+  public static double u(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(18359);
+    AppMethodBeat.i(22470);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0))
     {
       paramArrayOfInt = new NullPointerException("null == dataGroup || 0 == dataGroup.length");
-      AppMethodBeat.o(18359);
+      AppMethodBeat.o(22470);
       throw paramArrayOfInt;
     }
     int k = paramArrayOfInt.length;
@@ -33,20 +33,20 @@ public final class i
     double d1 = i;
     double d2 = paramArrayOfInt.length;
     d1 = new BigDecimal(d1).divide(new BigDecimal(d2), 5, 4).doubleValue();
-    AppMethodBeat.o(18359);
+    AppMethodBeat.o(22470);
     return d1;
   }
   
-  public static double s(int[] paramArrayOfInt)
+  public static double v(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(18360);
+    AppMethodBeat.i(22471);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0))
     {
       paramArrayOfInt = new NullPointerException("null == dataGroup || 0 == dataGroup.length");
-      AppMethodBeat.o(18360);
+      AppMethodBeat.o(22471);
       throw paramArrayOfInt;
     }
-    double d = r(paramArrayOfInt);
+    double d = u(paramArrayOfInt);
     BigDecimal localBigDecimal = new BigDecimal(0.0D);
     int j = paramArrayOfInt.length;
     int i = 0;
@@ -56,13 +56,13 @@ public final class i
       i += 1;
     }
     d = Math.pow(localBigDecimal.divide(new BigDecimal(paramArrayOfInt.length - 1), 5, 4).doubleValue(), 0.5D);
-    AppMethodBeat.o(18360);
+    AppMethodBeat.o(22471);
     return d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.a.i
  * JD-Core Version:    0.7.0.1
  */

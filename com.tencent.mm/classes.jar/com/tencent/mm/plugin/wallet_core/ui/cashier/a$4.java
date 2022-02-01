@@ -11,14 +11,14 @@ final class a$4
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(47739);
-    this.uuG.cancel();
-    AppMethodBeat.o(47739);
+    AppMethodBeat.i(71310);
+    this.ArA.cancel();
+    AppMethodBeat.o(71310);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.cashier.a.4
  * JD-Core Version:    0.7.0.1
  */

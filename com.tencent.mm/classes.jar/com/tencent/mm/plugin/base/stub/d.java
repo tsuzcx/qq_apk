@@ -1,79 +1,99 @@
 package com.tencent.mm.plugin.base.stub;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.pluginsdk.model.app.al;
-import com.tencent.mm.pluginsdk.model.app.f;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.game.api.b;
+import com.tencent.mm.plugin.game.api.b.a;
+import com.tencent.mm.pluginsdk.model.app.ap;
 import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.pluginsdk.model.app.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.pluginsdk.model.app.n;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class d
 {
   protected String appId;
   protected Context context;
-  protected d.a jLz;
+  protected a mKh;
   protected String openId;
   
-  public d(Context paramContext, String paramString1, String paramString2, d.a parama)
+  public d(Context paramContext, String paramString1, String paramString2, a parama)
   {
     this.context = paramContext;
     this.appId = paramString1;
     this.openId = paramString2;
-    this.jLz = parama;
+    this.mKh = parama;
   }
   
-  protected void aVD()
+  protected void bAS()
   {
-    AppMethodBeat.i(18125);
-    h.a(this.context, 2131302030, 2131297087, false, new d.1(this));
-    AppMethodBeat.o(18125);
+    AppMethodBeat.i(22179);
+    com.tencent.mm.ui.base.h.a(this.context, 2131761815, 2131755906, false, new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(22177);
+        paramAnonymousDialogInterface = b.a.cBi();
+        if (paramAnonymousDialogInterface != null) {
+          paramAnonymousDialogInterface.k(d.this.openId, u.aqJ(), d.this.appId);
+        }
+        d.this.mKh.it(false);
+        AppMethodBeat.o(22177);
+      }
+    });
+    AppMethodBeat.o(22179);
   }
   
-  public final void aVE()
+  public final void bAT()
   {
-    AppMethodBeat.i(18124);
+    AppMethodBeat.i(22178);
     if ((this.openId == null) || (this.openId.length() == 0))
     {
-      ab.w("MicroMsg.OpenIdChecker", "doCheck, openId is null");
-      this.jLz.fH(true);
-      AppMethodBeat.o(18124);
+      ad.w("MicroMsg.OpenIdChecker", "doCheck, openId is null");
+      this.mKh.it(true);
+      AppMethodBeat.o(22178);
       return;
     }
-    f localf = g.ca(this.appId, false);
-    if (localf == null)
+    g localg = com.tencent.mm.pluginsdk.model.app.h.j(this.appId, false, false);
+    if (localg == null)
     {
-      ab.e("MicroMsg.OpenIdChecker", "doCheck fail, local app is null, appId = " + this.appId);
-      this.jLz.fH(true);
-      AppMethodBeat.o(18124);
+      ad.e("MicroMsg.OpenIdChecker", "doCheck fail, local app is null, appId = " + this.appId);
+      this.mKh.it(true);
+      AppMethodBeat.o(22178);
       return;
     }
-    if (ah.isNullOrNil(localf.field_openId))
+    if (bt.isNullOrNil(localg.field_openId))
     {
-      ab.w("MicroMsg.OpenIdChecker", "doCheck fail, local openId is null, appId = " + this.appId);
-      ab.d("MicroMsg.OpenIdChecker", "doCheck, trigger getappsetting, appId = " + this.appId);
-      al.cae().xB(this.appId);
-      this.jLz.fH(true);
-      AppMethodBeat.o(18124);
+      ad.w("MicroMsg.OpenIdChecker", "doCheck fail, local openId is null, appId = " + this.appId);
+      ad.d("MicroMsg.OpenIdChecker", "doCheck, trigger getappsetting, appId = " + this.appId);
+      ap.cZS().xe(this.appId);
+      this.mKh.it(true);
+      AppMethodBeat.o(22178);
       return;
     }
-    if (this.openId.equalsIgnoreCase(localf.field_openId))
+    if (this.openId.equalsIgnoreCase(localg.field_openId))
     {
-      ab.d("MicroMsg.OpenIdChecker", "doCheck succ, appId = " + this.appId);
-      this.jLz.fH(true);
-      AppMethodBeat.o(18124);
+      ad.d("MicroMsg.OpenIdChecker", "doCheck succ, appId = " + this.appId);
+      this.mKh.it(true);
+      AppMethodBeat.o(22178);
       return;
     }
-    ab.w("MicroMsg.OpenIdChecker", "doCheck fail, appId = " + this.appId + ", openId = " + this.openId + ", localOpenId = " + localf.field_openId);
-    aVD();
-    AppMethodBeat.o(18124);
+    ad.w("MicroMsg.OpenIdChecker", "doCheck fail, appId = " + this.appId + ", openId = " + this.openId + ", localOpenId = " + localg.field_openId);
+    bAS();
+    AppMethodBeat.o(22178);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void it(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.d
  * JD-Core Version:    0.7.0.1
  */

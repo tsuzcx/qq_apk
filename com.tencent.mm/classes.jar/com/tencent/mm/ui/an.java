@@ -1,81 +1,140 @@
 package com.tencent.mm.ui;
 
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.Point;
-import android.os.Build.VERSION;
-import android.view.Display;
-import android.view.WindowManager;
+import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Method;
 
 public final class an
 {
-  @TargetApi(17)
-  public static boolean hO(Context paramContext)
+  private static a FTi;
+  private static a FTj;
+  
+  static
   {
-    AppMethodBeat.i(112500);
-    Display localDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    Point localPoint = new Point();
-    localDisplay.getSize(localPoint);
-    paramContext = hQ(paramContext);
-    int i = Math.max(localPoint.y, localPoint.x);
-    if (Math.max(paramContext.y, paramContext.x) > i)
+    AppMethodBeat.i(159124);
+    a local1 = new a()
     {
-      AppMethodBeat.o(112500);
-      return true;
-    }
-    AppMethodBeat.o(112500);
-    return false;
+      public final void d(String paramAnonymousString1, String paramAnonymousString2) {}
+      
+      public final void e(String paramAnonymousString1, String paramAnonymousString2) {}
+      
+      public final void i(String paramAnonymousString1, String paramAnonymousString2) {}
+      
+      public final void v(String paramAnonymousString1, String paramAnonymousString2) {}
+      
+      public final void w(String paramAnonymousString1, String paramAnonymousString2) {}
+    };
+    FTi = local1;
+    FTj = local1;
+    AppMethodBeat.o(159124);
   }
   
-  public static Point hQ(Context paramContext)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(112499);
-    Point localPoint = new Point();
-    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    if (Build.VERSION.SDK_INT >= 17) {
-      paramContext.getRealSize(localPoint);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(112499);
-      return localPoint;
-      if (Build.VERSION.SDK_INT >= 14) {
-        try
-        {
-          Method localMethod = Display.class.getMethod("getRawHeight", new Class[0]);
-          localPoint.x = ((Integer)Display.class.getMethod("getRawWidth", new Class[0]).invoke(paramContext, new Object[0])).intValue();
-          localPoint.y = ((Integer)localMethod.invoke(paramContext, new Object[0])).intValue();
-        }
-        catch (Exception localException) {}
-      } else {
-        paramContext.getSize(localPoint);
-      }
-    }
+    FTj = parama;
   }
   
-  public static int lT(String paramString)
+  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(112501);
-    if (paramString != null) {}
-    try
+    AppMethodBeat.i(159119);
+    if (FTj != null)
     {
-      if (paramString.length() <= 0)
-      {
-        AppMethodBeat.o(112501);
-        return 0;
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
       }
-      int i = Integer.decode(paramString).intValue();
-      AppMethodBeat.o(112501);
-      return i;
+      FTj.d(paramString1, paramString2);
     }
-    catch (NumberFormatException paramString)
+    AppMethodBeat.o(159119);
+  }
+  
+  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(159122);
+    if (FTj != null)
     {
-      ak.printErrStackTrace("WeUIUtil", paramString, "", new Object[0]);
-      AppMethodBeat.o(112501);
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
+      }
+      FTj.e(paramString1, paramString2);
     }
-    return 0;
+    AppMethodBeat.o(159122);
+  }
+  
+  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(159120);
+    if (FTj != null)
+    {
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
+      }
+      FTj.i(paramString1, paramString2);
+    }
+    AppMethodBeat.o(159120);
+  }
+  
+  public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(159123);
+    if (FTj != null)
+    {
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
+      }
+      paramThrowable = paramString2 + "  " + Log.getStackTraceString(paramThrowable);
+      FTj.e(paramString1, paramThrowable);
+    }
+    AppMethodBeat.o(159123);
+  }
+  
+  public static void v(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(159118);
+    if (FTj != null)
+    {
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
+      }
+      FTj.v(paramString1, paramString2);
+    }
+    AppMethodBeat.o(159118);
+  }
+  
+  public static void w(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(159121);
+    if (FTj != null)
+    {
+      paramVarArgs = String.format(paramString2, paramVarArgs);
+      paramString2 = paramVarArgs;
+      if (paramVarArgs == null) {
+        paramString2 = "";
+      }
+      FTj.w(paramString1, paramString2);
+    }
+    AppMethodBeat.o(159121);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void d(String paramString1, String paramString2);
+    
+    public abstract void e(String paramString1, String paramString2);
+    
+    public abstract void i(String paramString1, String paramString2);
+    
+    public abstract void v(String paramString1, String paramString2);
+    
+    public abstract void w(String paramString1, String paramString2);
   }
 }
 

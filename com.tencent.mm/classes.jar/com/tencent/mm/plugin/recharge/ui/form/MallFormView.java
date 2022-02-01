@@ -7,6 +7,7 @@ import android.graphics.Rect;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
+import android.text.TextWatcher;
 import android.text.method.KeyListener;
 import android.text.method.NumberKeyListener;
 import android.text.method.PasswordTransformationMethod;
@@ -22,47 +23,47 @@ import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxpay.a.a;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import junit.framework.Assert;
 
 public final class MallFormView
   extends LinearLayout
   implements View.OnFocusChangeListener
 {
-  private TextView iJG;
-  private String pXA;
-  private int pXB;
-  private int pXC;
-  private String pXD;
-  private int pXE;
-  private int pXF;
-  private int pXG;
-  private boolean pXH;
-  private boolean pXI;
-  private boolean pXJ;
-  private int pXK;
-  private int pXL;
-  private int pXM;
-  public boolean pXN;
-  private TextView pXi;
-  public EditText pXj;
-  private WalletIconImageView pXk;
-  private TextView pXl;
-  private MallFormView.a pXm;
-  private View.OnFocusChangeListener pXn;
-  private View.OnClickListener pXo;
-  private a pXp;
-  private b pXq;
-  private int pXr;
-  private String pXs;
-  private int pXt;
-  private String pXu;
-  private int pXv;
-  private int pXw;
-  private int pXx;
-  private String pXy;
-  private int pXz;
+  private TextView kEu;
+  private boolean uZA;
+  private boolean uZB;
+  private boolean uZC;
+  private int uZD;
+  private int uZE;
+  private int uZF;
+  public boolean uZG;
+  private TextView uZb;
+  public EditText uZc;
+  private WalletIconImageView uZd;
+  private TextView uZe;
+  private a uZf;
+  private View.OnFocusChangeListener uZg;
+  private View.OnClickListener uZh;
+  private a uZi;
+  private b uZj;
+  private int uZk;
+  private String uZl;
+  private int uZm;
+  private String uZn;
+  private int uZo;
+  private int uZp;
+  private int uZq;
+  private String uZr;
+  private int uZs;
+  private String uZt;
+  private int uZu;
+  private int uZv;
+  private String uZw;
+  private int uZx;
+  private int uZy;
+  private int uZz;
   
   public MallFormView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -72,128 +73,128 @@ public final class MallFormView
   public MallFormView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(44377);
-    this.iJG = null;
-    this.pXi = null;
-    this.pXj = null;
-    this.pXk = null;
-    this.pXl = null;
-    this.pXm = null;
-    this.pXn = null;
-    this.pXo = null;
-    this.pXp = null;
-    this.pXq = null;
-    this.pXr = -1;
-    this.pXs = "";
-    this.pXt = 0;
-    this.pXu = "";
-    this.pXv = 8;
-    this.pXw = -1;
-    this.pXx = 4;
-    this.pXy = "";
-    this.pXz = 8;
-    this.pXA = "";
-    this.pXB = 19;
-    this.pXC = 2131690322;
-    this.pXD = "";
-    this.pXE = 2147483647;
-    this.pXF = 1;
-    this.pXG = 2130839676;
-    this.pXH = true;
-    this.pXI = false;
-    this.pXJ = true;
-    this.pXK = 1;
-    this.pXL = 5;
-    this.pXM = 2131690217;
-    this.pXN = true;
+    AppMethodBeat.i(67287);
+    this.kEu = null;
+    this.uZb = null;
+    this.uZc = null;
+    this.uZd = null;
+    this.uZe = null;
+    this.uZf = null;
+    this.uZg = null;
+    this.uZh = null;
+    this.uZi = null;
+    this.uZj = null;
+    this.uZk = -1;
+    this.uZl = "";
+    this.uZm = 0;
+    this.uZn = "";
+    this.uZo = 8;
+    this.uZp = -1;
+    this.uZq = 4;
+    this.uZr = "";
+    this.uZs = 8;
+    this.uZt = "";
+    this.uZu = 19;
+    this.uZv = 2131100711;
+    this.uZw = "";
+    this.uZx = 2147483647;
+    this.uZy = 1;
+    this.uZz = 2131233299;
+    this.uZA = true;
+    this.uZB = false;
+    this.uZC = true;
+    this.uZD = 1;
+    this.uZE = 5;
+    this.uZF = 2131100551;
+    this.uZG = true;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MallFormAttrs, paramInt, 0);
-    this.pXr = paramAttributeSet.getResourceId(2, this.pXr);
-    paramInt = paramAttributeSet.getResourceId(3, 0);
+    this.uZk = paramAttributeSet.getResourceId(17, this.uZk);
+    paramInt = paramAttributeSet.getResourceId(23, 0);
     if (paramInt != 0) {
-      this.pXs = paramContext.getString(paramInt);
+      this.uZl = paramContext.getString(paramInt);
     }
-    this.pXw = paramAttributeSet.getResourceId(4, this.pXw);
-    paramInt = paramAttributeSet.getResourceId(5, 0);
+    this.uZp = paramAttributeSet.getResourceId(14, this.uZp);
+    paramInt = paramAttributeSet.getResourceId(21, 0);
     if (paramInt != 0) {
-      this.pXy = paramContext.getString(paramInt);
+      this.uZr = paramContext.getString(paramInt);
     }
-    this.pXx = paramAttributeSet.getInteger(8, this.pXx);
-    this.pXt = paramAttributeSet.getInteger(9, this.pXt);
-    this.pXz = paramAttributeSet.getInteger(10, this.pXz);
-    this.pXv = paramAttributeSet.getInteger(11, this.pXv);
+    this.uZq = paramAttributeSet.getInteger(15, this.uZq);
+    this.uZm = paramAttributeSet.getInteger(25, this.uZm);
+    this.uZs = paramAttributeSet.getInteger(22, this.uZs);
+    this.uZo = paramAttributeSet.getInteger(20, this.uZo);
+    paramInt = paramAttributeSet.getResourceId(18, 0);
+    if (paramInt != 0) {
+      this.uZn = paramContext.getString(paramInt);
+    }
+    paramInt = paramAttributeSet.getResourceId(8, 0);
+    if (paramInt != 0) {
+      this.uZt = paramContext.getString(paramInt);
+    }
+    this.uZu = paramAttributeSet.getInteger(7, this.uZu);
+    this.uZv = paramAttributeSet.getColor(13, this.uZv);
     paramInt = paramAttributeSet.getResourceId(12, 0);
     if (paramInt != 0) {
-      this.pXu = paramContext.getString(paramInt);
+      this.uZw = paramContext.getString(paramInt);
     }
-    paramInt = paramAttributeSet.getResourceId(13, 0);
-    if (paramInt != 0) {
-      this.pXA = paramContext.getString(paramInt);
-    }
-    this.pXB = paramAttributeSet.getInteger(14, this.pXB);
-    this.pXC = paramAttributeSet.getColor(15, this.pXC);
-    paramInt = paramAttributeSet.getResourceId(16, 0);
-    if (paramInt != 0) {
-      this.pXD = paramContext.getString(paramInt);
-    }
-    this.pXE = paramAttributeSet.getInteger(18, this.pXE);
-    this.pXF = paramAttributeSet.getInteger(19, this.pXF);
-    this.pXG = paramAttributeSet.getResourceId(20, this.pXG);
-    this.pXH = paramAttributeSet.getBoolean(21, this.pXH);
-    this.pXI = paramAttributeSet.getBoolean(23, this.pXI);
-    this.pXJ = paramAttributeSet.getBoolean(21, this.pXJ);
-    this.pXK = paramAttributeSet.getInteger(0, this.pXK);
-    this.pXL = paramAttributeSet.getInteger(1, this.pXL);
-    this.pXM = paramAttributeSet.getInteger(24, this.pXM);
+    this.uZx = paramAttributeSet.getInteger(10, this.uZx);
+    this.uZy = paramAttributeSet.getInteger(11, this.uZy);
+    this.uZz = paramAttributeSet.getResourceId(2, this.uZz);
+    this.uZA = paramAttributeSet.getBoolean(4, this.uZA);
+    this.uZB = paramAttributeSet.getBoolean(3, this.uZB);
+    this.uZC = paramAttributeSet.getBoolean(4, this.uZC);
+    this.uZD = paramAttributeSet.getInteger(0, this.uZD);
+    this.uZE = paramAttributeSet.getInteger(1, this.uZE);
+    this.uZF = paramAttributeSet.getInteger(9, this.uZF);
     paramAttributeSet.recycle();
-    if (this.pXr > 0) {
+    if (this.uZk > 0) {
       bool = true;
     }
     Assert.assertTrue(bool);
     setOrientation(1);
-    inflate(paramContext, this.pXr, this);
-    this.iJG = ((TextView)findViewById(2131820644));
-    this.pXi = ((TextView)findViewById(2131820642));
-    this.pXj = ((EditText)findViewById(2131820640));
-    this.pXk = ((WalletIconImageView)findViewById(2131820641));
-    this.pXl = ((TextView)findViewById(2131820643));
-    AppMethodBeat.o(44377);
+    inflate(paramContext, this.uZk, this);
+    this.kEu = ((TextView)findViewById(2131302142));
+    this.uZb = ((TextView)findViewById(2131302084));
+    this.uZc = ((EditText)findViewById(2131302008));
+    this.uZd = ((WalletIconImageView)findViewById(2131302020));
+    this.uZe = ((TextView)findViewById(2131302141));
+    AppMethodBeat.o(67287);
   }
   
   private boolean b(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(44389);
+    AppMethodBeat.i(67299);
     if ((paramView != null) && (paramView.getVisibility() == 0))
     {
-      if (dw(paramView).contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
+      if (eg(paramView).contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY()))
       {
-        AppMethodBeat.o(44389);
+        AppMethodBeat.o(67299);
         return true;
       }
-      AppMethodBeat.o(44389);
+      AppMethodBeat.o(67299);
       return false;
     }
-    AppMethodBeat.o(44389);
+    AppMethodBeat.o(67299);
     return false;
   }
   
-  private Rect dw(View paramView)
+  private Rect eg(View paramView)
   {
-    AppMethodBeat.i(44390);
+    AppMethodBeat.i(67300);
     if (paramView != null)
     {
       Rect localRect = new Rect();
       paramView.getHitRect(localRect);
-      paramView = l(paramView, localRect);
-      AppMethodBeat.o(44390);
+      paramView = k(paramView, localRect);
+      AppMethodBeat.o(67300);
       return paramView;
     }
-    AppMethodBeat.o(44390);
+    AppMethodBeat.o(67300);
     return null;
   }
   
-  private Rect l(View paramView, Rect paramRect)
+  private Rect k(View paramView, Rect paramRect)
   {
-    if (paramView == this.pXk)
+    if (paramView == this.uZd)
     {
       paramRect.left -= 50;
       paramRect.right += 50;
@@ -203,232 +204,261 @@ public final class MallFormView
     return paramRect;
   }
   
-  public final boolean asv()
+  public final boolean aKX()
   {
-    AppMethodBeat.i(44398);
-    if (this.pXj != null)
+    AppMethodBeat.i(67308);
+    if (this.uZc != null)
     {
-      if (this.pXj.getText() == null) {}
-      for (int i = 0; (i > this.pXE) || (i < this.pXF); i = this.pXj.getText().length())
+      if (this.uZc.getText() == null) {}
+      for (int i = 0; (i > this.uZx) || (i < this.uZy); i = this.uZc.getText().length())
       {
-        AppMethodBeat.o(44398);
+        AppMethodBeat.o(67308);
         return false;
       }
-      if (this.pXq != null)
+      if (this.uZj != null)
       {
-        boolean bool = this.pXq.a(this);
-        AppMethodBeat.o(44398);
+        boolean bool = this.uZj.a(this);
+        AppMethodBeat.o(67308);
         return bool;
       }
-      AppMethodBeat.o(44398);
+      AppMethodBeat.o(67308);
       return true;
     }
-    ab.e("MicroMsg.WalletFormView", "hy: no content edit text. true as default");
-    AppMethodBeat.o(44398);
+    ad.e("MicroMsg.WalletFormView", "hy: no content edit text. true as default");
+    AppMethodBeat.o(67308);
     return true;
   }
   
-  public final void cfI()
+  public final void dfY()
   {
-    AppMethodBeat.i(44381);
-    if ((this.pXk != null) && (!bo.isNullOrNil(getText())) && (this.pXj != null) && (this.pXj.isEnabled()) && (this.pXj.isClickable()) && (this.pXj.isFocusable()) && (this.pXj.isFocused()))
+    AppMethodBeat.i(67291);
+    if ((this.uZd != null) && (!bt.isNullOrNil(getText())) && (this.uZc != null) && (this.uZc.isEnabled()) && (this.uZc.isClickable()) && (this.uZc.isFocusable()) && (this.uZc.isFocused()))
     {
-      this.pXk.setToClearState(new MallFormView.2(this));
-      AppMethodBeat.o(44381);
+      this.uZd.setToClearState(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(67286);
+          MallFormView.this.dga();
+          AppMethodBeat.o(67286);
+        }
+      });
+      AppMethodBeat.o(67291);
       return;
     }
-    if (this.pXk != null)
+    if (this.uZd != null)
     {
-      this.pXk.dpM();
-      AppMethodBeat.o(44381);
+      this.uZd.eBb();
+      AppMethodBeat.o(67291);
       return;
     }
-    ab.v("MicroMsg.WalletFormView", "hy: no info iv");
-    AppMethodBeat.o(44381);
+    ad.v("MicroMsg.WalletFormView", "hy: no info iv");
+    AppMethodBeat.o(67291);
   }
   
-  public final void cfJ()
+  public final void dfZ()
   {
-    AppMethodBeat.i(44391);
-    ab.d("MicroMsg.WalletFormView", "shouldClearFocus: %s", new Object[] { Boolean.valueOf(this.pXN) });
-    if (this.pXN)
+    AppMethodBeat.i(67301);
+    ad.d("MicroMsg.WalletFormView", "shouldClearFocus: %s", new Object[] { Boolean.valueOf(this.uZG) });
+    if (this.uZG)
     {
       getContentEditText().clearFocus();
-      AppMethodBeat.o(44391);
+      AppMethodBeat.o(67301);
       return;
     }
-    this.pXN = true;
-    AppMethodBeat.o(44391);
+    this.uZG = true;
+    AppMethodBeat.o(67301);
   }
   
-  public final void cfK()
+  public final void dga()
   {
-    AppMethodBeat.i(44399);
-    if (this.pXj != null) {
-      this.pXj.setText("");
+    AppMethodBeat.i(67309);
+    if (this.uZc != null) {
+      this.uZc.setText("");
     }
-    AppMethodBeat.o(44399);
+    AppMethodBeat.o(67309);
   }
   
   public final EditText getContentEditText()
   {
-    return this.pXj;
+    return this.uZc;
   }
   
   public final a getEventDelegate()
   {
-    return this.pXp;
+    return this.uZi;
   }
   
   public final WalletIconImageView getInfoIv()
   {
-    return this.pXk;
+    return this.uZd;
   }
   
   public final int getInputLength()
   {
-    AppMethodBeat.i(44401);
-    if (this.pXj != null)
+    AppMethodBeat.i(67311);
+    if (this.uZc != null)
     {
-      int i = this.pXj.getText().length();
-      AppMethodBeat.o(44401);
+      int i = this.uZc.getText().length();
+      AppMethodBeat.o(67311);
       return i;
     }
-    AppMethodBeat.o(44401);
+    AppMethodBeat.o(67311);
     return 0;
   }
   
-  public final MallFormView.a getInputValidChangeListener()
+  public final a getInputValidChangeListener()
   {
-    return this.pXm;
+    return this.uZf;
   }
   
   public final KeyListener getKeyListener()
   {
-    AppMethodBeat.i(44394);
-    if (this.pXj != null)
+    AppMethodBeat.i(67304);
+    if (this.uZc != null)
     {
-      KeyListener localKeyListener = this.pXj.getKeyListener();
-      AppMethodBeat.o(44394);
+      KeyListener localKeyListener = this.uZc.getKeyListener();
+      AppMethodBeat.o(67304);
       return localKeyListener;
     }
-    ab.w("MicroMsg.WalletFormView", "hy: no content et");
-    AppMethodBeat.o(44394);
+    ad.w("MicroMsg.WalletFormView", "hy: no content et");
+    AppMethodBeat.o(67304);
     return null;
   }
   
   public final b getLogicDelegate()
   {
-    return this.pXq;
+    return this.uZj;
   }
   
   public final int getMaxInputLength()
   {
-    return this.pXE;
+    return this.uZx;
   }
   
   public final int getMinInputLength()
   {
-    return this.pXF;
+    return this.uZy;
   }
   
   public final TextView getPrefilledTv()
   {
-    return this.pXi;
+    return this.uZb;
   }
   
   public final String getText()
   {
-    AppMethodBeat.i(44393);
-    if (this.pXj != null)
+    AppMethodBeat.i(67303);
+    if (this.uZc != null)
     {
-      String str = this.pXj.getText().toString();
-      if ((this.pXq != null) && (this.pXq.cfH()))
+      String str = this.uZc.getText().toString();
+      if ((this.uZj != null) && (this.uZj.dfX()))
       {
-        str = this.pXq.XQ(str);
-        AppMethodBeat.o(44393);
+        str = this.uZj.alr(str);
+        AppMethodBeat.o(67303);
         return str;
       }
-      AppMethodBeat.o(44393);
+      AppMethodBeat.o(67303);
       return str;
     }
-    ab.e("MicroMsg.WalletFormView", "hy: no content et. return nil");
-    AppMethodBeat.o(44393);
+    ad.e("MicroMsg.WalletFormView", "hy: no content et. return nil");
+    AppMethodBeat.o(67303);
     return "";
   }
   
   public final TextView getTipsTv()
   {
-    return this.pXl;
+    return this.uZe;
   }
   
   public final TextView getTitleTv()
   {
-    return this.iJG;
+    return this.kEu;
   }
   
   protected final void onAttachedToWindow()
   {
-    AppMethodBeat.i(44382);
+    AppMethodBeat.i(67292);
     super.onAttachedToWindow();
-    AppMethodBeat.o(44382);
+    AppMethodBeat.o(67292);
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(44383);
+    AppMethodBeat.i(67293);
     super.onDetachedFromWindow();
-    AppMethodBeat.o(44383);
+    AppMethodBeat.o(67293);
   }
   
   protected final void onFinishInflate()
   {
-    AppMethodBeat.i(44384);
+    AppMethodBeat.i(67294);
     super.onFinishInflate();
     if (getTitleTv() != null)
     {
-      getTitleTv().setText(this.pXs);
-      getTitleTv().setVisibility(this.pXt);
+      getTitleTv().setText(this.uZl);
+      getTitleTv().setVisibility(this.uZm);
     }
     if (getPrefilledTv() != null)
     {
-      getPrefilledTv().setText(this.pXu);
-      getPrefilledTv().setVisibility(this.pXv);
+      getPrefilledTv().setText(this.uZn);
+      getPrefilledTv().setVisibility(this.uZo);
     }
     if (getInfoIv() != null)
     {
-      getInfoIv().setImageResource(this.pXw);
-      getInfoIv().setVisibility(this.pXx);
+      getInfoIv().setImageResource(this.uZp);
+      getInfoIv().setVisibility(this.uZq);
     }
     if (getTipsTv() != null)
     {
-      getTipsTv().setText(this.pXy);
-      getTipsTv().setVisibility(this.pXz);
+      getTipsTv().setText(this.uZr);
+      getTipsTv().setVisibility(this.uZs);
     }
     getContext();
-    if (this.pXj != null)
+    if (this.uZc != null)
     {
-      this.pXj.setHint(this.pXA);
-      this.pXj.setGravity(this.pXB);
-      this.pXj.setTextColor(this.pXC);
-      setText(this.pXD);
-      this.pXj.setBackgroundResource(this.pXG);
-      this.pXj.setEnabled(this.pXH);
-      this.pXj.setFocusable(this.pXJ);
-      this.pXj.setClickable(this.pXI);
-      this.pXj.setHintTextColor(this.pXM);
-      setImeOptions(this.pXL);
-      setInputType(this.pXK);
-      this.pXj.addTextChangedListener(new MallFormView.1(this));
-      this.pXj.setOnFocusChangeListener(this);
+      this.uZc.setHint(this.uZt);
+      this.uZc.setGravity(this.uZu);
+      this.uZc.setTextColor(this.uZv);
+      setText(this.uZw);
+      this.uZc.setBackgroundResource(this.uZz);
+      this.uZc.setEnabled(this.uZA);
+      this.uZc.setFocusable(this.uZC);
+      this.uZc.setClickable(this.uZB);
+      this.uZc.setHintTextColor(this.uZF);
+      setImeOptions(this.uZE);
+      setInputType(this.uZD);
+      this.uZc.addTextChangedListener(new TextWatcher()
+      {
+        private boolean uZH = false;
+        
+        public final void afterTextChanged(Editable paramAnonymousEditable) {}
+        
+        public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+        
+        public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+        {
+          AppMethodBeat.i(67285);
+          if (MallFormView.this.aKX() != this.uZH)
+          {
+            if (MallFormView.c(MallFormView.this) != null) {
+              MallFormView.c(MallFormView.this).onInputValidChange(MallFormView.this.aKX());
+            }
+            this.uZH = MallFormView.this.aKX();
+          }
+          MallFormView.this.dfY();
+          AppMethodBeat.o(67285);
+        }
+      });
+      this.uZc.setOnFocusChangeListener(this);
     }
-    cfI();
-    if (this.pXj != null)
+    dfY();
+    if (this.uZc != null)
     {
-      if (this.pXK != 2) {
+      if (this.uZD != 2) {
         break label347;
       }
-      this.pXj.setKeyListener(new NumberKeyListener()
+      this.uZc.setKeyListener(new NumberKeyListener()
       {
         protected final char[] getAcceptedChars()
         {
@@ -443,212 +473,250 @@ public final class MallFormView
     }
     for (;;)
     {
-      if (this.pXE != -1) {
-        this.pXj.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.pXE) });
+      if (this.uZx != -1) {
+        this.uZc.setFilters(new InputFilter[] { new InputFilter.LengthFilter(this.uZx) });
       }
-      AppMethodBeat.o(44384);
+      AppMethodBeat.o(67294);
       return;
       label347:
-      if (this.pXK == 4)
+      if (this.uZD == 4)
       {
-        this.pXj.setKeyListener(new MallFormView.4(this));
+        this.uZc.setKeyListener(new NumberKeyListener()
+        {
+          protected final char[] getAcceptedChars()
+          {
+            return new char[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 120, 88 };
+          }
+          
+          public final int getInputType()
+          {
+            return 1;
+          }
+        });
       }
-      else if (this.pXK == 128)
+      else if (this.uZD == 128)
       {
-        this.pXj.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        this.pXj.setKeyListener(new MallFormView.5(this));
-        this.pXj.setRawInputType(18);
+        this.uZc.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        this.uZc.setKeyListener(new NumberKeyListener()
+        {
+          protected final char[] getAcceptedChars()
+          {
+            return new char[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48 };
+          }
+          
+          public final int getInputType()
+          {
+            return 18;
+          }
+        });
+        this.uZc.setRawInputType(18);
       }
-      else if (this.pXK == 3)
+      else if (this.uZD == 3)
       {
-        this.pXj.setKeyListener(new MallFormView.6(this));
+        this.uZc.setKeyListener(new NumberKeyListener()
+        {
+          protected final char[] getAcceptedChars()
+          {
+            return new char[] { 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 45 };
+          }
+          
+          public final int getInputType()
+          {
+            return 3;
+          }
+        });
       }
       else
       {
-        this.pXj.setInputType(this.pXK);
+        this.uZc.setInputType(this.uZD);
       }
     }
   }
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(44402);
-    if (this.pXn != null) {
-      this.pXn.onFocusChange(this, paramBoolean);
+    AppMethodBeat.i(67312);
+    if (this.uZg != null) {
+      this.uZg.onFocusChange(this, paramBoolean);
     }
-    if (!asv()) {
-      if (this.iJG != null) {
-        this.iJG.setEnabled(false);
+    if (!aKX()) {
+      if (this.kEu != null) {
+        this.kEu.setEnabled(false);
       }
     }
     for (;;)
     {
-      cfI();
-      AppMethodBeat.o(44402);
+      dfY();
+      AppMethodBeat.o(67312);
       return;
-      if (this.iJG != null) {
-        this.iJG.setEnabled(true);
+      if (this.kEu != null) {
+        this.kEu.setEnabled(true);
       }
     }
   }
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(44388);
-    if ((this.pXp == null) || (!this.pXp.cfG()))
+    AppMethodBeat.i(67298);
+    if ((this.uZi == null) || (!this.uZi.dfW()))
     {
-      if ((this.pXj != null) && (b(this.pXj, paramMotionEvent)) && (!this.pXj.isClickable()))
+      if ((this.uZc != null) && (b(this.uZc, paramMotionEvent)) && (!this.uZc.isClickable()))
       {
-        ab.d("MicroMsg.WalletFormView", "hy: click on content but content is not clickable. whole view perform click");
-        AppMethodBeat.o(44388);
+        ad.d("MicroMsg.WalletFormView", "hy: click on content but content is not clickable. whole view perform click");
+        AppMethodBeat.o(67298);
         return true;
       }
-      if ((b(this.pXk, paramMotionEvent)) && (paramMotionEvent.getAction() == 1))
+      if ((b(this.uZd, paramMotionEvent)) && (paramMotionEvent.getAction() == 1))
       {
-        ab.d("MicroMsg.WalletFormView", "hy: click on info iv");
-        this.pXk.performClick();
-        AppMethodBeat.o(44388);
+        ad.d("MicroMsg.WalletFormView", "hy: click on info iv");
+        this.uZd.performClick();
+        AppMethodBeat.o(67298);
         return true;
       }
-      AppMethodBeat.o(44388);
+      AppMethodBeat.o(67298);
       return false;
     }
-    AppMethodBeat.o(44388);
+    AppMethodBeat.o(67298);
     return true;
   }
   
   @SuppressLint({"WrongCall"})
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(44387);
-    if ((this.pXp == null) || (!this.pXp.cfF())) {
+    AppMethodBeat.i(67297);
+    if ((this.uZi == null) || (!this.uZi.dfV())) {
       super.onMeasure(paramInt1, paramInt2);
     }
-    AppMethodBeat.o(44387);
+    AppMethodBeat.o(67297);
   }
   
   public final void setEventDelegate(a parama)
   {
-    this.pXp = parama;
+    this.uZi = parama;
   }
   
   public final void setFilters(InputFilter[] paramArrayOfInputFilter)
   {
-    AppMethodBeat.i(44400);
-    if (this.pXj != null) {
-      this.pXj.setFilters(paramArrayOfInputFilter);
+    AppMethodBeat.i(67310);
+    if (this.uZc != null) {
+      this.uZc.setFilters(paramArrayOfInputFilter);
     }
-    AppMethodBeat.o(44400);
+    AppMethodBeat.o(67310);
   }
   
   public final void setHint(String paramString)
   {
-    AppMethodBeat.i(44385);
-    if (this.pXj != null) {
-      this.pXj.setHint(paramString);
+    AppMethodBeat.i(67295);
+    if (this.uZc != null) {
+      this.uZc.setHint(paramString);
     }
-    AppMethodBeat.o(44385);
+    AppMethodBeat.o(67295);
   }
   
   public final void setImeOptions(int paramInt)
   {
-    AppMethodBeat.i(44378);
-    if (this.pXj != null) {
-      this.pXj.setImeOptions(paramInt);
+    AppMethodBeat.i(67288);
+    if (this.uZc != null) {
+      this.uZc.setImeOptions(paramInt);
     }
-    AppMethodBeat.o(44378);
+    AppMethodBeat.o(67288);
   }
   
   public final void setInputType(int paramInt)
   {
-    AppMethodBeat.i(44379);
-    if (this.pXj != null) {
-      this.pXj.setInputType(paramInt);
+    AppMethodBeat.i(67289);
+    if (this.uZc != null) {
+      this.uZc.setInputType(paramInt);
     }
-    AppMethodBeat.o(44379);
+    AppMethodBeat.o(67289);
   }
   
   public final void setKeyListener(KeyListener paramKeyListener)
   {
-    AppMethodBeat.i(44397);
-    if (this.pXj != null) {
-      this.pXj.setKeyListener(paramKeyListener);
+    AppMethodBeat.i(67307);
+    if (this.uZc != null) {
+      this.uZc.setKeyListener(paramKeyListener);
     }
-    AppMethodBeat.o(44397);
+    AppMethodBeat.o(67307);
   }
   
   public final void setLogicDelegate(b paramb)
   {
-    this.pXq = paramb;
+    this.uZj = paramb;
   }
   
   public final void setMaxInputLength(int paramInt)
   {
-    this.pXE = paramInt;
+    this.uZx = paramInt;
   }
   
   public final void setMinInputLength(int paramInt)
   {
-    this.pXF = paramInt;
+    this.uZy = paramInt;
   }
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(44395);
+    AppMethodBeat.i(67305);
     super.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(44395);
+    AppMethodBeat.o(67305);
   }
   
   public final void setOnEditorActionListener(TextView.OnEditorActionListener paramOnEditorActionListener)
   {
-    AppMethodBeat.i(44386);
-    this.pXj.setOnEditorActionListener(paramOnEditorActionListener);
-    AppMethodBeat.o(44386);
+    AppMethodBeat.i(67296);
+    this.uZc.setOnEditorActionListener(paramOnEditorActionListener);
+    AppMethodBeat.o(67296);
   }
   
   public final void setOnFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    this.pXn = paramOnFocusChangeListener;
+    this.uZg = paramOnFocusChangeListener;
   }
   
   public final void setOnInfoIvClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(44396);
-    this.pXo = paramOnClickListener;
+    AppMethodBeat.i(67306);
+    this.uZh = paramOnClickListener;
     if (getInfoIv() != null) {
-      getInfoIv().setOnClickListener(this.pXo);
+      getInfoIv().setOnClickListener(this.uZh);
     }
-    AppMethodBeat.o(44396);
+    AppMethodBeat.o(67306);
   }
   
-  public final void setOnInputValidChangeListener(MallFormView.a parama)
+  public final void setOnInputValidChangeListener(a parama)
   {
-    this.pXm = parama;
+    this.uZf = parama;
   }
   
   public final void setSelection(int paramInt)
   {
-    AppMethodBeat.i(44392);
-    if (this.pXj != null) {
-      this.pXj.setSelection(paramInt);
+    AppMethodBeat.i(67302);
+    if (this.uZc != null) {
+      this.uZc.setSelection(paramInt);
     }
-    AppMethodBeat.o(44392);
+    AppMethodBeat.o(67302);
   }
   
   public final void setText(String paramString)
   {
-    AppMethodBeat.i(44380);
-    if (this.pXj != null)
+    AppMethodBeat.i(67290);
+    if (this.uZc != null)
     {
-      this.pXj.setText(paramString);
-      this.pXj.setSelection(getInputLength());
+      this.uZc.setText(paramString);
+      this.uZc.setSelection(getInputLength());
     }
-    AppMethodBeat.o(44380);
+    AppMethodBeat.o(67290);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onInputValidChange(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.form.MallFormView
  * JD-Core Version:    0.7.0.1
  */

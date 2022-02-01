@@ -1,8 +1,8 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vfs.i;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import junit.framework.Assert;
@@ -10,7 +10,7 @@ import junit.framework.Assert;
 public final class n
   implements b
 {
-  private RandomAccessFile aZl = null;
+  private RandomAccessFile file = null;
   private String fileName = "";
   
   public n(String paramString)
@@ -18,14 +18,14 @@ public final class n
     this.fileName = paramString;
   }
   
-  private boolean dk(boolean paramBoolean)
+  private boolean eD(boolean paramBoolean)
   {
-    AppMethodBeat.i(55834);
+    AppMethodBeat.i(130088);
     if (this.fileName.length() >= 0)
     {
       bool = true;
       Assert.assertTrue(bool);
-      if (this.aZl != null) {
+      if (this.file != null) {
         break label91;
       }
     }
@@ -33,18 +33,18 @@ public final class n
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ab.d("MicroMsg.SpxFileOperator", "Open file:" + this.aZl + " forWrite:" + paramBoolean);
+      ad.d("MicroMsg.SpxFileOperator", "Open file:" + this.file + " forWrite:" + paramBoolean);
       try
       {
-        this.aZl = e.cr(this.fileName, paramBoolean);
-        AppMethodBeat.o(55834);
+        this.file = i.cS(this.fileName, paramBoolean);
+        AppMethodBeat.o(130088);
         return true;
       }
       catch (Exception localException)
       {
-        ab.e("MicroMsg.SpxFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
-        this.aZl = null;
-        AppMethodBeat.o(55834);
+        ad.e("MicroMsg.SpxFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
+        this.file = null;
+        AppMethodBeat.o(130088);
       }
       bool = false;
       break;
@@ -52,62 +52,62 @@ public final class n
     return false;
   }
   
-  public final void amh()
+  public final void aDm()
   {
-    AppMethodBeat.i(55833);
-    if (this.aZl != null) {
+    AppMethodBeat.i(130087);
+    if (this.file != null) {
       try
       {
-        this.aZl.close();
-        this.aZl = null;
-        ab.d("MicroMsg.SpxFileOperator", "Close :" + this.fileName);
-        AppMethodBeat.o(55833);
+        this.file.close();
+        this.file = null;
+        ad.d("MicroMsg.SpxFileOperator", "Close :" + this.fileName);
+        AppMethodBeat.o(130087);
         return;
       }
       catch (IOException localIOException) {}
     }
-    AppMethodBeat.o(55833);
+    AppMethodBeat.o(130087);
   }
   
-  public final g cJ(int paramInt1, int paramInt2)
+  public final g dp(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(55835);
+    AppMethodBeat.i(130089);
     g localg = new g();
     if ((paramInt1 < 0) || (paramInt2 <= 0))
     {
       localg.ret = -3;
-      AppMethodBeat.o(55835);
+      AppMethodBeat.o(130089);
       return localg;
     }
-    if ((this.aZl == null) && (!dk(false)))
+    if ((this.file == null) && (!eD(false)))
     {
       localg.ret = -2;
-      AppMethodBeat.o(55835);
+      AppMethodBeat.o(130089);
       return localg;
     }
     localg.buf = new byte[paramInt2];
     try
     {
-      long l = this.aZl.length();
-      this.aZl.seek(paramInt1);
-      int i = this.aZl.read(localg.buf, 0, paramInt2);
-      ab.d("MicroMsg.SpxFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + paramInt1 + " readRet:" + i + " fileNow:" + this.aZl.getFilePointer() + " fileSize:" + l);
+      long l = this.file.length();
+      this.file.seek(paramInt1);
+      int i = this.file.read(localg.buf, 0, paramInt2);
+      ad.d("MicroMsg.SpxFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + paramInt1 + " readRet:" + i + " fileNow:" + this.file.getFilePointer() + " fileSize:" + l);
       paramInt2 = i;
       if (i < 0) {
         paramInt2 = 0;
       }
-      localg.ckj = paramInt2;
-      localg.fXX = (paramInt2 + paramInt1);
+      localg.cZc = paramInt2;
+      localg.hAL = (paramInt2 + paramInt1);
       localg.ret = 0;
-      AppMethodBeat.o(55835);
+      AppMethodBeat.o(130089);
       return localg;
     }
     catch (Exception localException)
     {
-      ab.e("MicroMsg.SpxFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt1 + "  failed:[" + localException.getMessage() + "] ");
-      amh();
+      ad.e("MicroMsg.SpxFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt1 + "  failed:[" + localException.getMessage() + "] ");
+      aDm();
       localg.ret = -1;
-      AppMethodBeat.o(55835);
+      AppMethodBeat.o(130089);
     }
     return localg;
   }
@@ -120,24 +120,24 @@ public final class n
   public final int write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(55836);
+    AppMethodBeat.i(130090);
     if ((paramArrayOfByte.length > 0) && (paramInt1 > 0)) {}
     for (boolean bool1 = true;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      if ((this.aZl != null) || (dk(true))) {
+      if ((this.file != null) || (eD(true))) {
         break;
       }
-      AppMethodBeat.o(55836);
+      AppMethodBeat.o(130090);
       return -1;
     }
     for (;;)
     {
       try
       {
-        this.aZl.seek(paramInt2);
-        this.aZl.write(paramArrayOfByte, 0, paramInt1);
-        long l = this.aZl.getFilePointer();
+        this.file.seek(paramInt2);
+        this.file.write(paramArrayOfByte, 0, paramInt1);
+        long l = this.file.getFilePointer();
         int i = (int)l;
         paramInt1 = paramInt2 + paramInt1;
         if (i == paramInt1)
@@ -149,15 +149,15 @@ public final class n
           }
           bool1 = bool2;
           Assert.assertTrue(bool1);
-          AppMethodBeat.o(55836);
+          AppMethodBeat.o(130090);
           return paramInt1;
         }
       }
       catch (Exception paramArrayOfByte)
       {
-        ab.e("MicroMsg.SpxFileOperator", "ERR: WriteFile[" + this.fileName + "] Offset:" + paramInt2 + " failed:[" + paramArrayOfByte.getMessage() + "]");
-        amh();
-        AppMethodBeat.o(55836);
+        ad.e("MicroMsg.SpxFileOperator", "ERR: WriteFile[" + this.fileName + "] Offset:" + paramInt2 + " failed:[" + paramArrayOfByte.getMessage() + "]");
+        aDm();
+        AppMethodBeat.o(130090);
         return -3;
       }
       bool1 = false;
@@ -169,7 +169,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelvoice.n
  * JD-Core Version:    0.7.0.1
  */

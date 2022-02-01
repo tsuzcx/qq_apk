@@ -2,67 +2,66 @@ package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.a.b.f;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.modelappbrand.a.b.h;
 
 public final class f
-  implements b.f
+  implements b.h
 {
-  public static final f iWr;
-  public int fsr = 0;
-  public int iWq = 0;
+  public static final f lKD;
+  public int gUm = 0;
+  public int lKC = 0;
   
   static
   {
-    AppMethodBeat.i(133565);
-    iWr = new f();
-    AppMethodBeat.o(133565);
+    AppMethodBeat.i(49296);
+    lKD = new f();
+    AppMethodBeat.o(49296);
   }
   
-  public final String tX()
+  public final String AL()
   {
     return "WxaRecommendIcon";
   }
   
-  public final Bitmap x(Bitmap paramBitmap)
+  public final Bitmap F(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(133564);
+    AppMethodBeat.i(49295);
     if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0))
     {
-      AppMethodBeat.o(133564);
+      AppMethodBeat.o(49295);
       return paramBitmap;
     }
     float f2;
     float f1;
     if (paramBitmap.getWidth() == paramBitmap.getHeight())
     {
-      f2 = this.iWq;
+      f2 = this.lKC;
       f1 = f2;
-      if (this.fsr > 0)
+      if (this.gUm > 0)
       {
         f1 = f2;
-        if (this.iWq > 0) {
-          f1 = this.iWq * paramBitmap.getWidth() / this.fsr;
+        if (this.lKC > 0) {
+          f1 = this.lKC * paramBitmap.getWidth() / this.gUm;
         }
       }
     }
-    for (paramBitmap = d.a(paramBitmap, false, f1);; paramBitmap = d.a(paramBitmap, false, f1))
+    for (paramBitmap = com.tencent.mm.sdk.platformtools.f.a(paramBitmap, false, f1);; paramBitmap = com.tencent.mm.sdk.platformtools.f.a(paramBitmap, false, f1))
     {
-      AppMethodBeat.o(133564);
+      AppMethodBeat.o(49295);
       return paramBitmap;
       int j = Math.min(paramBitmap.getWidth(), paramBitmap.getHeight());
       int i = j;
       if (j <= 0) {
         i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
       }
-      paramBitmap = d.b(paramBitmap, i, i, true);
-      f2 = this.iWq;
+      paramBitmap = com.tencent.mm.sdk.platformtools.f.b(paramBitmap, i, i, true);
+      f2 = this.lKC;
       f1 = f2;
-      if (this.fsr > 0)
+      if (this.gUm > 0)
       {
         f1 = f2;
-        if (this.iWq > 0) {
-          f1 = this.iWq * paramBitmap.getWidth() / this.fsr;
+        if (this.lKC > 0) {
+          f1 = this.lKC * paramBitmap.getWidth() / this.gUm;
         }
       }
     }
@@ -70,7 +69,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.f
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package android.support.v7.widget;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.v4.view.a;
-import android.support.v4.view.a.b;
-import android.support.v4.view.a.b.b;
+import android.support.v4.view.a.c;
+import android.support.v4.view.a.c.b;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
@@ -13,20 +13,20 @@ import android.view.accessibility.AccessibilityNodeInfo.CollectionInfo;
 public final class al
   extends a
 {
-  final RecyclerView adt;
-  final a akL;
+  final RecyclerView akA;
+  final a arZ;
   
   public al(RecyclerView paramRecyclerView)
   {
-    this.adt = paramRecyclerView;
-    this.akL = new al.a(this);
+    this.akA = paramRecyclerView;
+    this.arZ = new a(this);
   }
   
   public final void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
   {
     super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
     paramAccessibilityEvent.setClassName(RecyclerView.class.getName());
-    if (((paramView instanceof RecyclerView)) && (!this.adt.js()))
+    if (((paramView instanceof RecyclerView)) && (!this.akA.kN()))
     {
       paramView = (RecyclerView)paramView;
       if (paramView.getLayoutManager() != null) {
@@ -35,45 +35,45 @@ public final class al
     }
   }
   
-  public final void onInitializeAccessibilityNodeInfo(View paramView, b paramb)
+  public final void onInitializeAccessibilityNodeInfo(View paramView, c paramc)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramb);
-    paramb.setClassName(RecyclerView.class.getName());
+    super.onInitializeAccessibilityNodeInfo(paramView, paramc);
+    paramc.setClassName(RecyclerView.class.getName());
     int i;
     int j;
-    if ((!this.adt.js()) && (this.adt.getLayoutManager() != null))
+    if ((!this.akA.kN()) && (this.akA.getLayoutManager() != null))
     {
-      paramView = this.adt.getLayoutManager();
-      RecyclerView.o localo = paramView.adt.ahO;
-      RecyclerView.s locals = paramView.adt.aiK;
-      if ((paramView.adt.canScrollVertically(-1)) || (paramView.adt.canScrollHorizontally(-1)))
+      paramView = this.akA.getLayoutManager();
+      RecyclerView.o localo = paramView.akA.aoV;
+      RecyclerView.s locals = paramView.akA.apT;
+      if ((paramView.akA.canScrollVertically(-1)) || (paramView.akA.canScrollHorizontally(-1)))
       {
-        paramb.addAction(8192);
-        paramb.setScrollable(true);
+        paramc.addAction(8192);
+        paramc.setScrollable(true);
       }
-      if ((paramView.adt.canScrollVertically(1)) || (paramView.adt.canScrollHorizontally(1)))
+      if ((paramView.akA.canScrollVertically(1)) || (paramView.akA.canScrollHorizontally(1)))
       {
-        paramb.addAction(4096);
-        paramb.setScrollable(true);
+        paramc.addAction(4096);
+        paramc.setScrollable(true);
       }
       i = paramView.a(localo, locals);
       j = paramView.b(localo, locals);
       if (Build.VERSION.SDK_INT < 21) {
         break label198;
       }
-      paramView = new b.b(AccessibilityNodeInfo.CollectionInfo.obtain(i, j, false, 0));
+      paramView = new c.b(AccessibilityNodeInfo.CollectionInfo.obtain(i, j, false, 0));
     }
     for (;;)
     {
       if (Build.VERSION.SDK_INT >= 19) {
-        paramb.Hq.setCollectionInfo((AccessibilityNodeInfo.CollectionInfo)((b.b)paramView).Ia);
+        paramc.Op.setCollectionInfo((AccessibilityNodeInfo.CollectionInfo)((c.b)paramView).Pb);
       }
       return;
       label198:
       if (Build.VERSION.SDK_INT >= 19) {
-        paramView = new b.b(AccessibilityNodeInfo.CollectionInfo.obtain(i, j, false));
+        paramView = new c.b(AccessibilityNodeInfo.CollectionInfo.obtain(i, j, false));
       } else {
-        paramView = new b.b(null);
+        paramView = new c.b(null);
       }
     }
   }
@@ -96,12 +96,12 @@ public final class al
           {
             return bool1;
             bool1 = bool2;
-          } while (this.adt.js());
+          } while (this.akA.kN());
           bool1 = bool2;
-        } while (this.adt.getLayoutManager() == null);
-        paramView = this.adt.getLayoutManager();
+        } while (this.akA.getLayoutManager() == null);
+        paramView = this.akA.getLayoutManager();
         bool1 = bool2;
-      } while (paramView.adt == null);
+      } while (paramView.akA == null);
       switch (paramInt)
       {
       default: 
@@ -114,25 +114,25 @@ public final class al
       }
     } while (i == 0);
     label110:
-    paramView.adt.scrollBy(i, paramInt);
+    paramView.akA.a(i, paramInt, null);
     return true;
-    if (paramView.adt.canScrollVertically(-1)) {}
+    if (paramView.akA.canScrollVertically(-1)) {}
     for (paramInt = -(paramView.mHeight - paramView.getPaddingTop() - paramView.getPaddingBottom());; paramInt = 0)
     {
       i = paramInt;
-      if (paramView.adt.canScrollHorizontally(-1))
+      if (paramView.akA.canScrollHorizontally(-1))
       {
         i = -(paramView.mWidth - paramView.getPaddingLeft() - paramView.getPaddingRight());
         break;
-        if (!paramView.adt.canScrollVertically(1)) {
-          break label255;
+        if (!paramView.akA.canScrollVertically(1)) {
+          break label256;
         }
       }
-      label255:
+      label256:
       for (paramInt = paramView.mHeight - paramView.getPaddingTop() - paramView.getPaddingBottom();; paramInt = 0)
       {
         i = paramInt;
-        if (paramView.adt.canScrollHorizontally(1))
+        if (paramView.akA.canScrollHorizontally(1))
         {
           i = paramView.mWidth - paramView.getPaddingLeft() - paramView.getPaddingRight();
           break;
@@ -144,10 +144,49 @@ public final class al
       }
     }
   }
+  
+  public static final class a
+    extends a
+  {
+    final al asa;
+    
+    public a(al paramal)
+    {
+      this.asa = paramal;
+    }
+    
+    public final void onInitializeAccessibilityNodeInfo(View paramView, c paramc)
+    {
+      super.onInitializeAccessibilityNodeInfo(paramView, paramc);
+      if ((!this.asa.akA.kN()) && (this.asa.akA.getLayoutManager() != null)) {
+        this.asa.akA.getLayoutManager().a(paramView, paramc);
+      }
+    }
+    
+    public final boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
+    {
+      boolean bool2 = false;
+      boolean bool1;
+      if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
+        bool1 = true;
+      }
+      do
+      {
+        do
+        {
+          return bool1;
+          bool1 = bool2;
+        } while (this.asa.akA.kN());
+        bool1 = bool2;
+      } while (this.asa.akA.getLayoutManager() == null);
+      this.asa.akA.getLayoutManager();
+      return false;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v7.widget.al
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,52 @@
 package com.tencent.mm.plugin.appbrand.jsapi.p;
 
-import a.l;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Looper;
+import android.support.v4.view.t;
+import android.text.Spannable;
+import android.text.Spannable.Factory;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.TouchDelegate;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import android.view.View.OnLayoutChangeListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.g.c;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.w;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.widget.e.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/report/JsApiOperateRealtimeReport;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "Event_onRealtimeDataResponse", "Priority", "plugin-appbrand-integration_release"})
 public final class d
-  extends a<com.tencent.mm.plugin.appbrand.d>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
 {
-  private static final int CTRL_INDEX = 652;
-  private static final String NAME = "operateRealtimeData";
-  @Deprecated
-  public static final d.a hXU;
-  
-  static
-  {
-    AppMethodBeat.i(143853);
-    hXU = new d.a((byte)0);
-    CTRL_INDEX = 652;
-    NAME = "operateRealtimeData";
-    AppMethodBeat.o(143853);
-  }
+  private static final int CTRL_INDEX = 105;
+  private static final String NAME = "showToast";
+  av irp;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,25 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-
-final class t$a
+public final class t$a
 {
-  static t gRM;
+  public String appId;
+  public String[] cfS;
+  public String nickname;
+  public int uin;
+  public String userName;
   
-  static
+  public t$a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(129115);
-    gRM = new t();
-    AppMethodBeat.o(129115);
+    this.uin = paramInt;
+    this.cfS = paramArrayOfString;
+    this.nickname = paramString1;
+    this.appId = paramString2;
+    this.userName = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.t.a
  * JD-Core Version:    0.7.0.1
  */

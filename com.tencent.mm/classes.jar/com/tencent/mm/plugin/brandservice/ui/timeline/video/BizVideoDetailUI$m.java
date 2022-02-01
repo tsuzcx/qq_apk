@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video;
 
-import a.l;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
 final class BizVideoDetailUI$m
   implements MenuItem.OnMenuItemClickListener
 {
@@ -13,16 +13,16 @@ final class BizVideoDetailUI$m
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(15155);
-    this.kgi.hideVKB();
-    this.kgi.finish();
-    AppMethodBeat.o(15155);
+    AppMethodBeat.i(7101);
+    this.njI.hideVKB();
+    BizVideoDetailUI.a(this.njI);
+    AppMethodBeat.o(7101);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.video.BizVideoDetailUI.m
  * JD-Core Version:    0.7.0.1
  */

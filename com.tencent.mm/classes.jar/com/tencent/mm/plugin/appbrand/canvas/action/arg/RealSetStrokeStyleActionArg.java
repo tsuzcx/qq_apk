@@ -12,9 +12,9 @@ public class RealSetStrokeStyleActionArg
   
   static
   {
-    AppMethodBeat.i(103399);
-    CREATOR = new RealSetStrokeStyleActionArg.1();
-    AppMethodBeat.o(103399);
+    AppMethodBeat.i(145082);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145082);
   }
   
   public RealSetStrokeStyleActionArg() {}
@@ -33,7 +33,7 @@ public class RealSetStrokeStyleActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetStrokeStyleActionArg
  * JD-Core Version:    0.7.0.1
  */

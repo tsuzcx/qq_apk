@@ -1,205 +1,125 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.at.a.a;
-import com.tencent.mm.at.a.a.c.a;
-import com.tencent.mm.at.d;
-import com.tencent.mm.at.d.a;
-import com.tencent.mm.at.g;
-import com.tencent.mm.at.o;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.q;
-import java.util.HashMap;
+import com.tencent.mm.plugin.brandservice.ui.timeline.b.a;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.s;
+import d.g.b.k;
+import d.l;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizFastRejectTool;", "", "()V", "KEY_MSG_ID", "", "KEY_MSG_RANK", "SCENE_BIZ_REJECT_FAST_REJECT", "", "SCENE_BIZ_REJECT_PROFILE_SET", "SCENE_TYPE_BIZ_SESSION", "SCENE_TYPE_TIME_LINE", "TAG", "TYPE_BIZ_ITEM_NORMAL", "TYPE_BIZ_ITEM_REJECT", "TYPE_BIZ_NEW_MSG_CLICK", "TYPE_BIZ_NEW_MSG_DELETE", "TYPE_BIZ_NEW_MSG_SHOW", "TYPE_BIZ_REJECT_DO_REJECT", "TYPE_BIZ_REJECT_GO_PROFILE", "TYPE_BIZ_REJECT_MSG_SHOW", "TYPE_BIZ_REJECT_TYPE_ALERT", "TYPE_BIZ_REJECT_TYPE_REJECT", "parseAccountInfoFromMap", "", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/model/RejectBizAccount;", "values", "", "maxCount", "parseAccountInfoFromXml", "sysXml", "reportBizNewMsgItemAction", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "actionType", "notificationIndexPathRow", "brandTimelineSessionId", "fromScene", "enterId", "", "reportBizReject", "brandUserName", "actionTime", "scene", "sceneNote", "reportFastRejectUiOpen", "enterSourceMsgRank", "clientMsgId", "reportRejectUiOperation", "brandRejectInfo", "brandRejectRank", "brandRejectMsgId", "brandRejectAction", "brandTimeLineSessionId", "brandRejectAccountCount", "plugin-brandservice_release"})
 public final class b
-  implements d.a
 {
-  int jWe;
-  public HashMap<Long, Integer> jWf;
-  private h jWg;
+  public static final b mWx;
   
-  public b(h paramh)
+  static
   {
-    AppMethodBeat.i(14133);
-    this.jWf = new HashMap();
-    this.jWg = paramh;
-    AppMethodBeat.o(14133);
+    AppMethodBeat.i(6535);
+    mWx = new b();
+    AppMethodBeat.o(6535);
   }
   
-  private void a(com.tencent.mm.at.e parame, q paramq, int paramInt, ImageView paramImageView)
+  public static void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2)
   {
-    AppMethodBeat.i(14134);
-    if (o.ahD().a(parame.fDL, paramq.field_msgId, 0, Integer.valueOf(paramInt), 2130838228, this, 0, false) == -2)
+    AppMethodBeat.i(6531);
+    h.vKh.f(17747, new Object[] { Long.valueOf(paramLong1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Integer.valueOf(paramInt3), Long.valueOf(paramLong2) });
+    AppMethodBeat.o(6531);
+  }
+  
+  public static void a(s params, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong)
+  {
+    AppMethodBeat.i(6533);
+    k.h(params, "info");
+    long l = System.currentTimeMillis() / 1000L;
+    int i;
+    if (params.eJP())
     {
-      ab.w("MicroMsg.BizTimeLineImgMsgHandler", "it is already download image finish, but imgInfo is old, search db and repair.");
-      parame = c(paramq);
-      if (parame == null)
-      {
-        ab.w("MicroMsg.BizTimeLineImgMsgHandler", "get imgInfo by db but it is null.");
-        AppMethodBeat.o(14134);
-        return;
-      }
-      parame = g(parame);
-      if (com.tencent.mm.vfs.e.cN(parame)) {
-        a(parame, paramImageView);
+      i = 1;
+      if (paramInt4 != 2) {
+        break label140;
       }
     }
-    AppMethodBeat.o(14134);
-  }
-  
-  private void a(String paramString, ImageView paramImageView)
-  {
-    AppMethodBeat.i(14136);
-    if (this.jWe != 0) {}
-    for (int i = 2130837949;; i = 0)
+    label140:
+    for (paramInt4 = 1;; paramInt4 = 0)
     {
-      a locala = o.ahG();
-      c.a locala1 = new c.a();
-      locala1.eOc = "biz_nor_img".concat(String.valueOf(i));
-      locala1.eOa = 2131689878;
-      locala1.fHt = 1;
-      locala.a(paramString, paramImageView, locala1.ahY(), new b.1(this, i));
-      AppMethodBeat.o(14136);
+      h.vKh.f(17750, new Object[] { params.field_talker, Long.valueOf(l), Integer.valueOf(paramInt1), Integer.valueOf(i), Long.valueOf(params.field_msgId), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Long.valueOf(paramLong) });
+      AppMethodBeat.o(6533);
       return;
+      i = 0;
+      break;
     }
   }
   
-  private static com.tencent.mm.at.e c(q paramq)
+  public static void a(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2)
   {
-    AppMethodBeat.i(14138);
-    com.tencent.mm.at.e locale1 = null;
-    if (paramq.field_msgId > 0L) {
-      locale1 = o.ahC().gT(paramq.field_msgId);
-    }
-    com.tencent.mm.at.e locale2;
-    if (locale1 != null)
-    {
-      locale2 = locale1;
-      if (locale1.fDL > 0L) {}
-    }
-    else
-    {
-      locale2 = locale1;
-      if (paramq.field_msgSvrId > 0L) {
-        locale2 = o.ahC().gS(paramq.field_msgSvrId);
-      }
-    }
-    AppMethodBeat.o(14138);
-    return locale2;
+    AppMethodBeat.i(6534);
+    k.h(paramString, "brandUserName");
+    h.vKh.f(17748, new Object[] { paramString, Long.valueOf(paramLong1), Integer.valueOf(paramInt1), Long.valueOf(paramLong2), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(6534);
   }
   
-  private static String g(com.tencent.mm.at.e parame)
+  public static void a(String paramString1, long paramLong1, String paramString2, int paramInt1, long paramLong2, int paramInt2, int paramInt3, int paramInt4)
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(14137);
-    if (parame == null)
+    AppMethodBeat.i(6532);
+    k.h(paramString1, "brandUserName");
+    k.h(paramString2, "brandRejectInfo");
+    long l = System.currentTimeMillis() / 1000L;
+    h.vKh.f(17616, new Object[] { paramString1, Long.valueOf(paramLong1), paramString2, Integer.valueOf(paramInt1), Long.valueOf(paramLong2), Integer.valueOf(paramInt2), Long.valueOf(l), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    AppMethodBeat.o(6532);
+  }
+  
+  public static List<a> d(Map<String, String> paramMap, int paramInt)
+  {
+    AppMethodBeat.i(6530);
+    List localList = (List)new ArrayList();
+    if ((paramMap == null) || (paramMap.isEmpty()))
     {
-      AppMethodBeat.o(14137);
-      return null;
+      ad.i("MicroMsg.BizFastRejectTool", "parse AccountInfo failed , map is null");
+      AppMethodBeat.o(6530);
+      return localList;
     }
-    String str = parame.fDM;
-    Object localObject1 = localObject2;
-    if (parame.ahh())
+    if ((String)paramMap.get(".sysmsg.BizMsgRejectRecommend.BizAccount.UserName") == null)
     {
-      parame = o.ahC().d(parame);
-      localObject1 = localObject2;
-      if (parame != null)
+      ad.i("MicroMsg.BizFastRejectTool", "no msg in map");
+      AppMethodBeat.o(6530);
+      return localList;
+    }
+    Object localObject = new a();
+    ((a)localObject).gLg = ((String)paramMap.get(".sysmsg.BizMsgRejectRecommend.BizAccount.HeadImgUrl"));
+    ((a)localObject).bNK = ((String)paramMap.get(".sysmsg.BizMsgRejectRecommend.BizAccount.NickName"));
+    ((a)localObject).recommendReason = ((String)paramMap.get(".sysmsg.BizMsgRejectRecommend.BizAccount.RecommendReason"));
+    ((a)localObject).userName = ((String)paramMap.get(".sysmsg.BizMsgRejectRecommend.BizAccount.UserName"));
+    localList.add(localObject);
+    int i = 1;
+    for (;;)
+    {
+      if (i < paramInt)
       {
-        parame = o.ahC().q(parame, "", "");
-        localObject1 = localObject2;
-        if (com.tencent.mm.vfs.e.cN(parame))
-        {
-          ab.i("MicroMsg.BizTimeLineImgMsgHandler", "hasHdImg");
-          localObject1 = parame;
-        }
+        localObject = (String)paramMap.get(".sysmsg.BizMsgRejectRecommend.BizAccount" + i + ".UserName");
+        if (localObject != null) {}
       }
-    }
-    parame = (com.tencent.mm.at.e)localObject1;
-    if (localObject1 == null) {
-      parame = o.ahC().q(str, "", "");
-    }
-    AppMethodBeat.o(14137);
-    return parame;
-  }
-  
-  private int hR(long paramLong)
-  {
-    AppMethodBeat.i(14140);
-    if (this.jWf.containsKey(Long.valueOf(paramLong)))
-    {
-      int i = ((Integer)this.jWf.get(Long.valueOf(paramLong))).intValue();
-      AppMethodBeat.o(14140);
-      return i;
-    }
-    AppMethodBeat.o(14140);
-    return 0;
-  }
-  
-  private void l(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(14141);
-    this.jWf.put(Long.valueOf(paramLong), Integer.valueOf(paramInt));
-    AppMethodBeat.o(14141);
-  }
-  
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject) {}
-  
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, m paramm) {}
-  
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, String paramString, m paramm)
-  {
-    AppMethodBeat.i(14139);
-    if ((paramInt3 != 0) || (paramInt4 != 0))
-    {
-      ab.i("MicroMsg.BizTimeLineImgMsgHandler", "onImgTaskEnd errType %d, errCode %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-      if (paramInt4 == -5103059)
+      else
       {
-        l(paramLong2, 2);
-        AppMethodBeat.o(14139);
-        return;
+        AppMethodBeat.o(6530);
+        return localList;
       }
-      l(paramLong2, 3);
-      AppMethodBeat.o(14139);
-      return;
+      a locala = new a();
+      locala.userName = ((String)localObject);
+      locala.gLg = ((String)paramMap.get(".sysmsg.BizMsgRejectRecommend.BizAccount" + i + ".HeadImgUrl"));
+      locala.bNK = ((String)paramMap.get(".sysmsg.BizMsgRejectRecommend.BizAccount" + i + ".NickName"));
+      locala.recommendReason = ((String)paramMap.get(".sysmsg.BizMsgRejectRecommend.BizAccount" + i + ".RecommendReason"));
+      localList.add(locala);
+      i += 1;
     }
-    l(paramLong2, 1);
-    this.jWg.aWN();
-    AppMethodBeat.o(14139);
-  }
-  
-  public final void a(q paramq, int paramInt1, ImageView paramImageView, int paramInt2)
-  {
-    AppMethodBeat.i(14135);
-    this.jWe = paramInt2;
-    if ((hR(paramq.field_msgId) == 2) || (hR(paramq.field_msgId) == 3))
-    {
-      AppMethodBeat.o(14135);
-      return;
-    }
-    com.tencent.mm.at.e locale = c(paramq);
-    if (locale != null)
-    {
-      String str = g(locale);
-      if (com.tencent.mm.vfs.e.cN(str))
-      {
-        a(str, paramImageView);
-        l(paramq.field_msgId, 1);
-        AppMethodBeat.o(14135);
-        return;
-      }
-      a(locale, paramq, paramInt1, paramImageView);
-      AppMethodBeat.o(14135);
-      return;
-    }
-    ab.w("MicroMsg.BizTimeLineImgMsgHandler", "showImg img info is null. %d/%d", new Object[] { Long.valueOf(paramq.field_msgId), Long.valueOf(paramq.field_msgSvrId) });
-    AppMethodBeat.o(14135);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.b
  * JD-Core Version:    0.7.0.1
  */

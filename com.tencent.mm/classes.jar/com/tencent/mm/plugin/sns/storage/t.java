@@ -1,78 +1,80 @@
 package com.tencent.mm.plugin.sns.storage;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.es;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.plugin.sns.data.q;
 
 public final class t
-  extends es
 {
-  protected static c.a info;
-  public int rDH;
-  
-  static
-  {
-    AppMethodBeat.i(38004);
-    c.a locala = new c.a();
-    locala.yrK = new Field[4];
-    locala.columns = new String[5];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "tagId";
-    locala.yrM.put("tagId", "LONG default '0' ");
-    localStringBuilder.append(" tagId LONG default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[1] = "tagName";
-    locala.yrM.put("tagName", "TEXT default '' ");
-    localStringBuilder.append(" tagName TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "count";
-    locala.yrM.put("count", "INTEGER default '0' ");
-    localStringBuilder.append(" count INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "memberList";
-    locala.yrM.put("memberList", "TEXT default '' ");
-    localStringBuilder.append(" memberList TEXT default '' ");
-    locala.columns[4] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(38004);
-  }
+  long createTime;
+  private int ijI;
+  public int offset;
+  public int type;
+  private String userName;
+  public int xiB;
+  private long xjh;
+  public int xji;
+  public String xjj;
+  private int xjk;
+  private long xjl;
+  public String xjm;
+  public byte[] xjn;
   
   public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(38003);
-    super.convertFrom(paramCursor);
-    this.rDH = ((int)this.systemRowid);
-    AppMethodBeat.o(38003);
+    AppMethodBeat.i(97596);
+    this.xiB = paramCursor.getInt(0);
+    long l = paramCursor.getLong(1);
+    this.xjh = l;
+    this.xjm = q.st(l);
+    this.type = paramCursor.getInt(2);
+    this.createTime = paramCursor.getLong(3);
+    this.userName = paramCursor.getString(4);
+    this.xji = paramCursor.getInt(5);
+    this.offset = paramCursor.getInt(6);
+    this.ijI = paramCursor.getInt(7);
+    this.xjj = paramCursor.getString(8);
+    this.xjk = paramCursor.getInt(9);
+    this.xjl = paramCursor.getLong(10);
+    this.xjm = paramCursor.getString(11);
+    this.xjn = paramCursor.getBlob(12);
+    AppMethodBeat.o(97596);
   }
   
-  public final void dj(List<bwc> paramList)
+  public final ContentValues dyv()
   {
-    AppMethodBeat.i(38002);
-    this.field_memberList = "";
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      bwc localbwc = (bwc)paramList.next();
-      this.field_memberList = (this.field_memberList + localbwc.xJE + ",");
-    }
-    AppMethodBeat.o(38002);
+    AppMethodBeat.i(97595);
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("seqId", Long.valueOf(this.xjh));
+    localContentValues.put("type", Integer.valueOf(this.type));
+    localContentValues.put("createTime", Long.valueOf(this.createTime));
+    localContentValues.put("userName", this.userName);
+    localContentValues.put("totallen", Integer.valueOf(this.xji));
+    localContentValues.put("offset", Integer.valueOf(this.offset));
+    localContentValues.put("local_flag", Integer.valueOf(this.ijI));
+    localContentValues.put("tmp_path", this.xjj);
+    localContentValues.put("nums", Integer.valueOf(this.xjk));
+    localContentValues.put("try_times", Long.valueOf(this.xjl));
+    localContentValues.put("StrId", this.xjm);
+    localContentValues.put("upload_buf", this.xjn);
+    AppMethodBeat.o(97595);
+    return localContentValues;
   }
   
-  public final c.a getDBInfo()
+  public final void dyw()
   {
-    return info;
+    this.ijI |= 0x4;
+  }
+  
+  public final void dyx()
+  {
+    this.ijI &= 0xFFFFFFFB;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.t
  * JD-Core Version:    0.7.0.1
  */

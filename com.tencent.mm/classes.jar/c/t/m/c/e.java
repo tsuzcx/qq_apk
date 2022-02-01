@@ -1,7 +1,9 @@
 package c.t.m.c;
 
 import android.content.Context;
+import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.text.SimpleDateFormat;
@@ -9,56 +11,68 @@ import java.util.Date;
 
 public class e
 {
-  private static final byte[] b = new byte[0];
-  private static e j;
-  private final String a;
-  private HandlerThread c;
-  private e.a d;
-  private boolean e;
-  private Context f;
-  private k g;
-  private SimpleDateFormat h;
-  private SimpleDateFormat i;
+  public static final byte[] a = new byte[0];
+  public static e b;
+  public final String c;
+  public HandlerThread d;
+  public a e;
+  public boolean f;
+  public Context g;
+  public k h;
+  public SimpleDateFormat i;
+  public SimpleDateFormat j;
   
-  private e(Context paramContext)
+  public e(Context paramContext)
   {
-    AppMethodBeat.i(136346);
-    this.a = "DexAsynchHandler";
-    this.h = new SimpleDateFormat("HHmmss");
-    this.i = new SimpleDateFormat("yyyyMMdd-HHmmss");
-    this.f = paramContext.getApplicationContext();
-    this.g = new k(this.f);
-    AppMethodBeat.o(136346);
-  }
-  
-  public static e a()
-  {
-    return j;
+    AppMethodBeat.i(39906);
+    this.c = "DexAsynchHandler";
+    this.i = new SimpleDateFormat("HHmmss");
+    this.j = new SimpleDateFormat("yyyyMMdd-HHmmss");
+    this.g = paramContext.getApplicationContext();
+    this.h = new k(this.g);
+    AppMethodBeat.o(39906);
   }
   
   public static e a(Context paramContext)
   {
-    AppMethodBeat.i(136347);
-    if (j == null) {}
+    AppMethodBeat.i(39907);
+    if (b == null) {}
     try
     {
-      if (j == null) {
-        j = new e(paramContext);
+      if (b == null) {
+        b = new e(paramContext);
       }
-      paramContext = j;
-      AppMethodBeat.o(136347);
+      paramContext = b;
+      AppMethodBeat.o(39907);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(136347);
+      AppMethodBeat.o(39907);
     }
   }
   
-  private void a(int paramInt, String paramString)
+  public static e b()
   {
-    AppMethodBeat.i(136351);
-    e.a locala = this.d;
+    return b;
+  }
+  
+  public void a()
+  {
+    AppMethodBeat.i(39910);
+    if (this.g == null)
+    {
+      AppMethodBeat.o(39910);
+      return;
+    }
+    a(10005, null);
+    AppMethodBeat.o(39910);
+  }
+  
+  public final void a(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(39912);
+    a locala = this.e;
     if (locala != null)
     {
       Message localMessage = locala.obtainMessage();
@@ -66,57 +80,31 @@ public class e
       localMessage.what = paramInt;
       o.a(locala, localMessage);
     }
-    AppMethodBeat.o(136351);
-  }
-  
-  private byte[] a(byte[] paramArrayOfByte, String paramString)
-  {
-    AppMethodBeat.i(136353);
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
-    {
-      paramArrayOfByte = b;
-      AppMethodBeat.o(136353);
-      return paramArrayOfByte;
-    }
-    paramArrayOfByte = m.a(q.b(paramArrayOfByte), paramString);
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
-    {
-      paramArrayOfByte = b;
-      AppMethodBeat.o(136353);
-      return paramArrayOfByte;
-    }
-    paramString = new byte[paramArrayOfByte.length + 2];
-    System.arraycopy(q.a(paramArrayOfByte.length), 0, paramString, 0, 2);
-    System.arraycopy(paramArrayOfByte, 0, paramString, 2, paramArrayOfByte.length);
-    AppMethodBeat.o(136353);
-    return paramString;
+    AppMethodBeat.o(39912);
   }
   
   public void a(String paramString)
   {
-    AppMethodBeat.i(136349);
+    AppMethodBeat.i(39909);
     try
     {
-      if ((this.f != null) && (this.d != null) && (paramString != null))
+      if ((this.g != null) && (this.e != null) && (paramString != null) && (paramString.length() != 0))
       {
-        int k = paramString.length();
-        if (k != 0) {}
-      }
-      else
-      {
-        AppMethodBeat.o(136349);
+        p.a = 3000;
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        StringBuilder localStringBuilder2 = localStringBuilder1.append("LOC_CORE").append(',').append(this.j.format(new Date())).append(',').append(q.g(this.g)).append(',').append(q.k(this.g)).append(',').append(q.d()).append(',').append(q.e()).append(',').append(q.b()).append(',');
+        paramString = localStringBuilder2.append("COMP").append(paramString);
+        paramString.append("$");
+        a(localStringBuilder1.toString().getBytes());
+        AppMethodBeat.o(39909);
         return;
       }
-      p.a = 3000;
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("LOC_CORE,").append(this.i.format(new Date())).append(',').append(q.e(this.f)).append(',').append(q.d(this.f)).append(',').append(q.b()).append(',').append(q.a()).append(',').append(q.c()).append(',').append("COMP").append(paramString).append("$");
-      a(localStringBuilder.toString().getBytes());
-      AppMethodBeat.o(136349);
+      AppMethodBeat.o(39909);
       return;
     }
     catch (Throwable paramString)
     {
-      AppMethodBeat.o(136349);
+      AppMethodBeat.o(39909);
     }
   }
   
@@ -124,67 +112,138 @@ public class e
   
   public boolean a(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(136352);
-    if (paramArrayOfByte != null) {}
-    try
-    {
-      int k = paramArrayOfByte.length;
-      if (k == 0)
+    AppMethodBeat.i(39911);
+    if (paramArrayOfByte != null) {
+      try
       {
-        AppMethodBeat.o(136352);
-        return true;
+        int k = paramArrayOfByte.length;
+        if (k != 0)
+        {
+          paramArrayOfByte = a(paramArrayOfByte, "0PEq^X$sjtWqEqa2$dg4TG2PT^4dFEep");
+          if (paramArrayOfByte != null)
+          {
+            k = paramArrayOfByte.length;
+            if (k != 0)
+            {
+              if (p.a("https://analytics.map.qq.com/tr?mllc", paramArrayOfByte) == null) {
+                this.h.a(paramArrayOfByte);
+              }
+              AppMethodBeat.o(39911);
+              return false;
+            }
+          }
+          AppMethodBeat.o(39911);
+          return true;
+        }
       }
-      paramArrayOfByte = a(paramArrayOfByte, "0PEq^X$sjtWqEqa2$dg4TG2PT^4dFEep");
-      if (paramArrayOfByte != null)
+      catch (Throwable paramArrayOfByte)
       {
-        k = paramArrayOfByte.length;
-        if (k != 0) {}
+        AppMethodBeat.o(39911);
+        return false;
       }
-      else
-      {
-        AppMethodBeat.o(136352);
-        return true;
-      }
-      if (p.a("https://analytics.map.qq.com/tr?mllc", paramArrayOfByte) == null) {
-        this.g.a(paramArrayOfByte);
-      }
-      AppMethodBeat.o(136352);
-      return false;
     }
-    catch (Throwable paramArrayOfByte)
-    {
-      AppMethodBeat.o(136352);
-    }
-    return false;
+    AppMethodBeat.o(39911);
+    return true;
   }
   
-  public void b()
+  public final byte[] a(byte[] paramArrayOfByte, String paramString)
   {
-    AppMethodBeat.i(136348);
-    if (this.e)
+    AppMethodBeat.i(39913);
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      AppMethodBeat.o(136348);
-      return;
+      paramArrayOfByte = m.b(q.b(paramArrayOfByte), paramString);
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
+      {
+        paramString = new byte[paramArrayOfByte.length + 2];
+        System.arraycopy(q.a(paramArrayOfByte.length), 0, paramString, 0, 2);
+        System.arraycopy(paramArrayOfByte, 0, paramString, 2, paramArrayOfByte.length);
+        AppMethodBeat.o(39913);
+        return paramString;
+      }
+      paramArrayOfByte = a;
+      AppMethodBeat.o(39913);
+      return paramArrayOfByte;
     }
-    this.c = new HandlerThread("d_thread");
-    this.c.start();
-    this.d = new e.a(this, this.c.getLooper());
-    this.e = true;
-    AppMethodBeat.o(136348);
+    paramArrayOfByte = a;
+    AppMethodBeat.o(39913);
+    return paramArrayOfByte;
   }
   
-  public void c() {}
-  
-  public void d()
+  public void c()
   {
-    AppMethodBeat.i(136350);
-    if (this.f == null)
+    AppMethodBeat.i(39908);
+    if (this.f)
     {
-      AppMethodBeat.o(136350);
+      AppMethodBeat.o(39908);
       return;
     }
-    a(10005, null);
-    AppMethodBeat.o(136350);
+    this.d = new HandlerThread("d_thread");
+    this.d.start();
+    this.e = new a(this.d.getLooper());
+    this.f = true;
+    AppMethodBeat.o(39908);
+  }
+  
+  public void d() {}
+  
+  public class a
+    extends Handler
+  {
+    public StringBuilder a;
+    
+    public a(Looper paramLooper)
+    {
+      super();
+      AppMethodBeat.i(39903);
+      this.a = new StringBuilder(1024);
+      this.a.setLength(0);
+      AppMethodBeat.o(39903);
+    }
+    
+    public void a(Message paramMessage)
+    {
+      AppMethodBeat.i(39905);
+      try
+      {
+        int i = paramMessage.what;
+        switch (i)
+        {
+        default: 
+          AppMethodBeat.o(39905);
+          return;
+        }
+      }
+      catch (Throwable paramMessage)
+      {
+        AppMethodBeat.o(39905);
+        return;
+      }
+      q.a(e.a(e.this));
+      AppMethodBeat.o(39905);
+      return;
+      AppMethodBeat.o(39905);
+      return;
+      AppMethodBeat.o(39905);
+      return;
+      g.a(e.a(e.this));
+      AppMethodBeat.o(39905);
+      return;
+      AppMethodBeat.o(39905);
+      return;
+      AppMethodBeat.o(39905);
+      return;
+      AppMethodBeat.o(39905);
+      return;
+      AppMethodBeat.o(39905);
+    }
+    
+    public void handleMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(39904);
+      super.handleMessage(paramMessage);
+      a(paramMessage);
+      AppMethodBeat.o(39904);
+    }
   }
 }
 

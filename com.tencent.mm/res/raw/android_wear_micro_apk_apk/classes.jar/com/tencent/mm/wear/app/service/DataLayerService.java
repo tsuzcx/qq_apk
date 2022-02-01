@@ -28,14 +28,14 @@ public class DataLayerService
   {
     com.tencent.mm.wear.app.e.a locala = new com.tencent.mm.wear.app.e.a();
     paramArrayOfByte = new DataInputStream(new ByteArrayInputStream(paramArrayOfByte));
-    locala.aef = paramArrayOfByte.readInt();
-    locala.aaN = paramArrayOfByte.readInt();
-    locala.aaO = paramArrayOfByte.readInt();
-    locala.aeg = paramArrayOfByte.readInt();
-    if (locala.aeg > 0)
+    locala.ahH = paramArrayOfByte.readInt();
+    locala.aeo = paramArrayOfByte.readInt();
+    locala.aep = paramArrayOfByte.readInt();
+    locala.ahI = paramArrayOfByte.readInt();
+    if (locala.ahI > 0)
     {
-      locala.aaR = new byte[locala.aeg];
-      paramArrayOfByte.readFully(locala.aaR);
+      locala.aes = new byte[locala.ahI];
+      paramArrayOfByte.readFully(locala.aes);
     }
     return locala;
   }
@@ -61,21 +61,21 @@ public class DataLayerService
         Object localObject3 = (j)paramk.next();
         if (((j)localObject3).getType() == 1)
         {
-          localObject1 = ((j)localObject3).ku().getUri();
+          localObject1 = ((j)localObject3).kD().getUri();
           localObject2 = ((Uri)localObject1).getPath();
-          if (com.tencent.mm.c.a.a.b.B((String)localObject2))
+          if (com.tencent.mm.c.b.a.b.B((String)localObject2))
           {
-            localObject3 = o.a(((j)localObject3).ku()).kx().u("key_data");
+            localObject3 = o.a(((j)localObject3).kD()).kG().u("key_data");
             if (localObject3 != null) {
-              localObject3 = h.mb().lS().a((Asset)localObject3);
+              localObject3 = h.mO().mF().a((Asset)localObject3);
             }
             try
             {
-              com.tencent.mm.wear.a.c.d.e("MicroMsg.DataLayerService", "receive data path=%s length=%d", new Object[] { localObject2, Integer.valueOf(localObject3.length) });
+              com.tencent.mm.wear.a.c.d.d("MicroMsg.DataLayerService", "receive data path=%s length=%d", new Object[] { localObject2, Integer.valueOf(localObject3.length) });
               localObject2 = new f();
-              ((f)localObject2).Va.Vc = n((byte[])localObject3);
-              com.tencent.mm.sdk.a.a.WJ.a((com.tencent.mm.sdk.a.d)localObject2);
-              h.mb().lS().e((Uri)localObject1);
+              ((f)localObject2).WQ.WS = n((byte[])localObject3);
+              com.tencent.mm.sdk.a.a.YM.a((com.tencent.mm.sdk.a.d)localObject2);
+              h.mO().mF().e((Uri)localObject1);
             }
             catch (IOException localIOException)
             {
@@ -93,14 +93,14 @@ public class DataLayerService
   public final void a(s params)
   {
     String str = params.getPath();
-    if (com.tencent.mm.c.a.a.b.B(str)) {}
+    if (com.tencent.mm.c.b.a.b.B(str)) {}
     try
     {
       f localf = new f();
       params = params.getData();
-      com.tencent.mm.wear.a.c.d.e("MicroMsg.DataLayerService", "receive data path=%s length=%d", new Object[] { str, Integer.valueOf(params.length) });
-      localf.Va.Vc = n(params);
-      com.tencent.mm.sdk.a.a.WJ.a(localf);
+      com.tencent.mm.wear.a.c.d.d("MicroMsg.DataLayerService", "receive data path=%s length=%d", new Object[] { str, Integer.valueOf(params.length) });
+      localf.WQ.WS = n(params);
+      com.tencent.mm.sdk.a.a.YM.a(localf);
       return;
     }
     catch (IOException params)
@@ -109,30 +109,30 @@ public class DataLayerService
     }
   }
   
-  public final void kA()
+  public final void kJ()
   {
-    if (!h.mp())
+    if (!h.nb())
     {
-      h.B(true);
+      h.E(true);
       com.tencent.mm.wear.a.c.d.c("MicroMsg.DataLayerService", "onPeerConnected try to startLogin", new Object[0]);
     }
   }
   
-  public final void kB()
+  public final void kK()
   {
     h.logout();
-    com.tencent.mm.sdk.a.a.WJ.a(new com.tencent.mm.b.a.b());
+    com.tencent.mm.sdk.a.a.YM.a(new com.tencent.mm.b.a.b());
   }
   
   public void onCreate()
   {
     super.onCreate();
-    com.tencent.mm.wear.a.c.d.e("MicroMsg.DataLayerService", "onCreate", new Object[0]);
+    com.tencent.mm.wear.a.c.d.d("MicroMsg.DataLayerService", "onCreate", new Object[0]);
   }
   
   public void onDestroy()
   {
-    com.tencent.mm.wear.a.c.d.e("MicroMsg.DataLayerService", "onDestroy", new Object[0]);
+    com.tencent.mm.wear.a.c.d.d("MicroMsg.DataLayerService", "onDestroy", new Object[0]);
     super.onDestroy();
   }
 }

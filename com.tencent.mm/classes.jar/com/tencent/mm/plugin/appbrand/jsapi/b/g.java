@@ -1,64 +1,80 @@
 package com.tencent.mm.plugin.appbrand.jsapi.b;
 
-import a.f.b.j;
-import a.l;
+import android.content.Context;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.a;
-import com.tencent.mm.plugin.appbrand.page.z;
-import java.util.HashMap;
+import com.tencent.mm.plugin.appbrand.canvas.b;
+import com.tencent.mm.plugin.appbrand.canvas.widget.AppBrandDrawableView;
+import com.tencent.mm.plugin.appbrand.canvas.widget.MCanvasView;
+import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
+import com.tencent.mm.plugin.appbrand.jsapi.f.b;
+import com.tencent.mm.plugin.appbrand.jsapi.f.d;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/JsApiInsertHTMLCanvasElement;", "Lcom/tencent/mm/plugin/appbrand/jsapi/base/BaseInsertViewJsApi;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "()V", "requestMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/JsApiInsertHTMLCanvasElement$Request;", "Lkotlin/collections/HashMap;", "scrollSupportedTouchEvent", "", "enableGesture", "enableLongClick", "getViewId", "data", "Lorg/json/JSONObject;", "inflateView", "Landroid/view/View;", "component", "viewId", "isAsyncCallback", "onInsertViewWithAsyncCallback", "", "view", "callback", "Lcom/tencent/mm/plugin/appbrand/jsapi/base/JsApiCallback;", "Companion", "Request", "SurfaceAvailableListener", "plugin-appbrand-integration_release"})
 public final class g
-  extends a<z>
+  extends com.tencent.mm.plugin.appbrand.jsapi.base.a
 {
-  public static final int CTRL_INDEX = 594;
-  public static final String NAME = "insertWebGLCanvas";
-  public static final g.a hJI;
-  private final HashMap<Integer, g.b> hJG;
-  private boolean hJH;
+  public static final int CTRL_INDEX = 67;
+  public static final String NAME = "insertCanvas";
   
-  static
+  public final int A(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(134675);
-    hJI = new g.a((byte)0);
-    AppMethodBeat.o(134675);
+    AppMethodBeat.i(145540);
+    int i = paramJSONObject.getInt("canvasId");
+    AppMethodBeat.o(145540);
+    return i;
   }
   
-  public g()
+  public final View a(com.tencent.mm.plugin.appbrand.jsapi.e parame, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(134674);
-    this.hJG = new HashMap();
-    AppMethodBeat.o(134674);
+    AppMethodBeat.i(145539);
+    paramJSONObject = parame.getContext();
+    final AppBrandDrawableView localAppBrandDrawableView = new AppBrandDrawableView(paramJSONObject);
+    localAppBrandDrawableView.getDrawContext().iYR = ((com.tencent.mm.plugin.appbrand.canvas.e)parame.K(com.tencent.mm.plugin.appbrand.canvas.e.class));
+    localAppBrandDrawableView.getDrawContext().cfX = parame;
+    localAppBrandDrawableView.setContentDescription(paramJSONObject.getString(2131755285));
+    parame.a(new f.b()
+    {
+      public final void onBackground()
+      {
+        AppMethodBeat.i(161176);
+        AppBrandDrawableView localAppBrandDrawableView = localAppBrandDrawableView;
+        ad.v("MicroMsg.MCanvasView", "onPause :%s", new Object[] { Integer.valueOf(localAppBrandDrawableView.hashCode()) });
+        b localb = localAppBrandDrawableView.jal;
+        localb.iYv = 0L;
+        localb.iYr.Q(localb.iYt);
+        localAppBrandDrawableView.aTd();
+        AppMethodBeat.o(161176);
+      }
+    });
+    parame.a(new f.d()
+    {
+      public final void onForeground()
+      {
+        AppMethodBeat.i(161177);
+        localAppBrandDrawableView.onResume();
+        AppMethodBeat.o(161177);
+      }
+    });
+    parame = new CoverViewContainer(paramJSONObject, localAppBrandDrawableView);
+    AppMethodBeat.o(145539);
+    return parame;
   }
   
-  public final boolean aCb()
+  public final boolean aYx()
   {
     return true;
   }
   
-  public final boolean aCc()
+  public final boolean aYy()
   {
-    return this.hJH;
-  }
-  
-  public final boolean aCd()
-  {
-    return this.hJH;
-  }
-  
-  public final int w(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(134672);
-    j.q(paramJSONObject, "data");
-    int i = paramJSONObject.getInt("canvasId");
-    AppMethodBeat.o(134672);
-    return i;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.b.g
  * JD-Core Version:    0.7.0.1
  */

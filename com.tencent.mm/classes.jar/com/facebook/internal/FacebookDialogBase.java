@@ -51,7 +51,7 @@ public abstract class FacebookDialogBase<CONTENT, RESULT>
   private AppCall createAppCallForMode(CONTENT paramCONTENT, Object paramObject)
   {
     int i;
-    FacebookDialogBase.ModeHandler localModeHandler;
+    ModeHandler localModeHandler;
     if (paramObject == BASE_AUTOMATIC_MODE)
     {
       i = 1;
@@ -61,7 +61,7 @@ public abstract class FacebookDialogBase<CONTENT, RESULT>
         if (!localIterator.hasNext()) {
           break;
         }
-        localModeHandler = (FacebookDialogBase.ModeHandler)localIterator.next();
+        localModeHandler = (ModeHandler)localIterator.next();
       } while (((i == 0) && (!Utility.areObjectsEqual(localModeHandler.getMode(), paramObject))) || (!localModeHandler.canShow(paramCONTENT, true)));
     }
     for (;;)
@@ -99,13 +99,13 @@ public abstract class FacebookDialogBase<CONTENT, RESULT>
     for (int i = 1;; i = 0)
     {
       Iterator localIterator = cachedModeHandlers().iterator();
-      FacebookDialogBase.ModeHandler localModeHandler;
+      ModeHandler localModeHandler;
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-        localModeHandler = (FacebookDialogBase.ModeHandler)localIterator.next();
+        localModeHandler = (ModeHandler)localIterator.next();
       } while (((i == 0) && (!Utility.areObjectsEqual(localModeHandler.getMode(), paramObject))) || (!localModeHandler.canShow(paramCONTENT, false)));
       return true;
     }
@@ -214,10 +214,24 @@ public abstract class FacebookDialogBase<CONTENT, RESULT>
       }
     }
   }
+  
+  public abstract class ModeHandler
+  {
+    protected ModeHandler() {}
+    
+    public abstract boolean canShow(CONTENT paramCONTENT, boolean paramBoolean);
+    
+    public abstract AppCall createAppCall(CONTENT paramCONTENT);
+    
+    public Object getMode()
+    {
+      return FacebookDialogBase.BASE_AUTOMATIC_MODE;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.FacebookDialogBase
  * JD-Core Version:    0.7.0.1
  */

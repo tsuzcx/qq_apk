@@ -1,405 +1,373 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.os.RemoteException;
-import android.view.MotionEvent;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.net.http.SslCertificate;
+import android.net.http.SslCertificate.DName;
+import android.net.http.SslError;
+import android.util.Base64;
+import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.model.q;
-import com.tencent.mm.plugin.webview.modeltools.f;
-import com.tencent.mm.plugin.webview.modeltools.j;
-import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.protocal.protobuf.cls;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.v;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.expt.a.b;
+import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.webview.modeltools.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.widget.a.d;
+import com.tencent.xweb.WebView;
+import com.tencent.xweb.q;
+import java.lang.reflect.Field;
+import java.net.URL;
+import java.security.KeyStore;
+import java.security.cert.X509Certificate;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Set;
-import java.util.concurrent.CountDownLatch;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
-public class c
-  extends com.tencent.xweb.x5.a.a.a.a.b
+@JgClassChecked(author=20, fComment="checked", lastDate="20141210", reviewer=20, vComment={com.jg.EType.HTTPSCHECK})
+public final class c
 {
-  private final WeakReference<WebViewUI> uZU;
+  WebView ARS;
+  Map<String, List<q>> Bdq;
+  Map<String, Boolean> Bdr;
+  Context context;
+  private d iAV;
+  private List<String> kVI;
+  private KeyStore kVJ;
+  private final SimpleDateFormat uZY;
   
-  public c(WebViewUI paramWebViewUI)
+  public c(Context paramContext, WebView paramWebView)
   {
-    AppMethodBeat.i(7380);
-    this.uZU = new WeakReference(paramWebViewUI);
-    AppMethodBeat.o(7380);
+    AppMethodBeat.i(79605);
+    this.iAV = null;
+    this.kVI = null;
+    this.kVJ = null;
+    this.uZY = new SimpleDateFormat("yyyy-MM-dd HH:mmZ", Locale.getDefault());
+    this.context = paramContext;
+    this.ARS = paramWebView;
+    this.Bdq = new HashMap();
+    this.Bdr = new HashMap();
+    AppMethodBeat.o(79605);
   }
   
-  private WebViewUI ddt()
+  @TargetApi(8)
+  private void a(String paramString, SslError paramSslError)
   {
-    AppMethodBeat.i(7390);
-    WebViewUI localWebViewUI = (WebViewUI)this.uZU.get();
-    AppMethodBeat.o(7390);
-    return localWebViewUI;
+    AppMethodBeat.i(79609);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("1");
+    localStringBuilder.append(",");
+    localStringBuilder.append(b(paramString, paramSslError));
+    paramString = localStringBuilder.toString();
+    ad.i("MicroMsg.WebView.MMSslErrorHandler", "reportWebViewSslError, value = %s", new Object[] { paramString });
+    com.tencent.mm.plugin.report.service.h.vKh.kvStat(11098, paramString);
+    AppMethodBeat.o(79609);
   }
   
-  public void computeScroll(View paramView)
+  @TargetApi(14)
+  private String b(String paramString, SslError paramSslError)
   {
-    AppMethodBeat.i(7388);
-    ddt().vga.aGl();
-    AppMethodBeat.o(7388);
-  }
-  
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
-  {
-    AppMethodBeat.i(7384);
-    boolean bool = ddt().vga.B(paramMotionEvent);
-    AppMethodBeat.o(7384);
-    return bool;
-  }
-  
-  public void invalidate() {}
-  
-  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
-  {
-    AppMethodBeat.i(7383);
-    boolean bool = ddt().vga.C(paramMotionEvent);
-    AppMethodBeat.o(7383);
-    return bool;
-  }
-  
-  public Object onMiscCallBack(String paramString, Bundle paramBundle)
-  {
-    AppMethodBeat.i(7381);
-    boolean bool1;
-    boolean bool2;
-    if (paramBundle == null)
-    {
-      bool1 = true;
-      if ((ddt() != null) && (ddt().igU != null)) {
-        break label122;
-      }
-      bool2 = true;
-      label33:
-      ab.i("MicroMsg.WebViewLongClickHelper", "method = %s, bundler == null ? %b, invoker == null ? %b", new Object[] { paramString, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-      if ((!bo.isNullOrNil(paramString)) && (paramBundle != null)) {
-        if ((ddt() != null) && (!ddt().isFinishing())) {
-          break label128;
-        }
-      }
-    }
-    label128:
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) && (ddt().igU != null)) {
-        break label133;
-      }
-      AppMethodBeat.o(7381);
-      return null;
-      bool1 = false;
-      break;
-      label122:
-      bool2 = false;
-      break label33;
-    }
+    AppMethodBeat.i(79610);
     try
     {
-      label133:
-      String str1 = ddt().igU.ahS("WebviewEnableTbsDownload");
-      ab.i("MicroMsg.WebViewLongClickHelper", "enable value = %s", new Object[] { str1 });
-      if ((!bo.isNullOrNil(str1)) && (str1.equals("0")))
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("<sslerror>");
+      localStringBuilder.append("<primaryerror>");
+      Object localObject;
+      if (paramSslError == null)
       {
-        ab.e("MicroMsg.WebViewLongClickHelper", "config closed, not allows tbs download");
-        AppMethodBeat.o(7381);
-        return null;
+        localObject = "-1";
+        localStringBuilder.append(localObject);
+        localStringBuilder.append("</primaryerror>");
+        localStringBuilder.append("<clienttime>");
+        localStringBuilder.append(Base64.encodeToString(this.uZY.format(new Date()).getBytes(), 0));
+        localStringBuilder.append("</clienttime>");
+        localStringBuilder.append("<currenturl>");
+        if (!bt.isNullOrNil(paramString)) {
+          localStringBuilder.append(bt.aGf(paramString));
+        }
+        localStringBuilder.append("</currenturl>");
+        if (paramSslError != null) {
+          break label346;
+        }
       }
-    }
-    catch (Exception localException1)
-    {
-      Bundle localBundle1;
-      for (;;)
+      label346:
+      for (paramString = null;; paramString = paramSslError.getCertificate())
       {
-        ab.e("MicroMsg.WebViewLongClickHelper", "get dynamic config failed");
-        localBundle1 = null;
-      }
-      if (paramString.equals("addDownloadTask")) {
-        try
+        if (paramString != null)
         {
-          localBundle1 = ddt().igU.i(14, paramBundle);
-          if (localBundle1 != null)
+          paramSslError = paramString.getIssuedBy();
+          if (paramSslError != null)
           {
-            long l = localBundle1.getLong("download_id", 0L);
-            AppMethodBeat.o(7381);
-            return Long.valueOf(l);
+            localStringBuilder.append("<issuedby>");
+            if (paramSslError.getDName() != null) {
+              localStringBuilder.append(Base64.encodeToString(paramSslError.getDName().getBytes(), 0));
+            }
+            localStringBuilder.append("</issuedby>");
           }
-        }
-        catch (RemoteException localRemoteException1)
-        {
-          ab.e("MicroMsg.WebViewLongClickHelper", "invoke the add downloadtask failed");
-        }
-      }
-      if (paramString.equals("cancelDownloadTask")) {
-        try
-        {
-          Bundle localBundle2 = ddt().igU.i(16, paramBundle);
-          if (localBundle2 != null)
+          paramSslError = paramString.getIssuedTo();
+          if (paramSslError != null)
           {
-            bool1 = localBundle2.getBoolean("cancel_result", false);
-            AppMethodBeat.o(7381);
-            return Boolean.valueOf(bool1);
+            localStringBuilder.append("<issuedto>");
+            if (paramSslError.getDName() != null) {
+              localStringBuilder.append(Base64.encodeToString(paramSslError.getDName().getBytes(), 0));
+            }
+            localStringBuilder.append("</issuedto>");
           }
-        }
-        catch (RemoteException localRemoteException2)
-        {
-          ab.e("MicroMsg.WebViewLongClickHelper", "invoke the cancel downloadtask failed");
-        }
-      }
-      if (paramString.equals("queryDownloadTask")) {
-        try
-        {
-          Bundle localBundle3 = ddt().igU.i(15, paramBundle);
-          if (localBundle3 != null)
+          paramSslError = paramString.getValidNotAfter();
+          if (paramSslError != null)
           {
-            i = localBundle3.getInt("download_state", 0);
-            AppMethodBeat.o(7381);
-            return Integer.valueOf(i);
+            localStringBuilder.append("<getvalidnotafter>");
+            localStringBuilder.append(Base64.encodeToString(paramSslError.getBytes(), 0));
+            localStringBuilder.append("</getvalidnotafter>");
           }
-        }
-        catch (RemoteException localRemoteException3)
-        {
-          ab.e("MicroMsg.WebViewLongClickHelper", "invoke the queryDownloadTask downloadtask failed");
-        }
-      }
-      if (paramString.equals("installDownloadTask")) {
-        try
-        {
-          Bundle localBundle4 = ddt().igU.i(17, paramBundle);
-          if (localBundle4 != null)
-          {
-            bool1 = localBundle4.getBoolean("install_result");
-            AppMethodBeat.o(7381);
-            return Boolean.valueOf(bool1);
-          }
-        }
-        catch (RemoteException localRemoteException4)
-        {
-          ab.e("MicroMsg.WebViewLongClickHelper", "invoke the install downloadtask failed");
-        }
-      }
-      String str2;
-      if (paramString.equals("getDrawable"))
-      {
-        str2 = paramBundle.getString("packageName");
-        i = paramBundle.getInt("resourceId");
-        if ((!bo.isNullOrNil(str2)) && (i > 0)) {
-          try
-          {
-            Drawable localDrawable = com.tencent.mm.cc.b.f(ah.getContext().getPackageManager().getResourcesForApplication(str2), i);
-            AppMethodBeat.o(7381);
-            return localDrawable;
-          }
-          catch (Exception localException3)
-          {
-            ab.e("MicroMsg.WebViewLongClickHelper", "get resource for package : %s, fail, : %s", new Object[] { str2, localException3.getMessage() });
-          }
-        }
-      }
-      if (paramString.equals("getShareUrl")) {
-        try
-        {
-          str2 = ddt().igU.agU(ddt().pOd.getUrl());
-          ab.i("MicroMsg.WebViewLongClickHelper", "getShareUrl by x5 core, shareurl = %s", new Object[] { str2 });
-          AppMethodBeat.o(7381);
-          return str2;
-        }
-        catch (Exception localException2)
-        {
-          ab.e("MicroMsg.WebViewLongClickHelper", "getShare url failed");
-        }
-      }
-      if (paramString.equals("smartPickWord"))
-      {
-        if (ddt().getMMTitle() != null) {}
-        for (paramString = ddt().getMMTitle().toString();; paramString = "")
-        {
-          paramString = f.a(paramBundle, ddt().dek(), paramString);
-          AppMethodBeat.o(7381);
-          return paramString;
-        }
-      }
-      if (paramString.equals("jumpToSos")) {
-        try
-        {
-          f.ad(paramBundle);
-          paramString = ddt().igU.i(104, paramBundle);
-          f.ht(paramBundle.getString("query"), ddt().dek());
+          paramString = paramString.getValidNotBefore();
           if (paramString != null)
           {
-            bool1 = paramString.getBoolean("open_result");
-            AppMethodBeat.o(7381);
-            return Boolean.valueOf(bool1);
+            localStringBuilder.append("<getvalidnotbefore>");
+            localStringBuilder.append(Base64.encodeToString(paramString.getBytes(), 0));
+            localStringBuilder.append("</getvalidnotbefore>");
           }
         }
-        catch (RemoteException paramString)
-        {
-          ab.e("MicroMsg.WebViewLongClickHelper", "jumpToSos failed");
-          AppMethodBeat.o(7381);
-          return null;
-        }
-      }
-      if (paramString.equals("supportSmartPickWord"))
-      {
-        paramString = Boolean.TRUE;
-        AppMethodBeat.o(7381);
+        localStringBuilder.append("</sslerror>");
+        paramString = localStringBuilder.toString();
+        AppMethodBeat.o(79610);
         return paramString;
+        localObject = Integer.valueOf(paramSslError.getPrimaryError());
+        break;
       }
-      if (paramString.equals("onShowSos"))
-      {
-        f.p(ddt().dek(), paramBundle);
-        AppMethodBeat.o(7381);
-        return null;
-      }
-      if (paramString.equals("supportImagePreview"))
-      {
-        paramString = Boolean.TRUE;
-        AppMethodBeat.o(7381);
-        return paramString;
-      }
-      if (paramString.equals("onClickCopyBtn"))
-      {
-        f.ahB(ddt().dek());
-        AppMethodBeat.o(7381);
-        return null;
-      }
-      if (paramString.equals("imagePreview"))
-      {
-        j.a(paramBundle, ddt().uWu, ddt().ven);
-        paramString = Boolean.TRUE;
-        AppMethodBeat.o(7381);
-        return paramString;
-      }
-      if (paramString.equals("closeImagePreview"))
-      {
-        j.d(ddt().igU);
-        paramString = Boolean.TRUE;
-        AppMethodBeat.o(7381);
-        return paramString;
-      }
-      if (paramString.equals("onTranslateFinish"))
-      {
-        ddt().vfV.dau();
-        AppMethodBeat.o(7381);
-        return null;
-      }
-      if (paramString.equals("onTranslateStart"))
-      {
-        paramString = ddt().vfV;
-        paramBundle = ddt();
-        if ((paramString.tipDialog != null) && (paramString.tipDialog.isShowing()))
-        {
-          paramString.tipDialog.dismiss();
-          paramString.tipDialog = null;
-        }
-        paramBundle.getString(2131297087);
-        paramString.tipDialog = h.b(paramBundle, paramBundle.getString(2131305896), true, null);
-        AppMethodBeat.o(7381);
-        return null;
-      }
-      if (paramString.equals("onGetTranslateString"))
-      {
-        paramString = (HashMap)paramBundle.getSerializable("translate_hashmap");
-        paramBundle = ddt().vfV;
-        paramBundle.uNH = ddt().pOd;
-        LinkedList localLinkedList = new LinkedList();
-        Iterator localIterator = paramString.keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          String str3 = (String)localIterator.next();
-          String str4 = (String)paramString.get(str3);
-          cls localcls = new cls();
-          localcls.xVJ = bo.apV(str3);
-          localcls.xVK = str4;
-          localcls.Scene = 8;
-          localLinkedList.add(localcls);
-        }
-        if (!new q().a(localLinkedList, paramBundle.uNL, paramBundle.uNM))
-        {
-          paramBundle.dau();
-          ab.d("MicroMsg.WebViewTranslateHelper", "translate: BatchGetTranslateString err !!!!");
-        }
-        paramString = Boolean.TRUE;
-        AppMethodBeat.o(7381);
-        return paramString;
-      }
-      if (paramString.equals("onGetSampleString"))
-      {
-        paramString = (HashMap)paramBundle.getSerializable("sample_hashmap");
-        paramBundle = ddt().vfV;
-        ddt();
-        ab.i("MicroMsg.WebViewTranslateHelper", "getTranslateSampleString in");
-        paramBundle.uNI = new LinkedList();
-        paramBundle.uNI.addAll(paramString.values());
-        paramBundle.uNN.countDown();
-        ab.i("MicroMsg.WebViewTranslateHelper", "getTranslateSampleString end");
-        paramString = Boolean.TRUE;
-        AppMethodBeat.o(7381);
-        return paramString;
-      }
-      AppMethodBeat.o(7381);
+      return "";
     }
-    return null;
-  }
-  
-  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
-  {
-    AppMethodBeat.i(7387);
-    ddt().vga.d(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
-    AppMethodBeat.o(7387);
-  }
-  
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
-  {
-    AppMethodBeat.i(7386);
-    ddt().vga.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
-    AppMethodBeat.o(7386);
-  }
-  
-  public boolean onShowLongClickPopupMenu()
-  {
-    AppMethodBeat.i(7389);
-    if (ddt().getIntent().getBooleanExtra("show_long_click_popup_menu", true))
+    catch (Exception paramString)
     {
-      AppMethodBeat.o(7389);
+      ad.w("MicroMsg.WebView.MMSslErrorHandler", "buildXml ex = %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(79610);
+    }
+  }
+  
+  private boolean b(SslCertificate paramSslCertificate)
+  {
+    AppMethodBeat.i(79606);
+    if (paramSslCertificate == null)
+    {
+      ad.i("MicroMsg.WebView.MMSslErrorHandler", "isUserCertificates sslCertificate is null");
+      AppMethodBeat.o(79606);
       return false;
     }
-    AppMethodBeat.o(7389);
-    return true;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
-  {
-    AppMethodBeat.i(7382);
-    boolean bool = ddt().vga.A(paramMotionEvent);
-    AppMethodBeat.o(7382);
+    ad.i("MicroMsg.WebView.MMSslErrorHandler", "isUserCertificates dnName = %s", new Object[] { paramSslCertificate.getIssuedBy().getDName() });
+    Object localObject2;
+    boolean bool;
+    try
+    {
+      localObject1 = paramSslCertificate.getClass().getDeclaredField("mX509Certificate");
+      ((Field)localObject1).setAccessible(true);
+      paramSslCertificate = (X509Certificate)((Field)localObject1).get(paramSslCertificate);
+      if (this.kVJ == null)
+      {
+        this.kVJ = KeyStore.getInstance("AndroidCAStore");
+        this.kVJ.load(null, null);
+      }
+      if (this.kVI != null) {
+        break label201;
+      }
+      this.kVI = new ArrayList();
+      localObject1 = this.kVJ.aliases();
+      while (((Enumeration)localObject1).hasMoreElements())
+      {
+        localObject2 = (String)((Enumeration)localObject1).nextElement();
+        if ((localObject2 != null) && (((String)localObject2).startsWith("user:"))) {
+          this.kVI.add(localObject2);
+        }
+      }
+      AppMethodBeat.o(79606);
+    }
+    catch (Exception paramSslCertificate)
+    {
+      ad.e("MicroMsg.WebView.MMSslErrorHandler", "isUserCertificates ex %s", new Object[] { paramSslCertificate.getMessage() });
+      bool = false;
+    }
     return bool;
+    label201:
+    Object localObject1 = this.kVI.iterator();
+    for (;;)
+    {
+      for (;;)
+      {
+        if (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (String)((Iterator)localObject1).next();
+          localObject2 = (X509Certificate)this.kVJ.getCertificate((String)localObject2);
+        }
+        try
+        {
+          paramSslCertificate.verify(((X509Certificate)localObject2).getPublicKey());
+          bool = true;
+        }
+        catch (Exception localException) {}
+      }
+      bool = false;
+      break;
+    }
   }
   
-  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
+  public final void a(final String paramString, q paramq, SslError paramSslError)
   {
-    AppMethodBeat.i(7385);
-    paramBoolean = ddt().vga.b(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
-    AppMethodBeat.o(7385);
-    return paramBoolean;
+    AppMethodBeat.i(79607);
+    ad.e("MicroMsg.WebView.MMSslErrorHandler", "onReceiveSslError, currentUrl = %s", new Object[] { paramString });
+    if (this.ARS == null)
+    {
+      ad.e("MicroMsg.WebView.MMSslErrorHandler", "onReceiveSslError fail, has been detached");
+      AppMethodBeat.o(79607);
+      return;
+    }
+    if (bt.isNullOrNil(paramString))
+    {
+      paramq.cancel();
+      AppMethodBeat.o(79607);
+      return;
+    }
+    Boolean localBoolean = (Boolean)this.Bdr.get(paramString);
+    if (localBoolean != null)
+    {
+      ad.v("MicroMsg.WebView.MMSslErrorHandler", "onReceiveSslError, already selected = %b", new Object[] { localBoolean });
+      if (localBoolean.booleanValue())
+      {
+        paramq.proceed();
+        AppMethodBeat.o(79607);
+        return;
+      }
+      paramq.cancel();
+      AppMethodBeat.o(79607);
+      return;
+    }
+    URL localURL;
+    try
+    {
+      int i = ((b)g.ab(b.class)).a(b.a.pmf, 1);
+      ad.i("MicroMsg.WebView.MMSslErrorHandler", "onReceiveSslError skipUserCert = %d", new Object[] { Integer.valueOf(i) });
+      if ((i == 1) && (b(paramSslError.getCertificate())))
+      {
+        ad.i("MicroMsg.WebView.MMSslErrorHandler", "onReceiveSslError use user certificatess");
+        this.Bdr.put(paramString, Boolean.TRUE);
+        paramq.proceed();
+        AppMethodBeat.o(79607);
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      ad.e("MicroMsg.WebView.MMSslErrorHandler", "onReceiveSslError : " + localException.getLocalizedMessage());
+      List localList;
+      try
+      {
+        localURL = new URL(paramString);
+        if ((((b)g.ab(b.class)).a(b.a.pme, 0) != 1) || (!localURL.getHost().endsWith(".qq.com"))) {
+          break label533;
+        }
+        localList = (List)this.Bdq.get(paramString);
+        if ((localList == null) || (localList.size() == 0))
+        {
+          a(paramString, paramSslError);
+          paramSslError = new ArrayList();
+          paramSslError.add(paramq);
+          this.Bdq.put(paramString, paramSslError);
+          if ((this.iAV != null) && (this.iAV.isShowing()))
+          {
+            paramq.cancel();
+            AppMethodBeat.o(79607);
+            return;
+          }
+          this.iAV = com.tencent.mm.ui.base.h.a(this.context, false, this.context.getString(2131766245, new Object[] { localURL.getHost() }), this.context.getString(2131766246), this.context.getString(2131755700), this.context.getString(2131755281), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(79603);
+              paramAnonymousDialogInterface = (List)c.this.Bdq.get(paramString);
+              if (paramAnonymousDialogInterface == null)
+              {
+                ad.e("MicroMsg.WebView.MMSslErrorHandler", "onReceivedSslError, continue selected, list should not be null");
+                AppMethodBeat.o(79603);
+                return;
+              }
+              c.this.Bdr.put(paramString, Boolean.FALSE);
+              ad.i("MicroMsg.WebView.MMSslErrorHandler", "onReceivedSslError, continue selected, list size = %d", new Object[] { Integer.valueOf(paramAnonymousDialogInterface.size()) });
+              Iterator localIterator = paramAnonymousDialogInterface.iterator();
+              while (localIterator.hasNext()) {
+                ((q)localIterator.next()).cancel();
+              }
+              paramAnonymousDialogInterface.clear();
+              c.this.ARS.clearSslPreferences();
+              new a();
+              a.h((Activity)c.this.context, paramString);
+              AppMethodBeat.o(79603);
+            }
+          }, new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(79604);
+              paramAnonymousDialogInterface = (List)c.this.Bdq.get(paramString);
+              if (paramAnonymousDialogInterface == null)
+              {
+                ad.e("MicroMsg.WebView.MMSslErrorHandler", "onReceivedSslError, cancel selected, list should not be null");
+                AppMethodBeat.o(79604);
+                return;
+              }
+              c.this.Bdr.put(paramString, Boolean.FALSE);
+              ad.i("MicroMsg.WebView.MMSslErrorHandler", "onReceivedSslError, cancel selected, list size = %d", new Object[] { Integer.valueOf(paramAnonymousDialogInterface.size()) });
+              Iterator localIterator = paramAnonymousDialogInterface.iterator();
+              while (localIterator.hasNext()) {
+                ((q)localIterator.next()).cancel();
+              }
+              paramAnonymousDialogInterface.clear();
+              c.this.ARS.clearSslPreferences();
+              AppMethodBeat.o(79604);
+            }
+          });
+          AppMethodBeat.o(79607);
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        ad.e("MicroMsg.WebView.MMSslErrorHandler", "create url fail : " + paramString.getLocalizedMessage());
+        AppMethodBeat.o(79607);
+        return;
+      }
+      localList.add(paramq);
+      AppMethodBeat.o(79607);
+      return;
+    }
+    label533:
+    ad.d("MicroMsg.WebView.MMSslErrorHandler", "host = " + localURL.getHost() + ", but it not end with '.qq.com'");
+    paramq.cancel();
+    AppMethodBeat.o(79607);
+  }
+  
+  public final void detach()
+  {
+    AppMethodBeat.i(79608);
+    ad.i("MicroMsg.WebView.MMSslErrorHandler", "detach");
+    this.context = null;
+    this.ARS = null;
+    this.Bdq.clear();
+    this.Bdr.clear();
+    AppMethodBeat.o(79608);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.c
  * JD-Core Version:    0.7.0.1
  */

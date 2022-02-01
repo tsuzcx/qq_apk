@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WebviewMpUI
   extends WebViewUI
 {
-  protected final boolean aYi()
+  public final boolean bEZ()
   {
     return true;
   }
@@ -19,7 +19,7 @@ public class WebviewMpUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.WebviewMpUI
  * JD-Core Version:    0.7.0.1
  */

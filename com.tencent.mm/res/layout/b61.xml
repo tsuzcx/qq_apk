@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a4y" android:paddingLeft="@dimen/dv" android:paddingRight="@dimen/dv" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:id="@id/be6" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/vf">
-            <TextView android:textSize="@dimen/ko" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fkf" />
-            <ImageView android:id="@id/fhx" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginTop="@dimen/l5" />
-            <com.tenpay.bankcard.TenpaySegmentEditText android:textSize="@dimen/m2" android:id="@id/fhy" android:layout_width="fill_parent" android:layout_height="@dimen/lw" android:layout_marginTop="@dimen/l2" android:ems="10" />
-            <Button android:id="@id/b02" android:layout_width="fill_parent" android:layout_marginTop="@dimen/m7" android:text="@string/so" style="@style/nq" />
-        </LinearLayout>
-    </ScrollView>
-    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/b1e" />
+    <FrameLayout android:id="@id/gf" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/a" android:textColor="@color/fg" android:gravity="center" android:id="@id/gk" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/e_v" />
+    </FrameLayout>
+    <com.tencent.mm.ui.widget.MMWebView android:id="@id/gl" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <RelativeLayout android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="16.0dip" android:textColor="@color/ru" android:id="@id/gj" android:background="@drawable/aed" android:padding="16.0dip" android:text="@string/ro" android:layout_alignParentLeft="true" style="@style/o4" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/gb" android:id="@id/gg" android:background="@drawable/aed" android:padding="16.0dip" android:text="@string/gc" android:layout_alignParentRight="true" style="@style/o4" />
+    </RelativeLayout>
 </LinearLayout>

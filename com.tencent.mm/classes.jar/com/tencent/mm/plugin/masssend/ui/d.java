@@ -18,33 +18,16 @@ public final class d
   
   public final void B(EmojiInfo paramEmojiInfo)
   {
-    AppMethodBeat.i(22888);
-    Toast.makeText(this.context, this.context.getString(2131301526), 0).show();
-    AppMethodBeat.o(22888);
+    AppMethodBeat.i(26512);
+    Toast.makeText(this.context, this.context.getString(2131761174), 0).show();
+    AppMethodBeat.o(26512);
   }
   
-  public final void C(EmojiInfo paramEmojiInfo)
-  {
-    AppMethodBeat.i(22889);
-    Toast.makeText(this.context, this.context.getString(2131301526), 0).show();
-    AppMethodBeat.o(22889);
-  }
-  
-  public final boolean bPD()
-  {
-    return false;
-  }
-  
-  public final boolean bPE()
-  {
-    return false;
-  }
-  
-  public final void bPF() {}
+  public final void cOw() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.ui.d
  * JD-Core Version:    0.7.0.1
  */

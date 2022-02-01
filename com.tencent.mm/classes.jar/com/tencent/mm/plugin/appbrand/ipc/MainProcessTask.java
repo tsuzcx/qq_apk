@@ -5,60 +5,65 @@ import android.os.Messenger;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Process;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashSet;
 import java.util.Set;
 
 public abstract class MainProcessTask
   implements Parcelable
 {
-  private static final Set<Object> hwB = new HashSet();
-  Messenger hwC;
-  protected String hwp = Process.myPid() + hashCode();
+  private static final Set<Object> jvo = new HashSet();
+  protected String hLO = Process.myPid() + hashCode();
+  Messenger jvp;
   
-  public final void aBj()
+  public void aEA() {}
+  
+  public final void aEC()
   {
-    hwB.add(this);
+    AppBrandMainProcessService.a(this);
   }
   
-  public final void aBk()
+  public abstract void aEz();
+  
+  public final void aXm()
   {
-    hwB.remove(this);
+    jvo.add(this);
   }
   
-  public final boolean aBp()
+  public final void aXn()
   {
-    if (this.hwC == null) {
+    jvo.remove(this);
+  }
+  
+  public final boolean aXw()
+  {
+    if (this.jvp == null) {
       return false;
     }
     Message localMessage = Message.obtain();
     localMessage.setData(AppBrandMainProcessService.a(this, false));
     try
     {
-      this.hwC.send(localMessage);
-      dY(true);
+      this.jvp.send(localMessage);
+      fK(true);
       return true;
     }
     catch (Exception localException)
     {
-      ab.e("MicroMsg.MainProcessTask", "callback failed, class[%s], e=%s", new Object[] { getClass().getName(), localException });
-      dY(false);
+      ad.e("MicroMsg.MainProcessTask", "callback failed, class[%s], e=%s", new Object[] { getClass().getName(), localException });
+      fK(false);
     }
     return false;
   }
-  
-  public abstract void ata();
-  
-  public void atb() {}
-  
-  protected void dY(boolean paramBoolean) {}
   
   public int describeContents()
   {
     return 0;
   }
   
-  public void f(Parcel paramParcel) {}
+  public void e(Parcel paramParcel) {}
+  
+  protected void fK(boolean paramBoolean) {}
   
   public void writeToParcel(Parcel paramParcel, int paramInt) {}
 }

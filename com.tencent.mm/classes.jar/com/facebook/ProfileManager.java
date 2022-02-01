@@ -18,52 +18,52 @@ public final class ProfileManager
   
   ProfileManager(d paramd, ProfileCache paramProfileCache)
   {
-    AppMethodBeat.i(71825);
+    AppMethodBeat.i(17261);
     Validate.notNull(paramd, "localBroadcastManager");
     Validate.notNull(paramProfileCache, "profileCache");
     this.localBroadcastManager = paramd;
     this.profileCache = paramProfileCache;
-    AppMethodBeat.o(71825);
+    AppMethodBeat.o(17261);
   }
   
   static ProfileManager getInstance()
   {
-    AppMethodBeat.i(71826);
+    AppMethodBeat.i(17262);
     if (instance == null) {}
     try
     {
       if (instance == null) {
-        instance = new ProfileManager(d.R(FacebookSdk.getApplicationContext()), new ProfileCache());
+        instance = new ProfileManager(d.T(FacebookSdk.getApplicationContext()), new ProfileCache());
       }
       ProfileManager localProfileManager = instance;
-      AppMethodBeat.o(71826);
+      AppMethodBeat.o(17262);
       return localProfileManager;
     }
     finally
     {
-      AppMethodBeat.o(71826);
+      AppMethodBeat.o(17262);
     }
   }
   
   private void sendCurrentProfileChangedBroadcast(Profile paramProfile1, Profile paramProfile2)
   {
-    AppMethodBeat.i(71830);
+    AppMethodBeat.i(17266);
     Intent localIntent = new Intent("com.facebook.sdk.ACTION_CURRENT_PROFILE_CHANGED");
     localIntent.putExtra("com.facebook.sdk.EXTRA_OLD_PROFILE", paramProfile1);
     localIntent.putExtra("com.facebook.sdk.EXTRA_NEW_PROFILE", paramProfile2);
-    this.localBroadcastManager.c(localIntent);
-    AppMethodBeat.o(71830);
+    this.localBroadcastManager.b(localIntent);
+    AppMethodBeat.o(17266);
   }
   
   private void setCurrentProfile(Profile paramProfile, boolean paramBoolean)
   {
-    AppMethodBeat.i(71829);
+    AppMethodBeat.i(17265);
     Profile localProfile = this.currentProfile;
     this.currentProfile = paramProfile;
     if (paramBoolean)
     {
       if (paramProfile == null) {
-        break label51;
+        break label53;
       }
       this.profileCache.save(paramProfile);
     }
@@ -72,9 +72,9 @@ public final class ProfileManager
       if (!Utility.areObjectsEqual(localProfile, paramProfile)) {
         sendCurrentProfileChangedBroadcast(localProfile, paramProfile);
       }
-      AppMethodBeat.o(71829);
+      AppMethodBeat.o(17265);
       return;
-      label51:
+      label53:
       this.profileCache.clear();
     }
   }
@@ -86,28 +86,28 @@ public final class ProfileManager
   
   final boolean loadCurrentProfile()
   {
-    AppMethodBeat.i(71827);
+    AppMethodBeat.i(17263);
     Profile localProfile = this.profileCache.load();
     if (localProfile != null)
     {
       setCurrentProfile(localProfile, false);
-      AppMethodBeat.o(71827);
+      AppMethodBeat.o(17263);
       return true;
     }
-    AppMethodBeat.o(71827);
+    AppMethodBeat.o(17263);
     return false;
   }
   
   final void setCurrentProfile(Profile paramProfile)
   {
-    AppMethodBeat.i(71828);
+    AppMethodBeat.i(17264);
     setCurrentProfile(paramProfile, true);
-    AppMethodBeat.o(71828);
+    AppMethodBeat.o(17264);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.ProfileManager
  * JD-Core Version:    0.7.0.1
  */

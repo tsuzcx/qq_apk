@@ -1,6 +1,9 @@
 package android.support.v7.widget;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
@@ -13,67 +16,137 @@ final class z
 {
   private static final int[] EMPTY_STATE_SET = new int[0];
   private static final int[] PRESSED_STATE_SET = { 16842919 };
-  private int Mw = 0;
-  private final RecyclerView.m adA = new z.2(this);
-  final int adc;
-  private final StateListDrawable add;
-  private final Drawable ade;
-  private final int adf;
-  private final int adg;
-  private final StateListDrawable adh;
-  private final Drawable adi;
-  private final int adj;
-  private final int adk;
-  int adl;
-  int adm;
-  float adn;
-  int ado;
-  int adp;
-  float adq;
-  int adr = 0;
-  int ads = 0;
-  RecyclerView adt;
-  boolean adu = false;
-  boolean adv = false;
-  private final int[] adw = new int[2];
-  private final int[] adx = new int[2];
-  final ValueAnimator ady = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-  int adz = 0;
-  private final Runnable mHideRunnable = new z.1(this);
+  private int Tz = 0;
+  RecyclerView akA;
+  boolean akB = false;
+  boolean akC = false;
+  private final int[] akD = new int[2];
+  private final int[] akE = new int[2];
+  final ValueAnimator akF = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+  int akG = 0;
+  private final RecyclerView.m akH = new RecyclerView.m()
+  {
+    public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
+    {
+      z localz = z.this;
+      paramAnonymousInt1 = paramAnonymousRecyclerView.computeHorizontalScrollOffset();
+      paramAnonymousInt2 = paramAnonymousRecyclerView.computeVerticalScrollOffset();
+      int i = localz.akA.computeVerticalScrollRange();
+      int j = localz.akz;
+      boolean bool;
+      int k;
+      int m;
+      if ((i - j > 0) && (localz.akz >= localz.akj))
+      {
+        bool = true;
+        localz.akB = bool;
+        k = localz.akA.computeHorizontalScrollRange();
+        m = localz.aky;
+        if ((k - m <= 0) || (localz.aky < localz.akj)) {
+          break label149;
+        }
+        bool = true;
+        label105:
+        localz.akC = bool;
+        if ((localz.akB) || (localz.akC)) {
+          break label155;
+        }
+        if (localz.mState != 0) {
+          localz.setState(0);
+        }
+      }
+      label149:
+      label155:
+      do
+      {
+        return;
+        bool = false;
+        break;
+        bool = false;
+        break label105;
+        if (localz.akB)
+        {
+          localz.akt = ((int)((paramAnonymousInt2 + j / 2.0F) * j / i));
+          localz.aks = Math.min(j, j * j / i);
+        }
+        if (localz.akC)
+        {
+          localz.akw = ((int)((paramAnonymousInt1 + m / 2.0F) * m / k));
+          localz.akv = Math.min(m, m * m / k);
+        }
+      } while ((localz.mState != 0) && (localz.mState != 1));
+      localz.setState(1);
+    }
+  };
+  final int akj;
+  final StateListDrawable akk;
+  final Drawable akl;
+  private final int akm;
+  private final int akn;
+  private final StateListDrawable ako;
+  private final Drawable akp;
+  private final int akq;
+  private final int akr;
+  int aks;
+  int akt;
+  float aku;
+  int akv;
+  int akw;
+  float akx;
+  int aky = 0;
+  int akz = 0;
+  private final Runnable mHideRunnable = new Runnable()
+  {
+    public final void run()
+    {
+      z localz = z.this;
+      switch (localz.akG)
+      {
+      default: 
+        return;
+      case 1: 
+        localz.akF.cancel();
+      }
+      localz.akG = 3;
+      localz.akF.setFloatValues(new float[] { ((Float)localz.akF.getAnimatedValue()).floatValue(), 0.0F });
+      localz.akF.setDuration(500L);
+      localz.akF.start();
+    }
+  };
   private final int mMargin;
   int mState = 0;
   
   z(RecyclerView paramRecyclerView, StateListDrawable paramStateListDrawable1, Drawable paramDrawable1, StateListDrawable paramStateListDrawable2, Drawable paramDrawable2, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.add = paramStateListDrawable1;
-    this.ade = paramDrawable1;
-    this.adh = paramStateListDrawable2;
-    this.adi = paramDrawable2;
-    this.adf = Math.max(paramInt1, paramStateListDrawable1.getIntrinsicWidth());
-    this.adg = Math.max(paramInt1, paramDrawable1.getIntrinsicWidth());
-    this.adj = Math.max(paramInt1, paramStateListDrawable2.getIntrinsicWidth());
-    this.adk = Math.max(paramInt1, paramDrawable2.getIntrinsicWidth());
-    this.adc = paramInt2;
+    this.akk = paramStateListDrawable1;
+    this.akl = paramDrawable1;
+    this.ako = paramStateListDrawable2;
+    this.akp = paramDrawable2;
+    this.akm = Math.max(paramInt1, paramStateListDrawable1.getIntrinsicWidth());
+    this.akn = Math.max(paramInt1, paramDrawable1.getIntrinsicWidth());
+    this.akq = Math.max(paramInt1, paramStateListDrawable2.getIntrinsicWidth());
+    this.akr = Math.max(paramInt1, paramDrawable2.getIntrinsicWidth());
+    this.akj = paramInt2;
     this.mMargin = paramInt3;
-    this.add.setAlpha(255);
-    this.ade.setAlpha(255);
-    this.ady.addListener(new z.a(this, (byte)0));
-    this.ady.addUpdateListener(new z.b(this, (byte)0));
-    if (this.adt != paramRecyclerView)
+    this.akk.setAlpha(255);
+    this.akl.setAlpha(255);
+    this.akF.addListener(new a());
+    this.akF.addUpdateListener(new b());
+    if (this.akA != paramRecyclerView)
     {
-      if (this.adt != null)
+      if (this.akA != null)
       {
-        this.adt.c(this);
-        this.adt.b(this);
-        this.adt.b(this.adA);
-        hF();
+        this.akA.c(this);
+        this.akA.b(this);
+        this.akA.b(this.akH);
+        jb();
       }
-      this.adt = paramRecyclerView;
-      if (this.adt != null)
+      this.akA = paramRecyclerView;
+      if (this.akA != null)
       {
-        this.adt.a(this);
-        this.adt.a(this);
-        this.adt.a(this.adA);
+        this.akA.a(this);
+        this.akA.a(this);
+        this.akA.a(this.akH);
       }
     }
   }
@@ -93,50 +166,32 @@ final class z
     return paramInt3;
   }
   
-  private void bw(int paramInt)
+  private void bN(int paramInt)
   {
-    hF();
-    this.adt.postDelayed(this.mHideRunnable, paramInt);
+    jb();
+    this.akA.postDelayed(this.mHideRunnable, paramInt);
   }
   
-  private boolean hE()
+  private boolean ja()
   {
-    return t.T(this.adt) == 1;
+    return t.Y(this.akA) == 1;
   }
   
-  private void hF()
+  private void jb()
   {
-    this.adt.removeCallbacks(this.mHideRunnable);
+    this.akA.removeCallbacks(this.mHideRunnable);
   }
   
-  private void show()
+  private boolean m(float paramFloat1, float paramFloat2)
   {
-    switch (this.adz)
+    if (ja())
     {
-    case 1: 
-    case 2: 
-    default: 
-      return;
-    case 3: 
-      this.ady.cancel();
-    }
-    this.adz = 1;
-    this.ady.setFloatValues(new float[] { ((Float)this.ady.getAnimatedValue()).floatValue(), 1.0F });
-    this.ady.setDuration(500L);
-    this.ady.setStartDelay(0L);
-    this.ady.start();
-  }
-  
-  private boolean v(float paramFloat1, float paramFloat2)
-  {
-    if (hE())
-    {
-      if (paramFloat1 > this.adf / 2) {}
+      if (paramFloat1 > this.akm / 2) {}
     }
     else {
-      while (paramFloat1 >= this.adr - this.adf)
+      while (paramFloat1 >= this.aky - this.akm)
       {
-        if ((paramFloat2 < this.adm - this.adl / 2) || (paramFloat2 > this.adm + this.adl / 2)) {
+        if ((paramFloat2 < this.akt - this.aks / 2) || (paramFloat2 > this.akt + this.aks / 2)) {
           break;
         }
         return true;
@@ -145,78 +200,40 @@ final class z
     return false;
   }
   
-  private boolean w(float paramFloat1, float paramFloat2)
+  private boolean n(float paramFloat1, float paramFloat2)
   {
-    return (paramFloat2 >= this.ads - this.adj) && (paramFloat1 >= this.adp - this.ado / 2) && (paramFloat1 <= this.adp + this.ado / 2);
+    return (paramFloat2 >= this.akz - this.akq) && (paramFloat1 >= this.akw - this.akv / 2) && (paramFloat1 <= this.akw + this.akv / 2);
   }
   
-  public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView)
+  private void show()
   {
-    if ((this.adr != this.adt.getWidth()) || (this.ads != this.adt.getHeight()))
+    switch (this.akG)
     {
-      this.adr = this.adt.getWidth();
-      this.ads = this.adt.getHeight();
-      setState(0);
-    }
-    for (;;)
-    {
+    case 1: 
+    case 2: 
+    default: 
       return;
-      if (this.adz != 0)
-      {
-        int i;
-        int j;
-        if (this.adu)
-        {
-          i = this.adr - this.adf;
-          j = this.adm - this.adl / 2;
-          this.add.setBounds(0, 0, this.adf, this.adl);
-          this.ade.setBounds(0, 0, this.adg, this.ads);
-          if (!hE()) {
-            break label297;
-          }
-          this.ade.draw(paramCanvas);
-          paramCanvas.translate(this.adf, j);
-          paramCanvas.scale(-1.0F, 1.0F);
-          this.add.draw(paramCanvas);
-          paramCanvas.scale(1.0F, 1.0F);
-          paramCanvas.translate(-this.adf, -j);
-        }
-        while (this.adv)
-        {
-          i = this.ads - this.adj;
-          j = this.adp - this.ado / 2;
-          this.adh.setBounds(0, 0, this.ado, this.adj);
-          this.adi.setBounds(0, 0, this.adr, this.adk);
-          paramCanvas.translate(0.0F, i);
-          this.adi.draw(paramCanvas);
-          paramCanvas.translate(j, 0.0F);
-          this.adh.draw(paramCanvas);
-          paramCanvas.translate(-j, -i);
-          return;
-          label297:
-          paramCanvas.translate(i, 0.0F);
-          this.ade.draw(paramCanvas);
-          paramCanvas.translate(0.0F, j);
-          this.add.draw(paramCanvas);
-          paramCanvas.translate(-i, -j);
-        }
-      }
+    case 3: 
+      this.akF.cancel();
     }
+    this.akG = 1;
+    this.akF.setFloatValues(new float[] { ((Float)this.akF.getAnimatedValue()).floatValue(), 1.0F });
+    this.akF.setDuration(500L);
+    this.akF.setStartDelay(0L);
+    this.akF.start();
   }
   
-  public final void ac(boolean paramBoolean) {}
-  
-  public final boolean h(MotionEvent paramMotionEvent)
+  public final boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
     if (this.mState == 1)
     {
-      bool1 = v(paramMotionEvent.getX(), paramMotionEvent.getY());
-      bool2 = w(paramMotionEvent.getX(), paramMotionEvent.getY());
+      bool1 = m(paramMotionEvent.getX(), paramMotionEvent.getY());
+      bool2 = n(paramMotionEvent.getX(), paramMotionEvent.getY());
       if ((paramMotionEvent.getAction() == 0) && ((bool1) || (bool2))) {
         if (bool2)
         {
-          this.Mw = 1;
-          this.adq = ((int)paramMotionEvent.getX());
+          this.Tz = 1;
+          this.akx = ((int)paramMotionEvent.getX());
           setState(2);
         }
       }
@@ -230,8 +247,8 @@ final class z
         return true;
         if (bool1)
         {
-          this.Mw = 2;
-          this.adn = ((int)paramMotionEvent.getY());
+          this.Tz = 2;
+          this.aku = ((int)paramMotionEvent.getY());
         }
       }
       return false;
@@ -239,7 +256,63 @@ final class z
     return false;
   }
   
-  public final void i(MotionEvent paramMotionEvent)
+  public final void ai(boolean paramBoolean) {}
+  
+  public final void b(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
+  {
+    if ((this.aky != this.akA.getWidth()) || (this.akz != this.akA.getHeight()))
+    {
+      this.aky = this.akA.getWidth();
+      this.akz = this.akA.getHeight();
+      setState(0);
+    }
+    for (;;)
+    {
+      return;
+      if (this.akG != 0)
+      {
+        int i;
+        int j;
+        if (this.akB)
+        {
+          i = this.aky - this.akm;
+          j = this.akt - this.aks / 2;
+          this.akk.setBounds(0, 0, this.akm, this.aks);
+          this.akl.setBounds(0, 0, this.akn, this.akz);
+          if (!ja()) {
+            break label301;
+          }
+          this.akl.draw(paramCanvas);
+          paramCanvas.translate(this.akm, j);
+          paramCanvas.scale(-1.0F, 1.0F);
+          this.akk.draw(paramCanvas);
+          paramCanvas.scale(1.0F, 1.0F);
+          paramCanvas.translate(-this.akm, -j);
+        }
+        while (this.akC)
+        {
+          i = this.akz - this.akq;
+          j = this.akw - this.akv / 2;
+          this.ako.setBounds(0, 0, this.akv, this.akq);
+          this.akp.setBounds(0, 0, this.aky, this.akr);
+          paramCanvas.translate(0.0F, i);
+          this.akp.draw(paramCanvas);
+          paramCanvas.translate(j, 0.0F);
+          this.ako.draw(paramCanvas);
+          paramCanvas.translate(-j, -i);
+          return;
+          label301:
+          paramCanvas.translate(i, 0.0F);
+          this.akl.draw(paramCanvas);
+          paramCanvas.translate(0.0F, j);
+          this.akk.draw(paramCanvas);
+          paramCanvas.translate(-i, -j);
+        }
+      }
+    }
+  }
+  
+  public final void b(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
     if (this.mState == 0) {}
     float f;
@@ -257,13 +330,13 @@ final class z
             if (paramMotionEvent.getAction() != 0) {
               break;
             }
-            bool1 = v(paramMotionEvent.getX(), paramMotionEvent.getY());
-            bool2 = w(paramMotionEvent.getX(), paramMotionEvent.getY());
+            bool1 = m(paramMotionEvent.getX(), paramMotionEvent.getY());
+            bool2 = n(paramMotionEvent.getX(), paramMotionEvent.getY());
           } while ((!bool1) && (!bool2));
           if (bool2)
           {
-            this.Mw = 1;
-            this.adq = ((int)paramMotionEvent.getX());
+            this.Tz = 1;
+            this.akx = ((int)paramMotionEvent.getX());
           }
           for (;;)
           {
@@ -271,65 +344,65 @@ final class z
             return;
             if (bool1)
             {
-              this.Mw = 2;
-              this.adn = ((int)paramMotionEvent.getY());
+              this.Tz = 2;
+              this.aku = ((int)paramMotionEvent.getY());
             }
           }
           if ((paramMotionEvent.getAction() == 1) && (this.mState == 2))
           {
-            this.adn = 0.0F;
-            this.adq = 0.0F;
+            this.aku = 0.0F;
+            this.akx = 0.0F;
             setState(1);
-            this.Mw = 0;
+            this.Tz = 0;
             return;
           }
         } while ((paramMotionEvent.getAction() != 2) || (this.mState != 2));
         show();
-        if (this.Mw == 1)
+        if (this.Tz == 1)
         {
           f = paramMotionEvent.getX();
-          this.adx[0] = this.mMargin;
-          this.adx[1] = (this.adr - this.mMargin);
-          int[] arrayOfInt = this.adx;
-          f = Math.max(arrayOfInt[0], Math.min(arrayOfInt[1], f));
-          if (Math.abs(this.adp - f) >= 2.0F)
+          this.akE[0] = this.mMargin;
+          this.akE[1] = (this.aky - this.mMargin);
+          paramRecyclerView = this.akE;
+          f = Math.max(paramRecyclerView[0], Math.min(paramRecyclerView[1], f));
+          if (Math.abs(this.akw - f) >= 2.0F)
           {
-            i = a(this.adq, f, arrayOfInt, this.adt.computeHorizontalScrollRange(), this.adt.computeHorizontalScrollOffset(), this.adr);
+            i = a(this.akx, f, paramRecyclerView, this.akA.computeHorizontalScrollRange(), this.akA.computeHorizontalScrollOffset(), this.aky);
             if (i != 0) {
-              this.adt.scrollBy(i, 0);
+              this.akA.scrollBy(i, 0);
             }
-            this.adq = f;
+            this.akx = f;
           }
         }
-      } while (this.Mw != 2);
+      } while (this.Tz != 2);
       f = paramMotionEvent.getY();
-      this.adw[0] = this.mMargin;
-      this.adw[1] = (this.ads - this.mMargin);
-      paramMotionEvent = this.adw;
-      f = Math.max(paramMotionEvent[0], Math.min(paramMotionEvent[1], f));
-    } while (Math.abs(this.adm - f) < 2.0F);
-    int i = a(this.adn, f, paramMotionEvent, this.adt.computeVerticalScrollRange(), this.adt.computeVerticalScrollOffset(), this.ads);
+      this.akD[0] = this.mMargin;
+      this.akD[1] = (this.akz - this.mMargin);
+      paramRecyclerView = this.akD;
+      f = Math.max(paramRecyclerView[0], Math.min(paramRecyclerView[1], f));
+    } while (Math.abs(this.akt - f) < 2.0F);
+    int i = a(this.aku, f, paramRecyclerView, this.akA.computeVerticalScrollRange(), this.akA.computeVerticalScrollOffset(), this.akz);
     if (i != 0) {
-      this.adt.scrollBy(0, i);
+      this.akA.scrollBy(0, i);
     }
-    this.adn = f;
+    this.aku = f;
   }
   
   final void setState(int paramInt)
   {
     if ((paramInt == 2) && (this.mState != 2))
     {
-      this.add.setState(PRESSED_STATE_SET);
-      hF();
+      this.akk.setState(PRESSED_STATE_SET);
+      jb();
     }
     if (paramInt == 0)
     {
-      this.adt.invalidate();
+      this.akA.invalidate();
       if ((this.mState != 2) || (paramInt == 2)) {
         break label83;
       }
-      this.add.setState(EMPTY_STATE_SET);
-      bw(1200);
+      this.akk.setState(EMPTY_STATE_SET);
+      bN(1200);
     }
     for (;;)
     {
@@ -339,14 +412,58 @@ final class z
       break;
       label83:
       if (paramInt == 1) {
-        bw(1500);
+        bN(1500);
       }
+    }
+  }
+  
+  final class a
+    extends AnimatorListenerAdapter
+  {
+    private boolean mCanceled = false;
+    
+    a() {}
+    
+    public final void onAnimationCancel(Animator paramAnimator)
+    {
+      this.mCanceled = true;
+    }
+    
+    public final void onAnimationEnd(Animator paramAnimator)
+    {
+      if (this.mCanceled)
+      {
+        this.mCanceled = false;
+        return;
+      }
+      if (((Float)z.this.akF.getAnimatedValue()).floatValue() == 0.0F)
+      {
+        z.this.akG = 0;
+        z.this.setState(0);
+        return;
+      }
+      z.this.akG = 2;
+      z.this.akA.invalidate();
+    }
+  }
+  
+  final class b
+    implements ValueAnimator.AnimatorUpdateListener
+  {
+    b() {}
+    
+    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+    {
+      int i = (int)(((Float)paramValueAnimator.getAnimatedValue()).floatValue() * 255.0F);
+      z.this.akk.setAlpha(i);
+      z.this.akl.setAlpha(i);
+      z.this.akA.invalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v7.widget.z
  * JD-Core Version:    0.7.0.1
  */

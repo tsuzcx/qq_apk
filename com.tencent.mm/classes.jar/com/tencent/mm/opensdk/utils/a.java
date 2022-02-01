@@ -8,10 +8,10 @@ public final class a
   public static int a(Bundle paramBundle, String paramString)
   {
     int i = -1;
-    AppMethodBeat.i(128072);
+    AppMethodBeat.i(3757);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(128072);
+      AppMethodBeat.o(3757);
       return -1;
     }
     try
@@ -26,23 +26,23 @@ public final class a
         Log.e("MicroMsg.IntentUtil", "getIntExtra exception:" + paramBundle.getMessage());
       }
     }
-    AppMethodBeat.o(128072);
+    AppMethodBeat.o(3757);
     return i;
   }
   
   public static String b(Bundle paramBundle, String paramString)
   {
     Object localObject = null;
-    AppMethodBeat.i(128073);
+    AppMethodBeat.i(3758);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(128073);
+      AppMethodBeat.o(3758);
       return null;
     }
     try
     {
       paramBundle = paramBundle.getString(paramString);
-      AppMethodBeat.o(128073);
+      AppMethodBeat.o(3758);
       return paramBundle;
     }
     catch (Exception paramBundle)
@@ -57,7 +57,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.utils.a
  * JD-Core Version:    0.7.0.1
  */

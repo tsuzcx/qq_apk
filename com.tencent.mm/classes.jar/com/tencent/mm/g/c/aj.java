@@ -8,86 +8,58 @@ public abstract class aj
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dkC = "url".hashCode();
-  private static final int dkj;
-  private static final int dkk;
-  private static final int dnQ = "card_type".hashCode();
-  private static final int dnR;
-  private static final int dnS;
-  private static final int dnT;
-  private static final int dnU;
-  private static final int dnV;
-  private static final int dnW;
-  private static final int dnX;
-  private static final int dnY = "buttonData".hashCode();
-  private static final int dnZ = "operData".hashCode();
-  private static final int doa = "report_scene".hashCode();
-  private static final int dob = "read_state".hashCode();
-  private static final int doc = "accept_buttons".hashCode();
-  private static final int dod = "consumed_box_id".hashCode();
-  private static final int doe = "jump_buttons".hashCode();
-  private static final int dof = "logo_color".hashCode();
-  private static final int dog = "unavailable_qr_code_list".hashCode();
-  private static final int doh = "all_unavailable".hashCode();
-  private static final int doi = "need_pull_card_entrance".hashCode();
+  private static final int ekS = "userName".hashCode();
+  private static final int eqE = "qyUin".hashCode();
+  private static final int eqF = "userUin".hashCode();
+  private static final int eqG = "userFlag".hashCode();
+  private static final int eqH = "wwExposeTimes".hashCode();
+  private static final int eqI = "wwMaxExposeTimes".hashCode();
+  private static final int eqJ = "wwCorpId".hashCode();
+  private static final int eqK = "wwUserVid".hashCode();
+  private static final int eqL = "userType".hashCode();
+  private static final int eqM = "chatOpen".hashCode();
+  private static final int eqN = "wwUnreadCnt".hashCode();
+  private static final int eqO = "show_confirm".hashCode();
+  private static final int eqP = "use_preset_banner_tips".hashCode();
+  private static final int eqQ = "hide_create_chat".hashCode();
+  private static final int eqR = "hide_mod_chat_member".hashCode();
+  private static final int eqS = "hide_colleage_invite".hashCode();
+  private static final int eqT = "raw_attrs".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dkg = true;
-  private boolean dkh = true;
-  private boolean dky = true;
-  private boolean dnA = true;
-  private boolean dnB = true;
-  private boolean dnC = true;
-  private boolean dnD = true;
-  private boolean dnE = true;
-  private boolean dnF = true;
-  private boolean dnG = true;
-  private boolean dnH = true;
-  private boolean dnI = true;
-  private boolean dnJ = true;
-  private boolean dnK = true;
-  private boolean dnL = true;
-  private boolean dnM = true;
-  private boolean dnN = true;
-  private boolean dnO = true;
-  private boolean dnP = true;
-  private boolean dnx = true;
-  private boolean dny = true;
-  private boolean dnz = true;
-  public String field_accept_buttons;
-  public boolean field_all_unavailable;
-  public byte[] field_buttonData;
-  public String field_card_id;
-  public String field_card_tp_id;
-  public int field_card_type;
-  public String field_consumed_box_id;
-  public String field_description;
-  public String field_jump_buttons;
-  public int field_jump_type;
-  public String field_logo_color;
-  public String field_logo_url;
-  public String field_msg_id;
-  public int field_msg_type;
-  public boolean field_need_pull_card_entrance;
-  public byte[] field_operData;
-  public int field_read_state;
-  public int field_report_scene;
-  public int field_time;
-  public String field_title;
-  public String field_unavailable_qr_code_list;
-  public String field_url;
-  
-  static
-  {
-    dkj = "title".hashCode();
-    dkk = "description".hashCode();
-    dnR = "logo_url".hashCode();
-    dnS = "time".hashCode();
-    dnT = "card_id".hashCode();
-    dnU = "card_tp_id".hashCode();
-    dnV = "msg_id".hashCode();
-    dnW = "msg_type".hashCode();
-    dnX = "jump_type".hashCode();
-  }
+  private boolean ekv = true;
+  private boolean eqA = true;
+  private boolean eqB = true;
+  private boolean eqC = true;
+  private boolean eqD = true;
+  private boolean eqo = true;
+  private boolean eqp = true;
+  private boolean eqq = true;
+  private boolean eqr = true;
+  private boolean eqs = true;
+  private boolean eqt = true;
+  private boolean equ = true;
+  private boolean eqv = true;
+  private boolean eqw = true;
+  private boolean eqx = true;
+  private boolean eqy = true;
+  private boolean eqz = true;
+  public boolean field_chatOpen;
+  public boolean field_hide_colleage_invite;
+  public boolean field_hide_create_chat;
+  public boolean field_hide_mod_chat_member;
+  public int field_qyUin;
+  public byte[] field_raw_attrs;
+  public boolean field_show_confirm;
+  public boolean field_use_preset_banner_tips;
+  public int field_userFlag;
+  public String field_userName;
+  public int field_userType;
+  public int field_userUin;
+  public long field_wwCorpId;
+  public int field_wwExposeTimes;
+  public int field_wwMaxExposeTimes;
+  public int field_wwUnreadCnt;
+  public long field_wwUserVid;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -102,117 +74,118 @@ public abstract class aj
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dnQ != k) {
-        break label60;
+      if (ekS != k) {
+        break label65;
       }
-      this.field_card_type = paramCursor.getInt(i);
+      this.field_userName = paramCursor.getString(i);
+      this.ekv = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (dkj == k)
+      label65:
+      if (eqE == k)
       {
-        this.field_title = paramCursor.getString(i);
+        this.field_qyUin = paramCursor.getInt(i);
       }
-      else if (dkk == k)
+      else if (eqF == k)
       {
-        this.field_description = paramCursor.getString(i);
+        this.field_userUin = paramCursor.getInt(i);
       }
-      else if (dnR == k)
+      else if (eqG == k)
       {
-        this.field_logo_url = paramCursor.getString(i);
+        this.field_userFlag = paramCursor.getInt(i);
       }
-      else if (dnS == k)
+      else if (eqH == k)
       {
-        this.field_time = paramCursor.getInt(i);
+        this.field_wwExposeTimes = paramCursor.getInt(i);
       }
-      else if (dnT == k)
+      else if (eqI == k)
       {
-        this.field_card_id = paramCursor.getString(i);
+        this.field_wwMaxExposeTimes = paramCursor.getInt(i);
       }
-      else if (dnU == k)
+      else if (eqJ == k)
       {
-        this.field_card_tp_id = paramCursor.getString(i);
+        this.field_wwCorpId = paramCursor.getLong(i);
       }
-      else if (dnV == k)
+      else if (eqK == k)
       {
-        this.field_msg_id = paramCursor.getString(i);
-        this.dnC = true;
+        this.field_wwUserVid = paramCursor.getLong(i);
       }
-      else if (dnW == k)
+      else if (eqL == k)
       {
-        this.field_msg_type = paramCursor.getInt(i);
-      }
-      else if (dnX == k)
-      {
-        this.field_jump_type = paramCursor.getInt(i);
-      }
-      else if (dkC == k)
-      {
-        this.field_url = paramCursor.getString(i);
-      }
-      else if (dnY == k)
-      {
-        this.field_buttonData = paramCursor.getBlob(i);
-      }
-      else if (dnZ == k)
-      {
-        this.field_operData = paramCursor.getBlob(i);
-      }
-      else if (doa == k)
-      {
-        this.field_report_scene = paramCursor.getInt(i);
-      }
-      else if (dob == k)
-      {
-        this.field_read_state = paramCursor.getInt(i);
-      }
-      else if (doc == k)
-      {
-        this.field_accept_buttons = paramCursor.getString(i);
-      }
-      else if (dod == k)
-      {
-        this.field_consumed_box_id = paramCursor.getString(i);
-      }
-      else if (doe == k)
-      {
-        this.field_jump_buttons = paramCursor.getString(i);
-      }
-      else if (dof == k)
-      {
-        this.field_logo_color = paramCursor.getString(i);
-      }
-      else if (dog == k)
-      {
-        this.field_unavailable_qr_code_list = paramCursor.getString(i);
+        this.field_userType = paramCursor.getInt(i);
       }
       else
       {
         boolean bool;
-        if (doh == k)
+        if (eqM == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
           {
-            this.field_all_unavailable = bool;
+            this.field_chatOpen = bool;
             break;
           }
         }
-        if (doi == k)
+        if (eqN == k)
         {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
-          {
-            this.field_need_pull_card_entrance = bool;
-            break;
-          }
+          this.field_wwUnreadCnt = paramCursor.getInt(i);
         }
-        if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
+        else
+        {
+          if (eqO == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_show_confirm = bool;
+              break;
+            }
+          }
+          if (eqP == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_use_preset_banner_tips = bool;
+              break;
+            }
+          }
+          if (eqQ == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_hide_create_chat = bool;
+              break;
+            }
+          }
+          if (eqR == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_hide_mod_chat_member = bool;
+              break;
+            }
+          }
+          if (eqS == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_hide_colleage_invite = bool;
+              break;
+            }
+          }
+          if (eqT == k) {
+            this.field_raw_attrs = paramCursor.getBlob(i);
+          } else if (rowid_HASHCODE == k) {
+            this.systemRowid = paramCursor.getLong(i);
+          }
         }
       }
     }
@@ -221,71 +194,56 @@ public abstract class aj
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dnx) {
-      localContentValues.put("card_type", Integer.valueOf(this.field_card_type));
+    if (this.ekv) {
+      localContentValues.put("userName", this.field_userName);
     }
-    if (this.dkg) {
-      localContentValues.put("title", this.field_title);
+    if (this.eqo) {
+      localContentValues.put("qyUin", Integer.valueOf(this.field_qyUin));
     }
-    if (this.dkh) {
-      localContentValues.put("description", this.field_description);
+    if (this.eqp) {
+      localContentValues.put("userUin", Integer.valueOf(this.field_userUin));
     }
-    if (this.dny) {
-      localContentValues.put("logo_url", this.field_logo_url);
+    if (this.eqq) {
+      localContentValues.put("userFlag", Integer.valueOf(this.field_userFlag));
     }
-    if (this.dnz) {
-      localContentValues.put("time", Integer.valueOf(this.field_time));
+    if (this.eqr) {
+      localContentValues.put("wwExposeTimes", Integer.valueOf(this.field_wwExposeTimes));
     }
-    if (this.dnA) {
-      localContentValues.put("card_id", this.field_card_id);
+    if (this.eqs) {
+      localContentValues.put("wwMaxExposeTimes", Integer.valueOf(this.field_wwMaxExposeTimes));
     }
-    if (this.dnB) {
-      localContentValues.put("card_tp_id", this.field_card_tp_id);
+    if (this.eqt) {
+      localContentValues.put("wwCorpId", Long.valueOf(this.field_wwCorpId));
     }
-    if (this.dnC) {
-      localContentValues.put("msg_id", this.field_msg_id);
+    if (this.equ) {
+      localContentValues.put("wwUserVid", Long.valueOf(this.field_wwUserVid));
     }
-    if (this.dnD) {
-      localContentValues.put("msg_type", Integer.valueOf(this.field_msg_type));
+    if (this.eqv) {
+      localContentValues.put("userType", Integer.valueOf(this.field_userType));
     }
-    if (this.dnE) {
-      localContentValues.put("jump_type", Integer.valueOf(this.field_jump_type));
+    if (this.eqw) {
+      localContentValues.put("chatOpen", Boolean.valueOf(this.field_chatOpen));
     }
-    if (this.dky) {
-      localContentValues.put("url", this.field_url);
+    if (this.eqx) {
+      localContentValues.put("wwUnreadCnt", Integer.valueOf(this.field_wwUnreadCnt));
     }
-    if (this.dnF) {
-      localContentValues.put("buttonData", this.field_buttonData);
+    if (this.eqy) {
+      localContentValues.put("show_confirm", Boolean.valueOf(this.field_show_confirm));
     }
-    if (this.dnG) {
-      localContentValues.put("operData", this.field_operData);
+    if (this.eqz) {
+      localContentValues.put("use_preset_banner_tips", Boolean.valueOf(this.field_use_preset_banner_tips));
     }
-    if (this.dnH) {
-      localContentValues.put("report_scene", Integer.valueOf(this.field_report_scene));
+    if (this.eqA) {
+      localContentValues.put("hide_create_chat", Boolean.valueOf(this.field_hide_create_chat));
     }
-    if (this.dnI) {
-      localContentValues.put("read_state", Integer.valueOf(this.field_read_state));
+    if (this.eqB) {
+      localContentValues.put("hide_mod_chat_member", Boolean.valueOf(this.field_hide_mod_chat_member));
     }
-    if (this.dnJ) {
-      localContentValues.put("accept_buttons", this.field_accept_buttons);
+    if (this.eqC) {
+      localContentValues.put("hide_colleage_invite", Boolean.valueOf(this.field_hide_colleage_invite));
     }
-    if (this.dnK) {
-      localContentValues.put("consumed_box_id", this.field_consumed_box_id);
-    }
-    if (this.dnL) {
-      localContentValues.put("jump_buttons", this.field_jump_buttons);
-    }
-    if (this.dnM) {
-      localContentValues.put("logo_color", this.field_logo_color);
-    }
-    if (this.dnN) {
-      localContentValues.put("unavailable_qr_code_list", this.field_unavailable_qr_code_list);
-    }
-    if (this.dnO) {
-      localContentValues.put("all_unavailable", Boolean.valueOf(this.field_all_unavailable));
-    }
-    if (this.dnP) {
-      localContentValues.put("need_pull_card_entrance", Boolean.valueOf(this.field_need_pull_card_entrance));
+    if (this.eqD) {
+      localContentValues.put("raw_attrs", this.field_raw_attrs);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -295,7 +253,7 @@ public abstract class aj
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.aj
  * JD-Core Version:    0.7.0.1
  */

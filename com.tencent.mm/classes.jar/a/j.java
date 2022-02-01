@@ -1,12 +1,37 @@
 package a;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"lazyOf", "Lkotlin/Lazy;", "T", "value", "(Ljava/lang/Object;)Lkotlin/Lazy;", "getValue", "thisRef", "", "property", "Lkotlin/reflect/KProperty;", "(Lkotlin/Lazy;Ljava/lang/Object;Lkotlin/reflect/KProperty;)Ljava/lang/Object;", "kotlin-stdlib"}, eaR=1)
-public class j
-  extends i
-{}
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class j
+{
+  h<?> azv;
+  
+  public j(h<?> paramh)
+  {
+    this.azv = paramh;
+  }
+  
+  protected final void finalize()
+  {
+    AppMethodBeat.i(53011);
+    try
+    {
+      h localh = this.azv;
+      if ((localh != null) && (h.nc() != null)) {
+        new k(localh.getError());
+      }
+      return;
+    }
+    finally
+    {
+      super.finalize();
+      AppMethodBeat.o(53011);
+    }
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     a.j
  * JD-Core Version:    0.7.0.1
  */

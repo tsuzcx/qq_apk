@@ -18,7 +18,7 @@ public class YogaLayout$LayoutParams
   public YogaLayout$LayoutParams(int paramInt1, int paramInt2)
   {
     super(paramInt1, paramInt2);
-    AppMethodBeat.i(144210);
+    AppMethodBeat.i(18234);
     this.numericAttributes = new SparseArray();
     this.stringAttributes = new SparseArray();
     if (paramInt1 >= 0) {
@@ -27,13 +27,13 @@ public class YogaLayout$LayoutParams
     if (paramInt2 >= 0) {
       this.numericAttributes.put(20, Float.valueOf(paramInt2));
     }
-    AppMethodBeat.o(144210);
+    AppMethodBeat.o(18234);
   }
   
   public YogaLayout$LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(144211);
+    AppMethodBeat.i(18235);
     this.numericAttributes = new SparseArray();
     this.stringAttributes = new SparseArray();
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.yoga);
@@ -65,18 +65,18 @@ public class YogaLayout$LayoutParams
       }
     }
     paramContext.recycle();
-    AppMethodBeat.o(144211);
+    AppMethodBeat.o(18235);
   }
   
   public YogaLayout$LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     super(paramLayoutParams);
-    AppMethodBeat.i(144209);
+    AppMethodBeat.i(18233);
     if ((paramLayoutParams instanceof LayoutParams))
     {
       this.numericAttributes = ((LayoutParams)paramLayoutParams).numericAttributes.clone();
       this.stringAttributes = ((LayoutParams)paramLayoutParams).stringAttributes.clone();
-      AppMethodBeat.o(144209);
+      AppMethodBeat.o(18233);
       return;
     }
     this.numericAttributes = new SparseArray();
@@ -87,7 +87,7 @@ public class YogaLayout$LayoutParams
     if (paramLayoutParams.height >= 0) {
       this.numericAttributes.put(20, Float.valueOf(this.height));
     }
-    AppMethodBeat.o(144209);
+    AppMethodBeat.o(18233);
   }
 }
 

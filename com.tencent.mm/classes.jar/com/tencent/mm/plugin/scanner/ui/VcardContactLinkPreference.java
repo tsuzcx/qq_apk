@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.ui.base.preference.KeyValuePreference;
 import com.tencent.mm.ui.base.preference.Preference;
 
@@ -30,23 +30,23 @@ public class VcardContactLinkPreference
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(81344);
+    AppMethodBeat.i(52001);
     super.onBindView(paramView);
-    ((TextView)paramView.findViewById(16908304)).setTextColor(a.m(this.mContext, 2131689911));
-    AppMethodBeat.o(81344);
+    ((TextView)paramView.findViewById(16908304)).setTextColor(a.n(this.mContext, 2131100192));
+    AppMethodBeat.o(52001);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(81343);
+    AppMethodBeat.i(52000);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    AppMethodBeat.o(81343);
+    AppMethodBeat.o(52000);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference
  * JD-Core Version:    0.7.0.1
  */

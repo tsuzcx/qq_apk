@@ -11,16 +11,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.tools.CustomFitTextView;
 
 public class WalletPayUSecurityQuestionView
   extends LinearLayout
 {
+  private TextView ABk;
+  private CustomFitTextView ABl;
+  private String ABm;
   private Context mContext;
-  private TextView uEf;
-  private CustomFitTextView uEg;
-  private String uEh;
   
   public WalletPayUSecurityQuestionView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,7 +30,7 @@ public class WalletPayUSecurityQuestionView
   public WalletPayUSecurityQuestionView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(48594);
+    AppMethodBeat.i(72235);
     this.mContext = paramContext;
     paramContext = "";
     Object localObject = "";
@@ -38,11 +38,11 @@ public class WalletPayUSecurityQuestionView
     if (paramAttributeSet != null)
     {
       TypedArray localTypedArray = this.mContext.obtainStyledAttributes(paramAttributeSet, a.a.EditHintView, -1, 0);
-      paramInt = localTypedArray.getResourceId(7, 0);
+      paramInt = localTypedArray.getResourceId(13, 0);
       if (paramInt != 0) {
         paramContext = this.mContext.getString(paramInt);
       }
-      paramInt = localTypedArray.getResourceId(6, 0);
+      paramInt = localTypedArray.getResourceId(8, 0);
       paramAttributeSet = (AttributeSet)localObject;
       if (paramInt != 0) {
         paramAttributeSet = this.mContext.getString(paramInt);
@@ -52,29 +52,29 @@ public class WalletPayUSecurityQuestionView
     }
     for (;;)
     {
-      localObject = LayoutInflater.from(this.mContext).inflate(2130970415, this, true);
-      this.uEf = ((TextView)((View)localObject).findViewById(2131821071));
-      this.uEg = ((CustomFitTextView)((View)localObject).findViewById(2131823494));
-      this.uEf.setText(paramContext);
-      paramContext = this.uEg;
-      paramContext.a(paramAttributeSet, paramContext.maxLines, paramContext.ArF, paramContext.ArD, paramContext.getResources().getColor(2131690168));
+      localObject = LayoutInflater.from(this.mContext).inflate(2131495079, this, true);
+      this.ABk = ((TextView)((View)localObject).findViewById(2131305880));
+      this.ABl = ((CustomFitTextView)((View)localObject).findViewById(2131303372));
+      this.ABk.setText(paramContext);
+      paramContext = this.ABl;
+      paramContext.a(paramAttributeSet, paramContext.maxLines, paramContext.Hny, paramContext.Hnw, paramContext.getResources().getColor(2131100490));
       if (!bool)
       {
-        this.uEg.setEnabled(false);
-        this.uEg.setFocusable(false);
-        this.uEg.setClickable(false);
-        this.uEg.setBackgroundResource(2130840999);
-        setBackgroundResource(2130839276);
-        AppMethodBeat.o(48594);
+        this.ABl.setEnabled(false);
+        this.ABl.setFocusable(false);
+        this.ABl.setClickable(false);
+        this.ABl.setBackgroundResource(2131234429);
+        setBackgroundResource(2131232867);
+        AppMethodBeat.o(72235);
         return;
       }
-      this.uEg.setEnabled(false);
-      this.uEg.setTextColor(getResources().getColor(2131690796));
-      this.uEg.setFocusable(false);
-      this.uEg.setClickable(false);
-      this.uEg.setBackgroundResource(2130840999);
-      setBackgroundResource(2130838445);
-      AppMethodBeat.o(48594);
+      this.ABl.setEnabled(false);
+      this.ABl.setTextColor(getResources().getColor(2131101104));
+      this.ABl.setFocusable(false);
+      this.ABl.setClickable(false);
+      this.ABl.setBackgroundResource(2131234429);
+      setBackgroundResource(2131231818);
+      AppMethodBeat.o(72235);
       return;
       bool = false;
       paramContext = "";
@@ -82,46 +82,46 @@ public class WalletPayUSecurityQuestionView
     }
   }
   
-  public final boolean asv()
+  public final boolean aKX()
   {
-    AppMethodBeat.i(48597);
-    if (!bo.isNullOrNil(this.uEh))
+    AppMethodBeat.i(72238);
+    if (!bt.isNullOrNil(this.ABm))
     {
-      AppMethodBeat.o(48597);
+      AppMethodBeat.o(72238);
       return true;
     }
-    AppMethodBeat.o(48597);
+    AppMethodBeat.o(72238);
     return false;
   }
   
   public String getCurrentQuestion()
   {
-    return this.uEh;
+    return this.ABm;
   }
   
   public void setQuestionText(String paramString)
   {
-    AppMethodBeat.i(48595);
-    this.uEh = paramString;
-    KeyListener localKeyListener = this.uEg.getKeyListener();
-    this.uEg.setInputType(1);
-    this.uEg.setKeyListener(null);
+    AppMethodBeat.i(72236);
+    this.ABm = paramString;
+    KeyListener localKeyListener = this.ABl.getKeyListener();
+    this.ABl.setInputType(1);
+    this.ABl.setKeyListener(null);
     setValStr(paramString);
-    this.uEg.setKeyListener(localKeyListener);
-    AppMethodBeat.o(48595);
+    this.ABl.setKeyListener(localKeyListener);
+    AppMethodBeat.o(72236);
   }
   
   public void setValStr(String paramString)
   {
-    AppMethodBeat.i(48596);
-    CustomFitTextView localCustomFitTextView = this.uEg;
+    AppMethodBeat.i(72237);
+    CustomFitTextView localCustomFitTextView = this.ABl;
     localCustomFitTextView.a(paramString, 3, false, -1, localCustomFitTextView.getCurrentTextColor());
-    AppMethodBeat.o(48596);
+    AppMethodBeat.o(72237);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.security_question.ui.WalletPayUSecurityQuestionView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,107 @@
 package com.tencent.mm.plugin.appbrand.jsapi.u;
 
-import android.text.TextUtils;
-import android.view.View;
+import android.content.res.Configuration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.xweb.WebView;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.utils.z.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class h
-  extends c
 {
-  public static final int CTRL_INDEX = 300;
-  public static final String NAME = "updateHTMLWebView";
+  private static String kjv;
+  private static String kjw;
+  private static g kjx;
+  private static z.a kjy;
+  private static z.a kjz;
+  private static boolean mEnable;
   
-  public final boolean c(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  static
   {
-    AppMethodBeat.i(131677);
-    if (!(paramView instanceof a))
+    AppMethodBeat.i(137644);
+    mEnable = false;
+    kjv = "";
+    kjw = "";
+    kjx = new g();
+    kjy = z.a.lMO;
+    kjz = z.a.lMO;
+    AppMethodBeat.o(137644);
+  }
+  
+  public static void A(c paramc)
+  {
+    AppMethodBeat.i(137641);
+    if (paramc.getAppId().equalsIgnoreCase(kjv))
     {
-      AppMethodBeat.o(131677);
-      return false;
+      ad.i("MicroMsg.OrientationConfigListenerHelper", "unInit mAppid:" + kjv);
+      kjv = "";
+      mEnable = false;
+      kjz = z.a.lMO;
     }
-    parame = paramJSONObject.optString("src", "");
-    ab.i("URL", parame);
-    if (TextUtils.isEmpty(parame))
-    {
-      AppMethodBeat.o(131677);
-      return true;
-    }
-    paramView = ((a)paramView).getWebView();
-    if ((parame.indexOf("#") >= 0) && (!TextUtils.isEmpty(paramView.getUrl()))) {
-      paramView.evaluateJavascript(String.format("window.location=\"%s\"", new Object[] { parame }), null);
+    AppMethodBeat.o(137641);
+  }
+  
+  public static void a(Configuration paramConfiguration, String paramString)
+  {
+    AppMethodBeat.i(137642);
+    if (paramConfiguration.orientation == 2) {
+      if (kjy == z.a.lMS) {
+        kjz = z.a.lMS;
+      }
     }
     for (;;)
     {
-      AppMethodBeat.o(131677);
-      return true;
-      paramView.loadUrl(parame);
+      ad.i("MicroMsg.OrientationConfigListenerHelper", "onConfigurationChanged mAppid:" + kjv + "; appid:" + paramString + "; mOrientation:" + kjz.name());
+      if ((kjv.equalsIgnoreCase("")) || (!kjv.equalsIgnoreCase(paramString)) || (!mEnable)) {
+        break;
+      }
+      kjx.b(kjz);
+      AppMethodBeat.o(137642);
+      return;
+      kjz = z.a.lMQ;
+      continue;
+      if (paramConfiguration.orientation == 1) {
+        kjz = z.a.lMP;
+      } else {
+        kjz = z.a.lMO;
+      }
     }
+    kjw = paramString;
+    AppMethodBeat.o(137642);
   }
   
-  public final int w(JSONObject paramJSONObject)
+  public static void c(z.a parama)
   {
-    AppMethodBeat.i(131678);
-    int i = paramJSONObject.getInt("htmlId");
-    AppMethodBeat.o(131678);
-    return i;
+    AppMethodBeat.i(137643);
+    kjy = parama;
+    if ((mEnable) && (kjz == z.a.lMQ) && ((parama == z.a.lMS) || (parama == z.a.lMQ)))
+    {
+      kjx.b(parama);
+      ad.i("MicroMsg.OrientationConfigListenerHelper", "onFourOrientationsChange mAppid:" + kjv + "; mOrientation:" + parama.name());
+    }
+    AppMethodBeat.o(137643);
+  }
+  
+  public static void z(c paramc)
+  {
+    AppMethodBeat.i(137640);
+    kjv = paramc.getAppId();
+    mEnable = true;
+    kjx.h(paramc);
+    if ((kjz != z.a.lMO) && (kjw.equalsIgnoreCase(kjv))) {
+      kjx.b(kjz);
+    }
+    for (;;)
+    {
+      ad.i("MicroMsg.OrientationConfigListenerHelper", "init mJsAppid:" + kjv + "; mEnable:" + mEnable);
+      AppMethodBeat.o(137640);
+      return;
+      kjz = z.a.lMO;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.u.h
  * JD-Core Version:    0.7.0.1
  */

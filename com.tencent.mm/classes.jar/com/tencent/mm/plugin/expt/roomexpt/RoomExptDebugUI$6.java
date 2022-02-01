@@ -12,28 +12,28 @@ final class RoomExptDebugUI$6
 {
   RoomExptDebugUI$6(RoomExptDebugUI paramRoomExptDebugUI, Context paramContext)
   {
-    super(paramContext, 2130970589, 2131827380);
+    super(paramContext, 2131495273, 2131304210);
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(73596);
+    AppMethodBeat.i(122434);
     paramView = super.getView(paramInt, paramView, paramViewGroup);
-    paramViewGroup = (TextView)paramView.findViewById(2131827380);
+    paramViewGroup = (TextView)paramView.findViewById(2131304210);
     if (paramInt % 2 == 0) {
-      paramViewGroup.setBackgroundResource(2131690701);
+      paramViewGroup.setBackgroundResource(2131101171);
     }
     for (;;)
     {
-      AppMethodBeat.o(73596);
+      AppMethodBeat.o(122434);
       return paramView;
-      paramViewGroup.setBackgroundResource(2131690605);
+      paramViewGroup.setBackgroundResource(2131101053);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.roomexpt.RoomExptDebugUI.6
  * JD-Core Version:    0.7.0.1
  */

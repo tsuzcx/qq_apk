@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.voiceprint;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.voiceprint.a.a;
 import com.tencent.mm.plugin.voiceprint.model.k;
-import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public m createApplication()
   {
-    AppMethodBeat.i(26073);
+    AppMethodBeat.i(29754);
     a locala = new a();
-    AppMethodBeat.o(26073);
+    AppMethodBeat.o(29754);
     return locala;
   }
   
-  public at createSubCore()
+  public aw createSubCore()
   {
-    AppMethodBeat.i(26074);
+    AppMethodBeat.i(29755);
     k localk = new k();
-    AppMethodBeat.o(26074);
+    AppMethodBeat.o(29755);
     return localk;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.Plugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,266 +1,452 @@
 package org.apache.commons.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.File;
 
 public final class c
 {
-  public static final char DIR_SEPARATOR;
-  public static final String LINE_SEPARATOR;
+  public static final String Kkp;
+  private static final char Kkq;
+  private static final char Kkr;
   
-  /* Error */
   static
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: ldc 13
-    //   4: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: getstatic 24	java/io/File:separatorChar	C
-    //   10: putstatic 26	org/apache/commons/a/c:DIR_SEPARATOR	C
-    //   13: new 28	org/apache/commons/a/a/b
-    //   16: dup
-    //   17: iconst_0
-    //   18: invokespecial 32	org/apache/commons/a/a/b:<init>	(B)V
-    //   21: astore_3
-    //   22: new 34	java/io/PrintWriter
-    //   25: dup
-    //   26: aload_3
-    //   27: invokespecial 37	java/io/PrintWriter:<init>	(Ljava/io/Writer;)V
-    //   30: astore 4
-    //   32: aload 4
-    //   34: invokevirtual 40	java/io/PrintWriter:println	()V
-    //   37: aload_3
-    //   38: invokevirtual 44	org/apache/commons/a/a/b:toString	()Ljava/lang/String;
-    //   41: putstatic 46	org/apache/commons/a/c:LINE_SEPARATOR	Ljava/lang/String;
-    //   44: aload 4
-    //   46: invokevirtual 49	java/io/PrintWriter:close	()V
-    //   49: aload_3
-    //   50: invokevirtual 50	org/apache/commons/a/a/b:close	()V
-    //   53: ldc 13
-    //   55: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   58: return
-    //   59: astore_1
-    //   60: ldc 13
-    //   62: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   65: aload_1
-    //   66: athrow
-    //   67: astore_0
-    //   68: aload_1
-    //   69: ifnull +50 -> 119
-    //   72: aload 4
-    //   74: invokevirtual 49	java/io/PrintWriter:close	()V
-    //   77: ldc 13
-    //   79: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   82: aload_0
-    //   83: athrow
-    //   84: astore_1
-    //   85: ldc 13
-    //   87: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   90: aload_1
-    //   91: athrow
-    //   92: astore_0
-    //   93: aload_1
-    //   94: ifnull +42 -> 136
-    //   97: aload_3
-    //   98: invokevirtual 50	org/apache/commons/a/a/b:close	()V
-    //   101: ldc 13
-    //   103: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   106: aload_0
-    //   107: athrow
-    //   108: astore 4
-    //   110: aload_1
-    //   111: aload 4
-    //   113: invokevirtual 57	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   116: goto -39 -> 77
-    //   119: aload 4
-    //   121: invokevirtual 49	java/io/PrintWriter:close	()V
-    //   124: goto -47 -> 77
-    //   127: astore_2
-    //   128: aload_1
-    //   129: aload_2
-    //   130: invokevirtual 57	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   133: goto -32 -> 101
-    //   136: aload_3
-    //   137: invokevirtual 50	org/apache/commons/a/a/b:close	()V
-    //   140: goto -39 -> 101
-    //   143: astore_0
-    //   144: aconst_null
-    //   145: astore_1
-    //   146: goto -78 -> 68
-    //   149: astore_0
-    //   150: aload_2
-    //   151: astore_1
-    //   152: goto -59 -> 93
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   67	16	0	localObject1	Object
-    //   92	15	0	localObject2	Object
-    //   143	1	0	localObject3	Object
-    //   149	1	0	localObject4	Object
-    //   59	10	1	localThrowable1	java.lang.Throwable
-    //   84	45	1	localThrowable2	java.lang.Throwable
-    //   145	7	1	localThrowable3	java.lang.Throwable
-    //   1	1	2	localObject5	Object
-    //   127	24	2	localThrowable4	java.lang.Throwable
-    //   21	116	3	localb	org.apache.commons.a.a.b
-    //   30	43	4	localPrintWriter	java.io.PrintWriter
-    //   108	12	4	localThrowable5	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   32	44	59	java/lang/Throwable
-    //   60	67	67	finally
-    //   22	32	84	java/lang/Throwable
-    //   44	49	84	java/lang/Throwable
-    //   77	84	84	java/lang/Throwable
-    //   110	116	84	java/lang/Throwable
-    //   119	124	84	java/lang/Throwable
-    //   85	92	92	finally
-    //   72	77	108	java/lang/Throwable
-    //   97	101	127	java/lang/Throwable
-    //   32	44	143	finally
-    //   22	32	149	finally
-    //   44	49	149	finally
-    //   72	77	149	finally
-    //   77	84	149	finally
-    //   110	116	149	finally
-    //   119	124	149	finally
-  }
-  
-  @Deprecated
-  private static void closeQuietly(Closeable paramCloseable)
-  {
-    AppMethodBeat.i(151732);
-    if (paramCloseable != null) {}
-    try
+    AppMethodBeat.i(10303);
+    Kkp = Character.toString('.');
+    char c = File.separatorChar;
+    Kkq = c;
+    if (c == '\\') {}
+    for (int i = 1; i != 0; i = 0)
     {
-      paramCloseable.close();
-      AppMethodBeat.o(151732);
+      Kkr = '/';
+      AppMethodBeat.o(10303);
       return;
     }
-    catch (IOException paramCloseable)
+    Kkr = '\\';
+    AppMethodBeat.o(10303);
+  }
+  
+  private static int aRl(String paramString)
+  {
+    AppMethodBeat.i(10298);
+    if (paramString == null)
     {
-      AppMethodBeat.o(151732);
-    }
-  }
-  
-  @Deprecated
-  public static void closeQuietly(InputStream paramInputStream)
-  {
-    AppMethodBeat.i(151730);
-    closeQuietly(paramInputStream);
-    AppMethodBeat.o(151730);
-  }
-  
-  @Deprecated
-  public static void closeQuietly(OutputStream paramOutputStream)
-  {
-    AppMethodBeat.i(151731);
-    closeQuietly(paramOutputStream);
-    AppMethodBeat.o(151731);
-  }
-  
-  public static int copy(InputStream paramInputStream, OutputStream paramOutputStream)
-  {
-    AppMethodBeat.i(151733);
-    long l = e(paramInputStream, paramOutputStream);
-    if (l > 2147483647L)
-    {
-      AppMethodBeat.o(151733);
+      AppMethodBeat.o(10298);
       return -1;
     }
-    int i = (int)l;
-    AppMethodBeat.o(151733);
+    int i = paramString.length();
+    if (i == 0)
+    {
+      AppMethodBeat.o(10298);
+      return 0;
+    }
+    char c1 = paramString.charAt(0);
+    if (c1 == ':')
+    {
+      AppMethodBeat.o(10298);
+      return -1;
+    }
+    if (i == 1)
+    {
+      if (c1 == '~')
+      {
+        AppMethodBeat.o(10298);
+        return 2;
+      }
+      if (isSeparator(c1))
+      {
+        AppMethodBeat.o(10298);
+        return 1;
+      }
+      AppMethodBeat.o(10298);
+      return 0;
+    }
+    int k;
+    int j;
+    if (c1 == '~')
+    {
+      k = paramString.indexOf('/', 1);
+      j = paramString.indexOf('\\', 1);
+      if ((k == -1) && (j == -1))
+      {
+        AppMethodBeat.o(10298);
+        return i + 1;
+      }
+      i = k;
+      if (k == -1) {
+        i = j;
+      }
+      k = j;
+      if (j == -1) {
+        k = i;
+      }
+      i = Math.min(i, k);
+      AppMethodBeat.o(10298);
+      return i + 1;
+    }
+    char c2 = paramString.charAt(1);
+    if (c2 == ':')
+    {
+      j = Character.toUpperCase(c1);
+      if ((j >= 65) && (j <= 90))
+      {
+        if ((i == 2) || (!isSeparator(paramString.charAt(2))))
+        {
+          AppMethodBeat.o(10298);
+          return 2;
+        }
+        AppMethodBeat.o(10298);
+        return 3;
+      }
+      if (j == 47)
+      {
+        AppMethodBeat.o(10298);
+        return 1;
+      }
+      AppMethodBeat.o(10298);
+      return -1;
+    }
+    if ((isSeparator(c1)) && (isSeparator(c2)))
+    {
+      i = paramString.indexOf('/', 2);
+      j = paramString.indexOf('\\', 2);
+      if (((i == -1) && (j == -1)) || (i == 2) || (j == 2))
+      {
+        AppMethodBeat.o(10298);
+        return -1;
+      }
+      if (i == -1) {
+        i = j;
+      }
+      for (;;)
+      {
+        k = j;
+        if (j == -1) {
+          k = i;
+        }
+        i = Math.min(i, k);
+        AppMethodBeat.o(10298);
+        return i + 1;
+      }
+    }
+    if (isSeparator(c1))
+    {
+      AppMethodBeat.o(10298);
+      return 1;
+    }
+    AppMethodBeat.o(10298);
+    return 0;
+  }
+  
+  private static int aRm(String paramString)
+  {
+    AppMethodBeat.i(10299);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(10299);
+      return -1;
+    }
+    int i = Math.max(paramString.lastIndexOf('/'), paramString.lastIndexOf('\\'));
+    AppMethodBeat.o(10299);
     return i;
   }
   
-  private static long e(InputStream paramInputStream, OutputStream paramOutputStream)
+  private static void aRn(String paramString)
   {
-    AppMethodBeat.i(151734);
-    byte[] arrayOfByte = new byte[4096];
-    int i;
-    for (long l = 0L;; l += i)
+    AppMethodBeat.i(10301);
+    int j = paramString.length();
+    int i = 0;
+    while (i < j)
     {
-      i = paramInputStream.read(arrayOfByte);
-      if (-1 == i) {
-        break;
+      if (paramString.charAt(i) == 0)
+      {
+        paramString = new IllegalArgumentException("Null byte present in file/path name. There are no known legitimate use cases for such data, but several injection attacks may use it");
+        AppMethodBeat.o(10301);
+        throw paramString;
       }
-      paramOutputStream.write(arrayOfByte, 0, i);
+      i += 1;
     }
-    AppMethodBeat.o(151734);
-    return l;
+    AppMethodBeat.o(10301);
   }
   
-  /* Error */
-  public static byte[] toByteArray(InputStream paramInputStream)
+  public static String getExtension(String paramString)
   {
-    // Byte code:
-    //   0: ldc 99
-    //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 101	org/apache/commons/a/a/a
-    //   8: dup
-    //   9: invokespecial 103	org/apache/commons/a/a/a:<init>	()V
-    //   12: astore_2
-    //   13: aconst_null
-    //   14: astore_1
-    //   15: aload_0
-    //   16: aload_2
-    //   17: invokestatic 105	org/apache/commons/a/c:copy	(Ljava/io/InputStream;Ljava/io/OutputStream;)I
-    //   20: pop
-    //   21: aload_2
-    //   22: invokevirtual 108	org/apache/commons/a/a/a:toByteArray	()[B
-    //   25: astore_0
-    //   26: aload_2
-    //   27: invokevirtual 109	org/apache/commons/a/a/a:close	()V
-    //   30: ldc 99
-    //   32: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   35: aload_0
-    //   36: areturn
-    //   37: astore_1
-    //   38: ldc 99
-    //   40: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   43: aload_1
-    //   44: athrow
-    //   45: astore_0
-    //   46: aload_1
-    //   47: ifnull +23 -> 70
-    //   50: aload_2
-    //   51: invokevirtual 109	org/apache/commons/a/a/a:close	()V
-    //   54: ldc 99
-    //   56: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   59: aload_0
-    //   60: athrow
-    //   61: astore_2
-    //   62: aload_1
-    //   63: aload_2
-    //   64: invokevirtual 57	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
-    //   67: goto -13 -> 54
-    //   70: aload_2
-    //   71: invokevirtual 109	org/apache/commons/a/a/a:close	()V
-    //   74: goto -20 -> 54
-    //   77: astore_0
-    //   78: goto -32 -> 46
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	81	0	paramInputStream	InputStream
-    //   14	1	1	localObject	Object
-    //   37	26	1	localThrowable1	java.lang.Throwable
-    //   12	39	2	locala	org.apache.commons.a.a.a
-    //   61	10	2	localThrowable2	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   15	26	37	java/lang/Throwable
-    //   38	45	45	finally
-    //   50	54	61	java/lang/Throwable
-    //   15	26	77	finally
+    AppMethodBeat.i(10302);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(10302);
+      return null;
+    }
+    int i;
+    if (paramString == null) {
+      i = -1;
+    }
+    while (i == -1)
+    {
+      AppMethodBeat.o(10302);
+      return "";
+      int j = paramString.lastIndexOf('.');
+      i = j;
+      if (aRm(paramString) > j) {
+        i = -1;
+      }
+    }
+    paramString = paramString.substring(i + 1);
+    AppMethodBeat.o(10302);
+    return paramString;
+  }
+  
+  public static String getName(String paramString)
+  {
+    AppMethodBeat.i(10300);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(10300);
+      return null;
+    }
+    aRn(paramString);
+    paramString = paramString.substring(aRm(paramString) + 1);
+    AppMethodBeat.o(10300);
+    return paramString;
+  }
+  
+  private static boolean isSeparator(char paramChar)
+  {
+    return (paramChar == '/') || (paramChar == '\\');
+  }
+  
+  public static String mK(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(10297);
+    int i = aRl(paramString2);
+    if (i < 0)
+    {
+      AppMethodBeat.o(10297);
+      return null;
+    }
+    if (i > 0)
+    {
+      paramString1 = normalize(paramString2);
+      AppMethodBeat.o(10297);
+      return paramString1;
+    }
+    if (paramString1 == null)
+    {
+      AppMethodBeat.o(10297);
+      return null;
+    }
+    i = paramString1.length();
+    if (i == 0)
+    {
+      paramString1 = normalize(paramString2);
+      AppMethodBeat.o(10297);
+      return paramString1;
+    }
+    if (isSeparator(paramString1.charAt(i - 1)))
+    {
+      paramString1 = normalize(paramString1 + paramString2);
+      AppMethodBeat.o(10297);
+      return paramString1;
+    }
+    paramString1 = normalize(paramString1 + '/' + paramString2);
+    AppMethodBeat.o(10297);
+    return paramString1;
+  }
+  
+  private static String normalize(String paramString)
+  {
+    AppMethodBeat.i(10296);
+    int i = Kkq;
+    if (paramString == null)
+    {
+      AppMethodBeat.o(10296);
+      return null;
+    }
+    aRn(paramString);
+    int m = paramString.length();
+    if (m == 0)
+    {
+      AppMethodBeat.o(10296);
+      return paramString;
+    }
+    int i3 = aRl(paramString);
+    if (i3 < 0)
+    {
+      AppMethodBeat.o(10296);
+      return null;
+    }
+    char[] arrayOfChar = new char[m + 2];
+    paramString.getChars(0, paramString.length(), arrayOfChar, 0);
+    if (i == Kkq) {}
+    int k;
+    for (int j = Kkr;; j = Kkq)
+    {
+      k = 0;
+      while (k < arrayOfChar.length)
+      {
+        if (arrayOfChar[k] == j) {
+          arrayOfChar[k] = i;
+        }
+        k += 1;
+      }
+    }
+    if (arrayOfChar[(m - 1)] != i)
+    {
+      j = m + 1;
+      arrayOfChar[m] = i;
+      k = 0;
+      m = j;
+    }
+    for (j = k;; j = 1)
+    {
+      k = i3 + 1;
+      int n;
+      while (k < m)
+      {
+        n = m;
+        i1 = k;
+        if (arrayOfChar[k] == i)
+        {
+          n = m;
+          i1 = k;
+          if (arrayOfChar[(k - 1)] == i)
+          {
+            System.arraycopy(arrayOfChar, k, arrayOfChar, k - 1, m - k);
+            n = m - 1;
+            i1 = k - 1;
+          }
+        }
+        k = i1 + 1;
+        m = n;
+      }
+      k = i3 + 1;
+      int i2;
+      while (k < m)
+      {
+        i2 = j;
+        n = m;
+        i1 = k;
+        if (arrayOfChar[k] == i)
+        {
+          i2 = j;
+          n = m;
+          i1 = k;
+          if (arrayOfChar[(k - 1)] == '.') {
+            if (k != i3 + 1)
+            {
+              i2 = j;
+              n = m;
+              i1 = k;
+              if (arrayOfChar[(k - 2)] != i) {}
+            }
+            else
+            {
+              if (k == m - 1) {
+                j = 1;
+              }
+              System.arraycopy(arrayOfChar, k + 1, arrayOfChar, k - 1, m - k);
+              n = m - 2;
+              i1 = k - 1;
+              i2 = j;
+            }
+          }
+        }
+        k = i1 + 1;
+        j = i2;
+        m = n;
+      }
+      k = i3 + 2;
+      int i1 = m;
+      if (k < i1)
+      {
+        i2 = j;
+        m = i1;
+        n = k;
+        if (arrayOfChar[k] == i)
+        {
+          i2 = j;
+          m = i1;
+          n = k;
+          if (arrayOfChar[(k - 1)] == '.')
+          {
+            i2 = j;
+            m = i1;
+            n = k;
+            if (arrayOfChar[(k - 2)] == '.') {
+              if (k != i3 + 2)
+              {
+                i2 = j;
+                m = i1;
+                n = k;
+                if (arrayOfChar[(k - 3)] != i) {}
+              }
+              else
+              {
+                if (k == i3 + 2)
+                {
+                  AppMethodBeat.o(10296);
+                  return null;
+                }
+                if (k == i1 - 1) {
+                  j = 1;
+                }
+                m = k - 4;
+                label509:
+                if (m < i3) {
+                  break label587;
+                }
+                if (arrayOfChar[m] != i) {
+                  break label578;
+                }
+                System.arraycopy(arrayOfChar, k + 1, arrayOfChar, m + 1, i1 - k);
+                k = i1 - (k - m);
+                n = m + 1;
+                m = k;
+              }
+            }
+          }
+        }
+        for (i2 = j;; i2 = j)
+        {
+          k = n + 1;
+          j = i2;
+          i1 = m;
+          break;
+          label578:
+          m -= 1;
+          break label509;
+          label587:
+          System.arraycopy(arrayOfChar, k + 1, arrayOfChar, i3, i1 - k);
+          m = i1 - (k + 1 - i3);
+          n = i3 + 1;
+        }
+      }
+      if (i1 <= 0)
+      {
+        AppMethodBeat.o(10296);
+        return "";
+      }
+      if (i1 <= i3)
+      {
+        paramString = new String(arrayOfChar, 0, i1);
+        AppMethodBeat.o(10296);
+        return paramString;
+      }
+      if (j != 0)
+      {
+        paramString = new String(arrayOfChar, 0, i1);
+        AppMethodBeat.o(10296);
+        return paramString;
+      }
+      paramString = new String(arrayOfChar, 0, i1 - 1);
+      AppMethodBeat.o(10296);
+      return paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.apache.commons.a.c
  * JD-Core Version:    0.7.0.1
  */

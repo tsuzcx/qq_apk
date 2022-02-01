@@ -9,32 +9,32 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class d
-  extends com.tencent.mm.plugin.appbrand.r.c<c>
+  extends com.tencent.mm.plugin.appbrand.z.c<c>
 {
-  public static final String[] fkl;
-  private final e gVl;
+  public static final String[] gLs;
+  private final e iMV;
   
   static
   {
-    AppMethodBeat.i(129512);
-    fkl = new String[] { j.getCreateSQLs(c.fkk, "PredownloadCmdGetCodePersistentInfo") };
-    AppMethodBeat.o(129512);
+    AppMethodBeat.i(44439);
+    gLs = new String[] { j.getCreateSQLs(c.gLr, "PredownloadCmdGetCodePersistentInfo2"), "DROP TABLE IF EXISTS PredownloadCmdGetCodePersistentInfo" };
+    AppMethodBeat.o(44439);
   }
   
   public d(e parame)
   {
-    super(parame, c.fkk, "PredownloadCmdGetCodePersistentInfo", c.INDEX_CREATE);
-    this.gVl = parame;
+    super(parame, c.gLr, "PredownloadCmdGetCodePersistentInfo2", c.INDEX_CREATE);
+    this.iMV = parame;
   }
   
   public final List<c> c(String paramString, String... paramVarArgs)
   {
-    AppMethodBeat.i(129511);
-    paramString = this.gVl.query("PredownloadCmdGetCodePersistentInfo", null, paramString, paramVarArgs, null, null, null);
+    AppMethodBeat.i(44438);
+    paramString = this.iMV.query("PredownloadCmdGetCodePersistentInfo2", null, paramString, paramVarArgs, null, null, null);
     if ((paramString == null) || (paramString.isClosed()))
     {
       paramString = Collections.emptyList();
-      AppMethodBeat.o(129511);
+      AppMethodBeat.o(44438);
       return paramString;
     }
     paramVarArgs = new LinkedList();
@@ -47,13 +47,13 @@ public final class d
       } while (paramString.moveToNext());
     }
     paramString.close();
-    AppMethodBeat.o(129511);
+    AppMethodBeat.o(44438);
     return paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.b.e.d
  * JD-Core Version:    0.7.0.1
  */

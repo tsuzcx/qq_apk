@@ -38,7 +38,7 @@ public abstract class al
       return true;
     }
     paramParcel1.enforceInterface("com.google.android.gms.common.internal.IAccountAccessor");
-    paramParcel1 = fX();
+    paramParcel1 = gi();
     paramParcel2.writeNoException();
     if (paramParcel1 != null)
     {

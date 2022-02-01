@@ -1,154 +1,127 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.storage.emotion.a;
-import com.tencent.mm.storage.emotion.f;
-import com.tencent.mm.storage.emotion.j;
-import com.tencent.mm.storage.emotion.l;
-import com.tencent.mm.storage.emotion.n;
-import com.tencent.mm.storage.emotion.p;
-import com.tencent.mm.storage.emotion.q;
-import com.tencent.mm.storage.emotion.r;
-import com.tencent.mm.storage.emotion.t;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mm.g.a.pu;
+import com.tencent.mm.memory.a.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.k;
+import d.l;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/storage/EmojiDesignerProductList;", "", "()V", "TAG", "", "designerUin", "", "getDesignerUin", "()I", "setDesignerUin", "(I)V", "productList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/storage/emotion/EmojiDesignerProduct;", "getProductList", "()Ljava/util/LinkedList;", "getNew", "", "hasNew", "", "markRead", "", "Cache", "Companion", "plugin-emojisdk_release"})
 public final class at
 {
-  private static int cNR;
-  public static boolean yNA;
-  private static ArrayList<EmojiGroupInfo> yNB;
-  private static HashMap<String, ArrayList<EmojiInfo>> yNC;
-  private static at yNH;
-  public final k.a yND;
-  public final k.a yNE;
-  public final k.a yNF;
-  public final com.tencent.mm.sdk.b.c yNG;
-  public String yNI;
-  public com.tencent.mm.storage.emotion.d yNn;
-  public a yNo;
-  public com.tencent.mm.storage.emotion.c yNp;
-  public p yNq;
-  public j yNr;
-  public l yNs;
-  public com.tencent.mm.storage.emotion.h yNt;
-  public n yNu;
-  public q yNv;
-  public r yNw;
-  public f yNx;
-  public t yNy;
-  public com.tencent.mm.emoji.a.d yNz;
+  public static final b FyD;
+  public final LinkedList<com.tencent.mm.storage.emotion.a> FyC;
+  private final String TAG;
+  public int fMB;
   
   static
   {
-    AppMethodBeat.i(62719);
-    yNA = false;
-    yNB = new ArrayList();
-    yNC = new HashMap();
-    cNR = -1;
-    AppMethodBeat.o(62719);
+    AppMethodBeat.i(183993);
+    FyD = new b((byte)0);
+    AppMethodBeat.o(183993);
   }
   
-  private at()
+  public at()
   {
-    AppMethodBeat.i(62715);
-    this.yND = new at.1(this);
-    this.yNE = new at.2(this);
-    this.yNF = new at.3(this);
-    this.yNG = new at.4(this);
-    ab.i("MicroMsg.emoji.EmojiStorageMgr", "EmojiStorageMgr: %s", new Object[] { bo.dtY() });
-    AppMethodBeat.o(62715);
+    AppMethodBeat.i(183992);
+    this.TAG = "MicroMsg.EmojiDesignerProductList";
+    this.FyC = new LinkedList();
+    AppMethodBeat.o(183992);
   }
   
-  public static at dxt()
+  public final boolean eLv()
   {
-    try
+    AppMethodBeat.i(183990);
+    ad.i(this.TAG, "hasNew: " + this.fMB + ", " + this.FyC.size());
+    int j = (int)bt.aGK();
+    Object localObject = (Iterable)this.FyC;
+    if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty()))
     {
-      AppMethodBeat.i(62714);
-      if (yNH == null)
+      localObject = ((Iterable)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localat = new at();
-        yNH = localat;
-        ab.i("MicroMsg.emoji.EmojiStorageMgr", "checkInitStorage: ");
-        if (localat.yNn == null) {
-          localat.dxu();
+        if (((com.tencent.mm.storage.emotion.a)((Iterator)localObject).next()).field_syncTime > j - 2592000L) {}
+        for (int i = 1; i != 0; i = 0)
+        {
+          AppMethodBeat.o(183990);
+          return true;
         }
       }
-      at localat = yNH;
-      AppMethodBeat.o(62714);
-      return localat;
     }
-    finally {}
-  }
-  
-  public final com.tencent.mm.storage.emotion.d aUI()
-  {
-    return this.yNn;
-  }
-  
-  public final int blc()
-  {
-    AppMethodBeat.i(62716);
-    if ((cNR == -1) || (yNA)) {
-      cNR = this.yNo.dyX();
-    }
-    int i = cNR;
-    AppMethodBeat.o(62716);
-    return i;
-  }
-  
-  public final ArrayList<EmojiInfo> ch(boolean paramBoolean)
-  {
-    AppMethodBeat.i(62717);
-    ArrayList localArrayList = this.yNz.ch(paramBoolean);
-    AppMethodBeat.o(62717);
-    return localArrayList;
-  }
-  
-  public final void dxu()
-  {
-    AppMethodBeat.i(154801);
-    ab.i("MicroMsg.emoji.EmojiStorageMgr", "initStorage: ");
-    if ((g.RL().eHS == null) || (!g.RL().eHS.isOpen())) {
-      ab.w("MicroMsg.emoji.EmojiStorageMgr", "initStorage: db close %s", new Object[] { g.RL().eHS });
-    }
-    this.yNn = new com.tencent.mm.storage.emotion.d(g.RL().eHS);
-    this.yNo = new a(g.RL().eHS);
-    this.yNp = new com.tencent.mm.storage.emotion.c(g.RL().eHS);
-    this.yNr = new j(g.RL().eHS);
-    this.yNs = new l(g.RL().eHS);
-    this.yNt = new com.tencent.mm.storage.emotion.h(g.RL().eHS);
-    this.yNq = new p(g.RL().eHS);
-    this.yNu = new n(g.RL().eHS);
-    this.yNv = new q(g.RL().eHS);
-    this.yNw = new r(g.RL().eHS);
-    this.yNx = new f(g.RL().eHS);
-    this.yNy = new t();
-    this.yNz = com.tencent.mm.emoji.a.d.Oz();
-    AppMethodBeat.o(154801);
-  }
-  
-  public final boolean dxv()
-  {
-    AppMethodBeat.i(62718);
-    if (this.yNI == null) {
-      this.yNI = ((String)g.RL().Ru().get(ac.a.yKz, ""));
-    }
-    if (!bo.isNullOrNil(this.yNI))
-    {
-      AppMethodBeat.o(62718);
-      return true;
-    }
-    AppMethodBeat.o(62718);
+    AppMethodBeat.o(183990);
     return false;
   }
+  
+  public final void eLw()
+  {
+    AppMethodBeat.i(183991);
+    if (eLv())
+    {
+      Iterator localIterator = ((Iterable)this.FyC).iterator();
+      while (localIterator.hasNext()) {
+        ((com.tencent.mm.storage.emotion.a)localIterator.next()).field_syncTime = 0;
+      }
+      aw.eLx().eLA().a(this);
+      com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)new pu());
+    }
+    AppMethodBeat.o(183991);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/storage/EmojiDesignerProductList$Cache;", "", "()V", "map", "Lcom/tencent/mm/memory/cache/DefaultResource;", "", "Lcom/tencent/mm/storage/EmojiDesignerProductList;", "getMap", "()Lcom/tencent/mm/memory/cache/DefaultResource;", "get", "designerUin", "put", "", "info", "plugin-emojisdk_release"})
+  public static final class a
+  {
+    private static final c<Integer, at> FyE;
+    public static final a FyF;
+    
+    static
+    {
+      AppMethodBeat.i(183989);
+      FyF = new a();
+      FyE = new c(500);
+      AppMethodBeat.o(183989);
+    }
+    
+    public static at Wz(int paramInt)
+    {
+      AppMethodBeat.i(183987);
+      at localat2 = (at)FyE.get(Integer.valueOf(paramInt));
+      at localat1;
+      if (aj.cbe())
+      {
+        localat1 = localat2;
+        if (localat2 == null)
+        {
+          localat1 = aw.eLx().eLA().WE(paramInt);
+          FyE.put(Integer.valueOf(paramInt), localat1);
+        }
+      }
+      for (;;)
+      {
+        k.g(localat1, "info");
+        AppMethodBeat.o(183987);
+        return localat1;
+        localat1 = new at();
+        localat1.fMB = paramInt;
+      }
+    }
+    
+    public static void a(int paramInt, at paramat)
+    {
+      AppMethodBeat.i(183988);
+      k.h(paramat, "info");
+      FyE.put(Integer.valueOf(paramInt), paramat);
+      AppMethodBeat.o(183988);
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/storage/EmojiDesignerProductList$Companion;", "", "()V", "NEW_VALID", "", "plugin-emojisdk_release"})
+  public static final class b {}
 }
 
 

@@ -7,13 +7,17 @@ public abstract interface a<T extends c>
 {
   public abstract int getState();
   
-  public abstract a.a nR();
+  public abstract a sD();
   
-  public abstract T nS();
+  public abstract T sE();
+  
+  public static final class a
+    extends Exception
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.a
  * JD-Core Version:    0.7.0.1
  */

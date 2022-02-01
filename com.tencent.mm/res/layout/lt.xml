@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.chatting.ChatFooterCustom android:orientation="horizontal" android:id="@id/aor" android:background="@drawable/b_0" android:layout_width="fill_parent" android:layout_height="@dimen/g9"
+<LinearLayout android:orientation="vertical" android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:id="@id/aos" android:background="@color/a1" android:layout_width="@dimen/eq" android:layout_height="fill_parent">
-        <ImageView android:id="@id/aot" android:layout_width="@dimen/g6" android:layout_height="@dimen/g6" android:src="@drawable/jd" android:scaleType="fitXY" android:contentDescription="@string/ak9" />
+    <TextView android:textSize="@dimen/jt" android:textColor="@color/tq" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/fhv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hj" android:layout_marginBottom="@dimen/hj" android:text="@string/aoa" android:singleLine="true" />
+    <LinearLayout android:gravity="center" android:id="@id/d43" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
+        <ImageView android:id="@id/if" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a7h" />
+        <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/u7" />
     </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/aou" android:background="@color/a1" android:layout_width="0.0px" android:layout_height="fill_parent" android:weightSum="3.0" android:layout_weight="1.0">
-        <include layout="@layout/ls" />
-        <include layout="@layout/ls" />
-        <include layout="@layout/ls" />
-        <include layout="@layout/ls" />
-        <include layout="@layout/ls" />
-        <include layout="@layout/ls" />
+    <LinearLayout android:layout_gravity="center" android:id="@id/d3y" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginTop="@dimen/i_" android:layout_marginBottom="5.0dip">
+        <ImageView android:gravity="center" android:layout_gravity="center" android:background="@drawable/ay7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </LinearLayout>
-    <ImageView android:id="@id/aov" android:background="@color/a1" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/w_" />
-</com.tencent.mm.ui.chatting.ChatFooterCustom>
+</LinearLayout>

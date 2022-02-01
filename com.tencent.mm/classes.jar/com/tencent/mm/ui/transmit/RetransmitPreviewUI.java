@@ -3,49 +3,60 @@ package com.tencent.mm.ui.transmit;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cd.g;
+import com.tencent.mm.cg.g;
 import com.tencent.mm.ui.MMActivity;
 
 public class RetransmitPreviewUI
   extends MMActivity
 {
-  private TextView md = null;
+  private TextView Tu = null;
   private String text = null;
   
   public int getLayoutId()
   {
-    return 2130969092;
+    return 2131493465;
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(35122);
+    AppMethodBeat.i(39321);
     finish();
-    AppMethodBeat.o(35122);
+    AppMethodBeat.o(39321);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(35121);
+    AppMethodBeat.i(39320);
     super.onCreate(paramBundle);
     setMMTitle("");
     this.text = getIntent().getStringExtra("Retr_Msg_content");
-    this.md = ((TextView)findViewById(2131822701));
-    paramBundle = this.md;
-    g localg = g.dvk();
+    this.Tu = ((TextView)findViewById(2131300329));
+    paramBundle = this.Tu;
+    g localg = g.eIa();
     getContext();
-    paramBundle.setText(localg.b(this.text, this.md.getTextSize()));
-    setBackBtn(new RetransmitPreviewUI.1(this));
-    AppMethodBeat.o(35121);
+    paramBundle.setText(localg.b(this.text, this.Tu.getTextSize()));
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(39319);
+        RetransmitPreviewUI.this.finish();
+        AppMethodBeat.o(39319);
+        return true;
+      }
+    });
+    AppMethodBeat.o(39320);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(35123);
+    AppMethodBeat.i(39322);
     super.onDestroy();
-    AppMethodBeat.o(35123);
+    AppMethodBeat.o(39322);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -56,7 +67,7 @@ public class RetransmitPreviewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.RetransmitPreviewUI
  * JD-Core Version:    0.7.0.1
  */

@@ -5,23 +5,23 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface c
   extends a
 {
-  public abstract String Kf(String paramString);
+  public abstract String Tl(String paramString);
   
-  public abstract byte[] aF(byte[] paramArrayOfByte);
+  public abstract byte[] aV(byte[] paramArrayOfByte);
   
-  public abstract boolean bke();
+  public abstract boolean bTT();
   
-  public abstract boolean bkf();
+  public abstract boolean bTU();
   
-  public abstract boolean bkg();
+  public abstract boolean bTV();
   
-  public abstract int dI(String paramString1, String paramString2);
+  public abstract int eV(String paramString1, String paramString2);
   
   public abstract int nativeWxam2Pic(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.b.c
  * JD-Core Version:    0.7.0.1
  */

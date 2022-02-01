@@ -1,158 +1,141 @@
 package com.tencent.mm.plugin.clean.c;
 
+import android.os.StatFs;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import java.util.ArrayList;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storagebase.h.b;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 public final class d
+  implements aw
 {
-  private static com.tencent.mm.plugin.clean.c.a.b kGD;
-  private static long kGI;
-  private static long kGJ;
-  private static final ak kGR;
-  private static HashSet<String> kGS;
-  private static ArrayList<b> kGT;
-  private static int kGU;
-  private static long kGs;
-  private static long kGt;
+  private static d nNO;
+  public long cacheSize;
+  public HashMap<String, Long> nNM;
+  public HashSet<String> nNN;
+  public long nNw;
+  public long nNx;
+  public long nNy;
+  public LinkedList<String> npF;
   
-  static
+  public static d bNS()
   {
-    AppMethodBeat.i(18699);
-    kGR = new ak();
-    kGJ = 0L;
-    kGI = 0L;
-    kGt = 0L;
-    kGs = 0L;
-    kGU = 0;
-    AppMethodBeat.o(18699);
+    AppMethodBeat.i(22827);
+    if (nNO == null) {
+      nNO = new d();
+    }
+    d locald = nNO;
+    AppMethodBeat.o(22827);
+    return locald;
   }
   
-  public static void a(com.tencent.mm.plugin.clean.c.a.b paramb)
+  public static long bNT()
   {
-    kGD = paramb;
-  }
-  
-  public static void b(HashSet<String> paramHashSet)
-  {
-    kGS = paramHashSet;
-  }
-  
-  public static com.tencent.mm.plugin.clean.c.a.b bgO()
-  {
-    boolean bool = true;
-    AppMethodBeat.i(18695);
-    if (kGD == null) {}
-    for (;;)
+    AppMethodBeat.i(22832);
+    long l;
+    try
     {
-      ab.d("MicroMsg.CleanLogic", "getThreadController threadController is null? %b", new Object[] { Boolean.valueOf(bool) });
-      com.tencent.mm.plugin.clean.c.a.b localb = kGD;
-      AppMethodBeat.o(18695);
-      return localb;
-      bool = false;
+      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.aib());
+      l = localStatFs.getBlockCount();
+      int i = localStatFs.getBlockSize();
+      l = i * l;
     }
-  }
-  
-  public static HashSet<String> bgP()
-  {
-    return kGS;
-  }
-  
-  public static ArrayList<b> bgQ()
-  {
-    return kGT;
-  }
-  
-  public static long bgR()
-  {
-    return kGJ;
-  }
-  
-  public static long bgS()
-  {
-    return kGs;
-  }
-  
-  public static long bgT()
-  {
-    return kGt;
-  }
-  
-  public static long bgU()
-  {
-    return kGI;
-  }
-  
-  public static final void bgV()
-  {
-    AppMethodBeat.i(18697);
-    ab.i("MicroMsg.CleanLogic", "startCleanDataNow");
-    kGR.removeCallbacksAndMessages(null);
-    kGJ = 0L;
-    kGI = 0L;
-    u(null);
-    kGU = 0;
-    AppMethodBeat.o(18697);
-  }
-  
-  public static final void bgW()
-  {
-    AppMethodBeat.i(18698);
-    ab.i("MicroMsg.CleanLogic", "start to post clean runnable!!");
-    kGR.removeCallbacksAndMessages(null);
-    kGR.postDelayed(new d.1(), 300000L);
-    AppMethodBeat.o(18698);
-  }
-  
-  public static final void bgX()
-  {
-    kGU += 1;
-  }
-  
-  public static final void bgY()
-  {
-    kGU -= 1;
-  }
-  
-  public static void iq(long paramLong)
-  {
-    kGJ = paramLong;
-  }
-  
-  public static void ir(long paramLong)
-  {
-    kGs = paramLong;
-  }
-  
-  public static void is(long paramLong)
-  {
-    long l = paramLong;
-    if (paramLong <= 0L) {
-      l = 0L;
-    }
-    kGt = l;
-  }
-  
-  public static void it(long paramLong)
-  {
-    kGI = paramLong;
-  }
-  
-  public static void u(ArrayList<b> paramArrayList)
-  {
-    boolean bool = true;
-    AppMethodBeat.i(18696);
-    if (paramArrayList == null) {}
-    for (;;)
+    catch (Exception localException)
     {
-      ab.i("MicroMsg.CleanLogic", "set analyse data: is null? %b", new Object[] { Boolean.valueOf(bool) });
-      kGT = paramArrayList;
-      AppMethodBeat.o(18696);
-      return;
-      bool = false;
+      for (;;)
+      {
+        l = 0L;
+      }
+      AppMethodBeat.o(22832);
     }
+    if (l <= 0L)
+    {
+      AppMethodBeat.o(22832);
+      return 1L;
+    }
+    return l;
+  }
+  
+  public static long bNU()
+  {
+    AppMethodBeat.i(22833);
+    long l;
+    try
+    {
+      StatFs localStatFs = new StatFs(com.tencent.mm.loader.j.b.aib());
+      l = localStatFs.getAvailableBlocks();
+      int i = localStatFs.getBlockSize();
+      l = i * l;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        l = 0L;
+      }
+      AppMethodBeat.o(22833);
+    }
+    if (l <= 0L)
+    {
+      AppMethodBeat.o(22833);
+      return 1L;
+    }
+    return l;
+  }
+  
+  public static void bNV()
+  {
+    AppMethodBeat.i(22834);
+    com.tencent.mm.plugin.f.b.bHc().bHe();
+    AppMethodBeat.o(22834);
+  }
+  
+  public final void clearPluginData(int paramInt)
+  {
+    AppMethodBeat.i(22828);
+    a.bNQ();
+    AppMethodBeat.o(22828);
+  }
+  
+  public final HashMap<Integer, h.b> getBaseDBFactories()
+  {
+    return null;
+  }
+  
+  public final void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(22829);
+    ad.i("MicroMsg.SubCoreClean", "summerclean onAccountPostReset updated[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.plugin.f.b.bHc().onAccountInitialized(null);
+    AppMethodBeat.o(22829);
+  }
+  
+  public final void onAccountRelease()
+  {
+    AppMethodBeat.i(22831);
+    ad.i("MicroMsg.SubCoreClean", "summerclean onAccountRelease");
+    this.nNw = 0L;
+    this.nNx = 0L;
+    this.nNy = 0L;
+    if (this.nNM != null) {
+      this.nNM.clear();
+    }
+    if (this.nNN != null) {
+      this.nNN.clear();
+    }
+    a.bNQ();
+    com.tencent.mm.plugin.f.b.bHc().onAccountRelease();
+    AppMethodBeat.o(22831);
+  }
+  
+  public final void onSdcardMount(boolean paramBoolean)
+  {
+    AppMethodBeat.i(22830);
+    ad.i("MicroMsg.SubCoreClean", "summerclean onSdcardMount mounted[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(22830);
   }
 }
 

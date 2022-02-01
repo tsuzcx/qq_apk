@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.appbrand.jsapi.share;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.a.b;
+import com.tencent.mm.ai.a.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelappbrand.k;
+import com.tencent.mm.modelappbrand.m;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.h;
 import junit.framework.Assert;
 
 public final class JsApiShowUpdatableMessageSubscribeButton
-  extends a<r>
+  extends a<q>
 {
   public static final int CTRL_INDEX = 465;
   public static final String NAME = "showUpdatableMessageSubscribeButton";
@@ -23,65 +23,65 @@ public final class JsApiShowUpdatableMessageSubscribeButton
     extends MainProcessTask
   {
     public static final Parcelable.Creator<ShowUpdatableMessageSubscribeButtonTask> CREATOR;
-    public String bCZ;
+    public String cfh;
     
     static
     {
-      AppMethodBeat.i(131458);
-      CREATOR = new JsApiShowUpdatableMessageSubscribeButton.ShowUpdatableMessageSubscribeButtonTask.1();
-      AppMethodBeat.o(131458);
+      AppMethodBeat.i(46794);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(46794);
     }
     
     public ShowUpdatableMessageSubscribeButtonTask() {}
     
     public ShowUpdatableMessageSubscribeButtonTask(Parcel paramParcel)
     {
-      AppMethodBeat.i(131454);
-      f(paramParcel);
-      AppMethodBeat.o(131454);
+      AppMethodBeat.i(46790);
+      e(paramParcel);
+      AppMethodBeat.o(46790);
     }
     
-    public final void ata()
+    public final void aEz()
     {
-      AppMethodBeat.i(131455);
-      if (g.E(k.class) == null)
+      AppMethodBeat.i(46791);
+      if (g.ab(m.class) == null)
       {
-        ab.e("MicroMsg.ShowUpdatableMessageSubscribeButtonTask", "IWxaUpdateableMsgService is null, err, return");
-        if (f.IS_FLAVOR_RED) {
+        ad.e("MicroMsg.ShowUpdatableMessageSubscribeButtonTask", "IWxaUpdateableMsgService is null, err, return");
+        if (h.IS_FLAVOR_RED) {
           Assert.assertTrue("IWxaUpdateableMsgService is null, err, @tummy", false);
         }
-        AppMethodBeat.o(131455);
+        AppMethodBeat.o(46791);
         return;
       }
-      b localb = ((k)g.E(k.class)).qj(this.bCZ);
-      if ((localb != null) && ((localb.field_btnState == 2) || (localb.field_msgState != 0)))
+      c localc = ((m)g.ab(m.class)).uY(this.cfh);
+      if ((localc != null) && ((localc.field_btnState == 2) || (localc.field_msgState != 0)))
       {
-        ab.e("MicroMsg.ShowUpdatableMessageSubscribeButtonTask", "shareKey:%s btnState:%d msgState:%d ingore already process", new Object[] { this.bCZ, Integer.valueOf(localb.field_btnState), Integer.valueOf(localb.field_msgState) });
-        AppMethodBeat.o(131455);
+        ad.e("MicroMsg.ShowUpdatableMessageSubscribeButtonTask", "shareKey:%s btnState:%d msgState:%d ingore already process", new Object[] { this.cfh, Integer.valueOf(localc.field_btnState), Integer.valueOf(localc.field_msgState) });
+        AppMethodBeat.o(46791);
         return;
       }
-      ((k)g.E(k.class)).T(this.bCZ, 1);
-      AppMethodBeat.o(131455);
+      ((m)g.ab(m.class)).ab(this.cfh, 1);
+      AppMethodBeat.o(46791);
     }
     
-    public final void f(Parcel paramParcel)
+    public final void e(Parcel paramParcel)
     {
-      AppMethodBeat.i(131456);
-      this.bCZ = paramParcel.readString();
-      AppMethodBeat.o(131456);
+      AppMethodBeat.i(46792);
+      this.cfh = paramParcel.readString();
+      AppMethodBeat.o(46792);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(131457);
-      paramParcel.writeString(this.bCZ);
-      AppMethodBeat.o(131457);
+      AppMethodBeat.i(46793);
+      paramParcel.writeString(this.cfh);
+      AppMethodBeat.o(46793);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.JsApiShowUpdatableMessageSubscribeButton
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,86 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.a.a;
+import com.tencent.luggage.d.e;
+import com.tencent.luggage.d.n;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.plugin.webview.luggage.l;
-import com.tencent.mm.sdk.platformtools.ab;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.type.IPCInteger;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ay;
+import java.util.HashMap;
+import java.util.Map;
 
 public class v
-  extends bi<e>
+  extends bn<n>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama) {}
+  public final void a(Context paramContext, String paramString, bn.a parama) {}
   
-  public final void b(a<e>.a parama)
+  public final void b(a<n>.a parama)
   {
-    AppMethodBeat.i(6315);
-    ab.i("MicroMsg.JsApiHideMenuItems", "invokeInOwn");
-    JSONArray localJSONArray = parama.byF.bxK.optJSONArray("menuList");
-    if (localJSONArray == null)
+    AppMethodBeat.i(78558);
+    ad.i("MicroMsg.JsApiGetNetworkType", "invoke");
+    if (!ay.isConnected(((n)parama.bZU).mContext))
     {
-      ab.i("MicroMsg.JsApiHideMenuItems", "data is null");
-      parama.a("invalid_data", null);
-      AppMethodBeat.o(6315);
+      ad.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, not connected");
+      parama.a("network_type:fail", null);
+      AppMethodBeat.o(78558);
       return;
     }
-    l locall = ((e)parama.byE).daV();
-    if (locall != null) {
-      locall.K(localJSONArray);
+    ad.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, type = ".concat(String.valueOf(ay.getNetType(((n)parama.bZU).mContext))));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("simtype", (IPCInteger)h.a("com.tencent.mm", null, a.class));
+    if (ay.isWifi(((n)parama.bZU).mContext))
+    {
+      ad.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, wifi");
+      parama.c("network_type:wifi", localHashMap);
+      AppMethodBeat.o(78558);
+      return;
     }
-    parama.a("", null);
-    AppMethodBeat.o(6315);
+    if (ay.is2G(((n)parama.bZU).mContext))
+    {
+      ad.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 2g");
+      localHashMap.put("subtype", "2g");
+    }
+    for (;;)
+    {
+      parama.c("network_type:wwan", localHashMap);
+      AppMethodBeat.o(78558);
+      return;
+      if (ay.is3G(((n)parama.bZU).mContext))
+      {
+        ad.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 3g");
+        localHashMap.put("subtype", "3g");
+      }
+      else if (ay.is4G(((n)parama.bZU).mContext))
+      {
+        ad.i("MicroMsg.JsApiGetNetworkType", "getNetworkType, 4g");
+        localHashMap.put("subtype", "4g");
+      }
+    }
   }
   
-  public final int bjL()
+  public final int bQV()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "hideMenuItems";
+    return "getNetworkType";
   }
+  
+  static class a
+    implements k<IPCVoid, IPCInteger>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.v
  * JD-Core Version:    0.7.0.1
  */

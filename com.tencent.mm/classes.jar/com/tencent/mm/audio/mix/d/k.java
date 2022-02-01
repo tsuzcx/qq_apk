@@ -1,23 +1,25 @@
 package com.tencent.mm.audio.mix.d;
 
-import com.tencent.mm.ag.b;
-import com.tencent.mm.audio.mix.a.c;
+import com.tencent.mm.aj.b;
+import com.tencent.mm.audio.mix.a.d;
 
 public abstract interface k
 {
-  public abstract b DE();
+  public abstract void MX();
   
-  public abstract void Do();
+  public abstract void MY();
   
-  public abstract void Dp();
+  public abstract boolean Nb();
   
-  public abstract boolean Ds();
+  public abstract boolean Nc();
   
-  public abstract boolean Dt();
+  public abstract d Nd();
   
-  public abstract c Du();
+  public abstract void Ng();
   
-  public abstract void Dx();
+  public abstract b Nn();
+  
+  public abstract long getCurrentPosition();
   
   public abstract void init();
   
@@ -35,7 +37,7 @@ public abstract interface k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.d.k
  * JD-Core Version:    0.7.0.1
  */

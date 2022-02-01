@@ -1,12 +1,12 @@
 package com.tencent.mm.wear.app.d.b;
 
-import android.app.Notification.Builder;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Looper;
+import android.support.v4.app.at;
 import com.tencent.mm.b.a.k;
 import com.tencent.mm.b.a.l;
 import com.tencent.mm.b.a.m;
@@ -20,6 +20,7 @@ import com.tencent.mm.e.a.w;
 import com.tencent.mm.wear.app.MMApplication;
 import com.tencent.mm.wear.app.d.c;
 import com.tencent.mm.wear.app.d.f;
+import com.tencent.mm.wear.app.d.g;
 import com.tencent.mm.wear.app.service.StepCountService;
 import com.tencent.mm.wear.app.service.subservice.FailMsgIgnoreService;
 import com.tencent.mm.wear.app.service.subservice.FailMsgOpenService;
@@ -62,7 +63,7 @@ public final class b
         paramArrayOfByte = new com.tencent.mm.wear.app.d.d(MMApplication.getContext(), (w)localObject1);
         paramArrayOfByte.create();
         paramArrayOfByte.send();
-        com.tencent.mm.wear.app.d.a.bK(2);
+        com.tencent.mm.wear.app.d.a.cg(2);
         return;
       }
       catch (IOException paramArrayOfByte)
@@ -74,12 +75,12 @@ public final class b
       try
       {
         ((v)localObject1).h(paramArrayOfByte);
-        if (((v)localObject1).Wd)
+        if (((v)localObject1).XY)
         {
           ((NotificationManager)MMApplication.getContext().getSystemService("notification")).cancelAll();
           return;
         }
-        f.a(MMApplication.getContext(), ((v)localObject1).Wc);
+        g.a(MMApplication.getContext(), ((v)localObject1).XX);
         return;
         localObject1 = new com.tencent.mm.e.a.h();
       }
@@ -88,20 +89,20 @@ public final class b
         try
         {
           ((com.tencent.mm.e.a.h)localObject1).h(paramArrayOfByte);
-          paramArrayOfByte = new Notification.Builder(MMApplication.getContext());
-          paramArrayOfByte.setLocalOnly(true);
-          paramArrayOfByte.setContentTitle(((com.tencent.mm.e.a.h)localObject1).Vw);
-          paramArrayOfByte.setContentText(((com.tencent.mm.e.a.h)localObject1).Vx);
-          paramArrayOfByte.setSmallIcon(2130837543);
-          paramArrayOfByte.setLargeIcon(BitmapFactory.decodeResource(MMApplication.getContext().getResources(), 2130837543));
-          localObject2 = PendingIntent.getService(MMApplication.getContext(), ((com.tencent.mm.e.a.h)localObject1).Vv, a(MMApplication.getContext(), ((com.tencent.mm.e.a.h)localObject1).Vv, 11015, "", FailMsgResendService.class), 134217728);
-          localObject3 = PendingIntent.getService(MMApplication.getContext(), ((com.tencent.mm.e.a.h)localObject1).Vv, a(MMApplication.getContext(), ((com.tencent.mm.e.a.h)localObject1).Vv, 11013, "", FailMsgIgnoreService.class), 134217728);
-          localPendingIntent1 = PendingIntent.getService(MMApplication.getContext(), ((com.tencent.mm.e.a.h)localObject1).Vv, a(MMApplication.getContext(), ((com.tencent.mm.e.a.h)localObject1).Vv, 11014, "", FailMsgOpenService.class), 134217728);
-          paramArrayOfByte.addAction(2130837576, com.tencent.mm.wear.app.d.d.bO(2131165223), (PendingIntent)localObject2);
-          paramArrayOfByte.addAction(2130837578, com.tencent.mm.wear.app.d.d.bO(2131165219), (PendingIntent)localObject3);
-          paramArrayOfByte.addAction(2130837582, com.tencent.mm.wear.app.d.d.bO(2131165221), localPendingIntent1);
-          paramArrayOfByte.setVibrate(new long[] { 0L, 150L, 100L, 400L });
-          f.a(MMApplication.getContext(), ((com.tencent.mm.e.a.h)localObject1).Vv, paramArrayOfByte.build());
+          paramArrayOfByte = f.i(MMApplication.getContext(), "message_channel_id");
+          paramArrayOfByte.aN();
+          paramArrayOfByte.b(((com.tencent.mm.e.a.h)localObject1).Xr);
+          paramArrayOfByte.c(((com.tencent.mm.e.a.h)localObject1).Xs);
+          paramArrayOfByte.t(2130837543);
+          paramArrayOfByte.a(BitmapFactory.decodeResource(MMApplication.getContext().getResources(), 2130837543));
+          localObject2 = PendingIntent.getService(MMApplication.getContext(), ((com.tencent.mm.e.a.h)localObject1).Xq, a(MMApplication.getContext(), ((com.tencent.mm.e.a.h)localObject1).Xq, 11015, "", FailMsgResendService.class), 134217728);
+          localObject3 = PendingIntent.getService(MMApplication.getContext(), ((com.tencent.mm.e.a.h)localObject1).Xq, a(MMApplication.getContext(), ((com.tencent.mm.e.a.h)localObject1).Xq, 11013, "", FailMsgIgnoreService.class), 134217728);
+          localPendingIntent1 = PendingIntent.getService(MMApplication.getContext(), ((com.tencent.mm.e.a.h)localObject1).Xq, a(MMApplication.getContext(), ((com.tencent.mm.e.a.h)localObject1).Xq, 11014, "", FailMsgOpenService.class), 134217728);
+          paramArrayOfByte.a(2130837576, com.tencent.mm.wear.app.d.d.ck(2131165223), (PendingIntent)localObject2);
+          paramArrayOfByte.a(2130837578, com.tencent.mm.wear.app.d.d.ck(2131165219), (PendingIntent)localObject3);
+          paramArrayOfByte.a(2130837582, com.tencent.mm.wear.app.d.d.ck(2131165221), localPendingIntent1);
+          paramArrayOfByte.a(new long[] { 0L, 150L, 100L, 400L });
+          g.a(MMApplication.getContext(), ((com.tencent.mm.e.a.h)localObject1).Xq, paramArrayOfByte.build());
           return;
           localObject1 = new j();
         }
@@ -111,47 +112,47 @@ public final class b
           {
             PendingIntent localPendingIntent1;
             ((j)localObject1).h(paramArrayOfByte);
-            localObject1 = ((j)localObject1).Vz.iterator();
+            localObject1 = ((j)localObject1).Xu.iterator();
             if (!((Iterator)localObject1).hasNext()) {
               continue;
             }
             Object localObject2 = (com.tencent.mm.e.a.i)((Iterator)localObject1).next();
-            Object localObject3 = new Notification.Builder(MMApplication.getContext());
-            ((Notification.Builder)localObject3).setLocalOnly(true);
-            ((Notification.Builder)localObject3).setContentTitle(((com.tencent.mm.e.a.i)localObject2).Vp);
-            ((Notification.Builder)localObject3).setContentText(((com.tencent.mm.e.a.i)localObject2).Vx);
-            ((Notification.Builder)localObject3).setSmallIcon(2130837543);
-            if (((com.tencent.mm.e.a.i)localObject2).Vy != null) {
-              paramArrayOfByte = ((com.tencent.mm.e.a.i)localObject2).Vy.toByteArray();
+            Object localObject3 = f.i(MMApplication.getContext(), "message_channel_id");
+            ((at)localObject3).aN();
+            ((at)localObject3).b(((com.tencent.mm.e.a.i)localObject2).Xk);
+            ((at)localObject3).c(((com.tencent.mm.e.a.i)localObject2).Xs);
+            ((at)localObject3).t(2130837543);
+            if (((com.tencent.mm.e.a.i)localObject2).Xt != null) {
+              paramArrayOfByte = ((com.tencent.mm.e.a.i)localObject2).Xt.toByteArray();
             }
             for (paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length);; paramArrayOfByte = BitmapFactory.decodeResource(MMApplication.getContext().getResources(), 2130837531))
             {
-              ((Notification.Builder)localObject3).setLargeIcon(paramArrayOfByte);
-              paramArrayOfByte = PendingIntent.getService(MMApplication.getContext(), ((com.tencent.mm.e.a.i)localObject2).Vv, a(MMApplication.getContext(), ((com.tencent.mm.e.a.i)localObject2).Vv, 11016, ((com.tencent.mm.e.a.i)localObject2).Vo, FriendAcceptService.class), 134217728);
-              localPendingIntent1 = PendingIntent.getService(MMApplication.getContext(), ((com.tencent.mm.e.a.i)localObject2).Vv, a(MMApplication.getContext(), ((com.tencent.mm.e.a.i)localObject2).Vv, 11017, ((com.tencent.mm.e.a.i)localObject2).Vo, FriendIgnoreService.class), 134217728);
-              PendingIntent localPendingIntent2 = PendingIntent.getService(MMApplication.getContext(), ((com.tencent.mm.e.a.i)localObject2).Vv, a(MMApplication.getContext(), ((com.tencent.mm.e.a.i)localObject2).Vv, 11018, ((com.tencent.mm.e.a.i)localObject2).Vo, FriendOpenService.class), 134217728);
-              ((Notification.Builder)localObject3).addAction(2130837568, com.tencent.mm.wear.app.d.d.bO(2131165218), paramArrayOfByte);
-              ((Notification.Builder)localObject3).addAction(2130837578, com.tencent.mm.wear.app.d.d.bO(2131165219), localPendingIntent1);
-              ((Notification.Builder)localObject3).addAction(2130837582, com.tencent.mm.wear.app.d.d.bO(2131165221), localPendingIntent2);
-              ((Notification.Builder)localObject3).setVibrate(new long[] { 0L, 150L, 100L, 400L });
-              f.a(MMApplication.getContext(), ((com.tencent.mm.e.a.i)localObject2).Vv, ((Notification.Builder)localObject3).build());
+              ((at)localObject3).a(paramArrayOfByte);
+              paramArrayOfByte = PendingIntent.getService(MMApplication.getContext(), ((com.tencent.mm.e.a.i)localObject2).Xq, a(MMApplication.getContext(), ((com.tencent.mm.e.a.i)localObject2).Xq, 11016, ((com.tencent.mm.e.a.i)localObject2).Xj, FriendAcceptService.class), 134217728);
+              localPendingIntent1 = PendingIntent.getService(MMApplication.getContext(), ((com.tencent.mm.e.a.i)localObject2).Xq, a(MMApplication.getContext(), ((com.tencent.mm.e.a.i)localObject2).Xq, 11017, ((com.tencent.mm.e.a.i)localObject2).Xj, FriendIgnoreService.class), 134217728);
+              PendingIntent localPendingIntent2 = PendingIntent.getService(MMApplication.getContext(), ((com.tencent.mm.e.a.i)localObject2).Xq, a(MMApplication.getContext(), ((com.tencent.mm.e.a.i)localObject2).Xq, 11018, ((com.tencent.mm.e.a.i)localObject2).Xj, FriendOpenService.class), 134217728);
+              ((at)localObject3).a(2130837568, com.tencent.mm.wear.app.d.d.ck(2131165218), paramArrayOfByte);
+              ((at)localObject3).a(2130837578, com.tencent.mm.wear.app.d.d.ck(2131165219), localPendingIntent1);
+              ((at)localObject3).a(2130837582, com.tencent.mm.wear.app.d.d.ck(2131165221), localPendingIntent2);
+              ((at)localObject3).a(new long[] { 0L, 150L, 100L, 400L });
+              g.a(MMApplication.getContext(), ((com.tencent.mm.e.a.i)localObject2).Xq, ((at)localObject3).build());
               break;
             }
             paramArrayOfByte = new k();
-            com.tencent.mm.sdk.a.a.WJ.a(paramArrayOfByte);
-            if (paramArrayOfByte.Vf.Vg) {
+            com.tencent.mm.sdk.a.a.YM.a(paramArrayOfByte);
+            if (paramArrayOfByte.WV.WW) {
               continue;
             }
             paramArrayOfByte = new com.tencent.mm.wear.app.f.b(11021, null);
-            com.tencent.mm.wear.app.b.h.mc().a(paramArrayOfByte);
+            com.tencent.mm.wear.app.b.h.mP().a(paramArrayOfByte);
             return;
-            StepCountService.mT();
+            StepCountService.nF();
             return;
-            paramArrayOfByte = new com.tencent.mm.wear.app.f.a(11003, new File(com.tencent.mm.wear.app.b.h.mk(), "log.log").getAbsolutePath());
-            com.tencent.mm.wear.app.b.h.mc().a(paramArrayOfByte);
+            paramArrayOfByte = new com.tencent.mm.wear.app.f.a(11003, new File(com.tencent.mm.wear.app.b.h.mW(), "log.log").getAbsolutePath());
+            com.tencent.mm.wear.app.b.h.mP().a(paramArrayOfByte);
             return;
-            paramArrayOfByte = new com.tencent.mm.wear.app.f.a(11000, new File(com.tencent.mm.wear.app.b.h.mj(), "crash.log").getAbsolutePath());
-            com.tencent.mm.wear.app.b.h.mc().a(paramArrayOfByte);
+            paramArrayOfByte = new com.tencent.mm.wear.app.f.a(11000, new File(com.tencent.mm.wear.app.b.h.mV(), "crash.log").getAbsolutePath());
+            com.tencent.mm.wear.app.b.h.mP().a(paramArrayOfByte);
             return;
             localObject1 = new an();
           }
@@ -162,9 +163,9 @@ public final class b
               ((an)localObject1).h(paramArrayOfByte);
               paramArrayOfByte = new Intent(MMApplication.getContext(), ReplyVoipUI.class);
               paramArrayOfByte.setFlags(268435456);
-              paramArrayOfByte.putExtra("key_talker", ((an)localObject1).VN);
-              paramArrayOfByte.putExtra("key_nickname", ((an)localObject1).Vp);
-              com.tencent.mm.wear.a.b.a.aiT.post(new Runnable()
+              paramArrayOfByte.putExtra("key_talker", ((an)localObject1).XI);
+              paramArrayOfByte.putExtra("key_nickname", ((an)localObject1).Xk);
+              com.tencent.mm.wear.a.b.a.amv.post(new Runnable()
               {
                 public final void run()
                 {
@@ -173,12 +174,12 @@ public final class b
               });
               return;
               paramArrayOfByte = new m();
-              paramArrayOfByte.Vh.Vi = 0;
-              com.tencent.mm.sdk.a.a.WJ.a(paramArrayOfByte);
+              paramArrayOfByte.WX.WY = 0;
+              com.tencent.mm.sdk.a.a.YM.a(paramArrayOfByte);
               return;
               paramArrayOfByte = new m();
-              paramArrayOfByte.Vh.Vi = 1;
-              com.tencent.mm.sdk.a.a.WJ.a(paramArrayOfByte);
+              paramArrayOfByte.WX.WY = 1;
+              com.tencent.mm.sdk.a.a.YM.a(paramArrayOfByte);
               return;
               localObject1 = new n();
             }
@@ -187,16 +188,16 @@ public final class b
               try
               {
                 ((n)localObject1).h(paramArrayOfByte);
-                new c((n)localObject1).mE();
-                com.tencent.mm.wear.app.d.a.bK(2);
+                new c((n)localObject1).nq();
+                com.tencent.mm.wear.app.d.a.cg(2);
                 return;
                 localObject1 = new o();
                 try
                 {
                   ((o)localObject1).h(paramArrayOfByte);
                   paramArrayOfByte = new com.tencent.mm.b.a.d();
-                  paramArrayOfByte.UY.UZ = ((o)localObject1);
-                  com.tencent.mm.sdk.a.a.WJ.a(paramArrayOfByte, Looper.getMainLooper());
+                  paramArrayOfByte.WO.WP = ((o)localObject1);
+                  com.tencent.mm.sdk.a.a.YM.a(paramArrayOfByte, Looper.getMainLooper());
                   return;
                 }
                 catch (IOException paramArrayOfByte)
@@ -213,10 +214,10 @@ public final class b
                   for (;;)
                   {
                     ((aa)localObject1).h(paramArrayOfByte);
-                    label1101:
+                    label1097:
                     paramArrayOfByte = new com.tencent.mm.b.a.i();
-                    paramArrayOfByte.Vd.Ve = ((aa)localObject1);
-                    com.tencent.mm.sdk.a.a.WJ.a(paramArrayOfByte, Looper.getMainLooper());
+                    paramArrayOfByte.WT.WU = ((aa)localObject1);
+                    com.tencent.mm.sdk.a.a.YM.a(paramArrayOfByte, Looper.getMainLooper());
                     return;
                     paramArrayOfByte = paramArrayOfByte;
                     continue;
@@ -230,7 +231,7 @@ public final class b
                 }
                 catch (IOException paramArrayOfByte)
                 {
-                  break label1101;
+                  break label1097;
                 }
               }
             }
@@ -240,7 +241,7 @@ public final class b
     }
   }
   
-  protected final boolean bQ(int paramInt)
+  protected final boolean cm(int paramInt)
   {
     switch (paramInt)
     {
@@ -253,12 +254,12 @@ public final class b
     case 20012: 
     case 20013: 
     default: 
-      return super.bQ(paramInt);
+      return super.cm(paramInt);
     }
     return true;
   }
   
-  public final List<Integer> mS()
+  public final List<Integer> nE()
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(20016));

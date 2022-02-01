@@ -1,23 +1,18 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
-import a.f.a.a;
-import a.f.b.k;
-import a.l;
-import com.tencent.mm.ai.b;
+import com.tencent.mm.vending.c.a;
+import d.g.a.b;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "Lcom/tencent/mm/modelbase/CommReqResp;", "kotlin.jvm.PlatformType", "invoke"})
-final class c$a
-  extends k
-  implements a<b>
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/CheckVerifyCodeResp;", "kotlin.jvm.PlatformType", "call", "(Lcom/tencent/mm/protocal/protobuf/CheckVerifyCodeResp;)Lkotlin/Unit;"})
+final class c$a<_Ret, _Var>
+  implements a<_Ret, _Var>
 {
-  c$a(String paramString1, String paramString2, String paramString3)
-  {
-    super(0);
-  }
+  c$a(b paramb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.c.a
  * JD-Core Version:    0.7.0.1
  */

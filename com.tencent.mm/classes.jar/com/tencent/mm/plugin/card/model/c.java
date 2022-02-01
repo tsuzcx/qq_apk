@@ -4,9 +4,9 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 
 public final class c
   extends j<CardInfo>
@@ -16,9 +16,9 @@ public final class c
   
   static
   {
-    AppMethodBeat.i(87828);
+    AppMethodBeat.i(112770);
     SQL_CREATE = new String[] { j.getCreateSQLs(CardInfo.info, "UserCardInfo"), "CREATE INDEX IF NOT EXISTS  stickyIndexIndex ON UserCardInfo ( stickyIndex ) " };
-    AppMethodBeat.o(87828);
+    AppMethodBeat.o(112770);
   }
   
   public c(com.tencent.mm.sdk.e.e parame)
@@ -27,40 +27,40 @@ public final class c
     this.db = parame;
   }
   
-  public final CardInfo HJ(String paramString)
+  public final CardInfo Qt(String paramString)
   {
-    AppMethodBeat.i(87826);
+    AppMethodBeat.i(112768);
     CardInfo localCardInfo = new CardInfo();
     localCardInfo.field_card_id = paramString;
     if (super.get(localCardInfo, new String[0]))
     {
-      AppMethodBeat.o(87826);
+      AppMethodBeat.o(112768);
       return localCardInfo;
     }
-    AppMethodBeat.o(87826);
+    AppMethodBeat.o(112768);
     return null;
   }
   
   public final Cursor a(n.a parama)
   {
-    AppMethodBeat.i(87825);
-    long l = bo.aox();
+    AppMethodBeat.i(112767);
+    long l = bt.aGK();
     Object localObject = "update UserCardInfo set stickyIndex=0, stickyEndTime=0 where stickyIndex>0 and (" + l + ">stickyEndTime and stickyEndTime<>0)";
     this.db.execSQL("UserCardInfo", (String)localObject);
     localObject = new StringBuilder("select * from UserCardInfo");
-    switch (c.1.knt[parama.ordinal()])
+    switch (c.1.nsH[parama.ordinal()])
     {
     }
     for (;;)
     {
       ((StringBuilder)localObject).append(" order by stickyIndex desc, status asc , updateTime desc");
-      if (parama == n.a.kof)
+      if (parama == n.a.ntt)
       {
-        int i = ((Integer)g.RL().Ru().get(ac.a.yzo, Integer.valueOf(3))).intValue();
+        int i = ((Integer)g.afB().afk().get(ae.a.FhJ, Integer.valueOf(3))).intValue();
         ((StringBuilder)localObject).append(" LIMIT ").append(i);
       }
       parama = this.db.rawQuery(((StringBuilder)localObject).toString(), null);
-      AppMethodBeat.o(87825);
+      AppMethodBeat.o(112767);
       return parama;
       ((StringBuilder)localObject).append(" where (status=0 OR status=5)");
       continue;
@@ -77,7 +77,7 @@ public final class c
   }
   
   /* Error */
-  public final java.util.List<CardInfo> bbT()
+  public final java.util.List<CardInfo> bIL()
   {
     // Byte code:
     //   0: ldc 173
@@ -97,7 +97,7 @@ public final class c
     //   27: ifnonnull +17 -> 44
     //   30: ldc 179
     //   32: ldc 181
-    //   34: invokestatic 187	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   34: invokestatic 187	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   37: ldc 173
     //   39: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: aconst_null
@@ -131,7 +131,7 @@ public final class c
     //   96: aload_3
     //   97: invokevirtual 213	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   100: aastore
-    //   101: invokestatic 216	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   101: invokestatic 216	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   104: aload_1
     //   105: invokeinterface 219 1 0
     //   110: ldc 173

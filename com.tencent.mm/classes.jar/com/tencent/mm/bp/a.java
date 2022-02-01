@@ -1,79 +1,112 @@
 package com.tencent.mm.bp;
 
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import android.support.v4.app.s.c;
-import android.text.format.Time;
+import android.view.OrientationEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
 
+@TargetApi(3)
 public final class a
+  extends OrientationEventListener
 {
-  private static String etE = "";
+  private b hOA;
+  private a hOy = a.hOB;
+  private int hOz = 45;
   
-  public static String Mt()
+  public a(Context paramContext, b paramb)
   {
-    AppMethodBeat.i(89331);
-    if (bo.isNullOrNil(etE)) {
-      etE = com.tencent.mm.kernel.a.Mu().getString("message_channel_id", "message_channel_new_id");
-    }
-    String str = etE;
-    AppMethodBeat.o(89331);
-    return str;
+    super(paramContext);
+    this.hOA = paramb;
   }
   
-  public static void akR(String paramString)
+  public final void disable()
   {
-    etE = paramString;
+    AppMethodBeat.i(151343);
+    super.disable();
+    this.hOy = a.hOB;
+    AppMethodBeat.o(151343);
   }
   
-  public static int bYt()
+  public final void enable()
   {
-    if (Build.VERSION.SDK_INT < 19) {
-      return 2130839845;
-    }
-    return 2130839847;
+    AppMethodBeat.i(151342);
+    super.enable();
+    AppMethodBeat.o(151342);
   }
   
-  public static s.c br(Context paramContext, String paramString)
+  public final void onOrientationChanged(int paramInt)
   {
-    AppMethodBeat.i(89332);
-    paramContext = new s.c(paramContext, paramString);
-    AppMethodBeat.o(89332);
-    return paramContext;
-  }
-  
-  public static String dkN()
-  {
-    AppMethodBeat.i(89333);
-    if (d.fv(26))
+    AppMethodBeat.i(151344);
+    if (paramInt == -1)
     {
-      localObject = new Time();
-      ((Time)localObject).setToNow();
-      int i = ((Time)localObject).hour;
-      int j = ((Time)localObject).minute;
-      ah.getContext();
-      if (!com.tencent.mm.m.a.bX(i, j)) {
-        ab.w("MicroMsg.NotificationHelper", "no shake & sound notification during background deactive time");
-      }
-      for (i = 1; i != 0; i = 0)
+      AppMethodBeat.o(151344);
+      return;
+    }
+    a locala2 = this.hOy;
+    a locala1;
+    if (((paramInt >= 360 - this.hOz) && (paramInt < 360)) || ((paramInt >= 0) && (paramInt <= this.hOz + 0))) {
+      locala1 = a.hOC;
+    }
+    for (;;)
+    {
+      if (locala1 != this.hOy)
       {
-        AppMethodBeat.o(89333);
-        return "message_dnd_mode_channel_id";
+        if ((this.hOA != null) && (this.hOy != a.hOB)) {
+          this.hOA.a(this.hOy, locala1);
+        }
+        this.hOy = locala1;
+      }
+      ad.i("MicroMsg.OrientationListenerHelper", "OrientationListener onOrientationChanged: %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(151344);
+      return;
+      if ((paramInt >= 270 - this.hOz) && (paramInt <= this.hOz + 270))
+      {
+        locala1 = a.hOD;
+      }
+      else if ((paramInt >= 180 - this.hOz) && (paramInt <= this.hOz + 180))
+      {
+        locala1 = a.hOE;
+      }
+      else
+      {
+        locala1 = locala2;
+        if (paramInt >= 90 - this.hOz)
+        {
+          locala1 = locala2;
+          if (paramInt <= this.hOz + 90) {
+            locala1 = a.hOF;
+          }
+        }
       }
     }
-    Object localObject = Mt();
-    AppMethodBeat.o(89333);
-    return localObject;
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(151341);
+      hOB = new a("NONE", 0);
+      hOC = new a("PORTRAIT", 1);
+      hOD = new a("LANDSCAPE", 2);
+      hOE = new a("REVERSE_PORTRAIT", 3);
+      hOF = new a("REVERSE_LANDSCAPE", 4);
+      hOG = new a[] { hOB, hOC, hOD, hOE, hOF };
+      AppMethodBeat.o(151341);
+    }
+    
+    private a() {}
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void a(a.a parama1, a.a parama2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.bp.a
  * JD-Core Version:    0.7.0.1
  */

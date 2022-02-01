@@ -4,7 +4,8 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.nio.charset.Charset;
 
 public class KindaConfigCacheStg
@@ -18,9 +19,9 @@ public class KindaConfigCacheStg
   
   static
   {
-    AppMethodBeat.i(144338);
+    AppMethodBeat.i(18410);
     SQL_CREATE = new String[] { j.getCreateSQLs(KindaConfigCacheItem.info, "KindaConfigCache") };
-    AppMethodBeat.o(144338);
+    AppMethodBeat.o(18410);
   }
   
   public KindaConfigCacheStg(e parame)
@@ -31,128 +32,131 @@ public class KindaConfigCacheStg
   
   private KindaConfigCacheItem getImpl(String paramString)
   {
-    AppMethodBeat.i(144323);
+    AppMethodBeat.i(18395);
     paramString = this.db.rawQuery("select * from KindaConfigCache where key=?", new String[] { paramString });
     if (paramString == null)
     {
-      AppMethodBeat.o(144323);
+      AppMethodBeat.o(18395);
       return null;
     }
     if (paramString.getCount() == 0)
     {
       paramString.close();
-      AppMethodBeat.o(144323);
+      AppMethodBeat.o(18395);
       return null;
     }
     paramString.moveToFirst();
     KindaConfigCacheItem localKindaConfigCacheItem = new KindaConfigCacheItem();
     localKindaConfigCacheItem.convertFrom(paramString);
     paramString.close();
-    AppMethodBeat.o(144323);
+    AppMethodBeat.o(18395);
     return localKindaConfigCacheItem;
   }
   
   public static Object resolveObj(int paramInt, String paramString)
   {
-    AppMethodBeat.i(144322);
+    AppMethodBeat.i(18394);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(144322);
+      AppMethodBeat.o(18394);
       return null;
       try
       {
-        paramString = Integer.valueOf(paramString);
-        AppMethodBeat.o(144322);
-        return paramString;
+        paramInt = bt.getInt(paramString, 0);
+        AppMethodBeat.o(18394);
+        return Integer.valueOf(paramInt);
       }
       catch (Exception paramString)
       {
-        ab.e("MicroMsg.KindaConfigCacheStg", "exception:%s", new Object[] { "" });
+        long l;
+        float f;
+        double d;
+        ad.e("MicroMsg.KindaConfigCacheStg", "exception:%s", new Object[] { "" });
       }
-      paramString = Long.valueOf(paramString);
-      AppMethodBeat.o(144322);
-      return paramString;
-      AppMethodBeat.o(144322);
+      l = bt.getLong(paramString, 0L);
+      AppMethodBeat.o(18394);
+      return Long.valueOf(l);
+      AppMethodBeat.o(18394);
       return paramString;
       paramString = Boolean.valueOf(paramString);
-      AppMethodBeat.o(144322);
+      AppMethodBeat.o(18394);
       return paramString;
-      paramString = Float.valueOf(paramString);
-      AppMethodBeat.o(144322);
-      return paramString;
-      paramString = Double.valueOf(paramString);
-      AppMethodBeat.o(144322);
-      return paramString;
+      f = bt.getFloat(paramString, 0.0F);
+      AppMethodBeat.o(18394);
+      return Float.valueOf(f);
+      d = bt.getDouble(paramString, 0.0D);
+      AppMethodBeat.o(18394);
+      return Double.valueOf(d);
       paramString = paramString.getBytes();
-      AppMethodBeat.o(144322);
+      AppMethodBeat.o(18394);
       return paramString;
     }
   }
   
   public Object get(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(144321);
+    AppMethodBeat.i(18393);
     paramString = getImpl(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(144321);
+      AppMethodBeat.o(18393);
       return paramObject;
     }
     paramString = resolveObj(paramString.field_type, paramString.field_value);
     if (paramString != null)
     {
-      AppMethodBeat.o(144321);
+      AppMethodBeat.o(18393);
       return paramString;
     }
-    AppMethodBeat.o(144321);
+    AppMethodBeat.o(18393);
     return paramObject;
   }
   
   public byte[] getBinary(String paramString)
   {
-    AppMethodBeat.i(144327);
+    AppMethodBeat.i(18399);
     paramString = (byte[])get(paramString, new byte[0]);
-    AppMethodBeat.o(144327);
+    AppMethodBeat.o(18399);
     return paramString;
   }
   
   public int getInt(String paramString)
   {
-    AppMethodBeat.i(144324);
+    AppMethodBeat.i(18396);
     int i = ((Integer)get(paramString, Integer.valueOf(0))).intValue();
-    AppMethodBeat.o(144324);
+    AppMethodBeat.o(18396);
     return i;
   }
   
   public long getLong(String paramString)
   {
-    AppMethodBeat.i(144325);
+    AppMethodBeat.i(18397);
     long l = ((Long)get(paramString, Long.valueOf(0L))).longValue();
-    AppMethodBeat.o(144325);
+    AppMethodBeat.o(18397);
     return l;
   }
   
   public String getString(String paramString)
   {
-    AppMethodBeat.i(144326);
+    AppMethodBeat.i(18398);
     paramString = (String)get(paramString, "");
-    AppMethodBeat.o(144326);
+    AppMethodBeat.o(18398);
     return paramString;
   }
   
   public void put(String paramString, Object paramObject, int paramInt)
   {
-    AppMethodBeat.i(144336);
+    AppMethodBeat.i(18408);
     put(paramString, paramObject, paramInt, 0L);
-    AppMethodBeat.o(144336);
+    AppMethodBeat.o(18408);
   }
   
   public void put(String paramString, Object paramObject, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(144337);
+    AppMethodBeat.i(18409);
     KindaConfigCacheItem localKindaConfigCacheItem = new KindaConfigCacheItem();
     localKindaConfigCacheItem.field_type = paramInt;
     localKindaConfigCacheItem.field_key = paramString;
@@ -163,7 +167,7 @@ public class KindaConfigCacheStg
     for (;;)
     {
       replace(localKindaConfigCacheItem);
-      AppMethodBeat.o(144337);
+      AppMethodBeat.o(18409);
       return;
       if ((paramInt == 4) && ((paramObject instanceof Integer)))
       {
@@ -193,68 +197,68 @@ public class KindaConfigCacheStg
         localKindaConfigCacheItem.field_value = new String((byte[])paramObject, Charset.forName("ISO-8859-1"));
       }
     }
-    AppMethodBeat.o(144337);
+    AppMethodBeat.o(18409);
   }
   
   public void putBinary(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(144331);
+    AppMethodBeat.i(18403);
     put(paramString, paramArrayOfByte, 7);
-    AppMethodBeat.o(144331);
+    AppMethodBeat.o(18403);
   }
   
   public void putBinary(String paramString, byte[] paramArrayOfByte, long paramLong)
   {
-    AppMethodBeat.i(144335);
+    AppMethodBeat.i(18407);
     put(paramString, paramArrayOfByte, 7, paramLong);
-    AppMethodBeat.o(144335);
+    AppMethodBeat.o(18407);
   }
   
   public void putInt(String paramString, int paramInt)
   {
-    AppMethodBeat.i(144328);
+    AppMethodBeat.i(18400);
     put(paramString, Integer.valueOf(paramInt), 1);
-    AppMethodBeat.o(144328);
+    AppMethodBeat.o(18400);
   }
   
   public void putInt(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(144332);
+    AppMethodBeat.i(18404);
     put(paramString, Integer.valueOf(paramInt), 1, paramLong);
-    AppMethodBeat.o(144332);
+    AppMethodBeat.o(18404);
   }
   
   public void putLong(String paramString, long paramLong)
   {
-    AppMethodBeat.i(144329);
+    AppMethodBeat.i(18401);
     put(paramString, Long.valueOf(paramLong), 2);
-    AppMethodBeat.o(144329);
+    AppMethodBeat.o(18401);
   }
   
   public void putLong(String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(144333);
+    AppMethodBeat.i(18405);
     put(paramString, Long.valueOf(paramLong1), 2, paramLong2);
-    AppMethodBeat.o(144333);
+    AppMethodBeat.o(18405);
   }
   
   public void putString(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(144330);
+    AppMethodBeat.i(18402);
     put(paramString1, paramString2, 3);
-    AppMethodBeat.o(144330);
+    AppMethodBeat.o(18402);
   }
   
   public void putString(String paramString1, String paramString2, long paramLong)
   {
-    AppMethodBeat.i(144334);
+    AppMethodBeat.i(18406);
     put(paramString1, paramString2, 3, paramLong);
-    AppMethodBeat.o(144334);
+    AppMethodBeat.o(18406);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaConfigCacheStg
  * JD-Core Version:    0.7.0.1
  */

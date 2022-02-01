@@ -1,119 +1,119 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.c;
-import com.tencent.mm.ah.d;
-import com.tencent.mm.ah.h;
-import com.tencent.mm.ah.i;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.g.c.aq;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.e;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.j;
+import com.tencent.mm.ak.p;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.openim.a.b;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.protobuf.anc;
-import com.tencent.mm.protocal.protobuf.bid;
-import com.tencent.mm.protocal.protobuf.bie;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.protocal.protobuf.axh;
+import com.tencent.mm.protocal.protobuf.bvm;
+import com.tencent.mm.protocal.protobuf.bvn;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
 
 public final class s
 {
-  public static int a(anc paramanc)
+  public static int a(axh paramaxh)
   {
-    AppMethodBeat.i(78887);
-    int i = paramanc.ret;
-    paramanc = paramanc.xdC;
-    ad localad = a(paramanc);
-    ab.i("MicroMsg.OpenIMContactLogic", "onGYNetEnd openim_processModContact user:%s nick:%s remark:%s, source:%d, sex%d, appId:%s, customDetail:%s, customDetailVisible:%d， type:%d, wordingId:%s", new Object[] { localad.field_username, localad.field_nickname, localad.field_conRemark, Integer.valueOf(localad.getSource()), Integer.valueOf(localad.dqC), localad.field_openImAppid, localad.dre, Integer.valueOf(localad.drd), Integer.valueOf(localad.field_type), localad.field_descWordingId });
-    ((j)g.E(j.class)).YA().X(localad);
-    ((b)g.E(b.class)).bc(paramanc.app_id, paramanc.xxm);
-    b(paramanc);
-    AppMethodBeat.o(78887);
+    AppMethodBeat.i(151231);
+    int i = paramaxh.ret;
+    paramaxh = paramaxh.Dwn;
+    af localaf = a(paramaxh);
+    ad.i("MicroMsg.OpenIMContactLogic", "onGYNetEnd openim_processModContact user:%s nick:%s remark:%s, source:%d, sex%d, appId:%s, customDetail:%s, customDetailVisible:%d， type:%d, wordingId:%s", new Object[] { localaf.field_username, localaf.field_nickname, localaf.field_conRemark, Integer.valueOf(localaf.getSource()), Integer.valueOf(localaf.evp), localaf.field_openImAppid, localaf.evS, Integer.valueOf(localaf.evR), Integer.valueOf(localaf.field_type), localaf.field_descWordingId });
+    ((k)g.ab(k.class)).apM().ae(localaf);
+    ((b)g.ab(b.class)).bs(paramaxh.app_id, paramaxh.DSK);
+    b(paramaxh);
+    AppMethodBeat.o(151231);
     return i;
   }
   
-  public static ad a(bid parambid)
+  public static af a(bvm parambvm)
   {
-    AppMethodBeat.i(78888);
-    Object localObject2 = ((j)g.E(j.class)).YA().arw(parambid.gfL);
+    AppMethodBeat.i(151232);
+    Object localObject2 = ((k)g.ab(k.class)).apM().aHY(parambvm.hNH);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = new ad();
+      localObject1 = new af();
     }
-    ((ad)localObject1).setUsername(parambid.gfL);
-    ((ad)localObject1).jp(parambid.nickname);
-    ((ad)localObject1).setType(parambid.type);
-    ((ad)localObject1).jn(parambid.hKa);
-    ((ad)localObject1).setSource(parambid.cpt);
-    ((ad)localObject1).jq(parambid.xxo);
-    ((ad)localObject1).jr(parambid.xxp);
-    ((ad)localObject1).ju(parambid.xxq);
-    ((ad)localObject1).jt(parambid.xxr);
-    if (parambid.xxs == null)
+    ((af)localObject1).setUsername(parambvm.hNH);
+    ((af)localObject1).nd(parambvm.nickname);
+    ((af)localObject1).setType(parambvm.type);
+    ((af)localObject1).nb(parambvm.iaz);
+    ((af)localObject1).setSource(parambvm.dep);
+    ((af)localObject1).ne(parambvm.DSM);
+    ((af)localObject1).nf(parambvm.DSN);
+    ((af)localObject1).ni(parambvm.DSO);
+    ((af)localObject1).nh(parambvm.DSP);
+    if (parambvm.DSQ == null)
     {
       localObject2 = "";
-      ((ad)localObject1).jU((String)localObject2);
-      if (parambid.xxs != null) {
+      ((af)localObject1).nJ((String)localObject2);
+      if (parambvm.DSQ != null) {
         break label201;
       }
     }
     label201:
-    for (int i = 0;; i = parambid.xxs.xxt)
+    for (int i = 0;; i = parambvm.DSQ.DSR)
     {
-      ((ad)localObject1).hH(i);
-      ((ad)localObject1).jT(parambid.wpd);
-      ((ad)localObject1).jy(parambid.app_id);
-      ((ad)localObject1).hy(parambid.dqC);
-      ((ad)localObject1).jx(parambid.xxm);
-      ((ad)localObject1).hE((int)bo.aox());
-      AppMethodBeat.o(78888);
+      ((af)localObject1).jR(i);
+      ((af)localObject1).nI(parambvm.CxM);
+      ((af)localObject1).nm(parambvm.app_id);
+      ((af)localObject1).jJ(parambvm.evp);
+      ((af)localObject1).nl(parambvm.DSK);
+      ((af)localObject1).jO((int)bt.aGK());
+      AppMethodBeat.o(151232);
       return localObject1;
-      localObject2 = parambid.xxs.nqY;
+      localObject2 = parambvm.DSQ.saB;
       break;
     }
   }
   
-  public static void b(bid parambid)
+  public static void b(bvm parambvm)
   {
     int j = 1;
-    AppMethodBeat.i(78889);
+    AppMethodBeat.i(151233);
     String str2 = "";
     String str1 = "";
-    h localh = o.adg().rj(parambid.gfL);
-    if (localh != null)
+    i locali = p.auF().we(parambvm.hNH);
+    if (locali != null)
     {
-      str2 = localh.acX();
-      str1 = localh.acY();
+      str2 = locali.aux();
+      str1 = locali.auy();
     }
-    localh = new h();
-    localh.bsY = -1;
-    localh.username = parambid.gfL;
-    localh.fsk = parambid.xxc;
-    localh.fsl = parambid.xxb;
-    ab.i("MicroMsg.OpenIMContactLogic", "dealwithAvatarFromModContact contact %s b[%s] s[%s]", new Object[] { localh.getUsername(), localh.acX(), localh.acY() });
-    if (!localh.acX().equals(str2))
+    locali = new i();
+    locali.dtM = -1;
+    locali.username = parambvm.hNH;
+    locali.gUf = parambvm.DSz;
+    locali.gUg = parambvm.DSy;
+    ad.i("MicroMsg.OpenIMContactLogic", "dealwithAvatarFromModContact contact %s b[%s] s[%s]", new Object[] { locali.getUsername(), locali.aux(), locali.auy() });
+    if (!locali.aux().equals(str2))
     {
-      o.acQ();
-      d.F(parambid.gfL, true);
+      p.auq();
+      e.K(parambvm.hNH, true);
     }
     for (int i = 1;; i = 0)
     {
-      if (!localh.acY().equals(str1))
+      if (!locali.auy().equals(str1))
       {
-        o.acQ();
-        d.F(parambid.gfL, false);
+        p.auq();
+        e.K(parambvm.hNH, false);
         i = j;
       }
       for (;;)
       {
         if (i != 0)
         {
-          o.adi().qU(parambid.gfL);
-          o.adg().b(localh);
+          p.auH().vP(parambvm.hNH);
+          p.auF().b(locali);
         }
-        AppMethodBeat.o(78889);
+        AppMethodBeat.o(151233);
         return;
       }
     }
@@ -121,7 +121,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.b.s
  * JD-Core Version:    0.7.0.1
  */

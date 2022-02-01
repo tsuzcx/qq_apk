@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class iq
   extends b
 {
-  public iq.a cxZ;
+  public a dmG;
   
   public iq()
   {
@@ -15,16 +15,21 @@ public final class iq
   
   private iq(byte paramByte)
   {
-    AppMethodBeat.i(77547);
-    this.cxZ = new iq.a();
-    this.ymq = false;
+    AppMethodBeat.i(130779);
+    this.dmG = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77547);
+    AppMethodBeat.o(130779);
+  }
+  
+  public static final class a
+  {
+    public int dmH;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.iq
  * JD-Core Version:    0.7.0.1
  */

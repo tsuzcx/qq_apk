@@ -1,103 +1,103 @@
 package com.tencent.mm.protocal.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import f.a.a.b;
 
 public final class a
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
+  public String Csd;
+  public String Cse;
   public int actionType;
   public int id;
-  public String wjR;
-  public String wjS;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(105576);
+    AppMethodBeat.i(123716);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wjR == null)
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.Csd == null)
       {
         paramVarArgs = new b("Not all required fields were included: btnStr");
-        AppMethodBeat.o(105576);
+        AppMethodBeat.o(123716);
         throw paramVarArgs;
       }
-      paramVarArgs.aO(1, this.id);
-      paramVarArgs.aO(2, this.actionType);
-      if (this.wjR != null) {
-        paramVarArgs.e(3, this.wjR);
+      paramVarArgs.aR(1, this.id);
+      paramVarArgs.aR(2, this.actionType);
+      if (this.Csd != null) {
+        paramVarArgs.d(3, this.Csd);
       }
-      if (this.wjS != null) {
-        paramVarArgs.e(4, this.wjS);
+      if (this.Cse != null) {
+        paramVarArgs.d(4, this.Cse);
       }
-      AppMethodBeat.o(105576);
+      AppMethodBeat.o(123716);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = e.a.a.b.b.a.bl(1, this.id) + 0 + e.a.a.b.b.a.bl(2, this.actionType);
+      int i = f.a.a.b.b.a.bA(1, this.id) + 0 + f.a.a.b.b.a.bA(2, this.actionType);
       paramInt = i;
-      if (this.wjR != null) {
-        paramInt = i + e.a.a.b.b.a.f(3, this.wjR);
+      if (this.Csd != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.Csd);
       }
       i = paramInt;
-      if (this.wjS != null) {
-        i = paramInt + e.a.a.b.b.a.f(4, this.wjS);
+      if (this.Cse != null) {
+        i = paramInt + f.a.a.b.b.a.e(4, this.Cse);
       }
-      AppMethodBeat.o(105576);
+      AppMethodBeat.o(123716);
       return i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      if (this.wjR == null)
+      if (this.Csd == null)
       {
         paramVarArgs = new b("Not all required fields were included: btnStr");
-        AppMethodBeat.o(105576);
+        AppMethodBeat.o(123716);
         throw paramVarArgs;
       }
-      AppMethodBeat.o(105576);
+      AppMethodBeat.o(123716);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       a locala1 = (a)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(105576);
+        AppMethodBeat.o(123716);
         return -1;
       case 1: 
-        locala1.id = locala.CLY.sl();
-        AppMethodBeat.o(105576);
+        locala1.id = locala.KhF.xS();
+        AppMethodBeat.o(123716);
         return 0;
       case 2: 
-        locala1.actionType = locala.CLY.sl();
-        AppMethodBeat.o(105576);
+        locala1.actionType = locala.KhF.xS();
+        AppMethodBeat.o(123716);
         return 0;
       case 3: 
-        locala1.wjR = locala.CLY.readString();
-        AppMethodBeat.o(105576);
+        locala1.Csd = locala.KhF.readString();
+        AppMethodBeat.o(123716);
         return 0;
       }
-      locala1.wjS = locala.CLY.readString();
-      AppMethodBeat.o(105576);
+      locala1.Cse = locala.KhF.readString();
+      AppMethodBeat.o(123716);
       return 0;
     }
-    AppMethodBeat.o(105576);
+    AppMethodBeat.o(123716);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.b.a.a
  * JD-Core Version:    0.7.0.1
  */

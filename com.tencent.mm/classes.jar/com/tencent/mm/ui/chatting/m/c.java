@@ -1,56 +1,80 @@
 package com.tencent.mm.ui.chatting.m;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.text.SpannableString;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.lang.ref.WeakReference;
-import java.util.LinkedList;
-import java.util.Map;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.az;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.ui.chatting.g.d.b;
+import java.util.List;
 
 public final class c
-  extends a
+  implements e<bl>
 {
-  public c(a.b paramb)
+  private Cursor Qs;
+  private int fwK;
+  private String fwd;
+  private int mCount;
+  
+  public c(String paramString, int paramInt1, int paramInt2)
   {
-    super(paramb);
+    this.fwd = paramString;
+    this.mCount = paramInt1;
+    this.fwK = paramInt2;
   }
   
-  final CharSequence b(Map<String, String> paramMap, String paramString, Bundle paramBundle, WeakReference<Context> paramWeakReference)
+  public final void a(d.b paramb)
   {
-    AppMethodBeat.i(32745);
-    String str = (String)paramMap.get(paramString + ".title");
-    LinkedList localLinkedList = new LinkedList();
-    int i = 0;
-    for (;;)
+    AppMethodBeat.i(36647);
+    long l = ((k)g.ab(k.class)).aqo().age(this.fwd);
+    ad.d("MicroMsg.ChattingLoader.ChattingNormalDataSource", "[ChattingNormalDataSource] talker:%s count:%d mTotalCount:%d createTime:%d", new Object[] { this.fwd, Integer.valueOf(this.mCount), Integer.valueOf(this.fwK), Long.valueOf(l) });
+    az.arV();
+    this.Qs = com.tencent.mm.model.c.apO().n(this.fwd, this.mCount, l);
+    paramb.next();
+    AppMethodBeat.o(36647);
+  }
+  
+  public final void close()
+  {
+    AppMethodBeat.i(36649);
+    this.Qs.close();
+    AppMethodBeat.o(36649);
+  }
+  
+  public final int eKa()
+  {
+    return this.fwK;
+  }
+  
+  public final void hO(List<bl> paramList)
+  {
+    AppMethodBeat.i(36648);
+    try
     {
-      paramWeakReference = paramString + ".usernamelist.username";
-      paramBundle = paramWeakReference;
-      if (i != 0) {
-        paramBundle = paramWeakReference + i;
+      this.Qs.moveToFirst();
+      while (!this.Qs.isAfterLast())
+      {
+        bl localbl = new bl();
+        localbl.convertFrom(this.Qs);
+        paramList.add(localbl);
+        this.Qs.moveToNext();
       }
-      paramBundle = (String)paramMap.get(paramBundle);
-      if (bo.isNullOrNil(paramBundle)) {
-        break;
-      }
-      localLinkedList.add(paramBundle);
-      i += 1;
+      AppMethodBeat.o(36648);
     }
-    paramMap = new SpannableString(str);
-    paramMap.setSpan(new c.1(this, localLinkedList), 0, str.length(), 33);
-    AppMethodBeat.o(32745);
-    return paramMap;
-  }
-  
-  final String dLm()
-  {
-    return "link_revoke";
+    catch (Exception paramList)
+    {
+      ad.printErrStackTrace("MicroMsg.ChattingLoader.ChattingNormalDataSource", paramList, "", new Object[0]);
+      AppMethodBeat.o(36648);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.m.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,63 @@
 package com.tencent.mm.pluginsdk.wallet;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashMap;
+
 public final class g
 {
-  private static String wgF = null;
+  public HashMap<String, Object> CoP;
   
-  public static void ana(String paramString)
+  private g()
   {
-    wgF = paramString;
+    AppMethodBeat.i(117596);
+    this.CoP = new HashMap();
+    AppMethodBeat.o(117596);
   }
   
-  public static boolean dpN()
+  public static g eBg()
   {
-    return wgF == null;
+    try
+    {
+      AppMethodBeat.i(117597);
+      g localg = a.eBh();
+      AppMethodBeat.o(117597);
+      return localg;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public static String dpO()
+  public final Object get(String paramString, Object paramObject)
   {
-    return wgF;
+    AppMethodBeat.i(117598);
+    if (this.CoP.containsKey(paramString))
+    {
+      paramString = this.CoP.get(paramString);
+      AppMethodBeat.o(117598);
+      return paramString;
+    }
+    AppMethodBeat.o(117598);
+    return paramObject;
   }
   
-  public static void dpP()
+  static final class a
   {
-    wgF = null;
+    private static final g CoQ;
+    
+    static
+    {
+      AppMethodBeat.i(117595);
+      CoQ = new g((byte)0);
+      AppMethodBeat.o(117595);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.wallet.g
  * JD-Core Version:    0.7.0.1
  */

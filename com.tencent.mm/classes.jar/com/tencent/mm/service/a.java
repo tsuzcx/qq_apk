@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract interface a
   extends IInterface
 {
-  public abstract void L(IBinder paramIBinder);
+  public abstract void N(IBinder paramIBinder);
   
   public static abstract class a
     extends Binder
@@ -36,7 +36,7 @@ public abstract interface a
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.service.IMMServiceConnectionStub_AIDL");
-      L(paramParcel1.readStrongBinder());
+      N(paramParcel1.readStrongBinder());
       paramParcel2.writeNoException();
       return true;
     }
@@ -51,9 +51,9 @@ public abstract interface a
         this.mRemote = paramIBinder;
       }
       
-      public final void L(IBinder paramIBinder)
+      public final void N(IBinder paramIBinder)
       {
-        AppMethodBeat.i(115267);
+        AppMethodBeat.i(125304);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -68,7 +68,7 @@ public abstract interface a
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(115267);
+          AppMethodBeat.o(125304);
         }
       }
       

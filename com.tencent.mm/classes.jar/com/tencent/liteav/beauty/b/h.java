@@ -23,27 +23,27 @@ public class h
   
   public void a(float paramFloat)
   {
-    AppMethodBeat.i(67037);
+    AppMethodBeat.i(15089);
     this.s = paramFloat;
     a(this.r, this.s);
-    AppMethodBeat.o(67037);
+    AppMethodBeat.o(15089);
   }
   
   public boolean b()
   {
-    AppMethodBeat.i(67035);
+    AppMethodBeat.i(15087);
     boolean bool = super.b();
     this.r = GLES20.glGetUniformLocation(p(), "gamma");
-    AppMethodBeat.o(67035);
+    AppMethodBeat.o(15087);
     return bool;
   }
   
   public void c()
   {
-    AppMethodBeat.i(67036);
+    AppMethodBeat.i(15088);
     super.c();
     a(this.s);
-    AppMethodBeat.o(67036);
+    AppMethodBeat.o(15088);
   }
 }
 

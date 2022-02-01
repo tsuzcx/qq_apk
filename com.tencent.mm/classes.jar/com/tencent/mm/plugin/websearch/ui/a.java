@@ -11,9 +11,9 @@ import java.util.TimeZone;
 
 public final class a
 {
-  private static float cN(Context paramContext)
+  private static float dn(Context paramContext)
   {
-    AppMethodBeat.i(73812);
+    AppMethodBeat.i(110227);
     paramContext = paramContext.getContentResolver();
     float f = 0.0F;
     try
@@ -26,42 +26,42 @@ public final class a
       label25:
       break label25;
     }
-    AppMethodBeat.o(73812);
+    AppMethodBeat.o(110227);
     return f;
   }
   
-  public static float cP(Context paramContext)
+  public static float dp(Context paramContext)
   {
-    AppMethodBeat.i(73811);
+    AppMethodBeat.i(110226);
     WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
     if (localLayoutParams.screenBrightness < 0.0F)
     {
-      f = cN(paramContext);
-      AppMethodBeat.o(73811);
+      f = dn(paramContext);
+      AppMethodBeat.o(110226);
       return f;
     }
     float f = localLayoutParams.screenBrightness;
-    AppMethodBeat.o(73811);
+    AppMethodBeat.o(110226);
     return f;
   }
   
-  public static String ha(long paramLong)
+  public static String mz(long paramLong)
   {
-    AppMethodBeat.i(73813);
+    AppMethodBeat.i(110228);
     if (paramLong < 3600000L) {}
     for (Object localObject = "mm:ss";; localObject = "HH:mm:ss")
     {
       localObject = new SimpleDateFormat((String)localObject);
       ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT+0:00"));
       localObject = ((SimpleDateFormat)localObject).format(Long.valueOf(paramLong));
-      AppMethodBeat.o(73813);
+      AppMethodBeat.o(110228);
       return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class nx
   extends b
 {
-  public nx.a cEx;
+  public a dsX;
   
   public nx()
   {
@@ -15,16 +15,21 @@ public final class nx
   
   private nx(byte paramByte)
   {
-    AppMethodBeat.i(70203);
-    this.cEx = new nx.a();
-    this.ymq = false;
+    AppMethodBeat.i(117549);
+    this.dsX = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70203);
+    AppMethodBeat.o(117549);
+  }
+  
+  public static final class a
+  {
+    public int ret;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.nx
  * JD-Core Version:    0.7.0.1
  */

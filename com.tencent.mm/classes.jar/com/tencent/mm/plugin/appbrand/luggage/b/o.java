@@ -3,110 +3,108 @@ package com.tencent.mm.plugin.appbrand.luggage.b;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
+import android.text.TextUtils;
+import android.util.Pair;
 import com.tencent.luggage.bridge.impl.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.a.b.f;
-import com.tencent.mm.plugin.appbrand.appcache.ax;
-import com.tencent.mm.plugin.appbrand.e.a.a;
-import com.tencent.mm.plugin.appbrand.e.a.c;
+import com.tencent.mm.modelappbrand.a.b.h;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appcache.be;
+import com.tencent.mm.plugin.appbrand.g.a.b;
+import com.tencent.mm.plugin.appbrand.g.a.c;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.page.t;
+import com.tencent.mm.plugin.appbrand.page.w;
 
 public final class o
   extends a
-  implements com.tencent.mm.plugin.appbrand.e.b
+  implements com.tencent.mm.plugin.appbrand.g.b
 {
-  private final com.tencent.mm.plugin.appbrand.i gRG;
+  private final AppBrandRuntime iGV;
   
-  public o(com.tencent.mm.plugin.appbrand.i parami)
+  o(AppBrandRuntime paramAppBrandRuntime)
   {
-    this.gRG = parami;
+    this.iGV = paramAppBrandRuntime;
   }
   
-  public final void a(String paramString, a.a parama)
+  private static Pair<String, String> Ku(String paramString)
   {
-    AppMethodBeat.i(87001);
-    byte[] arrayOfByte = new byte[0];
-    Object localObject = arrayOfByte;
-    if (match(paramString))
+    AppMethodBeat.i(194482);
+    paramString = Uri.parse(paramString);
+    paramString = Pair.create(paramString.getQueryParameter("appId"), paramString.getQueryParameter("path"));
+    AppMethodBeat.o(194482);
+    return paramString;
+  }
+  
+  public final String AL()
+  {
+    return "WxaPkgImageReader";
+  }
+  
+  public final void a(String paramString, a.c paramc)
+  {
+    AppMethodBeat.i(194483);
+    if (paramc == null)
     {
-      localObject = Uri.parse(paramString);
-      paramString = ((Uri)localObject).getQueryParameter("appId");
-      String str = ((Uri)localObject).getQueryParameter("path");
-      localObject = arrayOfByte;
-      if (paramString != null)
-      {
-        localObject = arrayOfByte;
-        if (paramString.length() != 0)
-        {
-          localObject = arrayOfByte;
-          if (str != null)
-          {
-            localObject = arrayOfByte;
-            if (str.length() != 0)
-            {
-              paramString = ax.f(this.gRG, Uri.decode(str));
-              localObject = com.tencent.luggage.g.i.g(paramString);
-              com.tencent.luggage.g.i.b(paramString);
-            }
-          }
-        }
-      }
+      AppMethodBeat.o(194483);
+      return;
     }
-    if (parama != null) {
-      parama.P((byte[])localObject);
+    paramString = (String)Ku(paramString).second;
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramc.A(null);
+      AppMethodBeat.o(194483);
+      return;
     }
-    AppMethodBeat.o(87001);
+    paramc.A(be.f(this.iGV, paramString));
+    AppMethodBeat.o(194483);
   }
   
   public final boolean a(c paramc, String paramString)
   {
-    AppMethodBeat.i(86999);
+    AppMethodBeat.i(134914);
     if ((paramc == null) || (paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(86999);
+      AppMethodBeat.o(134914);
       return false;
     }
     if ((!paramString.startsWith("wxapkg://")) && (!paramString.startsWith("http://")) && (!paramString.startsWith("https://")) && (!paramString.startsWith("wxfile://")) && (!paramString.contains("://")))
     {
-      AppMethodBeat.o(86999);
+      AppMethodBeat.o(134914);
       return true;
     }
-    AppMethodBeat.o(86999);
+    AppMethodBeat.o(134914);
     return false;
   }
   
-  public final Bitmap b(String paramString, Rect paramRect, a.c paramc)
+  public final Bitmap b(String paramString, Rect paramRect, a.b paramb)
   {
-    AppMethodBeat.i(86998);
+    AppMethodBeat.i(134913);
     if (!match(paramString))
     {
-      AppMethodBeat.o(86998);
+      AppMethodBeat.o(134913);
       return null;
     }
-    paramc = Uri.parse(paramString);
-    paramString = paramc.getQueryParameter("appId");
-    paramc = paramc.getQueryParameter("path");
-    if ((paramString == null) || (paramString.length() == 0) || (paramc == null) || (paramc.length() == 0))
+    paramString = (String)Ku(paramString).second;
+    if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(86998);
+      AppMethodBeat.o(134913);
       return null;
     }
-    paramc = t.j(this.gRG, Uri.decode(paramc));
-    paramString = paramc;
+    paramb = w.k(this.iGV, Uri.decode(paramString));
+    paramString = paramb;
     if (paramRect != null) {
-      paramString = new com.tencent.mm.plugin.appbrand.luggage.a.b(paramRect.left, paramRect.top, paramRect.width(), paramRect.height()).x(paramc);
+      paramString = new com.tencent.mm.plugin.appbrand.luggage.a.b(paramRect.left, paramRect.top, paramRect.width(), paramRect.height()).F(paramb);
     }
-    AppMethodBeat.o(86998);
+    AppMethodBeat.o(134913);
     return paramString;
   }
   
   public final String b(c paramc, String paramString)
   {
-    AppMethodBeat.i(87000);
+    AppMethodBeat.i(134915);
     if (!a(paramc, paramString))
     {
-      AppMethodBeat.o(87000);
+      AppMethodBeat.o(134915);
       return paramString;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -118,30 +116,25 @@ public final class o
     localStringBuilder.append("path=");
     localStringBuilder.append(Uri.encode(paramString));
     paramc = localStringBuilder.toString();
-    AppMethodBeat.o(87000);
+    AppMethodBeat.o(134915);
     return paramc;
   }
   
   public final boolean match(String paramString)
   {
-    AppMethodBeat.i(86997);
+    AppMethodBeat.i(134912);
     if ((paramString != null) && (paramString.startsWith("wxapkg://")))
     {
-      AppMethodBeat.o(86997);
+      AppMethodBeat.o(134912);
       return true;
     }
-    AppMethodBeat.o(86997);
+    AppMethodBeat.o(134912);
     return false;
-  }
-  
-  public final String tX()
-  {
-    return "WxaPkgImageReader";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.o
  * JD-Core Version:    0.7.0.1
  */

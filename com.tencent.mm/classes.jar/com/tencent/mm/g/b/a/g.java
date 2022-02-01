@@ -2,97 +2,118 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class g
   extends a
 {
-  public int cPS = 0;
-  public int cPT = 0;
-  public int cPU = 0;
-  public int cPV = 0;
-  private String cPW;
-  public int cPX;
-  public long cPY = 0L;
-  public long cPZ = 0L;
-  private String cQa;
-  public long cQb = 0L;
+  public String dGR = "";
+  public long dGS = 0L;
+  public long dGT = 0L;
+  public long dGU = 0L;
+  public boolean dGV;
+  public long dGW = 0L;
+  public long dGX = 0L;
+  public long dGY = 0L;
+  private long dGZ = 0L;
+  private long dHa = 0L;
+  public g.a dHb;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(151537);
+    AppMethodBeat.i(19862);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cPS);
+    ((StringBuffer)localObject).append(this.dGR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cPT);
+    ((StringBuffer)localObject).append(this.dGS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cPU);
+    ((StringBuffer)localObject).append(this.dGT);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cPV);
+    ((StringBuffer)localObject).append(this.dGU);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cPW);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cPX);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cPY);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cPZ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cQa);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cQb);
+    if (this.dGV)
+    {
+      i = 1;
+      ((StringBuffer)localObject).append(i);
+      ((StringBuffer)localObject).append(",");
+      ((StringBuffer)localObject).append(this.dGW);
+      ((StringBuffer)localObject).append(",");
+      ((StringBuffer)localObject).append(this.dGX);
+      ((StringBuffer)localObject).append(",");
+      ((StringBuffer)localObject).append(this.dGY);
+      ((StringBuffer)localObject).append(",");
+      ((StringBuffer)localObject).append(this.dGZ);
+      ((StringBuffer)localObject).append(",");
+      ((StringBuffer)localObject).append(this.dHa);
+      ((StringBuffer)localObject).append(",");
+      if (this.dHb == null) {
+        break label225;
+      }
+    }
+    label225:
+    for (int i = this.dHb.value;; i = -1)
+    {
+      ((StringBuffer)localObject).append(i);
+      localObject = ((StringBuffer)localObject).toString();
+      ams((String)localObject);
+      AppMethodBeat.o(19862);
+      return localObject;
+      i = 0;
+      break;
+    }
+  }
+  
+  public final String PW()
+  {
+    AppMethodBeat.i(19863);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("ChatName:").append(this.dGR);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("MemberCount:").append(this.dGS);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("MsgSvrId:").append(this.dGT);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("MsgCreateTime:").append(this.dGU);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsHdImgBool:").append(this.dGV);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ImgSize:").append(this.dGW);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ImgWidth:").append(this.dGX);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ImgHeight:").append(this.dGY);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("StartDownloadTimeStampMs:").append(this.dGZ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("FinishDownloadTimeStampMs:").append(this.dHa);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("FinishCode:").append(this.dHb);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(151537);
+    AppMethodBeat.o(19863);
     return localObject;
   }
   
-  public final String Fg()
+  public final g PZ()
   {
-    AppMethodBeat.i(151538);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("optype:").append(this.cPS);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("errtype:").append(this.cPT);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("errcode:").append(this.cPU);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("mapederror:").append(this.cPV);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("filekey:").append(this.cPW);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("filetype:").append(this.cPX);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TryWritenBytes:").append(this.cPY);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AvailableBytes:").append(this.cPZ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SystemErrorDescribe:").append(this.cQa);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CurrentFileSize:").append(this.cQb);
-    localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(151538);
-    return localObject;
-  }
-  
-  public final g eR(String paramString)
-  {
-    AppMethodBeat.i(151536);
-    this.cPW = t("filekey", paramString, true);
-    AppMethodBeat.o(151536);
+    AppMethodBeat.i(19860);
+    this.dGZ = bt.eGO();
+    super.bb("StartDownloadTimeStampMs", this.dGZ);
+    AppMethodBeat.o(19860);
     return this;
   }
   
-  public final g eS(String paramString)
+  public final g Qa()
   {
-    AppMethodBeat.i(155155);
-    this.cQa = t("SystemErrorDescribe", paramString, true);
-    AppMethodBeat.o(155155);
+    AppMethodBeat.i(19861);
+    this.dHa = bt.eGO();
+    super.bb("FinishDownloadTimeStampMs", this.dHa);
+    AppMethodBeat.o(19861);
     return this;
   }
   
   public final int getId()
   {
-    return 17473;
+    return 15749;
   }
 }
 

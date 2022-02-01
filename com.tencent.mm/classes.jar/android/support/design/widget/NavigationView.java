@@ -2,16 +2,21 @@ package android.support.design.widget;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Parcelable.ClassLoaderCreator;
+import android.os.Parcelable.Creator;
 import android.support.design.a.a;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.internal.ScrimInsetsFrameLayout;
 import android.support.design.internal.c;
 import android.support.design.internal.c.b;
+import android.support.design.internal.f;
 import android.support.v4.view.AbsSavedState;
 import android.support.v4.view.ab;
 import android.support.v4.view.t;
@@ -34,110 +39,116 @@ import android.widget.LinearLayout;
 public class NavigationView
   extends ScrimInsetsFrameLayout
 {
-  private static final int[] dP = { 16842912 };
-  private static final int[] gc = { -16842910 };
-  private MenuInflater gd;
-  private final android.support.design.internal.b kh;
-  private final c ki = new c();
-  NavigationView.a kj;
-  private int mMaxWidth;
+  private static final int[] gZ = { 16842912 };
+  private static final int[] hl = { -16842910 };
+  private MenuInflater kT;
+  private final int maxWidth;
+  private final android.support.design.internal.b qi;
+  private final c qj = new c();
+  a qk;
   
   public NavigationView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 0);
+    this(paramContext, paramAttributeSet, 2130969318);
   }
   
   public NavigationView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    n.F(paramContext);
-    this.kh = new android.support.design.internal.b(paramContext);
-    az localaz = az.a(paramContext, paramAttributeSet, a.a.NavigationView, paramInt, 2131493840);
+    this.qi = new android.support.design.internal.b(paramContext);
+    az localaz = f.b(paramContext, paramAttributeSet, a.a.NavigationView, paramInt, 2131821638, new int[0]);
     t.a(this, localaz.getDrawable(0));
     if (localaz.hasValue(3)) {
-      t.i(this, localaz.getDimensionPixelSize(3, 0));
+      t.k(this, localaz.getDimensionPixelSize(3, 0));
     }
     t.e(this, localaz.getBoolean(1, false));
-    this.mMaxWidth = localaz.getDimensionPixelSize(2, 0);
+    this.maxWidth = localaz.getDimensionPixelSize(2, 0);
     ColorStateList localColorStateList;
-    if (localaz.hasValue(5))
+    if (localaz.hasValue(8))
     {
-      localColorStateList = localaz.getColorStateList(5);
-      if (!localaz.hasValue(8)) {
-        break label503;
+      localColorStateList = localaz.getColorStateList(8);
+      if (!localaz.hasValue(9)) {
+        break label551;
       }
-      paramInt = localaz.getResourceId(8, 0);
+      paramInt = localaz.getResourceId(9, 0);
     }
     for (int i = 1;; i = 0)
     {
       paramAttributeSet = null;
-      if (localaz.hasValue(6)) {
-        paramAttributeSet = localaz.getColorStateList(6);
+      if (localaz.hasValue(10)) {
+        paramAttributeSet = localaz.getColorStateList(10);
       }
       Object localObject = paramAttributeSet;
       if (i == 0)
       {
         localObject = paramAttributeSet;
         if (paramAttributeSet == null) {
-          localObject = J(16842806);
+          localObject = ac(16842806);
         }
       }
-      paramAttributeSet = localaz.getDrawable(7);
-      this.kh.a(new h.a()
+      paramAttributeSet = localaz.getDrawable(5);
+      if (localaz.hasValue(6))
+      {
+        j = localaz.getDimensionPixelSize(6, 0);
+        this.qj.setItemHorizontalPadding(j);
+      }
+      int j = localaz.getDimensionPixelSize(7, 0);
+      this.qi.a(new h.a()
       {
         public final boolean a(h paramAnonymoush, MenuItem paramAnonymousMenuItem)
         {
-          return (NavigationView.this.kj != null) && (NavigationView.this.kj.aX());
+          return (NavigationView.this.qk != null) && (NavigationView.this.qk.bE());
         }
         
         public final void b(h paramAnonymoush) {}
       });
-      this.ki.mId = 1;
-      this.ki.a(paramContext, this.kh);
-      this.ki.setItemIconTintList(localColorStateList);
+      this.qj.id = 1;
+      this.qj.a(paramContext, this.qi);
+      this.qj.setItemIconTintList(localColorStateList);
       if (i != 0) {
-        this.ki.setItemTextAppearance(paramInt);
+        this.qj.setItemTextAppearance(paramInt);
       }
-      this.ki.setItemTextColor((ColorStateList)localObject);
-      this.ki.setItemBackground(paramAttributeSet);
-      this.kh.a(this.ki);
-      paramContext = this.ki;
-      if (paramContext.eL == null)
+      this.qj.setItemTextColor((ColorStateList)localObject);
+      this.qj.setItemBackground(paramAttributeSet);
+      this.qj.setItemIconPadding(j);
+      this.qi.a(this.qj);
+      paramContext = this.qj;
+      if (paramContext.ic == null)
       {
-        paramContext.eL = ((NavigationMenuView)paramContext.mLayoutInflater.inflate(2130969315, this, false));
-        if (paramContext.eO == null) {
-          paramContext.eO = new c.b(paramContext);
+        paramContext.ic = ((NavigationMenuView)paramContext.layoutInflater.inflate(2131493703, this, false));
+        if (paramContext.ig == null) {
+          paramContext.ig = new c.b(paramContext);
         }
-        paramContext.eM = ((LinearLayout)paramContext.mLayoutInflater.inflate(2130969312, paramContext.eL, false));
-        paramContext.eL.setAdapter(paramContext.eO);
+        paramContext.ie = ((LinearLayout)paramContext.layoutInflater.inflate(2131493700, paramContext.ic, false));
+        paramContext.ic.setAdapter(paramContext.ig);
       }
-      addView((View)paramContext.eL);
+      addView((View)paramContext.ic);
+      if (localaz.hasValue(11))
+      {
+        paramInt = localaz.getResourceId(11, 0);
+        this.qj.q(true);
+        getMenuInflater().inflate(paramInt, this.qi);
+        this.qj.q(false);
+        this.qj.p(false);
+      }
       if (localaz.hasValue(4))
       {
         paramInt = localaz.getResourceId(4, 0);
-        this.ki.o(true);
-        getMenuInflater().inflate(paramInt, this.kh);
-        this.ki.o(false);
-        this.ki.n(false);
+        paramContext = this.qj;
+        paramAttributeSet = paramContext.layoutInflater.inflate(paramInt, paramContext.ie, false);
+        paramContext.ie.addView(paramAttributeSet);
+        paramContext.ic.setPadding(0, 0, 0, paramContext.ic.getPaddingBottom());
       }
-      if (localaz.hasValue(9))
-      {
-        paramInt = localaz.getResourceId(9, 0);
-        paramContext = this.ki;
-        paramAttributeSet = paramContext.mLayoutInflater.inflate(paramInt, paramContext.eM, false);
-        paramContext.eM.addView(paramAttributeSet);
-        paramContext.eL.setPadding(0, 0, 0, paramContext.eL.getPaddingBottom());
-      }
-      localaz.aoo.recycle();
+      localaz.avP.recycle();
       return;
-      localColorStateList = J(16842808);
+      localColorStateList = ac(16842808);
       break;
-      label503:
+      label551:
       paramInt = 0;
     }
   }
   
-  private ColorStateList J(int paramInt)
+  private ColorStateList ac(int paramInt)
   {
     Object localObject = new TypedValue();
     if (!getContext().getTheme().resolveAttribute(paramInt, (TypedValue)localObject, true)) {}
@@ -145,62 +156,77 @@ public class NavigationView
     do
     {
       return null;
-      localColorStateList = a.l(getContext(), ((TypedValue)localObject).resourceId);
-    } while (!getContext().getTheme().resolveAttribute(2130772206, (TypedValue)localObject, true));
+      localColorStateList = a.m(getContext(), ((TypedValue)localObject).resourceId);
+    } while (!getContext().getTheme().resolveAttribute(2130968815, (TypedValue)localObject, true));
     paramInt = ((TypedValue)localObject).data;
     int i = localColorStateList.getDefaultColor();
-    localObject = gc;
-    int[] arrayOfInt1 = dP;
+    localObject = hl;
+    int[] arrayOfInt1 = gZ;
     int[] arrayOfInt2 = EMPTY_STATE_SET;
-    int j = localColorStateList.getColorForState(gc, i);
+    int j = localColorStateList.getColorForState(hl, i);
     return new ColorStateList(new int[][] { localObject, arrayOfInt1, arrayOfInt2 }, new int[] { j, paramInt, i });
   }
   
   private MenuInflater getMenuInflater()
   {
-    if (this.gd == null) {
-      this.gd = new g(getContext());
+    if (this.kT == null) {
+      this.kT = new g(getContext());
     }
-    return this.gd;
+    return this.kT;
   }
   
   public final void a(ab paramab)
   {
-    c localc = this.ki;
+    c localc = this.qj;
     int i = paramab.getSystemWindowInsetTop();
-    if (localc.eT != i)
+    if (localc.il != i)
     {
-      localc.eT = i;
-      if (localc.eM.getChildCount() == 0) {
-        localc.eL.setPadding(0, localc.eT, 0, localc.eL.getPaddingBottom());
+      localc.il = i;
+      if (localc.ie.getChildCount() == 0) {
+        localc.ic.setPadding(0, localc.il, 0, localc.ic.getPaddingBottom());
       }
     }
-    t.b(localc.eM, paramab);
+    t.b(localc.ie, paramab);
+  }
+  
+  public MenuItem getCheckedItem()
+  {
+    return this.qj.ig.ir;
   }
   
   public int getHeaderCount()
   {
-    return this.ki.eM.getChildCount();
+    return this.qj.ie.getChildCount();
   }
   
   public Drawable getItemBackground()
   {
-    return this.ki.eS;
+    return this.qj.hE;
+  }
+  
+  public int getItemHorizontalPadding()
+  {
+    return this.qj.ij;
+  }
+  
+  public int getItemIconPadding()
+  {
+    return this.qj.ik;
   }
   
   public ColorStateList getItemIconTintList()
   {
-    return this.ki.eG;
+    return this.qj.hX;
   }
   
   public ColorStateList getItemTextColor()
   {
-    return this.ki.eR;
+    return this.qj.ii;
   }
   
   public Menu getMenu()
   {
-    return this.kh;
+    return this.qi;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -215,76 +241,133 @@ public class NavigationView
     {
       super.onMeasure(i, paramInt2);
       return;
-      i = View.MeasureSpec.makeMeasureSpec(Math.min(View.MeasureSpec.getSize(paramInt1), this.mMaxWidth), 1073741824);
+      i = View.MeasureSpec.makeMeasureSpec(Math.min(View.MeasureSpec.getSize(paramInt1), this.maxWidth), 1073741824);
       continue;
-      i = View.MeasureSpec.makeMeasureSpec(this.mMaxWidth, 1073741824);
+      i = View.MeasureSpec.makeMeasureSpec(this.maxWidth, 1073741824);
     }
   }
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    if (!(paramParcelable instanceof NavigationView.SavedState))
+    if (!(paramParcelable instanceof SavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
       return;
     }
-    paramParcelable = (NavigationView.SavedState)paramParcelable;
-    super.onRestoreInstanceState(paramParcelable.Fo);
-    this.kh.dispatchRestoreInstanceState(paramParcelable.kl);
+    paramParcelable = (SavedState)paramParcelable;
+    super.onRestoreInstanceState(paramParcelable.Mm);
+    this.qi.dispatchRestoreInstanceState(paramParcelable.qm);
   }
   
   protected Parcelable onSaveInstanceState()
   {
-    NavigationView.SavedState localSavedState = new NavigationView.SavedState(super.onSaveInstanceState());
-    localSavedState.kl = new Bundle();
-    this.kh.c(localSavedState.kl);
+    SavedState localSavedState = new SavedState(super.onSaveInstanceState());
+    localSavedState.qm = new Bundle();
+    this.qi.e(localSavedState.qm);
     return localSavedState;
   }
   
   public void setCheckedItem(int paramInt)
   {
-    Object localObject = this.kh.findItem(paramInt);
-    if (localObject != null)
-    {
-      c localc = this.ki;
-      localObject = (j)localObject;
-      localc.eO.d((j)localObject);
+    MenuItem localMenuItem = this.qi.findItem(paramInt);
+    if (localMenuItem != null) {
+      this.qj.d((j)localMenuItem);
     }
+  }
+  
+  public void setCheckedItem(MenuItem paramMenuItem)
+  {
+    paramMenuItem = this.qi.findItem(paramMenuItem.getItemId());
+    if (paramMenuItem != null)
+    {
+      this.qj.d((j)paramMenuItem);
+      return;
+    }
+    throw new IllegalArgumentException("Called setCheckedItem(MenuItem) with an item that is not in the current menu.");
   }
   
   public void setItemBackground(Drawable paramDrawable)
   {
-    this.ki.setItemBackground(paramDrawable);
+    this.qj.setItemBackground(paramDrawable);
   }
   
   public void setItemBackgroundResource(int paramInt)
   {
-    setItemBackground(android.support.v4.content.b.k(getContext(), paramInt));
+    setItemBackground(android.support.v4.content.b.l(getContext(), paramInt));
+  }
+  
+  public void setItemHorizontalPadding(int paramInt)
+  {
+    this.qj.setItemHorizontalPadding(paramInt);
+  }
+  
+  public void setItemHorizontalPaddingResource(int paramInt)
+  {
+    this.qj.setItemHorizontalPadding(getResources().getDimensionPixelSize(paramInt));
+  }
+  
+  public void setItemIconPadding(int paramInt)
+  {
+    this.qj.setItemIconPadding(paramInt);
+  }
+  
+  public void setItemIconPaddingResource(int paramInt)
+  {
+    this.qj.setItemIconPadding(getResources().getDimensionPixelSize(paramInt));
   }
   
   public void setItemIconTintList(ColorStateList paramColorStateList)
   {
-    this.ki.setItemIconTintList(paramColorStateList);
+    this.qj.setItemIconTintList(paramColorStateList);
   }
   
   public void setItemTextAppearance(int paramInt)
   {
-    this.ki.setItemTextAppearance(paramInt);
+    this.qj.setItemTextAppearance(paramInt);
   }
   
   public void setItemTextColor(ColorStateList paramColorStateList)
   {
-    this.ki.setItemTextColor(paramColorStateList);
+    this.qj.setItemTextColor(paramColorStateList);
   }
   
-  public void setNavigationItemSelectedListener(NavigationView.a parama)
+  public void setNavigationItemSelectedListener(a parama)
   {
-    this.kj = parama;
+    this.qk = parama;
+  }
+  
+  public static class SavedState
+    extends AbsSavedState
+  {
+    public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator() {};
+    public Bundle qm;
+    
+    public SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
+    {
+      super(paramClassLoader);
+      this.qm = paramParcel.readBundle(paramClassLoader);
+    }
+    
+    public SavedState(Parcelable paramParcelable)
+    {
+      super();
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      super.writeToParcel(paramParcel, paramInt);
+      paramParcel.writeBundle(this.qm);
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract boolean bE();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.widget.NavigationView
  * JD-Core Version:    0.7.0.1
  */

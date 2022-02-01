@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:textColorHint="@color/fh" android:id="@id/qy" android:background="@drawable/bh" android:paddingLeft="@dimen/n_" android:layout_width="fill_parent" android:layout_height="@dimen/qy" android:hint="@string/if" android:drawableLeft="@raw/app_brand_desktop_search_icon" android:drawablePadding="@dimen/dl" android:textCursorDrawable="@drawable/r1" style="@style/lb" />
-</LinearLayout>

@@ -9,7 +9,7 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 class NetStatRuler
   extends View
@@ -32,12 +32,12 @@ class NetStatRuler
   @SuppressLint({"DrawAllocation"})
   public void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(126969);
+    AppMethodBeat.i(73898);
     super.onDraw(paramCanvas);
     TextPaint localTextPaint = new TextPaint();
     localTextPaint.setAntiAlias(true);
     localTextPaint.setDither(true);
-    localTextPaint.setTextSize(getContext().getResources().getDimensionPixelSize(2131427870));
+    localTextPaint.setTextSize(getContext().getResources().getDimensionPixelSize(2131165584));
     Rect localRect = new Rect();
     getDrawingRect(localRect);
     float f1 = localRect.height();
@@ -48,15 +48,15 @@ class NetStatRuler
     float f6 = 2.0F * f1 / 3.0F;
     float f7 = localRect.top;
     localTextPaint.setColor(-7829368);
-    paramCanvas.drawText(bo.nV(NetStatUnit.max * 2 / 3), f2, f3 + f4, localTextPaint);
-    paramCanvas.drawText(bo.nV(NetStatUnit.max / 3), f2, f5 + f6, localTextPaint);
-    paramCanvas.drawText(bo.nV(0L), f2, f7 + f1, localTextPaint);
-    AppMethodBeat.o(126969);
+    paramCanvas.drawText(bt.vK(NetStatUnit.wes * 2L / 3L), f2, f3 + f4, localTextPaint);
+    paramCanvas.drawText(bt.vK(NetStatUnit.wes / 3L), f2, f5 + f6, localTextPaint);
+    paramCanvas.drawText(bt.vK(0L), f2, f7 + f1, localTextPaint);
+    AppMethodBeat.o(73898);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.NetStatRuler
  * JD-Core Version:    0.7.0.1
  */

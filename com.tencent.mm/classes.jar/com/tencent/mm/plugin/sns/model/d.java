@@ -1,28 +1,17 @@
 package com.tencent.mm.plugin.sns.model;
 
+import com.tencent.mm.plugin.sns.ui.bk;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+
 public abstract interface d
 {
-  public abstract boolean con();
+  public abstract void a(int paramInt, String paramString, long paramLong, TimeLineObject paramTimeLineObject, boolean paramBoolean);
   
-  public abstract boolean coo();
-  
-  public abstract boolean cop();
-  
-  public abstract boolean coq();
-  
-  public abstract long cor();
-  
-  public abstract boolean cos();
-  
-  public abstract long cot();
-  
-  public abstract String cou();
-  
-  public abstract String getUserName();
+  public abstract void a(int paramInt, String paramString, long paramLong, TimeLineObject paramTimeLineObject, boolean paramBoolean, bk parambk);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.d
  * JD-Core Version:    0.7.0.1
  */

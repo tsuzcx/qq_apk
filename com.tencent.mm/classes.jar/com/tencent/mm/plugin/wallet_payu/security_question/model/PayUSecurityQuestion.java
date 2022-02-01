@@ -14,17 +14,17 @@ public class PayUSecurityQuestion
   
   static
   {
-    AppMethodBeat.i(48577);
-    CREATOR = new PayUSecurityQuestion.1();
-    AppMethodBeat.o(48577);
+    AppMethodBeat.i(72218);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(72218);
   }
   
   public PayUSecurityQuestion(Parcel paramParcel)
   {
-    AppMethodBeat.i(48575);
+    AppMethodBeat.i(72216);
     this.id = paramParcel.readString();
     this.desc = paramParcel.readString();
-    AppMethodBeat.o(48575);
+    AppMethodBeat.o(72216);
   }
   
   public PayUSecurityQuestion(String paramString1, String paramString2)
@@ -40,15 +40,15 @@ public class PayUSecurityQuestion
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(48576);
+    AppMethodBeat.i(72217);
     paramParcel.writeString(this.id);
     paramParcel.writeString(this.desc);
-    AppMethodBeat.o(48576);
+    AppMethodBeat.o(72217);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.security_question.model.PayUSecurityQuestion
  * JD-Core Version:    0.7.0.1
  */

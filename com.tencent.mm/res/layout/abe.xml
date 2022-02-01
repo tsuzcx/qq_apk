@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/d0a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ban" android:scaleType="fitXY" />
-    <ImageView android:id="@id/d0b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bao" android:scaleType="fitXY" />
-</RelativeLayout>
+    <ImageView android:id="@id/cbn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/cbp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a4h" />
+</FrameLayout>

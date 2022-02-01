@@ -1,601 +1,737 @@
 package com.tencent.mm.cc;
 
-import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.content.res.Resources.Theme;
-import android.graphics.Bitmap;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.WindowManager;
+import android.net.Uri;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.d.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.af;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import com.tencent.mm.jniinterface.AesEcb;
+import com.tencent.mm.kernel.b.h;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.t;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.storage.emotion.SmileyInfo;
+import com.tencent.mm.storage.emotion.SmileyPanelConfigInfo;
+import com.tencent.mm.storage.emotion.u;
+import com.tencent.mm.vfs.i;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public final class a
+  implements com.tencent.mm.pluginsdk.a.e
 {
-  static int vDR;
-  private static boolean yiO;
-  public static String yiP;
-  public static String yiQ;
-  public static String yiR;
-  public static String yiS;
-  public static String yiT;
-  public static String yiU;
-  static float yiV;
-  private static boolean yiW;
-  static a yiX;
-  private static Boolean yiY;
-  private static Boolean yiZ;
-  private static Boolean yja;
-  private static boolean yjd;
-  private static boolean yje;
-  DisplayMetrics bTx;
-  DisplayMetrics yiN;
-  private Method yjb;
-  private Field yjc;
+  public static a EMh;
+  public static b EMi;
+  public static c EMj;
+  private String EMc;
+  private ArrayList<EmojiInfo> EMd;
+  private ArrayList<EmojiInfo> EMe;
+  private HashMap<String, ArrayList<EmojiInfo>> EMf;
+  private ArrayList<EmojiGroupInfo> EMg;
   
   static
   {
-    AppMethodBeat.i(142714);
-    yiO = true;
-    yiP = "screenResolution_density_dpi";
-    yiQ = "screenResolution_density_dpi_new";
-    yiR = "screenResolution_density_report_new";
-    yiS = "screenResolution_density_report_pad";
-    yiT = "screenResolution_target_field";
-    yiU = "screenResolution_isModifyDensity";
-    yiV = 1.0F;
-    yiW = false;
-    vDR = 0;
-    yiY = null;
-    yiZ = null;
-    yja = null;
-    yjd = false;
-    yje = false;
-    if (Build.BRAND != null)
-    {
-      String str = Build.BRAND.toLowerCase();
-      if (((str.contains("huawei")) || (str.contains("honor"))) && (Build.VERSION.SDK_INT == 24)) {
-        yje = true;
-      }
-    }
-    AppMethodBeat.o(142714);
+    AppMethodBeat.i(104893);
+    EMh = new a();
+    EMi = new b();
+    EMj = new c();
+    AppMethodBeat.o(104893);
   }
   
-  public a(DisplayMetrics paramDisplayMetrics)
+  public a()
   {
-    AppMethodBeat.i(105870);
-    this.yjb = null;
-    this.yjc = null;
-    this.yiN = paramDisplayMetrics;
-    Object localObject = Build.BRAND;
-    if (!bo.isNullOrNil((String)localObject))
+    AppMethodBeat.i(104851);
+    this.EMd = new ArrayList();
+    this.EMe = new ArrayList();
+    this.EMf = new HashMap();
+    this.EMg = new ArrayList();
+    AppMethodBeat.o(104851);
+  }
+  
+  private static byte[] D(EmojiInfo paramEmojiInfo)
+  {
+    AppMethodBeat.i(104868);
+    if (paramEmojiInfo == null)
     {
-      localObject = ((String)localObject).toLowerCase();
-      if (((((String)localObject).contains("huawei")) || (((String)localObject).contains("honor"))) && (paramDisplayMetrics != null) && (Math.min(paramDisplayMetrics.widthPixels, paramDisplayMetrics.heightPixels) == 720) && ((Build.VERSION.SDK_INT == 26) || (Build.VERSION.SDK_INT == 27)))
+      ad.w("MicroMsg.EmotionStorageResolver", "[decodeEmojiDataExport] failed. emoji is null.");
+      AppMethodBeat.o(104868);
+      return null;
+    }
+    String str = paramEmojiInfo.gaa();
+    byte[] arrayOfByte2 = i.aR(str, 0, -1);
+    if ((i.aMN(str) > 0L) && (arrayOfByte2 != null) && (arrayOfByte2.length >= 10))
+    {
+      byte[] arrayOfByte1 = new byte[10];
+      System.arraycopy(arrayOfByte2, 0, arrayOfByte1, 0, 10);
+      if (((paramEmojiInfo.field_reserved4 & EmojiInfo.LCl) == EmojiInfo.LCl) && (!t.co(arrayOfByte1)))
       {
-        ab.i("MicroMsg.MMDensityManager", "dancy huaweiSpecial 720!!");
-        bool = true;
-        yiW = bool;
-        vDR = af.getDeviceWidth();
-        if (!ah.brt()) {
-          break label318;
+        long l1 = System.currentTimeMillis();
+        int j = (int)i.aMN(str);
+        int i = j;
+        if (j > 1024) {
+          i = 1024;
         }
-        yiO = dqW();
-        localObject = new IntentFilter();
-        ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
-        ah.getContext().registerReceiver(new BroadcastReceiver()
+        arrayOfByte1 = i.aR(str, 0, i);
+        if (!bt.isNullOrNil(aaQ())) {}
+        for (;;)
         {
-          public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
+          try
           {
-            AppMethodBeat.i(142704);
-            if (paramAnonymousIntent.getAction().equalsIgnoreCase("android.intent.action.SCREEN_OFF"))
-            {
-              if (a.drf())
-              {
-                AppMethodBeat.o(142704);
-                return;
-              }
-              if (a.drg())
-              {
-                a.drh();
-                AppMethodBeat.o(142704);
-                return;
-              }
-              if ((a.dri()) && (a.dqT()))
-              {
-                ab.i("MicroMsg.MMDensityManager", "killSelfAndCallUp ");
-                a.drh();
-              }
+            arrayOfByte1 = AesEcb.aesCryptEcb(arrayOfByte1, aaQ().getBytes(), false, false);
+            if ((bt.cw(arrayOfByte1)) || (bt.cw(arrayOfByte2))) {
+              break;
             }
-            AppMethodBeat.o(142704);
+            System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, i);
+            long l2 = System.currentTimeMillis();
+            ad.d("MicroMsg.EmotionStorageResolver", "decode emoji file length:%d use time:%d", new Object[] { Integer.valueOf(arrayOfByte2.length), Long.valueOf(l2 - l1) });
+            if (!a(paramEmojiInfo, arrayOfByte2)) {
+              break label322;
+            }
+            AppMethodBeat.o(104868);
+            return arrayOfByte2;
           }
-        }, (IntentFilter)localObject);
+          catch (Throwable localThrowable)
+          {
+            ad.printErrStackTrace("MicroMsg.EmotionStorageResolver", localThrowable, "", new Object[0]);
+          }
+          Object localObject = null;
+        }
+        ad.i("MicroMsg.EmotionStorageResolver", "decode emoji file failed. path:%s return original ", new Object[] { str });
+        if (a(paramEmojiInfo, arrayOfByte2))
+        {
+          AppMethodBeat.o(104868);
+          return arrayOfByte2;
+        }
+      }
+      else if (a(paramEmojiInfo, arrayOfByte2))
+      {
+        AppMethodBeat.o(104868);
+        return arrayOfByte2;
       }
     }
-    label318:
-    do
+    else
     {
-      ab.i("MicroMsg.MMDensityManager", "MMDensityManager switch mm:%s, tools:%s, appbrand:%s, all:%s", new Object[] { Boolean.valueOf(dqW()), Boolean.valueOf(dqY()), Boolean.valueOf(dqX()), Boolean.valueOf(drc()) });
-      localObject = ah.getContext().getSharedPreferences(ah.dsP(), 0).edit();
-      ((SharedPreferences.Editor)localObject).putBoolean(yiU, drc());
-      ((SharedPreferences.Editor)localObject).commit();
-      if (!drc()) {
-        break label388;
+      ad.i("MicroMsg.EmotionStorageResolver", "decode emoji file failed. path is no exist :%s ", new Object[] { str });
+    }
+    label322:
+    AppMethodBeat.o(104868);
+    return null;
+  }
+  
+  private static boolean a(EmojiInfo paramEmojiInfo, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(104869);
+    String str;
+    if (t.cp(paramArrayOfByte))
+    {
+      str = paramEmojiInfo.field_externMd5;
+      paramArrayOfByte = ai.D(paramArrayOfByte);
+      if ((bt.isNullOrNil(str)) || (bt.isNullOrNil(paramArrayOfByte)) || (!bt.kU(str, paramArrayOfByte))) {
+        break label83;
       }
-      this.bTx = d(paramDisplayMetrics);
-      paramDisplayMetrics.setTo(this.bTx);
-      if (Build.VERSION.SDK_INT >= 21) {
-        ah.getContext().getTheme().getResources().getDisplayMetrics().setTo(this.bTx);
-      }
-      ab.i("MicroMsg.MMDensityManager", " Target DisplayMetrics[%s]", new Object[] { this.bTx });
-      AppMethodBeat.o(105870);
-      return;
-      bool = false;
-      break;
-      if (ah.isAppBrandProcess())
-      {
-        if ((dqW()) && (dqX())) {}
-        for (bool = true;; bool = false)
-        {
-          yiO = bool;
-          break;
-        }
-      }
-    } while ((!ah.dsW()) && (!ah.dsX()));
-    if ((dqW()) && (dqY())) {}
+    }
+    label83:
     for (boolean bool = true;; bool = false)
     {
-      yiO = bool;
+      if (!bool) {
+        ad.w("MicroMsg.EmotionStorageResolver", "checkFileMd5: %s", new Object[] { paramEmojiInfo.field_md5 });
+      }
+      AppMethodBeat.o(104869);
+      return bool;
+      str = paramEmojiInfo.field_md5;
       break;
     }
-    label388:
-    yiV = 400.0F / (Math.min(this.yiN.widthPixels, paramDisplayMetrics.heightPixels) / this.yiN.density);
-    this.bTx = this.yiN;
-    AppMethodBeat.o(105870);
   }
   
-  public static void MW(int paramInt)
+  private static String aaQ()
   {
-    AppMethodBeat.i(142708);
-    as.apq(ah.dsP()).putInt(yiT, paramInt);
-    AppMethodBeat.o(142708);
+    AppMethodBeat.i(104870);
+    String str = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getEmojiKey", null, null).getString("key", "");
+    AppMethodBeat.o(104870);
+    return str;
   }
   
-  public static void a(a parama)
+  public static Bundle call(Uri paramUri, String paramString1, String paramString2, Bundle paramBundle)
   {
-    yiX = parama;
-  }
-  
-  private static void c(Field paramField)
-  {
-    AppMethodBeat.i(105882);
-    if (yjd)
-    {
-      AppMethodBeat.o(105882);
-      return;
-    }
+    AppMethodBeat.i(104886);
     try
     {
-      paramField.setAccessible(true);
-      Field localField = Field.class.getDeclaredField("accessFlags");
-      localField.setAccessible(true);
-      localField.setInt(paramField, paramField.getModifiers() & 0xFFFFFFEF);
-      AppMethodBeat.o(105882);
-      return;
-    }
-    catch (Exception paramField)
-    {
-      ab.printErrStackTrace("MicroMsg.MMDensityManager", paramField, "", new Object[0]);
-      yjd = true;
-      AppMethodBeat.o(105882);
-    }
-  }
-  
-  public static DisplayMetrics d(DisplayMetrics paramDisplayMetrics)
-  {
-    AppMethodBeat.i(105871);
-    float f1 = dre();
-    int i;
-    float f3;
-    label105:
-    float f2;
-    if (af.dDl())
-    {
-      f1 = 750.0F;
-      i = Math.min(paramDisplayMetrics.widthPixels, paramDisplayMetrics.heightPixels);
-      f3 = i / f1;
-      ab.i("MicroMsg.MMDensityManager", "applyScreenAdaptiveDensity originWidth:%s, originheight:%s, targetField:%s", new Object[] { Integer.valueOf(paramDisplayMetrics.widthPixels), Integer.valueOf(paramDisplayMetrics.heightPixels), Float.valueOf(f1) });
-      if ((af.dDp() == 0) || (vDR == 0)) {
-        break label354;
-      }
-      if (i == 0) {
-        break label349;
-      }
-      f1 = vDR / i;
-      if (af.dDq() == af.dDp()) {
-        break label344;
-      }
-      f2 = f1 * (af.dDq() / af.dDp());
-      label126:
-      f1 = f2;
-      if (f2 < 0.95F) {
-        f1 = 0.95F;
-      }
-      if ((!af.dDl()) && (!af.dDm())) {
-        break label327;
-      }
-      f2 = f1;
-      if (f1 > 1.5F) {
-        f2 = 1.5F;
-      }
-      label166:
-      yiV *= f2;
-      f1 = f3 * f2;
-      ab.i("MicroMsg.MMDensityManager", "scale targetDensity:%s , DeviceDpi:%s, WindowDpi:%s, DeviceWidth:%s, DisplayWidth:%s, dpiScale:%s", new Object[] { Float.valueOf(f1), Integer.valueOf(af.dDp()), Integer.valueOf(af.dDq()), Integer.valueOf(vDR), Integer.valueOf(i), Float.valueOf(f2) });
-    }
-    for (;;)
-    {
-      f2 = paramDisplayMetrics.scaledDensity / paramDisplayMetrics.density;
-      i = (int)(160.0F * f1);
-      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      localDisplayMetrics.setTo(paramDisplayMetrics);
-      localDisplayMetrics.scaledDensity = (f2 * f1);
-      localDisplayMetrics.densityDpi = i;
-      localDisplayMetrics.density = f1;
-      AppMethodBeat.o(105871);
-      return localDisplayMetrics;
-      if (af.dDm())
+      paramUri = aj.getContext().getContentResolver().call(paramUri, paramString1, paramString2, paramBundle);
+      if (paramUri != null)
       {
-        f1 = 600.0F;
-        break;
-      }
-      yiV = 400.0F / f1;
-      break;
-      label327:
-      f2 = f1;
-      if (f1 <= 1.2F) {
-        break label166;
-      }
-      f2 = 1.2F;
-      break label166;
-      label344:
-      f2 = 1.0F;
-      break label126;
-      label349:
-      f1 = 1.0F;
-      break label105;
-      label354:
-      f1 = f3;
-    }
-  }
-  
-  public static float dqS()
-  {
-    return yiV;
-  }
-  
-  public static boolean dqT()
-  {
-    AppMethodBeat.i(142705);
-    try
-    {
-      int i = bo.getInt(b.btj().b("clicfg_android_density_check_kill_enable", "1", false, true), 1);
-      if (i > 0)
-      {
-        AppMethodBeat.o(142705);
-        return true;
-      }
-      AppMethodBeat.o(142705);
-      return false;
-    }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenKillSelf", new Object[0]);
-      AppMethodBeat.o(142705);
-    }
-    return false;
-  }
-  
-  private static boolean dqU()
-  {
-    AppMethodBeat.i(142706);
-    if (yiY == null) {}
-    try
-    {
-      if (bo.getInt(b.btj().b("clicfg_screen_adaptive_huawei_four", "0", false, true), 1) > 0) {
-        ab.i("MicroMsg.MMDensityManager", "isOpenHuaWeiSpecialAll!!");
-      }
-      for (yiY = Boolean.TRUE;; yiY = Boolean.FALSE)
-      {
-        boolean bool = yiY.booleanValue();
-        AppMethodBeat.o(142706);
-        return bool;
+        AppMethodBeat.o(104886);
+        return paramUri;
       }
     }
-    catch (Exception localException)
+    catch (NullPointerException paramUri)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenHuaWeiSpecialAll", new Object[0]);
-        yiY = Boolean.FALSE;
+        ad.printErrStackTrace("MicroMsg.EmotionStorageResolver", paramUri, "", new Object[0]);
+        paramUri = null;
       }
+      paramUri = new Bundle();
+      AppMethodBeat.o(104886);
+      return paramUri;
+    }
+    catch (IllegalArgumentException paramUri)
+    {
+      label31:
+      break label31;
     }
   }
   
-  private static boolean dqV()
+  public static a eCL()
   {
-    AppMethodBeat.i(142707);
-    if (yiZ == null) {}
-    try
-    {
-      if (bo.getInt(b.btj().b("clicfg_screen_adaptive_huawei_three", "1", false, true), 1) > 0) {
-        ab.i("MicroMsg.MMDensityManager", "isOpenHuaWeiSpecial360!!");
-      }
-      for (yiZ = Boolean.TRUE;; yiZ = Boolean.FALSE)
-      {
-        boolean bool = yiZ.booleanValue();
-        AppMethodBeat.o(142707);
-        return bool;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenHuaWeiSpecial360", new Object[0]);
-        yiZ = Boolean.FALSE;
-      }
-    }
+    return EMh;
   }
   
-  public static boolean dqW()
+  public static Uri getUri()
   {
-    AppMethodBeat.i(105872);
-    try
+    AppMethodBeat.i(202414);
+    Uri localUri = Uri.parse("content://com.tencent.mm.storage.provider.emotion/");
+    AppMethodBeat.o(202414);
+    return localUri;
+  }
+  
+  public final EmojiInfo TA(String paramString)
+  {
+    AppMethodBeat.i(104866);
+    if (((h)g.afy().aeZ()).agu())
     {
-      int i = bo.getInt(b.btj().b("clicfg_screen_adaptive", "1", false, true), 1);
-      if (i > 0)
-      {
-        AppMethodBeat.o(105872);
-        return true;
-      }
-      AppMethodBeat.o(105872);
-      return false;
+      paramString = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().TA(paramString);
+      AppMethodBeat.o(104866);
+      return paramString;
     }
-    catch (Exception localException)
+    Bundle localBundle = new Bundle();
+    localBundle.putString("key_md5", paramString);
+    paramString = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getEmojiByMd5", null, localBundle);
+    if (paramString != null)
     {
-      ab.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenScreenAdaptiveForMM", new Object[0]);
-      AppMethodBeat.o(105872);
+      paramString.setClassLoader(EmojiInfo.class.getClassLoader());
+      paramString = (EmojiInfo)paramString.getParcelable("key_emoji_info");
+      AppMethodBeat.o(104866);
+      return paramString;
     }
+    AppMethodBeat.o(104866);
+    return null;
+  }
+  
+  public final String TD(String paramString)
+  {
+    AppMethodBeat.i(104852);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      paramString = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().TD(paramString);
+      AppMethodBeat.o(104852);
+      return paramString;
+    }
+    paramString = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getCurLangDesc", paramString, null).getString("data", "");
+    AppMethodBeat.o(104852);
+    return paramString;
+  }
+  
+  public final void TL(String paramString)
+  {
+    AppMethodBeat.i(177033);
+    if (((h)g.afy().aeZ()).agu()) {
+      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().TL(paramString);
+    }
+    AppMethodBeat.o(177033);
+  }
+  
+  public final boolean TM(String paramString)
+  {
+    AppMethodBeat.i(104882);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      boolean bool = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().TM(paramString);
+      AppMethodBeat.o(104882);
+      return bool;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("key_path", paramString);
+    paramString = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "checkGifFile", null, localBundle);
+    if ((paramString != null) && (paramString.getBoolean("key_data")))
+    {
+      AppMethodBeat.o(104882);
+      return true;
+    }
+    AppMethodBeat.o(104882);
     return false;
   }
   
-  public static boolean dqX()
+  public final void TN(String paramString)
   {
-    AppMethodBeat.i(105873);
+    AppMethodBeat.i(104887);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      if (g.afz().aeI())
+      {
+        ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().TN(paramString);
+        AppMethodBeat.o(104887);
+      }
+    }
+    else {
+      aj.getContext().getContentResolver().call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "deleteLoadingCaptureEmoji", paramString, null);
+    }
+    AppMethodBeat.o(104887);
+  }
+  
+  public final void TO(String paramString)
+  {
+    AppMethodBeat.i(104889);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      if (g.afz().aeI())
+      {
+        ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().TO(paramString);
+        AppMethodBeat.o(104889);
+      }
+    }
+    else
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("key_md5", paramString);
+      aj.getContext().getContentResolver().call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "addCaptureEmojiUploadTask", null, localBundle);
+    }
+    AppMethodBeat.o(104889);
+  }
+  
+  public final byte[] a(EmojiInfo paramEmojiInfo)
+  {
+    AppMethodBeat.i(104862);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      paramEmojiInfo = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(paramEmojiInfo);
+      AppMethodBeat.o(104862);
+      return paramEmojiInfo;
+    }
+    paramEmojiInfo = D(paramEmojiInfo);
+    AppMethodBeat.o(104862);
+    return paramEmojiInfo;
+  }
+  
+  public final boolean abA()
+  {
+    AppMethodBeat.i(104876);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      boolean bool = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().abA();
+      AppMethodBeat.o(104876);
+      return bool;
+    }
+    AppMethodBeat.o(104876);
+    return false;
+  }
+  
+  public final boolean abz()
+  {
+    AppMethodBeat.i(104875);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      boolean bool = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().abz();
+      AppMethodBeat.o(104875);
+      return bool;
+    }
+    Bundle localBundle = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "isEnableHevcUpload", null, null);
+    if ((localBundle != null) && (localBundle.getBoolean("key_data")))
+    {
+      AppMethodBeat.o(104875);
+      return true;
+    }
+    AppMethodBeat.o(104875);
+    return false;
+  }
+  
+  public final ArrayList<SmileyInfo> bUE()
+  {
+    AppMethodBeat.i(104884);
+    Object localObject;
+    if (((h)g.afy().aeZ()).agu())
+    {
+      if (g.afz().aeI())
+      {
+        localObject = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().bUE();
+        AppMethodBeat.o(104884);
+        return localObject;
+      }
+    }
+    else
+    {
+      localObject = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getSmileyInfoList", null, null);
+      if (localObject != null)
+      {
+        ((Bundle)localObject).setClassLoader(SmileyInfo.class.getClassLoader());
+        localObject = ((Bundle)localObject).getSerializable("key_data");
+        if ((localObject instanceof ArrayList))
+        {
+          localObject = (ArrayList)localObject;
+          AppMethodBeat.o(104884);
+          return localObject;
+        }
+      }
+    }
+    AppMethodBeat.o(104884);
+    return null;
+  }
+  
+  public final ArrayList<SmileyPanelConfigInfo> bUF()
+  {
+    AppMethodBeat.i(104890);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      localObject = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().bUF();
+      AppMethodBeat.o(104890);
+      return localObject;
+    }
+    Object localObject = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getSmileyPanelInfoList", null, null);
+    ((Bundle)localObject).setClassLoader(SmileyPanelConfigInfo.class.getClassLoader());
+    localObject = ((Bundle)localObject).getParcelableArrayList("smiley_panel_info");
+    AppMethodBeat.o(104890);
+    return localObject;
+  }
+  
+  public final String bUI()
+  {
+    AppMethodBeat.i(104891);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      localObject = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().bUI();
+      AppMethodBeat.o(104891);
+      return localObject;
+    }
+    Object localObject = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getPanelConfigName", null, null);
+    ((Bundle)localObject).setClassLoader(SmileyPanelConfigInfo.class.getClassLoader());
+    localObject = ((Bundle)localObject).getString("key_data");
+    AppMethodBeat.o(104891);
+    return localObject;
+  }
+  
+  public final void bUJ()
+  {
+    AppMethodBeat.i(104885);
+    if ((((h)g.afy().aeZ()).agu()) && (g.afz().aeI())) {
+      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().bUJ();
+    }
+    AppMethodBeat.o(104885);
+  }
+  
+  public final boolean bUK()
+  {
+    AppMethodBeat.i(104874);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      boolean bool = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().bUK();
+      AppMethodBeat.o(104874);
+      return bool;
+    }
+    Bundle localBundle = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "isEnableHEVCDecode", null, null);
+    if ((localBundle != null) && (localBundle.getBoolean("key_data")))
+    {
+      AppMethodBeat.o(104874);
+      return true;
+    }
+    AppMethodBeat.o(104874);
+    return false;
+  }
+  
+  public final List<u> bUL()
+  {
+    AppMethodBeat.i(104878);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      List localList = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().bUL();
+      AppMethodBeat.o(104878);
+      return localList;
+    }
+    AppMethodBeat.o(104878);
+    return null;
+  }
+  
+  public final void bUM()
+  {
+    AppMethodBeat.i(104879);
+    if (((h)g.afy().aeZ()).agu()) {
+      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().bUM();
+    }
+    AppMethodBeat.o(104879);
+  }
+  
+  public final boolean bUN()
+  {
+    AppMethodBeat.i(104883);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      boolean bool = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().bUN();
+      AppMethodBeat.o(104883);
+      return bool;
+    }
+    AppMethodBeat.o(104883);
+    return false;
+  }
+  
+  public final <T> T c(ae.a parama, T paramT)
+  {
+    AppMethodBeat.i(104880);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      parama = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().c(parama, paramT);
+      AppMethodBeat.o(104880);
+      return parama;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("key_config_key", parama);
+    parama = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getConfig", null, localBundle);
+    if (parama != null)
+    {
+      parama = parama.get("key_config_value");
+      if (parama != null)
+      {
+        AppMethodBeat.o(104880);
+        return parama;
+      }
+    }
+    AppMethodBeat.o(104880);
+    return paramT;
+  }
+  
+  public final void d(ae.a parama, Object paramObject)
+  {
+    AppMethodBeat.i(104881);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().d(parama, paramObject);
+      AppMethodBeat.o(104881);
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("key_config_key", parama);
+    localBundle.putSerializable("key_config_value", (Serializable)paramObject);
+    call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "setConfig", null, localBundle);
+    AppMethodBeat.o(104881);
+  }
+  
+  public final String getAccPath()
+  {
+    AppMethodBeat.i(104871);
+    if (((h)g.afy().aeZ()).agu()) {
+      this.EMc = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().getAccPath();
+    }
     for (;;)
+    {
+      String str = this.EMc;
+      AppMethodBeat.o(104871);
+      return str;
+      if (bt.isNullOrNil(this.EMc)) {
+        this.EMc = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getAccPath", null, null).getString("path");
+      }
+    }
+  }
+  
+  public final void h(k.a parama)
+  {
+    AppMethodBeat.i(104861);
+    if (((h)g.afy().aeZ()).agu()) {
+      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().h(parama);
+    }
+    AppMethodBeat.o(104861);
+  }
+  
+  public final void i(k.a parama)
+  {
+    AppMethodBeat.i(104863);
+    if (((h)g.afy().aeZ()).agu()) {
+      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().i(parama);
+    }
+    AppMethodBeat.o(104863);
+  }
+  
+  public final void j(k.a parama)
+  {
+    AppMethodBeat.i(104864);
+    if (((h)g.afy().aeZ()).agu()) {
+      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().j(parama);
+    }
+    AppMethodBeat.o(104864);
+  }
+  
+  public final void k(k.a parama)
+  {
+    AppMethodBeat.i(104865);
+    if (((h)g.afy().aeZ()).agu()) {
+      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().k(parama);
+    }
+    AppMethodBeat.o(104865);
+  }
+  
+  public final EmojiInfo l(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(104853);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      paramString = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(paramString, "", paramInt1, paramInt2, paramInt3, "");
+      AppMethodBeat.o(104853);
+      return paramString;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("key_md5", paramString);
+    localBundle.putInt("key_group", paramInt1);
+    localBundle.putInt("key_type", paramInt2);
+    localBundle.putInt("key_size", paramInt3);
+    paramString = call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "createEmojiInfo", null, localBundle);
+    if (paramString != null)
+    {
+      paramString.setClassLoader(EmojiInfo.class.getClassLoader());
+      paramString = (EmojiInfo)paramString.getParcelable("key_emoji_info");
+      AppMethodBeat.o(104853);
+      return paramString;
+    }
+    AppMethodBeat.o(104853);
+    return null;
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(104873);
+    this.EMg.clear();
+    AppMethodBeat.o(104873);
+  }
+  
+  public final EmojiInfo p(EmojiInfo paramEmojiInfo)
+  {
+    AppMethodBeat.i(104867);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      paramEmojiInfo = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().p(paramEmojiInfo);
+      AppMethodBeat.o(104867);
+      return paramEmojiInfo;
+    }
+    Bundle localBundle = new Bundle(EmojiInfo.class.getClassLoader());
+    localBundle.putParcelable("emoji", paramEmojiInfo);
+    paramEmojiInfo = aj.getContext().getContentResolver().call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "getRandomEmoji", null, localBundle);
+    if (paramEmojiInfo == null)
+    {
+      ad.e("MicroMsg.EmotionStorageResolver", "[getRandomEmoji] bunndle is null! ");
+      AppMethodBeat.o(104867);
+      return null;
+    }
+    paramEmojiInfo.setClassLoader(EmojiInfo.class.getClassLoader());
+    if (paramEmojiInfo.containsKey("data"))
+    {
+      paramEmojiInfo = (EmojiInfo)paramEmojiInfo.getParcelable("data");
+      AppMethodBeat.o(104867);
+      return paramEmojiInfo;
+    }
+    if (paramEmojiInfo == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ad.e("MicroMsg.EmotionStorageResolver", "[getRandomEmoji] bundle is null?", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(104867);
+      return null;
+    }
+  }
+  
+  public final void t(EmojiInfo paramEmojiInfo)
+  {
+    AppMethodBeat.i(104888);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      if (g.afz().aeI())
+      {
+        ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().t(paramEmojiInfo);
+        AppMethodBeat.o(104888);
+      }
+    }
+    else
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putParcelable("emojiInfo", paramEmojiInfo);
+      aj.getContext().getContentResolver().call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "showCaptureEmojiInPanel", null, localBundle);
+    }
+    AppMethodBeat.o(104888);
+  }
+  
+  public final void updateEmojiInfo(EmojiInfo paramEmojiInfo)
+  {
+    AppMethodBeat.i(104854);
+    if (((h)g.afy().aeZ()).agu())
+    {
+      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().updateEmojiInfo(paramEmojiInfo);
+      AppMethodBeat.o(104854);
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.setClassLoader(EmojiInfo.class.getClassLoader());
+    localBundle.putParcelable("key_emoji_info", paramEmojiInfo);
+    call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/"), "updateEmojiInfo", null, localBundle);
+    AppMethodBeat.o(104854);
+  }
+  
+  public static final class a {}
+  
+  public static final class b
+  {
+    public static void aEG(String paramString)
+    {
+      AppMethodBeat.i(104849);
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("type", Integer.valueOf(-29414086));
+      localContentValues.put("value", paramString);
+      a.a(Uri.parse("content://com.tencent.mm.storage.provider.emotion/userinfo/"), localContentValues);
+      AppMethodBeat.o(104849);
+    }
+    
+    public static String cC(int paramInt, String paramString)
+    {
+      AppMethodBeat.i(104848);
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("key", paramInt);
+      paramString = a.call(Uri.parse("content://com.tencent.mm.storage.provider.emotion/userinfo/"), "ConfigStorage.getString", null, localBundle).getString("key", paramString);
+      AppMethodBeat.o(104848);
+      return paramString;
+    }
+  }
+  
+  public static final class c
+    extends com.tencent.mm.m.e
+  {
+    public final void tP()
     {
       try
       {
-        com.tencent.mm.k.a locala = com.tencent.mm.k.a.a.Kx();
-        if (locala != null)
-        {
-          bool = locala.Bh();
-          int i;
-          if (bo.getInt(b.btj().b("clicfg_screen_adaptive_appbrand", "1", false, true), 1) > 0)
-          {
-            i = 1;
-            if ((i != 0) && (bool))
-            {
-              AppMethodBeat.o(105873);
-              return true;
-            }
-          }
-          else
-          {
-            i = 0;
-            continue;
-          }
-          AppMethodBeat.o(105873);
-          return false;
-        }
+        AppMethodBeat.i(104850);
+        this.fHq = true;
+        a.eCL();
+        a.b localb = a.EMi;
+        r(a.b.cC(278529, null), false);
+        a.eCL();
+        localb = a.EMi;
+        r(a.b.cC(278530, null), false);
+        AppMethodBeat.o(104850);
+        return;
       }
-      catch (Exception localException)
+      finally
       {
-        ab.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenScreenAdaptiveForAppBrand", new Object[0]);
-        AppMethodBeat.o(105873);
-        return false;
-      }
-      boolean bool = false;
-    }
-  }
-  
-  private static boolean dqY()
-  {
-    AppMethodBeat.i(105874);
-    try
-    {
-      int i = bo.getInt(b.btj().b("clicfg_screen_adaptive_tool", "1", false, true), 1);
-      if (i > 0)
-      {
-        AppMethodBeat.o(105874);
-        return true;
-      }
-      AppMethodBeat.o(105874);
-      return false;
-    }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace("MicroMsg.MMDensityManager", localException, "isOpenScreenAdaptiveForTool", new Object[0]);
-      AppMethodBeat.o(105874);
-    }
-    return false;
-  }
-  
-  public static float dqZ()
-  {
-    AppMethodBeat.i(105876);
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    ((WindowManager)ah.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
-    float f = localDisplayMetrics.density;
-    AppMethodBeat.o(105876);
-    return f;
-  }
-  
-  static boolean drb()
-  {
-    AppMethodBeat.i(154292);
-    if ((com.tencent.mm.cb.a.gn(ah.getContext()) == 0.8F) && (dre() != 440))
-    {
-      AppMethodBeat.o(154292);
-      return true;
-    }
-    AppMethodBeat.o(154292);
-    return false;
-  }
-  
-  public static boolean drc()
-  {
-    AppMethodBeat.i(105883);
-    if ((yiO) && (!drd()))
-    {
-      AppMethodBeat.o(105883);
-      return true;
-    }
-    AppMethodBeat.o(105883);
-    return false;
-  }
-  
-  private static boolean drd()
-  {
-    AppMethodBeat.i(105884);
-    String str = Build.BRAND;
-    if (!bo.isNullOrNil(str))
-    {
-      if (yje)
-      {
-        AppMethodBeat.o(105884);
-        return true;
-      }
-      if ((dqU()) && (af.dDn()))
-      {
-        ab.i("MicroMsg.MMDensityManager", "dancy huaweiSpecial all!!");
-        AppMethodBeat.o(105884);
-        return true;
-      }
-      if ((dqV()) && (yiW))
-      {
-        AppMethodBeat.o(105884);
-        return true;
-      }
-      if ((str.contains("samsung")) && (Build.VERSION.SDK_INT == 23))
-      {
-        AppMethodBeat.o(105884);
-        return true;
+        localObject = finally;
+        throw localObject;
       }
     }
-    AppMethodBeat.o(105884);
-    return false;
-  }
-  
-  public static int dre()
-  {
-    AppMethodBeat.i(142709);
-    int i = as.apq(ah.dsP()).getInt(yiT, 400);
-    AppMethodBeat.o(142709);
-    return i;
-  }
-  
-  static String e(DisplayMetrics paramDisplayMetrics)
-  {
-    AppMethodBeat.i(105881);
-    paramDisplayMetrics = String.format("scaledDensity:%s densityDpi:%s density:%s", new Object[] { Float.valueOf(paramDisplayMetrics.scaledDensity), Integer.valueOf(paramDisplayMetrics.densityDpi), Float.valueOf(paramDisplayMetrics.density) });
-    AppMethodBeat.o(105881);
-    return paramDisplayMetrics;
-  }
-  
-  public final Configuration c(Configuration paramConfiguration)
-  {
-    AppMethodBeat.i(105878);
-    if (drc())
-    {
-      paramConfiguration = new Configuration(paramConfiguration);
-      paramConfiguration.densityDpi = getDisplayMetrics().densityDpi;
-      dra();
-      AppMethodBeat.o(105878);
-      return paramConfiguration;
-    }
-    AppMethodBeat.o(105878);
-    return paramConfiguration;
-  }
-  
-  final void dra()
-  {
-    AppMethodBeat.i(105879);
-    try
-    {
-      DisplayMetrics localDisplayMetrics = getDisplayMetrics();
-      if (this.yjb == null)
-      {
-        Method localMethod = Bitmap.class.getDeclaredMethod("setDefaultDensity", new Class[] { Integer.TYPE });
-        localMethod.setAccessible(true);
-        this.yjb = localMethod;
-      }
-      this.yjb.invoke(null, new Object[] { Integer.valueOf(localDisplayMetrics.densityDpi) });
-      if (this.yjc == null)
-      {
-        this.yjc = DisplayMetrics.class.getDeclaredField("DENSITY_DEVICE");
-        c(this.yjc);
-      }
-      this.yjc.setInt(null, localDisplayMetrics.densityDpi);
-      AppMethodBeat.o(105879);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ab.printErrStackTrace("MicroMsg.MMDensityManager", localException, "", new Object[0]);
-      AppMethodBeat.o(105879);
-    }
-  }
-  
-  public final DisplayMetrics getDisplayMetrics()
-  {
-    AppMethodBeat.i(105875);
-    if (drc())
-    {
-      localDisplayMetrics = new DisplayMetrics();
-      localDisplayMetrics.setTo(this.bTx);
-      AppMethodBeat.o(105875);
-      return localDisplayMetrics;
-    }
-    DisplayMetrics localDisplayMetrics = this.yiN;
-    AppMethodBeat.o(105875);
-    return localDisplayMetrics;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void Bl();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.cc.a
  * JD-Core Version:    0.7.0.1
  */

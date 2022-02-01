@@ -24,9 +24,9 @@ public class v2render
   
   static
   {
-    AppMethodBeat.i(35422);
+    AppMethodBeat.i(40800);
     System.loadLibrary("voipGLRender");
-    AppMethodBeat.o(35422);
+    AppMethodBeat.o(40800);
   }
   
   public static int getGLVersion()
@@ -48,7 +48,7 @@ public class v2render
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wxmm.v2render
  * JD-Core Version:    0.7.0.1
  */

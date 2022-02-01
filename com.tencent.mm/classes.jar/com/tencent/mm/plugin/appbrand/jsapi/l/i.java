@@ -1,53 +1,32 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.bw;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.cl;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.page.aa;
 import org.json.JSONObject;
 
-public abstract class i<CONTEXT extends c, Extension>
+public abstract class i<CONTEXT extends com.tencent.mm.plugin.appbrand.d, Extension>
   extends a<CONTEXT>
 {
-  private final Class<Extension> aqP;
+  final Class<Extension> aLD;
   
   protected i(Class<Extension> paramClass)
   {
-    this.aqP = paramClass;
-  }
-  
-  public final void a(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt)
-  {
-    v localv = bw.l(paramCONTEXT);
-    if (localv == null)
-    {
-      paramCONTEXT.h(paramInt, j("fail:page don't exist", null));
-      return;
-    }
-    Object localObject = localv.x(this.aqP);
-    if (localObject != null)
-    {
-      a(paramCONTEXT, paramJSONObject, paramInt, localObject);
-      return;
-    }
-    if (!localv.isRunning())
-    {
-      paramCONTEXT.h(paramInt, j("fail:interrupted", null));
-      return;
-    }
-    if (localv.gPS) {
-      throw new IllegalAccessError(String.format("%s Not Found", new Object[] { this.aqP.getName() }));
-    }
-    paramCONTEXT.h(paramInt, j("fail:not supported", null));
+    this.aLD = paramClass;
   }
   
   protected abstract void a(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt, Extension paramExtension);
+  
+  public final boolean aXA()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.l.i
  * JD-Core Version:    0.7.0.1
  */

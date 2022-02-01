@@ -1,8 +1,12 @@
 package com.tencent.mm.model;
 
+import android.app.Notification;
+
 public abstract interface as
 {
-  public abstract void aaq();
+  public abstract void cancel(int paramInt);
+  
+  public abstract void notify(int paramInt, Notification paramNotification);
 }
 
 

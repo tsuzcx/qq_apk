@@ -1,44 +1,66 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage;
 
-import a.f.b.j;
-import a.l;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ui.r;
+import com.tencent.mm.plugin.appbrand.ui.v;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 import com.tencent.mm.ui.statusbar.b;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLoadingSplash;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "progresDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "animateHide", "", "getView", "Landroid/view/View;", "hideNavBtn", "onAttachedToWindow", "onDetachedFromWindow", "onViewAdded", "child", "setAppInfo", "icon", "", "name", "setProgress", "progress", "", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalLoadingSplash;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "Lcom/tencent/mm/plugin/appbrand/ui/IAppBrandLoadingSplash;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "isHide", "", "progresDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "animateHide", "", "backgroundColor", "color", "", "getView", "Landroid/view/View;", "onAttachedToWindow", "onDetachedFromWindow", "onViewAdded", "child", "setAppInfo", "icon", "", "name", "setProgress", "progress", "plugin-appbrand-integration_release"})
 public final class g
   extends b
-  implements r
+  implements v
 {
-  private p ioD;
+  private boolean dAY;
+  private p kPw;
   
   public g(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(134746);
-    K(0, true);
+    AppMethodBeat.i(50875);
+    L(0, true);
     setBackgroundColor(0);
-    AppMethodBeat.o(134746);
+    AppMethodBeat.o(50875);
   }
   
-  public final void aHA() {}
-  
-  public final void aHB() {}
-  
-  public final void cD(String paramString1, String paramString2)
+  public final void bhu()
   {
-    AppMethodBeat.i(134745);
-    j.q(paramString1, "icon");
-    j.q(paramString2, "name");
-    AppMethodBeat.o(134745);
+    AppMethodBeat.i(162537);
+    this.dAY = true;
+    p localp = this.kPw;
+    if (localp != null)
+    {
+      if (localp.isShowing() == true)
+      {
+        localp = this.kPw;
+        if (localp != null)
+        {
+          localp.dismiss();
+          AppMethodBeat.o(162537);
+        }
+      }
+    }
+    else
+    {
+      AppMethodBeat.o(162537);
+      return;
+    }
+    AppMethodBeat.o(162537);
+  }
+  
+  public final void dB(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(50874);
+    k.h(paramString1, "icon");
+    k.h(paramString2, "name");
+    AppMethodBeat.o(50874);
   }
   
   public final View getView()
@@ -46,37 +68,53 @@ public final class g
     return (View)this;
   }
   
-  protected final void onAttachedToWindow()
+  public final void onAttachedToWindow()
   {
-    AppMethodBeat.i(134743);
+    AppMethodBeat.i(50872);
     super.onAttachedToWindow();
+    if (this.dAY)
+    {
+      AppMethodBeat.o(50872);
+      return;
+    }
     Context localContext = getContext();
-    getResources().getString(2131297087);
-    this.ioD = h.b(localContext, getResources().getString(2131301086), false, null);
-    AppMethodBeat.o(134743);
+    getResources().getString(2131755906);
+    this.kPw = h.b(localContext, getResources().getString(2131760709), false, null);
+    AppMethodBeat.o(50872);
   }
   
   protected final void onDetachedFromWindow()
   {
-    AppMethodBeat.i(134744);
+    AppMethodBeat.i(50873);
     super.onDetachedFromWindow();
-    p localp = this.ioD;
+    p localp = this.kPw;
     if (localp != null)
     {
-      localp.dismiss();
-      AppMethodBeat.o(134744);
+      if (localp.isShowing() == true)
+      {
+        localp = this.kPw;
+        if (localp != null)
+        {
+          localp.dismiss();
+          AppMethodBeat.o(50873);
+        }
+      }
+    }
+    else
+    {
+      AppMethodBeat.o(50873);
       return;
     }
-    AppMethodBeat.o(134744);
+    AppMethodBeat.o(50873);
   }
   
   public final void onViewAdded(View paramView)
   {
-    AppMethodBeat.i(134742);
+    AppMethodBeat.i(50871);
     super.onViewAdded(paramView);
     if (paramView != null)
     {
-      if (paramView.getId() == 2131821521)
+      if (paramView.getId() == 2131296892)
       {
         ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
         Object localObject = localLayoutParams;
@@ -89,17 +127,19 @@ public final class g
         }
         paramView.setLayoutParams(paramView.getLayoutParams());
       }
-      AppMethodBeat.o(134742);
+      AppMethodBeat.o(50871);
       return;
     }
-    AppMethodBeat.o(134742);
+    AppMethodBeat.o(50871);
   }
   
   public final void setProgress(int paramInt) {}
+  
+  public final void tc(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.g
  * JD-Core Version:    0.7.0.1
  */

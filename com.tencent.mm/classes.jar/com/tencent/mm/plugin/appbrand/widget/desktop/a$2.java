@@ -2,43 +2,49 @@ package com.tencent.mm.plugin.appbrand.widget.desktop;
 
 import android.view.Choreographer;
 import android.view.Choreographer.FrameCallback;
+import com.tencent.e.i.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.desktop.b.c;
-import com.tencent.mm.plugin.appbrand.widget.desktop.b.d;
-import com.tencent.mm.plugin.appbrand.widget.desktop.b.d.1;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.widget.desktop.c.c;
+import com.tencent.mm.plugin.appbrand.widget.desktop.c.d;
+import com.tencent.mm.plugin.appbrand.widget.desktop.c.d.1;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Timer;
 
 final class a$2
-  implements Runnable
+  extends b
 {
   a$2(a parama) {}
   
+  public final String getKey()
+  {
+    return "MicroMsg.AppBrandDesktopAnimController#startMonitorRunnable";
+  }
+  
   public final void run()
   {
-    AppMethodBeat.i(133666);
+    AppMethodBeat.i(49386);
     d locald;
-    if (!c.jiO.eAT)
+    if (!c.lYe.fWx)
     {
-      ab.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo doStart performanceMonitor");
-      ??? = c.jiO;
-      if (!((c)???).eAT)
+      ad.i("MicroMsg.AppBrandDesktopAnimController", "alvinluo doStart performanceMonitor");
+      ??? = c.lYe;
+      if (!((c)???).fWx)
       {
-        ((c)???).eAT = true;
-        ab.i("MicroMsg.Metronome", "[start] stack:%s", new Object[] { bo.dtY() });
-        ((c)???).choreographer.postFrameCallback((Choreographer.FrameCallback)???);
+        ((c)???).fWx = true;
+        ad.i("MicroMsg.Metronome", "[start] stack:%s", new Object[] { bt.eGN() });
+        ((c)???).adb().postFrameCallback((Choreographer.FrameCallback)???);
       }
-      locald = d.jiQ;
+      locald = d.lYh;
     }
-    synchronized (locald.eAY)
+    synchronized (locald.fWE)
     {
       if (locald.isRunning)
       {
-        ab.w("MicroMsg.PerformanceMonitor", "alvinluo already running and ignore this requestStartMonitor. If you want run a new one, stop first.");
-        a.n(this.jcW);
-        AppMethodBeat.o(133666);
+        ad.w("MicroMsg.PerformanceMonitor", "alvinluo already running and ignore this requestStartMonitor. If you want run a new one, stop first.");
+        a.n(this.lSQ);
+        AppMethodBeat.o(49386);
         return;
       }
       if (locald.mTimer != null) {
@@ -46,8 +52,8 @@ final class a$2
       }
       System.gc();
       locald.mTimer = new Timer("Handle_Monitor_mem_cpu", true);
-      locald.eAX.clear();
-      locald.eAX.put(Integer.valueOf(1), new com.tencent.mm.plugin.appbrand.widget.desktop.b.a());
+      locald.fWC.clear();
+      locald.fWC.put(Integer.valueOf(1), new com.tencent.mm.plugin.appbrand.widget.desktop.c.a());
       locald.mTimer.scheduleAtFixedRate(new d.1(locald), 0L, 5L);
       locald.isRunning = true;
     }
@@ -55,7 +61,7 @@ final class a$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.a.2
  * JD-Core Version:    0.7.0.1
  */

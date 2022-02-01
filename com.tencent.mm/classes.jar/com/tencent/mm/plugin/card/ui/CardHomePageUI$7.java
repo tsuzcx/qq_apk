@@ -13,12 +13,16 @@ final class CardHomePageUI$7
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(88489);
-    paramView = new Intent(this.kwf, CardIndexUI.class);
-    paramView.putExtra("key_card_type", 3);
-    this.kwf.startActivity(paramView);
-    h.qsU.e(11324, new Object[] { "ClickTicketCard", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) });
-    AppMethodBeat.o(88489);
+    AppMethodBeat.i(113416);
+    Object localObject = new Intent(this.nBy, CardIndexUI.class);
+    ((Intent)localObject).putExtra("key_card_type", 3);
+    paramView = this.nBy;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/card/ui/CardHomePageUI$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/card/ui/CardHomePageUI$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    h.vKh.f(11324, new Object[] { "ClickTicketCard", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) });
+    AppMethodBeat.o(113416);
   }
 }
 

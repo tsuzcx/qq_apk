@@ -6,8 +6,8 @@ import com.tencent.mm.plugin.appbrand.backgroundfetch.AppBrandBackgroundFetchDat
 import com.tencent.mm.plugin.appbrand.backgroundfetch.k;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -20,57 +20,57 @@ public final class c
   
   public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(131483);
+    AppMethodBeat.i(46819);
     if (paramc == null)
     {
-      ab.w("MicroMsg.JsApiGetBackgroundFetchData", "fail:component is null");
-      AppMethodBeat.o(131483);
+      ad.w("MicroMsg.JsApiGetBackgroundFetchData", "fail:component is null");
+      AppMethodBeat.o(46819);
       return;
     }
     if (paramJSONObject == null)
     {
-      ab.w("MicroMsg.JsApiGetBackgroundFetchData", "fail:data is null");
-      paramc.h(paramInt, j("fail:invalid data", null));
-      AppMethodBeat.o(131483);
+      ad.w("MicroMsg.JsApiGetBackgroundFetchData", "fail:data is null");
+      paramc.h(paramInt, e("fail:invalid data", null));
+      AppMethodBeat.o(46819);
       return;
     }
     Object localObject = paramJSONObject.optString("fetchType");
-    if (bo.isNullOrNil((String)localObject))
+    if (bt.isNullOrNil((String)localObject))
     {
-      ab.w("MicroMsg.JsApiGetBackgroundFetchData", "fail:fetchType is null");
-      paramc.h(paramInt, j("fail:invalid data", null));
-      AppMethodBeat.o(131483);
+      ad.w("MicroMsg.JsApiGetBackgroundFetchData", "fail:fetchType is null");
+      paramc.h(paramInt, e("fail:invalid data", null));
+      AppMethodBeat.o(46819);
       return;
     }
     paramJSONObject = paramc.getAppId();
-    if (bo.isNullOrNil(paramJSONObject))
+    if (bt.isNullOrNil(paramJSONObject))
     {
-      ab.w("MicroMsg.JsApiGetBackgroundFetchData", "fail:appid is null");
-      paramc.h(paramInt, j("fail:appID is empty", null));
-      AppMethodBeat.o(131483);
+      ad.w("MicroMsg.JsApiGetBackgroundFetchData", "fail:appid is null");
+      paramc.h(paramInt, e("fail:appID is empty", null));
+      AppMethodBeat.o(46819);
       return;
     }
     if (((String)localObject).equals("periodic")) {}
-    for (int i = 1; g.E(k.class) == null; i = 0)
+    for (int i = 1; g.ab(k.class) == null; i = 0)
     {
-      ab.w("MicroMsg.JsApiGetBackgroundFetchData", "worker fail:IAppBrandBackgroundFetchDataStorage is null");
-      paramc.h(paramInt, j("fail:internal error", null));
-      AppMethodBeat.o(131483);
+      ad.w("MicroMsg.JsApiGetBackgroundFetchData", "worker fail:IAppBrandBackgroundFetchDataStorage is null");
+      paramc.h(paramInt, e("fail:internal error", null));
+      AppMethodBeat.o(46819);
       return;
     }
-    localObject = ((k)g.E(k.class)).aR(paramJSONObject, i);
+    localObject = ((k)g.ab(k.class)).bh(paramJSONObject, i);
     if (localObject == null)
     {
-      ab.w("MicroMsg.JsApiGetBackgroundFetchData", "worker fail:record is null");
-      paramc.h(paramInt, j("fail:record is null", null));
-      AppMethodBeat.o(131483);
+      ad.w("MicroMsg.JsApiGetBackgroundFetchData", "worker fail:record is null");
+      paramc.h(paramInt, e("fail:record is null", null));
+      AppMethodBeat.o(46819);
       return;
     }
     if (((AppBrandBackgroundFetchDataParcel)localObject).data == null)
     {
-      ab.w("MicroMsg.JsApiGetBackgroundFetchData", "worker fail:fetched data is null");
-      paramc.h(paramInt, j("fail:fetched data is null", null));
-      AppMethodBeat.o(131483);
+      ad.w("MicroMsg.JsApiGetBackgroundFetchData", "worker fail:fetched data is null");
+      paramc.h(paramInt, e("fail:fetched data is null", null));
+      AppMethodBeat.o(46819);
       return;
     }
     HashMap localHashMap = new HashMap();
@@ -78,10 +78,10 @@ public final class c
     localHashMap.put("path", ((AppBrandBackgroundFetchDataParcel)localObject).path);
     localHashMap.put("query", ((AppBrandBackgroundFetchDataParcel)localObject).query);
     localHashMap.put("scene", Integer.valueOf(((AppBrandBackgroundFetchDataParcel)localObject).scene));
-    localHashMap.put("timeStamp", Long.valueOf(((AppBrandBackgroundFetchDataParcel)localObject).updateTime));
-    ab.i("MicroMsg.JsApiGetBackgroundFetchData", "JsApiGetBackgroundFetchData, app(%s_%d)", new Object[] { paramJSONObject, Integer.valueOf(i) });
-    paramc.h(paramInt, j("ok", localHashMap));
-    AppMethodBeat.o(131483);
+    localHashMap.put("timeStamp", Long.valueOf(((AppBrandBackgroundFetchDataParcel)localObject).fpL));
+    ad.i("MicroMsg.JsApiGetBackgroundFetchData", "JsApiGetBackgroundFetchData, app(%s_%d)", new Object[] { paramJSONObject, Integer.valueOf(i) });
+    paramc.h(paramInt, k("ok", localHashMap));
+    AppMethodBeat.o(46819);
   }
 }
 

@@ -2,65 +2,97 @@ package com.tencent.mm.plugin.fts.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.b.b;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 
 public final class g
 {
-  public static HashMap<String, String> gjV;
-  public static final g.a mRA;
-  public static final g.a mRB;
-  public static final g.a mRC;
-  public static final g.a mRD;
-  public static final g.a mRE;
-  public static final g.a mRF;
-  public static final g.a mRG;
-  public static final g.a mRH;
-  public static final g.a mRI;
-  public static final g.a mRJ;
-  public static b mRK;
-  public static HashMap<String, String[]> mRL;
-  public static final g.a mRr;
-  public static final g.a mRs;
-  public static final g.a mRt;
-  public static final g.a mRu;
-  public static final g.a mRv;
-  public static final g.a mRw;
-  public static final g.a mRx;
-  public static final g.a mRy;
-  public static final g.a mRz;
+  public static HashMap<String, String> hUN;
+  public static final a roA;
+  public static final a roB;
+  public static b roC;
+  public static HashMap<String, String[]> roD;
+  public static final a roi;
+  public static final a roj;
+  public static final a rok;
+  public static final a rol;
+  public static final a rom;
+  public static final a ron;
+  public static final a roo;
+  public static final a rop;
+  public static final a roq;
+  public static final a ror;
+  public static final a ros;
+  public static final a rot;
+  public static final a rou;
+  public static final a rov;
+  public static final a rox;
+  public static final a roy;
+  public static final a roz;
   
   static
   {
-    AppMethodBeat.i(114234);
-    mRr = new g.a(19968, 40869);
-    mRs = new g.a(40870, 40907);
-    mRt = new g.a(13312, 19893);
-    mRu = new g.a(131072, 173782);
-    mRv = new g.a(173824, 177972);
-    mRw = new g.a(177984, 178205);
-    mRx = new g.a(12032, 12245);
-    mRy = new g.a(63744, 64217);
-    mRz = new g.a(194560, 195101);
-    mRA = new g.a(59413, 59503);
-    mRB = new g.a(58368, 58856);
-    mRC = new g.a(58880, 59087);
-    mRD = new g.a(12736, 12771);
-    mRE = new g.a(12272, 12283);
-    mRF = new g.a(12549, 12576);
-    mRG = new g.a(12704, 12730);
-    mRH = new g.a(65, 90);
-    mRI = new g.a(97, 122);
-    mRJ = new g.a(48, 57);
-    mRK = new b();
-    gjV = new HashMap();
-    mRL = new HashMap();
-    AppMethodBeat.o(114234);
+    AppMethodBeat.i(131669);
+    roi = new a(19968, 40869);
+    roj = new a(40870, 40907);
+    rok = new a(13312, 19893);
+    rol = new a(131072, 173782);
+    rom = new a(173824, 177972);
+    ron = new a(177984, 178205);
+    roo = new a(12032, 12245);
+    rop = new a(63744, 64217);
+    roq = new a(194560, 195101);
+    ror = new a(59413, 59503);
+    ros = new a(58368, 58856);
+    rot = new a(58880, 59087);
+    rou = new a(12736, 12771);
+    rov = new a(12272, 12283);
+    rox = new a(12549, 12576);
+    roy = new a(12704, 12730);
+    roz = new a(65, 90);
+    roA = new a(97, 122);
+    roB = new a(48, 57);
+    roC = new b();
+    hUN = new HashMap();
+    roD = new HashMap();
+    AppMethodBeat.o(131669);
   }
   
-  public static final String Pf(String paramString)
+  public static boolean A(char paramChar)
   {
-    AppMethodBeat.i(114233);
+    AppMethodBeat.i(131665);
+    if ((roi.DE(paramChar)) || (roj.DE(paramChar)) || (rok.DE(paramChar)) || (rol.DE(paramChar)) || (rom.DE(paramChar)) || (ron.DE(paramChar)))
+    {
+      AppMethodBeat.o(131665);
+      return true;
+    }
+    AppMethodBeat.o(131665);
+    return false;
+  }
+  
+  public static boolean B(char paramChar)
+  {
+    AppMethodBeat.i(131666);
+    if ((roz.DE(paramChar)) || (roA.DE(paramChar)))
+    {
+      AppMethodBeat.o(131666);
+      return true;
+    }
+    AppMethodBeat.o(131666);
+    return false;
+  }
+  
+  public static boolean C(char paramChar)
+  {
+    AppMethodBeat.i(131667);
+    boolean bool = roB.DE(paramChar);
+    AppMethodBeat.o(131667);
+    return bool;
+  }
+  
+  public static final String abe(String paramString)
+  {
+    AppMethodBeat.i(131668);
     StringBuffer localStringBuffer = new StringBuffer();
     paramString = paramString.toCharArray();
     int j = paramString.length;
@@ -68,10 +100,10 @@ public final class g
     if (i < j)
     {
       char c = paramString[i];
-      if (w(c))
+      if (A(c))
       {
-        String str = (String)gjV.get(String.valueOf(c));
-        if (!bo.isNullOrNil(str)) {
+        String str = (String)hUN.get(String.valueOf(c));
+        if (!bt.isNullOrNil(str)) {
           localStringBuffer.append(str);
         }
       }
@@ -83,45 +115,30 @@ public final class g
       }
     }
     paramString = localStringBuffer.toString();
-    AppMethodBeat.o(114233);
+    AppMethodBeat.o(131668);
     return paramString;
   }
   
-  public static boolean w(char paramChar)
+  public static final class a
   {
-    AppMethodBeat.i(114230);
-    if ((mRr.ws(paramChar)) || (mRs.ws(paramChar)) || (mRt.ws(paramChar)) || (mRu.ws(paramChar)) || (mRv.ws(paramChar)) || (mRw.ws(paramChar)))
+    int bottom;
+    int roE;
+    
+    public a(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.o(114230);
-      return true;
+      this.bottom = paramInt1;
+      this.roE = paramInt2;
     }
-    AppMethodBeat.o(114230);
-    return false;
-  }
-  
-  public static boolean x(char paramChar)
-  {
-    AppMethodBeat.i(114231);
-    if ((mRH.ws(paramChar)) || (mRI.ws(paramChar)))
+    
+    public final boolean DE(int paramInt)
     {
-      AppMethodBeat.o(114231);
-      return true;
+      return (paramInt >= this.bottom) && (paramInt <= this.roE);
     }
-    AppMethodBeat.o(114231);
-    return false;
-  }
-  
-  public static boolean y(char paramChar)
-  {
-    AppMethodBeat.i(114232);
-    boolean bool = mRJ.ws(paramChar);
-    AppMethodBeat.o(114232);
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.g
  * JD-Core Version:    0.7.0.1
  */

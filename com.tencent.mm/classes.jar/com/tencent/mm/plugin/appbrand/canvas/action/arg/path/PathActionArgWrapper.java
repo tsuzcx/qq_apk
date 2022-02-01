@@ -15,20 +15,20 @@ public class PathActionArgWrapper
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<PathActionArgWrapper> CREATOR;
-  public List<BasePathActionArg> hfq;
+  public List<BasePathActionArg> iZB;
   
   static
   {
-    AppMethodBeat.i(103596);
-    CREATOR = new PathActionArgWrapper.1();
-    AppMethodBeat.o(103596);
+    AppMethodBeat.i(145279);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145279);
   }
   
   public PathActionArgWrapper()
   {
-    AppMethodBeat.i(103590);
-    this.hfq = new ArrayList();
-    AppMethodBeat.o(103590);
+    AppMethodBeat.i(145273);
+    this.iZB = new ArrayList();
+    AppMethodBeat.o(145273);
   }
   
   public PathActionArgWrapper(Parcel paramParcel)
@@ -39,10 +39,10 @@ public class PathActionArgWrapper
   private PathActionArgWrapper(Parcel paramParcel, byte paramByte)
   {
     super(paramParcel);
-    AppMethodBeat.i(103589);
-    this.hfq = new ArrayList();
-    this.hfq = paramParcel.readArrayList(PathActionArgWrapper.class.getClassLoader());
-    AppMethodBeat.o(103589);
+    AppMethodBeat.i(145272);
+    this.iZB = new ArrayList();
+    this.iZB = paramParcel.readArrayList(PathActionArgWrapper.class.getClassLoader());
+    AppMethodBeat.o(145272);
   }
   
   public int describeContents()
@@ -52,38 +52,38 @@ public class PathActionArgWrapper
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(103594);
+    AppMethodBeat.i(145277);
     if (!super.equals(paramObject))
     {
-      AppMethodBeat.o(103594);
+      AppMethodBeat.o(145277);
       return false;
     }
     if ((paramObject instanceof PathActionArgWrapper))
     {
       paramObject = (PathActionArgWrapper)paramObject;
-      boolean bool = this.hfq.equals(paramObject.hfq);
-      AppMethodBeat.o(103594);
+      boolean bool = this.iZB.equals(paramObject.iZB);
+      AppMethodBeat.o(145277);
       return bool;
     }
-    AppMethodBeat.o(103594);
+    AppMethodBeat.o(145277);
     return false;
   }
   
   public final void h(Parcel paramParcel)
   {
-    AppMethodBeat.i(103592);
+    AppMethodBeat.i(145275);
     super.h(paramParcel);
-    AppMethodBeat.o(103592);
+    AppMethodBeat.o(145275);
   }
   
-  public final void p(JSONObject paramJSONObject)
+  public final void parse(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(103593);
-    super.p(paramJSONObject);
+    AppMethodBeat.i(145276);
+    super.parse(paramJSONObject);
     paramJSONObject = paramJSONObject.optJSONArray("data");
     if ((paramJSONObject == null) || (paramJSONObject.length() == 0))
     {
-      AppMethodBeat.o(103593);
+      AppMethodBeat.o(145276);
       return;
     }
     int i = 0;
@@ -91,39 +91,39 @@ public class PathActionArgWrapper
     {
       JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
       Object localObject = localJSONObject.optString("method");
-      localObject = (BasePathActionArg)f.ayd().zA((String)localObject);
-      ((BasePathActionArg)localObject).p(localJSONObject);
-      this.hfq.add(localObject);
+      localObject = (BasePathActionArg)f.aSW().Fq((String)localObject);
+      ((BasePathActionArg)localObject).parse(localJSONObject);
+      this.iZB.add(localObject);
       i += 1;
     }
-    AppMethodBeat.o(103593);
+    AppMethodBeat.o(145276);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(103591);
+    AppMethodBeat.i(145274);
     super.reset();
-    Iterator localIterator = this.hfq.iterator();
+    Iterator localIterator = this.iZB.iterator();
     while (localIterator.hasNext())
     {
       BasePathActionArg localBasePathActionArg = (BasePathActionArg)localIterator.next();
-      f.ayd().a(localBasePathActionArg);
+      f.aSW().a(localBasePathActionArg);
     }
-    this.hfq.clear();
-    AppMethodBeat.o(103591);
+    this.iZB.clear();
+    AppMethodBeat.o(145274);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(103595);
+    AppMethodBeat.i(145278);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeList(this.hfq);
-    AppMethodBeat.o(103595);
+    paramParcel.writeList(this.iZB);
+    AppMethodBeat.o(145278);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathActionArgWrapper
  * JD-Core Version:    0.7.0.1
  */

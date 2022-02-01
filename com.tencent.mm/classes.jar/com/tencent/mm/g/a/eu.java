@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class eu
   extends b
 {
-  public a csC;
-  public b csD;
+  public a dhn;
+  public b dho;
   
   public eu()
   {
@@ -16,28 +16,29 @@ public final class eu
   
   private eu(byte paramByte)
   {
-    AppMethodBeat.i(15766);
-    this.csC = new a();
-    this.csD = new b();
-    this.ymq = false;
+    AppMethodBeat.i(19795);
+    this.dhn = new a();
+    this.dho = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15766);
+    AppMethodBeat.o(19795);
   }
   
   public static final class a
   {
-    public byte[] data;
+    public String dhp;
+    public long dhq;
     public String mac;
   }
   
   public static final class b
   {
-    public boolean cqS;
+    public boolean dfO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.eu
  * JD-Core Version:    0.7.0.1
  */

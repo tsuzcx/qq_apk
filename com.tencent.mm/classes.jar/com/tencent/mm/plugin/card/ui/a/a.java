@@ -2,594 +2,594 @@ package com.tencent.mm.plugin.card.ui.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.r;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.ui.e.a;
-import com.tencent.mm.protocal.protobuf.oj;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.protocal.protobuf.uo;
-import com.tencent.mm.protocal.protobuf.ye;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.abm;
+import com.tencent.mm.protocal.protobuf.qo;
+import com.tencent.mm.protocal.protobuf.ro;
+import com.tencent.mm.protocal.protobuf.xo;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 import java.util.LinkedList;
 
 public class a
   implements g
 {
-  protected MMActivity jpX;
-  protected b klk;
-  protected e.a ktU;
-  boolean kyA = false;
-  private boolean kyB = false;
-  private boolean kyC = false;
-  private boolean kyD = false;
-  private boolean kyE = false;
-  private boolean kyF = false;
-  private boolean kyG = false;
-  private boolean kyH = false;
-  private boolean kyI = false;
-  private boolean kyJ = false;
+  boolean nDT = false;
+  private boolean nDU = false;
+  private boolean nDV = false;
+  private boolean nDW = false;
+  private boolean nDX = false;
+  private boolean nDY = false;
+  private boolean nDZ = false;
+  private boolean nEa = false;
+  private boolean nEb = false;
+  private boolean nEc = false;
+  protected b nqp;
+  protected MMActivity nqt;
+  protected e.a nzk;
   
   public a(MMActivity paramMMActivity)
   {
-    this.jpX = paramMMActivity;
+    this.nqt = paramMMActivity;
   }
   
-  private boolean bez()
+  private boolean bLv()
   {
-    AppMethodBeat.i(88698);
-    if (!TextUtils.isEmpty(this.klk.bbe().code))
+    AppMethodBeat.i(113625);
+    if (!TextUtils.isEmpty(this.nqp.bHW().code))
     {
-      AppMethodBeat.o(88698);
+      AppMethodBeat.o(113625);
       return true;
     }
-    AppMethodBeat.o(88698);
+    AppMethodBeat.o(113625);
     return false;
   }
   
   private String getString(int paramInt)
   {
-    AppMethodBeat.i(88695);
-    String str = this.jpX.getString(paramInt);
-    AppMethodBeat.o(88695);
+    AppMethodBeat.i(113622);
+    String str = this.nqt.getString(paramInt);
+    AppMethodBeat.o(113622);
     return str;
   }
   
   public final void a(b paramb, e.a parama)
   {
-    AppMethodBeat.i(88693);
-    this.klk = paramb;
-    this.ktU = parama;
-    beC();
-    AppMethodBeat.o(88693);
+    AppMethodBeat.i(113620);
+    this.nqp = paramb;
+    this.nzk = parama;
+    bLy();
+    AppMethodBeat.o(113620);
   }
   
-  public final boolean bdT()
+  public final boolean bKR()
   {
-    return this.kyA;
+    return this.nDT;
   }
   
-  protected final boolean beA()
+  public final boolean bLA()
   {
-    AppMethodBeat.i(88699);
-    if ((!this.klk.isAcceptable()) && ((l.tt(this.ktU.ejF)) || (l.tu(this.ktU.ejF)) || (this.ktU.ejF == 23)))
-    {
-      AppMethodBeat.o(88699);
-      return true;
-    }
-    AppMethodBeat.o(88699);
-    return false;
+    return this.nDV;
   }
   
-  protected final boolean beB()
+  public final boolean bLB()
   {
-    AppMethodBeat.i(88700);
-    if ((!this.klk.bba()) && (this.ktU.ejF == 6))
-    {
-      AppMethodBeat.o(88700);
-      return true;
-    }
-    AppMethodBeat.o(88700);
-    return false;
+    return this.nDW;
   }
   
-  protected void beC()
+  public final boolean bLC()
   {
-    AppMethodBeat.i(88701);
-    ab.i("MicroMsg.CardBaseShowLogic", "updateAcceptState()");
-    if ((l.tt(this.ktU.ejF)) || (l.tu(this.ktU.ejF))) {
-      if (this.klk.isAcceptable())
-      {
-        this.kyB = true;
-        this.kyC = true;
-        this.kyH = true;
-        this.kyF = true;
-        this.kyG = true;
-        if (!this.klk.baZ()) {
-          break label567;
-        }
-        this.kyB = false;
-        this.kyC = false;
-        ab.i("MicroMsg.CardBaseShowLogic", "need direct jump!");
-        label104:
-        if (!this.kyA) {
-          break label577;
-        }
-        this.kyB = false;
-        this.kyC = false;
-        ab.i("MicroMsg.CardBaseShowLogic", "updateAcceptView to gone!");
-      }
-    }
-    for (;;)
-    {
-      ab.i("MicroMsg.CardBaseShowLogic", "mIsAcceptedCard:" + this.kyA);
-      AppMethodBeat.o(88701);
-      return;
-      if (!this.klk.isAcceptable())
-      {
-        this.kyB = true;
-        this.kyC = false;
-        if (this.klk.baZ())
-        {
-          this.kyI = true;
-          this.kyF = true;
-          this.kyE = true;
-        }
-        for (;;)
-        {
-          this.kyG = true;
-          break;
-          this.kyF = false;
-        }
-      }
-      this.kyB = false;
-      this.kyC = false;
-      this.kyF = false;
-      break;
-      if (this.ktU.ejF == 6)
-      {
-        if (this.klk.bba())
-        {
-          this.kyB = true;
-          this.kyC = true;
-          this.kyF = false;
-          break;
-        }
-        if (this.klk.isNormal())
-        {
-          this.kyI = true;
-          this.kyF = true;
-          this.kyD = true;
-          this.kyE = true;
-          break;
-        }
-        this.kyB = false;
-        this.kyC = false;
-        this.kyF = false;
-        this.kyD = true;
-        break;
-      }
-      if (l.tv(this.ktU.ejF))
-      {
-        this.kyB = false;
-        this.kyC = false;
-        this.kyD = true;
-        if (this.klk.isNormal())
-        {
-          this.kyI = true;
-          this.kyF = true;
-          this.kyE = true;
-          break;
-        }
-        this.kyJ = true;
-        break;
-      }
-      if (this.ktU.ejF != 23) {
-        break;
-      }
-      if (this.klk.isAcceptable())
-      {
-        this.kyB = true;
-        this.kyC = true;
-        this.kyF = false;
-      }
-      for (this.kyG = true;; this.kyG = true)
-      {
-        if ((TextUtils.isEmpty(this.ktU.ktc)) || (this.ktU.ktc.equals(r.Zn())) || (this.klk.bbc())) {
-          break label565;
-        }
-        ab.i("MicroMsg.CardBaseShowLogic", " detail page");
-        this.kyB = false;
-        this.kyC = false;
-        this.kyD = true;
-        if (!this.klk.isNormal()) {
-          break;
-        }
-        this.kyI = true;
-        this.kyF = true;
-        this.kyE = true;
-        break;
-        this.kyB = true;
-        this.kyC = false;
-        this.kyF = false;
-      }
-      label565:
-      break;
-      label567:
-      ab.i("MicroMsg.CardBaseShowLogic", "not need direct jump!");
-      break label104;
-      label577:
-      if (!this.kyB)
-      {
-        this.kyA = true;
-        ab.i("MicroMsg.CardBaseShowLogic", "set mIsAcceptedCard is true");
-      }
-      else
-      {
-        this.kyA = false;
-        ab.i("MicroMsg.CardBaseShowLogic", "set mIsAcceptedCard is false!");
-      }
-    }
+    return this.nDX;
   }
   
-  public boolean beD()
+  public final boolean bLD()
   {
-    return this.kyB;
+    return this.nDY;
   }
   
-  public final boolean beE()
+  public final boolean bLE()
   {
-    return this.kyC;
+    return this.nEa;
   }
   
-  public final boolean beF()
+  public final boolean bLF()
   {
-    return this.kyD;
+    return this.nEb;
   }
   
-  public final boolean beG()
+  public final boolean bLG()
   {
-    return this.kyE;
+    return this.nEc;
   }
   
-  public final boolean beH()
-  {
-    return this.kyF;
-  }
-  
-  public final boolean beI()
-  {
-    return this.kyH;
-  }
-  
-  public final boolean beJ()
-  {
-    return this.kyI;
-  }
-  
-  public final boolean beK()
-  {
-    return this.kyJ;
-  }
-  
-  public boolean beL()
+  public boolean bLH()
   {
     return true;
   }
   
-  public boolean beM()
+  public boolean bLI()
   {
     return false;
   }
   
-  public boolean beN()
+  public boolean bLJ()
   {
     return false;
   }
   
-  public boolean beO()
+  public boolean bLK()
   {
-    AppMethodBeat.i(88702);
-    if (((this.ktU.ejF == 6) && ((!this.klk.isNormal()) || (this.klk.bba()))) || (this.ktU.ejF == 5) || ((this.ktU.ejF == 23) && (this.klk.bbc())))
+    AppMethodBeat.i(113629);
+    if (((this.nzk.fsv == 6) && ((!this.nqp.bHR()) || (this.nqp.bHS()))) || (this.nzk.fsv == 5) || ((this.nzk.fsv == 23) && (this.nqp.bHU())))
     {
-      AppMethodBeat.o(88702);
+      AppMethodBeat.o(113629);
       return true;
     }
-    AppMethodBeat.o(88702);
+    AppMethodBeat.o(113629);
     return false;
   }
   
-  public boolean beP()
+  public boolean bLL()
   {
     return false;
   }
   
-  public boolean beQ()
+  public boolean bLM()
   {
     return true;
   }
   
-  public boolean beR()
+  public boolean bLN()
   {
-    AppMethodBeat.i(88703);
-    if (((bez()) && (bex()) && (bey())) || (this.kyA))
+    AppMethodBeat.i(113630);
+    if (((bLv()) && (bLt()) && (bLu())) || (this.nDT))
     {
-      AppMethodBeat.o(88703);
+      AppMethodBeat.o(113630);
       return true;
     }
-    AppMethodBeat.o(88703);
+    AppMethodBeat.o(113630);
     return false;
   }
   
-  public boolean beS()
+  public boolean bLO()
   {
     return false;
   }
   
-  public boolean beT()
+  public boolean bLP()
   {
-    AppMethodBeat.i(88704);
-    if (!this.klk.isNormal())
+    AppMethodBeat.i(113631);
+    if (!this.nqp.bHR())
     {
-      AppMethodBeat.o(88704);
+      AppMethodBeat.o(113631);
       return true;
     }
-    AppMethodBeat.o(88704);
+    AppMethodBeat.o(113631);
     return false;
   }
   
-  public boolean beU()
+  public boolean bLQ()
   {
-    AppMethodBeat.i(88705);
-    if ((this.klk.bbd().wGr != null) && (this.klk.bbd().wGr.wPk != null) && (this.klk.bbd().wGr.wPk.size() > 0) && (!TextUtils.isEmpty((CharSequence)this.klk.bbd().wGr.wPk.get(0))))
+    AppMethodBeat.i(113632);
+    if ((this.nqp.bHV().CRW != null) && (this.nqp.bHV().CRW.DbO != null) && (this.nqp.bHV().CRW.DbO.size() > 0) && (!TextUtils.isEmpty((CharSequence)this.nqp.bHV().CRW.DbO.get(0))))
     {
-      AppMethodBeat.o(88705);
+      AppMethodBeat.o(113632);
       return true;
     }
-    AppMethodBeat.o(88705);
+    AppMethodBeat.o(113632);
     return false;
   }
   
-  public boolean beV()
+  public boolean bLR()
   {
-    AppMethodBeat.i(88706);
-    if ((this.klk.bbe().wDU != null) && (this.klk.bbe().wDU.size() > 0) && (((bex()) && (bey())) || (this.kyA)))
+    AppMethodBeat.i(113633);
+    if ((this.nqp.bHW().CPv != null) && (this.nqp.bHW().CPv.size() > 0) && (((bLt()) && (bLu())) || (this.nDT)))
     {
-      AppMethodBeat.o(88706);
+      AppMethodBeat.o(113633);
       return true;
     }
-    AppMethodBeat.o(88706);
+    AppMethodBeat.o(113633);
     return false;
   }
   
-  public boolean beW()
+  public boolean bLS()
   {
     return false;
   }
   
-  public final boolean beX()
+  public final boolean bLT()
   {
-    AppMethodBeat.i(88707);
-    if ((this.klk.bbe().wDY != null) && (!TextUtils.isEmpty(this.klk.bbe().wDY.title)))
+    AppMethodBeat.i(113634);
+    if ((this.nqp.bHW().CPz != null) && (!TextUtils.isEmpty(this.nqp.bHW().CPz.title)))
     {
-      AppMethodBeat.o(88707);
+      AppMethodBeat.o(113634);
       return true;
     }
-    AppMethodBeat.o(88707);
+    AppMethodBeat.o(113634);
     return false;
   }
   
-  public boolean beY()
+  public boolean bLU()
   {
-    AppMethodBeat.i(88708);
-    if ((this.klk.bbe().wEb != null) && (!TextUtils.isEmpty(this.klk.bbe().wEb.title)))
+    AppMethodBeat.i(113635);
+    if ((this.nqp.bHW().CPC != null) && (!TextUtils.isEmpty(this.nqp.bHW().CPC.title)))
     {
-      AppMethodBeat.o(88708);
+      AppMethodBeat.o(113635);
       return true;
     }
-    AppMethodBeat.o(88708);
+    AppMethodBeat.o(113635);
     return false;
   }
   
-  public boolean beZ()
+  public boolean bLV()
   {
-    AppMethodBeat.i(88709);
-    if (this.klk.bbd().wGn != null)
+    AppMethodBeat.i(113636);
+    if (this.nqp.bHV().CRS != null)
     {
-      AppMethodBeat.o(88709);
+      AppMethodBeat.o(113636);
       return true;
     }
-    AppMethodBeat.o(88709);
+    AppMethodBeat.o(113636);
     return false;
   }
   
-  public final String bew()
+  public boolean bLW()
   {
-    AppMethodBeat.i(88694);
-    String str = "";
-    if (!TextUtils.isEmpty(this.klk.bbd().wGx)) {
-      str = this.klk.bbd().wGx;
-    }
-    for (;;)
+    AppMethodBeat.i(113637);
+    if (!TextUtils.isEmpty(this.nqp.bHV().CRP))
     {
-      AppMethodBeat.o(88694);
-      return str;
-      if (this.klk.bbe().wDV == 0L) {
-        str = getString(2131298004);
-      } else if (this.klk.bbe().wDW == 0) {
-        if (!TextUtils.isEmpty(this.klk.bbd().wGe)) {
-          str = this.klk.bbd().wGe;
-        } else {
-          str = getString(2131297860);
-        }
-      }
-    }
-  }
-  
-  public final boolean bex()
-  {
-    AppMethodBeat.i(88696);
-    if ((this.klk.bbe().status == 0) || (this.klk.bbe().status == 1) || (this.klk.bbe().status == 2))
-    {
-      AppMethodBeat.o(88696);
+      AppMethodBeat.o(113637);
       return true;
     }
-    AppMethodBeat.o(88696);
+    AppMethodBeat.o(113637);
     return false;
   }
   
-  public final boolean bey()
-  {
-    AppMethodBeat.i(88697);
-    if ((this.ktU.ejF == 3) || ((this.ktU.ejF == 6) && (this.klk.bbe().wDS == 0)) || (this.ktU.ejF == 4) || (this.ktU.ejF == 5) || (this.ktU.ejF == 15))
-    {
-      AppMethodBeat.o(88697);
-      return true;
-    }
-    AppMethodBeat.o(88697);
-    return false;
-  }
-  
-  public boolean bfa()
-  {
-    AppMethodBeat.i(88710);
-    if (!TextUtils.isEmpty(this.klk.bbd().wGk))
-    {
-      AppMethodBeat.o(88710);
-      return true;
-    }
-    AppMethodBeat.o(88710);
-    return false;
-  }
-  
-  public boolean bfb()
+  public boolean bLX()
   {
     return false;
   }
   
-  public boolean bfc()
+  public boolean bLY()
   {
     return false;
   }
   
-  public final void bfd()
+  public final void bLZ()
   {
     int i6 = 1;
-    AppMethodBeat.i(88711);
+    AppMethodBeat.i(113638);
     int i;
     String str;
     int j;
-    label33:
+    label32:
     int k;
-    label42:
+    label41:
     int m;
-    label52:
+    label51:
     int n;
-    label62:
+    label61:
     int i1;
-    label72:
+    label71:
     int i2;
-    label82:
+    label81:
     int i3;
-    label92:
+    label91:
     int i4;
-    label102:
+    label101:
     int i5;
-    if (bez())
+    if (bLv())
     {
       i = 1;
-      str = bew();
-      if (!this.kyA) {
-        break label240;
+      str = bLs();
+      if (!this.nDT) {
+        break label237;
       }
       j = 1;
-      if (!beD()) {
-        break label245;
+      if (!bLz()) {
+        break label242;
       }
       k = 1;
-      if (!this.kyC) {
-        break label250;
+      if (!this.nDV) {
+        break label247;
       }
       m = 1;
-      if (!this.kyD) {
-        break label256;
+      if (!this.nDW) {
+        break label253;
       }
       n = 1;
-      if (!this.kyE) {
-        break label262;
+      if (!this.nDX) {
+        break label259;
       }
       i1 = 1;
-      if (!this.kyF) {
-        break label268;
+      if (!this.nDY) {
+        break label265;
       }
       i2 = 1;
-      if (!this.kyG) {
-        break label274;
+      if (!this.nDZ) {
+        break label271;
       }
       i3 = 1;
-      if (!this.kyH) {
-        break label280;
+      if (!this.nEa) {
+        break label277;
       }
       i4 = 1;
-      if (!this.kyI) {
-        break label286;
+      if (!this.nEb) {
+        break label283;
       }
       i5 = 1;
-      label112:
-      if (!this.kyJ) {
-        break label292;
+      label111:
+      if (!this.nEc) {
+        break label289;
       }
     }
     for (;;)
     {
-      ab.i("MicroMsg.CardBaseShowLogic", "printStatus, isValidCode:%d, getUnacceptWording:%s, isAcceptedCard:%d, acceptViewVisible:%d, acceptViewEnabled:%d, isShowConsumedBtn:%d, isConsumedBtnEnabled:%d, enableOptionMenu:%d, isShareLogoVisible:%d, addShareMenu:%d, addMenu:%d, addInvalidCardMenu:%d ", new Object[] { Integer.valueOf(i), str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(i5), Integer.valueOf(i6) });
-      AppMethodBeat.o(88711);
+      ad.i("MicroMsg.CardBaseShowLogic", "printStatus, isValidCode:%d, getUnacceptWording:%s, isAcceptedCard:%d, acceptViewVisible:%d, acceptViewEnabled:%d, isShowConsumedBtn:%d, isConsumedBtnEnabled:%d, enableOptionMenu:%d, isShareLogoVisible:%d, addShareMenu:%d, addMenu:%d, addInvalidCardMenu:%d ", new Object[] { Integer.valueOf(i), str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(i5), Integer.valueOf(i6) });
+      AppMethodBeat.o(113638);
       return;
       i = 0;
       break;
-      label240:
+      label237:
       j = 0;
-      break label33;
-      label245:
+      break label32;
+      label242:
       k = 0;
-      break label42;
-      label250:
+      break label41;
+      label247:
       m = 0;
-      break label52;
-      label256:
+      break label51;
+      label253:
       n = 0;
-      break label62;
-      label262:
+      break label61;
+      label259:
       i1 = 0;
-      break label72;
-      label268:
+      break label71;
+      label265:
       i2 = 0;
-      break label82;
-      label274:
+      break label81;
+      label271:
       i3 = 0;
-      break label92;
-      label280:
+      break label91;
+      label277:
       i4 = 0;
-      break label102;
-      label286:
+      break label101;
+      label283:
       i5 = 0;
-      break label112;
-      label292:
+      break label111;
+      label289:
       i6 = 0;
     }
   }
   
+  public final String bLs()
+  {
+    AppMethodBeat.i(113621);
+    String str = "";
+    if (!TextUtils.isEmpty(this.nqp.bHV().CSc)) {
+      str = this.nqp.bHV().CSc;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(113621);
+      return str;
+      if (this.nqp.bHW().CPw == 0L) {
+        str = getString(2131756946);
+      } else if (this.nqp.bHW().CPx == 0) {
+        if (!TextUtils.isEmpty(this.nqp.bHV().jEK)) {
+          str = this.nqp.bHV().jEK;
+        } else {
+          str = getString(2131756792);
+        }
+      }
+    }
+  }
+  
+  public final boolean bLt()
+  {
+    AppMethodBeat.i(113623);
+    if ((this.nqp.bHW().status == 0) || (this.nqp.bHW().status == 1) || (this.nqp.bHW().status == 2))
+    {
+      AppMethodBeat.o(113623);
+      return true;
+    }
+    AppMethodBeat.o(113623);
+    return false;
+  }
+  
+  public final boolean bLu()
+  {
+    AppMethodBeat.i(113624);
+    if ((this.nzk.fsv == 3) || ((this.nzk.fsv == 6) && (this.nqp.bHW().CPt == 0)) || (this.nzk.fsv == 4) || (this.nzk.fsv == 5) || (this.nzk.fsv == 15))
+    {
+      AppMethodBeat.o(113624);
+      return true;
+    }
+    AppMethodBeat.o(113624);
+    return false;
+  }
+  
+  protected final boolean bLw()
+  {
+    AppMethodBeat.i(113626);
+    if ((!this.nqp.isAcceptable()) && ((l.zn(this.nzk.fsv)) || (l.zo(this.nzk.fsv)) || (this.nzk.fsv == 23)))
+    {
+      AppMethodBeat.o(113626);
+      return true;
+    }
+    AppMethodBeat.o(113626);
+    return false;
+  }
+  
+  protected final boolean bLx()
+  {
+    AppMethodBeat.i(113627);
+    if ((!this.nqp.bHS()) && (this.nzk.fsv == 6))
+    {
+      AppMethodBeat.o(113627);
+      return true;
+    }
+    AppMethodBeat.o(113627);
+    return false;
+  }
+  
+  protected void bLy()
+  {
+    AppMethodBeat.i(113628);
+    ad.i("MicroMsg.CardBaseShowLogic", "updateAcceptState()");
+    if ((l.zn(this.nzk.fsv)) || (l.zo(this.nzk.fsv))) {
+      if (this.nqp.isAcceptable())
+      {
+        this.nDU = true;
+        this.nDV = true;
+        this.nEa = true;
+        this.nDY = true;
+        this.nDZ = true;
+        if (!this.nqp.bHQ()) {
+          break label574;
+        }
+        this.nDU = false;
+        this.nDV = false;
+        ad.i("MicroMsg.CardBaseShowLogic", "need direct jump!");
+        label107:
+        if (!this.nDT) {
+          break label585;
+        }
+        this.nDU = false;
+        this.nDV = false;
+        ad.i("MicroMsg.CardBaseShowLogic", "updateAcceptView to gone!");
+      }
+    }
+    for (;;)
+    {
+      ad.i("MicroMsg.CardBaseShowLogic", "mIsAcceptedCard:" + this.nDT);
+      AppMethodBeat.o(113628);
+      return;
+      if (!this.nqp.isAcceptable())
+      {
+        this.nDU = true;
+        this.nDV = false;
+        if (this.nqp.bHQ())
+        {
+          this.nEb = true;
+          this.nDY = true;
+          this.nDX = true;
+        }
+        for (;;)
+        {
+          this.nDZ = true;
+          break;
+          this.nDY = false;
+        }
+      }
+      this.nDU = false;
+      this.nDV = false;
+      this.nDY = false;
+      break;
+      if (this.nzk.fsv == 6)
+      {
+        if (this.nqp.bHS())
+        {
+          this.nDU = true;
+          this.nDV = true;
+          this.nDY = false;
+          break;
+        }
+        if (this.nqp.bHR())
+        {
+          this.nEb = true;
+          this.nDY = true;
+          this.nDW = true;
+          this.nDX = true;
+          break;
+        }
+        this.nDU = false;
+        this.nDV = false;
+        this.nDY = false;
+        this.nDW = true;
+        break;
+      }
+      if (l.zp(this.nzk.fsv))
+      {
+        this.nDU = false;
+        this.nDV = false;
+        this.nDW = true;
+        if (this.nqp.bHR())
+        {
+          this.nEb = true;
+          this.nDY = true;
+          this.nDX = true;
+          break;
+        }
+        this.nEc = true;
+        break;
+      }
+      if (this.nzk.fsv != 23) {
+        break;
+      }
+      if (this.nqp.isAcceptable())
+      {
+        this.nDU = true;
+        this.nDV = true;
+        this.nDY = false;
+      }
+      for (this.nDZ = true;; this.nDZ = true)
+      {
+        if ((TextUtils.isEmpty(this.nzk.nys)) || (this.nzk.nys.equals(u.aqG())) || (this.nqp.bHU())) {
+          break label572;
+        }
+        ad.i("MicroMsg.CardBaseShowLogic", " detail page");
+        this.nDU = false;
+        this.nDV = false;
+        this.nDW = true;
+        if (!this.nqp.bHR()) {
+          break;
+        }
+        this.nEb = true;
+        this.nDY = true;
+        this.nDX = true;
+        break;
+        this.nDU = true;
+        this.nDV = false;
+        this.nDY = false;
+      }
+      label572:
+      break;
+      label574:
+      ad.i("MicroMsg.CardBaseShowLogic", "not need direct jump!");
+      break label107;
+      label585:
+      if (!this.nDU)
+      {
+        this.nDT = true;
+        ad.i("MicroMsg.CardBaseShowLogic", "set mIsAcceptedCard is true");
+      }
+      else
+      {
+        this.nDT = false;
+        ad.i("MicroMsg.CardBaseShowLogic", "set mIsAcceptedCard is false!");
+      }
+    }
+  }
+  
+  public boolean bLz()
+  {
+    return this.nDU;
+  }
+  
   public final void release()
   {
-    this.klk = null;
-    this.ktU = null;
-    this.jpX = null;
+    this.nqp = null;
+    this.nzk = null;
+    this.nqt = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

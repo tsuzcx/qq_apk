@@ -13,37 +13,37 @@ public class YogaViewLayoutFactory
   
   public static YogaViewLayoutFactory getInstance()
   {
-    AppMethodBeat.i(144234);
+    AppMethodBeat.i(18259);
     if (sYogaViewLayoutFactory == null) {
       sYogaViewLayoutFactory = new YogaViewLayoutFactory();
     }
     YogaViewLayoutFactory localYogaViewLayoutFactory = sYogaViewLayoutFactory;
-    AppMethodBeat.o(144234);
+    AppMethodBeat.o(18259);
     return localYogaViewLayoutFactory;
   }
   
   public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(144235);
+    AppMethodBeat.i(18260);
     if (YogaLayout.class.getSimpleName().equals(paramString))
     {
       paramString = new YogaLayout(paramContext, paramAttributeSet);
-      AppMethodBeat.o(144235);
+      AppMethodBeat.o(18260);
       return paramString;
     }
     if (VirtualYogaLayout.class.getSimpleName().equals(paramString))
     {
       paramString = new VirtualYogaLayout(paramContext, paramAttributeSet);
-      AppMethodBeat.o(144235);
+      AppMethodBeat.o(18260);
       return paramString;
     }
-    AppMethodBeat.o(144235);
+    AppMethodBeat.o(18260);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.yoga.android.YogaViewLayoutFactory
  * JD-Core Version:    0.7.0.1
  */

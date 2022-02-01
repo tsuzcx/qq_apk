@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:ellipsize="end" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="@color/xo" android:paddingLeft="@dimen/o" android:paddingRight="@dimen/o" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/gx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hd" android:text="@string/h0z" />
+    <ImageView android:id="@id/co5" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginTop="@dimen/hd" />
+    <EditText android:textSize="@dimen/i" android:gravity="center" android:id="@id/bg3" android:layout_width="fill_parent" android:layout_height="@dimen/i5" android:layout_marginTop="@dimen/ha" android:ems="10" android:inputType="number" />
+    <Button android:id="@id/a_d" android:layout_width="fill_parent" android:layout_marginTop="@dimen/ig" android:text="@string/v1" style="@style/o6" />
+</LinearLayout>

@@ -1,27 +1,35 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.e;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.ui.banner.AppBrandStickyBannerLogic.a;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.jsapi.l.i;
+import com.tencent.mm.plugin.appbrand.page.b.h;
+import d.l;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/JsApiHideStatusBar;", "Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiPageExtensionBased;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewStatusBarExtension;", "()V", "invokeByExt", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "ext", "Companion", "luggage-wxa-app-jsapi_release"})
 public final class c
-  extends a
+  extends i<d, h>
 {
-  private static final int CTRL_INDEX = 241;
-  private static final String NAME = "setTopBarText";
+  private static final int CTRL_INDEX = 471;
+  private static final String NAME = "hideStatusBar";
+  public static final a klV;
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
+  static
   {
-    AppMethodBeat.i(131485);
-    paramJSONObject = paramJSONObject.optString("text");
-    AppBrandStickyBannerLogic.a.cV(paramc.getAppId(), paramJSONObject);
-    paramc.h(paramInt, j("ok", null));
-    e.a(paramc.getAppId(), new c.1(this, paramc));
-    AppMethodBeat.o(131485);
+    AppMethodBeat.i(138292);
+    klV = new a((byte)0);
+    NAME = "hideStatusBar";
+    CTRL_INDEX = 471;
+    AppMethodBeat.o(138292);
   }
+  
+  public c()
+  {
+    super(h.class);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/JsApiHideStatusBar$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wxa-app-jsapi_release"})
+  public static final class a {}
 }
 
 

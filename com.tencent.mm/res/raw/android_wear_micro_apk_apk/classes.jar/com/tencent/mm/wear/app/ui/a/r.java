@@ -5,7 +5,7 @@ import android.widget.TextView;
 public final class r
   extends b
 {
-  public TextView ahm;
+  public TextView akO;
   
   public r(q paramq)
   {

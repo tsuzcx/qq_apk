@@ -13,7 +13,7 @@ public abstract interface KEditText
   
   public abstract String getHint();
   
-  public abstract long getHintColor();
+  public abstract DynamicColor getHintColor();
   
   public abstract KeyboardType getKeyboardType();
   
@@ -25,13 +25,13 @@ public abstract interface KEditText
   
   public abstract TextAlign getTextAlign();
   
-  public abstract long getTextColor();
+  public abstract DynamicColor getTextColor();
   
   public abstract String getTextFont();
   
   public abstract float getTextSize();
   
-  public abstract long getTintColor();
+  public abstract DynamicColor getTintColor();
   
   public abstract void setClearButtonMode(ClearButtonMode paramClearButtonMode);
   
@@ -41,7 +41,7 @@ public abstract interface KEditText
   
   public abstract void setHint(String paramString);
   
-  public abstract void setHintColor(long paramLong);
+  public abstract void setHintColor(DynamicColor paramDynamicColor);
   
   public abstract void setKeyboardType(KeyboardType paramKeyboardType);
   
@@ -51,23 +51,25 @@ public abstract interface KEditText
   
   public abstract void setOnTextChangedCallback(KEditTextOnTextChangedCallback paramKEditTextOnTextChangedCallback);
   
+  public abstract void setOnTextEndEditingCallback(KEditTextOnTextEndEditingCallback paramKEditTextOnTextEndEditingCallback);
+  
   public abstract void setSelection(int paramInt);
   
   public abstract void setText(String paramString);
   
   public abstract void setTextAlign(TextAlign paramTextAlign);
   
-  public abstract void setTextColor(long paramLong);
+  public abstract void setTextColor(DynamicColor paramDynamicColor);
   
   public abstract void setTextFont(String paramString);
   
   public abstract void setTextSize(float paramFloat);
   
-  public abstract void setTintColor(long paramLong);
+  public abstract void setTintColor(DynamicColor paramDynamicColor);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.gen.KEditText
  * JD-Core Version:    0.7.0.1
  */

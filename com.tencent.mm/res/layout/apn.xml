@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/hi" android:layout_weight="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView style="@style/ni">
-        <LinearLayout style="@style/l0">
-            <TextView android:text="@string/dot" android:layout_weight="1.0" style="@style/mm" />
-            <EditText android:id="@id/e33" android:hint="@string/dom" style="@style/mk" />
-            <View style="@style/nz" />
-            <EditText android:id="@id/e34" android:hint="@string/don" style="@style/mk" />
-            <View style="@style/nz" />
-            <TextView android:text="@string/doo" android:layout_weight="1.0" style="@style/mm" />
-        </LinearLayout>
-    </ScrollView>
+    <ImageView android:id="@id/cox" android:layout_width="@dimen/b7" android:layout_height="@dimen/b7" />
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/gbk" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/c5" android:layout_weight="1.0">
+        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="hello" android:singleLine="true" style="@style/lw" />
+        <TextView android:id="@id/e0i" android:visibility="gone" android:layout_marginLeft="8.0dip" style="@style/yj" />
+        <TextView android:textSize="10.0dip" android:textColor="@color/a_u" android:gravity="center" android:id="@id/g7d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/uv" />
+    </LinearLayout>
 </LinearLayout>

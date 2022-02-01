@@ -1,192 +1,268 @@
 package com.tencent.mm.plugin.wallet_core.id_verify;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.n;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.wallet_core.ui.s;
-import com.tencent.mm.protocal.protobuf.aoy;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.wallet_core.c.k;
+import com.tencent.mm.plugin.wallet_core.ui.u;
+import com.tencent.mm.plugin.wallet_core.ui.u.a;
+import com.tencent.mm.plugin.wallet_core.ui.u.b;
+import com.tencent.mm.protocal.protobuf.azf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.ui.v;
+import com.tencent.mm.wallet_core.c.m;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.io.IOException;
+import org.apache.commons.a.a;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class WcPayRealnameVerifyMainUI
   extends WalletBaseUI
 {
-  private TextView kPB;
-  private Button mFl;
-  private boolean ubw;
-  private TextView udU;
-  private s udV;
+  private TextView kFd;
+  private Button rbd;
+  private boolean zWb;
+  private TextView zZL;
+  private ViewGroup zZM;
+  private u zZN;
   
   public WcPayRealnameVerifyMainUI()
   {
-    AppMethodBeat.i(142463);
-    this.udV = new s();
-    AppMethodBeat.o(142463);
+    AppMethodBeat.i(70125);
+    this.zZN = new u();
+    AppMethodBeat.o(70125);
   }
   
-  private static JSONObject cTc()
+  private static JSONObject ebq()
   {
-    AppMethodBeat.i(142469);
-    g.RM();
-    Object localObject = g.RL().Ru().get(ac.a.yCo, "");
+    AppMethodBeat.i(70131);
+    com.tencent.mm.kernel.g.afC();
+    Object localObject = com.tencent.mm.kernel.g.afB().afk().get(ae.a.FkK, "");
     if (localObject != null)
     {
       localObject = (String)localObject;
-      if (!bo.isNullOrNil((String)localObject)) {
+      if (!bt.isNullOrNil((String)localObject)) {
         try
         {
           localObject = new JSONObject((String)localObject);
           long l1 = System.currentTimeMillis() / 1000L;
           long l2 = ((JSONObject)localObject).getLong("timestamp");
           long l3 = ((JSONObject)localObject).getLong("cache_time");
-          ab.i("MicroMsg.WcPayRealnameVerifyMainUI", " dddd time=" + l1 + ";timestamp=" + l2 + ";cachetime=" + l3);
+          ad.i("MicroMsg.WcPayRealnameVerifyMainUI", " dddd time=" + l1 + ";timestamp=" + l2 + ";cachetime=" + l3);
           if (l1 - l2 > l3)
           {
-            ab.e("MicroMsg.WcPayRealnameVerifyMainUI", "wording data from cache is out of date");
-            AppMethodBeat.o(142469);
+            ad.e("MicroMsg.WcPayRealnameVerifyMainUI", "wording data from cache is out of date");
+            AppMethodBeat.o(70131);
             return null;
           }
-          AppMethodBeat.o(142469);
+          AppMethodBeat.o(70131);
           return localObject;
         }
         catch (JSONException localJSONException)
         {
-          ab.printErrStackTrace("MicroMsg.WcPayRealnameVerifyMainUI", localJSONException, "", new Object[0]);
-          ab.e("MicroMsg.WcPayRealnameVerifyMainUI", "parse wording data form cache error");
-          AppMethodBeat.o(142469);
+          ad.printErrStackTrace("MicroMsg.WcPayRealnameVerifyMainUI", localJSONException, "", new Object[0]);
+          ad.e("MicroMsg.WcPayRealnameVerifyMainUI", "parse wording data form cache error");
+          AppMethodBeat.o(70131);
           return null;
         }
       }
     }
-    ab.i("MicroMsg.WcPayRealnameVerifyMainUI", "cache is null");
-    AppMethodBeat.o(142469);
+    ad.i("MicroMsg.WcPayRealnameVerifyMainUI", "cache is null");
+    AppMethodBeat.o(70131);
     return null;
   }
   
   public int getLayoutId()
   {
-    return 2130971286;
+    return 2131496067;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(142465);
-    this.mFl = ((Button)findViewById(2131829506));
-    this.kPB = ((TextView)findViewById(2131829505));
-    this.udU = ((TextView)findViewById(2131829507));
-    this.mFl.setOnClickListener(new WcPayRealnameVerifyMainUI.3(this));
-    Object localObject1 = cTc();
-    if (localObject1 != null)
+    AppMethodBeat.i(70127);
+    this.rbd = ((Button)findViewById(2131307095));
+    this.kFd = ((TextView)findViewById(2131307093));
+    this.zZL = ((TextView)findViewById(2131307094));
+    this.zZM = ((ViewGroup)findViewById(2131307259));
+    this.rbd.setOnClickListener(new v()
     {
-      Object localObject2 = bo.bf(((JSONObject)localObject1).optString("cache_header_titles", getString(2131304213)), getString(2131304213));
-      this.kPB.setText((CharSequence)localObject2);
-      if (((JSONObject)localObject1).optBoolean("isShowCapitalSecurity", false))
+      public final void bOU()
       {
-        this.udU.setText(2131305318);
-        localObject1 = com.tencent.mm.svg.a.a.g(getResources(), 2131231934);
-        ((Drawable)localObject1).setBounds(0, 0, com.tencent.mm.cb.a.fromDPToPix(getContext(), 16), com.tencent.mm.cb.a.fromDPToPix(getContext(), 16));
-        localObject2 = com.tencent.mm.svg.a.a.g(getResources(), 2131230928);
-        ((Drawable)localObject2).setBounds(0, 0, com.tencent.mm.cb.a.fromDPToPix(getContext(), 5), com.tencent.mm.cb.a.fromDPToPix(getContext(), 9));
-        ((Drawable)localObject2).setColorFilter(getResources().getColor(2131689764), PorterDuff.Mode.SRC_ATOP);
-        int i = com.tencent.mm.cb.a.fromDPToPix(getContext(), 4);
-        this.udU.setCompoundDrawables((Drawable)localObject1, null, (Drawable)localObject2, null);
-        this.udU.setCompoundDrawablePadding(i);
-        this.udU.setOnClickListener(new WcPayRealnameVerifyMainUI.4(this));
-        this.udU.setVisibility(0);
-        AppMethodBeat.o(142465);
+        AppMethodBeat.i(70123);
+        ad.d("MicroMsg.WcPayRealnameVerifyMainUI", "click verify btn");
+        WcPayRealnameVerifyMainUI.b(WcPayRealnameVerifyMainUI.this).a(new u.a()
+        {
+          public final void cNA()
+          {
+            AppMethodBeat.i(70120);
+            WcPayRealnameVerifyMainUI.a(WcPayRealnameVerifyMainUI.this);
+            AppMethodBeat.o(70120);
+          }
+          
+          public final void cNB()
+          {
+            AppMethodBeat.i(70122);
+            WcPayRealnameVerifyMainUI.a(WcPayRealnameVerifyMainUI.this);
+            AppMethodBeat.o(70122);
+          }
+          
+          public final void cancel()
+          {
+            AppMethodBeat.i(70121);
+            WcPayRealnameVerifyMainUI.b(WcPayRealnameVerifyMainUI.this).ddw = false;
+            AppMethodBeat.o(70121);
+          }
+        }, WcPayRealnameVerifyMainUI.c(WcPayRealnameVerifyMainUI.this));
+        AppMethodBeat.o(70123);
+      }
+    });
+    JSONObject localJSONObject = ebq();
+    if (localJSONObject != null)
+    {
+      String str = bt.by(localJSONObject.optString("cache_header_titles", getString(2131764331)), getString(2131764331));
+      this.kFd.setText(str);
+      if (localJSONObject.optBoolean("isShowCapitalSecurity", false))
+      {
+        this.zZL.setText(2131765532);
+        this.zZL.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(70124);
+            paramAnonymousView = new Intent();
+            paramAnonymousView.putExtra("wallet_lock_jsapi_scene", 2);
+            com.tencent.mm.bs.d.b(WcPayRealnameVerifyMainUI.this.getContext(), "wallet", ".pwd.ui.WalletSecuritySettingUI", paramAnonymousView);
+            AppMethodBeat.o(70124);
+          }
+        });
+        this.zZM.setVisibility(0);
+        AppMethodBeat.o(70127);
         return;
       }
-      this.udU.setVisibility(8);
+      this.zZM.setVisibility(8);
     }
-    AppMethodBeat.o(142465);
+    AppMethodBeat.o(70127);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(142468);
+    AppMethodBeat.i(70130);
     if (paramInt1 == 1)
     {
       if (paramInt2 != -1) {
-        break label37;
+        break label35;
       }
-      this.udV.bOM();
+      this.zZN.cNA();
     }
     for (;;)
     {
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
-      AppMethodBeat.o(142468);
+      AppMethodBeat.o(70130);
       return;
-      label37:
-      this.udV.cancel();
+      label35:
+      this.zZN.cancel();
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(142464);
+    AppMethodBeat.i(70126);
     super.onCreate(paramBundle);
-    setActionbarColor(getResources().getColor(2131690709));
+    setActionbarColor(getResources().getColor(2131099653));
     hideActionbarLine();
     setMMTitle("");
-    this.udV.uuu = new WcPayRealnameVerifyMainUI.1(this);
-    setBackBtn(new WcPayRealnameVerifyMainUI.2(this));
+    this.zZN.Aro = new u.b()
+    {
+      public final int cNC()
+      {
+        return 1;
+      }
+      
+      public final Context getContext()
+      {
+        AppMethodBeat.i(70118);
+        AppCompatActivity localAppCompatActivity = WcPayRealnameVerifyMainUI.this.getContext();
+        AppMethodBeat.o(70118);
+        return localAppCompatActivity;
+      }
+    };
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(70119);
+        paramAnonymousMenuItem = WcPayRealnameVerifyMainUI.this.getProcess();
+        if (paramAnonymousMenuItem != null)
+        {
+          paramAnonymousMenuItem.g(WcPayRealnameVerifyMainUI.this.getContext(), 0);
+          AppMethodBeat.o(70119);
+          return true;
+        }
+        WcPayRealnameVerifyMainUI.this.finish();
+        AppMethodBeat.o(70119);
+        return false;
+      }
+    });
     paramBundle = getInput().getString("realname_verify_process_get_wording_cache");
     try
     {
-      if (!bo.isNullOrNil(paramBundle))
+      if (!bt.isNullOrNil(paramBundle))
       {
-        paramBundle = (aoy)new aoy().parseFrom(paramBundle.getBytes(org.apache.commons.a.a.ISO_8859_1));
-        this.ubw = paramBundle.ubw;
-        if (paramBundle.xeX != null) {
-          k.a(paramBundle.xeX).a(this, new WcPayRealnameVerifyMainUI.5(this));
+        paramBundle = (azf)new azf().parseFrom(paramBundle.getBytes(a.ISO_8859_1));
+        this.zWb = paramBundle.zWb;
+        if (paramBundle.DxM != null) {
+          m.a(paramBundle.DxM).a(this, new com.tencent.mm.wallet_core.c.g()
+          {
+            public final void cMH() {}
+          });
         }
       }
       initView();
-      AppMethodBeat.o(142464);
+      AppMethodBeat.o(70126);
       return;
     }
     catch (IOException paramBundle)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.WcPayRealnameVerifyMainUI", paramBundle, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.WcPayRealnameVerifyMainUI", paramBundle, "", new Object[0]);
       }
     }
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(142467);
+    AppMethodBeat.i(70129);
     super.onPause();
-    this.udV.onPause();
-    AppMethodBeat.o(142467);
+    this.zZN.onPause();
+    AppMethodBeat.o(70129);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(142466);
+    AppMethodBeat.i(70128);
     super.onResume();
-    this.udV.onResume();
-    AppMethodBeat.o(142466);
+    this.zZN.onResume();
+    AppMethodBeat.o(70128);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     return false;
   }

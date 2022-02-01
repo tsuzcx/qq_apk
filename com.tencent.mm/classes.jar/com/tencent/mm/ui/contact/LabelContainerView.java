@@ -10,64 +10,71 @@ import com.tencent.mm.ui.base.MMTagPanelScrollView;
 public class LabelContainerView
   extends MMTagPanelScrollView
 {
-  boolean Adb;
-  boolean Adc;
-  boolean Add;
-  float Ade;
-  float Adf;
-  float Adg;
-  float Adh;
-  private LabelContainerView.a Adi;
-  boolean FF;
-  float FK;
-  float FL;
-  float FM;
-  float FN;
-  private int Ft;
+  boolean GVJ;
+  boolean GVK;
+  boolean GVL;
+  float GVM;
+  float GVN;
+  float GVO;
+  float GVP;
+  private a GVQ;
+  boolean MF;
+  float MK;
+  float ML;
+  float MM;
+  float MN;
+  private int Mr;
   
   public LabelContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(105209);
-    this.FF = true;
-    this.Adb = false;
-    this.Adc = true;
-    this.Add = false;
-    dLV();
-    AppMethodBeat.o(105209);
+    AppMethodBeat.i(102845);
+    this.MF = true;
+    this.GVJ = false;
+    this.GVK = true;
+    this.GVL = false;
+    csj();
+    AppMethodBeat.o(102845);
   }
   
   public LabelContainerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(105208);
-    this.FF = true;
-    this.Adb = false;
-    this.Adc = true;
-    this.Add = false;
-    dLV();
-    AppMethodBeat.o(105208);
+    AppMethodBeat.i(102844);
+    this.MF = true;
+    this.GVJ = false;
+    this.GVK = true;
+    this.GVL = false;
+    csj();
+    AppMethodBeat.o(102844);
   }
   
-  private void dLV()
+  private void csj()
   {
-    AppMethodBeat.i(105211);
+    AppMethodBeat.i(102847);
     int i = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.Ft = (i * i);
-    AppMethodBeat.o(105211);
+    this.Mr = (i * i);
+    AppMethodBeat.o(102847);
+  }
+  
+  public final void bXa()
+  {
+    AppMethodBeat.i(102850);
+    this.GVQ.bXa();
+    AppMethodBeat.o(102850);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(105212);
+    AppMethodBeat.i(102848);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(105212);
+    AppMethodBeat.o(102848);
     return bool;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(105210);
+    AppMethodBeat.i(102846);
     int n = paramMotionEvent.getAction();
     int i;
     if ((n & 0xFF) == 6)
@@ -114,33 +121,33 @@ public class LabelContainerView
     for (;;)
     {
       boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(105210);
+      AppMethodBeat.o(102846);
       return bool;
       i = m;
       break;
-      this.Adc = true;
-      this.Adf = f2;
-      this.Ade = f2;
-      this.Adh = f1;
-      this.Adg = f1;
-      this.Add = true;
+      this.GVK = true;
+      this.GVN = f2;
+      this.GVM = f2;
+      this.GVP = f1;
+      this.GVO = f1;
+      this.GVL = true;
       continue;
-      i = (int)(f2 - this.Ade);
-      j = (int)(f1 - this.Adg);
-      if (j * j + i * i > this.Ft)
+      i = (int)(f2 - this.GVM);
+      j = (int)(f1 - this.GVO);
+      if (j * j + i * i > this.Mr)
       {
-        this.Adc = false;
-        AppMethodBeat.o(105210);
+        this.GVK = false;
+        AppMethodBeat.o(102846);
         return true;
-        this.Adc = true;
-        this.Add = false;
+        this.GVK = true;
+        this.GVL = false;
       }
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(105213);
+    AppMethodBeat.i(102849);
     int n = paramMotionEvent.getAction();
     int i;
     if ((n & 0xFF) == 6)
@@ -187,52 +194,59 @@ public class LabelContainerView
     for (;;)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(105213);
+      AppMethodBeat.o(102849);
       return bool;
       i = m;
       break;
-      this.FF = true;
-      this.FK = f2;
-      this.FM = f2;
-      this.FL = f1;
-      this.FN = f1;
-      this.Adb = true;
+      this.MF = true;
+      this.MK = f2;
+      this.MM = f2;
+      this.ML = f1;
+      this.MN = f1;
+      this.GVJ = true;
       continue;
-      if (!this.Adb)
+      if (!this.GVJ)
       {
-        this.FF = true;
-        this.FK = f2;
-        this.FM = f2;
-        this.FL = f1;
-        this.FN = f1;
-        this.Adb = true;
+        this.MF = true;
+        this.MK = f2;
+        this.MM = f2;
+        this.ML = f1;
+        this.MN = f1;
+        this.GVJ = true;
       }
-      if (this.Adi != null) {
-        this.Adi.bnp();
+      if (this.GVQ != null) {
+        this.GVQ.bXb();
       }
-      i = (int)(f2 - this.FM);
-      j = (int)(f1 - this.FN);
-      if (j * j + i * i > this.Ft)
+      i = (int)(f2 - this.MM);
+      j = (int)(f1 - this.MN);
+      if (j * j + i * i > this.Mr)
       {
-        this.FF = false;
+        this.MF = false;
         continue;
-        if (((this.FF) || (!this.Adb)) && (this.Adi != null)) {
-          this.Adi.bno();
+        if (((this.MF) || (!this.GVJ)) && (this.GVQ != null)) {
+          this.GVQ.bXa();
         }
-        this.FF = true;
-        this.Adb = false;
+        this.MF = true;
+        this.GVJ = false;
       }
     }
   }
   
-  public void setOnLabelContainerListener(LabelContainerView.a parama)
+  public void setOnLabelContainerListener(a parama)
   {
-    this.Adi = parama;
+    this.GVQ = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void bXa();
+    
+    public abstract void bXb();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.contact.LabelContainerView
  * JD-Core Version:    0.7.0.1
  */

@@ -5,15 +5,15 @@ import android.view.View;
 
 public abstract class a
 {
-  Context jpJ;
-  int jpL = 0;
-  protected c vtC;
+  protected c BwH;
+  Context mfC;
+  int mfE = 0;
   
-  public abstract int aRF();
+  public abstract int btW();
   
-  public abstract int aRG();
+  public abstract int btX();
   
-  public abstract int aRH();
+  public abstract int btY();
   
   public abstract int getPageCount();
   
@@ -21,12 +21,12 @@ public abstract class a
   
   public abstract int getRowSpacing();
   
-  public abstract View qE(int paramInt);
-  
   public final void setPanelManager(c paramc)
   {
-    this.vtC = paramc;
+    this.BwH = paramc;
   }
+  
+  public abstract View vg(int paramInt);
 }
 
 

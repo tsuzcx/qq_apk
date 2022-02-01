@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="horizontal" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="50.0dip" android:textColor="@color/h6" android:id="@id/de" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="¥" wallet:walletTypeFace="e2" />
-        <TextView android:id="@id/dc" style="@style/vm" />
-        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="50.0dip" android:textColor="@color/h6" android:id="@id/d8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textCursorDrawable="@drawable/a07" />
-    </LinearLayout>
-</merge>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/b8"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/c5" />
+    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/ce">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/cn1" android:layout_width="@dimen/b7" android:layout_height="@dimen/b7" android:layout_marginLeft="@dimen/c8" android:layout_marginRight="@dimen/c8" android:src="@raw/sos_logo_icon" android:layout_centerVertical="true" />
+        <TextView android:textColor="@color/y4" android:text="@string/fid" android:layout_toRightOf="@id/cn1" android:layout_centerVertical="true" style="@style/lw" />
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/c8" android:layout_marginRight="@dimen/c8" android:src="@raw/arrow_right" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:layout_marginBottom="@dimen/cb" />
+</LinearLayout>

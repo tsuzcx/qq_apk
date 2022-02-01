@@ -6,80 +6,78 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nb;
-import com.tencent.mm.g.a.qj;
-import com.tencent.mm.g.a.tm;
+import com.tencent.mm.g.a.oo;
+import com.tencent.mm.g.a.sb;
+import com.tencent.mm.g.a.vk;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.modelgeo.Addr;
 import com.tencent.mm.modelstat.o;
-import com.tencent.mm.platformtools.ae;
-import com.tencent.mm.plugin.location.model.l;
-import com.tencent.mm.plugin.location.model.p;
-import com.tencent.mm.plugin.location.ui.impl.d;
+import com.tencent.mm.plugin.location.model.n;
+import com.tencent.mm.plugin.location.model.r;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.location.LocationIntent;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 @com.tencent.mm.ui.base.a(23)
 public class RedirectUI
-  extends Activity
+  extends HellActivity
 {
-  private static long dZF = 86400000L;
-  private long cpO;
-  private final ak handler;
+  private static long fjO = 86400000L;
+  private String fPP;
+  private final ap handler;
   private String info;
   private boolean isStart;
-  private int kwo;
-  private double nZV;
-  private double nZW;
-  private int nZX;
-  private String ocM;
-  private String ocN;
-  private int ocO;
-  private final int ocP;
-  private boolean ocQ;
-  private final int ocR;
-  private final int ocS;
-  private final int ocT;
-  private final int ocU;
-  private boolean ocf;
+  private long msgId;
+  private int nBH;
+  private double sOv;
+  private double sOw;
+  private int sOx;
+  private boolean sQF;
+  private int sRA;
+  private final int sRB;
+  private boolean sRC;
+  private final int sRD;
+  private final int sRE;
+  private final int sRF;
+  private final int sRG;
+  private String sRz;
   private int type;
   
   public RedirectUI()
   {
-    AppMethodBeat.i(113474);
+    AppMethodBeat.i(55874);
     this.type = 0;
     this.isStart = false;
-    this.ocf = true;
-    this.nZV = 0.0D;
-    this.nZW = 0.0D;
-    this.ocM = "";
-    this.ocN = "";
-    this.nZX = 0;
+    this.sQF = true;
+    this.sOv = 0.0D;
+    this.sOw = 0.0D;
+    this.sRz = "";
+    this.fPP = "";
+    this.sOx = 0;
     this.info = "";
-    this.handler = new ak();
-    this.ocP = 1;
-    this.ocQ = false;
-    this.ocR = 0;
-    this.ocS = 1;
-    this.ocT = 0;
-    this.ocU = 1;
-    AppMethodBeat.o(113474);
+    this.handler = new ap();
+    this.sRB = 1;
+    this.sRC = false;
+    this.sRD = 0;
+    this.sRE = 1;
+    this.sRF = 0;
+    this.sRG = 1;
+    AppMethodBeat.o(55874);
   }
   
   private void a(Intent paramIntent, double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(113478);
+    AppMethodBeat.i(55878);
     if (paramIntent != null)
     {
       paramIntent.putExtra("kShowshare", getIntent().getBooleanExtra("kShowshare", true));
-      paramIntent.putExtra("kimg_path", com.tencent.mm.plugin.i.c.YK());
-      paramIntent.putExtra("kPoi_url", bo.bf(getIntent().getStringExtra("kPoi_url"), ""));
+      paramIntent.putExtra("kimg_path", com.tencent.mm.plugin.image.d.apW());
+      paramIntent.putExtra("kPoi_url", bt.by(getIntent().getStringExtra("kPoi_url"), ""));
       paramIntent.putExtra("map_view_type", getIntent().getIntExtra("map_view_type", 0));
       paramIntent.putExtra("kFavInfoLocalId", getIntent().getLongExtra("kFavInfoLocalId", -1L));
       paramIntent.putExtra("kFavCanDel", getIntent().getBooleanExtra("kFavCanDel", true));
@@ -88,24 +86,24 @@ public class RedirectUI
       paramIntent.putExtra("kwebmap_lng", paramDouble2);
       paramIntent.putExtra("kPoiid", getIntent().getStringExtra("kPoiid"));
       paramIntent.putExtra("kPoiName", getIntent().getStringExtra("kPoiName"));
-      paramIntent.putExtra("kisUsername", bo.bf(getIntent().getStringExtra("kisUsername"), ""));
-      paramIntent.putExtra("map_talker_name", this.ocN);
+      paramIntent.putExtra("kisUsername", bt.by(getIntent().getStringExtra("kisUsername"), ""));
+      paramIntent.putExtra("map_talker_name", this.fPP);
       paramIntent.putExtra("kIs_pick_poi", getIntent().getBooleanExtra("kIs_pick_poi", false));
       paramIntent.putExtra("KFavLocSigleView", getIntent().getBooleanExtra("KFavLocSigleView", false));
-      tm localtm = new tm();
-      localtm.cJY.cJZ = true;
-      com.tencent.mm.sdk.b.a.ymk.l(localtm);
+      vk localvk = new vk();
+      localvk.dAU.dAV = true;
+      com.tencent.mm.sdk.b.a.ESL.l(localvk);
       if (this.type == 6)
       {
         paramIntent.putExtra("kMsgId", getIntent().getLongExtra("kMsgId", -1L));
         paramIntent.putExtra("kRemark", getIntent().getStringExtra("kRemark"));
-        if (this.nZX > 0) {
-          paramIntent.putExtra("kwebmap_scale", this.nZX);
+        if (this.sOx > 0) {
+          paramIntent.putExtra("kwebmap_scale", this.sOx);
         }
         paramIntent.putExtra("Kwebmap_locaion", this.info);
         paramIntent.putExtra("soso_street_view_url", getIntent().getStringExtra("soso_street_view_url"));
         startActivityForResult(paramIntent, 3);
-        AppMethodBeat.o(113478);
+        AppMethodBeat.o(55878);
         return;
       }
       if ((this.type == 1) || (this.type == 2) || (this.type == 7) || (this.type == 9) || (this.type == 10))
@@ -113,117 +111,129 @@ public class RedirectUI
         paramIntent.putExtra("kMsgId", getIntent().getLongExtra("kMsgId", -1L));
         paramIntent.putExtra("kRemark", getIntent().getStringExtra("kRemark"));
         paramIntent.putExtra("kTags", getIntent().getStringArrayListExtra("kTags"));
-        if (this.nZX > 0) {
-          paramIntent.putExtra("kwebmap_scale", this.nZX);
+        if (this.sOx > 0) {
+          paramIntent.putExtra("kwebmap_scale", this.sOx);
         }
         paramIntent.putExtra("Kwebmap_locaion", this.info);
         paramIntent.putExtra("soso_street_view_url", getIntent().getStringExtra("soso_street_view_url"));
         startActivityForResult(paramIntent, 3);
-        AppMethodBeat.o(113478);
+        AppMethodBeat.o(55878);
         return;
       }
       if (this.type == 0)
       {
         startActivityForResult(paramIntent, 2);
-        AppMethodBeat.o(113478);
+        AppMethodBeat.o(55878);
         return;
       }
       if (this.type == 3)
       {
         startActivityForResult(paramIntent, 5);
-        AppMethodBeat.o(113478);
+        AppMethodBeat.o(55878);
         return;
       }
-      if (this.type == 8) {
+      if (this.type == 8)
+      {
+        paramIntent.putExtra("KPickPoiLat", paramDouble1);
+        paramIntent.putExtra("KPickPoiLong", paramDouble2);
         startActivityForResult(paramIntent, 6);
       }
-      AppMethodBeat.o(113478);
+      AppMethodBeat.o(55878);
       return;
     }
     finish();
-    AppMethodBeat.o(113478);
+    AppMethodBeat.o(55878);
   }
   
-  private Intent bLI()
+  private Intent cJJ()
   {
-    AppMethodBeat.i(113477);
-    Intent localIntent2 = d.V(this);
+    AppMethodBeat.i(55877);
+    Intent localIntent2 = com.tencent.mm.plugin.location.ui.impl.d.an(this);
+    localIntent2.putExtra("type_tag", getIntent().getIntExtra("type_tag", 0));
     Intent localIntent1;
     switch (this.type)
     {
     case 4: 
     case 5: 
     default: 
-      ab.d("MicroMsg.RedirectUI", "view type error");
+      ad.d("MicroMsg.RedirectUI", "view type error");
       localIntent1 = null;
     }
     for (;;)
     {
-      AppMethodBeat.o(113477);
+      AppMethodBeat.o(55877);
       return localIntent1;
       String str = getIntent().getStringExtra("fromWhereShare");
-      ab.d("MicroMsg.RedirectUI", "location resume");
+      ad.d("MicroMsg.RedirectUI", "location resume");
       localIntent2.putExtra("intent_map_key", 5);
       localIntent1 = localIntent2;
-      if (!bo.isNullOrNil(str))
+      if (!bt.isNullOrNil(str))
       {
         localIntent2.putExtra("fromWhereShare", str);
         localIntent1 = localIntent2;
         continue;
-        ab.d("MicroMsg.RedirectUI", "view normal");
+        ad.d("MicroMsg.RedirectUI", "view normal");
         localIntent2.putExtra("intent_map_key", 4);
         localIntent1 = localIntent2;
         continue;
         localIntent2.putExtra("intent_map_key", 4);
         localIntent1 = localIntent2;
         continue;
-        ab.d("MicroMsg.RedirectUI", "view poi      isHidePoiOversea : " + com.tencent.mm.m.g.Nr().Nc());
+        ad.d("MicroMsg.RedirectUI", "view poi isHidePoiOversea : " + com.tencent.mm.m.g.Ze().YP());
         localIntent2.putExtra("intent_map_key", 2);
         localIntent1 = localIntent2;
       }
     }
   }
   
-  private void k(double paramDouble1, double paramDouble2)
+  private void k(final double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(113476);
+    AppMethodBeat.i(55876);
     this.isStart = true;
-    Intent localIntent = bLI();
+    final Intent localIntent = cJJ();
     switch (this.type)
     {
     }
-    while (ae.gki)
+    while (com.tencent.mm.platformtools.ab.hVa)
     {
-      this.handler.postDelayed(new RedirectUI.1(this, localIntent, paramDouble1, paramDouble2), 2000L);
-      AppMethodBeat.o(113476);
+      this.handler.postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(55873);
+          RedirectUI.a(RedirectUI.this, localIntent, paramDouble1, this.qgi);
+          AppMethodBeat.o(55873);
+        }
+      }, 2000L);
+      AppMethodBeat.o(55876);
       return;
       localIntent.putExtra("location_scene", 1);
     }
     a(localIntent, paramDouble1, paramDouble2);
-    AppMethodBeat.o(113476);
+    AppMethodBeat.o(55876);
   }
   
   public void finish()
   {
-    AppMethodBeat.i(113481);
+    AppMethodBeat.i(55881);
     super.finish();
-    AppMethodBeat.o(113481);
+    AppMethodBeat.o(55881);
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(113479);
-    ab.i("MicroMsg.RedirectUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
+    AppMethodBeat.i(55879);
+    ad.i("MicroMsg.RedirectUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
     if (paramInt2 != -1)
     {
       finish();
-      AppMethodBeat.o(113479);
+      AppMethodBeat.o(55879);
       return;
     }
     if (paramIntent == null)
     {
       finish();
-      AppMethodBeat.o(113479);
+      AppMethodBeat.o(55879);
       return;
     }
     switch (paramInt1)
@@ -233,75 +243,75 @@ public class RedirectUI
     {
       setResult(paramInt2, paramIntent);
       finish();
-      AppMethodBeat.o(113479);
+      AppMethodBeat.o(55879);
       return;
-      String str1 = this.ocN;
+      String str1 = this.fPP;
       LocationIntent localLocationIntent = (LocationIntent)paramIntent.getParcelableExtra("KLocationIntent");
-      ab.i("MicroMsg.RedirectUI", "locationintent " + localLocationIntent.SU());
-      Object localObject1 = new nb();
-      ((nb)localObject1).cDj.bsY = this.ocO;
-      ((nb)localObject1).cDj.lat = localLocationIntent.lat;
-      ((nb)localObject1).cDj.lng = localLocationIntent.lng;
-      ((nb)localObject1).cDj.cyX = localLocationIntent.cyX;
-      ((nb)localObject1).cDj.label = localLocationIntent.label;
-      ((nb)localObject1).cDj.cDl = localLocationIntent.eSM;
-      com.tencent.mm.sdk.b.a.ymk.l((b)localObject1);
+      ad.i("MicroMsg.RedirectUI", "locationintent " + localLocationIntent.agO());
+      Object localObject1 = new oo();
+      ((oo)localObject1).dtK.dtM = this.sRA;
+      ((oo)localObject1).dtK.lat = localLocationIntent.lat;
+      ((oo)localObject1).dtK.lng = localLocationIntent.lng;
+      ((oo)localObject1).dtK.dpd = localLocationIntent.dpd;
+      ((oo)localObject1).dtK.label = localLocationIntent.label;
+      ((oo)localObject1).dtK.dtN = localLocationIntent.goQ;
+      com.tencent.mm.sdk.b.a.ESL.l((b)localObject1);
       double d1 = localLocationIntent.lat;
       double d2 = localLocationIntent.lng;
-      paramInt1 = localLocationIntent.cyX;
+      paramInt1 = localLocationIntent.dpd;
       String str2 = localLocationIntent.label;
-      Object localObject2 = localLocationIntent.eSM;
-      String str3 = localLocationIntent.vJU;
-      String str4 = localLocationIntent.oac;
+      Object localObject2 = localLocationIntent.goQ;
+      String str3 = localLocationIntent.BNO;
+      String str4 = localLocationIntent.sOC;
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = "";
       }
-      localObject1 = "<msg><location x=\"" + d1 + "\" y=\"" + d2 + "\" scale=\"" + paramInt1 + "\" label=\"" + bo.apT(str2) + "\" poiname=\"" + bo.apT((String)localObject1) + "\" infourl=\"" + bo.apT(str3) + "\" maptype=\"0\" poiid=\"" + str4 + "\" /></msg>";
-      ab.d("MicroMsg.RedirectUI", "xml ".concat(String.valueOf(localObject1)));
-      localObject2 = new qj();
-      ((qj)localObject2).cGX.cGY = str1;
-      ((qj)localObject2).cGX.content = ((String)localObject1);
-      ((qj)localObject2).cGX.type = 48;
-      ((qj)localObject2).cGX.flags = 0;
-      com.tencent.mm.sdk.b.a.ymk.l((b)localObject2);
+      localObject1 = "<msg><location x=\"" + d1 + "\" y=\"" + d2 + "\" scale=\"" + paramInt1 + "\" label=\"" + bt.aGf(str2) + "\" poiname=\"" + bt.aGf((String)localObject1) + "\" infourl=\"" + bt.aGf(str3) + "\" maptype=\"0\" poiid=\"" + str4 + "\" /></msg>";
+      ad.d("MicroMsg.RedirectUI", "xml ".concat(String.valueOf(localObject1)));
+      localObject2 = new sb();
+      ((sb)localObject2).dxJ.dxK = str1;
+      ((sb)localObject2).dxJ.content = ((String)localObject1);
+      ((sb)localObject2).dxJ.type = 48;
+      ((sb)localObject2).dxJ.flags = 0;
+      com.tencent.mm.sdk.b.a.ESL.l((b)localObject2);
       o.a(2004, (float)localLocationIntent.lng, (float)localLocationIntent.lat, 0);
       continue;
       localObject1 = (LocationIntent)paramIntent.getParcelableExtra("KLocationIntent");
-      ab.i("MicroMsg.RedirectUI", "locationintent " + ((LocationIntent)localObject1).SU());
-      if (((LocationIntent)localObject1).vJV == 3)
+      ad.i("MicroMsg.RedirectUI", "locationintent " + ((LocationIntent)localObject1).agO());
+      if (((LocationIntent)localObject1).BNP == 3)
       {
-        h.qsU.e(10822, new Object[] { Integer.valueOf(1), ((LocationIntent)localObject1).oaa, Integer.valueOf(1) });
+        h.vKh.f(10822, new Object[] { Integer.valueOf(1), ((LocationIntent)localObject1).sOA, Integer.valueOf(1) });
         label582:
         paramIntent.putExtra("kwebmap_slat", ((LocationIntent)localObject1).lat);
         paramIntent.putExtra("kwebmap_lng", ((LocationIntent)localObject1).lng);
-        paramIntent.putExtra("kwebmap_scale", ((LocationIntent)localObject1).cyX);
+        paramIntent.putExtra("kwebmap_scale", ((LocationIntent)localObject1).dpd);
         paramIntent.putExtra("Kwebmap_locaion", ((LocationIntent)localObject1).label);
         paramIntent.putExtra("kTags", paramIntent.getStringArrayListExtra("kTags"));
-        if (!((LocationIntent)localObject1).eSM.equals("")) {
+        if (!((LocationIntent)localObject1).goQ.equals("")) {
           break label710;
         }
       }
       label710:
-      for (localObject1 = "";; localObject1 = ((LocationIntent)localObject1).eSM)
+      for (localObject1 = "";; localObject1 = ((LocationIntent)localObject1).goQ)
       {
         paramIntent.putExtra("kPoiName", (String)localObject1);
         break;
-        h.qsU.e(10822, new Object[] { Integer.valueOf(1), ((LocationIntent)localObject1).oaa, Integer.valueOf(0) });
+        h.vKh.f(10822, new Object[] { Integer.valueOf(1), ((LocationIntent)localObject1).sOA, Integer.valueOf(0) });
         break label582;
       }
       localObject1 = (LocationIntent)paramIntent.getParcelableExtra("KLocationIntent");
-      ab.i("MicroMsg.RedirectUI", "locationintent " + ((LocationIntent)localObject1).SU());
-      if (((LocationIntent)localObject1).fBK != null) {
-        ab.d("MicroMsg.RedirectUI", "addr: " + ((LocationIntent)localObject1).fBK.toString());
+      ad.i("MicroMsg.RedirectUI", "locationintent " + ((LocationIntent)localObject1).agO());
+      if (((LocationIntent)localObject1).hek != null) {
+        ad.d("MicroMsg.RedirectUI", "addr: " + ((LocationIntent)localObject1).hek.toString());
       }
-      paramIntent.putExtra("key_pick_addr", ((LocationIntent)localObject1).fBK);
+      paramIntent.putExtra("key_pick_addr", ((LocationIntent)localObject1).hek);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(113475);
+    AppMethodBeat.i(55875);
     super.onCreate(paramBundle);
     if (Build.VERSION.SDK_INT >= 21)
     {
@@ -309,70 +319,72 @@ public class RedirectUI
       getWindow().setStatusBarColor(0);
     }
     int i;
-    if (bo.gz(bo.c((Long)com.tencent.mm.kernel.g.RL().Ru().get(81938, null))) * 1000L > dZF)
+    if (bt.lZ(bt.f((Long)com.tencent.mm.kernel.g.afB().afk().get(81938, null))) * 1000L > fjO)
     {
       i = 1;
       if (i != 0) {
-        com.tencent.mm.ba.c.aiI().update();
+        com.tencent.mm.bc.c.azR().update();
       }
       this.type = getIntent().getIntExtra("map_view_type", -1);
       if (this.type == -1) {
         finish();
       }
-      this.cpO = getIntent().getLongExtra("kMsgId", -1L);
-      this.ocN = getIntent().getStringExtra("map_talker_name");
-      ab.d("MicroMsg.RedirectUI", "tofutest type: %s", new Object[] { Integer.valueOf(this.type) });
+      this.msgId = getIntent().getLongExtra("kMsgId", -1L);
+      this.fPP = getIntent().getStringExtra("map_talker_name");
+      ad.d("MicroMsg.RedirectUI", "tofutest type: %s", new Object[] { Integer.valueOf(this.type) });
       switch (this.type)
       {
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(113475);
+      AppMethodBeat.o(55875);
       return;
       i = 0;
       break;
-      paramBundle = l.bLs().Sa(this.ocN);
+      paramBundle = n.cJr().aeU(this.fPP);
       StringBuilder localStringBuilder = new StringBuilder("resume try to enter trackRoom ");
       if (paramBundle != null) {}
       for (boolean bool = true;; bool = false)
       {
-        ab.i("MicroMsg.RedirectUI", bool);
+        ad.i("MicroMsg.RedirectUI", bool);
         if (paramBundle == null) {
           break;
         }
-        this.nZV = paramBundle.latitude;
-        this.nZW = paramBundle.longitude;
-        this.info = paramBundle.nZR;
-        ab.i("MicroMsg.RedirectUI", "resume lat %f lng %f %s member size %d", new Object[] { Double.valueOf(this.nZV), Double.valueOf(this.nZW), this.info, Integer.valueOf(paramBundle.cAC.size()) });
-        this.nZX = 0;
-        k(this.nZV, this.nZW);
-        AppMethodBeat.o(113475);
+        this.sOv = paramBundle.latitude;
+        this.sOw = paramBundle.longitude;
+        this.info = paramBundle.sOr;
+        ad.i("MicroMsg.RedirectUI", "resume lat %f lng %f %s member size %d", new Object[] { Double.valueOf(this.sOv), Double.valueOf(this.sOw), this.info, Integer.valueOf(paramBundle.dqL.size()) });
+        this.sOx = 0;
+        k(this.sOv, this.sOw);
+        AppMethodBeat.o(55875);
         return;
       }
       k(-1000.0D, -1000.0D);
-      AppMethodBeat.o(113475);
+      AppMethodBeat.o(55875);
       return;
-      this.nZV = getIntent().getDoubleExtra("kwebmap_slat", -85.0D);
-      this.nZW = getIntent().getDoubleExtra("kwebmap_lng", -1000.0D);
-      this.nZX = getIntent().getIntExtra("kwebmap_scale", 0);
+      this.sOv = getIntent().getDoubleExtra("kwebmap_slat", -85.0D);
+      this.sOw = getIntent().getDoubleExtra("kwebmap_lng", -1000.0D);
+      this.sOx = getIntent().getIntExtra("kwebmap_scale", 0);
       this.info = getIntent().getStringExtra("Kwebmap_locaion");
-      k(this.nZV, this.nZW);
-      AppMethodBeat.o(113475);
+      k(this.sOv, this.sOw);
+      AppMethodBeat.o(55875);
       return;
-      this.ocM = getIntent().getStringExtra("map_sender_name");
-      this.kwo = getIntent().getIntExtra("view_type_key", 1);
-      this.ocO = getIntent().getIntExtra("key_get_location_type", 0);
-      k(-85.0D, -1000.0D);
+      this.sRz = getIntent().getStringExtra("map_sender_name");
+      this.nBH = getIntent().getIntExtra("view_type_key", 1);
+      this.sRA = getIntent().getIntExtra("key_get_location_type", 0);
+      this.sOv = getIntent().getDoubleExtra("KPickPoiLat", -85.0D);
+      this.sOw = getIntent().getDoubleExtra("KPickPoiLong", -85.0D);
+      k(this.sOv, this.sOw);
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    AppMethodBeat.i(113480);
-    this.ocf = false;
+    AppMethodBeat.i(55880);
+    this.sQF = false;
     super.onDestroy();
-    AppMethodBeat.o(113480);
+    AppMethodBeat.o(55880);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -383,7 +395,7 @@ public class RedirectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.RedirectUI
  * JD-Core Version:    0.7.0.1
  */

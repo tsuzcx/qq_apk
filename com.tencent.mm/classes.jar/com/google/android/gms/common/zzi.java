@@ -24,7 +24,7 @@ final class zzi
   
   final String getErrorMessage()
   {
-    AppMethodBeat.i(90341);
+    AppMethodBeat.i(5362);
     if (this.zzbp) {}
     for (String str1 = "debug cert rejected";; str1 = "not whitelisted")
     {
@@ -33,7 +33,7 @@ final class zzi
       localObject = Hex.bytesToStringLowercase(AndroidUtilsLight.getMessageDigest("SHA-1").digest(((GoogleCertificates.CertData)localObject).getBytes()));
       boolean bool = this.zzbo;
       str1 = String.valueOf(str1).length() + 44 + String.valueOf(str2).length() + String.valueOf(localObject).length() + str1 + ": pkg=" + str2 + ", sha1=" + (String)localObject + ", atk=" + bool + ", ver=12451009.false";
-      AppMethodBeat.o(90341);
+      AppMethodBeat.o(5362);
       return str1;
     }
   }

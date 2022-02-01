@@ -7,9 +7,7 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Parcelable;
 import android.os.SystemClock;
-import android.support.v4.b.q;
 import android.support.v4.view.ac;
-import android.support.v4.view.r;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -34,53 +32,53 @@ import android.widget.Scroller;
 public class GridViewPager
   extends ViewGroup
 {
-  private static final Interpolator Cy = new l();
-  private static final Interpolator Cz = new DecelerateInterpolator(2.5F);
-  private static final int[] kV = { 16842931 };
-  private int CA;
-  private int CB;
-  private boolean CC = true;
-  private int CD = 300;
-  private final Point CE;
-  private final Point CF;
-  private Point CG;
-  private final q<Point, m> CH;
-  private final q<Point, m> CI;
-  private final Rect CJ;
-  private final Rect CK;
-  private p CL;
-  private int CM;
-  private int CN;
-  private boolean CO;
-  private int CP = 1;
-  private boolean CQ;
-  private final int CR;
-  private float CS;
-  private float CT;
-  private float CU;
-  private float CV;
-  private int CW;
-  private final int CX;
-  private final int CY;
-  private o CZ;
-  private n Cs;
-  private int Da;
-  private SparseIntArray Db;
-  private View Dc;
-  private b Dd;
-  private WindowInsets De;
-  private View.OnApplyWindowInsetsListener Df;
-  private boolean Dg;
-  private i Dh;
-  private boolean Di;
-  private boolean aU;
-  private int kD = 0;
-  private final int kl;
-  private VelocityTracker lA = null;
-  private final int lE;
-  private boolean lI = true;
-  private boolean lK;
-  private final Runnable lV = new Runnable()
+  private static final Interpolator En = new l();
+  private static final Interpolator Eo = new DecelerateInterpolator(2.5F);
+  private static final int[] mR = { 16842931 };
+  private i BC;
+  private p EA;
+  private int EB;
+  private int EC;
+  private boolean ED;
+  private int EE = 1;
+  private boolean EF;
+  private final int EG;
+  private float EH;
+  private float EI;
+  private float EJ;
+  private float EK;
+  private int EL;
+  private final int EM;
+  private final int EN;
+  private o EO;
+  private int EP;
+  private SparseIntArray EQ;
+  private View ER;
+  private b ES;
+  private WindowInsets ET;
+  private View.OnApplyWindowInsetsListener EU;
+  private boolean EV;
+  private i EW;
+  private boolean EX;
+  private n Eh;
+  private int Ep;
+  private int Eq;
+  private boolean Er = true;
+  private int Es = 300;
+  private final Point Et;
+  private final Point Eu;
+  private Point Ev;
+  private final android.support.v4.b.r<Point, m> Ew;
+  private final android.support.v4.b.r<Point, m> Ex;
+  private final Rect Ey;
+  private final Rect Ez;
+  private boolean cE;
+  private final int mi;
+  private int mz = 0;
+  private final int nA;
+  private boolean nE = true;
+  private boolean nG;
+  private final Runnable nR = new Runnable()
   {
     public final void run()
     {
@@ -88,13 +86,13 @@ public class GridViewPager
       GridViewPager.c(GridViewPager.this);
     }
   };
-  private Parcelable le;
-  private ClassLoader lf;
-  private final Scroller lg;
-  private boolean lt;
-  private int lz = -1;
-  private final int tI;
-  private i zN;
+  private Parcelable na;
+  private ClassLoader nb;
+  private final Scroller nc;
+  private boolean np;
+  private int nv = -1;
+  private VelocityTracker nw = null;
+  private final int vy;
   
   public GridViewPager(Context paramContext)
   {
@@ -111,181 +109,190 @@ public class GridViewPager
     super(paramContext, paramAttributeSet, paramInt);
     paramAttributeSet = ViewConfiguration.get(getContext());
     float f = paramContext.getResources().getDisplayMetrics().density;
-    this.kl = ac.a(paramAttributeSet);
-    this.CR = (this.kl * this.kl);
-    this.tI = paramAttributeSet.getScaledMinimumFlingVelocity();
-    this.CX = ((int)(40.0F * f));
-    this.CY = ((int)(200.0F * f));
-    this.lE = ((int)(2.0F * f));
-    this.CF = new Point();
-    this.CH = new q();
-    this.CI = new q();
-    this.CJ = new Rect();
-    this.CK = new Rect();
-    this.lg = new Scroller(paramContext, Cz, true);
-    this.CE = new Point();
+    this.mi = ac.a(paramAttributeSet);
+    this.EG = (this.mi * this.mi);
+    this.vy = paramAttributeSet.getScaledMinimumFlingVelocity();
+    this.EM = ((int)(40.0F * f));
+    this.EN = ((int)(200.0F * f));
+    this.nA = ((int)(2.0F * f));
+    this.Eu = new Point();
+    this.Ew = new android.support.v4.b.r();
+    this.Ex = new android.support.v4.b.r();
+    this.Ey = new Rect();
+    this.Ez = new Rect();
+    this.nc = new Scroller(paramContext, Eo, true);
+    this.Et = new Point();
     setOverScrollMode(1);
-    this.Db = new SparseIntArray();
-    this.Dd = new b();
-    this.Dd.aD(this);
+    this.EQ = new SparseIntArray();
+    this.ES = new b();
+    this.ES.aM(this);
   }
   
-  private void N(int paramInt1, int paramInt2)
+  private void K(int paramInt)
   {
-    this.Db.put(paramInt1, paramInt2);
-  }
-  
-  private void O(int paramInt1, int paramInt2)
-  {
-    this.CO = false;
-    b(paramInt1, paramInt2, true, false);
-  }
-  
-  private m P(int paramInt1, int paramInt2)
-  {
-    Point localPoint = new Point(paramInt1, paramInt2);
-    m localm2 = (m)this.CI.remove(localPoint);
-    m localm1 = localm2;
-    if (localm2 == null)
+    if (this.mz == paramInt) {}
+    do
     {
-      localm1 = new m();
-      localm1.Dl = this.zN.a(this, paramInt1);
-      localm1.Dm = paramInt1;
-      localm1.Dn = paramInt2;
-    }
-    localPoint.set(paramInt1, paramInt2);
-    localm1.Dm = paramInt1;
-    localm1.Dn = paramInt2;
-    this.CH.put(localPoint, localm1);
-    return localm1;
+      return;
+      this.mz = paramInt;
+      if (this.EO != null) {
+        this.EO.J(paramInt);
+      }
+    } while (this.ES == null);
+    this.ES.J(paramInt);
+  }
+  
+  private void P(int paramInt1, int paramInt2)
+  {
+    this.EQ.put(paramInt1, paramInt2);
   }
   
   private void Q(int paramInt1, int paramInt2)
   {
-    Object localObject = new Point();
-    if ((this.CF.x != paramInt1) || (this.CF.y != paramInt2))
+    this.ED = false;
+    b(paramInt1, paramInt2, true, false);
+  }
+  
+  private m R(int paramInt1, int paramInt2)
+  {
+    Point localPoint = new Point(paramInt1, paramInt2);
+    m localm2 = (m)this.Ex.remove(localPoint);
+    m localm1 = localm2;
+    if (localm2 == null)
     {
-      ((Point)localObject).set(this.CF.x, this.CF.y);
-      this.CF.set(paramInt1, paramInt2);
+      localm1 = new m();
+      localm1.Fa = this.BC.a(this, paramInt1);
+      localm1.Fb = paramInt1;
+      localm1.Fc = paramInt2;
     }
-    if (this.CO) {}
-    label281:
+    localPoint.set(paramInt1, paramInt2);
+    localm1.Fb = paramInt1;
+    localm1.Fc = paramInt2;
+    this.Ew.put(localPoint, localm1);
+    return localm1;
+  }
+  
+  private void S(int paramInt1, int paramInt2)
+  {
+    Object localObject = new Point();
+    if ((this.Eu.x != paramInt1) || (this.Eu.y != paramInt2))
+    {
+      ((Point)localObject).set(this.Eu.x, this.Eu.y);
+      this.Eu.set(paramInt1, paramInt2);
+    }
+    if (this.ED) {}
+    label258:
     do
     {
       do
       {
         return;
       } while (getWindowToken() == null);
-      i.fd();
-      this.CK.setEmpty();
-      this.zN.getRowCount();
-      if (this.CA != 1) {
+      this.Ez.setEmpty();
+      if (this.Ep != 1) {
         throw new IllegalStateException("Adapter row count changed without a call to notifyDataSetChanged()");
       }
-      this.zN.fa();
-      this.CA = 1;
-      this.CB = 2;
-      int m = Math.max(1, this.CP);
+      this.Ep = 1;
+      this.Eq = 2;
+      int m = Math.max(1, this.EE);
       int i = Math.max(0, paramInt2 - m);
       int j = Math.min(0, paramInt2 + m);
       int k = Math.max(0, paramInt1 - m);
       m = Math.min(1, m + paramInt1);
-      paramInt1 = this.CH.size() - 1;
+      paramInt1 = this.Ew.size() - 1;
       if (paramInt1 >= 0)
       {
-        localObject = (m)this.CH.valueAt(paramInt1);
-        if (((m)localObject).Dn == paramInt2) {
-          if ((((m)localObject).Dm < k) || (((m)localObject).Dm > m)) {
-            break label281;
+        localObject = (m)this.Ew.valueAt(paramInt1);
+        if (((m)localObject).Fc == paramInt2) {
+          if ((((m)localObject).Fb < k) || (((m)localObject).Fb > m)) {
+            break label258;
           }
         }
         for (;;)
         {
           paramInt1 -= 1;
           break;
-          int n = this.CF.x;
-          i.fb();
-          if ((((m)localObject).Dm != 0) || (((m)localObject).Dn < i) || (((m)localObject).Dn > j))
+          int n = this.Eu.x;
+          if ((((m)localObject).Fb != 0) || (((m)localObject).Fc < i) || (((m)localObject).Fc > j))
           {
-            Point localPoint = (Point)this.CH.keyAt(paramInt1);
-            this.CH.removeAt(paramInt1);
-            localPoint.set(((m)localObject).Dm, ((m)localObject).Dn);
-            this.CI.put(localPoint, localObject);
+            Point localPoint = (Point)this.Ew.keyAt(paramInt1);
+            this.Ew.removeAt(paramInt1);
+            localPoint.set(((m)localObject).Fb, ((m)localObject).Fc);
+            this.Ex.put(localPoint, localObject);
           }
         }
       }
-      this.CE.y = paramInt2;
-      for (this.CE.x = k; this.CE.x <= m; ((Point)localObject).x += 1)
+      this.Et.y = paramInt2;
+      for (this.Et.x = k; this.Et.x <= m; ((Point)localObject).x += 1)
       {
-        if (!this.CH.containsKey(this.CE)) {
-          P(this.CE.x, this.CE.y);
+        if (!this.Ew.containsKey(this.Et)) {
+          R(this.Et.x, this.Et.y);
         }
-        localObject = this.CE;
+        localObject = this.Et;
       }
-      for (this.CE.y = i; this.CE.y <= j; ((Point)localObject).y += 1)
+      for (this.Et.y = i; this.Et.y <= j; ((Point)localObject).y += 1)
       {
-        localObject = this.CE;
-        paramInt1 = this.CE.y;
-        ((Point)localObject).x = i.fb();
-        if (!this.CH.containsKey(this.CE)) {
-          P(this.CE.x, this.CE.y);
+        localObject = this.Et;
+        paramInt1 = this.Et.y;
+        ((Point)localObject).x = 0;
+        if (!this.Ew.containsKey(this.Et)) {
+          R(this.Et.x, this.Et.y);
         }
-        if (this.CE.y != this.CF.y) {
-          N(this.CE.y, aT(this.CE.x) - getPaddingLeft());
+        if (this.Et.y != this.Eu.y) {
+          P(this.Et.y, bn(this.Et.x) - getPaddingLeft());
         }
-        localObject = this.CE;
+        localObject = this.Et;
       }
-      paramInt1 = this.CI.size() - 1;
+      paramInt1 = this.Ex.size() - 1;
       while (paramInt1 >= 0)
       {
-        localObject = (m)this.CI.removeAt(paramInt1);
-        this.zN.b(this, ((m)localObject).Dl);
+        localObject = (m)this.Ex.removeAt(paramInt1);
+        this.BC.b(this, ((m)localObject).Fa);
         paramInt1 -= 1;
       }
-      this.CI.clear();
-      i.fe();
-      this.CJ.set(k, i, m, j);
-      this.CK.set(aT(k) - getPaddingLeft(), aU(i) - getPaddingTop(), aT(m + 1) - getPaddingRight(), aU(j + 1) + getPaddingBottom());
-      if (this.Dg)
+      this.Ex.clear();
+      this.Ey.set(k, i, m, j);
+      this.Ez.set(bn(k) - getPaddingLeft(), bo(i) - getPaddingTop(), bn(m + 1) - getPaddingRight(), bo(j + 1) + getPaddingBottom());
+      if (this.EV)
       {
-        this.Dg = false;
-        b(this.Dh, this.zN);
-        this.Dh = null;
+        this.EV = false;
+        b(this.EW, this.BC);
+        this.EW = null;
       }
-    } while (!this.Di);
-    this.Di = false;
-    fm();
+    } while (!this.EX);
+    this.EX = false;
+    fv();
   }
   
-  private m R(int paramInt1, int paramInt2)
+  private m T(int paramInt1, int paramInt2)
   {
-    this.CE.set(paramInt1, paramInt2);
-    return (m)this.CH.get(this.CE);
+    this.Et.set(paramInt1, paramInt2);
+    return (m)this.Ew.get(this.Et);
   }
   
-  private boolean S(int paramInt1, int paramInt2)
+  private boolean U(int paramInt1, int paramInt2)
   {
     boolean bool = false;
-    if (this.CH.size() == 0)
+    if (this.Ew.size() == 0)
     {
-      this.lK = false;
+      this.nG = false;
       a(0, 0, 0.0F, 0.0F, 0, 0);
-      if (!this.lK) {
+      if (!this.nG) {
         throw new IllegalStateException("onPageScrolled did not call superclass implementation");
       }
     }
     else
     {
-      m localm = fn();
-      int j = aT(localm.Dm);
-      int i = aU(localm.Dn);
+      m localm = fw();
+      int j = bn(localm.Fb);
+      int i = bo(localm.Fc);
       paramInt1 = getPaddingLeft() + paramInt1 - j;
       paramInt2 = getPaddingTop() + paramInt2 - i;
-      float f1 = v(paramInt1);
-      float f2 = w(paramInt2);
-      this.lK = false;
-      a(localm.Dm, localm.Dn, f1, f2, paramInt1, paramInt2);
-      if (!this.lK) {
+      float f1 = w(paramInt1);
+      float f2 = x(paramInt2);
+      this.nG = false;
+      a(localm.Fb, localm.Fc, f1, f2, paramInt1, paramInt2);
+      if (!this.nG) {
         throw new IllegalStateException("onPageScrolled did not call superclass implementation");
       }
       bool = true;
@@ -293,22 +300,22 @@ public class GridViewPager
     return bool;
   }
   
-  private m T(int paramInt1, int paramInt2)
+  private m V(int paramInt1, int paramInt2)
   {
-    paramInt2 = (int)w(paramInt2);
-    paramInt1 = (int)v(paramInt1);
-    m localm2 = R(paramInt1, paramInt2);
+    paramInt2 = (int)x(paramInt2);
+    paramInt1 = (int)w(paramInt1);
+    m localm2 = T(paramInt1, paramInt2);
     m localm1 = localm2;
     if (localm2 == null)
     {
       localm1 = new m();
-      localm1.Dm = paramInt1;
-      localm1.Dn = paramInt2;
+      localm1.Fb = paramInt1;
+      localm1.Fc = paramInt2;
     }
     return localm1;
   }
   
-  private static boolean U(int paramInt1, int paramInt2)
+  private static boolean W(int paramInt1, int paramInt2)
   {
     return (paramInt1 >= 0) && (paramInt1 <= paramInt2);
   }
@@ -316,11 +323,11 @@ public class GridViewPager
   private int a(int paramInt1, float paramFloat, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     int i = paramInt4;
-    if (Math.abs(paramInt4) < this.CY) {
+    if (Math.abs(paramInt4) < this.EN) {
       i = (int)Math.copySign(paramInt4, paramInt5);
     }
     float f = 0.5F / Math.max(Math.abs(0.5F - paramFloat), 0.001F);
-    if ((Math.abs(paramInt5) > this.CX) && (f * 100.0F + Math.abs(i) > this.tI)) {
+    if ((Math.abs(paramInt5) > this.EM) && (f * 100.0F + Math.abs(i) > this.vy)) {
       if (i <= 0) {}
     }
     for (;;)
@@ -332,21 +339,48 @@ public class GridViewPager
     }
   }
   
+  private static int a(ScrollView paramScrollView, int paramInt)
+  {
+    int j = 0;
+    int i = j;
+    if (paramScrollView.getChildCount() > 0)
+    {
+      View localView = paramScrollView.getChildAt(0);
+      int k = paramScrollView.getHeight();
+      int m = localView.getHeight();
+      i = j;
+      if (m > k)
+      {
+        if (paramInt <= 0) {
+          break label61;
+        }
+        i = Math.min(m - k - paramScrollView.getScrollY(), 0);
+      }
+    }
+    label61:
+    do
+    {
+      return i;
+      i = j;
+    } while (paramInt >= 0);
+    return -paramScrollView.getScrollY();
+  }
+  
   private m a(Point paramPoint)
   {
-    return (m)this.CH.get(paramPoint);
+    return (m)this.Ew.get(paramPoint);
   }
   
   private View a(m paramm)
   {
-    if (paramm.Dl != null)
+    if (paramm.Fa != null)
     {
       int j = getChildCount();
       int i = 0;
       while (i < j)
       {
         View localView = getChildAt(i);
-        if (this.zN.a(localView, paramm.Dl)) {
+        if (this.BC.a(localView, paramm.Fa)) {
           return localView;
         }
         i += 1;
@@ -357,54 +391,46 @@ public class GridViewPager
   
   private void a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3, int paramInt4)
   {
-    this.lK = true;
-    if (this.CZ != null) {
-      this.CZ.a(paramInt2, paramInt1, paramFloat2, paramFloat1, paramInt4, paramInt3);
+    this.nG = true;
+    if (this.EO != null) {
+      this.EO.a(paramInt2, paramInt1, paramFloat2, paramFloat1, paramInt4, paramInt3);
     }
-    if (this.Dd != null) {
-      this.Dd.a(paramInt2, paramInt1, paramFloat2, paramFloat1, paramInt4, paramInt3);
+    if (this.ES != null) {
+      this.ES.a(paramInt2, paramInt1, paramFloat2, paramFloat1, paramInt4, paramInt3);
     }
   }
   
   private void a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, int paramInt3)
   {
     boolean bool = true;
-    if (this.zN != null)
-    {
-      this.zN.getRowCount();
-      if ((paramBoolean2) || (!this.CF.equals(paramInt2, paramInt1)) || (this.CH.size() == 0)) {}
-    }
-    else
-    {
+    if (this.BC == null) {}
+    while ((!paramBoolean2) && (this.Eu.equals(paramInt2, paramInt1)) && (this.Ew.size() != 0)) {
       return;
     }
-    this.zN.getRowCount();
     paramInt1 = j(paramInt1, 0, 0);
-    this.zN.fa();
     paramInt2 = j(paramInt2, 0, 1);
-    if (paramInt2 != this.CF.x)
+    if (paramInt2 != this.Eu.x)
     {
-      this.Da = 0;
+      this.EP = 0;
       paramBoolean2 = bool;
     }
-    while (this.lI)
+    while (this.nE)
     {
-      this.CF.set(0, 0);
-      i.fc();
+      this.Eu.set(0, 0);
       if (paramBoolean2)
       {
-        if (this.CZ != null) {
-          this.CZ.L(paramInt1, paramInt2);
+        if (this.EO != null) {
+          this.EO.N(paramInt1, paramInt2);
         }
-        if (this.Dd != null) {
-          this.Dd.L(paramInt1, paramInt2);
+        if (this.ES != null) {
+          this.ES.N(paramInt1, paramInt2);
         }
       }
       requestLayout();
       return;
-      if (paramInt1 != this.CF.y)
+      if (paramInt1 != this.Eu.y)
       {
-        this.Da = 1;
+        this.EP = 1;
         paramBoolean2 = bool;
       }
       else
@@ -412,35 +438,14 @@ public class GridViewPager
         paramBoolean2 = false;
       }
     }
-    Q(paramInt2, paramInt1);
+    S(paramInt2, paramInt1);
     c(paramInt2, paramInt1, paramBoolean1, paramBoolean2);
-  }
-  
-  private void a(MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getActionIndex();
-    if (paramMotionEvent.getPointerId(i) == this.lz) {
-      if (i != 0) {
-        break label65;
-      }
-    }
-    label65:
-    for (i = 1;; i = 0)
-    {
-      this.CS = paramMotionEvent.getX(i);
-      this.CT = paramMotionEvent.getY(i);
-      this.lz = paramMotionEvent.getPointerId(i);
-      if (this.lA != null) {
-        this.lA.clear();
-      }
-      return;
-    }
   }
   
   private void a(View paramView, GridViewPager.LayoutParams paramLayoutParams)
   {
     int j = 0;
-    int m = fl();
+    int m = fu();
     int k = getContentHeight();
     int i;
     if (paramLayoutParams.width == -2)
@@ -463,45 +468,18 @@ public class GridViewPager
     }
   }
   
-  private m aE(View paramView)
+  private m aN(View paramView)
   {
     int i = 0;
-    while (i < this.CH.size())
+    while (i < this.Ew.size())
     {
-      m localm = (m)this.CH.valueAt(i);
-      if ((localm != null) && (this.zN.a(paramView, localm.Dl))) {
+      m localm = (m)this.Ew.valueAt(i);
+      if ((localm != null) && (this.BC.a(paramView, localm.Fa))) {
         return localm;
       }
       i += 1;
     }
     return null;
-  }
-  
-  private int aS(int paramInt)
-  {
-    return this.Db.get(paramInt, 0);
-  }
-  
-  private int aT(int paramInt)
-  {
-    return (fl() + this.CN) * paramInt + getPaddingLeft();
-  }
-  
-  private int aU(int paramInt)
-  {
-    return (getContentHeight() + this.CM) * paramInt + getPaddingTop();
-  }
-  
-  private static String aV(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder((paramInt * 2 + 3) * 2);
-    int i = 0;
-    while (i < paramInt * 2 + 3)
-    {
-      localStringBuilder.append(' ').append(' ');
-      i += 1;
-    }
-    return localStringBuilder.toString();
   }
   
   private static float b(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -522,15 +500,43 @@ public class GridViewPager
   
   private void b(i parami1, i parami2)
   {
-    if (this.Cs != null) {
-      this.Cs.a(parami1, parami2);
+    if (this.Eh != null) {
+      this.Eh.a(parami1, parami2);
     }
-    if (this.Dd != null) {
-      this.Dd.a(parami1, parami2);
+    if (this.ES != null) {
+      this.ES.a(parami1, parami2);
     }
   }
   
-  private void bA()
+  private void b(MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getActionIndex();
+    if (paramMotionEvent.getPointerId(i) == this.nv) {
+      if (i != 0) {
+        break label65;
+      }
+    }
+    label65:
+    for (i = 1;; i = 0)
+    {
+      this.EH = paramMotionEvent.getX(i);
+      this.EI = paramMotionEvent.getY(i);
+      this.nv = paramMotionEvent.getPointerId(i);
+      if (this.nw != null) {
+        this.nw.clear();
+      }
+      return;
+    }
+  }
+  
+  private void bM()
+  {
+    if (this.BC != null) {
+      S(this.Eu.x, this.Eu.y);
+    }
+  }
+  
+  private void bR()
   {
     ViewParent localViewParent = getParent();
     if (localViewParent != null) {
@@ -538,365 +544,292 @@ public class GridViewPager
     }
   }
   
-  private void bv()
+  private void bT()
   {
-    if (this.zN != null)
+    this.np = false;
+    this.EF = false;
+    if (this.nw != null)
     {
-      this.zN.getRowCount();
-      Q(this.CF.x, this.CF.y);
+      this.nw.recycle();
+      this.nw = null;
     }
+  }
+  
+  private int bm(int paramInt)
+  {
+    return this.EQ.get(paramInt, 0);
+  }
+  
+  private int bn(int paramInt)
+  {
+    return (fu() + this.EC) * paramInt + getPaddingLeft();
+  }
+  
+  private int bo(int paramInt)
+  {
+    return (getContentHeight() + this.EB) * paramInt + getPaddingTop();
+  }
+  
+  private static String bp(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder((paramInt * 2 + 3) * 2);
+    int i = 0;
+    while (i < paramInt * 2 + 3)
+    {
+      localStringBuilder.append(' ').append(' ');
+      i += 1;
+    }
+    return localStringBuilder.toString();
   }
   
   private void c(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    m localm = R(paramInt1, paramInt2);
+    m localm = T(paramInt1, paramInt2);
     int j;
-    int k;
     int i;
     if (localm != null)
     {
-      j = aT(localm.Dm);
-      k = getPaddingLeft();
-      i = aU(localm.Dn) - getPaddingTop();
-      j -= k;
+      j = bn(localm.Fb) - getPaddingLeft();
+      i = bo(localm.Fc) - getPaddingTop();
     }
     for (;;)
     {
-      i.fc();
       if (paramBoolean2)
       {
-        if (this.CZ != null) {
-          this.CZ.L(paramInt2, paramInt1);
+        if (this.EO != null) {
+          this.EO.N(paramInt2, paramInt1);
         }
-        if (this.Dd != null) {
-          this.Dd.L(paramInt2, paramInt1);
+        if (this.ES != null) {
+          this.ES.N(paramInt2, paramInt1);
         }
       }
       if (paramBoolean1)
       {
-        if (getChildCount() != 0)
-        {
-          paramInt1 = aS(this.CF.y);
-          paramInt2 = getScrollY();
-          j -= paramInt1;
-          i -= paramInt2;
-          if ((j == 0) && (i == 0))
-          {
-            i(false);
-            bv();
-            z(0);
-          }
-        }
-        else
-        {
-          return;
-        }
-        z(2);
-        k = this.CD;
-        this.lg.startScroll(paramInt1, paramInt2, j, i, k);
-        r.f(this);
+        d(j, i);
         return;
       }
-      i(false);
+      l(false);
       scrollTo(j, i);
-      S(j, i);
+      U(j, i);
       return;
       i = 0;
       j = 0;
     }
   }
   
-  private void cm()
+  private void d(int paramInt1, int paramInt2)
   {
-    this.lt = false;
-    this.CQ = false;
-    if (this.lA != null)
+    if (getChildCount() == 0) {
+      return;
+    }
+    int i = bm(this.Eu.y);
+    int j = getScrollY();
+    paramInt1 -= i;
+    paramInt2 -= j;
+    if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.lA.recycle();
-      this.lA = null;
+      l(false);
+      bM();
+      K(0);
+      return;
+    }
+    K(2);
+    int k = this.Es;
+    this.nc.startScroll(i, j, paramInt1, paramInt2, k);
+    android.support.v4.view.r.g(this);
+  }
+  
+  private boolean d(float paramFloat1, float paramFloat2)
+  {
+    float f3 = this.EH - paramFloat1;
+    float f1 = this.EI - paramFloat2;
+    this.EH = paramFloat1;
+    this.EI = paramFloat2;
+    Object localObject = this.Ey;
+    int j = bn(((Rect)localObject).left) - getPaddingLeft();
+    int k = bn(((Rect)localObject).right) - getPaddingLeft();
+    int m = bo(((Rect)localObject).top) - getPaddingTop();
+    int n = bo(((Rect)localObject).bottom) - getPaddingTop();
+    float f5 = bm(this.Eu.y);
+    paramFloat2 = getScrollY();
+    paramFloat1 = f1;
+    float f4 = paramFloat2;
+    if (this.EP == 1)
+    {
+      i = getContentHeight() + this.EB;
+      if (f1 >= 0.0F) {
+        break label579;
+      }
+      paramFloat1 = -(paramFloat2 % i);
+      if (Math.abs(paramFloat1) > Math.abs(f1)) {
+        break label716;
+      }
+      f1 -= paramFloat1;
+      paramFloat2 += paramFloat1;
+    }
+    label324:
+    label711:
+    label716:
+    for (int i = 1;; i = 0)
+    {
+      paramFloat1 = f1;
+      f4 = paramFloat2;
+      label239:
+      float f2;
+      if (i != 0)
+      {
+        localObject = a(V((int)f5, (int)paramFloat2));
+        paramFloat1 = f1;
+        f4 = paramFloat2;
+        if (localObject != null)
+        {
+          i = p((View)localObject, (int)Math.signum(f1));
+          if (i <= 0) {
+            break label596;
+          }
+          paramFloat1 = Math.max(0.0F, Math.min(f1, i));
+          ((View)localObject).scrollBy(0, (int)paramFloat1);
+          f1 -= paramFloat1;
+          f2 = this.EI;
+          this.EI = (paramFloat1 - (int)paramFloat1 + f2);
+          f4 = paramFloat2;
+          paramFloat1 = f1;
+        }
+      }
+      i = (int)((int)f3 + f5);
+      int i1 = (int)((int)paramFloat1 + f4);
+      if ((i < j) || (i > k) || (i1 < m) || (i1 > n))
+      {
+        i = 1;
+        f1 = f3;
+        if (i == 0) {
+          break label711;
+        }
+        i1 = getOverScrollMode();
+        if (((this.EP != 0) || (j >= k)) && ((this.EP != 1) || (m >= n))) {
+          break label617;
+        }
+        i = 1;
+        label370:
+        if ((i1 != 0) && ((i == 0) || (i1 != 1))) {
+          break label673;
+        }
+        if (f5 <= k) {
+          break label623;
+        }
+        f1 = f5 - k;
+        if (f4 <= n) {
+          break label647;
+        }
+        f2 = f4 - n;
+        paramFloat2 = f3;
+        if (Math.abs(f1) > 0.0F)
+        {
+          paramFloat2 = f3;
+          if (Math.signum(f1) == Math.signum(f3)) {
+            paramFloat2 = f3 * En.getInterpolation(1.0F - Math.abs(f1) / fu());
+          }
+        }
+        f1 = paramFloat2;
+        if (Math.abs(f2) <= 0.0F) {
+          break label711;
+        }
+        f1 = paramFloat2;
+        if (Math.signum(f2) != Math.signum(paramFloat1)) {
+          break label711;
+        }
+        paramFloat1 = En.getInterpolation(1.0F - Math.abs(f2) / getContentHeight()) * paramFloat1;
+      }
+      for (;;)
+      {
+        paramFloat2 += f5;
+        paramFloat1 += f4;
+        this.EH += paramFloat2 - (int)paramFloat2;
+        this.EI += paramFloat1 - (int)paramFloat1;
+        scrollTo((int)paramFloat2, (int)paramFloat1);
+        U((int)paramFloat2, (int)paramFloat1);
+        return true;
+        paramFloat1 = (i - paramFloat2 % i) % i;
+        break;
+        label596:
+        paramFloat1 = Math.min(0.0F, Math.max(f1, i));
+        break label239;
+        i = 0;
+        break label324;
+        label617:
+        i = 0;
+        break label370;
+        label623:
+        if (f5 < j)
+        {
+          f1 = f5 - j;
+          break label402;
+        }
+        f1 = 0.0F;
+        break label402;
+        if (f4 < m)
+        {
+          f2 = f4 - m;
+          break label419;
+        }
+        f2 = 0.0F;
+        break label419;
+        paramFloat2 = b(f3, j - f5, k - f5);
+        paramFloat1 = b(paramFloat1, m - f4, n - f4);
+        continue;
+        paramFloat2 = f1;
+      }
     }
   }
   
-  private boolean f(MotionEvent paramMotionEvent)
-  {
-    if (this.lt) {
-      return false;
-    }
-    this.lz = paramMotionEvent.getPointerId(0);
-    this.CV = paramMotionEvent.getX();
-    this.CU = paramMotionEvent.getY();
-    this.CW = getScrollY();
-    this.CS = this.CV;
-    this.CT = this.CU;
-    this.CQ = true;
-    this.lA = VelocityTracker.obtain();
-    this.lA.addMovement(paramMotionEvent);
-    this.lg.computeScrollOffset();
-    if (((this.kD != 2) && (this.kD != 3)) || (((this.Da == 0) && (Math.abs(this.lg.getFinalX() - this.lg.getCurrX()) > this.lE)) || ((this.Da == 1) && (Math.abs(this.lg.getFinalY() - this.lg.getCurrY()) > this.lE))))
-    {
-      this.lg.abortAnimation();
-      this.CO = false;
-      bv();
-      this.lt = true;
-      bA();
-      z(1);
-      return false;
-    }
-    i(false);
-    this.lt = false;
-    return false;
-  }
-  
-  private int fl()
+  private int fu()
   {
     return getMeasuredWidth() - (getPaddingLeft() + getPaddingRight());
   }
   
-  private void fm()
+  private void fv()
   {
-    if (this.Cs != null) {
-      this.Cs.onDataSetChanged();
+    if (this.Eh != null) {
+      this.Eh.onDataSetChanged();
     }
-    if (this.Dd != null) {
-      this.Dd.onDataSetChanged();
+    if (this.ES != null) {
+      this.ES.onDataSetChanged();
     }
   }
   
-  private m fn()
+  private m fw()
   {
-    return T(aS((int)w(getScrollY())), getScrollY());
+    return V(bm((int)x(getScrollY())), getScrollY());
   }
   
   private boolean g(MotionEvent paramMotionEvent)
   {
-    int i = this.lz;
-    if (i == -1) {
+    if (this.np) {
       return false;
     }
-    i = paramMotionEvent.findPointerIndex(i);
-    if (i == -1) {
-      return this.lt;
-    }
-    float f4 = paramMotionEvent.getX(i);
-    float f3 = paramMotionEvent.getY(i);
-    float f6 = f4 - this.CS;
-    float f1 = Math.abs(f6);
-    float f5 = f3 - this.CT;
-    float f2 = Math.abs(f5);
-    label200:
-    label216:
-    label238:
-    Object localObject;
-    label262:
-    label274:
-    int j;
-    int k;
-    int m;
-    int n;
-    if ((!this.lt) && (f1 * f1 + f2 * f2 > this.CR))
+    this.nv = paramMotionEvent.getPointerId(0);
+    this.EK = paramMotionEvent.getX();
+    this.EJ = paramMotionEvent.getY();
+    this.EL = getScrollY();
+    this.EH = this.EK;
+    this.EI = this.EJ;
+    this.EF = true;
+    this.nw = VelocityTracker.obtain();
+    this.nw.addMovement(paramMotionEvent);
+    this.nc.computeScrollOffset();
+    if (((this.mz != 2) && (this.mz != 3)) || (((this.EP == 0) && (Math.abs(this.nc.getFinalX() - this.nc.getCurrX()) > this.nA)) || ((this.EP == 1) && (Math.abs(this.nc.getFinalY() - this.nc.getCurrY()) > this.nA))))
     {
-      this.lt = true;
-      bA();
-      z(1);
-      if (f2 >= f1)
-      {
-        this.Da = 1;
-        if ((f2 <= 0.0F) || (f1 <= 0.0F)) {
-          break label923;
-        }
-        double d = Math.sqrt(f2 * f2 + f1 * f1);
-        d = Math.acos(f1 / d);
-        f1 = (float)(Math.sin(d) * this.kl);
-        f2 = (float)(Math.cos(d) * this.kl);
-        if (f6 <= 0.0F) {
-          break label956;
-        }
-        f2 += this.CS;
-        this.CS = f2;
-        if (f5 <= 0.0F) {
-          break label968;
-        }
-        f1 = this.CT + f1;
-        this.CT = f1;
-      }
+      this.nc.abortAnimation();
+      this.ED = false;
+      bM();
+      this.np = true;
+      bR();
+      K(1);
+      return false;
     }
-    else if (this.lt)
-    {
-      if (this.Da != 0) {
-        break label980;
-      }
-      f1 = f4;
-      if (this.Da != 1) {
-        break label989;
-      }
-      f2 = f3;
-      f4 = this.CS - f1;
-      f3 = this.CT - f2;
-      this.CS = f1;
-      this.CT = f2;
-      localObject = this.CJ;
-      j = aT(((Rect)localObject).left) - getPaddingLeft();
-      k = aT(((Rect)localObject).right) - getPaddingLeft();
-      m = aU(((Rect)localObject).top) - getPaddingTop();
-      n = aU(((Rect)localObject).bottom) - getPaddingTop();
-      f6 = aS(this.CF.y);
-      f2 = getScrollY();
-      f5 = f2;
-      f1 = f3;
-      if (this.Da == 1)
-      {
-        i = getContentHeight() + this.CM;
-        if (f3 >= 0.0F) {
-          break label998;
-        }
-        f1 = -(f2 % i);
-        label438:
-        if (Math.abs(f1) > Math.abs(f3)) {
-          break label1156;
-        }
-        f3 -= f1;
-        f2 += f1;
-      }
-    }
-    label1156:
-    for (i = 1;; i = 0)
-    {
-      f5 = f2;
-      f1 = f3;
-      if (i != 0)
-      {
-        localObject = a(T((int)f6, (int)f2));
-        f5 = f2;
-        f1 = f3;
-        if (localObject != null)
-        {
-          i = l((View)localObject, (int)Math.signum(f3));
-          if (i <= 0) {
-            break label1017;
-          }
-          f1 = Math.max(0.0F, Math.min(f3, i));
-          label543:
-          ((View)localObject).scrollBy(0, (int)f1);
-          f3 -= f1;
-          f5 = this.CT;
-          this.CT = (f1 - (int)f1 + f5);
-          f1 = f3;
-          f5 = f2;
-        }
-      }
-      i = (int)((int)f4 + f6);
-      int i1 = (int)((int)f1 + f5);
-      if ((i < j) || (i > k) || (i1 < m) || (i1 > n))
-      {
-        i = 1;
-        label638:
-        if (i == 0) {
-          break label1149;
-        }
-        i1 = getOverScrollMode();
-        if (((this.Da != 0) || (j >= k)) && ((this.Da != 1) || (m >= n))) {
-          break label1040;
-        }
-        i = 1;
-        label681:
-        if ((i1 != 0) && ((i == 0) || (i1 != 1))) {
-          break label1098;
-        }
-        if (f6 <= k) {
-          break label1046;
-        }
-        f2 = f6 - k;
-        label714:
-        if (f5 <= n) {
-          break label1072;
-        }
-        f3 = f5 - n;
-        label731:
-        if ((Math.abs(f2) <= 0.0F) || (Math.signum(f2) != Math.signum(f4))) {
-          break label1142;
-        }
-        f2 = Cy.getInterpolation(1.0F - Math.abs(f2) / fl()) * f4;
-        label781:
-        if ((Math.abs(f3) <= 0.0F) || (Math.signum(f3) != Math.signum(f1))) {
-          break label1139;
-        }
-        f1 = Cy.getInterpolation(1.0F - Math.abs(f3) / getContentHeight()) * f1;
-      }
-      for (;;)
-      {
-        f2 += f6;
-        f1 += f5;
-        this.CS += f2 - (int)f2;
-        this.CT += f1 - (int)f1;
-        scrollTo((int)f2, (int)f1);
-        S((int)f2, (int)f1);
-        r.f(this);
-        this.lA.addMovement(paramMotionEvent);
-        return this.lt;
-        this.Da = 0;
-        break;
-        label923:
-        if (f2 == 0.0F)
-        {
-          f2 = this.kl;
-          f1 = 0.0F;
-          break label200;
-        }
-        f2 = 0.0F;
-        f1 = this.kl;
-        break label200;
-        label956:
-        f2 = this.CS - f2;
-        break label216;
-        label968:
-        f1 = this.CT - f1;
-        break label238;
-        label980:
-        f1 = this.CS;
-        break label262;
-        label989:
-        f2 = this.CT;
-        break label274;
-        label998:
-        f1 = (i - f2 % i) % i;
-        break label438;
-        label1017:
-        f1 = Math.min(0.0F, Math.max(f3, i));
-        break label543;
-        i = 0;
-        break label638;
-        label1040:
-        i = 0;
-        break label681;
-        label1046:
-        if (f6 < j)
-        {
-          f2 = f6 - j;
-          break label714;
-        }
-        f2 = 0.0F;
-        break label714;
-        label1072:
-        if (f5 < m)
-        {
-          f3 = f5 - m;
-          break label731;
-        }
-        f3 = 0.0F;
-        break label731;
-        label1098:
-        f2 = b(f4, j - f6, k - f6);
-        f1 = b(f1, m - f5, n - f5);
-        continue;
-        label1139:
-        continue;
-        label1142:
-        f2 = f4;
-        break label781;
-        label1149:
-        f2 = f4;
-      }
-    }
+    l(false);
+    this.np = false;
+    return false;
   }
   
   private int getContentHeight()
@@ -904,34 +837,92 @@ public class GridViewPager
     return getMeasuredHeight() - (getPaddingTop() + getPaddingBottom());
   }
   
-  private void i(boolean paramBoolean)
+  private boolean h(MotionEvent paramMotionEvent)
   {
-    if (this.kD == 2) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        this.lg.abortAnimation();
-        int j = aS(this.CF.y);
-        int k = getScrollY();
-        int m = this.lg.getCurrX();
-        int n = this.lg.getCurrY();
-        if ((j != m) || (k != n)) {
-          scrollTo(m, n);
-        }
-      }
-      this.Dc = null;
-      this.CO = false;
-      if (i != 0)
-      {
-        if (!paramBoolean) {
-          break;
-        }
-        r.b(this, this.lV);
-      }
-      return;
+    int i = this.nv;
+    if (i == -1) {
+      return false;
     }
-    this.lV.run();
+    i = paramMotionEvent.findPointerIndex(i);
+    if (i == -1) {
+      return this.np;
+    }
+    float f4 = paramMotionEvent.getX(i);
+    float f3 = paramMotionEvent.getY(i);
+    float f6 = f4 - this.EH;
+    float f1 = Math.abs(f6);
+    float f5 = f3 - this.EI;
+    float f2 = Math.abs(f5);
+    if ((!this.np) && (f1 * f1 + f2 * f2 > this.EG))
+    {
+      this.np = true;
+      bR();
+      K(1);
+      if (f2 >= f1)
+      {
+        this.EP = 1;
+        if ((f2 <= 0.0F) || (f1 <= 0.0F)) {
+          break label308;
+        }
+        double d = Math.sqrt(f2 * f2 + f1 * f1);
+        d = Math.acos(f1 / d);
+        f1 = (float)(Math.sin(d) * this.mi);
+        f2 = (float)(Math.cos(d) * this.mi);
+        label200:
+        if (f6 <= 0.0F) {
+          break label341;
+        }
+        f2 += this.EH;
+        label216:
+        this.EH = f2;
+        if (f5 <= 0.0F) {
+          break label353;
+        }
+        f1 = this.EI + f1;
+        label238:
+        this.EI = f1;
+      }
+    }
+    else if (this.np)
+    {
+      if (this.EP != 0) {
+        break label365;
+      }
+      f1 = f4;
+      label262:
+      if (this.EP != 1) {
+        break label374;
+      }
+    }
+    label308:
+    label341:
+    label353:
+    label365:
+    label374:
+    for (f2 = f3;; f2 = this.EI)
+    {
+      d(f1, f2);
+      android.support.v4.view.r.g(this);
+      this.nw.addMovement(paramMotionEvent);
+      return this.np;
+      this.EP = 0;
+      break;
+      if (f2 == 0.0F)
+      {
+        f2 = this.mi;
+        f1 = 0.0F;
+        break label200;
+      }
+      f2 = 0.0F;
+      f1 = this.mi;
+      break label200;
+      f2 = this.EH - f2;
+      break label216;
+      f1 = this.EI - f1;
+      break label238;
+      f1 = this.EH;
+      break label262;
+    }
   }
   
   private static int j(int paramInt1, int paramInt2, int paramInt3)
@@ -945,45 +936,51 @@ public class GridViewPager
     return paramInt1;
   }
   
-  private static int l(View paramView, int paramInt)
+  private void l(boolean paramBoolean)
   {
-    int j = 0;
-    int i;
-    if ((paramView instanceof CardScrollView)) {
-      i = ((CardScrollView)paramView).aQ(paramInt);
-    }
-    do
+    if (this.mz == 2) {}
+    for (int i = 1;; i = 0)
     {
-      int k;
-      int m;
-      do
+      if (i != 0)
       {
-        do
-        {
-          do
-          {
-            return i;
-            i = j;
-          } while (!(paramView instanceof ScrollView));
-          paramView = (ScrollView)paramView;
-          i = j;
-        } while (paramView.getChildCount() <= 0);
-        View localView = paramView.getChildAt(0);
-        k = paramView.getHeight();
-        m = localView.getHeight();
-        i = j;
-      } while (m <= k);
-      if (paramInt > 0) {
-        return Math.min(m - k - paramView.getScrollY(), 0);
+        this.nc.abortAnimation();
+        int j = bm(this.Eu.y);
+        int k = getScrollY();
+        int m = this.nc.getCurrX();
+        int n = this.nc.getCurrY();
+        if ((j != m) || (k != n)) {
+          scrollTo(m, n);
+        }
       }
-      i = j;
-    } while (paramInt >= 0);
-    return -paramView.getScrollY();
+      this.ER = null;
+      this.ED = false;
+      if (i != 0)
+      {
+        if (!paramBoolean) {
+          break;
+        }
+        android.support.v4.view.r.b(this, this.nR);
+      }
+      return;
+    }
+    this.nR.run();
   }
   
-  private float v(float paramFloat)
+  private static int p(View paramView, int paramInt)
   {
-    int i = fl() + this.CN;
+    int i = 0;
+    if ((paramView instanceof CardScrollView)) {
+      i = ((CardScrollView)paramView).bk(paramInt);
+    }
+    while (!(paramView instanceof ScrollView)) {
+      return i;
+    }
+    return a((ScrollView)paramView, paramInt);
+  }
+  
+  private float w(float paramFloat)
+  {
+    int i = fu() + this.EC;
     if (i == 0)
     {
       Log.e("GridViewPager", "getXIndex() called with zero width.");
@@ -992,9 +989,9 @@ public class GridViewPager
     return paramFloat / i;
   }
   
-  private float w(float paramFloat)
+  private float x(float paramFloat)
   {
-    int i = getContentHeight() + this.CM;
+    int i = getContentHeight() + this.EB;
     if (i == 0)
     {
       Log.e("GridViewPager", "getYIndex() called with zero height.");
@@ -1003,143 +1000,124 @@ public class GridViewPager
     return paramFloat / i;
   }
   
-  private void z(int paramInt)
-  {
-    if (this.kD == paramInt) {}
-    do
-    {
-      return;
-      this.kD = paramInt;
-      if (this.CZ != null) {
-        this.CZ.y(paramInt);
-      }
-    } while (this.Dd == null);
-    this.Dd.y(paramInt);
-  }
-  
   public final void a(i parami)
   {
     int i;
-    if (this.zN != null)
+    if (this.BC != null)
     {
-      this.zN.unregisterDataSetObserver(this.CL);
-      this.zN.a(null);
-      i.fd();
+      this.BC.unregisterDataSetObserver(this.EA);
+      this.BC.a(null);
       i = 0;
-      while (i < this.CH.size())
+      while (i < this.Ew.size())
       {
-        localObject1 = (m)this.CH.valueAt(i);
-        this.zN.b(this, ((m)localObject1).Dl);
+        localObject = (m)this.Ew.valueAt(i);
+        this.BC.b(this, ((m)localObject).Fa);
         i += 1;
       }
-      i.fe();
-      this.CH.clear();
+      this.Ew.clear();
       removeAllViews();
       scrollTo(0, 0);
-      this.Db.clear();
+      this.EQ.clear();
     }
-    Object localObject1 = this.zN;
-    this.CF.set(0, 0);
-    this.zN = parami;
-    this.CA = 0;
-    this.CB = 0;
+    Object localObject = this.BC;
+    this.Eu.set(0, 0);
+    this.BC = parami;
+    this.Ep = 0;
+    this.Eq = 0;
     boolean bool;
-    Object localObject2;
-    if (this.zN != null)
+    if (this.BC != null)
     {
-      if (this.CL == null) {
-        this.CL = new p(this, (byte)0);
+      if (this.EA == null) {
+        this.EA = new p(this, (byte)0);
       }
-      this.zN.registerDataSetObserver(this.CL);
-      this.zN.a(this.Dd);
-      this.CO = false;
-      bool = this.lI;
-      this.lI = true;
-      this.CA = this.zN.getRowCount();
-      if (this.CA > 0)
+      this.BC.registerDataSetObserver(this.EA);
+      this.BC.a(this.ES);
+      this.ED = false;
+      bool = this.nE;
+      this.nE = true;
+      this.Ep = 1;
+      if (this.Ep > 0)
       {
-        this.CF.set(0, 0);
-        localObject2 = this.zN;
-        i = this.CF.y;
-        this.CB = ((i)localObject2).fa();
+        this.Eu.set(0, 0);
+        i = this.Eu.y;
+        this.Eq = 2;
       }
-      if (this.CG != null)
+      if (this.Ev != null)
       {
-        i.fj();
-        b(this.CG.y, this.CG.x, false, true);
-        this.CG = null;
-        this.le = null;
-        this.lf = null;
+        b(this.Ev.y, this.Ev.x, false, true);
+        this.Ev = null;
+        this.na = null;
+        this.nb = null;
       }
     }
-    while (localObject1 != parami) {
+    while (localObject != parami) {
       if (parami == null)
       {
-        this.Dg = false;
-        b((i)localObject1, parami);
-        this.Dh = null;
+        this.EV = false;
+        b((i)localObject, parami);
+        this.EW = null;
         return;
         if (!bool)
         {
-          bv();
+          bM();
         }
         else
         {
           requestLayout();
           continue;
-          if (this.lt)
+          if (this.np)
           {
             cancelPendingInputEvents();
             long l = SystemClock.uptimeMillis();
-            localObject2 = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-            ((MotionEvent)localObject2).setSource(4098);
-            dispatchTouchEvent((MotionEvent)localObject2);
-            ((MotionEvent)localObject2).recycle();
+            MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
+            localMotionEvent.setSource(4098);
+            dispatchTouchEvent(localMotionEvent);
+            localMotionEvent.recycle();
           }
         }
       }
       else
       {
-        this.Dg = true;
-        this.Dh = ((i)localObject1);
+        this.EV = true;
+        this.EW = ((i)localObject);
         return;
       }
     }
-    this.Dg = false;
-    this.Dh = null;
+    this.EV = false;
+    this.EW = null;
   }
   
   public final void a(n paramn)
   {
-    this.Cs = paramn;
-    if ((paramn != null) && (this.zN != null) && (!this.Dg)) {
-      paramn.a(null, this.zN);
+    this.Eh = paramn;
+    if ((paramn != null) && (this.BC != null) && (!this.EV)) {
+      paramn.a(null, this.BC);
     }
   }
   
   public final void a(o paramo)
   {
-    this.CZ = paramo;
+    this.EO = paramo;
   }
   
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    aE(paramView);
+    aN(paramView);
     if (!checkLayoutParams(paramLayoutParams)) {
       paramLayoutParams = generateLayoutParams(paramLayoutParams);
     }
     for (;;)
     {
       GridViewPager.LayoutParams localLayoutParams = (GridViewPager.LayoutParams)paramLayoutParams;
-      if (this.aU)
+      if (this.cE)
       {
-        localLayoutParams.mb = true;
+        localLayoutParams.nX = true;
         addViewInLayout(paramView, paramInt, paramLayoutParams);
       }
       for (;;)
       {
-        if (this.De != null) {
-          paramView.onApplyWindowInsets(this.De);
+        if (this.ET != null) {
+          paramView.onApplyWindowInsets(this.ET);
         }
         return;
         super.addView(paramView, paramInt, paramLayoutParams);
@@ -1150,7 +1128,7 @@ public class GridViewPager
   public boolean canScrollHorizontally(int paramInt)
   {
     boolean bool = true;
-    if ((getVisibility() != 0) || (this.zN == null) || (this.CH.isEmpty())) {
+    if ((getVisibility() != 0) || (this.BC == null) || (this.Ew.isEmpty())) {
       bool = false;
     }
     int i;
@@ -1160,12 +1138,12 @@ public class GridViewPager
       do
       {
         return bool;
-        i = aS(this.CF.y);
-        j = this.CB;
+        i = bm(this.Eu.y);
+        j = this.Eq;
         if (paramInt <= 0) {
           break;
         }
-      } while (i + getPaddingLeft() < aT(j - 1));
+      } while (i + getPaddingLeft() < bn(j - 1));
       return false;
     } while (i > 0);
     return false;
@@ -1174,7 +1152,7 @@ public class GridViewPager
   public boolean canScrollVertically(int paramInt)
   {
     boolean bool = true;
-    if ((getVisibility() != 0) || (this.zN == null) || (this.CH.isEmpty())) {
+    if ((getVisibility() != 0) || (this.BC == null) || (this.Ew.isEmpty())) {
       bool = false;
     }
     int i;
@@ -1185,11 +1163,11 @@ public class GridViewPager
       {
         return bool;
         i = getScrollY();
-        j = this.CA;
+        j = this.Ep;
         if (paramInt <= 0) {
           break;
         }
-      } while (i + getPaddingTop() < aU(j - 1));
+      } while (i + getPaddingTop() < bo(j - 1));
       return false;
     } while (i > 0);
     return false;
@@ -1202,66 +1180,66 @@ public class GridViewPager
   
   public void computeScroll()
   {
-    if ((!this.lg.isFinished()) && (this.lg.computeScrollOffset()))
+    if ((!this.nc.isFinished()) && (this.nc.computeScrollOffset()))
     {
-      if (this.kD == 3) {
-        if (this.Dc == null) {
-          this.lg.abortAnimation();
+      if (this.mz == 3) {
+        if (this.ER == null) {
+          this.nc.abortAnimation();
         }
       }
       for (;;)
       {
-        r.f(this);
+        android.support.v4.view.r.g(this);
         return;
-        int i = this.lg.getCurrX();
-        int j = this.lg.getCurrY();
-        this.Dc.scrollTo(i, j);
+        int i = this.nc.getCurrX();
+        int j = this.nc.getCurrY();
+        this.ER.scrollTo(i, j);
         continue;
-        i = aS(this.CF.y);
+        i = bm(this.Eu.y);
         j = getScrollY();
-        int k = this.lg.getCurrX();
-        int m = this.lg.getCurrY();
+        int k = this.nc.getCurrX();
+        int m = this.nc.getCurrY();
         if ((i != k) || (j != m))
         {
           scrollTo(k, m);
-          if (!S(k, m))
+          if (!U(k, m))
           {
-            this.lg.abortAnimation();
+            this.nc.abortAnimation();
             scrollTo(0, 0);
           }
         }
       }
     }
-    i(true);
+    l(true);
   }
   
   protected void debug(int paramInt)
   {
     super.debug(paramInt);
-    String str = aV(paramInt);
-    Log.d("View", str + "mCurItem={" + this.CF + "}");
-    str = aV(paramInt);
-    Log.d("View", str + "mAdapter={" + this.zN + "}");
-    str = aV(paramInt);
-    Log.d("View", str + "mRowCount=" + this.CA);
-    str = aV(paramInt);
-    Log.d("View", str + "mCurrentColumnCount=" + this.CB);
-    int j = this.CH.size();
+    String str = bp(paramInt);
+    Log.d("View", str + "mCurItem={" + this.Eu + "}");
+    str = bp(paramInt);
+    Log.d("View", str + "mAdapter={" + this.BC + "}");
+    str = bp(paramInt);
+    Log.d("View", str + "mRowCount=" + this.Ep);
+    str = bp(paramInt);
+    Log.d("View", str + "mCurrentColumnCount=" + this.Eq);
+    int j = this.Ew.size();
     if (j != 0)
     {
-      str = aV(paramInt);
+      str = bp(paramInt);
       Log.d("View", str + "mItems={");
     }
     int i = 0;
     while (i < j)
     {
-      str = aV(paramInt + 1);
-      Log.d("View", str + this.CH.keyAt(i) + " => " + this.CH.valueAt(i));
+      str = bp(paramInt + 1);
+      Log.d("View", str + this.Ew.keyAt(i) + " => " + this.Ew.valueAt(i));
       i += 1;
     }
     if (j != 0)
     {
-      str = aV(paramInt);
+      str = bp(paramInt);
       Log.d("View", str + "}");
     }
   }
@@ -1269,11 +1247,11 @@ public class GridViewPager
   public WindowInsets dispatchApplyWindowInsets(WindowInsets paramWindowInsets)
   {
     WindowInsets localWindowInsets = onApplyWindowInsets(paramWindowInsets);
-    if (this.Df != null) {
-      this.Df.onApplyWindowInsets(this, localWindowInsets);
+    if (this.EU != null) {
+      this.EU.onApplyWindowInsets(this, localWindowInsets);
     }
     paramWindowInsets = localWindowInsets;
-    if (this.CC) {
+    if (this.Er) {
       paramWindowInsets = localWindowInsets.consumeSystemWindowInsets();
     }
     return paramWindowInsets;
@@ -1296,64 +1274,59 @@ public class GridViewPager
         bool = true;
       }
       return bool;
-      if (this.CF.x > 0)
+      if (this.Eu.x > 0)
       {
-        O(this.CF.x - 1, this.CF.y);
+        Q(this.Eu.x - 1, this.Eu.y);
         i = 1;
       }
       else
       {
         i = 0;
         continue;
-        if (this.zN != null)
+        if (this.BC != null)
         {
-          i = this.CF.x;
-          paramKeyEvent = this.zN;
-          int j = this.CF.y;
-          paramKeyEvent.fa();
+          i = this.Eu.x;
+          int j = this.Eu.y;
           if (i <= 0)
           {
-            O(this.CF.x + 1, this.CF.y);
+            Q(this.Eu.x + 1, this.Eu.y);
             i = 1;
             continue;
           }
         }
         i = 0;
         continue;
-        if (this.CF.y > 0)
+        if (this.Eu.y > 0)
         {
-          O(this.CF.x, this.CF.y - 1);
+          Q(this.Eu.x, this.Eu.y - 1);
           i = 1;
         }
         else
         {
           i = 0;
           continue;
-          if (this.zN != null)
+          if ((this.BC != null) && (this.Eu.y < 0))
           {
-            i = this.CF.y;
-            this.zN.getRowCount();
-            if (i < 0)
-            {
-              O(this.CF.x, this.CF.y + 1);
-              i = 1;
-              continue;
-            }
+            Q(this.Eu.x, this.Eu.y + 1);
+            i = 1;
           }
-          i = 0;
-          continue;
-          i = 0;
-          continue;
-          debug(0);
-          i = 1;
+          else
+          {
+            i = 0;
+            continue;
+            i = 0;
+            continue;
+            debug(0);
+            i = 1;
+          }
         }
       }
     }
   }
   
-  public final i fk()
+  public final i ft()
   {
-    return this.zN;
+    return this.BC;
   }
   
   protected ViewGroup.LayoutParams generateDefaultLayoutParams()
@@ -1380,20 +1353,20 @@ public class GridViewPager
       getChildAt(i).dispatchApplyWindowInsets(paramWindowInsets);
       i += 1;
     }
-    this.De = paramWindowInsets;
+    this.ET = paramWindowInsets;
     return paramWindowInsets;
   }
   
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.lI = true;
+    this.nE = true;
     getParent().requestFitSystemWindows();
   }
   
   protected void onDetachedFromWindow()
   {
-    removeCallbacks(this.lV);
+    removeCallbacks(this.nR);
     super.onDetachedFromWindow();
   }
   
@@ -1403,13 +1376,13 @@ public class GridViewPager
     int i = paramMotionEvent.getAction() & 0xFF;
     if ((i == 3) || (i == 1))
     {
-      this.lt = false;
-      this.CQ = false;
-      this.lz = -1;
-      if (this.lA != null)
+      this.np = false;
+      this.EF = false;
+      this.nv = -1;
+      if (this.nw != null)
       {
-        this.lA.recycle();
-        this.lA = null;
+        this.nw.recycle();
+        this.nw = null;
       }
       bool = false;
     }
@@ -1419,8 +1392,8 @@ public class GridViewPager
       if (i == 0) {
         break;
       }
-    } while (this.lt);
-    if (!this.CQ) {
+    } while (this.np);
+    if (!this.EF) {
       return false;
     }
     switch (i)
@@ -1428,12 +1401,12 @@ public class GridViewPager
     }
     for (;;)
     {
-      return this.lt;
-      f(paramMotionEvent);
-      continue;
+      return this.np;
       g(paramMotionEvent);
       continue;
-      a(paramMotionEvent);
+      h(paramMotionEvent);
+      continue;
+      b(paramMotionEvent);
     }
   }
   
@@ -1446,44 +1419,44 @@ public class GridViewPager
       View localView = getChildAt(paramInt1);
       GridViewPager.LayoutParams localLayoutParams = (GridViewPager.LayoutParams)localView.getLayoutParams();
       if (localLayoutParams == null) {
-        Log.w("GridViewPager", "Got null layout params for child: " + localView);
+        Log.w("GridViewPager", "Got null layout params for child: ".concat(String.valueOf(localView)));
       }
       for (;;)
       {
         paramInt1 += 1;
         break;
-        m localm = aE(localView);
+        m localm = aN(localView);
         if (localm == null)
         {
-          Log.w("GridViewPager", "Unknown child view, not claimed by adapter: " + localView);
+          Log.w("GridViewPager", "Unknown child view, not claimed by adapter: ".concat(String.valueOf(localView)));
         }
         else
         {
-          if (localLayoutParams.mb)
+          if (localLayoutParams.nX)
           {
-            localLayoutParams.mb = false;
+            localLayoutParams.nX = false;
             a(localView, localLayoutParams);
           }
-          paramInt4 = aT(localm.Dm);
-          paramInt3 = aU(localm.Dn);
-          paramInt4 = paramInt4 - aS(localm.Dn) + localLayoutParams.leftMargin;
+          paramInt4 = bn(localm.Fb);
+          paramInt3 = bo(localm.Fc);
+          paramInt4 = paramInt4 - bm(localm.Fc) + localLayoutParams.leftMargin;
           paramInt3 = localLayoutParams.topMargin + paramInt3;
           localView.layout(paramInt4, paramInt3, localView.getMeasuredWidth() + paramInt4, localView.getMeasuredHeight() + paramInt3);
         }
       }
     }
-    if ((this.lI) && (!this.CH.isEmpty())) {
-      c(this.CF.x, this.CF.y, false, false);
+    if ((this.nE) && (!this.Ew.isEmpty())) {
+      c(this.Eu.x, this.Eu.y, false, false);
     }
-    this.lI = false;
+    this.nE = false;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(getDefaultSize(0, paramInt1), getDefaultSize(0, paramInt2));
-    this.aU = true;
-    bv();
-    this.aU = false;
+    this.cE = true;
+    bM();
+    this.cE = false;
     paramInt2 = getChildCount();
     paramInt1 = 0;
     while (paramInt1 < paramInt2)
@@ -1510,27 +1483,23 @@ public class GridViewPager
     }
     paramParcelable = (GridViewPager.SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    int j = paramParcelable.Do;
-    if (U(paramParcelable.Dp, this.CA - 1))
-    {
-      this.zN.fa();
-      if (!U(j, 1)) {}
-    }
+    int j = paramParcelable.Fd;
+    if ((W(paramParcelable.Fe, this.Ep - 1)) && (W(j, 1))) {}
     while (i != 0)
     {
-      this.CG = new Point(paramParcelable.Do, paramParcelable.Dp);
+      this.Ev = new Point(paramParcelable.Fd, paramParcelable.Fe);
       return;
       i = 0;
     }
-    this.CF.set(0, 0);
+    this.Eu.set(0, 0);
     scrollTo(0, 0);
   }
   
   public Parcelable onSaveInstanceState()
   {
     GridViewPager.SavedState localSavedState = new GridViewPager.SavedState(super.onSaveInstanceState());
-    localSavedState.Do = this.CF.x;
-    localSavedState.Dp = this.CF.y;
+    localSavedState.Fd = this.Eu.x;
+    localSavedState.Fe = this.Eu.y;
     return localSavedState;
   }
   
@@ -1538,12 +1507,12 @@ public class GridViewPager
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     m localm;
-    if (!this.CH.isEmpty())
+    if (!this.Ew.isEmpty())
     {
-      int i2 = this.CN;
-      int i3 = this.CN;
-      int i = this.CM;
-      int j = this.CM;
+      int i2 = this.EC;
+      int i3 = this.EC;
+      int i = this.EB;
+      int j = this.EB;
       if ((paramInt3 <= 0) || (paramInt4 <= 0)) {
         break label275;
       }
@@ -1555,20 +1524,20 @@ public class GridViewPager
       int m = getPaddingBottom();
       int n = getPaddingTop();
       int i1 = getPaddingBottom();
-      float f = aS(this.CF.y) / (i3 + (paramInt3 - i6 - i7));
+      float f = bm(this.Eu.y) / (i3 + (paramInt3 - i6 - i7));
       paramInt1 = (int)((i2 + (paramInt1 - i4 - i5)) * f);
       paramInt2 = (int)(getScrollY() / (j + (paramInt4 - n - i1)) * (i + (paramInt2 - k - m)));
       scrollTo(paramInt1, paramInt2);
-      if (!this.lg.isFinished())
+      if (!this.nc.isFinished())
       {
-        localm = a(this.CF);
-        paramInt3 = aT(localm.Dm);
+        localm = a(this.Eu);
+        paramInt3 = bn(localm.Fb);
         paramInt4 = getPaddingLeft();
-        i = aU(localm.Dn);
+        i = bo(localm.Fc);
         j = getPaddingTop();
-        k = this.lg.getDuration();
-        m = this.lg.timePassed();
-        this.lg.startScroll(paramInt1, paramInt2, paramInt3 - paramInt4, i - j, k - m);
+        k = this.nc.getDuration();
+        m = this.nc.timePassed();
+        this.nc.startScroll(paramInt1, paramInt2, paramInt3 - paramInt4, i - j, k - m);
       }
     }
     label275:
@@ -1577,18 +1546,18 @@ public class GridViewPager
       do
       {
         return;
-        localm = a(this.CF);
+        localm = a(this.Eu);
       } while (localm == null);
-      paramInt1 = aT(localm.Dm) - getPaddingLeft();
-      paramInt2 = aU(localm.Dn) - getPaddingTop();
-    } while ((paramInt1 == aS(localm.Dn)) && (paramInt2 == getScrollY()));
-    i(false);
+      paramInt1 = bn(localm.Fb) - getPaddingLeft();
+      paramInt2 = bo(localm.Fc) - getPaddingTop();
+    } while ((paramInt1 == bm(localm.Fc)) && (paramInt2 == getScrollY()));
+    l(false);
     scrollTo(paramInt1, paramInt2);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.zN == null) {
+    if (this.BC == null) {
       return false;
     }
     int i = paramMotionEvent.getAction();
@@ -1602,7 +1571,7 @@ public class GridViewPager
     case 4: 
     case 5: 
     default: 
-      Log.e("GridViewPager", "Unknown action type: " + i);
+      Log.e("GridViewPager", "Unknown action type: ".concat(String.valueOf(i)));
     case 0: 
     case 2: 
     case 1: 
@@ -1610,88 +1579,88 @@ public class GridViewPager
       for (;;)
       {
         return true;
-        f(paramMotionEvent);
-        continue;
         g(paramMotionEvent);
         continue;
-        if ((this.lt) && (this.CA != 0)) {
+        h(paramMotionEvent);
+        continue;
+        if ((this.np) && (this.Ep != 0)) {
           break;
         }
-        this.lz = -1;
-        cm();
+        this.nv = -1;
+        bT();
       }
-      localVelocityTracker = this.lA;
+      localVelocityTracker = this.nw;
       localVelocityTracker.addMovement(paramMotionEvent);
       localVelocityTracker.computeCurrentVelocity(1000);
-      m = paramMotionEvent.findPointerIndex(this.lz);
-      i = this.CF.x;
-      j = this.CF.y;
+      m = paramMotionEvent.findPointerIndex(this.nv);
+      i = this.Eu.x;
+      j = this.Eu.y;
       k = 0;
-      localm = fn();
-      switch (this.Da)
+      localm = fw();
+      switch (this.EP)
       {
       default: 
-        label212:
-        if (this.kD != 3)
+        label204:
+        if (this.mz != 3)
         {
-          this.CO = true;
-          if (j == this.CF.y) {
-            break label639;
+          this.ED = true;
+          if (j == this.Eu.y) {
+            break label629;
           }
-          i = this.CF.x;
-          i = i.fb();
+          i = this.Eu.x;
+          i = 0;
         }
         break;
       }
       break;
     }
-    label505:
-    label639:
+    label495:
+    label629:
     for (;;)
     {
       a(j, i, true, true, k);
-      this.lz = -1;
-      cm();
+      this.nv = -1;
+      bT();
       break;
-      i = (int)(paramMotionEvent.getRawX() - this.CV);
-      k = (int)localVelocityTracker.getXVelocity(this.lz);
-      m = localm.Dm;
-      float f = v(aS(localm.Dn) - aT(localm.Dm));
-      int n = this.CF.x;
-      i = a(m, f, this.CJ.left, this.CJ.right, k, i);
-      break label212;
+      i = (int)(paramMotionEvent.getRawX() - this.EK);
+      k = (int)localVelocityTracker.getXVelocity(this.nv);
+      m = localm.Fb;
+      float f = w(bm(localm.Fc) - bn(localm.Fb));
+      int n = this.Eu.x;
+      i = a(m, f, this.Ey.left, this.Ey.right, k, i);
+      break label204;
       paramMotionEvent.getX(m);
-      m = this.CW;
+      m = this.EL;
       n = getScrollY();
-      k = (int)localVelocityTracker.getYVelocity(this.lz);
-      int i1 = localm.Dn;
-      f = w(getScrollY() - aU(localm.Dn));
+      k = (int)localVelocityTracker.getYVelocity(this.nv);
+      int i1 = localm.Fc;
+      f = x(getScrollY() - bo(localm.Fc));
       if (f == 0.0F)
       {
-        paramMotionEvent = a(fn());
-        n = l(paramMotionEvent, -k);
+        paramMotionEvent = a(fw());
+        n = p(paramMotionEvent, -k);
         int i2;
         if (n != 0)
         {
-          this.Dc = paramMotionEvent;
-          if (Math.abs(k) >= Math.abs(this.tI))
+          this.ER = paramMotionEvent;
+          if (Math.abs(k) >= Math.abs(this.vy))
           {
             i2 = -k;
-            if (this.Dc != null)
+            if (this.ER != null)
             {
               if (i2 != 0) {
-                break label505;
+                break label495;
               }
-              i(false);
-              z(0);
+              l(false);
+              K(0);
             }
-            cm();
+            bT();
           }
         }
-        break label212;
-        int i3 = this.Dc.getScrollX();
-        m = this.Dc.getScrollY();
-        z(3);
+        break label204;
+        int i3 = this.ER.getScrollX();
+        m = this.ER.getScrollY();
+        K(3);
         if (i2 > 0)
         {
           i1 = m + n;
@@ -1699,25 +1668,25 @@ public class GridViewPager
         }
         for (;;)
         {
-          this.lg.fling(i3, m, 0, i2, i3 + 0, i3, n, i1);
-          r.f(this);
+          this.nc.fling(i3, m, 0, i2, i3 + 0, i3, n, i1);
+          android.support.v4.view.r.g(this);
           break;
           n = m + n;
           i1 = m;
         }
       }
-      j = this.CF.y;
-      j = a(i1, f, this.CJ.top, this.CJ.bottom, k, m - n);
-      break label212;
-      a(paramMotionEvent);
+      j = this.Eu.y;
+      j = a(i1, f, this.Ey.top, this.Ey.bottom, k, m - n);
+      break label204;
+      b(paramMotionEvent);
       break;
     }
   }
   
   public void removeView(View paramView)
   {
-    aE(paramView);
-    if (this.aU)
+    aN(paramView);
+    if (this.cE)
     {
       removeViewInLayout(paramView);
       return;
@@ -1731,38 +1700,38 @@ public class GridViewPager
   {
     int j = 0;
     int i = paramInt1;
-    if (this.kD == 2)
+    if (this.mz == 2)
     {
       i = paramInt1;
-      if (this.Da == 1) {
-        i = aS(this.CF.y);
+      if (this.EP == 1) {
+        i = bm(this.Eu.y);
       }
     }
     super.scrollTo(0, paramInt2);
-    paramInt2 = this.CF.y;
-    if (aS(paramInt2) != i)
+    paramInt2 = this.Eu.y;
+    if (bm(paramInt2) != i)
     {
       int k = getChildCount();
-      int m = aS(paramInt2);
+      int m = bm(paramInt2);
       paramInt1 = j;
       while (paramInt1 < k)
       {
         View localView = getChildAt(paramInt1);
-        m localm = aE(localView);
-        if ((localm != null) && (localm.Dn == paramInt2))
+        m localm = aN(localView);
+        if ((localm != null) && (localm.Fc == paramInt2))
         {
           localView.offsetLeftAndRight(-(i - m));
           postInvalidateOnAnimation();
         }
         paramInt1 += 1;
       }
-      N(paramInt2, i);
+      P(paramInt2, i);
     }
   }
   
   public void setOnApplyWindowInsetsListener(View.OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
   {
-    this.Df = paramOnApplyWindowInsetsListener;
+    this.EU = paramOnApplyWindowInsetsListener;
   }
 }
 

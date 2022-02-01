@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/em2" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/em3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/bg_" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/a6q" android:id="@id/em4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="25.0dip" android:layout_marginBottom="22.0dip" android:text="3/4" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/yu"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textColor="@color/s5" android:id="@id/ebw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gyh" />
+    <LinearLayout style="@style/zn">
+        <com.tencent.mm.plugin.wallet_payu.security_question.ui.WalletPayUSecurityQuestionView android:id="@id/ebv" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" app:hint="@string/gyf" app:tipmsg="@string/gyg" />
+        <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/ebu" android:singleLine="false" android:imeOptions="actionNext" app:contentHint="@string/gyd" app:titleText="@string/gye" style="@style/zq" />
+    </LinearLayout>
+    <Button android:id="@id/ebt" android:layout_marginTop="@dimen/ha" android:text="@string/gy_" style="@style/zj" />
+</LinearLayout>

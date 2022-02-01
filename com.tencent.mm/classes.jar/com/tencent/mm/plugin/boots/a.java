@@ -10,35 +10,35 @@ import java.util.List;
 public final class a
   implements c
 {
-  public final List<com.tencent.mm.plugin.boots.a.a> aWg()
+  public final List<com.tencent.mm.plugin.boots.a.a> bBI()
   {
-    AppMethodBeat.i(90513);
-    List localList = ((d)g.G(d.class)).getTinkerLogic().aWg();
-    AppMethodBeat.o(90513);
+    AppMethodBeat.i(117358);
+    List localList = ((d)g.ad(d.class)).getTinkerLogic().bBI();
+    AppMethodBeat.o(117358);
     return localList;
   }
   
-  public final void dH(int paramInt1, int paramInt2)
+  public final void eG(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(90512);
-    if (((d)g.G(d.class)).getTinkerLogic() != null) {
-      ((d)g.G(d.class)).getTinkerLogic().dH(paramInt1, paramInt2);
+    AppMethodBeat.i(117357);
+    if (((d)g.ad(d.class)).getTinkerLogic() != null) {
+      ((d)g.ad(d.class)).getTinkerLogic().eG(paramInt1, paramInt2);
     }
-    AppMethodBeat.o(90512);
+    AppMethodBeat.o(117357);
   }
   
-  public final void rQ(int paramInt)
+  public final void xw(int paramInt)
   {
-    AppMethodBeat.i(90511);
-    if (((d)g.G(d.class)).getTinkerLogic() != null) {
-      ((d)g.G(d.class)).getTinkerLogic().rQ(paramInt);
+    AppMethodBeat.i(117356);
+    if (((d)g.ad(d.class)).getTinkerLogic() != null) {
+      ((d)g.ad(d.class)).getTinkerLogic().xw(paramInt);
     }
-    AppMethodBeat.o(90511);
+    AppMethodBeat.o(117356);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.boots.a
  * JD-Core Version:    0.7.0.1
  */

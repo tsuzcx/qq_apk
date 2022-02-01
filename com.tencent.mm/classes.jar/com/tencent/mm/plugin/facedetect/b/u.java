@@ -1,65 +1,65 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.agy;
-import com.tencent.mm.protocal.protobuf.agz;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.aqf;
+import com.tencent.mm.protocal.protobuf.aqg;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class u
-  extends m
+  extends n
   implements k, b
 {
-  private f callback;
-  private long mhn;
-  private byte[] mho;
-  private com.tencent.mm.ai.b rr;
+  private g callback;
+  private long pOb;
+  private byte[] pOc;
+  private com.tencent.mm.al.b rr;
   
   public u(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(109);
-    this.mhn = -1L;
-    this.mho = null;
+    AppMethodBeat.i(103634);
+    this.pOb = -1L;
+    this.pOc = null;
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new agy();
-    ((b.a)localObject).fsY = new agz();
+    ((b.a)localObject).gUU = new aqf();
+    ((b.a)localObject).gUV = new aqg();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getbioconfig";
     ((b.a)localObject).funcId = getType();
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (agy)this.rr.fsV.fta;
-    ((agy)localObject).jKs = 1;
-    ((agy)localObject).Scene = paramInt1;
-    ((agy)localObject).wZB = paramInt2;
-    ab.i("MicroMsg.NetSceneGetBioConfig", "carson logic ");
-    ab.i("MicroMsg.NetSceneGetBioConfig", "mChechLiveFlag is ".concat(String.valueOf(paramInt2)));
-    AppMethodBeat.o(109);
+    this.rr = ((b.a)localObject).atI();
+    localObject = (aqf)this.rr.gUS.gUX;
+    ((aqf)localObject).mBH = 1;
+    ((aqf)localObject).Scene = paramInt1;
+    ((aqf)localObject).Drq = paramInt2;
+    ad.i("MicroMsg.NetSceneGetBioConfig", "carson logic ");
+    ad.i("MicroMsg.NetSceneGetBioConfig", "mChechLiveFlag is ".concat(String.valueOf(paramInt2)));
+    AppMethodBeat.o(103634);
   }
   
-  public final long btW()
+  public final long cfq()
   {
-    return this.mhn;
+    return this.pOb;
   }
   
-  public final byte[] btX()
+  public final byte[] cfr()
   {
-    return this.mho;
+    return this.pOc;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(110);
-    this.callback = paramf;
+    AppMethodBeat.i(103635);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(110);
+    AppMethodBeat.o(103635);
     return i;
   }
   
@@ -70,35 +70,35 @@ public final class u
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(111);
-    paramq = (agz)((com.tencent.mm.ai.b)paramq).fsW.fta;
+    AppMethodBeat.i(103636);
+    paramq = (aqg)((com.tencent.mm.al.b)paramq).gUT.gUX;
     long l;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.mhn = paramq.wZC;
-      this.mho = paramq.wZD.pW;
-      ab.i("MicroMsg.NetSceneGetBioConfig", "carson logic ");
-      ab.i("MicroMsg.NetSceneGetBioConfig", "Config is " + this.mho);
-      l = this.mhn;
-      if (this.mho != null) {
+      this.pOb = paramq.Drr;
+      this.pOc = paramq.Drs.wA;
+      ad.i("MicroMsg.NetSceneGetBioConfig", "carson logic ");
+      ad.i("MicroMsg.NetSceneGetBioConfig", "Config is " + this.pOc);
+      l = this.pOb;
+      if (this.pOc != null) {
         break label149;
       }
     }
     label149:
-    for (paramInt1 = 0;; paramInt1 = this.mho.length)
+    for (paramInt1 = 0;; paramInt1 = this.pOc.length)
     {
-      ab.i("MicroMsg.NetSceneGetBioConfig", "hy: get bio config: bioId: %s, bioConfigSize: %d", new Object[] { Long.valueOf(l), Integer.valueOf(paramInt1) });
+      ad.i("MicroMsg.NetSceneGetBioConfig", "hy: get bio config: bioId: %s, bioConfigSize: %d", new Object[] { Long.valueOf(l), Integer.valueOf(paramInt1) });
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
-      AppMethodBeat.o(111);
+      AppMethodBeat.o(103636);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.u
  * JD-Core Version:    0.7.0.1
  */

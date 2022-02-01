@@ -20,9 +20,9 @@ public class PreferenceSmallCategory
   public PreferenceSmallCategory(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107283);
-    setLayoutResource(2130970230);
-    AppMethodBeat.o(107283);
+    AppMethodBeat.i(142663);
+    setLayoutResource(2131494857);
+    AppMethodBeat.o(142663);
   }
 }
 

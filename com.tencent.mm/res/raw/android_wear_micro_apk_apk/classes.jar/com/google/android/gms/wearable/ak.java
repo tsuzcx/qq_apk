@@ -11,9 +11,9 @@ public final class ak
   {
     int i = c.b(paramParcel);
     c.a(paramParcel, 2, paramPutDataRequest.getUri(), paramInt);
-    c.a(paramParcel, 4, paramPutDataRequest.kD());
+    c.a(paramParcel, 4, paramPutDataRequest.kM());
     c.a(paramParcel, 5, paramPutDataRequest.getData());
-    c.a(paramParcel, 6, paramPutDataRequest.kE());
+    c.a(paramParcel, 6, paramPutDataRequest.kN());
     c.v(paramParcel, i);
   }
 }

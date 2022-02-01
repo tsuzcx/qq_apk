@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/xo" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/bpn" />
+    <com.tencent.mm.plugin.finder.view.FinderViewPager android:orientation="horizontal" android:id="@id/hs4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

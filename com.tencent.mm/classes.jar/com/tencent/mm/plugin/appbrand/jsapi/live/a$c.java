@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
-import com.tencent.mm.plugin.appbrand.jsapi.ai;
+import com.tencent.mm.plugin.appbrand.jsapi.ar;
 
 final class a$c
-  extends ai
+  extends ar
 {
-  private static final int CTRL_INDEX = 369;
-  private static final String NAME = "onLivePlayerEvent";
+  private static final int CTRL_INDEX = 412;
+  private static final String NAME = "onLivePlayerNetStatus";
 }
 
 

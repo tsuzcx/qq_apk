@@ -13,16 +13,16 @@ public final class PositionFilteredDataBuffer<T>
   public PositionFilteredDataBuffer(AbstractDataBuffer<T> paramAbstractDataBuffer)
   {
     super(paramAbstractDataBuffer);
-    AppMethodBeat.i(61162);
+    AppMethodBeat.i(11654);
     this.zzoe = new HashSet();
     this.zzob = new ArrayList();
     zzcl();
-    AppMethodBeat.o(61162);
+    AppMethodBeat.o(11654);
   }
   
   private final void zzcl()
   {
-    AppMethodBeat.i(61168);
+    AppMethodBeat.i(11660);
     this.zzob.clear();
     int i = 0;
     int j = this.mDataBuffer.getCount();
@@ -33,57 +33,57 @@ public final class PositionFilteredDataBuffer<T>
       }
       i += 1;
     }
-    AppMethodBeat.o(61168);
+    AppMethodBeat.o(11660);
   }
   
   public final void clearFilters()
   {
-    AppMethodBeat.i(61167);
+    AppMethodBeat.i(11659);
     this.zzoe.clear();
     zzcl();
-    AppMethodBeat.o(61167);
+    AppMethodBeat.o(11659);
   }
   
   public final int computeRealPosition(int paramInt)
   {
-    AppMethodBeat.i(61164);
+    AppMethodBeat.i(11656);
     if ((paramInt < 0) || (paramInt >= getCount()))
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException(53 + "Position " + paramInt + " is out of bounds for this buffer");
-      AppMethodBeat.o(61164);
+      AppMethodBeat.o(11656);
       throw localIllegalArgumentException;
     }
     paramInt = ((Integer)this.zzob.get(paramInt)).intValue();
-    AppMethodBeat.o(61164);
+    AppMethodBeat.o(11656);
     return paramInt;
   }
   
   public final void filterOut(int paramInt)
   {
-    AppMethodBeat.i(61165);
+    AppMethodBeat.i(11657);
     if ((paramInt >= 0) && (paramInt <= this.mDataBuffer.getCount()))
     {
       this.zzoe.add(Integer.valueOf(paramInt));
       zzcl();
     }
-    AppMethodBeat.o(61165);
+    AppMethodBeat.o(11657);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(61163);
+    AppMethodBeat.i(11655);
     int i = this.mDataBuffer.getCount();
     int j = this.zzoe.size();
-    AppMethodBeat.o(61163);
+    AppMethodBeat.o(11655);
     return i - j;
   }
   
   public final void unfilter(int paramInt)
   {
-    AppMethodBeat.i(61166);
+    AppMethodBeat.i(11658);
     this.zzoe.remove(Integer.valueOf(paramInt));
     zzcl();
-    AppMethodBeat.o(61166);
+    AppMethodBeat.o(11658);
   }
 }
 

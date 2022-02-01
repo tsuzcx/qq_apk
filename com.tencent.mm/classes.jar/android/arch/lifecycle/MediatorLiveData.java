@@ -7,75 +7,75 @@ import java.util.Map.Entry;
 public class MediatorLiveData<T>
   extends MutableLiveData<T>
 {
-  private b<LiveData<?>, Source<?>> cW = new b();
+  private b<LiveData<?>, Source<?>> cZ = new b();
+  
+  protected final void V()
+  {
+    Iterator localIterator = this.cZ.iterator();
+    while (localIterator.hasNext()) {
+      ((Source)((Map.Entry)localIterator.next()).getValue()).aa();
+    }
+  }
   
   public <S> void addSource(LiveData<S> paramLiveData, Observer<S> paramObserver)
   {
     Source localSource = new Source(paramLiveData, paramObserver);
-    paramLiveData = (Source)this.cW.putIfAbsent(paramLiveData, localSource);
-    if ((paramLiveData != null) && (paramLiveData.cU != paramObserver)) {
+    paramLiveData = (Source)this.cZ.putIfAbsent(paramLiveData, localSource);
+    if ((paramLiveData != null) && (paramLiveData.cX != paramObserver)) {
       throw new IllegalArgumentException("This source was already added with the different observer");
     }
     if (paramLiveData != null) {}
     while (!hasActiveObservers()) {
       return;
     }
-    localSource.ar();
-  }
-  
-  protected final void an()
-  {
-    Iterator localIterator = this.cW.iterator();
-    while (localIterator.hasNext()) {
-      ((Source)((Map.Entry)localIterator.next()).getValue()).as();
-    }
+    localSource.Z();
   }
   
   protected final void onActive()
   {
-    Iterator localIterator = this.cW.iterator();
+    Iterator localIterator = this.cZ.iterator();
     while (localIterator.hasNext()) {
-      ((Source)((Map.Entry)localIterator.next()).getValue()).ar();
+      ((Source)((Map.Entry)localIterator.next()).getValue()).Z();
     }
   }
   
   public <S> void removeSource(LiveData<S> paramLiveData)
   {
-    paramLiveData = (Source)this.cW.remove(paramLiveData);
+    paramLiveData = (Source)this.cZ.remove(paramLiveData);
     if (paramLiveData != null) {
-      paramLiveData.as();
+      paramLiveData.aa();
     }
   }
   
   static class Source<V>
     implements Observer<V>
   {
-    int cO = -1;
-    final Observer<V> cU;
-    final LiveData<V> cf;
+    int cR = -1;
+    final Observer<V> cX;
+    final LiveData<V> ci;
     
     Source(LiveData<V> paramLiveData, Observer<V> paramObserver)
     {
-      this.cf = paramLiveData;
-      this.cU = paramObserver;
+      this.ci = paramLiveData;
+      this.cX = paramObserver;
     }
     
-    final void ar()
+    final void Z()
     {
-      this.cf.observeForever(this);
+      this.ci.observeForever(this);
     }
     
-    final void as()
+    final void aa()
     {
-      this.cf.removeObserver(this);
+      this.ci.removeObserver(this);
     }
     
     public void onChanged(V paramV)
     {
-      if (this.cO != this.cf.cO)
+      if (this.cR != this.ci.cR)
       {
-        this.cO = this.cf.cO;
-        this.cU.onChanged(paramV);
+        this.cR = this.ci.cR;
+        this.cX.onChanged(paramV);
       }
     }
   }

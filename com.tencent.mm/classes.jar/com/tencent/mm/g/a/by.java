@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class by
   extends b
 {
-  public by.a cpn;
+  public a dee;
   
   public by()
   {
@@ -15,16 +15,23 @@ public final class by
   
   private by(byte paramByte)
   {
-    AppMethodBeat.i(56556);
-    this.cpn = new by.a();
-    this.ymq = false;
+    AppMethodBeat.i(91200);
+    this.dee = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(56556);
+    AppMethodBeat.o(91200);
+  }
+  
+  public static final class a
+  {
+    public String deb;
+    public String dec;
+    public long ded;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.by
  * JD-Core Version:    0.7.0.1
  */

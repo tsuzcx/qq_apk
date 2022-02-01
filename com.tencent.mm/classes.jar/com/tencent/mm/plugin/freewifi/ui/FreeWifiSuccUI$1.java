@@ -11,15 +11,15 @@ final class FreeWifiSuccUI$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(21085);
-    this.mOM.finish();
-    FreeWifiSuccUI.a(this.mOM);
-    AppMethodBeat.o(21085);
+    AppMethodBeat.i(25145);
+    this.rlE.finish();
+    FreeWifiSuccUI.a(this.rlE);
+    AppMethodBeat.o(25145);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiSuccUI.1
  * JD-Core Version:    0.7.0.1
  */

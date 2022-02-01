@@ -74,7 +74,7 @@ public class GoogleSignInOptions
   
   static
   {
-    AppMethodBeat.i(60379);
+    AppMethodBeat.i(10871);
     SCOPE_PROFILE = new Scope("profile");
     SCOPE_EMAIL = new Scope("email");
     SCOPE_OPEN_ID = new Scope("openid");
@@ -84,20 +84,20 @@ public class GoogleSignInOptions
     DEFAULT_GAMES_SIGN_IN = new Builder().requestScopes(SCOPE_GAMES_LITE, new Scope[0]).build();
     CREATOR = new GoogleSignInOptionsCreator();
     zzaa = new zzb();
-    AppMethodBeat.o(60379);
+    AppMethodBeat.o(10871);
   }
   
   @SafeParcelable.Constructor
   GoogleSignInOptions(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) ArrayList<Scope> paramArrayList, @SafeParcelable.Param(id=3) Account paramAccount, @SafeParcelable.Param(id=4) boolean paramBoolean1, @SafeParcelable.Param(id=5) boolean paramBoolean2, @SafeParcelable.Param(id=6) boolean paramBoolean3, @SafeParcelable.Param(id=7) String paramString1, @SafeParcelable.Param(id=8) String paramString2, @SafeParcelable.Param(id=9) ArrayList<GoogleSignInOptionsExtensionParcelable> paramArrayList1)
   {
     this(paramInt, paramArrayList, paramAccount, paramBoolean1, paramBoolean2, paramBoolean3, paramString1, paramString2, zza(paramArrayList1));
-    AppMethodBeat.i(60366);
-    AppMethodBeat.o(60366);
+    AppMethodBeat.i(10858);
+    AppMethodBeat.o(10858);
   }
   
   private GoogleSignInOptions(int paramInt, ArrayList<Scope> paramArrayList, Account paramAccount, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString1, String paramString2, Map<Integer, GoogleSignInOptionsExtensionParcelable> paramMap)
   {
-    AppMethodBeat.i(60367);
+    AppMethodBeat.i(10859);
     this.versionCode = paramInt;
     this.zzr = paramArrayList;
     this.zzs = paramAccount;
@@ -108,15 +108,15 @@ public class GoogleSignInOptions
     this.zzx = paramString2;
     this.zzy = new ArrayList(paramMap.values());
     this.zzz = paramMap;
-    AppMethodBeat.o(60367);
+    AppMethodBeat.o(10859);
   }
   
   public static GoogleSignInOptions fromJsonString(String paramString)
   {
-    AppMethodBeat.i(60365);
+    AppMethodBeat.i(10857);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(60365);
+      AppMethodBeat.o(10857);
       return null;
     }
     JSONObject localJSONObject = new JSONObject(paramString);
@@ -134,18 +134,18 @@ public class GoogleSignInOptions
     for (paramString = new Account(paramString, "com.google");; paramString = null)
     {
       paramString = new GoogleSignInOptions(3, new ArrayList(localHashSet), paramString, localJSONObject.getBoolean("idTokenRequested"), localJSONObject.getBoolean("serverAuthRequested"), localJSONObject.getBoolean("forceCodeForRefreshToken"), localJSONObject.optString("serverClientId", null), localJSONObject.optString("hostedDomain", null), new HashMap());
-      AppMethodBeat.o(60365);
+      AppMethodBeat.o(10857);
       return paramString;
     }
   }
   
   private static Map<Integer, GoogleSignInOptionsExtensionParcelable> zza(List<GoogleSignInOptionsExtensionParcelable> paramList)
   {
-    AppMethodBeat.i(60372);
+    AppMethodBeat.i(10864);
     HashMap localHashMap = new HashMap();
     if (paramList == null)
     {
-      AppMethodBeat.o(60372);
+      AppMethodBeat.o(10864);
       return localHashMap;
     }
     paramList = paramList.iterator();
@@ -154,13 +154,13 @@ public class GoogleSignInOptions
       GoogleSignInOptionsExtensionParcelable localGoogleSignInOptionsExtensionParcelable = (GoogleSignInOptionsExtensionParcelable)paramList.next();
       localHashMap.put(Integer.valueOf(localGoogleSignInOptionsExtensionParcelable.getType()), localGoogleSignInOptionsExtensionParcelable);
     }
-    AppMethodBeat.o(60372);
+    AppMethodBeat.o(10864);
     return localHashMap;
   }
   
   private final JSONObject zza()
   {
-    AppMethodBeat.i(60377);
+    AppMethodBeat.i(10869);
     JSONObject localJSONObject = new JSONObject();
     RuntimeException localRuntimeException;
     try
@@ -181,7 +181,7 @@ public class GoogleSignInOptions
     catch (JSONException localJSONException)
     {
       localRuntimeException = new RuntimeException(localJSONException);
-      AppMethodBeat.o(60377);
+      AppMethodBeat.o(10869);
       throw localRuntimeException;
     }
     if (this.zzs != null) {
@@ -196,16 +196,16 @@ public class GoogleSignInOptions
     if (!TextUtils.isEmpty(this.zzx)) {
       localRuntimeException.put("hostedDomain", this.zzx);
     }
-    AppMethodBeat.o(60377);
+    AppMethodBeat.o(10869);
     return localRuntimeException;
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(60374);
+    AppMethodBeat.i(10866);
     if (paramObject == null)
     {
-      AppMethodBeat.o(60374);
+      AppMethodBeat.o(10866);
       return false;
     }
     try
@@ -218,7 +218,7 @@ public class GoogleSignInOptions
       }
       else
       {
-        AppMethodBeat.o(60374);
+        AppMethodBeat.o(10866);
         return false;
       }
       boolean bool;
@@ -229,7 +229,7 @@ public class GoogleSignInOptions
       }
       else
       {
-        AppMethodBeat.o(60374);
+        AppMethodBeat.o(10866);
         return false;
       }
       if (this.zzs == null)
@@ -248,7 +248,7 @@ public class GoogleSignInOptions
       {
         if ((this.zzv == paramObject.isForceCodeForRefreshToken()) && (this.zzt == paramObject.isIdTokenRequested()) && (this.zzu == paramObject.isServerAuthCodeRequested()))
         {
-          AppMethodBeat.o(60374);
+          AppMethodBeat.o(10866);
           return true;
           bool = this.zzs.equals(paramObject.getAccount());
           if (bool) {
@@ -259,7 +259,7 @@ public class GoogleSignInOptions
         label193:
         do
         {
-          AppMethodBeat.o(60374);
+          AppMethodBeat.o(10866);
           return false;
           bool = this.zzw.equals(paramObject.getServerClientId());
         } while (!bool);
@@ -268,7 +268,7 @@ public class GoogleSignInOptions
     }
     catch (ClassCastException paramObject)
     {
-      AppMethodBeat.o(60374);
+      AppMethodBeat.o(10866);
     }
   }
   
@@ -279,9 +279,9 @@ public class GoogleSignInOptions
   
   public GoogleSignInOptionsExtensionParcelable getExtension(@GoogleSignInOptionsExtension.TypeId int paramInt)
   {
-    AppMethodBeat.i(60371);
+    AppMethodBeat.i(10863);
     GoogleSignInOptionsExtensionParcelable localGoogleSignInOptionsExtensionParcelable = (GoogleSignInOptionsExtensionParcelable)this.zzz.get(Integer.valueOf(paramInt));
-    AppMethodBeat.o(60371);
+    AppMethodBeat.o(10863);
     return localGoogleSignInOptionsExtensionParcelable;
   }
   
@@ -297,17 +297,17 @@ public class GoogleSignInOptions
   
   public Scope[] getScopeArray()
   {
-    AppMethodBeat.i(60369);
+    AppMethodBeat.i(10861);
     Scope[] arrayOfScope = (Scope[])this.zzr.toArray(new Scope[this.zzr.size()]);
-    AppMethodBeat.o(60369);
+    AppMethodBeat.o(10861);
     return arrayOfScope;
   }
   
   public ArrayList<Scope> getScopes()
   {
-    AppMethodBeat.i(60368);
+    AppMethodBeat.i(10860);
     ArrayList localArrayList = new ArrayList(this.zzr);
-    AppMethodBeat.o(60368);
+    AppMethodBeat.o(10860);
     return localArrayList;
   }
   
@@ -318,15 +318,15 @@ public class GoogleSignInOptions
   
   public boolean hasExtension(@GoogleSignInOptionsExtension.TypeId int paramInt)
   {
-    AppMethodBeat.i(60370);
+    AppMethodBeat.i(10862);
     boolean bool = this.zzz.containsKey(Integer.valueOf(paramInt));
-    AppMethodBeat.o(60370);
+    AppMethodBeat.o(10862);
     return bool;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(60375);
+    AppMethodBeat.i(10867);
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = (ArrayList)this.zzr;
     int j = localArrayList2.size();
@@ -339,7 +339,7 @@ public class GoogleSignInOptions
     }
     Collections.sort(localArrayList1);
     i = new HashAccumulator().addObject(localArrayList1).addObject(this.zzs).addObject(this.zzw).addBoolean(this.zzv).addBoolean(this.zzt).addBoolean(this.zzu).hash();
-    AppMethodBeat.o(60375);
+    AppMethodBeat.o(10867);
     return i;
   }
   
@@ -360,15 +360,15 @@ public class GoogleSignInOptions
   
   public String toJson()
   {
-    AppMethodBeat.i(60376);
+    AppMethodBeat.i(10868);
     String str = zza().toString();
-    AppMethodBeat.o(60376);
+    AppMethodBeat.o(10868);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(60373);
+    AppMethodBeat.i(10865);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.versionCode);
     SafeParcelWriter.writeTypedList(paramParcel, 2, getScopes(), false);
@@ -380,7 +380,7 @@ public class GoogleSignInOptions
     SafeParcelWriter.writeString(paramParcel, 8, getHostedDomain(), false);
     SafeParcelWriter.writeTypedList(paramParcel, 9, getExtensions(), false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(60373);
+    AppMethodBeat.o(10865);
   }
   
   public static final class Builder
@@ -396,15 +396,15 @@ public class GoogleSignInOptions
     
     public Builder()
     {
-      AppMethodBeat.i(60349);
+      AppMethodBeat.i(10841);
       this.mScopes = new HashSet();
       this.zzab = new HashMap();
-      AppMethodBeat.o(60349);
+      AppMethodBeat.o(10841);
     }
     
     public Builder(GoogleSignInOptions paramGoogleSignInOptions)
     {
-      AppMethodBeat.i(60350);
+      AppMethodBeat.i(10842);
       this.mScopes = new HashSet();
       this.zzab = new HashMap();
       Preconditions.checkNotNull(paramGoogleSignInOptions);
@@ -416,42 +416,42 @@ public class GoogleSignInOptions
       this.zzs = GoogleSignInOptions.zzf(paramGoogleSignInOptions);
       this.zzx = GoogleSignInOptions.zzg(paramGoogleSignInOptions);
       this.zzab = GoogleSignInOptions.zzb(GoogleSignInOptions.zzh(paramGoogleSignInOptions));
-      AppMethodBeat.o(60350);
+      AppMethodBeat.o(10842);
     }
     
     private final String zza(String paramString)
     {
-      AppMethodBeat.i(60364);
+      AppMethodBeat.i(10856);
       Preconditions.checkNotEmpty(paramString);
       if ((this.zzw == null) || (this.zzw.equals(paramString))) {}
       for (boolean bool = true;; bool = false)
       {
         Preconditions.checkArgument(bool, "two different server client ids provided");
-        AppMethodBeat.o(60364);
+        AppMethodBeat.o(10856);
         return paramString;
       }
     }
     
     public final Builder addExtension(GoogleSignInOptionsExtension paramGoogleSignInOptionsExtension)
     {
-      AppMethodBeat.i(60362);
+      AppMethodBeat.i(10854);
       if (this.zzab.containsKey(Integer.valueOf(paramGoogleSignInOptionsExtension.getExtensionType())))
       {
         paramGoogleSignInOptionsExtension = new IllegalStateException("Only one extension per type may be added");
-        AppMethodBeat.o(60362);
+        AppMethodBeat.o(10854);
         throw paramGoogleSignInOptionsExtension;
       }
       if (paramGoogleSignInOptionsExtension.getImpliedScopes() != null) {
         this.mScopes.addAll(paramGoogleSignInOptionsExtension.getImpliedScopes());
       }
       this.zzab.put(Integer.valueOf(paramGoogleSignInOptionsExtension.getExtensionType()), new GoogleSignInOptionsExtensionParcelable(paramGoogleSignInOptionsExtension));
-      AppMethodBeat.o(60362);
+      AppMethodBeat.o(10854);
       return this;
     }
     
     public final GoogleSignInOptions build()
     {
-      AppMethodBeat.i(60363);
+      AppMethodBeat.i(10855);
       if ((this.mScopes.contains(GoogleSignInOptions.SCOPE_GAMES)) && (this.mScopes.contains(GoogleSignInOptions.SCOPE_GAMES_LITE))) {
         this.mScopes.remove(GoogleSignInOptions.SCOPE_GAMES_LITE);
       }
@@ -459,99 +459,99 @@ public class GoogleSignInOptions
         requestId();
       }
       GoogleSignInOptions localGoogleSignInOptions = new GoogleSignInOptions(3, new ArrayList(this.mScopes), this.zzs, this.zzt, this.zzu, this.zzv, this.zzw, this.zzx, this.zzab, null);
-      AppMethodBeat.o(60363);
+      AppMethodBeat.o(10855);
       return localGoogleSignInOptions;
     }
     
     public final Builder requestEmail()
     {
-      AppMethodBeat.i(60352);
+      AppMethodBeat.i(10844);
       this.mScopes.add(GoogleSignInOptions.SCOPE_EMAIL);
-      AppMethodBeat.o(60352);
+      AppMethodBeat.o(10844);
       return this;
     }
     
     public final Builder requestId()
     {
-      AppMethodBeat.i(60351);
+      AppMethodBeat.i(10843);
       this.mScopes.add(GoogleSignInOptions.SCOPE_OPEN_ID);
-      AppMethodBeat.o(60351);
+      AppMethodBeat.o(10843);
       return this;
     }
     
     public final Builder requestIdToken(String paramString)
     {
-      AppMethodBeat.i(60355);
+      AppMethodBeat.i(10847);
       this.zzt = true;
       this.zzw = zza(paramString);
-      AppMethodBeat.o(60355);
+      AppMethodBeat.o(10847);
       return this;
     }
     
     public final Builder requestPhatIdToken(String paramString)
     {
-      AppMethodBeat.i(60356);
+      AppMethodBeat.i(10848);
       paramString = requestIdToken(paramString).requestProfile().requestEmail();
-      AppMethodBeat.o(60356);
+      AppMethodBeat.o(10848);
       return paramString;
     }
     
     public final Builder requestProfile()
     {
-      AppMethodBeat.i(60353);
+      AppMethodBeat.i(10845);
       this.mScopes.add(GoogleSignInOptions.SCOPE_PROFILE);
-      AppMethodBeat.o(60353);
+      AppMethodBeat.o(10845);
       return this;
     }
     
     public final Builder requestScopes(Scope paramScope, Scope... paramVarArgs)
     {
-      AppMethodBeat.i(60354);
+      AppMethodBeat.i(10846);
       this.mScopes.add(paramScope);
       this.mScopes.addAll(Arrays.asList(paramVarArgs));
-      AppMethodBeat.o(60354);
+      AppMethodBeat.o(10846);
       return this;
     }
     
     public final Builder requestServerAuthCode(String paramString)
     {
-      AppMethodBeat.i(60357);
+      AppMethodBeat.i(10849);
       paramString = requestServerAuthCode(paramString, false);
-      AppMethodBeat.o(60357);
+      AppMethodBeat.o(10849);
       return paramString;
     }
     
     public final Builder requestServerAuthCode(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(60358);
+      AppMethodBeat.i(10850);
       this.zzu = true;
       this.zzw = zza(paramString);
       this.zzv = paramBoolean;
-      AppMethodBeat.o(60358);
+      AppMethodBeat.o(10850);
       return this;
     }
     
     public final Builder setAccount(Account paramAccount)
     {
-      AppMethodBeat.i(60360);
+      AppMethodBeat.i(10852);
       this.zzs = ((Account)Preconditions.checkNotNull(paramAccount));
-      AppMethodBeat.o(60360);
+      AppMethodBeat.o(10852);
       return this;
     }
     
     public final Builder setAccountName(String paramString)
     {
-      AppMethodBeat.i(60359);
+      AppMethodBeat.i(10851);
       this.zzs = new Account(Preconditions.checkNotEmpty(paramString), "com.google");
-      AppMethodBeat.o(60359);
+      AppMethodBeat.o(10851);
       return this;
     }
     
     public final Builder setHostedDomain(String paramString)
     {
-      AppMethodBeat.i(60361);
+      AppMethodBeat.i(10853);
       this.zzx = Preconditions.checkNotEmpty(paramString);
-      AppMethodBeat.o(60361);
+      AppMethodBeat.o(10853);
       return this;
     }
   }

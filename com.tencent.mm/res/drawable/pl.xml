@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<animated-selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@raw/friendactivity_comment_icon_pressed" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@raw/friendactivity_comment_icon_pressed" />
-    <item android:state_focused="false" android:drawable="@raw/friendactivity_comment_icon_normal" />
-</selector>
+    <item android:state_checked="true" android:id="@id/gpo" android:drawable="@drawable/am9" />
+    <item android:id="@id/dl3" android:drawable="@drawable/am_" />
+    <transition android:drawable="@drawable/e0" android:toId="@id/gpo" android:fromId="@id/dl3" />
+    <transition android:drawable="@drawable/dz" android:toId="@id/dl3" android:fromId="@id/gpo" />
+</animated-selector>

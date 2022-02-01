@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class la
   extends b
 {
-  public la.a cBj;
+  public a dps;
   
   public la()
   {
@@ -15,16 +15,23 @@ public final class la
   
   private la(byte paramByte)
   {
-    AppMethodBeat.i(70198);
-    this.cBj = new la.a();
-    this.ymq = false;
+    AppMethodBeat.i(19819);
+    this.dps = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70198);
+    AppMethodBeat.o(19819);
+  }
+  
+  public static final class a
+  {
+    public boolean cHI;
+    public long dpt;
+    public long progress;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.la
  * JD-Core Version:    0.7.0.1
  */

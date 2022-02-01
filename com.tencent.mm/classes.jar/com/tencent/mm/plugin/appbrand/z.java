@@ -4,26 +4,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.f;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
+import org.json.JSONObject;
 
 final class z
   implements f
 {
-  public final e d(c paramc)
+  public final e c(c paramc, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(86790);
+    AppMethodBeat.i(134624);
     if ((paramc instanceof e))
     {
       paramc = (e)paramc;
-      AppMethodBeat.o(86790);
+      AppMethodBeat.o(134624);
       return paramc;
     }
-    if ((paramc instanceof r))
+    if ((paramc instanceof q))
     {
-      paramc = ((r)paramc).getCurrentPageView();
-      AppMethodBeat.o(86790);
+      paramc = ((q)paramc).getCurrentPageView();
+      AppMethodBeat.o(134624);
       return paramc;
     }
-    AppMethodBeat.o(86790);
+    AppMethodBeat.o(134624);
     return null;
   }
 }

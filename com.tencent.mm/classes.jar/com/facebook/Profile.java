@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.facebook.internal.ImageRequest;
 import com.facebook.internal.Utility;
+import com.facebook.internal.Utility.GraphMeRequestWithCacheCallback;
 import com.facebook.internal.Validate;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONException;
@@ -31,15 +32,29 @@ public final class Profile
   
   static
   {
-    AppMethodBeat.i(71820);
+    AppMethodBeat.i(17256);
     TAG = Profile.class.getSimpleName();
-    CREATOR = new Profile.2();
-    AppMethodBeat.o(71820);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final Profile createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(17242);
+        paramAnonymousParcel = new Profile(paramAnonymousParcel, null);
+        AppMethodBeat.o(17242);
+        return paramAnonymousParcel;
+      }
+      
+      public final Profile[] newArray(int paramAnonymousInt)
+      {
+        return new Profile[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(17256);
   }
   
   private Profile(Parcel paramParcel)
   {
-    AppMethodBeat.i(71818);
+    AppMethodBeat.i(17254);
     this.id = paramParcel.readString();
     this.firstName = paramParcel.readString();
     this.middleName = paramParcel.readString();
@@ -50,14 +65,14 @@ public final class Profile
     for (paramParcel = null;; paramParcel = Uri.parse(paramParcel))
     {
       this.linkUri = paramParcel;
-      AppMethodBeat.o(71818);
+      AppMethodBeat.o(17254);
       return;
     }
   }
   
   public Profile(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Uri paramUri)
   {
-    AppMethodBeat.i(71812);
+    AppMethodBeat.i(17248);
     Validate.notNullOrEmpty(paramString1, "id");
     this.id = paramString1;
     this.firstName = paramString2;
@@ -65,12 +80,12 @@ public final class Profile
     this.lastName = paramString4;
     this.name = paramString5;
     this.linkUri = paramUri;
-    AppMethodBeat.o(71812);
+    AppMethodBeat.o(17248);
   }
   
   Profile(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(71817);
+    AppMethodBeat.i(17253);
     this.id = paramJSONObject.optString("id", null);
     this.firstName = paramJSONObject.optString("first_name", null);
     this.middleName = paramJSONObject.optString("middle_name", null);
@@ -81,38 +96,69 @@ public final class Profile
     for (paramJSONObject = localObject;; paramJSONObject = Uri.parse(paramJSONObject))
     {
       this.linkUri = paramJSONObject;
-      AppMethodBeat.o(71817);
+      AppMethodBeat.o(17253);
       return;
     }
   }
   
   public static void fetchProfileForCurrentAccessToken()
   {
-    AppMethodBeat.i(71811);
+    AppMethodBeat.i(17247);
     AccessToken localAccessToken = AccessToken.getCurrentAccessToken();
     if (!AccessToken.isCurrentAccessTokenActive())
     {
       setCurrentProfile(null);
-      AppMethodBeat.o(71811);
+      AppMethodBeat.o(17247);
       return;
     }
-    Utility.getGraphMeRequestWithCacheAsync(localAccessToken.getToken(), new Profile.1());
-    AppMethodBeat.o(71811);
+    Utility.getGraphMeRequestWithCacheAsync(localAccessToken.getToken(), new Utility.GraphMeRequestWithCacheCallback()
+    {
+      public final void onFailure(FacebookException paramAnonymousFacebookException)
+      {
+        AppMethodBeat.i(17241);
+        new StringBuilder("Got unexpected exception: ").append(paramAnonymousFacebookException);
+        AppMethodBeat.o(17241);
+      }
+      
+      public final void onSuccess(JSONObject paramAnonymousJSONObject)
+      {
+        AppMethodBeat.i(17240);
+        String str1 = paramAnonymousJSONObject.optString("id");
+        if (str1 == null)
+        {
+          AppMethodBeat.o(17240);
+          return;
+        }
+        String str6 = paramAnonymousJSONObject.optString("link");
+        String str2 = paramAnonymousJSONObject.optString("first_name");
+        String str3 = paramAnonymousJSONObject.optString("middle_name");
+        String str4 = paramAnonymousJSONObject.optString("last_name");
+        String str5 = paramAnonymousJSONObject.optString("name");
+        if (str6 != null) {}
+        for (paramAnonymousJSONObject = Uri.parse(str6);; paramAnonymousJSONObject = null)
+        {
+          Profile.setCurrentProfile(new Profile(str1, str2, str3, str4, str5, paramAnonymousJSONObject));
+          AppMethodBeat.o(17240);
+          return;
+        }
+      }
+    });
+    AppMethodBeat.o(17247);
   }
   
   public static Profile getCurrentProfile()
   {
-    AppMethodBeat.i(71809);
+    AppMethodBeat.i(17245);
     Profile localProfile = ProfileManager.getInstance().getCurrentProfile();
-    AppMethodBeat.o(71809);
+    AppMethodBeat.o(17245);
     return localProfile;
   }
   
   public static void setCurrentProfile(Profile paramProfile)
   {
-    AppMethodBeat.i(71810);
+    AppMethodBeat.i(17246);
     ProfileManager.getInstance().setCurrentProfile(paramProfile);
-    AppMethodBeat.o(71810);
+    AppMethodBeat.o(17246);
   }
   
   public final int describeContents()
@@ -122,15 +168,15 @@ public final class Profile
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(71814);
+    AppMethodBeat.i(17250);
     if (this == paramObject)
     {
-      AppMethodBeat.o(71814);
+      AppMethodBeat.o(17250);
       return true;
     }
     if (!(paramObject instanceof Profile))
     {
-      AppMethodBeat.o(71814);
+      AppMethodBeat.o(17250);
       return false;
     }
     paramObject = (Profile)paramObject;
@@ -138,54 +184,54 @@ public final class Profile
     {
       if (paramObject.firstName == null)
       {
-        AppMethodBeat.o(71814);
+        AppMethodBeat.o(17250);
         return true;
       }
-      AppMethodBeat.o(71814);
+      AppMethodBeat.o(17250);
       return false;
     }
     if ((this.firstName.equals(paramObject.firstName)) && (this.middleName == null))
     {
       if (paramObject.middleName == null)
       {
-        AppMethodBeat.o(71814);
+        AppMethodBeat.o(17250);
         return true;
       }
-      AppMethodBeat.o(71814);
+      AppMethodBeat.o(17250);
       return false;
     }
     if ((this.middleName.equals(paramObject.middleName)) && (this.lastName == null))
     {
       if (paramObject.lastName == null)
       {
-        AppMethodBeat.o(71814);
+        AppMethodBeat.o(17250);
         return true;
       }
-      AppMethodBeat.o(71814);
+      AppMethodBeat.o(17250);
       return false;
     }
     if ((this.lastName.equals(paramObject.lastName)) && (this.name == null))
     {
       if (paramObject.name == null)
       {
-        AppMethodBeat.o(71814);
+        AppMethodBeat.o(17250);
         return true;
       }
-      AppMethodBeat.o(71814);
+      AppMethodBeat.o(17250);
       return false;
     }
     if ((this.name.equals(paramObject.name)) && (this.linkUri == null))
     {
       if (paramObject.linkUri == null)
       {
-        AppMethodBeat.o(71814);
+        AppMethodBeat.o(17250);
         return true;
       }
-      AppMethodBeat.o(71814);
+      AppMethodBeat.o(17250);
       return false;
     }
     boolean bool = this.linkUri.equals(paramObject.linkUri);
-    AppMethodBeat.o(71814);
+    AppMethodBeat.o(17250);
     return bool;
   }
   
@@ -221,15 +267,15 @@ public final class Profile
   
   public final Uri getProfilePictureUri(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(71813);
+    AppMethodBeat.i(17249);
     Uri localUri = ImageRequest.getProfilePictureUri(this.id, paramInt1, paramInt2);
-    AppMethodBeat.o(71813);
+    AppMethodBeat.o(17249);
     return localUri;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(71815);
+    AppMethodBeat.i(17251);
     int j = this.id.hashCode() + 527;
     int i = j;
     if (this.firstName != null) {
@@ -251,13 +297,13 @@ public final class Profile
     if (this.linkUri != null) {
       i = j * 31 + this.linkUri.hashCode();
     }
-    AppMethodBeat.o(71815);
+    AppMethodBeat.o(17251);
     return i;
   }
   
   final JSONObject toJSONObject()
   {
-    AppMethodBeat.i(71816);
+    AppMethodBeat.i(17252);
     JSONObject localJSONObject2 = new JSONObject();
     try
     {
@@ -281,13 +327,13 @@ public final class Profile
         Object localObject = null;
       }
     }
-    AppMethodBeat.o(71816);
+    AppMethodBeat.o(17252);
     return localJSONObject1;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(71819);
+    AppMethodBeat.i(17255);
     paramParcel.writeString(this.id);
     paramParcel.writeString(this.firstName);
     paramParcel.writeString(this.middleName);
@@ -297,14 +343,14 @@ public final class Profile
     for (String str = null;; str = this.linkUri.toString())
     {
       paramParcel.writeString(str);
-      AppMethodBeat.o(71819);
+      AppMethodBeat.o(17255);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.Profile
  * JD-Core Version:    0.7.0.1
  */

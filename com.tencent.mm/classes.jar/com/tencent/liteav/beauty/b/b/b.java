@@ -16,40 +16,40 @@ public class b
   public b()
   {
     super("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n \nvarying vec2 textureCoordinate;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n}", "varying lowp vec2 textureCoordinate;\n \nuniform sampler2D inputImageTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}");
-    AppMethodBeat.i(67007);
+    AppMethodBeat.i(15012);
     this.r = -1;
     this.s = -1;
     this.t = new float[4];
     this.u = "Beauty3Filter";
-    AppMethodBeat.o(67007);
+    AppMethodBeat.o(15012);
   }
   
   private void b(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(67015);
+    AppMethodBeat.i(15020);
     c(this.s, paramArrayOfFloat);
-    AppMethodBeat.o(67015);
+    AppMethodBeat.o(15020);
   }
   
   public void a(float paramFloat)
   {
-    AppMethodBeat.i(67012);
+    AppMethodBeat.i(15017);
     this.t[0] = paramFloat;
     b(this.t);
-    AppMethodBeat.o(67012);
+    AppMethodBeat.o(15017);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(67011);
+    AppMethodBeat.i(15016);
     super.a(paramInt1, paramInt2);
     c(paramInt1, paramInt2);
-    AppMethodBeat.o(67011);
+    AppMethodBeat.o(15016);
   }
   
   public boolean a()
   {
-    AppMethodBeat.i(67008);
+    AppMethodBeat.i(15013);
     NativeLoad.getInstance();
     this.a = NativeLoad.nativeLoadGLProgram(14);
     if ((this.a != 0) && (b())) {}
@@ -57,43 +57,43 @@ public class b
     {
       c();
       boolean bool = this.g;
-      AppMethodBeat.o(67008);
+      AppMethodBeat.o(15013);
       return bool;
     }
   }
   
   public void b(float paramFloat)
   {
-    AppMethodBeat.i(67013);
+    AppMethodBeat.i(15018);
     this.t[1] = paramFloat;
     b(this.t);
-    AppMethodBeat.o(67013);
+    AppMethodBeat.o(15018);
   }
   
   public boolean b()
   {
-    AppMethodBeat.i(67009);
+    AppMethodBeat.i(15014);
     boolean bool = super.b();
     this.r = GLES20.glGetUniformLocation(p(), "singleStepOffset");
     this.s = GLES20.glGetUniformLocation(p(), "beautyParams");
     a(5.0F);
-    AppMethodBeat.o(67009);
+    AppMethodBeat.o(15014);
     return bool;
   }
   
   public void c(float paramFloat)
   {
-    AppMethodBeat.i(67014);
+    AppMethodBeat.i(15019);
     this.t[2] = paramFloat;
     b(this.t);
-    AppMethodBeat.o(67014);
+    AppMethodBeat.o(15019);
   }
   
   public void c(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(146362);
+    AppMethodBeat.i(15015);
     a(this.r, new float[] { 2.0F / paramInt1, 2.0F / paramInt2 });
-    AppMethodBeat.o(146362);
+    AppMethodBeat.o(15015);
   }
 }
 

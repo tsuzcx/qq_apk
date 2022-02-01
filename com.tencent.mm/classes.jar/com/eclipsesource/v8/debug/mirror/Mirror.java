@@ -21,234 +21,234 @@ public class Mirror
   
   Mirror(V8Object paramV8Object)
   {
-    AppMethodBeat.i(74870);
+    AppMethodBeat.i(61493);
     this.v8Object = paramV8Object.twin();
-    AppMethodBeat.o(74870);
+    AppMethodBeat.o(61493);
   }
   
   protected static ValueMirror createMirror(V8Object paramV8Object)
   {
-    AppMethodBeat.i(74882);
+    AppMethodBeat.i(61505);
     if (isNull(paramV8Object))
     {
       paramV8Object = new NullMirror(paramV8Object);
-      AppMethodBeat.o(74882);
+      AppMethodBeat.o(61505);
       return paramV8Object;
     }
     if (isUndefined(paramV8Object))
     {
       paramV8Object = new UndefinedMirror(paramV8Object);
-      AppMethodBeat.o(74882);
+      AppMethodBeat.o(61505);
       return paramV8Object;
     }
     if (isFunction(paramV8Object))
     {
       paramV8Object = new FunctionMirror(paramV8Object);
-      AppMethodBeat.o(74882);
+      AppMethodBeat.o(61505);
       return paramV8Object;
     }
     if (isArray(paramV8Object))
     {
       paramV8Object = new ArrayMirror(paramV8Object);
-      AppMethodBeat.o(74882);
+      AppMethodBeat.o(61505);
       return paramV8Object;
     }
     if (isObject(paramV8Object))
     {
       paramV8Object = new ObjectMirror(paramV8Object);
-      AppMethodBeat.o(74882);
+      AppMethodBeat.o(61505);
       return paramV8Object;
     }
     if (isString(paramV8Object))
     {
       paramV8Object = new StringMirror(paramV8Object);
-      AppMethodBeat.o(74882);
+      AppMethodBeat.o(61505);
       return paramV8Object;
     }
     if (isNumber(paramV8Object))
     {
       paramV8Object = new NumberMirror(paramV8Object);
-      AppMethodBeat.o(74882);
+      AppMethodBeat.o(61505);
       return paramV8Object;
     }
     if (isBoolean(paramV8Object))
     {
       paramV8Object = new BooleanMirror(paramV8Object);
-      AppMethodBeat.o(74882);
+      AppMethodBeat.o(61505);
       return paramV8Object;
     }
     paramV8Object = new ValueMirror(paramV8Object);
-    AppMethodBeat.o(74882);
+    AppMethodBeat.o(61505);
     return paramV8Object;
   }
   
   private static boolean isArray(V8Object paramV8Object)
   {
-    AppMethodBeat.i(74878);
+    AppMethodBeat.i(61501);
     try
     {
       boolean bool = paramV8Object.executeBooleanFunction("isArray", null);
-      AppMethodBeat.o(74878);
+      AppMethodBeat.o(61501);
       return bool;
     }
     catch (V8ResultUndefined paramV8Object)
     {
-      AppMethodBeat.o(74878);
+      AppMethodBeat.o(61501);
     }
     return false;
   }
   
   private static boolean isBoolean(V8Object paramV8Object)
   {
-    AppMethodBeat.i(74876);
+    AppMethodBeat.i(61499);
     try
     {
       boolean bool = paramV8Object.executeBooleanFunction("isBoolean", null);
-      AppMethodBeat.o(74876);
+      AppMethodBeat.o(61499);
       return bool;
     }
     catch (V8ResultUndefined paramV8Object)
     {
-      AppMethodBeat.o(74876);
+      AppMethodBeat.o(61499);
     }
     return false;
   }
   
   private static boolean isFunction(V8Object paramV8Object)
   {
-    AppMethodBeat.i(74877);
+    AppMethodBeat.i(61500);
     try
     {
       boolean bool = paramV8Object.executeBooleanFunction("isFunction", null);
-      AppMethodBeat.o(74877);
+      AppMethodBeat.o(61500);
       return bool;
     }
     catch (V8ResultUndefined paramV8Object)
     {
-      AppMethodBeat.o(74877);
+      AppMethodBeat.o(61500);
     }
     return false;
   }
   
   private static boolean isNull(V8Object paramV8Object)
   {
-    AppMethodBeat.i(74881);
+    AppMethodBeat.i(61504);
     try
     {
       boolean bool = paramV8Object.executeBooleanFunction("isNull", null);
-      AppMethodBeat.o(74881);
+      AppMethodBeat.o(61504);
       return bool;
     }
     catch (V8ResultUndefined paramV8Object)
     {
-      AppMethodBeat.o(74881);
+      AppMethodBeat.o(61504);
     }
     return false;
   }
   
   private static boolean isNumber(V8Object paramV8Object)
   {
-    AppMethodBeat.i(74875);
+    AppMethodBeat.i(61498);
     try
     {
       boolean bool = paramV8Object.executeBooleanFunction("isNumber", null);
-      AppMethodBeat.o(74875);
+      AppMethodBeat.o(61498);
       return bool;
     }
     catch (V8ResultUndefined paramV8Object)
     {
-      AppMethodBeat.o(74875);
+      AppMethodBeat.o(61498);
     }
     return false;
   }
   
   private static boolean isObject(V8Object paramV8Object)
   {
-    AppMethodBeat.i(74874);
+    AppMethodBeat.i(61497);
     try
     {
       boolean bool = paramV8Object.executeBooleanFunction("isObject", null);
-      AppMethodBeat.o(74874);
+      AppMethodBeat.o(61497);
       return bool;
     }
     catch (V8ResultUndefined paramV8Object)
     {
-      AppMethodBeat.o(74874);
+      AppMethodBeat.o(61497);
     }
     return false;
   }
   
   private static boolean isString(V8Object paramV8Object)
   {
-    AppMethodBeat.i(74879);
+    AppMethodBeat.i(61502);
     try
     {
       boolean bool = paramV8Object.executeBooleanFunction("isString", null);
-      AppMethodBeat.o(74879);
+      AppMethodBeat.o(61502);
       return bool;
     }
     catch (V8ResultUndefined paramV8Object)
     {
-      AppMethodBeat.o(74879);
+      AppMethodBeat.o(61502);
     }
     return false;
   }
   
   private static boolean isUndefined(V8Object paramV8Object)
   {
-    AppMethodBeat.i(74880);
+    AppMethodBeat.i(61503);
     try
     {
       boolean bool = paramV8Object.executeBooleanFunction("isUndefined", null);
-      AppMethodBeat.o(74880);
+      AppMethodBeat.o(61503);
       return bool;
     }
     catch (V8ResultUndefined paramV8Object)
     {
-      AppMethodBeat.o(74880);
+      AppMethodBeat.o(61503);
     }
     return false;
   }
   
   protected static boolean isValue(V8Object paramV8Object)
   {
-    AppMethodBeat.i(74873);
+    AppMethodBeat.i(61496);
     try
     {
       boolean bool = paramV8Object.executeBooleanFunction("isValue", null);
-      AppMethodBeat.o(74873);
+      AppMethodBeat.o(61496);
       return bool;
     }
     catch (V8ResultUndefined paramV8Object)
     {
-      AppMethodBeat.o(74873);
+      AppMethodBeat.o(61496);
     }
     return false;
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(74884);
+    AppMethodBeat.i(61507);
     if (paramObject == null)
     {
-      AppMethodBeat.o(74884);
+      AppMethodBeat.o(61507);
       return false;
     }
     if (!(paramObject instanceof Mirror))
     {
-      AppMethodBeat.o(74884);
+      AppMethodBeat.o(61507);
       return false;
     }
     boolean bool = this.v8Object.equals(((Mirror)paramObject).v8Object);
-    AppMethodBeat.o(74884);
+    AppMethodBeat.o(61507);
     return bool;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(74885);
+    AppMethodBeat.i(61508);
     int i = this.v8Object.hashCode();
-    AppMethodBeat.o(74885);
+    AppMethodBeat.o(61508);
     return i;
   }
   
@@ -299,9 +299,9 @@ public class Mirror
   
   public boolean isUndefined()
   {
-    AppMethodBeat.i(74871);
+    AppMethodBeat.i(61494);
     boolean bool = this.v8Object.executeBooleanFunction("isUndefined", null);
-    AppMethodBeat.o(74871);
+    AppMethodBeat.o(61494);
     return bool;
   }
   
@@ -312,26 +312,26 @@ public class Mirror
   
   public void release()
   {
-    AppMethodBeat.i(74872);
+    AppMethodBeat.i(61495);
     if ((this.v8Object != null) && (!this.v8Object.isReleased()))
     {
       this.v8Object.release();
       this.v8Object = null;
     }
-    AppMethodBeat.o(74872);
+    AppMethodBeat.o(61495);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(74883);
+    AppMethodBeat.i(61506);
     String str = this.v8Object.toString();
-    AppMethodBeat.o(74883);
+    AppMethodBeat.o(61506);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.debug.mirror.Mirror
  * JD-Core Version:    0.7.0.1
  */

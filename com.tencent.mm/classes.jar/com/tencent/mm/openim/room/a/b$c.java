@@ -1,55 +1,55 @@
 package com.tencent.mm.openim.room.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bib;
-import com.tencent.mm.protocal.protobuf.bic;
-import com.tencent.mm.protocal.protobuf.rd;
-import com.tencent.mm.storage.ad;
+import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.protocal.protobuf.bvl;
+import com.tencent.mm.protocal.protobuf.tr;
+import com.tencent.mm.storage.af;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b$c
 {
-  public static ad a(ad paramad, bib parambib)
+  public static af a(af paramaf, bvk parambvk)
   {
-    AppMethodBeat.i(78978);
-    paramad.setUsername(parambib.userName);
-    paramad.jp(parambib.blZ);
-    AppMethodBeat.o(78978);
-    return paramad;
+    AppMethodBeat.i(151322);
+    paramaf.setUsername(parambvk.userName);
+    paramaf.nd(parambvk.bNK);
+    AppMethodBeat.o(151322);
+    return paramaf;
   }
   
-  public static LinkedList<rd> am(List<bic> paramList)
+  public static LinkedList<tr> aH(List<bvl> paramList)
   {
-    AppMethodBeat.i(78979);
+    AppMethodBeat.i(151323);
     LinkedList localLinkedList = new LinkedList();
     if (paramList == null)
     {
-      AppMethodBeat.o(78979);
+      AppMethodBeat.o(151323);
       return localLinkedList;
     }
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      bic localbic = (bic)paramList.next();
-      rd localrd = new rd();
-      localrd.jJA = localbic.userName;
-      localrd.jKG = localbic.blZ;
-      localrd.wJp = localbic.elx;
-      localrd.wJq = localbic.wOA;
-      localrd.wJr = localbic.wOB;
-      localrd.wJs = localbic.xxl;
-      localrd.wJt = localbic.xxn;
-      localLinkedList.add(localrd);
+      bvl localbvl = (bvl)paramList.next();
+      tr localtr = new tr();
+      localtr.mAQ = localbvl.userName;
+      localtr.mBV = localbvl.bNK;
+      localtr.CVu = localbvl.fyo;
+      localtr.CVv = localbvl.Dbg;
+      localtr.CVw = localbvl.Dbh;
+      localtr.CVx = localbvl.DSJ;
+      localtr.CVy = localbvl.DSL;
+      localLinkedList.add(localtr);
     }
-    AppMethodBeat.o(78979);
+    AppMethodBeat.o(151323);
     return localLinkedList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.room.a.b.c
  * JD-Core Version:    0.7.0.1
  */

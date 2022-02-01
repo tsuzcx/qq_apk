@@ -1,346 +1,233 @@
 package com.tencent.mm.plugin.fingerprint.b;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.ac;
-import com.tencent.mm.compatible.e.t;
-import com.tencent.mm.g.a.ma;
-import com.tencent.mm.g.a.ma.a;
-import com.tencent.mm.g.a.ma.b;
-import com.tencent.mm.plugin.fingerprint.c.c;
-import com.tencent.mm.plugin.soter.b.f;
-import com.tencent.mm.plugin.wallet_core.model.x;
-import com.tencent.mm.pluginsdk.wallet.k;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.soter.a.g.b.a;
+import com.tencent.mm.al.n;
+import com.tencent.mm.plugin.fingerprint.d.d;
+import com.tencent.mm.plugin.soter.a.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.soter.core.c.j;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
 public final class l
-  extends a
+  implements d
 {
-  private boolean mGj = false;
-  private n mGk = null;
-  private com.tencent.soter.a.d.a mGl = null;
-  private com.tencent.soter.a.a.a mGm = null;
+  private String itM;
+  WeakReference<WalletBaseUI> rce;
+  private com.tencent.mm.plugin.fingerprint.d.b rcf;
+  private com.tencent.mm.plugin.fingerprint.d.b rcg;
+  private com.tencent.mm.plugin.soter.a rch;
   
-  public final int a(com.tencent.mm.pluginsdk.wallet.d paramd)
+  private void aW(int paramInt, String paramString)
   {
-    AppMethodBeat.i(41522);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SoterAuthMgrImp", "start face auth: %s", new Object[] { Integer.valueOf(3000) });
-    Object localObject = new l.2(this);
-    this.mGm = new com.tencent.soter.a.a.a();
-    localObject = new b.a().So(1).jn(ah.getContext()).Sp(2).a(this.mGm).a((com.tencent.soter.a.a.b)localObject).awQ(x.uli.mGC).Bnv;
-    ap localap = new ap(new l.3(this, paramd), false);
-    localap.ag(3000L, 3000L);
-    com.tencent.soter.a.a.a(new l.4(this, localap, paramd), (com.tencent.soter.a.g.b)localObject);
-    AppMethodBeat.o(41522);
-    return 0;
-  }
-  
-  @TargetApi(16)
-  public final int a(com.tencent.mm.pluginsdk.wallet.d paramd, boolean paramBoolean)
-  {
-    AppMethodBeat.i(41521);
-    if (paramBoolean)
-    {
-      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SoterAuthMgrImp", "hy: req restart after fail, but no need");
-      AppMethodBeat.o(41521);
-      return 0;
+    AppMethodBeat.i(64374);
+    if (this.rcg != null) {
+      this.rcg.aU(paramInt, paramString);
     }
-    Object localObject = new l.1(this, paramd);
-    this.mGl = new com.tencent.soter.a.d.a();
-    localObject = new b.a().So(1).jn(ah.getContext()).a(this.mGl).awQ(x.uli.mGC).a((com.tencent.soter.a.d.b)localObject).Bnv;
-    com.tencent.soter.a.a.a(new l.5(this, paramd), (com.tencent.soter.a.g.b)localObject);
-    AppMethodBeat.o(41521);
-    return 0;
+    AppMethodBeat.o(64374);
   }
   
-  public final void a(ma paramma, int paramInt)
+  private void cul()
   {
-    AppMethodBeat.i(41525);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SoterAuthMgrImp", "hy: soter onOpenFingerprintAuthSuccess");
-    paramma.cCb.cCf = byW();
-    ma.b localb = paramma.cCb;
-    if (!bo.isNullOrNil(paramma.cCb.cCf)) {}
-    for (paramInt = 0;; paramInt = 1)
+    AppMethodBeat.i(64372);
+    this.rch.a(new a.c()new com.tencent.mm.plugin.fingerprint.c.c
     {
-      localb.errCode = paramInt;
-      paramma.cCb.cCg = 2;
-      paramma.cCb.cwl = "";
-      paramma.cCb.cwm = "";
-      if (paramma.cCa.cCe != null) {
-        paramma.cCa.cCe.run();
+      public final void a(com.tencent.soter.a.b.c paramAnonymousc)
+      {
+        AppMethodBeat.i(64366);
+        ad.i("MicroMsg.SoterFaceIdOpenDelegate", "hy: update pay auth key success");
+        if ((l.this.rce != null) && (l.this.rce.get() != null))
+        {
+          ((WalletBaseUI)l.this.rce.get()).doSceneProgress(new com.tencent.mm.plugin.fingerprint.c.a(2), false);
+          AppMethodBeat.o(64366);
+          return;
+        }
+        l.this.aV(-1, "base ui is null");
+        AppMethodBeat.o(64366);
       }
-      AppMethodBeat.o(41525);
-      return;
-    }
+      
+      public final void b(com.tencent.soter.a.b.c paramAnonymousc)
+      {
+        AppMethodBeat.i(64367);
+        if (paramAnonymousc.errCode == 1006)
+        {
+          ad.e("MicroMsg.SoterFaceIdOpenDelegate", "hy: failed upload: model is null or necessary elements null");
+          com.tencent.mm.plugin.soter.d.a.e(4, -1000223, -1, "gen auth key failed: unexpected! generated but cannot get");
+        }
+        for (;;)
+        {
+          l.this.aV(-1, aj.getContext().getString(2131756561));
+          AppMethodBeat.o(64367);
+          return;
+          if (paramAnonymousc.errCode == 6)
+          {
+            com.tencent.mm.plugin.soter.d.a.e(4, -1000223, -1, "gen auth key failed");
+            if ((!bt.isNullOrNil(paramAnonymousc.errMsg)) && (paramAnonymousc.errMsg.startsWith("java.security.ProviderException")))
+            {
+              l.this.aV(-2, aj.getContext().getString(2131756562));
+              AppMethodBeat.o(64367);
+              return;
+            }
+            if ((com.tencent.soter.core.a.fmN() == 1) && (!bt.isNullOrNil(paramAnonymousc.errMsg)) && (paramAnonymousc.errMsg.equals("errmsg not specified")))
+            {
+              l.this.aV(-2, aj.getContext().getString(2131756563));
+              AppMethodBeat.o(64367);
+            }
+          }
+          else if (paramAnonymousc.errCode == 1004)
+          {
+            ad.e("MicroMsg.SoterFaceIdOpenDelegate", "hy: update pay auth key failed. remove");
+            com.tencent.mm.plugin.soter.d.a.e(5, 4, paramAnonymousc.errCode, "upload auth key failed");
+          }
+          else if ((paramAnonymousc.errCode == 4) || (paramAnonymousc.errCode == 3))
+          {
+            ad.e("MicroMsg.SoterFaceIdOpenDelegate", "hy: gen auth key failed");
+            com.tencent.mm.plugin.soter.d.a.e(2, -1000223, -1, "gen ask failed");
+          }
+          else if (paramAnonymousc.errCode == 1003)
+          {
+            ad.e("MicroMsg.SoterFaceIdOpenDelegate", "alvinluo upload ask failed");
+            com.tencent.mm.plugin.soter.d.a.e(3, 4, paramAnonymousc.errCode, paramAnonymousc.errMsg);
+          }
+          else
+          {
+            ad.e("MicroMsg.SoterFaceIdOpenDelegate", "alvinluo unknown error when prepare auth key");
+            com.tencent.mm.plugin.soter.d.a.e(1000, -1000223, paramAnonymousc.errCode, paramAnonymousc.errMsg);
+          }
+        }
+      }
+    }, new com.tencent.mm.plugin.fingerprint.c.c(this.itM, 2));
+    AppMethodBeat.o(64372);
   }
   
-  public final boolean a(boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle)
+  public final void a(Context paramContext, com.tencent.mm.plugin.fingerprint.d.b paramb) {}
+  
+  public final void a(Context paramContext, com.tencent.mm.plugin.fingerprint.d.b paramb, String paramString)
   {
-    AppMethodBeat.i(41533);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SoterAuthMgrImp", "hy: post pay. is fingerprint pay: %b, is pay ok: %b, extInfo: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramBundle });
-    if (!paramBoolean1)
+    AppMethodBeat.i(64368);
+    ad.i("MicroMsg.SoterFaceIdOpenDelegate", "do prepare");
+    this.rcf = paramb;
+    this.itM = paramString;
+    this.rce = new WeakReference((WalletBaseUI)paramContext);
+    this.rch = new com.tencent.mm.plugin.soter.a();
+    ((WalletBaseUI)this.rce.get()).addSceneEndListener(1586);
+    ((WalletBaseUI)this.rce.get()).addSceneEndListener(1638);
+    cul();
+    AppMethodBeat.o(64368);
+  }
+  
+  public final void a(com.tencent.mm.plugin.fingerprint.d.b paramb, int paramInt)
+  {
+    AppMethodBeat.i(64371);
+    ad.i("MicroMsg.SoterFaceIdOpenDelegate", "hy: doOpenFP");
+    this.rcg = paramb;
+    paramb = p.rcp.rct;
+    if (paramb != null)
     {
-      String str = paramBundle.getString("pwd");
-      int i = paramBundle.getInt("key_open_biometric_type");
-      if (bo.isNullOrNil(str))
+      if ((this.rce != null) && (this.rce.get() != null))
       {
-        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.SoterAuthMgrImp", "hy: no pwd. can not change auth key");
-        AppMethodBeat.o(41533);
-        return false;
-      }
-      if (x.uli.mGD)
-      {
-        com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SoterAuthMgrImp", "hy: need change auth key. start gen auth key");
-        com.tencent.soter.a.a.a(new l.6(this), true, 1, new c(str, i), new f());
-      }
-    }
-    AppMethodBeat.o(41533);
-    return false;
-  }
-  
-  public final boolean byT()
-  {
-    AppMethodBeat.i(41534);
-    boolean bool = com.tencent.soter.core.a.jk(ah.getContext());
-    AppMethodBeat.o(41534);
-    return bool;
-  }
-  
-  public final boolean byU()
-  {
-    AppMethodBeat.i(41538);
-    boolean bool = com.tencent.soter.core.a.aF(ah.getContext(), 2);
-    AppMethodBeat.o(41538);
-    return bool;
-  }
-  
-  public final String byW()
-  {
-    AppMethodBeat.i(41526);
-    Object localObject = x.uli.ulk;
-    if (localObject != null) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("json", ((j)localObject).BmG);
-        localJSONObject.put("signature", ((j)localObject).signature);
-        localObject = localJSONObject.toString();
-        AppMethodBeat.o(41526);
-        return localObject;
-      }
-      catch (JSONException localJSONException)
-      {
-        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.SoterAuthMgrImp", "hy: error when convert to json: %s", new Object[] { localJSONException.toString() });
-        com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.SoterAuthMgrImp", localJSONException, "", new Object[0]);
-        AppMethodBeat.o(41526);
-        return "";
+        ((WalletBaseUI)this.rce.get()).doSceneProgress(new com.tencent.mm.plugin.fingerprint.c.b(paramb.Iva, paramb.signature, this.itM, 2));
+        AppMethodBeat.o(64371);
       }
     }
-    com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.SoterAuthMgrImp", "hy: signature result is null");
-    AppMethodBeat.o(41526);
-    return "";
-  }
-  
-  public final k byZ()
-  {
-    AppMethodBeat.i(41528);
-    this.mGk = new n();
-    n localn = this.mGk;
-    AppMethodBeat.o(41528);
-    return localn;
-  }
-  
-  public final boolean bza()
-  {
-    AppMethodBeat.i(41515);
-    if (ac.ery.eqB == 1) {}
-    for (boolean bool1 = true;; bool1 = false)
+    else
     {
-      boolean bool2 = com.tencent.soter.a.a.dVs();
-      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SoterAuthMgrImp", "hy: config support: %b, device support: %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-      if ((!bool1) || (!bool2) || (!com.tencent.soter.core.a.jg(ah.getContext()))) {
-        break;
+      ad.e("MicroMsg.SoterFaceIdOpenDelegate", "hy: signature is null");
+      com.tencent.mm.plugin.soter.d.a.e(9, -1000223, -1, "signature is null");
+      aW(-1, aj.getContext().getString(2131758809));
+    }
+    AppMethodBeat.o(64371);
+  }
+  
+  final void aV(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(64373);
+    if (this.rcf != null) {
+      this.rcf.aU(paramInt, paramString);
+    }
+    AppMethodBeat.o(64373);
+  }
+  
+  public final void clear()
+  {
+    AppMethodBeat.i(64369);
+    ad.i("MicroMsg.SoterFaceIdOpenDelegate", "hy: clear");
+    if ((this.rce != null) && (this.rce.get() != null))
+    {
+      ((WalletBaseUI)this.rce.get()).removeSceneEndListener(1586);
+      ((WalletBaseUI)this.rce.get()).removeSceneEndListener(1638);
+    }
+    p.rcp.reset();
+    if ((this.rce != null) && (this.rce.get() != null)) {
+      this.rce.clear();
+    }
+    AppMethodBeat.o(64369);
+  }
+  
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  {
+    AppMethodBeat.i(64370);
+    ad.i("MicroMsg.SoterFaceIdOpenDelegate", "hy: onSceneEnd: errType: %d, errCode: %d, errMsg: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn });
+    String str = paramString;
+    if (bt.isNullOrNil(paramString)) {
+      str = aj.getContext().getString(2131758809);
+    }
+    if ((paramn instanceof com.tencent.mm.plugin.fingerprint.c.a))
+    {
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        ad.i("MicroMsg.SoterFaceIdOpenDelegate", "get challenge success");
+        if (bt.isNullOrNil(((com.tencent.mm.plugin.fingerprint.c.a)paramn).rcj))
+        {
+          aV(-1, str);
+          AppMethodBeat.o(64370);
+          return true;
+        }
+        aq.f(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(64365);
+            l.this.aV(0, "");
+            AppMethodBeat.o(64365);
+          }
+        });
       }
-      AppMethodBeat.o(41515);
+    }
+    else
+    {
+      if (!(paramn instanceof com.tencent.mm.plugin.fingerprint.c.b)) {
+        break label225;
+      }
+      if ((paramInt2 != 0) || (paramInt1 != 0)) {
+        break label199;
+      }
+      ad.i("MicroMsg.SoterFaceIdOpenDelegate", "hy: open success");
+      com.tencent.mm.plugin.soter.d.a.dEO();
+      com.tencent.mm.plugin.soter.d.a.e(0, 0, 0, "OK");
+      aW(0, str);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(64370);
       return true;
-    }
-    AppMethodBeat.o(41515);
-    return false;
-  }
-  
-  public final boolean bzb()
-  {
-    AppMethodBeat.i(41516);
-    boolean bool = com.tencent.soter.core.a.ji(ah.getContext());
-    AppMethodBeat.o(41516);
-    return bool;
-  }
-  
-  public final void bzc()
-  {
-    AppMethodBeat.i(41517);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SoterAuthMgrImp", "hy: soter init fp. Do nothing?? Prepare ASK??");
-    e.hL(true);
-    e.hK(true);
-    if (!this.mGj)
-    {
-      com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.SoterAuthMgrImp", "SoterAuthMgrImp is set but still need to initSoter??? TaskInit had finished[%b]", new Object[] { Boolean.valueOf(com.tencent.soter.a.a.dVs()) });
-      com.tencent.mm.plugin.soter.e.b.a(false, false, null);
-      this.mGj = true;
-    }
-    AppMethodBeat.o(41517);
-  }
-  
-  public final boolean bze()
-  {
-    return false;
-  }
-  
-  public final boolean bzf()
-  {
-    AppMethodBeat.i(41520);
-    boolean bool = bza();
-    AppMethodBeat.o(41520);
-    return bool;
-  }
-  
-  @SuppressLint({"NewApi"})
-  public final void bzg()
-  {
-    AppMethodBeat.i(41523);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SoterAuthMgrImp", "hy: do nothing in system release");
-    AppMethodBeat.o(41523);
-  }
-  
-  @SuppressLint({"NewApi"})
-  public final void bzh()
-  {
-    AppMethodBeat.i(41524);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SoterAuthMgrImp", "hy: do nothing in system release");
-    AppMethodBeat.o(41524);
-  }
-  
-  public final void bzi()
-  {
-    AppMethodBeat.i(41527);
-    if (com.tencent.soter.core.a.awK(e.bzp())) {
-      com.tencent.soter.core.a.cu(e.bzp(), false);
-    }
-    AppMethodBeat.o(41527);
-  }
-  
-  public final Map<String, String> bzj()
-  {
-    AppMethodBeat.i(41529);
-    HashMap localHashMap = new HashMap();
-    Object localObject = com.tencent.mm.plugin.soter.d.d.cyc();
-    String str = ((com.tencent.mm.plugin.soter.d.e)localObject).son;
-    localObject = ((com.tencent.mm.plugin.soter.d.e)localObject).kbP;
-    localHashMap.put("cpu_id", str);
-    localHashMap.put("uid", localObject);
-    AppMethodBeat.o(41529);
-    return localHashMap;
-  }
-  
-  public final com.tencent.mm.pluginsdk.wallet.l bzk()
-  {
-    AppMethodBeat.i(41530);
-    o localo = new o();
-    AppMethodBeat.o(41530);
-    return localo;
-  }
-  
-  public final Map<String, String> bzl()
-  {
-    AppMethodBeat.i(41531);
-    Map localMap = bzj();
-    AppMethodBeat.o(41531);
-    return localMap;
-  }
-  
-  public final boolean bzm()
-  {
-    AppMethodBeat.i(41532);
-    boolean bool = com.tencent.soter.core.a.awK(e.bzp());
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SoterAuthMgrImp", "py: hasAuthKey: %b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(41532);
-    return bool;
-  }
-  
-  public final boolean bzn()
-  {
-    AppMethodBeat.i(41536);
-    int i = ac.erA.err;
-    if ((!ac.erA.cJE) || ((i & 0x2) != 2))
-    {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.SoterAuthMgrImp", "peteryan check isDeviceSupportFaceID from SrvDeviceInfo.mSoterInfo return false typeis[%d]", new Object[] { Integer.valueOf(ac.erA.err) });
-      AppMethodBeat.o(41536);
-      return false;
-    }
-    if ((com.tencent.soter.a.a.dVs()) && (com.tencent.soter.core.a.jh(ah.getContext())))
-    {
-      AppMethodBeat.o(41536);
+      ad.e("MicroMsg.SoterFaceIdOpenDelegate", "hy: failed get challenge");
+      aV(paramInt2, str);
+      com.tencent.mm.plugin.soter.d.a.e(7, paramInt1, paramInt2, "get challenge failed");
+      AppMethodBeat.o(64370);
       return true;
+      label199:
+      ad.i("MicroMsg.SoterFaceIdOpenDelegate", "hy: open");
+      com.tencent.mm.plugin.soter.d.a.e(8, paramInt1, paramInt2, "open fp pay failed");
+      aW(-1, str);
     }
-    AppMethodBeat.o(41536);
+    label225:
+    AppMethodBeat.o(64370);
     return false;
-  }
-  
-  public final boolean bzo()
-  {
-    AppMethodBeat.i(41537);
-    boolean bool = com.tencent.soter.core.a.jj(ah.getContext());
-    AppMethodBeat.o(41537);
-    return bool;
-  }
-  
-  public final void dS(Context paramContext)
-  {
-    AppMethodBeat.i(41519);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SoterAuthMgrImp", "hy: start startRigesterSysFP");
-    AppMethodBeat.o(41519);
-  }
-  
-  public final void dT(Context paramContext)
-  {
-    AppMethodBeat.i(41518);
-    e.hL(true);
-    e.hK(true);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SoterAuthMgrImp", "hy: is soter. no need to init");
-    AppMethodBeat.o(41518);
-  }
-  
-  public final int type()
-  {
-    return 2;
-  }
-  
-  public final void userCancel()
-  {
-    AppMethodBeat.i(41535);
-    if ((this.mGl != null) && (Build.VERSION.SDK_INT >= 16))
-    {
-      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SoterAuthMgrImp", "alvinluo cancel fingeprint canceller");
-      this.mGl.rX(true);
-    }
-    if (this.mGm != null)
-    {
-      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.SoterAuthMgrImp", "cancel biometric canceller");
-      this.mGm.rV(true);
-    }
-    AppMethodBeat.o(41535);
   }
 }
 

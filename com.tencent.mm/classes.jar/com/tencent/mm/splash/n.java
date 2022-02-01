@@ -5,24 +5,24 @@ import java.util.ArrayList;
 
 public final class n
 {
-  public final ArrayList<long[]> dXW;
+  public final ArrayList<String> Fcn;
+  public final ArrayList<long[]> fhH;
   long mStartTimestamp;
-  public final ArrayList<String> ywn;
   
   public n()
   {
-    AppMethodBeat.i(114896);
-    this.dXW = new ArrayList();
-    this.ywn = new ArrayList();
+    AppMethodBeat.i(40690);
+    this.fhH = new ArrayList();
+    this.Fcn = new ArrayList();
     this.mStartTimestamp = 0L;
-    AppMethodBeat.o(114896);
+    AppMethodBeat.o(40690);
   }
   
-  public final void l(long paramLong1, long paramLong2, long paramLong3)
+  public final void idkey(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(114897);
-    this.dXW.add(new long[] { paramLong1, paramLong2, paramLong3 });
-    AppMethodBeat.o(114897);
+    AppMethodBeat.i(40691);
+    this.fhH.add(new long[] { paramLong1, paramLong2, paramLong3 });
+    AppMethodBeat.o(40691);
   }
 }
 

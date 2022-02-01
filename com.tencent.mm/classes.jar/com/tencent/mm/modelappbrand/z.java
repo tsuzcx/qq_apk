@@ -1,18 +1,18 @@
 package com.tencent.mm.modelappbrand;
 
 public abstract class z
-  implements m
+  implements o
 {
   public final String getName()
   {
     return "onWidgetDrawDataInvalid";
   }
   
-  public abstract void qq(String paramString);
+  public abstract void vg(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.z
  * JD-Core Version:    0.7.0.1
  */

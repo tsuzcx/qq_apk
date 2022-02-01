@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.facedetect.b;
 
 public abstract interface e
 {
-  public abstract boolean btY();
+  public abstract boolean cfs();
   
-  public abstract String btZ();
+  public abstract String cft();
 }
 
 

@@ -3,9 +3,11 @@ package com.tencent.mm.plugin.card.ui;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.card.base.CardBaseUI;
 import com.tencent.mm.plugin.card.d.d.a;
 import com.tencent.mm.plugin.card.model.n.a;
@@ -15,64 +17,73 @@ import com.tencent.mm.ui.base.h;
 public class CardInvalidCardUI
   extends CardBaseUI
 {
-  public final void bax()
+  public final void bHo()
   {
-    AppMethodBeat.i(88540);
-    setMMTitle(2131297954);
-    addTextOptionMenu(0, getString(2131297876), new CardInvalidCardUI.1(this));
-    if (this.kkG.getCount() > 0)
+    AppMethodBeat.i(113467);
+    setMMTitle(2131756896);
+    addTextOptionMenu(0, getString(2131756808), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(113463);
+        CardInvalidCardUI.a(CardInvalidCardUI.this);
+        AppMethodBeat.o(113463);
+        return true;
+      }
+    });
+    if (this.npL.getCount() > 0)
     {
       enableOptionMenu(true);
-      AppMethodBeat.o(88540);
+      AppMethodBeat.o(113467);
       return;
     }
     enableOptionMenu(false);
-    AppMethodBeat.o(88540);
+    AppMethodBeat.o(113467);
   }
   
-  public final n.a bay()
+  public final n.a bHp()
   {
-    return n.a.kob;
+    return n.a.ntp;
   }
   
   public int getLayoutId()
   {
-    return 2130968959;
+    return 2131493310;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(138536);
+    AppMethodBeat.i(113466);
     super.initView();
-    AppMethodBeat.o(138536);
+    AppMethodBeat.o(113466);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(88538);
+    AppMethodBeat.i(113465);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(88538);
+    AppMethodBeat.o(113465);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(88541);
-    super.onSceneEnd(paramInt1, paramInt2, paramString, paramm);
-    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramm instanceof r)))
+    AppMethodBeat.i(113468);
+    super.onSceneEnd(paramInt1, paramInt2, paramString, paramn);
+    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramn instanceof r)))
     {
-      if (!this.kkK) {
+      if (!this.npP) {
         break label62;
       }
-      h.bO(this, getResources().getString(2131297878));
+      h.cf(this, getResources().getString(2131756810));
     }
     for (;;)
     {
-      this.kkK = false;
-      AppMethodBeat.o(88541);
+      this.npP = false;
+      AppMethodBeat.o(113468);
       return;
       label62:
-      h.bO(this, getResources().getString(2131297896));
+      h.cf(this, getResources().getString(2131756828));
     }
   }
   
@@ -84,7 +95,7 @@ public class CardInvalidCardUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardInvalidCardUI
  * JD-Core Version:    0.7.0.1
  */

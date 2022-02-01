@@ -1,233 +1,319 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.SystemClock;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.mm.co.j;
+import com.tencent.mm.sdk.a.a;
+import com.tencent.recovery.crash.DefaultExceptionHandler;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import junit.framework.Assert;
 
 public final class au
+  implements Thread.UncaughtExceptionHandler
 {
-  private final String uln;
-  private final boolean ypb;
-  private final String ypc;
-  private SharedPreferences ypd;
-  private final Map<String, Long> ype;
-  private long ypf;
-  private byte[] ypg;
-  private volatile boolean yph;
+  private static au EUT = null;
+  private d EUU = null;
+  private a EUV = null;
+  public a EUW = null;
+  private Map<String, b> EUX = new HashMap();
+  private boolean EUY = false;
+  private List<c> EUZ = new LinkedList();
+  private Thread.UncaughtExceptionHandler ueh = null;
   
-  public au(String paramString, long paramLong)
+  private au()
   {
-    AppMethodBeat.i(93585);
-    this.ypf = 0L;
-    this.ypg = new byte[0];
-    this.yph = false;
-    this.uln = paramString;
-    this.ypb = false;
-    this.ypc = ("prm_" + this.uln + "_" + paramLong);
-    this.ype = new ConcurrentHashMap(20);
-    this.ypf = paramLong;
-    AppMethodBeat.o(93585);
+    Thread.setDefaultUncaughtExceptionHandler(new DefaultExceptionHandler(this));
   }
   
-  private void dtu()
+  public static void D(String paramString1, String paramString2, boolean paramBoolean)
   {
-    int i = 0;
-    AppMethodBeat.i(93586);
+    try
+    {
+      a(paramString1, new b()
+      {
+        public final String eFV()
+        {
+          return "subinfo=" + this.EVa;
+        }
+      });
+      Assert.assertTrue(paramString1, paramBoolean);
+      return;
+    }
+    finally
+    {
+      paramString1 = finally;
+      throw paramString1;
+    }
+  }
+  
+  public static void a(a parama)
+  {
+    try
+    {
+      if (EUT == null) {
+        EUT = new au();
+      }
+      EUT.EUV = parama;
+      return;
+    }
+    finally {}
+  }
+  
+  public static void a(a parama)
+  {
+    try
+    {
+      if (EUT == null) {
+        EUT = new au();
+      }
+      EUT.EUW = parama;
+      return;
+    }
+    finally {}
+  }
+  
+  public static void a(c paramc)
+  {
+    if (paramc == null) {}
     for (;;)
     {
-      synchronized (this.ypg)
-      {
-        if ((this.yph) || (this.ypd == null))
-        {
-          AppMethodBeat.o(93586);
-          return;
-        }
-        if ((this.ypd instanceof as))
-        {
-          String[] arrayOfString = ((as)this.ypd).allKeys();
-          if (arrayOfString == null)
-          {
-            AppMethodBeat.o(93586);
-            return;
-          }
-          int j = arrayOfString.length;
-          if (i >= j) {
-            break label265;
-          }
-          String str = arrayOfString[i];
-          try
-          {
-            long l = this.ypd.getLong(str, 0L);
-            if (l == 0L) {
-              break label279;
-            }
-            this.ype.put(str, Long.valueOf(l));
-          }
-          catch (Throwable localThrowable)
-          {
-            ab.printErrStackTrace("MicroMsg.PeriodRecorder", localThrowable, "exception occurred.", new Object[0]);
-          }
-        }
-      }
-      Object localObject2 = this.ypd.getAll();
-      if (localObject2 == null)
-      {
-        AppMethodBeat.o(93586);
-        return;
-      }
-      localObject2 = ((Map)localObject2).entrySet().iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-        Object localObject3 = localEntry.getValue();
-        if ((localObject3 instanceof Long)) {
-          this.ype.put(localEntry.getKey(), (Long)localObject3);
-        }
-      }
-      label265:
-      this.yph = true;
-      AppMethodBeat.o(93586);
       return;
-      label279:
-      i += 1;
+      try
+      {
+        if (EUT == null) {
+          EUT = new au();
+        }
+        EUT.EUZ.add(paramc);
+      }
+      finally {}
     }
+  }
+  
+  public static void a(d paramd)
+  {
+    try
+    {
+      if (EUT == null) {
+        EUT = new au();
+      }
+      EUT.EUU = paramd;
+      return;
+    }
+    finally {}
+  }
+  
+  private static void a(String paramString, b paramb)
+  {
+    try
+    {
+      if (EUT == null) {
+        EUT = new au();
+      }
+      EUT.EUX.put(paramString, paramb);
+      return;
+    }
+    finally {}
   }
   
   /* Error */
-  private void ensureInitialized()
+  public static String getExceptionCauseString(Throwable paramThrowable)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 147
-    //   4: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: getfield 79	com/tencent/mm/sdk/platformtools/au:ypd	Landroid/content/SharedPreferences;
-    //   11: ifnull +11 -> 22
-    //   14: ldc 147
-    //   16: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: return
-    //   22: aload_0
-    //   23: aload_0
-    //   24: getfield 63	com/tencent/mm/sdk/platformtools/au:ypc	Ljava/lang/String;
-    //   27: invokestatic 151	com/tencent/mm/sdk/platformtools/as:apr	(Ljava/lang/String;)Lcom/tencent/mm/sdk/platformtools/as;
-    //   30: putfield 79	com/tencent/mm/sdk/platformtools/au:ypd	Landroid/content/SharedPreferences;
-    //   33: ldc 147
-    //   35: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   38: goto -19 -> 19
-    //   41: astore_1
-    //   42: aload_0
-    //   43: monitorexit
-    //   44: aload_1
-    //   45: athrow
-    //   46: astore_1
-    //   47: ldc 105
-    //   49: aload_1
-    //   50: ldc 153
-    //   52: iconst_0
-    //   53: anewarray 4	java/lang/Object
-    //   56: invokestatic 113	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   0: new 120	java/io/ByteArrayOutputStream
+    //   3: dup
+    //   4: invokespecial 121	java/io/ByteArrayOutputStream:<init>	()V
+    //   7: astore_1
+    //   8: new 123	java/io/PrintStream
+    //   11: dup
+    //   12: aload_1
+    //   13: invokespecial 126	java/io/PrintStream:<init>	(Ljava/io/OutputStream;)V
+    //   16: astore_2
+    //   17: aload_0
+    //   18: invokevirtual 132	java/lang/Throwable:getCause	()Ljava/lang/Throwable;
+    //   21: ifnull +11 -> 32
+    //   24: aload_0
+    //   25: invokevirtual 132	java/lang/Throwable:getCause	()Ljava/lang/Throwable;
+    //   28: astore_0
+    //   29: goto -12 -> 17
+    //   32: aload_0
+    //   33: aload_2
+    //   34: invokevirtual 136	java/lang/Throwable:printStackTrace	(Ljava/io/PrintStream;)V
+    //   37: aload_1
+    //   38: invokevirtual 140	java/io/ByteArrayOutputStream:toString	()Ljava/lang/String;
+    //   41: invokestatic 144	com/tencent/mm/sdk/platformtools/au:toVisualString	(Ljava/lang/String;)Ljava/lang/String;
+    //   44: astore_0
+    //   45: aload_1
+    //   46: invokevirtual 147	java/io/ByteArrayOutputStream:close	()V
+    //   49: aload_0
+    //   50: areturn
+    //   51: astore_0
+    //   52: aload_1
+    //   53: invokevirtual 147	java/io/ByteArrayOutputStream:close	()V
+    //   56: aload_0
+    //   57: athrow
+    //   58: astore_1
     //   59: aload_0
-    //   60: invokestatic 159	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
-    //   63: aload_0
-    //   64: getfield 63	com/tencent/mm/sdk/platformtools/au:ypc	Ljava/lang/String;
-    //   67: iconst_4
-    //   68: invokevirtual 165	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   71: putfield 79	com/tencent/mm/sdk/platformtools/au:ypd	Landroid/content/SharedPreferences;
-    //   74: ldc 147
-    //   76: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   79: goto -60 -> 19
-    //   82: astore_1
-    //   83: ldc 105
-    //   85: aload_1
-    //   86: ldc 167
-    //   88: iconst_0
-    //   89: anewarray 4	java/lang/Object
-    //   92: invokestatic 113	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   95: aload_0
-    //   96: aconst_null
-    //   97: putfield 79	com/tencent/mm/sdk/platformtools/au:ypd	Landroid/content/SharedPreferences;
-    //   100: ldc 147
-    //   102: invokestatic 72	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   105: goto -86 -> 19
+    //   60: areturn
+    //   61: astore_1
+    //   62: goto -6 -> 56
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	108	0	this	au
-    //   41	4	1	localObject	Object
-    //   46	4	1	localThrowable1	Throwable
-    //   82	4	1	localThrowable2	Throwable
+    //   0	65	0	paramThrowable	Throwable
+    //   7	46	1	localByteArrayOutputStream	ByteArrayOutputStream
+    //   58	1	1	localIOException1	java.io.IOException
+    //   61	1	1	localIOException2	java.io.IOException
+    //   16	18	2	localPrintStream	PrintStream
     // Exception table:
     //   from	to	target	type
-    //   2	19	41	finally
-    //   22	33	41	finally
-    //   33	38	41	finally
-    //   47	59	41	finally
-    //   59	74	41	finally
-    //   74	79	41	finally
-    //   83	105	41	finally
-    //   22	33	46	java/lang/Throwable
-    //   59	74	82	java/lang/Throwable
+    //   17	29	51	finally
+    //   32	45	51	finally
+    //   45	49	58	java/io/IOException
+    //   52	56	61	java/io/IOException
   }
   
-  public final boolean apw(String paramString)
+  private static String toVisualString(String paramString)
   {
+    if (paramString == null) {
+      paramString = null;
+    }
+    label66:
     for (;;)
     {
-      boolean bool;
-      try
-      {
-        AppMethodBeat.i(139733);
-        ensureInitialized();
-        if (this.ypd == null)
-        {
-          ab.w("MicroMsg.PeriodRecorder", "PeriodRecorder is disabled.");
-          AppMethodBeat.o(139733);
-          bool = false;
-          return bool;
-        }
-        if (paramString == null)
-        {
-          paramString = new IllegalArgumentException("key is null.");
-          AppMethodBeat.o(139733);
-          throw paramString;
+      return paramString;
+      char[] arrayOfChar = paramString.toCharArray();
+      if (arrayOfChar == null) {
+        return null;
+      }
+      int i = 0;
+      if (i < arrayOfChar.length) {
+        if (arrayOfChar[i] > '') {
+          arrayOfChar[i] = '\000';
         }
       }
-      finally {}
-      dtu();
-      if (this.ypb) {}
-      for (long l = System.currentTimeMillis();; l = SystemClock.elapsedRealtime())
+      for (int j = 1;; j = 0)
       {
-        if (this.ype.containsKey(paramString)) {
-          break label143;
+        if (j == 0) {
+          break label66;
         }
-        this.ype.put(paramString, Long.valueOf(l));
-        this.ypd.edit().putLong(paramString, l).apply();
-        AppMethodBeat.o(139733);
-        bool = false;
+        return new String(arrayOfChar, 0, i);
+        i += 1;
         break;
       }
-      label143:
-      if (l - ((Long)this.ype.get(paramString)).longValue() > this.ypf)
-      {
-        this.ype.put(paramString, Long.valueOf(l));
-        this.ypd.edit().putLong(paramString, l).apply();
-        bool = true;
-        AppMethodBeat.o(139733);
-      }
-      else
-      {
-        AppMethodBeat.o(139733);
-        bool = false;
+    }
+  }
+  
+  public final String aFA(String paramString)
+  {
+    Iterator localIterator = this.EUX.entrySet().iterator();
+    while ((localIterator != null) && (localIterator.hasNext()))
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      String str = (String)localEntry.getKey();
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramString)) && (paramString.startsWith(str))) {
+        return ((b)localEntry.getValue()).eFV();
       }
     }
+    return "";
+  }
+  
+  public final void uncaughtException(Thread paramThread, Throwable paramThrowable)
+  {
+    if (this.EUY) {
+      return;
+    }
+    this.EUY = true;
+    try
+    {
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      Object localObject2 = new PrintStream(localByteArrayOutputStream);
+      for (Object localObject1 = paramThrowable; ((Throwable)localObject1).getCause() != null; localObject1 = ((Throwable)localObject1).getCause()) {}
+      ((Throwable)localObject1).printStackTrace((PrintStream)localObject2);
+      localObject1 = toVisualString(localByteArrayOutputStream.toString());
+      if ((this.EUV != null) && (localObject1 != null))
+      {
+        localObject2 = new j();
+        new ap("close-db-while-crash").post(new Runnable()
+        {
+          public final void run()
+          {
+            au.a(au.this).qO(this.EVb);
+            j localj = this.EVc;
+            synchronized (localj.mLock)
+            {
+              if (localj.mLock[0] == 0)
+              {
+                localj.mLock[0] = 1;
+                localj.mLock.notifyAll();
+                ad.i("MicroMsg.WxTimeoutLock", "notify done %s", new Object[] { localj });
+              }
+              return;
+            }
+          }
+        });
+        ((j)localObject2).fkN();
+      }
+      if ((this.EUU != null) && (localObject1 != null))
+      {
+        this.EUU.a(this, (String)localObject1, paramThrowable);
+        if (this.EUW != null) {
+          this.EUW.KG();
+        }
+      }
+      localObject2 = this.EUZ.iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        c localc = (c)((Iterator)localObject2).next();
+        if (localc != null) {
+          try
+          {
+            localc.b((String)localObject1, paramThrowable);
+          }
+          catch (Exception localException2) {}
+        }
+      }
+      localByteArrayOutputStream.close();
+      label213:
+      ad.appenderClose();
+    }
+    catch (Exception localException1)
+    {
+      break label213;
+    }
+    if (h.DEBUG)
+    {
+      this.ueh.uncaughtException(paramThread, paramThrowable);
+      return;
+    }
+    Process.killProcess(Process.myPid());
+    System.exit(0);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void KG();
+  }
+  
+  public static abstract interface b
+  {
+    public abstract String eFV();
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void b(String paramString, Throwable paramThrowable);
+  }
+  
+  public static abstract interface d
+  {
+    public abstract void a(au paramau, String paramString, Throwable paramThrowable);
   }
 }
 

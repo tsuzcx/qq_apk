@@ -1,160 +1,121 @@
 package com.tencent.mm.plugin.fav.ui.d;
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.ao.a;
-import com.tencent.mm.model.ao.b;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.protocal.protobuf.acq;
-import com.tencent.mm.protocal.protobuf.acs;
-import com.tencent.mm.protocal.protobuf.acw;
-import com.tencent.mm.protocal.protobuf.add;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.bd;
-import java.util.List;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.gn;
+import com.tencent.mm.g.a.gn.a;
+import com.tencent.mm.plugin.fav.a.af;
+import com.tencent.mm.plugin.fav.a.x;
+import com.tencent.mm.plugin.fav.ui.o;
+import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ag;
 
-public abstract class a
+public final class a
+  extends c<gn>
 {
-  public final a.a mCS = new a.a();
-  protected l mvC = null;
+  private o qcI;
+  private ag<Long, com.tencent.mm.plugin.fav.a.g> qkz;
   
-  public a(l paraml)
+  public a()
   {
-    this.mvC = paraml;
+    AppMethodBeat.i(107443);
+    this.qkz = new ag(10);
+    this.__eventId = gn.class.getName().hashCode();
+    AppMethodBeat.o(107443);
   }
   
-  public abstract View a(View paramView, ViewGroup paramViewGroup, com.tencent.mm.plugin.fav.a.g paramg);
-  
-  protected final View a(View paramView, a.b paramb, com.tencent.mm.plugin.fav.a.g paramg)
+  private boolean a(gn paramgn)
   {
-    if (paramView == null) {
-      throw new NullPointerException("base item view is null");
-    }
-    paramb.mCV = paramView.findViewById(2131824031);
-    if (paramb.mCV == null) {
-      throw new IllegalArgumentException("base item view do not contain id named favTypeLayout");
-    }
-    paramb.gzk = ((TextView)paramView.findViewById(2131820611));
-    if (paramb.gzk == null) {
-      throw new IllegalArgumentException("base item view do not contain id named fav_name");
-    }
-    paramb.ekh = ((TextView)paramView.findViewById(2131820618));
-    if (paramb.ekh == null) {
-      throw new IllegalArgumentException("base item view do not contain id named fav_time");
-    }
-    paramb.gpN = ((CheckBox)paramView.findViewById(2131820600));
-    if (paramb.gpN == null) {
-      throw new IllegalArgumentException("base item view do not contain id named checkbox");
-    }
-    paramb.mCW = ((ImageView)paramView.findViewById(2131824032));
-    if (paramb.mCW == null) {
-      throw new IllegalArgumentException("base item view do not contain id named tagIV");
-    }
-    paramb.gpN.setOnCheckedChangeListener(new a.1(this));
-    paramb.muk = paramg;
-    paramView.setTag(paramb);
-    paramb.mCX = ((LinearLayout)paramView.findViewById(2131824029));
-    paramb.mCY = ((TextView)paramView.findViewById(2131824030));
-    paramb.mCY.setOnClickListener(new a.2(this));
-    return paramView;
-  }
-  
-  public abstract void a(View paramView, acs paramacs);
-  
-  protected final void a(a.b paramb, com.tencent.mm.plugin.fav.a.g paramg)
-  {
-    paramb.muk = paramg;
-    label59:
-    Context localContext;
-    Object localObject;
-    label184:
-    boolean bool;
-    if (paramb.muk.field_type == 18)
-    {
-      paramb.mCV.setVisibility(0);
-      if (this.mCS.mzx) {
-        break label310;
+    AppMethodBeat.i(107444);
+    com.tencent.mm.plugin.fav.a.g localg2;
+    com.tencent.mm.plugin.fav.a.g localg1;
+    if (paramgn.djH.deL != 0L) {
+      if (paramgn.djH.djO)
+      {
+        localg2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().pS(paramgn.djH.deL);
+        localg1 = localg2;
+        if (localg2 != null)
+        {
+          this.qkz.put(Long.valueOf(paramgn.djH.deL), localg2);
+          localg1 = localg2;
+        }
       }
-      paramb.ekh.setText(com.tencent.mm.plugin.fav.ui.j.g(paramb.ekh.getContext(), paramb.muk.field_updateTime));
-      localContext = paramb.gzk.getContext();
-      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arv(paramb.muk.field_fromUser);
-      if ((localObject != null) && (((aq)localObject).field_username.equals(paramb.muk.field_fromUser))) {
-        break label330;
-      }
-      ab.w("MicroMsg.FavBaseListItem", "render name, user is %s, but name is null", new Object[] { paramb.muk.field_fromUser });
-      paramb.gzk.setText("");
-      ao.a.flI.a(paramb.muk.field_fromUser, "", null);
-      if (!paramb.muk.bwp()) {
-        break label440;
-      }
-      paramb.mCX.setVisibility(0);
-      paramb.gpN.setTag(paramg);
-      if ((!this.mCS.mzp) && (!this.mCS.mzx)) {
-        break label457;
-      }
-      paramb.gpN.setVisibility(0);
-      localObject = paramb.gpN;
-      if (this.mCS.mzq.get(Long.valueOf(paramg.field_localId)) == null) {
-        break label452;
-      }
-      bool = true;
-      label250:
-      ((CheckBox)localObject).setChecked(bool);
     }
     for (;;)
     {
-      paramb.mCY.setTag(paramg);
-      if ((paramg.field_tagProto.wVq == null) || (paramg.field_tagProto.wVq.isEmpty())) {
-        break label469;
-      }
-      paramb.mCW.setVisibility(0);
-      return;
-      paramb.mCV.setVisibility(8);
-      break;
-      label310:
-      paramb.ekh.setText(com.tencent.mm.plugin.fav.a.b.jS(paramb.muk.field_datatotalsize));
-      break label59;
-      label330:
-      if (t.lA(paramb.muk.field_fromUser))
+      ad.d("MicroMsg.FavImageServiceListener", "image serivce callback type %d, localId %d", new Object[] { Integer.valueOf(paramgn.djH.opType), Long.valueOf(paramgn.djH.deL) });
+      if ((localg1 == null) && (paramgn.djH.opType != 3) && (paramgn.djH.opType != 4))
       {
-        localObject = paramb.muk.field_favProto.wVa;
-        if (r.Zn().equals(((acw)localObject).czp)) {
-          localObject = com.tencent.mm.plugin.fav.a.b.NA(((acw)localObject).toUser);
+        AppMethodBeat.o(107444);
+        return false;
+        localg1 = (com.tencent.mm.plugin.fav.a.g)this.qkz.get(Long.valueOf(paramgn.djH.deL));
+        if (localg1 == null) {}
+        for (boolean bool = true;; bool = false)
+        {
+          ad.d("MicroMsg.FavImageServiceListener", "get item from cache itemInfo is null? %B", new Object[] { Boolean.valueOf(bool) });
+          if (localg1 != null) {
+            break label558;
+          }
+          localg2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().pS(paramgn.djH.deL);
+          localg1 = localg2;
+          if (localg2 == null) {
+            break;
+          }
+          this.qkz.put(Long.valueOf(paramgn.djH.deL), localg2);
+          localg1 = localg2;
+          break;
         }
+      }
+      switch (paramgn.djH.opType)
+      {
       }
       for (;;)
       {
-        paramb.gzk.setText(com.tencent.mm.pluginsdk.ui.d.j.b(localContext, (CharSequence)localObject, paramb.gzk.getTextSize()));
-        break;
-        localObject = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.a.b.class)).nD(((acw)localObject).czp);
+        AppMethodBeat.o(107444);
+        return false;
+        paramgn.djI.djP = o.a(paramgn.djH.djJ, localg1);
         continue;
-        localObject = com.tencent.mm.plugin.fav.a.b.NA(((aq)localObject).field_username);
+        ad.d("MicroMsg.FavImageServiceListener", "get img from Cache %s", new Object[] { Boolean.valueOf(paramgn.djH.djM) });
+        if (paramgn.djH.djM)
+        {
+          paramgn.djI.djP = o.l(paramgn.djH.djJ);
+        }
+        else
+        {
+          paramgn.djI.djP = o.b(paramgn.djH.djJ, localg1, paramgn.djH.maxWidth);
+          continue;
+          if (this.qcI == null)
+          {
+            ad.w("MicroMsg.FavImageServiceListener", "imageServer is null");
+          }
+          else
+          {
+            this.qcI.b(paramgn.djH.djK, paramgn.djH.djJ, localg1, paramgn.djH.djL, paramgn.djH.width, paramgn.djH.height);
+            continue;
+            ad.d("MicroMsg.FavImageServiceListener", "create image server");
+            if (this.qcI != null) {
+              this.qcI.destory();
+            }
+            this.qcI = new o(paramgn.djH.context, 16);
+            continue;
+            ad.d("MicroMsg.FavImageServiceListener", "destroy image server");
+            if (this.qcI != null)
+            {
+              this.qcI.destory();
+              this.qcI = null;
+            }
+          }
+        }
       }
-      label440:
-      paramb.mCX.setVisibility(8);
-      break label184;
-      label452:
-      bool = false;
-      break label250;
-      label457:
-      paramb.gpN.setVisibility(8);
+      label558:
+      continue;
+      localg1 = null;
     }
-    label469:
-    paramb.mCW.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.d.a
  * JD-Core Version:    0.7.0.1
  */

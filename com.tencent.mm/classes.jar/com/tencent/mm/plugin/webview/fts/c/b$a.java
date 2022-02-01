@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.webview.fts.c;
 
 public abstract interface b$a
 {
-  public abstract void aDk();
+  public abstract void Cx();
   
-  public abstract void daM();
+  public abstract void ekf();
   
-  public abstract void daN();
+  public abstract void ekg();
   
   public abstract boolean onBackPressed();
   
@@ -18,7 +18,7 @@ public abstract interface b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.c.b.a
  * JD-Core Version:    0.7.0.1
  */

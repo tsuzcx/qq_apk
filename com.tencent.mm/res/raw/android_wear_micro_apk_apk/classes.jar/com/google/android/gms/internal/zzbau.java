@@ -9,13 +9,13 @@ public class zzbau
   extends zza
 {
   public static final Parcelable.Creator<zzbau> CREATOR = new df();
-  final int Hc;
-  final zzad QK;
+  final int IR;
+  final zzad Sz;
   
   zzbau(int paramInt, zzad paramzzad)
   {
-    this.Hc = paramInt;
-    this.QK = paramzzad;
+    this.IR = paramInt;
+    this.Sz = paramzzad;
   }
   
   public zzbau(zzad paramzzad)

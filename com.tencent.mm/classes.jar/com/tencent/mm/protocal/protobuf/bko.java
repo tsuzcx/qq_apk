@@ -1,95 +1,91 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bko
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int xzj;
-  public SKBuiltinBuffer_t xzk;
-  public int xzl;
+  public String CRC;
+  public boolean DIo;
+  public int type;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123510);
+    AppMethodBeat.i(91530);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.xzj);
-      if (this.xzk != null)
-      {
-        paramVarArgs.iQ(2, this.xzk.computeSize());
-        this.xzk.writeFields(paramVarArgs);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.type);
+      if (this.url != null) {
+        paramVarArgs.d(2, this.url);
       }
-      paramVarArgs.aO(3, this.xzl);
-      AppMethodBeat.o(123510);
+      if (this.CRC != null) {
+        paramVarArgs.d(3, this.CRC);
+      }
+      paramVarArgs.bg(4, this.DIo);
+      AppMethodBeat.o(91530);
       return 0;
     }
-    int i;
     if (paramInt == 1)
     {
-      i = e.a.a.b.b.a.bl(1, this.xzj) + 0;
+      int i = f.a.a.b.b.a.bA(1, this.type) + 0;
       paramInt = i;
-      if (this.xzk != null) {
-        paramInt = i + e.a.a.a.iP(2, this.xzk.computeSize());
+      if (this.url != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.url);
       }
-      i = e.a.a.b.b.a.bl(3, this.xzl);
-      AppMethodBeat.o(123510);
-      return paramInt + i;
+      i = paramInt;
+      if (this.CRC != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.CRC);
+      }
+      paramInt = f.a.a.b.b.a.fY(4);
+      AppMethodBeat.o(91530);
+      return i + (paramInt + 1);
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      AppMethodBeat.o(123510);
+      AppMethodBeat.o(91530);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       bko localbko = (bko)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(123510);
+        AppMethodBeat.o(91530);
         return -1;
       case 1: 
-        localbko.xzj = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(123510);
+        localbko.type = locala.KhF.xS();
+        AppMethodBeat.o(91530);
         return 0;
       case 2: 
-        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new SKBuiltinBuffer_t();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          localbko.xzk = ((SKBuiltinBuffer_t)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(123510);
+        localbko.url = locala.KhF.readString();
+        AppMethodBeat.o(91530);
+        return 0;
+      case 3: 
+        localbko.CRC = locala.KhF.readString();
+        AppMethodBeat.o(91530);
         return 0;
       }
-      localbko.xzl = ((e.a.a.a.a)localObject1).CLY.sl();
-      AppMethodBeat.o(123510);
+      localbko.DIo = locala.KhF.fHu();
+      AppMethodBeat.o(91530);
       return 0;
     }
-    AppMethodBeat.o(123510);
+    AppMethodBeat.o(91530);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bko
  * JD-Core Version:    0.7.0.1
  */

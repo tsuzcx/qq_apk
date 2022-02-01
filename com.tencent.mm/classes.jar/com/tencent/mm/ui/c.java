@@ -2,15 +2,15 @@ package com.tencent.mm.ui;
 
 public abstract interface c
 {
-  public abstract void NU(int paramInt);
+  public abstract void WZ(int paramInt);
   
-  public abstract void NV(int paramInt);
+  public abstract void Xa(int paramInt);
   
-  public abstract void NW(int paramInt);
+  public abstract void Xb(int paramInt);
   
-  public abstract void NX(int paramInt);
+  public abstract void Xc(int paramInt);
   
-  public abstract void dAP();
+  public abstract void ePn();
   
   public abstract int getContactTabUnread();
   
@@ -26,19 +26,24 @@ public abstract interface c
   
   public abstract boolean getShowFriendPoint();
   
-  public abstract void k(int paramInt, float paramFloat);
+  public abstract void n(int paramInt, float paramFloat);
   
-  public abstract void qa(boolean paramBoolean);
-  
-  public abstract void qb(boolean paramBoolean);
-  
-  public abstract void setOnTabClickListener(c.a parama);
+  public abstract void setOnTabClickListener(a parama);
   
   public abstract void setTo(int paramInt);
+  
+  public abstract void vj(boolean paramBoolean);
+  
+  public abstract void vk(boolean paramBoolean);
+  
+  public static abstract interface a
+  {
+    public abstract void onTabClick(int paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.c
  * JD-Core Version:    0.7.0.1
  */

@@ -4,14 +4,14 @@ import com.tencent.tinker.a.a.b.a;
 
 public final class m
 {
-  protected final a Bpu;
-  public int Bpv;
-  private int Bpw;
+  protected final a IBp;
+  public int IBq;
+  private int IBr;
   private int type = -1;
   
   public m(a parama, int paramInt)
   {
-    this.Bpu = parama;
+    this.IBp = parama;
     this.type = paramInt;
   }
   
@@ -20,112 +20,101 @@ public final class m
     this(new k.1(paramk), paramInt);
   }
   
-  private void St(int paramInt)
+  private void ace(int paramInt)
   {
-    if (dWb() != paramInt) {
-      throw new IllegalStateException(String.format("Expected %x but was %x", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(dWb()) }));
+    if (xM() != paramInt) {
+      throw new IllegalStateException(String.format("Expected %x but was %x", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(xM()) }));
     }
   }
   
-  public final int dWb()
+  public final int foH()
   {
-    if (this.type == -1)
-    {
-      int i = this.Bpu.readByte() & 0xFF;
-      this.type = (i & 0x1F);
-      this.Bpw = ((i & 0xE0) >> 5);
-    }
-    return this.type;
-  }
-  
-  public final int dWc()
-  {
-    St(28);
+    ace(28);
     this.type = -1;
-    return o.b(this.Bpu);
+    return o.b(this.IBp);
   }
   
-  public final int dWd()
+  public final int foI()
   {
-    St(29);
+    ace(29);
     this.type = -1;
-    this.Bpv = o.b(this.Bpu);
-    return o.b(this.Bpu);
+    this.IBq = o.b(this.IBp);
+    return o.b(this.IBp);
   }
   
-  public final int dWe()
+  public final int foJ()
   {
-    return o.b(this.Bpu);
+    return o.b(this.IBp);
   }
   
-  public final int dWf()
+  public final int foK()
   {
-    St(23);
+    ace(23);
     this.type = -1;
-    return l.a(this.Bpu, this.Bpw, false);
+    return l.a(this.IBp, this.IBr, false);
   }
   
-  public final int dWg()
+  public final int foL()
   {
-    St(24);
+    ace(24);
     this.type = -1;
-    return l.a(this.Bpu, this.Bpw, false);
+    return l.a(this.IBp, this.IBr, false);
   }
   
-  public final int dWh()
+  public final int foM()
   {
-    St(25);
+    ace(25);
     this.type = -1;
-    return l.a(this.Bpu, this.Bpw, false);
+    return l.a(this.IBp, this.IBr, false);
   }
   
-  public final int dWi()
+  public final int foN()
   {
-    St(27);
+    ace(27);
     this.type = -1;
-    return l.a(this.Bpu, this.Bpw, false);
+    return l.a(this.IBp, this.IBr, false);
   }
   
-  public final int dWj()
+  public final int foO()
   {
-    St(26);
+    ace(26);
     this.type = -1;
-    return l.a(this.Bpu, this.Bpw, false);
+    return l.a(this.IBp, this.IBr, false);
   }
   
-  public final void dWk()
+  public final void foP()
   {
-    St(30);
+    ace(30);
     this.type = -1;
   }
   
   public final boolean readBoolean()
   {
-    St(31);
+    ace(31);
     this.type = -1;
-    return this.Bpw != 0;
+    return this.IBr != 0;
   }
   
   public final byte readByte()
   {
-    St(0);
+    ace(0);
     this.type = -1;
-    return (byte)l.a(this.Bpu, this.Bpw);
+    return (byte)l.a(this.IBp, this.IBr);
   }
   
   public final char readChar()
   {
-    St(3);
+    ace(3);
     this.type = -1;
-    return (char)l.a(this.Bpu, this.Bpw, false);
+    return (char)l.a(this.IBp, this.IBr, false);
   }
   
   public final double readDouble()
   {
-    St(17);
+    ace(17);
     this.type = -1;
-    a locala = this.Bpu;
-    int i = this.Bpw;
+    a locala = this.IBp;
+    int i = this.IBr;
     long l = 0L;
     while (i >= 0)
     {
@@ -137,24 +126,24 @@ public final class m
   
   public final float readFloat()
   {
-    St(16);
+    ace(16);
     this.type = -1;
-    return Float.intBitsToFloat(l.a(this.Bpu, this.Bpw, true));
+    return Float.intBitsToFloat(l.a(this.IBp, this.IBr, true));
   }
   
   public final int readInt()
   {
-    St(4);
+    ace(4);
     this.type = -1;
-    return l.a(this.Bpu, this.Bpw);
+    return l.a(this.IBp, this.IBr);
   }
   
   public final long readLong()
   {
-    St(6);
+    ace(6);
     this.type = -1;
-    a locala = this.Bpu;
-    int j = this.Bpw;
+    a locala = this.IBp;
+    int j = this.IBr;
     long l = 0L;
     int i = j;
     while (i >= 0)
@@ -167,16 +156,16 @@ public final class m
   
   public final short readShort()
   {
-    St(2);
+    ace(2);
     this.type = -1;
-    return (short)l.a(this.Bpu, this.Bpw);
+    return (short)l.a(this.IBp, this.IBr);
   }
   
   public final void skipValue()
   {
     int j = 0;
     int i = 0;
-    switch (dWb())
+    switch (xM())
     {
     case 1: 
     case 5: 
@@ -218,46 +207,57 @@ public final class m
       readDouble();
       return;
     case 23: 
-      dWf();
+      foK();
       return;
     case 24: 
-      dWg();
+      foL();
       return;
     case 25: 
-      dWh();
+      foM();
       return;
     case 27: 
-      dWi();
+      foN();
       return;
     case 26: 
-      dWj();
+      foO();
       return;
     case 28: 
-      j = dWc();
+      j = foH();
       while (i < j)
       {
         skipValue();
         i += 1;
       }
     case 29: 
-      int k = dWd();
+      int k = foI();
       i = j;
       while (i < k)
       {
-        o.b(this.Bpu);
+        o.b(this.IBp);
         skipValue();
         i += 1;
       }
     case 30: 
-      dWk();
+      foP();
       return;
     }
     readBoolean();
   }
+  
+  public final int xM()
+  {
+    if (this.type == -1)
+    {
+      int i = this.IBp.readByte() & 0xFF;
+      this.type = (i & 0x1F);
+      this.IBr = ((i & 0xE0) >> 5);
+    }
+    return this.type;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.a.a.m
  * JD-Core Version:    0.7.0.1
  */

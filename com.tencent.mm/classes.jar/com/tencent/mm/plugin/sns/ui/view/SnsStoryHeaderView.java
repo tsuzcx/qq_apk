@@ -4,22 +4,24 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.be;
-import com.tencent.mm.plugin.expt.a.a.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.g.b.a.dp;
+import com.tencent.mm.plugin.expt.a.b;
+import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.story.api.k.b;
-import com.tencent.mm.plugin.story.api.k.c;
+import com.tencent.mm.plugin.story.api.l.b;
+import com.tencent.mm.plugin.story.api.l.c;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.cid;
+import com.tencent.mm.protocal.protobuf.cze;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import com.tencent.mm.ui.widget.StoryAvatarDotsView;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -28,27 +30,33 @@ import java.util.List;
 
 public class SnsStoryHeaderView
   extends FrameLayout
-  implements k.b
+  implements l.b
 {
-  private boolean cIy;
-  private String cpW;
-  public boolean cvo;
-  private List<String> fxt;
-  private View jXt;
-  private String rnO;
-  private int sml;
-  private int smm;
-  public boolean smn;
-  private TextView smo;
-  private StoryAvatarDotsView smp;
-  private TextView smq;
-  private TextView smr;
-  private int sms;
-  private int smt;
-  private int smu;
-  private String smv;
-  private int smw;
-  private SnsStoryHeaderView.a smx;
+  public boolean aJO;
+  public boolean dkt;
+  private boolean dzo;
+  private List<String> gYI;
+  private View mZJ;
+  private int rHn;
+  private String sessionId;
+  private String wQb;
+  private StoryAvatarDotsView xWA;
+  private TextView xWB;
+  private TextView xWC;
+  private int xWD;
+  private int xWE;
+  private int xWF;
+  private String xWG;
+  private int xWH;
+  private a xWI;
+  private int xWx;
+  public boolean xWy;
+  private TextView xWz;
+  
+  public SnsStoryHeaderView(Context paramContext)
+  {
+    this(paramContext, null);
+  }
   
   public SnsStoryHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -58,282 +66,298 @@ public class SnsStoryHeaderView
   public SnsStoryHeaderView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(40423);
-    this.smm = 10000;
-    this.fxt = new LinkedList();
-    this.cpW = null;
-    this.rnO = null;
-    this.cvo = false;
-    this.smn = false;
-    this.sms = 0;
-    this.smt = 0;
-    this.smu = 0;
-    this.smv = "";
-    this.smw = 0;
-    this.cIy = true;
-    paramInt = com.tencent.mm.kernel.g.RL().Ru().getInt(ac.a.yLK, 0);
+    AppMethodBeat.i(100432);
+    this.rHn = 10000;
+    this.gYI = new LinkedList();
+    this.sessionId = null;
+    this.wQb = null;
+    this.dkt = false;
+    this.xWy = false;
+    this.xWD = 0;
+    this.xWE = 0;
+    this.xWF = 0;
+    this.xWG = "";
+    this.xWH = 0;
+    this.dzo = true;
+    this.aJO = false;
+    paramInt = com.tencent.mm.kernel.g.afB().afk().getInt(ae.a.Fvg, 0);
     if (paramInt > 0) {}
-    for (this.smm = paramInt;; this.smm = ((com.tencent.mm.plugin.expt.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lSh, 10000))
+    for (this.rHn = paramInt;; this.rHn = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.pjB, 10000))
     {
-      if (((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.story.api.e.class)).getStoryUserInfo().xSO == 1) {
-        this.smm = 10001;
+      if (((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).getStoryUserInfo().Ere == 1) {
+        this.rHn = 10001;
       }
-      ab.i("MicroMsg.SnsStoryHeaderView", "init: headerType %s configType %s", new Object[] { Integer.valueOf(this.smm), Integer.valueOf(paramInt) });
-      inflate(getContext(), 2130970867, this);
-      this.jXt = findViewById(2131828087);
-      this.smo = ((TextView)findViewById(2131828091));
-      this.smp = ((StoryAvatarDotsView)findViewById(2131828090));
-      this.smq = ((TextView)findViewById(2131828089));
-      this.smr = ((TextView)findViewById(2131828092));
-      this.jXt.setOnClickListener(new SnsStoryHeaderView.1(this));
-      AppMethodBeat.o(40423);
-      return;
-    }
-  }
-  
-  private void cxB()
-  {
-    AppMethodBeat.i(40430);
-    ab.i("MicroMsg.SnsStoryHeaderView", "reportExpose: ");
-    if (this.fxt.size() <= 0)
-    {
-      AppMethodBeat.o(40430);
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.sms > 0) {
-      localStringBuilder.append((String)this.fxt.get(0));
-    }
-    int i = 1;
-    while (i < this.sms)
-    {
-      localStringBuilder.append("|").append((String)this.fxt.get(i));
-      i += 1;
-    }
-    be localbe = new be();
-    localbe.gu(this.rnO);
-    this.smv = "99_".concat(String.valueOf(System.currentTimeMillis()));
-    localbe.gv(this.smv);
-    localbe.cWR = this.sms;
-    localbe.gw(localStringBuilder.toString());
-    localbe.cWT = this.smt;
-    localbe.cVW = this.smu;
-    localbe.ake();
-    this.smw += 1;
-    AppMethodBeat.o(40430);
-  }
-  
-  private void cxx()
-  {
-    AppMethodBeat.i(40425);
-    this.fxt.clear();
-    this.smu = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().czx();
-    if ((this.sml != 1) || (this.smm == 10000) || (this.smm == 10001))
-    {
-      this.jXt.setVisibility(8);
-      this.smn = false;
-      if (this.fxt.size() != 0) {
-        break label227;
-      }
-      this.jXt.setVisibility(8);
-      this.smn = false;
-    }
-    for (;;)
-    {
-      if (!((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().czw().isEmpty()) {
-        break label249;
-      }
-      this.smr.setVisibility(8);
-      AppMethodBeat.o(40425);
-      return;
-      if (this.smm == 2)
+      ad.i("MicroMsg.SnsStoryHeaderView", "init: headerType %s configType %s", new Object[] { Integer.valueOf(this.rHn), Integer.valueOf(paramInt) });
+      inflate(getContext(), 2131495592, this);
+      this.mZJ = findViewById(2131305058);
+      this.xWz = ((TextView)findViewById(2131305070));
+      this.xWA = ((StoryAvatarDotsView)findViewById(2131305056));
+      this.xWB = ((TextView)findViewById(2131305059));
+      this.xWC = ((TextView)findViewById(2131305060));
+      this.mZJ.setOnClickListener(new View.OnClickListener()
       {
-        cxz();
-        ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().a(this);
-        break;
-      }
-      h.qsU.j(1006L, 0L, 1L);
-      h.qsU.j(1015L, 0L, 1L);
-      cxy();
-      ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().a(this);
-      break;
-      label227:
-      this.jXt.setVisibility(0);
-      if (!this.cvo) {
-        cxA();
-      }
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(100430);
+          if (SnsStoryHeaderView.a(SnsStoryHeaderView.this) != null) {
+            SnsStoryHeaderView.a(SnsStoryHeaderView.this).dCp();
+          }
+          h.vKh.m(1015L, 5L, 1L);
+          SnsStoryHeaderView.b(SnsStoryHeaderView.this);
+          AppMethodBeat.o(100430);
+        }
+      });
+      AppMethodBeat.o(100432);
+      return;
     }
-    label249:
-    this.smr.setVisibility(0);
-    this.smr.setText(String.valueOf(this.smu));
-    AppMethodBeat.o(40425);
   }
   
-  private void cxy()
+  private void dDU()
   {
-    AppMethodBeat.i(40426);
-    List localList1 = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().czu();
-    List localList2 = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().czv();
+    AppMethodBeat.i(100435);
+    List localList1 = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().dGk();
+    List localList2 = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().dGl();
     int i;
     int j;
     if (localList1.size() > 0)
     {
       i = localList1.size();
       ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().czw().keySet());
-      this.smt = i;
-      this.fxt.addAll(localList1);
-      this.fxt.addAll(localList2);
-      this.fxt.addAll(localArrayList);
-      this.smo.setText(getResources().getString(2131303966));
-      dw(localList1);
-      this.smq.setTextColor(getContext().getResources().getColor(2131689483));
-      j = com.tencent.mm.m.g.Nq().getInt("StoryEntranceShouldShowInTimelineOfUnreadCount", 3);
-      ab.i("MicroMsg.SnsStoryHeaderView", "initTypeNew %s", new Object[] { Integer.valueOf(j) });
+      localArrayList.addAll(((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().dGm().keySet());
+      this.xWE = i;
+      this.gYI.addAll(localList1);
+      this.gYI.addAll(localList2);
+      this.gYI.addAll(localArrayList);
+      this.xWz.setText(getResources().getString(2131763983));
+      fO(localList1);
+      this.xWB.setTextColor(getContext().getResources().getColor(2131099660));
+      j = com.tencent.mm.m.g.Zd().getInt("StoryEntranceShouldShowInTimelineOfUnreadCount", 3);
+      ad.i("MicroMsg.SnsStoryHeaderView", "initTypeNew %s", new Object[] { Integer.valueOf(j) });
       if (localList1.size() <= 0) {
-        break label319;
+        break label317;
       }
-      h.qsU.j(1015L, 1L, 1L);
+      h.vKh.m(1015L, 1L, 1L);
     }
     for (;;)
     {
-      if (this.fxt.size() == 0) {
-        h.qsU.j(1015L, 3L, 1L);
+      if (this.gYI.size() == 0) {
+        h.vKh.m(1015L, 3L, 1L);
       }
       if (i <= j) {
-        break label335;
+        break label333;
       }
-      j = BackwardSupportUtil.b.b(getContext(), 4.0F);
-      this.smq.setPadding(j, 0, j, 0);
-      this.smq.setText(String.format("%s", new Object[] { Integer.valueOf(i) }));
-      AppMethodBeat.o(40426);
+      j = BackwardSupportUtil.b.g(getContext(), 4.0F);
+      this.xWB.setPadding(j, 0, j, 0);
+      this.xWB.setText(String.format("%s", new Object[] { Integer.valueOf(i) }));
+      AppMethodBeat.o(100435);
       return;
       i = 0;
       break;
-      label319:
-      h.qsU.j(1015L, 2L, 1L);
+      label317:
+      h.vKh.m(1015L, 2L, 1L);
     }
-    label335:
-    this.smq.setPadding(0, 0, 0, 0);
-    this.smq.setText("");
-    AppMethodBeat.o(40426);
+    label333:
+    this.xWB.setPadding(0, 0, 0, 0);
+    this.xWB.setText("");
+    AppMethodBeat.o(100435);
   }
   
-  private void cxz()
+  private void dDV()
   {
-    AppMethodBeat.i(40427);
-    List localList1 = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().czu();
-    List localList2 = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().czy();
+    AppMethodBeat.i(100436);
+    List localList1 = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().dGk();
+    List localList2 = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().dGo();
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().czw().keySet());
-    this.fxt.addAll(localList1);
-    this.fxt.addAll(localList2);
-    this.fxt.addAll(localArrayList);
-    this.smo.setText(getResources().getString(2131303963));
-    dw(localList1);
-    AppMethodBeat.o(40427);
+    localArrayList.addAll(((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().dGm().keySet());
+    this.gYI.addAll(localList1);
+    this.gYI.addAll(localList2);
+    this.gYI.addAll(localArrayList);
+    this.xWz.setText(getResources().getString(2131763980));
+    fO(localList1);
+    AppMethodBeat.o(100436);
   }
   
-  private void dw(List<String> paramList)
+  private void dDX()
   {
-    AppMethodBeat.i(40428);
-    this.smp.setIconSize(com.tencent.mm.cb.a.fromDPToPix(getContext(), 26));
-    this.smp.setIconGap(com.tencent.mm.cb.a.fromDPToPix(getContext(), 16));
-    this.sms = 0;
+    AppMethodBeat.i(100439);
+    ad.i("MicroMsg.SnsStoryHeaderView", "reportExpose: ");
+    if (this.gYI.size() <= 0)
+    {
+      AppMethodBeat.o(100439);
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.xWD > 0) {
+      localStringBuilder.append((String)this.gYI.get(0));
+    }
+    int i = 1;
+    while (i < this.xWD)
+    {
+      localStringBuilder.append("|").append((String)this.gYI.get(i));
+      i += 1;
+    }
+    dp localdp = new dp();
+    localdp.jS(this.wQb);
+    this.xWG = "99_".concat(String.valueOf(System.currentTimeMillis()));
+    localdp.jT(this.xWG);
+    localdp.dUX = this.xWD;
+    localdp.jU(localStringBuilder.toString());
+    localdp.dUZ = this.xWE;
+    localdp.dTX = this.xWF;
+    localdp.aBj();
+    this.xWH += 1;
+    AppMethodBeat.o(100439);
+  }
+  
+  private void fO(List<String> paramList)
+  {
+    AppMethodBeat.i(100437);
+    this.xWA.setIconSize(a.fromDPToPix(getContext(), 26));
+    this.xWA.setIconGap(a.fromDPToPix(getContext(), 16));
+    this.xWD = 0;
     if (paramList.size() > 0)
     {
-      this.smp.setVisibility(0);
-      this.smp.setIconLayerCount(Math.min(paramList.size(), 3));
-      this.sms = this.smp.getChildCount();
+      this.xWA.setVisibility(0);
+      this.xWA.setIconLayerCount(Math.min(paramList.size(), 3));
+      this.xWD = this.xWA.getChildCount();
       int i = 0;
-      while (i < this.smp.getChildCount())
+      while (i < this.xWA.getChildCount())
       {
-        a.b.a(this.smp.pU(i), (String)paramList.get(i), 0.5F, false);
-        this.smp.pU(i).setBackground(getResources().getDrawable(2130840424));
-        this.smp.pU(i).setPadding(com.tencent.mm.cb.a.fromDPToPix(getContext(), 1), com.tencent.mm.cb.a.fromDPToPix(getContext(), 1), com.tencent.mm.cb.a.fromDPToPix(getContext(), 1), com.tencent.mm.cb.a.fromDPToPix(getContext(), 1));
+        a.b.a(this.xWA.us(i), (String)paramList.get(i), 0.5F, false);
+        this.xWA.us(i).setBackground(getResources().getDrawable(2131234145));
+        this.xWA.us(i).setPadding(a.fromDPToPix(getContext(), 1), a.fromDPToPix(getContext(), 1), a.fromDPToPix(getContext(), 1), a.fromDPToPix(getContext(), 1));
         i += 1;
       }
-      AppMethodBeat.o(40428);
+      AppMethodBeat.o(100437);
       return;
     }
-    this.smp.setVisibility(8);
-    AppMethodBeat.o(40428);
+    this.xWA.setVisibility(8);
+    AppMethodBeat.o(100437);
   }
   
-  public final void cxA()
+  private void gP(boolean paramBoolean)
   {
-    AppMethodBeat.i(40429);
-    if (!this.cIy)
+    AppMethodBeat.i(100434);
+    ad.i("MicroMsg.SnsStoryHeaderView", "updateView: %s, %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(this.aJO) });
+    if (this.aJO)
     {
-      this.jXt.setVisibility(8);
-      AppMethodBeat.o(40429);
+      AppMethodBeat.o(100434);
       return;
     }
-    if (this.jXt.getVisibility() == 0)
+    this.gYI.clear();
+    this.xWF = ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().dGn();
+    if ((this.xWx != 1) || (this.rHn == 10000) || (this.rHn == 10001))
+    {
+      this.mZJ.setVisibility(8);
+      this.xWy = false;
+      if (this.gYI.size() != 0) {
+        break label270;
+      }
+      this.mZJ.setVisibility(8);
+      this.xWy = false;
+    }
+    for (;;)
+    {
+      if (!((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().dGm().isEmpty()) {
+        break label292;
+      }
+      this.xWC.setVisibility(8);
+      AppMethodBeat.o(100434);
+      return;
+      if (this.rHn == 2)
+      {
+        dDV();
+        ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().a(this);
+        break;
+      }
+      h.vKh.m(1006L, 0L, 1L);
+      h.vKh.m(1015L, 0L, 1L);
+      dDU();
+      ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).getContactFetcher().a(this);
+      break;
+      label270:
+      this.mZJ.setVisibility(0);
+      if (!this.dkt) {
+        dDW();
+      }
+    }
+    label292:
+    this.xWC.setVisibility(0);
+    this.xWC.setText(String.valueOf(this.xWF));
+    AppMethodBeat.o(100434);
+  }
+  
+  public final void dDW()
+  {
+    AppMethodBeat.i(100438);
+    if (!this.dzo)
+    {
+      this.mZJ.setVisibility(8);
+      AppMethodBeat.o(100438);
+      return;
+    }
+    if (this.mZJ.getVisibility() == 0)
     {
       int[] arrayOfInt = new int[2];
-      this.jXt.getLocationOnScreen(arrayOfInt);
+      this.mZJ.getLocationOnScreen(arrayOfInt);
       if (arrayOfInt[1] <= 0) {
         break label102;
       }
-      if (!this.smn)
+      if (!this.xWy)
       {
-        this.smn = true;
-        cxB();
+        this.xWy = true;
+        dDX();
       }
     }
     for (;;)
     {
-      ab.i("MicroMsg.SnsStoryHeaderView", "checkExpose: %s", new Object[] { Boolean.valueOf(this.smn) });
-      AppMethodBeat.o(40429);
+      ad.i("MicroMsg.SnsStoryHeaderView", "checkExpose: %s", new Object[] { Boolean.valueOf(this.xWy) });
+      AppMethodBeat.o(100438);
       return;
       label102:
-      this.smn = false;
+      this.xWy = false;
     }
   }
   
-  public final void cxC()
+  public final void dDY()
   {
-    AppMethodBeat.i(40431);
-    al.d(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(40422);
-        SnsStoryHeaderView.d(SnsStoryHeaderView.this);
-        if (SnsStoryHeaderView.e(SnsStoryHeaderView.this).size() > 0) {
-          ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.story.api.e.class)).preloadForSnsUser((String)SnsStoryHeaderView.e(SnsStoryHeaderView.this).get(0), false);
-        }
-        AppMethodBeat.o(40422);
-      }
-    });
-    AppMethodBeat.o(40431);
+    AppMethodBeat.i(100440);
+    gP(false);
+    if (this.gYI.size() > 0) {
+      ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).preloadForSnsUser((String)this.gYI.get(0), false);
+    }
+    AppMethodBeat.o(100440);
   }
   
   public void setEnterObjectId(String paramString)
   {
-    this.rnO = paramString;
+    this.wQb = paramString;
   }
   
   public void setSessionId(String paramString)
   {
-    this.cpW = paramString;
+    this.sessionId = paramString;
   }
   
   public void setSnsType(int paramInt)
   {
-    AppMethodBeat.i(40424);
-    this.sml = paramInt;
-    cxx();
-    if (this.fxt.size() > 0) {
-      ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.story.api.e.class)).preloadForSnsUser((String)this.fxt.get(0), true);
+    AppMethodBeat.i(100433);
+    this.xWx = paramInt;
+    gP(true);
+    if (this.gYI.size() > 0) {
+      ((com.tencent.mm.plugin.story.api.e)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.story.api.e.class)).preloadForSnsUser((String)this.gYI.get(0), true);
     }
-    AppMethodBeat.o(40424);
+    AppMethodBeat.o(100433);
   }
   
-  public void setStoryAction(SnsStoryHeaderView.a parama)
+  public void setStoryAction(a parama)
   {
-    this.smx = parama;
+    this.xWI = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void dCp();
   }
 }
 

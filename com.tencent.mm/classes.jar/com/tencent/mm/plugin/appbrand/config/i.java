@@ -1,66 +1,183 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import android.content.SharedPreferences.Editor;
-import com.tencent.luggage.sdk.d.b;
+import android.os.SystemClock;
+import android.webkit.WebSettings;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.performance.a;
-import com.tencent.mmkv.MMKV;
+import com.tencent.mm.plugin.appbrand.utils.aa;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
+import d.g.a.a;
+import d.g.b.k;
+import java.util.concurrent.atomic.AtomicReference;
 
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandNetworkConfigUserAgentHelper;", "", "()V", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "MMKV_KEY", "", "MMKV_NAME", "TAG", "mMemoryCachedUA", "Ljava/util/concurrent/atomic/AtomicReference;", "getByMMKV", "getByWebkit", "getSystemUserAgent", "setMMKV", "", "ua", "warmUpMemoryCache", "_ua", "luggage-wechat-full-sdk_release"})
 public final class i
 {
-  private static final MMKV hjd;
+  private static final AtomicReference<String> jdH;
+  public static final i jdI;
   
   static
   {
-    AppMethodBeat.i(140819);
-    hjd = MMKV.mmkvWithID("com.tencent.mm.plugin.appbrand.config.AppDebugInfoHelper", 2);
-    AppMethodBeat.o(140819);
+    AppMethodBeat.i(169550);
+    jdI = new i();
+    jdH = new AtomicReference();
+    AppMethodBeat.o(169550);
   }
   
-  public static boolean Ab(String paramString)
+  public static final String FP(String paramString)
   {
-    AppMethodBeat.i(140816);
-    boolean bool = hjd.getBoolean(paramString + "_AppDebugEnabled", false);
-    AppMethodBeat.o(140816);
-    return bool;
-  }
-  
-  public static boolean a(b paramb)
-  {
-    AppMethodBeat.i(140818);
-    a locala = (a)paramb.d(a.class, false);
-    if (locala == null)
+    AppMethodBeat.i(186857);
+    Object localObject = (CharSequence)paramString;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1;; i = 0)
     {
-      AppMethodBeat.o(140818);
-      return false;
+      if (i != 0) {
+        paramString = aTC();
+      }
+      localObject = (String)jdH.getAndSet(paramString);
+      ad.i("Luggage.WXA.FULL.AppBrandNetworkConfigUserAgentHelper", "warmUpMemoryCache updated value = [ " + paramString + " ]");
+      if ((k.g(paramString, localObject) ^ true)) {
+        ax.fF("AppBrandNetworkConfigUserAgentHelper", 2).encode("UserAgent", paramString);
+      }
+      AppMethodBeat.o(186857);
+      return paramString;
     }
-    if (paramb.wV())
+  }
+  
+  public static final String aTB()
+  {
+    AppMethodBeat.i(169547);
+    Object localObject = (String)jdH.get();
+    CharSequence localCharSequence = (CharSequence)localObject;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; i == 0; i = 0)
     {
-      AppMethodBeat.o(140818);
-      return false;
+      ad.i("Luggage.WXA.FULL.AppBrandNetworkConfigUserAgentHelper", "getSystemUserAgent by memory cache");
+      AppMethodBeat.o(169547);
+      return localObject;
     }
-    boolean bool = locala.iAF;
-    AppMethodBeat.o(140818);
-    return bool;
+    localObject = a.jdJ;
+    localObject = a.aTF();
+    jdH.set(localObject);
+    AppMethodBeat.o(169547);
+    return localObject;
   }
   
-  public static void ab(String paramString, boolean paramBoolean)
+  private static String aTC()
   {
-    AppMethodBeat.i(140815);
-    hjd.putBoolean(paramString + "_AppDebugEnabled", paramBoolean).commit();
-    AppMethodBeat.o(140815);
+    AppMethodBeat.i(169549);
+    try
+    {
+      String str1 = WebSettings.getDefaultUserAgent(aj.getContext());
+      k.g(str1, "WebSettings.getDefaultUs…tionContext.getContext())");
+      AppMethodBeat.o(169549);
+      return str1;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        String str2 = System.getProperty("http.agent");
+        Object localObject = str2;
+        if (str2 == null) {
+          localObject = "";
+        }
+      }
+    }
   }
   
-  public static void zY(String paramString)
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"getByHeavyInvoke", "", "invoke"})
+  static final class a
+    extends d.g.b.l
+    implements a<String>
   {
-    AppMethodBeat.i(140817);
-    hjd.remove(paramString + "_AppDebugEnabled").commit();
-    AppMethodBeat.o(140817);
+    public static final a jdJ;
+    
+    static
+    {
+      AppMethodBeat.i(169546);
+      jdJ = new a();
+      AppMethodBeat.o(169546);
+    }
+    
+    a()
+    {
+      super();
+    }
+    
+    public static String aTF()
+    {
+      AppMethodBeat.i(169545);
+      long l = SystemClock.elapsedRealtime();
+      Object localObject = i.jdI;
+      String str2 = i.aTD();
+      String str1;
+      if (str2 != null)
+      {
+        str1 = str2.toString();
+        localObject = str1;
+        if (str1 != null) {}
+      }
+      else
+      {
+        localObject = "";
+      }
+      boolean bool = aa.Be();
+      l = SystemClock.elapsedRealtime() - l;
+      if ((l > 32L) && (bool))
+      {
+        ad.w("Luggage.Utils.Profile", "block main thread and skip " + (int)(l / 16L) + " frames! runProfiled:log:" + "Luggage.WXA.FULL.AppBrandNetworkConfigUserAgentHelper: getSystemUserAgent try mmkv" + " cost " + l + " ms result:" + (String)localObject + " isMainThread: " + bool + ' ');
+        localObject = (CharSequence)str2;
+        if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
+          break label229;
+        }
+      }
+      label229:
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label234;
+        }
+        AppMethodBeat.o(169545);
+        return str2;
+        ad.i("Luggage.Utils.Profile", "runProfiled:log:" + "Luggage.WXA.FULL.AppBrandNetworkConfigUserAgentHelper: getSystemUserAgent try mmkv" + " cost " + l + " ms result:" + (String)localObject + " isMainThread: " + bool + ' ');
+        break;
+      }
+      label234:
+      l = SystemClock.elapsedRealtime();
+      localObject = i.jdI;
+      str2 = i.aTE();
+      if (str2 != null)
+      {
+        str1 = str2.toString();
+        localObject = str1;
+        if (str1 != null) {}
+      }
+      else
+      {
+        localObject = "";
+      }
+      bool = aa.Be();
+      l = SystemClock.elapsedRealtime() - l;
+      if ((l > 32L) && (bool)) {
+        ad.w("Luggage.Utils.Profile", "block main thread and skip " + (int)(l / 16L) + " frames! runProfiled:log:" + "Luggage.WXA.FULL.AppBrandNetworkConfigUserAgentHelper: getSystemUserAgent by webkit" + " cost " + l + " ms result:" + (String)localObject + " isMainThread: " + bool + ' ');
+      }
+      for (;;)
+      {
+        if (str2 == null) {
+          k.fvU();
+        }
+        AppMethodBeat.o(169545);
+        return str2;
+        ad.i("Luggage.Utils.Profile", "runProfiled:log:" + "Luggage.WXA.FULL.AppBrandNetworkConfigUserAgentHelper: getSystemUserAgent by webkit" + " cost " + l + " ms result:" + (String)localObject + " isMainThread: " + bool + ' ');
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.i
  * JD-Core Version:    0.7.0.1
  */

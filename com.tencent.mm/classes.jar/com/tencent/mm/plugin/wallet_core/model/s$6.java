@@ -1,0 +1,22 @@
+package com.tencent.mm.plugin.wallet_core.model;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.wh;
+import com.tencent.mm.sdk.b.c;
+
+final class s$6
+  extends c<wh>
+{
+  s$6(s params)
+  {
+    AppMethodBeat.i(160874);
+    this.__eventId = wh.class.getName().hashCode();
+    AppMethodBeat.o(160874);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.s.6
+ * JD-Core Version:    0.7.0.1
+ */

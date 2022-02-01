@@ -9,86 +9,88 @@ import java.util.PriorityQueue;
 abstract class d
   implements com.google.android.exoplayer2.f.e
 {
-  private long aOF;
-  private final LinkedList<h> aVc = new LinkedList();
-  final LinkedList<i> aVd;
-  private final PriorityQueue<h> aVe;
-  private h aVf;
+  private long bkf;
+  private final LinkedList<h> btf = new LinkedList();
+  final LinkedList<i> btg;
+  private final PriorityQueue<h> bth;
+  private h bti;
   
   public d()
   {
     int i = 0;
     while (i < 10)
     {
-      this.aVc.add(new h());
+      this.btf.add(new h());
       i += 1;
     }
-    this.aVd = new LinkedList();
+    this.btg = new LinkedList();
     i = j;
     while (i < 2)
     {
-      this.aVd.add(new e(this));
+      this.btg.add(new e(this));
       i += 1;
     }
-    this.aVe = new PriorityQueue();
+    this.bth = new PriorityQueue();
   }
   
   private void c(h paramh)
   {
     paramh.clear();
-    this.aVc.add(paramh);
+    this.btf.add(paramh);
   }
   
   protected abstract void a(h paramh);
   
-  public void aa(long paramLong)
+  public void al(long paramLong)
   {
-    this.aOF = paramLong;
+    this.bkf = paramLong;
   }
   
   public void b(h paramh)
   {
     boolean bool;
-    if (paramh == this.aVf)
+    if (paramh == this.bti)
     {
       bool = true;
       a.checkArgument(bool);
-      if (!paramh.nD()) {
+      if (!paramh.sp()) {
         break label37;
       }
       c(paramh);
     }
     for (;;)
     {
-      this.aVf = null;
+      this.bti = null;
       return;
       bool = false;
       break;
       label37:
-      this.aVe.add(paramh);
+      this.bth.add(paramh);
     }
   }
   
   public void flush()
   {
-    this.aOF = 0L;
-    while (!this.aVe.isEmpty()) {
-      c((h)this.aVe.poll());
+    this.bkf = 0L;
+    while (!this.bth.isEmpty()) {
+      c((h)this.bth.poll());
     }
-    if (this.aVf != null)
+    if (this.bti != null)
     {
-      c(this.aVf);
-      this.aVf = null;
+      c(this.bti);
+      this.bti = null;
     }
   }
   
-  protected abstract boolean pM();
+  public void release() {}
   
-  protected abstract com.google.android.exoplayer2.f.d pN();
+  protected abstract boolean uG();
   
-  public i pQ()
+  protected abstract com.google.android.exoplayer2.f.d uH();
+  
+  public i uK()
   {
-    if (this.aVd.isEmpty()) {
+    if (this.btg.isEmpty()) {
       return null;
     }
     h localh;
@@ -98,48 +100,46 @@ abstract class d
       do
       {
         c(localh);
-        if ((this.aVe.isEmpty()) || (((h)this.aVe.peek()).aAT > this.aOF)) {
+        if ((this.bth.isEmpty()) || (((h)this.bth.peek()).timeUs > this.bkf)) {
           break;
         }
-        localh = (h)this.aVe.poll();
-        if (localh.nE())
+        localh = (h)this.bth.poll();
+        if (localh.sq())
         {
-          localObject = (i)this.aVd.pollFirst();
-          ((i)localObject).db(4);
+          localObject = (i)this.btg.pollFirst();
+          ((i)localObject).dM(4);
           c(localh);
           return localObject;
         }
         a(localh);
-      } while (!pM());
-      localObject = pN();
-    } while (localh.nD());
-    i locali = (i)this.aVd.pollFirst();
-    locali.a(localh.aAT, (com.google.android.exoplayer2.f.d)localObject, 9223372036854775807L);
+      } while (!uG());
+      localObject = uH();
+    } while (localh.sp());
+    i locali = (i)this.btg.pollFirst();
+    locali.a(localh.timeUs, (com.google.android.exoplayer2.f.d)localObject, 9223372036854775807L);
     c(localh);
     return locali;
     return null;
   }
   
-  public h pR()
+  public h uL()
   {
-    if (this.aVf == null) {}
+    if (this.bti == null) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      if (!this.aVc.isEmpty()) {
+      if (!this.btf.isEmpty()) {
         break;
       }
       return null;
     }
-    this.aVf = ((h)this.aVc.pollFirst());
-    return this.aVf;
+    this.bti = ((h)this.btf.pollFirst());
+    return this.bti;
   }
-  
-  public void release() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.f.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class fa
   extends b
 {
-  public fa.a csJ;
+  public a dhy;
+  public b dhz;
   
   public fa()
   {
@@ -15,11 +16,23 @@ public final class fa
   
   private fa(byte paramByte)
   {
-    AppMethodBeat.i(113282);
-    this.csJ = new fa.a();
-    this.ymq = false;
+    AppMethodBeat.i(19801);
+    this.dhy = new a();
+    this.dhz = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(113282);
+    AppMethodBeat.o(19801);
+  }
+  
+  public static final class a
+  {
+    public byte[] data;
+    public String mac;
+  }
+  
+  public static final class b
+  {
+    public boolean dfO;
   }
 }
 

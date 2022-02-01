@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class mg
   extends b
 {
-  public mg.a cCp;
+  public a dru;
   
   public mg()
   {
@@ -15,16 +15,21 @@ public final class mg
   
   private mg(byte paramByte)
   {
-    AppMethodBeat.i(105580);
-    this.cCp = new mg.a();
-    this.ymq = false;
+    AppMethodBeat.i(125622);
+    this.dru = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(105580);
+    AppMethodBeat.o(125622);
+  }
+  
+  public static final class a
+  {
+    public int position;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.mg
  * JD-Core Version:    0.7.0.1
  */

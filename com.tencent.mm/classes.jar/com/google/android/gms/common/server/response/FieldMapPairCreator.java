@@ -12,7 +12,7 @@ public class FieldMapPairCreator
   
   public FieldMappingDictionary.FieldMapPair createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61556);
+    AppMethodBeat.i(12048);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     int i = 0;
     FastJsonResponse.Field localField = null;
@@ -37,7 +37,7 @@ public class FieldMapPairCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new FieldMappingDictionary.FieldMapPair(i, str, localField);
-    AppMethodBeat.o(61556);
+    AppMethodBeat.o(12048);
     return paramParcel;
   }
   
@@ -48,7 +48,7 @@ public class FieldMapPairCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.server.response.FieldMapPairCreator
  * JD-Core Version:    0.7.0.1
  */

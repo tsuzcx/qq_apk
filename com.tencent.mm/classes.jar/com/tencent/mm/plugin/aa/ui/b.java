@@ -11,10 +11,8 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.protocal.protobuf.k;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.y;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,38 +20,38 @@ public final class b
   extends BaseAdapter
 {
   private Context context;
-  List<k> dataList;
+  List<com.tencent.mm.protocal.protobuf.k> dataList;
   int mode;
   
   public b(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(40715);
+    AppMethodBeat.i(63494);
     this.dataList = new ArrayList();
     this.context = paramContext;
     this.mode = paramInt;
-    AppMethodBeat.o(40715);
+    AppMethodBeat.o(63494);
   }
   
-  public final void aoX()
+  public final void aHq()
   {
-    AppMethodBeat.i(40719);
+    AppMethodBeat.i(63498);
     this.dataList.clear();
-    AppMethodBeat.o(40719);
+    AppMethodBeat.o(63498);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(40716);
+    AppMethodBeat.i(63495);
     int i = this.dataList.size();
-    AppMethodBeat.o(40716);
+    AppMethodBeat.o(63495);
     return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(40717);
+    AppMethodBeat.i(63496);
     Object localObject = this.dataList.get(paramInt);
-    AppMethodBeat.o(40717);
+    AppMethodBeat.o(63496);
     return localObject;
   }
   
@@ -64,105 +62,105 @@ public final class b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(40718);
+    AppMethodBeat.i(63497);
     View localView = paramView;
     if (paramView == null)
     {
-      localView = w.hM(this.context).inflate(2130968578, paramViewGroup, false);
+      localView = y.js(this.context).inflate(2131492885, paramViewGroup, false);
       localView.setTag(new a(localView));
     }
     a locala = (a)localView.getTag();
-    k localk = (k)getItem(paramInt);
-    locala.ehv.setImageResource(2131230720);
-    a.b.f(locala.ehv, localk.wjX, 2131230720);
-    locala.titleTv.setText(j.b(this.context, localk.title, locala.titleTv.getTextSize()));
-    paramViewGroup = ((com.tencent.mm.plugin.messenger.a.b)g.E(com.tencent.mm.plugin.messenger.a.b.class)).nE(localk.wjX);
-    if (!bo.isNullOrNil(paramViewGroup))
+    com.tencent.mm.protocal.protobuf.k localk = (com.tencent.mm.protocal.protobuf.k)getItem(paramInt);
+    locala.fuj.setImageResource(2131689473);
+    a.b.a(locala.fuj, localk.Csj, 2131689473, null);
+    locala.titleTv.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.context, localk.title, locala.titleTv.getTextSize()));
+    paramViewGroup = ((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).sh(localk.Csj);
+    if (!bt.isNullOrNil(paramViewGroup))
     {
       paramView = paramViewGroup;
       if (!paramViewGroup.endsWith("@chatroom")) {}
     }
     else
     {
-      paramView = this.context.getString(2131296344);
+      paramView = this.context.getString(2131755024);
     }
-    locala.gpo.setText(j.b(this.context, paramView, locala.gpo.getTextSize()));
+    locala.ibE.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.context, paramView, locala.ibE.getTextSize()));
     if (this.mode == 2)
     {
-      locala.gpp.setText(localk.wkj);
-      locala.gpq.setText(String.format("%s%s", new Object[] { Float.valueOf((float)localk.cNd / 100.0F), this.context.getString(2131296390) }));
-      locala.gpr.setVisibility(0);
+      locala.ibF.setText(localk.Csz);
+      locala.ibG.setText(String.format("%s%s", new Object[] { Float.valueOf((float)localk.dEb / 100.0F), this.context.getString(2131755072) }));
+      locala.fxX.setVisibility(0);
       if (this.mode != 2) {
         break label395;
       }
       switch (localk.state)
       {
       default: 
-        locala.gpr.setVisibility(4);
+        locala.fxX.setVisibility(4);
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(40718);
+      AppMethodBeat.o(63497);
       return localView;
-      locala.gpp.setText(localk.wkg);
+      locala.ibF.setText(localk.Csw);
       break;
-      locala.gpr.setText(2131296364);
-      locala.gpr.setTextColor(this.context.getResources().getColor(2131689632));
+      locala.fxX.setText(2131755045);
+      locala.fxX.setTextColor(this.context.getResources().getColor(2131099844));
       continue;
-      locala.gpr.setText(2131296362);
-      locala.gpr.setTextColor(this.context.getResources().getColor(2131689632));
+      locala.fxX.setText(2131755043);
+      locala.fxX.setTextColor(this.context.getResources().getColor(2131099844));
       continue;
       label395:
       switch (localk.state)
       {
       default: 
-        locala.gpr.setVisibility(4);
+        locala.fxX.setVisibility(4);
         break;
       case 1: 
-        locala.gpr.setText(2131296363);
-        locala.gpr.setTextColor(this.context.getResources().getColor(2131689632));
+        locala.fxX.setText(2131755044);
+        locala.fxX.setTextColor(this.context.getResources().getColor(2131099844));
         break;
       case 2: 
-        locala.gpr.setText(2131296361);
-        locala.gpr.setTextColor(this.context.getResources().getColor(2131689632));
+        locala.fxX.setText(2131755042);
+        locala.fxX.setTextColor(this.context.getResources().getColor(2131099844));
         break;
       case 3: 
-        locala.gpr.setText(2131296359);
-        locala.gpr.setTextColor(this.context.getResources().getColor(2131690391));
+        locala.fxX.setText(2131755040);
+        locala.fxX.setTextColor(this.context.getResources().getColor(2131099804));
         break;
       case 4: 
-        locala.gpr.setText(2131296360);
-        locala.gpr.setTextColor(this.context.getResources().getColor(2131690391));
+        locala.fxX.setText(2131755041);
+        locala.fxX.setTextColor(this.context.getResources().getColor(2131099804));
       }
     }
   }
   
   final class a
   {
-    public ImageView ehv;
-    public TextView gpo;
-    public TextView gpp;
-    public TextView gpq;
-    public TextView gpr;
+    public ImageView fuj;
+    public TextView fxX;
+    public TextView ibE;
+    public TextView ibF;
+    public TextView ibG;
     public TextView titleTv;
     
     public a(View paramView)
     {
-      AppMethodBeat.i(40714);
-      this.ehv = ((ImageView)paramView.findViewById(2131820901));
-      this.gpo = ((TextView)paramView.findViewById(2131820903));
-      this.titleTv = ((TextView)paramView.findViewById(2131820904));
-      this.gpp = ((TextView)paramView.findViewById(2131820905));
-      this.gpq = ((TextView)paramView.findViewById(2131820906));
-      this.gpr = ((TextView)paramView.findViewById(2131820907));
-      AppMethodBeat.o(40714);
+      AppMethodBeat.i(63493);
+      this.fuj = ((ImageView)paramView.findViewById(2131296292));
+      this.ibE = ((TextView)paramView.findViewById(2131296293));
+      this.titleTv = ((TextView)paramView.findViewById(2131296297));
+      this.ibF = ((TextView)paramView.findViewById(2131296294));
+      this.ibG = ((TextView)paramView.findViewById(2131296291));
+      this.fxX = ((TextView)paramView.findViewById(2131296296));
+      AppMethodBeat.o(63493);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.b
  * JD-Core Version:    0.7.0.1
  */

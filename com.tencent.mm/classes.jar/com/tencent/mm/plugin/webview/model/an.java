@@ -1,57 +1,104 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fs;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public final class an
-  extends fs
 {
-  protected static c.a info;
+  private static an AYv;
+  HashMap<String, WebViewJSSDKFileItem> AYw;
   
   static
   {
-    AppMethodBeat.i(6736);
-    c.a locala = new c.a();
-    locala.yrK = new Field[5];
-    locala.columns = new String[6];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "recordId";
-    locala.yrM.put("recordId", "INTEGER PRIMARY KEY ");
-    localStringBuilder.append(" recordId INTEGER PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "recordId";
-    locala.columns[1] = "appId";
-    locala.yrM.put("appId", "TEXT");
-    localStringBuilder.append(" appId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "domin";
-    locala.yrM.put("domin", "TEXT");
-    localStringBuilder.append(" domin TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "key";
-    locala.yrM.put("key", "TEXT");
-    localStringBuilder.append(" key TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "value";
-    locala.yrM.put("value", "TEXT");
-    localStringBuilder.append(" value TEXT");
-    locala.columns[5] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(6736);
+    AppMethodBeat.i(79009);
+    AYv = new an();
+    AppMethodBeat.o(79009);
   }
   
-  public final c.a getDBInfo()
+  public an()
   {
-    return info;
+    AppMethodBeat.i(79005);
+    this.AYw = new HashMap();
+    AppMethodBeat.o(79005);
+  }
+  
+  public static final an emc()
+  {
+    return AYv;
+  }
+  
+  public final void a(WebViewJSSDKFileItem paramWebViewJSSDKFileItem)
+  {
+    AppMethodBeat.i(79006);
+    if ((paramWebViewJSSDKFileItem == null) || (bt.isNullOrNil(paramWebViewJSSDKFileItem.diQ)))
+    {
+      ad.e("MicroMsg.WebViewJSSDKFileItemManager", "item is null or local id is null, ignore this add");
+      AppMethodBeat.o(79006);
+      return;
+    }
+    ad.i("MicroMsg.WebViewJSSDKFileItemManager", "add jssdk file item, local id : %s, file path : %s", new Object[] { paramWebViewJSSDKFileItem.diQ, paramWebViewJSSDKFileItem.jau });
+    this.AYw.put(paramWebViewJSSDKFileItem.diQ, paramWebViewJSSDKFileItem);
+    AppMethodBeat.o(79006);
+  }
+  
+  public final void awB(String paramString)
+  {
+    AppMethodBeat.i(187912);
+    if (bt.isNullOrNil(paramString))
+    {
+      ad.e("MicroMsg.WebViewJSSDKFileItemManager", "removeJSSDKFileItem, local id is null");
+      AppMethodBeat.o(187912);
+      return;
+    }
+    ad.i("MicroMsg.WebViewJSSDKFileItemManager", "removeJSSDKFileItem, localId:%s", new Object[] { paramString });
+    this.AYw.remove(paramString);
+    AppMethodBeat.o(187912);
+  }
+  
+  public final WebViewJSSDKFileItem awC(String paramString)
+  {
+    AppMethodBeat.i(79007);
+    if (bt.isNullOrNil(paramString))
+    {
+      ad.e("MicroMsg.WebViewJSSDKFileItemManager", "get by local id error, local id is null or nil");
+      AppMethodBeat.o(79007);
+      return null;
+    }
+    paramString = (WebViewJSSDKFileItem)this.AYw.get(paramString);
+    AppMethodBeat.o(79007);
+    return paramString;
+  }
+  
+  public final WebViewJSSDKFileItem awD(String paramString)
+  {
+    AppMethodBeat.i(79008);
+    if (bt.isNullOrNil(paramString))
+    {
+      ad.e("MicroMsg.WebViewJSSDKFileItemManager", "getItemByServerId error, media id is null or nil");
+      AppMethodBeat.o(79008);
+      return null;
+    }
+    Iterator localIterator = this.AYw.values().iterator();
+    while (localIterator.hasNext())
+    {
+      WebViewJSSDKFileItem localWebViewJSSDKFileItem = (WebViewJSSDKFileItem)localIterator.next();
+      if (bt.nullAsNil(localWebViewJSSDKFileItem.jav).equals(paramString))
+      {
+        AppMethodBeat.o(79008);
+        return localWebViewJSSDKFileItem;
+      }
+    }
+    AppMethodBeat.o(79008);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.an
  * JD-Core Version:    0.7.0.1
  */

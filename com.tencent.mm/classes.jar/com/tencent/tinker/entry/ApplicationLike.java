@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 
 @Keep
 public abstract class ApplicationLike
@@ -87,6 +87,12 @@ public abstract class ApplicationLike
   public final Intent getTinkerResultIntent()
   {
     return this.tinkerResultIntent;
+  }
+  
+  @Keep
+  public int mzNightModeUseOf()
+  {
+    return 1;
   }
   
   public void onBaseContextAttached(Context paramContext) {}

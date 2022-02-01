@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/a9o" android:paddingLeft="@dimen/fj" android:paddingTop="@dimen/fj" android:paddingRight="@dimen/fj" android:paddingBottom="@dimen/l2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/hk" android:paddingRight="@dimen/hk" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/avy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b9_" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <ImageView android:id="@id/fdl" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="8.0dip" android:src="@raw/wcpay_security_icon" android:layout_below="@id/avy" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/h6" android:id="@id/fdm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_below="@id/fdl" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="17.0dip" android:textColor="@color/rv" android:gravity="center_horizontal" android:id="@id/fdn" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="{你名下各账户的累计提现金额较大，为保护资金安全、降低风险，请完善信息后继续操作}" android:layout_below="@id/fdm" android:layout_centerHorizontal="true" />
-        <Button android:enabled="true" android:textSize="17.0dip" android:textColor="@color/a6s" android:id="@id/fdo" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:layout_marginBottom="32.0dip" android:layout_below="@id/fdn" android:layout_centerHorizontal="true" style="@style/nr" />
+    <FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:gravity="center" android:id="@id/b_" android:padding="@dimen/jn" android:layout_width="@dimen/e" android:layout_height="@dimen/e" android:src="@drawable/aq9" />
+        <ImageView android:gravity="center" android:layout_gravity="center|right|top" android:id="@id/bc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dw" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/fg" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/bi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hk" android:layout_marginBottom="20.0dip" android:maxLines="1" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/b7i" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@id/b7k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+            <ImageView android:id="@id/b7j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/d" />
+            <ProgressBar android:id="@id/bf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/d" android:indeterminateDrawable="@drawable/a7h" style="@style/a5o" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/y4" android:id="@id/b7l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fb0" android:layout_toRightOf="@id/b7k" android:layout_centerVertical="true" />
     </RelativeLayout>
 </LinearLayout>

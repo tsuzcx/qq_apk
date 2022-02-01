@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.apt;
-import com.tencent.mm.protocal.protobuf.apu;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.bai;
+import com.tencent.mm.protocal.protobuf.baj;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class d
-  extends m
+  extends n
   implements k
 {
-  private f callback;
-  public String koi;
-  public int koj;
-  public String kok;
+  private g callback;
+  public String ntw;
+  public int ntx;
+  public String nty;
   private final b rr;
   
   public d(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(88024);
+    AppMethodBeat.i(112963);
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new apt();
-    ((b.a)localObject).fsY = new apu();
+    ((b.a)localObject).gUU = new bai();
+    ((b.a)localObject).gUV = new baj();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/card/getsharecardconsumedinfo";
     ((b.a)localObject).funcId = 910;
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (apt)this.rr.fsV.fta;
-    ((apt)localObject).cHn = paramString1;
-    ((apt)localObject).scene = 20;
-    ((apt)localObject).kml = paramString2;
-    ((apt)localObject).code = paramString3;
-    AppMethodBeat.o(88024);
+    this.rr = ((b.a)localObject).atI();
+    localObject = (bai)this.rr.gUS.gUX;
+    ((bai)localObject).dyc = paramString1;
+    ((bai)localObject).scene = 20;
+    ((bai)localObject).nrr = paramString2;
+    ((bai)localObject).code = paramString3;
+    AppMethodBeat.o(112963);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(88026);
-    this.callback = paramf;
+    AppMethodBeat.i(112965);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(88026);
+    AppMethodBeat.o(112965);
     return i;
   }
   
@@ -59,22 +59,22 @@ public final class d
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(88025);
-    ab.i("MicroMsg.NetSceneGetShareCardConsumedInfo", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.i(112964);
+    ad.i("MicroMsg.NetSceneGetShareCardConsumedInfo", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (apu)this.rr.fsW.fta;
-      ab.v("MicroMsg.NetSceneGetShareCardConsumedInfo", "json:" + paramq.koi);
-      this.koi = paramq.koi;
-      this.kok = paramq.kok;
+      paramq = (baj)this.rr.gUT.gUX;
+      ad.v("MicroMsg.NetSceneGetShareCardConsumedInfo", "json:" + paramq.ntw);
+      this.ntw = paramq.ntw;
+      this.nty = paramq.nty;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(88025);
+    AppMethodBeat.o(112964);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.d
  * JD-Core Version:    0.7.0.1
  */

@@ -7,17 +7,18 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.a.j;
 import com.tencent.mm.g.a.j.a;
+import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class NFCIPCHelper
 {
-  public static void dcx()
+  public static void emy()
   {
-    AppMethodBeat.i(6951);
-    ab.e("MicroMsg.NFCIPCHelper", "alvinluo nfcInvokeAsResult error");
-    h.qsU.cT(968, 0);
-    AppMethodBeat.o(6951);
+    AppMethodBeat.i(79142);
+    ad.e("MicroMsg.NFCIPCHelper", "alvinluo nfcInvokeAsResult error");
+    h.vKh.dB(968, 0);
+    AppMethodBeat.o(79142);
   }
   
   public static class NFCEventTransfer
@@ -25,37 +26,37 @@ public final class NFCIPCHelper
   {
     public static final Parcelable.Creator<NFCEventTransfer> CREATOR;
     public int actionCode;
-    public String cmq;
-    public boolean cmr;
-    public boolean cms;
-    public Bundle cmt;
+    public String dbc;
+    public boolean dbd;
+    public boolean dbe;
+    public Bundle dbf;
     
     static
     {
-      AppMethodBeat.i(6949);
+      AppMethodBeat.i(79140);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(6949);
+      AppMethodBeat.o(79140);
     }
     
     protected NFCEventTransfer(Parcel paramParcel)
     {
-      AppMethodBeat.i(6947);
+      AppMethodBeat.i(79138);
       this.actionCode = paramParcel.readInt();
-      this.cmq = paramParcel.readString();
+      this.dbc = paramParcel.readString();
       if (paramParcel.readByte() != 0)
       {
         bool1 = true;
-        this.cmr = bool1;
+        this.dbd = bool1;
         if (paramParcel.readByte() == 0) {
-          break label83;
+          break label81;
         }
       }
-      label83:
+      label81:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.cms = bool1;
-        this.cmt = paramParcel.readBundle(getClass().getClassLoader());
-        AppMethodBeat.o(6947);
+        this.dbe = bool1;
+        this.dbf = paramParcel.readBundle(getClass().getClassLoader());
+        AppMethodBeat.o(79138);
         return;
         bool1 = false;
         break;
@@ -64,10 +65,10 @@ public final class NFCIPCHelper
     
     public NFCEventTransfer(j paramj)
     {
-      this.actionCode = paramj.cmo.actionCode;
-      this.cmq = paramj.cmo.cmq;
-      this.cmr = paramj.cmo.cmr;
-      this.cms = paramj.cmo.cms;
+      this.actionCode = paramj.dba.actionCode;
+      this.dbc = paramj.dba.dbc;
+      this.dbd = paramj.dba.dbd;
+      this.dbe = paramj.dba.dbe;
     }
     
     public int describeContents()
@@ -78,33 +79,37 @@ public final class NFCIPCHelper
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       byte b2 = 1;
-      AppMethodBeat.i(6948);
+      AppMethodBeat.i(79139);
       paramParcel.writeInt(this.actionCode);
-      paramParcel.writeString(this.cmq);
-      if (this.cmr)
+      paramParcel.writeString(this.dbc);
+      if (this.dbd)
       {
         b1 = 1;
         paramParcel.writeByte(b1);
-        if (!this.cms) {
-          break label74;
+        if (!this.dbe) {
+          break label72;
         }
       }
-      label74:
+      label72:
       for (byte b1 = b2;; b1 = 0)
       {
         paramParcel.writeByte(b1);
-        paramParcel.writeBundle(this.cmt);
-        AppMethodBeat.o(6948);
+        paramParcel.writeBundle(this.dbf);
+        AppMethodBeat.o(79139);
         return;
         b1 = 0;
         break;
       }
     }
   }
+  
+  public static class a
+    implements k<NFCIPCHelper.NFCEventTransfer, NFCIPCHelper.NFCEventTransfer>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.modeltools.NFCIPCHelper
  * JD-Core Version:    0.7.0.1
  */

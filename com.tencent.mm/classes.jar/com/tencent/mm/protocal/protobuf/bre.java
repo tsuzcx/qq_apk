@@ -1,67 +1,87 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
 
 public final class bre
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String xEQ;
+  public int DOH;
+  public String DOL;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(102513);
+    AppMethodBeat.i(43111);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.xEQ != null) {
-        paramVarArgs.e(1, this.xEQ);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.DOL == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: ContactUsername");
+        AppMethodBeat.o(43111);
+        throw paramVarArgs;
       }
-      AppMethodBeat.o(102513);
+      if (this.DOL != null) {
+        paramVarArgs.d(1, this.DOL);
+      }
+      paramVarArgs.aR(2, this.DOH);
+      AppMethodBeat.o(43111);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.xEQ == null) {
-        break label213;
+      if (this.DOL == null) {
+        break label306;
       }
     }
-    label213:
-    for (paramInt = e.a.a.b.b.a.f(1, this.xEQ) + 0;; paramInt = 0)
+    label306:
+    for (paramInt = f.a.a.b.b.a.e(1, this.DOL) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(102513);
-      return paramInt;
+      int i = f.a.a.b.b.a.bA(2, this.DOH);
+      AppMethodBeat.o(43111);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(102513);
+        if (this.DOL == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: ContactUsername");
+          AppMethodBeat.o(43111);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(43111);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         bre localbre = (bre)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(102513);
+          AppMethodBeat.o(43111);
           return -1;
+        case 1: 
+          localbre.DOL = locala.KhF.readString();
+          AppMethodBeat.o(43111);
+          return 0;
         }
-        localbre.xEQ = locala.CLY.readString();
-        AppMethodBeat.o(102513);
+        localbre.DOH = locala.KhF.xS();
+        AppMethodBeat.o(43111);
         return 0;
       }
-      AppMethodBeat.o(102513);
+      AppMethodBeat.o(43111);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bre
  * JD-Core Version:    0.7.0.1
  */

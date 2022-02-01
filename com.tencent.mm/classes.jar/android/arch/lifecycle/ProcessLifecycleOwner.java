@@ -9,13 +9,13 @@ import android.os.Handler;
 public class ProcessLifecycleOwner
   implements LifecycleOwner
 {
-  private static final ProcessLifecycleOwner dh = new ProcessLifecycleOwner();
-  int cY = 0;
-  int cZ = 0;
-  boolean da = true;
-  boolean dc = true;
-  final LifecycleRegistry dd = new LifecycleRegistry(this);
-  Runnable de = new Runnable()
+  private static final ProcessLifecycleOwner dk = new ProcessLifecycleOwner();
+  int dc = 0;
+  int dd = 0;
+  boolean de = true;
+  boolean dg = true;
+  final LifecycleRegistry dh = new LifecycleRegistry(this);
+  Runnable di = new Runnable()
   {
     public void run()
     {
@@ -23,36 +23,36 @@ public class ProcessLifecycleOwner
       ProcessLifecycleOwner.b(ProcessLifecycleOwner.this);
     }
   };
-  private ReportFragment.ActivityInitializationListener dg = new ReportFragment.ActivityInitializationListener()
+  private ReportFragment.ActivityInitializationListener dj = new ReportFragment.ActivityInitializationListener()
   {
     public void onCreate() {}
     
     public void onResume()
     {
       ProcessLifecycleOwner localProcessLifecycleOwner = ProcessLifecycleOwner.this;
-      localProcessLifecycleOwner.cZ += 1;
-      if (localProcessLifecycleOwner.cZ == 1)
+      localProcessLifecycleOwner.dd += 1;
+      if (localProcessLifecycleOwner.dd == 1)
       {
-        if (localProcessLifecycleOwner.da)
+        if (localProcessLifecycleOwner.de)
         {
-          localProcessLifecycleOwner.dd.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
-          localProcessLifecycleOwner.da = false;
+          localProcessLifecycleOwner.dh.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+          localProcessLifecycleOwner.de = false;
         }
       }
       else {
         return;
       }
-      localProcessLifecycleOwner.mHandler.removeCallbacks(localProcessLifecycleOwner.de);
+      localProcessLifecycleOwner.mHandler.removeCallbacks(localProcessLifecycleOwner.di);
     }
     
     public void onStart()
     {
       ProcessLifecycleOwner localProcessLifecycleOwner = ProcessLifecycleOwner.this;
-      localProcessLifecycleOwner.cY += 1;
-      if ((localProcessLifecycleOwner.cY == 1) && (localProcessLifecycleOwner.dc))
+      localProcessLifecycleOwner.dc += 1;
+      if ((localProcessLifecycleOwner.dc == 1) && (localProcessLifecycleOwner.dg))
       {
-        localProcessLifecycleOwner.dd.handleLifecycleEvent(Lifecycle.Event.ON_START);
-        localProcessLifecycleOwner.dc = false;
+        localProcessLifecycleOwner.dh.handleLifecycleEvent(Lifecycle.Event.ON_START);
+        localProcessLifecycleOwner.dg = false;
       }
     }
   };
@@ -60,51 +60,51 @@ public class ProcessLifecycleOwner
   
   public static LifecycleOwner get()
   {
-    return dh;
+    return dk;
   }
   
   static void init(Context paramContext)
   {
-    ProcessLifecycleOwner localProcessLifecycleOwner = dh;
+    ProcessLifecycleOwner localProcessLifecycleOwner = dk;
     localProcessLifecycleOwner.mHandler = new Handler();
-    localProcessLifecycleOwner.dd.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+    localProcessLifecycleOwner.dh.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
     ((Application)paramContext.getApplicationContext()).registerActivityLifecycleCallbacks(new EmptyActivityLifecycleCallbacks()
     {
       public void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
       {
-        ReportFragment.b(paramAnonymousActivity).dl = ProcessLifecycleOwner.c(ProcessLifecycleOwner.this);
+        ReportFragment.b(paramAnonymousActivity).jdField_do = ProcessLifecycleOwner.c(ProcessLifecycleOwner.this);
       }
       
       public void onActivityPaused(Activity paramAnonymousActivity)
       {
         paramAnonymousActivity = ProcessLifecycleOwner.this;
-        paramAnonymousActivity.cZ -= 1;
-        if (paramAnonymousActivity.cZ == 0) {
-          paramAnonymousActivity.mHandler.postDelayed(paramAnonymousActivity.de, 700L);
+        paramAnonymousActivity.dd -= 1;
+        if (paramAnonymousActivity.dd == 0) {
+          paramAnonymousActivity.mHandler.postDelayed(paramAnonymousActivity.di, 700L);
         }
       }
       
       public void onActivityStopped(Activity paramAnonymousActivity)
       {
         paramAnonymousActivity = ProcessLifecycleOwner.this;
-        paramAnonymousActivity.cY -= 1;
-        paramAnonymousActivity.at();
+        paramAnonymousActivity.dc -= 1;
+        paramAnonymousActivity.ac();
       }
     });
   }
   
-  final void at()
+  final void ac()
   {
-    if ((this.cY == 0) && (this.da))
+    if ((this.dc == 0) && (this.de))
     {
-      this.dd.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
-      this.dc = true;
+      this.dh.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
+      this.dg = true;
     }
   }
   
   public Lifecycle getLifecycle()
   {
-    return this.dd;
+    return this.dh;
   }
 }
 

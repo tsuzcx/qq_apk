@@ -1,2 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.facedetect.views.FaceNumberItemView style="@style/ie" />
+<RelativeLayout android:id="@id/fk6" android:background="?ju" android:paddingTop="@dimen/agb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/bki" android:layout_width="@dimen/age" android:layout_height="@dimen/age" android:layout_centerHorizontal="true" />
+    <android.support.v7.widget.AppCompatTextView android:textColor="@color/km" android:gravity="center" android:id="@id/bkh" android:layout_width="@dimen/ag_" android:layout_height="@dimen/ag6" android:maxLines="1" android:layout_below="@id/bki" android:layout_centerHorizontal="true" app:autoSizeMaxTextSize="@dimen/ag7" app:autoSizeMinTextSize="@dimen/ag8" app:autoSizeStepGranularity="@dimen/ag9" app:autoSizeTextType="gib" />
+</RelativeLayout>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/e5" android:layout_width="fill_parent" android:layout_height="88.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="horizontal" android:id="@id/f14" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip">
-        <ImageView android:id="@id/f15" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginEnd="8.0dip" />
-        <TextView android:textSize="@dimen/dq" android:textColor="@color/a8u" android:ellipsize="end" android:gravity="center" android:id="@id/f16" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/b7x" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/ta" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/aq8" android:scaleType="centerCrop" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/y4" android:id="@id/e3t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
     </LinearLayout>
-    <com.tencent.mm.plugin.story.ui.view.editor.item.MusicLrcView android:textSize="@dimen/dq" android:textColor="@color/a8w" android:ellipsize="none" android:id="@id/f17" android:fadingEdge="horizontal" android:fadingEdgeLength="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="暂无歌词" android:singleLine="true" android:layout_below="@id/f14" android:layout_centerHorizontal="true" android:requiresFadingEdge="horizontal" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip" />
-</RelativeLayout>
+    <TextView android:textSize="24.0dip" android:textColor="@color/y4" android:ellipsize="end" android:id="@id/gam" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:maxLines="3" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/y4" android:id="@id/g96" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="30.0dip" android:text="2017-10-23 18:30" />
+</LinearLayout>

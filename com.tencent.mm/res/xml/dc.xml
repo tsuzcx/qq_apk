@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory />
+    <CheckBoxPreference android:key="expt_total_flag" android:layout="@layout/aop" android:persistent="false" android:title="@string/bvh" />
+    <CheckBoxPreference android:key="expt_open_tp_player_flag" android:layout="@layout/aop" android:persistent="false" android:title="@string/hh9" />
+    <PreferenceCategory />
+</PreferenceScreen>

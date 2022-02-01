@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <rotate android:drawable="@drawable/bkh" android:fromDegrees="0.0" android:toDegrees="1080.0" android:pivotX="50.0%" android:pivotY="50.0%" />
-    </item>
-</layer-list>
+    <corners android:topLeftRadius="5.5999756dip" android:topRightRadius="5.5999756dip" android:bottomLeftRadius="0.0dip" android:bottomRightRadius="0.0dip" />
+    <solid android:color="@color/a_r" />
+</shape>

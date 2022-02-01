@@ -5,70 +5,70 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.location.ui.d;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class LocationInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<LocationInfo> CREATOR;
-  public String cDl;
-  public String nZU;
-  public double nZV;
-  public double nZW;
-  public int nZX;
-  public String nZY;
-  public String nZZ;
-  String oaa;
-  public int oab;
-  public String oac;
+  public String dtN;
+  String sOA;
+  public int sOB;
+  public String sOC;
+  public String sOu;
+  public double sOv;
+  public double sOw;
+  public int sOx;
+  public String sOy;
+  public String sOz;
   
   static
   {
-    AppMethodBeat.i(113298);
-    CREATOR = new LocationInfo.1();
-    AppMethodBeat.o(113298);
+    AppMethodBeat.i(55677);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(55677);
   }
   
   public LocationInfo()
   {
-    this.nZU = "";
-    this.nZV = -85.0D;
-    this.nZW = -1000.0D;
-    this.nZY = "";
-    this.nZZ = "zh-cn";
-    this.oaa = "";
-    this.oab = 0;
+    this.sOu = "";
+    this.sOv = -85.0D;
+    this.sOw = -1000.0D;
+    this.sOy = "";
+    this.sOz = "zh-cn";
+    this.sOA = "";
+    this.sOB = 0;
   }
   
   public LocationInfo(byte paramByte)
   {
-    AppMethodBeat.i(113294);
-    this.nZU = "";
-    this.nZV = -85.0D;
-    this.nZW = -1000.0D;
-    this.nZY = "";
-    this.nZZ = "zh-cn";
-    this.oaa = "";
-    this.oab = 0;
-    this.nZU = (toString() + " " + System.nanoTime());
-    this.nZX = d.bLF();
-    AppMethodBeat.o(113294);
+    AppMethodBeat.i(55673);
+    this.sOu = "";
+    this.sOv = -85.0D;
+    this.sOw = -1000.0D;
+    this.sOy = "";
+    this.sOz = "zh-cn";
+    this.sOA = "";
+    this.sOB = 0;
+    this.sOu = (toString() + " " + System.nanoTime());
+    this.sOx = d.cJD();
+    AppMethodBeat.o(55673);
   }
   
-  public final boolean bLh()
+  public final boolean cJg()
   {
-    return (this.nZV != -85.0D) && (this.nZW != -1000.0D);
+    return (this.sOv != -85.0D) && (this.sOw != -1000.0D);
   }
   
-  public final boolean bLi()
+  public final boolean cJh()
   {
-    AppMethodBeat.i(113296);
-    if ((bo.isNullOrNil(this.nZY)) && (bo.isNullOrNil(this.cDl)))
+    AppMethodBeat.i(55675);
+    if ((bt.isNullOrNil(this.sOy)) && (bt.isNullOrNil(this.dtN)))
     {
-      AppMethodBeat.o(113296);
+      AppMethodBeat.o(55675);
       return false;
     }
-    AppMethodBeat.o(113296);
+    AppMethodBeat.o(55675);
     return true;
   }
   
@@ -79,31 +79,31 @@ public class LocationInfo
   
   public String toString()
   {
-    AppMethodBeat.i(113297);
-    String str = this.nZV + " " + this.nZW + " " + this.nZY + " " + this.cDl + "  " + this.nZU;
-    AppMethodBeat.o(113297);
+    AppMethodBeat.i(55676);
+    String str = this.sOv + " " + this.sOw + " " + this.sOy + " " + this.dtN + "  " + this.sOu;
+    AppMethodBeat.o(55676);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(113295);
-    paramParcel.writeString(this.nZU);
-    paramParcel.writeDouble(this.nZV);
-    paramParcel.writeDouble(this.nZW);
-    paramParcel.writeInt(this.nZX);
-    paramParcel.writeString(this.nZY);
-    paramParcel.writeString(this.nZZ);
-    paramParcel.writeString(this.cDl);
-    paramParcel.writeString(this.oaa);
-    paramParcel.writeInt(this.oab);
-    paramParcel.writeString(this.oac);
-    AppMethodBeat.o(113295);
+    AppMethodBeat.i(55674);
+    paramParcel.writeString(this.sOu);
+    paramParcel.writeDouble(this.sOv);
+    paramParcel.writeDouble(this.sOw);
+    paramParcel.writeInt(this.sOx);
+    paramParcel.writeString(this.sOy);
+    paramParcel.writeString(this.sOz);
+    paramParcel.writeString(this.dtN);
+    paramParcel.writeString(this.sOA);
+    paramParcel.writeInt(this.sOB);
+    paramParcel.writeString(this.sOC);
+    AppMethodBeat.o(55674);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.model.LocationInfo
  * JD-Core Version:    0.7.0.1
  */

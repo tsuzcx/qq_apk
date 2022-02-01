@@ -17,7 +17,7 @@ public class ObjectMirror
   
   public PropertiesArray getProperties(ObjectMirror.PropertyKind paramPropertyKind, int paramInt)
   {
-    AppMethodBeat.i(74892);
+    AppMethodBeat.i(61515);
     V8Array localV8Array2 = new V8Array(this.v8Object.getRuntime());
     localV8Array2.push(paramPropertyKind.index);
     localV8Array2.push(paramInt);
@@ -35,13 +35,13 @@ public class ObjectMirror
       if ((paramPropertyKind != null) && (!paramPropertyKind.isReleased())) {
         paramPropertyKind.release();
       }
-      AppMethodBeat.o(74892);
+      AppMethodBeat.o(61515);
     }
   }
   
   public String[] getPropertyNames(ObjectMirror.PropertyKind paramPropertyKind, int paramInt)
   {
-    AppMethodBeat.i(74891);
+    AppMethodBeat.i(61514);
     V8Array localV8Array2 = new V8Array(this.v8Object.getRuntime());
     localV8Array2.push(paramPropertyKind.index);
     localV8Array2.push(paramInt);
@@ -70,7 +70,7 @@ public class ObjectMirror
       if (paramPropertyKind != null) {
         paramPropertyKind.release();
       }
-      AppMethodBeat.o(74891);
+      AppMethodBeat.o(61514);
     }
   }
   
@@ -81,15 +81,15 @@ public class ObjectMirror
   
   public String toString()
   {
-    AppMethodBeat.i(74890);
+    AppMethodBeat.i(61513);
     String str = this.v8Object.toString();
-    AppMethodBeat.o(74890);
+    AppMethodBeat.o(61513);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.debug.mirror.ObjectMirror
  * JD-Core Version:    0.7.0.1
  */

@@ -4,57 +4,57 @@ import java.util.LinkedList;
 
 public final class a
 {
-  private final a.a.a.a.a.b Vj;
-  private final a.a.a.b.a.a amI;
-  private int amJ = 0;
+  private final a.a.a.a.a.b Xe;
+  private final a.a.a.b.a.a aqk;
+  private int aql = 0;
   
   public a(byte[] paramArrayOfByte, a.a.a.a.a.b paramb)
   {
-    this.amI = a.a.a.b.a.a.q(paramArrayOfByte);
-    this.Vj = paramb;
+    this.aqk = a.a.a.b.a.a.q(paramArrayOfByte);
+    this.Xe = paramb;
   }
   
-  public final LinkedList<byte[]> ci(int paramInt)
+  public final LinkedList<byte[]> cE(int paramInt)
   {
-    return this.amI.ci(paramInt);
+    return this.aqk.cE(paramInt);
   }
   
-  public final int ot()
+  public final int pg()
   {
-    return this.amI.oC();
+    return this.aqk.pp();
   }
   
-  public final String ou()
+  public final String ph()
   {
-    return this.amI.readString();
+    return this.aqk.readString();
   }
   
-  public final boolean ov()
+  public final boolean pi()
   {
-    return this.amI.oD();
+    return this.aqk.pq();
   }
   
-  public final long ow()
+  public final long pj()
   {
-    return this.amI.oG();
+    return this.aqk.pt();
   }
   
-  public final com.tencent.mm.d.b ox()
+  public final com.tencent.mm.d.b pk()
   {
-    return this.amI.oE();
+    return this.aqk.pr();
   }
   
-  public final int oy()
+  public final int pl()
   {
-    this.amJ = this.amI.oB();
-    return a.a.a.b.a.ck(this.amJ);
+    this.aql = this.aqk.po();
+    return a.a.a.b.a.cG(this.aql);
   }
   
-  public final void oz()
+  public final void pm()
   {
-    int i = a.a.a.b.a.cj(this.amJ);
+    int i = a.a.a.b.a.cF(this.aql);
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("FieldNumber: ").append(a.a.a.b.a.ck(this.amJ)).append(" - ");
+    localStringBuffer.append("FieldNumber: ").append(a.a.a.b.a.cG(this.aql)).append(" - ");
     switch (i)
     {
     case 3: 
@@ -62,16 +62,16 @@ public final class a
     default: 
       return;
     case 5: 
-      localStringBuffer.append("float value: ").append(Float.toString(this.amI.readFloat()));
+      localStringBuffer.append("float value: ").append(Float.toString(this.aqk.readFloat()));
       return;
     case 1: 
-      localStringBuffer.append("double value: ").append(Double.toString(this.amI.readDouble()));
+      localStringBuffer.append("double value: ").append(Double.toString(this.aqk.readDouble()));
       return;
     case 2: 
-      localStringBuffer.append("Length delimited (String or ByteString) value: ").append(this.amI.readString());
+      localStringBuffer.append("Length delimited (String or ByteString) value: ").append(this.aqk.readString());
       return;
     }
-    localStringBuffer.append("varint (long, int or boolean) value: ").append(this.amI.oG());
+    localStringBuffer.append("varint (long, int or boolean) value: ").append(this.aqk.pt());
   }
 }
 

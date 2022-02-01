@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class to
   extends b
 {
-  public to.a cKd;
+  public a dyT;
   
   public to()
   {
@@ -15,16 +15,21 @@ public final class to
   
   private to(byte paramByte)
   {
-    AppMethodBeat.i(35554);
-    this.cKd = new to.a();
-    this.ymq = false;
+    AppMethodBeat.i(125641);
+    this.dyT = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(35554);
+    AppMethodBeat.o(125641);
+  }
+  
+  public static final class a
+  {
+    public boolean dyU;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.to
  * JD-Core Version:    0.7.0.1
  */

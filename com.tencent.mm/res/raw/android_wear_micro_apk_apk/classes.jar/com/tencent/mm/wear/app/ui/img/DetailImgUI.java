@@ -13,55 +13,55 @@ import com.tencent.mm.wear.app.ui.widget.e;
 public class DetailImgUI
   extends MMActivity
 {
-  private long acG;
-  private com.tencent.mm.wear.app.ui.widget.d aeC;
-  private GestureDetector afW;
-  private TopCropImageView afX;
-  private Bitmap afY;
-  private a afZ;
+  private long agh;
+  private com.tencent.mm.wear.app.ui.widget.d aie;
+  private Bitmap ajA;
+  private a ajB;
+  private GestureDetector ajy;
+  private TopCropImageView ajz;
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     setContentView(2130903047);
-    this.aeC = new com.tencent.mm.wear.app.ui.widget.d(this);
-    this.afX = ((TopCropImageView)findViewById(2131558448));
-    this.acG = getIntent().getLongExtra("key_msg_id", 0L);
-    com.tencent.mm.wear.a.c.d.c("MicroMsg.DetailImgUI", "msgId %d", new Object[] { Long.valueOf(this.acG) });
-    this.afW = new GestureDetector(this, new c(this, (byte)0));
-    this.aeC.a(new e()
+    this.aie = new com.tencent.mm.wear.app.ui.widget.d(this);
+    this.ajz = ((TopCropImageView)findViewById(2131558449));
+    this.agh = getIntent().getLongExtra("key_msg_id", 0L);
+    com.tencent.mm.wear.a.c.d.c("MicroMsg.DetailImgUI", "msgId %d", new Object[] { Long.valueOf(this.agh) });
+    this.ajy = new GestureDetector(this, new c(this, (byte)0));
+    this.aie.a(new e()
     {
       public final void onStart()
       {
         DetailImgUI.this.finish();
       }
     });
-    this.aeC.setTimeout(30000L);
-    this.aeC.Q(getString(2131165241));
-    this.aeC.R(getString(2131165211));
-    this.aeC.startLoading();
-    if (this.afZ != null)
+    this.aie.setTimeout(30000L);
+    this.aie.X(getString(2131165242));
+    this.aie.Y(getString(2131165211));
+    this.aie.startLoading();
+    if (this.ajB != null)
     {
-      this.afZ.cancel();
-      this.afZ = null;
+      this.ajB.cancel();
+      this.ajB = null;
     }
-    this.afZ = new a(this, (byte)0);
-    h.mc().a(this.afZ);
+    this.ajB = new a(this, (byte)0);
+    h.mP().a(this.ajB);
   }
   
   protected void onStop()
   {
     super.onStop();
-    if (this.afZ != null)
+    if (this.ajB != null)
     {
-      this.afZ.cancel();
-      this.afZ = null;
+      this.ajB.cancel();
+      this.ajB = null;
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    return this.afW.onTouchEvent(paramMotionEvent);
+    return this.ajy.onTouchEvent(paramMotionEvent);
   }
 }
 

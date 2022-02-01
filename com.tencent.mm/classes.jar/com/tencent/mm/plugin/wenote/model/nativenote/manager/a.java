@@ -10,23 +10,23 @@ import java.lang.reflect.Array;
 public final class a
   extends SpannableString
 {
-  private int afG;
-  private Object[] vxX;
-  private int[] vxY;
+  private int amN;
+  private Object[] ong;
+  private int[] onh;
   
   public a(CharSequence paramCharSequence)
   {
     super(paramCharSequence.toString());
-    AppMethodBeat.i(26708);
-    o(paramCharSequence, paramCharSequence.length());
-    AppMethodBeat.o(26708);
+    AppMethodBeat.i(30401);
+    h(paramCharSequence, paramCharSequence.length());
+    AppMethodBeat.o(30401);
   }
   
-  private void o(CharSequence paramCharSequence, int paramInt)
+  private void h(CharSequence paramCharSequence, int paramInt)
   {
-    AppMethodBeat.i(26709);
-    this.vxX = new Object[20];
-    this.vxY = new int[60];
+    AppMethodBeat.i(30402);
+    this.ong = new Object[20];
+    this.onh = new int[60];
     if ((paramCharSequence instanceof Spanned))
     {
       paramCharSequence = (Spanned)paramCharSequence;
@@ -54,14 +54,14 @@ public final class a
         i += 1;
       }
     }
-    AppMethodBeat.o(26709);
+    AppMethodBeat.o(30402);
   }
   
   public final int getSpanEnd(Object paramObject)
   {
-    int i = this.afG;
-    Object[] arrayOfObject = this.vxX;
-    int[] arrayOfInt = this.vxY;
+    int i = this.amN;
+    Object[] arrayOfObject = this.ong;
+    int[] arrayOfInt = this.onh;
     i -= 1;
     while (i >= 0)
     {
@@ -75,9 +75,9 @@ public final class a
   
   public final int getSpanFlags(Object paramObject)
   {
-    int i = this.afG;
-    Object[] arrayOfObject = this.vxX;
-    int[] arrayOfInt = this.vxY;
+    int i = this.amN;
+    Object[] arrayOfObject = this.ong;
+    int[] arrayOfInt = this.onh;
     i -= 1;
     while (i >= 0)
     {
@@ -91,9 +91,9 @@ public final class a
   
   public final int getSpanStart(Object paramObject)
   {
-    int i = this.afG;
-    Object[] arrayOfObject = this.vxX;
-    int[] arrayOfInt = this.vxY;
+    int i = this.amN;
+    Object[] arrayOfObject = this.ong;
+    int[] arrayOfInt = this.onh;
     i -= 1;
     while (i >= 0)
     {
@@ -107,11 +107,11 @@ public final class a
   
   public final <T> T[] getSpans(int paramInt1, int paramInt2, Class<T> paramClass)
   {
-    AppMethodBeat.i(26712);
+    AppMethodBeat.i(30405);
     int k = 0;
-    int m = this.afG;
-    Object[] arrayOfObject = this.vxX;
-    int[] arrayOfInt = this.vxY;
+    int m = this.amN;
+    Object[] arrayOfObject = this.ong;
+    int[] arrayOfInt = this.onh;
     Object localObject1 = null;
     Object localObject2 = null;
     int j = 0;
@@ -204,7 +204,7 @@ public final class a
     if (k == 0)
     {
       paramClass = (Object[])Array.newInstance(paramClass, 0);
-      AppMethodBeat.o(26712);
+      AppMethodBeat.o(30405);
       return paramClass;
     }
     if (k == 1)
@@ -212,28 +212,28 @@ public final class a
       paramClass = (Object[])Array.newInstance(paramClass, 1);
       paramClass[0] = localObject2;
       paramClass = (Object[])paramClass;
-      AppMethodBeat.o(26712);
+      AppMethodBeat.o(30405);
       return paramClass;
     }
     if (k == localObject1.length)
     {
       paramClass = (Object[])localObject1;
-      AppMethodBeat.o(26712);
+      AppMethodBeat.o(30405);
       return paramClass;
     }
     paramClass = (Object[])Array.newInstance(paramClass, k);
     System.arraycopy(localObject1, 0, paramClass, 0, k);
     paramClass = (Object[])paramClass;
-    AppMethodBeat.o(26712);
+    AppMethodBeat.o(30405);
     return paramClass;
   }
   
   public final int nextSpanTransition(int paramInt1, int paramInt2, Class paramClass)
   {
-    AppMethodBeat.i(26713);
-    int m = this.afG;
-    Object[] arrayOfObject = this.vxX;
-    int[] arrayOfInt = this.vxY;
+    AppMethodBeat.i(30406);
+    int m = this.amN;
+    Object[] arrayOfObject = this.ong;
+    int[] arrayOfInt = this.onh;
     Object localObject = paramClass;
     if (paramClass == null) {
       localObject = Object.class;
@@ -259,7 +259,7 @@ public final class a
       {
         i += 1;
         break;
-        AppMethodBeat.o(26713);
+        AppMethodBeat.o(30406);
         return paramInt2;
       }
     }
@@ -267,10 +267,10 @@ public final class a
   
   public final void removeSpan(Object paramObject)
   {
-    AppMethodBeat.i(26711);
-    int j = this.afG;
-    Object[] arrayOfObject = this.vxX;
-    int[] arrayOfInt = this.vxY;
+    AppMethodBeat.i(30404);
+    int j = this.amN;
+    Object[] arrayOfObject = this.ong;
+    int[] arrayOfInt = this.onh;
     int i = j - 1;
     while (i >= 0)
     {
@@ -279,39 +279,39 @@ public final class a
         j -= i + 1;
         System.arraycopy(arrayOfObject, i + 1, arrayOfObject, i, j);
         System.arraycopy(arrayOfInt, (i + 1) * 3, arrayOfInt, i * 3, j * 3);
-        this.afG -= 1;
-        AppMethodBeat.o(26711);
+        this.amN -= 1;
+        AppMethodBeat.o(30404);
         return;
       }
       i -= 1;
     }
-    AppMethodBeat.o(26711);
+    AppMethodBeat.o(30404);
   }
   
   public final void setSpan(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(26710);
-    if (this.afG + 1 >= this.vxX.length)
+    AppMethodBeat.i(30403);
+    if (this.amN + 1 >= this.ong.length)
     {
-      int i = this.afG + 10;
+      int i = this.amN + 10;
       Object[] arrayOfObject = new Object[i];
       int[] arrayOfInt = new int[i * 3];
-      System.arraycopy(this.vxX, 0, arrayOfObject, 0, this.afG);
-      System.arraycopy(this.vxY, 0, arrayOfInt, 0, this.afG * 3);
-      this.vxX = arrayOfObject;
-      this.vxY = arrayOfInt;
+      System.arraycopy(this.ong, 0, arrayOfObject, 0, this.amN);
+      System.arraycopy(this.onh, 0, arrayOfInt, 0, this.amN * 3);
+      this.ong = arrayOfObject;
+      this.onh = arrayOfInt;
     }
-    this.vxX[this.afG] = paramObject;
-    this.vxY[(this.afG * 3 + 0)] = paramInt1;
-    this.vxY[(this.afG * 3 + 1)] = paramInt2;
-    this.vxY[(this.afG * 3 + 2)] = paramInt3;
-    this.afG += 1;
-    AppMethodBeat.o(26710);
+    this.ong[this.amN] = paramObject;
+    this.onh[(this.amN * 3 + 0)] = paramInt1;
+    this.onh[(this.amN * 3 + 1)] = paramInt2;
+    this.onh[(this.amN * 3 + 2)] = paramInt3;
+    this.amN += 1;
+    AppMethodBeat.o(30403);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.a
  * JD-Core Version:    0.7.0.1
  */

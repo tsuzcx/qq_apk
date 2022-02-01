@@ -7,42 +7,74 @@ import com.tencent.mm.sdk.e.c;
 public abstract class gb
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int dXA;
-  private static final int dXv = "RecordId".hashCode();
-  private static final int dXw = "AppId".hashCode();
-  private static final int dXx = "AppName".hashCode();
-  private static final int dXy;
-  private static final int dXz;
-  private static final int dgM = "createTime".hashCode();
-  private static final int diF;
-  private static final int dyI = "UserName".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS voiceRemindFileNameIndex ON VoiceRemindInfo(filename)" };
+  private static final int eJw;
+  private static final int ejR;
+  private static final int elP;
+  private static final int ezd = "reserved1".hashCode();
+  private static final int eze = "reserved2".hashCode();
+  private static final int faG = "filename".hashCode();
+  private static final int faH = "user".hashCode();
+  private static final int faI = "msgid".hashCode();
+  private static final int faJ;
+  private static final int faK;
+  private static final int faL;
+  private static final int faM;
+  private static final int faN;
+  private static final int faO;
+  private static final int faP;
+  private static final int faQ;
+  private static final int faR;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dXp = true;
-  private boolean dXq = true;
-  private boolean dXr = true;
-  private boolean dXs = true;
-  private boolean dXt = true;
-  private boolean dXu = true;
-  private boolean dgp = true;
-  private boolean diz = true;
-  private boolean dyA = true;
-  public String field_AppId;
-  public String field_AppName;
-  public String field_BriefIntro;
-  public String field_IconUrl;
-  public String field_RecordId;
-  public String field_UserName;
-  public long field_createTime;
-  public int field_debugType;
-  public boolean field_isSync;
+  private boolean eJn = true;
+  private boolean ejO = true;
+  private boolean ely = true;
+  private boolean eyr = true;
+  private boolean eys = true;
+  private boolean faA = true;
+  private boolean faB = true;
+  private boolean faC = true;
+  private boolean faD = true;
+  private boolean faE = true;
+  private boolean faF = true;
+  private boolean fau = true;
+  private boolean fav = true;
+  private boolean faw = true;
+  private boolean fax = true;
+  private boolean fay = true;
+  private boolean faz = true;
+  public String field_clientid;
+  public long field_createtime;
+  public String field_filename;
+  public int field_filenowsize;
+  public String field_human;
+  public long field_lastmodifytime;
+  public long field_msgid;
+  public int field_msglocalid;
+  public int field_nettimes;
+  public int field_offset;
+  public int field_reserved1;
+  public String field_reserved2;
+  public int field_status;
+  public int field_totallen;
+  public String field_user;
+  public int field_voiceformat;
+  public int field_voicelenght;
   
   static
   {
-    dXy = "IconUrl".hashCode();
-    dXz = "BriefIntro".hashCode();
-    dXA = "isSync".hashCode();
-    diF = "debugType".hashCode();
+    elP = "offset".hashCode();
+    faJ = "filenowsize".hashCode();
+    faK = "totallen".hashCode();
+    ejR = "status".hashCode();
+    eJw = "createtime".hashCode();
+    faL = "lastmodifytime".hashCode();
+    faM = "clientid".hashCode();
+    faN = "voicelenght".hashCode();
+    faO = "msglocalid".hashCode();
+    faP = "human".hashCode();
+    faQ = "voiceformat".hashCode();
+    faR = "nettimes".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -51,63 +83,58 @@ public abstract class gb
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dXv != k) {
-        break label65;
+      if (faG != k) {
+        break label60;
       }
-      this.field_RecordId = paramCursor.getString(i);
-      this.dXp = true;
+      this.field_filename = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (dXw == k)
-      {
-        this.field_AppId = paramCursor.getString(i);
-      }
-      else if (dXx == k)
-      {
-        this.field_AppName = paramCursor.getString(i);
-      }
-      else if (dyI == k)
-      {
-        this.field_UserName = paramCursor.getString(i);
-      }
-      else if (dXy == k)
-      {
-        this.field_IconUrl = paramCursor.getString(i);
-      }
-      else if (dXz == k)
-      {
-        this.field_BriefIntro = paramCursor.getString(i);
-      }
-      else
-      {
-        if (dXA == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_isSync = bool;
-            break;
-          }
-        }
-        if (diF == k) {
-          this.field_debugType = paramCursor.getInt(i);
-        } else if (dgM == k) {
-          this.field_createTime = paramCursor.getLong(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      label60:
+      if (faH == k) {
+        this.field_user = paramCursor.getString(i);
+      } else if (faI == k) {
+        this.field_msgid = paramCursor.getLong(i);
+      } else if (elP == k) {
+        this.field_offset = paramCursor.getInt(i);
+      } else if (faJ == k) {
+        this.field_filenowsize = paramCursor.getInt(i);
+      } else if (faK == k) {
+        this.field_totallen = paramCursor.getInt(i);
+      } else if (ejR == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (eJw == k) {
+        this.field_createtime = paramCursor.getLong(i);
+      } else if (faL == k) {
+        this.field_lastmodifytime = paramCursor.getLong(i);
+      } else if (faM == k) {
+        this.field_clientid = paramCursor.getString(i);
+      } else if (faN == k) {
+        this.field_voicelenght = paramCursor.getInt(i);
+      } else if (faO == k) {
+        this.field_msglocalid = paramCursor.getInt(i);
+      } else if (faP == k) {
+        this.field_human = paramCursor.getString(i);
+      } else if (faQ == k) {
+        this.field_voiceformat = paramCursor.getInt(i);
+      } else if (faR == k) {
+        this.field_nettimes = paramCursor.getInt(i);
+      } else if (ezd == k) {
+        this.field_reserved1 = paramCursor.getInt(i);
+      } else if (eze == k) {
+        this.field_reserved2 = paramCursor.getString(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -115,32 +142,56 @@ public abstract class gb
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dXp) {
-      localContentValues.put("RecordId", this.field_RecordId);
+    if (this.fau) {
+      localContentValues.put("filename", this.field_filename);
     }
-    if (this.dXq) {
-      localContentValues.put("AppId", this.field_AppId);
+    if (this.fav) {
+      localContentValues.put("user", this.field_user);
     }
-    if (this.dXr) {
-      localContentValues.put("AppName", this.field_AppName);
+    if (this.faw) {
+      localContentValues.put("msgid", Long.valueOf(this.field_msgid));
     }
-    if (this.dyA) {
-      localContentValues.put("UserName", this.field_UserName);
+    if (this.ely) {
+      localContentValues.put("offset", Integer.valueOf(this.field_offset));
     }
-    if (this.dXs) {
-      localContentValues.put("IconUrl", this.field_IconUrl);
+    if (this.fax) {
+      localContentValues.put("filenowsize", Integer.valueOf(this.field_filenowsize));
     }
-    if (this.dXt) {
-      localContentValues.put("BriefIntro", this.field_BriefIntro);
+    if (this.fay) {
+      localContentValues.put("totallen", Integer.valueOf(this.field_totallen));
     }
-    if (this.dXu) {
-      localContentValues.put("isSync", Boolean.valueOf(this.field_isSync));
+    if (this.ejO) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.diz) {
-      localContentValues.put("debugType", Integer.valueOf(this.field_debugType));
+    if (this.eJn) {
+      localContentValues.put("createtime", Long.valueOf(this.field_createtime));
     }
-    if (this.dgp) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    if (this.faz) {
+      localContentValues.put("lastmodifytime", Long.valueOf(this.field_lastmodifytime));
+    }
+    if (this.faA) {
+      localContentValues.put("clientid", this.field_clientid);
+    }
+    if (this.faB) {
+      localContentValues.put("voicelenght", Integer.valueOf(this.field_voicelenght));
+    }
+    if (this.faC) {
+      localContentValues.put("msglocalid", Integer.valueOf(this.field_msglocalid));
+    }
+    if (this.faD) {
+      localContentValues.put("human", this.field_human);
+    }
+    if (this.faE) {
+      localContentValues.put("voiceformat", Integer.valueOf(this.field_voiceformat));
+    }
+    if (this.faF) {
+      localContentValues.put("nettimes", Integer.valueOf(this.field_nettimes));
+    }
+    if (this.eyr) {
+      localContentValues.put("reserved1", Integer.valueOf(this.field_reserved1));
+    }
+    if (this.eys) {
+      localContentValues.put("reserved2", this.field_reserved2);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -150,7 +201,7 @@ public abstract class gb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.gb
  * JD-Core Version:    0.7.0.1
  */

@@ -10,16 +10,16 @@ final class AppBrandDesktopHalfView$7
   
   public final void run()
   {
-    AppMethodBeat.i(134167);
-    if (this.jiq != null) {
-      this.jiq.aQl();
+    AppMethodBeat.i(49777);
+    if (this.lXo != null) {
+      this.lXo.bss();
     }
-    AppMethodBeat.o(134167);
+    AppMethodBeat.o(49777);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.half.AppBrandDesktopHalfView.7
  * JD-Core Version:    0.7.0.1
  */

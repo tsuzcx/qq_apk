@@ -2,8 +2,12 @@ package com.tencent.mm.plugin.mmsight.ui;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
+import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.media.MediaMetadataRetriever;
+import android.os.Process;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -11,267 +15,496 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.c;
+import com.tencent.mm.api.g;
 import com.tencent.mm.api.s;
-import com.tencent.mm.api.s.a.a;
-import com.tencent.mm.api.s.b;
-import com.tencent.mm.api.s.c;
+import com.tencent.mm.api.u;
+import com.tencent.mm.api.w;
+import com.tencent.mm.api.y;
+import com.tencent.mm.api.y.a.a;
+import com.tencent.mm.api.y.b;
+import com.tencent.mm.api.y.c;
+import com.tencent.mm.hardcoder.WXHardCoderJNI;
+import com.tencent.mm.media.h.d.a;
+import com.tencent.mm.media.h.d.b;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.plugin.mmsight.a.a.b;
 import com.tencent.mm.plugin.mmsight.model.a.j;
 import com.tencent.mm.plugin.mmsight.segment.RecyclerThumbSeekBar;
+import com.tencent.mm.plugin.mmsight.segment.c.a;
+import com.tencent.mm.plugin.mmsight.segment.c.b;
+import com.tencent.mm.plugin.mmsight.segment.m;
+import com.tencent.mm.plugin.sight.base.AdaptiveAdjustBitrate;
+import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.ui.tools.h.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.ui.ap;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.p;
 
 public final class b
 {
-  private static int eez;
-  private static final Object oOK;
-  private MMActivity cmc;
-  private String cqq;
-  private com.tencent.mm.ui.base.p efs;
-  private VideoTransPara oHk;
-  private VideoPlayerTextureView oKC;
-  private VideoSeekBarEditorView oKD;
-  private boolean oOA = false;
-  private int oOB = -1;
-  public int oOC = -1;
-  public int oOD = -1;
-  private ap oOE;
-  private ViewGroup oOF;
-  private s oOG;
-  private c oOH;
-  private com.tencent.mm.plugin.mmsight.api.a oOI;
-  private com.tencent.mm.media.g.d oOJ;
-  public b.a oOL;
-  private boolean oOM = false;
-  public boolean oON = false;
-  private boolean oOO = false;
-  private boolean oOP = false;
-  public String oOQ = null;
-  public int oOR = -1;
-  private a.b oOS;
-  public boolean oOT = false;
-  public boolean oOU = true;
-  private RecyclerThumbSeekBar oOz;
+  private static int foV;
+  private static final Object tJS;
+  private p fqw;
+  private MMActivity imP;
+  String md5;
   public int scene;
+  private VideoTransPara tCr;
+  private VideoPlayerTextureView tFN;
+  private VideoSeekBarEditorView tFO;
+  private RecyclerThumbSeekBar tJH;
+  private boolean tJI = false;
+  private int tJJ = -1;
+  public int tJK = -1;
+  public int tJL = -1;
+  private av tJM;
+  private ViewGroup tJN;
+  private y tJO;
+  private com.tencent.mm.api.e tJP;
+  private com.tencent.mm.plugin.mmsight.api.a tJQ;
+  private com.tencent.mm.media.h.d tJR;
+  public a tJT;
+  private boolean tJU = false;
+  public boolean tJV = false;
+  private boolean tJW = false;
+  private boolean tJX = false;
+  public int tJZ = -1;
+  private com.tencent.mm.plugin.mmsight.a.a.b tKa;
+  public boolean tKb = false;
+  public boolean tKc = true;
+  public String videoOutputPath = null;
   private String videoPath;
   
   static
   {
-    AppMethodBeat.i(55175);
-    oOK = new Object();
-    AppMethodBeat.o(55175);
+    AppMethodBeat.i(94627);
+    tJS = new Object();
+    AppMethodBeat.o(94627);
   }
   
-  private void bRT()
+  private void cQO()
   {
-    AppMethodBeat.i(55163);
-    this.oOG = s.bWe.Ab();
-    Object localObject = this.oOG;
-    s.a.a locala = new s.a.a();
-    locala.bWg = false;
-    locala.bWj = true;
-    locala.bWf = s.c.bWl;
-    locala.bWk = new Rect(this.oKC.getLeft(), this.oKC.getTop(), this.oKC.getRight(), this.oKC.getBottom());
-    ((s)localObject).a(locala.Ax());
-    this.oOH = this.oOG.aV(this.oOF.getContext());
-    this.oOH.setActionBarCallback(new b.1(this));
+    AppMethodBeat.i(94614);
+    this.tJO = y.cJB.IO();
+    Object localObject = this.tJO;
+    y.a.a locala = new y.a.a();
+    locala.cJD = false;
+    locala.cJG = true;
+    locala.cJC = y.c.cJI;
+    locala.cJH = new Rect(this.tFN.getLeft(), this.tFN.getTop(), this.tFN.getRight(), this.tFN.getBottom());
+    ((y)localObject).a(locala.Ke());
+    this.tJP = this.tJO.bf(this.tJN.getContext());
+    this.tJP.setActionBarCallback(new com.tencent.mm.api.i()
+    {
+      public final void onExit()
+      {
+        AppMethodBeat.i(94586);
+        ad.i("MicroMsg.MMSightVideoEditor", "photoEditor onExit");
+        b.this.release();
+        if (b.a(b.this) != null) {
+          aq.f(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(94584);
+              b.a(b.this).cQy();
+              AppMethodBeat.o(94584);
+            }
+          });
+        }
+        AppMethodBeat.o(94586);
+      }
+      
+      public final void onFinish()
+      {
+        AppMethodBeat.i(94585);
+        ad.i("MicroMsg.MMSightVideoEditor", "photoEditor onFinish");
+        b.h(b.this).a(new s()
+        {
+          public final void a(final Bitmap paramAnonymous2Bitmap, boolean paramAnonymous2Boolean)
+          {
+            AppMethodBeat.i(94583);
+            ad.i("MicroMsg.MMSightVideoEditor", "photoEditor onSuccess: %s isNever：%s", new Object[] { paramAnonymous2Bitmap, Boolean.valueOf(paramAnonymous2Boolean) });
+            if (paramAnonymous2Boolean)
+            {
+              if ((paramAnonymous2Bitmap != null) && (!paramAnonymous2Bitmap.isRecycled())) {
+                paramAnonymous2Bitmap.recycle();
+              }
+              if ((b.a(b.this) != null) && (!b.b(b.this)))
+              {
+                if ((b.c(b.this) > 0) && (b.d(b.this) > 0) && (b.c(b.this) <= b.d(b.this)))
+                {
+                  aq.f(new Runnable()
+                  {
+                    public final void run()
+                    {
+                      AppMethodBeat.i(94578);
+                      b.a(b.this, h.b(b.e(b.this), b.e(b.this).getString(2131761244), false, null));
+                      b.f(b.this).pause();
+                      b.a(b.this, null);
+                      AppMethodBeat.o(94578);
+                    }
+                  });
+                  AppMethodBeat.o(94583);
+                  return;
+                }
+                b.a(b.this, com.tencent.mm.vfs.i.aEN(b.g(b.this)));
+                aq.f(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(94579);
+                    b.a(b.this).cQx();
+                    AppMethodBeat.o(94579);
+                  }
+                });
+                AppMethodBeat.o(94583);
+                return;
+              }
+              if (b.b(b.this))
+              {
+                aq.f(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(94580);
+                    b.a(b.this, h.b(b.e(b.this), b.e(b.this).getString(2131761244), false, null));
+                    b.f(b.this).pause();
+                    b.a(b.this, null);
+                    AppMethodBeat.o(94580);
+                  }
+                });
+                AppMethodBeat.o(94583);
+              }
+            }
+            else if (paramAnonymous2Bitmap != null)
+            {
+              aq.f(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(94581);
+                  b.a(b.this, h.b(b.e(b.this), b.e(b.this).getString(2131761244), false, null));
+                  b.f(b.this).pause();
+                  b.a(b.this, paramAnonymous2Bitmap);
+                  AppMethodBeat.o(94581);
+                }
+              });
+            }
+            AppMethodBeat.o(94583);
+          }
+          
+          public final void onError(Exception paramAnonymous2Exception)
+          {
+            AppMethodBeat.i(94582);
+            ad.e("MicroMsg.MMSightVideoEditor", "photoEditor onError: %s", new Object[] { paramAnonymous2Exception });
+            AppMethodBeat.o(94582);
+          }
+        });
+        AppMethodBeat.o(94585);
+      }
+    });
     localObject = new ViewGroup.MarginLayoutParams(-1, -1);
-    if (am.hO(this.cmc)) {
-      ((ViewGroup.MarginLayoutParams)localObject).height = (com.tencent.mm.plugin.mmsight.d.bQE().y - Math.max(am.fx(this.cmc), am.hP(this.cmc)));
+    if (ap.ju(this.imP)) {
+      ((ViewGroup.MarginLayoutParams)localObject).height = (com.tencent.mm.plugin.mmsight.d.cPz().y - Math.max(ap.eb(this.imP), ap.jv(this.imP)));
     }
-    this.oOF.addView(this.oOH, (ViewGroup.LayoutParams)localObject);
-    this.oOH.setSelectedFeatureListener(new b.6(this));
-    this.oKD.setCancelButtonClickListener(new b.7(this));
-    this.oKD.setFinishButtonClickListener(new View.OnClickListener()
+    this.tJN.addView(this.tJP, (ViewGroup.LayoutParams)localObject);
+    this.tJP.setSelectedFeatureListener(new w()
+    {
+      public final void a(g paramAnonymousg)
+      {
+        AppMethodBeat.i(94598);
+        ad.i("MicroMsg.MMSightVideoEditor", "photoEditor [onSelectedFeature] features:%s", new Object[] { paramAnonymousg.name() });
+        if (paramAnonymousg == g.cJx) {
+          b.i(b.this);
+        }
+        AppMethodBeat.o(94598);
+      }
+      
+      public final void a(g paramAnonymousg, int paramAnonymousInt, Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(169419);
+        ad.i("MicroMsg.MMSightVideoEditor", "photoEditor [onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymousg.name(), Integer.valueOf(paramAnonymousInt) });
+        AppMethodBeat.o(169419);
+      }
+      
+      public final void bV(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(94600);
+        if (paramAnonymousBoolean)
+        {
+          b.e(b.this).showVKB();
+          AppMethodBeat.o(94600);
+          return;
+        }
+        b.e(b.this).hideVKB(b.j(b.this));
+        AppMethodBeat.o(94600);
+      }
+    });
+    this.tFO.setCancelButtonClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(55153);
+        AppMethodBeat.i(94603);
+        if ((!b.k(b.this)) && (b.d(b.this) <= b.l(b.this).duration))
+        {
+          b.a(b.this, b.b(b.this, -1));
+          b.m(b.this).cRe();
+          b.a(b.this, b.m(b.this).tLG);
+          b.n(b.this);
+        }
+        if (!b.o(b.this))
+        {
+          if (b.a(b.this) != null)
+          {
+            aq.f(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(94601);
+                b.a(b.this).cQy();
+                AppMethodBeat.o(94601);
+              }
+            });
+            AppMethodBeat.o(94603);
+          }
+        }
+        else
+        {
+          b.p(b.this);
+          if ((!b.k(b.this)) && (b.q(b.this)) && (b.a(b.this) != null)) {
+            aq.f(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(94602);
+                b.a(b.this).cQy();
+                AppMethodBeat.o(94602);
+              }
+            });
+          }
+        }
+        AppMethodBeat.o(94603);
+      }
+    });
+    this.tFO.setFinishButtonClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(94604);
         if (!b.o(b.this))
         {
           b.r(b.this);
-          AppMethodBeat.o(55153);
+          AppMethodBeat.o(94604);
           return;
         }
         b.p(b.this);
         if ((b.s(b.this) >= 0) && (b.c(b.this) > 0)) {
           b.t(b.this);
         }
-        AppMethodBeat.o(55153);
+        AppMethodBeat.o(94604);
       }
     });
-    if (this.oOO)
+    if (this.tJW)
     {
-      this.oKD.setVisibility(0);
-      this.oKD.bringToFront();
-      this.oKD.post(new Runnable()
+      this.tFO.setVisibility(0);
+      this.tFO.bringToFront();
+      this.tFO.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(55154);
+          AppMethodBeat.i(94605);
           b.u(b.this).setFooterVisible(false);
           b.u(b.this).setActionBarVisible(false);
           b.u(b.this).setActivated(false);
           b.i(b.this);
-          AppMethodBeat.o(55154);
+          AppMethodBeat.o(94605);
         }
       });
     }
-    AppMethodBeat.o(55163);
+    AppMethodBeat.o(94614);
   }
   
-  private void bRU()
+  private void cQP()
   {
-    AppMethodBeat.i(55164);
-    this.oKC.animate().scaleX(1.0F).scaleY(1.0F).translationY(0.0F).setDuration(300L);
-    this.oKD.animate().alpha(0.0F).setDuration(100L).setListener(new b.3(this));
-    this.oOH.setFooterVisible(true);
-    this.oOH.setAutoShowFooterAndBar(true);
-    this.oOH.setActionBarVisible(true);
-    this.oOH.animate().scaleX(1.0F).scaleY(1.0F).translationY(0.0F).setDuration(300L);
-    this.oOP = false;
-    AppMethodBeat.o(55164);
+    AppMethodBeat.i(94615);
+    this.tFN.animate().scaleX(1.0F).scaleY(1.0F).translationY(0.0F).setDuration(300L);
+    this.tFO.animate().alpha(0.0F).setDuration(100L).setListener(new AnimatorListenerAdapter()
+    {
+      public final void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(94588);
+        b.m(b.this).setVisibility(8);
+        b.m(b.this).setAlpha(1.0F);
+        AppMethodBeat.o(94588);
+      }
+    });
+    this.tJP.setFooterVisible(true);
+    this.tJP.setAutoShowFooterAndBar(true);
+    this.tJP.setActionBarVisible(true);
+    this.tJP.animate().scaleX(1.0F).scaleY(1.0F).translationY(0.0F).setDuration(300L);
+    this.tJX = false;
+    AppMethodBeat.o(94615);
   }
   
-  private void bRV()
+  private void cQQ()
   {
-    AppMethodBeat.i(55165);
-    al.d(new b.5(this));
-    AppMethodBeat.o(55165);
+    AppMethodBeat.i(94616);
+    aq.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(94597);
+        if (b.v(b.this) != null) {
+          b.v(b.this).dismiss();
+        }
+        if (b.a(b.this) != null) {
+          b.a(b.this).cQx();
+        }
+        AppMethodBeat.o(94597);
+      }
+    });
+    AppMethodBeat.o(94616);
   }
   
   public final void a(MMActivity paramMMActivity, int paramInt, String paramString, VideoSeekBarEditorView paramVideoSeekBarEditorView, VideoPlayerTextureView paramVideoPlayerTextureView, ViewGroup paramViewGroup, VideoTransPara paramVideoTransPara, boolean paramBoolean)
   {
-    AppMethodBeat.i(55162);
-    this.oHk = paramVideoTransPara;
-    if (this.oHk != null) {
-      if (this.oHk.duration > 0) {}
+    AppMethodBeat.i(94613);
+    this.tCr = paramVideoTransPara;
+    if (this.tCr != null) {
+      if (this.tCr.duration > 0) {}
     }
-    for (this.oHk.duration = 10000;; this.oHk.duration = 10000)
+    for (this.tCr.duration = 10000;; this.tCr.duration = 10000)
     {
       this.scene = paramInt;
       this.videoPath = paramString;
-      this.oKD = paramVideoSeekBarEditorView;
-      this.oKC = paramVideoPlayerTextureView;
-      this.oOF = paramViewGroup;
-      this.cmc = paramMMActivity;
-      this.oOO = paramBoolean;
-      this.oOS = new a.b(paramInt);
-      this.oOz = paramVideoSeekBarEditorView.oQL;
-      this.oOz.setVideoTransPara(this.oHk);
-      bRT();
-      AppMethodBeat.o(55162);
+      this.tFO = paramVideoSeekBarEditorView;
+      this.tFN = paramVideoPlayerTextureView;
+      this.tJN = paramViewGroup;
+      this.imP = paramMMActivity;
+      this.tJW = paramBoolean;
+      this.tKa = new com.tencent.mm.plugin.mmsight.a.a.b(paramInt);
+      this.tJH = paramVideoSeekBarEditorView.tLG;
+      this.tJH.setVideoTransPara(this.tCr);
+      cQO();
+      AppMethodBeat.o(94613);
       return;
-      ab.e("MicroMsg.MMSightVideoEditor", "video trans para is null!!!");
-      this.oHk = new VideoTransPara();
+      ad.e("MicroMsg.MMSightVideoEditor", "video trans para is null!!!");
+      this.tCr = new VideoTransPara();
     }
   }
   
-  public final String bRW()
+  public final void nl(boolean paramBoolean)
   {
-    AppMethodBeat.i(140588);
-    String str = bo.bf(this.cqq, "");
-    AppMethodBeat.o(140588);
-    return str;
+    AppMethodBeat.i(94618);
+    r(paramBoolean, "");
+    AppMethodBeat.o(94618);
   }
   
   public final boolean onBackPressed()
   {
-    AppMethodBeat.i(55168);
-    if (!this.oOU)
+    AppMethodBeat.i(94620);
+    if (!this.tKc)
     {
-      AppMethodBeat.o(55168);
+      AppMethodBeat.o(94620);
       return false;
     }
-    if (this.oOP)
+    if (this.tJX)
     {
-      bRU();
-      AppMethodBeat.o(55168);
+      cQP();
+      AppMethodBeat.o(94620);
       return true;
     }
-    if (this.oOG != null)
+    if (this.tJO != null)
     {
-      boolean bool = this.oOG.zY();
-      AppMethodBeat.o(55168);
+      boolean bool = this.tJO.IL();
+      AppMethodBeat.o(94620);
       return bool;
     }
-    AppMethodBeat.o(55168);
+    AppMethodBeat.o(94620);
     return false;
   }
   
-  public final void p(boolean paramBoolean, String paramString)
+  public final void r(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(55167);
+    AppMethodBeat.i(94619);
     try
     {
-      this.oOS.eUJ = paramBoolean;
-      if (this.oOG == null)
+      this.tKa.gqP = paramBoolean;
+      if (this.tJO == null)
       {
-        ab.e("MicroMsg.MMSightVideoEditor", "[report] null == photoEditor");
-        AppMethodBeat.o(55167);
+        ad.e("MicroMsg.MMSightVideoEditor", "[report] null == photoEditor");
+        AppMethodBeat.o(94619);
         return;
       }
-      com.tencent.mm.api.p localp = this.oOG.zZ();
-      this.oOS.oKq = localp.An();
-      this.oOS.oKr = localp.Am();
-      this.oOS.oKt = localp.Ap();
-      this.oOS.ect = localp.Aq();
-      this.oOS.oKu = localp.As();
-      this.oOS.textColor = localp.getTextColor();
-      com.tencent.mm.plugin.mmsight.a.a.a(this.oOS, paramString);
-      AppMethodBeat.o(55167);
+      u localu = this.tJO.IM();
+      this.tKa.tFB = localu.JU();
+      this.tKa.tFC = localu.JT();
+      this.tKa.tFE = localu.JW();
+      this.tKa.fmF = localu.JX();
+      this.tKa.tFF = localu.JZ();
+      this.tKa.textColor = localu.getTextColor();
+      com.tencent.mm.plugin.mmsight.a.a.a(this.tKa, paramString);
+      AppMethodBeat.o(94619);
       return;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(55167);
+      AppMethodBeat.o(94619);
     }
   }
   
   public final void release()
   {
-    AppMethodBeat.i(55166);
+    AppMethodBeat.i(94617);
     try
     {
-      if (this.oOE != null)
+      if (this.tJM != null)
       {
-        this.oOE.stopTimer();
-        this.oOE = null;
+        this.tJM.stopTimer();
+        this.tJM = null;
       }
-      if (this.oOz != null) {
-        this.oOz.release();
+      if (this.tJH != null) {
+        this.tJH.release();
       }
-      if (this.oOG != null) {
-        this.oOG.onDestroy();
+      if (this.tJO != null) {
+        this.tJO.onDestroy();
       }
-      if (this.oOF != null) {
-        this.oOF.removeView(this.oOH);
+      if (this.tJN != null) {
+        this.tJN.removeView(this.tJP);
       }
-      if (this.oKD != null) {
-        this.oKD.bSm();
+      if (this.tFO != null) {
+        this.tFO.cRe();
       }
-      this.oOA = false;
-      j.oJp.XJ();
-      AppMethodBeat.o(55166);
+      this.tJI = false;
+      j.tEA.aoS();
+      AppMethodBeat.o(94617);
       return;
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace("MicroMsg.MMSightVideoEditor", localException, "release error: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(55166);
+      ad.printErrStackTrace("MicroMsg.MMSightVideoEditor", localException, "release error: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(94617);
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void cQx();
+    
+    public abstract void cQy();
+    
+    public abstract void onError();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.b
  * JD-Core Version:    0.7.0.1
  */

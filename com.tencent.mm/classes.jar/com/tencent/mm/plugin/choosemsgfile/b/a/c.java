@@ -1,25 +1,37 @@
 package com.tencent.mm.plugin.choosemsgfile.b.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.choosemsgfile.compat.MsgFile;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import com.tencent.mm.vending.e.b;
 
 public abstract class c
   implements com.tencent.mm.vending.e.a, Runnable
 {
-  private static long kEu = 2000L;
-  private int fsd;
-  protected com.tencent.mm.plugin.choosemsgfile.b.b.a kEs;
-  protected a kEt;
-  private boolean kEv = false;
-  private Runnable kEw = new c.1(this);
+  private static long nLu = 2000L;
+  private int gTY;
+  protected com.tencent.mm.plugin.choosemsgfile.b.b.a nLs;
+  protected a nLt;
+  private boolean nLv = false;
+  private Runnable nLw = new Runnable()
+  {
+    public final void run()
+    {
+      AppMethodBeat.i(123227);
+      c.a(c.this);
+      if (c.this.nLt != null) {
+        c.this.nLt.eP(c.b(c.this), c.c(c.this));
+      }
+      AppMethodBeat.o(123227);
+    }
+  };
   private int offset;
   
   public c(com.tencent.mm.plugin.choosemsgfile.b.b.a parama, a parama1, b paramb)
   {
-    this.kEs = parama;
-    this.kEt = parama1;
+    this.nLs = parama;
+    this.nLt = parama1;
     if (paramb != null) {
       paramb.keep(this);
     }
@@ -29,11 +41,11 @@ public abstract class c
   {
     try
     {
-      ab.i("MicroMsg.MsgFileWorker_Base", "onDownloadSuccess msgFile:%s", new Object[] { paramMsgFile });
-      if (this.kEt != null)
+      ad.i("MicroMsg.MsgFileWorker_Base", "onDownloadSuccess msgFile:%s", new Object[] { paramMsgFile });
+      if (this.nLt != null)
       {
-        this.kEt.a(paramMsgFile);
-        this.kEt = null;
+        this.nLt.a(paramMsgFile);
+        this.nLt = null;
       }
       return;
     }
@@ -44,19 +56,17 @@ public abstract class c
     }
   }
   
-  protected abstract boolean bgf();
+  protected abstract boolean bNr();
   
-  protected abstract void bgg();
-  
-  protected final void bgh()
+  protected final void bNs()
   {
     try
     {
-      ab.i("MicroMsg.MsgFileWorker_Base", "onDownloadStop");
-      if (this.kEt != null)
+      ad.i("MicroMsg.MsgFileWorker_Base", "onDownloadStop");
+      if (this.nLt != null)
       {
-        this.kEt.bgd();
-        this.kEt = null;
+        this.nLt.bNp();
+        this.nLt = null;
       }
       return;
     }
@@ -67,15 +77,15 @@ public abstract class c
     }
   }
   
-  protected final void bgi()
+  protected final void bNt()
   {
     try
     {
-      ab.i("MicroMsg.MsgFileWorker_Base", "onDownloadFail");
-      if (this.kEt != null)
+      ad.i("MicroMsg.MsgFileWorker_Base", "onDownloadFail");
+      if (this.nLt != null)
       {
-        this.kEt.bgc();
-        this.kEt = null;
+        this.nLt.bNo();
+        this.nLt = null;
       }
       return;
     }
@@ -85,18 +95,22 @@ public abstract class c
       throw localObject;
     }
   }
+  
+  protected abstract void biB();
   
   protected abstract boolean checkValid();
   
-  protected final void dU(int paramInt1, int paramInt2)
+  public void dead() {}
+  
+  protected final void eQ(int paramInt1, int paramInt2)
   {
     try
     {
-      ab.v("MicroMsg.MsgFileWorker_Base", "onDownloadProgress offset:%d totalLen:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ad.v("MicroMsg.MsgFileWorker_Base", "onDownloadProgress offset:%d totalLen:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       this.offset = paramInt1;
-      this.fsd = paramInt2;
-      if ((this.kEv) && (this.kEt != null)) {
-        this.kEt.dT(paramInt1, paramInt2);
+      this.gTY = paramInt2;
+      if ((this.nLv) && (this.nLt != null)) {
+        this.nLt.eP(paramInt1, paramInt2);
       }
       return;
     }
@@ -107,22 +121,20 @@ public abstract class c
     }
   }
   
-  public void dead() {}
-  
   public void run()
   {
-    al.p(this.kEw, kEu);
-    bgg();
+    aq.n(this.nLw, nLu);
+    biB();
   }
   
   public String toString()
   {
-    return "MsgFileWorker_Base{mMsgItem=" + this.kEs + '}';
+    return "MsgFileWorker_Base{mMsgItem=" + this.nLs + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.a.c
  * JD-Core Version:    0.7.0.1
  */

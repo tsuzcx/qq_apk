@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:title="@string/egt" android:key="settings_my_username" />
     <PreferenceSmallCategory />
-    <CheckBoxPreference android:summary="@string/eej" android:title="@string/eeg" android:key="settings_show_username" />
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
+    <PreferenceSmallCategory />
+    <Preference android:key="room_search_chatting_content" android:layout="@layout/aop" android:title="@string/es2" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="room_notify_new_msg" android:title="@string/eqs" />
+    <CheckBoxPreference android:key="room_placed_to_the_top" android:layout="@layout/aop" android:title="@string/er_" />
+    <CheckBoxPreference android:key="force_notify" android:persistent="false" android:title="@string/cjj" />
+    <PreferenceSmallCategory />
+    <Preference android:key="room_set_chatting_background" android:layout="@layout/aop" android:title="@string/es9" />
+    <PreferenceSmallCategory />
+    <Preference android:key="room_clear_chatting_history" android:layout="@layout/aop" android:title="@string/ep8" />
+    <PreferenceSmallCategory />
+    <Preference android:key="room_expose" android:layout="@layout/aop" android:title="@string/epw" />
+    <PreferenceCategory />
 </PreferenceScreen>

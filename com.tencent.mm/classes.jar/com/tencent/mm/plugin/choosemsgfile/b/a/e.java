@@ -1,109 +1,165 @@
 package com.tencent.mm.plugin.choosemsgfile.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
+import com.tencent.mm.ai.k.b;
 import com.tencent.mm.choosemsgfile.compat.MsgFile;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.choosemsgfile.compat.b.a;
+import com.tencent.mm.choosemsgfile.compat.b.b;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
 
 public final class e
   extends c
 {
-  private String Cu;
-  private long eaY;
-  private com.tencent.mm.vending.e.a kEA;
-  private bi kEz;
+  private String Jh;
+  private long fll;
+  private com.tencent.mm.vending.e.a nLA;
+  private bl nLz;
   
   public e(com.tencent.mm.plugin.choosemsgfile.b.b.a parama, a parama1, com.tencent.mm.vending.e.b paramb)
   {
     super(parama, parama1, paramb);
   }
   
-  protected final boolean bgf()
+  protected final boolean bNr()
   {
-    AppMethodBeat.i(54266);
-    com.tencent.mm.pluginsdk.model.app.b localb = ((com.tencent.mm.choosemsgfile.compat.b)g.E(com.tencent.mm.choosemsgfile.compat.b.class)).q(this.Cu, this.eaY);
-    if (((com.tencent.mm.choosemsgfile.compat.b)g.E(com.tencent.mm.choosemsgfile.compat.b.class)).a(this.kEz, localb))
+    AppMethodBeat.i(123238);
+    com.tencent.mm.pluginsdk.model.app.c localc = ((com.tencent.mm.choosemsgfile.compat.b)g.ab(com.tencent.mm.choosemsgfile.compat.b.class)).q(this.Jh, this.fll);
+    if (((com.tencent.mm.choosemsgfile.compat.b)g.ab(com.tencent.mm.choosemsgfile.compat.b.class)).a(this.nLz, localc))
     {
       MsgFile localMsgFile = new MsgFile();
-      localMsgFile.fileSize = this.kEs.bgn();
-      localMsgFile.filePath = localb.field_fileFullPath;
-      localMsgFile.fileName = this.kEs.getFileName();
+      localMsgFile.fileSize = this.nLs.bNy();
+      localMsgFile.filePath = localc.field_fileFullPath;
+      localMsgFile.fileName = this.nLs.getFileName();
       localMsgFile.type = "file";
-      localMsgFile.elt = this.kEs.bgm();
-      localMsgFile.timeStamp = (this.kEs.getTimeStamp() / 1000L);
+      localMsgFile.fyk = this.nLs.bNx();
+      localMsgFile.timeStamp = (this.nLs.getTimeStamp() / 1000L);
       b(localMsgFile);
-      AppMethodBeat.o(54266);
+      AppMethodBeat.o(123238);
       return true;
     }
-    AppMethodBeat.o(54266);
+    AppMethodBeat.o(123238);
     return false;
   }
   
-  protected final void bgg()
+  protected final void biB()
   {
-    AppMethodBeat.i(54267);
-    boolean bool = ((com.tencent.mm.choosemsgfile.compat.b)g.E(com.tencent.mm.choosemsgfile.compat.b.class)).a(this.Cu, this.kEz, new e.1(this));
-    ab.i("MicroMsg.MsgFileWorker_File", "initOk:%b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.i(123239);
+    boolean bool = ((com.tencent.mm.choosemsgfile.compat.b)g.ab(com.tencent.mm.choosemsgfile.compat.b.class)).a(this.Jh, this.nLz, new b.b()
+    {
+      public final void s(int paramAnonymousInt, final String paramAnonymousString)
+      {
+        AppMethodBeat.i(123236);
+        ad.i("MicroMsg.MsgFileWorker_File", "InitAttachInfoCallback errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+        if (paramAnonymousInt == 0)
+        {
+          paramAnonymousString = ((com.tencent.mm.choosemsgfile.compat.b)g.ab(com.tencent.mm.choosemsgfile.compat.b.class)).q(e.a(e.this), e.b(e.this));
+          ((com.tencent.mm.choosemsgfile.compat.b)g.ab(com.tencent.mm.choosemsgfile.compat.b.class)).a(paramAnonymousString);
+          e.a(e.this, ((com.tencent.mm.choosemsgfile.compat.b)g.ab(com.tencent.mm.choosemsgfile.compat.b.class)).a(e.b(e.this), e.a(e.this), new b.a()
+          {
+            public final void cq(int paramAnonymous2Int1, int paramAnonymous2Int2)
+            {
+              AppMethodBeat.i(123235);
+              e.this.eQ(paramAnonymous2Int1, paramAnonymous2Int2);
+              AppMethodBeat.o(123235);
+            }
+            
+            public final void r(int paramAnonymous2Int, String paramAnonymous2String)
+            {
+              AppMethodBeat.i(123234);
+              ad.i("MicroMsg.MsgFileWorker_File", "DownloadCallback errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramAnonymous2Int), paramAnonymous2String });
+              if (paramAnonymous2Int == 0)
+              {
+                paramAnonymous2String = new MsgFile();
+                paramAnonymous2String.fileSize = e.this.nLs.bNy();
+                paramAnonymous2String.filePath = paramAnonymousString.field_fileFullPath;
+                paramAnonymous2String.fileName = e.this.nLs.getFileName();
+                paramAnonymous2String.type = "file";
+                paramAnonymous2String.fyk = e.this.nLs.bNx();
+                paramAnonymous2String.timeStamp = (e.this.nLs.getTimeStamp() / 1000L);
+                e.this.b(paramAnonymous2String);
+                AppMethodBeat.o(123234);
+                return;
+              }
+              if (paramAnonymous2Int == 1)
+              {
+                e.this.bNs();
+                AppMethodBeat.o(123234);
+                return;
+              }
+              ad.e("MicroMsg.MsgFileWorker_File", "download %s fail", new Object[] { e.this.nLs });
+              e.this.bNt();
+              AppMethodBeat.o(123234);
+            }
+          }));
+          AppMethodBeat.o(123236);
+          return;
+        }
+        ad.e("MicroMsg.MsgFileWorker_File", "init %s fail", new Object[] { e.this.nLs });
+        e.this.bNt();
+        AppMethodBeat.o(123236);
+      }
+    });
+    ad.i("MicroMsg.MsgFileWorker_File", "initOk:%b", new Object[] { Boolean.valueOf(bool) });
     if (!bool)
     {
-      ab.i("MicroMsg.MsgFileWorker_File", "initOk fail");
-      bgi();
+      ad.i("MicroMsg.MsgFileWorker_File", "initOk fail");
+      bNt();
     }
-    AppMethodBeat.o(54267);
+    AppMethodBeat.o(123239);
   }
   
   protected final boolean checkValid()
   {
-    AppMethodBeat.i(54265);
-    ab.i("MicroMsg.MsgFileWorker_File", "start %s", new Object[] { this });
-    if ((this.kEs == null) || (this.kEs.kEz == null))
+    AppMethodBeat.i(123237);
+    ad.i("MicroMsg.MsgFileWorker_File", "start %s", new Object[] { this });
+    if ((this.nLs == null) || (this.nLs.nLz == null))
     {
-      ab.e("MicroMsg.MsgFileWorker_File", "mMsgInfo is null, err");
-      AppMethodBeat.o(54265);
+      ad.e("MicroMsg.MsgFileWorker_File", "mMsgInfo is null, err");
+      AppMethodBeat.o(123237);
       return false;
     }
-    this.kEz = this.kEs.kEz;
-    this.eaY = this.kEs.kEz.field_msgId;
-    j.b localb = j.b.mY(this.kEz.field_content);
+    this.nLz = this.nLs.nLz;
+    this.fll = this.nLs.nLz.field_msgId;
+    k.b localb = k.b.rx(this.nLz.field_content);
     if (localb == null)
     {
-      ab.e("MicroMsg.MsgFileWorker_File", "parse msgContent error, %s", new Object[] { this.kEz.field_content });
-      AppMethodBeat.o(54265);
+      ad.e("MicroMsg.MsgFileWorker_File", "parse msgContent error, %s", new Object[] { this.nLz.field_content });
+      AppMethodBeat.o(123237);
       return false;
     }
-    if ((bo.isNullOrNil(localb.cmN)) && (!bo.isNullOrNil(localb.fgL)))
+    if ((bt.isNullOrNil(localb.dbA)) && (!bt.isNullOrNil(localb.gHt)))
     {
-      ab.e("MicroMsg.MsgFileWorker_File", "msgContent format error, %s", new Object[] { this.kEz.field_content });
-      localb.cmN = localb.fgL.hashCode();
+      ad.e("MicroMsg.MsgFileWorker_File", "msgContent format error, %s", new Object[] { this.nLz.field_content });
+      localb.dbA = localb.gHt.hashCode();
     }
-    this.Cu = localb.cmN;
-    if (bo.isNullOrNil(this.Cu))
+    this.Jh = localb.dbA;
+    if (bt.isNullOrNil(this.Jh))
     {
-      ab.e("MicroMsg.MsgFileWorker_File", "MediaId is null, err return");
-      AppMethodBeat.o(54265);
+      ad.e("MicroMsg.MsgFileWorker_File", "MediaId is null, err return");
+      AppMethodBeat.o(123237);
       return false;
     }
-    AppMethodBeat.o(54265);
+    AppMethodBeat.o(123237);
     return true;
   }
   
   public final void dead()
   {
-    AppMethodBeat.i(54268);
-    ab.i("MicroMsg.MsgFileWorker_File", "dead");
-    if (this.kEA != null) {
-      this.kEA.dead();
+    AppMethodBeat.i(123240);
+    ad.i("MicroMsg.MsgFileWorker_File", "dead");
+    if (this.nLA != null) {
+      this.nLA.dead();
     }
-    AppMethodBeat.o(54268);
+    AppMethodBeat.o(123240);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.a.e
  * JD-Core Version:    0.7.0.1
  */

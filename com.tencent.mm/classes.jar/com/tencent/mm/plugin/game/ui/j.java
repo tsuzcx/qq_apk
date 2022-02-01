@@ -7,27 +7,27 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.x;
-import com.tencent.mm.platformtools.x.a;
+import com.tencent.mm.platformtools.u;
+import com.tencent.mm.platformtools.u.a;
 import com.tencent.mm.plugin.game.model.ai;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class j
   extends BitmapDrawable
-  implements x.a
+  implements u.a
 {
-  private static Bitmap bXF;
-  private static ak feT;
-  private Runnable feV;
+  private static Bitmap cLa;
+  private static ap gFd;
+  private Runnable gFf;
   private String mUrl;
-  private Bitmap nyG;
+  private Bitmap sig;
   
   static
   {
-    AppMethodBeat.i(111912);
-    feT = new ak(Looper.getMainLooper());
-    AppMethodBeat.o(111912);
+    AppMethodBeat.i(42083);
+    gFd = new ap(Looper.getMainLooper());
+    AppMethodBeat.o(42083);
   }
   
   private j(String paramString) {}
@@ -35,62 +35,70 @@ public final class j
   private j(String paramString, Bitmap paramBitmap)
   {
     super(paramBitmap);
-    AppMethodBeat.i(111908);
-    this.feV = new j.1(this);
+    AppMethodBeat.i(42079);
+    this.gFf = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(42076);
+        j.this.invalidateSelf();
+        AppMethodBeat.o(42076);
+      }
+    };
     paramBitmap = getPaint();
     paramBitmap.setAntiAlias(true);
     paramBitmap.setFilterBitmap(true);
-    x.a(this);
+    u.a(this);
     setUrl(paramString);
-    AppMethodBeat.o(111908);
+    AppMethodBeat.o(42079);
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(111910);
-    if ((this.nyG != null) && (!this.nyG.isRecycled()))
+    AppMethodBeat.i(42081);
+    if ((this.sig != null) && (!this.sig.isRecycled()))
     {
       Rect localRect1 = getBounds();
-      Rect localRect2 = new Rect(0, 0, this.nyG.getWidth(), this.nyG.getHeight());
-      paramCanvas.drawBitmap(this.nyG, localRect2, localRect1, getPaint());
-      AppMethodBeat.o(111910);
+      Rect localRect2 = new Rect(0, 0, this.sig.getWidth(), this.sig.getHeight());
+      paramCanvas.drawBitmap(this.sig, localRect2, localRect1, getPaint());
+      AppMethodBeat.o(42081);
       return;
     }
     super.draw(paramCanvas);
-    AppMethodBeat.o(111910);
+    AppMethodBeat.o(42081);
   }
   
-  public final void m(String paramString, Bitmap paramBitmap)
+  public final void l(String paramString, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(111909);
+    AppMethodBeat.i(42080);
     if ((this.mUrl != null) && (this.mUrl.hashCode().equals(paramString)) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      ab.i("MicroMsg.GameDrawable", "onGerPictureFinish() function has been invoke.");
-      this.nyG = paramBitmap;
-      feT.post(this.feV);
+      ad.i("MicroMsg.GameDrawable", "onGerPictureFinish() function has been invoke.");
+      this.sig = paramBitmap;
+      gFd.post(this.gFf);
     }
-    AppMethodBeat.o(111909);
+    AppMethodBeat.o(42080);
   }
   
   public final void setUrl(String paramString)
   {
-    AppMethodBeat.i(111911);
+    AppMethodBeat.i(42082);
     if ((paramString != null) && (!paramString.equals(this.mUrl)))
     {
-      ab.i("MicroMsg.GameDrawable", "set a new url for the drawable,url:[%s]", new Object[] { paramString });
+      ad.i("MicroMsg.GameDrawable", "set a new url for the drawable,url:[%s]", new Object[] { paramString });
       this.mUrl = paramString;
-      paramString = x.a(new ai(this.mUrl));
+      paramString = u.a(new ai(this.mUrl));
       if ((paramString != null) && (!paramString.isRecycled())) {
-        this.nyG = paramString;
+        this.sig = paramString;
       }
-      feT.post(this.feV);
+      gFd.post(this.gFf);
     }
-    AppMethodBeat.o(111911);
+    AppMethodBeat.o(42082);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,80 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import f.a.a.b;
 
 public final class aei
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<abx> wXm;
-  
-  public aei()
-  {
-    AppMethodBeat.i(94524);
-    this.wXm = new LinkedList();
-    AppMethodBeat.o(94524);
-  }
+  public String Dex;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94525);
+    AppMethodBeat.i(32197);
     if (paramInt == 0)
     {
-      ((e.a.a.c.a)paramVarArgs[0]).e(1, 8, this.wXm);
-      AppMethodBeat.o(94525);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.Dex == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: LoginUrl");
+        AppMethodBeat.o(32197);
+        throw paramVarArgs;
+      }
+      if (this.Dex != null) {
+        paramVarArgs.d(1, this.Dex);
+      }
+      AppMethodBeat.o(32197);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      paramInt = e.a.a.a.c(1, 8, this.wXm);
-      AppMethodBeat.o(94525);
-      return paramInt + 0;
+    if (paramInt == 1) {
+      if (this.Dex == null) {
+        break label268;
+      }
     }
-    if (paramInt == 2)
+    label268:
+    for (paramInt = f.a.a.b.b.a.e(1, this.Dex) + 0;; paramInt = 0)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.wXm.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+      AppMethodBeat.o(32197);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.fMq();
+          }
         }
+        if (this.Dex == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: LoginUrl");
+          AppMethodBeat.o(32197);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(32197);
+        return 0;
       }
-      AppMethodBeat.o(94525);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-      aei localaei = (aei)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      if (paramInt == 3)
       {
-      default: 
-        AppMethodBeat.o(94525);
-        return -1;
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        aei localaei = (aei)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(32197);
+          return -1;
+        }
+        localaei.Dex = locala.KhF.readString();
+        AppMethodBeat.o(32197);
+        return 0;
       }
-      paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new abx();
-        localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((abx)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-        localaei.wXm.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(94525);
-      return 0;
+      AppMethodBeat.o(32197);
+      return -1;
     }
-    AppMethodBeat.o(94525);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aei
  * JD-Core Version:    0.7.0.1
  */

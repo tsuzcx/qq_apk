@@ -10,15 +10,15 @@ public class zzban
   extends zza
 {
   public static final Parcelable.Creator<zzban> CREATOR = new cw();
-  final int Hc;
-  final boolean QG;
-  final List<Scope> QH;
+  final int IR;
+  final boolean Sv;
+  final List<Scope> Sw;
   
   zzban(int paramInt, boolean paramBoolean, List<Scope> paramList)
   {
-    this.Hc = paramInt;
-    this.QG = paramBoolean;
-    this.QH = paramList;
+    this.IR = paramInt;
+    this.Sv = paramBoolean;
+    this.Sw = paramList;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

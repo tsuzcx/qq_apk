@@ -25,145 +25,145 @@ public class zzaf
   
   public ConnectionResult blockingConnect()
   {
-    AppMethodBeat.i(60697);
+    AppMethodBeat.i(11189);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60697);
+    AppMethodBeat.o(11189);
     throw localUnsupportedOperationException;
   }
   
   public ConnectionResult blockingConnect(long paramLong, TimeUnit paramTimeUnit)
   {
-    AppMethodBeat.i(60698);
+    AppMethodBeat.i(11190);
     paramTimeUnit = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60698);
+    AppMethodBeat.o(11190);
     throw paramTimeUnit;
   }
   
   public PendingResult<Status> clearDefaultAccountAndReconnect()
   {
-    AppMethodBeat.i(60701);
+    AppMethodBeat.i(11193);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60701);
+    AppMethodBeat.o(11193);
     throw localUnsupportedOperationException;
   }
   
   public void connect()
   {
-    AppMethodBeat.i(60696);
+    AppMethodBeat.i(11188);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60696);
+    AppMethodBeat.o(11188);
     throw localUnsupportedOperationException;
   }
   
   public void disconnect()
   {
-    AppMethodBeat.i(60699);
+    AppMethodBeat.i(11191);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60699);
+    AppMethodBeat.o(11191);
     throw localUnsupportedOperationException;
   }
   
   public void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(60711);
+    AppMethodBeat.i(11203);
     paramString = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60711);
+    AppMethodBeat.o(11203);
     throw paramString;
   }
   
   public ConnectionResult getConnectionResult(Api<?> paramApi)
   {
-    AppMethodBeat.i(60695);
+    AppMethodBeat.i(11187);
     paramApi = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60695);
+    AppMethodBeat.o(11187);
     throw paramApi;
   }
   
   public boolean hasConnectedApi(Api<?> paramApi)
   {
-    AppMethodBeat.i(60694);
+    AppMethodBeat.i(11186);
     paramApi = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60694);
+    AppMethodBeat.o(11186);
     throw paramApi;
   }
   
   public boolean isConnected()
   {
-    AppMethodBeat.i(60703);
+    AppMethodBeat.i(11195);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60703);
+    AppMethodBeat.o(11195);
     throw localUnsupportedOperationException;
   }
   
   public boolean isConnecting()
   {
-    AppMethodBeat.i(60704);
+    AppMethodBeat.i(11196);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60704);
+    AppMethodBeat.o(11196);
     throw localUnsupportedOperationException;
   }
   
   public boolean isConnectionCallbacksRegistered(GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks)
   {
-    AppMethodBeat.i(60706);
+    AppMethodBeat.i(11198);
     paramConnectionCallbacks = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60706);
+    AppMethodBeat.o(11198);
     throw paramConnectionCallbacks;
   }
   
   public boolean isConnectionFailedListenerRegistered(GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
-    AppMethodBeat.i(60709);
+    AppMethodBeat.i(11201);
     paramOnConnectionFailedListener = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60709);
+    AppMethodBeat.o(11201);
     throw paramOnConnectionFailedListener;
   }
   
   public void reconnect()
   {
-    AppMethodBeat.i(60700);
+    AppMethodBeat.i(11192);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60700);
+    AppMethodBeat.o(11192);
     throw localUnsupportedOperationException;
   }
   
   public void registerConnectionCallbacks(GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks)
   {
-    AppMethodBeat.i(60705);
+    AppMethodBeat.i(11197);
     paramConnectionCallbacks = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60705);
+    AppMethodBeat.o(11197);
     throw paramConnectionCallbacks;
   }
   
   public void registerConnectionFailedListener(GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
-    AppMethodBeat.i(60708);
+    AppMethodBeat.i(11200);
     paramOnConnectionFailedListener = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60708);
+    AppMethodBeat.o(11200);
     throw paramOnConnectionFailedListener;
   }
   
   public void stopAutoManage(FragmentActivity paramFragmentActivity)
   {
-    AppMethodBeat.i(60702);
+    AppMethodBeat.i(11194);
     paramFragmentActivity = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60702);
+    AppMethodBeat.o(11194);
     throw paramFragmentActivity;
   }
   
   public void unregisterConnectionCallbacks(GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks)
   {
-    AppMethodBeat.i(60707);
+    AppMethodBeat.i(11199);
     paramConnectionCallbacks = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60707);
+    AppMethodBeat.o(11199);
     throw paramConnectionCallbacks;
   }
   
   public void unregisterConnectionFailedListener(GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
-    AppMethodBeat.i(60710);
+    AppMethodBeat.i(11202);
     paramOnConnectionFailedListener = new UnsupportedOperationException(this.zzhe);
-    AppMethodBeat.o(60710);
+    AppMethodBeat.o(11202);
     throw paramOnConnectionFailedListener;
   }
 }

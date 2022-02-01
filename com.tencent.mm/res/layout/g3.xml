@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/df" android:paddingLeft="112.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:id="@id/cu6" android:paddingLeft="@dimen/c5" style="@style/n5"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/a4r" android:layout_width="fill_parent" android:layout_height="68.0dip">
-        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/a4s" android:background="@color/a3x" android:layout_width="40.0dip" android:layout_height="40.0dip" android:scaleType="centerCrop" />
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip">
-            <TextView android:textSize="14.0dip" android:textColor="@color/w6" android:id="@id/a4t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/w6" android:id="@id/a4u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
-        </LinearLayout>
+    <com.tencent.mm.ui.base.MaskLayout android:id="@id/s9" android:layout_width="@dimen/i4" android:layout_height="@dimen/i4">
+        <ImageView android:id="@id/b3b" android:layout_width="@dimen/i2" android:layout_height="@dimen/i2" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
+    </com.tencent.mm.ui.base.MaskLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/amv" android:paddingRight="@dimen/c5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/i9" android:layout_weight="1.0">
+        <com.tencent.mm.ui.base.EllipsizeTextView android:ellipsize="end" android:gravity="center|left" android:id="@id/s_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/js" android:text="{nick}" android:singleLine="true" style="@style/m3" />
     </LinearLayout>
-    <View android:background="#ffd8d8d8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/a4r" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+</LinearLayout>

@@ -6,9 +6,14 @@ final class p
   extends DataSetObserver
   implements ak, al
 {
-  private int kD;
+  private int mz;
   
   p(PagerTitleStrip paramPagerTitleStrip) {}
+  
+  public final void J(int paramInt)
+  {
+    this.mz = paramInt;
+  }
   
   public final void a(int paramInt, float paramFloat)
   {
@@ -16,35 +21,30 @@ final class p
     if (paramFloat > 0.5F) {
       i = paramInt + 1;
     }
-    this.kE.a(i, paramFloat, false);
+    this.mA.a(i, paramFloat, false);
   }
   
-  public final void bs()
+  public final void bJ()
   {
     float f = 0.0F;
-    if (this.kD == 0)
+    if (this.mz == 0)
     {
-      this.kE.a(this.kE.kn.lc, this.kE.kn.lb);
-      if (this.kE.ks >= 0.0F) {
-        f = this.kE.ks;
+      this.mA.a(this.mA.mk.mY, this.mA.mk.mX);
+      if (this.mA.mp >= 0.0F) {
+        f = this.mA.mp;
       }
-      this.kE.a(this.kE.kn.lc, f, true);
+      this.mA.a(this.mA.mk.mY, f, true);
     }
   }
   
   public final void onChanged()
   {
     float f = 0.0F;
-    this.kE.a(this.kE.kn.lc, this.kE.kn.lb);
-    if (this.kE.ks >= 0.0F) {
-      f = this.kE.ks;
+    this.mA.a(this.mA.mk.mY, this.mA.mk.mX);
+    if (this.mA.mp >= 0.0F) {
+      f = this.mA.mp;
     }
-    this.kE.a(this.kE.kn.lc, f, true);
-  }
-  
-  public final void y(int paramInt)
-  {
-    this.kD = paramInt;
+    this.mA.a(this.mA.mk.mY, f, true);
   }
 }
 

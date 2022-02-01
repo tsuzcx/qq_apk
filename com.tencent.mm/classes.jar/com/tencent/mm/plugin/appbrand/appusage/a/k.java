@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bsi;
+import com.tencent.mm.protocal.protobuf.chm;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/MockData;", "", "()V", "fakeRecommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "getFakeRecommendCard", "()Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "setFakeRecommendCard", "(Lcom/tencent/mm/protocal/protobuf/RecommendCard;)V", "copyMockData", "", "mockData", "mock", "Ljava/util/LinkedList;", "pageNum", "", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appusage/recommend/MockData;", "", "()V", "fakeRecommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "getFakeRecommendCard", "()Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "setFakeRecommendCard", "(Lcom/tencent/mm/protocal/protobuf/RecommendCard;)V", "copyMockData", "", "mockData", "mock", "Ljava/util/LinkedList;", "pageNum", "", "plugin-appbrand-integration_release"})
 public final class k
 {
-  bsi hdR;
+  chm iXh;
   
   public k()
   {
-    AppMethodBeat.i(134595);
-    this.hdR = new bsi();
-    AppMethodBeat.o(134595);
+    AppMethodBeat.i(50332);
+    this.iXh = new chm();
+    AppMethodBeat.o(50332);
   }
   
-  final void a(bsi parambsi)
+  final void a(chm paramchm)
   {
-    parambsi.xFL = this.hdR.xFL;
-    parambsi.iFH = this.hdR.iFH;
-    parambsi.iFJ = this.hdR.iFJ;
-    parambsi.xFN = this.hdR.xFN;
-    parambsi.kWF = "####客户端mock数据####商品";
-    parambsi.iFK = this.hdR.iFK;
-    parambsi.xFP = this.hdR.xFP;
-    parambsi.xFO = this.hdR.xFO;
-    parambsi.xFK = this.hdR.xFK;
-    parambsi.score = this.hdR.score;
-    parambsi.iFL = this.hdR.iFL;
-    parambsi.xFQ = this.hdR.xFQ;
+    paramchm.DHP = this.iXh.DHP;
+    paramchm.lpv = this.iXh.lpv;
+    paramchm.lpx = this.iXh.lpx;
+    paramchm.EcW = this.iXh.EcW;
+    paramchm.odv = "####客户端mock数据####商品";
+    paramchm.lpy = this.iXh.lpy;
+    paramchm.EcY = this.iXh.EcY;
+    paramchm.EcX = this.iXh.EcX;
+    paramchm.EcU = this.iXh.EcU;
+    paramchm.score = this.iXh.score;
+    paramchm.lpz = this.iXh.lpz;
+    paramchm.EcZ = this.iXh.EcZ;
   }
 }
 

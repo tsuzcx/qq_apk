@@ -15,10 +15,10 @@ class SessionLogger
   
   static
   {
-    AppMethodBeat.i(72223);
+    AppMethodBeat.i(17659);
     TAG = SessionLogger.class.getCanonicalName();
     INACTIVE_SECONDS_QUANTA = new long[] { 300000L, 900000L, 1800000L, 3600000L, 21600000L, 43200000L, 86400000L, 172800000L, 259200000L, 604800000L, 1209600000L, 1814400000L, 2419200000L, 5184000000L, 7776000000L, 10368000000L, 12960000000L, 15552000000L, 31536000000L };
-    AppMethodBeat.o(72223);
+    AppMethodBeat.o(17659);
   }
   
   private static int getQuantaIndex(long paramLong)
@@ -32,7 +32,7 @@ class SessionLogger
   
   public static void logActivateApp(String paramString1, SourceApplicationInfo paramSourceApplicationInfo, String paramString2)
   {
-    AppMethodBeat.i(72220);
+    AppMethodBeat.i(17656);
     if (paramSourceApplicationInfo != null) {}
     for (paramSourceApplicationInfo = paramSourceApplicationInfo.toString();; paramSourceApplicationInfo = "Unclassified")
     {
@@ -43,21 +43,21 @@ class SessionLogger
       if (AppEventsLogger.getFlushBehavior() != AppEventsLogger.FlushBehavior.EXPLICIT_ONLY) {
         paramString1.flush();
       }
-      AppMethodBeat.o(72220);
+      AppMethodBeat.o(17656);
       return;
     }
   }
   
   private static void logClockSkewEvent()
   {
-    AppMethodBeat.i(72222);
+    AppMethodBeat.i(17658);
     Logger.log(LoggingBehavior.APP_EVENTS, TAG, "Clock skew detected");
-    AppMethodBeat.o(72222);
+    AppMethodBeat.o(17658);
   }
   
   public static void logDeactivateApp(String paramString1, SessionInfo paramSessionInfo, String paramString2)
   {
-    AppMethodBeat.i(72221);
+    AppMethodBeat.i(17657);
     Object localObject1 = Long.valueOf(paramSessionInfo.getDiskRestoreTime() - paramSessionInfo.getSessionLastEventTime().longValue());
     Object localObject2 = localObject1;
     if (((Long)localObject1).longValue() < 0L)
@@ -82,14 +82,14 @@ class SessionLogger
       ((Bundle)localObject3).putString("fb_mobile_launch_source", (String)localObject2);
       ((Bundle)localObject3).putLong("_logTime", paramSessionInfo.getSessionLastEventTime().longValue() / 1000L);
       new InternalAppEventsLogger(paramString1, paramString2, null).logEvent("fb_mobile_deactivate_app", ((Long)localObject1).longValue() / 1000L, (Bundle)localObject3);
-      AppMethodBeat.o(72221);
+      AppMethodBeat.o(17657);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.internal.SessionLogger
  * JD-Core Version:    0.7.0.1
  */

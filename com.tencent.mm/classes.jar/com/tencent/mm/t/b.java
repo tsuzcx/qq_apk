@@ -2,9 +2,9 @@ package com.tencent.mm.t;
 
 public abstract interface b
 {
-  public abstract void d(String paramString, int paramInt, boolean paramBoolean);
+  public abstract void c(String paramString, int paramInt, boolean paramBoolean);
   
-  public abstract void f(String paramString1, String paramString2, boolean paramBoolean);
+  public abstract void c(String paramString1, String paramString2, boolean paramBoolean);
   
   public abstract void l(String paramString, long paramLong1, long paramLong2);
 }

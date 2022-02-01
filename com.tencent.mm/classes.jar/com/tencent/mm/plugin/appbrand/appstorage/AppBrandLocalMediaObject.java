@@ -7,47 +7,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 @Deprecated
 public class AppBrandLocalMediaObject
-  implements Parcelable, o.a
+  implements Parcelable, p.a
 {
   public static final Parcelable.Creator<AppBrandLocalMediaObject> CREATOR;
-  public String ctV;
-  public String elt;
-  public String fod;
-  public boolean gZm;
-  public long gZn;
-  public long gmb;
+  public String diQ;
+  public String fyk;
+  public String gPG;
+  public long hWY;
+  public boolean iSb;
+  public long iSc;
   public String mimeType;
   
   static
   {
-    AppMethodBeat.i(105341);
-    CREATOR = new AppBrandLocalMediaObject.1();
-    AppMethodBeat.o(105341);
+    AppMethodBeat.i(134303);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(134303);
   }
   
   protected AppBrandLocalMediaObject() {}
   
   protected AppBrandLocalMediaObject(Parcel paramParcel)
   {
-    AppMethodBeat.i(105340);
-    this.ctV = paramParcel.readString();
-    this.fod = paramParcel.readString();
+    AppMethodBeat.i(134302);
+    this.diQ = paramParcel.readString();
+    this.gPG = paramParcel.readString();
     this.mimeType = paramParcel.readString();
-    this.elt = paramParcel.readString();
+    this.fyk = paramParcel.readString();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.gZm = bool;
-      this.gmb = paramParcel.readLong();
-      this.gZn = paramParcel.readLong();
-      AppMethodBeat.o(105340);
+      this.iSb = bool;
+      this.hWY = paramParcel.readLong();
+      this.iSc = paramParcel.readLong();
+      AppMethodBeat.o(134302);
       return;
     }
   }
   
-  public final long awE()
+  public final long aRb()
   {
-    return this.gmb;
+    return this.hWY;
   }
   
   public int describeContents()
@@ -57,43 +57,43 @@ public class AppBrandLocalMediaObject
   
   public final String getFileName()
   {
-    return this.ctV;
+    return this.diQ;
   }
   
   public final long lastModified()
   {
-    return this.gZn;
+    return this.iSc;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(105338);
-    String str = "AppBrandLocalMediaObject{localId='" + this.ctV + '\'' + ", fileFullPath='" + this.fod + '\'' + ", mimeType='" + this.mimeType + '\'' + ", fileExt='" + this.elt + '\'' + '}';
-    AppMethodBeat.o(105338);
+    AppMethodBeat.i(134300);
+    String str = "AppBrandLocalMediaObject{localId='" + this.diQ + '\'' + ", fileFullPath='" + this.gPG + '\'' + ", mimeType='" + this.mimeType + '\'' + ", fileExt='" + this.fyk + '\'' + '}';
+    AppMethodBeat.o(134300);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(105339);
-    paramParcel.writeString(this.ctV);
-    paramParcel.writeString(this.fod);
+    AppMethodBeat.i(134301);
+    paramParcel.writeString(this.diQ);
+    paramParcel.writeString(this.gPG);
     paramParcel.writeString(this.mimeType);
-    paramParcel.writeString(this.elt);
-    if (this.gZm) {}
+    paramParcel.writeString(this.fyk);
+    if (this.iSb) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
-      paramParcel.writeLong(this.gmb);
-      paramParcel.writeLong(this.gZn);
-      AppMethodBeat.o(105339);
+      paramParcel.writeLong(this.hWY);
+      paramParcel.writeLong(this.iSc);
+      AppMethodBeat.o(134301);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObject
  * JD-Core Version:    0.7.0.1
  */

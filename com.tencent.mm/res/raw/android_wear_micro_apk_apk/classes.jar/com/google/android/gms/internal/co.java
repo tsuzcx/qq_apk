@@ -11,13 +11,13 @@ public final class co
   {
     int i = c.b(paramParcel);
     c.a(paramParcel, 2, paramzzayz.name);
-    c.a(paramParcel, 3, paramzzayz.Ql);
-    c.a(paramParcel, 4, paramzzayz.Qm);
-    c.a(paramParcel, paramzzayz.Qn);
-    c.a(paramParcel, 6, paramzzayz.PG);
-    c.a(paramParcel, 7, paramzzayz.Qo);
-    c.c(paramParcel, 8, paramzzayz.Qp);
-    c.c(paramParcel, 9, paramzzayz.Qq);
+    c.a(paramParcel, 3, paramzzayz.Sa);
+    c.a(paramParcel, 4, paramzzayz.Sb);
+    c.a(paramParcel, paramzzayz.Sc);
+    c.a(paramParcel, 6, paramzzayz.Rv);
+    c.a(paramParcel, 7, paramzzayz.Sd);
+    c.c(paramParcel, 8, paramzzayz.Se);
+    c.c(paramParcel, 9, paramzzayz.Sf);
     c.v(paramParcel, i);
   }
 }

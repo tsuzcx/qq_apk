@@ -2,100 +2,174 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Arrays;
 
 public final class bo
   extends a
 {
-  public long cRG = 0L;
-  public long cYA = 0L;
-  private long cYB = 0L;
-  public long cYC = 0L;
-  private long cYD = 0L;
-  private String cYE = "";
-  public long cYF = 0L;
-  private String cYG = "";
-  private String cYz = "";
+  private String dIc;
+  private String dId;
+  private String dIf;
+  private String dIg;
+  private String dIi;
+  private long dIj;
+  private long dIk;
+  private String dIs;
+  private String dIw;
+  private long dPP;
+  private long dPQ;
+  private int dPR;
+  private long dPS;
+  private long dPT;
   
-  public final String Ff()
+  public bo()
   {
-    AppMethodBeat.i(77612);
+    this.dIj = 0L;
+    this.dIk = 0L;
+    this.dPP = 0L;
+    this.dIi = "";
+    this.dPQ = 0L;
+    this.dPR = 0;
+    this.dPS = 0L;
+    this.dIs = "";
+    this.dIc = "";
+    this.dId = "";
+    this.dPT = 0L;
+    this.dIf = "";
+    this.dIg = "";
+    this.dIw = "";
+  }
+  
+  public bo(String paramString)
+  {
+    AppMethodBeat.i(126687);
+    this.dIj = 0L;
+    this.dIk = 0L;
+    this.dPP = 0L;
+    this.dIi = "";
+    this.dPQ = 0L;
+    this.dPR = 0;
+    this.dPS = 0L;
+    this.dIs = "";
+    this.dIc = "";
+    this.dId = "";
+    this.dPT = 0L;
+    this.dIf = "";
+    this.dIg = "";
+    this.dIw = "";
+    if (paramString != null)
+    {
+      paramString = paramString.split(",");
+      if (paramString != null)
+      {
+        if (paramString.length >= 14) {
+          break label323;
+        }
+        String[] arrayOfString = new String[14];
+        Arrays.fill(arrayOfString, 0, 14, "");
+        System.arraycopy(paramString, 0, arrayOfString, 0, paramString.length);
+        paramString = arrayOfString;
+      }
+    }
+    label323:
+    for (;;)
+    {
+      this.dIj = bt.getLong(paramString[0], 0L);
+      this.dIk = bt.getLong(paramString[1], 0L);
+      this.dPP = bt.getLong(paramString[2], 0L);
+      this.dIi = t("NewMd5", paramString[3], true);
+      this.dPQ = bt.getLong(paramString[4], 0L);
+      this.dPR = bt.getInt(paramString[5], 0);
+      this.dPS = bt.getLong(paramString[6], 0L);
+      this.dIs = t("CDNIp", paramString[7], true);
+      this.dIc = t("FromUser", paramString[8], true);
+      this.dId = t("Session", paramString[9], true);
+      this.dPT = bt.getLong(paramString[10], 0L);
+      this.dIf = t("FileId", paramString[11], true);
+      this.dIg = t("SnsUrl", paramString[12], true);
+      this.dIw = t("Publishid", paramString[13], true);
+      AppMethodBeat.o(126687);
+      return;
+    }
+  }
+  
+  public final String PV()
+  {
+    AppMethodBeat.i(126688);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cRG);
+    ((StringBuffer)localObject).append(this.dIj);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cYz);
+    ((StringBuffer)localObject).append(this.dIk);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cYA);
+    ((StringBuffer)localObject).append(this.dPP);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cYB);
+    ((StringBuffer)localObject).append(this.dIi);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cYC);
+    ((StringBuffer)localObject).append(this.dPQ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cYD);
+    ((StringBuffer)localObject).append(this.dPR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cYE);
+    ((StringBuffer)localObject).append(this.dPS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cYF);
+    ((StringBuffer)localObject).append(this.dIs);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cYG);
+    ((StringBuffer)localObject).append(this.dIc);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dId);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dPT);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dIf);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dIg);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dIw);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(77612);
+    ams((String)localObject);
+    AppMethodBeat.o(126688);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(77613);
+    AppMethodBeat.i(126689);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Scene:").append(this.cRG);
+    ((StringBuffer)localObject).append("DownloadStartTime:").append(this.dIj);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("BiilNo:").append(this.cYz);
+    ((StringBuffer)localObject).append("DownloadEndTime:").append(this.dIk);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("failReason:").append(this.cYA);
+    ((StringBuffer)localObject).append("DownloadSize:").append(this.dPP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("playerErrCode:").append(this.cYB);
+    ((StringBuffer)localObject).append("NewMd5:").append(this.dIi);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("type:").append(this.cYC);
+    ((StringBuffer)localObject).append("MsgType:").append(this.dPQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("retCode:").append(this.cYD);
+    ((StringBuffer)localObject).append("DownloadSpeed:").append(this.dPR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("content:").append(this.cYE);
+    ((StringBuffer)localObject).append("HadFinishSize:").append(this.dPS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("amount:").append(this.cYF);
+    ((StringBuffer)localObject).append("CDNIp:").append(this.dIs);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("packId:").append(this.cYG);
+    ((StringBuffer)localObject).append("FromUser:").append(this.dIc);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Session:").append(this.dId);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ChatroomNum:").append(this.dPT);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("FileId:").append(this.dIf);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SnsUrl:").append(this.dIg);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Publishid:").append(this.dIw);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(77613);
+    AppMethodBeat.o(126689);
     return localObject;
-  }
-  
-  public final bo gI(String paramString)
-  {
-    AppMethodBeat.i(77609);
-    this.cYz = t("BiilNo", paramString, true);
-    AppMethodBeat.o(77609);
-    return this;
-  }
-  
-  public final bo gJ(String paramString)
-  {
-    AppMethodBeat.i(77610);
-    this.cYE = t("content", paramString, true);
-    AppMethodBeat.o(77610);
-    return this;
-  }
-  
-  public final bo gK(String paramString)
-  {
-    AppMethodBeat.i(77611);
-    this.cYG = t("packId", paramString, true);
-    AppMethodBeat.o(77611);
-    return this;
   }
   
   public final int getId()
   {
-    return 14404;
+    return 14499;
   }
 }
 

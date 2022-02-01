@@ -3,39 +3,48 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
 
 public abstract class bn
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dwo = "configId".hashCode();
+  private static final int eAm = "exptId".hashCode();
+  private static final int eAn;
+  private static final int eAo;
+  private static final int eAp;
+  private static final int eAq = "exptCheckSum".hashCode();
+  private static final int ekd;
+  private static final int eke;
+  private static final int elk;
+  private static final int ezi = "groupId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int value_HASHCODE = "value".hashCode();
-  private boolean __hadSetvalue = true;
-  private boolean dwn = true;
-  public int field_configId;
-  public String field_value;
+  private boolean eAh = true;
+  private boolean eAi = true;
+  private boolean eAj = true;
+  private boolean eAk = true;
+  private boolean eAl = true;
+  private boolean ejW = true;
+  private boolean ejX = true;
+  private boolean ekN = true;
+  private boolean eyw = true;
+  public long field_endTime;
+  public String field_exptCheckSum;
+  public String field_exptContent;
+  public int field_exptId;
+  public int field_exptSeq;
+  public int field_exptType;
+  public int field_groupId;
+  public long field_startTime;
+  public int field_subType;
   
-  public static c.a Hm()
+  static
   {
-    c.a locala = new c.a();
-    locala.yrK = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "configId";
-    locala.yrM.put("configId", "INTEGER PRIMARY KEY ");
-    localStringBuilder.append(" configId INTEGER PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "configId";
-    locala.columns[1] = "value";
-    locala.yrM.put("value", "TEXT");
-    localStringBuilder.append(" value TEXT");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    eAn = "exptSeq".hashCode();
+    eAo = "exptContent".hashCode();
+    ekd = "startTime".hashCode();
+    eke = "endTime".hashCode();
+    eAp = "exptType".hashCode();
+    elk = "subType".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -51,11 +60,11 @@ public abstract class bn
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dwo != k) {
+      if (eAm != k) {
         break label65;
       }
-      this.field_configId = paramCursor.getInt(i);
-      this.dwn = true;
+      this.field_exptId = paramCursor.getInt(i);
+      this.eAh = true;
     }
     for (;;)
     {
@@ -63,8 +72,22 @@ public abstract class bn
       break label20;
       break;
       label65:
-      if (value_HASHCODE == k) {
-        this.field_value = paramCursor.getString(i);
+      if (ezi == k) {
+        this.field_groupId = paramCursor.getInt(i);
+      } else if (eAn == k) {
+        this.field_exptSeq = paramCursor.getInt(i);
+      } else if (eAo == k) {
+        this.field_exptContent = paramCursor.getString(i);
+      } else if (ekd == k) {
+        this.field_startTime = paramCursor.getLong(i);
+      } else if (eke == k) {
+        this.field_endTime = paramCursor.getLong(i);
+      } else if (eAp == k) {
+        this.field_exptType = paramCursor.getInt(i);
+      } else if (elk == k) {
+        this.field_subType = paramCursor.getInt(i);
+      } else if (eAq == k) {
+        this.field_exptCheckSum = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -74,11 +97,32 @@ public abstract class bn
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dwn) {
-      localContentValues.put("configId", Integer.valueOf(this.field_configId));
+    if (this.eAh) {
+      localContentValues.put("exptId", Integer.valueOf(this.field_exptId));
     }
-    if (this.__hadSetvalue) {
-      localContentValues.put("value", this.field_value);
+    if (this.eyw) {
+      localContentValues.put("groupId", Integer.valueOf(this.field_groupId));
+    }
+    if (this.eAi) {
+      localContentValues.put("exptSeq", Integer.valueOf(this.field_exptSeq));
+    }
+    if (this.eAj) {
+      localContentValues.put("exptContent", this.field_exptContent);
+    }
+    if (this.ejW) {
+      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
+    }
+    if (this.ejX) {
+      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
+    }
+    if (this.eAk) {
+      localContentValues.put("exptType", Integer.valueOf(this.field_exptType));
+    }
+    if (this.ekN) {
+      localContentValues.put("subType", Integer.valueOf(this.field_subType));
+    }
+    if (this.eAl) {
+      localContentValues.put("exptCheckSum", this.field_exptCheckSum);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -88,7 +132,7 @@ public abstract class bn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.bn
  * JD-Core Version:    0.7.0.1
  */

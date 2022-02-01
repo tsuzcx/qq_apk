@@ -1,23 +1,21 @@
 package com.tencent.mm.emoji.debug;
 
-import a.f.a.a;
-import a.f.b.k;
-import a.l;
-import a.y;
+import com.tencent.mm.sdk.platformtools.ax;
+import d.g.a.a;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "invoke"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
 final class EmojiDebugUI$j
-  extends k
-  implements a<y>
+  extends d.g.b.l
+  implements a<String>
 {
-  EmojiDebugUI$j(EmojiDebugUI paramEmojiDebugUI)
+  EmojiDebugUI$j(ax paramax)
   {
     super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.emoji.debug.EmojiDebugUI.j
  * JD-Core Version:    0.7.0.1
  */

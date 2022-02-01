@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
-import com.tencent.mm.plugin.appbrand.jsapi.ai;
+import com.tencent.mm.plugin.appbrand.jsapi.ar;
 
 public final class k
-  extends ai
+  extends ar
 {
-  private static final int CTRL_INDEX = 337;
-  public static final String NAME = "onCameraVideoTaken";
+  private static final int CTRL_INDEX = 334;
+  public static final String NAME = "onCameraStop";
 }
 
 

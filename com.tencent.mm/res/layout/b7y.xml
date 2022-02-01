@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:focusable="true" android:focusableInTouchMode="true" style="@style/w8"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/fp0" wallet:titleText="@string/fx4" wallet:titleWidth="@dimen/ack" style="@style/gy" />
-    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/fp1" wallet:layoutRes="@layout/b7x" wallet:titleWidth="@dimen/ack" style="@style/w6" />
-</LinearLayout>
+<ScrollView android:id="@id/d2o" android:background="@color/a3d" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/flh" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/fli" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="share to a friend" />
+    </LinearLayout>
+</ScrollView>

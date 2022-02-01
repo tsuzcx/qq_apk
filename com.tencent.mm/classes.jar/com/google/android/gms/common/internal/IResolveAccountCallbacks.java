@@ -56,11 +56,11 @@ public abstract interface IResolveAccountCallbacks
       
       public void onAccountResolutionComplete(ResolveAccountResponse paramResolveAccountResponse)
       {
-        AppMethodBeat.i(61351);
+        AppMethodBeat.i(11843);
         Parcel localParcel = obtainAndWriteInterfaceToken();
         zzc.zza(localParcel, paramResolveAccountResponse);
         transactAndReadExceptionReturnVoid(2, localParcel);
-        AppMethodBeat.o(61351);
+        AppMethodBeat.o(11843);
       }
     }
   }

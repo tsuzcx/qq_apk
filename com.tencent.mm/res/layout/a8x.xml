@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/kb" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bt0" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <CheckBox android:id="@id/bsz" android:background="@drawable/vn" android:focusable="false" android:clickable="false" android:layout_width="@dimen/eu" android:layout_height="@dimen/eu" android:layout_marginTop="@dimen/lb" android:layout_marginRight="@dimen/lb" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-</RelativeLayout>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/ajp" android:layout_width="0.0dip" android:layout_height="@dimen/c_" android:layout_marginLeft="@dimen/c0" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/ci" android:layout_weight="1.0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f8y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/bq" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_70" />
+        <com.tencent.mm.ui.search.FTSEditTextView android:id="@id/c8x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="1024.0dip" android:textCursorDrawable="@drawable/x5" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/fx" android:id="@id/aay" android:paddingLeft="@dimen/c0" android:paddingRight="@dimen/c0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r5" />
+    <ImageView android:id="@id/c8y" android:background="@null" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="@dimen/a5p" android:layout_height="@dimen/a5p" android:src="@drawable/bd0" android:layout_centerVertical="true" android:contentDescription="@string/wb" android:paddingStart="@dimen/jn" android:paddingEnd="@dimen/jn" android:layout_alignParentEnd="true" />
+</LinearLayout>

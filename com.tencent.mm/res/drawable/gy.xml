@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@drawable/bdw" />
-    <item android:state_pressed="true" android:drawable="@drawable/bdw" />
-    <item android:drawable="@drawable/bdv" />
+    <item android:drawable="@raw/biz_voice_playing_icon_inner3" />
 </selector>

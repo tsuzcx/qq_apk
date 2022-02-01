@@ -4,32 +4,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a.b.a.a;
 import com.tencent.mm.kernel.a.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.fav.a.ae;
+import com.tencent.mm.model.t;
+import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fts.a.n;
 
 public final class a
-  extends q
+  extends t
   implements b
 {
   public a()
   {
-    super(com.tencent.mm.bq.c.anc("favorite"));
-    AppMethodBeat.i(20496);
-    AppMethodBeat.o(20496);
+    super(com.tencent.mm.bs.c.aCX("favorite"));
+    AppMethodBeat.i(24569);
+    AppMethodBeat.o(24569);
   }
   
   public final void parallelsDependency()
   {
-    AppMethodBeat.i(20497);
-    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).az(g.G(n.class));
-    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).az(g.G(ae.class));
-    AppMethodBeat.o(20497);
+    AppMethodBeat.i(24570);
+    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bB(g.ad(n.class));
+    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bB(g.ad(af.class));
+    AppMethodBeat.o(24570);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.favorite.a
  * JD-Core Version:    0.7.0.1
  */

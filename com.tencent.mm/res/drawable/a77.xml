@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@raw/wallet_banner_logo_disabled" />
-    <item android:drawable="@raw/wallet_banner_logo_normal" />
+    <item android:state_pressed="false">
+        <layer-list>
+            <item android:drawable="@color/a_r" />
+            <item android:drawable="@drawable/amv" android:left="@dimen/ad4" android:right="@dimen/ad4" />
+        </layer-list>
+    </item>
+    <item android:state_pressed="true">
+        <layer-list>
+            <item android:drawable="@color/ts" />
+            <item android:drawable="@drawable/amv" android:left="@dimen/ad4" android:right="@dimen/ad4" />
+        </layer-list>
+    </item>
 </selector>

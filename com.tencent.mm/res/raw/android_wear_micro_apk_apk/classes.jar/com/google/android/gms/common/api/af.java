@@ -11,9 +11,9 @@ public final class af
   {
     int i = c.b(paramParcel);
     c.c(paramParcel, 1, paramStatus.getStatusCode());
-    c.a(paramParcel, 2, paramStatus.gG());
-    c.a(paramParcel, 3, paramStatus.gF(), paramInt);
-    c.c(paramParcel, 1000, paramStatus.Hc);
+    c.a(paramParcel, 2, paramStatus.gQ());
+    c.a(paramParcel, 3, paramStatus.gP(), paramInt);
+    c.c(paramParcel, 1000, paramStatus.IR);
     c.v(paramParcel, i);
   }
 }

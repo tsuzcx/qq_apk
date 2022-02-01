@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/w6" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bb2" android:background="@drawable/w6" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bou" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/bf" android:textColor="@color/km" android:ellipsize="end" android:id="@id/dox" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" />
+        <TextView android:textSize="@dimen/bf" android:textColor="@color/km" android:ellipsize="end" android:id="@id/dow" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="msg_content" android:maxLines="1" />
+    </LinearLayout>
+    <ImageView android:id="@id/dov" android:visibility="gone" android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" android:scaleType="centerCrop" />
+</LinearLayout>

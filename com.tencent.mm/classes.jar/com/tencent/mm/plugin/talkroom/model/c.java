@@ -7,165 +7,176 @@ import android.content.Intent;
 import android.os.Looper;
 import android.support.v4.app.s.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bg.d;
-import com.tencent.mm.model.an;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.bi.d;
+import com.tencent.mm.model.aq;
+import com.tencent.mm.model.az;
+import com.tencent.mm.pluginsdk.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.List;
 
 public final class c
   implements d
 {
-  private ak mHandler;
-  private Notification oUV;
-  public boolean odR;
-  public String odp;
-  public boolean tce;
-  private String tcf;
+  private Notification iXX;
+  private ap mHandler;
+  public boolean sSE;
+  public String sSb;
+  public boolean yIA;
+  private String yIB;
   
   public c()
   {
-    AppMethodBeat.i(25770);
-    this.odp = "";
-    this.odR = false;
-    this.tce = false;
-    this.mHandler = new ak(Looper.getMainLooper());
-    AppMethodBeat.o(25770);
+    AppMethodBeat.i(29452);
+    this.sSb = "";
+    this.sSE = false;
+    this.yIA = false;
+    this.mHandler = new ap(Looper.getMainLooper());
+    AppMethodBeat.o(29452);
   }
   
-  private static boolean cHw()
+  private static boolean dMQ()
   {
-    AppMethodBeat.i(25766);
-    if (bo.isNullOrNil(b.cHs().tcS))
+    AppMethodBeat.i(29448);
+    if (bt.isNullOrNil(b.dMM().yJo))
     {
-      ab.w("MicroMsg.TalkRoomDisplayMgr", "yy checkServer null");
-      ab.v("MicroMsg.TalkRoomDisplayMgr", "yy dismissStatusBar");
-      cHz();
-      AppMethodBeat.o(25766);
+      ad.w("MicroMsg.TalkRoomDisplayMgr", "yy checkServer null");
+      ad.v("MicroMsg.TalkRoomDisplayMgr", "yy dismissStatusBar");
+      dMT();
+      AppMethodBeat.o(29448);
       return false;
     }
-    AppMethodBeat.o(25766);
+    AppMethodBeat.o(29448);
     return true;
   }
   
-  private void cHy()
+  private void dMS()
   {
-    AppMethodBeat.i(25772);
-    if (!cHw())
+    AppMethodBeat.i(29454);
+    if (!dMQ())
     {
-      AppMethodBeat.o(25772);
+      AppMethodBeat.o(29454);
       return;
     }
-    if (this.oUV == null)
+    if (this.iXX == null)
     {
-      ab.e("MicroMsg.TalkRoomDisplayMgr", "yy updateNotify error no notification");
-      AppMethodBeat.o(25772);
+      ad.e("MicroMsg.TalkRoomDisplayMgr", "yy updateNotify error no notification");
+      AppMethodBeat.o(29454);
       return;
     }
-    String str = h.aT(ah.getContext(), b.cHs().tcS);
-    if (b.cHs().tdg) {}
-    for (Object localObject1 = ah.getContext().getString(2131304242);; localObject1 = ah.getContext().getString(2131304239, new Object[] { Integer.valueOf(b.cHs().bLy().size()) }))
+    String str = h.bf(aj.getContext(), b.dMM().yJo);
+    if (b.dMM().yJC) {}
+    for (Object localObject1 = aj.getContext().getString(2131764360);; localObject1 = aj.getContext().getString(2131764357, new Object[] { Integer.valueOf(b.dMM().cJx().size()) }))
     {
-      Object localObject2 = com.tencent.mm.plugin.talkroom.a.gmP.BS();
-      ((Intent)localObject2).putExtra("enter_chat_usrname", b.cHs().tcS);
-      localObject2 = PendingIntent.getActivity(ah.getContext(), 100, (Intent)localObject2, 268435456);
-      localObject1 = com.tencent.mm.bp.a.br(ah.getContext(), "reminder_channel_id").h(this.tcf).g(0L).e(str).f((CharSequence)localObject1);
-      ((s.c)localObject1).ya = ((PendingIntent)localObject2);
-      this.oUV = ((s.c)localObject1).build();
-      this.oUV.icon = 2130840532;
-      this.oUV.flags = 32;
-      aw.getNotification().a(100, this.oUV, false);
-      AppMethodBeat.o(25772);
+      Object localObject2 = com.tencent.mm.plugin.talkroom.a.hYu.Lp();
+      ((Intent)localObject2).putExtra("enter_chat_usrname", b.dMM().yJo);
+      localObject2 = PendingIntent.getActivity(aj.getContext(), 100, (Intent)localObject2, 268435456);
+      localObject1 = com.tencent.mm.br.a.bD(aj.getContext(), "reminder_channel_id").i(this.yIB).g(0L).f(str).g((CharSequence)localObject1);
+      ((s.c)localObject1).Ew = ((PendingIntent)localObject2);
+      this.iXX = ((s.c)localObject1).build();
+      this.iXX.icon = 2131234321;
+      this.iXX.flags = 32;
+      az.getNotification().a(100, this.iXX, false);
+      AppMethodBeat.o(29454);
       return;
     }
   }
   
-  public static void cHz()
+  public static void dMT()
   {
-    AppMethodBeat.i(25773);
-    ab.v("MicroMsg.TalkRoomDisplayMgr", "yy cancelNotify");
-    aw.getNotification().cancel(100);
-    AppMethodBeat.o(25773);
+    AppMethodBeat.i(29455);
+    ad.v("MicroMsg.TalkRoomDisplayMgr", "yy cancelNotify");
+    az.getNotification().cancel(100);
+    AppMethodBeat.o(29455);
   }
   
-  public final void aX(String paramString1, String paramString2)
+  public final void aCb()
   {
-    AppMethodBeat.i(25767);
-    if (this.tce)
+    this.sSE = false;
+  }
+  
+  public final void aCc() {}
+  
+  public final void aCd()
+  {
+    AppMethodBeat.i(29450);
+    ad.v("MicroMsg.TalkRoomDisplayMgr", "yy dismissStatusBar");
+    dMT();
+    AppMethodBeat.o(29450);
+  }
+  
+  public final void aCe() {}
+  
+  public final void aCf() {}
+  
+  public final void aCg() {}
+  
+  public final void ass(String paramString)
+  {
+    AppMethodBeat.i(29453);
+    if (!dMQ())
     {
-      AppMethodBeat.o(25767);
+      AppMethodBeat.o(29453);
       return;
     }
-    cHy();
-    AppMethodBeat.o(25767);
+    ad.v("MicroMsg.TalkRoomDisplayMgr", "yy showNotify: ".concat(String.valueOf(paramString)));
+    this.yIB = paramString;
+    this.iXX = com.tencent.mm.br.a.bD(aj.getContext(), "reminder_channel_id").i(paramString).g(0L).build();
+    this.iXX.icon = 2131234321;
+    this.iXX.flags = 32;
+    dMS();
+    AppMethodBeat.o(29453);
   }
   
-  public final void adZ(String paramString)
+  public final void bn(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(25771);
-    if (!cHw())
+    AppMethodBeat.i(29449);
+    if (this.yIA)
     {
-      AppMethodBeat.o(25771);
+      AppMethodBeat.o(29449);
       return;
     }
-    ab.v("MicroMsg.TalkRoomDisplayMgr", "yy showNotify: ".concat(String.valueOf(paramString)));
-    this.tcf = paramString;
-    this.oUV = com.tencent.mm.bp.a.br(ah.getContext(), "reminder_channel_id").h(paramString).g(0L).build();
-    this.oUV.icon = 2130840532;
-    this.oUV.flags = 32;
-    cHy();
-    AppMethodBeat.o(25771);
+    dMS();
+    AppMethodBeat.o(29449);
   }
   
-  public final void akV()
+  public final void dMR()
   {
-    this.odR = false;
+    AppMethodBeat.i(29451);
+    this.mHandler.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(29447);
+        b.dML();
+        ad.v("MicroMsg.TalkRoomDisplayMgr", "yy dismissStatusBar");
+        b.dML();
+        c.dMT();
+        AppMethodBeat.o(29447);
+      }
+    });
+    AppMethodBeat.o(29451);
   }
   
-  public final void akW() {}
+  public final void j(int paramInt1, int paramInt2, String paramString) {}
   
-  public final void akX()
+  public final void oQ(int paramInt) {}
+  
+  public final void r(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(25768);
-    ab.v("MicroMsg.TalkRoomDisplayMgr", "yy dismissStatusBar");
-    cHz();
-    AppMethodBeat.o(25768);
+    this.sSE = false;
   }
   
-  public final void akY() {}
-  
-  public final void akZ() {}
-  
-  public final void ala() {}
-  
-  public final void cHx()
+  public final void zy(String paramString)
   {
-    AppMethodBeat.i(25769);
-    this.mHandler.post(new c.1(this));
-    AppMethodBeat.o(25769);
-  }
-  
-  public final void i(int paramInt1, int paramInt2, String paramString) {}
-  
-  public final void mh(int paramInt) {}
-  
-  public final void t(String paramString, int paramInt1, int paramInt2)
-  {
-    this.odR = false;
-  }
-  
-  public final void uM(String paramString)
-  {
-    this.odp = paramString;
+    this.sSb = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.c
  * JD-Core Version:    0.7.0.1
  */

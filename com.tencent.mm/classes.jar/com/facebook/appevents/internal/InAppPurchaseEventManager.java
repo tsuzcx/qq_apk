@@ -56,7 +56,7 @@ class InAppPurchaseEventManager
   
   static
   {
-    AppMethodBeat.i(72210);
+    AppMethodBeat.i(17646);
     TAG = InAppPurchaseEventManager.class.getCanonicalName();
     methodMap = new HashMap();
     classMap = new HashMap();
@@ -64,37 +64,37 @@ class InAppPurchaseEventManager
     skuDetailSharedPrefs = FacebookSdk.getApplicationContext().getSharedPreferences("com.facebook.internal.SKU_DETAILS", 0);
     purchaseInappSharedPrefs = FacebookSdk.getApplicationContext().getSharedPreferences("com.facebook.internal.PURCHASE", 0);
     purchaseSubsSharedPrefs = FacebookSdk.getApplicationContext().getSharedPreferences("com.facebook.internal.PURCHASE_SUBS", 0);
-    AppMethodBeat.o(72210);
+    AppMethodBeat.o(17646);
   }
   
   public static Object asInterface(Context paramContext, IBinder paramIBinder)
   {
-    AppMethodBeat.i(72192);
+    AppMethodBeat.i(17628);
     paramContext = invokeMethod(paramContext, "com.android.vending.billing.IInAppBillingService$Stub", "asInterface", null, new Object[] { paramIBinder });
-    AppMethodBeat.o(72192);
+    AppMethodBeat.o(17628);
     return paramContext;
   }
   
   public static void clearSkuDetailsCache()
   {
-    AppMethodBeat.i(72209);
+    AppMethodBeat.i(17645);
     long l1 = System.currentTimeMillis() / 1000L;
     long l2 = skuDetailSharedPrefs.getLong("LAST_CLEARED_TIME", 0L);
     if (l2 == 0L)
     {
       skuDetailSharedPrefs.edit().putLong("LAST_CLEARED_TIME", l1).apply();
-      AppMethodBeat.o(72209);
+      AppMethodBeat.o(17645);
       return;
     }
     if (l1 - l2 > 604800L) {
       skuDetailSharedPrefs.edit().clear().putLong("LAST_CLEARED_TIME", l1).apply();
     }
-    AppMethodBeat.o(72209);
+    AppMethodBeat.o(17645);
   }
   
   private static ArrayList<String> filterPurchasesInapp(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(72205);
+    AppMethodBeat.i(17641);
     ArrayList localArrayList = new ArrayList();
     SharedPreferences.Editor localEditor = purchaseInappSharedPrefs.edit();
     long l1 = System.currentTimeMillis() / 1000L;
@@ -117,17 +117,17 @@ class InAppPurchaseEventManager
       catch (JSONException localJSONException) {}
     }
     localEditor.apply();
-    AppMethodBeat.o(72205);
+    AppMethodBeat.o(17641);
     return localArrayList;
   }
   
   private static Class<?> getClass(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(72207);
+    AppMethodBeat.i(17643);
     localObject = (Class)classMap.get(paramString);
     if (localObject != null)
     {
-      AppMethodBeat.o(72207);
+      AppMethodBeat.o(17643);
       return localObject;
     }
     try
@@ -144,18 +144,18 @@ class InAppPurchaseEventManager
         paramContext = (Context)localObject;
       }
     }
-    AppMethodBeat.o(72207);
+    AppMethodBeat.o(17643);
     return paramContext;
   }
   
   private static Method getMethod(Class<?> paramClass, String paramString)
   {
     int i = 0;
-    AppMethodBeat.i(72206);
+    AppMethodBeat.i(17642);
     Method localMethod = (Method)methodMap.get(paramString);
     if (localMethod != null)
     {
-      AppMethodBeat.o(72206);
+      AppMethodBeat.o(17642);
       return localMethod;
     }
     Object localObject1 = null;
@@ -175,7 +175,7 @@ class InAppPurchaseEventManager
           localObject1 = paramClass.getDeclaredMethod(paramString, (Class[])localObject1);
           localObject3 = localObject1;
           methodMap.put(paramString, localObject1);
-          AppMethodBeat.o(72206);
+          AppMethodBeat.o(17642);
           return localObject1;
           localObject3 = localMethod;
           if (!paramString.equals("asInterface")) {
@@ -262,7 +262,7 @@ class InAppPurchaseEventManager
   
   private static ArrayList<String> getPurchaseHistory(Context paramContext, Object paramObject, String paramString)
   {
-    AppMethodBeat.i(72204);
+    AppMethodBeat.i(17640);
     ArrayList localArrayList = new ArrayList();
     int i;
     Object localObject1;
@@ -308,7 +308,7 @@ class InAppPurchaseEventManager
           if ((i < 30) && (localObject1 != null) && (!((Boolean)localObject4).booleanValue())) {
             break label263;
           }
-          AppMethodBeat.o(72204);
+          AppMethodBeat.o(17640);
           return localArrayList;
         }
         localArrayList.add(localObject2);
@@ -330,36 +330,36 @@ class InAppPurchaseEventManager
   
   public static ArrayList<String> getPurchaseHistoryInapp(Context paramContext, Object paramObject)
   {
-    AppMethodBeat.i(72203);
+    AppMethodBeat.i(17639);
     ArrayList localArrayList = new ArrayList();
     if (paramObject == null)
     {
-      AppMethodBeat.o(72203);
+      AppMethodBeat.o(17639);
       return localArrayList;
     }
     Class localClass = getClass(paramContext, "com.android.vending.billing.IInAppBillingService");
     if (localClass == null)
     {
-      AppMethodBeat.o(72203);
+      AppMethodBeat.o(17639);
       return localArrayList;
     }
     if (getMethod(localClass, "getPurchaseHistory") == null)
     {
-      AppMethodBeat.o(72203);
+      AppMethodBeat.o(17639);
       return localArrayList;
     }
     paramContext = filterPurchasesInapp(getPurchaseHistory(paramContext, paramObject, "inapp"));
-    AppMethodBeat.o(72203);
+    AppMethodBeat.o(17639);
     return paramContext;
   }
   
   private static ArrayList<String> getPurchases(Context paramContext, Object paramObject, String paramString)
   {
-    AppMethodBeat.i(72202);
+    AppMethodBeat.i(17638);
     ArrayList localArrayList1 = new ArrayList();
     if (paramObject == null)
     {
-      AppMethodBeat.o(72202);
+      AppMethodBeat.o(17638);
       return localArrayList1;
     }
     int i;
@@ -389,7 +389,7 @@ class InAppPurchaseEventManager
     {
       if ((i >= 30) || (localObject == null))
       {
-        AppMethodBeat.o(72202);
+        AppMethodBeat.o(17638);
         return localArrayList1;
       }
       break;
@@ -400,15 +400,15 @@ class InAppPurchaseEventManager
   
   public static ArrayList<String> getPurchasesInapp(Context paramContext, Object paramObject)
   {
-    AppMethodBeat.i(72198);
+    AppMethodBeat.i(17634);
     paramContext = filterPurchasesInapp(getPurchases(paramContext, paramObject, "inapp"));
-    AppMethodBeat.o(72198);
+    AppMethodBeat.o(17634);
     return paramContext;
   }
   
   public static Map<String, SubscriptionType> getPurchasesSubs(Context paramContext, Object paramObject)
   {
-    AppMethodBeat.i(72200);
+    AppMethodBeat.i(17636);
     HashMap localHashMap = new HashMap();
     paramContext = getPurchases(paramContext, paramObject, "subs").iterator();
     while (paramContext.hasNext())
@@ -419,18 +419,18 @@ class InAppPurchaseEventManager
         localHashMap.put(paramObject, localSubscriptionType);
       }
     }
-    AppMethodBeat.o(72200);
+    AppMethodBeat.o(17636);
     return localHashMap;
   }
   
   public static ArrayList<String> getPurchasesSubsExpire(Context paramContext, Object paramObject)
   {
-    AppMethodBeat.i(72199);
+    AppMethodBeat.i(17635);
     ArrayList localArrayList = new ArrayList();
     Object localObject = purchaseSubsSharedPrefs.getAll();
     if (((Map)localObject).isEmpty())
     {
-      AppMethodBeat.o(72199);
+      AppMethodBeat.o(17635);
       return localArrayList;
     }
     paramObject = getPurchases(paramContext, paramObject, "subs");
@@ -467,13 +467,13 @@ class InAppPurchaseEventManager
       }
     }
     paramContext.apply();
-    AppMethodBeat.o(72199);
+    AppMethodBeat.o(17635);
     return localArrayList;
   }
   
   public static Map<String, String> getSkuDetails(Context paramContext, ArrayList<String> paramArrayList, Object paramObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(72193);
+    AppMethodBeat.i(17629);
     Map localMap = readSkuDetailsFromCache(paramArrayList);
     ArrayList localArrayList = new ArrayList();
     paramArrayList = paramArrayList.iterator();
@@ -485,17 +485,17 @@ class InAppPurchaseEventManager
       }
     }
     localMap.putAll(getSkuDetailsFromGoogle(paramContext, localArrayList, paramObject, paramBoolean));
-    AppMethodBeat.o(72193);
+    AppMethodBeat.o(17629);
     return localMap;
   }
   
   private static Map<String, String> getSkuDetailsFromGoogle(Context paramContext, ArrayList<String> paramArrayList, Object paramObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(72194);
+    AppMethodBeat.i(17630);
     HashMap localHashMap = new HashMap();
     if ((paramObject == null) || (paramArrayList.isEmpty()))
     {
-      AppMethodBeat.o(72194);
+      AppMethodBeat.o(17630);
       return localHashMap;
     }
     Bundle localBundle = new Bundle();
@@ -525,13 +525,13 @@ class InAppPurchaseEventManager
     }
     writeSkuDetailsToCache(localHashMap);
     label194:
-    AppMethodBeat.o(72194);
+    AppMethodBeat.o(17630);
     return localHashMap;
   }
   
   private static SubscriptionType getSubsType(String paramString)
   {
-    AppMethodBeat.i(72201);
+    AppMethodBeat.i(17637);
     Object localObject = null;
     for (;;)
     {
@@ -586,7 +586,7 @@ class InAppPurchaseEventManager
               localJSONObject2.put("LAST_LOGGED_TIME_SEC", l);
               purchaseSubsSharedPrefs.edit().putString(str1, localJSONObject2.toString()).apply();
             }
-            AppMethodBeat.o(72201);
+            AppMethodBeat.o(17637);
             return localObject;
           }
         }
@@ -600,7 +600,7 @@ class InAppPurchaseEventManager
       catch (JSONException paramString)
       {
         paramString = SubscriptionType.UNKNOWN;
-        AppMethodBeat.o(72201);
+        AppMethodBeat.o(17637);
         return paramString;
       }
       continue;
@@ -622,17 +622,17 @@ class InAppPurchaseEventManager
   
   private static Object invokeMethod(Context paramContext, String paramString1, String paramString2, Object paramObject, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(72208);
+    AppMethodBeat.i(17644);
     paramString1 = getClass(paramContext, paramString1);
     if (paramString1 == null)
     {
-      AppMethodBeat.o(72208);
+      AppMethodBeat.o(17644);
       return null;
     }
     paramString2 = getMethod(paramString1, paramString2);
     if (paramString2 == null)
     {
-      AppMethodBeat.o(72208);
+      AppMethodBeat.o(17644);
       return null;
     }
     paramContext = paramObject;
@@ -642,13 +642,13 @@ class InAppPurchaseEventManager
     try
     {
       paramContext = paramString2.invoke(paramContext, paramArrayOfObject);
-      AppMethodBeat.o(72208);
+      AppMethodBeat.o(17644);
       return paramContext;
     }
     catch (IllegalAccessException paramContext)
     {
       new StringBuilder("Illegal access to method ").append(paramString1.getName()).append(".").append(paramString2.getName());
-      AppMethodBeat.o(72208);
+      AppMethodBeat.o(17644);
       return null;
     }
     catch (InvocationTargetException paramContext)
@@ -662,25 +662,25 @@ class InAppPurchaseEventManager
   
   private static Boolean isBillingSupported(Context paramContext, Object paramObject, String paramString)
   {
-    AppMethodBeat.i(72197);
+    AppMethodBeat.i(17633);
     if (paramObject == null)
     {
       paramContext = Boolean.FALSE;
-      AppMethodBeat.o(72197);
+      AppMethodBeat.o(17633);
       return paramContext;
     }
     paramContext = invokeMethod(paramContext, "com.android.vending.billing.IInAppBillingService", "isBillingSupported", paramObject, new Object[] { Integer.valueOf(3), PACKAGE_NAME, paramString });
     if ((paramContext != null) && (((Integer)paramContext).intValue() == 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(72197);
+      AppMethodBeat.o(17633);
       return Boolean.valueOf(bool);
     }
   }
   
   private static Map<String, String> readSkuDetailsFromCache(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(72195);
+    AppMethodBeat.i(17631);
     HashMap localHashMap = new HashMap();
     long l = System.currentTimeMillis() / 1000L;
     paramArrayList = paramArrayList.iterator();
@@ -696,13 +696,13 @@ class InAppPurchaseEventManager
         }
       }
     }
-    AppMethodBeat.o(72195);
+    AppMethodBeat.o(17631);
     return localHashMap;
   }
   
   private static void writeSkuDetailsToCache(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(72196);
+    AppMethodBeat.i(17632);
     long l = System.currentTimeMillis() / 1000L;
     SharedPreferences.Editor localEditor = skuDetailSharedPrefs.edit();
     paramMap = paramMap.entrySet().iterator();
@@ -712,12 +712,12 @@ class InAppPurchaseEventManager
       localEditor.putString((String)localEntry.getKey(), l + ";" + (String)localEntry.getValue());
     }
     localEditor.apply();
-    AppMethodBeat.o(72196);
+    AppMethodBeat.o(17632);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.internal.InAppPurchaseEventManager
  * JD-Core Version:    0.7.0.1
  */

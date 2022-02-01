@@ -14,7 +14,7 @@ public class CheckServerAuthResultCreator
   
   public CheckServerAuthResult createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61661);
+    AppMethodBeat.i(12153);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     ArrayList localArrayList = null;
     boolean bool = false;
@@ -39,7 +39,7 @@ public class CheckServerAuthResultCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new CheckServerAuthResult(i, bool, localArrayList);
-    AppMethodBeat.o(61661);
+    AppMethodBeat.o(12153);
     return paramParcel;
   }
   

@@ -16,39 +16,39 @@ final class AttributionIdentifiers$GoogleAdServiceConnection
   
   private AttributionIdentifiers$GoogleAdServiceConnection()
   {
-    AppMethodBeat.i(72234);
+    AppMethodBeat.i(17670);
     this.consumed = new AtomicBoolean(false);
     this.queue = new LinkedBlockingDeque();
-    AppMethodBeat.o(72234);
+    AppMethodBeat.o(17670);
   }
   
   public final IBinder getBinder()
   {
-    AppMethodBeat.i(72236);
+    AppMethodBeat.i(17672);
     if (this.consumed.compareAndSet(true, true))
     {
       localObject = new IllegalStateException("Binder already consumed");
-      AppMethodBeat.o(72236);
+      AppMethodBeat.o(17672);
       throw ((Throwable)localObject);
     }
     Object localObject = (IBinder)this.queue.take();
-    AppMethodBeat.o(72236);
+    AppMethodBeat.o(17672);
     return localObject;
   }
   
   public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    AppMethodBeat.i(72235);
+    AppMethodBeat.i(17671);
     if (paramIBinder != null) {}
     try
     {
       this.queue.put(paramIBinder);
-      AppMethodBeat.o(72235);
+      AppMethodBeat.o(17671);
       return;
     }
     catch (InterruptedException paramComponentName)
     {
-      AppMethodBeat.o(72235);
+      AppMethodBeat.o(17671);
     }
   }
   

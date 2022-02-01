@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
+import com.tencent.mm.bs.d;
 
 final class SwitchRealnameVerifyModeUI$8
   implements View.OnClickListener
@@ -13,16 +13,16 @@ final class SwitchRealnameVerifyModeUI$8
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(46597);
+    AppMethodBeat.i(70025);
     paramView = new Intent();
     paramView.putExtra("wallet_lock_jsapi_scene", 2);
-    d.b(this.ucS, "wallet", ".pwd.ui.WalletSecuritySettingUI", paramView);
-    AppMethodBeat.o(46597);
+    d.b(this.zXJ, "wallet", ".pwd.ui.WalletSecuritySettingUI", paramView);
+    AppMethodBeat.o(70025);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.SwitchRealnameVerifyModeUI.8
  * JD-Core Version:    0.7.0.1
  */

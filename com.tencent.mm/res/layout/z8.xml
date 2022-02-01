@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/af1" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/bcm" android:background="@drawable/afj" android:paddingBottom="@dimen/hj" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="left" android:id="@id/bcl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_outlined_close" app:iconColor="@color/BW_50" />
+    <FrameLayout android:layout_width="@dimen/a2c" android:layout_height="@dimen/a2c">
+        <com.tencent.mm.emoji.view.EmojiStatusView android:gravity="center_horizontal" android:id="@id/bcr" android:layout_width="@dimen/a2c" android:layout_height="@dimen/a2c" />
+        <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/bct" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
 </LinearLayout>

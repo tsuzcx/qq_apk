@@ -1,40 +1,60 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.bgb;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.protocal.protobuf.afg;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class s$b
-  extends l.e
-  implements l.c
+  extends l.d
+  implements l.b
 {
-  public bgb wiL;
+  public afg CqS;
+  private boolean ufv;
   
-  public s$b()
+  public s$b(boolean paramBoolean)
   {
-    AppMethodBeat.i(58854);
-    this.wiL = new bgb();
-    AppMethodBeat.o(58854);
-  }
-  
-  public final int fromProtoBuf(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(58855);
-    this.wiL = ((bgb)new bgb().parseFrom(paramArrayOfByte));
-    l.a(this, this.wiL.getBaseResponse());
-    int i = this.wiL.getBaseResponse().Ret;
-    AppMethodBeat.o(58855);
-    return i;
+    AppMethodBeat.i(149120);
+    this.ufv = true;
+    this.CqS = new afg();
+    this.ufv = paramBoolean;
+    AppMethodBeat.o(149120);
   }
   
   public final int getCmdId()
   {
-    return 1000000027;
+    return 0;
+  }
+  
+  public final int getFuncId()
+  {
+    if (this.ufv) {
+      return 3789;
+    }
+    return 3644;
+  }
+  
+  public final byte[] toProtoBuf()
+  {
+    AppMethodBeat.i(149121);
+    this.CqS.setBaseRequest(l.a(this));
+    if (this.ufv)
+    {
+      arrayOfByte = bt.eGG();
+      setRsaInfo(ac.eBY());
+      this.CqS.Dfg = b.cd(arrayOfByte);
+      if (!f.CpT) {
+        setPassKey(arrayOfByte);
+      }
+    }
+    byte[] arrayOfByte = this.CqS.toByteArray();
+    AppMethodBeat.o(149121);
+    return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.s.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,233 +1,395 @@
 package com.tencent.mm.plugin.zero;
 
+import android.app.Service;
 import android.os.Build.VERSION;
+import android.os.Process;
 import com.tencent.mars.app.AppLogic;
 import com.tencent.mars.mm.AppCallBack;
 import com.tencent.mars.sdt.SdtLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.q;
+import com.tencent.mm.al.q.a;
 import com.tencent.mm.booter.NotifyReceiver;
 import com.tencent.mm.booter.NotifyReceiver.NotifyService;
-import com.tencent.mm.cm.a.a;
-import com.tencent.mm.cm.i;
-import com.tencent.mm.compatible.util.k;
+import com.tencent.mm.co.i;
+import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.l;
 import com.tencent.mm.plugin.zero.tasks.LoadNormsgJNITask;
 import com.tencent.mm.plugin.zero.tasks.LoadProtocolJNITask;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.y;
-import java.io.File;
+import com.tencent.mm.sdcard_migrate.ExtStorageMigrateMonitor;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ad.a;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.aa;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.vending.h.h;
+import com.tencent.stubs.logger.Log;
+import com.tencent.stubs.logger.Log.Logger;
 
 public class PluginZero
-  extends com.tencent.mm.kernel.b.f
+  extends f
   implements com.tencent.mm.plugin.zero.a.d
 {
-  private static final int[] vIY = { 6, 6, 0, 1, 2, 3, 4, 5 };
-  private a vIV;
-  private b vIW;
-  private final com.tencent.mm.app.e vIX;
-  public com.tencent.mm.plugin.zero.a.b vIZ;
-  public PluginZero.b vJa;
-  public PluginZero.a yLW;
+  private static final int[] Lwo = { 6, 6, 0, 1, 2, 3, 4, 5 };
+  private a Lwl;
+  private b Lwm;
+  private final com.tencent.mm.app.g Lwn;
+  public com.tencent.mm.plugin.zero.a.b Lwp;
+  public b Lwq;
+  public a Lwr;
   
   public PluginZero()
   {
-    AppMethodBeat.i(58762);
-    this.vIV = new a();
-    this.vIW = new b();
-    this.vIX = new com.tencent.mm.app.e();
-    this.vJa = new PluginZero.b();
-    this.yLW = new PluginZero.a();
-    AppMethodBeat.o(58762);
+    AppMethodBeat.i(133012);
+    this.Lwl = new a();
+    this.Lwm = new b();
+    this.Lwn = new com.tencent.mm.app.g();
+    this.Lwq = new b();
+    this.Lwr = new a();
+    AppMethodBeat.o(133012);
   }
   
   private void initSDRoot()
   {
-    AppMethodBeat.i(58766);
-    if (!new File(ac.eQv + "SdcardInfo.cfg").exists())
+    AppMethodBeat.i(133016);
+    if (!new com.tencent.mm.vfs.e(ae.FfH + "SdcardInfo.cfg").exists())
     {
-      com.tencent.mm.compatible.util.e.lo(com.tencent.mm.compatible.util.e.eQx);
-      ab.i("MicroMsg.PluginZero", "summermount initSdCardPath sdcard info file not existed use[%s]", new Object[] { com.tencent.mm.compatible.util.e.eQx });
-      AppMethodBeat.o(58766);
+      ad.i("MicroMsg.PluginZero", "summermount initSdCardPath sdcard info file not existed use[%s]", new Object[] { com.tencent.mm.loader.j.b.aic() });
+      AppMethodBeat.o(133016);
       return;
     }
-    String str2 = com.tencent.mm.compatible.util.e.eQx;
-    y localy = new y(ac.eQv + "SdcardInfo.cfg");
-    String str3 = (String)localy.get(1, "");
-    int i = ((Integer)localy.get(2, Integer.valueOf(0))).intValue();
-    int j = Build.VERSION.SDK_INT;
-    if (bo.isNullOrNil(str3))
+    String str2 = com.tencent.mm.loader.j.b.aic();
+    int i = 0;
+    aa localaa = new aa(ae.FfH + "SdcardInfo.cfg");
+    String str3 = (String)localaa.get(1, "");
+    int m = ((Integer)localaa.get(2, Integer.valueOf(0))).intValue();
+    int k = Build.VERSION.SDK_INT;
+    String str1;
+    int j;
+    if (bt.isNullOrNil(str3))
     {
-      localy.set(1, str2);
-      localy.set(2, Integer.valueOf(j));
+      localaa.set(1, str2);
+      localaa.set(2, Integer.valueOf(k));
+      str1 = str2;
+      ad.i("MicroMsg.PluginZero", "initSdCardPath cfgSdcardRoot[%s], initSdcardRoot[%s], primarySD[%s], ver[%d], sdk[%d]", new Object[] { str3, str1, str2, Integer.valueOf(m), Integer.valueOf(k) });
+      com.tencent.mm.loader.j.b.y(str1, false);
+      j = i;
+      if (m != k)
+      {
+        j = i;
+        if (!com.tencent.mm.compatible.util.e.XG())
+        {
+          j = 0;
+          if ((!com.tencent.mm.compatible.util.g.getExternalStorageState().equals("mounted")) || (!new com.tencent.mm.vfs.e(str2).canWrite())) {
+            break label358;
+          }
+          localaa.set(1, str2);
+          localaa.set(2, Integer.valueOf(k));
+          com.tencent.mm.loader.j.b.y(str2, false);
+          ad.i("MicroMsg.PluginZero", "summermount initSdCardPath ver change and old not avail reset SDCARD_ROOT[%s][%b]", new Object[] { com.tencent.mm.loader.j.b.aib(), Boolean.valueOf(com.tencent.mm.compatible.util.e.XG()) });
+        }
+      }
     }
-    for (String str1 = str2;; str1 = str3)
+    for (;;)
     {
-      ab.i("MicroMsg.PluginZero", "initSdCardPath cfgSdcardRoot[%s], initSdcardRoot[%s], primarySD[%s], ver[%d], sdk[%d]", new Object[] { str3, str1, str2, Integer.valueOf(i), Integer.valueOf(j) });
-      com.tencent.mm.compatible.util.e.lo(str1);
-      if ((i == j) || (com.tencent.mm.compatible.util.f.Mi())) {
-        break label342;
+      if ((aj.cbe()) && (j != 0))
+      {
+        ExtStorageMigrateMonitor.at(1315L, 140L);
+        if (!str2.equals(str1)) {
+          ExtStorageMigrateMonitor.at(1315L, 141L);
+        }
       }
-      if ((!com.tencent.mm.compatible.util.h.getExternalStorageState().equals("mounted")) || (!new File(com.tencent.mm.compatible.util.h.getExternalStorageDirectory().getAbsolutePath()).canWrite())) {
-        break;
-      }
-      localy.set(1, str2);
-      localy.set(2, Integer.valueOf(j));
-      com.tencent.mm.compatible.util.e.lo(str2);
-      ab.i("MicroMsg.PluginZero", "summermount initSdCardPath ver change and old not avail reset SDCARD_ROOT[%s][%b]", new Object[] { com.tencent.mm.compatible.util.e.eQx, Boolean.valueOf(com.tencent.mm.compatible.util.f.Mi()) });
-      AppMethodBeat.o(58766);
+      AppMethodBeat.o(133016);
       return;
+      i = 1;
+      str1 = str3;
+      break;
+      label358:
+      ad.i("MicroMsg.PluginZero", "summermount initSdCardPath ver change but neither primarySD nor old avail keep do nothing[%s][%b][%s]", new Object[] { com.tencent.mm.loader.j.b.aib(), Boolean.valueOf(com.tencent.mm.compatible.util.e.XG()), str2 });
     }
-    ab.i("MicroMsg.PluginZero", "summermount initSdCardPath ver change but neither primarySD nor old avail keep do nothing[%s][%b][%s]", new Object[] { com.tencent.mm.compatible.util.e.eQx, Boolean.valueOf(com.tencent.mm.compatible.util.f.Mi()), str2 });
-    label342:
-    AppMethodBeat.o(58766);
   }
   
   private void setupStubLog()
   {
-    AppMethodBeat.i(58768);
-    com.tencent.f.a.b.a(new PluginZero.3(this));
-    AppMethodBeat.o(58768);
+    AppMethodBeat.i(133018);
+    Log.setLogger(new Log.Logger()
+    {
+      public final boolean isLoggable(String paramAnonymousString, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(133000);
+        if ((paramAnonymousInt >= 2) && (paramAnonymousInt <= 7) && (PluginZero.Lwo[paramAnonymousInt] >= ad.getLogLevel()))
+        {
+          AppMethodBeat.o(133000);
+          return true;
+        }
+        AppMethodBeat.o(133000);
+        return false;
+      }
+      
+      public final void println(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
+      {
+        AppMethodBeat.i(132999);
+        if (!isLoggable(paramAnonymousString1, paramAnonymousInt))
+        {
+          AppMethodBeat.o(132999);
+          return;
+        }
+        ad.a locala = ad.eFv();
+        int i = Process.myPid();
+        int j = Process.myTid();
+        switch (paramAnonymousInt)
+        {
+        default: 
+          AppMethodBeat.o(132999);
+          return;
+        case 2: 
+          locala.logV(paramAnonymousString1, "", "", 0, i, j, i, paramAnonymousString2);
+          AppMethodBeat.o(132999);
+          return;
+        case 3: 
+          locala.logD(paramAnonymousString1, "", "", 0, i, j, i, paramAnonymousString2);
+          AppMethodBeat.o(132999);
+          return;
+        case 4: 
+          locala.logI(paramAnonymousString1, "", "", 0, i, j, i, paramAnonymousString2);
+          AppMethodBeat.o(132999);
+          return;
+        case 5: 
+          locala.logW(paramAnonymousString1, "", "", 0, i, j, i, paramAnonymousString2);
+          AppMethodBeat.o(132999);
+          return;
+        case 6: 
+          locala.logE(paramAnonymousString1, "", "", 0, i, j, i, paramAnonymousString2);
+          AppMethodBeat.o(132999);
+          return;
+        }
+        locala.logF(paramAnonymousString1, "", "", 0, i, j, i, paramAnonymousString2);
+        AppMethodBeat.o(132999);
+      }
+    });
+    AppMethodBeat.o(133018);
   }
   
   private void setupVendingLog()
   {
-    AppMethodBeat.i(58769);
-    com.tencent.mm.vending.f.a.a(new PluginZero.4(this));
-    AppMethodBeat.o(58769);
+    AppMethodBeat.i(133019);
+    com.tencent.mm.vending.f.a.a(new com.tencent.mm.vending.f.a.a()
+    {
+      public final void d(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
+      {
+        AppMethodBeat.i(133004);
+        ad.d(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        AppMethodBeat.o(133004);
+      }
+      
+      public final void e(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
+      {
+        AppMethodBeat.i(133001);
+        ad.e(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        AppMethodBeat.o(133001);
+      }
+      
+      public final void i(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
+      {
+        AppMethodBeat.i(133003);
+        ad.i(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        AppMethodBeat.o(133003);
+      }
+      
+      public final void printErrStackTrace(String paramAnonymousString1, Throwable paramAnonymousThrowable, String paramAnonymousString2, Object... paramAnonymousVarArgs)
+      {
+        AppMethodBeat.i(133005);
+        ad.printErrStackTrace(paramAnonymousString1, paramAnonymousThrowable, paramAnonymousString2, paramAnonymousVarArgs);
+        AppMethodBeat.o(133005);
+      }
+      
+      public final void w(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
+      {
+        AppMethodBeat.i(133002);
+        ad.w(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        AppMethodBeat.o(133002);
+      }
+    });
+    AppMethodBeat.o(133019);
   }
   
   public com.tencent.mm.vending.b.b addICoreServiceLifecycleCallback(com.tencent.mm.plugin.zero.a.a parama)
   {
-    AppMethodBeat.i(58771);
-    parama = this.yLW.at(parama);
-    AppMethodBeat.o(58771);
+    AppMethodBeat.i(133021);
+    parama = this.Lwr.bv(parama);
+    AppMethodBeat.o(133021);
     return parama;
   }
   
   public com.tencent.mm.vending.b.b addNotifyReceiverCallback(com.tencent.mm.plugin.zero.a.c paramc)
   {
-    AppMethodBeat.i(58770);
-    ab.i("MicroMsg.PluginZero", "addNotifyReceiverCallback this %s delegate %s ", new Object[] { this, paramc });
-    paramc = this.vJa.at(paramc);
-    AppMethodBeat.o(58770);
+    AppMethodBeat.i(133020);
+    ad.i("MicroMsg.PluginZero", "addNotifyReceiverCallback this %s delegate %s ", new Object[] { this, paramc });
+    paramc = this.Lwq.bv(paramc);
+    AppMethodBeat.o(133020);
     return paramc;
   }
   
   public void configure(final com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(58765);
+    AppMethodBeat.i(133015);
     try
     {
       initSDRoot();
-      ah.setProcessName(paramg.mProcessName);
-      com.tencent.mm.kernel.a.a.g("configure [%s], setup broken library handler...", new Object[] { this });
+      aj.setProcessName(paramg.mProcessName);
+      com.tencent.mm.kernel.a.a.h("configure [%s], setup broken library handler...", new Object[] { this });
       setupStubLog();
       setupVendingLog();
-      if (paramg.SD())
+      if (paramg.agu())
       {
-        com.tencent.mm.kernel.a.a.g("configure [%s], for process[%s]...", new Object[] { this, paramg.mProcessName });
-        com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.zero.b.a.class, new com.tencent.mm.kernel.c.e(this.vIV));
-        com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.zero.b.b.class, new com.tencent.mm.kernel.c.e(this.vIW));
-        com.tencent.mm.kernel.a.a.g("configure [%s], make worker core...", new Object[] { this });
-        com.tencent.mm.kernel.g localg = com.tencent.mm.kernel.g.RM();
-        if (!localg.eIx)
+        com.tencent.mm.kernel.a.a.h("configure [%s], for process[%s]...", new Object[] { this, paramg.mProcessName });
+        com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.zero.b.a.class, new com.tencent.mm.kernel.c.e(this.Lwl));
+        com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.zero.b.b.class, new com.tencent.mm.kernel.c.e(this.Lwm));
+        com.tencent.mm.kernel.a.a.h("configure [%s], make worker core...", new Object[] { this });
+        com.tencent.mm.kernel.g localg = com.tencent.mm.kernel.g.afC();
+        if (!localg.gdG)
         {
-          localg.eIx = true;
-          localg.eIq = new com.tencent.mm.kernel.e(com.tencent.mm.kernel.a.c.RX());
-          localg.eIr = new com.tencent.mm.kernel.a(com.tencent.mm.kernel.a.c.RX());
-          localg.eIs = new com.tencent.mm.kernel.b(localg.eIu, localg.eHs);
-          localg.eIt = new com.tencent.mm.cf.b(ah.getContext());
+          localg.gdz = new com.tencent.mm.kernel.e(com.tencent.mm.kernel.a.c.afO());
+          localg.gdA = new com.tencent.mm.kernel.a(com.tencent.mm.kernel.a.c.afO());
+          localg.gdB = new com.tencent.mm.kernel.b(localg.gdD, localg.gcx);
+          localg.gdC = new com.tencent.mm.ci.b(aj.getContext());
+          localg.gdG = true;
         }
-        NotifyReceiver.Im();
-        com.tencent.mm.kernel.g.RM().a(new com.tencent.mm.kernel.api.g()
+        NotifyReceiver.Tx();
+        com.tencent.mm.kernel.g.afC().a(new com.tencent.mm.kernel.api.g()
         {
-          public final void BN()
+          public final void Lk()
           {
-            AppMethodBeat.i(58746);
-            com.tencent.mm.kernel.a.a.g("onStartupDone", new Object[0]);
-            AppMethodBeat.o(58746);
+            AppMethodBeat.i(132996);
+            com.tencent.mm.kernel.a.a.h("onStartupDone", new Object[0]);
+            AppMethodBeat.o(132996);
           }
           
-          public final void br(boolean paramAnonymousBoolean)
+          public final void ce(boolean paramAnonymousBoolean)
           {
-            AppMethodBeat.i(58747);
+            AppMethodBeat.i(132997);
             if (paramAnonymousBoolean)
             {
-              l.n(paramg.bX, true);
-              l.o(paramg.bX, true);
+              l.o(paramg.ca, true);
+              l.p(paramg.ca, true);
             }
-            ab.dsI();
-            AppMethodBeat.o(58747);
+            ad.eFw();
+            AppMethodBeat.o(132997);
           }
         });
-        com.tencent.mm.kernel.g.RM();
-        i.AZz = new com.tencent.mm.vending.h.h(com.tencent.mm.cm.d.c(com.tencent.mm.kernel.g.RO().caB()), "WeChat.WORKER");
-        com.tencent.mm.vending.h.g.a("WeChat.WORKER", i.AZz);
+        com.tencent.mm.kernel.g.afC();
+        i.Igq = new h(com.tencent.mm.co.d.c(com.tencent.mm.kernel.g.afE().cBt()), "WeChat.WORKER");
+        com.tencent.mm.vending.h.g.a("WeChat.WORKER", i.Igq);
         new com.tencent.mm.plugin.zero.tasks.a().before(this);
       }
-      if ((paramg.SD()) || (paramg.mI(":push"))) {
+      if ((paramg.agu()) || (paramg.ra(":push"))) {
         new LoadNormsgJNITask().before(new LoadProtocolJNITask().before(this));
       }
-      if (paramg.mI(":push"))
+      if (paramg.ra(":push"))
       {
-        AppLogic.setCallBack(new AppCallBack(ah.getContext()));
-        k.a(com.tencent.mm.kernel.b.eHr, getClass().getClassLoader());
+        AppLogic.setCallBack(new AppCallBack(aj.getContext()));
+        getClass().getClassLoader();
+        j.pq("wechatbase");
+        getClass().getClassLoader();
+        j.pq("wechatnetwork");
+        getClass().getClassLoader();
+        j.pq("wechatmm");
         SdtLogic.setHttpNetcheckCGI("/mmnetcheck");
       }
-      AppMethodBeat.o(58765);
+      AppMethodBeat.o(133015);
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.PluginZero", localException, "what happened?", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.PluginZero", localException, "what happened?", new Object[0]);
       }
     }
   }
   
   public void dependency()
   {
-    AppMethodBeat.i(58764);
+    AppMethodBeat.i(133014);
     dependsOnRoot();
-    AppMethodBeat.o(58764);
+    AppMethodBeat.o(133014);
   }
   
-  public void execute(com.tencent.mm.kernel.b.g paramg)
+  public void execute(final com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(58767);
-    if (paramg.SD())
+    AppMethodBeat.i(133017);
+    if (paramg.agu())
     {
-      com.tencent.mm.kernel.g.RM().eIu.at(new PluginZero.2(this, paramg));
-      NotifyReceiver.In();
+      com.tencent.mm.kernel.g.afC().gdD.bv(new q.a()
+      {
+        public final void a(q paramAnonymousq)
+        {
+          AppMethodBeat.i(132998);
+          PluginZero.this.Lwn.bk(paramg.ca);
+          AppMethodBeat.o(132998);
+        }
+        
+        public final void a(q paramAnonymousq, boolean paramAnonymousBoolean) {}
+      });
+      NotifyReceiver.Ty();
     }
-    AppMethodBeat.o(58767);
+    AppMethodBeat.o(133017);
   }
   
   public void installed()
   {
-    AppMethodBeat.i(58763);
+    AppMethodBeat.i(133013);
     alias(com.tencent.mm.plugin.zero.a.d.class);
-    AppMethodBeat.o(58763);
+    AppMethodBeat.o(133013);
   }
   
   public void setILightPushDelegate(com.tencent.mm.plugin.zero.a.b paramb)
   {
-    this.vIZ = paramb;
+    this.Lwp = paramb;
   }
   
   public String toString()
   {
     return "plugin-zero";
   }
+  
+  public static final class a
+    extends com.tencent.mm.co.a<com.tencent.mm.plugin.zero.a.a>
+    implements com.tencent.mm.plugin.zero.a.a
+  {
+    public final void a(final Service paramService)
+    {
+      AppMethodBeat.i(133008);
+      a(new com.tencent.mm.co.a.a() {});
+      AppMethodBeat.o(133008);
+    }
+    
+    public final void b(final Service paramService)
+    {
+      AppMethodBeat.i(133009);
+      a(new com.tencent.mm.co.a.a() {});
+      AppMethodBeat.o(133009);
+    }
+  }
+  
+  public static final class b
+    extends com.tencent.mm.co.a<com.tencent.mm.plugin.zero.a.c>
+    implements com.tencent.mm.plugin.zero.a.c
+  {
+    public final void a(final NotifyReceiver.NotifyService paramNotifyService, final int paramInt, final byte[] paramArrayOfByte1, final byte[] paramArrayOfByte2, final long paramLong)
+    {
+      AppMethodBeat.i(133011);
+      a(new com.tencent.mm.co.a.a() {});
+      AppMethodBeat.o(133011);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.PluginZero
  * JD-Core Version:    0.7.0.1
  */

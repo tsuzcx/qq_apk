@@ -9,54 +9,54 @@ import java.util.List;
 public final class h
   implements a
 {
-  private g krx;
+  private g nwQ;
   
   public h(g paramg)
   {
-    this.krx = paramg;
-  }
-  
-  public final void aaK()
-  {
-    AppMethodBeat.i(88164);
-    if (this.krx != null) {
-      this.krx.notifyDataSetChanged();
-    }
-    AppMethodBeat.o(88164);
+    this.nwQ = paramg;
   }
   
   public final void onCreate()
   {
-    AppMethodBeat.i(88162);
-    this.krx.notifyDataSetChanged();
-    AppMethodBeat.o(88162);
+    AppMethodBeat.i(113096);
+    this.nwQ.notifyDataSetChanged();
+    AppMethodBeat.o(113096);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(88163);
-    if (this.krx != null)
+    AppMethodBeat.i(113097);
+    if (this.nwQ != null)
     {
-      g localg = this.krx;
-      localg.krl.release();
-      localg.krl = null;
-      localg.krw.clear();
+      g localg = this.nwQ;
+      localg.nwE.release();
+      localg.nwE = null;
+      localg.nwP.clear();
       localg.mContext = null;
-      this.krx = null;
+      this.nwQ = null;
     }
-    AppMethodBeat.o(88163);
+    AppMethodBeat.o(113097);
   }
   
-  public final b sU(int paramInt)
+  public final void onNotify()
   {
-    AppMethodBeat.i(88165);
-    if (this.krx != null)
+    AppMethodBeat.i(113098);
+    if (this.nwQ != null) {
+      this.nwQ.notifyDataSetChanged();
+    }
+    AppMethodBeat.o(113098);
+  }
+  
+  public final b yN(int paramInt)
+  {
+    AppMethodBeat.i(113099);
+    if (this.nwQ != null)
     {
-      b localb = this.krx.sU(paramInt);
-      AppMethodBeat.o(88165);
+      b localb = this.nwQ.yN(paramInt);
+      AppMethodBeat.o(113099);
       return localb;
     }
-    AppMethodBeat.o(88165);
+    AppMethodBeat.o(113099);
     return null;
   }
 }

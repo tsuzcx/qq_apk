@@ -2,11 +2,11 @@ package com.tencent.tinker.loader.hotplug;
 
 final class ActivityStubs
 {
-  static final String alh = ActivityStubs.class.getPackage().getName();
-  static final String ali = alh + "." + ActivityStubs.class.getSimpleName() + "$STDStub_%02X";
-  static final String alj = alh + "." + ActivityStubs.class.getSimpleName() + "$SGTStub_%02X";
-  static final String alk = alh + "." + ActivityStubs.class.getSimpleName() + "$SGTKStub_%02X";
-  static final String all = alh + "." + ActivityStubs.class.getSimpleName() + "$SIStub_%02X";
+  static final String aoH = ActivityStubs.class.getPackage().getName();
+  static final String aoI = aoH + "." + ActivityStubs.class.getSimpleName() + "$STDStub_%02X";
+  static final String aoJ = aoH + "." + ActivityStubs.class.getSimpleName() + "$SGTStub_%02X";
+  static final String aoK = aoH + "." + ActivityStubs.class.getSimpleName() + "$SGTKStub_%02X";
+  static final String aoL = aoH + "." + ActivityStubs.class.getSimpleName() + "$SIStub_%02X";
   
   private ActivityStubs()
   {

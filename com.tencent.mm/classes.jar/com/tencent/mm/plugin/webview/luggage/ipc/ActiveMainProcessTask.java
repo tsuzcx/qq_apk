@@ -3,34 +3,46 @@ package com.tencent.mm.plugin.webview.luggage.ipc;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class ActiveMainProcessTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<ActiveMainProcessTask> CREATOR;
+  public Runnable callback;
   
   static
   {
-    AppMethodBeat.i(6245);
+    AppMethodBeat.i(78486);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(6245);
+    AppMethodBeat.o(78486);
   }
   
   public ActiveMainProcessTask() {}
   
   private ActiveMainProcessTask(byte paramByte) {}
   
-  public final void ata()
+  public final void aEA()
   {
-    AppMethodBeat.i(6244);
-    ab.i("MicroMsg.ActiveMainProcessTask", "active");
-    AppMethodBeat.o(6244);
+    AppMethodBeat.i(78485);
+    ad.i("MicroMsg.ActiveMainProcessTask", "runInClientProcess");
+    if (this.callback != null) {
+      this.callback.run();
+    }
+    AppMethodBeat.o(78485);
+  }
+  
+  public final void aEz()
+  {
+    AppMethodBeat.i(78484);
+    ad.i("MicroMsg.ActiveMainProcessTask", "active");
+    aXw();
+    AppMethodBeat.o(78484);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.ipc.ActiveMainProcessTask
  * JD-Core Version:    0.7.0.1
  */

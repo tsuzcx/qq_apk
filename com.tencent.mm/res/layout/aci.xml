@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sight.encode.ui.MainSightForwardContainerView android:id="@id/d6d" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/a7c" android:layout_width="wrap_content" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/d6e" android:layout="@layout/aup" android:layout_width="fill_parent" android:layout_height="240.0dip" />
-    <View android:id="@id/d6f" android:background="#ff000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignLeft="@id/d6e" android:layout_alignTop="@id/d6e" android:layout_alignRight="@id/d6e" android:layout_alignBottom="@id/d6e" />
-    <View android:id="@id/d6g" android:background="@color/h6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/b8t" android:background="@color/h6" android:paddingLeft="13.0dip" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/a9i">
-        <LinearLayout android:orientation="horizontal" android:id="@id/lg" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0px" android:layout_height="0.0px" />
-        <EditText android:textSize="@dimen/m2" android:textColor="@color/a6q" android:textColorHint="#7fffffff" android:ellipsize="end" android:layout_gravity="center" android:id="@id/lh" android:background="@drawable/b9d" android:paddingLeft="10.0dip" android:paddingRight="@dimen/lz" android:layout_width="0.0dip" android:layout_height="fill_parent" android:minWidth="1024.0dip" android:hint="@string/u3" android:singleLine="true" android:layout_weight="1.0" android:inputType="text" android:imeOptions="actionSearch" android:textCursorDrawable="@null" />
-        <TextView android:textColor="@color/a6q" android:gravity="center_vertical" android:id="@id/d6h" android:paddingLeft="13.0dip" android:paddingRight="13.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/emr" android:singleLine="true" style="@style/ln" />
-    </LinearLayout>
-    <com.tencent.mm.plugin.sight.encode.ui.MainSightSelectContactView android:id="@id/d6i" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/b8t" />
-    <View android:id="@id/d6j" android:background="@color/h6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <FrameLayout android:id="@id/d6k" android:padding="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true">
-        <ImageView android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/actionbar_quit_webview_icon" />
-    </FrameLayout>
-    <FrameLayout android:id="@id/d6l" android:padding="10.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
-        <TextView android:text="@string/cm" style="@style/ny" />
-    </FrameLayout>
-</com.tencent.mm.plugin.sight.encode.ui.MainSightForwardContainerView>
+    <RelativeLayout android:layout_width="96.0dip" android:layout_height="fill_parent">
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/km" android:ellipsize="end" android:id="@id/g3t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_centerInParent="true" />
+        <TextView android:textSize="11.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/g3s" android:background="@drawable/afs" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginLeft="3.0dip" android:layout_marginTop="8.0dip" android:minWidth="18.0dip" android:text="1" android:layout_toRightOf="@id/g3t" />
+    </RelativeLayout>
+    <View android:id="@id/g3r" android:background="@color/y4" android:layout_width="70.0dip" android:layout_height="2.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

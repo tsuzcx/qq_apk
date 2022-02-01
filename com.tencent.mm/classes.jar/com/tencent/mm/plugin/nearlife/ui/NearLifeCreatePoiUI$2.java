@@ -12,16 +12,16 @@ final class NearLifeCreatePoiUI$2
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(22972);
+    AppMethodBeat.i(26598);
     paramView = new Intent();
-    paramView.setClass(this.pfL.getContext(), SelectPoiCategoryUI.class);
-    this.pfL.startActivityForResult(paramView, 2);
-    AppMethodBeat.o(22972);
+    paramView.setClass(this.udk.getContext(), SelectPoiCategoryUI.class);
+    this.udk.startActivityForResult(paramView, 2);
+    AppMethodBeat.o(26598);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.NearLifeCreatePoiUI.2
  * JD-Core Version:    0.7.0.1
  */

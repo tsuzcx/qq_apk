@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView style="@style/ni">
-        <LinearLayout style="@style/l0">
-            <TextView android:id="@id/dh6" android:text="@string/dxd" android:layout_weight="1.0" style="@style/mm" />
-            <com.tencent.mm.ui.widget.MMEditText android:id="@id/dh7" style="@style/ml" />
-            <View style="@style/mh" />
-        </LinearLayout>
-    </ScrollView>
+    <TextView android:textSize="@dimen/ia" android:id="@id/d0h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/jn" android:text="@string/dxj" />
+    <CheckBox android:textSize="@dimen/gx" android:layout_gravity="left" android:id="@id/d0g" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rq" android:drawablePadding="4.0dip" style="@style/oj" />
 </LinearLayout>

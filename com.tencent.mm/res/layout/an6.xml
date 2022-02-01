@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.pluginsdk.ui.MMPhoneNumberEditText android:textColor="@color/w_" android:textColorHint="@color/pj" android:layout_gravity="bottom" android:id="@id/dva" android:background="@drawable/a9h" android:paddingRight="@dimen/g2" android:layout_marginLeft="@dimen/g2" android:minHeight="@dimen/g9" android:hint="@string/d3" android:maxLength="40" android:inputType="phone" style="@style/ml"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<android.support.constraint.ConstraintLayout android:id="@id/gl5" android:background="@color/a_r" android:padding="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/q" android:textColor="@color/fg" android:gravity="center" android:id="@id/cwm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dp1" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8" style="@style/ya" />
+    <TextView android:textSize="@dimen/q" android:textColor="@color/fg" android:gravity="center" android:id="@id/cwl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="700ms" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8" style="@style/ya" />
+    <SeekBar android:id="@id/g8m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_" android:max="100" android:progress="100" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="@id/cwm" style="@style/o2" />
+</android.support.constraint.ConstraintLayout>

@@ -1,46 +1,45 @@
 package com.tencent.mm.plugin.radar;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.pluginsdk.o;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/radar/RadarApplication;", "Lcom/tencent/mm/pluginsdk/IPluginApplication;", "()V", "regitMMModelCallback", "", "callback", "Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "regitMMUICallback", "Lcom/tencent/mm/pluginsdk/IMMUICallback;", "Companion", "plugin-radar_release"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/RadarApplication;", "Lcom/tencent/mm/pluginsdk/IPluginApplication;", "()V", "regitMMModelCallback", "", "callback", "Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "regitMMUICallback", "Lcom/tencent/mm/pluginsdk/IMMUICallback;", "Companion", "plugin-radar_release"})
 public final class a
-  implements o
+  implements m
 {
-  private static n gmO;
-  private static m gmP;
-  public static final a.a pPE;
+  private static com.tencent.mm.pluginsdk.l hYt;
+  private static com.tencent.mm.pluginsdk.k hYu;
+  public static final a uRB;
   
   static
   {
-    AppMethodBeat.i(102851);
-    pPE = new a.a((byte)0);
-    AppMethodBeat.o(102851);
+    AppMethodBeat.i(138495);
+    uRB = new a((byte)0);
+    AppMethodBeat.o(138495);
   }
   
-  public final void a(m paramm)
+  public final void a(com.tencent.mm.pluginsdk.k paramk)
   {
-    AppMethodBeat.i(102850);
-    j.q(paramm, "callback");
-    gmP = paramm;
-    AppMethodBeat.o(102850);
+    AppMethodBeat.i(138494);
+    d.g.b.k.h(paramk, "callback");
+    hYu = paramk;
+    AppMethodBeat.o(138494);
   }
   
-  public final void a(n paramn)
+  public final void a(com.tencent.mm.pluginsdk.l paraml)
   {
-    AppMethodBeat.i(102849);
-    j.q(paramn, "callback");
-    gmO = paramn;
-    AppMethodBeat.o(102849);
+    AppMethodBeat.i(138493);
+    d.g.b.k.h(paraml, "callback");
+    hYt = paraml;
+    AppMethodBeat.o(138493);
   }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/radar/RadarApplication$Companion;", "", "()V", "modelCallback", "Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "getModelCallback", "()Lcom/tencent/mm/pluginsdk/IMMModelCallback;", "setModelCallback", "(Lcom/tencent/mm/pluginsdk/IMMModelCallback;)V", "uiCallback", "Lcom/tencent/mm/pluginsdk/IMMUICallback;", "getUiCallback", "()Lcom/tencent/mm/pluginsdk/IMMUICallback;", "setUiCallback", "(Lcom/tencent/mm/pluginsdk/IMMUICallback;)V", "plugin-radar_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.a
  * JD-Core Version:    0.7.0.1
  */

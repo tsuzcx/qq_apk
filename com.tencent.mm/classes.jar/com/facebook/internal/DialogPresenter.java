@@ -16,31 +16,31 @@ public class DialogPresenter
 {
   public static boolean canPresentNativeDialogWithFeature(DialogFeature paramDialogFeature)
   {
-    AppMethodBeat.i(96619);
+    AppMethodBeat.i(7643);
     if (getProtocolVersionForNativeDialog(paramDialogFeature).getProtocolVersion() != -1)
     {
-      AppMethodBeat.o(96619);
+      AppMethodBeat.o(7643);
       return true;
     }
-    AppMethodBeat.o(96619);
+    AppMethodBeat.o(7643);
     return false;
   }
   
   public static boolean canPresentWebFallbackDialogWithFeature(DialogFeature paramDialogFeature)
   {
-    AppMethodBeat.i(96620);
+    AppMethodBeat.i(7644);
     if (getDialogWebFallbackUri(paramDialogFeature) != null)
     {
-      AppMethodBeat.o(96620);
+      AppMethodBeat.o(7644);
       return true;
     }
-    AppMethodBeat.o(96620);
+    AppMethodBeat.o(7644);
     return false;
   }
   
   private static Uri getDialogWebFallbackUri(DialogFeature paramDialogFeature)
   {
-    AppMethodBeat.i(96625);
+    AppMethodBeat.i(7649);
     Object localObject = paramDialogFeature.name();
     paramDialogFeature = paramDialogFeature.getAction();
     localObject = FetchedAppSettings.getDialogFeatureConfig(FacebookSdk.getApplicationId(), paramDialogFeature, (String)localObject);
@@ -48,74 +48,74 @@ public class DialogPresenter
     if (localObject != null) {
       paramDialogFeature = ((FetchedAppSettings.DialogFeatureConfig)localObject).getFallbackUrl();
     }
-    AppMethodBeat.o(96625);
+    AppMethodBeat.o(7649);
     return paramDialogFeature;
   }
   
   public static NativeProtocol.ProtocolVersionQueryResult getProtocolVersionForNativeDialog(DialogFeature paramDialogFeature)
   {
-    AppMethodBeat.i(96626);
+    AppMethodBeat.i(7650);
     String str1 = FacebookSdk.getApplicationId();
     String str2 = paramDialogFeature.getAction();
     paramDialogFeature = NativeProtocol.getLatestAvailableProtocolVersionForAction(str2, getVersionSpecForFeature(str1, str2, paramDialogFeature));
-    AppMethodBeat.o(96626);
+    AppMethodBeat.o(7650);
     return paramDialogFeature;
   }
   
   private static int[] getVersionSpecForFeature(String paramString1, String paramString2, DialogFeature paramDialogFeature)
   {
-    AppMethodBeat.i(96627);
+    AppMethodBeat.i(7651);
     paramString1 = FetchedAppSettings.getDialogFeatureConfig(paramString1, paramString2, paramDialogFeature.name());
     if (paramString1 != null)
     {
       paramString1 = paramString1.getVersionSpec();
-      AppMethodBeat.o(96627);
+      AppMethodBeat.o(7651);
       return paramString1;
     }
     int i = paramDialogFeature.getMinVersion();
-    AppMethodBeat.o(96627);
+    AppMethodBeat.o(7651);
     return new int[] { i };
   }
   
   public static void logDialogActivity(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(96628);
+    AppMethodBeat.i(7652);
     paramContext = AppEventsLogger.newLogger(paramContext);
     Bundle localBundle = new Bundle();
     localBundle.putString("fb_dialog_outcome", paramString2);
     paramContext.logSdkEvent(paramString1, null, localBundle);
-    AppMethodBeat.o(96628);
+    AppMethodBeat.o(7652);
   }
   
   public static void present(AppCall paramAppCall, Activity paramActivity)
   {
-    AppMethodBeat.i(96617);
+    AppMethodBeat.i(7641);
     paramActivity.startActivityForResult(paramAppCall.getRequestIntent(), paramAppCall.getRequestCode());
     paramAppCall.setPending();
-    AppMethodBeat.o(96617);
+    AppMethodBeat.o(7641);
   }
   
   public static void present(AppCall paramAppCall, FragmentWrapper paramFragmentWrapper)
   {
-    AppMethodBeat.i(96618);
+    AppMethodBeat.i(7642);
     paramFragmentWrapper.startActivityForResult(paramAppCall.getRequestIntent(), paramAppCall.getRequestCode());
     paramAppCall.setPending();
-    AppMethodBeat.o(96618);
+    AppMethodBeat.o(7642);
   }
   
   public static void setupAppCallForCannotShowError(AppCall paramAppCall)
   {
-    AppMethodBeat.i(96615);
+    AppMethodBeat.i(7639);
     setupAppCallForValidationError(paramAppCall, new FacebookException("Unable to show the provided content via the web or the installed version of the Facebook app. Some dialogs are only supported starting API 14."));
-    AppMethodBeat.o(96615);
+    AppMethodBeat.o(7639);
   }
   
   public static void setupAppCallForErrorResult(AppCall paramAppCall, FacebookException paramFacebookException)
   {
-    AppMethodBeat.i(96621);
+    AppMethodBeat.i(7645);
     if (paramFacebookException == null)
     {
-      AppMethodBeat.o(96621);
+      AppMethodBeat.o(7645);
       return;
     }
     Validate.hasFacebookActivity(FacebookSdk.getApplicationContext());
@@ -124,12 +124,12 @@ public class DialogPresenter
     localIntent.setAction(FacebookActivity.PASS_THROUGH_CANCEL_ACTION);
     NativeProtocol.setupProtocolRequestIntent(localIntent, paramAppCall.getCallId().toString(), null, NativeProtocol.getLatestKnownVersion(), NativeProtocol.createBundleForException(paramFacebookException));
     paramAppCall.setRequestIntent(localIntent);
-    AppMethodBeat.o(96621);
+    AppMethodBeat.o(7645);
   }
   
-  public static void setupAppCallForNativeDialog(AppCall paramAppCall, DialogPresenter.ParameterProvider paramParameterProvider, DialogFeature paramDialogFeature)
+  public static void setupAppCallForNativeDialog(AppCall paramAppCall, ParameterProvider paramParameterProvider, DialogFeature paramDialogFeature)
   {
-    AppMethodBeat.i(96624);
+    AppMethodBeat.i(7648);
     Context localContext = FacebookSdk.getApplicationContext();
     String str = paramDialogFeature.getAction();
     NativeProtocol.ProtocolVersionQueryResult localProtocolVersionQueryResult = getProtocolVersionForNativeDialog(paramDialogFeature);
@@ -137,7 +137,7 @@ public class DialogPresenter
     if (i == -1)
     {
       paramAppCall = new FacebookException("Cannot present this dialog. This likely means that the Facebook app is not installed.");
-      AppMethodBeat.o(96624);
+      AppMethodBeat.o(7648);
       throw paramAppCall;
     }
     if (NativeProtocol.isVersionCompatibleWithBucketedIntent(i)) {}
@@ -152,23 +152,23 @@ public class DialogPresenter
         break;
       }
       paramAppCall = new FacebookException("Unable to create Intent; this likely means theFacebook app is not installed.");
-      AppMethodBeat.o(96624);
+      AppMethodBeat.o(7648);
       throw paramAppCall;
     }
     paramAppCall.setRequestIntent(paramParameterProvider);
-    AppMethodBeat.o(96624);
+    AppMethodBeat.o(7648);
   }
   
   public static void setupAppCallForValidationError(AppCall paramAppCall, FacebookException paramFacebookException)
   {
-    AppMethodBeat.i(96616);
+    AppMethodBeat.i(7640);
     setupAppCallForErrorResult(paramAppCall, paramFacebookException);
-    AppMethodBeat.o(96616);
+    AppMethodBeat.o(7640);
   }
   
   public static void setupAppCallForWebDialog(AppCall paramAppCall, String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(96622);
+    AppMethodBeat.i(7646);
     Validate.hasFacebookActivity(FacebookSdk.getApplicationContext());
     Validate.hasInternetPermissions(FacebookSdk.getApplicationContext());
     Bundle localBundle = new Bundle();
@@ -179,12 +179,12 @@ public class DialogPresenter
     paramBundle.setClass(FacebookSdk.getApplicationContext(), FacebookActivity.class);
     paramBundle.setAction("FacebookDialogFragment");
     paramAppCall.setRequestIntent(paramBundle);
-    AppMethodBeat.o(96622);
+    AppMethodBeat.o(7646);
   }
   
   public static void setupAppCallForWebFallbackDialog(AppCall paramAppCall, Bundle paramBundle, DialogFeature paramDialogFeature)
   {
-    AppMethodBeat.i(96623);
+    AppMethodBeat.i(7647);
     Validate.hasFacebookActivity(FacebookSdk.getApplicationContext());
     Validate.hasInternetPermissions(FacebookSdk.getApplicationContext());
     String str = paramDialogFeature.name();
@@ -192,7 +192,7 @@ public class DialogPresenter
     if (localObject == null)
     {
       paramAppCall = new FacebookException("Unable to fetch the Url for the DialogFeature : '" + str + "'");
-      AppMethodBeat.o(96623);
+      AppMethodBeat.o(7647);
       throw paramAppCall;
     }
     int i = NativeProtocol.getLatestKnownVersion();
@@ -200,7 +200,7 @@ public class DialogPresenter
     if (paramBundle == null)
     {
       paramAppCall = new FacebookException("Unable to fetch the app's key-hash");
-      AppMethodBeat.o(96623);
+      AppMethodBeat.o(7647);
       throw paramAppCall;
     }
     if (((Uri)localObject).isRelative()) {}
@@ -214,14 +214,21 @@ public class DialogPresenter
       paramBundle.setClass(FacebookSdk.getApplicationContext(), FacebookActivity.class);
       paramBundle.setAction("FacebookDialogFragment");
       paramAppCall.setRequestIntent(paramBundle);
-      AppMethodBeat.o(96623);
+      AppMethodBeat.o(7647);
       return;
     }
+  }
+  
+  public static abstract interface ParameterProvider
+  {
+    public abstract Bundle getLegacyParameters();
+    
+    public abstract Bundle getParameters();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.DialogPresenter
  * JD-Core Version:    0.7.0.1
  */

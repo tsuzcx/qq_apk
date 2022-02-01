@@ -1,61 +1,69 @@
 package com.tencent.mm.plugin.mall.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.bv.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.bx.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.wallet_core.model.m;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.protobuf.aw;
-import com.tencent.mm.protocal.protobuf.bqp;
-import com.tencent.mm.protocal.protobuf.bqq;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.fingerprint.d.a;
+import com.tencent.mm.plugin.wallet_core.model.k;
+import com.tencent.mm.protocal.protobuf.BaseResponse;
+import com.tencent.mm.protocal.protobuf.az;
+import com.tencent.mm.protocal.protobuf.cfo;
+import com.tencent.mm.protocal.protobuf.cfp;
+import com.tencent.mm.protocal.protobuf.cmf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class c
-  extends a<bqq>
+  extends com.tencent.mm.al.c<cfp>
 {
-  public c(long paramLong)
+  public c(long paramLong, cfp paramcfp)
   {
-    AppMethodBeat.i(43094);
-    bqp localbqp = new bqp();
-    localbqp.xEF = ((int)paramLong);
-    localbqp.xEG = b.ank("all_type");
-    Object localObject = m.cTC();
+    AppMethodBeat.i(65989);
+    cfo localcfo = new cfo();
+    localcfo.EbD = ((int)paramLong);
+    localcfo.EbE = b.aDf("all_type");
+    Object localObject = k.ebS();
     if (localObject != null)
     {
-      if (!bo.isNullOrNil(((aw)localObject).province)) {
-        localbqp.xEH = b.ank(((aw)localObject).province);
+      if (!bt.isNullOrNil(((az)localObject).evz)) {
+        localcfo.EbF = b.aDf(((az)localObject).evz);
       }
-      if (!bo.isNullOrNil(((aw)localObject).city)) {
-        localbqp.xEI = b.ank(((aw)localObject).city);
+      if (!bt.isNullOrNil(((az)localObject).evA)) {
+        localcfo.EbG = b.aDf(((az)localObject).evA);
       }
     }
-    localObject = (l)g.E(l.class);
-    localbqp.wLD = 0;
+    localObject = (a)g.ab(a.class);
+    localcfo.CXV = 0;
     if (localObject != null) {}
-    for (localbqp.wLE = 1;; localbqp.wLE = 0)
+    for (localcfo.CXW = 1;; localcfo.CXW = 0)
     {
-      localbqp.xEJ = 1;
-      localbqp.timestamp = System.currentTimeMillis();
-      localObject = new b.a();
-      ((b.a)localObject).fsX = localbqp;
-      ((b.a)localObject).fsY = new bqq();
-      ((b.a)localObject).funcId = 2672;
-      ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/tenpay/querywechatwallet";
-      ((b.a)localObject).reqCmdId = 0;
-      ((b.a)localObject).respCmdId = 0;
-      this.rr = ((b.a)localObject).ado();
-      ab.i("MicroMsg.CgiQueryWeChatWallet", "balanceVersion: %s, isRoot: %s, openTouch: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(localbqp.wLD), Integer.valueOf(localbqp.wLE) });
-      AppMethodBeat.o(43094);
+      localcfo.EbH = 1;
+      localcfo.timestamp = System.currentTimeMillis();
+      if (paramcfp.BaseResponse == null)
+      {
+        paramcfp.BaseResponse = new BaseResponse();
+        paramcfp.BaseResponse.ErrMsg = new cmf().aEE("");
+        paramcfp.BaseResponse.Ret = 0;
+      }
+      localcfo.EbI = paramcfp;
+      paramcfp = new b.a();
+      paramcfp.gUU = localcfo;
+      paramcfp.gUV = new cfp();
+      paramcfp.funcId = 2672;
+      paramcfp.uri = "/cgi-bin/mmpay-bin/tenpay/querywechatwallet";
+      paramcfp.reqCmdId = 0;
+      paramcfp.respCmdId = 0;
+      this.rr = paramcfp.atI();
+      ad.i("MicroMsg.CgiQueryWeChatWallet", "balanceVersion: %s, isRoot: %s, openTouch: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(localcfo.CXV), Integer.valueOf(localcfo.CXW) });
+      AppMethodBeat.o(65989);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.a.c
  * JD-Core Version:    0.7.0.1
  */

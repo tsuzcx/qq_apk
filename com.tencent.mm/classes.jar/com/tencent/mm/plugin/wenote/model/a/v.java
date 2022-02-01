@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.wenote.model.a;
 public class v
   extends o
 {
-  public int cve;
-  public int cvf;
-  public String hPe;
+  public int dkj;
+  public int dkk;
+  public String jUR;
   public int length;
-  public int vxE;
-  public String vxF;
-  public String vxG;
-  public String vxi = "amr";
+  public String omK = "amr";
+  public int omL;
+  public String omM;
+  public String omN;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.a.v
  * JD-Core Version:    0.7.0.1
  */

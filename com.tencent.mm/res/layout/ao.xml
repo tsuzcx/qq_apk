@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/lj" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="58.0dip" style="@style/sf"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip">
-        <Button android:id="@id/mc" android:layout_marginLeft="5.0dip" android:text="getDB" style="@style/ns" />
-        <Button android:id="@id/md" android:layout_marginLeft="5.0dip" android:text="calcExpt" style="@style/ns" />
-        <Button android:id="@id/me" android:layout_marginLeft="5.0dip" android:text="delDB" style="@style/nv" />
-        <Button android:id="@id/mf" android:layout_marginLeft="5.0dip" android:text="reset" style="@style/nv" />
-        <Button android:id="@id/mg" android:layout_marginLeft="5.0dip" android:text="experience" style="@style/ns" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/ko" android:id="@id/mh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" />
-    <ListView android:id="@id/mi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@color/a6i" android:dividerHeight="1.0dip" />
-</LinearLayout>
+    <ImageView android:id="@android:id/icon1" android:visibility="invisible" android:layout_width="@dimen/mh" android:layout_height="48.0dip" android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" style="@style/sg" />
+    <ImageView android:id="@id/bgf" android:background="?wh" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" style="@style/si" />
+    <ImageView android:id="@android:id/icon2" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_alignParentBottom="true" android:layout_alignWithParentIfMissing="true" style="@style/sh" />
+    <TextView android:textAppearance="?zn" android:gravity="top" android:id="@android:id/text2" android:paddingBottom="4.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="29.0dip" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_alignWithParentIfMissing="true" style="?android:dropDownItemStyle" />
+    <TextView android:textAppearance="?zo" android:id="@android:id/text1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_above="@android:id/text2" android:layout_centerVertical="true" style="?android:dropDownItemStyle" />
+</RelativeLayout>

@@ -7,62 +7,62 @@ import java.io.File;
 final class c
   extends com.tencent.mm.wear.app.g.a
 {
-  private a acV;
+  private a agw;
   
   public c(b paramb, a parama)
   {
-    this.acV = parama;
+    this.agw = parama;
   }
   
   protected final void execute()
   {
-    switch (this.acV.type)
+    switch (this.agw.type)
     {
     default: 
       return;
     case 1: 
-      localObject1 = new File(com.tencent.mm.wear.app.b.h.ml(), this.acV.acJ);
+      localObject1 = new File(com.tencent.mm.wear.app.b.h.mX(), this.agw.agk);
       d.c("MicroMsg.MMImageLoader", "load image %s", new Object[] { ((File)localObject1).getAbsoluteFile() });
       if (((File)localObject1).exists())
       {
         localObject1 = com.tencent.mm.wear.a.f.c.a((File)localObject1);
-        if (this.acV.acQ == 1) {
-          b.a(this.acW).put(this.acV.acK, localObject1);
+        if (this.agw.agr == 1) {
+          b.a(this.agx).put(this.agw.agl, localObject1);
         }
-        com.tencent.mm.wear.a.b.a.aiT.post(new e(this.acW, this.acV));
+        com.tencent.mm.wear.a.b.a.amv.post(new e(this.agx, this.agw));
         return;
       }
-      com.tencent.mm.wear.app.b.h.mc().a(new g(this.acW, this.acV));
+      com.tencent.mm.wear.app.b.h.mP().a(new g(this.agx, this.agw));
       return;
     case 3: 
-      localObject1 = new File(com.tencent.mm.wear.app.b.h.mn(), this.acV.acK);
+      localObject1 = new File(com.tencent.mm.wear.app.b.h.mZ(), this.agw.agl);
       if (((File)localObject1).exists())
       {
-        Object localObject2 = com.tencent.mm.wear.a.f.b.c(com.tencent.mm.wear.a.f.c.a((File)localObject1), this.acV.width, this.acV.height);
+        Object localObject2 = com.tencent.mm.wear.a.f.b.c(com.tencent.mm.wear.a.f.c.a((File)localObject1), this.agw.width, this.agw.height);
         localObject1 = localObject2;
-        if (this.acV.acN > 0) {
-          localObject1 = com.tencent.mm.wear.a.f.b.a(b.b(this.acW), (Bitmap)localObject2, this.acV.acN);
+        if (this.agw.ago > 0) {
+          localObject1 = com.tencent.mm.wear.a.f.b.a(b.b(this.agx), (Bitmap)localObject2, this.agw.ago);
         }
         localObject2 = localObject1;
-        if (this.acV.acO > 0) {
-          localObject2 = com.tencent.mm.wear.a.f.b.a((Bitmap)localObject1, this.acV.acO);
+        if (this.agw.agp > 0) {
+          localObject2 = com.tencent.mm.wear.a.f.b.a((Bitmap)localObject1, this.agw.agp);
         }
-        b.c(this.acW).put(this.acV.acK, localObject2);
-        com.tencent.mm.wear.a.b.a.aiT.post(new e(this.acW, this.acV));
+        b.c(this.agx).put(this.agw.agl, localObject2);
+        com.tencent.mm.wear.a.b.a.amv.post(new e(this.agx, this.agw));
         return;
       }
-      com.tencent.mm.wear.app.b.h.mc().a(new f(this.acW, this.acV));
+      com.tencent.mm.wear.app.b.h.mP().a(new f(this.agx, this.agw));
       return;
     }
-    Object localObject1 = new File(com.tencent.mm.wear.app.b.h.mm(), this.acV.acK);
+    Object localObject1 = new File(com.tencent.mm.wear.app.b.h.mY(), this.agw.agl);
     if (((File)localObject1).exists())
     {
-      localObject1 = com.tencent.mm.wear.a.f.b.c(com.tencent.mm.wear.a.f.c.a((File)localObject1), this.acV.width, this.acV.height);
-      b.c(this.acW).put(this.acV.acK, localObject1);
-      com.tencent.mm.wear.a.b.a.aiT.post(new e(this.acW, this.acV));
+      localObject1 = com.tencent.mm.wear.a.f.b.c(com.tencent.mm.wear.a.f.c.a((File)localObject1), this.agw.width, this.agw.height);
+      b.c(this.agx).put(this.agw.agl, localObject1);
+      com.tencent.mm.wear.a.b.a.amv.post(new e(this.agx, this.agw));
       return;
     }
-    com.tencent.mm.wear.app.b.h.mc().a(new h(this.acW, this.acV));
+    com.tencent.mm.wear.app.b.h.mP().a(new h(this.agx, this.agw));
   }
   
   protected final String getName()

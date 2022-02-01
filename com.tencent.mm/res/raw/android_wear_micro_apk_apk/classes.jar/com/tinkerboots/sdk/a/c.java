@@ -24,7 +24,7 @@ public final class c
           {
             paramAnonymousContext.unregisterReceiver(this);
             if (paramb != null) {
-              paramb.os();
+              paramb.pf();
             }
           }
           return;

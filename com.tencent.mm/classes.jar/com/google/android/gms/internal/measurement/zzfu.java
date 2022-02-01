@@ -14,39 +14,39 @@ public final class zzfu
   
   public zzfu(zzfr paramzzfr, String paramString, long paramLong)
   {
-    AppMethodBeat.i(68963);
+    AppMethodBeat.i(1486);
     Preconditions.checkNotEmpty(paramString);
     this.zzny = paramString;
     this.zzakr = paramLong;
-    AppMethodBeat.o(68963);
+    AppMethodBeat.o(1486);
   }
   
   public final long get()
   {
-    AppMethodBeat.i(68964);
+    AppMethodBeat.i(1487);
     if (!this.zzakp)
     {
       this.zzakp = true;
       this.value = zzfr.zza(this.zzakq).getLong(this.zzny, this.zzakr);
     }
     long l = this.value;
-    AppMethodBeat.o(68964);
+    AppMethodBeat.o(1487);
     return l;
   }
   
   public final void set(long paramLong)
   {
-    AppMethodBeat.i(68965);
+    AppMethodBeat.i(1488);
     SharedPreferences.Editor localEditor = zzfr.zza(this.zzakq).edit();
     localEditor.putLong(this.zzny, paramLong);
     localEditor.apply();
     this.value = paramLong;
-    AppMethodBeat.o(68965);
+    AppMethodBeat.o(1488);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzfu
  * JD-Core Version:    0.7.0.1
  */

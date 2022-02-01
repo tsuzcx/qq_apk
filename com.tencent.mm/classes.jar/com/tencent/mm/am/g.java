@@ -1,141 +1,102 @@
 package com.tencent.mm.am;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bi.d;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.ai;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.c;
-import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ax;
-import com.tencent.mm.storage.ay;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.bi.a;
-import com.tencent.mm.storage.bi.d;
-import com.tencent.mm.storage.z;
-import java.util.LinkedList;
+import com.tencent.mm.g.c.al;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class g
-  extends ai
+  extends al
 {
-  public final String getTag()
+  protected static c.a info;
+  
+  static
   {
-    return "MicroMsg.FMessageDataTransfer";
+    AppMethodBeat.i(124069);
+    c.a locala = new c.a();
+    locala.EYt = new Field[6];
+    locala.columns = new String[7];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "openId";
+    locala.EYv.put("openId", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" openId TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.EYu = "openId";
+    locala.columns[1] = "brandUsername";
+    locala.EYv.put("brandUsername", "TEXT default '' ");
+    localStringBuilder.append(" brandUsername TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "headImgUrl";
+    locala.EYv.put("headImgUrl", "TEXT");
+    localStringBuilder.append(" headImgUrl TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "nickname";
+    locala.EYv.put("nickname", "TEXT");
+    localStringBuilder.append(" nickname TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "kfType";
+    locala.EYv.put("kfType", "INTEGER");
+    localStringBuilder.append(" kfType INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "updateTime";
+    locala.EYv.put("updateTime", "LONG");
+    localStringBuilder.append(" updateTime LONG");
+    locala.columns[6] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(124069);
   }
   
-  public final boolean kv(int paramInt)
+  public g() {}
+  
+  public g(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, long paramLong)
   {
-    return (paramInt != 0) && (paramInt < 604307701);
+    this.field_openId = paramString1;
+    this.field_brandUsername = paramString2;
+    this.field_headImgUrl = paramString3;
+    this.field_nickname = paramString4;
+    this.field_kfType = paramInt;
+    this.field_updateTime = paramLong;
   }
   
-  public final void transfer(int paramInt)
+  public static boolean F(bl parambl)
   {
-    AppMethodBeat.i(16435);
-    if ((paramInt != 0) && (paramInt < 604307701))
+    AppMethodBeat.i(176137);
+    if ((parambl == null) || (bt.isNullOrNil(parambl.field_talker)))
     {
-      com.tencent.mm.plugin.report.service.h.qsU.cT(336, 11);
-      com.tencent.mm.model.aw.aaz();
-      Object localObject1 = c.YC().cM("fmessage", 20);
-      if (localObject1 == null)
-      {
-        ab.e("MicroMsg.FMessageDataTransfer", "transfer fail, msglist is empty");
-        AppMethodBeat.o(16435);
-        return;
-      }
-      d.ali();
-      ab.d("MicroMsg.FMessageDataTransfer", "transfer, msgList count = " + localObject1.length);
-      int i = localObject1.length;
-      paramInt = 0;
-      if (paramInt < i)
-      {
-        Object localObject2 = localObject1[paramInt];
-        if ((localObject2 == null) || (localObject2.field_msgId == 0L)) {
-          ab.e("MicroMsg.FMessageDataTransfer", "transfer fail, msg is null, skip this msg");
-        }
-        Object localObject3;
-        for (;;)
-        {
-          paramInt += 1;
-          break;
-          ab.d("MicroMsg.FMessageDataTransfer", "transfer msg type = " + localObject2.getType());
-          localObject3 = localObject2.field_content;
-          if ((localObject3 == null) || (((String)localObject3).length() == 0)) {
-            ab.e("MicroMsg.FMessageDataTransfer", "transfer fail, content is null, skip this msg, id = " + localObject2.field_msgId);
-          } else {
-            switch (localObject2.getType())
-            {
-            case 38: 
-            case 39: 
-            default: 
-              ab.i("MicroMsg.FMessageDataTransfer", "no need to transfer, msgtype = " + localObject2.getType());
-              break;
-            case 40: 
-              ab.d("MicroMsg.FMessageDataTransfer", "processFMessage, msg content = " + localObject2.field_content);
-              localObject3 = bi.a.asj(localObject2.field_content);
-              localax = new ax();
-              localax.field_createTime = localObject2.field_createTime;
-              localax.field_isSend = 0;
-              localax.field_msgContent = localObject2.field_content;
-              localax.field_svrId = localObject2.field_msgSvrId;
-              localax.field_talker = ((bi.a)localObject3).tac;
-              localax.field_type = 0;
-              d.alh().b(localax);
-              break;
-            case 37: 
-              ab.d("MicroMsg.FMessageDataTransfer", "processVerifyMsg, msg content = " + localObject2.field_content);
-              localObject3 = bi.d.asm(localObject2.field_content);
-              if ((ah.isNullOrNil(((bi.d)localObject3).tac)) || ((((bi.d)localObject3).scene != 18) && (!bf.kD(((bi.d)localObject3).scene)))) {
-                break label471;
-              }
-              ab.i("MicroMsg.FMessageDataTransfer", "processVerifyMsg, skip lbs & shake, scene = " + ((bi.d)localObject3).scene);
-            }
-          }
-        }
-        label471:
-        ax localax = new ax();
-        localax.field_createTime = localObject2.field_createTime;
-        localax.field_isSend = 0;
-        localax.field_msgContent = localObject2.field_content;
-        localax.field_svrId = localObject2.field_msgSvrId;
-        localax.field_talker = ((bi.d)localObject3).tac;
-        switch (((bi.d)localObject3).cut)
-        {
-        case 3: 
-        case 4: 
-        default: 
-          localax.field_type = 1;
-        }
-        for (;;)
-        {
-          d.alh().b(localax);
-          break;
-          localax.field_type = 1;
-          continue;
-          localax.field_type = 2;
-          continue;
-          localax.field_type = 3;
-        }
-      }
-      com.tencent.mm.model.aw.aaz();
-      c.Ru().set(143618, Integer.valueOf(0));
-      d.ali().dxx();
-      ab.d("MicroMsg.FMessageDataTransfer", "transfer, try to delete fmessage contact & conversation");
-      com.tencent.mm.model.aw.aaz();
-      c.YA().arC("fmessage");
-      localObject1 = new LinkedList();
-      ((LinkedList)localObject1).add("fmessage");
-      com.tencent.mm.model.aw.aaz();
-      c.YF().aK((LinkedList)localObject1);
+      AppMethodBeat.o(176137);
+      return false;
     }
-    AppMethodBeat.o(16435);
+    if (parambl.ePh == 2)
+    {
+      AppMethodBeat.o(176137);
+      return true;
+    }
+    if ((!bt.isNullOrNil(parambl.ePb)) && (f.wG(parambl.field_talker)))
+    {
+      parambl = af.awd().wR(parambl.ePb);
+      if ((parambl != null) && (parambl.field_kfType == 2))
+      {
+        AppMethodBeat.o(176137);
+        return true;
+      }
+    }
+    AppMethodBeat.o(176137);
+    return false;
+  }
+  
+  public final c.a getDBInfo()
+  {
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.am.g
  * JD-Core Version:    0.7.0.1
  */

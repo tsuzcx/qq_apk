@@ -3,118 +3,129 @@ package com.tencent.mm.plugin.luckymoney.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.a;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class af
-  extends ak
+  extends ac
 {
-  long cpO;
-  public k ooO;
-  public String opa;
-  public String opb;
-  public int opc;
-  public LuckyMoneyEmojiSwitch opd;
-  String talker;
+  public String dDM;
+  public int dDN;
+  public int dDO;
+  public int dDP;
+  public String sZn;
+  public String tdh;
+  public au tdy;
+  public String tdz;
+  public String teL;
+  public String teM;
+  public int teP;
+  public String teQ;
+  public String teR;
+  public int teS;
+  public int teU;
+  public String teV;
+  public String teW;
+  public int teX;
+  public String teY;
+  public String teZ;
+  public String tfa;
+  public String tfb;
+  public String tfc;
+  public long tfd;
   
-  public af(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public af(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    this(paramString1, paramInt1, paramInt2, paramString2, paramString3, "");
-  }
-  
-  public af(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4)
-  {
-    AppMethodBeat.i(42398);
-    this.ooO = null;
+    AppMethodBeat.i(65281);
+    this.teX = 1;
+    this.teY = null;
+    this.teZ = null;
+    this.tfa = null;
+    this.tfb = null;
+    this.tfc = null;
+    this.tfd = 0L;
+    this.dDM = paramString2;
+    this.sZn = paramString1;
+    this.teU = paramInt;
     HashMap localHashMap = new HashMap();
     localHashMap.put("sendId", paramString1);
-    localHashMap.put("limit", String.valueOf(paramInt1));
-    localHashMap.put("offset", String.valueOf(paramInt2));
-    if (!bo.isNullOrNil(paramString2)) {
+    if (!bt.isNullOrNil(paramString2)) {
       localHashMap.put("nativeUrl", URLEncoder.encode(paramString2));
     }
-    localHashMap.put("ver", paramString3);
-    localHashMap.put("processContent", paramString4);
-    setRequestData(localHashMap);
-    AppMethodBeat.o(42398);
-  }
-  
-  public af(String paramString1, int paramInt, String paramString2, long paramLong, String paramString3, String paramString4)
-  {
-    AppMethodBeat.i(42397);
-    this.ooO = null;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("sendId", paramString1);
-    localHashMap.put("limit", "11");
-    localHashMap.put("offset", String.valueOf(paramInt));
-    if (!bo.isNullOrNil(paramString2)) {
-      localHashMap.put("nativeUrl", URLEncoder.encode(paramString2));
+    localHashMap.put("way", String.valueOf(paramInt));
+    localHashMap.put("channelId", "2");
+    localHashMap.put("package", paramString3);
+    g.afC();
+    long l = ((Long)g.afB().afk().get(ae.a.FkL, Long.valueOf(0L))).longValue();
+    if (l > 0L)
+    {
+      if (System.currentTimeMillis() >= l) {
+        break label206;
+      }
+      localHashMap.put("agreeDuty", "0");
     }
-    localHashMap.put("befortTimestamp", String.valueOf(paramLong));
-    localHashMap.put("ver", paramString3);
-    localHashMap.put("processContent", paramString4);
-    setRequestData(localHashMap);
-    AppMethodBeat.o(42397);
+    for (;;)
+    {
+      setRequestData(localHashMap);
+      AppMethodBeat.o(65281);
+      return;
+      label206:
+      paramString1 = new StringBuilder();
+      g.afC();
+      localHashMap.put("agreeDuty", (Integer)g.afB().afk().get(ae.a.FkM, Integer.valueOf(1)));
+    }
   }
   
-  public final String bhG()
+  public final int bOC()
   {
-    return "/cgi-bin/mmpay-bin/qrydetailwxhb";
-  }
-  
-  public final int getType()
-  {
-    return 1585;
+    return 0;
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(42399);
-    try
+    AppMethodBeat.i(65282);
+    this.teV = paramJSONObject.optString("spidLogo");
+    this.teW = paramJSONObject.optString("spidWishing");
+    this.teL = paramJSONObject.optString("spidName");
+    this.teV = paramJSONObject.optString("spidLogo");
+    this.dDO = paramJSONObject.optInt("hbStatus");
+    this.dDP = paramJSONObject.optInt("receiveStatus");
+    this.tdh = paramJSONObject.optString("statusMess");
+    this.teM = paramJSONObject.optString("hintMess");
+    this.tdz = paramJSONObject.optString("watermark");
+    this.sZn = paramJSONObject.optString("sendId");
+    this.teP = paramJSONObject.optInt("focusFlag");
+    this.teQ = paramJSONObject.optString("focusWording");
+    this.teR = paramJSONObject.optString("focusAppidUserName");
+    this.teS = paramJSONObject.optInt("isFocus");
+    this.dDN = paramJSONObject.optInt("hbType");
+    paramString = paramJSONObject.optJSONObject("agree_duty");
+    if (paramString != null)
     {
-      this.ooO = v.ae(paramJSONObject);
-      this.opa = paramJSONObject.optString("processContent");
-      this.opd = LuckyMoneyEmojiSwitch.ad(paramJSONObject);
-      ab.i("MicroMsg.NetSceneLuckyMoneyDetail", "luckyMoneyEmojiSwitch:%s", new Object[] { this.opd.toString() });
-      this.opb = paramJSONObject.optString("expression_md5");
-      this.opc = paramJSONObject.optInt("expression_type");
-      ab.i("MicroMsg.NetSceneLuckyMoneyDetail", "expressionmd5:%s expressiontype:%s", new Object[] { this.opb, Integer.valueOf(this.opc) });
-      g.RM();
-      paramInt = ((Integer)g.RL().Ru().get(ac.a.yLJ, Integer.valueOf(0))).intValue();
-      int i = ((a)g.E(a.class)).a(a.a.lVp, 0);
-      if ((bo.hl(paramInt, 1)) || (bo.hl(i, 1)))
-      {
-        if (this.opd == null) {
-          this.opd = new LuckyMoneyEmojiSwitch();
-        }
-        this.opd.onR = 1;
-        this.opd.onS = 1;
-        this.opd.onT = 1;
-        this.opd.onU = 1;
-      }
-      ab.i("MicroMsg.NetSceneLuckyMoneyDetail", "localSwitch() luckyMoneyEmojiSwitch:%s ", new Object[] { this.opd.toString() });
-      AppMethodBeat.o(42399);
-      return;
+      this.teY = paramString.optString("agreed_flag", "-1");
+      this.teZ = paramString.optString("title", "");
+      this.tfa = paramString.optString("service_protocol_wording", "");
+      this.tfb = paramString.optString("service_protocol_url", "");
+      this.tfc = paramString.optString("button_wording", "");
+      this.tfd = paramString.optLong("delay_expired_time", 0L);
     }
-    catch (JSONException paramString)
+    if (this.tfd > 0L)
     {
-      ab.w("MicroMsg.NetSceneLuckyMoneyDetail", "parse luckyMoneyDetail fail: " + paramString.getLocalizedMessage());
-      AppMethodBeat.o(42399);
+      g.afC();
+      g.afB().afk().set(ae.a.FkL, Long.valueOf(System.currentTimeMillis() + this.tfd * 1000L));
     }
+    this.tdy = x.av(paramJSONObject.optJSONObject("operationTail"));
+    AppMethodBeat.o(65282);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.af
  * JD-Core Version:    0.7.0.1
  */

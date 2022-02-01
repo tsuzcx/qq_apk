@@ -5,9 +5,9 @@ import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.xweb.b;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.xweb.c;
+import com.tencent.xweb.d;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -26,9 +26,9 @@ import org.json.JSONObject;
 
 public final class f
 {
-  private static String G(InputStream paramInputStream)
+  private static String R(InputStream paramInputStream)
   {
-    AppMethodBeat.i(80327);
+    AppMethodBeat.i(152839);
     StringBuilder localStringBuilder = new StringBuilder();
     BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(paramInputStream), 1000);
     for (String str = localBufferedReader.readLine(); str != null; str = localBufferedReader.readLine()) {
@@ -36,26 +36,115 @@ public final class f
     }
     paramInputStream.close();
     paramInputStream = localStringBuilder.toString();
-    AppMethodBeat.o(80327);
+    AppMethodBeat.o(152839);
     return paramInputStream;
   }
   
-  public static void L(Context paramContext, String paramString1, String paramString2)
+  public static void S(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(80330);
+    AppMethodBeat.i(152842);
     paramContext = new AlertDialog.Builder(paramContext);
     paramContext.setTitle(paramString1);
     paramContext.setMessage(paramString2);
     paramContext.create().show();
-    AppMethodBeat.o(80330);
+    AppMethodBeat.o(152842);
   }
   
-  public static String aJ(Bundle paramBundle)
+  private static Bundle aLC(String paramString)
   {
-    AppMethodBeat.i(80323);
+    AppMethodBeat.i(152836);
+    Bundle localBundle = new Bundle();
+    if (paramString != null)
+    {
+      paramString = paramString.split("&");
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
+      {
+        String[] arrayOfString = paramString[i].split("=");
+        localBundle.putString(URLDecoder.decode(arrayOfString[0]), URLDecoder.decode(arrayOfString[1]));
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(152836);
+    return localBundle;
+  }
+  
+  public static Bundle aLD(String paramString)
+  {
+    AppMethodBeat.i(152837);
+    paramString = paramString.replace("fbconnect", "http");
+    try
+    {
+      paramString = new URL(paramString);
+      Bundle localBundle = aLC(paramString.getQuery());
+      localBundle.putAll(aLC(paramString.getRef()));
+      AppMethodBeat.o(152837);
+      return localBundle;
+    }
+    catch (MalformedURLException paramString)
+    {
+      paramString = new Bundle();
+      AppMethodBeat.o(152837);
+    }
+    return paramString;
+  }
+  
+  public static JSONObject aLE(String paramString)
+  {
+    AppMethodBeat.i(152841);
+    if (paramString.equals("false"))
+    {
+      paramString = new e("request failed");
+      AppMethodBeat.o(152841);
+      throw paramString;
+    }
+    String str = paramString;
+    if (paramString.equals("true")) {
+      str = "{value : true}";
+    }
+    paramString = new JSONObject(str);
+    if (paramString.has("error"))
+    {
+      paramString = paramString.getJSONObject("error");
+      paramString = new e(paramString.getString("message"), paramString.getString("type"), 0);
+      AppMethodBeat.o(152841);
+      throw paramString;
+    }
+    if ((paramString.has("error_code")) && (paramString.has("error_msg")))
+    {
+      paramString = new e(paramString.getString("error_msg"), "", Integer.parseInt(paramString.getString("error_code")));
+      AppMethodBeat.o(152841);
+      throw paramString;
+    }
+    if (paramString.has("error_code"))
+    {
+      paramString = new e("request failed", "", Integer.parseInt(paramString.getString("error_code")));
+      AppMethodBeat.o(152841);
+      throw paramString;
+    }
+    if (paramString.has("error_msg"))
+    {
+      paramString = new e(paramString.getString("error_msg"));
+      AppMethodBeat.o(152841);
+      throw paramString;
+    }
+    if (paramString.has("error_reason"))
+    {
+      paramString = new e(paramString.getString("error_reason"));
+      AppMethodBeat.o(152841);
+      throw paramString;
+    }
+    AppMethodBeat.o(152841);
+    return paramString;
+  }
+  
+  public static String aZ(Bundle paramBundle)
+  {
+    AppMethodBeat.i(152835);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(80323);
+      AppMethodBeat.o(152835);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -75,107 +164,18 @@ public final class f
       }
     }
     paramBundle = localStringBuilder.toString();
-    AppMethodBeat.o(80323);
+    AppMethodBeat.o(152835);
     return paramBundle;
-  }
-  
-  private static Bundle auK(String paramString)
-  {
-    AppMethodBeat.i(80324);
-    Bundle localBundle = new Bundle();
-    if (paramString != null)
-    {
-      paramString = paramString.split("&");
-      int j = paramString.length;
-      int i = 0;
-      while (i < j)
-      {
-        String[] arrayOfString = paramString[i].split("=");
-        localBundle.putString(URLDecoder.decode(arrayOfString[0]), URLDecoder.decode(arrayOfString[1]));
-        i += 1;
-      }
-    }
-    AppMethodBeat.o(80324);
-    return localBundle;
-  }
-  
-  public static Bundle auL(String paramString)
-  {
-    AppMethodBeat.i(80325);
-    paramString = paramString.replace("fbconnect", "http");
-    try
-    {
-      paramString = new URL(paramString);
-      Bundle localBundle = auK(paramString.getQuery());
-      localBundle.putAll(auK(paramString.getRef()));
-      AppMethodBeat.o(80325);
-      return localBundle;
-    }
-    catch (MalformedURLException paramString)
-    {
-      paramString = new Bundle();
-      AppMethodBeat.o(80325);
-    }
-    return paramString;
-  }
-  
-  public static JSONObject auM(String paramString)
-  {
-    AppMethodBeat.i(80329);
-    if (paramString.equals("false"))
-    {
-      paramString = new e("request failed");
-      AppMethodBeat.o(80329);
-      throw paramString;
-    }
-    String str = paramString;
-    if (paramString.equals("true")) {
-      str = "{value : true}";
-    }
-    paramString = new JSONObject(str);
-    if (paramString.has("error"))
-    {
-      paramString = paramString.getJSONObject("error");
-      paramString = new e(paramString.getString("message"), paramString.getString("type"), 0);
-      AppMethodBeat.o(80329);
-      throw paramString;
-    }
-    if ((paramString.has("error_code")) && (paramString.has("error_msg")))
-    {
-      paramString = new e(paramString.getString("error_msg"), "", Integer.parseInt(paramString.getString("error_code")));
-      AppMethodBeat.o(80329);
-      throw paramString;
-    }
-    if (paramString.has("error_code"))
-    {
-      paramString = new e("request failed", "", Integer.parseInt(paramString.getString("error_code")));
-      AppMethodBeat.o(80329);
-      throw paramString;
-    }
-    if (paramString.has("error_msg"))
-    {
-      paramString = new e(paramString.getString("error_msg"));
-      AppMethodBeat.o(80329);
-      throw paramString;
-    }
-    if (paramString.has("error_reason"))
-    {
-      paramString = new e(paramString.getString("error_reason"));
-      AppMethodBeat.o(80329);
-      throw paramString;
-    }
-    AppMethodBeat.o(80329);
-    return paramString;
   }
   
   public static String e(String paramString1, String paramString2, Bundle paramBundle)
   {
-    AppMethodBeat.i(80326);
+    AppMethodBeat.i(152838);
     Object localObject1 = paramString1;
     if (paramString2.equals("GET")) {
-      localObject1 = paramString1 + "?" + aJ(paramBundle);
+      localObject1 = paramString1 + "?" + aZ(paramBundle);
     }
-    ab.d("Facebook-Util", paramString2 + " URL: " + (String)localObject1);
+    ad.d("Facebook-Util", paramString2 + " URL: " + (String)localObject1);
     localObject1 = (HttpURLConnection)new URL((String)localObject1).openConnection();
     ((HttpURLConnection)localObject1).setConnectTimeout(20000);
     ((HttpURLConnection)localObject1).setReadTimeout(20000);
@@ -205,7 +205,7 @@ public final class f
       ((HttpURLConnection)localObject1).connect();
       paramString2 = new BufferedOutputStream(((HttpURLConnection)localObject1).getOutputStream());
       paramString2.write(("--" + "3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f" + "\r\n").getBytes());
-      paramString2.write(m(paramBundle, "3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f").getBytes());
+      paramString2.write(n(paramBundle, "3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f").getBytes());
       paramString2.write(("\r\n" + "--" + "3i2ndDfv2rTHiSisAbouNdArYfORhtTPEefj3q2f" + "\r\n").getBytes());
       if (!paramString1.isEmpty())
       {
@@ -223,7 +223,7 @@ public final class f
     }
     try
     {
-      paramString1 = G(((HttpURLConnection)localObject1).getInputStream());
+      paramString1 = R(((HttpURLConnection)localObject1).getInputStream());
     }
     catch (FileNotFoundException paramString1)
     {
@@ -233,36 +233,36 @@ public final class f
         {
           ((HttpURLConnection)localObject1).getInputStream().close();
           ((HttpURLConnection)localObject1).disconnect();
-          AppMethodBeat.o(80326);
+          AppMethodBeat.o(152838);
           return paramString1;
           paramString1 = paramString1;
-          paramString1 = G(((HttpURLConnection)localObject1).getErrorStream());
+          paramString1 = R(((HttpURLConnection)localObject1).getErrorStream());
         }
       }
       catch (Exception paramString2)
       {
         for (;;)
         {
-          ab.e("FacebookUtil", paramString2.getMessage());
+          ad.e("FacebookUtil", paramString2.getMessage());
         }
       }
     }
   }
   
-  public static void iy(Context paramContext)
+  public static void ka(Context paramContext)
   {
-    AppMethodBeat.i(80328);
-    c.jQ(paramContext);
-    b.dYg().removeAllCookie();
-    AppMethodBeat.o(80328);
+    AppMethodBeat.i(152840);
+    d.kU(paramContext);
+    c.fqC().removeAllCookie();
+    AppMethodBeat.o(152840);
   }
   
-  private static String m(Bundle paramBundle, String paramString)
+  private static String n(Bundle paramBundle, String paramString)
   {
-    AppMethodBeat.i(80322);
+    AppMethodBeat.i(152834);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(80322);
+      AppMethodBeat.o(152834);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -277,7 +277,7 @@ public final class f
       }
     }
     paramBundle = localStringBuilder.toString();
-    AppMethodBeat.o(80322);
+    AppMethodBeat.o(152834);
     return paramBundle;
   }
 }

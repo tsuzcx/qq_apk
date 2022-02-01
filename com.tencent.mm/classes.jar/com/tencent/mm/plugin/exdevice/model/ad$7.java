@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.exdevice.model;
 
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.plugin.exdevice.f.b.b.c;
+import com.tencent.mm.plugin.exdevice.g.b.b.c;
+import com.tencent.mm.storagebase.h.b;
 
 final class ad$7
-  implements h.d
+  implements h.b
 {
   public final String[] getSQLs()
   {
@@ -13,7 +13,7 @@ final class ad$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.ad.7
  * JD-Core Version:    0.7.0.1
  */

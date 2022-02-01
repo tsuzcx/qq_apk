@@ -18,26 +18,26 @@ import java.io.IOException;
 final class r
   implements Runnable
 {
-  private final f beX;
-  private final long bfL;
-  private final PowerManager.WakeLock bfM;
-  private final FirebaseInstanceId bfN;
+  private final f bCX;
+  private final long bDK;
+  private final PowerManager.WakeLock bDL;
+  private final FirebaseInstanceId bDM;
   
   @VisibleForTesting
   r(FirebaseInstanceId paramFirebaseInstanceId, f paramf, long paramLong)
   {
-    AppMethodBeat.i(108765);
-    this.bfN = paramFirebaseInstanceId;
-    this.beX = paramf;
-    this.bfL = paramLong;
-    this.bfM = ((PowerManager)getContext().getSystemService("power")).newWakeLock(1, "fiid-sync");
-    this.bfM.setReferenceCounted(false);
-    AppMethodBeat.o(108765);
+    AppMethodBeat.i(4201);
+    this.bDM = paramFirebaseInstanceId;
+    this.bCX = paramf;
+    this.bDK = paramLong;
+    this.bDL = ((PowerManager)getContext().getSystemService("power")).newWakeLock(1, "fiid-sync");
+    this.bDL.setReferenceCounted(false);
+    AppMethodBeat.o(4201);
   }
   
-  private final boolean bc(String paramString)
+  private final boolean bj(String paramString)
   {
-    AppMethodBeat.i(108769);
+    AppMethodBeat.i(4205);
     Object localObject1 = paramString.split("!");
     int j;
     if (localObject1.length == 2)
@@ -62,7 +62,7 @@ final class r
         switch (i)
         {
         default: 
-          AppMethodBeat.o(108769);
+          AppMethodBeat.o(4205);
           return true;
           i = j;
           if (paramString.equals("S"))
@@ -77,60 +77,60 @@ final class r
           break;
         }
       }
-      localFirebaseInstanceId = this.bfN;
-      localObject2 = localFirebaseInstanceId.rN();
-      if ((localObject2 != null) && (!((q)localObject2).bb(localFirebaseInstanceId.beX.rW()))) {
-        break label212;
+      localFirebaseInstanceId = this.bDM;
+      localObject2 = localFirebaseInstanceId.wM();
+      if ((localObject2 != null) && (!((q)localObject2).bi(localFirebaseInstanceId.bCX.wV()))) {
+        break label219;
       }
       paramString = new IOException("token not available");
-      AppMethodBeat.o(108769);
+      AppMethodBeat.o(4205);
       throw paramString;
     }
     catch (IOException paramString)
     {
       paramString = String.valueOf(paramString.getMessage());
       if (paramString.length() == 0) {
-        break label518;
+        break label526;
       }
     }
     "Topic sync failed: ".concat(paramString);
     for (;;)
     {
-      AppMethodBeat.o(108769);
+      AppMethodBeat.o(4205);
       return false;
-      label212:
+      label219:
       Bundle localBundle = new Bundle();
       paramString = String.valueOf("/topics/");
       String str = String.valueOf(localObject1);
       if (str.length() != 0)
       {
         paramString = paramString.concat(str);
-        label249:
+        label256:
         localBundle.putString("gcm.topic", paramString);
-        localObject2 = ((q)localObject2).bfJ;
+        localObject2 = ((q)localObject2).bDI;
         paramString = String.valueOf("/topics/");
         localObject1 = String.valueOf(localObject1);
         if (((String)localObject1).length() == 0) {
-          break label324;
+          break label331;
         }
       }
-      label324:
+      label331:
       for (paramString = paramString.concat((String)localObject1);; paramString = new String(paramString))
       {
         localFirebaseInstanceId.b((String)localObject2, paramString, localBundle);
-        if (!FirebaseInstanceId.rP()) {
+        if (!FirebaseInstanceId.wO()) {
           break;
         }
         break;
         paramString = new String(paramString);
-        break label249;
+        break label256;
       }
-      localFirebaseInstanceId = this.bfN;
-      localObject2 = localFirebaseInstanceId.rN();
-      if ((localObject2 == null) || (((q)localObject2).bb(localFirebaseInstanceId.beX.rW())))
+      localFirebaseInstanceId = this.bDM;
+      localObject2 = localFirebaseInstanceId.wM();
+      if ((localObject2 == null) || (((q)localObject2).bi(localFirebaseInstanceId.bCX.wV())))
       {
         paramString = new IOException("token not available");
-        AppMethodBeat.o(108769);
+        AppMethodBeat.o(4205);
         throw paramString;
       }
       localBundle = new Bundle();
@@ -139,48 +139,48 @@ final class r
       if (str.length() != 0)
       {
         paramString = paramString.concat(str);
-        label424:
+        label432:
         localBundle.putString("gcm.topic", paramString);
         localBundle.putString("delete", "1");
-        localObject2 = ((q)localObject2).bfJ;
+        localObject2 = ((q)localObject2).bDI;
         paramString = String.valueOf("/topics/");
         localObject1 = String.valueOf(localObject1);
         if (((String)localObject1).length() == 0) {
-          break label506;
+          break label514;
         }
       }
-      label506:
+      label514:
       for (paramString = paramString.concat((String)localObject1);; paramString = new String(paramString))
       {
         localFirebaseInstanceId.b((String)localObject2, paramString, localBundle);
-        FirebaseInstanceId.rP();
+        FirebaseInstanceId.wO();
         break;
         paramString = new String(paramString);
-        break label424;
+        break label432;
       }
-      label518:
+      label526:
       new String("Topic sync failed: ");
     }
   }
   
   @VisibleForTesting
-  private final boolean sc()
+  private final boolean xb()
   {
-    AppMethodBeat.i(108767);
-    Object localObject3 = this.bfN.rN();
-    if ((localObject3 != null) && (!((q)localObject3).bb(this.beX.rW())))
+    AppMethodBeat.i(4203);
+    Object localObject3 = this.bDM.wM();
+    if ((localObject3 != null) && (!((q)localObject3).bi(this.bCX.wV())))
     {
-      AppMethodBeat.o(108767);
+      AppMethodBeat.o(4203);
       return true;
     }
     try
     {
-      Object localObject1 = this.bfN;
-      localObject4 = f.b(((FirebaseInstanceId)localObject1).beW);
+      Object localObject1 = this.bDM;
+      localObject4 = f.b(((FirebaseInstanceId)localObject1).bCW);
       if (Looper.getMainLooper() == Looper.myLooper())
       {
         localObject1 = new IOException("MAIN_THREAD");
-        AppMethodBeat.o(108767);
+        AppMethodBeat.o(4203);
         throw ((Throwable)localObject1);
       }
     }
@@ -193,20 +193,20 @@ final class r
       }
       for (;;)
       {
-        AppMethodBeat.o(108767);
+        AppMethodBeat.o(4203);
         return false;
         if (("*".isEmpty()) || ("*".equalsIgnoreCase("fcm")) || ("*".equalsIgnoreCase("gcm"))) {
           break;
         }
-        q localq = FirebaseInstanceId.beU.d("", (String)localObject4, "*");
-        if ((localq != null) && (!localq.bb(((FirebaseInstanceId)localObject2).beX.rW()))) {}
-        for (localObject2 = localq.bfJ; localObject2 == null; localObject2 = ((FirebaseInstanceId)localObject2).beZ.a((String)localObject4, "*", new aa((FirebaseInstanceId)localObject2, (String)localObject4, "*")).zzp())
+        q localq = FirebaseInstanceId.bCU.c("", (String)localObject4, "*");
+        if ((localq != null) && (!localq.bi(((FirebaseInstanceId)localObject2).bCX.wV()))) {}
+        for (localObject2 = localq.bDI; localObject2 == null; localObject2 = ((FirebaseInstanceId)localObject2).bCZ.a((String)localObject4, "*", new aa((FirebaseInstanceId)localObject2, (String)localObject4, "*")).zzp())
         {
-          AppMethodBeat.o(108767);
+          AppMethodBeat.o(4203);
           return false;
         }
         Log.isLoggable("FirebaseInstanceId", 3);
-        if ((localObject3 == null) || ((localObject3 != null) && (!((String)localObject2).equals(((q)localObject3).bfJ))))
+        if ((localObject3 == null) || ((localObject3 != null) && (!((String)localObject2).equals(((q)localObject3).bDI))))
         {
           localObject2 = getContext();
           localObject3 = new Intent("com.google.firebase.iid.TOKEN_REFRESH");
@@ -215,7 +215,7 @@ final class r
           ((Intent)localObject4).putExtra("wrapped_intent", (Parcelable)localObject3);
           ((Context)localObject2).sendBroadcast((Intent)localObject4);
         }
-        AppMethodBeat.o(108767);
+        AppMethodBeat.o(4203);
         return true;
         new String("Token retrieval failed: ");
       }
@@ -227,34 +227,34 @@ final class r
   }
   
   @VisibleForTesting
-  private final boolean sd()
+  private final boolean xc()
   {
-    AppMethodBeat.i(108768);
+    AppMethodBeat.i(4204);
     for (;;)
     {
-      synchronized (this.bfN)
+      synchronized (this.bDM)
       {
-        String str1 = FirebaseInstanceId.rO().sb();
+        String str1 = FirebaseInstanceId.wN().xa();
         if (str1 == null)
         {
-          AppMethodBeat.o(108768);
+          AppMethodBeat.o(4204);
           return true;
         }
-        if (!bc(str1))
+        if (!bj(str1))
         {
-          AppMethodBeat.o(108768);
+          AppMethodBeat.o(4204);
           return false;
         }
       }
-      FirebaseInstanceId.rO().zzf(str2);
+      FirebaseInstanceId.wN().zzf(str2);
     }
   }
   
   final Context getContext()
   {
-    AppMethodBeat.i(108770);
-    Context localContext = this.bfN.beW.getApplicationContext();
-    AppMethodBeat.o(108770);
+    AppMethodBeat.i(4206);
+    Context localContext = this.bDM.bCW.getApplicationContext();
+    AppMethodBeat.o(4206);
     return localContext;
   }
   
@@ -264,90 +264,90 @@ final class r
     // Byte code:
     //   0: iconst_1
     //   1: istore_1
-    //   2: ldc_w 282
-    //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: sipush 4202
+    //   5: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 55	com/google/firebase/iid/r:bfM	Landroid/os/PowerManager$WakeLock;
-    //   12: invokevirtual 285	android/os/PowerManager$WakeLock:acquire	()V
+    //   9: getfield 54	com/google/firebase/iid/r:bDL	Landroid/os/PowerManager$WakeLock;
+    //   12: invokevirtual 279	android/os/PowerManager$WakeLock:acquire	()V
     //   15: aload_0
-    //   16: getfield 29	com/google/firebase/iid/r:bfN	Lcom/google/firebase/iid/FirebaseInstanceId;
+    //   16: getfield 28	com/google/firebase/iid/r:bDM	Lcom/google/firebase/iid/FirebaseInstanceId;
     //   19: iconst_1
-    //   20: invokevirtual 288	com/google/firebase/iid/FirebaseInstanceId:zza	(Z)V
+    //   20: invokevirtual 282	com/google/firebase/iid/FirebaseInstanceId:zza	(Z)V
     //   23: aload_0
-    //   24: getfield 31	com/google/firebase/iid/r:beX	Lcom/google/firebase/iid/f;
-    //   27: invokevirtual 291	com/google/firebase/iid/f:zzx	()I
+    //   24: getfield 30	com/google/firebase/iid/r:bCX	Lcom/google/firebase/iid/f;
+    //   27: invokevirtual 285	com/google/firebase/iid/f:zzx	()I
     //   30: ifeq +29 -> 59
     //   33: iload_1
     //   34: ifne +30 -> 64
     //   37: aload_0
-    //   38: getfield 29	com/google/firebase/iid/r:bfN	Lcom/google/firebase/iid/FirebaseInstanceId;
+    //   38: getfield 28	com/google/firebase/iid/r:bDM	Lcom/google/firebase/iid/FirebaseInstanceId;
     //   41: iconst_0
-    //   42: invokevirtual 288	com/google/firebase/iid/FirebaseInstanceId:zza	(Z)V
+    //   42: invokevirtual 282	com/google/firebase/iid/FirebaseInstanceId:zza	(Z)V
     //   45: aload_0
-    //   46: getfield 55	com/google/firebase/iid/r:bfM	Landroid/os/PowerManager$WakeLock;
-    //   49: invokevirtual 294	android/os/PowerManager$WakeLock:release	()V
-    //   52: ldc_w 282
-    //   55: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: getfield 54	com/google/firebase/iid/r:bDL	Landroid/os/PowerManager$WakeLock;
+    //   49: invokevirtual 288	android/os/PowerManager$WakeLock:release	()V
+    //   52: sipush 4202
+    //   55: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   58: return
     //   59: iconst_0
     //   60: istore_1
     //   61: goto -28 -> 33
     //   64: aload_0
-    //   65: invokevirtual 297	com/google/firebase/iid/r:zzaj	()Z
+    //   65: invokevirtual 291	com/google/firebase/iid/r:zzaj	()Z
     //   68: ifne +54 -> 122
-    //   71: new 299	com/google/firebase/iid/s
+    //   71: new 293	com/google/firebase/iid/s
     //   74: dup
     //   75: aload_0
-    //   76: invokespecial 302	com/google/firebase/iid/s:<init>	(Lcom/google/firebase/iid/r;)V
+    //   76: invokespecial 296	com/google/firebase/iid/s:<init>	(Lcom/google/firebase/iid/r;)V
     //   79: astore_2
-    //   80: invokestatic 153	com/google/firebase/iid/FirebaseInstanceId:rP	()Z
+    //   80: invokestatic 151	com/google/firebase/iid/FirebaseInstanceId:wO	()Z
     //   83: pop
-    //   84: new 304	android/content/IntentFilter
+    //   84: new 298	android/content/IntentFilter
     //   87: dup
-    //   88: ldc_w 306
-    //   91: invokespecial 307	android/content/IntentFilter:<init>	(Ljava/lang/String;)V
+    //   88: ldc_w 300
+    //   91: invokespecial 301	android/content/IntentFilter:<init>	(Ljava/lang/String;)V
     //   94: astore_3
     //   95: aload_2
-    //   96: getfield 311	com/google/firebase/iid/s:bfO	Lcom/google/firebase/iid/r;
-    //   99: invokevirtual 37	com/google/firebase/iid/r:getContext	()Landroid/content/Context;
+    //   96: getfield 305	com/google/firebase/iid/s:bDN	Lcom/google/firebase/iid/r;
+    //   99: invokevirtual 36	com/google/firebase/iid/r:getContext	()Landroid/content/Context;
     //   102: aload_2
     //   103: aload_3
-    //   104: invokevirtual 315	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    //   104: invokevirtual 309	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
     //   107: pop
     //   108: aload_0
-    //   109: getfield 55	com/google/firebase/iid/r:bfM	Landroid/os/PowerManager$WakeLock;
-    //   112: invokevirtual 294	android/os/PowerManager$WakeLock:release	()V
-    //   115: ldc_w 282
-    //   118: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   109: getfield 54	com/google/firebase/iid/r:bDL	Landroid/os/PowerManager$WakeLock;
+    //   112: invokevirtual 288	android/os/PowerManager$WakeLock:release	()V
+    //   115: sipush 4202
+    //   118: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   121: return
     //   122: aload_0
-    //   123: invokespecial 317	com/google/firebase/iid/r:sc	()Z
+    //   123: invokespecial 311	com/google/firebase/iid/r:xb	()Z
     //   126: ifeq +32 -> 158
     //   129: aload_0
-    //   130: invokespecial 319	com/google/firebase/iid/r:sd	()Z
+    //   130: invokespecial 313	com/google/firebase/iid/r:xc	()Z
     //   133: ifeq +25 -> 158
     //   136: aload_0
-    //   137: getfield 29	com/google/firebase/iid/r:bfN	Lcom/google/firebase/iid/FirebaseInstanceId;
+    //   137: getfield 28	com/google/firebase/iid/r:bDM	Lcom/google/firebase/iid/FirebaseInstanceId;
     //   140: iconst_0
-    //   141: invokevirtual 288	com/google/firebase/iid/FirebaseInstanceId:zza	(Z)V
+    //   141: invokevirtual 282	com/google/firebase/iid/FirebaseInstanceId:zza	(Z)V
     //   144: aload_0
-    //   145: getfield 55	com/google/firebase/iid/r:bfM	Landroid/os/PowerManager$WakeLock;
-    //   148: invokevirtual 294	android/os/PowerManager$WakeLock:release	()V
-    //   151: ldc_w 282
-    //   154: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   145: getfield 54	com/google/firebase/iid/r:bDL	Landroid/os/PowerManager$WakeLock;
+    //   148: invokevirtual 288	android/os/PowerManager$WakeLock:release	()V
+    //   151: sipush 4202
+    //   154: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   157: return
     //   158: aload_0
-    //   159: getfield 29	com/google/firebase/iid/r:bfN	Lcom/google/firebase/iid/FirebaseInstanceId;
+    //   159: getfield 28	com/google/firebase/iid/r:bDM	Lcom/google/firebase/iid/FirebaseInstanceId;
     //   162: aload_0
-    //   163: getfield 33	com/google/firebase/iid/r:bfL	J
-    //   166: invokevirtual 322	com/google/firebase/iid/FirebaseInstanceId:zza	(J)V
+    //   163: getfield 32	com/google/firebase/iid/r:bDK	J
+    //   166: invokevirtual 316	com/google/firebase/iid/FirebaseInstanceId:zza	(J)V
     //   169: goto -25 -> 144
     //   172: astore_2
     //   173: aload_0
-    //   174: getfield 55	com/google/firebase/iid/r:bfM	Landroid/os/PowerManager$WakeLock;
-    //   177: invokevirtual 294	android/os/PowerManager$WakeLock:release	()V
-    //   180: ldc_w 282
-    //   183: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   174: getfield 54	com/google/firebase/iid/r:bDL	Landroid/os/PowerManager$WakeLock;
+    //   177: invokevirtual 288	android/os/PowerManager$WakeLock:release	()V
+    //   180: sipush 4202
+    //   183: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   186: aload_2
     //   187: athrow
     // Local variable table:
@@ -368,21 +368,21 @@ final class r
   
   final boolean zzaj()
   {
-    AppMethodBeat.i(108771);
+    AppMethodBeat.i(4207);
     Object localObject = (ConnectivityManager)getContext().getSystemService("connectivity");
     if (localObject != null) {}
     for (localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo(); (localObject != null) && (((NetworkInfo)localObject).isConnected()); localObject = null)
     {
-      AppMethodBeat.o(108771);
+      AppMethodBeat.o(4207);
       return true;
     }
-    AppMethodBeat.o(108771);
+    AppMethodBeat.o(4207);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.r
  * JD-Core Version:    0.7.0.1
  */

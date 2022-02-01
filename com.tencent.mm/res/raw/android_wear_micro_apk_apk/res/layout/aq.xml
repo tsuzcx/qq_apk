@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/c" />
-    <com.tencent.mm.wear.app.ui.widget.RecordView android:id="@id/cf" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.wear.app.ui.widget.WearTextView android:textSize="16.0sp" android:textColor="@color/ai" android:gravity="center_horizontal" android:id="@id/cg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="{tip}" android:layout_centerHorizontal="true" android:lineSpacingExtra="3.0dip" />
-    <com.tencent.mm.wear.app.ui.widget.WearTextView android:textSize="18.0sp" android:textColor="@color/ai" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/ch" android:paddingLeft="25.0dip" android:paddingRight="25.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="{text}" android:maxLines="3" android:layout_below="@id/cg" android:layout_centerHorizontal="true" />
-</RelativeLayout>

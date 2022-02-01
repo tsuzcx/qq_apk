@@ -10,9 +10,9 @@ public abstract interface b
 {
   public abstract b a(android.support.v4.view.b paramb);
   
-  public abstract android.support.v4.view.b cY();
-  
   public abstract boolean collapseActionView();
+  
+  public abstract android.support.v4.view.b eg();
   
   public abstract boolean expandActionView();
   
@@ -32,9 +32,9 @@ public abstract interface b
   
   public abstract boolean isActionViewExpanded();
   
-  public abstract b j(CharSequence paramCharSequence);
-  
   public abstract b k(CharSequence paramCharSequence);
+  
+  public abstract b l(CharSequence paramCharSequence);
   
   public abstract MenuItem setActionView(int paramInt);
   

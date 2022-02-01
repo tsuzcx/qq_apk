@@ -1,86 +1,82 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
-import a.f.b.j;
-import a.l;
-import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListHeaderControllerForRecommend;", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListHeaderController;", "context", "Landroid/app/Activity;", "viewGroup", "Landroid/view/ViewGroup;", "(Landroid/app/Activity;Landroid/view/ViewGroup;)V", "inflateChildren", "", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AbsAppBrandLauncherListHeader;", "childrenContainer", "showRecents", "", "inflateCollection", "inflateNearBy", "inflateRecents", "inflateWagame", "plugin-appbrand-integration_release"})
 public final class g
-  extends f
 {
-  public g(Activity paramActivity, ViewGroup paramViewGroup)
+  public final View arI;
+  ThreeDotsLoadingView lIL;
+  View lIM;
+  private View lIN;
+  
+  public g(Context paramContext, ViewGroup paramViewGroup)
   {
-    super(paramActivity, paramViewGroup, true, true);
-    AppMethodBeat.i(135138);
-    AppMethodBeat.o(135138);
+    AppMethodBeat.i(49140);
+    this.arI = LayoutInflater.from(paramContext).inflate(2131493035, paramViewGroup, false);
+    this.lIL = ((ThreeDotsLoadingView)this.arI.findViewById(2131301514));
+    this.lIM = this.arI.findViewById(2131300215);
+    this.lIN = this.arI.findViewById(2131299491);
+    AppMethodBeat.o(49140);
   }
   
-  protected final a a(Activity paramActivity, ViewGroup paramViewGroup)
+  public final void bpI()
   {
-    AppMethodBeat.i(135136);
-    paramActivity = super.a(paramActivity, paramViewGroup);
-    if (paramActivity != null) {
-      paramActivity.eS(false);
+    AppMethodBeat.i(49141);
+    if (this.lIM != null) {
+      this.lIM.setBackgroundResource(2131101053);
     }
-    AppMethodBeat.o(135136);
-    return paramActivity;
+    AppMethodBeat.o(49141);
   }
   
-  protected final List<a> a(Activity paramActivity, ViewGroup paramViewGroup, boolean paramBoolean)
+  public final View bpu()
   {
-    AppMethodBeat.i(135133);
-    j.q(paramActivity, "context");
-    j.q(paramViewGroup, "childrenContainer");
-    ArrayList localArrayList = new ArrayList(2);
-    a((List)localArrayList, b(paramActivity, paramViewGroup, paramBoolean));
-    a((List)localArrayList, b(paramActivity, paramViewGroup));
-    a((List)localArrayList, c(paramActivity, paramViewGroup));
-    a((List)localArrayList, a(paramActivity, paramViewGroup));
-    paramActivity = (List)localArrayList;
-    AppMethodBeat.o(135133);
-    return paramActivity;
+    return this.arI;
   }
   
-  protected final a b(Activity paramActivity, ViewGroup paramViewGroup)
+  public final void hh(boolean paramBoolean)
   {
-    AppMethodBeat.i(135134);
-    paramActivity = super.b(paramActivity, paramViewGroup);
-    if (paramActivity != null) {
-      paramActivity.eS(false);
+    AppMethodBeat.i(49139);
+    if (paramBoolean)
+    {
+      if (this.lIL != null)
+      {
+        this.lIL.setVisibility(0);
+        this.lIL.ffb();
+      }
+      if (this.lIN != null)
+      {
+        this.lIN.setVisibility(8);
+        AppMethodBeat.o(49139);
+      }
     }
-    AppMethodBeat.o(135134);
-    return paramActivity;
+    else
+    {
+      if (this.lIL != null)
+      {
+        this.lIL.ffc();
+        this.lIL.setVisibility(8);
+      }
+      if (this.lIN != null) {
+        this.lIN.setVisibility(0);
+      }
+    }
+    AppMethodBeat.o(49139);
   }
   
-  protected final a b(Activity paramActivity, ViewGroup paramViewGroup, boolean paramBoolean)
+  public final void onDetached()
   {
-    AppMethodBeat.i(135137);
-    paramActivity = super.b(paramActivity, paramViewGroup, paramBoolean);
-    if (paramActivity != null) {
-      paramActivity.eS(false);
-    }
-    AppMethodBeat.o(135137);
-    return paramActivity;
-  }
-  
-  protected final a c(Activity paramActivity, ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(135135);
-    paramActivity = super.c(paramActivity, paramViewGroup);
-    if (paramActivity != null) {
-      paramActivity.eS(true);
-    }
-    AppMethodBeat.o(135135);
-    return paramActivity;
+    this.lIL = null;
+    this.lIN = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.g
  * JD-Core Version:    0.7.0.1
  */

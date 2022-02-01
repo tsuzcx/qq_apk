@@ -6,30 +6,30 @@ import oicq.wlogin_sdk.tools.util;
 public final class c
   extends a
 {
-  int CNt = 1;
-  int CNu = util.COy;
-  int CNv = 22;
+  int Kja = 1;
+  int Kjb = util.Kkg;
+  int Kjc = 22;
   
   public c()
   {
-    this.CMD = 256;
+    this.Kik = 256;
   }
   
-  public final byte[] Ws(int paramInt)
+  public final byte[] agq(int paramInt)
   {
-    AppMethodBeat.i(96475);
-    byte[] arrayOfByte = new byte[this.CNv];
-    util.O(arrayOfByte, 0, this.CNt);
-    util.P(arrayOfByte, 2, this.CNu);
-    util.P(arrayOfByte, 6, 522017402);
-    util.P(arrayOfByte, 10, 1);
-    util.P(arrayOfByte, 14, paramInt);
-    util.P(arrayOfByte, 18, 8256);
-    super.Wr(this.CMD);
-    super.ab(arrayOfByte, this.CNv);
-    super.ere();
-    arrayOfByte = super.era();
-    AppMethodBeat.o(96475);
+    AppMethodBeat.i(88114);
+    byte[] arrayOfByte = new byte[this.Kjc];
+    util.W(arrayOfByte, 0, this.Kja);
+    util.X(arrayOfByte, 2, this.Kjb);
+    util.X(arrayOfByte, 6, 522017402);
+    util.X(arrayOfByte, 10, 1);
+    util.X(arrayOfByte, 14, paramInt);
+    util.X(arrayOfByte, 18, 8256);
+    super.agp(this.Kik);
+    super.af(arrayOfByte, this.Kjc);
+    super.fMH();
+    arrayOfByte = super.fMD();
+    AppMethodBeat.o(88114);
     return arrayOfByte;
   }
 }

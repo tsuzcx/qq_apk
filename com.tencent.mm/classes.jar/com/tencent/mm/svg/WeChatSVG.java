@@ -8,13 +8,13 @@ public class WeChatSVG
 {
   static
   {
-    AppMethodBeat.i(70063);
-    if (b.dAk())
+    AppMethodBeat.i(148690);
+    if (b.eOw())
     {
       System.loadLibrary("wechatsvg");
       nativeInit();
     }
-    AppMethodBeat.o(70063);
+    AppMethodBeat.o(148690);
   }
   
   public static native float[] getViewPort(long paramLong);

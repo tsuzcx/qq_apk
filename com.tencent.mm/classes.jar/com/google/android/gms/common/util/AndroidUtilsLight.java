@@ -16,7 +16,7 @@ public class AndroidUtilsLight
   
   public static MessageDigest getMessageDigest(String paramString)
   {
-    AppMethodBeat.i(89994);
+    AppMethodBeat.i(5016);
     int i = 0;
     while (i < 2) {
       try
@@ -24,7 +24,7 @@ public class AndroidUtilsLight
         MessageDigest localMessageDigest = MessageDigest.getInstance(paramString);
         if (localMessageDigest != null)
         {
-          AppMethodBeat.o(89994);
+          AppMethodBeat.o(5016);
           return localMessageDigest;
         }
       }
@@ -33,21 +33,21 @@ public class AndroidUtilsLight
         i += 1;
       }
     }
-    AppMethodBeat.o(89994);
+    AppMethodBeat.o(5016);
     return null;
   }
   
   public static byte[] getPackageCertificateHashBytes(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(89993);
+    AppMethodBeat.i(5015);
     paramContext = getPackageCertificateHashBytes(paramContext, paramString, "SHA1");
-    AppMethodBeat.o(89993);
+    AppMethodBeat.o(5015);
     return paramContext;
   }
   
   public static byte[] getPackageCertificateHashBytes(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(89992);
+    AppMethodBeat.i(5014);
     paramContext = Wrappers.packageManager(paramContext).getPackageInfo(paramString1, 64);
     if ((paramContext.signatures != null) && (paramContext.signatures.length == 1))
     {
@@ -55,11 +55,11 @@ public class AndroidUtilsLight
       if (paramString1 != null)
       {
         paramContext = paramString1.digest(paramContext.signatures[0].toByteArray());
-        AppMethodBeat.o(89992);
+        AppMethodBeat.o(5014);
         return paramContext;
       }
     }
-    AppMethodBeat.o(89992);
+    AppMethodBeat.o(5014);
     return null;
   }
 }

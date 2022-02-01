@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditDetailHeaderPreference android:title="@string/g4u" android:key="wallet_wxcredit_header" android:layout="@layout/b8w" />
-    <Preference android:title="@string/g4a" android:key="wallet_wxcredit_total_amount" android:layout="@layout/afi" />
-    <PreferenceTitleCategory android:title=" " />
-    <Preference android:title="@string/g47" android:key="wallet_wxcredit_change_amount" android:layout="@layout/afi" />
-    <PreferenceTitleCategory android:title="@string/g4b" />
-    <Preference android:title="@string/g40" android:key="wallet_wxcredit_bill" android:layout="@layout/afi" />
-    <Preference android:title="@string/g4x" android:key="wallet_wxcredit_repayment" android:layout="@layout/afi" />
-    <Preference android:title="@string/g4y" android:key="wallet_wxcredit_repayment_tips" android:layout="@layout/ah2" />
-    <PreferenceTitleCategory android:title="@string/g3z" />
-    <Preference android:title="@string/g44" android:key="wallet_wxcredit_card_info" android:layout="@layout/afi" />
-    <Preference android:title="@string/g4z" android:key="wallet_wxcredit_right" android:layout="@layout/afi" />
-    <PreferenceTitleCategory android:title=" " />
-    <Preference android:title="@string/g41" android:key="wallet_wxcredit_bank_name" android:layout="@layout/afi" />
-    <com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditDetailFooterPreference android:title="@string/g4y" android:key="wallet_wxcredit_footer" android:layout="@layout/b8v" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
+    <Preference android:key="revert_pref" android:layout="@layout/bej" android:title="" />
+    <PreferenceSmallCategory />
+    <Preference android:key="desc" android:layout="@layout/bei" android:title="" />
+    <PreferenceSmallCategory />
 </PreferenceScreen>

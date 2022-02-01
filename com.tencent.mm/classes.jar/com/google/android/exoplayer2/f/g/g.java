@@ -10,27 +10,27 @@ import java.util.List;
 public final class g
   extends b
 {
-  private final f aXr;
-  private final m aXs;
-  private final e.a aXt;
-  private final a aXu;
-  private final List<d> aXv;
+  private final f bvu;
+  private final m bvv;
+  private final e.a bvw;
+  private final a bvx;
+  private final List<d> bvy;
   
   public g()
   {
     super("WebvttDecoder");
-    AppMethodBeat.i(95740);
-    this.aXr = new f();
-    this.aXs = new m();
-    this.aXt = new e.a();
-    this.aXu = new a();
-    this.aXv = new ArrayList();
-    AppMethodBeat.o(95740);
+    AppMethodBeat.i(92908);
+    this.bvu = new f();
+    this.bvv = new m();
+    this.bvw = new e.a();
+    this.bvx = new a();
+    this.bvy = new ArrayList();
+    AppMethodBeat.o(92908);
   }
   
   private static int G(m paramm)
   {
-    AppMethodBeat.i(95741);
+    AppMethodBeat.i(92909);
     int j = 0;
     int i = -1;
     while (i == -1)
@@ -48,15 +48,15 @@ public final class g
       }
     }
     paramm.setPosition(j);
-    AppMethodBeat.o(95741);
+    AppMethodBeat.o(92909);
     return i;
   }
   
   private static void H(m paramm)
   {
-    AppMethodBeat.i(95742);
+    AppMethodBeat.i(92910);
     while (!TextUtils.isEmpty(paramm.readLine())) {}
-    AppMethodBeat.o(95742);
+    AppMethodBeat.o(92910);
   }
 }
 

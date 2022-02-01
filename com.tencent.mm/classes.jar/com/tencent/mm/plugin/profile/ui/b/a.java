@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.profile.ui.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.d.a;
+import com.tencent.mm.ak.e.a;
 import java.lang.ref.WeakReference;
 
 public final class a
-  implements d.a
+  implements e.a
 {
-  private WeakReference<d.a> bJz;
+  private WeakReference<e.a> cqo;
   
-  public a(d.a parama)
+  public a(e.a parama)
   {
-    AppMethodBeat.i(23960);
-    this.bJz = new WeakReference(parama);
-    AppMethodBeat.o(23960);
+    AppMethodBeat.i(27599);
+    this.cqo = new WeakReference(parama);
+    AppMethodBeat.o(27599);
   }
   
-  public final void re(String paramString)
+  public final void vZ(String paramString)
   {
-    AppMethodBeat.i(23961);
-    if (this.bJz.get() != null) {
-      ((d.a)this.bJz.get()).re(paramString);
+    AppMethodBeat.i(27600);
+    if (this.cqo.get() != null) {
+      ((e.a)this.cqo.get()).vZ(paramString);
     }
-    AppMethodBeat.o(23961);
+    AppMethodBeat.o(27600);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.b.a
  * JD-Core Version:    0.7.0.1
  */

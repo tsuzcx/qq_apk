@@ -2,7 +2,7 @@ package com.tencent.tinker.lib.d;
 
 public final class c
 {
-  public String akh;
+  public String anG;
 }
 
 

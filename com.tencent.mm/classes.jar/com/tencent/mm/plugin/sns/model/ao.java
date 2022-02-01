@@ -1,75 +1,129 @@
 package com.tencent.mm.plugin.sns.model;
 
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.ba;
+import com.tencent.mm.g.a.tr;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.plugin.sns.model.b.a;
+import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Date;
 
 public final class ao
 {
-  private static final Map<String, String> ril;
+  boolean hzc;
+  boolean hzd;
+  long wIY;
+  private boolean wIZ;
+  int wJa;
+  int wJb;
+  c<tr> wJc;
+  c wJd;
+  c wJe;
   
-  static
+  ao()
   {
-    AppMethodBeat.i(36599);
-    ril = new HashMap();
-    AppMethodBeat.o(36599);
-  }
-  
-  public static String gl(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(36597);
-    if (paramString2 == null)
+    AppMethodBeat.i(95927);
+    this.wIY = 0L;
+    this.hzc = false;
+    this.hzd = false;
+    this.wIZ = false;
+    this.wJa = 0;
+    this.wJb = 1440;
+    this.wJc = new c()
     {
-      AppMethodBeat.o(36597);
-      return "";
-    }
-    boolean bool = Looper.getMainLooper().equals(Looper.myLooper());
-    if ((bool) && (ril.containsKey(paramString1 + paramString2)))
-    {
-      str = (String)ril.get(paramString1 + paramString2);
-      if (!bo.isNullOrNil(str))
+      private boolean dua()
       {
-        AppMethodBeat.o(36597);
-        return str;
+        AppMethodBeat.i(95923);
+        ao localao = ao.this;
+        try
+        {
+          if (localao.dtZ())
+          {
+            Date localDate = new Date();
+            i = localDate.getHours();
+            i = localDate.getMinutes() + i * 60;
+            if ((i >= localao.wJa) && (i <= localao.wJb))
+            {
+              ad.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked,  %d in [%d, %d]", new Object[] { Integer.valueOf(i), Integer.valueOf(localao.wJa), Integer.valueOf(localao.wJb) });
+              AppMethodBeat.o(95923);
+              return false;
+            }
+          }
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            int i = com.tencent.mm.m.g.Zd().getInt("SnsImgPreLoadingSmallImage", 1);
+            int k = com.tencent.mm.m.g.Zd().getInt("SnsImgPreLoadingBigImage", 1);
+            int m = a.duH();
+            int j = a.duG();
+            ad.i("MicroMsg.SnsPreTimelineService", " preloadingSamllImage %d preloadingBigImage %d preloadingVideo %d preloadingInterval %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(j) });
+            if ((i > 0) || (k > 0) || (m > 0))
+            {
+              i = j;
+              if (j <= 0) {
+                i = 1200;
+              }
+              if ((localao.hzc) || (localao.hzd) || (bt.lZ(localao.wIY) < i))
+              {
+                ad.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked,  isInChatting:%b, isInSnsTimeline:%b", new Object[] { Boolean.valueOf(localao.hzc), Boolean.valueOf(localao.hzd) });
+              }
+              else if (!x.aow("@__weixintimtline"))
+              {
+                ad.i("MicroMsg.SnsPreTimelineService", "newObjectSync blocked: doing timeline");
+              }
+              else
+              {
+                com.tencent.mm.kernel.g.afC();
+                if (!com.tencent.mm.kernel.g.afA().gcy.a(new s(), 0))
+                {
+                  ad.i("MicroMsg.SnsPreTimelineService", "newObjectSync triggered");
+                  x.aox("@__weixintimtline");
+                }
+                localao.wIY = bt.aGK();
+              }
+            }
+          }
+        }
       }
-    }
-    String str = g.w(paramString2.getBytes());
-    StringBuffer localStringBuffer = new StringBuffer(paramString1);
-    if (str.length() > 0)
-    {
-      localStringBuffer.append(str.charAt(0));
-      localStringBuffer.append("/");
-    }
-    if (str.length() >= 2)
-    {
-      localStringBuffer.append(str.charAt(1));
-      localStringBuffer.append("/");
-    }
-    if (bool) {
-      ril.put(paramString1 + paramString2, localStringBuffer.toString());
-    }
-    paramString1 = localStringBuffer.toString();
-    AppMethodBeat.o(36597);
-    return paramString1;
+    };
+    this.wJd = new c() {};
+    this.wJe = new c() {};
+    AppMethodBeat.o(95927);
   }
   
-  public static void release()
+  final boolean dtZ()
   {
+    AppMethodBeat.i(95928);
+    Object localObject = com.tencent.mm.m.g.Zd().getValue("SnsImgPreLoadingTimeLimit");
+    ad.i("MicroMsg.SnsPreTimelineService", "preloadLimit:%s", new Object[] { localObject });
+    if (bt.isNullOrNil((String)localObject))
+    {
+      AppMethodBeat.o(95928);
+      return false;
+    }
     try
     {
-      AppMethodBeat.i(36598);
-      ril.clear();
-      AppMethodBeat.o(36598);
-      return;
+      localObject = ((String)localObject).split("-");
+      String[] arrayOfString = localObject[0].split(":");
+      int i = bt.aGh(arrayOfString[0]);
+      this.wJa = (bt.aGh(arrayOfString[1]) + i * 60);
+      localObject = localObject[1].split(":");
+      i = bt.aGh(localObject[0]);
+      this.wJb = (bt.aGh(localObject[1]) + i * 60);
+      ad.d("MicroMsg.SnsPreTimelineService", "preloadLimit:%d-%d", new Object[] { Integer.valueOf(this.wJa), Integer.valueOf(this.wJb) });
+      AppMethodBeat.o(95928);
+      return true;
     }
-    finally
+    catch (Exception localException)
     {
-      localObject = finally;
-      throw localObject;
+      AppMethodBeat.o(95928);
     }
+    return false;
   }
 }
 

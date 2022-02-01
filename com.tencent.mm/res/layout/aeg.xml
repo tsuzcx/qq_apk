@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/a_r" android:paddingBottom="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.DoubleTabView android:id="@id/dc4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.ui.base.CustomViewPager android:id="@id/dc5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+    <TextView android:textSize="@dimen/gx" android:textColor="@color/y0" android:ellipsize="end" android:gravity="center" android:id="@id/cgm" android:background="@drawable/xd" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:layout_marginTop="@dimen/bq" android:text="" android:singleLine="true" />
+    <com.tencent.mm.ui.widget.MMEditText android:textColor="@color/y4" android:ellipsize="none" android:id="@id/cgl" android:background="@drawable/xb" android:padding="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/cb" android:singleLine="false" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/x5" android:layout_marginStart="@dimen/ci" android:layout_toEndOf="@id/cgm" style="@style/lp" />
+</RelativeLayout>

@@ -1,27 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/jn"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:src="@drawable/agj" style="@style/jd" />
-    <TextView android:text="@string/c24" style="@style/ju" />
-    <LinearLayout android:id="@id/bzx" android:layout_marginTop="@dimen/i_" style="@style/jr">
-        <RelativeLayout android:id="@id/bzy" style="@style/jo">
-            <TextView android:id="@id/bzz" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" style="@style/jq" />
-            <CheckBox android:id="@id/c00" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:checked="false" android:text="@string/c2l" android:layout_alignParentRight="true" style="@style/o1" />
+<merge>
+    <RelativeLayout android:id="@id/cx4" android:background="@color/nr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <RelativeLayout android:id="@id/b3j" android:background="@color/np" android:paddingLeft="48.0dip" android:paddingRight="48.0dip" android:paddingBottom="@dimen/hd" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/gae" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:src="@drawable/bis" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="18.0dip" android:textColor="@color/a_u" android:gravity="center_horizontal" android:id="@id/gag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ig" android:text="@string/bxo" android:layout_below="@id/gae" android:layout_centerHorizontal="true" style="@style/ok" />
+            <TextView android:textSize="18.0dip" android:textColor="@color/a_u" android:gravity="left" android:id="@id/ght" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/gag" android:layout_alignTop="@id/gag" style="@style/ok" />
+            <Button android:textColor="@color/fx" android:id="@id/g1d" android:background="@null" android:visibility="invisible" android:layout_marginTop="40.0dip" android:text="@string/bxp" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/n9" />
+            <Button android:textSize="@dimen/hs" android:textColor="@color/fx" android:id="@id/e3i" android:visibility="invisible" android:text="@string/bxp" android:layout_above="@id/g1d" android:layout_centerHorizontal="true" style="@style/q1" />
         </RelativeLayout>
-    </LinearLayout>
-    <LinearLayout android:id="@id/c01" style="@style/jr">
-        <LinearLayout android:background="@null" style="@style/jm">
-            <TextView android:id="@id/c02" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jp" />
-        </LinearLayout>
-    </LinearLayout>
-    <RelativeLayout android:id="@id/c03" android:visibility="gone" android:layout_marginTop="@dimen/i_" style="@style/js">
-        <TextView android:id="@id/c04" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true" style="@style/jq" />
-        <TextView android:id="@id/c05" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/c3a" android:layout_alignParentRight="true" style="@style/jt" />
+        <TextView android:textSize="@dimen/jv" android:textColor="@color/a_x" android:id="@id/bxn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ha" android:text="@string/bx7" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <Button android:id="@id/cx2" android:visibility="gone" style="@style/io" />
     </RelativeLayout>
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:layout_marginTop="@dimen/i8" style="@style/mj">
-        <Button android:id="@id/c06" android:text="@string/c2j" style="@style/jz" />
-    </LinearLayout>
-    <RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <Button android:id="@id/c07" android:visibility="gone" android:layout_height="20.0dip" android:layout_marginBottom="0.0dip" android:text="查看更多三星服务" android:layout_alignParentBottom="true" style="@style/jv" />
-    </RelativeLayout>
-</LinearLayout>
+</merge>

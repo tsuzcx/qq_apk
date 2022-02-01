@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="?android:listDivider" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-</FrameLayout>
+    <RelativeLayout android:id="@id/b31" android:background="@drawable/oc" android:layout_width="fill_parent" android:layout_height="@dimen/av">
+        <TextView android:id="@id/b32" android:paddingLeft="@dimen/jn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eo" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/m3" />
+    </RelativeLayout>
+    <ImageView android:id="@id/g1e" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/a36" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ProgressBar android:id="@id/f9d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/a5o" />
+</RelativeLayout>

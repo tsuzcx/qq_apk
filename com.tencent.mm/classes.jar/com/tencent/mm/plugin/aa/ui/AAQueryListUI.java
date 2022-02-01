@@ -4,65 +4,107 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.aa.a.c.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.aa.model.b.b.a;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.vending.c.a;
 import com.tencent.mm.vending.g.c;
+import com.tencent.mm.vending.g.d.a;
+import com.tencent.mm.vending.j.d;
 import com.tencent.mm.wallet_core.ui.g;
+import java.util.List;
 
 public class AAQueryListUI
   extends BaseAAPresenterActivity
 {
-  private View gpA;
-  private AAQueryListH5UrlFooterView gpB;
-  private String gpC;
-  private com.tencent.mm.plugin.aa.a.c.b gpu;
-  private ListView gpv;
-  private b gpw;
-  private Dialog gpx;
-  private boolean gpy;
-  private boolean gpz;
+  private com.tencent.mm.plugin.aa.model.b.b ibJ;
+  private ListView ibK;
+  private b ibL;
+  private Dialog ibM;
+  private boolean ibN;
+  private boolean ibO;
+  private View ibP;
+  private AAQueryListH5UrlFooterView ibQ;
+  private String ibR;
   private int mode;
   
   public AAQueryListUI()
   {
-    AppMethodBeat.i(40737);
-    this.gpu = ((com.tencent.mm.plugin.aa.a.c.b)P(com.tencent.mm.plugin.aa.a.c.b.class));
-    this.gpy = false;
-    this.gpz = false;
+    AppMethodBeat.i(63518);
+    this.ibJ = ((com.tencent.mm.plugin.aa.model.b.b)am(com.tencent.mm.plugin.aa.model.b.b.class));
+    this.ibN = false;
+    this.ibO = false;
     this.mode = 1;
-    AppMethodBeat.o(40737);
+    AppMethodBeat.o(63518);
   }
   
-  private void j(boolean paramBoolean, int paramInt)
+  private void n(final boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(40739);
-    if (this.gpy)
+    AppMethodBeat.i(63520);
+    if (this.ibN)
     {
-      ab.i("MicroMsg.AAQueryListUI", "getNextPage, loading");
-      AppMethodBeat.o(40739);
+      ad.i("MicroMsg.AAQueryListUI", "getNextPage, loading");
+      AppMethodBeat.o(63520);
       return;
     }
     if (paramBoolean)
     {
-      this.gpz = false;
-      this.gpv.removeFooterView(this.gpB);
+      this.ibO = false;
+      this.ibK.removeFooterView(this.ibQ);
     }
-    this.gpy = true;
-    this.gpu.goO.i(paramBoolean, paramInt).f(new AAQueryListUI.6(this, paramBoolean)).a(new AAQueryListUI.5(this));
-    AppMethodBeat.o(40739);
+    this.ibN = true;
+    this.ibJ.iaR.m(paramBoolean, paramInt).f(new a() {}).a(new d.a()
+    {
+      public final void ce(Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(63515);
+        ad.i("MicroMsg.AAQueryListUI", "getNexPage failed: %s", new Object[] { paramAnonymousObject });
+        if (AAQueryListUI.g(AAQueryListUI.this) != null)
+        {
+          AAQueryListUI.g(AAQueryListUI.this).dismiss();
+          AAQueryListUI.h(AAQueryListUI.this);
+        }
+        AAQueryListUI.i(AAQueryListUI.this);
+        if (AAQueryListUI.a(AAQueryListUI.this).getFooterViewsCount() > 0) {
+          AAQueryListUI.a(AAQueryListUI.this).removeFooterView(AAQueryListUI.d(AAQueryListUI.this));
+        }
+        if ((paramAnonymousObject instanceof String))
+        {
+          Toast.makeText(AAQueryListUI.this, paramAnonymousObject.toString(), 1).show();
+          AppMethodBeat.o(63515);
+          return;
+        }
+        Toast.makeText(AAQueryListUI.this, 2131760064, 1).show();
+        AppMethodBeat.o(63515);
+      }
+    });
+    AppMethodBeat.o(63520);
   }
   
   public int getLayoutId()
   {
-    return 2130968579;
+    return 2131492886;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(40740);
+    AppMethodBeat.i(63521);
     if ((paramInt1 == 1) && (paramInt2 == -1))
     {
       boolean bool = paramIntent.getBooleanExtra("close_aa", false);
@@ -70,32 +112,163 @@ public class AAQueryListUI
       int j = paramIntent.getIntExtra("item_offset", 0);
       if (bool)
       {
-        this.gpv.setSelectionFromTop(i, j);
-        j(true, this.mode);
+        this.ibK.setSelectionFromTop(i, j);
+        n(true, this.mode);
       }
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(40740);
+    AppMethodBeat.o(63521);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(40738);
+    AppMethodBeat.i(63519);
     super.onCreate(paramBundle);
-    setBackBtn(new AAQueryListUI.1(this));
-    setMMTitle(2131296378);
-    addIconOptionMenu(0, 2130839668, new AAQueryListUI.4(this));
-    this.gpv = ((ListView)findViewById(2131820908));
-    this.gpv.setOnScrollListener(new AAQueryListUI.2(this));
-    this.gpv.setOnItemClickListener(new AAQueryListUI.3(this));
-    this.gpA = new AAQueryListLoadingMoreView(this);
-    this.gpB = new AAQueryListH5UrlFooterView(this);
-    this.gpx = g.a(this, false, null);
-    this.gpw = new b(this, this.mode);
-    this.gpv.setAdapter(this.gpw);
-    this.gpv.setVisibility(4);
-    j(false, this.mode);
-    AppMethodBeat.o(40738);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(63509);
+        AAQueryListUI.this.finish();
+        AppMethodBeat.o(63509);
+        return false;
+      }
+    });
+    setMMTitle(2131755060);
+    addIconOptionMenu(0, 2131690603, new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(63514);
+        paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.e(AAQueryListUI.this, 1, false);
+        paramAnonymousMenuItem.HrX = new n.c()
+        {
+          public final void onCreateMMMenu(l paramAnonymous2l)
+          {
+            AppMethodBeat.i(63512);
+            paramAnonymous2l.add(0, 1, 1, 2131755061);
+            paramAnonymous2l.add(1, 2, 1, 2131755062);
+            AppMethodBeat.o(63512);
+          }
+        };
+        paramAnonymousMenuItem.HrY = new n.d()
+        {
+          public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
+          {
+            AppMethodBeat.i(63513);
+            switch (paramAnonymous2MenuItem.getItemId())
+            {
+            }
+            for (;;)
+            {
+              AppMethodBeat.o(63513);
+              return;
+              ad.i("MicroMsg.AAQueryListUI", "go to launch list: %d", new Object[] { Integer.valueOf(AAQueryListUI.e(AAQueryListUI.this)) });
+              if (AAQueryListUI.e(AAQueryListUI.this) == 1)
+              {
+                AppMethodBeat.o(63513);
+                return;
+              }
+              AAQueryListUI.a(AAQueryListUI.this, 1);
+              AAQueryListUI.this.setMMTitle(2131755060);
+              AAQueryListUI.f(AAQueryListUI.this).mode = AAQueryListUI.e(AAQueryListUI.this);
+              AAQueryListUI.f(AAQueryListUI.this).aHq();
+              AAQueryListUI.f(AAQueryListUI.this).notifyDataSetChanged();
+              AAQueryListUI.a(AAQueryListUI.this, true, AAQueryListUI.e(AAQueryListUI.this));
+              AppMethodBeat.o(63513);
+              return;
+              ad.i("MicroMsg.AAQueryListUI", "go to pay query list: %d", new Object[] { Integer.valueOf(AAQueryListUI.e(AAQueryListUI.this)) });
+              if (AAQueryListUI.e(AAQueryListUI.this) == 2)
+              {
+                AppMethodBeat.o(63513);
+                return;
+              }
+              AAQueryListUI.this.setMMTitle(2131755063);
+              AAQueryListUI.f(AAQueryListUI.this).mode = AAQueryListUI.e(AAQueryListUI.this);
+              AAQueryListUI.f(AAQueryListUI.this).aHq();
+              AAQueryListUI.f(AAQueryListUI.this).notifyDataSetChanged();
+              AAQueryListUI.a(AAQueryListUI.this, 2);
+              AAQueryListUI.a(AAQueryListUI.this, true, AAQueryListUI.e(AAQueryListUI.this));
+            }
+          }
+        };
+        paramAnonymousMenuItem.csG();
+        AppMethodBeat.o(63514);
+        return true;
+      }
+    });
+    this.ibK = ((ListView)findViewById(2131296298));
+    this.ibK.setOnScrollListener(new AbsListView.OnScrollListener()
+    {
+      public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      {
+        AppMethodBeat.i(63510);
+        if ((AAQueryListUI.a(AAQueryListUI.this).getLastVisiblePosition() == AAQueryListUI.a(AAQueryListUI.this).getCount() - 1) && (AAQueryListUI.a(AAQueryListUI.this).getCount() > 0) && (!AAQueryListUI.b(AAQueryListUI.this)) && (!AAQueryListUI.c(AAQueryListUI.this)))
+        {
+          AAQueryListUI.a(AAQueryListUI.this).addFooterView(AAQueryListUI.d(AAQueryListUI.this));
+          AAQueryListUI.a(AAQueryListUI.this, false, AAQueryListUI.e(AAQueryListUI.this));
+        }
+        AppMethodBeat.o(63510);
+      }
+      
+      public final void onScrollStateChanged(AbsListView paramAnonymousAbsListView, int paramAnonymousInt) {}
+    });
+    this.ibK.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(63511);
+        int i;
+        if (AAQueryListUI.f(AAQueryListUI.this) != null)
+        {
+          if ((paramAnonymousInt < 0) || (paramAnonymousInt >= AAQueryListUI.f(AAQueryListUI.this).getCount()))
+          {
+            ad.i("MicroMsg.AAQueryListUI", "click out of bound! %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            AppMethodBeat.o(63511);
+            return;
+          }
+          i = paramAnonymousView.getTop();
+          paramAnonymousView = (k)AAQueryListUI.f(AAQueryListUI.this).getItem(paramAnonymousInt);
+          if (paramAnonymousView != null)
+          {
+            if (bt.isNullOrNil(paramAnonymousView.Csy)) {
+              break label140;
+            }
+            com.tencent.mm.wallet_core.ui.e.p(AAQueryListUI.this.getContext(), paramAnonymousView.Csy, true);
+          }
+        }
+        for (;;)
+        {
+          h.vKh.f(13721, new Object[] { Integer.valueOf(5), Integer.valueOf(3) });
+          AppMethodBeat.o(63511);
+          return;
+          label140:
+          if (!bt.isNullOrNil(paramAnonymousView.Csi))
+          {
+            paramAnonymousAdapterView = null;
+            if (paramAnonymousView.role == 2) {
+              paramAnonymousAdapterView = u.aqG();
+            }
+            Intent localIntent = new Intent(AAQueryListUI.this, PaylistAAUI.class);
+            localIntent.putExtra("bill_no", paramAnonymousView.Csi);
+            localIntent.putExtra("launcher_user_name", paramAnonymousAdapterView);
+            localIntent.putExtra("enter_scene", 4);
+            localIntent.putExtra("chatroom", paramAnonymousView.Csj);
+            localIntent.putExtra("item_position", paramAnonymousInt);
+            localIntent.putExtra("item_offset", i);
+            AAQueryListUI.this.startActivityForResult(localIntent, 1);
+          }
+        }
+      }
+    });
+    this.ibP = new AAQueryListLoadingMoreView(this);
+    this.ibQ = new AAQueryListH5UrlFooterView(this);
+    this.ibM = g.a(this, false, null);
+    this.ibL = new b(this, this.mode);
+    this.ibK.setAdapter(this.ibL);
+    this.ibK.setVisibility(4);
+    n(false, this.mode);
+    AppMethodBeat.o(63519);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -106,7 +279,7 @@ public class AAQueryListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.AAQueryListUI
  * JD-Core Version:    0.7.0.1
  */

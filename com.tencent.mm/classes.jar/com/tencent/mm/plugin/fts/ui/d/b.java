@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.fts.ui.d;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.plugin.fts.a.a.l;
+import com.tencent.mm.plugin.fts.a.a.k;
+import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.d.e.a;
 import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.fts.ui.a.h;
 import com.tencent.mm.plugin.fts.ui.a.q;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -23,68 +23,68 @@ public final class b
     super(paramContext, paramb, paramInt);
   }
   
-  public final com.tencent.mm.plugin.fts.a.a.a a(ak paramak, HashSet<String> paramHashSet)
+  public final com.tencent.mm.plugin.fts.a.a.a a(ap paramap, HashSet<String> paramHashSet)
   {
-    AppMethodBeat.i(62056);
-    i locali = new i();
-    locali.hdl = 32;
-    locali.query = this.query;
-    locali.mSS = paramHashSet;
-    locali.mST = com.tencent.mm.plugin.fts.a.c.a.mTs;
-    locali.mSU = this;
-    locali.handler = paramak;
-    paramak = ((n)g.G(n.class)).search(2, locali);
-    AppMethodBeat.o(62056);
-    return paramak;
+    AppMethodBeat.i(112168);
+    j localj = new j();
+    localj.iWB = 32;
+    localj.query = this.query;
+    localj.rpM = paramHashSet;
+    localj.rpN = com.tencent.mm.plugin.fts.a.c.a.rqm;
+    localj.rpO = this;
+    localj.handler = paramap;
+    paramap = ((n)g.ad(n.class)).search(2, localj);
+    AppMethodBeat.o(112168);
+    return paramap;
   }
   
   public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
   {
-    AppMethodBeat.i(62058);
-    int i = paramInt - parama.mTy - 1;
-    l locall = null;
-    Object localObject = locall;
-    if (i < parama.mTC.size())
+    AppMethodBeat.i(112170);
+    int i = paramInt - parama.rqs - 1;
+    m localm = null;
+    Object localObject = localm;
+    if (i < parama.kLN.size())
     {
-      localObject = locall;
+      localObject = localm;
       if (i >= 0)
       {
-        locall = (l)parama.mTC.get(i);
-        if (!locall.mRV.equals("create_chatroom​")) {
+        localm = (m)parama.kLN.get(i);
+        if (!localm.roN.equals("create_chatroom​")) {
           break label110;
         }
         localObject = new h(paramInt);
-        ((h)localObject).mRX = parama.mRX;
+        ((h)localObject).roS = parama.roS;
       }
     }
     for (;;)
     {
       if (localObject != null) {
-        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).mTJ = (i + 1);
+        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).rqB = (i + 1);
       }
-      AppMethodBeat.o(62058);
+      AppMethodBeat.o(112170);
       return localObject;
       label110:
       localObject = new q(paramInt);
-      ((q)localObject).hrL = locall;
-      ((q)localObject).mRX = parama.mRX;
-      ((q)localObject).es(locall.type, locall.mRU);
+      ((q)localObject).jpy = localm;
+      ((q)localObject).roS = parama.roS;
+      ((q)localObject).fI(localm.type, localm.roM);
     }
   }
   
-  public final void a(j paramj, HashSet<String> paramHashSet)
+  public final void a(k paramk, HashSet<String> paramHashSet)
   {
-    AppMethodBeat.i(62057);
-    if (bU(paramj.mSW))
+    AppMethodBeat.i(112169);
+    if (dF(paramk.rpQ))
     {
       paramHashSet = new e.a();
       paramHashSet.businessType = -3;
-      paramHashSet.mTC = paramj.mSW;
-      paramHashSet.mRX = paramj.mRX;
-      paramHashSet.mTB = false;
-      this.mVO.add(paramHashSet);
+      paramHashSet.kLN = paramk.rpQ;
+      paramHashSet.roS = paramk.roS;
+      paramHashSet.qpI = false;
+      this.rsD.add(paramHashSet);
     }
-    AppMethodBeat.o(62057);
+    AppMethodBeat.o(112169);
   }
   
   public final int getType()
@@ -94,7 +94,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.d.b
  * JD-Core Version:    0.7.0.1
  */

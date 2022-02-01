@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/bw" android:layout_width="fill_parent" android:layout_height="@dimen/cb" android:layout_marginTop="@dimen/ha"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/ee4" android:layout_width="@dimen/b7" android:layout_height="@dimen/b7" android:layout_marginLeft="@dimen/jn" android:src="@raw/media_player_play_btn" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/jv" android:textColor="@color/a6k" android:id="@id/ee6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/h" android:text="00:00" android:layout_toRightOf="@id/ee4" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/jv" android:textColor="@color/a6k" android:id="@id/eeb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ha" android:text="00:00" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/eeb" android:layout_toRightOf="@id/ee6" android:layout_centerVertical="true">
+        <ImageView android:layout_gravity="center|left" android:id="@id/een" android:background="@color/zo" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/ha" android:layout_marginRight="@dimen/ha" />
+        <ImageView android:layout_gravity="center|left" android:id="@id/eeo" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/ha" android:layout_marginRight="@dimen/ha" />
+        <ImageView android:id="@id/eer" android:paddingLeft="@dimen/h" android:paddingTop="@dimen/h" android:paddingRight="@dimen/h" android:paddingBottom="@dimen/h" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/jn" android:src="@raw/media_player_control_btn" />
+    </FrameLayout>
+</RelativeLayout>

@@ -12,21 +12,21 @@ public final class c
     super(paramMMActivity, true);
   }
   
-  protected final boolean cIQ()
+  protected final boolean dOt()
   {
     return false;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(1679);
+    AppMethodBeat.i(126036);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(1679);
+    AppMethodBeat.o(126036);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.c
  * JD-Core Version:    0.7.0.1
  */

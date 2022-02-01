@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.d.a.b.a;
 
-import com.tencent.mm.plugin.exdevice.j.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.exdevice.k.b;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.Serializable;
 
 public abstract class a
   implements Serializable
 {
   private static final String TAG = a.class.getName();
-  public long jOK;
-  public String jPq;
-  public int jPr;
+  public long mNN;
+  public String mOt;
+  public int mOu;
   
-  public static a as(byte[] paramArrayOfByte)
+  public static a aH(byte[] paramArrayOfByte)
   {
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
     {
-      ab.e(TAG, "data input error");
+      ad.e(TAG, "data input error");
       return null;
     }
-    paramArrayOfByte = b.aR(paramArrayOfByte);
+    paramArrayOfByte = b.bh(paramArrayOfByte);
     if ((paramArrayOfByte != null) && ((paramArrayOfByte instanceof a))) {
       return (a)paramArrayOfByte;
     }
-    ab.e(TAG, "bytes2object is not instanceof BaseProfileParser");
+    ad.e(TAG, "bytes2object is not instanceof BaseProfileParser");
     return null;
   }
   
-  public abstract byte[] aWb();
+  public abstract byte[] bBD();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.b.a.a
  * JD-Core Version:    0.7.0.1
  */

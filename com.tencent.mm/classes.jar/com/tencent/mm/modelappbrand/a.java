@@ -3,156 +3,145 @@ package com.tencent.mm.modelappbrand;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.g.a.so;
-import com.tencent.mm.g.a.so.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.d;
-import java.util.Map;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.g.a.uj;
+import com.tencent.mm.g.a.uj.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class a
 {
-  private static void a(so paramso, j.b paramb)
+  private static void a(uj paramuj, k.b paramb)
   {
-    paramso.cIQ.appId = paramb.fiY;
-    paramso.cIQ.userName = paramb.fiX;
-    paramso.cIQ.cIS = paramb.fiW;
-    paramso.cIQ.cIT = paramb.fjh;
-    paramso.cIQ.cIV = paramb.fja;
-    paramso.cIQ.bDc = paramb.fji;
-    paramso = paramso.cIQ;
-    if (paramb.fjh != 0) {}
+    paramuj.dzH.appId = paramb.gJF;
+    paramuj.dzH.userName = paramb.gJE;
+    paramuj.dzH.dzJ = paramb.gJD;
+    paramuj.dzH.dzK = paramb.gJQ;
+    paramuj.dzH.dzM = paramb.gJH;
+    paramuj.dzH.aAS = paramb.gJR;
+    paramuj = paramuj.dzH;
+    if (paramb.gJQ != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      paramso.cIW = bool;
+      paramuj.dzN = bool;
       return;
     }
   }
   
-  public static void a(String paramString, int paramInt, j.b paramb, Bundle paramBundle)
+  public static void a(String paramString, int paramInt, k.b paramb, Bundle paramBundle)
   {
-    AppMethodBeat.i(51127);
-    so localso = new so();
-    a(localso, paramb);
-    b(localso, paramb);
-    localso.cIQ.scene = paramInt;
-    if (paramInt == 1074) {
-      localso.cIQ.cmF = paramString;
+    AppMethodBeat.i(2620);
+    uj localuj = new uj();
+    a(localuj, paramb);
+    b(localuj, paramb);
+    localuj.dzH.scene = paramInt;
+    if ((paramInt == 1074) || (paramInt == 1157)) {
+      localuj.dzH.dbt = paramString;
     }
-    localso.cIQ.cpJ = paramBundle;
-    com.tencent.mm.sdk.b.a.ymk.l(localso);
-    AppMethodBeat.o(51127);
+    localuj.dzH.deG = paramBundle;
+    com.tencent.mm.sdk.b.a.ESL.l(localuj);
+    AppMethodBeat.o(2620);
   }
   
-  public static void a(String paramString1, String paramString2, boolean paramBoolean, j.b paramb, Bundle paramBundle)
+  public static void a(String paramString1, String paramString2, boolean paramBoolean, k.b paramb, Bundle paramBundle)
   {
-    AppMethodBeat.i(51126);
-    so localso = new so();
-    a(localso, paramb);
-    b(localso, paramb);
-    so.a locala = localso.cIQ;
+    AppMethodBeat.i(2619);
+    uj localuj = new uj();
+    a(localuj, paramb);
+    b(localuj, paramb);
+    uj.a locala = localuj.dzH;
     int i;
     StringBuilder localStringBuilder;
     if (paramBoolean)
     {
       i = 1008;
       locala.scene = i;
-      locala = localso.cIQ;
+      locala = localuj.dzH;
       localStringBuilder = new StringBuilder().append(paramString1);
       if (!paramBoolean) {
-        break label142;
+        break label144;
       }
     }
-    label142:
+    label144:
     for (paramString1 = ":".concat(String.valueOf(paramString2));; paramString1 = "")
     {
-      locala.cmF = (paramString1 + ":" + paramb.fjc);
-      localso.cIQ.cpJ = paramBundle;
-      com.tencent.mm.sdk.b.a.ymk.l(localso);
-      AppMethodBeat.o(51126);
+      locala.dbt = (paramString1 + ":" + paramb.gJJ);
+      localuj.dzH.deG = paramBundle;
+      com.tencent.mm.sdk.b.a.ESL.l(localuj);
+      AppMethodBeat.o(2619);
       return;
       i = 1007;
       break;
     }
   }
   
-  public static boolean acg()
+  private static void b(uj paramuj, k.b paramb)
   {
-    AppMethodBeat.i(51130);
-    if (!g.RG())
-    {
-      AppMethodBeat.o(51130);
-      return false;
-    }
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.abU().me("100360");
-    if ((localc.isValid()) && ("1".equals(localc.dvN().get("isOpenFTSSearchMiniGameEntry"))))
-    {
-      AppMethodBeat.o(51130);
-      return true;
-    }
-    AppMethodBeat.o(51130);
-    return false;
-  }
-  
-  private static void b(so paramso, j.b paramb)
-  {
-    AppMethodBeat.i(51129);
+    AppMethodBeat.i(2622);
     if (paramb != null)
     {
-      paramb = (com.tencent.mm.af.a)paramb.R(com.tencent.mm.af.a.class);
-      if ((paramb != null) && (!bo.isNullOrNil(paramb.ffo))) {
-        paramso.cIQ.cJg = paramb.ffo;
+      paramb = (com.tencent.mm.ai.a)paramb.ao(com.tencent.mm.ai.a.class);
+      if ((paramb != null) && (!bt.isNullOrNil(paramb.gFA))) {
+        paramuj.dzH.dzY = paramb.gFA;
       }
     }
-    AppMethodBeat.o(51129);
+    AppMethodBeat.o(2622);
   }
   
-  public static void b(String paramString1, String paramString2, boolean paramBoolean, j.b paramb, Bundle paramBundle)
+  public static void b(String paramString1, String paramString2, boolean paramBoolean, k.b paramb, Bundle paramBundle)
   {
     int i = 2;
-    AppMethodBeat.i(51128);
-    if (TextUtils.isEmpty(paramb.fjd))
+    AppMethodBeat.i(2621);
+    if (TextUtils.isEmpty(paramb.gJK))
     {
-      ab.e("MicroMsg.AppBrand.api-message.AppBrandCommonApi", "visitFromPageWithShareTicketAppMessage shareKey isEmpty, transform to normal visit, talkerUsername[%s] msgUsername[%s] groupChat[%b]", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
+      ad.e("MicroMsg.AppBrand.api-message.AppBrandCommonApi", "visitFromPageWithShareTicketAppMessage shareKey isEmpty, transform to normal visit, talkerUsername[%s] msgUsername[%s] groupChat[%b]", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
       a(paramString1, paramString2, paramBoolean, paramb, paramBundle);
-      AppMethodBeat.o(51128);
+      AppMethodBeat.o(2621);
       return;
     }
-    so localso = new so();
-    a(localso, paramb);
-    b(localso, paramb);
-    localso.cIQ.scene = 1044;
-    localso.cIQ.cmF = paramb.fjc;
-    so.a locala = localso.cIQ;
+    uj localuj = new uj();
+    a(localuj, paramb);
+    b(localuj, paramb);
+    localuj.dzH.scene = 1044;
+    localuj.dzH.dbt = paramb.gJJ;
+    uj.a locala = localuj.dzH;
     if (paramBoolean) {}
     for (;;)
     {
-      locala.cJb = i;
-      locala = localso.cIQ;
+      locala.dzS = i;
+      locala = localuj.dzH;
       if (paramBoolean) {
         paramString2 = paramString1;
       }
-      locala.cJc = paramString2;
-      localso.cIQ.cIY.bCZ = paramb.fjd;
-      localso.cIQ.cIY.bCY = paramString1;
-      localso.cIQ.cpJ = paramBundle;
-      com.tencent.mm.sdk.b.a.ymk.l(localso);
-      AppMethodBeat.o(51128);
+      locala.dzT = paramString2;
+      localuj.dzH.dzP.cfh = paramb.gJK;
+      localuj.dzH.dzP.cff = paramString1;
+      localuj.dzH.deG = paramBundle;
+      com.tencent.mm.sdk.b.a.ESL.l(localuj);
+      AppMethodBeat.o(2621);
       return;
       i = 1;
     }
   }
   
-  public static boolean qe(String paramString)
+  public static boolean b(k.b paramb)
   {
-    AppMethodBeat.i(51125);
-    if (bo.isNullOrNil(paramString))
+    return ((paramb.type == 33) && ((paramb.gJG == 2) || (paramb.gJG == 3))) || (paramb.type == 36);
+  }
+  
+  public static boolean c(k.b paramb)
+  {
+    return paramb.type == 44;
+  }
+  
+  public static boolean uT(String paramString)
+  {
+    AppMethodBeat.i(2618);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(51125);
+      AppMethodBeat.o(2618);
       return false;
     }
     try
@@ -162,23 +151,23 @@ public final class a
       {
         if (paramString.optInt("openWxaByBizQRCode", 0) > 0)
         {
-          AppMethodBeat.o(51125);
+          AppMethodBeat.o(2618);
           return true;
         }
-        AppMethodBeat.o(51125);
+        AppMethodBeat.o(2618);
         return false;
       }
     }
     catch (JSONException paramString)
     {
-      AppMethodBeat.o(51125);
+      AppMethodBeat.o(2618);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.a
  * JD-Core Version:    0.7.0.1
  */

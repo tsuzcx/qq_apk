@@ -1,21 +1,21 @@
 package com.tencent.mm.openim.a;
 
-import com.tencent.mm.model.ah;
+import com.tencent.mm.model.ak;
 
 public abstract interface a
-  extends com.tencent.mm.kernel.c.a, ah
+  extends com.tencent.mm.kernel.c.a, ak
 {
-  public abstract void al(String paramString1, String paramString2);
+  public abstract void Be(String paramString);
   
-  public abstract void wg(String paramString);
+  public abstract void Bf(String paramString);
   
-  public abstract void wh(String paramString);
+  public abstract void Bg(String paramString);
   
-  public abstract void wi(String paramString);
+  public abstract void aA(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.a.a
  * JD-Core Version:    0.7.0.1
  */

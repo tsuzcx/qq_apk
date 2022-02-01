@@ -1,42 +1,39 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.exdevice.model.ad;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.widget.a.e;
 
 final class ExdeviceProfileUI$27
-  implements Runnable
+  implements MenuItem.OnMenuItemClickListener
 {
   ExdeviceProfileUI$27(ExdeviceProfileUI paramExdeviceProfileUI) {}
   
-  public final void run()
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(20054);
-    a locala = ExdeviceProfileUI.l(this.lOl);
-    ArrayList localArrayList = ExdeviceProfileUI.p(this.lOl);
-    List localList = ExdeviceProfileUI.q(this.lOl);
-    locala.lNl = ad.bqa().LC(locala.ikj);
-    locala.lNo = localArrayList;
-    if (!bo.es(localArrayList)) {}
-    for (locala.lNm = localArrayList.size();; locala.lNm = 0)
+    AppMethodBeat.i(24124);
+    paramMenuItem = new e(this.peX.getContext(), 1, false);
+    paramMenuItem.HrX = new n.c()
     {
-      locala.lNp = localList;
-      if (!bo.es(localList)) {
-        locala.lNn = localList.size();
+      public final void onCreateMMMenu(l paramAnonymousl)
+      {
+        AppMethodBeat.i(24123);
+        paramAnonymousl.c(2, ExdeviceProfileUI.27.this.peX.getString(2131758575));
+        AppMethodBeat.o(24123);
       }
-      ab.d("MicroMsg.ExdeviceProfileAdapter", "setData,mIsFollower:%s ,mFollowersNum:%s  ,mButtonNum:%s ,mUsername:%s", new Object[] { Boolean.valueOf(locala.lNl), Integer.valueOf(locala.lNm), Integer.valueOf(locala.lNn), locala.ikj });
-      ExdeviceProfileUI.l(this.lOl).notifyDataSetChanged();
-      AppMethodBeat.o(20054);
-      return;
-    }
+    };
+    paramMenuItem.HrY = ExdeviceProfileUI.n(this.peX);
+    paramMenuItem.csG();
+    AppMethodBeat.o(24124);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceProfileUI.27
  * JD-Core Version:    0.7.0.1
  */

@@ -25,15 +25,15 @@ public class ConnectionTracker
   
   static
   {
-    AppMethodBeat.i(89959);
+    AppMethodBeat.i(4981);
     zztm = new Object();
     zzyh = false;
-    AppMethodBeat.o(89959);
+    AppMethodBeat.o(4981);
   }
   
   public static ConnectionTracker getInstance()
   {
-    AppMethodBeat.i(89953);
+    AppMethodBeat.i(4975);
     if (zzyg == null) {}
     synchronized (zztm)
     {
@@ -41,7 +41,7 @@ public class ConnectionTracker
         zzyg = new ConnectionTracker();
       }
       ??? = zzyg;
-      AppMethodBeat.o(89953);
+      AppMethodBeat.o(4975);
       return ???;
     }
   }
@@ -49,43 +49,43 @@ public class ConnectionTracker
   @SuppressLint({"UntrackedBindService"})
   private static boolean zza(Context paramContext, String paramString, Intent paramIntent, ServiceConnection paramServiceConnection, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(89956);
+    AppMethodBeat.i(4978);
     if (paramBoolean)
     {
       paramString = paramIntent.getComponent();
       if (paramString == null) {}
       for (paramBoolean = false; paramBoolean; paramBoolean = ClientLibraryUtils.isPackageStopped(paramContext, paramString.getPackageName()))
       {
-        AppMethodBeat.o(89956);
+        AppMethodBeat.o(4978);
         return false;
       }
     }
     paramBoolean = paramContext.bindService(paramIntent, paramServiceConnection, paramInt);
-    AppMethodBeat.o(89956);
+    AppMethodBeat.o(4978);
     return paramBoolean;
   }
   
   public boolean bindService(Context paramContext, Intent paramIntent, ServiceConnection paramServiceConnection, int paramInt)
   {
-    AppMethodBeat.i(89957);
+    AppMethodBeat.i(4979);
     boolean bool = bindService(paramContext, paramContext.getClass().getName(), paramIntent, paramServiceConnection, paramInt);
-    AppMethodBeat.o(89957);
+    AppMethodBeat.o(4979);
     return bool;
   }
   
   public boolean bindService(Context paramContext, String paramString, Intent paramIntent, ServiceConnection paramServiceConnection, int paramInt)
   {
-    AppMethodBeat.i(89954);
+    AppMethodBeat.i(4976);
     boolean bool = zza(paramContext, paramString, paramIntent, paramServiceConnection, paramInt, true);
-    AppMethodBeat.o(89954);
+    AppMethodBeat.o(4976);
     return bool;
   }
   
   public boolean bindServiceAllowStoppedPackages(Context paramContext, String paramString, Intent paramIntent, ServiceConnection paramServiceConnection, int paramInt)
   {
-    AppMethodBeat.i(89955);
+    AppMethodBeat.i(4977);
     boolean bool = zza(paramContext, paramString, paramIntent, paramServiceConnection, paramInt, false);
-    AppMethodBeat.o(89955);
+    AppMethodBeat.o(4977);
     return bool;
   }
   
@@ -100,9 +100,9 @@ public class ConnectionTracker
   @SuppressLint({"UntrackedBindService"})
   public void unbindService(Context paramContext, ServiceConnection paramServiceConnection)
   {
-    AppMethodBeat.i(89958);
+    AppMethodBeat.i(4980);
     paramContext.unbindService(paramServiceConnection);
-    AppMethodBeat.o(89958);
+    AppMethodBeat.o(4980);
   }
 }
 

@@ -14,9 +14,9 @@ import java.util.Arrays;
 
 public class ca
 {
-  static final byte[] UA = o("");
-  private static ca Uy;
-  static final byte[] Uz = o("");
+  private static ca Wn;
+  static final byte[] Wo = o("");
+  static final byte[] Wp = o("");
   private final Context mContext;
   
   private ca(Context paramContext)
@@ -56,9 +56,9 @@ public class ca
     }
     paramPackageInfo.signatures[0].toByteArray();
     if (paramBoolean) {
-      return a(paramPackageInfo, new byte[][] { Uz, UA });
+      return a(paramPackageInfo, new byte[][] { Wo, Wp });
     }
-    return a(paramPackageInfo, new byte[][] { Uz });
+    return a(paramPackageInfo, new byte[][] { Wo });
   }
   
   private static byte[] o(String paramString)
@@ -74,15 +74,15 @@ public class ca
     }
   }
   
-  public static ca v(Context paramContext)
+  public static ca w(Context paramContext)
   {
-    d.u(paramContext);
+    d.D(paramContext);
     try
     {
-      if (Uy == null) {
-        Uy = new ca(paramContext);
+      if (Wn == null) {
+        Wn = new ca(paramContext);
       }
-      return Uy;
+      return Wn;
     }
     finally {}
   }
@@ -91,7 +91,7 @@ public class ca
   {
     try
     {
-      PackageInfo localPackageInfo = ch.u(this.mContext).getPackageInfo(paramString, 64);
+      PackageInfo localPackageInfo = ch.v(this.mContext).getPackageInfo(paramString, 64);
       return localPackageInfo;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
@@ -117,7 +117,7 @@ public class ca
       do
       {
         return bool1;
-        if (n.n(this.mContext)) {
+        if (n.o(this.mContext)) {
           return b(paramString, true);
         }
         bool2 = b(paramString, false);

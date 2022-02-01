@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.subapp.ui.pluginapp;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.modelmulti.d;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.az;
+import com.tencent.mm.modelmulti.e;
 
 final class InviteFriendsBy3rdUI$8
   implements DialogInterface.OnCancelListener
 {
-  InviteFriendsBy3rdUI$8(InviteFriendsBy3rdUI paramInviteFriendsBy3rdUI, d paramd) {}
+  InviteFriendsBy3rdUI$8(InviteFriendsBy3rdUI paramInviteFriendsBy3rdUI, e parame) {}
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(25543);
-    aw.Rc().a(this.sZT);
-    AppMethodBeat.o(25543);
+    AppMethodBeat.i(29233);
+    az.aeS().a(this.yGr);
+    AppMethodBeat.o(29233);
   }
 }
 

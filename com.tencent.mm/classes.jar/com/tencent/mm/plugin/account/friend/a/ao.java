@@ -1,270 +1,260 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.n.b;
+import com.tencent.mm.model.u;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.pluginsdk.a;
+import com.tencent.mm.protocal.protobuf.bmz;
+import com.tencent.mm.protocal.protobuf.bpz;
+import com.tencent.mm.protocal.protobuf.dhn;
+import com.tencent.mm.protocal.protobuf.dho;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class ao
+  extends n
+  implements k
 {
-  int bsY;
-  String fsf;
-  String fsg;
-  public int fsh;
-  public int fsi;
-  public long gyE;
-  public int gyF;
-  int gyG;
-  String gyH;
-  String gyI;
-  String gyJ;
-  String gyK;
-  String gyL;
-  public String gyM;
-  String gyN;
-  String gyO;
-  public String nickname;
-  public String username;
+  private com.tencent.mm.al.g callback;
+  private int djq;
+  public final List<String> ilo;
+  public final List<String> ilp;
+  private final String ilq;
+  private int ilr;
+  private int ils;
   
-  public ao()
+  public ao(List<String> paramList1, List<String> paramList2)
   {
-    AppMethodBeat.i(108498);
-    this.bsY = -1;
-    this.gyE = 0L;
-    this.gyF = 0;
-    this.gyG = 0;
-    this.username = "";
-    this.nickname = "";
-    this.gyH = "";
-    this.gyI = "";
-    this.gyJ = "";
-    this.gyK = "";
-    this.gyL = "";
-    this.gyM = "";
-    this.gyN = "";
-    this.gyO = "";
-    this.fsf = "";
-    this.fsg = "";
-    this.fsh = 0;
-    this.fsi = 0;
-    AppMethodBeat.o(108498);
+    AppMethodBeat.i(131148);
+    this.ilq = ((String)com.tencent.mm.kernel.g.afB().afk().get(6, null));
+    this.ils = 0;
+    this.ilr = 0;
+    this.ilo = paramList1;
+    this.ilp = paramList2;
+    this.djq = 1;
+    AppMethodBeat.o(131148);
   }
   
-  public final String Hs()
+  private static List<String> aR(List<bmz> paramList)
   {
-    if (this.nickname == null) {
-      return "";
+    AppMethodBeat.i(131152);
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      ad.i("MicroMsg.NetSceneUploadMContact", "the req emai list is empty");
+      AppMethodBeat.o(131152);
+      return localArrayList;
     }
-    return this.nickname;
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(((bmz)paramList.next()).v);
+    }
+    AppMethodBeat.o(131152);
+    return localArrayList;
   }
   
-  public final ContentValues aqL()
+  private static List<String> aS(List<bpz> paramList)
   {
-    AppMethodBeat.i(108500);
-    ContentValues localContentValues = new ContentValues();
-    if ((this.bsY & 0x1) != 0) {
-      localContentValues.put("qq", Long.valueOf(this.gyE));
-    }
-    int i;
-    if ((this.bsY & 0x2) != 0)
+    AppMethodBeat.i(131153);
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList == null) || (paramList.size() == 0))
     {
-      i = this.gyF;
-      if (i == 0) {
-        localContentValues.put("wexinstatus", Integer.valueOf(65536));
-      }
+      ad.i("MicroMsg.NetSceneUploadMContact", "the req mobile list is empty");
+      AppMethodBeat.o(131153);
+      return localArrayList;
     }
-    else
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(com.tencent.mm.b.g.getMessageDigest(a.CD(((bpz)paramList.next()).v).getBytes()));
+    }
+    AppMethodBeat.o(131153);
+    return localArrayList;
+  }
+  
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
+  {
+    int m = 0;
+    AppMethodBeat.i(131149);
+    this.callback = paramg;
+    if (((this.ilo == null) || (this.ilo.size() == 0)) && ((this.ilp == null) || (this.ilp.size() == 0)))
     {
-      if ((this.bsY & 0x4) != 0) {
-        localContentValues.put("groupid", Integer.valueOf(this.gyG));
-      }
-      if ((this.bsY & 0x8) != 0) {
-        localContentValues.put("username", getUsername());
-      }
-      if ((this.bsY & 0x10) != 0) {
-        localContentValues.put("nickname", Hs());
-      }
-      if ((this.bsY & 0x20) != 0)
+      ad.i("MicroMsg.NetSceneUploadMContact", "listMobile or listEmile is null or zero");
+      AppMethodBeat.o(131149);
+      return -1;
+    }
+    paramg = new b.a();
+    paramg.gUU = new dhn();
+    paramg.gUV = new dho();
+    paramg.uri = "/cgi-bin/micromsg-bin/uploadmcontact";
+    paramg.funcId = 133;
+    paramg.reqCmdId = 0;
+    paramg.respCmdId = 0;
+    paramg = paramg.atI();
+    dhn localdhn = (dhn)paramg.gUS.gUX;
+    localdhn.CFN = this.ilq;
+    localdhn.mAQ = u.aqG();
+    localdhn.CCB = this.djq;
+    int i = 200;
+    Object localObject1 = new LinkedList();
+    LinkedList localLinkedList = new LinkedList();
+    do
+    {
+      int k;
+      do
       {
-        if (this.gyH != null) {
-          break label400;
+        if (i <= 0) {
+          break label438;
         }
-        str = "";
-        label146:
-        localContentValues.put("pyinitial", str);
-      }
-      if ((this.bsY & 0x40) != 0)
-      {
-        if (this.gyI != null) {
-          break label408;
+        int j = i;
+        Object localObject2;
+        if (this.ilo != null)
+        {
+          j = i;
+          if (this.ilr < this.ilo.size())
+          {
+            if (this.ilo.get(this.ilr) != null)
+            {
+              localObject2 = new bpz();
+              ((bpz)localObject2).v = ((String)this.ilo.get(this.ilr));
+              ((LinkedList)localObject1).add(localObject2);
+            }
+            this.ilr += 1;
+            j = i - 1;
+          }
         }
-        str = "";
-        label173:
-        localContentValues.put("quanpin", str);
-      }
-      if ((this.bsY & 0x80) != 0) {
-        localContentValues.put("qqnickname", aqM());
-      }
-      if ((this.bsY & 0x100) != 0) {
-        localContentValues.put("qqpyinitial", aqN());
-      }
-      if ((this.bsY & 0x200) != 0) {
-        localContentValues.put("qqquanpin", aqO());
-      }
-      if ((this.bsY & 0x400) != 0) {
-        localContentValues.put("qqremark", aqP());
-      }
-      if ((this.bsY & 0x800) != 0) {
-        localContentValues.put("qqremarkpyinitial", aqQ());
-      }
-      if ((this.bsY & 0x1000) != 0) {
-        localContentValues.put("qqremarkquanpin", aqR());
-      }
-      if ((this.bsY & 0x4000) != 0) {
-        if (this.fsg != null) {
-          break label416;
+        k = j;
+        if (this.ilp != null)
+        {
+          k = j;
+          if (this.ils < this.ilp.size())
+          {
+            if (this.ilp.get(this.ils) != null)
+            {
+              localObject2 = new bmz();
+              ((bmz)localObject2).v = ((String)this.ilp.get(this.ils));
+              localLinkedList.add(localObject2);
+            }
+            this.ils += 1;
+            k = j - 1;
+          }
         }
+        if (this.ilp == null) {
+          break;
+        }
+        i = k;
+      } while (this.ils < this.ilp.size());
+      if (this.ilo == null) {
+        break;
+      }
+      i = k;
+    } while (this.ilr < this.ilo.size());
+    label438:
+    localdhn.DJv = ((LinkedList)localObject1);
+    localdhn.ExH = ((LinkedList)localObject1).size();
+    localdhn.ExJ = localLinkedList;
+    localdhn.ExI = localLinkedList.size();
+    localObject1 = new StringBuilder("doscene in:[");
+    if (this.ilp == null)
+    {
+      i = 0;
+      localObject1 = ((StringBuilder)localObject1).append(i).append(",");
+      if (this.ilo != null) {
+        break label618;
       }
     }
-    label400:
-    label408:
-    label416:
-    for (String str = "";; str = this.fsg)
+    label618:
+    for (i = m;; i = this.ilo.size())
     {
-      localContentValues.put("reserved2", str);
-      if ((this.bsY & 0x8000) != 0) {
-        localContentValues.put("reserved3", Integer.valueOf(this.fsh));
-      }
-      if ((this.bsY & 0x10000) != 0) {
-        localContentValues.put("reserved4", Integer.valueOf(this.fsi));
-      }
-      AppMethodBeat.o(108500);
-      return localContentValues;
-      localContentValues.put("wexinstatus", Integer.valueOf(i));
+      ad.v("MicroMsg.NetSceneUploadMContact", i + "] index:[" + this.ils + "," + this.ilr + "] req:[" + localdhn.ExJ.size() + "," + localdhn.DJv.size() + "]");
+      i = dispatch(parame, paramg, this);
+      AppMethodBeat.o(131149);
+      return i;
+      i = this.ilp.size();
       break;
-      str = this.gyH;
-      break label146;
-      str = this.gyI;
-      break label173;
     }
   }
   
-  public final String aqM()
+  public final int getType()
   {
-    if (this.gyJ == null) {
-      return "";
-    }
-    return this.gyJ;
+    return 133;
   }
   
-  public final String aqN()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    if (this.gyK == null) {
-      return "";
-    }
-    return this.gyK;
-  }
-  
-  public final String aqO()
-  {
-    if (this.gyL == null) {
-      return "";
-    }
-    return this.gyL;
-  }
-  
-  public final String aqP()
-  {
-    if (this.gyM == null) {
-      return "";
-    }
-    return this.gyM;
-  }
-  
-  public final String aqQ()
-  {
-    if (this.gyN == null) {
-      return "";
-    }
-    return this.gyN;
-  }
-  
-  public final String aqR()
-  {
-    if (this.gyO == null) {
-      return "";
-    }
-    return this.gyO;
-  }
-  
-  public final void aqS()
-  {
-    this.fsh |= 0x1;
-  }
-  
-  public final void convertFrom(Cursor paramCursor)
-  {
-    AppMethodBeat.i(108499);
-    this.gyE = paramCursor.getLong(0);
-    int i = paramCursor.getInt(1);
-    if (i == 65536) {}
-    for (this.gyF = 0;; this.gyF = i)
+    AppMethodBeat.i(131151);
+    ad.i("MicroMsg.NetSceneUploadMContact", "onSceneEnd: errType = " + paramInt2 + " errCode = " + paramInt3 + " errMsg = " + paramString);
+    updateDispatchId(paramInt1);
+    if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      this.gyG = paramCursor.getInt(2);
-      this.username = paramCursor.getString(3);
-      this.nickname = paramCursor.getString(4);
-      this.gyH = paramCursor.getString(5);
-      this.gyI = paramCursor.getString(6);
-      this.gyJ = paramCursor.getString(7);
-      this.gyK = paramCursor.getString(8);
-      this.gyL = paramCursor.getString(9);
-      this.gyM = paramCursor.getString(10);
-      this.gyN = paramCursor.getString(11);
-      this.gyO = paramCursor.getString(12);
-      this.fsf = paramCursor.getString(13);
-      this.fsg = paramCursor.getString(14);
-      this.fsh = paramCursor.getInt(15);
-      this.fsi = paramCursor.getInt(16);
-      AppMethodBeat.o(108499);
+      ad.e("MicroMsg.NetSceneUploadMContact", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(131151);
       return;
     }
-  }
-  
-  public final String getDisplayName()
-  {
-    AppMethodBeat.i(108501);
-    if ((aqP() == null) || (aqP().length() <= 0))
+    paramq = (dhn)((b)paramq).gUS.gUX;
+    l.aP(aR(paramq.ExJ));
+    l.aP(aS(paramq.DJv));
+    if (((this.ilp == null) || (this.ils >= this.ilp.size())) && ((this.ilo == null) || (this.ilr >= this.ilo.size())))
     {
-      str = aqM();
-      AppMethodBeat.o(108501);
-      return str;
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(131151);
+      return;
     }
-    String str = aqP();
-    AppMethodBeat.o(108501);
-    return str;
+    if (doScene(dispatcher(), this.callback) < 0) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(131151);
   }
   
-  public final String getUsername()
+  public final int securityLimitCount()
   {
-    if (this.username == null) {
-      return "";
-    }
-    return this.username;
+    return 10;
   }
   
-  public final String toString()
+  public final n.b securityVerificationChecked(q paramq)
   {
-    AppMethodBeat.i(108502);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("groupID\t:").append(this.gyG).append("\n");
-    ((StringBuilder)localObject).append("qq\t:").append(this.gyE).append("\n");
-    ((StringBuilder)localObject).append("username\t:").append(this.username).append("\n");
-    ((StringBuilder)localObject).append("nickname\t:").append(this.nickname).append("\n");
-    ((StringBuilder)localObject).append("wexinStatus\t:").append(this.gyF).append("\n");
-    ((StringBuilder)localObject).append("reserved3\t:").append(this.fsh).append("\n");
-    ((StringBuilder)localObject).append("reserved4\t:").append(this.fsi).append("\n");
-    localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(108502);
-    return localObject;
+    AppMethodBeat.i(131150);
+    paramq = (dhn)((b)paramq).gUS.gUX;
+    int i = paramq.ExJ.size() + paramq.DJv.size();
+    if ((i == 0) || (i > 200))
+    {
+      ad.e("MicroMsg.NetSceneUploadMContact", "security checked failed : exceed max send count");
+      paramq = n.b.gVC;
+      AppMethodBeat.o(131150);
+      return paramq;
+    }
+    if ((paramq.CFN == null) || (paramq.CFN.length() <= 0))
+    {
+      ad.e("MicroMsg.NetSceneUploadMContact", "security checked failed : moblie null");
+      paramq = n.b.gVC;
+      AppMethodBeat.o(131150);
+      return paramq;
+    }
+    if ((paramq.mAQ == null) || (paramq.mAQ.length() <= 0))
+    {
+      ad.e("MicroMsg.NetSceneUploadMContact", "security checked failed : username null");
+      paramq = n.b.gVC;
+      AppMethodBeat.o(131150);
+      return paramq;
+    }
+    paramq = n.b.gVB;
+    AppMethodBeat.o(131150);
+    return paramq;
+  }
+  
+  public final boolean uniqueInNetsceneQueue()
+  {
+    return true;
   }
 }
 

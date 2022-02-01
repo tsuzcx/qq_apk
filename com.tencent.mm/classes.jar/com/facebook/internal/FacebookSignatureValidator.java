@@ -23,14 +23,14 @@ public class FacebookSignatureValidator
   
   static
   {
-    AppMethodBeat.i(72292);
+    AppMethodBeat.i(17728);
     validAppSignatureHashes = buildAppSignatureHashes();
-    AppMethodBeat.o(72292);
+    AppMethodBeat.o(17728);
   }
   
   private static HashSet<String> buildAppSignatureHashes()
   {
-    AppMethodBeat.i(72290);
+    AppMethodBeat.i(17726);
     HashSet localHashSet = new HashSet();
     localHashSet.add("8a3c4b262d721acd49a4bf97d5213199c86fa2b9");
     localHashSet.add("cc2751449a350f668590264ed76692694a80308a");
@@ -39,18 +39,18 @@ public class FacebookSignatureValidator
     localHashSet.add("df6b721c8b4d3b6eb44c861d4415007e5a35fc95");
     localHashSet.add("9b8f518b086098de3d77736f9458a3d2f6f95a37");
     localHashSet.add("2438bce1ddb7bd026d5ff89f598b3b5e5bb824b3");
-    AppMethodBeat.o(72290);
+    AppMethodBeat.o(17726);
     return localHashSet;
   }
   
   public static boolean validateSignature(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(72291);
+    AppMethodBeat.i(17727);
     String str = Build.BRAND;
     int i = paramContext.getApplicationInfo().flags;
     if ((str.startsWith("generic")) && ((i & 0x2) != 0))
     {
-      AppMethodBeat.o(72291);
+      AppMethodBeat.o(17727);
       return true;
     }
     try
@@ -58,13 +58,13 @@ public class FacebookSignatureValidator
       paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 64);
       if ((paramContext.signatures == null) || (paramContext.signatures.length <= 0))
       {
-        AppMethodBeat.o(72291);
+        AppMethodBeat.o(17727);
         return false;
       }
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      AppMethodBeat.o(72291);
+      AppMethodBeat.o(17727);
       return false;
     }
     paramContext = paramContext.signatures;
@@ -75,18 +75,18 @@ public class FacebookSignatureValidator
       paramString = Utility.sha1hash(paramContext[i].toByteArray());
       if (!validAppSignatureHashes.contains(paramString))
       {
-        AppMethodBeat.o(72291);
+        AppMethodBeat.o(17727);
         return false;
       }
       i += 1;
     }
-    AppMethodBeat.o(72291);
+    AppMethodBeat.o(17727);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.facebook.internal.FacebookSignatureValidator
  * JD-Core Version:    0.7.0.1
  */

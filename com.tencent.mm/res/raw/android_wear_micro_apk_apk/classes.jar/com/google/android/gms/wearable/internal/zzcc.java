@@ -10,17 +10,17 @@ public class zzcc
   implements t
 {
   public static final Parcelable.Creator<zzcc> CREATOR = new bb();
-  private final String Gq;
-  private final String Gt;
-  private final int TN;
-  private final boolean TO;
+  private final String If;
+  private final String Ii;
+  private final int VC;
+  private final boolean VD;
   
   public zzcc(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
-    this.Gq = paramString1;
-    this.Gt = paramString2;
-    this.TN = paramInt;
-    this.TO = paramBoolean;
+    this.If = paramString1;
+    this.Ii = paramString2;
+    this.VC = paramInt;
+    this.VD = paramBoolean;
   }
   
   public boolean equals(Object paramObject)
@@ -28,40 +28,40 @@ public class zzcc
     if (!(paramObject instanceof zzcc)) {
       return false;
     }
-    return ((zzcc)paramObject).Gq.equals(this.Gq);
+    return ((zzcc)paramObject).If.equals(this.If);
   }
   
   public final String getDisplayName()
   {
-    return this.Gt;
+    return this.Ii;
   }
   
   public final int getHopCount()
   {
-    return this.TN;
+    return this.VC;
   }
   
   public final String getId()
   {
-    return this.Gq;
+    return this.If;
   }
   
   public int hashCode()
   {
-    return this.Gq.hashCode();
+    return this.If.hashCode();
   }
   
-  public final boolean kJ()
+  public final boolean kS()
   {
-    return this.TO;
+    return this.VD;
   }
   
   public String toString()
   {
-    String str1 = this.Gt;
-    String str2 = this.Gq;
-    int i = this.TN;
-    boolean bool = this.TO;
+    String str1 = this.Ii;
+    String str2 = this.If;
+    int i = this.VC;
+    boolean bool = this.VD;
     return String.valueOf(str1).length() + 45 + String.valueOf(str2).length() + "Node{" + str1 + ", id=" + str2 + ", hops=" + i + ", isNearby=" + bool + "}";
   }
   

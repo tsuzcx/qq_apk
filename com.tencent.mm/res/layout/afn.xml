@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="@dimen/l6"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:gravity="center" android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transitionGroup="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/gnv" android:layout="@layout/afq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textColor="@color/a0g" android:id="@id/b8u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/fil" android:visibility="gone" android:layout="@layout/b5s" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.base.WxImageView android:gravity="center" android:id="@id/h76" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.base.MultiTouchImageView android:gravity="center" android:id="@id/co4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/coo" android:layout="@layout/afo" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/col" android:layout="@layout/afp" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/cok" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a4q" />
+</FrameLayout>

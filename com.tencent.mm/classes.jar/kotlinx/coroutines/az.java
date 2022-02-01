@@ -1,41 +1,37 @@
 package kotlinx.coroutines;
 
-import a.f.a.b;
-import a.l;
-import a.y;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
+import java.util.concurrent.locks.LockSupport;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/InvokeOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "handler", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "(Lkotlin/jvm/functions/Function1;)V", "invoke", "toString", "", "kotlinx-coroutines-core"})
-final class az
-  extends g
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/EventLoopImplPlatform;", "Lkotlinx/coroutines/EventLoop;", "()V", "thread", "Ljava/lang/Thread;", "getThread", "()Ljava/lang/Thread;", "reschedule", "", "now", "", "delayedTask", "Lkotlinx/coroutines/EventLoopImplBase$DelayedTask;", "unpark", "kotlinx-coroutines-core"})
+public abstract class az
+  extends ax
 {
-  private final b<Throwable, y> CIh;
-  
-  public az(b<? super Throwable, y> paramb)
+  protected final void c(long paramLong, ay.b paramb)
   {
-    AppMethodBeat.i(118481);
-    this.CIh = paramb;
-    AppMethodBeat.o(118481);
+    if (ah.fKW())
+    {
+      if ((az)this != aj.KdJ) {}
+      for (int i = 1; i == 0; i = 0) {
+        throw ((Throwable)new AssertionError());
+      }
+    }
+    aj.KdJ.a(paramLong, paramb);
   }
   
-  public final String toString()
+  protected final void fLq()
   {
-    AppMethodBeat.i(118480);
-    String str = "InvokeOnCancel[" + af.ea(this.CIh) + '@' + af.dZ(this) + ']';
-    AppMethodBeat.o(118480);
-    return str;
+    Thread localThread = getThread();
+    if ((Thread.currentThread() != localThread) && (cb.KeM == null)) {
+      LockSupport.unpark(localThread);
+    }
   }
   
-  public final void v(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118478);
-    this.CIh.S(paramThrowable);
-    AppMethodBeat.o(118478);
-  }
+  protected abstract Thread getThread();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.az
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,39 @@
 package com.tencent.smtt.sdk;
 
-import android.content.Context;
+import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-final class m
-  implements TbsDownloader.TbsDownloaderCallback
+class m
+  extends HandlerThread
 {
-  m(Context paramContext, QbSdk.PreInitCallback paramPreInitCallback) {}
+  private static m a;
   
-  public final void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
+  public m(String paramString)
   {
-    AppMethodBeat.i(63990);
-    if ((TbsShareManager.findCoreForThirdPartyApp(this.a) == 0) && (!TbsShareManager.getCoreDisabled())) {
-      TbsShareManager.forceToLoadX5ForThirdApp(this.a, false);
+    super(paramString);
+  }
+  
+  public static m a()
+  {
+    try
+    {
+      AppMethodBeat.i(54498);
+      if (a == null)
+      {
+        localm = new m("TbsHandlerThread");
+        a = localm;
+        localm.start();
+      }
+      m localm = a;
+      AppMethodBeat.o(54498);
+      return localm;
     }
-    if ((QbSdk.i) && (TbsShareManager.isThirdPartyApp(this.a))) {
-      TbsExtensionFunctionManager.getInstance().initTbsBuglyIfNeed(this.a);
-    }
-    QbSdk.preInit(this.a, this.b);
-    AppMethodBeat.o(63990);
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,53 @@
 package com.tencent.mm.plugin.nearby;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.nearby.a.f;
-import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
 
 public class Plugin
-  implements c
+  implements d
 {
-  private b jRP;
+  private c mQZ;
   
   public Plugin()
   {
-    AppMethodBeat.i(55349);
-    this.jRP = new Plugin.1(this);
-    AppMethodBeat.o(55349);
+    AppMethodBeat.i(89751);
+    this.mQZ = new c()
+    {
+      public final com.tencent.mm.pluginsdk.b.a aa(Context paramAnonymousContext, String paramAnonymousString)
+      {
+        AppMethodBeat.i(89750);
+        paramAnonymousContext = new com.tencent.mm.plugin.nearby.ui.a(paramAnonymousContext);
+        AppMethodBeat.o(89750);
+        return paramAnonymousContext;
+      }
+    };
+    AppMethodBeat.o(89751);
   }
   
-  public o createApplication()
+  public m createApplication()
   {
-    AppMethodBeat.i(55350);
+    AppMethodBeat.i(89752);
     a locala = new a();
-    AppMethodBeat.o(55350);
+    AppMethodBeat.o(89752);
     return locala;
   }
   
-  public at createSubCore()
+  public aw createSubCore()
   {
-    AppMethodBeat.i(55351);
+    AppMethodBeat.i(89753);
     f localf = new f();
-    AppMethodBeat.o(55351);
+    AppMethodBeat.o(89753);
     return localf;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
-    return this.jRP;
+    return this.mQZ;
   }
 }
 

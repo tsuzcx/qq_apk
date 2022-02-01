@@ -1,70 +1,63 @@
 package com.tencent.mm.plugin.fts.ui.widget;
 
-import android.content.Context;
-import android.view.ViewPropertyAnimator;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.tools.r;
 
 public final class c
+  extends r
 {
-  MMActivity cmc;
-  public c.a nbL;
-  public boolean nbM;
-  public FTSVoiceInputLayoutImpl nbN;
-  public TextView nbO;
-  public ProgressBar nbP;
-  long nbQ;
-  long nbR;
-  long nbS;
-  private FTSVoiceInputLayoutImpl.a nbT;
-  Toast nbU;
-  private VoiceInputLayout.a nbV;
+  public boolean ryj;
   
-  public c(Context paramContext, FTSVoiceInputLayoutImpl paramFTSVoiceInputLayoutImpl, TextView paramTextView, ProgressBar paramProgressBar)
+  public final void a(FragmentActivity paramFragmentActivity, Menu paramMenu)
   {
-    AppMethodBeat.i(156184);
-    this.nbM = false;
-    this.nbT = new c.1(this);
-    this.nbV = new c.2(this);
-    this.cmc = ((MMActivity)paramContext);
-    this.nbN = paramFTSVoiceInputLayoutImpl;
-    this.nbO = paramTextView;
-    this.nbP = paramProgressBar;
-    this.nbN.setFTSVoiceDetectListener(this.nbT);
-    this.nbN.setLongClickLisnter(this.nbV);
-    AppMethodBeat.o(156184);
-  }
-  
-  public final void bDp()
-  {
-    AppMethodBeat.i(62179);
-    this.nbN.setVisibility(8);
-    AppMethodBeat.o(62179);
-  }
-  
-  public final void show()
-  {
-    AppMethodBeat.i(62180);
-    if (!aa.dsG().equals("zh_CN"))
+    AppMethodBeat.i(112329);
+    if (paramFragmentActivity == null)
     {
-      AppMethodBeat.o(62180);
+      ad.w("MicroMsg.FTSVoiceSearchViewHelper", "on add search menu, activity is null");
+      AppMethodBeat.o(112329);
       return;
     }
-    this.nbN.setAlpha(0.0F);
-    this.nbN.animate().alpha(1.0F).setDuration(500L).start();
-    this.nbN.setVisibility(0);
-    this.nbP.setVisibility(8);
-    this.nbO.setText("");
-    AppMethodBeat.o(62180);
+    if (this.Hto == null) {
+      this.Hto = new FTSActionBarSearchView(paramFragmentActivity);
+    }
+    super.a(paramFragmentActivity, paramMenu);
+    AppMethodBeat.o(112329);
+  }
+  
+  public final boolean aEf()
+  {
+    return this.ryj;
+  }
+  
+  public final void setCursorVisible(boolean paramBoolean)
+  {
+    AppMethodBeat.i(112330);
+    ((FTSActionBarSearchView)this.Hto).setCursorVisible(paramBoolean);
+    AppMethodBeat.o(112330);
+  }
+  
+  public final void setSearchContent(String paramString)
+  {
+    AppMethodBeat.i(112331);
+    try
+    {
+      super.setSearchContent(paramString);
+      AppMethodBeat.o(112331);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      ad.e("MicroMsg.FTSVoiceSearchViewHelper", "setSearchContent exception: " + paramString.getMessage());
+      AppMethodBeat.o(112331);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.c
  * JD-Core Version:    0.7.0.1
  */

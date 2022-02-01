@@ -10,15 +10,15 @@ final class Utility$2
 {
   public final boolean accept(File paramFile, String paramString)
   {
-    AppMethodBeat.i(72491);
+    AppMethodBeat.i(17927);
     boolean bool = Pattern.matches("cpu[0-9]+", paramString);
-    AppMethodBeat.o(72491);
+    AppMethodBeat.o(17927);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.facebook.internal.Utility.2
  * JD-Core Version:    0.7.0.1
  */

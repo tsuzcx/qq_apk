@@ -7,62 +7,49 @@ import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.by.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bz.a.a;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.c;
 import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.plugin.card.d.m;
+import com.tencent.mm.plugin.card.d.q;
 import com.tencent.mm.plugin.card.ui.j;
-import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.oj;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.qo;
+import com.tencent.mm.protocal.protobuf.ro;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.o;
 
 public abstract class g
   extends i
 {
   String code;
-  private Bitmap gMJ;
-  MMActivity jpX;
-  private ViewGroup kBa;
-  private ab kBb;
-  private ViewStub kBc;
-  protected b klk;
-  private Bitmap kqq;
-  private View.OnLongClickListener kqz = new g.1(this);
-  private j ktL;
-  
-  private void b(View paramView, String paramString)
+  private Bitmap iAr;
+  private ViewGroup nHZ;
+  private ab nIa;
+  private ViewStub nIb;
+  protected b nqp;
+  MMActivity nqt;
+  private Bitmap nvK;
+  private View.OnLongClickListener nvT = new View.OnLongClickListener()
   {
-    try
+    public final boolean onLongClick(View paramAnonymousView)
     {
-      paramView = (ImageView)paramView.findViewById(2131822018);
-      l.I(this.gMJ);
-      int j = 1;
-      int i = j;
-      if (this.klk != null)
+      AppMethodBeat.i(113671);
+      if (paramAnonymousView.getId() == 2131298408)
       {
-        i = j;
-        if (this.klk.bbd() != null) {
-          i = this.klk.bbd().wGG;
-        }
+        q.CP(g.this.nqp.bHW().code);
+        h.cf(g.this.nqt, g.this.getString(2131755702));
       }
-      this.gMJ = a.b(this.jpX, paramString, 12, i);
-      b(paramView, this.gMJ);
-      paramView.setOnClickListener(this.kBh.bdz());
-      this.ktL.gMJ = this.gMJ;
-      this.ktL.beq();
-      return;
+      AppMethodBeat.o(113671);
+      return false;
     }
-    catch (Exception paramView)
-    {
-      com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.CardBaseCodeView", paramView, "", new Object[0]);
-    }
-  }
+  };
+  private j nzb;
   
-  private static void b(ImageView paramImageView, Bitmap paramBitmap)
+  private static void a(ImageView paramImageView, Bitmap paramBitmap)
   {
     if ((paramImageView == null) || (paramBitmap == null)) {
       return;
@@ -74,30 +61,58 @@ public abstract class g
   {
     try
     {
-      paramView = (ImageView)paramView.findViewById(2131822011);
-      l.I(this.kqq);
-      if ((paramString != null) && (paramString.length() > 0)) {
-        this.kqq = a.b(this.jpX, paramString, 5, 0);
+      paramView = (ImageView)paramView.findViewById(2131298400);
+      l.T(this.iAr);
+      int j = 1;
+      int i = j;
+      if (this.nqp != null)
+      {
+        i = j;
+        if (this.nqp.bHV() != null) {
+          i = this.nqp.bHV().CSl;
+        }
       }
-      b(paramView, this.kqq);
-      paramView.setOnClickListener(this.kBh.bdz());
-      this.ktL.kqq = this.kqq;
+      this.iAr = a.b(this.nqt, paramString, 12, i);
+      a(paramView, this.iAr);
+      paramView.setOnClickListener(this.nIg.bKx());
+      this.nzb.iAr = this.iAr;
+      this.nzb.bLn();
       return;
     }
     catch (Exception paramView)
     {
-      com.tencent.mm.sdk.platformtools.ab.printErrStackTrace("MicroMsg.CardBaseCodeView", paramView, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.CardBaseCodeView", paramView, "", new Object[0]);
     }
   }
   
   private void d(View paramView, String paramString)
   {
-    paramView = (TextView)paramView.findViewById(2131822013);
-    paramView.setText(m.II(paramString));
-    paramView.setOnLongClickListener(this.kqz);
-    String str = this.klk.bbd().color;
-    if (!bo.isNullOrNil(str)) {
-      paramView.setTextColor(l.IB(str));
+    try
+    {
+      paramView = (ImageView)paramView.findViewById(2131298384);
+      l.T(this.nvK);
+      if ((paramString != null) && (paramString.length() > 0)) {
+        this.nvK = a.b(this.nqt, paramString, 5, 0);
+      }
+      a(paramView, this.nvK);
+      paramView.setOnClickListener(this.nIg.bKx());
+      this.nzb.nvK = this.nvK;
+      return;
+    }
+    catch (Exception paramView)
+    {
+      ad.printErrStackTrace("MicroMsg.CardBaseCodeView", paramView, "", new Object[0]);
+    }
+  }
+  
+  private void e(View paramView, String paramString)
+  {
+    paramView = (TextView)paramView.findViewById(2131298408);
+    paramView.setText(com.tencent.mm.plugin.card.d.n.Rt(paramString));
+    paramView.setOnLongClickListener(this.nvT);
+    String str = this.nqp.bHV().gHT;
+    if (!bt.isNullOrNil(str)) {
+      paramView.setTextColor(l.Rm(str));
     }
     if (paramString.length() <= 12) {
       paramView.setTextSize(1, 33.0F);
@@ -128,104 +143,104 @@ public abstract class g
   {
     if (paramb == null)
     {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "updateCardInfo failure! mCardInfo is null!");
+      ad.e("MicroMsg.CardBaseCodeView", "updateCardInfo failure! mCardInfo is null!");
       return;
     }
-    this.klk = paramb;
+    this.nqp = paramb;
   }
   
-  public final void bfq()
+  public final void bMB()
   {
-    bfv();
+    bMG();
   }
   
-  public final void bft()
+  public final void bME()
   {
-    if ((this.kBb != null) && (this.klk != null) && (this.kBa != null)) {
-      this.kBb.a(this.kBa, this.klk);
+    if ((this.nIa != null) && (this.nqp != null) && (this.nHZ != null)) {
+      this.nIa.a(this.nHZ, this.nqp);
     }
   }
   
-  public final void bfu()
+  public final void bMF()
   {
-    if ((this.klk != null) && (this.kBb != null) && (this.kBa != null))
+    if ((this.nqp != null) && (this.nIa != null) && (this.nHZ != null))
     {
-      this.kBb.b(this.kBa, this.klk);
-      if ((this.klk.bbe().wDT == 2) && (this.ktL != null))
+      this.nIa.b(this.nHZ, this.nqp);
+      if ((this.nqp.bHW().CPu == 2) && (this.nzb != null))
       {
-        j localj = this.ktL;
-        if ((localj.gMK != null) && (localj.gMK.isShowing())) {
-          localj.gMK.dismiss();
+        j localj = this.nzb;
+        if ((localj.iAs != null) && (localj.iAs.isShowing())) {
+          localj.iAs.dismiss();
         }
       }
       return;
     }
-    com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "onScreenShot is error! mCardInfo or codeContainer or targetView is null ");
+    ad.e("MicroMsg.CardBaseCodeView", "onScreenShot is error! mCardInfo or codeContainer or targetView is null ");
   }
   
-  public final void bfv()
+  public final void bMG()
   {
-    if (this.kBa != null) {
-      this.kBa.setVisibility(8);
+    if (this.nHZ != null) {
+      this.nHZ.setVisibility(8);
     }
   }
   
-  public abstract ab bfw();
+  public abstract ab bMH();
   
-  public abstract ab bfx();
+  public abstract ab bMI();
   
-  public abstract ab bfy();
+  public abstract ab bMJ();
   
   public final void d(c paramc)
   {
-    if (this.klk == null)
+    if (this.nqp == null)
     {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "updateCodeView getCode mCardInfo  is null ! cannot show code view");
+      ad.e("MicroMsg.CardBaseCodeView", "updateCodeView getCode mCardInfo  is null ! cannot show code view");
       return;
     }
     if (paramc == null)
     {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "updateCodeView failure!refreshReason is null!");
+      ad.e("MicroMsg.CardBaseCodeView", "updateCodeView failure!refreshReason is null!");
       return;
     }
-    if (!this.kBb.g(this.klk))
+    if (!this.nIa.g(this.nqp))
     {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "updateCodeView failure! can not get qrcode! refreshReason = %s", new Object[] { Integer.valueOf(paramc.action) });
-      bft();
+      ad.e("MicroMsg.CardBaseCodeView", "updateCodeView failure! can not get qrcode! refreshReason = %s", new Object[] { Integer.valueOf(paramc.action) });
+      bME();
       return;
     }
-    this.kBb.l(this.kBa);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.CardBaseCodeView", "updateCodeView from refreshReason = %s", new Object[] { Integer.valueOf(paramc.action) });
+    this.nIa.n(this.nHZ);
+    ad.i("MicroMsg.CardBaseCodeView", "updateCodeView from refreshReason = %s", new Object[] { Integer.valueOf(paramc.action) });
     this.code = e(paramc);
-    if (bo.isNullOrNil(this.code))
+    if (bt.isNullOrNil(this.code))
     {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "updateCodeView getCode is empty! cannot show code view");
+      ad.e("MicroMsg.CardBaseCodeView", "updateCodeView getCode is empty! cannot show code view");
       return;
     }
-    switch (this.klk.bbe().wDT)
+    switch (this.nqp.bHW().CPu)
     {
     default: 
       return;
     case 0: 
-      d(this.kBa, this.code);
+      e(this.nHZ, this.code);
       return;
     case 2: 
-      b(this.kBa, this.code);
+      c(this.nHZ, this.code);
       return;
     }
-    c(this.kBa, this.code);
+    d(this.nHZ, this.code);
   }
   
   public final void destroy()
   {
     super.destroy();
-    this.jpX = null;
-    this.ktL = null;
-    this.klk = null;
-    this.kBa = null;
-    this.kBb = null;
-    l.I(this.gMJ);
-    l.I(this.kqq);
+    this.nqt = null;
+    this.nzb = null;
+    this.nqp = null;
+    this.nHZ = null;
+    this.nIa = null;
+    l.T(this.iAr);
+    l.T(this.nvK);
   }
   
   public abstract String e(c paramc);
@@ -234,73 +249,73 @@ public abstract class g
   
   public final void initView()
   {
-    this.jpX = this.kBh.bdy();
-    this.ktL = this.kBh.bdE();
-    this.klk = this.kBh.bdv();
-    if (this.klk == null)
+    this.nqt = this.nIg.bKw();
+    this.nzb = this.nIg.bKC();
+    this.nqp = this.nIg.bKt();
+    if (this.nqp == null)
     {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "initView failure! cardInfo is null!");
+      ad.e("MicroMsg.CardBaseCodeView", "initView failure! cardInfo is null!");
       return;
     }
-    switch (this.klk.bbe().wDT)
+    switch (this.nqp.bHW().CPu)
     {
     default: 
-      this.kBb = bfw();
+      this.nIa = bMH();
     }
-    while (this.kBb == null)
+    while (this.nIa == null)
     {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "iniView failure! codeContainer is null!");
+      ad.e("MicroMsg.CardBaseCodeView", "iniView failure! codeContainer is null!");
       return;
-      this.kBb = bfw();
+      this.nIa = bMH();
       continue;
-      this.kBb = bfx();
+      this.nIa = bMI();
       continue;
-      this.kBb = bfy();
+      this.nIa = bMJ();
     }
-    switch (this.klk.bbe().wDT)
+    switch (this.nqp.bHW().CPu)
     {
     default: 
-      if (this.kBc == null) {
-        this.kBc = ((ViewStub)findViewById(2131822087));
+      if (this.nIb == null) {
+        this.nIb = ((ViewStub)findViewById(2131297882));
       }
       label209:
-      if (this.kBc == null) {
-        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "initTargetView failure! viewStub is null!");
+      if (this.nIb == null) {
+        ad.e("MicroMsg.CardBaseCodeView", "initTargetView failure! viewStub is null!");
       }
       break;
     }
-    while (this.kBa == null)
+    while (this.nHZ == null)
     {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "iniView failure! targetView is null!");
+      ad.e("MicroMsg.CardBaseCodeView", "iniView failure! targetView is null!");
       return;
-      if (this.kBc != null) {
+      if (this.nIb != null) {
         break label209;
       }
-      this.kBc = ((ViewStub)findViewById(2131822087));
+      this.nIb = ((ViewStub)findViewById(2131297882));
       break label209;
-      if (this.kBc != null) {
+      if (this.nIb != null) {
         break label209;
       }
-      this.kBc = ((ViewStub)findViewById(2131822088));
+      this.nIb = ((ViewStub)findViewById(2131297735));
       break label209;
-      if (this.kBc != null) {
+      if (this.nIb != null) {
         break label209;
       }
-      this.kBc = ((ViewStub)findViewById(2131822089));
+      this.nIb = ((ViewStub)findViewById(2131297765));
       break label209;
-      if (this.kBb == null)
+      if (this.nIa == null)
       {
-        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "iniView failure! codeContainer is null!");
+        ad.e("MicroMsg.CardBaseCodeView", "iniView failure! codeContainer is null!");
       }
-      else if (this.kBb.getLayoutId() == 0)
+      else if (this.nIa.getLayoutId() == 0)
       {
-        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "initTargetView failure! codeContainer.getLayoutId()  is 0!");
+        ad.e("MicroMsg.CardBaseCodeView", "initTargetView failure! codeContainer.getLayoutId()  is 0!");
       }
       else
       {
-        this.kBc.setLayoutResource(this.kBb.getLayoutId());
-        if (this.kBa == null) {
-          this.kBa = ((ViewGroup)this.kBc.inflate());
+        this.nIb.setLayoutResource(this.nIa.getLayoutId());
+        if (this.nHZ == null) {
+          this.nHZ = ((ViewGroup)this.nIb.inflate());
         }
       }
     }
@@ -308,29 +323,29 @@ public abstract class g
   
   public final void update()
   {
-    if (this.klk == null)
+    if (this.nqp == null)
     {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "update  failure! mCardInfo is null!");
+      ad.e("MicroMsg.CardBaseCodeView", "update  failure! mCardInfo is null!");
       return;
     }
-    if (this.kBb == null)
+    if (this.nIa == null)
     {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "update failure! codeContainer is null!");
+      ad.e("MicroMsg.CardBaseCodeView", "update failure! codeContainer is null!");
       return;
     }
-    if (this.kBa == null)
+    if (this.nHZ == null)
     {
-      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.CardBaseCodeView", "update failure! targetView is null!");
+      ad.e("MicroMsg.CardBaseCodeView", "update failure! targetView is null!");
       return;
     }
-    this.ktL.beo();
-    d(c.kCf);
-    this.kBb.c(this.kBa, this.klk);
+    this.nzb.bLl();
+    d(c.nJe);
+    this.nIa.c(this.nHZ, this.nqp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.g
  * JD-Core Version:    0.7.0.1
  */

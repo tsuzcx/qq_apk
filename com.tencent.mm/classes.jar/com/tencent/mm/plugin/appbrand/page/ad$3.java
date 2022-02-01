@@ -1,23 +1,16 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.webkit.ValueCallback;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.content.Context;
+import d.g.a.a;
 
 final class ad$3
-  implements Runnable
+  implements a<ap>
 {
-  ad$3(ad paramad, String paramString, ValueCallback paramValueCallback) {}
-  
-  public final void run()
-  {
-    AppMethodBeat.i(132441);
-    ad.a(this.iys, this.byz, this.ijh);
-    AppMethodBeat.o(132441);
-  }
+  ad$3(ad paramad, Context paramContext) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.ad.3
  * JD-Core Version:    0.7.0.1
  */

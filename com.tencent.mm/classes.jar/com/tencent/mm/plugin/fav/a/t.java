@@ -13,15 +13,15 @@ public abstract interface t
   
   public abstract boolean a(f paramf, String... paramVarArgs);
   
-  public abstract List<f> bwH();
+  public abstract List<f> chX();
   
-  public abstract f ka(long paramLong);
+  public abstract f pR(long paramLong);
   
-  public abstract void u(long paramLong, int paramInt);
+  public abstract void y(long paramLong, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.t
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,26 @@
 package com.tencent.mm.media.editor.c;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/editor/touch/MatrixInterpolator;", "", "()V", "Companion", "plugin-mediaeditor_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/editor/touch/MatrixInterpolator;", "", "()V", "Companion", "plugin-mediaeditor_release"})
 public final class b
 {
-  public static final b.a eTv;
+  public static final a gpz;
   
   static
   {
-    AppMethodBeat.i(12906);
-    eTv = new b.a((byte)0);
-    AppMethodBeat.o(12906);
+    AppMethodBeat.i(93597);
+    gpz = new a((byte)0);
+    AppMethodBeat.o(93597);
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/editor/touch/MatrixInterpolator$Companion;", "", "()V", "clampScale", "", "matrix", "Landroid/graphics/Matrix;", "pivotSrc", "", "minScale", "", "maxScale", "getScale", "plugin-mediaeditor_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.editor.c.b
  * JD-Core Version:    0.7.0.1
  */

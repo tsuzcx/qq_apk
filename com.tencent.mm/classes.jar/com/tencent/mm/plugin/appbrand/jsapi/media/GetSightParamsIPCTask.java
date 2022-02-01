@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import a.f.b.j;
-import a.l;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.i;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.plugin.mmsight.SightParams;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams;", "Lcom/tencent/mm/plugin/mmsight/SightParams;", "()V", "invoke", "data", "Companion", "TaskParams", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams;", "Lcom/tencent/mm/plugin/mmsight/SightParams;", "()V", "invoke", "data", "Companion", "TaskParams", "plugin-appbrand-integration_release"})
 public final class GetSightParamsIPCTask
-  implements i<TaskParams, SightParams>
+  implements com.tencent.mm.ipcinvoker.k<TaskParams, SightParams>
 {
-  public static final GetSightParamsIPCTask.a hQz;
+  public static final a jWo;
   
   static
   {
-    AppMethodBeat.i(143814);
-    hQz = new GetSightParamsIPCTask.a((byte)0);
-    AppMethodBeat.o(143814);
+    AppMethodBeat.i(50551);
+    jWo = new a((byte)0);
+    AppMethodBeat.o(50551);
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams;", "Landroid/os/Parcelable;", "in", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "sightMode", "", "maxDuration", "isFront", "", "(IIZ)V", "()Z", "getMaxDuration", "()I", "getSightMode", "component1", "component2", "component3", "copy", "describeContents", "equals", "other", "", "hashCode", "toString", "", "writeToParcel", "", "dest", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams;", "Landroid/os/Parcelable;", "in", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "sightMode", "", "maxDuration", "isFront", "", "(IIZ)V", "()Z", "getMaxDuration", "()I", "getSightMode", "component1", "component2", "component3", "copy", "describeContents", "equals", "other", "", "hashCode", "toString", "", "writeToParcel", "", "dest", "flags", "CREATOR", "plugin-appbrand-integration_release"})
   public static final class TaskParams
     implements Parcelable
   {
-    public static final GetSightParamsIPCTask.TaskParams.a CREATOR;
-    final int hQA;
+    public static final a CREATOR;
     final boolean isFront;
+    final int jWp;
     final int maxDuration;
     
     static
     {
-      AppMethodBeat.i(143811);
-      CREATOR = new GetSightParamsIPCTask.TaskParams.a((byte)0);
-      AppMethodBeat.o(143811);
+      AppMethodBeat.i(50548);
+      CREATOR = new a((byte)0);
+      AppMethodBeat.o(50548);
     }
     
     public TaskParams(int paramInt1, int paramInt2, boolean paramBoolean)
     {
-      this.hQA = paramInt1;
+      this.jWp = paramInt1;
       this.maxDuration = paramInt2;
       this.isFront = paramBoolean;
     }
@@ -53,52 +53,18 @@ public final class GetSightParamsIPCTask
     
     public final boolean equals(Object paramObject)
     {
-      boolean bool2 = false;
-      boolean bool1;
       if (this != paramObject)
       {
-        bool1 = bool2;
-        if (!(paramObject instanceof TaskParams)) {
-          break label85;
-        }
-        paramObject = (TaskParams)paramObject;
-        if (this.hQA != paramObject.hQA) {
-          break label87;
-        }
-        i = 1;
-        bool1 = bool2;
-        if (i == 0) {
-          break label85;
-        }
-        if (this.maxDuration != paramObject.maxDuration) {
-          break label92;
-        }
-        i = 1;
-        label56:
-        bool1 = bool2;
-        if (i == 0) {
-          break label85;
-        }
-        if (this.isFront != paramObject.isFront) {
-          break label97;
+        if ((paramObject instanceof TaskParams))
+        {
+          paramObject = (TaskParams)paramObject;
+          if ((this.jWp != paramObject.jWp) || (this.maxDuration != paramObject.maxDuration) || (this.isFront != paramObject.isFront)) {}
         }
       }
-      label85:
-      label87:
-      label92:
-      label97:
-      for (int i = 1;; i = 0)
-      {
-        bool1 = bool2;
-        if (i != 0) {
-          bool1 = true;
-        }
-        return bool1;
-        i = 0;
-        break;
-        i = 0;
-        break label56;
+      else {
+        return true;
       }
+      return false;
     }
     
     public final int hashCode()
@@ -108,31 +74,50 @@ public final class GetSightParamsIPCTask
     
     public final String toString()
     {
-      AppMethodBeat.i(143812);
-      String str = "TaskParams(sightMode=" + this.hQA + ", maxDuration=" + this.maxDuration + ", isFront=" + this.isFront + ")";
-      AppMethodBeat.o(143812);
+      AppMethodBeat.i(50549);
+      String str = "TaskParams(sightMode=" + this.jWp + ", maxDuration=" + this.maxDuration + ", isFront=" + this.isFront + ")";
+      AppMethodBeat.o(50549);
       return str;
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(143809);
-      j.q(paramParcel, "dest");
-      paramParcel.writeInt(this.hQA);
+      AppMethodBeat.i(50546);
+      d.g.b.k.h(paramParcel, "dest");
+      paramParcel.writeInt(this.jWp);
       paramParcel.writeInt(this.maxDuration);
       if (this.isFront) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
-        AppMethodBeat.o(143809);
+        AppMethodBeat.o(50546);
         return;
       }
+    }
+    
+    @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams;", "()V", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$TaskParams;", "plugin-appbrand-integration_release"})
+    public static final class a
+      implements Parcelable.Creator<GetSightParamsIPCTask.TaskParams>
+    {}
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/media/GetSightParamsIPCTask$Companion;", "", "()V", "getSightParams", "Lcom/tencent/mm/plugin/mmsight/SightParams;", "sightMode", "", "maxDuration", "isFront", "", "plugin-appbrand-integration_release"})
+  public static final class a
+  {
+    public static SightParams o(int paramInt1, int paramInt2, boolean paramBoolean)
+    {
+      AppMethodBeat.i(180477);
+      Object localObject = XIPCInvoker.a("com.tencent.mm", new GetSightParamsIPCTask.TaskParams(paramInt1, paramInt2, paramBoolean), GetSightParamsIPCTask.class);
+      d.g.b.k.g(localObject, "XIPCInvoker.invokeSync(\n…aramsIPCTask::class.java)");
+      localObject = (SightParams)localObject;
+      AppMethodBeat.o(180477);
+      return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.GetSightParamsIPCTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:paddingLeft="@dimen/l2" android:paddingBottom="@dimen/fs" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bcr" android:background="@color/a0a" android:layout_width="fill_parent" android:layout_height="@dimen/fs" />
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:paddingLeft="@dimen/ha" android:paddingTop="28.0dip" android:paddingRight="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/a26" android:layout_width="44.0dip" android:layout_height="44.0dip" android:src="@drawable/fj" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+    <ImageView android:layout_gravity="center" android:id="@id/a25" android:padding="@dimen/ju" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@raw/biz_voice_playing_icon_inner3" app:layout_constraintBottom_toBottomOf="@id/a26" app:layout_constraintEnd_toEndOf="@id/a26" app:layout_constraintStart_toStartOf="@id/a26" app:layout_constraintTop_toTopOf="@id/a26" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/ia" android:textColor="@color/y4" android:ellipsize="end" android:id="@id/biz_slot_title_neat_tv" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hj" android:maxLines="2" android:lineSpacingExtra="2.0dip" app:layout_constraintBottom_toTopOf="@id/a27" app:layout_constraintEnd_toStartOf="@id/a26" app:layout_constraintHorizontal_bias="0.5" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+    <TextView android:textSize="@dimen/jo" android:textColor="@color/s5" android:id="@id/a27" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hk" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintStart_toStartOf="@id/biz_slot_title_neat_tv" app:layout_constraintTop_toBottomOf="@id/biz_slot_title_neat_tv" />
+    <TextView android:textSize="@dimen/jo" android:textColor="@color/s5" android:id="@id/biz_slot_show_desc_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ha" app:layout_constraintStart_toEndOf="@id/a27" app:layout_constraintTop_toTopOf="@id/a27" />
+</android.support.constraint.ConstraintLayout>

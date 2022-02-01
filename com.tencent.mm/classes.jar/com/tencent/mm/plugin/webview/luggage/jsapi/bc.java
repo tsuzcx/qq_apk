@@ -1,127 +1,108 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.webview.luggage.r;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.plugin.webview.luggage.f;
+import com.tencent.mm.plugin.webview.luggage.l;
+import com.tencent.mm.pluginsdk.ui.tools.x;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public class bc
-  extends bi<com.tencent.mm.plugin.webview.luggage.e>
+  extends bo<f>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama) {}
+  public final void a(Context paramContext, String paramString, bn.a parama) {}
   
-  public final void b(a<com.tencent.mm.plugin.webview.luggage.e>.a parama)
+  public final void b(a<f>.a parama)
   {
-    AppMethodBeat.i(6383);
-    ab.i("MicroMsg.JsApiShareTimeLine", "invoke");
-    MMActivity localMMActivity = (MMActivity)((com.tencent.mm.plugin.webview.luggage.e)parama.byE).mContext;
-    if ((localMMActivity == null) || (localMMActivity.isFinishing()))
+    AppMethodBeat.i(78625);
+    ad.i("MicroMsg.JsApiSetNavigationBarButtons", "invokeInOwn");
+    String str1 = parama.bZV.bZb.optString("left");
+    Object localObject = parama.bZV.bZb.optString("right");
+    if ((bt.isNullOrNil(str1)) && (bt.isNullOrNil((String)localObject)))
     {
-      ab.w("MicroMsg.JsApiShareTimeLine", "activity is null or finish");
-      AppMethodBeat.o(6383);
+      parama.a("fail", null);
+      AppMethodBeat.o(78625);
       return;
     }
-    Object localObject1 = parama.byF.bxK;
-    String str1 = ((JSONObject)localObject1).optString("link");
-    if (bo.isNullOrNil(str1))
+    Bundle localBundle = new Bundle();
+    try
     {
-      ab.e("MicroMsg.JsApiShareTimeLine", "link is null");
-      parama.a("invalid_params", null);
-      AppMethodBeat.o(6383);
-      return;
-    }
-    String str2 = ((JSONObject)localObject1).optString("desc");
-    if (str2 != null)
-    {
-      if (!str2.startsWith("http://")) {
-        break label535;
+      str1 = new JSONObject(str1).optString("color", "");
+      if (!bt.isNullOrNil(str1)) {
+        localBundle.putString("set_navigation_bar_buttons_left_text_color", str1);
       }
-      str2.substring(7);
-    }
-    for (;;)
-    {
-      str2 = ((JSONObject)localObject1).optString("appid");
-      Object localObject2 = ((JSONObject)localObject1).optString("img_width");
-      String str7 = ((JSONObject)localObject1).optString("img_height");
-      ab.i("MicroMsg.JsApiShareTimeLine", "doTimeline, rawUrl:[%s], shareUrl:[%s]", new Object[] { str1, str1 });
-      String str3 = ((JSONObject)localObject1).optString("type");
-      String str4 = ((JSONObject)localObject1).optString("title");
-      String str5 = ((JSONObject)localObject1).optString("img_url");
-      String str6 = ((JSONObject)localObject1).optString("src_username");
-      localObject1 = ((JSONObject)localObject1).optString("src_displayname");
-      int i = -1;
       try
       {
-        int j = Integer.valueOf((String)localObject2).intValue();
-        i = j;
-        Integer.valueOf(str7);
-        i = j;
+        localObject = new JSONObject((String)localObject);
+        boolean bool1 = ((JSONObject)localObject).optBoolean("hidden", false);
+        str1 = ((JSONObject)localObject).optString("text", "");
+        String str2 = bt.nullAsNil(x.aCN(((JSONObject)localObject).optString("iconData", "")));
+        String str3 = ((JSONObject)localObject).optString("color", "");
+        boolean bool2 = ((JSONObject)localObject).optBoolean("needClickEvent", false);
+        if (bool1) {
+          break label259;
+        }
+        localBundle.putString("set_navigation_bar_buttons_text", str1);
+        localBundle.putString("set_navigation_bar_buttons_icon_data", str2);
+        localBundle.putString("set_navigation_bar_buttons_text_color", str3);
+        localBundle.putBoolean("set_navigation_bar_buttons_need_click_event", bool2);
       }
-      catch (Exception localException)
+      catch (Exception localException1)
       {
-        label248:
-        break label248;
+        for (;;)
+        {
+          ad.printErrStackTrace("MicroMsg.JsApiSetNavigationBarButtons", localException1, "setNavigationBarButtons opt right ", new Object[0]);
+        }
+        l locall = ((f)parama.bZU).ekS();
+        if (locall != null) {
+          break label318;
+        }
+        parama.a("fail", null);
+        AppMethodBeat.o(78625);
+        return;
+        locall.setNavigationBarButtons(localBundle);
+        parama.a("", null);
+        AppMethodBeat.o(78625);
       }
-      localObject2 = new Intent();
-      ((Intent)localObject2).putExtra("Ksnsupload_width", i);
-      ((Intent)localObject2).putExtra("Ksnsupload_height", i);
-      ((Intent)localObject2).putExtra("Ksnsupload_link", str1);
-      ((Intent)localObject2).putExtra("Ksnsupload_title", str4);
-      ((Intent)localObject2).putExtra("Ksnsupload_imgurl", str5);
-      if (t.nU(str6))
+      if (localBundle.size() < 0)
       {
-        ((Intent)localObject2).putExtra("src_username", str6);
-        ((Intent)localObject2).putExtra("src_displayname", (String)localObject1);
-      }
-      ((Intent)localObject2).putExtra("Ksnsupload_source", 1);
-      ((Intent)localObject2).putExtra("Ksnsupload_type", 1);
-      if ((!bo.isNullOrNil(str3)) && (str3.equals("music"))) {
-        ((Intent)localObject2).putExtra("ksnsis_music", true);
-      }
-      if ((!bo.isNullOrNil(str3)) && (str3.equals("video"))) {
-        ((Intent)localObject2).putExtra("ksnsis_video", true);
-      }
-      if ((str2 != null) && (str2.length() > 0)) {
-        ((Intent)localObject2).putExtra("Ksnsupload_appid", str2);
-      }
-      ((Intent)localObject2).putExtra("ShareUrlOriginal", str1);
-      ((Intent)localObject2).putExtra("ShareUrlOpen", ((com.tencent.mm.plugin.webview.luggage.e)parama.byE).getUrl());
-      ((Intent)localObject2).putExtra("JsAppId", ((com.tencent.mm.plugin.webview.luggage.e)parama.byE).uRD.getAppId());
-      ((Intent)localObject2).putExtra("need_result", true);
-      ab.i("MicroMsg.JsApiShareTimeLine", "doTimeline, start activity");
-      localMMActivity.mmSetOnActivityResultCallback(new bc.1(this, parama, localMMActivity));
-      d.a(localMMActivity, "sns", ".ui.SnsUploadUI", (Intent)localObject2, hashCode() & 0xFFFF, false);
-      AppMethodBeat.o(6383);
-      return;
-      label535:
-      if (str2.startsWith("https://")) {
-        str2.substring(8);
+        parama.a("fail", null);
+        AppMethodBeat.o(78625);
+        return;
       }
     }
+    catch (Exception localException2)
+    {
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.JsApiSetNavigationBarButtons", localException2, "setNavigationBarButtons opt left ", new Object[0]);
+        continue;
+        label259:
+        localBundle.putBoolean("set_navigation_bar_buttons_hide_right_button", true);
+      }
+    }
+    label318:
   }
   
-  public final int bjL()
+  public final int bQV()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "shareTimeline";
+    return "setNavigationBarButtons";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.bc
  * JD-Core Version:    0.7.0.1
  */

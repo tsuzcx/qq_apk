@@ -6,36 +6,36 @@ import java.lang.reflect.Field;
 
 public final class a<FieldType>
 {
-  private Class<?> eEO;
-  private String eEP;
+  private Class<?> cFP;
+  private String cFQ;
   private Field mField;
   private boolean mInited;
   
   public a(Class<?> paramClass, String paramString)
   {
-    AppMethodBeat.i(114116);
+    AppMethodBeat.i(158827);
     if (paramString.length() == 0)
     {
       paramClass = new IllegalArgumentException("Both of invoker and fieldName can not be null or nil.");
-      AppMethodBeat.o(114116);
+      AppMethodBeat.o(158827);
       throw paramClass;
     }
-    this.eEO = paramClass;
-    this.eEP = paramString;
-    AppMethodBeat.o(114116);
+    this.cFP = paramClass;
+    this.cFQ = paramString;
+    AppMethodBeat.o(158827);
   }
   
-  private FieldType PU()
+  private FieldType adE()
   {
     Object localObject1 = null;
     try
     {
-      AppMethodBeat.i(114118);
+      AppMethodBeat.i(158829);
       prepare();
       if (this.mField == null)
       {
-        b.w("SDK.ReflectStaticFieldSmith", "Field %s is no exists.", new Object[] { this.eEP });
-        AppMethodBeat.o(114118);
+        b.w("SDK.ReflectStaticFieldSmith", "Field %s is no exists.", new Object[] { this.cFQ });
+        AppMethodBeat.o(158829);
         return localObject1;
       }
     }
@@ -44,12 +44,12 @@ public final class a<FieldType>
       try
       {
         localObject1 = this.mField.get(null);
-        AppMethodBeat.o(114118);
+        AppMethodBeat.o(158829);
       }
       catch (ClassCastException localClassCastException)
       {
         IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("unable to cast object");
-        AppMethodBeat.o(114118);
+        AppMethodBeat.o(158829);
         throw localIllegalArgumentException;
       }
       localObject2 = finally;
@@ -62,13 +62,13 @@ public final class a<FieldType>
     {
       try
       {
-        AppMethodBeat.i(114117);
+        AppMethodBeat.i(158828);
         if (this.mInited)
         {
-          AppMethodBeat.o(114117);
+          AppMethodBeat.o(158828);
           return;
         }
-        localClass1 = this.eEO;
+        localClass1 = this.cFP;
         if (localClass1 == null) {}
       }
       finally
@@ -76,11 +76,11 @@ public final class a<FieldType>
         try
         {
           Class localClass1;
-          Field localField = localClass1.getDeclaredField(this.eEP);
+          Field localField = localClass1.getDeclaredField(this.cFQ);
           localField.setAccessible(true);
           this.mField = localField;
           this.mInited = true;
-          AppMethodBeat.o(114117);
+          AppMethodBeat.o(158828);
         }
         catch (Exception localException)
         {
@@ -92,7 +92,7 @@ public final class a<FieldType>
   }
   
   /* Error */
-  public final FieldType PV()
+  public final FieldType adF()
   {
     // Byte code:
     //   0: aload_0
@@ -102,7 +102,7 @@ public final class a<FieldType>
     //   7: aconst_null
     //   8: astore_1
     //   9: aload_0
-    //   10: invokespecial 105	com/tencent/mm/ipcinvoker/g/a:PU	()Ljava/lang/Object;
+    //   10: invokespecial 105	com/tencent/mm/ipcinvoker/g/a:adE	()Ljava/lang/Object;
     //   13: astore_2
     //   14: aload_2
     //   15: astore_1
@@ -174,7 +174,7 @@ public final class a<FieldType>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.g.a
  * JD-Core Version:    0.7.0.1
  */

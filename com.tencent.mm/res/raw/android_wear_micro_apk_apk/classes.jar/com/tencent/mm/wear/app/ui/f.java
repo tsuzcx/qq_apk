@@ -23,73 +23,23 @@ public final class f
   extends a
   implements com.tencent.mm.wear.app.f.d
 {
-  private String acH;
-  private com.tencent.mm.wear.app.f.b adI;
-  private LinkedList<g> aeZ = new LinkedList();
-  private HashSet<Long> afa = new HashSet();
-  private boolean afb = true;
-  private h afc;
+  private String agi;
+  private com.tencent.mm.wear.app.f.b ahk;
+  private LinkedList<g> aiB = new LinkedList();
+  private HashSet<Long> aiC = new HashSet();
+  private boolean aiD = true;
+  private h aiE;
   
   public f(Context paramContext, String paramString)
   {
     super(paramContext);
-    this.acH = paramString;
+    this.agi = paramString;
   }
   
-  private g a(com.tencent.mm.e.a.s params)
+  private void al(final int paramInt1, final int paramInt2)
   {
-    g localg = new g(this);
-    localg.afg = params;
-    boolean bool = params.VN.equals(com.tencent.mm.wear.app.b.h.mb().lT().Vm);
-    int i;
-    switch (params.VU)
-    {
-    default: 
-      return localg;
-    case 1: 
-      if (bool) {}
-      for (i = 2;; i = 1)
-      {
-        localg.afh = i;
-        return localg;
-      }
-    case 2: 
-      if (bool) {}
-      for (i = 4;; i = 3)
-      {
-        localg.afh = i;
-        return localg;
-      }
-    case 4: 
-      if (bool) {}
-      for (i = 7;; i = 6)
-      {
-        localg.afh = i;
-        return localg;
-      }
-    case 5: 
-      if (bool) {}
-      for (i = 9;; i = 8)
-      {
-        localg.afh = i;
-        return localg;
-      }
-    case 6: 
-      if (bool) {}
-      for (i = 11;; i = 10)
-      {
-        localg.afh = i;
-        return localg;
-      }
-    }
-    localg.afh = 5;
-    return localg;
-  }
-  
-  private void ai(final int paramInt1, final int paramInt2)
-  {
-    com.tencent.mm.wear.a.c.d.c("MicroMsg.MessageHistoryAdapter", "Message History notifyRequestDataEnd %d", new Object[] { Integer.valueOf(this.aeZ.size()) });
-    com.tencent.mm.wear.a.b.a.aiT.postDelayed(new Runnable()
+    com.tencent.mm.wear.a.c.d.c("MicroMsg.MessageHistoryAdapter", "Message History notifyRequestDataEnd %d", new Object[] { Integer.valueOf(this.aiB.size()) });
+    com.tencent.mm.wear.a.b.a.amv.postDelayed(new Runnable()
     {
       public final void run()
       {
@@ -97,28 +47,78 @@ public final class f
         f.this.clearCache();
         f.this.notifyDataSetChanged();
         if (f.b(f.this) != null) {
-          f.b(f.this).af(paramInt1, paramInt2);
+          f.b(f.this).ai(paramInt1, paramInt2);
         }
       }
     }, 500L);
   }
   
+  private g b(com.tencent.mm.e.a.s params)
+  {
+    g localg = new g(this);
+    localg.aiI = params;
+    boolean bool = params.XI.equals(com.tencent.mm.wear.app.b.h.mO().mG().Xh);
+    int i;
+    switch (params.XP)
+    {
+    default: 
+      return localg;
+    case 1: 
+      if (bool) {}
+      for (i = 2;; i = 1)
+      {
+        localg.aiJ = i;
+        return localg;
+      }
+    case 2: 
+      if (bool) {}
+      for (i = 4;; i = 3)
+      {
+        localg.aiJ = i;
+        return localg;
+      }
+    case 4: 
+      if (bool) {}
+      for (i = 7;; i = 6)
+      {
+        localg.aiJ = i;
+        return localg;
+      }
+    case 5: 
+      if (bool) {}
+      for (i = 9;; i = 8)
+      {
+        localg.aiJ = i;
+        return localg;
+      }
+    case 6: 
+      if (bool) {}
+      for (i = 11;; i = 10)
+      {
+        localg.aiJ = i;
+        return localg;
+      }
+    }
+    localg.aiJ = 5;
+    return localg;
+  }
+  
   private void b(int paramInt, byte[] paramArrayOfByte)
   {
-    if (this.adI != null)
+    if (this.ahk != null)
     {
-      this.adI.cancel();
-      this.adI = null;
+      this.ahk.cancel();
+      this.ahk = null;
     }
-    this.adI = new com.tencent.mm.wear.app.f.b(paramInt, paramArrayOfByte);
-    this.adI.a(this);
-    this.adI.F(true);
-    com.tencent.mm.wear.app.b.h.mc().a(this.adI);
+    this.ahk = new com.tencent.mm.wear.app.f.b(paramInt, paramArrayOfByte);
+    this.ahk.a(this);
+    this.ahk.I(true);
+    com.tencent.mm.wear.app.b.h.mP().a(this.ahk);
   }
   
   public final void a(h paramh)
   {
-    this.afc = paramh;
+    this.aiE = paramh;
   }
   
   public final void b(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
@@ -139,35 +139,35 @@ public final class f
     try
     {
       ((com.tencent.mm.e.a.u)localObject).h(paramArrayOfByte);
-      paramArrayOfByte = ((com.tencent.mm.e.a.u)localObject).Wb.iterator();
+      paramArrayOfByte = ((com.tencent.mm.e.a.u)localObject).XW.iterator();
       while (paramArrayOfByte.hasNext())
       {
         com.tencent.mm.e.a.s locals = (com.tencent.mm.e.a.s)paramArrayOfByte.next();
-        if (this.afa.add(Long.valueOf(locals.VO)))
+        if (this.aiC.add(Long.valueOf(locals.XJ)))
         {
-          this.aeZ.add(a(locals));
+          this.aiB.add(b(locals));
           continue;
           localObject = new z();
           try
           {
             ((z)localObject).h(paramArrayOfByte);
-            paramArrayOfByte = ((z)localObject).Wb.iterator();
+            paramArrayOfByte = ((z)localObject).XW.iterator();
             while (paramArrayOfByte.hasNext())
             {
               locals = (com.tencent.mm.e.a.s)paramArrayOfByte.next();
-              if (this.afa.add(Long.valueOf(locals.VO))) {
-                this.aeZ.add(a(locals));
+              if (this.aiC.add(Long.valueOf(locals.XJ))) {
+                this.aiB.add(b(locals));
               }
             }
-            this.afb = ((z)localObject).Wa;
+            this.aiD = ((z)localObject).XV;
           }
           catch (IOException paramArrayOfByte)
           {
             com.tencent.mm.wear.a.c.d.a("MicroMsg.MessageHistoryAdapter", paramArrayOfByte);
             return;
           }
-          Collections.sort(this.aeZ);
-          ai(((z)localObject).Wb.size(), 1);
+          Collections.sort(this.aiB);
+          al(((z)localObject).XW.size(), 1);
           return;
         }
       }
@@ -177,29 +177,29 @@ public final class f
       com.tencent.mm.wear.a.c.d.a("MicroMsg.MessageHistoryAdapter", paramArrayOfByte);
       return;
     }
-    if (!((com.tencent.mm.e.a.u)localObject).VZ) {
-      this.afb = ((com.tencent.mm.e.a.u)localObject).Wa;
+    if (!((com.tencent.mm.e.a.u)localObject).XU) {
+      this.aiD = ((com.tencent.mm.e.a.u)localObject).XV;
     }
-    Collections.sort(this.aeZ);
-    if (((com.tencent.mm.e.a.u)localObject).VZ)
+    Collections.sort(this.aiB);
+    if (((com.tencent.mm.e.a.u)localObject).XU)
     {
-      ai(((com.tencent.mm.e.a.u)localObject).Wb.size(), 3);
+      al(((com.tencent.mm.e.a.u)localObject).XW.size(), 3);
       return;
     }
-    ai(((com.tencent.mm.e.a.u)localObject).Wb.size(), 2);
+    al(((com.tencent.mm.e.a.u)localObject).XW.size(), 2);
   }
   
-  public final com.tencent.mm.wear.app.ui.a.a bS(int paramInt)
+  public final com.tencent.mm.wear.app.ui.a.a co(int paramInt)
   {
-    Object localObject2 = (g)this.aeZ.get(paramInt);
+    Object localObject2 = (g)this.aiB.get(paramInt);
     Object localObject1 = null;
-    switch (((g)localObject2).afh)
+    switch (((g)localObject2).aiJ)
     {
     default: 
       if (localObject1 != null)
       {
-        ((com.tencent.mm.wear.app.ui.a.a)localObject1).ahe = ((g)localObject2);
-        localObject2 = this.acH;
+        ((com.tencent.mm.wear.app.ui.a.a)localObject1).akG = ((g)localObject2);
+        localObject2 = this.agi;
         if ((localObject2 != null) && (((String)localObject2).length() > 0)) {
           break label250;
         }
@@ -209,7 +209,7 @@ public final class f
     label250:
     for (boolean bool = false;; bool = ((String)localObject2).endsWith("@chatroom"))
     {
-      ((com.tencent.mm.wear.app.ui.a.a)localObject1).H(bool);
+      ((com.tencent.mm.wear.app.ui.a.a)localObject1).K(bool);
       return localObject1;
       localObject1 = new o(paramInt);
       break;
@@ -236,12 +236,12 @@ public final class f
     }
   }
   
-  public final List<com.tencent.mm.e.a.s> bV(int paramInt)
+  public final List<com.tencent.mm.e.a.s> cr(int paramInt)
   {
     ArrayList localArrayList = new ArrayList();
-    while (paramInt < this.aeZ.size())
+    while (paramInt < this.aiB.size())
     {
-      localArrayList.add(((g)this.aeZ.get(paramInt)).afg);
+      localArrayList.add(((g)this.aiB.get(paramInt)).aiI);
       paramInt += 1;
     }
     return localArrayList;
@@ -249,16 +249,16 @@ public final class f
   
   public final void finish()
   {
-    if (this.adI != null) {
-      this.adI.cancel();
+    if (this.ahk != null) {
+      this.ahk.cancel();
     }
   }
   
-  public final void ni()
+  public final void nV()
   {
     y localy = new y();
-    localy.Vm = this.acH;
-    localy.VY = System.currentTimeMillis();
+    localy.Xh = this.agi;
+    localy.XT = System.currentTimeMillis();
     try
     {
       b(11020, localy.toByteArray());
@@ -270,13 +270,13 @@ public final class f
     }
   }
   
-  public final boolean nj()
+  public final boolean nW()
   {
     t localt = new t();
-    localt.Vm = this.acH;
-    localt.VZ = true;
-    if (this.aeZ.size() > 0) {}
-    for (localt.VY = ((g)this.aeZ.getLast()).afg.VV;; localt.VY = System.currentTimeMillis()) {
+    localt.Xh = this.agi;
+    localt.XU = true;
+    if (this.aiB.size() > 0) {}
+    for (localt.XT = ((g)this.aiB.getLast()).aiI.XQ;; localt.XT = System.currentTimeMillis()) {
       try
       {
         b(11019, localt.toByteArray());
@@ -290,16 +290,16 @@ public final class f
     return false;
   }
   
-  public final boolean nk()
+  public final boolean nX()
   {
-    if (!this.afb) {
+    if (!this.aiD) {
       return false;
     }
     t localt = new t();
-    localt.Vm = this.acH;
-    localt.VZ = false;
-    if (this.aeZ.size() > 0) {}
-    for (localt.VY = ((g)this.aeZ.getFirst()).afg.VV;; localt.VY = System.currentTimeMillis()) {
+    localt.Xh = this.agi;
+    localt.XU = false;
+    if (this.aiB.size() > 0) {}
+    for (localt.XT = ((g)this.aiB.getFirst()).aiI.XQ;; localt.XT = System.currentTimeMillis()) {
       try
       {
         b(11019, localt.toByteArray());

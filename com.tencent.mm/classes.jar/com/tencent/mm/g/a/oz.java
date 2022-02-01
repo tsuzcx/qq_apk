@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class oz
   extends b
 {
-  public oz.a cFI;
-  public oz.b cFJ;
+  public a duy;
   
   public oz()
   {
@@ -16,17 +15,21 @@ public final class oz
   
   private oz(byte paramByte)
   {
-    AppMethodBeat.i(77565);
-    this.cFI = new oz.a();
-    this.cFJ = new oz.b();
-    this.ymq = false;
+    AppMethodBeat.i(104420);
+    this.duy = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77565);
+    AppMethodBeat.o(104420);
+  }
+  
+  public static final class a
+  {
+    public String dft;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.oz
  * JD-Core Version:    0.7.0.1
  */

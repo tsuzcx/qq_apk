@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:paddingTop="@dimen/hk" android:paddingBottom="@dimen/d" android:focusable="false" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/ajk" android:background="@color/zm" android:focusable="true" android:visibility="visible" android:layout_height="wrap_content" android:transcriptMode="disabled" style="@style/fr" />
-    <RelativeLayout android:id="@id/aat" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/jh" android:id="@id/aau" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ahp" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/au6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/au5" android:layout_width="209.0dip" android:layout_height="209.0dip" android:scaleType="fitXY" />
+        <Button android:textSize="@dimen/ia" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center" android:id="@id/au4" android:background="@drawable/ip" android:visibility="gone" android:layout_width="141.0dip" android:layout_height="35.0dip" android:text="@string/amr" android:singleLine="true" android:layout_centerInParent="true" />
     </RelativeLayout>
-</LinearLayout>
+    <TextView android:textSize="@dimen/m" android:textColor="@color/y4" android:ellipsize="end" android:gravity="center" android:id="@id/auc" android:background="@drawable/oe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ic" android:maxLines="3" android:layout_below="@id/au6" android:layout_centerHorizontal="true" />
+    <View android:id="@id/ad9" android:background="@drawable/pc" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/o" android:layout_marginTop="@dimen/ha" android:layout_marginRight="@dimen/o" android:layout_below="@id/auc" android:layerType="software" />
+</RelativeLayout>

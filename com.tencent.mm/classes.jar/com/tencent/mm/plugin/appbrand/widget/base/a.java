@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.appbrand.widget.base;
 
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
 {
-  public static String H(MotionEvent paramMotionEvent)
+  public static String M(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(77395);
+    AppMethodBeat.i(131468);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("MotionEvent { action=").append(actionToString(paramMotionEvent.getAction()));
     int j = paramMotionEvent.getPointerCount();
@@ -22,16 +22,16 @@ public final class a
     localStringBuilder.append(", downTime=").append(paramMotionEvent.getDownTime());
     localStringBuilder.append(" }");
     paramMotionEvent = localStringBuilder.toString();
-    AppMethodBeat.o(77395);
+    AppMethodBeat.o(131468);
     return paramMotionEvent;
   }
   
   public static void a(String paramString1, String paramString2, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(77394);
-    if (ab.getLogLevel() > 0)
+    AppMethodBeat.i(131467);
+    if (ad.getLogLevel() > 0)
     {
-      AppMethodBeat.o(77394);
+      AppMethodBeat.o(131467);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -47,13 +47,13 @@ public final class a
     }
     localStringBuilder.append(", downTime=").append(paramMotionEvent.getDownTime());
     localStringBuilder.append(" }");
-    ab.v(paramString1, localStringBuilder.toString());
-    AppMethodBeat.o(77394);
+    ad.v(paramString1, localStringBuilder.toString());
+    AppMethodBeat.o(131467);
   }
   
   private static String actionToString(int paramInt)
   {
-    AppMethodBeat.i(77396);
+    AppMethodBeat.i(131469);
     int i;
     switch (paramInt)
     {
@@ -65,47 +65,47 @@ public final class a
       {
       default: 
         str = Integer.toString(paramInt);
-        AppMethodBeat.o(77396);
+        AppMethodBeat.o(131469);
         return str;
       }
     case 0: 
-      AppMethodBeat.o(77396);
+      AppMethodBeat.o(131469);
       return "ACTION_DOWN";
     case 1: 
-      AppMethodBeat.o(77396);
+      AppMethodBeat.o(131469);
       return "ACTION_UP";
     case 3: 
-      AppMethodBeat.o(77396);
+      AppMethodBeat.o(131469);
       return "ACTION_CANCEL";
     case 4: 
-      AppMethodBeat.o(77396);
+      AppMethodBeat.o(131469);
       return "ACTION_OUTSIDE";
     case 2: 
-      AppMethodBeat.o(77396);
+      AppMethodBeat.o(131469);
       return "ACTION_MOVE";
     case 7: 
-      AppMethodBeat.o(77396);
+      AppMethodBeat.o(131469);
       return "ACTION_HOVER_MOVE";
     case 8: 
-      AppMethodBeat.o(77396);
+      AppMethodBeat.o(131469);
       return "ACTION_SCROLL";
     case 9: 
-      AppMethodBeat.o(77396);
+      AppMethodBeat.o(131469);
       return "ACTION_HOVER_ENTER";
     case 10: 
-      AppMethodBeat.o(77396);
+      AppMethodBeat.o(131469);
       return "ACTION_HOVER_EXIT";
     case 11: 
-      AppMethodBeat.o(77396);
+      AppMethodBeat.o(131469);
       return "ACTION_BUTTON_PRESS";
     }
-    AppMethodBeat.o(77396);
+    AppMethodBeat.o(131469);
     return "ACTION_BUTTON_RELEASE";
     String str = "ACTION_POINTER_DOWN(" + i + ")";
-    AppMethodBeat.o(77396);
+    AppMethodBeat.o(131469);
     return str;
     str = "ACTION_POINTER_UP(" + i + ")";
-    AppMethodBeat.o(77396);
+    AppMethodBeat.o(131469);
     return str;
   }
 }

@@ -5,23 +5,23 @@ import java.util.LinkedList;
 
 public abstract class g
 {
+  abstract k AW();
+  
+  abstract Class<? extends com.tencent.luggage.webview.a> AX();
+  
+  public abstract LinkedList<e> Ba();
+  
+  public abstract h Bb();
+  
+  abstract LinkedList<Class<? extends a>> Bc();
+  
+  public abstract com.tencent.luggage.h.e Bd();
+  
   abstract Context getContext();
-  
-  abstract k ui();
-  
-  abstract Class<? extends com.tencent.luggage.webview.a> uj();
-  
-  public abstract LinkedList<e> um();
-  
-  public abstract h un();
-  
-  abstract LinkedList<Class<? extends a>> uo();
-  
-  public abstract com.tencent.luggage.g.e up();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.d.g
  * JD-Core Version:    0.7.0.1
  */

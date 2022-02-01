@@ -20,34 +20,34 @@ public final class RemoteMessage
 {
   public static final Parcelable.Creator<RemoteMessage> CREATOR;
   @SafeParcelable.Field(id=2)
-  public Bundle bgI;
-  public Map<String, String> bgJ;
+  public Bundle bEH;
+  public Map<String, String> bEI;
   
   static
   {
-    AppMethodBeat.i(77216);
+    AppMethodBeat.i(116787);
     CREATOR = new e();
-    AppMethodBeat.o(77216);
+    AppMethodBeat.o(116787);
   }
   
   @SafeParcelable.Constructor
   public RemoteMessage(@SafeParcelable.Param(id=2) Bundle paramBundle)
   {
-    this.bgI = paramBundle;
+    this.bEH = paramBundle;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(77215);
+    AppMethodBeat.i(116786);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
-    SafeParcelWriter.writeBundle(paramParcel, 2, this.bgI, false);
+    SafeParcelWriter.writeBundle(paramParcel, 2, this.bEH, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(77215);
+    AppMethodBeat.o(116786);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.messaging.RemoteMessage
  * JD-Core Version:    0.7.0.1
  */

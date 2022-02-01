@@ -1,127 +1,108 @@
 package com.tencent.mm.plugin.fts.a.a;
 
-import android.graphics.Color;
-import android.text.TextPaint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.List;
+import com.tencent.mm.g.c.bx;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class d
+  extends bx
 {
-  public TextPaint eLQ;
-  public CharSequence mRW;
-  public g mRX;
-  public boolean mRY;
-  public boolean mRZ;
-  public d.a mSa;
-  public int mSb;
-  public float mSc;
-  public CharSequence mSd;
-  public CharSequence mSe;
-  public String mSf;
-  public String mSg;
+  public static c.a info;
+  
+  static
+  {
+    AppMethodBeat.i(131673);
+    c.a locala = new c.a();
+    locala.EYt = new Field[12];
+    locala.columns = new String[13];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "featureId";
+    locala.EYv.put("featureId", "INTEGER PRIMARY KEY ");
+    localStringBuilder.append(" featureId INTEGER PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.EYu = "featureId";
+    locala.columns[1] = "title";
+    locala.EYv.put("title", "TEXT");
+    localStringBuilder.append(" title TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "titlePY";
+    locala.EYv.put("titlePY", "TEXT");
+    localStringBuilder.append(" titlePY TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "titleShortPY";
+    locala.EYv.put("titleShortPY", "TEXT");
+    localStringBuilder.append(" titleShortPY TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "tag";
+    locala.EYv.put("tag", "TEXT");
+    localStringBuilder.append(" tag TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "actionType";
+    locala.EYv.put("actionType", "INTEGER default '0' ");
+    localStringBuilder.append(" actionType INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "url";
+    locala.EYv.put("url", "TEXT");
+    localStringBuilder.append(" url TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "helpUrl";
+    locala.EYv.put("helpUrl", "TEXT");
+    localStringBuilder.append(" helpUrl TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "updateUrl";
+    locala.EYv.put("updateUrl", "TEXT");
+    localStringBuilder.append(" updateUrl TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "androidUrl";
+    locala.EYv.put("androidUrl", "TEXT");
+    localStringBuilder.append(" androidUrl TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "iconPath";
+    locala.EYv.put("iconPath", "TEXT");
+    localStringBuilder.append(" iconPath TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[11] = "timestamp";
+    locala.EYv.put("timestamp", "LONG default '0' ");
+    localStringBuilder.append(" timestamp LONG default '0' ");
+    locala.columns[12] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(131673);
+  }
   
   public d()
   {
-    AppMethodBeat.i(114243);
-    this.mSa = d.a.mSh;
-    this.mSb = Color.parseColor("#07C160");
-    this.mSd = "";
-    this.mSe = "";
-    this.mSf = "";
-    this.mSg = "";
-    AppMethodBeat.o(114243);
+    this.field_featureId = 0;
+    this.field_title = "";
+    this.field_titlePY = "";
+    this.field_titleShortPY = "";
+    this.field_tag = "";
+    this.field_actionType = 0;
+    this.field_url = "";
+    this.field_helpUrl = "";
+    this.field_updateUrl = "";
+    this.field_androidUrl = "";
+    this.field_iconPath = "";
   }
   
-  public static final d a(CharSequence paramCharSequence, g paramg)
+  public final c.a getDBInfo()
   {
-    AppMethodBeat.i(114246);
-    d locald = new d();
-    locald.mRW = paramCharSequence;
-    locald.mRX = paramg;
-    AppMethodBeat.o(114246);
-    return locald;
+    return info;
   }
   
-  public static final d a(CharSequence paramCharSequence, g paramg, float paramFloat, TextPaint paramTextPaint)
+  public final String toString()
   {
-    AppMethodBeat.i(114248);
-    paramCharSequence = a(paramCharSequence, paramg, false, false, paramFloat, paramTextPaint);
-    AppMethodBeat.o(114248);
-    return paramCharSequence;
-  }
-  
-  public static final d a(CharSequence paramCharSequence, g paramg, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(114247);
-    paramCharSequence = a(paramCharSequence, paramg, paramBoolean1, paramBoolean2, 0.0F, null);
-    AppMethodBeat.o(114247);
-    return paramCharSequence;
-  }
-  
-  public static final d a(CharSequence paramCharSequence, g paramg, boolean paramBoolean1, boolean paramBoolean2, float paramFloat, TextPaint paramTextPaint)
-  {
-    AppMethodBeat.i(114249);
-    d locald = new d();
-    locald.mRW = paramCharSequence;
-    locald.mRX = paramg;
-    locald.mRY = paramBoolean1;
-    locald.mRZ = paramBoolean2;
-    locald.mSc = paramFloat;
-    locald.eLQ = paramTextPaint;
-    AppMethodBeat.o(114249);
-    return locald;
-  }
-  
-  public static final d a(CharSequence paramCharSequence1, g paramg, boolean paramBoolean1, boolean paramBoolean2, TextPaint paramTextPaint, CharSequence paramCharSequence2, CharSequence paramCharSequence3)
-  {
-    AppMethodBeat.i(114250);
-    d locald = new d();
-    locald.mRW = paramCharSequence1;
-    locald.mRX = paramg;
-    locald.mRY = paramBoolean1;
-    locald.mRZ = paramBoolean2;
-    locald.mSc = 400.0F;
-    locald.eLQ = paramTextPaint;
-    locald.mSd = paramCharSequence2;
-    locald.mSe = paramCharSequence3;
-    AppMethodBeat.o(114250);
-    return locald;
-  }
-  
-  public static final d a(CharSequence paramCharSequence, List<String> paramList)
-  {
-    AppMethodBeat.i(114244);
-    paramCharSequence = b(paramCharSequence, bo.d(paramList, " "));
-    AppMethodBeat.o(114244);
-    return paramCharSequence;
-  }
-  
-  public static final d a(CharSequence paramCharSequence, List<String> paramList, d.a parama, int paramInt)
-  {
-    AppMethodBeat.i(114251);
-    paramCharSequence = a(paramCharSequence, paramList);
-    paramCharSequence.mSa = parama;
-    paramCharSequence.mSb = paramInt;
-    AppMethodBeat.o(114251);
-    return paramCharSequence;
-  }
-  
-  public static final d b(CharSequence paramCharSequence, String paramString)
-  {
-    AppMethodBeat.i(114245);
-    d locald = new d();
-    locald.mRW = paramCharSequence;
-    locald.mRX = g.aU(paramString, false);
-    locald.mRY = false;
-    locald.mRZ = false;
-    AppMethodBeat.o(114245);
-    return locald;
+    AppMethodBeat.i(131672);
+    String str = "Feature [field_featureId=" + this.field_featureId + ", field_title=" + this.field_title + ", field_titlePY=" + this.field_titlePY + ", field_titleShortPY=" + this.field_titleShortPY + ", field_tag=" + this.field_tag + ", field_actionType=" + this.field_actionType + ", field_url=" + this.field_url + ", field_helpUrl=" + this.field_helpUrl + ", field_updateUrl=" + this.field_updateUrl + ", field_androidUrl=" + this.field_androidUrl + ", field_iconPath=" + this.field_iconPath + "]";
+    AppMethodBeat.o(131672);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.d
  * JD-Core Version:    0.7.0.1
  */

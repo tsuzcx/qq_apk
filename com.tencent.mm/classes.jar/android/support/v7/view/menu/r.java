@@ -23,22 +23,22 @@ class r
   
   public MenuItem add(int paramInt)
   {
-    return b(((a)this.Vj).add(paramInt));
+    return b(((a)this.aco).add(paramInt));
   }
   
   public MenuItem add(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return b(((a)this.Vj).add(paramInt1, paramInt2, paramInt3, paramInt4));
+    return b(((a)this.aco).add(paramInt1, paramInt2, paramInt3, paramInt4));
   }
   
   public MenuItem add(int paramInt1, int paramInt2, int paramInt3, CharSequence paramCharSequence)
   {
-    return b(((a)this.Vj).add(paramInt1, paramInt2, paramInt3, paramCharSequence));
+    return b(((a)this.aco).add(paramInt1, paramInt2, paramInt3, paramCharSequence));
   }
   
   public MenuItem add(CharSequence paramCharSequence)
   {
-    return b(((a)this.Vj).add(paramCharSequence));
+    return b(((a)this.aco).add(paramCharSequence));
   }
   
   public int addIntentOptions(int paramInt1, int paramInt2, int paramInt3, ComponentName paramComponentName, Intent[] paramArrayOfIntent, Intent paramIntent, int paramInt4, MenuItem[] paramArrayOfMenuItem)
@@ -47,7 +47,7 @@ class r
     if (paramArrayOfMenuItem != null) {
       arrayOfMenuItem = new MenuItem[paramArrayOfMenuItem.length];
     }
-    paramInt2 = ((a)this.Vj).addIntentOptions(paramInt1, paramInt2, paramInt3, paramComponentName, paramArrayOfIntent, paramIntent, paramInt4, arrayOfMenuItem);
+    paramInt2 = ((a)this.aco).addIntentOptions(paramInt1, paramInt2, paramInt3, paramComponentName, paramArrayOfIntent, paramIntent, paramInt4, arrayOfMenuItem);
     if (arrayOfMenuItem != null)
     {
       paramInt1 = 0;
@@ -63,121 +63,121 @@ class r
   
   public SubMenu addSubMenu(int paramInt)
   {
-    return a(((a)this.Vj).addSubMenu(paramInt));
+    return a(((a)this.aco).addSubMenu(paramInt));
   }
   
   public SubMenu addSubMenu(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return a(((a)this.Vj).addSubMenu(paramInt1, paramInt2, paramInt3, paramInt4));
+    return a(((a)this.aco).addSubMenu(paramInt1, paramInt2, paramInt3, paramInt4));
   }
   
   public SubMenu addSubMenu(int paramInt1, int paramInt2, int paramInt3, CharSequence paramCharSequence)
   {
-    return a(((a)this.Vj).addSubMenu(paramInt1, paramInt2, paramInt3, paramCharSequence));
+    return a(((a)this.aco).addSubMenu(paramInt1, paramInt2, paramInt3, paramCharSequence));
   }
   
   public SubMenu addSubMenu(CharSequence paramCharSequence)
   {
-    return a(((a)this.Vj).addSubMenu(paramCharSequence));
+    return a(((a)this.aco).addSubMenu(paramCharSequence));
   }
   
   public void clear()
   {
-    if (this.Vh != null) {
-      this.Vh.clear();
+    if (this.acm != null) {
+      this.acm.clear();
     }
-    if (this.Vi != null) {
-      this.Vi.clear();
+    if (this.acn != null) {
+      this.acn.clear();
     }
-    ((a)this.Vj).clear();
+    ((a)this.aco).clear();
   }
   
   public void close()
   {
-    ((a)this.Vj).close();
+    ((a)this.aco).close();
   }
   
   public MenuItem findItem(int paramInt)
   {
-    return b(((a)this.Vj).findItem(paramInt));
+    return b(((a)this.aco).findItem(paramInt));
   }
   
   public MenuItem getItem(int paramInt)
   {
-    return b(((a)this.Vj).getItem(paramInt));
+    return b(((a)this.aco).getItem(paramInt));
   }
   
   public boolean hasVisibleItems()
   {
-    return ((a)this.Vj).hasVisibleItems();
+    return ((a)this.aco).hasVisibleItems();
   }
   
   public boolean isShortcutKey(int paramInt, KeyEvent paramKeyEvent)
   {
-    return ((a)this.Vj).isShortcutKey(paramInt, paramKeyEvent);
+    return ((a)this.aco).isShortcutKey(paramInt, paramKeyEvent);
   }
   
   public boolean performIdentifierAction(int paramInt1, int paramInt2)
   {
-    return ((a)this.Vj).performIdentifierAction(paramInt1, paramInt2);
+    return ((a)this.aco).performIdentifierAction(paramInt1, paramInt2);
   }
   
   public boolean performShortcut(int paramInt1, KeyEvent paramKeyEvent, int paramInt2)
   {
-    return ((a)this.Vj).performShortcut(paramInt1, paramKeyEvent, paramInt2);
+    return ((a)this.aco).performShortcut(paramInt1, paramKeyEvent, paramInt2);
   }
   
   public void removeGroup(int paramInt)
   {
-    if (this.Vh != null)
+    if (this.acm != null)
     {
-      Iterator localIterator = this.Vh.keySet().iterator();
+      Iterator localIterator = this.acm.keySet().iterator();
       while (localIterator.hasNext()) {
         if (paramInt == ((MenuItem)localIterator.next()).getGroupId()) {
           localIterator.remove();
         }
       }
     }
-    ((a)this.Vj).removeGroup(paramInt);
+    ((a)this.aco).removeGroup(paramInt);
   }
   
   public void removeItem(int paramInt)
   {
-    if (this.Vh != null)
+    if (this.acm != null)
     {
-      Iterator localIterator = this.Vh.keySet().iterator();
+      Iterator localIterator = this.acm.keySet().iterator();
       while (localIterator.hasNext()) {
         if (paramInt == ((MenuItem)localIterator.next()).getItemId()) {
           localIterator.remove();
         }
       }
     }
-    ((a)this.Vj).removeItem(paramInt);
+    ((a)this.aco).removeItem(paramInt);
   }
   
   public void setGroupCheckable(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    ((a)this.Vj).setGroupCheckable(paramInt, paramBoolean1, paramBoolean2);
+    ((a)this.aco).setGroupCheckable(paramInt, paramBoolean1, paramBoolean2);
   }
   
   public void setGroupEnabled(int paramInt, boolean paramBoolean)
   {
-    ((a)this.Vj).setGroupEnabled(paramInt, paramBoolean);
+    ((a)this.aco).setGroupEnabled(paramInt, paramBoolean);
   }
   
   public void setGroupVisible(int paramInt, boolean paramBoolean)
   {
-    ((a)this.Vj).setGroupVisible(paramInt, paramBoolean);
+    ((a)this.aco).setGroupVisible(paramInt, paramBoolean);
   }
   
   public void setQwertyMode(boolean paramBoolean)
   {
-    ((a)this.Vj).setQwertyMode(paramBoolean);
+    ((a)this.aco).setQwertyMode(paramBoolean);
   }
   
   public int size()
   {
-    return ((a)this.Vj).size();
+    return ((a)this.aco).size();
   }
 }
 

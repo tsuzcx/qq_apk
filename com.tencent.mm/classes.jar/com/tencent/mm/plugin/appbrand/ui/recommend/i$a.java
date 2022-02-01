@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
-import a.f.a.a;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.a.a;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
 final class i$a
   implements Runnable
 {
@@ -12,14 +12,14 @@ final class i$a
   
   public final void run()
   {
-    AppMethodBeat.i(135202);
-    this.hdx.invoke();
-    AppMethodBeat.o(135202);
+    AppMethodBeat.i(51378);
+    this.iWN.invoke();
+    AppMethodBeat.o(51378);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.i.a
  * JD-Core Version:    0.7.0.1
  */

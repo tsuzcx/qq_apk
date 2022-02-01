@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/qp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView style="@style/ny">
+        <LinearLayout android:id="@id/b2r" style="@style/ld">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/bvc" android:paddingLeft="8.0dip" android:paddingTop="8.0dip" android:paddingRight="5.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="7.0dip">
+                <ImageView android:id="@id/crx" android:layout_width="42.0dip" android:layout_height="42.0dip" />
+                <View style="@style/oh" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:id="@id/cs2" style="@style/lw" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/km" android:gravity="center" android:id="@id/cs3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
+            <Button android:textSize="20.0dip" android:id="@id/cs0" android:layout_marginTop="27.0dip" android:text="@string/d3_" style="@style/o6" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

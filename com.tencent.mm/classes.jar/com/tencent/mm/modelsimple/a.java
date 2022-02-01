@@ -7,9 +7,9 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 final class a
 {
-  public static BindWordingContent un(String paramString)
+  public static BindWordingContent za(String paramString)
   {
-    AppMethodBeat.i(123429);
+    AppMethodBeat.i(134148);
     BindWordingContent localBindWordingContent = new BindWordingContent("", "");
     Object localObject = XmlPullParserFactory.newInstance();
     ((XmlPullParserFactory)localObject).setNamespaceAware(true);
@@ -56,12 +56,12 @@ final class a
               if (paramString.equalsIgnoreCase("type")) {
                 try
                 {
-                  localBindWordingContent.bOw = Integer.valueOf(str2);
+                  localBindWordingContent.hrf = Integer.valueOf(str2);
                   localObject = paramString;
                 }
                 catch (Exception localException)
                 {
-                  localBindWordingContent.bOw = Integer.valueOf(0);
+                  localBindWordingContent.hrf = Integer.valueOf(0);
                   String str1 = paramString;
                 }
               }
@@ -70,13 +70,13 @@ final class a
         }
       }
     }
-    AppMethodBeat.o(123429);
+    AppMethodBeat.o(134148);
     return localBindWordingContent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelsimple.a
  * JD-Core Version:    0.7.0.1
  */

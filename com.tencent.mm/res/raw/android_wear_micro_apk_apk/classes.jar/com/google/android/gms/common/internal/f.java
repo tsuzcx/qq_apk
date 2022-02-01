@@ -10,11 +10,11 @@ public final class f
   static void a(zzaf paramzzaf, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramzzaf.Hc);
-    c.a(paramParcel, 2, paramzzaf.Jd);
-    c.a(paramParcel, 3, paramzzaf.gW(), paramInt);
-    c.a(paramParcel, 4, paramzzaf.gX());
-    c.a(paramParcel, 5, paramzzaf.gY());
+    c.c(paramParcel, 1, paramzzaf.IR);
+    c.a(paramParcel, 2, paramzzaf.KS);
+    c.a(paramParcel, 3, paramzzaf.hg(), paramInt);
+    c.a(paramParcel, 4, paramzzaf.hh());
+    c.a(paramParcel, 5, paramzzaf.hi());
     c.v(paramParcel, i);
   }
 }

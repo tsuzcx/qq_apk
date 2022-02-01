@@ -9,7 +9,7 @@ public abstract class WWBaseMessage
   extends BaseMessage
 {
   public String appId;
-  public String hiM;
+  public String jdE;
   public String transaction;
   
   public boolean checkArgs()
@@ -23,7 +23,7 @@ public abstract class WWBaseMessage
     this.transaction = str;
     paramBundle.putString("_wwapi_basereq_transaction", str);
     paramBundle.putString("_wwapi_basereq_openid", this.appId);
-    paramBundle.putString("_wwapi_basereq_agentid", this.hiM);
+    paramBundle.putString("_wwapi_basereq_agentid", this.jdE);
     try
     {
       paramBundle.putString("_wwapi_basereq_appbundle", this.mContext.getPackageName());
@@ -40,7 +40,7 @@ public abstract class WWBaseMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wework.api.model.WWBaseMessage
  * JD-Core Version:    0.7.0.1
  */

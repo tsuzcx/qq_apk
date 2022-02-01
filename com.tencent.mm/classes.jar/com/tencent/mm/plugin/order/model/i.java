@@ -4,284 +4,284 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class i
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
   public int CreateTime;
-  public String ntp;
-  public String ppY;
-  public double ppZ;
-  public String pqa;
-  public String pqb;
-  public int pqc;
-  public String pqd;
-  public int pqe;
-  public int pqf;
-  public String pqg;
-  public String pqh;
-  public String pqi;
-  public String pqj;
-  public String pqk;
-  public int pql;
-  public LinkedList<k> pqm;
-  public String pqn;
-  public String pqo;
-  public double pqp;
-  public String pqq;
+  public String scR;
+  public String uoY;
+  public double uoZ;
+  public String upa;
+  public String upb;
+  public int upc;
+  public String upd;
+  public int upe;
+  public int upf;
+  public String upg;
+  public String uph;
+  public String upi;
+  public String upj;
+  public String upk;
+  public int upl;
+  public LinkedList<k> upm;
+  public String upn;
+  public String upo;
+  public double upp;
+  public String upq;
   
   public i()
   {
-    AppMethodBeat.i(56618);
-    this.pqm = new LinkedList();
-    AppMethodBeat.o(56618);
+    AppMethodBeat.i(91261);
+    this.upm = new LinkedList();
+    AppMethodBeat.o(91261);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(56619);
+    AppMethodBeat.i(91262);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.ppY != null) {
-        paramVarArgs.e(1, this.ppY);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.uoY != null) {
+        paramVarArgs.d(1, this.uoY);
       }
-      paramVarArgs.f(2, this.ppZ);
-      if (this.pqa != null) {
-        paramVarArgs.e(3, this.pqa);
+      paramVarArgs.e(2, this.uoZ);
+      if (this.upa != null) {
+        paramVarArgs.d(3, this.upa);
       }
-      paramVarArgs.aO(4, this.CreateTime);
-      if (this.pqb != null) {
-        paramVarArgs.e(5, this.pqb);
+      paramVarArgs.aR(4, this.CreateTime);
+      if (this.upb != null) {
+        paramVarArgs.d(5, this.upb);
       }
-      paramVarArgs.aO(6, this.pqc);
-      if (this.pqd != null) {
-        paramVarArgs.e(7, this.pqd);
+      paramVarArgs.aR(6, this.upc);
+      if (this.upd != null) {
+        paramVarArgs.d(7, this.upd);
       }
-      paramVarArgs.aO(8, this.pqe);
-      paramVarArgs.aO(9, this.pqf);
-      if (this.pqg != null) {
-        paramVarArgs.e(10, this.pqg);
+      paramVarArgs.aR(8, this.upe);
+      paramVarArgs.aR(9, this.upf);
+      if (this.upg != null) {
+        paramVarArgs.d(10, this.upg);
       }
-      if (this.ntp != null) {
-        paramVarArgs.e(11, this.ntp);
+      if (this.scR != null) {
+        paramVarArgs.d(11, this.scR);
       }
-      if (this.pqh != null) {
-        paramVarArgs.e(12, this.pqh);
+      if (this.uph != null) {
+        paramVarArgs.d(12, this.uph);
       }
-      if (this.pqi != null) {
-        paramVarArgs.e(13, this.pqi);
+      if (this.upi != null) {
+        paramVarArgs.d(13, this.upi);
       }
-      if (this.pqj != null) {
-        paramVarArgs.e(14, this.pqj);
+      if (this.upj != null) {
+        paramVarArgs.d(14, this.upj);
       }
-      if (this.pqk != null) {
-        paramVarArgs.e(15, this.pqk);
+      if (this.upk != null) {
+        paramVarArgs.d(15, this.upk);
       }
-      paramVarArgs.aO(16, this.pql);
-      paramVarArgs.e(17, 8, this.pqm);
-      if (this.pqn != null) {
-        paramVarArgs.e(18, this.pqn);
+      paramVarArgs.aR(16, this.upl);
+      paramVarArgs.e(17, 8, this.upm);
+      if (this.upn != null) {
+        paramVarArgs.d(18, this.upn);
       }
-      if (this.pqo != null) {
-        paramVarArgs.e(19, this.pqo);
+      if (this.upo != null) {
+        paramVarArgs.d(19, this.upo);
       }
-      paramVarArgs.f(20, this.pqp);
-      if (this.pqq != null) {
-        paramVarArgs.e(21, this.pqq);
+      paramVarArgs.e(20, this.upp);
+      if (this.upq != null) {
+        paramVarArgs.d(21, this.upq);
       }
-      AppMethodBeat.o(56619);
+      AppMethodBeat.o(91262);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ppY == null) {
+      if (this.uoY == null) {
         break label1416;
       }
     }
     label1416:
-    for (paramInt = e.a.a.b.b.a.f(1, this.ppY) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.uoY) + 0;; paramInt = 0)
     {
-      int i = paramInt + (e.a.a.b.b.a.eW(2) + 8);
+      int i = paramInt + (f.a.a.b.b.a.fY(2) + 8);
       paramInt = i;
-      if (this.pqa != null) {
-        paramInt = i + e.a.a.b.b.a.f(3, this.pqa);
+      if (this.upa != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.upa);
       }
-      i = paramInt + e.a.a.b.b.a.bl(4, this.CreateTime);
+      i = paramInt + f.a.a.b.b.a.bA(4, this.CreateTime);
       paramInt = i;
-      if (this.pqb != null) {
-        paramInt = i + e.a.a.b.b.a.f(5, this.pqb);
+      if (this.upb != null) {
+        paramInt = i + f.a.a.b.b.a.e(5, this.upb);
       }
-      i = paramInt + e.a.a.b.b.a.bl(6, this.pqc);
+      i = paramInt + f.a.a.b.b.a.bA(6, this.upc);
       paramInt = i;
-      if (this.pqd != null) {
-        paramInt = i + e.a.a.b.b.a.f(7, this.pqd);
+      if (this.upd != null) {
+        paramInt = i + f.a.a.b.b.a.e(7, this.upd);
       }
-      i = paramInt + e.a.a.b.b.a.bl(8, this.pqe) + e.a.a.b.b.a.bl(9, this.pqf);
+      i = paramInt + f.a.a.b.b.a.bA(8, this.upe) + f.a.a.b.b.a.bA(9, this.upf);
       paramInt = i;
-      if (this.pqg != null) {
-        paramInt = i + e.a.a.b.b.a.f(10, this.pqg);
+      if (this.upg != null) {
+        paramInt = i + f.a.a.b.b.a.e(10, this.upg);
       }
       i = paramInt;
-      if (this.ntp != null) {
-        i = paramInt + e.a.a.b.b.a.f(11, this.ntp);
+      if (this.scR != null) {
+        i = paramInt + f.a.a.b.b.a.e(11, this.scR);
       }
       paramInt = i;
-      if (this.pqh != null) {
-        paramInt = i + e.a.a.b.b.a.f(12, this.pqh);
+      if (this.uph != null) {
+        paramInt = i + f.a.a.b.b.a.e(12, this.uph);
       }
       i = paramInt;
-      if (this.pqi != null) {
-        i = paramInt + e.a.a.b.b.a.f(13, this.pqi);
+      if (this.upi != null) {
+        i = paramInt + f.a.a.b.b.a.e(13, this.upi);
       }
       paramInt = i;
-      if (this.pqj != null) {
-        paramInt = i + e.a.a.b.b.a.f(14, this.pqj);
+      if (this.upj != null) {
+        paramInt = i + f.a.a.b.b.a.e(14, this.upj);
       }
       i = paramInt;
-      if (this.pqk != null) {
-        i = paramInt + e.a.a.b.b.a.f(15, this.pqk);
+      if (this.upk != null) {
+        i = paramInt + f.a.a.b.b.a.e(15, this.upk);
       }
-      i = i + e.a.a.b.b.a.bl(16, this.pql) + e.a.a.a.c(17, 8, this.pqm);
+      i = i + f.a.a.b.b.a.bA(16, this.upl) + f.a.a.a.c(17, 8, this.upm);
       paramInt = i;
-      if (this.pqn != null) {
-        paramInt = i + e.a.a.b.b.a.f(18, this.pqn);
+      if (this.upn != null) {
+        paramInt = i + f.a.a.b.b.a.e(18, this.upn);
       }
       i = paramInt;
-      if (this.pqo != null) {
-        i = paramInt + e.a.a.b.b.a.f(19, this.pqo);
+      if (this.upo != null) {
+        i = paramInt + f.a.a.b.b.a.e(19, this.upo);
       }
-      i += e.a.a.b.b.a.eW(20) + 8;
+      i += f.a.a.b.b.a.fY(20) + 8;
       paramInt = i;
-      if (this.pqq != null) {
-        paramInt = i + e.a.a.b.b.a.f(21, this.pqq);
+      if (this.upq != null) {
+        paramInt = i + f.a.a.b.b.a.e(21, this.upq);
       }
-      AppMethodBeat.o(56619);
+      AppMethodBeat.o(91262);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.pqm.clear();
-        paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        this.upm.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(56619);
+        AppMethodBeat.o(91262);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         i locali = (i)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(56619);
+          AppMethodBeat.o(91262);
           return -1;
         case 1: 
-          locali.ppY = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(56619);
+          locali.uoY = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91262);
           return 0;
         case 2: 
-          locali.ppZ = Double.longBitsToDouble(((e.a.a.a.a)localObject1).CLY.emy());
-          AppMethodBeat.o(56619);
+          locali.uoZ = Double.longBitsToDouble(((f.a.a.a.a)localObject1).KhF.fHy());
+          AppMethodBeat.o(91262);
           return 0;
         case 3: 
-          locali.pqa = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(56619);
+          locali.upa = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91262);
           return 0;
         case 4: 
-          locali.CreateTime = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(56619);
+          locali.CreateTime = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(91262);
           return 0;
         case 5: 
-          locali.pqb = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(56619);
+          locali.upb = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91262);
           return 0;
         case 6: 
-          locali.pqc = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(56619);
+          locali.upc = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(91262);
           return 0;
         case 7: 
-          locali.pqd = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(56619);
+          locali.upd = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91262);
           return 0;
         case 8: 
-          locali.pqe = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(56619);
+          locali.upe = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(91262);
           return 0;
         case 9: 
-          locali.pqf = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(56619);
+          locali.upf = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(91262);
           return 0;
         case 10: 
-          locali.pqg = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(56619);
+          locali.upg = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91262);
           return 0;
         case 11: 
-          locali.ntp = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(56619);
+          locali.scR = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91262);
           return 0;
         case 12: 
-          locali.pqh = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(56619);
+          locali.uph = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91262);
           return 0;
         case 13: 
-          locali.pqi = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(56619);
+          locali.upi = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91262);
           return 0;
         case 14: 
-          locali.pqj = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(56619);
+          locali.upj = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91262);
           return 0;
         case 15: 
-          locali.pqk = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(56619);
+          locali.upk = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91262);
           return 0;
         case 16: 
-          locali.pql = ((e.a.a.a.a)localObject1).CLY.sl();
-          AppMethodBeat.o(56619);
+          locali.upl = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(91262);
           return 0;
         case 17: 
-          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new k();
-            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((k)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-            locali.pqm.add(localObject1);
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((k)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            locali.upm.add(localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(56619);
+          AppMethodBeat.o(91262);
           return 0;
         case 18: 
-          locali.pqn = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(56619);
+          locali.upn = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91262);
           return 0;
         case 19: 
-          locali.pqo = ((e.a.a.a.a)localObject1).CLY.readString();
-          AppMethodBeat.o(56619);
+          locali.upo = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91262);
           return 0;
         case 20: 
-          locali.pqp = Double.longBitsToDouble(((e.a.a.a.a)localObject1).CLY.emy());
-          AppMethodBeat.o(56619);
+          locali.upp = Double.longBitsToDouble(((f.a.a.a.a)localObject1).KhF.fHy());
+          AppMethodBeat.o(91262);
           return 0;
         }
-        locali.pqq = ((e.a.a.a.a)localObject1).CLY.readString();
-        AppMethodBeat.o(56619);
+        locali.upq = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91262);
         return 0;
       }
-      AppMethodBeat.o(56619);
+      AppMethodBeat.o(91262);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.order.model.i
  * JD-Core Version:    0.7.0.1
  */

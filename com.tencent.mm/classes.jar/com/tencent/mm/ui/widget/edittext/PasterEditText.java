@@ -10,53 +10,64 @@ public class PasterEditText
   extends EditText
 {
   private Context context;
-  private int iNn;
-  private ClipboardManager rQu;
+  private int lAM;
+  private ClipboardManager xyK;
+  
+  public PasterEditText(Context paramContext)
+  {
+    super(paramContext);
+    AppMethodBeat.i(168813);
+    this.xyK = null;
+    this.lAM = 0;
+    this.context = paramContext;
+    init();
+    AppMethodBeat.o(168813);
+  }
   
   public PasterEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(112701);
-    this.rQu = null;
-    this.iNn = 0;
+    AppMethodBeat.i(159400);
+    this.xyK = null;
+    this.lAM = 0;
     this.context = paramContext;
     init();
-    AppMethodBeat.o(112701);
+    AppMethodBeat.o(159400);
   }
   
   public PasterEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(112702);
-    this.rQu = null;
-    this.iNn = 0;
+    AppMethodBeat.i(159401);
+    this.xyK = null;
+    this.lAM = 0;
     init();
-    AppMethodBeat.o(112702);
+    AppMethodBeat.o(159401);
   }
   
   private void init()
   {
-    AppMethodBeat.i(112703);
-    this.rQu = ((ClipboardManager)this.context.getApplicationContext().getSystemService("clipboard"));
-    AppMethodBeat.o(112703);
+    AppMethodBeat.i(159402);
+    this.xyK = ((ClipboardManager)this.context.getApplicationContext().getSystemService("clipboard"));
+    AppMethodBeat.o(159402);
   }
   
   public int getPasterLen()
   {
-    return this.iNn;
+    return this.lAM;
   }
   
   public boolean onTextContextMenuItem(int paramInt)
   {
-    AppMethodBeat.i(112704);
+    AppMethodBeat.i(159403);
     if (paramInt == 16908322) {
-      if ((this.rQu != null) && (this.rQu.getText() != null) && ((this.rQu.getText() instanceof String)) && (this.rQu.getText() != null) && (this.rQu.getText().length() > 0)) {
-        this.iNn += this.rQu.getText().length();
+      if ((this.xyK != null) && (this.xyK.getText() != null) && ((this.xyK.getText() instanceof String)) && (this.xyK.getText() != null) && (this.xyK.getText().length() > 0)) {
+        this.lAM += this.xyK.getText().length();
       }
     }
     for (boolean bool = super.onTextContextMenuItem(paramInt);; bool = super.onTextContextMenuItem(paramInt))
     {
-      AppMethodBeat.o(112704);
+      AppMethodBeat.o(159403);
       return bool;
     }
   }

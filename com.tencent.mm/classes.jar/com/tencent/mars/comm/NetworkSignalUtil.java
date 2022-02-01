@@ -3,10 +3,12 @@ package com.tencent.mars.comm;
 import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Looper;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class NetworkSignalUtil
 {
@@ -17,14 +19,21 @@ public class NetworkSignalUtil
   public static void InitNetworkSignalUtil(Context paramContext)
   {
     context = paramContext;
-    ((TelephonyManager)paramContext.getSystemService("phone")).listen(new PhoneStateListener()
+    new ap(Looper.getMainLooper()).post(new Runnable()
     {
-      public final void onSignalStrengthsChanged(SignalStrength paramAnonymousSignalStrength)
+      public final void run()
       {
-        super.onSignalStrengthsChanged(paramAnonymousSignalStrength);
-        NetworkSignalUtil.calSignalStrength(paramAnonymousSignalStrength);
+        ad.i("MicroMsg.NetworkSignalUtil", "[InitNetworkSignalUtil] run.. %s", new Object[] { Looper.myLooper() });
+        ((TelephonyManager)NetworkSignalUtil.context.getSystemService("phone")).listen(new PhoneStateListener()
+        {
+          public void onSignalStrengthsChanged(SignalStrength paramAnonymous2SignalStrength)
+          {
+            super.onSignalStrengthsChanged(paramAnonymous2SignalStrength);
+            NetworkSignalUtil.calSignalStrength(paramAnonymous2SignalStrength);
+          }
+        }, 256);
       }
-    }, 256);
+    });
   }
   
   private static void calSignalStrength(SignalStrength paramSignalStrength)
@@ -79,7 +88,7 @@ public class NetworkSignalUtil
     if ((localWifiInfo != null) && (localWifiInfo.getBSSID() != null))
     {
       int j = WifiManager.calculateSignalLevel(localWifiInfo.getRssi(), 10);
-      ab.v("MicroMsg.NetworkSignalUtil", "Wifi Signal:" + j * 10);
+      ad.v("MicroMsg.NetworkSignalUtil", "Wifi Signal:" + j * 10);
       int i = j;
       if (j > 10) {
         i = 10;
@@ -90,7 +99,7 @@ public class NetworkSignalUtil
       }
       return j * 10;
     }
-    ab.v("MicroMsg.NetworkSignalUtil", "Can Not Get Wifi Signal");
+    ad.v("MicroMsg.NetworkSignalUtil", "Can Not Get Wifi Signal");
     return 0L;
   }
 }

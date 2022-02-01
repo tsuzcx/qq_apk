@@ -4,13 +4,13 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.util.AttributeSet;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class AppBrandRecentView
   extends RecyclerView
 {
-  private AppBrandRecentView.e jhH;
-  d.a jup;
+  private AppBrandRecentView.e lWG;
+  d.a mkv;
   
   public AppBrandRecentView(Context paramContext)
   {
@@ -30,45 +30,49 @@ public abstract class AppBrandRecentView
   
   public AppBrandRecentView.e getRefreshListener()
   {
-    return this.jhH;
+    return this.lWG;
   }
   
   public d.a getSceneFactory()
   {
-    return this.jup;
+    return this.mkv;
   }
   
   public abstract void refresh();
   
   public abstract void release();
   
-  public abstract void setDataQuery(c paramc);
+  public abstract void setDataQuery(AppBrandRecentView.c paramc);
   
   public abstract void setOnItemClickListener(AppBrandRecentView.b paramb);
   
   public void setRefreshListener(AppBrandRecentView.e parame)
   {
-    this.jhH = parame;
+    this.lWG = parame;
   }
   
   public void setSceneFactory(d.a parama)
   {
-    this.jup = parama;
+    this.mkv = parama;
   }
   
-  public static abstract interface c<T>
+  public static enum f
   {
-    public abstract List<T> qi(int paramInt);
-  }
-  
-  public static abstract interface d
-  {
-    public abstract void aQm();
+    static
+    {
+      AppMethodBeat.i(153240);
+      mkw = new f("RECENT_APP_BRAND", 0);
+      mkx = new f("MY_APP_BRAND", 1);
+      mky = new f[] { mkw, mkx };
+      AppMethodBeat.o(153240);
+    }
+    
+    private f() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recentview.AppBrandRecentView
  * JD-Core Version:    0.7.0.1
  */

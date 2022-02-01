@@ -1,36 +1,197 @@
 package com.tencent.mm.plugin.gallery.a;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.os.ParcelFileDescriptor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.i;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public final class a
 {
-  public static void swap(List<?> paramList, int paramInt1, int paramInt2)
+  private static Bitmap a(String paramString, BitmapFactory.Options paramOptions, int paramInt)
   {
-    AppMethodBeat.i(21620);
-    int i = paramInt1;
-    if (paramInt1 > paramInt2)
+    AppMethodBeat.i(111738);
+    for (;;)
     {
-      while (paramInt1 > paramInt2)
+      try
       {
-        Collections.swap(paramList, paramInt1, paramInt1 - 1);
-        paramInt1 -= 1;
+        paramString = i.lB(paramString, "r").getFileDescriptor();
+        if (paramString == null)
+        {
+          AppMethodBeat.o(111738);
+          return null;
+        }
+        paramOptions.inJustDecodeBounds = true;
+        BitmapFactory.decodeFileDescriptor(paramString, null, paramOptions);
+        i = paramOptions.outWidth;
+        j = paramOptions.outHeight;
+        if ((i == -1) || (j == -1))
+        {
+          ad.i("MicroMsg.GalleryBitmapUtil", "decode error, get invalid picture size");
+          AppMethodBeat.o(111738);
+          return null;
+        }
+        paramInt = Math.min(i, j) / paramInt;
+        if (paramInt > 0) {
+          continue;
+        }
+        paramInt = 1;
       }
-      AppMethodBeat.o(21620);
-      return;
+      catch (Exception paramString)
+      {
+        int i;
+        int j;
+        ad.printErrStackTrace("MicroMsg.GalleryBitmapUtil", paramString, "decodeThumbnail fail!!!", new Object[0]);
+        AppMethodBeat.o(111738);
+        return null;
+        paramInt -= 1;
+        paramInt |= paramInt >> 16;
+        paramInt |= paramInt >> 8;
+        paramInt |= paramInt >> 4;
+        paramInt |= paramInt >> 2;
+        paramInt = (paramInt | paramInt >> 1) + 1;
+        continue;
+        paramOptions.inSampleSize = paramInt;
+        paramOptions.inJustDecodeBounds = false;
+        paramOptions.inMutable = true;
+        paramOptions = BitmapFactory.decodeFileDescriptor(paramString, null, paramOptions);
+        paramString = paramOptions;
+        if (paramOptions.getWidth() * paramOptions.getHeight() < 640000) {
+          continue;
+        }
+        paramString = Bitmap.createScaledBitmap(paramOptions, i / paramInt, j / paramInt, false);
+        AppMethodBeat.o(111738);
+        return paramString;
+      }
+      catch (Throwable paramString)
+      {
+        ad.printErrStackTrace("MicroMsg.GalleryBitmapUtil", paramString, "err!!", new Object[0]);
+        AppMethodBeat.o(111738);
+        return null;
+      }
+      catch (OutOfMemoryError paramString)
+      {
+        continue;
+        if (paramInt <= 0) {
+          continue;
+        }
+        if (paramInt <= 1073741824) {
+          continue;
+        }
+        continue;
+      }
+      if (i / paramInt * (j / paramInt) < 640000) {
+        continue;
+      }
+      paramInt *= 2;
     }
-    while (i < paramInt2)
+    paramString = new IllegalArgumentException("n is invalid: ".concat(String.valueOf(paramInt)));
+    AppMethodBeat.o(111738);
+    throw paramString;
+  }
+  
+  public static Bitmap dk(String paramString, int paramInt)
+  {
+    Object localObject2 = null;
+    AppMethodBeat.i(111737);
+    if (bt.isNullOrNil(paramString))
     {
-      Collections.swap(paramList, i, i + 1);
-      i += 1;
+      ad.e("MicroMsg.GalleryBitmapUtil", "imgPath is invalid.");
+      AppMethodBeat.o(111737);
+      return null;
     }
-    AppMethodBeat.o(21620);
+    localOptions = new BitmapFactory.Options();
+    for (;;)
+    {
+      try
+      {
+        arrayOfByte = new androidx.a.a.a(paramString).getThumbnail();
+        if (arrayOfByte == null) {
+          continue;
+        }
+        if (arrayOfByte == null)
+        {
+          localObject1 = localObject2;
+          if (localObject1 == null) {
+            continue;
+          }
+          ad.i("MicroMsg.GalleryBitmapUtil", "decode thumb success from exif.");
+          AppMethodBeat.o(111737);
+          return localObject1;
+        }
+        localOptions.inJustDecodeBounds = true;
+        BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length, localOptions);
+        localObject1 = localObject2;
+        if (localOptions.outWidth < paramInt) {
+          continue;
+        }
+        localObject1 = localObject2;
+        if (localOptions.outHeight < paramInt) {
+          continue;
+        }
+        i = localOptions.outWidth;
+        int j = localOptions.outHeight;
+        i = Math.max(i / paramInt, j / paramInt);
+        if (i > 1) {
+          continue;
+        }
+        i = 1;
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        byte[] arrayOfByte;
+        Object localObject1;
+        ad.printErrStackTrace("MicroMsg.GalleryBitmapUtil", localFileNotFoundException, "failed to find file to read thumbnail: %s.", new Object[] { paramString });
+        paramString = a(paramString, localOptions, paramInt);
+        AppMethodBeat.o(111737);
+        return paramString;
+        int i = Integer.highestOneBit(i);
+        continue;
+        i /= 8;
+        i *= 8;
+        continue;
+      }
+      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+      {
+        ad.printErrStackTrace("MicroMsg.GalleryBitmapUtil", localIndexOutOfBoundsException, "failed to get thumbnail from: %s.", new Object[] { paramString });
+        continue;
+      }
+      catch (Exception localException)
+      {
+        ad.printErrStackTrace("MicroMsg.GalleryBitmapUtil", localException, "failed to get thumbnail from: %s.", new Object[] { paramString });
+        continue;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        continue;
+      }
+      catch (IOException localIOException)
+      {
+        continue;
+      }
+      localOptions.inSampleSize = i;
+      localOptions.inJustDecodeBounds = false;
+      localOptions.inMutable = true;
+      localObject1 = BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length, localOptions);
+    }
+    if (i <= 8) {
+      if (i <= 0)
+      {
+        localObject1 = new IllegalArgumentException();
+        AppMethodBeat.o(111737);
+        throw ((Throwable)localObject1);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.a.a
  * JD-Core Version:    0.7.0.1
  */

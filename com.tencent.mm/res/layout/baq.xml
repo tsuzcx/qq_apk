@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/p" android:textColor="@color/y4" android:id="@id/iy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="@dimen/ha" android:layout_marginBottom="@dimen/ha" />
+    <LinearLayout android:orientation="vertical" android:id="@id/iw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginBottom="@dimen/ha">
+        <TextView android:textSize="@dimen/h6" android:textColor="@color/y4" android:id="@id/ix" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/p" android:textColor="@color/y4" android:id="@id/iu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/iv" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

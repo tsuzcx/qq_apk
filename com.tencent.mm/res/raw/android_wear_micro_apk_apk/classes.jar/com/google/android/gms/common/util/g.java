@@ -7,12 +7,12 @@ import android.os.Build.VERSION;
 
 public final class g
 {
-  private static Boolean Lf;
-  private static Boolean Lg;
-  private static Boolean Lh;
+  private static Boolean MU;
+  private static Boolean MV;
+  private static Boolean MW;
   
   @TargetApi(24)
-  public static boolean j(Context paramContext)
+  public static boolean k(Context paramContext)
   {
     int i;
     if (Build.VERSION.SDK_INT >= 24)
@@ -20,21 +20,21 @@ public final class g
       i = 1;
       if (i != 0)
       {
-        if (Lg == null)
+        if (MV == null)
         {
-          if ((!j.hW()) || (!paramContext.getPackageManager().hasSystemFeature("cn.google"))) {
+          if ((!k.ie()) || (!paramContext.getPackageManager().hasSystemFeature("cn.google"))) {
             break label105;
           }
           bool = true;
           label40:
-          Lg = Boolean.valueOf(bool);
+          MV = Boolean.valueOf(bool);
         }
-        if (!Lg.booleanValue()) {
+        if (!MV.booleanValue()) {
           break label115;
         }
       }
-      if (Lf == null) {
-        if ((!j.hV()) || (!paramContext.getPackageManager().hasSystemFeature("android.hardware.type.watch"))) {
+      if (MU == null) {
+        if ((!k.id()) || (!paramContext.getPackageManager().hasSystemFeature("android.hardware.type.watch"))) {
           break label110;
         }
       }
@@ -43,8 +43,8 @@ public final class g
     label110:
     for (boolean bool = true;; bool = false)
     {
-      Lf = Boolean.valueOf(bool);
-      if (!Lf.booleanValue()) {
+      MU = Boolean.valueOf(bool);
+      if (!MU.booleanValue()) {
         break label115;
       }
       return true;
@@ -57,12 +57,12 @@ public final class g
     return false;
   }
   
-  public static boolean k(Context paramContext)
+  public static boolean l(Context paramContext)
   {
-    if (Lh == null) {
-      Lh = Boolean.valueOf(paramContext.getPackageManager().hasSystemFeature("android.hardware.type.iot"));
+    if (MW == null) {
+      MW = Boolean.valueOf(paramContext.getPackageManager().hasSystemFeature("android.hardware.type.iot"));
     }
-    return Lh.booleanValue();
+    return MW.booleanValue();
   }
 }
 

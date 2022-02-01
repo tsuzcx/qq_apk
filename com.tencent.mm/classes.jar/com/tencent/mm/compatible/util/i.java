@@ -1,36 +1,78 @@
 package com.tencent.mm.compatible.util;
 
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.security.PrivilegedAction;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.z;
 
+@Deprecated
 public final class i
-  implements PrivilegedAction
+  extends z
 {
-  private String etj;
-  private String etk;
-  
-  public i(String paramString)
+  public static final void A(Context paramContext, int paramInt)
   {
-    this.etj = paramString;
+    AppMethodBeat.i(155904);
+    int j = z.ax(paramContext, 0);
+    int i = z.im(paramContext);
+    if (paramInt < j) {
+      paramInt = j;
+    }
+    for (;;)
+    {
+      if (paramInt > i) {
+        paramInt = i;
+      }
+      for (;;)
+      {
+        aw(paramContext, paramInt);
+        ax.aFC(aj.eFD()).putInt("com.tencent.mm.compatible.util.keybord.height", paramInt);
+        AppMethodBeat.o(155904);
+        return;
+      }
+    }
   }
   
-  public final Object run()
+  public static final int XO()
   {
-    AppMethodBeat.i(93097);
-    String str = System.getProperty(this.etj);
-    if (str == null)
+    return ETT;
+  }
+  
+  public static final int XP()
+  {
+    AppMethodBeat.i(155905);
+    int i = ax.aFC(aj.eFD()).getInt("com.tencent.mm.compatible.util.keybord.height", 0);
+    AppMethodBeat.o(155905);
+    return i;
+  }
+  
+  @TargetApi(11)
+  public static final void v(Activity paramActivity)
+  {
+    AppMethodBeat.i(155903);
+    if (paramActivity == null)
     {
-      str = this.etk;
-      AppMethodBeat.o(93097);
-      return str;
+      AppMethodBeat.o(155903);
+      return;
     }
-    AppMethodBeat.o(93097);
-    return str;
+    Rect localRect = new Rect();
+    paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
+    int i = localRect.top;
+    int j = a.u(paramActivity);
+    ETT = paramActivity.getResources().getDisplayMetrics().heightPixels - j - i;
+    AppMethodBeat.o(155903);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.compatible.util.i
  * JD-Core Version:    0.7.0.1
  */

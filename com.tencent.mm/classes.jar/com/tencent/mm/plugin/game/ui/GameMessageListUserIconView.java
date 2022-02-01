@@ -10,83 +10,94 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.f;
+import com.tencent.mm.b.f;
 import com.tencent.mm.plugin.game.f.e;
 import com.tencent.mm.plugin.game.f.e.a.a;
-import com.tencent.mm.plugin.game.model.n;
-import com.tencent.mm.plugin.game.model.n.i;
+import com.tencent.mm.plugin.game.f.e.b;
 import com.tencent.mm.plugin.game.model.o;
-import com.tencent.mm.plugin.game.model.o.a;
+import com.tencent.mm.plugin.game.model.o.i;
+import com.tencent.mm.plugin.game.model.p;
+import com.tencent.mm.plugin.game.model.p.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public class GameMessageListUserIconView
   extends LinearLayout
 {
   private Context mContext;
-  private o nBt;
-  private f<String, Bitmap> nBu;
+  private p skS;
+  private f<String, Bitmap> skT;
   
   public GameMessageListUserIconView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(112091);
+    AppMethodBeat.i(42287);
     this.mContext = paramContext;
     init();
-    AppMethodBeat.o(112091);
+    AppMethodBeat.o(42287);
   }
   
   public GameMessageListUserIconView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(112092);
+    AppMethodBeat.i(42288);
     this.mContext = paramContext;
     init();
-    AppMethodBeat.o(112092);
+    AppMethodBeat.o(42288);
   }
   
-  private void f(ImageView paramImageView, String paramString)
+  private void i(ImageView paramImageView, String paramString)
   {
-    AppMethodBeat.i(112098);
-    paramImageView = e.bHE().k(paramImageView, paramString);
+    AppMethodBeat.i(42294);
+    paramImageView = e.cEB().n(paramImageView, paramString);
     if (paramImageView != null) {
-      this.nBu.put(paramString, paramImageView);
+      this.skT.put(paramString, paramImageView);
     }
-    AppMethodBeat.o(112098);
-  }
-  
-  private void h(ImageView paramImageView, String paramString)
-  {
-    AppMethodBeat.i(112097);
-    e.a.a locala = new e.a.a();
-    locala.eNK = false;
-    e.bHE().a(paramImageView, paramString, locala.bHF(), new GameMessageListUserIconView.1(this, paramString));
-    AppMethodBeat.o(112097);
+    AppMethodBeat.o(42294);
   }
   
   private void init()
   {
-    AppMethodBeat.i(112094);
-    if (this.nBt == null) {
-      this.nBt = new o(this.mContext);
+    AppMethodBeat.i(42290);
+    if (this.skS == null) {
+      this.skS = new p(this.mContext);
     }
-    AppMethodBeat.o(112094);
+    AppMethodBeat.o(42290);
   }
   
-  public final void a(n paramn, LinkedList<n.i> paramLinkedList, f<String, Bitmap> paramf)
+  private void k(ImageView paramImageView, final String paramString)
   {
-    AppMethodBeat.i(112096);
-    if ((paramn == null) || (bo.es(paramLinkedList)))
+    AppMethodBeat.i(42293);
+    e.a.a locala = new e.a.a();
+    locala.hjS = false;
+    e.cEB().a(paramImageView, paramString, locala.cEC(), new e.b()
+    {
+      public final void a(View paramAnonymousView, Bitmap paramAnonymousBitmap)
+      {
+        AppMethodBeat.i(42286);
+        if ((paramAnonymousBitmap != null) && (!paramAnonymousBitmap.isRecycled())) {
+          GameMessageListUserIconView.a(GameMessageListUserIconView.this).put(paramString, paramAnonymousBitmap);
+        }
+        AppMethodBeat.o(42286);
+      }
+    });
+    AppMethodBeat.o(42293);
+  }
+  
+  public final void a(o paramo, LinkedList<o.i> paramLinkedList, f<String, Bitmap> paramf)
+  {
+    AppMethodBeat.i(42292);
+    if ((paramo == null) || (bt.gL(paramLinkedList)))
     {
       setVisibility(8);
-      AppMethodBeat.o(112096);
+      AppMethodBeat.o(42292);
       return;
     }
-    this.nBu = paramf;
+    this.skT = paramf;
     setVisibility(0);
-    int i = this.mContext.getResources().getDimensionPixelSize(2131427752);
-    int j = this.mContext.getResources().getDimensionPixelSize(2131427496);
+    int i = this.mContext.getResources().getDimensionPixelSize(2131165460);
+    int j = this.mContext.getResources().getDimensionPixelSize(2131165187);
     paramf = new LinearLayout.LayoutParams(i, i);
     paramf.rightMargin = j;
     Object localObject;
@@ -95,7 +106,7 @@ public class GameMessageListUserIconView
       localObject = new ImageView(this.mContext);
       ((ImageView)localObject).setLayoutParams(paramf);
       ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
-      ((ImageView)localObject).setOnClickListener(this.nBt);
+      ((ImageView)localObject).setOnClickListener(this.skS);
       addView((View)localObject);
     }
     i = 0;
@@ -107,21 +118,21 @@ public class GameMessageListUserIconView
       if (i < paramLinkedList.size())
       {
         paramf.setVisibility(0);
-        localObject = (n.i)paramLinkedList.get(i);
-        if (!bo.isNullOrNil(((n.i)localObject).noc))
+        localObject = (o.i)paramLinkedList.get(i);
+        if (!bt.isNullOrNil(((o.i)localObject).rXl))
         {
-          str = ((n.i)localObject).noc;
-          if (this.nBu.Z(str))
+          str = ((o.i)localObject).rXl;
+          if (this.skT.aN(str))
           {
-            localBitmap = (Bitmap)this.nBu.get(str);
+            localBitmap = (Bitmap)this.skT.get(str);
             if ((localBitmap == null) || (localBitmap.isRecycled()))
             {
-              h(paramf, str);
+              k(paramf, str);
               label255:
-              if (bo.isNullOrNil(((n.i)localObject).nof)) {
+              if (bt.isNullOrNil(((o.i)localObject).rXo)) {
                 break label414;
               }
-              paramf.setTag(new o.a(paramn, ((n.i)localObject).nof, 6));
+              paramf.setTag(new p.a(paramo, ((o.i)localObject).rXo, 6));
               paramf.setEnabled(true);
             }
           }
@@ -133,23 +144,23 @@ public class GameMessageListUserIconView
         break;
         paramf.setImageBitmap(localBitmap);
         break label255;
-        h(paramf, str);
+        k(paramf, str);
         break label255;
-        str = ((n.i)localObject).userName;
-        if (bo.isNullOrNil(str))
+        str = ((o.i)localObject).userName;
+        if (bt.isNullOrNil(str))
         {
           a.b.c(paramf, str);
           break label255;
         }
-        if (!this.nBu.Z(str))
+        if (!this.skT.aN(str))
         {
-          f(paramf, str);
+          i(paramf, str);
           break label255;
         }
-        localBitmap = (Bitmap)this.nBu.get(str);
+        localBitmap = (Bitmap)this.skT.get(str);
         if ((localBitmap == null) || (localBitmap.isRecycled()))
         {
-          f(paramf, str);
+          i(paramf, str);
           break label255;
         }
         paramf.setImageBitmap(localBitmap);
@@ -160,33 +171,33 @@ public class GameMessageListUserIconView
         paramf.setVisibility(8);
       }
     }
-    AppMethodBeat.o(112096);
+    AppMethodBeat.o(42292);
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(112093);
+    AppMethodBeat.i(42289);
     super.onFinishInflate();
     init();
-    AppMethodBeat.o(112093);
+    AppMethodBeat.o(42289);
   }
   
   public void setSourceScene(int paramInt)
   {
-    AppMethodBeat.i(112095);
-    if (this.nBt != null)
+    AppMethodBeat.i(42291);
+    if (this.skS != null)
     {
-      this.nBt.nok = paramInt;
-      AppMethodBeat.o(112095);
+      this.skS.rXI = paramInt;
+      AppMethodBeat.o(42291);
       return;
     }
-    this.nBt = new o(this.mContext, paramInt);
-    AppMethodBeat.o(112095);
+    this.skS = new p(this.mContext, paramInt);
+    AppMethodBeat.o(42291);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameMessageListUserIconView
  * JD-Core Version:    0.7.0.1
  */

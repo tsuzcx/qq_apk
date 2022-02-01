@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class l
   extends f
 {
-  private float cgY = 1.0F;
-  private boolean cgZ = true;
+  private float cVV = 1.0F;
+  private boolean cVW = true;
   
-  protected final byte[] D(int paramInt1, int paramInt2, int paramInt3)
+  protected final byte[] G(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(137131);
-    this.cgZ = true;
+    AppMethodBeat.i(136880);
+    this.cVW = true;
     int j = 0;
     while (j < paramInt2)
     {
@@ -19,18 +19,18 @@ public final class l
       int k = 0;
       while (k < paramInt1)
       {
-        i += this.cgQ[k][j];
+        i += this.cVN[k][j];
         k += 1;
       }
-      boolean bool = this.cgZ;
+      boolean bool = this.cVW;
       for (;;)
       {
-        k = (int)(this.cgY * i);
+        k = (int)(this.cVV * i);
         if (k > this.MAX_VALUE)
         {
-          this.cgY = (this.MAX_VALUE / i);
-          if (this.cgY < 1.0F) {
-            this.cgY -= (1.0F - this.cgY) / 16.0F;
+          this.cVV = (this.MAX_VALUE / i);
+          if (this.cVV < 1.0F) {
+            this.cVV -= (1.0F - this.cVV) / 16.0F;
           }
           bool = false;
           i = k;
@@ -40,9 +40,9 @@ public final class l
           if (k >= this.MIN_VALUE) {
             break;
           }
-          this.cgY = (this.MIN_VALUE / i);
-          if (this.cgY < 1.0F) {
-            this.cgY -= (1.0F - this.cgY) / 16.0F;
+          this.cVV = (this.MIN_VALUE / i);
+          if (this.cVV < 1.0F) {
+            this.cVV -= (1.0F - this.cVV) / 16.0F;
           }
           bool = false;
           i = k;
@@ -50,22 +50,22 @@ public final class l
       }
       if ((bool) && (i < this.MAX_VALUE) && (i > this.MIN_VALUE))
       {
-        if (this.cgY < 1.0F) {
-          this.cgY += (1.0F - this.cgY) / 16.0F;
+        if (this.cVV < 1.0F) {
+          this.cVV += (1.0F - this.cVV) / 16.0F;
         }
-        this.cgZ = false;
+        this.cVW = false;
       }
-      this.cgT[j] = gt(k);
+      this.cVQ[j] = hS(k);
       j += 1;
     }
-    byte[] arrayOfByte = bR(paramInt3, paramInt2);
-    AppMethodBeat.o(137131);
+    byte[] arrayOfByte = cg(paramInt3, paramInt2);
+    AppMethodBeat.o(136880);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.e.l
  * JD-Core Version:    0.7.0.1
  */

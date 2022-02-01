@@ -1,4302 +1,906 @@
 package com.tencent.mm.sdk.platformtools;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.content.pm.ApplicationInfo;
+import android.os.Looper;
+import android.util.LruCache;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.WeakHashMap;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
 
-final class aw
+@Deprecated
+public final class aw
+  implements SharedPreferences
 {
-  public List<a> ypj;
+  private static ap EVg;
+  private static final Object EVp;
+  private static final LruCache<String, aw> EVr;
+  private FLock EVh;
+  private File EVi;
+  private File EVj;
+  private boolean EVk;
+  private int EVl;
+  private long EVm;
+  private long EVn;
+  private final Object EVo;
+  private final WeakHashMap<SharedPreferences.OnSharedPreferenceChangeListener, Object> EVq;
+  private Map<String, Object> fZH;
+  private boolean gcu;
+  private int mMode;
   
-  public aw()
+  static
   {
-    AppMethodBeat.i(52213);
-    this.ypj = new LinkedList();
-    a locala = new a();
-    locala.ypk = "MX";
-    locala.ypl = "52";
-    locala.ypm = 10;
-    locala.ypn = 11;
-    b localb = new b();
-    localb.ypp = "33|55|81";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([358]\\d)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2467";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:33|55|81)";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(1)([358]\\d)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:[2467]|3[12457-9]|5[89]|8[2-9]|9[1-35-9])";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(1)(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "PS";
-    locala.ypl = "970";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2489";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([2489])(2\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "5";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(5[69]\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[78]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1[78]00)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SN";
-    locala.ypl = "221";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MY";
-    locala.ypl = "60";
-    locala.ypm = 9;
-    locala.ypn = 10;
-    localb = new b();
-    localb.ypp = "4-79";
-    localb.ypq = "$1-$2 $3";
-    localb.ypr = "([4-79])(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3";
-    localb.ypq = "$1-$2 $3";
-    localb.ypr = "(3)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[02-46-9][1-9]|8";
-    localb.ypq = "$1-$2 $3";
-    localb.ypr = "([18]\\d)(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[36-8]0";
-    localb.ypq = "$1-$2-$3-$4";
-    localb.ypr = "(1)([36-8]00)(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "11";
-    localb.ypq = "$1-$2 $3";
-    localb.ypr = "(11)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "15";
-    localb.ypq = "$1-$2 $3";
-    localb.ypr = "(154)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "YE";
-    locala.ypl = "967";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1-6";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([1-7])(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7[0137]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(7\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "PT";
-    locala.ypl = "351";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([2-46-9]\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SO";
-    locala.ypl = "252";
-    locala.ypm = 8;
-    locala.ypn = 9;
-    localb = new b();
-    localb.ypp = "2[0-79]|[13-5]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d)(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "24|[67]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d)(\\d{7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "15|28|6[178]|9";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{5,7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "69";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(69\\d)(\\d{6})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BR";
-    locala.ypl = "55";
-    locala.ypm = 10;
-    locala.ypn = 11;
-    localb = new b();
-    localb.ypp = "119";
-    localb.ypq = "$1 $2-$3";
-    localb.ypr = "(\\d{2})(\\d{5})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1-9";
-    localb.ypq = "$1 $2-$3";
-    localb.ypr = "(\\d{2})(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[34]00";
-    localb.ypq = "$1-$2";
-    localb.ypr = "([34]00\\d)(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[3589]00";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([3589]00)(\\d{2,3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MZ";
-    locala.ypl = "258";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2|8[246]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([28]\\d)(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "80";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(80\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "KE";
-    locala.ypl = "254";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "24-6";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{4,7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{6,7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "89";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BT";
-    locala.ypl = "975";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1|77";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([17]7)(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2-68";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([2-8])(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "PW";
-    locala.ypl = "680";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "NA";
-    locala.ypl = "264";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "8[1235]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(8\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(6\\d)(\\d{2,3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "88";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(88)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "870";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(870)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "HK";
-    locala.ypl = "852";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "[235-7]|[89](?:0[1-9]|[1-9])";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "800";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(800)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "900";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(900)(\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "900";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(900)(\\d{2,5})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SR";
-    locala.ypl = "597";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2-4";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "56";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6-8";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SS";
-    locala.ypl = "211";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "VN";
-    locala.ypl = "84";
-    locala.ypm = 9;
-    locala.ypn = 10;
-    localb = new b();
-    localb.ypp = "[17]99";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([17]99)(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "48";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([48])(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2[025-79]|3[0136-9]|5[2-9]|6[0-46-8]|7[02-79]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([235-7]\\d)(\\d{4})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "80";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(80)(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "69";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(69\\d)(\\d{4,5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2[1348]|3[25]|5[01]|65|7[18]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([235-7]\\d{2})(\\d{4})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(9\\d)(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:[26]|8[68]|99)";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1[2689]\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[89]0";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(1[89]00)(\\d{4,6})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "KG";
-    locala.ypl = "996";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "31[25]|[5-7]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3(?:1[36]|[2-9])";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d)(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "ST";
-    locala.ypl = "239";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BW";
-    locala.ypl = "267";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2-6";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(7\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(90)(\\d{5})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "NC";
-    locala.ypl = "687";
-    locala.ypm = 6;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1.$2.$3";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "ER";
-    locala.ypl = "291";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "PY";
-    locala.ypl = "595";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "(?:[26]1|3[289]|4[124678]|7[123]|8[1236])";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{5,7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[2-9]0";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{3,6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9[1-9]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8700";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2-8";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4,6})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "KH";
-    locala.ypl = "855";
-    locala.ypm = 8;
-    locala.ypn = 9;
-    localb = new b();
-    localb.ypp = "1\\d[1-9]|[2-9]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[89]0";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1[89]00)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "ES";
-    locala.ypl = "34";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([5-9]\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "HN";
-    locala.ypl = "504";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SV";
-    locala.ypl = "503";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "267";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "89";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "89";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BY";
-    locala.ypl = "375";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1-4";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([1-4]\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8[01]|9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([89]\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "82";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(8\\d{2})(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "NE";
-    locala.ypl = "227";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "[29]|09";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([029]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "08";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(08)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "ET";
-    locala.ypl = "251";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([1-59]\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BZ";
-    locala.ypl = "501";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2-8";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0";
-    localb.ypq = "$1-$2-$3-$4";
-    localb.ypr = "(0)(800)(\\d{4})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "NF";
-    locala.ypl = "672";
-    locala.ypm = 5;
-    locala.ypn = 6;
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d)(\\d{5})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "QA";
-    locala.ypl = "974";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "28";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([28]\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3-7";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([3-7]\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "NG";
-    locala.ypl = "234";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "129";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([129])(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3-6";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([3-8]\\d)(\\d{3})(\\d{2,3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "70|8[01]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([78]\\d{2})(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[78]00";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([78]00)(\\d{4})(\\d{4,5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[78]00";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([78]00)(\\d{5})(\\d{5,6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "78";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(78)(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SY";
-    locala.ypl = "963";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1-5";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(9\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "HR";
-    locala.ypl = "385";
-    locala.ypm = 8;
-    locala.ypn = 9;
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1)(\\d{4})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6[09]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(6[09])(\\d{4})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "62";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(62)(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2-5";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([2-5]\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(9\\d)(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(9\\d)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(9\\d)(\\d{3,4})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6[145]|7";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2,3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6[145]|7";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3,4})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(80[01])(\\d{2})(\\d{2,3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(80[01])(\\d{3,4})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "KM";
-    locala.ypl = "269";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SZ";
-    locala.ypl = "268";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "23";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "NI";
-    locala.ypl = "505";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "VU";
-    locala.ypl = "678";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "579";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "HT";
-    locala.ypl = "509";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "KP";
-    locala.ypl = "850";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "HU";
-    locala.ypl = "36";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2-9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CD";
-    locala.ypl = "243";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "8[0-259]|9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([89]\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8[48]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1-6";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{5})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "NL";
-    locala.ypl = "31";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1[035]|2[0346]|3[03568]|4[0356]|5[0358]|7|8[458]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([1-578]\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[16-8]|2[259]|3[124]|4[17-9]|5[124679]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([1-5]\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6[0-57-9]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(6)(\\d{8})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "66";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(66)(\\d{7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "14";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(14)(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "80|9";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([89]0\\d)(\\d{4,7})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "KR";
-    locala.ypl = "82";
-    locala.ypm = 9;
-    locala.ypn = 10;
-    localb = new b();
-    localb.ypp = "1(?:0|1[19]|[69]9|5[458])|[57]0#1(?:0|1[19]|[69]9|5(?:44|59|8))|[57]0";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{2})(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:[169][2-8]|[78]|5[1-4])|[68]0|[3-6][1-9][2-9]#1(?:[169][2-8]|[78]|5(?:[1-3]|4[56]))|[68]0|[3-6][1-9][2-9]";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{2})(\\d{3,4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "131#1312";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d)(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "131#131[13-9]";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "13[2-9]";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "30";
-    localb.ypq = "$1-$2-$3-$4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2[2-9]";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d)(\\d{3,4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "21[0-46-9]";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d)(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[3-6][1-9]1#[3-6][1-9]1(?:[0-46-9])";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{2})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:5[46-9]|6[04678])#1(?:5(?:44|66|77|88|99)|6(?:00|44|6[16]|70|88))";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CF";
-    locala.ypl = "236";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "TD";
-    locala.ypl = "235";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CG";
-    locala.ypl = "242";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "NO";
-    locala.ypl = "47";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "489";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([489]\\d{2})(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "235-7";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([235-7]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CH";
-    locala.ypl = "41";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "[2-7]|[89]1";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([2-9]\\d)(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8[047]|90";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([89]\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "860";
-    localb.ypq = "$1 $2 $3 $4 $5";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "NP";
-    locala.ypl = "977";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1[2-6]";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(1)(\\d{7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[01]|[2-8]|9(?:[1-69]|7[15-9])";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{2})(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9(?:7[45]|8)";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(9\\d{2})(\\d{7})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CI";
-    locala.ypl = "225";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "TG";
-    locala.ypl = "228";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "KW";
-    locala.ypl = "965";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1269";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "5";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(5[015]\\d)(\\d{5})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "NR";
-    locala.ypl = "674";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "TH";
-    locala.ypl = "66";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(2)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3-9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([3-9]\\d)(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1[89]00)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CK";
-    locala.ypl = "682";
-    locala.ypm = 5;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CL";
-    locala.ypl = "56";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(2)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "357";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{2,3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(9)([5-9]\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "44";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(44)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "60|8";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([68]00)(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "60";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(600)(\\d{3})(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1230)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "TJ";
-    locala.ypl = "992";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "34";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([349]\\d{2})(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "4[48]|5|9(?:1[59]|[0235-9])";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([459]\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "331#3317#33170#331700";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(331700)(\\d)(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3[1-5]#3(?:[1245]|3(?:[02-9]|1[0-589]))";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{4})(\\d)(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CM";
-    locala.ypl = "237";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "[2379]|88";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([237-9]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "80";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(800)(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "WF";
-    locala.ypl = "681";
-    locala.ypm = 6;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CN";
-    locala.ypl = "86";
-    locala.ypm = 11;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "80[2678]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(80\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[48]00";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([48]00)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2-9";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3,4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "21";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(21)(\\d{4})(\\d{4,6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "10[1-9]|2[02-9]#10[1-9]|2[02-9]#10(?:[1-79]|8(?:[1-9]|0[1-9]))|2[02-9]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([12]\\d)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3(?:11|7[179])|4(?:[15]1|3[12])|5(?:1|2[37]|3[12]|7[13-79]|9[15])|7(?:31|5[457]|6[09]|91)|898";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3(?:1[02-9]|35|49|5|7[02-68]|9[1-68])|4(?:1[02-9]|2[179]|[35][2-9]|6[4789]|7\\d|8[23])|5(?:3[03-9]|4[36]|5|6[1-6]|7[028]|80|9[2-46-9])|6(?:3[1-5]|6[0238]|9[12])|7(?:01|[1579]|2[248]|3[04-9]|4[3-6]|6[2368])|8(?:1[236-8]|2[5-7]|[37]|5[1-9]|8[3678]|9[1-7])|9(?:0[1-3689]|1[1-79]|[379]|4[13]|5[1-5])";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[3-58]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1[3-58]\\d)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "108#1080#10800";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(10800)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "FI";
-    locala.ypl = "358";
-    locala.ypm = 6;
-    locala.ypn = 11;
-    localb = new b();
-    localb.ypp = "(?:[1-3]00|[6-8]0)";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{3,7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2[09]|[14]|50|7[135]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{4,10})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[25689][1-8]|3";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d)(\\d{4,11})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "ZA";
-    locala.ypl = "27";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "860";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(860)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[1-57]|8(?:[0-57-9]|6[1-9])";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([1-578]\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7|8[1-5789]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7|8[1-5789]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{2,3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "ID";
-    locala.ypl = "62";
-    locala.ypm = 9;
-    locala.ypn = 11;
-    localb = new b();
-    localb.ypp = "2[124]|[36]1";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{7,8})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "4579";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{5,7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8[1-35-9]";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(8\\d{2})(\\d{3,4})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(177)(\\d{6,8})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "800";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(800)(\\d{5,7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "809";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(809)(\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "TL";
-    locala.ypl = "670";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2-489";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CO";
-    locala.ypl = "57";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1(?:8[2-9]|9[0-3]|[2-7])|[24-8]#1(?:8[2-9]|9(?:09|[1-3])|[2-7])|[24-8]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d)(\\d{7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:80|9[04])#1(?:800|9(?:0[01]|4[78]))";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1)(\\d{3})(\\d{7})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "FJ";
-    locala.ypl = "679";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "36-9";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{4})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "IE";
-    locala.ypl = "353";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1)(\\d{3,4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2[2-9]|4[347]|5[2-58]|6[2-47-9]|9[3-9]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "40[24]|50[45]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "48";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(48)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "81";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(818)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "24-69";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "76|8[35-9]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([78]\\d)(\\d{3,4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "70";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(700)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:8[059]|5)#1(?:8[059]0|5)";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{4})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "TM";
-    locala.ypl = "993";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "12";
-    localb.ypq = "$1 $2-$3-$4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "13|[2-5]";
-    localb.ypq = "$1 $2-$3-$4";
-    localb.ypr = "(\\d{3})(\\d)(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "LA";
-    locala.ypl = "856";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "20";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(20)(\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2[13]|[3-8]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([2-8]\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "TN";
-    locala.ypl = "216";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "LB";
-    locala.ypl = "961";
-    locala.ypm = 7;
-    locala.ypn = 8;
-    localb = new b();
-    localb.ypp = "13-6";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[89][01]|7(?:[01]|6[013-9]|8[89]|91)";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([7-9]\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "TO";
-    locala.ypl = "676";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1-6";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7[5-9]|8[7-9]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CR";
-    locala.ypl = "506";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "24-7";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[89]0";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "FM";
-    locala.ypl = "691";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "NZ";
-    locala.ypl = "64";
-    locala.ypm = 8;
-    locala.ypn = 10;
-    localb = new b();
-    localb.ypp = "3467";
-    localb.ypq = "$1-$2 $3";
-    localb.ypr = "([34679])(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "240#2409#24099";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(24099)(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "21";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2(?:1[1-9]|[69]|7[0-35-9])|86";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2[028]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(2\\d)(\\d{3,4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2(?:10|74)|5|[89]0";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "FO";
-    locala.ypl = "298";
-    locala.ypm = 6;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1";
-    localb.ypr = "(\\d{6})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "TR";
-    locala.ypl = "90";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "[23]|4(?:[0-35-9]|4[0-35-9])";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "589";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "444";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(444)(\\d{1})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CU";
-    locala.ypl = "53";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "7";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d)(\\d{6,7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2-4";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{4,6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "5";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d)(\\d{7})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CV";
-    locala.ypl = "238";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "IL";
-    locala.ypl = "972";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2-489";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "([2-489])(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "57";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "([57]\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[7-9]";
-    localb.ypq = "$1-$2-$3-$4";
-    localb.ypr = "(1)([7-9]\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "125";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(1255)(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "120";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(1200)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "121";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(1212)(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "15";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(1599)(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2-689";
-    localb.ypq = "*$1";
-    localb.ypr = "(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CW";
-    locala.ypl = "599";
-    locala.ypm = 7;
-    locala.ypn = 8;
-    localb = new b();
-    localb.ypp = "13-7";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(9)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "FR";
-    locala.ypl = "33";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1-79";
-    localb.ypq = "$1 $2 $3 $4 $5";
-    localb.ypr = "([1-79])(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(8\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "IN";
-    locala.ypl = "91";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "7(?:2[0579]|3[057-9]|4[0-389]|5[024-9]|6[0-35-9]|7[03469]|8[0-4679])|8(?:0[01589]|1[0-479]|2[236-9]|3[0-57-9]|[45]|6[0245789]|7[1-69]|8[0124-9]|9[02-9])|9#7(?:2(?:0[04-9]|5[09]|7[5-8]|9[389])|3(?:0[1-9]|[58]|7[3679]|9[689])|4(?:0[1-9]|1[15-9]|[29][89]|39|8[389])|5(?:0|[47]9|[25]0|6[6-9]|[89][7-9])|6(?:0[027]|12|20|3[19]|5[45]|6[5-9]|7[679]|9[6-9])|7(?:0[27-9]|3[5-9]|42|60|9[5-9])|8(?:[03][07-9]|14|2[7-9]|4[25]|6[09]|7|9[013-9]))|8(?:0[01589]|1(?:[024]|1[56]|30|7[19]|97)|2[236-9]|3(?:[037-9]|4[1-9]|5[0-37-9])|[45]|6[02457-9]|7[1-69]|8(?:[0-26-9]|44|5[2-9])|9(?:[035-9]|2[2-9]|4[0-8]))|9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "11|2[02]|33|4[04]|79|80[2-46]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:2[0-249]|3[0-25]|4[145]|[569][14]|7[1257]|8[1346]|[68][1-9])|2(?:1[257]|3[013]|4[01]|5[0137]|6[0158]|78|8[1568]|9[14])|3(?:26|4[1-3]|5[34]|6[01489]|7[02-46]|8[159])|4(?:1[36]|2[1-47]|3[15]|5[12]|6[126-9]|7[0-24-9]|8[013-57]|9[014-7])|5(?:[136][25]|22|4[28]|5[12]|[78]1|9[15])|6(?:12|[2345]1|57|6[13]|7[14]|80)";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7(?:12|2[14]|3[134]|4[47]|5[15]|[67]1|88)#7(?:12|2[14]|3[134]|4[47]|5(?:1|5[2-6])|[67]1|88)";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8(?:16|2[014]|3[126]|6[136]|7[078]|8[34]|91)";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:[2-579]|[68][1-9])|[2-8]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{4})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "160#1600";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1600)(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "180#1800";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(1800)(\\d{4,5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "18[06]#18[06]0";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(18[06]0)(\\d{2,4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "18[06]#18(?:03|6[12])";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{4})(\\d{3})(\\d{4})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "LI";
-    locala.ypl = "423";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "[23]|7[3-57-9]|87";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(6\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6[567]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(6[567]\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "697";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(69)(7\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[7-9]0";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([7-9]0\\d)(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[89]0";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([89]0\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CY";
-    locala.ypl = "357";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{6})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "IO";
-    locala.ypl = "246";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "TW";
-    locala.ypl = "886";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2-7";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([2-8])(\\d{3,4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "80|9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([89]\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "LK";
-    locala.ypl = "94";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1-689";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{1})(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "CZ";
-    locala.ypl = "420";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2-8";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([2-9]\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "96";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(96\\d)(\\d{3})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9[36]";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(9\\d)(\\d{3})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "AD";
-    locala.ypl = "376";
-    locala.ypm = 6;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "346-9";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(180[02])(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "001";
-    locala.ypl = "(null)";
-    locala.ypm = 0;
-    locala.ypn = 0;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "WS";
-    locala.ypl = "685";
-    locala.ypm = 6;
-    locala.ypn = 7;
-    localb = new b();
-    localb.ypp = "8";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(8\\d{2})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(7\\d)(\\d{5})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "ZM";
-    locala.ypl = "260";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "29";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([29]\\d)(\\d{7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(800)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "AE";
-    locala.ypl = "971";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2-4679";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([2-4679])(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "5";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(5[0256])(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[479]0";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([479]00)(\\d)(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "60|8";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([68]00)(\\d{2,9})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "IQ";
-    locala.ypl = "964";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2-6";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([2-6]\\d)(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(7\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "IR";
-    locala.ypl = "98";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "21";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(21)(\\d{3,5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "21";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(21)(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "21";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(21)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "13-9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "AF";
-    locala.ypl = "93";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([2-7]\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "TZ";
-    locala.ypl = "255";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "24";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([24]\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "67";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([67]\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "89";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([89]\\d{2})(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "IS";
-    locala.ypl = "354";
-    locala.ypm = 7;
-    locala.ypn = 9;
-    localb = new b();
-    localb.ypp = "4-9";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(3\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "RE";
-    locala.ypl = "262";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([268]\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "IT";
-    locala.ypl = "39";
-    locala.ypm = 9;
-    locala.ypn = 10;
-    localb = new b();
-    localb.ypp = "0[26]|55";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3,4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0[26]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(0[26])(\\d{4})(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0[26]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(0[26])(\\d{4,6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0[13-57-9][0159]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(0\\d{2})(\\d{3,4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0[13-57-9][0159]|8(?:03|4[17]|9[245])#0[13-57-9][0159]|8(?:03|4[17]|9(?:2|[45][0-4]))";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{3,6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0[13-57-9][2-46-8]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(0\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0[13-57-9][2-46-8]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(0\\d{3})(\\d{2,6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[13]|8(?:00|4[08]|9[59])#[13]|8(?:00|4[08]|9(?:5[5-9]|9))";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "894#894[5-9]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "UA";
-    locala.ypl = "380";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "39|4(?:[45][0-5]|87)|5(?:0|6[37]|7[37])|6[36-8]|9[1-9]#39|4(?:[45][0-5]|87)|5(?:0|6(?:3[14-7]|7)|7[37])|6[36-8]|9[1-9]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([3-69]\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3[1-8]2|4[1378]2|5(?:[12457]2|6[24])|6(?:[49]2|[12][29]|5[24])|8|90#3(?:[1-46-8]2[013-9]|52)|4[1378]2|5(?:[12457]2|6[24])|6(?:[49]2|[12][29]|5[24])|8|90";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([3-689]\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3(?:5[013-9]|[1-46-8])|4(?:[137][013-9]|6|[45][6-9]|8[4-6])|5(?:[1245][013-9]|6[0135-9]|3|7[4-6])|6(?:[49][013-9]|5[0135-9]|[12][13-8])#3(?:5[013-9]|[1-46-8](?:22|[013-9]))|4(?:[137][013-9]|6|[45][6-9]|8[4-6])|5(?:[1245][013-9]|6(?:3[02389]|[015689])|3|7[4-6])|6(?:[49][013-9]|5[0135-9]|[12][13-8])";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([3-6]\\d{3})(\\d{5})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "DE";
-    locala.ypl = "49";
-    locala.ypm = 10;
-    locala.ypn = 11;
-    localb = new b();
-    localb.ypp = "3[02]|40|[68]9";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{4,11})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2(?:\\d1|0[2389]|1[24]|28|34)|3(?:[3-9][15]|40)|[4-8][1-9]1|9(?:06|[1-9]1)";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{3,11})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[24-6]|[7-9](?:\\d[1-9]|[1-9]\\d)|3(?:[3569][02-46-9]|4[2-4679]|7[2-467]|8[2-46-8])#[24-6]|[7-9](?:\\d[1-9]|[1-9]\\d)|3(?:3(?:0[1-467]|2[127-9]|3[124578]|[46][1246]|7[1257-9]|8[1256]|9[145])|4(?:2[135]|3[1357]|4[13578]|6[1246]|7[1356]|9[1346])|5(?:0[14]|2[1-3589]|3[1357]|4[1246]|6[1-4]|7[1346]|8[13568]|9[1246])|6(?:0[356]|2[1-489]|3[124-6]|4[1347]|6[13]|7[12579]|8[1-356]|9[135])|7(?:2[1-7]|3[1357]|4[145]|6[1-5]|7[1-4])|8(?:21|3[1468]|4[1347]|6[0135-9]|7[1467]|8[136])|9(?:0[12479]|2[1358]|3[1357]|4[134679]|6[1-9]|7[136]|8[147]|9[1468]))";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{2,11})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{5})(\\d{1,10})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[5-7]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(1\\d{2})(\\d{7,8})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "177#1779#17799";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(177)(99)(\\d{7,8})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "800";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(8\\d{2})(\\d{7,10})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "(?:18|90)0#180|900[1359]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d)(\\d{4,10})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "181";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(1\\d{2})(\\d{5,11})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "185#1850#18500";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(18\\d{3})(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "18[68]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(18\\d{2})(\\d{7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "18[2-579]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(18\\d)(\\d{8})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "700";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(700)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "LR";
-    locala.ypl = "231";
-    locala.ypm = 7;
-    locala.ypn = 9;
-    localb = new b();
-    localb.ypp = "279";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([279]\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(7\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "4-6";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([4-6])(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "38";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "GA";
-    locala.ypl = "241";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(1)(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(0\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "OM";
-    locala.ypl = "968";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(2\\d)(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(9\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "58";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([58]00)(\\d{4,6})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "LS";
-    locala.ypl = "266";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "GB";
-    locala.ypl = "44";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2|5[56]|7(?:0|6[013-9])#2|5[56]|7(?:0|6(?:[013-9]|2[0-35-9]))";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:1|\\d1)|3|9[018]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:38|5[23]|69|76|94)#1(?:387|5(?:24|39)|697|768|946)#1(?:3873|5(?:242|39[456])|697[347]|768[347]|9467)";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{5})(\\d{4,5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(1\\d{3})(\\d{5,6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7(?:[1-5789]|62)#7(?:[1-5789]|624)";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(7\\d{3})(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "800#8001#80011#800111#8001111";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(800)(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "845#8454#84546#845464";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(845)(46)(4\\d)";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8(?:4[2-5]|7[0-3])";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(8\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "80";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(80\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[58]00";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([58]00)(\\d{6})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "AL";
-    locala.ypl = "355";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "4[0-6]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(4)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(6[6-9])(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2358";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "235";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{3,5})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "LT";
-    locala.ypl = "370";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "37|4(?:1|5[45]|6[2-4])";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([34]\\d)(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3[148]|4(?:[24]|6[09])|528|6";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([3-6]\\d{2})(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7-9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([7-9]\\d{2})(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "52[0-79]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(5)(2\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "AM";
-    locala.ypl = "374";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1|47";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "5-7";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "23";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8|90";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "ZW";
-    locala.ypl = "263";
-    locala.ypm = 9;
-    locala.ypn = 10;
-    localb = new b();
-    localb.ypp = "4|9[2-9]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([49])(\\d{3})(\\d{2,5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[19]1|7";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([179]\\d)(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "86[24]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(86\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[3-9]|2(?:[1-469]|0[0-35-9]|[45][0-79])|3(?:0[0-79]|1[0-689]|[24-69]|3[0-69])|5(?:[02-46-9]|[15][0-69])|6(?:[0145]|[29][0-79]|3[0-689]|[68][0-69])";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([1-356]\\d)(\\d{3,5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[3-9]|2(?:[1-469]|0[0-35-9]|[45][0-79])|3(?:0[0-79]|1[0-689]|[24-69]|3[0-69])|5(?:[02-46-9]|[15][0-69])|6(?:[0145]|[29][0-79]|3[0-689]|[68][0-69])";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([1-356]\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2(?:[278]|0[45]|48)|3(?:08|17|3[78]|[78])|5[15][78]|6(?:[29]8|37|[68][78])";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([2356]\\d{2})(\\d{3,5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2(?:[278]|0[45]|48)|3(?:08|17|3[78]|[78])|5[15][78]|6(?:[29]8|37|[68][78])";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([2356]\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "(?:25|54)8#258[23]|5483";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([25]\\d{3})(\\d{3,5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "(?:25|54)8#258[23]|5483";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([25]\\d{3})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "86[1389]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(8\\d{3})(\\d{6})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "LU";
-    locala.ypl = "352";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "[2-5]|7[1-9]|[89](?:[1-9]|0[2-9])";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[2-5]|7[1-9]|[89](?:[1-9]|0[2-9])";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "20";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2(?:[0367]|4[3-8])";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{1,2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "20";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2(?:[0367]|4[3-8])";
-    localb.ypq = "$1 $2 $3 $4 $5";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{1,2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2(?:[12589]|4[12])|[3-5]|7[1-9]|[89](?:[1-9]|0[2-9])";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{1,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[89]0[01]|70";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "UG";
-    locala.ypl = "256";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "[7-9]|20(?:[013-5]|2[5-9])|4(?:6[45]|[7-9])";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3|4(?:[1-5]|6[0-36-9])";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2024";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(2024)(\\d{5})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "DJ";
-    locala.ypl = "253";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "LV";
-    locala.ypl = "371";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([2689]\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "GE";
-    locala.ypl = "995";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "348";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "5";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "AO";
-    locala.ypl = "244";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "DK";
-    locala.ypl = "45";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "GF";
-    locala.ypl = "594";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "LY";
-    locala.ypl = "218";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1-$2";
-    localb.ypr = "([25679]\\d)(\\d{7})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "GH";
-    locala.ypl = "233";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "235";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{5})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "RO";
-    locala.ypl = "40";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "[23]1|7";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([237]\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "21";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(21)(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "23";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2[3-6]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(2\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "AR";
-    locala.ypl = "54";
-    locala.ypm = 10;
-    locala.ypn = 11;
-    localb = new b();
-    localb.ypp = "68";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "([68]\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "911";
-    localb.ypq = "$1 $2 $3-$4";
-    localb.ypr = "(9)(11)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9(?:2[234689]|3[3-8])#9(?:2(?:2[013]|3[067]|49|6[01346]|80|9[147-9])|3(?:36|4[12358]|5[138]|6[24]|7[069]|8[013578]))#9(?:2(?:2[013]|3[067]|49|6[01346]|80|9(?:[17-9]|4[13479]))|3(?:36|4[12358]|5(?:[18]|3[014-689])|6[24]|7[069]|8(?:[01]|3[013469]|5[0-39]|7[0-2459]|8[0-49])))";
-    localb.ypq = "$1 $2 $3-$4";
-    localb.ypr = "(9)(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "93[58]#9(?:3(?:53|8[78]))#9(?:3(?:537|8(?:73|88)))";
-    localb.ypq = "$2 15-$3-$4";
-    localb.ypr = "(9)(\\d{4})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9[23]";
-    localb.ypq = "$1 $2 $3-$4";
-    localb.ypr = "(9)(\\d{4})(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2-$3";
-    localb.ypr = "(11)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2(?:2[013]|3[067]|49|6[01346]|80|9[147-9])|3(?:36|4[12358]|5[138]|6[24]|7[069]|8[013578])#2(?:2[013]|3[067]|49|6[01346]|80|9(?:[17-9]|4[13479]))|3(?:36|4[12358]|5(?:[18]|3[0-689])|6[24]|7[069]|8(?:[01]|3[013469]|5[0-39]|7[0-2459]|8[0-49]))";
-    localb.ypq = "$1 $2-$3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3(?:53|8[78])#3(?:537|8(?:73|88))";
-    localb.ypq = "$1 $2-$3";
-    localb.ypr = "(\\d{4})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "23";
-    localb.ypq = "$1 $2-$3";
-    localb.ypr = "(\\d{4})(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "AT";
-    locala.ypl = "43";
-    locala.ypm = 10;
-    locala.ypn = 13;
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(1)(\\d{3,12})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "5[079]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(5\\d)(\\d{3,5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "5[079]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(5\\d)(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "5[079]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(5\\d)(\\d{4})(\\d{4,7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "316|46|51|732|6(?:44|5[0-3579]|[6-9])|7(?:1|[28]0)|[89]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{3,10})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2|3(?:1[1-578]|[3-8])|4[2378]|5[2-6]|6(?:[12]|4[1-35-9]|5[468])|7(?:2[1-8]|35|4[1-8]|[57-9])";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{3,9})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "AU";
-    locala.ypl = "61";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2378";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([2378])(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[45]|14";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "16";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(16)(\\d{3})(\\d{2,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:[38]0|90)#1(?:[38]00|90)";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1[389]\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "180#1802";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(180)(2\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "19[13]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(19\\d)(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "19[67]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(19\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "13[1-9]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(13)(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MA";
-    locala.ypl = "212";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "5(?:2[015-7]|3[0-4])|6";
-    localb.ypq = "$1-$2";
-    localb.ypr = "([56]\\d{2})(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "5(?:2[2-489]|3[5-9])|892#5(?:2(?:[2-48]|90)|3(?:[5-79]|80))|892";
-    localb.ypq = "$1-$2";
-    localb.ypr = "([58]\\d{3})(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "5(?:29|38)#5(?:29|38)[89]";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(5\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "8(?:0|9[013-9])";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(8[09])(\\d{7})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "RS";
-    locala.ypl = "381";
-    locala.ypm = 8;
-    locala.ypn = 9;
-    localb = new b();
-    localb.ypp = "(?:2[389]|39)0";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([23]\\d{2})(\\d{4,9})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1|2(?:[0-24-7]|[389][1-9])|3(?:[0-8]|9[1-9])";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([1-3]\\d)(\\d{5,10})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(6\\d)(\\d{6,8})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "89";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([89]\\d{2})(\\d{3,9})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7[26]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(7[26])(\\d{4,9})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7[08]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(7[08]\\d)(\\d{4,9})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "GL";
-    locala.ypl = "299";
-    locala.ypm = 6;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "GM";
-    locala.ypl = "220";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "AW";
-    locala.ypl = "297";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MC";
-    locala.ypl = "377";
-    locala.ypm = 8;
-    locala.ypn = 9;
-    localb = new b();
-    localb.ypp = "89";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "4";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6";
-    localb.ypq = "$1 $2 $3 $4 $5";
-    localb.ypr = "(6)(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "RU";
-    locala.ypl = "7";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1-79";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "34689";
-    localb.ypq = "$1 $2-$3-$4";
-    localb.ypr = "([3489]\\d{2})(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(7\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MD";
-    locala.ypl = "373";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "22|3";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2[13-79]|[5-7]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([25-7]\\d{2})(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "89";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([89]\\d{2})(\\d{5})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "GN";
-    locala.ypl = "224";
-    locala.ypm = 8;
-    locala.ypn = 9;
-    localb = new b();
-    localb.ypp = "23567";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "62";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "ME";
-    locala.ypl = "382";
-    locala.ypm = 8;
-    locala.ypn = 9;
-    localb = new b();
-    localb.ypp = "[2-57-9]|6[3789]#[2-57-9]|6(?:[389]|7(?:[0-8]|9[3-9]))";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "679#679[0-2]";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(67)(9)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "RW";
-    locala.ypl = "250";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(2\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7-9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([7-9]\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(0\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "AZ";
-    locala.ypl = "994";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "(?:1[28]|2(?:[45]2|[0-36])|365)";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "4-8";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "PA";
-    locala.ypl = "507";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1-57-9";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "GP";
-    locala.ypl = "590";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2-$3";
-    localb.ypr = "([56]90)(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "US";
-    locala.ypl = "1";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MG";
-    locala.ypl = "261";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([23]\\d)(\\d{2})(\\d{3})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "GQ";
-    locala.ypl = "240";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "235";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "89";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{6})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MH";
-    locala.ypl = "692";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "GR";
-    locala.ypl = "30";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "21|7";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([27]\\d)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2[2-9]1|[689]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2[2-9][02-9]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(2\\d{3})(\\d{6})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BA";
-    locala.ypl = "387";
-    locala.ypm = 8;
-    locala.ypn = 9;
-    localb = new b();
-    localb.ypp = "3-5";
-    localb.ypq = "$1 $2-$3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6[1-356]|[7-9]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "6[047]";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "PE";
-    locala.ypl = "51";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(1)(\\d{7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "4-7";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([4-8]\\d)(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "80";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(9\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "GT";
-    locala.ypl = "502";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2-7";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{4})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "JO";
-    locala.ypl = "962";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "[2356]|87";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7[457-9]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(7)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "70|8[0158]|9";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{5,6})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MK";
-    locala.ypl = "389";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(2)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "347";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([347]\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "58";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([58]\\d{2})(\\d)(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "DZ";
-    locala.ypl = "213";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1-4";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([1-4]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "5-8";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([5-8]\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(9\\d)(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "PF";
-    locala.ypl = "689";
-    locala.ypm = 6;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SA";
-    locala.ypl = "966";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1-467";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([1-467])(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "5";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(5\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(9200)(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "80";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(800)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "81";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(8111)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BD";
-    locala.ypl = "880";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(2)(\\d{7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[3-79]1";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{4,6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[3-79][2-9]|8";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{3,7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{6})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "ML";
-    locala.ypl = "223";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([246-8]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "PG";
-    locala.ypl = "675";
-    locala.ypm = 7;
-    locala.ypn = 8;
-    localb = new b();
-    localb.ypp = "1-689";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7[1-36]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(7[1-36]\\d)(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SB";
-    locala.ypl = "677";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "7-9";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BE";
-    locala.ypl = "32";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "4[6-9]";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(4[6-9]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "23";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([2-49])(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[156]|7[0178]|8(?:0[1-9]|[1-79])";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([15-8]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "(?:80|9)0";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([89]\\d{2})(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "JP";
-    locala.ypl = "81";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "(?:12|57|99)0";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "800";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "077";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "077";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "088";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0(?:37|66)";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0(?:37|66)";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{4})(\\d{4,5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0(?:37|66)";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{5})(\\d{5,6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0(?:37|66)";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{6})(\\d{6,7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2579";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{2})(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:26|3[79]|4[56]|5[4-68]|6[3-5])|5(?:76|97)|499|746|8(?:3[89]|63|47|51)|9(?:49|80|9[16])#1(?:267|3(?:7[247]|9[278])|4(?:5[67]|66)|5(?:47|58|64|8[67])|6(?:3[245]|48|5[4-68]))|5(?:76|97)9|499[2468]|7468|8(?:3(?:8[78]|96)|636|477|51[24])|9(?:496|802|9(?:1[23]|69))#1(?:267|3(?:7[247]|9[278])|4(?:5[67]|66)|5(?:47|58|64|8[67])|6(?:3[245]|48|5[4-68]))|5(?:769|979[2-69])|499[2468]|7468|8(?:3(?:8[78]|96[2457-9])|636[2-57-9]|477|51[24])|9(?:496|802|9(?:1[23]|69))";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{4})(\\d)(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:2[3-6]|3[3-9]|4[2-6]|5[2-8]|[68][2-7]|7[2-689]|9[1-578])|2(?:2[03-689]|3[3-58]|4[0-468]|5[04-8]|6[013-8]|7[06-9]|8[02-57-9]|9[13])|4(?:2[28]|3[689]|6[035-7]|7[05689]|80|9[3-5])|5(?:3[1-36-9]|4[4578]|5[013-8]|6[1-9]|7[2-8]|8[14-7]|9[4-9])|7(?:2[15]|3[5-9]|4[02-9]|6[135-8]|7[0-4689]|9[014-9])|8(?:2[49]|3[3-8]|4[5-8]|5[2-9]|6[35-9]|7[579]|8[03-579]|9[2-8])|9(?:[23]0|4[02-46-9]|5[024-79]|6[4-9]|7[2-47-9]|8[02-7]|9[3-7])#1(?:2[3-6]|3[3-9]|4[2-6]|5(?:[236-8]|[45][2-69])|[68][2-7]|7[2-689]|9[1-578])|2(?:2(?:[04-689]|3[23])|3[3-58]|4[0-468]|5(?:5[78]|7[2-4]|[0468][2-9])|6(?:[0135-8]|4[2-5])|7(?:[0679]|8[2-7])|8(?:[024578]|3[25-9]|9[6-9])|9(?:11|3[2-4]))|4(?:2(?:2[2-9]|8[237-9])|3[689]|6[035-7]|7(?:[059][2-8]|[68])|80|9[3-5])|5(?:3[1-36-9]|4[4578]|5[013-8]|6[1-9]|7[2-8]|8[14-7]|9(?:[89][2-8]|[4-7]))|7(?:2[15]|3[5-9]|4[02-9]|6[135-8]|7[0-4689]|9(?:[017-9]|4[6-8]|5[2-478]|6[2-589]))|8(?:2(?:4[4-8]|9[2-8])|3(?:7[2-6]|[3-6][2-9]|8[2-5])|4[5-8]|5[2-9]|6(?:[37]|5[4-7]|6[2-9]|8[2-8]|9[236-9])|7[579]|8[03-579]|9[2-8])|9(?:[23]0|4[02-46-9]|5[024-79]|6[4-9]|7[2-47-9]|8[02-7]|9(?:3[34]|[4-7]))#1(?:2[3-6]|3[3-9]|4[2-6]|5(?:[236-8]|[45][2-69])|[68][2-7]|7[2-689]|9[1-578])|2(?:2(?:[04-689]|3[23])|3[3-58]|4[0-468]|5(?:5[78]|7[2-4]|[0468][2-9])|6(?:[0135-8]|4[2-5])|7(?:[0679]|8[2-7])|8(?:[024578]|3[25-9]|9[6-9])|9(?:11|3[2-4]))|4(?:2(?:2[2-9]|8[237-9])|3[689]|6[035-7]|7(?:[059][2-8]|[68])|80|9[3-5])|5(?:3[1-36-9]|4[4578]|5[013-8]|6[1-9]|7[2-8]|8[14-7]|9(?:[89][2-8]|[4-7]))|7(?:2[15]|3[5-9]|4[02-9]|6[135-8]|7[0-4689]|9(?:[017-9]|4[6-8]|5[2-478]|6[2-589]))|8(?:2(?:4[4-8]|9(?:[3578]|20|4[04-9]|6[56]))|3(?:7(?:[2-5]|6[0-59])|[3-6][2-9]|8[2-5])|4[5-8]|5[2-9]|6(?:[37]|5(?:[467]|5[014-9])|6(?:[2-8]|9[02-69])|8[2-8]|9(?:[236-8]|9[23]))|7[579]|8[03-579]|9[2-8])|9(?:[23]0|4[02-46-9]|5[024-79]|6[4-9]|7[2-47-9]|8[02-7]|9(?:3(?:3[02-9]|4[0-24689])|4[2-69]|[5-7]))#1(?:2[3-6]|3[3-9]|4[2-6]|5(?:[236-8]|[45][2-69])|[68][2-7]|7[2-689]|9[1-578])|2(?:2(?:[04-689]|3[23])|3[3-58]|4[0-468]|5(?:5[78]|7[2-4]|[0468][2-9])|6(?:[0135-8]|4[2-5])|7(?:[0679]|8[2-7])|8(?:[024578]|3[25-9]|9[6-9])|9(?:11|3[2-4]))|4(?:2(?:2[2-9]|8[237-9])|3[689]|6[035-7]|7(?:[059][2-8]|[68])|80|9[3-5])|5(?:3[1-36-9]|4[4578]|5[013-8]|6[1-9]|7[2-8]|8[14-7]|9(?:[89][2-8]|[4-7]))|7(?:2[15]|3[5-9]|4[02-9]|6[135-8]|7[0-4689]|9(?:[017-9]|4[6-8]|5[2-478]|6[2-589]))|8(?:2(?:4[4-8]|9(?:[3578]|20|4[04-9]|6(?:5[25]|60)))|3(?:7(?:[2-5]|6[0-59])|[3-6][2-9]|8[2-5])|4[5-8]|5[2-9]|6(?:[37]|5(?:[467]|5[014-9])|6(?:[2-8]|9[02-69])|8[2-8]|9(?:[236-8]|9[23]))|7[579]|8[03-579]|9[2-8])|9(?:[23]0|4[02-46-9]|5[024-79]|6[4-9]|7[2-47-9]|8[02-7]|9(?:3(?:3[02-9]|4[0-24689])|4[2-69]|[5-7]))";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1|2(?:2[37]|5[5-9]|64|78|8[39]|91)|4(?:2[2689]|64|7[347])|5(?:[2-589]|39)|60|8(?:[46-9]|3[279]|2[124589])|9(?:[235-8]|93)#1|2(?:2[37]|5(?:[57]|[68]0|9[19])|64|78|8[39]|917)|4(?:2(?:[68]|20|9[178])|64|7[347])|5(?:[2-589]|39[67])|60|8(?:[46-9]|3[279]|2[124589])|9(?:[235-8]|93[34])#1|2(?:2[37]|5(?:[57]|[68]0|9(?:17|99))|64|78|8[39]|917)|4(?:2(?:[68]|20|9[178])|64|7[347])|5(?:[2-589]|39[67])|60|8(?:[46-9]|3[279]|2[124589])|9(?:[235-8]|93(?:31|4))";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2(?:9[14-79]|74|[34]7|[56]9)|82|993";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3|4(?:2[09]|7[01])|6[1-9]";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2479";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MM";
-    locala.ypl = "95";
-    locala.ypm = 8;
-    locala.ypn = 10;
-    localb = new b();
-    localb.ypp = "1|2[45]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d)(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "251";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(2)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "16|2";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d)(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "67|81";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "4-8";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9(?:[25-9]|4[13789])";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(9)(\\d{3})(\\d{4,5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "94[0245]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(9)(4\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "PH";
-    locala.ypl = "63";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(2)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3(?:23|39|46)|4(?:2[3-6]|[35]9|4[26]|76)|5(?:22|44)|642|8(?:62|8[245])#3(?:230|397|461)|4(?:2(?:35|[46]4|51)|396|4(?:22|63)|59[347]|76[15])|5(?:221|446)|642[23]|8(?:622|8(?:[24]2|5[13]))";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "346|4(?:27|9[35])|883#3469|4(?:279|9(?:30|56))|8834";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{5})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3-8";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([3-8]\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(9\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1800)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(1800)(\\d{1,2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "GW";
-    locala.ypl = "245";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BF";
-    locala.ypl = "226";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SC";
-    locala.ypl = "248";
-    locala.ypm = 6;
-    locala.ypn = 7;
-    localb = new b();
-    localb.ypp = "89";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "246";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MN";
-    locala.ypl = "976";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "[12]1";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([12]\\d)(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "12";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([12]2\\d)(\\d{5,6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[12](?:27|[3-5])#[12](?:27|[3-5]\\d)2";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([12]\\d{3})(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "57-9";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "12";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([12]\\d{4})(\\d{4,5})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BG";
-    locala.ypl = "359";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "29";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(2)(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(2)(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "43[124-7]|70[1-9]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "43[124-7]|70[1-9]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[78]00";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "356";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{2,3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "48|8[7-9]|9[08]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SD";
-    locala.ypl = "249";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "UY";
-    locala.ypl = "598";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "24";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9[1-9]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[89]0";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "UZ";
-    locala.ypl = "998";
-    locala.ypm = 7;
-    locala.ypn = 9;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([679]\\d)(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MO";
-    locala.ypl = "853";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([268]\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "EC";
-    locala.ypl = "593";
-    locala.ypm = 8;
-    locala.ypn = 9;
-    localb = new b();
-    localb.ypp = "247";
-    localb.ypq = "$1-$2-$3";
-    localb.ypr = "(\\d)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1800)(\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "GY";
-    locala.ypl = "592";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BH";
-    locala.ypl = "973";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SE";
-    locala.ypl = "46";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "8";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(8)(\\d{2,3})(\\d{2,3})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[013689]|2[0136]|3[1356]|4[0246]|54|6[03]|90";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([1-69]\\d)(\\d{2,3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[13689]|2[136]|3[1356]|4[0246]|54|6[03]|90";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([1-69]\\d)(\\d{3})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[2457]|2[2457-9]|3[0247-9]|4[1357-9]|5[0-35-9]|6[124-9]|9(?:[125-8]|3[0-5]|4[0-3])";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[2457]|2[2457-9]|3[0247-9]|4[1357-9]|5[0-35-9]|6[124-9]|9(?:[125-8]|3[0-5]|4[0-3])";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{2,3})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "7";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(7\\d)(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "20";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(20)(\\d{2,3})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "9[034]";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(9[034]\\d)(\\d{2})(\\d{2})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "PK";
-    locala.ypl = "92";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "(?:2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91)1#(?:2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91)11#(?:2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91)111";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(111)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2[349]|45|54|60|72|8[2-5]|9[2-9]#(?:2[349]|45|54|60|72|8[2-5]|9[2-9])\\d1#(?:2[349]|45|54|60|72|8[2-5]|9[2-9])\\d11#(?:2[349]|45|54|60|72|8[2-5]|9[2-9])\\d111";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{3})(111)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "(?:2[125]|4[0-246-9]|5[1-35-7]|6[1-8]|7[14]|8[16]|91)[2-9]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{7,8})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2[349]|45|54|60|72|8[2-5]|9[2-9]#(?:2[349]|45|54|60|72|8[2-5]|9[2-9])\\d[2-9]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{6,7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(3\\d{2})(\\d{7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "58[12]|1";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([15]\\d{3})(\\d{5,6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "586";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(586\\d{2})(\\d{5})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[89]00";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([89]00)(\\d{3})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BI";
-    locala.ypl = "257";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([27]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "VA";
-    locala.ypl = "379";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(06)(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MQ";
-    locala.ypl = "596";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "EE";
-    locala.ypl = "372";
-    locala.ypm = 7;
-    locala.ypn = 8;
-    localb = new b();
-    localb.ypp = "369";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([3-79]\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "70";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(70)(\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "800#8000";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(8000)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "40|5|8(?:00|[1-5])#40|5|8(?:00[1-9]|[1-5])";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([458]\\d{3})(\\d{3,4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "PL";
-    locala.ypl = "48";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "124";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "124";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{4,6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "39|5[013]|6[0469]|7[0289]|8[08]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "64";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{2,3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "64";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BJ";
-    locala.ypl = "229";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SG";
-    locala.ypl = "65";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "369";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([3689]\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[89]";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(1[89]00)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "70";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(7000)(\\d{4})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "80";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(800)(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MR";
-    locala.ypl = "222";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "([2-48]\\d)(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "PM";
-    locala.ypl = "508";
-    locala.ypm = 6;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([45]\\d)(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SI";
-    locala.ypl = "386";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "12";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d)(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "[37][01]|4[019]|51|6";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([3-7]\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "89";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([89][09])(\\d{3,6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "59|8[1-3]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([58]\\d{2})(\\d{5})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "EG";
-    locala.ypl = "20";
-    locala.ypm = 9;
-    locala.ypn = 10;
-    localb = new b();
-    localb.ypp = "23";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d)(\\d{7,8})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1[012]|[89]00";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1(?:3|5[23])|[4-6]|[89][2-9]";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{6,7})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MT";
-    locala.ypl = "356";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{4})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "VE";
-    locala.ypl = "58";
-    locala.ypm = 10;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{3})(\\d{7})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MU";
-    locala.ypl = "230";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([2-9]\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BN";
-    locala.ypl = "673";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([2-578]\\d{2})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SK";
-    locala.ypl = "421";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "2";
-    localb.ypq = "$1/$2 $3 $4";
-    localb.ypr = "(2)(\\d{3})(\\d{3})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "3-5";
-    localb.ypq = "$1/$2 $3 $4";
-    localb.ypr = "([3-5]\\d)(\\d{3})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "689";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "([689]\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MV";
-    locala.ypl = "960";
-    locala.ypm = 7;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "[3467]|9(?:[1-9]|0[1-9])";
-    localb.ypq = "$1-$2";
-    localb.ypr = "(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "900";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d{3})(\\d{3})(\\d{4})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "BO";
-    locala.ypl = "591";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "234";
-    localb.ypq = "$1 $2";
-    localb.ypr = "([234])(\\d{7})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "67";
-    localb.ypq = "$1";
-    localb.ypr = "([67]\\d{7})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SL";
-    locala.ypl = "232";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "";
-    localb.ypq = "$1 $2";
-    localb.ypr = "(\\d{2})(\\d{6})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "MW";
-    locala.ypl = "265";
-    locala.ypm = 9;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "1";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(\\d)(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "2";
-    localb.ypq = "$1 $2 $3";
-    localb.ypr = "(2\\d{2})(\\d{3})(\\d{3})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "1789";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{3})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    locala = new a();
-    locala.ypk = "SM";
-    locala.ypl = "378";
-    locala.ypm = 8;
-    locala.ypn = 20;
-    localb = new b();
-    localb.ypp = "5-7";
-    localb.ypq = "$1 $2 $3 $4";
-    localb.ypr = "(\\d{2})(\\d{2})(\\d{2})(\\d{2})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "0";
-    localb.ypq = "($1) $2";
-    localb.ypr = "(0549)(\\d{6})";
-    locala.ypo.add(localb);
-    localb = new b();
-    localb.ypp = "89";
-    localb.ypq = "(0549) $1";
-    localb.ypr = "(\\d{6})";
-    locala.ypo.add(localb);
-    this.ypj.add(locala);
-    AppMethodBeat.o(52213);
+    AppMethodBeat.i(156249);
+    EVg = null;
+    EVp = new Object();
+    EVr = new LruCache(5);
+    AppMethodBeat.o(156249);
   }
   
-  public static final class a
+  private aw()
   {
-    String ypk;
-    String ypl;
-    int ypm;
-    int ypn;
-    List<aw.b> ypo;
-    
-    public a()
+    AppMethodBeat.i(156232);
+    this.EVh = null;
+    this.EVi = null;
+    this.EVj = null;
+    this.mMode = 0;
+    this.EVk = false;
+    this.fZH = null;
+    this.EVl = 0;
+    this.gcu = false;
+    this.EVm = 0L;
+    this.EVn = 0L;
+    this.EVo = new Object();
+    this.EVq = new WeakHashMap();
+    RuntimeException localRuntimeException = new RuntimeException("Not supported.");
+    AppMethodBeat.o(156232);
+    throw localRuntimeException;
+  }
+  
+  private aw(Context paramContext, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(156233);
+    this.EVh = null;
+    this.EVi = null;
+    this.EVj = null;
+    this.mMode = 0;
+    this.EVk = false;
+    this.fZH = null;
+    this.EVl = 0;
+    this.gcu = false;
+    this.EVm = 0L;
+    this.EVn = 0L;
+    this.EVo = new Object();
+    this.EVq = new WeakHashMap();
+    Context localContext = paramContext.getApplicationContext();
+    if (EVg == null) {
+      EVg = new ap(Looper.getMainLooper());
+    }
+    String str = localContext.getApplicationInfo().dataDir;
+    if (str != null)
     {
-      AppMethodBeat.i(52212);
-      this.ypm = 10;
-      this.ypn = 20;
-      this.ypo = new LinkedList();
-      AppMethodBeat.o(52212);
+      paramContext = str;
+      if (str.length() != 0) {}
+    }
+    else
+    {
+      ad.w("MicroMsg.MultiProcSharedPreferences", "Failed to retrive data path by ApplicationInfo.dataDir, use prefix hardcoded version instead.");
+      paramContext = "/data/data/" + localContext.getPackageName();
+    }
+    ad.i("MicroMsg.MultiProcSharedPreferences", "Path to store sp data: ".concat(String.valueOf(paramContext)));
+    paramContext = new File(paramContext, "shared_prefs");
+    if (!paramContext.exists())
+    {
+      paramContext.mkdirs();
+      this.EVi = new File(paramContext, paramString + ".xml");
+      paramContext = this.EVi;
+      this.EVj = new File(paramContext.getPath() + ".bak");
+      this.mMode = paramInt;
+      if ((paramInt & 0x4) == 0) {
+        break label370;
+      }
+    }
+    label370:
+    for (boolean bool = true;; bool = false)
+    {
+      this.EVk = bool;
+      if (this.EVk) {
+        this.EVh = new FLock(this.EVi.getPath() + ".lock");
+      }
+      eFY();
+      AppMethodBeat.o(156233);
+      return;
+      if ((paramContext.canRead()) && (paramContext.canWrite())) {
+        break;
+      }
+      paramContext.setReadable(true, true);
+      paramContext.setWritable(true, true);
+      break;
     }
   }
   
-  public static final class b
+  private void eFY()
   {
-    String ypp;
-    String ypq;
-    String ypr;
+    AppMethodBeat.i(156234);
+    try
+    {
+      this.gcu = false;
+      Runnable local1 = new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(156202);
+          synchronized (aw.this)
+          {
+            aw.a(aw.this);
+            AppMethodBeat.o(156202);
+            return;
+          }
+        }
+      };
+      h.Iye.aS(local1);
+      AppMethodBeat.o(156234);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(156234);
+    }
+  }
+  
+  private void eFZ()
+  {
+    AppMethodBeat.i(156237);
+    while (!this.gcu) {
+      try
+      {
+        wait();
+      }
+      catch (InterruptedException localInterruptedException) {}
+    }
+    AppMethodBeat.o(156237);
+  }
+  
+  public static SharedPreferences s(Context paramContext, String paramString, int paramInt)
+  {
+    int i = 1;
+    AppMethodBeat.i(156231);
+    ax localax = ax.aFC(paramString);
+    if (aw.a.eGb())
+    {
+      ad.i("MicroMsg.MultiProcSharedPreferences", "sp: %s, use Flock version MultiProcessSP.", new Object[] { paramString });
+      aw localaw = (aw)EVr.get(paramString);
+      if (localaw == null)
+      {
+        paramContext = new aw(paramContext, paramString, paramInt);
+        EVr.put(paramString, paramContext);
+      }
+      for (;;)
+      {
+        ax.a(paramContext, localax);
+        AppMethodBeat.o(156231);
+        return localax;
+        paramContext = localaw;
+        if ((paramInt & 0x4) != 0)
+        {
+          for (;;)
+          {
+            try
+            {
+              if (localaw.EVl <= 0)
+              {
+                paramInt = i;
+                if (localaw.EVm == localaw.EVi.lastModified())
+                {
+                  if (localaw.EVn != localaw.EVi.length()) {
+                    paramInt = i;
+                  }
+                }
+                else
+                {
+                  if (paramInt != 0) {
+                    break label177;
+                  }
+                  paramContext = localaw;
+                  break;
+                }
+              }
+            }
+            finally
+            {
+              AppMethodBeat.o(156231);
+            }
+            paramInt = 0;
+          }
+          label177:
+          localaw.eFY();
+          paramContext = localaw;
+        }
+      }
+    }
+    ad.i("MicroMsg.MultiProcSharedPreferences", "sp: %s, use system sp.", new Object[] { paramString });
+    paramContext = paramContext.getSharedPreferences(paramString, paramInt);
+    AppMethodBeat.o(156231);
+    return paramContext;
+  }
+  
+  public final boolean contains(String paramString)
+  {
+    AppMethodBeat.i(156245);
+    try
+    {
+      eFZ();
+      boolean bool = this.fZH.containsKey(paramString);
+      return bool;
+    }
+    finally
+    {
+      AppMethodBeat.o(156245);
+    }
+  }
+  
+  public final SharedPreferences.Editor edit()
+  {
+    AppMethodBeat.i(156246);
+    try
+    {
+      eFZ();
+      b localb = new b((byte)0);
+      AppMethodBeat.o(156246);
+      return localb;
+    }
+    finally
+    {
+      AppMethodBeat.o(156246);
+    }
+  }
+  
+  public final Map<String, ?> getAll()
+  {
+    AppMethodBeat.i(156238);
+    try
+    {
+      eFZ();
+      HashMap localHashMap = new HashMap(this.fZH);
+      return localHashMap;
+    }
+    finally
+    {
+      AppMethodBeat.o(156238);
+    }
+  }
+  
+  public final boolean getBoolean(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(156244);
+    try
+    {
+      eFZ();
+      paramString = (Boolean)this.fZH.get(paramString);
+      if (paramString != null) {
+        paramBoolean = paramString.booleanValue();
+      }
+      return paramBoolean;
+    }
+    finally
+    {
+      AppMethodBeat.o(156244);
+    }
+  }
+  
+  public final float getFloat(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(156243);
+    try
+    {
+      eFZ();
+      paramString = (Float)this.fZH.get(paramString);
+      if (paramString != null) {
+        paramFloat = paramString.floatValue();
+      }
+      return paramFloat;
+    }
+    finally
+    {
+      AppMethodBeat.o(156243);
+    }
+  }
+  
+  public final int getInt(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(156241);
+    try
+    {
+      eFZ();
+      paramString = (Integer)this.fZH.get(paramString);
+      if (paramString != null) {
+        paramInt = paramString.intValue();
+      }
+      return paramInt;
+    }
+    finally
+    {
+      AppMethodBeat.o(156241);
+    }
+  }
+  
+  public final long getLong(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(156242);
+    try
+    {
+      eFZ();
+      paramString = (Long)this.fZH.get(paramString);
+      if (paramString != null) {
+        paramLong = paramString.longValue();
+      }
+      return paramLong;
+    }
+    finally
+    {
+      AppMethodBeat.o(156242);
+    }
+  }
+  
+  /* Error */
+  public final String getString(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: ldc_w 456
+    //   3: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: monitorenter
+    //   8: aload_0
+    //   9: invokespecial 399	com/tencent/mm/sdk/platformtools/aw:eFZ	()V
+    //   12: aload_0
+    //   13: getfield 92	com/tencent/mm/sdk/platformtools/aw:fZH	Ljava/util/Map;
+    //   16: aload_1
+    //   17: invokeinterface 423 2 0
+    //   22: checkcast 145	java/lang/String
+    //   25: astore_1
+    //   26: aload_1
+    //   27: ifnull +13 -> 40
+    //   30: aload_0
+    //   31: monitorexit
+    //   32: ldc_w 456
+    //   35: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   38: aload_1
+    //   39: areturn
+    //   40: aload_2
+    //   41: astore_1
+    //   42: goto -12 -> 30
+    //   45: astore_1
+    //   46: aload_0
+    //   47: monitorexit
+    //   48: ldc_w 456
+    //   51: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   54: aload_1
+    //   55: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	56	0	this	aw
+    //   0	56	1	paramString1	String
+    //   0	56	2	paramString2	String
+    // Exception table:
+    //   from	to	target	type
+    //   8	26	45	finally
+    //   30	32	45	finally
+    //   46	48	45	finally
+  }
+  
+  /* Error */
+  public final Set<String> getStringSet(String paramString, Set<String> paramSet)
+  {
+    // Byte code:
+    //   0: ldc_w 459
+    //   3: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: monitorenter
+    //   8: aload_0
+    //   9: invokespecial 399	com/tencent/mm/sdk/platformtools/aw:eFZ	()V
+    //   12: aload_0
+    //   13: getfield 92	com/tencent/mm/sdk/platformtools/aw:fZH	Ljava/util/Map;
+    //   16: aload_1
+    //   17: invokeinterface 423 2 0
+    //   22: checkcast 461	java/util/Set
+    //   25: astore_1
+    //   26: aload_1
+    //   27: ifnull +13 -> 40
+    //   30: aload_0
+    //   31: monitorexit
+    //   32: ldc_w 459
+    //   35: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   38: aload_1
+    //   39: areturn
+    //   40: aload_2
+    //   41: astore_1
+    //   42: goto -12 -> 30
+    //   45: astore_1
+    //   46: aload_0
+    //   47: monitorexit
+    //   48: ldc_w 459
+    //   51: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   54: aload_1
+    //   55: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	56	0	this	aw
+    //   0	56	1	paramString	String
+    //   0	56	2	paramSet	Set<String>
+    // Exception table:
+    //   from	to	target	type
+    //   8	26	45	finally
+    //   30	32	45	finally
+    //   46	48	45	finally
+  }
+  
+  public final void registerOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
+  {
+    AppMethodBeat.i(156235);
+    try
+    {
+      this.EVq.put(paramOnSharedPreferenceChangeListener, EVp);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(156235);
+    }
+  }
+  
+  public final void unregisterOnSharedPreferenceChangeListener(SharedPreferences.OnSharedPreferenceChangeListener paramOnSharedPreferenceChangeListener)
+  {
+    AppMethodBeat.i(156236);
+    try
+    {
+      this.EVq.remove(paramOnSharedPreferenceChangeListener);
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(156236);
+    }
+  }
+  
+  final class b
+    implements SharedPreferences.Editor
+  {
+    private final Map<String, Object> EVv;
+    private boolean EVw;
+    
+    private b()
+    {
+      AppMethodBeat.i(156213);
+      this.EVv = new HashMap();
+      this.EVw = false;
+      AppMethodBeat.o(156213);
+    }
+    
+    private FileOutputStream N(File paramFile)
+    {
+      AppMethodBeat.i(156225);
+      try
+      {
+        FileOutputStream localFileOutputStream = new FileOutputStream(paramFile);
+        paramFile = localFileOutputStream;
+      }
+      catch (FileNotFoundException localFileNotFoundException1)
+      {
+        for (;;)
+        {
+          Object localObject = paramFile.getParentFile();
+          if (!((File)localObject).mkdir())
+          {
+            ad.e("MicroMsg.MultiProcSharedPreferences", "Couldn't create directory for SharedPreferences file ".concat(String.valueOf(paramFile)));
+            AppMethodBeat.o(156225);
+            return null;
+          }
+          aw.f((File)localObject, aw.h(aw.this));
+          try
+          {
+            localObject = new FileOutputStream(paramFile);
+            paramFile = (File)localObject;
+          }
+          catch (FileNotFoundException localFileNotFoundException2)
+          {
+            ad.e("MicroMsg.MultiProcSharedPreferences", "Couldn't create SharedPreferences file ".concat(String.valueOf(paramFile)), new Object[] { localFileNotFoundException2 });
+            paramFile = null;
+          }
+        }
+      }
+      AppMethodBeat.o(156225);
+      return paramFile;
+    }
+    
+    private void a(final aw.c paramc)
+    {
+      AppMethodBeat.i(156226);
+      if ((paramc.csT == null) || (paramc.EVC == null) || (paramc.EVC.size() == 0))
+      {
+        AppMethodBeat.o(156226);
+        return;
+      }
+      if (Looper.myLooper() == Looper.getMainLooper())
+      {
+        int i = paramc.EVC.size() - 1;
+        while (i >= 0)
+        {
+          String str = (String)paramc.EVC.get(i);
+          Iterator localIterator = paramc.csT.iterator();
+          while (localIterator.hasNext())
+          {
+            SharedPreferences.OnSharedPreferenceChangeListener localOnSharedPreferenceChangeListener = (SharedPreferences.OnSharedPreferenceChangeListener)localIterator.next();
+            if (localOnSharedPreferenceChangeListener != null) {
+              localOnSharedPreferenceChangeListener.onSharedPreferenceChanged(aw.this, str);
+            }
+          }
+          i -= 1;
+        }
+        AppMethodBeat.o(156226);
+        return;
+      }
+      aw.eGa().post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(156212);
+          aw.b.b(aw.b.this, paramc);
+          AppMethodBeat.o(156212);
+        }
+      });
+      AppMethodBeat.o(156226);
+    }
+    
+    private void a(final aw.c paramc, Runnable arg2)
+    {
+      int j = 1;
+      AppMethodBeat.i(156224);
+      paramc = new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(156211);
+          synchronized (aw.f(aw.this))
+          {
+            aw.b.a(aw.b.this, paramc);
+          }
+          synchronized (aw.this)
+          {
+            aw.g(aw.this);
+            if (paramRunnable != null) {
+              paramRunnable.run();
+            }
+            AppMethodBeat.o(156211);
+            return;
+            localObject2 = finally;
+            AppMethodBeat.o(156211);
+            throw localObject2;
+          }
+        }
+      };
+      int i;
+      if (??? == null) {
+        i = 1;
+      }
+      while (i != 0) {
+        synchronized (aw.this)
+        {
+          if (aw.b(aw.this) == 1)
+          {
+            i = j;
+            if (i != 0)
+            {
+              paramc.run();
+              AppMethodBeat.o(156224);
+              return;
+              i = 0;
+            }
+          }
+          else
+          {
+            i = 0;
+          }
+        }
+      }
+      bf.eGn().execute(paramc);
+      AppMethodBeat.o(156224);
+    }
+    
+    private aw.c eGc()
+    {
+      AppMethodBeat.i(156223);
+      aw.c localc1 = new aw.c((byte)0);
+      for (;;)
+      {
+        Object localObject2;
+        String str;
+        synchronized (aw.this)
+        {
+          if (aw.b(aw.this) > 0) {
+            aw.a(aw.this, new HashMap(aw.c(aw.this)));
+          }
+          localc1.EVD = aw.c(aw.this);
+          aw.d(aw.this);
+          if (aw.e(aw.this).size() > 0)
+          {
+            i = 1;
+            if (i != 0)
+            {
+              localc1.EVC = new ArrayList();
+              localc1.csT = new HashSet(aw.e(aw.this).keySet());
+            }
+            try
+            {
+              if (this.EVw)
+              {
+                if (!aw.c(aw.this).isEmpty())
+                {
+                  localc1.EVB = true;
+                  aw.c(aw.this).clear();
+                }
+                this.EVw = false;
+              }
+              Iterator localIterator = this.EVv.entrySet().iterator();
+              if (!localIterator.hasNext()) {
+                break;
+              }
+              localObject2 = (Map.Entry)localIterator.next();
+              str = (String)((Map.Entry)localObject2).getKey();
+              localObject2 = ((Map.Entry)localObject2).getValue();
+              if (localObject2 != this) {
+                break label318;
+              }
+              if (!aw.c(aw.this).containsKey(str)) {
+                continue;
+              }
+              aw.c(aw.this).remove(str);
+              localc1.EVB = true;
+              if (i == 0) {
+                continue;
+              }
+              localc1.EVC.add(str);
+              continue;
+              localc2 = finally;
+            }
+            finally
+            {
+              AppMethodBeat.o(156223);
+            }
+          }
+        }
+        int i = 0;
+        continue;
+        label318:
+        if (aw.c(aw.this).containsKey(str))
+        {
+          Object localObject3 = aw.c(aw.this).get(str);
+          if ((localObject3 != null) && (localObject3.equals(localObject2))) {}
+        }
+        else
+        {
+          aw.c(aw.this).put(str, localObject2);
+        }
+      }
+      this.EVv.clear();
+      AppMethodBeat.o(156223);
+      return localc2;
+    }
+    
+    public final void apply()
+    {
+      AppMethodBeat.i(156222);
+      final aw.c localc = eGc();
+      final Runnable local1 = new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(156209);
+          try
+          {
+            localc.EVE.await();
+            AppMethodBeat.o(156209);
+            return;
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            AppMethodBeat.o(156209);
+          }
+        }
+      };
+      bf.aA(local1);
+      a(localc, new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(156210);
+          local1.run();
+          bf.aB(local1);
+          AppMethodBeat.o(156210);
+        }
+      });
+      a(localc);
+      AppMethodBeat.o(156222);
+    }
+    
+    public final SharedPreferences.Editor clear()
+    {
+      try
+      {
+        this.EVw = true;
+        return this;
+      }
+      finally {}
+    }
+    
+    public final boolean commit()
+    {
+      AppMethodBeat.i(156221);
+      aw.c localc = eGc();
+      a(localc, null);
+      try
+      {
+        localc.EVE.await();
+        a(localc);
+        boolean bool = localc.EVF;
+        AppMethodBeat.o(156221);
+        return bool;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        AppMethodBeat.o(156221);
+      }
+      return false;
+    }
+    
+    public final SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
+    {
+      AppMethodBeat.i(156219);
+      try
+      {
+        this.EVv.put(paramString, Boolean.valueOf(paramBoolean));
+        return this;
+      }
+      finally
+      {
+        AppMethodBeat.o(156219);
+      }
+    }
+    
+    public final SharedPreferences.Editor putFloat(String paramString, float paramFloat)
+    {
+      AppMethodBeat.i(156218);
+      try
+      {
+        this.EVv.put(paramString, Float.valueOf(paramFloat));
+        return this;
+      }
+      finally
+      {
+        AppMethodBeat.o(156218);
+      }
+    }
+    
+    public final SharedPreferences.Editor putInt(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(156216);
+      try
+      {
+        this.EVv.put(paramString, Integer.valueOf(paramInt));
+        return this;
+      }
+      finally
+      {
+        AppMethodBeat.o(156216);
+      }
+    }
+    
+    public final SharedPreferences.Editor putLong(String paramString, long paramLong)
+    {
+      AppMethodBeat.i(156217);
+      try
+      {
+        this.EVv.put(paramString, Long.valueOf(paramLong));
+        return this;
+      }
+      finally
+      {
+        AppMethodBeat.o(156217);
+      }
+    }
+    
+    public final SharedPreferences.Editor putString(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(156214);
+      try
+      {
+        this.EVv.put(paramString1, paramString2);
+        return this;
+      }
+      finally
+      {
+        AppMethodBeat.o(156214);
+      }
+    }
+    
+    public final SharedPreferences.Editor putStringSet(String paramString, Set<String> paramSet)
+    {
+      AppMethodBeat.i(156215);
+      try
+      {
+        this.EVv.put(paramString, paramSet);
+        return this;
+      }
+      finally
+      {
+        AppMethodBeat.o(156215);
+      }
+    }
+    
+    public final SharedPreferences.Editor remove(String paramString)
+    {
+      AppMethodBeat.i(156220);
+      try
+      {
+        this.EVv.put(paramString, this);
+        return this;
+      }
+      finally
+      {
+        AppMethodBeat.o(156220);
+      }
+    }
+  }
+  
+  static final class c
+  {
+    public boolean EVB;
+    public List<String> EVC;
+    public Map<String, Object> EVD;
+    public final CountDownLatch EVE;
+    public volatile boolean EVF;
+    public Set<SharedPreferences.OnSharedPreferenceChangeListener> csT;
+    
+    private c()
+    {
+      AppMethodBeat.i(156229);
+      this.EVB = false;
+      this.EVC = null;
+      this.csT = null;
+      this.EVD = null;
+      this.EVE = new CountDownLatch(1);
+      this.EVF = false;
+      AppMethodBeat.o(156229);
+    }
+    
+    public final void uU(boolean paramBoolean)
+    {
+      AppMethodBeat.i(156230);
+      this.EVF = paramBoolean;
+      this.EVE.countDown();
+      AppMethodBeat.o(156230);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.aw
  * JD-Core Version:    0.7.0.1
  */

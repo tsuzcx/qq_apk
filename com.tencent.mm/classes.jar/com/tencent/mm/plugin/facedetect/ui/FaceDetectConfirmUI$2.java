@@ -12,20 +12,20 @@ final class FaceDetectConfirmUI$2
   
   public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AppMethodBeat.i(364);
+    AppMethodBeat.i(103883);
     if (paramBoolean)
     {
-      FaceDetectConfirmUI.b(this.mkL).setEnabled(true);
-      AppMethodBeat.o(364);
+      FaceDetectConfirmUI.b(this.pRw).setEnabled(true);
+      AppMethodBeat.o(103883);
       return;
     }
-    FaceDetectConfirmUI.b(this.mkL).setEnabled(false);
-    AppMethodBeat.o(364);
+    FaceDetectConfirmUI.b(this.pRw).setEnabled(false);
+    AppMethodBeat.o(103883);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.FaceDetectConfirmUI.2
  * JD-Core Version:    0.7.0.1
  */

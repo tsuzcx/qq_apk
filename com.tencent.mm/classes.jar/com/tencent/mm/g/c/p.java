@@ -2,22 +2,33 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.bsi;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.io.IOException;
 
 public abstract class p
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int dhB = "appId".hashCode();
-  private static final int dis = "recommendCard".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandLauncherLayoutItemUpdateTimeIndex ON AppBrandLauncherLayoutItem(updateTime)", "CREATE INDEX IF NOT EXISTS AppBrandLauncherLayoutItemSceneIndex ON AppBrandLauncherLayoutItem(scene)" };
+  private static final int elq = "scene".hashCode();
+  private static final int emE = "recordId".hashCode();
+  private static final int emF = "brandId".hashCode();
+  private static final int emf;
+  private static final int emu = "versionType".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dhk = true;
-  private boolean diq = true;
-  public String field_appId;
-  public bsi field_recommendCard;
+  private boolean elo = true;
+  private boolean emC = true;
+  private boolean emD = true;
+  private boolean emc = true;
+  private boolean emq = true;
+  public String field_brandId;
+  public int field_recordId;
+  public int field_scene;
+  public long field_updateTime;
+  public int field_versionType;
+  
+  static
+  {
+    emf = "updateTime".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -25,18 +36,18 @@ public abstract class p
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dhB != k) {
+      if (emE != k) {
         break label65;
       }
-      this.field_appId = paramCursor.getString(i);
-      this.dhk = true;
+      this.field_recordId = paramCursor.getInt(i);
+      this.emC = true;
     }
     for (;;)
     {
@@ -44,19 +55,14 @@ public abstract class p
       break label20;
       break;
       label65:
-      if (dis == k) {
-        try
-        {
-          byte[] arrayOfByte = paramCursor.getBlob(i);
-          if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
-            continue;
-          }
-          this.field_recommendCard = ((bsi)new bsi().parseFrom(arrayOfByte));
-        }
-        catch (IOException localIOException)
-        {
-          ab.e("MicroMsg.SDK.BaseAppBrandRecommendCard", localIOException.getMessage());
-        }
+      if (emF == k) {
+        this.field_brandId = paramCursor.getString(i);
+      } else if (emu == k) {
+        this.field_versionType = paramCursor.getInt(i);
+      } else if (emf == k) {
+        this.field_updateTime = paramCursor.getLong(i);
+      } else if (elq == k) {
+        this.field_scene = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -66,30 +72,30 @@ public abstract class p
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dhk) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.emC) {
+      localContentValues.put("recordId", Integer.valueOf(this.field_recordId));
     }
-    if ((this.diq) && (this.field_recommendCard != null)) {}
-    try
-    {
-      localContentValues.put("recommendCard", this.field_recommendCard.toByteArray());
-      if (this.systemRowid > 0L) {
-        localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-      }
-      return localContentValues;
+    if (this.emD) {
+      localContentValues.put("brandId", this.field_brandId);
     }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.SDK.BaseAppBrandRecommendCard", localIOException.getMessage());
-      }
+    if (this.emq) {
+      localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
     }
+    if (this.emc) {
+      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    }
+    if (this.elo) {
+      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    }
+    if (this.systemRowid > 0L) {
+      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+    }
+    return localContentValues;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.p
  * JD-Core Version:    0.7.0.1
  */

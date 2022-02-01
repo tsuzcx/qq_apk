@@ -5,20 +5,20 @@ import com.tencent.mm.plugin.appbrand.jsapi.c;
 
 public final class g
 {
-  c hET;
-  int hry;
+  c jGV;
+  int joH;
   
   public g(c paramc, int paramInt)
   {
-    this.hET = paramc;
-    this.hry = paramInt;
+    this.jGV = paramc;
+    this.joH = paramInt;
   }
   
-  public final void BS(String paramString)
+  public final void HQ(String paramString)
   {
-    AppMethodBeat.i(91048);
-    this.hET.h(this.hry, paramString);
-    AppMethodBeat.o(91048);
+    AppMethodBeat.i(140655);
+    this.jGV.h(this.joH, paramString);
+    AppMethodBeat.o(140655);
   }
 }
 

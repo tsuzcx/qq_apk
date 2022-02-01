@@ -1,84 +1,56 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelgeo.b;
-import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.modelgeo.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.freewifi.m;
+import com.tencent.mm.plugin.freewifi.model.j;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
 {
-  private static String TAG = "MicroMsg.FreeWifi.FreeWifiGetLocation";
-  private boolean isRunning = false;
-  private b mNM = null;
-  private b.a mNN = null;
-  private ak mNO = null;
-  
-  public static c bBz()
+  public static void report()
   {
-    AppMethodBeat.i(20996);
-    c localc = c.b.bBA();
-    AppMethodBeat.o(20996);
-    return localc;
-  }
-  
-  public final void a(final c.a parama)
-  {
-    AppMethodBeat.i(20997);
-    if (this.isRunning)
+    AppMethodBeat.i(25065);
+    try
     {
-      AppMethodBeat.o(20997);
-      return;
-    }
-    this.isRunning = true;
-    this.mNM = d.agQ();
-    if (this.mNM == null)
-    {
-      ab.e(TAG, "doGeoLocation fail, iGetLocation is null");
-      AppMethodBeat.o(20997);
-      return;
-    }
-    if (this.mNN == null) {
-      this.mNN = new b.a()
+      b.cwM().a(new b.a()
       {
-        public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2, double paramAnonymousDouble3)
+        public final void L(float paramAnonymousFloat1, float paramAnonymousFloat2)
         {
-          AppMethodBeat.i(20993);
-          if (!paramAnonymousBoolean)
+          AppMethodBeat.i(25064);
+          try
           {
-            AppMethodBeat.o(20993);
-            return true;
+            String str1 = String.valueOf(paramAnonymousFloat1);
+            String str2 = String.valueOf(paramAnonymousFloat2);
+            com.tencent.mm.plugin.freewifi.g.c localc = j.cvY().aaI(com.tencent.mm.plugin.freewifi.model.d.cvQ());
+            if (localc != null)
+            {
+              h.vKh.f(12073, new Object[] { localc.field_ssid, localc.field_mac, localc.field_url, localc.field_url, str2, str1 });
+              ad.i("MicroMsg.FreeWifi.FreeWifiLocationReporter", "report location. ssid=%s, mac=%s, mp_url=%s, qrcode=%s, longtitued=%s, latitude=%s", new Object[] { localc.field_ssid, localc.field_mac, localc.field_url, localc.field_url, str1, str2 });
+            }
+            AppMethodBeat.o(25064);
+            return;
           }
-          ab.v(c.TAG, "doGeoLocation.onGetLocation, fLongitude:%f, fLatitude:%f, locType:%d, speed:%f, accuracy:%f", new Object[] { Float.valueOf(paramAnonymousFloat1), Float.valueOf(paramAnonymousFloat2), Integer.valueOf(paramAnonymousInt), Double.valueOf(paramAnonymousDouble1), Double.valueOf(paramAnonymousDouble2) });
-          if (c.a(c.this) != null) {
-            c.a(c.this).c(c.b(c.this));
-          }
-          if (c.b(c.this) == null)
+          catch (Exception localException)
           {
-            ab.w(c.TAG, "already callback");
-            AppMethodBeat.o(20993);
-            return false;
+            ad.e("MicroMsg.FreeWifi.FreeWifiLocationReporter", "report location exception. " + localException.getMessage() + m.m(localException));
+            AppMethodBeat.o(25064);
           }
-          c.c(c.this);
-          parama.U(paramAnonymousFloat1, paramAnonymousFloat2);
-          AppMethodBeat.o(20993);
-          return false;
         }
-      };
+      });
+      AppMethodBeat.o(25065);
+      return;
     }
-    if (this.mNO == null) {
-      this.mNO = new ak(Looper.myLooper());
+    catch (Exception localException)
+    {
+      ad.e("MicroMsg.FreeWifi.FreeWifiLocationReporter", "report location error. " + localException.getMessage());
+      AppMethodBeat.o(25065);
     }
-    this.mNO.postDelayed(new c.2(this), 20000L);
-    this.mNM.a(this.mNN);
-    AppMethodBeat.o(20997);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.c
  * JD-Core Version:    0.7.0.1
  */

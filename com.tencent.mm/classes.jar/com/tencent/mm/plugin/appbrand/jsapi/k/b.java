@@ -5,10 +5,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.a;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.c;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.o;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.r;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.o;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.r;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONObject;
 
 public final class b
@@ -17,61 +16,68 @@ public final class b
   private static final int CTRL_INDEX = 623;
   public static final String NAME = "insertVoIPView";
   
+  public b()
+  {
+    AppMethodBeat.i(174845);
+    com.tencent.mm.plugin.appbrand.permission.c.Me("insertVoIPView");
+    AppMethodBeat.o(174845);
+  }
+  
+  public final int A(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(46672);
+    int i = paramJSONObject.optInt("viewId");
+    AppMethodBeat.o(46672);
+    return i;
+  }
+  
   public final View a(e parame, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(143422);
-    ab.i("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "inflateView," + paramJSONObject.toString());
+    AppMethodBeat.i(46671);
+    ad.i("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "inflateView," + paramJSONObject.toString());
     parame = parame.getContext();
     if (parame == null)
     {
-      ab.w("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "inflate view failed, context is null, %s", new Object[] { getName() });
-      AppMethodBeat.o(143422);
+      ad.w("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "inflate view failed, context is null, %s", new Object[] { getName() });
+      AppMethodBeat.o(46671);
       return null;
     }
-    if (o.kKN.kKW == 2)
+    if (o.nQO.nQY == 2)
     {
-      ab.w("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "inflate view failed, newView failed, %s, audio room", new Object[] { getName() });
-      AppMethodBeat.o(143422);
+      ad.w("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "inflate view failed, newView failed, %s, audio room", new Object[] { getName() });
+      AppMethodBeat.o(46671);
       return null;
     }
-    paramJSONObject = o.kKN.kKR.a(parame, paramJSONObject);
+    paramJSONObject = o.nQO.nQS.a(parame, paramJSONObject);
     if (paramJSONObject == null)
     {
-      ab.w("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "inflate view failed, newView failed, %s", new Object[] { getName() });
-      AppMethodBeat.o(143422);
+      ad.w("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "inflate view failed, newView failed, %s", new Object[] { getName() });
+      AppMethodBeat.o(46671);
       return null;
     }
     parame = new CoverViewContainer(parame, (View)paramJSONObject);
-    AppMethodBeat.o(143422);
+    AppMethodBeat.o(46671);
     return parame;
   }
   
   public final void a(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(143424);
-    parame = (c)((CoverViewContainer)paramView).aa(View.class);
+    AppMethodBeat.i(46673);
+    parame = (com.tencent.mm.plugin.cloudvoip.cloudvoice.d.c)((CoverViewContainer)paramView).ax(View.class);
     if (parame == null)
     {
-      ab.w("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "onInsertView failed, view is null, viewId:".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(143424);
+      ad.w("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "onInsertView failed, view is null, viewId:".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(46673);
       return;
     }
-    ab.i("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "onInsertView, viewId:[" + paramInt + "," + parame.getViewId() + "],data:" + paramJSONObject.toString());
-    parame.V(paramJSONObject);
-    AppMethodBeat.o(143424);
-  }
-  
-  public final int w(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(143423);
-    int i = paramJSONObject.optInt("viewId");
-    AppMethodBeat.o(143423);
-    return i;
+    ad.i("MicroMsg.OpenVoice.JsApiCloudVoiceInsertView", "onInsertView, viewId:[" + paramInt + "," + parame.getViewId() + "],data:" + paramJSONObject.toString());
+    parame.al(paramJSONObject);
+    AppMethodBeat.o(46673);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.k.b
  * JD-Core Version:    0.7.0.1
  */

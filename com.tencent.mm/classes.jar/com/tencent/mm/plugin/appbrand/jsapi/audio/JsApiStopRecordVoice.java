@@ -2,37 +2,36 @@ package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.aa.l;
+import com.tencent.mm.plugin.appbrand.aa.l.a;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.n;
 import com.tencent.mm.plugin.appbrand.page.a.c.a;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.plugin.appbrand.s.m;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class JsApiStopRecordVoice
-  extends a<r>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
 {
   public static final int CTRL_INDEX = 32;
   public static final String NAME = "stopRecord";
   
-  static void m(r paramr)
+  static void m(q paramq)
   {
-    AppMethodBeat.i(130814);
-    if (bo.isNullOrNil(JsApiStartRecordVoice.hCM))
+    AppMethodBeat.i(46003);
+    if (bt.isNullOrNil(JsApiStartRecordVoice.jCq))
     {
-      AppMethodBeat.o(130814);
+      AppMethodBeat.o(46003);
       return;
     }
-    paramr = n.yc(paramr.getAppId()).gQY;
-    if (paramr != null) {
-      paramr.dismiss();
+    paramq = n.Do(paramq.getAppId()).iFO;
+    if (paramq != null) {
+      paramq.dismiss();
     }
     AppBrandMainProcessService.a(new StopRecordVoice((byte)0));
-    JsApiStartRecordVoice.hCM = null;
-    AppMethodBeat.o(130814);
+    JsApiStartRecordVoice.jCq = null;
+    AppMethodBeat.o(46003);
   }
   
   static class StopRecordVoice
@@ -42,16 +41,24 @@ public final class JsApiStopRecordVoice
     
     static
     {
-      AppMethodBeat.i(130813);
+      AppMethodBeat.i(46002);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(130813);
+      AppMethodBeat.o(46002);
     }
     
-    public final void ata()
+    public final void aEz()
     {
-      AppMethodBeat.i(130812);
-      m.aNS().ac(new JsApiStopRecordVoice.StopRecordVoice.1(this));
-      AppMethodBeat.o(130812);
+      AppMethodBeat.i(46001);
+      l.bqm().postToWorker(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(45999);
+          com.tencent.mm.plugin.appbrand.media.record.a.td(1);
+          AppMethodBeat.o(45999);
+        }
+      });
+      AppMethodBeat.o(46001);
     }
   }
 }

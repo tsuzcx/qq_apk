@@ -6,86 +6,95 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class TraeAudioCodecList
 {
-  private ArrayList<TraeAudioCodecList.a> _sessionInfoList;
+  private ArrayList<CodecInfo> _sessionInfoList;
   private ReentrantLock mLock;
   
   public TraeAudioCodecList()
   {
-    AppMethodBeat.i(146940);
+    AppMethodBeat.i(13780);
     this._sessionInfoList = new ArrayList();
     this.mLock = new ReentrantLock();
-    AppMethodBeat.o(146940);
+    AppMethodBeat.o(13780);
   }
   
-  public TraeAudioCodecList.a add(long paramLong)
+  public CodecInfo add(long paramLong)
   {
-    AppMethodBeat.i(146942);
-    TraeAudioCodecList.a locala = find(paramLong);
-    if (locala != null)
+    AppMethodBeat.i(13782);
+    CodecInfo localCodecInfo = find(paramLong);
+    if (localCodecInfo != null)
     {
-      AppMethodBeat.o(146942);
-      return locala;
+      AppMethodBeat.o(13782);
+      return localCodecInfo;
     }
-    locala = new TraeAudioCodecList.a(this);
-    locala.a = paramLong;
-    locala.b = new AudioDecoder();
-    locala.c = new byte[3840];
+    localCodecInfo = new CodecInfo();
+    localCodecInfo.sessionId = paramLong;
+    localCodecInfo.audioDecoder = new AudioDecoder();
+    localCodecInfo._tempBufdec = new byte[3840];
     this.mLock.lock();
-    this._sessionInfoList.add(locala);
+    this._sessionInfoList.add(localCodecInfo);
     this.mLock.unlock();
-    locala = find(paramLong);
-    AppMethodBeat.o(146942);
-    return locala;
+    localCodecInfo = find(paramLong);
+    AppMethodBeat.o(13782);
+    return localCodecInfo;
   }
   
-  public TraeAudioCodecList.a find(long paramLong)
+  public CodecInfo find(long paramLong)
   {
-    AppMethodBeat.i(146941);
+    AppMethodBeat.i(13781);
     this.mLock.lock();
     int i = 0;
-    TraeAudioCodecList.a locala;
+    CodecInfo localCodecInfo;
     if (i < this._sessionInfoList.size())
     {
-      locala = (TraeAudioCodecList.a)this._sessionInfoList.get(i);
-      if (locala.a != paramLong) {}
+      localCodecInfo = (CodecInfo)this._sessionInfoList.get(i);
+      if (localCodecInfo.sessionId != paramLong) {}
     }
     for (;;)
     {
       this.mLock.unlock();
-      AppMethodBeat.o(146941);
-      return locala;
+      AppMethodBeat.o(13781);
+      return localCodecInfo;
       i += 1;
       break;
-      locala = null;
+      localCodecInfo = null;
     }
   }
   
   public void remove(long paramLong)
   {
-    AppMethodBeat.i(146943);
+    AppMethodBeat.i(13783);
     this.mLock.lock();
     int i = 0;
     for (;;)
     {
       if (i < this._sessionInfoList.size())
       {
-        if (((TraeAudioCodecList.a)this._sessionInfoList.get(i)).a == paramLong) {
+        if (((CodecInfo)this._sessionInfoList.get(i)).sessionId == paramLong) {
           this._sessionInfoList.remove(i);
         }
       }
       else
       {
         this.mLock.unlock();
-        AppMethodBeat.o(146943);
+        AppMethodBeat.o(13783);
         return;
       }
       i += 1;
     }
   }
+  
+  public class CodecInfo
+  {
+    public byte[] _tempBufdec;
+    public AudioDecoder audioDecoder;
+    public long sessionId;
+    
+    public CodecInfo() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioCodecList
  * JD-Core Version:    0.7.0.1
  */

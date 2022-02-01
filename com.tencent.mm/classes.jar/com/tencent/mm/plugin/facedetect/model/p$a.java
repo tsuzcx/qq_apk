@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class p$a
 {
-  public static byte[] e(byte[] paramArrayOfByte, String paramString)
+  public static byte[] f(byte[] paramArrayOfByte, String paramString)
   {
-    AppMethodBeat.i(263);
+    AppMethodBeat.i(103783);
     byte[] arrayOfByte2 = paramString.getBytes();
     byte[] arrayOfByte1 = new byte[256];
     int j = 0;
@@ -61,13 +61,13 @@ public final class p$a
         }
       }
     }
-    AppMethodBeat.o(263);
+    AppMethodBeat.o(103783);
     return arrayOfByte1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.p.a
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,8 @@ import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.KindaPasswordManager;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.wallet.pwd.a.a;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
 
 public class KindaPasswordManagerImpl
@@ -17,14 +18,14 @@ public class KindaPasswordManagerImpl
   private final String KEY_PROCESS_ID = "process_id";
   private final String TAG = "KindaPasswordManagerImpl";
   
-  public void startResetPasswordImpl(VoidCallback paramVoidCallback1, VoidCallback paramVoidCallback2, boolean paramBoolean)
+  public void startResetPasswordImpl(final VoidCallback paramVoidCallback1, final VoidCallback paramVoidCallback2, boolean paramBoolean)
   {
-    AppMethodBeat.i(144375);
-    Context localContext = KindaContext.get();
+    AppMethodBeat.i(18459);
+    final Context localContext = KindaContext.get();
     if (!(localContext instanceof MMActivity))
     {
-      ab.e("KindaPasswordManagerImpl", "Fail to start ResetPasswordImpl due to incompatible context(%s)", new Object[] { localContext.getClass().getName() });
-      AppMethodBeat.o(144375);
+      ad.e("KindaPasswordManagerImpl", "Fail to start ResetPasswordImpl due to incompatible context(%s)", new Object[] { localContext.getClass().getName() });
+      AppMethodBeat.o(18459);
       return;
     }
     Object localObject = (MMActivity)localContext;
@@ -33,15 +34,30 @@ public class KindaPasswordManagerImpl
     localBundle.putBoolean("isFromKinda", true);
     localBundle.putBoolean("isDomesticUser", paramBoolean);
     com.tencent.mm.wallet_core.a.a((Activity)localObject, com.tencent.mm.plugin.wallet.pwd.a.class, localBundle, null);
-    localObject = com.tencent.mm.wallet_core.a.aM((Activity)localObject);
+    localObject = com.tencent.mm.wallet_core.a.bo((Activity)localObject);
     if (!(localObject instanceof com.tencent.mm.plugin.wallet.pwd.a))
     {
-      ab.e("KindaPasswordManagerImpl", "Fail to get correct wallet process in ResetPasswordImpl, expect ForgotPwdProcess got %s", new Object[] { localObject.getClass().getName() });
-      AppMethodBeat.o(144375);
+      ad.e("KindaPasswordManagerImpl", "Fail to get correct wallet process in ResetPasswordImpl, expect ForgotPwdProcess got %s", new Object[] { localObject.getClass().getName() });
+      AppMethodBeat.o(18459);
       return;
     }
-    ((com.tencent.mm.plugin.wallet.pwd.a)localObject).tXA = new KindaPasswordManagerImpl.1(this, localContext, paramVoidCallback1, paramVoidCallback2);
-    AppMethodBeat.o(144375);
+    ((com.tencent.mm.plugin.wallet.pwd.a)localObject).zRM = new a.a()
+    {
+      public void run(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(18458);
+        KindaContext.popToContext(localContext);
+        if (paramAnonymousInt == 0)
+        {
+          paramVoidCallback1.call();
+          AppMethodBeat.o(18458);
+          return;
+        }
+        paramVoidCallback2.call();
+        AppMethodBeat.o(18458);
+      }
+    };
+    AppMethodBeat.o(18459);
   }
 }
 

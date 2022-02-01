@@ -1,78 +1,62 @@
 package com.tencent.mm.plugin.emojicapture.proxy;
 
-import a.l;
 import android.content.Context;
 import android.support.v4.app.s.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bp.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.br.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.service.MMService;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureService;", "Lcom/tencent/mm/service/MMService;", "()V", "TAG", "", "onCreate", "", "onDestroy", "Companion", "plugin-emojicapture_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureService;", "Lcom/tencent/mm/service/MMService;", "()V", "TAG", "", "onCreate", "", "onDestroy", "Companion", "plugin-emojicapture_release"})
 public final class EmojiCaptureService
   extends MMService
 {
-  public static final a lwK;
+  public static final a oNf;
   private final String TAG = "MicroMsg.EmojiCaptureService";
   
   static
   {
-    AppMethodBeat.i(2842);
-    lwK = new a((byte)0);
-    AppMethodBeat.o(2842);
+    AppMethodBeat.i(420);
+    oNf = new a((byte)0);
+    AppMethodBeat.o(420);
   }
   
   public final void onCreate()
   {
-    AppMethodBeat.i(2840);
+    AppMethodBeat.i(418);
     super.onCreate();
-    ab.i(this.TAG, "onCreate: ");
-    if (com.tencent.mm.compatible.util.d.fv(26)) {
-      startForeground(-2564, a.br(ah.getContext(), "reminder_channel_id").Y(a.bYt()).f((CharSequence)ah.getContext().getString(2131299115)).build());
+    ad.i(this.TAG, "onCreate: ");
+    if (com.tencent.mm.compatible.util.d.lf(26)) {
+      startForeground(-2564, a.bD(aj.getContext(), "reminder_channel_id").as(a.cYf()).g((CharSequence)aj.getContext().getString(2131758227)).build());
     }
-    Object localObject = EmojiCaptureProxy.lwI;
-    EmojiCaptureProxy.a.boO();
-    localObject = EmojiCaptureProxy.lwI;
+    Object localObject = EmojiCaptureProxy.oNd;
+    EmojiCaptureProxy.a.aba();
+    localObject = EmojiCaptureProxy.oNd;
     localObject = EmojiCaptureProxy.access$getInstance$cp().getServerProxy();
     if (localObject != null)
     {
-      ((com.tencent.mm.remoteservice.d)localObject).connect((Runnable)b.lwL);
-      AppMethodBeat.o(2840);
+      ((com.tencent.mm.remoteservice.d)localObject).connect((Runnable)EmojiCaptureService.b.oNg);
+      AppMethodBeat.o(418);
       return;
     }
-    AppMethodBeat.o(2840);
+    AppMethodBeat.o(418);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(2841);
+    AppMethodBeat.i(419);
     super.onDestroy();
-    ab.i(this.TAG, "onDestroy: ");
-    duS();
-    EmojiCaptureProxy.a locala = EmojiCaptureProxy.lwI;
-    EmojiCaptureProxy.a.boP();
-    AppMethodBeat.o(2841);
+    ad.i(this.TAG, "onDestroy: ");
+    eHH();
+    EmojiCaptureProxy.a locala = EmojiCaptureProxy.oNd;
+    EmojiCaptureProxy.a.bYs();
+    AppMethodBeat.o(419);
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureService$Companion;", "", "()V", "NOTIFY_ID", "", "plugin-emojicapture_release"})
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/proxy/EmojiCaptureService$Companion;", "", "()V", "NOTIFY_ID", "", "plugin-emojicapture_release"})
   public static final class a {}
-  
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    public static final b lwL;
-    
-    static
-    {
-      AppMethodBeat.i(2839);
-      lwL = new b();
-      AppMethodBeat.o(2839);
-    }
-    
-    public final void run() {}
-  }
 }
 
 

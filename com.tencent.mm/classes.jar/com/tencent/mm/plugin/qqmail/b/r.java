@@ -1,95 +1,244 @@
 package com.tencent.mm.plugin.qqmail.b;
 
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.b.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class r
-  extends m
-  implements k
 {
-  private f callback;
-  private ArrayList<Long> pJx;
-  private b rr;
+  String dpv;
+  private String[] uLJ;
+  private String[] uLK;
+  private String[] uLL;
+  String uLM;
+  a[] uLN;
+  a[] uLO;
+  String uLh;
   
-  public r(ArrayList<Long> paramArrayList)
+  public r(String paramString1, String[] paramArrayOfString1, String[] paramArrayOfString2, String[] paramArrayOfString3, String paramString2)
   {
-    AppMethodBeat.i(67978);
-    this.pJx = paramArrayList;
-    paramArrayList = new b.a();
-    paramArrayList.fsX = new c();
-    paramArrayList.fsY = new d();
-    paramArrayList.uri = "/cgi-bin/micromsg-bin/checkconversationfile";
-    paramArrayList.funcId = 483;
-    paramArrayList.reqCmdId = 0;
-    paramArrayList.respCmdId = 0;
-    this.rr = paramArrayList.ado();
-    AppMethodBeat.o(67978);
-  }
-  
-  public final LinkedList<g> cdI()
-  {
-    return ((d)this.rr.fsW.fta).pIv;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(67980);
-    this.callback = paramf;
-    paramf = (c)this.rr.fsV.fta;
-    paramf.jJu = this.pJx.size();
-    LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.pJx.iterator();
-    while (localIterator.hasNext())
-    {
-      long l = ((Long)localIterator.next()).longValue();
-      h localh = new h();
-      localh.pIG = l;
-      localLinkedList.add(localh);
-      ab.i("MicroMsg.NetSceneCheckConversationFile", "MsgId: %d", new Object[] { Long.valueOf(l) });
+    AppMethodBeat.i(122707);
+    this.dpv = null;
+    this.uLJ = null;
+    this.uLK = null;
+    this.uLL = null;
+    this.uLh = null;
+    this.uLM = null;
+    this.uLN = null;
+    this.uLO = null;
+    if (!bt.isNullOrNil(paramString1)) {
+      this.dpv = paramString1;
     }
-    paramf.pIu = localLinkedList;
-    ab.i("MicroMsg.NetSceneCheckConversationFile", "Count = %d, MsgInfoList.size = %d", new Object[] { Integer.valueOf(paramf.jJu), Integer.valueOf(paramf.pIu.size()) });
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(67980);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 483;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(67979);
-    ab.i("MicroMsg.NetSceneCheckConversationFile", "onGYNetEnd, netId: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (((paramInt2 != 0) || (paramInt3 != 0)) && (this.callback != null))
+    if ((paramArrayOfString1 != null) && (paramArrayOfString1.length > 0))
     {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(67979);
+      this.uLJ = paramArrayOfString1;
+      if ((paramArrayOfString2 == null) || (paramArrayOfString2.length <= 0)) {
+        break label134;
+      }
+      this.uLK = paramArrayOfString2;
+      label89:
+      if ((paramArrayOfString3 == null) || (paramArrayOfString3.length <= 0)) {
+        break label142;
+      }
+    }
+    label134:
+    label142:
+    for (this.uLL = paramArrayOfString3;; this.uLL = null)
+    {
+      if (bt.isNullOrNil(paramString2)) {
+        break label150;
+      }
+      this.uLh = paramString2;
+      AppMethodBeat.o(122707);
       return;
+      this.uLJ = null;
+      break;
+      this.uLK = null;
+      break label89;
     }
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    label150:
+    this.uLh = null;
+    AppMethodBeat.o(122707);
+  }
+  
+  public static String akX(String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(122711);
+    int k = "abEdf4&^^*sxcSD$%&1sdfz@!~AZcT4s322dA%^&&*$##C$%__SDy4d_(*%".length();
+    paramString = paramString + "d$3^&xRw%&*_(";
+    try
+    {
+      paramString = g.getMessageDigest(paramString.getBytes());
+      arrayOfChar = new char[paramString.length() * 2];
+      int i = 0;
+      int j = 0;
+      while (i < paramString.length())
+      {
+        int m = j + 1;
+        arrayOfChar[j] = paramString.charAt(i);
+        int n = paramString.charAt(i);
+        j = m + 1;
+        int i1 = paramString.charAt(i);
+        arrayOfChar[m] = ((char)("abEdf4&^^*sxcSD$%&1sdfz@!~AZcT4s322dA%^&&*$##C$%__SDy4d_(*%".charAt(n % k) + i1));
+        i += 1;
+      }
     }
-    AppMethodBeat.o(67979);
+    catch (Exception paramString)
+    {
+      char[] arrayOfChar;
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.MailContentFormatter", paramString, "", new Object[0]);
+        ad.e("MicroMsg.MailContentFormatter", "attachIdToKey, error:" + paramString.getLocalizedMessage());
+        paramString = null;
+      }
+      paramString = new String(arrayOfChar);
+    }
+    try
+    {
+      paramString = g.getMessageDigest(paramString.getBytes("ISO-8859-1"));
+      AppMethodBeat.o(122711);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.MailContentFormatter", paramString, "", new Object[0]);
+        ad.e("MicroMsg.MailContentFormatter", "attachIdToKey, error:" + paramString.getLocalizedMessage());
+        paramString = localObject;
+      }
+    }
+  }
+  
+  final String ddX()
+  {
+    AppMethodBeat.i(122708);
+    if (this.uLJ != null)
+    {
+      Object localObject1 = new StringBuilder("");
+      ((StringBuilder)localObject1).append("To: ");
+      Object localObject2 = this.uLJ;
+      int j = localObject2.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = localObject2[i];
+        ((StringBuilder)localObject1).append("\"");
+        ((StringBuilder)localObject1).append("=?utf-8?B?");
+        ((StringBuilder)localObject1).append(Base64.encodeToString(str.getBytes(), 2));
+        ((StringBuilder)localObject1).append("?=");
+        ((StringBuilder)localObject1).append("\"");
+        ((StringBuilder)localObject1).append(" ");
+        ((StringBuilder)localObject1).append("<");
+        ((StringBuilder)localObject1).append(str);
+        ((StringBuilder)localObject1).append(">");
+        ((StringBuilder)localObject1).append(" ,");
+        i += 1;
+      }
+      localObject2 = ((StringBuilder)localObject1).toString();
+      i = ((String)localObject2).lastIndexOf(" ,");
+      localObject1 = localObject2;
+      if (i != -1) {
+        localObject1 = ((String)localObject2).substring(0, i);
+      }
+      AppMethodBeat.o(122708);
+      return localObject1;
+    }
+    AppMethodBeat.o(122708);
+    return null;
+  }
+  
+  final String ddY()
+  {
+    AppMethodBeat.i(122709);
+    if (this.uLK != null)
+    {
+      Object localObject1 = new StringBuilder("");
+      ((StringBuilder)localObject1).append("Cc: ");
+      Object localObject2 = this.uLK;
+      int j = localObject2.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = localObject2[i];
+        ((StringBuilder)localObject1).append("\"");
+        ((StringBuilder)localObject1).append("=?utf-8?B?");
+        ((StringBuilder)localObject1).append(Base64.encodeToString(str.getBytes(), 2));
+        ((StringBuilder)localObject1).append("?=");
+        ((StringBuilder)localObject1).append("\"");
+        ((StringBuilder)localObject1).append(" ");
+        ((StringBuilder)localObject1).append("<");
+        ((StringBuilder)localObject1).append(str);
+        ((StringBuilder)localObject1).append(">");
+        ((StringBuilder)localObject1).append(" ,");
+        i += 1;
+      }
+      localObject2 = ((StringBuilder)localObject1).toString();
+      i = ((String)localObject2).lastIndexOf(" ,");
+      localObject1 = localObject2;
+      if (i != -1) {
+        localObject1 = ((String)localObject2).substring(0, i);
+      }
+      AppMethodBeat.o(122709);
+      return localObject1;
+    }
+    AppMethodBeat.o(122709);
+    return null;
+  }
+  
+  final String ddZ()
+  {
+    AppMethodBeat.i(122710);
+    if (this.uLL != null)
+    {
+      Object localObject1 = new StringBuilder("");
+      ((StringBuilder)localObject1).append("Bcc: ");
+      Object localObject2 = this.uLK;
+      int j = localObject2.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = localObject2[i];
+        ((StringBuilder)localObject1).append("\"");
+        ((StringBuilder)localObject1).append("=?utf-8?B?");
+        ((StringBuilder)localObject1).append(Base64.encodeToString(str.getBytes(), 2));
+        ((StringBuilder)localObject1).append("?=");
+        ((StringBuilder)localObject1).append("\"");
+        ((StringBuilder)localObject1).append(" ");
+        ((StringBuilder)localObject1).append("<");
+        ((StringBuilder)localObject1).append(str);
+        ((StringBuilder)localObject1).append(">");
+        ((StringBuilder)localObject1).append(" ,");
+        i += 1;
+      }
+      localObject2 = ((StringBuilder)localObject1).toString();
+      i = ((String)localObject2).lastIndexOf(" ,");
+      localObject1 = localObject2;
+      if (i != -1) {
+        localObject1 = ((String)localObject2).substring(0, i);
+      }
+      AppMethodBeat.o(122710);
+      return localObject1;
+    }
+    AppMethodBeat.o(122710);
+    return null;
+  }
+  
+  public static final class a
+  {
+    String fileName;
+    int fileSize;
+    String name;
+    String uLP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.r
  * JD-Core Version:    0.7.0.1
  */

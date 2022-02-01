@@ -1,53 +1,46 @@
 package com.tencent.mm.sdk;
 
-import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mm.sdk.platformtools.bl;
 
-public final class c
+public class c<T>
+  extends bl<T>
 {
-  public static Set dsb()
+  private final Object mLock;
+  
+  public c(int paramInt)
   {
-    AppMethodBeat.i(153759);
-    Object localObject;
-    try
+    super(paramInt);
+    AppMethodBeat.i(157515);
+    this.mLock = new Object();
+    AppMethodBeat.o(157515);
+  }
+  
+  public final T acquire()
+  {
+    AppMethodBeat.i(157516);
+    synchronized (this.mLock)
     {
-      HashSet localHashSet = new HashSet();
-      localObject = new BufferedReader(new FileReader("/proc/" + Process.myPid() + "/maps"));
-      ab.i("MicroMsg.NativeLibraries", "Dump NativeLibrares:");
-      for (;;)
-      {
-        String str = ((BufferedReader)localObject).readLine();
-        if (str == null) {
-          break;
-        }
-        if (str.endsWith(".so")) {
-          localHashSet.add(str.substring(str.lastIndexOf(" ") + 1));
-        }
-      }
-      localObject = localThrowable.iterator();
+      Object localObject2 = super.acquire();
+      AppMethodBeat.o(157516);
+      return localObject2;
     }
-    catch (Throwable localThrowable)
+  }
+  
+  public final boolean release(T paramT)
+  {
+    AppMethodBeat.i(157517);
+    synchronized (this.mLock)
     {
-      ab.printErrStackTrace("MicroMsg.NativeLibraries", localThrowable, "", new Object[0]);
-      AppMethodBeat.o(153759);
-      return null;
+      boolean bool = super.release(paramT);
+      AppMethodBeat.o(157517);
+      return bool;
     }
-    while (((Iterator)localObject).hasNext()) {
-      ab.i("MicroMsg.NativeLibraries", String.valueOf((String)((Iterator)localObject).next()));
-    }
-    AppMethodBeat.o(153759);
-    return localThrowable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.c
  * JD-Core Version:    0.7.0.1
  */

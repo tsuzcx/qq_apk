@@ -1,53 +1,57 @@
 package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.loader.j.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.tinker.entry.ApplicationLike;
-import com.tencent.tinker.loader.TinkerRuntimeException;
-import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
-import java.util.HashMap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.stubs.logger.Log.Logger;
 
 public final class l
+  implements Log.Logger
 {
-  static ApplicationLike bXD;
-  static String bYf = "";
-  String bYg;
-  String bYh;
-  long bYi;
-  long bYj;
-  
-  public l(ApplicationLike paramApplicationLike)
+  public static l KH()
   {
-    bXD = paramApplicationLike;
-    b.bXD = paramApplicationLike;
+    return a.cLv;
   }
   
-  static void a(ApplicationLike paramApplicationLike)
+  public final boolean isLoggable(String paramString, int paramInt)
   {
-    AppMethodBeat.i(115033);
-    if (paramApplicationLike == null)
+    return true;
+  }
+  
+  public final void println(int paramInt, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(123466);
+    switch (paramInt)
     {
-      AppMethodBeat.o(115033);
-      return;
     }
-    if ((paramApplicationLike == null) || (paramApplicationLike.getApplication() == null))
+    for (;;)
     {
-      paramApplicationLike = new TinkerRuntimeException("tinkerApplication is null");
-      AppMethodBeat.o(115033);
-      throw paramApplicationLike;
-    }
-    paramApplicationLike = paramApplicationLike.getTinkerResultIntent();
-    if ((paramApplicationLike != null) && (ShareIntentUtil.bc(paramApplicationLike) == 0)) {}
-    for (paramApplicationLike = ShareIntentUtil.bi(paramApplicationLike);; paramApplicationLike = null)
-    {
-      if (paramApplicationLike != null)
-      {
-        a.eQt = (String)paramApplicationLike.get("patch.rev");
-        ab.w("MicroMsg.MMApplicationLikeImpl", "application set patch rev:%s", new Object[] { a.eQt });
-      }
-      AppMethodBeat.o(115033);
+      AppMethodBeat.o(123466);
       return;
+      ad.v(paramString1, paramString2);
+      AppMethodBeat.o(123466);
+      return;
+      ad.d(paramString1, paramString2);
+      AppMethodBeat.o(123466);
+      return;
+      ad.i(paramString1, paramString2);
+      AppMethodBeat.o(123466);
+      return;
+      ad.w(paramString1, paramString2);
+      AppMethodBeat.o(123466);
+      return;
+      ad.e(paramString1, paramString2);
+    }
+  }
+  
+  static final class a
+  {
+    static final l cLv;
+    
+    static
+    {
+      AppMethodBeat.i(123465);
+      cLv = new l((byte)0);
+      AppMethodBeat.o(123465);
     }
   }
 }

@@ -1,32 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/f23" android:background="#ff1d1e1d" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:background="@android:color/background_dark" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:background="@drawable/arl" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="fill_parent" android:layout_height="43.0dip">
-        <Button android:id="@id/f24" android:background="@drawable/a4n" android:visibility="invisible" android:layout_width="39.0dip" android:layout_height="39.0dip" android:contentDescription="@string/f0x" />
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="#ffbfbfbf" android:id="@id/rc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:shadowColor="#ff222222" style="@style/a1c" />
-        </LinearLayout>
-        <Button android:id="@id/f25" android:background="@drawable/a4o" android:layout_width="39.0dip" android:layout_height="39.0dip" android:contentDescription="@string/f0y" />
-    </LinearLayout>
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="114.0dip">
-        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/ar2" android:paddingLeft="3.0dip" android:paddingTop="6.0dip" android:paddingRight="3.0dip" android:paddingBottom="6.0dip" android:layout_width="290.0dip" android:layout_height="103.0dip" android:layout_marginTop="5.0dip">
-            <com.tencent.mm.plugin.talkroom.ui.TalkRoomAvatarsFrame android:layout_gravity="center_horizontal" android:id="@id/f26" android:layout_width="290.0dip" android:layout_height="58.0dip" android:layout_marginTop="6.0dip" />
-            <RelativeLayout android:layout_width="fill_parent" android:layout_height="27.0dip">
-                <ImageView android:id="@id/f27" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/ark" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
-                <TextView android:textSize="13.0sp" android:id="@id/b9d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:singleLine="true" android:layout_toRightOf="@id/f27" android:layout_centerVertical="true" style="@style/a1c" />
-                <TextView android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/a2v" android:id="@id/f28" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f0m" android:singleLine="true" android:shadowColor="#ff222222" android:layout_centerInParent="true" style="@style/a1c" />
-                <Chronometer android:textSize="13.0sp" android:textStyle="bold" android:textColor="#ff79ffc5" android:id="@id/dpk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            </RelativeLayout>
-        </LinearLayout>
-        <View android:layout_gravity="center_horizontal" android:background="@drawable/ar3" android:layout_width="320.0dip" android:layout_height="114.0dip" />
-    </FrameLayout>
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="58.0dip">
-        <com.tencent.mm.plugin.talkroom.ui.TalkRoomVolumeMeter android:layout_gravity="center" android:id="@id/cd8" android:layout_width="320.0dip" android:layout_height="58.0dip" />
-    </FrameLayout>
-    <FrameLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <FrameLayout android:layout_gravity="center" android:layout_width="245.0dip" android:layout_height="252.0dip">
-            <ImageView android:layout_gravity="center|right|top" android:id="@id/f29" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@drawable/arb" android:scaleType="fitXY" android:contentDescription="@null" />
-        </FrameLayout>
-        <ImageButton android:layout_gravity="center" android:id="@id/f2_" android:background="@null" android:layout_width="245.0dip" android:layout_height="252.0dip" android:scaleType="fitXY" android:contentDescription="@string/f11" />
-    </FrameLayout>
+    <ProgressBar android:layout_width="wrap_content" android:layout_height="fill_parent" style="?android:progressBarStyle" />
+    <TextView android:textSize="18.0sp" android:textColor="@android:color/darker_gray" android:gravity="center" android:id="@id/gh0" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/eoa" />
 </LinearLayout>

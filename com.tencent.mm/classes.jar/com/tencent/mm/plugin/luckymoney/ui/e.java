@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.luckymoney.ui;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.BaseAdapter;
-import com.tencent.mm.plugin.luckymoney.model.r;
+import com.tencent.mm.plugin.luckymoney.model.t;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,7 +12,7 @@ public abstract class e
 {
   protected Context mContext;
   protected LayoutInflater mInflater;
-  protected List<r> oja = new LinkedList();
+  protected List<t> sYN = new LinkedList();
   
   public e(Context paramContext)
   {
@@ -20,15 +20,20 @@ public abstract class e
     this.mInflater = LayoutInflater.from(paramContext);
   }
   
-  public final void a(r paramr)
+  public final t Gb(int paramInt)
   {
-    this.oja.remove(paramr);
+    return (t)this.sYN.get(paramInt);
   }
   
-  public final void ci(List<r> paramList)
+  public final void a(t paramt)
+  {
+    this.sYN.remove(paramt);
+  }
+  
+  public final void eb(List<t> paramList)
   {
     if (paramList == null) {}
-    for (this.oja = new LinkedList();; this.oja = paramList)
+    for (this.sYN = new LinkedList();; this.sYN = paramList)
     {
       notifyDataSetChanged();
       return;
@@ -37,22 +42,17 @@ public abstract class e
   
   public int getCount()
   {
-    return this.oja.size();
+    return this.sYN.size();
   }
   
   public long getItemId(int paramInt)
   {
     return paramInt;
   }
-  
-  public final r yz(int paramInt)
-  {
-    return (r)this.oja.get(paramInt);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.e
  * JD-Core Version:    0.7.0.1
  */

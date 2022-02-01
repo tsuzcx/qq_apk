@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.facedetect.ui.FaceHeaderPreference android:key="settings_faceprint_header" />
-    <PreferenceCategory />
-    <PreferenceCategory />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:summary="@string/e_w" android:title="@string/e_v" android:key="settings_faceprint_title" />
-    <SummaryBelowPreference android:title="@string/e_y" android:key="settings_faceprint_create" />
-    <Preference android:title="@string/ea1" android:key="settings_faceeprint_reset" android:layout="@layout/afi" />
-    <Preference android:title="@string/ea2" android:key="settings_faceprint_unlock" android:layout="@layout/afi" />
-    <PreferenceCategory />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android" xmlns:newtip="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference newtip:key="roominfo_contact_anchor" />
+    <Preference newtip:key="see_room_member" newtip:layout="@layout/n7" newtip:title="@string/ezi" />
+    <NormalIconPreference newtip:icon="@drawable/anc" newtip:key="add_selector_btn" newtip:title="@string/d4" />
+    <NormalIconPreference newtip:icon="@drawable/aqc" newtip:key="del_selector_btn" newtip:title="@string/beo" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.chatroom.ui.story.StoryLoadIconPreference newtip:key="chat_room_story_videos" newtip:title="@string/aq5" />
+    <Preference newtip:key="room_name" newtip:layout="@layout/aop" newtip:title="@string/eqv" />
+    <Preference newtip:key="room_qr_code" newtip:layout="@layout/aop" newtip:title="@string/era" newtip:widgetLayout="@layout/aq7" />
+    <com.tencent.mm.chatroom.ui.preference.RoomCardPreference newtip:key="room_card" newtip:layout="@layout/aop" />
+    <com.tencent.mm.plugin.newtips.NewTipPreference newtip:key="manage_room" newtip:layout="@layout/aop" newtip:path="chatroommgr" newtip:title="@string/do5" />
+    <KeyValuePreference newtip:key="room_remark" newtip:layout="@layout/aop" newtip:title="@string/eri" />
+    <PreferenceSmallCategory />
+    <Preference newtip:key="room_search_chatting_content" newtip:layout="@layout/aop" newtip:title="@string/es2" />
+    <PreferenceSmallCategory />
+    <Preference newtip:key="room_upgrade_entry" newtip:layout="@layout/aop" newtip:title="@string/esj" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.pluginsdk.ui.preference.SpecialCheckBoxPreference newtip:key="chatroom_info_chexboxes" newtip:layout="@layout/aow" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference newtip:key="room_notify_new_msg" newtip:layout="@layout/aop" newtip:title="@string/eqs" />
+    <CheckBoxPreference newtip:key="room_placed_to_the_top" newtip:layout="@layout/aop" newtip:title="@string/er_" />
+    <CheckBoxPreference newtip:key="room_save_to_contact" newtip:layout="@layout/aop" newtip:title="@string/erw" />
+    <PreferenceSmallCategory />
+    <KeyValuePreference newtip:key="room_nickname" newtip:layout="@layout/aop" newtip:title="@string/equ" />
+    <CheckBoxPreference newtip:key="room_msg_show_username" newtip:title="@string/eqt" />
+    <PreferenceSmallCategory />
+    <Preference newtip:key="room_set_chatting_background" newtip:layout="@layout/aop" newtip:title="@string/es9" />
+    <Preference newtip:key="room_report_it" newtip:layout="@layout/aop" newtip:title="@string/epw" />
+    <PreferenceSmallCategory />
+    <Preference newtip:key="room_clear_chatting_history" newtip:layout="@layout/aop" newtip:title="@string/ep8" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference newtip:btn_title="@string/epc" newtip:key="room_del_quit" newtip:layout="@layout/awu" newtip:title_color="@color/Red" />
+    <PreferenceCategory newtip:key="chatroom_bottom_pc" />
+    <Preference newtip:key="room_openim_about" newtip:layout="@layout/aqc" newtip:title="@string/er6" />
 </PreferenceScreen>

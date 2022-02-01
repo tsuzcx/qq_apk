@@ -6,8 +6,10 @@ import android.graphics.Paint.FontMetricsInt;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
-import android.support.v4.d.b.a;
+import android.support.v4.d.c;
+import android.support.v4.d.c.a;
 import android.support.v4.view.s;
+import android.support.v4.widget.b;
 import android.support.v4.widget.q;
 import android.text.TextDirectionHeuristic;
 import android.text.TextDirectionHeuristics;
@@ -22,11 +24,11 @@ import java.util.concurrent.Future;
 
 public class AppCompatTextView
   extends TextView
-  implements s, android.support.v4.widget.b
+  implements s, b
 {
-  private final e ZZ = new e(this);
-  private final l aaa;
-  private Future<android.support.v4.d.b> abr;
+  private final e ahe = new e(this);
+  private final l ahf;
+  private Future<c> aix;
   
   public AppCompatTextView(Context paramContext)
   {
@@ -40,21 +42,21 @@ public class AppCompatTextView
   
   public AppCompatTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.Z(paramContext), paramAttributeSet, paramInt);
-    this.ZZ.a(paramAttributeSet, paramInt);
-    this.aaa = new l(this);
-    this.aaa.a(paramAttributeSet, paramInt);
-    this.aaa.hk();
+    super(aw.ab(paramContext), paramAttributeSet, paramInt);
+    this.ahe.a(paramAttributeSet, paramInt);
+    this.ahf = new l(this);
+    this.ahf.a(paramAttributeSet, paramInt);
+    this.ahf.iH();
   }
   
-  private void hm()
+  private void iJ()
   {
-    if (this.abr != null) {}
+    if (this.aix != null) {}
     try
     {
-      Future localFuture = this.abr;
-      this.abr = null;
-      q.a(this, (android.support.v4.d.b)localFuture.get());
+      Future localFuture = this.aix;
+      this.aix = null;
+      q.a(this, (c)localFuture.get());
       return;
     }
     catch (InterruptedException localInterruptedException) {}catch (ExecutionException localExecutionException) {}
@@ -63,69 +65,69 @@ public class AppCompatTextView
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.ZZ != null) {
-      this.ZZ.hc();
+    if (this.ahe != null) {
+      this.ahe.iz();
     }
-    if (this.aaa != null) {
-      this.aaa.hk();
+    if (this.ahf != null) {
+      this.ahf.iH();
     }
   }
   
   public int getAutoSizeMaxTextSize()
   {
-    if (IG) {
+    if (PF) {
       return super.getAutoSizeMaxTextSize();
     }
-    if (this.aaa != null) {
-      return Math.round(this.aaa.abm.aby);
+    if (this.ahf != null) {
+      return Math.round(this.ahf.ais.aiE);
     }
     return -1;
   }
   
   public int getAutoSizeMinTextSize()
   {
-    if (IG) {
+    if (PF) {
       return super.getAutoSizeMinTextSize();
     }
-    if (this.aaa != null) {
-      return Math.round(this.aaa.abm.abx);
+    if (this.ahf != null) {
+      return Math.round(this.ahf.ais.aiD);
     }
     return -1;
   }
   
   public int getAutoSizeStepGranularity()
   {
-    if (IG) {
+    if (PF) {
       return super.getAutoSizeStepGranularity();
     }
-    if (this.aaa != null) {
-      return Math.round(this.aaa.abm.abw);
+    if (this.ahf != null) {
+      return Math.round(this.ahf.ais.aiC);
     }
     return -1;
   }
   
   public int[] getAutoSizeTextAvailableSizes()
   {
-    if (IG) {
+    if (PF) {
       return super.getAutoSizeTextAvailableSizes();
     }
-    if (this.aaa != null) {
-      return this.aaa.abm.abz;
+    if (this.ahf != null) {
+      return this.ahf.ais.aiF;
     }
     return new int[0];
   }
   
   public int getAutoSizeTextType()
   {
-    if (IG)
+    if (PF)
     {
       if (super.getAutoSizeTextType() == 1) {
         return 1;
       }
       return 0;
     }
-    if (this.aaa != null) {
-      return this.aaa.abm.abu;
+    if (this.ahf != null) {
+      return this.ahf.ais.aiA;
     }
     return 0;
   }
@@ -142,27 +144,27 @@ public class AppCompatTextView
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    if (this.ZZ != null) {
-      return this.ZZ.getSupportBackgroundTintList();
+    if (this.ahe != null) {
+      return this.ahe.getSupportBackgroundTintList();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.ZZ != null) {
-      return this.ZZ.getSupportBackgroundTintMode();
+    if (this.ahe != null) {
+      return this.ahe.getSupportBackgroundTintMode();
     }
     return null;
   }
   
   public CharSequence getText()
   {
-    hm();
+    iJ();
     return super.getText();
   }
   
-  public b.a getTextMetricsParamsCompat()
+  public c.a getTextMetricsParamsCompat()
   {
     return q.d(this);
   }
@@ -175,71 +177,71 @@ public class AppCompatTextView
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.aaa != null) {
-      this.aaa.hl();
+    if (this.ahf != null) {
+      this.ahf.iI();
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    hm();
+    iJ();
     super.onMeasure(paramInt1, paramInt2);
   }
   
   protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    if ((this.aaa != null) && (!IG) && (this.aaa.abm.hr())) {
-      this.aaa.abm.hp();
+    if ((this.ahf != null) && (!PF) && (this.ahf.ais.iO())) {
+      this.ahf.ais.iM();
     }
   }
   
   public void setAutoSizeTextTypeUniformWithConfiguration(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (IG) {
+    if (PF) {
       super.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    while (this.aaa == null) {
+    while (this.ahf == null) {
       return;
     }
-    this.aaa.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.ahf.setAutoSizeTextTypeUniformWithConfiguration(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void setAutoSizeTextTypeUniformWithPresetSizes(int[] paramArrayOfInt, int paramInt)
   {
-    if (IG) {
+    if (PF) {
       super.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
     }
-    while (this.aaa == null) {
+    while (this.ahf == null) {
       return;
     }
-    this.aaa.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
+    this.ahf.setAutoSizeTextTypeUniformWithPresetSizes(paramArrayOfInt, paramInt);
   }
   
   public void setAutoSizeTextTypeWithDefaults(int paramInt)
   {
-    if (IG) {
+    if (PF) {
       super.setAutoSizeTextTypeWithDefaults(paramInt);
     }
-    while (this.aaa == null) {
+    while (this.ahf == null) {
       return;
     }
-    this.aaa.setAutoSizeTextTypeWithDefaults(paramInt);
+    this.ahf.setAutoSizeTextTypeWithDefaults(paramInt);
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (this.ZZ != null) {
-      this.ZZ.hb();
+    if (this.ahe != null) {
+      this.ahe.iy();
     }
   }
   
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (this.ZZ != null) {
-      this.ZZ.bo(paramInt);
+    if (this.ahe != null) {
+      this.ahe.bG(paramInt);
     }
   }
   
@@ -255,7 +257,7 @@ public class AppCompatTextView
       super.setFirstBaselineToTopHeight(paramInt);
       return;
     }
-    q.c(this, paramInt);
+    q.e(this, paramInt);
   }
   
   public void setLastBaselineToBottomHeight(int paramInt)
@@ -265,54 +267,54 @@ public class AppCompatTextView
       super.setLastBaselineToBottomHeight(paramInt);
       return;
     }
-    q.d(this, paramInt);
+    q.f(this, paramInt);
   }
   
   public void setLineHeight(int paramInt)
   {
-    q.e(this, paramInt);
+    q.g(this, paramInt);
   }
   
-  public void setPrecomputedText(android.support.v4.d.b paramb)
+  public void setPrecomputedText(c paramc)
   {
-    q.a(this, paramb);
+    q.a(this, paramc);
   }
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if (this.ZZ != null) {
-      this.ZZ.setSupportBackgroundTintList(paramColorStateList);
+    if (this.ahe != null) {
+      this.ahe.setSupportBackgroundTintList(paramColorStateList);
     }
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.ZZ != null) {
-      this.ZZ.setSupportBackgroundTintMode(paramMode);
+    if (this.ahe != null) {
+      this.ahe.setSupportBackgroundTintMode(paramMode);
     }
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    if (this.aaa != null) {
-      this.aaa.t(paramContext, paramInt);
+    if (this.ahf != null) {
+      this.ahf.u(paramContext, paramInt);
     }
   }
   
-  public void setTextFuture(Future<android.support.v4.d.b> paramFuture)
+  public void setTextFuture(Future<c> paramFuture)
   {
-    this.abr = paramFuture;
+    this.aix = paramFuture;
     requestLayout();
   }
   
-  public void setTextMetricsParamsCompat(b.a parama)
+  public void setTextMetricsParamsCompat(c.a parama)
   {
     TextDirectionHeuristic localTextDirectionHeuristic;
     int i;
     if (Build.VERSION.SDK_INT >= 18)
     {
-      localTextDirectionHeuristic = parama.Eo;
+      localTextDirectionHeuristic = parama.Ln;
       if ((localTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_RTL) || (localTextDirectionHeuristic == TextDirectionHeuristics.FIRSTSTRONG_LTR)) {
         break label163;
       }
@@ -328,8 +330,8 @@ public class AppCompatTextView
       if (Build.VERSION.SDK_INT >= 23) {
         break;
       }
-      float f = parama.mPaint.getTextScaleX();
-      getPaint().set(parama.mPaint);
+      float f = parama.Lm.getTextScaleX();
+      getPaint().set(parama.Lm);
       if (f == getTextScaleX()) {
         setTextScaleX(f / 2.0F + 1.0F);
       }
@@ -350,20 +352,20 @@ public class AppCompatTextView
         i = 1;
       }
     }
-    getPaint().set(parama.mPaint);
-    setBreakStrategy(parama.Ep);
-    setHyphenationFrequency(parama.Eq);
+    getPaint().set(parama.Lm);
+    setBreakStrategy(parama.Lo);
+    setHyphenationFrequency(parama.Lp);
   }
   
   public void setTextSize(int paramInt, float paramFloat)
   {
-    if (IG) {
+    if (PF) {
       super.setTextSize(paramInt, paramFloat);
     }
-    while (this.aaa == null) {
+    while (this.ahf == null) {
       return;
     }
-    this.aaa.setTextSize(paramInt, paramFloat);
+    this.ahf.setTextSize(paramInt, paramFloat);
   }
 }
 

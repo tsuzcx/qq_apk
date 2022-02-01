@@ -6,19 +6,19 @@ public enum HttpMethod
 {
   static
   {
-    AppMethodBeat.i(71773);
+    AppMethodBeat.i(17209);
     GET = new HttpMethod("GET", 0);
     POST = new HttpMethod("POST", 1);
     DELETE = new HttpMethod("DELETE", 2);
     $VALUES = new HttpMethod[] { GET, POST, DELETE };
-    AppMethodBeat.o(71773);
+    AppMethodBeat.o(17209);
   }
   
   private HttpMethod() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.HttpMethod
  * JD-Core Version:    0.7.0.1
  */

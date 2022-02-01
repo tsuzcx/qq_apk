@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/btt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/bts" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@color/BW_93" />
+</FrameLayout>

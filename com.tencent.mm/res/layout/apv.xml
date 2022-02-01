@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center|right" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/mc"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/e47" android:layout_width="fill_parent" android:layout_height="153.0dip" android:src="@drawable/bi4" android:scaleType="fitCenter" />
-    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="17.0dip" android:textColor="#77000000" android:gravity="center_vertical" android:id="@id/k6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/dud" />
+    <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i0" android:singleLine="true" style="@style/lw" />
+    <TextView android:ellipsize="none" android:gravity="right" android:id="@android:id/summary" android:paddingLeft="@dimen/ha" android:layout_width="0.0dip" android:singleLine="false" android:layout_weight="1.0" style="@style/lz" />
 </LinearLayout>

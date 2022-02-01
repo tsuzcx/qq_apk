@@ -31,7 +31,7 @@ class PerformanceTracer$BufferSizeCheck
   
   void onEnd(int paramInt)
   {
-    AppMethodBeat.i(128438);
+    AppMethodBeat.i(114197);
     if (paramInt != this.lastSize)
     {
       paramInt = this.lastSize - paramInt;
@@ -40,7 +40,7 @@ class PerformanceTracer$BufferSizeCheck
       }
       this.sizeMismatchCount += 1;
     }
-    AppMethodBeat.o(128438);
+    AppMethodBeat.o(114197);
   }
   
   void onStart(int paramInt)
@@ -50,7 +50,7 @@ class PerformanceTracer$BufferSizeCheck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.perf.PerformanceTracer.BufferSizeCheck
  * JD-Core Version:    0.7.0.1
  */

@@ -9,45 +9,45 @@ public final class b
 {
   public static WifiConfiguration a(String paramString, int paramInt, List<WifiConfiguration> paramList)
   {
-    AppMethodBeat.i(94401);
+    AppMethodBeat.i(144716);
     if (paramList != null)
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         WifiConfiguration localWifiConfiguration = (WifiConfiguration)paramList.next();
-        if ((d.Dh(localWifiConfiguration.SSID).compareTo(paramString) == 0) && (d.c(localWifiConfiguration) == paramInt))
+        if ((d.JP(localWifiConfiguration.SSID).compareTo(paramString) == 0) && (d.c(localWifiConfiguration) == paramInt))
         {
-          AppMethodBeat.o(94401);
+          AppMethodBeat.o(144716);
           return localWifiConfiguration;
         }
       }
     }
-    AppMethodBeat.o(94401);
+    AppMethodBeat.o(144716);
     return null;
   }
   
   public static int b(WifiConfiguration paramWifiConfiguration)
   {
-    AppMethodBeat.i(94399);
+    AppMethodBeat.i(144714);
     if ((paramWifiConfiguration != null) && (paramWifiConfiguration.networkId < 0))
     {
       paramWifiConfiguration.networkId = c.addNetwork(paramWifiConfiguration);
       int i = paramWifiConfiguration.networkId;
-      AppMethodBeat.o(94399);
+      AppMethodBeat.o(144714);
       return i;
     }
-    AppMethodBeat.o(94399);
+    AppMethodBeat.o(144714);
     return -1;
   }
   
-  public static boolean bk(String paramString, int paramInt)
+  public static boolean bC(String paramString, int paramInt)
   {
     boolean bool = false;
-    AppMethodBeat.i(94400);
+    AppMethodBeat.i(144715);
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      AppMethodBeat.o(94400);
+      AppMethodBeat.o(144715);
       return false;
     }
     Object localObject = c.getConfiguredNetworks();
@@ -58,7 +58,7 @@ public final class b
       if (((Iterator)localObject).hasNext())
       {
         WifiConfiguration localWifiConfiguration = (WifiConfiguration)((Iterator)localObject).next();
-        if ((d.Dh(localWifiConfiguration.SSID).compareTo(paramString) != 0) || (d.c(localWifiConfiguration) != paramInt)) {
+        if ((d.JP(localWifiConfiguration.SSID).compareTo(paramString) != 0) || (d.c(localWifiConfiguration) != paramInt)) {
           break label115;
         }
         bool |= c.removeNetwork(localWifiConfiguration.networkId);
@@ -71,27 +71,27 @@ public final class b
       if (bool) {
         c.saveConfiguration();
       }
-      AppMethodBeat.o(94400);
+      AppMethodBeat.o(144715);
       return bool;
     }
   }
   
-  public static boolean os(int paramInt)
+  public static boolean ss(int paramInt)
   {
-    AppMethodBeat.i(94402);
+    AppMethodBeat.i(144717);
     boolean bool = false;
     if ((c.removeNetwork(paramInt)) || (c.disableNetwork(paramInt)))
     {
       bool = true;
       c.saveConfiguration();
     }
-    AppMethodBeat.o(94402);
+    AppMethodBeat.o(144717);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.b
  * JD-Core Version:    0.7.0.1
  */

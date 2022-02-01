@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.record;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.record.b.t;
-import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
 
 public final class Plugin
-  implements c
+  implements d
 {
-  public final o createApplication()
+  public final m createApplication()
   {
-    AppMethodBeat.i(24161);
+    AppMethodBeat.i(27798);
     a locala = new a();
-    AppMethodBeat.o(24161);
+    AppMethodBeat.o(27798);
     return locala;
   }
   
-  public final at createSubCore()
+  public final aw createSubCore()
   {
-    AppMethodBeat.i(24162);
+    AppMethodBeat.i(27799);
     t localt = new t();
-    AppMethodBeat.o(24162);
+    AppMethodBeat.o(27799);
     return localt;
   }
   
-  public final b getContactWidgetFactory()
+  public final c getContactWidgetFactory()
   {
     return null;
   }

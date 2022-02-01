@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class jl
   extends b
 {
-  public a cyY;
+  public a dnD;
   
   public jl()
   {
@@ -15,19 +15,17 @@ public final class jl
   
   private jl(byte paramByte)
   {
-    AppMethodBeat.i(77549);
-    this.cyY = new a();
-    this.ymq = false;
+    AppMethodBeat.i(121033);
+    this.dnD = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77549);
+    AppMethodBeat.o(121033);
   }
   
   public static final class a
   {
-    public int coJ;
-    public boolean coL = false;
-    public String filePath;
-    public int subType;
+    public String dnB;
+    public String sessionId;
   }
 }
 

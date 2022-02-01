@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:id="@id/bf6" android:background="@color/jv" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/dw" android:textColor="@color/a95" android:gravity="center" android:id="@id/bf8" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="48.0dip" android:text="@string/ak4" />
-    <TextView android:textSize="@dimen/dw" android:textColor="@color/a7z" android:gravity="center" android:id="@id/bf9" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="48.0dip" android:text="@string/ak5" android:layout_alignParentEnd="true" />
-    <EditText android:textSize="30.0dip" android:textColor="@color/a6q" android:gravity="center_horizontal" android:id="@id/bfd" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="248.0dip" android:minWidth="8.0dip" android:layout_below="@id/bf8" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/bfz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/delete_text_icon" android:layout_alignTop="@id/bfd" android:layout_alignBottom="@id/bfd" android:paddingStart="12.0dip" android:paddingEnd="12.0dip" android:layout_toEndOf="@id/bfd" />
-    <com.tencent.mm.media.editor.view.TextColorSelector android:id="@id/bg0" android:paddingLeft="@dimen/a03" android:paddingRight="@dimen/a03" android:layout_width="fill_parent" android:layout_height="@dimen/a02" android:layout_marginBottom="@dimen/a01" android:layout_alignParentBottom="true" />
-</merge>
+    <TextView android:textSize="@dimen/jo" android:textColor="@color/s5" android:id="@android:id/title" android:paddingLeft="@dimen/c5" android:paddingTop="@dimen/ci" android:paddingRight="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" />
+</LinearLayout>

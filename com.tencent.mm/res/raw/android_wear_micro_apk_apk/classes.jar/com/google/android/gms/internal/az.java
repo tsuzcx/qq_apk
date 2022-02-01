@@ -9,7 +9,7 @@ public abstract interface az
   
   public abstract void a(String paramString, ay paramay);
   
-  public abstract Activity jb();
+  public abstract Activity jk();
   
   public abstract void startActivityForResult(Intent paramIntent, int paramInt);
 }

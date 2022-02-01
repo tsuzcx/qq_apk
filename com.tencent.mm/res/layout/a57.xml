@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/nw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip">
-        <ImageView android:layout_gravity="center_horizontal" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="80.0dip" android:layout_marginBottom="30.0dip" android:src="@drawable/agw" />
-        <TextView android:textSize="@dimen/iw" android:textColor="@color/h6" android:id="@id/c9s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" />
-        <TextView android:textSize="@dimen/iw" android:textColor="@color/qh" android:id="@id/c9t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" />
-        <TextView android:textSize="@dimen/j6" android:textColor="@color/qh" android:id="@id/c9u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:lineSpacingExtra="4.0dip" />
-    </LinearLayout>
-</LinearLayout>
+<com.tencent.mm.view.HardTouchableLayout android:id="@id/dm2" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.view.FinderMediaBanner android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="200.0dip" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/d1q" android:visibility="gone" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:src="@raw/icon_filled_awesome" app:iconColor="@color/Red_90" />
+</com.tencent.mm.view.HardTouchableLayout>

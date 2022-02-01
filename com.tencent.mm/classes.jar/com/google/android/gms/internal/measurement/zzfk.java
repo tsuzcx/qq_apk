@@ -22,19 +22,19 @@ public final class zzfk
   public zzfk(zzjr paramzzjr)
   {
     super(paramzzjr);
-    AppMethodBeat.i(68904);
+    AppMethodBeat.i(1427);
     if (Build.VERSION.SDK_INT < 19) {}
     for (paramzzjr = new zzkb();; paramzzjr = null)
     {
       this.zzajg = paramzzjr;
-      AppMethodBeat.o(68904);
+      AppMethodBeat.o(1427);
       return;
     }
   }
   
   private static byte[] zzb(HttpURLConnection paramHttpURLConnection)
   {
-    AppMethodBeat.i(68906);
+    AppMethodBeat.i(1429);
     byte[] arrayOfByte = null;
     Object localObject = arrayOfByte;
     ByteArrayOutputStream localByteArrayOutputStream;
@@ -62,25 +62,25 @@ public final class zzfk
       if (localObject != null) {
         ((InputStream)localObject).close();
       }
-      AppMethodBeat.o(68906);
+      AppMethodBeat.o(1429);
     }
     arrayOfByte = localByteArrayOutputStream.toByteArray();
     if (paramHttpURLConnection != null) {
       paramHttpURLConnection.close();
     }
-    AppMethodBeat.o(68906);
+    AppMethodBeat.o(1429);
     return arrayOfByte;
   }
   
   @VisibleForTesting
   protected final HttpURLConnection zzb(URL paramURL)
   {
-    AppMethodBeat.i(68907);
+    AppMethodBeat.i(1430);
     paramURL = paramURL.openConnection();
     if (!(paramURL instanceof HttpURLConnection))
     {
       paramURL = new IOException("Failed to obtain HTTP connection");
-      AppMethodBeat.o(68907);
+      AppMethodBeat.o(1430);
       throw paramURL;
     }
     if ((this.zzajg != null) && ((paramURL instanceof HttpsURLConnection))) {
@@ -92,13 +92,13 @@ public final class zzfk
     paramURL.setReadTimeout(61000);
     paramURL.setInstanceFollowRedirects(false);
     paramURL.setDoInput(true);
-    AppMethodBeat.o(68907);
+    AppMethodBeat.o(1430);
     return paramURL;
   }
   
   public final boolean zzex()
   {
-    AppMethodBeat.i(68905);
+    AppMethodBeat.i(1428);
     zzch();
     Object localObject1 = (ConnectivityManager)getContext().getSystemService("connectivity");
     try
@@ -106,7 +106,7 @@ public final class zzfk
       localObject1 = ((ConnectivityManager)localObject1).getActiveNetworkInfo();
       if ((localObject1 != null) && (((NetworkInfo)localObject1).isConnected()))
       {
-        AppMethodBeat.o(68905);
+        AppMethodBeat.o(1428);
         return true;
       }
     }
@@ -116,7 +116,7 @@ public final class zzfk
       {
         Object localObject2 = null;
       }
-      AppMethodBeat.o(68905);
+      AppMethodBeat.o(1428);
     }
     return false;
   }
@@ -128,7 +128,7 @@ public final class zzfk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzfk
  * JD-Core Version:    0.7.0.1
  */

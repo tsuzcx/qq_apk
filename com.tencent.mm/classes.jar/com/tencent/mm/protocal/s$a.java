@@ -1,38 +1,52 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bga;
+import com.tencent.mm.al.l;
 
 public final class s$a
-  extends l.d
-  implements l.b
+  extends l
 {
-  public bga wiK;
+  private s.b CqQ;
+  private s.c CqR;
+  private boolean ufv;
   
-  public s$a()
+  public s$a(boolean paramBoolean)
   {
-    AppMethodBeat.i(58852);
-    this.wiK = new bga();
-    AppMethodBeat.o(58852);
+    AppMethodBeat.i(149118);
+    this.ufv = true;
+    this.ufv = paramBoolean;
+    this.CqQ = new s.b(this.ufv);
+    this.CqR = new s.c();
+    AppMethodBeat.o(149118);
   }
   
-  public final int getCmdId()
+  public final int getOptions()
   {
-    return 27;
+    AppMethodBeat.i(149119);
+    if (this.ufv)
+    {
+      AppMethodBeat.o(149119);
+      return 1;
+    }
+    int i = super.getOptions();
+    AppMethodBeat.o(149119);
+    return i;
   }
   
-  public final int getFuncId()
+  public final int getType()
   {
-    return 139;
+    if (this.ufv) {
+      return 3789;
+    }
+    return 3644;
   }
   
-  public final byte[] toProtoBuf()
+  public final String getUri()
   {
-    AppMethodBeat.i(58853);
-    this.wiK.setBaseRequest(l.a(this));
-    byte[] arrayOfByte = this.wiK.toByteArray();
-    AppMethodBeat.o(58853);
-    return arrayOfByte;
+    if (this.ufv) {
+      return "/cgi-bin/micromsg-bin/fpinitnl";
+    }
+    return "/cgi-bin/micromsg-bin/fpinit";
   }
 }
 

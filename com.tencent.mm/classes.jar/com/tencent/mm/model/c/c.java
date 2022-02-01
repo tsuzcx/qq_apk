@@ -1,152 +1,383 @@
 package com.tencent.mm.model.c;
 
-import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.bz;
-import com.tencent.mm.model.bz.a;
-import com.tencent.mm.model.q;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.b.p;
+import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.d;
-import java.util.HashMap;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.f;
+import d.g.b.u;
+import d.g.b.w;
 
-public class c
-  implements at
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/model/newabtest/NewABTestMMKV;", "Lcom/tencent/mm/kernel/api/ICoreAccountCallback;", "Lcom/tencent/mm/kernel/plugin/IPin;", "()V", "MMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "MMKV_NAME", "", "PROVIDER", "Lcom/tencent/mm/model/newabtest/NewABTestMMKV$Provider;", "getPROVIDER", "()Lcom/tencent/mm/model/newabtest/NewABTestMMKV$Provider;", "PROVIDER$delegate", "Lkotlin/Lazy;", "TAG", "mmAbTestStorageChangeListener", "com/tencent/mm/model/newabtest/NewABTestMMKV$mmAbTestStorageChangeListener$1", "Lcom/tencent/mm/model/newabtest/NewABTestMMKV$mmAbTestStorageChangeListener$1;", "getAbTestItem", "Lcom/tencent/mm/storage/ABTestItem;", "id", "getLayerKey", "onAccountInitialized", "", "upgrade", "Lcom/tencent/mm/kernel/CoreStorage$UpgradeInfo;", "onAccountRelease", "resetAllExp", "storage", "Lcom/tencent/mm/storage/ABTestStorage;", "marshallFrom", "mmkv", "toUinString", "", "unmarshallTo", "ClientProvider", "MMProvider", "Provider", "plugin-abtest_release"})
+public final class c
+  implements com.tencent.mm.kernel.api.c, com.tencent.mm.kernel.b.c
 {
-  @SuppressLint({"UseSparseArrays"})
-  private static HashMap<Integer, h.d> baseDBFactories;
-  private d foR;
-  private com.tencent.mm.storage.b foS;
-  private bz.a foT;
-  private com.tencent.mm.sdk.b.c foU;
-  private k.a foV;
-  private com.tencent.mm.vending.b.b foW;
-  private final com.tencent.mm.plugin.auth.a.a foX;
+  private static final e gQt;
+  private static final f gQu;
+  public static final c gQv;
   
   static
   {
-    AppMethodBeat.i(118187);
-    HashMap localHashMap = new HashMap();
-    baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("NEW_ABTEST_TABLE".hashCode()), new c.5());
-    baseDBFactories.put(Integer.valueOf("NEW_ABTEST_INFO_TABLE".hashCode()), new c.6());
-    AppMethodBeat.o(118187);
+    AppMethodBeat.i(153176);
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(c.class), "PROVIDER", "getPROVIDER()Lcom/tencent/mm/model/newabtest/NewABTestMMKV$Provider;")) };
+    gQv = new c();
+    gQt = new e();
+    gQu = d.g.E((d.g.a.a)c.gQy);
+    AppMethodBeat.o(153176);
   }
   
-  public c()
+  private static ax Km()
   {
-    AppMethodBeat.i(118180);
-    this.foT = new bz.a()
-    {
-      public final void a(e.a paramAnonymousa)
-      {
-        AppMethodBeat.i(118175);
-        paramAnonymousa = aa.a(paramAnonymousa.eyJ.woR);
-        ab.d("MicroMsg.SubCoreNewABTest", "Message content(abtest): %s".concat(String.valueOf(paramAnonymousa)));
-        paramAnonymousa = a.pX(paramAnonymousa);
-        if (paramAnonymousa == null)
-        {
-          AppMethodBeat.o(118175);
-          return;
-        }
-        c.abU().r(paramAnonymousa.items, 1);
-        c.abV().r(paramAnonymousa.foQ, 2);
-        AppMethodBeat.o(118175);
-      }
-    };
-    this.foU = new c.2(this);
-    this.foV = new c.3(this);
-    this.foW = null;
-    this.foX = new c.4(this);
-    AppMethodBeat.o(118180);
+    AppMethodBeat.i(153181);
+    ax localax = ax.aFC(nw(atv().atw()) + "_PluginABTest_NewABTestMMKV");
+    AppMethodBeat.o(153181);
+    return localax;
   }
   
-  private static c abT()
+  /* Error */
+  public static void a(com.tencent.mm.storage.d paramd)
   {
-    try
-    {
-      AppMethodBeat.i(118181);
-      c localc = (c)q.S(c.class);
-      AppMethodBeat.o(118181);
-      return localc;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: ldc 172
+    //   4: invokestatic 86	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: ldc 173
+    //   10: invokestatic 179	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   13: invokestatic 181	com/tencent/mm/model/c/c:Km	()Lcom/tencent/mm/sdk/platformtools/ax;
+    //   16: astore 5
+    //   18: aload 5
+    //   20: invokevirtual 185	com/tencent/mm/sdk/platformtools/ax:clear	()Landroid/content/SharedPreferences$Editor;
+    //   23: pop
+    //   24: aload_0
+    //   25: invokevirtual 191	com/tencent/mm/storage/d:getAll	()Landroid/database/Cursor;
+    //   28: astore_0
+    //   29: aload_0
+    //   30: ifnull +259 -> 289
+    //   33: aload_0
+    //   34: checkcast 193	java/io/Closeable
+    //   37: astore 4
+    //   39: aload 4
+    //   41: checkcast 195	android/database/Cursor
+    //   44: astore_0
+    //   45: aload_0
+    //   46: invokeinterface 199 1 0
+    //   51: istore_2
+    //   52: iload_2
+    //   53: ifne +15 -> 68
+    //   56: aload 4
+    //   58: aconst_null
+    //   59: invokestatic 204	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   62: ldc 172
+    //   64: invokestatic 132	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   67: return
+    //   68: new 206	com/tencent/mm/storage/c
+    //   71: dup
+    //   72: invokespecial 207	com/tencent/mm/storage/c:<init>	()V
+    //   75: astore 6
+    //   77: aload 6
+    //   79: aload_0
+    //   80: invokevirtual 211	com/tencent/mm/storage/c:convertFrom	(Landroid/database/Cursor;)V
+    //   83: aload 6
+    //   85: getfield 215	com/tencent/mm/storage/c:field_layerId	Ljava/lang/String;
+    //   88: checkcast 217	java/lang/CharSequence
+    //   91: astore 7
+    //   93: aload 7
+    //   95: ifnull +204 -> 299
+    //   98: aload 7
+    //   100: invokeinterface 220 1 0
+    //   105: ifne +157 -> 262
+    //   108: goto +191 -> 299
+    //   111: iload_1
+    //   112: ifne +125 -> 237
+    //   115: aload 5
+    //   117: ldc 221
+    //   119: invokestatic 224	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   122: new 139	java/lang/StringBuilder
+    //   125: dup
+    //   126: ldc 226
+    //   128: invokespecial 229	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   131: aload 6
+    //   133: getfield 215	com/tencent/mm/storage/c:field_layerId	Ljava/lang/String;
+    //   136: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   142: astore 7
+    //   144: aload 5
+    //   146: new 139	java/lang/StringBuilder
+    //   149: dup
+    //   150: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   153: aload 7
+    //   155: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   158: ldc 231
+    //   160: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   163: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   166: aload 6
+    //   168: getfield 234	com/tencent/mm/storage/c:field_rawXML	Ljava/lang/String;
+    //   171: invokevirtual 238	com/tencent/mm/sdk/platformtools/ax:putString	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+    //   174: pop
+    //   175: aload 5
+    //   177: new 139	java/lang/StringBuilder
+    //   180: dup
+    //   181: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   184: aload 7
+    //   186: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   189: ldc 240
+    //   191: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   194: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   197: aload 6
+    //   199: getfield 244	com/tencent/mm/storage/c:field_startTime	J
+    //   202: invokevirtual 248	com/tencent/mm/sdk/platformtools/ax:putLong	(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;
+    //   205: pop
+    //   206: aload 5
+    //   208: new 139	java/lang/StringBuilder
+    //   211: dup
+    //   212: invokespecial 140	java/lang/StringBuilder:<init>	()V
+    //   215: aload 7
+    //   217: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: ldc 250
+    //   222: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: invokevirtual 162	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   228: aload 6
+    //   230: getfield 253	com/tencent/mm/storage/c:field_endTime	J
+    //   233: invokevirtual 248	com/tencent/mm/sdk/platformtools/ax:putLong	(Ljava/lang/String;J)Landroid/content/SharedPreferences$Editor;
+    //   236: pop
+    //   237: aload_0
+    //   238: invokeinterface 256 1 0
+    //   243: ifne -166 -> 77
+    //   246: getstatic 262	d/y:JfV	Ld/y;
+    //   249: astore_0
+    //   250: aload 4
+    //   252: aconst_null
+    //   253: invokestatic 204	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   256: ldc 172
+    //   258: invokestatic 132	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   261: return
+    //   262: iconst_0
+    //   263: istore_1
+    //   264: goto -153 -> 111
+    //   267: astore_3
+    //   268: ldc 172
+    //   270: invokestatic 132	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   273: aload_3
+    //   274: athrow
+    //   275: astore_0
+    //   276: aload 4
+    //   278: aload_3
+    //   279: invokestatic 204	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   282: ldc 172
+    //   284: invokestatic 132	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   287: aload_0
+    //   288: athrow
+    //   289: ldc 172
+    //   291: invokestatic 132	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   294: return
+    //   295: astore_0
+    //   296: goto -20 -> 276
+    //   299: iconst_1
+    //   300: istore_1
+    //   301: goto -190 -> 111
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	304	0	paramd	com.tencent.mm.storage.d
+    //   111	190	1	i	int
+    //   51	2	2	bool	boolean
+    //   1	1	3	localObject1	Object
+    //   267	12	3	localThrowable	java.lang.Throwable
+    //   37	240	4	localCloseable	java.io.Closeable
+    //   16	191	5	localax	ax
+    //   75	154	6	localc	com.tencent.mm.storage.c
+    //   91	125	7	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   39	52	267	java/lang/Throwable
+    //   68	77	267	java/lang/Throwable
+    //   77	93	267	java/lang/Throwable
+    //   98	108	267	java/lang/Throwable
+    //   115	237	267	java/lang/Throwable
+    //   237	250	267	java/lang/Throwable
+    //   268	275	275	finally
+    //   39	52	295	finally
+    //   68	77	295	finally
+    //   77	93	295	finally
+    //   98	108	295	finally
+    //   115	237	295	finally
+    //   237	250	295	finally
   }
   
-  public static d abU()
+  private static d atv()
   {
-    AppMethodBeat.i(118182);
-    g.RJ().QQ();
-    if (abT().foR == null) {
-      abT().foR = new d(g.RL().eHS);
-    }
-    d locald = abT().foR;
-    AppMethodBeat.o(118182);
+    AppMethodBeat.i(153180);
+    d locald = (d)gQu.getValue();
+    AppMethodBeat.o(153180);
     return locald;
   }
   
-  public static com.tencent.mm.storage.b abV()
+  private static String nw(int paramInt)
   {
-    AppMethodBeat.i(118183);
-    g.RJ().QQ();
-    if (abT().foS == null) {
-      abT().foS = new com.tencent.mm.storage.b(g.RL().eHS);
-    }
-    com.tencent.mm.storage.b localb = abT().foS;
-    AppMethodBeat.o(118183);
-    return localb;
+    AppMethodBeat.i(153183);
+    String str = new p(paramInt).toString();
+    d.g.b.k.g(str, "com.tencent.mm.algorithm.UIN(this).toString()");
+    AppMethodBeat.o(153183);
+    return str;
   }
   
-  public void clearPluginData(int paramInt) {}
-  
-  public HashMap<Integer, h.d> getBaseDBFactories()
+  public static com.tencent.mm.storage.c uO(String paramString)
   {
-    return baseDBFactories;
-  }
-  
-  public void onAccountPostReset(boolean paramBoolean)
-  {
-    AppMethodBeat.i(118184);
-    ((p)g.G(p.class)).getSysCmdMsgExtension().a("newabtest", this.foT, true);
-    ((p)g.G(p.class)).getSysCmdMsgExtension().a("newabtestinfo", this.foT, true);
-    com.tencent.mm.sdk.b.a.ymk.c(this.foU);
-    abU().add(this.foV);
-    this.foW = ((com.tencent.mm.plugin.auth.a.b)g.G(com.tencent.mm.plugin.auth.a.b.class)).addHandleAuthResponse(this.foX);
-    AppMethodBeat.o(118184);
-  }
-  
-  public void onAccountRelease()
-  {
-    AppMethodBeat.i(118185);
-    ((p)g.G(p.class)).getSysCmdMsgExtension().b("newabtest", this.foT, true);
-    ((p)g.G(p.class)).getSysCmdMsgExtension().b("newabtestinfo", this.foT, true);
-    com.tencent.mm.sdk.b.a.ymk.d(this.foU);
-    abU().remove(this.foV);
-    if (this.foW != null)
+    AppMethodBeat.i(153182);
+    Object localObject = (CharSequence)paramString;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      this.foW.dead();
-      this.foW = null;
+      AppMethodBeat.o(153182);
+      return null;
     }
-    AppMethodBeat.o(118185);
+    localObject = new com.tencent.mm.storage.c();
+    ((com.tencent.mm.storage.c)localObject).field_layerId = paramString;
+    paramString = Km();
+    d.g.b.k.g(paramString, "MMKV");
+    String str = "layer_" + ((com.tencent.mm.storage.c)localObject).field_layerId;
+    ((com.tencent.mm.storage.c)localObject).field_rawXML = paramString.getString(str + "_rawXML", "");
+    ((com.tencent.mm.storage.c)localObject).field_startTime = paramString.getLong(str + "_startTime", bt.aGK());
+    ((com.tencent.mm.storage.c)localObject).field_endTime = paramString.getLong(str + "_endTime", bt.aGK());
+    AppMethodBeat.o(153182);
+    return localObject;
   }
   
-  public void onSdcardMount(boolean paramBoolean) {}
+  public final void onAccountInitialized(e.c paramc)
+  {
+    AppMethodBeat.i(153177);
+    paramc = new StringBuilder("onAccountInitialized uin[");
+    d.g.b.k.g(com.tencent.mm.kernel.g.afz(), "MMKernel.account()");
+    ad.i("MicroMsg.PluginABTest.NewABTestMMKV", nw(com.tencent.mm.kernel.a.getUin()) + ']');
+    d.aty().add("MicroMsg.PluginABTest.NewABTestMMKV", (k.a)gQt);
+    paramc = d.aty();
+    d.g.b.k.g(paramc, "SubCoreNewABTest.getABTestStorage()");
+    a(paramc);
+    AppMethodBeat.o(153177);
+  }
+  
+  public final void onAccountRelease()
+  {
+    AppMethodBeat.i(153178);
+    d.aty().remove((k.a)gQt);
+    AppMethodBeat.o(153178);
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/model/newabtest/NewABTestMMKV$ClientProvider;", "Lcom/tencent/mm/model/newabtest/NewABTestMMKV$Provider;", "()V", "UIN", "", "getUIN", "()I", "UIN$delegate", "Lkotlin/Lazy;", "provideUIN", "plugin-abtest_release"})
+  static final class a
+    implements c.d
+  {
+    private final f gQw;
+    
+    static
+    {
+      AppMethodBeat.i(153169);
+      $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new u(w.bk(a.class), "UIN", "getUIN()I")) };
+      AppMethodBeat.o(153169);
+    }
+    
+    public a()
+    {
+      AppMethodBeat.i(153171);
+      this.gQw = d.g.E((d.g.a.a)a.gQx);
+      AppMethodBeat.o(153171);
+    }
+    
+    public final int atw()
+    {
+      AppMethodBeat.i(153170);
+      int i = ((Number)this.gQw.getValue()).intValue();
+      AppMethodBeat.o(153170);
+      return i;
+    }
+    
+    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+    static final class a
+      extends d.g.b.l
+      implements d.g.a.a<Integer>
+    {
+      public static final a gQx;
+      
+      static
+      {
+        AppMethodBeat.i(153168);
+        gQx = new a();
+        AppMethodBeat.o(153168);
+      }
+      
+      a()
+      {
+        super();
+      }
+    }
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/model/newabtest/NewABTestMMKV$MMProvider;", "Lcom/tencent/mm/model/newabtest/NewABTestMMKV$Provider;", "()V", "provideUIN", "", "plugin-abtest_release"})
+  static final class b
+    implements c.d
+  {
+    public final int atw()
+    {
+      AppMethodBeat.i(153172);
+      d.g.b.k.g(com.tencent.mm.kernel.g.afz(), "MMKernel.account()");
+      int i = com.tencent.mm.kernel.a.getUin();
+      AppMethodBeat.o(153172);
+      return i;
+    }
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Lcom/tencent/mm/model/newabtest/NewABTestMMKV$Provider;", "invoke"})
+  static final class c
+    extends d.g.b.l
+    implements d.g.a.a<c.d>
+  {
+    public static final c gQy;
+    
+    static
+    {
+      AppMethodBeat.i(153174);
+      gQy = new c();
+      AppMethodBeat.o(153174);
+    }
+    
+    c()
+    {
+      super();
+    }
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/model/newabtest/NewABTestMMKV$Provider;", "", "provideUIN", "", "plugin-abtest_release"})
+  static abstract interface d
+  {
+    public abstract int atw();
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/model/newabtest/NewABTestMMKV$mmAbTestStorageChangeListener$1", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "onNotifyChange", "", "event", "", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "plugin-abtest_release"})
+  public static final class e
+    implements k.a
+  {
+    public final void a(String paramString, m paramm)
+    {
+      AppMethodBeat.i(153175);
+      if (d.g.b.k.g("event_updated", paramString))
+      {
+        paramString = c.gQv;
+        paramString = d.aty();
+        d.g.b.k.g(paramString, "SubCoreNewABTest.getABTestStorage()");
+        c.a(paramString);
+      }
+      AppMethodBeat.o(153175);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="@string/foi" />
-    <IconPreference android:title="@string/fo6" android:key="wallet_lock_fingerprint" android:layout="@layout/afi" />
-    <IconPreference android:title="@string/fnz" android:key="wallet_lock_faceid" android:layout="@layout/afi" />
-    <IconPreference android:title="@string/fod" android:key="wallet_lock_gesture" android:layout="@layout/afi" />
-    <IconPreference android:title="@string/fnx" android:key="wallet_lock_close" android:layout="@layout/afi" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/cb6" android:key="wallet_lock_modify_gesture" android:layout="@layout/afi" />
-</PreferenceScreen>
+<whilte-list>
+    <checker name="ExplainQueryPlanChecker">
+        <element>sqlite_master</element>
+        <element>select *,rowid from snsinfo where snsinfo.snsid = ?</element>
+        <element>select *,rowid from snsinfo where snsinfo.snsid = ? limit ?</element>
+    </checker>
+    <checker name="AvoidAutoIncrementChecker" />
+    <checker name="AvoidSelectAllChecker" />
+    <checker name="WithoutRowIdBetterChecker">
+        <element>AppBrandStarApp</element>
+    </checker>
+    <checker name="PreparedStatementBetterChecker" />
+    <checker name="RedundantIndexChecker" />
+</whilte-list>

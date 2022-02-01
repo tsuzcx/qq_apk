@@ -5,11 +5,11 @@ import java.util.concurrent.Executors;
 
 public abstract class ap
 {
-  private static final ExecutorService Oq = Executors.newFixedThreadPool(2, new ce("GAC_Executor"));
+  private static final ExecutorService Qf = Executors.newFixedThreadPool(2, new ce("GAC_Executor"));
   
-  public static ExecutorService iG()
+  public static ExecutorService iO()
   {
-    return Oq;
+    return Qf;
   }
 }
 

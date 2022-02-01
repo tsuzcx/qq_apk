@@ -2,154 +2,233 @@ package com.tencent.mm.ui.tools.a;
 
 import android.graphics.PointF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class a
 {
-  private static float a(List<PointF> paramList1, List<PointF> paramList2, int paramInt)
+  public static double H(List<PointF> paramList1, List<PointF> paramList2)
   {
-    AppMethodBeat.i(107828);
-    long l = System.currentTimeMillis();
-    paramList1 = u(paramList1, paramInt);
-    paramList2 = u(paramList2, paramInt);
-    float f = d(fF(paramList1), fF(paramList2));
-    ab.i("MicroMsg.GestureRecognizer", "computeSimilarity cost %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    AppMethodBeat.o(107828);
-    return f;
-  }
-  
-  private static float d(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
-  {
-    AppMethodBeat.i(107825);
-    if (paramArrayOfFloat1.length != paramArrayOfFloat2.length)
+    AppMethodBeat.i(190994);
+    try
     {
-      AppMethodBeat.o(107825);
-      return -1.0F;
-    }
-    int i = 0;
-    double d2 = 0.0D;
-    double d1 = 0.0D;
-    double d3 = 0.0D;
-    while (i < paramArrayOfFloat1.length)
-    {
-      d3 += paramArrayOfFloat1[i] * paramArrayOfFloat2[i];
-      double d4 = Math.pow(paramArrayOfFloat1[i], 2.0D);
-      d2 += Math.pow(paramArrayOfFloat2[i], 2.0D);
-      i += 1;
-      d1 = d4 + d1;
-    }
-    float f = (float)(d3 / (Math.sqrt(d1) * Math.sqrt(d2)));
-    AppMethodBeat.o(107825);
-    return f;
-  }
-  
-  private static float[] fF(List<PointF> paramList)
-  {
-    AppMethodBeat.i(107826);
-    float[] arrayOfFloat = new float[paramList.size() * 2];
-    arrayOfFloat[0] = 0.0F;
-    arrayOfFloat[1] = 0.0F;
-    int i = 1;
-    while (i < paramList.size())
-    {
-      arrayOfFloat[(i * 2)] = (((PointF)paramList.get(i)).x - ((PointF)paramList.get(i - 1)).x);
-      arrayOfFloat[(i * 2 + 1)] = (((PointF)paramList.get(i)).y - ((PointF)paramList.get(i - 1)).y);
-      i += 1;
-    }
-    AppMethodBeat.o(107826);
-    return arrayOfFloat;
-  }
-  
-  public static List<PointF> u(List<PointF> paramList, int paramInt)
-  {
-    AppMethodBeat.i(107824);
-    if (paramInt <= 1)
-    {
-      ab.w("MicroMsg.GestureRecognizer", "sample count <= 1 !");
-      AppMethodBeat.o(107824);
-      return paramList;
-    }
-    if (paramInt == paramList.size())
-    {
-      ab.w("MicroMsg.GestureRecognizer", "sample count == path.size, no need resample!");
-      AppMethodBeat.o(107824);
-      return paramList;
-    }
-    double d1 = 0.0D;
-    Object localObject1 = (PointF)paramList.get(0);
-    int i = 1;
-    Object localObject2;
-    while (i < paramList.size())
-    {
-      localObject2 = (PointF)paramList.get(i);
-      d1 += (float)Math.hypot(((PointF)localObject1).x - ((PointF)localObject2).x, ((PointF)localObject1).y - ((PointF)localObject2).y);
-      localObject1 = (PointF)paramList.get(i);
-      i += 1;
-    }
-    double d3 = d1 / (paramInt - 1);
-    ab.i("MicroMsg.GestureRecognizer", "point count %d, interval %f", new Object[] { Integer.valueOf(paramList.size()), Double.valueOf(d3) });
-    if ((paramList.size() <= 1) || (d3 < 1.0D)) {
-      ab.w("MicroMsg.GestureRecognizer", "point count <= 1 or interval < 1, no need resample!");
-    }
-    for (localObject1 = paramList;; localObject1 = localObject2)
-    {
-      if (((List)localObject1).size() < paramInt)
-      {
-        ab.i("MicroMsg.GestureRecognizer", "sample result %d, sample count %d", new Object[] { Integer.valueOf(((List)localObject1).size()), Integer.valueOf(paramInt) });
-        ((List)localObject1).add(new PointF(((PointF)paramList.get(paramList.size() - 1)).x, ((PointF)paramList.get(paramList.size() - 1)).y));
-      }
-      AppMethodBeat.o(107824);
-      return localObject1;
-      localObject2 = new ArrayList();
+      paramList1 = ij(paramList1);
+      paramList2 = ij(paramList2);
+      paramList1 = ik(paramList1);
+      paramList2 = ik(paramList2);
       double d2 = 0.0D;
-      ((List)localObject2).add(new PointF(((PointF)paramList.get(0)).x, ((PointF)paramList.get(0)).y));
-      localObject1 = (PointF)paramList.get(0);
-      i = 1;
-      while (i < paramList.size())
+      double d1 = 0.0D;
+      int j = paramList1.size();
+      int k = paramList2.size();
+      int i = 0;
+      while ((i < j) && (i < k))
       {
-        double d4 = ((PointF)paramList.get(i)).x - ((PointF)paramList.get(i - 1)).x;
-        double d5 = ((PointF)paramList.get(i)).y - ((PointF)paramList.get(i - 1)).y;
-        double d6 = (float)Math.hypot(d4, d5);
-        d1 = d6 + d2;
-        if (d1 >= d3)
+        float f1 = ((Float)paramList1.get(i)).floatValue();
+        float f2 = ((Float)paramList2.get(i)).floatValue();
+        float f3 = ((Float)paramList1.get(i + 1)).floatValue();
+        d2 += ((Float)paramList2.get(i + 1)).floatValue() * f3 + f1 * f2;
+        f1 = ((Float)paramList1.get(i)).floatValue();
+        f2 = ((Float)paramList2.get(i + 1)).floatValue();
+        f3 = ((Float)paramList1.get(i + 1)).floatValue();
+        d1 += f1 * f2 - ((Float)paramList2.get(i)).floatValue() * f3;
+        i += 2;
+      }
+      if (d2 != 0.0D)
+      {
+        double d3 = Math.atan(d1 / d2);
+        double d4 = Math.cos(d3);
+        d1 = Math.acos(Math.sin(d3) * d1 + d2 * d4);
+        AppMethodBeat.o(190994);
+        return d1;
+      }
+      ad.e("MicroMsg.GestureRecognizer.ToIos", "devide a but a == 0");
+      AppMethodBeat.o(190994);
+      return 1.570796326794897D;
+    }
+    catch (Throwable paramList1)
+    {
+      ad.e("MicroMsg.GestureRecognizer.ToIos", paramList1.toString());
+      AppMethodBeat.o(190994);
+    }
+    return 0.0D;
+  }
+  
+  private static float b(PointF paramPointF1, PointF paramPointF2)
+  {
+    AppMethodBeat.i(182570);
+    float f = (float)Math.hypot(paramPointF1.x - paramPointF2.x, paramPointF1.y - paramPointF2.y);
+    AppMethodBeat.o(182570);
+    return f;
+  }
+  
+  public static List<PointF> ij(List<PointF> paramList)
+  {
+    AppMethodBeat.i(190992);
+    double d1 = 0.0D;
+    try
+    {
+      PointF localPointF1 = (PointF)paramList.get(0);
+      int j = paramList.size();
+      int i = 1;
+      while (i < j)
+      {
+        d1 += b(localPointF1, (PointF)paramList.get(i));
+        localPointF1 = (PointF)paramList.get(i);
+        i += 1;
+      }
+      double d2 = d1 / 200.0D;
+      d1 = 0.0D;
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(new PointF(((PointF)paramList.get(0)).x, ((PointF)paramList.get(0)).y));
+      localPointF1 = (PointF)paramList.get(0);
+      j = paramList.size();
+      i = 1;
+      while (i < j)
+      {
+        PointF localPointF2 = (PointF)paramList.get(i);
+        double d3 = b(localPointF1, localPointF2);
+        if (d1 + d3 >= d2)
         {
-          if (d1 == d3) {
-            localObject1 = new PointF(((PointF)paramList.get(i)).x, ((PointF)paramList.get(i)).y);
-          }
-          for (d1 = 0.0D;; d1 -= d3)
+          if (d3 > 0.0D)
           {
-            ((List)localObject2).add(localObject1);
-            break;
-            double d7 = (d3 - d2) / d6;
-            localObject1 = new PointF((float)(((PointF)localObject1).x + d4 * d7), (float)(d7 * d5 + ((PointF)localObject1).y));
+            d1 = (d2 - d1) / d3;
+            d3 = localPointF1.x;
+            double d4 = localPointF2.x - localPointF1.x;
+            double d5 = localPointF1.y;
+            double d6 = localPointF2.y - localPointF1.y;
+            localPointF1 = new PointF((float)(d3 + d4 * d1), (float)(d1 * d6 + d5));
+            localArrayList.add(localPointF1);
+            d1 = 0.0D;
           }
         }
-        localObject1 = (PointF)paramList.get(i);
-        i += 1;
-        d2 = d1;
+        else
+        {
+          d1 += d3;
+          localPointF1 = (PointF)paramList.get(i);
+          i += 1;
+        }
       }
+      AppMethodBeat.o(190992);
+      return localArrayList;
     }
+    catch (Throwable paramList)
+    {
+      ad.e("MicroMsg.GestureRecognizer.ToIos", paramList.toString());
+      paramList = new ArrayList();
+      AppMethodBeat.o(190992);
+    }
+    return paramList;
   }
   
-  public static float v(List<PointF> paramList1, List<PointF> paramList2)
+  private static List<Float> ik(List<PointF> paramList)
   {
-    AppMethodBeat.i(107827);
-    int i = Math.min(paramList1.size(), paramList2.size());
-    if (i < 20) {}
-    for (;;)
+    AppMethodBeat.i(190993);
+    double d2 = 0.0D;
+    double d1 = 0.0D;
+    int j = paramList.size();
+    int i = 0;
+    while (i < j)
     {
-      float f = a(paramList1, paramList2, i);
-      AppMethodBeat.o(107827);
-      return f;
-      i = 20;
+      localObject = (PointF)paramList.get(i);
+      d2 += ((PointF)localObject).x;
+      d1 += ((PointF)localObject).y;
+      i += 1;
     }
+    d2 /= j;
+    d1 /= j;
+    Object localObject = new PointF((float)d2, (float)d1);
+    i = 0;
+    PointF localPointF;
+    while (i < j)
+    {
+      localPointF = (PointF)paramList.get(i);
+      localPointF.x -= ((PointF)localObject).x;
+      localPointF.y -= ((PointF)localObject).y;
+      i += 1;
+    }
+    double d4 = 1.7976931348623157E+308D;
+    double d3 = -1.797693134862316E+308D;
+    d2 = 1.7976931348623157E+308D;
+    i = 0;
+    d1 = -1.797693134862316E+308D;
+    while (i < j)
+    {
+      localObject = (PointF)paramList.get(i);
+      d4 = Math.min(d4, ((PointF)localObject).x);
+      d3 = Math.max(d3, ((PointF)localObject).x);
+      d2 = Math.min(d2, ((PointF)localObject).y);
+      d1 = Math.max(d1, ((PointF)localObject).y);
+      i += 1;
+    }
+    localObject = new a((byte)0);
+    d4 = d3 - d4;
+    d1 -= d2;
+    d3 = Math.max(d4, d1);
+    if (Math.min(d4, d1) / d3 < 0.2000000029802322D) {}
+    for (i = 1;; i = 0)
+    {
+      d2 = ((a)localObject).HuF / d4;
+      d1 = ((a)localObject).HuG / d1;
+      if (i != 0)
+      {
+        d2 = ((a)localObject).HuF / d3;
+        d1 = ((a)localObject).HuG / d3;
+      }
+      i = 0;
+      while (i < j)
+      {
+        localObject = (PointF)paramList.get(i);
+        ((PointF)localObject).x = ((float)(((PointF)localObject).x * d2));
+        ((PointF)localObject).y = ((float)(((PointF)localObject).y * d1));
+        i += 1;
+      }
+    }
+    localObject = (PointF)paramList.get(0);
+    d1 = Math.atan2(((PointF)localObject).y, ((PointF)localObject).x);
+    d2 = 0.7853981633974483D * Math.floor((0.3926990816987241D + d1) / 0.7853981633974483D) - d1;
+    d1 = Math.cos(d2);
+    d2 = Math.sin(d2);
+    i = 0;
+    while (i < j)
+    {
+      localObject = (PointF)paramList.get(i);
+      ((PointF)localObject).x = ((float)(((PointF)localObject).x * d1 - ((PointF)localObject).y * d2));
+      ((PointF)localObject).y = ((float)(((PointF)localObject).x * d2 + ((PointF)localObject).y * d1));
+      i += 1;
+    }
+    localObject = new ArrayList();
+    d1 = 0.0D;
+    i = 0;
+    while (i < j)
+    {
+      localPointF = (PointF)paramList.get(i);
+      ((List)localObject).add(Float.valueOf(localPointF.x));
+      ((List)localObject).add(Float.valueOf(localPointF.y));
+      d1 += Math.pow(localPointF.x, 2.0D) + Math.pow(localPointF.y, 2.0D);
+      i += 1;
+    }
+    d1 = Math.sqrt(d1);
+    j = ((List)localObject).size();
+    i = 0;
+    while (i < j)
+    {
+      ((List)localObject).set(i, Float.valueOf((float)(((Float)((List)localObject).get(i)).floatValue() / d1 + 0.0001D)));
+      i += 1;
+    }
+    AppMethodBeat.o(190993);
+    return localObject;
+  }
+  
+  static final class a
+  {
+    double HuF = 150.0D;
+    double HuG = 150.0D;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.tools.a.a
  * JD-Core Version:    0.7.0.1
  */

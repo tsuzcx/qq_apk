@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceTitleCategory android:title="@string/dhx" />
-    <com.tencent.mm.plugin.label.ui.widget.InputClearablePreference android:key="contact_label_name" android:layout="@layout/ah9" />
-    <PreferenceTitleCategory android:title="@string/dhw" />
-    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="contact_label_contact_list" />
-    <PreferenceTitleCategory android:title=" " android:key="contact_label_empty_category" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/cnm" android:key="contact_label_delete" android:layout="@layout/aap" />
-    <PreferenceSmallCategory />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <SelectPreference android:key="select_male" android:title="@string/fdf" />
+    <SelectPreference android:key="select_female" android:title="@string/fde" />
 </PreferenceScreen>

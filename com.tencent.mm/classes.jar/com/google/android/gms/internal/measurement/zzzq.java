@@ -92,10 +92,19 @@ public abstract class zzzq<MessageType extends zzzq<MessageType, BuilderType>, B
   }
   
   protected abstract Object zza(int paramInt, Object paramObject1, Object paramObject2);
+  
+  public static abstract class zza<MessageType extends zza<MessageType, BuilderType>, BuilderType>
+    extends zzzq<MessageType, BuilderType>
+    implements zzaam
+  {
+    protected zzzm<Object> zzbsb = zzzm.zzti();
+  }
+  
+  public static enum zzb {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzzq
  * JD-Core Version:    0.7.0.1
  */

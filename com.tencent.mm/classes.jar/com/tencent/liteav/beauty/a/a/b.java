@@ -18,39 +18,39 @@ public class b
   
   public void a()
   {
-    AppMethodBeat.i(66842);
+    AppMethodBeat.i(15283);
     this.a.a(this.b);
     this.b = EGL11.EGL_NO_SURFACE;
     this.d = -1;
     this.c = -1;
-    AppMethodBeat.o(66842);
+    AppMethodBeat.o(15283);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(66841);
+    AppMethodBeat.i(15282);
     if (this.b != EGL11.EGL_NO_SURFACE)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("surface already created");
-      AppMethodBeat.o(66841);
+      AppMethodBeat.o(15282);
       throw localIllegalStateException;
     }
     this.b = this.a.a(paramInt1, paramInt2);
     this.c = paramInt1;
     this.d = paramInt2;
-    AppMethodBeat.o(66841);
+    AppMethodBeat.o(15282);
   }
   
   public void b()
   {
-    AppMethodBeat.i(66843);
+    AppMethodBeat.i(15284);
     this.a.b(this.b);
-    AppMethodBeat.o(66843);
+    AppMethodBeat.o(15284);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.a.a.b
  * JD-Core Version:    0.7.0.1
  */

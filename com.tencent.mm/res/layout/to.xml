@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.downloader_app.ui.TaskHeaderView android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:id="@id/bcv" android:background="@color/mw" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/ab5" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip">
-            <TextView android:textSize="@dimen/a3x" android:textStyle="bold" android:textColor="@color/st" android:id="@id/ak9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="下载更新" android:layout_weight="1.0" />
-            <TextView android:textSize="@dimen/a3x" android:textColor="@color/a6h" android:id="@id/akd" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </com.tencent.mm.plugin.downloader_app.ui.TaskHeaderView>
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.MMCollapsibleTextView android:textSize="@dimen/ia" android:textColor="@color/BW_0_Alpha_0_9" android:textColorLink="@color/Link" android:id="@id/a1z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:minHeight="116.0dip" android:maxLines="3" android:lineSpacingExtra="8.0dip" android:layout_marginStart="@dimen/i_" android:layout_marginEnd="@dimen/i_" app:collapseButtonPosition="c" app:noCollapseCenter="true" />
+    <TextView android:textSize="@dimen/jo" android:textColor="@color/BW_0_Alpha_0_2" android:id="@id/biz_slot_show_desc_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/a1z" />
+</RelativeLayout>

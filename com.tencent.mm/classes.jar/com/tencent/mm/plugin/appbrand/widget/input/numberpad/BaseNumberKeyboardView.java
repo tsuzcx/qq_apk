@@ -5,9 +5,11 @@ import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.AccessibilityDelegate;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -29,41 +31,33 @@ public class BaseNumberKeyboardView
   private Button mKey7;
   private Button mKey8;
   private Button mKey9;
-  private ImageButton mKeyD;
   private Button mKeyX;
   private int mXMode;
+  private ImageButton mfA;
   
   public BaseNumberKeyboardView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(123938);
+    AppMethodBeat.i(136679);
     this.mXMode = 0;
     init(paramContext);
-    AppMethodBeat.o(123938);
+    AppMethodBeat.o(136679);
   }
   
   public BaseNumberKeyboardView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(123939);
+    AppMethodBeat.i(136680);
     this.mXMode = 0;
     init(paramContext);
-    AppMethodBeat.o(123939);
-  }
-  
-  private int getDrawableId(String paramString)
-  {
-    AppMethodBeat.i(123945);
-    int i = this.mContext.getResources().getIdentifier(paramString, "drawable", this.mContext.getPackageName());
-    AppMethodBeat.o(123945);
-    return i;
+    AppMethodBeat.o(136680);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(123940);
+    AppMethodBeat.i(136681);
     this.mContext = paramContext.getApplicationContext();
-    paramContext = LayoutInflater.from(paramContext).inflate(2130968773, this, true);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131493102, this, true);
     this.mKey1 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_1")));
     this.mKey2 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_2")));
     this.mKey3 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_3")));
@@ -75,8 +69,72 @@ public class BaseNumberKeyboardView
     this.mKey9 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_9")));
     this.mKeyX = ((Button)paramContext.findViewById(getId("tenpay_keyboard_x")));
     this.mKey0 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_0")));
-    this.mKeyD = ((ImageButton)paramContext.findViewById(getId("tenpay_keyboard_d")));
-    paramContext = new BaseNumberKeyboardView.1(this);
+    this.mfA = ((ImageButton)paramContext.findViewById(getId("tenpay_keyboard_d")));
+    paramContext = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(136678);
+        if (BaseNumberKeyboardView.a(BaseNumberKeyboardView.this) == null)
+        {
+          AppMethodBeat.o(136678);
+          return;
+        }
+        if (paramAnonymousView.getId() == BaseNumberKeyboardView.this.getId("tenpay_keyboard_x"))
+        {
+          switch (BaseNumberKeyboardView.b(BaseNumberKeyboardView.this))
+          {
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(136678);
+            return;
+            AppMethodBeat.o(136678);
+            return;
+            BaseNumberKeyboardView.a(BaseNumberKeyboardView.this).dispatchKeyEvent(new KeyEvent(0, 59));
+            BaseNumberKeyboardView.a(BaseNumberKeyboardView.this).dispatchKeyEvent(new KeyEvent(0, 52));
+            BaseNumberKeyboardView.a(BaseNumberKeyboardView.this).dispatchKeyEvent(new KeyEvent(1, 59));
+            AppMethodBeat.o(136678);
+            return;
+            BaseNumberKeyboardView.a(BaseNumberKeyboardView.this).dispatchKeyEvent(new KeyEvent(0, 56));
+          }
+        }
+        int i;
+        if (paramAnonymousView.getId() == BaseNumberKeyboardView.this.getId("tenpay_keyboard_1")) {
+          i = 8;
+        }
+        for (;;)
+        {
+          BaseNumberKeyboardView.a(BaseNumberKeyboardView.this).dispatchKeyEvent(new KeyEvent(0, i));
+          BaseNumberKeyboardView.a(BaseNumberKeyboardView.this).dispatchKeyEvent(new KeyEvent(1, i));
+          AppMethodBeat.o(136678);
+          return;
+          if (paramAnonymousView.getId() == BaseNumberKeyboardView.this.getId("tenpay_keyboard_2")) {
+            i = 9;
+          } else if (paramAnonymousView.getId() == BaseNumberKeyboardView.this.getId("tenpay_keyboard_3")) {
+            i = 10;
+          } else if (paramAnonymousView.getId() == BaseNumberKeyboardView.this.getId("tenpay_keyboard_4")) {
+            i = 11;
+          } else if (paramAnonymousView.getId() == BaseNumberKeyboardView.this.getId("tenpay_keyboard_5")) {
+            i = 12;
+          } else if (paramAnonymousView.getId() == BaseNumberKeyboardView.this.getId("tenpay_keyboard_6")) {
+            i = 13;
+          } else if (paramAnonymousView.getId() == BaseNumberKeyboardView.this.getId("tenpay_keyboard_7")) {
+            i = 14;
+          } else if (paramAnonymousView.getId() == BaseNumberKeyboardView.this.getId("tenpay_keyboard_8")) {
+            i = 15;
+          } else if (paramAnonymousView.getId() == BaseNumberKeyboardView.this.getId("tenpay_keyboard_9")) {
+            i = 16;
+          } else if (paramAnonymousView.getId() == BaseNumberKeyboardView.this.getId("tenpay_keyboard_0")) {
+            i = 7;
+          } else if (paramAnonymousView.getId() == BaseNumberKeyboardView.this.getId("tenpay_keyboard_d")) {
+            i = 67;
+          } else {
+            i = 0;
+          }
+        }
+      }
+    };
     if (Build.VERSION.SDK_INT >= 14)
     {
       this.mKey1.setContentDescription("1");
@@ -90,7 +148,7 @@ public class BaseNumberKeyboardView
       this.mKey9.setContentDescription("9");
       this.mKey0.setContentDescription("0");
       this.mKeyX.setContentDescription("字母X");
-      this.mKeyD.setContentDescription("删除");
+      this.mfA.setContentDescription("删除");
     }
     this.mKey1.setOnClickListener(paramContext);
     this.mKey2.setOnClickListener(paramContext);
@@ -103,28 +161,28 @@ public class BaseNumberKeyboardView
     this.mKey9.setOnClickListener(paramContext);
     this.mKeyX.setOnClickListener(paramContext);
     this.mKey0.setOnClickListener(paramContext);
-    this.mKeyD.setOnClickListener(paramContext);
-    AppMethodBeat.o(123940);
+    this.mfA.setOnClickListener(paramContext);
+    AppMethodBeat.o(136681);
   }
   
   public final int getId(String paramString)
   {
-    AppMethodBeat.i(123944);
+    AppMethodBeat.i(136685);
     int i = this.mContext.getResources().getIdentifier(paramString, "id", this.mContext.getPackageName());
-    AppMethodBeat.o(123944);
+    AppMethodBeat.o(136685);
     return i;
   }
   
   public void onDetachedFromWindow()
   {
-    AppMethodBeat.i(123946);
+    AppMethodBeat.i(136686);
     super.onDetachedFromWindow();
-    AppMethodBeat.o(123946);
+    AppMethodBeat.o(136686);
   }
   
   public void setInputEditText(EditText paramEditText)
   {
-    AppMethodBeat.i(123942);
+    AppMethodBeat.i(136683);
     if (paramEditText != null)
     {
       this.mInputEditText = paramEditText;
@@ -139,7 +197,7 @@ public class BaseNumberKeyboardView
     }
     for (;;)
     {
-      AppMethodBeat.o(123942);
+      AppMethodBeat.o(136683);
       return;
       this.mXMode = 0;
       if (TextUtils.isEmpty(paramEditText)) {
@@ -150,7 +208,7 @@ public class BaseNumberKeyboardView
   
   public void setSecureAccessibility(View.AccessibilityDelegate paramAccessibilityDelegate)
   {
-    AppMethodBeat.i(123941);
+    AppMethodBeat.i(136682);
     this.mKey0.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKey1.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKey2.setAccessibilityDelegate(paramAccessibilityDelegate);
@@ -162,39 +220,39 @@ public class BaseNumberKeyboardView
     this.mKey8.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKey9.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKeyX.setAccessibilityDelegate(paramAccessibilityDelegate);
-    this.mKeyD.setAccessibilityDelegate(paramAccessibilityDelegate);
-    AppMethodBeat.o(123941);
+    this.mfA.setAccessibilityDelegate(paramAccessibilityDelegate);
+    AppMethodBeat.o(136682);
   }
   
   public void setXMode(int paramInt)
   {
-    AppMethodBeat.i(123943);
+    AppMethodBeat.i(136684);
     this.mXMode = paramInt;
     switch (paramInt)
     {
     default: 
       this.mXMode = 0;
-      AppMethodBeat.o(123943);
+      AppMethodBeat.o(136684);
       return;
     case 0: 
       this.mKeyX.setText("");
-      this.mKeyX.setBackgroundResource(getDrawableId("tenpay_keyitem_bottom"));
-      AppMethodBeat.o(123943);
+      this.mKeyX.setBackgroundResource(2131099977);
+      AppMethodBeat.o(136684);
       return;
     case 1: 
       this.mKeyX.setText("X");
-      this.mKeyX.setBackgroundResource(getDrawableId("tenpay_keybtn_bottom"));
-      AppMethodBeat.o(123943);
+      this.mKeyX.setBackgroundResource(2131234342);
+      AppMethodBeat.o(136684);
       return;
     }
     this.mKeyX.setText(".");
-    this.mKeyX.setBackgroundResource(getDrawableId("tenpay_keybtn_bottom"));
-    AppMethodBeat.o(123943);
+    this.mKeyX.setBackgroundResource(2131234342);
+    AppMethodBeat.o(136684);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.numberpad.BaseNumberKeyboardView
  * JD-Core Version:    0.7.0.1
  */

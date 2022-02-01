@@ -1,42 +1,71 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.HashMap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.rtmp.ITXLivePushListener;
+import java.util.Iterator;
+import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 final class b$10
-  implements AppBrandLivePusherView.b
+  implements ITXLivePushListener
 {
   b$10(b paramb, int paramInt, e parame) {}
   
-  public final void a(int paramInt, String paramString, HashMap<String, Object> paramHashMap)
+  public final void onNetStatus(Bundle paramBundle)
   {
-    AppMethodBeat.i(96101);
-    ab.i("MicroMsg.JsApiInsertLivePusher", "onError, error:%s", new Object[] { Integer.valueOf(paramInt) });
-    b.d locald = new b.d((byte)0);
+    AppMethodBeat.i(145872);
+    b.f localf = new b.f((byte)0);
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2;
+    try
+    {
+      localJSONObject1.put("livePusherId", this.jGR);
+      localJSONObject2 = new JSONObject();
+      if (paramBundle != null)
+      {
+        Iterator localIterator = paramBundle.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          localJSONObject2.put(str, paramBundle.get(str));
+          continue;
+          this.jGO.b(localf.HK(localJSONObject1.toString()));
+        }
+      }
+    }
+    catch (JSONException paramBundle) {}
+    for (;;)
+    {
+      AppMethodBeat.o(145872);
+      return;
+      localJSONObject1.put("info", localJSONObject2);
+    }
+  }
+  
+  public final void onPushEvent(int paramInt, Bundle paramBundle)
+  {
+    AppMethodBeat.i(145871);
+    ad.i("MicroMsg.JsApiInsertLivePusher", "onPushEvent errCode:%d", new Object[] { Integer.valueOf(paramInt) });
+    b.g localg = new b.g((byte)0);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("errCode", paramInt);
-      localJSONObject.put("errMsg", bo.nullAsNil(paramString));
-      localJSONObject.put("livePusherId", this.hEO);
-      if ((paramHashMap != null) && (!paramHashMap.isEmpty())) {
-        localJSONObject.put("data", new JSONObject(paramHashMap));
-      }
+      localJSONObject.put("errMsg", paramBundle.getString("EVT_MSG"));
+      localJSONObject.put("livePusherId", this.jGR);
+      label76:
+      this.jGO.b(localg.HK(localJSONObject.toString()));
+      AppMethodBeat.o(145871);
+      return;
     }
-    catch (JSONException paramString)
+    catch (JSONException paramBundle)
     {
-      for (;;)
-      {
-        ab.e("MicroMsg.JsApiInsertLivePusher", "onError fail", new Object[] { paramString });
-      }
+      break label76;
     }
-    this.hEL.b(locald.BN(localJSONObject.toString()));
-    AppMethodBeat.o(96101);
   }
 }
 

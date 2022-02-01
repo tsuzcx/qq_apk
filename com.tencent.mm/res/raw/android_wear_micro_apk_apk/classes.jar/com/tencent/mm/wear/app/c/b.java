@@ -5,24 +5,25 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
+import com.tencent.mm.a.e;
 import com.tencent.mm.wear.app.b.h;
 import com.tencent.mm.wear.app.emoji.gif.MMGIFImageView;
 import java.io.File;
 
 public final class b
 {
-  private i acS;
-  private com.tencent.mm.a.a<String, Bitmap> acT;
-  private com.tencent.mm.a.a<String, byte[]> acU;
+  private i agt;
+  private com.tencent.mm.a.a<String, Bitmap> agu;
+  private com.tencent.mm.a.a<String, byte[]> agv;
   private Context context;
   
   public b(Context paramContext)
   {
     this.context = paramContext;
-    this.acU = new com.tencent.mm.a.a(10);
-    this.acT = new com.tencent.mm.a.a(40);
-    this.acS = new i();
-    new i.1(this.acS).start();
+    this.agv = new e(10);
+    this.agu = new e(40);
+    this.agt = new i();
+    new i.1(this.agt).start();
   }
   
   private boolean c(a parama)
@@ -32,66 +33,66 @@ public final class b
     default: 
       return false;
     case 1: 
-      if (parama.acQ == 1)
+      if (parama.agr == 1)
       {
-        localObject = (byte[])this.acU.get(parama.acK);
+        localObject = (byte[])this.agv.get(parama.agl);
         if (localObject != null)
         {
-          MMGIFImageView localMMGIFImageView = (MMGIFImageView)parama.acL;
-          localMMGIFImageView.a((byte[])localObject, parama.acK);
+          MMGIFImageView localMMGIFImageView = (MMGIFImageView)parama.agm;
+          localMMGIFImageView.a((byte[])localObject, parama.agl);
           localMMGIFImageView.start();
-          com.tencent.mm.wear.a.c.d.c("MicroMsg.MMImageLoader", "render emoji with cache %s", new Object[] { parama.acK });
+          com.tencent.mm.wear.a.c.d.c("MicroMsg.MMImageLoader", "render emoji with cache %s", new Object[] { parama.agl });
           return true;
         }
       }
       else
       {
-        localObject = new File(h.ml(), parama.acJ);
+        localObject = new File(h.mX(), parama.agk);
         if (((File)localObject).exists())
         {
-          parama = (MMGIFImageView)parama.acL;
-          parama.G(((File)localObject).getAbsolutePath());
+          parama = (MMGIFImageView)parama.agm;
+          parama.L(((File)localObject).getAbsolutePath());
           parama.start();
           com.tencent.mm.wear.a.c.d.c("MicroMsg.MMImageLoader", "render emoji with file %s", new Object[] { ((File)localObject).getAbsolutePath() });
           return true;
         }
       }
-      if (parama.acM > 0)
+      if (parama.agn > 0)
       {
-        localObject = this.context.getResources().getDrawable(parama.acM);
-        parama.acL.setImageDrawable((Drawable)localObject);
+        localObject = this.context.getResources().getDrawable(parama.agn);
+        parama.agm.setImageDrawable((Drawable)localObject);
       }
-      com.tencent.mm.wear.a.c.d.c("MicroMsg.MMImageLoader", "not find emoji in cache %s", new Object[] { parama.acK });
+      com.tencent.mm.wear.a.c.d.c("MicroMsg.MMImageLoader", "not find emoji in cache %s", new Object[] { parama.agl });
       return false;
     case 3: 
-      localObject = (Bitmap)this.acT.get(parama.acK);
+      localObject = (Bitmap)this.agu.get(parama.agl);
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        d.a(this.context.getResources(), (Bitmap)localObject, parama.acL);
-        com.tencent.mm.wear.a.c.d.c("MicroMsg.MMImageLoader", "render avatar with cache %s", new Object[] { parama.acK });
+        d.a(this.context.getResources(), (Bitmap)localObject, parama.agm);
+        com.tencent.mm.wear.a.c.d.c("MicroMsg.MMImageLoader", "render avatar with cache %s", new Object[] { parama.agl });
         return true;
       }
-      if (parama.acM > 0)
+      if (parama.agn > 0)
       {
-        localObject = this.context.getResources().getDrawable(parama.acM);
-        parama.acL.setImageDrawable((Drawable)localObject);
+        localObject = this.context.getResources().getDrawable(parama.agn);
+        parama.agm.setImageDrawable((Drawable)localObject);
       }
-      com.tencent.mm.wear.a.c.d.c("MicroMsg.MMImageLoader", "not find avatar in cache %s", new Object[] { parama.acK });
+      com.tencent.mm.wear.a.c.d.c("MicroMsg.MMImageLoader", "not find avatar in cache %s", new Object[] { parama.agl });
       return false;
     }
-    Object localObject = (Bitmap)this.acT.get(parama.acK);
+    Object localObject = (Bitmap)this.agu.get(parama.agl);
     if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
-      d.a(this.context.getResources(), (Bitmap)localObject, parama.acL);
-      com.tencent.mm.wear.a.c.d.c("MicroMsg.MMImageLoader", "render msg image with cache %s", new Object[] { parama.acK });
+      d.a(this.context.getResources(), (Bitmap)localObject, parama.agm);
+      com.tencent.mm.wear.a.c.d.c("MicroMsg.MMImageLoader", "render msg image with cache %s", new Object[] { parama.agl });
       return true;
     }
-    if (parama.acM > 0)
+    if (parama.agn > 0)
     {
-      localObject = this.context.getResources().getDrawable(parama.acM);
-      parama.acL.setImageDrawable((Drawable)localObject);
+      localObject = this.context.getResources().getDrawable(parama.agn);
+      parama.agm.setImageDrawable((Drawable)localObject);
     }
-    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMImageLoader", "not msg imager in cache %s", new Object[] { parama.acK });
+    com.tencent.mm.wear.a.c.d.c("MicroMsg.MMImageLoader", "not msg imager in cache %s", new Object[] { parama.agl });
     return false;
   }
   
@@ -102,22 +103,22 @@ public final class b
     {
       localStringBuffer.append(parama.type);
       localStringBuffer.append("-");
-      localStringBuffer.append(parama.acG);
+      localStringBuffer.append(parama.agh);
       localStringBuffer.append("-");
       localStringBuffer.append(parama.width);
       localStringBuffer.append("-");
       localStringBuffer.append(parama.height);
       localStringBuffer.append("-");
-      localStringBuffer.append(parama.acR);
+      localStringBuffer.append(parama.ags);
       localStringBuffer.append("-");
-      localStringBuffer.append(parama.acJ);
+      localStringBuffer.append(parama.agk);
     }
     for (;;)
     {
-      return com.tencent.mm.a.c.g(localStringBuffer.toString().getBytes());
+      return com.tencent.mm.a.d.g(localStringBuffer.toString().getBytes());
       if (parama.type == 3)
       {
-        localStringBuffer.append(parama.acH);
+        localStringBuffer.append(parama.agi);
         localStringBuffer.append("-");
         localStringBuffer.append(parama.width);
         localStringBuffer.append("-");
@@ -127,13 +128,13 @@ public final class b
       {
         localStringBuffer.append(parama.type);
         localStringBuffer.append("-");
-        localStringBuffer.append(parama.acG);
+        localStringBuffer.append(parama.agh);
         localStringBuffer.append("-");
         localStringBuffer.append(parama.width);
         localStringBuffer.append("-");
         localStringBuffer.append(parama.height);
         localStringBuffer.append("-");
-        localStringBuffer.append(parama.acR);
+        localStringBuffer.append(parama.ags);
       }
     }
   }
@@ -141,16 +142,16 @@ public final class b
   public final void a(a parama)
   {
     com.tencent.mm.wear.a.c.d.c("MicroMsg.MMImageLoader", "loadImage %s", new Object[] { parama });
-    parama.acK = d(parama);
-    parama.acL.setTag(parama.acK);
+    parama.agl = d(parama);
+    parama.agm.setTag(parama.agl);
     if (!c(parama)) {
-      this.acS.e(new c(this, parama));
+      this.agt.o(new c(this, parama));
     }
   }
   
   public final Bitmap b(a parama)
   {
-    return (Bitmap)this.acT.get(d(parama));
+    return (Bitmap)this.agu.get(d(parama));
   }
 }
 

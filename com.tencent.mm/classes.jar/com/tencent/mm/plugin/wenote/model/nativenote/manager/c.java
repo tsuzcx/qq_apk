@@ -5,18 +5,18 @@ import android.text.Editable;
 import android.text.Spanned;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.wenote.model.a.g;
-import com.tencent.mm.plugin.wenote.model.a.i;
 import com.tencent.mm.plugin.wenote.model.a.k;
 import com.tencent.mm.plugin.wenote.model.a.l;
 import com.tencent.mm.plugin.wenote.model.a.o;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.acq;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.wenote.model.h;
+import com.tencent.mm.protocal.protobuf.afy;
+import com.tencent.mm.protocal.protobuf.ago;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -27,94 +27,94 @@ import java.util.regex.Pattern;
 
 public class c
 {
-  private static volatile c vyc = null;
-  public ArrayList<com.tencent.mm.plugin.wenote.model.a.c> iVH = null;
-  public com.tencent.mm.plugin.wenote.model.nativenote.b.a vyd = null;
-  public aca vye = null;
-  public int vyf = 0;
-  public int vyg = 0;
-  public int vyh = 0;
-  public boolean vyi = false;
+  private static volatile c BDQ = null;
+  public com.tencent.mm.plugin.wenote.model.nativenote.b.a BDR = null;
+  public boolean BDS = false;
+  public ArrayList<com.tencent.mm.plugin.wenote.model.a.c> hIH = null;
+  public afy onl = null;
+  public int onm = 0;
+  public int onn = 0;
+  public int ono = 0;
   
-  private boolean Lk(int paramInt)
+  private boolean Ab(int paramInt)
   {
-    AppMethodBeat.i(26725);
-    if ((this.iVH != null) && (paramInt >= 0) && (paramInt < this.iVH.size()))
+    AppMethodBeat.i(30418);
+    if ((this.hIH != null) && (paramInt >= 0) && (paramInt < this.hIH.size()))
     {
-      a((com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(paramInt), false);
-      this.iVH.remove(paramInt);
+      a((com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(paramInt), false);
+      this.hIH.remove(paramInt);
     }
     for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(26725);
+      AppMethodBeat.o(30418);
       return bool;
     }
   }
   
   private void a(com.tencent.mm.plugin.wenote.model.a.c paramc, boolean paramBoolean)
   {
-    AppMethodBeat.i(26748);
+    AppMethodBeat.i(30441);
     if (paramc == null)
     {
-      AppMethodBeat.o(26748);
+      AppMethodBeat.o(30441);
       return;
     }
     if (paramc.getType() == 1)
     {
-      int i = com.tencent.mm.plugin.wenote.b.c.ajU(((i)paramc).content);
+      int i = com.tencent.mm.plugin.wenote.c.c.ST(((com.tencent.mm.plugin.wenote.model.a.i)paramc).content);
       if (paramBoolean)
       {
-        this.vyg = (i + this.vyg);
-        AppMethodBeat.o(26748);
+        this.onn = (i + this.onn);
+        AppMethodBeat.o(30441);
         return;
       }
-      this.vyg -= i;
-      AppMethodBeat.o(26748);
+      this.onn -= i;
+      AppMethodBeat.o(30441);
       return;
     }
     if (paramBoolean)
     {
-      this.vyh += 1;
-      AppMethodBeat.o(26748);
+      this.ono += 1;
+      AppMethodBeat.o(30441);
       return;
     }
-    this.vyh -= 1;
-    AppMethodBeat.o(26748);
+    this.ono -= 1;
+    AppMethodBeat.o(30441);
   }
   
   private void b(com.tencent.mm.plugin.wenote.model.a.c paramc)
   {
-    AppMethodBeat.i(26744);
+    AppMethodBeat.i(30437);
     if (paramc == null)
     {
-      AppMethodBeat.o(26744);
+      AppMethodBeat.o(30437);
       return;
     }
     o localo = (o)paramc;
     com.tencent.mm.plugin.wenote.model.d locald;
     if (localo.getType() > 1)
     {
-      if (bo.isNullOrNil(localo.vxr)) {
-        localo.vxr = diu();
+      if (bt.isNullOrNil(localo.omI)) {
+        localo.omI = bSx();
       }
-      locald = com.tencent.mm.plugin.wenote.model.c.dhH().vvQ;
+      locald = com.tencent.mm.plugin.wenote.model.c.esw().BCA;
       if (locald != null) {
         break label105;
       }
-      ab.e("MicroMsg.Note.NoteDataManager", "processItem,item is %s, but get wnnote base is null", new Object[] { paramc.toString() });
+      ad.e("MicroMsg.Note.NoteDataManager", "processItem,item is %s, but get wnnote base is null", new Object[] { paramc.toString() });
     }
     for (;;)
     {
-      if (bo.isNullOrNil(paramc.mBq)) {
-        paramc.mBq = com.tencent.mm.plugin.wenote.model.f.ajF(paramc.toString());
+      if (bt.isNullOrNil(paramc.dkb)) {
+        paramc.dkb = com.tencent.mm.plugin.wenote.model.f.Tb(paramc.toString());
       }
-      AppMethodBeat.o(26744);
+      AppMethodBeat.o(30437);
       return;
       label105:
-      if (locald.vvW == null) {
-        ab.e("MicroMsg.Note.NoteDataManager", "processItem,item is %s, but mEditorIdToDataItem is null", new Object[] { paramc.toString() });
+      if (locald.BCH == null) {
+        ad.e("MicroMsg.Note.NoteDataManager", "processItem,item is %s, but mEditorIdToDataItem is null", new Object[] { paramc.toString() });
       } else {
-        locald.vvW.put(localo.vxr, localo);
+        locald.BCH.put(localo.omI, localo);
       }
     }
   }
@@ -122,183 +122,500 @@ public class c
   private boolean b(int paramInt, com.tencent.mm.plugin.wenote.model.a.c paramc)
   {
     boolean bool = true;
-    AppMethodBeat.i(26723);
-    if ((paramc != null) && (this.iVH != null) && (paramInt >= 0) && (paramInt <= this.iVH.size()))
+    AppMethodBeat.i(30416);
+    if ((paramc != null) && (this.hIH != null) && (paramInt >= 0) && (paramInt <= this.hIH.size()))
     {
-      this.iVH.add(paramInt, paramc);
+      this.hIH.add(paramInt, paramc);
       a(paramc, true);
     }
     for (;;)
     {
-      AppMethodBeat.o(26723);
+      AppMethodBeat.o(30416);
       return bool;
       bool = false;
     }
   }
   
-  public static c din()
+  private void bSu()
   {
-    AppMethodBeat.i(26717);
-    if (vyc == null) {}
-    try
+    AppMethodBeat.i(30426);
+    if (this.hIH != null)
     {
-      if (vyc == null) {
-        vyc = new c();
-      }
-      c localc = vyc;
-      AppMethodBeat.o(26717);
-      return localc;
-    }
-    finally
-    {
-      AppMethodBeat.o(26717);
-    }
-  }
-  
-  private void dir()
-  {
-    AppMethodBeat.i(26733);
-    if (this.iVH != null)
-    {
-      Iterator localIterator = this.iVH.iterator();
+      Iterator localIterator = this.hIH.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.plugin.wenote.model.a.c localc = (com.tencent.mm.plugin.wenote.model.a.c)localIterator.next();
-        localc.vwW = false;
-        localc.vxc = false;
+        localc.omv = false;
+        localc.omB = false;
       }
     }
-    AppMethodBeat.o(26733);
+    AppMethodBeat.o(30426);
   }
   
-  private String diu()
+  private String bSx()
   {
-    AppMethodBeat.i(26737);
-    if ((this.vyf == 0) && (this.iVH != null))
+    AppMethodBeat.i(30430);
+    if ((this.onm == 0) && (this.hIH != null))
     {
-      localObject = this.iVH.iterator();
+      localObject = this.hIH.iterator();
       while (((Iterator)localObject).hasNext())
       {
         o localo = (o)((Iterator)localObject).next();
-        if (localo.vxr.startsWith("WeNote_"))
+        if (localo.omI.startsWith("WeNote_"))
         {
-          i = bo.getInt(localo.vxr.substring(7), -1);
-          if (i > this.vyf) {}
+          i = bt.getInt(localo.omI.substring(7), -1);
+          if (i > this.onm) {}
           for (;;)
           {
-            this.vyf = i;
+            this.onm = i;
             break;
-            i = this.vyf;
+            i = this.onm;
           }
         }
       }
     }
     Object localObject = new StringBuilder("WeNote_");
-    int i = this.vyf + 1;
-    this.vyf = i;
+    int i = this.onm + 1;
+    this.onm = i;
     localObject = i;
-    AppMethodBeat.o(26737);
+    AppMethodBeat.o(30430);
     return localObject;
   }
   
-  private static String ed(String paramString, int paramInt)
+  private static String cH(String paramString, int paramInt)
   {
-    AppMethodBeat.i(26739);
+    AppMethodBeat.i(30432);
     paramString = String.format("<div><object data-type=\"%d\" id=\"%s\" name=\"%s\" class=\"item item-\"></object></div>", new Object[] { Integer.valueOf(paramInt), paramString, paramString });
-    AppMethodBeat.o(26739);
+    AppMethodBeat.o(30432);
     return paramString;
   }
   
-  public final com.tencent.mm.plugin.wenote.model.a.c Lj(int paramInt)
+  public static c esI()
   {
-    AppMethodBeat.i(26719);
-    if ((this.iVH != null) && (paramInt >= 0) && (paramInt < this.iVH.size()))
+    AppMethodBeat.i(30410);
+    if (BDQ == null) {}
+    try
     {
-      com.tencent.mm.plugin.wenote.model.a.c localc = (com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(paramInt);
-      AppMethodBeat.o(26719);
+      if (BDQ == null) {
+        BDQ = new c();
+      }
+      c localc = BDQ;
+      AppMethodBeat.o(30410);
       return localc;
     }
-    AppMethodBeat.o(26719);
+    finally
+    {
+      AppMethodBeat.o(30410);
+    }
+  }
+  
+  public final void Ac(int paramInt)
+  {
+    AppMethodBeat.i(30419);
+    if (this.BDR != null) {
+      this.BDR.zV(paramInt);
+    }
+    AppMethodBeat.o(30419);
+  }
+  
+  public final boolean I(ArrayList<com.tencent.mm.plugin.wenote.model.a.c> paramArrayList)
+  {
+    AppMethodBeat.i(30439);
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramArrayList = paramArrayList.iterator();
+    int i = 0;
+    while (paramArrayList.hasNext())
+    {
+      com.tencent.mm.plugin.wenote.model.a.c localc = (com.tencent.mm.plugin.wenote.model.a.c)paramArrayList.next();
+      if (localc.getType() != 1) {
+        i += 1;
+      } else {
+        localStringBuilder.append(((com.tencent.mm.plugin.wenote.model.a.i)localc).content);
+      }
+    }
+    boolean bool = eY(com.tencent.mm.plugin.wenote.c.c.ST(localStringBuilder.toString()), i);
+    AppMethodBeat.o(30439);
+    return bool;
+  }
+  
+  public final com.tencent.mm.plugin.wenote.model.a.c TZ(int paramInt)
+  {
+    AppMethodBeat.i(30412);
+    if ((this.hIH != null) && (paramInt >= 0) && (paramInt < this.hIH.size()))
+    {
+      com.tencent.mm.plugin.wenote.model.a.c localc = (com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(paramInt);
+      AppMethodBeat.o(30412);
+      return localc;
+    }
+    AppMethodBeat.o(30412);
     return null;
   }
   
-  public final void Ll(int paramInt)
+  public final ago Te(String paramString)
   {
-    AppMethodBeat.i(26726);
-    if (this.vyd != null) {
-      this.vyd.Lc(paramInt);
+    AppMethodBeat.i(30433);
+    if (bt.isNullOrNil(paramString))
+    {
+      ad.e("MicroMsg.Note.NoteDataManager", "getFavProtoItem error ,htmlstr is null or nil");
+      AppMethodBeat.o(30433);
+      return null;
     }
-    AppMethodBeat.o(26726);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    for (;;)
+    {
+      Object localObject1;
+      Object localObject2;
+      try
+      {
+        if (i >= this.hIH.size()) {
+          break label794;
+        }
+        localObject1 = (com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i);
+        if (bt.isNullOrNil(((com.tencent.mm.plugin.wenote.model.a.c)localObject1).dkb)) {
+          ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).dkb = com.tencent.mm.plugin.wenote.model.f.Tb(localObject1.toString());
+        }
+        if (((com.tencent.mm.plugin.wenote.model.a.c)localObject1).getType() == -1) {
+          if ((localArrayList.size() > 0) && (((o)localArrayList.get(localArrayList.size() - 1)).type == 1))
+          {
+            localObject1 = new StringBuilder();
+            localObject2 = (com.tencent.mm.plugin.wenote.model.a.i)localArrayList.get(localArrayList.size() - 1);
+            ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).content += "\n";
+          }
+          else
+          {
+            localObject2 = new com.tencent.mm.plugin.wenote.model.a.i();
+            ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).content = "\n";
+            ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).dkb = ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).dkb;
+            ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).omI = "-1";
+            ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).type = 1;
+            ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).omH = null;
+            localArrayList.add(localObject2);
+          }
+        }
+      }
+      finally
+      {
+        AppMethodBeat.o(30433);
+      }
+      if (((com.tencent.mm.plugin.wenote.model.a.c)localObject1).getType() >= -1)
+      {
+        if (((((com.tencent.mm.plugin.wenote.model.a.c)localObject1).getType() == 6) || (((com.tencent.mm.plugin.wenote.model.a.c)localObject1).getType() == 4)) && (bt.isNullOrNil(((o)localObject1).drZ)))
+        {
+          localObject2 = new afy();
+          ((afy)localObject2).aDy(((com.tencent.mm.plugin.wenote.model.a.c)localObject1).dkb);
+          ((afy)localObject2).aDv(((com.tencent.mm.plugin.wenote.model.a.c)localObject1).bSi());
+          localObject2 = com.tencent.mm.plugin.wenote.model.f.b((afy)localObject2);
+          if (com.tencent.mm.vfs.i.eK((String)localObject2))
+          {
+            ad.e("MicroMsg.Note.NoteDataManager", "getFavProtoItem,type = %d, localfile exsit,but localpath is null or nil, set path here", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.wenote.model.a.c)localObject1).getType()) });
+            ((o)localObject1).drZ = ((String)localObject2);
+          }
+        }
+        if (((com.tencent.mm.plugin.wenote.model.a.c)localObject1).getType() != 1)
+        {
+          localArrayList.add((o)localObject1);
+        }
+        else
+        {
+          localObject1 = (com.tencent.mm.plugin.wenote.model.a.i)localObject1;
+          if (bt.isNullOrNil(((com.tencent.mm.plugin.wenote.model.a.i)localObject1).content))
+          {
+            if ((localArrayList.size() > 0) && (((o)localArrayList.get(localArrayList.size() - 1)).getType() == 1))
+            {
+              localObject1 = new StringBuilder();
+              localObject2 = (com.tencent.mm.plugin.wenote.model.a.i)localArrayList.get(localArrayList.size() - 1);
+              ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).content += "<br/>";
+            }
+            else
+            {
+              localObject2 = new com.tencent.mm.plugin.wenote.model.a.i();
+              ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).content = "<br/>";
+              ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).dkb = ((com.tencent.mm.plugin.wenote.model.a.i)localObject1).dkb;
+              ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).omI = ((com.tencent.mm.plugin.wenote.model.a.i)localObject1).omI;
+              ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).type = ((com.tencent.mm.plugin.wenote.model.a.i)localObject1).type;
+              ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).omH = null;
+              localArrayList.add(localObject2);
+            }
+          }
+          else
+          {
+            Object localObject3;
+            if ((localArrayList.size() > 0) && (((o)localArrayList.get(localArrayList.size() - 1)).getType() == 1))
+            {
+              localObject2 = new StringBuilder();
+              localObject3 = (com.tencent.mm.plugin.wenote.model.a.i)localArrayList.get(localArrayList.size() - 1);
+              ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).content += ((com.tencent.mm.plugin.wenote.model.a.i)localObject1).content;
+            }
+            while ((i + 1 < this.hIH.size()) && (((com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i + 1)).getType() == 1) && (!bt.isNullOrNil(((com.tencent.mm.plugin.wenote.model.a.i)this.hIH.get(i + 1)).content)))
+            {
+              localObject1 = new StringBuilder();
+              localObject2 = (com.tencent.mm.plugin.wenote.model.a.i)localArrayList.get(localArrayList.size() - 1);
+              ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).content += "<br/>";
+              break;
+              localObject2 = new com.tencent.mm.plugin.wenote.model.a.i();
+              ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).content = ((com.tencent.mm.plugin.wenote.model.a.i)localObject1).content;
+              ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).dkb = ((com.tencent.mm.plugin.wenote.model.a.i)localObject1).dkb;
+              ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).omI = ((com.tencent.mm.plugin.wenote.model.a.i)localObject1).omI;
+              ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).type = ((com.tencent.mm.plugin.wenote.model.a.i)localObject1).type;
+              ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).omH = null;
+              localArrayList.add(localObject2);
+              continue;
+              label794:
+              paramString = Pattern.compile("<wx-", 2).matcher(paramString).replaceAll("<");
+              localObject1 = Pattern.compile("</wx-", 2).matcher(paramString).replaceAll("</");
+              try
+              {
+                paramString = ((String)localObject1).getBytes("UTF-8");
+                i = 0;
+              }
+              catch (UnsupportedEncodingException paramString)
+              {
+                for (;;)
+                {
+                  try
+                  {
+                    ((com.tencent.mm.vfs.e)localObject3).createNewFile();
+                    if ((i != 0) || (com.tencent.mm.vfs.i.f((String)localObject2, paramString, paramString.length) != 0)) {
+                      break;
+                    }
+                    this.onl.aDz((String)localObject2);
+                    ad.i("MicroMsg.Note.NoteDataManager", "do WNNoteBase.ConvertNote2FavProtoItem");
+                    paramString = com.tencent.mm.plugin.wenote.model.d.a((String)localObject1, localArrayList, this.onl);
+                    AppMethodBeat.o(30433);
+                    return paramString;
+                  }
+                  catch (IOException paramString)
+                  {
+                    ad.printErrStackTrace("MicroMsg.Note.NoteDataManager", paramString, "", new Object[0]);
+                    AppMethodBeat.o(30433);
+                    return null;
+                  }
+                  paramString = paramString;
+                  ad.printErrStackTrace("MicroMsg.Note.NoteDataManager", paramString, "", new Object[0]);
+                  ad.e("MicroMsg.Note.NoteDataManager", "writehtmlfile, use utf-8 encoding error,use default encoding,");
+                  i = 1;
+                  paramString = null;
+                }
+              }
+              this.onl.VD(8);
+              this.onl.aDI("WeNoteHtmlFile");
+              this.onl.ux(true);
+              this.onl.aDv(".htm");
+              this.onl.aDy(com.tencent.mm.plugin.wenote.model.f.Tb(this.onl.toString()));
+              localObject2 = com.tencent.mm.plugin.wenote.model.f.b(this.onl);
+              ad.i("MicroMsg.Note.NoteDataManager", "getFavProtoItem: save note html file, path is %s", new Object[] { localObject2 });
+              localObject3 = new com.tencent.mm.vfs.e((String)localObject2);
+              if (((com.tencent.mm.vfs.e)localObject3).exists()) {
+                ((com.tencent.mm.vfs.e)localObject3).delete();
+              }
+              if (!((com.tencent.mm.vfs.e)localObject3).exists()) {}
+              ad.i("MicroMsg.Note.NoteDataManager", "writefile error,return");
+              Toast.makeText(aj.getContext(), aj.getContext().getString(2131758993), 1).show();
+              AppMethodBeat.o(30433);
+              return null;
+            }
+          }
+        }
+      }
+      i += 1;
+    }
+  }
+  
+  public final boolean W(int paramInt, boolean paramBoolean)
+  {
+    boolean bool2 = false;
+    AppMethodBeat.i(30417);
+    boolean bool1 = bool2;
+    for (;;)
+    {
+      try
+      {
+        if (this.hIH != null)
+        {
+          bool1 = bool2;
+          if (paramInt >= 0)
+          {
+            bool1 = bool2;
+            if (paramInt < this.hIH.size())
+            {
+              a((com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(paramInt), false);
+              this.hIH.remove(paramInt);
+              bool1 = true;
+            }
+          }
+        }
+        if ((bool1) && (paramBoolean) && (this.BDR != null))
+        {
+          this.BDR.zX(paramInt);
+          if (paramInt > 0) {
+            this.BDR.eW(paramInt - 1, this.hIH.size() - (paramInt - 1));
+          }
+        }
+        else
+        {
+          AppMethodBeat.o(30417);
+          return bool1;
+        }
+      }
+      finally
+      {
+        AppMethodBeat.o(30417);
+      }
+      this.BDR.eW(paramInt, this.hIH.size() - paramInt);
+    }
+  }
+  
+  public final void X(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(30423);
+    for (;;)
+    {
+      try
+      {
+        if (this.hIH == null) {
+          return;
+        }
+        if ((paramInt >= 0) && (paramInt < this.hIH.size()))
+        {
+          localc = (com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(paramInt);
+          if ((localc != null) && (localc.omC != paramBoolean))
+          {
+            localc.omC = paramBoolean;
+            if (this.BDR != null) {
+              this.BDR.zV(paramInt);
+            }
+          }
+          return;
+        }
+        if (paramInt != -1) {
+          continue;
+        }
+        paramInt = 0;
+        if (paramInt >= this.hIH.size()) {
+          continue;
+        }
+        com.tencent.mm.plugin.wenote.model.a.c localc = (com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(paramInt);
+        if ((localc != null) && (localc.omC != paramBoolean))
+        {
+          localc.omC = paramBoolean;
+          if (this.BDR != null) {
+            this.BDR.zV(paramInt);
+          }
+        }
+      }
+      finally
+      {
+        AppMethodBeat.o(30423);
+      }
+      paramInt += 1;
+    }
+  }
+  
+  public final void Y(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(30427);
+    for (;;)
+    {
+      int i;
+      try
+      {
+        if ((this.hIH == null) || (paramInt < 0) || (paramInt >= this.hIH.size())) {
+          return;
+        }
+        i = 0;
+        if (i < this.hIH.size()) {
+          if (i == paramInt)
+          {
+            ((com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i)).omv = true;
+            ((com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i)).omB = paramBoolean;
+          }
+          else
+          {
+            ((com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i)).omv = false;
+            ((com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i)).omB = false;
+          }
+        }
+      }
+      finally
+      {
+        AppMethodBeat.o(30427);
+      }
+      AppMethodBeat.o(30427);
+      return;
+      i += 1;
+    }
   }
   
   public final int a(com.tencent.mm.plugin.wenote.model.a.c paramc, WXRTEditText paramWXRTEditText, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AppMethodBeat.i(26741);
+    AppMethodBeat.i(30434);
     if (paramc == null)
     {
-      AppMethodBeat.o(26741);
+      AppMethodBeat.o(30434);
       return -1;
     }
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramc);
     int i = a(localArrayList, paramWXRTEditText, true, paramBoolean1, paramBoolean2, paramBoolean3);
-    AppMethodBeat.o(26741);
+    AppMethodBeat.o(30434);
     return i;
   }
   
   public final int a(ArrayList<com.tencent.mm.plugin.wenote.model.a.c> paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(26743);
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (this.iVH == null) || (paramInt2 < 0) || (paramInt3 < 0) || (paramInt4 < 0) || (paramInt4 < paramInt3))
+    AppMethodBeat.i(30436);
+    if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (this.hIH == null) || (paramInt2 < 0) || (paramInt3 < 0) || (paramInt4 < 0) || (paramInt4 < paramInt3))
     {
-      ab.e("MicroMsg.Note.NoteDataManager", "pasteItemList,error,return");
-      AppMethodBeat.o(26743);
+      ad.e("MicroMsg.Note.NoteDataManager", "pasteItemList,error,return");
+      AppMethodBeat.o(30436);
       return -1;
     }
-    if (com.tencent.mm.plugin.wenote.model.c.dhH().vvQ == null)
+    if (com.tencent.mm.plugin.wenote.model.c.esw().BCA == null)
     {
-      ab.e("MicroMsg.Note.NoteDataManager", "pasteItemList, but get wnnote base is null, return");
-      AppMethodBeat.o(26743);
+      ad.e("MicroMsg.Note.NoteDataManager", "pasteItemList, but get wnnote base is null, return");
+      AppMethodBeat.o(30436);
       return -1;
     }
     Object localObject1 = (com.tencent.mm.plugin.wenote.model.a.c)paramArrayList.get(paramArrayList.size() - 1);
     if (localObject1 == null)
     {
-      ab.e("MicroMsg.Note.NoteDataManager", "pasteItemList, lastInsertItem is null");
-      AppMethodBeat.o(26743);
+      ad.e("MicroMsg.Note.NoteDataManager", "pasteItemList, lastInsertItem is null");
+      AppMethodBeat.o(30436);
       return -1;
     }
-    ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).vwY = -1;
-    ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).vwW = true;
-    ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).vxc = false;
-    Object localObject3 = Lj(paramInt2);
+    ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).omx = -1;
+    ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).omv = true;
+    ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).omB = false;
+    Object localObject3 = TZ(paramInt2);
     if (localObject3 == null)
     {
-      ab.e("MicroMsg.Note.NoteDataManager", "pasteItemList, item is null");
-      AppMethodBeat.o(26743);
+      ad.e("MicroMsg.Note.NoteDataManager", "pasteItemList, item is null");
+      AppMethodBeat.o(30436);
       return -1;
     }
-    label905:
+    label641:
     label908:
+    label911:
     for (;;)
     {
-      label490:
-      label495:
+      label493:
+      label498:
       int j;
       int i;
       try
       {
-        dir();
+        bSu();
         if ((paramInt1 != 0) || (((com.tencent.mm.plugin.wenote.model.a.c)localObject3).getType() != 1)) {
-          break label893;
+          break label896;
         }
-        Object localObject2 = com.tencent.mm.plugin.wenote.model.nativenote.a.a.ajK(((i)localObject3).content);
+        Object localObject2 = com.tencent.mm.plugin.wenote.model.nativenote.a.a.Tc(((com.tencent.mm.plugin.wenote.model.a.i)localObject3).content);
         if ((localObject2 == null) || (paramInt3 > ((Spanned)localObject2).length()) || (paramInt4 > ((Spanned)localObject2).length()))
         {
           if (localObject2 == null)
           {
             paramInt1 = -1;
-            ab.e("MicroMsg.Note.NoteDataManager", "pasteItemList error, oriText:%d  startOff:%d  endOff:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+            ad.e("MicroMsg.Note.NoteDataManager", "pasteItemList error, oriText:%d  startOff:%d  endOff:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
             return -1;
           }
           paramInt1 = ((Spanned)localObject2).length();
@@ -308,29 +625,29 @@ public class c
         CharSequence localCharSequence = ((Spanned)localObject2).subSequence(paramInt4, ((Spanned)localObject2).length());
         localObject2 = com.tencent.mm.plugin.wenote.model.nativenote.a.b.a((Spanned)localObject1);
         localObject1 = com.tencent.mm.plugin.wenote.model.nativenote.a.b.a((Spanned)localCharSequence);
-        localObject3 = (i)localObject3;
-        if (!bo.isNullOrNil((String)localObject2))
+        localObject3 = (com.tencent.mm.plugin.wenote.model.a.i)localObject3;
+        if (!bt.isNullOrNil((String)localObject2))
         {
           if (!((String)localObject2).endsWith("<br/>")) {
-            break label876;
-          }
-          localObject2 = ((String)localObject2).substring(0, ((String)localObject2).length() - 5);
-          ((i)localObject3).content = ((String)localObject2);
-          paramInt2 += 1;
-          paramInt1 = paramInt2;
-          if (bo.isNullOrNil((String)localObject1)) {
             break label879;
           }
-          localObject3 = new i();
-          ((i)localObject3).type = 1;
+          localObject2 = ((String)localObject2).substring(0, ((String)localObject2).length() - 5);
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).content = ((String)localObject2);
+          paramInt2 += 1;
+          paramInt1 = paramInt2;
+          if (bt.isNullOrNil((String)localObject1)) {
+            break label882;
+          }
+          localObject3 = new com.tencent.mm.plugin.wenote.model.a.i();
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).type = 1;
           localObject2 = localObject1;
           if (((String)localObject1).startsWith("<br/>")) {
             localObject2 = ((String)localObject1).substring(5, ((String)localObject1).length());
           }
-          ((i)localObject3).content = ((String)localObject2);
-          ((i)localObject3).vwY = 0;
-          ((i)localObject3).vwW = false;
-          ((i)localObject3).vxc = false;
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).content = ((String)localObject2);
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).omx = 0;
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).omv = false;
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).omB = false;
           b(paramInt2, (com.tencent.mm.plugin.wenote.model.a.c)localObject3);
           paramInt4 = 1;
           paramInt1 = paramInt2;
@@ -346,53 +663,52 @@ public class c
             localObject1 = (com.tencent.mm.plugin.wenote.model.a.c)paramArrayList.next();
             b((com.tencent.mm.plugin.wenote.model.a.c)localObject1);
             if (!b(paramInt3, (com.tencent.mm.plugin.wenote.model.a.c)localObject1)) {
-              break label873;
+              break label876;
             }
             paramInt3 += 1;
-            break label873;
+            break label876;
           }
         }
         else
         {
-          if (!bo.isNullOrNil((String)localObject1))
+          if (!bt.isNullOrNil((String)localObject1))
           {
             localObject2 = localObject1;
             if (((String)localObject1).startsWith("<br/>")) {
               localObject2 = ((String)localObject1).substring(5, ((String)localObject1).length());
             }
-            ((i)localObject3).content = ((String)localObject2);
+            ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).content = ((String)localObject2);
             paramInt1 = 0;
             paramInt4 = paramInt2;
             paramInt3 = paramInt2;
             paramInt2 = paramInt4;
             continue;
           }
-          Lk(paramInt2);
+          Ab(paramInt2);
           paramInt1 = paramInt2;
-          if (this.vyd == null) {
-            break label879;
+          if (this.BDR == null) {
+            break label882;
           }
-          this.vyd.Le(paramInt2);
+          this.BDR.zX(paramInt2);
           paramInt1 = paramInt2;
-          break label879;
-          label638:
+          break label882;
           paramArrayList = paramArrayList.iterator();
           paramInt2 = paramInt1;
           if (!paramArrayList.hasNext()) {
-            break label908;
+            break label911;
           }
           localObject1 = (com.tencent.mm.plugin.wenote.model.a.c)paramArrayList.next();
           b((com.tencent.mm.plugin.wenote.model.a.c)localObject1);
           if (!b(paramInt2, (com.tencent.mm.plugin.wenote.model.a.c)localObject1)) {
-            break label865;
+            break label868;
           }
           paramInt2 += 1;
-          break label905;
+          break label908;
         }
-        if ((j - 1 >= 0) && (j - 1 < din().size()))
+        if ((j - 1 >= 0) && (j - 1 < esI().size()))
         {
           paramInt1 = j - 1;
-          if (this.vyd != null)
+          if (this.BDR != null)
           {
             paramInt3 = j - i;
             paramInt2 = paramInt3;
@@ -400,47 +716,46 @@ public class c
               paramInt2 = paramInt3 + 1;
             }
             if ((i >= 0) && (paramInt2 > 0)) {
-              this.vyd.gS(i, paramInt2);
+              this.BDR.eV(i, paramInt2);
             }
             if (i <= 0) {
-              break label837;
+              break label840;
             }
-            this.vyd.gT(i - 1, din().size() - (i - 1));
-            this.vyd.Lf(paramInt1);
+            this.BDR.eW(i - 1, esI().size() - (i - 1));
+            this.BDR.zY(paramInt1);
           }
-          dix();
-          AppMethodBeat.o(26743);
+          bSA();
+          AppMethodBeat.o(30436);
           return paramInt1;
         }
       }
       finally
       {
-        AppMethodBeat.o(26743);
+        AppMethodBeat.o(30436);
       }
-      paramInt1 = din().size() - 1;
+      paramInt1 = esI().size() - 1;
       continue;
-      label837:
+      label840:
       if (i == 0)
       {
-        this.vyd.gT(i, din().size() - i);
+        this.BDR.eW(i, esI().size() - i);
         continue;
-        label865:
-        break label905;
-        label873:
+        label868:
+        break label908;
         label876:
         label879:
-        label893:
+        label882:
         do
         {
           paramInt1 = paramInt2;
-          break label638;
-          break label495;
+          break label641;
+          break label498;
           break;
           paramInt4 = 0;
           paramInt2 = paramInt1;
           paramInt3 = paramInt1;
           paramInt1 = paramInt4;
-          break label490;
+          break label493;
         } while (paramInt1 == 1);
         paramInt1 = paramInt2 + 1;
         continue;
@@ -454,38 +769,38 @@ public class c
   
   public final int a(ArrayList<com.tencent.mm.plugin.wenote.model.a.c> paramArrayList, WXRTEditText paramWXRTEditText, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    AppMethodBeat.i(26742);
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (this.iVH == null))
+    AppMethodBeat.i(30435);
+    if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (this.hIH == null))
     {
-      ab.e("MicroMsg.Note.NoteDataManager", "insertItemList,error,return");
-      AppMethodBeat.o(26742);
+      ad.e("MicroMsg.Note.NoteDataManager", "insertItemList,error,return");
+      AppMethodBeat.o(30435);
       return -1;
     }
-    if (com.tencent.mm.plugin.wenote.model.c.dhH().vvQ == null)
+    if (com.tencent.mm.plugin.wenote.model.c.esw().BCA == null)
     {
-      ab.e("MicroMsg.Note.NoteDataManager", "insertItemList, but get wnnote base is null, return");
-      AppMethodBeat.o(26742);
+      ad.e("MicroMsg.Note.NoteDataManager", "insertItemList, but get wnnote base is null, return");
+      AppMethodBeat.o(30435);
       return -1;
     }
-    if ((paramBoolean2) && (ag(paramArrayList)) && (this.vyd != null))
+    if ((paramBoolean2) && (I(paramArrayList)) && (this.BDR != null))
     {
-      this.vyd.dhX();
-      AppMethodBeat.o(26742);
+      this.BDR.bRz();
+      AppMethodBeat.o(30435);
       return -1;
     }
     Object localObject1;
     if (paramBoolean1)
     {
       localObject1 = (com.tencent.mm.plugin.wenote.model.a.c)paramArrayList.get(paramArrayList.size() - 1);
-      ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).vwY = -1;
-      ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).vwW = true;
-      ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).vxc = false;
-      if ((paramWXRTEditText != null) && (paramWXRTEditText.vzf))
+      ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).omx = -1;
+      ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).omv = true;
+      ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).omB = false;
+      if ((paramWXRTEditText != null) && (paramWXRTEditText.ool))
       {
         if (paramWXRTEditText.getEditTextType() != 2) {
           break label286;
         }
-        ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).vxf = 2;
+        ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).omE = 2;
       }
     }
     label194:
@@ -500,9 +815,9 @@ public class c
     int m;
     for (;;)
     {
-      paramWXRTEditText.vzf = false;
-      ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).vxg = paramWXRTEditText.vxg;
-      paramWXRTEditText.vxg = 0;
+      paramWXRTEditText.ool = false;
+      ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).omF = paramWXRTEditText.omF;
+      paramWXRTEditText.omF = 0;
       if ((paramWXRTEditText == null) || (paramWXRTEditText.getRecyclerItemPosition() != 0)) {
         if (paramWXRTEditText != null) {
           break label646;
@@ -511,7 +826,7 @@ public class c
       try
       {
         n = size();
-        dir();
+        bSu();
         paramArrayList = paramArrayList.iterator();
         i = n;
         for (;;)
@@ -520,10 +835,10 @@ public class c
           {
             paramWXRTEditText = (com.tencent.mm.plugin.wenote.model.a.c)paramArrayList.next();
             b(paramWXRTEditText);
-            if ((paramWXRTEditText == null) || (this.iVH == null)) {
+            if ((paramWXRTEditText == null) || (this.hIH == null)) {
               break label1272;
             }
-            this.iVH.add(paramWXRTEditText);
+            this.hIH.add(paramWXRTEditText);
             a(paramWXRTEditText, true);
             j = 1;
             if (j == 0) {
@@ -534,7 +849,7 @@ public class c
             if (paramWXRTEditText.getEditTextType() != 1) {
               break;
             }
-            ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).vxf = 1;
+            ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).omE = 1;
             break;
             if ((paramWXRTEditText.getEditTextType() == 2) || (paramWXRTEditText.getSelectionStart() != 0) || (paramArrayList == null) || (paramArrayList.size() <= 0)) {
               break label194;
@@ -543,16 +858,16 @@ public class c
             if ((i != 2) && (i != 6) && (i != 5) && (i != 3) && (i != 4)) {
               break label194;
             }
-            localObject1 = new i();
-            ((i)localObject1).content = "";
-            ((i)localObject1).vwW = false;
-            ((i)localObject1).vxc = false;
+            localObject1 = new com.tencent.mm.plugin.wenote.model.a.i();
+            ((com.tencent.mm.plugin.wenote.model.a.i)localObject1).content = "";
+            ((com.tencent.mm.plugin.wenote.model.a.i)localObject1).omv = false;
+            ((com.tencent.mm.plugin.wenote.model.a.i)localObject1).omB = false;
             paramArrayList.add(0, localObject1);
             break label194;
           }
         }
         i1 = 0;
-        if ((i - 1 < 0) || (i - 1 >= din().size())) {
+        if ((i - 1 < 0) || (i - 1 >= esI().size())) {
           break;
         }
         j = i - 1;
@@ -562,24 +877,24 @@ public class c
         {
           j += 1;
           i += 1;
-          dir();
-          if (j >= din().size()) {
+          bSu();
+          if (j >= esI().size()) {
             break label1167;
           }
-          paramArrayList = din().Lj(j);
+          paramArrayList = esI().TZ(j);
           k = j;
           m = i;
           if (paramArrayList != null)
           {
-            paramArrayList.vwY = 0;
-            paramArrayList.vwW = true;
-            paramArrayList.vxc = false;
+            paramArrayList.omx = 0;
+            paramArrayList.omv = true;
+            paramArrayList.omB = false;
             m = i;
             k = j;
           }
         }
         label527:
-        if (this.vyd != null)
+        if (this.BDR != null)
         {
           j = m - n;
           i = j;
@@ -587,20 +902,20 @@ public class c
             i = j + 1;
           }
           if ((n >= 0) && (i > 0)) {
-            this.vyd.gS(n, i);
+            this.BDR.eV(n, i);
           }
           if (n <= 0) {
             break label1221;
           }
-          this.vyd.gT(n - 1, din().size() - (n - 1));
+          this.BDR.eW(n - 1, esI().size() - (n - 1));
           label608:
           if (paramBoolean3) {
-            this.vyd.dhW();
+            this.BDR.bRy();
           }
-          this.vyd.Lf(k);
+          this.BDR.zY(k);
         }
-        dix();
-        AppMethodBeat.o(26742);
+        bSA();
+        AppMethodBeat.o(30435);
         return k;
       }
       finally
@@ -608,48 +923,48 @@ public class c
         label646:
         Object localObject2;
         Object localObject3;
-        AppMethodBeat.o(26742);
+        AppMethodBeat.o(30435);
       }
     }
     int j = paramWXRTEditText.getRecyclerItemPosition();
-    localObject2 = Lj(j);
+    localObject2 = TZ(j);
     if (localObject2 == null)
     {
-      AppMethodBeat.o(26742);
+      AppMethodBeat.o(30435);
       return -1;
     }
-    dir();
+    bSu();
     if ((paramWXRTEditText.getEditTextType() == 0) && (((com.tencent.mm.plugin.wenote.model.a.c)localObject2).getType() == 1))
     {
       localObject1 = paramWXRTEditText.getSelection();
       localObject3 = paramWXRTEditText.getText();
-      paramWXRTEditText = ((Editable)localObject3).subSequence(0, ((e)localObject1).akX);
-      localObject3 = ((Editable)localObject3).subSequence(((e)localObject1).Fe, ((Editable)localObject3).length());
+      paramWXRTEditText = ((Editable)localObject3).subSequence(0, ((e)localObject1).asw);
+      localObject3 = ((Editable)localObject3).subSequence(((e)localObject1).Mc, ((Editable)localObject3).length());
       localObject1 = com.tencent.mm.plugin.wenote.model.nativenote.a.b.a((Spanned)paramWXRTEditText);
       paramWXRTEditText = com.tencent.mm.plugin.wenote.model.nativenote.a.b.a((Spanned)localObject3);
-      localObject2 = (i)localObject2;
-      if (!bo.isNullOrNil((String)localObject1))
+      localObject2 = (com.tencent.mm.plugin.wenote.model.a.i)localObject2;
+      if (!bt.isNullOrNil((String)localObject1))
       {
         if (((String)localObject1).endsWith("<br/>"))
         {
           localObject1 = ((String)localObject1).substring(0, ((String)localObject1).length() - 5);
           label801:
-          ((i)localObject2).content = ((String)localObject1);
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).content = ((String)localObject1);
           j += 1;
           i = j;
-          if (bo.isNullOrNil(paramWXRTEditText)) {
+          if (bt.isNullOrNil(paramWXRTEditText)) {
             break label1291;
           }
-          localObject2 = new i();
-          ((i)localObject2).type = 1;
+          localObject2 = new com.tencent.mm.plugin.wenote.model.a.i();
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).type = 1;
           localObject1 = paramWXRTEditText;
           if (paramWXRTEditText.startsWith("<br/>")) {
             localObject1 = paramWXRTEditText.substring(5, paramWXRTEditText.length());
           }
-          ((i)localObject2).content = ((String)localObject1);
-          ((i)localObject2).vwY = 0;
-          ((i)localObject2).vwW = false;
-          ((i)localObject2).vxc = false;
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).content = ((String)localObject1);
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).omx = 0;
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).omv = false;
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).omB = false;
           b(j, (com.tencent.mm.plugin.wenote.model.a.c)localObject2);
           i = j;
           k = 1;
@@ -679,14 +994,14 @@ public class c
           }
           i = m + 1;
           break label1281;
-          if (bo.isNullOrNil(paramWXRTEditText)) {
+          if (bt.isNullOrNil(paramWXRTEditText)) {
             break label1041;
           }
           localObject1 = paramWXRTEditText;
           if (paramWXRTEditText.startsWith("<br/>")) {
             localObject1 = paramWXRTEditText.substring(5, paramWXRTEditText.length());
           }
-          ((i)localObject2).content = ((String)localObject1);
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject2).content = ((String)localObject1);
           k = j;
           m = 0;
           i = j;
@@ -694,12 +1009,12 @@ public class c
           k = m;
         }
         label1041:
-        Lk(j);
+        Ab(j);
         i = j;
-        if (this.vyd == null) {
+        if (this.BDR == null) {
           break label1291;
         }
-        this.vyd.Le(j);
+        this.BDR.zX(j);
         i = j;
         break label1291;
       }
@@ -724,14 +1039,14 @@ public class c
         }
         i += 1;
         break label1301;
-        j = din().size() - 1;
+        j = esI().size() - 1;
         break label443;
-        paramArrayList = new i();
+        paramArrayList = new com.tencent.mm.plugin.wenote.model.a.i();
         paramArrayList.type = 1;
         paramArrayList.content = "";
-        paramArrayList.vwY = 0;
-        paramArrayList.vwW = true;
-        paramArrayList.vxc = false;
+        paramArrayList.omx = 0;
+        paramArrayList.omv = true;
+        paramArrayList.omB = false;
         b(j, paramArrayList);
         k = j;
         m = i;
@@ -740,7 +1055,7 @@ public class c
         if (n != 0) {
           break label608;
         }
-        this.vyd.gT(n, din().size() - n);
+        this.BDR.eW(n, esI().size() - n);
         break label608;
       }
       i1 = 0;
@@ -769,34 +1084,34 @@ public class c
   public final void a(String paramString, com.tencent.mm.plugin.wenote.model.a.c paramc)
   {
     int i = 0;
-    AppMethodBeat.i(26727);
+    AppMethodBeat.i(30420);
     for (;;)
     {
       try
       {
-        if (this.iVH == null)
+        if (this.hIH == null)
         {
           return;
           i += 1;
         }
-        if (i < this.iVH.size())
+        if (i < this.hIH.size())
         {
-          if (!((com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i)).dhQ().equals(paramString)) {
+          if (!((com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i)).esC().equals(paramString)) {
             continue;
           }
-          a((com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i), false);
-          this.iVH.set(i, paramc);
+          a((com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i), false);
+          this.hIH.set(i, paramc);
           a(paramc, true);
-          if ((i != -1) && (this.vyd != null)) {
-            this.vyd.Lc(i);
+          if ((i != -1) && (this.BDR != null)) {
+            this.BDR.zV(i);
           }
-          AppMethodBeat.o(26727);
+          AppMethodBeat.o(30420);
           return;
         }
       }
       finally
       {
-        AppMethodBeat.o(26727);
+        AppMethodBeat.o(30420);
       }
       i = -1;
     }
@@ -805,34 +1120,34 @@ public class c
   public final boolean a(int paramInt, com.tencent.mm.plugin.wenote.model.a.c paramc)
   {
     boolean bool = true;
-    AppMethodBeat.i(26722);
+    AppMethodBeat.i(30415);
     for (;;)
     {
       try
       {
-        if ((this.iVH == null) || (paramInt < 0) || (paramInt > this.iVH.size())) {
+        if ((this.hIH == null) || (paramInt < 0) || (paramInt > this.hIH.size())) {
           break label138;
         }
-        this.iVH.add(paramInt, paramc);
+        this.hIH.add(paramInt, paramc);
         a(paramc, true);
-        if ((bool) && (this.vyd != null))
+        if ((bool) && (this.BDR != null))
         {
-          this.vyd.Ld(paramInt);
+          this.BDR.zW(paramInt);
           if (paramInt > 0) {
-            this.vyd.gT(paramInt - 1, this.iVH.size() - (paramInt - 1));
+            this.BDR.eW(paramInt - 1, this.hIH.size() - (paramInt - 1));
           }
         }
         else
         {
-          AppMethodBeat.o(26722);
+          AppMethodBeat.o(30415);
           return bool;
         }
       }
       finally
       {
-        AppMethodBeat.o(26722);
+        AppMethodBeat.o(30415);
       }
-      this.vyd.gT(paramInt, this.iVH.size() - paramInt);
+      this.BDR.eW(paramInt, this.hIH.size() - paramInt);
       continue;
       label138:
       bool = false;
@@ -842,262 +1157,83 @@ public class c
   public final boolean a(com.tencent.mm.plugin.wenote.model.a.c paramc)
   {
     boolean bool = true;
-    AppMethodBeat.i(26720);
+    AppMethodBeat.i(30413);
     if (paramc != null) {}
     for (;;)
     {
       try
       {
-        if (this.iVH != null)
+        if (this.hIH != null)
         {
-          this.iVH.add(paramc);
+          this.hIH.add(paramc);
           a(paramc, true);
           return bool;
         }
       }
       finally
       {
-        AppMethodBeat.o(26720);
+        AppMethodBeat.o(30413);
       }
       bool = false;
     }
   }
   
-  public final boolean ag(ArrayList<com.tencent.mm.plugin.wenote.model.a.c> paramArrayList)
+  public final void azr(String paramString)
   {
-    AppMethodBeat.i(26746);
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramArrayList = paramArrayList.iterator();
-    int i = 0;
-    while (paramArrayList.hasNext())
+    AppMethodBeat.i(30421);
+    if ((bt.isNullOrNil(paramString)) || (this.hIH == null))
     {
-      com.tencent.mm.plugin.wenote.model.a.c localc = (com.tencent.mm.plugin.wenote.model.a.c)paramArrayList.next();
-      if (localc.getType() != 1) {
-        i += 1;
-      } else {
-        localStringBuilder.append(((i)localc).content);
-      }
-    }
-    boolean bool = gV(com.tencent.mm.plugin.wenote.b.c.ajU(localStringBuilder.toString()), i);
-    AppMethodBeat.o(26746);
-    return bool;
-  }
-  
-  public final void ajM(String paramString)
-  {
-    AppMethodBeat.i(26728);
-    if ((bo.isNullOrNil(paramString)) || (this.iVH == null))
-    {
-      AppMethodBeat.o(26728);
+      AppMethodBeat.o(30421);
       return;
     }
-    Object localObject = com.tencent.mm.plugin.wenote.b.b.ajP(paramString);
+    Object localObject = com.tencent.mm.plugin.wenote.c.b.SX(paramString);
     if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
       for (;;)
       {
         try
         {
-          ab.i("MicroMsg.Note.NoteDataManager", "updateDataByHtml, mHasInitDataListFinish :％B", new Object[] { Boolean.valueOf(this.vyi) });
-          paramString = aw.RO();
-          localObject = new c.2(this, (ArrayList)localObject);
-          if (!this.vyi) {
+          ad.i("MicroMsg.Note.NoteDataManager", "updateDataByHtml, mHasInitDataListFinish :％B", new Object[] { Boolean.valueOf(this.BDS) });
+          paramString = az.afE();
+          localObject = new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(30408);
+              ArrayList localArrayList = h.a(c.d(c.this), this.BDU, false);
+              ad.i("MicroMsg.Note.NoteDataManager", "updateDataByHtml, start mNotifyListener.setUpNoteData(dataItems, true)");
+              if (c.e(c.this) != null) {
+                c.e(c.this).e(localArrayList, true);
+              }
+              AppMethodBeat.o(30408);
+            }
+          };
+          if (!this.BDS) {
             continue;
           }
           l = 500L;
-          paramString.o((Runnable)localObject, l);
+          paramString.m((Runnable)localObject, l);
         }
         catch (Exception paramString)
         {
           long l;
-          ab.e("MicroMsg.Note.NoteDataManager", "updateDataByHtml exception,%s", new Object[] { paramString.toString() });
+          ad.e("MicroMsg.Note.NoteDataManager", "updateDataByHtml exception,%s", new Object[] { paramString.toString() });
           continue;
         }
         finally
         {
-          AppMethodBeat.o(26728);
+          AppMethodBeat.o(30421);
         }
-        AppMethodBeat.o(26728);
+        AppMethodBeat.o(30421);
         return;
         l = 1000L;
       }
     }
-    AppMethodBeat.o(26728);
+    AppMethodBeat.o(30421);
   }
   
-  public final acq ajN(String paramString)
+  public final String azs(String paramString)
   {
-    AppMethodBeat.i(26740);
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.e("MicroMsg.Note.NoteDataManager", "getFavProtoItem error ,htmlstr is null or nil");
-      AppMethodBeat.o(26740);
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    for (;;)
-    {
-      Object localObject1;
-      Object localObject2;
-      try
-      {
-        if (i >= this.iVH.size()) {
-          break label794;
-        }
-        localObject1 = (com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i);
-        if (bo.isNullOrNil(((com.tencent.mm.plugin.wenote.model.a.c)localObject1).mBq)) {
-          ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).mBq = com.tencent.mm.plugin.wenote.model.f.ajF(localObject1.toString());
-        }
-        if (((com.tencent.mm.plugin.wenote.model.a.c)localObject1).getType() == -1) {
-          if ((localArrayList.size() > 0) && (((o)localArrayList.get(localArrayList.size() - 1)).type == 1))
-          {
-            localObject1 = new StringBuilder();
-            localObject2 = (i)localArrayList.get(localArrayList.size() - 1);
-            ((i)localObject2).content += "\n";
-          }
-          else
-          {
-            localObject2 = new i();
-            ((i)localObject2).content = "\n";
-            ((i)localObject2).mBq = ((com.tencent.mm.plugin.wenote.model.a.c)localObject1).mBq;
-            ((i)localObject2).vxr = "-1";
-            ((i)localObject2).type = 1;
-            ((i)localObject2).vxq = null;
-            localArrayList.add(localObject2);
-          }
-        }
-      }
-      finally
-      {
-        AppMethodBeat.o(26740);
-      }
-      if (((com.tencent.mm.plugin.wenote.model.a.c)localObject1).getType() >= -1)
-      {
-        if (((((com.tencent.mm.plugin.wenote.model.a.c)localObject1).getType() == 6) || (((com.tencent.mm.plugin.wenote.model.a.c)localObject1).getType() == 4)) && (bo.isNullOrNil(((o)localObject1).cBD)))
-        {
-          localObject2 = new aca();
-          ((aca)localObject2).anD(((com.tencent.mm.plugin.wenote.model.a.c)localObject1).mBq);
-          ((aca)localObject2).anA(((com.tencent.mm.plugin.wenote.model.a.c)localObject1).dhR());
-          localObject2 = com.tencent.mm.plugin.wenote.model.f.o((aca)localObject2);
-          if (com.tencent.mm.vfs.e.cN((String)localObject2))
-          {
-            ab.e("MicroMsg.Note.NoteDataManager", "getFavProtoItem,type = %d, localfile exsit,but localpath is null or nil, set path here", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.wenote.model.a.c)localObject1).getType()) });
-            ((o)localObject1).cBD = ((String)localObject2);
-          }
-        }
-        if (((com.tencent.mm.plugin.wenote.model.a.c)localObject1).getType() != 1)
-        {
-          localArrayList.add((o)localObject1);
-        }
-        else
-        {
-          localObject1 = (i)localObject1;
-          if (bo.isNullOrNil(((i)localObject1).content))
-          {
-            if ((localArrayList.size() > 0) && (((o)localArrayList.get(localArrayList.size() - 1)).getType() == 1))
-            {
-              localObject1 = new StringBuilder();
-              localObject2 = (i)localArrayList.get(localArrayList.size() - 1);
-              ((i)localObject2).content += "<br/>";
-            }
-            else
-            {
-              localObject2 = new i();
-              ((i)localObject2).content = "<br/>";
-              ((i)localObject2).mBq = ((i)localObject1).mBq;
-              ((i)localObject2).vxr = ((i)localObject1).vxr;
-              ((i)localObject2).type = ((i)localObject1).type;
-              ((i)localObject2).vxq = null;
-              localArrayList.add(localObject2);
-            }
-          }
-          else
-          {
-            Object localObject3;
-            if ((localArrayList.size() > 0) && (((o)localArrayList.get(localArrayList.size() - 1)).getType() == 1))
-            {
-              localObject2 = new StringBuilder();
-              localObject3 = (i)localArrayList.get(localArrayList.size() - 1);
-              ((i)localObject3).content += ((i)localObject1).content;
-            }
-            while ((i + 1 < this.iVH.size()) && (((com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i + 1)).getType() == 1) && (!bo.isNullOrNil(((i)this.iVH.get(i + 1)).content)))
-            {
-              localObject1 = new StringBuilder();
-              localObject2 = (i)localArrayList.get(localArrayList.size() - 1);
-              ((i)localObject2).content += "<br/>";
-              break;
-              localObject2 = new i();
-              ((i)localObject2).content = ((i)localObject1).content;
-              ((i)localObject2).mBq = ((i)localObject1).mBq;
-              ((i)localObject2).vxr = ((i)localObject1).vxr;
-              ((i)localObject2).type = ((i)localObject1).type;
-              ((i)localObject2).vxq = null;
-              localArrayList.add(localObject2);
-              continue;
-              label794:
-              paramString = Pattern.compile("<wx-", 2).matcher(paramString).replaceAll("<");
-              localObject1 = Pattern.compile("</wx-", 2).matcher(paramString).replaceAll("</");
-              try
-              {
-                paramString = ((String)localObject1).getBytes("UTF-8");
-                i = 0;
-              }
-              catch (UnsupportedEncodingException paramString)
-              {
-                for (;;)
-                {
-                  try
-                  {
-                    ((com.tencent.mm.vfs.b)localObject3).createNewFile();
-                    if ((i != 0) || (com.tencent.mm.vfs.e.b((String)localObject2, paramString, paramString.length) != 0)) {
-                      break;
-                    }
-                    this.vye.anE((String)localObject2);
-                    ab.i("MicroMsg.Note.NoteDataManager", "do WNNoteBase.ConvertNote2FavProtoItem");
-                    paramString = com.tencent.mm.plugin.wenote.model.d.a((String)localObject1, localArrayList, this.vye);
-                    AppMethodBeat.o(26740);
-                    return paramString;
-                  }
-                  catch (IOException paramString)
-                  {
-                    ab.printErrStackTrace("MicroMsg.Note.NoteDataManager", paramString, "", new Object[0]);
-                    AppMethodBeat.o(26740);
-                    return null;
-                  }
-                  paramString = paramString;
-                  ab.printErrStackTrace("MicroMsg.Note.NoteDataManager", paramString, "", new Object[0]);
-                  ab.e("MicroMsg.Note.NoteDataManager", "writehtmlfile, use utf-8 encoding error,use default encoding,");
-                  i = 1;
-                  paramString = null;
-                }
-              }
-              this.vye.MI(8);
-              this.vye.anN("WeNoteHtmlFile");
-              this.vye.pz(true);
-              this.vye.anA(".htm");
-              this.vye.anD(com.tencent.mm.plugin.wenote.model.f.ajF(this.vye.toString()));
-              localObject2 = com.tencent.mm.plugin.wenote.model.f.o(this.vye);
-              ab.i("MicroMsg.Note.NoteDataManager", "getFavProtoItem: save note html file, path is %s", new Object[] { localObject2 });
-              localObject3 = new com.tencent.mm.vfs.b((String)localObject2);
-              if (((com.tencent.mm.vfs.b)localObject3).exists()) {
-                ((com.tencent.mm.vfs.b)localObject3).delete();
-              }
-              if (!((com.tencent.mm.vfs.b)localObject3).exists()) {}
-              ab.i("MicroMsg.Note.NoteDataManager", "writefile error,return");
-              Toast.makeText(ah.getContext(), ah.getContext().getString(2131299818), 1).show();
-              AppMethodBeat.o(26740);
-              return null;
-            }
-          }
-        }
-      }
-      i += 1;
-    }
-  }
-  
-  public final String ajO(String paramString)
-  {
-    AppMethodBeat.i(26750);
+    AppMethodBeat.i(30443);
     label188:
     label196:
     label202:
@@ -1110,18 +1246,18 @@ public class c
       int i;
       try
       {
-        if (this.iVH == null) {
+        if (this.hIH == null) {
           break label202;
         }
         i = 0;
-        if (i >= this.iVH.size()) {
+        if (i >= this.hIH.size()) {
           break label229;
         }
-        if (((com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i)).getType() != 1) {
+        if (((com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i)).getType() != 1) {
           break label196;
         }
-        localObject = com.tencent.mm.plugin.wenote.b.b.ajQ(((i)this.iVH.get(i)).content).replace("&lt;", "<").replace("&gt;", ">").replace(" ", " ");
-        if (bo.isNullOrNil((String)localObject)) {
+        localObject = com.tencent.mm.plugin.wenote.c.b.SY(((com.tencent.mm.plugin.wenote.model.a.i)this.hIH.get(i)).content).replace("&lt;", "<").replace("&gt;", ">").replace(" ", " ");
+        if (bt.isNullOrNil((String)localObject)) {
           break label196;
         }
         localObject = ((String)localObject).split("\n");
@@ -1129,7 +1265,7 @@ public class c
         if (j >= localObject.length) {
           break label188;
         }
-        if (bo.isNullOrNil(localObject[j].trim())) {
+        if (bt.isNullOrNil(localObject[j].trim())) {
           break label222;
         }
         localObject = localObject[j];
@@ -1137,13 +1273,13 @@ public class c
       }
       finally
       {
-        AppMethodBeat.o(26750);
+        AppMethodBeat.o(30443);
       }
       Object localObject = paramString;
       if (paramString.length() > 1000) {
         localObject = paramString.substring(0, 1000);
       }
-      AppMethodBeat.o(26750);
+      AppMethodBeat.o(30443);
       return localObject;
       int j = 0;
       localObject = paramString;
@@ -1162,137 +1298,12 @@ public class c
     }
   }
   
-  public final boolean av(int paramInt, boolean paramBoolean)
+  public final boolean b(int paramInt, ArrayList<com.tencent.mm.plugin.wenote.model.a.c> paramArrayList)
   {
-    boolean bool2 = false;
-    AppMethodBeat.i(26724);
-    boolean bool1 = bool2;
-    for (;;)
-    {
-      try
-      {
-        if (this.iVH != null)
-        {
-          bool1 = bool2;
-          if (paramInt >= 0)
-          {
-            bool1 = bool2;
-            if (paramInt < this.iVH.size())
-            {
-              a((com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(paramInt), false);
-              this.iVH.remove(paramInt);
-              bool1 = true;
-            }
-          }
-        }
-        if ((bool1) && (paramBoolean) && (this.vyd != null))
-        {
-          this.vyd.Le(paramInt);
-          if (paramInt > 0) {
-            this.vyd.gT(paramInt - 1, this.iVH.size() - (paramInt - 1));
-          }
-        }
-        else
-        {
-          AppMethodBeat.o(26724);
-          return bool1;
-        }
-      }
-      finally
-      {
-        AppMethodBeat.o(26724);
-      }
-      this.vyd.gT(paramInt, this.iVH.size() - paramInt);
-    }
-  }
-  
-  public final void aw(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(26730);
-    for (;;)
-    {
-      try
-      {
-        if (this.iVH == null) {
-          return;
-        }
-        if ((paramInt >= 0) && (paramInt < this.iVH.size()))
-        {
-          localc = (com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(paramInt);
-          if ((localc != null) && (localc.vxd != paramBoolean))
-          {
-            localc.vxd = paramBoolean;
-            if (this.vyd != null) {
-              this.vyd.Lc(paramInt);
-            }
-          }
-          return;
-        }
-        if (paramInt != -1) {
-          continue;
-        }
-        paramInt = 0;
-        if (paramInt >= this.iVH.size()) {
-          continue;
-        }
-        com.tencent.mm.plugin.wenote.model.a.c localc = (com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(paramInt);
-        if ((localc != null) && (localc.vxd != paramBoolean))
-        {
-          localc.vxd = paramBoolean;
-          if (this.vyd != null) {
-            this.vyd.Lc(paramInt);
-          }
-        }
-      }
-      finally
-      {
-        AppMethodBeat.o(26730);
-      }
-      paramInt += 1;
-    }
-  }
-  
-  public final void ax(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(26734);
-    for (;;)
-    {
-      int i;
-      try
-      {
-        if ((this.iVH == null) || (paramInt < 0) || (paramInt >= this.iVH.size())) {
-          return;
-        }
-        i = 0;
-        if (i < this.iVH.size()) {
-          if (i == paramInt)
-          {
-            ((com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i)).vwW = true;
-            ((com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i)).vxc = paramBoolean;
-          }
-          else
-          {
-            ((com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i)).vwW = false;
-            ((com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i)).vxc = false;
-          }
-        }
-      }
-      finally
-      {
-        AppMethodBeat.o(26734);
-      }
-      AppMethodBeat.o(26734);
-      return;
-      i += 1;
-    }
-  }
-  
-  public final boolean d(int paramInt, ArrayList<com.tencent.mm.plugin.wenote.model.a.c> paramArrayList)
-  {
-    AppMethodBeat.i(26721);
+    AppMethodBeat.i(30414);
     if ((paramArrayList == null) || (paramArrayList.size() <= 0))
     {
-      AppMethodBeat.o(26721);
+      AppMethodBeat.o(30414);
       return false;
     }
     for (;;)
@@ -1301,14 +1312,14 @@ public class c
       int m;
       try
       {
-        if (this.iVH == null) {
+        if (this.hIH == null) {
           break label174;
         }
         k = 0;
         j = 0;
         i = paramInt;
         paramInt = j;
-        if ((k >= paramArrayList.size()) || (i < 0) || (i > this.iVH.size())) {
+        if ((k >= paramArrayList.size()) || (i < 0) || (i > this.hIH.size())) {
           break label203;
         }
         com.tencent.mm.plugin.wenote.model.a.c localc = (com.tencent.mm.plugin.wenote.model.a.c)paramArrayList.get(k);
@@ -1318,19 +1329,19 @@ public class c
           break label188;
         }
         b(localc);
-        this.iVH.add(i, localc);
+        this.hIH.add(i, localc);
         j = paramInt + 1;
         m = i + 1;
         a(localc, true);
       }
       finally
       {
-        AppMethodBeat.o(26721);
+        AppMethodBeat.o(30414);
       }
-      if ((bool) && (this.vyd != null)) {
-        this.vyd.gS(i - paramInt, paramInt);
+      if ((bool) && (this.BDR != null)) {
+        this.BDR.eV(i - paramInt, paramInt);
       }
-      AppMethodBeat.o(26721);
+      AppMethodBeat.o(30414);
       return bool;
       label174:
       boolean bool = false;
@@ -1348,43 +1359,130 @@ public class c
     }
   }
   
-  public final void dio()
+  public final void bSA()
   {
-    AppMethodBeat.i(26729);
-    if (this.iVH != null) {}
-    for (int i = this.iVH.size();; i = 0)
+    AppMethodBeat.i(30440);
+    az.afE().ax(new Runnable()
     {
-      ab.i("MicroMsg.Note.NoteDataManager", "clear mDataList, size:%d", new Object[] { Integer.valueOf(i) });
+      public final void run()
+      {
+        AppMethodBeat.i(30409);
+        int i;
+        synchronized (c.this)
+        {
+          if (c.d(c.this) == null)
+          {
+            AppMethodBeat.o(30409);
+            return;
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          Iterator localIterator = c.d(c.this).iterator();
+          i = 0;
+          while (localIterator.hasNext())
+          {
+            com.tencent.mm.plugin.wenote.model.a.c localc1 = (com.tencent.mm.plugin.wenote.model.a.c)localIterator.next();
+            if (localc1.getType() != 1) {
+              i += 1;
+            } else {
+              localStringBuilder.append(((com.tencent.mm.plugin.wenote.model.a.i)localc1).content);
+            }
+          }
+        }
+        c.a(c.this, com.tencent.mm.plugin.wenote.c.c.ST(localObject.toString()));
+        c.b(c.this, i);
+        AppMethodBeat.o(30409);
+      }
+    });
+    AppMethodBeat.o(30440);
+  }
+  
+  public final int bSB()
+  {
+    AppMethodBeat.i(30444);
+    try
+    {
+      if (this.hIH == null) {
+        return -1;
+      }
+      int i = 0;
+      while (i < this.hIH.size())
+      {
+        com.tencent.mm.plugin.wenote.model.a.c localc = (com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i);
+        if ((localc != null) && (localc.getType() != -3) && (localc.getType() != -2)) {
+          return i;
+        }
+        i += 1;
+      }
+      return -1;
+    }
+    finally
+    {
+      AppMethodBeat.o(30444);
+    }
+  }
+  
+  public final int bSC()
+  {
+    AppMethodBeat.i(30445);
+    try
+    {
+      if (this.hIH == null) {
+        return -1;
+      }
+      int i = this.hIH.size() - 1;
+      while (i >= 0)
+      {
+        com.tencent.mm.plugin.wenote.model.a.c localc = (com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i);
+        if ((localc != null) && (localc.getType() != -3) && (localc.getType() != -2)) {
+          return i;
+        }
+        i -= 1;
+      }
+      return -1;
+    }
+    finally
+    {
+      AppMethodBeat.o(30445);
+    }
+  }
+  
+  public final void bSr()
+  {
+    AppMethodBeat.i(30422);
+    if (this.hIH != null) {}
+    for (int i = this.hIH.size();; i = 0)
+    {
+      ad.i("MicroMsg.Note.NoteDataManager", "clear mDataList, size:%d", new Object[] { Integer.valueOf(i) });
       try
       {
-        if (this.iVH != null) {
-          this.iVH.clear();
+        if (this.hIH != null) {
+          this.hIH.clear();
         }
-        this.vyh = 0;
-        this.vyg = 0;
-        AppMethodBeat.o(26729);
+        this.ono = 0;
+        this.onn = 0;
+        AppMethodBeat.o(30422);
         return;
       }
       finally
       {
-        AppMethodBeat.o(26729);
+        AppMethodBeat.o(30422);
       }
     }
   }
   
-  public final int dip()
+  public final int bSs()
   {
-    AppMethodBeat.i(26731);
+    AppMethodBeat.i(30424);
     for (;;)
     {
       try
       {
-        if (this.iVH != null)
+        if (this.hIH != null)
         {
           i = 0;
-          if (i < this.iVH.size())
+          if (i < this.hIH.size())
           {
-            if (((com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i)).vwW) {
+            if (((com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i)).omv) {
               return i;
             }
             i += 1;
@@ -1395,47 +1493,47 @@ public class c
       }
       finally
       {
-        AppMethodBeat.o(26731);
+        AppMethodBeat.o(30424);
       }
     }
   }
   
-  public final void diq()
+  public final void bSt()
   {
-    AppMethodBeat.i(26732);
+    AppMethodBeat.i(30425);
     try
     {
-      if (this.iVH != null)
+      if (this.hIH != null)
       {
-        Iterator localIterator = this.iVH.iterator();
+        Iterator localIterator = this.hIH.iterator();
         while (localIterator.hasNext())
         {
           com.tencent.mm.plugin.wenote.model.a.c localc = (com.tencent.mm.plugin.wenote.model.a.c)localIterator.next();
-          localc.vwW = false;
-          localc.vxc = false;
+          localc.omv = false;
+          localc.omB = false;
         }
       }
     }
     finally
     {
-      AppMethodBeat.o(26732);
+      AppMethodBeat.o(30425);
     }
-    AppMethodBeat.o(26732);
+    AppMethodBeat.o(30425);
   }
   
-  public final int dis()
+  public final int bSv()
   {
-    AppMethodBeat.i(26735);
+    AppMethodBeat.i(30428);
     for (;;)
     {
       try
       {
-        if (this.iVH != null)
+        if (this.hIH != null)
         {
           i = 0;
-          if (i < this.iVH.size())
+          if (i < this.hIH.size())
           {
-            if ((((com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i)).getType() == 4) && (((l)this.iVH.get(i)).vxk.booleanValue())) {
+            if ((((com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i)).getType() == 4) && (((l)this.hIH.get(i)).omS.booleanValue())) {
               return i;
             }
             i += 1;
@@ -1446,85 +1544,85 @@ public class c
       }
       finally
       {
-        AppMethodBeat.o(26735);
+        AppMethodBeat.o(30428);
       }
     }
   }
   
-  public final String dit()
+  public final String bSw()
   {
-    AppMethodBeat.i(26736);
+    AppMethodBeat.i(30429);
     for (;;)
     {
       try
       {
-        if ((this.vyf != 0) || (this.iVH == null)) {
+        if ((this.onm != 0) || (this.hIH == null)) {
           break;
         }
-        Iterator localIterator = this.iVH.iterator();
+        Iterator localIterator = this.hIH.iterator();
         if (!localIterator.hasNext()) {
           break;
         }
         o localo = (o)localIterator.next();
-        if (localo.vxr.startsWith("WeNote_"))
+        if (localo.omI.startsWith("WeNote_"))
         {
-          i = bo.getInt(localo.vxr.substring(7), -1);
-          if (i > this.vyf) {
-            this.vyf = i;
+          i = bt.getInt(localo.omI.substring(7), -1);
+          if (i > this.onm) {
+            this.onm = i;
           } else {
-            i = this.vyf;
+            i = this.onm;
           }
         }
       }
       finally
       {
-        AppMethodBeat.o(26736);
+        AppMethodBeat.o(30429);
       }
     }
     Object localObject2 = new StringBuilder("WeNote_");
-    int i = this.vyf + 1;
-    this.vyf = i;
+    int i = this.onm + 1;
+    this.onm = i;
     localObject2 = i;
-    AppMethodBeat.o(26736);
+    AppMethodBeat.o(30429);
     return localObject2;
   }
   
-  public final String div()
+  public final String bSy()
   {
-    AppMethodBeat.i(26738);
+    AppMethodBeat.i(30431);
     Object localObject1 = "";
     for (;;)
     {
       int i;
       try
       {
-        if ((this.iVH == null) || (this.iVH.size() <= 0)) {
+        if ((this.hIH == null) || (this.hIH.size() <= 0)) {
           return "";
         }
         i = 0;
         Object localObject3;
-        if (i < this.iVH.size()) {
-          localObject3 = (com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i);
+        if (i < this.hIH.size()) {
+          localObject3 = (com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i);
         }
         switch (((com.tencent.mm.plugin.wenote.model.a.c)localObject3).getType())
         {
         case 1: 
-          localObject3 = (i)localObject3;
-          if (bo.isNullOrNil(((i)localObject3).content))
+          localObject3 = (com.tencent.mm.plugin.wenote.model.a.i)localObject3;
+          if (bt.isNullOrNil(((com.tencent.mm.plugin.wenote.model.a.i)localObject3).content))
           {
             localObject1 = (String)localObject1 + "<br/>";
           }
           else
           {
-            localObject3 = (String)localObject1 + ((i)localObject3).content;
+            localObject3 = (String)localObject1 + ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).content;
             localObject1 = localObject3;
-            if (i + 1 < this.iVH.size())
+            if (i + 1 < this.hIH.size())
             {
               localObject1 = localObject3;
-              if (((com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i + 1)).getType() == 1)
+              if (((com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(i + 1)).getType() == 1)
               {
                 localObject1 = localObject3;
-                if (!bo.isNullOrNil(((i)this.iVH.get(i + 1)).content)) {
+                if (!bt.isNullOrNil(((com.tencent.mm.plugin.wenote.model.a.i)this.hIH.get(i + 1)).content)) {
                   localObject1 = (String)localObject3 + "<br/>";
                 }
               }
@@ -1533,27 +1631,27 @@ public class c
           break;
         case 2: 
           localObject3 = (com.tencent.mm.plugin.wenote.model.a.f)localObject3;
-          localObject1 = (String)localObject1 + ed(((com.tencent.mm.plugin.wenote.model.a.f)localObject3).vxr, 2);
+          localObject1 = (String)localObject1 + cH(((com.tencent.mm.plugin.wenote.model.a.f)localObject3).omI, 2);
           break;
         case 6: 
           localObject3 = (k)localObject3;
-          localObject1 = (String)localObject1 + ed(((k)localObject3).vxr, 6);
+          localObject1 = (String)localObject1 + cH(((k)localObject3).omI, 6);
           break;
         case 20: 
           localObject3 = (com.tencent.mm.plugin.wenote.model.a.b)localObject3;
-          localObject1 = (String)localObject1 + ed(((com.tencent.mm.plugin.wenote.model.a.b)localObject3).vxr, 20);
+          localObject1 = (String)localObject1 + cH(((com.tencent.mm.plugin.wenote.model.a.b)localObject3).omI, 20);
           break;
         case 4: 
           localObject3 = (l)localObject3;
-          localObject1 = (String)localObject1 + ed(((l)localObject3).vxr, ((l)localObject3).getType());
+          localObject1 = (String)localObject1 + cH(((l)localObject3).omI, ((l)localObject3).getType());
           break;
         case 3: 
           localObject3 = (g)localObject3;
-          localObject1 = (String)localObject1 + ed(((g)localObject3).vxr, 3);
+          localObject1 = (String)localObject1 + cH(((g)localObject3).omI, 3);
           break;
         case 5: 
           localObject3 = (com.tencent.mm.plugin.wenote.model.a.d)localObject3;
-          localObject1 = (String)localObject1 + ed(((com.tencent.mm.plugin.wenote.model.a.d)localObject3).vxr, 5);
+          localObject1 = (String)localObject1 + cH(((com.tencent.mm.plugin.wenote.model.a.d)localObject3).omI, 5);
           break;
         case -1: 
           localObject1 = (String)localObject1 + "<hr/>";
@@ -1564,94 +1662,37 @@ public class c
       }
       finally
       {
-        AppMethodBeat.o(26738);
+        AppMethodBeat.o(30431);
       }
       i += 1;
     }
   }
   
-  public final ArrayList<com.tencent.mm.plugin.wenote.model.a.c> diw()
+  public final ArrayList<com.tencent.mm.plugin.wenote.model.a.c> bSz()
   {
-    AppMethodBeat.i(26745);
-    if (this.iVH == null)
+    AppMethodBeat.i(30438);
+    if (this.hIH == null)
     {
-      AppMethodBeat.o(26745);
+      AppMethodBeat.o(30438);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
     try
     {
-      Iterator localIterator = this.iVH.iterator();
+      Iterator localIterator = this.hIH.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(com.tencent.mm.plugin.wenote.b.c.c((com.tencent.mm.plugin.wenote.model.a.c)localIterator.next()));
+        localArrayList.add(com.tencent.mm.plugin.wenote.c.c.c((com.tencent.mm.plugin.wenote.model.a.c)localIterator.next()));
       }
     }
     finally
     {
-      AppMethodBeat.o(26745);
+      AppMethodBeat.o(30438);
     }
-    AppMethodBeat.o(26745);
+    AppMethodBeat.o(30438);
     return localArrayList1;
   }
   
-  public final void dix()
-  {
-    AppMethodBeat.i(26747);
-    aw.RO().ac(new c.3(this));
-    AppMethodBeat.o(26747);
-  }
-  
-  public final int diy()
-  {
-    AppMethodBeat.i(26751);
-    try
-    {
-      if (this.iVH == null) {
-        return -1;
-      }
-      int i = 0;
-      while (i < this.iVH.size())
-      {
-        com.tencent.mm.plugin.wenote.model.a.c localc = (com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i);
-        if ((localc != null) && (localc.getType() != -3) && (localc.getType() != -2)) {
-          return i;
-        }
-        i += 1;
-      }
-      return -1;
-    }
-    finally
-    {
-      AppMethodBeat.o(26751);
-    }
-  }
-  
-  public final int diz()
-  {
-    AppMethodBeat.i(26752);
-    try
-    {
-      if (this.iVH == null) {
-        return -1;
-      }
-      int i = this.iVH.size() - 1;
-      while (i >= 0)
-      {
-        com.tencent.mm.plugin.wenote.model.a.c localc = (com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(i);
-        if ((localc != null) && (localc.getType() != -3) && (localc.getType() != -2)) {
-          return i;
-        }
-        i -= 1;
-      }
-      return -1;
-    }
-    finally
-    {
-      AppMethodBeat.o(26752);
-    }
-  }
-  
-  public final boolean gV(int paramInt1, int paramInt2)
+  public final boolean eY(int paramInt1, int paramInt2)
   {
     if (paramInt1 < 0) {}
     for (int i = 0;; i = 1)
@@ -1659,8 +1700,8 @@ public class c
       if (paramInt2 < 0) {}
       for (int j = 0;; j = 1)
       {
-        if ((i != 0) && (this.vyg + paramInt1 > 16384)) {}
-        while ((j != 0) && (this.vyh + paramInt2 > 30)) {
+        if ((i != 0) && (this.onn + paramInt1 > 16384)) {}
+        while ((j != 0) && (this.ono + paramInt2 > 30)) {
           return true;
         }
         return false;
@@ -1668,10 +1709,10 @@ public class c
     }
   }
   
-  public final void gW(int paramInt1, int paramInt2)
+  public final void eZ(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(26749);
-    ab.i("MicroMsg.Note.NoteDataManager", "checkMergeTextDataItem startPos: %d endPos: %d needNotify: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.TRUE });
+    AppMethodBeat.i(30442);
+    ad.i("MicroMsg.Note.NoteDataManager", "checkMergeTextDataItem startPos: %d endPos: %d needNotify: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.TRUE });
     for (;;)
     {
       Object localObject3;
@@ -1679,23 +1720,23 @@ public class c
       Spanned localSpanned2;
       try
       {
-        if (this.iVH == null) {
+        if (this.hIH == null) {
           return;
         }
         int j = paramInt1;
         if (paramInt1 <= 0) {
           j = 0;
         }
-        if (paramInt2 < this.iVH.size()) {
+        if (paramInt2 < this.hIH.size()) {
           break label487;
         }
-        paramInt2 = this.iVH.size() - 1;
+        paramInt2 = this.hIH.size() - 1;
         paramInt1 = -1;
         if (paramInt2 <= j) {
           break label443;
         }
-        Object localObject1 = (com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(paramInt2);
-        localObject3 = (com.tencent.mm.plugin.wenote.model.a.c)this.iVH.get(paramInt2 - 1);
+        Object localObject1 = (com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(paramInt2);
+        localObject3 = (com.tencent.mm.plugin.wenote.model.a.c)this.hIH.get(paramInt2 - 1);
         i = paramInt1;
         if (localObject1 == null) {
           break label492;
@@ -1713,60 +1754,60 @@ public class c
           break label492;
         }
         paramInt1 = paramInt2 - 1;
-        localObject1 = (i)localObject1;
-        localObject3 = (i)localObject3;
-        if (bo.isNullOrNil(((i)localObject1).content)) {
+        localObject1 = (com.tencent.mm.plugin.wenote.model.a.i)localObject1;
+        localObject3 = (com.tencent.mm.plugin.wenote.model.a.i)localObject3;
+        if (bt.isNullOrNil(((com.tencent.mm.plugin.wenote.model.a.i)localObject1).content)) {
           break label414;
         }
-        Spanned localSpanned1 = com.tencent.mm.plugin.wenote.model.nativenote.a.a.ajK(((i)localObject1).content);
-        localSpanned2 = com.tencent.mm.plugin.wenote.model.nativenote.a.a.ajK(((i)localObject3).content);
-        ((i)localObject3).content = (((i)localObject3).content + "<br/>" + ((i)localObject1).content);
-        if (((i)localObject1).vwW)
+        Spanned localSpanned1 = com.tencent.mm.plugin.wenote.model.nativenote.a.a.Tc(((com.tencent.mm.plugin.wenote.model.a.i)localObject1).content);
+        localSpanned2 = com.tencent.mm.plugin.wenote.model.nativenote.a.a.Tc(((com.tencent.mm.plugin.wenote.model.a.i)localObject3).content);
+        ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).content = (((com.tencent.mm.plugin.wenote.model.a.i)localObject3).content + "<br/>" + ((com.tencent.mm.plugin.wenote.model.a.i)localObject1).content);
+        if (((com.tencent.mm.plugin.wenote.model.a.i)localObject1).omv)
         {
-          ((i)localObject3).vwW = true;
-          ((i)localObject3).vxc = false;
-          if ((((i)localObject1).vwY == -1) || (((i)localObject1).vwY >= localSpanned1.length()))
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).omv = true;
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).omB = false;
+          if ((((com.tencent.mm.plugin.wenote.model.a.i)localObject1).omx == -1) || (((com.tencent.mm.plugin.wenote.model.a.i)localObject1).omx >= localSpanned1.length()))
           {
-            ((i)localObject3).vwY = -1;
-            ab.i("MicroMsg.Note.NoteDataManager", "checkMergeTextDataItem remove position: %d", new Object[] { Integer.valueOf(paramInt2) });
-            Lk(paramInt2);
+            ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).omx = -1;
+            ad.i("MicroMsg.Note.NoteDataManager", "checkMergeTextDataItem remove position: %d", new Object[] { Integer.valueOf(paramInt2) });
+            Ab(paramInt2);
             i = paramInt1;
-            if (this.vyd == null) {
+            if (this.BDR == null) {
               break label492;
             }
-            this.vyd.Le(paramInt2);
+            this.BDR.zX(paramInt2);
             i = paramInt1;
             break label492;
           }
           i = localSpanned2.length();
-          ((i)localObject1).vwY += i + 1;
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject1).omx += i + 1;
           continue;
         }
-        if (!((i)localObject3).vwW) {
+        if (!((com.tencent.mm.plugin.wenote.model.a.i)localObject3).omv) {
           continue;
         }
       }
       finally
       {
-        AppMethodBeat.o(26749);
+        AppMethodBeat.o(30442);
       }
-      if (((i)localObject3).vwY == -1)
+      if (((com.tencent.mm.plugin.wenote.model.a.i)localObject3).omx == -1)
       {
-        ((i)localObject3).vwY = localSpanned2.length();
+        ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).omx = localSpanned2.length();
         continue;
         label414:
-        if (localObject2.vwW)
+        if (localObject2.omv)
         {
-          ((i)localObject3).vwW = true;
-          ((i)localObject3).vxc = false;
-          ((i)localObject3).vwY = -1;
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).omv = true;
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).omB = false;
+          ((com.tencent.mm.plugin.wenote.model.a.i)localObject3).omx = -1;
           continue;
           label443:
-          if ((paramInt1 != -1) && (this.vyd != null)) {
-            this.vyd.gT(paramInt1, this.iVH.size() - paramInt1);
+          if ((paramInt1 != -1) && (this.BDR != null)) {
+            this.BDR.eW(paramInt1, this.hIH.size() - paramInt1);
           }
-          dix();
-          AppMethodBeat.o(26749);
+          bSA();
+          AppMethodBeat.o(30442);
           return;
           label487:
           paramInt1 = -1;
@@ -1779,22 +1820,40 @@ public class c
     }
   }
   
+  public final void esJ()
+  {
+    AppMethodBeat.i(179744);
+    this.BDR = null;
+    if (this.hIH != null)
+    {
+      Iterator localIterator = this.hIH.iterator();
+      while (localIterator.hasNext())
+      {
+        com.tencent.mm.plugin.wenote.model.a.c localc = (com.tencent.mm.plugin.wenote.model.a.c)localIterator.next();
+        localc.BDz = null;
+        localc.BDx = null;
+        localc.BDy = null;
+      }
+    }
+    AppMethodBeat.o(179744);
+  }
+  
   public final int size()
   {
-    AppMethodBeat.i(26718);
-    if (this.iVH != null)
+    AppMethodBeat.i(30411);
+    if (this.hIH != null)
     {
-      int i = this.iVH.size();
-      AppMethodBeat.o(26718);
+      int i = this.hIH.size();
+      AppMethodBeat.o(30411);
       return i;
     }
-    AppMethodBeat.o(26718);
+    AppMethodBeat.o(30411);
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.c
  * JD-Core Version:    0.7.0.1
  */

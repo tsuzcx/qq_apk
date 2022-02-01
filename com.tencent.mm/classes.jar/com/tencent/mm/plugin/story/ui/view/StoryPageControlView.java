@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.story.ui.view;
 
-import a.f.b.j;
-import a.l;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMPageControlView;
+import d.g.b.k;
+import d.l;
 import java.util.Map;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/view/StoryPageControlView;", "Lcom/tencent/mm/ui/base/MMPageControlView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mPageIndicatorStatusInterface", "Lcom/tencent/mm/plugin/story/ui/view/StoryPageControlView$IPageIndicatorStatusInterface;", "generatePageControl", "", "currentIndex", "", "setPageIndicatorStatusInterface", "pageControlInterface", "IPageIndicatorStatusInterface", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/StoryPageControlView;", "Lcom/tencent/mm/ui/base/MMPageControlView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mPageIndicatorStatusInterface", "Lcom/tencent/mm/plugin/story/ui/view/StoryPageControlView$IPageIndicatorStatusInterface;", "generatePageControl", "", "currentIndex", "", "setPageIndicatorStatusInterface", "pageControlInterface", "IPageIndicatorStatusInterface", "plugin-story_release"})
 public final class StoryPageControlView
   extends MMPageControlView
 {
-  private StoryPageControlView.a sNj;
+  private a ywS;
   
   public StoryPageControlView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(110450);
-    AppMethodBeat.o(110450);
+    AppMethodBeat.i(120285);
+    AppMethodBeat.o(120285);
   }
   
-  public final void Eg(int paramInt)
+  public final void MK(int paramInt)
   {
-    AppMethodBeat.i(110449);
-    super.Eg(paramInt);
+    AppMethodBeat.i(120284);
+    super.MK(paramInt);
     int j = this.count;
     int i = 0;
     if (i < j)
     {
-      this.cuM = ((ImageView)this.map.get(Integer.valueOf(i)));
-      ImageView localImageView = this.cuM;
-      j.p(localImageView, "imageView");
+      this.djK = ((ImageView)this.map.get(Integer.valueOf(i)));
+      ImageView localImageView = this.djK;
+      k.g(localImageView, "imageView");
       if (paramInt == i) {}
       for (boolean bool = true;; bool = false)
       {
@@ -41,13 +41,16 @@ public final class StoryPageControlView
         break;
       }
     }
-    AppMethodBeat.o(110449);
+    AppMethodBeat.o(120284);
   }
   
-  public final void setPageIndicatorStatusInterface(StoryPageControlView.a parama)
+  public final void setPageIndicatorStatusInterface(a parama)
   {
-    this.sNj = parama;
+    this.ywS = parama;
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/StoryPageControlView$IPageIndicatorStatusInterface;", "", "isUnread", "", "index", "", "plugin-story_release"})
+  public static abstract interface a {}
 }
 
 

@@ -16,48 +16,48 @@ public class KindaDeviceFrameDrawLoopCallback
   
   public KindaDeviceFrameDrawLoopCallback()
   {
-    AppMethodBeat.i(144340);
+    AppMethodBeat.i(18412);
     this.choreographer = Choreographer.getInstance();
     this.frameCallback = new Choreographer.FrameCallback()
     {
       public void doFrame(long paramAnonymousLong)
       {
-        AppMethodBeat.i(144339);
+        AppMethodBeat.i(18411);
         KindaDeviceFrameDrawLoopCallback.this.onDoFrame(paramAnonymousLong);
-        AppMethodBeat.o(144339);
+        AppMethodBeat.o(18411);
       }
     };
     this.isStart = false;
-    AppMethodBeat.o(144340);
+    AppMethodBeat.o(18412);
   }
   
   public void onDoFrame(long paramLong)
   {
-    AppMethodBeat.i(144343);
+    AppMethodBeat.i(18415);
     paramLong /= 1000000L;
     this.frameDrawCallback.call(paramLong);
     if (this.isStart) {
       this.choreographer.postFrameCallback(this.frameCallback);
     }
-    AppMethodBeat.o(144343);
+    AppMethodBeat.o(18415);
   }
   
   public void startListenerImpl(VoidI64Callback paramVoidI64Callback)
   {
-    AppMethodBeat.i(144341);
+    AppMethodBeat.i(18413);
     this.isStart = true;
     this.frameDrawCallback = paramVoidI64Callback;
     this.choreographer.removeFrameCallback(this.frameCallback);
     this.choreographer.postFrameCallback(this.frameCallback);
-    AppMethodBeat.o(144341);
+    AppMethodBeat.o(18413);
   }
   
   public void stopListener()
   {
-    AppMethodBeat.i(144342);
+    AppMethodBeat.i(18414);
     this.isStart = false;
     this.choreographer.removeFrameCallback(this.frameCallback);
-    AppMethodBeat.o(144342);
+    AppMethodBeat.o(18414);
   }
 }
 

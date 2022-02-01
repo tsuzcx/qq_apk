@@ -9,10 +9,10 @@ final class i
 {
   protected final void execute()
   {
-    if (q.D(h.a(h.lX()))) {
-      h.a(h.lX(), h.ms());
+    if (q.D(h.a(h.mK()))) {
+      h.a(h.mK(), h.ne());
     }
-    d.c("MicroMsg.MMCore", "LocalNodeID=%s", new Object[] { h.a(h.lX()) });
+    d.c("MicroMsg.MMCore", "LocalNodeID=%s", new Object[] { h.a(h.mK()) });
   }
   
   protected final String getName()

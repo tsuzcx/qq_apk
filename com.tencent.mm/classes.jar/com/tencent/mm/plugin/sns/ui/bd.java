@@ -1,155 +1,224 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.e;
-import com.tencent.mm.aw.g;
-import com.tencent.mm.g.a.kh;
-import com.tencent.mm.g.a.kh.b;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.data.c;
+import com.tencent.mm.plugin.sns.data.q;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.protocal.protobuf.du;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.protocal.protobuf.yk;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public final class bd
+  extends d<p>
 {
-  Context context;
-  int cpt;
-  long jfp;
-  af rFN;
-  public View.OnClickListener rUE;
-  public View.OnClickListener scA;
-  public View.OnClickListener scB;
-  public View.OnClickListener scC;
-  public View.OnClickListener scD;
-  public View.OnClickListener scE;
-  public View.OnClickListener scF;
-  public View.OnClickListener scG;
-  public View.OnClickListener scH;
-  public View.OnClickListener scI;
-  public View.OnClickListener scJ;
-  bd.a scv;
-  public View.OnClickListener scw;
-  public View.OnClickListener scx;
-  public View.OnClickListener scy;
-  public View.OnClickListener scz;
-  p tipDialog;
+  private boolean diE;
+  List<p> list;
+  Comparator<p> wDj;
+  private boolean xEc;
+  private bc.a xEd;
+  private c xEe;
+  boolean xEg;
+  private int xjP;
+  private int xjQ;
   
-  public bd(Context paramContext, bd.a parama, int paramInt, af paramaf)
+  public bd(bc.a parama, boolean paramBoolean)
   {
-    AppMethodBeat.i(39879);
-    this.cpt = 0;
-    this.jfp = 0L;
-    this.rUE = new bd.1(this);
-    this.scw = new bd.8(this);
-    this.scx = new bd.9(this);
-    this.scy = new bd.10(this);
-    this.scz = new bd.11(this);
-    this.scA = new bd.12(this);
-    this.scB = new bd.13(this);
-    this.scC = new bd.14(this);
-    this.scD = new bd.15(this);
-    this.scE = new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(39863);
-        boolean bool = paramAnonymousView.getTag() instanceof q;
-        ab.d("MicroMsg.TimeLineClickEvent", "musicRedirectListener click ".concat(String.valueOf(bool)));
-        if (!bool)
-        {
-          AppMethodBeat.o(39863);
-          return;
-        }
-        q localq = (q)paramAnonymousView.getTag();
-        TimeLineObject localTimeLineObject = localq.rGk;
-        String str;
-        if (!bd.YC(localTimeLineObject.Id)) {
-          if ((!com.tencent.mm.r.a.bO(bd.this.context)) && (!com.tencent.mm.r.a.bM(bd.this.context)))
-          {
-            h.qsU.kvStat(10090, "1,0");
-            if (localTimeLineObject.xTS.wOa.size() > 0)
-            {
-              bcs localbcs = (bcs)localTimeLineObject.xTS.wOa.get(0);
-              if (bd.this.cpt != 0) {
-                break label261;
-              }
-              paramAnonymousView = com.tencent.mm.modelsns.b.lV(738);
-              com.tencent.mm.modelsns.b localb = paramAnonymousView.uv(localTimeLineObject.Id).uv(localTimeLineObject.jJA);
-              if (localTimeLineObject.xTR != null) {
-                break label271;
-              }
-              str = "";
-              label179:
-              localb.uv(str).uv(localbcs.Title).uv(localbcs.Desc).uv("");
-              paramAnonymousView.ake();
-            }
-            if (!localq.rGl) {
-              break label283;
-            }
-            com.tencent.mm.aw.a.a(g.a(ag.getAccPath(), localTimeLineObject, 9));
-          }
-        }
-        for (;;)
-        {
-          if (bd.this.scv != null) {
-            bd.this.scv.cva();
-          }
-          AppMethodBeat.o(39863);
-          return;
-          label261:
-          paramAnonymousView = com.tencent.mm.modelsns.b.lW(738);
-          break;
-          label271:
-          str = localTimeLineObject.xTR.Id;
-          break label179;
-          label283:
-          com.tencent.mm.aw.a.b(g.a(ag.getAccPath(), localTimeLineObject, 1));
-          continue;
-          h.qsU.kvStat(10231, "1");
-          com.tencent.mm.aw.a.aiu();
-        }
-      }
-    };
-    this.scF = new bd.3(this);
-    this.scG = new bd.4(this);
-    this.scH = new bd.5(this);
-    this.scI = new bd.6(this);
-    this.scJ = new bd.7(this);
-    this.context = paramContext;
-    this.scv = parama;
-    this.cpt = paramInt;
-    this.rFN = paramaf;
-    AppMethodBeat.o(39879);
+    AppMethodBeat.i(99068);
+    this.diE = false;
+    this.list = new ArrayList();
+    this.xjP = 0;
+    this.xjQ = 0;
+    this.xEg = false;
+    this.xEc = false;
+    this.wDj = new Comparator() {};
+    this.xEd = parama;
+    this.diE = paramBoolean;
+    AppMethodBeat.o(99068);
   }
   
-  protected static boolean YC(String paramString)
+  public final List<p> VZ()
   {
-    AppMethodBeat.i(39880);
-    Object localObject = new kh();
-    ((kh)localObject).czU.action = -2;
-    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-    localObject = ((kh)localObject).czV.czW;
-    if ((localObject != null) && (com.tencent.mm.aw.a.d((e)localObject)) && (paramString.equals(((e)localObject).fKj)) && (com.tencent.mm.aw.a.aiw()))
+    AppMethodBeat.i(99072);
+    List localList = aj.iE(q.su(aj.wET), q.su(aj.wEU));
+    ad.i("MicroMsg.SnsSelfAdapterSearchHelper", "loadData thread: %d count: %d", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(localList.size()) });
+    AppMethodBeat.o(99072);
+    return localList;
+  }
+  
+  public final void ac(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(99069);
+    this.xEc = paramBoolean1;
+    lQ(paramBoolean2);
+    AppMethodBeat.o(99069);
+  }
+  
+  final void f(boolean paramBoolean, List<p> paramList)
+  {
+    AppMethodBeat.i(187720);
+    this.xEe = new c();
+    HashMap localHashMap1 = new HashMap();
+    HashMap localHashMap2 = new HashMap();
+    HashMap localHashMap3 = new HashMap();
+    long l = System.currentTimeMillis();
+    int j = 0;
+    int i1 = 0;
+    p localp;
+    if ((paramBoolean) && (this.diE))
     {
-      AppMethodBeat.o(39880);
-      return true;
+      localp = new p((byte)0);
+      localp.field_snsId = 0L;
+      localp.xiB = -1;
+      localp.setCreateTime((int)(System.currentTimeMillis() / 1000L));
+      paramList.add(0, localp);
     }
-    AppMethodBeat.o(39880);
-    return false;
+    int i3 = paramList.size();
+    ad.d("MicroMsg.SnsSelfAdapterSearchHelper", "initFixType ".concat(String.valueOf(i3)));
+    int n = 0;
+    int m = 0;
+    if (n < i3)
+    {
+      this.xEe.drT();
+      TimeLineObject localTimeLineObject;
+      label264:
+      label376:
+      int i;
+      label477:
+      label489:
+      int i2;
+      if (n + 1 < i3)
+      {
+        localp = (p)paramList.get(n + 1);
+        this.xEe.wAh = localp.field_head;
+        localTimeLineObject = localp.dxy();
+        this.xEe.wAl = localTimeLineObject.Etj;
+        this.xEe.wAi = aj.ap(localp.field_localPrivate, this.diE);
+        this.xEe.wAj = localp.field_type;
+        if (localTimeLineObject.Etm != null) {
+          this.xEe.wAk = localTimeLineObject.Etm.DaC.size();
+        }
+      }
+      else
+      {
+        if (n + 2 < i3)
+        {
+          localp = (p)paramList.get(n + 2);
+          this.xEe.wAr = localp.field_head;
+          localTimeLineObject = localp.dxy();
+          this.xEe.wAm = localTimeLineObject.Etj;
+          this.xEe.wAs = aj.ap(localp.field_localPrivate, this.diE);
+          this.xEe.wAt = localp.field_type;
+          if (localTimeLineObject.Etm == null) {
+            break label600;
+          }
+          this.xEe.wAu = localTimeLineObject.Etm.DaC.size();
+        }
+        localp = (p)paramList.get(n);
+        this.xEe.wAg = localp.field_head;
+        localTimeLineObject = localp.dxy();
+        this.xEe.wAn = localTimeLineObject.Etj;
+        this.xEe.wAo = localp.field_type;
+        this.xEe.wAq = aj.ap(localp.field_localPrivate, this.diE);
+        if (localTimeLineObject.Etm == null) {
+          break label611;
+        }
+        this.xEe.wAp = localTimeLineObject.Etm.DaC.size();
+        if (!this.xEe.drU()) {
+          break label622;
+        }
+        i = 1;
+        localHashMap1.put(Integer.valueOf(m), Integer.valueOf(j));
+        localHashMap2.put(Integer.valueOf(m), Integer.valueOf(i));
+        i2 = j + i;
+        localHashMap3.put(Integer.valueOf(m), Integer.valueOf(i1));
+        if ((!this.diE) || (n != 0)) {
+          break label642;
+        }
+        j = 0;
+      }
+      for (;;)
+      {
+        i1 += j;
+        n = i + n;
+        m += 1;
+        j = i2;
+        break;
+        this.xEe.wAk = 0;
+        break label264;
+        label600:
+        this.xEe.wAu = 0;
+        break label376;
+        label611:
+        this.xEe.wAp = 0;
+        break label477;
+        label622:
+        if (this.xEe.drV())
+        {
+          i = 2;
+          break label489;
+        }
+        i = 3;
+        break label489;
+        label642:
+        int k = 0;
+        j = k;
+        if (i > 0)
+        {
+          j = k;
+          if (this.xEe.wAo == 1) {
+            j = 1;
+          }
+        }
+        k = j;
+        if (i >= 2)
+        {
+          k = j;
+          if (this.xEe.wAj == 1) {
+            k = j + 1;
+          }
+        }
+        j = k;
+        if (i >= 3)
+        {
+          j = k;
+          if (this.xEe.wAt == 1) {
+            j = k + 1;
+          }
+        }
+      }
+    }
+    this.xjP = m;
+    this.xjQ = paramList.size();
+    ad.d("MicroMsg.SnsSelfAdapterSearchHelper", "icount " + this.xjP);
+    this.list = paramList;
+    q.be("SnsphotoAdapter initFixType ", l);
+    this.xEd.b(this.list, localHashMap1, localHashMap2, localHashMap3, this.xjQ, this.xjP);
+    AppMethodBeat.o(187720);
+  }
+  
+  public final void fB(List<p> paramList)
+  {
+    AppMethodBeat.i(99071);
+    if (this.xEd != null)
+    {
+      if (paramList != null) {
+        f(this.xEg, paramList);
+      }
+      this.xEd.dBL();
+    }
+    AppMethodBeat.o(99071);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.bd
  * JD-Core Version:    0.7.0.1
  */

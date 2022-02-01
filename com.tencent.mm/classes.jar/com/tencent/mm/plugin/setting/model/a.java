@@ -1,23 +1,29 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ao;
+import com.tencent.mm.model.bn.a;
+import com.tencent.mm.network.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class a
 {
-  public static a.a qEA;
-  private static a qEB;
-  public boolean fQi = false;
+  public static a wcR;
+  private static a wcS;
+  public boolean hsM = false;
   
-  public static long Gm(String paramString)
+  public static long On(String paramString)
   {
-    AppMethodBeat.i(126839);
+    AppMethodBeat.i(73761);
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-    long l1 = bo.aoy();
+    long l1 = bt.eGO();
     try
     {
       long l2 = localSimpleDateFormat.parse(paramString).getTime();
@@ -27,27 +33,32 @@ public final class a
     {
       for (;;)
       {
-        ab.e("MicroMsg.FixToolsUplogModel", "dateToTimeStamp failed. date:%s, stack:%s", new Object[] { paramString, bo.dtY() });
+        ad.e("MicroMsg.FixToolsUplogModel", "dateToTimeStamp failed. date:%s, stack:%s", new Object[] { paramString, bt.eGN() });
       }
     }
-    AppMethodBeat.o(126839);
+    AppMethodBeat.o(73761);
     return l1;
   }
   
-  public static a cjQ()
+  public static a dny()
   {
-    AppMethodBeat.i(126838);
-    if (qEB == null) {
-      qEB = new a();
+    AppMethodBeat.i(73760);
+    if (wcS == null) {
+      wcS = new a();
     }
-    a locala = qEB;
-    AppMethodBeat.o(126838);
+    a locala = wcS;
+    AppMethodBeat.o(73760);
     return locala;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void Lx(int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.a
  * JD-Core Version:    0.7.0.1
  */

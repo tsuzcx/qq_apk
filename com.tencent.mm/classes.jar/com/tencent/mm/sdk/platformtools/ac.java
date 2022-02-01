@@ -1,60 +1,383 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.util.Base64;
-import com.tencent.mm.a.l;
-import java.io.UnsupportedEncodingException;
-import java.util.regex.Pattern;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.os.LocaleList;
+import android.util.DisplayMetrics;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Locale;
 
 public final class ac
 {
-  private static final Pattern yny;
-  private byte[] key;
-  public final bl ynA;
-  private final ae<String, String> ynz = new ae(256);
+  public static Locale EUl;
   
   static
   {
-    char c = (char)("⍆[0-9]+@".charAt(0) ^ 0xDCBA);
-    yny = Pattern.compile(c + "⍆[0-9]+@".substring(1));
-  }
-  
-  public ac(String paramString)
-  {
-    try
+    AppMethodBeat.i(125269);
+    if (Build.VERSION.SDK_INT < 24) {}
+    for (EUl = Locale.getDefault();; EUl = LocaleList.getDefault().get(0))
     {
-      this.key = paramString.getBytes("UTF-8");
-      this.ynA = new bl(paramString);
+      Locale.setDefault(EUl);
+      AppMethodBeat.o(125269);
       return;
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+  }
+  
+  public static void a(Context paramContext, Locale paramLocale)
+  {
+    AppMethodBeat.i(125257);
+    try
     {
-      for (;;)
-      {
-        this.key = paramString.getBytes();
-      }
+      paramContext = paramContext.getResources();
+      Configuration localConfiguration = paramContext.getConfiguration();
+      DisplayMetrics localDisplayMetrics = paramContext.getDisplayMetrics();
+      localConfiguration.locale = paramLocale;
+      paramContext.updateConfiguration(localConfiguration, localDisplayMetrics);
+      Resources.getSystem().updateConfiguration(localConfiguration, localDisplayMetrics);
+      AppMethodBeat.o(125257);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      ad.printErrStackTrace("MicroMsg.LocaleUtil", paramContext, "updateApplicationResourceLocale err~~~", new Object[0]);
+      AppMethodBeat.o(125257);
     }
   }
   
-  public final String et(String paramString, int paramInt)
+  public static Locale aFt(String paramString)
   {
-    String str = paramString.substring(0, paramInt);
-    if (this.ynz.aa(str)) {
-      return (String)this.ynz.get(str);
-    }
-    paramInt = paramString.indexOf('@', 1);
-    int i = paramInt + 1;
-    paramString = paramString.substring(i, Integer.parseInt(paramString.substring(1, paramInt)) + i);
-    try
+    AppMethodBeat.i(125259);
+    if (paramString.equals("zh_TW"))
     {
-      paramString = new String(l.c(Base64.decode(paramString, 0), this.key), "UTF-8");
-      this.ynz.put(str, paramString);
+      paramString = Locale.TAIWAN;
+      AppMethodBeat.o(125259);
       return paramString;
     }
-    catch (Exception paramString)
+    if (paramString.equals("zh_HK"))
     {
-      ab.printErrStackTrace("MicroMsg.LogDecryptor", paramString, "", new Object[0]);
+      paramString = new Locale("zh", "HK");
+      AppMethodBeat.o(125259);
+      return paramString;
     }
-    return "[TD]".concat(String.valueOf(str));
+    if (paramString.equals("en"))
+    {
+      paramString = Locale.ENGLISH;
+      AppMethodBeat.o(125259);
+      return paramString;
+    }
+    if (paramString.equals("zh_CN"))
+    {
+      paramString = Locale.CHINA;
+      AppMethodBeat.o(125259);
+      return paramString;
+    }
+    if ((paramString.equalsIgnoreCase("th")) || (paramString.equalsIgnoreCase("id")) || (paramString.equalsIgnoreCase("in")) || (paramString.equalsIgnoreCase("vi")) || (paramString.equalsIgnoreCase("pt")) || (paramString.equalsIgnoreCase("es")) || (paramString.equalsIgnoreCase("ru")) || (paramString.equalsIgnoreCase("ar")) || (paramString.equalsIgnoreCase("ja")) || (paramString.equalsIgnoreCase("it")) || (paramString.equalsIgnoreCase("ko")) || (paramString.equalsIgnoreCase("ms")) || (paramString.equalsIgnoreCase("tr")) || (paramString.equalsIgnoreCase("de")) || (paramString.equalsIgnoreCase("fr")) || (paramString.equalsIgnoreCase("my")) || (paramString.equalsIgnoreCase("lo")))
+    {
+      paramString = new Locale(paramString);
+      AppMethodBeat.o(125259);
+      return paramString;
+    }
+    ad.e("MicroMsg.LocaleUtil", "transLanguageToLocale country = ".concat(String.valueOf(paramString)));
+    paramString = Locale.ENGLISH;
+    AppMethodBeat.o(125259);
+    return paramString;
+  }
+  
+  private static String aFu(String paramString)
+  {
+    AppMethodBeat.i(125261);
+    String str1 = Locale.getDefault().getLanguage().trim();
+    String str2 = str1 + "_" + Locale.getDefault().getCountry().trim();
+    if (str1.equals("en"))
+    {
+      AppMethodBeat.o(125261);
+      return str1;
+    }
+    if (str2.equals("zh_TW"))
+    {
+      AppMethodBeat.o(125261);
+      return "zh_TW";
+    }
+    if (str2.equals("zh_HK"))
+    {
+      AppMethodBeat.o(125261);
+      return "zh_HK";
+    }
+    if (str2.equals("zh_CN"))
+    {
+      AppMethodBeat.o(125261);
+      return "zh_CN";
+    }
+    if (str1.equals("th"))
+    {
+      AppMethodBeat.o(125261);
+      return "th";
+    }
+    if (str1.equals("id"))
+    {
+      AppMethodBeat.o(125261);
+      return "id";
+    }
+    if (str1.equals("in"))
+    {
+      AppMethodBeat.o(125261);
+      return "id";
+    }
+    if (str1.equals("vi"))
+    {
+      AppMethodBeat.o(125261);
+      return "vi";
+    }
+    if (str1.equals("pt"))
+    {
+      AppMethodBeat.o(125261);
+      return "pt";
+    }
+    if (str1.equals("es"))
+    {
+      AppMethodBeat.o(125261);
+      return "es";
+    }
+    if (str1.equals("ru"))
+    {
+      AppMethodBeat.o(125261);
+      return "ru";
+    }
+    if (str1.equals("ar"))
+    {
+      AppMethodBeat.o(125261);
+      return "ar";
+    }
+    if (str1.equals("ja"))
+    {
+      AppMethodBeat.o(125261);
+      return "ja";
+    }
+    if (str1.equals("it"))
+    {
+      AppMethodBeat.o(125261);
+      return "it";
+    }
+    if (str1.equals("ko"))
+    {
+      AppMethodBeat.o(125261);
+      return "ko";
+    }
+    if (str1.equals("ms"))
+    {
+      AppMethodBeat.o(125261);
+      return "ms";
+    }
+    if (str1.equals("tr"))
+    {
+      AppMethodBeat.o(125261);
+      return "tr";
+    }
+    if (str1.equals("de"))
+    {
+      AppMethodBeat.o(125261);
+      return "de";
+    }
+    if (str1.equals("fr"))
+    {
+      AppMethodBeat.o(125261);
+      return "fr";
+    }
+    if (str1.equals("my"))
+    {
+      AppMethodBeat.o(125261);
+      return "my";
+    }
+    if (str1.equals("lo"))
+    {
+      AppMethodBeat.o(125261);
+      return "lo";
+    }
+    AppMethodBeat.o(125261);
+    return paramString;
+  }
+  
+  public static void c(SharedPreferences paramSharedPreferences, String paramString)
+  {
+    AppMethodBeat.i(125265);
+    if (paramSharedPreferences.edit().putString("language_key", paramString).commit())
+    {
+      bp.setProperty("language_key", paramString);
+      ad.w("MicroMsg.LocaleUtil", "save application lang as:".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(125265);
+      return;
+    }
+    ad.e("MicroMsg.LocaleUtil", "saving application lang failed");
+    AppMethodBeat.o(125265);
+  }
+  
+  public static String d(Locale paramLocale)
+  {
+    AppMethodBeat.i(125258);
+    String str = paramLocale.getLanguage();
+    if (str.equals("zh"))
+    {
+      paramLocale = str + "_" + paramLocale.getCountry().toUpperCase();
+      AppMethodBeat.o(125258);
+      return paramLocale;
+    }
+    AppMethodBeat.o(125258);
+    return str;
+  }
+  
+  public static boolean eFq()
+  {
+    AppMethodBeat.i(125254);
+    String str = eFu();
+    if ((str.equals("zh_CN")) || (str.equals("zh_TW")) || (str.equals("zh_HK")))
+    {
+      AppMethodBeat.o(125254);
+      return true;
+    }
+    AppMethodBeat.o(125254);
+    return false;
+  }
+  
+  public static boolean eFr()
+  {
+    AppMethodBeat.i(125255);
+    if (eFu().equals("zh_CN"))
+    {
+      AppMethodBeat.o(125255);
+      return true;
+    }
+    AppMethodBeat.o(125255);
+    return false;
+  }
+  
+  public static boolean eFs()
+  {
+    AppMethodBeat.i(125256);
+    if ((eFu().equals("zh_TW")) || (eFu().equals("zh_HK")))
+    {
+      AppMethodBeat.o(125256);
+      return true;
+    }
+    AppMethodBeat.o(125256);
+    return false;
+  }
+  
+  public static String eFt()
+  {
+    AppMethodBeat.i(125260);
+    String str = Locale.getDefault().getCountry().trim();
+    AppMethodBeat.o(125260);
+    return str;
+  }
+  
+  public static String eFu()
+  {
+    AppMethodBeat.i(125262);
+    String str = bt.nullAsNil(bp.getProperty("language_key"));
+    if ((str.length() > 0) && (!str.equals("language_default")))
+    {
+      AppMethodBeat.o(125262);
+      return str;
+    }
+    str = aFu("en");
+    AppMethodBeat.o(125262);
+    return str;
+  }
+  
+  public static String f(SharedPreferences paramSharedPreferences)
+  {
+    AppMethodBeat.i(125263);
+    paramSharedPreferences = bt.nullAsNil(paramSharedPreferences.getString("language_key", null));
+    if ((paramSharedPreferences.length() > 0) && (!paramSharedPreferences.equals("language_default")))
+    {
+      bp.setProperty("language_key", paramSharedPreferences);
+      AppMethodBeat.o(125263);
+      return paramSharedPreferences;
+    }
+    paramSharedPreferences = aFu("en");
+    bp.setProperty("language_key", paramSharedPreferences);
+    AppMethodBeat.o(125263);
+    return paramSharedPreferences;
+  }
+  
+  public static String g(SharedPreferences paramSharedPreferences)
+  {
+    AppMethodBeat.i(125264);
+    paramSharedPreferences = bt.nullAsNil(paramSharedPreferences.getString("language_key", null));
+    if (!bt.isNullOrNil(paramSharedPreferences))
+    {
+      AppMethodBeat.o(125264);
+      return paramSharedPreferences;
+    }
+    AppMethodBeat.o(125264);
+    return "language_default";
+  }
+  
+  public static Locale initLanguage(Context paramContext)
+  {
+    AppMethodBeat.i(125268);
+    Object localObject = f(paramContext.getSharedPreferences(aj.eFD(), 0));
+    if (((String)localObject).equals("language_default"))
+    {
+      a(paramContext, Locale.ENGLISH);
+      paramContext = Locale.getDefault();
+      AppMethodBeat.o(125268);
+      return paramContext;
+    }
+    localObject = aFt((String)localObject);
+    a(paramContext, (Locale)localObject);
+    AppMethodBeat.o(125268);
+    return localObject;
+  }
+  
+  public static String ir(Context paramContext)
+  {
+    AppMethodBeat.i(125266);
+    paramContext = g(paramContext.getSharedPreferences(aj.eFD(), 0));
+    String str = eFu();
+    if (paramContext.equalsIgnoreCase("language_default")) {
+      paramContext = str;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(125266);
+      return paramContext;
+    }
+  }
+  
+  public static String is(Context paramContext)
+  {
+    AppMethodBeat.i(125267);
+    String[] arrayOfString1 = paramContext.getResources().getStringArray(2130903056);
+    String str = g(paramContext.getSharedPreferences(aj.eFD(), 0));
+    if (str == null)
+    {
+      paramContext = paramContext.getString(2131755800);
+      AppMethodBeat.o(125267);
+      return paramContext;
+    }
+    String[] arrayOfString2 = ab.whf;
+    int k = arrayOfString2.length;
+    int j = 0;
+    int i = 0;
+    while (j < k)
+    {
+      if (arrayOfString2[j].equals(str))
+      {
+        paramContext = arrayOfString1[i];
+        AppMethodBeat.o(125267);
+        return paramContext;
+      }
+      j += 1;
+      i += 1;
+    }
+    paramContext = paramContext.getString(2131755800);
+    AppMethodBeat.o(125267);
+    return paramContext;
   }
 }
 

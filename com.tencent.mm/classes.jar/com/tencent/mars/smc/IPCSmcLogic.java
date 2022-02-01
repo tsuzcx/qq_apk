@@ -14,22 +14,22 @@ public class IPCSmcLogic
       localArrayList.add(new IDKey(paramArrayOfInt1[i], paramArrayOfInt2[i], paramArrayOfInt3[i]));
       i += 1;
     }
-    e.qrI.b(localArrayList, paramBoolean);
+    e.vIY.b(localArrayList, paramBoolean);
   }
   
   private static void reportIDKey(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
   {
-    e.qrI.idkeyStat(paramLong1, paramLong2, paramLong3, paramBoolean);
+    e.vIY.idkeyStat(paramLong1, paramLong2, paramLong3, paramBoolean);
   }
   
   private static void reportKV(long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    e.qrI.a((int)paramLong, paramString, paramBoolean2, paramBoolean1);
+    e.vIY.a((int)paramLong, paramString, paramBoolean2, paramBoolean1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mars.smc.IPCSmcLogic
  * JD-Core Version:    0.7.0.1
  */

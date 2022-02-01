@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.multitalk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.multitalk.model.p;
-import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public m createApplication()
   {
     return null;
   }
   
-  public at createSubCore()
+  public aw createSubCore()
   {
-    AppMethodBeat.i(53878);
+    AppMethodBeat.i(114407);
     p localp = new p();
-    AppMethodBeat.o(53878);
+    AppMethodBeat.o(114407);
     return localp;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.Plugin
  * JD-Core Version:    0.7.0.1
  */

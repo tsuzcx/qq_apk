@@ -12,11 +12,11 @@ final class SnsAlbumUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(39987);
-    if (this.seK.getActivity() != null) {
-      this.seK.getActivity().finish();
+    AppMethodBeat.i(99877);
+    if (this.xNS.getActivity() != null) {
+      this.xNS.getActivity().finish();
     }
-    AppMethodBeat.o(39987);
+    AppMethodBeat.o(99877);
     return true;
   }
 }

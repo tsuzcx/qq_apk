@@ -1,83 +1,48 @@
 package kotlinx.coroutines;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.CancellationException;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/JobCancellationException;", "Ljava/util/concurrent/CancellationException;", "Lkotlinx/coroutines/CancellationException;", "message", "", "cause", "", "job", "Lkotlinx/coroutines/Job;", "(Ljava/lang/String;Ljava/lang/Throwable;Lkotlinx/coroutines/Job;)V", "equals", "", "other", "", "fillInStackTrace", "hashCode", "", "toString", "kotlinx-coroutines-core"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/InactiveNodeList;", "Lkotlinx/coroutines/Incomplete;", "list", "Lkotlinx/coroutines/NodeList;", "(Lkotlinx/coroutines/NodeList;)V", "isActive", "", "()Z", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"})
 public final class bd
-  extends CancellationException
+  implements be
 {
-  public final bc CIm;
+  final bs Ken;
   
-  public bd(String paramString, Throwable paramThrowable, bc parambc)
+  public bd(bs parambs)
   {
-    super(paramString);
-    AppMethodBeat.i(118468);
-    this.CIm = parambc;
-    if (paramThrowable != null) {
-      initCause(paramThrowable);
-    }
-    AppMethodBeat.o(118468);
+    AppMethodBeat.i(118136);
+    this.Ken = parambs;
+    AppMethodBeat.o(118136);
   }
   
-  public final boolean equals(Object paramObject)
+  public final bs fLh()
   {
-    AppMethodBeat.i(118466);
-    if ((paramObject == (bd)this) || (((paramObject instanceof bd)) && (j.e(((bd)paramObject).getMessage(), getMessage())) && (j.e(((bd)paramObject).CIm, this.CIm)) && (j.e(((bd)paramObject).getCause(), getCause()))))
-    {
-      AppMethodBeat.o(118466);
-      return true;
-    }
-    AppMethodBeat.o(118466);
+    return this.Ken;
+  }
+  
+  public final boolean isActive()
+  {
     return false;
-  }
-  
-  public final Throwable fillInStackTrace()
-  {
-    AppMethodBeat.i(118464);
-    if (af.epy())
-    {
-      localThrowable = super.fillInStackTrace();
-      j.p(localThrowable, "super.fillInStackTrace()");
-      AppMethodBeat.o(118464);
-      return localThrowable;
-    }
-    Throwable localThrowable = (Throwable)this;
-    AppMethodBeat.o(118464);
-    return localThrowable;
-  }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(118467);
-    Object localObject = getMessage();
-    if (localObject == null) {
-      j.ebi();
-    }
-    int j = ((String)localObject).hashCode();
-    int k = this.CIm.hashCode();
-    localObject = getCause();
-    if (localObject != null) {}
-    for (int i = ((Throwable)localObject).hashCode();; i = 0)
-    {
-      AppMethodBeat.o(118467);
-      return i + (j * 31 + k) * 31;
-    }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(118465);
-    String str = super.toString() + "; job=" + this.CIm;
-    AppMethodBeat.o(118465);
+    AppMethodBeat.i(118135);
+    if (ah.getDEBUG())
+    {
+      str = this.Ken.getString("New");
+      AppMethodBeat.o(118135);
+      return str;
+    }
+    String str = super.toString();
+    AppMethodBeat.o(118135);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.bd
  * JD-Core Version:    0.7.0.1
  */

@@ -13,11 +13,11 @@ final class c
   public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
     float f2 = 0.0F;
-    if (DetailImgUI.a(this.aga).getDrawable() == null) {
+    if (DetailImgUI.a(this.ajC).getDrawable() == null) {
       return false;
     }
-    paramFloat1 = DetailImgUI.a(this.aga).getScrollX() + paramFloat1;
-    float f1 = DetailImgUI.a(this.aga).getDrawable().getIntrinsicWidth() * DetailImgUI.a(this.aga).np() - MMActivity.nc();
+    paramFloat1 = DetailImgUI.a(this.ajC).getScrollX() + paramFloat1;
+    float f1 = DetailImgUI.a(this.ajC).getDrawable().getIntrinsicWidth() * DetailImgUI.a(this.ajC).oc() - MMActivity.nP();
     if (f1 > 0.0F)
     {
       if (paramFloat1 <= f1) {
@@ -33,8 +33,8 @@ final class c
       if (paramFloat1 < 0.0F) {
         f1 = 0.0F;
       }
-      paramFloat2 = DetailImgUI.a(this.aga).getScrollY() + paramFloat2;
-      float f3 = DetailImgUI.a(this.aga).getDrawable().getIntrinsicHeight() * DetailImgUI.a(this.aga).np() - MMActivity.nb();
+      paramFloat2 = DetailImgUI.a(this.ajC).getScrollY() + paramFloat2;
+      float f3 = DetailImgUI.a(this.ajC).getDrawable().getIntrinsicHeight() * DetailImgUI.a(this.ajC).oc() - MMActivity.nO();
       paramFloat1 = f2;
       if (f3 > 0.0F) {
         if (paramFloat2 <= f3) {
@@ -48,7 +48,7 @@ final class c
         }
         for (;;)
         {
-          DetailImgUI.a(this.aga).scrollTo((int)f1, (int)paramFloat1);
+          DetailImgUI.a(this.ajC).scrollTo((int)f1, (int)paramFloat1);
           return true;
         }
       }
@@ -57,7 +57,7 @@ final class c
   
   public final boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
-    this.aga.finish();
+    this.ajC.finish();
     return true;
   }
 }

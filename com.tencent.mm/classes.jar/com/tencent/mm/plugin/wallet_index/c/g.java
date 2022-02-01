@@ -1,80 +1,84 @@
 package com.tencent.mm.plugin.wallet_index.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
 import com.tencent.mm.network.q;
 import com.tencent.mm.opensdk.modelpay.PayReq;
-import com.tencent.mm.plugin.wallet_core.model.m;
-import com.tencent.mm.protocal.protobuf.bkp;
-import com.tencent.mm.protocal.protobuf.bkq;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.i;
-import com.tencent.mm.wallet_core.c.u;
+import com.tencent.mm.plugin.wallet_core.model.k;
+import com.tencent.mm.protocal.protobuf.byp;
+import com.tencent.mm.protocal.protobuf.byq;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.wallet_core.c.j;
+import com.tencent.mm.wallet_core.c.w;
 
-public final class g
-  extends u
-  implements i
+public class g
+  extends w
+  implements j
 {
-  private f callback;
+  private com.tencent.mm.al.g callback;
   public b rr;
   
   public g(PayReq paramPayReq, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(48187);
+    AppMethodBeat.i(71822);
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new bkp();
-    ((b.a)localObject).fsY = new bkq();
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/payauthapp";
+    ((b.a)localObject).gUU = new byp();
+    ((b.a)localObject).gUV = new byq();
+    ((b.a)localObject).uri = getUri();
     ((b.a)localObject).funcId = getType();
     ((b.a)localObject).reqCmdId = 188;
     ((b.a)localObject).respCmdId = 1000000188;
-    ((b.a)localObject).routeInfo = com.tencent.mm.wallet_core.ui.e.awk(paramPayReq.prepayId);
-    this.rr = ((b.a)localObject).ado();
-    localObject = (bkp)this.rr.fsV.fta;
-    ((bkp)localObject).fKw = paramPayReq.appId;
-    ((bkp)localObject).xzm = paramPayReq.partnerId;
-    ((bkp)localObject).wXQ = paramPayReq.prepayId;
-    ((bkp)localObject).wKV = paramPayReq.nonceStr;
-    ((bkp)localObject).xzn = paramPayReq.timeStamp;
-    ((bkp)localObject).wKW = paramPayReq.packageValue;
-    ((bkp)localObject).wKX = paramPayReq.sign;
-    ((bkp)localObject).wKY = paramPayReq.signType;
-    ((bkp)localObject).xzo = paramString1;
-    ((bkp)localObject).nqc = paramString2;
-    ((bkp)localObject).ntp = paramString3;
-    ((bkp)localObject).wDH = m.cTC();
-    ((bkp)localObject).xzq = paramString4;
-    AppMethodBeat.o(48187);
+    ((b.a)localObject).routeInfo = com.tencent.mm.wallet_core.ui.e.aNn(paramPayReq.prepayId);
+    this.rr = ((b.a)localObject).atI();
+    localObject = (byp)this.rr.gUS.gUX;
+    ((byp)localObject).hnC = paramPayReq.appId;
+    ((byp)localObject).DVt = paramPayReq.partnerId;
+    ((byp)localObject).DoP = paramPayReq.prepayId;
+    ((byp)localObject).CXk = paramPayReq.nonceStr;
+    ((byp)localObject).DVu = paramPayReq.timeStamp;
+    ((byp)localObject).CXl = paramPayReq.packageValue;
+    ((byp)localObject).CXm = paramPayReq.sign;
+    ((byp)localObject).CXn = paramPayReq.signType;
+    ((byp)localObject).DVv = paramString1;
+    ((byp)localObject).rZy = paramString2;
+    ((byp)localObject).scR = paramString3;
+    ((byp)localObject).CPi = k.ebS();
+    ((byp)localObject).DVx = paramString4;
+    AppMethodBeat.o(71822);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(48188);
-    this.callback = paramf;
+    AppMethodBeat.i(71823);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(48188);
+    AppMethodBeat.o(71823);
     return i;
   }
   
-  public final int getType()
+  public int getType()
   {
     return 397;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  public String getUri()
   {
-    AppMethodBeat.i(142581);
-    ab.d("MicroMsg.NetScenePayAuthApp", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    return "/cgi-bin/mmpay-bin/payauthapp";
+  }
+  
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  {
+    AppMethodBeat.i(71824);
+    ad.d("MicroMsg.NetScenePayAuthApp", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(142581);
+    AppMethodBeat.o(71824);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.c.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/jp" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:scaleType="fitCenter" android:layout_alignParentStart="true" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_centerVertical="true" android:layout_toEndOf="@id/jp">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:ellipsize="end" android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip" android:lines="1" />
-        <TextView android:textSize="@dimen/na" android:textColor="#4c000000" android:id="@id/sz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" />
-    </LinearLayout>
-    <ImageView android:id="@id/t0" android:visibility="gone" android:layout_width="15.0dip" android:layout_height="12.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/ay6" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <ImageView android:layout_width="fill_parent" android:layout_height="@dimen/ut" android:src="#ffe5e5e5" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <EditText android:textColorHint="@color/d9" android:id="@id/lj" android:background="@drawable/bx" android:paddingLeft="@dimen/jn" android:layout_width="fill_parent" android:layout_height="@dimen/or" android:hint="@string/jb" android:drawableLeft="@raw/app_brand_desktop_search_icon" android:drawablePadding="@dimen/d" android:textCursorDrawable="@drawable/x5" style="@style/lp" />
+</LinearLayout>

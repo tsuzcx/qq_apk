@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="@string/e_7" />
-    <CheckBoxPreference android:title="@string/vd" android:key="settings_find_me_by_weixin" />
-    <CheckBoxPreference android:title="@string/s9" android:key="settings_find_me_by_mobile" />
-    <CheckBoxPreference android:title="@string/tp" android:key="settings_find_me_by_QQ" />
-    <CheckBoxPreference android:title="@string/rm" android:key="settings_find_me_by_google" />
-    <Preference android:title="@string/ee7" android:layout="@layout/ah7" />
-    <PreferenceTitleCategory android:title="@string/e_6" android:key="settings_friend_verify" />
-    <CheckBoxPreference android:title="@string/e9l" android:key="settings_add_me_by_chatroom" />
-    <CheckBoxPreference android:title="@string/e9n" android:key="settings_add_me_by_qrcode" />
-    <CheckBoxPreference android:title="@string/e9m" android:key="settings_add_me_by_namecard" />
+    <Preference android:key="settings_room_size" android:layout="@layout/aop" android:title="@string/f_k" />
+    <Preference android:key="room_right_max_tip" android:layout="@layout/aqa" android:title="@string/erq" />
+    <PreferenceCategory />
+    <com.tencent.mm.chatroom.ui.RoomGrantPreference android:key="settings_room_grant" android:layout="@layout/aop" android:title="@string/f_h" />
+    <PreferenceCategory />
+    <Preference android:key="room_grant_to_friend" android:layout="@layout/ae7" android:title="@string/erm" />
+    <PreferenceCategory />
+    <Preference android:key="room_right_grant_tip" android:layout="@layout/aqa" android:title="@string/ern" />
 </PreferenceScreen>

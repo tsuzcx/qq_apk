@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ckt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+<LinearLayout style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="@dimen/m2" android:textColor="@color/sg" android:gravity="center" android:id="@id/b_1" android:background="@drawable/rn" android:paddingBottom="0.5dip" android:visibility="invisible" android:layout_width="@dimen/a3s" android:layout_height="@dimen/a3r" android:minHeight="@dimen/a3r" android:text="@string/b5l" android:layout_centerInParent="true" android:onClick="onClick" />
-    <Button android:textSize="@dimen/m2" android:textColor="@color/sg" android:id="@id/cl0" android:background="@drawable/rn" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="@dimen/a3s" android:layout_height="@dimen/a3r" android:drawableRight="@raw/image_gallery_load_hd_cancel_icon" android:layout_centerInParent="true" android:onClick="onClick" />
-    <LinearLayout android:gravity="center" android:id="@id/cl1" android:background="@drawable/rn" android:layout_width="@dimen/a3s" android:layout_height="@dimen/a3r" android:layout_centerInParent="true">
-        <ImageView android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@raw/image_gallery_image_download_done_icon" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/sg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b5n" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/ld">
+        <ImageView android:id="@id/c72" android:src="@drawable/ark" style="@style/jo" />
+        <TextView android:text="正在获取Wi-Fi信息..." style="@style/ka" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

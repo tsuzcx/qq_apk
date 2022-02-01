@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.crashfix.d.a;
 
 import android.os.Handler;
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -12,36 +13,54 @@ public final class b
   protected b(Object paramObject)
   {
     super(paramObject);
-    kTe = "mHandler";
+    nZK = "mHandler";
   }
   
   public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(151903);
-    if (this.kTd != null)
+    AppMethodBeat.i(145632);
+    if (this.nZJ != null)
     {
       if ((paramMethod.getName().equals("enqueueToast")) && (paramArrayOfObject[1].getClass().getName().equals("android.widget.Toast$TN"))) {}
       try
       {
-        paramObject = paramArrayOfObject[1].getClass().getDeclaredField(kTe);
+        paramObject = paramArrayOfObject[1].getClass().getDeclaredField(nZK);
         paramObject.setAccessible(true);
-        com.tencent.mm.plugin.crashfix.c.a.b(paramObject);
-        Handler localHandler = (Handler)paramObject.get(paramArrayOfObject[1]);
-        paramObject.set(paramArrayOfObject[1], new b.1(this, localHandler));
-        ab.i("MicroMsg.INotificationManagerInvocationHandler", "replace Toast.TN.mShow succ");
-        paramObject = paramMethod.invoke(this.kTd, paramArrayOfObject);
-        AppMethodBeat.o(151903);
+        com.tencent.mm.plugin.crashfix.c.a.c(paramObject);
+        final Handler localHandler = (Handler)paramObject.get(paramArrayOfObject[1]);
+        paramObject.set(paramArrayOfObject[1], new Handler()
+        {
+          public final void handleMessage(Message paramAnonymousMessage)
+          {
+            AppMethodBeat.i(145631);
+            try
+            {
+              ad.i("MicroMsg.INotificationManagerInvocationHandler", "run on my handler");
+              localHandler.handleMessage(paramAnonymousMessage);
+              AppMethodBeat.o(145631);
+              return;
+            }
+            catch (Exception paramAnonymousMessage)
+            {
+              ad.i("MicroMsg.INotificationManagerInvocationHandler", "protect succ");
+              AppMethodBeat.o(145631);
+            }
+          }
+        });
+        ad.i("MicroMsg.INotificationManagerInvocationHandler", "replace Toast.TN.mShow succ");
+        paramObject = paramMethod.invoke(this.nZJ, paramArrayOfObject);
+        AppMethodBeat.o(145632);
         return paramObject;
       }
       catch (Exception paramObject)
       {
         for (;;)
         {
-          ab.e("MicroMsg.INotificationManagerInvocationHandler", paramObject.getMessage());
+          ad.e("MicroMsg.INotificationManagerInvocationHandler", paramObject.getMessage());
         }
       }
     }
-    AppMethodBeat.o(151903);
+    AppMethodBeat.o(145632);
     return null;
   }
 }

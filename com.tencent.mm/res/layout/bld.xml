@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/adl" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/h4v" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+        <TextView android:textSize="@dimen/q" android:textColor="@color/y4" android:id="@id/h4x" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="" android:layout_weight="1.0" />
+        <RadioButton android:id="@id/h52" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/nu" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/b_" android:textColor="@color/rx" android:id="@id/h4y" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="4.0dip" android:text="" />
+    <com.tencent.mm.plugin.wallet_core.ui.view.FavourLayout android:orientation="vertical" android:id="@id/h50" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="4.0dip" />
+    <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginTop="16.0dip" />
+</LinearLayout>

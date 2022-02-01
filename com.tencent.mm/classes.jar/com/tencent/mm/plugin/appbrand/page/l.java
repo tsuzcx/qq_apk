@@ -1,16 +1,20 @@
 package com.tencent.mm.plugin.appbrand.page;
 
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
+import org.json.JSONObject;
 
-public final class l
+public class l
   extends p
 {
-  public static final int CTRL_INDEX = -2;
-  public static final String NAME = "onPageReload";
+  private static final int CTRL_INDEX = 50;
+  private static final String NAME = "onAppEnterForeground";
+  
+  public void a(AppBrandRuntime paramAppBrandRuntime, boolean paramBoolean, JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.l
  * JD-Core Version:    0.7.0.1
  */

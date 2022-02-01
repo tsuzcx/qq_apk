@@ -7,9 +7,9 @@ import com.tencent.mars.app.AppLogic.ICallBack;
 import com.tencent.mm.network.a;
 import com.tencent.mm.network.t;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.io.File;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.e;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -18,7 +18,7 @@ public class AppCallBack
 {
   private static final String TAG = "AppCallBack";
   private Context context = null;
-  AppLogic.DeviceInfo info = new AppLogic.DeviceInfo(d.DEVICE_NAME, d.eQs);
+  AppLogic.DeviceInfo info = new AppLogic.DeviceInfo(d.DEVICE_NAME, d.glX);
   
   public AppCallBack(Context paramContext)
   {
@@ -35,17 +35,17 @@ public class AppCallBack
   public AppLogic.AccountInfo getAccountInfo()
   {
     AppLogic.AccountInfo localAccountInfo = new AppLogic.AccountInfo();
-    if ((com.tencent.mm.network.ab.anF() == null) || (com.tencent.mm.network.ab.anF().gdz == null)) {}
+    if ((com.tencent.mm.network.ad.aFo() == null) || (com.tencent.mm.network.ad.aFo().hKZ == null)) {}
     for (;;)
     {
       return localAccountInfo;
       try
       {
-        localAccountInfo.uin = com.tencent.mm.network.ab.anF().gdz.getUin();
-        localAccountInfo.userName = com.tencent.mm.network.ab.anF().gdz.adE();
-        if (bo.isNullOrNil(localAccountInfo.userName))
+        localAccountInfo.uin = com.tencent.mm.network.ad.aFo().hKZ.getUin();
+        localAccountInfo.userName = com.tencent.mm.network.ad.aFo().hKZ.avc();
+        if (bt.isNullOrNil(localAccountInfo.userName))
         {
-          localAccountInfo.userName = com.tencent.mm.network.ab.anF().gdz.getUsername();
+          localAccountInfo.userName = com.tencent.mm.network.ad.aFo().hKZ.getUsername();
           return localAccountInfo;
         }
       }
@@ -63,16 +63,16 @@ public class AppCallBack
     }
     try
     {
-      Object localObject = this.context.getFilesDir();
-      if (!((File)localObject).exists()) {
-        ((File)localObject).createNewFile();
+      Object localObject = e.R(this.context.getFilesDir());
+      if (!((e)localObject).exists()) {
+        ((e)localObject).createNewFile();
       }
-      localObject = ((File)localObject).toString();
+      localObject = ((e)localObject).toString();
       return localObject;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ab.e("AppCallBack", exception2String(localException));
+      com.tencent.mm.sdk.platformtools.ad.e("AppCallBack", exception2String(localException));
       Assert.assertTrue(localException.getClass().getSimpleName() + ":" + localException.getStackTrace()[0] + ", " + localException.getStackTrace()[1], false);
     }
     return "";
@@ -80,12 +80,12 @@ public class AppCallBack
   
   public int getClientVersion()
   {
-    return d.whH;
+    return d.CpK;
   }
   
   public String getCurLanguage()
   {
-    return aa.dsG();
+    return ac.eFu();
   }
   
   public AppLogic.DeviceInfo getDeviceType()
@@ -95,7 +95,7 @@ public class AppCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mars.mm.AppCallBack
  * JD-Core Version:    0.7.0.1
  */

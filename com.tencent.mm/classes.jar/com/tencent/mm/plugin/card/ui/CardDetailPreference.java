@@ -8,15 +8,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.widget.CardTextPreference;
-import com.tencent.mm.protocal.protobuf.oj;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.protocal.protobuf.uo;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.qo;
+import com.tencent.mm.protocal.protobuf.ro;
+import com.tencent.mm.protocal.protobuf.xo;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceSmallCategory;
@@ -31,204 +33,216 @@ public class CardDetailPreference
   extends MMPreference
 {
   private final String TAG;
-  f iLA;
-  private com.tencent.mm.plugin.card.base.b klk;
-  private List<com.tencent.mm.plugin.card.model.b> klo;
-  private TextView ksZ;
+  f lxI;
+  private com.tencent.mm.plugin.card.base.b nqp;
+  private List<com.tencent.mm.plugin.card.model.b> nqu;
+  private TextView nyp;
   
   public CardDetailPreference()
   {
-    AppMethodBeat.i(88257);
+    AppMethodBeat.i(113190);
     this.TAG = "MicroMsg.CardDetailPreference";
-    this.klo = new ArrayList();
-    AppMethodBeat.o(88257);
+    this.nqu = new ArrayList();
+    AppMethodBeat.o(113190);
   }
   
-  private void Id(String paramString)
+  private void QN(String paramString)
   {
-    AppMethodBeat.i(88266);
+    AppMethodBeat.i(113196);
     PreferenceTitleCategory localPreferenceTitleCategory = new PreferenceTitleCategory(this);
     if (TextUtils.isEmpty(paramString)) {
       localPreferenceTitleCategory.setTitle(" ");
     }
     for (;;)
     {
-      this.iLA.b(localPreferenceTitleCategory);
-      AppMethodBeat.o(88266);
+      this.lxI.b(localPreferenceTitleCategory);
+      AppMethodBeat.o(113196);
       return;
       localPreferenceTitleCategory.setTitle(paramString);
     }
   }
   
-  private void bdf()
+  private void bKd()
   {
-    AppMethodBeat.i(88263);
+    AppMethodBeat.i(113193);
     int i = 0;
-    while (i < this.klo.size())
+    while (i < this.nqu.size())
     {
-      com.tencent.mm.plugin.card.model.b localb = (com.tencent.mm.plugin.card.model.b)this.klo.get(i);
+      com.tencent.mm.plugin.card.model.b localb = (com.tencent.mm.plugin.card.model.b)this.nqu.get(i);
       Preference localPreference = new Preference(this);
-      localPreference.setLayoutResource(2130970179);
+      localPreference.setLayoutResource(2131494804);
       localPreference.setKey(localb.title);
       localPreference.setTitle(localb.title);
-      if (!TextUtils.isEmpty(localb.kmn)) {
-        localPreference.setSummary(localb.kmn);
+      if (!TextUtils.isEmpty(localb.nrs)) {
+        localPreference.setSummary(localb.nrs);
       }
-      if (localb.kmy) {
-        bdh();
+      if (localb.nrD) {
+        bKf();
       }
-      this.iLA.b(localPreference);
+      this.lxI.b(localPreference);
       i += 1;
     }
-    AppMethodBeat.o(88263);
+    AppMethodBeat.o(113193);
   }
   
-  private void bdg()
+  private void bKe()
   {
-    AppMethodBeat.i(88264);
-    if ((this.klk.bbd().wGa != null) && (this.klk.bbd().wGa != null))
+    AppMethodBeat.i(113194);
+    if ((this.nqp.bHV().CRG != null) && (this.nqp.bHV().CRG != null))
     {
       int i = 0;
-      while (i < this.klk.bbd().wGa.size())
+      while (i < this.nqp.bHV().CRG.size())
       {
-        uo localuo = (uo)this.klk.bbd().wGa.get(i);
-        if (!TextUtils.isEmpty(localuo.kmn))
+        xo localxo = (xo)this.nqp.bHV().CRG.get(i);
+        if (!TextUtils.isEmpty(localxo.nrs))
         {
           CardTextPreference localCardTextPreference = new CardTextPreference(this);
-          localCardTextPreference.setLayoutResource(2130970179);
-          localCardTextPreference.setTitle(localuo.kmn);
-          localCardTextPreference.bfF();
-          Id(localuo.title);
-          this.iLA.b(localCardTextPreference);
+          localCardTextPreference.setLayoutResource(2131494804);
+          localCardTextPreference.setTitle(localxo.nrs);
+          localCardTextPreference.bMQ();
+          QN(localxo.title);
+          this.lxI.b(localCardTextPreference);
         }
         i += 1;
       }
-      bdh();
+      bKf();
     }
-    AppMethodBeat.o(88264);
+    AppMethodBeat.o(113194);
   }
   
-  private void bdh()
+  private void bKf()
   {
-    AppMethodBeat.i(88265);
+    AppMethodBeat.i(113195);
     PreferenceSmallCategory localPreferenceSmallCategory = new PreferenceSmallCategory(this);
-    this.iLA.b(localPreferenceSmallCategory);
-    AppMethodBeat.o(88265);
+    this.lxI.b(localPreferenceSmallCategory);
+    AppMethodBeat.o(113195);
   }
   
   public View getFooterView()
   {
-    AppMethodBeat.i(88271);
-    View localView = getLayoutInflater().inflate(2130970909, null);
-    this.ksZ = ((TextView)localView.findViewById(2131827112));
-    this.ksZ.setVisibility(8);
-    AppMethodBeat.o(88271);
+    AppMethodBeat.i(113198);
+    View localView = getLayoutInflater().inflate(2131495637, null);
+    this.nyp = ((TextView)localView.findViewById(2131305128));
+    this.nyp.setVisibility(8);
+    AppMethodBeat.o(113198);
     return localView;
   }
   
   public int getResourceId()
   {
-    return 2131165199;
+    return 2131951633;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(88270);
-    this.klk = ((com.tencent.mm.plugin.card.base.b)getIntent().getParcelableExtra("key_card_info_data"));
-    if ((this.klk == null) || (this.klk.bbd() == null) || (this.klk.bbe() == null))
+    AppMethodBeat.i(113192);
+    this.nqp = ((com.tencent.mm.plugin.card.base.b)getIntent().getParcelableExtra("key_card_info_data"));
+    if ((this.nqp == null) || (this.nqp.bHV() == null) || (this.nqp.bHW() == null))
     {
-      ab.e("MicroMsg.CardDetailPreference", "mCardInfo == null or mCardInfo.getCardTpInfo() == null or mCardInfo.getDataInfo() == null");
+      ad.e("MicroMsg.CardDetailPreference", "mCardInfo == null or mCardInfo.getCardTpInfo() == null or mCardInfo.getDataInfo() == null");
       finish();
-      AppMethodBeat.o(88270);
+      AppMethodBeat.o(113192);
       return;
     }
     Object localObject = new StringBuilder();
-    if (!TextUtils.isEmpty(this.klk.bbd().knv)) {
-      ((StringBuilder)localObject).append(this.klk.bbd().knv);
+    if (!TextUtils.isEmpty(this.nqp.bHV().nsJ)) {
+      ((StringBuilder)localObject).append(this.nqp.bHV().nsJ);
     }
-    ((StringBuilder)localObject).append(getString(2131297897));
+    ((StringBuilder)localObject).append(getString(2131756829));
     setMMTitle(((StringBuilder)localObject).toString());
-    setBackBtn(new CardDetailPreference.1(this));
-    this.iLA = getPreferenceScreen();
-    this.klo.clear();
-    if ((this.klk.bbe().wDP != null) && (this.klk.bbe().wDP.size() > 0)) {
-      this.klo.addAll(l.bg(this.klk.bbe().wDP));
-    }
-    if ((this.klk.bbe().wDQ != null) && (this.klk.bbe().wDQ.size() > 0))
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
-      localObject = l.bg(this.klk.bbe().wDQ);
-      ((com.tencent.mm.plugin.card.model.b)((List)localObject).get(0)).kmy = true;
-      this.klo.addAll((Collection)localObject);
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(113189);
+        CardDetailPreference.this.finish();
+        AppMethodBeat.o(113189);
+        return true;
+      }
+    });
+    this.lxI = getPreferenceScreen();
+    this.nqu.clear();
+    if ((this.nqp.bHW().CPq != null) && (this.nqp.bHW().CPq.size() > 0)) {
+      this.nqu.addAll(l.cC(this.nqp.bHW().CPq));
     }
-    bdh();
-    bdg();
-    bdf();
-    if (!TextUtils.isEmpty(this.klk.bbd().wGb))
+    if ((this.nqp.bHW().CPr != null) && (this.nqp.bHW().CPr.size() > 0))
+    {
+      localObject = l.cC(this.nqp.bHW().CPr);
+      ((com.tencent.mm.plugin.card.model.b)((List)localObject).get(0)).nrD = true;
+      this.nqu.addAll((Collection)localObject);
+    }
+    bKf();
+    bKe();
+    bKd();
+    if (!TextUtils.isEmpty(this.nqp.bHV().CRH))
     {
       localObject = new CardTextPreference(this);
-      ((CardTextPreference)localObject).setLayoutResource(2130970179);
-      ((CardTextPreference)localObject).setTitle(getString(2131298007));
+      ((CardTextPreference)localObject).setLayoutResource(2131494804);
+      ((CardTextPreference)localObject).setTitle(getString(2131756949));
       ((CardTextPreference)localObject).setKey("key_pic_detail");
-      ((CardTextPreference)localObject).bfF();
-      bdh();
-      this.iLA.b((Preference)localObject);
+      ((CardTextPreference)localObject).bMQ();
+      bKf();
+      this.lxI.b((Preference)localObject);
     }
-    if (!TextUtils.isEmpty(this.klk.bbd().wFY))
+    if (!TextUtils.isEmpty(this.nqp.bHV().CRE))
     {
-      bdh();
+      bKf();
       localObject = new CardTextPreference(this);
-      ((CardTextPreference)localObject).setLayoutResource(2130970179);
+      ((CardTextPreference)localObject).setLayoutResource(2131494804);
       ((CardTextPreference)localObject).setKey("card_phone");
-      ((CardTextPreference)localObject).setTitle(2131297983);
-      ((CardTextPreference)localObject).setSummary(this.klk.bbd().wFY);
-      ((CardTextPreference)localObject).kCA = getResources().getColor(2131690214);
-      ((CardTextPreference)localObject).bfE();
-      this.iLA.b((Preference)localObject);
-      Id("");
+      ((CardTextPreference)localObject).setTitle(2131756925);
+      ((CardTextPreference)localObject).setSummary(this.nqp.bHV().CRE);
+      ((CardTextPreference)localObject).nJy = getResources().getColor(2131100547);
+      ((CardTextPreference)localObject).bMP();
+      this.lxI.b((Preference)localObject);
+      QN("");
     }
-    if ((this.klk.bbd() != null) && (!TextUtils.isEmpty(this.klk.bbd().source)) && (this.ksZ != null))
+    if ((this.nqp.bHV() != null) && (!TextUtils.isEmpty(this.nqp.bHV().source)) && (this.nyp != null))
     {
-      this.ksZ.setText(this.klk.bbd().source);
-      this.ksZ.setVisibility(0);
+      this.nyp.setText(this.nqp.bHV().source);
+      this.nyp.setVisibility(0);
     }
-    AppMethodBeat.o(88270);
+    AppMethodBeat.o(113192);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(88258);
+    AppMethodBeat.i(113191);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(88258);
+    AppMethodBeat.o(113191);
   }
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(88269);
+    AppMethodBeat.i(113197);
     if (paramPreference.mKey.equals("card_phone"))
     {
-      paramf = this.klk.bbd().wFY;
+      paramf = this.nqp.bHV().CRE;
       Intent localIntent = new Intent("android.intent.action.DIAL");
       localIntent.setFlags(268435456);
       localIntent.setData(Uri.parse("tel:".concat(String.valueOf(paramf))));
-      startActivity(localIntent);
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.adn(), "com/tencent/mm/plugin/card/util/CardActivityHelper", "doDial", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/card/util/CardActivityHelper", "doDial", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     if (paramPreference.mKey.equals("key_pic_detail")) {
-      com.tencent.mm.plugin.card.d.b.a(this, this.klk.bbd().wGb, 0);
+      com.tencent.mm.plugin.card.d.b.a(this, this.nqp.bHV().CRH, 0);
     }
     for (;;)
     {
-      AppMethodBeat.o(88269);
+      AppMethodBeat.o(113197);
       return false;
       int i = 0;
-      while (i < this.klo.size())
+      while (i < this.nqu.size())
       {
-        paramf = (com.tencent.mm.plugin.card.model.b)this.klo.get(i);
+        paramf = (com.tencent.mm.plugin.card.model.b)this.nqu.get(i);
         if ((paramf.title != null) && (paramf.title.equals(paramPreference.mKey)) && (!TextUtils.isEmpty(paramf.url)))
         {
-          if (com.tencent.mm.plugin.card.d.b.d(this.klk.bbh(), paramf.wFL, paramf.wFM, 1028, 0))
+          if (com.tencent.mm.plugin.card.d.b.O(this.nqp.bHZ(), paramf.CRq, paramf.CRr))
           {
-            AppMethodBeat.o(88269);
+            AppMethodBeat.o(113197);
             return false;
           }
           com.tencent.mm.plugin.card.d.b.a(this, paramf.url, 1);
@@ -246,7 +260,7 @@ public class CardDetailPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardDetailPreference
  * JD-Core Version:    0.7.0.1
  */

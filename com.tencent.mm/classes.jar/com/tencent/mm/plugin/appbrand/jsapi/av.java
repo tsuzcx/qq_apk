@@ -1,48 +1,34 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.app.Activity;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
 public final class av
   extends a
 {
-  public static final int CTRL_INDEX = 62;
-  public static final String NAME = "openAddress";
+  public static final int CTRL_INDEX = 711;
+  public static final String NAME = "getOAID";
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(130513);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("req_app_id", paramc.getAppId());
-    localIntent.putExtra("launch_from_appbrand", true);
-    if ((paramc instanceof r))
+    AppMethodBeat.i(45492);
+    paramJSONObject = q.getOAID();
+    ad.i("MicroMsg.JsApiGetOAID", "getOAID, oaid=".concat(String.valueOf(paramJSONObject)));
+    if (bt.isNullOrNil(paramJSONObject))
     {
-      paramJSONObject = ((r)paramc).X(Activity.class);
-      if ((paramJSONObject != null) && ((paramJSONObject instanceof MMActivity))) {
-        break label101;
-      }
-    }
-    label101:
-    for (paramJSONObject = null;; paramJSONObject = (MMActivity)paramJSONObject)
-    {
-      if (paramJSONObject != null) {
-        break label109;
-      }
-      paramc.h(paramInt, j("fail", null));
-      AppMethodBeat.o(130513);
+      paramc.h(paramInt, e("fail", null));
+      AppMethodBeat.o(45492);
       return;
-      paramJSONObject = paramc.getContext();
-      break;
     }
-    label109:
-    paramJSONObject.mmSetOnActivityResultCallback(new av.1(this, paramc, paramInt));
-    d.a(paramJSONObject, "address", ".ui.WalletSelectAddrUI", localIntent, hashCode() & 0xFFFF, false);
-    AppMethodBeat.o(130513);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("result", paramJSONObject);
+    paramc.h(paramInt, k("ok", localHashMap));
+    AppMethodBeat.o(45492);
   }
 }
 

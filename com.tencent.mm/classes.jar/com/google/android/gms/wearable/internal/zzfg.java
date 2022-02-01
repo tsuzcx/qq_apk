@@ -12,23 +12,23 @@ public final class zzfg
 {
   public final PendingResult<NodeApi.GetConnectedNodesResult> getConnectedNodes(GoogleApiClient paramGoogleApiClient)
   {
-    AppMethodBeat.i(71315);
+    AppMethodBeat.i(101298);
     paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzfi(this, paramGoogleApiClient));
-    AppMethodBeat.o(71315);
+    AppMethodBeat.o(101298);
     return paramGoogleApiClient;
   }
   
   public final PendingResult<NodeApi.GetLocalNodeResult> getLocalNode(GoogleApiClient paramGoogleApiClient)
   {
-    AppMethodBeat.i(71314);
+    AppMethodBeat.i(101297);
     paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzfh(this, paramGoogleApiClient));
-    AppMethodBeat.o(71314);
+    AppMethodBeat.o(101297);
     return paramGoogleApiClient;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzfg
  * JD-Core Version:    0.7.0.1
  */

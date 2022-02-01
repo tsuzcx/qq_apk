@@ -1,123 +1,205 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import android.app.Activity;
+import android.app.ActivityManager.RunningTaskInfo;
+import android.content.ComponentName;
 import android.content.Intent;
-import android.os.Build.VERSION;
-import android.os.Looper;
-import android.os.MessageQueue;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ad;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntimeWCAccessible;
+import com.tencent.mm.plugin.appbrand.ac.e;
+import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.ai;
+import com.tencent.mm.plugin.appbrand.al;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.k;
-import com.tencent.mm.plugin.appbrand.p;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.ui.MMFragmentActivity.a;
-import com.tencent.mm.ui.base.a;
+import com.tencent.mm.plugin.appbrand.ui.wxa_container.BaseAppBrandUIClipped.a;
+import com.tencent.mm.plugin.ball.f.f;
+import com.tencent.mm.plugin.m.a.c.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.b;
 
-@a(1)
+@com.tencent.mm.ui.base.a(1)
 public class AppBrandPluginUI
   extends AppBrandUI
 {
-  private boolean iNd = false;
-  
-  protected final void J(Intent paramIntent)
+  private boolean boo()
   {
-    AppMethodBeat.i(133008);
-    super.J(paramIntent);
-    if (this.iOW == null) {}
-    for (paramIntent = null;; paramIntent = this.iOW.atG())
+    AppMethodBeat.i(48677);
+    if (this.mRuntimeContainer == null) {}
+    for (AppBrandRuntime localAppBrandRuntime = null;; localAppBrandRuntime = this.mRuntimeContainer.getActiveRuntime())
     {
-      if (p.n(paramIntent)) {
-        paramIntent.gPQ = true;
+      boolean bool = g.as(localAppBrandRuntime);
+      AppMethodBeat.o(48677);
+      return bool;
+    }
+  }
+  
+  private boolean bop()
+  {
+    AppMethodBeat.i(162169);
+    try
+    {
+      ActivityManager.RunningTaskInfo localRunningTaskInfo = bt.aA(this, getTaskId());
+      if ((localRunningTaskInfo == null) || (localRunningTaskInfo.baseActivity == null)) {
+        break label143;
       }
-      AppMethodBeat.o(133008);
+      if (localRunningTaskInfo.baseActivity.equals(getComponentName()))
+      {
+        ad.i("MicroMsg.AppBrandPluginUI", "shouldKeepPluginUIOpaque return true, task.baseActivity=self, keep PluginUI opaque");
+        AppMethodBeat.o(162169);
+        return true;
+      }
+    }
+    catch (Exception localException)
+    {
+      ad.e("MicroMsg.AppBrandPluginUI", "shouldKeepPluginUIOpaque return false, get e=%s", new Object[] { localException });
+      AppMethodBeat.o(162169);
+      return false;
+    }
+    int i = 0;
+    while (i < 2)
+    {
+      String str2 = new String[] { "WXBizEntryActivity", "AppBrandLaunchProxyUI" }[i];
+      if (localException.baseActivity.getShortClassName().endsWith(str2))
+      {
+        ad.i("MicroMsg.AppBrandPluginUI", "shouldKeepPluginUIOpaque return true, task.baseActivity=[%s], keep PluginUI opaque", new Object[] { str2 });
+        AppMethodBeat.o(162169);
+        return true;
+      }
+      i += 1;
+    }
+    label143:
+    if ((localException != null) && (localException.baseActivity != null)) {}
+    for (String str1 = localException.baseActivity.getShortClassName();; str1 = "null")
+    {
+      ad.i("MicroMsg.AppBrandPluginUI", "shouldKeepPluginUIOpaque return false, task.baseActivity=[%s]", new Object[] { str1 });
+      AppMethodBeat.o(162169);
+      return false;
+    }
+  }
+  
+  final void K(Intent paramIntent)
+  {
+    AppMethodBeat.i(48680);
+    super.overridePendingTransition(this.lLE.lLF, this.lLE.lLG);
+    AppMethodBeat.o(48680);
+  }
+  
+  protected final void L(Intent paramIntent)
+  {
+    AppMethodBeat.i(48683);
+    super.L(paramIntent);
+    if (this.mRuntimeContainer == null) {}
+    for (paramIntent = null;; paramIntent = this.mRuntimeContainer.getActiveRuntime())
+    {
+      if (AppBrandRuntimeWCAccessible.I(paramIntent))
+      {
+        paramIntent.iDQ = true;
+        paramIntent.iDP = new al()
+        {
+          public final void qs(int paramAnonymousInt)
+          {
+            AppMethodBeat.i(48673);
+            if (1 == paramAnonymousInt) {
+              b.a(AppBrandPluginUI.this, null);
+            }
+            AppMethodBeat.o(48673);
+          }
+        };
+      }
+      AppMethodBeat.o(48683);
       return;
     }
   }
   
-  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  protected final void g(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
-    AppMethodBeat.i(143595);
-    if ((isFinishing()) || (this.iNd))
-    {
-      AppMethodBeat.o(143595);
-      return false;
-    }
-    boolean bool = super.dispatchKeyEvent(paramKeyEvent);
-    AppMethodBeat.o(143595);
-    return bool;
-  }
-  
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(143596);
-    if ((isFinishing()) || (this.iNd))
-    {
-      AppMethodBeat.o(143596);
-      return false;
-    }
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(143596);
-    return bool;
-  }
-  
-  protected void e(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
-  {
-    AppMethodBeat.i(133005);
+    AppMethodBeat.i(48679);
     if (k.a(this, paramAppBrandInitConfigWC, paramAppBrandStatObject))
     {
       b.a(this, null);
-      AppMethodBeat.o(133005);
+      AppMethodBeat.o(48679);
       return;
     }
-    super.overridePendingTransition(MMFragmentActivity.a.zbX, MMFragmentActivity.a.zbY);
-    AppMethodBeat.o(133005);
+    if (com.tencent.mm.plugin.appbrand.utils.a.Nj(this.jdr))
+    {
+      super.overridePendingTransition(0, 0);
+      AppMethodBeat.o(48679);
+      return;
+    }
+    if (boo())
+    {
+      e.b(this, paramAppBrandInitConfigWC);
+      AppMethodBeat.o(48679);
+      return;
+    }
+    super.overridePendingTransition(this.lLE.lLF, this.lLE.lLG);
+    AppMethodBeat.o(48679);
   }
   
   public void initActivityCloseAnimation()
   {
-    AppMethodBeat.i(133006);
-    if (this.iNd)
-    {
-      AppMethodBeat.o(133006);
-      return;
-    }
-    super.overridePendingTransition(MMFragmentActivity.a.zbZ, MMFragmentActivity.a.zca);
-    AppMethodBeat.o(133006);
+    AppMethodBeat.i(48681);
+    super.overridePendingTransition(this.lLE.lLH, this.lLE.lLI);
+    AppMethodBeat.o(48681);
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(48674);
+    super.onCreate(paramBundle);
+    paramBundle = c.tsc;
+    c.afB("ui_create");
+    AppMethodBeat.o(48674);
   }
   
   public void onEnterAnimationComplete()
   {
-    AppMethodBeat.i(133004);
+    AppBrandRuntime localAppBrandRuntime = null;
+    AppMethodBeat.i(48678);
     super.onEnterAnimationComplete();
+    if (bop())
+    {
+      if (this.mRuntimeContainer == null) {}
+      for (;;)
+      {
+        if (localAppBrandRuntime != null) {
+          localAppBrandRuntime.iDQ = false;
+        }
+        AppMethodBeat.o(48678);
+        return;
+        localAppBrandRuntime = this.mRuntimeContainer.getActiveRuntime();
+      }
+    }
+    ad.i("MicroMsg.AppBrandPluginUI", "onEnterAnimationComplete convert PluginUI to translucent");
     b.a(this, null);
-    AppMethodBeat.o(133004);
+    AppMethodBeat.o(48678);
+  }
+  
+  public void onPause()
+  {
+    AppMethodBeat.i(48676);
+    super.onPause();
+    if (boo()) {
+      f.d(false, true, true);
+    }
+    AppMethodBeat.o(48676);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(133003);
+    AppMethodBeat.i(48675);
     super.onResume();
-    if (Build.VERSION.SDK_INT < 21) {
-      Looper.myQueue().addIdleHandler(new AppBrandPluginUI.1(this));
+    if (boo())
+    {
+      r.a(getWindow(), true, false);
+      f.d(true, true, true);
     }
-    AppMethodBeat.o(133003);
-  }
-  
-  public void onSwipeBack()
-  {
-    AppMethodBeat.i(133007);
-    super.onSwipeBack();
-    this.iNd = true;
-    AppMethodBeat.o(133007);
-  }
-  
-  public boolean onSwipeBackFinish()
-  {
-    return true;
+    AppMethodBeat.o(48675);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -128,7 +210,7 @@ public class AppBrandPluginUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI
  * JD-Core Version:    0.7.0.1
  */

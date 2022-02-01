@@ -1,39 +1,47 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import android.app.Activity;
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.widget.b.c;
-import com.tencent.mm.ui.widget.b.c.a;
+import com.tencent.mm.ui.MMActivity;
+import d.l;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandActivityUtils;", "", "()V", "TAG", "", "hideVKB", "", "Landroid/app/Activity;", "showVKB", "plugin-appbrand-integration_release"})
 public final class b
-  extends c.a
 {
-  private boolean iLx;
+  public static final b lxG;
   
-  public b(Context paramContext)
+  static
   {
-    super(paramContext);
-    AppMethodBeat.i(132890);
-    this.iLx = false;
-    if ((paramContext instanceof Activity)) {
-      this.iLx = o.b(((Activity)paramContext).getWindow());
-    }
-    AppMethodBeat.o(132890);
+    AppMethodBeat.i(175216);
+    lxG = new b();
+    AppMethodBeat.o(175216);
   }
   
-  public final c aLZ()
+  public static final void F(Activity paramActivity)
   {
-    AppMethodBeat.i(132891);
-    c localc = super.aLZ();
-    o.a(localc.getWindow(), this.iLx);
-    AppMethodBeat.o(132891);
-    return localc;
+    AppMethodBeat.i(175215);
+    if (paramActivity != null)
+    {
+      if ((paramActivity instanceof MMActivity))
+      {
+        ((MMActivity)paramActivity).hideVKB();
+        AppMethodBeat.o(175215);
+        return;
+      }
+      if ((paramActivity instanceof com.tencent.mm.plugin.appbrand.widget.input.ad))
+      {
+        ((com.tencent.mm.plugin.appbrand.widget.input.ad)paramActivity).hideVKB();
+        AppMethodBeat.o(175215);
+        return;
+      }
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.AppBrandActivityUtils", "hideVKB not supported in " + paramActivity.getLocalClassName());
+    }
+    AppMethodBeat.o(175215);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.b
  * JD-Core Version:    0.7.0.1
  */

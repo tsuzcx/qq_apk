@@ -16,49 +16,49 @@ final class ProfileCache
   
   ProfileCache()
   {
-    AppMethodBeat.i(71821);
+    AppMethodBeat.i(17257);
     this.sharedPreferences = FacebookSdk.getApplicationContext().getSharedPreferences("com.facebook.AccessTokenManager.SharedPreferences", 0);
-    AppMethodBeat.o(71821);
+    AppMethodBeat.o(17257);
   }
   
   final void clear()
   {
-    AppMethodBeat.i(71824);
+    AppMethodBeat.i(17260);
     this.sharedPreferences.edit().remove("com.facebook.ProfileManager.CachedProfile").apply();
-    AppMethodBeat.o(71824);
+    AppMethodBeat.o(17260);
   }
   
   final Profile load()
   {
-    AppMethodBeat.i(71822);
+    AppMethodBeat.i(17258);
     Object localObject = this.sharedPreferences.getString("com.facebook.ProfileManager.CachedProfile", null);
     if (localObject != null) {
       try
       {
         localObject = new Profile(new JSONObject((String)localObject));
-        AppMethodBeat.o(71822);
+        AppMethodBeat.o(17258);
         return localObject;
       }
       catch (JSONException localJSONException) {}
     }
-    AppMethodBeat.o(71822);
+    AppMethodBeat.o(17258);
     return null;
   }
   
   final void save(Profile paramProfile)
   {
-    AppMethodBeat.i(71823);
+    AppMethodBeat.i(17259);
     Validate.notNull(paramProfile, "profile");
     paramProfile = paramProfile.toJSONObject();
     if (paramProfile != null) {
       this.sharedPreferences.edit().putString("com.facebook.ProfileManager.CachedProfile", paramProfile.toString()).apply();
     }
-    AppMethodBeat.o(71823);
+    AppMethodBeat.o(17259);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.ProfileCache
  * JD-Core Version:    0.7.0.1
  */

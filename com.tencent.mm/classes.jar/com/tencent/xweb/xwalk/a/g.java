@@ -1,154 +1,244 @@
 package com.tencent.xweb.xwalk.a;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.o.a;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import org.xwalk.core.Log;
 import org.xwalk.core.XWalkEnvironment;
-import org.xwalk.core.XWalkInitializer;
 
 public final class g
-  implements o.a
 {
-  public String BKs = "";
-  public a BKt = null;
-  public h BKu = null;
+  private static Map<String, e> IUL;
   
-  public static boolean eas()
+  static
   {
-    AppMethodBeat.i(85420);
-    Object localObject1 = XWalkEnvironment.getSharedPreferencesForPluginUpdateInfo();
-    if (localObject1 == null)
+    AppMethodBeat.i(157195);
+    IUL = new HashMap();
+    AppMethodBeat.o(157195);
+  }
+  
+  public static e aOW(String paramString)
+  {
+    AppMethodBeat.i(157189);
+    if ((paramString == null) || (paramString.isEmpty()))
     {
-      AppMethodBeat.o(85420);
-      return false;
+      AppMethodBeat.o(157189);
+      return null;
     }
-    int i = ((SharedPreferences)localObject1).getInt("nUpdatingProcessId", -1);
-    if (i < 0)
+    paramString = (e)IUL.get(paramString);
+    AppMethodBeat.o(157189);
+    return paramString;
+  }
+  
+  private static a ae(File paramFile)
+  {
+    AppMethodBeat.i(157193);
+    if (paramFile == null)
     {
-      AppMethodBeat.o(85420);
-      return false;
+      Log.e("XWalkPluginMgr", "getPluginInfoFromDir dirFile is null");
+      AppMethodBeat.o(157193);
+      return null;
     }
-    int j = Process.myPid();
-    int k = Process.myUid();
-    if (i == j)
+    if ((!paramFile.exists()) || (!paramFile.isDirectory()))
     {
-      XWalkInitializer.addXWalkInitializeLog("XWalkPluginUp", "current process is updating plugin");
-      AppMethodBeat.o(85420);
-      return true;
+      Log.e("XWalkPluginMgr", "getPluginInfoFromDir dirFile is invalid");
+      AppMethodBeat.o(157193);
+      return null;
     }
-    localObject1 = (ActivityManager)XWalkEnvironment.getApplicationContext().getSystemService("activity");
+    String str = paramFile.getName();
+    int i = str.lastIndexOf('_');
+    if ((i < 0) || (i >= str.length() - 1))
+    {
+      Log.e("XWalkPluginMgr", "getPluginInfoFromDir can not find _");
+      AppMethodBeat.o(157193);
+      return null;
+    }
+    paramFile = str.substring(0, i);
+    str = str.substring(i + 1);
     try
     {
-      localObject1 = ((ActivityManager)localObject1).getRunningAppProcesses();
-      if (localObject1 != null)
+      paramFile = new a(paramFile, Integer.parseInt(str));
+      AppMethodBeat.o(157193);
+      return paramFile;
+    }
+    catch (Exception paramFile)
+    {
+      Log.e("XWalkPluginMgr", "getPluginInfoFromDir error: " + paramFile.getMessage());
+      AppMethodBeat.o(157193);
+    }
+    return null;
+  }
+  
+  public static void fth()
+  {
+    AppMethodBeat.i(157192);
+    if (IUL.size() == 0)
+    {
+      Log.e("XWalkPluginMgr", "checkFiles error, sPluginMap size is 0");
+      AppMethodBeat.o(157192);
+      return;
+    }
+    Iterator localIterator = IUL.entrySet().iterator();
+    while (localIterator.hasNext()) {
+      ((e)((Map.Entry)localIterator.next()).getValue()).fth();
+    }
+    AppMethodBeat.o(157192);
+  }
+  
+  public static boolean ftj()
+  {
+    AppMethodBeat.i(157187);
+    if (IUL.size() == 0)
+    {
+      Log.i("XWalkPluginMgr", "initPlugins");
+      Object localObject = new b();
+      IUL.put("FullScreenVideo", localObject);
+      localObject = new c();
+      IUL.put("XFilesPDFReader", localObject);
+      localObject = new d();
+      IUL.put("XFilesPPTReader", localObject);
+      localObject = new l();
+      IUL.put("XFilesWordReader", localObject);
+      localObject = new a();
+      IUL.put("XFilesExcelReader", localObject);
+    }
+    AppMethodBeat.o(157187);
+    return true;
+  }
+  
+  public static List<e> ftk()
+  {
+    AppMethodBeat.i(157190);
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = IUL.entrySet().iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(((Map.Entry)localIterator.next()).getValue());
+    }
+    AppMethodBeat.o(157190);
+    return localArrayList;
+  }
+  
+  public static String ftl()
+  {
+    AppMethodBeat.i(157191);
+    Object localObject = new StringBuilder();
+    Iterator localIterator = IUL.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      e locale = (e)((Map.Entry)localIterator.next()).getValue();
+      if (locale != null) {
+        ((StringBuilder)localObject).append(locale.getPluginName()).append(" = ").append(locale.IUH).append(", ");
+      }
+    }
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(157191);
+    return localObject;
+  }
+  
+  public static void ftm()
+  {
+    AppMethodBeat.i(157194);
+    if (IUL.size() == 0)
+    {
+      Log.e("XWalkPluginMgr", "clearOldVersions error, sPluginMap size is 0");
+      AppMethodBeat.o(157194);
+      return;
+    }
+    Object localObject = XWalkEnvironment.getPluginBaseDir();
+    if ((localObject == null) || (((String)localObject).isEmpty()))
+    {
+      Log.e("XWalkPluginMgr", "clearOldVersions clear other, pluginBaseDir is null, return");
+      AppMethodBeat.o(157194);
+      return;
+    }
+    localObject = new File((String)localObject).listFiles();
+    if ((localObject == null) || (localObject.length <= 0))
+    {
+      Log.i("XWalkPluginMgr", "clearOldVersions, dir is empty, return");
+      AppMethodBeat.o(157194);
+      return;
+    }
+    int j = localObject.length;
+    int i = 0;
+    if (i < j)
+    {
+      File localFile = localObject[i];
+      a locala;
+      if (localFile != null)
       {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
+        locala = ae(localFile);
+        if (locala != null) {
+          break label159;
+        }
+        Log.e("XWalkPluginMgr", "clearOldVersions can not get plugin info, delete " + localFile.getAbsolutePath());
+        com.tencent.xweb.util.c.aPq(localFile.getAbsolutePath());
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        label159:
+        e locale = (e)IUL.get(locala.wex);
+        if (locale == null)
         {
-          ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
-          if (localRunningAppProcessInfo.pid == i) {
-            if (localRunningAppProcessInfo.uid == k)
-            {
-              XWalkInitializer.addXWalkInitializeLog("XWalkPluginUp", "other process is in updating plugin progress");
-              AppMethodBeat.o(85420);
-              return true;
-            }
+          Log.e("XWalkPluginMgr", "clearOldVersions invalid plugin info, delete " + localFile.getAbsolutePath());
+          com.tencent.xweb.util.c.aPq(localFile.getAbsolutePath());
+        }
+        else
+        {
+          if (locale.IUH < 0) {
+            locale.fti();
+          }
+          if (locale.IUH < 0)
+          {
+            Log.e("XWalkPluginMgr", "clearOldVersions can not get availableVersion, skip " + localFile.getAbsolutePath());
+          }
+          else if (locala.IUM < locale.IUH)
+          {
+            Log.i("XWalkPluginMgr", "clearOldVersions is old version, delete " + localFile.getAbsolutePath());
+            com.tencent.xweb.util.c.aPq(localFile.getAbsolutePath());
           }
         }
       }
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.e("XWalkPluginUp", localException.getMessage());
-        Object localObject2 = null;
-      }
-      XWalkInitializer.addXWalkInitializeLog("XWalkPluginUp", "plugin update process pid invalid, clear");
-      eat();
-      AppMethodBeat.o(85420);
-    }
-    return false;
+    AppMethodBeat.o(157194);
   }
   
-  public static void eat()
+  public static Map<String, Integer> le(Context paramContext)
   {
-    AppMethodBeat.i(85421);
-    Object localObject = XWalkEnvironment.getSharedPreferencesForPluginUpdateInfo();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(85421);
-      return;
-    }
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).remove("nUpdatingProcessId");
-    ((SharedPreferences.Editor)localObject).commit();
-    XWalkInitializer.addXWalkInitializeLog("XWalkPluginUp", "plugin update progress finish");
-    AppMethodBeat.o(85421);
+    AppMethodBeat.i(157188);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("FullScreenVideo", Integer.valueOf(XWalkEnvironment.getInstalledPluginVersion(paramContext, "FullScreenVideo")));
+    localHashMap.put("XFilesPDFReader", Integer.valueOf(XWalkEnvironment.getInstalledPluginVersion(paramContext, "XFilesPDFReader")));
+    localHashMap.put("XFilesPPTReader", Integer.valueOf(XWalkEnvironment.getInstalledPluginVersion(paramContext, "XFilesPPTReader")));
+    localHashMap.put("XFilesWordReader", Integer.valueOf(XWalkEnvironment.getInstalledPluginVersion(paramContext, "XFilesWordReader")));
+    localHashMap.put("XFilesExcelReader", Integer.valueOf(XWalkEnvironment.getInstalledPluginVersion(paramContext, "XFilesExcelReader")));
+    AppMethodBeat.o(157188);
+    return localHashMap;
   }
   
-  public static void pn(long paramLong)
+  static final class a
   {
-    AppMethodBeat.i(85419);
-    Object localObject = XWalkEnvironment.getSharedPreferencesForPluginUpdateInfo();
-    if (localObject == null)
-    {
-      XWalkEnvironment.addXWalkInitializeLog("XWalkPluginUp", "set time sp is null");
-      AppMethodBeat.o(85419);
-      return;
-    }
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putLong("nLastFetchPluginConfigTime", paramLong);
-    ((SharedPreferences.Editor)localObject).commit();
-    AppMethodBeat.o(85419);
-  }
-  
-  public final void a(Context paramContext, HashMap<String, String> paramHashMap)
-  {
-    AppMethodBeat.i(85418);
-    this.BKu = new h();
-    this.BKu.a(paramHashMap, this.BKs, this.BKt);
-    this.BKu.execute(new String[0]);
-    this.BKs = "";
-    this.BKt = null;
-    AppMethodBeat.o(85418);
-  }
-  
-  public final boolean isBusy()
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.BKu != null)
-    {
-      bool1 = bool2;
-      if (!this.BKu.BKD) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void TB(int paramInt);
+    int IUM;
+    String wex;
     
-    public abstract void TC(int paramInt);
-    
-    public abstract void eaf();
+    a(String paramString, int paramInt)
+    {
+      this.wex = paramString;
+      this.IUM = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.a.g
  * JD-Core Version:    0.7.0.1
  */

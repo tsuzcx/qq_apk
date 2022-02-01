@@ -12,7 +12,7 @@ public class ClientIdentityCreator
   
   public ClientIdentity createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61313);
+    AppMethodBeat.i(11805);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     int i = 0;
     String str = null;
@@ -33,7 +33,7 @@ public class ClientIdentityCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new ClientIdentity(i, str);
-    AppMethodBeat.o(61313);
+    AppMethodBeat.o(11805);
     return paramParcel;
   }
   
@@ -44,7 +44,7 @@ public class ClientIdentityCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.internal.ClientIdentityCreator
  * JD-Core Version:    0.7.0.1
  */

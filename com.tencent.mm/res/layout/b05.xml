@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/a3u" android:layout_width="fill_parent" android:layout_height="88.0dip" android:layout_marginBottom="16.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip">
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/eym" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0">
-            <ImageView android:id="@id/eyn" android:layout_width="32.0dip" android:layout_height="32.0dip" />
-            <TextView android:textSize="@dimen/dw" android:textColor="@color/j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/ez_" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/eyo" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0">
-            <ImageView android:id="@id/eyp" android:layout_width="32.0dip" android:layout_height="32.0dip" />
-            <TextView android:textSize="@dimen/dw" android:textColor="@color/j" android:id="@id/eyq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/eyr" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0">
-            <ImageView android:id="@id/eys" android:layout_width="32.0dip" android:layout_height="32.0dip" />
-            <TextView android:textSize="@dimen/dw" android:textColor="@color/j" android:id="@id/eyt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/eyu" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0">
-            <ImageView android:id="@id/eyv" android:layout_width="32.0dip" android:layout_height="32.0dip" />
-            <TextView android:textSize="@dimen/dw" android:textColor="@color/cv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/exk" />
-        </LinearLayout>
-    </LinearLayout>
-</FrameLayout>
+<android.support.constraint.ConstraintLayout android:background="@color/c" android:paddingLeft="@dimen/c_" android:paddingRight="@dimen/c_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/h2w" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:layout_marginTop="@dimen/cd" android:src="@raw/wechat_gray_logo" app:layout_constraintBottom_toTopOf="@id/ev3" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+    <TextView android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/ev3" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_" android:text="@string/d2n" android:maxLines="1" app:layout_constraintBottom_toTopOf="@id/ev2" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/h2w" style="@style/ko" />
+    <TextView android:textSize="@dimen/q" android:textColor="@color/fd" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/ev2" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:text="@string/d2m" android:maxLines="2" app:layout_constraintBottom_toTopOf="@id/edu" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/ev3" />
+    <View android:id="@id/edu" android:layout_width="wrap_content" android:layout_height="0.0dip" app:layout_constraintBottom_toTopOf="@id/e3i" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/ev2" app:layout_constraintVertical_weight="1.0" />
+    <Button android:id="@id/e3i" android:layout_marginBottom="@dimen/bt" android:text="@string/d2k" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/edu" style="@style/o7" />
+</android.support.constraint.ConstraintLayout>

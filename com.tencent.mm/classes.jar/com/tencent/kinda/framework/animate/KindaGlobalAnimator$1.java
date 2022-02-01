@@ -11,14 +11,14 @@ final class KindaGlobalAnimator$1
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    AppMethodBeat.i(144292);
+    AppMethodBeat.i(18327);
     this.val$animOnComplete.run();
-    AppMethodBeat.o(144292);
+    AppMethodBeat.o(18327);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.kinda.framework.animate.KindaGlobalAnimator.1
  * JD-Core Version:    0.7.0.1
  */

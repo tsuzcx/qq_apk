@@ -22,15 +22,15 @@ public class AutomaticAnalyticsLogger
   
   static
   {
-    AppMethodBeat.i(72178);
+    AppMethodBeat.i(17614);
     TAG = AutomaticAnalyticsLogger.class.getCanonicalName();
     internalAppEventsLogger = new InternalAppEventsLogger(FacebookSdk.getApplicationContext());
-    AppMethodBeat.o(72178);
+    AppMethodBeat.o(17614);
   }
   
   private static PurchaseLoggingParameters getPurchaseLoggingParameters(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(72177);
+    AppMethodBeat.i(17613);
     try
     {
       paramString1 = new JSONObject(paramString1);
@@ -57,32 +57,32 @@ public class AutomaticAnalyticsLogger
         }
       }
       paramString1 = new PurchaseLoggingParameters(new BigDecimal(paramString2.getLong("price_amount_micros") / 1000000.0D), Currency.getInstance(paramString2.getString("price_currency_code")), localBundle);
-      AppMethodBeat.o(72177);
+      AppMethodBeat.o(17613);
       return paramString1;
     }
     catch (JSONException paramString1)
     {
-      AppMethodBeat.o(72177);
+      AppMethodBeat.o(17613);
     }
     return null;
   }
   
   public static boolean isImplicitPurchaseLoggingEnabled()
   {
-    AppMethodBeat.i(72176);
+    AppMethodBeat.i(17612);
     FetchedAppSettings localFetchedAppSettings = FetchedAppSettingsManager.getAppSettingsWithoutQuery(FacebookSdk.getApplicationId());
     if ((localFetchedAppSettings != null) && (FacebookSdk.getAutoLogAppEventsEnabled()) && (localFetchedAppSettings.getIAPAutomaticLoggingEnabled()))
     {
-      AppMethodBeat.o(72176);
+      AppMethodBeat.o(17612);
       return true;
     }
-    AppMethodBeat.o(72176);
+    AppMethodBeat.o(17612);
     return false;
   }
   
   public static void logActivateAppEvent()
   {
-    AppMethodBeat.i(72172);
+    AppMethodBeat.i(17608);
     Context localContext = FacebookSdk.getApplicationContext();
     String str = FacebookSdk.getApplicationId();
     boolean bool = FacebookSdk.getAutoLogAppEventsEnabled();
@@ -90,12 +90,12 @@ public class AutomaticAnalyticsLogger
     if ((bool) && ((localContext instanceof Application))) {
       AppEventsLogger.activateApp((Application)localContext, str);
     }
-    AppMethodBeat.o(72172);
+    AppMethodBeat.o(17608);
   }
   
   public static void logActivityTimeSpentEvent(String paramString, long paramLong)
   {
-    AppMethodBeat.i(72173);
+    AppMethodBeat.i(17609);
     Object localObject1 = FacebookSdk.getApplicationContext();
     Object localObject2 = FacebookSdk.getApplicationId();
     Validate.notNull(localObject1, "context");
@@ -107,39 +107,39 @@ public class AutomaticAnalyticsLogger
       ((Bundle)localObject2).putCharSequence("fb_aa_time_spent_view_name", paramString);
       ((AppEventsLogger)localObject1).logEvent("fb_aa_time_spent_on_view", paramLong, (Bundle)localObject2);
     }
-    AppMethodBeat.o(72173);
+    AppMethodBeat.o(17609);
   }
   
   public static void logPurchaseInapp(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(72174);
+    AppMethodBeat.i(17610);
     if (!isImplicitPurchaseLoggingEnabled())
     {
-      AppMethodBeat.o(72174);
+      AppMethodBeat.o(17610);
       return;
     }
     paramString1 = getPurchaseLoggingParameters(paramString1, paramString2);
     if (paramString1 != null) {
       internalAppEventsLogger.logPurchaseImplicitlyInternal(paramString1.purchaseAmount, paramString1.currency, paramString1.param);
     }
-    AppMethodBeat.o(72174);
+    AppMethodBeat.o(17610);
   }
   
   public static void logPurchaseSubs(SubscriptionType paramSubscriptionType, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(72175);
+    AppMethodBeat.i(17611);
     if (!isImplicitPurchaseLoggingEnabled())
     {
-      AppMethodBeat.o(72175);
+      AppMethodBeat.o(17611);
       return;
     }
     String str = FacebookSdk.getApplicationId();
-    switch (AutomaticAnalyticsLogger.1.$SwitchMap$com$facebook$appevents$internal$SubscriptionType[paramSubscriptionType.ordinal()])
+    switch (1.$SwitchMap$com$facebook$appevents$internal$SubscriptionType[paramSubscriptionType.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(72175);
+      AppMethodBeat.o(17611);
       return;
       paramSubscriptionType = "SubscriptionRestore";
       for (;;)
@@ -148,7 +148,7 @@ public class AutomaticAnalyticsLogger
         if (paramString1 != null) {
           internalAppEventsLogger.logEventImplicitly(paramSubscriptionType, paramString1.purchaseAmount, paramString1.currency, paramString1.param);
         }
-        AppMethodBeat.o(72175);
+        AppMethodBeat.o(17611);
         return;
         paramSubscriptionType = "SubscriptionCancel";
         continue;
@@ -181,7 +181,7 @@ public class AutomaticAnalyticsLogger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.internal.AutomaticAnalyticsLogger
  * JD-Core Version:    0.7.0.1
  */

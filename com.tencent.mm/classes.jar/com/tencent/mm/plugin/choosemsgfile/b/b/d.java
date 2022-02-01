@@ -6,35 +6,44 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.at.o;
-import com.tencent.mm.g.c.dd;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.o;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
-import com.tencent.mm.plugin.choosemsgfile.b.d.b;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.plugin.choosemsgfile.b.d.c;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 public abstract class d
   extends a<m>
 {
-  public d(g paramg, bi parambi)
+  public d(g paramg, bl parambl)
   {
-    super(paramg, parambi);
+    super(paramg, parambl);
   }
   
-  private void a(m paramm)
+  private void a(final m paramm)
   {
     if (Looper.getMainLooper() == Looper.myLooper())
     {
       b(paramm);
       return;
     }
-    al.d(new d.1(this, paramm));
+    aq.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(123266);
+        d.a(d.this, paramm);
+        AppMethodBeat.o(123266);
+      }
+    });
   }
   
   private void b(m paramm)
   {
-    switch (this.kEJ)
+    switch (this.nLJ)
     {
     default: 
     case 1: 
@@ -42,91 +51,91 @@ public abstract class d
       do
       {
         return;
-        paramm.gvS.setVisibility(0);
-        paramm.kFf.setVisibility(8);
-        paramm.kFl.setVisibility(8);
-        paramm.kFm.setVisibility(8);
-        paramm.kFn.setVisibility(8);
+        paramm.iiP.setVisibility(0);
+        paramm.nMh.setVisibility(8);
+        paramm.fti.setVisibility(8);
+        paramm.nMn.setVisibility(8);
+        paramm.nMo.setVisibility(8);
         return;
-        paramm.gvS.setVisibility(0);
-        paramm.kFf.setVisibility(0);
-        paramm.kFl.setVisibility(8);
-        paramm.kFm.setVisibility(8);
-        paramm.kFn.setVisibility(8);
-      } while (this.agc <= 0);
-      int i = (int)(this.Fb / this.agc * 100.0F);
+        paramm.iiP.setVisibility(0);
+        paramm.nMh.setVisibility(0);
+        paramm.fti.setVisibility(8);
+        paramm.nMn.setVisibility(8);
+        paramm.nMo.setVisibility(8);
+      } while (this.anj <= 0);
+      int i = (int)(this.LZ / this.anj * 100.0F);
       if ((i == -1) || (i >= 100))
       {
-        paramm.kFf.setProgress(100);
+        paramm.nMh.setProgress(100);
         return;
       }
-      paramm.kFf.setProgress(i);
+      paramm.nMh.setProgress(i);
       return;
     case 3: 
-      paramm.gvS.setVisibility(8);
-      paramm.kFf.setVisibility(8);
-      paramm.kFl.setVisibility(0);
-      paramm.kFm.setVisibility(0);
-      paramm.kFn.setVisibility(8);
+      paramm.iiP.setVisibility(8);
+      paramm.nMh.setVisibility(8);
+      paramm.fti.setVisibility(0);
+      paramm.nMn.setVisibility(0);
+      paramm.nMo.setVisibility(8);
       return;
     case 4: 
-      paramm.gvS.setVisibility(8);
-      paramm.kFf.setVisibility(8);
-      paramm.kFl.setVisibility(8);
-      paramm.kFm.setVisibility(8);
-      paramm.kFn.setVisibility(0);
+      paramm.iiP.setVisibility(8);
+      paramm.nMh.setVisibility(8);
+      paramm.fti.setVisibility(8);
+      paramm.nMn.setVisibility(8);
+      paramm.nMo.setVisibility(0);
       return;
     case 5: 
-      paramm.gvS.setVisibility(8);
-      paramm.kFf.setVisibility(8);
-      paramm.kFl.setVisibility(8);
-      paramm.kFm.setVisibility(8);
-      paramm.kFn.setVisibility(0);
+      paramm.iiP.setVisibility(8);
+      paramm.nMh.setVisibility(8);
+      paramm.fti.setVisibility(8);
+      paramm.nMn.setVisibility(8);
+      paramm.nMo.setVisibility(0);
       return;
     }
-    paramm.gvS.setVisibility(8);
-    paramm.kFf.setVisibility(8);
-    paramm.kFl.setVisibility(0);
-    paramm.kFm.setVisibility(0);
-    paramm.kFl.setChecked(false);
-    paramm.kFn.setVisibility(8);
+    paramm.iiP.setVisibility(8);
+    paramm.nMh.setVisibility(8);
+    paramm.fti.setVisibility(0);
+    paramm.nMn.setVisibility(0);
+    paramm.fti.setChecked(false);
+    paramm.nMo.setVisibility(8);
   }
   
-  public void a(m paramm, int paramInt)
+  public void a(m paramm, int paramInt, a parama)
   {
-    paramm.kha.setTag(this);
-    paramm.kFm.setTag(this);
-    o.ahG().a(aaZ(), paramm.kha, b.dD(getContext()));
-    paramm.kFi.setVisibility(8);
-    paramm.kFj.setVisibility(8);
-    paramm.kFg.setVisibility(8);
-    paramm.kFh.setVisibility(8);
-    paramm.kFm.setVisibility(0);
-    paramm.kFl.setVisibility(0);
+    paramm.nMg.setTag(this);
+    paramm.nMn.setTag(this);
+    o.ayJ().a(asu(), paramm.nMg, c.el(getContext()));
+    paramm.nMk.setVisibility(8);
+    paramm.nMl.setVisibility(8);
+    paramm.nMi.setVisibility(8);
+    paramm.nMj.setVisibility(8);
+    paramm.nMn.setVisibility(0);
+    paramm.fti.setVisibility(0);
     a(paramm);
-    if (bgl().ij(this.kEz.field_msgId))
+    if (bNw().nR(this.nLz.field_msgId))
     {
-      paramm.kFk.setVisibility(8);
-      paramm.kFl.setChecked(true);
+      paramm.nMm.setVisibility(8);
+      paramm.fti.setChecked(true);
     }
     while (isEnable())
     {
-      paramm.kFe.setAlpha(1.0F);
+      paramm.nMf.setAlpha(1.0F);
       return;
-      paramm.kFk.setVisibility(0);
-      paramm.kFl.setChecked(false);
+      paramm.nMm.setVisibility(0);
+      paramm.fti.setChecked(false);
     }
-    paramm.kFe.setAlpha(0.6F);
+    paramm.nMf.setAlpha(0.6F);
   }
   
-  protected String aaZ()
+  protected String asu()
   {
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.d
  * JD-Core Version:    0.7.0.1
  */

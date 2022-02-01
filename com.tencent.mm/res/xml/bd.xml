@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:newtip="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.pluginsdk.ui.preference.AccountInfoPreference mm:key="more_tab_setting_personal_info" mm:layout="@layout/asi" mm:title="@string/f9e" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference mm:icon="@raw/icons_outlined_wechatpay" mm:iconColor="@color/Brand" mm:key="settings_mm_wallet" mm:path="pay" mm:title="@string/f7m" />
+    <PreferenceSmallCategory />
+    <NormalIconPreference mm:icon="?fz" mm:key="settings_mm_favorite" mm:title="@string/f7k" />
+    <NormalIconPreference mm:icon="@raw/icons_outlined_album" mm:iconColor="?m" mm:key="settings_my_album" mm:title="@string/f8e" />
+    <com.tencent.mm.plugin.newtips.NormalIconNewTipPreference mm:icon="?fy" mm:key="settings_mm_cardpackage" mm:path="card" mm:title="@string/f7i" />
+    <NormalIconPreference mm:icon="@raw/icons_outlined_emoji" mm:iconColor="?p" mm:key="settings_emoji_store" mm:title="@string/f5w" />
+    <PreferenceSmallCategory />
+    <NormalIconPreference mm:icon="@raw/icons_outlined_setting" mm:iconColor="?m" mm:key="more_setting" mm:title="@string/fbd" />
+    <PreferenceSmallCategory />
+    <NormalIconPreference mm:icon="@raw/more_ui_show" mm:key="more_uishow" mm:title="@string/g4l" />
+    <PreferenceCategory />
+    <Preference mm:key="settings_privacy_agreements" mm:layout="@layout/aqg" />
+</PreferenceScreen>

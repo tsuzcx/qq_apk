@@ -42,9 +42,9 @@ public final class ConnectionEvent
   
   static
   {
-    AppMethodBeat.i(89949);
+    AppMethodBeat.i(4971);
     CREATOR = new ConnectionEventCreator();
-    AppMethodBeat.o(89949);
+    AppMethodBeat.o(4971);
   }
   
   @SafeParcelable.Constructor
@@ -72,33 +72,33 @@ public final class ConnectionEvent
   public ConnectionEvent(ConnectionEvent paramConnectionEvent)
   {
     this(paramConnectionEvent.zzal, paramConnectionEvent.getTimeMillis(), paramConnectionEvent.getEventType(), paramConnectionEvent.getCallingProcess(), paramConnectionEvent.getCallingService(), paramConnectionEvent.getTargetProcess(), paramConnectionEvent.getTargetService(), paramConnectionEvent.getStackTrace(), paramConnectionEvent.getEventKey(), paramConnectionEvent.getElapsedRealtime(), paramConnectionEvent.getHeapAlloc());
-    AppMethodBeat.i(89941);
-    AppMethodBeat.o(89941);
+    AppMethodBeat.i(4963);
+    AppMethodBeat.o(4963);
   }
   
   public static boolean checkEventType(StatsEvent paramStatsEvent)
   {
-    AppMethodBeat.i(89945);
+    AppMethodBeat.i(4967);
     if ((2 == paramStatsEvent.getEventType()) || (3 == paramStatsEvent.getEventType()) || (4 == paramStatsEvent.getEventType()) || (1 == paramStatsEvent.getEventType()) || (6 == paramStatsEvent.getEventType()) || (13 == paramStatsEvent.getEventType()) || (14 == paramStatsEvent.getEventType()) || (15 == paramStatsEvent.getEventType()))
     {
-      AppMethodBeat.o(89945);
+      AppMethodBeat.o(4967);
       return true;
     }
-    AppMethodBeat.o(89945);
+    AppMethodBeat.o(4967);
     return false;
   }
   
   public final StatsEvent ReconstructCloseEvent(StatsEvent paramStatsEvent)
   {
-    AppMethodBeat.i(89942);
+    AppMethodBeat.i(4964);
     if ((paramStatsEvent instanceof ConnectionEvent))
     {
       paramStatsEvent = (ConnectionEvent)paramStatsEvent;
       paramStatsEvent = (ConnectionEvent)((ConnectionEvent)new ConnectionEvent(paramStatsEvent).setEventType(getEventType())).setDurationMillis(getElapsedRealtime() - paramStatsEvent.getElapsedRealtime());
-      AppMethodBeat.o(89942);
+      AppMethodBeat.o(4964);
       return paramStatsEvent;
     }
-    AppMethodBeat.o(89942);
+    AppMethodBeat.o(4964);
     return paramStatsEvent;
   }
   
@@ -139,7 +139,7 @@ public final class ConnectionEvent
   
   public final String getSpecificString()
   {
-    AppMethodBeat.i(89944);
+    AppMethodBeat.i(4966);
     String str2 = getCallingProcess();
     String str3 = getCallingService();
     String str4 = getTargetProcess();
@@ -149,7 +149,7 @@ public final class ConnectionEvent
     {
       long l = getHeapAlloc();
       str1 = String.valueOf(str2).length() + 26 + String.valueOf(str3).length() + String.valueOf(str4).length() + String.valueOf(str5).length() + String.valueOf(str1).length() + "\t" + str2 + "/" + str3 + "\t" + str4 + "/" + str5 + "\t" + str1 + "\t" + l;
-      AppMethodBeat.o(89944);
+      AppMethodBeat.o(4966);
       return str1;
     }
   }
@@ -200,7 +200,7 @@ public final class ConnectionEvent
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(89943);
+    AppMethodBeat.i(4965);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     SafeParcelWriter.writeLong(paramParcel, 2, getTimeMillis());
@@ -214,12 +214,12 @@ public final class ConnectionEvent
     SafeParcelWriter.writeInt(paramParcel, 12, getEventType());
     SafeParcelWriter.writeString(paramParcel, 13, getEventKey(), false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(89943);
+    AppMethodBeat.o(4965);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.stats.ConnectionEvent
  * JD-Core Version:    0.7.0.1
  */

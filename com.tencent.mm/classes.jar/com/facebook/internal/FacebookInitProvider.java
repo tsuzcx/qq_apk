@@ -14,9 +14,9 @@ public final class FacebookInitProvider
   
   static
   {
-    AppMethodBeat.i(72280);
+    AppMethodBeat.i(17716);
     TAG = FacebookInitProvider.class.getSimpleName();
-    AppMethodBeat.o(72280);
+    AppMethodBeat.o(17716);
   }
   
   public final int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
@@ -36,17 +36,17 @@ public final class FacebookInitProvider
   
   public final boolean onCreate()
   {
-    AppMethodBeat.i(72279);
+    AppMethodBeat.i(17715);
     try
     {
       FacebookSdk.sdkInitialize(getContext());
-      label12:
-      AppMethodBeat.o(72279);
+      label13:
+      AppMethodBeat.o(17715);
       return false;
     }
     catch (Exception localException)
     {
-      break label12;
+      break label13;
     }
   }
   
@@ -62,7 +62,7 @@ public final class FacebookInitProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.facebook.internal.FacebookInitProvider
  * JD-Core Version:    0.7.0.1
  */

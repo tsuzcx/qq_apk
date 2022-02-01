@@ -2,29 +2,29 @@ package com.tencent.mm.plugin.wallet_core.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class aj
 {
-  public ArrayList<Bankcard> ulH;
-  public String ulI;
+  public ArrayList<Bankcard> Aib;
+  public String Aic;
   
   public aj()
   {
-    AppMethodBeat.i(46944);
-    this.ulH = new ArrayList();
-    AppMethodBeat.o(46944);
+    AppMethodBeat.i(70472);
+    this.Aib = new ArrayList();
+    AppMethodBeat.o(70472);
   }
   
-  public final Bankcard afk(String paramString)
+  public final Bankcard atS(String paramString)
   {
-    AppMethodBeat.i(46945);
+    AppMethodBeat.i(70473);
     Bankcard localBankcard;
-    if (this.ulH.size() > 0)
+    if (this.Aib.size() > 0)
     {
-      Iterator localIterator = this.ulH.iterator();
+      Iterator localIterator = this.Aib.iterator();
       do
       {
         if (!localIterator.hasNext()) {
@@ -36,50 +36,50 @@ public final class aj
     for (paramString = localBankcard;; paramString = null)
     {
       if (paramString == null) {
-        ab.e("MicroMsg.WalletRepaymentBankcardMgr", "getBankcardBySerialNo return null");
+        ad.e("MicroMsg.WalletRepaymentBankcardMgr", "getBankcardBySerialNo return null");
       }
       for (;;)
       {
-        AppMethodBeat.o(46945);
+        AppMethodBeat.o(70473);
         return paramString;
-        ab.i("MicroMsg.WalletRepaymentBankcardMgr", "getBankcardBySerialNo succ");
+        ad.i("MicroMsg.WalletRepaymentBankcardMgr", "getBankcardBySerialNo succ");
         continue;
-        ab.e("MicroMsg.WalletRepaymentBankcardMgr", "repayment bankcard list size is 0");
+        ad.e("MicroMsg.WalletRepaymentBankcardMgr", "repayment bankcard list size is 0");
         paramString = null;
       }
     }
   }
   
-  public final boolean cTZ()
+  public final boolean ecq()
   {
-    AppMethodBeat.i(46946);
-    if (this.ulH.size() > 0)
+    AppMethodBeat.i(70474);
+    if (this.Aib.size() > 0)
     {
-      AppMethodBeat.o(46946);
+      AppMethodBeat.o(70474);
       return true;
     }
-    AppMethodBeat.o(46946);
+    AppMethodBeat.o(70474);
     return false;
   }
   
-  public final Bankcard cUa()
+  public final Bankcard ecr()
   {
-    AppMethodBeat.i(46947);
-    if (cTZ())
+    AppMethodBeat.i(70475);
+    if (ecq())
     {
-      if (!TextUtils.isEmpty(this.ulI))
+      if (!TextUtils.isEmpty(this.Aic))
       {
-        localBankcard = afk(this.ulI);
-        AppMethodBeat.o(46947);
+        localBankcard = atS(this.Aic);
+        AppMethodBeat.o(70475);
         return localBankcard;
       }
-      ab.i("MicroMsg.WalletRepaymentBankcardMgr", "last_use_card_serialno is empty,return the first one");
-      Bankcard localBankcard = (Bankcard)this.ulH.get(0);
-      AppMethodBeat.o(46947);
+      ad.i("MicroMsg.WalletRepaymentBankcardMgr", "last_use_card_serialno is empty,return the first one");
+      Bankcard localBankcard = (Bankcard)this.Aib.get(0);
+      AppMethodBeat.o(70475);
       return localBankcard;
     }
-    ab.e("MicroMsg.WalletRepaymentBankcardMgr", "Repayment card list is null");
-    AppMethodBeat.o(46947);
+    ad.e("MicroMsg.WalletRepaymentBankcardMgr", "Repayment card list is null");
+    AppMethodBeat.o(70475);
     return null;
   }
 }

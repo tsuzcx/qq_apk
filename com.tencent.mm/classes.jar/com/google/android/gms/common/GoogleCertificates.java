@@ -33,9 +33,9 @@ final class GoogleCertificates
   
   static
   {
-    AppMethodBeat.i(89384);
+    AppMethodBeat.i(4406);
     zzay = new Object();
-    AppMethodBeat.o(89384);
+    AppMethodBeat.o(4406);
   }
   
   /* Error */
@@ -44,42 +44,42 @@ final class GoogleCertificates
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 42
-    //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 44	com/google/android/gms/common/GoogleCertificates:zzaz	Landroid/content/Context;
-    //   11: ifnonnull +23 -> 34
-    //   14: aload_0
-    //   15: ifnull +19 -> 34
-    //   18: aload_0
-    //   19: invokevirtual 50	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   22: putstatic 44	com/google/android/gms/common/GoogleCertificates:zzaz	Landroid/content/Context;
-    //   25: ldc 42
-    //   27: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   30: ldc 2
-    //   32: monitorexit
-    //   33: return
-    //   34: ldc 42
-    //   36: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   39: goto -9 -> 30
-    //   42: astore_0
-    //   43: ldc 2
-    //   45: monitorexit
-    //   46: aload_0
-    //   47: athrow
+    //   3: sipush 4400
+    //   6: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: getstatic 42	com/google/android/gms/common/GoogleCertificates:zzaz	Landroid/content/Context;
+    //   12: ifnonnull +24 -> 36
+    //   15: aload_0
+    //   16: ifnull +20 -> 36
+    //   19: aload_0
+    //   20: invokevirtual 48	android/content/Context:getApplicationContext	()Landroid/content/Context;
+    //   23: putstatic 42	com/google/android/gms/common/GoogleCertificates:zzaz	Landroid/content/Context;
+    //   26: sipush 4400
+    //   29: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   32: ldc 2
+    //   34: monitorexit
+    //   35: return
+    //   36: sipush 4400
+    //   39: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   42: goto -10 -> 32
+    //   45: astore_0
+    //   46: ldc 2
+    //   48: monitorexit
+    //   49: aload_0
+    //   50: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	48	0	paramContext	Context
+    //   0	51	0	paramContext	Context
     // Exception table:
     //   from	to	target	type
-    //   3	14	42	finally
-    //   18	30	42	finally
-    //   34	39	42	finally
+    //   3	15	45	finally
+    //   19	32	45	finally
+    //   36	42	45	finally
   }
   
   static zzg zza(String paramString, CertData paramCertData, boolean paramBoolean)
   {
     boolean bool1 = true;
-    AppMethodBeat.i(89383);
+    AppMethodBeat.i(4405);
     try
     {
       zzc();
@@ -87,7 +87,7 @@ final class GoogleCertificates
       GoogleCertificatesQuery localGoogleCertificatesQuery = new GoogleCertificatesQuery(paramString, paramCertData, paramBoolean);
       boolean bool2;
       if (paramBoolean) {
-        break label127;
+        break label132;
       }
     }
     catch (DynamiteModule.LoadingException paramString)
@@ -96,38 +96,38 @@ final class GoogleCertificates
       {
         bool2 = zzax.isGoogleOrPlatformSigned(localGoogleCertificatesQuery, ObjectWrapper.wrap(zzaz.getPackageManager()));
         if (!bool2) {
-          break label96;
+          break label100;
         }
         paramString = zzg.zzg();
-        AppMethodBeat.o(89383);
+        AppMethodBeat.o(4405);
         return paramString;
       }
       catch (RemoteException paramString)
       {
         paramString = zzg.zza("module call", paramString);
-        AppMethodBeat.o(89383);
+        AppMethodBeat.o(4405);
         return paramString;
       }
       paramString = paramString;
       paramString = zzg.zza("module init", paramString);
-      AppMethodBeat.o(89383);
+      AppMethodBeat.o(4405);
       return paramString;
     }
-    label96:
+    label100:
     if (zza(paramString, paramCertData, true).zzbl) {}
     for (;;)
     {
       paramString = zzg.zza(paramString, paramCertData, paramBoolean, bool1);
-      AppMethodBeat.o(89383);
+      AppMethodBeat.o(4405);
       return paramString;
-      label127:
+      label132:
       bool1 = false;
     }
   }
   
   private static Set<ICertData> zza(IBinder[] paramArrayOfIBinder)
   {
-    AppMethodBeat.i(89380);
+    AppMethodBeat.i(4402);
     int j = paramArrayOfIBinder.length;
     HashSet localHashSet = new HashSet(j);
     int i = 0;
@@ -139,16 +139,16 @@ final class GoogleCertificates
       }
       i += 1;
     }
-    AppMethodBeat.o(89380);
+    AppMethodBeat.o(4402);
     return localHashSet;
   }
   
   private static void zzc()
   {
-    AppMethodBeat.i(89379);
+    AppMethodBeat.i(4401);
     if (zzax != null)
     {
-      AppMethodBeat.o(89379);
+      AppMethodBeat.o(4401);
       return;
     }
     Preconditions.checkNotNull(zzaz);
@@ -157,7 +157,7 @@ final class GoogleCertificates
       if (zzax == null) {
         zzax = IGoogleCertificatesApi.Stub.asInterface(DynamiteModule.load(zzaz, DynamiteModule.PREFER_HIGHEST_OR_LOCAL_VERSION_NO_FORCE_STAGING, "com.google.android.gms.googlecertificates").instantiate("com.google.android.gms.common.GoogleCertificatesImpl"));
       }
-      AppMethodBeat.o(89379);
+      AppMethodBeat.o(4401);
       return;
     }
   }
@@ -168,79 +168,79 @@ final class GoogleCertificates
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 158
-    //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 160	com/google/android/gms/common/GoogleCertificates:zzba	Ljava/util/Set;
-    //   11: ifnull +17 -> 28
-    //   14: getstatic 160	com/google/android/gms/common/GoogleCertificates:zzba	Ljava/util/Set;
-    //   17: astore_0
-    //   18: ldc 158
-    //   20: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   23: ldc 2
-    //   25: monitorexit
-    //   26: aload_0
-    //   27: areturn
-    //   28: invokestatic 60	com/google/android/gms/common/GoogleCertificates:zzc	()V
-    //   31: getstatic 73	com/google/android/gms/common/GoogleCertificates:zzax	Lcom/google/android/gms/common/internal/IGoogleCertificatesApi;
-    //   34: invokeinterface 164 1 0
-    //   39: astore_0
-    //   40: aload_0
-    //   41: ifnonnull +34 -> 75
-    //   44: invokestatic 169	java/util/Collections:emptySet	()Ljava/util/Set;
-    //   47: astore_0
-    //   48: ldc 158
-    //   50: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   53: goto -30 -> 23
-    //   56: astore_0
-    //   57: ldc 2
-    //   59: monitorexit
-    //   60: aload_0
-    //   61: athrow
-    //   62: astore_0
-    //   63: invokestatic 169	java/util/Collections:emptySet	()Ljava/util/Set;
-    //   66: astore_0
-    //   67: ldc 158
-    //   69: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   72: goto -49 -> 23
-    //   75: aload_0
-    //   76: invokestatic 173	com/google/android/gms/dynamic/ObjectWrapper:unwrap	(Lcom/google/android/gms/dynamic/IObjectWrapper;)Ljava/lang/Object;
-    //   79: checkcast 175	[Landroid/os/IBinder;
-    //   82: invokestatic 177	com/google/android/gms/common/GoogleCertificates:zza	([Landroid/os/IBinder;)Ljava/util/Set;
-    //   85: putstatic 160	com/google/android/gms/common/GoogleCertificates:zzba	Ljava/util/Set;
-    //   88: getstatic 160	com/google/android/gms/common/GoogleCertificates:zzba	Ljava/util/Set;
-    //   91: astore_0
-    //   92: ldc 158
-    //   94: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   97: goto -74 -> 23
-    //   100: astore_0
-    //   101: invokestatic 169	java/util/Collections:emptySet	()Ljava/util/Set;
-    //   104: astore_0
-    //   105: ldc 158
-    //   107: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   110: goto -87 -> 23
+    //   3: sipush 4403
+    //   6: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: getstatic 154	com/google/android/gms/common/GoogleCertificates:zzba	Ljava/util/Set;
+    //   12: ifnull +18 -> 30
+    //   15: getstatic 154	com/google/android/gms/common/GoogleCertificates:zzba	Ljava/util/Set;
+    //   18: astore_0
+    //   19: sipush 4403
+    //   22: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   25: ldc 2
+    //   27: monitorexit
+    //   28: aload_0
+    //   29: areturn
+    //   30: invokestatic 57	com/google/android/gms/common/GoogleCertificates:zzc	()V
+    //   33: getstatic 70	com/google/android/gms/common/GoogleCertificates:zzax	Lcom/google/android/gms/common/internal/IGoogleCertificatesApi;
+    //   36: invokeinterface 158 1 0
+    //   41: astore_0
+    //   42: aload_0
+    //   43: ifnonnull +36 -> 79
+    //   46: invokestatic 163	java/util/Collections:emptySet	()Ljava/util/Set;
+    //   49: astore_0
+    //   50: sipush 4403
+    //   53: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   56: goto -31 -> 25
+    //   59: astore_0
+    //   60: ldc 2
+    //   62: monitorexit
+    //   63: aload_0
+    //   64: athrow
+    //   65: astore_0
+    //   66: invokestatic 163	java/util/Collections:emptySet	()Ljava/util/Set;
+    //   69: astore_0
+    //   70: sipush 4403
+    //   73: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: goto -51 -> 25
+    //   79: aload_0
+    //   80: invokestatic 167	com/google/android/gms/dynamic/ObjectWrapper:unwrap	(Lcom/google/android/gms/dynamic/IObjectWrapper;)Ljava/lang/Object;
+    //   83: checkcast 169	[Landroid/os/IBinder;
+    //   86: invokestatic 171	com/google/android/gms/common/GoogleCertificates:zza	([Landroid/os/IBinder;)Ljava/util/Set;
+    //   89: putstatic 154	com/google/android/gms/common/GoogleCertificates:zzba	Ljava/util/Set;
+    //   92: getstatic 154	com/google/android/gms/common/GoogleCertificates:zzba	Ljava/util/Set;
+    //   95: astore_0
+    //   96: sipush 4403
+    //   99: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   102: goto -77 -> 25
+    //   105: astore_0
+    //   106: invokestatic 163	java/util/Collections:emptySet	()Ljava/util/Set;
+    //   109: astore_0
+    //   110: sipush 4403
+    //   113: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   116: goto -91 -> 25
     // Local variable table:
     //   start	length	slot	name	signature
-    //   17	31	0	localObject1	Object
-    //   56	5	0	localObject2	Object
-    //   62	1	0	localLoadingException	DynamiteModule.LoadingException
-    //   66	26	0	localSet1	Set
-    //   100	1	0	localRemoteException	RemoteException
-    //   104	1	0	localSet2	Set
+    //   18	32	0	localObject1	Object
+    //   59	5	0	localObject2	Object
+    //   65	1	0	localLoadingException	DynamiteModule.LoadingException
+    //   69	27	0	localSet1	Set
+    //   105	1	0	localRemoteException	RemoteException
+    //   109	1	0	localSet2	Set
     // Exception table:
     //   from	to	target	type
-    //   3	23	56	finally
-    //   28	31	56	finally
-    //   31	40	56	finally
-    //   44	48	56	finally
-    //   48	53	56	finally
-    //   63	72	56	finally
-    //   75	88	56	finally
-    //   88	97	56	finally
-    //   101	110	56	finally
-    //   28	31	62	com/google/android/gms/dynamite/DynamiteModule$LoadingException
-    //   31	40	100	android/os/RemoteException
-    //   44	48	100	android/os/RemoteException
-    //   75	88	100	android/os/RemoteException
+    //   3	25	59	finally
+    //   30	33	59	finally
+    //   33	42	59	finally
+    //   46	50	59	finally
+    //   50	56	59	finally
+    //   66	76	59	finally
+    //   79	92	59	finally
+    //   92	102	59	finally
+    //   106	116	59	finally
+    //   30	33	65	com/google/android/gms/dynamite/DynamiteModule$LoadingException
+    //   33	42	105	android/os/RemoteException
+    //   46	50	105	android/os/RemoteException
+    //   79	92	105	android/os/RemoteException
   }
   
   /* Error */
@@ -249,79 +249,79 @@ final class GoogleCertificates
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 180
-    //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 182	com/google/android/gms/common/GoogleCertificates:zzbb	Ljava/util/Set;
-    //   11: ifnull +17 -> 28
-    //   14: getstatic 182	com/google/android/gms/common/GoogleCertificates:zzbb	Ljava/util/Set;
-    //   17: astore_0
-    //   18: ldc 180
-    //   20: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   23: ldc 2
-    //   25: monitorexit
-    //   26: aload_0
-    //   27: areturn
-    //   28: invokestatic 60	com/google/android/gms/common/GoogleCertificates:zzc	()V
-    //   31: getstatic 73	com/google/android/gms/common/GoogleCertificates:zzax	Lcom/google/android/gms/common/internal/IGoogleCertificatesApi;
-    //   34: invokeinterface 185 1 0
-    //   39: astore_0
-    //   40: aload_0
-    //   41: ifnonnull +34 -> 75
-    //   44: invokestatic 169	java/util/Collections:emptySet	()Ljava/util/Set;
-    //   47: astore_0
-    //   48: ldc 180
-    //   50: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   53: goto -30 -> 23
-    //   56: astore_0
-    //   57: ldc 2
-    //   59: monitorexit
-    //   60: aload_0
-    //   61: athrow
-    //   62: astore_0
-    //   63: invokestatic 169	java/util/Collections:emptySet	()Ljava/util/Set;
-    //   66: astore_0
-    //   67: ldc 180
-    //   69: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   72: goto -49 -> 23
-    //   75: aload_0
-    //   76: invokestatic 173	com/google/android/gms/dynamic/ObjectWrapper:unwrap	(Lcom/google/android/gms/dynamic/IObjectWrapper;)Ljava/lang/Object;
-    //   79: checkcast 175	[Landroid/os/IBinder;
-    //   82: invokestatic 177	com/google/android/gms/common/GoogleCertificates:zza	([Landroid/os/IBinder;)Ljava/util/Set;
-    //   85: putstatic 182	com/google/android/gms/common/GoogleCertificates:zzbb	Ljava/util/Set;
-    //   88: getstatic 182	com/google/android/gms/common/GoogleCertificates:zzbb	Ljava/util/Set;
-    //   91: astore_0
-    //   92: ldc 180
-    //   94: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   97: goto -74 -> 23
-    //   100: astore_0
-    //   101: invokestatic 169	java/util/Collections:emptySet	()Ljava/util/Set;
-    //   104: astore_0
-    //   105: ldc 180
-    //   107: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   110: goto -87 -> 23
+    //   3: sipush 4404
+    //   6: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: getstatic 175	com/google/android/gms/common/GoogleCertificates:zzbb	Ljava/util/Set;
+    //   12: ifnull +18 -> 30
+    //   15: getstatic 175	com/google/android/gms/common/GoogleCertificates:zzbb	Ljava/util/Set;
+    //   18: astore_0
+    //   19: sipush 4404
+    //   22: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   25: ldc 2
+    //   27: monitorexit
+    //   28: aload_0
+    //   29: areturn
+    //   30: invokestatic 57	com/google/android/gms/common/GoogleCertificates:zzc	()V
+    //   33: getstatic 70	com/google/android/gms/common/GoogleCertificates:zzax	Lcom/google/android/gms/common/internal/IGoogleCertificatesApi;
+    //   36: invokeinterface 178 1 0
+    //   41: astore_0
+    //   42: aload_0
+    //   43: ifnonnull +36 -> 79
+    //   46: invokestatic 163	java/util/Collections:emptySet	()Ljava/util/Set;
+    //   49: astore_0
+    //   50: sipush 4404
+    //   53: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   56: goto -31 -> 25
+    //   59: astore_0
+    //   60: ldc 2
+    //   62: monitorexit
+    //   63: aload_0
+    //   64: athrow
+    //   65: astore_0
+    //   66: invokestatic 163	java/util/Collections:emptySet	()Ljava/util/Set;
+    //   69: astore_0
+    //   70: sipush 4404
+    //   73: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: goto -51 -> 25
+    //   79: aload_0
+    //   80: invokestatic 167	com/google/android/gms/dynamic/ObjectWrapper:unwrap	(Lcom/google/android/gms/dynamic/IObjectWrapper;)Ljava/lang/Object;
+    //   83: checkcast 169	[Landroid/os/IBinder;
+    //   86: invokestatic 171	com/google/android/gms/common/GoogleCertificates:zza	([Landroid/os/IBinder;)Ljava/util/Set;
+    //   89: putstatic 175	com/google/android/gms/common/GoogleCertificates:zzbb	Ljava/util/Set;
+    //   92: getstatic 175	com/google/android/gms/common/GoogleCertificates:zzbb	Ljava/util/Set;
+    //   95: astore_0
+    //   96: sipush 4404
+    //   99: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   102: goto -77 -> 25
+    //   105: astore_0
+    //   106: invokestatic 163	java/util/Collections:emptySet	()Ljava/util/Set;
+    //   109: astore_0
+    //   110: sipush 4404
+    //   113: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   116: goto -91 -> 25
     // Local variable table:
     //   start	length	slot	name	signature
-    //   17	31	0	localObject1	Object
-    //   56	5	0	localObject2	Object
-    //   62	1	0	localLoadingException	DynamiteModule.LoadingException
-    //   66	26	0	localSet1	Set
-    //   100	1	0	localRemoteException	RemoteException
-    //   104	1	0	localSet2	Set
+    //   18	32	0	localObject1	Object
+    //   59	5	0	localObject2	Object
+    //   65	1	0	localLoadingException	DynamiteModule.LoadingException
+    //   69	27	0	localSet1	Set
+    //   105	1	0	localRemoteException	RemoteException
+    //   109	1	0	localSet2	Set
     // Exception table:
     //   from	to	target	type
-    //   3	23	56	finally
-    //   28	31	56	finally
-    //   31	40	56	finally
-    //   44	48	56	finally
-    //   48	53	56	finally
-    //   63	72	56	finally
-    //   75	88	56	finally
-    //   88	97	56	finally
-    //   101	110	56	finally
-    //   28	31	62	com/google/android/gms/dynamite/DynamiteModule$LoadingException
-    //   31	40	100	android/os/RemoteException
-    //   44	48	100	android/os/RemoteException
-    //   75	88	100	android/os/RemoteException
+    //   3	25	59	finally
+    //   30	33	59	finally
+    //   33	42	59	finally
+    //   46	50	59	finally
+    //   50	56	59	finally
+    //   66	76	59	finally
+    //   79	92	59	finally
+    //   92	102	59	finally
+    //   106	116	59	finally
+    //   30	33	65	com/google/android/gms/dynamite/DynamiteModule$LoadingException
+    //   33	42	105	android/os/RemoteException
+    //   46	50	105	android/os/RemoteException
+    //   79	92	105	android/os/RemoteException
   }
   
   static abstract class CertData

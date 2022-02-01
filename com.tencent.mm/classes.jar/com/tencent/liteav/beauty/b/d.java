@@ -18,38 +18,38 @@ public class d
   
   void a(float paramFloat)
   {
-    AppMethodBeat.i(67054);
+    AppMethodBeat.i(15082);
     this.r = paramFloat;
     a(this.s, this.r / this.e);
     a(this.t, this.r / this.f);
-    AppMethodBeat.o(67054);
+    AppMethodBeat.o(15082);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(67053);
+    AppMethodBeat.i(15081);
     super.a(paramInt1, paramInt2);
     a(this.r);
-    AppMethodBeat.o(67053);
+    AppMethodBeat.o(15081);
   }
   
   public boolean b()
   {
-    AppMethodBeat.i(67052);
+    AppMethodBeat.i(15080);
     if (super.b())
     {
       this.s = GLES20.glGetUniformLocation(this.a, "texelWidthOffset");
       this.t = GLES20.glGetUniformLocation(this.a, "texelHeightOffset");
-      AppMethodBeat.o(67052);
+      AppMethodBeat.o(15080);
       return true;
     }
-    AppMethodBeat.o(67052);
+    AppMethodBeat.o(15080);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.d
  * JD-Core Version:    0.7.0.1
  */

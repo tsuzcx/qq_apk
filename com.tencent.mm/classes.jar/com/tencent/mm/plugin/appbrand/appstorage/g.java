@@ -1,142 +1,126 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-import com.tencent.luggage.g.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.b;
-import java.io.File;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.List;
+import com.tencent.mm.plugin.appbrand.jsapi.file.ar;
+import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoDownLoadMgr;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.q;
+import java.util.concurrent.TimeUnit;
 
-public class g
-  implements o
+public final class g
 {
-  public j Y(String paramString, boolean paramBoolean)
+  public static final Runnable iSg;
+  private static final long iSh;
+  private static final long iSi;
+  
+  static
   {
-    return j.gZE;
-  }
-  
-  public j Z(String paramString, boolean paramBoolean)
-  {
-    return j.gZE;
-  }
-  
-  public j a(com.tencent.mm.plugin.appbrand.s.j<String> paramj)
-  {
-    return j.gZO;
-  }
-  
-  public j a(File paramFile, String paramString, com.tencent.mm.plugin.appbrand.s.j<String> paramj)
-  {
-    return j.gZO;
-  }
-  
-  public j a(File paramFile, String paramString, boolean paramBoolean, com.tencent.mm.plugin.appbrand.s.j<String> paramj)
-  {
-    return j.gZO;
-  }
-  
-  public j a(String paramString, FileStructStat paramFileStructStat)
-  {
-    return j.gZE;
-  }
-  
-  public j a(String paramString, com.tencent.mm.plugin.appbrand.s.j<List<h>> paramj)
-  {
-    return j.gZE;
-  }
-  
-  public j a(String paramString, File paramFile, boolean paramBoolean)
-  {
-    return j.gZE;
-  }
-  
-  public j a(String paramString, InputStream paramInputStream, boolean paramBoolean)
-  {
-    return j.gZE;
-  }
-  
-  public File aa(String paramString, boolean paramBoolean)
-  {
-    return null;
-  }
-  
-  public void awI() {}
-  
-  public List<? extends o.a> awJ()
-  {
-    return null;
-  }
-  
-  public j b(String paramString, com.tencent.mm.plugin.appbrand.s.j<ByteBuffer> paramj)
-  {
-    return j.gZE;
-  }
-  
-  public j b(String paramString, File paramFile)
-  {
-    return j.gZE;
-  }
-  
-  public boolean bL(String paramString)
-  {
-    return false;
-  }
-  
-  public j h(String paramString, List<u> paramList)
-  {
-    return j.gZE;
-  }
-  
-  public void initialize() {}
-  
-  public void release() {}
-  
-  public j zd(String paramString)
-  {
-    return j.gZE;
-  }
-  
-  public j ze(String paramString)
-  {
-    return j.gZE;
-  }
-  
-  public j zf(String paramString)
-  {
-    return j.gZE;
-  }
-  
-  public File zg(String paramString)
-  {
-    AppMethodBeat.i(90975);
-    paramString = aa(paramString, false);
-    AppMethodBeat.o(90975);
-    return paramString;
-  }
-  
-  public b zh(String paramString)
-  {
-    return null;
-  }
-  
-  public boolean zi(String paramString)
-  {
-    return false;
-  }
-  
-  public final InputStream zj(String paramString)
-  {
-    AppMethodBeat.i(90976);
-    com.tencent.mm.plugin.appbrand.s.j localj = new com.tencent.mm.plugin.appbrand.s.j();
-    if (b(paramString, localj) == j.gZA)
+    AppMethodBeat.i(44454);
+    iSg = new Runnable()
     {
-      paramString = new a((ByteBuffer)localj.value);
-      AppMethodBeat.o(90976);
-      return paramString;
-    }
-    AppMethodBeat.o(90976);
-    return null;
+      private void q(e paramAnonymouse)
+      {
+        int i = 0;
+        AppMethodBeat.i(174713);
+        if ((!paramAnonymouse.exists()) || (!paramAnonymouse.isDirectory()))
+        {
+          AppMethodBeat.o(174713);
+          return;
+        }
+        if (i.eK(q.B(paramAnonymouse.fhU()) + "/dir.lock"))
+        {
+          if (bt.eGO() - new e(q.B(paramAnonymouse.fhU()) + "/dir.lock").lastModified() < g.iSi)
+          {
+            ad.d("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, locked", new Object[] { paramAnonymouse.getName() });
+            AppMethodBeat.o(174713);
+            return;
+          }
+          ad.e("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, lock expired", new Object[] { paramAnonymouse.getName() });
+        }
+        ad.d("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, lock free", new Object[] { paramAnonymouse.getName() });
+        paramAnonymouse = paramAnonymouse.a(new com.tencent.mm.vfs.g()
+        {
+          public final boolean accept(e paramAnonymous2e)
+          {
+            AppMethodBeat.i(174712);
+            if ((!paramAnonymous2e.getName().endsWith(".data")) && (!paramAnonymous2e.getName().startsWith("store_")) && (!paramAnonymous2e.getName().endsWith(".nomedia")))
+            {
+              AppMethodBeat.o(174712);
+              return true;
+            }
+            AppMethodBeat.o(174712);
+            return false;
+          }
+        });
+        if ((paramAnonymouse == null) || (paramAnonymouse.length <= 0))
+        {
+          AppMethodBeat.o(174713);
+          return;
+        }
+        long l = bt.eGO();
+        int j = paramAnonymouse.length;
+        while (i < j)
+        {
+          Object localObject = paramAnonymouse[i];
+          if (l - localObject.lastModified() >= g.iSh) {
+            i.deleteFile(q.B(localObject.fhU()));
+          }
+          i += 1;
+        }
+        AppMethodBeat.o(174713);
+      }
+      
+      public final void run()
+      {
+        int j = 0;
+        AppMethodBeat.i(44452);
+        Object localObject = new e(ar.aZK());
+        if ((!((e)localObject).exists()) || (!((e)localObject).isDirectory()))
+        {
+          AppMethodBeat.o(44452);
+          return;
+        }
+        localObject = ((e)localObject).fhW();
+        if ((localObject == null) || (localObject.length <= 0))
+        {
+          AppMethodBeat.o(44452);
+          return;
+        }
+        int k = localObject.length;
+        int i = 0;
+        while (i < k)
+        {
+          q(localObject[i]);
+          i += 1;
+        }
+        localObject = new e(AppBrandVideoDownLoadMgr.kmE);
+        if ((!((e)localObject).exists()) || (!((e)localObject).isDirectory()))
+        {
+          AppMethodBeat.o(44452);
+          return;
+        }
+        localObject = ((e)localObject).fhW();
+        if ((localObject == null) || (localObject.length <= 0))
+        {
+          AppMethodBeat.o(44452);
+          return;
+        }
+        k = localObject.length;
+        i = j;
+        while (i < k)
+        {
+          q(localObject[i]);
+          i += 1;
+        }
+        AppMethodBeat.o(44452);
+      }
+    };
+    iSh = TimeUnit.MINUTES.toMillis(30L);
+    iSi = TimeUnit.DAYS.toMillis(1L);
+    AppMethodBeat.o(44454);
   }
 }
 

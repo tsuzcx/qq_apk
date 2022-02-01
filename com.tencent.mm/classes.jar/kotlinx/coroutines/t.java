@@ -1,20 +1,27 @@
 package kotlinx.coroutines;
 
-import a.f.a.b;
-import a.l;
-import a.y;
-import kotlinx.coroutines.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.a.b;
+import d.l;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/CompletionHandlerBase;", "Lkotlinx/coroutines/internal/LockFreeLinkedListNode;", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "()V", "invoke", "kotlinx-coroutines-core"})
-public abstract class t
-  extends h
-  implements b<Throwable, y>
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/CompletedWithCancellation;", "", "result", "onCancellation", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "toString", "", "kotlinx-coroutines-core"})
+final class t
 {
-  public abstract void v(Throwable paramThrowable);
+  public final b<Throwable, y> Kdr;
+  public final Object result;
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(190034);
+    String str = "CompletedWithCancellation[" + this.result + ']';
+    AppMethodBeat.o(190034);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.t
  * JD-Core Version:    0.7.0.1
  */

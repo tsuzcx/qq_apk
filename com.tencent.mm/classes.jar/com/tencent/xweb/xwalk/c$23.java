@@ -11,15 +11,15 @@ final class c$23
   
   public final boolean onLongClick(View paramView)
   {
-    AppMethodBeat.i(85144);
-    this.BIO.eab();
-    AppMethodBeat.o(85144);
+    AppMethodBeat.i(154176);
+    this.IST.fsT();
+    AppMethodBeat.o(154176);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.xweb.xwalk.c.23
  * JD-Core Version:    0.7.0.1
  */

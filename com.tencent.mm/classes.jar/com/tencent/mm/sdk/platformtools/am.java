@@ -1,197 +1,163 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.os.Bundle;
-import android.os.Debug;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import junit.framework.Assert;
 
-public class am
-  extends Handler
-  implements aq.a
+public final class am
 {
-  private String toStringResult;
-  private Looper ynU;
-  private Handler.Callback ynV;
-  public a ynW;
+  public volatile boolean EUE;
   
-  public am(Handler.Callback paramCallback, a parama)
+  public am()
   {
-    super(paramCallback);
-    AppMethodBeat.i(52144);
-    this.toStringResult = null;
-    this.ynU = getLooper();
-    this.ynV = paramCallback;
-    this.ynW = parama;
-    AppMethodBeat.o(52144);
+    this.EUE = false;
   }
   
-  public am(Looper paramLooper, Handler.Callback paramCallback, a parama)
+  public am(boolean paramBoolean)
   {
-    super(paramLooper, paramCallback);
-    AppMethodBeat.i(52145);
-    this.toStringResult = null;
-    this.ynU = getLooper();
-    this.ynV = paramCallback;
-    this.ynW = parama;
-    AppMethodBeat.o(52145);
+    this.EUE = paramBoolean;
   }
   
-  public am(Looper paramLooper, a parama)
+  public final void block()
   {
-    super(paramLooper);
-    AppMethodBeat.i(52143);
-    this.toStringResult = null;
-    this.ynU = getLooper();
-    this.ynW = parama;
-    AppMethodBeat.o(52143);
-  }
-  
-  public am(a parama)
-  {
-    AppMethodBeat.i(52142);
-    this.toStringResult = null;
-    this.ynU = getLooper();
-    this.ynW = parama;
-    AppMethodBeat.o(52142);
-  }
-  
-  public final void a(Runnable paramRunnable, aq paramaq)
-  {
-    AppMethodBeat.i(52150);
-    if (this.ynW != null) {
-      this.ynW.onTaskRunEnd(paramRunnable, paramaq);
-    }
-    AppMethodBeat.o(52150);
-  }
-  
-  public final void a(Runnable paramRunnable, Thread paramThread, long paramLong1, long paramLong2, long paramLong3, float paramFloat)
-  {
-    AppMethodBeat.i(52151);
-    if (this.ynW != null) {
-      this.ynW.onLog(null, paramRunnable, paramThread, paramLong1, paramLong2, paramLong3, paramFloat);
-    }
-    AppMethodBeat.o(52151);
-  }
-  
-  public void dispatchMessage(Message paramMessage)
-  {
-    AppMethodBeat.i(52147);
-    if ((paramMessage.getCallback() != null) || (this.ynV != null))
+    AppMethodBeat.i(157616);
+    try
     {
-      super.dispatchMessage(paramMessage);
-      AppMethodBeat.o(52147);
+      for (;;)
+      {
+        boolean bool = this.EUE;
+        if (bool) {
+          break;
+        }
+        try
+        {
+          wait();
+        }
+        catch (InterruptedException localInterruptedException) {}
+      }
       return;
     }
-    long l1 = System.currentTimeMillis();
-    Bundle localBundle = paramMessage.getData();
-    long l2 = localBundle.getLong("addTime");
-    long l3 = localBundle.getLong("delay");
-    localBundle = localBundle.getBundle("tmp");
-    long l4 = Debug.threadCpuTimeNanos();
-    paramMessage.setData(localBundle);
-    handleMessage(paramMessage);
-    if (this.ynW != null) {
-      this.ynW.onLog(paramMessage, null, this.ynU.getThread(), System.currentTimeMillis() - l1, Debug.threadCpuTimeNanos() - l4, l1 - l2 - l3, -1.0F);
-    }
-    AppMethodBeat.o(52147);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    AppMethodBeat.i(52148);
-    if (this.ynW != null) {
-      this.ynW.handleMessage(paramMessage);
-    }
-    AppMethodBeat.o(52148);
-  }
-  
-  public boolean sendMessageAtTime(Message paramMessage, long paramLong)
-  {
-    AppMethodBeat.i(52146);
-    if (paramMessage != null) {}
-    Runnable localRunnable;
-    long l;
-    for (boolean bool = true;; bool = false)
+    finally
     {
-      Assert.assertTrue("msg is null", bool);
-      localRunnable = paramMessage.getCallback();
-      l = paramLong - SystemClock.uptimeMillis();
-      if (localRunnable != null) {
-        break;
-      }
-      localObject = new Bundle();
-      ((Bundle)localObject).putBundle("tmp", paramMessage.getData());
-      ((Bundle)localObject).putLong("delay", l);
-      ((Bundle)localObject).putLong("addTime", System.currentTimeMillis());
-      paramMessage.setData((Bundle)localObject);
-      bool = super.sendMessageAtTime(paramMessage, paramLong);
-      AppMethodBeat.o(52146);
-      return bool;
+      AppMethodBeat.o(157616);
     }
-    if (paramMessage.getTarget() == null) {}
-    Message localMessage;
-    for (Object localObject = this;; localObject = paramMessage.getTarget())
-    {
-      localObject = new aq(this.ynU.getThread(), (Handler)localObject, localRunnable, paramMessage.obj, this);
-      if (l > 0L) {
-        ((aq)localObject).yoo = l;
-      }
-      localMessage = Message.obtain(paramMessage.getTarget(), (Runnable)localObject);
-      localMessage.what = paramMessage.what;
-      localMessage.arg1 = paramMessage.arg1;
-      localMessage.arg2 = paramMessage.arg2;
-      localMessage.obj = paramMessage.obj;
-      localMessage.replyTo = paramMessage.replyTo;
-      localMessage.setData(paramMessage.getData());
-      paramMessage.recycle();
-      if ((getLooper() == null) || (getLooper().getThread().isAlive())) {
-        break;
-      }
-      ab.w("MicroMsg.MMInnerHandler", "sendMessageAtTime but thread[%d, %s] is dead so return false!", new Object[] { Long.valueOf(getLooper().getThread().getId()), getLooper().getThread().getName() });
-      AppMethodBeat.o(52146);
-      return false;
-    }
-    if (this.ynW != null) {
-      this.ynW.onTaskAdded(localRunnable, (aq)localObject);
-    }
-    bool = super.sendMessageAtTime(localMessage, paramLong);
-    if ((!bool) && (this.ynW != null)) {
-      this.ynW.onTaskRunEnd(localRunnable, (aq)localObject);
-    }
-    AppMethodBeat.o(52146);
-    return bool;
   }
   
-  public String toString()
+  public final void close()
   {
-    AppMethodBeat.i(52149);
-    if (this.toStringResult == null) {
-      this.toStringResult = ("MMInnerHandler{listener = " + this.ynW + "}");
+    try
+    {
+      this.EUE = false;
+      return;
     }
-    String str = this.toStringResult;
-    AppMethodBeat.o(52149);
+    finally {}
+  }
+  
+  /* Error */
+  public final boolean eFO()
+  {
+    // Byte code:
+    //   0: ldc 34
+    //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc2_w 35
+    //   8: lconst_0
+    //   9: lcmp
+    //   10: ifeq +74 -> 84
+    //   13: aload_0
+    //   14: monitorenter
+    //   15: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   18: lstore_1
+    //   19: ldc2_w 35
+    //   22: lload_1
+    //   23: ladd
+    //   24: lstore_3
+    //   25: aload_0
+    //   26: getfield 12	com/tencent/mm/sdk/platformtools/am:EUE	Z
+    //   29: istore 5
+    //   31: iload 5
+    //   33: ifne +23 -> 56
+    //   36: lload_1
+    //   37: lload_3
+    //   38: lcmp
+    //   39: ifge +17 -> 56
+    //   42: aload_0
+    //   43: lload_3
+    //   44: lload_1
+    //   45: lsub
+    //   46: invokevirtual 45	java/lang/Object:wait	(J)V
+    //   49: invokestatic 42	java/lang/System:currentTimeMillis	()J
+    //   52: lstore_1
+    //   53: goto -28 -> 25
+    //   56: aload_0
+    //   57: getfield 12	com/tencent/mm/sdk/platformtools/am:EUE	Z
+    //   60: istore 5
+    //   62: aload_0
+    //   63: monitorexit
+    //   64: ldc 34
+    //   66: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   69: iload 5
+    //   71: ireturn
+    //   72: astore 6
+    //   74: aload_0
+    //   75: monitorexit
+    //   76: ldc 34
+    //   78: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   81: aload 6
+    //   83: athrow
+    //   84: aload_0
+    //   85: invokevirtual 47	com/tencent/mm/sdk/platformtools/am:block	()V
+    //   88: ldc 34
+    //   90: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   93: iconst_1
+    //   94: ireturn
+    //   95: astore 6
+    //   97: goto -48 -> 49
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	100	0	this	am
+    //   18	35	1	l1	long
+    //   24	20	3	l2	long
+    //   29	41	5	bool	boolean
+    //   72	10	6	localObject	Object
+    //   95	1	6	localInterruptedException	InterruptedException
+    // Exception table:
+    //   from	to	target	type
+    //   15	19	72	finally
+    //   25	31	72	finally
+    //   42	49	72	finally
+    //   49	53	72	finally
+    //   56	64	72	finally
+    //   74	76	72	finally
+    //   42	49	95	java/lang/InterruptedException
+  }
+  
+  public final void open()
+  {
+    AppMethodBeat.i(157615);
+    try
+    {
+      boolean bool = this.EUE;
+      this.EUE = true;
+      if (!bool) {
+        notifyAll();
+      }
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(157615);
+    }
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(157618);
+    String str = "MMConditionVariable[" + hashCode() + "," + this.EUE + "]";
+    AppMethodBeat.o(157618);
     return str;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void handleMessage(Message paramMessage);
-    
-    public abstract void onLog(Message paramMessage, Runnable paramRunnable, Thread paramThread, long paramLong1, long paramLong2, long paramLong3, float paramFloat);
-    
-    public abstract void onTaskAdded(Runnable paramRunnable, aq paramaq);
-    
-    public abstract void onTaskRunEnd(Runnable paramRunnable, aq paramaq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.am
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="#ff292c2d" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/xo" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.brandservice.ui.EnterpriseBizContactListView android:id="@id/bl5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/e6m" android:layout_width="150.0dip" android:layout_height="150.0dip" android:src="@drawable/b0u" />
+    <TextView android:textSize="@dimen/hp" android:textColor="@color/y4" android:gravity="center" android:id="@id/e6o" android:paddingLeft="@dimen/bp" android:paddingRight="@dimen/bp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/he" android:text="@string/dy1" android:lineSpacingExtra="4.0dip" />
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/to" android:id="@id/e6n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="50.0dip" android:text="@string/d2b" />
 </LinearLayout>

@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.wear;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.wear.model.a;
-import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
 
 public final class Plugin
-  implements c
+  implements d
 {
-  public final o createApplication()
+  public final m createApplication()
   {
     return null;
   }
   
-  public final at createSubCore()
+  public final aw createSubCore()
   {
-    AppMethodBeat.i(26264);
+    AppMethodBeat.i(29949);
     a locala = new a();
-    AppMethodBeat.o(26264);
+    AppMethodBeat.o(29949);
     return locala;
   }
   
-  public final b getContactWidgetFactory()
+  public final c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.Plugin
  * JD-Core Version:    0.7.0.1
  */

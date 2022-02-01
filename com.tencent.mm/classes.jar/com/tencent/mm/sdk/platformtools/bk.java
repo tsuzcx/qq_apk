@@ -1,37 +1,54 @@
 package com.tencent.mm.sdk.platformtools;
 
+import android.content.Context;
+import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
+import java.util.List;
 
 public final class bk
 {
-  private static final HashMap<String, String> yqy;
+  private SensorManager BUg;
+  private bk.a EXd;
   
-  static
+  public bk(Context paramContext)
   {
-    AppMethodBeat.i(52280);
-    yqy = new HashMap();
-    AppMethodBeat.o(52280);
+    AppMethodBeat.i(157832);
+    this.BUg = ((SensorManager)paramContext.getSystemService("sensor"));
+    AppMethodBeat.o(157832);
   }
   
-  public static String getProperty(String paramString)
+  public final boolean aC(Runnable paramRunnable)
   {
-    AppMethodBeat.i(52278);
-    paramString = (String)yqy.get(paramString);
-    AppMethodBeat.o(52278);
-    return paramString;
+    AppMethodBeat.i(157833);
+    if (this.BUg == null)
+    {
+      AppMethodBeat.o(157833);
+      return false;
+    }
+    List localList = this.BUg.getSensorList(1);
+    if ((localList != null) && (localList.size() > 0))
+    {
+      this.EXd = new bk.a(paramRunnable);
+      this.BUg.registerListener(this.EXd, 2, 3);
+      AppMethodBeat.o(157833);
+      return true;
+    }
+    AppMethodBeat.o(157833);
+    return false;
   }
   
-  public static void setProperty(String paramString1, String paramString2)
+  public final void eGy()
   {
-    AppMethodBeat.i(52279);
-    yqy.put(paramString1, paramString2);
-    AppMethodBeat.o(52279);
+    AppMethodBeat.i(157834);
+    if ((this.BUg != null) && (this.EXd != null)) {
+      this.BUg.unregisterListener(this.EXd, 2);
+    }
+    AppMethodBeat.o(157834);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.bk
  * JD-Core Version:    0.7.0.1
  */

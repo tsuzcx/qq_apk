@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/aac" android:background="#ffc5c5c5" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:paddingTop="14.0dip" android:paddingRight="@dimen/l2" android:paddingBottom="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/ko" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/aad" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            <TextView android:textSize="@dimen/ko" android:textColor="#ff888888" android:ellipsize="end" android:id="@id/aae" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:singleLine="true" />
-        </LinearLayout>
-        <Button android:textSize="@dimen/ko" android:textColor="#ff06be04" android:id="@id/aaf" android:background="@drawable/i5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="74.0dip" android:minHeight="32.0dip" android:text="@string/adm" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/f94" style="@style/il">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/cnh" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/ds" />
+        <TextView android:textColor="@color/Link" android:layout_gravity="center_vertical" android:id="@id/ga1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dn" android:text="{tip}" style="@style/m3" />
     </LinearLayout>
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/ea2" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <View android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <View android:background="@color/BW_BG_95" android:layout_width="fill_parent" android:layout_height="8.0dip" />
+        <View android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
+</RelativeLayout>

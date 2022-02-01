@@ -1,71 +1,31 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop.b;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.Timer;
+import com.tencent.mm.plugin.appbrand.appusage.ah.a;
+import d.l;
 
-public enum d
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandStorageQueryCacheConfig;", "", "()V", "Companion", "plugin-appbrand-integration_release"})
+public final class d
 {
-  private WeakReference<Context> eAW;
-  public HashMap<Integer, b> eAX;
-  public final Object eAY;
-  public boolean isRunning;
-  public Timer mTimer;
+  public static final f lXF;
+  public static final o lXG;
+  public static final a lXH;
   
   static
   {
-    AppMethodBeat.i(134250);
-    jiQ = new d("INSTANCE");
-    jiR = new d[] { jiQ };
-    AppMethodBeat.o(134250);
+    AppMethodBeat.i(196525);
+    lXH = new a((byte)0);
+    lXF = new f(ah.a.iVL);
+    lXG = new o();
+    AppMethodBeat.o(196525);
   }
   
-  private d()
-  {
-    AppMethodBeat.i(134247);
-    this.eAW = null;
-    this.eAX = new HashMap();
-    this.isRunning = false;
-    this.mTimer = null;
-    this.eAY = new Object();
-    AppMethodBeat.o(134247);
-  }
-  
-  public final void Py()
-  {
-    AppMethodBeat.i(134248);
-    synchronized (this.eAY)
-    {
-      if (!this.isRunning)
-      {
-        AppMethodBeat.o(134248);
-        return;
-      }
-      if (this.mTimer != null) {
-        this.mTimer.cancel();
-      }
-      this.isRunning = false;
-      AppMethodBeat.o(134248);
-      return;
-    }
-  }
-  
-  public final void release()
-  {
-    AppMethodBeat.i(134249);
-    ab.i("MicroMsg.PerformanceMonitor", "alvinluo PerformanceMonitor release");
-    if (this.eAX != null) {
-      this.eAX.clear();
-    }
-    AppMethodBeat.o(134249);
-  }
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/AppBrandStorageQueryCacheConfig$Companion;", "", "()V", "collection", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/CollectionQueryCacheConfig;", "usage", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/helper/UsageQueryCacheConfig;", "plugin-appbrand-integration_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -28,19 +28,19 @@ public final class Scope
   
   static
   {
-    AppMethodBeat.i(89451);
+    AppMethodBeat.i(4473);
     CREATOR = new zzd();
-    AppMethodBeat.o(89451);
+    AppMethodBeat.o(4473);
   }
   
   @SafeParcelable.Constructor
   Scope(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) String paramString)
   {
-    AppMethodBeat.i(89447);
+    AppMethodBeat.i(4469);
     Preconditions.checkNotEmpty(paramString, "scopeUri must not be null or empty");
     this.zzal = paramInt;
     this.zzdp = paramString;
-    AppMethodBeat.o(89447);
+    AppMethodBeat.o(4469);
   }
   
   public Scope(String paramString)
@@ -50,19 +50,19 @@ public final class Scope
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(89448);
+    AppMethodBeat.i(4470);
     if (this == paramObject)
     {
-      AppMethodBeat.o(89448);
+      AppMethodBeat.o(4470);
       return true;
     }
     if (!(paramObject instanceof Scope))
     {
-      AppMethodBeat.o(89448);
+      AppMethodBeat.o(4470);
       return false;
     }
     boolean bool = this.zzdp.equals(((Scope)paramObject).zzdp);
-    AppMethodBeat.o(89448);
+    AppMethodBeat.o(4470);
     return bool;
   }
   
@@ -74,9 +74,9 @@ public final class Scope
   
   public final int hashCode()
   {
-    AppMethodBeat.i(89449);
+    AppMethodBeat.i(4471);
     int i = this.zzdp.hashCode();
-    AppMethodBeat.o(89449);
+    AppMethodBeat.o(4471);
     return i;
   }
   
@@ -87,12 +87,12 @@ public final class Scope
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(89450);
+    AppMethodBeat.i(4472);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     SafeParcelWriter.writeString(paramParcel, 2, getScopeUri(), false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(89450);
+    AppMethodBeat.o(4472);
   }
 }
 

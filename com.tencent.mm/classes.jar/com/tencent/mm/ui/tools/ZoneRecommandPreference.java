@@ -8,19 +8,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.RegionCodeDecoder.Region;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ZoneRecommandPreference
   extends Preference
 {
-  RegionCodeDecoder.Region Ayr;
-  RegionCodeDecoder.Region Ays;
-  RegionCodeDecoder.Region Ayt;
-  private TextView Ayu;
-  private ImageView Ayv;
-  private TextView gpr;
+  RegionCodeDecoder.Region HuA;
+  private TextView HuB;
+  private ImageView HuC;
+  RegionCodeDecoder.Region Huy;
+  RegionCodeDecoder.Region Huz;
+  private TextView fxX;
   int status;
   
   public ZoneRecommandPreference(Context paramContext)
@@ -36,18 +36,18 @@ public class ZoneRecommandPreference
   public ZoneRecommandPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(35014);
+    AppMethodBeat.i(39211);
     this.status = 0;
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(35014);
+    setLayoutResource(2131494804);
+    AppMethodBeat.o(39211);
   }
   
-  final void dOe()
+  final void fef()
   {
-    AppMethodBeat.i(35017);
-    if ((this.Ayu == null) || (this.gpr == null))
+    AppMethodBeat.i(39214);
+    if ((this.HuB == null) || (this.fxX == null))
     {
-      AppMethodBeat.o(35017);
+      AppMethodBeat.o(39214);
       return;
     }
     switch (this.status)
@@ -55,86 +55,86 @@ public class ZoneRecommandPreference
     }
     for (;;)
     {
-      AppMethodBeat.o(35017);
+      AppMethodBeat.o(39214);
       return;
-      this.Ayu.setVisibility(8);
-      this.gpr.setVisibility(0);
-      this.gpr.setText(2131303181);
-      this.Ayv.setImageResource(2131231403);
+      this.HuB.setVisibility(8);
+      this.fxX.setVisibility(0);
+      this.fxX.setText(2131763147);
+      this.HuC.setImageResource(2131690294);
       setEnabled(false);
       setSelectable(false);
-      AppMethodBeat.o(35017);
+      AppMethodBeat.o(39214);
       return;
-      this.Ayu.setVisibility(8);
-      this.gpr.setVisibility(0);
-      this.gpr.setText(2131303178);
-      this.Ayv.setImageResource(2131231402);
+      this.HuB.setVisibility(8);
+      this.fxX.setVisibility(0);
+      this.fxX.setText(2131763144);
+      this.HuC.setImageResource(2131690293);
       setEnabled(false);
       setSelectable(false);
-      AppMethodBeat.o(35017);
+      AppMethodBeat.o(39214);
       return;
-      this.Ayu.setVisibility(0);
-      this.gpr.setVisibility(8);
-      this.Ayv.setImageResource(2131231403);
+      this.HuB.setVisibility(0);
+      this.fxX.setVisibility(8);
+      this.HuC.setImageResource(2131690294);
       Object localObject2 = "";
       Object localObject1 = localObject2;
-      if (this.Ayr != null)
+      if (this.Huy != null)
       {
         localObject1 = localObject2;
-        if (!ah.isNullOrNil(this.Ayr.getName())) {
-          localObject1 = "" + this.Ayr.getName();
+        if (!bt.isNullOrNil(this.Huy.getName())) {
+          localObject1 = "" + this.Huy.getName();
         }
       }
       localObject2 = localObject1;
-      if (this.Ays != null)
+      if (this.Huz != null)
       {
         localObject2 = localObject1;
-        if (!ah.isNullOrNil(this.Ays.getName())) {
-          localObject2 = (String)localObject1 + " " + this.Ays.getName();
+        if (!bt.isNullOrNil(this.Huz.getName())) {
+          localObject2 = (String)localObject1 + " " + this.Huz.getName();
         }
       }
       localObject1 = localObject2;
-      if (this.Ayt != null)
+      if (this.HuA != null)
       {
         localObject1 = localObject2;
-        if (!ah.isNullOrNil(this.Ayt.getName())) {
-          localObject1 = (String)localObject2 + " " + this.Ayt.getName();
+        if (!bt.isNullOrNil(this.HuA.getName())) {
+          localObject1 = (String)localObject2 + " " + this.HuA.getName();
         }
       }
-      this.Ayu.setText((CharSequence)localObject1);
+      this.HuB.setText((CharSequence)localObject1);
       setEnabled(true);
       setSelectable(true);
     }
   }
   
-  public final void dOf()
+  public final void feg()
   {
-    AppMethodBeat.i(35018);
+    AppMethodBeat.i(39215);
     this.status = 2;
-    dOe();
-    AppMethodBeat.o(35018);
+    fef();
+    AppMethodBeat.o(39215);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(35016);
+    AppMethodBeat.i(39213);
     super.onBindView(paramView);
-    dOe();
-    AppMethodBeat.o(35016);
+    fef();
+    AppMethodBeat.o(39213);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(35015);
+    AppMethodBeat.i(39212);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130970223, localViewGroup);
-    this.Ayu = ((TextView)paramViewGroup.findViewById(2131826226));
-    this.gpr = ((TextView)paramViewGroup.findViewById(2131826231));
-    this.Ayv = ((ImageView)paramViewGroup.findViewById(2131826230));
-    AppMethodBeat.o(35015);
+    localLayoutInflater.inflate(2131494850, localViewGroup);
+    this.HuB = ((TextView)paramViewGroup.findViewById(2131307140));
+    this.fxX = ((TextView)paramViewGroup.findViewById(2131305193));
+    this.HuC = ((ImageView)paramViewGroup.findViewById(2131305202));
+    AppMethodBeat.o(39212);
     return paramViewGroup;
   }
 }

@@ -17,102 +17,111 @@ import android.widget.TextView;
 public class PagerTabStrip
   extends PagerTitleStrip
 {
-  private int jW = this.kC;
-  private int jX;
-  private int jY;
-  private int jZ;
-  private int ka;
-  private int kb;
-  private final Paint kc = new Paint();
-  private final Rect kd = new Rect();
-  private int ke = 255;
-  private boolean kf = false;
-  private boolean kg = false;
-  private int kh;
-  private boolean ki;
-  private float kj;
-  private float kk;
-  private int kl;
+  private int lT = this.my;
+  private int lU;
+  private int lV;
+  private int lW;
+  private int lX;
+  private int lY;
+  private final Paint lZ = new Paint();
+  private final Rect ma = new Rect();
+  private int mb = 255;
+  private boolean mc = false;
+  private boolean md = false;
+  private int me;
+  private boolean mf;
+  private float mg;
+  private float mh;
+  private int mi;
   
   public PagerTabStrip(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.kc.setColor(this.jW);
+    this.lZ.setColor(this.lT);
     float f = paramContext.getResources().getDisplayMetrics().density;
-    this.jX = ((int)(3.0F * f + 0.5F));
-    this.jY = ((int)(6.0F * f + 0.5F));
-    this.jZ = ((int)(64.0F * f));
-    this.kb = ((int)(16.0F * f + 0.5F));
-    this.kh = ((int)(1.0F * f + 0.5F));
-    this.ka = ((int)(f * 32.0F + 0.5F));
-    this.kl = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.lU = ((int)(3.0F * f + 0.5F));
+    this.lV = ((int)(6.0F * f + 0.5F));
+    this.lW = ((int)(64.0F * f));
+    this.lY = ((int)(16.0F * f + 0.5F));
+    this.me = ((int)(1.0F * f + 0.5F));
+    this.lX = ((int)(f * 32.0F + 0.5F));
+    this.mi = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     setPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom());
-    x(br());
+    I(bI());
     setWillNotDraw(false);
-    this.ko.setFocusable(true);
-    this.ko.setOnClickListener(new View.OnClickListener()
+    this.ml.setFocusable(true);
+    this.ml.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        PagerTabStrip.this.kn.A(PagerTabStrip.this.kn.lc - 1);
+        PagerTabStrip.this.mk.L(PagerTabStrip.this.mk.mY - 1);
       }
     });
-    this.kq.setFocusable(true);
-    this.kq.setOnClickListener(new View.OnClickListener()
+    this.mn.setFocusable(true);
+    this.mn.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        PagerTabStrip.this.kn.A(PagerTabStrip.this.kn.lc + 1);
+        PagerTabStrip.this.mk.L(PagerTabStrip.this.mk.mY + 1);
       }
     });
     if (getBackground() == null) {
-      this.kf = true;
+      this.mc = true;
     }
+  }
+  
+  public final void I(int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt < this.lW) {
+      i = this.lW;
+    }
+    super.I(i);
   }
   
   final void a(int paramInt, float paramFloat, boolean paramBoolean)
   {
-    Rect localRect = this.kd;
+    Rect localRect = this.ma;
     int i = getHeight();
-    int j = this.kp.getLeft();
-    int k = this.kb;
-    int m = this.kp.getRight();
-    int n = this.kb;
-    int i1 = i - this.jX;
+    int j = this.mm.getLeft();
+    int k = this.lY;
+    int m = this.mm.getRight();
+    int n = this.lY;
+    int i1 = i - this.lU;
     localRect.set(j - k, i1, m + n, i);
     super.a(paramInt, paramFloat, paramBoolean);
-    this.ke = ((int)(Math.abs(paramFloat - 0.5F) * 2.0F * 255.0F));
-    localRect.union(this.kp.getLeft() - this.kb, i1, this.kp.getRight() + this.kb, i);
+    this.mb = ((int)(Math.abs(paramFloat - 0.5F) * 2.0F * 255.0F));
+    localRect.union(this.mm.getLeft() - this.lY, i1, this.mm.getRight() + this.lY, i);
     invalidate(localRect);
   }
   
   final int getMinHeight()
   {
-    return Math.max(super.getMinHeight(), this.ka);
+    return Math.max(super.getMinHeight(), this.lX);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = getHeight();
-    int j = this.kp.getLeft();
-    int k = this.kb;
-    int m = this.kp.getRight();
-    int n = this.kb;
-    int i1 = this.jX;
-    this.kc.setColor(this.ke << 24 | this.jW & 0xFFFFFF);
-    paramCanvas.drawRect(j - k, i - i1, m + n, i, this.kc);
-    if (this.kf)
+    int j = this.mm.getLeft();
+    int k = this.lY;
+    int m = this.mm.getRight();
+    int n = this.lY;
+    int i1 = this.lU;
+    this.lZ.setColor(this.mb << 24 | this.lT & 0xFFFFFF);
+    paramCanvas.drawRect(j - k, i - i1, m + n, i, this.lZ);
+    if (this.mc)
     {
-      this.kc.setColor(0xFF000000 | this.jW & 0xFFFFFF);
-      paramCanvas.drawRect(getPaddingLeft(), i - this.kh, getWidth() - getPaddingRight(), i, this.kc);
+      this.lZ.setColor(0xFF000000 | this.lT & 0xFFFFFF);
+      paramCanvas.drawRect(getPaddingLeft(), i - this.me, getWidth() - getPaddingRight(), i, this.lZ);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
-    if ((i != 0) && (this.ki)) {
+    if ((i != 0) && (this.mf)) {
       return false;
     }
     float f1 = paramMotionEvent.getX();
@@ -123,18 +132,18 @@ public class PagerTabStrip
     for (;;)
     {
       return true;
-      this.kj = f1;
-      this.kk = f2;
-      this.ki = false;
+      this.mg = f1;
+      this.mh = f2;
+      this.mf = false;
       continue;
-      if ((Math.abs(f1 - this.kj) > this.kl) || (Math.abs(f2 - this.kk) > this.kl))
+      if ((Math.abs(f1 - this.mg) > this.mi) || (Math.abs(f2 - this.mh) > this.mi))
       {
-        this.ki = true;
+        this.mf = true;
         continue;
-        if (f1 < this.kp.getLeft() - this.kb) {
-          this.kn.A(this.kn.lc - 1);
-        } else if (f1 > this.kp.getRight() + this.kb) {
-          this.kn.A(this.kn.lc + 1);
+        if (f1 < this.mm.getLeft() - this.lY) {
+          this.mk.L(this.mk.mY - 1);
+        } else if (f1 > this.mm.getRight() + this.lY) {
+          this.mk.L(this.mk.mY + 1);
         }
       }
     }
@@ -143,7 +152,7 @@ public class PagerTabStrip
   public void setBackgroundColor(int paramInt)
   {
     super.setBackgroundColor(paramInt);
-    if (!this.kg) {
+    if (!this.md) {
       if ((0xFF000000 & paramInt) != 0) {
         break label27;
       }
@@ -151,7 +160,7 @@ public class PagerTabStrip
     label27:
     for (boolean bool = true;; bool = false)
     {
-      this.kf = bool;
+      this.mc = bool;
       return;
     }
   }
@@ -159,7 +168,7 @@ public class PagerTabStrip
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (!this.kg) {
+    if (!this.md) {
       if (paramDrawable != null) {
         break label24;
       }
@@ -167,7 +176,7 @@ public class PagerTabStrip
     label24:
     for (boolean bool = true;; bool = false)
     {
-      this.kf = bool;
+      this.mc = bool;
       return;
     }
   }
@@ -175,7 +184,7 @@ public class PagerTabStrip
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (!this.kg) {
+    if (!this.md) {
       if (paramInt != 0) {
         break label24;
       }
@@ -183,7 +192,7 @@ public class PagerTabStrip
     label24:
     for (boolean bool = true;; bool = false)
     {
-      this.kf = bool;
+      this.mc = bool;
       return;
     }
   }
@@ -191,19 +200,10 @@ public class PagerTabStrip
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = paramInt4;
-    if (paramInt4 < this.jY) {
-      i = this.jY;
+    if (paramInt4 < this.lV) {
+      i = this.lV;
     }
     super.setPadding(paramInt1, paramInt2, paramInt3, i);
-  }
-  
-  public final void x(int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt < this.jZ) {
-      i = this.jZ;
-    }
-    super.x(i);
   }
 }
 

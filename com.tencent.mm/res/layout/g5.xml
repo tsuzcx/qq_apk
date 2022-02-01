@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="发起转账申请后，资金将按如下时间存入对方账户" android:key="brsa_title" />
-</PreferenceScreen>
+<FrameLayout android:background="@color/k9" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="50.0dip">
+        <com.tencent.mm.ui.MMImageView android:layout_gravity="center_horizontal" android:id="@id/bfh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/bf8" android:paddingLeft="30.0dip" android:paddingRight="30.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ProgressBar android:id="@id/bf6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="?android:progressBarStyleHorizontal" />
+            <ImageView android:id="@id/bfc" android:background="@drawable/a7a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/adv" />
+            <ImageView android:id="@id/bfa" android:background="@drawable/aqi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-8.0dip" />
+        </LinearLayout>
+        <TextView android:textColor="@color/a_u" android:layout_gravity="center_horizontal" android:id="@id/sc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Button android:layout_gravity="center_horizontal" android:id="@id/se" android:visibility="visible" android:layout_width="220.0dip" android:text="@string/dkc" style="@style/o6" />
+        <Button android:layout_gravity="center_horizontal" android:id="@id/sb" android:visibility="gone" android:layout_width="220.0dip" android:text="@string/dk9" style="@style/o6" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/sa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="120.0dip">
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/km" android:gravity="center_horizontal" android:id="@id/sd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dk_" />
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/Blue" android:id="@id/sf" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</FrameLayout>

@@ -6,18 +6,18 @@ public enum PatternLockView$c
 {
   static
   {
-    AppMethodBeat.i(51659);
-    uFX = new c("Square", 0);
-    uFY = new c("Rectangle", 1);
-    uFZ = new c[] { uFX, uFY };
-    AppMethodBeat.o(51659);
+    AppMethodBeat.i(129864);
+    ADb = new c("Square", 0);
+    ADc = new c("Rectangle", 1);
+    ADd = new c[] { ADb, ADc };
+    AppMethodBeat.o(129864);
   }
   
   private PatternLockView$c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.ui.widget.PatternLockView.c
  * JD-Core Version:    0.7.0.1
  */

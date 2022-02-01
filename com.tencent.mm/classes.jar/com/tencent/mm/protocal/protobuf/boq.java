@@ -1,109 +1,170 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
+import java.util.LinkedList;
 
 public final class boq
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int lGK;
-  public String lGL;
-  public int nNf;
-  public String nNg;
-  public int xCK;
-  public int xCL;
-  public int xCM;
+  public acp CCa;
+  public SKBuiltinBuffer_t CFU;
+  public String CGf;
+  public String CGs;
+  public String mAQ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28595);
+    AppMethodBeat.i(133178);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.xCL);
-      paramVarArgs.aO(2, this.xCM);
-      paramVarArgs.aO(3, this.xCK);
-      paramVarArgs.aO(4, this.lGK);
-      if (this.lGL != null) {
-        paramVarArgs.e(5, this.lGL);
-      }
-      paramVarArgs.aO(6, this.nNf);
-      if (this.nNg != null) {
-        paramVarArgs.e(7, this.nNg);
-      }
-      AppMethodBeat.o(28595);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = e.a.a.b.b.a.bl(1, this.xCL) + 0 + e.a.a.b.b.a.bl(2, this.xCM) + e.a.a.b.b.a.bl(3, this.xCK) + e.a.a.b.b.a.bl(4, this.lGK);
-      paramInt = i;
-      if (this.lGL != null) {
-        paramInt = i + e.a.a.b.b.a.f(5, this.lGL);
-      }
-      i = paramInt + e.a.a.b.b.a.bl(6, this.nNf);
-      paramInt = i;
-      if (this.nNg != null) {
-        paramInt = i + e.a.a.b.b.a.f(7, this.nNg);
-      }
-      AppMethodBeat.o(28595);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
-      }
-      AppMethodBeat.o(28595);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      boq localboq = (boq)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.CFU == null)
       {
-      default: 
-        AppMethodBeat.o(28595);
-        return -1;
-      case 1: 
-        localboq.xCL = locala.CLY.sl();
-        AppMethodBeat.o(28595);
-        return 0;
-      case 2: 
-        localboq.xCM = locala.CLY.sl();
-        AppMethodBeat.o(28595);
-        return 0;
-      case 3: 
-        localboq.xCK = locala.CLY.sl();
-        AppMethodBeat.o(28595);
-        return 0;
-      case 4: 
-        localboq.lGK = locala.CLY.sl();
-        AppMethodBeat.o(28595);
-        return 0;
-      case 5: 
-        localboq.lGL = locala.CLY.readString();
-        AppMethodBeat.o(28595);
-        return 0;
-      case 6: 
-        localboq.nNf = locala.CLY.sl();
-        AppMethodBeat.o(28595);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: RandomEncryKey");
+        AppMethodBeat.o(133178);
+        throw paramVarArgs;
       }
-      localboq.nNg = locala.CLY.readString();
-      AppMethodBeat.o(28595);
+      if (this.CCa == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: CliPubECDHKey");
+        AppMethodBeat.o(133178);
+        throw paramVarArgs;
+      }
+      if (this.CFU != null)
+      {
+        paramVarArgs.kX(1, this.CFU.computeSize());
+        this.CFU.writeFields(paramVarArgs);
+      }
+      if (this.CCa != null)
+      {
+        paramVarArgs.kX(2, this.CCa.computeSize());
+        this.CCa.writeFields(paramVarArgs);
+      }
+      if (this.mAQ != null) {
+        paramVarArgs.d(3, this.mAQ);
+      }
+      if (this.CGf != null) {
+        paramVarArgs.d(4, this.CGf);
+      }
+      if (this.CGs != null) {
+        paramVarArgs.d(5, this.CGs);
+      }
+      AppMethodBeat.o(133178);
       return 0;
     }
-    AppMethodBeat.o(28595);
-    return -1;
+    if (paramInt == 1) {
+      if (this.CFU == null) {
+        break label742;
+      }
+    }
+    label742:
+    for (int i = f.a.a.a.kW(1, this.CFU.computeSize()) + 0;; i = 0)
+    {
+      paramInt = i;
+      if (this.CCa != null) {
+        paramInt = i + f.a.a.a.kW(2, this.CCa.computeSize());
+      }
+      i = paramInt;
+      if (this.mAQ != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.mAQ);
+      }
+      paramInt = i;
+      if (this.CGf != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.CGf);
+      }
+      i = paramInt;
+      if (this.CGs != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.CGs);
+      }
+      AppMethodBeat.o(133178);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.fMq();
+          }
+        }
+        if (this.CFU == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: RandomEncryKey");
+          AppMethodBeat.o(133178);
+          throw paramVarArgs;
+        }
+        if (this.CCa == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: CliPubECDHKey");
+          AppMethodBeat.o(133178);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(133178);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        boq localboq = (boq)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(133178);
+          return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new SKBuiltinBuffer_t();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localboq.CFU = ((SKBuiltinBuffer_t)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(133178);
+          return 0;
+        case 2: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new acp();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((acp)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localboq.CCa = ((acp)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(133178);
+          return 0;
+        case 3: 
+          localboq.mAQ = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(133178);
+          return 0;
+        case 4: 
+          localboq.CGf = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(133178);
+          return 0;
+        }
+        localboq.CGs = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(133178);
+        return 0;
+      }
+      AppMethodBeat.o(133178);
+      return -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.boq
  * JD-Core Version:    0.7.0.1
  */

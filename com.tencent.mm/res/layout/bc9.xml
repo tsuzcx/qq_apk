@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/g0h" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/g0f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="4.0">
+            <FrameLayout android:id="@id/g05" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <RelativeLayout android:id="@id/g04" android:background="@drawable/adc" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="3.0">
+                <FrameLayout android:layout_gravity="center" android:id="@id/g09" android:background="@drawable/f6" android:layout_width="48.0dip" android:layout_height="24.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="24.0dip" android:layout_centerHorizontal="true">
+                    <ImageView android:layout_gravity="center" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/bak" android:rotation="-90.0" />
+                </FrameLayout>
+                <android.support.v4.view.ViewPager android:id="@id/g0i" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="30.0dip" android:layout_below="@id/g09" />
+            </RelativeLayout>
+        </LinearLayout>
+        <com.tencent.mm.plugin.story.ui.view.StoryActionView android:id="@id/g03" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true" />
+        <com.tencent.mm.plugin.story.ui.view.StoryMsgInputView android:id="@id/g0e" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</merge>

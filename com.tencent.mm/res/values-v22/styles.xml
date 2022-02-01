@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="b_" parent="@style/a1p" />
-    <style name="bb" parent="@style/a1q" />
-    <style name="lt" parent="@style/ml">
-        <item name="android:orientation">horizontal</item>
-        <item name="android:focusable">true</item>
-        <item name="android:focusableInTouchMode">true</item>
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:minHeight">@dimen/n9</item>
-        <item name="android:importantForAutofill">noExcludeDescendants</item>
+    <style name="bx" parent="@style/a6_" />
+    <style name="c4" parent="@style/a6a" />
+    <style name="a6_" parent="@style/d9">
+        <item name="aj">?android:actionModeShareDrawable</item>
+        <item name="j8">?android:editTextBackground</item>
     </style>
-    <style name="a1p" parent="@style/a1h">
-        <item name="ee">?android:actionModeShareDrawable</item>
-        <item name="f7">?android:editTextBackground</item>
-    </style>
-    <style name="a1q" parent="@style/a1j">
-        <item name="ee">?android:actionModeShareDrawable</item>
-        <item name="f7">?android:editTextBackground</item>
+    <style name="a6a" parent="@style/da">
+        <item name="aj">?android:actionModeShareDrawable</item>
+        <item name="j8">?android:editTextBackground</item>
     </style>
 </resources>

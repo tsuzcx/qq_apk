@@ -1,0 +1,12 @@
+package com.tencent.kinda.gen;
+
+public abstract interface KUtilityService
+{
+  public abstract String qmfCardStrLimitLen(String paramString, int paramInt);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.kinda.gen.KUtilityService
+ * JD-Core Version:    0.7.0.1
+ */

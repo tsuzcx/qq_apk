@@ -1,61 +1,49 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.bridge.k;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.facebook.device.yearclass.DeviceInfo;
 import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.webview.luggage.f;
+import com.tencent.mm.sdk.platformtools.aj;
+import java.util.HashMap;
+import java.util.Map;
 
 public class x
-  extends bi<e>
+  extends bo<f>
 {
-  public final void a(Context paramContext, String paramString, bh.a parama)
+  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  
+  public final void b(a<f>.a parama)
   {
-    AppMethodBeat.i(153122);
-    AppMethodBeat.o(153122);
+    AppMethodBeat.i(78560);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("osVersion", Integer.valueOf(Build.VERSION.SDK_INT));
+    localHashMap.put("cpuCores", Integer.valueOf(DeviceInfo.getNumberOfCPUCores()));
+    localHashMap.put("cpuFreqHz", Integer.valueOf(DeviceInfo.getCPUMaxFreqKHz()));
+    localHashMap.put("memory", Long.valueOf(DeviceInfo.getTotalMemory(aj.getContext())));
+    localHashMap.put("brand", Build.BRAND);
+    localHashMap.put("model", Build.MODEL);
+    parama.c("", localHashMap);
+    AppMethodBeat.o(78560);
   }
   
-  public final void b(a<e>.a parama)
-  {
-    AppMethodBeat.i(6317);
-    JSONObject localJSONObject = parama.byF.bxK;
-    if (localJSONObject == null)
-    {
-      parama.a("invalid_params", null);
-      AppMethodBeat.o(6317);
-      return;
-    }
-    JSONArray localJSONArray = localJSONObject.optJSONArray("urls");
-    if ((localJSONArray == null) || (localJSONArray.length() == 0))
-    {
-      ab.e("MicroMsg.JsApiImagePreview", "fail, urls is null");
-      parama.a("invalid_url", null);
-      AppMethodBeat.o(6317);
-      return;
-    }
-    f.a("com.tencent.mm", new IPCString(localJSONObject.toString()), x.a.class, new x.1(this, parama, localJSONObject));
-    AppMethodBeat.o(6317);
-  }
-  
-  public final int bjL()
+  public final int bQV()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "imagePreview";
+    return "getSystemInfo";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.x
  * JD-Core Version:    0.7.0.1
  */

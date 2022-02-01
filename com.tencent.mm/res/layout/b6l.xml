@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout android:layout_gravity="center_horizontal" android:id="@id/rx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c5"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.emoji.view.CoverEmojiStatusView android:id="@id/rv" android:padding="4.0dip" android:layout_width="@dimen/a1r" android:layout_height="@dimen/a1r" android:src="@color/d" android:scaleType="fitCenter" app:layout_constraintBottom_toTopOf="@id/rw" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+    <TextView android:textSize="@dimen/v" android:textColor="@color/a_r" android:id="@id/eat" android:background="@color/yh" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fih" app:layout_constraintBottom_toBottomOf="@id/rv" app:layout_constraintEnd_toEndOf="@id/rv" />
+    <TextView android:textSize="12.0sp" android:textColor="?jj" android:id="@id/rw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toBottomOf="@id/rv" />
+</android.support.constraint.ConstraintLayout>

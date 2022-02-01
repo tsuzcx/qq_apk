@@ -1,12 +1,29 @@
 package com.tencent.mm.plugin.recordvideo.plugin;
 
-import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditSendPlugin$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
-public final class k$a {}
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoControlPlugin$FuncType;", "", "(Ljava/lang/String;I)V", "CROP_FUNC", "NORMAL_FUNC", "DEFAULT", "plugin-recordvideo_release"})
+public enum k$a
+{
+  static
+  {
+    AppMethodBeat.i(75542);
+    a locala1 = new a("CROP_FUNC", 0);
+    vkk = locala1;
+    a locala2 = new a("NORMAL_FUNC", 1);
+    vkl = locala2;
+    a locala3 = new a("DEFAULT", 2);
+    vkm = locala3;
+    vkn = new a[] { locala1, locala2, locala3 };
+    AppMethodBeat.o(75542);
+  }
+  
+  private k$a() {}
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.k.a
  * JD-Core Version:    0.7.0.1
  */

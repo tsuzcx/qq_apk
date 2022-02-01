@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:background="@drawable/amv" android:focusable="false" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/apa" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ViewStub android:id="@id/a91" android:layout="@layout/m7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ViewStub android:id="@id/a92" android:layout="@layout/ma" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ViewStub android:id="@id/a93" android:layout="@layout/m9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ViewStub android:id="@id/a95" android:layout="@layout/mb" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ViewStub android:id="@id/a96" android:layout="@layout/m8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ViewStub android:id="@id/a97" android:layout="@layout/m_" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l2">
-        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
-        <TextView android:id="@id/apb" android:layout_marginRight="@dimen/dl" android:text="@string/alv" style="@style/g8" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/age" android:background="@drawable/jy" android:paddingLeft="@dimen/hj" android:paddingRight="@dimen/hj" android:layout_width="fill_parent" android:layout_height="68.0dip">
+        <TextView android:textSize="@dimen/bi" android:textColor="#ff555555" android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/f_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="@dimen/bi" android:textColor="@color/y4" android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@id/f_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hu" android:singleLine="true" />
     </LinearLayout>
 </LinearLayout>

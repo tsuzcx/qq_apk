@@ -5,10 +5,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.b;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.c;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.o;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.r;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.o;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.o.14;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.r;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Map;
 import org.json.JSONObject;
 
@@ -18,47 +18,60 @@ public final class d
   private static final int CTRL_INDEX = 625;
   public static final String NAME = "removeVoIPView";
   
-  public final boolean b(e arg1, int paramInt, View paramView, JSONObject paramJSONObject)
+  public d()
   {
-    AppMethodBeat.i(143427);
-    ab.i("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "onRemoveView," + paramJSONObject.toString());
-    super.b(???, paramInt, paramView, paramJSONObject);
-    if (!(paramView instanceof CoverViewContainer))
-    {
-      ab.w("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(143427);
-      return false;
-    }
-    ??? = (View)((CoverViewContainer)paramView).aa(View.class);
-    if ((??? == null) || (!(??? instanceof c)))
-    {
-      ab.w("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "the view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(143427);
-      return false;
-    }
-    paramView = (c)???;
-    paramJSONObject = o.kKN.kKR;
-    synchronized (paramJSONObject.kMy)
-    {
-      paramView.uint();
-      paramJSONObject.kMy.remove(paramView.getOpenId());
-      ab.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "del View, viewId:" + paramView.getViewId() + " memberId:" + paramView.getMemberId());
-      AppMethodBeat.o(143427);
-      return true;
-    }
+    AppMethodBeat.i(174846);
+    com.tencent.mm.plugin.appbrand.permission.c.Me("removeVoIPView");
+    AppMethodBeat.o(174846);
   }
   
-  public final int w(JSONObject paramJSONObject)
+  public final int A(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(143426);
+    AppMethodBeat.i(46684);
     int i = paramJSONObject.optInt("viewId", 0);
-    AppMethodBeat.o(143426);
+    AppMethodBeat.o(46684);
     return i;
+  }
+  
+  public final boolean b(e parame, int paramInt, View paramView, JSONObject arg4)
+  {
+    AppMethodBeat.i(46685);
+    ad.i("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "onRemoveView," + ???.toString());
+    super.b(parame, paramInt, paramView, ???);
+    if (!(paramView instanceof CoverViewContainer))
+    {
+      ad.w("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(46685);
+      return false;
+    }
+    parame = (View)((CoverViewContainer)paramView).ax(View.class);
+    if ((parame == null) || (!(parame instanceof com.tencent.mm.plugin.cloudvoip.cloudvoice.d.c)))
+    {
+      ad.w("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "the view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(46685);
+      return false;
+    }
+    parame = (com.tencent.mm.plugin.cloudvoip.cloudvoice.d.c)parame;
+    paramView = o.nQO.nQS;
+    if (parame.bOc())
+    {
+      ??? = o.nQO;
+      ad.i("MicroMsg.OpenVoice.OpenVoiceService", "hy: onCameraStop");
+      ???.ae(new o.14(???));
+    }
+    synchronized (paramView.nSJ)
+    {
+      parame.uint();
+      paramView.nSJ.remove(parame.getOpenId());
+      ad.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "del View, viewId:" + parame.getViewId() + " memberId:" + parame.getMemberId());
+      AppMethodBeat.o(46685);
+      return true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.k.d
  * JD-Core Version:    0.7.0.1
  */

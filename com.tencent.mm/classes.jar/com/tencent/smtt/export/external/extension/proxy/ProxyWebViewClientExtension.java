@@ -6,9 +6,12 @@ import android.view.View;
 import android.webkit.ValueCallback;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewClientExtension;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.export.external.interfaces.IX5WebViewBase;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import java.util.HashMap;
+import java.util.Set;
 
 public abstract class ProxyWebViewClientExtension
   implements IX5WebViewClientExtension
@@ -32,10 +35,24 @@ public abstract class ProxyWebViewClientExtension
     }
   }
   
+  public void didFailLoad(String paramString, int paramInt)
+  {
+    if (this.mWebViewClientExt != null) {
+      this.mWebViewClientExt.didFailLoad(paramString, paramInt);
+    }
+  }
+  
   public void didFirstVisuallyNonEmptyPaint()
   {
     if (this.mWebViewClientExt != null) {
       this.mWebViewClientExt.didFirstVisuallyNonEmptyPaint();
+    }
+  }
+  
+  public void didNavigateWithinPage(IX5WebViewBase paramIX5WebViewBase, String paramString)
+  {
+    if (this.mWebViewClientExt != null) {
+      this.mWebViewClientExt.didNavigateWithinPage(paramIX5WebViewBase, paramString);
     }
   }
   
@@ -61,6 +78,20 @@ public abstract class ProxyWebViewClientExtension
     }
   }
   
+  public void hasDiscardCurrentPage(boolean paramBoolean)
+  {
+    if (this.mWebViewClientExt != null) {
+      this.mWebViewClientExt.hasDiscardCurrentPage(paramBoolean);
+    }
+  }
+  
+  public void hasRestoreCurrentPage(boolean paramBoolean)
+  {
+    if (this.mWebViewClientExt != null) {
+      this.mWebViewClientExt.hasRestoreCurrentPage(paramBoolean);
+    }
+  }
+  
   public void hideAddressBar()
   {
     if (this.mWebViewClientExt != null) {
@@ -68,12 +99,7 @@ public abstract class ProxyWebViewClientExtension
     }
   }
   
-  public void invalidate()
-  {
-    if (this.mWebViewClientExt != null) {
-      this.mWebViewClientExt.invalidate();
-    }
-  }
+  public void invalidate() {}
   
   public boolean notifyAutoAudioPlay(String paramString, JsResult paramJsResult)
   {
@@ -103,6 +129,17 @@ public abstract class ProxyWebViewClientExtension
     }
   }
   
+  public void onFakeLoginRecognised(Bundle paramBundle)
+  {
+    if (this.mWebViewClientExt != null) {}
+    try
+    {
+      this.mWebViewClientExt.onFakeLoginRecognised(paramBundle);
+      return;
+    }
+    catch (NoSuchMethodError paramBundle) {}
+  }
+  
   public void onFlingScrollBegin(int paramInt1, int paramInt2, int paramInt3)
   {
     if (this.mWebViewClientExt != null) {
@@ -114,6 +151,28 @@ public abstract class ProxyWebViewClientExtension
   {
     if (this.mWebViewClientExt != null) {
       this.mWebViewClientExt.onFlingScrollEnd();
+    }
+  }
+  
+  public HashMap<String, String> onGetExtraHeadersForPreloading(String paramString)
+  {
+    if (this.mWebViewClientExt != null) {
+      return this.mWebViewClientExt.onGetExtraHeadersForPreloading(paramString);
+    }
+    return null;
+  }
+  
+  public void onGetTtsText(String paramString, int paramInt)
+  {
+    if (this.mWebViewClientExt != null) {
+      this.mWebViewClientExt.onGetTtsText(paramString, paramInt);
+    }
+  }
+  
+  public void onHideAdSuccess()
+  {
+    if (this.mWebViewClientExt != null) {
+      this.mWebViewClientExt.onHideAdSuccess();
     }
   }
   
@@ -235,6 +294,13 @@ public abstract class ProxyWebViewClientExtension
     }
   }
   
+  public void onReceivedQNovel(String paramString1, String paramString2)
+  {
+    if (this.mWebViewClientExt != null) {
+      this.mWebViewClientExt.onReceivedQNovel(paramString1, paramString2);
+    }
+  }
+  
   public void onReceivedSslErrorCancel()
   {
     if (this.mWebViewClientExt != null) {
@@ -318,6 +384,13 @@ public abstract class ProxyWebViewClientExtension
     }
   }
   
+  public void onShowTtsBar()
+  {
+    if (this.mWebViewClientExt != null) {
+      this.mWebViewClientExt.onShowTtsBar();
+    }
+  }
+  
   public void onSlidingTitleOffScreen(int paramInt1, int paramInt2)
   {
     if (this.mWebViewClientExt != null) {
@@ -337,6 +410,24 @@ public abstract class ProxyWebViewClientExtension
     if (this.mWebViewClientExt != null) {
       this.mWebViewClientExt.onSoftKeyBoardShow();
     }
+  }
+  
+  public void onSpecialSiteDetectedResult(Set<String> paramSet1, Set<String> paramSet2)
+  {
+    if (this.mWebViewClientExt != null) {
+      this.mWebViewClientExt.onSpecialSiteDetectedResult(paramSet1, paramSet2);
+    }
+  }
+  
+  public void onSupportReadMode()
+  {
+    if (this.mWebViewClientExt != null) {}
+    try
+    {
+      this.mWebViewClientExt.onSupportReadMode();
+      return;
+    }
+    catch (NoSuchMethodError localNoSuchMethodError) {}
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
@@ -391,6 +482,61 @@ public abstract class ProxyWebViewClientExtension
     return false;
   }
   
+  public boolean reportFingerSearchAdjustInfo(String paramString)
+  {
+    if (this.mWebViewClientExt != null) {
+      try
+      {
+        boolean bool = this.mWebViewClientExt.reportFingerSearchAdjustInfo(paramString);
+        return bool;
+      }
+      catch (NoSuchMethodError paramString) {}
+    }
+    return false;
+  }
+  
+  public boolean reportFingerSearchRequestInfo(String paramString)
+  {
+    if (this.mWebViewClientExt != null) {
+      try
+      {
+        boolean bool = this.mWebViewClientExt.reportFingerSearchRequestInfo(paramString);
+        return bool;
+      }
+      catch (NoSuchMethodError paramString) {}
+    }
+    return false;
+  }
+  
+  public boolean requestVibration(String paramString, JsResult paramJsResult)
+  {
+    if (this.mWebViewClientExt != null) {
+      try
+      {
+        boolean bool = this.mWebViewClientExt.requestVibration(paramString, paramJsResult);
+        return bool;
+      }
+      catch (NoSuchMethodError paramString) {}
+    }
+    return false;
+  }
+  
+  public boolean shouldDiscardCurrentPage()
+  {
+    if (this.mWebViewClientExt != null) {
+      return this.mWebViewClientExt.shouldDiscardCurrentPage();
+    }
+    return false;
+  }
+  
+  public boolean shouldRestoreCurrentPage()
+  {
+    if (this.mWebViewClientExt != null) {
+      return this.mWebViewClientExt.shouldRestoreCurrentPage();
+    }
+    return false;
+  }
+  
   public void showTranslateBubble(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
     if (this.mWebViewClientExt != null) {
@@ -400,7 +546,7 @@ public abstract class ProxyWebViewClientExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.proxy.ProxyWebViewClientExtension
  * JD-Core Version:    0.7.0.1
  */

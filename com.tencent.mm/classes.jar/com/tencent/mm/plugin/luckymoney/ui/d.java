@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.luckymoney.model.r;
-import com.tencent.mm.plugin.luckymoney.model.x;
+import com.tencent.mm.plugin.luckymoney.model.t;
+import com.tencent.mm.plugin.luckymoney.model.z;
 
 public final class d
   extends e
@@ -23,49 +23,59 @@ public final class d
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(42754);
-    r localr;
+    AppMethodBeat.i(65632);
+    t localt;
     if (paramView == null)
     {
-      paramView = this.mInflater.inflate(2130970034, paramViewGroup, false);
-      paramViewGroup = new d.a(this);
-      paramViewGroup.nzx = ((TextView)paramView.findViewById(2131825714));
-      paramViewGroup.ojf = ((TextView)paramView.findViewById(2131825716));
-      paramViewGroup.ojg = ((TextView)paramView.findViewById(2131825717));
-      paramViewGroup.ojr = ((ImageView)paramView.findViewById(2131825715));
+      paramView = this.mInflater.inflate(2131494648, paramViewGroup, false);
+      paramViewGroup = new a();
+      paramViewGroup.siX = ((TextView)paramView.findViewById(2131301854));
+      paramViewGroup.sYS = ((TextView)paramView.findViewById(2131301855));
+      paramViewGroup.sYT = ((TextView)paramView.findViewById(2131301850));
+      paramViewGroup.sZe = ((ImageView)paramView.findViewById(2131301852));
       paramView.setTag(paramViewGroup);
-      localr = yz(paramInt);
-      x.a(this.mContext, paramViewGroup.nzx, localr.oon);
-      paramViewGroup.ojf.setText(localr.oop);
-      paramViewGroup.ojg.setText(this.mContext.getString(2131301295, new Object[] { com.tencent.mm.wallet_core.ui.e.E(localr.ooo / 100.0D) }));
-      if (localr.cMP != 1) {
+      localt = Gb(paramInt);
+      z.a(this.mContext, paramViewGroup.siX, localt.ter);
+      paramViewGroup.sYS.setText(localt.tet);
+      paramViewGroup.sYT.setText(this.mContext.getString(2131760940, new Object[] { com.tencent.mm.wallet_core.ui.e.D(localt.tes / 100.0D) }));
+      if (localt.dDN != 1) {
         break label202;
       }
-      paramViewGroup.ojr.setImageResource(2130839415);
-      paramViewGroup.ojr.setVisibility(0);
+      paramViewGroup.sZe.setImageResource(2131233028);
+      paramViewGroup.sZe.setVisibility(0);
     }
     for (;;)
     {
-      AppMethodBeat.o(42754);
+      AppMethodBeat.o(65632);
       return paramView;
-      paramViewGroup = (d.a)paramView.getTag();
+      paramViewGroup = (a)paramView.getTag();
       break;
       label202:
-      if (localr.cMP == 2)
+      if (localt.dDN == 2)
       {
-        paramViewGroup.ojr.setImageResource(2130839404);
-        paramViewGroup.ojr.setVisibility(0);
+        paramViewGroup.sZe.setImageResource(2131233017);
+        paramViewGroup.sZe.setVisibility(0);
       }
       else
       {
-        paramViewGroup.ojr.setVisibility(8);
+        paramViewGroup.sZe.setVisibility(8);
       }
     }
+  }
+  
+  final class a
+  {
+    TextView sYS;
+    TextView sYT;
+    ImageView sZe;
+    TextView siX;
+    
+    a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.d
  * JD-Core Version:    0.7.0.1
  */

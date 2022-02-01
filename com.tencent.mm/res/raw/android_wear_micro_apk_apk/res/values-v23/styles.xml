@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ab" parent="@style/ac">
+    <style name="CardText" parent="@style/CardTextBase">
         <item name="android:breakStrategy">balanced</item>
         <item name="android:hyphenationFrequency">normal</item>
     </style>
-    <style name="ad" parent="@style/ae">
+    <style name="CardTitle" parent="@style/CardTitleBase">
         <item name="android:breakStrategy">balanced</item>
         <item name="android:hyphenationFrequency">normal</item>
     </style>

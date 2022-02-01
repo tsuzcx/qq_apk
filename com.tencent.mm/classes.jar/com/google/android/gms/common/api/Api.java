@@ -32,7 +32,7 @@ public final class Api<O extends ApiOptions>
   
   public <C extends Client> Api(String paramString, AbstractClientBuilder<C, O> paramAbstractClientBuilder, ClientKey<C> paramClientKey)
   {
-    AppMethodBeat.i(60478);
+    AppMethodBeat.i(10970);
     Preconditions.checkNotNull(paramAbstractClientBuilder, "Cannot construct an Api with a null ClientBuilder");
     Preconditions.checkNotNull(paramClientKey, "Cannot construct an Api with a null ClientKey");
     this.mName = paramString;
@@ -40,20 +40,20 @@ public final class Api<O extends ApiOptions>
     this.zzbz = null;
     this.zzca = paramClientKey;
     this.zzcb = null;
-    AppMethodBeat.o(60478);
+    AppMethodBeat.o(10970);
   }
   
   public final AnyClientKey<?> getClientKey()
   {
-    AppMethodBeat.i(60480);
+    AppMethodBeat.i(10972);
     if (this.zzca != null)
     {
       localObject = this.zzca;
-      AppMethodBeat.o(60480);
+      AppMethodBeat.o(10972);
       return localObject;
     }
     Object localObject = new IllegalStateException("This API was constructed with null client keys. This should not be possible.");
-    AppMethodBeat.o(60480);
+    AppMethodBeat.o(10972);
     throw ((Throwable)localObject);
   }
   
@@ -69,13 +69,13 @@ public final class Api<O extends ApiOptions>
   
   public final AbstractClientBuilder<?, O> zzk()
   {
-    AppMethodBeat.i(60479);
+    AppMethodBeat.i(10971);
     if (this.zzby != null) {}
     for (boolean bool = true;; bool = false)
     {
       Preconditions.checkState(bool, "This API was constructed with a SimpleClientBuilder. Use getSimpleClientBuilder");
       AbstractClientBuilder localAbstractClientBuilder = this.zzby;
-      AppMethodBeat.o(60479);
+      AppMethodBeat.o(10971);
       return localAbstractClientBuilder;
     }
   }
@@ -140,9 +140,9 @@ public final class Api<O extends ApiOptions>
     @KeepForSdk
     public List<Scope> getImpliedScopes(O paramO)
     {
-      AppMethodBeat.i(60477);
+      AppMethodBeat.i(10969);
       paramO = Collections.emptyList();
-      AppMethodBeat.o(60477);
+      AppMethodBeat.o(10969);
       return paramO;
     }
     

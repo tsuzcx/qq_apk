@@ -1,10 +1,16 @@
 package com.tencent.mm.plugin.wallet_payu.create.ui;
 
 import android.content.Context;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.support.v4.view.q;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_payu.create.a.d;
 import com.tencent.mm.ui.base.MMAutoHeightViewPager;
@@ -14,12 +20,12 @@ import java.util.ArrayList;
 public class WalletPayUOpenIntroView
   extends LinearLayout
 {
-  private ArrayList<View> ang;
+  private a AzA;
+  private d[] AzB;
+  private MMAutoHeightViewPager Azy;
+  private MMPageControlView Azz;
+  private ArrayList<View> auF;
   private Context mContext;
-  private MMAutoHeightViewPager uCs;
-  private MMPageControlView uCt;
-  private WalletPayUOpenIntroView.a uCu;
-  private d[] uCv;
   
   public WalletPayUOpenIntroView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,46 +35,108 @@ public class WalletPayUOpenIntroView
   public WalletPayUOpenIntroView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(48393);
+    AppMethodBeat.i(72033);
     this.mContext = paramContext;
-    paramContext = LayoutInflater.from(this.mContext).inflate(2130970413, this, true);
-    this.uCs = ((MMAutoHeightViewPager)paramContext.findViewById(2131823945));
-    this.uCt = ((MMPageControlView)paramContext.findViewById(2131826710));
-    this.uCt.setVisibility(0);
-    this.uCs.setOnPageChangeListener(new WalletPayUOpenIntroView.1(this));
-    AppMethodBeat.o(48393);
+    paramContext = LayoutInflater.from(this.mContext).inflate(2131495077, this, true);
+    this.Azy = ((MMAutoHeightViewPager)paramContext.findViewById(2131303135));
+    this.Azz = ((MMPageControlView)paramContext.findViewById(2131298788));
+    this.Azz.setVisibility(0);
+    this.Azy.setOnPageChangeListener(new ViewPager.OnPageChangeListener()
+    {
+      public final void onPageScrollStateChanged(int paramAnonymousInt) {}
+      
+      public final void onPageScrolled(int paramAnonymousInt1, float paramAnonymousFloat, int paramAnonymousInt2) {}
+      
+      public final void onPageSelected(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(72029);
+        if (WalletPayUOpenIntroView.a(WalletPayUOpenIntroView.this).getParent() != null) {
+          WalletPayUOpenIntroView.a(WalletPayUOpenIntroView.this).getParent().requestDisallowInterceptTouchEvent(true);
+        }
+        WalletPayUOpenIntroView.b(WalletPayUOpenIntroView.this).setPage(paramAnonymousInt);
+        AppMethodBeat.o(72029);
+      }
+    });
+    AppMethodBeat.o(72033);
   }
   
   public void setPagerData(d[] paramArrayOfd)
   {
-    AppMethodBeat.i(48394);
-    this.uCv = paramArrayOfd;
-    this.ang = new ArrayList();
-    if (this.uCv != null)
+    AppMethodBeat.i(72034);
+    this.AzB = paramArrayOfd;
+    this.auF = new ArrayList();
+    if (this.AzB != null)
     {
       i = 0;
-      while (i < this.uCv.length)
+      while (i < this.AzB.length)
       {
-        paramArrayOfd = LayoutInflater.from(this.mContext).inflate(2130970414, null);
-        this.ang.add(paramArrayOfd);
+        paramArrayOfd = LayoutInflater.from(this.mContext).inflate(2131495078, null);
+        this.auF.add(paramArrayOfd);
         i += 1;
       }
     }
-    this.uCu = new WalletPayUOpenIntroView.a(this, (byte)0);
-    this.uCs.setAdapter(this.uCu);
-    paramArrayOfd = this.uCt;
-    if (this.uCv == null) {}
-    for (int i = 0;; i = this.uCv.length)
+    this.AzA = new a((byte)0);
+    this.Azy.setAdapter(this.AzA);
+    paramArrayOfd = this.Azz;
+    if (this.AzB == null) {}
+    for (int i = 0;; i = this.AzB.length)
     {
-      paramArrayOfd.hy(i, 0);
-      AppMethodBeat.o(48394);
+      paramArrayOfd.jl(i, 0);
+      AppMethodBeat.o(72034);
       return;
+    }
+  }
+  
+  final class a
+    extends q
+  {
+    private a() {}
+    
+    public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+    {
+      AppMethodBeat.i(72032);
+      paramViewGroup.removeView((View)WalletPayUOpenIntroView.d(WalletPayUOpenIntroView.this).get(paramInt));
+      AppMethodBeat.o(72032);
+    }
+    
+    public final int getCount()
+    {
+      AppMethodBeat.i(72030);
+      if (WalletPayUOpenIntroView.c(WalletPayUOpenIntroView.this) == null)
+      {
+        AppMethodBeat.o(72030);
+        return 0;
+      }
+      int i = WalletPayUOpenIntroView.c(WalletPayUOpenIntroView.this).length;
+      AppMethodBeat.o(72030);
+      return i;
+    }
+    
+    public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+    {
+      AppMethodBeat.i(72031);
+      View localView = (View)WalletPayUOpenIntroView.d(WalletPayUOpenIntroView.this).get(paramInt);
+      paramViewGroup.addView(localView);
+      paramViewGroup = WalletPayUOpenIntroView.c(WalletPayUOpenIntroView.this)[paramInt];
+      ImageView localImageView = (ImageView)localView.findViewById(2131301584);
+      TextView localTextView1 = (TextView)localView.findViewById(2131305860);
+      TextView localTextView2 = (TextView)localView.findViewById(2131300741);
+      localImageView.setImageResource(paramViewGroup.Azw);
+      localTextView1.setText(paramViewGroup.titleRes);
+      localTextView2.setText(paramViewGroup.Azx);
+      AppMethodBeat.o(72031);
+      return localView;
+    }
+    
+    public final boolean isViewFromObject(View paramView, Object paramObject)
+    {
+      return paramView == paramObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.create.ui.WalletPayUOpenIntroView
  * JD-Core Version:    0.7.0.1
  */

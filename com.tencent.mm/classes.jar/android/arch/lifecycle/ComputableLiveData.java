@@ -7,10 +7,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class ComputableLiveData<T>
 {
-  private final LiveData<T> cf;
-  private AtomicBoolean cg = new AtomicBoolean(true);
-  private AtomicBoolean ch = new AtomicBoolean(false);
-  final Runnable ci = new Runnable()
+  private final LiveData<T> ci;
+  private AtomicBoolean cj = new AtomicBoolean(true);
+  private AtomicBoolean ck = new AtomicBoolean(false);
+  final Runnable cl = new Runnable()
   {
     public void run()
     {
@@ -42,13 +42,13 @@ public abstract class ComputableLiveData<T>
       }
     }
   };
-  final Runnable cj = new Runnable()
+  final Runnable cm = new Runnable()
   {
     public void run()
     {
       boolean bool = ComputableLiveData.d(ComputableLiveData.this).hasActiveObservers();
       if ((ComputableLiveData.c(ComputableLiveData.this).compareAndSet(false, true)) && (bool)) {
-        ComputableLiveData.a(ComputableLiveData.this).execute(ComputableLiveData.this.ci);
+        ComputableLiveData.a(ComputableLiveData.this).execute(ComputableLiveData.this.cl);
       }
     }
   };
@@ -56,17 +56,17 @@ public abstract class ComputableLiveData<T>
   
   public ComputableLiveData()
   {
-    this(a.ad());
+    this(a.Q());
   }
   
   public ComputableLiveData(Executor paramExecutor)
   {
     this.mExecutor = paramExecutor;
-    this.cf = new LiveData()
+    this.ci = new LiveData()
     {
       protected final void onActive()
       {
-        ComputableLiveData.a(ComputableLiveData.this).execute(ComputableLiveData.this.ci);
+        ComputableLiveData.a(ComputableLiveData.this).execute(ComputableLiveData.this.cl);
       }
     };
   }
@@ -75,19 +75,19 @@ public abstract class ComputableLiveData<T>
   
   public LiveData<T> getLiveData()
   {
-    return this.cf;
+    return this.ci;
   }
   
   public void invalidate()
   {
-    a locala = a.aa();
-    Runnable localRunnable = this.cj;
+    a locala = a.P();
+    Runnable localRunnable = this.cm;
     if (locala.isMainThread())
     {
       localRunnable.run();
       return;
     }
-    locala.d(localRunnable);
+    locala.f(localRunnable);
   }
 }
 

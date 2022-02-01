@@ -1,223 +1,256 @@
 package com.tencent.mm.plugin.emojicapture.e;
 
-import a.l;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.view.BaseEmojiView;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.emojicapture.api.EmojiCaptureReporter;
-import com.tencent.mm.plugin.emojicapture.model.a.b;
-import com.tencent.mm.plugin.emojicapture.model.c;
 import com.tencent.mm.plugin.emojicapture.proxy.VoiceInputProxy;
 import com.tencent.mm.plugin.emojicapture.proxy.VoiceInputProxy.b;
 import com.tencent.mm.plugin.emojicapture.ui.EmojiCaptureUI.b;
 import com.tencent.mm.plugin.emojicapture.ui.EmojiCaptureUI.b.a;
 import com.tencent.mm.plugin.emojicapture.ui.capture.CaptureDecoration;
+import com.tencent.mm.plugin.emojicapture.ui.editor.EditorItemContainer;
+import com.tencent.mm.plugin.emojicapture.ui.editor.text.FontAnimTextView;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
-import com.tencent.mm.remoteservice.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.ap.a;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sticker.e;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/presenter/CapturePresenter;", "Lcom/tencent/mm/plugin/emojicapture/contract/CaptureContract$IPresenter;", "context", "Landroid/content/Context;", "view", "Lcom/tencent/mm/plugin/emojicapture/contract/CaptureContract$IView;", "videoPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "uiNavigation", "Lcom/tencent/mm/plugin/emojicapture/ui/EmojiCaptureUI$UINavigation;", "reporter", "Lcom/tencent/mm/plugin/emojicapture/api/EmojiCaptureReporter;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/emojicapture/contract/CaptureContract$IView;Lcom/tencent/mm/modelcontrol/VideoTransPara;Lcom/tencent/mm/plugin/emojicapture/ui/EmojiCaptureUI$UINavigation;Lcom/tencent/mm/plugin/emojicapture/api/EmojiCaptureReporter;)V", "emojiCaptureInfo", "Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiCaptureInfo;", "recordStartTime", "", "recordState", "Lcom/tencent/mm/plugin/emojicapture/presenter/CapturePresenter$RecordState;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "useVoiceInput", "", "voiceDetectTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "voiceFinished", "voiceInput", "Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy;", "voiceText", "", "changeSticker", "", "stickerInfo", "Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiStickerInfo;", "checkNetworkAvailable", "destroy", "exit", "pauseCapture", "startRecord", "stopCallBack", "info", "stopRecord", "Companion", "RecordState", "plugin-emojicapture_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/presenter/CapturePresenter;", "Lcom/tencent/mm/plugin/emojicapture/contract/CaptureContract$IPresenter;", "context", "Landroid/content/Context;", "view", "Lcom/tencent/mm/plugin/emojicapture/contract/CaptureContract$IView;", "videoPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "uiNavigation", "Lcom/tencent/mm/plugin/emojicapture/ui/EmojiCaptureUI$UINavigation;", "reporter", "Lcom/tencent/mm/plugin/emojicapture/api/EmojiCaptureReporter;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/emojicapture/contract/CaptureContract$IView;Lcom/tencent/mm/modelcontrol/VideoTransPara;Lcom/tencent/mm/plugin/emojicapture/ui/EmojiCaptureUI$UINavigation;Lcom/tencent/mm/plugin/emojicapture/api/EmojiCaptureReporter;)V", "emojiCaptureInfo", "Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiCaptureInfo;", "recordStartTime", "", "recordState", "Lcom/tencent/mm/plugin/emojicapture/presenter/CapturePresenter$RecordState;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "useVoiceInput", "", "voiceDetectTimer", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "voiceFinished", "voiceInput", "Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy;", "voiceText", "", "changeSticker", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "checkNetworkAvailable", "destroy", "exit", "pauseCapture", "startRecord", "stopCallBack", "info", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "isBackCamera", "stopRecord", "Companion", "RecordState", "plugin-emojicapture_release"})
 public final class a
   implements com.tencent.mm.plugin.emojicapture.c.a.a
 {
-  public static final a.a lvS;
+  public static final a oMn;
   private Context context;
-  private final d evl;
-  private final EmojiCaptureReporter lsY;
-  private a.b lvH;
-  private long lvI;
-  private boolean lvJ;
-  private boolean lvK;
-  private String lvL;
-  private final com.tencent.mm.plugin.emojicapture.model.a.a lvM;
-  private VoiceInputProxy lvN;
-  private final ap lvO;
-  private com.tencent.mm.plugin.emojicapture.c.a.b lvP;
-  private final VideoTransPara lvQ;
-  private EmojiCaptureUI.b lvR;
+  private final com.tencent.mm.remoteservice.d fLo;
+  private a.b oMc;
+  private boolean oMd;
+  private boolean oMe;
+  private String oMf;
+  private final com.tencent.mm.plugin.emojicapture.model.a.b oMg;
+  private VoiceInputProxy oMh;
+  private final av oMi;
+  private com.tencent.mm.plugin.emojicapture.c.a.b oMj;
+  private final VideoTransPara oMk;
+  private EmojiCaptureUI.b oMl;
+  private final EmojiCaptureReporter oMm;
+  private long omg;
   
   static
   {
-    AppMethodBeat.i(2754);
-    lvS = new a.a((byte)0);
-    AppMethodBeat.o(2754);
+    AppMethodBeat.i(333);
+    oMn = new a((byte)0);
+    AppMethodBeat.o(333);
   }
   
   public a(Context paramContext, com.tencent.mm.plugin.emojicapture.c.a.b paramb, VideoTransPara paramVideoTransPara, EmojiCaptureUI.b paramb1, EmojiCaptureReporter paramEmojiCaptureReporter)
   {
-    AppMethodBeat.i(2753);
+    AppMethodBeat.i(332);
     this.context = paramContext;
-    this.lvP = paramb;
-    this.lvQ = paramVideoTransPara;
-    this.lvR = paramb1;
-    this.lsY = paramEmojiCaptureReporter;
-    this.lvH = a.b.lvU;
-    this.lvM = new com.tencent.mm.plugin.emojicapture.model.a.a();
-    this.evl = new d(this.context);
-    this.lvN = new VoiceInputProxy((VoiceInputProxy.b)new f(this), this.evl);
-    this.lvO = new ap((ap.a)new e(this), true);
-    CaptureMMProxy.createProxy(new CaptureMMProxy(this.evl));
-    this.evl.connect((Runnable)a.1.lvT);
-    paramContext = this.lvQ;
-    paramb = c.ltu;
-    paramContext.width = c.bnP();
-    paramContext = this.lvQ;
-    paramb = c.ltu;
-    paramContext.height = c.bnP();
-    this.lvQ.videoBitrate = 5000000;
-    com.tencent.mm.plugin.mmsight.model.j.oHG.videoBitrate = this.lvQ.videoBitrate;
-    com.tencent.mm.plugin.mmsight.model.j.oHG.fcu = this.lvQ;
-    this.lvM.scene = this.lsY.scene;
-    this.lvM.eyh = this.lsY.eyh;
-    AppMethodBeat.o(2753);
+    this.oMj = paramb;
+    this.oMk = paramVideoTransPara;
+    this.oMl = paramb1;
+    this.oMm = paramEmojiCaptureReporter;
+    this.oMc = a.b.oMp;
+    this.oMg = new com.tencent.mm.plugin.emojicapture.model.a.b();
+    this.fLo = new com.tencent.mm.remoteservice.d(this.context);
+    this.oMh = new VoiceInputProxy((VoiceInputProxy.b)new f(this), this.fLo);
+    this.oMi = new av((av.a)new e(this), true);
+    CaptureMMProxy.createProxy(new CaptureMMProxy(this.fLo));
+    this.fLo.connect((Runnable)a.1.oMo);
+    paramContext = this.oMk;
+    paramb = com.tencent.mm.plugin.emojicapture.model.d.oJY;
+    paramContext.width = com.tencent.mm.plugin.emojicapture.model.d.bXy();
+    paramContext = this.oMk;
+    paramb = com.tencent.mm.plugin.emojicapture.model.d.oJY;
+    paramContext.height = com.tencent.mm.plugin.emojicapture.model.d.bXy();
+    this.oMk.videoBitrate = 5000000;
+    com.tencent.mm.plugin.mmsight.model.k.tCN.videoBitrate = this.oMk.videoBitrate;
+    com.tencent.mm.plugin.mmsight.model.k.tCN.gCB = this.oMk;
+    this.oMg.scene = this.oMm.scene;
+    this.oMg.fSw = this.oMm.fSw;
+    AppMethodBeat.o(332);
   }
   
-  public final boolean Et()
+  public final boolean Ob()
   {
-    AppMethodBeat.i(2748);
-    ab.i("MicroMsg.CapturePresenter", "stop record " + this.lvH);
-    if (this.lvH == a.b.lvY)
+    AppMethodBeat.i(327);
+    ad.i("MicroMsg.CapturePresenter", "stop record " + this.oMc);
+    if (this.oMc == a.b.oMt)
     {
-      AppMethodBeat.o(2748);
+      AppMethodBeat.o(327);
       return true;
     }
-    this.lvH = a.b.lvY;
-    if (bo.av(this.lvI) < 600L)
+    this.oMc = a.b.oMt;
+    if (bt.aS(this.omg) < 600L)
     {
-      localObject = this.lvN;
+      localObject = this.oMh;
       if (localObject != null) {
         ((VoiceInputProxy)localObject).stop(true);
       }
-      this.lvH = a.b.lvV;
-      AppMethodBeat.o(2748);
+      this.oMc = a.b.oMq;
+      AppMethodBeat.o(327);
       return false;
     }
-    Object localObject = this.lvR;
+    Object localObject = this.oMl;
     Context localContext = this.context;
-    String str = this.context.getString(2131301086);
-    a.f.b.j.p(str, "context.getString(R.string.loading_tips)");
-    ((EmojiCaptureUI.b)localObject).a(localContext, (CharSequence)str, true, (DialogInterface.OnCancelListener)new a.d(this));
-    this.lvP.getDecoration().lyv.pause();
-    if (this.lvJ)
+    String str = this.context.getString(2131760709);
+    d.g.b.k.g(str, "context.getString(R.string.loading_tips)");
+    ((EmojiCaptureUI.b)localObject).a(localContext, (CharSequence)str, true, (DialogInterface.OnCancelListener)new d(this));
+    localObject = this.oMj.getDecoration();
+    ((CaptureDecoration)localObject).oOH.pause();
+    ((CaptureDecoration)localObject).oOI.pause();
+    if (this.oMd)
     {
-      localObject = this.lvN;
+      localObject = this.oMh;
       if (localObject != null) {
         ((VoiceInputProxy)localObject).stop(true);
       }
-      this.lvO.stopTimer();
+      this.oMi.stopTimer();
     }
-    this.lsY.lsK = System.currentTimeMillis();
-    this.lsY.esf = (this.lsY.lsK - this.lsY.lsJ);
-    EmojiCaptureReporter.a(4, this.lsY.eyh, 0L, this.lsY.esf, 0L, 0L, 0L, 0, 0, this.lsY.scene);
-    AppMethodBeat.o(2748);
+    this.oMm.oJd = System.currentTimeMillis();
+    this.oMm.fGg = (this.oMm.oJd - this.oMm.oJc);
+    EmojiCaptureReporter.a(4, this.oMm.fSw, 0L, this.oMm.fGg, 0L, 0L, 0, 0, this.oMm.scene);
+    AppMethodBeat.o(327);
     return true;
   }
   
-  public final void a(com.tencent.mm.plugin.emojicapture.model.a.a parama)
+  public final void a(com.tencent.mm.media.widget.camerarecordview.b.b paramb, boolean paramBoolean)
   {
-    AppMethodBeat.i(2749);
-    a.f.b.j.q(parama, "info");
-    ab.i("MicroMsg.CapturePresenter", "stopRecord: videoRecorder stop");
-    this.lvM.setVideoPath(parama.videoPath);
-    this.lvM.mV(parama.thumbPath);
-    this.lvM.ltG = this.lvL;
-    this.lvM.ltH = parama.ltH;
-    com.tencent.mm.plugin.emojicapture.model.a.a locala = this.lvM;
-    if (this.lvM.ltF == null) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool2 = false;
+    AppMethodBeat.i(328);
+    d.g.b.k.h(paramb, "info");
+    ad.i("MicroMsg.CapturePresenter", "stopRecord: videoRecorder stop");
+    this.oMg.setVideoPath(paramb.gBj);
+    this.oMg.ru(paramb.gBk);
+    this.oMg.oKl = this.oMf;
+    this.oMg.oKm = this.oMj.getDecoration().getTextColor();
+    Object localObject = this.oMg;
+    paramb = this.oMg.oKk;
+    if (paramb != null)
     {
-      locala.ltI = bool;
-      this.lvM.lsQ = parama.lsQ;
-      this.lvR.c(this.lvM);
-      AppMethodBeat.o(2749);
+      paramb = paramb.Fdb;
+      if (paramb != null) {
+        break label218;
+      }
+    }
+    label218:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      ((com.tencent.mm.plugin.emojicapture.model.a.b)localObject).oKn = bool1;
+      paramb = this.oMg;
+      if (this.oMg.oKn)
+      {
+        bool1 = bool2;
+        if (paramBoolean) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      paramb.oJj = bool1;
+      this.oMg.oKo = this.oMj.getDecoration().getAttachEmoji();
+      paramb = this.oMg;
+      localObject = this.oMj.getDecoration().getAttachEmojiMatrix();
+      d.g.b.k.h(localObject, "<set-?>");
+      paramb.oKp = ((Matrix)localObject);
+      this.oMl.b(this.oMg);
+      AppMethodBeat.o(328);
       return;
+      paramb = null;
+      break;
     }
   }
   
-  public final void a(b paramb)
+  public final void a(e parame)
   {
-    AppMethodBeat.i(2752);
-    ab.i("MicroMsg.CapturePresenter", "changeSticker:".concat(String.valueOf(paramb)));
-    this.lvM.ltF = paramb;
-    this.lvP.a(paramb);
-    AppMethodBeat.o(2752);
+    AppMethodBeat.i(331);
+    ad.i("MicroMsg.CapturePresenter", "changeSticker:".concat(String.valueOf(parame)));
+    this.oMg.oKk = parame;
+    this.oMj.a(parame);
+    AppMethodBeat.o(331);
   }
   
-  public final void aCJ()
+  public final void aZs()
   {
-    AppMethodBeat.i(2747);
-    ab.i("MicroMsg.CapturePresenter", "start record " + this.lvH);
-    this.lvM.setVideoPath("");
-    this.lvM.mV("");
-    this.lvL = this.lvP.getDecoration().getText();
-    this.lvP.getDecoration().lyv.reset();
-    if (this.lvL == null) {}
+    AppMethodBeat.i(326);
+    ad.i("MicroMsg.CapturePresenter", "start record " + this.oMc);
+    this.oMg.setVideoPath("");
+    this.oMg.ru("");
+    this.oMf = this.oMj.getDecoration().getText();
+    this.oMj.getDecoration();
+    Object localObject = (CharSequence)this.oMf;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.lvJ = bool;
-      ab.i("MicroMsg.CapturePresenter", "startRecord: useVoiceInput " + this.lvJ);
-      if ((this.lvJ) && ((a.f.b.j.e("NON_NETWORK", at.getNetTypeString(ah.getContext())) ^ true)))
+      this.oMd = bool;
+      ad.i("MicroMsg.CapturePresenter", "startRecord: useVoiceInput " + this.oMd);
+      if ((this.oMd) && ((d.g.b.k.g("NON_NETWORK", ay.getNetTypeString(aj.getContext())) ^ true)))
       {
-        VoiceInputProxy localVoiceInputProxy = this.lvN;
-        if (localVoiceInputProxy != null) {
-          localVoiceInputProxy.start();
+        localObject = this.oMh;
+        if (localObject != null) {
+          ((VoiceInputProxy)localObject).start();
         }
-        this.lvO.nP(50L);
+        this.oMi.vE(50L);
       }
-      this.lvK = false;
-      this.lvH = a.b.lvX;
-      this.lvI = bo.yB();
-      this.lsY.lsJ = System.currentTimeMillis();
-      EmojiCaptureReporter.a(3, this.lsY.eyh, 0L, 0L, 0L, 0L, 0L, 0, 0, this.lsY.scene);
-      AppMethodBeat.o(2747);
+      this.oMe = false;
+      this.oMc = a.b.oMs;
+      this.omg = bt.GC();
+      this.oMm.oJc = System.currentTimeMillis();
+      this.oMm.aZs();
+      AppMethodBeat.o(326);
       return;
     }
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(2751);
-    this.evl.release();
-    VoiceInputProxy localVoiceInputProxy = this.lvN;
+    AppMethodBeat.i(330);
+    this.fLo.release();
+    VoiceInputProxy localVoiceInputProxy = this.oMh;
     if (localVoiceInputProxy != null)
     {
       localVoiceInputProxy.setUiCallback(null);
-      AppMethodBeat.o(2751);
+      AppMethodBeat.o(330);
       return;
     }
-    AppMethodBeat.o(2751);
+    AppMethodBeat.o(330);
   }
   
   public final void exit()
   {
-    AppMethodBeat.i(2750);
-    EmojiCaptureUI.b.a.a(this.lvR, false);
-    AppMethodBeat.o(2750);
+    AppMethodBeat.i(329);
+    EmojiCaptureUI.b.a.a(this.oMl, false);
+    AppMethodBeat.o(329);
   }
   
-  public final void me()
+  public final void qP()
   {
-    AppMethodBeat.i(2746);
-    ab.i("MicroMsg.CapturePresenter", "pauseCapture " + this.lvK);
-    if ((this.lvL != null) || (this.lvK))
+    AppMethodBeat.i(325);
+    ad.i("MicroMsg.CapturePresenter", "pauseCapture " + this.oMe);
+    if ((this.oMf != null) || (this.oMe))
     {
-      this.lvR.Lp(this.lvL);
-      AppMethodBeat.o(2746);
+      this.oMl.Uw(this.oMf);
+      AppMethodBeat.o(325);
       return;
     }
-    al.p((Runnable)new c(this), 1500L);
-    AppMethodBeat.o(2746);
+    aq.n((Runnable)new c(this), 1500L);
+    AppMethodBeat.o(325);
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/presenter/CapturePresenter$Companion;", "", "()V", "TAG", "", "plugin-emojicapture_release"})
+  public static final class a {}
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -225,43 +258,57 @@ public final class a
     
     public final void run()
     {
-      AppMethodBeat.i(2741);
-      ab.i("MicroMsg.CapturePresenter", "voice finish called force");
-      if (!a.a(this.lwa)) {
-        a.c(this.lwa).Lp(a.d(this.lwa));
+      AppMethodBeat.i(320);
+      ad.i("MicroMsg.CapturePresenter", "voice finish called force");
+      if (!a.a(this.oMv)) {
+        a.c(this.oMv).Uw(a.d(this.oMv));
       }
-      a.b(this.lwa);
-      AppMethodBeat.o(2741);
+      a.b(this.oMv);
+      AppMethodBeat.o(320);
     }
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "onTimerExpired"})
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"})
+  static final class d
+    implements DialogInterface.OnCancelListener
+  {
+    d(a parama) {}
+    
+    public final void onCancel(DialogInterface paramDialogInterface)
+    {
+      AppMethodBeat.i(321);
+      a.c(this.oMv).bYt();
+      AppMethodBeat.o(321);
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "onTimerExpired"})
   static final class e
-    implements ap.a
+    implements av.a
   {
     e(a parama) {}
     
     public final boolean onTimerExpired()
     {
       boolean bool = false;
-      AppMethodBeat.i(2743);
+      AppMethodBeat.i(322);
       Object localObject;
       int i;
-      if (a.e(this.lwa) != null)
+      if (a.e(this.oMv) != null)
       {
-        localObject = a.e(this.lwa);
+        localObject = a.e(this.oMv);
         if (localObject != null) {
           i = ((VoiceInputProxy)localObject).getMaxAmplitudeRate();
         }
       }
       for (;;)
       {
-        localObject = a.f(this.lwa);
+        localObject = a.f(this.oMv);
         if (i > 10) {
           bool = true;
         }
-        ((com.tencent.mm.plugin.emojicapture.c.a.b)localObject).gS(bool);
-        AppMethodBeat.o(2743);
+        ((com.tencent.mm.plugin.emojicapture.c.a.b)localObject).jO(bool);
+        AppMethodBeat.o(322);
         return true;
         i = 0;
         continue;
@@ -270,33 +317,33 @@ public final class a
     }
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/emojicapture/presenter/CapturePresenter$voiceInput$1", "Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;", "onRecognizeFinish", "", "onRes", "voiceText", "", "plugin-emojicapture_release"})
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/emojicapture/presenter/CapturePresenter$voiceInput$1", "Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;", "onRecognizeFinish", "", "onRes", "voiceText", "", "plugin-emojicapture_release"})
   public static final class f
     implements VoiceInputProxy.b
   {
-    public final void amO()
+    public final void aDU()
     {
-      AppMethodBeat.i(2745);
-      ab.i("MicroMsg.CapturePresenter", "onRecognizeFinish voice finish called");
-      if (!a.a(this.lwa)) {
-        a.c(this.lwa).Lp(a.d(this.lwa));
+      AppMethodBeat.i(324);
+      ad.i("MicroMsg.CapturePresenter", "onRecognizeFinish voice finish called");
+      if (!a.a(this.oMv)) {
+        a.c(this.oMv).Uw(a.d(this.oMv));
       }
-      a.b(this.lwa);
-      AppMethodBeat.o(2745);
+      a.b(this.oMv);
+      AppMethodBeat.o(324);
     }
     
     public final void onRes(String paramString)
     {
-      AppMethodBeat.i(2744);
-      ab.i("MicroMsg.CapturePresenter", "onRes ".concat(String.valueOf(paramString)));
-      a.a(this.lwa, paramString);
-      AppMethodBeat.o(2744);
+      AppMethodBeat.i(323);
+      ad.i("MicroMsg.CapturePresenter", "onRes ".concat(String.valueOf(paramString)));
+      a.a(this.oMv, paramString);
+      AppMethodBeat.o(323);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.e.a
  * JD-Core Version:    0.7.0.1
  */

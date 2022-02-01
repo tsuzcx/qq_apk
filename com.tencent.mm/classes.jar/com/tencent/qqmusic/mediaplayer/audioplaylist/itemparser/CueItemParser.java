@@ -18,49 +18,49 @@ public class CueItemParser
   
   public CueItemParser(String paramString)
   {
-    AppMethodBeat.i(104772);
+    AppMethodBeat.i(76607);
     this.mUri = paramString;
     this.mTrackInfoList = new LinkedList();
-    AppMethodBeat.o(104772);
+    AppMethodBeat.o(76607);
   }
   
   private long convertTimeStrToMs(String paramString)
   {
-    AppMethodBeat.i(104773);
+    AppMethodBeat.i(76608);
     paramString = paramString.split(":");
     long l1 = Long.parseLong(paramString[0]);
     long l2 = Long.parseLong(paramString[1]);
     long l3 = Long.parseLong(paramString[2]);
-    AppMethodBeat.o(104773);
+    AppMethodBeat.o(76608);
     return l3 * 10L + (l1 * 60L + l2) * 1000L;
   }
   
   private String guessCharsetEncoding(String paramString)
   {
-    AppMethodBeat.i(104776);
+    AppMethodBeat.i(76611);
     Logger.i("CueItemParser", "CueItemParser.guessCharsetEncoding, filePath: ".concat(String.valueOf(paramString)));
     paramString = guessCharsetEncoding(new FileInputStream(paramString));
-    AppMethodBeat.o(104776);
+    AppMethodBeat.o(76611);
     return paramString;
   }
   
   public boolean isParseSuccess()
   {
-    AppMethodBeat.i(104775);
+    AppMethodBeat.i(76610);
     if (!this.mTrackInfoList.isEmpty())
     {
-      AppMethodBeat.o(104775);
+      AppMethodBeat.o(76610);
       return true;
     }
-    AppMethodBeat.o(104775);
+    AppMethodBeat.o(76610);
     return false;
   }
   
   public Iterator<TrackInfo> iterator()
   {
-    AppMethodBeat.i(104774);
+    AppMethodBeat.i(76609);
     Iterator localIterator = this.mTrackInfoList.iterator();
-    AppMethodBeat.o(104774);
+    AppMethodBeat.o(76609);
     return localIterator;
   }
   
@@ -933,7 +933,7 @@ public class CueItemParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.audioplaylist.itemparser.CueItemParser
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ou
   extends b
 {
-  public ou.a cFt;
+  public a duf;
+  public b dug;
   
   public ou()
   {
@@ -15,11 +16,23 @@ public final class ou
   
   private ou(byte paramByte)
   {
-    AppMethodBeat.i(56571);
-    this.cFt = new ou.a();
-    this.ymq = false;
+    AppMethodBeat.i(9427);
+    this.duf = new a();
+    this.dug = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(56571);
+    AppMethodBeat.o(9427);
+  }
+  
+  public static final class a
+  {
+    public long ded;
+    public String dsv;
+  }
+  
+  public static final class b
+  {
+    public String duh;
   }
 }
 

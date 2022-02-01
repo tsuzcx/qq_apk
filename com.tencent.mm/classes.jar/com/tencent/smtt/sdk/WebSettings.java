@@ -4,13 +4,15 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.smtt.export.external.interfaces.IX5CoreEntry;
+import com.tencent.smtt.export.external.interfaces.IX5CoreMessy;
 import com.tencent.smtt.export.external.interfaces.IX5WebSettings;
 import com.tencent.smtt.export.external.interfaces.IX5WebSettings.LayoutAlgorithm;
 import com.tencent.smtt.export.external.interfaces.IX5WebSettings.PluginState;
 import com.tencent.smtt.export.external.interfaces.IX5WebSettings.RenderPriority;
 import com.tencent.smtt.export.external.interfaces.IX5WebSettings.TextSize;
 import com.tencent.smtt.export.external.interfaces.IX5WebSettings.ZoomDensity;
-import com.tencent.smtt.utils.r;
+import com.tencent.smtt.utils.k;
 
 public class WebSettings
 {
@@ -40,111 +42,111 @@ public class WebSettings
   @TargetApi(17)
   public static String getDefaultUserAgent(Context paramContext)
   {
-    AppMethodBeat.i(64816);
-    if (bz.a().b())
+    AppMethodBeat.i(54480);
+    if (v.a().b())
     {
-      paramContext = bz.a().c().i(paramContext);
-      AppMethodBeat.o(64816);
+      paramContext = TbsOneGreyInfoHelper.getCoreEntry().getX5CoreMessy().getDefaultUserAgent(paramContext);
+      AppMethodBeat.o(54480);
       return paramContext;
     }
     if (Build.VERSION.SDK_INT < 17)
     {
-      AppMethodBeat.o(64816);
+      AppMethodBeat.o(54480);
       return null;
     }
-    paramContext = r.a(android.webkit.WebSettings.class, "getDefaultUserAgent", new Class[] { Context.class }, new Object[] { paramContext });
+    paramContext = k.a(android.webkit.WebSettings.class, "getDefaultUserAgent", new Class[] { Context.class }, new Object[] { paramContext });
     if (paramContext == null)
     {
-      AppMethodBeat.o(64816);
+      AppMethodBeat.o(54480);
       return null;
     }
     paramContext = (String)paramContext;
-    AppMethodBeat.o(64816);
+    AppMethodBeat.o(54480);
     return paramContext;
   }
   
   @Deprecated
   public boolean enableSmoothTransition()
   {
-    AppMethodBeat.i(64741);
+    AppMethodBeat.i(54405);
     boolean bool;
     if ((this.c) && (this.a != null))
     {
       bool = this.a.enableSmoothTransition();
-      AppMethodBeat.o(64741);
+      AppMethodBeat.o(54405);
       return bool;
     }
     if ((!this.c) && (this.b != null))
     {
       if (Build.VERSION.SDK_INT >= 11)
       {
-        Object localObject = r.a(this.b, "enableSmoothTransition");
+        Object localObject = k.a(this.b, "enableSmoothTransition");
         if (localObject == null)
         {
-          AppMethodBeat.o(64741);
+          AppMethodBeat.o(54405);
           return false;
         }
         bool = ((Boolean)localObject).booleanValue();
-        AppMethodBeat.o(64741);
+        AppMethodBeat.o(54405);
         return bool;
       }
-      AppMethodBeat.o(64741);
+      AppMethodBeat.o(54405);
       return false;
     }
-    AppMethodBeat.o(64741);
+    AppMethodBeat.o(54405);
     return false;
   }
   
   @TargetApi(11)
   public boolean getAllowContentAccess()
   {
-    AppMethodBeat.i(64737);
+    AppMethodBeat.i(54401);
     boolean bool;
     if ((this.c) && (this.a != null))
     {
       bool = this.a.getAllowContentAccess();
-      AppMethodBeat.o(64737);
+      AppMethodBeat.o(54401);
       return bool;
     }
     if ((!this.c) && (this.b != null))
     {
       if (Build.VERSION.SDK_INT >= 11)
       {
-        Object localObject = r.a(this.b, "getAllowContentAccess");
+        Object localObject = k.a(this.b, "getAllowContentAccess");
         if (localObject == null)
         {
-          AppMethodBeat.o(64737);
+          AppMethodBeat.o(54401);
           return false;
         }
         bool = ((Boolean)localObject).booleanValue();
-        AppMethodBeat.o(64737);
+        AppMethodBeat.o(54401);
         return bool;
       }
-      AppMethodBeat.o(64737);
+      AppMethodBeat.o(54401);
       return false;
     }
-    AppMethodBeat.o(64737);
+    AppMethodBeat.o(54401);
     return false;
   }
   
   @TargetApi(3)
   public boolean getAllowFileAccess()
   {
-    AppMethodBeat.i(64734);
+    AppMethodBeat.i(54398);
     boolean bool;
     if ((this.c) && (this.a != null))
     {
       bool = this.a.getAllowFileAccess();
-      AppMethodBeat.o(64734);
+      AppMethodBeat.o(54398);
       return bool;
     }
     if ((!this.c) && (this.b != null))
     {
       bool = this.b.getAllowFileAccess();
-      AppMethodBeat.o(64734);
+      AppMethodBeat.o(54398);
       return bool;
     }
-    AppMethodBeat.o(64734);
+    AppMethodBeat.o(54398);
     return false;
   }
   
@@ -154,23 +156,23 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64788);
+        AppMethodBeat.i(54452);
         if ((this.c) && (this.a != null))
         {
           bool = this.a.getBlockNetworkImage();
-          AppMethodBeat.o(64788);
+          AppMethodBeat.o(54452);
           return bool;
         }
         if ((!this.c) && (this.b != null))
         {
           bool = this.b.getBlockNetworkImage();
-          AppMethodBeat.o(64788);
+          AppMethodBeat.o(54452);
           continue;
         }
         boolean bool = false;
       }
       finally {}
-      AppMethodBeat.o(64788);
+      AppMethodBeat.o(54452);
     }
   }
   
@@ -182,11 +184,11 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64790);
+        AppMethodBeat.i(54454);
         if ((this.c) && (this.a != null))
         {
           bool = this.a.getBlockNetworkLoads();
-          AppMethodBeat.o(64790);
+          AppMethodBeat.o(54454);
           return bool;
         }
         if ((this.c) || (this.b == null)) {
@@ -195,56 +197,56 @@ public class WebSettings
         if (Build.VERSION.SDK_INT >= 8)
         {
           bool = this.b.getBlockNetworkLoads();
-          AppMethodBeat.o(64790);
+          AppMethodBeat.o(54454);
           continue;
         }
-        AppMethodBeat.o(64790);
+        AppMethodBeat.o(54454);
       }
       finally {}
       continue;
       label93:
-      AppMethodBeat.o(64790);
+      AppMethodBeat.o(54454);
     }
   }
   
   @TargetApi(3)
   public boolean getBuiltInZoomControls()
   {
-    AppMethodBeat.i(64730);
+    AppMethodBeat.i(54394);
     boolean bool;
     if ((this.c) && (this.a != null))
     {
       bool = this.a.getBuiltInZoomControls();
-      AppMethodBeat.o(64730);
+      AppMethodBeat.o(54394);
       return bool;
     }
     if ((!this.c) && (this.b != null))
     {
       bool = this.b.getBuiltInZoomControls();
-      AppMethodBeat.o(64730);
+      AppMethodBeat.o(54394);
       return bool;
     }
-    AppMethodBeat.o(64730);
+    AppMethodBeat.o(54394);
     return false;
   }
   
   public int getCacheMode()
   {
-    AppMethodBeat.i(64822);
+    AppMethodBeat.i(54486);
     int i;
     if ((this.c) && (this.a != null))
     {
       i = this.a.getCacheMode();
-      AppMethodBeat.o(64822);
+      AppMethodBeat.o(54486);
       return i;
     }
     if ((!this.c) && (this.b != null))
     {
       i = this.b.getCacheMode();
-      AppMethodBeat.o(64822);
+      AppMethodBeat.o(54486);
       return i;
     }
-    AppMethodBeat.o(64822);
+    AppMethodBeat.o(54486);
     return 0;
   }
   
@@ -254,24 +256,24 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64774);
+        AppMethodBeat.i(54438);
         String str1;
         if ((this.c) && (this.a != null))
         {
           str1 = this.a.getCursiveFontFamily();
-          AppMethodBeat.o(64774);
+          AppMethodBeat.o(54438);
           return str1;
         }
         if ((!this.c) && (this.b != null))
         {
           str1 = this.b.getCursiveFontFamily();
-          AppMethodBeat.o(64774);
+          AppMethodBeat.o(54438);
           continue;
         }
         String str2 = "";
       }
       finally {}
-      AppMethodBeat.o(64774);
+      AppMethodBeat.o(54438);
     }
   }
   
@@ -282,23 +284,23 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64806);
+        AppMethodBeat.i(54470);
         if ((this.c) && (this.a != null))
         {
           bool = this.a.getDatabaseEnabled();
-          AppMethodBeat.o(64806);
+          AppMethodBeat.o(54470);
           return bool;
         }
         if ((!this.c) && (this.b != null))
         {
           bool = this.b.getDatabaseEnabled();
-          AppMethodBeat.o(64806);
+          AppMethodBeat.o(54470);
           continue;
         }
         boolean bool = false;
       }
       finally {}
-      AppMethodBeat.o(64806);
+      AppMethodBeat.o(54470);
     }
   }
   
@@ -309,24 +311,24 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64805);
+        AppMethodBeat.i(54469);
         String str1;
         if ((this.c) && (this.a != null))
         {
           str1 = this.a.getDatabasePath();
-          AppMethodBeat.o(64805);
+          AppMethodBeat.o(54469);
           return str1;
         }
         if ((!this.c) && (this.b != null))
         {
           str1 = this.b.getDatabasePath();
-          AppMethodBeat.o(64805);
+          AppMethodBeat.o(54469);
           continue;
         }
         String str2 = "";
       }
       finally {}
-      AppMethodBeat.o(64805);
+      AppMethodBeat.o(54469);
     }
   }
   
@@ -336,23 +338,23 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64784);
+        AppMethodBeat.i(54448);
         if ((this.c) && (this.a != null))
         {
           i = this.a.getDefaultFixedFontSize();
-          AppMethodBeat.o(64784);
+          AppMethodBeat.o(54448);
           return i;
         }
         if ((!this.c) && (this.b != null))
         {
           i = this.b.getDefaultFixedFontSize();
-          AppMethodBeat.o(64784);
+          AppMethodBeat.o(54448);
           continue;
         }
         int i = 0;
       }
       finally {}
-      AppMethodBeat.o(64784);
+      AppMethodBeat.o(54448);
     }
   }
   
@@ -362,23 +364,23 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64782);
+        AppMethodBeat.i(54446);
         if ((this.c) && (this.a != null))
         {
           i = this.a.getDefaultFontSize();
-          AppMethodBeat.o(64782);
+          AppMethodBeat.o(54446);
           return i;
         }
         if ((!this.c) && (this.b != null))
         {
           i = this.b.getDefaultFontSize();
-          AppMethodBeat.o(64782);
+          AppMethodBeat.o(54446);
           continue;
         }
         int i = 0;
       }
       finally {}
-      AppMethodBeat.o(64782);
+      AppMethodBeat.o(54446);
     }
   }
   
@@ -388,109 +390,77 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64815);
+        AppMethodBeat.i(54479);
         String str1;
         if ((this.c) && (this.a != null))
         {
           str1 = this.a.getDefaultTextEncodingName();
-          AppMethodBeat.o(64815);
+          AppMethodBeat.o(54479);
           return str1;
         }
         if ((!this.c) && (this.b != null))
         {
           str1 = this.b.getDefaultTextEncodingName();
-          AppMethodBeat.o(64815);
+          AppMethodBeat.o(54479);
           continue;
         }
         String str2 = "";
       }
       finally {}
-      AppMethodBeat.o(64815);
+      AppMethodBeat.o(54479);
     }
   }
   
   @TargetApi(7)
   public WebSettings.ZoomDensity getDefaultZoom()
   {
-    AppMethodBeat.i(64753);
+    AppMethodBeat.i(54417);
     WebSettings.ZoomDensity localZoomDensity;
     if ((this.c) && (this.a != null))
     {
       localZoomDensity = WebSettings.ZoomDensity.valueOf(this.a.getDefaultZoom().name());
-      AppMethodBeat.o(64753);
+      AppMethodBeat.o(54417);
       return localZoomDensity;
     }
     if ((!this.c) && (this.b != null))
     {
       localZoomDensity = WebSettings.ZoomDensity.valueOf(this.b.getDefaultZoom().name());
-      AppMethodBeat.o(64753);
+      AppMethodBeat.o(54417);
       return localZoomDensity;
     }
-    AppMethodBeat.o(64753);
+    AppMethodBeat.o(54417);
     return null;
-  }
-  
-  public int getDisabledActionModeMenuItems()
-  {
-    AppMethodBeat.i(139418);
-    try
-    {
-      int i;
-      if ((this.c) && (this.a != null))
-      {
-        i = this.a.getDisabledActionModeMenuItems();
-        AppMethodBeat.o(139418);
-        return i;
-      }
-      if ((!this.c) && (this.b != null) && (Build.VERSION.SDK_INT >= 24))
-      {
-        Object localObject = r.a(this.b, "getDisabledActionModeMenuItems");
-        if (localObject == null)
-        {
-          AppMethodBeat.o(139418);
-          return 0;
-        }
-        i = ((Integer)localObject).intValue();
-        AppMethodBeat.o(139418);
-        return i;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(139418);
-    }
-    return 0;
   }
   
   @TargetApi(11)
   public boolean getDisplayZoomControls()
   {
-    AppMethodBeat.i(64732);
+    AppMethodBeat.i(54396);
     boolean bool;
     if ((this.c) && (this.a != null))
     {
       bool = this.a.getDisplayZoomControls();
-      AppMethodBeat.o(64732);
+      AppMethodBeat.o(54396);
       return bool;
     }
     if ((!this.c) && (this.b != null))
     {
       if (Build.VERSION.SDK_INT >= 11)
       {
-        Object localObject = r.a(this.b, "getDisplayZoomControls");
+        Object localObject = k.a(this.b, "getDisplayZoomControls");
         if (localObject == null)
         {
-          AppMethodBeat.o(64732);
+          AppMethodBeat.o(54396);
           return false;
         }
         bool = ((Boolean)localObject).booleanValue();
-        AppMethodBeat.o(64732);
+        AppMethodBeat.o(54396);
         return bool;
       }
-      AppMethodBeat.o(64732);
+      AppMethodBeat.o(54396);
       return false;
     }
-    AppMethodBeat.o(64732);
+    AppMethodBeat.o(54396);
     return false;
   }
   
@@ -501,23 +471,23 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64804);
+        AppMethodBeat.i(54468);
         if ((this.c) && (this.a != null))
         {
           bool = this.a.getDomStorageEnabled();
-          AppMethodBeat.o(64804);
+          AppMethodBeat.o(54468);
           return bool;
         }
         if ((!this.c) && (this.b != null))
         {
           bool = this.b.getDomStorageEnabled();
-          AppMethodBeat.o(64804);
+          AppMethodBeat.o(54468);
           continue;
         }
         boolean bool = false;
       }
       finally {}
-      AppMethodBeat.o(64804);
+      AppMethodBeat.o(54468);
     }
   }
   
@@ -527,24 +497,24 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64776);
+        AppMethodBeat.i(54440);
         String str1;
         if ((this.c) && (this.a != null))
         {
           str1 = this.a.getFantasyFontFamily();
-          AppMethodBeat.o(64776);
+          AppMethodBeat.o(54440);
           return str1;
         }
         if ((!this.c) && (this.b != null))
         {
           str1 = this.b.getFantasyFontFamily();
-          AppMethodBeat.o(64776);
+          AppMethodBeat.o(54440);
           continue;
         }
         String str2 = "";
       }
       finally {}
-      AppMethodBeat.o(64776);
+      AppMethodBeat.o(54440);
     }
   }
   
@@ -554,24 +524,24 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64768);
+        AppMethodBeat.i(54432);
         String str1;
         if ((this.c) && (this.a != null))
         {
           str1 = this.a.getFixedFontFamily();
-          AppMethodBeat.o(64768);
+          AppMethodBeat.o(54432);
           return str1;
         }
         if ((!this.c) && (this.b != null))
         {
           str1 = this.b.getFixedFontFamily();
-          AppMethodBeat.o(64768);
+          AppMethodBeat.o(54432);
           continue;
         }
         String str2 = "";
       }
       finally {}
-      AppMethodBeat.o(64768);
+      AppMethodBeat.o(54432);
     }
   }
   
@@ -581,23 +551,23 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64813);
+        AppMethodBeat.i(54477);
         if ((this.c) && (this.a != null))
         {
           bool = this.a.getJavaScriptCanOpenWindowsAutomatically();
-          AppMethodBeat.o(64813);
+          AppMethodBeat.o(54477);
           return bool;
         }
         if ((!this.c) && (this.b != null))
         {
           bool = this.b.getJavaScriptCanOpenWindowsAutomatically();
-          AppMethodBeat.o(64813);
+          AppMethodBeat.o(54477);
           continue;
         }
         boolean bool = false;
       }
       finally {}
-      AppMethodBeat.o(64813);
+      AppMethodBeat.o(54477);
     }
   }
   
@@ -607,23 +577,23 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64808);
+        AppMethodBeat.i(54472);
         if ((this.c) && (this.a != null))
         {
           bool = this.a.getJavaScriptEnabled();
-          AppMethodBeat.o(64808);
+          AppMethodBeat.o(54472);
           return bool;
         }
         if ((!this.c) && (this.b != null))
         {
           bool = this.b.getJavaScriptEnabled();
-          AppMethodBeat.o(64808);
+          AppMethodBeat.o(54472);
           continue;
         }
         boolean bool = false;
       }
       finally {}
-      AppMethodBeat.o(64808);
+      AppMethodBeat.o(54472);
     }
   }
   
@@ -633,65 +603,65 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64764);
+        AppMethodBeat.i(54428);
         WebSettings.LayoutAlgorithm localLayoutAlgorithm;
         if ((this.c) && (this.a != null))
         {
           localLayoutAlgorithm = WebSettings.LayoutAlgorithm.valueOf(this.a.getLayoutAlgorithm().name());
-          AppMethodBeat.o(64764);
+          AppMethodBeat.o(54428);
           return localLayoutAlgorithm;
         }
         if ((!this.c) && (this.b != null))
         {
           localLayoutAlgorithm = WebSettings.LayoutAlgorithm.valueOf(this.b.getLayoutAlgorithm().name());
-          AppMethodBeat.o(64764);
+          AppMethodBeat.o(54428);
           continue;
         }
         Object localObject2 = null;
       }
       finally {}
-      AppMethodBeat.o(64764);
+      AppMethodBeat.o(54428);
     }
   }
   
   public boolean getLightTouchEnabled()
   {
-    AppMethodBeat.i(64755);
+    AppMethodBeat.i(54419);
     boolean bool;
     if ((this.c) && (this.a != null))
     {
       bool = this.a.getLightTouchEnabled();
-      AppMethodBeat.o(64755);
+      AppMethodBeat.o(54419);
       return bool;
     }
     if ((!this.c) && (this.b != null))
     {
       bool = this.b.getLightTouchEnabled();
-      AppMethodBeat.o(64755);
+      AppMethodBeat.o(54419);
       return bool;
     }
-    AppMethodBeat.o(64755);
+    AppMethodBeat.o(54419);
     return false;
   }
   
   @TargetApi(7)
   public boolean getLoadWithOverviewMode()
   {
-    AppMethodBeat.i(64739);
+    AppMethodBeat.i(54403);
     boolean bool;
     if ((this.c) && (this.a != null))
     {
       bool = this.a.getLoadWithOverviewMode();
-      AppMethodBeat.o(64739);
+      AppMethodBeat.o(54403);
       return bool;
     }
     if ((!this.c) && (this.b != null))
     {
       bool = this.b.getLoadWithOverviewMode();
-      AppMethodBeat.o(64739);
+      AppMethodBeat.o(54403);
       return bool;
     }
-    AppMethodBeat.o(64739);
+    AppMethodBeat.o(54403);
     return false;
   }
   
@@ -701,55 +671,55 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64786);
+        AppMethodBeat.i(54450);
         if ((this.c) && (this.a != null))
         {
           bool = this.a.getLoadsImagesAutomatically();
-          AppMethodBeat.o(64786);
+          AppMethodBeat.o(54450);
           return bool;
         }
         if ((!this.c) && (this.b != null))
         {
           bool = this.b.getLoadsImagesAutomatically();
-          AppMethodBeat.o(64786);
+          AppMethodBeat.o(54450);
           continue;
         }
         boolean bool = false;
       }
       finally {}
-      AppMethodBeat.o(64786);
+      AppMethodBeat.o(54450);
     }
   }
   
   @TargetApi(17)
   public boolean getMediaPlaybackRequiresUserGesture()
   {
-    AppMethodBeat.i(64817);
+    AppMethodBeat.i(54481);
     boolean bool;
     if ((this.c) && (this.a != null))
     {
       bool = this.a.getMediaPlaybackRequiresUserGesture();
-      AppMethodBeat.o(64817);
+      AppMethodBeat.o(54481);
       return bool;
     }
     if ((!this.c) && (this.b != null))
     {
       if (Build.VERSION.SDK_INT < 17)
       {
-        AppMethodBeat.o(64817);
+        AppMethodBeat.o(54481);
         return false;
       }
-      Object localObject = r.a(this.b, "getMediaPlaybackRequiresUserGesture");
+      Object localObject = k.a(this.b, "getMediaPlaybackRequiresUserGesture");
       if (localObject == null)
       {
-        AppMethodBeat.o(64817);
+        AppMethodBeat.o(54481);
         return false;
       }
       bool = ((Boolean)localObject).booleanValue();
-      AppMethodBeat.o(64817);
+      AppMethodBeat.o(54481);
       return bool;
     }
-    AppMethodBeat.o(64817);
+    AppMethodBeat.o(54481);
     return false;
   }
   
@@ -759,23 +729,23 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64778);
+        AppMethodBeat.i(54442);
         if ((this.c) && (this.a != null))
         {
           i = this.a.getMinimumFontSize();
-          AppMethodBeat.o(64778);
+          AppMethodBeat.o(54442);
           return i;
         }
         if ((!this.c) && (this.b != null))
         {
           i = this.b.getMinimumFontSize();
-          AppMethodBeat.o(64778);
+          AppMethodBeat.o(54442);
           continue;
         }
         int i = 0;
       }
       finally {}
-      AppMethodBeat.o(64778);
+      AppMethodBeat.o(54442);
     }
   }
   
@@ -785,23 +755,23 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64780);
+        AppMethodBeat.i(54444);
         if ((this.c) && (this.a != null))
         {
           i = this.a.getMinimumLogicalFontSize();
-          AppMethodBeat.o(64780);
+          AppMethodBeat.o(54444);
           return i;
         }
         if ((!this.c) && (this.b != null))
         {
           i = this.b.getMinimumLogicalFontSize();
-          AppMethodBeat.o(64780);
+          AppMethodBeat.o(54444);
           continue;
         }
         int i = 0;
       }
       finally {}
-      AppMethodBeat.o(64780);
+      AppMethodBeat.o(54444);
     }
   }
   
@@ -811,62 +781,62 @@ public class WebSettings
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 294
-    //   5: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 291
+    //   5: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 44	com/tencent/smtt/sdk/WebSettings:c	Z
+    //   9: getfield 42	com/tencent/smtt/sdk/WebSettings:c	Z
     //   12: ifeq +44 -> 56
     //   15: aload_0
-    //   16: getfield 40	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   16: getfield 38	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   19: astore_2
     //   20: aload_2
     //   21: ifnull +35 -> 56
     //   24: aload_0
-    //   25: getfield 40	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   28: invokeinterface 296 1 0
+    //   25: getfield 38	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   28: invokeinterface 293 1 0
     //   33: istore_1
-    //   34: ldc_w 294
-    //   37: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   34: ldc_w 291
+    //   37: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   40: aload_0
     //   41: monitorexit
     //   42: iload_1
     //   43: ireturn
     //   44: astore_2
-    //   45: ldc_w 294
-    //   48: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: ldc_w 291
+    //   48: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   51: iconst_m1
     //   52: istore_1
     //   53: goto -13 -> 40
-    //   56: getstatic 81	android/os/Build$VERSION:SDK_INT	I
+    //   56: getstatic 88	android/os/Build$VERSION:SDK_INT	I
     //   59: bipush 21
     //   61: if_icmpge +14 -> 75
-    //   64: ldc_w 294
-    //   67: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: ldc_w 291
+    //   67: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   70: iconst_m1
     //   71: istore_1
     //   72: goto -32 -> 40
     //   75: aload_0
-    //   76: getfield 42	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
-    //   79: ldc_w 297
+    //   76: getfield 40	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   79: ldc_w 294
     //   82: iconst_0
-    //   83: anewarray 86	java/lang/Class
+    //   83: anewarray 93	java/lang/Class
     //   86: iconst_0
     //   87: anewarray 4	java/lang/Object
-    //   90: invokestatic 300	com/tencent/smtt/utils/r:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   90: invokestatic 297	com/tencent/smtt/utils/k:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   93: astore_2
     //   94: aload_2
     //   95: ifnonnull +14 -> 109
-    //   98: ldc_w 294
-    //   101: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: ldc_w 291
+    //   101: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   104: iconst_m1
     //   105: istore_1
     //   106: goto -66 -> 40
     //   109: aload_2
-    //   110: checkcast 211	java/lang/Integer
-    //   113: invokevirtual 214	java/lang/Integer:intValue	()I
+    //   110: checkcast 299	java/lang/Integer
+    //   113: invokevirtual 302	java/lang/Integer:intValue	()I
     //   116: istore_1
-    //   117: ldc_w 294
-    //   120: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: ldc_w 291
+    //   120: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   123: goto -83 -> 40
     //   126: astore_2
     //   127: aload_0
@@ -896,59 +866,27 @@ public class WebSettings
   
   public boolean getNavDump()
   {
-    AppMethodBeat.i(64726);
+    AppMethodBeat.i(54390);
     boolean bool;
     if ((this.c) && (this.a != null))
     {
       bool = this.a.getNavDump();
-      AppMethodBeat.o(64726);
+      AppMethodBeat.o(54390);
       return bool;
     }
     if ((!this.c) && (this.b != null))
     {
-      Object localObject = r.a(this.b, "getNavDump");
+      Object localObject = k.a(this.b, "getNavDump");
       if (localObject == null)
       {
-        AppMethodBeat.o(64726);
+        AppMethodBeat.o(54390);
         return false;
       }
       bool = ((Boolean)localObject).booleanValue();
-      AppMethodBeat.o(64726);
+      AppMethodBeat.o(54390);
       return bool;
     }
-    AppMethodBeat.o(64726);
-    return false;
-  }
-  
-  public boolean getOffscreenPreRaster()
-  {
-    AppMethodBeat.i(139419);
-    try
-    {
-      boolean bool;
-      if ((this.c) && (this.a != null))
-      {
-        bool = this.a.getOffscreenPreRaster();
-        AppMethodBeat.o(139419);
-        return bool;
-      }
-      if ((!this.c) && (this.b != null) && (Build.VERSION.SDK_INT >= 24))
-      {
-        Object localObject = r.a(this.b, "getOffscreenPreRaster");
-        if (localObject == null)
-        {
-          AppMethodBeat.o(139419);
-          return false;
-        }
-        bool = ((Boolean)localObject).booleanValue();
-        AppMethodBeat.o(139419);
-        return bool;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(139419);
-    }
+    AppMethodBeat.o(54390);
     return false;
   }
   
@@ -960,12 +898,12 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64810);
+        AppMethodBeat.i(54474);
         Object localObject1;
         if ((this.c) && (this.a != null))
         {
           localObject1 = WebSettings.PluginState.valueOf(this.a.getPluginState().name());
-          AppMethodBeat.o(64810);
+          AppMethodBeat.o(54474);
           return localObject1;
         }
         if ((this.c) || (this.b == null)) {
@@ -973,24 +911,24 @@ public class WebSettings
         }
         if (Build.VERSION.SDK_INT >= 8)
         {
-          localObject1 = r.a(this.b, "getPluginState");
+          localObject1 = k.a(this.b, "getPluginState");
           if (localObject1 == null)
           {
-            AppMethodBeat.o(64810);
+            AppMethodBeat.o(54474);
             localObject1 = null;
             continue;
           }
           localObject1 = WebSettings.PluginState.valueOf(((android.webkit.WebSettings.PluginState)localObject1).name());
-          AppMethodBeat.o(64810);
+          AppMethodBeat.o(54474);
           continue;
         }
-        AppMethodBeat.o(64810);
+        AppMethodBeat.o(54474);
       }
       finally {}
       Object localObject3 = null;
       continue;
       label132:
-      AppMethodBeat.o(64810);
+      AppMethodBeat.o(54474);
       localObject3 = null;
     }
   }
@@ -1004,11 +942,11 @@ public class WebSettings
       boolean bool;
       try
       {
-        AppMethodBeat.i(64809);
+        AppMethodBeat.i(54473);
         if ((this.c) && (this.a != null))
         {
           bool = this.a.getPluginsEnabled();
-          AppMethodBeat.o(64809);
+          AppMethodBeat.o(54473);
           return bool;
         }
         if ((this.c) || (this.b == null)) {
@@ -1016,15 +954,15 @@ public class WebSettings
         }
         if (Build.VERSION.SDK_INT <= 17)
         {
-          Object localObject1 = r.a(this.b, "getPluginsEnabled");
+          Object localObject1 = k.a(this.b, "getPluginsEnabled");
           if (localObject1 == null)
           {
-            AppMethodBeat.o(64809);
+            AppMethodBeat.o(54473);
             bool = false;
             continue;
           }
           bool = ((Boolean)localObject1).booleanValue();
-          AppMethodBeat.o(64809);
+          AppMethodBeat.o(54473);
           continue;
         }
         if (Build.VERSION.SDK_INT != 18) {
@@ -1036,19 +974,19 @@ public class WebSettings
       if (android.webkit.WebSettings.PluginState.ON == localPluginState)
       {
         bool = true;
-        AppMethodBeat.o(64809);
+        AppMethodBeat.o(54473);
       }
       else
       {
-        AppMethodBeat.o(64809);
+        AppMethodBeat.o(54473);
         bool = false;
         continue;
         label157:
-        AppMethodBeat.o(64809);
+        AppMethodBeat.o(54473);
         bool = false;
         continue;
         label168:
-        AppMethodBeat.o(64809);
+        AppMethodBeat.o(54473);
         bool = false;
       }
     }
@@ -1061,11 +999,11 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64811);
+        AppMethodBeat.i(54475);
         if ((this.c) && (this.a != null))
         {
           localObject1 = this.a.getPluginsPath();
-          AppMethodBeat.o(64811);
+          AppMethodBeat.o(54475);
           return localObject1;
         }
         if ((this.c) || (this.b == null)) {
@@ -1074,58 +1012,26 @@ public class WebSettings
         if (Build.VERSION.SDK_INT > 17) {
           break label109;
         }
-        Object localObject1 = r.a(this.b, "getPluginsPath");
+        Object localObject1 = k.a(this.b, "getPluginsPath");
         if (localObject1 == null)
         {
           localObject1 = null;
-          AppMethodBeat.o(64811);
+          AppMethodBeat.o(54475);
           continue;
         }
         str = (String)localObject2;
       }
       finally {}
-      AppMethodBeat.o(64811);
+      AppMethodBeat.o(54475);
       continue;
       label109:
       String str = "";
-      AppMethodBeat.o(64811);
+      AppMethodBeat.o(54475);
       continue;
       label121:
       str = "";
-      AppMethodBeat.o(64811);
+      AppMethodBeat.o(54475);
     }
-  }
-  
-  public boolean getSafeBrowsingEnabled()
-  {
-    AppMethodBeat.i(139420);
-    try
-    {
-      boolean bool;
-      if ((this.c) && (this.a != null))
-      {
-        bool = this.a.getSafeBrowsingEnabled();
-        AppMethodBeat.o(139420);
-        return bool;
-      }
-      if ((!this.c) && (this.b != null) && (Build.VERSION.SDK_INT >= 26))
-      {
-        Object localObject = r.a(this.b, "getSafeBrowsingEnabled");
-        if (localObject == null)
-        {
-          AppMethodBeat.o(139420);
-          return false;
-        }
-        bool = ((Boolean)localObject).booleanValue();
-        AppMethodBeat.o(139420);
-        return bool;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(139420);
-    }
-    return false;
   }
   
   public String getSansSerifFontFamily()
@@ -1134,64 +1040,64 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64770);
+        AppMethodBeat.i(54434);
         String str1;
         if ((this.c) && (this.a != null))
         {
           str1 = this.a.getSansSerifFontFamily();
-          AppMethodBeat.o(64770);
+          AppMethodBeat.o(54434);
           return str1;
         }
         if ((!this.c) && (this.b != null))
         {
           str1 = this.b.getSansSerifFontFamily();
-          AppMethodBeat.o(64770);
+          AppMethodBeat.o(54434);
           continue;
         }
         String str2 = "";
       }
       finally {}
-      AppMethodBeat.o(64770);
+      AppMethodBeat.o(54434);
     }
   }
   
   public boolean getSaveFormData()
   {
-    AppMethodBeat.i(64745);
+    AppMethodBeat.i(54409);
     boolean bool;
     if ((this.c) && (this.a != null))
     {
       bool = this.a.getSaveFormData();
-      AppMethodBeat.o(64745);
+      AppMethodBeat.o(54409);
       return bool;
     }
     if ((!this.c) && (this.b != null))
     {
       bool = this.b.getSaveFormData();
-      AppMethodBeat.o(64745);
+      AppMethodBeat.o(54409);
       return bool;
     }
-    AppMethodBeat.o(64745);
+    AppMethodBeat.o(54409);
     return false;
   }
   
   public boolean getSavePassword()
   {
-    AppMethodBeat.i(64747);
+    AppMethodBeat.i(54411);
     boolean bool;
     if ((this.c) && (this.a != null))
     {
       bool = this.a.getSavePassword();
-      AppMethodBeat.o(64747);
+      AppMethodBeat.o(54411);
       return bool;
     }
     if ((!this.c) && (this.b != null))
     {
       bool = this.b.getSavePassword();
-      AppMethodBeat.o(64747);
+      AppMethodBeat.o(54411);
       return bool;
     }
-    AppMethodBeat.o(64747);
+    AppMethodBeat.o(54411);
     return false;
   }
   
@@ -1201,24 +1107,24 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64772);
+        AppMethodBeat.i(54436);
         String str1;
         if ((this.c) && (this.a != null))
         {
           str1 = this.a.getSerifFontFamily();
-          AppMethodBeat.o(64772);
+          AppMethodBeat.o(54436);
           return str1;
         }
         if ((!this.c) && (this.b != null))
         {
           str1 = this.b.getSerifFontFamily();
-          AppMethodBeat.o(64772);
+          AppMethodBeat.o(54436);
           continue;
         }
         String str2 = "";
       }
       finally {}
-      AppMethodBeat.o(64772);
+      AppMethodBeat.o(54436);
     }
   }
   
@@ -1228,44 +1134,44 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64766);
+        AppMethodBeat.i(54430);
         String str1;
         if ((this.c) && (this.a != null))
         {
           str1 = this.a.getStandardFontFamily();
-          AppMethodBeat.o(64766);
+          AppMethodBeat.o(54430);
           return str1;
         }
         if ((!this.c) && (this.b != null))
         {
           str1 = this.b.getStandardFontFamily();
-          AppMethodBeat.o(64766);
+          AppMethodBeat.o(54430);
           continue;
         }
         String str2 = "";
       }
       finally {}
-      AppMethodBeat.o(64766);
+      AppMethodBeat.o(54430);
     }
   }
   
-  public TextSize getTextSize()
+  public WebSettings.TextSize getTextSize()
   {
-    AppMethodBeat.i(64751);
-    TextSize localTextSize;
+    AppMethodBeat.i(54415);
+    WebSettings.TextSize localTextSize;
     if ((this.c) && (this.a != null))
     {
-      localTextSize = TextSize.valueOf(this.a.getTextSize().name());
-      AppMethodBeat.o(64751);
+      localTextSize = WebSettings.TextSize.valueOf(this.a.getTextSize().name());
+      AppMethodBeat.o(54415);
       return localTextSize;
     }
     if ((!this.c) && (this.b != null))
     {
-      localTextSize = TextSize.valueOf(this.b.getTextSize().name());
-      AppMethodBeat.o(64751);
+      localTextSize = WebSettings.TextSize.valueOf(this.b.getTextSize().name());
+      AppMethodBeat.o(54415);
       return localTextSize;
     }
-    AppMethodBeat.o(64751);
+    AppMethodBeat.o(54415);
     return null;
   }
   
@@ -1276,44 +1182,44 @@ public class WebSettings
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 396
-    //   5: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 388
+    //   5: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 44	com/tencent/smtt/sdk/WebSettings:c	Z
+    //   9: getfield 42	com/tencent/smtt/sdk/WebSettings:c	Z
     //   12: ifeq +30 -> 42
     //   15: aload_0
-    //   16: getfield 40	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   16: getfield 38	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   19: ifnull +23 -> 42
     //   22: aload_0
-    //   23: getfield 40	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   26: invokeinterface 398 1 0
+    //   23: getfield 38	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   26: invokeinterface 390 1 0
     //   31: istore_1
-    //   32: ldc_w 396
-    //   35: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   32: ldc_w 388
+    //   35: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: aload_0
     //   39: monitorexit
     //   40: iload_1
     //   41: ireturn
     //   42: aload_0
-    //   43: getfield 44	com/tencent/smtt/sdk/WebSettings:c	Z
+    //   43: getfield 42	com/tencent/smtt/sdk/WebSettings:c	Z
     //   46: ifne +95 -> 141
     //   49: aload_0
-    //   50: getfield 42	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   50: getfield 40	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   53: ifnull +88 -> 141
-    //   56: getstatic 81	android/os/Build$VERSION:SDK_INT	I
+    //   56: getstatic 88	android/os/Build$VERSION:SDK_INT	I
     //   59: bipush 14
     //   61: if_icmpge +14 -> 75
-    //   64: ldc_w 396
-    //   67: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: ldc_w 388
+    //   67: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   70: iconst_0
     //   71: istore_1
     //   72: goto -34 -> 38
     //   75: aload_0
-    //   76: getfield 42	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
-    //   79: invokevirtual 399	android/webkit/WebSettings:getTextZoom	()I
+    //   76: getfield 40	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   79: invokevirtual 391	android/webkit/WebSettings:getTextZoom	()I
     //   82: istore_1
-    //   83: ldc_w 396
-    //   86: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   83: ldc_w 388
+    //   86: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: goto -51 -> 38
     //   92: astore_2
     //   93: aload_0
@@ -1322,26 +1228,26 @@ public class WebSettings
     //   96: athrow
     //   97: astore_2
     //   98: aload_0
-    //   99: getfield 42	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
-    //   102: ldc_w 400
-    //   105: invokestatic 107	com/tencent/smtt/utils/r:a	(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+    //   99: getfield 40	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   102: ldc_w 392
+    //   105: invokestatic 114	com/tencent/smtt/utils/k:a	(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
     //   108: astore_2
     //   109: aload_2
     //   110: ifnonnull +14 -> 124
-    //   113: ldc_w 396
-    //   116: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   113: ldc_w 388
+    //   116: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   119: iconst_0
     //   120: istore_1
     //   121: goto -83 -> 38
     //   124: aload_2
-    //   125: checkcast 211	java/lang/Integer
-    //   128: invokevirtual 214	java/lang/Integer:intValue	()I
+    //   125: checkcast 299	java/lang/Integer
+    //   128: invokevirtual 302	java/lang/Integer:intValue	()I
     //   131: istore_1
-    //   132: ldc_w 396
-    //   135: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   132: ldc_w 388
+    //   135: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   138: goto -100 -> 38
-    //   141: ldc_w 396
-    //   144: invokestatic 76	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   141: ldc_w 388
+    //   144: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   147: iconst_0
     //   148: istore_1
     //   149: goto -111 -> 38
@@ -1368,27 +1274,27 @@ public class WebSettings
   @Deprecated
   public boolean getUseWebViewBackgroundForOverscrollBackground()
   {
-    AppMethodBeat.i(64743);
+    AppMethodBeat.i(54407);
     boolean bool;
     if ((this.c) && (this.a != null))
     {
       bool = this.a.getUseWebViewBackgroundForOverscrollBackground();
-      AppMethodBeat.o(64743);
+      AppMethodBeat.o(54407);
       return bool;
     }
     if ((!this.c) && (this.b != null))
     {
-      Object localObject = r.a(this.b, "getUseWebViewBackgroundForOverscrollBackground");
+      Object localObject = k.a(this.b, "getUseWebViewBackgroundForOverscrollBackground");
       if (localObject == null)
       {
-        AppMethodBeat.o(64743);
+        AppMethodBeat.o(54407);
         return false;
       }
       bool = ((Boolean)localObject).booleanValue();
-      AppMethodBeat.o(64743);
+      AppMethodBeat.o(54407);
       return bool;
     }
-    AppMethodBeat.o(64743);
+    AppMethodBeat.o(54407);
     return false;
   }
   
@@ -1398,201 +1304,201 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64760);
+        AppMethodBeat.i(54424);
         if ((this.c) && (this.a != null))
         {
           bool = this.a.getUseWideViewPort();
-          AppMethodBeat.o(64760);
+          AppMethodBeat.o(54424);
           return bool;
         }
         if ((!this.c) && (this.b != null))
         {
           bool = this.b.getUseWideViewPort();
-          AppMethodBeat.o(64760);
+          AppMethodBeat.o(54424);
           continue;
         }
         boolean bool = false;
       }
       finally {}
-      AppMethodBeat.o(64760);
+      AppMethodBeat.o(54424);
     }
   }
   
   @TargetApi(3)
   public String getUserAgentString()
   {
-    AppMethodBeat.i(64757);
+    AppMethodBeat.i(54421);
     String str;
     if ((this.c) && (this.a != null))
     {
       str = this.a.getUserAgentString();
-      AppMethodBeat.o(64757);
+      AppMethodBeat.o(54421);
       return str;
     }
     if ((!this.c) && (this.b != null))
     {
       str = this.b.getUserAgentString();
-      AppMethodBeat.o(64757);
+      AppMethodBeat.o(54421);
       return str;
     }
-    AppMethodBeat.o(64757);
+    AppMethodBeat.o(54421);
     return "";
   }
   
   @TargetApi(11)
   public void setAllowContentAccess(boolean paramBoolean)
   {
-    AppMethodBeat.i(64735);
+    AppMethodBeat.i(54399);
     if ((this.c) && (this.a != null))
     {
       this.a.setAllowContentAccess(paramBoolean);
-      AppMethodBeat.o(64735);
+      AppMethodBeat.o(54399);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       if (Build.VERSION.SDK_INT < 11)
       {
-        AppMethodBeat.o(64735);
+        AppMethodBeat.o(54399);
         return;
       }
-      r.a(this.b, "setAllowContentAccess", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(64735);
+      k.a(this.b, "setAllowContentAccess", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(54399);
       return;
     }
-    AppMethodBeat.o(64735);
+    AppMethodBeat.o(54399);
   }
   
   @TargetApi(3)
   public void setAllowFileAccess(boolean paramBoolean)
   {
-    AppMethodBeat.i(64733);
+    AppMethodBeat.i(54397);
     if ((this.c) && (this.a != null))
     {
       this.a.setAllowFileAccess(paramBoolean);
-      AppMethodBeat.o(64733);
+      AppMethodBeat.o(54397);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setAllowFileAccess(paramBoolean);
-      AppMethodBeat.o(64733);
+      AppMethodBeat.o(54397);
       return;
     }
-    AppMethodBeat.o(64733);
+    AppMethodBeat.o(54397);
   }
   
   @TargetApi(16)
   public void setAllowFileAccessFromFileURLs(boolean paramBoolean)
   {
-    AppMethodBeat.i(64793);
+    AppMethodBeat.i(54457);
     if ((this.c) && (this.a != null))
     {
       this.a.setAllowFileAccessFromFileURLs(paramBoolean);
-      AppMethodBeat.o(64793);
+      AppMethodBeat.o(54457);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
-      r.a(this.b, "setAllowFileAccessFromFileURLs", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(64793);
+      k.a(this.b, "setAllowFileAccessFromFileURLs", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(54457);
       return;
     }
-    AppMethodBeat.o(64793);
+    AppMethodBeat.o(54457);
   }
   
   @TargetApi(16)
   public void setAllowUniversalAccessFromFileURLs(boolean paramBoolean)
   {
-    AppMethodBeat.i(64792);
+    AppMethodBeat.i(54456);
     if ((this.c) && (this.a != null))
     {
       this.a.setAllowUniversalAccessFromFileURLs(paramBoolean);
-      AppMethodBeat.o(64792);
+      AppMethodBeat.o(54456);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
-      r.a(this.b, "setAllowUniversalAccessFromFileURLs", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(64792);
+      k.a(this.b, "setAllowUniversalAccessFromFileURLs", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(54456);
       return;
     }
-    AppMethodBeat.o(64792);
+    AppMethodBeat.o(54456);
   }
   
   @TargetApi(7)
   public void setAppCacheEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(64799);
+    AppMethodBeat.i(54463);
     if ((this.c) && (this.a != null))
     {
       this.a.setAppCacheEnabled(paramBoolean);
-      AppMethodBeat.o(64799);
+      AppMethodBeat.o(54463);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setAppCacheEnabled(paramBoolean);
-      AppMethodBeat.o(64799);
+      AppMethodBeat.o(54463);
       return;
     }
-    AppMethodBeat.o(64799);
+    AppMethodBeat.o(54463);
   }
   
   @TargetApi(7)
   public void setAppCacheMaxSize(long paramLong)
   {
-    AppMethodBeat.i(64801);
+    AppMethodBeat.i(54465);
     if ((this.c) && (this.a != null))
     {
       this.a.setAppCacheMaxSize(paramLong);
-      AppMethodBeat.o(64801);
+      AppMethodBeat.o(54465);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setAppCacheMaxSize(paramLong);
-      AppMethodBeat.o(64801);
+      AppMethodBeat.o(54465);
       return;
     }
-    AppMethodBeat.o(64801);
+    AppMethodBeat.o(54465);
   }
   
   @TargetApi(7)
   public void setAppCachePath(String paramString)
   {
-    AppMethodBeat.i(64800);
+    AppMethodBeat.i(54464);
     if ((this.c) && (this.a != null))
     {
       this.a.setAppCachePath(paramString);
-      AppMethodBeat.o(64800);
+      AppMethodBeat.o(54464);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setAppCachePath(paramString);
-      AppMethodBeat.o(64800);
+      AppMethodBeat.o(54464);
       return;
     }
-    AppMethodBeat.o(64800);
+    AppMethodBeat.o(54464);
   }
   
   public void setBlockNetworkImage(boolean paramBoolean)
   {
-    AppMethodBeat.i(64787);
+    AppMethodBeat.i(54451);
     if ((this.c) && (this.a != null))
     {
       this.a.setBlockNetworkImage(paramBoolean);
-      AppMethodBeat.o(64787);
+      AppMethodBeat.o(54451);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setBlockNetworkImage(paramBoolean);
-      AppMethodBeat.o(64787);
+      AppMethodBeat.o(54451);
       return;
     }
-    AppMethodBeat.o(64787);
+    AppMethodBeat.o(54451);
   }
   
   @TargetApi(8)
@@ -1602,11 +1508,11 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64789);
+        AppMethodBeat.i(54453);
         if ((this.c) && (this.a != null))
         {
           this.a.setBlockNetworkLoads(paramBoolean);
-          AppMethodBeat.o(64789);
+          AppMethodBeat.o(54453);
           return;
         }
         if ((!this.c) && (this.b != null))
@@ -1615,50 +1521,50 @@ public class WebSettings
             break label94;
           }
           this.b.setBlockNetworkLoads(paramBoolean);
-          AppMethodBeat.o(64789);
+          AppMethodBeat.o(54453);
           continue;
         }
-        AppMethodBeat.o(64789);
+        AppMethodBeat.o(54453);
       }
       finally {}
       continue;
       label94:
-      AppMethodBeat.o(64789);
+      AppMethodBeat.o(54453);
     }
   }
   
   @TargetApi(3)
   public void setBuiltInZoomControls(boolean paramBoolean)
   {
-    AppMethodBeat.i(64729);
+    AppMethodBeat.i(54393);
     if ((this.c) && (this.a != null))
     {
       this.a.setBuiltInZoomControls(paramBoolean);
-      AppMethodBeat.o(64729);
+      AppMethodBeat.o(54393);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setBuiltInZoomControls(paramBoolean);
-      AppMethodBeat.o(64729);
+      AppMethodBeat.o(54393);
       return;
     }
-    AppMethodBeat.o(64729);
+    AppMethodBeat.o(54393);
   }
   
   public void setCacheMode(int paramInt)
   {
-    AppMethodBeat.i(64821);
+    AppMethodBeat.i(54485);
     if ((this.c) && (this.a != null))
     {
       this.a.setCacheMode(paramInt);
-      AppMethodBeat.o(64821);
+      AppMethodBeat.o(54485);
       return;
     }
     if ((!this.c) && (this.b != null)) {
       this.b.setCacheMode(paramInt);
     }
-    AppMethodBeat.o(64821);
+    AppMethodBeat.o(54485);
   }
   
   public void setCursiveFontFamily(String paramString)
@@ -1667,21 +1573,21 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64773);
+        AppMethodBeat.i(54437);
         if ((this.c) && (this.a != null))
         {
           this.a.setCursiveFontFamily(paramString);
-          AppMethodBeat.o(64773);
+          AppMethodBeat.o(54437);
           return;
         }
         if ((!this.c) && (this.b != null))
         {
           this.b.setCursiveFontFamily(paramString);
-          AppMethodBeat.o(64773);
+          AppMethodBeat.o(54437);
         }
         else
         {
-          AppMethodBeat.o(64773);
+          AppMethodBeat.o(54437);
         }
       }
       finally {}
@@ -1691,40 +1597,40 @@ public class WebSettings
   @TargetApi(5)
   public void setDatabaseEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(64802);
+    AppMethodBeat.i(54466);
     if ((this.c) && (this.a != null))
     {
       this.a.setDatabaseEnabled(paramBoolean);
-      AppMethodBeat.o(64802);
+      AppMethodBeat.o(54466);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setDatabaseEnabled(paramBoolean);
-      AppMethodBeat.o(64802);
+      AppMethodBeat.o(54466);
       return;
     }
-    AppMethodBeat.o(64802);
+    AppMethodBeat.o(54466);
   }
   
   @Deprecated
   @TargetApi(5)
   public void setDatabasePath(String paramString)
   {
-    AppMethodBeat.i(64797);
+    AppMethodBeat.i(54461);
     if ((this.c) && (this.a != null))
     {
       this.a.setDatabasePath(paramString);
-      AppMethodBeat.o(64797);
+      AppMethodBeat.o(54461);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
-      r.a(this.b, "setDatabasePath", new Class[] { String.class }, new Object[] { paramString });
-      AppMethodBeat.o(64797);
+      k.a(this.b, "setDatabasePath", new Class[] { String.class }, new Object[] { paramString });
+      AppMethodBeat.o(54461);
       return;
     }
-    AppMethodBeat.o(64797);
+    AppMethodBeat.o(54461);
   }
   
   public void setDefaultFixedFontSize(int paramInt)
@@ -1733,21 +1639,21 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64783);
+        AppMethodBeat.i(54447);
         if ((this.c) && (this.a != null))
         {
           this.a.setDefaultFixedFontSize(paramInt);
-          AppMethodBeat.o(64783);
+          AppMethodBeat.o(54447);
           return;
         }
         if ((!this.c) && (this.b != null))
         {
           this.b.setDefaultFixedFontSize(paramInt);
-          AppMethodBeat.o(64783);
+          AppMethodBeat.o(54447);
         }
         else
         {
-          AppMethodBeat.o(64783);
+          AppMethodBeat.o(54447);
         }
       }
       finally {}
@@ -1760,21 +1666,21 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64781);
+        AppMethodBeat.i(54445);
         if ((this.c) && (this.a != null))
         {
           this.a.setDefaultFontSize(paramInt);
-          AppMethodBeat.o(64781);
+          AppMethodBeat.o(54445);
           return;
         }
         if ((!this.c) && (this.b != null))
         {
           this.b.setDefaultFontSize(paramInt);
-          AppMethodBeat.o(64781);
+          AppMethodBeat.o(54445);
         }
         else
         {
-          AppMethodBeat.o(64781);
+          AppMethodBeat.o(54445);
         }
       }
       finally {}
@@ -1787,21 +1693,21 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64814);
+        AppMethodBeat.i(54478);
         if ((this.c) && (this.a != null))
         {
           this.a.setDefaultTextEncodingName(paramString);
-          AppMethodBeat.o(64814);
+          AppMethodBeat.o(54478);
           return;
         }
         if ((!this.c) && (this.b != null))
         {
           this.b.setDefaultTextEncodingName(paramString);
-          AppMethodBeat.o(64814);
+          AppMethodBeat.o(54478);
         }
         else
         {
-          AppMethodBeat.o(64814);
+          AppMethodBeat.o(54478);
         }
       }
       finally {}
@@ -1811,113 +1717,90 @@ public class WebSettings
   @TargetApi(7)
   public void setDefaultZoom(WebSettings.ZoomDensity paramZoomDensity)
   {
-    AppMethodBeat.i(64752);
+    AppMethodBeat.i(54416);
     if ((this.c) && (this.a != null))
     {
       this.a.setDefaultZoom(IX5WebSettings.ZoomDensity.valueOf(paramZoomDensity.name()));
-      AppMethodBeat.o(64752);
+      AppMethodBeat.o(54416);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setDefaultZoom(android.webkit.WebSettings.ZoomDensity.valueOf(paramZoomDensity.name()));
-      AppMethodBeat.o(64752);
+      AppMethodBeat.o(54416);
       return;
     }
-    AppMethodBeat.o(64752);
-  }
-  
-  public void setDisabledActionModeMenuItems(int paramInt)
-  {
-    AppMethodBeat.i(139421);
-    try
-    {
-      if ((this.c) && (this.a != null))
-      {
-        this.a.setDisabledActionModeMenuItems(paramInt);
-        AppMethodBeat.o(139421);
-        return;
-      }
-      if ((!this.c) && (this.b != null) && (Build.VERSION.SDK_INT >= 24)) {
-        r.a(this.b, "setDisabledActionModeMenuItems", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(paramInt) });
-      }
-      AppMethodBeat.o(139421);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(139421);
-    }
+    AppMethodBeat.o(54416);
   }
   
   @TargetApi(11)
   public void setDisplayZoomControls(boolean paramBoolean)
   {
-    AppMethodBeat.i(64731);
+    AppMethodBeat.i(54395);
     if ((this.c) && (this.a != null))
     {
       this.a.setDisplayZoomControls(paramBoolean);
-      AppMethodBeat.o(64731);
+      AppMethodBeat.o(54395);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       if (Build.VERSION.SDK_INT < 11)
       {
-        AppMethodBeat.o(64731);
+        AppMethodBeat.o(54395);
         return;
       }
-      r.a(this.b, "setDisplayZoomControls", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(64731);
+      k.a(this.b, "setDisplayZoomControls", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(54395);
       return;
     }
-    AppMethodBeat.o(64731);
+    AppMethodBeat.o(54395);
   }
   
   @TargetApi(7)
   public void setDomStorageEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(64803);
+    AppMethodBeat.i(54467);
     if ((this.c) && (this.a != null))
     {
       this.a.setDomStorageEnabled(paramBoolean);
-      AppMethodBeat.o(64803);
+      AppMethodBeat.o(54467);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setDomStorageEnabled(paramBoolean);
-      AppMethodBeat.o(64803);
+      AppMethodBeat.o(54467);
       return;
     }
-    AppMethodBeat.o(64803);
+    AppMethodBeat.o(54467);
   }
   
   @Deprecated
   @TargetApi(11)
   public void setEnableSmoothTransition(boolean paramBoolean)
   {
-    AppMethodBeat.i(64740);
+    AppMethodBeat.i(54404);
     if ((this.c) && (this.a != null))
     {
       this.a.setEnableSmoothTransition(paramBoolean);
-      AppMethodBeat.o(64740);
+      AppMethodBeat.o(54404);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       if (Build.VERSION.SDK_INT >= 11)
       {
-        r.a(this.b, "setEnableSmoothTransition", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
-        AppMethodBeat.o(64740);
+        k.a(this.b, "setEnableSmoothTransition", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+        AppMethodBeat.o(54404);
       }
     }
     else
     {
-      AppMethodBeat.o(64740);
+      AppMethodBeat.o(54404);
       return;
     }
-    AppMethodBeat.o(64740);
+    AppMethodBeat.o(54404);
   }
   
   public void setFantasyFontFamily(String paramString)
@@ -1926,21 +1809,21 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64775);
+        AppMethodBeat.i(54439);
         if ((this.c) && (this.a != null))
         {
           this.a.setFantasyFontFamily(paramString);
-          AppMethodBeat.o(64775);
+          AppMethodBeat.o(54439);
           return;
         }
         if ((!this.c) && (this.b != null))
         {
           this.b.setFantasyFontFamily(paramString);
-          AppMethodBeat.o(64775);
+          AppMethodBeat.o(54439);
         }
         else
         {
-          AppMethodBeat.o(64775);
+          AppMethodBeat.o(54439);
         }
       }
       finally {}
@@ -1953,21 +1836,21 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64767);
+        AppMethodBeat.i(54431);
         if ((this.c) && (this.a != null))
         {
           this.a.setFixedFontFamily(paramString);
-          AppMethodBeat.o(64767);
+          AppMethodBeat.o(54431);
           return;
         }
         if ((!this.c) && (this.b != null))
         {
           this.b.setFixedFontFamily(paramString);
-          AppMethodBeat.o(64767);
+          AppMethodBeat.o(54431);
         }
         else
         {
-          AppMethodBeat.o(64767);
+          AppMethodBeat.o(54431);
         }
       }
       finally {}
@@ -1977,39 +1860,39 @@ public class WebSettings
   @TargetApi(5)
   public void setGeolocationDatabasePath(String paramString)
   {
-    AppMethodBeat.i(64798);
+    AppMethodBeat.i(54462);
     if ((this.c) && (this.a != null))
     {
       this.a.setGeolocationDatabasePath(paramString);
-      AppMethodBeat.o(64798);
+      AppMethodBeat.o(54462);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setGeolocationDatabasePath(paramString);
-      AppMethodBeat.o(64798);
+      AppMethodBeat.o(54462);
       return;
     }
-    AppMethodBeat.o(64798);
+    AppMethodBeat.o(54462);
   }
   
   @TargetApi(5)
   public void setGeolocationEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(64807);
+    AppMethodBeat.i(54471);
     if ((this.c) && (this.a != null))
     {
       this.a.setGeolocationEnabled(paramBoolean);
-      AppMethodBeat.o(64807);
+      AppMethodBeat.o(54471);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setGeolocationEnabled(paramBoolean);
-      AppMethodBeat.o(64807);
+      AppMethodBeat.o(54471);
       return;
     }
-    AppMethodBeat.o(64807);
+    AppMethodBeat.o(54471);
   }
   
   public void setJavaScriptCanOpenWindowsAutomatically(boolean paramBoolean)
@@ -2018,21 +1901,21 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64812);
+        AppMethodBeat.i(54476);
         if ((this.c) && (this.a != null))
         {
           this.a.setJavaScriptCanOpenWindowsAutomatically(paramBoolean);
-          AppMethodBeat.o(64812);
+          AppMethodBeat.o(54476);
           return;
         }
         if ((!this.c) && (this.b != null))
         {
           this.b.setJavaScriptCanOpenWindowsAutomatically(paramBoolean);
-          AppMethodBeat.o(64812);
+          AppMethodBeat.o(54476);
         }
         else
         {
-          AppMethodBeat.o(64812);
+          AppMethodBeat.o(54476);
         }
       }
       finally {}
@@ -2042,122 +1925,122 @@ public class WebSettings
   @Deprecated
   public void setJavaScriptEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(64791);
+    AppMethodBeat.i(54455);
     try
     {
       if ((this.c) && (this.a != null))
       {
         this.a.setJavaScriptEnabled(paramBoolean);
-        AppMethodBeat.o(64791);
+        AppMethodBeat.o(54455);
         return;
       }
       if ((!this.c) && (this.b != null))
       {
         this.b.setJavaScriptEnabled(paramBoolean);
-        AppMethodBeat.o(64791);
+        AppMethodBeat.o(54455);
         return;
       }
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(64791);
+      AppMethodBeat.o(54455);
       return;
     }
-    AppMethodBeat.o(64791);
+    AppMethodBeat.o(54455);
   }
   
   public void setLayoutAlgorithm(WebSettings.LayoutAlgorithm paramLayoutAlgorithm)
   {
-    AppMethodBeat.i(64763);
+    AppMethodBeat.i(54427);
     if ((this.c) && (this.a != null))
     {
       this.a.setLayoutAlgorithm(IX5WebSettings.LayoutAlgorithm.valueOf(paramLayoutAlgorithm.name()));
-      AppMethodBeat.o(64763);
+      AppMethodBeat.o(54427);
       return;
     }
     if ((!this.c) && (this.b != null)) {
       this.b.setLayoutAlgorithm(android.webkit.WebSettings.LayoutAlgorithm.valueOf(paramLayoutAlgorithm.name()));
     }
-    AppMethodBeat.o(64763);
+    AppMethodBeat.o(54427);
   }
   
   public void setLightTouchEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(64754);
+    AppMethodBeat.i(54418);
     if ((this.c) && (this.a != null))
     {
       this.a.setLightTouchEnabled(paramBoolean);
-      AppMethodBeat.o(64754);
+      AppMethodBeat.o(54418);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setLightTouchEnabled(paramBoolean);
-      AppMethodBeat.o(64754);
+      AppMethodBeat.o(54418);
       return;
     }
-    AppMethodBeat.o(64754);
+    AppMethodBeat.o(54418);
   }
   
   @TargetApi(7)
   public void setLoadWithOverviewMode(boolean paramBoolean)
   {
-    AppMethodBeat.i(64738);
+    AppMethodBeat.i(54402);
     if ((this.c) && (this.a != null))
     {
       this.a.setLoadWithOverviewMode(paramBoolean);
-      AppMethodBeat.o(64738);
+      AppMethodBeat.o(54402);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setLoadWithOverviewMode(paramBoolean);
-      AppMethodBeat.o(64738);
+      AppMethodBeat.o(54402);
       return;
     }
-    AppMethodBeat.o(64738);
+    AppMethodBeat.o(54402);
   }
   
   public void setLoadsImagesAutomatically(boolean paramBoolean)
   {
-    AppMethodBeat.i(64785);
+    AppMethodBeat.i(54449);
     if ((this.c) && (this.a != null))
     {
       this.a.setLoadsImagesAutomatically(paramBoolean);
-      AppMethodBeat.o(64785);
+      AppMethodBeat.o(54449);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setLoadsImagesAutomatically(paramBoolean);
-      AppMethodBeat.o(64785);
+      AppMethodBeat.o(54449);
       return;
     }
-    AppMethodBeat.o(64785);
+    AppMethodBeat.o(54449);
   }
   
   @TargetApi(17)
   public void setMediaPlaybackRequiresUserGesture(boolean paramBoolean)
   {
-    AppMethodBeat.i(64818);
+    AppMethodBeat.i(54482);
     if ((this.c) && (this.a != null))
     {
       this.a.setMediaPlaybackRequiresUserGesture(paramBoolean);
-      AppMethodBeat.o(64818);
+      AppMethodBeat.o(54482);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       if (Build.VERSION.SDK_INT < 17)
       {
-        AppMethodBeat.o(64818);
+        AppMethodBeat.o(54482);
         return;
       }
-      r.a(this.b, "setMediaPlaybackRequiresUserGesture", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(64818);
+      k.a(this.b, "setMediaPlaybackRequiresUserGesture", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(54482);
       return;
     }
-    AppMethodBeat.o(64818);
+    AppMethodBeat.o(54482);
   }
   
   public void setMinimumFontSize(int paramInt)
@@ -2166,21 +2049,21 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64777);
+        AppMethodBeat.i(54441);
         if ((this.c) && (this.a != null))
         {
           this.a.setMinimumFontSize(paramInt);
-          AppMethodBeat.o(64777);
+          AppMethodBeat.o(54441);
           return;
         }
         if ((!this.c) && (this.b != null))
         {
           this.b.setMinimumFontSize(paramInt);
-          AppMethodBeat.o(64777);
+          AppMethodBeat.o(54441);
         }
         else
         {
-          AppMethodBeat.o(64777);
+          AppMethodBeat.o(54441);
         }
       }
       finally {}
@@ -2193,21 +2076,21 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64779);
+        AppMethodBeat.i(54443);
         if ((this.c) && (this.a != null))
         {
           this.a.setMinimumLogicalFontSize(paramInt);
-          AppMethodBeat.o(64779);
+          AppMethodBeat.o(54443);
           return;
         }
         if ((!this.c) && (this.b != null))
         {
           this.b.setMinimumLogicalFontSize(paramInt);
-          AppMethodBeat.o(64779);
+          AppMethodBeat.o(54443);
         }
         else
         {
-          AppMethodBeat.o(64779);
+          AppMethodBeat.o(54443);
         }
       }
       finally {}
@@ -2217,83 +2100,60 @@ public class WebSettings
   @TargetApi(21)
   public void setMixedContentMode(int paramInt)
   {
-    AppMethodBeat.i(64736);
+    AppMethodBeat.i(54400);
     if ((this.c) && (this.a != null))
     {
-      AppMethodBeat.o(64736);
+      AppMethodBeat.o(54400);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       if (Build.VERSION.SDK_INT < 21)
       {
-        AppMethodBeat.o(64736);
+        AppMethodBeat.o(54400);
         return;
       }
-      r.a(this.b, "setMixedContentMode", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(64736);
+      k.a(this.b, "setMixedContentMode", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(54400);
       return;
     }
-    AppMethodBeat.o(64736);
+    AppMethodBeat.o(54400);
   }
   
   public void setNavDump(boolean paramBoolean)
   {
-    AppMethodBeat.i(64724);
+    AppMethodBeat.i(54388);
     if ((this.c) && (this.a != null))
     {
       this.a.setNavDump(paramBoolean);
-      AppMethodBeat.o(64724);
+      AppMethodBeat.o(54388);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
-      r.a(this.b, "setNavDump", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(64724);
+      k.a(this.b, "setNavDump", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(54388);
       return;
     }
-    AppMethodBeat.o(64724);
+    AppMethodBeat.o(54388);
   }
   
   public void setNeedInitialFocus(boolean paramBoolean)
   {
-    AppMethodBeat.i(64819);
+    AppMethodBeat.i(54483);
     if ((this.c) && (this.a != null))
     {
       this.a.setNeedInitialFocus(paramBoolean);
-      AppMethodBeat.o(64819);
+      AppMethodBeat.o(54483);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setNeedInitialFocus(paramBoolean);
-      AppMethodBeat.o(64819);
+      AppMethodBeat.o(54483);
       return;
     }
-    AppMethodBeat.o(64819);
-  }
-  
-  public void setOffscreenPreRaster(boolean paramBoolean)
-  {
-    AppMethodBeat.i(139422);
-    try
-    {
-      if ((this.c) && (this.a != null))
-      {
-        this.a.setOffscreenPreRaster(paramBoolean);
-        AppMethodBeat.o(139422);
-        return;
-      }
-      if ((!this.c) && (this.b != null) && (Build.VERSION.SDK_INT >= 23)) {
-        r.a(this.b, "setOffscreenPreRaster", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
-      }
-      AppMethodBeat.o(139422);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(139422);
-    }
+    AppMethodBeat.o(54483);
   }
   
   @Deprecated
@@ -2304,11 +2164,11 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64795);
+        AppMethodBeat.i(54459);
         if ((this.c) && (this.a != null))
         {
           this.a.setPluginState(IX5WebSettings.PluginState.valueOf(paramPluginState.name()));
-          AppMethodBeat.o(64795);
+          AppMethodBeat.o(54459);
           return;
         }
         if ((!this.c) && (this.b != null))
@@ -2317,36 +2177,36 @@ public class WebSettings
             break label129;
           }
           paramPluginState = android.webkit.WebSettings.PluginState.valueOf(paramPluginState.name());
-          r.a(this.b, "setPluginState", new Class[] { android.webkit.WebSettings.PluginState.class }, new Object[] { paramPluginState });
-          AppMethodBeat.o(64795);
+          k.a(this.b, "setPluginState", new Class[] { android.webkit.WebSettings.PluginState.class }, new Object[] { paramPluginState });
+          AppMethodBeat.o(54459);
           continue;
         }
-        AppMethodBeat.o(64795);
+        AppMethodBeat.o(54459);
       }
       finally {}
       continue;
       label129:
-      AppMethodBeat.o(64795);
+      AppMethodBeat.o(54459);
     }
   }
   
   @Deprecated
   public void setPluginsEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(64794);
+    AppMethodBeat.i(54458);
     if ((this.c) && (this.a != null))
     {
       this.a.setPluginsEnabled(paramBoolean);
-      AppMethodBeat.o(64794);
+      AppMethodBeat.o(54458);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
-      r.a(this.b, "setPluginsEnabled", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(64794);
+      k.a(this.b, "setPluginsEnabled", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(54458);
       return;
     }
-    AppMethodBeat.o(64794);
+    AppMethodBeat.o(54458);
   }
   
   @Deprecated
@@ -2356,66 +2216,43 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64796);
+        AppMethodBeat.i(54460);
         if ((this.c) && (this.a != null))
         {
           this.a.setPluginsPath(paramString);
-          AppMethodBeat.o(64796);
+          AppMethodBeat.o(54460);
           return;
         }
         if ((!this.c) && (this.b != null))
         {
-          r.a(this.b, "setPluginsPath", new Class[] { String.class }, new Object[] { paramString });
-          AppMethodBeat.o(64796);
+          k.a(this.b, "setPluginsPath", new Class[] { String.class }, new Object[] { paramString });
+          AppMethodBeat.o(54460);
         }
         else
         {
-          AppMethodBeat.o(64796);
+          AppMethodBeat.o(54460);
         }
       }
       finally {}
     }
   }
   
-  public void setRenderPriority(RenderPriority paramRenderPriority)
+  public void setRenderPriority(WebSettings.RenderPriority paramRenderPriority)
   {
-    AppMethodBeat.i(64820);
+    AppMethodBeat.i(54484);
     if ((this.c) && (this.a != null))
     {
       this.a.setRenderPriority(IX5WebSettings.RenderPriority.valueOf(paramRenderPriority.name()));
-      AppMethodBeat.o(64820);
+      AppMethodBeat.o(54484);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setRenderPriority(android.webkit.WebSettings.RenderPriority.valueOf(paramRenderPriority.name()));
-      AppMethodBeat.o(64820);
+      AppMethodBeat.o(54484);
       return;
     }
-    AppMethodBeat.o(64820);
-  }
-  
-  public void setSafeBrowsingEnabled(boolean paramBoolean)
-  {
-    AppMethodBeat.i(139423);
-    try
-    {
-      if ((this.c) && (this.a != null))
-      {
-        this.a.setSafeBrowsingEnabled(paramBoolean);
-        AppMethodBeat.o(139423);
-        return;
-      }
-      if ((!this.c) && (this.b != null) && (Build.VERSION.SDK_INT >= 26)) {
-        r.a(this.b, "setSafeBrowsingEnabled", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
-      }
-      AppMethodBeat.o(139423);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(139423);
-    }
+    AppMethodBeat.o(54484);
   }
   
   public void setSansSerifFontFamily(String paramString)
@@ -2424,21 +2261,21 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64769);
+        AppMethodBeat.i(54433);
         if ((this.c) && (this.a != null))
         {
           this.a.setSansSerifFontFamily(paramString);
-          AppMethodBeat.o(64769);
+          AppMethodBeat.o(54433);
           return;
         }
         if ((!this.c) && (this.b != null))
         {
           this.b.setSansSerifFontFamily(paramString);
-          AppMethodBeat.o(64769);
+          AppMethodBeat.o(54433);
         }
         else
         {
-          AppMethodBeat.o(64769);
+          AppMethodBeat.o(54433);
         }
       }
       finally {}
@@ -2447,32 +2284,32 @@ public class WebSettings
   
   public void setSaveFormData(boolean paramBoolean)
   {
-    AppMethodBeat.i(64744);
+    AppMethodBeat.i(54408);
     if ((this.c) && (this.a != null))
     {
       this.a.setSaveFormData(paramBoolean);
-      AppMethodBeat.o(64744);
+      AppMethodBeat.o(54408);
       return;
     }
     if ((!this.c) && (this.b != null)) {
       this.b.setSaveFormData(paramBoolean);
     }
-    AppMethodBeat.o(64744);
+    AppMethodBeat.o(54408);
   }
   
   public void setSavePassword(boolean paramBoolean)
   {
-    AppMethodBeat.i(64746);
+    AppMethodBeat.i(54410);
     if ((this.c) && (this.a != null))
     {
       this.a.setSavePassword(paramBoolean);
-      AppMethodBeat.o(64746);
+      AppMethodBeat.o(54410);
       return;
     }
     if ((!this.c) && (this.b != null)) {
       this.b.setSavePassword(paramBoolean);
     }
-    AppMethodBeat.o(64746);
+    AppMethodBeat.o(54410);
   }
   
   public void setSerifFontFamily(String paramString)
@@ -2481,21 +2318,21 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64771);
+        AppMethodBeat.i(54435);
         if ((this.c) && (this.a != null))
         {
           this.a.setSerifFontFamily(paramString);
-          AppMethodBeat.o(64771);
+          AppMethodBeat.o(54435);
           return;
         }
         if ((!this.c) && (this.b != null))
         {
           this.b.setSerifFontFamily(paramString);
-          AppMethodBeat.o(64771);
+          AppMethodBeat.o(54435);
         }
         else
         {
-          AppMethodBeat.o(64771);
+          AppMethodBeat.o(54435);
         }
       }
       finally {}
@@ -2508,21 +2345,21 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64765);
+        AppMethodBeat.i(54429);
         if ((this.c) && (this.a != null))
         {
           this.a.setStandardFontFamily(paramString);
-          AppMethodBeat.o(64765);
+          AppMethodBeat.o(54429);
           return;
         }
         if ((!this.c) && (this.b != null))
         {
           this.b.setStandardFontFamily(paramString);
-          AppMethodBeat.o(64765);
+          AppMethodBeat.o(54429);
         }
         else
         {
-          AppMethodBeat.o(64765);
+          AppMethodBeat.o(54429);
         }
       }
       finally {}
@@ -2531,53 +2368,53 @@ public class WebSettings
   
   public void setSupportMultipleWindows(boolean paramBoolean)
   {
-    AppMethodBeat.i(64761);
+    AppMethodBeat.i(54425);
     if ((this.c) && (this.a != null))
     {
       this.a.setSupportMultipleWindows(paramBoolean);
-      AppMethodBeat.o(64761);
+      AppMethodBeat.o(54425);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setSupportMultipleWindows(paramBoolean);
-      AppMethodBeat.o(64761);
+      AppMethodBeat.o(54425);
       return;
     }
-    AppMethodBeat.o(64761);
+    AppMethodBeat.o(54425);
   }
   
   public void setSupportZoom(boolean paramBoolean)
   {
-    AppMethodBeat.i(64727);
+    AppMethodBeat.i(54391);
     if ((this.c) && (this.a != null))
     {
       this.a.setSupportZoom(paramBoolean);
-      AppMethodBeat.o(64727);
+      AppMethodBeat.o(54391);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
       this.b.setSupportZoom(paramBoolean);
-      AppMethodBeat.o(64727);
+      AppMethodBeat.o(54391);
       return;
     }
-    AppMethodBeat.o(64727);
+    AppMethodBeat.o(54391);
   }
   
-  public void setTextSize(TextSize paramTextSize)
+  public void setTextSize(WebSettings.TextSize paramTextSize)
   {
-    AppMethodBeat.i(64750);
+    AppMethodBeat.i(54414);
     if ((this.c) && (this.a != null))
     {
       this.a.setTextSize(IX5WebSettings.TextSize.valueOf(paramTextSize.name()));
-      AppMethodBeat.o(64750);
+      AppMethodBeat.o(54414);
       return;
     }
     if ((!this.c) && (this.b != null)) {
       this.b.setTextSize(android.webkit.WebSettings.TextSize.valueOf(paramTextSize.name()));
     }
-    AppMethodBeat.o(64750);
+    AppMethodBeat.o(54414);
   }
   
   @TargetApi(14)
@@ -2587,99 +2424,99 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64748);
+        AppMethodBeat.i(54412);
         if ((this.c) && (this.a != null))
         {
           this.a.setTextZoom(paramInt);
-          AppMethodBeat.o(64748);
+          AppMethodBeat.o(54412);
           return;
         }
         if ((!this.c) && (this.b != null))
         {
           if (Build.VERSION.SDK_INT < 14)
           {
-            AppMethodBeat.o(64748);
+            AppMethodBeat.o(54412);
             continue;
           }
           try
           {
             this.b.setTextZoom(paramInt);
-            AppMethodBeat.o(64748);
+            AppMethodBeat.o(54412);
           }
           catch (Exception localException)
           {
-            r.a(this.b, "setTextZoom", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(paramInt) });
+            k.a(this.b, "setTextZoom", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(paramInt) });
           }
         }
       }
       finally {}
-      AppMethodBeat.o(64748);
+      AppMethodBeat.o(54412);
     }
   }
   
   @Deprecated
   public void setUseWebViewBackgroundForOverscrollBackground(boolean paramBoolean)
   {
-    AppMethodBeat.i(64742);
+    AppMethodBeat.i(54406);
     if ((this.c) && (this.a != null))
     {
       this.a.setUseWebViewBackgroundForOverscrollBackground(paramBoolean);
-      AppMethodBeat.o(64742);
+      AppMethodBeat.o(54406);
       return;
     }
     if ((!this.c) && (this.b != null))
     {
-      r.a(this.b, "setUseWebViewBackgroundForOverscrollBackground", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(64742);
+      k.a(this.b, "setUseWebViewBackgroundForOverscrollBackground", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(54406);
       return;
     }
-    AppMethodBeat.o(64742);
+    AppMethodBeat.o(54406);
   }
   
   public void setUseWideViewPort(boolean paramBoolean)
   {
-    AppMethodBeat.i(64759);
+    AppMethodBeat.i(54423);
     if ((this.c) && (this.a != null))
     {
       this.a.setUseWideViewPort(paramBoolean);
-      AppMethodBeat.o(64759);
+      AppMethodBeat.o(54423);
       return;
     }
     if ((!this.c) && (this.b != null)) {
       this.b.setUseWideViewPort(paramBoolean);
     }
-    AppMethodBeat.o(64759);
+    AppMethodBeat.o(54423);
   }
   
   public void setUserAgent(String paramString)
   {
-    AppMethodBeat.i(64756);
+    AppMethodBeat.i(54420);
     if ((this.c) && (this.a != null))
     {
       this.a.setUserAgent(paramString);
-      AppMethodBeat.o(64756);
+      AppMethodBeat.o(54420);
       return;
     }
     if ((!this.c) && (this.b != null)) {
       this.b.setUserAgentString(paramString);
     }
-    AppMethodBeat.o(64756);
+    AppMethodBeat.o(54420);
   }
   
   @TargetApi(3)
   public void setUserAgentString(String paramString)
   {
-    AppMethodBeat.i(64758);
+    AppMethodBeat.i(54422);
     if ((this.c) && (this.a != null))
     {
       this.a.setUserAgentString(paramString);
-      AppMethodBeat.o(64758);
+      AppMethodBeat.o(54422);
       return;
     }
     if ((!this.c) && (this.b != null)) {
       this.b.setUserAgentString(paramString);
     }
-    AppMethodBeat.o(64758);
+    AppMethodBeat.o(54422);
   }
   
   public boolean supportMultipleWindows()
@@ -2688,86 +2525,49 @@ public class WebSettings
     {
       try
       {
-        AppMethodBeat.i(64762);
+        AppMethodBeat.i(54426);
         if ((this.c) && (this.a != null))
         {
           bool = this.a.supportMultipleWindows();
-          AppMethodBeat.o(64762);
+          AppMethodBeat.o(54426);
           return bool;
         }
         if ((!this.c) && (this.b != null))
         {
           bool = this.b.supportMultipleWindows();
-          AppMethodBeat.o(64762);
+          AppMethodBeat.o(54426);
           continue;
         }
         boolean bool = false;
       }
       finally {}
-      AppMethodBeat.o(64762);
+      AppMethodBeat.o(54426);
     }
   }
   
   public boolean supportZoom()
   {
-    AppMethodBeat.i(64728);
+    AppMethodBeat.i(54392);
     boolean bool;
     if ((this.c) && (this.a != null))
     {
       bool = this.a.supportZoom();
-      AppMethodBeat.o(64728);
+      AppMethodBeat.o(54392);
       return bool;
     }
     if ((!this.c) && (this.b != null))
     {
       bool = this.b.supportZoom();
-      AppMethodBeat.o(64728);
+      AppMethodBeat.o(54392);
       return bool;
     }
-    AppMethodBeat.o(64728);
+    AppMethodBeat.o(54392);
     return false;
-  }
-  
-  public static enum RenderPriority
-  {
-    static
-    {
-      AppMethodBeat.i(64717);
-      NORMAL = new RenderPriority("NORMAL", 0);
-      HIGH = new RenderPriority("HIGH", 1);
-      LOW = new RenderPriority("LOW", 2);
-      $VALUES = new RenderPriority[] { NORMAL, HIGH, LOW };
-      AppMethodBeat.o(64717);
-    }
-    
-    private RenderPriority() {}
-  }
-  
-  public static enum TextSize
-  {
-    int value;
-    
-    static
-    {
-      AppMethodBeat.i(64720);
-      SMALLEST = new TextSize("SMALLEST", 0, 50);
-      SMALLER = new TextSize("SMALLER", 1, 75);
-      NORMAL = new TextSize("NORMAL", 2, 100);
-      LARGER = new TextSize("LARGER", 3, 125);
-      LARGEST = new TextSize("LARGEST", 4, 150);
-      $VALUES = new TextSize[] { SMALLEST, SMALLER, NORMAL, LARGER, LARGEST };
-      AppMethodBeat.o(64720);
-    }
-    
-    private TextSize(int paramInt)
-    {
-      this.value = paramInt;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebSettings
  * JD-Core Version:    0.7.0.1
  */

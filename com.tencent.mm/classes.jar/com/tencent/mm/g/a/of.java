@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class of
   extends b
 {
+  public a dtm;
+  
   public of()
   {
     this((byte)0);
@@ -12,8 +15,16 @@ public final class of
   
   private of(byte paramByte)
   {
-    this.ymq = false;
+    AppMethodBeat.i(149878);
+    this.dtm = new a();
+    this.ESR = false;
     this.callback = null;
+    AppMethodBeat.o(149878);
+  }
+  
+  public static final class a
+  {
+    public byte[] content;
   }
 }
 

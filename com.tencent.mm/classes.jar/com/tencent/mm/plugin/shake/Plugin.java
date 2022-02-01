@@ -1,48 +1,56 @@
 package com.tencent.mm.plugin.shake;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.pluginsdk.b.b;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.b.d;
 
 public class Plugin
-  implements c
+  implements d
 {
-  private b qMA;
+  private c wln;
   
   public Plugin()
   {
-    AppMethodBeat.i(24408);
-    this.qMA = new Plugin.1(this);
-    AppMethodBeat.o(24408);
+    AppMethodBeat.i(28083);
+    this.wln = new c()
+    {
+      public final com.tencent.mm.pluginsdk.b.a aa(Context paramAnonymousContext, String paramAnonymousString)
+      {
+        AppMethodBeat.i(28082);
+        paramAnonymousContext = new com.tencent.mm.plugin.shake.ui.a(paramAnonymousContext);
+        AppMethodBeat.o(28082);
+        return paramAnonymousContext;
+      }
+    };
+    AppMethodBeat.o(28083);
   }
   
-  public o createApplication()
+  public com.tencent.mm.pluginsdk.m createApplication()
   {
-    AppMethodBeat.i(24409);
+    AppMethodBeat.i(28084);
     a locala = new a();
-    AppMethodBeat.o(24409);
+    AppMethodBeat.o(28084);
     return locala;
   }
   
-  public at createSubCore()
+  public aw createSubCore()
   {
-    AppMethodBeat.i(24410);
-    m localm = new m();
-    AppMethodBeat.o(24410);
+    AppMethodBeat.i(28085);
+    com.tencent.mm.plugin.shake.b.m localm = new com.tencent.mm.plugin.shake.b.m();
+    AppMethodBeat.o(28085);
     return localm;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
-    return this.qMA;
+    return this.wln;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.Plugin
  * JD-Core Version:    0.7.0.1
  */

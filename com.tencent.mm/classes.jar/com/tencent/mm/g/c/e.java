@@ -8,15 +8,15 @@ public abstract class e
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dgj = "mau".hashCode();
-  private static final int dgk = "dau".hashCode();
-  private static final int dgl = "useTime".hashCode();
+  private static final int ekr = "mau".hashCode();
+  private static final int eks = "dau".hashCode();
+  private static final int ekt = "useTime".hashCode();
   private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private boolean __hadSetkey = true;
-  private boolean dgg = true;
-  private boolean dgh = true;
-  private boolean dgi = true;
+  private boolean eko = true;
+  private boolean ekp = true;
+  private boolean ekq = true;
   public int field_dau;
   public int field_key;
   public int field_mau;
@@ -47,11 +47,11 @@ public abstract class e
       break label20;
       break;
       label65:
-      if (dgj == k) {
+      if (ekr == k) {
         this.field_mau = paramCursor.getInt(i);
-      } else if (dgk == k) {
+      } else if (eks == k) {
         this.field_dau = paramCursor.getInt(i);
-      } else if (dgl == k) {
+      } else if (ekt == k) {
         this.field_useTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -65,13 +65,13 @@ public abstract class e
     if (this.__hadSetkey) {
       localContentValues.put("key", Integer.valueOf(this.field_key));
     }
-    if (this.dgg) {
+    if (this.eko) {
       localContentValues.put("mau", Integer.valueOf(this.field_mau));
     }
-    if (this.dgh) {
+    if (this.ekp) {
       localContentValues.put("dau", Integer.valueOf(this.field_dau));
     }
-    if (this.dgi) {
+    if (this.ekq) {
       localContentValues.put("useTime", Long.valueOf(this.field_useTime));
     }
     if (this.systemRowid > 0L) {
@@ -82,7 +82,7 @@ public abstract class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.e
  * JD-Core Version:    0.7.0.1
  */

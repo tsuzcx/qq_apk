@@ -17,14 +17,14 @@ public final class ShareMessengerURLActionButton
   
   static
   {
-    AppMethodBeat.i(97517);
+    AppMethodBeat.i(8541);
     CREATOR = new Parcelable.Creator()
     {
       public final ShareMessengerURLActionButton createFromParcel(Parcel paramAnonymousParcel)
       {
-        AppMethodBeat.i(97504);
+        AppMethodBeat.i(8528);
         paramAnonymousParcel = new ShareMessengerURLActionButton(paramAnonymousParcel);
-        AppMethodBeat.o(97504);
+        AppMethodBeat.o(8528);
         return paramAnonymousParcel;
       }
       
@@ -33,13 +33,13 @@ public final class ShareMessengerURLActionButton
         return new ShareMessengerURLActionButton[paramAnonymousInt];
       }
     };
-    AppMethodBeat.o(97517);
+    AppMethodBeat.o(8541);
   }
   
   ShareMessengerURLActionButton(Parcel paramParcel)
   {
     super(paramParcel);
-    AppMethodBeat.i(97516);
+    AppMethodBeat.i(8540);
     this.url = ((Uri)paramParcel.readParcelable(Uri.class.getClassLoader()));
     if (paramParcel.readByte() != 0)
     {
@@ -48,30 +48,30 @@ public final class ShareMessengerURLActionButton
       this.fallbackUrl = ((Uri)paramParcel.readParcelable(Uri.class.getClassLoader()));
       this.webviewHeightRatio = ((ShareMessengerURLActionButton.WebviewHeightRatio)paramParcel.readSerializable());
       if (paramParcel.readByte() == 0) {
-        break label94;
+        break label96;
       }
     }
-    label94:
+    label96:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       this.shouldHideWebviewShareButton = bool1;
-      AppMethodBeat.o(97516);
+      AppMethodBeat.o(8540);
       return;
       bool1 = false;
       break;
     }
   }
   
-  private ShareMessengerURLActionButton(ShareMessengerURLActionButton.Builder paramBuilder)
+  private ShareMessengerURLActionButton(Builder paramBuilder)
   {
     super(paramBuilder);
-    AppMethodBeat.i(97515);
-    this.url = ShareMessengerURLActionButton.Builder.access$000(paramBuilder);
-    this.isMessengerExtensionURL = ShareMessengerURLActionButton.Builder.access$100(paramBuilder);
-    this.fallbackUrl = ShareMessengerURLActionButton.Builder.access$200(paramBuilder);
-    this.webviewHeightRatio = ShareMessengerURLActionButton.Builder.access$300(paramBuilder);
-    this.shouldHideWebviewShareButton = ShareMessengerURLActionButton.Builder.access$400(paramBuilder);
-    AppMethodBeat.o(97515);
+    AppMethodBeat.i(8539);
+    this.url = paramBuilder.url;
+    this.isMessengerExtensionURL = paramBuilder.isMessengerExtensionURL;
+    this.fallbackUrl = paramBuilder.fallbackUrl;
+    this.webviewHeightRatio = paramBuilder.webviewHeightRatio;
+    this.shouldHideWebviewShareButton = paramBuilder.shouldHideWebviewShareButton;
+    AppMethodBeat.o(8539);
   }
   
   public final Uri getFallbackUrl()
@@ -98,10 +98,71 @@ public final class ShareMessengerURLActionButton
   {
     return this.webviewHeightRatio;
   }
+  
+  public static final class Builder
+    extends ShareMessengerActionButton.Builder<ShareMessengerURLActionButton, Builder>
+  {
+    private Uri fallbackUrl;
+    private boolean isMessengerExtensionURL;
+    private boolean shouldHideWebviewShareButton;
+    private Uri url;
+    private ShareMessengerURLActionButton.WebviewHeightRatio webviewHeightRatio;
+    
+    public final ShareMessengerURLActionButton build()
+    {
+      AppMethodBeat.i(8532);
+      ShareMessengerURLActionButton localShareMessengerURLActionButton = new ShareMessengerURLActionButton(this, null);
+      AppMethodBeat.o(8532);
+      return localShareMessengerURLActionButton;
+    }
+    
+    public final Builder readFrom(ShareMessengerURLActionButton paramShareMessengerURLActionButton)
+    {
+      AppMethodBeat.i(8531);
+      if (paramShareMessengerURLActionButton == null)
+      {
+        AppMethodBeat.o(8531);
+        return this;
+      }
+      paramShareMessengerURLActionButton = setUrl(paramShareMessengerURLActionButton.getUrl()).setIsMessengerExtensionURL(paramShareMessengerURLActionButton.getIsMessengerExtensionURL()).setFallbackUrl(paramShareMessengerURLActionButton.getFallbackUrl()).setWebviewHeightRatio(paramShareMessengerURLActionButton.getWebviewHeightRatio()).setShouldHideWebviewShareButton(paramShareMessengerURLActionButton.getShouldHideWebviewShareButton());
+      AppMethodBeat.o(8531);
+      return paramShareMessengerURLActionButton;
+    }
+    
+    public final Builder setFallbackUrl(Uri paramUri)
+    {
+      this.fallbackUrl = paramUri;
+      return this;
+    }
+    
+    public final Builder setIsMessengerExtensionURL(boolean paramBoolean)
+    {
+      this.isMessengerExtensionURL = paramBoolean;
+      return this;
+    }
+    
+    public final Builder setShouldHideWebviewShareButton(boolean paramBoolean)
+    {
+      this.shouldHideWebviewShareButton = paramBoolean;
+      return this;
+    }
+    
+    public final Builder setUrl(Uri paramUri)
+    {
+      this.url = paramUri;
+      return this;
+    }
+    
+    public final Builder setWebviewHeightRatio(ShareMessengerURLActionButton.WebviewHeightRatio paramWebviewHeightRatio)
+    {
+      this.webviewHeightRatio = paramWebviewHeightRatio;
+      return this;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.share.model.ShareMessengerURLActionButton
  * JD-Core Version:    0.7.0.1
  */

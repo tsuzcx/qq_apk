@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.report.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.aa;
+import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.ayu;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.bkc;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class b$a
   extends l.d
   implements l.b
 {
-  public ayu qrU;
+  public bkc vJk;
   
   public b$a()
   {
-    AppMethodBeat.i(72669);
-    this.qrU = new ayu();
-    AppMethodBeat.o(72669);
+    AppMethodBeat.i(143785);
+    this.vJk = new bkc();
+    AppMethodBeat.o(143785);
   }
   
   public final int getCmdId()
@@ -34,18 +34,18 @@ public final class b$a
   
   public final byte[] toProtoBuf()
   {
-    AppMethodBeat.i(72670);
-    setRsaInfo(aa.dqF());
-    this.qrU.wvN = new SKBuiltinBuffer_t().setBuffer(bo.dtR());
-    this.qrU.setBaseRequest(l.a(this));
-    byte[] arrayOfByte = this.qrU.toByteArray();
-    AppMethodBeat.o(72670);
+    AppMethodBeat.i(143786);
+    setRsaInfo(ac.eBZ());
+    this.vJk.CFU = new SKBuiltinBuffer_t().setBuffer(bt.eGG());
+    this.vJk.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.vJk.toByteArray();
+    AppMethodBeat.o(143786);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.report.b.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/as" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="200.0dip"
+<LinearLayout android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/azg" layout="@layout/po" />
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/h6" android:layout_gravity="center" android:id="@id/azh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
-        <TextView android:textSize="27.0dip" android:textColor="@color/h6" android:layout_gravity="top" android:id="@id/azi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="¥" android:includeFontPadding="false" />
-        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="36.0dip" android:textColor="@color/h6" android:id="@id/azj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="" />
+    <TextView android:id="@id/ao5" style="@style/gx" />
+    <LinearLayout android:orientation="vertical" android:id="@id/al7" android:background="@drawable/mj" android:paddingLeft="@dimen/ha" android:paddingTop="@dimen/i_" android:paddingRight="@dimen/ha" android:paddingBottom="@dimen/i_" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/jn" android:layout_marginBottom="@dimen/ha" android:layout_weight="1.0">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="20.0dip" android:id="@id/aob" android:paddingBottom="2.0dip" android:layout_width="0.0dip" android:layout_weight="1.0" style="@style/gt" />
+            <ImageView android:id="@id/an_" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/qqmail_attach_icon_pressed" />
+        </LinearLayout>
+        <TextView android:textStyle="bold" android:ellipsize="end" android:id="@id/ao7" android:singleLine="true" style="@style/h2" />
+        <TextView android:textColor="@color/rj" android:ellipsize="end" android:id="@id/ala" android:maxLines="2" style="@style/h2" />
     </LinearLayout>
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/w6" android:layout_gravity="center" android:id="@id/azk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_marginBottom="40.0dip" android:text="" />
 </LinearLayout>

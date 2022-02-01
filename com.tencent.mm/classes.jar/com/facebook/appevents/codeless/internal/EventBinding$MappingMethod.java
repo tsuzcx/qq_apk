@@ -6,18 +6,18 @@ public enum EventBinding$MappingMethod
 {
   static
   {
-    AppMethodBeat.i(72096);
+    AppMethodBeat.i(17532);
     MANUAL = new MappingMethod("MANUAL", 0);
     INFERENCE = new MappingMethod("INFERENCE", 1);
     $VALUES = new MappingMethod[] { MANUAL, INFERENCE };
-    AppMethodBeat.o(72096);
+    AppMethodBeat.o(17532);
   }
   
   private EventBinding$MappingMethod() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.facebook.appevents.codeless.internal.EventBinding.MappingMethod
  * JD-Core Version:    0.7.0.1
  */

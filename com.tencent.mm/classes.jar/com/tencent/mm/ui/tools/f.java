@@ -3,77 +3,77 @@ package com.tencent.mm.ui.tools;
 import android.text.InputFilter;
 import android.text.Spanned;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class f
   implements InputFilter
 {
-  private int jmo;
-  private a jmp;
+  private int mce;
+  private a mcf;
   
   public f(int paramInt, a parama)
   {
-    this.jmo = paramInt;
-    this.jmp = parama;
+    this.mce = paramInt;
+    this.mcf = parama;
   }
   
   public static int a(String paramString, a parama)
   {
-    AppMethodBeat.i(67859);
+    AppMethodBeat.i(133834);
     int i;
-    if (parama == a.Avm)
+    if (parama == a.Hrl)
     {
-      i = auR(paramString);
-      AppMethodBeat.o(67859);
+      i = aLK(paramString);
+      AppMethodBeat.o(133834);
       return i;
     }
-    if (parama == a.Avn)
+    if (parama == a.Hrm)
     {
-      i = auQ(paramString);
-      AppMethodBeat.o(67859);
+      i = aLJ(paramString);
+      AppMethodBeat.o(133834);
       return i;
     }
-    AppMethodBeat.o(67859);
+    AppMethodBeat.o(133834);
     return 0;
   }
   
-  public static int auQ(String paramString)
+  public static int aLJ(String paramString)
   {
-    AppMethodBeat.i(67860);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(133835);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(67860);
+      AppMethodBeat.o(133835);
       return 0;
     }
     int i = paramString.length();
-    int j = auS(paramString);
-    int k = auT(paramString);
-    AppMethodBeat.o(67860);
+    int j = aLL(paramString);
+    int k = aLM(paramString);
+    AppMethodBeat.o(133835);
     return i + j + k;
   }
   
-  private static int auR(String paramString)
+  private static int aLK(String paramString)
   {
-    AppMethodBeat.i(67861);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(133836);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(67861);
+      AppMethodBeat.o(133836);
       return 0;
     }
     int i = paramString.length();
-    AppMethodBeat.o(67861);
+    AppMethodBeat.o(133836);
     return i;
   }
   
-  public static int auS(String paramString)
+  public static int aLL(String paramString)
   {
-    AppMethodBeat.i(67862);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(133837);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(67862);
+      AppMethodBeat.o(133837);
       return 0;
     }
     paramString = Pattern.compile("[\\u4e00-\\u9fa5]").matcher(paramString);
@@ -92,16 +92,16 @@ public class f
         k += 1;
       }
     }
-    AppMethodBeat.o(67862);
+    AppMethodBeat.o(133837);
     return i;
   }
   
-  private static int auT(String paramString)
+  private static int aLM(String paramString)
   {
-    AppMethodBeat.i(67863);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(133838);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(67863);
+      AppMethodBeat.o(133838);
       return 0;
     }
     int j = 0;
@@ -121,49 +121,49 @@ public class f
       j += 1;
       break;
       j = paramString.length();
-      k = auS(paramString);
-      AppMethodBeat.o(67863);
+      k = aLL(paramString);
+      AppMethodBeat.o(133838);
       return j - (k + i);
     }
   }
   
-  public static int bO(int paramInt, String paramString)
+  public static int cJ(int paramInt, String paramString)
   {
-    AppMethodBeat.i(67864);
-    if (aa.dsC())
+    AppMethodBeat.i(133839);
+    if (ac.eFq())
     {
-      paramInt = Math.round((paramInt - Math.round(auQ(paramString))) / 2.0F);
-      AppMethodBeat.o(67864);
-      return paramInt;
+      i = aLJ(paramString);
+      AppMethodBeat.o(133839);
+      return paramInt - i;
     }
-    int i = auQ(paramString);
-    AppMethodBeat.o(67864);
+    int i = aLJ(paramString);
+    AppMethodBeat.o(133839);
     return paramInt - i;
   }
   
-  public static int bP(int paramInt, String paramString)
+  public static int cK(int paramInt, String paramString)
   {
-    AppMethodBeat.i(67865);
-    if (aa.dsC())
+    AppMethodBeat.i(133840);
+    if (ac.eFq())
     {
-      paramInt = Math.round((Math.round(auQ(paramString)) - paramInt) / 2.0F);
-      AppMethodBeat.o(67865);
+      paramInt = Math.round((Math.round(aLJ(paramString)) - paramInt) / 2.0F);
+      AppMethodBeat.o(133840);
       return paramInt;
     }
-    int i = auQ(paramString);
-    AppMethodBeat.o(67865);
+    int i = aLJ(paramString);
+    AppMethodBeat.o(133840);
     return i - paramInt;
   }
   
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(67858);
-    if (a(paramSpanned.toString(), this.jmp) + a(paramCharSequence.toString(), this.jmp) > this.jmo)
+    AppMethodBeat.i(133833);
+    if (a(paramSpanned.toString(), this.mcf) + a(paramCharSequence.toString(), this.mcf) > this.mce)
     {
-      AppMethodBeat.o(67858);
+      AppMethodBeat.o(133833);
       return "";
     }
-    AppMethodBeat.o(67858);
+    AppMethodBeat.o(133833);
     return paramCharSequence;
   }
   
@@ -171,11 +171,11 @@ public class f
   {
     static
     {
-      AppMethodBeat.i(67857);
-      Avm = new a("MODE_CHINESE_AS_1", 0);
-      Avn = new a("MODE_CHINESE_AS_2", 1);
-      Avo = new a[] { Avm, Avn };
-      AppMethodBeat.o(67857);
+      AppMethodBeat.i(133832);
+      Hrl = new a("MODE_CHINESE_AS_1", 0);
+      Hrm = new a("MODE_CHINESE_AS_2", 1);
+      Hrn = new a[] { Hrl, Hrm };
+      AppMethodBeat.o(133832);
     }
     
     private a() {}

@@ -15,8 +15,8 @@ class InternalAppEventsLogger
   InternalAppEventsLogger(Context paramContext)
   {
     this(Utility.getActivityName(paramContext), null, null);
-    AppMethodBeat.i(72211);
-    AppMethodBeat.o(72211);
+    AppMethodBeat.i(17647);
+    AppMethodBeat.o(17647);
   }
   
   InternalAppEventsLogger(String paramString1, String paramString2, AccessToken paramAccessToken)
@@ -26,16 +26,16 @@ class InternalAppEventsLogger
   
   public void logEventImplicitly(String paramString, BigDecimal paramBigDecimal, Currency paramCurrency, Bundle paramBundle)
   {
-    AppMethodBeat.i(72213);
+    AppMethodBeat.i(17649);
     super.logEventImplicitly(paramString, paramBigDecimal, paramCurrency, paramBundle);
-    AppMethodBeat.o(72213);
+    AppMethodBeat.o(17649);
   }
   
   public void logPurchaseImplicitlyInternal(BigDecimal paramBigDecimal, Currency paramCurrency, Bundle paramBundle)
   {
-    AppMethodBeat.i(72212);
+    AppMethodBeat.i(17648);
     super.logPurchaseImplicitlyInternal(paramBigDecimal, paramCurrency, paramBundle);
-    AppMethodBeat.o(72212);
+    AppMethodBeat.o(17648);
   }
 }
 

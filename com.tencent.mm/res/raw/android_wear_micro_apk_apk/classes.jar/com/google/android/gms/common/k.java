@@ -5,17 +5,17 @@ import java.util.Arrays;
 final class k
   extends j
 {
-  private final byte[] Lp;
+  private final byte[] Ne;
   
   k(byte[] paramArrayOfByte)
   {
     super(Arrays.copyOfRange(paramArrayOfByte, 0, 25));
-    this.Lp = paramArrayOfByte;
+    this.Ne = paramArrayOfByte;
   }
   
   final byte[] getBytes()
   {
-    return this.Lp;
+    return this.Ne;
   }
 }
 

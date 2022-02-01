@@ -3,6 +3,7 @@ package com.google.android.exoplayer2.drm;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.google.android.exoplayer2.i.a;
 import com.google.android.exoplayer2.i.x;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
@@ -11,40 +12,40 @@ import java.util.List;
 import java.util.UUID;
 
 public final class DrmInitData
-  implements Parcelable, Comparator<DrmInitData.SchemeData>
+  implements Parcelable, Comparator<SchemeData>
 {
   public static final Parcelable.Creator<DrmInitData> CREATOR;
-  public final DrmInitData.SchemeData[] aBf;
-  public final int aBg;
-  private int axc;
+  private int aFj;
+  public final SchemeData[] aWx;
+  public final int aWy;
   
   static
   {
-    AppMethodBeat.i(94770);
-    CREATOR = new DrmInitData.1();
-    AppMethodBeat.o(94770);
+    AppMethodBeat.i(91882);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(91882);
   }
   
   DrmInitData(Parcel paramParcel)
   {
-    AppMethodBeat.i(94764);
-    this.aBf = ((DrmInitData.SchemeData[])paramParcel.createTypedArray(DrmInitData.SchemeData.CREATOR));
-    this.aBg = this.aBf.length;
-    AppMethodBeat.o(94764);
+    AppMethodBeat.i(91876);
+    this.aWx = ((SchemeData[])paramParcel.createTypedArray(SchemeData.CREATOR));
+    this.aWy = this.aWx.length;
+    AppMethodBeat.o(91876);
   }
   
-  public DrmInitData(List<DrmInitData.SchemeData> paramList)
+  public DrmInitData(List<SchemeData> paramList)
   {
-    this(false, (DrmInitData.SchemeData[])paramList.toArray(new DrmInitData.SchemeData[paramList.size()]));
-    AppMethodBeat.i(94762);
-    AppMethodBeat.o(94762);
+    this(false, (SchemeData[])paramList.toArray(new SchemeData[paramList.size()]));
+    AppMethodBeat.i(91874);
+    AppMethodBeat.o(91874);
   }
   
-  private DrmInitData(boolean paramBoolean, DrmInitData.SchemeData... paramVarArgs)
+  private DrmInitData(boolean paramBoolean, SchemeData... paramVarArgs)
   {
-    AppMethodBeat.i(94763);
+    AppMethodBeat.i(91875);
     if (paramBoolean) {
-      paramVarArgs = (DrmInitData.SchemeData[])paramVarArgs.clone();
+      paramVarArgs = (SchemeData[])paramVarArgs.clone();
     }
     for (;;)
     {
@@ -52,46 +53,46 @@ public final class DrmInitData
       int i = 1;
       while (i < paramVarArgs.length)
       {
-        if (DrmInitData.SchemeData.a(paramVarArgs[(i - 1)]).equals(DrmInitData.SchemeData.a(paramVarArgs[i])))
+        if (SchemeData.a(paramVarArgs[(i - 1)]).equals(SchemeData.a(paramVarArgs[i])))
         {
-          paramVarArgs = new IllegalArgumentException("Duplicate data for uuid: " + DrmInitData.SchemeData.a(paramVarArgs[i]));
-          AppMethodBeat.o(94763);
+          paramVarArgs = new IllegalArgumentException("Duplicate data for uuid: " + SchemeData.a(paramVarArgs[i]));
+          AppMethodBeat.o(91875);
           throw paramVarArgs;
         }
         i += 1;
       }
-      this.aBf = paramVarArgs;
-      this.aBg = paramVarArgs.length;
-      AppMethodBeat.o(94763);
+      this.aWx = paramVarArgs;
+      this.aWy = paramVarArgs.length;
+      AppMethodBeat.o(91875);
       return;
     }
   }
   
-  public DrmInitData(DrmInitData.SchemeData... paramVarArgs)
+  public DrmInitData(SchemeData... paramVarArgs)
   {
     this(true, paramVarArgs);
   }
   
-  public final DrmInitData ap(String paramString)
+  public final DrmInitData al(String paramString)
   {
-    AppMethodBeat.i(94765);
-    Object localObject = this.aBf;
+    AppMethodBeat.i(91877);
+    Object localObject = this.aWx;
     int j = localObject.length;
     int i = 0;
     if (i < j) {
-      if (x.e(localObject[i].type, paramString)) {}
+      if (x.g(localObject[i].type, paramString)) {}
     }
     for (i = 1;; i = 0)
     {
       if (i != 0)
       {
-        DrmInitData.SchemeData[] arrayOfSchemeData = new DrmInitData.SchemeData[this.aBf.length];
+        SchemeData[] arrayOfSchemeData = new SchemeData[this.aWx.length];
         i = 0;
         label54:
         if (i < arrayOfSchemeData.length)
         {
-          localObject = this.aBf[i];
-          if (x.e(((DrmInitData.SchemeData)localObject).type, paramString)) {}
+          localObject = this.aWx[i];
+          if (x.g(((SchemeData)localObject).type, paramString)) {}
           for (;;)
           {
             arrayOfSchemeData[i] = localObject;
@@ -99,14 +100,14 @@ public final class DrmInitData
             break label54;
             i += 1;
             break;
-            localObject = new DrmInitData.SchemeData(((DrmInitData.SchemeData)localObject).uuid, paramString, ((DrmInitData.SchemeData)localObject).mimeType, ((DrmInitData.SchemeData)localObject).data, ((DrmInitData.SchemeData)localObject).aBh);
+            localObject = new SchemeData(((SchemeData)localObject).uuid, paramString, ((SchemeData)localObject).mimeType, ((SchemeData)localObject).data, ((SchemeData)localObject).aWz);
           }
         }
         paramString = new DrmInitData(arrayOfSchemeData);
-        AppMethodBeat.o(94765);
+        AppMethodBeat.o(91877);
         return paramString;
       }
-      AppMethodBeat.o(94765);
+      AppMethodBeat.o(91877);
       return this;
     }
   }
@@ -118,43 +119,160 @@ public final class DrmInitData
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(94767);
+    AppMethodBeat.i(91879);
     if (this == paramObject)
     {
-      AppMethodBeat.o(94767);
+      AppMethodBeat.o(91879);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(94767);
+      AppMethodBeat.o(91879);
       return false;
     }
-    boolean bool = Arrays.equals(this.aBf, ((DrmInitData)paramObject).aBf);
-    AppMethodBeat.o(94767);
+    boolean bool = Arrays.equals(this.aWx, ((DrmInitData)paramObject).aWx);
+    AppMethodBeat.o(91879);
     return bool;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(94766);
-    if (this.axc == 0) {
-      this.axc = Arrays.hashCode(this.aBf);
+    AppMethodBeat.i(91878);
+    if (this.aFj == 0) {
+      this.aFj = Arrays.hashCode(this.aWx);
     }
-    int i = this.axc;
-    AppMethodBeat.o(94766);
+    int i = this.aFj;
+    AppMethodBeat.o(91878);
     return i;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(94768);
-    paramParcel.writeTypedArray(this.aBf, 0);
-    AppMethodBeat.o(94768);
+    AppMethodBeat.i(91880);
+    paramParcel.writeTypedArray(this.aWx, 0);
+    AppMethodBeat.o(91880);
+  }
+  
+  public static final class SchemeData
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<SchemeData> CREATOR;
+    private int aFj;
+    public final boolean aWz;
+    public final byte[] data;
+    public final String mimeType;
+    public final String type;
+    final UUID uuid;
+    
+    static
+    {
+      AppMethodBeat.i(91873);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(91873);
+    }
+    
+    SchemeData(Parcel paramParcel)
+    {
+      AppMethodBeat.i(91869);
+      this.uuid = new UUID(paramParcel.readLong(), paramParcel.readLong());
+      this.type = paramParcel.readString();
+      this.mimeType = paramParcel.readString();
+      this.data = paramParcel.createByteArray();
+      if (paramParcel.readByte() != 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.aWz = bool;
+        AppMethodBeat.o(91869);
+        return;
+      }
+    }
+    
+    public SchemeData(UUID paramUUID, String paramString1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean)
+    {
+      AppMethodBeat.i(91868);
+      this.uuid = ((UUID)a.checkNotNull(paramUUID));
+      this.type = paramString1;
+      this.mimeType = ((String)a.checkNotNull(paramString2));
+      this.data = ((byte[])a.checkNotNull(paramArrayOfByte));
+      this.aWz = paramBoolean;
+      AppMethodBeat.o(91868);
+    }
+    
+    public SchemeData(UUID paramUUID, String paramString, byte[] paramArrayOfByte)
+    {
+      this(paramUUID, null, paramString, paramArrayOfByte, false);
+    }
+    
+    public final int describeContents()
+    {
+      return 0;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(91870);
+      if (!(paramObject instanceof SchemeData))
+      {
+        AppMethodBeat.o(91870);
+        return false;
+      }
+      if (paramObject == this)
+      {
+        AppMethodBeat.o(91870);
+        return true;
+      }
+      paramObject = (SchemeData)paramObject;
+      if ((this.mimeType.equals(paramObject.mimeType)) && (x.g(this.uuid, paramObject.uuid)) && (x.g(this.type, paramObject.type)) && (Arrays.equals(this.data, paramObject.data)))
+      {
+        AppMethodBeat.o(91870);
+        return true;
+      }
+      AppMethodBeat.o(91870);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      AppMethodBeat.i(91871);
+      int j;
+      if (this.aFj == 0)
+      {
+        j = this.uuid.hashCode();
+        if (this.type != null) {
+          break label73;
+        }
+      }
+      label73:
+      for (int i = 0;; i = this.type.hashCode())
+      {
+        this.aFj = (((i + j * 31) * 31 + this.mimeType.hashCode()) * 31 + Arrays.hashCode(this.data));
+        i = this.aFj;
+        AppMethodBeat.o(91871);
+        return i;
+      }
+    }
+    
+    public final void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(91872);
+      paramParcel.writeLong(this.uuid.getMostSignificantBits());
+      paramParcel.writeLong(this.uuid.getLeastSignificantBits());
+      paramParcel.writeString(this.type);
+      paramParcel.writeString(this.mimeType);
+      paramParcel.writeByteArray(this.data);
+      if (this.aWz) {}
+      for (paramInt = 1;; paramInt = 0)
+      {
+        paramParcel.writeByte((byte)paramInt);
+        AppMethodBeat.o(91872);
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.drm.DrmInitData
  * JD-Core Version:    0.7.0.1
  */

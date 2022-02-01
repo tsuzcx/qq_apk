@@ -1,72 +1,86 @@
 package com.tencent.mm.plugin.appbrand.app;
 
+import com.tencent.luggage.sdk.f.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.v;
-import com.tencent.mm.plugin.appbrand.config.k.a;
-import com.tencent.mm.plugin.appbrand.config.s;
-import com.tencent.mm.plugin.appbrand.ipc.d;
-import com.tencent.mm.plugin.appbrand.jsapi.h5_interact.SendDataToMiniProgramFromH5Event;
-import com.tencent.mm.plugin.appbrand.task.h;
-import java.util.List;
+import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.plugin.appbrand.jsapi.auth.g.b;
+import d.g.b.k;
+import d.y;
 
-class e
-  implements com.tencent.mm.plugin.appbrand.service.e
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandUserInfoProvider;", "Lcom/tencent/luggage/sdk/userinfo/IWechatUserInfoProvider;", "()V", "getUserAvatarHDHeadImage", "", "callback", "Lcom/tencent/luggage/sdk/userinfo/IWechatUserInfoProvider$OnGetImagePathCallback;", "getUserDisplayNickName", "", "IPCGetHeadIconPath", "IPCGetUserDisplayNickName", "plugin-appbrand-integration_release"})
+public final class e
+  implements com.tencent.luggage.sdk.f.a
 {
-  public final int auy()
+  public static final e iJN;
+  
+  static
   {
-    AppMethodBeat.i(129247);
-    int i = WxaCommLibRuntimeReader.avI().gXf;
-    AppMethodBeat.o(129247);
-    return i;
+    AppMethodBeat.i(175112);
+    iJN = new e();
+    AppMethodBeat.o(175112);
   }
   
-  public void av(List<String> paramList)
+  public final String Ek()
   {
-    AppMethodBeat.i(129246);
-    s.a(paramList, k.a.hjj);
-    AppMethodBeat.o(129246);
+    AppMethodBeat.i(175111);
+    Object localObject = (IPCString)XIPCInvoker.a("com.tencent.mm", IPCVoid.fZS, e.b.class);
+    if (localObject != null)
+    {
+      localObject = ((IPCString)localObject).value;
+      AppMethodBeat.o(175111);
+      return localObject;
+    }
+    AppMethodBeat.o(175111);
+    return null;
   }
   
-  public void bt(String paramString1, String paramString2)
+  public final void a(a.b paramb)
   {
-    AppMethodBeat.i(129248);
-    com.tencent.mm.cm.g.dTg().h(new e.2(this, paramString1, paramString2)).dQo();
-    AppMethodBeat.o(129248);
+    AppMethodBeat.i(175110);
+    k.h(paramb, "callback");
+    XIPCInvoker.a("com.tencent.mm", IPCVoid.fZS, a.class, (d)new c(paramb));
+    AppMethodBeat.o(175110);
   }
   
-  public void k(String paramString1, String paramString2, int paramInt)
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandUserInfoProvider$IPCGetHeadIconPath;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  public static final class a
+    implements b<IPCVoid, IPCString>
   {
-    AppMethodBeat.i(129245);
-    SendDataToMiniProgramFromH5Event localSendDataToMiniProgramFromH5Event = new SendDataToMiniProgramFromH5Event();
-    localSendDataToMiniProgramFromH5Event.hMk = paramString1;
-    localSendDataToMiniProgramFromH5Event.data = paramString2;
-    localSendDataToMiniProgramFromH5Event.hMl = paramInt;
-    d.a(paramString1, localSendDataToMiniProgramFromH5Event);
-    AppMethodBeat.o(129245);
+    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/appbrand/app/AppBrandUserInfoProvider$IPCGetHeadIconPath$invoke$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/auth/AuthorizeHelper$GetHeadIconPathCallback;", "onCallback", "", "path", "", "plugin-appbrand-integration_release"})
+    public static final class a
+      implements g.b
+    {
+      a(d paramd) {}
+      
+      public final void DD(String paramString)
+      {
+        AppMethodBeat.i(175105);
+        d locald = this.iJO;
+        if (locald != null)
+        {
+          locald.bf(new IPCString(paramString));
+          AppMethodBeat.o(175105);
+          return;
+        }
+        AppMethodBeat.o(175105);
+      }
+    }
   }
   
-  public com.tencent.mm.vending.g.e<Integer> yj(String paramString)
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "path", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "onCallback"})
+  static final class c<T>
+    implements d<ResultType>
   {
-    AppMethodBeat.i(129243);
-    paramString = com.tencent.mm.cm.g.dTg().b(new e.1(this, paramString));
-    AppMethodBeat.o(129243);
-    return paramString;
-  }
-  
-  public void yk(String paramString)
-  {
-    AppMethodBeat.i(129244);
-    v.avD();
-    h.b(com.tencent.mm.plugin.appbrand.task.g.iKS);
-    AppMethodBeat.o(129244);
+    c(a.b paramb) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.e
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,14 @@ import android.view.WindowInsets;
 
 public final class ab
 {
-  public final Object Hp;
+  public final Object On;
   
   private ab(Object paramObject)
   {
-    this.Hp = paramObject;
+    this.On = paramObject;
   }
   
-  static ab E(Object paramObject)
+  static ab D(Object paramObject)
   {
     if (paramObject == null) {
       return null;
@@ -25,15 +25,7 @@ public final class ab
     if (paramab == null) {
       return null;
     }
-    return paramab.Hp;
-  }
-  
-  public final ab dK()
-  {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return new ab(((WindowInsets)this.Hp).consumeSystemWindowInsets());
-    }
-    return null;
+    return paramab.On;
   }
   
   public final boolean equals(Object paramObject)
@@ -46,18 +38,26 @@ public final class ab
         return false;
       }
       paramObject = (ab)paramObject;
-      if (this.Hp != null) {
+      if (this.On != null) {
         break;
       }
-    } while (paramObject.Hp == null);
+    } while (paramObject.On == null);
     return false;
-    return this.Hp.equals(paramObject.Hp);
+    return this.On.equals(paramObject.On);
   }
   
   public final ab f(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if (Build.VERSION.SDK_INT >= 20) {
-      return new ab(((WindowInsets)this.Hp).replaceSystemWindowInsets(paramInt1, paramInt2, paramInt3, paramInt4));
+      return new ab(((WindowInsets)this.On).replaceSystemWindowInsets(paramInt1, paramInt2, paramInt3, paramInt4));
+    }
+    return null;
+  }
+  
+  public final ab fc()
+  {
+    if (Build.VERSION.SDK_INT >= 20) {
+      return new ab(((WindowInsets)this.On).consumeSystemWindowInsets());
     }
     return null;
   }
@@ -65,7 +65,7 @@ public final class ab
   public final int getSystemWindowInsetBottom()
   {
     if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.Hp).getSystemWindowInsetBottom();
+      return ((WindowInsets)this.On).getSystemWindowInsetBottom();
     }
     return 0;
   }
@@ -73,7 +73,7 @@ public final class ab
   public final int getSystemWindowInsetLeft()
   {
     if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.Hp).getSystemWindowInsetLeft();
+      return ((WindowInsets)this.On).getSystemWindowInsetLeft();
     }
     return 0;
   }
@@ -81,7 +81,7 @@ public final class ab
   public final int getSystemWindowInsetRight()
   {
     if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.Hp).getSystemWindowInsetRight();
+      return ((WindowInsets)this.On).getSystemWindowInsetRight();
     }
     return 0;
   }
@@ -89,23 +89,23 @@ public final class ab
   public final int getSystemWindowInsetTop()
   {
     if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.Hp).getSystemWindowInsetTop();
+      return ((WindowInsets)this.On).getSystemWindowInsetTop();
     }
     return 0;
   }
   
   public final int hashCode()
   {
-    if (this.Hp == null) {
+    if (this.On == null) {
       return 0;
     }
-    return this.Hp.hashCode();
+    return this.On.hashCode();
   }
   
   public final boolean isConsumed()
   {
     if (Build.VERSION.SDK_INT >= 21) {
-      return ((WindowInsets)this.Hp).isConsumed();
+      return ((WindowInsets)this.On).isConsumed();
     }
     return false;
   }

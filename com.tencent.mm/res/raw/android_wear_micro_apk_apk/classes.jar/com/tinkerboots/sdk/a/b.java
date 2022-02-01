@@ -2,7 +2,7 @@ package com.tinkerboots.sdk.a;
 
 public abstract interface b
 {
-  public abstract void os();
+  public abstract void pf();
 }
 
 

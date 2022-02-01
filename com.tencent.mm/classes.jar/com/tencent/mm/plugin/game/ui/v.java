@@ -4,10 +4,12 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.model.n;
-import com.tencent.mm.plugin.game.model.n.i;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.game.report.e;
+import com.tencent.mm.plugin.game.f.c;
+import com.tencent.mm.plugin.game.model.o;
+import com.tencent.mm.plugin.game.model.o.i;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public final class v
@@ -16,8 +18,8 @@ public final class v
   private Context mContext;
   private int mPosition;
   private int mScene;
-  private int nDJ;
-  private int nok;
+  private int rXI;
+  private int sni;
   
   public v(Context paramContext)
   {
@@ -25,57 +27,58 @@ public final class v
     this.mScene = 13;
   }
   
-  public final void ev(int paramInt1, int paramInt2)
+  public final void fP(int paramInt1, int paramInt2)
   {
-    this.nok = paramInt1;
-    this.nDJ = 1301;
+    this.rXI = paramInt1;
+    this.sni = 1301;
     this.mPosition = paramInt2;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(112217);
+    AppMethodBeat.i(42415);
     if (paramView.getTag() == null)
     {
-      AppMethodBeat.o(112217);
+      AppMethodBeat.o(42415);
       return;
     }
     int i;
-    if ((paramView.getTag() instanceof n))
+    if ((paramView.getTag() instanceof o))
     {
-      paramView = (n)paramView.getTag();
-      if (!bo.es(paramView.nmZ))
+      paramView = (o)paramView.getTag();
+      if (!bt.gL(paramView.rWc))
       {
-        String str = ((n.i)paramView.nmZ.get(0)).nod;
-        if (!bo.isNullOrNil(str))
+        String str = ((o.i)paramView.rWc.get(0)).rXm;
+        if (!bt.isNullOrNil(str))
         {
-          i = com.tencent.mm.plugin.game.f.c.ax(this.mContext, str);
-          com.tencent.mm.game.report.c.a(this.mContext, this.mScene, this.nDJ, this.mPosition, i, 0, paramView.field_appId, this.nok, paramView.field_msgType, paramView.field_gameMsgId, paramView.nnM, null);
-          AppMethodBeat.o(112217);
+          i = c.ax(this.mContext, str);
+          str = e.a(null, null, paramView.rWS, null);
+          e.a(this.mContext, this.mScene, this.sni, this.mPosition, i, 0, paramView.field_appId, this.rXI, paramView.field_msgType, paramView.field_gameMsgId, paramView.rWR, str);
+          AppMethodBeat.o(42415);
           return;
         }
-        ab.e("MicroMsg.GameURLClickListener", "message's jumpurl is null");
+        ad.e("MicroMsg.GameURLClickListener", "message's jumpurl is null");
       }
-      AppMethodBeat.o(112217);
+      AppMethodBeat.o(42415);
       return;
     }
     if ((paramView.getTag() instanceof String))
     {
       paramView = (String)paramView.getTag();
-      if (bo.isNullOrNil(paramView))
+      if (bt.isNullOrNil(paramView))
       {
-        AppMethodBeat.o(112217);
+        AppMethodBeat.o(42415);
         return;
       }
-      i = com.tencent.mm.plugin.game.f.c.ax(this.mContext, paramView);
-      com.tencent.mm.game.report.c.a(this.mContext, this.mScene, this.nDJ, this.mPosition, i, this.nok, null);
+      i = c.ax(this.mContext, paramView);
+      e.a(this.mContext, this.mScene, this.sni, this.mPosition, i, this.rXI, null);
     }
-    AppMethodBeat.o(112217);
+    AppMethodBeat.o(42415);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.v
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@drawable/a14" android:paddingLeft="@dimen/m7" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lx"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingTop="20.0dip" android:paddingBottom="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="horizontal" android:id="@id/ept" android:background="@drawable/l9" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/m0">
-        <ImageView android:id="@id/epu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a_8" android:layout_marginRight="@dimen/a_9" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
-        <ImageView android:id="@id/epv" android:layout_width="@dimen/a_c" android:layout_height="@dimen/a__" android:layout_marginLeft="@dimen/a_a" android:layout_marginRight="@dimen/a_b" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/a6q" android:id="@id/epw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dl" android:layout_toLeftOf="@id/epv" android:layout_toRightOf="@id/epu" android:layout_alignParentTop="true" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/a0o" android:ellipsize="end" android:id="@id/epx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/epv" android:layout_toRightOf="@id/epu" android:layout_below="@id/epw" />
-        <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerInParent="true">
-            <TextView android:textSize="@dimen/m2" android:textColor="@color/a0s" android:id="@id/epy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eqf" />
-            <TextView android:textSize="@dimen/ko" android:textColor="@color/a17" android:ellipsize="end" android:id="@id/epz" android:paddingRight="60.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="true" android:layout_below="@id/epy" />
-        </RelativeLayout>
-    </RelativeLayout>
+    <com.tencent.mm.plugin.scanner.ui.StrokedImageView android:id="@id/cg0" android:background="@drawable/a6s" android:layout_width="87.0dip" android:layout_height="87.0dip" android:scaleType="centerCrop" />
+    <TextView android:textSize="@dimen/jv" android:textColor="#ffaaaaaa" android:ellipsize="end" android:gravity="center" android:id="@id/cfz" android:scrollbars="none" android:layout_width="84.0dip" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:lines="2" android:singleLine="false" />
 </LinearLayout>

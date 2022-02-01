@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.kernel.c.c;
 import com.tencent.mm.kernel.c.d;
 import com.tencent.mm.kernel.c.d.a;
 import java.util.Collections;
@@ -13,37 +14,69 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class y
   extends d
 {
-  private final Set<Class<? extends a>> gRY;
-  private volatile d.a gRZ;
+  private final Set<Class<? extends a>> iHF;
+  private volatile d.a iHG;
   
   public y()
   {
-    AppMethodBeat.i(141643);
-    this.gRY = Collections.newSetFromMap(new ConcurrentHashMap());
-    super.a(new y.1(this));
-    AppMethodBeat.o(141643);
+    AppMethodBeat.i(134622);
+    this.iHF = Collections.newSetFromMap(new ConcurrentHashMap());
+    super.a(new d.a()
+    {
+      public final void a(Class<? extends a> paramAnonymousClass, a paramAnonymousa)
+      {
+        AppMethodBeat.i(134621);
+        d.a locala = y.b(y.this);
+        if (locala != null) {
+          locala.a(paramAnonymousClass, paramAnonymousa);
+        }
+        AppMethodBeat.o(134621);
+      }
+      
+      public final void a(Class<? extends a> paramAnonymousClass, c paramAnonymousc)
+      {
+        AppMethodBeat.i(134619);
+        y.a(y.this).add(paramAnonymousClass);
+        d.a locala = y.b(y.this);
+        if (locala != null) {
+          locala.a(paramAnonymousClass, paramAnonymousc);
+        }
+        AppMethodBeat.o(134619);
+      }
+      
+      public final void b(Class<? extends a> paramAnonymousClass, c paramAnonymousc)
+      {
+        AppMethodBeat.i(134620);
+        d.a locala = y.b(y.this);
+        if (locala != null) {
+          locala.b(paramAnonymousClass, paramAnonymousc);
+        }
+        AppMethodBeat.o(134620);
+      }
+    });
+    AppMethodBeat.o(134622);
   }
   
   public final void a(d.a parama)
   {
-    this.gRZ = parama;
+    this.iHG = parama;
   }
   
   public final void unregisterAll()
   {
-    AppMethodBeat.i(141644);
-    Object localObject = new HashSet(this.gRY);
-    this.gRY.clear();
+    AppMethodBeat.i(134623);
+    Object localObject = new HashSet(this.iHF);
+    this.iHF.clear();
     localObject = ((Set)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
-      super.F((Class)((Iterator)localObject).next());
+      super.ac((Class)((Iterator)localObject).next());
     }
-    AppMethodBeat.o(141644);
+    AppMethodBeat.o(134623);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.y
  * JD-Core Version:    0.7.0.1
  */

@@ -14,18 +14,19 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.BaseSavedState;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.walletlock.a.a;
-import com.tencent.mm.plugin.walletlock.gesture.a.f;
-import com.tencent.mm.sdk.platformtools.d;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,221 +35,241 @@ import java.util.List;
 public class PatternLockView
   extends View
 {
-  private static Bitmap uFF = null;
-  private static Bitmap uFG = null;
-  private static Bitmap uFH = null;
-  private static Bitmap uFI = null;
-  private int Bg;
-  private int Bh;
-  private int lPM;
-  private float uFA;
-  private boolean uFB;
-  private boolean uFC;
-  private boolean uFD;
-  private PatternLockView.b uFE;
-  private float uFJ;
-  private float uFK;
-  private boolean uFL;
-  private long uFM;
-  private float uFN;
-  private float uFO;
-  private PatternLockView.a uFP;
-  private Paint uFp;
-  private Paint uFq;
-  private Path uFr;
-  private Matrix uFs;
-  private Rect uFt;
-  private Rect uFu;
-  private ArrayList<f> uFv;
-  private boolean[][] uFw;
-  private PatternLockView.c uFx;
-  private int uFy;
-  private int uFz;
+  private Rect ACA;
+  private ArrayList<com.tencent.mm.plugin.walletlock.gesture.a.f> ACB;
+  private boolean[][] ACC;
+  private PatternLockView.c ACD;
+  private int ACE;
+  private float ACF;
+  private boolean ACG;
+  private boolean ACH;
+  private boolean ACI;
+  private b ACJ;
+  private Bitmap ACK;
+  private Bitmap ACL;
+  private Bitmap ACM;
+  private Bitmap ACN;
+  private float ACO;
+  private float ACP;
+  private long ACQ;
+  private float ACR;
+  private float ACS;
+  private a ACT;
+  private Paint ACv;
+  private Paint ACw;
+  private Path ACx;
+  private Matrix ACy;
+  private Rect ACz;
+  private int HC;
+  private int HD;
+  private boolean lPF;
+  private int ooU;
+  private int pgy;
   
   public PatternLockView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(51660);
-    this.uFp = new Paint();
-    this.uFq = new Paint();
-    this.uFr = new Path();
-    this.uFs = new Matrix();
-    this.uFt = new Rect();
-    this.uFu = new Rect();
-    this.uFv = new ArrayList(9);
-    this.uFw = ((boolean[][])Array.newInstance(Boolean.TYPE, new int[] { 3, 3 }));
-    this.uFx = PatternLockView.c.uFX;
-    this.uFy = 6;
-    this.uFz = 200;
-    this.uFA = 0.66F;
-    this.uFB = false;
-    this.uFC = true;
-    this.uFD = false;
+    AppMethodBeat.i(129865);
+    this.ACv = new Paint();
+    this.ACw = new Paint();
+    this.ACx = new Path();
+    this.ACy = new Matrix();
+    this.ACz = new Rect();
+    this.ACA = new Rect();
+    this.ACB = new ArrayList(9);
+    this.ACC = ((boolean[][])Array.newInstance(Boolean.TYPE, new int[] { 3, 3 }));
+    this.ACD = PatternLockView.c.ADb;
+    this.ooU = 6;
+    this.ACE = 200;
+    this.ACF = 0.66F;
+    this.ACG = false;
+    this.ACH = true;
+    this.ACI = false;
     int i;
     if (isInEditMode())
     {
       i = -1;
-      this.lPM = i;
-      this.uFE = PatternLockView.b.uFR;
-      this.uFJ = -1.0F;
-      this.uFK = -1.0F;
-      this.uFL = false;
-      this.uFM = 0L;
-      this.Bg = 0;
-      this.Bh = 0;
-      this.uFN = 0.0F;
-      this.uFO = 0.0F;
-      this.uFP = null;
+      this.pgy = i;
+      this.ACJ = b.ACV;
+      this.ACK = null;
+      this.ACL = null;
+      this.ACM = null;
+      this.ACN = null;
+      this.ACO = -1.0F;
+      this.ACP = -1.0F;
+      this.lPF = false;
+      this.ACQ = 0L;
+      this.HC = 0;
+      this.HD = 0;
+      this.ACR = 0.0F;
+      this.ACS = 0.0F;
+      this.ACT = null;
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.mm_patternlock_view);
-      this.uFC = paramContext.getBoolean(4, this.uFC);
-      this.uFz = paramContext.getInt(1, this.uFz);
-      this.uFy = paramContext.getInt(2, this.uFy);
-      this.uFB = paramContext.getBoolean(3, this.uFB);
-      switch (paramContext.getInt(0, this.uFx.ordinal()))
+      this.ACH = paramContext.getBoolean(4, this.ACH);
+      this.ACE = paramContext.getInt(1, this.ACE);
+      this.ooU = paramContext.getInt(2, this.ooU);
+      this.ACG = paramContext.getBoolean(0, this.ACG);
+      switch (paramContext.getInt(3, this.ACD.ordinal()))
       {
       default: 
-        this.uFx = PatternLockView.c.uFX;
+        this.ACD = PatternLockView.c.ADb;
       }
     }
     for (;;)
     {
       paramContext.recycle();
       setClickable(true);
-      this.uFq.setStyle(Paint.Style.STROKE);
-      this.uFq.setStrokeJoin(Paint.Join.ROUND);
-      this.uFq.setStrokeCap(Paint.Cap.ROUND);
-      this.uFq.setAntiAlias(true);
-      this.uFq.setDither(false);
-      this.uFq.setAlpha(this.uFz);
-      this.uFp.setAntiAlias(true);
-      this.uFp.setDither(true);
+      this.ACw.setStyle(Paint.Style.STROKE);
+      this.ACw.setStrokeJoin(Paint.Join.ROUND);
+      this.ACw.setStrokeCap(Paint.Cap.ROUND);
+      this.ACw.setAntiAlias(true);
+      this.ACw.setDither(false);
+      this.ACw.setAlpha(this.ACE);
+      this.ACv.setAntiAlias(true);
+      this.ACv.setDither(true);
       if (isInEditMode()) {
-        break label616;
+        break label646;
       }
-      if (uFF == null)
+      if (this.ACK == null)
       {
-        uFF = t(a.k(getContext(), 2130839053));
-        paramContext = t(a.k(getContext(), 2130839054));
-        uFG = paramContext;
-        uFH = paramContext;
-        uFI = t(a.k(getContext(), 2130839055));
+        this.ACK = A(a.l(getContext(), 2131232595));
+        this.ACL = A(a.l(getContext(), 2131232596));
+        this.ACM = this.ACL;
+        this.ACN = A(a.l(getContext(), 2131232597));
       }
-      this.uFy = ((int)(this.uFy * d.aow().density));
-      paramContext = uFF;
-      paramAttributeSet = uFG;
-      Bitmap localBitmap1 = uFH;
-      Bitmap localBitmap2 = uFI;
+      this.ooU = ((int)(this.ooU * com.tencent.mm.sdk.platformtools.f.aGH().density));
+      paramContext = this.ACK;
+      paramAttributeSet = this.ACL;
+      Bitmap localBitmap1 = this.ACM;
+      Bitmap localBitmap2 = this.ACN;
       i = 0;
       while (i < 4)
       {
         Bitmap localBitmap3 = new Bitmap[] { paramContext, paramAttributeSet, localBitmap1, localBitmap2 }[i];
-        this.Bg = Math.max(localBitmap3.getWidth(), this.Bg);
-        this.Bh = Math.max(localBitmap3.getHeight(), this.Bh);
+        this.HC = Math.max(localBitmap3.getWidth(), this.HC);
+        this.HD = Math.max(localBitmap3.getHeight(), this.HD);
         i += 1;
       }
-      i = getResources().getColor(2131690135);
+      i = getResources().getColor(2131099699);
       break;
-      this.uFx = PatternLockView.c.uFX;
+      this.ACD = PatternLockView.c.ADb;
       continue;
-      this.uFx = PatternLockView.c.uFY;
+      this.ACD = PatternLockView.c.ADc;
     }
-    label616:
-    AppMethodBeat.o(51660);
+    label646:
+    AppMethodBeat.o(129865);
   }
   
-  private float IO(int paramInt)
+  private static Bitmap A(Drawable paramDrawable)
   {
-    AppMethodBeat.i(51675);
+    AppMethodBeat.i(129866);
+    int i = paramDrawable.getIntrinsicWidth();
+    int j = paramDrawable.getIntrinsicHeight();
+    if (paramDrawable.getOpacity() != -1) {}
+    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
+    {
+      localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
+      Canvas localCanvas = new Canvas((Bitmap)localObject);
+      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
+      paramDrawable.draw(localCanvas);
+      AppMethodBeat.o(129866);
+      return localObject;
+    }
+  }
+  
+  private float RN(int paramInt)
+  {
+    AppMethodBeat.i(129880);
     float f1 = getPaddingLeft();
     float f2 = paramInt;
-    float f3 = this.uFN;
-    float f4 = this.uFN;
-    AppMethodBeat.o(51675);
+    float f3 = this.ACR;
+    float f4 = this.ACR;
+    AppMethodBeat.o(129880);
     return f1 + f2 * f3 + f4 * 0.5F;
   }
   
-  private float IP(int paramInt)
+  private float RO(int paramInt)
   {
-    AppMethodBeat.i(51676);
+    AppMethodBeat.i(129881);
     float f1 = getPaddingTop();
     float f2 = paramInt;
-    float f3 = this.uFO;
-    float f4 = this.uFO;
-    AppMethodBeat.o(51676);
+    float f3 = this.ACS;
+    float f4 = this.ACS;
+    AppMethodBeat.o(129881);
     return f1 + f2 * f3 + f4 * 0.5F;
   }
   
   private void a(Canvas paramCanvas, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(51671);
+    AppMethodBeat.i(129876);
     Bitmap localBitmap;
-    if ((!paramBoolean) || ((!this.uFC) && (this.uFE != PatternLockView.b.uFS))) {
-      localBitmap = uFF;
+    if ((!paramBoolean) || ((!this.ACH) && (this.ACJ != b.ACW))) {
+      localBitmap = this.ACK;
     }
     for (;;)
     {
-      int j = this.Bg;
-      int i = this.Bh;
-      float f1 = this.uFN;
-      float f2 = this.uFO;
+      int j = this.HC;
+      int i = this.HD;
+      float f1 = this.ACR;
+      float f2 = this.ACS;
       j = (int)((f1 - j) * 0.5F);
       i = (int)((f2 - i) * 0.5F);
       f2 = getResources().getDisplayMetrics().density;
-      f1 = Math.min((this.uFN - 33.0F * f2) / this.Bg, 1.0F);
-      f2 = Math.min((this.uFO - f2 * 33.0F) / this.Bh, 1.0F);
-      this.uFs.setTranslate(j + paramInt1, i + paramInt2);
-      this.uFs.preTranslate(this.Bg / 2, this.Bh / 2);
-      this.uFs.preScale(f1, f2);
-      this.uFs.preTranslate(-this.Bg / 2, -this.Bh / 2);
+      f1 = Math.min((this.ACR - 33.0F * f2) / this.HC, 1.0F);
+      f2 = Math.min((this.ACS - f2 * 33.0F) / this.HD, 1.0F);
+      this.ACy.setTranslate(j + paramInt1, i + paramInt2);
+      this.ACy.preTranslate(this.HC / 2, this.HD / 2);
+      this.ACy.preScale(f1, f2);
+      this.ACy.preTranslate(-this.HC / 2, -this.HD / 2);
       if (!isInEditMode()) {
-        paramCanvas.drawBitmap(localBitmap, this.uFs, this.uFp);
+        paramCanvas.drawBitmap(localBitmap, this.ACy, this.ACv);
       }
-      AppMethodBeat.o(51671);
+      AppMethodBeat.o(129876);
       return;
-      if (this.uFL)
+      if (this.lPF)
       {
-        localBitmap = uFG;
+        localBitmap = this.ACL;
       }
-      else if (this.uFE == PatternLockView.b.uFS)
+      else if (this.ACJ == b.ACW)
       {
-        localBitmap = uFI;
+        localBitmap = this.ACN;
       }
       else
       {
-        if ((this.uFE != PatternLockView.b.uFR) && (this.uFE != PatternLockView.b.uFT)) {
+        if ((this.ACJ != b.ACV) && (this.ACJ != b.ACX)) {
           break;
         }
-        localBitmap = uFH;
+        localBitmap = this.ACM;
       }
     }
-    paramCanvas = new IllegalStateException("unknown display mode " + this.uFE);
-    AppMethodBeat.o(51671);
+    paramCanvas = new IllegalStateException("unknown display mode " + this.ACJ);
+    AppMethodBeat.o(129876);
     throw paramCanvas;
   }
   
-  private void a(PatternLockView.b paramb, List<f> paramList)
+  private void a(b paramb, List<com.tencent.mm.plugin.walletlock.gesture.a.f> paramList)
   {
-    AppMethodBeat.i(51678);
-    this.uFv.clear();
-    cYc();
-    this.uFv.addAll(paramList);
-    paramList = this.uFv.iterator();
+    AppMethodBeat.i(129883);
+    this.ACB.clear();
+    egw();
+    this.ACB.addAll(paramList);
+    paramList = this.ACB.iterator();
     while (paramList.hasNext())
     {
-      f localf = (f)paramList.next();
-      this.uFw[localf.uEJ][localf.uEK] = 1;
+      com.tencent.mm.plugin.walletlock.gesture.a.f localf = (com.tencent.mm.plugin.walletlock.gesture.a.f)paramList.next();
+      this.ACC[localf.ABP][localf.ABQ] = 1;
     }
     setDisplayMode(paramb);
-    AppMethodBeat.o(51678);
+    AppMethodBeat.o(129883);
   }
   
-  private f aj(float paramFloat1, float paramFloat2)
+  private com.tencent.mm.plugin.walletlock.gesture.a.f aa(float paramFloat1, float paramFloat2)
   {
     int k = 0;
-    AppMethodBeat.i(51672);
+    AppMethodBeat.i(129877);
     Object localObject2 = null;
-    float f1 = this.uFO;
-    float f2 = f1 * this.uFA;
+    float f1 = this.ACS;
+    float f2 = f1 * this.ACF;
     float f3 = getPaddingTop();
     float f4 = (f1 - f2) / 2.0F;
     int i = 0;
@@ -264,8 +285,8 @@ public class PatternLockView
         localObject1 = localObject2;
         if (j >= 0)
         {
-          paramFloat2 = this.uFN;
-          f1 = this.uFA * paramFloat2;
+          paramFloat2 = this.ACR;
+          f1 = this.ACF * paramFloat2;
           f2 = getPaddingLeft();
           f3 = (paramFloat2 - f1) / 2.0F;
           i = k;
@@ -286,22 +307,22 @@ public class PatternLockView
       if (i >= 0)
       {
         localObject1 = localObject2;
-        if (this.uFw[j][i] == 0) {
-          localObject1 = f.gA(j, i);
+        if (this.ACC[j][i] == 0) {
+          localObject1 = com.tencent.mm.plugin.walletlock.gesture.a.f.ik(j, i);
         }
       }
       if (localObject1 == null) {
         break label296;
       }
-      this.uFw[localObject1.uEJ][localObject1.uEK] = 1;
-      this.uFv.add(localObject1);
-      if (this.uFP != null) {
-        new ArrayList(this.uFv);
+      this.ACC[localObject1.ABP][localObject1.ABQ] = 1;
+      this.ACB.add(localObject1);
+      if (this.ACT != null) {
+        new ArrayList(this.ACB);
       }
-      if (this.uFB) {
+      if (this.ACG) {
         performHapticFeedback(1, 3);
       }
-      AppMethodBeat.o(51672);
+      AppMethodBeat.o(129877);
       return localObject1;
       i += 1;
       break;
@@ -314,11 +335,11 @@ public class PatternLockView
       i = -1;
     }
     label296:
-    AppMethodBeat.o(51672);
+    AppMethodBeat.o(129877);
     return null;
   }
   
-  private void cYc()
+  private void egw()
   {
     int i = 0;
     while (i < 3)
@@ -326,30 +347,30 @@ public class PatternLockView
       int j = 0;
       while (j < 3)
       {
-        this.uFw[i][j] = 0;
+        this.ACC[i][j] = 0;
         j += 1;
       }
       i += 1;
     }
   }
   
-  private void cYd()
+  private void egx()
   {
-    AppMethodBeat.i(51679);
-    this.uFv.clear();
-    cYc();
-    this.uFE = PatternLockView.b.uFR;
+    AppMethodBeat.i(129884);
+    this.ACB.clear();
+    egw();
+    this.ACJ = b.ACV;
     invalidate();
-    AppMethodBeat.o(51679);
+    AppMethodBeat.o(129884);
   }
   
-  private static String ed(List<f> paramList)
+  private static String gt(List<com.tencent.mm.plugin.walletlock.gesture.a.f> paramList)
   {
-    AppMethodBeat.i(51662);
+    AppMethodBeat.i(129867);
     if (paramList == null)
     {
       paramList = new IllegalArgumentException("pattern is null");
-      AppMethodBeat.o(51662);
+      AppMethodBeat.o(129867);
       throw paramList;
     }
     int j = paramList.size();
@@ -357,19 +378,19 @@ public class PatternLockView
     int i = 0;
     while (i < j)
     {
-      f localf = (f)paramList.get(i);
-      int k = localf.uEJ;
-      arrayOfByte[i] = ((byte)(localf.uEK + k * 3));
+      com.tencent.mm.plugin.walletlock.gesture.a.f localf = (com.tencent.mm.plugin.walletlock.gesture.a.f)paramList.get(i);
+      int k = localf.ABP;
+      arrayOfByte[i] = ((byte)(localf.ABQ + k * 3));
       i += 1;
     }
     paramList = new String(arrayOfByte);
-    AppMethodBeat.o(51662);
+    AppMethodBeat.o(129867);
     return paramList;
   }
   
-  private static int gB(int paramInt1, int paramInt2)
+  private static int il(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(51668);
+    AppMethodBeat.i(129873);
     int j = View.MeasureSpec.getSize(paramInt1);
     int i = paramInt2;
     switch (View.MeasureSpec.getMode(paramInt1))
@@ -377,85 +398,68 @@ public class PatternLockView
     }
     for (i = j;; i = Math.max(j, paramInt2))
     {
-      AppMethodBeat.o(51668);
+      AppMethodBeat.o(129873);
       return i;
     }
   }
   
-  private static Bitmap t(Drawable paramDrawable)
+  public final void egy()
   {
-    AppMethodBeat.i(51661);
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    if (paramDrawable.getOpacity() != -1) {}
-    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
-    {
-      localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
-      paramDrawable.draw(localCanvas);
-      AppMethodBeat.o(51661);
-      return localObject;
+    AppMethodBeat.i(129885);
+    egx();
+    if (this.ACT != null) {
+      this.ACT.a(this);
     }
-  }
-  
-  public final void cYe()
-  {
-    AppMethodBeat.i(51680);
-    cYd();
-    if (this.uFP != null) {
-      this.uFP.a(this);
-    }
-    AppMethodBeat.o(51680);
+    AppMethodBeat.o(129885);
   }
   
   public boolean getDisplayLine()
   {
-    return this.uFC;
+    return this.ACH;
   }
   
   public boolean getEnableHapticFeedback()
   {
-    return this.uFB;
+    return this.ACG;
   }
   
   public boolean getEnableInput()
   {
-    return this.uFD;
+    return this.ACI;
   }
   
-  public List<f> getPattern()
+  public List<com.tencent.mm.plugin.walletlock.gesture.a.f> getPattern()
   {
-    AppMethodBeat.i(51677);
-    ArrayList localArrayList = new ArrayList(this.uFv);
-    AppMethodBeat.o(51677);
+    AppMethodBeat.i(129882);
+    ArrayList localArrayList = new ArrayList(this.ACB);
+    AppMethodBeat.o(129882);
     return localArrayList;
   }
   
   protected int getSuggestedMinimumHeight()
   {
-    AppMethodBeat.i(51666);
+    AppMethodBeat.i(129871);
     float f = getResources().getDisplayMetrics().density;
-    int i = (int)(3.0D * this.Bh / f);
-    AppMethodBeat.o(51666);
+    int i = (int)(3.0D * this.HD / f);
+    AppMethodBeat.o(129871);
     return i;
   }
   
   protected int getSuggestedMinimumWidth()
   {
-    AppMethodBeat.i(51665);
+    AppMethodBeat.i(129870);
     float f = getResources().getDisplayMetrics().density;
-    int i = (int)(3.0D * this.Bg / f);
-    AppMethodBeat.o(51665);
+    int i = (int)(3.0D * this.HC / f);
+    AppMethodBeat.o(129870);
     return i;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(51670);
-    ArrayList localArrayList = this.uFv;
+    AppMethodBeat.i(129875);
+    ArrayList localArrayList = this.ACB;
     int m = localArrayList.size();
-    boolean[][] arrayOfBoolean = this.uFw;
+    boolean[][] arrayOfBoolean = this.ACC;
     int j;
     int k;
     Object localObject;
@@ -468,16 +472,16 @@ public class PatternLockView
     int n;
     int i1;
     boolean bool;
-    if (this.uFE == PatternLockView.b.uFT)
+    if (this.ACJ == b.ACX)
     {
-      j = (int)(SystemClock.elapsedRealtime() - this.uFM) % ((m + 1) * 700);
+      j = (int)(SystemClock.elapsedRealtime() - this.ACQ) % ((m + 1) * 700);
       k = j / 700;
-      cYc();
+      egw();
       i = 0;
       while (i < k)
       {
-        localObject = (f)localArrayList.get(i);
-        arrayOfBoolean[localObject.uEJ][localObject.uEK] = 1;
+        localObject = (com.tencent.mm.plugin.walletlock.gesture.a.f)localArrayList.get(i);
+        arrayOfBoolean[localObject.ABP][localObject.ABQ] = 1;
         i += 1;
       }
       if ((k > 0) && (k < m))
@@ -486,38 +490,38 @@ public class PatternLockView
         if (i != 0)
         {
           f1 = j % 700 / 700.0F;
-          localObject = (f)localArrayList.get(k - 1);
-          f2 = IO(((f)localObject).uEK);
-          f3 = IP(((f)localObject).uEJ);
-          localObject = (f)localArrayList.get(k);
-          f4 = IO(((f)localObject).uEK);
-          f5 = IP(((f)localObject).uEJ);
-          this.uFJ = (f2 + (f4 - f2) * f1);
-          this.uFK = ((f5 - f3) * f1 + f3);
+          localObject = (com.tencent.mm.plugin.walletlock.gesture.a.f)localArrayList.get(k - 1);
+          f2 = RN(((com.tencent.mm.plugin.walletlock.gesture.a.f)localObject).ABQ);
+          f3 = RO(((com.tencent.mm.plugin.walletlock.gesture.a.f)localObject).ABP);
+          localObject = (com.tencent.mm.plugin.walletlock.gesture.a.f)localArrayList.get(k);
+          f4 = RN(((com.tencent.mm.plugin.walletlock.gesture.a.f)localObject).ABQ);
+          f5 = RO(((com.tencent.mm.plugin.walletlock.gesture.a.f)localObject).ABP);
+          this.ACO = (f2 + (f4 - f2) * f1);
+          this.ACP = ((f5 - f3) * f1 + f3);
         }
         invalidate();
       }
     }
     else
     {
-      this.uFq.setColor(this.lPM);
-      this.uFq.setStrokeWidth(this.uFy);
-      localObject = this.uFr;
+      this.ACw.setColor(this.pgy);
+      this.ACw.setStrokeWidth(this.ooU);
+      localObject = this.ACx;
       ((Path)localObject).rewind();
-      if ((!this.uFC) && (this.uFE != PatternLockView.b.uFS)) {
+      if ((!this.ACH) && (this.ACJ != b.ACW)) {
         break label436;
       }
       i = 1;
       n = getPaddingTop();
       i1 = getPaddingLeft();
-      f1 = this.uFN;
-      f2 = this.uFO;
-      if ((this.uFp.getFlags() & 0x2) == 0) {
+      f1 = this.ACR;
+      f2 = this.ACS;
+      if ((this.ACv.getFlags() & 0x2) == 0) {
         break label442;
       }
       bool = true;
       label335:
-      this.uFp.setFilterBitmap(true);
+      this.ACv.setFilterBitmap(true);
       j = 0;
     }
     float f6;
@@ -559,12 +563,12 @@ public class PatternLockView
       i = 0;
       if (i < m)
       {
-        f localf = (f)localArrayList.get(i);
-        if (arrayOfBoolean[localf.uEJ][localf.uEK] != 0)
+        com.tencent.mm.plugin.walletlock.gesture.a.f localf = (com.tencent.mm.plugin.walletlock.gesture.a.f)localArrayList.get(i);
+        if (arrayOfBoolean[localf.ABP][localf.ABQ] != 0)
         {
           j = 1;
-          f3 = IO(localf.uEK);
-          f4 = IP(localf.uEJ);
+          f3 = RN(localf.ABQ);
+          f4 = RO(localf.ABP);
           if (i == 0) {
             ((Path)localObject).moveTo(f3, f4);
           }
@@ -576,10 +580,10 @@ public class PatternLockView
           }
         }
       }
-      if (((this.uFL) || (this.uFE == PatternLockView.b.uFT)) && (j != 0)) {
-        ((Path)localObject).lineTo(this.uFJ, this.uFK);
+      if (((this.lPF) || (this.ACJ == b.ACX)) && (j != 0)) {
+        ((Path)localObject).lineTo(this.ACO, this.ACP);
       }
-      paramCanvas.drawPath((Path)localObject, this.uFq);
+      paramCanvas.drawPath((Path)localObject, this.ACw);
     }
     int i = 0;
     while (i < 3)
@@ -598,24 +602,24 @@ public class PatternLockView
       }
       i += 1;
     }
-    this.uFp.setFilterBitmap(bool);
-    AppMethodBeat.o(51670);
+    this.ACv.setFilterBitmap(bool);
+    AppMethodBeat.o(129875);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(51669);
+    AppMethodBeat.i(129874);
     int j = getSuggestedMinimumWidth();
     int i = getSuggestedMinimumHeight();
-    paramInt1 = gB(paramInt1, j);
-    i = gB(paramInt2, i);
-    if (this.uFx == PatternLockView.c.uFX) {
+    paramInt1 = il(paramInt1, j);
+    i = il(paramInt2, i);
+    if (this.ACD == PatternLockView.c.ADb) {
       paramInt2 = Math.min(paramInt1, i);
     }
     for (paramInt1 = paramInt2;; paramInt1 = i)
     {
       setMeasuredDimension(paramInt2, paramInt1);
-      AppMethodBeat.o(51669);
+      AppMethodBeat.o(129874);
       return;
       paramInt2 = paramInt1;
     }
@@ -623,15 +627,15 @@ public class PatternLockView
   
   protected void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    AppMethodBeat.i(51664);
-    paramParcelable = (PatternLockView.SavedState)paramParcelable;
+    AppMethodBeat.i(129869);
+    paramParcelable = (SavedState)paramParcelable;
     super.onRestoreInstanceState(paramParcelable.getSuperState());
-    PatternLockView.b localb = PatternLockView.b.uFR;
-    Object localObject = paramParcelable.uFV;
+    b localb = b.ACV;
+    Object localObject = paramParcelable.ACZ;
     if (localObject == null)
     {
       paramParcelable = new IllegalArgumentException("Serialized pattern is null");
-      AppMethodBeat.o(51664);
+      AppMethodBeat.o(129869);
       throw paramParcelable;
     }
     ArrayList localArrayList = new ArrayList();
@@ -640,39 +644,39 @@ public class PatternLockView
     while (i < localObject.length)
     {
       int j = localObject[i];
-      localArrayList.add(f.gA(j / 3, j % 3));
+      localArrayList.add(com.tencent.mm.plugin.walletlock.gesture.a.f.ik(j / 3, j % 3));
       i += 1;
     }
     a(localb, localArrayList);
-    this.uFE = PatternLockView.b.values()[paramParcelable.uFW];
-    this.uFC = paramParcelable.uFC;
-    this.uFD = paramParcelable.uFD;
-    this.uFB = paramParcelable.uFB;
-    AppMethodBeat.o(51664);
+    this.ACJ = b.values()[paramParcelable.ADa];
+    this.ACH = paramParcelable.ACH;
+    this.ACI = paramParcelable.ACI;
+    this.ACG = paramParcelable.ACG;
+    AppMethodBeat.o(129869);
   }
   
   protected Parcelable onSaveInstanceState()
   {
-    AppMethodBeat.i(51663);
-    PatternLockView.SavedState localSavedState = new PatternLockView.SavedState(super.onSaveInstanceState(), ed(this.uFv), this.uFE.ordinal(), this.uFC, this.uFD, this.uFB);
-    AppMethodBeat.o(51663);
+    AppMethodBeat.i(129868);
+    SavedState localSavedState = new SavedState(super.onSaveInstanceState(), gt(this.ACB), this.ACJ.ordinal(), this.ACH, this.ACI, this.ACG);
+    AppMethodBeat.o(129868);
     return localSavedState;
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(51667);
-    this.uFN = ((paramInt1 - getPaddingLeft() - getPaddingRight()) / 3.0F);
-    this.uFO = ((paramInt2 - getPaddingTop() - getPaddingBottom()) / 3.0F);
-    AppMethodBeat.o(51667);
+    AppMethodBeat.i(129872);
+    this.ACR = ((paramInt1 - getPaddingLeft() - getPaddingRight()) / 3.0F);
+    this.ACS = ((paramInt2 - getPaddingTop() - getPaddingBottom()) / 3.0F);
+    AppMethodBeat.o(129872);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(51673);
-    if ((!this.uFD) || (!isEnabled()))
+    AppMethodBeat.i(129878);
+    if ((!this.ACI) || (!isEnabled()))
     {
-      AppMethodBeat.o(51673);
+      AppMethodBeat.o(129878);
       return false;
     }
     float f1;
@@ -686,50 +690,50 @@ public class PatternLockView
     switch (paramMotionEvent.getAction())
     {
     default: 
-      AppMethodBeat.o(51673);
+      AppMethodBeat.o(129878);
       return false;
     case 0: 
-      cYd();
+      egx();
       f1 = paramMotionEvent.getX();
       f2 = paramMotionEvent.getY();
-      paramMotionEvent = aj(f1, f2);
+      paramMotionEvent = aa(f1, f2);
       if (paramMotionEvent != null)
       {
-        this.uFL = true;
-        this.uFE = PatternLockView.b.uFR;
-        if (this.uFP == null) {}
+        this.lPF = true;
+        this.ACJ = b.ACV;
+        if (this.ACT == null) {}
       }
       for (;;)
       {
         if (paramMotionEvent != null)
         {
-          f3 = IO(paramMotionEvent.uEK);
-          f4 = IP(paramMotionEvent.uEJ);
-          f5 = this.uFN * 0.5F;
-          f6 = this.uFO * 0.5F;
+          f3 = RN(paramMotionEvent.ABQ);
+          f4 = RO(paramMotionEvent.ABP);
+          f5 = this.ACR * 0.5F;
+          f6 = this.ACS * 0.5F;
           invalidate((int)(f3 - f5), (int)(f4 - f6), (int)(f3 + f5), (int)(f4 + f6));
         }
-        this.uFJ = f1;
-        this.uFK = f2;
-        AppMethodBeat.o(51673);
+        this.ACO = f1;
+        this.ACP = f2;
+        AppMethodBeat.o(129878);
         return true;
-        this.uFL = false;
+        this.lPF = false;
       }
     case 1: 
-      if (!this.uFv.isEmpty())
+      if (!this.ACB.isEmpty())
       {
-        this.uFL = false;
-        if (this.uFP != null) {
-          this.uFP.a(this, new ArrayList(this.uFv));
+        this.lPF = false;
+        if (this.ACT != null) {
+          this.ACT.a(this, new ArrayList(this.ACB));
         }
         invalidate();
       }
-      AppMethodBeat.o(51673);
+      AppMethodBeat.o(129878);
       return true;
     case 2: 
-      float f7 = this.uFy;
+      float f7 = this.ooU;
       int k = paramMotionEvent.getHistorySize();
-      this.uFt.setEmpty();
+      this.ACz.setEmpty();
       j = 0;
       i = 0;
       if (i < k + 1) {
@@ -742,21 +746,21 @@ public class PatternLockView
           }
           f2 = paramMotionEvent.getHistoricalY(i);
           label332:
-          f localf1 = aj(f1, f2);
-          int m = this.uFv.size();
+          com.tencent.mm.plugin.walletlock.gesture.a.f localf1 = aa(f1, f2);
+          int m = this.ACB.size();
           if ((localf1 != null) && (m == 1)) {
-            this.uFL = true;
+            this.lPF = true;
           }
-          f3 = Math.abs(f1 - this.uFJ);
-          f4 = Math.abs(f2 - this.uFK);
+          f3 = Math.abs(f1 - this.ACO);
+          f4 = Math.abs(f2 - this.ACP);
           if ((f3 > 0.0F) || (f4 > 0.0F)) {
             j = 1;
           }
-          if ((this.uFL) && (m > 0))
+          if ((this.lPF) && (m > 0))
           {
-            f localf2 = (f)this.uFv.get(m - 1);
-            f4 = IO(localf2.uEK);
-            f3 = IP(localf2.uEJ);
+            com.tencent.mm.plugin.walletlock.gesture.a.f localf2 = (com.tencent.mm.plugin.walletlock.gesture.a.f)this.ACB.get(m - 1);
+            f4 = RN(localf2.ABQ);
+            f3 = RO(localf2.ABP);
             f5 = Math.min(f4, f1) - f7;
             f4 = Math.max(f4, f1) + f7;
             f6 = Math.min(f3, f2) - f7;
@@ -764,10 +768,10 @@ public class PatternLockView
             if (localf1 == null) {
               break label912;
             }
-            f2 = this.uFN * 0.5F;
-            float f8 = this.uFO * 0.5F;
-            float f10 = IO(localf1.uEK);
-            float f9 = IP(localf1.uEJ);
+            f2 = this.ACR * 0.5F;
+            float f8 = this.ACS * 0.5F;
+            float f10 = RN(localf1.ABQ);
+            float f9 = RO(localf1.ABP);
             f1 = Math.min(f10 - f2, f5);
             f4 = Math.max(f2 + f10, f4);
             f2 = Math.min(f9 - f8, f6);
@@ -779,7 +783,7 @@ public class PatternLockView
     }
     for (;;)
     {
-      this.uFt.union(Math.round(f1), Math.round(f2), Math.round(f4), Math.round(f3));
+      this.ACz.union(Math.round(f1), Math.round(f2), Math.round(f4), Math.round(f3));
       i += 1;
       break;
       f1 = paramMotionEvent.getX();
@@ -787,45 +791,45 @@ public class PatternLockView
       label630:
       f2 = paramMotionEvent.getY();
       break label332;
-      this.uFJ = paramMotionEvent.getX();
-      if (this.uFJ < getPaddingLeft() + this.uFy)
+      this.ACO = paramMotionEvent.getX();
+      if (this.ACO < getPaddingLeft() + this.ooU)
       {
-        this.uFJ = (getPaddingLeft() + this.uFy);
-        this.uFK = paramMotionEvent.getY();
-        if (this.uFK >= getPaddingTop() + this.uFy) {
+        this.ACO = (getPaddingLeft() + this.ooU);
+        this.ACP = paramMotionEvent.getY();
+        if (this.ACP >= getPaddingTop() + this.ooU) {
           break label816;
         }
-        this.uFK = (getPaddingTop() + this.uFy);
+        this.ACP = (getPaddingTop() + this.ooU);
       }
       for (;;)
       {
         if (j != 0)
         {
-          this.uFu.union(this.uFt);
-          invalidate(this.uFu);
-          this.uFu.set(this.uFt);
+          this.ACA.union(this.ACz);
+          invalidate(this.ACA);
+          this.ACA.set(this.ACz);
         }
-        AppMethodBeat.o(51673);
+        AppMethodBeat.o(129878);
         return true;
-        if (this.uFJ <= getPaddingLeft() + getWidth() - getPaddingRight() - this.uFy) {
+        if (this.ACO <= getPaddingLeft() + getWidth() - getPaddingRight() - this.ooU) {
           break;
         }
-        this.uFJ = (getPaddingLeft() + getWidth() - getPaddingRight() - this.uFy);
+        this.ACO = (getPaddingLeft() + getWidth() - getPaddingRight() - this.ooU);
         break;
         label816:
-        if (this.uFK > getPaddingTop() + getHeight() - getPaddingRight() - this.uFy) {
-          this.uFK = (getPaddingTop() + getHeight() - getPaddingBottom() - this.uFy);
+        if (this.ACP > getPaddingTop() + getHeight() - getPaddingRight() - this.ooU) {
+          this.ACP = (getPaddingTop() + getHeight() - getPaddingBottom() - this.ooU);
         }
       }
-      if (this.uFL)
+      if (this.lPF)
       {
-        this.uFL = false;
-        cYd();
-        if (this.uFP != null) {
-          this.uFP.a(this);
+        this.lPF = false;
+        egx();
+        if (this.ACT != null) {
+          this.ACT.a(this);
         }
       }
-      AppMethodBeat.o(51673);
+      AppMethodBeat.o(129878);
       return true;
       label912:
       f2 = f6;
@@ -835,62 +839,136 @@ public class PatternLockView
   
   public void setDisplayLine(boolean paramBoolean)
   {
-    AppMethodBeat.i(51674);
-    this.uFC = paramBoolean;
+    AppMethodBeat.i(129879);
+    this.ACH = paramBoolean;
     invalidate();
-    AppMethodBeat.o(51674);
+    AppMethodBeat.o(129879);
   }
   
-  public void setDisplayMode(PatternLockView.b paramb)
+  public void setDisplayMode(b paramb)
   {
-    AppMethodBeat.i(51681);
-    switch (PatternLockView.1.uFQ[paramb.ordinal()])
+    AppMethodBeat.i(129886);
+    switch (1.ACU[paramb.ordinal()])
     {
     }
     for (;;)
     {
-      this.uFE = paramb;
+      this.ACJ = paramb;
       invalidate();
-      AppMethodBeat.o(51681);
+      AppMethodBeat.o(129886);
       return;
-      this.lPM = getResources().getColor(2131690135);
+      this.pgy = getResources().getColor(2131100460);
       continue;
-      this.lPM = getResources().getColor(2131690138);
+      this.pgy = getResources().getColor(2131100463);
       continue;
-      if (this.uFv.size() == 0)
+      if (this.ACB.size() == 0)
       {
         paramb = new IllegalStateException("You should set a pattern before animating.");
-        AppMethodBeat.o(51681);
+        AppMethodBeat.o(129886);
         throw paramb;
       }
-      this.uFD = false;
-      this.lPM = getResources().getColor(2131690135);
-      f localf = (f)this.uFv.get(0);
-      this.uFJ = IO(localf.uEK);
-      this.uFK = IP(localf.uEJ);
-      cYc();
-      this.uFM = SystemClock.elapsedRealtime();
+      this.ACI = false;
+      this.pgy = getResources().getColor(2131100460);
+      com.tencent.mm.plugin.walletlock.gesture.a.f localf = (com.tencent.mm.plugin.walletlock.gesture.a.f)this.ACB.get(0);
+      this.ACO = RN(localf.ABQ);
+      this.ACP = RO(localf.ABP);
+      egw();
+      this.ACQ = SystemClock.elapsedRealtime();
     }
   }
   
   public void setEnableHapticFeedback(boolean paramBoolean)
   {
-    this.uFB = paramBoolean;
+    this.ACG = paramBoolean;
   }
   
   public void setEnableInput(boolean paramBoolean)
   {
-    this.uFD = paramBoolean;
+    this.ACI = paramBoolean;
   }
   
-  public void setOnPatternListener(PatternLockView.a parama)
+  public void setOnPatternListener(a parama)
   {
-    this.uFP = parama;
+    this.ACT = parama;
+  }
+  
+  static class SavedState
+    extends View.BaseSavedState
+  {
+    public static final Parcelable.Creator<SavedState> CREATOR;
+    boolean ACG;
+    boolean ACH;
+    boolean ACI;
+    String ACZ;
+    int ADa;
+    
+    static
+    {
+      AppMethodBeat.i(129861);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(129861);
+    }
+    
+    public SavedState(Parcel paramParcel)
+    {
+      super();
+      AppMethodBeat.i(129859);
+      this.ACZ = paramParcel.readString();
+      this.ADa = paramParcel.readInt();
+      this.ACH = ((Boolean)paramParcel.readValue(null)).booleanValue();
+      this.ACI = ((Boolean)paramParcel.readValue(null)).booleanValue();
+      this.ACG = ((Boolean)paramParcel.readValue(null)).booleanValue();
+      AppMethodBeat.o(129859);
+    }
+    
+    public SavedState(Parcelable paramParcelable, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+    {
+      super();
+      this.ACZ = paramString;
+      this.ADa = paramInt;
+      this.ACH = paramBoolean1;
+      this.ACI = paramBoolean2;
+      this.ACG = paramBoolean3;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(129860);
+      super.writeToParcel(paramParcel, paramInt);
+      paramParcel.writeString(this.ACZ);
+      paramParcel.writeInt(this.ADa);
+      paramParcel.writeValue(Boolean.valueOf(this.ACH));
+      paramParcel.writeValue(Boolean.valueOf(this.ACI));
+      paramParcel.writeValue(Boolean.valueOf(this.ACG));
+      AppMethodBeat.o(129860);
+    }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(PatternLockView paramPatternLockView);
+    
+    public abstract void a(PatternLockView paramPatternLockView, List<com.tencent.mm.plugin.walletlock.gesture.a.f> paramList);
+  }
+  
+  public static enum b
+  {
+    static
+    {
+      AppMethodBeat.i(129857);
+      ACV = new b("Correct", 0);
+      ACW = new b("Wrong", 1);
+      ACX = new b("Animate", 2);
+      ACY = new b[] { ACV, ACW, ACX };
+      AppMethodBeat.o(129857);
+    }
+    
+    private b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.ui.widget.PatternLockView
  * JD-Core Version:    0.7.0.1
  */

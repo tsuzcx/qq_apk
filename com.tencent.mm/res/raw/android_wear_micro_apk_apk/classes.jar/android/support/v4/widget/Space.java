@@ -7,14 +7,17 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 
+@Deprecated
 public class Space
   extends View
 {
+  @Deprecated
   public Space(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
   }
   
+  @Deprecated
   public Space(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
@@ -23,7 +26,7 @@ public class Space
     }
   }
   
-  private static int g(int paramInt1, int paramInt2)
+  private static int h(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getMode(paramInt2);
     paramInt2 = View.MeasureSpec.getSize(paramInt2);
@@ -38,12 +41,14 @@ public class Space
     return paramInt2;
   }
   
+  @Deprecated
   @SuppressLint({"MissingSuperCall"})
   public void draw(Canvas paramCanvas) {}
   
+  @Deprecated
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    setMeasuredDimension(g(getSuggestedMinimumWidth(), paramInt1), g(getSuggestedMinimumHeight(), paramInt2));
+    setMeasuredDimension(h(getSuggestedMinimumWidth(), paramInt1), h(getSuggestedMinimumHeight(), paramInt2));
   }
 }
 

@@ -6,57 +6,67 @@ import com.tencent.mm.plugin.report.a;
 public final class bz
   extends a
 {
-  public long cZP = 0L;
-  public long cZQ = 0L;
-  public long cZR = 0L;
-  public long cZS = 0L;
-  public long cZT = 0L;
+  public long dHG;
+  public String dHL = "";
+  public String dHM = "";
+  public long dQo;
+  public String dQr = "";
+  public long dQs;
+  public long dQt;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(128641);
+    AppMethodBeat.i(184778);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cZP);
+    ((StringBuffer)localObject).append(this.dQr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cZQ);
+    ((StringBuffer)localObject).append(this.dHG);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cZR);
+    ((StringBuffer)localObject).append(this.dHL);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cZS);
+    ((StringBuffer)localObject).append(this.dHM);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cZT);
+    ((StringBuffer)localObject).append(this.dQt);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dQs);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dQo);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(128641);
+    ams((String)localObject);
+    AppMethodBeat.o(184778);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(128642);
+    AppMethodBeat.i(184779);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("AllPackageSize:").append(this.cZP);
+    ((StringBuffer)localObject).append("roomid:").append(this.dQr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AllPackageClientStoragePercent:").append(this.cZQ);
+    ((StringBuffer)localObject).append("role:").append(this.dHG);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClientStorageFreePercent:").append(this.cZR);
+    ((StringBuffer)localObject).append("appid:").append(this.dHL);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AbtestStatus:").append(this.cZS);
+    ((StringBuffer)localObject).append("appname:").append(this.dHM);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WeappCountThatHasPackage:").append(this.cZT);
+    ((StringBuffer)localObject).append("todo:").append(this.dQt);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("openHelp:").append(this.dQs);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("exit:").append(this.dQo);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(128642);
+    AppMethodBeat.o(184779);
     return localObject;
   }
   
   public final int getId()
   {
-    return 15401;
+    return 19440;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.bz
  * JD-Core Version:    0.7.0.1
  */

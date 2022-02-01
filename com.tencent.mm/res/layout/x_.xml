@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/bn4" android:layout_width="0.0dip" android:layout_height="0.0dip" />
-    <View android:id="@id/bn5" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="43.0dip" />
-    <RelativeLayout android:id="@id/bn6" android:background="@color/nf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/bn5">
-        <com.tencent.mm.plugin.sport.ui.SportChartView android:id="@id/bn7" android:background="@drawable/nj" android:layout_width="fill_parent" android:layout_height="210.0dip" android:layout_marginLeft="@dimen/n_" android:layout_marginTop="60.5dip" android:layout_marginRight="@dimen/n_" />
-        <View android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_below="@id/bn7" />
-        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/bn8" android:visibility="gone" android:layout_width="@dimen/no" android:layout_height="@dimen/nl" android:layout_marginLeft="16.0dip" android:layout_marginTop="68.5dip" app:on_color="#ff089f71" app:off_color="#ff089f71" app:slide_color="#ff76fef3" app:on_text="月" app:off_text="周" />
-    </RelativeLayout>
-    <ImageView android:id="@id/bn9" android:layout_width="@dimen/gx" android:layout_height="@dimen/gx" android:src="@drawable/ne" android:layout_below="@id/bn4" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/bn_" android:layout_width="@dimen/gz" android:layout_height="@dimen/gz" android:src="@drawable/aew" android:layout_alignBottom="@id/bn9" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="center" android:id="@id/bna" android:visibility="gone" android:layout_marginTop="@dimen/n_" android:layout_below="@id/bn_" android:layout_alignLeft="@id/bn6" android:layout_alignRight="@id/bn6" style="@style/mj" />
-</RelativeLayout>
+<LinearLayout android:orientation="horizontal" android:id="@id/cgi" android:background="@color/BW_97" android:padding="@dimen/a0b" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:id="@id/h4p" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageButton android:layout_gravity="center" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qy" />
+            <TextView android:textColor="@color/y4" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bj4" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/h4i" android:background="@null" android:paddingTop="20.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageButton android:layout_gravity="center" android:id="@id/bwd" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qt" />
+            <TextView android:textColor="@color/y4" android:layout_gravity="center" android:id="@id/bwf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bj0" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/h4n" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <ImageButton android:layout_gravity="center" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qv" />
+        <TextView android:textColor="@color/y4" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bj1" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/h4o" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <ImageButton android:layout_gravity="center" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qw" />
+        <TextView android:textColor="@color/y4" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bj2" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/dsw" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <ImageButton android:layout_gravity="center" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qx" />
+        <TextView android:textColor="@color/y4" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bj3" />
+    </LinearLayout>
+</LinearLayout>

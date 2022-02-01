@@ -1,32 +1,15 @@
 package com.tencent.mm.ui.chatting.c.b;
 
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.chatting.c.v;
-import com.tencent.mm.ui.chatting.d;
+import com.tencent.mm.ui.chatting.c.ab;
 
 public abstract interface aj
-  extends v
+  extends ab
 {
-  public abstract boolean DP();
-  
-  public abstract void a(MMFragment paramMMFragment, boolean paramBoolean);
-  
-  public abstract boolean bo(bi parambi);
-  
-  public abstract boolean bp(bi parambi);
-  
-  public abstract d dJv();
-  
-  public abstract void dJw();
-  
-  public abstract boolean dJx();
-  
-  public abstract void qY(boolean paramBoolean);
+  public abstract void eXn();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.b.aj
  * JD-Core Version:    0.7.0.1
  */

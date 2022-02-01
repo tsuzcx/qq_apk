@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:background="@drawable/a13" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d8g" android:layout_width="fill_parent" android:layout_height="@dimen/n9" style="@style/pv">
-            <TextView android:textSize="@dimen/m2" android:textColor="@color/uw" android:id="@id/d8h" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/czp" android:layout_weight="1.0" />
-            <TextView android:gravity="center|left" android:id="@id/d8j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/czr" android:drawableRight="@raw/mall_order_detail_good" android:drawablePadding="8.0dip" />
-        </LinearLayout>
-    </LinearLayout>
+    <TextView android:id="@id/ewh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/lw" />
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/lw" />
+    <CheckBox android:id="@id/fsl" android:background="@drawable/a9_" android:focusable="false" android:clickable="false" android:layout_height="20.0dip" android:singleLine="true" style="@style/lz" />
 </LinearLayout>

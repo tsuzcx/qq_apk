@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/nf" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/avh" android:background="@color/a_r" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bmp" android:background="@color/nj" android:layout_width="fill_parent" android:layout_height="@dimen/h2" />
-    <View android:id="@id/bmq" android:background="@color/nj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_below="@id/bmp" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="@dimen/h2" android:layout_alignParentLeft="true" android:layout_centerInParent="true">
-        <View android:id="@id/bmr" android:layout_width="@dimen/h0" android:layout_height="fill_parent" />
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <TextView android:textSize="14.0dip" android:textColor="@color/nh" android:id="@id/bms" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
-        </RelativeLayout>
-    </LinearLayout>
+    <include android:id="@id/avf" layout="@layout/x2" />
+    <android.support.v7.widget.RecyclerView android:scrollbarStyle="outsideOverlay" android:id="@id/avg" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/avf" android:layout_alignParentTop="true" android:windowSoftInputMode="adjustResize" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/h3m" android:background="#00000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
+        <RelativeLayout android:orientation="horizontal" android:background="#86222222" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentTop="true" />
+    </RelativeLayout>
 </RelativeLayout>

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ot
   extends b
 {
-  public a cFr;
+  public a dua;
   
   public ot()
   {
@@ -15,16 +15,26 @@ public final class ot
   
   private ot(byte paramByte)
   {
-    AppMethodBeat.i(77184);
-    this.cFr = new a();
-    this.ymq = true;
+    AppMethodBeat.i(89649);
+    this.dua = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77184);
+    AppMethodBeat.o(89649);
   }
   
   public static final class a
   {
-    public String cFs;
+    public String appId;
+    public String appName;
+    public String content;
+    public String dcC;
+    public int dcz = 0;
+    public String dub;
+    public int duc;
+    public int dud;
+    public boolean due;
+    public long msgId;
+    public int msgType;
   }
 }
 

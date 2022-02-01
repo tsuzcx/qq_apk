@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:background="@color/c" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/b3a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip">
+        <include layout="@layout/rf" />
+        <include layout="@layout/re" />
+    </LinearLayout>
+    <View android:id="@id/bdj" android:layout_marginLeft="20.0dip" android:layout_alignParentBottom="true" style="@style/hp" />
+</RelativeLayout>

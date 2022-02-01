@@ -5,37 +5,37 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public abstract class d<T, S>
 {
-  protected Queue<T> fdC = new ConcurrentLinkedQueue();
-  protected S fdD;
+  protected Queue<T> gDN = new ConcurrentLinkedQueue();
+  protected S gDO;
   
   public d(S paramS)
   {
-    this.fdD = paramS;
+    this.gDO = paramS;
   }
   
-  public final S XK()
+  public final S aoT()
   {
-    return this.fdD;
+    return this.gDO;
   }
   
   public final T pop()
   {
-    return this.fdC.poll();
+    return this.gDN.poll();
   }
   
   public final void put(T paramT)
   {
-    this.fdC.add(paramT);
+    this.gDN.add(paramT);
   }
   
   public final int size()
   {
-    return this.fdC.size();
+    return this.gDN.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.d
  * JD-Core Version:    0.7.0.1
  */

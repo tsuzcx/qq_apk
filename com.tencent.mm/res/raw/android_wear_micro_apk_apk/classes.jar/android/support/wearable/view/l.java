@@ -5,7 +5,7 @@ import android.view.animation.Interpolator;
 final class l
   implements Interpolator
 {
-  private final float Dk = 4.0F;
+  private final float EZ = 4.0F;
   
   public l()
   {
@@ -16,8 +16,8 @@ final class l
   
   public final float getInterpolation(float paramFloat)
   {
-    double d = Math.exp(2.0F * paramFloat * this.Dk);
-    return (float)((d - 1.0D) / (d + 1.0D)) * (1.0F / this.Dk);
+    double d = Math.exp(2.0F * paramFloat * this.EZ);
+    return (float)((d - 1.0D) / (d + 1.0D)) * (1.0F / this.EZ);
   }
 }
 

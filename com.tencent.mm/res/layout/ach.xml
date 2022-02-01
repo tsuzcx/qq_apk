@@ -1,3 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:id="@id/d6c" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/dnc" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_alignParentTop="true">
+        <LinearLayout android:orientation="horizontal" android:id="@id/d4" android:background="@drawable/au" android:paddingLeft="@dimen/ci" android:paddingRight="@dimen/ci" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/ar" android:contentDescription="@string/ca" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/dg" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+            <ImageView android:id="@id/df" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/c5" android:src="@raw/actionbar_icon_dark_more" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerInParent="true">
+            <com.tencent.mm.plugin.game.ui.message.TabItemView android:id="@id/g3z" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="12.0dip" app:tab_name="@string/csy" />
+            <com.tencent.mm.plugin.game.ui.message.TabItemView android:id="@id/g40" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" app:tab_name="@string/csz" />
+        </LinearLayout>
+        <View android:background="@color/BW_0_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <android.support.v4.view.ViewPager android:id="@id/dnd" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/dnc" />
+</RelativeLayout>

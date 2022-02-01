@@ -7,16 +7,16 @@ public final class d
 {
   public static void a(f paramf, String paramString)
   {
-    AppMethodBeat.i(137006);
+    AppMethodBeat.i(136754);
     paramf = new e(paramf, paramString);
-    h.DI();
+    h.Nr();
     h.a(paramf);
-    AppMethodBeat.o(137006);
+    AppMethodBeat.o(136754);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.b.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,360 @@
+package com.tencent.mm.plugin.flutter.b;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.util.Pair;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.w.d;
+import io.flutter.a.a.j;
+import io.flutter.a.a.k;
+import io.flutter.a.a.k.c;
+import io.flutter.a.a.k.d;
+import io.flutter.embedding.engine.dart.DartExecutor;
+import io.flutter.embedding.engine.dart.DartExecutor.a;
+import io.flutter.view.FlutterMain;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+import org.json.JSONObject;
+
+public final class a
+{
+  private k rdA;
+  private k.c rdB;
+  private io.flutter.embedding.engine.b.b rdC;
+  public io.flutter.embedding.engine.a rdu;
+  public com.tencent.mm.plugin.flutter.ui.a rdv;
+  private HashMap<String, com.tencent.mm.w.b> rdw;
+  HashMap<String, com.tencent.mm.w.a> rdx;
+  private HashMap<Integer, Pair<Integer, String>> rdy;
+  public AtomicInteger rdz;
+  
+  public a()
+  {
+    AppMethodBeat.i(148849);
+    this.rdw = new HashMap();
+    this.rdx = new HashMap();
+    this.rdy = new HashMap();
+    this.rdz = new AtomicInteger(0);
+    this.rdB = new k.c()
+    {
+      public final void a(j paramAnonymousj, final k.d paramAnonymousd)
+      {
+        AppMethodBeat.i(148847);
+        ad.i("MicroMsg.Flutter.FlutterEngineMgr", "onMethodCall %s", new Object[] { paramAnonymousj.method });
+        String[] arrayOfString = paramAnonymousj.method.split(":");
+        final com.tencent.mm.w.c localc = new com.tencent.mm.w.c();
+        if (a.this.rdv != null) {
+          localc.context = a.this.rdv.getActivity();
+        }
+        localc.fTN = arrayOfString[0];
+        localc.fTO = arrayOfString[1];
+        localc.fTP = paramAnonymousj.fTP;
+        localc.callback = new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(148846);
+            if (localc.result != null)
+            {
+              ad.i("MicroMsg.Flutter.FlutterEngineMgr", "onMethodCallback, %s", new Object[] { localc.fTO });
+              paramAnonymousd.ay(localc.result);
+              AppMethodBeat.o(148846);
+              return;
+            }
+            ad.i("MicroMsg.Flutter.FlutterEngineMgr", "onMethodCallback, %s null", new Object[] { localc.fTO });
+            paramAnonymousd.ay(null);
+            AppMethodBeat.o(148846);
+          }
+        };
+        if (a.this.rdx.containsKey(localc.fTN)) {
+          try
+          {
+            ((com.tencent.mm.w.a)a.this.rdx.get(localc.fTN)).a(localc);
+            AppMethodBeat.o(148847);
+            return;
+          }
+          catch (com.tencent.mm.w.e paramAnonymousj)
+          {
+            ad.printErrStackTrace("MicroMsg.Flutter.FlutterEngineMgr", paramAnonymousj, "", new Object[0]);
+          }
+        }
+        AppMethodBeat.o(148847);
+      }
+    };
+    this.rdC = new io.flutter.embedding.engine.b.b()
+    {
+      public final void onFirstFrameRendered()
+      {
+        AppMethodBeat.i(148848);
+        ad.i("MicroMsg.Flutter.FlutterEngineMgr", "onFirstFrameRendered");
+        if (a.this.rdv != null) {
+          a.this.rdv.cuM();
+        }
+        AppMethodBeat.o(148848);
+      }
+    };
+    AppMethodBeat.o(148849);
+  }
+  
+  private static JSONObject Z(Bundle paramBundle)
+  {
+    AppMethodBeat.i(148854);
+    JSONObject localJSONObject = new JSONObject();
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      try
+      {
+        localJSONObject.put(str, paramBundle.get(str));
+      }
+      catch (Exception localException) {}
+    }
+    AppMethodBeat.o(148854);
+    return localJSONObject;
+  }
+  
+  public final boolean a(com.tencent.mm.plugin.flutter.a.c paramc, String paramString)
+  {
+    int i = 0;
+    AppMethodBeat.i(148850);
+    int j;
+    if (this.rdu == null)
+    {
+      ad.i("MicroMsg.Flutter.FlutterEngineMgr", "InitRoute %s ", new Object[] { paramc });
+      this.rdu = new io.flutter.embedding.engine.a(aj.getContext());
+      paramc.rdt = true;
+      this.rdu.IYk.setInitialRoute(paramc.aOj());
+      System.loadLibrary("wechatlv");
+      paramc = this.rdu.IYe;
+      aj.getContext().getAssets();
+      paramc.a(new DartExecutor.a(FlutterMain.findAppBundlePath(aj.getContext()), paramString, (byte)0));
+      this.rdu.IXd.addOnFirstFrameRenderedListener(this.rdC);
+      io.flutter.b.a.registerWith(new com.tencent.mm.b(this.rdu, aj.getContext()));
+      this.rdA = new k(this.rdu.IYe, "com.tencent.mm.flutter.mmnative");
+      this.rdA.a(this.rdB);
+      this.rdx.clear();
+      paramc = d.fTQ.iterator();
+      while (paramc.hasNext())
+      {
+        paramString = (Class)paramc.next();
+        try
+        {
+          paramString = (com.tencent.mm.w.a)paramString.newInstance();
+          paramString.create();
+          this.rdx.put(paramString.acK(), paramString);
+        }
+        catch (Exception paramString) {}
+      }
+      this.rdw.clear();
+      paramc = com.tencent.mm.w.a.b.c.fTR;
+      j = paramc.length;
+    }
+    for (;;)
+    {
+      if (i < j) {
+        paramString = paramc[i];
+      }
+      try
+      {
+        com.tencent.mm.w.b localb = (com.tencent.mm.w.b)paramString.newInstance();
+        localb.fTJ = this.rdA;
+        this.rdw.put(paramString.getName(), localb);
+        label287:
+        i += 1;
+        continue;
+        this.rdy.clear();
+        for (boolean bool = true;; bool = false)
+        {
+          AppMethodBeat.o(148850);
+          return bool;
+          ad.i("MicroMsg.Flutter.FlutterEngineMgr", "Push Route %s", new Object[] { paramc });
+          this.rdu.IYk.aPN(paramc.aOj());
+        }
+      }
+      catch (Exception paramString)
+      {
+        break label287;
+      }
+    }
+  }
+  
+  public final <T> T aN(Class<T> paramClass)
+  {
+    AppMethodBeat.i(148855);
+    if (this.rdw.containsKey(paramClass.getName()))
+    {
+      paramClass = this.rdw.get(paramClass.getName());
+      AppMethodBeat.o(148855);
+      return paramClass;
+    }
+    try
+    {
+      paramClass = paramClass.newInstance();
+      AppMethodBeat.o(148855);
+      return paramClass;
+    }
+    catch (Exception paramClass)
+    {
+      AppMethodBeat.o(148855);
+    }
+    return null;
+  }
+  
+  public final void cuK()
+  {
+    AppMethodBeat.i(148852);
+    this.rdu.IYk.cuK();
+    AppMethodBeat.o(148852);
+  }
+  
+  public final int de(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(148856);
+    int i = (Math.abs(paramString.hashCode()) | paramInt) >> 16;
+    this.rdy.put(Integer.valueOf(i), Pair.create(Integer.valueOf(paramInt), paramString));
+    ad.i("MicroMsg.Flutter.FlutterEngineMgr", "getRealRequestCode %s %d %d", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(i) });
+    AppMethodBeat.o(148856);
+    return i;
+  }
+  
+  /* Error */
+  public final boolean onActivityResult(int paramInt1, int paramInt2, android.content.Intent paramIntent)
+  {
+    // Byte code:
+    //   0: ldc_w 306
+    //   3: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 49	com/tencent/mm/plugin/flutter/b/a:rdy	Ljava/util/HashMap;
+    //   10: iload_1
+    //   11: invokestatic 296	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   14: invokevirtual 271	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   17: checkcast 298	android/util/Pair
+    //   20: astore 6
+    //   22: aload 6
+    //   24: ifnull +139 -> 163
+    //   27: ldc 114
+    //   29: ldc_w 308
+    //   32: iconst_3
+    //   33: anewarray 4	java/lang/Object
+    //   36: dup
+    //   37: iconst_0
+    //   38: aload 6
+    //   40: getfield 312	android/util/Pair:second	Ljava/lang/Object;
+    //   43: aastore
+    //   44: dup
+    //   45: iconst_1
+    //   46: aload 6
+    //   48: getfield 315	android/util/Pair:first	Ljava/lang/Object;
+    //   51: aastore
+    //   52: dup
+    //   53: iconst_2
+    //   54: iload_2
+    //   55: invokestatic 296	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   58: aastore
+    //   59: invokestatic 121	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   62: aload_0
+    //   63: ldc_w 317
+    //   66: invokevirtual 319	com/tencent/mm/plugin/flutter/b/a:aN	(Ljava/lang/Class;)Ljava/lang/Object;
+    //   69: checkcast 317	com/tencent/mm/w/a/b/a
+    //   72: astore 4
+    //   74: aload 6
+    //   76: getfield 312	android/util/Pair:second	Ljava/lang/Object;
+    //   79: checkcast 99	java/lang/String
+    //   82: astore 5
+    //   84: aload 6
+    //   86: getfield 315	android/util/Pair:first	Ljava/lang/Object;
+    //   89: checkcast 292	java/lang/Integer
+    //   92: invokevirtual 322	java/lang/Integer:intValue	()I
+    //   95: istore_1
+    //   96: aload_3
+    //   97: invokevirtual 328	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   100: invokestatic 330	com/tencent/mm/plugin/flutter/b/a:Z	(Landroid/os/Bundle;)Lorg/json/JSONObject;
+    //   103: astore 6
+    //   105: new 74	org/json/JSONObject
+    //   108: dup
+    //   109: invokespecial 75	org/json/JSONObject:<init>	()V
+    //   112: astore_3
+    //   113: aload_3
+    //   114: ldc_w 332
+    //   117: aload 5
+    //   119: invokevirtual 107	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   122: pop
+    //   123: aload_3
+    //   124: ldc_w 334
+    //   127: iload_1
+    //   128: invokevirtual 337	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   131: pop
+    //   132: aload_3
+    //   133: ldc_w 339
+    //   136: iload_2
+    //   137: invokevirtual 337	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   140: pop
+    //   141: aload_3
+    //   142: ldc_w 341
+    //   145: aload 6
+    //   147: invokevirtual 107	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   150: pop
+    //   151: aload 4
+    //   153: ldc_w 342
+    //   156: aload_3
+    //   157: invokevirtual 345	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   160: invokevirtual 349	com/tencent/mm/w/a/b/a:f	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   163: ldc_w 306
+    //   166: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   169: iconst_0
+    //   170: ireturn
+    //   171: astore_3
+    //   172: goto -9 -> 163
+    //   175: astore 5
+    //   177: goto -26 -> 151
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	180	0	this	a
+    //   0	180	1	paramInt1	int
+    //   0	180	2	paramInt2	int
+    //   0	180	3	paramIntent	android.content.Intent
+    //   72	80	4	locala	com.tencent.mm.w.a.b.a
+    //   82	36	5	str	String
+    //   175	1	5	localException	Exception
+    //   20	126	6	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   6	22	171	java/lang/Exception
+    //   27	113	171	java/lang/Exception
+    //   151	163	171	java/lang/Exception
+    //   113	151	175	java/lang/Exception
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(148851);
+    if (this.rdz.decrementAndGet() <= 0)
+    {
+      Iterator localIterator = this.rdx.values().iterator();
+      while (localIterator.hasNext()) {
+        ((com.tencent.mm.w.a)localIterator.next()).destroy();
+      }
+      this.rdy.clear();
+      this.rdx.clear();
+      this.rdw.clear();
+      if (this.rdu != null) {
+        this.rdu.destroy();
+      }
+      this.rdu = null;
+      this.rdA = null;
+    }
+    AppMethodBeat.o(148851);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+ * Qualified Name:     com.tencent.mm.plugin.flutter.b.a
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,12 +1,29 @@
 package com.tencent.mm.cache;
 
-public abstract interface f
+import android.graphics.Canvas;
+
+public abstract interface f<T>
+  extends Cloneable
 {
-  public abstract void d(Object paramObject1, Object paramObject2);
+  public abstract void Mj();
   
-  public abstract Object get(Object paramObject);
+  public abstract void Ut();
   
-  public abstract Object remove(Object paramObject);
+  public abstract void a(Canvas paramCanvas, boolean paramBoolean);
+  
+  public abstract void add(T paramT);
+  
+  public abstract int aj(boolean paramBoolean);
+  
+  public abstract void cA(boolean paramBoolean);
+  
+  public abstract void e(Canvas paramCanvas);
+  
+  public abstract void onCreate();
+  
+  public abstract void onDestroy();
+  
+  public abstract T pop();
 }
 
 

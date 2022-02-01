@@ -10,24 +10,24 @@ final class zzzl
   
   static
   {
-    AppMethodBeat.i(3571);
+    AppMethodBeat.i(40361);
     zzbrq = new zzzk();
     zzbrr = zztf();
-    AppMethodBeat.o(3571);
+    AppMethodBeat.o(40361);
   }
   
   private static zzzj<?> zztf()
   {
-    AppMethodBeat.i(3569);
+    AppMethodBeat.i(40359);
     try
     {
       zzzj localzzzj = (zzzj)Class.forName("com.google.protobuf.ExtensionSchemaFull").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      AppMethodBeat.o(3569);
+      AppMethodBeat.o(40359);
       return localzzzj;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(3569);
+      AppMethodBeat.o(40359);
     }
     return null;
   }
@@ -39,21 +39,21 @@ final class zzzl
   
   static zzzj<?> zzth()
   {
-    AppMethodBeat.i(3570);
+    AppMethodBeat.i(40360);
     if (zzbrr == null)
     {
       localObject = new IllegalStateException("Protobuf runtime is not correctly loaded.");
-      AppMethodBeat.o(3570);
+      AppMethodBeat.o(40360);
       throw ((Throwable)localObject);
     }
     Object localObject = zzbrr;
-    AppMethodBeat.o(3570);
+    AppMethodBeat.o(40360);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzzl
  * JD-Core Version:    0.7.0.1
  */

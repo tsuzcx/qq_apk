@@ -1,131 +1,166 @@
 package com.tencent.mm.plugin.subapp.jdbiz;
 
+import android.content.Context;
+import android.os.Bundle;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bz.a;
-import com.tencent.mm.platformtools.aa;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.al.f.c;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.mp;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.cc.a;
+import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import java.util.Map;
 
 public final class a
-  implements bz.a
+  implements cc.a
 {
-  com.tencent.mm.sdk.b.c sWx;
+  com.tencent.mm.sdk.b.c yCk;
   
   public a()
   {
-    AppMethodBeat.i(25190);
-    this.sWx = new a.1(this);
-    AppMethodBeat.o(25190);
+    AppMethodBeat.i(28865);
+    this.yCk = new com.tencent.mm.sdk.b.c() {};
+    AppMethodBeat.o(28865);
   }
   
-  public final void a(e.a parama)
+  public final void a(final f.a parama)
   {
     boolean bool = false;
-    AppMethodBeat.i(25191);
-    ab.i("MicroMsg.JDSysMsgNotifyLsn", "receivemsg jd");
-    Object localObject = parama.eyJ;
+    AppMethodBeat.i(28866);
+    ad.i("MicroMsg.JDSysMsgNotifyLsn", "receivemsg jd");
+    Object localObject = parama.fTo;
     if (localObject == null)
     {
-      ab.e("MicroMsg.JDSysMsgNotifyLsn", "onPreAddMessage cmdAM is null");
-      AppMethodBeat.o(25191);
+      ad.e("MicroMsg.JDSysMsgNotifyLsn", "onPreAddMessage cmdAM is null");
+      AppMethodBeat.o(28866);
       return;
     }
     parama = new c();
-    parama.abg(aa.a(((cm)localObject).woR));
-    ab.i("MicroMsg.JDSysMsgNotifyLsn", "bizType " + bo.bf(parama.sWA, ""));
-    if (bo.isNullOrNil(parama.sWA)) {
-      ab.e("MicroMsg.JDSysMsgNotifyLsn", "bizTye is null or nil");
+    parama.apq(z.a(((cs)localObject).Cxz));
+    ad.i("MicroMsg.JDSysMsgNotifyLsn", "bizType " + bt.by(parama.yCn, ""));
+    if (bt.isNullOrNil(parama.yCn)) {
+      ad.e("MicroMsg.JDSysMsgNotifyLsn", "bizTye is null or nil");
     }
     for (;;)
     {
-      aw.aaz();
-      com.tencent.mm.model.c.Ru().dww();
-      AppMethodBeat.o(25191);
+      az.arV();
+      com.tencent.mm.model.c.afk().eKy();
+      AppMethodBeat.o(28866);
       return;
-      if (bo.isNullOrNil(parama.sWB))
+      if (bt.isNullOrNil(parama.yCo))
       {
-        ab.e("MicroMsg.JDSysMsgNotifyLsn", "activity id is null");
+        ad.e("MicroMsg.JDSysMsgNotifyLsn", "activity id is null");
       }
-      else if (!parama.a(d.cGE().cGJ()))
+      else if (!parama.a(d.dLT().dLY()))
       {
-        ab.i("MicroMsg.JDSysMsgNotifyLsn", "fo zu baoyou! the activityid is same");
+        ad.i("MicroMsg.JDSysMsgNotifyLsn", "fo zu baoyou! the activityid is same");
       }
-      else if (!d.cGE().cGM())
+      else if (!d.dLT().dMb())
       {
-        ab.e("MicroMsg.JDSysMsgNotifyLsn", "no config entrance, ignore msg");
+        ad.e("MicroMsg.JDSysMsgNotifyLsn", "no config entrance, ignore msg");
       }
       else
       {
-        if (parama.sWA.equals("3"))
+        if (parama.yCn.equals("3"))
         {
-          ((cm)localObject).woV = null;
-          if ((bo.isNullOrNil(parama.sWL)) || (bo.isNullOrNil(parama.jumpUrl)) || (bo.isNullOrNil(parama.sWM)) || (bo.isNullOrNil(parama.sWN)) || (bo.isNullOrNil(parama.sWK))) {
-            ab.e("MicroMsg.JDSysMsgNotifyLsn", "invalid params");
+          ((cs)localObject).CxD = null;
+          if ((bt.isNullOrNil(parama.yCy)) || (bt.isNullOrNil(parama.jumpUrl)) || (bt.isNullOrNil(parama.yCz)) || (bt.isNullOrNil(parama.yCA)) || (bt.isNullOrNil(parama.yCx))) {
+            ad.e("MicroMsg.JDSysMsgNotifyLsn", "invalid params");
           }
           for (;;)
           {
             d.b(parama);
             break;
-            if (parama.bzK())
+            if (parama.cva())
             {
-              ab.i("MicroMsg.JDSysMsgNotifyLsn", "ingore msg due to msg is expired");
+              ad.i("MicroMsg.JDSysMsgNotifyLsn", "ingore msg due to msg is expired");
             }
             else
             {
-              localObject = d.cGE();
-              String str = parama.sWB;
-              if (bo.isNullOrNil(str)) {}
+              localObject = d.dLT();
+              String str = parama.yCo;
+              if (bt.isNullOrNil(str)) {}
               for (;;)
               {
                 if (!bool) {
                   break label344;
                 }
-                ab.i("MicroMsg.JDSysMsgNotifyLsn", "activity id already show, " + parama.sWB);
+                ad.i("MicroMsg.JDSysMsgNotifyLsn", "activity id already show, " + parama.yCo);
                 break;
-                bool = ((d)localObject).sWT.containsKey(str);
+                bool = ((d)localObject).yCG.containsKey(str);
               }
               label344:
-              if (!parama.a(d.cGE().cGJ()))
+              if (!parama.a(d.dLT().dLY()))
               {
-                ab.i("MicroMsg.JDSysMsgNotifyLsn", "the remind activitid is same");
+                ad.i("MicroMsg.JDSysMsgNotifyLsn", "the remind activitid is same");
               }
               else
               {
-                localObject = d.cGE();
-                str = parama.sWB;
-                if (!bo.isNullOrNil(str)) {
-                  ((d)localObject).sWT.put(str, Integer.valueOf(1));
+                localObject = d.dLT();
+                str = parama.yCo;
+                if (!bt.isNullOrNil(str)) {
+                  ((d)localObject).yCG.put(str, Integer.valueOf(1));
                 }
-                ab.i("MicroMsg.JDSysMsgNotifyLsn", "add activity id" + parama.sWB);
-                new ak(Looper.getMainLooper()).post(new a.2(this, parama));
+                ad.i("MicroMsg.JDSysMsgNotifyLsn", "add activity id" + parama.yCo);
+                new ap(Looper.getMainLooper()).post(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(28864);
+                    Object localObject = a.this;
+                    c localc = parama;
+                    az.arV();
+                    int i = ((Integer)com.tencent.mm.model.c.afk().get(15, Integer.valueOf(0))).intValue();
+                    if ((az.aeS().foreground) && (1 == i))
+                    {
+                      localObject = d.eH(localc.jumpUrl, 5);
+                      JDRemindDialog.a(aj.getContext(), localc.yCy, localc.yCz, localc.yCA, (String)localObject, localc.yCo);
+                      h.vKh.f(11178, new Object[] { localObject, d.dLT().dLY().yCo, Integer.valueOf(5) });
+                      AppMethodBeat.o(28864);
+                      return;
+                    }
+                    String str = d.eH(localc.jumpUrl, 4);
+                    Bundle localBundle = new Bundle();
+                    localBundle.putString("activity_id", localc.yCo);
+                    localBundle.putString("jump_url", str);
+                    ((at)az.getNotification()).a(37, aj.getContext().getString(2131755866), localc.yCx, str, "bizjd", localBundle);
+                    com.tencent.mm.sdk.b.a.ESL.c(((a)localObject).yCk);
+                    h.vKh.f(11178, new Object[] { str, d.dLT().dLY().yCo, Integer.valueOf(4) });
+                    AppMethodBeat.o(28864);
+                  }
+                });
               }
             }
           }
         }
-        if (parama.sWA.equals("1"))
+        if (parama.yCn.equals("1"))
         {
           d.b(parama);
         }
-        else if (parama.sWA.equals("2"))
+        else if (parama.yCn.equals("2"))
         {
           d.b(parama);
-          h.qsU.e(11178, new Object[] { parama.jumpUrl, parama.sWB, Integer.valueOf(3) });
+          h.vKh.f(11178, new Object[] { parama.jumpUrl, parama.yCo, Integer.valueOf(3) });
         }
       }
     }
   }
+  
+  public final void a(f.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.jdbiz.a
  * JD-Core Version:    0.7.0.1
  */

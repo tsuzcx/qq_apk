@@ -11,18 +11,18 @@ final class VideoSurfaceView$3
   
   public final void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    AppMethodBeat.i(70442);
-    if (VideoSurfaceView.e(this.wfS) != null)
+    AppMethodBeat.i(116296);
+    if (VideoSurfaceView.e(this.CnL) != null)
     {
-      VideoSurfaceView.e(this.wfS).dP(VideoSurfaceView.g(this.wfS).getCurrentPosition(), VideoSurfaceView.g(this.wfS).getDuration());
-      VideoSurfaceView.e(this.wfS).Es();
+      VideoSurfaceView.e(this.CnL).eM(VideoSurfaceView.g(this.CnL).getCurrentPosition(), VideoSurfaceView.g(this.CnL).getDuration());
+      VideoSurfaceView.e(this.CnL).onCompletion();
     }
-    AppMethodBeat.o(70442);
+    AppMethodBeat.o(116296);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.VideoSurfaceView.3
  * JD-Core Version:    0.7.0.1
  */

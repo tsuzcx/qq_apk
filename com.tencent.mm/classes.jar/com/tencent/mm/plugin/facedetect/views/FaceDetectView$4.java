@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.facedetect.views;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class FaceDetectView$4
   implements c
 {
   public FaceDetectView$4(FaceDetectView paramFaceDetectView, c paramc) {}
   
-  public final void vO(int paramInt)
+  public final void Cg(int paramInt)
   {
-    AppMethodBeat.i(623);
-    ab.i("MicroMsg.FaceDetectView", "hy: camera preview init done : %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(104143);
+    ad.i("MicroMsg.FaceDetectView", "hy: camera preview init done : %d", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt == 0)
     {
-      FaceDetectView.a(this.mpb, false);
-      FaceDetectView.h(this.mpb);
+      FaceDetectView.a(this.pVK, false);
+      FaceDetectView.h(this.pVK);
     }
-    if (this.mpe != null) {
-      this.mpe.vO(paramInt);
+    if (this.pVN != null) {
+      this.pVN.Cg(paramInt);
     }
-    AppMethodBeat.o(623);
+    AppMethodBeat.o(104143);
   }
 }
 

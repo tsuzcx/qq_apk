@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
-import a.f.b.j;
-import a.l;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,81 +8,83 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.CommonVideoView;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendVideoUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "videoUrl", "", "getVideoUrl", "()Ljava/lang/String;", "setVideoUrl", "(Ljava/lang/String;)V", "videoView", "Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;", "finish", "", "getLayoutId", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPause", "Companion", "plugin-appbrand-integration_release"})
 @a(19)
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendVideoUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "videoUrl", "", "getVideoUrl", "()Ljava/lang/String;", "setVideoUrl", "(Ljava/lang/String;)V", "videoView", "Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;", "finish", "", "getLayoutId", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onPause", "Companion", "plugin-appbrand-integration_release"})
 public final class AppBrandRecommendVideoUI
   extends MMActivity
 {
-  public static final AppBrandRecommendVideoUI.a iXe;
-  private CommonVideoView iXd;
+  public static final a lLr;
+  private CommonVideoView lLq;
   public String videoUrl;
   
   static
   {
-    AppMethodBeat.i(135211);
-    iXe = new AppBrandRecommendVideoUI.a((byte)0);
-    AppMethodBeat.o(135211);
+    AppMethodBeat.i(51387);
+    lLr = new a((byte)0);
+    AppMethodBeat.o(51387);
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(135209);
-    CommonVideoView localCommonVideoView = this.iXd;
+    AppMethodBeat.i(51385);
+    CommonVideoView localCommonVideoView = this.lLq;
     if (localCommonVideoView == null) {
-      j.ays("videoView");
+      k.aPZ("videoView");
     }
     if (localCommonVideoView.isPlaying())
     {
-      localCommonVideoView = this.iXd;
+      localCommonVideoView = this.lLq;
       if (localCommonVideoView == null) {
-        j.ays("videoView");
+        k.aPZ("videoView");
       }
       localCommonVideoView.pause();
     }
     super.finish();
-    AppMethodBeat.o(135209);
+    AppMethodBeat.o(51385);
   }
   
   public final int getLayoutId()
   {
-    return 2130968730;
+    return 2131493049;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(135208);
+    AppMethodBeat.i(51384);
     super.onCreate(paramBundle);
     hideTitleView();
     getWindow().setFlags(1024, 1024);
-    paramBundle = findViewById(2131821373);
-    j.p(paramBundle, "findViewById(R.id.app_brand_recommend_player)");
-    this.iXd = ((CommonVideoView)paramBundle);
+    paramBundle = findViewById(2131296817);
+    k.g(paramBundle, "findViewById(R.id.app_brand_recommend_player)");
+    this.lLq = ((CommonVideoView)paramBundle);
     paramBundle = getIntent().getStringExtra("1");
-    j.p(paramBundle, "intent.getStringExtra(KEY_VIDEO_URL)");
+    k.g(paramBundle, "intent.getStringExtra(KEY_VIDEO_URL)");
     this.videoUrl = paramBundle;
-    paramBundle = this.iXd;
+    paramBundle = this.lLq;
     if (paramBundle == null) {
-      j.ays("videoView");
+      k.aPZ("videoView");
     }
     String str = this.videoUrl;
     if (str == null) {
-      j.ays("videoUrl");
+      k.aPZ("videoUrl");
     }
     paramBundle.c(true, str, 1000);
-    paramBundle = this.iXd;
+    paramBundle = this.lLq;
     if (paramBundle == null) {
-      j.ays("videoView");
+      k.aPZ("videoView");
     }
     paramBundle.start();
-    AppMethodBeat.o(135208);
+    AppMethodBeat.o(51384);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(135210);
+    AppMethodBeat.i(51386);
     super.onPause();
-    AppMethodBeat.o(135210);
+    AppMethodBeat.o(51386);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -92,10 +92,13 @@ public final class AppBrandRecommendVideoUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendVideoUI$Companion;", "", "()V", "KEY_VIDEO_URL", "", "plugin-appbrand-integration_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.AppBrandRecommendVideoUI
  * JD-Core Version:    0.7.0.1
  */

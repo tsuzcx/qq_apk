@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="layout" name="brg">false</item>
+    <item type="layout" name="bs0">false</item>
+    <item type="layout" name="bs6">false</item>
+    <item type="layout" name="bsj">false</item>
+    <item type="layout" name="bsk">false</item>
+    <item type="layout" name="bsr">false</item>
+</resources>

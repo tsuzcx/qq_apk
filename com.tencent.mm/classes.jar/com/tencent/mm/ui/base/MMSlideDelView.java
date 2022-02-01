@@ -14,76 +14,74 @@ import android.view.ViewParent;
 import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.MMActivity;
-import java.util.HashSet;
-import java.util.Set;
 
 public class MMSlideDelView
   extends ViewGroup
 {
-  private boolean bTy;
-  private MMSlideDelView.g jSb;
-  private MMSlideDelView.c jSc;
-  private d jSe;
-  private boolean kke;
-  private int lxQ;
-  private ak mHandler;
+  private boolean FZG;
+  private b FZH;
+  private Runnable FZI;
+  private long FZJ;
+  private boolean FZK;
+  private a FZL;
+  private e FZM;
+  private boolean cEP;
+  private ap mHandler;
   private float mLastMotionX;
   private float mLastMotionY;
+  private MMSlideDelView.g mRk;
+  private MMSlideDelView.c mRl;
+  private MMSlideDelView.d mRn;
   private final Scroller mScroller;
   private final int mTouchSlop;
   private VelocityTracker mVelocityTracker;
+  private boolean nph;
+  private int rZ;
   long time;
-  private boolean zmd;
-  private MMSlideDelView.b zme;
-  private Runnable zmf;
-  private long zmg;
-  private boolean zmh;
-  private MMSlideDelView.a zmi;
-  private e zmj;
   
   public MMSlideDelView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(106778);
-    this.kke = false;
-    this.zmd = false;
-    this.bTy = true;
-    this.zmh = false;
-    this.zmi = null;
-    this.mHandler = new ak();
+    AppMethodBeat.i(142135);
+    this.nph = false;
+    this.FZG = false;
+    this.cEP = true;
+    this.FZK = false;
+    this.FZL = null;
+    this.mHandler = new ap();
     this.mScroller = new Scroller(paramContext, new LinearInterpolator());
     this.mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.zmg = ViewConfiguration.getLongPressTimeout();
-    AppMethodBeat.o(106778);
+    this.FZJ = ViewConfiguration.getLongPressTimeout();
+    AppMethodBeat.o(142135);
   }
   
-  private void dEg()
+  private void eSU()
   {
-    AppMethodBeat.i(106785);
+    AppMethodBeat.i(142142);
     if (this.mHandler != null) {
-      this.mHandler.removeCallbacks(this.zme);
+      this.mHandler.removeCallbacks(this.FZH);
     }
-    AppMethodBeat.o(106785);
+    AppMethodBeat.o(142142);
   }
   
-  private void dEh()
+  private void eSV()
   {
-    AppMethodBeat.i(106786);
+    AppMethodBeat.i(142143);
     setPressed(false);
-    if (this.zmd)
+    if (this.FZG)
     {
-      dEk();
-      AppMethodBeat.o(106786);
+      eSY();
+      AppMethodBeat.o(142143);
       return;
     }
     VelocityTracker localVelocityTracker = this.mVelocityTracker;
     localVelocityTracker.computeCurrentVelocity(1000);
     int i = (int)localVelocityTracker.getXVelocity();
     if (i < -600) {
-      dEi();
+      eSW();
     }
     for (;;)
     {
@@ -92,79 +90,79 @@ public class MMSlideDelView
         this.mVelocityTracker.recycle();
         this.mVelocityTracker = null;
       }
-      this.kke = false;
-      gH(false);
-      AppMethodBeat.o(106786);
+      this.nph = false;
+      jF(false);
+      AppMethodBeat.o(142143);
       return;
       if (i > 600) {
-        dEk();
+        eSY();
       } else {
-        dEl();
+        eSZ();
       }
     }
   }
   
-  private void dEi()
+  private void eSW()
   {
-    AppMethodBeat.i(106788);
+    AppMethodBeat.i(142145);
     int i = getScrollX();
     int j = getChildAt(1).getWidth();
-    this.jSe.a(this, true);
-    this.zmd = true;
+    this.mRn.a(this, true);
+    this.FZG = true;
     this.mScroller.startScroll(i, 0, j - i, 0, 100);
     invalidate();
-    AppMethodBeat.o(106788);
+    AppMethodBeat.o(142145);
   }
   
-  private void dEl()
+  private void eSZ()
   {
-    AppMethodBeat.i(106791);
+    AppMethodBeat.i(142148);
     int i = getScrollX();
     int j = getChildAt(1).getWidth();
     if (i > j / 2)
     {
-      this.jSe.a(this, true);
-      this.zmd = true;
+      this.mRn.a(this, true);
+      this.FZG = true;
       this.mScroller.startScroll(i, 0, j - i, 0, 100);
     }
     for (;;)
     {
       invalidate();
-      AppMethodBeat.o(106791);
+      AppMethodBeat.o(142148);
       return;
-      this.zmd = false;
-      this.jSe.a(this, false);
+      this.FZG = false;
+      this.mRn.a(this, false);
       this.mScroller.startScroll(i, 0, -i, 0, 100);
     }
   }
   
-  private void gH(boolean paramBoolean)
+  public static MMSlideDelView.d getItemStatusCallBack()
   {
-    AppMethodBeat.i(106787);
+    AppMethodBeat.i(142134);
+    MMSlideDelView.1 local1 = new MMSlideDelView.1();
+    AppMethodBeat.o(142134);
+    return local1;
+  }
+  
+  private void jF(boolean paramBoolean)
+  {
+    AppMethodBeat.i(142144);
     ViewParent localViewParent = getParent();
     if (localViewParent != null) {
       localViewParent.requestDisallowInterceptTouchEvent(paramBoolean);
     }
-    AppMethodBeat.o(106787);
+    AppMethodBeat.o(142144);
   }
   
-  public static d getItemStatusCallBack()
+  private void mL()
   {
-    AppMethodBeat.i(106777);
-    MMSlideDelView.1 local1 = new MMSlideDelView.1();
-    AppMethodBeat.o(106777);
-    return local1;
-  }
-  
-  private void ld()
-  {
-    AppMethodBeat.i(106783);
+    AppMethodBeat.i(142140);
     if (this.mVelocityTracker != null)
     {
       this.mVelocityTracker.clear();
       this.mVelocityTracker = null;
     }
-    AppMethodBeat.o(106783);
+    AppMethodBeat.o(142140);
   }
   
   public void buildDrawingCache() {}
@@ -173,34 +171,34 @@ public class MMSlideDelView
   
   public void computeScroll()
   {
-    AppMethodBeat.i(106792);
+    AppMethodBeat.i(142149);
     if (this.mScroller.computeScrollOffset())
     {
       scrollTo(this.mScroller.getCurrX(), this.mScroller.getCurrY());
       postInvalidate();
     }
-    AppMethodBeat.o(106792);
+    AppMethodBeat.o(142149);
   }
   
-  public final void dEj()
+  public final void eSX()
   {
-    AppMethodBeat.i(106789);
-    this.jSe.a(this, false);
-    this.zmd = false;
+    AppMethodBeat.i(142146);
+    this.mRn.a(this, false);
+    this.FZG = false;
     scrollTo(0, 0);
     invalidate();
-    AppMethodBeat.o(106789);
+    AppMethodBeat.o(142146);
   }
   
-  public final void dEk()
+  public final void eSY()
   {
-    AppMethodBeat.i(106790);
+    AppMethodBeat.i(142147);
     int i = getScrollX();
-    this.jSe.a(this, false);
-    this.zmd = false;
+    this.mRn.a(this, false);
+    this.FZG = false;
     this.mScroller.startScroll(i, 0, -i, 0, 100);
     invalidate();
-    AppMethodBeat.o(106790);
+    AppMethodBeat.o(142147);
   }
   
   public Bitmap getDrawingCache()
@@ -215,10 +213,10 @@ public class MMSlideDelView
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(106779);
+    AppMethodBeat.i(142136);
     if (getChildCount() < 2)
     {
-      AppMethodBeat.o(106779);
+      AppMethodBeat.o(142136);
       return;
     }
     int j = getChildCount();
@@ -236,15 +234,15 @@ public class MMSlideDelView
       }
       paramInt1 += 1;
     }
-    AppMethodBeat.o(106779);
+    AppMethodBeat.o(142136);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106780);
+    AppMethodBeat.i(142137);
     if (getChildCount() < 2)
     {
-      AppMethodBeat.o(106780);
+      AppMethodBeat.o(142137);
       return;
     }
     int k = View.MeasureSpec.getSize(paramInt1);
@@ -267,7 +265,7 @@ public class MMSlideDelView
         label113:
         i = Math.max(j, localView.getMeasuredHeight());
         setMeasuredDimension(resolveSize(k, paramInt1), resolveSize(i, paramInt2));
-        AppMethodBeat.o(106780);
+        AppMethodBeat.o(142137);
         return;
       }
       catch (ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException2)
@@ -283,28 +281,28 @@ public class MMSlideDelView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(106782);
-    if (!this.bTy)
+    AppMethodBeat.i(142139);
+    if (!this.cEP)
     {
-      AppMethodBeat.o(106782);
+      AppMethodBeat.o(142139);
       return false;
     }
     int i = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    if ((this.jSe.bKj()) && (!this.zmd))
+    if ((this.mRn.cIf()) && (!this.FZG))
     {
-      ab.v("MicroMsg.MMSlideDelView", "onTouchEvent a menu has been shown, skip");
-      this.zmh = false;
-      this.jSe.bKk();
+      ad.v("MicroMsg.MMSlideDelView", "onTouchEvent a menu has been shown, skip");
+      this.FZK = false;
+      this.mRn.cIg();
     }
     if (this.mVelocityTracker == null) {
       this.mVelocityTracker = VelocityTracker.obtain();
     }
     this.mVelocityTracker.addMovement(paramMotionEvent);
-    if (this.zmh)
+    if (this.FZK)
     {
-      AppMethodBeat.o(106782);
+      AppMethodBeat.o(142139);
       return false;
     }
     int j;
@@ -313,42 +311,42 @@ public class MMSlideDelView
     {
     default: 
       if (this.mHandler != null) {
-        this.mHandler.removeCallbacks(this.zmi);
+        this.mHandler.removeCallbacks(this.FZL);
       }
     case 0: 
       for (;;)
       {
-        AppMethodBeat.o(106782);
+        AppMethodBeat.o(142139);
         return true;
         if ((getContext() instanceof MMActivity)) {
           ((MMActivity)getContext()).hideVKB();
         }
-        this.kke = false;
+        this.nph = false;
         if (!this.mScroller.isFinished()) {
           this.mScroller.abortAnimation();
         }
         this.time = System.currentTimeMillis();
-        if (this.jSc != null) {
-          this.lxQ = this.jSc.dc(this);
+        if (this.mRl != null) {
+          this.rZ = this.mRl.dw(this);
         }
-        if (this.zme == null) {
-          this.zme = new MMSlideDelView.b(this);
+        if (this.FZH == null) {
+          this.FZH = new b();
         }
-        this.mHandler.postDelayed(this.zme, ViewConfiguration.getTapTimeout());
+        this.mHandler.postDelayed(this.FZH, ViewConfiguration.getTapTimeout());
         this.mLastMotionX = f1;
         this.mLastMotionY = f2;
-        if (this.zmi == null) {
-          this.zmi = new MMSlideDelView.a(this, (byte)0);
+        if (this.FZL == null) {
+          this.FZL = new a((byte)0);
         }
-        paramMotionEvent = this.zmi;
-        paramMotionEvent.zml = paramMotionEvent.zmk.getWindowAttachCount();
-        this.mHandler.postDelayed(this.zmi, this.zmg);
+        paramMotionEvent = this.FZL;
+        paramMotionEvent.FZO = paramMotionEvent.FZN.getWindowAttachCount();
+        this.mHandler.postDelayed(this.FZL, this.FZJ);
       }
     case 2: 
       j = (int)(this.mLastMotionX - f1);
       int k = (int)(this.mLastMotionY - f2);
       m = getScrollX();
-      if (!this.kke)
+      if (!this.nph)
       {
         if ((j < 0) || (Math.abs(j) < this.mTouchSlop / 3)) {
           break label537;
@@ -362,21 +360,21 @@ public class MMSlideDelView
         }
         i = 1;
         label421:
-        if ((i != 0) || (this.zmd))
+        if ((i != 0) || (this.FZG))
         {
-          this.kke = true;
-          gH(true);
+          this.nph = true;
+          jF(true);
         }
       }
-      if (this.kke)
+      if (this.nph)
       {
         paramMotionEvent = getChildAt(1);
         if ((paramMotionEvent != null) && (!paramMotionEvent.isShown())) {
           paramMotionEvent.setVisibility(0);
         }
-        dEg();
+        eSU();
         setPressed(false);
-        gH(true);
+        jF(true);
         if (m + j >= 0) {
           break label543;
         }
@@ -387,7 +385,7 @@ public class MMSlideDelView
     for (;;)
     {
       if (this.mHandler != null) {
-        this.mHandler.removeCallbacks(this.zmi);
+        this.mHandler.removeCallbacks(this.FZL);
       }
       scrollBy(i, 0);
       this.mLastMotionX = f1;
@@ -401,39 +399,50 @@ public class MMSlideDelView
       {
         i = getChildAt(1).getWidth() - m;
         continue;
-        dEg();
-        if ((!this.kke) && ((isPressed()) || (System.currentTimeMillis() - this.time < 200L)) && (this.jSb != null) && (!this.zmd))
+        eSU();
+        if ((!this.nph) && ((isPressed()) || (System.currentTimeMillis() - this.time < 200L)) && (this.mRk != null) && (!this.FZG))
         {
           setPressed(true);
-          if (this.zmf != null) {
-            removeCallbacks(this.zmf);
+          if (this.FZI != null) {
+            removeCallbacks(this.FZI);
           }
-          this.zmf = new MMSlideDelView.2(this);
-          this.mHandler.postDelayed(this.zmf, ViewConfiguration.getPressedStateDuration());
+          this.FZI = new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(142131);
+              MMSlideDelView.this.setPressed(false);
+              ad.v("MicroMsg.MMSlideDelView", "onClick");
+              MMSlideDelView.b(MMSlideDelView.this).s(MMSlideDelView.this, MMSlideDelView.a(MMSlideDelView.this), 0);
+              MMSlideDelView.this.eSX();
+              AppMethodBeat.o(142131);
+            }
+          };
+          this.mHandler.postDelayed(this.FZI, ViewConfiguration.getPressedStateDuration());
         }
         for (;;)
         {
-          if (this.kke) {
-            dEh();
+          if (this.nph) {
+            eSV();
           }
-          ld();
+          mL();
           if (this.mHandler == null) {
             break;
           }
-          this.mHandler.removeCallbacks(this.zmi);
+          this.mHandler.removeCallbacks(this.FZL);
           break;
           setPressed(false);
         }
-        dEg();
+        eSU();
         setPressed(false);
-        if (this.kke) {
-          dEh();
+        if (this.nph) {
+          eSV();
         }
-        ld();
+        mL();
         if (this.mHandler == null) {
           break;
         }
-        this.mHandler.removeCallbacks(this.zmi);
+        this.mHandler.removeCallbacks(this.FZL);
         break;
       }
       i = j;
@@ -442,62 +451,100 @@ public class MMSlideDelView
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(106784);
-    ab.v("MicroMsg.MMSlideDelView", "window focus change, reset long press status");
-    this.zmh = false;
+    AppMethodBeat.i(142141);
+    ad.v("MicroMsg.MMSlideDelView", "window focus change, reset long press status");
+    this.FZK = false;
     super.onWindowFocusChanged(paramBoolean);
-    AppMethodBeat.o(106784);
+    AppMethodBeat.o(142141);
   }
   
   public void setEnable(boolean paramBoolean)
   {
-    this.bTy = paramBoolean;
+    this.cEP = paramBoolean;
   }
   
   public void setGetViewPositionCallback(MMSlideDelView.c paramc)
   {
-    this.jSc = paramc;
+    this.mRl = paramc;
   }
   
-  public void setItemStatusCallBack(d paramd)
+  public void setItemStatusCallBack(MMSlideDelView.d paramd)
   {
-    this.jSe = paramd;
+    this.mRn = paramd;
   }
   
   public void setOnDelViewShowCallback(e parame)
   {
-    this.zmj = parame;
+    this.FZM = parame;
   }
   
   public void setPerformItemClickListener(MMSlideDelView.g paramg)
   {
-    this.jSb = paramg;
+    this.mRk = paramg;
   }
   
   public void setView(View paramView)
   {
-    AppMethodBeat.i(106781);
+    AppMethodBeat.i(142138);
     if (getChildCount() == 2) {
       removeViewAt(0);
     }
     addView(paramView, 0, new ViewGroup.LayoutParams(-1, -2));
-    AppMethodBeat.o(106781);
+    AppMethodBeat.o(142138);
   }
   
-  public static abstract interface d
+  final class a
+    extends MMSlideDelView.h
+    implements Runnable
   {
-    public static final Set<MMSlideDelView> nTX = new HashSet();
+    private a()
+    {
+      super((byte)0);
+    }
     
-    public abstract void a(MMSlideDelView paramMMSlideDelView, boolean paramBoolean);
+    public final void run()
+    {
+      AppMethodBeat.i(142132);
+      if ((this.FZN.hasWindowFocus()) && (MMSlideDelView.c(this.FZN) == this.FZO)) {}
+      for (int i = 1;; i = 0)
+      {
+        if ((i != 0) && (!MMSlideDelView.d(MMSlideDelView.this)))
+        {
+          ad.i("MicroMsg.MMSlideDelView", "is long press");
+          if (MMSlideDelView.this.getParent() != null)
+          {
+            MMSlideDelView.e(MMSlideDelView.this);
+            MMSlideDelView.this.performLongClick();
+          }
+        }
+        AppMethodBeat.o(142132);
+        return;
+      }
+    }
+  }
+  
+  final class b
+    implements Runnable
+  {
+    b() {}
     
-    public abstract boolean bKj();
-    
-    public abstract void bKk();
-    
-    public abstract void bKl();
+    public final void run()
+    {
+      AppMethodBeat.i(142133);
+      ad.v("MicroMsg.MMSlideDelView", "checkfortap");
+      MMSlideDelView.this.setPressed(true);
+      AppMethodBeat.o(142133);
+    }
   }
   
   public static abstract interface e {}
+  
+  class h
+  {
+    int FZO;
+    
+    private h() {}
+  }
 }
 
 

@@ -1,73 +1,98 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import com.tencent.mm.bx.b;
+import java.util.LinkedList;
 
 public final class is
-  extends com.tencent.mm.bv.a
+  extends ckq
 {
-  public String wuT;
+  public LinkedList<Integer> CEn;
+  public int mAK;
+  
+  public is()
+  {
+    AppMethodBeat.i(127432);
+    this.CEn = new LinkedList();
+    AppMethodBeat.o(127432);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(10154);
+    AppMethodBeat.i(127433);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wuT == null)
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-        paramVarArgs = new b("Not all required fields were included: Mac");
-        AppMethodBeat.o(10154);
-        throw paramVarArgs;
+        paramVarArgs.kX(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.wuT != null) {
-        paramVarArgs.e(1, this.wuT);
-      }
-      AppMethodBeat.o(10154);
+      paramVarArgs.aR(2, this.mAK);
+      paramVarArgs.f(3, 2, this.CEn);
+      AppMethodBeat.o(127433);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.wuT == null) {
-        break label268;
+      if (this.BaseRequest == null) {
+        break label429;
       }
     }
-    label268:
-    for (paramInt = e.a.a.b.b.a.f(1, this.wuT) + 0;; paramInt = 0)
+    label429:
+    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(10154);
-      return paramInt;
+      int i = f.a.a.b.b.a.bA(2, this.mAK);
+      int j = f.a.a.a.d(3, 2, this.CEn);
+      AppMethodBeat.o(127433);
+      return paramInt + i + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.CEn.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        if (this.wuT == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: Mac");
-          AppMethodBeat.o(10154);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(10154);
+        AppMethodBeat.o(127433);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         is localis = (is)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(10154);
+          AppMethodBeat.o(127433);
           return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new ip();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localis.BaseRequest = ((ip)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(127433);
+          return 0;
+        case 2: 
+          localis.mAK = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(127433);
+          return 0;
         }
-        localis.wuT = locala.CLY.readString();
-        AppMethodBeat.o(10154);
+        localis.CEn = new f.a.a.a.a(((f.a.a.a.a)localObject1).KhF.fMu().wA, unknownTagHandler).KhF.fMs();
+        AppMethodBeat.o(127433);
         return 0;
       }
-      AppMethodBeat.o(10154);
+      AppMethodBeat.o(127433);
       return -1;
     }
   }

@@ -6,41 +6,55 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ShareMessengerMediaTemplateContent
-  extends ShareContent<ShareMessengerMediaTemplateContent, ShareMessengerMediaTemplateContent.Builder>
+  extends ShareContent<ShareMessengerMediaTemplateContent, Builder>
 {
   public static final Parcelable.Creator<ShareMessengerMediaTemplateContent> CREATOR;
   private final String attachmentId;
   private final ShareMessengerActionButton button;
-  private final MediaType mediaType;
+  private final ShareMessengerMediaTemplateContent.MediaType mediaType;
   private final Uri mediaUrl;
   
   static
   {
-    AppMethodBeat.i(97491);
-    CREATOR = new ShareMessengerMediaTemplateContent.1();
-    AppMethodBeat.o(97491);
+    AppMethodBeat.i(8515);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final ShareMessengerMediaTemplateContent createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(8501);
+        paramAnonymousParcel = new ShareMessengerMediaTemplateContent(paramAnonymousParcel);
+        AppMethodBeat.o(8501);
+        return paramAnonymousParcel;
+      }
+      
+      public final ShareMessengerMediaTemplateContent[] newArray(int paramAnonymousInt)
+      {
+        return new ShareMessengerMediaTemplateContent[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(8515);
   }
   
   ShareMessengerMediaTemplateContent(Parcel paramParcel)
   {
     super(paramParcel);
-    AppMethodBeat.i(97489);
-    this.mediaType = ((MediaType)paramParcel.readSerializable());
+    AppMethodBeat.i(8513);
+    this.mediaType = ((ShareMessengerMediaTemplateContent.MediaType)paramParcel.readSerializable());
     this.attachmentId = paramParcel.readString();
     this.mediaUrl = ((Uri)paramParcel.readParcelable(Uri.class.getClassLoader()));
     this.button = ((ShareMessengerActionButton)paramParcel.readParcelable(ShareMessengerActionButton.class.getClassLoader()));
-    AppMethodBeat.o(97489);
+    AppMethodBeat.o(8513);
   }
   
-  private ShareMessengerMediaTemplateContent(ShareMessengerMediaTemplateContent.Builder paramBuilder)
+  private ShareMessengerMediaTemplateContent(Builder paramBuilder)
   {
     super(paramBuilder);
-    AppMethodBeat.i(97488);
-    this.mediaType = ShareMessengerMediaTemplateContent.Builder.access$000(paramBuilder);
-    this.attachmentId = ShareMessengerMediaTemplateContent.Builder.access$100(paramBuilder);
-    this.mediaUrl = ShareMessengerMediaTemplateContent.Builder.access$200(paramBuilder);
-    this.button = ShareMessengerMediaTemplateContent.Builder.access$300(paramBuilder);
-    AppMethodBeat.o(97488);
+    AppMethodBeat.i(8512);
+    this.mediaType = paramBuilder.mediaType;
+    this.attachmentId = paramBuilder.attachmentId;
+    this.mediaUrl = paramBuilder.mediaUrl;
+    this.button = paramBuilder.button;
+    AppMethodBeat.o(8512);
   }
   
   public final int describeContents()
@@ -58,7 +72,7 @@ public final class ShareMessengerMediaTemplateContent
     return this.button;
   }
   
-  public final MediaType getMediaType()
+  public final ShareMessengerMediaTemplateContent.MediaType getMediaType()
   {
     return this.mediaType;
   }
@@ -70,26 +84,66 @@ public final class ShareMessengerMediaTemplateContent
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(97490);
+    AppMethodBeat.i(8514);
     paramParcel.writeSerializable(this.mediaType);
     paramParcel.writeString(this.attachmentId);
     paramParcel.writeParcelable(this.mediaUrl, paramInt);
     paramParcel.writeParcelable(this.button, paramInt);
-    AppMethodBeat.o(97490);
+    AppMethodBeat.o(8514);
   }
   
-  public static enum MediaType
+  public static class Builder
+    extends ShareContent.Builder<ShareMessengerMediaTemplateContent, Builder>
   {
-    static
+    private String attachmentId;
+    private ShareMessengerActionButton button;
+    private ShareMessengerMediaTemplateContent.MediaType mediaType;
+    private Uri mediaUrl;
+    
+    public ShareMessengerMediaTemplateContent build()
     {
-      AppMethodBeat.i(97487);
-      IMAGE = new MediaType("IMAGE", 0);
-      VIDEO = new MediaType("VIDEO", 1);
-      $VALUES = new MediaType[] { IMAGE, VIDEO };
-      AppMethodBeat.o(97487);
+      AppMethodBeat.i(8505);
+      ShareMessengerMediaTemplateContent localShareMessengerMediaTemplateContent = new ShareMessengerMediaTemplateContent(this, null);
+      AppMethodBeat.o(8505);
+      return localShareMessengerMediaTemplateContent;
     }
     
-    private MediaType() {}
+    public Builder readFrom(ShareMessengerMediaTemplateContent paramShareMessengerMediaTemplateContent)
+    {
+      AppMethodBeat.i(8504);
+      if (paramShareMessengerMediaTemplateContent == null)
+      {
+        AppMethodBeat.o(8504);
+        return this;
+      }
+      paramShareMessengerMediaTemplateContent = ((Builder)super.readFrom(paramShareMessengerMediaTemplateContent)).setMediaType(paramShareMessengerMediaTemplateContent.getMediaType()).setAttachmentId(paramShareMessengerMediaTemplateContent.getAttachmentId()).setMediaUrl(paramShareMessengerMediaTemplateContent.getMediaUrl()).setButton(paramShareMessengerMediaTemplateContent.getButton());
+      AppMethodBeat.o(8504);
+      return paramShareMessengerMediaTemplateContent;
+    }
+    
+    public Builder setAttachmentId(String paramString)
+    {
+      this.attachmentId = paramString;
+      return this;
+    }
+    
+    public Builder setButton(ShareMessengerActionButton paramShareMessengerActionButton)
+    {
+      this.button = paramShareMessengerActionButton;
+      return this;
+    }
+    
+    public Builder setMediaType(ShareMessengerMediaTemplateContent.MediaType paramMediaType)
+    {
+      this.mediaType = paramMediaType;
+      return this;
+    }
+    
+    public Builder setMediaUrl(Uri paramUri)
+    {
+      this.mediaUrl = paramUri;
+      return this;
+    }
   }
 }
 

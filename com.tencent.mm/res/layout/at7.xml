@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:gravity="bottom" android:layout_gravity="end|bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:gravity="center" android:id="@id/eeh" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <TextView android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g6" />
-    <TextView android:gravity="center" android:id="@id/eei" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <TextView android:textSize="@dimen/nh" android:gravity="center" android:id="@id/eej" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l2" android:text="@string/pj" style="@style/l1" />
-</LinearLayout>
+    <ImageButton android:id="@id/g5l" android:background="@drawable/a4d" android:layout_width="@dimen/a_9" android:layout_height="@dimen/a_8" android:layout_centerHorizontal="true" android:contentDescription="@string/gc4" />
+    <ImageButton android:id="@id/dw2" android:background="@drawable/a4a" android:layout_width="@dimen/a__" android:layout_height="@dimen/a__" android:layout_centerVertical="true" android:layout_marginEnd="35.0dip" android:layout_alignParentEnd="true" />
+</RelativeLayout>

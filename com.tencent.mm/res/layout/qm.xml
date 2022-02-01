@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0"
+<LinearLayout android:gravity="right" android:layout_gravity="right" style="@style/go"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:paddingLeft="@dimen/dp" android:paddingRight="@dimen/dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/ga">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/b3g" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/n_" android:scaleType="centerCrop" />
-        <TextView android:textSize="@dimen/kx" android:layout_gravity="center_vertical" android:id="@id/b3h" android:singleLine="false" android:layout_weight="1.0" style="@style/lg" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/al7" android:background="@drawable/mz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:backgroundTintMode="src_atop" style="@style/gq">
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/iz" android:id="@id/ap1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/bq" android:includeFontPadding="false" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/ap0" android:background="@raw/voip_voicecall" style="@style/h3" />
     </LinearLayout>
-</FrameLayout>
+    <include layout="@layout/o7" style="@style/gl" />
+</LinearLayout>

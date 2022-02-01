@@ -1,65 +1,65 @@
 package com.tencent.mm.plugin.honey_pay.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.honey_pay.model.c;
-import com.tencent.mm.plugin.wallet_core.model.m;
-import com.tencent.mm.protocal.protobuf.ali;
-import com.tencent.mm.protocal.protobuf.alj;
-import com.tencent.mm.protocal.protobuf.np;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.wallet_core.c.p;
+import com.tencent.mm.plugin.wallet_core.model.k;
+import com.tencent.mm.protocal.protobuf.auy;
+import com.tencent.mm.protocal.protobuf.auz;
+import com.tencent.mm.protocal.protobuf.pu;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.wallet_core.c.r;
 
 public final class e
-  extends p
+  extends r
 {
   private final String TAG;
-  public alj nHf;
+  public auz suM;
   
   public e(String paramString)
   {
-    AppMethodBeat.i(41725);
+    AppMethodBeat.i(64620);
     this.TAG = "MicroMsg.NetSceneGetHoneyPayCard";
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new ali();
-    ((b.a)localObject).fsY = new alj();
+    ((b.a)localObject).gUU = new auy();
+    ((b.a)localObject).gUV = new auz();
     ((b.a)localObject).funcId = getType();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/gethpcard";
     ((b.a)localObject).reqCmdId = 0;
     ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (ali)this.rr.fsV.fta;
-    ((ali)localObject).xcf = paramString;
-    ((ali)localObject).xaW = m.bSo();
-    ab.i("MicroMsg.NetSceneGetHoneyPayCard", "card no: %s", new Object[] { paramString });
-    AppMethodBeat.o(41725);
+    this.rr = ((b.a)localObject).atI();
+    localObject = (auy)this.rr.gUS.gUX;
+    ((auy)localObject).Duy = paramString;
+    ((auy)localObject).DsX = k.cRk();
+    ad.i("MicroMsg.NetSceneGetHoneyPayCard", "card no: %s", new Object[] { paramString });
+    AppMethodBeat.o(64620);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    AppMethodBeat.i(41726);
-    ab.i("MicroMsg.NetSceneGetHoneyPayCard", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.nHf = ((alj)((b)paramq).fsW.fta);
-    ab.i("MicroMsg.NetSceneGetHoneyPayCard", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.nHf.koj), this.nHf.kok });
-    if (this.nHf.xcg != null) {
-      c.W(this.nHf.xcg.cEg, this.nHf.xcg.wCG, this.nHf.xcg.uKD);
+    AppMethodBeat.i(64621);
+    ad.i("MicroMsg.NetSceneGetHoneyPayCard", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.suM = ((auz)((b)paramq).gUT.gUX);
+    ad.i("MicroMsg.NetSceneGetHoneyPayCard", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.suM.ntx), this.suM.nty });
+    if (this.suM.Duz != null) {
+      c.n(this.suM.Duz.duI, this.suM.Duz.COh, this.suM.Duz.AHE, null);
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
-    AppMethodBeat.o(41726);
+    AppMethodBeat.o(64621);
   }
   
   public final void e(q paramq)
   {
-    paramq = (alj)((b)paramq).fsW.fta;
-    this.AXb = paramq.koj;
-    this.AXc = paramq.kok;
+    paramq = (auz)((b)paramq).gUT.gUX;
+    this.IdO = paramq.ntx;
+    this.IdP = paramq.nty;
   }
   
   public final int getType()
@@ -69,7 +69,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.a.e
  * JD-Core Version:    0.7.0.1
  */

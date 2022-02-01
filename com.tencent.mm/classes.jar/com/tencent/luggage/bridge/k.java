@@ -5,66 +5,66 @@ import org.json.JSONObject;
 
 public final class k
 {
-  public JSONObject bxK;
-  String bxW;
-  public int bxX;
-  private boolean bxY;
-  private f byb;
-  boolean byc;
-  public String byd;
-  public JSONObject bye;
+  public JSONObject bZb;
+  String bZn;
+  public int bZo;
+  private boolean bZp;
+  private f bZs;
+  boolean bZt;
+  public String bZu;
+  public JSONObject bZv;
   
   k(f paramf, m paramm, boolean paramBoolean)
   {
-    AppMethodBeat.i(90725);
-    this.byb = paramf;
-    paramf = paramm.tS();
-    this.bxW = paramf.getString("method");
-    this.bxK = paramf.optJSONObject("data");
-    if (this.bxK == null) {
-      this.bxK = new JSONObject("{}");
+    AppMethodBeat.i(140325);
+    this.bZs = paramf;
+    paramf = paramm.AG();
+    this.bZn = paramf.getString("method");
+    this.bZb = paramf.optJSONObject("data");
+    if (this.bZb == null) {
+      this.bZb = new JSONObject("{}");
     }
-    this.byc = paramBoolean;
-    this.bxX = paramf.optInt("callbackId", 0);
-    this.bxY = false;
-    this.bye = new JSONObject();
-    AppMethodBeat.o(90725);
+    this.bZt = paramBoolean;
+    this.bZo = paramf.optInt("callbackId", 0);
+    this.bZp = false;
+    this.bZv = new JSONObject();
+    AppMethodBeat.o(140325);
+  }
+  
+  public final void AI()
+  {
+    AppMethodBeat.i(140327);
+    this.bZs.a(AJ());
+    AppMethodBeat.o(140327);
+  }
+  
+  final e AJ()
+  {
+    AppMethodBeat.i(140328);
+    c localc = new c(this.bZo, this.bZu, this.bZv, this.bZp);
+    AppMethodBeat.o(140328);
+    return localc;
   }
   
   public final void a(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(90726);
+    AppMethodBeat.i(140326);
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
-    this.byd = str;
+    this.bZu = str;
     if (paramJSONObject != null) {}
     for (;;)
     {
-      this.bye = paramJSONObject;
-      if (this.bxX != 0) {
-        tU();
+      this.bZv = paramJSONObject;
+      if (this.bZo != 0) {
+        AI();
       }
-      AppMethodBeat.o(90726);
+      AppMethodBeat.o(140326);
       return;
       paramJSONObject = new JSONObject();
     }
-  }
-  
-  public final void tU()
-  {
-    AppMethodBeat.i(90727);
-    this.byb.a(tV());
-    AppMethodBeat.o(90727);
-  }
-  
-  final e tV()
-  {
-    AppMethodBeat.i(90728);
-    c localc = new c(this.bxX, this.byd, this.bye, this.bxY);
-    AppMethodBeat.o(90728);
-    return localc;
   }
 }
 

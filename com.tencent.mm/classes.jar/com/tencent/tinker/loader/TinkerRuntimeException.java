@@ -3,6 +3,9 @@ package com.tencent.tinker.loader;
 public class TinkerRuntimeException
   extends RuntimeException
 {
+  private static final String TINKER_RUNTIME_EXCEPTION_PREFIX = "Tinker Exception:";
+  private static final long serialVersionUID = 1L;
+  
   public TinkerRuntimeException(String paramString)
   {
     super("Tinker Exception:".concat(String.valueOf(paramString)));

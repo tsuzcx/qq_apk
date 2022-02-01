@@ -6,168 +6,268 @@ import android.view.Menu;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvoiceaddr.f;
 import com.tencent.mm.modelvoiceaddr.f.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.ui.tools.q;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.r.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.ui.tools.d;
+import com.tencent.mm.ui.tools.r;
+import com.tencent.mm.ui.tools.r.b;
 
 public final class b
-  extends q
+  extends r
 {
-  public boolean gcJ;
-  public int gcK;
-  public int gcL;
-  b.a gcM;
-  public VoiceSearchLayout gcN;
-  private VoiceSearchLayout.a gcO;
+  public boolean hFB;
+  public int hFC;
+  public int hFD;
+  a hFE;
+  public VoiceSearchLayout hFF;
+  private VoiceSearchLayout.a hFG;
   
   public b()
   {
-    AppMethodBeat.i(116788);
-    this.gcJ = true;
-    this.gcO = new b.1(this);
-    AppMethodBeat.o(116788);
+    AppMethodBeat.i(148635);
+    this.hFB = true;
+    this.hFG = new VoiceSearchLayout.a()
+    {
+      public final void a(boolean paramAnonymousBoolean, String[] paramAnonymousArrayOfString, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(148634);
+        ad.d("MicroMsg.VoiceSearchViewHelper", "on voice search return, success %B, voice id %d", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Long.valueOf(paramAnonymousLong) });
+        if (b.this.hFE != null) {
+          b.this.hFE.a(paramAnonymousBoolean, paramAnonymousArrayOfString, paramAnonymousLong, b.this.hFD);
+        }
+        AppMethodBeat.o(148634);
+      }
+      
+      public final void aEd()
+      {
+        AppMethodBeat.i(148632);
+        if ((a.ce(aj.getContext())) || (a.cc(aj.getContext())))
+        {
+          AppMethodBeat.o(148632);
+          return;
+        }
+        ad.d("MicroMsg.VoiceSearchViewHelper", "on voice search start");
+        h.vKh.f(10453, new Object[] { Integer.valueOf(b.this.hFC), Integer.valueOf(3) });
+        if (b.this.hFE != null) {
+          b.this.hFE.aEh();
+        }
+        AppMethodBeat.o(148632);
+      }
+      
+      public final void aEe()
+      {
+        AppMethodBeat.i(148633);
+        ad.d("MicroMsg.VoiceSearchViewHelper", "on voice search cancel");
+        h.vKh.f(10453, new Object[] { Integer.valueOf(b.this.hFC), Integer.valueOf(4) });
+        if (b.this.Hto != null)
+        {
+          b.this.Hto.setEditTextEnabled(true);
+          b.this.Hto.setStatusBtnEnabled(true);
+        }
+        AppMethodBeat.o(148633);
+      }
+    };
+    AppMethodBeat.o(148635);
   }
   
   public b(byte paramByte)
   {
     super((byte)0);
-    AppMethodBeat.i(116789);
-    this.gcJ = true;
-    this.gcO = new b.1(this);
-    AppMethodBeat.o(116789);
+    AppMethodBeat.i(148636);
+    this.hFB = true;
+    this.hFG = new VoiceSearchLayout.a()
+    {
+      public final void a(boolean paramAnonymousBoolean, String[] paramAnonymousArrayOfString, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(148634);
+        ad.d("MicroMsg.VoiceSearchViewHelper", "on voice search return, success %B, voice id %d", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Long.valueOf(paramAnonymousLong) });
+        if (b.this.hFE != null) {
+          b.this.hFE.a(paramAnonymousBoolean, paramAnonymousArrayOfString, paramAnonymousLong, b.this.hFD);
+        }
+        AppMethodBeat.o(148634);
+      }
+      
+      public final void aEd()
+      {
+        AppMethodBeat.i(148632);
+        if ((a.ce(aj.getContext())) || (a.cc(aj.getContext())))
+        {
+          AppMethodBeat.o(148632);
+          return;
+        }
+        ad.d("MicroMsg.VoiceSearchViewHelper", "on voice search start");
+        h.vKh.f(10453, new Object[] { Integer.valueOf(b.this.hFC), Integer.valueOf(3) });
+        if (b.this.hFE != null) {
+          b.this.hFE.aEh();
+        }
+        AppMethodBeat.o(148632);
+      }
+      
+      public final void aEe()
+      {
+        AppMethodBeat.i(148633);
+        ad.d("MicroMsg.VoiceSearchViewHelper", "on voice search cancel");
+        h.vKh.f(10453, new Object[] { Integer.valueOf(b.this.hFC), Integer.valueOf(4) });
+        if (b.this.Hto != null)
+        {
+          b.this.Hto.setEditTextEnabled(true);
+          b.this.Hto.setStatusBtnEnabled(true);
+        }
+        AppMethodBeat.o(148633);
+      }
+    };
+    AppMethodBeat.o(148636);
   }
   
   public final void a(Activity paramActivity, Menu paramMenu)
   {
-    AppMethodBeat.i(116793);
+    AppMethodBeat.i(148641);
     super.a(paramActivity, paramMenu);
-    if (this.gcN != null) {
-      this.gcN.setOnSearchListener(this.gcO);
+    if (this.hFF != null) {
+      this.hFF.setOnSearchListener(this.hFG);
     }
-    AppMethodBeat.o(116793);
+    AppMethodBeat.o(148641);
   }
   
-  public final void a(b.a parama)
+  public final void a(a parama)
   {
-    this.gcM = parama;
-    this.Axg = parama;
+    this.hFE = parama;
+    this.Htp = parama;
   }
   
-  public final boolean amZ()
+  public final boolean aEf()
   {
     boolean bool1 = false;
-    AppMethodBeat.i(116791);
-    boolean bool2 = this.gcJ;
-    if (this.gcN == null) {
+    AppMethodBeat.i(148639);
+    boolean bool2 = this.hFB;
+    if (this.hFF == null) {
       bool1 = true;
     }
-    ab.d("MicroMsg.VoiceSearchViewHelper", "check has voice search, Enable %B, layout is null ? %B", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-    bool1 = this.gcJ;
-    AppMethodBeat.o(116791);
+    ad.d("MicroMsg.VoiceSearchViewHelper", "check has voice search, Enable %B, layout is null ? %B", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+    bool1 = this.hFB;
+    AppMethodBeat.o(148639);
     return bool1;
   }
   
-  public final void ana()
+  public final void aEg()
   {
-    AppMethodBeat.i(116792);
-    ab.d("MicroMsg.VoiceSearchViewHelper", "do require voice search");
-    if (this.Axf != null)
+    AppMethodBeat.i(148640);
+    ad.d("MicroMsg.VoiceSearchViewHelper", "do require voice search");
+    if (this.Hto != null)
     {
-      this.Axf.setEditTextEnabled(false);
-      this.Axf.setStatusBtnEnabled(false);
+      this.Hto.setEditTextEnabled(false);
+      this.Hto.setStatusBtnEnabled(false);
     }
-    if ((this.gcN != null) && (this.gcN.getVisibility() == 8))
+    if ((this.hFF != null) && (this.hFF.getVisibility() == 8))
     {
-      ab.d("MicroMsg.VoiceSearchViewHelper", "do voice search layout start");
-      Object localObject = this.gcN;
-      int i = this.gcL;
+      ad.d("MicroMsg.VoiceSearchViewHelper", "do voice search layout start");
+      Object localObject = this.hFF;
+      int i = this.hFD;
       boolean bool = com.tencent.mm.pluginsdk.permission.b.o(((VoiceSearchLayout)localObject).getContext(), "android.permission.RECORD_AUDIO");
-      ab.i("MicroMsg.VoiceSearchLayout", "summerper checkPermission checkMicrophone[%b]", new Object[] { Boolean.valueOf(bool) });
+      ad.i("MicroMsg.VoiceSearchLayout", "summerper checkPermission checkMicrophone[%b]", new Object[] { Boolean.valueOf(bool) });
       if (bool)
       {
-        ab.d("MicroMsg.VoiceSearchLayout", "doStart " + ((VoiceSearchLayout)localObject).isStart);
-        ((VoiceSearchLayout)localObject).gcu = i;
+        ad.d("MicroMsg.VoiceSearchLayout", "doStart " + ((VoiceSearchLayout)localObject).isStart);
+        ((VoiceSearchLayout)localObject).hFm = i;
         ((VoiceSearchLayout)localObject).isStart = true;
-        ((VoiceSearchLayout)localObject).gct = false;
-        if (((VoiceSearchLayout)localObject).gcr != null) {
-          ((VoiceSearchLayout)localObject).gcr.amX();
+        ((VoiceSearchLayout)localObject).hFl = false;
+        if (((VoiceSearchLayout)localObject).hFj != null) {
+          ((VoiceSearchLayout)localObject).hFj.aEd();
         }
         ((VoiceSearchLayout)localObject).setVisibility(0);
-        ((VoiceSearchLayout)localObject).gcG.ag(50L, 50L);
-        ((VoiceSearchLayout)localObject).jdMethod_do(true);
-        ((VoiceSearchLayout)localObject).gcF = 0;
-        ((VoiceSearchLayout)localObject).gcy = new f(new VoiceSearchLayout.4((VoiceSearchLayout)localObject), i);
-        localObject = ((VoiceSearchLayout)localObject).gcy;
-        ab.i("MicroMsg.SceneVoiceAddr", "start record");
-        if ((((f)localObject).gbj == 0) && (at.is2G(ah.getContext()))) {}
+        ((VoiceSearchLayout)localObject).hFy.av(50L, 50L);
+        ((VoiceSearchLayout)localObject).eH(true);
+        ((VoiceSearchLayout)localObject).hFx = 0;
+        ((VoiceSearchLayout)localObject).hFq = new f(new VoiceSearchLayout.4((VoiceSearchLayout)localObject), i);
+        localObject = ((VoiceSearchLayout)localObject).hFq;
+        ad.i("MicroMsg.SceneVoiceAddr", "start record");
+        if ((((f)localObject).hDV == 0) && (ay.is2G(aj.getContext()))) {}
         for (bool = true;; bool = false)
         {
-          ((f)localObject).gbu = bool;
-          ab.i("MicroMsg.SceneVoiceAddr", "mEnableAmrMode: %b", new Object[] { Boolean.valueOf(((f)localObject).gbu) });
-          com.tencent.mm.sdk.g.d.post(new f.a((f)localObject), "SceneVoiceAddr_record");
-          AppMethodBeat.o(116792);
+          ((f)localObject).hEf = bool;
+          ad.i("MicroMsg.SceneVoiceAddr", "mEnableAmrMode: %b", new Object[] { Boolean.valueOf(((f)localObject).hEf) });
+          com.tencent.mm.sdk.g.b.c(new f.a((f)localObject), "SceneVoiceAddr_record");
+          AppMethodBeat.o(148640);
           return;
         }
       }
       if ((((VoiceSearchLayout)localObject).getContext() instanceof Activity)) {
         com.tencent.mm.pluginsdk.permission.b.b((Activity)((VoiceSearchLayout)localObject).getContext(), "android.permission.RECORD_AUDIO", 80);
       }
-      AppMethodBeat.o(116792);
+      AppMethodBeat.o(148640);
       return;
     }
-    AppMethodBeat.o(116792);
+    AppMethodBeat.o(148640);
   }
   
-  public final void anb()
+  public final void c(Menu paramMenu)
   {
-    AppMethodBeat.i(116795);
+    AppMethodBeat.i(148643);
     cancel();
-    AppMethodBeat.o(116795);
+    AppMethodBeat.o(148643);
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(116790);
-    ab.d("MicroMsg.VoiceSearchViewHelper", "do cancel");
-    if (this.gcN != null) {
-      this.gcN.amT();
+    AppMethodBeat.i(148637);
+    ad.d("MicroMsg.VoiceSearchViewHelper", "do cancel");
+    if (this.hFF != null) {
+      this.hFF.aDZ();
     }
-    if (this.Axf != null)
+    if (this.Hto != null)
     {
-      this.Axf.setEditTextEnabled(true);
-      this.Axf.setStatusBtnEnabled(true);
+      this.Hto.setEditTextEnabled(true);
+      this.Hto.setStatusBtnEnabled(true);
     }
-    AppMethodBeat.o(116790);
+    AppMethodBeat.o(148637);
   }
   
   public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(116794);
+    AppMethodBeat.i(148642);
     if (4 == paramInt)
     {
-      if ((this.gcN != null) && (this.gcN.getVisibility() == 0)) {}
+      if ((this.hFF != null) && (this.hFF.getVisibility() == 0)) {}
       for (bool = true;; bool = false)
       {
-        ab.d("MicroMsg.VoiceSearchViewHelper", "on back key down, try hide voice search panel, it is visiable[%B]", new Object[] { Boolean.valueOf(bool) });
+        ad.d("MicroMsg.VoiceSearchViewHelper", "on back key down, try hide voice search panel, it is visiable[%B]", new Object[] { Boolean.valueOf(bool) });
         cancel();
         if (!bool) {
           break;
         }
-        AppMethodBeat.o(116794);
+        AppMethodBeat.o(148642);
         return true;
       }
     }
-    ab.d("MicroMsg.VoiceSearchViewHelper", "not match key code, pass to super");
+    ad.d("MicroMsg.VoiceSearchViewHelper", "not match key code, pass to super");
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(116794);
+    AppMethodBeat.o(148642);
     return bool;
+  }
+  
+  public final void onPause()
+  {
+    AppMethodBeat.i(148638);
+    fdW();
+    cancel();
+    AppMethodBeat.o(148638);
+  }
+  
+  public static abstract interface a
+    extends r.b
+  {
+    public abstract void a(boolean paramBoolean, String[] paramArrayOfString, long paramLong, int paramInt);
+    
+    public abstract void aEh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvoiceaddr.ui.b
  * JD-Core Version:    0.7.0.1
  */

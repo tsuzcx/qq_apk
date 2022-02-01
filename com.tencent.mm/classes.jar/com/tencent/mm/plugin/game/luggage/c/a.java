@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.game.luggage.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.b.l;
+import com.tencent.mm.plugin.webview.luggage.b.n;
 
 public final class a
-  extends l
+  extends n
 {
-  public final void bFo()
+  public final void cBw()
   {
-    AppMethodBeat.i(135889);
-    super.bFo();
-    AppMethodBeat.o(135889);
+    AppMethodBeat.i(83094);
+    super.cBw();
+    AppMethodBeat.o(83094);
   }
   
-  public final void bFp()
+  public final void cBx()
   {
-    AppMethodBeat.i(135890);
-    super.bFp();
-    AppMethodBeat.o(135890);
+    AppMethodBeat.i(83095);
+    super.cBx();
+    AppMethodBeat.o(83095);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.c.a
  * JD-Core Version:    0.7.0.1
  */

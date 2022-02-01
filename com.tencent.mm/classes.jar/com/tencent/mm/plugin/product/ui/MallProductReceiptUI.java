@@ -3,55 +3,120 @@ package com.tencent.mm.plugin.product.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.product.a.a;
 import com.tencent.mm.plugin.product.b.c;
 import com.tencent.mm.plugin.product.b.d;
-import com.tencent.mm.protocal.protobuf.bse;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.chi;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.base.t;
+import java.util.List;
 
 public class MallProductReceiptUI
   extends MallBaseUI
 {
-  private c pvR;
-  private d pwh = null;
-  private AutoCompleteTextView pwi = null;
-  private h pwj = null;
+  private d uxP = null;
+  private AutoCompleteTextView uxQ = null;
+  private h uxR = null;
+  private c uxz;
   
   public int getLayoutId()
   {
-    return 2130970451;
+    return 2131495124;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(44094);
-    setMMTitle(2131301477);
-    addTextOptionMenu(0, getString(2131296964), new MallProductReceiptUI.1(this));
-    this.pwi = ((AutoCompleteTextView)findViewById(2131826798));
-    bse localbse = this.pvR.cbb();
-    if ((localbse != null) && (!bo.isNullOrNil(localbse.nqY))) {
-      this.pwi.setText(localbse.nqY);
+    AppMethodBeat.i(67000);
+    setMMTitle(2131761124);
+    addTextOptionMenu(0, getString(2131755779), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        int i = 0;
+        AppMethodBeat.i(66996);
+        paramAnonymousMenuItem = MallProductReceiptUI.a(MallProductReceiptUI.this).getText().toString();
+        if (!bt.isNullOrNil(paramAnonymousMenuItem))
+        {
+          c localc = MallProductReceiptUI.b(MallProductReceiptUI.this);
+          localc.uvP = new chi();
+          chi localchi = localc.uvP;
+          if (bt.isNullOrNil(paramAnonymousMenuItem))
+          {
+            localchi.EcR = i;
+            localc.uvP.saB = paramAnonymousMenuItem;
+            MallProductReceiptUI.this.finish();
+          }
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(66996);
+          return true;
+          i = 1;
+          break;
+          t.makeText(MallProductReceiptUI.this, 2131761123, 0).show();
+        }
+      }
+    });
+    this.uxQ = ((AutoCompleteTextView)findViewById(2131302096));
+    chi localchi = this.uxz.dbq();
+    if ((localchi != null) && (!bt.isNullOrNil(localchi.saB))) {
+      this.uxQ.setText(localchi.saB);
     }
-    this.pwi.setSelection(this.pwi.getText().length());
-    this.pwj = new h(this);
-    this.pwi.setAdapter(this.pwj);
-    this.pwi.setOnItemClickListener(new MallProductReceiptUI.2(this));
-    View.inflate(getContext(), 2130970447, null).setOnClickListener(new MallProductReceiptUI.3(this));
-    AppMethodBeat.o(44094);
+    this.uxQ.setSelection(this.uxQ.getText().length());
+    this.uxR = new h(this);
+    this.uxQ.setAdapter(this.uxR);
+    this.uxQ.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(66997);
+        paramAnonymousAdapterView = MallProductReceiptUI.c(MallProductReceiptUI.this);
+        if ((paramAnonymousAdapterView.uwa != null) && (paramAnonymousInt < paramAnonymousAdapterView.uwa.size())) {}
+        for (paramAnonymousAdapterView = (String)paramAnonymousAdapterView.uwa.get(paramAnonymousInt);; paramAnonymousAdapterView = null)
+        {
+          ad.d("MicroMsg.MallProductReceiptUI", "onItemClick receipt = ".concat(String.valueOf(paramAnonymousAdapterView)));
+          if (!bt.isNullOrNil(paramAnonymousAdapterView)) {
+            MallProductReceiptUI.a(MallProductReceiptUI.this).setText(paramAnonymousAdapterView);
+          }
+          AppMethodBeat.o(66997);
+          return;
+        }
+      }
+    });
+    View.inflate(getContext(), 2131495120, null).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(66998);
+        paramAnonymousView = MallProductReceiptUI.c(MallProductReceiptUI.this);
+        paramAnonymousView.uwa.clear();
+        paramAnonymousView.dbD();
+        MallProductReceiptUI.d(MallProductReceiptUI.this).notifyDataSetChanged();
+        AppMethodBeat.o(66998);
+      }
+    });
+    AppMethodBeat.o(67000);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(44093);
+    AppMethodBeat.i(66999);
     super.onCreate(paramBundle);
-    this.pwh = a.caT().caV();
-    a.caT();
-    this.pvR = a.caU();
+    this.uxP = a.dbi().dbk();
+    a.dbi();
+    this.uxz = a.dbj();
     initView();
-    AppMethodBeat.o(44093);
+    AppMethodBeat.o(66999);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -62,7 +127,7 @@ public class MallProductReceiptUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.MallProductReceiptUI
  * JD-Core Version:    0.7.0.1
  */

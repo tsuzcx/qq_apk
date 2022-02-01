@@ -4,86 +4,190 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.MMActivity;
 
 public class VoiceSearchEditText
   extends EditText
 {
+  final Drawable GdB;
+  final Drawable GdC;
+  final Drawable GdD;
+  private a GdE;
+  private boolean GdF;
+  private boolean GdG;
+  private boolean GdH;
   private Context context;
-  public String jqH;
-  private View.OnClickListener qMg;
-  final Drawable zqc;
-  final Drawable zqd;
-  final Drawable zqe;
-  private VoiceSearchEditText.a zqf;
-  private boolean zqg;
-  private boolean zqh;
-  private boolean zqi;
+  public String mgy;
+  private View.OnClickListener tOp;
   
   public VoiceSearchEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(107091);
-    this.jqH = "";
-    this.zqc = getResources().getDrawable(2130840709);
-    this.zqd = null;
-    this.zqe = getResources().getDrawable(2130840216);
-    this.zqg = true;
-    this.zqh = false;
-    this.zqi = false;
+    AppMethodBeat.i(142460);
+    this.mgy = "";
+    this.GdB = getResources().getDrawable(2131234523);
+    this.GdC = null;
+    this.GdD = getResources().getDrawable(2131233918);
+    this.GdF = true;
+    this.GdG = false;
+    this.GdH = false;
     init(paramContext);
-    AppMethodBeat.o(107091);
+    AppMethodBeat.o(142460);
   }
   
   public VoiceSearchEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107092);
-    this.jqH = "";
-    this.zqc = getResources().getDrawable(2130840709);
-    this.zqd = null;
-    this.zqe = getResources().getDrawable(2130840216);
-    this.zqg = true;
-    this.zqh = false;
-    this.zqi = false;
+    AppMethodBeat.i(142461);
+    this.mgy = "";
+    this.GdB = getResources().getDrawable(2131234523);
+    this.GdC = null;
+    this.GdD = getResources().getDrawable(2131233918);
+    this.GdF = true;
+    this.GdG = false;
+    this.GdH = false;
     init(paramContext);
-    AppMethodBeat.o(107092);
+    AppMethodBeat.o(142461);
   }
   
-  private void dEG()
+  private void eTv()
   {
-    AppMethodBeat.i(107095);
-    this.zqg = true;
-    if (this.zqh)
+    AppMethodBeat.i(142464);
+    this.GdF = true;
+    if (this.GdG)
     {
-      setCompoundDrawables(this.zqd, getCompoundDrawables()[1], this.zqc, getCompoundDrawables()[3]);
-      AppMethodBeat.o(107095);
+      setCompoundDrawables(this.GdC, getCompoundDrawables()[1], this.GdB, getCompoundDrawables()[3]);
+      AppMethodBeat.o(142464);
       return;
     }
     if (getText().toString().length() > 0)
     {
-      setCompoundDrawables(this.zqd, getCompoundDrawables()[1], this.zqe, getCompoundDrawables()[3]);
-      AppMethodBeat.o(107095);
+      setCompoundDrawables(this.GdC, getCompoundDrawables()[1], this.GdD, getCompoundDrawables()[3]);
+      AppMethodBeat.o(142464);
       return;
     }
-    setCompoundDrawables(this.zqd, getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
-    AppMethodBeat.o(107095);
+    setCompoundDrawables(this.GdC, getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
+    AppMethodBeat.o(142464);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(107094);
+    AppMethodBeat.i(142463);
     this.context = paramContext;
-    this.zqh = false;
-    this.zqc.setBounds(0, 0, this.zqc.getIntrinsicWidth(), this.zqc.getIntrinsicHeight());
-    this.zqe.setBounds(0, 0, this.zqe.getIntrinsicWidth(), this.zqe.getIntrinsicHeight());
-    dEG();
-    setOnTouchListener(new VoiceSearchEditText.1(this));
-    addTextChangedListener(new VoiceSearchEditText.2(this));
-    setOnFocusChangeListener(new VoiceSearchEditText.3(this));
+    this.GdG = false;
+    this.GdB.setBounds(0, 0, this.GdB.getIntrinsicWidth(), this.GdB.getIntrinsicHeight());
+    this.GdD.setBounds(0, 0, this.GdD.getIntrinsicWidth(), this.GdD.getIntrinsicHeight());
+    eTv();
+    setOnTouchListener(new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(142457);
+        paramAnonymousView = VoiceSearchEditText.this;
+        if (paramAnonymousView.getCompoundDrawables()[2] == null)
+        {
+          AppMethodBeat.o(142457);
+          return false;
+        }
+        if (paramAnonymousMotionEvent.getAction() != 1)
+        {
+          AppMethodBeat.o(142457);
+          return true;
+        }
+        VoiceSearchEditText.a(VoiceSearchEditText.this, true);
+        if ((VoiceSearchEditText.a(VoiceSearchEditText.this)) && (VoiceSearchEditText.b(VoiceSearchEditText.this)) && (paramAnonymousView.getText().toString().equals(""))) {
+          if (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - VoiceSearchEditText.this.GdB.getIntrinsicWidth() - a.fromDPToPix(VoiceSearchEditText.c(paramAnonymousView), 25))
+          {
+            if (VoiceSearchEditText.d(VoiceSearchEditText.this) != null)
+            {
+              ad.i("MicroMsg.VoiceSearchEditText", "user clicked voice button");
+              if ((VoiceSearchEditText.this.getContext() instanceof MMActivity)) {
+                ((MMActivity)VoiceSearchEditText.this.getContext()).hideVKB(paramAnonymousView);
+              }
+              VoiceSearchEditText.d(VoiceSearchEditText.this).onClick(VoiceSearchEditText.this);
+              AppMethodBeat.o(142457);
+              return true;
+            }
+          }
+          else
+          {
+            paramAnonymousView.requestFocus();
+            if ((VoiceSearchEditText.this.getContext() instanceof Activity)) {
+              MMActivity.showVKB((Activity)VoiceSearchEditText.this.getContext());
+            }
+            if (VoiceSearchEditText.d(VoiceSearchEditText.this) != null) {
+              VoiceSearchEditText.d(VoiceSearchEditText.this).onClick(null);
+            }
+          }
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(142457);
+          return false;
+          if (paramAnonymousView.getText().toString().length() > 0)
+          {
+            if (paramAnonymousMotionEvent.getX() > paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - VoiceSearchEditText.this.GdD.getIntrinsicWidth() - a.fromDPToPix(VoiceSearchEditText.c(paramAnonymousView), 25))
+            {
+              paramAnonymousView.setText("");
+              if (VoiceSearchEditText.e(VoiceSearchEditText.this) != null) {
+                VoiceSearchEditText.e(VoiceSearchEditText.this);
+              }
+              VoiceSearchEditText.f(VoiceSearchEditText.this);
+            }
+            else if (!paramAnonymousView.isFocused())
+            {
+              paramAnonymousView.requestFocus();
+              if ((VoiceSearchEditText.this.getContext() instanceof Activity)) {
+                MMActivity.showVKB((Activity)VoiceSearchEditText.this.getContext());
+              }
+            }
+          }
+          else if (VoiceSearchEditText.d(VoiceSearchEditText.this) != null) {
+            VoiceSearchEditText.d(VoiceSearchEditText.this).onClick(null);
+          }
+        }
+      }
+    });
+    addTextChangedListener(new TextWatcher()
+    {
+      public final void afterTextChanged(Editable paramAnonymousEditable) {}
+      
+      public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+      
+      public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      {
+        AppMethodBeat.i(142458);
+        VoiceSearchEditText.a(VoiceSearchEditText.this, true);
+        VoiceSearchEditText.f(VoiceSearchEditText.this);
+        AppMethodBeat.o(142458);
+      }
+    });
+    setOnFocusChangeListener(new View.OnFocusChangeListener()
+    {
+      public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(142459);
+        ad.d("MicroMsg.VoiceSearchEditText", "onFocusChange hasFocus = [%s], currentFocusState = [%s]", new Object[] { Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(VoiceSearchEditText.g(VoiceSearchEditText.this)) });
+        if ((!paramAnonymousBoolean) && (VoiceSearchEditText.g(VoiceSearchEditText.this)))
+        {
+          VoiceSearchEditText.f(VoiceSearchEditText.this);
+          VoiceSearchEditText.a(VoiceSearchEditText.this, false);
+        }
+        AppMethodBeat.o(142459);
+      }
+    });
     if ((paramContext instanceof Activity))
     {
       paramContext = ((Activity)paramContext).getCurrentFocus();
@@ -92,33 +196,35 @@ public class VoiceSearchEditText
       }
     }
     label141:
-    for (this.zqi = true;; this.zqi = false)
+    for (this.GdH = true;; this.GdH = false)
     {
       requestFocus();
-      AppMethodBeat.o(107094);
+      AppMethodBeat.o(142463);
       return;
     }
   }
   
   public void setNeedIcon(boolean paramBoolean) {}
   
-  public void setOnContentClearListener(VoiceSearchEditText.a parama)
+  public void setOnContentClearListener(a parama)
   {
-    this.zqf = parama;
+    this.GdE = parama;
   }
   
   public void setOnSearchClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(107093);
-    this.qMg = paramOnClickListener;
-    this.zqh = true;
-    dEG();
-    AppMethodBeat.o(107093);
+    AppMethodBeat.i(142462);
+    this.tOp = paramOnClickListener;
+    this.GdG = true;
+    eTv();
+    AppMethodBeat.o(142462);
   }
+  
+  public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.VoiceSearchEditText
  * JD-Core Version:    0.7.0.1
  */

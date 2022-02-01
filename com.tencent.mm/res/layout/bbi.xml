@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/act" android:layout_width="fill_parent" android:layout_height="88.0dip" android:layout_marginBottom="16.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/fy4" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0">
+            <ImageView android:id="@id/fy5" android:layout_width="32.0dip" android:layout_height="32.0dip" />
+            <TextView android:textSize="@dimen/q" android:textColor="@color/y4" android:id="@id/fy6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/fy7" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0">
+            <ImageView android:id="@id/fy8" android:layout_width="32.0dip" android:layout_height="32.0dip" />
+            <TextView android:textSize="@dimen/q" android:textColor="@color/y4" android:id="@id/fy9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/fy_" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0">
+            <ImageView android:id="@id/fya" android:layout_width="32.0dip" android:layout_height="32.0dip" />
+            <TextView android:textSize="@dimen/q" android:textColor="@color/y4" android:id="@id/fyb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -9,20 +9,20 @@ import java.util.Date;
 public final class c
   implements e
 {
-  private SimpleDateFormat aja;
-  private boolean ajc;
-  private a ajp;
+  private SimpleDateFormat amC;
+  private boolean amE;
+  private a amR;
   
   private String b(String paramString1, String paramString2, String paramString3)
   {
-    String str = this.aja.format(new Date());
+    String str = this.amC.format(new Date());
     return String.format("%s​%s​[%d][%d][%s]: %s​​", new Object[] { paramString1, paramString2, Integer.valueOf(Process.myPid()), Long.valueOf(Thread.currentThread().getId()), str, paramString3 });
   }
   
   public final void a(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    b(b("E", paramString1, String.format(paramString2, paramVarArgs)), false);
-    if (this.ajc) {
+    a(b("E", paramString1, String.format(paramString2, paramVarArgs)), false);
+    if (this.amE) {
       Log.e(paramString1, String.format(paramString2, paramVarArgs));
     }
   }
@@ -30,30 +30,21 @@ public final class c
   public final void a(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     String str = String.format(paramString2, paramVarArgs);
-    b(b("E", paramString1, str + "  " + Log.getStackTraceString(paramThrowable)), false);
-    if (this.ajc) {
+    a(b("E", paramString1, str + "  " + Log.getStackTraceString(paramThrowable)), false);
+    if (this.amE) {
       Log.e(paramString1, String.format(paramString2, paramVarArgs), paramThrowable);
     }
   }
   
-  public final void b(String paramString, boolean paramBoolean)
+  public final void a(String paramString, boolean paramBoolean)
   {
-    try
-    {
-      this.ajp.a(paramString.getBytes(), paramBoolean);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    this.amR.a(paramString.getBytes(), paramBoolean);
   }
   
   public final void c(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    b(b("I", paramString1, String.format(paramString2, paramVarArgs)), false);
-    if (this.ajc) {
+    a(b("I", paramString1, String.format(paramString2, paramVarArgs)), false);
+    if (this.amE) {
       Log.d(paramString1, String.format(paramString2, paramVarArgs));
     }
   }

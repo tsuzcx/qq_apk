@@ -1,7 +1,7 @@
 package com.tencent.mm.game.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.a.b;
+import com.tencent.mm.game.report.a.a;
 import com.tencent.mm.game.report.api.c;
 import com.tencent.mm.kernel.b.f;
 
@@ -13,18 +13,18 @@ public class PluginGameReport
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(59584);
-    if ((paramg.SD()) || (paramg.mI(":tools")))
+    AppMethodBeat.i(108252);
+    if ((paramg.agu()) || (paramg.ra(":tools")) || (paramg.ra(":toolsmp")))
     {
-      com.tencent.mm.game.report.api.a.ezM = new a();
-      com.tencent.mm.kernel.g.b(b.class, new com.tencent.mm.game.report.a.a());
+      com.tencent.mm.game.report.api.a.fUK = new b();
+      com.tencent.mm.kernel.g.b(com.tencent.mm.game.report.a.b.class, new a());
     }
-    AppMethodBeat.o(59584);
+    AppMethodBeat.o(108252);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.game.report.PluginGameReport
  * JD-Core Version:    0.7.0.1
  */

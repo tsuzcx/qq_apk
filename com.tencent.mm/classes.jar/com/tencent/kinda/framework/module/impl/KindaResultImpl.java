@@ -2,7 +2,7 @@ package com.tencent.kinda.framework.module.impl;
 
 import com.tencent.kinda.gen.IKindaResult;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vk;
+import com.tencent.mm.g.a.xk;
 import com.tencent.mm.sdk.b.a;
 
 public class KindaResultImpl
@@ -10,14 +10,14 @@ public class KindaResultImpl
 {
   public void apppayEnd(int paramInt, String paramString)
   {
-    AppMethodBeat.i(144531);
-    vk localvk = new vk();
+    AppMethodBeat.i(18646);
+    xk localxk = new xk();
     if (paramInt == 0) {}
-    for (localvk.cMA.result = -1;; localvk.cMA.result = 0)
+    for (localxk.dDy.result = -1;; localxk.dDy.result = 0)
     {
-      localvk.cMA.cnI = paramString;
-      a.ymk.l(localvk);
-      AppMethodBeat.o(144531);
+      localxk.dDy.dcE = paramString;
+      a.ESL.l(localxk);
+      AppMethodBeat.o(18646);
       return;
     }
   }

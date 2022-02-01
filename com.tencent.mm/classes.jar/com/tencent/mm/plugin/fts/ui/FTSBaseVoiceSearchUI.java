@@ -3,139 +3,192 @@ package com.tencent.mm.plugin.fts.ui;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.a.f;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.fts.ui.widget.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.tools.q.b;
+import com.tencent.mm.ui.tools.r.b;
+import java.util.Iterator;
+import java.util.List;
 
 @a(19)
 public abstract class FTSBaseVoiceSearchUI
   extends MMActivity
-  implements d.a, e, q.b
+  implements d.a, e, r.b
 {
-  ListView mWK;
-  private d mWL;
-  TextView mWM;
-  private boolean mWN = false;
-  protected com.tencent.mm.plugin.fts.ui.widget.d mWR;
-  private RelativeLayout mWS;
-  private boolean mWT;
-  private ak mWd = new FTSBaseVoiceSearchUI.3(this);
   String query;
-  
-  public void W(int paramInt, boolean paramBoolean)
+  private ap rsS = new ap()
   {
-    ab.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onEnd resultCount=%d | isFinished=%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    if (paramBoolean)
+    public final void handleMessage(Message paramAnonymousMessage)
     {
-      bCK();
-      if (paramInt > 0) {
-        bCH();
+      AppMethodBeat.i(111877);
+      if ((paramAnonymousMessage.what == 1) && (!bt.isNullOrNil(FTSBaseVoiceSearchUI.b(FTSBaseVoiceSearchUI.this)))) {
+        FTSBaseVoiceSearchUI.this.cxN();
       }
+      AppMethodBeat.o(111877);
     }
-    for (;;)
+  };
+  ListView rtA;
+  private d rtB;
+  private boolean rtC = false;
+  protected c rtG;
+  private boolean rtH = true;
+  private boolean rtI;
+  
+  public boolean BX(String paramString)
+  {
+    ad.d("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onSearchKeyDown %s", new Object[] { paramString });
+    hideVKB();
+    if (this.rtG != null) {
+      this.rtG.clearFocus();
+    }
+    return false;
+  }
+  
+  public void BY(String paramString)
+  {
+    ad.v("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onSearchChange %s", new Object[] { paramString });
+    if (bt.isNullOrNil(paramString))
     {
-      if (this.mWN)
+      if (!this.rtG.fdw())
       {
-        this.mWN = false;
-        this.mWK.setSelection(0);
+        this.rtG.fdx();
+        showVKB();
       }
+      cxV();
+    }
+    paramString = com.tencent.mm.plugin.fts.a.d.aaZ(paramString);
+    if ((!bt.isNullOrNil(this.query)) && (this.query.equals(paramString)))
+    {
+      ad.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "Same query %s %s", new Object[] { this.query, paramString });
       return;
-      bCG();
-      continue;
-      if (paramInt > 0)
-      {
-        bCH();
-        bCJ();
-      }
-      else
-      {
-        bCF();
-        bCK();
-      }
     }
+    this.query = paramString;
+    if (!bt.isNullOrNil(this.query))
+    {
+      this.rsS.removeMessages(1);
+      this.rsS.sendEmptyMessageDelayed(1, 300L);
+      return;
+    }
+    stopSearch();
   }
   
   protected abstract d a(e parame);
   
-  public final void apN()
+  public final void aIj()
   {
-    ab.d("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onQuitSearch");
+    ad.d("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onQuitSearch");
     finish();
   }
   
-  public final void apO()
+  public final void aIk()
   {
-    ab.d("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onEnterSearch");
+    ad.d("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onEnterSearch");
   }
   
-  public final void apP() {}
+  public final void aIl() {}
   
-  public final void apQ() {}
+  public final void aIm() {}
   
-  protected void bCD() {}
-  
-  protected void bCF()
+  public void af(int paramInt, boolean paramBoolean)
   {
-    this.mWM.setVisibility(8);
-    if (this.mWS != null) {
-      this.mWS.setVisibility(8);
+    ad.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onEnd resultCount=%d | isFinished=%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
+    {
+      cxZ();
+      if (paramInt > 0) {
+        cxU();
+      }
     }
-    this.mWK.setVisibility(8);
-  }
-  
-  protected void bCG()
-  {
-    this.mWM.setVisibility(0);
-    this.mWM.setText(f.a(getString(2131302982), getString(2131302981), com.tencent.mm.plugin.fts.a.a.d.b(this.query, this.query)).mSp);
-    if (this.mWS != null) {
-      this.mWS.setVisibility(8);
+    for (;;)
+    {
+      if (this.rtC)
+      {
+        this.rtC = false;
+        this.rtA.setSelection(0);
+      }
+      return;
+      cxT();
+      continue;
+      if (paramInt > 0)
+      {
+        cxU();
+        cxY();
+      }
+      else
+      {
+        cxS();
+        cxZ();
+      }
     }
-    this.mWK.setVisibility(8);
   }
   
-  protected void bCH()
+  protected void cxN()
   {
-    this.mWM.setVisibility(8);
-    if (this.mWS != null) {
-      this.mWS.setVisibility(8);
-    }
-    this.mWK.setVisibility(0);
+    this.rtC = true;
+    this.rtB.Zl(this.query);
+    cxS();
   }
   
-  protected void bCI()
+  protected void cxR() {}
+  
+  protected void cxS()
   {
-    this.mWM.setVisibility(8);
-    if (this.mWS != null) {
-      this.mWS.setVisibility(8);
-    }
-    this.mWK.setVisibility(8);
+    this.rtA.setVisibility(8);
   }
   
-  protected void bCJ() {}
-  
-  protected void bCK() {}
-  
-  protected void bCz()
+  protected void cxT()
   {
-    this.mWN = true;
-    this.mWL.Pu(this.query);
-    bCF();
+    this.rtA.setVisibility(8);
   }
   
-  protected View getFooterView()
+  protected void cxU()
+  {
+    this.rtA.setVisibility(0);
+  }
+  
+  protected void cxV()
+  {
+    this.rtA.setVisibility(8);
+  }
+  
+  protected void cxW() {}
+  
+  protected List<View> cxX()
   {
     return null;
+  }
+  
+  protected void cxY() {}
+  
+  protected void cxZ() {}
+  
+  protected View getHeaderView()
+  {
+    return null;
+  }
+  
+  public final ListView getListView()
+  {
+    return this.rtA;
+  }
+  
+  public final void lA(boolean paramBoolean)
+  {
+    ad.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "enableLV %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.rtH = paramBoolean;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -143,54 +196,89 @@ public abstract class FTSBaseVoiceSearchUI
     super.onCreate(paramBundle);
     showMMLogo();
     setMMTitle("");
-    setActionbarColor(getContext().getResources().getColor(2131690316));
-    bCD();
-    this.mWR = new com.tencent.mm.plugin.fts.ui.widget.d();
-    this.mWR.Axg = this;
-    this.mWR.ncj = false;
-    this.mWK = ((ListView)findViewById(2131824324));
-    if (getFooterView() != null)
+    setActionbarColor(getContext().getResources().getColor(2131100705));
+    cxR();
+    this.rtG = new c();
+    this.rtG.Htp = this;
+    this.rtG.ryj = false;
+    this.rtA = ((ListView)findViewById(2131304446));
+    if (getHeaderView() != null)
     {
-      ab.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "searchResultLV addFooterView");
-      this.mWK.addFooterView(getFooterView());
+      ad.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "searchResultLV addHeaderView");
+      this.rtA.addHeaderView(getHeaderView());
     }
-    this.mWL = a(this);
-    this.mWL.mWJ = this;
-    this.mWK.setAdapter(this.mWL);
-    this.mWK.setOnScrollListener(this.mWL);
-    this.mWK.setOnItemClickListener(this.mWL);
-    this.mWK.setOnTouchListener(new FTSBaseVoiceSearchUI.1(this));
-    this.mWM = ((TextView)findViewById(2131820917));
-    setBackBtn(new FTSBaseVoiceSearchUI.2(this));
+    paramBundle = cxX();
+    if ((paramBundle != null) && (paramBundle.size() > 0))
+    {
+      ad.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "searchResultLV addFooterView %d", new Object[] { Integer.valueOf(paramBundle.size()) });
+      paramBundle = paramBundle.iterator();
+      while (paramBundle.hasNext())
+      {
+        View localView = (View)paramBundle.next();
+        this.rtA.addFooterView(localView);
+      }
+    }
+    this.rtB = a(this);
+    this.rtB.rtz = this;
+    this.rtA.setAdapter(this.rtB);
+    this.rtA.setOnScrollListener(this.rtB);
+    this.rtA.setOnItemClickListener(this.rtB);
+    this.rtA.setOnTouchListener(new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(111875);
+        FTSBaseVoiceSearchUI.this.rtG.clearFocus();
+        FTSBaseVoiceSearchUI.this.hideVKB();
+        FTSBaseVoiceSearchUI.this.cxW();
+        if (!FTSBaseVoiceSearchUI.a(FTSBaseVoiceSearchUI.this))
+        {
+          AppMethodBeat.o(111875);
+          return true;
+        }
+        AppMethodBeat.o(111875);
+        return false;
+      }
+    });
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(111876);
+        FTSBaseVoiceSearchUI.this.finish();
+        AppMethodBeat.o(111876);
+        return true;
+      }
+    });
   }
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
-    this.mWR.a(this, paramMenu);
-    if (!this.mWT)
+    this.rtG.a(this, paramMenu);
+    if (!this.rtI)
     {
-      this.mWR.ru(true);
-      this.mWT = true;
+      this.rtG.wH(true);
+      this.rtI = true;
     }
     return true;
   }
   
   public void onDestroy()
   {
-    this.mWd.removeMessages(1);
-    this.mWL.finish();
+    this.rsS.removeMessages(1);
+    this.rtB.finish();
     super.onDestroy();
   }
   
   public void onPause()
   {
     super.onPause();
-    this.mWR.clearFocus();
+    this.rtG.clearFocus();
   }
   
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
-    this.mWR.a(this, paramMenu);
+    this.rtG.a(this, paramMenu);
     return true;
   }
   
@@ -200,45 +288,12 @@ public abstract class FTSBaseVoiceSearchUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public boolean wR(String paramString)
+  protected void stopSearch()
   {
-    ab.d("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onSearchKeyDown %s", new Object[] { paramString });
-    hideVKB();
-    if (this.mWR != null) {
-      this.mWR.clearFocus();
-    }
-    return false;
-  }
-  
-  public void wS(String paramString)
-  {
-    ab.v("MicroMsg.FTS.FTSBaseVoiceSearchUI", "onSearchChange %s", new Object[] { paramString });
-    if (bo.isNullOrNil(paramString))
-    {
-      if (!this.mWR.dNy())
-      {
-        this.mWR.dNz();
-        showVKB();
-      }
-      bCI();
-    }
-    paramString = com.tencent.mm.plugin.fts.a.d.Pb(paramString);
-    if ((!bo.isNullOrNil(this.query)) && (this.query.equals(paramString)))
-    {
-      ab.i("MicroMsg.FTS.FTSBaseVoiceSearchUI", "Same query %s %s", new Object[] { this.query, paramString });
-      return;
-    }
-    this.query = paramString;
-    if (!bo.isNullOrNil(this.query))
-    {
-      this.mWd.removeMessages(1);
-      this.mWd.sendEmptyMessageDelayed(1, 300L);
-      return;
-    }
-    this.mWd.removeMessages(1);
-    this.mWN = false;
-    this.mWL.stopSearch();
-    bCI();
+    this.rsS.removeMessages(1);
+    this.rtC = false;
+    this.rtB.stopSearch();
+    cxV();
   }
 }
 

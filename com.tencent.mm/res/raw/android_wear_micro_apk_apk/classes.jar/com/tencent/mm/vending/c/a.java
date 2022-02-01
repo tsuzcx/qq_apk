@@ -2,9 +2,9 @@ package com.tencent.mm.vending.c;
 
 public abstract interface a<_Ret, _Var>
 {
-  public static final Void ZV = null;
+  public static final Void adv = null;
   
-  public abstract _Ret O(_Var param_Var);
+  public abstract _Ret X(_Var param_Var);
 }
 
 

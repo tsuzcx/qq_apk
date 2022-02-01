@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <TextView android:gravity="left" android:id="@id/fcz" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/l5" android:layout_marginRight="@dimen/l2" android:layout_marginBottom="@dimen/l2" android:text="@string/ftu" style="@style/w2" />
-    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/fgv" android:imeOptions="actionNext" wallet:titleText="@string/fic" wallet:contentHint="@string/fi_" style="@style/vz" />
-    <TextView android:id="@id/fh4" android:visibility="visible" android:text="@string/fib" style="@style/vv" />
-    <Button android:id="@id/fhn" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="@dimen/dv" android:layout_marginRight="@dimen/l2" android:text="@string/fu4" style="@style/nq" />
-    <include layout="@layout/l_" />
-</LinearLayout>
+<RelativeLayout android:orientation="vertical" android:id="@id/f42" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/c9h" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/c9g" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/b25" />
+</RelativeLayout>

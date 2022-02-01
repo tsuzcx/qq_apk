@@ -12,25 +12,25 @@ public class SendDataToH5FromMiniProgramEvent
 {
   public static final Parcelable.Creator<SendDataToH5FromMiniProgramEvent> CREATOR;
   public String data;
-  public String hMi;
-  public int hMj;
+  public String jRt;
+  public int jRu;
   
   static
   {
-    AppMethodBeat.i(93754);
-    CREATOR = new SendDataToH5FromMiniProgramEvent.1();
-    AppMethodBeat.o(93754);
+    AppMethodBeat.i(121068);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(121068);
   }
   
   public SendDataToH5FromMiniProgramEvent() {}
   
   protected SendDataToH5FromMiniProgramEvent(Parcel paramParcel)
   {
-    AppMethodBeat.i(93753);
-    this.hMi = paramParcel.readString();
+    AppMethodBeat.i(121067);
+    this.jRt = paramParcel.readString();
     this.data = paramParcel.readString();
-    this.hMj = paramParcel.readInt();
-    AppMethodBeat.o(93753);
+    this.jRu = paramParcel.readInt();
+    AppMethodBeat.o(121067);
   }
   
   public int describeContents()
@@ -40,16 +40,16 @@ public class SendDataToH5FromMiniProgramEvent
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(93752);
-    paramParcel.writeString(this.hMi);
+    AppMethodBeat.i(121066);
+    paramParcel.writeString(this.jRt);
     paramParcel.writeString(this.data);
-    paramParcel.writeInt(this.hMj);
-    AppMethodBeat.o(93752);
+    paramParcel.writeInt(this.jRu);
+    AppMethodBeat.o(121066);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.h5_interact.SendDataToH5FromMiniProgramEvent
  * JD-Core Version:    0.7.0.1
  */

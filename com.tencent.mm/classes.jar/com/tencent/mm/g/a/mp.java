@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class mp
   extends b
 {
-  public mp.a cCM;
+  public a drJ;
   
   public mp()
   {
@@ -15,16 +16,22 @@ public final class mp
   
   private mp(byte paramByte)
   {
-    AppMethodBeat.i(60264);
-    this.cCM = new mp.a();
-    this.ymq = false;
+    AppMethodBeat.i(77797);
+    this.drJ = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(60264);
+    AppMethodBeat.o(77797);
+  }
+  
+  public static final class a
+  {
+    public String drK;
+    public Bundle params;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.mp
  * JD-Core Version:    0.7.0.1
  */

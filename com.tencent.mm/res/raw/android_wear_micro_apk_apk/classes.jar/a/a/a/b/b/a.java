@@ -16,40 +16,69 @@ public final class a
     this.limit = (paramInt2 + 0);
   }
   
-  private void ao(int paramInt1, int paramInt2)
+  private void a(byte[] paramArrayOfByte, int paramInt)
   {
-    cq(a.a.a.b.a.al(paramInt1, paramInt2));
+    if (paramArrayOfByte == null) {}
+    int i;
+    do
+    {
+      return;
+      if (this.limit - this.position >= paramInt)
+      {
+        System.arraycopy(paramArrayOfByte, 0, this.buffer, this.position, paramInt);
+        this.position += paramInt;
+        return;
+      }
+      i = this.limit - this.position;
+      System.arraycopy(paramArrayOfByte, 0, this.buffer, this.position, i);
+      paramInt -= i;
+      this.position = this.limit;
+    } while (paramInt > this.limit);
+    System.arraycopy(paramArrayOfByte, i + 0, this.buffer, 0, paramInt);
+    this.position = paramInt;
   }
   
-  private void co(int paramInt)
+  private void ar(int paramInt1, int paramInt2)
   {
-    int i = (byte)paramInt;
+    cL(a.a.a.b.a.ao(paramInt1, paramInt2));
+  }
+  
+  public static int b(int paramInt, b paramb)
+  {
+    if (paramb == null) {
+      return 0;
+    }
+    return cK(paramInt) + cM(paramb.size()) + paramb.size();
+  }
+  
+  private void b(byte paramByte)
+  {
     byte[] arrayOfByte = this.buffer;
-    paramInt = this.position;
-    this.position = (paramInt + 1);
-    arrayOfByte[paramInt] = i;
+    int i = this.position;
+    this.position = (i + 1);
+    arrayOfByte[i] = paramByte;
   }
   
-  public static int cp(int paramInt)
+  public static int cK(int paramInt)
   {
-    return cr(a.a.a.b.a.al(paramInt, 0));
+    return cM(a.a.a.b.a.ao(paramInt, 0));
   }
   
-  private void cq(int paramInt)
+  private void cL(int paramInt)
   {
     for (;;)
     {
       if ((paramInt & 0xFFFFFF80) == 0)
       {
-        co(paramInt);
+        b((byte)paramInt);
         return;
       }
-      co(paramInt & 0x7F | 0x80);
+      b((byte)(paramInt & 0x7F | 0x80));
       paramInt >>>= 7;
     }
   }
   
-  public static int cr(int paramInt)
+  public static int cM(int paramInt)
   {
     if ((paramInt & 0xFFFFFF80) == 0) {
       return 1;
@@ -74,8 +103,8 @@ public final class a
     try
     {
       paramString = paramString.getBytes("UTF-8");
-      paramInt = cp(paramInt);
-      int i = cr(paramString.length);
+      paramInt = cK(paramInt);
+      int i = cM(paramString.length);
       int j = paramString.length;
       return j + (paramInt + i);
     }
@@ -85,16 +114,47 @@ public final class a
     }
   }
   
-  private void l(long paramLong)
+  public static int f(int paramInt, long paramLong)
+  {
+    int i = cK(paramInt);
+    if ((0xFFFFFF80 & paramLong) == 0L) {
+      paramInt = 1;
+    }
+    for (;;)
+    {
+      return paramInt + i;
+      if ((0xFFFFC000 & paramLong) == 0L) {
+        paramInt = 2;
+      } else if ((0xFFE00000 & paramLong) == 0L) {
+        paramInt = 3;
+      } else if ((0xF0000000 & paramLong) == 0L) {
+        paramInt = 4;
+      } else if ((0x0 & paramLong) == 0L) {
+        paramInt = 5;
+      } else if ((0x0 & paramLong) == 0L) {
+        paramInt = 6;
+      } else if ((0x0 & paramLong) == 0L) {
+        paramInt = 7;
+      } else if ((0x0 & paramLong) == 0L) {
+        paramInt = 8;
+      } else if ((0x0 & paramLong) == 0L) {
+        paramInt = 9;
+      } else {
+        paramInt = 10;
+      }
+    }
+  }
+  
+  private void o(long paramLong)
   {
     for (;;)
     {
       if ((0xFFFFFF80 & paramLong) == 0L)
       {
-        co((int)paramLong);
+        b((byte)(int)paramLong);
         return;
       }
-      co((int)paramLong & 0x7F | 0x80);
+      b((byte)((int)paramLong & 0x7F | 0x80));
       paramLong >>>= 7;
     }
   }
@@ -106,81 +166,62 @@ public final class a
   
   private void s(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {}
-    int j;
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        j = paramArrayOfByte.length;
-      } while (paramArrayOfByte == null);
-      if (this.limit - this.position >= j)
-      {
-        System.arraycopy(paramArrayOfByte, 0, this.buffer, this.position, j);
-        this.position = (j + this.position);
-        return;
-      }
-      i = this.limit - this.position;
-      System.arraycopy(paramArrayOfByte, 0, this.buffer, this.position, i);
-      j -= i;
-      this.position = this.limit;
-    } while (j > this.limit);
-    System.arraycopy(paramArrayOfByte, i + 0, this.buffer, 0, j);
-    this.position = j;
+    if (paramArrayOfByte == null) {
+      return;
+    }
+    a(paramArrayOfByte, paramArrayOfByte.length);
   }
   
   public final void a(int paramInt, double paramDouble)
   {
-    ao(paramInt, 1);
+    ar(paramInt, 1);
     long l = Double.doubleToLongBits(paramDouble);
-    co((int)l & 0xFF);
-    co((int)(l >> 8) & 0xFF);
-    co((int)(l >> 16) & 0xFF);
-    co((int)(l >> 24) & 0xFF);
-    co((int)(l >> 32) & 0xFF);
-    co((int)(l >> 40) & 0xFF);
-    co((int)(l >> 48) & 0xFF);
-    co((int)(l >> 56) & 0xFF);
+    b((byte)((int)l & 0xFF));
+    b((byte)((int)(l >> 8) & 0xFF));
+    b((byte)((int)(l >> 16) & 0xFF));
+    b((byte)((int)(l >> 24) & 0xFF));
+    b((byte)((int)(l >> 32) & 0xFF));
+    b((byte)((int)(l >> 40) & 0xFF));
+    b((byte)((int)(l >> 48) & 0xFF));
+    b((byte)((int)(l >> 56) & 0xFF));
   }
   
-  public final void am(int paramInt1, int paramInt2)
-  {
-    ao(paramInt1, 0);
-    if (paramInt2 >= 0)
-    {
-      cq(paramInt2);
-      return;
-    }
-    l(paramInt2);
-  }
-  
-  public final void an(int paramInt1, int paramInt2)
-  {
-    ao(paramInt1, 2);
-    cq(paramInt2);
-  }
-  
-  public final void b(int paramInt, b paramb)
+  public final void a(int paramInt, b paramb)
   {
     if (paramb == null) {
       return;
     }
-    ao(paramInt, 2);
+    ar(paramInt, 2);
     paramb = paramb.toByteArray();
-    cq(paramb.length);
+    cL(paramb.length);
     s(paramb);
   }
   
-  public final void c(int paramInt, float paramFloat)
+  public final void ap(int paramInt1, int paramInt2)
   {
-    ao(paramInt, 5);
+    ar(paramInt1, 0);
+    if (paramInt2 >= 0)
+    {
+      cL(paramInt2);
+      return;
+    }
+    o(paramInt2);
+  }
+  
+  public final void aq(int paramInt1, int paramInt2)
+  {
+    ar(paramInt1, 2);
+    cL(paramInt2);
+  }
+  
+  public final void d(int paramInt, float paramFloat)
+  {
+    ar(paramInt, 5);
     paramInt = Float.floatToIntBits(paramFloat);
-    co(paramInt & 0xFF);
-    co(paramInt >> 8 & 0xFF);
-    co(paramInt >> 16 & 0xFF);
-    co(paramInt >> 24 & 0xFF);
+    b((byte)(paramInt & 0xFF));
+    b((byte)(paramInt >> 8 & 0xFF));
+    b((byte)(paramInt >> 16 & 0xFF));
+    b((byte)(paramInt >> 24 & 0xFF));
   }
   
   public final void d(int paramInt, String paramString)
@@ -188,27 +229,27 @@ public final class a
     if (paramString == null) {
       return;
     }
-    ao(paramInt, 2);
+    ar(paramInt, 2);
     paramString = paramString.getBytes("UTF-8");
-    cq(paramString.length);
+    cL(paramString.length);
     s(paramString);
   }
   
-  public final void f(int paramInt, long paramLong)
+  public final void e(int paramInt, long paramLong)
   {
-    ao(paramInt, 0);
-    l(paramLong);
+    ar(paramInt, 0);
+    o(paramLong);
   }
   
-  public final void f(int paramInt, boolean paramBoolean)
+  public final void g(int paramInt, boolean paramBoolean)
   {
     int i = 0;
-    ao(paramInt, 0);
+    ar(paramInt, 0);
     paramInt = i;
     if (paramBoolean) {
       paramInt = 1;
     }
-    co(paramInt);
+    b((byte)paramInt);
   }
 }
 

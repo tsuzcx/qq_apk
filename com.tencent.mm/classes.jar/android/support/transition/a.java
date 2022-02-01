@@ -6,35 +6,23 @@ import android.os.Build.VERSION;
 
 final class a
 {
-  private static final d qg = new b();
-  
-  static
+  static void a(Animator paramAnimator, AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      qg = new c();
-      return;
+    if (Build.VERSION.SDK_INT >= 19) {
+      paramAnimator.addPauseListener(paramAnimatorListenerAdapter);
     }
   }
   
-  static void a(Animator paramAnimator, AnimatorListenerAdapter paramAnimatorListenerAdapter)
+  static abstract interface a
   {
-    qg.a(paramAnimator, paramAnimatorListenerAdapter);
-  }
-  
-  static void b(Animator paramAnimator)
-  {
-    qg.b(paramAnimator);
-  }
-  
-  static void c(Animator paramAnimator)
-  {
-    qg.c(paramAnimator);
+    public abstract void onAnimationPause(Animator paramAnimator);
+    
+    public abstract void onAnimationResume(Animator paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.a
  * JD-Core Version:    0.7.0.1
  */

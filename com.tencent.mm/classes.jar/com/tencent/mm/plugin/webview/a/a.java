@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.webview.a;
 
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.k;
+import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.pluginsdk.o;
-import com.tencent.mm.sdk.g.a.e;
-import com.tencent.mm.sdk.g.d;
 
 public final class a
-  implements o
+  implements m
 {
-  public static n gmO;
-  public static m gmP;
+  public static l hYt;
+  public static k hYu;
   
-  public static void O(Runnable paramRunnable)
+  public static void ae(Runnable paramRunnable)
   {
-    AppMethodBeat.i(5622);
+    AppMethodBeat.i(77826);
     if (0L > 0L)
     {
-      d.ysm.b(paramRunnable, "WebViewWorkerThread", 0L);
-      AppMethodBeat.o(5622);
+      h.Iye.a(paramRunnable, 0L, "WebViewWorkerThread");
+      AppMethodBeat.o(77826);
       return;
     }
-    d.ysm.b(paramRunnable, "WebViewWorkerThread");
-    AppMethodBeat.o(5622);
+    h.Iye.f(paramRunnable, "WebViewWorkerThread");
+    AppMethodBeat.o(77826);
   }
   
-  public final void a(m paramm)
+  public final void a(k paramk)
   {
-    gmP = paramm;
+    hYu = paramk;
   }
   
-  public final void a(n paramn)
+  public final void a(l paraml)
   {
-    gmO = paramn;
+    hYt = paraml;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,38 @@
 package com.tencent.mm.plugin.extaccessories;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public m createApplication()
   {
-    AppMethodBeat.i(20461);
+    AppMethodBeat.i(24538);
     a locala = new a();
-    AppMethodBeat.o(20461);
+    AppMethodBeat.o(24538);
     return locala;
   }
   
-  public at createSubCore()
+  public aw createSubCore()
   {
-    AppMethodBeat.i(20462);
+    AppMethodBeat.i(24539);
     b localb = new b();
-    AppMethodBeat.o(20462);
+    AppMethodBeat.o(24539);
     return localb;
   }
   
-  public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.extaccessories.Plugin
  * JD-Core Version:    0.7.0.1
  */

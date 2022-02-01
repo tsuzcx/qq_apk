@@ -10,7 +10,7 @@ public abstract class f
   implements d
 {
   private static final String TAG = "MMKernel.Plugin";
-  private boolean mConfigured = false;
+  private volatile boolean mConfigured = false;
   private boolean mDependencyMade = false;
   private boolean mInstalled = false;
   private boolean mIsPendingPlugin = false;
@@ -19,11 +19,11 @@ public abstract class f
   
   private void checkIfNeedDefaultDependency()
   {
-    Object localObject = h.RP().RH();
+    Object localObject = h.afF().afx();
     Class localClass = getClass();
-    if (!((com.tencent.mm.kernel.c)localObject).eHF.aw(localClass))
+    if (!((com.tencent.mm.kernel.c)localObject).gcK.by(localClass))
     {
-      localObject = h.RP().RH().eHI;
+      localObject = h.afF().afx().gcN;
       if (localObject != null)
       {
         dependsOn((Class)localObject);
@@ -51,7 +51,7 @@ public abstract class f
   {
     Assert.assertNotNull(paramClass);
     Assert.assertTrue(paramClass.isInstance(this));
-    h.RP().RH().d(getClass(), paramClass);
+    h.afF().afx().k(getClass(), paramClass);
   }
   
   public void configure(g paramg) {}
@@ -65,7 +65,7 @@ public abstract class f
       j.w("MMKernel.Plugin", "Ignore this dependency. It's not dependency phase now!", new Object[0]);
       return;
     }
-    h.RP().RH().e(getClass(), paramClass);
+    h.afF().afx().l(getClass(), paramClass);
   }
   
   protected void dependsOnRoot()
@@ -75,7 +75,7 @@ public abstract class f
       j.w("MMKernel.Plugin", "Ignore this dependency. It's not dependency phase now!", new Object[0]);
       return;
     }
-    h.RP().RH().e(getClass(), getClass());
+    h.afF().afx().l(getClass(), getClass());
   }
   
   public int hashCode()
@@ -149,7 +149,7 @@ public abstract class f
       if (!this.mPins.contains(paramc))
       {
         this.mPins.add(paramc);
-        h.RP().RH().a(paramc.getClass(), new e(paramc));
+        h.afF().afx().a(paramc.getClass(), new e(paramc));
       }
       return;
     }
@@ -178,7 +178,7 @@ public abstract class f
       if (this.mPins.contains(paramc))
       {
         this.mPins.remove(paramc);
-        h.RP().RH().F(paramc.getClass());
+        h.afF().afx().ac(paramc.getClass());
       }
       return;
     }

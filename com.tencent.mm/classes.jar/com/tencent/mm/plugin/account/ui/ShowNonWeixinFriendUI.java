@@ -1,71 +1,139 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.d;
-import com.tencent.mm.ah.d.a;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.p;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.g.a.b;
+import com.tencent.mm.ui.g.a.c.a;
 
 public class ShowNonWeixinFriendUI
   extends MMActivity
-  implements d.a
+  implements e.a
 {
-  private long gKo = 0L;
-  private String gKp = "";
+  private long ixU = 0L;
+  private String ixV = "";
   
   public int getLayoutId()
   {
-    return 2130969519;
+    return 2131493932;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(125594);
-    ImageView localImageView = (ImageView)findViewById(2131823967);
-    TextView localTextView1 = (TextView)findViewById(2131823968);
-    TextView localTextView2 = (TextView)findViewById(2131823969);
-    localImageView.setBackgroundDrawable(a.k(this, 2131231221));
-    localImageView.setImageBitmap(b.qN(this.gKo));
-    localTextView1.setText(this.gKp);
-    localTextView2.setText(getString(2131300754, new Object[] { this.gKp }));
-    setBackBtn(new ShowNonWeixinFriendUI.1(this));
-    ((Button)findViewById(2131823970)).setOnClickListener(new ShowNonWeixinFriendUI.2(this));
-    AppMethodBeat.o(125594);
+    AppMethodBeat.i(128756);
+    ImageView localImageView = (ImageView)findViewById(2131301054);
+    TextView localTextView1 = (TextView)findViewById(2131301059);
+    TextView localTextView2 = (TextView)findViewById(2131301060);
+    localImageView.setBackgroundDrawable(a.l(this, 2131690027));
+    localImageView.setImageBitmap(com.tencent.mm.ak.c.vH(this.ixU));
+    localTextView1.setText(this.ixV);
+    localTextView2.setText(getString(2131760355, new Object[] { this.ixV }));
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(128746);
+        ShowNonWeixinFriendUI.this.hideVKB();
+        ShowNonWeixinFriendUI.this.finish();
+        AppMethodBeat.o(128746);
+        return true;
+      }
+    });
+    ((Button)findViewById(2131301057)).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(128752);
+        paramAnonymousView = new com.tencent.mm.ui.g.a.c(ShowNonWeixinFriendUI.this.getString(2131758773));
+        Bundle localBundle = new Bundle();
+        localBundle.putString("message", ShowNonWeixinFriendUI.this.getString(2131758792));
+        localBundle.putString("to", Long.toString(ShowNonWeixinFriendUI.a(ShowNonWeixinFriendUI.this)));
+        paramAnonymousView.a(ShowNonWeixinFriendUI.this, "apprequests", localBundle, new c.a()
+        {
+          public final void a(b paramAnonymous2b)
+          {
+            AppMethodBeat.i(128749);
+            ad.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite error");
+            AppMethodBeat.o(128749);
+          }
+          
+          public final void a(com.tencent.mm.ui.g.a.e paramAnonymous2e)
+          {
+            AppMethodBeat.i(128748);
+            ad.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite error");
+            AppMethodBeat.o(128748);
+          }
+          
+          public final void onCancel()
+          {
+            AppMethodBeat.i(128751);
+            ad.e("MicroMsg.ShowNonWeixinFriendUI", "fbinvite cancle");
+            AppMethodBeat.o(128751);
+          }
+          
+          public final void w(Bundle paramAnonymous2Bundle)
+          {
+            AppMethodBeat.i(128750);
+            ad.i("MicroMsg.ShowNonWeixinFriendUI", "fbinvite oncomplete");
+            h.a(ShowNonWeixinFriendUI.this.getContext(), 2131758797, 2131755906, new DialogInterface.OnClickListener()
+            {
+              public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
+              {
+                AppMethodBeat.i(128747);
+                ShowNonWeixinFriendUI.this.finish();
+                AppMethodBeat.o(128747);
+              }
+            });
+            AppMethodBeat.o(128750);
+          }
+        });
+        AppMethodBeat.o(128752);
+      }
+    });
+    AppMethodBeat.o(128756);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(125591);
+    AppMethodBeat.i(128753);
     super.onCreate(paramBundle);
-    setMMTitle(2131300756);
-    this.gKo = getIntent().getLongExtra("Contact_KFacebookId", 0L);
-    this.gKp = getIntent().getStringExtra("Contact_KFacebookName");
+    setMMTitle(2131760357);
+    this.ixU = getIntent().getLongExtra("Contact_KFacebookId", 0L);
+    this.ixV = getIntent().getStringExtra("Contact_KFacebookName");
     initView();
-    AppMethodBeat.o(125591);
+    AppMethodBeat.o(128753);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(125592);
+    AppMethodBeat.i(128754);
     super.onPause();
-    o.acQ().e(this);
-    AppMethodBeat.o(125592);
+    p.auq().e(this);
+    AppMethodBeat.o(128754);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(125593);
+    AppMethodBeat.i(128755);
     super.onResume();
-    o.acQ().d(this);
-    AppMethodBeat.o(125593);
+    p.auq().d(this);
+    AppMethodBeat.o(128755);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -74,16 +142,16 @@ public class ShowNonWeixinFriendUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void re(String paramString)
+  public final void vZ(String paramString)
   {
-    AppMethodBeat.i(125595);
+    AppMethodBeat.i(128757);
     initView();
-    AppMethodBeat.o(125595);
+    AppMethodBeat.o(128757);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.ShowNonWeixinFriendUI
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.af;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,41 +16,41 @@ import java.util.List;
 public class RoomManagerPreference
   extends Preference
 {
-  private List<ad> elk;
+  private List<af> fsy;
   
   public RoomManagerPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(104472);
-    this.elk = new LinkedList();
-    AppMethodBeat.o(104472);
+    AppMethodBeat.i(13014);
+    this.fsy = new LinkedList();
+    AppMethodBeat.o(13014);
   }
   
   public RoomManagerPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(104471);
-    this.elk = new LinkedList();
-    AppMethodBeat.o(104471);
+    AppMethodBeat.i(13013);
+    this.fsy = new LinkedList();
+    AppMethodBeat.o(13013);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(104473);
+    AppMethodBeat.i(13015);
     super.onBindView(paramView);
-    ((TextView)paramView.findViewById(2131820680)).setText(getTitle());
-    ImageView localImageView1 = (ImageView)paramView.findViewById(2131827381);
-    ImageView localImageView2 = (ImageView)paramView.findViewById(2131827382);
-    paramView = (ImageView)paramView.findViewById(2131827383);
+    ((TextView)paramView.findViewById(2131305902)).setText(getTitle());
+    ImageView localImageView1 = (ImageView)paramView.findViewById(2131300875);
+    ImageView localImageView2 = (ImageView)paramView.findViewById(2131300876);
+    paramView = (ImageView)paramView.findViewById(2131300877);
     localImageView1.setVisibility(4);
     localImageView2.setVisibility(4);
     paramView.setVisibility(4);
     int i = 0;
-    if (i < this.elk.size())
+    if (i < this.fsy.size())
     {
       if (i == 0)
       {
-        a.b.a(localImageView1, ((ad)this.elk.get(0)).field_username, 0.15F, false);
+        a.b.a(localImageView1, ((af)this.fsy.get(0)).field_username, 0.15F, false);
         localImageView1.setVisibility(0);
       }
       for (;;)
@@ -59,22 +59,22 @@ public class RoomManagerPreference
         break;
         if (1 == i)
         {
-          a.b.a(localImageView2, ((ad)this.elk.get(1)).field_username, 0.15F, false);
+          a.b.a(localImageView2, ((af)this.fsy.get(1)).field_username, 0.15F, false);
           localImageView2.setVisibility(0);
         }
         else if (2 == i)
         {
           paramView.setVisibility(0);
-          a.b.a(paramView, ((ad)this.elk.get(2)).field_username, 0.15F, false);
+          a.b.a(paramView, ((af)this.fsy.get(2)).field_username, 0.15F, false);
         }
       }
     }
-    AppMethodBeat.o(104473);
+    AppMethodBeat.o(13015);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.preference.RoomManagerPreference
  * JD-Core Version:    0.7.0.1
  */

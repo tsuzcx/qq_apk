@@ -1,132 +1,133 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.az;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class l
-  implements com.tencent.mm.ai.f
+  implements g
 {
-  public int trh;
-  public int trt;
-  private String tru;
-  public int trv;
-  public a trw;
+  public int zdD;
+  private String zdE;
+  public int zdF;
+  public a zdG;
+  public int zdr;
   
   public l()
   {
-    AppMethodBeat.i(26111);
-    this.trt = 71;
-    this.tru = null;
-    this.trv = 0;
-    this.trh = 0;
-    this.trw = null;
-    aw.Rc().a(611, this);
-    aw.Rc().a(612, this);
-    AppMethodBeat.o(26111);
+    AppMethodBeat.i(29792);
+    this.zdD = 71;
+    this.zdE = null;
+    this.zdF = 0;
+    this.zdr = 0;
+    this.zdG = null;
+    az.aeS().a(611, this);
+    az.aeS().a(612, this);
+    AppMethodBeat.o(29792);
   }
   
   public l(a parama)
   {
     this();
-    this.trw = parama;
+    this.zdG = parama;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(26112);
-    ab.d("MicroMsg.VoicePrintCreateService", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(29793);
+    ad.d("MicroMsg.VoicePrintCreateService", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 != 0) && (paramInt2 != 0))
     {
       if (paramInt2 == -34)
       {
-        ab.d("MicroMsg.VoicePrintCreateService", "blocked by limit");
-        if (this.trw != null) {
-          this.trw.cLg();
+        ad.d("MicroMsg.VoicePrintCreateService", "blocked by limit");
+        if (this.zdG != null) {
+          this.zdG.atb(paramString);
         }
-        AppMethodBeat.o(26112);
+        AppMethodBeat.o(29793);
         return;
       }
-      if (this.trw != null) {
-        this.trw.cLf();
+      if (this.zdG != null) {
+        this.zdG.dRn();
       }
-      AppMethodBeat.o(26112);
+      AppMethodBeat.o(29793);
       return;
     }
-    if (paramm.getType() == 611)
+    if (paramn.getType() == 611)
     {
-      paramString = (d)paramm;
-      this.trv = paramString.tra;
-      this.tru = paramString.tqZ;
-      ab.d("MicroMsg.VoicePrintCreateService", "onFinishGetText, resId:%d, voiceText==null:%b", new Object[] { Integer.valueOf(this.trv), Boolean.valueOf(bo.isNullOrNil(this.tru)) });
-      if (this.trw != null)
+      paramString = (d)paramn;
+      this.zdF = paramString.zdk;
+      this.zdE = paramString.zdj;
+      ad.d("MicroMsg.VoicePrintCreateService", "onFinishGetText, resId:%d, voiceText==null:%b", new Object[] { Integer.valueOf(this.zdF), Boolean.valueOf(bt.isNullOrNil(this.zdE)) });
+      if (this.zdG != null)
       {
-        if (this.trt != 71) {
-          break label332;
+        if (this.zdD != 71) {
+          break label333;
         }
-        this.trw.aeB(this.tru);
+        this.zdG.asZ(this.zdE);
       }
     }
-    if (paramm.getType() == 612)
+    if (paramn.getType() == 612)
     {
-      paramString = (f)paramm;
-      if (((paramString.trj != 72) || (paramString.DW != 0)) && (paramString.trj != 71)) {
-        break label357;
+      paramString = (f)paramn;
+      if (((paramString.zdt != 72) || (paramString.KI != 0)) && (paramString.zdt != 71)) {
+        break label358;
       }
       paramInt1 = 1;
-      label238:
+      label239:
       if (paramInt1 == 0) {
-        break label362;
+        break label363;
       }
-      ab.d("MicroMsg.VoicePrintCreateService", "onRegister, ok, step:%d", new Object[] { Integer.valueOf(paramString.trj) });
-      this.trh = paramString.trh;
-      if (this.trw != null) {
-        this.trw.F(true, paramString.trj);
+      ad.d("MicroMsg.VoicePrintCreateService", "onRegister, ok, step:%d", new Object[] { Integer.valueOf(paramString.zdt) });
+      this.zdr = paramString.zdr;
+      if (this.zdG != null) {
+        this.zdG.P(true, paramString.zdt);
       }
     }
     for (;;)
     {
-      if ((paramInt1 != 0) && (paramString.trj == 71) && (this.trw != null)) {
-        this.trw.aeC(this.tru);
+      if ((paramInt1 != 0) && (paramString.zdt == 71) && (this.zdG != null)) {
+        this.zdG.ata(this.zdE);
       }
-      AppMethodBeat.o(26112);
+      AppMethodBeat.o(29793);
       return;
-      label332:
-      if (this.trt != 72) {
+      label333:
+      if (this.zdD != 72) {
         break;
       }
-      this.trw.aeC(this.tru);
+      this.zdG.ata(this.zdE);
       break;
-      label357:
+      label358:
       paramInt1 = 0;
-      break label238;
-      label362:
-      ab.d("MicroMsg.VoicePrintCreateService", "onRegister, not ok, step:%d", new Object[] { Integer.valueOf(paramString.trj) });
-      if (this.trw != null) {
-        this.trw.F(false, paramString.trj);
+      break label239;
+      label363:
+      ad.d("MicroMsg.VoicePrintCreateService", "onRegister, not ok, step:%d", new Object[] { Integer.valueOf(paramString.zdt) });
+      if (this.zdG != null) {
+        this.zdG.P(false, paramString.zdt);
       }
     }
   }
   
   public static abstract interface a
   {
-    public abstract void F(boolean paramBoolean, int paramInt);
+    public abstract void P(boolean paramBoolean, int paramInt);
     
-    public abstract void aeB(String paramString);
+    public abstract void asZ(String paramString);
     
-    public abstract void aeC(String paramString);
+    public abstract void ata(String paramString);
     
-    public abstract void cLf();
+    public abstract void atb(String paramString);
     
-    public abstract void cLg();
+    public abstract void dRn();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.l
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/a53" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/dl" android:paddingRight="@dimen/m1" android:paddingBottom="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/cfr" android:background="@drawable/b0n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/h"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/dbd" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt">
-        <com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView android:id="@id/dbe" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" android:scaleType="fitXY" android:layout_centerInParent="true" />
-        <ImageView android:id="@id/dbf" android:background="@null" android:layout_width="@dimen/n8" android:layout_height="@dimen/n8" android:src="@drawable/avn" android:scaleType="centerInside" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <FrameLayout android:id="@id/dbg" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/n_" android:layout_weight="1.0">
-        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/wj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:progressDrawable="@drawable/z6" android:minHeight="@dimen/a9k" style="?android:attr/progressBarStyleHorizontal" />
-        <TextView android:textSize="@dimen/ko" android:layout_gravity="center_vertical" android:id="@id/c1h" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/elj" />
-    </FrameLayout>
-    <ImageButton android:id="@id/azb" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/si" />
+    <com.tencent.mm.ui.MMImageView android:id="@id/ffe" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@raw/default_avatar" android:scaleType="centerCrop" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/a_u" android:layout_gravity="center_vertical" android:id="@id/ff9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:singleLine="true" />
 </LinearLayout>

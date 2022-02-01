@@ -16,16 +16,16 @@ public final class zzg
   
   public final void send(Message paramMessage)
   {
-    AppMethodBeat.i(108677);
+    AppMethodBeat.i(4113);
     Parcel localParcel = obtainAndWriteInterfaceToken();
     zzc.zza(localParcel, paramMessage);
     transactOneway(1, localParcel);
-    AppMethodBeat.o(108677);
+    AppMethodBeat.o(4113);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.firebase_messaging.zzg
  * JD-Core Version:    0.7.0.1
  */

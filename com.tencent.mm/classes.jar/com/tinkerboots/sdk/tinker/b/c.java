@@ -18,63 +18,63 @@ public final class c
   
   public final void a(File paramFile, SharePatchInfo paramSharePatchInfo, String paramString)
   {
-    AppMethodBeat.i(65548);
+    AppMethodBeat.i(3455);
     super.a(paramFile, paramSharePatchInfo, paramString);
-    AppMethodBeat.o(65548);
+    AppMethodBeat.o(3455);
   }
   
   public final void a(File paramFile1, File paramFile2, String paramString, int paramInt)
   {
-    AppMethodBeat.i(65547);
+    AppMethodBeat.i(3454);
     super.a(paramFile1, paramFile2, paramString, paramInt);
-    AppMethodBeat.o(65547);
-  }
-  
-  public final void a(File paramFile, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(65545);
-    super.a(paramFile, paramString1, paramString2);
-    AppMethodBeat.o(65545);
+    AppMethodBeat.o(3454);
   }
   
   public final void a(File paramFile, Throwable paramThrowable)
   {
-    AppMethodBeat.i(65544);
+    AppMethodBeat.i(3451);
     super.a(paramFile, paramThrowable);
-    AppMethodBeat.o(65544);
+    AppMethodBeat.o(3451);
   }
   
   public final void a(File paramFile, List<File> paramList, Throwable paramThrowable)
   {
-    AppMethodBeat.i(65543);
+    AppMethodBeat.i(3450);
     super.a(paramFile, paramList, paramThrowable);
-    AppMethodBeat.o(65543);
+    AppMethodBeat.o(3450);
   }
   
   public final void a(File paramFile, boolean paramBoolean, long paramLong)
   {
-    AppMethodBeat.i(65542);
+    AppMethodBeat.i(3449);
     super.a(paramFile, paramBoolean, paramLong);
-    AppMethodBeat.o(65542);
+    AppMethodBeat.o(3449);
   }
   
-  public final void ac(Intent paramIntent)
+  public final void aq(Intent paramIntent)
   {
-    AppMethodBeat.i(65541);
-    super.ac(paramIntent);
-    AppMethodBeat.o(65541);
+    AppMethodBeat.i(3448);
+    super.aq(paramIntent);
+    AppMethodBeat.o(3448);
+  }
+  
+  public final void b(File paramFile, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(3452);
+    super.b(paramFile, paramString1, paramString2);
+    AppMethodBeat.o(3452);
   }
   
   public final void e(File paramFile, int paramInt)
   {
-    AppMethodBeat.i(65546);
+    AppMethodBeat.i(3453);
     super.e(paramFile, paramInt);
-    AppMethodBeat.o(65546);
+    AppMethodBeat.o(3453);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tinkerboots.sdk.tinker.b.c
  * JD-Core Version:    0.7.0.1
  */

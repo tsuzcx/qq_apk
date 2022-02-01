@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.view.TouchableLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/f31" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/aix" app:refreshLayout="@layout/bde">
+            <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/g9h" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </android.support.design.widget.CoordinatorLayout>
+    <LinearLayout android:gravity="center" android:id="@id/hab" android:background="@color/BW_93" android:paddingTop="@dimen/c0" android:paddingBottom="@dimen/c0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@raw/finder_self_feed_like_arrow" android:rotation="-90.0" app:iconColor="@color/km" />
+        <TextView android:textSize="@dimen/c0" android:textColor="@color/km" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hi2" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.finder.view.TestPreloadPreview android:layout_gravity="top" android:id="@id/g6d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</com.tencent.mm.view.TouchableLayout>

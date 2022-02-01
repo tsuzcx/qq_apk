@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.story.ui.view;
 
-import a.f.b.j;
-import a.l;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -12,85 +10,87 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.plugin.story.api.AbsStoryMuteView;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.ui.am;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/view/StoryMuteView;", "Lcom/tencent/mm/plugin/story/api/AbsStoryMuteView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "MUTE_IN_BG_PADDING", "MUTE_OUT_BG_PADDING", "mMuteBg", "Landroid/widget/ImageView;", "mMuteTv", "Landroid/widget/TextView;", "muteDrawable", "Landroid/graphics/drawable/Drawable;", "initViews", "", "measureDimension", "defaultSize", "parentMeasureSpec", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "triggerMuteIn", "triggerMuteOut", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/StoryMuteView;", "Lcom/tencent/mm/plugin/story/api/AbsStoryMuteView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "MUTE_IN_BG_PADDING", "MUTE_OUT_BG_PADDING", "mMuteBg", "Landroid/widget/ImageView;", "mMuteTv", "Landroid/widget/TextView;", "muteDrawable", "Landroid/graphics/drawable/Drawable;", "initViews", "", "measureDimension", "defaultSize", "parentMeasureSpec", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "triggerMuteIn", "triggerMuteOut", "plugin-story_release"})
 public final class StoryMuteView
   extends AbsStoryMuteView
 {
-  private final int sNe;
-  private final int sNf;
-  private Drawable sNg;
-  private TextView sNh;
-  private ImageView sNi;
+  private final int ywN;
+  private final int ywO;
+  private Drawable ywP;
+  private TextView ywQ;
+  private ImageView ywR;
   
   public StoryMuteView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(110446);
-    this.sNe = 30;
-    cFy();
-    AppMethodBeat.o(110446);
+    AppMethodBeat.i(120281);
+    this.ywN = 30;
+    aFZ();
+    AppMethodBeat.o(120281);
   }
   
   public StoryMuteView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(110447);
-    this.sNe = 30;
-    cFy();
-    AppMethodBeat.o(110447);
+    AppMethodBeat.i(120282);
+    this.ywN = 30;
+    aFZ();
+    AppMethodBeat.o(120282);
   }
   
   public StoryMuteView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(110448);
-    this.sNe = 30;
-    cFy();
-    AppMethodBeat.o(110448);
+    AppMethodBeat.i(120283);
+    this.ywN = 30;
+    aFZ();
+    AppMethodBeat.o(120283);
   }
   
-  private final void cFy()
+  private final void aFZ()
   {
-    AppMethodBeat.i(110441);
-    LayoutInflater.from(getContext()).inflate(2130970967, (ViewGroup)this);
-    this.sNh = ((TextView)findViewById(2131828438));
-    this.sNi = ((ImageView)findViewById(2131828437));
+    AppMethodBeat.i(120276);
+    LayoutInflater.from(getContext()).inflate(2131495712, (ViewGroup)this);
+    this.ywQ = ((TextView)findViewById(2131305481));
+    this.ywR = ((ImageView)findViewById(2131305480));
     Object localObject = getContext();
-    j.p(localObject, "context");
-    this.sNg = aj.e(((Context)localObject).getResources().getDrawable(2131231541), -1);
-    localObject = this.sNg;
+    k.g(localObject, "context");
+    this.ywP = am.e(((Context)localObject).getResources().getDrawable(2131690675), -1);
+    localObject = this.ywP;
     if (localObject == null) {
-      j.ebi();
+      k.fvU();
     }
     ((Drawable)localObject).setBounds(0, 0, a.fromDPToPix(getContext(), 48), a.fromDPToPix(getContext(), 48));
-    localObject = this.sNh;
+    localObject = this.ywQ;
     if (localObject != null) {
-      ((TextView)localObject).setCompoundDrawables(null, this.sNg, null, null);
+      ((TextView)localObject).setCompoundDrawables(null, this.ywP, null, null);
     }
-    localObject = this.sNh;
+    localObject = this.ywQ;
     if (localObject != null)
     {
       Context localContext = getContext();
-      j.p(localContext, "context");
-      ((TextView)localObject).setText((CharSequence)localContext.getResources().getString(2131304177));
+      k.g(localContext, "context");
+      ((TextView)localObject).setText((CharSequence)localContext.getResources().getString(2131764287));
     }
-    localObject = this.sNi;
+    localObject = this.ywR;
     if (localObject != null)
     {
-      ((ImageView)localObject).setPadding(this.sNf, this.sNe, this.sNe, this.sNf);
-      AppMethodBeat.o(110441);
+      ((ImageView)localObject).setPadding(this.ywO, this.ywN, this.ywN, this.ywO);
+      AppMethodBeat.o(120276);
       return;
     }
-    AppMethodBeat.o(110441);
+    AppMethodBeat.o(120276);
   }
   
-  private static int gd(int paramInt1, int paramInt2)
+  private static int hI(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(110442);
+    AppMethodBeat.i(120277);
     int j = View.MeasureSpec.getMode(paramInt2);
     int i = View.MeasureSpec.getSize(paramInt2);
     if (j == 1073741824) {
@@ -98,7 +98,7 @@ public final class StoryMuteView
     }
     for (;;)
     {
-      AppMethodBeat.o(110442);
+      AppMethodBeat.o(120277);
       return paramInt2;
       paramInt2 = paramInt1;
       if (j == -2147483648) {
@@ -107,40 +107,40 @@ public final class StoryMuteView
     }
   }
   
-  public final void czi()
+  public final void dFX()
   {
-    AppMethodBeat.i(110444);
-    ImageView localImageView = this.sNi;
+    AppMethodBeat.i(120279);
+    ImageView localImageView = this.ywR;
     if (localImageView != null)
     {
-      localImageView.setPadding(this.sNf, this.sNf, this.sNf, this.sNf);
-      AppMethodBeat.o(110444);
+      localImageView.setPadding(this.ywO, this.ywO, this.ywO, this.ywO);
+      AppMethodBeat.o(120279);
       return;
     }
-    AppMethodBeat.o(110444);
+    AppMethodBeat.o(120279);
   }
   
-  public final void czj()
+  public final void dFY()
   {
-    AppMethodBeat.i(110445);
-    ImageView localImageView = this.sNi;
+    AppMethodBeat.i(120280);
+    ImageView localImageView = this.ywR;
     if (localImageView != null)
     {
-      localImageView.setPadding(this.sNf, this.sNe, this.sNe, this.sNf);
-      AppMethodBeat.o(110445);
+      localImageView.setPadding(this.ywO, this.ywN, this.ywN, this.ywO);
+      AppMethodBeat.o(120280);
       return;
     }
-    AppMethodBeat.o(110445);
+    AppMethodBeat.o(120280);
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(110443);
-    int i = gd(a.ap(getContext(), 2131428633), paramInt1);
-    int j = gd(a.ap(getContext(), 2131428633), paramInt2);
+    AppMethodBeat.i(120278);
+    int i = hI(a.ap(getContext(), 2131166720), paramInt1);
+    int j = hI(a.ap(getContext(), 2131166720), paramInt2);
     super.onMeasure(paramInt1, paramInt2);
     setMeasuredDimension(i, j);
-    AppMethodBeat.o(110443);
+    AppMethodBeat.o(120278);
   }
 }
 

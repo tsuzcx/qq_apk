@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/a5c" android:layout_width="fill_parent" android:layout_height="156.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.MMImageView android:id="@id/fuc" android:layout_width="18.0dip" android:layout_height="18.0dip" />
+    <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/jv" android:textColor="@color/a5d" android:id="@id/fud" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/fy8" />
+</LinearLayout>

@@ -1,18 +1,18 @@
 package com.tencent.tmassistantsdk.downloadclient;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.HandlerThread;
-import android.os.Looper;
 import android.os.Message;
+import com.tencent.e.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.tmassistantsdk.util.ParamPair;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class TMAssistantDownloadSDKMessageThread
-  extends Handler
+  extends ap
 {
   private static TMAssistantDownloadSDKMessageThread mInstance = null;
   private static HandlerThread mMessagehandlerThread = null;
@@ -21,40 +21,36 @@ public class TMAssistantDownloadSDKMessageThread
   private static final int postTaskProgressChangedMessage = 2;
   private static final int postTaskStateChangedMessage = 1;
   
-  private TMAssistantDownloadSDKMessageThread(Looper paramLooper)
+  private TMAssistantDownloadSDKMessageThread(a parama)
   {
-    super(paramLooper);
+    super(parama);
   }
   
   public static TMAssistantDownloadSDKMessageThread getInstance()
   {
     try
     {
-      AppMethodBeat.i(75657);
-      if (mInstance == null)
-      {
-        localObject1 = new HandlerThread("TMAssistantDownloadSDKMessageThread");
-        mMessagehandlerThread = (HandlerThread)localObject1;
-        ((HandlerThread)localObject1).start();
-        mInstance = new TMAssistantDownloadSDKMessageThread(mMessagehandlerThread.getLooper());
+      AppMethodBeat.i(101903);
+      if (mInstance == null) {
+        mInstance = new TMAssistantDownloadSDKMessageThread(a.aOc("TMAssistantDownloadSDKMessageThread"));
       }
-      Object localObject1 = mInstance;
-      AppMethodBeat.o(75657);
-      return localObject1;
+      TMAssistantDownloadSDKMessageThread localTMAssistantDownloadSDKMessageThread = mInstance;
+      AppMethodBeat.o(101903);
+      return localTMAssistantDownloadSDKMessageThread;
     }
     finally {}
   }
   
   public void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(75658);
+    AppMethodBeat.i(101904);
     super.handleMessage(paramMessage);
     switch (paramMessage.what)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(75658);
+      AppMethodBeat.o(101904);
       return;
       Object localObject2 = (ParamPair)paramMessage.obj;
       Object localObject1 = (TMAssistantDownloadSDKClient)((ParamPair)localObject2).mFirstParam;
@@ -69,7 +65,7 @@ public class TMAssistantDownloadSDKMessageThread
       if (localObject2 != null)
       {
         ((ITMAssistantDownloadSDKClientListener)localObject2).OnDownloadSDKTaskStateChanged((TMAssistantDownloadSDKClient)localObject1, str1, i, j, str2, bool1, bool2);
-        AppMethodBeat.o(75658);
+        AppMethodBeat.o(101904);
         return;
         localObject2 = (ParamPair)paramMessage.obj;
         localObject1 = (TMAssistantDownloadSDKClient)((ParamPair)localObject2).mFirstParam;
@@ -81,7 +77,7 @@ public class TMAssistantDownloadSDKMessageThread
         if (localObject2 != null)
         {
           ((ITMAssistantDownloadSDKClientListener)localObject2).OnDownloadSDKTaskProgressChanged((TMAssistantDownloadSDKClient)localObject1, str1, l1, l2);
-          AppMethodBeat.o(75658);
+          AppMethodBeat.o(101904);
           return;
           localObject1 = (ParamPair)paramMessage.obj;
           paramMessage = (TMAssistantDownloadSDKClient)((ParamPair)localObject1).mFirstParam;
@@ -89,7 +85,7 @@ public class TMAssistantDownloadSDKMessageThread
           if (localObject1 != null)
           {
             ((ITMAssistantDownloadSDKClientListener)localObject1).OnDwonloadSDKServiceInvalid(paramMessage);
-            AppMethodBeat.o(75658);
+            AppMethodBeat.o(101904);
             return;
             localObject1 = (ParamPair)paramMessage.obj;
             paramMessage = (byte[])((ParamPair)localObject1).mFirstParam;
@@ -113,7 +109,7 @@ public class TMAssistantDownloadSDKMessageThread
   
   public void postActionResult(byte[] paramArrayOfByte, ArrayList<IAssistantOnActionListener> paramArrayList)
   {
-    AppMethodBeat.i(75662);
+    AppMethodBeat.i(101908);
     if ((paramArrayOfByte != null) && (paramArrayList != null))
     {
       Message localMessage = getInstance().obtainMessage();
@@ -121,31 +117,31 @@ public class TMAssistantDownloadSDKMessageThread
       localMessage.obj = new ParamPair(paramArrayOfByte, paramArrayList);
       localMessage.sendToTarget();
     }
-    AppMethodBeat.o(75662);
+    AppMethodBeat.o(101908);
   }
   
   public void postSDKServiceInvalidMessage(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, ITMAssistantDownloadSDKClientListener paramITMAssistantDownloadSDKClientListener)
   {
-    AppMethodBeat.i(75661);
+    AppMethodBeat.i(101907);
     if ((paramITMAssistantDownloadSDKClientListener == null) || (paramTMAssistantDownloadSDKClient == null))
     {
-      AppMethodBeat.o(75661);
+      AppMethodBeat.o(101907);
       return;
     }
     Message localMessage = getInstance().obtainMessage();
     localMessage.what = 3;
     localMessage.obj = new ParamPair(paramTMAssistantDownloadSDKClient, paramITMAssistantDownloadSDKClientListener);
     localMessage.sendToTarget();
-    AppMethodBeat.o(75661);
+    AppMethodBeat.o(101907);
   }
   
   public void postTaskProgressChangedMessage(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, ITMAssistantDownloadSDKClientListener paramITMAssistantDownloadSDKClientListener, String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75660);
+    AppMethodBeat.i(101906);
     if ((paramITMAssistantDownloadSDKClientListener == null) || (paramTMAssistantDownloadSDKClient == null))
     {
       TMLog.i("TMAssistantDownloadSDKMessageThread", "listenr:" + paramITMAssistantDownloadSDKClientListener + " === sdkClient" + paramTMAssistantDownloadSDKClient);
-      AppMethodBeat.o(75660);
+      AppMethodBeat.o(101906);
       return;
     }
     Message localMessage = getInstance().obtainMessage();
@@ -157,15 +153,15 @@ public class TMAssistantDownloadSDKMessageThread
     paramTMAssistantDownloadSDKClient.putLong("totalDataLen", paramLong2);
     localMessage.setData(paramTMAssistantDownloadSDKClient);
     localMessage.sendToTarget();
-    AppMethodBeat.o(75660);
+    AppMethodBeat.o(101906);
   }
   
   public void postTaskStateChangedMessage(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, ITMAssistantDownloadSDKClientListener paramITMAssistantDownloadSDKClientListener, String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(75659);
+    AppMethodBeat.i(101905);
     if ((paramITMAssistantDownloadSDKClientListener == null) || (paramTMAssistantDownloadSDKClient == null))
     {
-      AppMethodBeat.o(75659);
+      AppMethodBeat.o(101905);
       return;
     }
     Message localMessage = getInstance().obtainMessage();
@@ -180,12 +176,12 @@ public class TMAssistantDownloadSDKMessageThread
     paramTMAssistantDownloadSDKClient.putBoolean("autoRetry", paramBoolean2);
     localMessage.setData(paramTMAssistantDownloadSDKClient);
     localMessage.sendToTarget();
-    AppMethodBeat.o(75659);
+    AppMethodBeat.o(101905);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKMessageThread
  * JD-Core Version:    0.7.0.1
  */

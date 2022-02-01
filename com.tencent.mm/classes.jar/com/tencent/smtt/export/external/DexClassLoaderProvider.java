@@ -2,6 +2,7 @@ package com.tencent.smtt.export.external;
 
 import android.app.Service;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import dalvik.system.BaseDexClassLoader;
@@ -9,15 +10,16 @@ import dalvik.system.DexClassLoader;
 import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class DexClassLoaderProvider
   extends DexClassLoader
 {
   private static final String IS_FIRST_LOAD_DEX_FLAG_FILE = "is_first_load_dex_flag_file";
-  private static final String LAST_DEX_NAME = "tbs_jars_fusion_dex.jar";
-  private static final long LOAD_DEX_DELAY = 3000L;
+  static final String LAST_DEX_NAME = "tbs_shell_dex.jar";
   private static final String LOGTAG = "dexloader";
   protected static DexClassLoader mClassLoaderOriginal = null;
   private static Context mContext = null;
@@ -36,23 +38,23 @@ public class DexClassLoaderProvider
   private DexClassLoaderProvider(String paramString1, String paramString2, String paramString3, ClassLoader paramClassLoader, boolean paramBoolean)
   {
     super(paramString1, paramString2, paramString3, paramClassLoader);
-    AppMethodBeat.i(63730);
+    AppMethodBeat.i(53109);
     this.mClassLoader = null;
     if (paramBoolean)
     {
       new StringBuilder("SpeedyDexClassLoader: ").append(mRealDexPath);
       this.mClassLoader = new SpeedyDexClassLoader(mRealDexPath, null, paramString3, paramClassLoader);
-      AppMethodBeat.o(63730);
+      AppMethodBeat.o(53109);
       return;
     }
     new StringBuilder("DexClassLoader: ").append(mRealDexPath);
     this.mClassLoader = null;
-    AppMethodBeat.o(63730);
+    AppMethodBeat.o(53109);
   }
   
   public static DexClassLoader createDexClassLoader(String paramString1, String paramString2, String paramString3, ClassLoader paramClassLoader, Context paramContext)
   {
-    AppMethodBeat.i(63731);
+    AppMethodBeat.i(53110);
     new StringBuilder("new DexClassLoaderDelegate: ").append(paramString1).append(", context: ").append(paramContext);
     mContext = paramContext.getApplicationContext();
     mRealDexPath = paramString1;
@@ -60,53 +62,85 @@ public class DexClassLoaderProvider
     paramContext = paramString1.substring(0, i + 1);
     paramContext = paramContext + "fake_dex.jar";
     String str = paramString1.substring(i + 1);
-    if ((supportSpeedyClassLoader()) && (is_first_load_tbs_dex(paramString2, str)))
+    if (is_first_load_tbs_dex(paramString2, str))
     {
-      set_first_load_tbs_dex(paramString2, str);
       mInstance = new DexClassLoaderProvider(paramContext, paramString2, paramString3, paramClassLoader, true);
       doAsyncDexLoad(str, paramString1, paramString2, paramString3, paramClassLoader);
     }
     for (;;)
     {
       paramString1 = mInstance;
-      AppMethodBeat.o(63731);
+      AppMethodBeat.o(53110);
       return paramString1;
       mInstance = new DexClassLoaderProvider(paramString1, paramString2, paramString3, paramClassLoader, false);
     }
   }
   
-  private static void doAsyncDexLoad(String paramString1, String paramString2, String paramString3, String paramString4, ClassLoader paramClassLoader)
+  private static void doAsyncDexLoad(final String paramString1, String paramString2, final String paramString3, final String paramString4, final ClassLoader paramClassLoader)
   {
-    AppMethodBeat.i(63732);
-    if (shouldUseDexLoaderService())
+    AppMethodBeat.i(53111);
+    if (shouldSkipAsyncDexLoad())
     {
-      new Timer().schedule(new DexClassLoaderProvider.1(paramString1, paramString2, paramString3, paramString4), 3000L);
-      AppMethodBeat.o(63732);
+      paramClassLoader = new ArrayList(4);
+      paramClassLoader.add(0, paramString1);
+      paramClassLoader.add(1, paramString2);
+      paramClassLoader.add(2, paramString3);
+      paramClassLoader.add(3, paramString4);
+      paramString2 = new Intent(mContext, DexClassLoaderProviderService.class);
+      paramString2.putStringArrayListExtra("dex2oat", paramClassLoader);
+      mContext.startService(paramString2);
+      new StringBuilder("shouldSkipAsyncDexLoad(").append(paramString1).append(", ").append(paramString2).append(")");
+      AppMethodBeat.o(53111);
       return;
     }
     new StringBuilder("Background real dex loading(").append(paramString1).append(")");
-    new Timer().schedule(new DexClassLoaderProvider.2(paramString2, paramString3, paramString4, paramClassLoader, paramString1), 3000L);
-    AppMethodBeat.o(63732);
+    new Timer().schedule(new TimerTask()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(53101);
+        Object localObject = new File(this.val$dexPath.replace(".jar", ".dex"));
+        if ((((File)localObject).exists()) && (((File)localObject).length() != 0L)) {
+          new StringBuilder().append(localObject).append(" existed!");
+        }
+        for (boolean bool = true;; bool = false)
+        {
+          long l1 = System.currentTimeMillis();
+          new DexClassLoader(this.val$dexPath, paramString3, paramString4, paramClassLoader);
+          long l2 = System.currentTimeMillis();
+          DexClassLoaderProvider.access$000(paramString3, paramString1);
+          localObject = String.format("load_dex completed -- cl_cost: %d, existed: %b", new Object[] { Long.valueOf(l2 - l1), Boolean.valueOf(bool) });
+          new StringBuilder().append((String)localObject);
+          if ((DexClassLoaderProvider.mForceLoadDexFlag) && ("tbs_shell_dex.jar".equals(paramString1)) && (DexClassLoaderProvider.mService != null)) {
+            DexClassLoaderProvider.mService.stopSelf();
+          }
+          AppMethodBeat.o(53101);
+          return;
+          new StringBuilder().append(localObject).append(" does not existed!");
+        }
+      }
+    }, 2000L);
+    AppMethodBeat.o(53111);
   }
   
   private static boolean is_first_load_tbs_dex(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(63733);
+    AppMethodBeat.i(53112);
     if (mForceLoadDexFlag)
     {
-      AppMethodBeat.o(63733);
+      AppMethodBeat.o(53112);
       return true;
     }
     if (!new File(paramString1, paramString2 + "_is_first_load_dex_flag_file").exists())
     {
-      AppMethodBeat.o(63733);
+      AppMethodBeat.o(53112);
       return true;
     }
-    AppMethodBeat.o(63733);
+    AppMethodBeat.o(53112);
     return false;
   }
   
-  static void setForceLoadDexFlag(boolean paramBoolean, Service paramService)
+  public static void setForceLoadDexFlag(boolean paramBoolean, Service paramService)
   {
     mForceLoadDexFlag = paramBoolean;
     mService = paramService;
@@ -114,32 +148,27 @@ public class DexClassLoaderProvider
   
   private static void set_first_load_tbs_dex(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(63734);
+    AppMethodBeat.i(53113);
     paramString1 = new File(paramString1, paramString2 + "_is_first_load_dex_flag_file");
     if (!paramString1.exists()) {
       try
       {
         paramString1.createNewFile();
-        AppMethodBeat.o(63734);
+        AppMethodBeat.o(53113);
         return;
       }
       catch (Throwable paramString1) {}
     }
-    AppMethodBeat.o(63734);
+    AppMethodBeat.o(53113);
   }
   
-  private static boolean shouldUseDexLoaderService()
+  private static boolean shouldSkipAsyncDexLoad()
   {
     if (mForceLoadDexFlag) {}
-    while (!DexLoader.mCanUseDexLoaderProviderService) {
+    while (Build.VERSION.SDK_INT != 21) {
       return false;
     }
     return true;
-  }
-  
-  private static boolean supportSpeedyClassLoader()
-  {
-    return (Build.VERSION.SDK_INT != 21) || (DexLoader.mCanUseDexLoaderProviderService);
   }
   
   private boolean useSelfClassloader()
@@ -149,85 +178,90 @@ public class DexClassLoaderProvider
   
   public void clearAssertionStatus()
   {
-    AppMethodBeat.i(63741);
+    AppMethodBeat.i(53120);
     if (useSelfClassloader())
     {
       super.clearAssertionStatus();
-      AppMethodBeat.o(63741);
+      AppMethodBeat.o(53120);
       return;
     }
     this.mClassLoader.clearAssertionStatus();
-    AppMethodBeat.o(63741);
+    AppMethodBeat.o(53120);
   }
   
   protected Package definePackage(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, URL paramURL)
   {
-    AppMethodBeat.i(63742);
+    AppMethodBeat.i(53121);
     if (useSelfClassloader())
     {
       paramString1 = super.definePackage(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramURL);
-      AppMethodBeat.o(63742);
+      AppMethodBeat.o(53121);
       return paramString1;
     }
     paramString1 = this.mClassLoader.definePackage(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramURL);
-    AppMethodBeat.o(63742);
+    AppMethodBeat.o(53121);
     return paramString1;
   }
   
   protected Class<?> findClass(String paramString)
   {
-    AppMethodBeat.i(63735);
+    AppMethodBeat.i(53114);
     if (useSelfClassloader())
     {
       paramString = super.findClass(paramString);
-      AppMethodBeat.o(63735);
+      AppMethodBeat.o(53114);
       return paramString;
     }
     paramString = this.mClassLoader.findClass(paramString);
-    AppMethodBeat.o(63735);
+    AppMethodBeat.o(53114);
     return paramString;
   }
   
   public String findLibrary(String paramString)
   {
-    AppMethodBeat.i(63736);
+    AppMethodBeat.i(53115);
     if (useSelfClassloader())
     {
       paramString = super.findLibrary(paramString);
-      AppMethodBeat.o(63736);
+      AppMethodBeat.o(53115);
       return paramString;
     }
     paramString = this.mClassLoader.findLibrary(paramString);
-    AppMethodBeat.o(63736);
+    AppMethodBeat.o(53115);
     return paramString;
   }
   
   protected URL findResource(String paramString)
   {
-    AppMethodBeat.i(63737);
+    AppMethodBeat.i(53116);
     if (useSelfClassloader())
     {
       paramString = super.findResource(paramString);
-      AppMethodBeat.o(63737);
+      AppMethodBeat.o(53116);
       return paramString;
     }
     paramString = this.mClassLoader.findResource(paramString);
-    AppMethodBeat.o(63737);
+    AppMethodBeat.o(53116);
     return paramString;
   }
   
   protected Enumeration<URL> findResources(String paramString)
   {
-    AppMethodBeat.i(63738);
+    AppMethodBeat.i(53117);
     if (useSelfClassloader())
     {
       paramString = super.findResources(paramString);
-      AppMethodBeat.o(63738);
+      AppMethodBeat.o(53117);
       return paramString;
     }
     paramString = this.mClassLoader.findResources(paramString);
-    AppMethodBeat.o(63738);
+    AppMethodBeat.o(53117);
     return paramString;
+  }
+  
+  SpeedyDexClassLoader getClassLoader()
+  {
+    return this.mClassLoader;
   }
   
   /* Error */
@@ -236,178 +270,183 @@ public class DexClassLoaderProvider
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 239
-    //   4: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: invokespecial 200	com/tencent/smtt/export/external/DexClassLoaderProvider:useSelfClassloader	()Z
-    //   11: ifeq +18 -> 29
-    //   14: aload_0
-    //   15: aload_1
-    //   16: invokespecial 241	dalvik/system/DexClassLoader:getPackage	(Ljava/lang/String;)Ljava/lang/Package;
-    //   19: astore_1
-    //   20: ldc 239
-    //   22: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   25: aload_0
-    //   26: monitorexit
-    //   27: aload_1
-    //   28: areturn
-    //   29: aload_0
-    //   30: getfield 63	com/tencent/smtt/export/external/DexClassLoaderProvider:mClassLoader	Lcom/tencent/smtt/export/external/DexClassLoaderProvider$SpeedyDexClassLoader;
-    //   33: aload_1
-    //   34: invokevirtual 242	com/tencent/smtt/export/external/DexClassLoaderProvider$SpeedyDexClassLoader:getPackage	(Ljava/lang/String;)Ljava/lang/Package;
-    //   37: astore_1
-    //   38: ldc 239
-    //   40: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   43: goto -18 -> 25
-    //   46: astore_1
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: aload_1
-    //   50: athrow
+    //   2: ldc_w 256
+    //   5: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: invokespecial 215	com/tencent/smtt/export/external/DexClassLoaderProvider:useSelfClassloader	()Z
+    //   12: ifeq +19 -> 31
+    //   15: aload_0
+    //   16: aload_1
+    //   17: invokespecial 258	dalvik/system/DexClassLoader:getPackage	(Ljava/lang/String;)Ljava/lang/Package;
+    //   20: astore_1
+    //   21: ldc_w 256
+    //   24: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   27: aload_0
+    //   28: monitorexit
+    //   29: aload_1
+    //   30: areturn
+    //   31: aload_0
+    //   32: getfield 61	com/tencent/smtt/export/external/DexClassLoaderProvider:mClassLoader	Lcom/tencent/smtt/export/external/DexClassLoaderProvider$SpeedyDexClassLoader;
+    //   35: aload_1
+    //   36: invokevirtual 259	com/tencent/smtt/export/external/DexClassLoaderProvider$SpeedyDexClassLoader:getPackage	(Ljava/lang/String;)Ljava/lang/Package;
+    //   39: astore_1
+    //   40: ldc_w 256
+    //   43: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: goto -19 -> 27
+    //   49: astore_1
+    //   50: aload_0
+    //   51: monitorexit
+    //   52: aload_1
+    //   53: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	51	0	this	DexClassLoaderProvider
-    //   0	51	1	paramString	String
+    //   0	54	0	this	DexClassLoaderProvider
+    //   0	54	1	paramString	String
     // Exception table:
     //   from	to	target	type
-    //   2	25	46	finally
-    //   29	43	46	finally
+    //   2	27	49	finally
+    //   31	46	49	finally
   }
   
   protected Package[] getPackages()
   {
-    AppMethodBeat.i(63743);
+    AppMethodBeat.i(53122);
     if (useSelfClassloader())
     {
       arrayOfPackage = super.getPackages();
-      AppMethodBeat.o(63743);
+      AppMethodBeat.o(53122);
       return arrayOfPackage;
     }
     Package[] arrayOfPackage = this.mClassLoader.getPackages();
-    AppMethodBeat.o(63743);
+    AppMethodBeat.o(53122);
     return arrayOfPackage;
   }
   
   public URL getResource(String paramString)
   {
-    AppMethodBeat.i(63744);
+    AppMethodBeat.i(53123);
     if (useSelfClassloader())
     {
       paramString = super.getResource(paramString);
-      AppMethodBeat.o(63744);
+      AppMethodBeat.o(53123);
       return paramString;
     }
     paramString = this.mClassLoader.getResource(paramString);
-    AppMethodBeat.o(63744);
+    AppMethodBeat.o(53123);
     return paramString;
   }
   
   public InputStream getResourceAsStream(String paramString)
   {
-    AppMethodBeat.i(63745);
+    AppMethodBeat.i(53124);
     if (useSelfClassloader())
     {
       paramString = getResourceAsStream(paramString);
-      AppMethodBeat.o(63745);
+      AppMethodBeat.o(53124);
       return paramString;
     }
     paramString = this.mClassLoader.getResourceAsStream(paramString);
-    AppMethodBeat.o(63745);
+    AppMethodBeat.o(53124);
     return paramString;
   }
   
   public Enumeration<URL> getResources(String paramString)
   {
-    AppMethodBeat.i(63746);
+    AppMethodBeat.i(53125);
     if (useSelfClassloader())
     {
       paramString = super.getResources(paramString);
-      AppMethodBeat.o(63746);
+      AppMethodBeat.o(53125);
       return paramString;
     }
     paramString = this.mClassLoader.getResources(paramString);
-    AppMethodBeat.o(63746);
+    AppMethodBeat.o(53125);
     return paramString;
   }
   
   public Class<?> loadClass(String paramString)
   {
-    AppMethodBeat.i(63748);
+    AppMethodBeat.i(53127);
     if (useSelfClassloader())
     {
       paramString = super.loadClass(paramString);
-      AppMethodBeat.o(63748);
+      AppMethodBeat.o(53127);
       return paramString;
     }
     paramString = this.mClassLoader.loadClass(paramString);
-    AppMethodBeat.o(63748);
+    AppMethodBeat.o(53127);
     return paramString;
   }
   
   protected Class<?> loadClass(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(63747);
+    AppMethodBeat.i(53126);
     if (useSelfClassloader())
     {
       paramString = super.loadClass(paramString, paramBoolean);
-      AppMethodBeat.o(63747);
+      AppMethodBeat.o(53126);
       return paramString;
     }
     paramString = this.mClassLoader.loadClass(paramString, paramBoolean);
-    AppMethodBeat.o(63747);
+    AppMethodBeat.o(53126);
     return paramString;
   }
   
   public void setClassAssertionStatus(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(63749);
+    AppMethodBeat.i(53128);
     if (useSelfClassloader())
     {
       super.setClassAssertionStatus(paramString, paramBoolean);
-      AppMethodBeat.o(63749);
+      AppMethodBeat.o(53128);
       return;
     }
     this.mClassLoader.setClassAssertionStatus(paramString, paramBoolean);
-    AppMethodBeat.o(63749);
+    AppMethodBeat.o(53128);
+  }
+  
+  void setClassLoader(SpeedyDexClassLoader paramSpeedyDexClassLoader)
+  {
+    this.mClassLoader = paramSpeedyDexClassLoader;
   }
   
   public void setDefaultAssertionStatus(boolean paramBoolean)
   {
-    AppMethodBeat.i(63750);
+    AppMethodBeat.i(53129);
     if (useSelfClassloader())
     {
       super.setDefaultAssertionStatus(paramBoolean);
-      AppMethodBeat.o(63750);
+      AppMethodBeat.o(53129);
       return;
     }
     this.mClassLoader.setDefaultAssertionStatus(paramBoolean);
-    AppMethodBeat.o(63750);
+    AppMethodBeat.o(53129);
   }
   
   public void setPackageAssertionStatus(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(63751);
+    AppMethodBeat.i(53130);
     if (useSelfClassloader())
     {
       super.setPackageAssertionStatus(paramString, paramBoolean);
-      AppMethodBeat.o(63751);
+      AppMethodBeat.o(53130);
       return;
     }
     this.mClassLoader.setPackageAssertionStatus(paramString, paramBoolean);
-    AppMethodBeat.o(63751);
+    AppMethodBeat.o(53130);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(63740);
+    AppMethodBeat.i(53119);
     if (useSelfClassloader())
     {
       str = super.toString();
-      AppMethodBeat.o(63740);
+      AppMethodBeat.o(53119);
       return str;
     }
     String str = this.mClassLoader.toString();
-    AppMethodBeat.o(63740);
+    AppMethodBeat.o(53119);
     return str;
   }
   
@@ -421,33 +460,33 @@ public class DexClassLoaderProvider
     
     public Package definePackage(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, URL paramURL)
     {
-      AppMethodBeat.i(63727);
+      AppMethodBeat.i(53106);
       paramString1 = super.definePackage(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramURL);
-      AppMethodBeat.o(63727);
+      AppMethodBeat.o(53106);
       return paramString1;
     }
     
     public Class<?> findClass(String paramString)
     {
-      AppMethodBeat.i(63723);
+      AppMethodBeat.i(53102);
       paramString = super.findClass(paramString);
-      AppMethodBeat.o(63723);
+      AppMethodBeat.o(53102);
       return paramString;
     }
     
     public URL findResource(String paramString)
     {
-      AppMethodBeat.i(63724);
+      AppMethodBeat.i(53103);
       paramString = super.findResource(paramString);
-      AppMethodBeat.o(63724);
+      AppMethodBeat.o(53103);
       return paramString;
     }
     
     public Enumeration<URL> findResources(String paramString)
     {
-      AppMethodBeat.i(63725);
+      AppMethodBeat.i(53104);
       paramString = super.findResources(paramString);
-      AppMethodBeat.o(63725);
+      AppMethodBeat.o(53104);
       return paramString;
     }
     
@@ -455,9 +494,9 @@ public class DexClassLoaderProvider
     {
       try
       {
-        AppMethodBeat.i(63726);
+        AppMethodBeat.i(53105);
         paramString = super.getPackage(paramString);
-        AppMethodBeat.o(63726);
+        AppMethodBeat.o(53105);
         return paramString;
       }
       finally
@@ -469,17 +508,17 @@ public class DexClassLoaderProvider
     
     public Package[] getPackages()
     {
-      AppMethodBeat.i(63728);
+      AppMethodBeat.i(53107);
       Package[] arrayOfPackage = super.getPackages();
-      AppMethodBeat.o(63728);
+      AppMethodBeat.o(53107);
       return arrayOfPackage;
     }
     
     public Class<?> loadClass(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(63729);
+      AppMethodBeat.i(53108);
       paramString = super.loadClass(paramString, paramBoolean);
-      AppMethodBeat.o(63729);
+      AppMethodBeat.o(53108);
       return paramString;
     }
   }

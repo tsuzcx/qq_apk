@@ -25,30 +25,30 @@ public class KindaButtonImpl
   public KindaButtonImpl(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(144725);
+    AppMethodBeat.i(18856);
     init(paramContext);
-    AppMethodBeat.o(144725);
+    AppMethodBeat.o(18856);
   }
   
   public KindaButtonImpl(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(144726);
+    AppMethodBeat.i(18857);
     init(paramContext);
-    AppMethodBeat.o(144726);
+    AppMethodBeat.o(18857);
   }
   
   public KindaButtonImpl(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(144727);
+    AppMethodBeat.i(18858);
     init(paramContext);
-    AppMethodBeat.o(144727);
+    AppMethodBeat.o(18858);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(144728);
+    AppMethodBeat.i(18859);
     this.mKButtonImageView = new ImageView(paramContext);
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
     this.mKButtonImageView.setLayoutParams(localLayoutParams);
@@ -58,33 +58,38 @@ public class KindaButtonImpl
     this.mKButtonTextView.setKindaButton(this);
     paramContext = new ViewGroup.LayoutParams(-1, -1);
     this.mKButtonTextView.setLayoutParams(paramContext);
-    this.mKButtonTextView.setBackgroundResource(2131690605);
+    this.mKButtonTextView.setBackgroundResource(2131101053);
     this.mKButtonTextView.setGravity(17);
     addView(this.mKButtonTextView);
-    AppMethodBeat.o(144728);
+    AppMethodBeat.o(18859);
+  }
+  
+  public KindaTextViewImpl getKButtonTextView()
+  {
+    return this.mKButtonTextView;
   }
   
   public CharSequence getText()
   {
-    AppMethodBeat.i(144731);
+    AppMethodBeat.i(18862);
     CharSequence localCharSequence = this.mKButtonTextView.getText();
-    AppMethodBeat.o(144731);
+    AppMethodBeat.o(18862);
     return localCharSequence;
   }
   
   public int getTextColor()
   {
-    AppMethodBeat.i(144733);
+    AppMethodBeat.i(18864);
     int i = this.mKButtonTextView.getCurrentTextColor();
-    AppMethodBeat.o(144733);
+    AppMethodBeat.o(18864);
     return i;
   }
   
   public float getTextSize()
   {
-    AppMethodBeat.i(144735);
+    AppMethodBeat.i(18866);
     float f = this.mKButtonTextView.getTextSize();
-    AppMethodBeat.o(144735);
+    AppMethodBeat.o(18866);
     return f;
   }
   
@@ -95,7 +100,7 @@ public class KindaButtonImpl
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(144738);
+    AppMethodBeat.i(18869);
     int m = View.MeasureSpec.getMode(paramInt1);
     int k = View.MeasureSpec.getMode(paramInt2);
     View.MeasureSpec.getSize(paramInt1);
@@ -121,17 +126,17 @@ public class KindaButtonImpl
       }
     }
     super.onMeasure(i, j);
-    AppMethodBeat.o(144738);
+    AppMethodBeat.o(18869);
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(144737);
+    AppMethodBeat.i(18868);
     boolean bool = super.onTouchEvent(paramMotionEvent);
     if (!isEnabled())
     {
-      AppMethodBeat.o(144737);
+      AppMethodBeat.o(18868);
       return bool;
     }
     switch (paramMotionEvent.getAction())
@@ -139,7 +144,7 @@ public class KindaButtonImpl
     }
     for (;;)
     {
-      AppMethodBeat.o(144737);
+      AppMethodBeat.o(18868);
       return bool;
       this.mIsPressed = true;
       continue;
@@ -147,53 +152,67 @@ public class KindaButtonImpl
     }
   }
   
+  public void setContentDescription(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(18871);
+    this.mKButtonTextView.setContentDescription(paramCharSequence);
+    AppMethodBeat.o(18871);
+  }
+  
+  public void setId(int paramInt)
+  {
+    AppMethodBeat.i(18870);
+    this.mKButtonTextView.setId(paramInt);
+    AppMethodBeat.o(18870);
+  }
+  
   public void setImageDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(144729);
+    AppMethodBeat.i(18860);
     if (this.mKButtonImageView == null)
     {
-      AppMethodBeat.o(144729);
+      AppMethodBeat.o(18860);
       return;
     }
     this.mKButtonImageView.setImageDrawable(paramDrawable);
-    AppMethodBeat.o(144729);
+    AppMethodBeat.o(18860);
   }
   
   public void setText(String paramString)
   {
-    AppMethodBeat.i(144730);
+    AppMethodBeat.i(18861);
     this.mKButtonTextView.setText(paramString);
-    AppMethodBeat.o(144730);
+    AppMethodBeat.o(18861);
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(144732);
+    AppMethodBeat.i(18863);
     this.mKButtonTextView.setTextColor(paramColorStateList);
-    AppMethodBeat.o(144732);
+    AppMethodBeat.o(18863);
   }
   
   public void setTextFont(Typeface paramTypeface)
   {
-    AppMethodBeat.i(144736);
+    AppMethodBeat.i(18867);
     if (paramTypeface != null)
     {
       this.mKButtonTextView.setTypeface(paramTypeface);
       this.mKButtonTextView.requestLayout();
     }
-    AppMethodBeat.o(144736);
+    AppMethodBeat.o(18867);
   }
   
   public void setTextSize(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(144734);
+    AppMethodBeat.i(18865);
     this.mKButtonTextView.setTextSize(paramInt, paramFloat);
-    AppMethodBeat.o(144734);
+    AppMethodBeat.o(18865);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaButtonImpl
  * JD-Core Version:    0.7.0.1
  */

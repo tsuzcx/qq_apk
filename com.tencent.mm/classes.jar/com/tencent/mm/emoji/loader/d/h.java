@@ -1,57 +1,35 @@
 package com.tencent.mm.emoji.loader.d;
 
-import a.l;
-import com.tencent.mm.emoji.loader.a;
-import com.tencent.mm.emoji.loader.e.c;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.emoji.sync.EmojiUpdateReceiver;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.storage.emotion.EmojiInfo;
+import d.l;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/loader/request/Request;", "T", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "task", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "getTask", "()Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "setTask", "(Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;)V", "cancel", "", "createTask", "onLoad", "success", "", "reload", "async", "start", "Callback", "plugin-emojisdk_release"})
-public abstract class h<T>
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/request/ProcessRequest;", "Lcom/tencent/mm/emoji/loader/request/Request;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "onLoad", "success", "", "plugin-emojisdk_release"})
+public final class h
+  extends i<y>
 {
-  final EmojiInfo evH;
-  private c evY;
-  
   public h(EmojiInfo paramEmojiInfo)
   {
-    this.evH = paramEmojiInfo;
+    super(paramEmojiInfo);
+    AppMethodBeat.i(105472);
+    AppMethodBeat.o(105472);
   }
   
-  private void cg(boolean paramBoolean)
+  public final void dg(boolean paramBoolean)
   {
-    c localc = this.evY;
-    if (localc != null) {
-      localc.c(this);
-    }
-    this.evY = Ov();
-    localc = this.evY;
-    if (localc != null) {
-      localc.b(this);
-    }
-    localc = this.evY;
-    if (localc != null) {
-      localc.start(paramBoolean);
-    }
-  }
-  
-  protected c Ov()
-  {
-    a locala = a.evk;
-    return a.a(this.evH);
-  }
-  
-  public void cancel()
-  {
-    c localc = this.evY;
-    if (localc != null) {
-      localc.c(this);
-    }
-  }
-  
-  public abstract void cf(boolean paramBoolean);
-  
-  public void start(boolean paramBoolean)
-  {
-    cg(paramBoolean);
+    AppMethodBeat.i(105471);
+    Intent localIntent = new Intent();
+    localIntent.setAction(EmojiUpdateReceiver.ACTION);
+    localIntent.putExtra(EmojiUpdateReceiver.fSj, EmojiUpdateReceiver.fSp);
+    localIntent.putExtra("md5", this.fLP.JS());
+    localIntent.putExtra("result", paramBoolean);
+    aj.getContext().sendBroadcast(localIntent);
+    AppMethodBeat.o(105471);
   }
 }
 

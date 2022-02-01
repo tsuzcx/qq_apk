@@ -13,49 +13,49 @@ public class WWMediaFile
   
   public final boolean checkArgs()
   {
-    AppMethodBeat.i(80499);
+    AppMethodBeat.i(106540);
     if (!super.checkArgs())
     {
-      AppMethodBeat.o(80499);
+      AppMethodBeat.o(106540);
       return false;
     }
     if (((this.fileData != null) && (this.fileData.length != 0)) || ((this.filePath != null) && (this.filePath.length() != 0)))
     {
       if ((this.fileData != null) && (this.fileData.length > this.contentLengthLimit))
       {
-        AppMethodBeat.o(80499);
+        AppMethodBeat.o(106540);
         return false;
       }
       if ((this.filePath != null) && (getFileSize(this.filePath) > this.contentLengthLimit))
       {
-        AppMethodBeat.o(80499);
+        AppMethodBeat.o(106540);
         return false;
       }
-      AppMethodBeat.o(80499);
+      AppMethodBeat.o(106540);
       return true;
     }
-    AppMethodBeat.o(80499);
+    AppMethodBeat.o(106540);
     return false;
   }
   
-  public final void dYa()
+  public final void fqr()
   {
     this.contentLengthLimit = 104857600;
   }
   
   public final void toBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(80500);
+    AppMethodBeat.i(106541);
     paramBundle.putByteArray("_wwfileobject_fileData", this.fileData);
     paramBundle.putString("_wwfileobject_filePath", this.filePath);
     paramBundle.putString("_wwfileobject_fileName", this.fileName);
     super.toBundle(paramBundle);
-    AppMethodBeat.o(80500);
+    AppMethodBeat.o(106541);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wework.api.model.WWMediaFile
  * JD-Core Version:    0.7.0.1
  */

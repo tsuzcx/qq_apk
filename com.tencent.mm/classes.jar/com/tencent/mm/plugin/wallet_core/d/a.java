@@ -2,55 +2,55 @@ package com.tencent.mm.plugin.wallet_core.d;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.wallet_core.model.p;
+import com.tencent.mm.plugin.wallet_core.model.n;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
 
 public final class a
-  extends j<p>
+  extends j<n>
 {
   public static final String[] SQL_CREATE;
   private e db;
   
   static
   {
-    AppMethodBeat.i(47049);
-    SQL_CREATE = new String[] { j.getCreateSQLs(p.info, "LoanEntryInfo") };
-    AppMethodBeat.o(47049);
+    AppMethodBeat.i(70581);
+    SQL_CREATE = new String[] { j.getCreateSQLs(n.info, "LoanEntryInfo") };
+    AppMethodBeat.o(70581);
   }
   
   public a(e parame)
   {
-    super(parame, p.info, "LoanEntryInfo", null);
+    super(parame, n.info, "LoanEntryInfo", null);
     this.db = parame;
   }
   
-  public final boolean aql()
+  public final boolean aIG()
   {
-    AppMethodBeat.i(47048);
+    AppMethodBeat.i(70580);
     boolean bool = this.db.execSQL("LoanEntryInfo", "delete from LoanEntryInfo");
-    AppMethodBeat.o(47048);
+    AppMethodBeat.o(70580);
     return bool;
   }
   
-  public final p cVd()
+  public final n edy()
   {
-    p localp = null;
-    AppMethodBeat.i(47047);
+    n localn = null;
+    AppMethodBeat.i(70579);
     Cursor localCursor = this.db.a("select * from LoanEntryInfo", null, 2);
     if (localCursor == null)
     {
-      AppMethodBeat.o(47047);
+      AppMethodBeat.o(70579);
       return null;
     }
     if (localCursor.moveToFirst())
     {
-      localp = new p();
-      localp.convertFrom(localCursor);
+      localn = new n();
+      localn.convertFrom(localCursor);
     }
     localCursor.close();
-    AppMethodBeat.o(47047);
-    return localp;
+    AppMethodBeat.o(70579);
+    return localn;
   }
 }
 

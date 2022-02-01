@@ -11,13 +11,13 @@ class BaseWXApiImplV10$1
   
   public void run()
   {
-    AppMethodBeat.i(128076);
+    AppMethodBeat.i(3764);
     try
     {
       MMSharedPreferences localMMSharedPreferences = new MMSharedPreferences(this.this$0.context);
       BaseWXApiImplV10.access$002(this.this$0, localMMSharedPreferences.getInt("_build_info_sdk_int_", 0));
       this.val$countDownWait.countDown();
-      AppMethodBeat.o(128076);
+      AppMethodBeat.o(3764);
       return;
     }
     catch (Exception localException)
@@ -31,7 +31,7 @@ class BaseWXApiImplV10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.openapi.BaseWXApiImplV10.1
  * JD-Core Version:    0.7.0.1
  */

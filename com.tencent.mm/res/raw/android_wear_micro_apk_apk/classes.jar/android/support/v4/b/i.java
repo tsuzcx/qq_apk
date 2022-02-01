@@ -12,19 +12,19 @@ final class i
   
   public final boolean addAll(Collection<? extends Map.Entry<K, V>> paramCollection)
   {
-    int i = this.jr.bf();
+    int i = this.lo.bw();
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)paramCollection.next();
-      this.jr.a(localEntry.getKey(), localEntry.getValue());
+      this.lo.b(localEntry.getKey(), localEntry.getValue());
     }
-    return i != this.jr.bf();
+    return i != this.lo.bw();
   }
   
   public final void clear()
   {
-    this.jr.bh();
+    this.lo.by();
   }
   
   public final boolean contains(Object paramObject)
@@ -35,9 +35,9 @@ final class i
     {
       return false;
       paramObject = (Map.Entry)paramObject;
-      i = this.jr.j(paramObject.getKey());
+      i = this.lo.q(paramObject.getKey());
     } while (i < 0);
-    return c.b(this.jr.b(i, 1), paramObject.getValue());
+    return c.c(this.lo.b(i, 1), paramObject.getValue());
   }
   
   public final boolean containsAll(Collection<?> paramCollection)
@@ -58,12 +58,12 @@ final class i
   
   public final int hashCode()
   {
-    int j = this.jr.bf() - 1;
+    int j = this.lo.bw() - 1;
     int i = 0;
     if (j >= 0)
     {
-      Object localObject1 = this.jr.b(j, 0);
-      Object localObject2 = this.jr.b(j, 1);
+      Object localObject1 = this.lo.b(j, 0);
+      Object localObject2 = this.lo.b(j, 1);
       int k;
       if (localObject1 == null)
       {
@@ -88,12 +88,12 @@ final class i
   
   public final boolean isEmpty()
   {
-    return this.jr.bf() == 0;
+    return this.lo.bw() == 0;
   }
   
   public final Iterator<Map.Entry<K, V>> iterator()
   {
-    return new k(this.jr);
+    return new k(this.lo);
   }
   
   public final boolean remove(Object paramObject)
@@ -113,7 +113,7 @@ final class i
   
   public final int size()
   {
-    return this.jr.bf();
+    return this.lo.bw();
   }
   
   public final Object[] toArray()

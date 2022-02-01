@@ -1,80 +1,112 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
 import android.graphics.Point;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.c.a;
-import com.tencent.mm.plugin.mmsight.model.f;
+import com.tencent.mm.plugin.mmsight.model.g;
 
 public abstract interface d
 {
-  public abstract String Al();
+  public abstract void C(Runnable paramRunnable);
   
-  public abstract void G(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void J(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract boolean XA();
+  public abstract String JS();
   
-  public abstract c.a XB();
+  public abstract void a(a parama);
   
-  public abstract void XC();
+  public abstract void af(float paramFloat);
   
-  public abstract long Xf();
+  public abstract String anX();
   
-  public abstract String Xi();
+  public abstract String aon();
   
-  public abstract String Xu();
+  public abstract float aoo();
   
-  public abstract float Xv();
+  public abstract long aop();
   
-  public abstract d.c Xw();
+  public abstract c aoq();
   
-  public abstract int Xx();
+  public abstract int aor();
   
-  public abstract Point Xy();
+  public abstract Point aos();
   
-  public abstract int Xz();
+  public abstract int aot();
   
-  public abstract void a(d.a parama);
+  public abstract boolean aou();
   
-  public abstract void ag(float paramFloat);
+  public abstract boolean aov();
+  
+  public abstract c.a aow();
+  
+  public abstract void aox();
   
   public abstract int b(int paramInt1, boolean paramBoolean, int paramInt2);
-  
-  public abstract void cG(boolean paramBoolean);
   
   public abstract void cancel();
   
   public abstract void clear();
   
+  public abstract void dV(boolean paramBoolean);
+  
   public abstract String getFileName();
   
   public abstract String getFilePath();
   
-  public abstract f getFrameDataCallback();
+  public abstract g getFrameDataCallback();
   
-  public abstract boolean isLandscape();
+  public abstract boolean mQ(int paramInt);
   
-  public abstract boolean km(int paramInt);
-  
-  public abstract void kn(int paramInt);
-  
-  public abstract void mV(String paramString);
-  
-  public abstract void mW(String paramString);
+  public abstract void mR(int paramInt);
   
   public abstract void pause();
   
   public abstract void reset();
   
+  public abstract void ru(String paramString);
+  
+  public abstract void rv(String paramString);
+  
   public abstract void s(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
   public abstract void setFilePath(String paramString);
   
+  public abstract void setMirror(boolean paramBoolean);
+  
   public abstract void setMute(boolean paramBoolean);
   
-  public abstract void u(Runnable paramRunnable);
+  public static abstract interface a
+  {
+    public abstract void aLq();
+  }
+  
+  public static abstract interface b {}
+  
+  public static enum c
+  {
+    static
+    {
+      AppMethodBeat.i(148825);
+      tDN = new c("WaitStart", 0);
+      tDO = new c("Start", 1);
+      tDP = new c("PrepareStop", 2);
+      tDQ = new c("WaitStop", 3);
+      tDR = new c("Stop", 4);
+      tDS = new c("WaitSend", 5);
+      tDT = new c("Sent", 6);
+      tDU = new c("Error", 7);
+      tDV = new c("Initialized", 8);
+      tDW = new c("Pause", 9);
+      tDX = new c[] { tDN, tDO, tDP, tDQ, tDR, tDS, tDT, tDU, tDV, tDW };
+      AppMethodBeat.o(148825);
+    }
+    
+    private c() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.d
  * JD-Core Version:    0.7.0.1
  */

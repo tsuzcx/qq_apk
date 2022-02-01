@@ -10,119 +10,119 @@ import android.view.ViewPropertyAnimator;
 import android.view.animation.AnimationUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class j
 {
   @TargetApi(14)
   public static final void a(View paramView, long paramLong, float paramFloat, a parama)
   {
-    AppMethodBeat.i(107654);
-    if ((paramView == null) || (d.fw(14)))
+    AppMethodBeat.i(143109);
+    if ((paramView == null) || (d.lg(14)))
     {
-      AppMethodBeat.o(107654);
+      AppMethodBeat.o(143109);
       return;
     }
-    Object localObject = (Animator)paramView.getTag(2131820653);
+    Object localObject = (Animator)paramView.getTag(2131303537);
     if (localObject != null) {
       ((Animator)localObject).cancel();
     }
-    ab.i("Changelcai", "[animTran] duration:%s x:%s", new Object[] { Long.valueOf(paramLong), Float.valueOf(paramFloat) });
+    ad.i("Changelcai", "[animTran] duration:%s x:%s", new Object[] { Long.valueOf(paramLong), Float.valueOf(paramFloat) });
     paramView.animate().cancel();
     paramView.animate().setListener(null);
-    localObject = AnimationUtils.loadInterpolator(paramView.getContext(), 2131034200);
+    localObject = AnimationUtils.loadInterpolator(paramView.getContext(), 2130772074);
     if (parama == null)
     {
       paramView.animate().setDuration(paramLong).translationX(paramFloat).translationY(0.0F).setInterpolator((TimeInterpolator)localObject);
-      AppMethodBeat.o(107654);
+      AppMethodBeat.o(143109);
       return;
     }
     paramView.animate().setDuration(paramLong).translationX(paramFloat).translationY(0.0F).setInterpolator((TimeInterpolator)localObject).setListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(107651);
-        this.AvC.dfe();
-        AppMethodBeat.o(107651);
+        AppMethodBeat.i(143106);
+        this.HrB.aWf();
+        AppMethodBeat.o(143106);
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(107650);
-        this.AvC.onAnimationEnd();
-        AppMethodBeat.o(107650);
+        AppMethodBeat.i(143105);
+        this.HrB.onAnimationEnd();
+        AppMethodBeat.o(143105);
       }
       
       public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
       
       public final void onAnimationStart(Animator paramAnonymousAnimator) {}
     });
-    AppMethodBeat.o(107654);
+    AppMethodBeat.o(143109);
   }
   
   @TargetApi(11)
   public static void a(View paramView, Animator.AnimatorListener paramAnimatorListener)
   {
-    AppMethodBeat.i(107655);
-    if ((paramView == null) || (d.fw(11)))
+    AppMethodBeat.i(143110);
+    if ((paramView == null) || (d.lg(11)))
     {
-      AppMethodBeat.o(107655);
+      AppMethodBeat.o(143110);
       return;
     }
-    Animator localAnimator = (Animator)paramView.getTag(2131820653);
+    Animator localAnimator = (Animator)paramView.getTag(2131303537);
     if (localAnimator != null) {
       localAnimator.cancel();
     }
-    localAnimator = AnimatorInflater.loadAnimator(paramView.getContext(), 2131099650);
+    localAnimator = AnimatorInflater.loadAnimator(paramView.getContext(), 2130837509);
     localAnimator.setTarget(paramView);
     if (paramAnimatorListener != null) {
       localAnimator.addListener(paramAnimatorListener);
     }
     localAnimator.start();
-    paramView.setTag(2131820653, localAnimator);
-    AppMethodBeat.o(107655);
+    paramView.setTag(2131303537, localAnimator);
+    AppMethodBeat.o(143110);
   }
   
   @TargetApi(11)
-  public static final void s(View paramView, float paramFloat)
+  public static final void w(View paramView, float paramFloat)
   {
-    AppMethodBeat.i(107652);
-    if ((paramView == null) || (d.fw(11)))
+    AppMethodBeat.i(143107);
+    if ((paramView == null) || (d.lg(11)))
     {
-      AppMethodBeat.o(107652);
+      AppMethodBeat.o(143107);
       return;
     }
-    Animator localAnimator = (Animator)paramView.getTag(2131820653);
+    Animator localAnimator = (Animator)paramView.getTag(2131303537);
     if (localAnimator != null) {
       localAnimator.cancel();
     }
     paramView.setScaleX(paramFloat);
     paramView.setScaleY(paramFloat);
-    AppMethodBeat.o(107652);
+    AppMethodBeat.o(143107);
   }
   
   @TargetApi(14)
-  public static final void t(View paramView, float paramFloat)
+  public static final void x(View paramView, float paramFloat)
   {
-    AppMethodBeat.i(107653);
-    if ((paramView == null) || (d.fw(14)))
+    AppMethodBeat.i(143108);
+    if ((paramView == null) || (d.lg(14)))
     {
-      AppMethodBeat.o(107653);
+      AppMethodBeat.o(143108);
       return;
     }
-    Animator localAnimator = (Animator)paramView.getTag(2131820653);
+    Animator localAnimator = (Animator)paramView.getTag(2131303537);
     if (localAnimator != null) {
       localAnimator.cancel();
     }
     paramView.animate().cancel();
     paramView.setTranslationX(paramFloat);
     paramView.setTranslationY(0.0F);
-    AppMethodBeat.o(107653);
+    AppMethodBeat.o(143108);
   }
   
   public static abstract interface a
   {
-    public abstract void dfe();
+    public abstract void aWf();
     
     public abstract void onAnimationEnd();
   }

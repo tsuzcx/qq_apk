@@ -1,56 +1,43 @@
 package com.tencent.mm.ai;
 
-public abstract interface h
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.am.j;
+import com.tencent.mm.i.d;
+import java.util.LinkedList;
+import java.util.Map;
+
+public class h
+  extends f
 {
-  public abstract boolean Ds();
+  public LinkedList<j> gGV = null;
   
-  public abstract boolean Eo();
-  
-  public abstract boolean Ep();
-  
-  public abstract double Er();
-  
-  public abstract void a(a parama);
-  
-  public abstract void a(h.b paramb);
-  
-  public abstract void a(c paramc);
-  
-  public abstract void a(h.d paramd);
-  
-  public abstract boolean a(String paramString, boolean paramBoolean, int paramInt1, int paramInt2);
-  
-  public abstract boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt);
-  
-  public abstract void bu(boolean paramBoolean);
-  
-  public abstract void bv(boolean paramBoolean);
-  
-  public abstract void bx(boolean paramBoolean);
-  
-  public abstract void by(boolean paramBoolean);
-  
-  public abstract boolean isPlaying();
-  
-  public abstract boolean pause();
-  
-  public abstract void stop();
-  
-  public abstract void stop(boolean paramBoolean);
-  
-  public static abstract interface a
+  public final void a(Map<String, String> paramMap, k.b paramb)
   {
-    public abstract void Es();
+    AppMethodBeat.i(20236);
+    switch (paramb.dcz)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(20236);
+      return;
+      this.gGV = j.v(paramb.gHc);
+    }
   }
   
-  public static abstract interface c
+  public final f apu()
   {
-    public abstract void cN(boolean paramBoolean);
+    AppMethodBeat.i(20235);
+    h localh = new h();
+    AppMethodBeat.o(20235);
+    return localh;
   }
+  
+  public final void b(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ai.h
  * JD-Core Version:    0.7.0.1
  */

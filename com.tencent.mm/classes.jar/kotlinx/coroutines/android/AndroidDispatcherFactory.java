@@ -1,41 +1,36 @@
 package kotlinx.coroutines.android;
 
-import a.l;
-import android.support.annotation.Keep;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlinx.coroutines.bj;
+import d.l;
+import java.util.List;
+import kotlinx.coroutines.internal.MainDispatcherFactory;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/android/AndroidDispatcherFactory;", "Lkotlinx/coroutines/internal/MainDispatcherFactory;", "()V", "loadPriority", "", "getLoadPriority", "()I", "createDispatcher", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "Companion", "kotlinx-coroutines-android"})
-@Keep
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/android/AndroidDispatcherFactory;", "Lkotlinx/coroutines/internal/MainDispatcherFactory;", "()V", "loadPriority", "", "getLoadPriority", "()I", "createDispatcher", "Lkotlinx/coroutines/android/HandlerContext;", "allFactories", "", "hintOnError", "", "kotlinx-coroutines-android"})
 public final class AndroidDispatcherFactory
+  implements MainDispatcherFactory
 {
-  public static final AndroidDispatcherFactory.a Companion;
-  
-  static
+  public final a createDispatcher(List<? extends MainDispatcherFactory> paramList)
   {
-    AppMethodBeat.i(118247);
-    Companion = new AndroidDispatcherFactory.a((byte)0);
-    AppMethodBeat.o(118247);
-  }
-  
-  public static final bj getDispatcher()
-  {
-    return (bj)d.CIQ;
-  }
-  
-  public final bj createDispatcher()
-  {
-    return (bj)d.CIQ;
+    AppMethodBeat.i(189936);
+    paramList = new a(c.q(Looper.getMainLooper()), "Main");
+    AppMethodBeat.o(189936);
+    return paramList;
   }
   
   public final int getLoadPriority()
   {
-    return 2147483647;
+    return 1073741823;
+  }
+  
+  public final String hintOnError()
+  {
+    return "For tests Dispatchers.setMain from kotlinx-coroutines-test module can be used";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlinx.coroutines.android.AndroidDispatcherFactory
  * JD-Core Version:    0.7.0.1
  */

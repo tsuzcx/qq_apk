@@ -11,6 +11,8 @@ public abstract interface KPwdInputView
   
   public abstract String getHashData();
   
+  public abstract PwdViewStyle getPwdStyle();
+  
   public abstract long getTextLength();
   
   public abstract void setAutoRemarkKeyBoradType(boolean paramBoolean);
@@ -24,6 +26,8 @@ public abstract interface KPwdInputView
   public abstract void setOnEndEnterPasswordCallback(KPwdInputViewOnEndEnterPasswordCallback paramKPwdInputViewOnEndEnterPasswordCallback);
   
   public abstract void setOnPasswordChangeCallback(KPwdInputViewOnPasswordChangeCallback paramKPwdInputViewOnPasswordChangeCallback);
+  
+  public abstract void setPwdStyle(PwdViewStyle paramPwdViewStyle);
   
   public abstract void setTextLength(long paramLong);
 }

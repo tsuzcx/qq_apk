@@ -17,15 +17,15 @@ public final class zzx
   
   private final void zzs()
   {
-    AppMethodBeat.i(50461);
+    AppMethodBeat.i(88356);
     if (!GooglePlayServicesUtil.isGooglePlayServicesUid(this.mContext, Binder.getCallingUid()))
     {
       int i = Binder.getCallingUid();
       SecurityException localSecurityException = new SecurityException(52 + "Calling UID " + i + " is not Google Play services.");
-      AppMethodBeat.o(50461);
+      AppMethodBeat.o(88356);
       throw localSecurityException;
     }
-    AppMethodBeat.o(50461);
+    AppMethodBeat.o(88356);
   }
   
   /* Error */
@@ -102,15 +102,15 @@ public final class zzx
   
   public final void zzr()
   {
-    AppMethodBeat.i(50460);
+    AppMethodBeat.i(88355);
     zzs();
     zzq.zze(this.mContext).clear();
-    AppMethodBeat.o(50460);
+    AppMethodBeat.o(88355);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.internal.zzx
  * JD-Core Version:    0.7.0.1
  */

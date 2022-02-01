@@ -1,28 +1,34 @@
 package com.tencent.mm.modelappbrand;
 
-import com.tencent.mm.af.a.b;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
 import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.modelappbrand.a.b.f;
+import com.tencent.mm.modelappbrand.a.b.h;
 
 public abstract interface k
   extends a
 {
-  public abstract boolean T(String paramString, int paramInt);
+  public abstract View a(Context paramContext, Bundle paramBundle, boolean paramBoolean, k.c paramc);
   
-  public abstract void a(String paramString1, String paramString2, String paramString3, int paramInt, k.a parama);
+  public abstract b.f a(int paramInt1, int paramInt2, k.a parama);
   
-  public abstract boolean a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2);
+  public abstract void a(String paramString, View paramView);
   
-  public abstract void aco();
+  public abstract boolean a(String paramString, View paramView, Bundle paramBundle);
   
-  public abstract void acp();
+  public abstract boolean a(String paramString, View paramView, Bundle paramBundle, k.b paramb);
   
-  public abstract b qj(String paramString);
+  public abstract b.h atN();
   
-  public abstract void qk(String paramString);
+  public abstract b.f dc(int paramInt1, int paramInt2);
+  
+  public abstract void g(int paramInt, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.k
  * JD-Core Version:    0.7.0.1
  */

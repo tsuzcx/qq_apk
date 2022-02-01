@@ -11,19 +11,37 @@ public final class CredentialsOptions
   
   static
   {
-    AppMethodBeat.i(50343);
-    DEFAULT = (CredentialsOptions)new CredentialsOptions.Builder().zzh();
-    AppMethodBeat.o(50343);
+    AppMethodBeat.i(88238);
+    DEFAULT = (CredentialsOptions)new Builder().zzh();
+    AppMethodBeat.o(88238);
   }
   
-  private CredentialsOptions(CredentialsOptions.Builder paramBuilder)
+  private CredentialsOptions(Builder paramBuilder)
   {
     super(paramBuilder);
+  }
+  
+  public static final class Builder
+    extends Auth.AuthCredentialsOptions.Builder
+  {
+    public final CredentialsOptions build()
+    {
+      AppMethodBeat.i(88235);
+      CredentialsOptions localCredentialsOptions = new CredentialsOptions(this, null);
+      AppMethodBeat.o(88235);
+      return localCredentialsOptions;
+    }
+    
+    public final Builder forceEnableSaveDialog()
+    {
+      this.zzar = Boolean.TRUE;
+      return this;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.credentials.CredentialsOptions
  * JD-Core Version:    0.7.0.1
  */

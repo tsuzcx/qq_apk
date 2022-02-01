@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <TextView android:id="@id/a8b" android:visibility="gone" android:text="@string/e13" style="@style/lf" />
-        <ListView android:id="@id/ehl" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a3x" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" />
+<LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:background="@drawable/ael" android:layout_width="fill_parent" android:layout_height="@dimen/jm">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dyy" android:layout_width="@dimen/jr" android:layout_height="@dimen/jr" android:layout_marginLeft="28.0dip" android:layout_marginRight="24.0dip" android:contentDescription="@string/uo" app:iconColor="@color/BW_50" />
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/a6w" android:id="@id/dzf" android:layout_width="0.0dip" android:text="@string/ac2" android:layout_weight="1.0" style="@style/lw" />
     </LinearLayout>
 </LinearLayout>

@@ -1,35 +1,61 @@
 package com.tencent.mm.plugin.appbrand.game.h;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.ac;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class b
 {
-  private static boolean bAo = false;
+  private static boolean cbF = false;
   
-  public static void cJ(Context paramContext)
+  public static void dg(Context paramContext)
   {
-    AppMethodBeat.i(130340);
-    Object localObject = ac.erD.emC;
-    if (bAo)
+    AppMethodBeat.i(45379);
+    Object localObject = ae.fFF.fzl;
+    if (cbF)
     {
-      ab.i("MicroMsg.WAGameShowFailDialogUtil", "hy: already shown");
-      AppMethodBeat.o(130340);
+      ad.i("MicroMsg.WAGameShowFailDialogUtil", "hy: already shown");
+      AppMethodBeat.o(45379);
       return;
     }
-    String str1 = ah.getResources().getString(2131297125);
-    String str2 = ah.getResources().getString(2131297087);
-    if (!bo.isNullOrNil((String)localObject)) {}
+    String str1 = aj.getResources().getString(2131755955);
+    String str2 = aj.getResources().getString(2131755906);
+    if (!bt.isNullOrNil((String)localObject)) {}
     for (;;)
     {
-      com.tencent.mm.plugin.appbrand.ipc.a.a(paramContext, (String)localObject, str2, ah.getResources().getString(2131297018), "", new b.1(), new b.2(), new b.3());
-      bAo = true;
-      AppMethodBeat.o(130340);
+      com.tencent.mm.plugin.appbrand.ipc.a.a(paramContext, (String)localObject, str2, aj.getResources().getString(2131755835), "", new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(45376);
+          b.acT();
+          AppMethodBeat.o(45376);
+        }
+      }, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(45377);
+          b.acT();
+          AppMethodBeat.o(45377);
+        }
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(45378);
+          b.acT();
+          AppMethodBeat.o(45378);
+        }
+      });
+      cbF = true;
+      AppMethodBeat.o(45379);
       return;
       localObject = str1;
     }

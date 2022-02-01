@@ -1,24 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appstorage.j;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import org.json.JSONObject;
 
-final class ao
-  extends f
+public final class ao
+  extends e<bf>
 {
-  final h.a a(c paramc, String paramString, JSONObject paramJSONObject)
+  private static final int CTRL_INDEX = 394;
+  private static final String NAME = "unzip";
+  
+  public ao()
   {
-    AppMethodBeat.i(102815);
-    if (paramc.wX().zd(paramString) == j.gZA) {}
-    for (paramc = "ok";; paramc = String.format("fail no such file or directory \"%s\"", new Object[] { paramString }))
-    {
-      paramc = new h.a(paramc, new Object[0]);
-      AppMethodBeat.o(102815);
-      return paramc;
-    }
+    super(new bf());
+    AppMethodBeat.i(128904);
+    AppMethodBeat.o(128904);
   }
 }
 

@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/a2l" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/aez" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:id="@id/af0" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/af1" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
-        <ProgressBar android:layout_gravity="center" android:id="@id/af2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a00" />
+    <RelativeLayout android:orientation="vertical" android:id="@id/am9" android:paddingBottom="@dimen/si" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/ann" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <include android:id="@id/edj" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/j0" />
+                <include android:id="@id/edl" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/j2" />
+                <include android:id="@id/edk" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/j1" />
+                <include android:id="@id/edi" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/iz" />
+            </RelativeLayout>
+            <LinearLayout android:id="@id/a31" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="@dimen/hu" android:layout_marginRight="@dimen/ha" android:layout_marginBottom="@dimen/jn">
+                    <include android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" layout="@layout/iu" />
+                    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                        <ImageView android:id="@id/edf" android:padding="1.0dip" android:layout_width="20.0dip" android:layout_height="16.0dip" android:src="@raw/biz_time_line_pic_icon" />
+                        <TextView android:textSize="@dimen/jo" android:textColor="@color/a_u" android:id="@id/edm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d" android:includeFontPadding="false" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+            <ImageView android:id="@id/egz" android:background="@drawable/gh" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/fiz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/sl" android:layout_marginTop="@dimen/sh" android:layout_marginRight="@dimen/sl" android:layout_below="@id/ann">
+            <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/jo" android:textColor="@color/BW_0_Alpha_0_5" android:ellipsize="end" android:id="@id/fiw" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:lineSpacingExtra="@dimen/sq" />
+        </LinearLayout>
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>

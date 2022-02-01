@@ -20,8 +20,8 @@ public class DataHolderResult
   protected DataHolderResult(DataHolder paramDataHolder)
   {
     this(paramDataHolder, new Status(paramDataHolder.getStatusCode()));
-    AppMethodBeat.i(60568);
-    AppMethodBeat.o(60568);
+    AppMethodBeat.i(11060);
+    AppMethodBeat.o(11060);
   }
   
   @KeepForSdk
@@ -40,16 +40,16 @@ public class DataHolderResult
   @KeepForSdk
   public void release()
   {
-    AppMethodBeat.i(60569);
+    AppMethodBeat.i(11061);
     if (this.mDataHolder != null) {
       this.mDataHolder.close();
     }
-    AppMethodBeat.o(60569);
+    AppMethodBeat.o(11061);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.DataHolderResult
  * JD-Core Version:    0.7.0.1
  */

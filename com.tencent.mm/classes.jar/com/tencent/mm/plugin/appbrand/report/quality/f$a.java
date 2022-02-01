@@ -1,24 +1,22 @@
 package com.tencent.mm.plugin.appbrand.report.quality;
 
-import a.f.a.a;
-import a.f.b.k;
-import a.f.b.u.c;
-import a.l;
-import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.o;
+import d.g.a.a;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "invoke"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
 final class f$a
-  extends k
-  implements a<String>
+  extends d.g.b.l
+  implements a<y>
 {
-  f$a(u.c paramc, d paramd)
+  f$a(o paramo)
   {
     super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -27,23 +27,27 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.loader.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.w;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.ui.widget.AlbumChooserView;
+import com.tencent.mm.ui.widget.AlbumChooserView.2;
+import com.tencent.mm.ui.widget.AlbumChooserView.3;
+import com.tencent.mm.ui.widget.AlbumChooserView.a;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Locale;
@@ -51,7 +55,7 @@ import java.util.Locale;
 @com.tencent.mm.ui.base.a(0)
 public abstract class MMActivity
   extends MMFragmentActivity
-  implements com.tencent.mm.plugin.appbrand.widget.input.ad
+  implements com.tencent.mm.plugin.appbrand.widget.input.ad, com.tencent.mm.ui.widget.a.c
 {
   private static final int ANDROID_API_LEVEL_11 = 11;
   protected static final int DEFAULT_TOAST_TIME = 3000;
@@ -63,6 +67,7 @@ public abstract class MMActivity
   private static final String TAG = "MicroMsg.MMActivity";
   private static final String TAG2 = "MicroMsg.INIT";
   private static String sNavBarOverride;
+  private byte _hellAccFlag_;
   String className;
   boolean customfixStatusbar = false;
   boolean fixStatusbar = false;
@@ -70,88 +75,106 @@ public abstract class MMActivity
   private long lastBrowseTime = 0L;
   private long lastOnPauseTicks = 0L;
   private long lastOnResumeTicks = 0L;
-  public q mController = new q()
+  public r mController = new r()
   {
     protected final void dealContentView(View paramAnonymousView)
     {
-      AppMethodBeat.i(105986);
+      AppMethodBeat.i(141318);
       MMActivity.this.dealContentView(paramAnonymousView);
-      AppMethodBeat.o(105986);
+      AppMethodBeat.o(141318);
     }
     
     protected final boolean fromFullScreenActivity()
     {
-      AppMethodBeat.i(105991);
+      AppMethodBeat.i(141324);
       boolean bool = MMActivity.this.fromFullScreenActivity();
-      AppMethodBeat.o(105991);
+      AppMethodBeat.o(141324);
       return bool;
     }
     
     protected final String getClassName()
     {
-      AppMethodBeat.i(105990);
+      AppMethodBeat.i(141323);
       String str = MMActivity.this.getClass().getName();
-      AppMethodBeat.o(105990);
+      AppMethodBeat.o(141323);
       return str;
     }
     
     protected final String getIdentString()
     {
-      AppMethodBeat.i(105987);
+      AppMethodBeat.i(141319);
       String str = MMActivity.this.getIdentString();
-      AppMethodBeat.o(105987);
+      AppMethodBeat.o(141319);
       return str;
     }
     
     protected final int getLayoutId()
     {
-      AppMethodBeat.i(105985);
+      AppMethodBeat.i(141317);
       int i = MMActivity.this.getLayoutId();
-      AppMethodBeat.o(105985);
+      AppMethodBeat.o(141317);
       return i;
     }
     
     protected final View getLayoutView()
     {
-      AppMethodBeat.i(142716);
+      AppMethodBeat.i(141320);
       View localView = MMActivity.this.getLayoutView();
-      AppMethodBeat.o(142716);
+      AppMethodBeat.o(141320);
       return localView;
+    }
+    
+    protected final boolean needResetStatusBarColorOnActivityCreate()
+    {
+      AppMethodBeat.i(141326);
+      boolean bool = MMActivity.this.needResetStatusBarColorOnActivityCreate();
+      AppMethodBeat.o(141326);
+      return bool;
     }
     
     public final boolean needShowIdcError()
     {
-      AppMethodBeat.i(105993);
+      AppMethodBeat.i(141327);
       boolean bool = MMActivity.this.needShowIdcError();
-      AppMethodBeat.o(105993);
+      AppMethodBeat.o(141327);
       return bool;
     }
     
     public final boolean noActionBar()
     {
-      AppMethodBeat.i(105992);
+      AppMethodBeat.i(141325);
       boolean bool = MMActivity.this.noActionBar();
-      AppMethodBeat.o(105992);
+      AppMethodBeat.o(141325);
       return bool;
     }
     
     protected final void onCreateBeforeSetContentView()
     {
-      AppMethodBeat.i(105989);
+      AppMethodBeat.i(141322);
       MMActivity.this.onCreateBeforeSetContentView();
-      AppMethodBeat.o(105989);
+      AppMethodBeat.o(141322);
     }
     
     public final void onKeyboardStateChanged()
     {
-      AppMethodBeat.i(105988);
+      AppMethodBeat.i(141321);
       MMActivity.this.onKeyboardStateChanged();
-      AppMethodBeat.o(105988);
+      AppMethodBeat.o(141321);
+    }
+    
+    protected final View provideCustomActivityContentView()
+    {
+      AppMethodBeat.i(141328);
+      View localView = MMActivity.this.provideCustomActivityContentView();
+      AppMethodBeat.o(141328);
+      return localView;
     }
   };
+  private boolean mIsStopped = false;
   private View mSelfNavigationBar;
   private ViewGroup mWrappingFrame = null;
   private a onActResult = null;
+  boolean transparentTheme = false;
   
   static
   {
@@ -181,17 +204,17 @@ public abstract class MMActivity
   
   public static Locale initLanguage(Context paramContext)
   {
-    return q.initLanguage(paramContext);
+    return r.initLanguage(paramContext);
   }
   
   public static Locale initLanguage(Context paramContext, String paramString)
   {
-    return q.initLanguage(paramContext, paramString);
+    return r.initLanguage(paramContext, paramString);
   }
   
   private void noteOnPauseTicks()
   {
-    this.lastOnPauseTicks = bo.yB();
+    this.lastOnPauseTicks = bt.GC();
   }
   
   private void noteOnResumeTicks()
@@ -199,7 +222,7 @@ public abstract class MMActivity
     if (this.lastOnPauseTicks > this.lastOnResumeTicks) {
       this.lastBrowseTime += this.lastOnPauseTicks - this.lastOnResumeTicks;
     }
-    this.lastOnResumeTicks = bo.yB();
+    this.lastOnResumeTicks = bt.GC();
     this.lastOnPauseTicks = 0L;
   }
   
@@ -227,6 +250,7 @@ public abstract class MMActivity
     this.mController.activateBroadcast(paramBoolean);
   }
   
+  @Deprecated
   public boolean activityHasDestroyed()
   {
     return isDestroyed();
@@ -277,25 +301,25 @@ public abstract class MMActivity
     this.mController.addIconOptionMenu(paramInt, paramString, paramDrawable, paramOnMenuItemClickListener);
   }
   
-  public void addSearchMenu(boolean paramBoolean, com.tencent.mm.ui.tools.q paramq)
+  public void addSearchMenu(boolean paramBoolean, com.tencent.mm.ui.tools.r paramr)
   {
-    this.mController.addSearchMenu(paramBoolean, paramq);
+    this.mController.addSearchMenu(paramBoolean, paramr);
   }
   
   public void addTextOptionMenu(int paramInt1, String paramString, int paramInt2, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    q localq = this.mController;
-    q.b localb = q.b.zbx;
-    q.a locala = new q.a();
-    locala.yUo = paramInt1;
+    r localr = this.mController;
+    r.b localb = r.b.FOA;
+    r.a locala = new r.a();
+    locala.FHe = paramInt1;
     locala.text = paramString;
     locala.textColor = paramInt2;
-    locala.gBC = paramOnMenuItemClickListener;
-    locala.mAd = null;
-    locala.zbv = localb;
-    localq.Of(locala.yUo);
-    localq.yUg.add(locala);
-    new ak().postDelayed(new q.10(localq), 200L);
+    locala.ioW = paramOnMenuItemClickListener;
+    locala.qhH = null;
+    locala.FOy = localb;
+    localr.Xk(locala.FHe);
+    localr.FGV.add(locala);
+    new com.tencent.mm.sdk.platformtools.ap().postDelayed(new r.11(localr), 200L);
   }
   
   public void addTextOptionMenu(int paramInt, String paramString, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
@@ -308,27 +332,27 @@ public abstract class MMActivity
     this.mController.addTextOptionMenu(paramInt, paramString, paramOnMenuItemClickListener, paramOnLongClickListener);
   }
   
-  public void addTextOptionMenu(int paramInt, String paramString, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, View.OnLongClickListener paramOnLongClickListener, View.OnTouchListener paramOnTouchListener, q.b paramb)
+  public void addTextOptionMenu(int paramInt, String paramString, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, View.OnLongClickListener paramOnLongClickListener, View.OnTouchListener paramOnTouchListener, r.b paramb)
   {
-    q localq = this.mController;
-    q.a locala = new q.a();
-    locala.yUo = paramInt;
-    locala.yUp = 0;
+    r localr = this.mController;
+    r.a locala = new r.a();
+    locala.FHe = paramInt;
+    locala.FHf = 0;
     locala.text = paramString;
-    locala.gBC = paramOnMenuItemClickListener;
-    locala.mAd = paramOnLongClickListener;
-    locala.jVU = paramOnTouchListener;
-    locala.zbv = paramb;
-    locala.zbw = false;
-    if ((locala.yUp == 2130839668) && (bo.isNullOrNil(paramString))) {
-      locala.text = localq.mContext.getString(2131296998);
+    locala.ioW = paramOnMenuItemClickListener;
+    locala.qhH = paramOnLongClickListener;
+    locala.rFq = paramOnTouchListener;
+    locala.FOy = paramb;
+    locala.FOz = false;
+    if ((locala.FHf == 2131233291) && (bt.isNullOrNil(paramString))) {
+      locala.text = localr.mContext.getString(2131755815);
     }
-    localq.Of(locala.yUo);
-    localq.yUg.add(locala);
-    localq.supportInvalidateOptionsMenu();
+    localr.Xk(locala.FHe);
+    localr.FGV.add(locala);
+    localr.supportInvalidateOptionsMenu();
   }
   
-  public void addTextOptionMenu(int paramInt, String paramString, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, View.OnLongClickListener paramOnLongClickListener, q.b paramb)
+  public void addTextOptionMenu(int paramInt, String paramString, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, View.OnLongClickListener paramOnLongClickListener, r.b paramb)
   {
     this.mController.addTextOptionMenu(paramInt, paramString, paramOnMenuItemClickListener, paramOnLongClickListener, paramb);
   }
@@ -349,42 +373,28 @@ public abstract class MMActivity
     setContentView(paramView);
   }
   
-  public void disableMultiTouch()
-  {
-    if (this.mController != null) {
-      this.mController.disableMultiTouch();
-    }
-  }
-  
   public void enableBackMenu(boolean paramBoolean)
   {
     this.mController.enableBackMenu(paramBoolean);
   }
   
-  public void enableMultiTouch()
-  {
-    if (this.mController != null) {
-      this.mController.enableMultiTouch();
-    }
-  }
-  
   public void enableOptionMenu(int paramInt, boolean paramBoolean)
   {
-    this.mController.d(false, paramInt, paramBoolean);
+    this.mController.b(false, paramInt, paramBoolean);
   }
   
   public void enableOptionMenu(boolean paramBoolean)
   {
-    this.mController.d(true, -1, paramBoolean);
+    this.mController.b(true, -1, paramBoolean);
   }
   
   public void expendActionbar()
   {
-    q localq = this.mController;
-    if (localq.bcg < localq.yUe)
+    r localr = this.mController;
+    if ((!localr.noActionBar()) && (localr.bAg < localr.FGT))
     {
-      ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { localq.bcg, localq.yUe }).setDuration(200L);
-      localValueAnimator.addUpdateListener(new q.11(localq));
+      ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { localr.bAg, localr.FGT }).setDuration(200L);
+      localValueAnimator.addUpdateListener(new r.13(localr));
       localValueAnimator.start();
     }
   }
@@ -392,8 +402,8 @@ public abstract class MMActivity
   public void finish()
   {
     super.finish();
-    int i = w.a(getIntent(), "MMActivity.OverrideEnterAnimation", -1);
-    int j = w.a(getIntent(), "MMActivity.OverrideExitAnimation", -1);
+    int i = y.getIntExtra(getIntent(), "MMActivity.OverrideEnterAnimation", -1);
+    int j = y.getIntExtra(getIntent(), "MMActivity.OverrideExitAnimation", -1);
     if (i != -1) {
       super.overridePendingTransition(i, j);
     }
@@ -427,25 +437,25 @@ public abstract class MMActivity
   
   public int getActionbarColor()
   {
-    return this.mController.dCs();
+    return this.mController.eQV();
   }
   
   public long getActivityBrowseTimeMs()
   {
     if (this.lastOnPauseTicks != 0L) {}
-    for (long l = this.lastOnPauseTicks - this.lastOnResumeTicks + this.lastBrowseTime;; l = bo.yB() - this.lastOnResumeTicks + this.lastBrowseTime)
+    for (long l = this.lastOnPauseTicks - this.lastOnResumeTicks + this.lastBrowseTime;; l = bt.GC() - this.lastOnResumeTicks + this.lastBrowseTime)
     {
       if (l < 0L) {
-        ab.w("MicroMsg.MMActivity", "%d get activity browse time is error, may be something warn here.[%d %d %d %d]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(l), Long.valueOf(this.lastOnResumeTicks), Long.valueOf(this.lastOnPauseTicks), Long.valueOf(this.lastBrowseTime) });
+        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.MMActivity", "%d get activity browse time is error, may be something warn here.[%d %d %d %d]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(l), Long.valueOf(this.lastOnResumeTicks), Long.valueOf(this.lastOnPauseTicks), Long.valueOf(this.lastBrowseTime) });
       }
-      ab.v("MicroMsg.MMActivity", "%d get activity browse time [%d]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(l) });
+      com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.MMActivity", "%d get activity browse time [%d]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(l) });
       return l;
     }
   }
   
   public View getBodyView()
   {
-    return this.mController.zay;
+    return this.mController.FNv;
   }
   
   public String getCallerPackage()
@@ -455,10 +465,10 @@ public abstract class MMActivity
     if (localObject2 != null)
     {
       localObject1 = ((ComponentName)localObject2).getPackageName();
-      ab.i("MicroMsg.MMActivity", "get calling activity, %s", new Object[] { localObject1 });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMActivity", "get calling activity, %s", new Object[] { localObject1 });
     }
     localObject2 = localObject1;
-    if (bo.isNullOrNil((String)localObject1))
+    if (bt.isNullOrNil((String)localObject1))
     {
       localObject2 = localObject1;
       if (Build.VERSION.SDK_INT >= 22) {
@@ -467,7 +477,7 @@ public abstract class MMActivity
     }
     try
     {
-      Object localObject4 = new c(this, "mReferrer", null).get();
+      Object localObject4 = new com.tencent.mm.compatible.loader.c(this, "mReferrer", null).get();
       localObject2 = localObject1;
       if (localObject4 != null)
       {
@@ -475,18 +485,18 @@ public abstract class MMActivity
         localObject2 = (String)localObject4;
       }
       localObject3 = localObject2;
-      ab.i("MicroMsg.MMActivity", "get referrer, %s", new Object[] { localObject2 });
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMActivity", "get referrer, %s", new Object[] { localObject2 });
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.MMActivity", localException, "get mReferrer error", new Object[0]);
+        com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.MMActivity", localException, "get mReferrer error", new Object[0]);
         localObject2 = localObject3;
       }
     }
     localObject1 = localObject2;
-    if (bo.isNullOrNil((String)localObject2))
+    if (bt.isNullOrNil((String)localObject2))
     {
       localObject1 = localObject2;
       if (Build.VERSION.SDK_INT >= 22)
@@ -496,7 +506,7 @@ public abstract class MMActivity
         if (localObject3 != null)
         {
           localObject1 = ((Uri)localObject3).getAuthority();
-          ab.i("MicroMsg.MMActivity", "get referrer, %s", new Object[] { localObject1 });
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMActivity", "get referrer, %s", new Object[] { localObject1 });
         }
       }
     }
@@ -510,17 +520,17 @@ public abstract class MMActivity
   
   public AppCompatActivity getContext()
   {
-    return this.mController.zaO;
+    return this.mController.FNL;
   }
   
-  public q getController()
+  public r getController()
   {
     return this.mController;
   }
   
   public int getCurrentActionbarHeight()
   {
-    return this.mController.bcg;
+    return this.mController.bAg;
   }
   
   protected int getForceOrientation()
@@ -549,19 +559,32 @@ public abstract class MMActivity
   {
     if (getBaseContext() != null)
     {
-      Resources localResources = getBaseContext().getResources();
-      Object localObject2 = super.getResources();
-      Object localObject1 = localObject2;
-      if ((localObject2 instanceof com.tencent.mm.cc.b))
+      Object localObject2 = getBaseContext().getResources();
+      Resources localResources = super.getResources();
+      Object localObject1 = localResources;
+      if ((localResources instanceof com.tencent.mm.ce.b))
       {
-        localObject1 = (com.tencent.mm.cc.b)localObject2;
-        localObject2 = ((com.tencent.mm.cc.b)localObject1).yjj.c(localResources.getConfiguration());
-        ((com.tencent.mm.cc.b)localObject1).getConfiguration().updateFrom((Configuration)localObject2);
+        localObject1 = localResources;
+        if (localObject2 != null)
+        {
+          localObject1 = (com.tencent.mm.ce.b)localResources;
+          localObject2 = ((com.tencent.mm.ce.b)localObject1).EMK.f(((Resources)localObject2).getConfiguration());
+          com.tencent.mm.ce.c.a((Configuration)localObject2, ai.j(localResources));
+          ((com.tencent.mm.ce.b)localObject1).getConfiguration().updateFrom((Configuration)localObject2);
+        }
       }
       return localObject1;
     }
-    ab.b("MicroMsg.MMActivity", "no base context!!", new Object[0]);
+    com.tencent.mm.sdk.platformtools.ad.m("MicroMsg.MMActivity", "no base context!!", new Object[0]);
     return super.getResources();
+  }
+  
+  public int getStatusBarHeight(int paramInt)
+  {
+    if ((this.mWrappingFrame instanceof com.tencent.mm.ui.statusbar.b)) {
+      return ((com.tencent.mm.ui.statusbar.b)this.mWrappingFrame).getDrawnStatusBarHeight();
+    }
+    return ap.M(this, paramInt);
   }
   
   public int getStreamMaxVolume(int paramInt)
@@ -581,10 +604,12 @@ public abstract class MMActivity
   
   public void hideActionbarLine()
   {
-    q localq = this.mController;
-    if ((Build.VERSION.SDK_INT >= 21) && (localq.getSupportActionBar() != null)) {
-      localq.getSupportActionBar().setElevation(0.0F);
-    }
+    this.mController.hideActionbarLine();
+  }
+  
+  public void hideAllManagedDialogs()
+  {
+    this.mController.hideAllManagedDialogs();
   }
   
   public void hideTitleView()
@@ -605,6 +630,31 @@ public abstract class MMActivity
   public boolean hideVKBHavingResult()
   {
     return this.mController.hideVKB();
+  }
+  
+  public void initActionBarOperationArea()
+  {
+    if (this.mController != null)
+    {
+      r localr = this.mController;
+      if (localr.FNY != null) {
+        localr.FNY.setVisibility(0);
+      }
+      if (localr.FGG != null) {
+        localr.FGG.setVisibility(8);
+      }
+    }
+  }
+  
+  public void initActionBarOperationAreaTxt(String paramString)
+  {
+    if (this.mController != null)
+    {
+      r localr = this.mController;
+      if (localr.FNZ != null) {
+        localr.FNZ.Hys.setText(paramString);
+      }
+    }
   }
   
   protected void initSwipeBack()
@@ -634,11 +684,11 @@ public abstract class MMActivity
   
   public boolean isOptionMenuEnable(int paramInt)
   {
-    Iterator localIterator = this.mController.yUg.iterator();
+    Iterator localIterator = this.mController.FGV.iterator();
     while (localIterator.hasNext())
     {
-      q.a locala = (q.a)localIterator.next();
-      if (locala.yUo == paramInt) {
+      r.a locala = (r.a)localIterator.next();
+      if (locala.FHe == paramInt) {
         return locala.enable;
       }
     }
@@ -647,12 +697,12 @@ public abstract class MMActivity
   
   public boolean isOptionMenuShow(int paramInt)
   {
-    Iterator localIterator = this.mController.yUg.iterator();
+    Iterator localIterator = this.mController.FGV.iterator();
     while (localIterator.hasNext())
     {
-      q.a locala = (q.a)localIterator.next();
-      if (locala.yUo == paramInt) {
-        return locala.arf;
+      r.a locala = (r.a)localIterator.next();
+      if (locala.FHe == paramInt) {
+        return locala.visible;
       }
     }
     return false;
@@ -660,13 +710,36 @@ public abstract class MMActivity
   
   public boolean isScreenEnable()
   {
-    return this.mController.zaC;
+    return this.mController.FNz;
+  }
+  
+  public boolean isShowDialog()
+  {
+    Object localObject = this.mController;
+    if (((r)localObject).FNQ == null) {
+      return false;
+    }
+    localObject = ((r)localObject).FNQ.iterator();
+    do
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break;
+      }
+    } while (!((Dialog)((Iterator)localObject).next()).isShowing());
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
   
   public boolean isSingleTitleView()
   {
-    q localq = this.mController;
-    return (localq.mActionBar != null) && (localq.mActionBar.getCustomView() != null) && (localq.mActionBar.getCustomView().findViewById(2131821000) != null);
+    r localr = this.mController;
+    return (localr.mActionBar != null) && (localr.mActionBar.getCustomView() != null) && (localr.mActionBar.getCustomView().findViewById(2131296348) != null);
+  }
+  
+  public boolean isStopped()
+  {
+    return this.mIsStopped;
   }
   
   public boolean isTitleShowing()
@@ -676,7 +749,7 @@ public abstract class MMActivity
   
   public int keyboardState()
   {
-    return this.mController.zbg;
+    return this.mController.FOj;
   }
   
   public void mmSetOnActivityResultCallback(a parama)
@@ -688,6 +761,11 @@ public abstract class MMActivity
   {
     this.onActResult = parama;
     startActivityForResult(paramIntent, paramInt);
+  }
+  
+  protected boolean needResetStatusBarColorOnActivityCreate()
+  {
+    return true;
   }
   
   public boolean needShowIdcError()
@@ -725,8 +803,11 @@ public abstract class MMActivity
     }
     this.mController.a(getApplicationContext(), this);
     initNavigationSwipeBack();
-    setActionbarColor(getResources().getColor(2131690316));
-    setMMTitleSize(com.tencent.mm.cb.a.ap(this, 2131427493) * com.tencent.mm.cb.a.gr(this));
+    if (!noActionBar())
+    {
+      setActionbarColor(getResources().getColor(2131100705));
+      setMMTitleSize(com.tencent.mm.cd.a.ap(this, 2131165184) * com.tencent.mm.cd.a.hQ(this));
+    }
   }
   
   protected void onCreateBeforeSetContentView() {}
@@ -742,8 +823,10 @@ public abstract class MMActivity
   public void onDestroy()
   {
     super.onDestroy();
-    this.mController.hI(this);
+    this.mController.jo(this);
   }
+  
+  public void onDialogDismiss(Dialog paramDialog) {}
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
@@ -766,7 +849,7 @@ public abstract class MMActivity
     }
     catch (Exception paramKeyEvent)
     {
-      ab.printErrStackTrace("MicroMsg.MMActivity", paramKeyEvent, "java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState", new Object[0]);
+      com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.MMActivity", paramKeyEvent, "java.lang.IllegalStateException: Can not perform this action after onSaveInstanceState", new Object[0]);
     }
     return true;
   }
@@ -781,11 +864,11 @@ public abstract class MMActivity
   public void onPause()
   {
     long l = System.currentTimeMillis();
-    ad.bK(2, this.className);
+    ag.cG(2, this.className);
     super.onPause();
     this.mController.onPause();
     boolean bool = isFinishing();
-    ab.v("MicroMsg.INIT", "KEVIN MMActivity onPause: %d ms, isFinishing %B, hash:#0x%x", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Boolean.valueOf(bool), Integer.valueOf(hashCode()) });
+    com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.INIT", "KEVIN MMActivity onPause: %d ms, isFinishing %B, hash:#0x%x", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Boolean.valueOf(bool), Integer.valueOf(hashCode()) });
     noteOnPauseTicks();
   }
   
@@ -798,11 +881,11 @@ public abstract class MMActivity
   public void onResume()
   {
     long l = System.currentTimeMillis();
-    ad.bK(1, this.className);
+    ag.cG(1, this.className);
     super.onResume();
-    ab.v("MicroMsg.INIT", "KEVIN MMActivity super.onResume " + (System.currentTimeMillis() - l));
+    com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.INIT", "KEVIN MMActivity super.onResume " + (System.currentTimeMillis() - l));
     this.mController.onResume();
-    ab.v("MicroMsg.INIT", "KEVIN MMActivity onResume :%dms, hash:#0x%x", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(hashCode()) });
+    com.tencent.mm.sdk.platformtools.ad.v("MicroMsg.INIT", "KEVIN MMActivity onResume :%dms, hash:#0x%x", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(hashCode()) });
     noteOnResumeTicks();
   }
   
@@ -816,7 +899,14 @@ public abstract class MMActivity
   public void onStart()
   {
     setMMOrientation();
+    this.mIsStopped = false;
     super.onStart();
+  }
+  
+  public void onStop()
+  {
+    this.mIsStopped = true;
+    super.onStop();
   }
   
   public void onSwipeBack()
@@ -838,6 +928,28 @@ public abstract class MMActivity
     AppMethodBeat.at(this, paramBoolean);
   }
   
+  public void playActionBarOperationAreaAnim()
+  {
+    if (this.mController != null)
+    {
+      Object localObject = this.mController;
+      if (((r)localObject).FNZ != null)
+      {
+        localObject = ((r)localObject).FNZ;
+        if (!((AlbumChooserView)localObject).Hyu)
+        {
+          ((AlbumChooserView)localObject).Hyu = true;
+          ((AlbumChooserView)localObject).Hyt.animate().rotationBy(180.0F).setDuration(200L).withEndAction(new AlbumChooserView.2((AlbumChooserView)localObject)).start();
+        }
+      }
+    }
+  }
+  
+  protected View provideCustomActivityContentView()
+  {
+    return null;
+  }
+  
   public void removeAllOptionMenu()
   {
     this.mController.removeAllOptionMenu();
@@ -848,6 +960,17 @@ public abstract class MMActivity
     return this.mController.removeOptionMenu(paramInt);
   }
   
+  public void setActionBarOperationAreaClickListener(AlbumChooserView.a parama)
+  {
+    if (this.mController != null)
+    {
+      r localr = this.mController;
+      if (localr.FNZ != null) {
+        localr.FNZ.setOnAlbumChooserViewClick(parama);
+      }
+    }
+  }
+  
   public void setActionbarColor(int paramInt)
   {
     this.mController.setActionbarColor(paramInt);
@@ -855,29 +978,30 @@ public abstract class MMActivity
   
   public void setActionbarElementColor(int paramInt)
   {
-    q localq = this.mController;
-    localq.zaW = paramInt;
-    if (localq.zaV != null) {
-      localq.zaV.setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    r localr = this.mController;
+    localr.FNV = paramInt;
+    localr.FOb = true;
+    if (localr.FNT != null) {
+      localr.FNT.setIconColor(paramInt);
     }
-    if ((localq.zaT != null) && (localq.zaT.getVisibility() == 0)) {
-      localq.zaT.setTextColor(paramInt);
+    if ((localr.FNR != null) && (localr.FNR.getVisibility() == 0)) {
+      localr.FNR.setTextColor(paramInt);
     }
-    if ((localq.jjS != null) && (localq.jjS.getVisibility() == 0)) {
-      localq.jjS.setTextColor(paramInt);
+    if ((localr.lZH != null) && (localr.lZH.getVisibility() == 0)) {
+      localr.lZH.setTextColor(paramInt);
     }
-    if ((localq.yTV != null) && (localq.yTV.getVisibility() == 0)) {
-      localq.yTV.getDrawable().setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
+    if ((localr.FGJ != null) && (localr.FGJ.getVisibility() == 0)) {
+      localr.FGJ.getDrawable().setColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP);
     }
-    while ((localq.yTX == null) || (localq.yTX.getVisibility() != 0)) {
+    while ((localr.FGL == null) || (localr.FGL.getVisibility() != 0)) {
       return;
     }
-    localq.yTX.setTextColor(paramInt);
+    localr.FGL.setTextColor(paramInt);
   }
   
   public void setActionbarHeight(int paramInt)
   {
-    this.mController.setActionbarHeight(paramInt);
+    this.mController.Xm(paramInt);
   }
   
   public void setBackBtn(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
@@ -928,10 +1052,7 @@ public abstract class MMActivity
   
   public void setIsDarkActionbarBg(boolean paramBoolean)
   {
-    q localq = this.mController;
-    localq.qGO = paramBoolean;
-    localq.dCv();
-    localq.dCu();
+    this.mController.vx(paramBoolean);
   }
   
   public void setLightNavigationbarIcon()
@@ -939,7 +1060,7 @@ public abstract class MMActivity
     Object localObject = this.mController;
     if (Build.VERSION.SDK_INT >= 23)
     {
-      localObject = ((q)localObject).zaO.getWindow().getDecorView();
+      localObject = ((r)localObject).FNL.getWindow().getDecorView();
       ((View)localObject).setSystemUiVisibility(((View)localObject).getSystemUiVisibility() & 0xFFFFFFEF);
     }
   }
@@ -953,7 +1074,7 @@ public abstract class MMActivity
   {
     if (getForceOrientation() == -1)
     {
-      this.landscapeMode = getSharedPreferences(ah.dsP(), 0).getBoolean("settings_landscape_mode", false);
+      this.landscapeMode = getSharedPreferences(aj.eFD(), 0).getBoolean("settings_landscape_mode", false);
       if (this.landscapeMode)
       {
         setRequestedOrientation(-1);
@@ -1005,28 +1126,44 @@ public abstract class MMActivity
   
   public void setMMTitleColor(int paramInt)
   {
-    q localq = this.mController;
-    if (localq.mActionBar != null) {
-      localq.zaT.setTextColor(paramInt);
+    r localr = this.mController;
+    if (localr.mActionBar != null) {
+      localr.FNR.setTextColor(paramInt);
     }
   }
   
   public void setMMTitleSize(float paramFloat)
   {
-    q localq = this.mController;
-    if ((localq.mActionBar != null) && (localq.zaT != null)) {
-      localq.zaT.setTextSize(0, paramFloat);
+    r localr = this.mController;
+    if ((localr.mActionBar != null) && (localr.FNR != null)) {
+      localr.FNR.setTextSize(0, paramFloat);
     }
   }
   
   public void setMMTitleVisibility(int paramInt)
   {
-    this.mController.zaT.setVisibility(paramInt);
+    this.mController.setMMTitleVisibility(paramInt);
   }
   
   public void setNavigationbarColor(int paramInt)
   {
     this.mController.setNavigationbarColor(paramInt);
+  }
+  
+  public void setProgressIcon(int paramInt)
+  {
+    r localr = this.mController;
+    if (localr.mActionBar != null) {
+      localr.FNU.setIndeterminateDrawable(localr.FNL.getDrawable(paramInt));
+    }
+  }
+  
+  public void setProgressVisibility(int paramInt)
+  {
+    r localr = this.mController;
+    if (localr.mActionBar != null) {
+      localr.FNU.setVisibility(paramInt);
+    }
   }
   
   @Deprecated
@@ -1039,9 +1176,9 @@ public abstract class MMActivity
   
   public void setSelfNavigationBarColor(int paramInt)
   {
-    if (!am.hO(getContext()))
+    if (!ap.ju(getContext()))
     {
-      ab.w("MicroMsg.MMActivity", "has not NavigationBar!");
+      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.MMActivity", "has not NavigationBar!");
       return;
     }
     if (this.mSelfNavigationBar == null)
@@ -1049,7 +1186,7 @@ public abstract class MMActivity
       this.mSelfNavigationBar = new View(getContext());
       ((ViewGroup)getWindow().getDecorView()).addView(this.mSelfNavigationBar);
     }
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, am.fx(getContext()));
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, ap.eb(getContext()));
     localLayoutParams.gravity = 80;
     this.mSelfNavigationBar.setLayoutParams(localLayoutParams);
     this.mSelfNavigationBar.setBackgroundColor(paramInt);
@@ -1063,21 +1200,32 @@ public abstract class MMActivity
     }
   }
   
+  public void setSmartGalleryEntryVisibility(boolean paramBoolean)
+  {
+    if (this.mController != null)
+    {
+      r localr = this.mController;
+      com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.MMActivityController", "set smart gallery entry valid.");
+      localr.FNM = paramBoolean;
+      localr.supportInvalidateOptionsMenu();
+    }
+  }
+  
   public void setTitleAlpha(float paramFloat)
   {
-    q localq = this.mController;
-    if (localq.zaT != null) {
-      localq.zaT.setAlpha(paramFloat);
+    r localr = this.mController;
+    if (localr.FNR != null) {
+      localr.FNR.setAlpha(paramFloat);
     }
   }
   
   public void setTitleBarClickListener(Runnable paramRunnable1, Runnable paramRunnable2)
   {
-    q localq = this.mController;
-    if (localq.mActionBar == null) {
+    r localr = this.mController;
+    if (localr.mActionBar == null) {
       return;
     }
-    localq.mActionBar.getCustomView().setOnClickListener(new q.7(localq, paramRunnable1, paramRunnable2));
+    localr.mActionBar.getCustomView().setOnClickListener(new r.8(localr, paramRunnable1, paramRunnable2));
   }
   
   public void setTitleBarDoubleClickListener(Runnable paramRunnable)
@@ -1094,12 +1242,12 @@ public abstract class MMActivity
   
   public void setTitleForceNotifyIconVisibility(int paramInt)
   {
-    q localq = this.mController;
+    r localr = this.mController;
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localq.zaM = bool;
-      localq.dCt();
+      localr.FNJ = bool;
+      localr.eQX();
       return;
     }
   }
@@ -1127,12 +1275,14 @@ public abstract class MMActivity
   @Deprecated
   public void setToTop(View.OnClickListener paramOnClickListener) {}
   
+  public void setTransparentTheme(boolean paramBoolean)
+  {
+    this.transparentTheme = paramBoolean;
+  }
+  
   public void showActionbarLine()
   {
-    q localq = this.mController;
-    if ((Build.VERSION.SDK_INT >= 21) && (localq.getSupportActionBar() != null)) {
-      localq.getSupportActionBar().setElevation(1.0F);
-    }
+    this.mController.showActionbarLine();
   }
   
   public void showHomeBtn(boolean paramBoolean)
@@ -1142,19 +1292,19 @@ public abstract class MMActivity
   
   public void showMMLogo()
   {
-    q localq = this.mController;
-    localq.zaV.setVisibility(8);
-    localq.zaU.setVisibility(8);
+    r localr = this.mController;
+    localr.FNT.setVisibility(8);
+    localr.FNS.setVisibility(8);
   }
   
   public void showOptionMenu(int paramInt, boolean paramBoolean)
   {
-    this.mController.e(false, paramInt, paramBoolean);
+    this.mController.c(false, paramInt, paramBoolean);
   }
   
   public void showOptionMenu(boolean paramBoolean)
   {
-    this.mController.e(true, -1, paramBoolean);
+    this.mController.c(true, -1, paramBoolean);
   }
   
   public void showTitleView()
@@ -1164,20 +1314,26 @@ public abstract class MMActivity
   
   public void showVKB()
   {
-    q.showVKB(this.mController.zaO);
+    r.showVKB(this.mController.FNL);
   }
   
   public void startActivity(Class<?> paramClass)
   {
     Intent localIntent = new Intent();
     localIntent.setClass(this, paramClass);
-    startActivity(localIntent);
+    paramClass = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramClass.adn(), "com/tencent/mm/ui/MMActivity", "startActivity", "(Ljava/lang/Class;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramClass.lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/MMActivity", "startActivity", "(Ljava/lang/Class;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
   
   public void startActivity(Class<?> paramClass, Intent paramIntent)
   {
     paramIntent.setClass(this, paramClass);
-    startActivity(paramIntent);
+    paramClass = new com.tencent.mm.hellhoundlib.b.a().bd(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramClass.adn(), "com/tencent/mm/ui/MMActivity", "startActivity", "(Ljava/lang/Class;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramClass.lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/MMActivity", "startActivity", "(Ljava/lang/Class;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
   
   public void supportLightStatusBar()
@@ -1185,8 +1341,30 @@ public abstract class MMActivity
     Object localObject = this.mController;
     if (Build.VERSION.SDK_INT >= 23)
     {
-      localObject = ((q)localObject).zaO.getWindow().getDecorView();
+      localObject = ((r)localObject).FNL.getWindow().getDecorView();
       ((View)localObject).setSystemUiVisibility(((View)localObject).getSystemUiVisibility() | 0x2000);
+    }
+  }
+  
+  public void updataStatusBarIcon(boolean paramBoolean)
+  {
+    this.mController.updataStatusBarIcon(paramBoolean);
+  }
+  
+  public void updateActionBarOperationAreaTxt(String paramString)
+  {
+    if (this.mController != null)
+    {
+      Object localObject = this.mController;
+      if (((r)localObject).FNZ != null)
+      {
+        localObject = ((r)localObject).FNZ;
+        if (!((AlbumChooserView)localObject).Hyu)
+        {
+          ((AlbumChooserView)localObject).Hyu = true;
+          ((AlbumChooserView)localObject).Hyt.animate().rotationBy(180.0F).setDuration(200L).withEndAction(new AlbumChooserView.3((AlbumChooserView)localObject, paramString)).start();
+        }
+      }
     }
   }
   
@@ -1208,6 +1386,17 @@ public abstract class MMActivity
   public void updateOptionMenuListener(int paramInt, MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener, View.OnLongClickListener paramOnLongClickListener)
   {
     this.mController.updateOptionMenuListener(paramInt, paramOnMenuItemClickListener, paramOnLongClickListener);
+  }
+  
+  public void updateOptionMenuStyle(int paramInt, r.b paramb)
+  {
+    r localr = this.mController;
+    r.a locala = localr.Xl(paramInt);
+    if (locala != null)
+    {
+      locala.FOy = paramb;
+      localr.supportInvalidateOptionsMenu();
+    }
   }
   
   public void updateOptionMenuText(int paramInt, String paramString)

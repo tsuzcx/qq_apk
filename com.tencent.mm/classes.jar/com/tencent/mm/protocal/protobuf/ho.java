@@ -3,101 +3,65 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ho
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String imei;
-  public String wul;
-  public String wum;
-  public String wun;
+  public long endTime;
+  public long startTime;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(2536);
+    AppMethodBeat.i(32128);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.imei != null) {
-        paramVarArgs.e(1, this.imei);
-      }
-      if (this.wul != null) {
-        paramVarArgs.e(2, this.wul);
-      }
-      if (this.wum != null) {
-        paramVarArgs.e(3, this.wum);
-      }
-      if (this.wun != null) {
-        paramVarArgs.e(4, this.wun);
-      }
-      AppMethodBeat.o(2536);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aG(1, this.startTime);
+      paramVarArgs.aG(2, this.endTime);
+      AppMethodBeat.o(32128);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.imei == null) {
-        break label404;
-      }
-    }
-    label404:
-    for (int i = e.a.a.b.b.a.f(1, this.imei) + 0;; i = 0)
+    if (paramInt == 1)
     {
-      paramInt = i;
-      if (this.wul != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.wul);
-      }
-      i = paramInt;
-      if (this.wum != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.wum);
-      }
-      paramInt = i;
-      if (this.wun != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.wun);
-      }
-      AppMethodBeat.o(2536);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
-          }
-        }
-        AppMethodBeat.o(2536);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-        ho localho = (ho)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(2536);
-          return -1;
-        case 1: 
-          localho.imei = locala.CLY.readString();
-          AppMethodBeat.o(2536);
-          return 0;
-        case 2: 
-          localho.wul = locala.CLY.readString();
-          AppMethodBeat.o(2536);
-          return 0;
-        case 3: 
-          localho.wum = locala.CLY.readString();
-          AppMethodBeat.o(2536);
-          return 0;
-        }
-        localho.wun = locala.CLY.readString();
-        AppMethodBeat.o(2536);
-        return 0;
-      }
-      AppMethodBeat.o(2536);
-      return -1;
+      paramInt = f.a.a.b.b.a.q(1, this.startTime);
+      int i = f.a.a.b.b.a.q(2, this.endTime);
+      AppMethodBeat.o(32128);
+      return paramInt + 0 + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.fMq();
+        }
+      }
+      AppMethodBeat.o(32128);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      ho localho = (ho)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(32128);
+        return -1;
+      case 1: 
+        localho.startTime = locala.KhF.xT();
+        AppMethodBeat.o(32128);
+        return 0;
+      }
+      localho.endTime = locala.KhF.xT();
+      AppMethodBeat.o(32128);
+      return 0;
+    }
+    AppMethodBeat.o(32128);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ho
  * JD-Core Version:    0.7.0.1
  */

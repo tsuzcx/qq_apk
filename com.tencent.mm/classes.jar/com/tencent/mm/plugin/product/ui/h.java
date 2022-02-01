@@ -6,11 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
+import android.widget.Filter.FilterResults;
 import android.widget.Filterable;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.product.a.a;
 import com.tencent.mm.plugin.product.b.d;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public final class h
@@ -18,45 +21,82 @@ public final class h
   implements Filterable
 {
   private Context mContext;
-  private List<String> puo;
-  private List<String> pwe;
-  Filter pwf;
+  private List<String> uwa;
+  private List<String> uxM;
+  Filter uxN;
   
   public h(Context paramContext)
   {
-    AppMethodBeat.i(44085);
-    this.pwe = null;
-    this.puo = null;
-    this.pwf = new h.1(this);
+    AppMethodBeat.i(66991);
+    this.uxM = null;
+    this.uwa = null;
+    this.uxN = new Filter()
+    {
+      protected final Filter.FilterResults performFiltering(CharSequence paramAnonymousCharSequence)
+      {
+        AppMethodBeat.i(66990);
+        Filter.FilterResults localFilterResults = new Filter.FilterResults();
+        ArrayList localArrayList = new ArrayList();
+        Iterator localIterator = h.a(h.this).iterator();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          if ((str != null) && (paramAnonymousCharSequence != null) && (str.contains(paramAnonymousCharSequence))) {
+            localArrayList.add(str);
+          }
+        }
+        localFilterResults.values = localArrayList;
+        localFilterResults.count = localArrayList.size();
+        AppMethodBeat.o(66990);
+        return localFilterResults;
+      }
+      
+      protected final void publishResults(CharSequence paramAnonymousCharSequence, Filter.FilterResults paramAnonymousFilterResults)
+      {
+        try
+        {
+          AppMethodBeat.i(66989);
+          h.a(h.this, (List)paramAnonymousFilterResults.values);
+          h.this.notifyDataSetChanged();
+          AppMethodBeat.o(66989);
+          return;
+        }
+        finally
+        {
+          paramAnonymousCharSequence = finally;
+          throw paramAnonymousCharSequence;
+        }
+      }
+    };
     this.mContext = paramContext;
-    this.pwe = a.caT().caV().puo;
-    AppMethodBeat.o(44085);
+    this.uxM = a.dbi().dbk().uwa;
+    AppMethodBeat.o(66991);
   }
   
   private String getItem(int paramInt)
   {
-    AppMethodBeat.i(44087);
-    String str = (String)this.puo.get(paramInt);
-    AppMethodBeat.o(44087);
+    AppMethodBeat.i(66993);
+    String str = (String)this.uwa.get(paramInt);
+    AppMethodBeat.o(66993);
     return str;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(44086);
-    if (this.puo != null)
+    AppMethodBeat.i(66992);
+    if (this.uwa != null)
     {
-      int i = this.puo.size();
-      AppMethodBeat.o(44086);
+      int i = this.uwa.size();
+      AppMethodBeat.o(66992);
       return i;
     }
-    AppMethodBeat.o(44086);
+    AppMethodBeat.o(66992);
     return 0;
   }
   
   public final Filter getFilter()
   {
-    return this.pwf;
+    return this.uxN;
   }
   
   public final long getItemId(int paramInt)
@@ -66,29 +106,36 @@ public final class h
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(44088);
+    AppMethodBeat.i(66994);
     View localView;
     if (paramView == null)
     {
-      paramView = new h.a(this);
+      paramView = new a();
       localView = LayoutInflater.from(this.mContext).inflate(17367043, null);
-      paramView.pvK = ((TextView)localView.findViewById(16908308));
+      paramView.mWt = ((TextView)localView.findViewById(16908308));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
     for (;;)
     {
-      paramViewGroup.pvK.setText(getItem(paramInt));
-      AppMethodBeat.o(44088);
+      paramViewGroup.mWt.setText(getItem(paramInt));
+      AppMethodBeat.o(66994);
       return localView;
-      paramViewGroup = (h.a)paramView.getTag();
+      paramViewGroup = (a)paramView.getTag();
       localView = paramView;
     }
+  }
+  
+  final class a
+  {
+    TextView mWt;
+    
+    a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.h
  * JD-Core Version:    0.7.0.1
  */

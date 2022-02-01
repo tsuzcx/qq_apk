@@ -1,22 +1,21 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
-import a.l;
-import com.tencent.mm.ui.widget.b.d.a;
+import d.g.a.a;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "onDismiss"})
-final class i$c
-  implements d.a
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+public final class i$c
+  extends d.g.b.l
+  implements a<y>
 {
-  i$c(i parami) {}
-  
-  public final void onDismiss()
+  public i$c(a parama)
   {
-    this.kiJ.kiI = false;
+    super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.video.util.i.c
  * JD-Core Version:    0.7.0.1
  */

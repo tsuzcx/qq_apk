@@ -4,10 +4,15 @@ import android.content.Context;
 import com.tencent.kinda.gen.KPwdInputView;
 import com.tencent.kinda.gen.KPwdInputViewOnEndEnterPasswordCallback;
 import com.tencent.kinda.gen.KPwdInputViewOnPasswordChangeCallback;
+import com.tencent.kinda.gen.PwdViewStyle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.wallet_core.ui.e;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
+import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
 import com.tencent.mm.wallet_core.ui.formview.a;
+import com.tenpay.android.wechat.TenpaySecureEditText;
 
 public class KindaPwdInputViewImpl
   extends MMKView<EditHintPasswdView>
@@ -15,21 +20,53 @@ public class KindaPwdInputViewImpl
 {
   private KPwdInputViewOnPasswordChangeCallback pwdChangeCallback;
   private KPwdInputViewOnEndEnterPasswordCallback pwdEndCallback;
+  private PwdViewStyle pwdStyle = PwdViewStyle.CHECKPWDSTYLE;
   private EditHintPasswdView pwdView;
   
   public EditHintPasswdView createView(Context paramContext)
   {
-    AppMethodBeat.i(144790);
+    AppMethodBeat.i(18933);
     this.pwdView = new EditHintPasswdView(paramContext);
-    a.a(this.pwdView);
-    this.pwdView.setBackgroundResource(2130838582);
-    if ((paramContext instanceof BaseFrActivity)) {
-      ((BaseFrActivity)paramContext).setEditFocusListener(this.pwdView, 0, false);
+    if (this.pwdStyle == PwdViewStyle.CHECKPWDSTYLE) {
+      this.pwdView.abA(1);
     }
-    this.pwdView.setOnInputValidListener(new KindaPwdInputViewImpl.1(this));
-    paramContext = this.pwdView;
-    AppMethodBeat.o(144790);
-    return paramContext;
+    for (;;)
+    {
+      a.a(this.pwdView);
+      if ((paramContext instanceof BaseFrActivity)) {
+        ((BaseFrActivity)paramContext).setEditFocusListener(this.pwdView, 0, false);
+      }
+      this.pwdView.setOnInputValidListener(new EditHintPasswdView.a()
+      {
+        public void onInputValidChange(boolean paramAnonymousBoolean)
+        {
+          AppMethodBeat.i(18931);
+          if (KindaPwdInputViewImpl.this.pwdView.mEditText != null) {
+            TenpaySecureEditText.setSalt(e.fkB());
+          }
+          if (paramAnonymousBoolean)
+          {
+            KindaPwdInputViewImpl.this.pwdView.getText();
+            if (KindaPwdInputViewImpl.this.pwdEndCallback != null) {
+              KindaPwdInputViewImpl.this.pwdEndCallback.onEndEnterPassword(KindaPwdInputViewImpl.this.pwdView.getText(), KindaPwdInputViewImpl.this.pwdView.getMd5Value());
+            }
+            if (KindaPwdInputViewImpl.this.pwdChangeCallback != null) {
+              KindaPwdInputViewImpl.this.pwdChangeCallback.onPasswordChange(6, KindaPwdInputViewImpl.this.pwdView.getText(), KindaPwdInputViewImpl.this.pwdView.getMd5Value());
+            }
+            AppMethodBeat.o(18931);
+            return;
+          }
+          if (KindaPwdInputViewImpl.this.pwdChangeCallback != null) {
+            KindaPwdInputViewImpl.this.pwdChangeCallback.onPasswordChange(0, KindaPwdInputViewImpl.this.pwdView.getText(), KindaPwdInputViewImpl.this.pwdView.getMd5Value());
+          }
+          AppMethodBeat.o(18931);
+        }
+      });
+      paramContext = this.pwdView;
+      AppMethodBeat.o(18933);
+      return paramContext;
+      this.pwdView.abA(0);
+    }
   }
   
   public boolean getAutoRemarkKeyBoradType()
@@ -52,6 +89,11 @@ public class KindaPwdInputViewImpl
     return null;
   }
   
+  public PwdViewStyle getPwdStyle()
+  {
+    return this.pwdStyle;
+  }
+  
   public long getTextLength()
   {
     return 0L;
@@ -61,20 +103,28 @@ public class KindaPwdInputViewImpl
   
   public void setChearInput(boolean paramBoolean)
   {
-    AppMethodBeat.i(144792);
+    AppMethodBeat.i(18935);
     if (paramBoolean) {
-      this.pwdView.cfK();
+      this.pwdView.dga();
     }
-    AppMethodBeat.o(144792);
+    AppMethodBeat.o(18935);
   }
   
   public void setFocus(boolean paramBoolean)
   {
-    AppMethodBeat.i(144791);
+    AppMethodBeat.i(18934);
     if ((paramBoolean) && (this.pwdView.getVisibility() == 0) && (!this.pwdView.hasFocus())) {
-      al.d(new KindaPwdInputViewImpl.2(this));
+      aq.f(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(18932);
+          KindaPwdInputViewImpl.this.pwdView.requestFocus();
+          AppMethodBeat.o(18932);
+        }
+      });
     }
-    AppMethodBeat.o(144791);
+    AppMethodBeat.o(18934);
   }
   
   public void setHashData(String paramString) {}
@@ -93,11 +143,26 @@ public class KindaPwdInputViewImpl
     }
   }
   
+  public void setPwdStyle(PwdViewStyle paramPwdViewStyle)
+  {
+    AppMethodBeat.i(186441);
+    ad.d("base_MMKView", "set pwd: %s", new Object[] { paramPwdViewStyle });
+    this.pwdStyle = paramPwdViewStyle;
+    if (this.pwdStyle == PwdViewStyle.CHECKPWDSTYLE)
+    {
+      this.pwdView.abA(1);
+      AppMethodBeat.o(186441);
+      return;
+    }
+    this.pwdView.abA(0);
+    AppMethodBeat.o(186441);
+  }
+  
   public void setTextLength(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaPwdInputViewImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,48 @@
 package android.support.design.widget;
 
-import android.support.v4.view.t;
-import android.view.View;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
+import java.util.ArrayList;
 
-final class o
+public final class o
 {
-  private final View mView;
-  int nd;
-  private int ne;
-  int nf;
-  int ng;
-  
-  public o(View paramView)
+  final ArrayList<a> qN = new ArrayList();
+  a qO = null;
+  ValueAnimator qP = null;
+  private final Animator.AnimatorListener qQ = new AnimatorListenerAdapter()
   {
-    this.mView = paramView;
-  }
-  
-  public final void bS()
-  {
-    this.nd = this.mView.getTop();
-    this.ne = this.mView.getLeft();
-    bT();
-  }
-  
-  final void bT()
-  {
-    t.q(this.mView, this.nf - (this.mView.getTop() - this.nd));
-    t.s(this.mView, this.ng - (this.mView.getLeft() - this.ne));
-  }
-  
-  public final boolean p(int paramInt)
-  {
-    if (this.nf != paramInt)
+    public final void onAnimationEnd(Animator paramAnonymousAnimator)
     {
-      this.nf = paramInt;
-      bT();
-      return true;
+      if (o.this.qP == paramAnonymousAnimator) {
+        o.this.qP = null;
+      }
     }
-    return false;
+  };
+  
+  public final void a(int[] paramArrayOfInt, ValueAnimator paramValueAnimator)
+  {
+    paramArrayOfInt = new a(paramArrayOfInt, paramValueAnimator);
+    paramValueAnimator.addListener(this.qQ);
+    this.qN.add(paramArrayOfInt);
+  }
+  
+  static final class a
+  {
+    final int[] qS;
+    final ValueAnimator qT;
+    
+    a(int[] paramArrayOfInt, ValueAnimator paramValueAnimator)
+    {
+      this.qS = paramArrayOfInt;
+      this.qT = paramValueAnimator;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.design.widget.o
  * JD-Core Version:    0.7.0.1
  */

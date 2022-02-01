@@ -1,53 +1,83 @@
 package com.tencent.mm.emoji.b;
 
-import a.f.b.j;
-import a.l;
-import android.content.Context;
-import android.view.ContextThemeWrapper;
-import android.view.LayoutInflater;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/panel/MMContextThemeWrapper;", "Landroid/view/ContextThemeWrapper;", "base", "Landroid/content/Context;", "themeResId", "", "(Landroid/content/Context;I)V", "inflater", "Landroid/view/LayoutInflater;", "getSystemService", "", "name", "", "plugin-emojisdk_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/report/ChatEmojiBtnClickReport;", "", "()V", "TAG", "", "btnClicked", "", "lastShow", "panelOpenTime", "", "recordBtnClick", "", "recordClose", "recordOpen", "plugin-emojisdk_release"})
 public final class a
-  extends ContextThemeWrapper
 {
-  private LayoutInflater exe;
+  private static final String TAG = "MicroMsg.ChatEmojiBtnClickReport";
+  private static long fQX;
+  private static boolean fQY;
+  private static boolean fQZ;
+  public static final a fRa;
   
-  public a(Context paramContext, int paramInt)
+  static
   {
-    super(paramContext, paramInt);
-    AppMethodBeat.i(63251);
-    AppMethodBeat.o(63251);
+    AppMethodBeat.i(105725);
+    fRa = new a();
+    TAG = "MicroMsg.ChatEmojiBtnClickReport";
+    AppMethodBeat.o(105725);
   }
   
-  public final Object getSystemService(String paramString)
+  public static void acj()
   {
-    AppMethodBeat.i(63250);
-    j.q(paramString, "name");
-    if (j.e("layout_inflater", paramString))
+    fQY = true;
+  }
+  
+  public static void ack()
+  {
+    int i = 3;
+    AppMethodBeat.i(105723);
+    fQX = System.currentTimeMillis();
+    ad.i(TAG, "recordOpen: " + fQX + ", " + fQZ);
+    if (!fQZ)
     {
-      if (this.exe == null)
-      {
-        Object localObject = super.getSystemService(paramString);
-        paramString = localObject;
-        if (!(localObject instanceof LayoutInflater)) {
-          paramString = null;
-        }
-        this.exe = w.b((LayoutInflater)paramString);
+      Object localObject = h.vKh;
+      if (fQY) {
+        i = 1;
       }
-      paramString = this.exe;
-      AppMethodBeat.o(63250);
-      return paramString;
+      ((h)localObject).f(17302, new Object[] { Integer.valueOf(i), Integer.valueOf(0), Long.valueOf(fQX) });
+      b.acm().lq(fQX);
+      f.acp().lq(fQX);
+      localObject = e.fRj;
+      e.lq(fQX);
     }
-    paramString = super.getSystemService(paramString);
-    AppMethodBeat.o(63250);
-    return paramString;
+    fQZ = true;
+    fQY = false;
+    AppMethodBeat.o(105723);
+  }
+  
+  public static void acl()
+  {
+    int i = 2;
+    AppMethodBeat.i(105724);
+    long l = System.currentTimeMillis() - fQX;
+    ad.i(TAG, "recordClose: " + l + ", " + fQX + ", " + fQZ);
+    h localh;
+    if (fQZ)
+    {
+      localh = h.vKh;
+      if (!fQY) {
+        break label110;
+      }
+    }
+    for (;;)
+    {
+      localh.f(17302, new Object[] { Integer.valueOf(i), Long.valueOf(l) });
+      fQZ = false;
+      AppMethodBeat.o(105724);
+      return;
+      label110:
+      i = 4;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,41 +2,22 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import com.tencent.mm.protocal.protobuf.bkx;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.io.IOException;
 
 public abstract class dl
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dJA = "quanpin".hashCode();
-  private static final int dJn;
-  private static final int dJr = "appid".hashCode();
-  private static final int dJx = "wordingId".hashCode();
-  private static final int dJy;
-  private static final int dJz;
-  private static final int dhV = "updateTime".hashCode();
+  private static final int eNg = "launchPB".hashCode();
+  private static final int elJ = "appId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dJk = true;
-  private boolean dJp = true;
-  private boolean dJt = true;
-  private boolean dJu = true;
-  private boolean dJv = true;
-  private boolean dJw = true;
-  private boolean dhT = true;
-  public String field_appid;
-  public String field_language;
-  public String field_pinyin;
-  public String field_quanpin;
-  public long field_updateTime;
-  public String field_wording;
-  public String field_wordingId;
-  
-  static
-  {
-    dJn = "language".hashCode();
-    dJy = "wording".hashCode();
-    dJz = "pinyin".hashCode();
-  }
+  private boolean eNf = true;
+  private boolean els = true;
+  public String field_appId;
+  public bkx field_launchPB;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -44,17 +25,17 @@ public abstract class dl
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dJr != k) {
+      if (elJ != k) {
         break label60;
       }
-      this.field_appid = paramCursor.getString(i);
+      this.field_appId = paramCursor.getString(i);
     }
     for (;;)
     {
@@ -62,18 +43,19 @@ public abstract class dl
       break label20;
       break;
       label60:
-      if (dJx == k) {
-        this.field_wordingId = paramCursor.getString(i);
-      } else if (dJn == k) {
-        this.field_language = paramCursor.getString(i);
-      } else if (dJy == k) {
-        this.field_wording = paramCursor.getString(i);
-      } else if (dJz == k) {
-        this.field_pinyin = paramCursor.getString(i);
-      } else if (dJA == k) {
-        this.field_quanpin = paramCursor.getString(i);
-      } else if (dhV == k) {
-        this.field_updateTime = paramCursor.getLong(i);
+      if (eNg == k) {
+        try
+        {
+          byte[] arrayOfByte = paramCursor.getBlob(i);
+          if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
+            continue;
+          }
+          this.field_launchPB = ((bkx)new bkx().parseFrom(arrayOfByte));
+        }
+        catch (IOException localIOException)
+        {
+          ad.e("MicroMsg.SDK.BaseLaunchWxaAppPBTable", localIOException.getMessage());
+        }
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -83,36 +65,30 @@ public abstract class dl
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dJp) {
-      localContentValues.put("appid", this.field_appid);
+    if (this.els) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.dJt) {
-      localContentValues.put("wordingId", this.field_wordingId);
+    if ((this.eNf) && (this.field_launchPB != null)) {}
+    try
+    {
+      localContentValues.put("launchPB", this.field_launchPB.toByteArray());
+      if (this.systemRowid > 0L) {
+        localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+      }
+      return localContentValues;
     }
-    if (this.dJk) {
-      localContentValues.put("language", this.field_language);
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        ad.e("MicroMsg.SDK.BaseLaunchWxaAppPBTable", localIOException.getMessage());
+      }
     }
-    if (this.dJu) {
-      localContentValues.put("wording", this.field_wording);
-    }
-    if (this.dJv) {
-      localContentValues.put("pinyin", this.field_pinyin);
-    }
-    if (this.dJw) {
-      localContentValues.put("quanpin", this.field_quanpin);
-    }
-    if (this.dhT) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
-    }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.dl
  * JD-Core Version:    0.7.0.1
  */

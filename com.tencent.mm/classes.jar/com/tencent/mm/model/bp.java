@@ -1,253 +1,216 @@
 package com.tencent.mm.model;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
+import com.tencent.mm.g.c.ay;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.beq;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.RegionCodeDecoder;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.storagebase.h;
+import java.util.ArrayList;
+import java.util.List;
+import junit.framework.Assert;
 
 public final class bp
+  extends com.tencent.mm.sdk.e.k
 {
-  public String countryCode = "";
-  public int dqC = 0;
-  public int dqL = 0;
-  public String dqO = "";
-  private String fnA = "";
-  public String fnB = "";
-  public String fnC = "";
-  private String fnz = "";
-  public String signature = "";
+  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS readerappnews1 ( tweetid text  PRIMARY KEY , time long  , type int  , name text  , title text  , url text  , shorturl text  , longurl text  , pubtime long  , sourcename text  , sourceicon text  , istop int  , cover text  , digest text  , reserved1 int  , reserved2 long  , reserved3 text  , reserved4 text  ) ", "CREATE TABLE IF NOT EXISTS readerappweibo ( tweetid text  PRIMARY KEY , time long  , type int  , name text  , title text  , url text  , shorturl text  , longurl text  , pubtime long  , sourcename text  , sourceicon text  , istop int  , cover text  , digest text  , reserved1 int  , reserved2 long  , reserved3 text  , reserved4 text  ) ", "CREATE INDEX IF NOT EXISTS  readerapptime ON readerappnews1 ( time )", "CREATE INDEX IF NOT EXISTS  readerappfunctionId ON readerappnews1 ( reserved3 )", "CREATE INDEX IF NOT EXISTS  readerapptime ON readerappweibo ( time )" };
+  public h gPa;
   
-  public static beq a(bp parambp)
+  public bp(h paramh)
   {
-    AppMethodBeat.i(59929);
-    g.RL().Ru().set(12289, Integer.valueOf(parambp.dqL));
-    g.RL().Ru().set(12290, Integer.valueOf(parambp.dqC));
-    if (a.aq((String)g.RL().Ru().get(12293, null), parambp.getProvince())) {
-      g.RL().Ru().set(12293, parambp.getProvince());
-    }
-    if (a.aq((String)g.RL().Ru().get(12292, null), parambp.getCity())) {
-      g.RL().Ru().set(12292, parambp.getCity());
-    }
-    if (a.aq((String)g.RL().Ru().get(12291, null), parambp.signature)) {
-      g.RL().Ru().set(12291, parambp.signature);
-    }
-    if (a.aq((String)g.RL().Ru().get(12307, null), parambp.dqO)) {
-      g.RL().Ru().set(12307, parambp.dqO);
-    }
-    if (a.aq((String)g.RL().Ru().get(12324, null), parambp.countryCode)) {
-      g.RL().Ru().set(12324, parambp.countryCode);
-    }
-    if (a.aq((String)g.RL().Ru().get(12325, null), parambp.fnC)) {
-      g.RL().Ru().set(12325, parambp.fnC);
-    }
-    if (a.aq((String)g.RL().Ru().get(12326, null), parambp.fnB)) {
-      g.RL().Ru().set(12326, parambp.fnB);
-    }
-    beq localbeq = new beq();
-    localbeq.xug = 128;
-    localbeq.wOT = new bwc().aoF("");
-    localbeq.xmi = new bwc().aoF("");
-    localbeq.wmq = 0;
-    localbeq.xuh = new bwc().aoF("");
-    localbeq.xui = new bwc().aoF("");
-    localbeq.jJS = 0;
-    byte[] arrayOfByte2 = com.tencent.mm.vfs.e.i("", 0, -1);
-    byte[] arrayOfByte1;
-    if (arrayOfByte2 == null)
-    {
-      arrayOfByte1 = new byte[0];
-      localbeq.xue = new b(arrayOfByte1);
-      if (arrayOfByte2 != null) {
-        break label598;
-      }
-    }
-    label598:
-    for (int i = 0;; i = arrayOfByte2.length)
-    {
-      localbeq.xud = i;
-      localbeq.gwP = parambp.dqC;
-      localbeq.gwT = parambp.dqL;
-      localbeq.gwS = bo.nullAsNil(parambp.signature);
-      localbeq.gwR = bo.nullAsNil(parambp.fnB);
-      localbeq.gwQ = bo.nullAsNil(parambp.fnC);
-      localbeq.wmt = 0;
-      localbeq.xpg = bo.nullAsNil(parambp.dqO);
-      localbeq.xun = 0;
-      localbeq.gwU = "";
-      localbeq.xpi = 0;
-      localbeq.xph = "";
-      localbeq.gwY = bo.nullAsNil(parambp.countryCode);
-      AppMethodBeat.o(59929);
-      return localbeq;
-      arrayOfByte1 = arrayOfByte2;
-      break;
-    }
+    this.gPa = paramh;
   }
   
-  public static bp aba()
+  public static String nm(int paramInt)
   {
-    AppMethodBeat.i(59927);
-    bp localbp = new bp();
-    localbp.dqL = 1;
-    localbp.dqC = bo.a((Integer)g.RL().Ru().get(12290, null), 0);
-    localbp.fnz = ((String)g.RL().Ru().get(12293, null));
-    localbp.fnA = ((String)g.RL().Ru().get(12292, null));
-    localbp.signature = ((String)g.RL().Ru().get(12291, null));
-    localbp.dqO = ((String)g.RL().Ru().get(12307, null));
-    localbp.countryCode = ((String)g.RL().Ru().get(12324, null));
-    localbp.fnC = ((String)g.RL().Ru().get(12325, null));
-    localbp.fnB = ((String)g.RL().Ru().get(12326, null));
-    AppMethodBeat.o(59927);
-    return localbp;
+    AppMethodBeat.i(102635);
+    if (paramInt == 20)
+    {
+      AppMethodBeat.o(102635);
+      return "readerappnews1";
+    }
+    if (paramInt == 11)
+    {
+      AppMethodBeat.o(102635);
+      return "readerappweibo";
+    }
+    Assert.assertTrue("INFO TYPE NEITHER NEWS NOR WEIBO", false);
+    AppMethodBeat.o(102635);
+    return null;
   }
   
-  public static bp abb()
+  public static String uq(String paramString)
   {
-    AppMethodBeat.i(59928);
-    if (bo.a((Integer)g.RL().Ru().get(12289, null), 0) == 0)
-    {
-      AppMethodBeat.o(59928);
-      return null;
-    }
-    bp localbp = aba();
-    AppMethodBeat.o(59928);
-    return localbp;
+    AppMethodBeat.i(102634);
+    paramString = "select tweetid,time,type,name,title,url,shorturl,longurl,pubtime,sourcename,sourceicon,istop,cover,digest,reserved1,reserved2,reserved3,reserved4 from " + paramString + "  ";
+    AppMethodBeat.o(102634);
+    return paramString;
   }
   
-  public final String getCity()
+  public final List<bo> Z(String paramString, int paramInt)
   {
-    AppMethodBeat.i(59930);
-    if (!bo.isNullOrNil(this.countryCode))
+    AppMethodBeat.i(102639);
+    ArrayList localArrayList = new ArrayList();
+    paramString = uq(nm(paramInt)) + "where reserved3 = " + h.qj(paramString) + " order by istop desc , tweetid asc ";
+    ad.d("MicroMsg.ReaderAppInfoStorage", "getInfobyGroup :".concat(String.valueOf(paramString)));
+    paramString = this.gPa.a(paramString, null, 2);
+    while (paramString.moveToNext())
     {
-      if (bo.isNullOrNil(this.fnC)) {
-        break label105;
-      }
-      if (!bo.isNullOrNil(this.fnB)) {
-        break label79;
-      }
-      RegionCodeDecoder.dyE();
-      this.fnA = RegionCodeDecoder.iq(this.countryCode, this.fnC);
+      bo localbo = new bo();
+      localbo.convertFrom(paramString);
+      localArrayList.add(localbo);
     }
-    while (bo.isNullOrNil(this.fnA))
-    {
-      str = bo.nullAsNil(this.fnB);
-      AppMethodBeat.o(59930);
-      return str;
-      label79:
-      RegionCodeDecoder.dyE();
-      this.fnA = RegionCodeDecoder.aG(this.countryCode, this.fnC, this.fnB);
-      continue;
-      label105:
-      this.fnA = "";
-    }
-    String str = this.fnA;
-    AppMethodBeat.o(59930);
-    return str;
+    paramString.close();
+    AppMethodBeat.o(102639);
+    return localArrayList;
   }
   
-  public final String getProvince()
+  public final List<bo> lX(long paramLong)
   {
-    AppMethodBeat.i(59931);
-    if (!bo.isNullOrNil(this.countryCode))
+    AppMethodBeat.i(102638);
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = uq(nm(20)) + " where reserved2 = " + paramLong;
+    ad.d("MicroMsg.ReaderAppInfoStorage", "getInfoListByMsgSvrID :".concat(String.valueOf(localObject)));
+    localObject = this.gPa.a((String)localObject, null, 2);
+    while (((Cursor)localObject).moveToNext())
     {
-      if ((bo.isNullOrNil(this.fnC)) || (bo.isNullOrNil(this.fnB)) || (!RegionCodeDecoder.asx(this.countryCode))) {
-        break label89;
-      }
-      RegionCodeDecoder.dyE();
+      bo localbo = new bo();
+      localbo.convertFrom((Cursor)localObject);
+      localArrayList.add(localbo);
     }
-    for (this.fnz = RegionCodeDecoder.iq(this.countryCode, this.fnC); bo.isNullOrNil(this.fnz); this.fnz = RegionCodeDecoder.asy(this.countryCode))
-    {
-      str = bo.nullAsNil(this.fnC);
-      AppMethodBeat.o(59931);
-      return str;
-      label89:
-      RegionCodeDecoder.dyE();
-    }
-    String str = this.fnz;
-    AppMethodBeat.o(59931);
-    return str;
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(102638);
+    return localArrayList;
   }
   
-  static final class a
+  public final Cursor nn(int paramInt)
   {
-    public static boolean aq(String paramString1, String paramString2)
+    AppMethodBeat.i(102636);
+    Object localObject = "SELECT reserved3 from " + nm(20) + " GROUP BY reserved3 ORDER BY time ASC  LIMIT " + paramInt + " offset (SELECT COUNT(*) FROM (SELECT COUNT(*) FROM " + nm(20) + " GROUP BY reserved3)) -" + paramInt;
+    localObject = this.gPa.a((String)localObject, null, 0);
+    AppMethodBeat.o(102636);
+    return localObject;
+  }
+  
+  public final int no(int paramInt)
+  {
+    int i = 0;
+    AppMethodBeat.i(102637);
+    Object localObject = "select count(*) from (SELECT count(*) FROM " + nm(paramInt) + " group by reserved3)";
+    localObject = this.gPa.a((String)localObject, null, 2);
+    paramInt = i;
+    if (((Cursor)localObject).moveToFirst()) {
+      paramInt = ((Cursor)localObject).getInt(0);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(102637);
+    return paramInt;
+  }
+  
+  public final void np(int paramInt)
+  {
+    AppMethodBeat.i(102641);
+    Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apR().aIn(bo.nl(paramInt));
+    if ((localObject == null) || (!((ay)localObject).field_username.equals(bo.nl(paramInt))))
     {
-      AppMethodBeat.i(59924);
-      if (bo.isNullOrNil(paramString1))
+      AppMethodBeat.o(102641);
+      return;
+    }
+    ((am)localObject).setUsername(bo.nl(paramInt));
+    ((am)localObject).setContent("");
+    ((am)localObject).jV(0);
+    ((am)localObject).jT(0);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apR().a((am)localObject, bo.nl(paramInt));
+    localObject = "delete from " + nm(paramInt);
+    if (this.gPa.execSQL(nm(paramInt), (String)localObject)) {
+      doNotify();
+    }
+    AppMethodBeat.o(102641);
+  }
+  
+  public final void nq(int paramInt)
+  {
+    AppMethodBeat.i(102642);
+    Object localObject1 = uq(nm(paramInt)) + " where istop = 1  group by reserved3 ORDER BY time DESC  limit 2";
+    ad.i("MicroMsg.ReaderAppInfoStorage", "reset conversation, sql is %s", new Object[] { localObject1 });
+    Object localObject2 = this.gPa.a((String)localObject1, null, 2);
+    if (!((Cursor)localObject2).moveToFirst())
+    {
+      ((Cursor)localObject2).close();
+      localObject1 = new am();
+      ((am)localObject1).setUsername(bo.nl(paramInt));
+      ((am)localObject1).setContent("");
+      ((am)localObject1).kS(0L);
+      ((am)localObject1).jV(0);
+      ((am)localObject1).jT(0);
+      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apR().a((am)localObject1, bo.nl(paramInt));
+      AppMethodBeat.o(102642);
+      return;
+    }
+    localObject1 = new bo();
+    ((bo)localObject1).convertFrom((Cursor)localObject2);
+    ((Cursor)localObject2).close();
+    localObject2 = new am();
+    ((am)localObject2).setUsername(bo.nl(paramInt));
+    ((am)localObject2).setContent(((bo)localObject1).getTitle());
+    ((am)localObject2).kS(((bo)localObject1).time);
+    ((am)localObject2).jV(0);
+    ((am)localObject2).jT(0);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apR().a((am)localObject2, bo.nl(paramInt));
+    AppMethodBeat.o(102642);
+  }
+  
+  public final List<bo> ur(String paramString)
+  {
+    AppMethodBeat.i(102640);
+    paramString = this.gPa.a(nm(20), new String[] { "*" }, "reserved3=?", new String[] { paramString }, null, null, null, 2);
+    if (paramString != null) {}
+    try
+    {
+      if (paramString.moveToFirst())
       {
-        AppMethodBeat.o(59924);
-        return true;
-      }
-      paramString1 = decode(encode(paramString1));
-      if ((bo.isNullOrNil(paramString1)) || (!paramString1.equals(paramString2)))
-      {
-        AppMethodBeat.o(59924);
-        return true;
-      }
-      AppMethodBeat.o(59924);
-      return false;
-    }
-    
-    private static String decode(String paramString)
-    {
-      AppMethodBeat.i(59926);
-      String str = "";
-      if ((bo.isNullOrNil(paramString)) || (paramString.length() % 2 != 0))
-      {
-        AppMethodBeat.o(59926);
-        return "";
-      }
-      int i = 0;
-      try
-      {
-        while (i < paramString.length())
+        ArrayList localArrayList = new ArrayList();
+        boolean bool;
+        do
         {
-          str = str + (char)Integer.parseInt(paramString.substring(i, i + 2), 16);
-          i += 2;
-        }
-        AppMethodBeat.o(59926);
+          bo localbo = new bo();
+          localbo.convertFrom(paramString);
+          localArrayList.add(localbo);
+          bool = paramString.moveToNext();
+        } while (bool);
+        return localArrayList;
       }
-      catch (Exception paramString)
-      {
-        AppMethodBeat.o(59926);
-        return "";
+      if (paramString != null) {
+        paramString.close();
       }
-      return str;
     }
-    
-    private static String encode(String paramString)
+    catch (Exception localException)
     {
-      int i = 0;
-      AppMethodBeat.i(59925);
-      char[] arrayOfChar = paramString.toCharArray();
-      paramString = "";
-      try
+      for (;;)
       {
-        int j = arrayOfChar.length;
-        while (i < j)
-        {
-          int k = arrayOfChar[i];
-          paramString = paramString + String.format("%02x", new Object[] { Integer.valueOf(k) });
-          i += 1;
+        ad.e("MicroMsg.ReaderAppInfoStorage", "getByFunctionMsgId, error: %s", new Object[] { localException.getMessage() });
+        if (paramString != null) {
+          paramString.close();
         }
-        AppMethodBeat.o(59925);
       }
-      catch (Exception paramString)
-      {
-        AppMethodBeat.o(59925);
-        return "";
-      }
-      return paramString;
     }
+    finally
+    {
+      if (paramString == null) {
+        break label180;
+      }
+      paramString.close();
+      AppMethodBeat.o(102640);
+    }
+    AppMethodBeat.o(102640);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.model.bp
  * JD-Core Version:    0.7.0.1
  */

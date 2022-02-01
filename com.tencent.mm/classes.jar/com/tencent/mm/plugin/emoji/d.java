@@ -2,51 +2,97 @@ package com.tencent.mm.plugin.emoji;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.m.e;
 import com.tencent.mm.plugin.emoji.b.c;
-import com.tencent.mm.plugin.expt.a.a.a;
+import com.tencent.mm.plugin.expt.a.b;
+import com.tencent.mm.plugin.expt.a.b.a;
 import com.tencent.mm.plugin.gif.MMWXGFJNI;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.r;
+import com.tencent.mm.plugin.zero.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.t;
+import com.tencent.mm.vfs.i;
 
 public final class d
   implements c
 {
-  private static d ldo;
+  private static d osX;
   
-  public static d bkd()
+  public static int a(byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(62307);
-    if (ldo == null) {
-      ldo = new d();
+    AppMethodBeat.i(193420);
+    long l = bt.GC();
+    String str = t.cq(paramArrayOfByte);
+    int i = 7;
+    if (".gif".equals(str)) {
+      i = 3;
     }
-    d locald = ldo;
-    AppMethodBeat.o(62307);
+    int k = MMWXGFJNI.getErrorCode();
+    int j = k;
+    if (k == 0)
+    {
+      str = i.k(paramString, true);
+      k = paramArrayOfByte.length;
+      j = ((b)g.ab(b.class)).a(b.a.pwI, 25);
+      if (j < 0) {
+        break label195;
+      }
+      paramInt1 = MMWXGFJNI.nativePic2WxamWithWH(str, paramArrayOfByte, k, i, j, paramInt1, paramInt2, paramInt3, paramInt4);
+      if (i.aMN(paramString) <= 0L) {
+        paramInt1 = -10;
+      }
+      if (paramInt1 == 0) {
+        break label203;
+      }
+      h.vKh.dB(944, 0);
+    }
+    for (j = paramInt1;; j = paramInt1)
+    {
+      ad.i("MicroMsg.HevcHelperService", "pic2wxam %d, %d, %d, %d，%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(i.aMN(paramString)), Long.valueOf(bt.aS(l)), i.k(paramString, true) });
+      AppMethodBeat.o(193420);
+      return j;
+      label195:
+      j = bTW();
+      break;
+      label203:
+      h.vKh.dB(944, 2);
+      h.vKh.m(944L, 3L, bt.aS(l));
+    }
+  }
+  
+  public static d bTS()
+  {
+    AppMethodBeat.i(104534);
+    if (osX == null) {
+      osX = new d();
+    }
+    d locald = osX;
+    AppMethodBeat.o(104534);
     return locald;
   }
   
-  private static int bkh()
+  private static int bTW()
   {
-    AppMethodBeat.i(62314);
+    AppMethodBeat.i(104542);
     try
     {
-      if (at.isWifi(ah.getContext())) {
-        i = bo.getInt(((com.tencent.mm.plugin.zero.b.a)g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("CompressPicLevelForWifi"), 60);
+      if (ay.isWifi(aj.getContext())) {
+        i = bt.getInt(((a)g.ab(a.class)).Zd().getValue("CompressPicLevelForWifi"), 60);
       }
       for (;;)
       {
         i = Math.round(39.0F - i / 5.0F);
-        AppMethodBeat.o(62314);
+        AppMethodBeat.o(104542);
         return i;
-        if (at.is2G(ah.getContext())) {
-          i = bo.getInt(((com.tencent.mm.plugin.zero.b.a)g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("CompressPicLevelFor2G"), 40);
-        } else if (at.is3G(ah.getContext())) {
-          i = bo.getInt(((com.tencent.mm.plugin.zero.b.a)g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("CompressPicLevelFor3G"), 40);
+        if (ay.is2G(aj.getContext())) {
+          i = bt.getInt(((a)g.ab(a.class)).Zd().getValue("CompressPicLevelFor2G"), 40);
+        } else if (ay.is3G(aj.getContext())) {
+          i = bt.getInt(((a)g.ab(a.class)).Zd().getValue("CompressPicLevelFor3G"), 40);
         } else {
-          i = bo.getInt(((com.tencent.mm.plugin.zero.b.a)g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("CompressPicLevelFor4G"), 60);
+          i = bt.getInt(((a)g.ab(a.class)).Zd().getValue("CompressPicLevelFor4G"), 60);
         }
       }
     }
@@ -59,23 +105,23 @@ public final class d
     }
   }
   
-  public final String Kf(String paramString)
+  public final String Tl(String paramString)
   {
-    AppMethodBeat.i(62308);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(104536);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(62308);
+      AppMethodBeat.o(104536);
       return paramString;
     }
     paramString = paramString + "_hevc";
-    AppMethodBeat.o(62308);
+    AppMethodBeat.o(104536);
     return paramString;
   }
   
-  public final byte[] aF(byte[] paramArrayOfByte)
+  public final byte[] aV(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(62311);
-    long l = bo.yB();
+    AppMethodBeat.i(104539);
+    long l = bt.GC();
     int j = MMWXGFJNI.getErrorCode();
     byte[] arrayOfByte = null;
     int k;
@@ -83,7 +129,7 @@ public final class d
     {
       arrayOfByte = MMWXGFJNI.nativeWxam2PicBuf(paramArrayOfByte);
       if (arrayOfByte == null) {
-        h.qsU.cT(944, 1);
+        h.vKh.dB(944, 1);
       }
     }
     else
@@ -96,122 +142,128 @@ public final class d
     label135:
     for (int i = 0;; i = arrayOfByte.length)
     {
-      ab.i("MicroMsg.HevcHelperService", "wxam2pic %d, %d, %d, %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), Long.valueOf(bo.av(l)) });
-      AppMethodBeat.o(62311);
+      ad.i("MicroMsg.HevcHelperService", "wxam2pic %d, %d, %d, %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), Long.valueOf(bt.aS(l)) });
+      AppMethodBeat.o(104539);
       return arrayOfByte;
-      h.qsU.cT(944, 5);
-      h.qsU.j(944L, 6L, bo.av(l));
+      h.vKh.dB(944, 5);
+      h.vKh.m(944L, 6L, bt.aS(l));
       break;
     }
   }
   
-  public final boolean bke()
+  public final boolean bTT()
   {
-    AppMethodBeat.i(138079);
+    AppMethodBeat.i(104535);
     int i = MMWXGFJNI.getErrorCode();
-    ab.i("MicroMsg.HevcHelperService", "checkHevcReady: %s", new Object[] { Integer.valueOf(i) });
+    ad.i("MicroMsg.HevcHelperService", "checkHevcReady: %s", new Object[] { Integer.valueOf(i) });
     if (i == 0)
     {
-      AppMethodBeat.o(138079);
+      AppMethodBeat.o(104535);
       return true;
     }
-    AppMethodBeat.o(138079);
+    AppMethodBeat.o(104535);
     return false;
   }
   
-  public final boolean bkf()
+  public final boolean bTU()
   {
-    AppMethodBeat.i(62312);
-    boolean bool = ((com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lRB, false);
-    ab.i("MicroMsg.HevcHelperService", "hevc upload %s", new Object[] { Boolean.valueOf(bool) });
-    if ((bke()) && (bool))
+    AppMethodBeat.i(104540);
+    boolean bool = ((b)g.ab(b.class)).a(b.a.piO, false);
+    ad.i("MicroMsg.HevcHelperService", "hevc upload %s", new Object[] { Boolean.valueOf(bool) });
+    if ((bTT()) && (bool))
     {
-      AppMethodBeat.o(62312);
+      AppMethodBeat.o(104540);
       return true;
     }
-    AppMethodBeat.o(62312);
+    AppMethodBeat.o(104540);
     return false;
   }
   
-  public final boolean bkg()
+  public final boolean bTV()
   {
-    AppMethodBeat.i(62313);
-    boolean bool = ((com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lRC, false);
-    ab.i("MicroMsg.HevcHelperService", "hevc download %s", new Object[] { Boolean.valueOf(bool) });
-    if ((bke()) && (bool))
+    AppMethodBeat.i(104541);
+    boolean bool = ((b)g.ab(b.class)).a(b.a.piP, false);
+    ad.i("MicroMsg.HevcHelperService", "hevc download %s", new Object[] { Boolean.valueOf(bool) });
+    if ((bTT()) && (bool))
     {
-      AppMethodBeat.o(62313);
+      AppMethodBeat.o(104541);
       return true;
     }
-    AppMethodBeat.o(62313);
+    AppMethodBeat.o(104541);
     return false;
   }
   
-  public final int dI(String paramString1, String paramString2)
+  public final int eV(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(62309);
-    long l = bo.yB();
-    String str = r.apa(paramString1);
-    int i = 0;
-    int j;
+    AppMethodBeat.i(104537);
+    long l = bt.GC();
+    String str = t.aFo(paramString1);
+    int j = 0;
+    int i;
     if (".png".equals(str))
     {
-      i = 1;
+      j = 1;
       int k = MMWXGFJNI.getErrorCode();
-      j = k;
+      i = k;
       if (k == 0)
       {
-        j = MMWXGFJNI.nativePic2Wxam(paramString1, paramString2, i, bkh());
-        if (j == 0) {
-          break label150;
+        i = MMWXGFJNI.nativePic2Wxam(paramString1, paramString2, j, bTW());
+        if (i.aMN(paramString2) <= 0L) {
+          i = -10;
         }
-        h.qsU.cT(944, 0);
+        if (i == 0) {
+          break label163;
+        }
+        h.vKh.dB(944, 0);
       }
     }
     for (;;)
     {
-      ab.i("MicroMsg.HevcHelperService", "pic2wxam %d, %d, %d, %d, %d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(com.tencent.mm.vfs.e.avI(paramString1)), Long.valueOf(com.tencent.mm.vfs.e.avI(paramString2)), Long.valueOf(bo.av(l)) });
-      AppMethodBeat.o(62309);
-      return j;
+      ad.i("MicroMsg.HevcHelperService", "pic2wxam %d, %d, %d, %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(i.aMN(paramString1)), Long.valueOf(i.aMN(paramString2)), Long.valueOf(bt.aS(l)) });
+      AppMethodBeat.o(104537);
+      return i;
       if (!".gif".equals(str)) {
         break;
       }
-      i = 3;
+      j = 3;
       break;
-      label150:
-      h.qsU.cT(944, 2);
-      h.qsU.j(944L, 3L, bo.av(l));
+      label163:
+      h.vKh.dB(944, 2);
+      h.vKh.m(944L, 3L, bt.aS(l));
     }
   }
   
   public final int nativeWxam2Pic(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(62310);
-    long l = bo.yB();
+    AppMethodBeat.i(104538);
+    long l = bt.GC();
     int j = MMWXGFJNI.getErrorCode();
     int i = j;
     if (j == 0)
     {
       i = MMWXGFJNI.nativeWxam2Pic(paramString1, paramString2);
-      if (i == 0) {
-        break label99;
+      if (i.aMN(paramString2) <= 0L) {
+        i = -10;
       }
-      h.qsU.cT(944, 1);
+      if (i == 0) {
+        break label113;
+      }
+      h.vKh.dB(944, 1);
     }
     for (;;)
     {
-      ab.i("MicroMsg.HevcHelperService", "wxam2pic %d, %d, %d, %d", new Object[] { Integer.valueOf(i), Long.valueOf(com.tencent.mm.vfs.e.avI(paramString1)), Long.valueOf(com.tencent.mm.vfs.e.avI(paramString2)), Long.valueOf(bo.av(l)) });
-      AppMethodBeat.o(62310);
+      ad.i("MicroMsg.HevcHelperService", "wxam2pic %d, %d, %d, %d", new Object[] { Integer.valueOf(i), Long.valueOf(i.aMN(paramString1)), Long.valueOf(i.aMN(paramString2)), Long.valueOf(bt.aS(l)) });
+      AppMethodBeat.o(104538);
       return i;
-      label99:
-      h.qsU.cT(944, 5);
-      h.qsU.j(944L, 6L, bo.av(l));
+      label113:
+      h.vKh.dB(944, 5);
+      h.vKh.m(944L, 6L, bt.aS(l));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.d
  * JD-Core Version:    0.7.0.1
  */

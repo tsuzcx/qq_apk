@@ -7,13 +7,17 @@ final class SightCameraView$2
 {
   SightCameraView$2(SightCameraView paramSightCameraView) {}
   
-  public final void run() {}
+  public final void run()
+  {
+    AppMethodBeat.i(28781);
+    AppMethodBeat.o(28781);
+  }
   
   public final String toString()
   {
-    AppMethodBeat.i(25109);
+    AppMethodBeat.i(28782);
     String str = super.toString() + "|startRecord";
-    AppMethodBeat.o(25109);
+    AppMethodBeat.o(28782);
     return str;
   }
 }

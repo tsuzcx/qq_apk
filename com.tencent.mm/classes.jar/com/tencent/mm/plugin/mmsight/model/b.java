@@ -1,80 +1,139 @@
 package com.tencent.mm.plugin.mmsight.model;
 
+import android.app.ActivityManager;
+import android.content.Context;
+import android.graphics.Point;
+import android.os.Build;
+import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.m;
+import com.tencent.mm.compatible.deviceinfo.x;
+import com.tencent.mm.plugin.mmsight.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import org.json.JSONObject;
 
 public final class b
 {
-  long gfi;
-  long kNr;
-  long oGN;
-  private String tag;
-  long value;
+  static b tBu;
+  public int dwp;
+  public int fEd;
+  public long fileSize;
+  int gBc;
+  public int gwG;
+  int hBa;
+  JSONObject jwa;
+  String model;
+  public String tBA;
+  public String tBB;
+  public String tBC;
+  public int tBD;
+  public int tBE;
+  public int tBF;
+  public int tBG;
+  public int tBH;
+  public int tBI;
+  public int tBJ;
+  public int tBK;
+  public int tBL;
+  public int tBM;
+  public int tBN;
+  public int tBO;
+  int tBP;
+  public int tBQ;
+  public int tBR;
+  public int tBS;
+  public long tBT;
+  public int tBU;
+  String tBv;
+  String tBw;
+  int tBx;
+  int tBy;
+  public String tBz;
+  public int videoBitrate;
   
-  public b(String paramString)
+  public b()
   {
-    AppMethodBeat.i(76460);
-    this.tag = "default";
-    this.kNr = bo.yB();
-    this.oGN = bo.yB();
-    this.value = 0L;
-    this.gfi = 0L;
-    this.tag = paramString;
-    AppMethodBeat.o(76460);
+    AppMethodBeat.i(89348);
+    this.model = Build.MODEL;
+    this.tBv = Build.VERSION.SDK_INT;
+    this.dwp = 0;
+    this.jwa = null;
+    AppMethodBeat.o(89348);
   }
   
-  public final String bQI()
+  public static b cPB()
   {
-    AppMethodBeat.i(76463);
-    if (this.gfi == 0L)
+    AppMethodBeat.i(89349);
+    if (tBu == null) {
+      reset();
+    }
+    b localb = tBu;
+    AppMethodBeat.o(89349);
+    return localb;
+  }
+  
+  public static void reset()
+  {
+    AppMethodBeat.i(89350);
+    Object localObject = new b();
+    tBu = (b)localObject;
+    ((b)localObject).hBa = ((ActivityManager)aj.getContext().getSystemService("activity")).getLargeMemoryClass();
+    tBu.gBc = d.fw(aj.getContext());
+    tBu.tBw = m.WH();
+    localObject = d.fv(aj.getContext());
+    tBu.tBx = ((Point)localObject).x;
+    tBu.tBy = ((Point)localObject).y;
+    AppMethodBeat.o(89350);
+  }
+  
+  public final String cPC()
+  {
+    AppMethodBeat.i(89351);
+    if (this.jwa == null) {}
+    for (;;)
     {
-      AppMethodBeat.o(76463);
-      return "";
+      try
+      {
+        this.jwa = new JSONObject();
+        localObject = new JSONObject();
+        this.jwa.put("wxcamera", localObject);
+        ((JSONObject)localObject).put("model", this.model);
+        ((JSONObject)localObject).put("apiLevel", this.tBv);
+        ((JSONObject)localObject).put("screen", String.format("%dx%d", new Object[] { Integer.valueOf(this.tBx), Integer.valueOf(this.tBy) }));
+        ((JSONObject)localObject).put("crop", String.format("%dx%d", new Object[] { Integer.valueOf(this.tBD), Integer.valueOf(this.tBE) }));
+        ((JSONObject)localObject).put("preview", String.format("%dx%d", new Object[] { Integer.valueOf(this.tBF), Integer.valueOf(this.tBG) }));
+        ((JSONObject)localObject).put("encoder", String.format("%dx%d", new Object[] { Integer.valueOf(this.tBH), Integer.valueOf(this.tBI) }));
+        ((JSONObject)localObject).put("rotate", this.dwp);
+        ((JSONObject)localObject).put("deviceoutfps", this.tBJ);
+        ((JSONObject)localObject).put("recordfps", this.tBK);
+        ((JSONObject)localObject).put("recordertype", this.tBL);
+        ((JSONObject)localObject).put("needRotateEachFrame", this.fEd);
+        ((JSONObject)localObject).put("isNeedRealtimeScale", this.tBM);
+        ((JSONObject)localObject).put("resolutionLimit", this.gwG);
+        ((JSONObject)localObject).put("videoBitrate", this.videoBitrate);
+        ((JSONObject)localObject).put("wait2playtime", this.tBT);
+        ((JSONObject)localObject).put("useback", this.tBU);
+        if (k.tCN == null) {
+          continue;
+        }
+        i = k.tCN.tCZ;
+        ((JSONObject)localObject).put("presetIndex", i);
+        ((JSONObject)localObject).put("recorderOption", ae.fFD.fEj);
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        int i;
+        ad.printErrStackTrace("MicroMsg.CaptureStatistics", localException, "buildJson error", new Object[0]);
+        continue;
+      }
+      localObject = this.jwa.toString();
+      AppMethodBeat.o(89351);
+      return localObject;
+      i = -1;
     }
-    double d2 = (this.oGN - this.kNr) / 1000.0D;
-    double d1 = d2;
-    if (d2 == 0.0D) {
-      d1 = 1.0D;
-    }
-    String str = 1.0D * this.gfi / d1;
-    AppMethodBeat.o(76463);
-    return str;
-  }
-  
-  public final String getValue()
-  {
-    AppMethodBeat.i(76462);
-    if (this.gfi == 0L)
-    {
-      AppMethodBeat.o(76462);
-      return "";
-    }
-    double d2 = (this.oGN - this.kNr) / 1000.0D;
-    double d1 = d2;
-    if (d2 == 0.0D) {
-      d1 = 1.0D;
-    }
-    String str = String.format("CounterUtil %s tag %s count %s passed %.3f perValue %.3f/count counttime %.3f/s valuetime %.3f/s st:%s ed:%s diff%s", new Object[] { "", this.tag, Long.valueOf(this.gfi), Double.valueOf(d1), Double.valueOf(this.value * 1.0D / this.gfi), Double.valueOf(this.gfi * 1.0D / d1), Double.valueOf(1.0D * this.value / d1), Long.valueOf(this.kNr), Long.valueOf(this.oGN), Long.valueOf(this.oGN - this.kNr) });
-    AppMethodBeat.o(76462);
-    return str;
-  }
-  
-  public final void kH(long paramLong)
-  {
-    AppMethodBeat.i(76461);
-    if (this.gfi == 0L) {
-      this.kNr = bo.yB();
-    }
-    this.value += paramLong;
-    this.gfi += 1L;
-    this.oGN = bo.yB();
-    AppMethodBeat.o(76461);
-  }
-  
-  public final void reset()
-  {
-    this.value = 0L;
-    this.gfi = 0L;
   }
 }
 

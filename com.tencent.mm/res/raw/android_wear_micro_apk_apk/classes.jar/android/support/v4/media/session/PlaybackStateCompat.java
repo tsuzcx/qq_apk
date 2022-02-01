@@ -15,50 +15,50 @@ public final class PlaybackStateCompat
   implements Parcelable
 {
   public static final Parcelable.Creator<PlaybackStateCompat> CREATOR = new Parcelable.Creator() {};
-  final int aJ;
-  final Bundle ew;
-  final int iA;
-  final CharSequence iB;
-  final long iC;
-  List<PlaybackStateCompat.CustomAction> iD;
-  final long iE;
-  private Object iF;
-  final long iw;
-  final long ix;
-  final float iy;
-  final long iz;
+  final int cs;
+  final Bundle gl;
+  final long kA;
+  List<PlaybackStateCompat.CustomAction> kB;
+  final long kC;
+  private Object kD;
+  final long ku;
+  final long kv;
+  final float kw;
+  final long kx;
+  final int ky;
+  final CharSequence kz;
   
   private PlaybackStateCompat(int paramInt, long paramLong1, long paramLong2, float paramFloat, long paramLong3, CharSequence paramCharSequence, long paramLong4, List<PlaybackStateCompat.CustomAction> paramList, long paramLong5, Bundle paramBundle)
   {
-    this.aJ = paramInt;
-    this.iw = paramLong1;
-    this.ix = paramLong2;
-    this.iy = paramFloat;
-    this.iz = paramLong3;
-    this.iA = 0;
-    this.iB = paramCharSequence;
-    this.iC = paramLong4;
-    this.iD = new ArrayList(paramList);
-    this.iE = paramLong5;
-    this.ew = paramBundle;
+    this.cs = paramInt;
+    this.ku = paramLong1;
+    this.kv = paramLong2;
+    this.kw = paramFloat;
+    this.kx = paramLong3;
+    this.ky = 0;
+    this.kz = paramCharSequence;
+    this.kA = paramLong4;
+    this.kB = new ArrayList(paramList);
+    this.kC = paramLong5;
+    this.gl = paramBundle;
   }
   
   PlaybackStateCompat(Parcel paramParcel)
   {
-    this.aJ = paramParcel.readInt();
-    this.iw = paramParcel.readLong();
-    this.iy = paramParcel.readFloat();
-    this.iC = paramParcel.readLong();
-    this.ix = paramParcel.readLong();
-    this.iz = paramParcel.readLong();
-    this.iB = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
-    this.iD = paramParcel.createTypedArrayList(PlaybackStateCompat.CustomAction.CREATOR);
-    this.iE = paramParcel.readLong();
-    this.ew = paramParcel.readBundle();
-    this.iA = paramParcel.readInt();
+    this.cs = paramParcel.readInt();
+    this.ku = paramParcel.readLong();
+    this.kw = paramParcel.readFloat();
+    this.kA = paramParcel.readLong();
+    this.kv = paramParcel.readLong();
+    this.kx = paramParcel.readLong();
+    this.kz = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+    this.kB = paramParcel.createTypedArrayList(PlaybackStateCompat.CustomAction.CREATOR);
+    this.kC = paramParcel.readLong();
+    this.gl = paramParcel.readBundle();
+    this.ky = paramParcel.readInt();
   }
   
-  public static PlaybackStateCompat h(Object paramObject)
+  public static PlaybackStateCompat o(Object paramObject)
   {
     if ((paramObject != null) && (Build.VERSION.SDK_INT >= 21))
     {
@@ -74,14 +74,14 @@ public final class PlaybackStateCompat
           if (!((Iterator)localObject3).hasNext()) {
             break;
           }
-          ((List)localObject2).add(PlaybackStateCompat.CustomAction.i(((Iterator)localObject3).next()));
+          ((List)localObject2).add(PlaybackStateCompat.CustomAction.p(((Iterator)localObject3).next()));
         }
       }
       if (Build.VERSION.SDK_INT >= 22) {}
       for (Object localObject2 = ((PlaybackState)paramObject).getExtras();; localObject2 = null)
       {
         localObject1 = new PlaybackStateCompat(((PlaybackState)paramObject).getState(), ((PlaybackState)paramObject).getPosition(), ((PlaybackState)paramObject).getBufferedPosition(), ((PlaybackState)paramObject).getPlaybackSpeed(), ((PlaybackState)paramObject).getActions(), ((PlaybackState)paramObject).getErrorMessage(), ((PlaybackState)paramObject).getLastPositionUpdateTime(), (List)localObject1, ((PlaybackState)paramObject).getActiveQueueItemId(), (Bundle)localObject2);
-        ((PlaybackStateCompat)localObject1).iF = paramObject;
+        ((PlaybackStateCompat)localObject1).kD = paramObject;
         return localObject1;
       }
     }
@@ -96,33 +96,33 @@ public final class PlaybackStateCompat
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("PlaybackState {");
-    localStringBuilder.append("state=").append(this.aJ);
-    localStringBuilder.append(", position=").append(this.iw);
-    localStringBuilder.append(", buffered position=").append(this.ix);
-    localStringBuilder.append(", speed=").append(this.iy);
-    localStringBuilder.append(", updated=").append(this.iC);
-    localStringBuilder.append(", actions=").append(this.iz);
-    localStringBuilder.append(", error code=").append(this.iA);
-    localStringBuilder.append(", error message=").append(this.iB);
-    localStringBuilder.append(", custom actions=").append(this.iD);
-    localStringBuilder.append(", active item id=").append(this.iE);
+    localStringBuilder.append("state=").append(this.cs);
+    localStringBuilder.append(", position=").append(this.ku);
+    localStringBuilder.append(", buffered position=").append(this.kv);
+    localStringBuilder.append(", speed=").append(this.kw);
+    localStringBuilder.append(", updated=").append(this.kA);
+    localStringBuilder.append(", actions=").append(this.kx);
+    localStringBuilder.append(", error code=").append(this.ky);
+    localStringBuilder.append(", error message=").append(this.kz);
+    localStringBuilder.append(", custom actions=").append(this.kB);
+    localStringBuilder.append(", active item id=").append(this.kC);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.aJ);
-    paramParcel.writeLong(this.iw);
-    paramParcel.writeFloat(this.iy);
-    paramParcel.writeLong(this.iC);
-    paramParcel.writeLong(this.ix);
-    paramParcel.writeLong(this.iz);
-    TextUtils.writeToParcel(this.iB, paramParcel, paramInt);
-    paramParcel.writeTypedList(this.iD);
-    paramParcel.writeLong(this.iE);
-    paramParcel.writeBundle(this.ew);
-    paramParcel.writeInt(this.iA);
+    paramParcel.writeInt(this.cs);
+    paramParcel.writeLong(this.ku);
+    paramParcel.writeFloat(this.kw);
+    paramParcel.writeLong(this.kA);
+    paramParcel.writeLong(this.kv);
+    paramParcel.writeLong(this.kx);
+    TextUtils.writeToParcel(this.kz, paramParcel, paramInt);
+    paramParcel.writeTypedList(this.kB);
+    paramParcel.writeLong(this.kC);
+    paramParcel.writeBundle(this.gl);
+    paramParcel.writeInt(this.ky);
   }
 }
 

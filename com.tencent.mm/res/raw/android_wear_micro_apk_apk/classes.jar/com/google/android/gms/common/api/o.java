@@ -2,7 +2,7 @@ package com.google.android.gms.common.api;
 
 public final class o
 {
-  public static String bc(int paramInt)
+  public static String bw(int paramInt)
   {
     switch (paramInt)
     {

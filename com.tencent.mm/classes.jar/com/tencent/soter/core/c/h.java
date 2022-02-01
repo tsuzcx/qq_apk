@@ -5,41 +5,78 @@ import junit.framework.Assert;
 
 public final class h
 {
-  private static volatile h.a Bms;
+  private static volatile a IuN;
   
   static
   {
-    AppMethodBeat.i(73043);
-    Bms = new h.1();
-    AppMethodBeat.o(73043);
+    AppMethodBeat.i(88671);
+    IuN = new a()
+    {
+      private boolean IuO = false;
+      
+      public final boolean fnc()
+      {
+        return this.IuO;
+      }
+      
+      public final void fnd()
+      {
+        AppMethodBeat.i(88666);
+        d.e("Soter.SoterDelegate", "soter: triggered OOM. using default imp, just record the flag", new Object[0]);
+        this.IuO = true;
+        AppMethodBeat.o(88666);
+      }
+      
+      public final void reset()
+      {
+        this.IuO = false;
+      }
+    };
+    AppMethodBeat.o(88671);
   }
   
-  public static void a(h.a parama)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(73040);
+    AppMethodBeat.i(88667);
     Assert.assertNotNull(parama);
-    Bms = parama;
-    AppMethodBeat.o(73040);
+    IuN = parama;
+    AppMethodBeat.o(88667);
   }
   
-  public static void dVm()
+  public static void fnb()
   {
-    AppMethodBeat.i(73041);
-    Bms.dVo();
-    AppMethodBeat.o(73041);
+    AppMethodBeat.i(88668);
+    IuN.fnd();
+    AppMethodBeat.o(88668);
   }
   
-  public static boolean dVn()
+  public static boolean fnc()
   {
-    AppMethodBeat.i(73042);
-    boolean bool = Bms.dVn();
-    AppMethodBeat.o(73042);
+    AppMethodBeat.i(88669);
+    boolean bool = IuN.fnc();
+    AppMethodBeat.o(88669);
     return bool;
+  }
+  
+  public static void reset()
+  {
+    AppMethodBeat.i(88670);
+    IuN.reset();
+    AppMethodBeat.o(88670);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract boolean fnc();
+    
+    public abstract void fnd();
+    
+    public abstract void reset();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.soter.core.c.h
  * JD-Core Version:    0.7.0.1
  */

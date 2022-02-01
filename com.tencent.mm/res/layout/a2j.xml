@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:id="@id/bum" android:background="?re" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_alignParentBottom="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/j7" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="14.0dip" />
-    <TextView android:textSize="@dimen/ko" android:textColor="#ff888888" android:gravity="center" android:id="@id/c1h" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip" android:text="{info_tv}" android:layout_below="@id/j7" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <View android:id="@id/bvp" android:layout_width="0.0dip" android:layout_height="48.0dip" android:layout_weight="1.0" />
+    <com.tencent.mm.ui.widget.imageview.WeImageButton android:layout_gravity="center" android:id="@id/bun" android:background="@null" android:padding="@dimen/h" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/sd" android:scaleType="fitXY" />
+    <View android:id="@id/bvq" android:layout_width="0.0dip" android:layout_height="48.0dip" android:layout_weight="1.0" />
+    <com.tencent.mm.ui.widget.imageview.WeImageButton android:layout_gravity="center" android:id="@id/buk" android:background="@null" android:padding="@dimen/h" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/sb" android:scaleType="fitXY" />
+    <View android:id="@id/bvr" android:layout_width="0.0dip" android:layout_height="24.0dip" android:layout_weight="1.0" />
+    <com.tencent.mm.ui.widget.imageview.WeImageButton android:layout_gravity="center" android:id="@id/bul" android:background="@null" android:padding="@dimen/h" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/sc" android:scaleType="fitXY" />
+    <View android:id="@id/bvs" android:layout_width="0.0dip" android:layout_height="24.0dip" android:layout_weight="1.0" />
+</LinearLayout>

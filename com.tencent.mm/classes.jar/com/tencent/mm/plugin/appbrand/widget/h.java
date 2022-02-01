@@ -6,15 +6,15 @@ import com.tencent.luggage.a.b;
 public abstract interface h
   extends b
 {
-  public static final h jaB = new h()
+  public static final h lQv = new h()
   {
-    public final Drawable aOD()
+    public final Drawable bra()
     {
       return null;
     }
   };
   
-  public abstract Drawable aOD();
+  public abstract Drawable bra();
 }
 
 

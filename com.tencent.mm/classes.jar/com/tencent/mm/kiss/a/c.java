@@ -8,21 +8,21 @@ import java.util.Queue;
 
 final class c
 {
-  int Ld;
-  Queue<View> eLf;
-  Queue<View> eLg;
-  String eLh;
-  int[] eLi;
-  ViewGroup eLj;
-  boolean eLk;
-  int mCapacity;
+  int Sg;
+  int cPu;
+  Queue<View> ggm;
+  Queue<View> ggn;
+  String ggo;
+  int[] ggp;
+  ViewGroup ggq;
+  boolean ggr;
   
   c()
   {
-    AppMethodBeat.i(105690);
-    this.eLf = new LinkedList();
-    this.eLg = new LinkedList();
-    AppMethodBeat.o(105690);
+    AppMethodBeat.i(141008);
+    this.ggm = new LinkedList();
+    this.ggn = new LinkedList();
+    AppMethodBeat.o(141008);
   }
 }
 

@@ -1,26 +1,99 @@
 package com.tencent.mm.vfs;
 
 import android.os.CancellationSignal;
+import android.os.ParcelFileDescriptor;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.channels.ByteChannel;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.nio.channels.WritableByteChannel;
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class AbstractFileSystem
   implements FileSystem
 {
-  private String APf;
-  private a APg;
+  private String HRa;
+  private d HRb;
+  
+  private static FileSystem a(FileSystem paramFileSystem, String paramString, int paramInt)
+  {
+    while ((paramFileSystem instanceof DelegateFileSystem)) {
+      paramFileSystem = ((DelegateFileSystem)paramFileSystem).gj(paramString, paramInt);
+    }
+    return paramFileSystem;
+  }
   
   public void a(CancellationSignal paramCancellationSignal) {}
   
-  public final void a(String paramString, a parama)
+  public final void a(String paramString, d paramd)
   {
     try
     {
-      this.APf = paramString;
-      this.APg = parama;
+      this.HRa = paramString;
+      this.HRb = paramd;
       return;
     }
     finally {}
+  }
+  
+  public boolean a(String paramString1, FileSystem paramFileSystem, String paramString2)
+  {
+    FileSystem localFileSystem = a(this, paramString1, 2);
+    paramFileSystem = a(paramFileSystem, paramString2, 1);
+    if ((localFileSystem == null) || (paramFileSystem == null)) {
+      throw new IOException("Cannot resolve delegate filesystem.");
+    }
+    if ((localFileSystem instanceof AbstractFileSystem)) {
+      return ((AbstractFileSystem)localFileSystem).b(paramString1, paramFileSystem, paramString2);
+    }
+    return localFileSystem.a(paramString1, paramFileSystem, paramString2);
+  }
+  
+  public ReadableByteChannel aMA(String paramString)
+  {
+    return Channels.newChannel(openRead(paramString));
+  }
+  
+  public ByteChannel aMB(String paramString)
+  {
+    throw new FileNotFoundException("Not supported by the filesystem.");
+  }
+  
+  protected boolean b(String paramString1, FileSystem paramFileSystem, String paramString2)
+  {
+    return false;
+  }
+  
+  public void bN(Map<String, String> paramMap) {}
+  
+  public long c(String paramString1, FileSystem paramFileSystem, String paramString2)
+  {
+    FileSystem localFileSystem = a(this, paramString1, 2);
+    paramFileSystem = a(paramFileSystem, paramString2, 1);
+    if ((localFileSystem == null) || (paramFileSystem == null)) {
+      throw new IOException("Cannot resolve delegate filesystem.");
+    }
+    if ((localFileSystem instanceof AbstractFileSystem)) {
+      return ((AbstractFileSystem)localFileSystem).d(paramString1, paramFileSystem, paramString2);
+    }
+    return localFileSystem.c(paramString1, paramFileSystem, paramString2);
+  }
+  
+  public WritableByteChannel cL(String paramString, boolean paramBoolean)
+  {
+    return Channels.newChannel(cM(paramString, paramBoolean));
+  }
+  
+  protected long d(String paramString1, FileSystem paramFileSystem, String paramString2)
+  {
+    return q.a(paramFileSystem, paramString2, this, paramString1);
+  }
+  
+  public int describeContents()
+  {
+    return 0;
   }
   
   protected final void k(int paramInt, Object... paramVarArgs)
@@ -32,10 +105,10 @@ public abstract class AbstractFileSystem
       Object localObject2;
       try
       {
-        localObject1 = this.APf;
-        localObject2 = this.APg;
+        localObject1 = this.HRa;
+        localObject2 = this.HRb;
         if (localObject2 != null) {
-          ((a)localObject2).b((String)localObject1, paramInt, paramVarArgs);
+          ((d)localObject2).a((String)localObject1, this, paramInt, paramVarArgs);
         }
         return;
       }
@@ -56,7 +129,10 @@ public abstract class AbstractFileSystem
     }
   }
   
-  public void q(Map<String, String> paramMap) {}
+  public ParcelFileDescriptor lw(String paramString1, String paramString2)
+  {
+    throw new FileNotFoundException("Not supported by the filesystem.");
+  }
 }
 
 

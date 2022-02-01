@@ -4,44 +4,44 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.w;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.y;
 import com.tencent.mm.ui.MMActivity;
 
 @com.tencent.mm.ui.base.a(3)
 public abstract class AutoLoginActivity
   extends MMActivity
 {
-  private void LP(int paramInt)
+  private void UC(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      ab.e("MicroMsg.AutoLoginActivity", "onNewIntent, should not reach here, resultCode = ".concat(String.valueOf(paramInt)));
-      a(AutoLoginActivity.a.vPO, getIntent());
+      ad.e("MicroMsg.AutoLoginActivity", "onNewIntent, should not reach here, resultCode = ".concat(String.valueOf(paramInt)));
+      a(a.BUv, getIntent());
       return;
     case -1: 
-      a(AutoLoginActivity.a.vPN, getIntent());
+      a(a.BUu, getIntent());
       return;
     case 0: 
-      bXc();
+      cWI();
       return;
     }
-    a(AutoLoginActivity.a.vPP, getIntent());
+    a(a.BUw, getIntent());
   }
   
-  protected abstract boolean O(Intent paramIntent);
+  protected abstract boolean Z(Intent paramIntent);
   
-  protected abstract void a(AutoLoginActivity.a parama, Intent paramIntent);
+  protected abstract void a(a parama, Intent paramIntent);
   
-  protected boolean bXc()
+  protected boolean cWI()
   {
-    g.RJ();
-    if ((!com.tencent.mm.kernel.a.QT()) || (com.tencent.mm.kernel.a.QP()))
+    g.afz();
+    if ((!com.tencent.mm.kernel.a.aeH()) || (com.tencent.mm.kernel.a.aeC()))
     {
-      ab.w("MicroMsg.AutoLoginActivity", "not login");
+      ad.w("MicroMsg.AutoLoginActivity", "not login");
       Intent localIntent1 = new Intent(this, getClass());
       localIntent1.putExtras(getIntent());
       localIntent1.addFlags(67108864);
@@ -67,32 +67,32 @@ public abstract class AutoLoginActivity
     paramBundle = getIntent();
     if (paramBundle == null)
     {
-      ab.e("MicroMsg.AutoLoginActivity", "onCreate intent is null");
+      ad.e("MicroMsg.AutoLoginActivity", "onCreate intent is null");
       finish();
       return;
     }
-    d.dpU();
-    ab.i("MicroMsg.AutoLoginActivity", "onCreate, intent action = " + paramBundle.getAction());
-    int i = w.a(paramBundle, "wizard_activity_result_code", -2);
-    ab.i("MicroMsg.AutoLoginActivity", "onCreate, resultCode = ".concat(String.valueOf(i)));
+    d.eBj();
+    ad.i("MicroMsg.AutoLoginActivity", "onCreate, intent action = " + paramBundle.getAction());
+    int i = y.getIntExtra(paramBundle, "wizard_activity_result_code", -2);
+    ad.i("MicroMsg.AutoLoginActivity", "onCreate, resultCode = ".concat(String.valueOf(i)));
     if (i != -2)
     {
-      LP(i);
+      UC(i);
       return;
     }
-    if (!O(paramBundle))
+    if (!Z(paramBundle))
     {
-      ab.e("MicroMsg.AutoLoginActivity", "preLogin fail, no need to process");
+      ad.e("MicroMsg.AutoLoginActivity", "preLogin fail, no need to process");
       finish();
       return;
     }
-    if (bXc())
+    if (cWI())
     {
       finish();
-      ab.w("MicroMsg.AutoLoginActivity", "not login, go to SimpleLogin");
+      ad.w("MicroMsg.AutoLoginActivity", "not login, go to SimpleLogin");
       return;
     }
-    a(AutoLoginActivity.a.vPN, paramBundle);
+    a(a.BUu, paramBundle);
   }
   
   public void onDestroy()
@@ -107,9 +107,9 @@ public abstract class AutoLoginActivity
     }
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
-    int i = w.a(paramIntent, "wizard_activity_result_code", 0);
-    ab.i("MicroMsg.AutoLoginActivity", "onNewIntent, resultCode = ".concat(String.valueOf(i)));
-    LP(i);
+    int i = y.getIntExtra(paramIntent, "wizard_activity_result_code", 0);
+    ad.i("MicroMsg.AutoLoginActivity", "onNewIntent, resultCode = ".concat(String.valueOf(i)));
+    UC(i);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -117,10 +117,25 @@ public abstract class AutoLoginActivity
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(155389);
+      BUu = new a("LOGIN_OK", 0);
+      BUv = new a("LOGIN_FAIL", 1);
+      BUw = new a("LOGIN_CANCEL", 2);
+      BUx = new a[] { BUu, BUv, BUw };
+      AppMethodBeat.o(155389);
+    }
+    
+    private a() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.AutoLoginActivity
  * JD-Core Version:    0.7.0.1
  */

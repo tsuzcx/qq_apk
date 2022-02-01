@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="e7" parent="@style/e8">
+        <item name="bx">18.659973dip</item>
+        <item name="j1">24.0dip</item>
+        <item name="lp">3.3299866dip</item>
+    </style>
+    <style name="a5f" parent="@style/a5d">
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:layout_marginBottom">5.0dip</item>
+    </style>
+    <style name="a5i">
+        <item name="android:textSize">@dimen/ia</item>
+        <item name="android:textColor">@color/z6</item>
+        <item name="android:layout_gravity">top</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">7.0dip</item>
+        <item name="android:layout_marginRight">5.0dip</item>
+    </style>
+    <style name="a5j" parent="@style/a5d">
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:paddingRight">5.0dip</item>
+        <item name="android:visibility">invisible</item>
+        <item name="android:layout_marginBottom">8.0dip</item>
+    </style>
+</resources>

@@ -18,8 +18,8 @@ public class AppCompatEditText
   extends EditText
   implements s
 {
-  private final e ZZ = new e(this);
-  private final l aaa;
+  private final e ahe = new e(this);
+  private final l ahf;
   
   public AppCompatEditText(Context paramContext)
   {
@@ -28,41 +28,41 @@ public class AppCompatEditText
   
   public AppCompatEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130772229);
+    this(paramContext, paramAttributeSet, 2130968945);
   }
   
   public AppCompatEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.Z(paramContext), paramAttributeSet, paramInt);
-    this.ZZ.a(paramAttributeSet, paramInt);
-    this.aaa = new l(this);
-    this.aaa.a(paramAttributeSet, paramInt);
-    this.aaa.hk();
+    super(aw.ab(paramContext), paramAttributeSet, paramInt);
+    this.ahe.a(paramAttributeSet, paramInt);
+    this.ahf = new l(this);
+    this.ahf.a(paramAttributeSet, paramInt);
+    this.ahf.iH();
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.ZZ != null) {
-      this.ZZ.hc();
+    if (this.ahe != null) {
+      this.ahe.iz();
     }
-    if (this.aaa != null) {
-      this.aaa.hk();
+    if (this.ahf != null) {
+      this.ahf.iH();
     }
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    if (this.ZZ != null) {
-      return this.ZZ.getSupportBackgroundTintList();
+    if (this.ahe != null) {
+      return this.ahe.getSupportBackgroundTintList();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.ZZ != null) {
-      return this.ZZ.getSupportBackgroundTintMode();
+    if (this.ahe != null) {
+      return this.ahe.getSupportBackgroundTintMode();
     }
     return null;
   }
@@ -83,16 +83,16 @@ public class AppCompatEditText
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (this.ZZ != null) {
-      this.ZZ.hb();
+    if (this.ahe != null) {
+      this.ahe.iy();
     }
   }
   
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (this.ZZ != null) {
-      this.ZZ.bo(paramInt);
+    if (this.ahe != null) {
+      this.ahe.bG(paramInt);
     }
   }
   
@@ -103,23 +103,23 @@ public class AppCompatEditText
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if (this.ZZ != null) {
-      this.ZZ.setSupportBackgroundTintList(paramColorStateList);
+    if (this.ahe != null) {
+      this.ahe.setSupportBackgroundTintList(paramColorStateList);
     }
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.ZZ != null) {
-      this.ZZ.setSupportBackgroundTintMode(paramMode);
+    if (this.ahe != null) {
+      this.ahe.setSupportBackgroundTintMode(paramMode);
     }
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    if (this.aaa != null) {
-      this.aaa.t(paramContext, paramInt);
+    if (this.ahf != null) {
+      this.ahf.u(paramContext, paramInt);
     }
   }
 }

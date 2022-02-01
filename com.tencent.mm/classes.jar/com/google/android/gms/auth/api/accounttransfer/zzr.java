@@ -37,7 +37,7 @@ public class zzr
   
   static
   {
-    AppMethodBeat.i(77014);
+    AppMethodBeat.i(10673);
     CREATOR = new zzs();
     a locala = new a();
     zzbp = locala;
@@ -46,7 +46,7 @@ public class zzr
     zzbp.put("success", FastJsonResponse.Field.forStrings("success", 4));
     zzbp.put("failed", FastJsonResponse.Field.forStrings("failed", 5));
     zzbp.put("escrowed", FastJsonResponse.Field.forStrings("escrowed", 6));
-    AppMethodBeat.o(77014);
+    AppMethodBeat.o(10673);
   }
   
   public zzr()
@@ -72,38 +72,38 @@ public class zzr
   
   public Object getFieldValue(FastJsonResponse.Field paramField)
   {
-    AppMethodBeat.i(77012);
+    AppMethodBeat.i(10671);
     int i;
     switch (paramField.getSafeParcelableFieldId())
     {
     default: 
       i = paramField.getSafeParcelableFieldId();
       paramField = new IllegalStateException(37 + "Unknown SafeParcelable id=" + i);
-      AppMethodBeat.o(77012);
+      AppMethodBeat.o(10671);
       throw paramField;
     case 1: 
       i = this.zzy;
-      AppMethodBeat.o(77012);
+      AppMethodBeat.o(10671);
       return Integer.valueOf(i);
     case 2: 
       paramField = this.zzbq;
-      AppMethodBeat.o(77012);
+      AppMethodBeat.o(10671);
       return paramField;
     case 3: 
       paramField = this.zzbr;
-      AppMethodBeat.o(77012);
+      AppMethodBeat.o(10671);
       return paramField;
     case 4: 
       paramField = this.zzbs;
-      AppMethodBeat.o(77012);
+      AppMethodBeat.o(10671);
       return paramField;
     case 5: 
       paramField = this.zzbt;
-      AppMethodBeat.o(77012);
+      AppMethodBeat.o(10671);
       return paramField;
     }
     paramField = this.zzbu;
-    AppMethodBeat.o(77012);
+    AppMethodBeat.o(10671);
     return paramField;
   }
   
@@ -114,38 +114,38 @@ public class zzr
   
   public void setStringsInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(77013);
+    AppMethodBeat.i(10672);
     int i = paramField.getSafeParcelableFieldId();
     switch (i)
     {
     default: 
       paramField = new IllegalArgumentException(String.format("Field with id=%d is not known to be a string list.", new Object[] { Integer.valueOf(i) }));
-      AppMethodBeat.o(77013);
+      AppMethodBeat.o(10672);
       throw paramField;
     case 2: 
       this.zzbq = paramArrayList;
-      AppMethodBeat.o(77013);
+      AppMethodBeat.o(10672);
       return;
     case 3: 
       this.zzbr = paramArrayList;
-      AppMethodBeat.o(77013);
+      AppMethodBeat.o(10672);
       return;
     case 4: 
       this.zzbs = paramArrayList;
-      AppMethodBeat.o(77013);
+      AppMethodBeat.o(10672);
       return;
     case 5: 
       this.zzbt = paramArrayList;
-      AppMethodBeat.o(77013);
+      AppMethodBeat.o(10672);
       return;
     }
     this.zzbu = paramArrayList;
-    AppMethodBeat.o(77013);
+    AppMethodBeat.o(10672);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(77011);
+    AppMethodBeat.i(10670);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzy);
     SafeParcelWriter.writeStringList(paramParcel, 2, this.zzbq, false);
@@ -154,12 +154,12 @@ public class zzr
     SafeParcelWriter.writeStringList(paramParcel, 5, this.zzbt, false);
     SafeParcelWriter.writeStringList(paramParcel, 6, this.zzbu, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(77011);
+    AppMethodBeat.o(10670);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.accounttransfer.zzr
  * JD-Core Version:    0.7.0.1
  */

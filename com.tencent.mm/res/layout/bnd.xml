@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/h7v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?y" android:layout_centerVertical="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/h7z" android:background="@drawable/au" android:paddingLeft="@dimen/ci" android:paddingRight="@dimen/ci" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+        <ImageButton android:id="@id/h80" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ar" android:contentDescription="@string/ca" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/h7y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/h7u" android:layout_toRightOf="@id/h7z" android:layout_centerVertical="true">
+        <TextView android:textSize="@dimen/q" android:textColor="@color/bs" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/h7w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:ellipsize="end" android:gravity="center_vertical" android:id="@id/h7x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/l5" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/h7u" android:background="@drawable/au" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <ImageButton android:id="@id/h7t" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b93" android:contentDescription="@string/cc" />
+    </LinearLayout>
+</RelativeLayout>

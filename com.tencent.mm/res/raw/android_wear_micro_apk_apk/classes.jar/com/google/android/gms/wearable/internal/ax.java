@@ -13,7 +13,7 @@ public final class ax
     c.c(paramParcel, 2, paramzzbz.getRequestId());
     c.a(paramParcel, 3, paramzzbz.getPath());
     c.a(paramParcel, 4, paramzzbz.getData());
-    c.a(paramParcel, 5, paramzzbz.kI());
+    c.a(paramParcel, 5, paramzzbz.kR());
     c.v(paramParcel, i);
   }
 }

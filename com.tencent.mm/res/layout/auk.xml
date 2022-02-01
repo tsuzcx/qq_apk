@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center" android:id="@id/ahw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/default_avatar" android:scaleType="center" android:layout_centerInParent="true" />
-    <View android:background="#c0000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ProgressBar android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/zs" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:id="@id/e2y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/e2t" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@raw/big_select_tick" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/c8" android:layout_alignParentEnd="true" app:iconColor="@color/t7" />
+    <View android:background="@drawable/x8" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/e2y" />
 </RelativeLayout>

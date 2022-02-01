@@ -1,33 +1,48 @@
 package com.tencent.mm.ui.chatting;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.at.e;
-import com.tencent.mm.g.a.dp;
-import com.tencent.mm.g.a.dp.b;
-import com.tencent.mm.g.a.dr;
-import com.tencent.mm.g.a.dr.b;
-import com.tencent.mm.g.a.ex;
-import com.tencent.mm.g.a.ex.a;
-import com.tencent.mm.g.a.ie;
-import com.tencent.mm.g.a.ie.b;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bf;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.aw.e;
+import com.tencent.mm.g.a.dk;
+import com.tencent.mm.g.a.dv;
+import com.tencent.mm.g.a.dv.b;
+import com.tencent.mm.g.a.dx;
+import com.tencent.mm.g.a.dx.b;
+import com.tencent.mm.g.a.en;
+import com.tencent.mm.g.a.en.a;
+import com.tencent.mm.g.a.eq;
+import com.tencent.mm.g.a.eq.b;
+import com.tencent.mm.g.a.er;
+import com.tencent.mm.g.a.er.a;
+import com.tencent.mm.g.a.fd;
+import com.tencent.mm.g.a.fd.a;
+import com.tencent.mm.g.a.ja;
+import com.tencent.mm.g.a.ja.b;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.bi;
+import com.tencent.mm.model.w;
 import com.tencent.mm.modelvideo.s;
+import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.opensdk.modelmsg.WXFileObject;
 import com.tencent.mm.opensdk.modelmsg.WXImageObject;
 import com.tencent.mm.opensdk.modelmsg.WXLocationObject;
@@ -37,17 +52,16 @@ import com.tencent.mm.opensdk.modelmsg.WXMusicObject;
 import com.tencent.mm.opensdk.modelmsg.WXTextObject;
 import com.tencent.mm.opensdk.modelmsg.WXVideoObject;
 import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
-import com.tencent.mm.pluginsdk.model.app.al;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.pluginsdk.model.app.q;
+import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.pluginsdk.model.app.j;
+import com.tencent.mm.pluginsdk.model.app.p;
+import com.tencent.mm.pluginsdk.model.app.r;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.bi.b;
+import com.tencent.mm.protocal.protobuf.yk;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.storage.bl.b;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.Sort3rdAppUI;
 import com.tencent.mm.ui.base.HorizontalListView;
@@ -65,98 +79,111 @@ import org.json.JSONObject;
 public class ChattingSendDataToDeviceUI
   extends MMActivity
 {
-  private j.b cEn;
-  boolean csj;
-  private long eaY;
-  String elt;
+  private boolean GjM;
+  boolean Gkw;
+  private HorizontalListView GoL;
+  private HorizontalListView GoM;
+  private b GoN;
+  private a GoO;
+  private int GoP;
+  private String GoQ;
+  private RelativeLayout GoR;
+  private RelativeLayout GoS;
+  private TextView GoT;
+  private Boolean GoU;
+  private b GoV;
+  private List<c> GoW;
+  private List<com.tencent.mm.pluginsdk.model.app.g> GoX;
+  private long GoY;
+  private boolean GoZ;
+  boolean Gpa;
+  boolean Gpb;
+  int Gpc;
+  int Gpd;
+  private HashMap<String, View> Gpe;
+  private HashMap<String, c> Gpf;
+  private Map<Integer, View> Gpg;
+  private Map<String, Integer> Gph;
+  private com.tencent.mm.sdk.b.c Gpi;
+  private com.tencent.mm.sdk.b.c Gpj;
+  boolean dhf;
+  private k.b duP;
   String filePath;
-  WXMediaMessage jMk;
-  private bi kEz;
-  private String lEp;
-  private HorizontalListView vZg;
-  private ChattingSendDataToDeviceUI.a zAA;
-  private int zAB;
-  private String zAC;
-  private RelativeLayout zAD;
-  private RelativeLayout zAE;
-  private TextView zAF;
-  private Boolean zAG;
-  private ChattingSendDataToDeviceUI.b zAH;
-  private List<ChattingSendDataToDeviceUI.c> zAI;
-  private List<f> zAJ;
-  private long zAK;
-  private boolean zAL;
-  boolean zAM;
-  boolean zAN;
-  int zAO;
-  int zAP;
-  private HashMap<String, View> zAQ;
-  private HashMap<String, ChattingSendDataToDeviceUI.c> zAR;
-  private Map<Integer, View> zAS;
-  private Map<String, Integer> zAT;
-  private com.tencent.mm.sdk.b.c zAU;
-  private com.tencent.mm.sdk.b.c zAV;
-  private HorizontalListView zAy;
-  private b zAz;
-  private boolean zvB;
-  boolean zwj;
+  private long fll;
+  String fyk;
+  WXMediaMessage mLk;
+  private bl nLz;
+  private String oVb;
   
   public ChattingSendDataToDeviceUI()
   {
-    AppMethodBeat.i(30787);
-    this.zAC = "";
-    this.zAG = Boolean.FALSE;
-    this.zAI = new ArrayList();
-    this.zAJ = new ArrayList();
-    this.zAK = 0L;
-    this.zAL = true;
-    this.csj = false;
-    this.zAM = false;
-    this.zAN = true;
-    this.zAO = 2;
-    this.zAP = -1;
-    this.zAQ = new HashMap();
-    this.zAR = new HashMap();
-    this.zAS = new HashMap();
-    this.zAT = new HashMap();
-    this.jMk = null;
+    AppMethodBeat.i(34660);
+    this.GoQ = "";
+    this.GoU = Boolean.FALSE;
+    this.GoW = new ArrayList();
+    this.GoX = new ArrayList();
+    this.GoY = 0L;
+    this.GoZ = true;
+    this.dhf = false;
+    this.Gpa = false;
+    this.Gpb = true;
+    this.Gpc = 2;
+    this.Gpd = -1;
+    this.Gpe = new HashMap();
+    this.Gpf = new HashMap();
+    this.Gpg = new HashMap();
+    this.Gph = new HashMap();
+    this.mLk = null;
     this.filePath = null;
-    this.elt = null;
-    this.zwj = false;
-    this.zAU = new ChattingSendDataToDeviceUI.10(this);
-    this.zAV = new ChattingSendDataToDeviceUI.2(this);
-    AppMethodBeat.o(30787);
+    this.fyk = null;
+    this.Gkw = false;
+    this.Gpi = new com.tencent.mm.sdk.b.c() {};
+    this.Gpj = new com.tencent.mm.sdk.b.c() {};
+    AppMethodBeat.o(34660);
   }
   
-  private static boolean a(ChattingSendDataToDeviceUI.c paramc, long paramLong)
+  private void Bf(int paramInt)
+  {
+    AppMethodBeat.i(34662);
+    if (this.dhf)
+    {
+      com.tencent.mm.plugin.report.service.h.vKh.f(13197, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.Gpd), "", Integer.valueOf(2), Integer.valueOf(this.Gpc) });
+      AppMethodBeat.o(34662);
+      return;
+    }
+    com.tencent.mm.plugin.report.service.h.vKh.f(13197, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.Gpd), wv(this.fll), Integer.valueOf(1), Integer.valueOf(this.Gpc) });
+    AppMethodBeat.o(34662);
+  }
+  
+  private static boolean a(c paramc, long paramLong)
   {
     boolean bool = true;
-    AppMethodBeat.i(30798);
+    AppMethodBeat.i(34671);
     if (paramLong == -1L)
     {
-      AppMethodBeat.o(30798);
+      AppMethodBeat.o(34671);
       return false;
     }
-    String str1 = paramc.csi;
-    aw.aaz();
-    Object localObject = com.tencent.mm.model.c.YC().kB(paramLong);
-    if ((((dd)localObject).field_msgId == 0L) || (str1 == null))
+    String str1 = paramc.dhe;
+    az.arV();
+    Object localObject = com.tencent.mm.model.c.apO().rm(paramLong);
+    if ((((du)localObject).field_msgId == 0L) || (str1 == null))
     {
-      AppMethodBeat.o(30798);
+      AppMethodBeat.o(34671);
       return false;
     }
-    int i = ((bi)localObject).getType();
-    String str2 = ((dd)localObject).field_content;
-    if (((bi)localObject).bCn())
+    int i = ((bl)localObject).getType();
+    String str2 = ((du)localObject).field_content;
+    if (((bl)localObject).cxB())
     {
-      localObject = j.b.mY(str2);
+      localObject = k.b.rx(str2);
       if (localObject == null)
       {
-        ab.e("MicroMsg.ChattingSendDataToDeviceUI", "get content is null");
-        AppMethodBeat.o(30798);
+        ad.e("MicroMsg.ChattingSendDataToDeviceUI", "get content is null");
+        AppMethodBeat.o(34671);
         return false;
       }
-      if (((j.b)localObject).type == 3) {
+      if (((k.b)localObject).type == 3) {
         if (!str1.contains("wxmsg_music")) {
           break label183;
         }
@@ -164,13 +191,13 @@ public class ChattingSendDataToDeviceUI
     }
     for (;;)
     {
-      AppMethodBeat.o(30798);
+      AppMethodBeat.o(34671);
       return bool;
-      if (((j.b)localObject).type == 4) {
+      if (((k.b)localObject).type == 4) {
         bool = false;
       } else {
         label274:
-        if (((j.b)localObject).type == 6)
+        if (((k.b)localObject).type == 6)
         {
           if (str1.contains("wxmsg_file")) {}
         }
@@ -187,12 +214,12 @@ public class ChattingSendDataToDeviceUI
                 {
                   bool = false;
                   break;
-                  if (((j.b)localObject).type == 5)
+                  if (((k.b)localObject).type == 5)
                   {
-                    bool = a(((j.b)localObject).url, paramc);
+                    bool = a(((k.b)localObject).url, paramc);
                     break;
                   }
-                } while ((((j.b)localObject).type != 2) || (!str1.contains("wxmsg_image")));
+                } while ((((k.b)localObject).type != 2) || (!str1.contains("wxmsg_image")));
                 break;
                 if (i != 3) {
                   break label254;
@@ -210,26 +237,26 @@ public class ChattingSendDataToDeviceUI
     }
   }
   
-  private static boolean a(ChattingSendDataToDeviceUI.c paramc, String paramString)
+  private static boolean a(c paramc, String paramString)
   {
     boolean bool = true;
-    AppMethodBeat.i(30795);
+    AppMethodBeat.i(34668);
     if (paramString == null)
     {
-      AppMethodBeat.o(30795);
+      AppMethodBeat.o(34668);
       return false;
     }
-    Object localObject = new ie();
-    ((ie)localObject).cxt.crk = paramString;
-    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-    paramString = ((ie)localObject).cxu.cxv;
-    int i = paramString.xTS.wNZ;
-    ab.i("MicroMsg.ChattingSendDataToDeviceUI", "isNeedToShowSnsInfo contentStyle %d", new Object[] { Integer.valueOf(i) });
-    localObject = paramc.csi;
+    Object localObject = new ja();
+    ((ja)localObject).dmY.dgg = paramString;
+    com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
+    paramString = ((ja)localObject).dmZ.dna;
+    int i = paramString.Etm.DaB;
+    ad.i("MicroMsg.ChattingSendDataToDeviceUI", "isNeedToShowSnsInfo contentStyle %d", new Object[] { Integer.valueOf(i) });
+    localObject = paramc.dhe;
     if (localObject == null)
     {
-      ab.e("MicroMsg.ChattingSendDataToDeviceUI", "ability is null");
-      AppMethodBeat.o(30795);
+      ad.e("MicroMsg.ChattingSendDataToDeviceUI", "ability is null");
+      AppMethodBeat.o(34668);
       return false;
     }
     if (i == 1) {
@@ -239,7 +266,7 @@ public class ChattingSendDataToDeviceUI
     }
     for (;;)
     {
-      AppMethodBeat.o(30795);
+      AppMethodBeat.o(34668);
       return bool;
       if (i == 4)
       {
@@ -261,17 +288,17 @@ public class ChattingSendDataToDeviceUI
           } while (!((String)localObject).contains("wxmsg_video"));
           break;
         } while (i != 3);
-        bool = a(paramString.xTS.Url, paramc);
+        bool = a(paramString.Etm.Url, paramc);
       }
     }
   }
   
-  private static boolean a(String paramString, ChattingSendDataToDeviceUI.c paramc)
+  private static boolean a(String paramString, c paramc)
   {
     bool2 = false;
-    AppMethodBeat.i(30794);
-    Object localObject = paramc.csi;
-    paramc = paramc.zBi;
+    AppMethodBeat.i(34667);
+    Object localObject = paramc.dhe;
+    paramc = paramc.Gpw;
     paramString = Uri.parse(paramString).getHost();
     bool1 = bool2;
     if (paramc != null)
@@ -307,62 +334,62 @@ public class ChattingSendDataToDeviceUI
       catch (JSONException paramString)
       {
         int i;
-        ab.printErrStackTrace("MicroMsg.ChattingSendDataToDeviceUI", paramString, paramc, new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ChattingSendDataToDeviceUI", paramString, paramc, new Object[0]);
         bool1 = bool2;
         continue;
       }
-      AppMethodBeat.o(30794);
+      AppMethodBeat.o(34667);
       return bool1;
       i += 1;
     }
   }
   
-  private void dGF()
+  private void eVL()
   {
-    AppMethodBeat.i(30792);
-    if ((this.zAz == null) || (this.zAK == 0L))
+    AppMethodBeat.i(34665);
+    if ((this.GoN == null) || (this.GoY == 0L))
     {
-      if (this.zAz == null) {}
+      if (this.GoN == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ab.e("MicroMsg.ChattingSendDataToDeviceUI", "mAppInfoAdapter is null %s, contentFlag %s", new Object[] { Boolean.valueOf(bool), Long.valueOf(this.zAK) });
-        if (this.zAE != null) {
-          this.zAE.setVisibility(8);
+        ad.e("MicroMsg.ChattingSendDataToDeviceUI", "mAppInfoAdapter is null %s, contentFlag %s", new Object[] { Boolean.valueOf(bool), Long.valueOf(this.GoY) });
+        if (this.GoS != null) {
+          this.GoS.setVisibility(8);
         }
-        AppMethodBeat.o(30792);
+        AppMethodBeat.o(34665);
         return;
       }
     }
-    this.zAJ = com.tencent.mm.pluginsdk.model.app.g.b(this, this.zAK, false);
-    if ((!com.tencent.mm.pluginsdk.model.app.g.o(this, this.zAK)) && (this.zAE != null)) {
-      this.zAE.setVisibility(8);
+    this.GoX = com.tencent.mm.pluginsdk.model.app.h.b(this, this.GoY, false);
+    if ((!com.tencent.mm.pluginsdk.model.app.h.q(this, this.GoY)) && (this.GoS != null)) {
+      this.GoS.setVisibility(8);
     }
     ArrayList localArrayList = new ArrayList();
     Object localObject1;
     Object localObject2;
     Object localObject3;
-    if ((this.zAJ != null) && (this.zAJ.size() > 0))
+    if ((this.GoX != null) && (this.GoX.size() > 0))
     {
-      localObject1 = al.dlM().ny(this.zAK);
+      localObject1 = ap.evS().vl(this.GoY);
       if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
-        Collections.sort(this.zAJ, new ChattingSendDataToDeviceUI.4(this, (List)localObject1));
+        Collections.sort(this.GoX, new ChattingSendDataToDeviceUI.6(this, (List)localObject1));
       }
-      localObject1 = this.zAJ.iterator();
+      localObject1 = this.GoX.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (f)((Iterator)localObject1).next();
+        localObject2 = (com.tencent.mm.pluginsdk.model.app.g)((Iterator)localObject1).next();
         localObject3 = new y();
-        ((y)localObject3).appId = ((f)localObject2).field_appId;
-        ((y)localObject3).elx = ((f)localObject2).field_appName;
-        ((y)localObject3).iconUrl = ((f)localObject2).field_appIconUrl;
+        ((y)localObject3).appId = ((com.tencent.mm.pluginsdk.model.app.g)localObject2).field_appId;
+        ((y)localObject3).fyo = ((com.tencent.mm.pluginsdk.model.app.g)localObject2).field_appName;
+        ((y)localObject3).iconUrl = ((com.tencent.mm.pluginsdk.model.app.g)localObject2).field_appIconUrl;
         localArrayList.add(localObject3);
       }
     }
-    if (this.jMk == null)
+    if (this.mLk == null)
     {
       localObject2 = null;
       localObject3 = null;
-      switch (this.kEz.getType())
+      switch (this.nLz.getType())
       {
       default: 
         localObject1 = localObject3;
@@ -370,103 +397,109 @@ public class ChattingSendDataToDeviceUI
     }
     for (;;)
     {
-      this.jMk = new WXMediaMessage((WXMediaMessage.IMediaObject)localObject1);
-      this.jMk.sdkVer = 620954624;
-      if ((this.elt != null) && (this.filePath != null) && (localObject1 != null) && ((localObject1 instanceof WXFileObject))) {
-        this.zwj = true;
+      this.mLk = new WXMediaMessage((WXMediaMessage.IMediaObject)localObject1);
+      this.mLk.sdkVer = 637927424;
+      if ((this.fyk != null) && (this.filePath != null) && (localObject1 != null) && ((localObject1 instanceof WXFileObject))) {
+        this.Gkw = true;
       }
       label403:
-      this.zAz.zwj = this.zwj;
-      this.zAz.bt(localArrayList);
-      this.zAz.notifyDataSetChanged();
-      AppMethodBeat.o(30792);
+      this.GoN.Gkw = this.Gkw;
+      this.GoN.ad(localArrayList);
+      this.GoN.notifyDataSetChanged();
+      AppMethodBeat.o(34665);
       return;
       localObject1 = localObject3;
-      if (this.cEn != null) {
-        if (this.cEn.type == 3)
+      if (this.duP != null) {
+        if (this.duP.type == 3)
         {
           localObject1 = new WXMusicObject();
-          ((WXMusicObject)localObject1).musicUrl = this.cEn.url;
-          ((WXMusicObject)localObject1).musicDataUrl = this.cEn.fgU;
-          ((WXMusicObject)localObject1).musicLowBandUrl = this.cEn.fgv;
-          ((WXMusicObject)localObject1).musicLowBandDataUrl = this.cEn.fgV;
+          ((WXMusicObject)localObject1).musicUrl = this.duP.url;
+          ((WXMusicObject)localObject1).musicDataUrl = this.duP.gHA;
+          ((WXMusicObject)localObject1).musicLowBandUrl = this.duP.gHd;
+          ((WXMusicObject)localObject1).musicLowBandDataUrl = this.duP.gHB;
+          localObject2 = (com.tencent.mm.pluginsdk.ui.tools.b)this.duP.ao(com.tencent.mm.pluginsdk.ui.tools.b.class);
+          if (localObject2 != null)
+          {
+            ((WXMusicObject)localObject1).songAlbumUrl = ((com.tencent.mm.pluginsdk.ui.tools.b)localObject2).songAlbumUrl;
+            ((WXMusicObject)localObject1).songLyric = ((com.tencent.mm.pluginsdk.ui.tools.b)localObject2).songLyric;
+          }
         }
-        else if (this.cEn.type == 4)
+        else if (this.duP.type == 4)
         {
           localObject1 = new WXVideoObject();
-          ((WXVideoObject)localObject1).videoUrl = this.cEn.url;
-          ((WXVideoObject)localObject1).videoLowBandUrl = this.cEn.fgV;
+          ((WXVideoObject)localObject1).videoUrl = this.duP.url;
+          ((WXVideoObject)localObject1).videoLowBandUrl = this.duP.gHB;
         }
-        else if (this.cEn.type == 5)
+        else if (this.duP.type == 5)
         {
-          localObject1 = new WXWebpageObject(this.cEn.url);
+          localObject1 = new WXWebpageObject(this.duP.url);
         }
         else
         {
-          if (this.cEn.type == 6)
+          if (this.duP.type == 6)
           {
-            localObject3 = al.aUJ().alo(this.cEn.cmN);
+            localObject3 = ap.bxS().aAL(this.duP.dbA);
             if (localObject3 != null)
             {
-              ab.i("MicroMsg.ChattingSendDataToDeviceUI", "getWXMediaMessage fileFullPath %s", new Object[] { ((com.tencent.mm.pluginsdk.model.app.b)localObject3).field_fileFullPath });
-              localObject1 = new WXFileObject(((com.tencent.mm.pluginsdk.model.app.b)localObject3).field_fileFullPath);
-              this.filePath = ((com.tencent.mm.pluginsdk.model.app.b)localObject3).field_fileFullPath;
-              this.elt = this.cEn.fgx;
+              ad.i("MicroMsg.ChattingSendDataToDeviceUI", "getWXMediaMessage fileFullPath %s", new Object[] { ((com.tencent.mm.pluginsdk.model.app.c)localObject3).field_fileFullPath });
+              localObject1 = new WXFileObject(((com.tencent.mm.pluginsdk.model.app.c)localObject3).field_fileFullPath);
+              this.filePath = ((com.tencent.mm.pluginsdk.model.app.c)localObject3).field_fileFullPath;
+              this.fyk = this.duP.gHf;
             }
-            while (q.alz(this.filePath) != null)
+            while (r.aAZ(this.filePath) != null)
             {
-              com.tencent.mm.ui.base.h.bO(this, getString(2131298312));
+              com.tencent.mm.ui.base.h.cf(this, getString(2131757303));
               finish();
               break label403;
-              ab.e("MicroMsg.ChattingSendDataToDeviceUI", "getWXMediaMessage attInfo is null");
+              ad.e("MicroMsg.ChattingSendDataToDeviceUI", "getWXMediaMessage attInfo is null");
               localObject1 = localObject2;
             }
           }
           localObject1 = localObject3;
-          if (this.cEn.type == 2)
+          if (this.duP.type == 2)
           {
             localObject1 = new WXImageObject();
-            localObject2 = com.tencent.mm.at.o.ahC().w(this.kEz);
+            localObject2 = com.tencent.mm.aw.o.ayF().I(this.nLz);
             if (localObject2 != null)
             {
-              ((WXImageObject)localObject1).imagePath = com.tencent.mm.at.o.ahC().te(((e)localObject2).fDM);
-              if (bo.isNullOrNil(((WXImageObject)localObject1).imagePath)) {
-                ((WXImageObject)localObject1).imagePath = com.tencent.mm.at.o.ahC().te(((e)localObject2).fDO);
+              ((WXImageObject)localObject1).imagePath = com.tencent.mm.aw.o.ayF().yg(((e)localObject2).hgj);
+              if (bt.isNullOrNil(((WXImageObject)localObject1).imagePath)) {
+                ((WXImageObject)localObject1).imagePath = com.tencent.mm.aw.o.ayF().yg(((e)localObject2).hgl);
               }
             }
             this.filePath = ((WXImageObject)localObject1).imagePath;
-            this.elt = this.cEn.fgx;
-            ab.i("MicroMsg.ChattingSendDataToDeviceUI", "getWXMediaMessage imagePath %s", new Object[] { ((WXImageObject)localObject1).imagePath });
+            this.fyk = this.duP.gHf;
+            ad.i("MicroMsg.ChattingSendDataToDeviceUI", "getWXMediaMessage imagePath %s", new Object[] { ((WXImageObject)localObject1).imagePath });
             continue;
-            localObject1 = new WXTextObject(this.kEz.field_content);
+            localObject1 = new WXTextObject(this.nLz.field_content);
             continue;
             localObject1 = new WXImageObject();
-            localObject2 = com.tencent.mm.at.o.ahC().w(this.kEz);
+            localObject2 = com.tencent.mm.aw.o.ayF().I(this.nLz);
             int i;
             if (localObject2 != null)
             {
-              ((WXImageObject)localObject1).imagePath = com.tencent.mm.at.o.ahC().te(((e)localObject2).fDM);
-              if (bo.isNullOrNil(((WXImageObject)localObject1).imagePath)) {
-                ((WXImageObject)localObject1).imagePath = com.tencent.mm.at.o.ahC().te(((e)localObject2).fDO);
+              ((WXImageObject)localObject1).imagePath = com.tencent.mm.aw.o.ayF().yg(((e)localObject2).hgj);
+              if (bt.isNullOrNil(((WXImageObject)localObject1).imagePath)) {
+                ((WXImageObject)localObject1).imagePath = com.tencent.mm.aw.o.ayF().yg(((e)localObject2).hgl);
               }
-              if (!bo.isNullOrNil(((WXImageObject)localObject1).imagePath))
+              if (!bt.isNullOrNil(((WXImageObject)localObject1).imagePath))
               {
                 this.filePath = ((WXImageObject)localObject1).imagePath;
                 i = ((WXImageObject)localObject1).imagePath.lastIndexOf(".");
                 if ((i >= 0) && (i < ((WXImageObject)localObject1).imagePath.length() - 1)) {
-                  this.elt = ((WXImageObject)localObject1).imagePath.substring(i + 1);
+                  this.fyk = ((WXImageObject)localObject1).imagePath.substring(i + 1);
                 }
               }
             }
-            ab.i("MicroMsg.ChattingSendDataToDeviceUI", "getWXMediaMessage imagePath %s", new Object[] { ((WXImageObject)localObject1).imagePath });
+            ad.i("MicroMsg.ChattingSendDataToDeviceUI", "getWXMediaMessage imagePath %s", new Object[] { ((WXImageObject)localObject1).imagePath });
             continue;
-            aw.aaz();
-            localObject1 = com.tencent.mm.model.c.YC().Tz(this.kEz.field_content);
-            localObject1 = new WXLocationObject(((bi.b)localObject1).nZV, ((bi.b)localObject1).nZW);
+            az.arV();
+            localObject1 = com.tencent.mm.model.c.apO().agD(this.nLz.field_content);
+            localObject1 = new WXLocationObject(((bl.b)localObject1).sOv, ((bl.b)localObject1).sOw);
             continue;
             localObject2 = new WXVideoObject();
-            com.tencent.mm.modelvideo.o.alE();
-            localObject3 = com.tencent.mm.modelvideo.t.vf(this.kEz.field_imgPath);
+            com.tencent.mm.modelvideo.o.aCI();
+            localObject3 = t.zQ(this.nLz.field_imgPath);
             localObject1 = localObject2;
             if (localObject3 != null)
             {
@@ -479,7 +512,7 @@ public class ChattingSendDataToDeviceUI
                 localObject1 = localObject2;
                 if (i < ((String)localObject3).length() - 1)
                 {
-                  this.elt = ((String)localObject3).substring(i + 1);
+                  this.fyk = ((String)localObject3).substring(i + 1);
                   localObject1 = localObject2;
                 }
               }
@@ -490,440 +523,566 @@ public class ChattingSendDataToDeviceUI
     }
   }
   
-  private void dGG()
+  private void eVM()
   {
-    AppMethodBeat.i(30793);
-    Object localObject1 = new dp();
+    AppMethodBeat.i(34666);
+    Object localObject1 = new dv();
     Object localObject2;
     int i;
-    if (this.csj)
+    if (this.dhf)
     {
       localObject2 = getIntent().getExtras().getString("sns_send_data_ui_image_path");
-      i = getIntent().getExtras().getInt("sns_send_data_ui_image_position");
-      ((dp)localObject1).cri.crk = this.lEp;
-      ((dp)localObject1).cri.crl = ((String)localObject2);
-      ((dp)localObject1).cri.crm = i;
-      com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject1);
-      if (!((dp)localObject1).crj.cqS) {
-        break label433;
+      String str = getIntent().getExtras().getString("sns_send_data_ui_image_media_id");
+      ((dv)localObject1).dge.dgg = this.oVb;
+      ((dv)localObject1).dge.dgh = ((String)localObject2);
+      ((dv)localObject1).dge.dgi = str;
+      com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject1);
+      if (!((dv)localObject1).dgf.dfO) {
+        break label435;
       }
-      localObject1 = ((dp)localObject1).crj.crn;
+      localObject1 = ((dv)localObject1).dgf.dgj;
       int j = ((List)localObject1).size();
       i = 0;
-      label113:
+      label115:
       if (i >= j) {
-        break label370;
+        break label372;
       }
-      localObject2 = new ChattingSendDataToDeviceUI.c(this);
-      ((ChattingSendDataToDeviceUI.c)localObject2).cqJ = ((String)((Map)((List)localObject1).get(i)).get("deviceType"));
-      ((ChattingSendDataToDeviceUI.c)localObject2).deviceID = ((String)((Map)((List)localObject1).get(i)).get("deviceID"));
-      ((ChattingSendDataToDeviceUI.c)localObject2).elx = ((String)((Map)((List)localObject1).get(i)).get("displayName"));
-      ((ChattingSendDataToDeviceUI.c)localObject2).iconUrl = ((String)((Map)((List)localObject1).get(i)).get("iconUrl"));
-      ((ChattingSendDataToDeviceUI.c)localObject2).csi = ((String)((Map)((List)localObject1).get(i)).get("ability"));
-      ((ChattingSendDataToDeviceUI.c)localObject2).zBi = ((String)((Map)((List)localObject1).get(i)).get("abilityInf"));
-      if ((!this.csj) || (!a((ChattingSendDataToDeviceUI.c)localObject2, this.lEp))) {
-        break label336;
+      localObject2 = new c();
+      ((c)localObject2).dfF = ((String)((Map)((List)localObject1).get(i)).get("deviceType"));
+      ((c)localObject2).deviceID = ((String)((Map)((List)localObject1).get(i)).get("deviceID"));
+      ((c)localObject2).fyo = ((String)((Map)((List)localObject1).get(i)).get("displayName"));
+      ((c)localObject2).iconUrl = ((String)((Map)((List)localObject1).get(i)).get("iconUrl"));
+      ((c)localObject2).dhe = ((String)((Map)((List)localObject1).get(i)).get("ability"));
+      ((c)localObject2).Gpw = ((String)((Map)((List)localObject1).get(i)).get("abilityInf"));
+      if ((!this.dhf) || (!a((c)localObject2, this.oVb))) {
+        break label338;
       }
-      this.zAI.add(localObject2);
+      this.GoW.add(localObject2);
     }
     for (;;)
     {
       i += 1;
-      break label113;
-      ((dp)localObject1).cri.cpO = this.eaY;
+      break label115;
+      ((dv)localObject1).dge.msgId = this.fll;
       break;
-      label336:
-      if ((!this.csj) && (a((ChattingSendDataToDeviceUI.c)localObject2, this.eaY))) {
-        this.zAI.add(localObject2);
+      label338:
+      if ((!this.dhf) && (a((c)localObject2, this.fll))) {
+        this.GoW.add(localObject2);
       }
     }
-    label370:
-    if (this.zAI.size() > 0)
+    label372:
+    if (this.GoW.size() > 0)
     {
-      ab.d("MicroMsg.ChattingSendDataToDeviceUI", "update data mListHardDeviceOnline");
-      this.zAA.bt(this.zAI);
-      if (this.zAA.getCount() > 0)
+      ad.d("MicroMsg.ChattingSendDataToDeviceUI", "update data mListHardDeviceOnline");
+      this.GoO.ad(this.GoW);
+      if (this.GoO.getCount() > 0)
       {
-        this.zAF.setText(2131298143);
-        this.zAL = false;
+        this.GoT.setText(2131757132);
+        this.GoZ = false;
       }
-      this.zAA.notifyDataSetChanged();
+      this.GoO.notifyDataSetChanged();
     }
-    label433:
-    AppMethodBeat.o(30793);
+    label435:
+    AppMethodBeat.o(34666);
   }
   
-  private static String ox(long paramLong)
+  private static String wv(long paramLong)
   {
-    AppMethodBeat.i(30790);
+    AppMethodBeat.i(34663);
     String str2 = "";
-    aw.aaz();
-    Object localObject = com.tencent.mm.model.c.YC().kB(paramLong);
-    if (((dd)localObject).field_msgId == 0L)
+    az.arV();
+    Object localObject = com.tencent.mm.model.c.apO().rm(paramLong);
+    if (((du)localObject).field_msgId == 0L)
     {
-      AppMethodBeat.o(30790);
+      AppMethodBeat.o(34663);
       return "";
     }
-    String str3 = ((dd)localObject).field_content;
+    String str3 = ((du)localObject).field_content;
     String str1 = str2;
-    if (((bi)localObject).getType() == 49)
+    if (((bl)localObject).getType() == 49)
     {
-      localObject = j.b.mY(str3);
+      localObject = k.b.rx(str3);
       str1 = str2;
       if (localObject != null)
       {
         str1 = str2;
-        if (((j.b)localObject).type == 6) {
-          str1 = ((j.b)localObject).fgx;
+        if (((k.b)localObject).type == 6) {
+          str1 = ((k.b)localObject).gHf;
         }
       }
     }
-    AppMethodBeat.o(30790);
+    AppMethodBeat.o(34663);
     return str1;
   }
   
-  private void vb(int paramInt)
+  public final void aKz(final String paramString)
   {
-    AppMethodBeat.i(30789);
-    if (this.csj)
-    {
-      com.tencent.mm.plugin.report.service.h.qsU.e(13197, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.zAP), "", Integer.valueOf(2), Integer.valueOf(this.zAO) });
-      AppMethodBeat.o(30789);
-      return;
-    }
-    com.tencent.mm.plugin.report.service.h.qsU.e(13197, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.zAP), ox(this.eaY), Integer.valueOf(1), Integer.valueOf(this.zAO) });
-    AppMethodBeat.o(30789);
-  }
-  
-  public final void atK(String paramString)
-  {
-    AppMethodBeat.i(30797);
+    AppMethodBeat.i(34670);
     try
     {
-      int i = ((Integer)this.zAT.get(paramString)).intValue();
-      ap localap = (ap)((View)this.zAS.get(Integer.valueOf(i))).getTag();
-      ab.d("MicroMsg.ChattingSendDataToDeviceUI", "set progress to success now: %s deviceId %s", new Object[] { Integer.valueOf(localap.zCQ.getProgress()), paramString });
-      ChattingSendDataToDeviceUI.c localc = (ChattingSendDataToDeviceUI.c)this.zAR.get(paramString);
-      runOnUiThread(new ChattingSendDataToDeviceUI.7(this, localap, localc));
-      int j = Math.abs(localap.zCQ.getProgress());
+      final int i = ((Integer)this.Gph.get(paramString)).intValue();
+      final aq localaq = (aq)((View)this.Gpg.get(Integer.valueOf(i))).getTag();
+      ad.d("MicroMsg.ChattingSendDataToDeviceUI", "set progress to success now: %s deviceId %s", new Object[] { Integer.valueOf(localaq.Grl.getProgress()), paramString });
+      final c localc = (c)this.Gpf.get(paramString);
+      runOnUiThread(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(34643);
+          localaq.Grl.setVisibility(0);
+          localaq.Gpr.setTextColor(ChattingSendDataToDeviceUI.this.getResources().getColor(2131100854));
+          localaq.Gpr.setText(ChattingSendDataToDeviceUI.this.getText(2131757314));
+          localc.dhj = "send_data_sending";
+          AppMethodBeat.o(34643);
+        }
+      });
+      final int j = Math.abs(localaq.Grl.getProgress());
       localc.progress = j;
       if (j >= 100) {}
       for (i = 0;; i = 500 / (100 - j))
       {
-        ab.d("MicroMsg.ChattingSendDataToDeviceUI", "sleepTime %d", new Object[] { Integer.valueOf(i) });
-        d.h(new ChattingSendDataToDeviceUI.8(this, j, localap, paramString, localc, i), "progressSuccess_handler").start();
-        this.zAR.put(localc.deviceID, localc);
-        AppMethodBeat.o(30797);
+        ad.d("MicroMsg.ChattingSendDataToDeviceUI", "sleepTime %d", new Object[] { Integer.valueOf(i) });
+        com.tencent.e.h.Iye.aS(new com.tencent.e.i.h()
+        {
+          public final String getKey()
+          {
+            return "ThreadPool";
+          }
+          
+          public final void run()
+          {
+            AppMethodBeat.i(34645);
+            int i = j + 1;
+            int j;
+            for (;;)
+            {
+              if (i >= 100) {
+                j = i;
+              }
+              try
+              {
+                ChattingSendDataToDeviceUI.this.runOnUiThread(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(34644);
+                    ChattingSendDataToDeviceUI.10.this.Gpm.Grl.YC(0);
+                    ChattingSendDataToDeviceUI.b(ChattingSendDataToDeviceUI.this).remove(ChattingSendDataToDeviceUI.10.this.BfZ);
+                    ChattingSendDataToDeviceUI.10.this.Gpm.Grl.setVisibility(4);
+                    ChattingSendDataToDeviceUI.10.this.Gpm.Gpr.setText(ChattingSendDataToDeviceUI.this.getText(2131757312));
+                    ChattingSendDataToDeviceUI.10.this.Gpm.Gpr.setTextColor(ChattingSendDataToDeviceUI.this.getResources().getColor(2131100854));
+                    ChattingSendDataToDeviceUI.10.this.Gpn.dhj = "send_data_sucess";
+                    ChattingSendDataToDeviceUI.10.this.Gpn.progress = 0;
+                    ChattingSendDataToDeviceUI.a(ChattingSendDataToDeviceUI.this, 4);
+                    AppMethodBeat.o(34644);
+                  }
+                });
+                AppMethodBeat.o(34645);
+                return;
+              }
+              catch (Exception localException)
+              {
+                ad.d("MicroMsg.ChattingSendDataToDeviceUI", "setProgress on progress view exception %s", new Object[] { localException });
+                i = j;
+              }
+              j = i;
+              localaq.Grl.YC(i);
+              i += 1;
+              j = i;
+              Thread.sleep(i);
+            }
+          }
+        });
+        this.Gpf.put(localc.deviceID, localc);
+        AppMethodBeat.o(34670);
         return;
       }
       return;
     }
     catch (Exception paramString)
     {
-      ab.e("MicroMsg.ChattingSendDataToDeviceUI", "ap: set progress to success exception %s", new Object[] { paramString });
-      AppMethodBeat.o(30797);
+      ad.e("MicroMsg.ChattingSendDataToDeviceUI", "ap: set progress to success exception %s", new Object[] { paramString });
+      AppMethodBeat.o(34670);
     }
   }
   
-  public final ChattingSendDataToDeviceUI.b dGH()
+  public final b eVN()
   {
-    AppMethodBeat.i(30803);
-    if (this.zAH == null) {
-      this.zAH = new ChattingSendDataToDeviceUI.b(this);
+    AppMethodBeat.i(34676);
+    if (this.GoV == null) {
+      this.GoV = new b();
     }
-    ChattingSendDataToDeviceUI.b localb = this.zAH;
-    AppMethodBeat.o(30803);
+    b localb = this.GoV;
+    AppMethodBeat.o(34676);
     return localb;
   }
   
   public int getLayoutId()
   {
-    return 2130969139;
+    return 2131493519;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(30801);
+    AppMethodBeat.i(34674);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    com.tencent.mm.pluginsdk.ui.tools.a.a(this, paramInt1, paramInt2, paramIntent, true, 2131299009, 2131299010, 1);
-    AppMethodBeat.o(30801);
+    com.tencent.mm.pluginsdk.ui.tools.a.a(this, paramInt1, paramInt2, paramIntent, true, 2131758111, 2131758112, 1);
+    AppMethodBeat.o(34674);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(30796);
-    if (this.zAQ.size() > 0)
+    AppMethodBeat.i(34669);
+    if (this.Gpe.size() > 0)
     {
-      com.tencent.mm.ui.widget.b.c.a locala = new com.tencent.mm.ui.widget.b.c.a(this);
-      locala.Rf(2131298315);
-      locala.Ri(2131298317).a(new ChattingSendDataToDeviceUI.5(this));
-      locala.Rj(2131298316).b(new ChattingSendDataToDeviceUI.6(this));
-      locala.aLZ().show();
-      AppMethodBeat.o(30796);
+      com.tencent.mm.ui.widget.a.d.a locala = new com.tencent.mm.ui.widget.a.d.a(this);
+      locala.aay(2131757306);
+      locala.aaB(2131757308).b(new ChattingSendDataToDeviceUI.7(this));
+      locala.aaC(2131757307).c(new ChattingSendDataToDeviceUI.8(this));
+      locala.fft().show();
+      AppMethodBeat.o(34669);
       return;
     }
     super.onBackPressed();
-    AppMethodBeat.o(30796);
+    AppMethodBeat.o(34669);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(30791);
+    AppMethodBeat.i(34664);
     super.onConfigurationChanged(paramConfiguration);
-    paramConfiguration = new dp();
-    if (this.csj)
+    paramConfiguration = new dv();
+    if (this.dhf)
     {
-      String str = getIntent().getExtras().getString("sns_send_data_ui_image_path");
-      int i = getIntent().getExtras().getInt("sns_send_data_ui_image_position");
-      paramConfiguration.cri.crk = this.lEp;
-      paramConfiguration.cri.crl = str;
-      paramConfiguration.cri.crm = i;
+      String str1 = getIntent().getExtras().getString("sns_send_data_ui_image_path");
+      String str2 = getIntent().getExtras().getString("sns_send_data_ui_image_media_id");
+      paramConfiguration.dge.dgg = this.oVb;
+      paramConfiguration.dge.dgh = str1;
+      paramConfiguration.dge.dgi = str2;
     }
     for (;;)
     {
-      com.tencent.mm.sdk.b.a.ymk.l(paramConfiguration);
-      if ((paramConfiguration.crj.cqS) && (this.zAI.size() > 0))
+      com.tencent.mm.sdk.b.a.ESL.l(paramConfiguration);
+      if ((paramConfiguration.dgf.dfO) && (this.GoW.size() > 0))
       {
-        ab.d("MicroMsg.ChattingSendDataToDeviceUI", "online device size %d", new Object[] { Integer.valueOf(this.zAI.size()) });
-        this.zAA.bt(this.zAI);
-        if (this.zAA.getCount() > 0)
+        ad.d("MicroMsg.ChattingSendDataToDeviceUI", "online device size %d", new Object[] { Integer.valueOf(this.GoW.size()) });
+        this.GoO.ad(this.GoW);
+        if (this.GoO.getCount() > 0)
         {
-          this.zAF.setText(2131298143);
-          this.zAL = false;
+          this.GoT.setText(2131757132);
+          this.GoZ = false;
         }
-        this.zAA.notifyDataSetChanged();
+        this.GoO.notifyDataSetChanged();
       }
-      AppMethodBeat.o(30791);
+      AppMethodBeat.o(34664);
       return;
-      paramConfiguration.cri.cpO = this.eaY;
+      paramConfiguration.dge.msgId = this.fll;
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     int i = 6;
-    AppMethodBeat.i(30788);
+    AppMethodBeat.i(34661);
     super.onCreate(paramBundle);
-    this.csj = getIntent().getExtras().getBoolean("sns_send_data_ui_activity", false);
-    ab.i("MicroMsg.ChattingSendDataToDeviceUI", "isSnsMsg:" + this.csj);
-    if (!this.csj)
+    this.dhf = getIntent().getExtras().getBoolean("sns_send_data_ui_activity", false);
+    ad.i("MicroMsg.ChattingSendDataToDeviceUI", "isSnsMsg:" + this.dhf);
+    if (!this.dhf)
     {
-      this.eaY = getIntent().getExtras().getLong("Retr_Msg_Id");
-      if (this.eaY != -1L)
+      this.fll = getIntent().getExtras().getLong("Retr_Msg_Id");
+      if (this.fll != -1L)
       {
-        aw.aaz();
-        this.kEz = com.tencent.mm.model.c.YC().kB(this.eaY);
-        if ((this.kEz != null) && (this.kEz.field_msgId != 0L)) {
-          break label542;
+        az.arV();
+        this.nLz = com.tencent.mm.model.c.apO().rm(this.fll);
+        if ((this.nLz != null) && (this.nLz.field_msgId != 0L)) {
+          break label560;
         }
       }
     }
-    this.zAO = getIntent().getExtras().getInt("exdevice_open_scene_type", 2);
-    this.zAM = false;
+    this.Gpc = getIntent().getExtras().getInt("exdevice_open_scene_type", 2);
+    this.Gpa = false;
     setFinishOnTouchOutside(true);
-    this.zAI.clear();
-    this.zAR.clear();
-    this.zAD = ((RelativeLayout)findViewById(2131822769));
-    paramBundle = new dr();
+    this.GoW.clear();
+    this.Gpf.clear();
+    this.GoR = ((RelativeLayout)findViewById(2131302850));
+    paramBundle = new dx();
     label258:
     Object localObject;
-    if (this.csj)
+    if (this.dhf)
     {
-      this.lEp = getIntent().getExtras().getString("sns_local_id");
-      if (this.lEp != null)
+      this.oVb = getIntent().getExtras().getString("sns_local_id");
+      if (this.oVb != null)
       {
-        paramBundle.crt.crk = this.lEp;
-        ab.i("MicroMsg.ChattingSendDataToDeviceUI", "mSnsLocalId: %s", new Object[] { this.lEp });
+        paramBundle.dgp.dgg = this.oVb;
+        ad.i("MicroMsg.ChattingSendDataToDeviceUI", "mSnsLocalId: %s", new Object[] { this.oVb });
       }
-      com.tencent.mm.sdk.b.a.ymk.l(paramBundle);
-      if (!paramBundle.cru.cqS) {
-        break label1241;
+      com.tencent.mm.sdk.b.a.ESL.l(paramBundle);
+      if (!paramBundle.dgq.dfO) {
+        break label1259;
       }
-      this.zAG = Boolean.TRUE;
-      com.tencent.mm.sdk.b.a.ymk.c(this.zAU);
-      com.tencent.mm.sdk.b.a.ymk.c(this.zAV);
-      this.zAD.setVisibility(0);
-      this.vZg = ((HorizontalListView)findViewById(2131821736));
-      this.zAF = ((TextView)findViewById(2131822770));
-      this.zAF.setText(2131298303);
-      this.zAA = new ChattingSendDataToDeviceUI.a(this, this);
-      this.vZg.setAdapter(this.zAA);
-      this.vZg.setOnItemClickListener(new ChattingSendDataToDeviceUI.1(this));
-      dGG();
-      if (!this.csj) {
-        break label1051;
-      }
-      paramBundle = this.lEp;
-      if (paramBundle == null) {
-        break label1046;
-      }
-      localObject = new ie();
-      ((ie)localObject).cxt.crk = paramBundle;
-      com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-      i = ((ie)localObject).cxu.cxv.xTS.wNZ;
-      if (i != 1) {
-        break label1014;
-      }
-      i = 3;
-      label459:
-      this.zAP = i;
-      vb(1);
-    }
-    for (;;)
-    {
-      this.zAE = ((RelativeLayout)findViewById(2131822774));
-      this.zAy = ((HorizontalListView)findViewById(2131822776));
-      this.zAz = new b(this);
-      this.zAy.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.GoU = Boolean.TRUE;
+      com.tencent.mm.sdk.b.a.ESL.c(this.Gpi);
+      com.tencent.mm.sdk.b.a.ESL.c(this.Gpj);
+      this.GoR.setVisibility(0);
+      this.GoL = ((HorizontalListView)findViewById(2131301457));
+      this.GoT = ((TextView)findViewById(2131296995));
+      this.GoT.setText(2131757294);
+      this.GoO = new a(this);
+      this.GoL.setAdapter(this.GoO);
+      this.GoL.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
-          AppMethodBeat.i(30764);
-          ab.i("MicroMsg.ChattingSendDataToDeviceUI", "onItemClick(%d).", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          if (paramAnonymousInt == paramAnonymousAdapterView.getAdapter().getCount() - 1)
+          AppMethodBeat.i(34637);
+          ChattingSendDataToDeviceUI.this.Gpa = true;
+          ChattingSendDataToDeviceUI.c localc = ChattingSendDataToDeviceUI.a(ChattingSendDataToDeviceUI.this).Yy(paramAnonymousInt);
+          String str1 = localc.dfF;
+          paramAnonymousAdapterView = localc.deviceID;
+          String str2 = localc.dhe;
+          try
           {
-            paramAnonymousAdapterView = new Intent(ChattingSendDataToDeviceUI.this, Sort3rdAppUI.class);
-            paramAnonymousAdapterView.addFlags(67108864);
-            paramAnonymousAdapterView.putExtra("KFlag", ChattingSendDataToDeviceUI.h(ChattingSendDataToDeviceUI.this));
-            ChattingSendDataToDeviceUI.this.startActivity(paramAnonymousAdapterView);
-            AppMethodBeat.o(30764);
-            return;
-          }
-          if ((ChattingSendDataToDeviceUI.this.zwj) && (paramAnonymousInt == paramAnonymousAdapterView.getAdapter().getCount() - 2))
-          {
-            if ((ChattingSendDataToDeviceUI.this.filePath == null) || (ChattingSendDataToDeviceUI.this.elt == null))
+            if (ChattingSendDataToDeviceUI.b(ChattingSendDataToDeviceUI.this).get(paramAnonymousAdapterView) != null)
             {
-              com.tencent.mm.ui.base.h.bO(ChattingSendDataToDeviceUI.this.getBaseContext(), ChattingSendDataToDeviceUI.this.getString(2131299009));
-              AppMethodBeat.o(30764);
+              ad.e("MicroMsg.ChattingSendDataToDeviceUI", "ap: some file is sending");
+              paramAnonymousView = new dk();
+              paramAnonymousView.dfB.cLR = paramAnonymousAdapterView;
+              com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousView);
+              ChattingSendDataToDeviceUI.a(ChattingSendDataToDeviceUI.this, "send_data_cancel", paramAnonymousAdapterView, 0);
+              localc.dhj = "send_data_cancel";
+              ChattingSendDataToDeviceUI.b(ChattingSendDataToDeviceUI.this).remove(paramAnonymousAdapterView);
+              paramAnonymousAdapterView = (aq)((View)ChattingSendDataToDeviceUI.c(ChattingSendDataToDeviceUI.this).get(Integer.valueOf(paramAnonymousInt))).getTag();
+              paramAnonymousAdapterView.Gpr.setText(ChattingSendDataToDeviceUI.this.getText(2131757305));
+              paramAnonymousAdapterView.Gpr.setTextColor(ChattingSendDataToDeviceUI.this.getResources().getColor(2131100852));
+              paramAnonymousAdapterView.Grl.setVisibility(8);
+              paramAnonymousAdapterView.Grl.YC(0);
+              AppMethodBeat.o(34637);
               return;
             }
-            com.tencent.mm.pluginsdk.ui.tools.a.a(ChattingSendDataToDeviceUI.this, ChattingSendDataToDeviceUI.this.filePath, ChattingSendDataToDeviceUI.this.elt.toLowerCase(), 1);
-            AppMethodBeat.o(30764);
+            localc.dhj = "send_data_sending";
+            ChattingSendDataToDeviceUI.d(ChattingSendDataToDeviceUI.this).put(localc.deviceID, localc);
+            ChattingSendDataToDeviceUI.b(ChattingSendDataToDeviceUI.this).put(paramAnonymousAdapterView, paramAnonymousView);
+            ChattingSendDataToDeviceUI.a(ChattingSendDataToDeviceUI.this, "send_data_sending", paramAnonymousAdapterView, 1);
+            ChattingSendDataToDeviceUI.a(ChattingSendDataToDeviceUI.this, 3);
+            paramAnonymousView = new eq();
+            paramAnonymousView.dhc.cLR = paramAnonymousAdapterView;
+            paramAnonymousView.dhc.dfF = str1;
+            paramAnonymousView.dhc.data = ChattingSendDataToDeviceUI.e(ChattingSendDataToDeviceUI.this);
+            paramAnonymousView.dhc.dhe = str2;
+            if (ChattingSendDataToDeviceUI.this.dhf)
+            {
+              paramAnonymousView.dhc.dgg = ChattingSendDataToDeviceUI.f(ChattingSendDataToDeviceUI.this);
+              paramAnonymousView.dhc.dhf = ChattingSendDataToDeviceUI.this.dhf;
+            }
+            for (;;)
+            {
+              com.tencent.mm.sdk.b.a.ESL.l(paramAnonymousView);
+              if (!paramAnonymousView.dhd.dhg)
+              {
+                ChattingSendDataToDeviceUI.aKA("send_data_failed");
+                ad.e("MicroMsg.ChattingSendDataToDeviceUI", " e.result.isSuccess is false, send fail!");
+              }
+              AppMethodBeat.o(34637);
+              return;
+              paramAnonymousView.dhc.msgId = ChattingSendDataToDeviceUI.g(ChattingSendDataToDeviceUI.this);
+            }
+            return;
+          }
+          catch (Exception paramAnonymousAdapterView)
+          {
+            ChattingSendDataToDeviceUI.aKA("send_data_failed");
+            ad.e("MicroMsg.ChattingSendDataToDeviceUI", "send to device item click exception %s", new Object[] { paramAnonymousAdapterView });
+            AppMethodBeat.o(34637);
+          }
+        }
+      });
+      eVM();
+      if (!this.dhf) {
+        break label1069;
+      }
+      paramBundle = this.oVb;
+      if (paramBundle == null) {
+        break label1064;
+      }
+      localObject = new ja();
+      ((ja)localObject).dmY.dgg = paramBundle;
+      com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
+      i = ((ja)localObject).dmZ.dna.Etm.DaB;
+      if (i != 1) {
+        break label1032;
+      }
+      i = 3;
+      label459:
+      this.Gpd = i;
+      Bf(1);
+    }
+    for (;;)
+    {
+      this.GoS = ((RelativeLayout)findViewById(2131296910));
+      this.GoM = ((HorizontalListView)findViewById(2131296858));
+      this.GoN = new b(this);
+      this.GoM.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      {
+        public final void onItemClick(final AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+        {
+          AppMethodBeat.i(34639);
+          ad.i("MicroMsg.ChattingSendDataToDeviceUI", "onItemClick(%d).", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          if (paramAnonymousInt == paramAnonymousAdapterView.getAdapter().getCount() - 1)
+          {
+            paramAnonymousView = new Intent(ChattingSendDataToDeviceUI.this, Sort3rdAppUI.class);
+            paramAnonymousView.addFlags(67108864);
+            paramAnonymousView.putExtra("KFlag", ChattingSendDataToDeviceUI.h(ChattingSendDataToDeviceUI.this));
+            paramAnonymousAdapterView = ChattingSendDataToDeviceUI.this;
+            paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, paramAnonymousView.adn(), "com/tencent/mm/ui/chatting/ChattingSendDataToDeviceUI$3", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousAdapterView.startActivity((Intent)paramAnonymousView.lS(0));
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousAdapterView, "com/tencent/mm/ui/chatting/ChattingSendDataToDeviceUI$3", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            AppMethodBeat.o(34639);
+            return;
+          }
+          if ((ChattingSendDataToDeviceUI.this.Gkw) && (paramAnonymousInt == paramAnonymousAdapterView.getAdapter().getCount() - 2))
+          {
+            if ((ChattingSendDataToDeviceUI.this.filePath == null) || (ChattingSendDataToDeviceUI.this.fyk == null))
+            {
+              com.tencent.mm.ui.base.h.cf(ChattingSendDataToDeviceUI.this.getBaseContext(), ChattingSendDataToDeviceUI.this.getString(2131758111));
+              AppMethodBeat.o(34639);
+              return;
+            }
+            com.tencent.mm.pluginsdk.ui.tools.a.b(ChattingSendDataToDeviceUI.this, ChattingSendDataToDeviceUI.this.filePath, ChattingSendDataToDeviceUI.this.fyk.toLowerCase(), 1);
+            AppMethodBeat.o(34639);
             return;
           }
           if ((paramAnonymousInt >= 0) && (paramAnonymousInt < paramAnonymousAdapterView.getAdapter().getCount() - 1))
           {
-            paramAnonymousAdapterView = (f)ChattingSendDataToDeviceUI.i(ChattingSendDataToDeviceUI.this).get(paramAnonymousInt);
-            if (!com.tencent.mm.pluginsdk.model.app.g.a(ChattingSendDataToDeviceUI.this.getBaseContext(), paramAnonymousAdapterView))
+            paramAnonymousAdapterView = (com.tencent.mm.pluginsdk.model.app.g)ChattingSendDataToDeviceUI.i(ChattingSendDataToDeviceUI.this).get(paramAnonymousInt);
+            if (!com.tencent.mm.pluginsdk.model.app.h.a(ChattingSendDataToDeviceUI.this.getBaseContext(), paramAnonymousAdapterView))
             {
-              com.tencent.mm.ui.base.h.bO(ChattingSendDataToDeviceUI.this.getBaseContext(), ChattingSendDataToDeviceUI.this.getString(2131298313));
+              com.tencent.mm.ui.base.h.cf(ChattingSendDataToDeviceUI.this.getBaseContext(), ChattingSendDataToDeviceUI.this.getString(2131757304));
               paramAnonymousAdapterView.field_status = 4;
-              al.cac().a(paramAnonymousAdapterView, new String[0]);
+              ap.cZQ().a(paramAnonymousAdapterView, new String[0]);
               ChattingSendDataToDeviceUI.j(ChattingSendDataToDeviceUI.this);
-              AppMethodBeat.o(30764);
+              AppMethodBeat.o(34639);
               return;
             }
-            com.tencent.mm.ch.a.post(new ChattingSendDataToDeviceUI.3.1(this, paramAnonymousAdapterView));
+            com.tencent.mm.cj.a.post(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(34638);
+                com.tencent.mm.pluginsdk.model.app.h.a(ChattingSendDataToDeviceUI.this.getBaseContext(), paramAnonymousAdapterView.field_packageName, ChattingSendDataToDeviceUI.this.mLk, paramAnonymousAdapterView.field_appId, paramAnonymousAdapterView.field_openId, 0, null, null);
+                AppMethodBeat.o(34638);
+              }
+            });
           }
-          AppMethodBeat.o(30764);
+          AppMethodBeat.o(34639);
         }
       });
-      this.zAy.setAdapter(this.zAz);
-      AppMethodBeat.o(30788);
+      this.GoM.setAdapter(this.GoN);
+      findViewById(2131303967).setOnClickListener(new ChattingSendDataToDeviceUI.1(this));
+      AppMethodBeat.o(34661);
       return;
-      label542:
-      this.zAB = this.kEz.getType();
-      this.zvB = com.tencent.mm.model.t.lA(this.kEz.field_talker);
-      this.zAC = this.kEz.field_content;
+      label560:
+      this.GoP = this.nLz.getType();
+      this.GjM = w.pF(this.nLz.field_talker);
+      this.GoQ = this.nLz.field_content;
       int j;
-      if ((this.zvB) && (this.kEz.field_isSend == 0))
+      if ((this.GjM) && (this.nLz.field_isSend == 0))
       {
-        localObject = this.kEz.field_content;
-        j = this.kEz.field_isSend;
+        localObject = this.nLz.field_content;
+        j = this.nLz.field_isSend;
         paramBundle = (Bundle)localObject;
-        if (this.zvB)
+        if (this.GjM)
         {
           paramBundle = (Bundle)localObject;
           if (localObject != null)
           {
             paramBundle = (Bundle)localObject;
             if (j == 0) {
-              paramBundle = bf.pv((String)localObject);
+              paramBundle = bi.ug((String)localObject);
             }
           }
         }
-        this.zAC = paramBundle;
+        this.GoQ = paramBundle;
       }
-      if (this.kEz.getType() == 49)
+      if (this.nLz.getType() == 49)
       {
-        this.cEn = j.b.mY(this.zAC);
-        if (this.cEn == null)
+        this.duP = k.b.rx(this.GoQ);
+        if (this.duP == null)
         {
-          ab.e("MicroMsg.ChattingSendDataToDeviceUI", "initParams content is null");
+          ad.e("MicroMsg.ChattingSendDataToDeviceUI", "initParams content is null");
           break;
         }
-        if (this.cEn.type == 3) {
-          this.zAK = 16L;
+        if (this.duP.type == 3) {
+          this.GoY = 16L;
         }
       }
       for (;;)
       {
-        ab.i("MicroMsg.ChattingSendDataToDeviceUI", "contentFlag: %s", new Object[] { Long.valueOf(this.zAK) });
+        ad.i("MicroMsg.ChattingSendDataToDeviceUI", "contentFlag: %s", new Object[] { Long.valueOf(this.GoY) });
         break;
-        if (this.cEn.type == 4)
+        if (this.duP.type == 4)
         {
-          this.zAK = 8L;
+          this.GoY = 8L;
         }
-        else if (this.cEn.type == 5)
+        else if (this.duP.type == 5)
         {
-          this.zAK = 32L;
+          this.GoY = 32L;
         }
         else
         {
-          if (this.cEn.type == 6)
+          if (this.duP.type == 6)
           {
-            paramBundle = com.tencent.mm.pluginsdk.c.a.akT(this.cEn.fgx);
+            paramBundle = com.tencent.mm.pluginsdk.d.a.aAn(this.duP.gHf);
             if (paramBundle == null)
             {
-              ab.e("MicroMsg.ChattingSendDataToDeviceUI", "initParams TYPE_FILE getContentTypeFlag null");
+              ad.e("MicroMsg.ChattingSendDataToDeviceUI", "initParams TYPE_FILE getContentTypeFlag null");
               break;
             }
-            this.zAK = paramBundle.longValue();
+            this.GoY = paramBundle.longValue();
             continue;
           }
-          if (this.cEn.type == 2)
+          if (this.duP.type == 2)
           {
-            this.zAK = 2L;
-            paramBundle = com.tencent.mm.at.o.ahC().w(this.kEz);
+            this.GoY = 2L;
+            paramBundle = com.tencent.mm.aw.o.ayF().I(this.nLz);
             if (paramBundle != null) {
-              this.zAC = paramBundle.fDX;
+              this.GoQ = paramBundle.hgv;
             }
           }
           else
           {
-            ab.e("MicroMsg.ChattingSendDataToDeviceUI", "initParams APPMSG not support type");
+            ad.e("MicroMsg.ChattingSendDataToDeviceUI", "initParams APPMSG not support type");
             break;
-            if (this.kEz.getType() == 3)
+            if (this.nLz.getType() == 3)
             {
-              paramBundle = com.tencent.mm.at.o.ahC().w(this.kEz);
+              paramBundle = com.tencent.mm.aw.o.ayF().I(this.nLz);
               if (paramBundle != null) {
-                this.zAC = paramBundle.fDX;
+                this.GoQ = paramBundle.hgv;
               }
             }
             for (;;)
             {
-              paramBundle = com.tencent.mm.pluginsdk.c.a.akT(this.zAB);
+              paramBundle = com.tencent.mm.pluginsdk.d.a.aAn(this.GoP);
               if (paramBundle != null) {
-                break label989;
+                break label1007;
               }
-              ab.e("MicroMsg.ChattingSendDataToDeviceUI", "initParams not appmsg getContentTypeFlag null");
+              ad.e("MicroMsg.ChattingSendDataToDeviceUI", "initParams not appmsg getContentTypeFlag null");
               break;
-              if (this.kEz.getType() == 43)
+              if (this.nLz.getType() == 43)
               {
-                paramBundle = com.tencent.mm.modelvideo.o.alE().vd(this.kEz.field_imgPath);
+                paramBundle = com.tencent.mm.modelvideo.o.aCI().zO(this.nLz.field_imgPath);
                 if (paramBundle != null) {
-                  this.zAC = paramBundle.alP();
+                  this.GoQ = paramBundle.aCT();
                 }
               }
             }
-            label989:
-            this.zAK = paramBundle.longValue();
+            label1007:
+            this.GoY = paramBundle.longValue();
           }
         }
       }
-      paramBundle.crt.cpO = this.eaY;
+      paramBundle.dgp.msgId = this.fll;
       break label258;
-      label1014:
+      label1032:
       if (i == 4)
       {
         i = 1;
@@ -939,35 +1098,35 @@ public class ChattingSendDataToDeviceUI
         i = 5;
         break label459;
       }
-      label1046:
+      label1064:
       i = 0;
       break label459;
-      label1051:
-      long l = this.eaY;
+      label1069:
+      long l = this.fll;
       if ((l == -1L) || (l == -9223372036854775808L)) {
         i = 0;
       }
-      label1211:
       for (;;)
       {
-        this.zAP = i;
+        this.Gpd = i;
         break;
-        aw.aaz();
-        paramBundle = com.tencent.mm.model.c.YC().kB(l);
+        az.arV();
+        paramBundle = com.tencent.mm.model.c.apO().rm(l);
         if (paramBundle.field_msgId != 0L)
         {
           j = paramBundle.getType();
           localObject = paramBundle.field_content;
-          if (!paramBundle.bCn()) {
-            break label1211;
+          if (!paramBundle.cxB()) {
+            break label1229;
           }
-          paramBundle = j.b.mY((String)localObject);
+          paramBundle = k.b.rx((String)localObject);
           if (paramBundle != null) {
-            break label1150;
+            break label1168;
           }
-          ab.e("MicroMsg.ChattingSendDataToDeviceUI", "get content is null");
+          ad.e("MicroMsg.ChattingSendDataToDeviceUI", "get content is null");
         }
-        label1150:
+        label1168:
+        label1229:
         do
         {
           do
@@ -1007,65 +1166,65 @@ public class ChattingSendDataToDeviceUI
           }
         } while (j != 62);
       }
-      label1241:
-      this.zAD.setVisibility(8);
+      label1259:
+      this.GoR.setVisibility(8);
     }
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(30802);
+    AppMethodBeat.i(34675);
     super.onDestroy();
-    ab.i("MicroMsg.ChattingSendDataToDeviceUI", "onDestroy...");
-    this.zAN = false;
-    if (this.zAG.booleanValue())
+    ad.i("MicroMsg.ChattingSendDataToDeviceUI", "onDestroy...");
+    this.Gpb = false;
+    if (this.GoU.booleanValue())
     {
-      if (!this.zAM) {
-        vb(2);
+      if (!this.Gpa) {
+        Bf(2);
       }
-      com.tencent.mm.sdk.b.a.ymk.d(this.zAU);
-      com.tencent.mm.sdk.b.a.ymk.d(this.zAV);
-      ex localex = new ex();
-      com.tencent.mm.sdk.b.a.ymk.l(localex);
-      if (localex.csH.csk) {
-        ab.i("MicroMsg.ChattingSendDataToDeviceUI", "Stop scan Network success!");
+      com.tencent.mm.sdk.b.a.ESL.d(this.Gpi);
+      com.tencent.mm.sdk.b.a.ESL.d(this.Gpj);
+      fd localfd = new fd();
+      com.tencent.mm.sdk.b.a.ESL.l(localfd);
+      if (localfd.dhD.dhg) {
+        ad.i("MicroMsg.ChattingSendDataToDeviceUI", "Stop scan Network success!");
       }
     }
-    AppMethodBeat.o(30802);
+    AppMethodBeat.o(34675);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(30800);
+    AppMethodBeat.i(34673);
     super.onPause();
-    AppMethodBeat.o(30800);
+    AppMethodBeat.o(34673);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(30799);
+    AppMethodBeat.i(34672);
     super.onResume();
-    dGF();
+    eVL();
     RelativeLayout.LayoutParams localLayoutParams;
     int i;
     float f;
-    if (this.zAG.booleanValue())
+    if (this.GoU.booleanValue())
     {
-      localLayoutParams = (RelativeLayout.LayoutParams)this.vZg.getLayoutParams();
+      localLayoutParams = (RelativeLayout.LayoutParams)this.GoL.getLayoutParams();
       i = localLayoutParams.height;
-      f = com.tencent.mm.cb.a.dr(this);
-      if (f != com.tencent.mm.cb.a.gh(this)) {
+      f = com.tencent.mm.cd.a.dT(this);
+      if (f != com.tencent.mm.cd.a.hG(this)) {
         break label85;
       }
     }
-    for (localLayoutParams.height = (i + getResources().getDimensionPixelSize(2131427782));; localLayoutParams.height = (i + getResources().getDimensionPixelSize(2131427808))) {
+    for (localLayoutParams.height = (i + getResources().getDimensionPixelSize(2131165490));; localLayoutParams.height = (i + getResources().getDimensionPixelSize(2131165516))) {
       label85:
       do
       {
-        this.vZg.setLayoutParams(localLayoutParams);
-        AppMethodBeat.o(30799);
+        this.GoL.setLayoutParams(localLayoutParams);
+        AppMethodBeat.o(34672);
         return;
-      } while ((f != com.tencent.mm.cb.a.gj(this)) && (f != com.tencent.mm.cb.a.gi(this)) && (f != com.tencent.mm.cb.a.gk(this)));
+      } while ((f != com.tencent.mm.cd.a.hI(this)) && (f != com.tencent.mm.cd.a.hH(this)) && (f != com.tencent.mm.cd.a.hJ(this)));
     }
   }
   
@@ -1074,10 +1233,387 @@ public class ChattingSendDataToDeviceUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  final class a
+    extends BaseAdapter
+  {
+    private List<Map<String, ChattingSendDataToDeviceUI.c>> Gkv;
+    private Map<String, ChattingSendDataToDeviceUI.c> Gps;
+    private Context context;
+    private com.tencent.mm.aw.a.a.c paS;
+    
+    public a(Context paramContext)
+    {
+      AppMethodBeat.i(34650);
+      this.context = paramContext;
+      this.Gkv = new ArrayList();
+      this$1 = new c.a();
+      ChattingSendDataToDeviceUI.this.hkf = 2131233401;
+      this.paS = ChattingSendDataToDeviceUI.this.azc();
+      AppMethodBeat.o(34650);
+    }
+    
+    public final ChattingSendDataToDeviceUI.c Yy(int paramInt)
+    {
+      AppMethodBeat.i(34653);
+      ChattingSendDataToDeviceUI.c localc = (ChattingSendDataToDeviceUI.c)((Map)this.Gkv.get(paramInt)).get("hard_device_info");
+      AppMethodBeat.o(34653);
+      return localc;
+    }
+    
+    public final void ad(List<ChattingSendDataToDeviceUI.c> paramList)
+    {
+      AppMethodBeat.i(34651);
+      this.Gkv.clear();
+      int j = paramList.size();
+      int i = 0;
+      while (i < j)
+      {
+        this.Gps = new HashMap();
+        this.Gps.put("hard_device_info", paramList.get(i));
+        this.Gkv.add(this.Gps);
+        i += 1;
+      }
+      AppMethodBeat.o(34651);
+    }
+    
+    public final int getCount()
+    {
+      AppMethodBeat.i(34652);
+      int i = this.Gkv.size();
+      AppMethodBeat.o(34652);
+      return i;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public final View getView(int paramInt, final View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(34654);
+      ChattingSendDataToDeviceUI.c localc = Yy(paramInt);
+      ad.d("MicroMsg.ChattingSendDataToDeviceUI", "position = %d, getCount() = %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(getCount()) });
+      final int i;
+      final int j;
+      StringBuffer localStringBuffer;
+      float f;
+      label264:
+      int k;
+      label267:
+      String str2;
+      if (ChattingSendDataToDeviceUI.c(ChattingSendDataToDeviceUI.this).get(Integer.valueOf(paramInt)) == null)
+      {
+        paramView = new aq();
+        paramViewGroup = View.inflate(paramViewGroup.getContext(), 2131495368, null);
+        paramView.pdS = paramViewGroup.findViewById(2131298736);
+        paramView.imt = ((TextView)paramViewGroup.findViewById(2131302656));
+        paramView.kXS = ((ImageView)paramViewGroup.findViewById(2131300880));
+        paramView.Gpr = ((TextView)paramViewGroup.findViewById(2131304561));
+        paramView.Grl = ((SendDataToDeviceProgressBar)paramViewGroup.findViewById(2131304560));
+        paramView.Grl.setVisibility(4);
+        ChattingSendDataToDeviceUI.c(ChattingSendDataToDeviceUI.this).put(Integer.valueOf(paramInt), paramViewGroup);
+        paramViewGroup.setTag(paramView);
+        ChattingSendDataToDeviceUI.k(ChattingSendDataToDeviceUI.this).put(localc.deviceID, Integer.valueOf(paramInt));
+        String str1 = localc.fyo;
+        i = 8;
+        j = 0;
+        localObject = new StringBuffer();
+        localStringBuffer = new StringBuffer();
+        f = com.tencent.mm.cd.a.dT(this.context);
+        if ((f != com.tencent.mm.cd.a.hG(this.context)) && (f != com.tencent.mm.cd.a.hH(this.context))) {
+          break label374;
+        }
+        i = 6;
+        k = 0;
+        if (k >= str1.length()) {
+          break label427;
+        }
+        int m = Character.codePointAt(str1, k);
+        str2 = str1.substring(k, k + 1);
+        if ((m < 0) || (m > 255)) {
+          break label406;
+        }
+        j += 1;
+        label318:
+        if (j > i) {
+          break label415;
+        }
+        localObject = ((StringBuffer)localObject).append(str2);
+      }
+      for (;;)
+      {
+        k += 1;
+        break label267;
+        paramViewGroup = (View)ChattingSendDataToDeviceUI.c(ChattingSendDataToDeviceUI.this).get(Integer.valueOf(paramInt));
+        paramView = (aq)paramViewGroup.getTag();
+        break;
+        label374:
+        if ((f != com.tencent.mm.cd.a.hI(this.context)) && (f != com.tencent.mm.cd.a.hJ(this.context))) {
+          break label264;
+        }
+        i = 5;
+        break label264;
+        label406:
+        j += 2;
+        break label318;
+        label415:
+        localStringBuffer = localStringBuffer.append(str2);
+      }
+      label427:
+      paramView.imt.setText(((StringBuffer)localObject).toString());
+      if (j >= i) {
+        paramView.Gpr.setText(localStringBuffer);
+      }
+      Object localObject = null;
+      if (ChattingSendDataToDeviceUI.d(ChattingSendDataToDeviceUI.this).containsKey(Yy(paramInt).deviceID)) {
+        localObject = (ChattingSendDataToDeviceUI.c)ChattingSendDataToDeviceUI.d(ChattingSendDataToDeviceUI.this).get(Yy(paramInt).deviceID);
+      }
+      if ((localObject != null) && (((ChattingSendDataToDeviceUI.c)localObject).dhj != null))
+      {
+        ad.d("MicroMsg.ChattingSendDataToDeviceUI", "position(%s), sendState(%s).", new Object[] { Integer.valueOf(paramInt), ((ChattingSendDataToDeviceUI.c)localObject).dhj });
+        if (!((ChattingSendDataToDeviceUI.c)localObject).dhj.equals("send_data_sending")) {
+          break label756;
+        }
+        paramView.Gpr.setText(this.context.getString(2131757314));
+        paramView.Gpr.setTextColor(this.context.getResources().getColor(2131100854));
+        paramView.Grl.YC(localc.progress);
+        paramView.Grl.setVisibility(0);
+        localObject = localc.deviceID;
+        localObject = (ChattingSendDataToDeviceUI.c)ChattingSendDataToDeviceUI.d(ChattingSendDataToDeviceUI.this).get(localObject);
+        j = ((ChattingSendDataToDeviceUI.c)localObject).progress;
+        if (j < 100) {
+          break label742;
+        }
+        i = 0;
+        com.tencent.e.h.Iye.aS(new com.tencent.e.i.h()
+        {
+          public final String getKey()
+          {
+            return "SendDataState_handler";
+          }
+          
+          public final void run()
+          {
+            AppMethodBeat.i(34649);
+            int i = j + 1;
+            int j;
+            while (ChattingSendDataToDeviceUI.this.Gpb)
+            {
+              if (i >= 100) {
+                j = i;
+              }
+              try
+              {
+                if (this.Gpn.dhj.equals("send_data_sucess"))
+                {
+                  j = i;
+                  ChattingSendDataToDeviceUI.this.runOnUiThread(new Runnable()
+                  {
+                    public final void run()
+                    {
+                      AppMethodBeat.i(34647);
+                      ChattingSendDataToDeviceUI.a.1.this.Gpm.Grl.YC(0);
+                      ChattingSendDataToDeviceUI.a.1.this.Gpm.Grl.setVisibility(4);
+                      ChattingSendDataToDeviceUI.a.1.this.Gpm.Gpr.setText(ChattingSendDataToDeviceUI.this.getText(2131757312));
+                      ChattingSendDataToDeviceUI.a.1.this.Gpm.Gpr.setTextColor(ChattingSendDataToDeviceUI.this.getResources().getColor(2131100854));
+                      ChattingSendDataToDeviceUI.a.1.this.Gpn.dhj = "send_data_sucess";
+                      ChattingSendDataToDeviceUI.a.1.this.Gpn.progress = 0;
+                      ChattingSendDataToDeviceUI.d(ChattingSendDataToDeviceUI.this).put(ChattingSendDataToDeviceUI.a.1.this.Gpn.deviceID, ChattingSendDataToDeviceUI.a.1.this.Gpn);
+                      ad.i("MicroMsg.ChattingSendDataToDeviceUI", " deviceId %s SEND_DATA_SUCCESS!", new Object[] { ChattingSendDataToDeviceUI.a.1.this.Gpn.deviceID });
+                      AppMethodBeat.o(34647);
+                    }
+                  });
+                  AppMethodBeat.o(34649);
+                  return;
+                }
+                j = i;
+                if (!this.Gpn.dhj.equals("send_data_failed")) {
+                  continue;
+                }
+                j = i;
+                ChattingSendDataToDeviceUI.this.runOnUiThread(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(34648);
+                    ChattingSendDataToDeviceUI.a.1.this.Gpm.Grl.YC(0);
+                    ChattingSendDataToDeviceUI.a.1.this.Gpm.Grl.setVisibility(4);
+                    ChattingSendDataToDeviceUI.a.1.this.Gpm.Gpr.setText(ChattingSendDataToDeviceUI.this.getText(2131757309));
+                    ChattingSendDataToDeviceUI.a.1.this.Gpm.Gpr.setTextColor(ChattingSendDataToDeviceUI.this.getResources().getColor(2131100857));
+                    ChattingSendDataToDeviceUI.a.1.this.Gpn.dhj = "send_data_failed";
+                    ChattingSendDataToDeviceUI.a.1.this.Gpn.progress = 0;
+                    ChattingSendDataToDeviceUI.d(ChattingSendDataToDeviceUI.this).put(ChattingSendDataToDeviceUI.a.1.this.Gpn.deviceID, ChattingSendDataToDeviceUI.a.1.this.Gpn);
+                    ad.i("MicroMsg.ChattingSendDataToDeviceUI", " deviceId %s SEND_DATA_FAILED!", new Object[] { ChattingSendDataToDeviceUI.a.1.this.Gpn.deviceID });
+                    AppMethodBeat.o(34648);
+                  }
+                });
+                AppMethodBeat.o(34649);
+                return;
+              }
+              catch (Exception localException)
+              {
+                ad.d("MicroMsg.ChattingSendDataToDeviceUI", "setSendingProgress exception %s", new Object[] { localException });
+                i = j;
+              }
+              j = i;
+              paramView.Grl.YC(i);
+              j = i;
+              this.Gpn.progress = i;
+              i += 1;
+              j = i;
+              Thread.sleep(i);
+            }
+            AppMethodBeat.o(34649);
+          }
+        });
+      }
+      for (;;)
+      {
+        ad.d("MicroMsg.ChattingSendDataToDeviceUI", "position(%s), name(%s).", new Object[] { Integer.valueOf(paramInt), localc.fyo });
+        com.tencent.mm.aw.o.ayJ().a(localc.iconUrl, paramView.kXS, this.paS);
+        paramView.pdS.setTag(Integer.valueOf(paramInt));
+        AppMethodBeat.o(34654);
+        return paramViewGroup;
+        label742:
+        i = 500 / (100 - j);
+        break;
+        label756:
+        if (((ChattingSendDataToDeviceUI.c)localObject).dhj.equals("send_data_sucess"))
+        {
+          paramView.Gpr.setText(this.context.getString(2131757312));
+          paramView.Gpr.setTextColor(this.context.getResources().getColor(2131100854));
+          paramView.Grl.setVisibility(4);
+        }
+        else if (((ChattingSendDataToDeviceUI.c)localObject).dhj.equals("send_data_cancel"))
+        {
+          paramView.Gpr.setText(this.context.getString(2131757305));
+          paramView.Gpr.setTextColor(this.context.getResources().getColor(2131100852));
+          paramView.Grl.setVisibility(4);
+        }
+        else if (((ChattingSendDataToDeviceUI.c)localObject).dhj.equals("send_data_failed"))
+        {
+          paramView.Gpr.setText(this.context.getString(2131757309));
+          paramView.Gpr.setTextColor(this.context.getResources().getColor(2131100857));
+          paramView.Grl.setVisibility(4);
+        }
+      }
+    }
+  }
+  
+  public final class b
+  {
+    public b() {}
+    
+    private boolean n(com.tencent.mm.sdk.b.b paramb)
+    {
+      AppMethodBeat.i(34658);
+      paramb = (er)paramb;
+      String str1 = paramb.dhh.dhj;
+      String str2 = paramb.dhh.cLR;
+      if (str1.equals("send_data_sending")) {
+        ChattingSendDataToDeviceUI.a(ChattingSendDataToDeviceUI.this, "send_data_sending", str2, paramb.dhh.progress);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(34658);
+        return true;
+        if (str1.equals("send_data_failed")) {
+          ChattingSendDataToDeviceUI.a(ChattingSendDataToDeviceUI.this, "send_data_failed", str2, 0);
+        } else if (str1.equals("send_data_sucess")) {
+          ChattingSendDataToDeviceUI.this.aKz(str2);
+        }
+      }
+    }
+    
+    private boolean o(com.tencent.mm.sdk.b.b paramb)
+    {
+      AppMethodBeat.i(34659);
+      paramb = ((en)paramb).dgW.dgj;
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramb.size())
+      {
+        ChattingSendDataToDeviceUI.c localc = new ChattingSendDataToDeviceUI.c(ChattingSendDataToDeviceUI.this);
+        localc.dfF = ((String)((Map)paramb.get(i)).get("deviceType"));
+        localc.deviceID = ((String)((Map)paramb.get(i)).get("deviceID"));
+        localc.fyo = ((String)((Map)paramb.get(i)).get("displayName"));
+        localc.iconUrl = ((String)((Map)paramb.get(i)).get("iconUrl"));
+        localc.dhe = ((String)((Map)paramb.get(i)).get("ability"));
+        localc.Gpw = ((String)((Map)paramb.get(i)).get("abilityInf"));
+        if (((ChattingSendDataToDeviceUI.this.dhf) && (ChattingSendDataToDeviceUI.b(localc, ChattingSendDataToDeviceUI.f(ChattingSendDataToDeviceUI.this)))) || ((!ChattingSendDataToDeviceUI.this.dhf) && (ChattingSendDataToDeviceUI.b(localc, ChattingSendDataToDeviceUI.g(ChattingSendDataToDeviceUI.this)))))
+        {
+          if ((ChattingSendDataToDeviceUI.d(ChattingSendDataToDeviceUI.this).containsKey(localc.deviceID)) && (((ChattingSendDataToDeviceUI.c)ChattingSendDataToDeviceUI.d(ChattingSendDataToDeviceUI.this).get(localc.deviceID)).dhj != null))
+          {
+            localc.dhj = ((ChattingSendDataToDeviceUI.c)ChattingSendDataToDeviceUI.d(ChattingSendDataToDeviceUI.this).get(localc.deviceID)).dhj;
+            localc.progress = ((ChattingSendDataToDeviceUI.c)ChattingSendDataToDeviceUI.d(ChattingSendDataToDeviceUI.this).get(localc.deviceID)).progress;
+          }
+          localArrayList.add(localc);
+        }
+        i += 1;
+      }
+      if (ChattingSendDataToDeviceUI.l(ChattingSendDataToDeviceUI.this).size() != localArrayList.size())
+      {
+        ChattingSendDataToDeviceUI.a(ChattingSendDataToDeviceUI.this, localArrayList);
+        ChattingSendDataToDeviceUI.this.runOnUiThread(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(34656);
+            ChattingSendDataToDeviceUI.a(ChattingSendDataToDeviceUI.this).ad(ChattingSendDataToDeviceUI.l(ChattingSendDataToDeviceUI.this));
+            if (ChattingSendDataToDeviceUI.a(ChattingSendDataToDeviceUI.this).getCount() > 0)
+            {
+              ChattingSendDataToDeviceUI.m(ChattingSendDataToDeviceUI.this).setText(2131757132);
+              ChattingSendDataToDeviceUI.n(ChattingSendDataToDeviceUI.this);
+            }
+            ChattingSendDataToDeviceUI.a(ChattingSendDataToDeviceUI.this).notifyDataSetChanged();
+            AppMethodBeat.o(34656);
+          }
+        });
+      }
+      AppMethodBeat.o(34659);
+      return true;
+    }
+    
+    public final boolean m(com.tencent.mm.sdk.b.b paramb)
+    {
+      AppMethodBeat.i(34657);
+      boolean bool;
+      if ((paramb instanceof en))
+      {
+        bool = o(paramb);
+        AppMethodBeat.o(34657);
+        return bool;
+      }
+      if ((paramb instanceof er))
+      {
+        bool = n(paramb);
+        AppMethodBeat.o(34657);
+        return bool;
+      }
+      AppMethodBeat.o(34657);
+      return true;
+    }
+  }
+  
+  public final class c
+  {
+    String Gpw;
+    String deviceID;
+    String dfF;
+    String dhe;
+    String dhj;
+    String fyo;
+    String iconUrl;
+    int progress;
+    
+    public c() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ChattingSendDataToDeviceUI
  * JD-Core Version:    0.7.0.1
  */

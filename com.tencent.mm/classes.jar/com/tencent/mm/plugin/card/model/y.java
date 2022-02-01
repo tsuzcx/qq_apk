@@ -2,90 +2,88 @@ package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.sharecard.a.a;
-import com.tencent.mm.protocal.protobuf.ahu;
-import com.tencent.mm.protocal.protobuf.ahv;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.protocal.protobuf.arb;
+import com.tencent.mm.protocal.protobuf.arc;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 
 public final class y
-  extends m
+  extends n
   implements k
 {
-  private f callback;
-  private final com.tencent.mm.ai.b rr;
+  private com.tencent.mm.al.g callback;
+  private final com.tencent.mm.al.b rr;
   
   public y()
   {
-    AppMethodBeat.i(87889);
+    AppMethodBeat.i(112831);
     b.a locala = new b.a();
-    locala.fsX = new ahu();
-    locala.fsY = new ahv();
+    locala.gUU = new arb();
+    locala.gUV = new arc();
     locala.uri = "/cgi-bin/micromsg-bin/getcardcount";
-    locala.funcId = 663;
+    locala.funcId = 1088;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    AppMethodBeat.o(87889);
+    this.rr = locala.atI();
+    AppMethodBeat.o(112831);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(87890);
-    this.callback = paramf;
+    AppMethodBeat.i(112832);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(87890);
+    AppMethodBeat.o(112832);
     return i;
   }
   
   public final int getType()
   {
-    return 663;
+    return 1088;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(87891);
-    ab.i("MicroMsg.NetSceneGetCardCount", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
+    AppMethodBeat.i(112833);
+    ad.i("MicroMsg.NetSceneGetCardCount", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (ahv)this.rr.fsW.fta;
-      ab.i("MicroMsg.NetSceneGetCardCount", "has_card_item:" + paramq.wZR + " has_share_card:" + paramq.wZS);
-      if (paramq.wZR > 0)
+      paramq = (arc)this.rr.gUT.gUX;
+      ad.i("MicroMsg.NetSceneGetCardCount", "has_card_item:" + paramq.DrG + " has_share_card:" + paramq.DrH);
+      if (paramq.DrG > 0)
       {
-        l.bfz();
-        if (TextUtils.isEmpty((String)g.RL().Ru().get(ac.a.yyS, null)))
+        l.bMK();
+        if (TextUtils.isEmpty((String)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fhn, null)))
         {
-          am.bcc();
-          com.tencent.mm.plugin.card.b.b.sW(1);
+          am.bIU();
+          com.tencent.mm.plugin.card.b.b.yP(1);
         }
       }
-      if (paramq.wZS > 0)
+      if (paramq.DrH > 0)
       {
-        l.bfB();
-        paramq = (Long)g.RL().Ru().get(ac.a.yzc, Long.valueOf(0L));
+        l.bMM();
+        paramq = (Long)com.tencent.mm.kernel.g.afB().afk().get(ae.a.Fhx, Long.valueOf(0L));
         if ((paramq != null) && (paramq.longValue() == 0L)) {
-          am.bck().bcy();
+          am.bJc().bJw();
         }
       }
     }
-    g.RL().Ru().set(282882, Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
+    com.tencent.mm.kernel.g.afB().afk().set(282882, Integer.valueOf((int)(System.currentTimeMillis() / 1000L)));
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(87891);
+    AppMethodBeat.o(112833);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.y
  * JD-Core Version:    0.7.0.1
  */

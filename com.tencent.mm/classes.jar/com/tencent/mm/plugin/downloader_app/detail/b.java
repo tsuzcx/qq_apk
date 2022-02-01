@@ -16,16 +16,16 @@ public class b
   
   public final void b(WebView paramWebView, String paramString)
   {
-    AppMethodBeat.i(136042);
+    AppMethodBeat.i(8797);
     super.b(paramWebView, paramString);
-    AppMethodBeat.o(136042);
+    AppMethodBeat.o(8797);
   }
   
   public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(136041);
+    AppMethodBeat.i(8796);
     super.b(paramWebView, paramString, paramBitmap);
-    AppMethodBeat.o(136041);
+    AppMethodBeat.o(8796);
   }
 }
 

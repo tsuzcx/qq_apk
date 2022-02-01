@@ -26,7 +26,7 @@ public final class GetDownloadStateResponse
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(75985);
+    AppMethodBeat.i(102231);
     if (cache_requestParam == null) {
       cache_requestParam = new IPCBaseParam();
     }
@@ -34,24 +34,24 @@ public final class GetDownloadStateResponse
     this.state = paramJceInputStream.read(this.state, 1, false);
     this.errorCode = paramJceInputStream.read(this.errorCode, 2, false);
     this.errorMsg = paramJceInputStream.readString(3, false);
-    AppMethodBeat.o(75985);
+    AppMethodBeat.o(102231);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(75984);
+    AppMethodBeat.i(102230);
     paramJceOutputStream.write(this.requestParam, 0);
     paramJceOutputStream.write(this.state, 1);
     paramJceOutputStream.write(this.errorCode, 2);
     if (this.errorMsg != null) {
       paramJceOutputStream.write(this.errorMsg, 3);
     }
-    AppMethodBeat.o(75984);
+    AppMethodBeat.o(102230);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.GetDownloadStateResponse
  * JD-Core Version:    0.7.0.1
  */

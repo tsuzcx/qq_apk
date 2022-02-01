@@ -7,16 +7,16 @@ import java.util.concurrent.Callable;
 
 public final class f
 {
-  private static SharedPreferences LT = null;
+  private static SharedPreferences NI = null;
   
-  public static SharedPreferences r(Context paramContext)
+  public static SharedPreferences s(Context paramContext)
   {
     try
     {
-      if (LT == null) {
-        LT = (SharedPreferences)cl.a(new Callable() {});
+      if (NI == null) {
+        NI = (SharedPreferences)cl.a(new Callable() {});
       }
-      paramContext = LT;
+      paramContext = NI;
       return paramContext;
     }
     finally {}

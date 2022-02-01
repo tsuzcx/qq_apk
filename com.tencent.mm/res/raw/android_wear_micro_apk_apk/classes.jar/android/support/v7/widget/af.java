@@ -10,112 +10,65 @@ import java.util.List;
 
 public final class af
 {
-  private al uA;
-  final ArrayList<an> uu = new ArrayList();
-  private ArrayList<an> uv = null;
-  final ArrayList<an> uw = new ArrayList();
-  private final List<an> ux = Collections.unmodifiableList(this.uu);
-  private int uy = 2;
-  private ae uz;
+  final ArrayList<an> wj = new ArrayList();
+  private ArrayList<an> wk = null;
+  final ArrayList<an> wl = new ArrayList();
+  private final List<an> wm = Collections.unmodifiableList(this.wj);
+  private int wn = 2;
+  private ae wo;
+  private al wp;
   
   public af(RecyclerView paramRecyclerView) {}
   
   private an a(long paramLong, int paramInt, boolean paramBoolean)
   {
-    paramInt = this.uu.size() - 1;
+    paramInt = this.wj.size() - 1;
     an localan;
     while (paramInt >= 0)
     {
-      localan = (an)this.uu.get(paramInt);
-      if ((localan.vg == -1L) && (!localan.ej()))
+      localan = (an)this.wj.get(paramInt);
+      if ((localan.wV == -1L) && (!localan.ey()))
       {
-        if (localan.vh == 0)
+        if (localan.wW == 0)
         {
           localan.addFlags(32);
-          if ((localan.isRemoved()) && (!this.ua.tM.dY())) {
+          if ((localan.isRemoved()) && (!this.vQ.vC.em())) {
             localan.setFlags(2, 14);
           }
           return localan;
         }
-        this.uu.remove(paramInt);
-        this.ua.removeDetachedView(localan.ve, false);
-        aw(localan.ve);
+        this.wj.remove(paramInt);
+        this.vQ.removeDetachedView(localan.wT, false);
+        aD(localan.wT);
       }
       paramInt -= 1;
     }
-    paramInt = this.uw.size() - 1;
+    paramInt = this.wl.size() - 1;
     while (paramInt >= 0)
     {
-      localan = (an)this.uw.get(paramInt);
-      if (localan.vg == -1L)
+      localan = (an)this.wl.get(paramInt);
+      if (localan.wV == -1L)
       {
-        if (localan.vh == 0)
+        if (localan.wW == 0)
         {
-          this.uw.remove(paramInt);
+          this.wl.remove(paramInt);
           return localan;
         }
-        au(paramInt);
+        aG(paramInt);
       }
       paramInt -= 1;
     }
     return null;
   }
   
-  private an av(int paramInt)
-  {
-    int j = 0;
-    int k;
-    if (this.uv != null)
-    {
-      k = this.uv.size();
-      if (k != 0) {}
-    }
-    else
-    {
-      return null;
-    }
-    int i = 0;
-    an localan;
-    while (i < k)
-    {
-      localan = (an)this.uv.get(i);
-      if ((!localan.ej()) && (localan.eg() == paramInt))
-      {
-        localan.addFlags(32);
-        return localan;
-      }
-      i += 1;
-    }
-    if (RecyclerView.g(this.ua).hasStableIds())
-    {
-      paramInt = this.ua.ta.l(paramInt, 0);
-      if ((paramInt > 0) && (paramInt < RecyclerView.g(this.ua).getItemCount()))
-      {
-        RecyclerView.g(this.ua);
-        paramInt = j;
-        while (paramInt < k)
-        {
-          localan = (an)this.uv.get(paramInt);
-          if ((!localan.ej()) && (localan.vg == -1L))
-          {
-            localan.addFlags(32);
-            return localan;
-          }
-          paramInt += 1;
-        }
-      }
-    }
-    return null;
-  }
-  
-  private void b(ViewGroup paramViewGroup, boolean paramBoolean)
+  private void a(ViewGroup paramViewGroup, boolean paramBoolean)
   {
     int i = paramViewGroup.getChildCount() - 1;
     while (i >= 0)
     {
       View localView = paramViewGroup.getChildAt(i);
       if ((localView instanceof ViewGroup)) {
-        b((ViewGroup)localView, true);
+        a((ViewGroup)localView, true);
       }
       i -= 1;
     }
@@ -133,36 +86,83 @@ public final class af
     paramViewGroup.setVisibility(i);
   }
   
-  private an c(int paramInt, boolean paramBoolean)
+  private an aH(int paramInt)
   {
     int j = 0;
-    int k = this.uu.size();
+    int k;
+    if (this.wk != null)
+    {
+      k = this.wk.size();
+      if (k != 0) {}
+    }
+    else
+    {
+      return null;
+    }
+    int i = 0;
+    an localan;
+    while (i < k)
+    {
+      localan = (an)this.wk.get(i);
+      if ((!localan.ey()) && (localan.ev() == paramInt))
+      {
+        localan.addFlags(32);
+        return localan;
+      }
+      i += 1;
+    }
+    if (RecyclerView.g(this.vQ).hasStableIds())
+    {
+      paramInt = this.vQ.uQ.m(paramInt, 0);
+      if ((paramInt > 0) && (paramInt < RecyclerView.g(this.vQ).getItemCount()))
+      {
+        RecyclerView.g(this.vQ);
+        paramInt = j;
+        while (paramInt < k)
+        {
+          localan = (an)this.wk.get(paramInt);
+          if ((!localan.ey()) && (localan.wV == -1L))
+          {
+            localan.addFlags(32);
+            return localan;
+          }
+          paramInt += 1;
+        }
+      }
+    }
+    return null;
+  }
+  
+  private an d(int paramInt, boolean paramBoolean)
+  {
+    int j = 0;
+    int k = this.wj.size();
     int i = 0;
     Object localObject;
     while (i < k)
     {
-      localObject = (an)this.uu.get(i);
-      if ((!((an)localObject).ej()) && (((an)localObject).eg() == paramInt) && (!((an)localObject).em()) && ((ak.p(this.ua.tM)) || (!((an)localObject).isRemoved())))
+      localObject = (an)this.wj.get(i);
+      if ((!((an)localObject).ey()) && (((an)localObject).ev() == paramInt) && (!((an)localObject).eB()) && ((ak.p(this.vQ.vC)) || (!((an)localObject).isRemoved())))
       {
         ((an)localObject).addFlags(32);
         return localObject;
       }
       i += 1;
     }
-    d locald = this.ua.tb;
-    k = locald.rj.size();
+    d locald = this.vQ.uR;
+    k = locald.sZ.size();
     i = 0;
     if (i < k)
     {
-      localObject = (View)locald.rj.get(i);
-      an localan = locald.rh.Z((View)localObject);
-      if ((localan.eg() == paramInt) && (!localan.em()))
+      localObject = (View)locald.sZ.get(i);
+      an localan = locald.sX.af((View)localObject);
+      if ((localan.ev() == paramInt) && (!localan.eB()))
       {
         label172:
         if (localObject != null) {
-          this.ua.tC.c(this.ua.Z((View)localObject));
+          this.vQ.vs.c(this.vQ.af((View)localObject));
         }
-        k = this.uw.size();
+        k = this.wl.size();
         i = j;
       }
     }
@@ -171,10 +171,10 @@ public final class af
       if (i >= k) {
         break label276;
       }
-      localObject = (an)this.uw.get(i);
-      if ((!((an)localObject).em()) && (((an)localObject).eg() == paramInt))
+      localObject = (an)this.wl.get(i);
+      if ((!((an)localObject).eB()) && (((an)localObject).ev() == paramInt))
       {
-        this.uw.remove(i);
+        this.wl.remove(i);
         return localObject;
         i += 1;
         break;
@@ -187,44 +187,105 @@ public final class af
     return null;
   }
   
+  private void eh()
+  {
+    int i = this.wl.size() - 1;
+    while (i >= 0)
+    {
+      aG(i);
+      i -= 1;
+    }
+    this.wl.clear();
+  }
+  
   private void q(an paraman)
   {
-    r.a(paraman.ve, null);
-    if (RecyclerView.o(this.ua) != null) {
-      RecyclerView.o(this.ua);
-    }
-    if (RecyclerView.g(this.ua) != null) {
-      RecyclerView.g(this.ua);
-    }
-    if (this.ua.tM != null) {
-      this.ua.tM.s(paraman);
-    }
-    paraman.vr = null;
-    dU().o(paraman);
+    r.a(paraman.wT, null);
+    s(paraman);
+    paraman.xg = null;
+    ei().o(paraman);
   }
   
-  public final int as(int paramInt)
+  private void s(an paraman)
   {
-    if ((paramInt < 0) || (paramInt >= this.ua.tM.getItemCount())) {
-      throw new IndexOutOfBoundsException("invalid position " + paramInt + ". State item count is " + this.ua.tM.getItemCount());
+    if (RecyclerView.o(this.vQ) != null) {
+      RecyclerView.o(this.vQ);
     }
-    if (!this.ua.tM.dY()) {
+    if (RecyclerView.g(this.vQ) != null) {
+      RecyclerView.g(this.vQ);
+    }
+    if (this.vQ.vC != null) {
+      this.vQ.vC.t(paraman);
+    }
+  }
+  
+  public final void aC(View paramView)
+  {
+    an localan = RecyclerView.ap(paramView);
+    if (localan.eE()) {
+      this.vQ.removeDetachedView(paramView, false);
+    }
+    if (localan.ew()) {
+      localan.ex();
+    }
+    for (;;)
+    {
+      p(localan);
+      return;
+      if (localan.ey()) {
+        localan.ez();
+      }
+    }
+  }
+  
+  final void aD(View paramView)
+  {
+    paramView = RecyclerView.ap(paramView);
+    an.x(paramView);
+    paramView.ez();
+    p(paramView);
+  }
+  
+  public final int aE(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.vQ.vC.getItemCount())) {
+      throw new IndexOutOfBoundsException("invalid position " + paramInt + ". State item count is " + this.vQ.vC.getItemCount());
+    }
+    if (!this.vQ.vC.em()) {
       return paramInt;
     }
-    return this.ua.ta.Y(paramInt);
+    return this.vQ.uQ.aj(paramInt);
   }
   
-  public final View at(int paramInt)
+  final void aE(View paramView)
+  {
+    paramView = RecyclerView.ap(paramView);
+    paramView.f(this);
+    if ((!paramView.eD()) || (!RecyclerView.i(this.vQ)))
+    {
+      if ((paramView.eB()) && (!paramView.isRemoved()) && (!RecyclerView.g(this.vQ).hasStableIds())) {
+        throw new IllegalArgumentException("Called scrap view with an invalid view. Invalid views cannot be reused from scrap, they should rebound from recycler pool.");
+      }
+      this.wj.add(paramView);
+      return;
+    }
+    if (this.wk == null) {
+      this.wk = new ArrayList();
+    }
+    this.wk.add(paramView);
+  }
+  
+  public final View aF(int paramInt)
   {
     boolean bool = true;
-    if ((paramInt < 0) || (paramInt >= this.ua.tM.getItemCount())) {
-      throw new IndexOutOfBoundsException("Invalid item position " + paramInt + "(" + paramInt + "). Item count:" + this.ua.tM.getItemCount());
+    if ((paramInt < 0) || (paramInt >= this.vQ.vC.getItemCount())) {
+      throw new IndexOutOfBoundsException("Invalid item position " + paramInt + "(" + paramInt + "). Item count:" + this.vQ.vC.getItemCount());
     }
     Object localObject1;
     int i;
-    if (this.ua.tM.dY())
+    if (this.vQ.vC.em())
     {
-      localObject1 = av(paramInt);
+      localObject1 = aH(paramInt);
       if (localObject1 != null) {
         i = 1;
       }
@@ -234,39 +295,38 @@ public final class af
       Object localObject2;
       if (localObject1 == null)
       {
-        localObject2 = c(paramInt, false);
+        localObject2 = d(paramInt, false);
         localObject1 = localObject2;
         i = j;
         if (localObject2 != null)
         {
           if (((an)localObject2).isRemoved()) {
-            break label425;
+            break label406;
           }
-          if ((((an)localObject2).sx < 0) || (((an)localObject2).sx >= RecyclerView.g(this.ua).getItemCount()))
+          if ((((an)localObject2).un < 0) || (((an)localObject2).un >= RecyclerView.g(this.vQ).getItemCount()))
           {
-            throw new IndexOutOfBoundsException("Inconsistency detected. Invalid view holder adapter position" + localObject2);
+            throw new IndexOutOfBoundsException("Inconsistency detected. Invalid view holder adapter position".concat(String.valueOf(localObject2)));
             i = 0;
             break;
           }
-          if (this.ua.tM.dY()) {
-            break label377;
+          if (this.vQ.vC.em()) {
+            break label364;
           }
-          RecyclerView.g(this.ua);
-          i = ((an)localObject2).sx;
-          if (((an)localObject2).vh == 0) {
-            break label377;
+          RecyclerView.g(this.vQ);
+          if (((an)localObject2).wW == 0) {
+            break label364;
           }
           i = 0;
           if (i != 0) {
-            break label446;
+            break label427;
           }
           ((an)localObject2).addFlags(4);
-          if (!((an)localObject2).eh()) {
-            break label430;
+          if (!((an)localObject2).ew()) {
+            break label411;
           }
-          this.ua.removeDetachedView(((an)localObject2).ve, false);
-          ((an)localObject2).ei();
-          label266:
+          this.vQ.removeDetachedView(((an)localObject2).wT, false);
+          ((an)localObject2).ex();
+          label253:
           p((an)localObject2);
           localObject1 = null;
           i = j;
@@ -278,48 +338,47 @@ public final class af
         int k = i;
         if (localObject1 == null)
         {
-          k = this.ua.ta.Y(paramInt);
-          if ((k < 0) || (k >= RecyclerView.g(this.ua).getItemCount()))
+          k = this.vQ.uQ.aj(paramInt);
+          if ((k < 0) || (k >= RecyclerView.g(this.vQ).getItemCount()))
           {
-            throw new IndexOutOfBoundsException("Inconsistency detected. Invalid item position " + paramInt + "(offset:" + k + ").state:" + this.ua.tM.getItemCount());
-            label377:
-            if (RecyclerView.g(this.ua).hasStableIds())
+            throw new IndexOutOfBoundsException("Inconsistency detected. Invalid item position " + paramInt + "(offset:" + k + ").state:" + this.vQ.vC.getItemCount());
+            label364:
+            if (RecyclerView.g(this.vQ).hasStableIds())
             {
-              long l = ((an)localObject2).vg;
-              RecyclerView.g(this.ua);
-              i = ((an)localObject2).sx;
+              long l = ((an)localObject2).wV;
+              RecyclerView.g(this.vQ);
               if (l != -1L)
               {
                 i = 0;
                 break;
               }
             }
-            label425:
+            label406:
             i = 1;
             break;
-            label430:
-            if (!((an)localObject2).ej()) {
-              break label266;
+            label411:
+            if (!((an)localObject2).ey()) {
+              break label253;
             }
-            ((an)localObject2).ek();
-            break label266;
-            label446:
+            ((an)localObject2).ez();
+            break label253;
+            label427:
             i = 1;
             localObject1 = localObject2;
             continue;
           }
-          RecyclerView.g(this.ua);
+          RecyclerView.g(this.vQ);
           localObject2 = localObject1;
           j = i;
-          if (RecyclerView.g(this.ua).hasStableIds())
+          if (RecyclerView.g(this.vQ).hasStableIds())
           {
-            RecyclerView.g(this.ua);
+            RecyclerView.g(this.vQ);
             localObject1 = a(-1L, 0, false);
             localObject2 = localObject1;
             j = i;
             if (localObject1 != null)
             {
-              ((an)localObject1).sx = k;
+              ((an)localObject1).un = k;
               j = 1;
               localObject2 = localObject1;
             }
@@ -328,18 +387,18 @@ public final class af
           if (localObject2 == null)
           {
             localObject1 = localObject2;
-            if (this.uA != null)
+            if (this.wp != null)
             {
-              localObject3 = this.uA.ec();
+              localObject3 = this.wp.eq();
               localObject1 = localObject2;
               if (localObject3 != null)
               {
-                localObject2 = this.ua.Z((View)localObject3);
+                localObject2 = this.vQ.af((View)localObject3);
                 if (localObject2 == null) {
                   throw new IllegalArgumentException("getViewForPositionAndType returned a view which does not have a ViewHolder");
                 }
                 localObject1 = localObject2;
-                if (((an)localObject2).ef()) {
+                if (((an)localObject2).eu()) {
                   throw new IllegalArgumentException("getViewForPositionAndType returned a view that is ignored. You must call stopIgnoring before returning this view.");
                 }
               }
@@ -348,12 +407,12 @@ public final class af
           localObject2 = localObject1;
           if (localObject1 == null)
           {
-            localObject2 = dU().ar(0);
+            localObject2 = ei().aD(0);
             if (localObject2 != null)
             {
-              ((an)localObject2).es();
-              if ((RecyclerView.dE()) && ((((an)localObject2).ve instanceof ViewGroup))) {
-                b((ViewGroup)((an)localObject2).ve, false);
+              ((an)localObject2).df();
+              if ((RecyclerView.dS()) && ((((an)localObject2).wT instanceof ViewGroup))) {
+                a((ViewGroup)((an)localObject2).wT, false);
               }
             }
           }
@@ -361,71 +420,71 @@ public final class af
           k = j;
           if (localObject2 == null)
           {
-            localObject1 = RecyclerView.g(this.ua);
-            localObject2 = this.ua;
+            localObject1 = RecyclerView.g(this.vQ);
+            localObject2 = this.vQ;
             android.support.v4.os.f.beginSection("RV CreateView");
-            localObject2 = ((t)localObject1).c((ViewGroup)localObject2);
-            ((an)localObject2).vh = 0;
+            localObject2 = ((t)localObject1).b((ViewGroup)localObject2);
+            ((an)localObject2).wW = 0;
             android.support.v4.os.f.endSection();
           }
         }
         for (;;)
         {
-          if ((this.ua.tM.dY()) && (((an)localObject2).isBound()))
+          if ((this.vQ.vC.em()) && (((an)localObject2).isBound()))
           {
-            ((an)localObject2).vi = paramInt;
+            ((an)localObject2).wX = paramInt;
             paramInt = 0;
           }
           for (;;)
           {
-            localObject1 = ((an)localObject2).ve.getLayoutParams();
+            localObject1 = ((an)localObject2).wT.getLayoutParams();
             if (localObject1 == null)
             {
-              localObject1 = (RecyclerView.LayoutParams)this.ua.generateDefaultLayoutParams();
-              ((an)localObject2).ve.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-              label789:
-              ((RecyclerView.LayoutParams)localObject1).uo = ((an)localObject2);
+              localObject1 = (RecyclerView.LayoutParams)this.vQ.generateDefaultLayoutParams();
+              ((an)localObject2).wT.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+              label770:
+              ((RecyclerView.LayoutParams)localObject1).wd = ((an)localObject2);
               if ((j == 0) || (paramInt == 0)) {
-                break label1002;
+                break label983;
               }
             }
             for (;;)
             {
-              ((RecyclerView.LayoutParams)localObject1).uq = bool;
-              return ((an)localObject2).ve;
-              if ((((an)localObject2).isBound()) && (!((an)localObject2).en()) && (!((an)localObject2).em())) {
-                break label1008;
+              ((RecyclerView.LayoutParams)localObject1).wf = bool;
+              return ((an)localObject2).wT;
+              if ((((an)localObject2).isBound()) && (!((an)localObject2).eC()) && (!((an)localObject2).eB())) {
+                break label989;
               }
-              i = this.ua.ta.Y(paramInt);
-              ((an)localObject2).vr = this.ua;
-              RecyclerView.g(this.ua).b((an)localObject2, i);
-              localObject1 = ((an)localObject2).ve;
-              if (this.ua.dt())
+              i = this.vQ.uQ.aj(paramInt);
+              ((an)localObject2).xg = this.vQ;
+              RecyclerView.g(this.vQ).b((an)localObject2, i);
+              localObject1 = ((an)localObject2).wT;
+              if (this.vQ.dD())
               {
-                if (r.g((View)localObject1) == 0) {
-                  r.c((View)localObject1, 1);
+                if (r.h((View)localObject1) == 0) {
+                  r.f((View)localObject1, 1);
                 }
-                if (!r.d((View)localObject1)) {
-                  r.a((View)localObject1, RecyclerView.n(this.ua).vs);
+                if (!r.e((View)localObject1)) {
+                  r.a((View)localObject1, RecyclerView.n(this.vQ).xh);
                 }
               }
-              if (this.ua.tM.dY()) {
-                ((an)localObject2).vi = paramInt;
+              if (this.vQ.vC.em()) {
+                ((an)localObject2).wX = paramInt;
               }
               paramInt = 1;
               break;
-              if (!this.ua.checkLayoutParams((ViewGroup.LayoutParams)localObject1))
+              if (!this.vQ.checkLayoutParams((ViewGroup.LayoutParams)localObject1))
               {
-                localObject1 = (RecyclerView.LayoutParams)this.ua.generateLayoutParams((ViewGroup.LayoutParams)localObject1);
-                ((an)localObject2).ve.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-                break label789;
+                localObject1 = (RecyclerView.LayoutParams)this.vQ.generateLayoutParams((ViewGroup.LayoutParams)localObject1);
+                ((an)localObject2).wT.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+                break label770;
               }
               localObject1 = (RecyclerView.LayoutParams)localObject1;
-              break label789;
-              label1002:
+              break label770;
+              label983:
               bool = false;
             }
-            label1008:
+            label989:
             paramInt = 0;
           }
           localObject2 = localObject3;
@@ -437,151 +496,118 @@ public final class af
     }
   }
   
-  final void au(int paramInt)
+  final void aG(int paramInt)
   {
-    q((an)this.uw.get(paramInt));
-    this.uw.remove(paramInt);
-  }
-  
-  public final void av(View paramView)
-  {
-    an localan = RecyclerView.ai(paramView);
-    if (localan.ep()) {
-      this.ua.removeDetachedView(paramView, false);
-    }
-    if (localan.eh()) {
-      localan.ei();
-    }
-    for (;;)
-    {
-      p(localan);
-      return;
-      if (localan.ej()) {
-        localan.ek();
-      }
-    }
-  }
-  
-  final void aw(View paramView)
-  {
-    paramView = RecyclerView.ai(paramView);
-    an.w(paramView);
-    paramView.ek();
-    p(paramView);
-  }
-  
-  final void ax(View paramView)
-  {
-    paramView = RecyclerView.ai(paramView);
-    paramView.f(this);
-    if ((!paramView.eo()) || (!RecyclerView.i(this.ua)))
-    {
-      if ((paramView.em()) && (!paramView.isRemoved()) && (!RecyclerView.g(this.ua).hasStableIds())) {
-        throw new IllegalArgumentException("Called scrap view with an invalid view. Invalid views cannot be reused from scrap, they should rebound from recycler pool.");
-      }
-      this.uu.add(paramView);
-      return;
-    }
-    if (this.uv == null) {
-      this.uv = new ArrayList();
-    }
-    this.uv.add(paramView);
+    q((an)this.wl.get(paramInt));
+    this.wl.remove(paramInt);
   }
   
   public final void clear()
   {
-    this.uu.clear();
-    dT();
+    this.wj.clear();
+    eh();
   }
   
-  public final List<an> dS()
-  {
-    return this.ux;
-  }
-  
-  final void dT()
-  {
-    int i = this.uw.size() - 1;
-    while (i >= 0)
-    {
-      au(i);
-      i -= 1;
-    }
-    this.uw.clear();
-  }
-  
-  final ae dU()
-  {
-    if (this.uz == null) {
-      this.uz = new ae();
-    }
-    return this.uz;
-  }
-  
-  final void dz()
+  final void dN()
   {
     int j = 0;
-    int k = this.uw.size();
+    int k = this.wl.size();
     int i = 0;
     while (i < k)
     {
-      ((an)this.uw.get(i)).ee();
+      ((an)this.wl.get(i)).es();
       i += 1;
     }
-    k = this.uu.size();
+    k = this.wj.size();
     i = 0;
     while (i < k)
     {
-      ((an)this.uu.get(i)).ee();
+      ((an)this.wj.get(i)).es();
       i += 1;
     }
-    if (this.uv != null)
+    if (this.wk != null)
     {
-      k = this.uv.size();
+      k = this.wk.size();
       i = j;
       while (i < k)
       {
-        ((an)this.uv.get(i)).ee();
+        ((an)this.wk.get(i)).es();
         i += 1;
       }
     }
+  }
+  
+  final void dP()
+  {
+    int j;
+    int i;
+    if ((RecyclerView.g(this.vQ) != null) && (RecyclerView.g(this.vQ).hasStableIds()))
+    {
+      j = this.wl.size();
+      i = 0;
+    }
+    while (i < j)
+    {
+      an localan = (an)this.wl.get(i);
+      if (localan != null)
+      {
+        localan.addFlags(6);
+        localan.z(null);
+      }
+      i += 1;
+      continue;
+      eh();
+    }
+  }
+  
+  public final List<an> eg()
+  {
+    return this.wm;
+  }
+  
+  final ae ei()
+  {
+    if (this.wo == null) {
+      this.wo = new ae();
+    }
+    return this.wo;
   }
   
   final void p(an paraman)
   {
     int j = 1;
     boolean bool = true;
-    if ((paraman.eh()) || (paraman.ve.getParent() != null))
+    if ((paraman.ew()) || (paraman.wT.getParent() != null))
     {
-      StringBuilder localStringBuilder = new StringBuilder("Scrapped or attached views may not be recycled. isScrap:").append(paraman.eh()).append(" isAttached:");
-      if (paraman.ve.getParent() != null) {}
+      StringBuilder localStringBuilder = new StringBuilder("Scrapped or attached views may not be recycled. isScrap:").append(paraman.ew()).append(" isAttached:");
+      if (paraman.wT.getParent() != null) {}
       for (;;)
       {
         throw new IllegalArgumentException(bool);
         bool = false;
       }
     }
-    if (paraman.ep()) {
-      throw new IllegalArgumentException("Tmp detached view should be removed from RecyclerView before it can be recycled: " + paraman);
+    if (paraman.eE()) {
+      throw new IllegalArgumentException("Tmp detached view should be removed from RecyclerView before it can be recycled: ".concat(String.valueOf(paraman)));
     }
-    if (paraman.ef()) {
+    if (paraman.eu()) {
       throw new IllegalArgumentException("Trying to recycle an ignored view holder. You should first call stopIgnoringView(view) before calling recycle.");
     }
-    bool = an.v(paraman);
-    if ((RecyclerView.g(this.ua) != null) && (bool)) {
-      RecyclerView.g(this.ua);
+    bool = an.w(paraman);
+    if ((RecyclerView.g(this.vQ) != null) && (bool)) {
+      RecyclerView.g(this.vQ);
     }
     int i;
-    if (paraman.et()) {
-      if (!paraman.ay(78))
+    if (paraman.eH()) {
+      if (!paraman.aK(78))
       {
-        i = this.uw.size();
-        if ((i == this.uy) && (i > 0)) {
-          au(0);
+        i = this.wl.size();
+        if ((i == this.wn) && (i > 0)) {
+          aG(0);
         }
-        if (i < this.uy)
+        if (i < this.wn)
         {
-          this.uw.add(paraman);
+          this.wl.add(paraman);
           i = 1;
           if (i == 0) {
             q(paraman);
@@ -591,9 +617,9 @@ public final class af
     }
     for (;;)
     {
-      this.ua.tM.s(paraman);
+      this.vQ.vC.t(paraman);
       if ((i == 0) && (j == 0) && (bool)) {
-        paraman.vr = null;
+        paraman.xg = null;
       }
       return;
       j = 0;
@@ -607,15 +633,15 @@ public final class af
   
   final void r(an paraman)
   {
-    if ((!paraman.eo()) || (!RecyclerView.i(this.ua)) || (this.uv == null)) {
-      this.uu.remove(paraman);
+    if ((!paraman.eD()) || (!RecyclerView.i(this.vQ)) || (this.wk == null)) {
+      this.wj.remove(paraman);
     }
     for (;;)
     {
-      an.w(paraman);
-      paraman.ek();
+      an.x(paraman);
+      paraman.ez();
       return;
-      this.uv.remove(paraman);
+      this.wk.remove(paraman);
     }
   }
 }

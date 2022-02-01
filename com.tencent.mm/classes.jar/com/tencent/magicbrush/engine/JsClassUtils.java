@@ -29,7 +29,7 @@ public class JsClassUtils
   
   private static void getDescriptor(StringBuilder paramStringBuilder, Class<?> paramClass)
   {
-    AppMethodBeat.i(115876);
+    AppMethodBeat.i(139981);
     char c1;
     for (;;)
     {
@@ -41,7 +41,7 @@ public class JsClassUtils
         for (;;)
         {
           paramStringBuilder.append(c1);
-          AppMethodBeat.o(115876);
+          AppMethodBeat.o(139981);
           return;
           if (paramClass == Void.TYPE) {
             c1 = 'V';
@@ -83,65 +83,65 @@ public class JsClassUtils
       i += 1;
     }
     paramStringBuilder.append(';');
-    AppMethodBeat.o(115876);
+    AppMethodBeat.o(139981);
   }
   
   private static int getJavaType(Class<?> paramClass)
   {
-    AppMethodBeat.i(115877);
+    AppMethodBeat.i(139982);
     if (paramClass == Integer.TYPE)
     {
-      AppMethodBeat.o(115877);
+      AppMethodBeat.o(139982);
       return 5;
     }
     if (paramClass == Void.TYPE)
     {
-      AppMethodBeat.o(115877);
+      AppMethodBeat.o(139982);
       return 0;
     }
     if (paramClass == Boolean.TYPE)
     {
-      AppMethodBeat.o(115877);
+      AppMethodBeat.o(139982);
       return 1;
     }
     if (paramClass == Byte.TYPE)
     {
-      AppMethodBeat.o(115877);
+      AppMethodBeat.o(139982);
       return 3;
     }
     if (paramClass == Character.TYPE)
     {
-      AppMethodBeat.o(115877);
+      AppMethodBeat.o(139982);
       return 2;
     }
     if (paramClass == Short.TYPE)
     {
-      AppMethodBeat.o(115877);
+      AppMethodBeat.o(139982);
       return 4;
     }
     if (paramClass == Double.TYPE)
     {
-      AppMethodBeat.o(115877);
+      AppMethodBeat.o(139982);
       return 8;
     }
     if (paramClass == Float.TYPE)
     {
-      AppMethodBeat.o(115877);
+      AppMethodBeat.o(139982);
       return 6;
     }
     if (paramClass.getCanonicalName().equals("java.lang.String"))
     {
-      AppMethodBeat.o(115877);
+      AppMethodBeat.o(139982);
       return 9;
     }
-    AppMethodBeat.o(115877);
+    AppMethodBeat.o(139982);
     return 10;
   }
   
   @Keep
   public static Method[] getJavascriptInterfaceMethod(Object paramObject)
   {
-    AppMethodBeat.i(115873);
+    AppMethodBeat.i(139978);
     ArrayList localArrayList = new ArrayList();
     try
     {
@@ -161,23 +161,23 @@ public class JsClassUtils
     catch (Exception paramObject)
     {
       paramObject = (Method[])localArrayList.toArray(new Method[localArrayList.size()]);
-      AppMethodBeat.o(115873);
+      AppMethodBeat.o(139978);
     }
   }
   
   @Keep
   public static String getMethodName(Method paramMethod)
   {
-    AppMethodBeat.i(115875);
+    AppMethodBeat.i(139980);
     paramMethod = paramMethod.getName();
-    AppMethodBeat.o(115875);
+    AppMethodBeat.o(139980);
     return paramMethod;
   }
   
   @Keep
   public static String getMethodSignature(Method paramMethod)
   {
-    AppMethodBeat.i(115874);
+    AppMethodBeat.i(139979);
     Class[] arrayOfClass = paramMethod.getParameterTypes();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append('(');
@@ -190,7 +190,7 @@ public class JsClassUtils
     localStringBuilder.append(')');
     getDescriptor(localStringBuilder, paramMethod.getReturnType());
     paramMethod = localStringBuilder.toString();
-    AppMethodBeat.o(115874);
+    AppMethodBeat.o(139979);
     return paramMethod;
   }
   
@@ -198,7 +198,7 @@ public class JsClassUtils
   public static int[] getMethodType(Method paramMethod)
   {
     int i = 0;
-    AppMethodBeat.i(115878);
+    AppMethodBeat.i(139983);
     Class[] arrayOfClass = paramMethod.getParameterTypes();
     int[] arrayOfInt = new int[arrayOfClass.length + 2];
     arrayOfInt[0] = arrayOfClass.length;
@@ -208,30 +208,30 @@ public class JsClassUtils
       arrayOfInt[(i + 2)] = getJavaType(arrayOfClass[i]);
       i += 1;
     }
-    AppMethodBeat.o(115878);
+    AppMethodBeat.o(139983);
     return arrayOfInt;
   }
   
   @Keep
   public static byte[] getStringUtf8(String paramString)
   {
-    AppMethodBeat.i(115880);
+    AppMethodBeat.i(139985);
     try
     {
       paramString = paramString.getBytes("UTF-8");
-      AppMethodBeat.o(115880);
+      AppMethodBeat.o(139985);
       return paramString;
     }
     catch (UnsupportedEncodingException paramString)
     {
-      AppMethodBeat.o(115880);
+      AppMethodBeat.o(139985);
     }
     return null;
   }
   
   public static boolean hasJavascriptInterface(Object paramObject)
   {
-    AppMethodBeat.i(115872);
+    AppMethodBeat.i(139977);
     try
     {
       paramObject = paramObject.getClass().getMethods();
@@ -242,7 +242,7 @@ public class JsClassUtils
         boolean bool = paramObject[i].isAnnotationPresent(JavascriptInterface.class);
         if (bool)
         {
-          AppMethodBeat.o(115872);
+          AppMethodBeat.o(139977);
           return true;
         }
         i += 1;
@@ -251,32 +251,32 @@ public class JsClassUtils
     }
     catch (Exception paramObject)
     {
-      AppMethodBeat.o(115872);
+      AppMethodBeat.o(139977);
     }
   }
   
   @Keep
   public static void jsLog(int paramInt, String paramString)
   {
-    AppMethodBeat.i(115879);
+    AppMethodBeat.i(139984);
     switch (paramInt)
     {
     default: 
       c.c.d("MicroMsg.JsClassUtils", paramString, new Object[0]);
-      AppMethodBeat.o(115879);
+      AppMethodBeat.o(139984);
       return;
     case 1: 
       c.c.i("MicroMsg.JsClassUtils", paramString, new Object[0]);
-      AppMethodBeat.o(115879);
+      AppMethodBeat.o(139984);
       return;
     }
     c.c.e("MicroMsg.JsClassUtils", paramString, new Object[0]);
-    AppMethodBeat.o(115879);
+    AppMethodBeat.o(139984);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.magicbrush.engine.JsClassUtils
  * JD-Core Version:    0.7.0.1
  */

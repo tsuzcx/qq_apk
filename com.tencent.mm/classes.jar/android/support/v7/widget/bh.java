@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 
 public final class bh
 {
-  private static Method apS;
+  private static Method axu;
   
   static
   {
@@ -17,9 +17,9 @@ public final class bh
     try
     {
       Method localMethod = View.class.getDeclaredMethod("computeFitSystemWindows", new Class[] { Rect.class, Rect.class });
-      apS = localMethod;
+      axu = localMethod;
       if (!localMethod.isAccessible()) {
-        apS.setAccessible(true);
+        axu.setAccessible(true);
       }
       return;
     }
@@ -28,21 +28,16 @@ public final class bh
   
   public static void a(View paramView, Rect paramRect1, Rect paramRect2)
   {
-    if (apS != null) {}
+    if (axu != null) {}
     try
     {
-      apS.invoke(paramView, new Object[] { paramRect1, paramRect2 });
+      axu.invoke(paramView, new Object[] { paramRect1, paramRect2 });
       return;
     }
     catch (Exception paramView) {}
   }
   
-  public static boolean bY(View paramView)
-  {
-    return t.T(paramView) == 1;
-  }
-  
-  public static void bZ(View paramView)
+  public static void cg(View paramView)
   {
     if (Build.VERSION.SDK_INT >= 16) {}
     try
@@ -55,6 +50,11 @@ public final class bh
       return;
     }
     catch (IllegalAccessException paramView) {}catch (InvocationTargetException paramView) {}catch (NoSuchMethodException paramView) {}
+  }
+  
+  public static boolean d(View paramView)
+  {
+    return t.Y(paramView) == 1;
   }
 }
 

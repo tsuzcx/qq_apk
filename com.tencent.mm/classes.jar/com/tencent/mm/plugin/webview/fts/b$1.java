@@ -1,33 +1,96 @@
 package com.tencent.mm.plugin.webview.fts;
 
+import android.os.Bundle;
+import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import java.util.ArrayList;
+import com.tencent.mm.plugin.fts.a.a.k;
+import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.plugin.fts.a.l;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 import java.util.Iterator;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 final class b$1
-  implements com.tencent.mm.plugin.fts.a.l
+  implements l
 {
   b$1(b paramb) {}
   
-  public final void b(j paramj)
+  public final void b(k paramk)
   {
-    AppMethodBeat.i(5673);
-    b.f localf = (b.f)paramj.mPi;
-    ab.i("MicroMsg.WebSearch.FTSWebViewLogic", "historySearchResultListener ret %d, webViewId %s", new Object[] { Integer.valueOf(paramj.bpE), Integer.valueOf(localf.uOY) });
-    if (paramj.bpE == 0)
+    AppMethodBeat.i(77886);
+    final b.f localf = (b.f)paramk.rma;
+    ad.i("MicroMsg.WebSearch.FTSWebViewLogic", "historySearchResultListener ret %d, webViewId %s", new Object[] { Integer.valueOf(paramk.bRZ), Integer.valueOf(localf.AOQ) });
+    final JSONObject localJSONObject1;
+    JSONArray localJSONArray1;
+    JSONArray localJSONArray2;
+    if (paramk.bRZ == 0)
     {
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = paramj.mSW.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(((com.tencent.mm.plugin.fts.a.a.l)localIterator.next()).content);
+      localJSONObject1 = new JSONObject();
+      try
+      {
+        localJSONObject1.put("ret", 0);
+        localJSONArray1 = new JSONArray();
+        localJSONArray2 = new JSONArray();
+        paramk = paramk.rpQ.iterator();
+        while (paramk.hasNext())
+        {
+          m localm = (m)paramk.next();
+          if (localm.content != null)
+          {
+            JSONObject localJSONObject2 = new JSONObject(localm.content);
+            localJSONObject2.put("timeStamp", localm.timestamp);
+            localJSONArray2.put(localJSONObject2);
+            continue;
+            aq.f(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(77885);
+                if (localf.AOQ != 0)
+                {
+                  ad.i("MicroMsg.WebSearch.FTSWebViewLogic", "historySearchResultListener callback， id %d", new Object[] { Integer.valueOf(localf.AOQ) });
+                  com.tencent.mm.plugin.webview.ui.tools.jsapi.f localf = g.TO(localf.AOQ);
+                  String str = localJSONObject1.toString();
+                  Bundle localBundle = new Bundle();
+                  localBundle.putString("data", str);
+                  try
+                  {
+                    if (localf.ASw != null)
+                    {
+                      localf.ASw.f(143, localBundle);
+                      AppMethodBeat.o(77885);
+                      return;
+                    }
+                    ad.i("MicroMsg.MsgHandler", "callbacker is null");
+                    AppMethodBeat.o(77885);
+                    return;
+                  }
+                  catch (RemoteException localRemoteException)
+                  {
+                    ad.w("MicroMsg.MsgHandler", "onGetSearchHistory exception" + localRemoteException.getMessage());
+                  }
+                }
+                AppMethodBeat.o(77885);
+              }
+            });
+          }
+        }
       }
-      al.d(new b.1.1(this, localf, paramj, localArrayList));
+      catch (Exception paramk) {}
     }
-    AppMethodBeat.o(5673);
+    for (;;)
+    {
+      AppMethodBeat.o(77886);
+      return;
+      paramk = new JSONObject();
+      paramk.put("items", localJSONArray2);
+      localJSONArray1.put(paramk);
+      localJSONObject1.put("data", localJSONArray1);
+    }
   }
 }
 

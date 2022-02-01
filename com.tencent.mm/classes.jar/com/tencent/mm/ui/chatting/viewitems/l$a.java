@@ -1,43 +1,53 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.c;
+import com.tencent.mm.model.w;
+import com.tencent.mm.plugin.comm.a.b;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
+import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.ui.chatting.s.e;
 
-final class l$a
-  extends c.a
+public final class l$a
+  extends s.e
 {
-  protected TextView mCZ;
-  protected ImageView mZY;
-  protected View mzQ;
-  protected ImageView nef;
-  protected TextView zRY;
-  protected TextView zTZ;
-  protected ImageView zUa;
-  
-  public final a fc(View paramView)
+  l$a(a parama)
   {
-    AppMethodBeat.i(32951);
-    super.eV(paramView);
-    this.mZY = ((ImageView)paramView.findViewById(2131822600));
-    this.mCZ = ((TextView)paramView.findViewById(2131822607));
-    this.zTZ = ((TextView)paramView.findViewById(2131822731));
-    this.mzQ = paramView.findViewById(2131822730);
-    this.zRY = ((TextView)paramView.findViewById(2131822518));
-    this.qFY = ((TextView)paramView.findViewById(2131821122));
-    this.zUa = ((ImageView)paramView.findViewById(2131822622));
-    this.mCC = ((CheckBox)paramView.findViewById(2131820579));
-    this.jbK = paramView.findViewById(2131820586);
-    this.nef = ((ImageView)paramView.findViewById(2131822646));
-    AppMethodBeat.o(32951);
-    return this;
+    super(parama);
+  }
+  
+  public final void a(View paramView, a parama, bl parambl)
+  {
+    AppMethodBeat.i(36920);
+    ((b)g.ab(b.class)).Sa(parambl.field_talker);
+    paramView = (bi)paramView.getTag();
+    az.arV();
+    if (c.isSDCardAvailable())
+    {
+      parama = paramView.drF;
+      if (!w.pF(parama.field_talker)) {
+        break label119;
+      }
+    }
+    label119:
+    for (paramView = this.Gob.getTalkerUserName();; paramView = null)
+    {
+      ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(this.Gob.GzJ.getContext(), parama, paramView);
+      h.vKh.f(11592, new Object[] { Integer.valueOf(0) });
+      AppMethodBeat.o(36920);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.l.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,67 +2,92 @@ package com.tencent.mm.plugin.webview.luggage;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.e.c;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.ipcinvoker.i;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.ui.tools.bag.h.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class u
-  implements h.a
 {
-  public final Bundle ac(Bundle paramBundle)
+  private boolean AUJ;
+  private String AUK;
+  private String AUL;
+  private String AUM;
+  private String AUN;
+  private String AUO;
+  private String AUP;
+  private String lang;
+  
+  public u(Bundle paramBundle)
   {
-    AppMethodBeat.i(6241);
-    try
-    {
-      paramBundle = (Bundle)f.a("com.tencent.mm", paramBundle, a.class);
-      AppMethodBeat.o(6241);
-      return paramBundle;
-    }
-    catch (c paramBundle)
-    {
-      ab.e("MicroMsg.WebViewUIBagIPCDelegate", "doBagLogic exp=%s", new Object[] { paramBundle.getLocalizedMessage() });
-      AppMethodBeat.o(6241);
-    }
-    return null;
+    AppMethodBeat.i(78478);
+    this.AUJ = paramBundle.getBoolean("close_window_confirm_dialog_switch");
+    this.AUK = paramBundle.getString("close_window_confirm_dialog_title_cn");
+    this.AUL = paramBundle.getString("close_window_confirm_dialog_title_eng");
+    this.AUM = paramBundle.getString("close_window_confirm_dialog_ok_cn");
+    this.AUN = paramBundle.getString("close_window_confirm_dialog_ok_eng");
+    this.AUO = paramBundle.getString("close_window_confirm_dialog_cancel_cn");
+    this.AUP = paramBundle.getString("close_window_confirm_dialog_cancel_eng");
+    this.lang = ac.ir(aj.getContext());
+    AppMethodBeat.o(78478);
   }
   
-  public final void z(Object[] paramArrayOfObject)
+  public final boolean elw()
   {
-    AppMethodBeat.i(6242);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    for (;;)
+    AppMethodBeat.i(78479);
+    if ((this.AUJ) && (!bt.isNullOrNil(elx())) && (!bt.isNullOrNil(ely())) && (!bt.isNullOrNil(elz())))
     {
-      if (i < 4) {}
-      try
-      {
-        localArrayList.add(String.valueOf(paramArrayOfObject[i]));
-        i += 1;
-      }
-      catch (Exception paramArrayOfObject)
-      {
-        ab.w("MicroMsg.WebViewUIBagIPCDelegate", "kvReport, ex = " + paramArrayOfObject.getMessage());
-        AppMethodBeat.o(6242);
-      }
+      AppMethodBeat.o(78479);
+      return true;
     }
-    paramArrayOfObject = h.qsU;
-    h.g(11576, localArrayList);
-    AppMethodBeat.o(6242);
-    return;
+    AppMethodBeat.o(78479);
+    return false;
   }
   
-  static class a
-    implements i<Bundle, Bundle>
-  {}
+  public final String elx()
+  {
+    AppMethodBeat.i(78480);
+    if ("zh_CN".equals(this.lang))
+    {
+      str = this.AUK;
+      AppMethodBeat.o(78480);
+      return str;
+    }
+    String str = this.AUL;
+    AppMethodBeat.o(78480);
+    return str;
+  }
+  
+  public final String ely()
+  {
+    AppMethodBeat.i(78481);
+    if ("zh_CN".equals(this.lang))
+    {
+      str = this.AUM;
+      AppMethodBeat.o(78481);
+      return str;
+    }
+    String str = this.AUN;
+    AppMethodBeat.o(78481);
+    return str;
+  }
+  
+  public final String elz()
+  {
+    AppMethodBeat.i(78482);
+    if ("zh_CN".equals(this.lang))
+    {
+      str = this.AUO;
+      AppMethodBeat.o(78482);
+      return str;
+    }
+    String str = this.AUP;
+    AppMethodBeat.o(78482);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.u
  * JD-Core Version:    0.7.0.1
  */

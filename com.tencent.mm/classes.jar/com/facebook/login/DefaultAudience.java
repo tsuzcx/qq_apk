@@ -8,13 +8,13 @@ public enum DefaultAudience
   
   static
   {
-    AppMethodBeat.i(72613);
+    AppMethodBeat.i(18049);
     NONE = new DefaultAudience("NONE", 0, null);
     ONLY_ME = new DefaultAudience("ONLY_ME", 1, "only_me");
     FRIENDS = new DefaultAudience("FRIENDS", 2, "friends");
     EVERYONE = new DefaultAudience("EVERYONE", 3, "everyone");
     $VALUES = new DefaultAudience[] { NONE, ONLY_ME, FRIENDS, EVERYONE };
-    AppMethodBeat.o(72613);
+    AppMethodBeat.o(18049);
   }
   
   private DefaultAudience(String paramString)
@@ -29,7 +29,7 @@ public enum DefaultAudience
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.login.DefaultAudience
  * JD-Core Version:    0.7.0.1
  */

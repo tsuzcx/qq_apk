@@ -1,85 +1,96 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
 
 public final class zi
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int wQm;
-  public String wQn;
+  public int ika;
+  public String ikb;
+  public String ikc;
+  public String ikd;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(62524);
+    AppMethodBeat.i(117864);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wQn == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: TagDesc");
-        AppMethodBeat.o(62524);
-        throw paramVarArgs;
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.ika);
+      if (this.ikb != null) {
+        paramVarArgs.d(2, this.ikb);
       }
-      paramVarArgs.aO(1, this.wQm);
-      if (this.wQn != null) {
-        paramVarArgs.e(2, this.wQn);
+      if (this.ikc != null) {
+        paramVarArgs.d(3, this.ikc);
       }
-      AppMethodBeat.o(62524);
+      if (this.ikd != null) {
+        paramVarArgs.d(4, this.ikd);
+      }
+      AppMethodBeat.o(117864);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = e.a.a.b.b.a.bl(1, this.wQm) + 0;
+      int i = f.a.a.b.b.a.bA(1, this.ika) + 0;
       paramInt = i;
-      if (this.wQn != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.wQn);
+      if (this.ikb != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.ikb);
       }
-      AppMethodBeat.o(62524);
+      i = paramInt;
+      if (this.ikc != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.ikc);
+      }
+      paramInt = i;
+      if (this.ikd != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.ikd);
+      }
+      AppMethodBeat.o(117864);
       return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      if (this.wQn == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: TagDesc");
-        AppMethodBeat.o(62524);
-        throw paramVarArgs;
-      }
-      AppMethodBeat.o(62524);
+      AppMethodBeat.o(117864);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       zi localzi = (zi)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(62524);
+        AppMethodBeat.o(117864);
         return -1;
       case 1: 
-        localzi.wQm = locala.CLY.sl();
-        AppMethodBeat.o(62524);
+        localzi.ika = locala.KhF.xS();
+        AppMethodBeat.o(117864);
+        return 0;
+      case 2: 
+        localzi.ikb = locala.KhF.readString();
+        AppMethodBeat.o(117864);
+        return 0;
+      case 3: 
+        localzi.ikc = locala.KhF.readString();
+        AppMethodBeat.o(117864);
         return 0;
       }
-      localzi.wQn = locala.CLY.readString();
-      AppMethodBeat.o(62524);
+      localzi.ikd = locala.KhF.readString();
+      AppMethodBeat.o(117864);
       return 0;
     }
-    AppMethodBeat.o(62524);
+    AppMethodBeat.o(117864);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.zi
  * JD-Core Version:    0.7.0.1
  */

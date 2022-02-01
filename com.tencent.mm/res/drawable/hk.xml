@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/b2j" />
-    <item android:state_pressed="true" android:drawable="@drawable/b2j" />
-    <item android:drawable="@drawable/b2i" />
-</selector>
+    <solid android:color="@color/a_r" />
+    <corners android:radius="@dimen/ss" android:topLeftRadius="@dimen/ss" android:topRightRadius="@dimen/ss" android:bottomLeftRadius="0.0dip" android:bottomRightRadius="0.0dip" />
+</shape>

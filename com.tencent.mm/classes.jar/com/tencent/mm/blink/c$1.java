@@ -7,14 +7,14 @@ public final class c$1
 {
   public final void run()
   {
-    AppMethodBeat.i(15835);
-    a.HJ();
-    AppMethodBeat.o(15835);
+    AppMethodBeat.i(19870);
+    a.SR();
+    AppMethodBeat.o(19870);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.blink.c.1
  * JD-Core Version:    0.7.0.1
  */

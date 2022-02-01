@@ -10,9 +10,9 @@ final class ai$2
   
   public final void run()
   {
-    AppMethodBeat.i(6678);
-    this.gjR.finish();
-    AppMethodBeat.o(6678);
+    AppMethodBeat.i(78967);
+    this.hUJ.finish();
+    AppMethodBeat.o(78967);
   }
 }
 

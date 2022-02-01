@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bo;
+import com.tencent.mm.g.c.bt;
 import com.tencent.mm.sdk.e.c.a;
 
 public final class f
-  extends bo
+  extends bt
 {
   public static c.a info;
   
   static
   {
-    AppMethodBeat.i(102629);
-    info = bo.Hm();
-    AppMethodBeat.o(102629);
+    AppMethodBeat.i(103369);
+    info = bt.So();
+    AppMethodBeat.o(103369);
   }
   
   public final c.a getDBInfo()
@@ -23,7 +23,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.f
  * JD-Core Version:    0.7.0.1
  */

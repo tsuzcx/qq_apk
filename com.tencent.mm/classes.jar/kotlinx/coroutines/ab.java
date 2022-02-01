@@ -1,65 +1,103 @@
 package kotlinx.coroutines;
 
-import a.c.a;
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.d.a;
+import d.d.f;
+import d.d.f.b;
+import d.d.f.b.a;
+import d.d.f.c;
+import d.g.a.m;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/CoroutineName;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "name", "", "(Ljava/lang/String;)V", "getName", "()Ljava/lang/String;", "component1", "copy", "equals", "", "other", "", "hashCode", "", "toString", "Key", "kotlinx-coroutines-core"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/CoroutineId;", "Lkotlinx/coroutines/ThreadContextElement;", "", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "id", "", "(J)V", "getId", "()J", "component1", "copy", "equals", "", "other", "", "hashCode", "", "restoreThreadContext", "", "context", "Lkotlin/coroutines/CoroutineContext;", "oldState", "toString", "updateThreadContext", "Key", "kotlinx-coroutines-core"})
 public final class ab
   extends a
+  implements by<String>
 {
-  public static final ab.a CHA;
-  final String name;
+  public static final a Kdy;
+  final long id;
   
   static
   {
-    AppMethodBeat.i(118495);
-    CHA = new ab.a((byte)0);
-    AppMethodBeat.o(118495);
+    AppMethodBeat.i(118241);
+    Kdy = new a((byte)0);
+    AppMethodBeat.o(118241);
+  }
+  
+  public ab(long paramLong)
+  {
+    super((f.c)Kdy);
+    AppMethodBeat.i(118240);
+    this.id = paramLong;
+    AppMethodBeat.o(118240);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(118497);
     if (this != paramObject)
     {
       if ((paramObject instanceof ab))
       {
         paramObject = (ab)paramObject;
-        if (!j.e(this.name, paramObject.name)) {}
+        if (this.id != paramObject.id) {}
       }
     }
-    else
-    {
-      AppMethodBeat.o(118497);
+    else {
       return true;
     }
-    AppMethodBeat.o(118497);
     return false;
+  }
+  
+  public final <R> R fold(R paramR, m<? super R, ? super f.b, ? extends R> paramm)
+  {
+    AppMethodBeat.i(118242);
+    paramR = f.b.a.a((f.b)this, paramR, paramm);
+    AppMethodBeat.o(118242);
+    return paramR;
+  }
+  
+  public final <E extends f.b> E get(f.c<E> paramc)
+  {
+    AppMethodBeat.i(118243);
+    paramc = f.b.a.a((f.b)this, paramc);
+    AppMethodBeat.o(118243);
+    return paramc;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(118496);
-    String str = this.name;
-    if (str != null)
-    {
-      int i = str.hashCode();
-      AppMethodBeat.o(118496);
-      return i;
-    }
-    AppMethodBeat.o(118496);
-    return 0;
+    long l = this.id;
+    return (int)(l ^ l >>> 32);
+  }
+  
+  public final f minusKey(f.c<?> paramc)
+  {
+    AppMethodBeat.i(118244);
+    paramc = f.b.a.b((f.b)this, paramc);
+    AppMethodBeat.o(118244);
+    return paramc;
+  }
+  
+  public final f plus(f paramf)
+  {
+    AppMethodBeat.i(118245);
+    paramf = f.b.a.a((f.b)this, paramf);
+    AppMethodBeat.o(118245);
+    return paramf;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(118494);
-    String str = "CoroutineName(" + this.name + ')';
-    AppMethodBeat.o(118494);
+    AppMethodBeat.i(118237);
+    String str = "CoroutineId(" + this.id + ')';
+    AppMethodBeat.o(118237);
     return str;
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/CoroutineId$Key;", "Lkotlin/coroutines/CoroutineContext$Key;", "Lkotlinx/coroutines/CoroutineId;", "()V", "kotlinx-coroutines-core"})
+  public static final class a
+    implements f.c<ab>
+  {}
 }
 
 

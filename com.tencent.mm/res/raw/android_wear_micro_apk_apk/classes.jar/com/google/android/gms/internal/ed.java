@@ -9,24 +9,24 @@ import java.util.Map;
 public final class ed
   extends eb
 {
-  public final bd<?> RR;
+  public final bd<?> TG;
   
   public ed(bd<?> parambd, c<Void> paramc)
   {
     super(paramc);
-    this.RR = parambd;
+    this.TG = parambd;
   }
   
   public final void d(ar<?> paramar)
   {
-    paramar = (bi)paramar.iP().remove(this.RR);
+    paramar = (bi)paramar.iY().remove(this.TG);
     if (paramar != null)
     {
-      paramar.Pi.jd();
+      paramar.QX.jm();
       return;
     }
     Log.wtf("UnregisterListenerTask", "Received call to unregister a listener without a matching registration call.", new Exception());
-    this.RP.b(new ab(Status.HN));
+    this.TE.b(new ab(Status.JC));
   }
 }
 

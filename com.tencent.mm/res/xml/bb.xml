@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:newtip="http://schemas.android.com/apk/res-auto">
+    <CheckBoxPreference newtip:key="allow_by_identity" newtip:layout="@layout/aop" newtip:summary="@string/fz" newtip:title="@string/fy" />
+    <PreferenceSmallCategory />
+    <Preference newtip:key="room_transfer_room_ower" newtip:layout="@layout/aop" newtip:title="@string/esf" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.chatroom.ui.preference.RoomManagerPreference newtip:key="room_manager" newtip:layout="@layout/b1f" newtip:title="@string/eqg" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.plugin.newtips.NewTipPreference newtip:key="use_wework_manager_room" newtip:layout="@layout/aop" newtip:path="useww" newtip:title="@string/g6e" />
+</PreferenceScreen>

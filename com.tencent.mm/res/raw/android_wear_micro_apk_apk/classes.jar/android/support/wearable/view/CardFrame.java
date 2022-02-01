@@ -25,20 +25,20 @@ import android.view.accessibility.AccessibilityNodeInfo;
 public class CardFrame
   extends ViewGroup
 {
-  private static float Aw = 0.146467F;
-  private int AA = 1;
-  private final int AB;
-  private final Rect AC = new Rect();
-  private int AD;
-  private boolean AE;
-  private int AF;
-  private final Rect AG = new Rect();
-  private final Rect AH = new Rect();
-  private boolean AI;
-  private final d AJ = new d();
-  private boolean Ax;
-  private boolean Ay = true;
-  private float Az = 1.0F;
+  private static float Cl = 0.146467F;
+  private boolean Cm;
+  private boolean Cn = true;
+  private float Co = 1.0F;
+  private int Cp = 1;
+  private final int Cq;
+  private final Rect Cr = new Rect();
+  private int Cs;
+  private boolean Ct;
+  private int Cu;
+  private final Rect Cv = new Rect();
+  private final Rect Cw = new Rect();
+  private boolean Cx;
+  private final d Cy = new d();
   
   public CardFrame(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -49,11 +49,11 @@ public class CardFrame
   {
     super(paramContext, paramAttributeSet, paramInt);
     float f = paramContext.getResources().getDisplayMetrics().density;
-    this.AB = ((int)(40.0F * f));
-    setBackgroundResource(f.wt);
+    this.Cq = ((int)(40.0F * f));
+    setBackgroundResource(f.yi);
     paramInt = (int)(12.0F * f);
     int i = (int)(f * 8.0F);
-    this.AH.set(paramInt, i, paramInt, paramInt);
+    this.Cw.set(paramInt, i, paramInt, paramInt);
     requestLayout();
   }
   
@@ -109,16 +109,16 @@ public class CardFrame
   
   protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
-    int m = this.AB;
+    int m = this.Cq;
     int j = 0;
-    this.AC.set(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
+    this.Cr.set(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
     int k = getPaddingTop() + getPaddingBottom();
     int n = paramView.getHeight();
     int i = j;
-    if (this.Ax) {
-      if ((this.AA == -1) && (n + k > getHeight()))
+    if (this.Cm) {
+      if ((this.Cp == -1) && (n + k > getHeight()))
       {
-        this.AC.top = getPaddingTop();
+        this.Cr.top = getPaddingTop();
         i = 1;
         j = 0;
       }
@@ -126,43 +126,43 @@ public class CardFrame
     for (;;)
     {
       k = paramCanvas.getSaveCount();
-      paramCanvas.clipRect(this.AC);
+      paramCanvas.clipRect(this.Cr);
       if (i != 0) {
-        paramCanvas.saveLayer(this.AC.left, this.AC.top, this.AC.right, this.AC.top + m, null, 4);
+        paramCanvas.saveLayer(this.Cr.left, this.Cr.top, this.Cr.right, this.Cr.top + m, null, 4);
       }
       if (j != 0) {
-        paramCanvas.saveLayer(this.AC.left, this.AC.bottom - m, this.AC.right, this.AC.bottom, null, 4);
+        paramCanvas.saveLayer(this.Cr.left, this.Cr.bottom - m, this.Cr.right, this.Cr.bottom, null, 4);
       }
       boolean bool = super.drawChild(paramCanvas, paramView, paramLong);
       if (i != 0)
       {
-        d.a(this.AJ).reset();
-        d.a(this.AJ).setScale(1.0F, m);
-        d.a(this.AJ).postTranslate(this.AC.left, this.AC.top);
-        d.b(this.AJ).setLocalMatrix(d.a(this.AJ));
-        d.c(this.AJ).setShader(d.b(this.AJ));
-        paramCanvas.drawRect(this.AC.left, this.AC.top, this.AC.right, this.AC.top + m, d.c(this.AJ));
+        d.a(this.Cy).reset();
+        d.a(this.Cy).setScale(1.0F, m);
+        d.a(this.Cy).postTranslate(this.Cr.left, this.Cr.top);
+        d.b(this.Cy).setLocalMatrix(d.a(this.Cy));
+        d.c(this.Cy).setShader(d.b(this.Cy));
+        paramCanvas.drawRect(this.Cr.left, this.Cr.top, this.Cr.right, this.Cr.top + m, d.c(this.Cy));
       }
       if (j != 0)
       {
-        d.a(this.AJ).reset();
-        d.a(this.AJ).setScale(1.0F, m);
-        d.a(this.AJ).postRotate(180.0F);
-        d.a(this.AJ).postTranslate(this.AC.left, this.AC.bottom);
-        d.b(this.AJ).setLocalMatrix(d.a(this.AJ));
-        d.c(this.AJ).setShader(d.b(this.AJ));
-        paramCanvas.drawRect(this.AC.left, this.AC.bottom - m, this.AC.right, this.AC.bottom, d.c(this.AJ));
+        d.a(this.Cy).reset();
+        d.a(this.Cy).setScale(1.0F, m);
+        d.a(this.Cy).postRotate(180.0F);
+        d.a(this.Cy).postTranslate(this.Cr.left, this.Cr.bottom);
+        d.b(this.Cy).setLocalMatrix(d.a(this.Cy));
+        d.c(this.Cy).setShader(d.b(this.Cy));
+        paramCanvas.drawRect(this.Cr.left, this.Cr.bottom - m, this.Cr.right, this.Cr.bottom, d.c(this.Cy));
       }
       paramCanvas.restoreToCount(k);
       return bool;
       i = j;
-      if (this.AA == 1)
+      if (this.Cp == 1)
       {
         i = j;
         if (k + n > getHeight())
         {
           i = 1;
-          this.AC.bottom = (getHeight() - getPaddingBottom());
+          this.Cr.bottom = (getHeight() - getPaddingBottom());
         }
       }
       k = 0;
@@ -171,25 +171,25 @@ public class CardFrame
     }
   }
   
-  public final int eK()
+  public final int fa()
   {
-    return this.AA;
+    return this.Cp;
   }
   
   public WindowInsets onApplyWindowInsets(WindowInsets paramWindowInsets)
   {
     boolean bool = paramWindowInsets.isRound();
-    if (bool != this.AE)
+    if (bool != this.Ct)
     {
-      this.AE = bool;
+      this.Ct = bool;
       requestLayout();
     }
     if (paramWindowInsets.getSystemWindowInsetBottom() > 0) {}
     for (bool = true;; bool = false)
     {
-      if (bool != this.AI)
+      if (bool != this.Cx)
       {
-        this.AI = bool;
+        this.Cx = bool;
         requestLayout();
       }
       return paramWindowInsets.consumeSystemWindowInsets();
@@ -222,19 +222,19 @@ public class CardFrame
     View localView = getChildAt(0);
     paramInt1 = paramInt4 - paramInt2;
     paramInt2 = getPaddingLeft();
-    paramInt3 = this.AG.left;
-    paramInt3 = this.AH.left + (paramInt2 + paramInt3);
+    paramInt3 = this.Cv.left;
+    paramInt3 = this.Cw.left + (paramInt2 + paramInt3);
     paramInt4 = localView.getMeasuredWidth();
-    if (this.AA == -1) {
-      paramInt2 = paramInt1 - (localView.getMeasuredHeight() + getPaddingBottom() + this.AG.bottom + this.AH.bottom);
+    if (this.Cp == -1) {
+      paramInt2 = paramInt1 - (localView.getMeasuredHeight() + getPaddingBottom() + this.Cv.bottom + this.Cw.bottom);
     }
     for (;;)
     {
       localView.layout(paramInt3, paramInt2, paramInt3 + paramInt4, paramInt1);
       return;
       paramInt1 = getPaddingTop();
-      paramInt2 = this.AG.top;
-      paramInt2 = this.AH.top + (paramInt1 + paramInt2);
+      paramInt2 = this.Cv.top;
+      paramInt2 = this.Cw.top + (paramInt1 + paramInt2);
       paramInt1 = localView.getMeasuredHeight() + paramInt2;
     }
   }
@@ -246,10 +246,10 @@ public class CardFrame
     int n = View.MeasureSpec.getSize(paramInt2);
     Object localObject;
     int j;
-    if (this.AE)
+    if (this.Ct)
     {
       localObject = (ViewGroup.MarginLayoutParams)getLayoutParams();
-      this.AG.setEmpty();
+      this.Cv.setEmpty();
       if (((ViewGroup.MarginLayoutParams)localObject).leftMargin >= 0) {
         break label636;
       }
@@ -274,12 +274,12 @@ public class CardFrame
         }
         for (;;)
         {
-          float f = Aw;
-          this.AF = ((int)(Math.max(i, n) * f));
-          this.AG.left = (this.AF - (getPaddingLeft() - j));
-          this.AG.right = (this.AF - (getPaddingRight() - k));
-          if (!this.AI) {
-            this.AG.bottom = (this.AF - (getPaddingBottom() - m));
+          float f = Cl;
+          this.Cu = ((int)(Math.max(i, n) * f));
+          this.Cv.left = (this.Cu - (getPaddingLeft() - j));
+          this.Cv.right = (this.Cu - (getPaddingRight() - k));
+          if (!this.Cx) {
+            this.Cv.bottom = (this.Cu - (getPaddingBottom() - m));
           }
           k = b(getSuggestedMinimumWidth(), paramInt1, true);
           paramInt1 = b(getSuggestedMinimumHeight(), paramInt2, false);
@@ -291,12 +291,12 @@ public class CardFrame
           localObject = getChildAt(0);
           paramInt1 = View.MeasureSpec.getSize(paramInt2);
           paramInt2 = View.MeasureSpec.getMode(paramInt2);
-          this.Ax = this.Ay;
+          this.Cm = this.Cn;
           if ((paramInt2 == 0) || (paramInt1 == 0))
           {
             Log.w("CardFrame", "height measure spec passed with mode UNSPECIFIED, or zero height.");
-            this.Ax = false;
-            this.AD = 0;
+            this.Cm = false;
+            this.Cs = 0;
             j = 0;
             paramInt1 = 1;
             paramInt2 = 0;
@@ -306,11 +306,11 @@ public class CardFrame
           {
             n = getPaddingLeft();
             int i2 = getPaddingRight();
-            int i3 = this.AH.left;
-            int i4 = this.AH.right;
-            int i5 = this.AG.left;
-            int i6 = this.AG.right;
-            m = getPaddingTop() + getPaddingBottom() + this.AH.top + this.AH.bottom + this.AG.top + this.AG.bottom;
+            int i3 = this.Cw.left;
+            int i4 = this.Cw.right;
+            int i5 = this.Cv.left;
+            int i6 = this.Cv.right;
+            m = getPaddingTop() + getPaddingBottom() + this.Cw.top + this.Cw.bottom + this.Cv.top + this.Cv.bottom;
             n = View.MeasureSpec.makeMeasureSpec(k - (n + i2 + i3 + i4 + i5 + i6), 1073741824);
             paramInt2 = View.MeasureSpec.makeMeasureSpec(i - m, paramInt2);
             ((View)localObject).measure(getChildMeasureSpec(n, 0, ((View)localObject).getLayoutParams().width), paramInt2);
@@ -323,22 +323,22 @@ public class CardFrame
             if (paramInt2 == 1073741824)
             {
               Log.w("CardFrame", "height measure spec passed with mode EXACT");
-              this.Ax = false;
-              this.AD = paramInt1;
-              i = this.AD;
+              this.Cm = false;
+              this.Cs = paramInt1;
+              i = this.Cs;
               j = i;
               paramInt1 = 0;
               paramInt2 = 1073741824;
             }
             else
             {
-              this.AD = paramInt1;
-              paramInt1 = this.AD;
+              this.Cs = paramInt1;
+              paramInt1 = this.Cs;
               j = paramInt1;
-              if (this.Ax) {
-                j = (int)(paramInt1 * this.Az);
+              if (this.Cm) {
+                j = (int)(paramInt1 * this.Co);
               }
-              if (this.AA == -1)
+              if (this.Cp == -1)
               {
                 paramInt1 = 0;
                 paramInt2 = 0;
@@ -353,11 +353,11 @@ public class CardFrame
             }
           }
           paramInt2 = Math.min(j, ((View)localObject).getMeasuredHeight() + m);
-          int i7 = this.Ax;
+          int i7 = this.Cm;
           if (((View)localObject).getMeasuredHeight() > paramInt2 - m) {}
           for (paramInt1 = i1;; paramInt1 = 0)
           {
-            this.Ax = (i7 & paramInt1);
+            this.Cm = (i7 & paramInt1);
             paramInt1 = paramInt2;
             break;
           }

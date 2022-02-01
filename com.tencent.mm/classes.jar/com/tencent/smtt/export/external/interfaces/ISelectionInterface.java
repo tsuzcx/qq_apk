@@ -17,6 +17,8 @@ public abstract interface ISelectionInterface
   
   public abstract void hideSelectionView();
   
+  public abstract boolean isSelectionViewVisible();
+  
   public abstract void onRetrieveFingerSearchContextResponse(String paramString1, String paramString2, int paramInt);
   
   public abstract void onSelectCancel();

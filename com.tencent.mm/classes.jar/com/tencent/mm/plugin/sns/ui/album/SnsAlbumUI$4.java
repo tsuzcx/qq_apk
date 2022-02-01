@@ -14,16 +14,21 @@ final class SnsAlbumUI$4
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(39989);
-    paramView = new Intent(this.seK.getActivity(), SnsUserUI.class);
-    paramView.putExtra("sns_userName", SnsAlbumUI.b(this.seK));
-    this.seK.getActivity().startActivity(paramView);
-    AppMethodBeat.o(39989);
+    AppMethodBeat.i(99879);
+    Object localObject = new Intent(this.xNS.getActivity(), SnsUserUI.class);
+    ((Intent)localObject).putExtra("sns_rpt_scene", 21);
+    ((Intent)localObject).putExtra("sns_userName", SnsAlbumUI.b(this.xNS));
+    paramView = this.xNS.getActivity();
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/sns/ui/album/SnsAlbumUI$4", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/sns/ui/album/SnsAlbumUI$4", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(99879);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.album.SnsAlbumUI.4
  * JD-Core Version:    0.7.0.1
  */

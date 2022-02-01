@@ -16,38 +16,38 @@ final class WalletSelectBankcardUI$a
   
   public final int getCount()
   {
-    AppMethodBeat.i(47656);
-    if (WalletSelectBankcardUI.a(this.utE))
+    AppMethodBeat.i(71224);
+    if (WalletSelectBankcardUI.a(this.Aqy))
     {
-      if (WalletSelectBankcardUI.b(this.utE) == null)
+      if (WalletSelectBankcardUI.b(this.Aqy) == null)
       {
-        AppMethodBeat.o(47656);
+        AppMethodBeat.o(71224);
         return 1;
       }
-      i = WalletSelectBankcardUI.b(this.utE).size();
-      AppMethodBeat.o(47656);
+      i = WalletSelectBankcardUI.b(this.Aqy).size();
+      AppMethodBeat.o(71224);
       return i + 1;
     }
-    if (WalletSelectBankcardUI.b(this.utE) == null)
+    if (WalletSelectBankcardUI.b(this.Aqy) == null)
     {
-      AppMethodBeat.o(47656);
+      AppMethodBeat.o(71224);
       return 0;
     }
-    int i = WalletSelectBankcardUI.b(this.utE).size();
-    AppMethodBeat.o(47656);
+    int i = WalletSelectBankcardUI.b(this.Aqy).size();
+    AppMethodBeat.o(71224);
     return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(47657);
-    if ((WalletSelectBankcardUI.b(this.utE) == null) || (WalletSelectBankcardUI.b(this.utE).size() <= paramInt))
+    AppMethodBeat.i(71225);
+    if ((WalletSelectBankcardUI.b(this.Aqy) == null) || (WalletSelectBankcardUI.b(this.Aqy).size() <= paramInt))
     {
-      AppMethodBeat.o(47657);
+      AppMethodBeat.o(71225);
       return null;
     }
-    Object localObject = WalletSelectBankcardUI.b(this.utE).get(paramInt);
-    AppMethodBeat.o(47657);
+    Object localObject = WalletSelectBankcardUI.b(this.Aqy).get(paramInt);
+    AppMethodBeat.o(71225);
     return localObject;
   }
   
@@ -58,36 +58,43 @@ final class WalletSelectBankcardUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(47658);
+    AppMethodBeat.i(71226);
     Bankcard localBankcard = (Bankcard)getItem(paramInt);
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.utE).inflate(2130971249, paramViewGroup, false);
-      paramView = new WalletSelectBankcardUI.a.a(this);
-      paramView.utH = ((TextView)localView.findViewById(2131829394));
+      localView = LayoutInflater.from(this.Aqy).inflate(2131496026, paramViewGroup, false);
+      paramView = new a();
+      paramView.AqB = ((TextView)localView.findViewById(2131297154));
       localView.setTag(paramView);
       paramViewGroup = paramView;
       if (localBankcard == null) {
         break label105;
       }
-      paramViewGroup.utH.setText(localBankcard.field_desc);
+      paramViewGroup.AqB.setText(localBankcard.field_desc);
     }
     for (;;)
     {
-      AppMethodBeat.o(47658);
+      AppMethodBeat.o(71226);
       return localView;
-      paramViewGroup = (WalletSelectBankcardUI.a.a)paramView.getTag();
+      paramViewGroup = (a)paramView.getTag();
       localView = paramView;
       break;
       label105:
-      paramViewGroup.utH.setText(2131305633);
+      paramViewGroup.AqB.setText(2131765849);
     }
+  }
+  
+  final class a
+  {
+    TextView AqB;
+    
+    a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletSelectBankcardUI.a
  * JD-Core Version:    0.7.0.1
  */

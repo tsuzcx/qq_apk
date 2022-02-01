@@ -11,31 +11,31 @@ public class FragmentWrapper
   
   public FragmentWrapper(android.app.Fragment paramFragment)
   {
-    AppMethodBeat.i(96648);
+    AppMethodBeat.i(7672);
     Validate.notNull(paramFragment, "fragment");
     this.nativeFragment = paramFragment;
-    AppMethodBeat.o(96648);
+    AppMethodBeat.o(7672);
   }
   
   public FragmentWrapper(android.support.v4.app.Fragment paramFragment)
   {
-    AppMethodBeat.i(96647);
+    AppMethodBeat.i(7671);
     Validate.notNull(paramFragment, "fragment");
     this.supportFragment = paramFragment;
-    AppMethodBeat.o(96647);
+    AppMethodBeat.o(7671);
   }
   
   public final Activity getActivity()
   {
-    AppMethodBeat.i(96650);
+    AppMethodBeat.i(7674);
     if (this.supportFragment != null)
     {
       localObject = this.supportFragment.getActivity();
-      AppMethodBeat.o(96650);
+      AppMethodBeat.o(7674);
       return localObject;
     }
     Object localObject = this.nativeFragment.getActivity();
-    AppMethodBeat.o(96650);
+    AppMethodBeat.o(7674);
     return localObject;
   }
   
@@ -51,20 +51,20 @@ public class FragmentWrapper
   
   public void startActivityForResult(Intent paramIntent, int paramInt)
   {
-    AppMethodBeat.i(96649);
+    AppMethodBeat.i(7673);
     if (this.supportFragment != null)
     {
       this.supportFragment.startActivityForResult(paramIntent, paramInt);
-      AppMethodBeat.o(96649);
+      AppMethodBeat.o(7673);
       return;
     }
     this.nativeFragment.startActivityForResult(paramIntent, paramInt);
-    AppMethodBeat.o(96649);
+    AppMethodBeat.o(7673);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.FragmentWrapper
  * JD-Core Version:    0.7.0.1
  */

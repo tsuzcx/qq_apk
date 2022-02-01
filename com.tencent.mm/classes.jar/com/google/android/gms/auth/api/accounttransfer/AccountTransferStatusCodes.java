@@ -14,33 +14,33 @@ public final class AccountTransferStatusCodes
   
   public static String getStatusCodeString(int paramInt)
   {
-    AppMethodBeat.i(76989);
+    AppMethodBeat.i(10648);
     switch (paramInt)
     {
     default: 
       String str = CommonStatusCodes.getStatusCodeString(paramInt);
-      AppMethodBeat.o(76989);
+      AppMethodBeat.o(10648);
       return str;
     case 20500: 
-      AppMethodBeat.o(76989);
+      AppMethodBeat.o(10648);
       return "NOT_ALLOWED_SECURITY";
     case 20501: 
-      AppMethodBeat.o(76989);
+      AppMethodBeat.o(10648);
       return "NO_DATA_AVAILABLE";
     case 20502: 
-      AppMethodBeat.o(76989);
+      AppMethodBeat.o(10648);
       return "INVALID_REQUEST";
     case 20503: 
-      AppMethodBeat.o(76989);
+      AppMethodBeat.o(10648);
       return "CHALLENGE_NOT_ALLOWED";
     }
-    AppMethodBeat.o(76989);
+    AppMethodBeat.o(10648);
     return "SESSION_INACTIVE";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.accounttransfer.AccountTransferStatusCodes
  * JD-Core Version:    0.7.0.1
  */

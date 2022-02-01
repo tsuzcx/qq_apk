@@ -6,18 +6,18 @@ public enum MMPwdInputView$b
 {
   static
   {
-    AppMethodBeat.i(24055);
-    pHF = new b("Normal", 0);
-    pHG = new b("Shine", 1);
-    pHH = new b[] { pHF, pHG };
-    AppMethodBeat.o(24055);
+    AppMethodBeat.i(27696);
+    uJV = new b("Normal", 0);
+    uJW = new b("Shine", 1);
+    uJX = new b[] { uJV, uJW };
+    AppMethodBeat.o(27696);
   }
   
   private MMPwdInputView$b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.widget.MMPwdInputView.b
  * JD-Core Version:    0.7.0.1
  */

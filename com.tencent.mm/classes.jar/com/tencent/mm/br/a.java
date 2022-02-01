@@ -1,129 +1,91 @@
 package com.tencent.mm.br;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
+import android.support.v4.app.s.c;
+import android.text.format.Time;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bv;
-import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
 {
-  private static final Map<Integer, Integer> whb;
+  private static String BMN = "";
+  private static String fHd = "";
   
-  static
+  public static String Ye()
   {
-    AppMethodBeat.i(28267);
-    whb = new HashMap();
-    AppMethodBeat.o(28267);
+    AppMethodBeat.i(116804);
+    if (bt.isNullOrNil(fHd)) {
+      fHd = com.tencent.mm.kernel.a.Yf().getString("message_channel_id", "message_channel_new_id");
+    }
+    String str = fHd;
+    AppMethodBeat.o(116804);
+    return str;
   }
   
-  public static void My(int paramInt)
+  public static void aAl(String paramString)
   {
-    AppMethodBeat.i(28264);
-    int i = bo.g((Integer)whb.get(Integer.valueOf(paramInt)));
-    whb.put(Integer.valueOf(paramInt), Integer.valueOf(i + 1));
-    AppMethodBeat.o(28264);
+    fHd = paramString;
   }
   
-  public static void ani(String paramString)
+  public static s.c bD(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(28266);
-    paramString = paramString + dpV();
-    Iterator localIterator = whb.entrySet().iterator();
-    StringBuilder localStringBuilder = new StringBuilder();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(116806);
+    paramContext = new s.c(paramContext, paramString);
+    AppMethodBeat.o(116806);
+    return paramContext;
+  }
+  
+  public static int cYf()
+  {
+    if (Build.VERSION.SDK_INT < 19) {
+      return 2131233500;
+    }
+    return 2131233502;
+  }
+  
+  public static String eux()
+  {
+    AppMethodBeat.i(116805);
+    if (bt.isNullOrNil(BMN)) {
+      BMN = com.tencent.mm.kernel.a.Yf().getString("voip_notify_channel_new_id", "voip_notify_channel_new_id");
+    }
+    String str = BMN;
+    AppMethodBeat.o(116805);
+    return str;
+  }
+  
+  public static String euy()
+  {
+    AppMethodBeat.i(116807);
+    if (d.lf(26))
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if ((localEntry != null) && (localEntry.getKey() != null) && (localEntry.getValue() != null) && (((Integer)localEntry.getValue()).intValue() != 0))
+      localObject = new Time();
+      ((Time)localObject).setToNow();
+      int i = ((Time)localObject).hour;
+      int j = ((Time)localObject).minute;
+      aj.getContext();
+      if (!com.tencent.mm.m.a.cr(i, j)) {
+        ad.w("MicroMsg.NotificationHelper", "no shake & sound notification during background deactive time");
+      }
+      for (i = 1; i != 0; i = 0)
       {
-        localStringBuilder.append(localEntry.getKey());
-        localStringBuilder.append('=');
-        localStringBuilder.append(localEntry.getValue());
-        localStringBuilder.append(',');
+        AppMethodBeat.o(116807);
+        return "message_dnd_mode_channel_id";
       }
     }
-    whb.clear();
-    if (localStringBuilder.length() > 0)
-    {
-      ab.d("MicroMsg.PostTaskFMessageCardStat", "append fmesage card click");
-      bv.v(10, localStringBuilder.toString());
-    }
-    ab.d("MicroMsg.PostTaskFMessageCardStat", "dkfm :".concat(String.valueOf(paramString + dpV())));
-    try
-    {
-      aw.aaz();
-      c.Ru().set(66819, Long.valueOf(bo.aox()));
-      AppMethodBeat.o(28266);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      ab.e("MicroMsg.PostTaskFMessageCardStat", "e:" + paramString.getMessage());
-      AppMethodBeat.o(28266);
-    }
-  }
-  
-  public static String dpV()
-  {
-    AppMethodBeat.i(28265);
-    StringBuilder localStringBuilder = new StringBuilder("[a=");
-    if (aw.aaz() == null) {}
-    for (String str = "0";; str = "1")
-    {
-      str = str + " ";
-      if (aw.aaz() != null) {
-        break;
-      }
-      AppMethodBeat.o(28265);
-      return str;
-    }
-    localStringBuilder = new StringBuilder().append(str).append("c=");
-    aw.aaz();
-    if (c.Ru() == null)
-    {
-      str = "0";
-      str = str + " ";
-      localStringBuilder = new StringBuilder().append(str).append("u=");
-      if (!aw.RG()) {
-        break label157;
-      }
-    }
-    label157:
-    for (str = "1";; str = "0")
-    {
-      str = str + "]";
-      AppMethodBeat.o(28265);
-      return str;
-      str = "1";
-      break;
-    }
-  }
-  
-  public static void run()
-  {
-    AppMethodBeat.i(28263);
-    aw.aaz();
-    if (bo.gz(bo.a((Long)c.Ru().get(66819, null), 0L)) * 1000L > 1800000L) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        ani("");
-      }
-      AppMethodBeat.o(28263);
-      return;
-    }
+    Object localObject = Ye();
+    AppMethodBeat.o(116807);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.br.a
  * JD-Core Version:    0.7.0.1
  */

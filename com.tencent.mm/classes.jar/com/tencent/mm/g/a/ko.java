@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ko
   extends b
 {
-  public ko.a cAp;
-  public ko.b cAq;
+  public a dpe;
   
   public ko()
   {
@@ -16,17 +15,24 @@ public final class ko
   
   private ko(byte paramByte)
   {
-    AppMethodBeat.i(128342);
-    this.cAp = new ko.a();
-    this.cAq = new ko.b();
-    this.ymq = false;
+    AppMethodBeat.i(149869);
+    this.dpe = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(128342);
+    AppMethodBeat.o(149869);
+  }
+  
+  public static final class a
+  {
+    public int ddH;
+    public boolean ddJ = false;
+    public String filePath;
+    public int subType;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ko
  * JD-Core Version:    0.7.0.1
  */

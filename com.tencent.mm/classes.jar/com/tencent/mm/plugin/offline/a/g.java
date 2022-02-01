@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.offline.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -12,11 +12,11 @@ public final class g
 {
   public g(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(43396);
+    AppMethodBeat.i(66295);
     HashMap localHashMap = new HashMap();
     localHashMap.put("buss_type", paramString1);
     localHashMap.put("method", paramString2);
-    if (at.isWifi(ah.getContext())) {
+    if (ay.isWifi(aj.getContext())) {
       paramString1 = "wifi";
     }
     for (;;)
@@ -24,15 +24,15 @@ public final class g
       localHashMap.put("network", paramString1);
       localHashMap.put("transactionid", paramString3);
       setRequestData(localHashMap);
-      AppMethodBeat.o(43396);
+      AppMethodBeat.o(66295);
       return;
-      if (at.is3G(ah.getContext())) {
+      if (ay.is3G(aj.getContext())) {
         paramString1 = "3g";
-      } else if (at.is2G(ah.getContext())) {
+      } else if (ay.is2G(aj.getContext())) {
         paramString1 = "2g";
-      } else if (at.isWap(ah.getContext())) {
+      } else if (ay.isWap(aj.getContext())) {
         paramString1 = "wap";
-      } else if (at.is4G(ah.getContext())) {
+      } else if (ay.is4G(aj.getContext())) {
         paramString1 = "4g";
       } else {
         paramString1 = "unknown";
@@ -59,7 +59,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.g
  * JD-Core Version:    0.7.0.1
  */

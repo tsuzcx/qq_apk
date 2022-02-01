@@ -1,7 +1,7 @@
 package com.tencent.mm.sdk.e;
 
 import android.os.Looper;
-import com.tencent.mm.sdk.g.a.e;
+import com.tencent.e.j.a;
 
 public abstract class k
   implements g
@@ -11,10 +11,15 @@ public abstract class k
   
   private void processEvent(a parama, m paramm)
   {
-    parama.a(paramm.cnC, paramm);
+    parama.a(paramm.dcx, paramm);
   }
   
   private void processLoaded(b paramb, String paramString) {}
+  
+  public void add(a parama, a parama1)
+  {
+    this.defaults.a(parama1, parama);
+  }
   
   public void add(a parama)
   {
@@ -26,9 +31,9 @@ public abstract class k
     this.defaults.a(parama, paramLooper);
   }
   
-  public void add(a parama, e parame, String paramString)
+  public void add(String paramString, a parama)
   {
-    this.defaults.a(parama, parame, paramString);
+    this.defaults.a(parama, a.aOc(paramString));
   }
   
   public void addLoadedListener(b paramb)
@@ -39,25 +44,25 @@ public abstract class k
   public void doNotify()
   {
     m localm = new m("*");
-    this.defaults.cy(localm);
+    this.defaults.dR(localm);
     this.defaults.doNotify();
   }
   
   public void doNotify(String paramString)
   {
     paramString = new m(paramString);
-    this.defaults.cy(paramString);
+    this.defaults.dR(paramString);
     this.defaults.doNotify();
   }
   
   public void doNotify(String paramString, int paramInt, Object paramObject)
   {
     m localm = new m();
-    localm.cnC = paramString;
-    localm.htj = paramInt;
+    localm.dcx = paramString;
+    localm.jqR = paramInt;
     localm.obj = paramObject;
-    localm.yrX = this;
-    this.defaults.cy(localm);
+    localm.EYF = this;
+    this.defaults.dR(localm);
     this.defaults.doNotify();
   }
   
@@ -68,7 +73,7 @@ public abstract class k
   
   public int lockCount()
   {
-    return this.defaults.yrO;
+    return this.defaults.EYx;
   }
   
   public void remove(a parama)

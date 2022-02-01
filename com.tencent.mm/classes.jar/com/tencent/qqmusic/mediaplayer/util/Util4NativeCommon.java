@@ -11,17 +11,17 @@ public class Util4NativeCommon
   
   static
   {
-    AppMethodBeat.i(128389);
+    AppMethodBeat.i(114164);
     try
     {
       AudioPlayerConfigure.getSoLibraryLoader().load(NativeLibs.audioCommon.getName());
-      AppMethodBeat.o(128389);
+      AppMethodBeat.o(114164);
       return;
     }
     catch (Throwable localThrowable)
     {
       Logger.e("Util4NativeCommon", localThrowable);
-      AppMethodBeat.o(128389);
+      AppMethodBeat.o(114164);
     }
   }
   
@@ -29,7 +29,7 @@ public class Util4NativeCommon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.util.Util4NativeCommon
  * JD-Core Version:    0.7.0.1
  */

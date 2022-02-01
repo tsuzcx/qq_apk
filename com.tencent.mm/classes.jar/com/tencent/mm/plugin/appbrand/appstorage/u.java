@@ -1,34 +1,23 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.appcache.ba;
+import java.util.LinkedList;
+
 public final class u
-  extends FileStructStat
-  implements o.a
+  extends t
 {
-  public final String haf;
-  
-  public u(String paramString)
+  public u(AppBrandRuntime paramAppBrandRuntime)
   {
-    this.haf = paramString;
-  }
-  
-  public final long awE()
-  {
-    return this.st_size;
-  }
-  
-  public final String getFileName()
-  {
-    return this.haf;
-  }
-  
-  public final long lastModified()
-  {
-    return this.st_mtime;
+    super(new LinkedList() {});
+    AppMethodBeat.i(134746);
+    AppMethodBeat.o(134746);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.u
  * JD-Core Version:    0.7.0.1
  */

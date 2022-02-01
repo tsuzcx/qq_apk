@@ -1,50 +1,40 @@
 package com.tencent.mm.plugin.monitor;
 
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 
 final class b$14
-  implements Runnable
+  implements av.a
 {
-  final Map<String, Integer> oSi;
+  b$14(b paramb) {}
   
-  b$14(b paramb, Map paramMap, a.a parama, com.tencent.mm.vfs.b paramb1, a parama1)
+  public final boolean onTimerExpired()
   {
-    AppMethodBeat.i(84534);
-    this.oSi = this.oSj;
-    AppMethodBeat.o(84534);
-  }
-  
-  public final void run()
-  {
-    AppMethodBeat.i(84535);
-    ab.i("MicroMsg.SubCoreBaseMonitor", "summerhv true scan start fileScanResult[%s], subDirMap[%d]", new Object[] { this.oSk, Integer.valueOf(this.oSj.size()) });
-    long l = System.currentTimeMillis();
-    b.a(this.oRW, this.oSl, this.oSk, this.oSi);
-    if (this.oSj.size() > 0)
+    AppMethodBeat.i(163489);
+    Runnable local1 = new Runnable()
     {
-      Iterator localIterator = this.oSj.entrySet().iterator();
-      while ((localIterator != null) && (localIterator.hasNext()))
+      public final void run()
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        this.oSk.oRB.add(new a.b((String)localEntry.getKey(), ((Integer)localEntry.getValue()).intValue()));
+        AppMethodBeat.i(163488);
+        g.afB().afk().set(ae.a.Fxo, "");
+        g.afB().afk().set(ae.a.Fxq, Boolean.FALSE);
+        AppMethodBeat.o(163488);
       }
-    }
-    this.oSk.cew = (System.currentTimeMillis() - l);
-    ab.i("MicroMsg.SubCoreBaseMonitor", "summerhv true scan end takes[%d], emptySubDir[%d], fileScanResult[%s], tid[%d]", new Object[] { Long.valueOf(this.oSk.cew), Integer.valueOf(this.oSj.values().size()), this.oSk, Long.valueOf(Thread.currentThread().getId()) });
-    this.oSh.a(0, this.oSk);
-    AppMethodBeat.o(84535);
+    };
+    h.Iye.f(local1, "name_thread_get_newer_flavor_red");
+    AppMethodBeat.o(163489);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.monitor.b.14
  * JD-Core Version:    0.7.0.1
  */

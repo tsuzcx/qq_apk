@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.voip.video.render.VoIPRenderTextureView android:id="@id/e7g" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.voip.video.render.VoIPRenderTextureView android:id="@id/e7f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/gsv" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="6.0dip" android:src="@drawable/c0u" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/gsy" android:background="@drawable/ah0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/gsw" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="20.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:id="@id/gsx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="@string/gck" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <TextView android:textColor="#ffffffff" android:gravity="center" android:id="@id/g9g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerInParent="true" android:textAlignment="center" />
+    <TextView android:textColor="#ffffffff" android:gravity="center" android:id="@id/ga1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerInParent="true" android:textAlignment="center" />
+</RelativeLayout>

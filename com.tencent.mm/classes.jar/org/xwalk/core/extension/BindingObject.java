@@ -11,17 +11,17 @@ public class BindingObject
   
   public BindingObject()
   {
-    AppMethodBeat.i(86069);
+    AppMethodBeat.i(155183);
     this.TAG = "BindingObject";
     this.mHandler = new MessageHandler();
-    AppMethodBeat.o(86069);
+    AppMethodBeat.o(155183);
   }
   
   public Object handleMessage(MessageInfo paramMessageInfo)
   {
-    AppMethodBeat.i(86070);
+    AppMethodBeat.i(155184);
     paramMessageInfo = this.mHandler.handleMessage(paramMessageInfo);
-    AppMethodBeat.o(86070);
+    AppMethodBeat.o(155184);
     return paramMessageInfo;
   }
   
@@ -47,7 +47,7 @@ public class BindingObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.extension.BindingObject
  * JD-Core Version:    0.7.0.1
  */

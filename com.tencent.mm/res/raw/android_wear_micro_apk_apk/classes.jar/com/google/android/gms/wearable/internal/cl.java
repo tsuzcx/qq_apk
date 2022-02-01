@@ -12,8 +12,8 @@ public final class cl
 {
   public final t<Status> a(p paramp, c paramc)
   {
-    com.google.android.gms.common.internal.d.e(paramp, "client is null");
-    com.google.android.gms.common.internal.d.e(paramc, "listener is null");
+    com.google.android.gms.common.internal.d.g(paramp, "client is null");
+    com.google.android.gms.common.internal.d.g(paramc, "listener is null");
     IntentFilter localIntentFilter = new IntentFilter("com.google.android.gms.wearable.CHANNEL_EVENT");
     localIntentFilter.addDataScheme("wear");
     localIntentFilter.addDataAuthority("*", null);
@@ -22,16 +22,16 @@ public final class cl
   
   public final t<com.google.android.gms.wearable.d> a(p paramp, final String paramString1, final String paramString2)
   {
-    com.google.android.gms.common.internal.d.e(paramp, "client is null");
-    com.google.android.gms.common.internal.d.e(paramString1, "nodeId is null");
-    com.google.android.gms.common.internal.d.e(paramString2, "path is null");
+    com.google.android.gms.common.internal.d.g(paramp, "client is null");
+    com.google.android.gms.common.internal.d.g(paramString1, "nodeId is null");
+    com.google.android.gms.common.internal.d.g(paramString2, "path is null");
     paramp.a(new ci(paramp) {});
   }
   
   public final t<Status> b(p paramp, c paramc)
   {
-    com.google.android.gms.common.internal.d.e(paramp, "client is null");
-    com.google.android.gms.common.internal.d.e(paramc, "listener is null");
+    com.google.android.gms.common.internal.d.g(paramp, "client is null");
+    com.google.android.gms.common.internal.d.g(paramc, "listener is null");
     return paramp.a(new cn(paramp, paramc));
   }
 }

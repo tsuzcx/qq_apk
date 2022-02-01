@@ -6,61 +6,61 @@ import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class WebSearchDotPercentIndicator
   extends LinearLayout
 {
-  private int ibJ;
+  private int ktW;
   private LayoutInflater mInflater;
   
   public WebSearchDotPercentIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(73806);
+    AppMethodBeat.i(110220);
     init(paramContext);
-    AppMethodBeat.o(73806);
+    AppMethodBeat.o(110220);
   }
   
   public WebSearchDotPercentIndicator(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(73807);
+    AppMethodBeat.i(110221);
     init(paramContext);
-    AppMethodBeat.o(73807);
+    AppMethodBeat.o(110221);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(73808);
+    AppMethodBeat.i(110222);
     this.mInflater = LayoutInflater.from(paramContext);
-    AppMethodBeat.o(73808);
+    AppMethodBeat.o(110222);
   }
   
   public void setDotsNum(int paramInt)
   {
-    AppMethodBeat.i(73809);
+    AppMethodBeat.i(110223);
     if (paramInt > 1) {}
     for (;;)
     {
-      this.ibJ = paramInt;
+      this.ktW = paramInt;
       removeAllViews();
       paramInt = 0;
-      while (paramInt < this.ibJ)
+      while (paramInt < this.ktW)
       {
-        addView((ImageView)this.mInflater.inflate(2130969679, this, false));
+        addView((ImageView)this.mInflater.inflate(2131494223, this, false));
         paramInt += 1;
       }
       paramInt = 8;
     }
-    AppMethodBeat.o(73809);
+    AppMethodBeat.o(110223);
   }
   
   public void setPercent(float paramFloat)
   {
     float f1 = 1.0F;
     float f2 = 0.0F;
-    AppMethodBeat.i(73810);
+    AppMethodBeat.i(110224);
     if (paramFloat < 0.0F)
     {
       paramFloat = f2;
@@ -73,8 +73,8 @@ public class WebSearchDotPercentIndicator
     label118:
     for (;;)
     {
-      int k = (int)Math.rint(this.ibJ * paramFloat);
-      ab.v("MicroMsg.AppBrandDotPercentIndicator", "setPercent percent:%s dotsOnNum:%d", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(k) });
+      int k = (int)Math.rint(this.ktW * paramFloat);
+      ad.v("MicroMsg.AppBrandDotPercentIndicator", "setPercent percent:%s dotsOnNum:%d", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(k) });
       int i = 0;
       for (;;)
       {
@@ -86,22 +86,22 @@ public class WebSearchDotPercentIndicator
         if (i >= getChildCount()) {
           break;
         }
-        ((ImageView)getChildAt(i)).setImageResource(2130838945);
+        ((ImageView)getChildAt(i)).setImageResource(2131232474);
         i += 1;
       }
       break;
     }
     while (j < getChildCount())
     {
-      ((ImageView)getChildAt(j)).setImageResource(2130838944);
+      ((ImageView)getChildAt(j)).setImageResource(2131232473);
       j += 1;
     }
-    AppMethodBeat.o(73810);
+    AppMethodBeat.o(110224);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.ui.WebSearchDotPercentIndicator
  * JD-Core Version:    0.7.0.1
  */

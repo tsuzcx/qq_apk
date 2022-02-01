@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="true"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="120" android:drawable="@drawable/b7c" />
-    <item android:duration="120" android:drawable="@drawable/b7e" />
-    <item android:duration="120" android:drawable="@drawable/b7f" />
-    <item android:duration="120" android:drawable="@drawable/b7g" />
-    <item android:duration="120" android:drawable="@drawable/b7i" />
-</animation-list>
+    <item android:state_focused="true" android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/wl" />
+            <solid android:color="@color/jd" />
+        </shape>
+    </item>
+    <item android:state_focused="false" android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/wl" />
+            <solid android:color="@color/jb" />
+        </shape>
+    </item>
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/wl" />
+            <solid android:color="@color/jc" />
+            <stroke android:width="1.0dip" android:color="@color/jg" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/wl" />
+            <solid android:color="@color/je" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/wl" />
+            <solid android:color="@color/ja" />
+        </shape>
+    </item>
+</selector>

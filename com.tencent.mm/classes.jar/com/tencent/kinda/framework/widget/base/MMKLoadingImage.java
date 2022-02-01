@@ -19,16 +19,16 @@ public class MMKLoadingImage
   
   public LinearLayout createView(Context paramContext)
   {
-    AppMethodBeat.i(144928);
+    AppMethodBeat.i(19084);
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     this.progressBar = new ProgressBar(paramContext);
     this.circleProgressDrawable = new CircleProgressDrawable(paramContext);
-    this.circleProgressDrawable.setStrokeColor(2131690144);
+    this.circleProgressDrawable.setStrokeColor(2131100470);
     this.progressBar.setIndeterminateDrawable(this.circleProgressDrawable);
     this.progressBar.setVisibility(8);
     paramContext = new LinearLayout.LayoutParams(-1, -1);
     localLinearLayout.addView(this.progressBar, paramContext);
-    AppMethodBeat.o(144928);
+    AppMethodBeat.o(19084);
     return localLinearLayout;
   }
   
@@ -39,44 +39,44 @@ public class MMKLoadingImage
   
   public void setStyle(LoadingImageStyle paramLoadingImageStyle)
   {
-    AppMethodBeat.i(144931);
+    AppMethodBeat.i(19087);
     this.loadingImageStype = paramLoadingImageStyle;
     if (paramLoadingImageStyle == LoadingImageStyle.WHITE) {
-      this.circleProgressDrawable.setStrokeColor(2131690710);
+      this.circleProgressDrawable.setStrokeColor(2131101181);
     }
     for (;;)
     {
       this.progressBar.setIndeterminateDrawable(this.circleProgressDrawable);
-      AppMethodBeat.o(144931);
+      AppMethodBeat.o(19087);
       return;
       if (paramLoadingImageStyle == LoadingImageStyle.WHITELARGE) {
-        this.circleProgressDrawable.setStrokeColor(2131690710);
+        this.circleProgressDrawable.setStrokeColor(2131101181);
       } else if (paramLoadingImageStyle == LoadingImageStyle.GRAY) {
-        this.circleProgressDrawable.setStrokeColor(2131690144);
+        this.circleProgressDrawable.setStrokeColor(2131100470);
       }
     }
   }
   
   public void startAnimating()
   {
-    AppMethodBeat.i(144929);
-    this.circleProgressDrawable.aQG();
+    AppMethodBeat.i(19085);
+    this.circleProgressDrawable.fQW();
     this.circleProgressDrawable.start();
     this.progressBar.setVisibility(0);
-    AppMethodBeat.o(144929);
+    AppMethodBeat.o(19085);
   }
   
   public void stopAnimating()
   {
-    AppMethodBeat.i(144930);
+    AppMethodBeat.i(19086);
     this.circleProgressDrawable.stop();
     this.progressBar.setVisibility(8);
-    AppMethodBeat.o(144930);
+    AppMethodBeat.o(19086);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKLoadingImage
  * JD-Core Version:    0.7.0.1
  */

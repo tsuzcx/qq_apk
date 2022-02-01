@@ -8,15 +8,15 @@ public abstract interface t
 {
   public abstract void a(Menu paramMenu, o.a parama);
   
-  public abstract void bc(int paramInt);
+  public abstract void bv(int paramInt);
   
-  public abstract void eN();
+  public abstract void gg();
   
-  public abstract boolean gx();
+  public abstract boolean hS();
   
-  public abstract boolean gy();
+  public abstract boolean hT();
   
-  public abstract void gz();
+  public abstract void hU();
   
   public abstract boolean hideOverflowMenu();
   

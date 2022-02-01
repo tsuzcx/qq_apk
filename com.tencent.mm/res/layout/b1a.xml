@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="58.0dip" android:layout_height="58.0dip"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:id="@id/f2b" android:background="@drawable/ar1" android:padding="4.0dip" android:layout_width="58.0dip" android:layout_height="58.0dip" android:scaleType="fitXY" android:contentDescription="@null" style="@style/r1" />
-    <TextView android:gravity="center" android:layout_gravity="bottom" android:id="@id/f2c" android:background="#55000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/ye">
+        <ImageView android:id="@id/d0u" android:background="@null" android:padding="4.0dip" android:visibility="gone" android:layout_width="@dimen/hz" android:layout_height="@dimen/hz" android:layout_marginRight="@dimen/h" />
+        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/jn" android:singleLine="true" style="@style/yg" />
+        <TextView android:id="@id/g79" android:visibility="gone" android:text="@string/g4j" style="@style/yi" />
+        <ImageView android:id="@id/cpa" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/afx" />
+        <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+        <include android:id="@id/f2l" layout="@layout/b1b" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="0.0dip" style="@style/ye">
+        <TextView android:id="@id/g2b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="summary" style="@style/yf" />
+    </LinearLayout>
+</LinearLayout>

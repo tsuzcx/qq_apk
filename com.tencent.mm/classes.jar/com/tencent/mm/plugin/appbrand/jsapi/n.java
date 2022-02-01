@@ -1,55 +1,44 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import android.app.Activity;
 import android.content.Intent;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
+import com.tencent.luggage.h.e;
+import com.tencent.luggage.h.e.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.f.a;
 import org.json.JSONObject;
 
 public abstract class n
   extends o
-  implements MMActivity.a
 {
-  protected MMActivity hwZ;
-  private int hxa;
+  protected Activity activity;
+  int jvX;
   
-  public n(m paramm, com.tencent.mm.plugin.appbrand.r paramr, v paramv, JSONObject paramJSONObject, int paramInt)
+  public n(m paramm, q paramq, aa paramaa, JSONObject paramJSONObject, int paramInt)
   {
-    super(paramm, paramr, paramv, paramJSONObject, paramInt);
-    paramr = paramr.getRuntime().atj();
-    if (paramr == null) {
-      paramr = null;
-    }
-    for (;;)
-    {
-      this.hwZ = paramr;
-      if (this.hwZ != null) {
-        break;
-      }
+    super(paramm, paramq, paramaa, paramJSONObject, paramInt);
+    this.activity = a.iV(paramq.getRuntime().mContext);
+    if (this.activity == null) {
       throw new IllegalArgumentException("JsApiActivityResultRequest. Activity is null");
-      paramr = paramr.getContext();
-      if (!(paramr instanceof MMActivity)) {
-        paramr = null;
-      } else {
-        paramr = (MMActivity)paramr;
-      }
     }
-    this.hxa = (paramm.hashCode() & 0xFFFF);
+    this.jvX = (paramm.hashCode() & 0xFFFF);
   }
   
-  protected abstract void D(Intent paramIntent);
+  protected abstract void C(Intent paramIntent);
   
-  protected abstract boolean a(MMActivity paramMMActivity, JSONObject paramJSONObject, int paramInt);
+  protected abstract boolean a(Activity paramActivity, JSONObject paramJSONObject, int paramInt);
   
   public final void c(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.hxa != paramInt1) {
+    if (this.jvX != paramInt1) {
       return;
     }
     if (paramInt2 == -1)
     {
-      D(paramIntent);
+      C(paramIntent);
       return;
     }
     if ((paramIntent != null) && (paramIntent.hasExtra("result_error_msg")))
@@ -64,15 +53,29 @@ public abstract class n
   
   public final void run()
   {
-    this.hwZ.mmSetOnActivityResultCallback(this);
-    if (!a(this.hwZ, aBw(), this.hxa)) {
+    e.az(this.activity).b(new e.b()
+    {
+      public final boolean b(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(174747);
+        if (paramAnonymousInt1 == n.this.jvX)
+        {
+          n.this.c(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
+          AppMethodBeat.o(174747);
+          return true;
+        }
+        AppMethodBeat.o(174747);
+        return false;
+      }
+    });
+    if (!a(this.activity, aXJ(), this.jvX)) {
       onError(-1, "fail:system error {{launch fail}}");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.n
  * JD-Core Version:    0.7.0.1
  */

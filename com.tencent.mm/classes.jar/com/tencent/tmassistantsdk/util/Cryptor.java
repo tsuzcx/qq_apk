@@ -22,23 +22,23 @@ public class Cryptor
   
   public Cryptor()
   {
-    AppMethodBeat.i(76224);
+    AppMethodBeat.i(102470);
     this.header = true;
     this.random = new Random();
-    AppMethodBeat.o(76224);
+    AppMethodBeat.o(102470);
   }
   
   private byte[] decipher(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(76231);
+    AppMethodBeat.i(102477);
     paramArrayOfByte = decipher(paramArrayOfByte, 0);
-    AppMethodBeat.o(76231);
+    AppMethodBeat.o(102477);
     return paramArrayOfByte;
   }
   
   private byte[] decipher(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(76230);
+    AppMethodBeat.i(102476);
     int i = 16;
     for (;;)
     {
@@ -63,7 +63,7 @@ public class Cryptor
       catch (IOException paramArrayOfByte)
       {
         DataOutputStream localDataOutputStream;
-        AppMethodBeat.o(76230);
+        AppMethodBeat.o(102476);
         return null;
       }
       paramArrayOfByte = new ByteArrayOutputStream(8);
@@ -72,7 +72,7 @@ public class Cryptor
       localDataOutputStream.writeInt((int)l2);
       localDataOutputStream.close();
       paramArrayOfByte = paramArrayOfByte.toByteArray();
-      AppMethodBeat.o(76230);
+      AppMethodBeat.o(102476);
       return paramArrayOfByte;
       while (paramInt > 0)
       {
@@ -86,12 +86,12 @@ public class Cryptor
   
   private boolean decrypt8Bytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(76233);
+    AppMethodBeat.i(102479);
     for (this.pos = 0; this.pos < 8; this.pos += 1)
     {
       if (this.contextStart + this.pos >= paramInt2)
       {
-        AppMethodBeat.o(76233);
+        AppMethodBeat.o(102479);
         return true;
       }
       byte[] arrayOfByte = this.prePlain;
@@ -101,19 +101,19 @@ public class Cryptor
     this.prePlain = decipher(this.prePlain);
     if (this.prePlain == null)
     {
-      AppMethodBeat.o(76233);
+      AppMethodBeat.o(102479);
       return false;
     }
     this.contextStart += 8;
     this.crypt += 8;
     this.pos = 0;
-    AppMethodBeat.o(76233);
+    AppMethodBeat.o(102479);
     return true;
   }
   
   private byte[] encipher(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(76229);
+    AppMethodBeat.i(102475);
     int i = 16;
     for (;;)
     {
@@ -137,7 +137,7 @@ public class Cryptor
       catch (IOException paramArrayOfByte)
       {
         DataOutputStream localDataOutputStream;
-        AppMethodBeat.o(76229);
+        AppMethodBeat.o(102475);
         return null;
       }
       paramArrayOfByte = new ByteArrayOutputStream(8);
@@ -146,7 +146,7 @@ public class Cryptor
       localDataOutputStream.writeInt((int)l2);
       localDataOutputStream.close();
       paramArrayOfByte = paramArrayOfByte.toByteArray();
-      AppMethodBeat.o(76229);
+      AppMethodBeat.o(102475);
       return paramArrayOfByte;
       while (i > 0)
       {
@@ -160,7 +160,7 @@ public class Cryptor
   
   private void encrypt8Bytes()
   {
-    AppMethodBeat.i(76232);
+    AppMethodBeat.i(102478);
     this.pos = 0;
     byte[] arrayOfByte;
     int i;
@@ -193,7 +193,7 @@ public class Cryptor
     this.crypt += 8;
     this.pos = 0;
     this.header = false;
-    AppMethodBeat.o(76232);
+    AppMethodBeat.o(102478);
   }
   
   private static long getUnsignedInt(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -214,22 +214,22 @@ public class Cryptor
   
   private int rand()
   {
-    AppMethodBeat.i(76234);
+    AppMethodBeat.i(102480);
     int i = this.random.nextInt();
-    AppMethodBeat.o(76234);
+    AppMethodBeat.o(102480);
     return i;
   }
   
   public byte[] decrypt(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(76226);
+    AppMethodBeat.i(102472);
     this.preCrypt = 0;
     this.crypt = 0;
     this.key = paramArrayOfByte2;
     paramArrayOfByte2 = new byte[paramInt1 + 8];
     if ((paramInt2 % 8 != 0) || (paramInt2 < 16))
     {
-      AppMethodBeat.o(76226);
+      AppMethodBeat.o(102472);
       return null;
     }
     this.prePlain = decipher(paramArrayOfByte1, paramInt1);
@@ -237,7 +237,7 @@ public class Cryptor
     int j = paramInt2 - this.pos - 10;
     if (j < 0)
     {
-      AppMethodBeat.o(76226);
+      AppMethodBeat.o(102472);
       return null;
     }
     int i = paramInt1;
@@ -266,7 +266,7 @@ public class Cryptor
         }
         if (!decrypt8Bytes(paramArrayOfByte1, paramInt1, paramInt2))
         {
-          AppMethodBeat.o(76226);
+          AppMethodBeat.o(102472);
           return null;
         }
       }
@@ -291,7 +291,7 @@ public class Cryptor
             this.preCrypt = (this.crypt - 8);
             if (!decrypt8Bytes(paramArrayOfByte1, paramInt1, paramInt2))
             {
-              AppMethodBeat.o(76226);
+              AppMethodBeat.o(102472);
               return null;
               for (this.padding = 1; this.padding < 8; this.padding += 1)
               {
@@ -299,7 +299,7 @@ public class Cryptor
                 {
                   if ((paramArrayOfByte2[(this.preCrypt + paramInt1 + this.pos)] ^ this.prePlain[this.pos]) != 0)
                   {
-                    AppMethodBeat.o(76226);
+                    AppMethodBeat.o(102472);
                     return null;
                   }
                   this.pos += 1;
@@ -309,14 +309,14 @@ public class Cryptor
                   this.preCrypt = this.crypt;
                   if (!decrypt8Bytes(paramArrayOfByte1, paramInt1, paramInt2))
                   {
-                    AppMethodBeat.o(76226);
+                    AppMethodBeat.o(102472);
                     return null;
                   }
                   paramArrayOfByte2 = paramArrayOfByte1;
                 }
               }
               paramArrayOfByte1 = this.out;
-              AppMethodBeat.o(76226);
+              AppMethodBeat.o(102472);
               return paramArrayOfByte1;
             }
             paramArrayOfByte2 = paramArrayOfByte1;
@@ -331,15 +331,15 @@ public class Cryptor
   
   public byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(76225);
+    AppMethodBeat.i(102471);
     paramArrayOfByte1 = decrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, paramArrayOfByte2);
-    AppMethodBeat.o(76225);
+    AppMethodBeat.o(102471);
     return paramArrayOfByte1;
   }
   
   public byte[] encrypt(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(76228);
+    AppMethodBeat.i(102474);
     this.plain = new byte[8];
     this.prePlain = new byte[8];
     this.pos = 1;
@@ -418,7 +418,7 @@ public class Cryptor
           }
         }
         paramArrayOfByte1 = this.out;
-        AppMethodBeat.o(76228);
+        AppMethodBeat.o(102474);
         return paramArrayOfByte1;
       }
       break;
@@ -427,15 +427,15 @@ public class Cryptor
   
   public byte[] encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    AppMethodBeat.i(76227);
+    AppMethodBeat.i(102473);
     paramArrayOfByte1 = encrypt(paramArrayOfByte1, 0, paramArrayOfByte1.length, paramArrayOfByte2);
-    AppMethodBeat.o(76227);
+    AppMethodBeat.o(102473);
     return paramArrayOfByte1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.util.Cryptor
  * JD-Core Version:    0.7.0.1
  */

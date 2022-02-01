@@ -6,12 +6,12 @@ public enum TransitionStyle
 {
   static
   {
-    AppMethodBeat.i(141479);
+    AppMethodBeat.i(135999);
     COVERVERTICAL = new TransitionStyle("COVERVERTICAL", 0);
     FLIPHORIZONTAL = new TransitionStyle("FLIPHORIZONTAL", 1);
     CROSSDISSOLVE = new TransitionStyle("CROSSDISSOLVE", 2);
     $VALUES = new TransitionStyle[] { COVERVERTICAL, FLIPHORIZONTAL, CROSSDISSOLVE };
-    AppMethodBeat.o(141479);
+    AppMethodBeat.o(135999);
   }
   
   private TransitionStyle() {}

@@ -1,23 +1,42 @@
 package com.tencent.toybrick.c;
 
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.toybrick.f.a;
+
 public final class b
-  extends g<b, b.a>
+  extends g<b, a>
 {
-  public static final int Bxa = 2130969858;
+  public static final int IGe = 2131494435;
   
-  public final g.b dWO()
+  public final g.b fpi()
   {
-    return g.b.BxS;
+    return g.b.IGV;
   }
   
   public final int getLayoutResource()
   {
-    return Bxa;
+    return IGe;
+  }
+  
+  public final class a
+    extends a
+  {
+    TextView IGp;
+    
+    public a(View paramView)
+    {
+      super();
+      AppMethodBeat.i(159936);
+      this.IGp = ((TextView)paramView.findViewById(16908310));
+      AppMethodBeat.o(159936);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.toybrick.c.b
  * JD-Core Version:    0.7.0.1
  */

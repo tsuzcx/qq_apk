@@ -11,9 +11,9 @@ public abstract interface h
 {
   public abstract boolean a(int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt3, boolean paramBoolean);
   
-  public abstract byte[] adM();
+  public abstract byte[] avk();
   
-  public abstract String adN();
+  public abstract String avl();
   
   public abstract int getClientVersion();
   
@@ -39,6 +39,8 @@ public abstract interface h
   
   public abstract String getUserName();
   
+  public abstract boolean isAxAuth();
+  
   public abstract void setClientVersion(int paramInt);
   
   public abstract void setDeviceID(String paramString);
@@ -52,6 +54,10 @@ public abstract interface h
   public abstract void setSessionKey(byte[] paramArrayOfByte);
   
   public abstract void setUin(int paramInt);
+  
+  public abstract void setUseAxsession(boolean paramBoolean);
+  
+  public abstract boolean useAxSession();
   
   public static abstract class a
     extends Binder
@@ -82,8 +88,10 @@ public abstract interface h
     public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
     {
       int j = 0;
+      int k = 0;
+      boolean bool = false;
+      int m = 0;
       int i = 0;
-      boolean bool;
       switch (paramInt1)
       {
       default: 
@@ -113,7 +121,7 @@ public abstract interface h
         }
       case 2: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseReq_AIDL");
-        paramParcel1 = adM();
+        paramParcel1 = avk();
         paramParcel2.writeNoException();
         paramParcel2.writeByteArray(paramParcel1);
         return true;
@@ -208,7 +216,7 @@ public abstract interface h
         return true;
       case 19: 
         paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseReq_AIDL");
-        paramParcel1 = adN();
+        paramParcel1 = avl();
         paramParcel2.writeNoException();
         paramParcel2.writeString(paramParcel1);
         return true;
@@ -228,11 +236,39 @@ public abstract interface h
         }
         paramParcel2.writeInt(paramInt1);
         return true;
+      case 22: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseReq_AIDL");
+        long l = getECDHEngine();
+        paramParcel2.writeNoException();
+        paramParcel2.writeLong(l);
+        return true;
+      case 23: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseReq_AIDL");
+        bool = isAxAuth();
+        paramParcel2.writeNoException();
+        paramInt1 = k;
+        if (bool) {
+          paramInt1 = 1;
+        }
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 24: 
+        paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseReq_AIDL");
+        if (paramParcel1.readInt() != 0) {
+          bool = true;
+        }
+        setUseAxsession(bool);
+        paramParcel2.writeNoException();
+        return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.protocal.IMMBaseReq_AIDL");
-      long l = getECDHEngine();
+      bool = useAxSession();
       paramParcel2.writeNoException();
-      paramParcel2.writeLong(l);
+      paramInt1 = m;
+      if (bool) {
+        paramInt1 = 1;
+      }
+      paramParcel2.writeInt(paramInt1);
       return true;
     }
     
@@ -345,9 +381,14 @@ public abstract interface h
         //   71	104	141	finally
       }
       
-      public final byte[] adM()
+      public final IBinder asBinder()
       {
-        AppMethodBeat.i(58796);
+        return this.mRemote;
+      }
+      
+      public final byte[] avk()
+      {
+        AppMethodBeat.i(133046);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -362,13 +403,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58796);
+          AppMethodBeat.o(133046);
         }
       }
       
-      public final String adN()
+      public final String avl()
       {
-        AppMethodBeat.i(58813);
+        AppMethodBeat.i(133063);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -383,18 +424,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58813);
+          AppMethodBeat.o(133063);
         }
-      }
-      
-      public final IBinder asBinder()
-      {
-        return this.mRemote;
       }
       
       public final int getClientVersion()
       {
-        AppMethodBeat.i(58802);
+        AppMethodBeat.i(133052);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -409,13 +445,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58802);
+          AppMethodBeat.o(133052);
         }
       }
       
       public final int getCmdId()
       {
-        AppMethodBeat.i(58814);
+        AppMethodBeat.i(133064);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -430,13 +466,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58814);
+          AppMethodBeat.o(133064);
         }
       }
       
       public final String getDeviceID()
       {
-        AppMethodBeat.i(58805);
+        AppMethodBeat.i(133055);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -451,13 +487,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58805);
+          AppMethodBeat.o(133055);
         }
       }
       
       public final String getDeviceType()
       {
-        AppMethodBeat.i(58804);
+        AppMethodBeat.i(133054);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -472,13 +508,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58804);
+          AppMethodBeat.o(133054);
         }
       }
       
       public final long getECDHEngine()
       {
-        AppMethodBeat.i(58816);
+        AppMethodBeat.i(133066);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -493,13 +529,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58816);
+          AppMethodBeat.o(133066);
         }
       }
       
       public final byte[] getPassKey()
       {
-        AppMethodBeat.i(58809);
+        AppMethodBeat.i(133059);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -514,13 +550,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58809);
+          AppMethodBeat.o(133059);
         }
       }
       
       public final String getPassword()
       {
-        AppMethodBeat.i(58812);
+        AppMethodBeat.i(133062);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -535,13 +571,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58812);
+          AppMethodBeat.o(133062);
         }
       }
       
       public final int getSceneStatus()
       {
-        AppMethodBeat.i(58808);
+        AppMethodBeat.i(133058);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -556,13 +592,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58808);
+          AppMethodBeat.o(133058);
         }
       }
       
       public final byte[] getSessionKey()
       {
-        AppMethodBeat.i(58798);
+        AppMethodBeat.i(133048);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -577,14 +613,14 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58798);
+          AppMethodBeat.o(133048);
         }
       }
       
       public final boolean getShortSupport()
       {
         boolean bool = false;
-        AppMethodBeat.i(58815);
+        AppMethodBeat.i(133065);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -602,13 +638,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58815);
+          AppMethodBeat.o(133065);
         }
       }
       
       public final int getUin()
       {
-        AppMethodBeat.i(58800);
+        AppMethodBeat.i(133050);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -623,13 +659,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58800);
+          AppMethodBeat.o(133050);
         }
       }
       
       public final String getUserName()
       {
-        AppMethodBeat.i(58811);
+        AppMethodBeat.i(133061);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -644,13 +680,38 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58811);
+          AppMethodBeat.o(133061);
+        }
+      }
+      
+      public final boolean isAxAuth()
+      {
+        boolean bool = false;
+        AppMethodBeat.i(133067);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseReq_AIDL");
+          this.mRemote.transact(23, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(133067);
         }
       }
       
       public final void setClientVersion(int paramInt)
       {
-        AppMethodBeat.i(58801);
+        AppMethodBeat.i(133051);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -665,13 +726,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58801);
+          AppMethodBeat.o(133051);
         }
       }
       
       public final void setDeviceID(String paramString)
       {
-        AppMethodBeat.i(58806);
+        AppMethodBeat.i(133056);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -686,13 +747,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58806);
+          AppMethodBeat.o(133056);
         }
       }
       
       public final void setDeviceType(String paramString)
       {
-        AppMethodBeat.i(58803);
+        AppMethodBeat.i(133053);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -707,13 +768,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58803);
+          AppMethodBeat.o(133053);
         }
       }
       
       public final void setPassKey(byte[] paramArrayOfByte)
       {
-        AppMethodBeat.i(58810);
+        AppMethodBeat.i(133060);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -728,13 +789,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58810);
+          AppMethodBeat.o(133060);
         }
       }
       
       public final void setSceneStatus(int paramInt)
       {
-        AppMethodBeat.i(58807);
+        AppMethodBeat.i(133057);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -749,13 +810,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58807);
+          AppMethodBeat.o(133057);
         }
       }
       
       public final void setSessionKey(byte[] paramArrayOfByte)
       {
-        AppMethodBeat.i(58797);
+        AppMethodBeat.i(133047);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -770,13 +831,13 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58797);
+          AppMethodBeat.o(133047);
         }
       }
       
       public final void setUin(int paramInt)
       {
-        AppMethodBeat.i(58799);
+        AppMethodBeat.i(133049);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -791,7 +852,57 @@ public abstract interface h
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(58799);
+          AppMethodBeat.o(133049);
+        }
+      }
+      
+      public final void setUseAxsession(boolean paramBoolean)
+      {
+        int i = 0;
+        AppMethodBeat.i(133068);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseReq_AIDL");
+          if (paramBoolean) {
+            i = 1;
+          }
+          localParcel1.writeInt(i);
+          this.mRemote.transact(24, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(133068);
+        }
+      }
+      
+      public final boolean useAxSession()
+      {
+        boolean bool = false;
+        AppMethodBeat.i(133069);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.protocal.IMMBaseReq_AIDL");
+          this.mRemote.transact(25, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          if (i != 0) {
+            bool = true;
+          }
+          return bool;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(133069);
         }
       }
     }

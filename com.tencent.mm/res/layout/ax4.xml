@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:paddingBottom="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.base.MMGallery android:id="@id/epo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
-        <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/epp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
-        <LinearLayout android:layout_gravity="center" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mm.ui.base.MMPageControlView android:gravity="bottom|center" android:id="@id/epq" android:background="@null" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="20.0dip" />
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+    <android.support.v4.view.ViewPager android:id="@id/ea6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="215.0dip" />
+    <com.tencent.mm.ui.base.MMPageControlView android:gravity="center" android:id="@id/cqh" android:paddingBottom="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

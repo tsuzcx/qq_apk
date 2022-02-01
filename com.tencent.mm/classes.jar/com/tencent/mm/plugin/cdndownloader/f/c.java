@@ -11,9 +11,9 @@ public final class c
   
   static
   {
-    AppMethodBeat.i(963);
+    AppMethodBeat.i(120815);
     SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "CdnDownloadInfo") };
-    AppMethodBeat.o(963);
+    AppMethodBeat.o(120815);
   }
   
   public c(e parame)
@@ -21,17 +21,17 @@ public final class c
     super(parame, a.info, "CdnDownloadInfo", null);
   }
   
-  public final boolean IU(String paramString)
+  public final boolean RE(String paramString)
   {
-    AppMethodBeat.i(962);
+    AppMethodBeat.i(120814);
     boolean bool = execSQL("CdnDownloadInfo", String.format("delete from %s where %s=%s", new Object[] { "CdnDownloadInfo", "downloadUrlHashCode", Integer.valueOf(paramString.hashCode()) }));
-    AppMethodBeat.o(962);
+    AppMethodBeat.o(120814);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.f.c
  * JD-Core Version:    0.7.0.1
  */

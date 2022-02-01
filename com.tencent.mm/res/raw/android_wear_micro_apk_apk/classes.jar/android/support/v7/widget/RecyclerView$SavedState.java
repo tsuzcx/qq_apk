@@ -9,12 +9,12 @@ class RecyclerView$SavedState
   extends View.BaseSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator() {};
-  Parcelable uB;
+  Parcelable wq;
   
   RecyclerView$SavedState(Parcel paramParcel)
   {
     super(paramParcel);
-    this.uB = paramParcel.readParcelable(ab.class.getClassLoader());
+    this.wq = paramParcel.readParcelable(ab.class.getClassLoader());
   }
   
   RecyclerView$SavedState(Parcelable paramParcelable)
@@ -25,7 +25,7 @@ class RecyclerView$SavedState
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeParcelable(this.uB, 0);
+    paramParcel.writeParcelable(this.wq, 0);
   }
 }
 

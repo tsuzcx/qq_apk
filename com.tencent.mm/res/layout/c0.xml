@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/qr" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/f40" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="@dimen/o9"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/qs" android:layout_width="fill_parent" android:layout_height="170.0dip">
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/multitask_bar_miniprogram_logo" />
-        <TextView android:textSize="12.0dip" android:textColor="@color/fi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1" android:text="@string/ia" />
+    <LinearLayout android:gravity="left" android:id="@id/db" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="@dimen/od" android:layout_alignParentLeft="true">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/da" android:background="@drawable/au" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/od" android:layout_marginRight="@dimen/of">
+            <ImageView android:id="@id/dc" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/qt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="@dimen/m1">
-        <com.tencent.mm.plugin.appbrand.widget.desktop.half.AppBrandDesktopHalfItemView android:id="@id/qu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_" />
-        <com.tencent.mm.plugin.appbrand.widget.desktop.half.AppBrandDesktopHalfItemView android:id="@id/qv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_" />
-    </LinearLayout>
+    <FrameLayout android:id="@id/f2e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <LinearLayout android:orientation="horizontal" android:id="@id/d6" android:background="@drawable/c9" android:clickable="true" android:layout_width="wrap_content" android:layout_height="@dimen/ol" android:layout_marginRight="@dimen/am4" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton android:id="@id/d9" android:background="@drawable/c6" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+            <View android:layout_gravity="center_vertical" android:id="@id/d7" android:background="@color/cq" android:layout_width="@dimen/t5" android:layout_height="@dimen/ok" />
+            <com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandCapsuleHomeButton android:id="@id/d8" android:background="@drawable/c7" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        </LinearLayout>
+        <ViewStub android:layout_gravity="center_vertical" android:id="@id/b7t" android:layout="@layout/c5" android:layout_width="@dimen/oe" android:layout_height="@dimen/oe" android:layout_marginRight="16.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/di" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/f2e" android:layout_toRightOf="@id/db">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/dj" android:paddingRight="24.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/a" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/dl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+        </LinearLayout>
+        <ProgressBar android:id="@id/d_" android:padding="3.0dip" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_alignRight="@id/dj" android:layout_centerInParent="true" style="@style/a4p" />
+    </RelativeLayout>
 </RelativeLayout>

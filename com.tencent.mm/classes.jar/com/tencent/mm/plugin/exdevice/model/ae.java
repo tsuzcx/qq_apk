@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.exdevice.model;
 
-import com.tencent.mm.plugin.exdevice.i.d;
+import com.tencent.mm.plugin.exdevice.j.d;
 import com.tencent.mm.plugin.exdevice.service.m;
 
 public abstract class ae
@@ -9,7 +9,7 @@ public abstract class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.ae
  * JD-Core Version:    0.7.0.1
  */

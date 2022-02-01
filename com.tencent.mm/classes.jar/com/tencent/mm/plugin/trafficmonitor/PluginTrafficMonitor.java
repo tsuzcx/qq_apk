@@ -5,31 +5,30 @@ import android.content.IntentFilter;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.plugin.trafficmonitor.a.a;
 
 public class PluginTrafficMonitor
   extends f
   implements a
 {
-  public void execute(g paramg)
+  public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(114759);
-    if ((paramg.SD()) && (Build.VERSION.SDK_INT < 29) && (Build.VERSION.SDK_INT > 19))
+    AppMethodBeat.i(123901);
+    if ((paramg.agu()) && (Build.VERSION.SDK_INT < 29) && (Build.VERSION.SDK_INT > 19))
     {
-      paramg.bX.registerReceiver(new TrafficClickFlowReceiver(), new IntentFilter("com.tencent.mm.Intent.ACTION_NET_STATS"));
-      e.cKP();
-      e.cKQ();
+      paramg.ca.registerReceiver(new TrafficClickFlowReceiver(), new IntentFilter("com.tencent.mm.Intent.ACTION_NET_STATS"));
+      g.dQu();
+      g.dQv();
     }
-    AppMethodBeat.o(114759);
+    AppMethodBeat.o(123901);
   }
   
   public void installed()
   {
-    AppMethodBeat.i(114758);
+    AppMethodBeat.i(123900);
     super.installed();
     alias(a.class);
-    AppMethodBeat.o(114758);
+    AppMethodBeat.o(123900);
   }
   
   public String name()
@@ -39,7 +38,7 @@ public class PluginTrafficMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.trafficmonitor.PluginTrafficMonitor
  * JD-Core Version:    0.7.0.1
  */

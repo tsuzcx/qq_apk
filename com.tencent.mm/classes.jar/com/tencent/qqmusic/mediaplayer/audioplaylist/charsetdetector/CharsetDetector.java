@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CharsetDetector
 {
-  private static final List<CharsetDetector.CSRecognizerInfo> ALL_CS_RECOGNIZERS;
+  private static final List<CSRecognizerInfo> ALL_CS_RECOGNIZERS;
   private static final int kBufSize = 8000;
   short[] fByteStats;
   boolean fC1Bytes;
@@ -26,53 +26,53 @@ public class CharsetDetector
   
   static
   {
-    AppMethodBeat.i(104757);
+    AppMethodBeat.i(76661);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_UTF8(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_Unicode.CharsetRecog_UTF_16_BE(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_Unicode.CharsetRecog_UTF_16_LE(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_Unicode.CharsetRecog_UTF_32_BE(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_Unicode.CharsetRecog_UTF_32_LE(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_mbcs.CharsetRecog_sjis(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_2022.CharsetRecog_2022JP(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_2022.CharsetRecog_2022CN(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_2022.CharsetRecog_2022KR(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_mbcs.CharsetRecog_gb_18030(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_mbcs.CharsetRecog_euc.CharsetRecog_euc_jp(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_mbcs.CharsetRecog_euc.CharsetRecog_euc_kr(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_mbcs.CharsetRecog_big5(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_1(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_2(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_5_ru(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_6_ar(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_7_el(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_8_I_he(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_8_he(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_windows_1251(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_windows_1256(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_KOI8_R(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_9_tr(), true));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_IBM424_he_rtl(), false));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_IBM424_he_ltr(), false));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_IBM420_ar_rtl(), false));
-    localArrayList.add(new CharsetDetector.CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_IBM420_ar_ltr(), false));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_UTF8(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_Unicode.CharsetRecog_UTF_16_BE(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_Unicode.CharsetRecog_UTF_16_LE(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_Unicode.CharsetRecog_UTF_32_BE(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_Unicode.CharsetRecog_UTF_32_LE(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_mbcs.CharsetRecog_sjis(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_2022.CharsetRecog_2022JP(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_2022.CharsetRecog_2022CN(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_2022.CharsetRecog_2022KR(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_mbcs.CharsetRecog_gb_18030(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_mbcs.CharsetRecog_euc.CharsetRecog_euc_jp(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_mbcs.CharsetRecog_euc.CharsetRecog_euc_kr(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_mbcs.CharsetRecog_big5(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_1(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_2(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_5_ru(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_6_ar(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_7_el(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_8_I_he(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_8_he(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_windows_1251(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_windows_1256(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_KOI8_R(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_8859_9_tr(), true));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_IBM424_he_rtl(), false));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_IBM424_he_ltr(), false));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_IBM420_ar_rtl(), false));
+    localArrayList.add(new CSRecognizerInfo(new CharsetRecog_sbcs.CharsetRecog_IBM420_ar_ltr(), false));
     ALL_CS_RECOGNIZERS = Collections.unmodifiableList(localArrayList);
-    AppMethodBeat.o(104757);
+    AppMethodBeat.o(76661);
   }
   
   public CharsetDetector()
   {
-    AppMethodBeat.i(104747);
+    AppMethodBeat.i(76651);
     this.fInputBytes = new byte[8000];
     this.fByteStats = new short[256];
     this.fC1Bytes = false;
     this.fStripTags = false;
-    AppMethodBeat.o(104747);
+    AppMethodBeat.o(76651);
   }
   
   private void MungeInput()
   {
-    AppMethodBeat.i(104754);
+    AppMethodBeat.i(76658);
     int j;
     int k;
     if (this.fStripTags)
@@ -146,12 +146,12 @@ public class CharsetDetector
         if (this.fByteStats[j] != 0)
         {
           this.fC1Bytes = true;
-          AppMethodBeat.o(104754);
+          AppMethodBeat.o(76658);
           return;
         }
         j += 1;
       }
-      AppMethodBeat.o(104754);
+      AppMethodBeat.o(76658);
       return;
       j = 0;
       k = 0;
@@ -160,48 +160,48 @@ public class CharsetDetector
   
   public static String[] getAllDetectableCharsets()
   {
-    AppMethodBeat.i(104753);
+    AppMethodBeat.i(76657);
     String[] arrayOfString = new String[ALL_CS_RECOGNIZERS.size()];
     int i = 0;
     while (i < arrayOfString.length)
     {
-      arrayOfString[i] = ((CharsetDetector.CSRecognizerInfo)ALL_CS_RECOGNIZERS.get(i)).recognizer.getName();
+      arrayOfString[i] = ((CSRecognizerInfo)ALL_CS_RECOGNIZERS.get(i)).recognizer.getName();
       i += 1;
     }
-    AppMethodBeat.o(104753);
+    AppMethodBeat.o(76657);
     return arrayOfString;
   }
   
   public CharsetMatch detect()
   {
-    AppMethodBeat.i(104749);
+    AppMethodBeat.i(76653);
     Object localObject = detectAll();
     if ((localObject == null) || (localObject.length == 0))
     {
-      AppMethodBeat.o(104749);
+      AppMethodBeat.o(76653);
       return null;
     }
     localObject = localObject[0];
-    AppMethodBeat.o(104749);
+    AppMethodBeat.o(76653);
     return localObject;
   }
   
   public CharsetMatch[] detectAll()
   {
-    AppMethodBeat.i(104750);
+    AppMethodBeat.i(76654);
     Object localObject1 = new ArrayList();
     MungeInput();
     int i = 0;
     if (i < ALL_CS_RECOGNIZERS.size())
     {
-      Object localObject2 = (CharsetDetector.CSRecognizerInfo)ALL_CS_RECOGNIZERS.get(i);
+      Object localObject2 = (CSRecognizerInfo)ALL_CS_RECOGNIZERS.get(i);
       if (this.fEnabledRecognizers != null) {}
       boolean bool;
-      for (int j = this.fEnabledRecognizers[i];; bool = ((CharsetDetector.CSRecognizerInfo)localObject2).isDefaultEnabled)
+      for (int j = this.fEnabledRecognizers[i];; bool = ((CSRecognizerInfo)localObject2).isDefaultEnabled)
       {
         if (j != 0)
         {
-          localObject2 = ((CharsetDetector.CSRecognizerInfo)localObject2).recognizer.match(this);
+          localObject2 = ((CSRecognizerInfo)localObject2).recognizer.match(this);
           if (localObject2 != null) {
             ((ArrayList)localObject1).add(localObject2);
           }
@@ -213,7 +213,7 @@ public class CharsetDetector
     Collections.sort((List)localObject1);
     Collections.reverse((List)localObject1);
     localObject1 = (CharsetMatch[])((ArrayList)localObject1).toArray(new CharsetMatch[((ArrayList)localObject1).size()]);
-    AppMethodBeat.o(104750);
+    AppMethodBeat.o(76654);
     return localObject1;
   }
   
@@ -227,12 +227,12 @@ public class CharsetDetector
   @Deprecated
   public String[] getDetectableCharsets()
   {
-    AppMethodBeat.i(104755);
+    AppMethodBeat.i(76659);
     Object localObject = new ArrayList(ALL_CS_RECOGNIZERS.size());
     int i = 0;
     if (i < ALL_CS_RECOGNIZERS.size())
     {
-      CharsetDetector.CSRecognizerInfo localCSRecognizerInfo = (CharsetDetector.CSRecognizerInfo)ALL_CS_RECOGNIZERS.get(i);
+      CSRecognizerInfo localCSRecognizerInfo = (CSRecognizerInfo)ALL_CS_RECOGNIZERS.get(i);
       if (this.fEnabledRecognizers == null) {}
       int j;
       for (boolean bool = localCSRecognizerInfo.isDefaultEnabled;; j = this.fEnabledRecognizers[i])
@@ -245,13 +245,13 @@ public class CharsetDetector
       }
     }
     localObject = (String[])((List)localObject).toArray(new String[((List)localObject).size()]);
-    AppMethodBeat.o(104755);
+    AppMethodBeat.o(76659);
     return localObject;
   }
   
   public Reader getReader(InputStream paramInputStream, String paramString)
   {
-    AppMethodBeat.i(104751);
+    AppMethodBeat.i(76655);
     this.fDeclaredEncoding = paramString;
     try
     {
@@ -259,23 +259,23 @@ public class CharsetDetector
       paramInputStream = detect();
       if (paramInputStream == null)
       {
-        AppMethodBeat.o(104751);
+        AppMethodBeat.o(76655);
         return null;
       }
       paramInputStream = paramInputStream.getReader();
-      AppMethodBeat.o(104751);
+      AppMethodBeat.o(76655);
       return paramInputStream;
     }
     catch (IOException paramInputStream)
     {
-      AppMethodBeat.o(104751);
+      AppMethodBeat.o(76655);
     }
     return null;
   }
   
   public String getString(byte[] paramArrayOfByte, String paramString)
   {
-    AppMethodBeat.i(104752);
+    AppMethodBeat.i(76656);
     this.fDeclaredEncoding = paramString;
     try
     {
@@ -283,16 +283,16 @@ public class CharsetDetector
       paramArrayOfByte = detect();
       if (paramArrayOfByte == null)
       {
-        AppMethodBeat.o(104752);
+        AppMethodBeat.o(76656);
         return null;
       }
       paramArrayOfByte = paramArrayOfByte.getString(-1);
-      AppMethodBeat.o(104752);
+      AppMethodBeat.o(76656);
       return paramArrayOfByte;
     }
     catch (IOException paramArrayOfByte)
     {
-      AppMethodBeat.o(104752);
+      AppMethodBeat.o(76656);
     }
     return null;
   }
@@ -312,12 +312,12 @@ public class CharsetDetector
   public CharsetDetector setDetectableCharset(String paramString, boolean paramBoolean)
   {
     int k = 0;
-    AppMethodBeat.i(104756);
+    AppMethodBeat.i(76660);
     int i = 0;
     int j;
     if (i < ALL_CS_RECOGNIZERS.size())
     {
-      CharsetDetector.CSRecognizerInfo localCSRecognizerInfo = (CharsetDetector.CSRecognizerInfo)ALL_CS_RECOGNIZERS.get(i);
+      CSRecognizerInfo localCSRecognizerInfo = (CSRecognizerInfo)ALL_CS_RECOGNIZERS.get(i);
       if (localCSRecognizerInfo.recognizer.getName().equals(paramString)) {
         if (localCSRecognizerInfo.isDefaultEnabled == paramBoolean) {
           j = 1;
@@ -329,7 +329,7 @@ public class CharsetDetector
       if (i < 0)
       {
         paramString = new IllegalArgumentException("Invalid encoding: \"" + paramString + "\"");
-        AppMethodBeat.o(104756);
+        AppMethodBeat.o(76660);
         throw paramString;
         j = 0;
         continue;
@@ -342,14 +342,14 @@ public class CharsetDetector
         j = k;
         while (j < ALL_CS_RECOGNIZERS.size())
         {
-          this.fEnabledRecognizers[j] = ((CharsetDetector.CSRecognizerInfo)ALL_CS_RECOGNIZERS.get(j)).isDefaultEnabled;
+          this.fEnabledRecognizers[j] = ((CSRecognizerInfo)ALL_CS_RECOGNIZERS.get(j)).isDefaultEnabled;
           j += 1;
         }
       }
       if (this.fEnabledRecognizers != null) {
         this.fEnabledRecognizers[i] = paramBoolean;
       }
-      AppMethodBeat.o(104756);
+      AppMethodBeat.o(76660);
       return this;
       j = 0;
       i = -1;
@@ -359,7 +359,7 @@ public class CharsetDetector
   public CharsetDetector setText(InputStream paramInputStream)
   {
     int i = 8000;
-    AppMethodBeat.i(104748);
+    AppMethodBeat.i(76652);
     this.fInputStream = paramInputStream;
     this.fInputStream.mark(8000);
     this.fRawInput = new byte[8000];
@@ -374,7 +374,7 @@ public class CharsetDetector
       i -= j;
     }
     this.fInputStream.reset();
-    AppMethodBeat.o(104748);
+    AppMethodBeat.o(76652);
     return this;
   }
   
@@ -384,10 +384,22 @@ public class CharsetDetector
     this.fRawLength = paramArrayOfByte.length;
     return this;
   }
+  
+  static class CSRecognizerInfo
+  {
+    boolean isDefaultEnabled;
+    CharsetRecognizer recognizer;
+    
+    CSRecognizerInfo(CharsetRecognizer paramCharsetRecognizer, boolean paramBoolean)
+    {
+      this.recognizer = paramCharsetRecognizer;
+      this.isDefaultEnabled = paramBoolean;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector.CharsetDetector
  * JD-Core Version:    0.7.0.1
  */

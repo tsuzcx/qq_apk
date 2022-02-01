@@ -32,14 +32,14 @@ public class SQLiteLintIssue
   
   static
   {
-    AppMethodBeat.i(94018);
+    AppMethodBeat.i(52862);
     CREATOR = new Parcelable.Creator()
     {
       public final SQLiteLintIssue createFromParcel(Parcel paramAnonymousParcel)
       {
-        AppMethodBeat.i(94010);
+        AppMethodBeat.i(52854);
         paramAnonymousParcel = new SQLiteLintIssue(paramAnonymousParcel);
-        AppMethodBeat.o(94010);
+        AppMethodBeat.o(52854);
         return paramAnonymousParcel;
       }
       
@@ -48,14 +48,14 @@ public class SQLiteLintIssue
         return new SQLiteLintIssue[paramAnonymousInt];
       }
     };
-    AppMethodBeat.o(94018);
+    AppMethodBeat.o(52862);
   }
   
   public SQLiteLintIssue() {}
   
   protected SQLiteLintIssue(Parcel paramParcel)
   {
-    AppMethodBeat.i(94016);
+    AppMethodBeat.i(52860);
     this.id = paramParcel.readString();
     this.dbPath = paramParcel.readString();
     this.level = paramParcel.readInt();
@@ -72,7 +72,7 @@ public class SQLiteLintIssue
     for (;;)
     {
       this.isInMainThread = bool;
-      AppMethodBeat.o(94016);
+      AppMethodBeat.o(52860);
       return;
       bool = false;
     }
@@ -97,23 +97,23 @@ public class SQLiteLintIssue
   
   public static String getLevelText(int paramInt, Context paramContext)
   {
-    AppMethodBeat.i(94013);
+    AppMethodBeat.i(52857);
     switch (paramInt)
     {
     default: 
-      paramContext = paramContext.getString(2131306150);
+      paramContext = paramContext.getString(2131758067);
     }
     for (;;)
     {
-      AppMethodBeat.o(94013);
+      AppMethodBeat.o(52857);
       return paramContext;
-      paramContext = paramContext.getString(2131306151);
+      paramContext = paramContext.getString(2131758068);
       continue;
-      paramContext = paramContext.getString(2131306150);
+      paramContext = paramContext.getString(2131758067);
       continue;
-      paramContext = paramContext.getString(2131306152);
+      paramContext = paramContext.getString(2131758069);
       continue;
-      paramContext = paramContext.getString(2131306149);
+      paramContext = paramContext.getString(2131758066);
     }
   }
   
@@ -124,28 +124,28 @@ public class SQLiteLintIssue
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(94014);
+    AppMethodBeat.i(52858);
     if (!(paramObject instanceof SQLiteLintIssue))
     {
-      AppMethodBeat.o(94014);
+      AppMethodBeat.o(52858);
       return false;
     }
     boolean bool = ((SQLiteLintIssue)paramObject).id.equals(this.id);
-    AppMethodBeat.o(94014);
+    AppMethodBeat.o(52858);
     return bool;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(94015);
+    AppMethodBeat.i(52859);
     int i = this.id.hashCode();
-    AppMethodBeat.o(94015);
+    AppMethodBeat.o(52859);
     return i;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(94017);
+    AppMethodBeat.i(52861);
     paramParcel.writeString(this.id);
     paramParcel.writeString(this.dbPath);
     paramParcel.writeInt(this.level);
@@ -162,14 +162,14 @@ public class SQLiteLintIssue
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      AppMethodBeat.o(94017);
+      AppMethodBeat.o(52861);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.sqlitelint.SQLiteLintIssue
  * JD-Core Version:    0.7.0.1
  */

@@ -3,96 +3,127 @@ package com.tencent.mm.plugin.game.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class db
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String Title;
-  public String npQ;
-  public String npR;
-  public int nui;
+  public String rZr;
+  public String rZw;
+  public String sdG;
+  public String sdH;
+  public String sdI;
+  public boolean sdJ;
+  public boolean sdK;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(111669);
+    AppMethodBeat.i(41833);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.Title != null) {
-        paramVarArgs.e(1, this.Title);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.rZw != null) {
+        paramVarArgs.d(1, this.rZw);
       }
-      if (this.npR != null) {
-        paramVarArgs.e(2, this.npR);
+      if (this.sdG != null) {
+        paramVarArgs.d(2, this.sdG);
       }
-      if (this.npQ != null) {
-        paramVarArgs.e(3, this.npQ);
+      if (this.sdH != null) {
+        paramVarArgs.d(3, this.sdH);
       }
-      paramVarArgs.aO(4, this.nui);
-      AppMethodBeat.o(111669);
+      if (this.sdI != null) {
+        paramVarArgs.d(4, this.sdI);
+      }
+      if (this.rZr != null) {
+        paramVarArgs.d(5, this.rZr);
+      }
+      paramVarArgs.bg(6, this.sdJ);
+      paramVarArgs.bg(7, this.sdK);
+      AppMethodBeat.o(41833);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Title == null) {
-        break label378;
+      if (this.rZw == null) {
+        break label546;
       }
     }
-    label378:
-    for (int i = e.a.a.b.b.a.f(1, this.Title) + 0;; i = 0)
+    label546:
+    for (int i = f.a.a.b.b.a.e(1, this.rZw) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.npR != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.npR);
+      if (this.sdG != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.sdG);
       }
       i = paramInt;
-      if (this.npQ != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.npQ);
+      if (this.sdH != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.sdH);
       }
-      paramInt = e.a.a.b.b.a.bl(4, this.nui);
-      AppMethodBeat.o(111669);
-      return i + paramInt;
+      paramInt = i;
+      if (this.sdI != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.sdI);
+      }
+      i = paramInt;
+      if (this.rZr != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.rZr);
+      }
+      paramInt = f.a.a.b.b.a.fY(6);
+      int j = f.a.a.b.b.a.fY(7);
+      AppMethodBeat.o(41833);
+      return i + (paramInt + 1) + (j + 1);
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(111669);
+        AppMethodBeat.o(41833);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         db localdb = (db)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(111669);
+          AppMethodBeat.o(41833);
           return -1;
         case 1: 
-          localdb.Title = locala.CLY.readString();
-          AppMethodBeat.o(111669);
+          localdb.rZw = locala.KhF.readString();
+          AppMethodBeat.o(41833);
           return 0;
         case 2: 
-          localdb.npR = locala.CLY.readString();
-          AppMethodBeat.o(111669);
+          localdb.sdG = locala.KhF.readString();
+          AppMethodBeat.o(41833);
           return 0;
         case 3: 
-          localdb.npQ = locala.CLY.readString();
-          AppMethodBeat.o(111669);
+          localdb.sdH = locala.KhF.readString();
+          AppMethodBeat.o(41833);
+          return 0;
+        case 4: 
+          localdb.sdI = locala.KhF.readString();
+          AppMethodBeat.o(41833);
+          return 0;
+        case 5: 
+          localdb.rZr = locala.KhF.readString();
+          AppMethodBeat.o(41833);
+          return 0;
+        case 6: 
+          localdb.sdJ = locala.KhF.fHu();
+          AppMethodBeat.o(41833);
           return 0;
         }
-        localdb.nui = locala.CLY.sl();
-        AppMethodBeat.o(111669);
+        localdb.sdK = locala.KhF.fHu();
+        AppMethodBeat.o(41833);
         return 0;
       }
-      AppMethodBeat.o(111669);
+      AppMethodBeat.o(41833);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.db
  * JD-Core Version:    0.7.0.1
  */

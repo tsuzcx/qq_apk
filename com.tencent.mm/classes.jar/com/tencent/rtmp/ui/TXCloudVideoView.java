@@ -9,6 +9,7 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.view.SurfaceView;
 import android.view.TextureView;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -40,8 +41,9 @@ public class TXCloudVideoView
   private float mRight;
   private ScaleGestureDetector mScaleGestureDetector;
   private ScaleGestureDetector.OnScaleGestureListener mScaleGestureListener;
+  protected SurfaceView mSurfaceView;
   private float mTop;
-  private TXCloudVideoView.a mTouchFocusRunnable;
+  private a mTouchFocusRunnable;
   private String mUserId;
   protected TextureView mVideoView;
   private boolean mZoom;
@@ -54,7 +56,7 @@ public class TXCloudVideoView
   public TXCloudVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(65570);
+    AppMethodBeat.i(14245);
     this.mCaptureWidth = 0;
     this.mCaptureHeight = 0;
     this.mLeft = 0.0F;
@@ -72,7 +74,7 @@ public class TXCloudVideoView
       public boolean onScale(ScaleGestureDetector paramAnonymousScaleGestureDetector)
       {
         float f1 = 1.1F;
-        AppMethodBeat.i(146895);
+        AppMethodBeat.i(14244);
         int j;
         float f2;
         if (TXCloudVideoView.this.mCapture != null)
@@ -82,17 +84,17 @@ public class TXCloudVideoView
           {
             f2 = paramAnonymousScaleGestureDetector.getScaleFactor();
             if (f2 <= 1.0F) {
-              break label227;
+              break label229;
             }
             f2 = 0.2F / j * (j - TXCloudVideoView.this.mCurrentScale) + 1.0F;
             if (f2 > 1.1F) {
-              break label323;
+              break label325;
             }
           }
         }
         for (;;)
         {
-          label76:
+          label77:
           int k = Math.round(TXCloudVideoView.this.mCurrentScale * f1);
           int i = k;
           if (k == TXCloudVideoView.this.mCurrentScale)
@@ -103,7 +105,7 @@ public class TXCloudVideoView
           }
           else
           {
-            label119:
+            label120:
             k = i;
             if (i >= j) {
               k = j;
@@ -113,50 +115,50 @@ public class TXCloudVideoView
               i = 1;
             }
             if (f1 <= 1.0F) {
-              break label285;
+              break label287;
             }
             if (i >= TXCloudVideoView.this.mCurrentScale) {
-              break label315;
+              break label317;
             }
             i = TXCloudVideoView.this.mCurrentScale;
           }
-          label285:
-          label315:
+          label287:
+          label317:
           for (;;)
           {
             TXCloudVideoView.access$502(TXCloudVideoView.this, i);
             if (TXCloudVideoView.this.mCapture != null) {
               TXCloudVideoView.this.mCapture.a(TXCloudVideoView.this.mCurrentScale);
             }
-            AppMethodBeat.o(146895);
+            AppMethodBeat.o(14244);
             return false;
             j = 0;
             break;
-            label227:
+            label229:
             if (f2 >= 1.0F) {
-              break label318;
+              break label320;
             }
             f2 = 1.0F - 0.2F / j * TXCloudVideoView.this.mCurrentScale;
             f1 = f2;
             if (f2 < 0.9F) {
-              break label76;
+              break label77;
             }
             f1 = 0.9F;
-            break label76;
+            break label77;
             i = k;
             if (f1 >= 1.0F) {
-              break label119;
+              break label120;
             }
             i = k - 1;
-            break label119;
+            break label120;
             if ((f1 < 1.0F) && (i > TXCloudVideoView.this.mCurrentScale)) {
               i = TXCloudVideoView.this.mCurrentScale;
             }
           }
-          label318:
+          label320:
           f1 = f2;
           continue;
-          label323:
+          label325:
           f1 = f2;
         }
       }
@@ -168,10 +170,18 @@ public class TXCloudVideoView
       
       public void onScaleEnd(ScaleGestureDetector paramAnonymousScaleGestureDetector) {}
     };
-    this.mTouchFocusRunnable = new TXCloudVideoView.a(this, null);
+    this.mTouchFocusRunnable = new a(null);
     this.mDashBoard = new TXDashBoard(paramContext);
     this.mScaleGestureDetector = new ScaleGestureDetector(paramContext, this.mScaleGestureListener);
-    AppMethodBeat.o(65570);
+    AppMethodBeat.o(14245);
+  }
+  
+  public TXCloudVideoView(SurfaceView paramSurfaceView)
+  {
+    this(paramSurfaceView.getContext(), null);
+    AppMethodBeat.i(14246);
+    this.mSurfaceView = paramSurfaceView;
+    AppMethodBeat.o(14246);
   }
   
   private int clamp(int paramInt1, int paramInt2, int paramInt3)
@@ -187,7 +197,7 @@ public class TXCloudVideoView
   
   private Rect getTouchRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat)
   {
-    AppMethodBeat.i(65577);
+    AppMethodBeat.i(14253);
     if ((this.mFocusAreaSize == 0) && (this.mGLSurfaceView != null)) {
       this.mFocusAreaSize = ((int)(70.0F * this.mGLSurfaceView.getResources().getDisplayMetrics().density + 0.5F));
     }
@@ -195,85 +205,85 @@ public class TXCloudVideoView
     paramInt1 = clamp(paramInt1 - i / 2, 0, paramInt3 - i);
     paramInt2 = clamp(paramInt2 - i / 2, 0, paramInt4 - i);
     Rect localRect = new Rect(paramInt1, paramInt2, paramInt1 + i, i + paramInt2);
-    AppMethodBeat.o(65577);
+    AppMethodBeat.o(14253);
     return localRect;
   }
   
   public static int px2dip(Context paramContext, float paramFloat)
   {
-    AppMethodBeat.i(146892);
+    AppMethodBeat.i(14266);
     int i = (int)(paramFloat / paramContext.getResources().getDisplayMetrics().density + 0.5F);
-    AppMethodBeat.o(146892);
+    AppMethodBeat.o(14266);
     return i;
   }
   
   private void updateDbMargin()
   {
-    AppMethodBeat.i(146893);
+    AppMethodBeat.i(14267);
     if (this.mDashBoard != null) {
       this.mDashBoard.a((int)this.mLeft, (int)this.mTop, (int)this.mRight, (int)this.mBottom);
     }
-    AppMethodBeat.o(146893);
+    AppMethodBeat.o(14267);
   }
   
   public void addVideoView(TextureView paramTextureView)
   {
-    AppMethodBeat.i(65572);
+    AppMethodBeat.i(14248);
     if (this.mVideoView != null) {
       removeView(this.mVideoView);
     }
     this.mVideoView = paramTextureView;
     addView(this.mVideoView);
     resetLogView();
-    AppMethodBeat.o(65572);
+    AppMethodBeat.o(14248);
   }
   
   public void addVideoView(TXCGLSurfaceView paramTXCGLSurfaceView)
   {
-    AppMethodBeat.i(65571);
+    AppMethodBeat.i(14247);
     if (this.mGLSurfaceView != null) {
       removeView(this.mGLSurfaceView);
     }
     this.mGLSurfaceView = paramTXCGLSurfaceView;
     addView(this.mGLSurfaceView);
     resetLogView();
-    AppMethodBeat.o(65571);
+    AppMethodBeat.o(14247);
   }
   
   public void appendEventInfo(String paramString)
   {
-    AppMethodBeat.i(146888);
+    AppMethodBeat.i(14262);
     if (this.mDashBoard != null) {
       this.mDashBoard.a(paramString);
     }
-    AppMethodBeat.o(146888);
+    AppMethodBeat.o(14262);
   }
   
   public void clearLastFrame(boolean paramBoolean)
   {
-    AppMethodBeat.i(65575);
+    AppMethodBeat.i(14251);
     if (paramBoolean) {
       setVisibility(8);
     }
-    AppMethodBeat.o(65575);
+    AppMethodBeat.o(14251);
   }
   
   public void clearLog()
   {
-    AppMethodBeat.i(65580);
+    AppMethodBeat.i(14256);
     if (this.mDashBoard != null) {
       this.mDashBoard.a();
     }
-    AppMethodBeat.o(65580);
+    AppMethodBeat.o(14256);
   }
   
   public void disableLog(boolean paramBoolean)
   {
-    AppMethodBeat.i(65578);
+    AppMethodBeat.i(14254);
     if (this.mDashBoard != null) {
       this.mDashBoard.a(paramBoolean);
     }
-    AppMethodBeat.o(65578);
+    AppMethodBeat.o(14254);
   }
   
   public TXCGLSurfaceView getGLSurfaceView()
@@ -284,6 +294,11 @@ public class TXCloudVideoView
   public TextureView getHWVideoView()
   {
     return this.mVideoView;
+  }
+  
+  public SurfaceView getSurfaceView()
+  {
+    return this.mSurfaceView;
   }
   
   public String getUserId()
@@ -300,7 +315,7 @@ public class TXCloudVideoView
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(146885);
+    AppMethodBeat.i(14259);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     updateDbMargin();
     if (this.mDashBoard != null)
@@ -311,7 +326,7 @@ public class TXCloudVideoView
     if ((this.mCaptureWidth != 0) && (this.mCaptureHeight != 0)) {
       updateVideoViewSize(this.mCaptureWidth, this.mCaptureHeight);
     }
-    AppMethodBeat.o(146885);
+    AppMethodBeat.o(14259);
   }
   
   public void onPause() {}
@@ -320,7 +335,7 @@ public class TXCloudVideoView
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(65585);
+    AppMethodBeat.i(14270);
     if ((paramMotionEvent.getPointerCount() == 1) && (paramMotionEvent.getAction() == 0))
     {
       this.mTouchFocusRunnable.a(paramView);
@@ -333,7 +348,7 @@ public class TXCloudVideoView
         performClick();
       }
       boolean bool = this.mZoom;
-      AppMethodBeat.o(65585);
+      AppMethodBeat.o(14270);
       return bool;
       if ((paramMotionEvent.getPointerCount() > 1) && (paramMotionEvent.getAction() == 2))
       {
@@ -348,10 +363,10 @@ public class TXCloudVideoView
   
   public void onTouchFocus(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(65576);
+    AppMethodBeat.i(14252);
     if (this.mGLSurfaceView == null)
     {
-      AppMethodBeat.o(65576);
+      AppMethodBeat.o(14252);
       return;
     }
     if ((paramInt1 < 0) || (paramInt2 < 0))
@@ -359,7 +374,7 @@ public class TXCloudVideoView
       if (this.mFocusIndicatorView != null) {
         this.mFocusIndicatorView.setVisibility(8);
       }
-      AppMethodBeat.o(65576);
+      AppMethodBeat.o(14252);
       return;
     }
     if (this.mFocusIndicatorView == null)
@@ -368,25 +383,34 @@ public class TXCloudVideoView
       this.mFocusIndicatorView.setVisibility(0);
       addView(this.mFocusIndicatorView);
     }
-    Rect localRect = getTouchRect(paramInt1, paramInt2, this.mGLSurfaceView.getWidth(), this.mGLSurfaceView.getHeight(), 1.0F);
-    this.mFocusIndicatorView.show(localRect.left, localRect.top, localRect.right - localRect.left);
-    AppMethodBeat.o(65576);
+    for (;;)
+    {
+      Rect localRect = getTouchRect(paramInt1, paramInt2, this.mGLSurfaceView.getWidth(), this.mGLSurfaceView.getHeight(), 1.0F);
+      this.mFocusIndicatorView.show(localRect.left, localRect.top, localRect.right - localRect.left);
+      AppMethodBeat.o(14252);
+      return;
+      if (indexOfChild(this.mFocusIndicatorView) != getChildCount() - 1)
+      {
+        removeView(this.mFocusIndicatorView);
+        addView(this.mFocusIndicatorView);
+      }
+    }
   }
   
   public void removeFocusIndicatorView()
   {
-    AppMethodBeat.i(65574);
+    AppMethodBeat.i(14250);
     if (this.mFocusIndicatorView != null)
     {
       removeView(this.mFocusIndicatorView);
       this.mFocusIndicatorView = null;
     }
-    AppMethodBeat.o(65574);
+    AppMethodBeat.o(14250);
   }
   
   public void removeVideoView()
   {
-    AppMethodBeat.i(65573);
+    AppMethodBeat.i(14249);
     if (this.mVideoView != null)
     {
       removeView(this.mVideoView);
@@ -397,32 +421,33 @@ public class TXCloudVideoView
       removeView(this.mGLSurfaceView);
       this.mGLSurfaceView = null;
     }
-    AppMethodBeat.o(65573);
+    this.mSurfaceView = null;
+    AppMethodBeat.o(14249);
   }
   
   protected void resetLogView()
   {
-    AppMethodBeat.i(146884);
+    AppMethodBeat.i(14258);
     if (this.mDashBoard != null)
     {
       removeView(this.mDashBoard);
       addView(this.mDashBoard);
     }
-    AppMethodBeat.o(146884);
+    AppMethodBeat.o(14258);
   }
   
   public void setDashBoardStatusInfo(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(146887);
+    AppMethodBeat.i(14261);
     if (this.mDashBoard != null) {
       this.mDashBoard.a(paramCharSequence);
     }
-    AppMethodBeat.o(146887);
+    AppMethodBeat.o(14261);
   }
   
   public void setLogMargin(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    AppMethodBeat.i(146890);
+    AppMethodBeat.i(14264);
     this.mLeft = paramFloat1;
     this.mRight = paramFloat2;
     this.mTop = paramFloat3;
@@ -430,25 +455,39 @@ public class TXCloudVideoView
     if (this.mDashBoard != null) {
       this.mDashBoard.a((int)this.mLeft, (int)this.mTop, (int)this.mRight, (int)this.mBottom);
     }
-    AppMethodBeat.o(146890);
+    AppMethodBeat.o(14264);
   }
   
-  public void setLogMarginRatio(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void setLogMarginRatio(final float paramFloat1, final float paramFloat2, final float paramFloat3, final float paramFloat4)
   {
-    AppMethodBeat.i(146891);
+    AppMethodBeat.i(14265);
     getWidth();
     getHeight();
-    postDelayed(new TXCloudVideoView.1(this, paramFloat1, paramFloat2, paramFloat3, paramFloat4), 100L);
-    AppMethodBeat.o(146891);
+    postDelayed(new Runnable()
+    {
+      public void run()
+      {
+        AppMethodBeat.i(14243);
+        TXCloudVideoView.access$002(TXCloudVideoView.this, TXCloudVideoView.this.getWidth() * paramFloat1);
+        TXCloudVideoView.access$102(TXCloudVideoView.this, TXCloudVideoView.this.getWidth() * paramFloat2);
+        TXCloudVideoView.access$202(TXCloudVideoView.this, TXCloudVideoView.this.getHeight() * paramFloat3);
+        TXCloudVideoView.access$302(TXCloudVideoView.this, TXCloudVideoView.this.getHeight() * paramFloat4);
+        if (TXCloudVideoView.this.mDashBoard != null) {
+          TXCloudVideoView.this.mDashBoard.a((int)TXCloudVideoView.this.mLeft, (int)TXCloudVideoView.this.mTop, (int)TXCloudVideoView.this.mRight, (int)TXCloudVideoView.this.mBottom);
+        }
+        AppMethodBeat.o(14243);
+      }
+    }, 100L);
+    AppMethodBeat.o(14265);
   }
   
   public void setLogText(Bundle paramBundle1, Bundle paramBundle2, int paramInt)
   {
-    AppMethodBeat.i(65581);
+    AppMethodBeat.i(14257);
     if (this.mDashBoard != null) {
       this.mDashBoard.a(paramBundle1, paramBundle2, paramInt);
     }
-    AppMethodBeat.o(65581);
+    AppMethodBeat.o(14257);
   }
   
   public void setMirror(boolean paramBoolean) {}
@@ -464,7 +503,7 @@ public class TXCloudVideoView
   
   public void showLog(boolean paramBoolean)
   {
-    AppMethodBeat.i(65579);
+    AppMethodBeat.i(14255);
     TXDashBoard localTXDashBoard;
     if (this.mDashBoard != null)
     {
@@ -477,23 +516,23 @@ public class TXCloudVideoView
     for (int i = 2;; i = 0)
     {
       localTXDashBoard.setShowLevel(i);
-      AppMethodBeat.o(65579);
+      AppMethodBeat.o(14255);
       return;
     }
   }
   
   public void showVideoDebugLog(int paramInt)
   {
-    AppMethodBeat.i(146889);
+    AppMethodBeat.i(14263);
     if (this.mDashBoard != null) {
       this.mDashBoard.setShowLevel(paramInt);
     }
-    AppMethodBeat.o(146889);
+    AppMethodBeat.o(14263);
   }
   
   public void start(boolean paramBoolean1, boolean paramBoolean2, j paramj)
   {
-    AppMethodBeat.i(146894);
+    AppMethodBeat.i(14268);
     this.mFocus = paramBoolean1;
     this.mZoom = paramBoolean2;
     if ((this.mFocus) || (this.mZoom))
@@ -504,12 +543,12 @@ public class TXCloudVideoView
     if (this.mGLSurfaceView != null) {
       this.mGLSurfaceView.setVisibility(0);
     }
-    AppMethodBeat.o(146894);
+    AppMethodBeat.o(14268);
   }
   
   public void stop(boolean paramBoolean)
   {
-    AppMethodBeat.i(65584);
+    AppMethodBeat.i(14269);
     if ((this.mFocus) || (this.mZoom)) {
       setOnTouchListener(null);
     }
@@ -517,12 +556,12 @@ public class TXCloudVideoView
     if ((paramBoolean) && (this.mGLSurfaceView != null)) {
       this.mGLSurfaceView.setVisibility(8);
     }
-    AppMethodBeat.o(65584);
+    AppMethodBeat.o(14269);
   }
   
   public void updateVideoViewSize(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(146886);
+    AppMethodBeat.i(14260);
     if (this.mGLSurfaceView != null) {}
     int j;
     int i;
@@ -533,13 +572,13 @@ public class TXCloudVideoView
       if ((paramInt2 != 0) && (i != 0)) {
         break label70;
       }
-      AppMethodBeat.o(146886);
+      AppMethodBeat.o(14260);
       return;
       if (this.mVideoView == null) {
         break;
       }
     }
-    AppMethodBeat.o(146886);
+    AppMethodBeat.o(14260);
     return;
     label70:
     this.mCaptureWidth = paramInt1;
@@ -562,7 +601,7 @@ public class TXCloudVideoView
       if ((((FrameLayout.LayoutParams)localObject2).width != j) || (((FrameLayout.LayoutParams)localObject2).height != i)) {
         break;
       }
-      AppMethodBeat.o(146886);
+      AppMethodBeat.o(14260);
       return;
       j = (int)(f * i);
       paramInt2 = (getWidth() - j) / 2;
@@ -575,16 +614,47 @@ public class TXCloudVideoView
       ((FrameLayout.LayoutParams)localObject2).leftMargin = paramInt2;
       ((FrameLayout.LayoutParams)localObject2).topMargin = paramInt1;
       ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      AppMethodBeat.o(146886);
+      AppMethodBeat.o(14260);
       return;
       label231:
       localObject2 = new FrameLayout.LayoutParams(j, i);
     }
   }
+  
+  class a
+    implements Runnable
+  {
+    private View b;
+    private MotionEvent c;
+    
+    private a() {}
+    
+    public void a(MotionEvent paramMotionEvent)
+    {
+      this.c = paramMotionEvent;
+    }
+    
+    public void a(View paramView)
+    {
+      this.b = paramView;
+    }
+    
+    public void run()
+    {
+      AppMethodBeat.i(14284);
+      if ((TXCloudVideoView.this.mCapture != null) && (TXCloudVideoView.this.mFocus)) {
+        TXCloudVideoView.this.mCapture.a(this.c.getX() / this.b.getWidth(), this.c.getY() / this.b.getHeight());
+      }
+      if (TXCloudVideoView.this.mFocus) {
+        TXCloudVideoView.this.onTouchFocus((int)this.c.getX(), (int)this.c.getY());
+      }
+      AppMethodBeat.o(14284);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.rtmp.ui.TXCloudVideoView
  * JD-Core Version:    0.7.0.1
  */

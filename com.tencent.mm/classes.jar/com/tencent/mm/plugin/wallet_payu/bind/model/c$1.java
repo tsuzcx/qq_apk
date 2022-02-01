@@ -16,21 +16,21 @@ final class c$1
   
   public final CharSequence getTips(int paramInt)
   {
-    AppMethodBeat.i(48338);
+    AppMethodBeat.i(71978);
     if (paramInt == 0)
     {
-      localObject = this.hwZ.getString(2131305004);
-      AppMethodBeat.o(48338);
+      localObject = this.activity.getString(2131765196);
+      AppMethodBeat.o(71978);
       return localObject;
     }
     Object localObject = super.getTips(paramInt);
-    AppMethodBeat.o(48338);
+    AppMethodBeat.o(71978);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.bind.model.c.1
  * JD-Core Version:    0.7.0.1
  */

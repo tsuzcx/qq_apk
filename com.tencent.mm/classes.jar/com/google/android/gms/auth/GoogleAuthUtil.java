@@ -27,81 +27,81 @@ public final class GoogleAuthUtil
   
   public static void clearToken(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(76950);
+    AppMethodBeat.i(10609);
     zzg.clearToken(paramContext, paramString);
-    AppMethodBeat.o(76950);
+    AppMethodBeat.o(10609);
   }
   
   public static List<AccountChangeEvent> getAccountChangeEvents(Context paramContext, int paramInt, String paramString)
   {
-    AppMethodBeat.i(76951);
+    AppMethodBeat.i(10610);
     paramContext = zzg.getAccountChangeEvents(paramContext, paramInt, paramString);
-    AppMethodBeat.o(76951);
+    AppMethodBeat.o(10610);
     return paramContext;
   }
   
   public static String getAccountId(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(76952);
+    AppMethodBeat.i(10611);
     paramContext = zzg.getAccountId(paramContext, paramString);
-    AppMethodBeat.o(76952);
+    AppMethodBeat.o(10611);
     return paramContext;
   }
   
   public static String getToken(Context paramContext, Account paramAccount, String paramString)
   {
-    AppMethodBeat.i(76947);
+    AppMethodBeat.i(10606);
     paramContext = zzg.getToken(paramContext, paramAccount, paramString);
-    AppMethodBeat.o(76947);
+    AppMethodBeat.o(10606);
     return paramContext;
   }
   
   public static String getToken(Context paramContext, Account paramAccount, String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(76948);
+    AppMethodBeat.i(10607);
     paramContext = zzg.getToken(paramContext, paramAccount, paramString, paramBundle);
-    AppMethodBeat.o(76948);
+    AppMethodBeat.o(10607);
     return paramContext;
   }
   
   @Deprecated
   public static String getToken(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(76945);
+    AppMethodBeat.i(10604);
     paramContext = zzg.getToken(paramContext, paramString1, paramString2);
-    AppMethodBeat.o(76945);
+    AppMethodBeat.o(10604);
     return paramContext;
   }
   
   @Deprecated
   public static String getToken(Context paramContext, String paramString1, String paramString2, Bundle paramBundle)
   {
-    AppMethodBeat.i(76946);
+    AppMethodBeat.i(10605);
     paramContext = zzg.getToken(paramContext, paramString1, paramString2, paramBundle);
-    AppMethodBeat.o(76946);
+    AppMethodBeat.o(10605);
     return paramContext;
   }
   
   public static String getTokenWithNotification(Context paramContext, Account paramAccount, String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(76941);
+    AppMethodBeat.i(10600);
     Bundle localBundle = paramBundle;
     if (paramBundle == null) {
       localBundle = new Bundle();
     }
     localBundle.putBoolean("handle_notification", true);
     paramContext = zzd(paramContext, paramAccount, paramString, localBundle).zze();
-    AppMethodBeat.o(76941);
+    AppMethodBeat.o(10600);
     return paramContext;
   }
   
   public static String getTokenWithNotification(Context paramContext, Account paramAccount, String paramString, Bundle paramBundle, Intent paramIntent)
   {
-    AppMethodBeat.i(76942);
+    AppMethodBeat.i(10601);
     if (paramIntent == null)
     {
       paramContext = new IllegalArgumentException("Callback cannot be null.");
-      AppMethodBeat.o(76942);
+      AppMethodBeat.o(10601);
       throw paramContext;
     }
     Object localObject = paramIntent.toUri(1);
@@ -115,20 +115,20 @@ public final class GoogleAuthUtil
       ((Bundle)localObject).putParcelable("callback_intent", paramIntent);
       ((Bundle)localObject).putBoolean("handle_notification", true);
       paramContext = zzd(paramContext, paramAccount, paramString, (Bundle)localObject).zze();
-      AppMethodBeat.o(76942);
+      AppMethodBeat.o(10601);
       return paramContext;
     }
     catch (URISyntaxException paramContext)
     {
       paramContext = new IllegalArgumentException("Parameter callback contains invalid data. It must be serializable using toUri() and parseUri().");
-      AppMethodBeat.o(76942);
+      AppMethodBeat.o(10601);
       throw paramContext;
     }
   }
   
   public static String getTokenWithNotification(Context paramContext, Account paramAccount, String paramString1, Bundle paramBundle1, String paramString2, Bundle paramBundle2)
   {
-    AppMethodBeat.i(76943);
+    AppMethodBeat.i(10602);
     Preconditions.checkNotEmpty(paramString2, "Authority cannot be empty or null.");
     Bundle localBundle = paramBundle1;
     if (paramBundle1 == null) {
@@ -143,66 +143,66 @@ public final class GoogleAuthUtil
     localBundle.putBundle("sync_extras", paramBundle1);
     localBundle.putBoolean("handle_notification", true);
     paramContext = zzd(paramContext, paramAccount, paramString1, localBundle).zze();
-    AppMethodBeat.o(76943);
+    AppMethodBeat.o(10602);
     return paramContext;
   }
   
   @Deprecated
   public static String getTokenWithNotification(Context paramContext, String paramString1, String paramString2, Bundle paramBundle)
   {
-    AppMethodBeat.i(76938);
+    AppMethodBeat.i(10597);
     paramContext = getTokenWithNotification(paramContext, new Account(paramString1, "com.google"), paramString2, paramBundle);
-    AppMethodBeat.o(76938);
+    AppMethodBeat.o(10597);
     return paramContext;
   }
   
   @Deprecated
   public static String getTokenWithNotification(Context paramContext, String paramString1, String paramString2, Bundle paramBundle, Intent paramIntent)
   {
-    AppMethodBeat.i(76939);
+    AppMethodBeat.i(10598);
     paramContext = getTokenWithNotification(paramContext, new Account(paramString1, "com.google"), paramString2, paramBundle, paramIntent);
-    AppMethodBeat.o(76939);
+    AppMethodBeat.o(10598);
     return paramContext;
   }
   
   @Deprecated
   public static String getTokenWithNotification(Context paramContext, String paramString1, String paramString2, Bundle paramBundle1, String paramString3, Bundle paramBundle2)
   {
-    AppMethodBeat.i(76940);
+    AppMethodBeat.i(10599);
     paramContext = getTokenWithNotification(paramContext, new Account(paramString1, "com.google"), paramString2, paramBundle1, paramString3, paramBundle2);
-    AppMethodBeat.o(76940);
+    AppMethodBeat.o(10599);
     return paramContext;
   }
   
   @Deprecated
   public static void invalidateToken(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(76949);
+    AppMethodBeat.i(10608);
     zzg.invalidateToken(paramContext, paramString);
-    AppMethodBeat.o(76949);
+    AppMethodBeat.o(10608);
   }
   
   @TargetApi(23)
   public static Bundle removeAccount(Context paramContext, Account paramAccount)
   {
-    AppMethodBeat.i(76953);
+    AppMethodBeat.i(10612);
     paramContext = zzg.removeAccount(paramContext, paramAccount);
-    AppMethodBeat.o(76953);
+    AppMethodBeat.o(10612);
     return paramContext;
   }
   
   @TargetApi(26)
   public static Boolean requestGoogleAccountsAccess(Context paramContext)
   {
-    AppMethodBeat.i(76954);
+    AppMethodBeat.i(10613);
     paramContext = zzg.requestGoogleAccountsAccess(paramContext);
-    AppMethodBeat.o(76954);
+    AppMethodBeat.o(10613);
     return paramContext;
   }
   
   private static TokenData zzd(Context paramContext, Account paramAccount, String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(76944);
+    AppMethodBeat.i(10603);
     Bundle localBundle = paramBundle;
     if (paramBundle == null) {
       localBundle = new Bundle();
@@ -211,28 +211,28 @@ public final class GoogleAuthUtil
     {
       paramAccount = zzg.zze(paramContext, paramAccount, paramString, localBundle);
       GooglePlayServicesUtil.cancelAvailabilityErrorNotifications(paramContext);
-      AppMethodBeat.o(76944);
+      AppMethodBeat.o(10603);
       return paramAccount;
     }
     catch (GooglePlayServicesAvailabilityException paramAccount)
     {
       GooglePlayServicesUtil.showErrorNotification(paramAccount.getConnectionStatusCode(), paramContext);
       paramContext = new UserRecoverableNotifiedException("User intervention required. Notification has been pushed.");
-      AppMethodBeat.o(76944);
+      AppMethodBeat.o(10603);
       throw paramContext;
     }
     catch (UserRecoverableAuthException paramAccount)
     {
       GooglePlayServicesUtil.cancelAvailabilityErrorNotifications(paramContext);
       paramContext = new UserRecoverableNotifiedException("User intervention required. Notification has been pushed.");
-      AppMethodBeat.o(76944);
+      AppMethodBeat.o(10603);
       throw paramContext;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.GoogleAuthUtil
  * JD-Core Version:    0.7.0.1
  */

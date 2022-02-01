@@ -11,11 +11,11 @@ public abstract interface KSwitchView
   
   public abstract KImage getOnImage();
   
-  public abstract long getOnTintColor();
+  public abstract DynamicColor getOnTintColor();
   
-  public abstract long getThumbTintColor();
+  public abstract DynamicColor getThumbTintColor();
   
-  public abstract long getTintColor();
+  public abstract DynamicColor getTintColor();
   
   public abstract void setEnabled(boolean paramBoolean);
   
@@ -27,15 +27,15 @@ public abstract interface KSwitchView
   
   public abstract void setOnImage(KImage paramKImage);
   
-  public abstract void setOnTintColor(long paramLong);
+  public abstract void setOnTintColor(DynamicColor paramDynamicColor);
   
-  public abstract void setThumbTintColor(long paramLong);
+  public abstract void setThumbTintColor(DynamicColor paramDynamicColor);
   
-  public abstract void setTintColor(long paramLong);
+  public abstract void setTintColor(DynamicColor paramDynamicColor);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.gen.KSwitchView
  * JD-Core Version:    0.7.0.1
  */

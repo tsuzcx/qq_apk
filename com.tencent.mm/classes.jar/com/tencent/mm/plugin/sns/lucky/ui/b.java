@@ -9,16 +9,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.aa;
 import com.tencent.mm.plugin.l.a.a;
-import com.tencent.mm.plugin.luckymoney.model.x;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.aur;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.protocal.protobuf.bft;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.wallet_core.ui.e;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,33 +30,33 @@ public final class b
   private final String TAG;
   private Context mContext;
   private LayoutInflater mInflater;
-  List<a.a> oja;
-  private int ojd;
+  List<a.a> sYN;
+  private int sYQ;
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(45190);
+    AppMethodBeat.i(68362);
     this.TAG = "SnsLuckyMoneyReceivedRecordListAdapter";
-    this.oja = new ArrayList();
-    this.ojd = 1;
+    this.sYN = new ArrayList();
+    this.sYQ = 1;
     this.mContext = paramContext;
     this.mInflater = LayoutInflater.from(paramContext);
-    AppMethodBeat.o(45190);
+    AppMethodBeat.o(68362);
   }
   
-  private a.a DD(int paramInt)
+  private a.a Md(int paramInt)
   {
-    AppMethodBeat.i(45192);
-    a.a locala = (a.a)this.oja.get(paramInt);
-    AppMethodBeat.o(45192);
+    AppMethodBeat.i(68364);
+    a.a locala = (a.a)this.sYN.get(paramInt);
+    AppMethodBeat.o(68364);
     return locala;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(45191);
-    int i = this.oja.size();
-    AppMethodBeat.o(45191);
+    AppMethodBeat.i(68363);
+    int i = this.sYN.size();
+    AppMethodBeat.o(68363);
     return i;
   }
   
@@ -69,33 +67,33 @@ public final class b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(45193);
+    AppMethodBeat.i(68365);
     View localView;
     if (paramView == null)
     {
-      localView = this.mInflater.inflate(2130970837, paramViewGroup, false);
-      paramViewGroup = new b.a(this);
-      paramViewGroup.kPy = ((ImageView)localView.findViewById(2131825822));
-      paramViewGroup.nzx = ((TextView)localView.findViewById(2131825823));
-      paramViewGroup.ojf = ((TextView)localView.findViewById(2131825827));
-      paramViewGroup.ojg = ((TextView)localView.findViewById(2131825824));
-      paramViewGroup.ojk = ((TextView)localView.findViewById(2131825829));
+      localView = this.mInflater.inflate(2131495561, paramViewGroup, false);
+      paramViewGroup = new a();
+      paramViewGroup.nVN = ((ImageView)localView.findViewById(2131301935));
+      paramViewGroup.siX = ((TextView)localView.findViewById(2131301938));
+      paramViewGroup.sYS = ((TextView)localView.findViewById(2131301939));
+      paramViewGroup.sYT = ((TextView)localView.findViewById(2131301933));
+      paramViewGroup.sYX = ((TextView)localView.findViewById(2131301937));
       localView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      a.a locala = DD(paramInt);
-      com.tencent.mm.kernel.g.RM();
-      ad localad = ((j)com.tencent.mm.kernel.g.E(j.class)).YA().arw(locala.ikj);
+      a.a locala = Md(paramInt);
+      com.tencent.mm.kernel.g.afC();
+      af localaf = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHY(locala.kGt);
       label163:
       long l1;
       Object localObject;
-      if (locala.ikj != null)
+      if (locala.kGt != null)
       {
-        a.b.s(paramViewGroup.kPy, locala.ikj);
-        TextView localTextView = paramViewGroup.ojf;
+        a.b.d(paramViewGroup.nVN, locala.kGt);
+        TextView localTextView = paramViewGroup.sYS;
         paramView = this.mContext;
-        l1 = locala.oic * 1000L;
+        l1 = locala.sXF * 1000L;
         localObject = new GregorianCalendar();
         if (l1 >= 3600000L) {
           break label381;
@@ -103,33 +101,33 @@ public final class b
         paramView = "";
         label207:
         localTextView.setText(paramView);
-        paramViewGroup.ojf.setVisibility(0);
-        if (localad == null) {
+        paramViewGroup.sYS.setVisibility(0);
+        if (localaf == null) {
           break label503;
         }
-        x.a(this.mContext, paramViewGroup.nzx, localad.Of());
+        com.tencent.mm.plugin.luckymoney.model.z.a(this.mContext, paramViewGroup.siX, localaf.ZX());
         label242:
-        paramView = new aur();
+        paramView = new bft();
       }
       try
       {
-        if ((locala.oid != null) && (locala.oid.getILen() > 0))
+        if ((locala.sXG != null) && (locala.sXG.getILen() > 0))
         {
-          paramView.parseFrom(aa.a(locala.oid));
-          if (paramView.cNd > 0L)
+          paramView.parseFrom(com.tencent.mm.platformtools.z.a(locala.sXG));
+          if (paramView.dEb > 0L)
           {
-            paramView = this.mContext.getString(2131301295, new Object[] { e.E(paramView.cNd / 100.0D) });
-            paramViewGroup.ojg.setText(paramView);
-            paramViewGroup.ojk.setVisibility(8);
+            paramView = this.mContext.getString(2131760940, new Object[] { e.D(paramView.dEb / 100.0D) });
+            paramViewGroup.sYT.setText(paramView);
+            paramViewGroup.sYX.setVisibility(8);
           }
           for (;;)
           {
-            AppMethodBeat.o(45193);
+            AppMethodBeat.o(68365);
             return localView;
-            paramViewGroup = (b.a)paramView.getTag();
+            paramViewGroup = (a)paramView.getTag();
             localView = paramView;
             break;
-            ab.e("SnsLuckyMoneyReceivedRecordListAdapter", "the contact is null,by username:%s", new Object[] { locala.ikj });
+            ad.e("SnsLuckyMoneyReceivedRecordListAdapter", "the contact is null,by username:%s", new Object[] { locala.kGt });
             break label163;
             label381:
             long l2 = l1 - new GregorianCalendar(((GregorianCalendar)localObject).get(1), ((GregorianCalendar)localObject).get(2), ((GregorianCalendar)localObject).get(5)).getTimeInMillis();
@@ -140,13 +138,13 @@ public final class b
             }
             localObject = new Time();
             ((Time)localObject).set(l1);
-            paramView = com.tencent.mm.pluginsdk.f.g.a(paramView.getString(2131300033, new Object[] { " " }), (Time)localObject).toString();
+            paramView = com.tencent.mm.pluginsdk.g.g.a(paramView.getString(2131759500, new Object[] { " " }), (Time)localObject).toString();
             break label207;
             label503:
-            ab.e("SnsLuckyMoneyReceivedRecordListAdapter", "the contact is null,by username:%s", new Object[] { locala.ikj });
+            ad.e("SnsLuckyMoneyReceivedRecordListAdapter", "the contact is null,by username:%s", new Object[] { locala.kGt });
             break label242;
-            paramViewGroup.ojg.setVisibility(8);
-            paramViewGroup.ojk.setVisibility(0);
+            paramViewGroup.sYT.setVisibility(8);
+            paramViewGroup.sYX.setVisibility(0);
           }
         }
       }
@@ -154,18 +152,29 @@ public final class b
       {
         for (;;)
         {
-          ab.e("SnsLuckyMoneyReceivedRecordListAdapter", paramView.getMessage() + "hbBuffer is error");
-          paramViewGroup.ojg.setVisibility(8);
-          paramViewGroup.ojk.setVisibility(8);
-          paramViewGroup.kPy.setVisibility(8);
-          paramViewGroup.nzx.setVisibility(8);
-          paramViewGroup.ojf.setVisibility(8);
+          ad.e("SnsLuckyMoneyReceivedRecordListAdapter", paramView.getMessage() + "hbBuffer is error");
+          paramViewGroup.sYT.setVisibility(8);
+          paramViewGroup.sYX.setVisibility(8);
+          paramViewGroup.nVN.setVisibility(8);
+          paramViewGroup.siX.setVisibility(8);
+          paramViewGroup.sYS.setVisibility(8);
           continue;
-          paramViewGroup.ojg.setVisibility(8);
-          paramViewGroup.ojk.setVisibility(0);
+          paramViewGroup.sYT.setVisibility(8);
+          paramViewGroup.sYX.setVisibility(0);
         }
       }
     }
+  }
+  
+  final class a
+  {
+    ImageView nVN;
+    TextView sYS;
+    TextView sYT;
+    TextView sYX;
+    TextView siX;
+    
+    a() {}
   }
 }
 

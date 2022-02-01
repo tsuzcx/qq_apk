@@ -9,6 +9,7 @@ import android.content.res.XmlResourceParser;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
+import android.net.Uri.Builder;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.ParcelFileDescriptor;
@@ -17,6 +18,9 @@ import android.webkit.MimeTypeMap;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 import org.xmlpull.v1.XmlPullParserException;
 
 public class FileProvider
@@ -101,7 +105,7 @@ public class FileProvider
   
   public static Uri getUriForFile(Context paramContext, String paramString, File paramFile)
   {
-    return getPathStrategy(paramContext, paramString).i(paramFile);
+    return getPathStrategy(paramContext, paramString).o(paramFile);
   }
   
   private static int modeToMode(String paramString)
@@ -126,7 +130,7 @@ public class FileProvider
   
   private static a parsePathStrategy(Context paramContext, String paramString)
   {
-    FileProvider.b localb = new FileProvider.b(paramString);
+    b localb = new b(paramString);
     XmlResourceParser localXmlResourceParser = paramContext.getPackageManager().resolveContentProvider(paramString, 128).loadXmlMetaData(paramContext.getPackageManager(), "android.support.FILE_PROVIDER_PATHS");
     if (localXmlResourceParser == null) {
       throw new IllegalArgumentException("Missing android.support.FILE_PROVIDER_PATHS meta-data");
@@ -137,7 +141,7 @@ public class FileProvider
       {
         Object localObject2 = paramString.getCanonicalFile();
         Object localObject1;
-        localb.zE.put(localObject1, localObject2);
+        localb.FY.put(localObject1, localObject2);
         int i = localXmlResourceParser.next();
         if (i != 1)
         {
@@ -178,7 +182,7 @@ public class FileProvider
             }
             if ("external-files-path".equals(paramString))
             {
-              paramString = b.N(paramContext);
+              paramString = b.P(paramContext);
               if (paramString.length <= 0) {
                 break label320;
               }
@@ -187,7 +191,7 @@ public class FileProvider
             }
             if ("external-cache-path".equals(paramString))
             {
-              paramString = b.O(paramContext);
+              paramString = b.Q(paramContext);
               if (paramString.length <= 0) {
                 break label320;
               }
@@ -323,12 +327,99 @@ public class FileProvider
   {
     public abstract File c(Uri paramUri);
     
-    public abstract Uri i(File paramFile);
+    public abstract Uri o(File paramFile);
+  }
+  
+  static final class b
+    implements FileProvider.a
+  {
+    private final String FX;
+    final HashMap<String, File> FY = new HashMap();
+    
+    b(String paramString)
+    {
+      this.FX = paramString;
+    }
+    
+    public final File c(Uri paramUri)
+    {
+      Object localObject2 = paramUri.getEncodedPath();
+      int i = ((String)localObject2).indexOf('/', 1);
+      Object localObject1 = Uri.decode(((String)localObject2).substring(1, i));
+      localObject2 = Uri.decode(((String)localObject2).substring(i + 1));
+      localObject1 = (File)this.FY.get(localObject1);
+      if (localObject1 == null) {
+        throw new IllegalArgumentException("Unable to find configured root for ".concat(String.valueOf(paramUri)));
+      }
+      paramUri = new File((File)localObject1, (String)localObject2);
+      try
+      {
+        localObject2 = paramUri.getCanonicalFile();
+        if (!((File)localObject2).getPath().startsWith(((File)localObject1).getPath())) {
+          throw new SecurityException("Resolved path jumped beyond configured root");
+        }
+      }
+      catch (IOException localIOException)
+      {
+        throw new IllegalArgumentException("Failed to resolve canonical path for ".concat(String.valueOf(paramUri)));
+      }
+      return localObject2;
+    }
+    
+    public final Uri o(File paramFile)
+    {
+      for (;;)
+      {
+        String str1;
+        try
+        {
+          str1 = paramFile.getCanonicalPath();
+          paramFile = null;
+          Iterator localIterator = this.FY.entrySet().iterator();
+          if (localIterator.hasNext())
+          {
+            Map.Entry localEntry2 = (Map.Entry)localIterator.next();
+            String str2 = ((File)localEntry2.getValue()).getPath();
+            if (!str1.startsWith(str2)) {
+              break label257;
+            }
+            Map.Entry localEntry1 = localEntry2;
+            if (paramFile != null)
+            {
+              if (str2.length() <= ((File)paramFile.getValue()).getPath().length()) {
+                break label257;
+              }
+              localEntry1 = localEntry2;
+            }
+            paramFile = localEntry1;
+            continue;
+          }
+          if (paramFile != null) {
+            break label143;
+          }
+        }
+        catch (IOException localIOException)
+        {
+          throw new IllegalArgumentException("Failed to resolve canonical path for ".concat(String.valueOf(paramFile)));
+        }
+        throw new IllegalArgumentException("Failed to find configured root that contains ".concat(String.valueOf(str1)));
+        label143:
+        Object localObject = ((File)paramFile.getValue()).getPath();
+        if (((String)localObject).endsWith("/")) {}
+        for (localObject = str1.substring(((String)localObject).length());; localObject = str1.substring(((String)localObject).length() + 1))
+        {
+          paramFile = Uri.encode((String)paramFile.getKey()) + '/' + Uri.encode((String)localObject, "/");
+          return new Uri.Builder().scheme("content").authority(this.FX).encodedPath(paramFile).build();
+        }
+        label257:
+        localObject = paramFile;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v4.content.FileProvider
  * JD-Core Version:    0.7.0.1
  */

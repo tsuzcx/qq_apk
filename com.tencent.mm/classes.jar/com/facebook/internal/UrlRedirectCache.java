@@ -14,18 +14,18 @@ class UrlRedirectCache
   
   static
   {
-    AppMethodBeat.i(72489);
+    AppMethodBeat.i(17925);
     TAG = UrlRedirectCache.class.getSimpleName();
     REDIRECT_CONTENT_TAG = TAG + "_Redirect";
-    AppMethodBeat.o(72489);
+    AppMethodBeat.o(17925);
   }
   
   static void cacheUriRedirect(Uri paramUri1, Uri paramUri2)
   {
-    AppMethodBeat.i(72487);
+    AppMethodBeat.i(17923);
     if ((paramUri1 == null) || (paramUri2 == null))
     {
-      AppMethodBeat.o(72487);
+      AppMethodBeat.o(17923);
       return;
     }
     Uri localUri2 = null;
@@ -41,23 +41,23 @@ class UrlRedirectCache
     catch (IOException paramUri1) {}finally
     {
       Utility.closeQuietly(localUri2);
-      AppMethodBeat.o(72487);
+      AppMethodBeat.o(17923);
     }
   }
   
   static void clearCache()
   {
-    AppMethodBeat.i(72488);
+    AppMethodBeat.i(17924);
     try
     {
       getCache().clearCache();
-      AppMethodBeat.o(72488);
+      AppMethodBeat.o(17924);
       return;
     }
     catch (IOException localIOException)
     {
       Logger.log(LoggingBehavior.CACHE, 5, TAG, "clearCache failed " + localIOException.getMessage());
-      AppMethodBeat.o(72488);
+      AppMethodBeat.o(17924);
     }
   }
   
@@ -65,12 +65,12 @@ class UrlRedirectCache
   {
     try
     {
-      AppMethodBeat.i(72485);
+      AppMethodBeat.i(17921);
       if (urlRedirectCache == null) {
         urlRedirectCache = new FileLruCache(TAG, new FileLruCache.Limits());
       }
       FileLruCache localFileLruCache = urlRedirectCache;
-      AppMethodBeat.o(72485);
+      AppMethodBeat.o(17921);
       return localFileLruCache;
     }
     finally {}
@@ -80,153 +80,153 @@ class UrlRedirectCache
   static Uri getRedirectedUri(Uri paramUri)
   {
     // Byte code:
-    //   0: ldc 119
-    //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: ifnonnull +10 -> 16
-    //   9: ldc 119
-    //   11: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   14: aconst_null
-    //   15: areturn
-    //   16: aload_0
-    //   17: invokevirtual 59	android/net/Uri:toString	()Ljava/lang/String;
-    //   20: astore_3
-    //   21: invokestatic 56	com/facebook/internal/UrlRedirectCache:getCache	()Lcom/facebook/internal/FileLruCache;
-    //   24: astore 5
-    //   26: iconst_0
-    //   27: istore_1
-    //   28: aconst_null
-    //   29: astore_0
-    //   30: aload 5
-    //   32: aload_3
-    //   33: getstatic 42	com/facebook/internal/UrlRedirectCache:REDIRECT_CONTENT_TAG	Ljava/lang/String;
-    //   36: invokevirtual 123	com/facebook/internal/FileLruCache:get	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/InputStream;
-    //   39: astore 4
-    //   41: aload 4
-    //   43: ifnull +87 -> 130
-    //   46: iconst_1
-    //   47: istore_1
-    //   48: new 125	java/io/InputStreamReader
-    //   51: dup
-    //   52: aload 4
-    //   54: invokespecial 128	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   57: astore_3
-    //   58: sipush 128
-    //   61: newarray char
-    //   63: astore_0
-    //   64: new 28	java/lang/StringBuilder
-    //   67: dup
-    //   68: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   71: astore 4
-    //   73: aload_3
-    //   74: aload_0
-    //   75: iconst_0
-    //   76: sipush 128
-    //   79: invokevirtual 132	java/io/InputStreamReader:read	([CII)I
-    //   82: istore_2
-    //   83: iload_2
-    //   84: ifle +27 -> 111
-    //   87: aload 4
-    //   89: aload_0
-    //   90: iconst_0
-    //   91: iload_2
-    //   92: invokevirtual 135	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
-    //   95: pop
-    //   96: goto -23 -> 73
-    //   99: astore_0
-    //   100: aload_3
-    //   101: invokestatic 83	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
-    //   104: ldc 119
-    //   106: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   109: aconst_null
-    //   110: areturn
-    //   111: aload_3
-    //   112: invokestatic 83	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
-    //   115: aload 4
-    //   117: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   120: astore 4
-    //   122: aload_3
-    //   123: astore_0
-    //   124: aload 4
-    //   126: astore_3
-    //   127: goto -97 -> 30
-    //   130: iload_1
-    //   131: ifeq +19 -> 150
-    //   134: aload_3
-    //   135: invokestatic 139	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   138: astore_3
-    //   139: aload_0
-    //   140: invokestatic 83	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
-    //   143: ldc 119
-    //   145: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   148: aload_3
-    //   149: areturn
-    //   150: aload_0
-    //   151: invokestatic 83	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
-    //   154: goto -50 -> 104
-    //   157: astore_3
-    //   158: aconst_null
-    //   159: astore_0
-    //   160: aload_0
-    //   161: invokestatic 83	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
-    //   164: ldc 119
-    //   166: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   169: aload_3
-    //   170: athrow
-    //   171: astore 4
-    //   173: aload_3
-    //   174: astore_0
-    //   175: aload 4
-    //   177: astore_3
-    //   178: goto -18 -> 160
-    //   181: astore_3
-    //   182: goto -22 -> 160
-    //   185: astore_0
-    //   186: aconst_null
-    //   187: astore_3
-    //   188: goto -88 -> 100
-    //   191: astore_3
-    //   192: aload_0
-    //   193: astore_3
-    //   194: goto -94 -> 100
+    //   0: sipush 17922
+    //   3: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: ifnonnull +11 -> 18
+    //   10: sipush 17922
+    //   13: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   16: aconst_null
+    //   17: areturn
+    //   18: aload_0
+    //   19: invokevirtual 57	android/net/Uri:toString	()Ljava/lang/String;
+    //   22: astore_3
+    //   23: invokestatic 54	com/facebook/internal/UrlRedirectCache:getCache	()Lcom/facebook/internal/FileLruCache;
+    //   26: astore 5
+    //   28: iconst_0
+    //   29: istore_1
+    //   30: aconst_null
+    //   31: astore_0
+    //   32: aload 5
+    //   34: aload_3
+    //   35: getstatic 41	com/facebook/internal/UrlRedirectCache:REDIRECT_CONTENT_TAG	Ljava/lang/String;
+    //   38: invokevirtual 118	com/facebook/internal/FileLruCache:get	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/InputStream;
+    //   41: astore 4
+    //   43: aload 4
+    //   45: ifnull +88 -> 133
+    //   48: iconst_1
+    //   49: istore_1
+    //   50: new 120	java/io/InputStreamReader
+    //   53: dup
+    //   54: aload 4
+    //   56: invokespecial 123	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   59: astore_3
+    //   60: sipush 128
+    //   63: newarray char
+    //   65: astore_0
+    //   66: new 27	java/lang/StringBuilder
+    //   69: dup
+    //   70: invokespecial 30	java/lang/StringBuilder:<init>	()V
+    //   73: astore 4
+    //   75: aload_3
+    //   76: aload_0
+    //   77: iconst_0
+    //   78: sipush 128
+    //   81: invokevirtual 127	java/io/InputStreamReader:read	([CII)I
+    //   84: istore_2
+    //   85: iload_2
+    //   86: ifle +28 -> 114
+    //   89: aload 4
+    //   91: aload_0
+    //   92: iconst_0
+    //   93: iload_2
+    //   94: invokevirtual 130	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   97: pop
+    //   98: goto -23 -> 75
+    //   101: astore_0
+    //   102: aload_3
+    //   103: invokestatic 81	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   106: sipush 17922
+    //   109: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   112: aconst_null
+    //   113: areturn
+    //   114: aload_3
+    //   115: invokestatic 81	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   118: aload 4
+    //   120: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   123: astore 4
+    //   125: aload_3
+    //   126: astore_0
+    //   127: aload 4
+    //   129: astore_3
+    //   130: goto -98 -> 32
+    //   133: iload_1
+    //   134: ifeq +20 -> 154
+    //   137: aload_3
+    //   138: invokestatic 134	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   141: astore_3
+    //   142: aload_0
+    //   143: invokestatic 81	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   146: sipush 17922
+    //   149: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   152: aload_3
+    //   153: areturn
+    //   154: aload_0
+    //   155: invokestatic 81	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   158: goto -52 -> 106
+    //   161: astore_3
+    //   162: aconst_null
+    //   163: astore_0
+    //   164: aload_0
+    //   165: invokestatic 81	com/facebook/internal/Utility:closeQuietly	(Ljava/io/Closeable;)V
+    //   168: sipush 17922
+    //   171: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   174: aload_3
+    //   175: athrow
+    //   176: astore 4
+    //   178: aload_3
+    //   179: astore_0
+    //   180: aload 4
+    //   182: astore_3
+    //   183: goto -19 -> 164
+    //   186: astore_3
+    //   187: goto -23 -> 164
+    //   190: astore_0
+    //   191: aconst_null
+    //   192: astore_3
+    //   193: goto -91 -> 102
+    //   196: astore_3
+    //   197: aload_0
+    //   198: astore_3
+    //   199: goto -97 -> 102
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	197	0	paramUri	Uri
-    //   27	104	1	i	int
-    //   82	10	2	j	int
-    //   20	129	3	localObject1	Object
-    //   157	17	3	localObject2	Object
-    //   177	1	3	localObject3	Object
-    //   181	1	3	localObject4	Object
-    //   187	1	3	localObject5	Object
-    //   191	1	3	localIOException	IOException
-    //   193	1	3	localUri	Uri
-    //   39	86	4	localObject6	Object
-    //   171	5	4	localObject7	Object
-    //   24	7	5	localFileLruCache	FileLruCache
+    //   0	202	0	paramUri	Uri
+    //   29	105	1	i	int
+    //   84	10	2	j	int
+    //   22	131	3	localObject1	Object
+    //   161	18	3	localObject2	Object
+    //   182	1	3	localObject3	Object
+    //   186	1	3	localObject4	Object
+    //   192	1	3	localObject5	Object
+    //   196	1	3	localIOException	IOException
+    //   198	1	3	localUri	Uri
+    //   41	87	4	localObject6	Object
+    //   176	5	4	localObject7	Object
+    //   26	7	5	localFileLruCache	FileLruCache
     // Exception table:
     //   from	to	target	type
-    //   58	73	99	java/io/IOException
-    //   73	83	99	java/io/IOException
-    //   87	96	99	java/io/IOException
-    //   111	122	99	java/io/IOException
-    //   21	26	157	finally
-    //   58	73	171	finally
-    //   73	83	171	finally
-    //   87	96	171	finally
-    //   111	122	171	finally
-    //   30	41	181	finally
-    //   48	58	181	finally
-    //   134	139	181	finally
-    //   21	26	185	java/io/IOException
-    //   30	41	191	java/io/IOException
-    //   48	58	191	java/io/IOException
-    //   134	139	191	java/io/IOException
+    //   60	75	101	java/io/IOException
+    //   75	85	101	java/io/IOException
+    //   89	98	101	java/io/IOException
+    //   114	125	101	java/io/IOException
+    //   23	28	161	finally
+    //   60	75	176	finally
+    //   75	85	176	finally
+    //   89	98	176	finally
+    //   114	125	176	finally
+    //   32	43	186	finally
+    //   50	60	186	finally
+    //   137	142	186	finally
+    //   23	28	190	java/io/IOException
+    //   32	43	196	java/io/IOException
+    //   50	60	196	java/io/IOException
+    //   137	142	196	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.UrlRedirectCache
  * JD-Core Version:    0.7.0.1
  */

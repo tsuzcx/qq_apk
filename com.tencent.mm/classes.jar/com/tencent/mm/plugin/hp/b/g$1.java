@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class g$1
   implements DialogInterface.OnClickListener
@@ -13,14 +13,14 @@ final class g$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(90609);
-    Toast.makeText(ah.getContext(), "OK", 0).show();
-    AppMethodBeat.o(90609);
+    AppMethodBeat.i(117437);
+    Toast.makeText(aj.getContext(), "OK", 0).show();
+    AppMethodBeat.o(117437);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.b.g.1
  * JD-Core Version:    0.7.0.1
  */

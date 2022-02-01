@@ -23,20 +23,20 @@ public class Xlog
     return paramString;
   }
   
-  public static native void logWrite(Xlog.XLoggerInfo paramXLoggerInfo, String paramString);
+  public static native void logWrite(XLoggerInfo paramXLoggerInfo, String paramString);
   
   public static native void logWrite2(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString4);
   
   public static void open(boolean paramBoolean, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(92817);
+    AppMethodBeat.i(55654);
     if (paramBoolean)
     {
-      System.loadLibrary("stlport_shared");
-      System.loadLibrary("wechatxlog");
+      System.loadLibrary("c++_shared");
+      System.loadLibrary("cloudimxlog");
     }
     appenderOpen(paramInt1, paramInt2, paramString1, paramString2, paramString3, 0, paramString4);
-    AppMethodBeat.o(92817);
+    AppMethodBeat.o(55654);
   }
   
   public static native void setAppenderMode(int paramInt);
@@ -59,44 +59,56 @@ public class Xlog
   
   public void logD(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
   {
-    AppMethodBeat.i(92819);
+    AppMethodBeat.i(55656);
     logWrite2(1, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-    AppMethodBeat.o(92819);
+    AppMethodBeat.o(55656);
   }
   
   public void logE(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
   {
-    AppMethodBeat.i(92822);
+    AppMethodBeat.i(55659);
     logWrite2(4, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-    AppMethodBeat.o(92822);
+    AppMethodBeat.o(55659);
   }
   
   public void logF(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
   {
-    AppMethodBeat.i(92823);
+    AppMethodBeat.i(55660);
     logWrite2(5, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-    AppMethodBeat.o(92823);
+    AppMethodBeat.o(55660);
   }
   
   public void logI(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
   {
-    AppMethodBeat.i(92820);
+    AppMethodBeat.i(55657);
     logWrite2(2, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-    AppMethodBeat.o(92820);
+    AppMethodBeat.o(55657);
   }
   
   public void logV(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
   {
-    AppMethodBeat.i(92818);
+    AppMethodBeat.i(55655);
     logWrite2(0, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-    AppMethodBeat.o(92818);
+    AppMethodBeat.o(55655);
   }
   
   public void logW(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
   {
-    AppMethodBeat.i(92821);
+    AppMethodBeat.i(55658);
     logWrite2(3, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-    AppMethodBeat.o(92821);
+    AppMethodBeat.o(55658);
+  }
+  
+  static class XLoggerInfo
+  {
+    public String filename;
+    public String funcname;
+    public int level;
+    public int line;
+    public long maintid;
+    public long pid;
+    public String tag;
+    public long tid;
   }
 }
 

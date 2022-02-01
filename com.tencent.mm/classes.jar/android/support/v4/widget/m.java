@@ -7,17 +7,37 @@ import android.widget.ListView;
 public final class m
   extends a
 {
-  private final ListView KE;
+  private final ListView RF;
   
   public m(ListView paramListView)
   {
     super(paramListView);
-    this.KE = paramListView;
+    this.RF = paramListView;
   }
   
-  public final boolean aA(int paramInt)
+  public final void aR(int paramInt)
   {
-    ListView localListView = this.KE;
+    ListView localListView = this.RF;
+    if (Build.VERSION.SDK_INT >= 19) {
+      localListView.scrollListBy(paramInt);
+    }
+    int i;
+    View localView;
+    do
+    {
+      do
+      {
+        return;
+        i = localListView.getFirstVisiblePosition();
+      } while (i == -1);
+      localView = localListView.getChildAt(0);
+    } while (localView == null);
+    localListView.setSelectionFromTop(i, localView.getTop() - paramInt);
+  }
+  
+  public final boolean aS(int paramInt)
+  {
+    ListView localListView = this.RF;
     int i = localListView.getCount();
     if (i == 0) {}
     int j;
@@ -39,26 +59,6 @@ public final class m
       }
     } while ((k > 0) || (localListView.getChildAt(0).getTop() < 0));
     return false;
-  }
-  
-  public final void az(int paramInt)
-  {
-    ListView localListView = this.KE;
-    if (Build.VERSION.SDK_INT >= 19) {
-      localListView.scrollListBy(paramInt);
-    }
-    int i;
-    View localView;
-    do
-    {
-      do
-      {
-        return;
-        i = localListView.getFirstVisiblePosition();
-      } while (i == -1);
-      localView = localListView.getChildAt(0);
-    } while (localView == null);
-    localListView.setSelectionFromTop(i, localView.getTop() - paramInt);
   }
 }
 

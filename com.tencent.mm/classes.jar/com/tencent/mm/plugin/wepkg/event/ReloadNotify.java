@@ -10,23 +10,23 @@ import java.util.Set;
 public class ReloadNotify
   implements Parcelable
 {
+  public static Set<String> BIr;
   public static Parcelable.Creator<ReloadNotify> CREATOR;
-  public static Set<String> vFE;
-  public String[] vFF;
+  public String[] BIs;
   
   static
   {
-    AppMethodBeat.i(63477);
-    vFE = new HashSet();
-    CREATOR = new ReloadNotify.1();
-    AppMethodBeat.o(63477);
+    AppMethodBeat.i(110648);
+    BIr = new HashSet();
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(110648);
   }
   
   private ReloadNotify(Parcel paramParcel)
   {
-    AppMethodBeat.i(63476);
-    this.vFF = paramParcel.createStringArray();
-    AppMethodBeat.o(63476);
+    AppMethodBeat.i(110647);
+    this.BIs = paramParcel.createStringArray();
+    AppMethodBeat.o(110647);
   }
   
   public int describeContents()
@@ -36,9 +36,9 @@ public class ReloadNotify
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(63475);
-    paramParcel.writeStringArray(this.vFF);
-    AppMethodBeat.o(63475);
+    AppMethodBeat.i(110646);
+    paramParcel.writeStringArray(this.BIs);
+    AppMethodBeat.o(110646);
   }
 }
 

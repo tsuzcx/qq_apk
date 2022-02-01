@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <layer-list>
+            <item>
+                <shape android:shape="oval">
+                    <size android:height="@dimen/close_button_diameter" android:width="@dimen/close_button_diameter" />
+                    <solid android:color="@color/dismiss_close_pressed" />
+                </shape>
+            </item>
+            <item>
+                <bitmap android:gravity="center" android:src="@drawable/ic_full_cancel" />
+            </item>
+        </layer-list>
+    </item>
+    <item>
+        <layer-list>
+            <item>
+                <shape android:shape="oval">
+                    <size android:height="@dimen/close_button_diameter" android:width="@dimen/close_button_diameter" />
+                    <solid android:color="@color/dismiss_close" />
+                </shape>
+            </item>
+            <item>
+                <bitmap android:gravity="center" android:src="@drawable/ic_full_cancel" />
+            </item>
+        </layer-list>
+    </item>
+</selector>

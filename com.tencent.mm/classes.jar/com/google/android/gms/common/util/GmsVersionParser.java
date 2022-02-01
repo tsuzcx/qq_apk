@@ -19,10 +19,10 @@ public final class GmsVersionParser
   
   public static long parseBuildNumber(String paramString)
   {
-    AppMethodBeat.i(90197);
+    AppMethodBeat.i(5219);
     if (paramString == null)
     {
-      AppMethodBeat.o(90197);
+      AppMethodBeat.o(5219);
       return -1L;
     }
     paramString = zzdc().matcher(paramString);
@@ -32,26 +32,26 @@ public final class GmsVersionParser
       try
       {
         long l = Long.parseLong(paramString);
-        AppMethodBeat.o(90197);
+        AppMethodBeat.o(5219);
         return l;
       }
       catch (NumberFormatException paramString) {}
     }
-    AppMethodBeat.o(90197);
+    AppMethodBeat.o(5219);
     return -1L;
   }
   
   public static int parseBuildType(String paramString)
   {
-    AppMethodBeat.i(90199);
+    AppMethodBeat.i(5221);
     long l = parseVariantCode(paramString);
     if (l == -1L)
     {
-      AppMethodBeat.o(90199);
+      AppMethodBeat.o(5221);
       return -1;
     }
     int i = (int)(l / 10000L);
-    AppMethodBeat.o(90199);
+    AppMethodBeat.o(5221);
     return i;
   }
   
@@ -65,38 +65,38 @@ public final class GmsVersionParser
   
   public static int parseScreenDensity(String paramString)
   {
-    AppMethodBeat.i(90201);
+    AppMethodBeat.i(5223);
     long l = parseVariantCode(paramString);
     if (l == -1L)
     {
-      AppMethodBeat.o(90201);
+      AppMethodBeat.o(5223);
       return -1;
     }
     int i = (int)(l % 100L);
-    AppMethodBeat.o(90201);
+    AppMethodBeat.o(5223);
     return i;
   }
   
   public static int parseTargetArchitecture(String paramString)
   {
-    AppMethodBeat.i(90200);
+    AppMethodBeat.i(5222);
     long l = parseVariantCode(paramString);
     if (l == -1L)
     {
-      AppMethodBeat.o(90200);
+      AppMethodBeat.o(5222);
       return -1;
     }
     int i = (int)(l / 100L % 100L);
-    AppMethodBeat.o(90200);
+    AppMethodBeat.o(5222);
     return i;
   }
   
   public static long parseVariantCode(String paramString)
   {
-    AppMethodBeat.i(90198);
+    AppMethodBeat.i(5220);
     if (paramString == null)
     {
-      AppMethodBeat.o(90198);
+      AppMethodBeat.o(5220);
       return -1L;
     }
     paramString = zzdc().matcher(paramString);
@@ -106,23 +106,23 @@ public final class GmsVersionParser
       try
       {
         long l = Long.parseLong(paramString);
-        AppMethodBeat.o(90198);
+        AppMethodBeat.o(5220);
         return l;
       }
       catch (NumberFormatException paramString) {}
     }
-    AppMethodBeat.o(90198);
+    AppMethodBeat.o(5220);
     return -1L;
   }
   
   private static Pattern zzdc()
   {
-    AppMethodBeat.i(90196);
+    AppMethodBeat.i(5218);
     if (zzzy == null) {
       zzzy = Pattern.compile("\\((?:eng-)?(\\d+)-(.+?)[-)$]");
     }
     Pattern localPattern = zzzy;
-    AppMethodBeat.o(90196);
+    AppMethodBeat.o(5218);
     return localPattern;
   }
 }

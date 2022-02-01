@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.webview.modeltools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Iterator;
@@ -11,95 +11,95 @@ import java.util.LinkedList;
 
 public final class n
 {
-  private final LinkedList<String> uYA;
+  private final LinkedList<String> BaJ;
   
   public n()
   {
-    AppMethodBeat.i(7036);
-    this.uYA = new LinkedList();
-    AppMethodBeat.o(7036);
+    AppMethodBeat.i(79225);
+    this.BaJ = new LinkedList();
+    AppMethodBeat.o(79225);
   }
   
-  private void ahD(String paramString)
+  private void axh(String paramString)
   {
-    AppMethodBeat.i(7038);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(79227);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(7038);
+      AppMethodBeat.o(79227);
       return;
     }
-    synchronized (this.uYA)
+    synchronized (this.BaJ)
     {
-      String str = (String)this.uYA.peekLast();
+      String str = (String)this.BaJ.peekLast();
       paramString = URLEncoder.encode(paramString);
       if ((str == null) || (!str.equals(paramString))) {
-        this.uYA.addLast(paramString);
+        this.BaJ.addLast(paramString);
       }
-      if (this.uYA.size() > 10) {
-        this.uYA.removeFirst();
+      if (this.BaJ.size() > 10) {
+        this.BaJ.removeFirst();
       }
-      AppMethodBeat.o(7038);
+      AppMethodBeat.o(79227);
       return;
     }
   }
   
-  public final String[] dcN()
+  public final String[] emP()
   {
-    AppMethodBeat.i(7039);
-    synchronized (this.uYA)
+    AppMethodBeat.i(79228);
+    synchronized (this.BaJ)
     {
-      String[] arrayOfString = new String[this.uYA.size()];
-      Iterator localIterator = this.uYA.iterator();
+      String[] arrayOfString = new String[this.BaJ.size()];
+      Iterator localIterator = this.BaJ.iterator();
       int i = 0;
       while (localIterator.hasNext())
       {
         arrayOfString[i] = ((String)localIterator.next());
         i += 1;
       }
-      AppMethodBeat.o(7039);
+      AppMethodBeat.o(79228);
       return arrayOfString;
     }
   }
   
-  public final void dcO()
+  public final void emQ()
   {
-    AppMethodBeat.i(7040);
-    if (!b.dsf())
+    AppMethodBeat.i(79229);
+    if (!b.eEQ())
     {
-      AppMethodBeat.o(7040);
+      AppMethodBeat.o(79229);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder("routeList: ");
-    synchronized (this.uYA)
+    synchronized (this.BaJ)
     {
-      Iterator localIterator = this.uYA.iterator();
+      Iterator localIterator = this.BaJ.iterator();
       if (localIterator.hasNext()) {
         localStringBuilder.append(URLDecoder.decode((String)localIterator.next())).append("\n");
       }
     }
-    ab.d("MicroMsg.WebViewURLRouteList", localObject.toString());
-    AppMethodBeat.o(7040);
+    ad.d("MicroMsg.WebViewURLRouteList", localObject.toString());
+    AppMethodBeat.o(79229);
   }
   
-  public final void xB(String paramString)
+  public final void xe(String paramString)
   {
-    AppMethodBeat.i(7037);
+    AppMethodBeat.i(79226);
     try
     {
-      ahD(paramString);
-      AppMethodBeat.o(7037);
+      axh(paramString);
+      AppMethodBeat.o(79226);
       return;
     }
     catch (Exception paramString)
     {
-      ab.e("MicroMsg.WebViewURLRouteList", "add exp = %s", new Object[] { bo.l(paramString) });
-      AppMethodBeat.o(7037);
+      ad.e("MicroMsg.WebViewURLRouteList", "add exp = %s", new Object[] { bt.m(paramString) });
+      AppMethodBeat.o(79226);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.modeltools.n
  * JD-Core Version:    0.7.0.1
  */

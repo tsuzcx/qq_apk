@@ -142,26 +142,26 @@ public final class NativeProtocol
   public static final String WEB_DIALOG_IS_FALLBACK = "is_fallback";
   public static final String WEB_DIALOG_PARAMS = "params";
   public static final String WEB_DIALOG_URL = "url";
-  private static final Map<String, List<NativeProtocol.NativeAppInfo>> actionToAppInfoMap;
-  private static final List<NativeProtocol.NativeAppInfo> effectCameraAppInfoList;
-  private static final List<NativeProtocol.NativeAppInfo> facebookAppInfoList;
+  private static final Map<String, List<NativeAppInfo>> actionToAppInfoMap;
+  private static final List<NativeAppInfo> effectCameraAppInfoList;
+  private static final List<NativeAppInfo> facebookAppInfoList;
   private static final AtomicBoolean protocolVersionsAsyncUpdating;
   
   static
   {
-    AppMethodBeat.i(72472);
+    AppMethodBeat.i(17908);
     TAG = NativeProtocol.class.getName();
     facebookAppInfoList = buildFacebookAppList();
     effectCameraAppInfoList = buildEffectCameraAppInfoList();
     actionToAppInfoMap = buildActionToAppInfoMap();
     protocolVersionsAsyncUpdating = new AtomicBoolean(false);
     KNOWN_PROTOCOL_VERSIONS = Arrays.asList(new Integer[] { Integer.valueOf(20170417), Integer.valueOf(20160327), Integer.valueOf(20141218), Integer.valueOf(20141107), Integer.valueOf(20141028), Integer.valueOf(20141001), Integer.valueOf(20140701), Integer.valueOf(20140324), Integer.valueOf(20140204), Integer.valueOf(20131107), Integer.valueOf(20130618), Integer.valueOf(20130502), Integer.valueOf(20121101) });
-    AppMethodBeat.o(72472);
+    AppMethodBeat.o(17908);
   }
   
-  private static Map<String, List<NativeProtocol.NativeAppInfo>> buildActionToAppInfoMap()
+  private static Map<String, List<NativeAppInfo>> buildActionToAppInfoMap()
   {
-    AppMethodBeat.i(72442);
+    AppMethodBeat.i(17878);
     HashMap localHashMap = new HashMap();
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new MessengerAppInfo(null));
@@ -173,40 +173,40 @@ public final class NativeProtocol
     localHashMap.put("com.facebook.platform.action.request.OGMESSAGEPUBLISH_DIALOG", localArrayList);
     localHashMap.put("com.facebook.platform.action.request.CAMERA_EFFECT", effectCameraAppInfoList);
     localHashMap.put("com.facebook.platform.action.request.SHARE_STORY", facebookAppInfoList);
-    AppMethodBeat.o(72442);
+    AppMethodBeat.o(17878);
     return localHashMap;
   }
   
-  private static List<NativeProtocol.NativeAppInfo> buildEffectCameraAppInfoList()
+  private static List<NativeAppInfo> buildEffectCameraAppInfoList()
   {
-    AppMethodBeat.i(72441);
+    AppMethodBeat.i(17877);
     ArrayList localArrayList = new ArrayList(buildFacebookAppList());
-    localArrayList.add(0, new NativeProtocol.EffectTestAppInfo(null));
-    AppMethodBeat.o(72441);
+    localArrayList.add(0, new EffectTestAppInfo(null));
+    AppMethodBeat.o(17877);
     return localArrayList;
   }
   
-  private static List<NativeProtocol.NativeAppInfo> buildFacebookAppList()
+  private static List<NativeAppInfo> buildFacebookAppList()
   {
-    AppMethodBeat.i(72440);
+    AppMethodBeat.i(17876);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new NativeProtocol.KatanaAppInfo(null));
-    localArrayList.add(new NativeProtocol.WakizashiAppInfo(null));
-    AppMethodBeat.o(72440);
+    localArrayList.add(new KatanaAppInfo(null));
+    localArrayList.add(new WakizashiAppInfo(null));
+    AppMethodBeat.o(17876);
     return localArrayList;
   }
   
-  private static Uri buildPlatformProviderVersionURI(NativeProtocol.NativeAppInfo paramNativeAppInfo)
+  private static Uri buildPlatformProviderVersionURI(NativeAppInfo paramNativeAppInfo)
   {
-    AppMethodBeat.i(72470);
+    AppMethodBeat.i(17906);
     paramNativeAppInfo = Uri.parse("content://" + paramNativeAppInfo.getPackage() + ".provider.PlatformProvider/versions");
-    AppMethodBeat.o(72470);
+    AppMethodBeat.o(17906);
     return paramNativeAppInfo;
   }
   
   public static int computeLatestAvailableVersionFromVersionSpec(TreeSet<Integer> paramTreeSet, int paramInt, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(72469);
+    AppMethodBeat.i(17905);
     int i = paramArrayOfInt.length;
     paramTreeSet = paramTreeSet.descendingIterator();
     int j = -1;
@@ -220,7 +220,7 @@ public final class NativeProtocol
       }
       if (i < 0)
       {
-        AppMethodBeat.o(72469);
+        AppMethodBeat.o(17905);
         return -1;
       }
       if (paramArrayOfInt[i] == k)
@@ -228,23 +228,23 @@ public final class NativeProtocol
         if (i % 2 == 0)
         {
           paramInt = Math.min(j, paramInt);
-          AppMethodBeat.o(72469);
+          AppMethodBeat.o(17905);
           return paramInt;
         }
-        AppMethodBeat.o(72469);
+        AppMethodBeat.o(17905);
         return -1;
       }
     }
-    AppMethodBeat.o(72469);
+    AppMethodBeat.o(17905);
     return -1;
   }
   
   public static Bundle createBundleForException(FacebookException paramFacebookException)
   {
-    AppMethodBeat.i(72463);
+    AppMethodBeat.i(17899);
     if (paramFacebookException == null)
     {
-      AppMethodBeat.o(72463);
+      AppMethodBeat.o(17899);
       return null;
     }
     Bundle localBundle = new Bundle();
@@ -252,26 +252,26 @@ public final class NativeProtocol
     if ((paramFacebookException instanceof FacebookOperationCanceledException)) {
       localBundle.putString("error_type", "UserCanceled");
     }
-    AppMethodBeat.o(72463);
+    AppMethodBeat.o(17899);
     return localBundle;
   }
   
   public static Intent createFacebookLiteIntent(Context paramContext, String paramString1, Collection<String> paramCollection, String paramString2, boolean paramBoolean1, boolean paramBoolean2, DefaultAudience paramDefaultAudience, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(72445);
-    NativeProtocol.FBLiteAppInfo localFBLiteAppInfo = new NativeProtocol.FBLiteAppInfo(null);
+    AppMethodBeat.i(17881);
+    FBLiteAppInfo localFBLiteAppInfo = new FBLiteAppInfo(null);
     paramContext = validateActivityIntent(paramContext, createNativeAppIntent(localFBLiteAppInfo, paramString1, paramCollection, paramString2, paramBoolean1, paramBoolean2, paramDefaultAudience, paramString3, paramString4), localFBLiteAppInfo);
-    AppMethodBeat.o(72445);
+    AppMethodBeat.o(17881);
     return paramContext;
   }
   
-  private static Intent createNativeAppIntent(NativeProtocol.NativeAppInfo paramNativeAppInfo, String paramString1, Collection<String> paramCollection, String paramString2, boolean paramBoolean1, boolean paramBoolean2, DefaultAudience paramDefaultAudience, String paramString3, String paramString4)
+  private static Intent createNativeAppIntent(NativeAppInfo paramNativeAppInfo, String paramString1, Collection<String> paramCollection, String paramString2, boolean paramBoolean1, boolean paramBoolean2, DefaultAudience paramDefaultAudience, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(72446);
+    AppMethodBeat.i(17882);
     String str = paramNativeAppInfo.getLoginActivity();
     if (str == null)
     {
-      AppMethodBeat.o(72446);
+      AppMethodBeat.o(17882);
       return null;
     }
     paramNativeAppInfo = new Intent().setClassName(paramNativeAppInfo.getPackage(), str).putExtra("client_id", paramString1);
@@ -290,60 +290,60 @@ public final class NativeProtocol
     }
     paramNativeAppInfo.putExtra("legacy_override", FacebookSdk.getGraphApiVersion());
     paramNativeAppInfo.putExtra("auth_type", paramString4);
-    AppMethodBeat.o(72446);
+    AppMethodBeat.o(17882);
     return paramNativeAppInfo;
   }
   
-  public static Intent createPlatformActivityIntent(Context paramContext, String paramString1, String paramString2, NativeProtocol.ProtocolVersionQueryResult paramProtocolVersionQueryResult, Bundle paramBundle)
+  public static Intent createPlatformActivityIntent(Context paramContext, String paramString1, String paramString2, ProtocolVersionQueryResult paramProtocolVersionQueryResult, Bundle paramBundle)
   {
-    AppMethodBeat.i(72451);
+    AppMethodBeat.i(17887);
     if (paramProtocolVersionQueryResult == null)
     {
-      AppMethodBeat.o(72451);
+      AppMethodBeat.o(17887);
       return null;
     }
-    NativeProtocol.NativeAppInfo localNativeAppInfo = NativeProtocol.ProtocolVersionQueryResult.access$700(paramProtocolVersionQueryResult);
+    NativeAppInfo localNativeAppInfo = paramProtocolVersionQueryResult.nativeAppInfo;
     if (localNativeAppInfo == null)
     {
-      AppMethodBeat.o(72451);
+      AppMethodBeat.o(17887);
       return null;
     }
     paramContext = validateActivityIntent(paramContext, new Intent().setAction("com.facebook.platform.PLATFORM_ACTIVITY").setPackage(localNativeAppInfo.getPackage()).addCategory("android.intent.category.DEFAULT"), localNativeAppInfo);
     if (paramContext == null)
     {
-      AppMethodBeat.o(72451);
+      AppMethodBeat.o(17887);
       return null;
     }
-    setupProtocolRequestIntent(paramContext, paramString1, paramString2, NativeProtocol.ProtocolVersionQueryResult.access$800(paramProtocolVersionQueryResult), paramBundle);
-    AppMethodBeat.o(72451);
+    setupProtocolRequestIntent(paramContext, paramString1, paramString2, paramProtocolVersionQueryResult.protocolVersion, paramBundle);
+    AppMethodBeat.o(17887);
     return paramContext;
   }
   
   public static Intent createPlatformServiceIntent(Context paramContext)
   {
-    AppMethodBeat.i(72454);
+    AppMethodBeat.i(17890);
     Iterator localIterator = facebookAppInfoList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (NativeProtocol.NativeAppInfo)localIterator.next();
-      localObject = validateServiceIntent(paramContext, new Intent("com.facebook.platform.PLATFORM_SERVICE").setPackage(((NativeProtocol.NativeAppInfo)localObject).getPackage()).addCategory("android.intent.category.DEFAULT"), (NativeProtocol.NativeAppInfo)localObject);
+      Object localObject = (NativeAppInfo)localIterator.next();
+      localObject = validateServiceIntent(paramContext, new Intent("com.facebook.platform.PLATFORM_SERVICE").setPackage(((NativeAppInfo)localObject).getPackage()).addCategory("android.intent.category.DEFAULT"), (NativeAppInfo)localObject);
       if (localObject != null)
       {
-        AppMethodBeat.o(72454);
+        AppMethodBeat.o(17890);
         return localObject;
       }
     }
-    AppMethodBeat.o(72454);
+    AppMethodBeat.o(17890);
     return null;
   }
   
   public static Intent createProtocolResultIntent(Intent paramIntent, Bundle paramBundle, FacebookException paramFacebookException)
   {
-    AppMethodBeat.i(72453);
+    AppMethodBeat.i(17889);
     UUID localUUID = getCallIdFromIntent(paramIntent);
     if (localUUID == null)
     {
-      AppMethodBeat.o(72453);
+      AppMethodBeat.o(17889);
       return null;
     }
     Intent localIntent = new Intent();
@@ -357,193 +357,193 @@ public final class NativeProtocol
     if (paramBundle != null) {
       localIntent.putExtra("com.facebook.platform.protocol.RESULT_ARGS", paramBundle);
     }
-    AppMethodBeat.o(72453);
+    AppMethodBeat.o(17889);
     return localIntent;
   }
   
   public static Intent createProxyAuthIntent(Context paramContext, String paramString1, Collection<String> paramCollection, String paramString2, boolean paramBoolean1, boolean paramBoolean2, DefaultAudience paramDefaultAudience, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(72447);
+    AppMethodBeat.i(17883);
     Iterator localIterator = facebookAppInfoList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (NativeProtocol.NativeAppInfo)localIterator.next();
-      localObject = validateActivityIntent(paramContext, createNativeAppIntent((NativeProtocol.NativeAppInfo)localObject, paramString1, paramCollection, paramString2, paramBoolean1, paramBoolean2, paramDefaultAudience, paramString3, paramString4), (NativeProtocol.NativeAppInfo)localObject);
+      Object localObject = (NativeAppInfo)localIterator.next();
+      localObject = validateActivityIntent(paramContext, createNativeAppIntent((NativeAppInfo)localObject, paramString1, paramCollection, paramString2, paramBoolean1, paramBoolean2, paramDefaultAudience, paramString3, paramString4), (NativeAppInfo)localObject);
       if (localObject != null)
       {
-        AppMethodBeat.o(72447);
+        AppMethodBeat.o(17883);
         return localObject;
       }
     }
-    AppMethodBeat.o(72447);
+    AppMethodBeat.o(17883);
     return null;
   }
   
   public static Intent createTokenRefreshIntent(Context paramContext)
   {
-    AppMethodBeat.i(72448);
+    AppMethodBeat.i(17884);
     Iterator localIterator = facebookAppInfoList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (NativeProtocol.NativeAppInfo)localIterator.next();
-      localObject = validateServiceIntent(paramContext, new Intent().setClassName(((NativeProtocol.NativeAppInfo)localObject).getPackage(), "com.facebook.katana.platform.TokenRefreshService"), (NativeProtocol.NativeAppInfo)localObject);
+      Object localObject = (NativeAppInfo)localIterator.next();
+      localObject = validateServiceIntent(paramContext, new Intent().setClassName(((NativeAppInfo)localObject).getPackage(), "com.facebook.katana.platform.TokenRefreshService"), (NativeAppInfo)localObject);
       if (localObject != null)
       {
-        AppMethodBeat.o(72448);
+        AppMethodBeat.o(17884);
         return localObject;
       }
     }
-    AppMethodBeat.o(72448);
+    AppMethodBeat.o(17884);
     return null;
   }
   
   /* Error */
-  private static TreeSet<Integer> fetchAllAvailableProtocolVersionsForAppInfo(NativeProtocol.NativeAppInfo paramNativeAppInfo)
+  private static TreeSet<Integer> fetchAllAvailableProtocolVersionsForAppInfo(NativeAppInfo paramNativeAppInfo)
   {
     // Byte code:
-    //   0: ldc_w 668
-    //   3: invokestatic 347	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 475	java/util/TreeSet
+    //   0: sipush 17904
+    //   3: invokestatic 354	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 476	java/util/TreeSet
     //   9: dup
-    //   10: invokespecial 669	java/util/TreeSet:<init>	()V
+    //   10: invokespecial 661	java/util/TreeSet:<init>	()V
     //   13: astore_2
-    //   14: invokestatic 673	com/facebook/FacebookSdk:getApplicationContext	()Landroid/content/Context;
-    //   17: invokevirtual 679	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   14: invokestatic 665	com/facebook/FacebookSdk:getApplicationContext	()Landroid/content/Context;
+    //   17: invokevirtual 671	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   20: astore_1
     //   21: aload_0
-    //   22: invokestatic 681	com/facebook/internal/NativeProtocol:buildPlatformProviderVersionURI	(Lcom/facebook/internal/NativeProtocol$NativeAppInfo;)Landroid/net/Uri;
+    //   22: invokestatic 673	com/facebook/internal/NativeProtocol:buildPlatformProviderVersionURI	(Lcom/facebook/internal/NativeProtocol$NativeAppInfo;)Landroid/net/Uri;
     //   25: astore_3
-    //   26: invokestatic 673	com/facebook/FacebookSdk:getApplicationContext	()Landroid/content/Context;
-    //   29: invokevirtual 685	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
+    //   26: invokestatic 665	com/facebook/FacebookSdk:getApplicationContext	()Landroid/content/Context;
+    //   29: invokevirtual 677	android/content/Context:getPackageManager	()Landroid/content/pm/PackageManager;
     //   32: astore 4
-    //   34: new 451	java/lang/StringBuilder
+    //   34: new 453	java/lang/StringBuilder
     //   37: dup
-    //   38: invokespecial 686	java/lang/StringBuilder:<init>	()V
+    //   38: invokespecial 678	java/lang/StringBuilder:<init>	()V
     //   41: aload_0
-    //   42: invokevirtual 457	com/facebook/internal/NativeProtocol$NativeAppInfo:getPackage	()Ljava/lang/String;
-    //   45: invokevirtual 461	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: ldc 248
-    //   50: invokevirtual 461	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: invokevirtual 464	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   56: astore_0
-    //   57: aload 4
-    //   59: aload_0
-    //   60: iconst_0
-    //   61: invokevirtual 692	android/content/pm/PackageManager:resolveContentProvider	(Ljava/lang/String;I)Landroid/content/pm/ProviderInfo;
-    //   64: astore_0
-    //   65: aload_0
-    //   66: ifnull +98 -> 164
-    //   69: aload_1
-    //   70: aload_3
-    //   71: iconst_1
-    //   72: anewarray 694	java/lang/String
-    //   75: dup
-    //   76: iconst_0
-    //   77: ldc 254
-    //   79: aastore
-    //   80: aconst_null
-    //   81: aconst_null
+    //   42: invokevirtual 459	com/facebook/internal/NativeProtocol$NativeAppInfo:getPackage	()Ljava/lang/String;
+    //   45: invokevirtual 463	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: ldc_w 256
+    //   51: invokevirtual 463	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: invokevirtual 466	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: astore_0
+    //   58: aload 4
+    //   60: aload_0
+    //   61: iconst_0
+    //   62: invokevirtual 684	android/content/pm/PackageManager:resolveContentProvider	(Ljava/lang/String;I)Landroid/content/pm/ProviderInfo;
+    //   65: astore_0
+    //   66: aload_0
+    //   67: ifnull +100 -> 167
+    //   70: aload_1
+    //   71: aload_3
+    //   72: iconst_1
+    //   73: anewarray 686	java/lang/String
+    //   76: dup
+    //   77: iconst_0
+    //   78: ldc_w 262
+    //   81: aastore
     //   82: aconst_null
-    //   83: invokevirtual 700	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   86: astore_0
-    //   87: aload_0
-    //   88: astore_1
+    //   83: aconst_null
+    //   84: aconst_null
+    //   85: invokevirtual 692	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   88: astore_0
     //   89: aload_0
-    //   90: ifnull +76 -> 166
-    //   93: aload_0
-    //   94: astore_1
+    //   90: astore_1
+    //   91: aload_0
+    //   92: ifnull +77 -> 169
     //   95: aload_0
-    //   96: invokeinterface 705 1 0
-    //   101: ifeq +65 -> 166
-    //   104: aload_2
-    //   105: aload_0
-    //   106: aload_0
-    //   107: ldc 254
-    //   109: invokeinterface 709 2 0
-    //   114: invokeinterface 713 2 0
-    //   119: invokestatic 386	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   122: invokevirtual 714	java/util/TreeSet:add	(Ljava/lang/Object;)Z
-    //   125: pop
-    //   126: goto -33 -> 93
-    //   129: astore_2
-    //   130: aload_0
-    //   131: astore_1
-    //   132: aload_2
-    //   133: astore_0
-    //   134: aload_1
-    //   135: ifnull +9 -> 144
-    //   138: aload_1
-    //   139: invokeinterface 717 1 0
-    //   144: ldc_w 668
-    //   147: invokestatic 397	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   150: aload_0
-    //   151: athrow
-    //   152: astore_0
-    //   153: aconst_null
-    //   154: astore_0
-    //   155: goto -90 -> 65
-    //   158: astore_0
-    //   159: aconst_null
-    //   160: astore_0
-    //   161: goto -74 -> 87
-    //   164: aconst_null
-    //   165: astore_1
-    //   166: aload_1
-    //   167: ifnull +9 -> 176
-    //   170: aload_1
-    //   171: invokeinterface 717 1 0
-    //   176: ldc_w 668
-    //   179: invokestatic 397	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   182: aload_2
-    //   183: areturn
-    //   184: astore_0
-    //   185: goto -26 -> 159
-    //   188: astore_0
-    //   189: goto -30 -> 159
-    //   192: astore_0
-    //   193: aconst_null
-    //   194: astore_1
-    //   195: goto -61 -> 134
+    //   96: astore_1
+    //   97: aload_0
+    //   98: invokeinterface 697 1 0
+    //   103: ifeq +66 -> 169
+    //   106: aload_2
+    //   107: aload_0
+    //   108: aload_0
+    //   109: ldc_w 262
+    //   112: invokeinterface 701 2 0
+    //   117: invokeinterface 705 2 0
+    //   122: invokestatic 393	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   125: invokevirtual 706	java/util/TreeSet:add	(Ljava/lang/Object;)Z
+    //   128: pop
+    //   129: goto -34 -> 95
+    //   132: astore_2
+    //   133: aload_0
+    //   134: astore_1
+    //   135: aload_2
+    //   136: astore_0
+    //   137: aload_1
+    //   138: ifnull +9 -> 147
+    //   141: aload_1
+    //   142: invokeinterface 709 1 0
+    //   147: sipush 17904
+    //   150: invokestatic 404	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   153: aload_0
+    //   154: athrow
+    //   155: astore_0
+    //   156: aconst_null
+    //   157: astore_0
+    //   158: goto -92 -> 66
+    //   161: astore_0
+    //   162: aconst_null
+    //   163: astore_0
+    //   164: goto -75 -> 89
+    //   167: aconst_null
+    //   168: astore_1
+    //   169: aload_1
+    //   170: ifnull +9 -> 179
+    //   173: aload_1
+    //   174: invokeinterface 709 1 0
+    //   179: sipush 17904
+    //   182: invokestatic 404	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   185: aload_2
+    //   186: areturn
+    //   187: astore_0
+    //   188: goto -26 -> 162
+    //   191: astore_0
+    //   192: goto -30 -> 162
+    //   195: astore_0
+    //   196: aconst_null
+    //   197: astore_1
+    //   198: goto -61 -> 137
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	198	0	paramNativeAppInfo	NativeProtocol.NativeAppInfo
-    //   20	175	1	localObject	Object
-    //   13	92	2	localTreeSet	TreeSet
-    //   129	54	2	localTreeSet1	TreeSet<Integer>
-    //   25	46	3	localUri	Uri
-    //   32	26	4	localPackageManager	PackageManager
+    //   0	201	0	paramNativeAppInfo	NativeAppInfo
+    //   20	178	1	localObject	Object
+    //   13	94	2	localTreeSet	TreeSet
+    //   132	54	2	localTreeSet1	TreeSet<Integer>
+    //   25	47	3	localUri	Uri
+    //   32	27	4	localPackageManager	PackageManager
     // Exception table:
     //   from	to	target	type
-    //   95	126	129	finally
-    //   57	65	152	java/lang/RuntimeException
-    //   69	87	158	java/lang/NullPointerException
-    //   69	87	184	java/lang/SecurityException
-    //   69	87	188	java/lang/IllegalArgumentException
-    //   26	57	192	finally
-    //   57	65	192	finally
-    //   69	87	192	finally
+    //   97	129	132	finally
+    //   58	66	155	java/lang/RuntimeException
+    //   70	89	161	java/lang/NullPointerException
+    //   70	89	187	java/lang/SecurityException
+    //   70	89	191	java/lang/IllegalArgumentException
+    //   26	58	195	finally
+    //   58	66	195	finally
+    //   70	89	195	finally
   }
   
   public static Bundle getBridgeArgumentsFromIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(72457);
+    AppMethodBeat.i(17893);
     if (!isVersionCompatibleWithBucketedIntent(getProtocolVersionFromIntent(paramIntent)))
     {
-      AppMethodBeat.o(72457);
+      AppMethodBeat.o(17893);
       return null;
     }
     paramIntent = paramIntent.getBundleExtra("com.facebook.platform.protocol.BRIDGE_ARGS");
-    AppMethodBeat.o(72457);
+    AppMethodBeat.o(17893);
     return paramIntent;
   }
   
   public static UUID getCallIdFromIntent(Intent paramIntent)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(72456);
+    AppMethodBeat.i(17892);
     if (paramIntent == null)
     {
-      AppMethodBeat.o(72456);
+      AppMethodBeat.o(17892);
       return null;
     }
     if (isVersionCompatibleWithBucketedIntent(getProtocolVersionFromIntent(paramIntent)))
@@ -562,7 +562,7 @@ public final class NativeProtocol
         try
         {
           localObject1 = UUID.fromString(paramIntent);
-          AppMethodBeat.o(72456);
+          AppMethodBeat.o(17892);
           return localObject1;
           paramIntent = paramIntent.getStringExtra("com.facebook.platform.protocol.CALL_ID");
         }
@@ -579,30 +579,30 @@ public final class NativeProtocol
   
   public static Bundle getErrorDataFromResultIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(72461);
+    AppMethodBeat.i(17897);
     if (!isErrorResult(paramIntent))
     {
-      AppMethodBeat.o(72461);
+      AppMethodBeat.o(17897);
       return null;
     }
     Bundle localBundle = getBridgeArgumentsFromIntent(paramIntent);
     if (localBundle != null)
     {
       paramIntent = localBundle.getBundle("error");
-      AppMethodBeat.o(72461);
+      AppMethodBeat.o(17897);
       return paramIntent;
     }
     paramIntent = paramIntent.getExtras();
-    AppMethodBeat.o(72461);
+    AppMethodBeat.o(17897);
     return paramIntent;
   }
   
   public static FacebookException getExceptionFromErrorData(Bundle paramBundle)
   {
-    AppMethodBeat.i(72462);
+    AppMethodBeat.i(17898);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(72462);
+      AppMethodBeat.o(17898);
       return null;
     }
     Object localObject2 = paramBundle.getString("error_type");
@@ -618,132 +618,132 @@ public final class NativeProtocol
     if ((localObject1 != null) && (((String)localObject1).equalsIgnoreCase("UserCanceled")))
     {
       paramBundle = new FacebookOperationCanceledException((String)localObject2);
-      AppMethodBeat.o(72462);
+      AppMethodBeat.o(17898);
       return paramBundle;
     }
     paramBundle = new FacebookException((String)localObject2);
-    AppMethodBeat.o(72462);
+    AppMethodBeat.o(17898);
     return paramBundle;
   }
   
-  public static NativeProtocol.ProtocolVersionQueryResult getLatestAvailableProtocolVersionForAction(String paramString, int[] paramArrayOfInt)
+  public static ProtocolVersionQueryResult getLatestAvailableProtocolVersionForAction(String paramString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(72465);
+    AppMethodBeat.i(17901);
     paramString = getLatestAvailableProtocolVersionForAppInfoList((List)actionToAppInfoMap.get(paramString), paramArrayOfInt);
-    AppMethodBeat.o(72465);
+    AppMethodBeat.o(17901);
     return paramString;
   }
   
-  private static NativeProtocol.ProtocolVersionQueryResult getLatestAvailableProtocolVersionForAppInfoList(List<NativeProtocol.NativeAppInfo> paramList, int[] paramArrayOfInt)
+  private static ProtocolVersionQueryResult getLatestAvailableProtocolVersionForAppInfoList(List<NativeAppInfo> paramList, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(72466);
+    AppMethodBeat.i(17902);
     updateAllAvailableProtocolVersionsAsync();
     if (paramList == null)
     {
-      paramList = NativeProtocol.ProtocolVersionQueryResult.createEmpty();
-      AppMethodBeat.o(72466);
+      paramList = ProtocolVersionQueryResult.createEmpty();
+      AppMethodBeat.o(17902);
       return paramList;
     }
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      NativeProtocol.NativeAppInfo localNativeAppInfo = (NativeProtocol.NativeAppInfo)paramList.next();
+      NativeAppInfo localNativeAppInfo = (NativeAppInfo)paramList.next();
       int i = computeLatestAvailableVersionFromVersionSpec(localNativeAppInfo.getAvailableVersions(), getLatestKnownVersion(), paramArrayOfInt);
       if (i != -1)
       {
-        paramList = NativeProtocol.ProtocolVersionQueryResult.create(localNativeAppInfo, i);
-        AppMethodBeat.o(72466);
+        paramList = ProtocolVersionQueryResult.create(localNativeAppInfo, i);
+        AppMethodBeat.o(17902);
         return paramList;
       }
     }
-    paramList = NativeProtocol.ProtocolVersionQueryResult.createEmpty();
-    AppMethodBeat.o(72466);
+    paramList = ProtocolVersionQueryResult.createEmpty();
+    AppMethodBeat.o(17902);
     return paramList;
   }
   
   public static int getLatestAvailableProtocolVersionForService(int paramInt)
   {
-    AppMethodBeat.i(72464);
+    AppMethodBeat.i(17900);
     paramInt = getLatestAvailableProtocolVersionForAppInfoList(facebookAppInfoList, new int[] { paramInt }).getProtocolVersion();
-    AppMethodBeat.o(72464);
+    AppMethodBeat.o(17900);
     return paramInt;
   }
   
   public static final int getLatestKnownVersion()
   {
-    AppMethodBeat.i(72449);
+    AppMethodBeat.i(17885);
     int i = ((Integer)KNOWN_PROTOCOL_VERSIONS.get(0)).intValue();
-    AppMethodBeat.o(72449);
+    AppMethodBeat.o(17885);
     return i;
   }
   
   public static Bundle getMethodArgumentsFromIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(72458);
+    AppMethodBeat.i(17894);
     if (!isVersionCompatibleWithBucketedIntent(getProtocolVersionFromIntent(paramIntent)))
     {
       paramIntent = paramIntent.getExtras();
-      AppMethodBeat.o(72458);
+      AppMethodBeat.o(17894);
       return paramIntent;
     }
     paramIntent = paramIntent.getBundleExtra("com.facebook.platform.protocol.METHOD_ARGS");
-    AppMethodBeat.o(72458);
+    AppMethodBeat.o(17894);
     return paramIntent;
   }
   
   public static int getProtocolVersionFromIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(72455);
+    AppMethodBeat.i(17891);
     int i = paramIntent.getIntExtra("com.facebook.platform.protocol.PROTOCOL_VERSION", 0);
-    AppMethodBeat.o(72455);
+    AppMethodBeat.o(17891);
     return i;
   }
   
   public static Bundle getSuccessResultsFromIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(72459);
+    AppMethodBeat.i(17895);
     int i = getProtocolVersionFromIntent(paramIntent);
     paramIntent = paramIntent.getExtras();
     if ((!isVersionCompatibleWithBucketedIntent(i)) || (paramIntent == null))
     {
-      AppMethodBeat.o(72459);
+      AppMethodBeat.o(17895);
       return paramIntent;
     }
     paramIntent = paramIntent.getBundle("com.facebook.platform.protocol.RESULT_ARGS");
-    AppMethodBeat.o(72459);
+    AppMethodBeat.o(17895);
     return paramIntent;
   }
   
   public static boolean isErrorResult(Intent paramIntent)
   {
-    AppMethodBeat.i(72460);
+    AppMethodBeat.i(17896);
     Bundle localBundle = getBridgeArgumentsFromIntent(paramIntent);
     if (localBundle != null)
     {
       bool = localBundle.containsKey("error");
-      AppMethodBeat.o(72460);
+      AppMethodBeat.o(17896);
       return bool;
     }
     boolean bool = paramIntent.hasExtra("com.facebook.platform.status.ERROR_TYPE");
-    AppMethodBeat.o(72460);
+    AppMethodBeat.o(17896);
     return bool;
   }
   
   public static boolean isVersionCompatibleWithBucketedIntent(int paramInt)
   {
-    AppMethodBeat.i(72450);
+    AppMethodBeat.i(17886);
     if ((KNOWN_PROTOCOL_VERSIONS.contains(Integer.valueOf(paramInt))) && (paramInt >= 20140701))
     {
-      AppMethodBeat.o(72450);
+      AppMethodBeat.o(17886);
       return true;
     }
-    AppMethodBeat.o(72450);
+    AppMethodBeat.o(17886);
     return false;
   }
   
   public static void setupProtocolRequestIntent(Intent paramIntent, String paramString1, String paramString2, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(72452);
+    AppMethodBeat.i(17888);
     String str2 = FacebookSdk.getApplicationId();
     String str1 = FacebookSdk.getApplicationName();
     paramIntent.putExtra("com.facebook.platform.protocol.PROTOCOL_VERSION", paramInt).putExtra("com.facebook.platform.protocol.PROTOCOL_ACTION", paramString2).putExtra("com.facebook.platform.extra.APPLICATION_ID", str2);
@@ -758,7 +758,7 @@ public final class NativeProtocol
         paramString1 = new Bundle();
       }
       paramIntent.putExtra("com.facebook.platform.protocol.METHOD_ARGS", paramString1);
-      AppMethodBeat.o(72452);
+      AppMethodBeat.o(17888);
       return;
     }
     paramIntent.putExtra("com.facebook.platform.protocol.CALL_ID", paramString1);
@@ -766,65 +766,149 @@ public final class NativeProtocol
       paramIntent.putExtra("com.facebook.platform.extra.APPLICATION_NAME", str1);
     }
     paramIntent.putExtras(paramBundle);
-    AppMethodBeat.o(72452);
+    AppMethodBeat.o(17888);
   }
   
   public static void updateAllAvailableProtocolVersionsAsync()
   {
-    AppMethodBeat.i(72467);
+    AppMethodBeat.i(17903);
     if (!protocolVersionsAsyncUpdating.compareAndSet(false, true))
     {
-      AppMethodBeat.o(72467);
+      AppMethodBeat.o(17903);
       return;
     }
-    FacebookSdk.getExecutor().execute(new NativeProtocol.1());
-    AppMethodBeat.o(72467);
+    FacebookSdk.getExecutor().execute(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(17873);
+        try
+        {
+          Iterator localIterator = NativeProtocol.facebookAppInfoList.iterator();
+          while (localIterator.hasNext()) {
+            NativeProtocol.NativeAppInfo.access$1000((NativeProtocol.NativeAppInfo)localIterator.next(), true);
+          }
+          NativeProtocol.protocolVersionsAsyncUpdating.set(false);
+        }
+        finally
+        {
+          NativeProtocol.protocolVersionsAsyncUpdating.set(false);
+          AppMethodBeat.o(17873);
+        }
+        AppMethodBeat.o(17873);
+      }
+    });
+    AppMethodBeat.o(17903);
   }
   
-  static Intent validateActivityIntent(Context paramContext, Intent paramIntent, NativeProtocol.NativeAppInfo paramNativeAppInfo)
+  static Intent validateActivityIntent(Context paramContext, Intent paramIntent, NativeAppInfo paramNativeAppInfo)
   {
-    AppMethodBeat.i(72443);
+    AppMethodBeat.i(17879);
     if (paramIntent == null)
     {
-      AppMethodBeat.o(72443);
+      AppMethodBeat.o(17879);
       return null;
     }
     paramNativeAppInfo = paramContext.getPackageManager().resolveActivity(paramIntent, 0);
     if (paramNativeAppInfo == null)
     {
-      AppMethodBeat.o(72443);
+      AppMethodBeat.o(17879);
       return null;
     }
     if (!FacebookSignatureValidator.validateSignature(paramContext, paramNativeAppInfo.activityInfo.packageName))
     {
-      AppMethodBeat.o(72443);
+      AppMethodBeat.o(17879);
       return null;
     }
-    AppMethodBeat.o(72443);
+    AppMethodBeat.o(17879);
     return paramIntent;
   }
   
-  static Intent validateServiceIntent(Context paramContext, Intent paramIntent, NativeProtocol.NativeAppInfo paramNativeAppInfo)
+  static Intent validateServiceIntent(Context paramContext, Intent paramIntent, NativeAppInfo paramNativeAppInfo)
   {
-    AppMethodBeat.i(72444);
+    AppMethodBeat.i(17880);
     if (paramIntent == null)
     {
-      AppMethodBeat.o(72444);
+      AppMethodBeat.o(17880);
       return null;
     }
     paramNativeAppInfo = paramContext.getPackageManager().resolveService(paramIntent, 0);
     if (paramNativeAppInfo == null)
     {
-      AppMethodBeat.o(72444);
+      AppMethodBeat.o(17880);
       return null;
     }
     if (!FacebookSignatureValidator.validateSignature(paramContext, paramNativeAppInfo.serviceInfo.packageName))
     {
-      AppMethodBeat.o(72444);
+      AppMethodBeat.o(17880);
       return null;
     }
-    AppMethodBeat.o(72444);
+    AppMethodBeat.o(17880);
     return paramIntent;
+  }
+  
+  static class EffectTestAppInfo
+    extends NativeProtocol.NativeAppInfo
+  {
+    static final String EFFECT_TEST_APP_PACKAGE = "com.facebook.arstudio.player";
+    
+    private EffectTestAppInfo()
+    {
+      super();
+    }
+    
+    protected String getLoginActivity()
+    {
+      return null;
+    }
+    
+    protected String getPackage()
+    {
+      return "com.facebook.arstudio.player";
+    }
+  }
+  
+  static class FBLiteAppInfo
+    extends NativeProtocol.NativeAppInfo
+  {
+    static final String FACEBOOK_LITE_ACTIVITY = "com.facebook.lite.platform.LoginGDPDialogActivity";
+    static final String FBLITE_PACKAGE = "com.facebook.lite";
+    
+    private FBLiteAppInfo()
+    {
+      super();
+    }
+    
+    protected String getLoginActivity()
+    {
+      return "com.facebook.lite.platform.LoginGDPDialogActivity";
+    }
+    
+    protected String getPackage()
+    {
+      return "com.facebook.lite";
+    }
+  }
+  
+  static class KatanaAppInfo
+    extends NativeProtocol.NativeAppInfo
+  {
+    static final String KATANA_PACKAGE = "com.facebook.katana";
+    
+    private KatanaAppInfo()
+    {
+      super();
+    }
+    
+    protected String getLoginActivity()
+    {
+      return "com.facebook.katana.ProxyAuth";
+    }
+    
+    protected String getPackage()
+    {
+      return "com.facebook.katana";
+    }
   }
   
   static class MessengerAppInfo
@@ -847,10 +931,96 @@ public final class NativeProtocol
       return "com.facebook.orca";
     }
   }
+  
+  static abstract class NativeAppInfo
+  {
+    private TreeSet<Integer> availableVersions;
+    
+    private void fetchAvailableVersions(boolean paramBoolean)
+    {
+      if (!paramBoolean) {}
+      try
+      {
+        if (this.availableVersions == null) {
+          this.availableVersions = NativeProtocol.access$000(this);
+        }
+        return;
+      }
+      finally {}
+    }
+    
+    public TreeSet<Integer> getAvailableVersions()
+    {
+      if (this.availableVersions == null) {
+        fetchAvailableVersions(false);
+      }
+      return this.availableVersions;
+    }
+    
+    protected abstract String getLoginActivity();
+    
+    protected abstract String getPackage();
+  }
+  
+  public static class ProtocolVersionQueryResult
+  {
+    private NativeProtocol.NativeAppInfo nativeAppInfo;
+    private int protocolVersion;
+    
+    public static ProtocolVersionQueryResult create(NativeProtocol.NativeAppInfo paramNativeAppInfo, int paramInt)
+    {
+      AppMethodBeat.i(17874);
+      ProtocolVersionQueryResult localProtocolVersionQueryResult = new ProtocolVersionQueryResult();
+      localProtocolVersionQueryResult.nativeAppInfo = paramNativeAppInfo;
+      localProtocolVersionQueryResult.protocolVersion = paramInt;
+      AppMethodBeat.o(17874);
+      return localProtocolVersionQueryResult;
+    }
+    
+    public static ProtocolVersionQueryResult createEmpty()
+    {
+      AppMethodBeat.i(17875);
+      ProtocolVersionQueryResult localProtocolVersionQueryResult = new ProtocolVersionQueryResult();
+      localProtocolVersionQueryResult.protocolVersion = -1;
+      AppMethodBeat.o(17875);
+      return localProtocolVersionQueryResult;
+    }
+    
+    public NativeProtocol.NativeAppInfo getAppInfo()
+    {
+      return this.nativeAppInfo;
+    }
+    
+    public int getProtocolVersion()
+    {
+      return this.protocolVersion;
+    }
+  }
+  
+  static class WakizashiAppInfo
+    extends NativeProtocol.NativeAppInfo
+  {
+    static final String WAKIZASHI_PACKAGE = "com.facebook.wakizashi";
+    
+    private WakizashiAppInfo()
+    {
+      super();
+    }
+    
+    protected String getLoginActivity()
+    {
+      return "com.facebook.katana.ProxyAuth";
+    }
+    
+    protected String getPackage()
+    {
+      return "com.facebook.wakizashi";
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.NativeProtocol
  * JD-Core Version:    0.7.0.1
  */

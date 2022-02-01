@@ -1,7 +1,9 @@
 package com.google.android.exoplayer2.f.g;
 
 import android.text.Layout.Alignment;
+import android.text.SpannableStringBuilder;
 import com.google.android.exoplayer2.f.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e
   extends a
@@ -25,10 +27,84 @@ final class e
   {
     this(0L, 0L, paramCharSequence, null, 1.4E-45F, -2147483648, -2147483648, 1.4E-45F, -2147483648, 1.4E-45F);
   }
+  
+  public static final class a
+  {
+    Layout.Alignment brF;
+    float brG;
+    int brH;
+    float brI;
+    int brJ;
+    SpannableStringBuilder bvn;
+    long endTime;
+    int lineType;
+    long startTime;
+    float width;
+    
+    public a()
+    {
+      AppMethodBeat.i(92894);
+      reset();
+      AppMethodBeat.o(92894);
+    }
+    
+    private a uY()
+    {
+      AppMethodBeat.i(92896);
+      if (this.brF == null) {
+        this.brJ = -2147483648;
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(92896);
+        return this;
+        switch (e.1.bvm[this.brF.ordinal()])
+        {
+        default: 
+          new StringBuilder("Unrecognized alignment: ").append(this.brF);
+          this.brJ = 0;
+          break;
+        case 1: 
+          this.brJ = 0;
+          break;
+        case 2: 
+          this.brJ = 1;
+          break;
+        case 3: 
+          this.brJ = 2;
+        }
+      }
+    }
+    
+    public final void reset()
+    {
+      this.startTime = 0L;
+      this.endTime = 0L;
+      this.bvn = null;
+      this.brF = null;
+      this.brG = 1.4E-45F;
+      this.lineType = -2147483648;
+      this.brH = -2147483648;
+      this.brI = 1.4E-45F;
+      this.brJ = -2147483648;
+      this.width = 1.4E-45F;
+    }
+    
+    public final e uX()
+    {
+      AppMethodBeat.i(92895);
+      if ((this.brI != 1.4E-45F) && (this.brJ == -2147483648)) {
+        uY();
+      }
+      e locale = new e(this.startTime, this.endTime, this.bvn, this.brF, this.brG, this.lineType, this.brH, this.brI, this.brJ, this.width);
+      AppMethodBeat.o(92895);
+      return locale;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.f.g.e
  * JD-Core Version:    0.7.0.1
  */

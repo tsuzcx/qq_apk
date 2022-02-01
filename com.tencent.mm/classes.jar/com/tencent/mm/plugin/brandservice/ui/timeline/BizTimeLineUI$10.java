@@ -1,29 +1,60 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.bizui.widget.StoryListView;
-import com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotView;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.y;
+import com.tencent.mm.model.y.b;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.service.n;
+import com.tencent.mm.pluginsdk.ui.applet.u;
+import com.tencent.mm.pluginsdk.ui.span.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class BizTimeLineUI$10
-  implements Runnable
+  implements h
 {
-  BizTimeLineUI$10(BizTimeLineUI paramBizTimeLineUI) {}
-  
-  public final void run()
+  BizTimeLineUI$10(BizTimeLineUI paramBizTimeLineUI)
   {
-    AppMethodBeat.i(14193);
-    if ((this.jXh.isFinishing()) || (BizTimeLineUI.b(this.jXh) == null) || (BizTimeLineUI.b(this.jXh).getFirstVisiblePosition() != 0) || (BizTimeLineUI.r(this.jXh) == null))
+    AppMethodBeat.i(160484);
+    AppMethodBeat.o(160484);
+  }
+  
+  public final Object a(u paramu)
+  {
+    return null;
+  }
+  
+  public final Object b(u paramu)
+  {
+    AppMethodBeat.i(192976);
+    if (paramu.type == 45)
     {
-      AppMethodBeat.o(14193);
-      return;
+      String str1 = new String(Base64.decode(paramu.url, 0));
+      String str2 = new String(Base64.decode(bt.by((String)paramu.aV(String.class), ""), 0));
+      ad.d("MicroMsg.BizTimeLineUI", "appId:%s,path:%s", new Object[] { str1, str2 });
+      AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
+      localAppBrandStatObject.scene = 1082;
+      paramu = paramu.mSessionId;
+      if (!bt.isNullOrNil(paramu))
+      {
+        paramu = y.arz().tB(paramu);
+        if (paramu != null)
+        {
+          paramu = paramu.getString("preUsername", null);
+          localAppBrandStatObject.dbt = (paramu + "|3");
+        }
+      }
+      ((n)g.ab(n.class)).a(this.mYt.getContext(), null, str1, 0, 0, str2, localAppBrandStatObject);
     }
-    BizTimeLineUI.r(this.jXh).aWZ();
-    AppMethodBeat.o(14193);
+    AppMethodBeat.o(192976);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineUI.10
  * JD-Core Version:    0.7.0.1
  */

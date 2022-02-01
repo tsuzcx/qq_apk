@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class cg
   extends b
 {
-  public cg.a cpD;
+  public a dex;
   
   public cg()
   {
@@ -15,16 +15,21 @@ public final class cg
   
   private cg(byte paramByte)
   {
-    AppMethodBeat.i(70137);
-    this.cpD = new cg.a();
-    this.ymq = false;
+    AppMethodBeat.i(91202);
+    this.dex = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70137);
+    AppMethodBeat.o(91202);
+  }
+  
+  public static final class a
+  {
+    public int bRZ = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.cg
  * JD-Core Version:    0.7.0.1
  */

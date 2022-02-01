@@ -20,68 +20,68 @@ public class AppBrandDesktopHalfContainer
   extends HeaderContainer
   implements View.OnTouchListener, c.a
 {
-  private GyroView jcR;
-  private c jdo;
-  private Rect jdr;
-  private AppBrandDesktopHalfView jhE;
-  private View xy;
+  private View DR;
+  private GyroView lSL;
+  private c lTj;
+  private Rect lTn;
+  private AppBrandDesktopHalfView lWD;
   
   public AppBrandDesktopHalfContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(134115);
-    this.jdr = new Rect();
+    AppMethodBeat.i(49724);
+    this.lTn = new Rect();
     init(paramContext);
-    AppMethodBeat.o(134115);
+    AppMethodBeat.o(49724);
   }
   
   public AppBrandDesktopHalfContainer(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(134116);
-    this.jdr = new Rect();
+    AppMethodBeat.i(49725);
+    this.lTn = new Rect();
     init(paramContext);
-    AppMethodBeat.o(134116);
+    AppMethodBeat.o(49725);
   }
   
-  private void dt(Context paramContext)
+  private void dU(Context paramContext)
   {
-    AppMethodBeat.i(134119);
-    this.jcR = new GyroView(paramContext);
-    paramContext = new FrameLayout.LayoutParams((int)getResources().getDimension(2131428452), (int)getResources().getDimension(2131428451));
+    AppMethodBeat.i(49728);
+    this.lSL = new GyroView(paramContext);
+    paramContext = new FrameLayout.LayoutParams((int)getResources().getDimension(2131166414), (int)getResources().getDimension(2131166413));
     paramContext.gravity = 81;
-    this.jcR.setId(2131820627);
-    this.jcR.setVisibility(8);
-    addView(this.jcR, paramContext);
-    AppMethodBeat.o(134119);
+    this.lSL.setId(2131300673);
+    this.lSL.setVisibility(8);
+    addView(this.lSL, paramContext);
+    AppMethodBeat.o(49728);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(134118);
-    this.jhE = new AppBrandDesktopHalfView(paramContext);
-    this.jhE.setId(2131820554);
+    AppMethodBeat.i(49727);
+    this.lWD = new AppBrandDesktopHalfView(paramContext);
+    this.lWD.setId(2131296711);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, localLayoutParams.bottomMargin);
-    this.jhE.setLayoutParams(localLayoutParams);
-    this.xy = this.jhE.findViewById(2131821191);
-    addView(this.jhE);
-    dt(paramContext);
-    AppMethodBeat.o(134118);
+    this.lWD.setLayoutParams(localLayoutParams);
+    this.DR = this.lWD.findViewById(2131296698);
+    addView(this.lWD);
+    dU(paramContext);
+    AppMethodBeat.o(49727);
   }
   
-  public final boolean aOY()
+  public final void brI() {}
+  
+  public final void brW() {}
+  
+  public final void brX() {}
+  
+  public final boolean brv()
   {
     return false;
   }
   
-  public final void aPm() {}
-  
-  public final void aPx() {}
-  
-  public final void aPy() {}
-  
-  public final void e(View paramView1, View paramView2) {}
+  public final void g(View paramView1, View paramView2) {}
   
   public int getAnimationScrollOffset()
   {
@@ -90,7 +90,7 @@ public class AppBrandDesktopHalfContainer
   
   public Rect getBackUpFooterRect()
   {
-    return this.jdr;
+    return this.lTn;
   }
   
   public View getBackgroundGLSurfaceView()
@@ -105,7 +105,7 @@ public class AppBrandDesktopHalfContainer
   
   public View getEmptyView()
   {
-    return this.xy;
+    return this.DR;
   }
   
   public int getExtraBottomHeight()
@@ -115,12 +115,12 @@ public class AppBrandDesktopHalfContainer
   
   public GyroView getGyroView()
   {
-    return this.jcR;
+    return this.lSL;
   }
   
   public a getHeaderView()
   {
-    return this.jhE;
+    return this.lWD;
   }
   
   public View getMaskView()
@@ -130,39 +130,39 @@ public class AppBrandDesktopHalfContainer
   
   public final boolean isFullScreen()
   {
-    if (this.jhE != null) {}
+    if (this.lWD != null) {}
     return false;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(134117);
+    AppMethodBeat.i(49726);
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(134117);
+    AppMethodBeat.o(49726);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(134124);
+    AppMethodBeat.i(49733);
     super.onPause();
-    if (this.jhE != null) {
-      this.jhE.cvo = true;
+    if (this.lWD != null) {
+      this.lWD.dkt = true;
     }
-    AppMethodBeat.o(134124);
+    AppMethodBeat.o(49733);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(134123);
+    AppMethodBeat.i(49732);
     super.onResume();
-    if (this.jhE != null)
+    if (this.lWD != null)
     {
-      AppBrandDesktopHalfView localAppBrandDesktopHalfView = this.jhE;
-      localAppBrandDesktopHalfView.cvo = false;
+      AppBrandDesktopHalfView localAppBrandDesktopHalfView = this.lWD;
+      localAppBrandDesktopHalfView.dkt = false;
       localAppBrandDesktopHalfView.setLayoutFrozen(false);
       localAppBrandDesktopHalfView.postDelayed(new AppBrandDesktopHalfView.14(localAppBrandDesktopHalfView), 10L);
     }
-    AppMethodBeat.o(134123);
+    AppMethodBeat.o(49732);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
@@ -170,32 +170,16 @@ public class AppBrandDesktopHalfContainer
     return false;
   }
   
-  public final void qb(int paramInt)
-  {
-    AppMethodBeat.i(134121);
-    if (this.jhE != null) {
-      this.jhE.qb(paramInt);
-    }
-    AppMethodBeat.o(134121);
-  }
-  
-  public final void qc(int paramInt)
-  {
-    AppMethodBeat.i(134122);
-    qb(paramInt);
-    AppMethodBeat.o(134122);
-  }
-  
   public void setActivity(MMFragmentActivity paramMMFragmentActivity) {}
   
   public void setAnimController(c paramc)
   {
-    AppMethodBeat.i(134120);
-    this.jdo = paramc;
-    if (this.jdo != null) {
-      this.jdo.a(this);
+    AppMethodBeat.i(49729);
+    this.lTj = paramc;
+    if (this.lTj != null) {
+      this.lTj.a(this);
     }
-    AppMethodBeat.o(134120);
+    AppMethodBeat.o(49729);
   }
   
   public void setDynamicBackgroundView(View paramView) {}
@@ -203,6 +187,22 @@ public class AppBrandDesktopHalfContainer
   public void setExtraBottomHeight(int paramInt) {}
   
   public void setFixedHeight(boolean paramBoolean) {}
+  
+  public final void uF(int paramInt)
+  {
+    AppMethodBeat.i(49730);
+    if (this.lWD != null) {
+      this.lWD.uF(paramInt);
+    }
+    AppMethodBeat.o(49730);
+  }
+  
+  public final void uG(int paramInt)
+  {
+    AppMethodBeat.i(49731);
+    uF(paramInt);
+    AppMethodBeat.o(49731);
+  }
 }
 
 

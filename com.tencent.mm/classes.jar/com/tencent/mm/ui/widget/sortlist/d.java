@@ -7,14 +7,14 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ak;
+import com.tencent.mm.ui.an;
 
 public class d
   implements DragSortListView.i
 {
-  private Bitmap AML;
-  int AMM = -16777216;
-  private ImageView ioq;
+  private Bitmap HNB;
+  int HNC = -16777216;
+  private ImageView kPl;
   private ListView mListView;
   
   public d(ListView paramListView)
@@ -22,49 +22,49 @@ public class d
     this.mListView = paramListView;
   }
   
-  public final View RC(int paramInt)
+  public final View abb(int paramInt)
   {
-    AppMethodBeat.i(113109);
+    AppMethodBeat.i(159840);
     Object localObject = this.mListView;
     localObject = ((ListView)localObject).getChildAt(((ListView)localObject).getHeaderViewsCount() + paramInt - this.mListView.getFirstVisiblePosition());
     if (localObject == null)
     {
-      AppMethodBeat.o(113109);
+      AppMethodBeat.o(159840);
       return null;
     }
     ((View)localObject).setPressed(false);
     ((View)localObject).setDrawingCacheEnabled(true);
-    this.AML = Bitmap.createBitmap(((View)localObject).getDrawingCache());
+    this.HNB = Bitmap.createBitmap(((View)localObject).getDrawingCache());
     ((View)localObject).setDrawingCacheEnabled(false);
-    if (this.ioq == null) {
-      this.ioq = new ImageView(this.mListView.getContext());
+    if (this.kPl == null) {
+      this.kPl = new ImageView(this.mListView.getContext());
     }
-    this.ioq.setBackgroundColor(this.AMM);
-    this.ioq.setPadding(0, 0, 0, 0);
-    this.ioq.setImageBitmap(this.AML);
-    this.ioq.setLayoutParams(new ViewGroup.LayoutParams(((View)localObject).getWidth(), ((View)localObject).getHeight()));
-    localObject = this.ioq;
-    AppMethodBeat.o(113109);
+    this.kPl.setBackgroundColor(this.HNC);
+    this.kPl.setPadding(0, 0, 0, 0);
+    this.kPl.setImageBitmap(this.HNB);
+    this.kPl.setLayoutParams(new ViewGroup.LayoutParams(((View)localObject).getWidth(), ((View)localObject).getHeight()));
+    localObject = this.kPl;
+    AppMethodBeat.o(159840);
     return localObject;
   }
   
-  public final void fy(View paramView)
+  public final void gz(View paramView)
   {
-    AppMethodBeat.i(113110);
+    AppMethodBeat.i(159841);
     if ((paramView instanceof ImageView)) {
       ((ImageView)paramView).setImageDrawable(null);
     }
-    ak.i("MicroMsg.SimpleFloatViewManager", "bitmap recycle %s", new Object[] { this.AML.toString() });
-    this.AML.recycle();
-    this.AML = null;
-    AppMethodBeat.o(113110);
+    an.i("MicroMsg.SimpleFloatViewManager", "bitmap recycle %s", new Object[] { this.HNB.toString() });
+    this.HNB.recycle();
+    this.HNB = null;
+    AppMethodBeat.o(159841);
   }
   
-  public void i(Point paramPoint) {}
+  public void h(Point paramPoint) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.sortlist.d
  * JD-Core Version:    0.7.0.1
  */

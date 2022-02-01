@@ -8,22 +8,22 @@ public abstract class dv
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dKk = "pkgMd5".hashCode();
-  private static final int dhB = "appId".hashCode();
-  private static final int diB = "version".hashCode();
-  private static final int diE = "pkgPath".hashCode();
+  private static final int ePk = "quotedMsgId".hashCode();
+  private static final int ePl = "quotedMsgSvrId".hashCode();
+  private static final int ejL = "msgId".hashCode();
+  private static final int ejR = "status".hashCode();
+  private static final int erS = "msgSvrId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE = "type".hashCode();
-  private boolean __hadSettype = true;
-  private boolean dKd = true;
-  private boolean dhk = true;
-  private boolean div = true;
-  private boolean diy = true;
-  public String field_appId;
-  public String field_pkgMd5;
-  public String field_pkgPath;
-  public int field_type;
-  public int field_version;
+  private boolean ePi = true;
+  private boolean ePj = true;
+  private boolean ejH = true;
+  private boolean ejO = true;
+  private boolean erE = true;
+  public long field_msgId;
+  public long field_msgSvrId;
+  public long field_quotedMsgId;
+  public long field_quotedMsgSvrId;
+  public int field_status;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -38,10 +38,10 @@ public abstract class dv
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dhB != k) {
+      if (ejL != k) {
         break label60;
       }
-      this.field_appId = paramCursor.getString(i);
+      this.field_msgId = paramCursor.getLong(i);
     }
     for (;;)
     {
@@ -49,14 +49,14 @@ public abstract class dv
       break label20;
       break;
       label60:
-      if (diB == k) {
-        this.field_version = paramCursor.getInt(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (dKk == k) {
-        this.field_pkgMd5 = paramCursor.getString(i);
-      } else if (diE == k) {
-        this.field_pkgPath = paramCursor.getString(i);
+      if (erS == k) {
+        this.field_msgSvrId = paramCursor.getLong(i);
+      } else if (ePk == k) {
+        this.field_quotedMsgId = paramCursor.getLong(i);
+      } else if (ePl == k) {
+        this.field_quotedMsgSvrId = paramCursor.getLong(i);
+      } else if (ejR == k) {
+        this.field_status = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -66,20 +66,20 @@ public abstract class dv
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dhk) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.ejH) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.div) {
-      localContentValues.put("version", Integer.valueOf(this.field_version));
+    if (this.erE) {
+      localContentValues.put("msgSvrId", Long.valueOf(this.field_msgSvrId));
     }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
+    if (this.ePi) {
+      localContentValues.put("quotedMsgId", Long.valueOf(this.field_quotedMsgId));
     }
-    if (this.dKd) {
-      localContentValues.put("pkgMd5", this.field_pkgMd5);
+    if (this.ePj) {
+      localContentValues.put("quotedMsgSvrId", Long.valueOf(this.field_quotedMsgSvrId));
     }
-    if (this.diy) {
-      localContentValues.put("pkgPath", this.field_pkgPath);
+    if (this.ejO) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -89,7 +89,7 @@ public abstract class dv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.dv
  * JD-Core Version:    0.7.0.1
  */

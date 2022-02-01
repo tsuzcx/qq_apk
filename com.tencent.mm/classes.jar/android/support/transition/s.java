@@ -1,21 +1,18 @@
 package android.support.transition;
 
-import android.animation.ObjectAnimator;
-import android.graphics.Path;
-import android.graphics.PointF;
-import android.util.Property;
+import android.view.ViewGroup;
 
-final class s
-  implements t
+public abstract class s
 {
-  public final <T> ObjectAnimator a(T paramT, Property<T, PointF> paramProperty, Path paramPath)
-  {
-    return ObjectAnimator.ofObject(paramT, paramProperty, null, paramPath);
-  }
+  public abstract long a(ViewGroup paramViewGroup, Transition paramTransition, u paramu1, u paramu2);
+  
+  public abstract void c(u paramu);
+  
+  public abstract String[] getPropagationProperties();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.s
  * JD-Core Version:    0.7.0.1
  */

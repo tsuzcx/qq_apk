@@ -19,18 +19,19 @@ import java.lang.reflect.Field;
 public class TinkerHackInstrumentation
   extends Instrumentation
 {
-  public final Instrumentation BuL;
-  public final Object BuM;
-  public final Field BuN;
+  private static final String TAG = "Tinker.Instrumentation";
+  private final Object mActivityThread;
+  private final Field mInstrumentationField;
+  private final Instrumentation mOriginal;
   
   private TinkerHackInstrumentation(Instrumentation paramInstrumentation, Object paramObject, Field paramField)
   {
-    this.BuL = paramInstrumentation;
-    this.BuM = paramObject;
-    this.BuN = paramField;
+    this.mOriginal = paramInstrumentation;
+    this.mActivityThread = paramObject;
+    this.mInstrumentationField = paramField;
     try
     {
-      a(paramInstrumentation);
+      copyAllFields(paramInstrumentation);
       return;
     }
     catch (Throwable paramInstrumentation)
@@ -39,22 +40,7 @@ public class TinkerHackInstrumentation
     }
   }
   
-  private static void a(Activity paramActivity, ActivityInfo paramActivityInfo)
-  {
-    paramActivity.setRequestedOrientation(paramActivityInfo.screenOrientation);
-    paramActivity.setTheme(paramActivityInfo.theme);
-    try
-    {
-      ShareReflectUtil.b(paramActivity, "mActivityInfo").set(paramActivity, paramActivityInfo);
-      return;
-    }
-    catch (Throwable paramActivity)
-    {
-      throw new TinkerRuntimeException("see next stacktrace.", paramActivity);
-    }
-  }
-  
-  private void a(Instrumentation paramInstrumentation)
+  private void copyAllFields(Instrumentation paramInstrumentation)
   {
     Field[] arrayOfField = Instrumentation.class.getDeclaredFields();
     int i = 0;
@@ -67,32 +53,12 @@ public class TinkerHackInstrumentation
     }
   }
   
-  private static boolean a(ClassLoader paramClassLoader, Intent paramIntent)
-  {
-    if (paramIntent == null) {
-      return false;
-    }
-    ShareIntentUtil.a(paramIntent, paramClassLoader);
-    paramClassLoader = (ComponentName)paramIntent.getParcelableExtra("tinker_iek_old_component");
-    if (paramClassLoader == null)
-    {
-      new StringBuilder("oldComponent was null, start ").append(paramIntent.getComponent()).append(" next.");
-      return false;
-    }
-    if (IncrementComponentManager.awY(paramClassLoader.getClassName()) == null) {
-      return false;
-    }
-    paramIntent.setComponent(paramClassLoader);
-    paramIntent.removeExtra("tinker_iek_old_component");
-    return true;
-  }
-  
-  public static TinkerHackInstrumentation jx(Context paramContext)
+  public static TinkerHackInstrumentation create(Context paramContext)
   {
     try
     {
-      paramContext = ShareReflectUtil.d(paramContext, null);
-      Field localField = ShareReflectUtil.b(paramContext, "mInstrumentation");
+      paramContext = ShareReflectUtil.getActivityThread(paramContext, null);
+      Field localField = ShareReflectUtil.findField(paramContext, "mInstrumentation");
       Instrumentation localInstrumentation = (Instrumentation)localField.get(paramContext);
       if ((localInstrumentation instanceof TinkerHackInstrumentation)) {
         return (TinkerHackInstrumentation)localInstrumentation;
@@ -106,13 +72,48 @@ public class TinkerHackInstrumentation
     }
   }
   
+  private void fixActivityParams(Activity paramActivity, ActivityInfo paramActivityInfo)
+  {
+    paramActivity.setRequestedOrientation(paramActivityInfo.screenOrientation);
+    paramActivity.setTheme(paramActivityInfo.theme);
+    try
+    {
+      ShareReflectUtil.findField(paramActivity, "mActivityInfo").set(paramActivity, paramActivityInfo);
+      return;
+    }
+    catch (Throwable paramActivity)
+    {
+      throw new TinkerRuntimeException("see next stacktrace.", paramActivity);
+    }
+  }
+  
+  private boolean processIntent(ClassLoader paramClassLoader, Intent paramIntent)
+  {
+    if (paramIntent == null) {
+      return false;
+    }
+    ShareIntentUtil.fixIntentClassLoader(paramIntent, paramClassLoader);
+    paramClassLoader = (ComponentName)paramIntent.getParcelableExtra("tinker_iek_old_component");
+    if (paramClassLoader == null)
+    {
+      new StringBuilder("oldComponent was null, start ").append(paramIntent.getComponent()).append(" next.");
+      return false;
+    }
+    if (IncrementComponentManager.queryActivityInfo(paramClassLoader.getClassName()) == null) {
+      return false;
+    }
+    paramIntent.setComponent(paramClassLoader);
+    paramIntent.removeExtra("tinker_iek_old_component");
+    return true;
+  }
+  
   public void callActivityOnCreate(Activity paramActivity, Bundle paramBundle)
   {
     if (paramActivity != null)
     {
-      ActivityInfo localActivityInfo = IncrementComponentManager.awY(paramActivity.getClass().getName());
+      ActivityInfo localActivityInfo = IncrementComponentManager.queryActivityInfo(paramActivity.getClass().getName());
       if (localActivityInfo != null) {
-        a(paramActivity, localActivityInfo);
+        fixActivityParams(paramActivity, localActivityInfo);
       }
     }
     super.callActivityOnCreate(paramActivity, paramBundle);
@@ -122,9 +123,9 @@ public class TinkerHackInstrumentation
   {
     if (paramActivity != null)
     {
-      ActivityInfo localActivityInfo = IncrementComponentManager.awY(paramActivity.getClass().getName());
+      ActivityInfo localActivityInfo = IncrementComponentManager.queryActivityInfo(paramActivity.getClass().getName());
       if (localActivityInfo != null) {
-        a(paramActivity, localActivityInfo);
+        fixActivityParams(paramActivity, localActivityInfo);
       }
     }
     super.callActivityOnCreate(paramActivity, paramBundle, paramPersistableBundle);
@@ -133,30 +134,35 @@ public class TinkerHackInstrumentation
   public void callActivityOnNewIntent(Activity paramActivity, Intent paramIntent)
   {
     if (paramActivity != null) {
-      a(paramActivity.getClass().getClassLoader(), paramIntent);
+      processIntent(paramActivity.getClass().getClassLoader(), paramIntent);
     }
     super.callActivityOnNewIntent(paramActivity, paramIntent);
   }
   
-  public final void dWC()
+  public void install()
   {
-    if (!(this.BuN.get(this.BuM) instanceof TinkerHackInstrumentation)) {
-      this.BuN.set(this.BuM, this);
+    if (!(this.mInstrumentationField.get(this.mActivityThread) instanceof TinkerHackInstrumentation)) {
+      this.mInstrumentationField.set(this.mActivityThread, this);
     }
   }
   
   public Activity newActivity(Class<?> paramClass, Context paramContext, IBinder paramIBinder, Application paramApplication, Intent paramIntent, ActivityInfo paramActivityInfo, CharSequence paramCharSequence, Activity paramActivity, String paramString, Object paramObject)
   {
-    a(paramContext.getClassLoader(), paramIntent);
+    processIntent(paramContext.getClassLoader(), paramIntent);
     return super.newActivity(paramClass, paramContext, paramIBinder, paramApplication, paramIntent, paramActivityInfo, paramCharSequence, paramActivity, paramString, paramObject);
   }
   
   public Activity newActivity(ClassLoader paramClassLoader, String paramString, Intent paramIntent)
   {
-    if (a(paramClassLoader, paramIntent)) {
+    if (processIntent(paramClassLoader, paramIntent)) {
       return super.newActivity(paramClassLoader, paramIntent.getComponent().getClassName(), paramIntent);
     }
     return super.newActivity(paramClassLoader, paramString, paramIntent);
+  }
+  
+  public void uninstall()
+  {
+    this.mInstrumentationField.set(this.mActivityThread, this.mOriginal);
   }
 }
 

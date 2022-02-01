@@ -1,62 +1,114 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
 import android.content.Context;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class IPCallDynamicTextView
   extends TextView
 {
-  private ak mHandler;
+  private ap mHandler;
   private int mHeight;
   private String mValue;
-  private int nSX;
-  private double nSY;
-  private double nSZ;
-  private double nTa;
-  private boolean nTb;
-  private int nTc;
-  private int nTd;
-  DecimalFormat nTe;
-  private String nTf;
-  private String nTg;
+  private int sGS;
+  private double sGT;
+  private double sGU;
+  private double sGV;
+  private boolean sGW;
+  private int sGX;
+  private int sGY;
+  DecimalFormat sGZ;
+  private String sHa;
+  private String sHb;
   
   public IPCallDynamicTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(22144);
-    this.nTc = 4000;
-    this.nTd = 50;
-    this.nTe = new DecimalFormat("0.00");
-    this.nTf = "";
-    this.nTg = "";
-    this.mHandler = new IPCallDynamicTextView.1(this);
+    AppMethodBeat.i(25761);
+    this.sGX = 4000;
+    this.sGY = 50;
+    this.sGZ = new DecimalFormat("0.00");
+    this.sHa = "";
+    this.sHb = "";
+    this.mHandler = new ap()
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(25759);
+        switch (paramAnonymousMessage.what)
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(25759);
+          return;
+          if (((IPCallDynamicTextView.a(IPCallDynamicTextView.this) > 0.0D) && (IPCallDynamicTextView.b(IPCallDynamicTextView.this) < IPCallDynamicTextView.c(IPCallDynamicTextView.this))) || ((IPCallDynamicTextView.a(IPCallDynamicTextView.this) < 0.0D) && (IPCallDynamicTextView.b(IPCallDynamicTextView.this) > IPCallDynamicTextView.c(IPCallDynamicTextView.this))))
+          {
+            IPCallDynamicTextView.a(IPCallDynamicTextView.this, true);
+            IPCallDynamicTextView.a(IPCallDynamicTextView.this, IPCallDynamicTextView.b(IPCallDynamicTextView.this));
+            IPCallDynamicTextView.b(IPCallDynamicTextView.this, IPCallDynamicTextView.b(IPCallDynamicTextView.this) + IPCallDynamicTextView.a(IPCallDynamicTextView.this));
+            IPCallDynamicTextView.e(IPCallDynamicTextView.this).sendEmptyMessageDelayed(1, IPCallDynamicTextView.d(IPCallDynamicTextView.this));
+            AppMethodBeat.o(25759);
+            return;
+          }
+          IPCallDynamicTextView.a(IPCallDynamicTextView.this, false);
+          IPCallDynamicTextView.a(IPCallDynamicTextView.this, IPCallDynamicTextView.c(IPCallDynamicTextView.this));
+        }
+      }
+    };
     init();
-    AppMethodBeat.o(22144);
+    AppMethodBeat.o(25761);
   }
   
   public IPCallDynamicTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(22145);
-    this.nTc = 4000;
-    this.nTd = 50;
-    this.nTe = new DecimalFormat("0.00");
-    this.nTf = "";
-    this.nTg = "";
-    this.mHandler = new IPCallDynamicTextView.1(this);
+    AppMethodBeat.i(25762);
+    this.sGX = 4000;
+    this.sGY = 50;
+    this.sGZ = new DecimalFormat("0.00");
+    this.sHa = "";
+    this.sHb = "";
+    this.mHandler = new ap()
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(25759);
+        switch (paramAnonymousMessage.what)
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(25759);
+          return;
+          if (((IPCallDynamicTextView.a(IPCallDynamicTextView.this) > 0.0D) && (IPCallDynamicTextView.b(IPCallDynamicTextView.this) < IPCallDynamicTextView.c(IPCallDynamicTextView.this))) || ((IPCallDynamicTextView.a(IPCallDynamicTextView.this) < 0.0D) && (IPCallDynamicTextView.b(IPCallDynamicTextView.this) > IPCallDynamicTextView.c(IPCallDynamicTextView.this))))
+          {
+            IPCallDynamicTextView.a(IPCallDynamicTextView.this, true);
+            IPCallDynamicTextView.a(IPCallDynamicTextView.this, IPCallDynamicTextView.b(IPCallDynamicTextView.this));
+            IPCallDynamicTextView.b(IPCallDynamicTextView.this, IPCallDynamicTextView.b(IPCallDynamicTextView.this) + IPCallDynamicTextView.a(IPCallDynamicTextView.this));
+            IPCallDynamicTextView.e(IPCallDynamicTextView.this).sendEmptyMessageDelayed(1, IPCallDynamicTextView.d(IPCallDynamicTextView.this));
+            AppMethodBeat.o(25759);
+            return;
+          }
+          IPCallDynamicTextView.a(IPCallDynamicTextView.this, false);
+          IPCallDynamicTextView.a(IPCallDynamicTextView.this, IPCallDynamicTextView.c(IPCallDynamicTextView.this));
+        }
+      }
+    };
     init();
-    AppMethodBeat.o(22145);
+    AppMethodBeat.o(25762);
   }
   
-  public static String Rq(String paramString)
+  public static String aek(String paramString)
   {
-    AppMethodBeat.i(22148);
+    AppMethodBeat.i(25765);
     String str1 = "";
     int i = 0;
     while ((i < paramString.length()) && (!Character.isDigit(paramString.charAt(i))))
@@ -72,92 +124,102 @@ public class IPCallDynamicTextView
       i -= 1;
     }
     paramString = paramString.substring(str1.length(), paramString.length() - str2.length());
-    AppMethodBeat.o(22148);
+    AppMethodBeat.o(25765);
     return paramString;
   }
   
   private void init()
   {
-    AppMethodBeat.i(22146);
-    getViewTreeObserver().addOnGlobalLayoutListener(new IPCallDynamicTextView.2(this));
-    AppMethodBeat.o(22146);
+    AppMethodBeat.i(25763);
+    getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+    {
+      public final void onGlobalLayout()
+      {
+        AppMethodBeat.i(25760);
+        if (IPCallDynamicTextView.b(IPCallDynamicTextView.this) != IPCallDynamicTextView.c(IPCallDynamicTextView.this)) {
+          IPCallDynamicTextView.e(IPCallDynamicTextView.this).sendEmptyMessage(1);
+        }
+        AppMethodBeat.o(25760);
+      }
+    });
+    AppMethodBeat.o(25763);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(22149);
+    AppMethodBeat.i(25766);
     super.onMeasure(paramInt1, paramInt2);
     this.mHeight = getMeasuredHeight();
-    AppMethodBeat.o(22149);
+    AppMethodBeat.o(25766);
   }
   
   public void setLocHeight(int paramInt)
   {
-    this.nSX = paramInt;
+    this.sGS = paramInt;
   }
   
   public final void setValue(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(22147);
+    AppMethodBeat.i(25764);
     if ((paramString1 == null) || (paramString1.length() <= 0) || (paramString2 == null) || (paramString2.length() <= 0))
     {
       setText(paramString2);
-      AppMethodBeat.o(22147);
+      AppMethodBeat.o(25764);
       return;
     }
     try
     {
-      this.nSZ = Double.parseDouble(Rq(paramString1));
-      this.nTf = "";
+      this.sGU = Double.parseDouble(aek(paramString1));
+      this.sHa = "";
       i = 0;
       while ((i < paramString2.length()) && (!Character.isDigit(paramString2.charAt(i))))
       {
-        this.nTf += paramString2.charAt(i);
+        this.sHa += paramString2.charAt(i);
         i += 1;
       }
-      this.nTg = "";
+      this.sHb = "";
     }
     catch (NumberFormatException paramString1)
     {
       setText(paramString2);
-      AppMethodBeat.o(22147);
+      AppMethodBeat.o(25764);
       return;
     }
     int i = paramString2.length() - 1;
     while ((i > 0) && (!Character.isDigit(paramString2.charAt(i))))
     {
-      this.nTg += paramString2.charAt(i);
+      this.sHb += paramString2.charAt(i);
       i -= 1;
     }
-    paramString1 = paramString2.substring(this.nTf.length(), paramString2.length() - this.nTg.length());
+    paramString1 = paramString2.substring(this.sHa.length(), paramString2.length() - this.sHb.length());
     try
     {
-      this.nTa = Double.parseDouble(paramString1);
+      this.sGV = Double.parseDouble(paramString1);
       this.mValue = paramString2;
-      this.nSY = ((this.nTa - this.nSZ) / (this.nTc / this.nTd));
-      if (this.nSY == 0.0D)
+      this.sGT = ((this.sGV - this.sGU) / (this.sGX / this.sGY));
+      if (this.sGT == 0.0D)
       {
         setText(paramString2);
-        AppMethodBeat.o(22147);
+        AppMethodBeat.o(25764);
         return;
       }
     }
     catch (NumberFormatException paramString1)
     {
       setText(paramString2);
-      AppMethodBeat.o(22147);
+      AppMethodBeat.o(25764);
       return;
     }
-    this.nSY = new BigDecimal(this.nSY).setScale(2, 4).doubleValue();
+    this.sGT = new BigDecimal(this.sGT).setScale(2, 4).doubleValue();
     if (isShown()) {
       this.mHandler.sendEmptyMessage(1);
     }
-    AppMethodBeat.o(22147);
+    AppMethodBeat.o(25764);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallDynamicTextView
  * JD-Core Version:    0.7.0.1
  */

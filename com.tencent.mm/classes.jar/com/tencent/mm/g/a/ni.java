@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ni
   extends b
 {
-  public ni.a cDG;
-  public ni.b cDH;
+  public a dsq;
+  public b dsr;
   
   public ni()
   {
@@ -16,17 +16,31 @@ public final class ni
   
   private ni(byte paramByte)
   {
-    AppMethodBeat.i(102510);
-    this.cDG = new ni.a();
-    this.cDH = new ni.b();
-    this.ymq = false;
+    AppMethodBeat.i(116039);
+    this.dsq = new a();
+    this.dsr = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(102510);
+    AppMethodBeat.o(116039);
+  }
+  
+  public static final class a
+  {
+    public String deE;
+    public int dep;
+    public int dss;
+    public int dsu;
+    public String pageId;
+  }
+  
+  public static final class b
+  {
+    public String dsv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ni
  * JD-Core Version:    0.7.0.1
  */

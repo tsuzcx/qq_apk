@@ -1,31 +1,19 @@
 package com.tencent.mm.sdk.g;
 
+import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@Deprecated
 public final class a
 {
-  static final ThreadLocal<String> yse;
-  
-  static
+  @Deprecated
+  public static HandlerThread aGG(String paramString)
   {
-    AppMethodBeat.i(52522);
-    yse = new ThreadLocal();
-    AppMethodBeat.o(52522);
-  }
-  
-  public static String getTag()
-  {
-    AppMethodBeat.i(52521);
-    String str = (String)yse.get();
-    AppMethodBeat.o(52521);
-    return str;
-  }
-  
-  protected static void setTag(String paramString)
-  {
-    AppMethodBeat.i(52520);
-    yse.set(paramString);
-    AppMethodBeat.o(52520);
+    AppMethodBeat.i(182972);
+    paramString = new HandlerThread("[D]#".concat(String.valueOf(paramString)));
+    paramString.start();
+    AppMethodBeat.o(182972);
+    return paramString;
   }
 }
 

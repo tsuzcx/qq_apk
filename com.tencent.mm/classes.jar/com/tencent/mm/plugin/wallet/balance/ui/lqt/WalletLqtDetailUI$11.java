@@ -1,40 +1,43 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
-import android.app.Dialog;
-import android.widget.Toast;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.vending.g.d.a;
+import com.tencent.mm.protocal.protobuf.bsy;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletLqtDetailUI$11
-  implements d.a
+  implements MenuItem.OnMenuItemClickListener
 {
-  WalletLqtDetailUI$11(WalletLqtDetailUI paramWalletLqtDetailUI) {}
+  WalletLqtDetailUI$11(WalletLqtDetailUI paramWalletLqtDetailUI, bsy parambsy) {}
   
-  public final void aX(Object paramObject)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(142295);
-    if (WalletLqtDetailUI.a(this.tPQ) != null) {
-      WalletLqtDetailUI.a(this.tPQ).dismiss();
-    }
-    ab.i("MicroMsg.WalletLqtDetailUI", "close account failed: %s", new Object[] { paramObject });
-    if (paramObject != null) {
-      if (!(paramObject instanceof String)) {
-        break label74;
+    AppMethodBeat.i(68797);
+    if (this.zIW.DPZ != 1)
+    {
+      if (this.zIW.DPZ != 2) {
+        break label62;
+      }
+      if (!bt.isNullOrNil(this.zIW.DcE)) {
+        e.o(this.zIT, this.zIW.DcE, false);
       }
     }
-    label74:
-    for (paramObject = paramObject.toString();; paramObject = this.tPQ.getString(2131305218))
+    for (;;)
     {
-      Toast.makeText(this.tPQ, paramObject, 1).show();
-      AppMethodBeat.o(142295);
-      return;
+      AppMethodBeat.o(68797);
+      return false;
+      label62:
+      if ((this.zIW.DPZ == 3) && (!bt.isNullOrNil(this.zIW.CRC)) && (!bt.isNullOrNil(this.zIW.DcE))) {
+        e.v(this.zIW.CRC, this.zIW.DcE, 0, 1061);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtDetailUI.11
  * JD-Core Version:    0.7.0.1
  */

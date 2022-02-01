@@ -25,17 +25,19 @@ abstract interface r
   
   public abstract float e(q paramq);
   
+  public abstract void f(q paramq);
+  
   public abstract void g(q paramq);
   
   public abstract void h(q paramq);
   
-  public abstract void hw();
-  
   public abstract ColorStateList i(q paramq);
+  
+  public abstract void initStatic();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v7.widget.r
  * JD-Core Version:    0.7.0.1
  */

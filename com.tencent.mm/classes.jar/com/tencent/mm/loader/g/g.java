@@ -1,12 +1,12 @@
 package com.tencent.mm.loader.g;
 
-import a.f.b.j;
-import a.l;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/loader/loader/LoaderPair;", "A", "B", "", "first", "second", "(Ljava/lang/Object;Ljava/lang/Object;)V", "getFirst", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getSecond", "setSecond", "(Ljava/lang/Object;)V", "component1", "component2", "copy", "(Ljava/lang/Object;Ljava/lang/Object;)Lcom/tencent/mm/loader/loader/LoaderPair;", "equals", "", "other", "hashCode", "", "toString", "", "libimageloader_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/loader/LoaderPair;", "A", "B", "", "first", "second", "(Ljava/lang/Object;Ljava/lang/Object;)V", "getFirst", "()Ljava/lang/Object;", "Ljava/lang/Object;", "getSecond", "setSecond", "(Ljava/lang/Object;)V", "component1", "component2", "copy", "(Ljava/lang/Object;Ljava/lang/Object;)Lcom/tencent/mm/loader/loader/LoaderPair;", "equals", "", "other", "hashCode", "", "toString", "", "libimageloader_release"})
 public final class g<A, B>
 {
-  final A first;
+  public final A first;
   B second;
   
   public g(A paramA, B paramB)
@@ -22,7 +22,7 @@ public final class g<A, B>
       if ((paramObject instanceof g))
       {
         paramObject = (g)paramObject;
-        if ((!j.e(this.first, paramObject.first)) || (!j.e(this.second, paramObject.second))) {}
+        if ((!k.g(this.first, paramObject.first)) || (!k.g(this.second, paramObject.second))) {}
       }
     }
     else {
@@ -53,7 +53,7 @@ public final class g<A, B>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.g.g
  * JD-Core Version:    0.7.0.1
  */

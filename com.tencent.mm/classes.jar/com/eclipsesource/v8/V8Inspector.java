@@ -14,44 +14,44 @@ public class V8Inspector
   @Keep
   public static int jniCallbackNotify(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(75501);
+    AppMethodBeat.i(62126);
     if (_server == null)
     {
-      AppMethodBeat.o(75501);
+      AppMethodBeat.o(62126);
       return -1;
     }
     int i = _server.notify(paramLong1, paramLong2, paramString);
-    AppMethodBeat.o(75501);
+    AppMethodBeat.o(62126);
     return i;
   }
   
   @Keep
   public static int jniCallbackSendData(long paramLong, String paramString)
   {
-    AppMethodBeat.i(75500);
+    AppMethodBeat.i(62125);
     if (_server == null)
     {
-      AppMethodBeat.o(75500);
+      AppMethodBeat.o(62125);
       return -1;
     }
     int i = _server.sendData(paramLong, paramString);
-    AppMethodBeat.o(75500);
+    AppMethodBeat.o(62125);
     return i;
   }
   
   public static int notify(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(75499);
+    AppMethodBeat.i(62124);
     int i = JniNotify(paramLong1, paramLong2, paramString);
-    AppMethodBeat.o(75499);
+    AppMethodBeat.o(62124);
     return i;
   }
   
   public static void onReceiveData(long paramLong, String paramString)
   {
-    AppMethodBeat.i(75498);
+    AppMethodBeat.i(62123);
     JniReceiveData(paramLong, paramString);
-    AppMethodBeat.o(75498);
+    AppMethodBeat.o(62123);
   }
   
   public static void setServer(JsInspectorChannelServer paramJsInspectorChannelServer)

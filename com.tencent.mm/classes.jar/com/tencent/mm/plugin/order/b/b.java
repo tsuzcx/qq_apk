@@ -13,9 +13,9 @@ public final class b
   
   static
   {
-    AppMethodBeat.i(43797);
+    AppMethodBeat.i(66705);
     SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "OrderCommonMsgXml") };
-    AppMethodBeat.o(43797);
+    AppMethodBeat.o(66705);
   }
   
   public b(e parame)
@@ -26,17 +26,17 @@ public final class b
   
   public final boolean a(a parama)
   {
-    AppMethodBeat.i(43794);
+    AppMethodBeat.i(66702);
     boolean bool = super.insert(parama);
-    AppMethodBeat.o(43794);
+    AppMethodBeat.o(66702);
     return bool;
   }
   
   public final Cursor getAll()
   {
-    AppMethodBeat.i(43793);
+    AppMethodBeat.i(66701);
     Cursor localCursor = this.db.rawQuery("select * from OrderCommonMsgXml order by msgId desc", null);
-    AppMethodBeat.o(43793);
+    AppMethodBeat.o(66701);
     return localCursor;
   }
 }

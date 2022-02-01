@@ -8,72 +8,72 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BakConnErrorUI
   extends MMWizardActivity
 {
-  private int jIs;
+  private int mzJ;
   
   public int getLayoutId()
   {
-    return 2130968812;
+    return 2131493141;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(17917);
-    setMMTitle(2131297432);
+    AppMethodBeat.i(21973);
+    setMMTitle(2131756308);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(17915);
+        AppMethodBeat.i(21971);
         BakConnErrorUI.a(BakConnErrorUI.this);
-        AppMethodBeat.o(17915);
+        AppMethodBeat.o(21971);
         return true;
       }
     });
-    AppMethodBeat.o(17917);
+    AppMethodBeat.o(21973);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(17916);
+    AppMethodBeat.i(21972);
     super.onCreate(paramBundle);
-    if (getIntent().getExtras().getBoolean("WizardRootKillSelf", false))
+    if (getIntent().getExtras().getBoolean("MMWizardActivity.WIZARD_ROOT_KILLSELF", false))
     {
-      AppMethodBeat.o(17916);
+      AppMethodBeat.o(21972);
       return;
     }
-    this.jIs = getIntent().getIntExtra("cmd", -1);
-    ab.i("MicroMsg.BakFinishUI", "BakConnErrorUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.jIs) });
+    this.mzJ = getIntent().getIntExtra("cmd", -1);
+    ad.i("MicroMsg.BakFinishUI", "BakConnErrorUI onCreate nowCmd:%d", new Object[] { Integer.valueOf(this.mzJ) });
     initView();
-    a.aUU().aUV().jHK = -1;
-    AppMethodBeat.o(17916);
+    a.byd().bye().mzc = -1;
+    AppMethodBeat.o(21972);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(17918);
+    AppMethodBeat.i(21974);
     super.onDestroy();
-    a.aUU().aUV().jHC = null;
-    ab.i("MicroMsg.BakFinishUI", "BakConnErrorUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.jIs) });
-    AppMethodBeat.o(17918);
+    a.byd().bye().myU = null;
+    ad.i("MicroMsg.BakFinishUI", "BakConnErrorUI onDestroy nowCmd:%d", new Object[] { Integer.valueOf(this.mzJ) });
+    AppMethodBeat.o(21974);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(17919);
+    AppMethodBeat.i(21975);
     if (paramInt == 4)
     {
-      Oi(1);
-      AppMethodBeat.o(17919);
+      Xo(1);
+      AppMethodBeat.o(21975);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(17919);
+    AppMethodBeat.o(21975);
     return bool;
   }
   
@@ -85,7 +85,7 @@ public class BakConnErrorUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui.BakConnErrorUI
  * JD-Core Version:    0.7.0.1
  */

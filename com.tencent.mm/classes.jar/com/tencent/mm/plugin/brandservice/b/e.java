@@ -1,95 +1,115 @@
 package com.tencent.mm.plugin.brandservice.b;
 
+import android.content.Context;
+import android.os.Looper;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.afl;
-import com.tencent.mm.protocal.protobuf.afm;
-import com.tencent.mm.protocal.protobuf.ah;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.api.c;
+import com.tencent.mm.aw.a.a;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.aw.o;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.n.b;
+import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.protocal.protobuf.zi;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
+import java.util.List;
 
 public final class e
-  extends m
-  implements k
 {
-  private f callback;
-  LinkedList<String> jSP;
-  private final com.tencent.mm.ai.b rr;
+  private static ap gFd;
   
-  public e()
+  static
   {
-    AppMethodBeat.i(13836);
-    Object localObject1 = new b.a();
-    ((b.a)localObject1).fsX = new afl();
-    ((b.a)localObject1).fsY = new afm();
-    ((b.a)localObject1).uri = "/cgi-bin/micromsg-bin/getapplist";
-    ((b.a)localObject1).funcId = 387;
-    ((b.a)localObject1).reqCmdId = 0;
-    ((b.a)localObject1).respCmdId = 0;
-    this.rr = ((b.a)localObject1).ado();
-    this.jSP = new LinkedList();
-    afl localafl = (afl)this.rr.fsV.fta;
-    g.RM();
-    Object localObject2 = g.RL().Ru().get(196610, null);
-    if (localObject2 == null) {}
-    for (localObject1 = "null";; localObject1 = localObject2.toString())
+    AppMethodBeat.i(5566);
+    gFd = new ap(Looper.getMainLooper());
+    AppMethodBeat.o(5566);
+  }
+  
+  public static c a(c paramc, zi paramzi)
+  {
+    if (paramzi != null)
     {
-      ab.i("MicroMsg.BrandService.BrandServiceApplication", "get config, key[%d], value[%s]", new Object[] { Integer.valueOf(196610), localObject1 });
-      localafl.wYJ = bo.a((Integer)localObject2, 0);
-      ab.i("MicroMsg.BrandService.NetSceneGetAppList", "info: request hash code %d", new Object[] { Integer.valueOf(localafl.wYJ) });
-      AppMethodBeat.o(13836);
+      paramc.field_brandFlag = paramzi.ika;
+      paramc.field_brandIconURL = paramzi.ikd;
+      paramc.field_brandInfo = paramzi.ikc;
+      paramc.field_extInfo = paramzi.ikb;
+    }
+    return paramc;
+  }
+  
+  public static void a(ImageView paramImageView, af paramaf, String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(5565);
+    if ((!paramBoolean) && (b.ls(paramaf.field_type)))
+    {
+      a.b.d(paramImageView, paramaf.field_username);
+      AppMethodBeat.o(5565);
       return;
     }
+    paramaf = new c.a();
+    paramaf.hkf = 2131231342;
+    paramaf.hjT = true;
+    paramaf.gkG = true;
+    o.ayJ().a(paramString, paramImageView, paramaf.azc());
+    AppMethodBeat.o(5565);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public static Spanned b(Context paramContext, String paramString, List<String> paramList)
   {
-    AppMethodBeat.i(13838);
-    this.callback = paramf;
-    ab.i("MicroMsg.BrandService.NetSceneGetAppList", "do scene");
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(13838);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 387;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(13837);
-    ab.w("MicroMsg.BrandService.NetSceneGetAppList", "on scene end code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    AppMethodBeat.i(5563);
+    if (bt.isNullOrNil(paramString))
     {
-      paramq = (afm)this.rr.fsW.fta;
-      ab.i("MicroMsg.BrandService.NetSceneGetAppList", "ok, hash code is %d, count is %d", new Object[] { Integer.valueOf(paramq.wYJ), Integer.valueOf(paramq.jJu) });
-      com.tencent.mm.plugin.brandservice.b.i(196610, Integer.valueOf(paramq.wYJ));
-      paramq = paramq.jJv.iterator();
-      while (paramq.hasNext())
-      {
-        paramArrayOfByte = (ah)paramq.next();
-        this.jSP.add(paramArrayOfByte.jJA);
-      }
+      AppMethodBeat.o(5563);
+      return null;
     }
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(13837);
+    if ((paramContext == null) || (paramList == null))
+    {
+      paramContext = new SpannableString(paramString);
+      AppMethodBeat.o(5563);
+      return paramContext;
+    }
+    paramContext = com.tencent.mm.plugin.fts.a.f.a(com.tencent.mm.plugin.fts.a.a.e.a(paramString, paramList));
+    if ((paramContext.rpj instanceof Spannable))
+    {
+      paramContext = (Spannable)paramContext.rpj;
+      AppMethodBeat.o(5563);
+      return paramContext;
+    }
+    paramContext = new SpannableString(paramContext.rpj);
+    AppMethodBeat.o(5563);
+    return paramContext;
+  }
+  
+  public static boolean c(TextView paramTextView, CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(5564);
+    if (paramTextView == null)
+    {
+      AppMethodBeat.o(5564);
+      return false;
+    }
+    if ((paramCharSequence == null) || (paramCharSequence.length() == 0))
+    {
+      paramTextView.setVisibility(8);
+      AppMethodBeat.o(5564);
+      return false;
+    }
+    paramTextView.setVisibility(0);
+    paramTextView.setText(paramCharSequence);
+    AppMethodBeat.o(5564);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.b.e
  * JD-Core Version:    0.7.0.1
  */

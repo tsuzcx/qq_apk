@@ -1,55 +1,45 @@
 package com.tencent.mm.sdk.h;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.lang.reflect.Field;
 
 public final class e
 {
-  public static boolean hu(Context paramContext)
+  public static boolean eHt()
   {
-    AppMethodBeat.i(65377);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(65377);
-      return false;
-    }
+    boolean bool1 = false;
+    AppMethodBeat.i(153483);
     try
     {
-      paramContext = paramContext.getClassLoader().loadClass("android.util.FtFeature");
-      boolean bool = ((Boolean)paramContext.getMethod("isFeatureSupport", new Class[] { Integer.TYPE }).invoke(paramContext, new Object[] { Integer.valueOf(32) })).booleanValue();
-      ab.d("MicroMsg.Vendor.Vivo", "vivo hasCutOut: %s", new Object[] { Boolean.valueOf(bool) });
-      AppMethodBeat.o(65377);
-      return bool;
+      Class localClass = Class.forName("oppo.content.res.OppoFontUtils");
+      boolean bool2 = localClass.getField("isFlipFontUsed").getBoolean(localClass);
+      bool1 = bool2;
     }
-    catch (ClassNotFoundException paramContext)
+    catch (Exception localException)
     {
-      ab.e("MicroMsg.Vendor.Vivo", "hasCutOut, ClassNotFoundException!!");
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.Vendor.Oppo", localException, "", new Object[0]);
+      }
+    }
+    AppMethodBeat.o(153483);
+    return bool1;
+  }
+  
+  public static boolean iY(Context paramContext)
+  {
+    AppMethodBeat.i(153482);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(153482);
       return false;
     }
-    catch (NoSuchMethodException paramContext)
-    {
-      ab.e("MicroMsg.Vendor.Vivo", "hasCutOut, NoSuchMethodException!!");
-      return false;
-    }
-    catch (IllegalAccessException paramContext)
-    {
-      ab.e("MicroMsg.Vendor.Vivo", "hasCutOut, IllegalAccessException!!");
-      return false;
-    }
-    catch (InvocationTargetException paramContext)
-    {
-      ab.e("MicroMsg.Vendor.Vivo", "hasCutOut, InvocationTargetException!!");
-      return false;
-    }
-    finally
-    {
-      ab.d("MicroMsg.Vendor.Vivo", "vivo hasCutOut: %s", new Object[] { Boolean.FALSE });
-      AppMethodBeat.o(65377);
-    }
-    return false;
+    boolean bool = paramContext.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
+    AppMethodBeat.o(153482);
+    return bool;
   }
 }
 

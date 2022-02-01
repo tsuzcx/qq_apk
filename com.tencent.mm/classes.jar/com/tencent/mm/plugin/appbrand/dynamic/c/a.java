@@ -1,32 +1,34 @@
 package com.tencent.mm.plugin.appbrand.dynamic.c;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelappbrand.e;
-import com.tencent.mm.modelappbrand.l;
+import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.modelappbrand.n;
+import com.tencent.mm.protocal.MMProtocalJni;
+import junit.framework.Assert;
 
 public final class a
   implements com.tencent.mm.pluginsdk.cmd.a
 {
   public final boolean a(Context paramContext, final String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(10799);
-    if (!((e)g.E(e.class)).acl().acr())
+    AppMethodBeat.i(121281);
+    if (!((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().atS())
     {
-      AppMethodBeat.o(10799);
+      AppMethodBeat.o(121281);
       return true;
     }
     if (!"//widget".equals(paramArrayOfString[0]))
     {
-      AppMethodBeat.o(10799);
+      AppMethodBeat.o(121281);
       return true;
     }
     if (paramArrayOfString.length < 2)
     {
-      AppMethodBeat.o(10799);
+      AppMethodBeat.o(121281);
       return true;
     }
     paramString = paramArrayOfString[1].toLowerCase();
@@ -35,7 +37,7 @@ public final class a
     {
     default: 
       i = -1;
-      label115:
+      label111:
       switch (i)
       {
       }
@@ -43,30 +45,28 @@ public final class a
     }
     for (;;)
     {
-      AppMethodBeat.o(10799);
+      AppMethodBeat.o(121281);
       return true;
       if (!paramString.equals("assert")) {
         break;
       }
       i = 0;
-      break label115;
+      break label111;
       if (!paramString.equals("jniassert")) {
         break;
       }
       i = 1;
-      break label115;
+      break label111;
       if (!paramString.equals("debugger")) {
         break;
       }
       i = 2;
-      break label115;
-      com.tencent.mm.ch.a.post(new a.1(this, paramArrayOfString));
-      continue;
-      com.tencent.mm.ch.a.post(new Runnable()
+      break label111;
+      com.tencent.mm.cj.a.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(10794);
+          AppMethodBeat.i(121275);
           String str2 = "com.tencent.mm";
           String str1 = str2;
           if (paramArrayOfString.length > 2)
@@ -76,21 +76,40 @@ public final class a
               str1 = "com.tencent.mm" + ":" + paramArrayOfString[2];
             }
           }
-          f.a(str1, null, a.b.class, null);
-          AppMethodBeat.o(10794);
+          h.a(str1, null, a.a.class, null);
+          AppMethodBeat.o(121275);
+        }
+      });
+      continue;
+      com.tencent.mm.cj.a.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(121276);
+          String str2 = "com.tencent.mm";
+          String str1 = str2;
+          if (paramArrayOfString.length > 2)
+          {
+            str1 = str2;
+            if (!TextUtils.isEmpty(paramArrayOfString[2])) {
+              str1 = "com.tencent.mm" + ":" + paramArrayOfString[2];
+            }
+          }
+          h.a(str1, null, a.b.class, null);
+          AppMethodBeat.o(121276);
         }
       });
       continue;
       if ((paramArrayOfString.length <= 2) || (TextUtils.isEmpty(paramArrayOfString[2])))
       {
-        AppMethodBeat.o(10799);
+        AppMethodBeat.o(121281);
         return true;
       }
       paramArrayOfString = paramArrayOfString[2];
       switch (paramArrayOfString.hashCode())
       {
       default: 
-        label296:
+        label288:
         i = -1;
       }
       for (;;)
@@ -100,33 +119,41 @@ public final class a
         default: 
           break;
         case 0: 
-          ((e)g.E(e.class)).acl().cL(true);
+          ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().ed(true);
           break;
           if (!paramArrayOfString.equals("-or")) {
-            break label296;
+            break label288;
           }
           i = 0;
           continue;
           if (!paramArrayOfString.equals("-cr")) {
-            break label296;
+            break label288;
           }
           i = 1;
           continue;
           if (!paramArrayOfString.equals("-ocb")) {
-            break label296;
+            break label288;
           }
           i = 2;
         }
       }
-      ((e)g.E(e.class)).acl().cL(false);
+      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().ed(false);
       continue;
-      ((e)g.E(e.class)).acl().bY(paramContext);
+      ((com.tencent.mm.modelappbrand.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.g.class)).atL().cr(paramContext);
     }
   }
+  
+  static class a
+    implements b<Bundle, Bundle>
+  {}
+  
+  static class b
+    implements b<Bundle, Bundle>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.c.a
  * JD-Core Version:    0.7.0.1
  */

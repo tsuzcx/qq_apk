@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" style="@style/vf">
-        <TextView android:id="@id/fcz" android:text="@string/fnl" style="@style/vs" />
-        <LinearLayout style="@style/w8">
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/fft" android:visibility="gone" android:clickable="false" wallet:titleText="@string/fnh" wallet:contentTextColor="@color/s4" wallet:contentEnabled="false" wallet:contentFocusable="false" wallet:contentClickable="false" style="@style/w9" />
-            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/dr4" android:minHeight="45.0dip" wallet:titleText="@string/fnj" wallet:contentHint="@string/fni" style="@style/vd" />
-        </LinearLayout>
-        <Button android:id="@id/b02" android:layout_width="fill_parent" android:layout_marginTop="16.0dip" android:text="@string/so" style="@style/w5" />
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/a53" android:layout_gravity="center_horizontal" android:id="@id/ffu" android:paddingBottom="@dimen/n_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l2" android:text="@string/fj9" style="@style/vl" />
-        <TextView android:layout_gravity="bottom" android:id="@id/fed" android:layout_height="fill_parent" style="@style/wc" />
-    </LinearLayout>
-    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/b1e" />
-</RelativeLayout>
+<LinearLayout style="@style/qp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/fgc" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a7c" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" />
+</LinearLayout>

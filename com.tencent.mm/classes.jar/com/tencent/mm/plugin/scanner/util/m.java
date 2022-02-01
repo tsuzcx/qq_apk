@@ -1,182 +1,139 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.Point;
-import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.licence.model.CardInfo;
-import com.tencent.mm.plugin.licence.model.LibCardRecog;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.Arrays;
+import com.tencent.mm.ao.b;
+import com.tencent.mm.ao.f;
+import com.tencent.mm.i.a;
+import com.tencent.mm.i.c;
+import com.tencent.mm.i.d;
+import com.tencent.mm.i.g;
+import com.tencent.mm.i.g.a;
+import com.tencent.mm.model.u;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class m
-  extends b
 {
-  private final Object lock;
-  private final int nIH;
-  private boolean[] qCH;
-  private boolean qCI;
-  private boolean qCK;
-  private Bitmap qDp;
-  public Bitmap qDq;
+  private g.a hhW;
+  private Map<String, a> mwx;
   
-  public m(b.a parama, int paramInt)
+  public m()
   {
-    super(parama);
-    AppMethodBeat.i(81457);
-    this.lock = new Object();
-    this.qCI = false;
-    this.qCK = false;
-    this.qCH = new boolean[4];
-    this.nIH = paramInt;
-    AppMethodBeat.o(81457);
-  }
-  
-  private static void cjI()
-  {
-    AppMethodBeat.i(81460);
-    ab.i("MicroMsg.ScanLicenceDecoder", "lib release");
-    try
+    AppMethodBeat.i(91081);
+    this.mwx = new HashMap();
+    this.hhW = new g.a()
     {
-      LibCardRecog.recognizeCardRelease();
-      AppMethodBeat.o(81460);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ab.e("MicroMsg.ScanLicenceDecoder", "lib release, exp = %s", new Object[] { localException });
-      AppMethodBeat.o(81460);
-    }
-  }
-  
-  public final boolean a(byte[] paramArrayOfByte, Point paramPoint, Rect paramRect)
-  {
-    AppMethodBeat.i(81458);
-    ab.d("MicroMsg.ScanLicenceDecoder", "smoothie, decode, resolution = %s, coverage = %s, data.length = %d", new Object[] { paramPoint, paramRect, Integer.valueOf(paramArrayOfByte.length) });
-    synchronized (this.lock)
-    {
-      if ((this.qDp != null) && (!this.qDp.isRecycled()))
+      public final int a(String paramAnonymousString, int paramAnonymousInt, c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
       {
-        ab.i("MicroMsg.ScanLicenceDecoder", "[smoothie] recycle last bitmap %s", new Object[] { this.qDp.toString() });
-        this.qDp.recycle();
-      }
-      ab.d("MicroMsg.ScanLicenceDecoder", "resolution:%s, coverage:%s", new Object[] { paramPoint, paramRect });
-      if (this.qCI)
-      {
-        ab.d("MicroMsg.ScanLicenceDecoder", "recognize id succeed, no need more handle");
-        AppMethodBeat.o(81458);
-        return false;
-      }
-      int i = 0;
-      while (i < 4)
-      {
-        this.qCH[i] = false;
-        i += 1;
-      }
-      float f = Math.min(Math.min(paramPoint.x / paramRect.width(), paramPoint.y / paramRect.height()), 1.0F);
-      i = paramRect.width();
-      int j = paramRect.height();
-      ab.d("MicroMsg.ScanLicenceDecoder", "rate:%f, cropWidth:%d, cropHeight:%d", new Object[] { Float.valueOf(f), Integer.valueOf(i), Integer.valueOf(j) });
-      if (!this.qCK) {
-        ab.d("MicroMsg.ScanLicenceDecoder", "init param:%d, %d, %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramRect.width()), Integer.valueOf(paramRect.height()) });
-      }
-      CardInfo localCardInfo;
-      try
-      {
-        LibCardRecog.recognizeCardInit(i, j, this.nIH);
-        this.qCK = true;
-        long l = System.currentTimeMillis();
-        localCardInfo = new CardInfo(i, j);
-        int k = paramRect.top;
-        int m = paramRect.left;
-        if (1 == i) {
-          break label557;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        try
+        AppMethodBeat.i(91078);
+        if (paramAnonymousc == null)
         {
-          i = LibCardRecog.recognizeCardProcess(paramArrayOfByte, paramPoint.y, paramPoint.x, m, k, j, i, localCardInfo, this.qCH);
-          ab.d("MicroMsg.ScanLicenceDecoder", "[smoothie] recognizeProcess, ret = %d", new Object[] { Integer.valueOf(i) });
-          ab.d("MicroMsg.ScanLicenceDecoder", "focusedEngineProcess cost: " + (System.currentTimeMillis() - l));
-          ab.d("MicroMsg.ScanLicenceDecoder", "mRecogRectEdge: %s", new Object[] { Arrays.toString(this.qCH) });
-          if (i != 0) {
-            break label508;
+          paramAnonymousc = "null";
+          if (paramAnonymousd != null) {
+            break label119;
           }
-          AppMethodBeat.o(81458);
-          return false;
         }
-        catch (Exception paramArrayOfByte)
+        label119:
+        for (String str = "null";; str = paramAnonymousd.toString())
         {
-          ab.e("MicroMsg.ScanLicenceDecoder", "recognizeProcess failed, exp = %s", new Object[] { paramArrayOfByte });
-          this.qCI = false;
-          AppMethodBeat.o(81458);
-          return false;
+          ad.i("MicroMsg.ScannerCdnService", "on cdn callback mediaId = %s, startRet = %d, keep_ProgressInfo = %s, keep_SceneResult = %s", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousInt), paramAnonymousc, str });
+          paramAnonymousc = new m.b(m.this);
+          if (paramAnonymousInt == 0) {
+            break label129;
+          }
+          ad.e("MicroMsg.ScannerCdnService", "start failed : %d, media id is :%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+          paramAnonymousc.errCode = paramAnonymousInt;
+          m.a(m.this, paramAnonymousString, paramAnonymousc);
+          AppMethodBeat.o(91078);
+          return 0;
+          paramAnonymousc = paramAnonymousc.toString();
+          break;
         }
-        paramArrayOfByte = paramArrayOfByte;
-        ab.e("MicroMsg.ScanLicenceDecoder", "lib init failed, exp = %s", new Object[] { paramArrayOfByte });
-        this.qCK = false;
-        cjI();
-        AppMethodBeat.o(81458);
-        return false;
+        label129:
+        if (paramAnonymousd != null)
+        {
+          paramAnonymousc.errCode = paramAnonymousd.field_retCode;
+          if (paramAnonymousd.field_retCode == 0) {
+            break label198;
+          }
+          ad.e("MicroMsg.ScannerCdnService", "cdntra clientid:%s sceneResult.retCode:%d sceneResult[%s]", new Object[] { paramAnonymousString, Integer.valueOf(paramAnonymousd.field_retCode), paramAnonymousd });
+        }
+        for (;;)
+        {
+          m.a(m.this, paramAnonymousString, paramAnonymousc);
+          AppMethodBeat.o(91078);
+          return 0;
+          label198:
+          ad.i("MicroMsg.ScannerCdnService", "cdn trans suceess, media id : %s", new Object[] { paramAnonymousString });
+          paramAnonymousc.fileId = paramAnonymousd.field_fileId;
+          paramAnonymousc.aeskey = paramAnonymousd.field_aesKey;
+        }
       }
-      label508:
-      i = 0;
-      while (i < 4)
+      
+      public final void a(String paramAnonymousString, ByteArrayOutputStream paramAnonymousByteArrayOutputStream)
       {
-        this.qCH[i] = false;
-        i += 1;
+        AppMethodBeat.i(91079);
+        ad.i("MicroMsg.ScannerCdnService", "getCdnAuthInfo, mediaId = %s", new Object[] { paramAnonymousString });
+        AppMethodBeat.o(91079);
       }
-      ab.d("MicroMsg.ScanLicenceDecoder", "image is not enough clear");
-      AppMethodBeat.o(81458);
-      return false;
-      label557:
-      i = 0;
-      while (i < 4)
+      
+      public final byte[] f(String paramAnonymousString, byte[] paramAnonymousArrayOfByte)
       {
-        this.qCH[i] = true;
-        i += 1;
+        AppMethodBeat.i(91080);
+        ad.i("MicroMsg.ScannerCdnService", "decodePrepareResponse, mediaId = %s", new Object[] { paramAnonymousString });
+        AppMethodBeat.o(91080);
+        return null;
       }
-      this.qDp = BitmapFactory.decodeByteArray(localCardInfo.bitmapData, 0, localCardInfo.bitmapLen);
-      this.qDq = this.qDp.copy(Bitmap.Config.ARGB_8888, true);
-      this.qCI = true;
-      AppMethodBeat.o(81458);
-      return true;
-    }
+    };
+    AppMethodBeat.o(91081);
   }
   
-  public final boolean[] cjH()
+  public static String amP(String paramString)
   {
-    synchronized (this.lock)
-    {
-      boolean[] arrayOfBoolean = this.qCH;
-      return arrayOfBoolean;
-    }
+    AppMethodBeat.i(91082);
+    paramString = u.aqG() + "_" + paramString + "_" + System.currentTimeMillis();
+    AppMethodBeat.o(91082);
+    return paramString;
   }
   
-  public final void pJ()
+  public final void a(String paramString1, String paramString2, int paramInt, a parama)
   {
-    AppMethodBeat.i(81459);
-    if ((this.qDp != null) && (!this.qDp.isRecycled()))
-    {
-      ab.i("MicroMsg.ScanLicenceDecoder", "bitmap recycle %s", new Object[] { this.qDp.toString() });
-      this.qDp.recycle();
-    }
-    cjI();
-    AppMethodBeat.o(81459);
+    AppMethodBeat.i(91083);
+    g localg = new g();
+    localg.fnH = this.hhW;
+    localg.field_mediaId = paramString1;
+    localg.field_fullpath = paramString2;
+    localg.field_fileType = paramInt;
+    localg.field_priority = a.fmV;
+    localg.field_needStorage = false;
+    localg.field_needCompressImage = true;
+    localg.field_isStreamMedia = false;
+    localg.field_force_aeskeycdn = true;
+    localg.field_trysafecdn = false;
+    this.mwx.put(paramString1, parama);
+    f.awL().e(localg);
+    AppMethodBeat.o(91083);
   }
   
-  public final void restartDecoder()
+  public static abstract interface a
   {
-    this.qCI = false;
+    public abstract void a(String paramString, m.b paramb);
+  }
+  
+  public final class b
+  {
+    public String aeskey;
+    public int errCode;
+    public String fileId;
+    
+    public b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.m
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ public class SilkResampleJni
 {
   static
   {
-    AppMethodBeat.i(137084);
+    AppMethodBeat.i(136833);
     System.loadLibrary("wechataudiosilk");
-    AppMethodBeat.o(137084);
+    AppMethodBeat.o(136833);
   }
   
   public static native int clearResample(String paramString);
@@ -21,7 +21,7 @@ public class SilkResampleJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.jni.SilkResampleJni
  * JD-Core Version:    0.7.0.1
  */

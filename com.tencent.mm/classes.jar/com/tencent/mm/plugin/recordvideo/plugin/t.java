@@ -1,85 +1,34 @@
 package com.tencent.mm.plugin.recordvideo.plugin;
 
-import a.l;
-import a.v;
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.c.b;
-import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.sdk.platformtools.ab;
+import android.content.Intent;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordClosePlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "onClick", "", "v", "setVisibility", "visibility", "", "Companion", "plugin-recordvideo_release"})
-public final class t
-  implements View.OnClickListener, q
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "", "name", "", "onActivityResult", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "onAttach", "onBackPress", "", "onDetach", "onPause", "onResume", "release", "reset", "setVisibility", "visibility", "plugin-recordvideo_release"})
+public abstract interface t
 {
-  public static final a qcW;
-  private View view;
+  public abstract void apt();
   
-  static
-  {
-    AppMethodBeat.i(150715);
-    qcW = new a((byte)0);
-    AppMethodBeat.o(150715);
-  }
+  public abstract boolean dia();
   
-  public t(View paramView, d paramd)
-  {
-    AppMethodBeat.i(150714);
-    this.view = paramView;
-    this.view.setOnClickListener((View.OnClickListener)this);
-    AppMethodBeat.o(150714);
-  }
+  public abstract String name();
   
-  public final boolean cgq()
-  {
-    return false;
-  }
+  public abstract void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent);
   
-  public final String name()
-  {
-    return null;
-  }
+  public abstract void onDetach();
   
-  public final void onClick(View paramView)
-  {
-    AppMethodBeat.i(150712);
-    ab.i("MicroMsg.RecordClosePlugin", "RecordClosePlugin close");
-    paramView = this.view.getContext();
-    if (paramView == null)
-    {
-      paramView = new v("null cannot be cast to non-null type android.app.Activity");
-      AppMethodBeat.o(150712);
-      throw paramView;
-    }
-    ((Activity)paramView).finish();
-    paramView = b.qfu;
-    b.Cs(3);
-    AppMethodBeat.o(150712);
-  }
+  public abstract void onPause();
   
-  public final void onPause() {}
+  public abstract void onResume();
   
-  public final void onResume() {}
+  public abstract void release();
   
-  public final void release() {}
+  public abstract void reset();
   
-  public final void reset() {}
-  
-  public final void setVisibility(int paramInt)
-  {
-    AppMethodBeat.i(150713);
-    this.view.setVisibility(paramInt);
-    AppMethodBeat.o(150713);
-  }
-  
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordClosePlugin$Companion;", "", "()V", "TAG", "", "plugin-recordvideo_release"})
-  public static final class a {}
+  public abstract void setVisibility(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.t
  * JD-Core Version:    0.7.0.1
  */

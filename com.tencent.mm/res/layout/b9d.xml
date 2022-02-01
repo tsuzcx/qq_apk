@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/dm3" android:background="@drawable/abh" android:padding="@dimen/d" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="42.0dip">
+        <com.tencent.mm.plugin.sns.ui.TagImageView android:layout_gravity="center_vertical" android:id="@id/cp2" android:layout_width="42.0dip" android:layout_height="42.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
+        <ImageView android:layout_gravity="center" android:id="@id/fsk" android:layout_width="42.0dip" android:layout_height="42.0dip" android:scaleType="center" android:maxHeight="350.0dip" />
+        <TextView android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/b3y" android:background="@color/a" android:visibility="gone" android:layout_width="42.0dip" android:layout_height="42.0dip" android:maxLines="3" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/jn">
+        <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/gx" android:textColor="@color/y4" android:ellipsize="end" android:id="@id/gbx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{{abccd}}" android:singleLine="false" />
+        <com.tencent.mm.ui.widget.MMTextView android:textSize="12.0dip" android:textColor="@color/a4d" android:id="@id/f30" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{{line2}}" android:singleLine="true" />
+    </LinearLayout>
+</LinearLayout>

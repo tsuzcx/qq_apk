@@ -12,36 +12,36 @@ public final class p
 {
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    AppMethodBeat.i(103230);
+    AppMethodBeat.i(144913);
     paramd = (ScaleActionArg)paramDrawActionArg;
     if (paramd == null)
     {
-      AppMethodBeat.o(103230);
+      AppMethodBeat.o(144913);
       return false;
     }
-    paramCanvas.scale(paramd.heS, paramd.heT);
-    AppMethodBeat.o(103230);
+    paramCanvas.scale(paramd.iZa, paramd.iZb);
+    AppMethodBeat.o(144913);
     return true;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103229);
+    AppMethodBeat.i(144912);
     if (paramJSONArray.length() < 2)
     {
-      AppMethodBeat.o(103229);
+      AppMethodBeat.o(144912);
       return false;
     }
     paramCanvas.scale((float)paramJSONArray.optDouble(0), (float)paramJSONArray.optDouble(1));
-    AppMethodBeat.o(103229);
+    AppMethodBeat.o(144912);
     return true;
   }
   
-  public final BaseDrawActionArg axW()
+  public final BaseDrawActionArg aSP()
   {
-    AppMethodBeat.i(103228);
+    AppMethodBeat.i(144911);
     ScaleActionArg localScaleActionArg = new ScaleActionArg();
-    AppMethodBeat.o(103228);
+    AppMethodBeat.o(144911);
     return localScaleActionArg;
   }
   
@@ -52,7 +52,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.p
  * JD-Core Version:    0.7.0.1
  */

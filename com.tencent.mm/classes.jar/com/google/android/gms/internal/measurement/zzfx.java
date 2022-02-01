@@ -33,28 +33,28 @@ public final class zzfx
   @VisibleForTesting
   private final boolean zzji()
   {
-    AppMethodBeat.i(68975);
+    AppMethodBeat.i(1498);
     try
     {
       PackageManagerWrapper localPackageManagerWrapper = Wrappers.packageManager(this.zzacw.getContext());
       if (localPackageManagerWrapper == null)
       {
         this.zzacw.zzge().zzir().log("Failed to retrieve Package Manager to check Play Store compatibility");
-        AppMethodBeat.o(68975);
+        AppMethodBeat.o(1498);
         return false;
       }
       if (localPackageManagerWrapper.getPackageInfo("com.android.vending", 128).versionCode >= 80837300)
       {
-        AppMethodBeat.o(68975);
+        AppMethodBeat.o(1498);
         return true;
       }
-      AppMethodBeat.o(68975);
+      AppMethodBeat.o(1498);
       return false;
     }
     catch (Exception localException)
     {
       this.zzacw.zzge().zzir().zzg("Failed to retrieve Play Store version", localException);
-      AppMethodBeat.o(68975);
+      AppMethodBeat.o(1498);
     }
     return false;
   }
@@ -62,25 +62,25 @@ public final class zzfx
   @VisibleForTesting
   final void zzc(Bundle paramBundle)
   {
-    AppMethodBeat.i(68977);
+    AppMethodBeat.i(1500);
     this.zzacw.zzab();
     if (paramBundle == null)
     {
-      AppMethodBeat.o(68977);
+      AppMethodBeat.o(1500);
       return;
     }
     long l1 = paramBundle.getLong("install_begin_timestamp_seconds", 0L) * 1000L;
     if (l1 == 0L)
     {
       this.zzacw.zzge().zzim().log("Service response is missing Install Referrer install timestamp");
-      AppMethodBeat.o(68977);
+      AppMethodBeat.o(1500);
       return;
     }
     Object localObject1 = paramBundle.getString("install_referrer");
     if ((localObject1 == null) || (((String)localObject1).isEmpty()))
     {
       this.zzacw.zzge().zzim().log("No referrer defined in install referrer response");
-      AppMethodBeat.o(68977);
+      AppMethodBeat.o(1500);
       return;
     }
     this.zzacw.zzge().zzit().zzg("InstallReferrer API result", localObject1);
@@ -94,7 +94,7 @@ public final class zzfx
         break;
       }
       this.zzacw.zzge().zzim().log("No campaign params defined in install referrer result");
-      AppMethodBeat.o(68977);
+      AppMethodBeat.o(1500);
       return;
     }
     localObject2 = ((Bundle)localObject1).getString("medium");
@@ -108,7 +108,7 @@ public final class zzfx
       if (l2 == 0L)
       {
         this.zzacw.zzge().zzim().log("Install Referrer is missing click timestamp for ad campaign");
-        AppMethodBeat.o(68977);
+        AppMethodBeat.o(1500);
         return;
         i = 0;
       }
@@ -120,7 +120,7 @@ public final class zzfx
     if (l1 == this.zzacw.zzgf().zzaka.get())
     {
       this.zzacw.zzge().zzit().log("Campaign has already been logged");
-      AppMethodBeat.o(68977);
+      AppMethodBeat.o(1500);
       return;
     }
     ((Bundle)localObject1).putString("_cis", "referrer API");
@@ -129,18 +129,18 @@ public final class zzfx
     if (this.zzakx != null) {
       ConnectionTracker.getInstance().unbindService(this.zzacw.getContext(), this.zzakx);
     }
-    AppMethodBeat.o(68977);
+    AppMethodBeat.o(1500);
   }
   
   protected final void zzjh()
   {
-    AppMethodBeat.i(68974);
+    AppMethodBeat.i(1497);
     this.zzacw.zzab();
     if (!zzji())
     {
       this.zzacw.zzge().zzir().log("Install Referrer Reporter is not available");
       this.zzakx = null;
-      AppMethodBeat.o(68974);
+      AppMethodBeat.o(1497);
       return;
     }
     this.zzakx = new zzfz(this, null);
@@ -152,7 +152,7 @@ public final class zzfx
     if (localObject2 == null)
     {
       this.zzacw.zzge().zzip().log("Failed to obtain Package Manager to verify binding conditions");
-      AppMethodBeat.o(68974);
+      AppMethodBeat.o(1497);
       return;
     }
     localObject2 = ((PackageManager)localObject2).queryIntentServices((Intent)localObject1, 0);
@@ -173,7 +173,7 @@ public final class zzfx
             for (localObject1 = "available";; localObject1 = "not available")
             {
               ((zzfi)localObject2).zzg("Install Referrer Service is", localObject1);
-              AppMethodBeat.o(68974);
+              AppMethodBeat.o(1497);
               return;
             }
             this.zzacw.zzge().zzir().log("Play Store missing or incompatible. Version 8.3.73 or later required");
@@ -181,27 +181,27 @@ public final class zzfx
           catch (Exception localException)
           {
             this.zzacw.zzge().zzim().zzg("Exception occurred while binding to Install Referrer Service", localException.getMessage());
-            AppMethodBeat.o(68974);
+            AppMethodBeat.o(1497);
             return;
           }
         }
       }
-      AppMethodBeat.o(68974);
+      AppMethodBeat.o(1497);
       return;
     }
     this.zzacw.zzge().zzir().log("Play Service for fetching Install Referrer is unavailable on device");
-    AppMethodBeat.o(68974);
+    AppMethodBeat.o(1497);
   }
   
   @VisibleForTesting
   final Bundle zzjj()
   {
-    AppMethodBeat.i(68976);
+    AppMethodBeat.i(1499);
     this.zzacw.zzab();
     if (this.zzakw == null)
     {
       this.zzacw.zzge().zzip().log("Attempting to use Install Referrer Service while it is not initialized");
-      AppMethodBeat.o(68976);
+      AppMethodBeat.o(1499);
       return null;
     }
     Bundle localBundle = new Bundle();
@@ -212,23 +212,23 @@ public final class zzfx
       if (localBundle == null)
       {
         this.zzacw.zzge().zzim().log("Install Referrer Service returned a null response");
-        AppMethodBeat.o(68976);
+        AppMethodBeat.o(1499);
         return null;
       }
     }
     catch (Exception localException)
     {
       this.zzacw.zzge().zzim().zzg("Exception occurred while retrieving the Install Referrer", localException.getMessage());
-      AppMethodBeat.o(68976);
+      AppMethodBeat.o(1499);
       return null;
     }
-    AppMethodBeat.o(68976);
+    AppMethodBeat.o(1499);
     return localException;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzfx
  * JD-Core Version:    0.7.0.1
  */

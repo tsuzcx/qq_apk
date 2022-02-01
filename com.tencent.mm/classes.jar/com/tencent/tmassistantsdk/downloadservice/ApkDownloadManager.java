@@ -20,52 +20,52 @@ public class ApkDownloadManager
   
   private ApkDownloadManager()
   {
-    AppMethodBeat.i(75681);
+    AppMethodBeat.i(101927);
     this.mDownloads = new ConcurrentHashMap();
-    AppMethodBeat.o(75681);
+    AppMethodBeat.o(101927);
   }
   
   public static ApkDownloadManager getInstance()
   {
-    AppMethodBeat.i(75680);
+    AppMethodBeat.i(101926);
     if (mApkDownloadManager == null) {
       mApkDownloadManager = new ApkDownloadManager();
     }
     ApkDownloadManager localApkDownloadManager = mApkDownloadManager;
-    AppMethodBeat.o(75680);
+    AppMethodBeat.o(101926);
     return localApkDownloadManager;
   }
   
   public void AddDownloadListener(IDownloadManagerListener paramIDownloadManagerListener)
   {
-    AppMethodBeat.i(75689);
+    AppMethodBeat.i(101935);
     TMLog.i("ApkDownloadManager", "call AddDownloadListener, dl: ".concat(String.valueOf(paramIDownloadManagerListener)));
     DownloadListenerManager.getInstance().Add(paramIDownloadManagerListener);
-    AppMethodBeat.o(75689);
+    AppMethodBeat.o(101935);
   }
   
   public void RemoveDownloadListener(IDownloadManagerListener paramIDownloadManagerListener)
   {
-    AppMethodBeat.i(75690);
+    AppMethodBeat.i(101936);
     TMLog.i("ApkDownloadManager", "call RemoveDownloadListener, dl: ".concat(String.valueOf(paramIDownloadManagerListener)));
     DownloadListenerManager.getInstance().Remove(paramIDownloadManagerListener);
-    AppMethodBeat.o(75690);
+    AppMethodBeat.o(101936);
   }
   
   public void cancelDownload(String paramString)
   {
-    AppMethodBeat.i(75686);
+    AppMethodBeat.i(101932);
     TMLog.i("ApkDownloadManager", "call cancelDownload, url: ".concat(String.valueOf(paramString)));
     paramString = (DownloadInfo)this.mDownloads.remove(paramString);
     if (paramString != null) {
       paramString.stopDownload();
     }
-    AppMethodBeat.o(75686);
+    AppMethodBeat.o(101932);
   }
   
   public void init()
   {
-    AppMethodBeat.i(75682);
+    AppMethodBeat.i(101928);
     TMLog.i("ApkDownloadManager", "Start to load DownloadInfo list.");
     this.mDownloads.clear();
     Object localObject = DBManager.getInstance().queryDownloadInfoList();
@@ -86,29 +86,29 @@ public class ApkDownloadManager
     }
     TMLog.i("ApkDownloadManager", "Add NetworkChangedObserver to NetworkMonitorReceiver");
     NetworkMonitorReceiver.getInstance().addNetworkChangedObserver(this);
-    AppMethodBeat.o(75682);
+    AppMethodBeat.o(101928);
   }
   
   public Boolean isAllDownloadFinished()
   {
-    AppMethodBeat.i(75688);
+    AppMethodBeat.i(101934);
     Object localObject = this.mDownloads.keySet().iterator();
     while (((Iterator)localObject).hasNext()) {
       if (!((DownloadInfo)this.mDownloads.get(((Iterator)localObject).next())).hasFinished())
       {
         localObject = Boolean.FALSE;
-        AppMethodBeat.o(75688);
+        AppMethodBeat.o(101934);
         return localObject;
       }
     }
     localObject = Boolean.TRUE;
-    AppMethodBeat.o(75688);
+    AppMethodBeat.o(101934);
     return localObject;
   }
   
   public void onNetworkChanged()
   {
-    AppMethodBeat.i(75691);
+    AppMethodBeat.i(101937);
     TMLog.i("ApkDownloadManager", "onNetworkChanged");
     if ((DownloadHelper.isNetworkConncted()) && (DownloadSetting.getInstance().isAutoDownload()))
     {
@@ -132,23 +132,23 @@ public class ApkDownloadManager
         }
       }
     }
-    AppMethodBeat.o(75691);
+    AppMethodBeat.o(101937);
   }
   
   public void pauseDownload(String paramString)
   {
-    AppMethodBeat.i(75685);
+    AppMethodBeat.i(101931);
     TMLog.i("ApkDownloadManager", "call pauseDownload, url: ".concat(String.valueOf(paramString)));
     paramString = (DownloadInfo)this.mDownloads.get(paramString);
     if (paramString != null) {
       paramString.pauseDownload();
     }
-    AppMethodBeat.o(75685);
+    AppMethodBeat.o(101931);
   }
   
   public DownloadInfo queryDownloadInfo(String paramString)
   {
-    AppMethodBeat.i(75687);
+    AppMethodBeat.i(101933);
     TMLog.i("ApkDownloadManager", "call queryDownloadInfo, url: ".concat(String.valueOf(paramString)));
     Object localObject2 = (DownloadInfo)this.mDownloads.get(paramString);
     Object localObject1 = localObject2;
@@ -179,37 +179,37 @@ public class ApkDownloadManager
           }
         }
       }
-      AppMethodBeat.o(75687);
+      AppMethodBeat.o(101933);
       return localObject2;
     }
   }
   
   public int startDownload(String paramString1, String paramString2, long paramLong, int paramInt, String paramString3, String paramString4, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(75684);
+    AppMethodBeat.i(101930);
     TMLog.i("ApkDownloadManager", "call startDownload, url: " + paramString1 + "priority: " + paramInt);
     if (!DownloadHelper.isNetworkConncted())
     {
       TMLog.i("ApkDownloadManager", "call startDownload, return errCode: 1");
-      AppMethodBeat.o(75684);
+      AppMethodBeat.o(101930);
       return 1;
     }
     if ((!DownloadHelper.getNetStatus().equalsIgnoreCase("wifi")) && (DownloadSetting.getInstance().getIsDownloadWifiOnly()))
     {
       TMLog.i("ApkDownloadManager", "call startDownload, return errCode: 2");
-      AppMethodBeat.o(75684);
+      AppMethodBeat.o(101930);
       return 2;
     }
     if (!DownloadHelper.isValidURL(paramString1))
     {
       TMLog.i("ApkDownloadManager", "call startDownload, return errCode: 3");
-      AppMethodBeat.o(75684);
+      AppMethodBeat.o(101930);
       return 3;
     }
     if (DownloadHelper.isDownloadFileExisted(paramString1, paramString3))
     {
       TMLog.i("ApkDownloadManager", "call startDownload, return errCode: 4");
-      AppMethodBeat.o(75684);
+      AppMethodBeat.o(101930);
       return 4;
     }
     Object localObject1 = (DownloadInfo)this.mDownloads.get(paramString1);
@@ -239,13 +239,13 @@ public class ApkDownloadManager
         if (!bool) {
           break label374;
         }
-        AppMethodBeat.o(75684);
+        AppMethodBeat.o(101930);
         return 4;
         if (((DownloadInfo)localObject1).mContentType.equals("application/tm.android.apkdiff")) {}
         for (bool = DownloadHelper.isDownloadFileExisted(paramString1, ((DownloadInfo)localObject1).mContentType); bool; bool = DownloadHelper.isDownloadFileExisted(((DownloadInfo)localObject1).mFileName))
         {
           TMLog.i("ApkDownloadManager", "call startDownload, return errCode: 4");
-          AppMethodBeat.o(75684);
+          AppMethodBeat.o(101930);
           return 4;
         }
         break;
@@ -269,14 +269,14 @@ public class ApkDownloadManager
       }
       paramInt = ((DownloadInfo)localObject2).startDownloadIfReady();
       TMLog.i("ApkDownloadManager", "call startDownload, return errCode: ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(75684);
+      AppMethodBeat.o(101930);
       return paramInt;
     }
   }
   
   public void uninit()
   {
-    AppMethodBeat.i(75683);
+    AppMethodBeat.i(101929);
     NetworkMonitorReceiver.getInstance().removeNetworkChangedObserver(this);
     ArrayList localArrayList = new ArrayList();
     if (!this.mDownloads.isEmpty())
@@ -293,7 +293,7 @@ public class ApkDownloadManager
     }
     TMLog.i("ApkDownloadManager", "Start to save DownloadInfo list.");
     DBManager.getInstance().saveDownloadInfoList(localArrayList);
-    AppMethodBeat.o(75683);
+    AppMethodBeat.o(101929);
   }
 }
 

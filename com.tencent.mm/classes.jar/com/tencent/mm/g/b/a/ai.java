@@ -6,78 +6,113 @@ import com.tencent.mm.plugin.report.a;
 public final class ai
   extends a
 {
-  private String cRS = "";
-  public long cTR = 0L;
-  public int cUw = 0;
-  public long cUx = 0L;
-  public long cUy = 0L;
-  private String cUz = "";
+  private String dFJ;
+  private long dJR;
+  private long dJS;
+  private long dJT;
+  private long dKc;
+  private String dLE;
+  private long dLN;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(152216);
+    AppMethodBeat.i(184183);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cUw);
+    ((StringBuffer)localObject).append(this.dFJ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cRS);
+    ((StringBuffer)localObject).append(this.dLE);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cTR);
+    ((StringBuffer)localObject).append(this.dKc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cUx);
+    ((StringBuffer)localObject).append(this.dJR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cUy);
+    ((StringBuffer)localObject).append(this.dJS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cUz);
+    ((StringBuffer)localObject).append(this.dJT);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dLN);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(152216);
+    ams((String)localObject);
+    AppMethodBeat.o(184183);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(152217);
+    AppMethodBeat.i(184184);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("PId:").append(this.cUw);
+    ((StringBuffer)localObject).append("sessionid:").append(this.dFJ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PName:").append(this.cRS);
+    ((StringBuffer)localObject).append("feedid:").append(this.dLE);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Seq:").append(this.cTR);
+    ((StringBuffer)localObject).append("scene:").append(this.dKc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SubSeq:").append(this.cUx);
+    ((StringBuffer)localObject).append("FeedLikeCount:").append(this.dJR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SubSeqSum:").append(this.cUy);
+    ((StringBuffer)localObject).append("FeedCommentCount:").append(this.dJS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DataContent:").append(this.cUz);
+    ((StringBuffer)localObject).append("FeedFriLikeCount:").append(this.dJT);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RoleBeforeSwitch:").append(this.dLN);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(152217);
+    AppMethodBeat.o(184184);
     return localObject;
   }
   
-  public final ai fL(String paramString)
+  public final ai dC(long paramLong)
   {
-    AppMethodBeat.i(152214);
-    this.cRS = t("PName", paramString, true);
-    AppMethodBeat.o(152214);
+    this.dKc = paramLong;
     return this;
   }
   
-  public final ai fM(String paramString)
+  public final ai dD(long paramLong)
   {
-    AppMethodBeat.i(152215);
-    this.cUz = t("DataContent", paramString, false);
-    AppMethodBeat.o(152215);
+    this.dJR = paramLong;
+    return this;
+  }
+  
+  public final ai dE(long paramLong)
+  {
+    this.dJS = paramLong;
+    return this;
+  }
+  
+  public final ai dF(long paramLong)
+  {
+    this.dJT = paramLong;
+    return this;
+  }
+  
+  public final ai dG(long paramLong)
+  {
+    this.dLN = paramLong;
     return this;
   }
   
   public final int getId()
   {
-    return 16976;
+    return 19387;
+  }
+  
+  public final ai hm(String paramString)
+  {
+    AppMethodBeat.i(184181);
+    this.dFJ = t("sessionid", paramString, true);
+    AppMethodBeat.o(184181);
+    return this;
+  }
+  
+  public final ai hn(String paramString)
+  {
+    AppMethodBeat.i(184182);
+    this.dLE = t("feedid", paramString, true);
+    AppMethodBeat.o(184182);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ai
  * JD-Core Version:    0.7.0.1
  */

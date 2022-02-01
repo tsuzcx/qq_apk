@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="67px" height="59px" viewBox="0 0 67 59" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>ofm_send_icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="2019/6/12" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="画板" transform="translate(-10.000000, -17.000000)" fill="#000000" fill-rule="nonzero">
+            <g id="ofm_send_icon" transform="translate(10.000000, 17.000000)">
+                <path d="M53,52 L7,52 L7,18 L16.521,18 C17.823,15.063 19.368,12.769 21.079,11 L3,11 C1.343,11 0,12.343 0,14 L0,56 C0,57.657 1.343,59 3,59 L57,59 C58.656,59 60,57.657 60,56 L60,34.22 L53,40.13 L53,52 L53,52 Z M45,0 L45,11.019 C43.325,11.008 41.583,11 40,11 C26.334,11 17.055,24.333 17.055,42 C21.721,31.16 26.284,26 45,26 L45,37 L59.452,24.848 L60,25.357 L60,24.386 L67,18.5 L45,0 L45,0 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

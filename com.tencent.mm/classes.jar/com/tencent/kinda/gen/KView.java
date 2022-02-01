@@ -2,6 +2,12 @@ package com.tencent.kinda.gen;
 
 public abstract interface KView
 {
+  public abstract void addBlurEffect(int paramInt);
+  
+  public abstract KPoint convertPointToScreen(KPoint paramKPoint);
+  
+  public abstract KPoint convertPointToView(KPoint paramKPoint, KView paramKView);
+  
   public abstract String getAccessibilityString();
   
   public abstract boolean getAccessible();
@@ -12,11 +18,11 @@ public abstract interface KView
   
   public abstract float getAspectRatio();
   
-  public abstract long getBackgroundColor();
+  public abstract DynamicColor getBackgroundColor();
   
-  public abstract long getBorderColor();
+  public abstract DynamicColor getBorderColor();
   
-  public abstract long getBorderPressedColor();
+  public abstract DynamicColor getBorderPressedColor();
   
   public abstract float getBorderWidth();
   
@@ -39,6 +45,10 @@ public abstract interface KView
   public abstract float getFlexGrow();
   
   public abstract float getFlexShrink();
+  
+  public abstract float getFrameOriginX();
+  
+  public abstract float getFrameOriginY();
   
   public abstract float getHeight();
   
@@ -100,7 +110,7 @@ public abstract interface KView
   
   public abstract float getScaleY();
   
-  public abstract long getShadowColor();
+  public abstract DynamicColor getShadowColor();
   
   public abstract float getShadowOffset();
   
@@ -128,6 +138,8 @@ public abstract interface KView
   
   public abstract void initWithPlatformDelegate(IUIPagePlatformDelegate paramIUIPagePlatformDelegate);
   
+  public abstract void removeBlurEffect();
+  
   public abstract void setAccessibilityString(String paramString);
   
   public abstract void setAccessible(boolean paramBoolean);
@@ -138,11 +150,11 @@ public abstract interface KView
   
   public abstract void setAspectRatio(float paramFloat);
   
-  public abstract void setBackgroundColor(long paramLong);
+  public abstract void setBackgroundColor(DynamicColor paramDynamicColor);
   
-  public abstract void setBorderColor(long paramLong);
+  public abstract void setBorderColor(DynamicColor paramDynamicColor);
   
-  public abstract void setBorderPressedColor(long paramLong);
+  public abstract void setBorderPressedColor(DynamicColor paramDynamicColor);
   
   public abstract void setBorderWidth(float paramFloat);
   
@@ -232,7 +244,7 @@ public abstract interface KView
   
   public abstract void setScaleY(float paramFloat);
   
-  public abstract void setShadowColor(long paramLong);
+  public abstract void setShadowColor(DynamicColor paramDynamicColor);
   
   public abstract void setShadowOffset(float paramFloat);
   
@@ -260,7 +272,7 @@ public abstract interface KView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.gen.KView
  * JD-Core Version:    0.7.0.1
  */

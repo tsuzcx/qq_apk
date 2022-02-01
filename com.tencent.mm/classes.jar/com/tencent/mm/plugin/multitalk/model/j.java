@@ -1,17 +1,15 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import android.content.Context;
-import android.content.Intent;
-import android.telephony.TelephonyManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.model.u;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroup;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroupMember;
 import java.util.Iterator;
@@ -19,128 +17,92 @@ import java.util.List;
 
 public final class j
 {
-  public static final float[][] oUd;
-  
-  static
+  public static boolean Hj(int paramInt)
   {
-    float[][] arrayOfFloat = new float[6][];
-    oUd = arrayOfFloat;
-    arrayOfFloat[0] = null;
-    oUd[1] = { 0.5F, 0.5F };
-    oUd[2] = { 0.0F, 0.5F, 1.0F, 0.5F };
-    oUd[3] = { 0.0F, 0.0F, 1.0F, 0.0F, 0.5F, 1.0F };
-    oUd[4] = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
-    oUd[5] = { 0.0F, 0.0F, 1.0F, 0.0F, 2.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 2.0F, 1.0F, 0.0F, 2.0F, 1.0F, 2.0F, 2.0F, 2.0F };
+    return (paramInt == 2) || (paramInt == 3);
   }
   
-  public static boolean a(MultiTalkGroup paramMultiTalkGroup1, MultiTalkGroup paramMultiTalkGroup2)
+  public static boolean Hk(int paramInt)
   {
-    AppMethodBeat.i(54049);
-    if ((paramMultiTalkGroup1 == null) || (paramMultiTalkGroup2 == null))
-    {
-      AppMethodBeat.o(54049);
-      return false;
-    }
-    if ((!bo.isNullOrNil(paramMultiTalkGroup1.Bhl)) && (!bo.isNullOrNil(paramMultiTalkGroup2.Bhl)) && (paramMultiTalkGroup1.Bhl.equals(paramMultiTalkGroup2.Bhl)))
-    {
-      AppMethodBeat.o(54049);
-      return true;
-    }
-    if ((!bo.isNullOrNil(paramMultiTalkGroup1.Bhm)) && (!bo.isNullOrNil(paramMultiTalkGroup2.Bhm)) && (paramMultiTalkGroup1.Bhm.equals(paramMultiTalkGroup2.Bhm)))
-    {
-      AppMethodBeat.o(54049);
-      return true;
-    }
-    AppMethodBeat.o(54049);
-    return false;
+    return (paramInt == 1) || (paramInt == 3);
   }
   
-  public static String bTu()
+  public static String cSD()
   {
-    AppMethodBeat.i(54054);
-    String str = l(p.bTF().oTs);
-    AppMethodBeat.o(54054);
+    AppMethodBeat.i(114585);
+    String str = j(p.cSO().tOI);
+    AppMethodBeat.o(114585);
     return str;
   }
   
-  public static String bTv()
+  public static String cSE()
   {
-    AppMethodBeat.i(54056);
-    String str = m(p.bTF().oTs);
-    AppMethodBeat.o(54056);
+    AppMethodBeat.i(114587);
+    String str = k(p.cSO().tOI);
+    AppMethodBeat.o(114587);
     return str;
   }
   
-  public static boolean bTw()
+  public static a cSF()
   {
-    return false;
-  }
-  
-  public static j.a bTx()
-  {
-    AppMethodBeat.i(54058);
-    if (at.isWifi(ah.getContext()))
+    AppMethodBeat.i(114589);
+    if (ay.isWifi(aj.getContext()))
     {
-      locala = j.a.oUe;
-      AppMethodBeat.o(54058);
+      locala = a.tPz;
+      AppMethodBeat.o(114589);
       return locala;
     }
-    if (at.is4G(ah.getContext()))
+    if (ay.is4G(aj.getContext()))
     {
-      locala = j.a.oUf;
-      AppMethodBeat.o(54058);
+      locala = a.tPA;
+      AppMethodBeat.o(114589);
       return locala;
     }
-    if ((at.is3G(ah.getContext())) || (at.is2G(ah.getContext())))
+    if ((ay.is3G(aj.getContext())) || (ay.is2G(aj.getContext())))
     {
-      locala = j.a.oUg;
-      AppMethodBeat.o(54058);
+      locala = a.tPB;
+      AppMethodBeat.o(114589);
       return locala;
     }
-    j.a locala = j.a.oUh;
-    AppMethodBeat.o(54058);
+    a locala = a.tPC;
+    AppMethodBeat.o(114589);
     return locala;
   }
   
-  public static boolean bTy()
+  public static boolean cSG()
   {
-    AppMethodBeat.i(54059);
-    int i = ((Integer)g.RL().Ru().get(ac.a.yJN, Integer.valueOf(-1))).intValue();
-    long l = ((Long)g.RL().Ru().get(ac.a.yJO, Long.valueOf(-1L))).longValue();
+    AppMethodBeat.i(114590);
+    int i = ((Integer)g.afB().afk().get(ae.a.FsY, Integer.valueOf(-1))).intValue();
+    long l = ((Long)g.afB().afk().get(ae.a.FsZ, Long.valueOf(-1L))).longValue();
     if ((i > 0) && (l > 0L))
     {
-      ab.i("MicroMsg.MultiTalkUtil", "checkMultiTalkAvailable, disableTime: %s, disableTimestamp: %s", new Object[] { Integer.valueOf(i), Long.valueOf(l) });
-      if (bo.av(l) <= i * 1000)
+      ad.i("MicroMsg.MultiTalkUtil", "checkMultiTalkAvailable, disableTime: %s, disableTimestamp: %s", new Object[] { Integer.valueOf(i), Long.valueOf(l) });
+      if (bt.aS(l) <= i * 1000)
       {
-        AppMethodBeat.o(54059);
+        AppMethodBeat.o(114590);
         return false;
       }
-      g.RL().Ru().set(ac.a.yJN, Integer.valueOf(-1));
-      g.RL().Ru().set(ac.a.yJO, Long.valueOf(-1L));
-      AppMethodBeat.o(54059);
+      g.afB().afk().set(ae.a.FsY, Integer.valueOf(-1));
+      g.afB().afk().set(ae.a.FsZ, Long.valueOf(-1L));
+      AppMethodBeat.o(114590);
       return true;
     }
-    g.RL().Ru().set(ac.a.yJN, Integer.valueOf(-1));
-    g.RL().Ru().set(ac.a.yJO, Long.valueOf(-1L));
-    AppMethodBeat.o(54059);
+    g.afB().afk().set(ae.a.FsY, Integer.valueOf(-1));
+    g.afB().afk().set(ae.a.FsZ, Long.valueOf(-1L));
+    AppMethodBeat.o(114590);
     return true;
   }
   
-  public static boolean c(com.tencent.mm.plugin.multitalk.ui.widget.e parame)
+  public static String g(MultiTalkGroup paramMultiTalkGroup)
   {
-    return (parame == com.tencent.mm.plugin.multitalk.ui.widget.e.oVR) || (parame == com.tencent.mm.plugin.multitalk.ui.widget.e.oVS) || (parame == com.tencent.mm.plugin.multitalk.ui.widget.e.oVP);
-  }
-  
-  public static String h(MultiTalkGroup paramMultiTalkGroup)
-  {
-    AppMethodBeat.i(54048);
+    AppMethodBeat.i(114579);
     if (paramMultiTalkGroup == null)
     {
-      AppMethodBeat.o(54048);
+      AppMethodBeat.o(114579);
       return "";
     }
     StringBuffer localStringBuffer = new StringBuffer();
-    Object localObject = paramMultiTalkGroup.Bhp;
+    Object localObject = paramMultiTalkGroup.Iok;
     localStringBuffer.append("->[usernamelist]");
     if (localObject != null)
     {
@@ -148,40 +110,40 @@ public final class j
       while (((Iterator)localObject).hasNext())
       {
         MultiTalkGroupMember localMultiTalkGroupMember = (MultiTalkGroupMember)((Iterator)localObject).next();
-        localStringBuffer.append(localMultiTalkGroupMember.Bhq + "|");
+        localStringBuffer.append(localMultiTalkGroupMember.Iol + "|");
         localStringBuffer.append(localMultiTalkGroupMember.status + ", ");
       }
     }
-    localStringBuffer.append(" ->createname:" + paramMultiTalkGroup.Bho);
-    localStringBuffer.append(" ->talkgroupId:" + paramMultiTalkGroup.Bhl);
-    localStringBuffer.append(" ->wxGroupId:" + paramMultiTalkGroup.Bhn);
+    localStringBuffer.append(" ->createname:" + paramMultiTalkGroup.Ioj);
+    localStringBuffer.append(" ->talkgroupId:" + paramMultiTalkGroup.Iog);
+    localStringBuffer.append(" ->wxGroupId:" + paramMultiTalkGroup.Ioi);
     paramMultiTalkGroup = localStringBuffer.toString();
-    AppMethodBeat.o(54048);
+    AppMethodBeat.o(114579);
     return paramMultiTalkGroup;
   }
   
-  public static boolean i(MultiTalkGroup paramMultiTalkGroup)
+  public static boolean h(MultiTalkGroup paramMultiTalkGroup)
   {
-    AppMethodBeat.i(54050);
+    AppMethodBeat.i(114581);
     if (paramMultiTalkGroup == null)
     {
-      AppMethodBeat.o(54050);
+      AppMethodBeat.o(114581);
       return false;
     }
-    paramMultiTalkGroup = paramMultiTalkGroup.Bhp.iterator();
+    paramMultiTalkGroup = paramMultiTalkGroup.Iok.iterator();
     int i = 0;
     int j = 0;
     while (paramMultiTalkGroup.hasNext())
     {
       MultiTalkGroupMember localMultiTalkGroupMember = (MultiTalkGroupMember)paramMultiTalkGroup.next();
-      if (localMultiTalkGroupMember.Bhq.equals(r.Zn()))
+      if (localMultiTalkGroupMember.Iol.equals(u.aqG()))
       {
         if (localMultiTalkGroupMember.status != 10) {
-          break label124;
+          break label119;
         }
         if (i != 0)
         {
-          AppMethodBeat.o(54050);
+          AppMethodBeat.o(114581);
           return true;
         }
         j = 1;
@@ -189,143 +151,92 @@ public final class j
       else
       {
         if (localMultiTalkGroupMember.status != 10) {
-          break label124;
+          break label119;
         }
         if (j != 0)
         {
-          AppMethodBeat.o(54050);
+          AppMethodBeat.o(114581);
           return true;
         }
         i = 1;
       }
     }
-    label124:
+    label119:
     for (;;)
     {
       break;
-      AppMethodBeat.o(54050);
+      AppMethodBeat.o(114581);
       return false;
     }
   }
   
-  public static boolean j(MultiTalkGroup paramMultiTalkGroup)
+  public static boolean i(MultiTalkGroup paramMultiTalkGroup)
   {
-    AppMethodBeat.i(54051);
-    paramMultiTalkGroup = paramMultiTalkGroup.Bhp.iterator();
-    int i = 0;
-    if (paramMultiTalkGroup.hasNext())
-    {
-      MultiTalkGroupMember localMultiTalkGroupMember = (MultiTalkGroupMember)paramMultiTalkGroup.next();
-      if ((localMultiTalkGroupMember.status != 10) && (localMultiTalkGroupMember.status != 1)) {
-        break label82;
-      }
-      i += 1;
-    }
-    label82:
-    for (;;)
-    {
-      break;
-      if (i > 1)
-      {
-        AppMethodBeat.o(54051);
-        return true;
-      }
-      AppMethodBeat.o(54051);
-      return false;
-    }
-  }
-  
-  public static boolean k(MultiTalkGroup paramMultiTalkGroup)
-  {
-    AppMethodBeat.i(54052);
-    boolean bool = paramMultiTalkGroup.Bho.equals(r.Zn());
-    AppMethodBeat.o(54052);
+    AppMethodBeat.i(114583);
+    boolean bool = paramMultiTalkGroup.Ioj.equals(u.aqG());
+    AppMethodBeat.o(114583);
     return bool;
   }
   
-  public static String l(MultiTalkGroup paramMultiTalkGroup)
+  public static String j(MultiTalkGroup paramMultiTalkGroup)
   {
-    AppMethodBeat.i(54053);
+    AppMethodBeat.i(114584);
     if (paramMultiTalkGroup == null)
     {
-      AppMethodBeat.o(54053);
+      AppMethodBeat.o(114584);
       return "";
     }
-    String str2 = paramMultiTalkGroup.Bhl;
+    String str2 = paramMultiTalkGroup.Iog;
     String str1 = str2;
-    if (bo.isNullOrNil(str2)) {
-      str1 = paramMultiTalkGroup.Bhm;
+    if (bt.isNullOrNil(str2)) {
+      str1 = paramMultiTalkGroup.Ioh;
     }
-    paramMultiTalkGroup = bo.bf(str1, "");
-    AppMethodBeat.o(54053);
+    paramMultiTalkGroup = bt.by(str1, "");
+    AppMethodBeat.o(114584);
     return paramMultiTalkGroup;
   }
   
-  public static String m(MultiTalkGroup paramMultiTalkGroup)
+  public static String k(MultiTalkGroup paramMultiTalkGroup)
   {
-    AppMethodBeat.i(54055);
+    AppMethodBeat.i(114586);
     String str = null;
     int i = 0;
-    if (i < paramMultiTalkGroup.Bhp.size())
+    if (i < paramMultiTalkGroup.Iok.size())
     {
-      if (!((MultiTalkGroupMember)paramMultiTalkGroup.Bhp.get(i)).Bhq.equals(r.Zn())) {
+      if (!((MultiTalkGroupMember)paramMultiTalkGroup.Iok.get(i)).Iol.equals(u.aqG())) {
         break label80;
       }
-      str = ((MultiTalkGroupMember)paramMultiTalkGroup.Bhp.get(i)).Bhr;
+      str = ((MultiTalkGroupMember)paramMultiTalkGroup.Iok.get(i)).Iom;
     }
     label80:
     for (;;)
     {
       i += 1;
       break;
-      AppMethodBeat.o(54055);
+      AppMethodBeat.o(114586);
       return str;
     }
   }
   
-  public static int x(Context paramContext, Intent paramIntent)
+  public static enum a
   {
-    AppMethodBeat.i(54057);
-    if (paramIntent != null)
+    static
     {
-      paramIntent = paramIntent.getStringExtra("state");
-      if (paramIntent != null)
-      {
-        if (paramIntent.equals("IDLE"))
-        {
-          AppMethodBeat.o(54057);
-          return 0;
-        }
-        if (paramIntent.equals("RINGING"))
-        {
-          AppMethodBeat.o(54057);
-          return 1;
-        }
-        if (paramIntent.equals("OFFHOOK"))
-        {
-          AppMethodBeat.o(54057);
-          return 2;
-        }
-      }
+      AppMethodBeat.i(114578);
+      tPz = new a("WIFI", 0);
+      tPA = new a("_4G", 1);
+      tPB = new a("_3GOr_2G", 2);
+      tPC = new a("None", 3);
+      tPD = new a[] { tPz, tPA, tPB, tPC };
+      AppMethodBeat.o(114578);
     }
-    int i = ((TelephonyManager)paramContext.getSystemService("phone")).getCallState();
-    AppMethodBeat.o(54057);
-    return i;
-  }
-  
-  public static boolean zG(int paramInt)
-  {
-    return (paramInt == 2) || (paramInt == 3);
-  }
-  
-  public static boolean zH(int paramInt)
-  {
-    return (paramInt == 1) || (paramInt == 3);
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,91 +1,91 @@
 package com.tencent.mm.plugin.card.base;
 
-import com.tencent.mm.protocal.protobuf.ccf;
-import com.tencent.mm.protocal.protobuf.oj;
-import com.tencent.mm.protocal.protobuf.oz;
-import com.tencent.mm.protocal.protobuf.pg;
+import com.tencent.mm.protocal.protobuf.csx;
+import com.tencent.mm.protocal.protobuf.qo;
+import com.tencent.mm.protocal.protobuf.rh;
+import com.tencent.mm.protocal.protobuf.ro;
 
 public abstract interface b
 {
-  public abstract void Hx(String paramString);
+  public abstract void Qh(String paramString);
   
-  public abstract void a(oj paramoj);
+  public abstract void a(qo paramqo);
   
-  public abstract void a(oz paramoz);
+  public abstract void a(rh paramrh);
   
-  public abstract boolean baJ();
+  public abstract boolean bHA();
   
-  public abstract boolean baK();
+  public abstract boolean bHB();
   
-  public abstract boolean baL();
+  public abstract boolean bHC();
   
-  public abstract boolean baM();
+  public abstract boolean bHD();
   
-  public abstract boolean baN();
+  public abstract boolean bHE();
   
-  public abstract boolean baO();
+  public abstract boolean bHF();
   
-  public abstract boolean baP();
+  public abstract boolean bHG();
   
-  public abstract boolean baQ();
+  public abstract boolean bHH();
   
-  public abstract boolean baR();
+  public abstract boolean bHI();
   
-  public abstract boolean baS();
+  public abstract boolean bHJ();
   
-  public abstract boolean baT();
+  public abstract boolean bHK();
   
-  public abstract boolean baU();
+  public abstract boolean bHL();
   
-  public abstract boolean baV();
+  public abstract boolean bHM();
   
-  public abstract boolean baW();
+  public abstract boolean bHN();
   
-  public abstract boolean baX();
+  public abstract boolean bHO();
   
-  public abstract boolean baY();
+  public abstract boolean bHP();
   
-  public abstract boolean baZ();
+  public abstract boolean bHQ();
   
-  public abstract boolean bba();
+  public abstract boolean bHR();
   
-  public abstract boolean bbb();
+  public abstract boolean bHS();
   
-  public abstract boolean bbc();
+  public abstract boolean bHT();
   
-  public abstract pg bbd();
+  public abstract boolean bHU();
   
-  public abstract oj bbe();
+  public abstract ro bHV();
   
-  public abstract ccf bbf();
+  public abstract qo bHW();
   
-  public abstract oz bbg();
+  public abstract csx bHX();
   
-  public abstract String bbh();
+  public abstract rh bHY();
   
-  public abstract String bbi();
+  public abstract String bHZ();
   
-  public abstract String bbj();
+  public abstract String bIa();
   
-  public abstract long bbk();
+  public abstract String bIb();
   
-  public abstract String bbl();
+  public abstract long bIc();
   
-  public abstract int bbm();
+  public abstract String bId();
   
-  public abstract String bbn();
+  public abstract int bIe();
+  
+  public abstract String bIf();
   
   public abstract long getEndTime();
   
   public abstract boolean isAcceptable();
   
-  public abstract boolean isNormal();
-  
-  public abstract String sV(int paramInt);
+  public abstract String yO(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.base.b
  * JD-Core Version:    0.7.0.1
  */

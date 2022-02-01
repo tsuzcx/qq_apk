@@ -1,50 +1,32 @@
 package com.tencent.mm.sdk.platformtools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashMap;
+
 public final class bp
 {
-  private static boolean yqT = false;
-  private static String yqU = null;
-  private static boolean yqV = false;
-  private static boolean yqW = false;
+  private static final HashMap<String, String> EXf;
   
-  public static void aqn(String paramString)
+  static
   {
-    yqU = paramString;
+    AppMethodBeat.i(157840);
+    EXf = new HashMap();
+    AppMethodBeat.o(157840);
   }
   
-  public static boolean dsd()
+  public static String getProperty(String paramString)
   {
-    return yqV;
+    AppMethodBeat.i(157838);
+    paramString = (String)EXf.get(paramString);
+    AppMethodBeat.o(157838);
+    return paramString;
   }
   
-  public static boolean dub()
+  public static void setProperty(String paramString1, String paramString2)
   {
-    return yqW;
-  }
-  
-  public static void duc()
-  {
-    yqT = true;
-  }
-  
-  public static boolean dud()
-  {
-    return yqT;
-  }
-  
-  public static String due()
-  {
-    return yqU;
-  }
-  
-  public static void pN(boolean paramBoolean)
-  {
-    yqV = paramBoolean;
-  }
-  
-  public static void pO(boolean paramBoolean)
-  {
-    yqW = paramBoolean;
+    AppMethodBeat.i(157839);
+    EXf.put(paramString1, paramString2);
+    AppMethodBeat.o(157839);
   }
 }
 

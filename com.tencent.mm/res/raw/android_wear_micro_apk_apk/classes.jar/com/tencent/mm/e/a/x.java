@@ -5,41 +5,41 @@ import a.a.a.b;
 public final class x
   extends com.tencent.mm.d.a
 {
-  public String VN;
-  public int We;
+  public String XI;
+  public int XZ;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.VN == null) {
+      if (this.XI == null) {
         throw new b("Not all required fields were included: Talker");
       }
-      if (this.VN != null) {
-        paramVarArgs.d(1, this.VN);
+      if (this.XI != null) {
+        paramVarArgs.d(1, this.XI);
       }
-      paramVarArgs.aq(2, this.We);
+      paramVarArgs.at(2, this.XZ);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.VN == null) {
+      if (this.XI == null) {
         break label238;
       }
     }
     label238:
-    for (paramInt = a.a.a.b.b.a.e(1, this.VN) + 0;; paramInt = 0)
+    for (paramInt = a.a.a.b.b.a.e(1, this.XI) + 0;; paramInt = 0)
     {
-      return paramInt + a.a.a.a.ak(2, this.We);
+      return paramInt + a.a.a.a.an(2, this.XZ);
       if (paramInt == 2)
       {
-        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-        for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+        for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
           if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.oz();
+            paramVarArgs.pm();
           }
         }
-        if (this.VN != null) {
+        if (this.XI != null) {
           break;
         }
         throw new b("Not all required fields were included: Talker");
@@ -53,10 +53,10 @@ public final class x
         default: 
           return -1;
         case 1: 
-          localx.VN = locala.ou();
+          localx.XI = locala.ph();
           return 0;
         }
-        localx.We = locala.ot();
+        localx.XZ = locala.pg();
         return 0;
       }
       return -1;

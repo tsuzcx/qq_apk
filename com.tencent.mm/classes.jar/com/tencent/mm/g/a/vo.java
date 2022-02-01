@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.dcn;
 import com.tencent.mm.sdk.b.b;
 
 public final class vo
   extends b
 {
-  public vo.a cMJ;
-  public vo.b cMK;
+  public a dBb;
+  public b dBc;
   
   public vo()
   {
@@ -16,12 +17,23 @@ public final class vo
   
   private vo(byte paramByte)
   {
-    AppMethodBeat.i(56585);
-    this.cMJ = new vo.a();
-    this.cMK = new vo.b();
-    this.ymq = false;
+    AppMethodBeat.i(152988);
+    this.dBb = new a();
+    this.dBc = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(56585);
+    AppMethodBeat.o(152988);
+  }
+  
+  public static final class a
+  {
+    public int actionType;
+  }
+  
+  public static final class b
+  {
+    public boolean dBd;
+    public dcn dBe;
   }
 }
 

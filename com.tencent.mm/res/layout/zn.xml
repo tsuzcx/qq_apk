@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bu0" android:background="@drawable/a50" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9"
+<RelativeLayout android:id="@id/bmw" android:layout_width="fill_parent" android:layout_height="@dimen/i9" android:minHeight="@dimen/av"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bsk" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginLeft="20.0dip" android:src="@drawable/a3f" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <Button android:id="@id/bu1" android:layout_marginLeft="@dimen/n_" android:layout_marginRight="@dimen/n_" android:text="@string/tz" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/ny" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/ln" android:gravity="center_vertical" android:id="@id/bu2" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/brp" android:layout_toLeftOf="@id/bu1" android:layout_toRightOf="@id/bsk" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/dz2" android:layout_width="@dimen/as" android:layout_height="@dimen/as" android:layout_marginLeft="@dimen/o" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/i_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toRightOf="@id/dz2" android:layout_centerVertical="true">
+        <TextView android:textSize="@dimen/ia" android:gravity="center_vertical" android:id="@id/dz8" android:background="?rd" android:paddingRight="@dimen/b" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/av" android:singleLine="true" style="@style/m3" />
+    </LinearLayout>
 </RelativeLayout>

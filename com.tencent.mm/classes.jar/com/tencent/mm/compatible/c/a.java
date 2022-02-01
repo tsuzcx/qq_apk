@@ -1,59 +1,67 @@
 package com.tencent.mm.compatible.c;
 
-import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.ac;
-import com.tencent.mm.compatible.e.k;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
 
-public final class a
+public enum a
 {
-  public static boolean a(AudioManager paramAudioManager)
+  private static volatile a fzi;
+  
+  static
   {
-    AppMethodBeat.i(92902);
-    if (!paramAudioManager.isBluetoothScoAvailableOffCall())
+    AppMethodBeat.i(155631);
+    fzh = new a("INSTANCE");
+    fzj = new a[] { fzh };
+    fzi = new a()
     {
-      AppMethodBeat.o(92902);
-      return false;
-    }
-    if (ax.Ep())
-    {
-      AppMethodBeat.o(92902);
-      return false;
-    }
-    ab.i("MicroMsg.BluetoothUtil", "start SrvDeviceInfo mCommonInfo getStartBluetoothSco:%s ", new Object[] { Integer.valueOf(ac.erF.eoL) });
-    if (((ac.erF.eoL == 1) || (ac.erF.eoL == -1)) && (!paramAudioManager.isBluetoothScoOn()))
-    {
-      ab.i("MicroMsg.BluetoothUtil", "BluetoothUtil am.isBluetoothScoOn is false and startBluetoothSco, stack: %s", new Object[] { bo.dtY() });
-      paramAudioManager.startBluetoothSco();
-    }
-    AppMethodBeat.o(92902);
-    return true;
+      public final void y(long paramAnonymousLong1, long paramAnonymousLong2)
+      {
+        AppMethodBeat.i(155626);
+        ad.w("MicroMsg.ReportDelegate", "hy: dummy reportIDKey, do nothing");
+        AppMethodBeat.o(155626);
+      }
+    };
+    AppMethodBeat.o(155631);
   }
   
-  public static boolean b(AudioManager paramAudioManager)
+  private a() {}
+  
+  public static void a(a parama)
   {
-    AppMethodBeat.i(92903);
-    if (ax.Ep())
+    try
     {
-      AppMethodBeat.o(92903);
-      return false;
+      fzi = parama;
+      return;
     }
-    ab.i("MicroMsg.BluetoothUtil", "stop SrvDeviceInfo mCommonInfo getStartBluetoothSco:%s,getStopBluetoothInBU:%s ", new Object[] { Integer.valueOf(ac.erF.eoL), Integer.valueOf(ac.erF.eoK) });
-    if (((ac.erF.eoK == 1) || (ac.erF.eoL == -1)) && (paramAudioManager.isBluetoothScoOn()))
+    finally
     {
-      ab.i("MicroMsg.BluetoothUtil", "BluetoothUtil stopBluetoothSco stack: %s", new Object[] { bo.dtY() });
-      paramAudioManager.stopBluetoothSco();
+      parama = finally;
+      throw parama;
     }
-    AppMethodBeat.o(92903);
-    return true;
+  }
+  
+  public static void ll(long paramLong)
+  {
+    AppMethodBeat.i(155629);
+    fzi.y(853L, paramLong);
+    AppMethodBeat.o(155629);
+  }
+  
+  public static void lm(long paramLong)
+  {
+    AppMethodBeat.i(155630);
+    fzi.y(650L, paramLong);
+    AppMethodBeat.o(155630);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void y(long paramLong1, long paramLong2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.compatible.c.a
  * JD-Core Version:    0.7.0.1
  */

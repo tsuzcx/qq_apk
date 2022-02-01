@@ -8,7 +8,7 @@ public enum Scope$ScopeType
   
   static
   {
-    AppMethodBeat.i(74901);
+    AppMethodBeat.i(61524);
     Global = new ScopeType("Global", 0, 0);
     Local = new ScopeType("Local", 1, 1);
     With = new ScopeType("With", 2, 2);
@@ -17,7 +17,7 @@ public enum Scope$ScopeType
     Block = new ScopeType("Block", 5, 5);
     Script = new ScopeType("Script", 6, 6);
     $VALUES = new ScopeType[] { Global, Local, With, Closure, Catch, Block, Script };
-    AppMethodBeat.o(74901);
+    AppMethodBeat.o(61524);
   }
   
   private Scope$ScopeType(int paramInt)
@@ -27,7 +27,7 @@ public enum Scope$ScopeType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.eclipsesource.v8.debug.mirror.Scope.ScopeType
  * JD-Core Version:    0.7.0.1
  */

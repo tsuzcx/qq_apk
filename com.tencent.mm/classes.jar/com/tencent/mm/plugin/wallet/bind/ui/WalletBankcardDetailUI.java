@@ -6,212 +6,265 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.n;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.h.c;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.e;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WalletBankcardDetailUI
   extends WalletBaseUI
 {
-  protected Bankcard tOQ;
-  protected TextView tSP;
-  private TextView tSQ;
-  private View tSR;
-  protected LinearLayout tSS;
-  protected LinearLayout tST;
-  protected LinearLayout tSU;
+  protected Bankcard zMX;
+  protected TextView zMY;
+  private TextView zMZ;
+  private View zNa;
+  protected LinearLayout zNb;
+  protected LinearLayout zNc;
+  protected LinearLayout zNd;
   
-  private void nv(boolean paramBoolean)
+  private void sp(boolean paramBoolean)
   {
-    AppMethodBeat.i(45757);
-    if ((!r.ZB()) && (!paramBoolean) && (!((com.tencent.mm.plugin.walletlock.a.b)g.E(com.tencent.mm.plugin.walletlock.a.b.class)).cXu()))
+    AppMethodBeat.i(69093);
+    if ((!u.aqV()) && (!paramBoolean) && (!((com.tencent.mm.plugin.walletlock.a.b)g.ab(com.tencent.mm.plugin.walletlock.a.b.class)).efO()))
     {
-      e.RX(0);
-      h.a(this, 2131304869, -1, 2131304868, 2131304870, true, new WalletBankcardDetailUI.6(this), new DialogInterface.OnClickListener()
+      e.aby(0);
+      h.a(this, 2131765056, -1, 2131765055, 2131765057, true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(45747);
+          AppMethodBeat.i(69083);
+          ((com.tencent.mm.plugin.walletlock.a.b)g.ab(com.tencent.mm.plugin.walletlock.a.b.class)).l(WalletBankcardDetailUI.this, 1);
+          e.aby(1);
+          AppMethodBeat.o(69083);
+        }
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(69084);
           WalletBankcardDetailUI.b(WalletBankcardDetailUI.this);
-          e.RX(2);
-          AppMethodBeat.o(45747);
+          e.aby(2);
+          AppMethodBeat.o(69084);
         }
       });
-      AppMethodBeat.o(45757);
+      AppMethodBeat.o(69093);
       return;
     }
     getInput().putBoolean("offline_pay", false);
-    com.tencent.mm.wallet_core.a.j(this, getInput());
-    AppMethodBeat.o(45757);
+    com.tencent.mm.wallet_core.a.k(this, getInput());
+    AppMethodBeat.o(69093);
   }
   
-  protected final void cRx()
+  protected final void dZK()
   {
-    AppMethodBeat.i(45755);
-    this.tSS.setVisibility(0);
-    this.tST.setVisibility(8);
-    ((TextView)findViewById(2131829007)).setOnClickListener(new WalletBankcardDetailUI.3(this));
-    ((TextView)findViewById(2131829005)).setOnClickListener(new WalletBankcardDetailUI.4(this));
-    AppMethodBeat.o(45755);
+    AppMethodBeat.i(69092);
+    this.zNb.setVisibility(0);
+    this.zNc.setVisibility(8);
+    ((TextView)findViewById(2131306671)).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(69079);
+        WalletBankcardDetailUI.this.showDialog(0);
+        AppMethodBeat.o(69079);
+      }
+    });
+    ((TextView)findViewById(2131306684)).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(69080);
+        com.tencent.mm.wallet_core.a.k(WalletBankcardDetailUI.this, WalletBankcardDetailUI.this.getInput());
+        AppMethodBeat.o(69080);
+      }
+    });
+    AppMethodBeat.o(69092);
   }
   
   public int getLayoutId()
   {
-    return 2130971141;
+    return 2131495915;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(45756);
-    this.tOQ = ((Bankcard)getInput().getParcelable("key_bankcard"));
-    if (this.tOQ == null)
+    AppMethodBeat.i(69090);
+    this.zMX = ((Bankcard)getInput().getParcelable("key_bankcard"));
+    if (this.zMX == null)
     {
-      AppMethodBeat.o(45756);
+      AppMethodBeat.o(69090);
       return;
     }
-    this.tSS = ((LinearLayout)findViewById(2131829004));
-    this.tST = ((LinearLayout)findViewById(2131828995));
-    this.tSU = ((LinearLayout)findViewById(2131829008));
-    this.tSQ = ((TextView)findViewById(2131829001));
-    this.tSR = findViewById(2131829002);
-    this.tSR.setOnClickListener(new WalletBankcardDetailUI.1(this));
-    if (1 == this.tOQ.field_bankcardState)
+    this.zNb = ((LinearLayout)findViewById(2131306670));
+    this.zNc = ((LinearLayout)findViewById(2131306677));
+    this.zNd = ((LinearLayout)findViewById(2131306675));
+    this.zMZ = ((TextView)findViewById(2131306673));
+    this.zNa = findViewById(2131306682);
+    this.zNa.setOnClickListener(new View.OnClickListener()
     {
-      cRx();
-      AppMethodBeat.o(45756);
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(69077);
+        e.p(WalletBankcardDetailUI.this, WalletBankcardDetailUI.this.zMX.field_repay_url, false);
+        AppMethodBeat.o(69077);
+      }
+    });
+    if (1 == this.zMX.field_bankcardState)
+    {
+      dZK();
+      AppMethodBeat.o(69090);
       return;
     }
-    if (this.tOQ.cTi())
+    if (this.zMX.eby())
     {
-      nu(true);
-      this.tSP = ((TextView)findViewById(2131828996));
-      s.cRG();
-      s.cRH();
-      this.tSP.setVisibility(8);
+      so(true);
+      this.zMY = ((TextView)findViewById(2131306669));
+      s.dZT();
+      s.dZU();
+      this.zMY.setVisibility(8);
     }
     for (;;)
     {
-      addIconOptionMenu(0, 2130839668, new WalletBankcardDetailUI.5(this));
-      AppMethodBeat.o(45756);
-      return;
-      nu(false);
-      this.tSP = ((TextView)findViewById(2131829009));
-      s.cRG();
-      s.cRH();
-      this.tSP.setVisibility(8);
-    }
-  }
-  
-  protected final void nu(boolean paramBoolean)
-  {
-    AppMethodBeat.i(45754);
-    if (paramBoolean)
-    {
-      this.tSS.setVisibility(8);
-      this.tST.setVisibility(0);
-      ((TextView)findViewById(2131829003)).setOnClickListener(new WalletBankcardDetailUI.2(this));
-      TextView localTextView1 = (TextView)findViewById(2131828997);
-      TextView localTextView2 = (TextView)findViewById(2131828998);
-      TextView localTextView3 = (TextView)findViewById(2131828999);
-      TextView localTextView4 = (TextView)findViewById(2131829000);
-      localTextView1.setText(e.e(this.tOQ.field_onceQuotaKind, null));
-      localTextView2.setText(e.e(this.tOQ.field_onceQuotaVirtual, null));
-      localTextView3.setText(e.e(this.tOQ.field_dayQuotaKind, null));
-      localTextView4.setText(e.e(this.tOQ.field_dayQuotaVirtual, null));
-      if (!bo.isNullOrNil(this.tOQ.field_repay_url))
+      addIconOptionMenu(0, 2131690603, new MenuItem.OnMenuItemClickListener()
       {
-        this.tSQ.setVisibility(0);
-        this.tSR.setVisibility(0);
-      }
-      AppMethodBeat.o(45754);
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(69082);
+          s.dZT();
+          paramAnonymousMenuItem = s.dZU().ecZ();
+          if ((paramAnonymousMenuItem != null) && (paramAnonymousMenuItem.size() > 1))
+          {
+            s.dZT();
+            s.dZU();
+          }
+          paramAnonymousMenuItem = new ArrayList();
+          h.b(WalletBankcardDetailUI.this, null, (String[])paramAnonymousMenuItem.toArray(new String[paramAnonymousMenuItem.size()]), WalletBankcardDetailUI.this.getString(2131765319), new h.c()
+          {
+            public final void kM(int paramAnonymous2Int)
+            {
+              AppMethodBeat.i(69081);
+              switch (paramAnonymous2Int)
+              {
+              }
+              for (;;)
+              {
+                AppMethodBeat.o(69081);
+                return;
+                WalletBankcardDetailUI.a(WalletBankcardDetailUI.this);
+              }
+            }
+          });
+          AppMethodBeat.o(69082);
+          return true;
+        }
+      });
+      AppMethodBeat.o(69090);
       return;
+      so(false);
+      this.zMY = ((TextView)findViewById(2131306674));
+      s.dZT();
+      s.dZU();
+      this.zMY.setVisibility(8);
     }
-    this.tSS.setVisibility(8);
-    this.tST.setVisibility(8);
-    this.tSU.setVisibility(0);
-    AppMethodBeat.o(45754);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(45750);
+    AppMethodBeat.i(69087);
     super.onCreate(paramBundle);
     addSceneEndListener(621);
-    setMMTitle(2131304867);
+    setMMTitle(2131765054);
     initView();
-    AppMethodBeat.o(45750);
+    AppMethodBeat.o(69087);
   }
   
   @Deprecated
   public Dialog onCreateDialog(int paramInt)
   {
-    AppMethodBeat.i(45758);
-    Dialog localDialog = h.a(getContext(), getString(2131304854), getResources().getStringArray(2131755065), "", new WalletBankcardDetailUI.8(this));
-    AppMethodBeat.o(45758);
+    AppMethodBeat.i(69094);
+    Dialog localDialog = h.a(getContext(), getString(2131765041), getResources().getStringArray(2130903098), "", new WalletBankcardDetailUI.8(this));
+    AppMethodBeat.o(69094);
     return localDialog;
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(45752);
+    AppMethodBeat.i(69089);
     removeSceneEndListener(621);
     super.onDestroy();
-    AppMethodBeat.o(45752);
+    AppMethodBeat.o(69089);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(45751);
+    AppMethodBeat.i(69088);
     super.onResume();
-    AppMethodBeat.o(45751);
+    AppMethodBeat.o(69088);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(final int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(45759);
+    AppMethodBeat.i(69095);
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if ((paramm instanceof com.tencent.mm.plugin.wallet.bind.a.b)) {
-        if (this.tSP != null) {
-          this.tSP.setVisibility(0);
+      if ((paramn instanceof com.tencent.mm.plugin.wallet.bind.a.b)) {
+        if (this.zMY != null) {
+          this.zMY.setVisibility(0);
         }
       }
     }
-    while (!(paramm instanceof com.tencent.mm.plugin.wallet.bind.a.a)) {
+    while (!(paramn instanceof com.tencent.mm.plugin.wallet.bind.a.a)) {
       for (;;)
       {
-        AppMethodBeat.o(45759);
+        AppMethodBeat.o(69095);
         return false;
-        if ((paramm instanceof com.tencent.mm.plugin.wallet.bind.a.a))
+        if ((paramn instanceof com.tencent.mm.plugin.wallet.bind.a.a))
         {
-          paramString = (com.tencent.mm.plugin.wallet.bind.a.a)paramm;
-          ab.e("MicroMsg.WalletBankcardDetailUI", "NetSceneGetUnbindInfo succ and level = " + paramString.tSp);
-          switch (paramString.tSp)
+          paramString = (com.tencent.mm.plugin.wallet.bind.a.a)paramn;
+          ad.e("MicroMsg.WalletBankcardDetailUI", "NetSceneGetUnbindInfo succ and level = " + paramString.zMy);
+          switch (paramString.zMy)
           {
           default: 
-            nv(false);
+            sp(false);
             break;
           case 2: 
           case 3: 
-            paramInt1 = paramString.tSp;
-            h.a(this, paramString.tSq, null, false, new WalletBankcardDetailUI.9(this, paramInt1));
+            paramInt1 = paramString.zMy;
+            h.a(this, paramString.zMz, null, false, new DialogInterface.OnClickListener()
+            {
+              public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+              {
+                AppMethodBeat.i(69086);
+                if (paramInt1 == 2) {
+                  WalletBankcardDetailUI.b(WalletBankcardDetailUI.this);
+                }
+                paramAnonymousDialogInterface.dismiss();
+                AppMethodBeat.o(69086);
+              }
+            });
           }
         }
       }
     }
-    ab.e("MicroMsg.WalletBankcardDetailUI", "NetSceneGetUnbindInfo error");
-    nv(false);
-    AppMethodBeat.o(45759);
+    ad.e("MicroMsg.WalletBankcardDetailUI", "NetSceneGetUnbindInfo error");
+    sp(false);
+    AppMethodBeat.o(69095);
     return true;
   }
   
@@ -220,10 +273,48 @@ public class WalletBankcardDetailUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  protected final void so(boolean paramBoolean)
+  {
+    AppMethodBeat.i(69091);
+    if (paramBoolean)
+    {
+      this.zNb.setVisibility(8);
+      this.zNc.setVisibility(0);
+      ((TextView)findViewById(2131306668)).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(69078);
+          WalletBankcardDetailUI.this.showDialog(0);
+          AppMethodBeat.o(69078);
+        }
+      });
+      TextView localTextView1 = (TextView)findViewById(2131306680);
+      TextView localTextView2 = (TextView)findViewById(2131306681);
+      TextView localTextView3 = (TextView)findViewById(2131306678);
+      TextView localTextView4 = (TextView)findViewById(2131306679);
+      localTextView1.setText(e.d(this.zMX.field_onceQuotaKind, null));
+      localTextView2.setText(e.d(this.zMX.field_onceQuotaVirtual, null));
+      localTextView3.setText(e.d(this.zMX.field_dayQuotaKind, null));
+      localTextView4.setText(e.d(this.zMX.field_dayQuotaVirtual, null));
+      if (!bt.isNullOrNil(this.zMX.field_repay_url))
+      {
+        this.zMZ.setVisibility(0);
+        this.zNa.setVisibility(0);
+      }
+      AppMethodBeat.o(69091);
+      return;
+    }
+    this.zNb.setVisibility(8);
+    this.zNc.setVisibility(8);
+    this.zNd.setVisibility(0);
+    AppMethodBeat.o(69091);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardDetailUI
  * JD-Core Version:    0.7.0.1
  */

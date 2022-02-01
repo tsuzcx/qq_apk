@@ -2,184 +2,233 @@ package com.tencent.mm.plugin.appbrand.jsapi.b;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
 import android.util.Log;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.f;
+import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.e.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.af;
-import com.tencent.mm.plugin.appbrand.s.d;
-import com.tencent.mm.plugin.appbrand.s.g;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.nio.ByteBuffer;
-import org.json.JSONArray;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class b
   extends com.tencent.mm.plugin.appbrand.jsapi.a<c>
 {
-  public static final int CTRL_INDEX = 373;
-  public static final String NAME = "canvasPutImageData";
+  public static final int CTRL_INDEX = 372;
+  public static final String NAME = "canvasGetImageData";
   
-  private static int[] j(ByteBuffer paramByteBuffer)
+  private static Map<String, Object> e(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(103843);
-    paramByteBuffer = d.m(paramByteBuffer);
-    int[] arrayOfInt = new int[paramByteBuffer.length / 4];
+    AppMethodBeat.i(145525);
+    paramArrayOfInt = t(paramArrayOfInt);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("data", paramArrayOfInt);
+    localHashMap.put("width", Integer.valueOf(paramInt1));
+    localHashMap.put("height", Integer.valueOf(paramInt2));
+    AppMethodBeat.o(145525);
+    return localHashMap;
+  }
+  
+  private static ByteBuffer t(int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(145526);
+    byte[] arrayOfByte = new byte[paramArrayOfInt.length * 4];
     int i = 0;
     int k;
-    for (int j = 0; i < arrayOfInt.length; j = k + 1)
+    for (int j = 0; i < paramArrayOfInt.length; j = k + 1)
     {
       k = j + 1;
-      j = paramByteBuffer[j];
-      int m = k + 1;
-      int n = paramByteBuffer[k];
-      k = m + 1;
-      m = paramByteBuffer[m];
-      arrayOfInt[i] = ((paramByteBuffer[k] & 0xFF) << 24 | m & 0xFF | (n & 0xFF) << 8 | (j & 0xFF) << 16);
+      arrayOfByte[j] = ((byte)(paramArrayOfInt[i] >> 16 & 0xFF));
+      j = k + 1;
+      arrayOfByte[k] = ((byte)(paramArrayOfInt[i] >> 8 & 0xFF));
+      k = j + 1;
+      arrayOfByte[j] = ((byte)(paramArrayOfInt[i] & 0xFF));
+      arrayOfByte[k] = ((byte)(paramArrayOfInt[i] >> 24 & 0xFF));
       i += 1;
     }
-    AppMethodBeat.o(103843);
-    return arrayOfInt;
+    paramArrayOfInt = ByteBuffer.wrap(arrayOfByte);
+    AppMethodBeat.o(145526);
+    return paramArrayOfInt;
   }
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(103842);
-    int n;
+    AppMethodBeat.i(145524);
+    int i7;
     try
     {
-      n = paramJSONObject.getInt("canvasId");
-      localObject1 = ((f)paramc.q(f.class)).d(paramc);
-      if (localObject1 == null)
+      i7 = paramJSONObject.getInt("canvasId");
+      localObject = ((com.tencent.mm.plugin.appbrand.jsapi.base.f)paramc.K(com.tencent.mm.plugin.appbrand.jsapi.base.f.class)).c(paramc, paramJSONObject);
+      if (localObject == null)
       {
-        ab.w("MicroMsg.JsApiCanvasPutImageData", "invoke JsApi canvasPutImageData failed, component view is null.");
-        paramc.h(paramInt, j("fail:page is null", null));
-        AppMethodBeat.o(103842);
+        ad.w("MicroMsg.JsApiCanvasGetImageData", "invoke JsApi canvasGetImageData failed, component view is null.");
+        paramc.h(paramInt, e("fail:page is null", null));
+        AppMethodBeat.o(145524);
         return;
       }
     }
     catch (JSONException paramJSONObject)
     {
-      ab.i("MicroMsg.JsApiCanvasPutImageData", "get canvas id failed, %s", new Object[] { Log.getStackTraceString(paramJSONObject) });
-      paramc.h(paramInt, j("fail:illegal canvasId", null));
-      AppMethodBeat.o(103842);
+      ad.i("MicroMsg.JsApiCanvasGetImageData", "get canvas id failed, %s", new Object[] { Log.getStackTraceString(paramJSONObject) });
+      paramc.h(paramInt, e("fail:illegal canvasId", null));
+      AppMethodBeat.o(145524);
       return;
     }
-    Object localObject1 = ((e)localObject1).vC().getViewById(n);
-    if (localObject1 == null)
+    Object localObject = ((e)localObject).aOg().getViewById(i7);
+    if (localObject == null)
     {
-      ab.w("MicroMsg.JsApiCanvasPutImageData", "view(%s) is null.", new Object[] { Integer.valueOf(n) });
-      paramc.h(paramInt, j("fail:view is null", null));
-      AppMethodBeat.o(103842);
+      ad.w("MicroMsg.JsApiCanvasGetImageData", "view(%s) is null.", new Object[] { Integer.valueOf(i7) });
+      paramc.h(paramInt, e("fail:view is null", null));
+      AppMethodBeat.o(145524);
       return;
     }
-    if (!(localObject1 instanceof CoverViewContainer))
+    if (!(localObject instanceof CoverViewContainer))
     {
-      ab.w("MicroMsg.JsApiCanvasPutImageData", "the viewId is not a canvas(%s).", new Object[] { Integer.valueOf(n) });
-      paramc.h(paramInt, j("fail:illegal view type", null));
-      AppMethodBeat.o(103842);
+      ad.w("MicroMsg.JsApiCanvasGetImageData", "the viewId is not a canvas(%s).", new Object[] { Integer.valueOf(i7) });
+      paramc.h(paramInt, e("fail:illegal view type", null));
+      AppMethodBeat.o(145524);
       return;
     }
-    localObject1 = (View)((CoverViewContainer)localObject1).aa(View.class);
-    if (!(localObject1 instanceof com.tencent.mm.plugin.appbrand.canvas.widget.a))
+    localObject = (View)((CoverViewContainer)localObject).ax(View.class);
+    if (!(localObject instanceof com.tencent.mm.plugin.appbrand.canvas.widget.a))
     {
-      ab.i("MicroMsg.JsApiCanvasPutImageData", "the view is not a instance of CanvasView.(%s)", new Object[] { Integer.valueOf(n) });
-      paramc.h(paramInt, j("fail:illegal view type", null));
-      AppMethodBeat.o(103842);
+      ad.i("MicroMsg.JsApiCanvasGetImageData", "the view is not a instance of CanvasView.(%s)", new Object[] { Integer.valueOf(i7) });
+      paramc.h(paramInt, e("fail:illegal view type", null));
+      AppMethodBeat.o(145524);
       return;
     }
-    float f = g.aNP();
-    int j = paramJSONObject.optInt("x");
-    int m = paramJSONObject.optInt("y");
+    float f = g.bqj();
+    int m = paramJSONObject.optInt("x");
+    int n = paramJSONObject.optInt("y");
     int i = paramJSONObject.optInt("width");
-    int k = paramJSONObject.optInt("height");
-    Math.round(j * f);
-    Math.round(m * f);
-    Math.round(i * f);
-    Math.round(f * k);
-    if ((i == 0) || (k == 0))
+    int i1 = paramJSONObject.optInt("height");
+    if ((i == 0) || (i1 == 0))
     {
-      ab.i("MicroMsg.JsApiCanvasPutImageData", "width(%s) or height(%s) is 0.(%s)", new Object[] { Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(n) });
-      paramc.h(paramInt, j("fail:width or height is 0", null));
-      AppMethodBeat.o(103842);
+      ad.i("MicroMsg.JsApiCanvasGetImageData", "width(%s) or height(%s) is 0.(%s)", new Object[] { Integer.valueOf(i), Integer.valueOf(i1), Integer.valueOf(i7) });
+      paramc.h(paramInt, e("fail:width or height is 0", null));
+      AppMethodBeat.o(145524);
       return;
     }
+    int k;
     if (i < 0)
     {
-      j += i;
-      i = -i;
+      k = -i;
+      m += i;
     }
     for (;;)
     {
-      if (k < 0)
+      if (i1 < 0)
       {
-        m += k;
-        k = -k;
-        try
+        i = -i1;
+        n += i1;
+        i1 = i;
+      }
+      for (;;)
+      {
+        int j = Math.round(m * f);
+        int i4 = Math.round(n * f);
+        int i6 = Math.round(k * f);
+        int i5 = Math.round(i1 * f);
+        i = ((View)localObject).getMeasuredWidth();
+        int i8 = ((View)localObject).getMeasuredHeight();
+        if (j < 0) {}
+        label947:
+        label954:
+        for (int i2 = 0;; i2 = j)
         {
-          Object localObject2;
-          JSONObject localJSONObject;
-          JSONArray localJSONArray;
-          for (;;)
+          if (i4 < 0) {}
+          for (int i3 = 0;; i3 = i4)
           {
-            paramJSONObject = paramJSONObject.get("data");
-            if (!(paramJSONObject instanceof ByteBuffer))
+            if (j + i6 > i)
             {
-              ab.i("MicroMsg.JsApiCanvasPutImageData", "get data failed, value is not a ByteBuffer");
-              paramc.h(paramInt, j("fail:illegal data", null));
-              AppMethodBeat.o(103842);
-              return;
+              i -= i2;
+              if (i4 + i5 <= i8) {
+                break label842;
+              }
+              j = i8 - i3;
             }
-            localObject2 = (ByteBuffer)paramJSONObject;
-            paramJSONObject = new JSONArray();
-            localObject2 = j((ByteBuffer)localObject2);
-            localJSONObject = new JSONObject();
+            for (;;)
+            {
+              i4 = Math.round(i2 / f);
+              i5 = Math.round(i3 / f);
+              i6 = Math.round(i / f);
+              i8 = Math.round(j / f);
+              try
+              {
+                paramJSONObject = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+                com.tencent.mm.plugin.appbrand.canvas.f localf = new com.tencent.mm.plugin.appbrand.canvas.f(paramJSONObject);
+                localf.save();
+                localf.translate(-i2, -i3);
+                ((com.tencent.mm.plugin.appbrand.canvas.widget.a)localObject).h(localf);
+                localf.restore();
+                paramJSONObject = Bitmap.createScaledBitmap(paramJSONObject, i6, i8, false);
+                localObject = new int[k * i1];
+                paramJSONObject.getPixels((int[])localObject, (i5 - n) * k + (i4 - m), k, 0, 0, i6, i8);
+                paramc.h(paramInt, a(paramc, "ok", e((int[])localObject, k, i1)));
+                AppMethodBeat.o(145524);
+                return;
+              }
+              catch (Exception paramJSONObject)
+              {
+                ad.w("MicroMsg.JsApiCanvasGetImageData", "create bitmap failed, viewId(%s). Exception : %s", new Object[] { Integer.valueOf(i7), paramJSONObject });
+                paramc.h(paramInt, e("fail:create bitmap failed", null));
+                AppMethodBeat.o(145524);
+                return;
+              }
+              if (j < i) {
+                break label954;
+              }
+              paramc.h(paramInt, a(paramc, "ok", e(new int[k * i1], k, i1)));
+              AppMethodBeat.o(145524);
+              return;
+              if (i4 < i8) {
+                break label947;
+              }
+              paramc.h(paramInt, a(paramc, "ok", e(new int[k * i1], k, i1)));
+              AppMethodBeat.o(145524);
+              return;
+              if (j + i6 <= 0)
+              {
+                paramc.h(paramInt, a(paramc, "ok", e(new int[k * i1], k, i1)));
+                AppMethodBeat.o(145524);
+                return;
+              }
+              i = i6;
+              if (j >= 0) {
+                break;
+              }
+              i = i6 + j;
+              break;
+              label842:
+              if (i4 + i5 <= 0)
+              {
+                paramc.h(paramInt, a(paramc, "ok", e(new int[k * i1], k, i1)));
+                AppMethodBeat.o(145524);
+                return;
+              }
+              j = i5;
+              if (i4 < 0) {
+                j = i5 + i4;
+              }
+            }
           }
-        }
-        catch (JSONException paramJSONObject)
-        {
-          try
-          {
-            localJSONArray = new JSONArray();
-            localJSONArray.put(j);
-            localJSONArray.put(m);
-            localJSONArray.put(i);
-            localJSONArray.put(k);
-            localJSONArray.put(Bitmap.createBitmap((int[])localObject2, i, k, Bitmap.Config.ARGB_8888));
-            localJSONObject.put("method", "__setPixels");
-            localJSONObject.put("data", localJSONArray);
-            paramJSONObject.put(localJSONObject);
-            localObject1 = (com.tencent.mm.plugin.appbrand.canvas.widget.a)localObject1;
-            ((com.tencent.mm.plugin.appbrand.canvas.widget.a)localObject1).b(paramJSONObject, new b.1(this, paramc, paramInt));
-            ((com.tencent.mm.plugin.appbrand.canvas.widget.a)localObject1).axT();
-            AppMethodBeat.o(103842);
-            return;
-          }
-          catch (JSONException paramJSONObject)
-          {
-            ab.w("MicroMsg.JsApiCanvasPutImageData", "put json value error : %s", new Object[] { paramJSONObject });
-            paramc.h(paramInt, j("fail:build action JSON error", null));
-            AppMethodBeat.o(103842);
-            return;
-          }
-          paramJSONObject = paramJSONObject;
-          ab.i("MicroMsg.JsApiCanvasPutImageData", "get data failed, %s", new Object[] { Log.getStackTraceString(paramJSONObject) });
-          paramc.h(paramInt, j("fail:missing data", null));
-          AppMethodBeat.o(103842);
-          return;
         }
       }
+      k = i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.b.b
  * JD-Core Version:    0.7.0.1
  */

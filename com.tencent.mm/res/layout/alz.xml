@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/ds_" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.story.ui.view.editor.EditorInputView android:id="@id/bf6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include android:id="@id/dsa" layout="@layout/b3b" />
-</merge>
+    <TextView android:id="@id/e8z" android:background="@color/a25" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/a7n" />
+    <LinearLayout android:orientation="vertical" android:id="@id/e8y" android:background="@drawable/a_c" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:id="@id/e8x" android:layout_height="@dimen/jm" style="@style/qj">
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/ve" android:id="@id/e92" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/gx" android:textColor="@color/vc" android:id="@id/e91" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

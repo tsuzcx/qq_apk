@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wallet_core.id_verify.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,53 +10,58 @@ import org.json.JSONObject;
 public final class f
   extends m
 {
-  public String uel;
-  public String uem;
-  public String uen;
-  public String ueo;
-  public String uep;
+  public String desc;
+  public String huS;
+  public String title;
+  public int zVU;
   
-  public f(String paramString)
+  public f(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, RealNameBundle paramRealNameBundle)
   {
-    AppMethodBeat.i(46648);
+    AppMethodBeat.i(174504);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("channel", "1");
+    localHashMap.put("flag", "1");
+    localHashMap.put("passwd", paramString1);
+    localHashMap.put("token", paramString2);
+    localHashMap.put("face_token", paramString3);
+    localHashMap.put("realname_scene", String.valueOf(paramInt));
+    localHashMap.put("session_id", paramString4);
+    ad.i("MicroMsg.NetSceneRealNameReg", "realname_scene=%d", new Object[] { Integer.valueOf(paramInt) });
+    if (paramRealNameBundle != null) {
+      paramRealNameBundle.aM(localHashMap);
+    }
     setRequestData(localHashMap);
-    this.uep = paramString;
-    AppMethodBeat.o(46648);
+    AppMethodBeat.o(174504);
   }
   
   public final int getFuncId()
   {
-    return 1630;
+    return 1648;
   }
   
   public final int getTenpayCgicmd()
   {
-    return 1630;
+    return 1648;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/realnameguidequery";
+    return "/cgi-bin/mmpay-bin/tenpay/realnamereg";
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(46649);
-    if ((paramInt == 0) && (paramJSONObject != null))
-    {
-      this.uel = paramJSONObject.optString("guide_flag");
-      this.uem = paramJSONObject.optString("guide_wording");
-      this.uen = paramJSONObject.optString("left_button_wording");
-      this.ueo = paramJSONObject.optString("right_button_wording");
-    }
-    AppMethodBeat.o(46649);
+    AppMethodBeat.i(70144);
+    ad.i("MicroMsg.NetSceneRealNameReg", "errCode=" + paramString + ";errMsg=" + paramString);
+    this.title = paramJSONObject.optString("title");
+    this.desc = paramJSONObject.optString("desc");
+    this.huS = paramJSONObject.optString("page");
+    this.zVU = paramJSONObject.optInt("err_jump_page");
+    AppMethodBeat.o(70144);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.model.f
  * JD-Core Version:    0.7.0.1
  */

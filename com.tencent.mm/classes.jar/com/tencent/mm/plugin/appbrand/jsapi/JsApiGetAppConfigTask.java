@@ -4,8 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appcache.b.e.b;
-import com.tencent.mm.plugin.appbrand.config.m;
+import com.tencent.mm.plugin.appbrand.config.p;
+import com.tencent.mm.plugin.appbrand.config.p.c;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 
 class JsApiGetAppConfigTask
@@ -13,7 +16,7 @@ class JsApiGetAppConfigTask
 {
   public static final Parcelable.Creator<JsApiGetAppConfigTask> CREATOR;
   public String appId;
-  public Runnable hxp;
+  public Runnable jwt;
   public String key;
   public int scene;
   public int type;
@@ -21,77 +24,86 @@ class JsApiGetAppConfigTask
   
   static
   {
-    AppMethodBeat.i(130433);
-    CREATOR = new JsApiGetAppConfigTask.2();
-    AppMethodBeat.o(130433);
+    AppMethodBeat.i(45491);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(45491);
   }
   
   public JsApiGetAppConfigTask() {}
   
   public JsApiGetAppConfigTask(Parcel paramParcel)
   {
-    AppMethodBeat.i(130427);
-    f(paramParcel);
-    AppMethodBeat.o(130427);
+    AppMethodBeat.i(45485);
+    e(paramParcel);
+    AppMethodBeat.o(45485);
   }
   
-  public final void ata()
+  public final void aEA()
   {
-    AppMethodBeat.i(130428);
-    if (!com.tencent.mm.kernel.g.RJ().eHg)
+    AppMethodBeat.i(45487);
+    if (this.jwt != null) {
+      this.jwt.run();
+    }
+    AppMethodBeat.o(45487);
+  }
+  
+  public final void aEz()
+  {
+    AppMethodBeat.i(45486);
+    if (!g.afz().gcn)
     {
-      AppMethodBeat.o(130428);
+      AppMethodBeat.o(45486);
       return;
     }
-    Pair localPair = ((b)com.tencent.mm.plugin.appbrand.app.g.w(b.class)).I(this.appId, 4, this.scene);
+    Pair localPair = ((b)j.T(b.class)).F(this.appId, 4, this.scene);
     if (((Boolean)localPair.first).booleanValue())
     {
-      com.tencent.mm.plugin.appbrand.appcache.b.c.a locala = com.tencent.mm.plugin.appbrand.appcache.b.c.a.gXW;
-      com.tencent.mm.plugin.appbrand.appcache.b.c.a.B(((Integer)localPair.second).intValue(), 166L);
+      com.tencent.mm.plugin.appbrand.appcache.b.c.a locala = com.tencent.mm.plugin.appbrand.appcache.b.c.a.iQw;
+      com.tencent.mm.plugin.appbrand.appcache.b.c.a.D(((Integer)localPair.second).intValue(), 166L);
     }
     if (!((Boolean)localPair.first).booleanValue()) {}
     for (boolean bool = true;; bool = false)
     {
-      m.a(this.appId, this.type, 0, new JsApiGetAppConfigTask.1(this), bool);
-      AppMethodBeat.o(130428);
+      p.a(this.appId, this.type, 0, new p.c()
+      {
+        public final void Eh(String paramAnonymousString)
+        {
+          AppMethodBeat.i(45483);
+          JsApiGetAppConfigTask.this.value = paramAnonymousString;
+          JsApiGetAppConfigTask.a(JsApiGetAppConfigTask.this);
+          AppMethodBeat.o(45483);
+        }
+      }, bool);
+      AppMethodBeat.o(45486);
       return;
     }
   }
   
-  public final void atb()
+  public final void e(Parcel paramParcel)
   {
-    AppMethodBeat.i(130429);
-    if (this.hxp != null) {
-      this.hxp.run();
-    }
-    AppMethodBeat.o(130429);
-  }
-  
-  public final void f(Parcel paramParcel)
-  {
-    AppMethodBeat.i(130430);
+    AppMethodBeat.i(45488);
     this.appId = paramParcel.readString();
     this.key = paramParcel.readString();
     this.value = paramParcel.readString();
     this.type = paramParcel.readInt();
     this.scene = paramParcel.readInt();
-    AppMethodBeat.o(130430);
+    AppMethodBeat.o(45488);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(130431);
+    AppMethodBeat.i(45489);
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.key);
     paramParcel.writeString(this.value);
     paramParcel.writeInt(this.type);
     paramParcel.writeInt(this.scene);
-    AppMethodBeat.o(130431);
+    AppMethodBeat.o(45489);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiGetAppConfigTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" style="@style/q1"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/l0">
-        <com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectedRouterStateView android:id="@id/bly" style="@style/ho" />
-        <TextView android:id="@id/blz" style="@style/hn" />
-        <TextView android:id="@id/bm0" style="@style/hp" />
-    </LinearLayout>
+    <EditText android:textColor="@color/y4" android:id="@id/bme" android:paddingLeft="0.0dip" android:inputType="numberDecimal" android:imeOptions="actionNone" style="@style/hc" />
+    <TextView android:textSize="@dimen/b_" android:id="@id/bmf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="" />
 </LinearLayout>

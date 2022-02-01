@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.recordvideo.a;
 
-import a.f.b.j;
-import a.l;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,31 +9,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.b;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/recordvideo/biz/MediaGenerateMediaCallback;", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoGenerateCallback;", "()V", "onFinishBtnClick", "", "context", "Landroid/content/Context;", "extData", "Landroid/os/Bundle;", "finishController", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoFinishController;", "onMediaGenerated", "", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "plugin-recordvideo_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/recordvideo/biz/MediaGenerateMediaCallback;", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoGenerateCallback;", "()V", "onFinishBtnClick", "", "context", "Landroid/content/Context;", "extData", "Landroid/os/Bundle;", "finishController", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoFinishController;", "onMediaGenerated", "", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "plugin-recordvideo_release"})
 public final class a
   implements CaptureDataManager.b
 {
   public final void a(Context paramContext, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel, Bundle paramBundle)
   {
-    AppMethodBeat.i(150561);
-    j.q(paramContext, "context");
-    j.q(paramCaptureVideoNormalModel, "model");
-    j.q(paramBundle, "extData");
-    paramBundle = new Intent();
-    paramBundle.putExtra("KSEGMENTMEDIAINFO", (Parcelable)paramCaptureVideoNormalModel);
-    ((Activity)paramContext).setResult(-1, paramBundle);
+    AppMethodBeat.i(75342);
+    k.h(paramContext, "context");
+    k.h(paramCaptureVideoNormalModel, "model");
+    k.h(paramBundle, "extData");
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_extra_data", paramBundle);
+    localIntent.putExtra("KSEGMENTMEDIAINFO", (Parcelable)paramCaptureVideoNormalModel);
+    ((Activity)paramContext).setResult(-1, localIntent);
     ((Activity)paramContext).finish();
-    AppMethodBeat.o(150561);
+    AppMethodBeat.o(75342);
   }
   
   public final boolean a(Context paramContext, Bundle paramBundle, CaptureDataManager.a parama)
   {
-    AppMethodBeat.i(150560);
-    j.q(paramContext, "context");
-    j.q(paramBundle, "extData");
-    j.q(parama, "finishController");
-    AppMethodBeat.o(150560);
+    AppMethodBeat.i(75341);
+    k.h(paramContext, "context");
+    k.h(paramBundle, "extData");
+    k.h(parama, "finishController");
+    AppMethodBeat.o(75341);
     return false;
   }
 }

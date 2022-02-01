@@ -1,25 +1,24 @@
 package com.tencent.mm.audio.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.modelvoice.o;
+import com.tencent.mm.modelvoice.s;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av.a;
 
 final class h$2
-  implements Runnable
+  implements av.a
 {
   h$2(h paramh) {}
   
-  public final void run()
+  public final boolean onTimerExpired()
   {
-    AppMethodBeat.i(116496);
-    if (!h.k(this.ckE))
-    {
-      ab.d("MicroMsg.SceneVoice.Recorder", "after start bluetooth, timeout to directly start record");
-      h.l(this.ckE);
-      AppMethodBeat.o(116496);
-      return;
-    }
-    ab.e("MicroMsg.SceneVoice.Recorder", "mHasBeginRec is true");
-    AppMethodBeat.o(116496);
+    AppMethodBeat.i(189915);
+    s.a(h.c(this.cZx), this.cZx);
+    o.aDA().run();
+    ad.d("MicroMsg.SceneVoice.Recorder", "Start Send fileName :" + h.c(this.cZx));
+    AppMethodBeat.o(189915);
+    return false;
   }
 }
 

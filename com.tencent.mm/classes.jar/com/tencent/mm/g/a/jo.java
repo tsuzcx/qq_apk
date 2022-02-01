@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class jo
   extends b
 {
-  public jo.a cze;
+  public jo.a dnH;
   
   public jo()
   {
@@ -15,16 +15,16 @@ public final class jo
   
   private jo(byte paramByte)
   {
-    AppMethodBeat.i(70195);
-    this.cze = new jo.a();
-    this.ymq = false;
+    AppMethodBeat.i(149867);
+    this.dnH = new jo.a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70195);
+    AppMethodBeat.o(149867);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.jo
  * JD-Core Version:    0.7.0.1
  */

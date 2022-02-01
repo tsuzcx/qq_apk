@@ -5,20 +5,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static b AnD = null;
+  private static b Hih = null;
   
   public static void a(b paramb)
   {
-    AnD = paramb;
+    Hih = paramb;
   }
   
   public static void c(ImageView paramImageView, String paramString)
   {
-    AppMethodBeat.i(107321);
-    if (AnD != null) {
-      AnD.c(paramImageView, paramString);
+    AppMethodBeat.i(142751);
+    if (Hih != null) {
+      Hih.c(paramImageView, paramString);
     }
-    AppMethodBeat.o(107321);
+    AppMethodBeat.o(142751);
+  }
+  
+  public static void d(ImageView paramImageView, String paramString)
+  {
+    AppMethodBeat.i(164172);
+    if (Hih != null) {
+      Hih.d(paramImageView, paramString);
+    }
+    AppMethodBeat.o(164172);
   }
 }
 

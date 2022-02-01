@@ -6,81 +6,52 @@ import com.tencent.mm.plugin.report.a;
 public final class cy
   extends a
 {
-  public long ddO = 0L;
-  public long ddP = 0L;
-  private String ddQ = "";
-  public long ddR = 0L;
-  private String ddS = "";
-  private String ddT = "";
+  public String dGR;
+  public long dSK = 0L;
+  public String dSO;
+  public long dTa = 0L;
+  public long dTb = 0L;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(91272);
+    AppMethodBeat.i(192521);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.ddO);
+    ((StringBuffer)localObject).append(this.dGR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ddP);
+    ((StringBuffer)localObject).append(this.dSK);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ddQ);
+    ((StringBuffer)localObject).append(this.dSO);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ddR);
+    ((StringBuffer)localObject).append(this.dTa);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ddS);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ddT);
+    ((StringBuffer)localObject).append(this.dTb);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(91272);
+    ams((String)localObject);
+    AppMethodBeat.o(192521);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(91273);
+    AppMethodBeat.i(192522);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("actionType:").append(this.ddO);
+    ((StringBuffer)localObject).append("ChatName:").append(this.dGR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clientTimestamp:").append(this.ddP);
+    ((StringBuffer)localObject).append("SessionID:").append(this.dSK);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("appId:").append(this.ddQ);
+    ((StringBuffer)localObject).append("Identifier:").append(this.dSO);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("serviceType:").append(this.ddR);
+    ((StringBuffer)localObject).append("DisplayCount:").append(this.dTa);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("statBuffer:").append(this.ddS);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("switchId:").append(this.ddT);
+    ((StringBuffer)localObject).append("HideCount:").append(this.dTb);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(91273);
+    AppMethodBeat.o(192522);
     return localObject;
   }
   
   public final int getId()
   {
-    return 14688;
-  }
-  
-  public final cy ih(String paramString)
-  {
-    AppMethodBeat.i(91269);
-    this.ddQ = t("appId", paramString, true);
-    AppMethodBeat.o(91269);
-    return this;
-  }
-  
-  public final cy ii(String paramString)
-  {
-    AppMethodBeat.i(91270);
-    this.ddS = t("statBuffer", paramString, true);
-    AppMethodBeat.o(91270);
-    return this;
-  }
-  
-  public final cy ij(String paramString)
-  {
-    AppMethodBeat.i(91271);
-    this.ddT = t("switchId", paramString, true);
-    AppMethodBeat.o(91271);
-    return this;
+    return 19964;
   }
 }
 

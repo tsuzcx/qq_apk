@@ -9,28 +9,28 @@ public final class AppIdentity
   implements Parcelable
 {
   public static final Parcelable.Creator<AppIdentity> CREATOR;
-  public final int hcr;
+  public final int gXn;
   public final String username;
   
   static
   {
-    AppMethodBeat.i(129698);
-    CREATOR = new AppIdentity.1();
-    AppMethodBeat.o(129698);
+    AppMethodBeat.i(44631);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(44631);
   }
   
   protected AppIdentity(Parcel paramParcel)
   {
-    AppMethodBeat.i(129697);
+    AppMethodBeat.i(44630);
     this.username = paramParcel.readString();
-    this.hcr = paramParcel.readInt();
-    AppMethodBeat.o(129697);
+    this.gXn = paramParcel.readInt();
+    AppMethodBeat.o(44630);
   }
   
   public AppIdentity(String paramString, int paramInt)
   {
     this.username = paramString;
-    this.hcr = paramInt;
+    this.gXn = paramInt;
   }
   
   public final int describeContents()
@@ -40,15 +40,15 @@ public final class AppIdentity
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(129696);
+    AppMethodBeat.i(44629);
     paramParcel.writeString(this.username);
-    paramParcel.writeInt(this.hcr);
-    AppMethodBeat.o(129696);
+    paramParcel.writeInt(this.gXn);
+    AppMethodBeat.o(44629);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.AppIdentity
  * JD-Core Version:    0.7.0.1
  */

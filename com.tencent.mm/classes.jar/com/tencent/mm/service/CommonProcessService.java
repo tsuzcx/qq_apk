@@ -7,194 +7,195 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class CommonProcessService
   extends Service
 {
-  private static ConcurrentHashMap<String, MMService> ytB;
+  private static ConcurrentHashMap<String, MMService> EZE;
+  private b.a EZF;
   private Handler handler;
-  private b.a ytC;
   
   static
   {
-    AppMethodBeat.i(115266);
-    ytB = new ConcurrentHashMap();
-    AppMethodBeat.o(115266);
+    AppMethodBeat.i(125303);
+    EZE = new ConcurrentHashMap();
+    AppMethodBeat.o(125303);
   }
   
   public CommonProcessService()
   {
-    AppMethodBeat.i(115258);
-    this.ytC = new b.a()
+    AppMethodBeat.i(125295);
+    this.EZF = new b.a()
     {
       public final void a(final Intent paramAnonymousIntent, final a paramAnonymousa)
       {
-        AppMethodBeat.i(115254);
-        e.qrI.idkeyStat(963L, 38L, 1L, false);
-        if (paramAnonymousIntent != null)
-        {
+        AppMethodBeat.i(125291);
+        if (paramAnonymousIntent != null) {
           CommonProcessService.a(CommonProcessService.this).post(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(115250);
+              AppMethodBeat.i(125287);
               paramAnonymousIntent.setExtrasClassLoader(CommonProcessService.class.getClassLoader());
               String str = paramAnonymousIntent.getStringExtra("class_name");
               try
               {
-                ab.i(CommonProcessService.this.getTag(), "bindService() class_name = %s", new Object[] { str });
-                MMService localMMService = (MMService)CommonProcessService.aol().get(str);
+                MMService localMMService = (MMService)CommonProcessService.aGw().get(str);
                 Object localObject = localMMService;
                 if (localMMService == null)
                 {
                   localObject = (MMService)Class.forName(str).newInstance();
-                  ((MMService)localObject).ytB = CommonProcessService.aol();
-                  ((MMService)localObject).ytK = CommonProcessService.this;
-                  CommonProcessService.aol().put(str, localObject);
+                  ((MMService)localObject).EZE = CommonProcessService.aGw();
+                  ((MMService)localObject).EZM = CommonProcessService.this;
+                  CommonProcessService.aGw().put(str, localObject);
                 }
-                e.qrI.idkeyStat(963L, 39L, 1L, false);
-                localObject = ((MMService)localObject).q(paramAnonymousIntent, "bind");
+                localObject = ((MMService)localObject).s(paramAnonymousIntent, "bind");
                 try
                 {
                   if (paramAnonymousa != null) {
-                    paramAnonymousa.L((IBinder)localObject);
+                    paramAnonymousa.N((IBinder)localObject);
                   }
-                  AppMethodBeat.o(115250);
+                  e.vIY.idkeyStat(963L, 39L, 1L, false);
+                  ad.i(CommonProcessService.this.getTag(), "bindService() class_name = %s", new Object[] { str });
+                  AppMethodBeat.o(125287);
                   return;
                 }
                 catch (RemoteException localRemoteException)
                 {
-                  ab.i(CommonProcessService.this.getTag(), "bindService() immserviceConnectionStubAIDL RemoteException: %s", new Object[] { localRemoteException.getMessage() });
-                  AppMethodBeat.o(115250);
-                  return;
+                  for (;;)
+                  {
+                    ad.i(CommonProcessService.this.getTag(), "bindService() immserviceConnectionStubAIDL RemoteException: %s", new Object[] { localRemoteException.getMessage() });
+                  }
                 }
                 return;
               }
               catch (Exception localException)
               {
-                ab.i(CommonProcessService.this.getTag(), "bindService()  Class.forName(%s) Exception: %s", new Object[] { str, localException.getMessage() });
-                AppMethodBeat.o(115250);
+                ad.i(CommonProcessService.this.getTag(), "bindService()  Class.forName(%s) Exception: %s", new Object[] { str, localException.getMessage() });
+                AppMethodBeat.o(125287);
               }
             }
           });
-          AppMethodBeat.o(115254);
-          return;
         }
-        ab.i(CommonProcessService.this.getTag(), "bindService() intent == null");
-        AppMethodBeat.o(115254);
+        for (;;)
+        {
+          e.vIY.idkeyStat(963L, 38L, 1L, false);
+          AppMethodBeat.o(125291);
+          return;
+          ad.i(CommonProcessService.this.getTag(), "bindService() intent == null");
+        }
       }
       
-      public final void aG(final Intent paramAnonymousIntent)
+      public final void aY(final Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(115256);
-        e.qrI.idkeyStat(963L, 7L, 1L, false);
-        if (paramAnonymousIntent != null)
-        {
+        AppMethodBeat.i(125293);
+        if (paramAnonymousIntent != null) {
           CommonProcessService.a(CommonProcessService.this).post(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(115252);
+              AppMethodBeat.i(125289);
               paramAnonymousIntent.setExtrasClassLoader(CommonProcessService.class.getClassLoader());
               String str = paramAnonymousIntent.getStringExtra("class_name");
               try
               {
-                ab.i(CommonProcessService.this.getTag(), "startService() class_name = %s", new Object[] { str });
-                MMService localMMService2 = (MMService)CommonProcessService.aol().get(str);
+                MMService localMMService2 = (MMService)CommonProcessService.aGw().get(str);
                 MMService localMMService1 = localMMService2;
                 if (localMMService2 == null)
                 {
                   localMMService1 = (MMService)Class.forName(str).newInstance();
-                  localMMService1.ytB = CommonProcessService.aol();
-                  localMMService1.ytK = CommonProcessService.this;
-                  CommonProcessService.aol().put(str, localMMService1);
+                  localMMService1.EZE = CommonProcessService.aGw();
+                  localMMService1.EZM = CommonProcessService.this;
+                  CommonProcessService.aGw().put(str, localMMService1);
                 }
-                e.qrI.idkeyStat(963L, 8L, 1L, false);
-                localMMService1.q(paramAnonymousIntent, "start");
-                AppMethodBeat.o(115252);
+                localMMService1.s(paramAnonymousIntent, "start");
+                e.vIY.idkeyStat(963L, 8L, 1L, false);
+                ad.i(CommonProcessService.this.getTag(), "startService() class_name = %s", new Object[] { str });
+                AppMethodBeat.o(125289);
                 return;
               }
               catch (Exception localException)
               {
-                ab.i(CommonProcessService.this.getTag(), "startService()  Class.forName(%s) Exception: %s", new Object[] { str, localException.getMessage() });
-                AppMethodBeat.o(115252);
+                ad.i(CommonProcessService.this.getTag(), "startService()  Class.forName(%s) Exception: %s", new Object[] { str, localException.getMessage() });
+                AppMethodBeat.o(125289);
               }
             }
           });
-          AppMethodBeat.o(115256);
-          return;
         }
-        ab.i(CommonProcessService.this.getTag(), "startService() intent == null");
-        AppMethodBeat.o(115256);
+        for (;;)
+        {
+          e.vIY.idkeyStat(963L, 7L, 1L, false);
+          AppMethodBeat.o(125293);
+          return;
+          ad.i(CommonProcessService.this.getTag(), "startService() intent == null");
+        }
       }
       
-      public final void aH(final Intent paramAnonymousIntent)
+      public final void aZ(final Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(115257);
-        e.qrI.idkeyStat(963L, 23L, 1L, false);
-        if (paramAnonymousIntent != null)
-        {
+        AppMethodBeat.i(125294);
+        if (paramAnonymousIntent != null) {
           CommonProcessService.a(CommonProcessService.this).post(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(115253);
+              AppMethodBeat.i(125290);
               paramAnonymousIntent.setExtrasClassLoader(CommonProcessService.class.getClassLoader());
-              Object localObject = paramAnonymousIntent.getStringExtra("class_name");
-              ab.i(CommonProcessService.this.getTag(), "stopService() class_name = %s", new Object[] { localObject });
-              localObject = (MMService)CommonProcessService.aol().get(localObject);
-              if (localObject == null)
+              String str = paramAnonymousIntent.getStringExtra("class_name");
+              MMService localMMService = (MMService)CommonProcessService.aGw().get(str);
+              if (localMMService != null)
               {
-                AppMethodBeat.o(115253);
-                return;
+                localMMService.s(paramAnonymousIntent, "stop");
+                e.vIY.idkeyStat(963L, 24L, 1L, false);
               }
-              e.qrI.idkeyStat(963L, 24L, 1L, false);
-              ((MMService)localObject).q(paramAnonymousIntent, "stop");
-              AppMethodBeat.o(115253);
+              ad.i(CommonProcessService.this.getTag(), "stopService() class_name = %s", new Object[] { str });
+              AppMethodBeat.o(125290);
             }
           });
-          AppMethodBeat.o(115257);
-          return;
         }
-        ab.i(CommonProcessService.this.getTag(), "stopService() intent == null");
-        AppMethodBeat.o(115257);
+        for (;;)
+        {
+          e.vIY.idkeyStat(963L, 23L, 1L, false);
+          AppMethodBeat.o(125294);
+          return;
+          ad.i(CommonProcessService.this.getTag(), "stopService() intent == null");
+        }
       }
       
-      public final void aM(final Intent paramAnonymousIntent)
+      public final void bf(final Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(115255);
-        e.qrI.idkeyStat(963L, 53L, 1L, false);
-        if (paramAnonymousIntent != null)
-        {
+        AppMethodBeat.i(125292);
+        if (paramAnonymousIntent != null) {
           CommonProcessService.a(CommonProcessService.this).post(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(115251);
+              AppMethodBeat.i(125288);
               paramAnonymousIntent.setExtrasClassLoader(CommonProcessService.class.getClassLoader());
-              Object localObject = paramAnonymousIntent.getStringExtra("class_name");
-              ab.i(CommonProcessService.this.getTag(), "unbindService() class_name = %s", new Object[] { localObject });
-              localObject = (MMService)CommonProcessService.aol().get(localObject);
-              if (localObject == null)
+              String str = paramAnonymousIntent.getStringExtra("class_name");
+              MMService localMMService = (MMService)CommonProcessService.aGw().get(str);
+              if (localMMService != null)
               {
-                AppMethodBeat.o(115251);
-                return;
+                localMMService.s(paramAnonymousIntent, "unbind");
+                e.vIY.idkeyStat(963L, 54L, 1L, false);
               }
-              e.qrI.idkeyStat(963L, 54L, 1L, false);
-              ((MMService)localObject).q(paramAnonymousIntent, "unbind");
-              AppMethodBeat.o(115251);
+              ad.i(CommonProcessService.this.getTag(), "unbindService() class_name = %s", new Object[] { str });
+              AppMethodBeat.o(125288);
             }
           });
-          AppMethodBeat.o(115255);
-          return;
         }
-        ab.i(CommonProcessService.this.getTag(), "unbindService() intent == null");
-        AppMethodBeat.o(115255);
+        for (;;)
+        {
+          e.vIY.idkeyStat(963L, 53L, 1L, false);
+          AppMethodBeat.o(125292);
+          return;
+          ad.i(CommonProcessService.this.getTag(), "unbindService() intent == null");
+        }
       }
     };
-    AppMethodBeat.o(115258);
+    AppMethodBeat.o(125295);
   }
   
   public String getTag()
@@ -204,66 +205,66 @@ public class CommonProcessService
   
   public IBinder onBind(Intent paramIntent)
   {
-    AppMethodBeat.i(115265);
-    ab.i(getTag(), "onBind()");
-    paramIntent = this.ytC;
-    AppMethodBeat.o(115265);
+    AppMethodBeat.i(125302);
+    ad.i(getTag(), "onBind()");
+    paramIntent = this.EZF;
+    AppMethodBeat.o(125302);
     return paramIntent;
   }
   
   public void onCreate()
   {
-    AppMethodBeat.i(115259);
-    ab.i(getTag(), "onCreate()");
+    AppMethodBeat.i(125296);
+    ad.i(getTag(), "onCreate()");
     this.handler = new Handler();
     super.onCreate();
-    AppMethodBeat.o(115259);
+    AppMethodBeat.o(125296);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(115262);
-    ab.i(getTag(), "onDestroy()");
+    AppMethodBeat.i(125299);
+    ad.i(getTag(), "onDestroy()");
     super.onDestroy();
-    AppMethodBeat.o(115262);
+    AppMethodBeat.o(125299);
   }
   
   public void onRebind(Intent paramIntent)
   {
-    AppMethodBeat.i(115264);
-    ab.i(getTag(), "onRebind()");
+    AppMethodBeat.i(125301);
+    ad.i(getTag(), "onRebind()");
     super.onRebind(paramIntent);
-    AppMethodBeat.o(115264);
+    AppMethodBeat.o(125301);
   }
   
   public void onStart(Intent paramIntent, int paramInt)
   {
-    AppMethodBeat.i(115260);
-    ab.i(getTag(), "onStart()");
+    AppMethodBeat.i(125297);
+    ad.i(getTag(), "onStart()");
     super.onStart(paramIntent, paramInt);
-    AppMethodBeat.o(115260);
+    AppMethodBeat.o(125297);
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(115261);
-    ab.i(getTag(), "onStartCommand()");
-    AppMethodBeat.o(115261);
+    AppMethodBeat.i(125298);
+    ad.i(getTag(), "onStartCommand()");
+    AppMethodBeat.o(125298);
     return 1;
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
-    AppMethodBeat.i(115263);
-    ab.i(getTag(), "onUnbind()");
+    AppMethodBeat.i(125300);
+    ad.i(getTag(), "onUnbind()");
     boolean bool = super.onUnbind(paramIntent);
-    AppMethodBeat.o(115263);
+    AppMethodBeat.o(125300);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.service.CommonProcessService
  * JD-Core Version:    0.7.0.1
  */

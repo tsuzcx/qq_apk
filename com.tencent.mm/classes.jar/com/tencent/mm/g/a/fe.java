@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class fe
   extends b
 {
-  public fe.a csN;
-  public fe.b csO;
+  public a dhE;
   
   public fe()
   {
@@ -16,17 +15,21 @@ public final class fe
   
   private fe(byte paramByte)
   {
-    AppMethodBeat.i(15769);
-    this.csN = new fe.a();
-    this.csO = new fe.b();
-    this.ymq = false;
+    AppMethodBeat.i(116014);
+    this.dhE = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15769);
+    AppMethodBeat.o(116014);
+  }
+  
+  public static final class a
+  {
+    public String dfM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.fe
  * JD-Core Version:    0.7.0.1
  */

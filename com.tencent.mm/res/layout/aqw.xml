@@ -1,29 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MMTextureView android:layout_gravity="center" android:id="@id/e_k" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <FrameLayout android:id="@id/e_l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/e_o" android:background="@drawable/ao7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <View android:id="@id/e_m" android:background="#bb000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:layout_gravity="center" android:id="@id/e_n" android:visibility="gone" android:text="@string/e24" style="@style/r_" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/e_u" android:background="@drawable/aj2" android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <Button android:id="@id/e_v" android:focusable="true" android:visibility="visible" android:text="@string/gg" style="@style/ns" />
-            <View android:layout_width="1.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/nh" android:textColor="@android:color/black" android:id="@id/e_w" android:background="@drawable/zb" android:padding="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" />
-            <View android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0" />
-            <com.tencent.mm.plugin.scanner.ui.SelectScanModePanel android:id="@id/e_q" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/e_r" android:background="@color/dv" android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <LinearLayout android:id="@id/e_x" android:background="@null" android:visibility="invisible" android:clickable="true" style="@style/ox">
-                <TextView android:textColor="@color/a8k" android:gravity="center" android:id="@id/e_y" android:background="@drawable/w5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            </LinearLayout>
-            <Button android:id="@id/e_s" android:visibility="gone" android:layout_margin="2.0dip" android:text="@string/dk_" style="@style/ns" />
-            <View android:layout_width="1.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
-            <ImageView android:id="@id/e_t" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:src="@drawable/aix" />
-        </LinearLayout>
-    </LinearLayout>
-    <Button android:id="@id/e_z" android:background="@drawable/b0q" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="33.0dip" android:layout_marginTop="18.0dip" />
-</FrameLayout>
+<ImageView android:layout_gravity="center|right" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:src="@raw/contact_info_qzone_icon"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

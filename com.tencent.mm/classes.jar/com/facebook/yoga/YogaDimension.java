@@ -8,11 +8,11 @@ public enum YogaDimension
   
   static
   {
-    AppMethodBeat.i(144044);
+    AppMethodBeat.i(18067);
     WIDTH = new YogaDimension("WIDTH", 0, 0);
     HEIGHT = new YogaDimension("HEIGHT", 1, 1);
     $VALUES = new YogaDimension[] { WIDTH, HEIGHT };
-    AppMethodBeat.o(144044);
+    AppMethodBeat.o(18067);
   }
   
   private YogaDimension(int paramInt)
@@ -22,20 +22,20 @@ public enum YogaDimension
   
   public static YogaDimension fromInt(int paramInt)
   {
-    AppMethodBeat.i(144043);
+    AppMethodBeat.i(18066);
     switch (paramInt)
     {
     default: 
       localObject = new IllegalArgumentException("Unknown enum value: ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(144043);
+      AppMethodBeat.o(18066);
       throw ((Throwable)localObject);
     case 0: 
       localObject = WIDTH;
-      AppMethodBeat.o(144043);
+      AppMethodBeat.o(18066);
       return localObject;
     }
     Object localObject = HEIGHT;
-    AppMethodBeat.o(144043);
+    AppMethodBeat.o(18066);
     return localObject;
   }
   
@@ -46,7 +46,7 @@ public enum YogaDimension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.facebook.yoga.YogaDimension
  * JD-Core Version:    0.7.0.1
  */

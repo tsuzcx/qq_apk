@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ur
   extends b
 {
-  public ur.a cLg;
+  public a dAm;
   
   public ur()
   {
@@ -15,16 +15,24 @@ public final class ur
   
   private ur(byte paramByte)
   {
-    AppMethodBeat.i(15811);
-    this.cLg = new ur.a();
-    this.ymq = false;
+    AppMethodBeat.i(116050);
+    this.dAm = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15811);
+    AppMethodBeat.o(116050);
+  }
+  
+  public static final class a
+  {
+    public String dAn;
+    public long dAo;
+    public String dAp;
+    public int diR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.ur
  * JD-Core Version:    0.7.0.1
  */

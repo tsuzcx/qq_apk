@@ -15,10 +15,10 @@ import org.xmlpull.v1.XmlPullParser;
 
 public final class a
 {
-  private static Method AO;
-  private static boolean AP;
-  private static Method AQ;
-  private static boolean AR;
+  private static Method Hj;
+  private static boolean Hk;
+  private static Method Hl;
+  private static boolean Hm;
   
   public static void a(Drawable paramDrawable, float paramFloat1, float paramFloat2)
   {
@@ -91,44 +91,28 @@ public final class a
     }
   }
   
-  public static boolean a(Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {
-      return paramDrawable.isAutoMirrored();
-    }
-    return false;
-  }
-  
-  public static int b(Drawable paramDrawable)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {
-      return paramDrawable.getAlpha();
-    }
-    return 0;
-  }
-  
   public static boolean b(Drawable paramDrawable, int paramInt)
   {
     if (Build.VERSION.SDK_INT >= 23) {
       return paramDrawable.setLayoutDirection(paramInt);
     }
-    if ((Build.VERSION.SDK_INT < 17) || (!AP)) {}
+    if ((Build.VERSION.SDK_INT < 17) || (!Hk)) {}
     try
     {
       Method localMethod = Drawable.class.getDeclaredMethod("setLayoutDirection", new Class[] { Integer.TYPE });
-      AO = localMethod;
+      Hj = localMethod;
       localMethod.setAccessible(true);
       label55:
-      AP = true;
-      if (AO != null) {
+      Hk = true;
+      if (Hj != null) {
         try
         {
-          AO.invoke(paramDrawable, new Object[] { Integer.valueOf(paramInt) });
+          Hj.invoke(paramDrawable, new Object[] { Integer.valueOf(paramInt) });
           return true;
         }
         catch (Exception paramDrawable)
         {
-          AO = null;
+          Hj = null;
         }
       }
       return false;
@@ -140,7 +124,23 @@ public final class a
     }
   }
   
-  public static boolean c(Drawable paramDrawable)
+  public static boolean e(Drawable paramDrawable)
+  {
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramDrawable.isAutoMirrored();
+    }
+    return false;
+  }
+  
+  public static int f(Drawable paramDrawable)
+  {
+    if (Build.VERSION.SDK_INT >= 19) {
+      return paramDrawable.getAlpha();
+    }
+    return 0;
+  }
+  
+  public static boolean g(Drawable paramDrawable)
   {
     if (Build.VERSION.SDK_INT >= 21) {
       return paramDrawable.canApplyTheme();
@@ -148,7 +148,7 @@ public final class a
     return false;
   }
   
-  public static void d(Drawable paramDrawable)
+  public static void h(Drawable paramDrawable)
   {
     int i;
     int j;
@@ -161,7 +161,7 @@ public final class a
       }
       else if ((paramDrawable instanceof f))
       {
-        paramDrawable = ((f)paramDrawable).cU();
+        paramDrawable = ((f)paramDrawable).dZ();
       }
       else
       {
@@ -180,7 +180,7 @@ public final class a
     {
       Drawable localDrawable = paramDrawable.getChild(i);
       if (localDrawable != null) {
-        d(localDrawable);
+        h(localDrawable);
       }
       i += 1;
       continue;
@@ -188,7 +188,7 @@ public final class a
     }
   }
   
-  public static Drawable e(Drawable paramDrawable)
+  public static Drawable i(Drawable paramDrawable)
   {
     if (Build.VERSION.SDK_INT >= 23) {}
     do
@@ -205,28 +205,37 @@ public final class a
     return new g(paramDrawable);
   }
   
-  public static int f(Drawable paramDrawable)
+  public static <T extends Drawable> T j(Drawable paramDrawable)
+  {
+    Drawable localDrawable = paramDrawable;
+    if ((paramDrawable instanceof f)) {
+      localDrawable = ((f)paramDrawable).dZ();
+    }
+    return localDrawable;
+  }
+  
+  public static int k(Drawable paramDrawable)
   {
     if (Build.VERSION.SDK_INT >= 23) {
       return paramDrawable.getLayoutDirection();
     }
-    if ((Build.VERSION.SDK_INT < 17) || (!AR)) {}
+    if ((Build.VERSION.SDK_INT < 17) || (!Hm)) {}
     try
     {
       Method localMethod = Drawable.class.getDeclaredMethod("getLayoutDirection", new Class[0]);
-      AQ = localMethod;
+      Hl = localMethod;
       localMethod.setAccessible(true);
       label48:
-      AR = true;
-      if (AQ != null) {
+      Hm = true;
+      if (Hl != null) {
         try
         {
-          int i = ((Integer)AQ.invoke(paramDrawable, new Object[0])).intValue();
+          int i = ((Integer)Hl.invoke(paramDrawable, new Object[0])).intValue();
           return i;
         }
         catch (Exception paramDrawable)
         {
-          AQ = null;
+          Hl = null;
         }
       }
       return 0;

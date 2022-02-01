@@ -1,42 +1,47 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.model.app.ai;
+import com.tencent.mm.pluginsdk.model.app.am;
 
 final class JsApiLaunchApplicationDirectly$a
-  implements ai
+  implements am
 {
-  volatile boolean cyH;
-  volatile boolean ftW;
-  JsApiLaunchApplicationDirectly.a.a hyM;
-  volatile boolean hyp;
-  volatile boolean hyq;
+  volatile boolean doI;
+  volatile boolean gWb;
+  volatile boolean jxM;
+  volatile boolean jxN;
+  a jyj;
   
-  JsApiLaunchApplicationDirectly$a(JsApiLaunchApplicationDirectly.a.a parama)
+  JsApiLaunchApplicationDirectly$a(a parama)
   {
-    this.hyM = parama;
+    this.jyj = parama;
   }
   
-  public final void dZ(boolean paramBoolean)
+  final void fN(boolean paramBoolean)
   {
-    AppMethodBeat.i(130476);
-    this.ftW = true;
-    this.hyp = paramBoolean;
-    if ((this.hyq) && (this.hyM != null)) {
-      this.hyM.r(this.cyH, paramBoolean);
+    AppMethodBeat.i(45536);
+    this.doI = paramBoolean;
+    this.jxN = true;
+    if ((this.gWb) && (this.jyj != null)) {
+      this.jyj.t(paramBoolean, this.jxM);
     }
-    AppMethodBeat.o(130476);
+    AppMethodBeat.o(45536);
   }
   
-  final void ea(boolean paramBoolean)
+  public final void u(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(130477);
-    this.cyH = paramBoolean;
-    this.hyq = true;
-    if ((this.ftW) && (this.hyM != null)) {
-      this.hyM.r(paramBoolean, this.hyp);
+    AppMethodBeat.i(195804);
+    this.gWb = true;
+    this.jxM = paramBoolean1;
+    if ((this.jxN) && (this.jyj != null)) {
+      this.jyj.t(this.doI, paramBoolean1);
     }
-    AppMethodBeat.o(130477);
+    AppMethodBeat.o(195804);
+  }
+  
+  static abstract interface a
+  {
+    public abstract void t(boolean paramBoolean1, boolean paramBoolean2);
   }
 }
 

@@ -1,6 +1,7 @@
 package android.support.v4.app;
 
 import android.app.AppOpsManager;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -15,36 +16,36 @@ import java.util.Set;
 
 public final class v
 {
+  private static final Object Ft = new Object();
+  private static String Fu;
+  private static Set<String> Fv = new HashSet();
+  private static v.d Fx;
   private static final Object sLock = new Object();
-  private static final Object yY = new Object();
-  private static String yZ;
-  private static Set<String> za = new HashSet();
-  private static v.d zc;
+  public final NotificationManager Fw;
   public final Context mContext;
-  public final NotificationManager zb;
   
   private v(Context paramContext)
   {
     this.mContext = paramContext;
-    this.zb = ((NotificationManager)this.mContext.getSystemService("notification"));
+    this.Fw = ((NotificationManager)this.mContext.getSystemService("notification"));
   }
   
-  public static v K(Context paramContext)
+  public static v M(Context paramContext)
   {
     return new v(paramContext);
   }
   
-  public static Set<String> L(Context paramContext)
+  public static Set<String> N(Context paramContext)
   {
     Object localObject1 = Settings.Secure.getString(paramContext.getContentResolver(), "enabled_notification_listeners");
-    paramContext = yY;
+    paramContext = Ft;
     if (localObject1 != null) {}
     for (;;)
     {
       int i;
       try
       {
-        if (!((String)localObject1).equals(yZ))
+        if (!((String)localObject1).equals(Fu))
         {
           String[] arrayOfString = ((String)localObject1).split(":", -1);
           HashSet localHashSet = new HashSet(arrayOfString.length);
@@ -59,13 +60,13 @@ public final class v
           }
           else
           {
-            za = localHashSet;
-            yZ = (String)localObject1;
+            Fv = localHashSet;
+            Fu = (String)localObject1;
           }
         }
         else
         {
-          localObject1 = za;
+          localObject1 = Fv;
           return localObject1;
         }
       }
@@ -74,14 +75,14 @@ public final class v
     }
   }
   
-  public final void a(v.e parame)
+  public final void a(e parame)
   {
     synchronized (sLock)
     {
-      if (zc == null) {
-        zc = new v.d(this.mContext.getApplicationContext());
+      if (Fx == null) {
+        Fx = new v.d(this.mContext.getApplicationContext());
       }
-      zc.b(parame);
+      Fx.b(parame);
       return;
     }
   }
@@ -89,7 +90,7 @@ public final class v
   public final boolean areNotificationsEnabled()
   {
     if (Build.VERSION.SDK_INT >= 24) {
-      return this.zb.areNotificationsEnabled();
+      return this.Fw.areNotificationsEnabled();
     }
     AppOpsManager localAppOpsManager;
     Object localObject;
@@ -138,23 +139,98 @@ public final class v
   
   public final void cancel(int paramInt)
   {
-    this.zb.cancel(null, paramInt);
+    this.Fw.cancel(null, paramInt);
     if (Build.VERSION.SDK_INT <= 19) {
-      a(new v.a(this.mContext.getPackageName(), paramInt));
+      a(new a(this.mContext.getPackageName(), paramInt));
     }
   }
   
   public final int getImportance()
   {
     if (Build.VERSION.SDK_INT >= 24) {
-      return this.zb.getImportance();
+      return this.Fw.getImportance();
     }
     return -1000;
+  }
+  
+  static final class a
+    implements v.e
+  {
+    final boolean Fy;
+    final int id;
+    final String packageName;
+    final String tag;
+    
+    a(String paramString, int paramInt)
+    {
+      this.packageName = paramString;
+      this.id = paramInt;
+      this.tag = null;
+      this.Fy = false;
+    }
+    
+    public final void a(o paramo)
+    {
+      if (this.Fy)
+      {
+        paramo.s(this.packageName);
+        return;
+      }
+      paramo.b(this.packageName, this.id, this.tag);
+    }
+    
+    public final String toString()
+    {
+      StringBuilder localStringBuilder = new StringBuilder("CancelTask[");
+      localStringBuilder.append("packageName:").append(this.packageName);
+      localStringBuilder.append(", id:").append(this.id);
+      localStringBuilder.append(", tag:").append(this.tag);
+      localStringBuilder.append(", all:").append(this.Fy);
+      localStringBuilder.append("]");
+      return localStringBuilder.toString();
+    }
+  }
+  
+  public static final class b
+    implements v.e
+  {
+    final Notification Fz;
+    final int id;
+    final String packageName;
+    final String tag;
+    
+    public b(String paramString, int paramInt, Notification paramNotification)
+    {
+      this.packageName = paramString;
+      this.id = paramInt;
+      this.tag = null;
+      this.Fz = paramNotification;
+    }
+    
+    public final void a(o paramo)
+    {
+      paramo.a(this.packageName, this.id, this.tag, this.Fz);
+    }
+    
+    public final String toString()
+    {
+      StringBuilder localStringBuilder = new StringBuilder("NotifyTask[");
+      localStringBuilder.append("packageName:").append(this.packageName);
+      localStringBuilder.append(", id:").append(this.id);
+      localStringBuilder.append(", tag:").append(this.tag);
+      localStringBuilder.append("]");
+      return localStringBuilder.toString();
+    }
+  }
+  
+  static abstract interface e
+  {
+    public abstract void a(o paramo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.v4.app.v
  * JD-Core Version:    0.7.0.1
  */

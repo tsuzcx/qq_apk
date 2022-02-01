@@ -11,9 +11,9 @@ public final class CommonApiImpl
 {
   public final PendingResult<Status> clearDefaultAccount(GoogleApiClient paramGoogleApiClient)
   {
-    AppMethodBeat.i(61393);
+    AppMethodBeat.i(11885);
     paramGoogleApiClient = paramGoogleApiClient.execute(new zzb(this, paramGoogleApiClient));
-    AppMethodBeat.o(61393);
+    AppMethodBeat.o(11885);
     return paramGoogleApiClient;
   }
   
@@ -29,9 +29,9 @@ public final class CommonApiImpl
     
     public final void onDefaultAccountCleared(int paramInt)
     {
-      AppMethodBeat.i(61392);
+      AppMethodBeat.i(11884);
       this.mResultHolder.setResult(new Status(paramInt));
-      AppMethodBeat.o(61392);
+      AppMethodBeat.o(11884);
     }
   }
 }

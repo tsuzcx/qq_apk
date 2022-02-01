@@ -9,7 +9,7 @@ final class g$4
   public final void g(int paramInt, Object... paramVarArgs)
   {
     // Byte code:
-    //   0: sipush 19254
+    //   0: sipush 23322
     //   3: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: iload_1
     //   7: bipush 14
@@ -24,7 +24,7 @@ final class g$4
     //   23: aaload
     //   24: instanceof 30
     //   27: ifne +10 -> 37
-    //   30: sipush 19254
+    //   30: sipush 23322
     //   33: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   36: return
     //   37: aload_2
@@ -59,8 +59,8 @@ final class g$4
     //   95: ifeq +17 -> 112
     //   98: ldc 65
     //   100: ldc 67
-    //   102: invokestatic 73	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   105: sipush 19254
+    //   102: invokestatic 73	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   105: sipush 23322
     //   108: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   111: return
     //   112: ldc 65
@@ -74,7 +74,7 @@ final class g$4
     //   126: invokevirtual 79	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   129: invokevirtual 85	org/json/JSONArray:toString	()Ljava/lang/String;
     //   132: aastore
-    //   133: invokestatic 88	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   133: invokestatic 88	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   136: aload_2
     //   137: astore 6
     //   139: aload 5
@@ -93,10 +93,10 @@ final class g$4
     //   163: iconst_1
     //   164: aload 4
     //   166: aastore
-    //   167: invokestatic 92	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   167: invokestatic 92	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   170: aload_0
-    //   171: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:lEP	Lcom/tencent/mm/plugin/exdevice/model/g;
-    //   174: getfield 96	com/tencent/mm/plugin/exdevice/model/g:lEA	Ljava/util/List;
+    //   171: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
+    //   174: getfield 96	com/tencent/mm/plugin/exdevice/model/g:oVm	Ljava/util/List;
     //   177: invokeinterface 102 1 0
     //   182: istore_3
     //   183: iconst_0
@@ -105,67 +105,67 @@ final class g$4
     //   186: iload_3
     //   187: if_icmpge +205 -> 392
     //   190: aload_0
-    //   191: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:lEP	Lcom/tencent/mm/plugin/exdevice/model/g;
-    //   194: getfield 96	com/tencent/mm/plugin/exdevice/model/g:lEA	Ljava/util/List;
+    //   191: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
+    //   194: getfield 96	com/tencent/mm/plugin/exdevice/model/g:oVm	Ljava/util/List;
     //   197: iload_1
     //   198: invokeinterface 106 2 0
-    //   203: checkcast 108	com/tencent/mm/plugin/exdevice/h/b
-    //   206: getfield 112	com/tencent/mm/plugin/exdevice/h/b:field_deviceID	Ljava/lang/String;
+    //   203: checkcast 108	com/tencent/mm/plugin/exdevice/i/b
+    //   206: getfield 112	com/tencent/mm/plugin/exdevice/i/b:field_deviceID	Ljava/lang/String;
     //   209: aload 4
     //   211: invokevirtual 116	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   214: ifeq +139 -> 353
     //   217: aload_0
-    //   218: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:lEP	Lcom/tencent/mm/plugin/exdevice/model/g;
-    //   221: getfield 96	com/tencent/mm/plugin/exdevice/model/g:lEA	Ljava/util/List;
+    //   218: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
+    //   221: getfield 96	com/tencent/mm/plugin/exdevice/model/g:oVm	Ljava/util/List;
     //   224: iload_1
     //   225: invokeinterface 106 2 0
-    //   230: checkcast 108	com/tencent/mm/plugin/exdevice/h/b
-    //   233: getfield 119	com/tencent/mm/plugin/exdevice/h/b:field_deviceType	Ljava/lang/String;
+    //   230: checkcast 108	com/tencent/mm/plugin/exdevice/i/b
+    //   233: getfield 119	com/tencent/mm/plugin/exdevice/i/b:field_deviceType	Ljava/lang/String;
     //   236: aload 5
     //   238: invokevirtual 116	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   241: ifeq +112 -> 353
     //   244: aload_0
-    //   245: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:lEP	Lcom/tencent/mm/plugin/exdevice/model/g;
-    //   248: getfield 96	com/tencent/mm/plugin/exdevice/model/g:lEA	Ljava/util/List;
+    //   245: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
+    //   248: getfield 96	com/tencent/mm/plugin/exdevice/model/g:oVm	Ljava/util/List;
     //   251: iload_1
     //   252: invokeinterface 106 2 0
-    //   257: checkcast 108	com/tencent/mm/plugin/exdevice/h/b
-    //   260: getfield 124	com/tencent/mm/g/c/ch:dCP	Ljava/lang/String;
+    //   257: checkcast 108	com/tencent/mm/plugin/exdevice/i/b
+    //   260: getfield 124	com/tencent/mm/g/c/cw:eKt	Ljava/lang/String;
     //   263: ldc 126
     //   265: invokevirtual 130	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   268: ifeq +85 -> 353
     //   271: aload_0
-    //   272: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:lEP	Lcom/tencent/mm/plugin/exdevice/model/g;
-    //   275: getfield 133	com/tencent/mm/plugin/exdevice/model/g:lEB	Ljava/util/List;
+    //   272: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
+    //   275: getfield 133	com/tencent/mm/plugin/exdevice/model/g:oVn	Ljava/util/List;
     //   278: aload_0
-    //   279: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:lEP	Lcom/tencent/mm/plugin/exdevice/model/g;
-    //   282: getfield 96	com/tencent/mm/plugin/exdevice/model/g:lEA	Ljava/util/List;
+    //   279: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
+    //   282: getfield 96	com/tencent/mm/plugin/exdevice/model/g:oVm	Ljava/util/List;
     //   285: iload_1
     //   286: invokeinterface 106 2 0
     //   291: invokeinterface 135 2 0
     //   296: ifne +57 -> 353
     //   299: aload_0
-    //   300: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:lEP	Lcom/tencent/mm/plugin/exdevice/model/g;
-    //   303: getfield 139	com/tencent/mm/plugin/exdevice/model/g:lEC	Ljava/util/HashMap;
+    //   300: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
+    //   303: getfield 139	com/tencent/mm/plugin/exdevice/model/g:oVo	Ljava/util/HashMap;
     //   306: aload 4
     //   308: aload 6
     //   310: invokevirtual 140	org/json/JSONObject:toString	()Ljava/lang/String;
     //   313: invokevirtual 146	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   316: pop
     //   317: aload_0
-    //   318: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:lEP	Lcom/tencent/mm/plugin/exdevice/model/g;
-    //   321: getfield 133	com/tencent/mm/plugin/exdevice/model/g:lEB	Ljava/util/List;
+    //   318: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
+    //   321: getfield 133	com/tencent/mm/plugin/exdevice/model/g:oVn	Ljava/util/List;
     //   324: aload_0
-    //   325: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:lEP	Lcom/tencent/mm/plugin/exdevice/model/g;
-    //   328: getfield 96	com/tencent/mm/plugin/exdevice/model/g:lEA	Ljava/util/List;
+    //   325: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
+    //   328: getfield 96	com/tencent/mm/plugin/exdevice/model/g:oVm	Ljava/util/List;
     //   331: iload_1
     //   332: invokeinterface 106 2 0
     //   337: invokeinterface 149 2 0
     //   342: pop
     //   343: aload_0
-    //   344: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:lEP	Lcom/tencent/mm/plugin/exdevice/model/g;
-    //   347: getfield 133	com/tencent/mm/plugin/exdevice/model/g:lEB	Ljava/util/List;
-    //   350: invokestatic 153	com/tencent/mm/plugin/exdevice/model/g:bu	(Ljava/util/List;)V
+    //   344: getfield 14	com/tencent/mm/plugin/exdevice/model/g$4:oVB	Lcom/tencent/mm/plugin/exdevice/model/g;
+    //   347: getfield 133	com/tencent/mm/plugin/exdevice/model/g:oVn	Ljava/util/List;
+    //   350: invokestatic 153	com/tencent/mm/plugin/exdevice/model/g:cS	(Ljava/util/List;)V
     //   353: iload_1
     //   354: iconst_1
     //   355: iadd
@@ -186,11 +186,11 @@ final class g$4
     //   379: iconst_0
     //   380: aload 4
     //   382: aastore
-    //   383: invokestatic 158	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   383: invokestatic 158	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   386: aload_2
     //   387: astore 4
     //   389: goto -250 -> 139
-    //   392: sipush 19254
+    //   392: sipush 23322
     //   395: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   398: return
     //   399: astore 4
@@ -249,7 +249,7 @@ final class g$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.g.4
  * JD-Core Version:    0.7.0.1
  */

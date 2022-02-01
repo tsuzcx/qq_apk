@@ -23,10 +23,10 @@ public final class s
   {
     paramContext = LayoutInflater.from(paramContext).inflate(2130903075, paramViewGroup, false);
     paramViewGroup = new t(this);
-    paramViewGroup.afL = ((TextView)paramContext.findViewById(2131558443));
-    paramViewGroup.ahr = ((ImageView)paramContext.findViewById(2131558475));
-    paramViewGroup.ahs = ((TextView)paramContext.findViewById(2131558476));
-    paramViewGroup.aht = ((ImageView)paramContext.findViewById(2131558477));
+    paramViewGroup.ajn = ((TextView)paramContext.findViewById(2131558444));
+    paramViewGroup.akT = ((ImageView)paramContext.findViewById(2131558476));
+    paramViewGroup.akU = ((TextView)paramContext.findViewById(2131558477));
+    paramViewGroup.akV = ((ImageView)paramContext.findViewById(2131558478));
     paramContext.setTag(paramViewGroup);
     return paramContext;
   }
@@ -34,49 +34,49 @@ public final class s
   public final void a(Context paramContext, b paramb)
   {
     paramb = (t)paramb;
-    if (nx())
+    if (ok())
     {
-      paramb.afL.setVisibility(0);
-      TextView localTextView = paramb.afL;
-      e.mB();
-      localTextView.setText(e.a(paramContext, this.ahe.afg.VT, 24));
-      paramContext = new String(this.ahe.afg.VX.toByteArray());
-      paramb.ahs.setText(paramContext);
-      if (this.ahe.afg.VO != h.md().mv().mH()) {
+      paramb.ajn.setVisibility(0);
+      TextView localTextView = paramb.ajn;
+      e.nn();
+      localTextView.setText(e.a(paramContext, this.akG.aiI.XO, 24));
+      paramContext = new String(this.akG.aiI.XS.toByteArray());
+      paramb.akU.setText(paramContext);
+      if (this.akG.aiI.XJ != h.mQ().nh().nt()) {
         break label164;
       }
-      paramb.ahr.setBackgroundResource(2130837609);
-      paramContext = (AnimationDrawable)paramb.ahr.getBackground();
+      paramb.akT.setBackgroundResource(2130837609);
+      paramContext = (AnimationDrawable)paramb.akT.getBackground();
       if (paramContext != null) {
         paramContext.start();
       }
     }
     for (;;)
     {
-      if (!this.ahe.afg.VW) {
+      if (!this.akG.aiI.XR) {
         break label208;
       }
-      paramb.aht.setVisibility(8);
+      paramb.akV.setVisibility(8);
       return;
-      paramb.afL.setVisibility(8);
+      paramb.ajn.setVisibility(8);
       break;
       label164:
-      if ((paramb.ahr.getBackground() instanceof AnimationDrawable))
+      if ((paramb.akT.getBackground() instanceof AnimationDrawable))
       {
-        paramContext = (AnimationDrawable)paramb.ahr.getBackground();
+        paramContext = (AnimationDrawable)paramb.akT.getBackground();
         if (paramContext != null) {
           paramContext.stop();
         }
       }
-      paramb.ahr.setBackgroundResource(2130837612);
+      paramb.akT.setBackgroundResource(2130837612);
     }
     label208:
-    paramb.aht.setVisibility(0);
+    paramb.akV.setVisibility(0);
   }
   
   public final boolean a(Context paramContext, a parama)
   {
-    com.tencent.mm.wear.app.d.a.bN(5);
+    com.tencent.mm.wear.app.d.a.cj(5);
     return false;
   }
 }

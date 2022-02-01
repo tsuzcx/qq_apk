@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class od
   extends b
 {
-  public od.a cEP;
-  
   public od()
   {
     this((byte)0);
@@ -15,11 +12,8 @@ public final class od
   
   private od(byte paramByte)
   {
-    AppMethodBeat.i(53877);
-    this.cEP = new od.a();
-    this.ymq = false;
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(53877);
   }
 }
 

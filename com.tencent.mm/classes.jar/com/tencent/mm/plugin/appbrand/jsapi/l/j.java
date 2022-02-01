@@ -1,50 +1,51 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
-import com.tencent.mm.plugin.appbrand.jsapi.bw;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.cl;
 import com.tencent.mm.plugin.appbrand.jsapi.d;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.jsapi.u;
-import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.jsapi.y;
+import com.tencent.mm.plugin.appbrand.page.aa;
 import org.json.JSONObject;
 
+@Deprecated
 public abstract class j<CONTEXT extends c, EXTENSION>
-  extends u<CONTEXT>
+  extends y<CONTEXT>
 {
-  private final Class<EXTENSION> aqP;
+  private final Class<EXTENSION> aLD;
   
   protected j(Class<EXTENSION> paramClass)
   {
-    this.aqP = paramClass;
+    this.aLD = paramClass;
   }
   
   public final String a(CONTEXT paramCONTEXT, JSONObject paramJSONObject)
   {
-    v localv = bw.l(paramCONTEXT);
-    if (localv == null) {
-      return j("fail:page don't exist", null);
+    aa localaa = cl.i(paramCONTEXT);
+    if (localaa == null) {
+      return e("fail:page don't exist", null);
     }
     if (paramJSONObject == null) {
-      return j("fail:invalid data", null);
+      return e("fail:invalid data", null);
     }
-    Object localObject = localv.x(this.aqP);
+    Object localObject = localaa.Q(this.aLD);
     if (localObject != null) {
       return a(paramCONTEXT, paramJSONObject, localObject);
     }
-    if (!localv.isRunning()) {
-      return j("fail:interrupted", null);
+    if (!localaa.isRunning()) {
+      return e("fail:interrupted", null);
     }
-    if (localv.gPS) {
-      throw new IllegalAccessError(String.format("%s Not Found", new Object[] { this.aqP.getName() }));
+    if (localaa.iDV) {
+      throw new IllegalAccessError(String.format("%s Not Found", new Object[] { this.aLD.getName() }));
     }
-    return j("fail:not supported", null);
+    return e("fail:not supported", null);
   }
   
   protected abstract String a(CONTEXT paramCONTEXT, JSONObject paramJSONObject, EXTENSION paramEXTENSION);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.l.j
  * JD-Core Version:    0.7.0.1
  */

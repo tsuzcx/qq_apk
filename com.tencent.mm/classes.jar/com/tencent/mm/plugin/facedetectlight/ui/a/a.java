@@ -1,261 +1,245 @@
 package com.tencent.mm.plugin.facedetectlight.ui.a;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.b.q;
+import com.tencent.mm.plugin.facedetect.PluginFace;
+import com.tencent.mm.plugin.facedetect.model.p;
 import com.tencent.mm.plugin.facedetectlight.ui.FaceReflectMask;
 import com.tencent.mm.plugin.facedetectlight.ui.PreviewFrameLayout;
 import com.tencent.mm.plugin.facedetectlight.ui.c;
 import com.tencent.mm.plugin.facedetectlight.ui.c.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.base.MMTextureView;
 import com.tencent.youtu.ytagreflectlivecheck.YTAGReflectLiveCheckInterface;
 import com.tencent.youtu.ytcommon.YTCommonExInterface;
-import com.tencent.youtu.ytfacetrace.YTFaceTraceInterface;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import com.tencent.youtu.ytfacetrack.YTFaceTrack;
+import com.tencent.youtu.ytfacetrack.param.YTFaceDetectParam;
+import com.tencent.youtu.ytfacetrack.param.YTFaceTrackParam;
+import com.tencent.ytcommon.util.YTCommonInterface;
 
 public final class a
   extends com.tencent.mm.plugin.facedetectlight.ui.a
   implements b
 {
-  PreviewFrameLayout mqV;
-  MMTextureView mqX;
-  private ImageView mqY;
-  public TextView mqZ;
-  public FaceReflectMask mrG;
-  public com.tencent.mm.plugin.facedetectlight.ui.b mrg;
-  public ImageView msl;
-  private TextView msm;
-  ImageView msn;
+  MMTextureView pXB;
+  private ImageView pXC;
+  public TextView pXD;
+  public com.tencent.mm.plugin.facedetectlight.ui.b pXK;
+  PreviewFrameLayout pXz;
+  public ImageView pYR;
+  private TextView pYS;
+  ImageView pYT;
+  public FaceReflectMask pYi;
   
   public a(ViewGroup paramViewGroup, com.tencent.mm.plugin.facedetectlight.ui.container.a parama)
   {
     super(paramViewGroup, parama);
   }
   
-  public final void Nw(String paramString)
+  public final void XQ(String paramString)
   {
-    AppMethodBeat.i(834);
-    ab.i(this.TAG, "callbackDetectSuccess()");
+    AppMethodBeat.i(104356);
+    ad.i(this.TAG, "callbackDetectSuccess()");
     Bundle localBundle = new Bundle();
     localBundle.putString("key_bio_buffer_path", paramString);
-    this.mrz.a(0, 0, "collect data ok", localBundle);
-    AppMethodBeat.o(834);
+    this.pYb.a(0, 0, "collect data ok", localBundle);
+    AppMethodBeat.o(104356);
   }
   
   public final void a(byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(827);
-    ab.d(this.TAG, "initCamera : bioID=%s ,appID=%s ,userName=%s", new Object[] { paramString1, paramString2, paramString3 });
-    this.mrg = new com.tencent.mm.plugin.facedetectlight.ui.b(this.uR.getContext(), this);
-    this.mrg.mrF = this.mqZ;
-    this.mrg.mrG = this.mrG;
-    this.mrg.mrH = this.mqV;
-    this.mrg.mlk = paramArrayOfByte;
-    this.mrg.mrJ = paramString1;
-    this.mrg.mAppId = paramString2;
-    this.mrg.eaX = paramString3;
-    this.mrg.mrK = this.mqY;
-    AppMethodBeat.o(827);
+    AppMethodBeat.i(104349);
+    ad.d(this.TAG, "initCamera : bioID=%s ,appID=%s ,userName=%s", new Object[] { paramString1, paramString2, paramString3 });
+    this.pXK = new com.tencent.mm.plugin.facedetectlight.ui.b(this.Bf.getContext(), this);
+    this.pXK.pYh = this.pXD;
+    this.pXK.pYi = this.pYi;
+    this.pXK.pYj = this.pXz;
+    this.pXK.pRV = paramArrayOfByte;
+    this.pXK.pYl = paramString1;
+    this.pXK.mAppId = paramString2;
+    this.pXK.flk = paramString3;
+    this.pXK.mJb = this.pXC;
+    AppMethodBeat.o(104349);
   }
   
-  public final void aB(int paramInt, String paramString)
+  public final void aR(int paramInt, String paramString)
   {
-    AppMethodBeat.i(833);
-    this.mrz.a(1, paramInt, paramString, null);
-    AppMethodBeat.o(833);
+    AppMethodBeat.i(104355);
+    this.pYb.a(1, paramInt, paramString, null);
+    AppMethodBeat.o(104355);
   }
   
-  public final void buc()
+  public final void cfw()
   {
-    AppMethodBeat.i(832);
-    c.a.bvQ();
-    ab.i("MicroMsg.FaceReflectLogic", "initAuth()");
-    int i = YTCommonExInterface.initAuth(ah.getContext(), "rel_wechat_2055-12-06.lic1.2", 0, false);
-    ab.i(this.TAG, "auth：".concat(String.valueOf(i)));
+    AppMethodBeat.i(104354);
+    c.a.chj();
+    ad.i("MicroMsg.FaceReflectLogic", "initAuth()");
+    int i = YTCommonInterface.initAuth(aj.getContext(), "rel_wechat_2055-12-06.lic1.2", 0);
+    ad.i(this.TAG, "auth：".concat(String.valueOf(i)));
     if (i != 0)
     {
-      ab.i(this.TAG, "initAuth failed");
-      h.qsU.idkeyStat(917L, 29L, 1L, false);
-      AppMethodBeat.o(832);
+      ad.i(this.TAG, "initAuth failed");
+      h.vKh.idkeyStat(917L, 29L, 1L, false);
+      AppMethodBeat.o(104354);
       return;
     }
-    ab.i(this.TAG, "initAuth success");
-    h.qsU.idkeyStat(917L, 28L, 1L, false);
-    c localc = c.a.bvQ();
-    Activity localActivity = (Activity)this.uR.getContext();
-    ab.i("MicroMsg.FaceReflectLogic", "initYoutuInstance()");
+    ad.i(this.TAG, "initAuth success");
+    h.vKh.idkeyStat(917L, 28L, 1L, false);
+    c localc = c.a.chj();
+    Activity localActivity = (Activity)this.Bf.getContext();
+    ad.i("MicroMsg.FaceReflectLogic", "initYoutuInstance()");
+    i = -1;
+    if (PluginFace.isEnabled()) {
+      i = YTFaceTrack.GlobalInit(q.k(p.cfZ(), false) + "/");
+    }
+    ad.i("MicroMsg.FaceReflectLogic", "YTFaceTrack.GlobalInit ret: %s", new Object[] { Integer.valueOf(i) });
+    if (i != 0) {
+      i = 0;
+    }
     for (;;)
     {
-      try
-      {
-        InputStream localInputStream1 = ah.getContext().getAssets().open("face_detect" + File.separator + "ufdmtcc.bin");
-        InputStream localInputStream2 = ah.getContext().getAssets().open("face_detect" + File.separator + "ufat.bin");
-        arrayOfByte2 = new byte[localInputStream1.available()];
-        ab.i("MicroMsg.FaceReflectLogic", "load ufat.bin or ufdmtcc.bin failed" + localIOException1.getMessage());
+      if (i != 0) {
+        YTCommonExInterface.setAppBrightness(localActivity, 255);
       }
-      catch (IOException localIOException1)
-      {
-        try
-        {
-          localInputStream1.read(arrayOfByte2);
-          arrayOfByte1 = new byte[localInputStream2.available()];
-        }
-        catch (IOException localIOException2)
-        {
-          for (;;)
-          {
-            byte[] arrayOfByte2;
-            byte[] arrayOfByte1 = null;
-          }
-        }
-        try
-        {
-          localInputStream2.read(arrayOfByte1);
-          localInputStream1.close();
-          localInputStream2.close();
-          i = YTFaceTraceInterface.initModel(arrayOfByte2, arrayOfByte1);
-          ab.i("MicroMsg.FaceReflectLogic", "YTFaceTraceInterface.initModel ret: %s", new Object[] { Integer.valueOf(i) });
-          if (i == 0) {
-            break label344;
-          }
-          ab.i("MicroMsg.FaceReflectLogic", "YTFacePreviewInterface.initModel failed，return:".concat(String.valueOf(i)));
-          i = 0;
-          if (i != 0) {
-            YTCommonExInterface.setAppBrightness(localActivity, 255);
-          }
-          localc.mState = 0;
-          localc.mrP = this;
-          AppMethodBeat.o(832);
-          return;
-        }
-        catch (IOException localIOException3)
-        {
-          break label315;
-        }
-        localIOException1 = localIOException1;
-        arrayOfByte1 = null;
-        arrayOfByte2 = null;
-      }
-      label315:
-      continue;
-      label344:
-      i = YTAGReflectLiveCheckInterface.initModel(arrayOfByte2, arrayOfByte1);
-      if (i != 0)
-      {
-        ab.i("MicroMsg.FaceReflectLogic", "YTFacePreviewInterface.initModel failed，return:".concat(String.valueOf(i)));
+      localc.mState = 0;
+      localc.pYr = this;
+      AppMethodBeat.o(104354);
+      return;
+      Object localObject = YTFaceTrack.getInstance().GetFaceDetectParam();
+      ((YTFaceDetectParam)localObject).bigger_face_mode = true;
+      ((YTFaceDetectParam)localObject).min_face_size = 50;
+      YTFaceTrack.getInstance().SetFaceDetectParam((YTFaceDetectParam)localObject);
+      localObject = YTFaceTrack.getInstance().GetFaceTrackParam();
+      ((YTFaceTrackParam)localObject).need_pose_estimate = true;
+      ((YTFaceTrackParam)localObject).detect_interval = 20;
+      YTFaceTrack.getInstance().SetFaceTrackParam((YTFaceTrackParam)localObject);
+      i = YTAGReflectLiveCheckInterface.initModel(localc.mAppId);
+      ad.i("MicroMsg.FaceReflectLogic", "YTFacePreviewInterface.initModel return:".concat(String.valueOf(i)));
+      if (i != 0) {
         i = 0;
-      }
-      else
-      {
+      } else {
         i = 1;
       }
     }
   }
   
-  public final int bvM()
+  public final int chg()
   {
-    return 2130969499;
+    return 2131493912;
   }
   
-  public final void bvS()
+  public final void chl()
   {
-    AppMethodBeat.i(828);
-    ab.i(this.TAG, "finish ReflectUI");
-    FaceReflectMask localFaceReflectMask = this.mrG;
-    localFaceReflectMask.msf = true;
-    localFaceReflectMask.mqT = true;
+    AppMethodBeat.i(104350);
+    ad.i(this.TAG, "finish ReflectUI");
+    FaceReflectMask localFaceReflectMask = this.pYi;
+    localFaceReflectMask.pYL = true;
+    localFaceReflectMask.pXx = true;
     localFaceReflectMask.invalidate();
-    this.mrG.setBackgroundColor(-16777216);
-    this.mrg.stopPreview();
+    this.pYi.setBackgroundColor(-16777216);
+    this.pXK.stopPreview();
     setVisibility(8);
-    this.msn.setVisibility(0);
-    AppMethodBeat.o(828);
+    this.pYT.setVisibility(0);
+    AppMethodBeat.o(104350);
   }
   
-  public final void bvT()
+  public final void chm()
   {
-    AppMethodBeat.i(829);
-    ab.i(this.TAG, "reflectLoadAnimation()");
-    int i = this.mrG.getWidth();
-    int j = this.mrG.getHeight();
-    RotateAnimation localRotateAnimation = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
+    AppMethodBeat.i(104351);
+    ad.i(this.TAG, "reflectLoadAnimation()");
+    final int i = this.pYi.getWidth();
+    final int j = this.pYi.getHeight();
+    final RotateAnimation localRotateAnimation = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
     localRotateAnimation.setDuration(2500L);
     localRotateAnimation.setRepeatCount(-1);
-    this.msn.setVisibility(4);
-    this.msn.post(new a.2(this, i, j, localRotateAnimation));
-    this.msl.setVisibility(4);
-    AppMethodBeat.o(829);
+    this.pYT.setVisibility(4);
+    this.pYT.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(104346);
+        ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)a.this.pYT.getLayoutParams();
+        localMarginLayoutParams.width = ((int)(i * 0.7D));
+        localMarginLayoutParams.height = ((int)(i * 0.7D));
+        localMarginLayoutParams.topMargin = ((int)(j * 0.4D - i * 0.35D));
+        a.this.pYT.setLayoutParams(localMarginLayoutParams);
+        a.this.pYT.setVisibility(0);
+        a.this.pYT.startAnimation(localRotateAnimation);
+        AppMethodBeat.o(104346);
+      }
+    });
+    this.pYR.setVisibility(4);
+    AppMethodBeat.o(104351);
   }
   
-  public final void bvU()
+  public final void chn()
   {
-    AppMethodBeat.i(830);
-    this.msm.setVisibility(0);
-    AppMethodBeat.o(830);
+    AppMethodBeat.i(104352);
+    this.pYS.setVisibility(0);
+    AppMethodBeat.o(104352);
   }
   
   public final void initView()
   {
-    AppMethodBeat.i(825);
-    this.mqY = ((ImageView)findViewById(2131823874));
-    this.mqV = ((PreviewFrameLayout)findViewById(2131823872));
-    this.mqX = ((MMTextureView)findViewById(2131823873));
-    this.mrG = ((FaceReflectMask)findViewById(2131823876));
-    this.msl = ((ImageView)findViewById(2131823898));
-    this.mqZ = ((TextView)findViewById(2131823877));
-    this.msn = ((ImageView)findViewById(2131823899));
-    this.msm = ((TextView)findViewById(2131823891));
-    AppMethodBeat.o(825);
+    AppMethodBeat.i(104347);
+    this.pXC = ((ImageView)findViewById(2131297031));
+    this.pXz = ((PreviewFrameLayout)findViewById(2131299689));
+    this.pXB = ((MMTextureView)findViewById(2131299688));
+    this.pYi = ((FaceReflectMask)findViewById(2131299690));
+    this.pYR = ((ImageView)findViewById(2131299669));
+    this.pXD = ((TextView)findViewById(2131299691));
+    this.pYT = ((ImageView)findViewById(2131299692));
+    this.pYS = ((TextView)findViewById(2131300745));
+    AppMethodBeat.o(104347);
   }
   
   public final void resume()
   {
-    AppMethodBeat.i(831);
-    ab.i(this.TAG, " FaceReflect Preview UI resume");
-    if (this.mrg != null)
+    AppMethodBeat.i(104353);
+    ad.i(this.TAG, " FaceReflect Preview UI resume");
+    if (this.pXK != null)
     {
-      this.mrg.a(this.mqX);
-      this.mrg.bvP();
-      this.mrg.mrE = true;
-      this.mqZ.setText(2131299596);
+      this.pXK.a(this.pXB);
+      this.pXK.chi();
+      this.pXK.pYg = true;
+      this.pXD.setText(2131758753);
     }
-    AppMethodBeat.o(831);
+    AppMethodBeat.o(104353);
   }
   
   public final void setBusinessTip(String paramString)
   {
-    AppMethodBeat.i(826);
-    if ((TextUtils.isEmpty(paramString)) || (this.msm == null))
+    AppMethodBeat.i(104348);
+    if ((TextUtils.isEmpty(paramString)) || (this.pYS == null))
     {
-      AppMethodBeat.o(826);
+      AppMethodBeat.o(104348);
       return;
     }
-    ab.d(this.TAG, "business tip is : ".concat(String.valueOf(paramString)));
-    this.msm.setText(paramString);
-    AppMethodBeat.o(826);
+    ad.d(this.TAG, "business tip is : ".concat(String.valueOf(paramString)));
+    this.pYS.setText(paramString);
+    AppMethodBeat.o(104348);
   }
   
-  public final void u(int paramInt, String paramString1, String paramString2)
+  public final void x(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(835);
-    ab.i(this.TAG, "callbackDetectFailed()");
+    AppMethodBeat.i(104357);
+    ad.i(this.TAG, "callbackDetectFailed()");
     Bundle localBundle = new Bundle();
     localBundle.putString("show_err_msg", paramString2);
-    this.mrz.a(4, paramInt, paramString1, localBundle);
-    AppMethodBeat.o(835);
+    this.pYb.a(4, paramInt, paramString1, localBundle);
+    AppMethodBeat.o(104357);
   }
 }
 

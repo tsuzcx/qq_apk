@@ -1,209 +1,285 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.Build.VERSION;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.webkit.WebChromeClient.CustomViewCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.f.a;
-import java.util.Collections;
+import com.tencent.mm.plugin.appbrand.task.e;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandUILoadingSplash;
+import com.tencent.mm.plugin.appbrand.ui.g;
+import com.tencent.mm.plugin.appbrand.widget.tabbar.AppBrandTabBarItem;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.k;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.LinkedList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandDecorWidgetFactoryWC;", "Lcom/tencent/mm/plugin/appbrand/page/PageDecorWidgetFactory$DefaultFactory;", "()V", "mKeepPersistentViews", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/statusbar/DrawStatusBarFrameLayout;", "[Ljava/lang/Class;", "mPreloadedWidgets", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandDecorWidgetFactoryWC$PreloadWidgetPool;", "mScreenAdaptiveViews", "Landroid/view/ViewGroup;", "contains", "", "array", "objectToFind", "", "([Ljava/lang/Object;Ljava/lang/Object;)Z", "createWidgetImpl", "WIDGET", "Landroid/view/View;", "context", "Landroid/content/Context;", "clazz", "(Landroid/content/Context;Ljava/lang/Class;)Landroid/view/View;", "getFactoryContextForWidget", "originalContext", "getPreloadedWidget", "(Ljava/lang/Class;)Landroid/view/View;", "onCreateWidget", "onDestroy", "", "preloadWidget", "Companion", "PreloadWidgetPool", "plugin-appbrand-integration_release"})
 public final class d
+  extends bx.a
 {
-  private static final d.a ivf;
-  private d.a ivg;
-  private View ivh;
-  WebChromeClient.CustomViewCallback ivi;
-  private int ivj;
-  private ViewGroup.LayoutParams ivk;
-  private ViewGroup ivl;
-  private int ivm;
-  private int ivn;
-  private WindowManager.LayoutParams ivo;
-  final Set<ao> ivp;
-  private Context mContext;
+  private static final AtomicBoolean kXN;
+  private static d kXO;
+  public static final a kXP;
+  private final Class<? extends ViewGroup>[] kXK;
+  private final Class<? extends com.tencent.mm.ui.statusbar.b>[] kXL;
+  public final b kXM;
   
   static
   {
-    AppMethodBeat.i(141801);
-    ivf = new d.a()
+    AppMethodBeat.i(50908);
+    kXP = new a((byte)0);
+    kXN = new AtomicBoolean(false);
+    AppMethodBeat.o(50908);
+  }
+  
+  public d()
+  {
+    AppMethodBeat.i(50907);
+    kXN.set(true);
+    this.kXK = new Class[] { com.tencent.mm.plugin.appbrand.widget.actionbar.b.class, com.tencent.mm.plugin.appbrand.widget.tabbar.a.class };
+    this.kXL = new Class[] { com.tencent.mm.plugin.appbrand.widget.actionbar.d.class, AppBrandUILoadingSplash.class };
+    this.kXM = new b();
+    AppMethodBeat.o(50907);
+  }
+  
+  public static final void a(e parame)
+  {
+    AppMethodBeat.i(50909);
+    d locald;
+    if (!kXN.getAndSet(true))
     {
-      public final ViewGroup cs(View paramAnonymousView)
-      {
-        AppMethodBeat.i(141799);
-        Activity localActivity = a.hr(paramAnonymousView.getContext());
-        if (localActivity == null)
-        {
-          paramAnonymousView = (ViewGroup)paramAnonymousView.getRootView();
-          AppMethodBeat.o(141799);
-          return paramAnonymousView;
-        }
-        paramAnonymousView = (ViewGroup)localActivity.getWindow().getDecorView();
-        AppMethodBeat.o(141799);
-        return paramAnonymousView;
+      ad.i("MicroMsg.AppBrandDecorWidgetFactoryWC", "warmUpAndTryPreload type=".concat(String.valueOf(parame)));
+      locald = new d();
+      locald.aB(com.tencent.mm.plugin.appbrand.widget.actionbar.b.class);
+      locald.aB(com.tencent.mm.plugin.appbrand.widget.actionbar.d.class);
+      if (parame != null) {
+        break label63;
       }
-    };
-    AppMethodBeat.o(141801);
-  }
-  
-  d(Context paramContext, d.a parama)
-  {
-    AppMethodBeat.i(141800);
-    this.ivp = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.mContext = paramContext;
-    this.ivg = parama;
-    AppMethodBeat.o(141800);
-  }
-  
-  private void aIK()
-  {
-    AppMethodBeat.i(91085);
-    Iterator localIterator = this.ivp.iterator();
-    while (localIterator.hasNext()) {
-      ((ao)localIterator.next()).aJy();
-    }
-    AppMethodBeat.o(91085);
-  }
-  
-  private void aIL()
-  {
-    AppMethodBeat.i(91086);
-    Iterator localIterator = this.ivp.iterator();
-    while (localIterator.hasNext()) {
-      ((ao)localIterator.next()).aDk();
-    }
-    AppMethodBeat.o(91086);
-  }
-  
-  public final void J(View paramView, int paramInt)
-  {
-    AppMethodBeat.i(91082);
-    aIJ();
-    Object localObject = this.ivg;
-    if (localObject == null) {
-      localObject = ivf;
     }
     for (;;)
     {
-      this.ivh = paramView;
-      if ((paramView.getParent() instanceof ViewGroup))
+      kXO = locald;
+      AppMethodBeat.o(50909);
+      return;
+      label63:
+      switch (e.ciE[parame.ordinal()])
       {
-        this.ivl = ((ViewGroup)paramView.getParent());
-        this.ivj = this.ivl.indexOfChild(paramView);
-        this.ivk = paramView.getLayoutParams();
-        this.ivl.removeView(paramView);
-        localObject = ((d.a)localObject).cs(paramView);
-        ((ViewGroup)localObject).addView(paramView, new ViewGroup.LayoutParams(-1, -1));
-        ((ViewGroup)localObject).bringChildToFront(paramView);
-        paramView.setX(0.0F);
-        paramView.setY(0.0F);
-        paramView = a.hr(this.mContext);
-        if (paramView == null) {
-          break label325;
-        }
-        localObject = (ViewGroup)paramView.getWindow().getDecorView();
-        this.ivm = ((ViewGroup)localObject).getSystemUiVisibility();
-        if (!com.tencent.mm.compatible.util.d.fw(19)) {
-          break label290;
-        }
-        ((ViewGroup)localObject).setSystemUiVisibility(2);
-        label158:
-        this.ivo = new WindowManager.LayoutParams();
-        this.ivo.copyFrom(paramView.getWindow().getAttributes());
-        paramView.getWindow().addFlags(1024);
-        if (Build.VERSION.SDK_INT >= 28) {
-          paramView.getWindow().getAttributes().layoutInDisplayCutoutMode = 2;
-        }
-        this.ivn = paramView.getRequestedOrientation();
-        switch (paramInt)
+      default: 
+        break;
+      case 1: 
+        locald.aB(com.tencent.mm.plugin.appbrand.widget.tabbar.a.class);
+        locald.aB(AppBrandUILoadingSplash.class);
+        int i = 0;
+        while (i <= 4)
         {
-        default: 
-          paramView.setRequestedOrientation(9);
+          locald.aB(AppBrandTabBarItem.class);
+          i += 1;
         }
       }
+    }
+  }
+  
+  public static final d biW()
+  {
+    AppMethodBeat.i(50910);
+    d locald2 = kXO;
+    d locald1 = locald2;
+    if (locald2 == null) {
+      locald1 = new d();
+    }
+    kXO = null;
+    AppMethodBeat.o(50910);
+    return locald1;
+  }
+  
+  private static boolean contains(Object[] paramArrayOfObject, Object paramObject)
+  {
+    AppMethodBeat.i(50906);
+    int j = paramArrayOfObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (k.g(paramArrayOfObject[i], paramObject))
+      {
+        AppMethodBeat.o(50906);
+        return true;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(50906);
+    return false;
+  }
+  
+  private final <WIDGET extends View> WIDGET e(Context paramContext, Class<WIDGET> paramClass)
+  {
+    AppMethodBeat.i(50904);
+    paramContext = super.c(d(paramContext, paramClass), paramClass);
+    AppMethodBeat.o(50904);
+    return paramContext;
+  }
+  
+  public final <WIDGET extends View> void aB(Class<WIDGET> paramClass)
+  {
+    AppMethodBeat.i(50905);
+    k.h(paramClass, "clazz");
+    Object localObject = aj.getContext();
+    k.g(localObject, "MMApplicationContext.getContext()");
+    localObject = e((Context)localObject, paramClass);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(50905);
+      return;
+    }
+    this.kXM.a(paramClass, (View)localObject);
+    AppMethodBeat.o(50905);
+  }
+  
+  public final <WIDGET extends View> WIDGET aC(Class<WIDGET> paramClass)
+  {
+    AppMethodBeat.i(196408);
+    k.h(paramClass, "clazz");
+    paramClass = this.kXM.aD(paramClass);
+    AppMethodBeat.o(196408);
+    return paramClass;
+  }
+  
+  public final <WIDGET extends View> WIDGET c(Context paramContext, Class<WIDGET> paramClass)
+  {
+    AppMethodBeat.i(50903);
+    k.h(paramContext, "context");
+    k.h(paramClass, "clazz");
+    long l = bt.eGO();
+    View localView = this.kXM.aD(paramClass);
+    if (localView == null) {}
+    for (paramContext = e(paramContext, paramClass);; paramContext = localView)
+    {
+      paramClass = new StringBuilder("onCreateWidget class[").append(paramClass.getName()).append("] cost[").append(bt.eGO() - l).append("ms] preloaded[");
+      if (localView != null) {}
+      for (boolean bool = true;; bool = false)
+      {
+        ad.d("MicroMsg.AppBrandDecorWidgetFactoryWC", bool + ']');
+        AppMethodBeat.o(50903);
+        return paramContext;
+      }
+    }
+  }
+  
+  public final Context d(Context paramContext, Class<? extends View> paramClass)
+  {
+    AppMethodBeat.i(50902);
+    k.h(paramContext, "originalContext");
+    k.h(paramClass, "clazz");
+    Context localContext;
+    if (g.bok()) {
+      if (contains(this.kXK, paramClass))
+      {
+        localContext = (Context)f.dz(paramContext);
+        paramContext = localContext;
+        if (k.g(paramClass, AppBrandUILoadingSplash.class)) {
+          paramContext = (Context)f.dz(localContext);
+        }
+      }
+    }
+    for (;;)
+    {
+      localContext = paramContext;
+      if (contains(this.kXL, paramClass)) {
+        localContext = (Context)f.dA(paramContext);
+      }
+      AppMethodBeat.o(50902);
+      return localContext;
+      localContext = paramContext;
+      break;
+    }
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandDecorWidgetFactoryWC$Companion;", "", "()V", "TAG", "", "sAccessedMark", "Ljava/util/concurrent/atomic/AtomicBoolean;", "sProcessSharedInstance", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandDecorWidgetFactoryWC;", "obtainInstance", "warmUpAndTryPreload", "", "type", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandServiceType;", "plugin-appbrand-integration_release"})
+  public static final class a {}
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/page/AppBrandDecorWidgetFactoryWC$PreloadWidgetPool;", "", "()V", "mMap", "Ljava/util/HashMap;", "Ljava/lang/Class;", "Landroid/view/View;", "Ljava/util/LinkedList;", "Lkotlin/collections/HashMap;", "clear", "", "offer", "clazz", "widget", "poll", "WIDGET", "(Ljava/lang/Class;)Landroid/view/View;", "plugin-appbrand-integration_release"})
+  public static final class b
+  {
+    final HashMap<Class<? extends View>, LinkedList<View>> dz;
+    
+    public b()
+    {
+      AppMethodBeat.i(50901);
+      this.dz = new HashMap();
+      AppMethodBeat.o(50901);
+    }
+    
+    public final void a(final Class<? extends View> paramClass, View paramView)
+    {
+      AppMethodBeat.i(50898);
+      k.h(paramClass, "clazz");
+      k.h(paramView, "widget");
+      if ((LinkedList)this.dz.get(paramClass) == null) {
+        ((d.g.a.a)new a(this, paramClass)).invoke();
+      }
+      paramClass = this.dz.get(paramClass);
+      if (paramClass == null) {
+        k.fvU();
+      }
+      ((LinkedList)paramClass).addLast(paramView);
+      AppMethodBeat.o(50898);
+    }
+    
+    public final <WIDGET extends View> WIDGET aD(Class<? extends WIDGET> paramClass)
+    {
+      Object localObject = null;
+      AppMethodBeat.i(50899);
+      k.h(paramClass, "clazz");
+      paramClass = (LinkedList)this.dz.get(paramClass);
+      if (paramClass != null)
+      {
+        paramClass = (View)paramClass.pollFirst();
+        if ((paramClass instanceof View)) {
+          break label58;
+        }
+        paramClass = localObject;
+      }
+      label58:
       for (;;)
       {
-        aIK();
-        AppMethodBeat.o(91082);
-        return;
-        this.ivj = 0;
-        this.ivl = null;
-        this.ivk = null;
+        AppMethodBeat.o(50899);
+        return paramClass;
+        paramClass = null;
         break;
-        label290:
-        ((ViewGroup)localObject).setSystemUiVisibility(4102);
-        break label158;
-        paramView.setRequestedOrientation(0);
-        continue;
-        paramView.setRequestedOrientation(8);
-        continue;
-        paramView.setRequestedOrientation(1);
-        continue;
-        label325:
-        com.tencent.luggage.g.d.e("Luggage.AppBrandCustomViewFullscreenImpl", "enterFullscreen, get NULL activity");
-        this.ivn = -1;
-        this.ivo = null;
-        this.ivm = 0;
       }
     }
-  }
-  
-  public final void a(ao paramao)
-  {
-    AppMethodBeat.i(91084);
-    this.ivp.add(paramao);
-    AppMethodBeat.o(91084);
-  }
-  
-  public final boolean aIJ()
-  {
-    AppMethodBeat.i(91083);
-    if (this.ivh == null)
+    
+    public final void clear()
     {
-      AppMethodBeat.o(91083);
-      return false;
+      AppMethodBeat.i(50900);
+      Object localObject = this.dz.values();
+      k.g(localObject, "mMap.values");
+      localObject = ((Iterable)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((LinkedList)((Iterator)localObject).next()).clear();
+      }
+      this.dz.clear();
+      AppMethodBeat.o(50900);
     }
-    if (this.ivi != null) {
-      this.ivi.onCustomViewHidden();
-    }
-    Activity localActivity = a.hr(this.mContext);
-    if (localActivity != null)
+    
+    @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Ljava/util/LinkedList;", "Landroid/view/View;", "invoke"})
+    static final class a
+      extends d.g.b.l
+      implements d.g.a.a<LinkedList<View>>
     {
-      ((ViewGroup)localActivity.getWindow().getDecorView()).setSystemUiVisibility(this.ivm);
-      localActivity.getWindow().clearFlags(1024);
-      if (this.ivo != null) {
-        localActivity.getWindow().setAttributes(this.ivo);
+      a(d.b paramb, Class paramClass)
+      {
+        super();
       }
-      localActivity.setRequestedOrientation(this.ivn);
-    }
-    for (;;)
-    {
-      if ((this.ivh.getParent() instanceof ViewGroup)) {
-        ((ViewGroup)this.ivh.getParent()).removeView(this.ivh);
-      }
-      if (this.ivl != null) {
-        this.ivl.addView(this.ivh, this.ivj, this.ivk);
-      }
-      this.ivh = null;
-      this.ivi = null;
-      aIL();
-      AppMethodBeat.o(91083);
-      return true;
-      com.tencent.luggage.g.d.e("Luggage.AppBrandCustomViewFullscreenImpl", "exitFullscreen, get NULL activity");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.d
  * JD-Core Version:    0.7.0.1
  */

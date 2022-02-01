@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.widget;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
@@ -10,74 +11,61 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.DatePicker;
+import android.widget.NumberPicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
   extends DatePickerDialog
 {
-  private boolean ACK = true;
-  private long ACL;
-  private int ACM;
+  private boolean Hzo = true;
+  private long Hzp;
+  private int Hzq;
   
   public e(Context paramContext, DatePickerDialog.OnDateSetListener paramOnDateSetListener, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     super(paramContext, 3, paramOnDateSetListener, paramInt1, paramInt2, paramInt3);
-    this.ACL = paramLong;
-    this.ACM = 1;
+    this.Hzp = paramLong;
+    this.Hzq = 1;
   }
   
   public e(Context paramContext, DatePickerDialog.OnDateSetListener paramOnDateSetListener, int paramInt1, int paramInt2, int paramInt3, long paramLong, byte paramByte)
   {
     super(paramContext, 3, paramOnDateSetListener, paramInt1, paramInt2, paramInt3);
-    this.ACL = paramLong;
-    this.ACM = 1;
+    this.Hzp = paramLong;
+    this.Hzq = 1;
   }
   
-  private void hS(int paramInt1, int paramInt2)
+  private void jF(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(107867);
-    if (this.ACM > 1) {
-      setTitle(getContext().getString(2131300114, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2 + 1) }));
+    AppMethodBeat.i(143344);
+    if (this.Hzq > 1) {
+      setTitle(getContext().getString(2131759581, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2 + 1) }));
     }
-    AppMethodBeat.o(107867);
-  }
-  
-  public final void oT(long paramLong)
-  {
-    AppMethodBeat.i(107868);
-    getDatePicker().setMaxDate(paramLong);
-    AppMethodBeat.o(107868);
-  }
-  
-  public final void oU(long paramLong)
-  {
-    AppMethodBeat.i(107869);
-    getDatePicker().setMinDate(paramLong);
-    AppMethodBeat.o(107869);
+    AppMethodBeat.o(143344);
   }
   
   public final void onDateChanged(DatePicker paramDatePicker, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(107866);
+    AppMethodBeat.i(143343);
     super.onDateChanged(paramDatePicker, paramInt1, paramInt2, paramInt3);
-    hS(paramInt1, paramInt2);
-    AppMethodBeat.o(107866);
+    jF(paramInt1, paramInt2);
+    AppMethodBeat.o(143343);
   }
   
   @SuppressLint({"DefaultLocale"})
   public final void show()
   {
     int j = 1;
-    AppMethodBeat.i(107865);
+    AppMethodBeat.i(143342);
     super.show();
     Object localObject;
-    if (this.ACK)
+    if (this.Hzo)
     {
       if (Build.VERSION.SDK_INT < 11) {
         break label107;
       }
-      localObject = new e.a(this).x((ViewGroup)getWindow().getDecorView());
-      if ((localObject != null) && (this.ACM > 1)) {
+      localObject = new a().A((ViewGroup)getWindow().getDecorView());
+      if ((localObject != null) && (this.Hzq > 1)) {
         ((View)localObject).setVisibility(8);
       }
     }
@@ -88,9 +76,9 @@ public final class e
       int i = getDatePicker().getYear();
       j = getDatePicker().getMonth();
       getDatePicker().getDayOfMonth();
-      hS(i, j);
-      this.ACK = false;
-      AppMethodBeat.o(107865);
+      jF(i, j);
+      this.Hzo = false;
+      AppMethodBeat.o(143342);
       return;
       String str = Settings.System.getString(getContext().getContentResolver(), "date_format");
       localObject = str;
@@ -105,7 +93,7 @@ public final class e
         if (i == -1) {
           break label244;
         }
-        localObject = new e.b(this).e((ViewGroup)getWindow().getDecorView(), i);
+        localObject = new e.b(this).n((ViewGroup)getWindow().getDecorView(), i);
         if (localObject == null) {
           break;
         }
@@ -126,10 +114,65 @@ public final class e
       }
     }
   }
+  
+  public final void wW(long paramLong)
+  {
+    AppMethodBeat.i(143345);
+    getDatePicker().setMaxDate(paramLong);
+    AppMethodBeat.o(143345);
+  }
+  
+  public final void wX(long paramLong)
+  {
+    AppMethodBeat.i(143346);
+    getDatePicker().setMinDate(paramLong);
+    AppMethodBeat.o(143346);
+  }
+  
+  final class a
+  {
+    a() {}
+    
+    @TargetApi(11)
+    public final NumberPicker A(ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(143340);
+      if (paramViewGroup != null)
+      {
+        int j = paramViewGroup.getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          Object localObject = paramViewGroup.getChildAt(i);
+          if ((localObject instanceof NumberPicker))
+          {
+            NumberPicker localNumberPicker = (NumberPicker)localObject;
+            if ((localNumberPicker.getMaxValue() >= 28) && (localNumberPicker.getMaxValue() <= 31))
+            {
+              AppMethodBeat.o(143340);
+              return localNumberPicker;
+            }
+          }
+          if ((localObject instanceof ViewGroup))
+          {
+            localObject = A((ViewGroup)localObject);
+            if (localObject != null)
+            {
+              AppMethodBeat.o(143340);
+              return localObject;
+            }
+          }
+          i += 1;
+        }
+      }
+      AppMethodBeat.o(143340);
+      return null;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.e
  * JD-Core Version:    0.7.0.1
  */

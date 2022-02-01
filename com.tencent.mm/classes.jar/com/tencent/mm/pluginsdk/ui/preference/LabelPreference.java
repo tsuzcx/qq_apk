@@ -8,23 +8,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.plugin.label.a.b;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bw;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.ArrayList;
 
 public class LabelPreference
   extends Preference
 {
-  public ad lpe;
-  private View ozm;
-  public bv pRo;
-  private TextView pzr;
-  private TextView vRB;
+  private TextView BWi;
+  public af oFt;
+  private View ttN;
+  private TextView uBa;
+  public bw uTk;
   
   public LabelPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,69 +37,69 @@ public class LabelPreference
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(28070);
+    AppMethodBeat.i(31857);
     super.onBindView(paramView);
-    if (this.lpe == null)
+    if (this.oFt == null)
     {
       paramView.setVisibility(8);
-      AppMethodBeat.o(28070);
+      AppMethodBeat.o(31857);
       return;
     }
     paramView.setVisibility(0);
-    if (this.pzr == null) {
-      this.pzr = ((TextView)paramView.findViewById(2131826851));
+    if (this.uBa == null) {
+      this.uBa = ((TextView)paramView.findViewById(2131298619));
     }
-    if (this.vRB == null) {
-      this.vRB = ((TextView)paramView.findViewById(2131826850));
+    if (this.BWi == null) {
+      this.BWi = ((TextView)paramView.findViewById(2131298620));
     }
-    if (this.vRB != null)
+    if (this.BWi != null)
     {
-      paramView = this.vRB.getLayoutParams();
-      paramView.width = com.tencent.mm.cb.a.ao(this.mContext, 2131427664);
-      this.vRB.setLayoutParams(paramView);
+      paramView = this.BWi.getLayoutParams();
+      paramView.width = com.tencent.mm.cd.a.ao(this.mContext, 2131165370);
+      this.BWi.setLayoutParams(paramView);
     }
-    this.pzr.setVisibility(0);
+    this.uBa.setVisibility(0);
     ArrayList localArrayList;
-    if (com.tencent.mm.n.a.je(this.lpe.field_type))
+    if (com.tencent.mm.n.b.ls(this.oFt.field_type))
     {
-      paramView = this.lpe.field_contactLabelIds;
-      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.bKV().RQ(paramView);
-      if ((!bo.isNullOrNil(paramView)) && (localArrayList != null) && (localArrayList.size() > 0)) {
-        this.pzr.setText(j.b(this.mContext, bo.d(localArrayList, this.mContext.getResources().getString(2131298491))));
+      paramView = this.oFt.field_contactLabelIds;
+      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.cIS().aeK(paramView);
+      if ((!bt.isNullOrNil(paramView)) && (localArrayList != null) && (localArrayList.size() > 0)) {
+        this.uBa.setText(k.c(this.mContext, bt.n(localArrayList, this.mContext.getResources().getString(2131757526))));
       }
-      AppMethodBeat.o(28070);
+      AppMethodBeat.o(31857);
       return;
     }
-    if (this.pRo != null)
+    if (this.uTk != null)
     {
-      paramView = this.pRo.field_contactLabels;
-      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.bKV().RP(paramView);
-      if ((!bo.isNullOrNil(paramView)) && (localArrayList != null) && (localArrayList.size() > 0)) {
-        this.pzr.setText(j.b(this.mContext, bo.d(localArrayList, this.mContext.getResources().getString(2131298491))));
+      paramView = this.uTk.field_contactLabels;
+      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.cIS().aeJ(paramView);
+      if ((!bt.isNullOrNil(paramView)) && (localArrayList != null) && (localArrayList.size() > 0)) {
+        this.uBa.setText(k.c(this.mContext, bt.n(localArrayList, this.mContext.getResources().getString(2131757526))));
       }
     }
-    AppMethodBeat.o(28070);
+    AppMethodBeat.o(31857);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(28069);
-    if (this.ozm == null)
+    AppMethodBeat.i(31856);
+    if (this.ttN == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
       localViewGroup.removeAllViews();
-      LayoutInflater.from(this.mContext).inflate(2130970465, localViewGroup);
-      this.ozm = paramViewGroup;
+      LayoutInflater.from(this.mContext).inflate(2131495138, localViewGroup);
+      this.ttN = paramViewGroup;
     }
-    paramViewGroup = this.ozm;
-    AppMethodBeat.o(28069);
+    paramViewGroup = this.ttN;
+    AppMethodBeat.o(31856);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.LabelPreference
  * JD-Core Version:    0.7.0.1
  */

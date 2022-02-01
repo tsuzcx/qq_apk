@@ -1,190 +1,390 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.d.a;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.e;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.j;
+import com.tencent.mm.ak.p;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.api.m;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.protocal.protobuf.cnl;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.storage.RegionCodeDecoder;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.b.c;
+import com.tencent.mm.ui.widget.a.d;
 import java.util.LinkedList;
 
 public final class b
-  implements d.a, a.a, o
+  implements e.a, a.a, w
 {
-  private String eDy;
-  ProgressDialog gsr;
-  c iNf;
-  String ikj;
-  ad lpe;
+  int BXE = 0;
+  private v BXF;
+  com.tencent.mm.al.g BXG = null;
+  private boolean BXH = true;
+  private String fYC;
+  ProgressDialog ift;
+  String kGt;
+  d lAE;
   Context mContext;
   private int mScene;
-  int vSY = 0;
-  private n vSZ;
-  com.tencent.mm.ai.f vTa = null;
-  private boolean vTb = true;
+  af oFt;
   
-  public b(Context paramContext, String paramString1, int paramInt, n paramn, String paramString2)
+  public b(Context paramContext, String paramString1, int paramInt, v paramv, String paramString2)
   {
-    this(paramContext, paramString1, paramInt, paramn, true, paramString2);
+    this(paramContext, paramString1, paramInt, paramv, true, paramString2);
   }
   
-  public b(Context paramContext, String paramString1, int paramInt, n paramn, boolean paramBoolean, String paramString2)
+  public b(Context paramContext, String paramString1, int paramInt, v paramv, boolean paramBoolean, String paramString2)
   {
     this.mContext = paramContext;
-    this.ikj = paramString1;
+    this.kGt = paramString1;
     this.mScene = paramInt;
-    this.vSZ = paramn;
-    this.vTb = paramBoolean;
-    this.eDy = paramString2;
+    this.BXF = paramv;
+    this.BXH = paramBoolean;
+    this.fYC = paramString2;
   }
   
-  public b(Context paramContext, String paramString, n paramn)
+  public b(Context paramContext, String paramString, v paramv)
   {
-    this(paramContext, paramString, 0, paramn, true, "");
+    this(paramContext, paramString, 0, paramv, true, "");
   }
   
-  private void amh(String paramString)
+  private void aBK(String paramString)
   {
-    AppMethodBeat.i(27633);
-    ab.i("MicroMsg.AddContactDialog", "searchContact %s", new Object[] { paramString });
-    if (this.vTa == null) {
-      this.vTa = new b.4(this);
+    AppMethodBeat.i(31336);
+    ad.i("MicroMsg.AddContactDialog", "searchContact %s", new Object[] { paramString });
+    if (this.BXG == null) {
+      this.BXG = new com.tencent.mm.al.g()
+      {
+        public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+        {
+          AppMethodBeat.i(31330);
+          if (b.this.ift != null) {
+            b.this.ift.dismiss();
+          }
+          if (b.this.BXG != null)
+          {
+            com.tencent.mm.kernel.g.afC();
+            com.tencent.mm.kernel.g.afA().gcy.b(106, b.this.BXG);
+          }
+          if (b.this.ift == null)
+          {
+            ad.e("MicroMsg.AddContactDialog", "has cancel the loading dialog");
+            b.this.nc(0);
+            AppMethodBeat.o(31330);
+            return;
+          }
+          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+          {
+            ad.e("MicroMsg.AddContactDialog", "searchContact onSceneEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+            b.this.nc(-1);
+            AppMethodBeat.o(31330);
+            return;
+          }
+          if (b.this.mContext == null)
+          {
+            ad.e("MicroMsg.AddContactDialog", "searchContact, context is null, msghandler has already been detached!");
+            b.this.nc(-1);
+            AppMethodBeat.o(31330);
+            return;
+          }
+          if (((b.this.mContext instanceof Activity)) && (((Activity)b.this.mContext).isFinishing()))
+          {
+            ad.e("MicroMsg.AddContactDialog", "searchContact, context isFinishing");
+            b.this.nc(-1);
+            AppMethodBeat.o(31330);
+            return;
+          }
+          paramAnonymousString = ((com.tencent.mm.plugin.messenger.a.g)paramAnonymousn).cOA();
+          paramAnonymousn = z.a(paramAnonymousString.Dby);
+          if (bt.isNullOrNil(paramAnonymousn))
+          {
+            ad.e("MicroMsg.AddContactDialog", "searchContact, user is null");
+            h.cf(b.this.mContext, b.this.mContext.getResources().getString(2131766266));
+            b.this.nc(-1);
+            AppMethodBeat.o(31330);
+            return;
+          }
+          if ((b.this.kGt == null) || (!b.this.kGt.equals(paramAnonymousn))) {
+            ad.w("MicroMsg.AddContactDialog", "user not the same, %s, %s", new Object[] { b.this.kGt, paramAnonymousn });
+          }
+          b localb = b.this;
+          com.tencent.mm.kernel.g.afC();
+          localb.oFt = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHY(paramAnonymousn);
+          if ((b.this.oFt == null) || ((int)b.this.oFt.fId == 0))
+          {
+            ad.i("MicroMsg.AddContactDialog", "searchContact, no contact with username = " + paramAnonymousn + ", try get by alias");
+            localb = b.this;
+            com.tencent.mm.kernel.g.afC();
+            localb.oFt = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHU(paramAnonymousn);
+            if ((b.this.oFt == null) || ((int)b.this.oFt.fId == 0))
+            {
+              ad.i("MicroMsg.AddContactDialog", "searchContact, no contact with alias, new Contact");
+              b.this.oFt = new af(paramAnonymousn);
+              b.this.oFt.na(paramAnonymousString.ijR);
+              b.this.oFt.nd(z.a(paramAnonymousString.DFJ));
+              b.this.oFt.ne(z.a(paramAnonymousString.Dbb));
+              b.this.oFt.nf(z.a(paramAnonymousString.Dbc));
+              b.this.oFt.jJ(paramAnonymousString.ijM);
+              b.this.oFt.nA(RegionCodeDecoder.aT(paramAnonymousString.ijV, paramAnonymousString.ijN, paramAnonymousString.ijO));
+              b.this.oFt.nu(paramAnonymousString.ijP);
+              b.this.oFt.jF(paramAnonymousString.DIV);
+              b.this.oFt.nz(paramAnonymousString.DIW);
+              b.this.oFt.jE(paramAnonymousString.DIZ);
+              b.this.oFt.ng(paramAnonymousString.DIY);
+              b.this.oFt.ny(paramAnonymousString.DIX);
+            }
+          }
+          for (;;)
+          {
+            b.this.aa(b.this.oFt);
+            AppMethodBeat.o(31330);
+            return;
+            ad.i("MicroMsg.AddContactDialog", "searchContact, contact in db, %s", new Object[] { paramAnonymousn });
+          }
+        }
+      };
     }
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RK().eHt.a(106, this.vTa);
-    paramString = new com.tencent.mm.plugin.messenger.a.f(paramString, this.vSY);
-    com.tencent.mm.kernel.g.RM();
-    com.tencent.mm.kernel.g.RK().eHt.a(paramString, 0);
-    AppMethodBeat.o(27633);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a(106, this.BXG);
+    paramString = new com.tencent.mm.plugin.messenger.a.g(paramString, this.BXE);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a(paramString, 0);
+    AppMethodBeat.o(31336);
   }
   
-  final void T(final ad paramad)
+  public final void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(27630);
-    if (paramad == null)
+    AppMethodBeat.i(31337);
+    if (this.ift != null) {
+      this.ift.dismiss();
+    }
+    if (paramBoolean1)
     {
-      ab.e("MicroMsg.AddContactDialog", "showContact fail, contact is null");
-      kw(-1);
-      AppMethodBeat.o(27630);
+      this.oFt.Zk();
+      com.tencent.mm.kernel.g.afC();
+      ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().c(this.oFt.field_username, this.oFt);
+      h.cf(this.mContext, this.mContext.getResources().getString(2131766270));
+      nc(1);
+      AppMethodBeat.o(31337);
       return;
     }
-    String str = this.mContext.getString(2131306016);
-    Object localObject2 = com.tencent.mm.ah.b.b(paramad.field_username, false, -1);
+    nc(-1);
+    AppMethodBeat.o(31337);
+  }
+  
+  final void aa(final af paramaf)
+  {
+    Object localObject3 = null;
+    AppMethodBeat.i(31333);
+    if (paramaf == null)
+    {
+      ad.e("MicroMsg.AddContactDialog", "showContact fail, contact is null");
+      nc(-1);
+      AppMethodBeat.o(31333);
+      return;
+    }
+    String str1 = this.mContext.getString(2131766264);
+    Object localObject2 = c.a(paramaf.field_username, false, -1, null);
     if (localObject2 == null) {
-      com.tencent.mm.ah.o.acQ().a(this);
+      p.auq().a(this);
     }
     Object localObject1 = localObject2;
     if (localObject2 != null)
     {
       localObject1 = localObject2;
-      if (paramad.dwz()) {
-        localObject1 = com.tencent.mm.sdk.platformtools.d.a((Bitmap)localObject2, false, ((Bitmap)localObject2).getWidth() / 2);
+      if (paramaf.eKB()) {
+        localObject1 = f.a((Bitmap)localObject2, false, ((Bitmap)localObject2).getWidth() / 2);
       }
     }
-    localObject2 = paramad.field_nickname;
-    this.iNf = null;
+    String str2 = paramaf.field_nickname;
+    this.lAE = null;
     if ((this.mContext instanceof MMActivity))
     {
-      if (!this.vTb)
+      if (!this.BXH)
       {
-        U(paramad);
-        AppMethodBeat.o(27630);
+        ab(paramaf);
+        AppMethodBeat.o(31333);
         return;
       }
-      this.iNf = g.a(((MMActivity)this.mContext).getController(), str, (Bitmap)localObject1, (String)localObject2, "", new q.a()
+      i locali = p.auF().we(paramaf.field_username);
+      localObject2 = localObject3;
+      if (locali != null)
+      {
+        localObject2 = localObject3;
+        if (!bt.isNullOrNil(locali.auy())) {
+          localObject2 = locali.auy();
+        }
+      }
+      this.lAE = o.a(((MMActivity)this.mContext).getController(), str1, (Bitmap)localObject1, str2, (String)localObject2, new y.a()
       {
         public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
         {
-          AppMethodBeat.i(27625);
+          AppMethodBeat.i(31328);
           if (paramAnonymousBoolean) {
-            b.this.U(paramad);
+            b.this.ab(paramaf);
           }
           for (;;)
           {
-            b.this.iNf.dismiss();
-            AppMethodBeat.o(27625);
+            b.this.lAE.dismiss();
+            AppMethodBeat.o(31328);
             return;
-            b.this.kw(0);
+            b.this.nc(0);
           }
         }
       });
     }
-    if (this.iNf == null)
+    if (this.lAE == null)
     {
-      ab.e("MicroMsg.AddContactDialog", "showContact fail, cannot show dialog");
-      kw(-1);
+      ad.e("MicroMsg.AddContactDialog", "showContact fail, cannot show dialog");
+      nc(-1);
     }
-    AppMethodBeat.o(27630);
+    AppMethodBeat.o(31333);
   }
   
-  final void U(ad paramad)
+  final void ab(af paramaf)
   {
-    AppMethodBeat.i(27631);
-    if (this.gsr != null) {
-      this.gsr.dismiss();
+    AppMethodBeat.i(31334);
+    if (this.ift != null) {
+      this.ift.dismiss();
     }
     Object localObject = this.mContext;
-    this.mContext.getString(2131297087);
-    this.gsr = h.b((Context)localObject, this.mContext.getString(2131306019), true, null);
+    this.mContext.getString(2131755906);
+    this.ift = h.b((Context)localObject, this.mContext.getString(2131766267), true, null);
     localObject = new a(this.mContext, this);
     LinkedList localLinkedList = new LinkedList();
     localLinkedList.add(Integer.valueOf(this.mScene));
-    ((a)localObject).a(paramad.field_username, localLinkedList, this.eDy);
-    AppMethodBeat.o(27631);
+    ((a)localObject).a(paramaf.field_username, localLinkedList, this.fYC);
+    AppMethodBeat.o(31334);
   }
   
-  public final void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  final void nc(int paramInt)
   {
-    AppMethodBeat.i(27634);
-    if (this.gsr != null) {
-      this.gsr.dismiss();
+    AppMethodBeat.i(31338);
+    if (this.BXF != null) {
+      this.BXF.ru(paramInt);
     }
-    if (paramBoolean1)
+    AppMethodBeat.o(31338);
+  }
+  
+  public final void show()
+  {
+    AppMethodBeat.i(31332);
+    com.tencent.mm.kernel.g.afC();
+    this.oFt = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHY(this.kGt);
+    if ((this.oFt != null) && ((int)this.oFt.fId <= 0))
     {
-      this.lpe.Nx();
-      com.tencent.mm.kernel.g.RM();
-      ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().b(this.lpe.field_username, this.lpe);
-      h.bO(this.mContext, this.mContext.getResources().getString(2131306022));
-      kw(1);
-      AppMethodBeat.o(27634);
+      ad.i("MicroMsg.AddContactDialog", "dealAddContact get by username fail, try alias, %s", new Object[] { this.kGt });
+      com.tencent.mm.kernel.g.afC();
+      this.oFt = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHU(this.kGt);
+    }
+    if ((this.oFt != null) && ((int)this.oFt.fId > 0))
+    {
+      ad.i("MicroMsg.AddContactDialog", "The contact already exists, so go to dealAddContact.");
+      if (this.oFt == null)
+      {
+        ad.e("MicroMsg.AddContactDialog", "dealAddContact fail, contact is null");
+        nc(-1);
+        AppMethodBeat.o(31332);
+        return;
+      }
+      localObject = this.oFt.field_username;
+      if (!this.oFt.eKB())
+      {
+        if (((m)com.tencent.mm.kernel.g.ab(m.class)).ec((String)localObject))
+        {
+          Context localContext = this.mContext;
+          this.mContext.getString(2131755906);
+          this.ift = h.b(localContext, this.mContext.getString(2131766267), true, null);
+          aBK((String)localObject);
+          AppMethodBeat.o(31332);
+          return;
+        }
+        if (((this.mContext instanceof MMActivity)) && (h.a(this.mContext, this.mContext.getString(2131766266), "", this.mContext.getString(2131755792), false, new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(191278);
+            ad.e("MicroMsg.AddContactDialog", "doAddContact fail, contact not biz");
+            b.this.nc(-1);
+            AppMethodBeat.o(191278);
+          }
+        }) == null))
+        {
+          ad.e("MicroMsg.AddContactDialog", "dealAddContact fail, connot show dialog");
+          nc(-1);
+        }
+        AppMethodBeat.o(31332);
+        return;
+      }
+      if (com.tencent.mm.n.b.ls(this.oFt.field_type))
+      {
+        h.cf(this.mContext, this.mContext.getResources().getString(2131766270));
+        nc(-2);
+        AppMethodBeat.o(31332);
+        return;
+      }
+      aa(this.oFt);
+      AppMethodBeat.o(31332);
       return;
     }
-    kw(-1);
-    AppMethodBeat.o(27634);
-  }
-  
-  final void kw(int paramInt)
-  {
-    AppMethodBeat.i(27635);
-    if (this.vSZ != null) {
-      this.vSZ.nP(paramInt);
+    if (this.mContext == null)
+    {
+      AppMethodBeat.o(31332);
+      return;
     }
-    AppMethodBeat.o(27635);
+    Object localObject = this.mContext;
+    this.mContext.getString(2131755906);
+    this.ift = h.b((Context)localObject, this.mContext.getString(2131766267), true, new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(31327);
+        if (b.this.ift != null)
+        {
+          b.this.ift.dismiss();
+          b.this.ift = null;
+        }
+        AppMethodBeat.o(31327);
+      }
+    });
+    aBK(this.kGt);
+    AppMethodBeat.o(31332);
   }
   
-  public final void re(String paramString)
+  public final void vZ(String paramString)
   {
     int j = 1;
-    AppMethodBeat.i(27632);
-    if (this.lpe != null)
+    AppMethodBeat.i(31335);
+    if (this.oFt != null)
     {
       int i;
-      if ((this.lpe.field_username != null) && (this.lpe.field_username.equals(paramString)))
+      if ((this.oFt.field_username != null) && (this.oFt.field_username.equals(paramString)))
       {
         i = 1;
-        if ((this.lpe.Hq() == null) || (!this.lpe.Hq().equals(paramString))) {
+        if ((this.oFt.Ss() == null) || (!this.oFt.Ss().equals(paramString))) {
           break label85;
         }
       }
@@ -193,7 +393,7 @@ public final class b
         if ((i != 0) || (j != 0)) {
           break label115;
         }
-        AppMethodBeat.o(27632);
+        AppMethodBeat.o(31335);
         return;
         i = 0;
         break;
@@ -201,32 +401,32 @@ public final class b
         j = 0;
       }
     }
-    if ((this.ikj == null) || (!this.ikj.equals(paramString)))
+    if ((this.kGt == null) || (!this.kGt.equals(paramString)))
     {
-      AppMethodBeat.o(27632);
+      AppMethodBeat.o(31335);
       return;
     }
     label115:
-    if ((this.iNf == null) || (!this.iNf.isShowing()))
+    if ((this.lAE == null) || (!this.lAE.isShowing()))
     {
-      AppMethodBeat.o(27632);
+      AppMethodBeat.o(31335);
       return;
     }
-    al.d(new Runnable()
+    aq.f(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(27626);
-        ImageView localImageView = (ImageView)b.this.iNf.getContentView().findViewById(2131822991);
+        AppMethodBeat.i(31329);
+        ImageView localImageView = (ImageView)b.this.lAE.getContentView().findViewById(2131298570);
         if (localImageView != null)
         {
-          Bitmap localBitmap2 = com.tencent.mm.ah.b.b(b.this.lpe.field_username, false, -1);
+          Bitmap localBitmap2 = c.a(b.this.oFt.field_username, false, -1, null);
           Bitmap localBitmap1 = localBitmap2;
           if (localBitmap2 != null)
           {
             localBitmap1 = localBitmap2;
-            if (b.this.lpe.dwz()) {
-              localBitmap1 = com.tencent.mm.sdk.platformtools.d.a(localBitmap2, false, localBitmap2.getWidth() / 2);
+            if (b.this.oFt.eKB()) {
+              localBitmap1 = f.a(localBitmap2, false, localBitmap2.getWidth() / 2);
             }
           }
           if ((localBitmap1 != null) && (!localBitmap1.isRecycled()))
@@ -235,80 +435,15 @@ public final class b
             localImageView.setVisibility(0);
           }
         }
-        AppMethodBeat.o(27626);
+        AppMethodBeat.o(31329);
       }
     });
-    AppMethodBeat.o(27632);
-  }
-  
-  public final void show()
-  {
-    AppMethodBeat.i(27629);
-    com.tencent.mm.kernel.g.RM();
-    this.lpe = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(this.ikj);
-    if ((this.lpe != null) && ((int)this.lpe.euF <= 0))
-    {
-      ab.i("MicroMsg.AddContactDialog", "dealAddContact get by username fail, try alias, %s", new Object[] { this.ikj });
-      com.tencent.mm.kernel.g.RM();
-      this.lpe = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().ars(this.ikj);
-    }
-    if ((this.lpe != null) && ((int)this.lpe.euF > 0))
-    {
-      ab.i("MicroMsg.AddContactDialog", "The contact already exists, so go to dealAddContact.");
-      if (this.lpe == null)
-      {
-        ab.e("MicroMsg.AddContactDialog", "dealAddContact fail, contact is null");
-        kw(-1);
-        AppMethodBeat.o(27629);
-        return;
-      }
-      localObject = this.lpe.field_username;
-      if (!this.lpe.dwz())
-      {
-        if (((com.tencent.mm.api.j)com.tencent.mm.kernel.g.E(com.tencent.mm.api.j.class)).dk((String)localObject))
-        {
-          Context localContext = this.mContext;
-          this.mContext.getString(2131297087);
-          this.gsr = h.b(localContext, this.mContext.getString(2131306019), true, null);
-          amh((String)localObject);
-          AppMethodBeat.o(27629);
-          return;
-        }
-        localObject = BitmapFactory.decodeResource(this.mContext.getResources(), 2130838470);
-        if (((this.mContext instanceof MMActivity)) && (g.a(((MMActivity)this.mContext).getController(), (Bitmap)localObject, this.mContext.getResources().getString(2131306024), new b.5(this)) == null))
-        {
-          ab.e("MicroMsg.AddContactDialog", "dealAddContact fail, connot show dialog");
-          kw(-1);
-        }
-        AppMethodBeat.o(27629);
-        return;
-      }
-      if (com.tencent.mm.n.a.je(this.lpe.field_type))
-      {
-        h.bO(this.mContext, this.mContext.getResources().getString(2131306022));
-        kw(-2);
-        AppMethodBeat.o(27629);
-        return;
-      }
-      T(this.lpe);
-      AppMethodBeat.o(27629);
-      return;
-    }
-    if (this.mContext == null)
-    {
-      AppMethodBeat.o(27629);
-      return;
-    }
-    Object localObject = this.mContext;
-    this.mContext.getString(2131297087);
-    this.gsr = h.b((Context)localObject, this.mContext.getString(2131306019), true, new b.1(this));
-    amh(this.ikj);
-    AppMethodBeat.o(27629);
+    AppMethodBeat.o(31335);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.b
  * JD-Core Version:    0.7.0.1
  */

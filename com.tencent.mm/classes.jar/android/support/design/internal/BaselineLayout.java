@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 public class BaselineLayout
   extends ViewGroup
 {
-  private int dO = -1;
+  private int baseline = -1;
   
   public BaselineLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,7 +22,7 @@ public class BaselineLayout
   
   public int getBaseline()
   {
-    return this.dO;
+    return this.baseline;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -43,12 +43,12 @@ public class BaselineLayout
         n = localView.getMeasuredWidth();
         i1 = localView.getMeasuredHeight();
         i2 = k + (paramInt3 - paramInt1 - m - k - n) / 2;
-        if ((this.dO == -1) || (localView.getBaseline() == -1)) {
+        if ((this.baseline == -1) || (localView.getBaseline() == -1)) {
           break label141;
         }
       }
       label141:
-      for (paramInt4 = this.dO + i - localView.getBaseline();; paramInt4 = i)
+      for (paramInt4 = this.baseline + i - localView.getBaseline();; paramInt4 = i)
       {
         localView.layout(i2, paramInt4, n + i2, i1 + paramInt4);
         paramInt2 += 1;
@@ -99,7 +99,7 @@ public class BaselineLayout
     if (j != -1)
     {
       m = Math.max(i, Math.max(k, getPaddingBottom()) + j);
-      this.dO = j;
+      this.baseline = j;
     }
     i = Math.max(m, getSuggestedMinimumHeight());
     setMeasuredDimension(View.resolveSizeAndState(Math.max(i2, getSuggestedMinimumWidth()), paramInt1, i1), View.resolveSizeAndState(i, paramInt2, i1 << 16));
@@ -107,7 +107,7 @@ public class BaselineLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.internal.BaselineLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.pi;
+import com.tencent.mm.g.a.ra;
 import com.tencent.mm.sdk.b.c;
 
 final class am$5
-  extends c<pi>
+  extends c<ra>
 {
   am$5(am paramam)
   {
-    AppMethodBeat.i(87936);
-    this.__eventId = pi.class.getName().hashCode();
-    AppMethodBeat.o(87936);
+    AppMethodBeat.i(161197);
+    this.__eventId = ra.class.getName().hashCode();
+    AppMethodBeat.o(161197);
   }
 }
 

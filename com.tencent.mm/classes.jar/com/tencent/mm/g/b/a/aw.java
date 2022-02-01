@@ -6,157 +6,74 @@ import com.tencent.mm.plugin.report.a;
 public final class aw
   extends a
 {
-  private String cSd = "";
-  private int cVO = 0;
-  private int cVP = 0;
-  private int cVQ = 0;
-  private int cVR = 0;
-  private String cVS = "";
-  private int cVT = 0;
-  private int cVU = 0;
-  private String cVV = "";
-  private long cVW = 0L;
+  public long dHq = 0L;
+  public long dMX = 0L;
+  public long dMY = 0L;
+  public long dMZ = 0L;
+  public long dNa = 0L;
+  public long dNb = 0L;
+  private String dNc = "";
+  public long dNd = 0L;
   
-  public final int FA()
+  public final String PV()
   {
-    return this.cVR;
-  }
-  
-  public final int FB()
-  {
-    return this.cVU;
-  }
-  
-  public final String Ff()
-  {
-    AppMethodBeat.i(108857);
+    AppMethodBeat.i(149910);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cSd);
+    ((StringBuffer)localObject).append(this.dHq);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVO);
+    ((StringBuffer)localObject).append(this.dMX);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVP);
+    ((StringBuffer)localObject).append(this.dMY);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVQ);
+    ((StringBuffer)localObject).append(this.dMZ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVR);
+    ((StringBuffer)localObject).append(this.dNa);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVS);
+    ((StringBuffer)localObject).append(this.dNb);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVT);
+    ((StringBuffer)localObject).append(this.dNc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVU);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVV);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVW);
+    ((StringBuffer)localObject).append(this.dNd);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(108857);
+    ams((String)localObject);
+    AppMethodBeat.o(149910);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(108858);
+    AppMethodBeat.i(149911);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SessionId:").append(this.cSd);
+    ((StringBuffer)localObject).append("ActionType:").append(this.dHq);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeViewId:").append(this.cVO);
+    ((StringBuffer)localObject).append("Content:").append(this.dMX);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeOrder:").append(this.cVP);
+    ((StringBuffer)localObject).append("ChangeAmountTimes:").append(this.dMY);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeNewUinCount:").append(this.cVQ);
+    ((StringBuffer)localObject).append("AddSelfieEmoticonTimes:").append(this.dMZ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeNewFavorUinCount:").append(this.cVR);
+    ((StringBuffer)localObject).append("AddCustonEmoticonTimes:").append(this.dNa);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeNewUinList:").append(this.cVS);
+    ((StringBuffer)localObject).append("AddSelfieEmoticonFormBoardTimes:").append(this.dNb);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeBeforeUinCount:").append(this.cVT);
+    ((StringBuffer)localObject).append("EmoticonMd5:").append(this.dNc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeBeforeFavorUinCount:").append(this.cVU);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeBeforeUinList:").append(this.cVV);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("InteractiveUserCount:").append(this.cVW);
+    ((StringBuffer)localObject).append("AddShopEmoticonTimes:").append(this.dNd);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(108858);
+    AppMethodBeat.o(149911);
     return localObject;
-  }
-  
-  public final int Fz()
-  {
-    return this.cVO;
-  }
-  
-  public final aw co(long paramLong)
-  {
-    this.cVW = paramLong;
-    return this;
-  }
-  
-  public final aw gD(int paramInt)
-  {
-    this.cVO = paramInt;
-    return this;
-  }
-  
-  public final aw gE(int paramInt)
-  {
-    this.cVP = paramInt;
-    return this;
-  }
-  
-  public final aw gF(int paramInt)
-  {
-    this.cVQ = paramInt;
-    return this;
-  }
-  
-  public final aw gG(int paramInt)
-  {
-    this.cVR = paramInt;
-    return this;
-  }
-  
-  public final aw gH(int paramInt)
-  {
-    this.cVT = paramInt;
-    return this;
-  }
-  
-  public final aw gI(int paramInt)
-  {
-    this.cVU = paramInt;
-    return this;
   }
   
   public final int getId()
   {
-    return 16887;
+    return 16724;
   }
   
-  public final aw gj(String paramString)
+  public final aw hM(String paramString)
   {
-    AppMethodBeat.i(108854);
-    this.cSd = t("SessionId", paramString, true);
-    AppMethodBeat.o(108854);
-    return this;
-  }
-  
-  public final aw gk(String paramString)
-  {
-    AppMethodBeat.i(108855);
-    this.cVS = t("ExposeNewUinList", paramString, true);
-    AppMethodBeat.o(108855);
-    return this;
-  }
-  
-  public final aw gl(String paramString)
-  {
-    AppMethodBeat.i(108856);
-    this.cVV = t("ExposeBeforeUinList", paramString, true);
-    AppMethodBeat.o(108856);
+    AppMethodBeat.i(149909);
+    this.dNc = t("EmoticonMd5", paramString, true);
+    AppMethodBeat.o(149909);
     return this;
   }
 }

@@ -15,38 +15,38 @@ public final class zzaj
 {
   public final PendingResult<Status> addListener(GoogleApiClient paramGoogleApiClient, ChannelApi.ChannelListener paramChannelListener)
   {
-    AppMethodBeat.i(70998);
+    AppMethodBeat.i(100981);
     Preconditions.checkNotNull(paramGoogleApiClient, "client is null");
     Preconditions.checkNotNull(paramChannelListener, "listener is null");
     paramGoogleApiClient = zzb.zza(paramGoogleApiClient, new zzal(new IntentFilter[] { zzgj.zzc("com.google.android.gms.wearable.CHANNEL_EVENT") }), paramChannelListener);
-    AppMethodBeat.o(70998);
+    AppMethodBeat.o(100981);
     return paramGoogleApiClient;
   }
   
   public final PendingResult<ChannelApi.OpenChannelResult> openChannel(GoogleApiClient paramGoogleApiClient, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(70997);
+    AppMethodBeat.i(100980);
     Preconditions.checkNotNull(paramGoogleApiClient, "client is null");
     Preconditions.checkNotNull(paramString1, "nodeId is null");
     Preconditions.checkNotNull(paramString2, "path is null");
     paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzak(this, paramGoogleApiClient, paramString1, paramString2));
-    AppMethodBeat.o(70997);
+    AppMethodBeat.o(100980);
     return paramGoogleApiClient;
   }
   
   public final PendingResult<Status> removeListener(GoogleApiClient paramGoogleApiClient, ChannelApi.ChannelListener paramChannelListener)
   {
-    AppMethodBeat.i(70999);
+    AppMethodBeat.i(100982);
     Preconditions.checkNotNull(paramGoogleApiClient, "client is null");
     Preconditions.checkNotNull(paramChannelListener, "listener is null");
     paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzan(paramGoogleApiClient, paramChannelListener, null));
-    AppMethodBeat.o(70999);
+    AppMethodBeat.o(100982);
     return paramGoogleApiClient;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzaj
  * JD-Core Version:    0.7.0.1
  */

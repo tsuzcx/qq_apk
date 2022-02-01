@@ -11,9 +11,9 @@ public final class zzbg
   
   static
   {
-    AppMethodBeat.i(60835);
+    AppMethodBeat.i(11327);
     zzji = Executors.newFixedThreadPool(2, new NumberedThreadFactory("GAC_Executor"));
-    AppMethodBeat.o(60835);
+    AppMethodBeat.o(11327);
   }
   
   public static ExecutorService zzbe()

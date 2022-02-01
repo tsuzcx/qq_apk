@@ -2,66 +2,78 @@ package com.tencent.mm.plugin.webview.modeltools;
 
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.i.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
+import com.tencent.mm.plugin.webview.c.l.a;
+import com.tencent.mm.protocal.protobuf.ads;
+import com.tencent.mm.protocal.protobuf.adt;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.widget.MMWebView;
 import java.net.URL;
 import java.util.HashMap;
+import org.json.JSONObject;
 
 public final class k
 {
-  public static boolean a(d paramd, MMWebView paramMMWebView)
+  public static boolean a(com.tencent.mm.plugin.webview.c.f paramf, MMWebView paramMMWebView)
   {
-    AppMethodBeat.i(7030);
-    if (paramd == null)
+    AppMethodBeat.i(187937);
+    if (paramf == null)
     {
-      ab.w("MicroMsg.WebViewReportOnLeaveHelper", "handler is null");
-      AppMethodBeat.o(7030);
+      ad.w("MicroMsg.WebViewReportOnLeaveHelper", "handler is null");
+      AppMethodBeat.o(187937);
       return false;
     }
     String str = paramMMWebView.getUrl();
-    if (!bo.isNullOrNil(str))
+    if (!bt.isNullOrNil(str))
     {
       try
       {
         boolean bool = new URL(str).getHost().equals("mp.weixin.qq.com");
         if (bool) {
-          break label107;
+          break label102;
         }
-        AppMethodBeat.o(7030);
+        AppMethodBeat.o(187937);
         return false;
       }
-      catch (Exception paramd)
+      catch (Exception paramf)
       {
-        ab.e("MicroMsg.WebViewReportOnLeaveHelper", "create url fail : " + paramd.getLocalizedMessage());
-        AppMethodBeat.o(7030);
+        ad.e("MicroMsg.WebViewReportOnLeaveHelper", "create url fail : " + paramf.getLocalizedMessage());
+        AppMethodBeat.o(187937);
         return false;
       }
     }
     else
     {
-      AppMethodBeat.o(7030);
+      AppMethodBeat.o(187937);
       return false;
     }
-    label107:
-    paramMMWebView = new k.1(paramMMWebView);
-    if (!paramd.ready) {
+    label102:
+    paramMMWebView = new ValueCallback() {};
+    if (!paramf.yZR) {
       paramMMWebView.onReceiveValue(null);
     }
     for (;;)
     {
-      AppMethodBeat.o(7030);
+      AppMethodBeat.o(187937);
       return true;
-      str = i.a.b("reportOnLeaveForMP", new HashMap(), paramd.voB, paramd.voC);
-      paramd.vou.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + str + ")", paramMMWebView);
+      str = l.a.b("reportOnLeaveForMP", new HashMap(), paramf.ARm, paramf.ARn);
+      paramf.ARe.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + str + ")", paramMMWebView);
     }
   }
+  
+  static class a
+    implements com.tencent.mm.ipcinvoker.b<IPCString, IPCString>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.modeltools.k
  * JD-Core Version:    0.7.0.1
  */

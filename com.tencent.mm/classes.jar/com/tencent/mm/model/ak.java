@@ -1,15 +1,24 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.kernel.c.a;
-
 public abstract interface ak
-  extends a
 {
-  public abstract void gu(long paramLong);
+  public abstract void aA(String paramString1, String paramString2);
   
-  public abstract void pk(String paramString);
+  public abstract void tP(String paramString);
   
-  public abstract void v(String paramString, long paramLong);
+  public abstract void tQ(String paramString);
+  
+  public abstract void tR(String paramString);
+  
+  public abstract void tS(String paramString);
+  
+  public abstract void tT(String paramString);
+  
+  public abstract void tU(String paramString);
+  
+  public abstract void tV(String paramString);
+  
+  public abstract void tW(String paramString);
 }
 
 

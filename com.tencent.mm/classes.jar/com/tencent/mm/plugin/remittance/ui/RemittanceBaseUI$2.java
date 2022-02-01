@@ -11,7 +11,7 @@ final class RemittanceBaseUI$2
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    AppMethodBeat.i(142140);
+    AppMethodBeat.i(67951);
     if (paramEditable.toString().startsWith(".")) {
       paramEditable.insert(0, "0");
     }
@@ -21,7 +21,7 @@ final class RemittanceBaseUI$2
     if ((i >= 0) && (j - i > 2)) {
       paramEditable.delete(i + 3, j);
     }
-    AppMethodBeat.o(142140);
+    AppMethodBeat.o(67951);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -30,7 +30,7 @@ final class RemittanceBaseUI$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceBaseUI.2
  * JD-Core Version:    0.7.0.1
  */

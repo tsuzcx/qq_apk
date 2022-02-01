@@ -16,10 +16,10 @@ final class zzan
   zzan(GoogleApiClient paramGoogleApiClient, ChannelApi.ChannelListener paramChannelListener, @Nullable String paramString)
   {
     super(paramGoogleApiClient);
-    AppMethodBeat.i(71004);
+    AppMethodBeat.i(100987);
     this.zzcf = ((ChannelApi.ChannelListener)Preconditions.checkNotNull(paramChannelListener));
     this.zzce = paramString;
-    AppMethodBeat.o(71004);
+    AppMethodBeat.o(100987);
   }
 }
 

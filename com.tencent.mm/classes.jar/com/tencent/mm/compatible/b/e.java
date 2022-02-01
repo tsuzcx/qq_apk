@@ -9,22 +9,22 @@ public final class e
   public e(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super(paramInt1, paramInt2, paramInt3, 2, paramInt4, 1);
-    AppMethodBeat.i(92836);
-    g.iH(hashCode());
-    AppMethodBeat.o(92836);
+    AppMethodBeat.i(155555);
+    g.kR(hashCode());
+    AppMethodBeat.o(155555);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(92837);
+    AppMethodBeat.i(155556);
     super.release();
-    g.iI(hashCode());
-    AppMethodBeat.o(92837);
+    g.kS(hashCode());
+    AppMethodBeat.o(155556);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.compatible.b.e
  * JD-Core Version:    0.7.0.1
  */

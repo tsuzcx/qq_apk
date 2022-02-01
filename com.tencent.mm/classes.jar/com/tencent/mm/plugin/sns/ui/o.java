@@ -7,230 +7,242 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.c;
-import com.tencent.mm.model.t;
-import com.tencent.mm.modelsns.b;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ax;
-import com.tencent.mm.plugin.sns.model.ay;
+import com.tencent.mm.aw.c;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.w;
+import com.tencent.mm.plugin.sns.d.a;
+import com.tencent.mm.plugin.sns.data.q;
+import com.tencent.mm.plugin.sns.k.h;
+import com.tencent.mm.plugin.sns.k.j;
+import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.az;
+import com.tencent.mm.plugin.sns.model.ba;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.bap;
-import com.tencent.mm.protocal.protobuf.cfm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.bmn;
+import com.tencent.mm.protocal.protobuf.cwk;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.w;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.ui.y;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class o
-  implements y
+  implements ab
 {
   private String appId = "";
   private String appName = "";
-  private String cGN;
-  private MMActivity cmc;
-  private Bitmap frG = null;
+  private String dpa = "";
+  private String dxz;
+  private Bitmap gTB = null;
   private int h = -1;
-  private String imgPath = "";
-  private View jIo = null;
+  private MMActivity imP;
   private String link = "";
-  private boolean mCu = false;
-  private String rGa = "";
-  private byte[] rGb = null;
-  private String rGc;
-  private int rGd;
-  private CdnImageView rGe = null;
-  private TextView rGf = null;
-  private int rGg;
-  private String rGh = "";
-  private String rGi = "";
-  private b rGj = null;
+  private boolean osM = false;
+  private View pf = null;
+  private String qpB = "";
   private String title = "";
   private TextView titleTv = null;
   private int w = -1;
+  private int wLo = 1;
+  private byte[] xlX = null;
+  private String xlY;
+  private int xlZ;
+  private CdnImageView xma = null;
+  private TextView xmb = null;
+  private int xmc;
+  private String xmd = "";
+  private String xme = "";
+  private com.tencent.mm.modelsns.d xmf = null;
+  private String xmg = "";
   
   public o(MMActivity paramMMActivity)
   {
-    this.cmc = paramMMActivity;
+    this.imP = paramMMActivity;
   }
   
-  public final void V(Bundle paramBundle)
+  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bmn parambmn, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(38219);
-    this.rGj = b.w(this.cmc.getIntent());
-    this.w = this.cmc.getIntent().getIntExtra("Ksnsupload_width", -1);
-    this.h = this.cmc.getIntent().getIntExtra("Ksnsupload_height", -1);
-    this.rGd = this.cmc.getIntent().getIntExtra("Ksnsupload_source", 0);
-    this.link = bo.bf(this.cmc.getIntent().getStringExtra("Ksnsupload_link"), "");
-    this.title = bo.bf(this.cmc.getIntent().getStringExtra("Ksnsupload_title"), "");
-    this.rGa = bo.bf(this.cmc.getIntent().getStringExtra("Ksnsupload_imgurl"), "");
-    this.imgPath = this.cmc.getIntent().getStringExtra("KsnsUpload_imgPath");
-    this.mCu = this.cmc.getIntent().getBooleanExtra("ksnsis_video", false);
-    this.cGN = bo.bf(this.cmc.getIntent().getStringExtra("src_username"), "");
-    this.rGc = bo.bf(this.cmc.getIntent().getStringExtra("src_displayname"), "");
-    this.rGi = bo.bf(this.cmc.getIntent().getStringExtra("KContentObjDesc"), "");
-    this.rGh = bo.bf(this.cmc.getIntent().getStringExtra("KUploadProduct_UserData"), "");
-    this.appName = bo.bf(this.cmc.getIntent().getStringExtra("Ksnsupload_appname"), "");
-    this.appId = bo.bf(this.cmc.getIntent().getStringExtra("Ksnsupload_appid"), "");
-    this.rGg = this.cmc.getIntent().getIntExtra("KUploadProduct_subType", 0);
-    AppMethodBeat.o(38219);
-  }
-  
-  public final void W(Bundle paramBundle) {}
-  
-  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bap parambap, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
-  {
-    AppMethodBeat.i(38221);
-    paramString2 = new ay(10);
-    paramPInt.value = paramString2.ayi;
-    if (paramInt3 > a.raX) {
-      paramString2.DS(2);
+    AppMethodBeat.i(97857);
+    paramLinkedList = new ba(17);
+    paramPInt.value = paramLinkedList.aTB;
+    if (paramInt3 > a.wzN) {
+      paramLinkedList.Ms(2);
     }
     if (parami != null) {
-      paramString2.go(parami.token, parami.xsy);
+      paramLinkedList.iI(parami.token, parami.DNx);
     }
-    paramString2.aaQ(this.title).aaO(this.rGi).aaP(this.link).aaL(paramString1);
+    paramLinkedList.aoX(this.title).aoV(this.xme).aoW(this.link).aoS(paramString1);
     boolean bool2 = false;
     boolean bool1;
-    if (!bo.isNullOrNil(this.imgPath))
+    if (!bt.isNullOrNil(this.dpa))
     {
-      bool1 = paramString2.a(e.i(this.imgPath, 0, -1), this.rGi, this.title, this.rGg, this.rGh);
+      bool1 = paramLinkedList.a(com.tencent.mm.vfs.i.aR(this.dpa, 0, -1), this.xme, this.title, this.xmc, this.xmd);
       bool2 = bool1;
       if (!bool1)
       {
-        ab.i("MicroMsg.EmojiShareWidget", "set userData user imgurl ");
-        bool2 = paramString2.b(this.rGa, this.rGa, this.rGi, this.rGg, this.rGh);
+        ad.i("MicroMsg.EmojiDesignerShareWidget", "set userData user imgurl ");
+        bool2 = paramLinkedList.b(this.qpB, this.qpB, this.xme, this.xmc, this.xmd);
       }
       if (!bool2) {
-        ab.e("MicroMsg.EmojiShareWidget", "set userData faild");
+        ad.e("MicroMsg.EmojiDesignerShareWidget", "set userData faild");
       }
-      paramString2.DW(this.rGd);
-      paramString2.aaT(this.cGN);
-      paramString2.aaU(this.rGc);
+      paramLinkedList.bR(this.wLo, this.xmg);
+      paramLinkedList.Mw(this.xlZ);
+      paramLinkedList.apa(this.dxz);
+      paramLinkedList.apb(this.xlY);
+      paramLinkedList.g(null, null, null, paramInt4, paramInt5);
+      paramLinkedList.Mu(paramInt1);
       if (!paramBoolean) {
-        break label437;
+        break label470;
       }
-      paramString2.DX(1);
+      paramLinkedList.Mx(1);
     }
     for (;;)
     {
-      paramString2.dc(paramList2);
-      if (!bo.isNullOrNil(this.appId))
+      paramLinkedList.fq(paramList2);
+      if (!bt.isNullOrNil(this.appId))
       {
-        paramString2.aaR(this.appId);
-        paramString2.aaS(this.appName);
+        paramLinkedList.aoY(this.appId);
+        paramLinkedList.aoZ(this.appName);
       }
       parami = new LinkedList();
       if (paramList1 == null) {
-        break label447;
+        break label480;
       }
       new LinkedList();
-      paramString1 = t.aac();
+      paramString1 = w.arx();
       paramList1 = paramList1.iterator();
       while (paramList1.hasNext())
       {
         paramList2 = (String)paramList1.next();
         if (!paramString1.contains(paramList2))
         {
-          paramPInt = new cfm();
-          paramPInt.jJA = paramList2;
+          paramPInt = new cwk();
+          paramPInt.mAQ = paramList2;
           parami.add(paramPInt);
         }
       }
       bool1 = bool2;
-      if (bo.isNullOrNil(this.rGa)) {
+      if (bt.isNullOrNil(this.qpB)) {
         break;
       }
       bool1 = bool2;
-      if (com.tencent.mm.at.o.ahB() == null) {
+      if (com.tencent.mm.aw.o.ayE() == null) {
         break;
       }
-      com.tencent.mm.at.o.ahB();
-      parami = c.lK(this.rGa);
+      com.tencent.mm.aw.o.ayE();
+      parami = c.pT(this.qpB);
       bool1 = bool2;
       if (parami == null) {
         break;
       }
-      bool1 = paramString2.a(com.tencent.mm.sdk.platformtools.d.aj(parami), this.rGi, this.title, this.rGg, this.rGh);
+      bool1 = paramLinkedList.a(f.aw(parami), this.xme, this.title, this.xmc, this.xmd);
       break;
-      label437:
-      paramString2.DX(0);
+      label470:
+      paramLinkedList.Mx(0);
     }
-    label447:
-    paramString2.av(parami).DU(paramInt1);
-    paramString2.g(null, null, null, paramInt4, paramInt5);
-    paramString2.a(parambap);
-    paramInt1 = paramString2.commit();
-    if (this.rGj != null)
+    label480:
+    paramLinkedList.aM(parami);
+    paramLinkedList.a(parambmn);
+    paramInt1 = paramLinkedList.commit();
+    if (this.xmf != null)
     {
-      this.rGj.lX(paramInt1);
-      com.tencent.mm.plugin.sns.i.g.roZ.c(this.rGj);
+      this.xmf.oG(paramInt1);
+      h.wRM.c(this.xmf);
     }
-    ag.cpb().cnP();
-    this.cmc.finish();
-    parami = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().KB(this.rGh);
-    h.qsU.e(10993, new Object[] { Integer.valueOf(1), parami });
-    AppMethodBeat.o(38221);
+    af.dtq().drS();
+    this.imP.finish();
+    ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().TI(this.xmd);
+    ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().TJ(this.xmd);
+    AppMethodBeat.o(97857);
     return false;
   }
   
-  public final boolean ctu()
+  public final void af(Bundle paramBundle)
+  {
+    AppMethodBeat.i(97855);
+    this.xmf = com.tencent.mm.modelsns.d.w(this.imP.getIntent());
+    this.w = this.imP.getIntent().getIntExtra("Ksnsupload_width", -1);
+    this.h = this.imP.getIntent().getIntExtra("Ksnsupload_height", -1);
+    this.xlZ = this.imP.getIntent().getIntExtra("Ksnsupload_source", 0);
+    this.link = bt.by(this.imP.getIntent().getStringExtra("Ksnsupload_link"), "");
+    this.title = bt.by(this.imP.getIntent().getStringExtra("Ksnsupload_title"), "");
+    this.qpB = bt.by(this.imP.getIntent().getStringExtra("Ksnsupload_imgurl"), "");
+    this.dpa = this.imP.getIntent().getStringExtra("KsnsUpload_imgPath");
+    this.osM = this.imP.getIntent().getBooleanExtra("ksnsis_video", false);
+    this.dxz = bt.by(this.imP.getIntent().getStringExtra("src_username"), "");
+    this.xlY = bt.by(this.imP.getIntent().getStringExtra("src_displayname"), "");
+    this.xme = bt.by(this.imP.getIntent().getStringExtra("KContentObjDesc"), "");
+    this.xmd = bt.by(this.imP.getIntent().getStringExtra("KUploadProduct_UserData"), "");
+    this.appName = bt.by(this.imP.getIntent().getStringExtra("Ksnsupload_appname"), "");
+    this.appId = bt.by(this.imP.getIntent().getStringExtra("Ksnsupload_appid"), "");
+    this.xmc = this.imP.getIntent().getIntExtra("KUploadProduct_subType", 0);
+    if (this.imP.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {}
+    for (this.wLo = 1;; this.wLo = 0)
+    {
+      this.xmg = bt.by(this.imP.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
+      AppMethodBeat.o(97855);
+      return;
+    }
+  }
+  
+  public final void ag(Bundle paramBundle) {}
+  
+  public final boolean dyU()
   {
     return true;
   }
   
-  public final View ctv()
+  public final View dyV()
   {
-    AppMethodBeat.i(38220);
-    this.jIo = w.hM(this.cmc).inflate(2130971051, null);
-    this.rGe = ((CdnImageView)this.jIo.findViewById(2131825855));
-    this.titleTv = ((TextView)this.jIo.findViewById(2131825857));
-    this.rGf = ((TextView)this.jIo.findViewById(2131825858));
-    if (this.mCu)
+    AppMethodBeat.i(97856);
+    this.pf = y.js(this.imP).inflate(2131495816, null);
+    this.xma = ((CdnImageView)this.pf.findViewById(2131300948));
+    this.titleTv = ((TextView)this.pf.findViewById(2131305950));
+    this.xmb = ((TextView)this.pf.findViewById(2131304202));
+    if (this.osM)
     {
-      this.jIo.findViewById(2131824765).setVisibility(0);
+      this.pf.findViewById(2131305185).setVisibility(0);
       this.titleTv.setText(this.title);
-      if (bo.isNullOrNil(this.rGa)) {
+      if (bt.isNullOrNil(this.qpB)) {
         break label178;
       }
-      this.rGe.setVisibility(0);
-      this.rGe.setUrl(this.rGa);
+      this.xma.setVisibility(0);
+      this.xma.setUrl(this.qpB);
     }
     for (;;)
     {
-      com.tencent.mm.plugin.sns.data.i.b(this.rGe, this.cmc);
-      View localView = this.jIo;
-      AppMethodBeat.o(38220);
+      q.b(this.xma, this.imP);
+      View localView = this.pf;
+      AppMethodBeat.o(97856);
       return localView;
-      this.jIo.findViewById(2131824765).setVisibility(8);
+      this.pf.findViewById(2131305185).setVisibility(8);
       break;
       label178:
-      if (!bo.ce(this.rGb))
+      if (!bt.cw(this.xlX))
       {
-        this.rGe.setVisibility(0);
-        this.frG = com.tencent.mm.sdk.platformtools.d.bT(this.rGb);
-        this.rGe.setImageBitmap(this.frG);
+        this.xma.setVisibility(0);
+        this.gTB = f.cl(this.xlX);
+        this.xma.setImageBitmap(this.gTB);
       }
       else
       {
-        this.rGe.setVisibility(8);
+        this.xma.setVisibility(8);
       }
     }
   }
   
-  public final boolean ctw()
+  public final boolean dyW()
   {
-    AppMethodBeat.i(38222);
-    if ((this.frG != null) && (!this.frG.isRecycled())) {
-      this.frG.recycle();
+    AppMethodBeat.i(97858);
+    if ((this.gTB != null) && (!this.gTB.isRecycled())) {
+      this.gTB.recycle();
     }
-    AppMethodBeat.o(38222);
+    AppMethodBeat.o(97858);
     return false;
   }
   
@@ -241,7 +253,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.o
  * JD-Core Version:    0.7.0.1
  */

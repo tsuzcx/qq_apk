@@ -10,7 +10,7 @@ public final class h
   static void a(WebImage paramWebImage, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramWebImage.Hc);
+    c.c(paramParcel, 1, paramWebImage.IR);
     c.a(paramParcel, 2, paramWebImage.getUrl(), paramInt);
     c.c(paramParcel, 3, paramWebImage.getWidth());
     c.c(paramParcel, 4, paramWebImage.getHeight());

@@ -2,122 +2,126 @@ package com.tencent.mm.plugin.fcm;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.gt;
+import com.tencent.mm.g.a.gu;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class PluginFCM
   extends f
   implements com.tencent.mm.plugin.fcm.a.a
 {
-  private static boolean mET = true;
-  c mEU;
-  c mEV;
+  private static boolean qmP = true;
+  c qmQ;
+  c qmR;
   
   public PluginFCM()
   {
-    AppMethodBeat.i(56446);
-    this.mEU = new PluginFCM.1(this);
-    this.mEV = new PluginFCM.2(this);
-    AppMethodBeat.o(56446);
+    AppMethodBeat.i(127584);
+    this.qmQ = new c() {};
+    this.qmR = new c() {};
+    AppMethodBeat.o(127584);
   }
   
   private boolean handleLogin()
   {
-    AppMethodBeat.i(56450);
-    if (!com.tencent.mm.kernel.g.RG())
+    AppMethodBeat.i(127588);
+    if (!com.tencent.mm.kernel.g.afw())
     {
-      ab.w("MicroMsg.FCM.PluginFCM", "accout not ready");
-      AppMethodBeat.o(56450);
+      ad.w("MicroMsg.FCM.PluginFCM", "accout not ready");
+      AppMethodBeat.o(127588);
       return false;
     }
-    a locala = a.byx();
+    a locala = a.ckh();
     if (locala != null)
     {
-      String str;
-      if (locala.byy())
+      if (locala.ckj())
       {
-        ab.i("MicroMsg.FCM.FcmRegister", "Google Play Services is avaiable," + Long.toString(Thread.currentThread().getId()));
-        com.google.firebase.a.ac(locala.context);
-        com.google.firebase.messaging.a.si().bfN.rU();
-        str = FirebaseInstanceId.rL().getToken();
-        if (str == null) {
-          ab.w("MicroMsg.FCM.FcmRegister", "token is null, not ready");
+        ad.i("MicroMsg.FCM.FcmRegister", "Google Play Services is available, " + Thread.currentThread().getId());
+        if (locala.cki())
+        {
+          String str = FirebaseInstanceId.wK().getToken();
+          if (str == null) {
+            ad.w("MicroMsg.FCM.FcmRegister", "token is null, not ready");
+          }
+          locala.YJ(str);
+          AppMethodBeat.o(127588);
+          return true;
         }
+        ad.w("MicroMsg.FCM.FcmRegister", "init fcm sdk failed!");
       }
       for (;;)
       {
-        AppMethodBeat.o(56450);
-        return true;
-        locala.Oi(str);
-        continue;
-        ab.w("MicroMsg.FCM.FcmRegister", "Google Play Services Unavaiable");
-        h.qsU.kvStat(11250, "2,0");
-        e.qrI.idkeyStat(901L, 0L, 1L, false);
-        if (locala.byA()) {
-          locala.byz();
+        h.vKh.kvStat(11250, "2,0");
+        e.vIY.idkeyStat(901L, 0L, 1L, false);
+        if (!locala.ckl()) {
+          break;
         }
+        locala.ckk();
+        break;
+        ad.w("MicroMsg.FCM.FcmRegister", "Google Play Services Unavailable");
       }
     }
-    AppMethodBeat.o(56450);
+    AppMethodBeat.o(127588);
     return false;
   }
   
   private boolean handleLogout()
   {
-    AppMethodBeat.i(56451);
-    a locala = a.byx();
+    AppMethodBeat.i(127589);
+    a locala = a.ckh();
     if (locala != null)
     {
-      ab.i("MicroMsg.FCM.FcmRegister", "FCM onLogout. isRegToSvr:" + locala.byA());
-      WCFirebaseMessagingService.byC();
-      if (locala.byA()) {
-        locala.byz();
+      ad.i("MicroMsg.FCM.FcmRegister", "FCM onLogout. isRegToSvr:" + locala.ckl());
+      WCFirebaseMessagingService.ckn();
+      if (locala.ckl()) {
+        locala.ckk();
       }
       for (;;)
       {
-        AppMethodBeat.o(56451);
+        AppMethodBeat.o(127589);
         return true;
-        e.qrI.idkeyStat(901L, 20L, 1L, false);
+        e.vIY.idkeyStat(901L, 20L, 1L, false);
       }
     }
-    AppMethodBeat.o(56451);
+    AppMethodBeat.o(127589);
     return false;
   }
   
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(56448);
+    AppMethodBeat.i(127586);
     super.configure(paramg);
-    AppMethodBeat.o(56448);
+    AppMethodBeat.o(127586);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(56449);
-    if (paramg.SD())
+    AppMethodBeat.i(127587);
+    if (paramg.agu())
     {
-      ab.i("MicroMsg.FCM.PluginFCM", "register listener at " + paramg.mProcessName);
+      ad.i("MicroMsg.FCM.PluginFCM", "register listener at " + paramg.mProcessName);
       if (d.e(paramg))
       {
-        mET = false;
-        AppMethodBeat.o(56449);
+        qmP = false;
+        AppMethodBeat.o(127587);
         return;
       }
-      com.tencent.mm.sdk.b.a.ymk.b(this.mEU);
-      com.tencent.mm.sdk.b.a.ymk.b(this.mEV);
+      com.tencent.mm.sdk.b.a.ESL.b(this.qmQ);
+      com.tencent.mm.sdk.b.a.ESL.b(this.qmR);
     }
-    AppMethodBeat.o(56449);
+    AppMethodBeat.o(127587);
   }
   
   public void installed()
   {
-    AppMethodBeat.i(56447);
+    AppMethodBeat.i(127585);
     super.installed();
     alias(com.tencent.mm.plugin.fcm.a.a.class);
-    AppMethodBeat.o(56447);
+    AppMethodBeat.o(127585);
   }
   
   public String name()
@@ -127,7 +131,7 @@ public class PluginFCM
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fcm.PluginFCM
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public class FacebookBroadcastReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(71574);
+    AppMethodBeat.i(17010);
     paramContext = paramIntent.getStringExtra("com.facebook.platform.protocol.CALL_ID");
     String str = paramIntent.getStringExtra("com.facebook.platform.protocol.PROTOCOL_ACTION");
     if ((paramContext != null) && (str != null))
@@ -23,19 +23,19 @@ public class FacebookBroadcastReceiver
       if (NativeProtocol.isErrorResult(paramIntent))
       {
         onFailedAppCall(paramContext, str, localBundle);
-        AppMethodBeat.o(71574);
+        AppMethodBeat.o(17010);
         return;
       }
       onSuccessfulAppCall(paramContext, str, localBundle);
     }
-    AppMethodBeat.o(71574);
+    AppMethodBeat.o(17010);
   }
   
   protected void onSuccessfulAppCall(String paramString1, String paramString2, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.facebook.FacebookBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

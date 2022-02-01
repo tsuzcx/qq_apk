@@ -1,13 +1,16 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class fk
   extends b
 {
-  public fk.a ctu;
-  public fk.b ctv;
+  public a dhJ;
+  public b dhK;
   
   public fk()
   {
@@ -16,17 +19,31 @@ public final class fk
   
   private fk(byte paramByte)
   {
-    AppMethodBeat.i(15772);
-    this.ctu = new fk.a();
-    this.ctv = new fk.b();
-    this.ymq = false;
+    AppMethodBeat.i(19804);
+    this.dhJ = new a();
+    this.dhK = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15772);
+    AppMethodBeat.o(19804);
+  }
+  
+  public static final class a
+  {
+    public Context context;
+    public String[] daV;
+    public int dhL = 0;
+    public String[] selectionArgs;
+    public Uri uri;
+  }
+  
+  public static final class b
+  {
+    public Cursor dhM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.fk
  * JD-Core Version:    0.7.0.1
  */

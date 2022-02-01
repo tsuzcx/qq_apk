@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ti
   extends b
 {
-  public ti.a cJM;
-  public ti.b cJN;
+  public a dyK;
   
   public ti()
   {
@@ -16,17 +16,23 @@ public final class ti
   
   private ti(byte paramByte)
   {
-    AppMethodBeat.i(15806);
-    this.cJM = new ti.a();
-    this.cJN = new ti.b();
-    this.ymq = false;
+    AppMethodBeat.i(125636);
+    this.dyK = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15806);
+    AppMethodBeat.o(125636);
+  }
+  
+  public static final class a
+  {
+    public Context context;
+    public String diQ;
+    public int djq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ti
  * JD-Core Version:    0.7.0.1
  */

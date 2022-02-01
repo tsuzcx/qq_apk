@@ -1,43 +1,24 @@
 package com.tencent.mm.bi;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.aw;
-import com.tencent.mm.storage.ax;
-import com.tencent.mm.storage.ay;
-
-public final class c
+public abstract interface c
 {
-  public static void e(long paramLong, String paramString)
-  {
-    AppMethodBeat.i(16619);
-    ab.i("MicroMsg.FMessageLogic", "clearFMsgAndFConvByTalker, rowId: %d, talker: %s", new Object[] { Long.valueOf(paramLong), paramString });
-    ab.i("MicroMsg.FMessageLogic", "clearFMsgAndFConvByTalker, delete fconversation, ret = ".concat(String.valueOf(d.ali().p(paramLong, paramString))));
-    ab.i("MicroMsg.FMessageLogic", "clearFMsgAndFConvByTalker, delete fmsginfo, ret = ".concat(String.valueOf(d.alh().Td(paramString))));
-    AppMethodBeat.o(16619);
-  }
+  public abstract void a(d paramd);
   
-  public static long x(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(16618);
-    long l2 = 0L;
-    long l1 = l2;
-    if (paramString != null)
-    {
-      paramString = d.alh().asd(paramString);
-      l1 = l2;
-      if (paramString != null) {
-        l1 = paramString.field_createTime + 1L;
-      }
-    }
-    if (l1 > paramLong * 1000L)
-    {
-      AppMethodBeat.o(16618);
-      return l1;
-    }
-    AppMethodBeat.o(16618);
-    return paramLong * 1000L;
-  }
+  public abstract void aBV();
+  
+  public abstract short aBW();
+  
+  public abstract short aBX();
+  
+  public abstract boolean aBY();
+  
+  public abstract void aBZ();
+  
+  public abstract boolean aCa();
+  
+  public abstract void al(String paramString, int paramInt);
+  
+  public abstract void b(d paramd);
 }
 
 

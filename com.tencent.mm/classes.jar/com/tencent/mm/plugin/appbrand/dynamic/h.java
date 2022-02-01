@@ -11,7 +11,7 @@ public abstract interface h
   
   public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, t paramt);
   
-  public abstract void azA();
+  public abstract void aVh();
   
   public abstract void b(int paramInt, t paramt);
   
@@ -23,11 +23,11 @@ public abstract interface h
   
   public abstract void d(String paramString1, String paramString2, Bundle paramBundle);
   
-  public abstract void nE(int paramInt);
+  public abstract void qY(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.h
  * JD-Core Version:    0.7.0.1
  */

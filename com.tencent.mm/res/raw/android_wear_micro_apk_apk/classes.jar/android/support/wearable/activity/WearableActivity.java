@@ -13,21 +13,21 @@ import java.lang.reflect.Method;
 public abstract class WearableActivity
   extends Activity
 {
-  private static volatile boolean yC;
+  private static volatile boolean Ar;
+  private WearableActivityController As;
+  private boolean At;
   private final String TAG = WearableActivity.class.getSimpleName() + "[" + getClass().getSimpleName() + "]";
-  private WearableActivityController yD;
-  private boolean yE;
   
   public void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
-    if (this.yD != null) {
-      this.yD.dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+    if (this.As != null) {
+      this.As.dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
     }
   }
   
-  public final void eE()
+  public final void eU()
   {
-    this.yE = true;
+    this.At = true;
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -37,8 +37,8 @@ public abstract class WearableActivity
       try
       {
         Class.forName("com.google.android.wearable.compat.WearableActivityController");
-        this.yD = new WearableActivityController(this.TAG, this, new a(this, (byte)0));
-        if (!yC)
+        this.As = new WearableActivityController(this.TAG, this, new a(this, (byte)0));
+        if (!Ar)
         {
           try
           {
@@ -51,7 +51,7 @@ public abstract class WearableActivity
           {
             throw new IllegalStateException("Could not find a required method for ambient support, likely due to proguard optimization. Please add com.google.android.wearable:wearable jar to the list of library jars for your project");
           }
-          yC = true;
+          Ar = true;
         }
       }
       catch (ClassNotFoundException paramBundle)
@@ -59,23 +59,23 @@ public abstract class WearableActivity
         throw new IllegalStateException("Could not find wearable shared library classes. Please add <uses-library android:name=\"com.google.android.wearable\" android:required=\"false\" /> to the application manifest");
       }
     }
-    if (this.yD != null) {
-      this.yD.onCreate();
+    if (this.As != null) {
+      this.As.onCreate();
     }
   }
   
   protected void onDestroy()
   {
-    if (this.yD != null) {
-      this.yD.onDestroy();
+    if (this.As != null) {
+      this.As.onDestroy();
     }
     super.onDestroy();
   }
   
   protected void onPause()
   {
-    if (this.yD != null) {
-      this.yD.onPause();
+    if (this.As != null) {
+      this.As.onPause();
     }
     super.onPause();
   }
@@ -83,15 +83,15 @@ public abstract class WearableActivity
   protected void onResume()
   {
     super.onResume();
-    if (this.yD != null) {
-      this.yD.onResume();
+    if (this.As != null) {
+      this.As.onResume();
     }
   }
   
   protected void onStop()
   {
-    if (this.yD != null) {
-      this.yD.onStop();
+    if (this.As != null) {
+      this.As.onStop();
     }
     super.onStop();
   }

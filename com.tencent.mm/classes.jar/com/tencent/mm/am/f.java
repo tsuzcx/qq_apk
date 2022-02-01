@@ -1,123 +1,514 @@
 package com.tencent.mm.am;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.au;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.ai;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.t;
-import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ak;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.be.b;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bi;
+import com.tencent.mm.n.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.protocal.protobuf.bqc;
+import com.tencent.mm.protocal.protobuf.dpl;
+import com.tencent.mm.protocal.protobuf.mo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bh;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class f
-  extends ai
 {
-  public final String getTag()
+  public static boolean avE()
   {
-    return "MicroMsg.ConversationDataTransfer";
-  }
-  
-  public final boolean kv(int paramInt)
-  {
-    return (paramInt != 0) && (paramInt < 604372991);
-  }
-  
-  public final void transfer(int paramInt)
-  {
-    AppMethodBeat.i(16434);
-    ab.d("MicroMsg.ConversationDataTransfer", "the previous version is %d", new Object[] { Integer.valueOf(paramInt) });
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    Object localObject4;
-    if ((paramInt != 0) && (paramInt < 604372991))
+    AppMethodBeat.i(124057);
+    if (af.awe().nI(1) > 0)
     {
-      com.tencent.mm.plugin.report.service.h.qsU.cT(336, 14);
-      aw.aaz();
-      localObject1 = c.Rq();
-      localObject2 = new StringBuilder();
-      ((StringBuilder)localObject2).append("select rconversation.username from rconversation, rcontact, bizinfo where rconversation.username = rcontact.username and rconversation.username = bizinfo.username and ( rcontact.verifyFlag & 8").append(" ) != 0 ");
-      localObject2 = ((StringBuilder)localObject2).toString();
-      ab.d("MicroMsg.ConversationDataTransfer", "select sql %s", new Object[] { localObject2 });
-      localObject2 = ((com.tencent.mm.cg.h)localObject1).a((String)localObject2, null, 2);
-      if ((localObject2 != null) && (((Cursor)localObject2).moveToFirst()))
-      {
-        localObject3 = new StringBuilder();
-        ((StringBuilder)localObject3).append("Update rconversation set parentRef = 'officialaccounts' where 1 !=1 ");
-        do
-        {
-          localObject4 = ((Cursor)localObject2).getString(0);
-          if (!t.oB((String)localObject4)) {
-            ((StringBuilder)localObject3).append(" or username = '").append((String)localObject4).append("'");
-          }
-        } while (((Cursor)localObject2).moveToNext());
-        ((Cursor)localObject2).close();
-        localObject3 = ((StringBuilder)localObject3).toString();
-        ab.d("MicroMsg.ConversationDataTransfer", "changed[%B] execute sql[%s]", new Object[] { Boolean.TRUE, localObject3 });
-        ((com.tencent.mm.cg.h)localObject1).execSQL("rconversation", (String)localObject3);
-        aw.aaz();
-        localObject1 = c.YF().arH("officialaccounts");
-        if (localObject1 != null) {
-          break label549;
-        }
-        localObject1 = new ak("officialaccounts");
-        ((ak)localObject1).dxc();
-        aw.aaz();
-        c.YF().d((ak)localObject1);
-      }
+      AppMethodBeat.o(124057);
+      return true;
     }
-    label549:
-    for (;;)
+    AppMethodBeat.o(124057);
+    return false;
+  }
+  
+  public static boolean avF()
+  {
+    AppMethodBeat.i(124058);
+    if (af.awe().nI(4) > 0)
     {
-      aw.aaz();
-      localObject3 = c.YF().dxl();
-      if (bo.isNullOrNil((String)localObject3))
-      {
-        ab.w("MicroMsg.ConversationDataTransfer", "last convBiz is null");
-        AppMethodBeat.o(16434);
-        return;
-      }
-      aw.aaz();
-      localObject3 = c.YC().Tm((String)localObject3);
-      if ((localObject3 == null) || (((dd)localObject3).field_msgId == 0L))
-      {
-        ab.w("MicroMsg.ConversationDataTransfer", "last biz msg is error");
-        AppMethodBeat.o(16434);
-        return;
-      }
-      ((ak)localObject1).aq((bi)localObject3);
-      ((ak)localObject1).setContent(((dd)localObject3).field_talker + ":" + ((dd)localObject3).field_content);
-      ((ak)localObject1).jV(Integer.toString(((bi)localObject3).getType()));
-      aw.aaz();
-      localObject4 = c.YF().BX();
-      if (localObject4 != null)
-      {
-        PString localPString1 = new PString();
-        PString localPString2 = new PString();
-        PInt localPInt = new PInt();
-        ((bi)localObject3).kj("officialaccounts");
-        ((bi)localObject3).setContent(((au)localObject1).field_content);
-        ((be.b)localObject4).a((bi)localObject3, localPString1, localPString2, localPInt, false);
-        ((ak)localObject1).jW(localPString1.value);
-        ((ak)localObject1).jX(localPString2.value);
-        ((ak)localObject1).hM(localPInt.value);
-      }
-      aw.aaz();
-      c.YF().a((ak)localObject1, ((au)localObject1).field_username);
-      if ((localObject2 != null) && (!((Cursor)localObject2).isClosed())) {
-        ((Cursor)localObject2).close();
-      }
-      AppMethodBeat.o(16434);
+      AppMethodBeat.o(124058);
+      return true;
+    }
+    AppMethodBeat.o(124058);
+    return false;
+  }
+  
+  public static boolean avG()
+  {
+    AppMethodBeat.i(124059);
+    if (af.awe().nI(8) > 0)
+    {
+      AppMethodBeat.o(124059);
+      return true;
+    }
+    AppMethodBeat.o(124059);
+    return false;
+  }
+  
+  public static boolean avH()
+  {
+    AppMethodBeat.i(124060);
+    if (af.awe().nI(16) > 0)
+    {
+      AppMethodBeat.o(124060);
+      return true;
+    }
+    AppMethodBeat.o(124060);
+    return false;
+  }
+  
+  public static boolean avI()
+  {
+    AppMethodBeat.i(124061);
+    if (af.awe().nI(64) > 0)
+    {
+      AppMethodBeat.o(124061);
+      return true;
+    }
+    AppMethodBeat.o(124061);
+    return false;
+  }
+  
+  public static List<String> avJ()
+  {
+    AppMethodBeat.i(124062);
+    List localList = af.awe().nH(128);
+    AppMethodBeat.o(124062);
+    return localList;
+  }
+  
+  public static boolean avK()
+  {
+    AppMethodBeat.i(124063);
+    if (af.awe().nI(128) > 0)
+    {
+      AppMethodBeat.o(124063);
+      return true;
+    }
+    AppMethodBeat.o(124063);
+    return false;
+  }
+  
+  public static List<String> avL()
+  {
+    AppMethodBeat.i(124064);
+    List localList = af.awe().nH(256);
+    AppMethodBeat.o(124064);
+    return localList;
+  }
+  
+  public static boolean avM()
+  {
+    AppMethodBeat.i(124065);
+    if (af.awe().nI(256) > 0)
+    {
+      AppMethodBeat.o(124065);
+      return true;
+    }
+    AppMethodBeat.o(124065);
+    return false;
+  }
+  
+  public static List<String> avN()
+  {
+    AppMethodBeat.i(124066);
+    List localList = af.awe().nH(512);
+    AppMethodBeat.o(124066);
+    return localList;
+  }
+  
+  public static boolean avO()
+  {
+    AppMethodBeat.i(124067);
+    if (af.awe().nI(512) > 0)
+    {
+      AppMethodBeat.o(124067);
+      return true;
+    }
+    AppMethodBeat.o(124067);
+    return false;
+  }
+  
+  public static boolean ee(String paramString)
+  {
+    AppMethodBeat.i(191048);
+    try
+    {
+      boolean bool = af.awn().wt(paramString).field_hide_colleage_invite;
+      AppMethodBeat.o(191048);
+      return bool;
+    }
+    catch (Throwable paramString)
+    {
+      AppMethodBeat.o(191048);
+    }
+    return true;
+  }
+  
+  public static String ef(String paramString)
+  {
+    AppMethodBeat.i(191049);
+    try
+    {
+      paramString = af.awn().wt(paramString);
+      mo localmo = new mo();
+      localmo.parseFrom(paramString.field_raw_attrs);
+      paramString = localmo.CJz;
+      AppMethodBeat.o(191049);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      AppMethodBeat.o(191049);
+    }
+    return "";
+  }
+  
+  public static String eg(String paramString)
+  {
+    AppMethodBeat.i(191050);
+    try
+    {
+      paramString = af.awn().wt(paramString);
+      mo localmo = new mo();
+      localmo.parseFrom(paramString.field_raw_attrs);
+      paramString = localmo.CJA;
+      AppMethodBeat.o(191050);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      AppMethodBeat.o(191050);
+    }
+    return "";
+  }
+  
+  public static com.tencent.mm.api.c ei(String paramString)
+  {
+    AppMethodBeat.i(124043);
+    paramString = af.awe().wy(paramString);
+    if (paramString.field_updateTime > 0L)
+    {
+      AppMethodBeat.o(124043);
+      return paramString;
+    }
+    AppMethodBeat.o(124043);
+    return null;
+  }
+  
+  public static void h(com.tencent.mm.api.c paramc)
+  {
+    AppMethodBeat.i(124053);
+    if (paramc == null)
+    {
+      ad.e("MicroMsg.BizInfoStorageLogic", "updateBrandFlagForTempSession bizInfo is Null");
+      AppMethodBeat.o(124053);
       return;
     }
+    bqc localbqc = new bqc();
+    localbqc.ika = paramc.field_brandFlag;
+    localbqc.mAQ = paramc.field_username;
+    com.tencent.mm.storage.af localaf = ((k)g.ab(k.class)).apM().aHX(paramc.field_username);
+    if ((localaf != null) && (b.ls(localaf.field_type))) {
+      ((k)g.ab(k.class)).apL().c(new j.a(47, localbqc));
+    }
+    for (;;)
+    {
+      ad.i("MicroMsg.BizInfoStorageLogic", "updateBrandFlagForTempSession ret = %b, BrandFlag = %b", new Object[] { Boolean.valueOf(af.awe().update(paramc, new String[0])), Integer.valueOf(paramc.field_brandFlag) });
+      AppMethodBeat.o(124053);
+      return;
+      ((k)g.ab(k.class)).apL().c(new j.a(58, localbqc));
+    }
+  }
+  
+  public static void i(com.tencent.mm.api.c paramc)
+  {
+    AppMethodBeat.i(124054);
+    if (paramc != null)
+    {
+      bqc localbqc = new bqc();
+      localbqc.ika = paramc.field_brandFlag;
+      localbqc.mAQ = paramc.field_username;
+      ((k)g.ab(k.class)).apL().c(new j.a(47, localbqc));
+      af.awe().update(paramc, new String[0]);
+    }
+    AppMethodBeat.o(124054);
+  }
+  
+  public static void j(com.tencent.mm.api.c paramc)
+  {
+    AppMethodBeat.i(124055);
+    if (paramc != null)
+    {
+      paramc.field_brandFlag |= 0x8;
+      i(paramc);
+    }
+    AppMethodBeat.o(124055);
+  }
+  
+  public static void k(com.tencent.mm.api.c paramc)
+  {
+    AppMethodBeat.i(124056);
+    if (paramc != null)
+    {
+      paramc.field_brandFlag &= 0xFFFFFFF7;
+      i(paramc);
+    }
+    AppMethodBeat.o(124056);
+  }
+  
+  public static boolean pc(String paramString)
+  {
+    AppMethodBeat.i(124050);
+    paramString = ei(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(124050);
+      return false;
+    }
+    if (paramString.Jg())
+    {
+      AppMethodBeat.o(124050);
+      return true;
+    }
+    AppMethodBeat.o(124050);
+    return false;
+  }
+  
+  public static boolean wG(String paramString)
+  {
+    AppMethodBeat.i(124044);
+    paramString = ei(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(124044);
+      return false;
+    }
+    if (paramString.Jb())
+    {
+      AppMethodBeat.o(124044);
+      return true;
+    }
+    AppMethodBeat.o(124044);
+    return false;
+  }
+  
+  public static boolean wH(String paramString)
+  {
+    AppMethodBeat.i(124045);
+    paramString = ei(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(124045);
+      return false;
+    }
+    if (paramString.Jb())
+    {
+      AppMethodBeat.o(124045);
+      return true;
+    }
+    if (paramString.Jc())
+    {
+      AppMethodBeat.o(124045);
+      return true;
+    }
+    AppMethodBeat.o(124045);
+    return false;
+  }
+  
+  public static boolean wI(String paramString)
+  {
+    AppMethodBeat.i(124046);
+    paramString = ei(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(124046);
+      return false;
+    }
+    boolean bool = paramString.Jc();
+    AppMethodBeat.o(124046);
+    return bool;
+  }
+  
+  public static boolean wJ(String paramString)
+  {
+    AppMethodBeat.i(124047);
+    paramString = ei(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(124047);
+      return false;
+    }
+    if (paramString.Jd())
+    {
+      AppMethodBeat.o(124047);
+      return true;
+    }
+    AppMethodBeat.o(124047);
+    return false;
+  }
+  
+  public static boolean wK(String paramString)
+  {
+    AppMethodBeat.i(124048);
+    paramString = ei(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(124048);
+      return false;
+    }
+    if (paramString.Jf())
+    {
+      AppMethodBeat.o(124048);
+      return true;
+    }
+    AppMethodBeat.o(124048);
+    return false;
+  }
+  
+  public static boolean wL(String paramString)
+  {
+    AppMethodBeat.i(124049);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(124049);
+      return false;
+    }
+    paramString = ei(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(124049);
+      return false;
+    }
+    if (paramString.Je())
+    {
+      AppMethodBeat.o(124049);
+      return true;
+    }
+    AppMethodBeat.o(124049);
+    return false;
+  }
+  
+  public static boolean wM(String paramString)
+  {
+    AppMethodBeat.i(124051);
+    paramString = ei(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(124051);
+      return false;
+    }
+    if (paramString.Jh())
+    {
+      AppMethodBeat.o(124051);
+      return true;
+    }
+    AppMethodBeat.o(124051);
+    return false;
+  }
+  
+  public static boolean wN(String paramString)
+  {
+    AppMethodBeat.i(124052);
+    paramString = ei(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(124052);
+      return false;
+    }
+    boolean bool = paramString.IW();
+    AppMethodBeat.o(124052);
+    return bool;
+  }
+  
+  public static void wO(String paramString)
+  {
+    AppMethodBeat.i(124068);
+    af.awe();
+    Object localObject = e.wC(paramString);
+    if (localObject != null) {
+      ((p)g.ab(p.class)).apP().agw((String)localObject);
+    }
+    ((k)g.ab(k.class)).apR().aIl(paramString);
+    localObject = ei(paramString);
+    if (localObject == null)
+    {
+      af.awn().vv(paramString);
+      AppMethodBeat.o(124068);
+      return;
+    }
+    if (((com.tencent.mm.api.c)localObject).Je())
+    {
+      ((k)g.ab(k.class)).apR().aID(paramString);
+      af.awe();
+      List localList = e.wB(paramString);
+      bi.al(localList);
+      int i = 0;
+      while (i < localList.size())
+      {
+        String str = (String)localList.get(i);
+        if (pc(str)) {
+          com.tencent.mm.am.a.e.M(str, true);
+        }
+        af.awe().delete(str);
+        i += 1;
+      }
+    }
+    if (((com.tencent.mm.api.c)localObject).Jg()) {
+      com.tencent.mm.am.a.e.M(paramString, true);
+    }
+    af.awe().e((com.tencent.mm.api.c)localObject);
+    af.awn().vv(paramString);
+    AppMethodBeat.o(124068);
+  }
+  
+  public static List<dpl> wP(String paramString)
+  {
+    AppMethodBeat.i(191047);
+    try
+    {
+      paramString = af.awn().wt(paramString);
+      mo localmo = new mo();
+      localmo.parseFrom(paramString.field_raw_attrs);
+      paramString = localmo.CJw;
+      AppMethodBeat.o(191047);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      AppMethodBeat.o(191047);
+    }
+    return null;
+  }
+  
+  public static List<String> wQ(String paramString)
+  {
+    AppMethodBeat.i(191051);
+    try
+    {
+      paramString = af.awn().wt(paramString);
+      mo localmo = new mo();
+      localmo.parseFrom(paramString.field_raw_attrs);
+      paramString = localmo.CJy;
+      AppMethodBeat.o(191051);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      paramString = new ArrayList(0);
+      AppMethodBeat.o(191051);
+    }
+    return paramString;
   }
 }
 

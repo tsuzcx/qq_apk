@@ -6,25 +6,25 @@ import java.nio.MappedByteBuffer;
 
 public final class f
 {
-  private int ajd;
-  private File aje;
-  private volatile File ajf;
-  private MappedByteBuffer ajg;
-  private RandomAccessFile ajh;
+  private int amF;
+  private File amG;
+  private volatile File amH;
+  private MappedByteBuffer amI;
+  private RandomAccessFile amJ;
   private int currentIndex;
   
   public f(String paramString)
   {
-    this.aje = new File(paramString);
-    this.ajf = new File(this.aje.getParentFile(), "temp-" + this.aje.getName());
-    this.ajd = 153600;
-    if (!this.aje.getParentFile().exists()) {
-      this.aje.getParentFile().mkdirs();
+    this.amG = new File(paramString);
+    this.amH = new File(this.amG.getParentFile(), "temp-" + this.amG.getName());
+    this.amF = 153600;
+    if (!this.amG.getParentFile().exists()) {
+      this.amG.getParentFile().mkdirs();
     }
-    if (this.ajf.exists())
+    if (this.amH.exists())
     {
-      a(this.ajf, this.aje);
-      this.ajf.delete();
+      a(this.amH, this.amG);
+      this.amH.delete();
     }
   }
   
@@ -211,43 +211,43 @@ public final class f
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 115	com/tencent/mm/wear/a/c/f:ajh	Ljava/io/RandomAccessFile;
+    //   3: getfield 115	com/tencent/mm/wear/a/c/f:amJ	Ljava/io/RandomAccessFile;
     //   6: ifnonnull +38 -> 44
     //   9: aload_0
-    //   10: getfield 50	com/tencent/mm/wear/a/c/f:ajf	Ljava/io/File;
+    //   10: getfield 50	com/tencent/mm/wear/a/c/f:amH	Ljava/io/File;
     //   13: invokevirtual 57	java/io/File:exists	()Z
     //   16: ifne +11 -> 27
     //   19: aload_0
-    //   20: getfield 50	com/tencent/mm/wear/a/c/f:ajf	Ljava/io/File;
+    //   20: getfield 50	com/tencent/mm/wear/a/c/f:amH	Ljava/io/File;
     //   23: invokevirtual 118	java/io/File:createNewFile	()Z
     //   26: pop
     //   27: aload_0
     //   28: new 120	java/io/RandomAccessFile
     //   31: dup
     //   32: aload_0
-    //   33: getfield 50	com/tencent/mm/wear/a/c/f:ajf	Ljava/io/File;
+    //   33: getfield 50	com/tencent/mm/wear/a/c/f:amH	Ljava/io/File;
     //   36: ldc 122
     //   38: invokespecial 123	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   41: putfield 115	com/tencent/mm/wear/a/c/f:ajh	Ljava/io/RandomAccessFile;
+    //   41: putfield 115	com/tencent/mm/wear/a/c/f:amJ	Ljava/io/RandomAccessFile;
     //   44: aload_0
-    //   45: getfield 125	com/tencent/mm/wear/a/c/f:ajg	Ljava/nio/MappedByteBuffer;
+    //   45: getfield 125	com/tencent/mm/wear/a/c/f:amI	Ljava/nio/MappedByteBuffer;
     //   48: ifnonnull +26 -> 74
     //   51: aload_0
     //   52: aload_0
-    //   53: getfield 115	com/tencent/mm/wear/a/c/f:ajh	Ljava/io/RandomAccessFile;
+    //   53: getfield 115	com/tencent/mm/wear/a/c/f:amJ	Ljava/io/RandomAccessFile;
     //   56: invokevirtual 129	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
     //   59: getstatic 135	java/nio/channels/FileChannel$MapMode:READ_WRITE	Ljava/nio/channels/FileChannel$MapMode;
     //   62: lconst_0
     //   63: aload_0
-    //   64: getfield 53	com/tencent/mm/wear/a/c/f:ajd	I
+    //   64: getfield 53	com/tencent/mm/wear/a/c/f:amF	I
     //   67: i2l
     //   68: invokevirtual 141	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
-    //   71: putfield 125	com/tencent/mm/wear/a/c/f:ajg	Ljava/nio/MappedByteBuffer;
+    //   71: putfield 125	com/tencent/mm/wear/a/c/f:amI	Ljava/nio/MappedByteBuffer;
     //   74: aload_0
-    //   75: getfield 50	com/tencent/mm/wear/a/c/f:ajf	Ljava/io/File;
+    //   75: getfield 50	com/tencent/mm/wear/a/c/f:amH	Ljava/io/File;
     //   78: ifnull +12 -> 90
     //   81: aload_0
-    //   82: getfield 125	com/tencent/mm/wear/a/c/f:ajg	Ljava/nio/MappedByteBuffer;
+    //   82: getfield 125	com/tencent/mm/wear/a/c/f:amI	Ljava/nio/MappedByteBuffer;
     //   85: astore_3
     //   86: aload_3
     //   87: ifnonnull +6 -> 93
@@ -260,54 +260,54 @@ public final class f
     //   98: arraylength
     //   99: iadd
     //   100: aload_0
-    //   101: getfield 53	com/tencent/mm/wear/a/c/f:ajd	I
+    //   101: getfield 53	com/tencent/mm/wear/a/c/f:amF	I
     //   104: if_icmpgt +7 -> 111
     //   107: iload_2
     //   108: ifeq +104 -> 212
     //   111: aload_0
-    //   112: getfield 125	com/tencent/mm/wear/a/c/f:ajg	Ljava/nio/MappedByteBuffer;
+    //   112: getfield 125	com/tencent/mm/wear/a/c/f:amI	Ljava/nio/MappedByteBuffer;
     //   115: invokevirtual 149	java/nio/MappedByteBuffer:force	()Ljava/nio/MappedByteBuffer;
     //   118: pop
     //   119: aload_0
-    //   120: getfield 115	com/tencent/mm/wear/a/c/f:ajh	Ljava/io/RandomAccessFile;
+    //   120: getfield 115	com/tencent/mm/wear/a/c/f:amJ	Ljava/io/RandomAccessFile;
     //   123: invokevirtual 150	java/io/RandomAccessFile:close	()V
     //   126: aload_0
-    //   127: getfield 50	com/tencent/mm/wear/a/c/f:ajf	Ljava/io/File;
+    //   127: getfield 50	com/tencent/mm/wear/a/c/f:amH	Ljava/io/File;
     //   130: aload_0
-    //   131: getfield 25	com/tencent/mm/wear/a/c/f:aje	Ljava/io/File;
+    //   131: getfield 25	com/tencent/mm/wear/a/c/f:amG	Ljava/io/File;
     //   134: invokestatic 64	com/tencent/mm/wear/a/c/f:a	(Ljava/io/File;Ljava/io/File;)V
     //   137: aload_0
     //   138: iconst_4
     //   139: putfield 143	com/tencent/mm/wear/a/c/f:currentIndex	I
     //   142: aload_0
-    //   143: getfield 50	com/tencent/mm/wear/a/c/f:ajf	Ljava/io/File;
+    //   143: getfield 50	com/tencent/mm/wear/a/c/f:amH	Ljava/io/File;
     //   146: invokevirtual 67	java/io/File:delete	()Z
     //   149: pop
     //   150: aload_0
-    //   151: getfield 50	com/tencent/mm/wear/a/c/f:ajf	Ljava/io/File;
+    //   151: getfield 50	com/tencent/mm/wear/a/c/f:amH	Ljava/io/File;
     //   154: invokevirtual 118	java/io/File:createNewFile	()Z
     //   157: pop
     //   158: aload_0
     //   159: new 120	java/io/RandomAccessFile
     //   162: dup
     //   163: aload_0
-    //   164: getfield 50	com/tencent/mm/wear/a/c/f:ajf	Ljava/io/File;
+    //   164: getfield 50	com/tencent/mm/wear/a/c/f:amH	Ljava/io/File;
     //   167: ldc 122
     //   169: invokespecial 123	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   172: putfield 115	com/tencent/mm/wear/a/c/f:ajh	Ljava/io/RandomAccessFile;
+    //   172: putfield 115	com/tencent/mm/wear/a/c/f:amJ	Ljava/io/RandomAccessFile;
     //   175: aload_0
     //   176: aload_0
-    //   177: getfield 115	com/tencent/mm/wear/a/c/f:ajh	Ljava/io/RandomAccessFile;
+    //   177: getfield 115	com/tencent/mm/wear/a/c/f:amJ	Ljava/io/RandomAccessFile;
     //   180: invokevirtual 129	java/io/RandomAccessFile:getChannel	()Ljava/nio/channels/FileChannel;
     //   183: getstatic 135	java/nio/channels/FileChannel$MapMode:READ_WRITE	Ljava/nio/channels/FileChannel$MapMode;
     //   186: lconst_0
     //   187: aload_0
-    //   188: getfield 53	com/tencent/mm/wear/a/c/f:ajd	I
+    //   188: getfield 53	com/tencent/mm/wear/a/c/f:amF	I
     //   191: i2l
     //   192: invokevirtual 141	java/nio/channels/FileChannel:map	(Ljava/nio/channels/FileChannel$MapMode;JJ)Ljava/nio/MappedByteBuffer;
-    //   195: putfield 125	com/tencent/mm/wear/a/c/f:ajg	Ljava/nio/MappedByteBuffer;
+    //   195: putfield 125	com/tencent/mm/wear/a/c/f:amI	Ljava/nio/MappedByteBuffer;
     //   198: aload_0
-    //   199: getfield 125	com/tencent/mm/wear/a/c/f:ajg	Ljava/nio/MappedByteBuffer;
+    //   199: getfield 125	com/tencent/mm/wear/a/c/f:amI	Ljava/nio/MappedByteBuffer;
     //   202: aload_0
     //   203: getfield 143	com/tencent/mm/wear/a/c/f:currentIndex	I
     //   206: iconst_4
@@ -318,18 +318,18 @@ public final class f
     //   213: arraylength
     //   214: iflt -124 -> 90
     //   217: aload_0
-    //   218: getfield 125	com/tencent/mm/wear/a/c/f:ajg	Ljava/nio/MappedByteBuffer;
+    //   218: getfield 125	com/tencent/mm/wear/a/c/f:amI	Ljava/nio/MappedByteBuffer;
     //   221: aload_0
     //   222: getfield 143	com/tencent/mm/wear/a/c/f:currentIndex	I
     //   225: invokevirtual 158	java/nio/MappedByteBuffer:position	(I)Ljava/nio/Buffer;
     //   228: pop
     //   229: aload_0
-    //   230: getfield 125	com/tencent/mm/wear/a/c/f:ajg	Ljava/nio/MappedByteBuffer;
+    //   230: getfield 125	com/tencent/mm/wear/a/c/f:amI	Ljava/nio/MappedByteBuffer;
     //   233: aload_1
     //   234: invokevirtual 162	java/nio/MappedByteBuffer:put	([B)Ljava/nio/ByteBuffer;
     //   237: pop
     //   238: aload_0
-    //   239: getfield 125	com/tencent/mm/wear/a/c/f:ajg	Ljava/nio/MappedByteBuffer;
+    //   239: getfield 125	com/tencent/mm/wear/a/c/f:amI	Ljava/nio/MappedByteBuffer;
     //   242: iconst_0
     //   243: invokevirtual 158	java/nio/MappedByteBuffer:position	(I)Ljava/nio/Buffer;
     //   246: pop
@@ -341,7 +341,7 @@ public final class f
     //   254: iadd
     //   255: putfield 143	com/tencent/mm/wear/a/c/f:currentIndex	I
     //   258: aload_0
-    //   259: getfield 125	com/tencent/mm/wear/a/c/f:ajg	Ljava/nio/MappedByteBuffer;
+    //   259: getfield 125	com/tencent/mm/wear/a/c/f:amI	Ljava/nio/MappedByteBuffer;
     //   262: aload_0
     //   263: getfield 143	com/tencent/mm/wear/a/c/f:currentIndex	I
     //   266: iconst_4

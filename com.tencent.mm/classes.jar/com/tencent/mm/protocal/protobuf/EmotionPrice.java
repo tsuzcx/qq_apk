@@ -1,10 +1,10 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import f.a.a.b;
 
 public class EmotionPrice
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
   public String IapProductId;
   public String Label;
@@ -13,41 +13,41 @@ public class EmotionPrice
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(62543);
+    AppMethodBeat.i(104779);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
       if (this.Label == null)
       {
         paramVarArgs = new b("Not all required fields were included: Label");
-        AppMethodBeat.o(62543);
+        AppMethodBeat.o(104779);
         throw paramVarArgs;
       }
       if (this.Number == null)
       {
         paramVarArgs = new b("Not all required fields were included: Number");
-        AppMethodBeat.o(62543);
+        AppMethodBeat.o(104779);
         throw paramVarArgs;
       }
       if (this.Type == null)
       {
         paramVarArgs = new b("Not all required fields were included: Type");
-        AppMethodBeat.o(62543);
+        AppMethodBeat.o(104779);
         throw paramVarArgs;
       }
       if (this.Label != null) {
-        paramVarArgs.e(1, this.Label);
+        paramVarArgs.d(1, this.Label);
       }
       if (this.Number != null) {
-        paramVarArgs.e(2, this.Number);
+        paramVarArgs.d(2, this.Number);
       }
       if (this.Type != null) {
-        paramVarArgs.e(3, this.Type);
+        paramVarArgs.d(3, this.Type);
       }
       if (this.IapProductId != null) {
-        paramVarArgs.e(4, this.IapProductId);
+        paramVarArgs.d(4, this.IapProductId);
       }
-      AppMethodBeat.o(62543);
+      AppMethodBeat.o(104779);
       return 0;
     }
     if (paramInt == 1) {
@@ -56,85 +56,85 @@ public class EmotionPrice
       }
     }
     label538:
-    for (int i = e.a.a.b.b.a.f(1, this.Label) + 0;; i = 0)
+    for (int i = f.a.a.b.b.a.e(1, this.Label) + 0;; i = 0)
     {
       paramInt = i;
       if (this.Number != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.Number);
+        paramInt = i + f.a.a.b.b.a.e(2, this.Number);
       }
       i = paramInt;
       if (this.Type != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.Type);
+        i = paramInt + f.a.a.b.b.a.e(3, this.Type);
       }
       paramInt = i;
       if (this.IapProductId != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.IapProductId);
+        paramInt = i + f.a.a.b.b.a.e(4, this.IapProductId);
       }
-      AppMethodBeat.o(62543);
+      AppMethodBeat.o(104779);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
         if (this.Label == null)
         {
           paramVarArgs = new b("Not all required fields were included: Label");
-          AppMethodBeat.o(62543);
+          AppMethodBeat.o(104779);
           throw paramVarArgs;
         }
         if (this.Number == null)
         {
           paramVarArgs = new b("Not all required fields were included: Number");
-          AppMethodBeat.o(62543);
+          AppMethodBeat.o(104779);
           throw paramVarArgs;
         }
         if (this.Type == null)
         {
           paramVarArgs = new b("Not all required fields were included: Type");
-          AppMethodBeat.o(62543);
+          AppMethodBeat.o(104779);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(62543);
+        AppMethodBeat.o(104779);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         EmotionPrice localEmotionPrice = (EmotionPrice)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(62543);
+          AppMethodBeat.o(104779);
           return -1;
         case 1: 
-          localEmotionPrice.Label = locala.CLY.readString();
-          AppMethodBeat.o(62543);
+          localEmotionPrice.Label = locala.KhF.readString();
+          AppMethodBeat.o(104779);
           return 0;
         case 2: 
-          localEmotionPrice.Number = locala.CLY.readString();
-          AppMethodBeat.o(62543);
+          localEmotionPrice.Number = locala.KhF.readString();
+          AppMethodBeat.o(104779);
           return 0;
         case 3: 
-          localEmotionPrice.Type = locala.CLY.readString();
-          AppMethodBeat.o(62543);
+          localEmotionPrice.Type = locala.KhF.readString();
+          AppMethodBeat.o(104779);
           return 0;
         }
-        localEmotionPrice.IapProductId = locala.CLY.readString();
-        AppMethodBeat.o(62543);
+        localEmotionPrice.IapProductId = locala.KhF.readString();
+        AppMethodBeat.o(104779);
         return 0;
       }
-      AppMethodBeat.o(62543);
+      AppMethodBeat.o(104779);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionPrice
  * JD-Core Version:    0.7.0.1
  */

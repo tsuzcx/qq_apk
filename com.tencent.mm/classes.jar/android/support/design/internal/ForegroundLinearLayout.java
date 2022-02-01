@@ -1,5 +1,6 @@
 package android.support.design.internal;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -13,12 +14,12 @@ import android.view.Gravity;
 public class ForegroundLinearLayout
   extends LinearLayoutCompat
 {
-  boolean eA = false;
-  private Drawable ev;
-  private final Rect ew = new Rect();
-  private final Rect ex = new Rect();
-  private int ey = 119;
-  protected boolean ez = true;
+  private int foregroundGravity = 119;
+  private Drawable hP;
+  private final Rect hQ = new Rect();
+  private final Rect hR = new Rect();
+  protected boolean hS = true;
+  boolean hT = false;
   
   public ForegroundLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,13 +29,13 @@ public class ForegroundLinearLayout
   public ForegroundLinearLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ForegroundLinearLayout, paramInt, 0);
-    this.ey = paramContext.getInt(1, this.ey);
+    paramContext = f.a(paramContext, paramAttributeSet, a.a.ForegroundLinearLayout, paramInt, 0, new int[0]);
+    this.foregroundGravity = paramContext.getInt(1, this.foregroundGravity);
     paramAttributeSet = paramContext.getDrawable(0);
     if (paramAttributeSet != null) {
       setForeground(paramAttributeSet);
     }
-    this.ez = paramContext.getBoolean(2, true);
+    this.hS = paramContext.getBoolean(2, true);
     paramContext.recycle();
   }
   
@@ -46,17 +47,17 @@ public class ForegroundLinearLayout
     Rect localRect2;
     int i;
     int j;
-    if (this.ev != null)
+    if (this.hP != null)
     {
-      localDrawable = this.ev;
-      if (this.eA)
+      localDrawable = this.hP;
+      if (this.hT)
       {
-        this.eA = false;
-        localRect1 = this.ew;
-        localRect2 = this.ex;
+        this.hT = false;
+        localRect1 = this.hQ;
+        localRect2 = this.hR;
         i = getRight() - getLeft();
         j = getBottom() - getTop();
-        if (!this.ez) {
+        if (!this.hS) {
           break label113;
         }
         localRect1.set(0, 0, i, j);
@@ -64,7 +65,7 @@ public class ForegroundLinearLayout
     }
     for (;;)
     {
-      Gravity.apply(this.ey, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight(), localRect1, localRect2);
+      Gravity.apply(this.foregroundGravity, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight(), localRect1, localRect2);
       localDrawable.setBounds(localRect2);
       localDrawable.draw(paramCanvas);
       return;
@@ -73,62 +74,63 @@ public class ForegroundLinearLayout
     }
   }
   
+  @TargetApi(21)
   public void drawableHotspotChanged(float paramFloat1, float paramFloat2)
   {
     super.drawableHotspotChanged(paramFloat1, paramFloat2);
-    if (this.ev != null) {
-      this.ev.setHotspot(paramFloat1, paramFloat2);
+    if (this.hP != null) {
+      this.hP.setHotspot(paramFloat1, paramFloat2);
     }
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if ((this.ev != null) && (this.ev.isStateful())) {
-      this.ev.setState(getDrawableState());
+    if ((this.hP != null) && (this.hP.isStateful())) {
+      this.hP.setState(getDrawableState());
     }
   }
   
   public Drawable getForeground()
   {
-    return this.ev;
+    return this.hP;
   }
   
   public int getForegroundGravity()
   {
-    return this.ey;
+    return this.foregroundGravity;
   }
   
   public void jumpDrawablesToCurrentState()
   {
     super.jumpDrawablesToCurrentState();
-    if (this.ev != null) {
-      this.ev.jumpToCurrentState();
+    if (this.hP != null) {
+      this.hP.jumpToCurrentState();
     }
   }
   
   public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.eA |= paramBoolean;
+    this.hT |= paramBoolean;
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.eA = true;
+    this.hT = true;
   }
   
   public void setForeground(Drawable paramDrawable)
   {
-    if (this.ev != paramDrawable)
+    if (this.hP != paramDrawable)
     {
-      if (this.ev != null)
+      if (this.hP != null)
       {
-        this.ev.setCallback(null);
-        unscheduleDrawable(this.ev);
+        this.hP.setCallback(null);
+        unscheduleDrawable(this.hP);
       }
-      this.ev = paramDrawable;
+      this.hP = paramDrawable;
       if (paramDrawable == null) {
         break label96;
       }
@@ -137,7 +139,7 @@ public class ForegroundLinearLayout
       if (paramDrawable.isStateful()) {
         paramDrawable.setState(getDrawableState());
       }
-      if (this.ey == 119) {
+      if (this.foregroundGravity == 119) {
         paramDrawable.getPadding(new Rect());
       }
     }
@@ -153,7 +155,7 @@ public class ForegroundLinearLayout
   
   public void setForegroundGravity(int paramInt)
   {
-    if (this.ey != paramInt)
+    if (this.foregroundGravity != paramInt)
     {
       if ((0x800007 & paramInt) != 0) {
         break label77;
@@ -167,11 +169,11 @@ public class ForegroundLinearLayout
       if ((paramInt & 0x70) == 0) {
         i = paramInt | 0x30;
       }
-      this.ey = i;
-      if ((this.ey == 119) && (this.ev != null))
+      this.foregroundGravity = i;
+      if ((this.foregroundGravity == 119) && (this.hP != null))
       {
         Rect localRect = new Rect();
-        this.ev.getPadding(localRect);
+        this.hP.getPadding(localRect);
       }
       requestLayout();
       return;
@@ -180,12 +182,12 @@ public class ForegroundLinearLayout
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.ev);
+    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.hP);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.internal.ForegroundLinearLayout
  * JD-Core Version:    0.7.0.1
  */

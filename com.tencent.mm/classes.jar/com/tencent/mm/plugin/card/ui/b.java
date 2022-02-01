@@ -7,21 +7,23 @@ import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.d.c;
+import com.tencent.mm.plugin.card.d.r;
+import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.ui.view.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public final class b
   implements Application.ActivityLifecycleCallbacks
 {
-  private int ksM = 0;
+  private int nyf = 0;
   
-  public static Application aMc()
+  public static Application bod()
   {
-    AppMethodBeat.i(88238);
-    Application localApplication = (Application)ah.getContext().getApplicationContext();
-    AppMethodBeat.o(88238);
+    AppMethodBeat.i(113172);
+    Application localApplication = (Application)aj.getContext().getApplicationContext();
+    AppMethodBeat.o(113172);
     return localApplication;
   }
   
@@ -37,41 +39,53 @@ public final class b
   
   public final void onActivityStarted(Activity paramActivity)
   {
-    AppMethodBeat.i(88239);
-    if (this.ksM < 0)
+    AppMethodBeat.i(113173);
+    if (this.nyf < 0)
     {
       if ((paramActivity == null) || (!(paramActivity instanceof CardDetailUI))) {
         break label90;
       }
       paramActivity = (CardDetailUI)paramActivity;
-      if (paramActivity.ktb != null)
+      if (paramActivity.nyr != null)
       {
-        com.tencent.mm.plugin.card.ui.view.g localg = paramActivity.ktb.ktz;
+        com.tencent.mm.plugin.card.ui.view.g localg = paramActivity.nyr.nyP;
         if ((localg != null) && ((localg instanceof m)))
         {
-          ab.i("MicroMsg.CardAcitivityLifecycleListener", "CardAcitivityLifecycleListener on activity from background to foreground！is showing CardDetailUI,updateCodeView!");
-          paramActivity.ktb.ktz.d(c.kCc);
+          ad.i("MicroMsg.CardAcitivityLifecycleListener", "CardAcitivityLifecycleListener on activity from background to foreground！is showing CardDetailUI,updateCodeView!");
+          paramActivity.nyr.nyP.d(c.nJb);
         }
       }
     }
     for (;;)
     {
-      this.ksM += 1;
-      AppMethodBeat.o(88239);
+      this.nyf += 1;
+      AppMethodBeat.o(113173);
       return;
       label90:
-      com.tencent.mm.kernel.g.RO().ac(new b.1(this));
+      com.tencent.mm.kernel.g.afE().ax(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(113171);
+          ad.i("MicroMsg.CardAcitivityLifecycleListener", "CardAcitivityLifecycleListener on activity from background to foreground！doUpdateOfflineDynamicCard!");
+          com.tencent.mm.plugin.card.b.g localg = am.bJl();
+          if (localg != null) {
+            localg.a(r.nJq);
+          }
+          AppMethodBeat.o(113171);
+        }
+      });
     }
   }
   
   public final void onActivityStopped(Activity paramActivity)
   {
-    this.ksM -= 1;
+    this.nyf -= 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.b
  * JD-Core Version:    0.7.0.1
  */

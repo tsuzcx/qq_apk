@@ -9,9 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.pluginsdk.model.app.f;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.pluginsdk.model.app.g;
+import com.tencent.mm.pluginsdk.model.app.h;
 import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.m;
 import java.util.List;
@@ -21,57 +21,70 @@ public final class b
   implements k.a
 {
   private Context context;
-  private List<f> qIG;
-  boolean sYK = false;
+  private List<g> whn;
+  boolean yFk = false;
   
-  public b(Context paramContext, List<f> paramList)
+  public b(Context paramContext, List<g> paramList)
   {
     this.context = paramContext;
-    this.qIG = paramList;
+    this.whn = paramList;
   }
   
-  private int bHs()
+  private int cEn()
   {
-    AppMethodBeat.i(25469);
+    AppMethodBeat.i(29163);
     int i = getRealCount();
-    AppMethodBeat.o(25469);
+    AppMethodBeat.o(29163);
     return (4 - i % 4) % 4;
   }
   
   private int getRealCount()
   {
-    AppMethodBeat.i(25468);
-    int i = this.qIG.size();
-    AppMethodBeat.o(25468);
+    AppMethodBeat.i(29162);
+    int i = this.whn.size();
+    AppMethodBeat.o(29162);
     return i;
+  }
+  
+  public final boolean EJ(int paramInt)
+  {
+    AppMethodBeat.i(29160);
+    int i = this.whn.size();
+    if ((paramInt >= i) && (paramInt < i + cEn()))
+    {
+      AppMethodBeat.o(29160);
+      return true;
+    }
+    AppMethodBeat.o(29160);
+    return false;
   }
   
   public final void a(String paramString, m paramm)
   {
-    AppMethodBeat.i(25470);
+    AppMethodBeat.i(29164);
     notifyDataSetChanged();
-    AppMethodBeat.o(25470);
+    AppMethodBeat.o(29164);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(25465);
+    AppMethodBeat.i(29159);
     int i = getRealCount();
-    int j = bHs();
-    AppMethodBeat.o(25465);
+    int j = cEn();
+    AppMethodBeat.o(29159);
     return i + j;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(25467);
-    if (xj(paramInt))
+    AppMethodBeat.i(29161);
+    if (EJ(paramInt))
     {
-      AppMethodBeat.o(25467);
+      AppMethodBeat.o(29161);
       return null;
     }
-    Object localObject = this.qIG.get(paramInt);
-    AppMethodBeat.o(25467);
+    Object localObject = this.whn.get(paramInt);
+    AppMethodBeat.o(29161);
     return localObject;
   }
   
@@ -82,78 +95,65 @@ public final class b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(25464);
+    AppMethodBeat.i(29158);
     if (paramView == null)
     {
       paramViewGroup = new c();
-      paramView = View.inflate(this.context, 2130968758, null);
-      paramViewGroup.iQd = ((ImageView)paramView.findViewById(2131821482));
-      paramViewGroup.sZf = ((TextView)paramView.findViewById(2131821483));
-      paramViewGroup.gve = ((TextView)paramView.findViewById(2131821485));
-      paramViewGroup.sZg = paramView.findViewById(2131821484);
+      paramView = View.inflate(this.context, 2131493084, null);
+      paramViewGroup.fxT = ((ImageView)paramView.findViewById(2131296905));
+      paramViewGroup.yFF = ((TextView)paramView.findViewById(2131296904));
+      paramViewGroup.ftj = ((TextView)paramView.findViewById(2131296906));
+      paramViewGroup.yFG = paramView.findViewById(2131296907);
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      paramViewGroup.sZg.setVisibility(4);
-      if (!xj(paramInt)) {
+      paramViewGroup.yFG.setVisibility(4);
+      if (!EJ(paramInt)) {
         break;
       }
-      paramViewGroup.iQd.setVisibility(4);
-      paramViewGroup.sZf.setVisibility(4);
-      paramViewGroup.gve.setVisibility(4);
-      AppMethodBeat.o(25464);
+      paramViewGroup.fxT.setVisibility(4);
+      paramViewGroup.yFF.setVisibility(4);
+      paramViewGroup.ftj.setVisibility(4);
+      AppMethodBeat.o(29158);
       return paramView;
       paramViewGroup = (c)paramView.getTag();
     }
-    f localf = (f)getItem(paramInt);
-    paramViewGroup.iQd.setVisibility(0);
-    Bitmap localBitmap = g.b(localf.field_appId, 5, a.getDensity(this.context));
+    g localg = (g)getItem(paramInt);
+    paramViewGroup.fxT.setVisibility(0);
+    Bitmap localBitmap = h.c(localg.field_appId, 5, a.getDensity(this.context));
     if (localBitmap == null)
     {
-      paramViewGroup.iQd.setBackgroundResource(2130837799);
-      paramViewGroup.gve.setVisibility(0);
-      paramViewGroup.gve.setText(g.b(this.context, localf, null));
-      if (!this.sYK) {
+      paramViewGroup.fxT.setBackgroundResource(2131231052);
+      paramViewGroup.ftj.setVisibility(0);
+      paramViewGroup.ftj.setText(h.a(this.context, localg, null));
+      if (!this.yFk) {
         break label259;
       }
-      paramViewGroup.sZf.setVisibility(0);
+      paramViewGroup.yFF.setVisibility(0);
     }
     for (;;)
     {
-      AppMethodBeat.o(25464);
+      AppMethodBeat.o(29158);
       return paramView;
-      paramViewGroup.iQd.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+      paramViewGroup.fxT.setBackgroundDrawable(new BitmapDrawable(localBitmap));
       break;
       label259:
-      paramViewGroup.sZf.setVisibility(8);
+      paramViewGroup.yFF.setVisibility(8);
     }
   }
   
-  public final void mv(boolean paramBoolean)
+  public final void qZ(boolean paramBoolean)
   {
-    AppMethodBeat.i(25463);
-    this.sYK = paramBoolean;
+    AppMethodBeat.i(29157);
+    this.yFk = paramBoolean;
     notifyDataSetChanged();
-    AppMethodBeat.o(25463);
-  }
-  
-  public final boolean xj(int paramInt)
-  {
-    AppMethodBeat.i(25466);
-    int i = this.qIG.size();
-    if ((paramInt >= i) && (paramInt < i + bHs()))
-    {
-      AppMethodBeat.o(25466);
-      return true;
-    }
-    AppMethodBeat.o(25466);
-    return false;
+    AppMethodBeat.o(29157);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.b
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ final class NetworkDiagnoseAllInOneUI$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(26001);
+    AppMethodBeat.i(29684);
     paramDialogInterface.dismiss();
-    AppMethodBeat.o(26001);
+    AppMethodBeat.o(29684);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.traceroute.ui.NetworkDiagnoseAllInOneUI.6
  * JD-Core Version:    0.7.0.1
  */

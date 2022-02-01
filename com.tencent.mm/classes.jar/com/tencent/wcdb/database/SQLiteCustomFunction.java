@@ -10,24 +10,24 @@ public final class SQLiteCustomFunction
   
   public SQLiteCustomFunction(String paramString, int paramInt, SQLiteDatabase.CustomFunction paramCustomFunction)
   {
-    AppMethodBeat.i(12420);
+    AppMethodBeat.i(3104);
     if (paramString == null)
     {
       paramString = new IllegalArgumentException("name must not be null.");
-      AppMethodBeat.o(12420);
+      AppMethodBeat.o(3104);
       throw paramString;
     }
     this.name = paramString;
     this.numArgs = paramInt;
     this.callback = paramCustomFunction;
-    AppMethodBeat.o(12420);
+    AppMethodBeat.o(3104);
   }
   
   private void dispatchCallback(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(12421);
+    AppMethodBeat.i(3105);
     this.callback.callback(paramArrayOfString);
-    AppMethodBeat.o(12421);
+    AppMethodBeat.o(3105);
   }
 }
 

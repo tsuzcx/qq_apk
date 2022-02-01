@@ -13,19 +13,19 @@ public abstract interface o
   
   public abstract boolean a(u paramu);
   
-  public abstract boolean aG();
-  
   public abstract boolean b(j paramj);
+  
+  public abstract boolean bh();
   
   public abstract boolean c(j paramj);
   
   public abstract int getId();
   
-  public abstract void n(boolean paramBoolean);
-  
   public abstract void onRestoreInstanceState(Parcelable paramParcelable);
   
   public abstract Parcelable onSaveInstanceState();
+  
+  public abstract void p(boolean paramBoolean);
   
   public static abstract interface a
   {

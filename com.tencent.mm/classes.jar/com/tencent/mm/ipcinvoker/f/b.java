@@ -9,37 +9,37 @@ import java.util.Set;
 
 public final class b
 {
-  private static final Set<Object> eEN;
-  private static final Map<String, Set<c>> eEq;
+  private static final Map<String, Set<c>> fZD;
+  private static final Set<Object> fZQ;
   
   static
   {
-    AppMethodBeat.i(114115);
-    eEN = new HashSet();
-    eEq = new HashMap();
-    AppMethodBeat.o(114115);
+    AppMethodBeat.i(158826);
+    fZQ = new HashSet();
+    fZD = new HashMap();
+    AppMethodBeat.o(158826);
   }
   
   public static boolean a(String paramString, c paramc)
   {
-    AppMethodBeat.i(114112);
+    AppMethodBeat.i(158823);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(114112);
+      AppMethodBeat.o(158823);
       return false;
     }
     Object localObject;
     label125:
     for (;;)
     {
-      synchronized (eEq)
+      synchronized (fZD)
       {
-        localObject = (Set)eEq.get(paramString);
+        localObject = (Set)fZD.get(paramString);
         if (localObject != null) {
           break label125;
         }
         localObject = new HashSet();
-        eEq.put(paramString, localObject);
+        fZD.put(paramString, localObject);
         com.tencent.mm.ipcinvoker.h.b.i("IPC.ObjectRecycler", "addIntoSet(%s)", new Object[] { paramString });
       }
       try
@@ -49,43 +49,29 @@ public final class b
       }
       finally
       {
-        AppMethodBeat.o(114112);
+        AppMethodBeat.o(158823);
       }
       paramString = finally;
-      AppMethodBeat.o(114112);
+      AppMethodBeat.o(158823);
       throw paramString;
     }
   }
   
-  public static void ah(Object paramObject)
-  {
-    AppMethodBeat.i(114110);
-    eEN.add(paramObject);
-    AppMethodBeat.o(114110);
-  }
-  
-  public static void ai(Object paramObject)
-  {
-    AppMethodBeat.i(114111);
-    eEN.remove(paramObject);
-    AppMethodBeat.o(114111);
-  }
-  
   public static boolean b(String paramString, c paramc)
   {
-    AppMethodBeat.i(114113);
+    AppMethodBeat.i(158824);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(114113);
+      AppMethodBeat.o(158824);
       return false;
     }
     Set localSet;
-    synchronized (eEq)
+    synchronized (fZD)
     {
-      localSet = (Set)eEq.get(paramString);
+      localSet = (Set)fZD.get(paramString);
       if (localSet == null)
       {
-        AppMethodBeat.o(114113);
+        AppMethodBeat.o(158824);
         return false;
       }
     }
@@ -97,25 +83,39 @@ public final class b
     }
     finally
     {
-      AppMethodBeat.o(114113);
+      AppMethodBeat.o(158824);
     }
   }
   
-  public static void md(String paramString)
+  public static void bj(Object paramObject)
   {
-    AppMethodBeat.i(114114);
+    AppMethodBeat.i(158821);
+    fZQ.add(paramObject);
+    AppMethodBeat.o(158821);
+  }
+  
+  public static void bk(Object paramObject)
+  {
+    AppMethodBeat.i(158822);
+    fZQ.remove(paramObject);
+    AppMethodBeat.o(158822);
+  }
+  
+  public static void qt(String paramString)
+  {
+    AppMethodBeat.i(158825);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      AppMethodBeat.o(114114);
+      AppMethodBeat.o(158825);
       return;
     }
     Set localSet;
-    synchronized (eEq)
+    synchronized (fZD)
     {
-      localSet = (Set)eEq.remove(paramString);
+      localSet = (Set)fZD.remove(paramString);
       if (localSet == null)
       {
-        AppMethodBeat.o(114114);
+        AppMethodBeat.o(158825);
         return;
       }
     }
@@ -133,9 +133,9 @@ public final class b
     }
     finally
     {
-      AppMethodBeat.o(114114);
+      AppMethodBeat.o(158825);
     }
-    AppMethodBeat.o(114114);
+    AppMethodBeat.o(158825);
   }
 }
 

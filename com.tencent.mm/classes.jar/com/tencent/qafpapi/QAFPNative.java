@@ -1,15 +1,16 @@
 package com.tencent.qafpapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.k;
+import com.tencent.mm.compatible.util.j;
 
 public class QAFPNative
 {
   static
   {
-    AppMethodBeat.i(35387);
-    k.a("wechatQAFP", QAFPNative.class.getClassLoader());
-    AppMethodBeat.o(35387);
+    AppMethodBeat.i(39594);
+    QAFPNative.class.getClassLoader();
+    j.pq("wechatQAFP");
+    AppMethodBeat.o(39594);
   }
   
   public static native int QAFPGetAudioFingerPrint(byte[] paramArrayOfByte);
@@ -30,7 +31,7 @@ public class QAFPNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qafpapi.QAFPNative
  * JD-Core Version:    0.7.0.1
  */

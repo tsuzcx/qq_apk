@@ -17,10 +17,10 @@ final class zza
   
   public final void run()
   {
-    AppMethodBeat.i(90305);
+    AppMethodBeat.i(5326);
     Process.setThreadPriority(this.priority);
     this.zzaax.run();
-    AppMethodBeat.o(90305);
+    AppMethodBeat.o(5326);
   }
 }
 

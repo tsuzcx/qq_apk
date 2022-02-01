@@ -5,10 +5,10 @@ import com.tencent.mars.comm.PlatformComm;
 import com.tencent.mars.xlog.LogLogic;
 import com.tencent.mars.xlog.Xlog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.k;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.compatible.util.j;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class XLogSetup
 {
@@ -24,19 +24,19 @@ public class XLogSetup
   
   static
   {
-    AppMethodBeat.i(59243);
+    AppMethodBeat.i(133558);
     setup = false;
     xlog = new Xlog();
     hasInit = false;
-    AppMethodBeat.o(59243);
+    AppMethodBeat.o(133558);
   }
   
   public static void keep_setupXLog(boolean paramBoolean, String paramString1, String paramString2, Integer paramInteger, Boolean paramBoolean1, Boolean paramBoolean2, String paramString3)
   {
-    AppMethodBeat.i(59242);
+    AppMethodBeat.i(133557);
     if (!hasInit)
     {
-      PlatformComm.init(ah.getContext(), new ak(Looper.getMainLooper()));
+      PlatformComm.init(aj.getContext(), new ap(Looper.getMainLooper()));
       hasInit = true;
     }
     cachePath = paramString1;
@@ -47,35 +47,37 @@ public class XLogSetup
     nameprefix = paramString3;
     if (!paramBoolean)
     {
-      AppMethodBeat.o(59242);
+      AppMethodBeat.o(133557);
       return;
     }
     if (setup)
     {
-      AppMethodBeat.o(59242);
+      AppMethodBeat.o(133557);
       return;
     }
     setup = true;
-    k.a(a.AZA, XLogSetup.class.getClassLoader());
-    ab.a(xlog);
+    paramString1 = a.Igx;
+    XLogSetup.class.getClassLoader();
+    j.pq(paramString1);
+    ad.a(xlog);
     appendIsSync.booleanValue();
     Xlog.setConsoleLogOpen(isLogcatOpen.booleanValue());
     if (toolsLevel == null)
     {
       Xlog.AppenderOpen(2, 0, cachePath, logPath, nameprefix, 3);
       LogLogic.initIPxxLogInfo();
-      AppMethodBeat.o(59242);
+      AppMethodBeat.o(133557);
       return;
     }
     Xlog.AppenderOpen(toolsLevel.intValue(), 1, cachePath, logPath, nameprefix, 0);
-    AppMethodBeat.o(59242);
+    AppMethodBeat.o(133557);
   }
   
   public static void realSetupXlog()
   {
-    AppMethodBeat.i(59241);
+    AppMethodBeat.i(133556);
     keep_setupXLog(true, cachePath, logPath, toolsLevel, appendIsSync, isLogcatOpen, nameprefix);
-    AppMethodBeat.o(59241);
+    AppMethodBeat.o(133556);
   }
 }
 

@@ -1,74 +1,97 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.bz.a;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
+import java.util.Calendar;
 
 public final class a
-  implements bz.a
 {
-  public final void a(e.a parama)
+  private Calendar calendar;
+  public int foG;
+  public long foH;
+  public int month;
+  public long msgId;
+  public int year;
+  
+  public a()
   {
-    AppMethodBeat.i(103956);
-    cm localcm = parama.eyJ;
-    String str1;
-    String str2;
-    bi localbi;
-    if (localcm.nqW == 10002)
+    AppMethodBeat.i(12447);
+    setTime(System.currentTimeMillis());
+    AppMethodBeat.o(12447);
+  }
+  
+  public a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(12448);
+    this.year = paramInt1;
+    this.month = paramInt2;
+    this.foG = paramInt3;
+    AppMethodBeat.o(12448);
+  }
+  
+  public a(long paramLong)
+  {
+    AppMethodBeat.i(12449);
+    this.foH = paramLong;
+    setTime(paramLong);
+    AppMethodBeat.o(12449);
+  }
+  
+  private void setTime(long paramLong)
+  {
+    AppMethodBeat.i(12450);
+    this.foH = paramLong;
+    if (this.calendar == null) {
+      this.calendar = Calendar.getInstance();
+    }
+    this.calendar.setTimeInMillis(paramLong);
+    this.month = this.calendar.get(2);
+    this.year = this.calendar.get(1);
+    this.foG = this.calendar.get(5);
+    AppMethodBeat.o(12450);
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if ((paramObject instanceof a))
     {
-      str1 = aa.a(localcm.woR);
-      if (bo.isNullOrNil(str1))
+      paramObject = (a)paramObject;
+      bool1 = bool2;
+      if (paramObject.foG == this.foG)
       {
-        ab.w("MicroMsg.ChatroomAccessVerifySysCmdMsgListener", "msg content is null");
-        AppMethodBeat.o(103956);
-        return;
-      }
-      str2 = aa.a(localcm.woP);
-      localbi = ((j)g.E(j.class)).bPQ().ag(str2, localcm.pIG);
-      if (localbi.field_msgId <= 0L) {
-        break label242;
+        bool1 = bool2;
+        if (paramObject.month == this.month)
+        {
+          bool1 = bool2;
+          if (paramObject.year == this.year) {
+            bool1 = true;
+          }
+        }
       }
     }
-    label242:
-    for (int i = 1;; i = 0)
-    {
-      localbi.fP(localcm.pIG);
-      localbi.fQ(bf.x(str2, localcm.CreateTime));
-      localbi.setType(10002);
-      localbi.setContent(str1);
-      localbi.hL(0);
-      localbi.kj(str2);
-      localbi.jl(localcm.woU);
-      localbi.dym();
-      bf.a(localbi, parama);
-      if (i == 0)
-      {
-        bf.l(localbi);
-        AppMethodBeat.o(103956);
-        return;
-      }
-      ((j)g.E(j.class)).bPQ().b(localcm.pIG, localbi);
-      AppMethodBeat.o(103956);
-      return;
-      ab.i("MicroMsg.ChatroomAccessVerifySysCmdMsgListener", "not new xml type:%d ", new Object[] { Integer.valueOf(localcm.nqW) });
-      AppMethodBeat.o(103956);
-      return;
-    }
+    return bool1;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(12451);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("{ year: ");
+    ((StringBuilder)localObject).append(this.year);
+    ((StringBuilder)localObject).append(", month: ");
+    ((StringBuilder)localObject).append(this.month);
+    ((StringBuilder)localObject).append(", day: ");
+    ((StringBuilder)localObject).append(this.foG);
+    ((StringBuilder)localObject).append(" }");
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(12451);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.d.a
  * JD-Core Version:    0.7.0.1
  */

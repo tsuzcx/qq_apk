@@ -3,21 +3,31 @@ package com.tencent.mm.plugin.audio;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.q;
-import com.tencent.mm.modelvoice.o;
-import com.tencent.mm.plugin.audio.a.a;
+import com.tencent.mm.model.t;
+import com.tencent.mm.plugin.audio.a.b;
 
 public class PluginVoice
   extends f
-  implements a
+  implements b
 {
+  public void configure(g paramg)
+  {
+    AppMethodBeat.i(177451);
+    if (paramg.agu())
+    {
+      com.tencent.mm.vfs.o.i("voice", "voice", 19, false);
+      com.tencent.mm.vfs.o.i("voice2", "voice2", 19, false);
+    }
+    AppMethodBeat.o(177451);
+  }
+  
   public void execute(g paramg)
   {
-    AppMethodBeat.i(116801);
-    if (paramg.SD()) {
-      pin(new q(o.class));
+    AppMethodBeat.i(148651);
+    if (paramg.agu()) {
+      pin(new t(com.tencent.mm.modelvoice.o.class));
     }
-    AppMethodBeat.o(116801);
+    AppMethodBeat.o(148651);
   }
   
   public String name()
@@ -27,7 +37,7 @@ public class PluginVoice
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.audio.PluginVoice
  * JD-Core Version:    0.7.0.1
  */

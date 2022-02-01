@@ -2,6 +2,8 @@ package com.tencent.mm.plugin.setting.ui.qrcode;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,173 +16,210 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.bb.a;
+import com.tencent.mm.al.n;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.r;
+import com.tencent.mm.model.u;
+import com.tencent.mm.platformtools.p;
 import com.tencent.mm.plugin.account.ui.FacebookAuthUI;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.pluginsdk.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.h.c;
+import com.tencent.mm.vfs.i;
+import java.io.OutputStream;
 
 public class ShowQRCodeStep1UI
   extends MMActivity
-  implements f
+  implements com.tencent.mm.al.g
 {
-  private ProgressDialog eeN = null;
-  private ImageView qFD = null;
-  byte[] qFE = null;
-  private int qFy = 1;
+  private ProgressDialog fpP = null;
+  private int wdV = 1;
+  private ImageView wea = null;
+  private byte[] web = null;
   
-  final void cjS()
+  final void dnB()
   {
-    AppMethodBeat.i(126939);
-    a locala = new a();
-    com.tencent.mm.kernel.g.Rc().a(locala, 0);
+    AppMethodBeat.i(73868);
+    final com.tencent.mm.bd.a locala = new com.tencent.mm.bd.a();
+    com.tencent.mm.kernel.g.aeS().a(locala, 0);
     AppCompatActivity localAppCompatActivity = getContext();
-    getString(2131297087);
-    this.eeN = h.b(localAppCompatActivity, getString(2131303082), true, new ShowQRCodeStep1UI.5(this, locala));
-    AppMethodBeat.o(126939);
+    getString(2131755906);
+    this.fpP = h.b(localAppCompatActivity, getString(2131763030), true, new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(186508);
+        com.tencent.mm.kernel.g.aeS().a(locala);
+        AppMethodBeat.o(186508);
+      }
+    });
+    AppMethodBeat.o(73868);
   }
   
   public int getLayoutId()
   {
-    return 2130970738;
+    return 2131495443;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(126938);
-    setMMTitle(2131303118);
-    this.qFD = ((ImageView)findViewById(2131821065));
-    this.qFy = getIntent().getIntExtra("show_to", 1);
-    TextView localTextView = (TextView)findViewById(2131827785);
-    if (this.qFy == 3) {
-      localTextView.setText(getString(2131303087, new Object[] { getString(2131303091) }));
+    AppMethodBeat.i(73867);
+    setMMTitle(2131763067);
+    this.wea = ((ImageView)findViewById(2131304554));
+    this.wdV = getIntent().getIntExtra("show_to", 1);
+    TextView localTextView = (TextView)findViewById(2131304791);
+    if (this.wdV == 3) {
+      localTextView.setText(getString(2131763035, new Object[] { getString(2131763039) }));
     }
     for (;;)
     {
-      cjS();
+      dnB();
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(126931);
+          AppMethodBeat.i(73860);
           ShowQRCodeStep1UI.this.hideVKB();
           ShowQRCodeStep1UI.this.finish();
-          AppMethodBeat.o(126931);
+          AppMethodBeat.o(73860);
           return true;
         }
       });
-      addIconOptionMenu(0, 2130839668, new ShowQRCodeStep1UI.2(this));
-      ((Button)findViewById(2131827786)).setOnClickListener(new View.OnClickListener()
+      addIconOptionMenu(0, 2131690603, new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(73861);
+          paramAnonymousMenuItem = ShowQRCodeStep1UI.this;
+          String str1 = paramAnonymousMenuItem.getString(2131763027);
+          String str2 = paramAnonymousMenuItem.getString(2131763031);
+          ShowQRCodeStep1UI.4 local4 = new ShowQRCodeStep1UI.4(paramAnonymousMenuItem);
+          h.b(paramAnonymousMenuItem, "", new String[] { str1, str2 }, "", local4);
+          AppMethodBeat.o(73861);
+          return true;
+        }
+      });
+      ((Button)findViewById(2131304555)).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(126933);
+          AppMethodBeat.i(73862);
           if (ShowQRCodeStep1UI.a(ShowQRCodeStep1UI.this) == 3)
           {
-            paramAnonymousView = com.tencent.mm.kernel.g.RK().jN(1);
-            Object localObject = r.Zn();
-            int i = bo.g((Integer)com.tencent.mm.kernel.g.RL().Ru().get(66561, null));
-            ab.d("MicroMsg.ShowQRCodeStep1UI", "sessionKey[%s], userName[%s], style[%d]", new Object[] { bo.aqg(bo.cg(paramAnonymousView)), localObject, Integer.valueOf(i) });
-            paramAnonymousView = "http://weixin.qq.com/cgi-bin/rweibourl?sid=" + com.tencent.mm.a.g.w(paramAnonymousView) + "&u=" + (String)localObject + "&qr=" + i + "&device=" + com.tencent.mm.protocal.d.eQs + "&version=" + com.tencent.mm.protocal.d.whH;
-            ab.d("MicroMsg.ShowQRCodeStep1UI", "[%s]", new Object[] { paramAnonymousView });
+            paramAnonymousView = com.tencent.mm.kernel.g.afA().mq(1);
+            localObject = u.aqG();
+            int i = bt.l((Integer)com.tencent.mm.kernel.g.afB().afk().get(66561, null));
+            ad.d("MicroMsg.ShowQRCodeStep1UI", "sessionKey[%s], userName[%s], style[%d]", new Object[] { bt.aGs(bt.cy(paramAnonymousView)), localObject, Integer.valueOf(i) });
+            paramAnonymousView = "http://weixin.qq.com/cgi-bin/rweibourl?sid=" + com.tencent.mm.b.g.getMessageDigest(paramAnonymousView) + "&u=" + (String)localObject + "&qr=" + i + "&device=" + com.tencent.mm.protocal.d.glX + "&version=" + com.tencent.mm.protocal.d.CpK;
+            ad.d("MicroMsg.ShowQRCodeStep1UI", "[%s]", new Object[] { paramAnonymousView });
             localObject = new Intent();
             ((Intent)localObject).putExtra("rawUrl", paramAnonymousView);
-            ((Intent)localObject).putExtra("title", ShowQRCodeStep1UI.this.getString(2131303097));
-            com.tencent.mm.bq.d.b(ShowQRCodeStep1UI.this, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+            ((Intent)localObject).putExtra("title", ShowQRCodeStep1UI.this.getString(2131763045));
+            com.tencent.mm.bs.d.b(ShowQRCodeStep1UI.this, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
             ShowQRCodeStep1UI.this.finish();
-            AppMethodBeat.o(126933);
+            AppMethodBeat.o(73862);
             return;
           }
           if (ShowQRCodeStep1UI.a(ShowQRCodeStep1UI.this) == 4)
           {
-            if (r.ZP())
+            if (u.arj())
             {
-              paramAnonymousView = new Intent(ShowQRCodeStep1UI.this, ShareToQQUI.class);
-              paramAnonymousView.putExtra("show_to", 4);
-              ShowQRCodeStep1UI.this.startActivity(paramAnonymousView);
+              localObject = new Intent(ShowQRCodeStep1UI.this, ShareToQQUI.class);
+              ((Intent)localObject).putExtra("show_to", 4);
+              paramAnonymousView = ShowQRCodeStep1UI.this;
+              localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             }
             for (;;)
             {
               ShowQRCodeStep1UI.this.finish();
-              AppMethodBeat.o(126933);
+              AppMethodBeat.o(73862);
               return;
               ShowQRCodeStep1UI.a(ShowQRCodeStep1UI.this, FacebookAuthUI.class);
             }
           }
           if (ShowQRCodeStep1UI.a(ShowQRCodeStep1UI.this) == 2)
           {
-            paramAnonymousView = new Intent(ShowQRCodeStep1UI.this, ShareToQQUI.class);
-            paramAnonymousView.putExtra("show_to", 2);
-            ShowQRCodeStep1UI.this.startActivity(paramAnonymousView);
+            localObject = new Intent(ShowQRCodeStep1UI.this, ShareToQQUI.class);
+            ((Intent)localObject).putExtra("show_to", 2);
+            paramAnonymousView = ShowQRCodeStep1UI.this;
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             ShowQRCodeStep1UI.this.finish();
-            AppMethodBeat.o(126933);
+            AppMethodBeat.o(73862);
             return;
           }
-          paramAnonymousView = new Intent(ShowQRCodeStep1UI.this, ShareToQQUI.class);
-          paramAnonymousView.putExtra("show_to", 1);
-          ShowQRCodeStep1UI.this.startActivity(paramAnonymousView);
+          Object localObject = new Intent(ShowQRCodeStep1UI.this, ShareToQQUI.class);
+          ((Intent)localObject).putExtra("show_to", 1);
+          paramAnonymousView = ShowQRCodeStep1UI.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/setting/ui/qrcode/ShowQRCodeStep1UI$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           ShowQRCodeStep1UI.this.finish();
-          AppMethodBeat.o(126933);
+          AppMethodBeat.o(73862);
         }
       });
-      AppMethodBeat.o(126938);
+      AppMethodBeat.o(73867);
       return;
-      if (this.qFy == 4) {
-        localTextView.setText(getString(2131303087, new Object[] { getString(2131303088) }));
-      } else if (this.qFy == 2) {
-        localTextView.setText(getString(2131303087, new Object[] { getString(2131303090) }));
+      if (this.wdV == 4) {
+        localTextView.setText(getString(2131763035, new Object[] { getString(2131763036) }));
+      } else if (this.wdV == 2) {
+        localTextView.setText(getString(2131763035, new Object[] { getString(2131763038) }));
       } else {
-        localTextView.setText(getString(2131303087, new Object[] { getString(2131303089) }));
+        localTextView.setText(getString(2131763035, new Object[] { getString(2131763037) }));
       }
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(126936);
+    AppMethodBeat.i(73865);
     super.onCreate(paramBundle);
     initView();
-    com.tencent.mm.kernel.g.Rc().a(168, this);
-    AppMethodBeat.o(126936);
+    com.tencent.mm.kernel.g.aeS().a(168, this);
+    AppMethodBeat.o(73865);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(126937);
-    com.tencent.mm.kernel.g.Rc().b(168, this);
+    AppMethodBeat.i(73866);
+    com.tencent.mm.kernel.g.aeS().b(168, this);
     super.onDestroy();
-    AppMethodBeat.o(126937);
+    AppMethodBeat.o(73866);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(126940);
-    ab.i("MicroMsg.ShowQRCodeStep1UI", "onSceneEnd: errType = %d errCode = %d errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (this.eeN != null)
+    AppMethodBeat.i(73869);
+    ad.i("MicroMsg.ShowQRCodeStep1UI", "onSceneEnd: errType = %d errCode = %d errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (this.fpP != null)
     {
-      this.eeN.dismiss();
-      this.eeN = null;
+      this.fpP.dismiss();
+      this.fpP = null;
     }
-    if (com.tencent.mm.plugin.setting.b.gmP.b(getContext(), paramInt1, paramInt2, paramString))
+    if (com.tencent.mm.plugin.setting.b.hYu.b(getContext(), paramInt1, paramInt2, paramString))
     {
-      AppMethodBeat.o(126940);
+      AppMethodBeat.o(73869);
       return;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      Toast.makeText(this, getString(2131300095, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
-      AppMethodBeat.o(126940);
+      Toast.makeText(this, getString(2131759562, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      AppMethodBeat.o(73869);
       return;
     }
-    this.qFE = ((a)paramm).fMU;
-    this.qFD.setImageBitmap(com.tencent.mm.sdk.platformtools.d.bT(this.qFE));
-    AppMethodBeat.o(126940);
+    this.web = ((com.tencent.mm.bd.a)paramn).hpQ;
+    this.wea.setImageBitmap(f.cl(this.web));
+    AppMethodBeat.o(73869);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -191,7 +230,7 @@ public class ShowQRCodeStep1UI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.qrcode.ShowQRCodeStep1UI
  * JD-Core Version:    0.7.0.1
  */

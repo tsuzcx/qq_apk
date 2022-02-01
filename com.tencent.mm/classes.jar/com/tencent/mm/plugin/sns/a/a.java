@@ -1,61 +1,61 @@
 package com.tencent.mm.plugin.sns.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.sns.c.d;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class a
-  implements c
+  implements d
 {
-  private Map<Integer, com.tencent.mm.plugin.sns.a.a.a> qYm;
+  private Map<Integer, com.tencent.mm.plugin.sns.a.a.a> wwK;
   
   public a()
   {
-    AppMethodBeat.i(35688);
-    this.qYm = new HashMap();
-    AppMethodBeat.o(35688);
+    AppMethodBeat.i(94962);
+    this.wwK = new HashMap();
+    AppMethodBeat.o(94962);
   }
   
   public final void a(int paramInt1, int paramInt2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(35690);
-    com.tencent.mm.plugin.sns.a.a.a locala = (com.tencent.mm.plugin.sns.a.a.a)this.qYm.get(Integer.valueOf(paramInt1));
+    AppMethodBeat.i(94964);
+    com.tencent.mm.plugin.sns.a.a.a locala = (com.tencent.mm.plugin.sns.a.a.a)this.wwK.get(Integer.valueOf(paramInt1));
     if (locala == null)
     {
-      ab.w("SnsAdReportService", "can not find %s implementation for kv %d", new Object[] { com.tencent.mm.plugin.sns.a.a.a.class, Integer.valueOf(paramInt1) });
-      AppMethodBeat.o(35690);
+      ad.w("SnsAdReportService", "can not find %s implementation for kv %d", new Object[] { com.tencent.mm.plugin.sns.a.a.a.class, Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(94964);
       return;
     }
-    locala.e(paramInt2, paramVarArgs);
-    AppMethodBeat.o(35690);
+    locala.f(paramInt2, paramVarArgs);
+    AppMethodBeat.o(94964);
   }
   
   public final void a(com.tencent.mm.plugin.sns.a.a.a parama)
   {
-    AppMethodBeat.i(35689);
-    this.qYm.put(Integer.valueOf(parama.cfL()), parama);
-    AppMethodBeat.o(35689);
+    AppMethodBeat.i(94963);
+    this.wwK.put(Integer.valueOf(parama.dgb()), parama);
+    AppMethodBeat.o(94963);
   }
   
-  public final void e(int paramInt, Object... paramVarArgs)
+  public final void f(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(35691);
-    com.tencent.mm.plugin.sns.a.a.a locala = (com.tencent.mm.plugin.sns.a.a.a)this.qYm.get(Integer.valueOf(paramInt));
+    AppMethodBeat.i(94965);
+    com.tencent.mm.plugin.sns.a.a.a locala = (com.tencent.mm.plugin.sns.a.a.a)this.wwK.get(Integer.valueOf(paramInt));
     if (locala == null)
     {
-      ab.w("SnsAdReportService", "can not find %s implementation for kv %d", new Object[] { com.tencent.mm.plugin.sns.a.a.a.class, Integer.valueOf(paramInt) });
-      AppMethodBeat.o(35691);
+      ad.w("SnsAdReportService", "can not find %s implementation for kv %d", new Object[] { com.tencent.mm.plugin.sns.a.a.a.class, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(94965);
       return;
     }
     locala.u(paramVarArgs);
-    AppMethodBeat.o(35691);
+    AppMethodBeat.o(94965);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,38 @@
 package kotlinx.coroutines;
 
-import a.c.e;
-import a.f.b.j;
-import a.l;
-import a.y;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.d.a.b;
+import d.d.d;
+import d.d.f;
+import d.g.a.m;
+import d.l;
+import d.y;
+import kotlinx.coroutines.b.a;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/StandaloneCoroutine;", "Lkotlinx/coroutines/AbstractCoroutine;", "", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "active", "", "(Lkotlin/coroutines/CoroutineContext;Z)V", "cancelsParent", "getCancelsParent", "()Z", "handleJobException", "exception", "", "kotlinx-coroutines-core"})
-class bp
-  extends c<y>
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/LazyDeferredCoroutine;", "T", "Lkotlinx/coroutines/DeferredCoroutine;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "block", "Lkotlin/Function2;", "Lkotlinx/coroutines/CoroutineScope;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/jvm/functions/Function2;)V", "continuation", "", "onStart", "kotlinx-coroutines-core"})
+final class bp<T>
+  extends am<T>
 {
-  public bp(e parame, boolean paramBoolean)
+  private final d<y> KdQ;
+  
+  public bp(f paramf, m<? super ad, ? super d<? super T>, ? extends Object> paramm)
   {
-    super(parame, paramBoolean);
-    AppMethodBeat.i(118463);
-    AppMethodBeat.o(118463);
+    super(paramf, false);
+    AppMethodBeat.i(118208);
+    this.KdQ = b.a(paramm, this, (d)this);
+    AppMethodBeat.o(118208);
   }
   
-  protected final boolean epU()
+  protected final void onStart()
   {
-    return true;
-  }
-  
-  protected final void z(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118462);
-    j.q(paramThrowable, "exception");
-    z.b(this.CHm, paramThrowable);
-    AppMethodBeat.o(118462);
+    AppMethodBeat.i(118207);
+    a.a(this.KdQ, (d)this);
+    AppMethodBeat.o(118207);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.bp
  * JD-Core Version:    0.7.0.1
  */

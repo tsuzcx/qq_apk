@@ -9,36 +9,36 @@ import java.util.Map;
 public final class f
   extends k
 {
-  static final c.a fkk;
+  static final c.a gLr;
   
   static
   {
-    AppMethodBeat.i(143068);
+    AppMethodBeat.i(44739);
     c.a locala = new c.a();
-    locala.yrK = new Field[2];
+    locala.EYt = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.yrM.put("username", "TEXT");
+    locala.EYv.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "token";
-    locala.yrM.put("token", "TEXT");
+    locala.EYv.put("token", "TEXT");
     localStringBuilder.append(" token TEXT");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
-    fkk = locala;
-    AppMethodBeat.o(143068);
+    gLr = locala;
+    AppMethodBeat.o(44739);
   }
   
   public final c.a getDBInfo()
   {
-    return fkk;
+    return gLr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.f
  * JD-Core Version:    0.7.0.1
  */

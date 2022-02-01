@@ -1,34 +1,31 @@
 package android.support.transition;
 
-import android.os.Build.VERSION;
-import android.view.ViewGroup;
+import android.view.View;
+import android.view.WindowId;
 
 final class an
+  implements ao
 {
-  private static final aq ud = new ao();
+  private final WindowId Bp;
   
-  static
+  an(View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 18)
-    {
-      ud = new ap();
-      return;
-    }
+    this.Bp = paramView.getWindowId();
   }
   
-  static am c(ViewGroup paramViewGroup)
+  public final boolean equals(Object paramObject)
   {
-    return ud.c(paramViewGroup);
+    return ((paramObject instanceof an)) && (((an)paramObject).Bp.equals(this.Bp));
   }
   
-  static void c(ViewGroup paramViewGroup, boolean paramBoolean)
+  public final int hashCode()
   {
-    ud.c(paramViewGroup, paramBoolean);
+    return this.Bp.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.transition.an
  * JD-Core Version:    0.7.0.1
  */

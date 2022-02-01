@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/r_" style="@style/nk">
-        <ImageView android:layout_gravity="center_vertical" android:background="@raw/mm_select_create_chatroom" android:layout_width="@dimen/hk" android:layout_height="@dimen/hk" android:layout_marginRight="@dimen/g2" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:background="@drawable/abk" android:paddingLeft="@dimen/ne" android:paddingRight="@dimen/g2" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e5c" style="@style/ln" />
-            <TextView android:textColor="#ff555555" android:id="@id/lt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="{desc}" android:singleLine="true" style="@style/lm" />
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+    <com.tencent.mm.ui.widget.cropview.CropLayout android:id="@id/c02" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/gnv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.ui.widget.cropview.CropLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/gmi" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</FrameLayout>

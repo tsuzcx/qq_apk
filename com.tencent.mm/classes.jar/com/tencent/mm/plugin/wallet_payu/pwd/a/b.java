@@ -11,15 +11,15 @@ public final class b
 {
   public b(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(48503);
+    AppMethodBeat.i(72144);
     HashMap localHashMap = new HashMap();
     localHashMap.put("old_pin", paramString1);
     localHashMap.put("new_pin", String.valueOf(paramString2));
     setRequestData(localHashMap);
-    AppMethodBeat.o(48503);
+    AppMethodBeat.o(72144);
   }
   
-  public final int cTa()
+  public final int ebo()
   {
     return 2;
   }
@@ -28,7 +28,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pwd.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle" android:useLevel="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/mmfooter_listtotext_arrow2_pressed" />
-    <item android:state_selected="true" android:drawable="@raw/mmfooter_listtotext_arrow2_pressed" />
-    <item android:drawable="@raw/mmfooter_listtotext_arrow2_normal" />
-</selector>
+    <solid android:color="@color/pz" />
+    <corners android:radius="3.0dip" />
+</shape>

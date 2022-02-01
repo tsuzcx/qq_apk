@@ -27,100 +27,89 @@ import java.util.concurrent.locks.Lock;
 public final class aa
   implements al
 {
-  private final f<? extends cr, cs> HG;
-  private boolean Jf;
-  private final com.google.android.gms.common.h Ju;
-  private final x Kf;
-  private final Lock MT;
-  private cr NA;
-  private boolean NB;
-  private boolean NC;
-  private boolean ND;
-  private ak NE;
-  private boolean NF;
-  private ArrayList<Future<?>> NG = new ArrayList();
-  private final Map<a<?>, Boolean> Na;
-  private ConnectionResult Nk;
-  private final am Ns;
-  private int Nv;
-  private int Nw = 0;
-  private int Nx;
-  private final Bundle Ny = new Bundle();
-  private final Set<com.google.android.gms.common.api.h> Nz = new HashSet();
+  private final f<? extends cr, cs> Jv;
+  private boolean KU;
+  private final x LU;
+  private final com.google.android.gms.common.h Lj;
+  private final Lock OI;
+  private final Map<a<?>, Boolean> OP;
+  private ConnectionResult OZ;
+  private final am Ph;
+  private int Pk;
+  private int Pl = 0;
+  private int Pm;
+  private final Bundle Pn = new Bundle();
+  private final Set<com.google.android.gms.common.api.h> Po = new HashSet();
+  private cr Pp;
+  private boolean Pq;
+  private boolean Pr;
+  private boolean Ps;
+  private ak Pt;
+  private boolean Pu;
+  private ArrayList<Future<?>> Pv = new ArrayList();
   private final Context mContext;
   
   public aa(am paramam, x paramx, Map<a<?>, Boolean> paramMap, com.google.android.gms.common.h paramh, f<? extends cr, cs> paramf, Lock paramLock, Context paramContext)
   {
-    this.Ns = paramam;
-    this.Kf = paramx;
-    this.Na = paramMap;
-    this.Ju = paramh;
-    this.HG = paramf;
-    this.MT = paramLock;
+    this.Ph = paramam;
+    this.LU = paramx;
+    this.OP = paramMap;
+    this.Lj = paramh;
+    this.Jv = paramf;
+    this.OI = paramLock;
     this.mContext = paramContext;
   }
   
-  private void b(ConnectionResult paramConnectionResult, a<?> parama, boolean paramBoolean)
+  private void B(boolean paramBoolean)
   {
-    int j = 1;
-    if (paramBoolean)
+    if (this.Pp != null)
     {
-      if (paramConnectionResult.gl())
-      {
-        i = 1;
-        if (i == 0) {
-          break label107;
-        }
+      if ((this.Pp.isConnected()) && (paramBoolean)) {
+        this.Pp.jN();
       }
-    }
-    else
-    {
-      i = j;
-      if (this.Nk != null) {
-        if (2147483647 >= this.Nv) {
-          break label107;
-        }
-      }
-    }
-    label107:
-    for (int i = j;; i = 0)
-    {
-      if (i != 0)
-      {
-        this.Nk = paramConnectionResult;
-        this.Nv = 2147483647;
-      }
-      this.Ns.Oj.put(parama.gr(), paramConnectionResult);
-      return;
-      if (this.Ju.ba(paramConnectionResult.getErrorCode()) != null)
-      {
-        i = 1;
-        break;
-      }
-      i = 0;
-      break;
+      this.Pp.disconnect();
+      this.Pt = null;
     }
   }
   
-  private boolean bk(int paramInt)
+  private boolean a(int paramInt, boolean paramBoolean, ConnectionResult paramConnectionResult)
   {
-    if (this.Nw != paramInt)
-    {
-      Log.w("GoogleApiClientConnecting", this.Ns.MJ.iD());
-      String str1 = String.valueOf(this);
-      Log.w("GoogleApiClientConnecting", String.valueOf(str1).length() + 23 + "Unexpected callback in " + str1);
-      int i = this.Nx;
-      Log.w("GoogleApiClientConnecting", 33 + "mRemainingConnections=" + i);
-      str1 = String.valueOf(bl(this.Nw));
-      String str2 = String.valueOf(bl(paramInt));
-      Log.wtf("GoogleApiClientConnecting", String.valueOf(str1).length() + 70 + String.valueOf(str2).length() + "GoogleApiClient connecting is in step " + str1 + " but received callback for step " + str2, new Exception());
-      i(new ConnectionResult(8, null));
+    if ((paramBoolean) && (!h(paramConnectionResult))) {}
+    while ((this.OZ != null) && (2147483647 >= this.Pk)) {
       return false;
     }
     return true;
   }
   
-  private static String bl(int paramInt)
+  private void b(ConnectionResult paramConnectionResult, a<?> parama, boolean paramBoolean)
+  {
+    if (a(2147483647, paramBoolean, paramConnectionResult))
+    {
+      this.OZ = paramConnectionResult;
+      this.Pk = 2147483647;
+    }
+    this.Ph.PY.put(parama.gB(), paramConnectionResult);
+  }
+  
+  private boolean bE(int paramInt)
+  {
+    if (this.Pl != paramInt)
+    {
+      Log.w("GoogleApiClientConnecting", this.Ph.Oy.iL());
+      String str1 = String.valueOf(this);
+      Log.w("GoogleApiClientConnecting", String.valueOf(str1).length() + 23 + "Unexpected callback in " + str1);
+      int i = this.Pm;
+      Log.w("GoogleApiClientConnecting", 33 + "mRemainingConnections=" + i);
+      str1 = String.valueOf(bF(this.Pl));
+      String str2 = String.valueOf(bF(paramInt));
+      Log.wtf("GoogleApiClientConnecting", String.valueOf(str1).length() + 70 + String.valueOf(str2).length() + "GoogleApiClient connecting is in step " + str1 + " but received callback for step " + str2, new Exception());
+      j(new ConnectionResult(8, null));
+      return false;
+    }
+    return true;
+  }
+  
+  private static String bF(int paramInt)
   {
     switch (paramInt)
     {
@@ -134,156 +123,153 @@ public final class aa
   
   private boolean h(ConnectionResult paramConnectionResult)
   {
-    return (this.NB) && (!paramConnectionResult.gl());
-  }
-  
-  private void i(ConnectionResult paramConnectionResult)
-  {
-    iz();
-    if (!paramConnectionResult.gl()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      y(bool);
-      this.Ns.j(paramConnectionResult);
-      this.Ns.On.g(paramConnectionResult);
-      return;
+    if (paramConnectionResult.gv()) {}
+    while (this.Lj.bu(paramConnectionResult.getErrorCode()) != null) {
+      return true;
     }
+    return false;
   }
   
-  private boolean iv()
+  private boolean i(ConnectionResult paramConnectionResult)
   {
-    this.Nx -= 1;
-    if (this.Nx > 0) {
+    return (this.Pq) && (!paramConnectionResult.gv());
+  }
+  
+  private boolean iD()
+  {
+    this.Pm -= 1;
+    if (this.Pm > 0) {
       return false;
     }
-    if (this.Nx < 0)
+    if (this.Pm < 0)
     {
-      Log.w("GoogleApiClientConnecting", this.Ns.MJ.iD());
+      Log.w("GoogleApiClientConnecting", this.Ph.Oy.iL());
       Log.wtf("GoogleApiClientConnecting", "GoogleApiClient received too many callbacks for the given step. Clients may be in an unexpected state; GoogleApiClient will now disconnect.", new Exception());
-      i(new ConnectionResult(8, null));
+      j(new ConnectionResult(8, null));
       return false;
     }
-    if (this.Nk != null)
+    if (this.OZ != null)
     {
-      this.Ns.Om = this.Nv;
-      i(this.Nk);
+      this.Ph.Qb = this.Pk;
+      j(this.OZ);
       return false;
     }
     return true;
   }
   
-  private void iw()
+  private void iE()
   {
-    if (this.Nx != 0) {}
+    if (this.Pm != 0) {}
     ArrayList localArrayList;
     do
     {
       do
       {
         return;
-      } while ((this.NC) && (!this.ND));
+      } while ((this.Pr) && (!this.Ps));
       localArrayList = new ArrayList();
-      this.Nw = 1;
-      this.Nx = this.Ns.NX.size();
-      Iterator localIterator = this.Ns.NX.keySet().iterator();
+      this.Pl = 1;
+      this.Pm = this.Ph.PM.size();
+      Iterator localIterator = this.Ph.PM.keySet().iterator();
       while (localIterator.hasNext())
       {
         com.google.android.gms.common.api.h localh = (com.google.android.gms.common.api.h)localIterator.next();
-        if (this.Ns.Oj.containsKey(localh))
+        if (this.Ph.PY.containsKey(localh))
         {
-          if (iv()) {
-            ix();
+          if (iD()) {
+            iF();
           }
         }
         else {
-          localArrayList.add((j)this.Ns.NX.get(localh));
+          localArrayList.add((j)this.Ph.PM.get(localh));
         }
       }
     } while (localArrayList.isEmpty());
-    this.NG.add(ap.iG().submit(new ad(this, localArrayList)));
+    this.Pv.add(ap.iO().submit(new ad(this, localArrayList)));
   }
   
-  private void ix()
+  private void iF()
   {
-    this.Ns.iF();
-    ap.iG().execute(new Runnable()
+    this.Ph.iN();
+    ap.iO().execute(new Runnable()
     {
       public final void run()
       {
-        com.google.android.gms.common.h.l(aa.a(aa.this));
+        com.google.android.gms.common.h.m(aa.a(aa.this));
       }
     });
-    if (this.NA != null)
+    if (this.Pp != null)
     {
-      if (this.Jf) {
-        this.NA.a(this.NE, this.NF);
+      if (this.KU) {
+        this.Pp.a(this.Pt, this.Pu);
       }
-      y(false);
+      B(false);
     }
-    Object localObject = this.Ns.Oj.keySet().iterator();
+    Object localObject = this.Ph.PY.keySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       com.google.android.gms.common.api.h localh = (com.google.android.gms.common.api.h)((Iterator)localObject).next();
-      ((j)this.Ns.NX.get(localh)).disconnect();
+      ((j)this.Ph.PM.get(localh)).disconnect();
     }
-    if (this.Ny.isEmpty()) {}
-    for (localObject = null;; localObject = this.Ny)
+    if (this.Pn.isEmpty()) {}
+    for (localObject = null;; localObject = this.Pn)
     {
-      this.Ns.On.j((Bundle)localObject);
+      this.Ph.Qc.j((Bundle)localObject);
       return;
     }
   }
   
-  private void iy()
+  private void iG()
   {
-    this.NC = false;
-    this.Ns.MJ.NY = Collections.emptySet();
-    Iterator localIterator = this.Nz.iterator();
+    this.Pr = false;
+    this.Ph.Oy.PN = Collections.emptySet();
+    Iterator localIterator = this.Po.iterator();
     while (localIterator.hasNext())
     {
       com.google.android.gms.common.api.h localh = (com.google.android.gms.common.api.h)localIterator.next();
-      if (!this.Ns.Oj.containsKey(localh)) {
-        this.Ns.Oj.put(localh, new ConnectionResult(17, null));
+      if (!this.Ph.PY.containsKey(localh)) {
+        this.Ph.PY.put(localh, new ConnectionResult(17, null));
       }
     }
   }
   
-  private void iz()
+  private void iH()
   {
-    Iterator localIterator = this.NG.iterator();
+    Iterator localIterator = this.Pv.iterator();
     while (localIterator.hasNext()) {
       ((Future)localIterator.next()).cancel(true);
     }
-    this.NG.clear();
+    this.Pv.clear();
   }
   
-  private void y(boolean paramBoolean)
+  private void j(ConnectionResult paramConnectionResult)
   {
-    if (this.NA != null)
+    iH();
+    if (!paramConnectionResult.gv()) {}
+    for (boolean bool = true;; bool = false)
     {
-      if ((this.NA.isConnected()) && (paramBoolean)) {
-        this.NA.jE();
-      }
-      this.NA.disconnect();
-      this.NE = null;
+      B(bool);
+      this.Ph.k(paramConnectionResult);
+      this.Ph.Qc.g(paramConnectionResult);
+      return;
     }
   }
   
   public final <A extends com.google.android.gms.common.api.g, R extends w, T extends g<R, A>> T a(T paramT)
   {
-    this.Ns.MJ.Nf.add(paramT);
+    this.Ph.Oy.OU.add(paramT);
     return paramT;
   }
   
   public final void a(ConnectionResult paramConnectionResult, a<?> parama, boolean paramBoolean)
   {
-    if (!bk(1)) {}
+    if (!bE(1)) {}
     do
     {
       return;
       b(paramConnectionResult, parama, paramBoolean);
-    } while (!iv());
-    ix();
+    } while (!iD());
+    iF();
   }
   
   public final <A extends com.google.android.gms.common.api.g, T extends g<? extends w, A>> T b(T paramT)
@@ -291,74 +277,74 @@ public final class aa
     throw new IllegalStateException("GoogleApiClient is not connected yet.");
   }
   
-  public final void bd(int paramInt)
-  {
-    i(new ConnectionResult(8, null));
-  }
-  
   public final void begin()
   {
-    this.Ns.Oj.clear();
-    this.NC = false;
-    this.Nk = null;
-    this.Nw = 0;
-    this.NB = true;
-    this.ND = false;
-    this.Jf = false;
+    this.Ph.PY.clear();
+    this.Pr = false;
+    this.OZ = null;
+    this.Pl = 0;
+    this.Pq = true;
+    this.Ps = false;
+    this.KU = false;
     HashMap localHashMap = new HashMap();
-    Object localObject = this.Na.keySet().iterator();
+    Object localObject = this.OP.keySet().iterator();
     if (((Iterator)localObject).hasNext())
     {
       a locala = (a)((Iterator)localObject).next();
-      j localj = (j)this.Ns.NX.get(locala.gr());
-      boolean bool = ((Boolean)this.Na.get(locala)).booleanValue();
-      if (localj.gs())
+      j localj = (j)this.Ph.PM.get(locala.gB());
+      boolean bool = ((Boolean)this.OP.get(locala)).booleanValue();
+      if (localj.gC())
       {
-        this.NC = true;
+        this.Pr = true;
         if (!bool) {
           break label182;
         }
-        this.Nz.add(locala.gr());
+        this.Po.add(locala.gB());
       }
       for (;;)
       {
         localHashMap.put(localj, new ab(this, locala, bool));
         break;
         label182:
-        this.NB = false;
+        this.Pq = false;
       }
     }
-    if (this.NC)
+    if (this.Pr)
     {
-      this.Kf.a(Integer.valueOf(System.identityHashCode(this.Ns.MJ)));
+      this.LU.a(Integer.valueOf(System.identityHashCode(this.Ph.Oy)));
       localObject = new af(this, (byte)0);
-      this.NA = ((cr)this.HG.a(this.mContext, this.Ns.MJ.getLooper(), this.Kf, this.Kf.hs(), (r)localObject, (s)localObject));
+      this.Pp = ((cr)this.Jv.a(this.mContext, this.Ph.Oy.getLooper(), this.LU, this.LU.hC(), (r)localObject, (s)localObject));
     }
-    this.Nx = this.Ns.NX.size();
-    this.NG.add(ap.iG().submit(new ac(this, localHashMap)));
+    this.Pm = this.Ph.PM.size();
+    this.Pv.add(ap.iO().submit(new ac(this, localHashMap)));
+  }
+  
+  public final void bx(int paramInt)
+  {
+    j(new ConnectionResult(8, null));
   }
   
   public final void connect() {}
   
   public final boolean disconnect()
   {
-    iz();
-    y(true);
-    this.Ns.j(null);
+    iH();
+    B(true);
+    this.Ph.k(null);
     return true;
   }
   
   public final void h(Bundle paramBundle)
   {
-    if (!bk(1)) {}
+    if (!bE(1)) {}
     do
     {
       return;
       if (paramBundle != null) {
-        this.Ny.putAll(paramBundle);
+        this.Pn.putAll(paramBundle);
       }
-    } while (!iv());
-    ix();
+    } while (!iD());
+    iF();
   }
 }
 

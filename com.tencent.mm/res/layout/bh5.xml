@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/h6" android:textColor="@color/y4" android:textColorHint="#4d000000" android:id="@id/bhn" android:background="@drawable/bm7" android:padding="@dimen/d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" android:maxLength="128" android:inputType="text" android:textCursorDrawable="@null" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/el" android:background="#fff6f6f6" android:layout_width="fill_parent" android:layout_height="@dimen/aj7" android:layout_marginTop="@dimen/ha">
+        <ImageView android:id="@id/ek" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/h" android:src="@raw/actionbar_icon_dark_add" />
+        <TextView android:textSize="@dimen/ia" android:textColor="#ff0c4f8e" android:id="@id/fd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/h" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/fc" android:background="#fff6f6f6" android:paddingLeft="@dimen/h" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/h">
+            <TextView android:textSize="@dimen/ia" android:textColor="#80000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d" android:text="地址信息" />
+            <TextView android:textSize="@dimen/ia" android:textColor="#ff0c4f8e" android:id="@id/bnz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="更换" android:layout_toLeftOf="@id/b9z" />
+            <TextView android:textSize="@dimen/ia" android:textColor="#ff0c4f8e" android:id="@id/b9z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/h" android:text="删除" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/ia" android:textColor="#e6000000" android:id="@id/dyg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d" android:layout_marginTop="@dimen/h" />
+        <TextView android:textSize="@dimen/ia" android:textColor="#e6000000" android:id="@id/fa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d" android:layout_marginTop="@dimen/d" android:layout_marginRight="@dimen/d" android:layout_marginBottom="@dimen/h" />
+    </LinearLayout>
+</LinearLayout>

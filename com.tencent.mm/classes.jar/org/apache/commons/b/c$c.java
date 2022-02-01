@@ -7,42 +7,42 @@ import java.util.Map;
 class c$c
   implements c.a
 {
-  private final Map CPo;
-  private final d CPp;
+  private final Map Klf;
+  private final d Klg;
   
   c$c()
   {
-    AppMethodBeat.i(116928);
-    this.CPo = new HashMap();
-    this.CPp = new d();
-    AppMethodBeat.o(116928);
+    AppMethodBeat.i(40704);
+    this.Klf = new HashMap();
+    this.Klg = new d();
+    AppMethodBeat.o(40704);
   }
   
-  public final int azI(String paramString)
+  public final int aRp(String paramString)
   {
-    AppMethodBeat.i(116930);
-    paramString = this.CPo.get(paramString);
+    AppMethodBeat.i(40706);
+    paramString = this.Klf.get(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(116930);
+      AppMethodBeat.o(40706);
       return -1;
     }
     int i = ((Integer)paramString).intValue();
-    AppMethodBeat.o(116930);
+    AppMethodBeat.o(40706);
     return i;
   }
   
   public final void g(String paramString, int paramInt)
   {
-    AppMethodBeat.i(116929);
-    this.CPo.put(paramString, Integer.valueOf(paramInt));
-    this.CPp.w(paramInt, paramString);
-    AppMethodBeat.o(116929);
+    AppMethodBeat.i(40705);
+    this.Klf.put(paramString, Integer.valueOf(paramInt));
+    this.Klg.d(paramInt, paramString);
+    AppMethodBeat.o(40705);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     org.apache.commons.b.c.c
  * JD-Core Version:    0.7.0.1
  */

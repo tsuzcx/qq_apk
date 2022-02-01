@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class hm
   extends b
 {
-  public a cwC;
-  public hm.b cwD;
+  public a dle;
   
   public hm()
   {
@@ -16,22 +15,21 @@ public final class hm
   
   private hm(byte paramByte)
   {
-    AppMethodBeat.i(73667);
-    this.cwC = new a();
-    this.cwD = new hm.b();
-    this.ymq = false;
+    AppMethodBeat.i(125616);
+    this.dle = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(73667);
+    AppMethodBeat.o(125616);
   }
   
   public static final class a
   {
-    public String cwE;
+    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.hm
  * JD-Core Version:    0.7.0.1
  */

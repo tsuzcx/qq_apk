@@ -1,46 +1,30 @@
 package com.tencent.mm.media.h;
 
-import a.l;
-import android.graphics.SurfaceTexture;
-import com.tencent.mm.sdk.platformtools.ab;
-import javax.microedition.khronos.opengles.GL10;
+import android.graphics.Bitmap;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/render/SurfaceTextureRenderer;", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "renderOutputType", "", "(I)V", "onDrawFrame", "", "gl", "Ljavax/microedition/khronos/opengles/GL10;", "plugin-mediaeditor_release"})
 public abstract class d
-  extends a
 {
-  public d()
+  public static a gsN = null;
+  
+  public abstract int akd();
+  
+  public abstract void y(Bitmap paramBitmap);
+  
+  public static abstract interface a
   {
-    super(0, 0, 0, 0, 1, 2);
+    public abstract d a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, d.b paramb);
+    
+    public abstract d a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, int paramInt5, int paramInt6, d.b paramb);
   }
   
-  public void onDrawFrame(GL10 paramGL10)
+  public static abstract interface b
   {
-    try
-    {
-      SurfaceTexture localSurfaceTexture = this.bbI;
-      if (localSurfaceTexture != null) {
-        localSurfaceTexture.updateTexImage();
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.Media.AbsSurfaceRenderer", (Throwable)localException, "updateTexImage error", new Object[0]);
-      }
-      super.onDrawFrame(paramGL10);
-    }
-    if (this.eYb)
-    {
-      this.eYb = false;
-      return;
-    }
+    public abstract void rl(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.h.d
  * JD-Core Version:    0.7.0.1
  */

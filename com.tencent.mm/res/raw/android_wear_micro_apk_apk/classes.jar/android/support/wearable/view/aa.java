@@ -2,9 +2,9 @@ package android.support.wearable.view;
 
 public abstract interface aa
 {
-  public abstract void fK();
+  public abstract void fU();
   
-  public abstract void fL();
+  public abstract void fV();
 }
 
 

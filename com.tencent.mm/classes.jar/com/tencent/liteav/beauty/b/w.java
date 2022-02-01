@@ -31,14 +31,14 @@ public class w
   
   static
   {
-    AppMethodBeat.i(146379);
+    AppMethodBeat.i(15046);
     b = w.class.getSimpleName();
-    AppMethodBeat.o(146379);
+    AppMethodBeat.o(15046);
   }
   
   w()
   {
-    AppMethodBeat.i(146374);
+    AppMethodBeat.i(15041);
     this.d = -1;
     this.e = false;
     this.h = -1;
@@ -47,135 +47,135 @@ public class w
     this.k = -1;
     this.n = false;
     this.q = new Object();
-    AppMethodBeat.o(146374);
+    AppMethodBeat.o(15041);
   }
   
   /* Error */
   private void b()
   {
     // Byte code:
-    //   0: ldc 75
-    //   2: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: getfield 59	com/tencent/liteav/beauty/b/w:e	Z
-    //   9: ifeq +163 -> 172
-    //   12: aload_0
-    //   13: iconst_0
-    //   14: putfield 59	com/tencent/liteav/beauty/b/w:e	Z
-    //   17: aload_0
-    //   18: getfield 77	com/tencent/liteav/beauty/b/w:f	Landroid/media/MediaExtractor;
-    //   21: ifnull +15 -> 36
-    //   24: aload_0
-    //   25: getfield 77	com/tencent/liteav/beauty/b/w:f	Landroid/media/MediaExtractor;
-    //   28: invokevirtual 82	android/media/MediaExtractor:release	()V
-    //   31: aload_0
-    //   32: aconst_null
-    //   33: putfield 77	com/tencent/liteav/beauty/b/w:f	Landroid/media/MediaExtractor;
-    //   36: aload_0
-    //   37: getfield 84	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
-    //   40: invokevirtual 89	android/media/MediaCodec:stop	()V
-    //   43: aload_0
-    //   44: getfield 84	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
-    //   47: invokevirtual 90	android/media/MediaCodec:release	()V
-    //   50: aload_0
-    //   51: aconst_null
-    //   52: putfield 84	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
-    //   55: ldc 75
-    //   57: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   60: return
-    //   61: astore_1
-    //   62: aload_0
-    //   63: aconst_null
-    //   64: putfield 84	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
-    //   67: ldc 75
-    //   69: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   72: return
-    //   73: astore_1
-    //   74: aload_0
-    //   75: aconst_null
-    //   76: putfield 84	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
-    //   79: ldc 75
-    //   81: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   84: aload_1
-    //   85: athrow
-    //   86: astore_1
-    //   87: aload_0
-    //   88: getfield 84	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
-    //   91: invokevirtual 90	android/media/MediaCodec:release	()V
-    //   94: aload_0
-    //   95: aconst_null
-    //   96: putfield 84	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
-    //   99: ldc 75
-    //   101: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   104: return
-    //   105: astore_1
-    //   106: aload_0
-    //   107: aconst_null
-    //   108: putfield 84	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
-    //   111: ldc 75
-    //   113: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   116: return
-    //   117: astore_1
-    //   118: aload_0
-    //   119: aconst_null
-    //   120: putfield 84	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
-    //   123: ldc 75
-    //   125: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   128: aload_1
-    //   129: athrow
-    //   130: astore_1
-    //   131: aload_0
-    //   132: getfield 84	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
-    //   135: invokevirtual 90	android/media/MediaCodec:release	()V
+    //   0: sipush 15043
+    //   3: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 59	com/tencent/liteav/beauty/b/w:e	Z
+    //   10: ifeq +171 -> 181
+    //   13: aload_0
+    //   14: iconst_0
+    //   15: putfield 59	com/tencent/liteav/beauty/b/w:e	Z
+    //   18: aload_0
+    //   19: getfield 76	com/tencent/liteav/beauty/b/w:f	Landroid/media/MediaExtractor;
+    //   22: ifnull +15 -> 37
+    //   25: aload_0
+    //   26: getfield 76	com/tencent/liteav/beauty/b/w:f	Landroid/media/MediaExtractor;
+    //   29: invokevirtual 81	android/media/MediaExtractor:release	()V
+    //   32: aload_0
+    //   33: aconst_null
+    //   34: putfield 76	com/tencent/liteav/beauty/b/w:f	Landroid/media/MediaExtractor;
+    //   37: aload_0
+    //   38: getfield 83	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
+    //   41: invokevirtual 88	android/media/MediaCodec:stop	()V
+    //   44: aload_0
+    //   45: getfield 83	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
+    //   48: invokevirtual 89	android/media/MediaCodec:release	()V
+    //   51: aload_0
+    //   52: aconst_null
+    //   53: putfield 83	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
+    //   56: sipush 15043
+    //   59: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   62: return
+    //   63: astore_1
+    //   64: aload_0
+    //   65: aconst_null
+    //   66: putfield 83	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
+    //   69: sipush 15043
+    //   72: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   75: return
+    //   76: astore_1
+    //   77: aload_0
+    //   78: aconst_null
+    //   79: putfield 83	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
+    //   82: sipush 15043
+    //   85: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   88: aload_1
+    //   89: athrow
+    //   90: astore_1
+    //   91: aload_0
+    //   92: getfield 83	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
+    //   95: invokevirtual 89	android/media/MediaCodec:release	()V
+    //   98: aload_0
+    //   99: aconst_null
+    //   100: putfield 83	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
+    //   103: sipush 15043
+    //   106: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   109: return
+    //   110: astore_1
+    //   111: aload_0
+    //   112: aconst_null
+    //   113: putfield 83	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
+    //   116: sipush 15043
+    //   119: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   122: return
+    //   123: astore_1
+    //   124: aload_0
+    //   125: aconst_null
+    //   126: putfield 83	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
+    //   129: sipush 15043
+    //   132: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   135: aload_1
+    //   136: athrow
+    //   137: astore_1
     //   138: aload_0
-    //   139: aconst_null
-    //   140: putfield 84	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
-    //   143: ldc 75
-    //   145: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   148: aload_1
-    //   149: athrow
-    //   150: astore_2
-    //   151: aload_0
-    //   152: aconst_null
-    //   153: putfield 84	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
-    //   156: goto -13 -> 143
-    //   159: astore_1
-    //   160: aload_0
-    //   161: aconst_null
-    //   162: putfield 84	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
-    //   165: ldc 75
-    //   167: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   170: aload_1
-    //   171: athrow
-    //   172: ldc 75
-    //   174: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   177: return
+    //   139: getfield 83	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
+    //   142: invokevirtual 89	android/media/MediaCodec:release	()V
+    //   145: aload_0
+    //   146: aconst_null
+    //   147: putfield 83	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
+    //   150: sipush 15043
+    //   153: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   156: aload_1
+    //   157: athrow
+    //   158: astore_2
+    //   159: aload_0
+    //   160: aconst_null
+    //   161: putfield 83	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
+    //   164: goto -14 -> 150
+    //   167: astore_1
+    //   168: aload_0
+    //   169: aconst_null
+    //   170: putfield 83	com/tencent/liteav/beauty/b/w:m	Landroid/media/MediaCodec;
+    //   173: sipush 15043
+    //   176: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   179: aload_1
+    //   180: athrow
+    //   181: sipush 15043
+    //   184: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   187: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	178	0	this	w
-    //   61	1	1	localException1	Exception
-    //   73	12	1	localObject1	Object
-    //   86	1	1	localException2	Exception
-    //   105	1	1	localException3	Exception
-    //   117	12	1	localObject2	Object
-    //   130	19	1	localObject3	Object
-    //   159	12	1	localObject4	Object
-    //   150	1	2	localException4	Exception
+    //   0	188	0	this	w
+    //   63	1	1	localException1	Exception
+    //   76	13	1	localObject1	Object
+    //   90	1	1	localException2	Exception
+    //   110	1	1	localException3	Exception
+    //   123	13	1	localObject2	Object
+    //   137	20	1	localObject3	Object
+    //   167	13	1	localObject4	Object
+    //   158	1	2	localException4	Exception
     // Exception table:
     //   from	to	target	type
-    //   43	50	61	java/lang/Exception
-    //   43	50	73	finally
-    //   36	43	86	java/lang/Exception
-    //   87	94	105	java/lang/Exception
-    //   87	94	117	finally
-    //   36	43	130	finally
-    //   131	138	150	java/lang/Exception
-    //   131	138	159	finally
+    //   44	51	63	java/lang/Exception
+    //   44	51	76	finally
+    //   37	44	90	java/lang/Exception
+    //   91	98	110	java/lang/Exception
+    //   91	98	123	finally
+    //   37	44	137	finally
+    //   138	145	158	java/lang/Exception
+    //   138	145	167	finally
   }
   
   private void c()
   {
-    AppMethodBeat.i(146377);
+    AppMethodBeat.i(15044);
     b();
     this.a = null;
     this.l = 0L;
@@ -199,17 +199,17 @@ public class w
     try
     {
       this.g.close();
-      label103:
+      label104:
       this.g = null;
-      AppMethodBeat.o(146377);
+      AppMethodBeat.o(15044);
       return;
       localObject2 = finally;
-      AppMethodBeat.o(146377);
+      AppMethodBeat.o(15044);
       throw localObject2;
     }
     catch (Exception localException)
     {
-      break label103;
+      break label104;
     }
   }
   
@@ -219,89 +219,89 @@ public class w
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 138
-    //   4: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: getfield 71	com/tencent/liteav/beauty/b/w:q	Ljava/lang/Object;
-    //   11: astore_1
-    //   12: aload_1
-    //   13: monitorenter
-    //   14: aload_0
-    //   15: getfield 110	com/tencent/liteav/beauty/b/w:p	Landroid/os/Handler;
-    //   18: ifnull +20 -> 38
-    //   21: invokestatic 141	android/os/Looper:myLooper	()Landroid/os/Looper;
-    //   24: aload_0
-    //   25: getfield 110	com/tencent/liteav/beauty/b/w:p	Landroid/os/Handler;
-    //   28: invokevirtual 120	android/os/Handler:getLooper	()Landroid/os/Looper;
-    //   31: if_acmpne +17 -> 48
-    //   34: aload_0
-    //   35: invokespecial 94	com/tencent/liteav/beauty/b/w:c	()V
-    //   38: aload_1
-    //   39: monitorexit
-    //   40: ldc 138
-    //   42: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   45: aload_0
-    //   46: monitorexit
-    //   47: return
-    //   48: new 143	com/tencent/liteav/beauty/b/w$1
-    //   51: dup
-    //   52: aload_0
-    //   53: invokespecial 145	com/tencent/liteav/beauty/b/w$1:<init>	(Lcom/tencent/liteav/beauty/b/w;)V
-    //   56: astore_2
-    //   57: aload_0
-    //   58: getfield 110	com/tencent/liteav/beauty/b/w:p	Landroid/os/Handler;
-    //   61: aconst_null
-    //   62: invokevirtual 116	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
-    //   65: aload_0
-    //   66: getfield 110	com/tencent/liteav/beauty/b/w:p	Landroid/os/Handler;
-    //   69: aload_2
-    //   70: invokevirtual 149	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   73: pop
-    //   74: aload_0
-    //   75: getfield 110	com/tencent/liteav/beauty/b/w:p	Landroid/os/Handler;
-    //   78: invokevirtual 120	android/os/Handler:getLooper	()Landroid/os/Looper;
-    //   81: invokevirtual 152	android/os/Looper:quitSafely	()V
-    //   84: aload_0
-    //   85: getfield 71	com/tencent/liteav/beauty/b/w:q	Ljava/lang/Object;
-    //   88: invokevirtual 155	java/lang/Object:wait	()V
-    //   91: goto -53 -> 38
-    //   94: astore_2
-    //   95: goto -11 -> 84
-    //   98: astore_2
-    //   99: aload_1
-    //   100: monitorexit
-    //   101: ldc 138
-    //   103: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   106: aload_2
-    //   107: athrow
-    //   108: astore_1
-    //   109: aload_0
-    //   110: monitorexit
-    //   111: aload_1
-    //   112: athrow
+    //   2: sipush 15042
+    //   5: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: getfield 71	com/tencent/liteav/beauty/b/w:q	Ljava/lang/Object;
+    //   12: astore_1
+    //   13: aload_1
+    //   14: monitorenter
+    //   15: aload_0
+    //   16: getfield 107	com/tencent/liteav/beauty/b/w:p	Landroid/os/Handler;
+    //   19: ifnull +20 -> 39
+    //   22: invokestatic 137	android/os/Looper:myLooper	()Landroid/os/Looper;
+    //   25: aload_0
+    //   26: getfield 107	com/tencent/liteav/beauty/b/w:p	Landroid/os/Handler;
+    //   29: invokevirtual 117	android/os/Handler:getLooper	()Landroid/os/Looper;
+    //   32: if_acmpne +18 -> 50
+    //   35: aload_0
+    //   36: invokespecial 92	com/tencent/liteav/beauty/b/w:c	()V
+    //   39: aload_1
+    //   40: monitorexit
+    //   41: sipush 15042
+    //   44: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   47: aload_0
+    //   48: monitorexit
+    //   49: return
+    //   50: new 6	com/tencent/liteav/beauty/b/w$1
+    //   53: dup
+    //   54: aload_0
+    //   55: invokespecial 139	com/tencent/liteav/beauty/b/w$1:<init>	(Lcom/tencent/liteav/beauty/b/w;)V
+    //   58: astore_2
+    //   59: aload_0
+    //   60: getfield 107	com/tencent/liteav/beauty/b/w:p	Landroid/os/Handler;
+    //   63: aconst_null
+    //   64: invokevirtual 113	android/os/Handler:removeCallbacksAndMessages	(Ljava/lang/Object;)V
+    //   67: aload_0
+    //   68: getfield 107	com/tencent/liteav/beauty/b/w:p	Landroid/os/Handler;
+    //   71: aload_2
+    //   72: invokevirtual 143	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   75: pop
+    //   76: aload_0
+    //   77: getfield 107	com/tencent/liteav/beauty/b/w:p	Landroid/os/Handler;
+    //   80: invokevirtual 117	android/os/Handler:getLooper	()Landroid/os/Looper;
+    //   83: invokevirtual 146	android/os/Looper:quitSafely	()V
+    //   86: aload_0
+    //   87: getfield 71	com/tencent/liteav/beauty/b/w:q	Ljava/lang/Object;
+    //   90: invokevirtual 149	java/lang/Object:wait	()V
+    //   93: goto -54 -> 39
+    //   96: astore_2
+    //   97: goto -11 -> 86
+    //   100: astore_2
+    //   101: aload_1
+    //   102: monitorexit
+    //   103: sipush 15042
+    //   106: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   109: aload_2
+    //   110: athrow
+    //   111: astore_1
+    //   112: aload_0
+    //   113: monitorexit
+    //   114: aload_1
+    //   115: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	113	0	this	w
-    //   108	4	1	localObject2	Object
-    //   56	14	2	local1	w.1
-    //   94	1	2	localInterruptedException	java.lang.InterruptedException
-    //   98	9	2	localObject3	Object
+    //   0	116	0	this	w
+    //   111	4	1	localObject2	Object
+    //   58	14	2	local1	1
+    //   96	1	2	localInterruptedException	java.lang.InterruptedException
+    //   100	10	2	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   84	91	94	java/lang/InterruptedException
-    //   14	38	98	finally
-    //   38	40	98	finally
-    //   48	84	98	finally
-    //   84	91	98	finally
-    //   99	101	98	finally
-    //   2	14	108	finally
-    //   40	45	108	finally
-    //   101	108	108	finally
+    //   86	93	96	java/lang/InterruptedException
+    //   15	39	100	finally
+    //   39	41	100	finally
+    //   50	86	100	finally
+    //   86	93	100	finally
+    //   101	103	100	finally
+    //   2	15	111	finally
+    //   41	47	111	finally
+    //   103	111	111	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.w
  * JD-Core Version:    0.7.0.1
  */

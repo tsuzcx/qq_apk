@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:background="@null" android:paddingTop="@dimen/ll" android:paddingBottom="@dimen/ll" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.downloader_app.ui.NoTaskLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ejo" android:layout_width="@dimen/lz" android:layout_height="@dimen/lz">
-        <ImageView android:id="@id/a08" android:layout_width="@dimen/n8" android:layout_height="@dimen/lz" android:src="@raw/sight_icon_mention" android:scaleType="fitCenter" />
-        <TextView android:id="@id/ejp" android:visibility="gone" android:layout_marginRight="@dimen/ne" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/dp" />
-    </RelativeLayout>
-</RelativeLayout>
+    <ImageView android:id="@id/cpt" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="181.0dip" android:src="@raw/download_non_task" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/km" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/e0h" android:layout_below="@id/cpt" android:layout_centerHorizontal="true" />
+    <com.tencent.mm.plugin.downloader_app.ui.BottomEntranceView android:id="@id/a5d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c8" android:layout_marginBottom="@dimen/c8" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="14.0dip" android:textColor="@color/Link" android:id="@id/bn6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="看看好友在玩什么" android:layout_centerInParent="true" />
+        <ImageView android:layout_width="5.0dip" android:layout_height="9.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/b6_" android:layout_toRightOf="@id/bn6" android:layout_centerVertical="true" />
+    </com.tencent.mm.plugin.downloader_app.ui.BottomEntranceView>
+</com.tencent.mm.plugin.downloader_app.ui.NoTaskLayout>

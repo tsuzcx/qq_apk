@@ -4,14 +4,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class g
 {
-  private static AtomicInteger aaM = new AtomicInteger();
-  private int aaN = aaM.incrementAndGet();
-  public int aaO;
+  private static AtomicInteger aen = new AtomicInteger();
+  private int aeo = aen.incrementAndGet();
+  public int aep;
   public byte[] data;
   
   public final int getSessionId()
   {
-    return this.aaN;
+    return this.aeo;
   }
 }
 

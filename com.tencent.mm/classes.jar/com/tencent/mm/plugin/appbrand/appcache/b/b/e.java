@@ -2,31 +2,33 @@ package com.tencent.mm.plugin.appbrand.appcache.b.b;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.g;
+import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.config.r;
-import com.tencent.mm.protocal.protobuf.daa;
-import com.tencent.mm.protocal.protobuf.dab;
-import com.tencent.mm.protocal.protobuf.dbg;
-import com.tencent.mm.protocal.protobuf.dbl;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.config.a.b;
+import com.tencent.mm.plugin.appbrand.config.a.b.a.b;
+import com.tencent.mm.plugin.appbrand.config.v;
+import com.tencent.mm.protocal.protobuf.duq;
+import com.tencent.mm.protocal.protobuf.dur;
+import com.tencent.mm.protocal.protobuf.dwf;
+import com.tencent.mm.protocal.protobuf.dwk;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class e
-  extends a<Boolean, dbl>
+  extends a<Boolean, dwk>
 {
-  private static Boolean a(String paramString1, String paramString2, dbl paramdbl)
+  private static Boolean a(String paramString1, String paramString2, dwk paramdwk)
   {
-    AppMethodBeat.i(129464);
-    Object localObject1 = paramdbl.yhN;
-    if (bo.isNullOrNil((String)localObject1))
+    AppMethodBeat.i(44391);
+    Object localObject1 = paramdwk.EKv;
+    if (bt.isNullOrNil((String)localObject1))
     {
-      ab.e("MicroMsg.AppBrand.Predownload.CmdIssueContact", "call[%s | %s], empty base64", new Object[] { paramString1, paramString2 });
+      ad.e("MicroMsg.AppBrand.Predownload.CmdIssueContact", "call[%s | %s], empty base64", new Object[] { paramString1, paramString2 });
       paramString1 = Boolean.FALSE;
-      AppMethodBeat.o(129464);
+      AppMethodBeat.o(44391);
       return paramString1;
     }
     for (;;)
@@ -34,59 +36,62 @@ public class e
       try
       {
         localObject1 = Base64.decode((String)localObject1, 0);
-        Object localObject2 = new dab();
-        ((dab)localObject2).parseFrom((byte[])localObject1);
-        localObject1 = g.auF().d(paramString1, new String[] { "versionInfo" });
+        Object localObject2 = new dur();
+        ((dur)localObject2).parseFrom((byte[])localObject1);
+        localObject1 = j.aOC().d(paramString1, new String[] { "versionInfo" });
         WxaAttributes.WxaVersionInfo localWxaVersionInfo;
         if (localObject1 == null)
         {
           localWxaVersionInfo = null;
           localObject1 = null;
-          localObject3 = ((dab)localObject2).wxO.iterator();
+          localObject3 = ((dur)localObject2).CIv.iterator();
           if (((Iterator)localObject3).hasNext())
           {
-            daa localdaa = (daa)((Iterator)localObject3).next();
-            if (!"WxaAppVersionInfo".equals(localdaa.wxP)) {
-              break label492;
+            duq localduq = (duq)((Iterator)localObject3).next();
+            if (!"WxaAppVersionInfo".equals(localduq.sdv)) {
+              break label516;
             }
-            localObject1 = WxaAttributes.WxaVersionInfo.AD(localdaa.qsu);
-            break label492;
+            localObject1 = WxaAttributes.WxaVersionInfo.Gu(localduq.vJI);
+            break label516;
           }
         }
         else
         {
-          localWxaVersionInfo = ((WxaAttributes)localObject1).ayE();
+          localWxaVersionInfo = ((WxaAttributes)localObject1).aTP();
           continue;
         }
         if (localObject1 == null)
         {
-          localObject1 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.gXW;
-          com.tencent.mm.plugin.appbrand.appcache.b.c.a.B(paramdbl.yhA.yhy, 87L);
-          paramdbl = Boolean.FALSE;
-          AppMethodBeat.o(129464);
-          return paramdbl;
+          localObject1 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.iQw;
+          com.tencent.mm.plugin.appbrand.appcache.b.c.a.D(paramdwk.EKf.EKc, 87L);
+          paramdwk = Boolean.FALSE;
+          AppMethodBeat.o(44391);
+          return paramdwk;
         }
-        Object localObject3 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.gXW;
-        com.tencent.mm.plugin.appbrand.appcache.b.c.a.B(paramdbl.yhA.yhy, 88L);
+        Object localObject3 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.iQw;
+        com.tencent.mm.plugin.appbrand.appcache.b.c.a.D(paramdwk.EKf.EKc, 88L);
         if ((localWxaVersionInfo != null) && (localObject1 != null))
         {
-          if (localWxaVersionInfo.bDc < ((WxaAttributes.WxaVersionInfo)localObject1).bDc)
+          if (localWxaVersionInfo.aAS < ((WxaAttributes.WxaVersionInfo)localObject1).aAS)
           {
-            break label495;
+            break label519;
             if (!bool2) {
               continue;
             }
-            g.auF().a(paramString1, ((dab)localObject2).wxN, ((dab)localObject2).wxO);
-            if (g.auF().d(paramString1, new String[0]) != null)
+            j.aOC().a(paramString1, ((dur)localObject2).CIu, ((dur)localObject2).CIv);
+            if (j.aOC().d(paramString1, new String[0]) != null)
             {
               bool1 = true;
-              localObject2 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.gXW;
-              j = paramdbl.yhA.yhy;
+              if (bool1) {
+                ((b)j.T(b.class)).b(new b.a.b(paramString1));
+              }
+              localObject2 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.iQw;
+              j = paramdwk.EKf.EKc;
               if (!bool1) {
                 continue;
               }
               i = 85;
-              com.tencent.mm.plugin.appbrand.appcache.b.c.a.B(j, i);
+              com.tencent.mm.plugin.appbrand.appcache.b.c.a.D(j, i);
               if (localWxaVersionInfo != null) {
                 continue;
               }
@@ -95,8 +100,8 @@ public class e
                 continue;
               }
               j = -1;
-              ab.i("MicroMsg.AppBrand.Predownload.CmdIssueContact", "call[%s | %s], record.ver %d, issue.ver %d, doIssue %b, issueRet %b", new Object[] { paramString1, paramString2, Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-              AppMethodBeat.o(129464);
+              ad.i("MicroMsg.AppBrand.Predownload.CmdIssueContact", "call[%s | %s], record.ver %d, issue.ver %d, doIssue %b, issueRet %b", new Object[] { paramString1, paramString2, Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+              AppMethodBeat.o(44391);
               return Boolean.valueOf(bool1);
             }
           }
@@ -109,38 +114,38 @@ public class e
           continue;
           int i = 86;
           continue;
-          localObject2 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.gXW;
-          com.tencent.mm.plugin.appbrand.appcache.b.c.a.B(paramdbl.yhA.yhy, 84L);
+          localObject2 = com.tencent.mm.plugin.appbrand.appcache.b.c.a.iQw;
+          com.tencent.mm.plugin.appbrand.appcache.b.c.a.D(paramdwk.EKf.EKc, 84L);
           bool1 = false;
           continue;
-          i = localWxaVersionInfo.bDc;
+          i = localWxaVersionInfo.aAS;
           continue;
-          int j = ((WxaAttributes.WxaVersionInfo)localObject1).bDc;
+          int j = ((WxaAttributes.WxaVersionInfo)localObject1).aAS;
           continue;
           continue;
         }
       }
-      catch (Exception paramdbl)
+      catch (Exception paramdwk)
       {
-        ab.printErrStackTrace("MicroMsg.AppBrand.Predownload.CmdIssueContact", paramdbl, "call[%s | %s], decode base64", new Object[] { paramString1, paramString2 });
+        ad.printErrStackTrace("MicroMsg.AppBrand.Predownload.CmdIssueContact", paramdwk, "call[%s | %s], decode base64", new Object[] { paramString1, paramString2 });
         paramString1 = Boolean.FALSE;
-        AppMethodBeat.o(129464);
+        AppMethodBeat.o(44391);
         return paramString1;
       }
-      label492:
-      label495:
+      label516:
+      label519:
       boolean bool2 = true;
     }
   }
   
-  final String awm()
+  final String aQI()
   {
     return "CmdIssueContact";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.b.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bsj" android:background="@drawable/a50" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bsk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:src="@drawable/afx" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <TextView android:textColor="@color/w_" android:gravity="center_vertical" android:id="@id/bu3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:layout_marginTop="6.0dip" android:text="@string/brx" android:layout_toRightOf="@id/bsk" />
-    <TextView android:textSize="12.0dip" android:textColor="@color/w_" android:gravity="center_vertical" android:id="@id/bu4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ne" android:text="@string/brw" android:layout_below="@id/bu3" android:layout_alignLeft="@id/bu3" />
-</RelativeLayout>
+    <com.tencent.mm.ui.base.sortview.CatalogView android:id="@id/aha" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/b" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/n4" />
+    <FrameLayout android:id="@id/b3i" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mc">
+        <LinearLayout android:orientation="horizontal" android:id="@id/fb_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/hu" android:paddingBottom="@dimen/hu" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/ku" android:layout_width="@dimen/as" android:layout_height="@dimen/as" android:layout_marginLeft="@dimen/i0" />
+                </FrameLayout>
+                <TextView android:textSize="@dimen/ia" android:textColor="@color/w5" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/a71" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/h" android:text="@string/uo" android:maxLines="2" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:layout_gravity="center|right" android:id="@id/e1r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@raw/app_new" />
+    </FrameLayout>
+</LinearLayout>

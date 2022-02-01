@@ -12,169 +12,180 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.plugin.fts.a.a.k;
+import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.c.b;
+import com.tencent.mm.plugin.fts.a.l;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
 public final class d
-  implements TextWatcher, View.OnClickListener, View.OnFocusChangeListener, com.tencent.mm.plugin.fts.a.l
+  implements TextWatcher, View.OnClickListener, View.OnFocusChangeListener, l
 {
-  private ak handler;
-  public EditText qWm;
-  public TextView qWn;
-  public View qWo;
-  private a qWp;
-  InputMethodManager qWq;
-  public d.b qWr;
-  public d.a qWs;
+  private ap handler;
+  public EditText rLn;
+  public TextView wuL;
+  public View wuM;
+  private a wuN;
+  InputMethodManager wuO;
+  public d.b wuP;
+  public a wuQ;
   
   public d()
   {
-    AppMethodBeat.i(25075);
-    this.qWr = d.b.qWu;
-    this.handler = new ak(Looper.getMainLooper());
-    AppMethodBeat.o(25075);
+    AppMethodBeat.i(28746);
+    this.wuP = d.b.wuS;
+    this.handler = new ap(Looper.getMainLooper());
+    AppMethodBeat.o(28746);
   }
   
-  private void cnm()
+  private void drc()
   {
-    AppMethodBeat.i(25079);
-    if (cnk())
+    AppMethodBeat.i(28750);
+    if (dra())
     {
-      AppMethodBeat.o(25079);
+      AppMethodBeat.o(28750);
       return;
     }
-    this.qWr = d.b.qWt;
-    this.qWo.setVisibility(0);
-    if (this.qWs != null) {
-      this.qWs.cno();
+    this.wuP = d.b.wuR;
+    this.wuM.setVisibility(0);
+    if (this.wuQ != null) {
+      this.wuQ.dre();
     }
-    this.qWm.requestFocus();
-    this.qWq.showSoftInput(this.qWm, 0);
-    AppMethodBeat.o(25079);
+    this.rLn.requestFocus();
+    this.wuO.showSoftInput(this.rLn, 0);
+    AppMethodBeat.o(28750);
   }
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    AppMethodBeat.i(25082);
-    if (bo.isNullOrNil(paramEditable.toString()))
+    AppMethodBeat.i(28753);
+    if (bt.isNullOrNil(paramEditable.toString()))
     {
-      AppMethodBeat.o(25082);
+      AppMethodBeat.o(28753);
       return;
     }
     paramEditable = paramEditable.toString();
-    ab.i("MicroMsg.MainSightSelectContactSearchHelper", "doSearch: query=%s", new Object[] { paramEditable });
-    if (this.qWp != null)
+    ad.i("MicroMsg.MainSightSelectContactSearchHelper", "doSearch: query=%s", new Object[] { paramEditable });
+    if (this.wuN != null)
     {
-      ((n)g.G(n.class)).cancelSearchTask(this.qWp);
-      this.qWp = null;
+      ((n)g.ad(n.class)).cancelSearchTask(this.wuN);
+      this.wuN = null;
     }
     HashSet localHashSet = new HashSet();
-    b localb = b.mTt;
-    ak localak = this.handler;
-    paramEditable = i.a(paramEditable, new int[] { 131072, 131075 }, null, 3, localHashSet, localb, this, localak);
-    this.qWp = ((n)g.G(n.class)).search(2, paramEditable);
-    AppMethodBeat.o(25082);
+    b localb = b.rqn;
+    ap localap = this.handler;
+    paramEditable = j.a(paramEditable, new int[] { 131072, 131075 }, null, 3, localHashSet, localb, this, localap);
+    this.wuN = ((n)g.ad(n.class)).search(2, paramEditable);
+    AppMethodBeat.o(28753);
   }
   
-  public final void b(j paramj)
+  public final void b(k paramk)
   {
-    AppMethodBeat.i(25081);
-    if (paramj.bpE == 0)
+    AppMethodBeat.i(28752);
+    if (paramk.bRZ == 0)
     {
-      if ((paramj.mSW == null) || (this.qWs == null))
+      if ((paramk.rpQ == null) || (this.wuQ == null))
       {
-        AppMethodBeat.o(25081);
+        AppMethodBeat.o(28752);
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      paramj = paramj.mSW.iterator();
-      while (paramj.hasNext()) {
-        localArrayList.add(((com.tencent.mm.plugin.fts.a.a.l)paramj.next()).mRV);
+      paramk = paramk.rpQ.iterator();
+      while (paramk.hasNext()) {
+        localArrayList.add(((m)paramk.next()).roN);
       }
-      this.qWs.cX(localArrayList);
+      this.wuQ.fj(localArrayList);
     }
-    AppMethodBeat.o(25081);
+    AppMethodBeat.o(28752);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public final boolean cnk()
+  public final boolean dra()
   {
-    return this.qWr == d.b.qWt;
+    return this.wuP == d.b.wuR;
   }
   
-  public final void cnl()
+  public final void drb()
   {
-    AppMethodBeat.i(25078);
-    if (cnk())
+    AppMethodBeat.i(28749);
+    if (dra())
     {
-      cnn();
-      AppMethodBeat.o(25078);
+      drd();
+      AppMethodBeat.o(28749);
       return;
     }
-    cnm();
-    AppMethodBeat.o(25078);
+    drc();
+    AppMethodBeat.o(28749);
   }
   
-  public final void cnn()
+  public final void drd()
   {
-    AppMethodBeat.i(25080);
-    if (!cnk())
+    AppMethodBeat.i(28751);
+    if (!dra())
     {
-      AppMethodBeat.o(25080);
+      AppMethodBeat.o(28751);
       return;
     }
-    this.qWm.setText("");
-    this.qWm.clearFocus();
-    bo.hideVKB(this.qWm);
-    this.qWr = d.b.qWu;
-    this.qWo.setVisibility(8);
-    if (this.qWs != null) {
-      this.qWs.cnp();
+    this.rLn.setText("");
+    this.rLn.clearFocus();
+    bt.hideVKB(this.rLn);
+    this.wuP = d.b.wuS;
+    this.wuM.setVisibility(8);
+    if (this.wuQ != null) {
+      this.wuQ.drf();
     }
-    AppMethodBeat.o(25080);
+    AppMethodBeat.o(28751);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(25077);
-    if (paramView.getId() == 2131825893)
+    AppMethodBeat.i(28748);
+    if (paramView.getId() == 2131304397)
     {
-      if (!cnk())
+      if (!dra())
       {
-        AppMethodBeat.o(25077);
+        AppMethodBeat.o(28748);
         return;
       }
-      cnl();
+      drb();
     }
-    AppMethodBeat.o(25077);
+    AppMethodBeat.o(28748);
   }
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(25076);
+    AppMethodBeat.i(28747);
     if (!paramBoolean)
     {
-      this.qWm.clearFocus();
-      bo.hideVKB(this.qWm);
+      this.rLn.clearFocus();
+      bt.hideVKB(this.rLn);
     }
-    AppMethodBeat.o(25076);
+    AppMethodBeat.o(28747);
   }
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public static abstract interface a
+  {
+    public abstract void dre();
+    
+    public abstract void drf();
+    
+    public abstract void fj(List<String> paramList);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,35 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.os.FileObserver;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ResolveInfo;
 
-public final class s
-  extends FileObserver
+public abstract class s
 {
-  private String qGD;
-  private s.a vKN;
-  
-  public s(String paramString, s.a parama)
+  public boolean R(Context paramContext, Intent paramIntent)
   {
-    super(paramString);
-    AppMethodBeat.i(79226);
-    ab.i("MicroMsg.ScreenshotObserver", "observer  ".concat(String.valueOf(paramString)));
-    this.vKN = parama;
-    AppMethodBeat.o(79226);
+    return false;
   }
   
-  public final void onEvent(int paramInt, String paramString)
+  public String a(Context paramContext, ResolveInfo paramResolveInfo)
   {
-    AppMethodBeat.i(79227);
-    if ((paramString != null) && (paramInt == 8) && ((this.qGD == null) || (!paramString.equalsIgnoreCase(this.qGD))))
-    {
-      this.qGD = paramString;
-      this.vKN.cuT();
-      ab.i("MicroMsg.ScreenshotObserver", "Send event to listener. ".concat(String.valueOf(paramString)));
-    }
-    AppMethodBeat.o(79227);
+    return paramResolveInfo.activityInfo.loadLabel(paramContext.getPackageManager()).toString();
   }
   
-  public final void start()
-  {
-    AppMethodBeat.i(79228);
-    super.startWatching();
-    AppMethodBeat.o(79228);
-  }
+  public abstract boolean aAD(String paramString);
   
-  public final void stop()
-  {
-    AppMethodBeat.i(79229);
-    super.stopWatching();
-    AppMethodBeat.o(79229);
-  }
+  public abstract String aGz();
+  
+  public abstract String eve();
+  
+  public abstract t.a evf();
+  
+  public abstract boolean gX(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.s
  * JD-Core Version:    0.7.0.1
  */

@@ -4,36 +4,36 @@ import android.view.View;
 
 final class ad
 {
-  boolean afR;
-  int afS;
-  int afT;
-  int afU;
-  int afV;
-  int afW;
-  boolean afX;
-  boolean afY;
+  boolean amY = true;
+  int amZ;
+  int ana;
+  int anb;
+  int anc = 0;
+  int and = 0;
+  boolean ane;
+  boolean anf;
   int mLayoutDirection;
   
   final View a(RecyclerView.o paramo)
   {
-    paramo = paramo.cc(this.afT);
-    this.afT += this.afU;
+    paramo = paramo.cw(this.ana);
+    this.ana += this.anb;
     return paramo;
   }
   
   final boolean b(RecyclerView.s params)
   {
-    return (this.afT >= 0) && (this.afT < params.getItemCount());
+    return (this.ana >= 0) && (this.ana < params.getItemCount());
   }
   
   public final String toString()
   {
-    return "LayoutState{mAvailable=" + this.afS + ", mCurrentPosition=" + this.afT + ", mItemDirection=" + this.afU + ", mLayoutDirection=" + this.mLayoutDirection + ", mStartLine=" + this.afV + ", mEndLine=" + this.afW + '}';
+    return "LayoutState{mAvailable=" + this.amZ + ", mCurrentPosition=" + this.ana + ", mItemDirection=" + this.anb + ", mLayoutDirection=" + this.mLayoutDirection + ", mStartLine=" + this.anc + ", mEndLine=" + this.and + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v7.widget.ad
  * JD-Core Version:    0.7.0.1
  */

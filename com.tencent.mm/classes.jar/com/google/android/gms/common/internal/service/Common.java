@@ -15,12 +15,12 @@ public final class Common
   
   static
   {
-    AppMethodBeat.i(61391);
+    AppMethodBeat.i(11883);
     CLIENT_KEY = new Api.ClientKey();
     CLIENT_BUILDER = new zza();
     API = new Api("Common.API", CLIENT_BUILDER, CLIENT_KEY);
     CommonApi = new CommonApiImpl();
-    AppMethodBeat.o(61391);
+    AppMethodBeat.o(11883);
   }
 }
 

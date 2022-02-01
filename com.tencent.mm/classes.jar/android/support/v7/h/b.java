@@ -3,92 +3,92 @@ package android.support.v7.h;
 public final class b
   implements d
 {
-  final d Th;
-  int Ti = 0;
-  int Tj = -1;
-  int Tk = -1;
-  Object Tl = null;
+  final d aak;
+  int aal = 0;
+  int aam = -1;
+  int aan = -1;
+  Object aao = null;
   
   public b(d paramd)
   {
-    this.Th = paramd;
-  }
-  
-  public final void C(int paramInt1, int paramInt2)
-  {
-    if ((this.Ti == 1) && (paramInt1 >= this.Tj) && (paramInt1 <= this.Tj + this.Tk))
-    {
-      this.Tk += paramInt2;
-      this.Tj = Math.min(paramInt1, this.Tj);
-      return;
-    }
-    fu();
-    this.Tj = paramInt1;
-    this.Tk = paramInt2;
-    this.Ti = 1;
-  }
-  
-  public final void D(int paramInt1, int paramInt2)
-  {
-    if ((this.Ti == 2) && (this.Tj >= paramInt1) && (this.Tj <= paramInt1 + paramInt2))
-    {
-      this.Tk += paramInt2;
-      this.Tj = paramInt1;
-      return;
-    }
-    fu();
-    this.Tj = paramInt1;
-    this.Tk = paramInt2;
-    this.Ti = 2;
+    this.aak = paramd;
   }
   
   public final void E(int paramInt1, int paramInt2)
   {
-    fu();
-    this.Th.E(paramInt1, paramInt2);
+    if ((this.aal == 1) && (paramInt1 >= this.aam) && (paramInt1 <= this.aam + this.aan))
+    {
+      this.aan += paramInt2;
+      this.aam = Math.min(paramInt1, this.aam);
+      return;
+    }
+    gQ();
+    this.aam = paramInt1;
+    this.aan = paramInt2;
+    this.aal = 1;
+  }
+  
+  public final void F(int paramInt1, int paramInt2)
+  {
+    if ((this.aal == 2) && (this.aam >= paramInt1) && (this.aam <= paramInt1 + paramInt2))
+    {
+      this.aan += paramInt2;
+      this.aam = paramInt1;
+      return;
+    }
+    gQ();
+    this.aam = paramInt1;
+    this.aan = paramInt2;
+    this.aal = 2;
+  }
+  
+  public final void G(int paramInt1, int paramInt2)
+  {
+    gQ();
+    this.aak.G(paramInt1, paramInt2);
   }
   
   public final void c(int paramInt1, int paramInt2, Object paramObject)
   {
-    if ((this.Ti == 3) && (paramInt1 <= this.Tj + this.Tk) && (paramInt1 + paramInt2 >= this.Tj) && (this.Tl == paramObject))
+    if ((this.aal == 3) && (paramInt1 <= this.aam + this.aan) && (paramInt1 + paramInt2 >= this.aam) && (this.aao == paramObject))
     {
-      int i = this.Tj;
-      int j = this.Tk;
-      this.Tj = Math.min(paramInt1, this.Tj);
-      this.Tk = (Math.max(i + j, paramInt1 + paramInt2) - this.Tj);
+      int i = this.aam;
+      int j = this.aan;
+      this.aam = Math.min(paramInt1, this.aam);
+      this.aan = (Math.max(i + j, paramInt1 + paramInt2) - this.aam);
       return;
     }
-    fu();
-    this.Tj = paramInt1;
-    this.Tk = paramInt2;
-    this.Tl = paramObject;
-    this.Ti = 3;
+    gQ();
+    this.aam = paramInt1;
+    this.aan = paramInt2;
+    this.aao = paramObject;
+    this.aal = 3;
   }
   
-  public final void fu()
+  public final void gQ()
   {
-    if (this.Ti == 0) {
+    if (this.aal == 0) {
       return;
     }
-    switch (this.Ti)
+    switch (this.aal)
     {
     }
     for (;;)
     {
-      this.Tl = null;
-      this.Ti = 0;
+      this.aao = null;
+      this.aal = 0;
       return;
-      this.Th.C(this.Tj, this.Tk);
+      this.aak.E(this.aam, this.aan);
       continue;
-      this.Th.D(this.Tj, this.Tk);
+      this.aak.F(this.aam, this.aan);
       continue;
-      this.Th.c(this.Tj, this.Tk, this.Tl);
+      this.aak.c(this.aam, this.aan, this.aao);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v7.h.b
  * JD-Core Version:    0.7.0.1
  */

@@ -7,21 +7,21 @@ import com.tencent.mm.wear.app.ui.g;
 
 public abstract class a
 {
-  private boolean ahb;
-  private int ahc;
-  private boolean ahd;
-  public g ahe;
+  private boolean akD;
+  private int akE;
+  private boolean akF;
+  public g akG;
   private int position;
   
   public a(int paramInt1, int paramInt2)
   {
-    this.ahc = paramInt1;
+    this.akE = paramInt1;
     this.position = paramInt2;
   }
   
-  public final void H(boolean paramBoolean)
+  public final void K(boolean paramBoolean)
   {
-    this.ahd = paramBoolean;
+    this.akF = paramBoolean;
   }
   
   public abstract View a(Context paramContext, ViewGroup paramViewGroup);
@@ -30,24 +30,24 @@ public abstract class a
   
   public abstract boolean a(Context paramContext, a parama);
   
-  public final void nu()
+  public final void oh()
   {
-    this.ahb = true;
+    this.akD = true;
   }
   
-  public final boolean nv()
+  public final boolean oi()
   {
-    return this.ahb;
+    return this.akD;
   }
   
-  public final int nw()
+  public final int oj()
   {
-    return this.ahc;
+    return this.akE;
   }
   
-  public final boolean nx()
+  public final boolean ok()
   {
-    return this.ahd;
+    return this.akF;
   }
 }
 

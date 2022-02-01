@@ -9,24 +9,24 @@ import java.util.Calendar;
 
 final class i
 {
-  private static i Qk;
-  private final LocationManager Ql;
-  private final a Qm = new a();
+  private static i Xj;
+  private final LocationManager Xk;
+  private final a Xl = new a();
   private final Context mContext;
   
   private i(Context paramContext, LocationManager paramLocationManager)
   {
     this.mContext = paramContext;
-    this.Ql = paramLocationManager;
+    this.Xk = paramLocationManager;
   }
   
-  private Location O(String paramString)
+  private Location A(String paramString)
   {
     try
     {
-      if (this.Ql.isProviderEnabled(paramString))
+      if (this.Xk.isProviderEnabled(paramString))
       {
-        paramString = this.Ql.getLastKnownLocation(paramString);
+        paramString = this.Xk.getLastKnownLocation(paramString);
         return paramString;
       }
     }
@@ -34,44 +34,44 @@ final class i
     return null;
   }
   
-  static i V(Context paramContext)
+  static i X(Context paramContext)
   {
-    if (Qk == null)
+    if (Xj == null)
     {
       paramContext = paramContext.getApplicationContext();
-      Qk = new i(paramContext, (LocationManager)paramContext.getSystemService("location"));
+      Xj = new i(paramContext, (LocationManager)paramContext.getSystemService("location"));
     }
-    return Qk;
+    return Xj;
   }
   
   private void a(Location paramLocation)
   {
-    a locala = this.Qm;
+    a locala = this.Xl;
     long l1 = System.currentTimeMillis();
-    h localh = h.eT();
-    localh.a(l1 - 86400000L, paramLocation.getLatitude(), paramLocation.getLongitude());
-    long l2 = localh.Qi;
-    localh.a(l1, paramLocation.getLatitude(), paramLocation.getLongitude());
+    h localh = h.gm();
+    localh.b(l1 - 86400000L, paramLocation.getLatitude(), paramLocation.getLongitude());
+    long l2 = localh.Xh;
+    localh.b(l1, paramLocation.getLatitude(), paramLocation.getLongitude());
     if (localh.state == 1) {}
     long l3;
     long l4;
     long l5;
     for (boolean bool = true;; bool = false)
     {
-      l3 = localh.Qj;
-      l4 = localh.Qi;
-      localh.a(86400000L + l1, paramLocation.getLatitude(), paramLocation.getLongitude());
-      l5 = localh.Qj;
+      l3 = localh.Xi;
+      l4 = localh.Xh;
+      localh.b(86400000L + l1, paramLocation.getLatitude(), paramLocation.getLongitude());
+      l5 = localh.Xi;
       if ((l3 != -1L) && (l4 != -1L)) {
         break;
       }
       l1 = 43200000L + l1;
-      locala.Qn = bool;
-      locala.Qo = l2;
-      locala.Qp = l3;
-      locala.Qq = l4;
-      locala.Qr = l5;
-      locala.Qs = l1;
+      locala.Xm = bool;
+      locala.Xn = l2;
+      locala.Xo = l3;
+      locala.Xp = l4;
+      locala.Xq = l5;
+      locala.Xr = l1;
       return;
     }
     if (l1 > l4) {
@@ -90,14 +90,14 @@ final class i
   }
   
   @SuppressLint({"MissingPermission"})
-  private Location eV()
+  private Location go()
   {
     Location localLocation2 = null;
     if (f.checkSelfPermission(this.mContext, "android.permission.ACCESS_COARSE_LOCATION") == 0) {}
-    for (Location localLocation1 = O("network");; localLocation1 = null)
+    for (Location localLocation1 = A("network");; localLocation1 = null)
     {
       if (f.checkSelfPermission(this.mContext, "android.permission.ACCESS_FINE_LOCATION") == 0) {
-        localLocation2 = O("gps");
+        localLocation2 = A("gps");
       }
       Location localLocation3;
       if ((localLocation2 != null) && (localLocation1 != null))
@@ -116,22 +116,22 @@ final class i
     }
   }
   
-  private boolean eW()
+  private boolean gp()
   {
-    return this.Qm.Qs > System.currentTimeMillis();
+    return this.Xl.Xr > System.currentTimeMillis();
   }
   
-  final boolean eU()
+  final boolean gn()
   {
-    a locala = this.Qm;
-    if (eW()) {
-      return locala.Qn;
+    a locala = this.Xl;
+    if (gp()) {
+      return locala.Xm;
     }
-    Location localLocation = eV();
+    Location localLocation = go();
     if (localLocation != null)
     {
       a(localLocation);
-      return locala.Qn;
+      return locala.Xm;
     }
     int i = Calendar.getInstance().get(11);
     return (i < 6) || (i >= 22);
@@ -139,12 +139,12 @@ final class i
   
   static final class a
   {
-    boolean Qn;
-    long Qo;
-    long Qp;
-    long Qq;
-    long Qr;
-    long Qs;
+    boolean Xm;
+    long Xn;
+    long Xo;
+    long Xp;
+    long Xq;
+    long Xr;
   }
 }
 

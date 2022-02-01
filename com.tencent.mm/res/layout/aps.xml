@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:id="@id/e3y" style="@style/ni">
-        <LinearLayout style="@style/l0">
-            <EditText android:id="@id/e3z" android:hint="@string/dqa" style="@style/ml" />
-            <View style="@style/nz" />
-            <TextView android:gravity="left" android:text="@string/dqb" style="@style/mm" />
-        </LinearLayout>
-    </ScrollView>
+    <TextView android:id="@id/gam" android:layout_width="@dimen/eb" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hk" android:singleLine="true" style="@style/lw" />
+    <ImageView android:id="@id/cox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/js" android:src="@raw/card_photoicon" />
+    <TextView android:textColor="@color/to" android:ellipsize="end" android:id="@id/g2b" android:singleLine="true" style="@style/lz" />
 </LinearLayout>

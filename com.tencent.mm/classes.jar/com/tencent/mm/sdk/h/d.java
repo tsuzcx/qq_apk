@@ -1,45 +1,32 @@
 package com.tencent.mm.sdk.h;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
+import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.lang.reflect.Field;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class d
 {
-  public static boolean duR()
+  private static Boolean EYV = null;
+  private static String TAG = "MicroMsg.Vendor.OnePlus";
+  
+  public static boolean eHs()
   {
-    boolean bool1 = false;
-    AppMethodBeat.i(154711);
-    try
+    AppMethodBeat.i(177603);
+    if (EYV == null)
     {
-      Class localClass = Class.forName("oppo.content.res.OppoFontUtils");
-      boolean bool2 = localClass.getField("isFlipFontUsed").getBoolean(localClass);
-      bool1 = bool2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.Vendor.Oppo", localException, "", new Object[0]);
+      String str = Build.BRAND;
+      ad.i(TAG, "Build.BRAND = %s", new Object[] { str });
+      if (!str.toLowerCase().contains("oneplus")) {
+        break label63;
       }
     }
-    AppMethodBeat.o(154711);
-    return bool1;
-  }
-  
-  public static boolean ht(Context paramContext)
-  {
-    AppMethodBeat.i(65376);
-    if (paramContext == null)
+    label63:
+    for (EYV = Boolean.TRUE;; EYV = Boolean.FALSE)
     {
-      AppMethodBeat.o(65376);
-      return false;
+      boolean bool = EYV.booleanValue();
+      AppMethodBeat.o(177603);
+      return bool;
     }
-    boolean bool = paramContext.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
-    AppMethodBeat.o(65376);
-    return bool;
   }
 }
 

@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.qqmail.a;
 
+import com.tencent.mm.pluginsdk.k;
+import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.pluginsdk.o;
 
 public final class a
-  implements o
+  implements m
 {
-  public static n gmO = null;
-  public static m gmP = null;
+  public static l hYt = null;
+  public static k hYu = null;
   
-  public final void a(m paramm)
+  public final void a(k paramk)
   {
-    gmP = paramm;
+    hYu = paramk;
   }
   
-  public final void a(n paramn)
+  public final void a(l paraml)
   {
-    gmO = paramn;
+    hYt = paraml;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.a.a
  * JD-Core Version:    0.7.0.1
  */

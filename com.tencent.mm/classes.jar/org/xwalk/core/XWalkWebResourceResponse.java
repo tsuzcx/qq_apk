@@ -26,7 +26,7 @@ public class XWalkWebResourceResponse
   
   public XWalkWebResourceResponse(Object paramObject)
   {
-    AppMethodBeat.i(86056);
+    AppMethodBeat.i(155170);
     this.setMimeTypeStringMethod = new ReflectMethod(null, "setMimeType", new Class[0]);
     this.getMimeTypeMethod = new ReflectMethod(null, "getMimeType", new Class[0]);
     this.setEncodingStringMethod = new ReflectMethod(null, "setEncoding", new Class[0]);
@@ -40,7 +40,7 @@ public class XWalkWebResourceResponse
     this.getResponseHeadersMethod = new ReflectMethod(null, "getResponseHeaders", new Class[0]);
     this.bridge = paramObject;
     reflectionInit();
-    AppMethodBeat.o(86056);
+    AppMethodBeat.o(155170);
   }
   
   protected Object getBridge()
@@ -50,11 +50,11 @@ public class XWalkWebResourceResponse
   
   public InputStream getData()
   {
-    AppMethodBeat.i(86062);
+    AppMethodBeat.i(155176);
     try
     {
       InputStream localInputStream = (InputStream)this.getDataMethod.invoke(new Object[0]);
-      AppMethodBeat.o(86062);
+      AppMethodBeat.o(155176);
       return localInputStream;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -63,22 +63,22 @@ public class XWalkWebResourceResponse
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(86062);
+        AppMethodBeat.o(155176);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(86062);
+      AppMethodBeat.o(155176);
     }
     return null;
   }
   
   public String getEncoding()
   {
-    AppMethodBeat.i(86060);
+    AppMethodBeat.i(155174);
     try
     {
       String str = (String)this.getEncodingMethod.invoke(new Object[0]);
-      AppMethodBeat.o(86060);
+      AppMethodBeat.o(155174);
       return str;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -87,22 +87,22 @@ public class XWalkWebResourceResponse
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(86060);
+        AppMethodBeat.o(155174);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(86060);
+      AppMethodBeat.o(155174);
     }
     return null;
   }
   
   public String getMimeType()
   {
-    AppMethodBeat.i(86058);
+    AppMethodBeat.i(155172);
     try
     {
       String str = (String)this.getMimeTypeMethod.invoke(new Object[0]);
-      AppMethodBeat.o(86058);
+      AppMethodBeat.o(155172);
       return str;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -111,22 +111,22 @@ public class XWalkWebResourceResponse
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(86058);
+        AppMethodBeat.o(155172);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(86058);
+      AppMethodBeat.o(155172);
     }
     return null;
   }
   
   public String getReasonPhrase()
   {
-    AppMethodBeat.i(86065);
+    AppMethodBeat.i(155179);
     try
     {
       String str = (String)this.getReasonPhraseMethod.invoke(new Object[0]);
-      AppMethodBeat.o(86065);
+      AppMethodBeat.o(155179);
       return str;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -135,22 +135,22 @@ public class XWalkWebResourceResponse
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(86065);
+        AppMethodBeat.o(155179);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(86065);
+      AppMethodBeat.o(155179);
     }
     return null;
   }
   
   public Map<String, String> getResponseHeaders()
   {
-    AppMethodBeat.i(86067);
+    AppMethodBeat.i(155181);
     try
     {
       Map localMap = (Map)this.getResponseHeadersMethod.invoke(new Object[0]);
-      AppMethodBeat.o(86067);
+      AppMethodBeat.o(155181);
       return localMap;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -159,22 +159,22 @@ public class XWalkWebResourceResponse
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(86067);
+        AppMethodBeat.o(155181);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(86067);
+      AppMethodBeat.o(155181);
     }
     return null;
   }
   
   public int getStatusCode()
   {
-    AppMethodBeat.i(86064);
+    AppMethodBeat.i(155178);
     try
     {
       int i = ((Integer)this.getStatusCodeMethod.invoke(new Object[0])).intValue();
-      AppMethodBeat.o(86064);
+      AppMethodBeat.o(155178);
       return i;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -183,24 +183,24 @@ public class XWalkWebResourceResponse
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(86064);
+        AppMethodBeat.o(155178);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(86064);
+      AppMethodBeat.o(155178);
     }
     return 0;
   }
   
   void reflectionInit()
   {
-    AppMethodBeat.i(86068);
+    AppMethodBeat.i(155182);
     XWalkCoreWrapper.initEmbeddedMode();
     this.coreWrapper = XWalkCoreWrapper.getInstance();
     if (this.coreWrapper == null)
     {
       XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(86068);
+      AppMethodBeat.o(155182);
       return;
     }
     this.setMimeTypeStringMethod.init(this.bridge, null, "setMimeTypeSuper", new Class[] { String.class });
@@ -214,16 +214,16 @@ public class XWalkWebResourceResponse
     this.getReasonPhraseMethod.init(this.bridge, null, "getReasonPhraseSuper", new Class[0]);
     this.setResponseHeadersMapMethod.init(this.bridge, null, "setResponseHeadersSuper", new Class[] { Map.class });
     this.getResponseHeadersMethod.init(this.bridge, null, "getResponseHeadersSuper", new Class[0]);
-    AppMethodBeat.o(86068);
+    AppMethodBeat.o(155182);
   }
   
   public void setData(InputStream paramInputStream)
   {
-    AppMethodBeat.i(86061);
+    AppMethodBeat.i(155175);
     try
     {
       this.setDataInputStreamMethod.invoke(new Object[] { paramInputStream });
-      AppMethodBeat.o(86061);
+      AppMethodBeat.o(155175);
       return;
     }
     catch (UnsupportedOperationException paramInputStream)
@@ -231,21 +231,21 @@ public class XWalkWebResourceResponse
       if (this.coreWrapper == null)
       {
         paramInputStream = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(86061);
+        AppMethodBeat.o(155175);
         throw paramInputStream;
       }
       XWalkCoreWrapper.handleRuntimeError(paramInputStream);
-      AppMethodBeat.o(86061);
+      AppMethodBeat.o(155175);
     }
   }
   
   public void setEncoding(String paramString)
   {
-    AppMethodBeat.i(86059);
+    AppMethodBeat.i(155173);
     try
     {
       this.setEncodingStringMethod.invoke(new Object[] { paramString });
-      AppMethodBeat.o(86059);
+      AppMethodBeat.o(155173);
       return;
     }
     catch (UnsupportedOperationException paramString)
@@ -253,21 +253,21 @@ public class XWalkWebResourceResponse
       if (this.coreWrapper == null)
       {
         paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(86059);
+        AppMethodBeat.o(155173);
         throw paramString;
       }
       XWalkCoreWrapper.handleRuntimeError(paramString);
-      AppMethodBeat.o(86059);
+      AppMethodBeat.o(155173);
     }
   }
   
   public void setMimeType(String paramString)
   {
-    AppMethodBeat.i(86057);
+    AppMethodBeat.i(155171);
     try
     {
       this.setMimeTypeStringMethod.invoke(new Object[] { paramString });
-      AppMethodBeat.o(86057);
+      AppMethodBeat.o(155171);
       return;
     }
     catch (UnsupportedOperationException paramString)
@@ -275,21 +275,21 @@ public class XWalkWebResourceResponse
       if (this.coreWrapper == null)
       {
         paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(86057);
+        AppMethodBeat.o(155171);
         throw paramString;
       }
       XWalkCoreWrapper.handleRuntimeError(paramString);
-      AppMethodBeat.o(86057);
+      AppMethodBeat.o(155171);
     }
   }
   
   public void setResponseHeaders(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(86066);
+    AppMethodBeat.i(155180);
     try
     {
       this.setResponseHeadersMapMethod.invoke(new Object[] { paramMap });
-      AppMethodBeat.o(86066);
+      AppMethodBeat.o(155180);
       return;
     }
     catch (UnsupportedOperationException paramMap)
@@ -297,21 +297,21 @@ public class XWalkWebResourceResponse
       if (this.coreWrapper == null)
       {
         paramMap = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(86066);
+        AppMethodBeat.o(155180);
         throw paramMap;
       }
       XWalkCoreWrapper.handleRuntimeError(paramMap);
-      AppMethodBeat.o(86066);
+      AppMethodBeat.o(155180);
     }
   }
   
   public void setStatusCodeAndReasonPhrase(int paramInt, String paramString)
   {
-    AppMethodBeat.i(86063);
+    AppMethodBeat.i(155177);
     try
     {
       this.setStatusCodeAndReasonPhraseintStringMethod.invoke(new Object[] { Integer.valueOf(paramInt), paramString });
-      AppMethodBeat.o(86063);
+      AppMethodBeat.o(155177);
       return;
     }
     catch (UnsupportedOperationException paramString)
@@ -319,17 +319,17 @@ public class XWalkWebResourceResponse
       if (this.coreWrapper == null)
       {
         paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(86063);
+        AppMethodBeat.o(155177);
         throw paramString;
       }
       XWalkCoreWrapper.handleRuntimeError(paramString);
-      AppMethodBeat.o(86063);
+      AppMethodBeat.o(155177);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkWebResourceResponse
  * JD-Core Version:    0.7.0.1
  */

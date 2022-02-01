@@ -8,74 +8,74 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.CardInfo;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.n.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.p;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.q;
 
 public class c
-  extends p<CardInfo>
+  extends q<CardInfo>
 {
   private final String TAG;
   private int count;
-  private com.tencent.mm.plugin.card.base.c krl;
-  private n.a ksO;
+  private com.tencent.mm.plugin.card.base.c nwE;
+  private n.a nyh;
   
   public c(Context paramContext, n.a parama)
   {
     super(paramContext, new CardInfo());
-    AppMethodBeat.i(88240);
+    AppMethodBeat.i(113174);
     this.TAG = "MicroMsg.CardAdapter";
     this.count = 0;
-    this.ksO = parama;
-    qp(true);
-    this.krl = new l(paramContext, this);
-    AppMethodBeat.o(88240);
+    this.nyh = parama;
+    vw(true);
+    this.nwE = new l(paramContext, this);
+    AppMethodBeat.o(113174);
   }
   
-  public void Ku()
+  public void Wd()
   {
-    AppMethodBeat.i(88241);
-    ab.v("MicroMsg.CardAdapter", "resetCursor");
-    bKb();
-    Cursor localCursor = am.bcd().a(this.ksO);
+    AppMethodBeat.i(113175);
+    ad.v("MicroMsg.CardAdapter", "resetCursor");
+    cHX();
+    Cursor localCursor = am.bIV().a(this.nyh);
     if (localCursor != null)
     {
       this.count = localCursor.getCount();
-      ab.v("MicroMsg.CardAdapter", "card count:" + this.count);
+      ad.v("MicroMsg.CardAdapter", "card count:" + this.count);
     }
     setCursor(localCursor);
     notifyDataSetChanged();
-    AppMethodBeat.o(88241);
+    AppMethodBeat.o(113175);
   }
   
-  public void Kv()
+  public void We()
   {
-    AppMethodBeat.i(88242);
-    bKb();
-    Ku();
-    AppMethodBeat.o(88242);
+    AppMethodBeat.i(113176);
+    cHX();
+    Wd();
+    AppMethodBeat.o(113176);
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(88243);
+    AppMethodBeat.i(113177);
     paramViewGroup = (CardInfo)getItem(paramInt);
-    paramView = this.krl.a(paramInt, paramView, paramViewGroup);
-    AppMethodBeat.o(88243);
+    paramView = this.nwE.a(paramInt, paramView, paramViewGroup);
+    AppMethodBeat.o(113177);
     return paramView;
   }
   
   public void release()
   {
-    AppMethodBeat.i(88244);
-    bKb();
-    this.krl.release();
-    this.krl = null;
-    AppMethodBeat.o(88244);
+    AppMethodBeat.i(113178);
+    cHX();
+    this.nwE.release();
+    this.nwE = null;
+    AppMethodBeat.o(113178);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.c
  * JD-Core Version:    0.7.0.1
  */

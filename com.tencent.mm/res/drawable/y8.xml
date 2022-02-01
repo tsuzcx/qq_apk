@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/sentpic_camera_icon_pressed" />
-    <item android:drawable="@raw/sentpic_camera_icon" />
-</selector>
+    <corners android:radius="@dimen/x" />
+    <solid android:color="@color/BW_0_Alpha_0_5" />
+</shape>

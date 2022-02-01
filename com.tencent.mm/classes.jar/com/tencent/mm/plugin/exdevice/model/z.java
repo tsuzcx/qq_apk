@@ -1,62 +1,62 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.alb;
-import com.tencent.mm.protocal.protobuf.alc;
-import com.tencent.mm.protocal.protobuf.ald;
-import com.tencent.mm.protocal.protobuf.ale;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.aur;
+import com.tencent.mm.protocal.protobuf.aus;
+import com.tencent.mm.protocal.protobuf.aut;
+import com.tencent.mm.protocal.protobuf.auu;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public final class z
-  extends m
+  extends n
   implements k
 {
-  private f eGj;
-  private String lFB;
-  b lFp;
+  b fUF;
+  private g gbr;
+  private String oWm;
   
-  public z(LinkedList<alc> paramLinkedList, String paramString1, String paramString2)
+  public z(LinkedList<aus> paramLinkedList, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(19355);
-    this.lFB = "";
-    this.lFp = null;
-    this.eGj = null;
-    this.lFB = paramString2;
+    AppMethodBeat.i(23424);
+    this.oWm = "";
+    this.fUF = null;
+    this.gbr = null;
+    this.oWm = paramString2;
     paramString2 = new b.a();
-    paramString2.fsX = new ald();
-    paramString2.fsY = new ale();
+    paramString2.gUU = new aut();
+    paramString2.gUV = new auu();
     paramString2.uri = "/cgi-bin/micromsg-bin/getharddeviceoperticket";
     paramString2.funcId = 543;
     paramString2.reqCmdId = 0;
     paramString2.respCmdId = 0;
-    this.lFp = paramString2.ado();
-    paramString2 = (ald)this.lFp.fsV.fta;
-    if (!bo.isNullOrNil(paramString1))
+    this.fUF = paramString2.atI();
+    paramString2 = (aut)this.fUF.gUS.gUX;
+    if (!bt.isNullOrNil(paramString1))
     {
-      alb localalb = new alb();
-      localalb.wuS = paramString1;
-      paramString2.xcc = localalb;
+      aur localaur = new aur();
+      localaur.CEP = paramString1;
+      paramString2.Duv = localaur;
     }
-    paramString2.xcb = paramLinkedList;
-    AppMethodBeat.o(19355);
+    paramString2.Duu = paramLinkedList;
+    AppMethodBeat.o(23424);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(19356);
-    this.eGj = paramf;
-    int i = dispatch(parame, this.lFp, this);
-    AppMethodBeat.o(19356);
+    AppMethodBeat.i(23425);
+    this.gbr = paramg;
+    int i = dispatch(parame, this.fUF, this);
+    AppMethodBeat.o(23425);
     return i;
   }
   
@@ -67,17 +67,17 @@ public final class z
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(19357);
-    ab.i("MicroMsg.exdevice.NetsceneGetHardDeviceOperTicket", "GetHardDeviceOperTicket onGYNetEnd netId = %s, errType = %s, errCode = %s, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.eGj != null) {
-      this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(23426);
+    ad.i("MicroMsg.exdevice.NetsceneGetHardDeviceOperTicket", "GetHardDeviceOperTicket onGYNetEnd netId = %s, errType = %s, errCode = %s, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.gbr != null) {
+      this.gbr.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(19357);
+    AppMethodBeat.o(23426);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.z
  * JD-Core Version:    0.7.0.1
  */

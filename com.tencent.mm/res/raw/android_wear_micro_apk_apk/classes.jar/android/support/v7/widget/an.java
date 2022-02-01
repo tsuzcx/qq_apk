@@ -9,276 +9,283 @@ import java.util.List;
 
 public abstract class an
 {
-  private static final List<Object> vl = Collections.EMPTY_LIST;
-  private int df;
-  int sx = -1;
-  public final View ve;
-  int vf = -1;
-  long vg = -1L;
-  int vh = -1;
-  int vi = -1;
-  an vj = null;
-  an vk = null;
-  List<Object> vm = null;
-  List<Object> vn = null;
-  private int vo = 0;
-  private af vp = null;
-  private int vq = 0;
-  RecyclerView vr;
+  private static final List<Object> xa = Collections.EMPTY_LIST;
+  private int eT;
+  int un = -1;
+  public final View wT;
+  int wU = -1;
+  long wV = -1L;
+  int wW = -1;
+  int wX = -1;
+  an wY = null;
+  an wZ = null;
+  List<Object> xb = null;
+  List<Object> xc = null;
+  private int xd = 0;
+  private af xe = null;
+  private int xf = 0;
+  RecyclerView xg;
   
   public an(View paramView)
   {
     if (paramView == null) {
       throw new IllegalArgumentException("itemView may not be null");
     }
-    this.ve = paramView;
+    this.wT = paramView;
+  }
+  
+  final boolean aK(int paramInt)
+  {
+    return (this.eT & paramInt) != 0;
   }
   
   final void addFlags(int paramInt)
   {
-    this.df |= paramInt;
+    this.eT |= paramInt;
   }
   
-  final boolean ay(int paramInt)
+  final void df()
   {
-    return (this.df & paramInt) != 0;
+    this.eT = 0;
+    this.un = -1;
+    this.wU = -1;
+    this.wV = -1L;
+    this.wX = -1;
+    this.xd = 0;
+    this.wY = null;
+    this.wZ = null;
+    eF();
+    this.xf = 0;
   }
   
-  final void d(int paramInt, boolean paramBoolean)
+  final void e(int paramInt, boolean paramBoolean)
   {
-    if (this.vf == -1) {
-      this.vf = this.sx;
+    if (this.wU == -1) {
+      this.wU = this.un;
     }
-    if (this.vi == -1) {
-      this.vi = this.sx;
+    if (this.wX == -1) {
+      this.wX = this.un;
     }
     if (paramBoolean) {
-      this.vi += paramInt;
+      this.wX += paramInt;
     }
-    this.sx += paramInt;
-    if (this.ve.getLayoutParams() != null) {
-      ((RecyclerView.LayoutParams)this.ve.getLayoutParams()).up = true;
+    this.un += paramInt;
+    if (this.wT.getLayoutParams() != null) {
+      ((RecyclerView.LayoutParams)this.wT.getLayoutParams()).we = true;
     }
   }
   
-  final void ee()
+  final void eA()
   {
-    this.vf = -1;
-    this.vi = -1;
+    this.eT &= 0xFFFFFEFF;
   }
   
-  final boolean ef()
+  final boolean eB()
   {
-    return (this.df & 0x80) != 0;
+    return (this.eT & 0x4) != 0;
   }
   
-  public final int eg()
+  final boolean eC()
   {
-    if (this.vi == -1) {
-      return this.sx;
+    return (this.eT & 0x2) != 0;
+  }
+  
+  final boolean eD()
+  {
+    return (this.eT & 0x40) != 0;
+  }
+  
+  final boolean eE()
+  {
+    return (this.eT & 0x100) != 0;
+  }
+  
+  final void eF()
+  {
+    if (this.xb != null) {
+      this.xb.clear();
     }
-    return this.vi;
+    this.eT &= 0xFFFFFBFF;
   }
   
-  final boolean eh()
+  final List<Object> eG()
   {
-    return this.vp != null;
-  }
-  
-  final void ei()
-  {
-    this.vp.r(this);
-  }
-  
-  final boolean ej()
-  {
-    return (this.df & 0x20) != 0;
-  }
-  
-  final void ek()
-  {
-    this.df &= 0xFFFFFFDF;
-  }
-  
-  final void el()
-  {
-    this.df &= 0xFFFFFEFF;
-  }
-  
-  final boolean em()
-  {
-    return (this.df & 0x4) != 0;
-  }
-  
-  final boolean en()
-  {
-    return (this.df & 0x2) != 0;
-  }
-  
-  final boolean eo()
-  {
-    return (this.df & 0x40) != 0;
-  }
-  
-  final boolean ep()
-  {
-    return (this.df & 0x100) != 0;
-  }
-  
-  final void eq()
-  {
-    if (this.vm != null) {
-      this.vm.clear();
-    }
-    this.df &= 0xFFFFFBFF;
-  }
-  
-  final List<Object> er()
-  {
-    if ((this.df & 0x400) == 0)
+    if ((this.eT & 0x400) == 0)
     {
-      if ((this.vm == null) || (this.vm.size() == 0)) {
-        return vl;
+      if ((this.xb == null) || (this.xb.size() == 0)) {
+        return xa;
       }
-      return this.vn;
+      return this.xc;
     }
-    return vl;
+    return xa;
+  }
+  
+  public final boolean eH()
+  {
+    return ((this.eT & 0x10) == 0) && (!r.f(this.wT));
   }
   
   final void es()
   {
-    this.df = 0;
-    this.sx = -1;
-    this.vf = -1;
-    this.vg = -1L;
-    this.vi = -1;
-    this.vo = 0;
-    this.vj = null;
-    this.vk = null;
-    eq();
-    this.vq = 0;
+    this.wU = -1;
+    this.wX = -1;
   }
   
-  public final boolean et()
+  final void et()
   {
-    return ((this.df & 0x10) == 0) && (!r.e(this.ve));
+    if (this.wU == -1) {
+      this.wU = this.un;
+    }
+  }
+  
+  final boolean eu()
+  {
+    return (this.eT & 0x80) != 0;
+  }
+  
+  public final int ev()
+  {
+    if (this.wX == -1) {
+      return this.un;
+    }
+    return this.wX;
+  }
+  
+  final boolean ew()
+  {
+    return this.xe != null;
+  }
+  
+  final void ex()
+  {
+    this.xe.r(this);
+  }
+  
+  final boolean ey()
+  {
+    return (this.eT & 0x20) != 0;
+  }
+  
+  final void ez()
+  {
+    this.eT &= 0xFFFFFFDF;
   }
   
   final void f(af paramaf)
   {
-    this.vp = paramaf;
+    this.xe = paramaf;
   }
   
   @Deprecated
   public final int getPosition()
   {
-    if (this.vi == -1) {
-      return this.sx;
+    if (this.wX == -1) {
+      return this.un;
     }
-    return this.vi;
+    return this.wX;
   }
   
   final boolean isBound()
   {
-    return (this.df & 0x1) != 0;
+    return (this.eT & 0x1) != 0;
   }
   
   final boolean isRemoved()
   {
-    return (this.df & 0x8) != 0;
+    return (this.eT & 0x8) != 0;
   }
   
-  public final void p(boolean paramBoolean)
+  public final void s(boolean paramBoolean)
   {
     int i;
     if (paramBoolean)
     {
-      i = this.vo - 1;
-      this.vo = i;
-      if (this.vo >= 0) {
-        break label61;
+      i = this.xd - 1;
+      this.xd = i;
+      if (this.xd >= 0) {
+        break label54;
       }
-      this.vo = 0;
-      Log.e("View", "isRecyclable decremented below 0: unmatched pair of setIsRecyable() calls for " + this);
+      this.xd = 0;
+      Log.e("View", "isRecyclable decremented below 0: unmatched pair of setIsRecyable() calls for ".concat(String.valueOf(this)));
     }
-    label61:
+    label54:
     do
     {
       return;
-      i = this.vo + 1;
+      i = this.xd + 1;
       break;
-      if ((!paramBoolean) && (this.vo == 1))
+      if ((!paramBoolean) && (this.xd == 1))
       {
-        this.df |= 0x10;
+        this.eT |= 0x10;
         return;
       }
-    } while ((!paramBoolean) || (this.vo != 0));
-    this.df &= 0xFFFFFFEF;
-  }
-  
-  final void q(Object paramObject)
-  {
-    if (paramObject == null) {
-      addFlags(1024);
-    }
-    while ((this.df & 0x400) != 0) {
-      return;
-    }
-    if (this.vm == null)
-    {
-      this.vm = new ArrayList();
-      this.vn = Collections.unmodifiableList(this.vm);
-    }
-    this.vm.add(paramObject);
+    } while ((!paramBoolean) || (this.xd != 0));
+    this.eT &= 0xFFFFFFEF;
   }
   
   final void setFlags(int paramInt1, int paramInt2)
   {
-    this.df = (this.df & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
+    this.eT = (this.eT & (paramInt2 ^ 0xFFFFFFFF) | paramInt1 & paramInt2);
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("ViewHolder{" + Integer.toHexString(hashCode()) + " position=" + this.sx + " id=" + this.vg + ", oldPos=" + this.vf + ", pLpos:" + this.vi);
-    if (eh()) {
+    StringBuilder localStringBuilder = new StringBuilder("ViewHolder{" + Integer.toHexString(hashCode()) + " position=" + this.un + " id=" + this.wV + ", oldPos=" + this.wU + ", pLpos:" + this.wX);
+    if (ew()) {
       localStringBuilder.append(" scrap");
     }
-    if (em()) {
+    if (eB()) {
       localStringBuilder.append(" invalid");
     }
     if (!isBound()) {
       localStringBuilder.append(" unbound");
     }
-    if (en()) {
+    if (eC()) {
       localStringBuilder.append(" update");
     }
     if (isRemoved()) {
       localStringBuilder.append(" removed");
     }
-    if (ef()) {
+    if (eu()) {
       localStringBuilder.append(" ignored");
     }
-    if (eo()) {
+    if (eD()) {
       localStringBuilder.append(" changed");
     }
-    if (ep()) {
+    if (eE()) {
       localStringBuilder.append(" tmpDetached");
     }
-    if (!et()) {
-      localStringBuilder.append(" not recyclable(" + this.vo + ")");
+    if (!eH()) {
+      localStringBuilder.append(" not recyclable(" + this.xd + ")");
     }
-    if (((this.df & 0x200) != 0) || (em())) {}
+    if (((this.eT & 0x200) != 0) || (eB())) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
         localStringBuilder.append("undefined adapter position");
       }
-      if (this.ve.getParent() == null) {
+      if (this.wT.getParent() == null) {
         localStringBuilder.append(" no parent");
       }
       localStringBuilder.append("}");
       return localStringBuilder.toString();
     }
+  }
+  
+  final void z(Object paramObject)
+  {
+    if (paramObject == null) {
+      addFlags(1024);
+    }
+    while ((this.eT & 0x400) != 0) {
+      return;
+    }
+    if (this.xb == null)
+    {
+      this.xb = new ArrayList();
+      this.xc = Collections.unmodifiableList(this.xb);
+    }
+    this.xb.add(paramObject);
   }
 }
 

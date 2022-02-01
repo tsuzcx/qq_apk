@@ -9,21 +9,21 @@ import java.util.HashMap;
 public abstract class JobIntentService
   extends Service
 {
-  static final Object ef = new Object();
-  static final HashMap<ComponentName, Object> eg = new HashMap();
-  boolean cF = false;
-  boolean ca = false;
-  boolean ed = false;
-  final ArrayList<Object> ee;
+  static final Object fZ = new Object();
+  static final HashMap<ComponentName, Object> ga = new HashMap();
+  boolean dL = false;
+  boolean eo = false;
+  boolean fX = false;
+  final ArrayList<Object> fY;
   
   public JobIntentService()
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
-      this.ee = null;
+      this.fY = null;
       return;
     }
-    this.ee = new ArrayList();
+    this.fY = new ArrayList();
   }
 }
 

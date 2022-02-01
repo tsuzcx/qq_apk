@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/wx" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="20.0dip" android:src="@raw/fix_tools_logo" />
-    <TextView android:textSize="@dimen/dq" android:gravity="center" android:id="@id/eem" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/sg" style="@style/l1" />
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/f41" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:gravity="center_horizontal" android:layout_gravity="bottom" android:id="@id/b3f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="42.0dip" android:layout_marginBottom="14.0dip" />
+        <RelativeLayout android:layout_gravity="bottom|center" android:orientation="horizontal" android:id="@id/aun" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="@dimen/a_5" android:layout_height="@dimen/a_5" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cb">
+                <RelativeLayout android:id="@id/dsy" android:background="@drawable/a48" android:layout_width="@dimen/a_e" android:layout_height="@dimen/a_e" android:layout_centerVertical="true">
+                    <ImageView android:id="@id/dss" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:contentDescription="@string/dv3" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/cho" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

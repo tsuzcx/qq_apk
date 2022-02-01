@@ -5,25 +5,25 @@ import android.graphics.drawable.DrawableContainer;
 import android.graphics.drawable.DrawableContainer.DrawableContainerState;
 import java.lang.reflect.Method;
 
-final class g
+public final class g
 {
-  private static Method jd;
-  private static boolean je;
+  private static Method oc;
+  private static boolean od;
   
   static boolean a(DrawableContainer paramDrawableContainer, Drawable.ConstantState paramConstantState)
   {
-    if (!je) {}
+    if (!od) {}
     try
     {
       Method localMethod = DrawableContainer.class.getDeclaredMethod("setConstantState", new Class[] { DrawableContainer.DrawableContainerState.class });
-      jd = localMethod;
+      oc = localMethod;
       localMethod.setAccessible(true);
       label32:
-      je = true;
-      if (jd != null) {
+      od = true;
+      if (oc != null) {
         try
         {
-          jd.invoke(paramDrawableContainer, new Object[] { paramConstantState });
+          oc.invoke(paramDrawableContainer, new Object[] { paramConstantState });
           return true;
         }
         catch (Exception paramDrawableContainer) {}

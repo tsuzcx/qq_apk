@@ -12,9 +12,9 @@ final class zzay
   
   public final void onConnectionFailed(ConnectionResult paramConnectionResult)
   {
-    AppMethodBeat.i(60811);
+    AppMethodBeat.i(11303);
     this.zziv.setResult(new Status(8));
-    AppMethodBeat.o(60811);
+    AppMethodBeat.o(11303);
   }
 }
 

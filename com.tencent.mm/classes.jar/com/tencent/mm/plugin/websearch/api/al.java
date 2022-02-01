@@ -1,18 +1,23 @@
 package com.tencent.mm.plugin.websearch.api;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.aj;
+import org.xwalk.core.XWalkEnvironment;
+
 public final class al
 {
-  private String cCW;
-  private String cpW;
-  public Object uJY;
-  public ah uJZ;
-  
-  public al(Object paramObject, String paramString1, String paramString2, ah paramah)
+  public static int Sl(int paramInt)
   {
-    this.uJY = paramObject;
-    this.cpW = paramString1;
-    this.cCW = paramString2;
-    this.uJZ = paramah;
+    AppMethodBeat.i(161715);
+    if (XWalkEnvironment.getUsingCustomContext())
+    {
+      paramInt = Math.round(com.tencent.mm.cd.a.getDensity(aj.getContext()) * paramInt);
+      AppMethodBeat.o(161715);
+      return paramInt;
+    }
+    paramInt = Math.round(com.tencent.mm.ce.a.eCY() * paramInt);
+    AppMethodBeat.o(161715);
+    return paramInt;
   }
 }
 

@@ -6,23 +6,6 @@ import java.io.Serializable;
 
 public final class e
 {
-  public static String a(Intent paramIntent, String paramString)
-  {
-    if (paramIntent == null) {
-      return null;
-    }
-    try
-    {
-      paramIntent = paramIntent.getStringExtra(paramString);
-      return paramIntent;
-    }
-    catch (Exception paramIntent)
-    {
-      Log.e("ShareIntentUtil", "getStringExtra exception:" + paramIntent.getMessage());
-    }
-    return null;
-  }
-  
   public static void a(Intent paramIntent, int paramInt)
   {
     paramIntent.putExtra("intent_return_code", paramInt);
@@ -41,7 +24,24 @@ public final class e
     }
   }
   
-  public static Serializable b(Intent paramIntent, String paramString)
+  public static String b(Intent paramIntent, String paramString)
+  {
+    if (paramIntent == null) {
+      return null;
+    }
+    try
+    {
+      paramIntent = paramIntent.getStringExtra(paramString);
+      return paramIntent;
+    }
+    catch (Exception paramIntent)
+    {
+      Log.e("ShareIntentUtil", "getStringExtra exception:" + paramIntent.getMessage());
+    }
+    return null;
+  }
+  
+  public static Serializable c(Intent paramIntent, String paramString)
   {
     if (paramIntent == null) {
       return null;

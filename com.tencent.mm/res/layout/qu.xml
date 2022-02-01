@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:id="@id/b3y" android:layout_width="0.0dip" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="dn" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toTopOf="dn">
-        <ViewStub android:id="@id/b3z" android:layout="@layout/qw" style="@style/fc" />
-        <ViewStub android:id="@id/b40" android:layout="@layout/r0" style="@style/fc" />
-        <ViewStub android:id="@id/b41" android:layout="@layout/qy" style="@style/fc" />
-        <ViewStub android:id="@id/b42" android:layout="@layout/qv" style="@style/fc" />
-        <ViewStub android:id="@id/b43" android:layout="@layout/qz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m1" android:layout_marginBottom="@dimen/m1" android:layout_marginStart="@dimen/m1" android:layout_marginEnd="@dimen/m1" />
-        <ViewStub android:id="@id/b44" android:layout="@layout/qs" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <View android:id="@id/b45" android:background="@color/tb" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="@dimen/fq" android:layout_marginStart="@dimen/l2" android:layout_marginEnd="84.0dip" app:layout_constraintBottom_toBottomOf="dn" app:layout_constraintEnd_toEndOf="dn" app:layout_constraintStart_toStartOf="dn" />
-    <ImageView android:id="@id/b46" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="dn" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toTopOf="dn" />
-</android.support.constraint.ConstraintLayout>
+<LinearLayout android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/ao5" style="@style/gx" />
+</LinearLayout>

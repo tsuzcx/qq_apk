@@ -12,44 +12,44 @@ import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
 public class EasyTextView
   extends View
 {
-  private static final Paint feS;
+  private static final Paint gFc;
   private static int textSize;
   private Context context;
   private String text;
   
   static
   {
-    AppMethodBeat.i(38210);
-    feS = new Paint();
+    AppMethodBeat.i(97853);
+    gFc = new Paint();
     textSize = -1;
-    feS.setAntiAlias(true);
-    feS.setFilterBitmap(true);
-    feS.setColor(737373);
-    AppMethodBeat.o(38210);
+    gFc.setAntiAlias(true);
+    gFc.setFilterBitmap(true);
+    gFc.setColor(737373);
+    AppMethodBeat.o(97853);
   }
   
   public EasyTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(38207);
+    AppMethodBeat.i(97850);
     this.text = "";
     this.context = paramContext;
     if (textSize == -1)
     {
-      textSize = BackwardSupportUtil.b.b(this.context, 12.0F);
-      feS.setTextSize(textSize);
+      textSize = BackwardSupportUtil.b.g(this.context, 12.0F);
+      gFc.setTextSize(textSize);
     }
-    feS.setColor(this.context.getResources().getColor(2131689763));
-    AppMethodBeat.o(38207);
+    gFc.setColor(this.context.getResources().getColor(2131100017));
+    AppMethodBeat.o(97850);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(38209);
+    AppMethodBeat.i(97852);
     super.draw(paramCanvas);
     int i = getHeight();
-    paramCanvas.drawText(this.text, 0.0F, i / 2, feS);
-    AppMethodBeat.o(38209);
+    paramCanvas.drawText(this.text, 0.0F, i / 2, gFc);
+    AppMethodBeat.o(97852);
   }
   
   public void setText(String paramString)
@@ -63,14 +63,14 @@ public class EasyTextView
   
   public void setTextSize(int paramInt)
   {
-    AppMethodBeat.i(38208);
-    feS.setTextSize(paramInt);
-    AppMethodBeat.o(38208);
+    AppMethodBeat.i(97851);
+    gFc.setTextSize(paramInt);
+    AppMethodBeat.o(97851);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.EasyTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -8,15 +8,15 @@ public final class zzgd
 {
   public static Status zzb(int paramInt)
   {
-    AppMethodBeat.i(71361);
+    AppMethodBeat.i(101344);
     Status localStatus = new Status(paramInt, WearableStatusCodes.getStatusCodeString(paramInt));
-    AppMethodBeat.o(71361);
+    AppMethodBeat.o(101344);
     return localStatus;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzgd
  * JD-Core Version:    0.7.0.1
  */

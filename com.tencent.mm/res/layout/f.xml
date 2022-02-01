@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_width="36.0dip" android:layout_height="36.0dip" style="@style/a00" />
-    <TextView android:textSize="@dimen/o3" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/cpw" />
-</LinearLayout>
+<FrameLayout android:background="@color/BW_93" android:paddingLeft="@dimen/ci" android:paddingTop="@dimen/ci" android:paddingRight="@dimen/ci" android:paddingBottom="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/tc" android:layout_width="fill_parent" android:layout_height="@dimen/c_">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_70" />
+        <TextView android:textSize="@dimen/q" android:textColor="@color/s5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wa" android:layout_marginStart="@dimen/ci" />
+    </LinearLayout>
+</FrameLayout>

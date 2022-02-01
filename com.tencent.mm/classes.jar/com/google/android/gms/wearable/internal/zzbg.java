@@ -16,10 +16,10 @@ final class zzbg
   
   zzbg(Status paramStatus, @Nullable InputStream paramInputStream)
   {
-    AppMethodBeat.i(71070);
+    AppMethodBeat.i(101053);
     this.zzp = ((Status)Preconditions.checkNotNull(paramStatus));
     this.zzct = paramInputStream;
-    AppMethodBeat.o(71070);
+    AppMethodBeat.o(101053);
   }
   
   @Nullable
@@ -35,22 +35,22 @@ final class zzbg
   
   public final void release()
   {
-    AppMethodBeat.i(71071);
+    AppMethodBeat.i(101054);
     if (this.zzct != null) {
       try
       {
         this.zzct.close();
-        AppMethodBeat.o(71071);
+        AppMethodBeat.o(101054);
         return;
       }
       catch (IOException localIOException) {}
     }
-    AppMethodBeat.o(71071);
+    AppMethodBeat.o(101054);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzbg
  * JD-Core Version:    0.7.0.1
  */

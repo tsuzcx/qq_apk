@@ -21,62 +21,62 @@ public class SnsUnScaleTextView
   
   public int getBaseline()
   {
-    AppMethodBeat.i(39674);
+    AppMethodBeat.i(99503);
     try
     {
       int i = super.getBaseline();
-      AppMethodBeat.o(39674);
+      AppMethodBeat.o(99503);
       return i;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(39674);
+      AppMethodBeat.o(99503);
     }
     return -1;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(39673);
+    AppMethodBeat.i(99502);
     try
     {
       super.onDraw(paramCanvas);
-      AppMethodBeat.o(39673);
+      AppMethodBeat.o(99502);
       return;
     }
     catch (Throwable paramCanvas)
     {
-      AppMethodBeat.o(39673);
+      AppMethodBeat.o(99502);
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(39672);
+    AppMethodBeat.i(99501);
     try
     {
       super.onMeasure(paramInt1, paramInt2);
-      AppMethodBeat.o(39672);
+      AppMethodBeat.o(99501);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(39672);
+      AppMethodBeat.o(99501);
     }
   }
   
   public boolean onPreDraw()
   {
-    AppMethodBeat.i(39675);
+    AppMethodBeat.i(99504);
     try
     {
       boolean bool = super.onPreDraw();
-      AppMethodBeat.o(39675);
+      AppMethodBeat.o(99504);
       return bool;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(39675);
+      AppMethodBeat.o(99504);
     }
     return true;
   }

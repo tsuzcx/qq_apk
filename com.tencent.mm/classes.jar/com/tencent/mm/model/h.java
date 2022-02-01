@@ -1,28 +1,42 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.a.j;
-import com.tencent.mm.aj.a.k;
-import com.tencent.mm.aj.z;
-import com.tencent.mm.api.i;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.storage.bl;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Map;
 
 public final class h
-  implements i
+  implements f.b
 {
-  public final j df(String paramString)
+  public final com.tencent.mm.al.f.b a(String paramString, Map<String, String> paramMap, f.a parama)
   {
-    AppMethodBeat.i(11223);
-    paramString = z.afm().df(paramString);
-    AppMethodBeat.o(11223);
-    return paramString;
+    AppMethodBeat.i(20316);
+    Object localObject = (String)paramMap.get(".sysmsg.brand_username");
+    String str = (String)paramMap.get(".sysmsg.revoke_climsgid");
+    paramString = (String)paramMap.get(".sysmsg.replacemsg");
+    az.arV();
+    paramMap = c.apO().hq((String)localObject, str);
+    if ((paramMap == null) || (paramMap.isEmpty()))
+    {
+      AppMethodBeat.o(20316);
+      return null;
+    }
+    paramMap = paramMap.iterator();
+    while (paramMap.hasNext())
+    {
+      localObject = (bl)paramMap.next();
+      f.a(((du)localObject).field_msgId, (bl)localObject, parama, paramString, "MicroMsg.BizChatSysCmdMsgConsumerHandleRevokeMsg");
+    }
+    AppMethodBeat.o(20316);
+    return null;
   }
   
-  public final String dg(String paramString)
+  public final String getSubType()
   {
-    AppMethodBeat.i(11224);
-    paramString = z.afm().dg(paramString);
-    AppMethodBeat.o(11224);
-    return paramString;
+    return "qy_revoke_msg";
   }
 }
 

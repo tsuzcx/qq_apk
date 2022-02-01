@@ -5,60 +5,60 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public int bWt;
-  int bsY;
+  public int cJQ;
   public long createTime;
-  String fQQ;
-  int fXt;
-  long fXv;
+  int dtM;
   public String filename;
-  String fnu;
-  String fnv;
+  String gOV;
+  String gOW;
+  int hAe;
+  long hAg;
+  String htx;
   public int msgType;
-  String oBd;
-  public String oBe;
-  public int oBf;
-  public int oBg;
-  int oBh;
-  int oBi;
-  public int oBj;
   int status;
+  String tvI;
+  public String tvJ;
+  public int tvK;
+  public int tvL;
+  int tvM;
+  int tvN;
+  public int tvO;
   public int videoSource;
   
   public a()
   {
-    AppMethodBeat.i(22721);
-    this.bsY = -1;
-    this.fQQ = "";
+    AppMethodBeat.i(26343);
+    this.dtM = -1;
+    this.htx = "";
     this.status = 0;
     this.createTime = 0L;
-    this.fXv = 0L;
+    this.hAg = 0L;
     this.filename = "";
-    this.oBd = "";
-    this.oBe = "";
-    this.oBf = 0;
+    this.tvI = "";
+    this.tvJ = "";
+    this.tvK = 0;
     this.msgType = 0;
-    this.oBg = 0;
-    this.oBh = 0;
-    this.bWt = 0;
-    this.fXt = 0;
-    this.oBi = 0;
+    this.tvL = 0;
+    this.tvM = 0;
+    this.cJQ = 0;
+    this.hAe = 0;
+    this.tvN = 0;
     this.videoSource = 0;
-    this.oBj = 0;
-    this.fnu = "";
-    this.fnv = "";
-    AppMethodBeat.o(22721);
+    this.tvO = 0;
+    this.gOV = "";
+    this.gOW = "";
+    AppMethodBeat.o(26343);
   }
   
-  public final String bOT()
+  public final String cNJ()
   {
-    if (this.fQQ == null) {
+    if (this.htx == null) {
       return "";
     }
-    return this.fQQ;
+    return this.htx;
   }
   
-  public final String bOU()
+  public final String cNK()
   {
     if (this.filename == null) {
       return "";
@@ -66,49 +66,49 @@ public final class a
     return this.filename;
   }
   
-  public final String bOV()
+  public final String cNL()
   {
-    if (this.oBd == null) {
+    if (this.tvI == null) {
       return "";
     }
-    return this.oBd;
+    return this.tvI;
   }
   
-  public final String bOW()
+  public final String cNM()
   {
-    if (this.oBe == null) {
+    if (this.tvJ == null) {
       return "";
     }
-    return this.oBe;
+    return this.tvJ;
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(22722);
-    this.fQQ = paramCursor.getString(0);
+    AppMethodBeat.i(26344);
+    this.htx = paramCursor.getString(0);
     this.status = paramCursor.getInt(1);
     this.createTime = paramCursor.getLong(2);
-    this.fXv = paramCursor.getLong(3);
+    this.hAg = paramCursor.getLong(3);
     this.filename = paramCursor.getString(4);
-    this.oBd = paramCursor.getString(5);
-    this.oBe = paramCursor.getString(6);
-    this.oBf = paramCursor.getInt(7);
+    this.tvI = paramCursor.getString(5);
+    this.tvJ = paramCursor.getString(6);
+    this.tvK = paramCursor.getInt(7);
     this.msgType = paramCursor.getInt(8);
-    this.oBg = paramCursor.getInt(9);
-    this.oBh = paramCursor.getInt(10);
-    this.bWt = paramCursor.getInt(11);
-    this.fXt = paramCursor.getInt(12);
-    this.oBi = paramCursor.getInt(13);
+    this.tvL = paramCursor.getInt(9);
+    this.tvM = paramCursor.getInt(10);
+    this.cJQ = paramCursor.getInt(11);
+    this.hAe = paramCursor.getInt(12);
+    this.tvN = paramCursor.getInt(13);
     this.videoSource = paramCursor.getInt(14);
-    this.oBj = paramCursor.getInt(15);
-    this.fnu = paramCursor.getString(16);
-    this.fnv = paramCursor.getString(17);
-    AppMethodBeat.o(22722);
+    this.tvO = paramCursor.getInt(15);
+    this.gOV = paramCursor.getString(16);
+    this.gOW = paramCursor.getString(17);
+    AppMethodBeat.o(26344);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.a.a
  * JD-Core Version:    0.7.0.1
  */

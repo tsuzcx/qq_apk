@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.story.d;
 
-import a.l;
-import com.tencent.mm.plugin.story.h.j;
+import com.tencent.mm.plugin.story.i.j;
+import d.l;
 import java.util.List;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavSelectView;", "", "onIsAll", "", "isAll", "", "onLoadFpFinish", "datas", "", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "checkedDatas", "onLoadNpFinish", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/contract/AlbumContract$IFavSelectView;", "", "onIsAll", "", "isAll", "", "onLoadFpFinish", "datas", "", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "checkedDatas", "onLoadNpFinish", "plugin-story_release"})
 public abstract interface a$d
 {
-  public abstract void dC(List<j> paramList);
+  public abstract void fT(List<j> paramList);
   
-  public abstract void lu(boolean paramBoolean);
+  public abstract void qE(boolean paramBoolean);
   
-  public abstract void n(List<j> paramList1, List<j> paramList2);
+  public abstract void z(List<j> paramList1, List<j> paramList2);
 }
 
 

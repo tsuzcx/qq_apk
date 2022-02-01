@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,9 +18,9 @@ public final class m
   
   static
   {
-    AppMethodBeat.i(7035);
+    AppMethodBeat.i(79224);
     SQL_CREATE = new String[] { j.getCreateSQLs(i.info, "WebViewHostsFilter") };
-    AppMethodBeat.o(7035);
+    AppMethodBeat.o(79224);
   }
   
   public m(e parame)
@@ -34,35 +34,35 @@ public final class m
     this.db = parame;
   }
   
-  public final Set<String> dcM()
+  public final Set<String> emO()
   {
-    AppMethodBeat.i(7034);
-    long l = bo.aox();
-    ab.d("MicroMsg.WebViewStorage", "webview hijack deleteExpiredItem now = ".concat(String.valueOf(l)));
-    ab.i("MicroMsg.WebViewStorage", "delete expired items request  : [%b]", new Object[] { Boolean.valueOf(execSQL("WebViewHostsFilter", "delete from WebViewHostsFilter where expireTime < ".concat(String.valueOf(l)))) });
+    AppMethodBeat.i(79223);
+    long l = bt.aGK();
+    ad.d("MicroMsg.WebViewStorage", "webview hijack deleteExpiredItem now = ".concat(String.valueOf(l)));
+    ad.i("MicroMsg.WebViewStorage", "delete expired items request  : [%b]", new Object[] { Boolean.valueOf(execSQL("WebViewHostsFilter", "delete from WebViewHostsFilter where expireTime < ".concat(String.valueOf(l)))) });
     Cursor localCursor = this.db.a(getTableName(), new String[] { "host" }, null, null, null, null, null, 2);
     HashSet localHashSet = new HashSet();
     if ((localCursor != null) && (localCursor.moveToFirst())) {
       do
       {
         String str = localCursor.getString(0);
-        if (!bo.isNullOrNil(str))
+        if (!bt.isNullOrNil(str))
         {
           localHashSet.add(str);
-          ab.d("MicroMsg.WebViewStorage", "webview hijack gethost = ".concat(String.valueOf(str)));
+          ad.d("MicroMsg.WebViewStorage", "webview hijack gethost = ".concat(String.valueOf(str)));
         }
       } while (localCursor.moveToNext());
     }
     if (localCursor != null) {
       localCursor.close();
     }
-    AppMethodBeat.o(7034);
+    AppMethodBeat.o(79223);
     return localHashSet;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.modeltools.m
  * JD-Core Version:    0.7.0.1
  */

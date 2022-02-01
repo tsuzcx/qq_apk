@@ -6,21 +6,21 @@ import java.util.Map;
 class ReflectiveGenericLifecycleObserver
   implements GenericLifecycleObserver
 {
-  private final Object dj;
-  private final ClassesInfoCache.CallbackInfo dk;
+  private final Object dm;
+  private final ClassesInfoCache.CallbackInfo dn;
   
   ReflectiveGenericLifecycleObserver(Object paramObject)
   {
-    this.dj = paramObject;
-    this.dk = ClassesInfoCache.bY.f(this.dj.getClass());
+    this.dm = paramObject;
+    this.dn = ClassesInfoCache.cb.c(this.dm.getClass());
   }
   
   public void onStateChanged(LifecycleOwner paramLifecycleOwner, Lifecycle.Event paramEvent)
   {
-    ClassesInfoCache.CallbackInfo localCallbackInfo = this.dk;
-    Object localObject = this.dj;
-    ClassesInfoCache.CallbackInfo.a((List)localCallbackInfo.cb.get(paramEvent), paramLifecycleOwner, paramEvent, localObject);
-    ClassesInfoCache.CallbackInfo.a((List)localCallbackInfo.cb.get(Lifecycle.Event.ON_ANY), paramLifecycleOwner, paramEvent, localObject);
+    ClassesInfoCache.CallbackInfo localCallbackInfo = this.dn;
+    Object localObject = this.dm;
+    ClassesInfoCache.CallbackInfo.a((List)localCallbackInfo.ce.get(paramEvent), paramLifecycleOwner, paramEvent, localObject);
+    ClassesInfoCache.CallbackInfo.a((List)localCallbackInfo.ce.get(Lifecycle.Event.ON_ANY), paramLifecycleOwner, paramEvent, localObject);
   }
 }
 

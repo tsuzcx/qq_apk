@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class on
   extends b
 {
-  public on.a cFc;
+  public a dtH;
   
   public on()
   {
@@ -15,16 +15,22 @@ public final class on
   
   private on(byte paramByte)
   {
-    AppMethodBeat.i(94428);
-    this.cFc = new on.a();
-    this.ymq = false;
+    AppMethodBeat.i(128847);
+    this.dtH = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(94428);
+    AppMethodBeat.o(128847);
+  }
+  
+  public static final class a
+  {
+    public String dtI;
+    public int dtJ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.on
  * JD-Core Version:    0.7.0.1
  */

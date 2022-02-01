@@ -8,14 +8,14 @@ import java.util.List;
 final class f
   implements d
 {
-  private final List<com.google.android.exoplayer2.f.a> aUg;
+  private final List<com.google.android.exoplayer2.f.a> bsj;
   
   public f(List<com.google.android.exoplayer2.f.a> paramList)
   {
-    this.aUg = paramList;
+    this.bsj = paramList;
   }
   
-  public final int ab(long paramLong)
+  public final int am(long paramLong)
   {
     if (paramLong < 0L) {
       return 0;
@@ -23,40 +23,40 @@ final class f
     return -1;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> ac(long paramLong)
+  public final List<com.google.android.exoplayer2.f.a> an(long paramLong)
   {
-    AppMethodBeat.i(95618);
+    AppMethodBeat.i(92786);
     if (paramLong >= 0L)
     {
-      localList = this.aUg;
-      AppMethodBeat.o(95618);
+      localList = this.bsj;
+      AppMethodBeat.o(92786);
       return localList;
     }
     List localList = Collections.emptyList();
-    AppMethodBeat.o(95618);
+    AppMethodBeat.o(92786);
     return localList;
   }
   
-  public final long dT(int paramInt)
+  public final long eR(int paramInt)
   {
-    AppMethodBeat.i(95617);
+    AppMethodBeat.i(92785);
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkArgument(bool);
-      AppMethodBeat.o(95617);
+      AppMethodBeat.o(92785);
       return 0L;
     }
   }
   
-  public final int pH()
+  public final int uB()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.f.a.f
  * JD-Core Version:    0.7.0.1
  */

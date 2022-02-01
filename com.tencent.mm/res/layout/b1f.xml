@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="top" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/jm"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_gravity="top" android:background="@color/le" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/bp" android:layout_marginRight="@dimen/bp" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mc">
+        <TextView android:id="@id/gam" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/c5" android:singleLine="true" android:layout_weight="1.0" style="@style/lw" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/c5">
+            <ImageView android:id="@id/cn2" android:visibility="gone" android:layout_width="@dimen/jy" android:layout_height="@dimen/jy" android:layout_marginRight="@dimen/ci" />
+            <ImageView android:id="@id/cn3" android:visibility="gone" android:layout_width="@dimen/jy" android:layout_height="@dimen/jy" android:layout_marginRight="@dimen/ci" />
+            <ImageView android:id="@id/cn4" android:visibility="gone" android:layout_width="@dimen/jy" android:layout_height="@dimen/jy" />
+            <ImageView android:id="@id/cn5" android:visibility="gone" android:layout_width="@dimen/jy" android:layout_height="@dimen/jy" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

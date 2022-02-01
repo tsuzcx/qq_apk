@@ -8,25 +8,22 @@ public abstract class dr
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dhV = "updateTime".hashCode();
-  private static final int dhi;
-  private static final int diB;
-  private static final int key_HASHCODE = "key".hashCode();
+  private static final int eCi = "subtype".hashCode();
+  private static final int eOs = "bubbleMd5".hashCode();
+  private static final int eOt = "coverMd5".hashCode();
+  private static final int eOu = "minilogoMd5".hashCode();
+  private static final int emV = "version".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean __hadSetkey = true;
-  private boolean dhT = true;
-  private boolean dhg = true;
-  private boolean div = true;
-  public String field_key;
-  public int field_scene;
-  public long field_updateTime;
+  private boolean eCg = true;
+  private boolean eOp = true;
+  private boolean eOq = true;
+  private boolean eOr = true;
+  private boolean emQ = true;
+  public String field_bubbleMd5;
+  public String field_coverMd5;
+  public String field_minilogoMd5;
+  public int field_subtype;
   public int field_version;
-  
-  static
-  {
-    diB = "version".hashCode();
-    dhi = "scene".hashCode();
-  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -41,23 +38,26 @@ public abstract class dr
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (key_HASHCODE != k) {
-        break label60;
+      if (eCi != k) {
+        break label65;
       }
-      this.field_key = paramCursor.getString(i);
+      this.field_subtype = paramCursor.getInt(i);
+      this.eCg = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (diB == k) {
+      label65:
+      if (eOs == k) {
+        this.field_bubbleMd5 = paramCursor.getString(i);
+      } else if (eOt == k) {
+        this.field_coverMd5 = paramCursor.getString(i);
+      } else if (eOu == k) {
+        this.field_minilogoMd5 = paramCursor.getString(i);
+      } else if (emV == k) {
         this.field_version = paramCursor.getInt(i);
-      } else if (dhi == k) {
-        this.field_scene = paramCursor.getInt(i);
-      } else if (dhV == k) {
-        this.field_updateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -67,17 +67,20 @@ public abstract class dr
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.eCg) {
+      localContentValues.put("subtype", Integer.valueOf(this.field_subtype));
     }
-    if (this.div) {
+    if (this.eOp) {
+      localContentValues.put("bubbleMd5", this.field_bubbleMd5);
+    }
+    if (this.eOq) {
+      localContentValues.put("coverMd5", this.field_coverMd5);
+    }
+    if (this.eOr) {
+      localContentValues.put("minilogoMd5", this.field_minilogoMd5);
+    }
+    if (this.emQ) {
       localContentValues.put("version", Integer.valueOf(this.field_version));
-    }
-    if (this.dhg) {
-      localContentValues.put("scene", Integer.valueOf(this.field_scene));
-    }
-    if (this.dhT) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -87,7 +90,7 @@ public abstract class dr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.dr
  * JD-Core Version:    0.7.0.1
  */

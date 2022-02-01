@@ -14,18 +14,18 @@ final class zza
   
   private static Boolean zza(Context paramContext, String paramString, Boolean paramBoolean)
   {
-    AppMethodBeat.i(89536);
+    AppMethodBeat.i(4558);
     paramContext = paramContext.getSharedPreferences("gservices-direboot-cache", 0).getString(paramString, null);
     if (paramContext != null) {
       try
       {
         boolean bool = Boolean.parseBoolean(paramContext);
-        AppMethodBeat.o(89536);
+        AppMethodBeat.o(4558);
         return Boolean.valueOf(bool);
       }
       catch (NumberFormatException paramContext) {}
     }
-    AppMethodBeat.o(89536);
+    AppMethodBeat.o(4558);
     return paramBoolean;
   }
 }

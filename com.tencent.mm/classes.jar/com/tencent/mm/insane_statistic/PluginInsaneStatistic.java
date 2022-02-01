@@ -10,18 +10,18 @@ public class PluginInsaneStatistic
 {
   public void execute(g paramg)
   {
-    AppMethodBeat.i(16183);
-    if (paramg.SD())
+    AppMethodBeat.i(20226);
+    if (paramg.agu())
     {
-      com.tencent.mm.at.r.fGU = new b();
-      com.tencent.mm.modelstat.r.fUK = new a();
+      com.tencent.mm.aw.r.hjt = new b();
+      com.tencent.mm.modelstat.r.hxt = new a();
     }
-    AppMethodBeat.o(16183);
+    AppMethodBeat.o(20226);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.insane_statistic.PluginInsaneStatistic
  * JD-Core Version:    0.7.0.1
  */

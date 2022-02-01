@@ -1,12 +1,16 @@
 package com.tencent.mm.plugin.crashfix;
 
 import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.plugin.crashfix.d.a.d;
 import com.tencent.mm.plugin.crashfix.d.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.crashfix.d.c;
+import com.tencent.mm.plugin.crashfix.d.c.1;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -19,39 +23,47 @@ public class PluginSystemCrashFix
   
   public void dependency()
   {
-    AppMethodBeat.i(151897);
+    AppMethodBeat.i(145615);
     dependsOnRoot();
-    AppMethodBeat.o(151897);
+    AppMethodBeat.o(145615);
   }
   
   public void execute(g paramg)
   {
-    AppMethodBeat.i(151898);
-    ab.i("MicroMsg.SystemCrashFixPatch", "api level : " + Build.VERSION.SDK_INT);
-    if (b.kTc == null)
+    AppMethodBeat.i(145616);
+    ad.i("MicroMsg.SystemCrashFixPatch", "api level : " + Build.VERSION.SDK_INT);
+    paramg = new Handler(Looper.myLooper());
+    if (c.nZG == null)
     {
-      paramg = new ArrayList();
-      b.kTc = paramg;
-      paramg.add(new d());
+      localObject = new ArrayList();
+      c.nZG = (List)localObject;
+      ((List)localObject).add(new d());
+      c.nZG.add(new com.tencent.mm.plugin.crashfix.d.b.a());
     }
-    paramg = b.kTc.iterator();
-    while (paramg.hasNext())
+    Object localObject = c.nZG.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      com.tencent.mm.plugin.crashfix.d.a locala = (com.tencent.mm.plugin.crashfix.d.a)paramg.next();
-      if (locala.tS(Build.VERSION.SDK_INT))
-      {
-        boolean bool = locala.biH();
-        ab.i("MicroMsg.SystemCrashFixPatch", locala.getClass().getCanonicalName() + " : " + bool);
+      b localb = (b)((Iterator)localObject).next();
+      if (localb.zM(Build.VERSION.SDK_INT)) {
+        if ((localb instanceof com.tencent.mm.plugin.crashfix.d.a))
+        {
+          paramg.postDelayed(new c.1((com.tencent.mm.plugin.crashfix.d.a)localb, localb), 0L);
+        }
+        else
+        {
+          boolean bool = localb.bPL();
+          ad.i("MicroMsg.SystemCrashFixPatch", localb.getClass().getCanonicalName() + " : " + bool);
+        }
       }
     }
-    AppMethodBeat.o(151898);
+    AppMethodBeat.o(145616);
   }
   
   public void installed()
   {
-    AppMethodBeat.i(151896);
+    AppMethodBeat.i(145614);
     alias(com.tencent.mm.plugin.crashfix.a.a.class);
-    AppMethodBeat.o(151896);
+    AppMethodBeat.o(145614);
   }
 }
 

@@ -10,12 +10,10 @@ import android.os.StatFs;
 import android.util.Base64;
 import android.util.StringBuilderPrinter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.f;
-import com.tencent.mm.sdk.platformtools.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.i;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -34,35 +32,34 @@ final class r
     super(0);
   }
   
-  private static String abY()
+  private static String atC()
   {
-    AppMethodBeat.i(106801);
+    AppMethodBeat.i(142160);
     StringBuilder localStringBuilder = new StringBuilder(256);
     StringBuilderPrinter localStringBuilderPrinter = new StringBuilderPrinter(localStringBuilder);
-    Object localObject2 = ah.getContext();
-    localStringBuilderPrinter.println("#accinfo.revision=" + f.REV);
-    localStringBuilderPrinter.println("#accinfo.build=" + f.TIME + ":" + f.HOSTNAME + ":" + g.bWu);
+    Object localObject2 = aj.getContext();
+    localStringBuilderPrinter.println("#accinfo.revision=" + h.REV);
+    localStringBuilderPrinter.println("#accinfo.build=" + h.TIME + ":" + h.HOSTNAME + ":" + i.cJR);
     Object localObject3 = new StringBuilder("#accinfo.env=");
     Object localObject1;
-    if (b.foreground) {
+    if (com.tencent.mm.sdk.a.b.foreground) {
       localObject1 = "f";
     }
     for (;;)
     {
-      localStringBuilderPrinter.println((String)localObject1 + ":" + Thread.currentThread().getName() + ":" + b.ymf);
+      localStringBuilderPrinter.println((String)localObject1 + ":" + Thread.currentThread().getName() + ":" + com.tencent.mm.sdk.a.b.ESD);
       try
       {
-        localObject1 = Environment.getDataDirectory();
-        localObject3 = new StatFs(((File)localObject1).getPath());
-        StatFs localStatFs = new StatFs(e.eQx);
-        localObject1 = String.format("%dMB %s:%d:%d:%d %s:%d:%d:%d", new Object[] { Integer.valueOf(((ActivityManager)((Context)localObject2).getSystemService("activity")).getMemoryClass()), ((File)localObject1).getAbsolutePath(), Integer.valueOf(((StatFs)localObject3).getBlockSize()), Integer.valueOf(((StatFs)localObject3).getBlockCount()), Integer.valueOf(((StatFs)localObject3).getAvailableBlocks()), e.eQx, Integer.valueOf(localStatFs.getBlockSize()), Integer.valueOf(localStatFs.getBlockCount()), Integer.valueOf(localStatFs.getAvailableBlocks()) });
+        localObject1 = new StatFs(Environment.getDataDirectory().getPath());
+        localObject3 = new StatFs(com.tencent.mm.loader.j.b.aib());
+        localObject1 = String.format("%dMB %s:%d:%d:%d %s:%d:%d:%d", new Object[] { Integer.valueOf(((ActivityManager)((Context)localObject2).getSystemService("activity")).getMemoryClass()), Environment.getDataDirectory().getAbsolutePath(), Integer.valueOf(((StatFs)localObject1).getBlockSize()), Integer.valueOf(((StatFs)localObject1).getBlockCount()), Integer.valueOf(((StatFs)localObject1).getAvailableBlocks()), com.tencent.mm.loader.j.b.aib(), Integer.valueOf(((StatFs)localObject3).getBlockSize()), Integer.valueOf(((StatFs)localObject3).getBlockCount()), Integer.valueOf(((StatFs)localObject3).getAvailableBlocks()) });
         localStringBuilderPrinter.println("#accinfo.data=".concat(String.valueOf(localObject1)));
         localObject1 = new Date();
         localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSZ", Locale.getDefault());
         localStringBuilderPrinter.println("#accinfo.crashTime=" + ((SimpleDateFormat)localObject2).format((Date)localObject1));
         localStringBuilderPrinter.println("#crashContent=");
         localObject1 = localStringBuilder.toString();
-        AppMethodBeat.o(106801);
+        AppMethodBeat.o(142160);
         return localObject1;
         localObject1 = "b";
       }
@@ -70,7 +67,7 @@ final class r
       {
         for (;;)
         {
-          ab.e("MicroMsg.MMSurfaceTextureWrap", "check data size failed :%s", new Object[] { localException.getMessage() });
+          ad.e("MicroMsg.MMSurfaceTextureWrap", "check data size failed :%s", new Object[] { localException.getMessage() });
           String str = "";
         }
       }
@@ -79,16 +76,16 @@ final class r
   
   public final void attachToGLContext(int paramInt)
   {
-    AppMethodBeat.i(106802);
-    ab.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, attachToGLContext");
+    AppMethodBeat.i(142161);
+    ad.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, attachToGLContext");
     this.mSurfaceTexture.attachToGLContext(paramInt);
-    AppMethodBeat.o(106802);
+    AppMethodBeat.o(142161);
   }
   
   public final void detachFromGLContext()
   {
-    AppMethodBeat.i(106800);
-    ab.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, detachFromGLContext");
+    AppMethodBeat.i(142159);
+    ad.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, detachFromGLContext");
     try
     {
       this.mSurfaceTexture.detachFromGLContext();
@@ -103,147 +100,147 @@ final class r
           Object localObject1 = SurfaceTexture.class.getDeclaredMethod("nativeDetachFromGLContext", new Class[0]);
           ((Method)localObject1).setAccessible(true);
           int i = ((Integer)((Method)localObject1).invoke(this.mSurfaceTexture, new Object[0])).intValue();
-          localObject1 = abY() + " detect texture problem error code = " + i + ", detach = true, and error = " + bool;
-          b.G(Base64.encodeToString(((String)localObject1).getBytes(), 2), "DetachFromGLContext");
-          ab.w("MicroMsg.MMSurfaceTextureWrap", (String)localObject1);
-          ab.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, err %s hasDetach %s hasError %s", new Object[] { Integer.valueOf(i), Boolean.TRUE, Boolean.valueOf(bool) });
-          AppMethodBeat.o(106800);
+          localObject1 = atC() + " detect texture problem error code = " + i + ", detach = true, and error = " + bool;
+          com.tencent.mm.sdk.a.b.M(Base64.encodeToString(((String)localObject1).getBytes(), 2), "DetachFromGLContext");
+          ad.w("MicroMsg.MMSurfaceTextureWrap", (String)localObject1);
+          ad.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, err %s hasDetach %s hasError %s", new Object[] { Integer.valueOf(i), Boolean.TRUE, Boolean.valueOf(bool) });
+          AppMethodBeat.o(142159);
           return;
         }
         catch (IllegalArgumentException localIllegalArgumentException)
         {
-          ab.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localIllegalArgumentException, "%s", new Object[] { "detect texture problem, IllegalArgumentException" });
+          ad.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localIllegalArgumentException, "%s", new Object[] { "detect texture problem, IllegalArgumentException" });
           String str1;
           return;
         }
         catch (IllegalAccessException localIllegalAccessException)
         {
-          ab.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localIllegalAccessException, "%s", new Object[] { "detect texture problem, IllegalAccessException" });
+          ad.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localIllegalAccessException, "%s", new Object[] { "detect texture problem, IllegalAccessException" });
           String str2;
           return;
         }
         catch (InvocationTargetException localInvocationTargetException)
         {
-          ab.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localInvocationTargetException, "%s", new Object[] { "detect texture problem, InvocationTargetException" });
+          ad.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localInvocationTargetException, "%s", new Object[] { "detect texture problem, InvocationTargetException" });
           String str3;
           return;
         }
         catch (NoSuchMethodException localNoSuchMethodException)
         {
-          ab.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localNoSuchMethodException, "%s", new Object[] { "detect texture problem, NoSuchMethodException" });
+          ad.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localNoSuchMethodException, "%s", new Object[] { "detect texture problem, NoSuchMethodException" });
           String str4;
           return;
         }
         catch (Exception localException2)
         {
-          ab.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localException2, "%s", new Object[] { "detect texture problem, Exception" });
+          ad.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localException2, "%s", new Object[] { "detect texture problem, Exception" });
           String str5;
           return;
         }
         finally
         {
           boolean bool;
-          String str6 = abY() + " detect texture problem error code = 0, detach = false, and error = " + bool;
-          b.G(Base64.encodeToString(str6.getBytes(), 2), "DetachFromGLContext");
-          ab.w("MicroMsg.MMSurfaceTextureWrap", str6);
-          ab.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, err %s hasDetach %s hasError %s", new Object[] { Integer.valueOf(0), Boolean.FALSE, Boolean.valueOf(bool) });
-          AppMethodBeat.o(106800);
+          String str6 = atC() + " detect texture problem error code = 0, detach = false, and error = " + bool;
+          com.tencent.mm.sdk.a.b.M(Base64.encodeToString(str6.getBytes(), 2), "DetachFromGLContext");
+          ad.w("MicroMsg.MMSurfaceTextureWrap", str6);
+          ad.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, err %s hasDetach %s hasError %s", new Object[] { Integer.valueOf(0), Boolean.FALSE, Boolean.valueOf(bool) });
+          AppMethodBeat.o(142159);
         }
         localException1 = localException1;
-        ab.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localException1, "%s", new Object[] { "detect texture problem, RuntimeException detachFromGLContext" });
+        ad.printErrStackTrace("MicroMsg.MMSurfaceTextureWrap", localException1, "%s", new Object[] { "detect texture problem, RuntimeException detachFromGLContext" });
         bool = true;
       }
     }
     if (bool) {}
-    AppMethodBeat.o(106800);
+    AppMethodBeat.o(142159);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(106806);
+    AppMethodBeat.i(142165);
     boolean bool = this.mSurfaceTexture.equals(paramObject);
-    AppMethodBeat.o(106806);
+    AppMethodBeat.o(142165);
     return bool;
   }
   
   public final long getTimestamp()
   {
-    AppMethodBeat.i(106804);
-    ab.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, getTimestamp");
+    AppMethodBeat.i(142163);
+    ad.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, getTimestamp");
     long l = this.mSurfaceTexture.getTimestamp();
-    AppMethodBeat.o(106804);
+    AppMethodBeat.o(142163);
     return l;
   }
   
   public final void getTransformMatrix(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(106803);
-    ab.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, getTransformMatrix");
+    AppMethodBeat.i(142162);
+    ad.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, getTransformMatrix");
     this.mSurfaceTexture.getTransformMatrix(paramArrayOfFloat);
-    AppMethodBeat.o(106803);
+    AppMethodBeat.o(142162);
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(106807);
+    AppMethodBeat.i(142166);
     int i = this.mSurfaceTexture.hashCode();
-    AppMethodBeat.o(106807);
+    AppMethodBeat.o(142166);
     return i;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(106805);
+    AppMethodBeat.i(142164);
     super.release();
-    ab.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, release");
+    ad.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, release");
     this.mSurfaceTexture.release();
-    AppMethodBeat.o(106805);
+    AppMethodBeat.o(142164);
   }
   
   @TargetApi(19)
   public final void releaseTexImage()
   {
-    AppMethodBeat.i(106809);
-    ab.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, releaseTexImage");
+    AppMethodBeat.i(142168);
+    ad.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, releaseTexImage");
     this.mSurfaceTexture.releaseTexImage();
-    AppMethodBeat.o(106809);
+    AppMethodBeat.o(142168);
   }
   
   public final void setDefaultBufferSize(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106798);
-    ab.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, setDefaultBufferSize");
+    AppMethodBeat.i(142157);
+    ad.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, setDefaultBufferSize");
     this.mSurfaceTexture.setDefaultBufferSize(paramInt1, paramInt2);
-    AppMethodBeat.o(106798);
+    AppMethodBeat.o(142157);
   }
   
   public final void setOnFrameAvailableListener(SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
   {
-    AppMethodBeat.i(106797);
-    ab.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, setOnFrameAvailableListener");
+    AppMethodBeat.i(142156);
+    ad.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, setOnFrameAvailableListener");
     this.mSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
-    AppMethodBeat.o(106797);
+    AppMethodBeat.o(142156);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(106808);
+    AppMethodBeat.i(142167);
     String str = this.mSurfaceTexture.toString();
-    AppMethodBeat.o(106808);
+    AppMethodBeat.o(142167);
     return str;
   }
   
   public final void updateTexImage()
   {
-    AppMethodBeat.i(106799);
-    ab.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, updateTexImage");
+    AppMethodBeat.i(142158);
+    ad.i("MicroMsg.MMSurfaceTextureWrap", "detect texture problem, updateTexImage");
     this.mSurfaceTexture.updateTexImage();
-    AppMethodBeat.o(106799);
+    AppMethodBeat.o(142158);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.r
  * JD-Core Version:    0.7.0.1
  */

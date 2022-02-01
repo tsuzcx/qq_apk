@@ -6,25 +6,25 @@ import android.content.res.Resources;
 
 public final class i
 {
-  private static String Xm;
-  private static String Xn;
-  private static String Xo;
-  private static boolean Xp;
-  public static boolean Xq;
-  private static ActivityManager Xr = null;
+  private static String Zo;
+  private static String Zp;
+  private static String Zq;
+  private static boolean Zr;
+  public static boolean Zs;
+  private static ActivityManager Zt = null;
   private static Context context = null;
-  private static volatile Resources nw;
+  private static volatile Resources pk;
   private static String processName;
   
   static
   {
-    Xm = "com.tencent.mm";
-    Xn = "com.tencent.mm";
-    Xo = "com.tencent.mm.ui.LauncherUI";
-    processName = Xn;
-    Xp = false;
-    Xq = false;
-    nw = null;
+    Zo = "com.tencent.mm";
+    Zp = "com.tencent.mm";
+    Zq = "com.tencent.mm.ui.LauncherUI";
+    processName = Zp;
+    Zr = false;
+    Zs = false;
+    pk = null;
   }
   
   public static Context getContext()
@@ -32,7 +32,8 @@ public final class i
     return context;
   }
   
-  public static boolean lp()
+  @Deprecated
+  public static boolean lB()
   {
     String str2 = processName;
     String str1;
@@ -43,9 +44,9 @@ public final class i
     }
     else
     {
-      str1 = Xn;
+      str1 = Zp;
     }
-    return Xn.equals(str1);
+    return Zp.equals(str1);
   }
 }
 

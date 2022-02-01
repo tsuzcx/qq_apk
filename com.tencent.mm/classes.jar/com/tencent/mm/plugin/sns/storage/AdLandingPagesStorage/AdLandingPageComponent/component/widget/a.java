@@ -2,33 +2,33 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 
 import android.content.Context;
 import android.view.ViewGroup;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.h;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.k;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.List;
 
 public abstract class a
-  extends h
+  extends k
 {
-  public a(Context paramContext, t paramt, ViewGroup paramViewGroup)
+  public a(Context paramContext, x paramx, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramt, paramViewGroup);
+    super(paramContext, paramx, paramViewGroup);
   }
   
-  public abstract void cqS();
+  public abstract void dvU();
   
-  public abstract List<h> cqT();
+  public abstract List<k> dvV();
   
-  public final boolean cqX()
+  public final boolean dwd()
   {
-    int i = cqW();
-    ab.i("MicroMsg.AdLandingPageContainerComponent", "inScreenHeight %d", new Object[] { Integer.valueOf(i) });
+    int i = dwc();
+    ad.i("MicroMsg.AdLandingPageContainerComponent", "inScreenHeight %d", new Object[] { Integer.valueOf(i) });
     return i > 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.a
  * JD-Core Version:    0.7.0.1
  */

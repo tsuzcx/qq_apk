@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class tv
   extends b
 {
-  public tv.a cKs;
-  public tv.b cKt;
+  public a dzh;
   
   public tv()
   {
@@ -16,12 +15,16 @@ public final class tv
   
   private tv(byte paramByte)
   {
-    AppMethodBeat.i(70215);
-    this.cKs = new tv.a();
-    this.cKt = new tv.b();
-    this.ymq = false;
+    AppMethodBeat.i(125645);
+    this.dzh = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70215);
+    AppMethodBeat.o(125645);
+  }
+  
+  public static final class a
+  {
+    public long dzc = -1L;
   }
 }
 

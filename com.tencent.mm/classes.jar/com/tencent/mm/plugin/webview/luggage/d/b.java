@@ -7,31 +7,31 @@ import java.util.Map;
 public final class b
   implements WebResourceRequest
 {
-  private String bxW;
+  private boolean AWD;
+  private boolean AWE;
+  private Map<String, String> AWF;
+  private String bZn;
   private boolean mIsRedirect;
   private Uri mUri;
-  private boolean uVa;
-  private boolean uVb;
-  private Map<String, String> uVc;
   
   public b(Uri paramUri, boolean paramBoolean1, boolean paramBoolean2, String paramString, Map<String, String> paramMap)
   {
     this.mUri = paramUri;
-    this.uVa = paramBoolean1;
+    this.AWD = paramBoolean1;
     this.mIsRedirect = false;
-    this.uVb = paramBoolean2;
-    this.bxW = paramString;
-    this.uVc = paramMap;
+    this.AWE = paramBoolean2;
+    this.bZn = paramString;
+    this.AWF = paramMap;
   }
   
   public final String getMethod()
   {
-    return this.bxW;
+    return this.bZn;
   }
   
   public final Map<String, String> getRequestHeaders()
   {
-    return this.uVc;
+    return this.AWF;
   }
   
   public final Uri getUrl()
@@ -41,12 +41,12 @@ public final class b
   
   public final boolean hasGesture()
   {
-    return this.uVb;
+    return this.AWE;
   }
   
   public final boolean isForMainFrame()
   {
-    return this.uVa;
+    return this.AWD;
   }
   
   public final boolean isRedirect()
@@ -56,7 +56,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.d.b
  * JD-Core Version:    0.7.0.1
  */

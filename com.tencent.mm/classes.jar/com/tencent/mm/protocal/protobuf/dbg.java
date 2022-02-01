@@ -1,75 +1,95 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
+import java.util.LinkedList;
 
 public final class dbg
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int yhw;
-  public int yhx;
-  public int yhy;
-  public int yhz;
+  public int DIc;
+  public cmf EsS;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115015);
+    AppMethodBeat.i(32467);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.yhw);
-      paramVarArgs.aO(2, this.yhx);
-      paramVarArgs.aO(3, this.yhy);
-      paramVarArgs.aO(4, this.yhz);
-      AppMethodBeat.o(115015);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.EsS == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: StatReport");
+        AppMethodBeat.o(32467);
+        throw paramVarArgs;
+      }
+      paramVarArgs.aR(1, this.DIc);
+      if (this.EsS != null)
+      {
+        paramVarArgs.kX(2, this.EsS.computeSize());
+        this.EsS.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(32467);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.bl(1, this.yhw);
-      int i = e.a.a.b.b.a.bl(2, this.yhx);
-      int j = e.a.a.b.b.a.bl(3, this.yhy);
-      int k = e.a.a.b.b.a.bl(4, this.yhz);
-      AppMethodBeat.o(115015);
-      return paramInt + 0 + i + j + k;
+      i = f.a.a.b.b.a.bA(1, this.DIc) + 0;
+      paramInt = i;
+      if (this.EsS != null) {
+        paramInt = i + f.a.a.a.kW(2, this.EsS.computeSize());
+      }
+      AppMethodBeat.o(32467);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      AppMethodBeat.o(115015);
+      if (this.EsS == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: StatReport");
+        AppMethodBeat.o(32467);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(32467);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
       dbg localdbg = (dbg)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(115015);
+        AppMethodBeat.o(32467);
         return -1;
       case 1: 
-        localdbg.yhw = locala.CLY.sl();
-        AppMethodBeat.o(115015);
-        return 0;
-      case 2: 
-        localdbg.yhx = locala.CLY.sl();
-        AppMethodBeat.o(115015);
-        return 0;
-      case 3: 
-        localdbg.yhy = locala.CLY.sl();
-        AppMethodBeat.o(115015);
+        localdbg.DIc = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(32467);
         return 0;
       }
-      localdbg.yhz = locala.CLY.sl();
-      AppMethodBeat.o(115015);
+      paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new cmf();
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((cmf)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localdbg.EsS = ((cmf)localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(32467);
       return 0;
     }
-    AppMethodBeat.o(115015);
+    AppMethodBeat.o(32467);
     return -1;
   }
 }

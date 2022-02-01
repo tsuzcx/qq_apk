@@ -28,9 +28,9 @@ public class GoogleSignInOptionsExtensionParcelable
   
   static
   {
-    AppMethodBeat.i(60388);
+    AppMethodBeat.i(10880);
     CREATOR = new GoogleSignInOptionsExtensionCreator();
-    AppMethodBeat.o(60388);
+    AppMethodBeat.o(10880);
   }
   
   @SafeParcelable.Constructor
@@ -44,8 +44,8 @@ public class GoogleSignInOptionsExtensionParcelable
   public GoogleSignInOptionsExtensionParcelable(GoogleSignInOptionsExtension paramGoogleSignInOptionsExtension)
   {
     this(1, paramGoogleSignInOptionsExtension.getExtensionType(), paramGoogleSignInOptionsExtension.toBundle());
-    AppMethodBeat.i(60386);
-    AppMethodBeat.o(60386);
+    AppMethodBeat.i(10878);
+    AppMethodBeat.o(10878);
   }
   
   public Bundle getBundle()
@@ -61,13 +61,13 @@ public class GoogleSignInOptionsExtensionParcelable
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(60387);
+    AppMethodBeat.i(10879);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.versionCode);
     SafeParcelWriter.writeInt(paramParcel, 2, getType());
     SafeParcelWriter.writeBundle(paramParcel, 3, getBundle(), false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(60387);
+    AppMethodBeat.o(10879);
   }
 }
 

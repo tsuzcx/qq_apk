@@ -4,73 +4,101 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class awj
-  extends com.tencent.mm.bv.a
+  extends ckq
 {
-  public LinkedList<awk> xlT;
-  
-  public awj()
-  {
-    AppMethodBeat.i(28533);
-    this.xlT = new LinkedList();
-    AppMethodBeat.o(28533);
-  }
+  public int CRt;
+  public double latitude;
+  public double longitude;
+  public int offset;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28534);
+    AppMethodBeat.i(114030);
     if (paramInt == 0)
     {
-      ((e.a.a.c.a)paramVarArgs[0]).e(1, 8, this.xlT);
-      AppMethodBeat.o(28534);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.kX(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      paramVarArgs.aR(2, this.offset);
+      paramVarArgs.aR(3, this.CRt);
+      paramVarArgs.e(4, this.latitude);
+      paramVarArgs.e(5, this.longitude);
+      AppMethodBeat.o(114030);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      paramInt = e.a.a.a.c(1, 8, this.xlT);
-      AppMethodBeat.o(28534);
-      return paramInt + 0;
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label496;
+      }
     }
-    if (paramInt == 2)
+    label496:
+    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.xlT.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+      int i = f.a.a.b.b.a.bA(2, this.offset);
+      int j = f.a.a.b.b.a.bA(3, this.CRt);
+      int k = f.a.a.b.b.a.fY(4);
+      int m = f.a.a.b.b.a.fY(5);
+      AppMethodBeat.o(114030);
+      return paramInt + i + j + (k + 8) + (m + 8);
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.fMq();
+          }
         }
+        AppMethodBeat.o(114030);
+        return 0;
       }
-      AppMethodBeat.o(28534);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-      awj localawj = (awj)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      if (paramInt == 3)
       {
-      default: 
-        AppMethodBeat.o(28534);
-        return -1;
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        awj localawj = (awj)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(114030);
+          return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new ip();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localawj.BaseRequest = ((ip)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(114030);
+          return 0;
+        case 2: 
+          localawj.offset = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(114030);
+          return 0;
+        case 3: 
+          localawj.CRt = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(114030);
+          return 0;
+        case 4: 
+          localawj.latitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).KhF.fHy());
+          AppMethodBeat.o(114030);
+          return 0;
+        }
+        localawj.longitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).KhF.fHy());
+        AppMethodBeat.o(114030);
+        return 0;
       }
-      paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new awk();
-        localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((awk)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-        localawj.xlT.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(28534);
-      return 0;
+      AppMethodBeat.o(114030);
+      return -1;
     }
-    AppMethodBeat.o(28534);
-    return -1;
   }
 }
 

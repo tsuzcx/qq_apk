@@ -49,26 +49,6 @@ public final class h
     throw new NoSuchFieldException("Field " + paramString + " not found in " + paramClass);
   }
   
-  public static Field a(Object paramObject, String paramString)
-  {
-    Class localClass = paramObject.getClass();
-    while (localClass != null) {
-      try
-      {
-        Field localField = localClass.getDeclaredField(paramString);
-        if (!localField.isAccessible()) {
-          localField.setAccessible(true);
-        }
-        return localField;
-      }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        localClass = localClass.getSuperclass();
-      }
-    }
-    throw new NoSuchFieldException("Field " + paramString + " not found in " + paramObject.getClass());
-  }
-  
   public static Method a(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
   {
     while (paramClass != null) {
@@ -116,7 +96,7 @@ public final class h
     do
     {
       return;
-      paramString = a(paramObject, paramString);
+      paramString = d(paramObject, paramString);
       arrayOfObject1 = (Object[])paramString.get(paramObject);
       i = arrayOfObject1.length - paramInt;
     } while (i <= 0);
@@ -127,7 +107,7 @@ public final class h
   
   public static void a(Object paramObject, String paramString, Object[] paramArrayOfObject)
   {
-    paramString = a(paramObject, paramString);
+    paramString = d(paramObject, paramString);
     Object[] arrayOfObject1 = (Object[])paramString.get(paramObject);
     Object[] arrayOfObject2 = (Object[])Array.newInstance(arrayOfObject1.getClass().getComponentType(), arrayOfObject1.length + paramArrayOfObject.length);
     System.arraycopy(paramArrayOfObject, 0, arrayOfObject2, 0, paramArrayOfObject.length);
@@ -174,6 +154,26 @@ public final class h
     }
     catch (Throwable paramContext) {}
     return null;
+  }
+  
+  public static Field d(Object paramObject, String paramString)
+  {
+    Class localClass = paramObject.getClass();
+    while (localClass != null) {
+      try
+      {
+        Field localField = localClass.getDeclaredField(paramString);
+        if (!localField.isAccessible()) {
+          localField.setAccessible(true);
+        }
+        return localField;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        localClass = localClass.getSuperclass();
+      }
+    }
+    throw new NoSuchFieldException("Field " + paramString + " not found in " + paramObject.getClass());
   }
 }
 

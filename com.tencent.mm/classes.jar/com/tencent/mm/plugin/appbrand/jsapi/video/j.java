@@ -1,416 +1,273 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
-import android.view.View;
+import android.content.Context;
+import com.google.android.exoplayer2.h.g.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.c;
-import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.f;
+import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.l;
+import com.tencent.mm.plugin.appbrand.jsapi.video.b.c.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.i;
 
-public final class j
-  extends c
+public class j
+  implements g
 {
-  private static final int CTRL_INDEX = 87;
-  public static final String NAME = "updateVideoPlayer";
+  private static j knU;
+  private boolean hBC;
+  public boolean knV;
+  private boolean knW;
+  private com.tencent.mm.plugin.appbrand.jsapi.video.b.c.k knX;
   
-  public final boolean c(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  public j()
   {
-    AppMethodBeat.i(126569);
-    ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView : videoPlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
-    if (!(paramView instanceof CoverViewContainer))
+    AppMethodBeat.i(193780);
+    this.hBC = false;
+    this.knV = true;
+    this.knW = false;
+    this.knX = new com.tencent.mm.plugin.appbrand.jsapi.video.b.c.k()
     {
-      ab.w("MicroMsg.JsApiUpdateVideoPlayer", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(126569);
-      return false;
+      public final void bcN()
+      {
+        AppMethodBeat.i(193779);
+        j.a(j.this);
+        AppMethodBeat.o(193779);
+      }
+      
+      public final void sb(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(193778);
+        if (paramAnonymousInt < 0) {
+          j.a(j.this);
+        }
+        AppMethodBeat.o(193778);
+      }
+    };
+    AppMethodBeat.o(193780);
+  }
+  
+  private static String Jf(String paramString)
+  {
+    AppMethodBeat.i(193783);
+    String str2 = b.aih();
+    String str1 = str2;
+    if (!str2.endsWith("/")) {
+      str1 = str2 + "/";
     }
-    paramView = (AppBrandVideoView)((CoverViewContainer)paramView).aa(AppBrandVideoView.class);
-    if (paramView == null)
-    {
-      ab.e("MicroMsg.JsApiUpdateVideoPlayer", "view not AppBrandVideoView");
-      AppMethodBeat.o(126569);
-      return false;
-    }
+    str1 = str1 + paramString + "/";
     try
     {
-      if (paramJSONObject.has("showDanmuBtn")) {
-        paramView.setShowDanmakuBtn(paramJSONObject.getBoolean("showDanmuBtn"));
+      if (!i.aMF(str1))
+      {
+        ad.w("MicroMsg.SameLayer.VideoCore", "mkdirs fail 1, maybe dir exist:%s", new Object[] { str1 });
+        if (!new com.tencent.mm.vfs.e(str1).isDirectory())
+        {
+          ad.w("MicroMsg.SameLayer.VideoCore", "mkdirs fail 2, not dir:%s", new Object[] { str1 });
+          i.deleteFile(str1);
+          if (!i.aMF(str1))
+          {
+            ad.w("MicroMsg.SameLayer.VideoCore", "mkdirs fail 3, no space? dir:%s", new Object[] { str1 });
+            AppMethodBeat.o(193783);
+            return null;
+          }
+        }
       }
+      ad.i("MicroMsg.SameLayer.VideoCore", "ensureDir %s:%s", new Object[] { paramString, str1 });
+      AppMethodBeat.o(193783);
+      return str1;
     }
-    catch (JSONException parame)
+    catch (Throwable paramString)
     {
-      try
-      {
-        if (paramJSONObject.has("danmuList")) {
-          paramView.setDanmakuItemList(paramJSONObject.getJSONArray("danmuList"));
-        }
+      ad.e("MicroMsg.SameLayer.VideoCore", "mkdirs exception:%s", new Object[] { paramString });
+      AppMethodBeat.o(193783);
+    }
+    return null;
+  }
+  
+  public static j bcK()
+  {
+    AppMethodBeat.i(193781);
+    if (knU == null) {}
+    try
+    {
+      if (knU == null) {
+        knU = new j();
       }
-      catch (JSONException parame)
-      {
-        try
-        {
-          if (paramJSONObject.has("objectFit")) {
-            paramView.setObjectFit(paramJSONObject.getString("objectFit"));
-          }
-        }
-        catch (JSONException parame)
-        {
-          try
-          {
-            if (paramJSONObject.has("autoplay")) {
-              paramView.setAutoPlay(paramJSONObject.getBoolean("autoplay"));
-            }
-          }
-          catch (JSONException parame)
-          {
-            try
-            {
-              if (paramJSONObject.has("showBasicControls")) {
-                paramView.setIsShowBasicControls(paramJSONObject.getBoolean("showBasicControls"));
-              }
-            }
-            catch (JSONException parame)
-            {
-              try
-              {
-                if (paramJSONObject.has("poster")) {
-                  paramView.setCover$16da05f7(paramJSONObject.getString("poster"));
-                }
-              }
-              catch (JSONException parame)
-              {
-                try
-                {
-                  if (paramJSONObject.has("direction")) {
-                    paramView.setFullScreenDirection(paramJSONObject.getInt("direction"));
-                  }
-                }
-                catch (Exception parame)
-                {
-                  try
-                  {
-                    if (paramJSONObject.has("muted")) {
-                      paramView.setMute(paramJSONObject.getBoolean("muted"));
-                    }
-                  }
-                  catch (JSONException parame)
-                  {
-                    try
-                    {
-                      if (paramJSONObject.has("loop")) {
-                        paramView.setLoop(paramJSONObject.getBoolean("loop"));
-                      }
-                    }
-                    catch (JSONException parame)
-                    {
-                      try
-                      {
-                        if (paramJSONObject.has("data")) {
-                          paramView.setCookieData(paramJSONObject.getString("data"));
-                        }
-                      }
-                      catch (JSONException parame)
-                      {
-                        try
-                        {
-                          if (paramJSONObject.has("pageGesture")) {
-                            paramView.setPageGesture(paramJSONObject.getBoolean("pageGesture"));
-                          }
-                        }
-                        catch (JSONException parame)
-                        {
-                          try
-                          {
-                            if (paramJSONObject.has("pageGestureInFullscreen")) {
-                              paramView.setPageGestureInFullscreen(paramJSONObject.getBoolean("pageGestureInFullscreen"));
-                            }
-                          }
-                          catch (JSONException parame)
-                          {
-                            try
-                            {
-                              if (paramJSONObject.has("showControlProgress")) {
-                                paramView.setShowControlProgress(paramJSONObject.getBoolean("showControlProgress"));
-                              }
-                            }
-                            catch (JSONException parame)
-                            {
-                              try
-                              {
-                                if (paramJSONObject.has("showProgress")) {
-                                  paramView.setShowProgress(paramJSONObject.getBoolean("showProgress"));
-                                }
-                              }
-                              catch (JSONException parame)
-                              {
-                                try
-                                {
-                                  if (paramJSONObject.has("showFullScreenBtn")) {
-                                    paramView.setShowFullScreenBtn(paramJSONObject.getBoolean("showFullScreenBtn"));
-                                  }
-                                }
-                                catch (JSONException parame)
-                                {
-                                  try
-                                  {
-                                    if (paramJSONObject.has("showPlayBtn")) {
-                                      paramView.setShowPlayBtn(paramJSONObject.getBoolean("showPlayBtn"));
-                                    }
-                                  }
-                                  catch (JSONException parame)
-                                  {
-                                    try
-                                    {
-                                      if (paramJSONObject.has("showCenterPlayBtn")) {
-                                        paramView.setShowCenterPlayBtn(paramJSONObject.getBoolean("showCenterPlayBtn"));
-                                      }
-                                    }
-                                    catch (JSONException parame)
-                                    {
-                                      try
-                                      {
-                                        if (paramJSONObject.has("enableProgressGesture")) {
-                                          paramView.ex(paramJSONObject.getBoolean("enableProgressGesture"));
-                                        }
-                                      }
-                                      catch (JSONException parame)
-                                      {
-                                        try
-                                        {
-                                          if (paramJSONObject.has("duration")) {
-                                            paramView.setDuration(paramJSONObject.getInt("duration"));
-                                          }
-                                        }
-                                        catch (JSONException parame)
-                                        {
-                                          try
-                                          {
-                                            if ((paramJSONObject.has("hide")) && (paramJSONObject.getBoolean("hide")))
-                                            {
-                                              ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView hide stop");
-                                              paramView.stop();
-                                            }
-                                          }
-                                          catch (JSONException parame)
-                                          {
-                                            try
-                                            {
-                                              if (paramJSONObject.has("initialTime")) {
-                                                paramView.setInitialTime(paramJSONObject.getInt("initialTime"));
-                                              }
-                                            }
-                                            catch (JSONException parame)
-                                            {
-                                              try
-                                              {
-                                                if (paramJSONObject.has("needEvent"))
-                                                {
-                                                  if (paramJSONObject.getBoolean("needEvent")) {
-                                                    break label1341;
-                                                  }
-                                                  paramView.setCallback(null);
-                                                }
-                                              }
-                                              catch (JSONException parame)
-                                              {
-                                                try
-                                                {
-                                                  if (paramJSONObject.has("showMuteBtn")) {
-                                                    paramView.setShowMuteBtn(paramJSONObject.getBoolean("showMuteBtn"));
-                                                  }
-                                                }
-                                                catch (JSONException parame)
-                                                {
-                                                  try
-                                                  {
-                                                    if (paramJSONObject.has("title")) {
-                                                      paramView.setTitle(paramJSONObject.getString("title"));
-                                                    }
-                                                  }
-                                                  catch (JSONException parame)
-                                                  {
-                                                    try
-                                                    {
-                                                      if (paramJSONObject.has("playBtnPosition")) {
-                                                        paramView.setPlayBtnPosition(paramJSONObject.getString("playBtnPosition"));
-                                                      }
-                                                    }
-                                                    catch (JSONException parame)
-                                                    {
-                                                      try
-                                                      {
-                                                        if (paramJSONObject.has("enablePlayGesture")) {
-                                                          paramView.setEnablePlayGesture(paramJSONObject.getBoolean("enablePlayGesture"));
-                                                        }
-                                                      }
-                                                      catch (JSONException parame)
-                                                      {
-                                                        try
-                                                        {
-                                                          if (paramJSONObject.has("autoPauseIfOpenNative")) {
-                                                            paramView.setAutoPauseIfOpenNative(paramJSONObject.getBoolean("autoPauseIfOpenNative"));
-                                                          }
-                                                        }
-                                                        catch (JSONException parame)
-                                                        {
-                                                          try
-                                                          {
-                                                            if (paramJSONObject.has("autoPauseIfNavigate")) {
-                                                              paramView.setAutoPauseIfNavigate(paramJSONObject.getBoolean("autoPauseIfNavigate"));
-                                                            }
-                                                          }
-                                                          catch (JSONException parame)
-                                                          {
-                                                            try
-                                                            {
-                                                              for (;;)
-                                                              {
-                                                                if (paramJSONObject.has("filePath")) {
-                                                                  paramView.f(paramJSONObject.getString("filePath"), paramJSONObject.optBoolean("live"), paramJSONObject.optInt("duration"));
-                                                                }
-                                                                AppMethodBeat.o(126569);
-                                                                return true;
-                                                                localJSONException1 = localJSONException1;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showDanmuBtn", localJSONException1.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException2 = localJSONException2;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "danmuList", localJSONException2.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException3 = localJSONException3;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "objectFit", localJSONException3.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException4 = localJSONException4;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "autoplay", localJSONException4.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException5 = localJSONException5;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showBasicControls", localJSONException5.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException6 = localJSONException6;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "poster", localJSONException6.getLocalizedMessage() });
-                                                                continue;
-                                                                localException = localException;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "direction", localException.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException7 = localJSONException7;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "muted", localJSONException7.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException8 = localJSONException8;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "loop", localJSONException8.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException9 = localJSONException9;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "data", localJSONException9.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException10 = localJSONException10;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "pageGesture", localJSONException10.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException11 = localJSONException11;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "pageGestureInFullscreen", localJSONException11.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException12 = localJSONException12;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showControlProgress", localJSONException12.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException13 = localJSONException13;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showProgress", localJSONException13.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException14 = localJSONException14;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showFullScreenBtn", localJSONException14.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException15 = localJSONException15;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showPlayBtn", localJSONException15.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException16 = localJSONException16;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showCenterPlayBtn", localJSONException16.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException17 = localJSONException17;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "enableProgressGesture", localJSONException17.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException18 = localJSONException18;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "disableScroll", localJSONException18.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException19 = localJSONException19;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "hide", localJSONException19.getLocalizedMessage() });
-                                                                continue;
-                                                                localJSONException20 = localJSONException20;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "initialTime", localJSONException20.getLocalizedMessage() });
-                                                                continue;
-                                                                label1341:
-                                                                if (paramView.icE != null) {}
-                                                                for (paramInt = 1; paramInt == 0; paramInt = 0)
-                                                                {
-                                                                  paramView.setCallback(new k(paramView, parame));
-                                                                  break;
-                                                                  parame = parame;
-                                                                  ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "needEvent", parame.getLocalizedMessage() });
-                                                                  break;
-                                                                }
-                                                                parame = parame;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "showMuteBtn", parame.getLocalizedMessage() });
-                                                                continue;
-                                                                parame = parame;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "title", parame.getLocalizedMessage() });
-                                                                continue;
-                                                                parame = parame;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "playBtnPosition", parame.getLocalizedMessage() });
-                                                                continue;
-                                                                parame = parame;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "enablePlayGesture", parame.getLocalizedMessage() });
-                                                                continue;
-                                                                parame = parame;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "autoPauseIfOpenNative", parame.getLocalizedMessage() });
-                                                                continue;
-                                                                parame = parame;
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "autoPauseIfNavigate", parame.getLocalizedMessage() });
-                                                              }
-                                                            }
-                                                            catch (JSONException parame)
-                                                            {
-                                                              for (;;)
-                                                              {
-                                                                ab.i("MicroMsg.JsApiUpdateVideoPlayer", "onUpdateView param=%s exp=%s", new Object[] { "filePath", parame.getLocalizedMessage() });
-                                                              }
-                                                            }
-                                                          }
-                                                        }
-                                                      }
-                                                    }
-                                                  }
-                                                }
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    }
-                                  }
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+      j localj = knU;
+      AppMethodBeat.o(193781);
+      return localj;
+    }
+    finally
+    {
+      AppMethodBeat.o(193781);
     }
   }
   
-  public final int w(JSONObject paramJSONObject)
+  public final void a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, com.tencent.mm.plugin.appbrand.jsapi.video.b.d.a parama, f paramf)
   {
-    AppMethodBeat.i(126568);
-    int i = paramJSONObject.optInt("videoPlayerId");
-    AppMethodBeat.o(126568);
-    return i;
+    AppMethodBeat.i(193782);
+    if (this.hBC)
+    {
+      ad.i("MicroMsg.SameLayer.VideoCore", "init already, current enableProxy:%s", new Object[] { Boolean.valueOf(this.knV) });
+      AppMethodBeat.o(193782);
+      return;
+    }
+    ad.i("MicroMsg.SameLayer.VideoCore", "init, enableProxy:%s, enableHlsProxy:%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    long l = bt.eGO();
+    this.hBC = true;
+    this.knW = paramBoolean2;
+    this.knV = paramBoolean1;
+    String str;
+    if (this.knV)
+    {
+      str = Jf("wxvideocache");
+      if (bt.isNullOrNil(str))
+      {
+        this.knV = false;
+        ad.i("MicroMsg.SameLayer.VideoCore", "init, disableProxy for cache dir make fail");
+        parama.sb(-1);
+      }
+    }
+    else
+    {
+      ad.i("MicroMsg.SameLayer.VideoCore", "init, costTimeMs:%s", new Object[] { Long.valueOf(bt.eGO() - l) });
+      AppMethodBeat.o(193782);
+      return;
+    }
+    com.tencent.mm.plugin.appbrand.jsapi.video.b.a.init(paramContext.getApplicationContext());
+    paramContext = com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR();
+    if ((com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_PURPLE)) {}
+    for (paramBoolean1 = true;; paramBoolean1 = false)
+    {
+      paramContext.cxf = paramBoolean1;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().kom = 1048576L;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().kol = 536870912L;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().kod = true;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().koe = true;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().kof = true;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().kog = paramBoolean2;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().koh = false;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().kon = 3;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().koo = new k();
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().koq = new com.tencent.mm.plugin.appbrand.jsapi.video.b.a.g();
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().kop = parama;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().kor = paramf;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().knX = this.knX;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().koj = str;
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.a.bcR().koi = Jf("wxvideotmp");
+      l.init();
+      break;
+    }
+  }
+  
+  public final boolean bcL()
+  {
+    return this.knW;
+  }
+  
+  public final boolean bcM()
+  {
+    return this.knV;
+  }
+  
+  public final g.a bcx()
+  {
+    AppMethodBeat.i(193784);
+    if (!this.knV)
+    {
+      com.google.android.exoplayer2.h.a.e locale = c.bcw().knJ;
+      AppMethodBeat.o(193784);
+      return locale;
+    }
+    AppMethodBeat.o(193784);
+    return null;
+  }
+  
+  public final long g(String paramString, long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(193787);
+    if (!this.knV)
+    {
+      paramLong1 = c.bcw().g(paramString, paramLong1, paramLong2);
+      AppMethodBeat.o(193787);
+      return paramLong1;
+    }
+    try
+    {
+      paramLong1 = l.bda().Jj(paramString);
+      AppMethodBeat.o(193787);
+      return paramLong1;
+    }
+    catch (Exception paramString)
+    {
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.a(6, "MicroMsg.SameLayer.VideoCore", "getCachedBytes exception", paramString);
+      AppMethodBeat.o(193787);
+    }
+    return 0L;
+  }
+  
+  public final String getProxyUrl(String paramString)
+  {
+    int i = 1;
+    AppMethodBeat.i(193785);
+    if (!this.knV)
+    {
+      paramString = c.bcw().getProxyUrl(paramString);
+      AppMethodBeat.o(193785);
+      return paramString;
+    }
+    if (!bt.isNullOrNil(paramString)) {
+      if ((bt.isNullOrNil(paramString)) || (!paramString.startsWith("http://127.0.0.1"))) {
+        break label67;
+      }
+    }
+    while (i != 0)
+    {
+      AppMethodBeat.o(193785);
+      return paramString;
+      label67:
+      i = 0;
+    }
+    try
+    {
+      String str = l.bda().kpH.a(paramString, true, true, "video/mp4", 90);
+      AppMethodBeat.o(193785);
+      return str;
+    }
+    catch (Exception localException)
+    {
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.a(6, "MicroMsg.SameLayer.VideoCore", "getProxyUrl exception", localException);
+      AppMethodBeat.o(193785);
+    }
+    return paramString;
+  }
+  
+  public final void r(String paramString, long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(193786);
+    if (!this.knV)
+    {
+      c.bcw().r(paramString, paramLong1, paramLong2);
+      AppMethodBeat.o(193786);
+      return;
+    }
+    try
+    {
+      l.bda().M(paramString, paramLong2);
+      AppMethodBeat.o(193786);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      com.tencent.mm.plugin.appbrand.jsapi.video.b.e.h.a(6, "MicroMsg.SameLayer.VideoCore", "preload exception", paramString);
+      AppMethodBeat.o(193786);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.j
  * JD-Core Version:    0.7.0.1
  */

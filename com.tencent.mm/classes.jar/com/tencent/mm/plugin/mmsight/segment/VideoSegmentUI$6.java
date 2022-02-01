@@ -11,15 +11,15 @@ final class VideoSegmentUI$6
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(55035);
-    VideoSegmentUI.c(this.oME);
-    AppMethodBeat.o(55035);
+    AppMethodBeat.i(94470);
+    VideoSegmentUI.c(this.tHP);
+    AppMethodBeat.o(94470);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.VideoSegmentUI.6
  * JD-Core Version:    0.7.0.1
  */

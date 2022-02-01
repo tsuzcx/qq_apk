@@ -34,15 +34,15 @@ public final class TouchEvent
   
   public final String toString()
   {
-    AppMethodBeat.i(141476);
+    AppMethodBeat.i(135996);
     String str = "TouchEvent{mX=" + this.mX + ",mY=" + this.mY + ",mEvent=" + this.mEvent + "}";
-    AppMethodBeat.o(141476);
+    AppMethodBeat.o(135996);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.gen.TouchEvent
  * JD-Core Version:    0.7.0.1
  */

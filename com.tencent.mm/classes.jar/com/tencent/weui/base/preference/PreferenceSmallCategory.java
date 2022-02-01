@@ -20,14 +20,14 @@ public class PreferenceSmallCategory
   public PreferenceSmallCategory(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(113257);
-    setLayoutResource(2130970230);
-    AppMethodBeat.o(113257);
+    AppMethodBeat.i(159994);
+    setLayoutResource(2131494857);
+    AppMethodBeat.o(159994);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.weui.base.preference.PreferenceSmallCategory
  * JD-Core Version:    0.7.0.1
  */

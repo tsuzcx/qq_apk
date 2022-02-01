@@ -1,71 +1,71 @@
 package com.tencent.mm.plugin.appbrand.game.preload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.cb;
-import com.tencent.mm.g.b.a.cb.a;
-import com.tencent.mm.g.b.a.cb.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.g.b.a.fb;
+import com.tencent.mm.g.b.a.fb.a;
+import com.tencent.mm.g.b.a.fb.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class e
 {
-  private static volatile e huk;
-  public String hul;
-  public int hum;
-  public int hun;
-  public int huo;
-  public String hup;
-  public int huq;
-  boolean hur = false;
-  public int hus;
+  private static volatile e jsy;
+  public int jsA;
+  public int jsB;
+  public int jsC;
+  public String jsD;
+  public int jsE;
+  boolean jsF = false;
+  public int jsG;
+  public String jsz;
   public int mScene = -1;
   
-  public static e aAT()
+  public static e aWX()
   {
-    AppMethodBeat.i(130307);
-    if (huk == null) {}
+    AppMethodBeat.i(45294);
+    if (jsy == null) {}
     try
     {
-      if (huk == null) {
-        huk = new e();
+      if (jsy == null) {
+        jsy = new e();
       }
-      e locale = huk;
-      AppMethodBeat.o(130307);
+      e locale = jsy;
+      AppMethodBeat.o(45294);
       return locale;
     }
     finally
     {
-      AppMethodBeat.o(130307);
+      AppMethodBeat.o(45294);
     }
   }
   
-  public final void de(int paramInt1, int paramInt2)
+  public final void dK(int paramInt1, int paramInt2)
   {
     int i = 1;
-    AppMethodBeat.i(130308);
+    AppMethodBeat.i(45295);
     Object localObject;
-    if ((!bo.isNullOrNil(this.hup)) && (!bo.isNullOrNil(this.hul)))
+    if ((!bt.isNullOrNil(this.jsD)) && (!bt.isNullOrNil(this.jsz)))
     {
-      localObject = this.hup;
-      String str = this.hul;
-      int j = this.hum;
-      int k = this.hun;
-      int m = this.huo;
+      localObject = this.jsD;
+      String str = this.jsz;
+      int j = this.jsA;
+      int k = this.jsB;
+      int m = this.jsC;
       int n = this.mScene;
-      if (!this.hur) {
+      if (!this.jsF) {
         break label284;
       }
-      ab.v("MicroMsg.WAGamePreloadStatisManager", "instanceId:%s,appId:%s,appVersion:%d,appState:%d,appType:%d,key:%d,value:%d,scene:%d,misDownloadedCode:%d", new Object[] { localObject, str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(n), Integer.valueOf(i) });
-      localObject = new cb();
-      ((cb)localObject).ha(this.hup);
-      ((cb)localObject).hb(this.hul);
-      ((cb)localObject).cZB = this.hum;
-      ((cb)localObject).cZY = cb.a.gN(this.hun);
-      ((cb)localObject).cZZ = cb.b.gO(this.huo);
-      ((cb)localObject).daa = this.huq;
-      ((cb)localObject).dab = paramInt1;
-      ((cb)localObject).dac = paramInt2;
-      if (!this.hur) {
+      ad.v("MicroMsg.WAGamePreloadStatisManager", "instanceId:%s,appId:%s,appVersion:%d,appState:%d,appType:%d,key:%d,value:%d,scene:%d,misDownloadedCode:%d", new Object[] { localObject, str, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(n), Integer.valueOf(i) });
+      localObject = new fb();
+      ((fb)localObject).lc(this.jsD);
+      ((fb)localObject).ld(this.jsz);
+      ((fb)localObject).dYT = this.jsA;
+      ((fb)localObject).eaV = fb.a.iJ(this.jsB);
+      ((fb)localObject).eaW = fb.b.iK(this.jsC);
+      ((fb)localObject).eaX = this.jsE;
+      ((fb)localObject).eaY = paramInt1;
+      ((fb)localObject).eaZ = paramInt2;
+      if (!this.jsF) {
         break label289;
       }
     }
@@ -73,11 +73,11 @@ public class e
     label289:
     for (long l = 1L;; l = 0L)
     {
-      ((cb)localObject).dad = l;
-      ((cb)localObject).cRG = this.mScene;
-      ((cb)localObject).dae = this.hus;
-      ((cb)localObject).ake();
-      AppMethodBeat.o(130308);
+      ((fb)localObject).eba = l;
+      ((fb)localObject).dKe = this.mScene;
+      ((fb)localObject).ebb = this.jsG;
+      ((fb)localObject).aBj();
+      AppMethodBeat.o(45295);
       return;
       i = 0;
       break;
@@ -86,7 +86,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.preload.e
  * JD-Core Version:    0.7.0.1
  */

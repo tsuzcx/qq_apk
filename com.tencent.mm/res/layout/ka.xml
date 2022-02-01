@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/abk" android:focusable="false" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:background="@color/ac" android:layout_width="fill_parent" android:layout_height="@dimen/jd" />
+    <TextView android:textSize="@dimen/gx" android:textColor="@color/h7" android:ellipsize="end" android:gravity="left" android:id="@id/baw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="@dimen/ha" android:layout_marginRight="@dimen/ha" android:singleLine="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/bav" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="@dimen/hu" android:layout_marginRight="@dimen/ha" />
+    <TextView android:textSize="@dimen/gx" android:textColor="@color/h4" android:ellipsize="end" android:gravity="left" android:id="@id/bau" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="@dimen/o" android:layout_marginRight="@dimen/ha" android:text="@string/ak_" android:singleLine="true" />
+    <View android:id="@id/aca" android:background="@drawable/pc" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/ha" android:layout_marginBottom="0.0dip" android:layerType="software" />
+</LinearLayout>

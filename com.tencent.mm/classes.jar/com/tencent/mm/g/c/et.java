@@ -8,24 +8,22 @@ public abstract class et
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dDc = "step".hashCode();
-  private static final int dGu;
-  private static final int dsg = "id".hashCode();
-  private static final int dxs = "timestamp".hashCode();
+  private static final int eTP = "decryptKey".hashCode();
+  private static final int eTb = "pkgMd5".hashCode();
+  private static final int elJ = "appId".hashCode();
+  private static final int emv = "appVersion".hashCode();
+  private static final int enk = "reportId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dDb = true;
-  private boolean dGt = true;
-  private boolean dsd = true;
-  private boolean dxi = true;
-  public String field_date;
-  public int field_id;
-  public int field_step;
-  public long field_timestamp;
-  
-  static
-  {
-    dGu = "date".hashCode();
-  }
+  private boolean eSS = true;
+  private boolean eTO = true;
+  private boolean els = true;
+  private boolean emr = true;
+  private boolean enf = true;
+  public String field_appId;
+  public int field_appVersion;
+  public String field_decryptKey;
+  public String field_pkgMd5;
+  public int field_reportId;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -40,24 +38,25 @@ public abstract class et
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dsg != k) {
-        break label65;
+      if (elJ != k) {
+        break label60;
       }
-      this.field_id = paramCursor.getInt(i);
-      this.dsd = true;
+      this.field_appId = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (dGu == k) {
-        this.field_date = paramCursor.getString(i);
-      } else if (dDc == k) {
-        this.field_step = paramCursor.getInt(i);
-      } else if (dxs == k) {
-        this.field_timestamp = paramCursor.getLong(i);
+      label60:
+      if (emv == k) {
+        this.field_appVersion = paramCursor.getInt(i);
+      } else if (eTP == k) {
+        this.field_decryptKey = paramCursor.getString(i);
+      } else if (eTb == k) {
+        this.field_pkgMd5 = paramCursor.getString(i);
+      } else if (enk == k) {
+        this.field_reportId = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -67,17 +66,20 @@ public abstract class et
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dsd) {
-      localContentValues.put("id", Integer.valueOf(this.field_id));
+    if (this.els) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.dGt) {
-      localContentValues.put("date", this.field_date);
+    if (this.emr) {
+      localContentValues.put("appVersion", Integer.valueOf(this.field_appVersion));
     }
-    if (this.dDb) {
-      localContentValues.put("step", Integer.valueOf(this.field_step));
+    if (this.eTO) {
+      localContentValues.put("decryptKey", this.field_decryptKey);
     }
-    if (this.dxi) {
-      localContentValues.put("timestamp", Long.valueOf(this.field_timestamp));
+    if (this.eSS) {
+      localContentValues.put("pkgMd5", this.field_pkgMd5);
+    }
+    if (this.enf) {
+      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -87,7 +89,7 @@ public abstract class et
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.et
  * JD-Core Version:    0.7.0.1
  */

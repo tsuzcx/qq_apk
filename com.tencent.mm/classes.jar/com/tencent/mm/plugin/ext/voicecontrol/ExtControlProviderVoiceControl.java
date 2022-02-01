@@ -5,136 +5,171 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.e;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.compatible.a.a.a;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.ext.provider.ExtContentProviderBase;
-import com.tencent.mm.protocal.protobuf.ez;
-import com.tencent.mm.protocal.protobuf.fb;
-import com.tencent.mm.protocal.protobuf.fc;
-import com.tencent.mm.protocal.protobuf.fd;
-import com.tencent.mm.protocal.protobuf.fe;
-import com.tencent.mm.protocal.protobuf.ff;
-import com.tencent.mm.protocal.protobuf.fg;
-import com.tencent.mm.protocal.protobuf.fh;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.protocal.protobuf.fr;
+import com.tencent.mm.protocal.protobuf.ft;
+import com.tencent.mm.protocal.protobuf.fu;
+import com.tencent.mm.protocal.protobuf.fv;
+import com.tencent.mm.protocal.protobuf.fw;
+import com.tencent.mm.protocal.protobuf.fx;
+import com.tencent.mm.protocal.protobuf.fy;
+import com.tencent.mm.protocal.protobuf.fz;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.vfs.i;
 import java.util.LinkedList;
 
 public class ExtControlProviderVoiceControl
   extends ExtContentProviderBase
-  implements f
+  implements g
 {
-  private static final String[] mdM = { "retCode" };
+  private static final String[] pKr = { "retCode" };
   private Context context;
-  private String[] mdZ;
-  private int mea;
-  private boolean mfA;
-  private com.qq.wx.voice.embed.recognizer.c mfB;
-  private int mfu;
-  private long mfv;
-  private long mfw;
-  private long mfx;
-  com.tencent.mm.pluginsdk.d.a.b mfy;
-  private long mfz;
+  private String[] pKH;
+  private int pKI;
+  private int pMg;
+  private long pMh;
+  private long pMi;
+  private long pMj;
+  com.tencent.mm.pluginsdk.d.a.b pMk;
+  private long pMl;
+  private boolean pMm;
+  private com.qq.wx.voice.embed.recognizer.c pMn;
   
   public ExtControlProviderVoiceControl(String[] paramArrayOfString, int paramInt, Context paramContext)
   {
-    AppMethodBeat.i(20447);
-    this.mdZ = null;
-    this.mea = -1;
-    this.mfu = 4;
-    this.mfy = new com.tencent.mm.pluginsdk.d.a.b();
-    this.mfz = 0L;
-    this.mfB = new ExtControlProviderVoiceControl.5(this);
-    this.mdZ = paramArrayOfString;
-    this.mea = paramInt;
+    AppMethodBeat.i(24524);
+    this.pKH = null;
+    this.pKI = -1;
+    this.pMg = 4;
+    this.pMk = new com.tencent.mm.pluginsdk.d.a.b();
+    this.pMl = 0L;
+    this.pMn = new com.qq.wx.voice.embed.recognizer.c()
+    {
+      public final void a(com.qq.wx.voice.embed.recognizer.a paramAnonymousa)
+      {
+        AppMethodBeat.i(24521);
+        if (paramAnonymousa == null)
+        {
+          ad.w("MicroMsg.ext.ExtControlProviderVoiceControl", "localVoiceControl onGetResult restult is null");
+          AppMethodBeat.o(24521);
+          return;
+        }
+        ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "localVoiceControl use time2:%s,text: %s,name: %s", new Object[] { Long.valueOf(System.currentTimeMillis() - ExtControlProviderVoiceControl.c(ExtControlProviderVoiceControl.this)), paramAnonymousa.text, paramAnonymousa.name });
+        if (!bt.isNullOrNil(paramAnonymousa.name))
+        {
+          ExtControlProviderVoiceControl.d(ExtControlProviderVoiceControl.this);
+          ExtControlProviderVoiceControl.b(ExtControlProviderVoiceControl.this, paramAnonymousa.name);
+        }
+        AppMethodBeat.o(24521);
+      }
+      
+      public final void gp(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(24522);
+        ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "localVoiceControl onGetError:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        AppMethodBeat.o(24522);
+      }
+    };
+    this.pKH = paramArrayOfString;
+    this.pKI = paramInt;
     this.context = paramContext;
-    AppMethodBeat.o(20447);
+    AppMethodBeat.o(24524);
   }
   
-  private void Nl(String paramString)
+  private void XF(final String paramString)
   {
-    AppMethodBeat.i(20453);
-    aw.aaz();
-    ad localad = com.tencent.mm.model.c.YA().arw(paramString);
-    if ((localad == null) || (!com.tencent.mm.n.a.je(localad.field_type)))
+    AppMethodBeat.i(24530);
+    az.arV();
+    af localaf = com.tencent.mm.model.c.apM().aHY(paramString);
+    if ((localaf == null) || (!com.tencent.mm.n.b.ls(localaf.field_type)))
     {
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] username is not contact, countDown");
-      this.mfu = 3505;
-      this.mfy.countDown();
-      AppMethodBeat.o(20453);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] username is not contact, countDown");
+      this.pMg = 3505;
+      this.pMk.countDown();
+      AppMethodBeat.o(24530);
       return;
     }
-    com.tencent.mm.compatible.a.a.a(11, new ExtControlProviderVoiceControl.6(this, paramString));
-    this.mfu = 1;
-    ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] jump to chattingUI : %s, countDown", new Object[] { paramString });
-    this.mfy.countDown();
-    AppMethodBeat.o(20453);
+    com.tencent.mm.compatible.a.a.a(11, new a.a()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(24523);
+        ExtControlProviderVoiceControl.c(ExtControlProviderVoiceControl.this, paramString);
+        AppMethodBeat.o(24523);
+      }
+    });
+    this.pMg = 1;
+    ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] jump to chattingUI : %s, countDown", new Object[] { paramString });
+    this.pMk.countDown();
+    AppMethodBeat.o(24530);
   }
   
   private static boolean a(a parama, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(20450);
+    AppMethodBeat.i(24527);
     if (parama == null)
     {
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadVoiceContinue netscene null");
-      AppMethodBeat.o(20450);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadVoiceContinue netscene null");
+      AppMethodBeat.o(24527);
       return false;
     }
-    if (parama.mfM == null)
+    if (parama.pMy == null)
     {
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadVoiceContinue uploadCmd null");
-      AppMethodBeat.o(20450);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadVoiceContinue uploadCmd null");
+      AppMethodBeat.o(24527);
       return false;
     }
-    if (parama.mfM.wrl == null)
+    if (parama.pMy.CAz == null)
     {
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadVoiceContinue UploadCtx null");
-      AppMethodBeat.o(20450);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadVoiceContinue UploadCtx null");
+      AppMethodBeat.o(24527);
       return false;
     }
-    new ff();
-    Object localObject = parama.mfM;
-    ((ff)localObject).wrl.pIy = paramInt1;
-    ((ff)localObject).wrl.pIz = paramInt2;
-    byte[] arrayOfByte = e.j(parama.mfL, paramInt1, paramInt2);
-    ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadVoiceContinue %s, startPos=%s, dataLen=%s", new Object[] { Integer.valueOf(parama.mfJ), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    new fx();
+    Object localObject = parama.pMy;
+    ((fx)localObject).CAz.uKR = paramInt1;
+    ((fx)localObject).CAz.uKS = paramInt2;
+    byte[] arrayOfByte = i.aR(parama.pMx, paramInt1, paramInt2);
+    ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadVoiceContinue %s, startPos=%s, dataLen=%s", new Object[] { Integer.valueOf(parama.pMv), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] buf empty, %s", new Object[] { parama.mfL });
-      AppMethodBeat.o(20450);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] buf empty, %s", new Object[] { parama.pMx });
+      AppMethodBeat.o(24527);
       return false;
     }
-    ((ff)localObject).wrr = com.tencent.mm.bv.b.bL(arrayOfByte);
-    localObject = new a(parama.mfJ, parama.appId, parama.fsd, parama.mfL, (ff)localObject);
-    ((a)localObject).chT = parama.chT;
-    aw.Rc().a((m)localObject, 0);
-    AppMethodBeat.o(20450);
+    ((fx)localObject).CAF = com.tencent.mm.bx.b.cd(arrayOfByte);
+    localObject = new a(parama.pMv, parama.appId, parama.gTY, parama.pMx, (fx)localObject);
+    ((a)localObject).cWU = parama.cWU;
+    az.aeS().a((n)localObject, 0);
+    AppMethodBeat.o(24527);
     return true;
   }
   
   public static boolean b(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2)
   {
-    AppMethodBeat.i(20449);
-    ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "uploadVoiceStart ");
+    AppMethodBeat.i(24526);
+    ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "uploadVoiceStart ");
     Object localObject1;
     if (paramInt1 != 4)
     {
       localObject2 = paramString2 + ".speex";
       new com.tencent.mm.audio.e.d();
       localObject1 = localObject2;
-      if (!com.tencent.mm.audio.e.d.K(paramString2, (String)localObject2))
+      if (!com.tencent.mm.audio.e.d.Q(paramString2, (String)localObject2))
       {
-        ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] decodePCMToSpeex error,pcmPath:%s,speexFilePath:%s", new Object[] { paramString2, localObject2 });
-        AppMethodBeat.o(20449);
+        ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] decodePCMToSpeex error,pcmPath:%s,speexFilePath:%s", new Object[] { paramString2, localObject2 });
+        AppMethodBeat.o(24526);
         return false;
       }
     }
@@ -142,107 +177,107 @@ public class ExtControlProviderVoiceControl
     {
       localObject1 = paramString2;
     }
-    int i = e.cM((String)localObject1);
-    Object localObject2 = new fh();
-    ((fh)localObject2).wrs = 4;
-    ((fh)localObject2).wrt = 4;
-    ((fh)localObject2).wru = paramInt3;
-    ((fh)localObject2).wrv = paramInt4;
-    fg localfg = new fg();
-    localfg.pIx = i;
-    localfg.pIy = 0;
+    int i = (int)i.aMN((String)localObject1);
+    Object localObject2 = new fz();
+    ((fz)localObject2).CAG = 4;
+    ((fz)localObject2).CAH = 4;
+    ((fz)localObject2).CAI = paramInt3;
+    ((fz)localObject2).CAJ = paramInt4;
+    fy localfy = new fy();
+    localfy.uKQ = i;
+    localfy.uKR = 0;
     if (i <= 16384) {
-      localfg.pIz = i;
+      localfy.uKS = i;
     }
-    for (paramString2 = e.j((String)localObject1, 0, i);; paramString2 = e.j((String)localObject1, 0, 16384))
+    for (paramString2 = i.aR((String)localObject1, 0, i);; paramString2 = i.aR((String)localObject1, 0, 16384))
     {
-      ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadVoice appId=%s, FileType=%s, EncodeType=%s, sampleRate=%s, bps=%s, fileLen=%s, limit=%s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(i), Integer.valueOf(16384) });
+      ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadVoice appId=%s, FileType=%s, EncodeType=%s, sampleRate=%s, bps=%s, fileLen=%s, limit=%s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(i), Integer.valueOf(16384) });
       if ((paramString2 != null) && (paramString2.length > 0)) {
         break;
       }
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] buf empty");
-      AppMethodBeat.o(20449);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] buf empty");
+      AppMethodBeat.o(24526);
       return false;
-      localfg.pIz = 16384;
+      localfy.uKS = 16384;
     }
-    ff localff = new ff();
-    localff.wrq = ((fh)localObject2);
-    localff.wrl = localfg;
-    localff.wrr = com.tencent.mm.bv.b.bL(paramString2);
-    paramInt1 = bo.aoy().hashCode();
+    fx localfx = new fx();
+    localfx.CAE = ((fz)localObject2);
+    localfx.CAz = localfy;
+    localfx.CAF = com.tencent.mm.bx.b.cd(paramString2);
+    paramInt1 = bt.eGO().hashCode();
     if (paramInt1 != -2147483648) {}
     for (paramInt1 = Math.abs(paramInt1);; paramInt1 = -2147483648)
     {
-      paramString1 = new a(paramInt1, paramString1, i, (String)localObject1, localff);
-      aw.Rc().a(paramString1, 0);
-      AppMethodBeat.o(20449);
+      paramString1 = new a(paramInt1, paramString1, i, (String)localObject1, localfx);
+      az.aeS().a(paramString1, 0);
+      AppMethodBeat.o(24526);
       return true;
     }
   }
   
-  public final boolean a(int paramInt, String paramString, com.tencent.mm.bv.b paramb)
+  public final boolean a(int paramInt, String paramString, com.tencent.mm.bx.b paramb)
   {
-    AppMethodBeat.i(20451);
-    ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] getVoiceControlResult voiceId=%s, appId=%s", new Object[] { Integer.valueOf(paramInt), paramString });
-    if (this.mfw == 0L) {
-      this.mfw = System.currentTimeMillis();
+    AppMethodBeat.i(24528);
+    ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] getVoiceControlResult voiceId=%s, appId=%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    if (this.pMi == 0L) {
+      this.pMi = System.currentTimeMillis();
     }
-    this.mfx = System.currentTimeMillis();
-    ez localez = new ez();
-    localez.wre = paramb;
-    paramString = new a(paramInt, paramString, localez, this.mfw);
-    aw.Rc().a(paramString, 0);
-    AppMethodBeat.o(20451);
+    this.pMj = System.currentTimeMillis();
+    fr localfr = new fr();
+    localfr.CAs = paramb;
+    paramString = new a(paramInt, paramString, localfr, this.pMi);
+    az.aeS().a(paramString, 0);
+    AppMethodBeat.o(24528);
     return true;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, n paramn)
   {
-    AppMethodBeat.i(20452);
-    ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] onSceneEnd errType=%s, errCode=%s, errMsg=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (paramm == null)
+    AppMethodBeat.i(24529);
+    ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] onSceneEnd errType=%s, errCode=%s, errMsg=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (paramn == null)
     {
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] scene null, countDown");
-      this.mfu = 3506;
-      this.mfy.countDown();
-      AppMethodBeat.o(20452);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] scene null, countDown");
+      this.pMg = 3506;
+      this.pMk.countDown();
+      AppMethodBeat.o(24529);
       return;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] errType、errCode not ok, countDown");
-      this.mfu = 3507;
-      this.mfy.countDown();
-      AppMethodBeat.o(20452);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] errType、errCode not ok, countDown");
+      this.pMg = 3507;
+      this.pMk.countDown();
+      AppMethodBeat.o(24529);
       return;
     }
-    ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] scene.getType()=%s", new Object[] { Integer.valueOf(paramm.getType()) });
-    if (paramm.getType() == 985)
+    ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] scene.getType()=%s", new Object[] { Integer.valueOf(paramn.getType()) });
+    if (paramn.getType() == 985)
     {
-      if (this.mfA)
+      if (this.pMm)
       {
-        ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] localVoiceControlSucess, no need to process");
-        AppMethodBeat.o(20452);
+        ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] localVoiceControlSucess, no need to process");
+        AppMethodBeat.o(24529);
         return;
       }
-      a locala = (a)paramm;
-      paramString = (a)paramm;
-      if ((paramString.rr != null) && (paramString.rr.fsW.fta != null)) {}
-      for (paramString = (fb)paramString.rr.fsW.fta; paramString == null; paramString = null)
+      final a locala = (a)paramn;
+      paramString = (a)paramn;
+      if ((paramString.rr != null) && (paramString.rr.gUT.gUX != null)) {}
+      for (paramString = (ft)paramString.rr.gUT.gUX; paramString == null; paramString = null)
       {
-        ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] resp null, countDown");
-        this.mfu = 3508;
-        this.mfy.countDown();
-        AppMethodBeat.o(20452);
+        ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] resp null, countDown");
+        this.pMg = 3508;
+        this.pMk.countDown();
+        AppMethodBeat.o(24529);
         return;
       }
-      locala.mfK = paramString.wre;
-      paramInt1 = locala.ctW;
-      if (paramString.wre == null)
+      locala.pMw = paramString.CAs;
+      paramInt1 = locala.diR;
+      if (paramString.CAs == null)
       {
-        paramm = "null";
-        ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] opCode=%s, resp.Cookies=%s", new Object[] { Integer.valueOf(paramInt1), paramm });
-        if (locala.ctW != 1) {
+        paramn = "null";
+        ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] opCode=%s, resp.Cookies=%s", new Object[] { Integer.valueOf(paramInt1), paramn });
+        if (locala.diR != 1) {
           break label369;
         }
         paramInt1 = 1;
@@ -251,220 +286,249 @@ public class ExtControlProviderVoiceControl
       {
         if (paramInt1 != 0)
         {
-          if (paramString.wrl == null)
+          if (paramString.CAz == null)
           {
-            ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] resp.UploadCtx is null");
-            this.mfu = 3508;
-            this.mfy.countDown();
-            AppMethodBeat.o(20452);
+            ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] resp.UploadCtx is null");
+            this.pMg = 3508;
+            this.pMk.countDown();
+            AppMethodBeat.o(24529);
             return;
-            paramm = new String(paramString.wre.pW);
+            paramn = new String(paramString.CAs.wA);
             break;
             label369:
             paramInt1 = 0;
             continue;
           }
-          ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadMode resp: Interval=%s, Timeout=%s, StartPos=%s, DataLen=%s", new Object[] { Integer.valueOf(paramString.wrj), Integer.valueOf(paramString.wrk), Integer.valueOf(paramString.wrl.pIy), Integer.valueOf(paramString.wrl.pIz) });
-          if (paramString.wrl.pIy >= locala.fsd)
+          ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadMode resp: Interval=%s, Timeout=%s, StartPos=%s, DataLen=%s", new Object[] { Integer.valueOf(paramString.CAx), Integer.valueOf(paramString.CAy), Integer.valueOf(paramString.CAz.uKR), Integer.valueOf(paramString.CAz.uKS) });
+          if (paramString.CAz.uKR >= locala.gTY)
           {
-            al.p(new ExtControlProviderVoiceControl.2(this, locala, paramString), paramString.wrj);
-            AppMethodBeat.o(20452);
-            return;
-          }
-          ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] continue upload voice");
-          if ((paramString.wrl.pIy != 0) && (paramString.wrl.pIy == locala.chT))
-          {
-            ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] avoid duplicate doscene");
-            AppMethodBeat.o(20452);
-            return;
-          }
-          locala.chT = paramString.wrl.pIy;
-          if (paramString.wrl.pIy + paramString.wrl.pIz < locala.fsd)
-          {
-            if (!a(locala, paramString.wrl.pIy, paramString.wrl.pIz))
+            aq.n(new Runnable()
             {
-              ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadVoiceContinue fail1, countDown");
-              this.mfu = 3510;
-              this.mfy.countDown();
-              AppMethodBeat.o(20452);
+              public final void run()
+              {
+                AppMethodBeat.i(24518);
+                ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] getResultMode getVoiceControlResult");
+                a locala = locala;
+                int i = paramString.CAy;
+                ad.i("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] setGetResultTimeOut %s", new Object[] { Integer.valueOf(i) });
+                locala.pMA = i;
+                ExtControlProviderVoiceControl.this.a(locala.pMv, locala.appId, locala.pMw);
+                AppMethodBeat.o(24518);
+              }
+            }, paramString.CAx);
+            AppMethodBeat.o(24529);
+            return;
+          }
+          ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] continue upload voice");
+          if ((paramString.CAz.uKR != 0) && (paramString.CAz.uKR == locala.cWU))
+          {
+            ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] avoid duplicate doscene");
+            AppMethodBeat.o(24529);
+            return;
+          }
+          locala.cWU = paramString.CAz.uKR;
+          if (paramString.CAz.uKR + paramString.CAz.uKS < locala.gTY)
+          {
+            if (!a(locala, paramString.CAz.uKR, paramString.CAz.uKS))
+            {
+              ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadVoiceContinue fail1, countDown");
+              this.pMg = 3510;
+              this.pMk.countDown();
+              AppMethodBeat.o(24529);
             }
           }
-          else if (!a(locala, paramString.wrl.pIy, locala.fsd - paramString.wrl.pIy))
+          else if (!a(locala, paramString.CAz.uKR, locala.gTY - paramString.CAz.uKR))
           {
-            ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadVoiceContinue fail2, countDown");
-            this.mfu = 3510;
-            this.mfy.countDown();
-            AppMethodBeat.o(20452);
+            ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] uploadVoiceContinue fail2, countDown");
+            this.pMg = 3510;
+            this.pMk.countDown();
+            AppMethodBeat.o(24529);
             return;
           }
-          AppMethodBeat.o(20452);
+          AppMethodBeat.o(24529);
           return;
         }
       }
       long l1;
-      if (locala.ctW == 2)
+      if (locala.diR == 2)
       {
         paramInt1 = 1;
         if (paramInt1 == 0) {
           break label1331;
         }
-        ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "");
-        l1 = System.currentTimeMillis() - locala.mfP;
-        if (l1 <= locala.mfO) {
+        ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "");
+        l1 = System.currentTimeMillis() - locala.pMB;
+        if (l1 <= locala.pMA) {
           break label781;
         }
-        ab.w("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] isGetResultTimeOut %s, %s", new Object[] { Long.valueOf(l1), Integer.valueOf(locala.mfO) });
+        ad.w("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] isGetResultTimeOut %s, %s", new Object[] { Long.valueOf(l1), Integer.valueOf(locala.pMA) });
       }
       for (paramInt1 = 1;; paramInt1 = 0)
       {
         if (paramInt1 == 0) {
           break label818;
         }
-        this.mfu = 3509;
-        this.mfy.countDown();
-        AppMethodBeat.o(20452);
+        this.pMg = 3509;
+        this.pMk.countDown();
+        AppMethodBeat.o(24529);
         return;
         paramInt1 = 0;
         break;
         label781:
-        ab.i("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] time %s, %s", new Object[] { Long.valueOf(l1), Integer.valueOf(locala.mfO) });
+        ad.i("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] time %s, %s", new Object[] { Long.valueOf(l1), Integer.valueOf(locala.pMA) });
       }
       label818:
-      if (paramString.wrm != null) {
-        ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] getResultMode resp VoiceId=%s, RecognizeRet=%s", new Object[] { Integer.valueOf(paramString.wrm.wrf), Integer.valueOf(paramString.wrm.wrn) });
+      if (paramString.CAA != null) {
+        ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] getResultMode resp VoiceId=%s, RecognizeRet=%s", new Object[] { Integer.valueOf(paramString.CAA.CAt), Integer.valueOf(paramString.CAA.CAB) });
       }
-      if ((paramString.wrm == null) || (paramString.wrm.wrn != 0))
+      if ((paramString.CAA == null) || (paramString.CAA.CAB != 0))
       {
-        if (System.currentTimeMillis() - this.mfx >= paramString.wrj)
+        if (System.currentTimeMillis() - this.pMj >= paramString.CAx)
         {
-          al.d(new ExtControlProviderVoiceControl.3(this, locala));
-          AppMethodBeat.o(20452);
+          aq.f(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(24519);
+              ExtControlProviderVoiceControl.this.a(locala.pMv, locala.appId, locala.pMw);
+              AppMethodBeat.o(24519);
+            }
+          });
+          AppMethodBeat.o(24529);
           return;
         }
-        long l2 = paramString.wrj - (System.currentTimeMillis() - this.mfx);
+        long l2 = paramString.CAx - (System.currentTimeMillis() - this.pMj);
         l1 = l2;
-        if (l2 > paramString.wrj) {
-          l1 = paramString.wrj;
+        if (l2 > paramString.CAx) {
+          l1 = paramString.CAx;
         }
-        al.p(new ExtControlProviderVoiceControl.4(this, locala), l1);
-        AppMethodBeat.o(20452);
+        aq.n(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(24520);
+            ExtControlProviderVoiceControl.this.a(locala.pMv, locala.appId, locala.pMw);
+            AppMethodBeat.o(24520);
+          }
+        }, l1);
+        AppMethodBeat.o(24529);
         return;
       }
-      if (paramString.wrm.wro == null)
+      if (paramString.CAA.CAC == null)
       {
-        ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] SearchContactResultInfo null, countDown");
-        this.mfu = 3511;
-        this.mfy.countDown();
-        AppMethodBeat.o(20452);
+        ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] SearchContactResultInfo null, countDown");
+        this.pMg = 3511;
+        this.pMk.countDown();
+        AppMethodBeat.o(24529);
         return;
       }
-      if ((paramString.wrm.wro.wrp == null) || (paramString.wrm.wro.wrp.size() <= 0))
+      if ((paramString.CAA.CAC.CAD == null) || (paramString.CAA.CAC.CAD.size() <= 0))
       {
-        ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] SearchContactResultInfo.Items null, countDown");
-        this.mfu = 3511;
-        this.mfy.countDown();
-        AppMethodBeat.o(20452);
+        ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] SearchContactResultInfo.Items null, countDown");
+        this.pMg = 3511;
+        this.pMk.countDown();
+        AppMethodBeat.o(24529);
         return;
       }
-      if (paramString.wrm.wro.wrp.size() == 0)
+      if (paramString.CAA.CAC.CAD.size() == 0)
       {
-        this.mfu = 3511;
-        this.mfy.countDown();
-        AppMethodBeat.o(20452);
+        this.pMg = 3511;
+        this.pMk.countDown();
+        AppMethodBeat.o(24529);
         return;
       }
-      if (paramString.wrm.wro.wrp.size() == 1)
+      if (paramString.CAA.CAC.CAD.size() == 1)
       {
-        Nl(((fe)paramString.wrm.wro.wrp.get(0)).Username);
-        AppMethodBeat.o(20452);
+        XF(((fw)paramString.CAA.CAC.CAD.get(0)).Username);
+        AppMethodBeat.o(24529);
         return;
       }
-      paramm = new String[paramString.wrm.wro.wrp.size()];
+      paramn = new String[paramString.CAA.CAC.CAD.size()];
       paramInt1 = 0;
-      while (paramInt1 < paramm.length)
+      while (paramInt1 < paramn.length)
       {
-        paramm[paramInt1] = ((fe)paramString.wrm.wro.wrp.get(paramInt1)).Username;
-        ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] resp result item: %s", new Object[] { paramm[paramInt1] });
+        paramn[paramInt1] = ((fw)paramString.CAA.CAC.CAD.get(paramInt1)).Username;
+        ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] resp result item: %s", new Object[] { paramn[paramInt1] });
         paramInt1 += 1;
       }
       paramString = new Intent();
-      paramString.putExtra("VoiceSearchResultUI_Resultlist", paramm);
-      paramString.putExtra("VoiceSearchResultUI_VoiceId", locala.mfJ);
+      paramString.putExtra("VoiceSearchResultUI_Resultlist", paramn);
+      paramString.putExtra("VoiceSearchResultUI_VoiceId", locala.pMv);
       paramString.putExtra("VoiceSearchResultUI_IsVoiceControl", true);
       paramString.setFlags(67108864);
       paramString.putExtra("VoiceSearchResultUI_ShowType", 1);
-      com.tencent.mm.bq.d.f(this.context, ".ui.voicesearch.VoiceSearchResultUI", paramString);
-      ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] scene end countDown");
-      this.mfu = 1;
-      this.mfy.countDown();
-      AppMethodBeat.o(20452);
+      com.tencent.mm.bs.d.e(this.context, ".ui.voicesearch.VoiceSearchResultUI", paramString);
+      ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] scene end countDown");
+      this.pMg = 1;
+      this.pMk.countDown();
+      AppMethodBeat.o(24529);
       return;
     }
     label1331:
-    AppMethodBeat.o(20452);
+    AppMethodBeat.o(24529);
   }
   
-  public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
+  public Cursor query(final Uri paramUri, final String[] paramArrayOfString1, final String paramString1, final String[] paramArrayOfString2, final String paramString2)
   {
-    AppMethodBeat.i(20448);
-    ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] query(), ApiId=%s", new Object[] { Integer.valueOf(this.mea) });
-    this.mfv = 0L;
-    this.mfw = 0L;
-    a(paramUri, this.context, this.mea, this.mdZ);
+    AppMethodBeat.i(24525);
+    ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] query(), ApiId=%s", new Object[] { Integer.valueOf(this.pKI) });
+    this.pMh = 0L;
+    this.pMi = 0L;
+    a(paramUri, this.context, this.pKI, this.pKH);
     if (paramUri == null)
     {
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "uri == null");
-      ej(3, 5);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(5);
-      AppMethodBeat.o(20448);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "uri == null");
+      fq(3, 5);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ue(5);
+      AppMethodBeat.o(24525);
       return paramUri;
     }
     long l1 = System.currentTimeMillis();
-    if (bo.isNullOrNil(this.mei))
+    if (bt.isNullOrNil(this.pKT))
     {
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "AppID == null");
-      ej(3, 7);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(7);
-      AppMethodBeat.o(20448);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "AppID == null");
+      fq(3, 7);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ue(7);
+      AppMethodBeat.o(24525);
       return paramUri;
     }
-    if (bo.isNullOrNil(btD()))
+    if (bt.isNullOrNil(ceX()))
     {
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "PkgName == null");
-      ej(3, 6);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(6);
-      AppMethodBeat.o(20448);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "PkgName == null");
+      fq(3, 6);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ue(6);
+      AppMethodBeat.o(24525);
       return paramUri;
     }
     long l2 = System.currentTimeMillis();
     long l3 = System.currentTimeMillis();
     long l4 = System.currentTimeMillis();
-    int i = btE();
+    int i = ceY();
     if (i != 1)
     {
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "invalid appid ! return code = ".concat(String.valueOf(i)));
-      ej(2, i);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(i);
-      AppMethodBeat.o(20448);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "invalid appid ! return code = ".concat(String.valueOf(i)));
+      fq(2, i);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ue(i);
+      AppMethodBeat.o(24525);
       return paramUri;
     }
-    ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[extApiCost][voiceControl] getAppIdAndPkg = %s, checkIsLogin = %s", new Object[] { Long.valueOf(l2 - l1), Long.valueOf(l4 - l3) });
-    switch (this.mea)
+    ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[extApiCost][voiceControl] getAppIdAndPkg = %s, checkIsLogin = %s", new Object[] { Long.valueOf(l2 - l1), Long.valueOf(l4 - l3) });
+    switch (this.pKI)
     {
     default: 
-      ej(3, 15);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(15);
-      AppMethodBeat.o(20448);
+      fq(3, 15);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ue(15);
+      AppMethodBeat.o(24525);
       return paramUri;
     }
-    ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "voiceControl");
+    ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "voiceControl");
     if ((paramArrayOfString2 == null) || (paramArrayOfString2.length < 4))
     {
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] wrong args");
-      ej(3, 3501);
-      this.mfu = 3501;
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(3501);
-      AppMethodBeat.o(20448);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] wrong args");
+      fq(3, 3501);
+      this.pMg = 3501;
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ue(3501);
+      AppMethodBeat.o(24525);
       return paramUri;
     }
     paramUri = paramArrayOfString2[0];
@@ -472,45 +536,67 @@ public class ExtControlProviderVoiceControl
     paramString1 = paramArrayOfString2[2];
     paramString2 = paramArrayOfString2[3];
     paramArrayOfString2 = paramArrayOfString2[4];
-    ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] args: %s, %s, %s, %s %s", new Object[] { paramUri, paramArrayOfString1, paramString1, paramString2, paramArrayOfString2 });
-    if ((bo.isNullOrNil(paramUri)) || (bo.isNullOrNil(paramArrayOfString1)) || (bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)) || (bo.isNullOrNil(paramArrayOfString2)))
+    ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] args: %s, %s, %s, %s %s", new Object[] { paramUri, paramArrayOfString1, paramString1, paramString2, paramArrayOfString2 });
+    if ((bt.isNullOrNil(paramUri)) || (bt.isNullOrNil(paramArrayOfString1)) || (bt.isNullOrNil(paramString1)) || (bt.isNullOrNil(paramString2)) || (bt.isNullOrNil(paramArrayOfString2)))
     {
-      ej(3, 3502);
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] wrong args");
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(3502);
-      AppMethodBeat.o(20448);
+      fq(3, 3502);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] wrong args");
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ue(3502);
+      AppMethodBeat.o(24525);
       return paramUri;
     }
-    if (!e.cN(paramArrayOfString2))
+    if (!i.eK(paramArrayOfString2))
     {
-      ab.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] speex file not exist");
-      ej(3, 3503);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(3503);
-      AppMethodBeat.o(20448);
+      ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] speex file not exist");
+      fq(3, 3503);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ue(3503);
+      AppMethodBeat.o(24525);
       return paramUri;
     }
-    this.mfv = System.currentTimeMillis();
-    aw.Rc().a(985, this);
-    this.mfy.b(13000L, new ExtControlProviderVoiceControl.1(this, paramUri, paramArrayOfString2, paramArrayOfString1, paramString1, paramString2));
-    ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[extApiCost][voiceControl] finish uploadVoice = %s, getResult = %s", new Object[] { Long.valueOf(this.mfw - this.mfv), Long.valueOf(System.currentTimeMillis() - this.mfw) });
-    aw.Rc().b(985, this);
-    S(10, 0, 1);
-    if (1 != this.mfu) {
-      S(11, 4, 1);
+    this.pMh = System.currentTimeMillis();
+    az.aeS().a(985, this);
+    this.pMk.b(13000L, new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(24517);
+        int i = bt.getInt(paramUri, 4);
+        if (i == 1) {
+          ExtControlProviderVoiceControl.a(ExtControlProviderVoiceControl.this, paramArrayOfString2);
+        }
+        for (;;)
+        {
+          if (!ExtControlProviderVoiceControl.b(ExtControlProviderVoiceControl.a(ExtControlProviderVoiceControl.this), i, bt.getInt(paramArrayOfString1, 4), bt.getInt(paramString1, 16000), bt.getInt(paramString2, 16), paramArrayOfString2))
+          {
+            ad.e("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] !ok countDown");
+            ExtControlProviderVoiceControl.b(ExtControlProviderVoiceControl.this);
+            ExtControlProviderVoiceControl.this.pMk.countDown();
+          }
+          AppMethodBeat.o(24517);
+          return;
+          ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] not pcm, don't run localVoiceControl");
+        }
+      }
+    });
+    ad.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[extApiCost][voiceControl] finish uploadVoice = %s, getResult = %s", new Object[] { Long.valueOf(this.pMi - this.pMh), Long.valueOf(System.currentTimeMillis() - this.pMi) });
+    az.aeS().b(985, this);
+    Y(10, 0, 1);
+    if (1 != this.pMg) {
+      Y(11, 4, 1);
     }
     for (;;)
     {
-      vA(0);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ls(this.mfu);
-      AppMethodBeat.o(20448);
+      BS(0);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.Ue(this.pMg);
+      AppMethodBeat.o(24525);
       return paramUri;
-      S(10, 0, 1);
+      Y(10, 0, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.voicecontrol.ExtControlProviderVoiceControl
  * JD-Core Version:    0.7.0.1
  */

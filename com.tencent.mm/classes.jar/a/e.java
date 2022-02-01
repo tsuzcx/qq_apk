@@ -1,12 +1,81 @@
 package a;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlin/KotlinNullPointerException;", "Ljava/lang/NullPointerException;", "Lkotlin/NullPointerException;", "()V", "message", "", "(Ljava/lang/String;)V", "kotlin-stdlib"})
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.Closeable;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.ScheduledFuture;
+
 public final class e
-  extends NullPointerException
-{}
+  implements Closeable
+{
+  final List<d> aza;
+  private ScheduledFuture<?> azb;
+  private boolean azc;
+  private boolean closed;
+  final Object lock;
+  
+  public final void close()
+  {
+    AppMethodBeat.i(52985);
+    synchronized (this.lock)
+    {
+      if (this.closed)
+      {
+        AppMethodBeat.o(52985);
+        return;
+      }
+      if (this.azb != null)
+      {
+        this.azb.cancel(true);
+        this.azb = null;
+      }
+      Iterator localIterator = this.aza.iterator();
+      if (localIterator.hasNext()) {
+        ((d)localIterator.next()).close();
+      }
+    }
+    this.aza.clear();
+    this.closed = true;
+    AppMethodBeat.o(52985);
+  }
+  
+  public final boolean isCancellationRequested()
+  {
+    AppMethodBeat.i(52984);
+    synchronized (this.lock)
+    {
+      nb();
+      boolean bool = this.azc;
+      AppMethodBeat.o(52984);
+      return bool;
+    }
+  }
+  
+  final void nb()
+  {
+    AppMethodBeat.i(52987);
+    if (this.closed)
+    {
+      IllegalStateException localIllegalStateException = new IllegalStateException("Object already closed");
+      AppMethodBeat.o(52987);
+      throw localIllegalStateException;
+    }
+    AppMethodBeat.o(52987);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(52986);
+    String str = String.format(Locale.US, "%s@%s[cancellationRequested=%s]", new Object[] { getClass().getName(), Integer.toHexString(hashCode()), Boolean.toString(isCancellationRequested()) });
+    AppMethodBeat.o(52986);
+    return str;
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     a.e
  * JD-Core Version:    0.7.0.1
  */

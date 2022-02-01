@@ -29,9 +29,9 @@ public class RecordConsentRequest
   
   static
   {
-    AppMethodBeat.i(61683);
+    AppMethodBeat.i(12175);
     CREATOR = new RecordConsentRequestCreator();
-    AppMethodBeat.o(61683);
+    AppMethodBeat.o(12175);
   }
   
   @SafeParcelable.Constructor
@@ -65,14 +65,14 @@ public class RecordConsentRequest
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(61682);
+    AppMethodBeat.i(12174);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     SafeParcelWriter.writeParcelable(paramParcel, 2, getAccount(), paramInt, false);
     SafeParcelWriter.writeTypedArray(paramParcel, 3, getScopesToConsent(), paramInt, false);
     SafeParcelWriter.writeString(paramParcel, 4, getServerClientId(), false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(61682);
+    AppMethodBeat.o(12174);
   }
 }
 

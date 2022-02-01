@@ -1,13 +1,9 @@
 package com.tencent.xweb;
 
-import org.xwalk.core.XWalkJavascriptResult;
-
-public abstract class j
-  implements XWalkJavascriptResult
-{}
+public abstract interface j {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.j
  * JD-Core Version:    0.7.0.1
  */

@@ -13,45 +13,45 @@ import java.util.List;
 final class g
   extends h
 {
-  private static final int aJb;
-  private static final byte[] aJc;
-  private boolean aJd;
+  private static final int beu;
+  private static final byte[] bev;
+  private boolean bew;
   
   static
   {
-    AppMethodBeat.i(95049);
-    aJb = x.aS("Opus");
-    aJc = new byte[] { 79, 112, 117, 115, 72, 101, 97, 100 };
-    AppMethodBeat.o(95049);
+    AppMethodBeat.i(92165);
+    beu = x.aY("Opus");
+    bev = new byte[] { 79, 112, 117, 115, 72, 101, 97, 100 };
+    AppMethodBeat.o(92165);
   }
   
-  private static void c(List<byte[]> paramList, int paramInt)
+  private static void b(List<byte[]> paramList, int paramInt)
   {
-    AppMethodBeat.i(95048);
+    AppMethodBeat.i(92164);
     long l = paramInt * 1000000000L / 48000L;
     paramList.add(ByteBuffer.allocate(8).order(ByteOrder.nativeOrder()).putLong(l).array());
-    AppMethodBeat.o(95048);
+    AppMethodBeat.o(92164);
   }
   
   public static boolean r(m paramm)
   {
-    AppMethodBeat.i(95044);
-    if (paramm.qM() < aJc.length)
+    AppMethodBeat.i(92160);
+    if (paramm.vJ() < bev.length)
     {
-      AppMethodBeat.o(95044);
+      AppMethodBeat.o(92160);
       return false;
     }
-    byte[] arrayOfByte = new byte[aJc.length];
-    paramm.readBytes(arrayOfByte, 0, aJc.length);
-    boolean bool = Arrays.equals(arrayOfByte, aJc);
-    AppMethodBeat.o(95044);
+    byte[] arrayOfByte = new byte[bev.length];
+    paramm.readBytes(arrayOfByte, 0, bev.length);
+    boolean bool = Arrays.equals(arrayOfByte, bev);
+    AppMethodBeat.o(92160);
     return bool;
   }
   
   protected final boolean a(m paramm, long paramLong, h.a parama)
   {
-    AppMethodBeat.i(95047);
-    if (!this.aJd)
+    AppMethodBeat.i(92163);
+    if (!this.bew)
     {
       paramm = Arrays.copyOf(paramm.data, paramm.limit);
       int i = paramm[9];
@@ -59,35 +59,35 @@ final class g
       int k = paramm[10];
       ArrayList localArrayList = new ArrayList(3);
       localArrayList.add(paramm);
-      c(localArrayList, (j & 0xFF) << 8 | k & 0xFF);
-      c(localArrayList, 3840);
-      parama.axd = Format.a(null, "audio/opus", -1, -1, i & 0xFF, 48000, localArrayList, null, null);
-      this.aJd = true;
-      AppMethodBeat.o(95047);
+      b(localArrayList, (j & 0xFF) << 8 | k & 0xFF);
+      b(localArrayList, 3840);
+      parama.aSv = Format.a(null, "audio/opus", -1, -1, i & 0xFF, 48000, localArrayList, null, null);
+      this.bew = true;
+      AppMethodBeat.o(92163);
       return true;
     }
-    if (paramm.readInt() == aJb) {}
+    if (paramm.readInt() == beu) {}
     for (boolean bool = true;; bool = false)
     {
       paramm.setPosition(0);
-      AppMethodBeat.o(95047);
+      AppMethodBeat.o(92163);
       return bool;
     }
   }
   
   protected final void reset(boolean paramBoolean)
   {
-    AppMethodBeat.i(95045);
+    AppMethodBeat.i(92161);
     super.reset(paramBoolean);
     if (paramBoolean) {
-      this.aJd = false;
+      this.bew = false;
     }
-    AppMethodBeat.o(95045);
+    AppMethodBeat.o(92161);
   }
   
   protected final long s(m paramm)
   {
-    AppMethodBeat.i(95046);
+    AppMethodBeat.i(92162);
     paramm = paramm.data;
     int i = paramm[0] & 0xFF;
     int j;
@@ -105,8 +105,8 @@ final class g
     }
     for (;;)
     {
-      long l = M(i * j);
-      AppMethodBeat.o(95046);
+      long l = S(i * j);
+      AppMethodBeat.o(92162);
       return l;
       j = 1;
       break;

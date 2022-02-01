@@ -1,19 +1,20 @@
 package com.tencent.mm.media.widget.camerarecordview.preview;
 
-import a.f.a.a;
-import a.l;
-import a.y;
+import d.g.a.a;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/widget/camerarecordview/preview/IRenderVIew;", "", "queueEvent", "", "r", "Lkotlin/Function0;", "requestRender", "plugin-mediaeditor_release"})
-public abstract interface d
+@l(fvt={1, 1, 16})
+final class d
+  implements Runnable
 {
-  public abstract void e(a<y> parama);
-  
-  public abstract void requestRender();
+  d(a parama)
+  {
+    this.cbg = parama;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.media.widget.camerarecordview.preview.d
  * JD-Core Version:    0.7.0.1
  */

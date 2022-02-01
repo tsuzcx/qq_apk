@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.card.model;
 
-import com.tencent.mm.cg.h.d;
 import com.tencent.mm.plugin.card.sharecard.model.o;
+import com.tencent.mm.storagebase.h.b;
 
 final class am$12
-  implements h.d
+  implements h.b
 {
   public final String[] getSQLs()
   {
@@ -13,7 +13,7 @@ final class am$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.am.12
  * JD-Core Version:    0.7.0.1
  */

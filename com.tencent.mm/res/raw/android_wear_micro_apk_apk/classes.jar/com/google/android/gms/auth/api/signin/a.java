@@ -12,40 +12,40 @@ import java.util.Set;
 
 public final class a
 {
-  private Account GJ;
-  private boolean GK;
-  private boolean GL;
-  private boolean GM;
-  private String GN;
-  private String GO;
-  private Set<Scope> GR = new HashSet();
-  private Map<Integer, zzg> GS = new HashMap();
+  private boolean IA;
+  private boolean IB;
+  private String IC;
+  private String ID;
+  private Set<Scope> IG = new HashSet();
+  private Map<Integer, zzg> IH = new HashMap();
+  private Account Iy;
+  private boolean Iz;
   
   public final a a(Scope paramScope, Scope... paramVarArgs)
   {
-    this.GR.add(paramScope);
-    this.GR.addAll(Arrays.asList(paramVarArgs));
+    this.IG.add(paramScope);
+    this.IG.addAll(Arrays.asList(paramVarArgs));
     return this;
   }
   
-  public final a gf()
+  public final a gp()
   {
-    this.GR.add(GoogleSignInOptions.GE);
+    this.IG.add(GoogleSignInOptions.It);
     return this;
   }
   
-  public final a gg()
+  public final a gq()
   {
-    this.GR.add(GoogleSignInOptions.GC);
+    this.IG.add(GoogleSignInOptions.Ir);
     return this;
   }
   
-  public final GoogleSignInOptions gh()
+  public final GoogleSignInOptions gr()
   {
-    if ((this.GK) && ((this.GJ == null) || (!this.GR.isEmpty()))) {
-      gf();
+    if ((this.Iz) && ((this.Iy == null) || (!this.IG.isEmpty()))) {
+      gp();
     }
-    return new GoogleSignInOptions(new ArrayList(this.GR), this.GJ, this.GK, this.GL, this.GM, this.GN, this.GO, this.GS);
+    return new GoogleSignInOptions(new ArrayList(this.IG), this.Iy, this.Iz, this.IA, this.IB, this.IC, this.ID, this.IH);
   }
 }
 

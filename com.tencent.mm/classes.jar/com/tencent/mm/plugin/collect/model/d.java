@@ -6,26 +6,26 @@ import java.util.List;
 
 public enum d
 {
-  public List<d.a> kkV;
+  public List<d.a> nqa;
   
   static
   {
-    AppMethodBeat.i(40929);
-    kMQ = new d("INSTANCE");
-    kMR = new d[] { kMQ };
-    AppMethodBeat.o(40929);
+    AppMethodBeat.i(63779);
+    nTb = new d("INSTANCE");
+    nTc = new d[] { nTb };
+    AppMethodBeat.o(63779);
   }
   
   private d()
   {
-    AppMethodBeat.i(40928);
-    this.kkV = new LinkedList();
-    AppMethodBeat.o(40928);
+    AppMethodBeat.i(63778);
+    this.nqa = new LinkedList();
+    AppMethodBeat.o(63778);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.d
  * JD-Core Version:    0.7.0.1
  */

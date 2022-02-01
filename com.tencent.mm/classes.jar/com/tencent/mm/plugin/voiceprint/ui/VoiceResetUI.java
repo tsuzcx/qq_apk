@@ -3,18 +3,22 @@ package com.tencent.mm.plugin.voiceprint.ui;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class VoiceResetUI
   extends VoiceUnLockUI
 {
-  protected final void cLw()
+  protected final void dRE()
   {
-    AppMethodBeat.i(26222);
-    ab.d("MicroMsg.VoiceResetUI", "unlock success");
-    startActivity(new Intent(this, VoiceCreateUI.class));
+    AppMethodBeat.i(29905);
+    ad.d("MicroMsg.VoiceResetUI", "unlock success");
+    Object localObject = new Intent(this, VoiceCreateUI.class);
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/voiceprint/ui/VoiceResetUI", "onUnlockSuccess", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voiceprint/ui/VoiceResetUI", "onUnlockSuccess", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
-    AppMethodBeat.o(26222);
+    AppMethodBeat.o(29905);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -25,7 +29,7 @@ public class VoiceResetUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.VoiceResetUI
  * JD-Core Version:    0.7.0.1
  */

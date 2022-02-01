@@ -12,13 +12,13 @@ public abstract class WearableListenerService
   extends Service
   implements c, g, q, x
 {
-  private IBinder IT;
-  private ComponentName SI;
-  private ad SJ;
-  private Intent SK;
-  private Looper SL;
-  private final Object SM = new Object();
-  private boolean SN;
+  private IBinder KI;
+  private Looper UA;
+  private final Object UB = new Object();
+  private boolean UC;
+  private ComponentName Ux;
+  private ad Uy;
+  private Intent Uz;
   
   public void a(Channel paramChannel, int paramInt1, int paramInt2) {}
   
@@ -26,14 +26,14 @@ public abstract class WearableListenerService
   
   public void a(s params) {}
   
-  public void kA() {}
+  public void kJ() {}
   
-  public void kB() {}
+  public void kK() {}
   
   public final IBinder onBind(Intent paramIntent)
   {
     if ("com.google.android.gms.wearable.BIND_LISTENER".equals(paramIntent.getAction())) {
-      return this.IT;
+      return this.KI;
     }
     return null;
   }
@@ -41,42 +41,42 @@ public abstract class WearableListenerService
   public void onCreate()
   {
     super.onCreate();
-    this.SI = new ComponentName(this, getClass().getName());
+    this.Ux = new ComponentName(this, getClass().getName());
     Object localObject;
     if (Log.isLoggable("WearableLS", 3))
     {
-      localObject = String.valueOf(this.SI);
+      localObject = String.valueOf(this.Ux);
       Log.d("WearableLS", String.valueOf(localObject).length() + 10 + "onCreate: " + (String)localObject);
     }
-    if (this.SL == null)
+    if (this.UA == null)
     {
       localObject = new HandlerThread("WearableListenerService");
       ((HandlerThread)localObject).start();
-      this.SL = ((HandlerThread)localObject).getLooper();
+      this.UA = ((HandlerThread)localObject).getLooper();
     }
-    this.SJ = new ad(this, this.SL);
-    this.SK = new Intent("com.google.android.gms.wearable.BIND_LISTENER");
-    this.SK.setComponent(this.SI);
-    this.IT = new ae(this, (byte)0);
+    this.Uy = new ad(this, this.UA);
+    this.Uz = new Intent("com.google.android.gms.wearable.BIND_LISTENER");
+    this.Uz.setComponent(this.Ux);
+    this.KI = new ae(this, (byte)0);
   }
   
   public void onDestroy()
   {
     if (Log.isLoggable("WearableLS", 3))
     {
-      ??? = String.valueOf(this.SI);
+      ??? = String.valueOf(this.Ux);
       Log.d("WearableLS", String.valueOf(???).length() + 11 + "onDestroy: " + (String)???);
     }
-    synchronized (this.SM)
+    synchronized (this.UB)
     {
-      this.SN = true;
-      if (this.SJ == null)
+      this.UC = true;
+      if (this.Uy == null)
       {
-        String str = String.valueOf(this.SI);
+        String str = String.valueOf(this.Ux);
         throw new IllegalStateException(String.valueOf(str).length() + 111 + "onDestroy: mServiceHandler not set, did you override onCreate() but forget to call super.onCreate()? component=" + str);
       }
     }
-    this.SJ.quit();
+    this.Uy.quit();
     super.onDestroy();
   }
 }

@@ -1,176 +1,145 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
-import com.tencent.luggage.g.d;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.d.a;
-import com.tencent.mm.audio.d.a.a;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.appstorage.x;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.file.ar;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.vfs.e;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.q;
+import java.io.IOException;
+import org.json.JSONObject;
 
-public final class b
-  implements c
+public abstract class b
+  extends a<c>
 {
-  private a ifi;
-  private Set<c.b> ifj;
-  
-  public b()
+  private static String Hv(String paramString)
   {
-    AppMethodBeat.i(145907);
-    this.ifj = new HashSet();
-    AppMethodBeat.o(145907);
+    return "wxfile://clientdata/".concat(String.valueOf(paramString));
   }
   
-  private void release()
+  private static void Hw(String paramString)
   {
-    AppMethodBeat.i(145909);
-    if (this.ifi != null)
-    {
-      this.ifi.release();
-      this.ifi = null;
+    paramString = new e(paramString + ".nomedia");
+    if (!paramString.exists()) {
+      ad.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: no nomedia file. trigger new");
     }
-    AppMethodBeat.o(145909);
+    try
+    {
+      paramString.createNewFile();
+      return;
+    }
+    catch (IOException paramString)
+    {
+      ad.printErrStackTrace("MicroMsg.GameRecord.JsApiScreenRecorderBase", paramString, "hy: create no media file failed!", new Object[0]);
+    }
   }
   
-  public final g CU(String arg1)
+  private static String b(c paramc, String paramString)
   {
-    AppMethodBeat.i(145910);
-    if (bo.isNullOrNil(???))
+    if ((paramc == null) || (bt.isNullOrNil(paramString)))
     {
-      d.e("MicaoMsg.DefaultLuggageVoicePlayer", "filePath is null");
-      ??? = new g("filePath is null", new Object[0]);
-      AppMethodBeat.o(145910);
-      return ???;
-    }
-    if (!e.cN(???))
-    {
-      d.e("MicaoMsg.DefaultLuggageVoicePlayer", "file is not exist");
-      ??? = new g("file is not exist", new Object[0]);
-      AppMethodBeat.o(145910);
-      return ???;
-    }
-    release();
-    this.ifi = new com.tencent.mm.audio.d.b();
-    this.ifi.a(new a.a()
-    {
-      public final void EW()
+      if (paramc == null) {}
+      for (boolean bool = true;; bool = false)
       {
-        AppMethodBeat.i(145906);
-        b.a(b.this).a(null);
-        b.b(b.this);
-        AppMethodBeat.o(145906);
-      }
-    });
-    boolean bool = this.ifi.eK(???);
-    d.i("MicaoMsg.DefaultLuggageVoicePlayer", "play:%s isOk:%b", new Object[] { ???, Boolean.valueOf(bool) });
-    if (!bool)
-    {
-      d.i("MicaoMsg.DefaultLuggageVoicePlayer", "play fail");
-      ??? = new g("fail to start, may be already start", new Object[0]);
-      AppMethodBeat.o(145910);
-      return ???;
-    }
-    synchronized (this.ifj)
-    {
-      Iterator localIterator = this.ifj.iterator();
-      if (localIterator.hasNext()) {
-        localIterator.next();
+        ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: param error %b, %s", new Object[] { Boolean.valueOf(bool), paramString });
+        return null;
       }
     }
-    ??? = g.ifo;
-    AppMethodBeat.o(145910);
-    return ???;
+    paramc = (ar)paramc.Ee();
+    if (paramc == null)
+    {
+      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: fs is null");
+      return null;
+    }
+    String str = ((x)paramc.EZ("wxfile://clientdata")).iSI;
+    paramc = str;
+    if (!str.endsWith("/")) {
+      paramc = str + "/";
+    }
+    Hw(paramc);
+    return paramc + paramString;
   }
   
-  public final void a(c.b paramb)
+  protected final a a(c paramc, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(145913);
-    synchronized (this.ifj)
+    ad.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: request saveFileToClientData: %s, %b, %b", new Object[] { paramString1, Boolean.TRUE, Boolean.TRUE });
+    if (!i.eK(paramString1))
     {
-      this.ifj.add(paramb);
-      AppMethodBeat.o(145913);
-      return;
+      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: src file not exists!");
+      return null;
     }
+    paramc = b(paramc, paramString2);
+    if (paramc == null)
+    {
+      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: can not generate dest file!");
+      return null;
+    }
+    if (i.eK(paramc))
+    {
+      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: file already exists, auto delete: %b", new Object[] { Boolean.TRUE });
+      i.deleteFile(paramc);
+    }
+    e locale = new e(paramc);
+    if (!i.lF(q.B(new e(paramString1).mUri), q.B(locale.mUri)))
+    {
+      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: rename failed!");
+      return null;
+    }
+    return new a(paramc, Hv(paramString2), (byte)0);
   }
   
-  public final g aFY()
+  abstract void a(c paramc, JSONObject paramJSONObject, int paramInt);
+  
+  protected final a c(c paramc, String paramString)
   {
-    AppMethodBeat.i(145911);
-    if (this.ifi == null)
+    paramc = b(paramc, paramString);
+    if (paramc == null)
     {
-      ??? = new g("fail to pause, may be not start", new Object[0]);
-      AppMethodBeat.o(145911);
-      return ???;
+      ad.e("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: can not generate!");
+      return null;
     }
-    boolean bool = this.ifi.pause();
-    d.i("MicaoMsg.DefaultLuggageVoicePlayer", "pause:%s isOk:%b", new Object[] { Boolean.valueOf(bool) });
-    if (!bool)
+    ad.i("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: creating file: %s", new Object[] { paramc });
+    if (i.eK(paramc))
     {
-      d.i("MicaoMsg.DefaultLuggageVoicePlayer", "pause fail");
-      ??? = new g("fail to pause, may be not start", new Object[0]);
-      AppMethodBeat.o(145911);
-      return ???;
+      ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: file already exists, auto delete: %b", new Object[] { Boolean.TRUE });
+      i.deleteFile(paramc);
     }
-    synchronized (this.ifj)
+    e locale = new e(paramc);
+    i.aMF(i.aMQ(paramc));
+    try
     {
-      Iterator localIterator = this.ifj.iterator();
-      if (localIterator.hasNext()) {
-        localIterator.next();
+      if (!locale.createNewFile())
+      {
+        ad.w("MicroMsg.GameRecord.JsApiScreenRecorderBase", "hy: create file failed!");
+        return null;
       }
     }
-    ??? = g.ifo;
-    AppMethodBeat.o(145911);
-    return ???;
+    catch (IOException paramc)
+    {
+      ad.printErrStackTrace("MicroMsg.GameRecord.JsApiScreenRecorderBase", paramc, "hy: create file failed!", new Object[0]);
+      return null;
+    }
+    return new a(q.B(locale.fhU()), Hv(paramString), (byte)0);
   }
   
-  public final g aFZ()
+  protected final class a
   {
-    AppMethodBeat.i(145912);
-    if (this.ifi == null)
+    String jqW;
+    String jqX;
+    
+    private a(String paramString1, String paramString2)
     {
-      ??? = new g("fail to stop, may be not start", new Object[0]);
-      AppMethodBeat.o(145912);
-      return ???;
+      this.jqW = paramString1;
+      this.jqX = paramString2;
     }
-    this.ifi.Ez();
-    d.i("MicaoMsg.DefaultLuggageVoicePlayer", "stop isOk:%b", new Object[] { Boolean.TRUE });
-    this.ifi.a(null);
-    release();
-    synchronized (this.ifj)
-    {
-      Iterator localIterator = this.ifj.iterator();
-      if (localIterator.hasNext()) {
-        localIterator.next();
-      }
-    }
-    ??? = g.ifo;
-    AppMethodBeat.o(145912);
-    return ???;
-  }
-  
-  public final void b(c.b paramb)
-  {
-    AppMethodBeat.i(145914);
-    synchronized (this.ifj)
-    {
-      this.ifj.remove(paramb);
-      AppMethodBeat.o(145914);
-      return;
-    }
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(145908);
-    release();
-    AppMethodBeat.o(145908);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.t.b
  * JD-Core Version:    0.7.0.1
  */

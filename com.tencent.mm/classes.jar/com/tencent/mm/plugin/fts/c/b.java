@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.fts.c;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a;
-import com.tencent.mm.plugin.fts.a.a.c;
+import com.tencent.mm.plugin.fts.a.a.d;
 import com.tencent.mm.plugin.fts.a.h;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.wcdb.database.SQLiteStatement;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,114 +16,136 @@ import java.util.List;
 public final class b
   extends a
 {
-  private SQLiteStatement mVE;
+  private SQLiteStatement rsw;
   
-  public final void Pn()
+  public final d DH(int paramInt)
   {
-    AppMethodBeat.i(136821);
-    if (Po())
+    AppMethodBeat.i(52798);
+    Object localObject1 = "Select * from Feature where featureId = ".concat(String.valueOf(paramInt));
+    localObject1 = this.rni.rawQuery((String)localObject1, null);
+    try
+    {
+      boolean bool = ((Cursor)localObject1).moveToFirst();
+      if (!bool) {
+        return null;
+      }
+      d locald = new d();
+      locald.convertFrom((Cursor)localObject1);
+      return locald;
+    }
+    finally
+    {
+      ((Cursor)localObject1).close();
+      AppMethodBeat.o(52798);
+    }
+  }
+  
+  public final void acM()
+  {
+    AppMethodBeat.i(52794);
+    if (acN())
     {
       localObject = String.format("DROP TABLE IF EXISTS %s", new Object[] { "Feature" });
-      this.mQr.execSQL((String)localObject);
-      M(-101L, 2L);
+      this.rni.execSQL((String)localObject);
+      U(-101L, 3L);
     }
-    if (!this.mQr.OS("Feature"))
+    if (!this.rni.aaQ("Feature"))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("CREATE TABLE IF NOT EXISTS Feature ( ");
-      ((StringBuilder)localObject).append(c.info.sql);
+      ((StringBuilder)localObject).append(d.info.sql);
       ((StringBuilder)localObject).append(");");
       localObject = ((StringBuilder)localObject).toString();
-      this.mQr.execSQL((String)localObject);
+      this.rni.execSQL((String)localObject);
     }
     Object localObject = String.format("INSERT INTO %s (featureId, title, titlePY, titleShortPY, tag, actionType, url, helpUrl, updateUrl, androidUrl, iconPath, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", new Object[] { "Feature" });
-    this.mVE = this.mQr.compileStatement((String)localObject);
-    AppMethodBeat.o(136821);
+    this.rsw = this.rni.compileStatement((String)localObject);
+    AppMethodBeat.o(52794);
   }
   
-  public final boolean Po()
+  public final boolean acN()
   {
-    AppMethodBeat.i(136822);
-    if (!er(-101, 2))
+    AppMethodBeat.i(52795);
+    if (!fH(-101, 3))
     {
-      AppMethodBeat.o(136822);
+      AppMethodBeat.o(52795);
       return true;
     }
-    AppMethodBeat.o(136822);
+    AppMethodBeat.o(52795);
     return false;
   }
   
-  public final boolean Pp()
+  public final boolean acO()
   {
-    AppMethodBeat.i(136826);
-    super.Pp();
-    this.mVE.close();
-    AppMethodBeat.o(136826);
+    AppMethodBeat.i(52799);
+    super.acO();
+    this.rsw.close();
+    AppMethodBeat.o(52799);
     return true;
   }
   
-  public final boolean bBT()
+  public final List<a> cxJ()
   {
-    return true;
-  }
-  
-  public final List<b.a> bCv()
-  {
-    AppMethodBeat.i(136823);
+    AppMethodBeat.i(52796);
     ArrayList localArrayList = new ArrayList();
     HashSet localHashSet = new HashSet();
-    Object localObject = String.format("SELECT entity_id, timestamp FROM %s", new Object[] { bBR() });
-    localObject = this.mQr.rawQuery((String)localObject, null);
+    Object localObject = String.format("SELECT entity_id, timestamp FROM %s", new Object[] { cxe() });
+    localObject = this.rni.rawQuery((String)localObject, null);
     while (((Cursor)localObject).moveToNext())
     {
       int i = ((Cursor)localObject).getInt(0);
       if (localHashSet.add(Integer.valueOf(i)))
       {
-        b.a locala = new b.a();
-        locala.mVF = i;
+        a locala = new a();
+        locala.rsx = i;
         locala.timestamp = ((Cursor)localObject).getLong(1);
         localArrayList.add(locala);
       }
     }
     ((Cursor)localObject).close();
-    AppMethodBeat.o(136823);
+    AppMethodBeat.o(52796);
     return localArrayList;
   }
   
-  public final boolean bW(List<c> paramList)
+  public final boolean cxg()
   {
-    AppMethodBeat.i(136824);
-    boolean bool = this.mQr.inTransaction();
+    return true;
+  }
+  
+  public final boolean dH(List<d> paramList)
+  {
+    AppMethodBeat.i(52797);
+    boolean bool = this.rni.inTransaction();
     if (!bool) {
-      this.mQr.beginTransaction();
+      this.rni.beginTransaction();
     }
-    this.mQr.execSQL("Delete from Feature");
+    this.rni.execSQL("Delete from Feature");
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      c localc = (c)paramList.next();
+      d locald = (d)paramList.next();
       try
       {
-        this.mVE.bindLong(1, localc.field_featureId);
-        this.mVE.bindString(2, localc.field_title);
-        this.mVE.bindString(3, localc.field_titlePY);
-        this.mVE.bindString(4, localc.field_titleShortPY);
-        this.mVE.bindString(5, localc.field_tag);
-        this.mVE.bindLong(6, localc.field_actionType);
-        this.mVE.bindString(7, localc.field_url);
-        this.mVE.bindString(8, localc.field_helpUrl);
-        this.mVE.bindString(9, localc.field_updateUrl);
-        this.mVE.bindString(10, localc.field_androidUrl);
-        this.mVE.bindString(11, localc.field_iconPath);
-        this.mVE.bindLong(12, localc.field_timestamp);
-        ab.d("MicroMsg.FTS.FTS5FeatureStorage", "insertFeatureItem rowid=%d timestamp=%d", new Object[] { Long.valueOf(this.mVE.executeInsert()), Long.valueOf(localc.field_timestamp) });
+        this.rsw.bindLong(1, locald.field_featureId);
+        this.rsw.bindString(2, locald.field_title);
+        this.rsw.bindString(3, locald.field_titlePY);
+        this.rsw.bindString(4, locald.field_titleShortPY);
+        this.rsw.bindString(5, locald.field_tag);
+        this.rsw.bindLong(6, locald.field_actionType);
+        this.rsw.bindString(7, locald.field_url);
+        this.rsw.bindString(8, locald.field_helpUrl);
+        this.rsw.bindString(9, locald.field_updateUrl);
+        this.rsw.bindString(10, locald.field_androidUrl);
+        this.rsw.bindString(11, locald.field_iconPath);
+        this.rsw.bindLong(12, locald.field_timestamp);
+        ad.d("MicroMsg.FTS.FTS5FeatureStorage", "insertFeatureItem rowid=%d timestamp=%d", new Object[] { Long.valueOf(this.rsw.executeInsert()), Long.valueOf(locald.field_timestamp) });
       }
       catch (Exception localException) {}
     }
     if (!bool) {
-      this.mQr.commit();
+      this.rni.commit();
     }
-    AppMethodBeat.o(136824);
+    AppMethodBeat.o(52797);
     return true;
   }
   
@@ -147,31 +169,15 @@ public final class b
     return 17;
   }
   
-  public final c wv(int paramInt)
+  public static final class a
   {
-    AppMethodBeat.i(136825);
-    Object localObject1 = "Select * from Feature where featureId = ".concat(String.valueOf(paramInt));
-    localObject1 = this.mQr.rawQuery((String)localObject1, null);
-    try
-    {
-      boolean bool = ((Cursor)localObject1).moveToFirst();
-      if (!bool) {
-        return null;
-      }
-      c localc = new c();
-      localc.convertFrom((Cursor)localObject1);
-      return localc;
-    }
-    finally
-    {
-      ((Cursor)localObject1).close();
-      AppMethodBeat.o(136825);
-    }
+    public int rsx;
+    public long timestamp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.c.b
  * JD-Core Version:    0.7.0.1
  */

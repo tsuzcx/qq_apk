@@ -7,62 +7,65 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.v4.e.a;
+import android.support.v4.media.session.MediaSessionCompat;
 
 public final class MediaMetadataCompat
   implements Parcelable
 {
-  static final a<String, Integer> CC;
-  private static final String[] CD = { "android.media.metadata.TITLE", "android.media.metadata.ARTIST", "android.media.metadata.ALBUM", "android.media.metadata.ALBUM_ARTIST", "android.media.metadata.WRITER", "android.media.metadata.AUTHOR", "android.media.metadata.COMPOSER" };
-  private static final String[] CE = { "android.media.metadata.DISPLAY_ICON", "android.media.metadata.ART", "android.media.metadata.ALBUM_ART" };
-  private static final String[] CF = { "android.media.metadata.DISPLAY_ICON_URI", "android.media.metadata.ART_URI", "android.media.metadata.ALBUM_ART_URI" };
-  public static final Parcelable.Creator<MediaMetadataCompat> CREATOR = new MediaMetadataCompat.1();
-  private Object CG;
+  public static final Parcelable.Creator<MediaMetadataCompat> CREATOR = new Parcelable.Creator() {};
+  static final a<String, Integer> Jo;
+  private static final String[] Jp;
+  private static final String[] Jq;
+  private static final String[] Jr;
+  private Object Js;
   final Bundle mBundle;
   
   static
   {
     a locala = new a();
-    CC = locala;
+    Jo = locala;
     locala.put("android.media.metadata.TITLE", Integer.valueOf(1));
-    CC.put("android.media.metadata.ARTIST", Integer.valueOf(1));
-    CC.put("android.media.metadata.DURATION", Integer.valueOf(0));
-    CC.put("android.media.metadata.ALBUM", Integer.valueOf(1));
-    CC.put("android.media.metadata.AUTHOR", Integer.valueOf(1));
-    CC.put("android.media.metadata.WRITER", Integer.valueOf(1));
-    CC.put("android.media.metadata.COMPOSER", Integer.valueOf(1));
-    CC.put("android.media.metadata.COMPILATION", Integer.valueOf(1));
-    CC.put("android.media.metadata.DATE", Integer.valueOf(1));
-    CC.put("android.media.metadata.YEAR", Integer.valueOf(0));
-    CC.put("android.media.metadata.GENRE", Integer.valueOf(1));
-    CC.put("android.media.metadata.TRACK_NUMBER", Integer.valueOf(0));
-    CC.put("android.media.metadata.NUM_TRACKS", Integer.valueOf(0));
-    CC.put("android.media.metadata.DISC_NUMBER", Integer.valueOf(0));
-    CC.put("android.media.metadata.ALBUM_ARTIST", Integer.valueOf(1));
-    CC.put("android.media.metadata.ART", Integer.valueOf(2));
-    CC.put("android.media.metadata.ART_URI", Integer.valueOf(1));
-    CC.put("android.media.metadata.ALBUM_ART", Integer.valueOf(2));
-    CC.put("android.media.metadata.ALBUM_ART_URI", Integer.valueOf(1));
-    CC.put("android.media.metadata.USER_RATING", Integer.valueOf(3));
-    CC.put("android.media.metadata.RATING", Integer.valueOf(3));
-    CC.put("android.media.metadata.DISPLAY_TITLE", Integer.valueOf(1));
-    CC.put("android.media.metadata.DISPLAY_SUBTITLE", Integer.valueOf(1));
-    CC.put("android.media.metadata.DISPLAY_DESCRIPTION", Integer.valueOf(1));
-    CC.put("android.media.metadata.DISPLAY_ICON", Integer.valueOf(2));
-    CC.put("android.media.metadata.DISPLAY_ICON_URI", Integer.valueOf(1));
-    CC.put("android.media.metadata.MEDIA_ID", Integer.valueOf(1));
-    CC.put("android.media.metadata.BT_FOLDER_TYPE", Integer.valueOf(0));
-    CC.put("android.media.metadata.MEDIA_URI", Integer.valueOf(1));
-    CC.put("android.media.metadata.ADVERTISEMENT", Integer.valueOf(0));
-    CC.put("android.media.metadata.DOWNLOAD_STATUS", Integer.valueOf(0));
+    Jo.put("android.media.metadata.ARTIST", Integer.valueOf(1));
+    Jo.put("android.media.metadata.DURATION", Integer.valueOf(0));
+    Jo.put("android.media.metadata.ALBUM", Integer.valueOf(1));
+    Jo.put("android.media.metadata.AUTHOR", Integer.valueOf(1));
+    Jo.put("android.media.metadata.WRITER", Integer.valueOf(1));
+    Jo.put("android.media.metadata.COMPOSER", Integer.valueOf(1));
+    Jo.put("android.media.metadata.COMPILATION", Integer.valueOf(1));
+    Jo.put("android.media.metadata.DATE", Integer.valueOf(1));
+    Jo.put("android.media.metadata.YEAR", Integer.valueOf(0));
+    Jo.put("android.media.metadata.GENRE", Integer.valueOf(1));
+    Jo.put("android.media.metadata.TRACK_NUMBER", Integer.valueOf(0));
+    Jo.put("android.media.metadata.NUM_TRACKS", Integer.valueOf(0));
+    Jo.put("android.media.metadata.DISC_NUMBER", Integer.valueOf(0));
+    Jo.put("android.media.metadata.ALBUM_ARTIST", Integer.valueOf(1));
+    Jo.put("android.media.metadata.ART", Integer.valueOf(2));
+    Jo.put("android.media.metadata.ART_URI", Integer.valueOf(1));
+    Jo.put("android.media.metadata.ALBUM_ART", Integer.valueOf(2));
+    Jo.put("android.media.metadata.ALBUM_ART_URI", Integer.valueOf(1));
+    Jo.put("android.media.metadata.USER_RATING", Integer.valueOf(3));
+    Jo.put("android.media.metadata.RATING", Integer.valueOf(3));
+    Jo.put("android.media.metadata.DISPLAY_TITLE", Integer.valueOf(1));
+    Jo.put("android.media.metadata.DISPLAY_SUBTITLE", Integer.valueOf(1));
+    Jo.put("android.media.metadata.DISPLAY_DESCRIPTION", Integer.valueOf(1));
+    Jo.put("android.media.metadata.DISPLAY_ICON", Integer.valueOf(2));
+    Jo.put("android.media.metadata.DISPLAY_ICON_URI", Integer.valueOf(1));
+    Jo.put("android.media.metadata.MEDIA_ID", Integer.valueOf(1));
+    Jo.put("android.media.metadata.BT_FOLDER_TYPE", Integer.valueOf(0));
+    Jo.put("android.media.metadata.MEDIA_URI", Integer.valueOf(1));
+    Jo.put("android.media.metadata.ADVERTISEMENT", Integer.valueOf(0));
+    Jo.put("android.media.metadata.DOWNLOAD_STATUS", Integer.valueOf(0));
+    Jp = new String[] { "android.media.metadata.TITLE", "android.media.metadata.ARTIST", "android.media.metadata.ALBUM", "android.media.metadata.ALBUM_ARTIST", "android.media.metadata.WRITER", "android.media.metadata.AUTHOR", "android.media.metadata.COMPOSER" };
+    Jq = new String[] { "android.media.metadata.DISPLAY_ICON", "android.media.metadata.ART", "android.media.metadata.ALBUM_ART" };
+    Jr = new String[] { "android.media.metadata.DISPLAY_ICON_URI", "android.media.metadata.ART_URI", "android.media.metadata.ALBUM_ART_URI" };
   }
   
   MediaMetadataCompat(Parcel paramParcel)
   {
-    this.mBundle = paramParcel.readBundle();
-    this.mBundle.setClassLoader(MediaMetadataCompat.class.getClassLoader());
+    this.mBundle = paramParcel.readBundle(MediaSessionCompat.class.getClassLoader());
   }
   
-  public static MediaMetadataCompat u(Object paramObject)
+  public static MediaMetadataCompat t(Object paramObject)
   {
     if ((paramObject != null) && (Build.VERSION.SDK_INT >= 21))
     {
@@ -71,7 +74,7 @@ public final class MediaMetadataCompat
       localParcel.setDataPosition(0);
       MediaMetadataCompat localMediaMetadataCompat = (MediaMetadataCompat)CREATOR.createFromParcel(localParcel);
       localParcel.recycle();
-      localMediaMetadataCompat.CG = paramObject;
+      localMediaMetadataCompat.Js = paramObject;
       return localMediaMetadataCompat;
     }
     return null;
@@ -89,7 +92,7 @@ public final class MediaMetadataCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.media.MediaMetadataCompat
  * JD-Core Version:    0.7.0.1
  */

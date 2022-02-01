@@ -1,179 +1,134 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
 import android.content.Context;
-import android.util.SparseArray;
+import android.content.Intent;
+import android.view.View;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bsm;
-import com.tencent.mm.protocal.protobuf.bwc;
-import com.tencent.mm.protocal.protobuf.bxz;
-import com.tencent.mm.protocal.protobuf.nc;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.base.sortview.a.a;
+import com.tencent.mm.ui.base.sortview.a.b;
 
 public final class f
-  extends c
+  extends com.tencent.mm.ui.base.sortview.a
 {
-  List<bsm> jUM;
-  private SparseArray<com.tencent.mm.plugin.brandservice.ui.base.a> jUN;
-  private int jUO;
+  private static a.b mTz;
+  int LZ;
+  long mTD;
+  String mTE;
+  String mVk;
   
-  public f(Context paramContext)
+  public f(long paramLong, int paramInt, String paramString)
   {
-    super(paramContext);
-    AppMethodBeat.i(14032);
-    this.jUM = null;
-    this.jUN = new SparseArray();
-    setReporter(new f.1(this));
-    AppMethodBeat.o(14032);
+    super(2, null);
+    this.mTD = paramLong;
+    this.mTE = paramString;
+    this.LZ = paramInt;
   }
   
-  public final void a(nc paramnc, boolean paramBoolean)
+  public final void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
-    AppMethodBeat.i(14034);
-    super.a(paramnc, paramBoolean);
-    if (this.jUO == 0) {
-      this.jUO = super.getCount();
-    }
-    AppMethodBeat.o(14034);
+    this.mVk = "";
   }
   
-  public final void aWx()
+  public final a.b bCt()
   {
-    AppMethodBeat.i(14036);
-    super.aWx();
-    AppMethodBeat.o(14036);
-  }
-  
-  public final int getCount()
-  {
-    AppMethodBeat.i(14035);
-    int i = super.getCount();
-    int j = i;
-    if (i == 0)
-    {
-      j = i;
-      if (this.jUM != null)
+    AppMethodBeat.i(5757);
+    if (mTz == null) {
+      mTz = new a.b()
       {
-        Iterator localIterator = this.jUM.iterator();
-        if (localIterator.hasNext())
+        public final void a(Context paramAnonymousContext, a.a paramAnonymousa, com.tencent.mm.ui.base.sortview.a paramAnonymousVarArgs)
         {
-          bsm localbsm = (bsm)localIterator.next();
-          if ((localbsm == null) || (localbsm.xFX == null)) {
-            break label93;
+          AppMethodBeat.i(5755);
+          if ((paramAnonymousContext == null) || (paramAnonymousa == null) || (paramAnonymousVarArgs == null))
+          {
+            ad.e("MicroMsg.ReadMoreBtnDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
+            AppMethodBeat.o(5755);
+            return;
           }
-          i += localbsm.xFX.size();
+          if (!(paramAnonymousa instanceof f.a))
+          {
+            ad.e("MicroMsg.ReadMoreBtnDataItem", "The ViewHolder is not a instance of MoreBtnViewHolder.");
+            AppMethodBeat.o(5755);
+            return;
+          }
+          if (!(paramAnonymousVarArgs instanceof f))
+          {
+            ad.e("MicroMsg.ReadMoreBtnDataItem", "The DataItem is not a instance of MoreBtnDataItem.");
+            AppMethodBeat.o(5755);
+            return;
+          }
+          paramAnonymousContext = (f.a)paramAnonymousa;
+          paramAnonymousa = (f)paramAnonymousVarArgs;
+          paramAnonymousContext.kXT.setText(paramAnonymousa.mVk);
+          AppMethodBeat.o(5755);
         }
-      }
+        
+        public final void a(View paramAnonymousView, a.a paramAnonymousa)
+        {
+          AppMethodBeat.i(5756);
+          if ((paramAnonymousView != null) && (paramAnonymousa != null) && ((paramAnonymousa instanceof f.a))) {
+            ((f.a)paramAnonymousa).kXT = ((TextView)paramAnonymousView.findViewById(2131305885));
+          }
+          AppMethodBeat.o(5756);
+        }
+        
+        public final boolean a(Context paramAnonymousContext, com.tencent.mm.ui.base.sortview.a paramAnonymousa, Object... paramAnonymousVarArgs)
+        {
+          AppMethodBeat.i(5753);
+          if ((paramAnonymousContext != null) && (paramAnonymousa != null)) {
+            if ((paramAnonymousVarArgs == null) || (paramAnonymousVarArgs.length < 2) || (!(paramAnonymousVarArgs[1] instanceof Integer))) {
+              break label178;
+            }
+          }
+          label178:
+          for (int i = ((Integer)paramAnonymousVarArgs[1]).intValue();; i = 0)
+          {
+            paramAnonymousa = (f)paramAnonymousa;
+            paramAnonymousVarArgs = new Intent(paramAnonymousContext, BizSearchDetailPageUI.class);
+            paramAnonymousVarArgs.putExtra("keyword", paramAnonymousa.mTE);
+            paramAnonymousVarArgs.putExtra("businessType", paramAnonymousa.mTD);
+            paramAnonymousVarArgs.putExtra("offset", paramAnonymousa.LZ);
+            paramAnonymousVarArgs.putExtra("showEditText", true);
+            paramAnonymousVarArgs.putExtra("fromScene", i);
+            paramAnonymousa = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousVarArgs);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousContext, paramAnonymousa.adn(), "com/tencent/mm/plugin/brandservice/ui/ReadMoreBtnDataItem$1", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/ui/base/sortview/BaseDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousContext.startActivity((Intent)paramAnonymousa.lS(0));
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousContext, "com/tencent/mm/plugin/brandservice/ui/ReadMoreBtnDataItem$1", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/ui/base/sortview/BaseDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            AppMethodBeat.o(5753);
+            return true;
+          }
+        }
+        
+        public final View c(Context paramAnonymousContext, View paramAnonymousView)
+        {
+          AppMethodBeat.i(5754);
+          View localView = paramAnonymousView;
+          if (paramAnonymousView == null) {
+            localView = View.inflate(paramAnonymousContext, 2131495327, null);
+          }
+          AppMethodBeat.o(5754);
+          return localView;
+        }
+      };
     }
-    label93:
-    for (;;)
-    {
-      break;
-      j = i;
-      AppMethodBeat.o(14035);
-      return j;
-    }
+    a.b localb = mTz;
+    AppMethodBeat.o(5757);
+    return localb;
   }
   
-  public final void i(String paramString, List<nc> paramList)
+  public final a.a bCu()
   {
-    AppMethodBeat.i(14033);
-    super.i(paramString, paramList);
-    this.jUO = super.getCount();
-    AppMethodBeat.o(14033);
+    AppMethodBeat.i(5758);
+    a locala = new a();
+    AppMethodBeat.o(5758);
+    return locala;
   }
   
-  public final Object[] sa(int paramInt)
+  public static final class a
+    implements a.a
   {
-    AppMethodBeat.i(14038);
-    Object localObject2 = rX(paramInt);
-    Object localObject1 = rY(paramInt);
-    if (localObject2 != null)
-    {
-      localObject2 = ((c.a)localObject2).jTy;
-      if (paramInt < this.jUO)
-      {
-        paramInt = 39;
-        if (localObject1 == null) {
-          break label83;
-        }
-      }
-      label83:
-      for (localObject1 = ((nc)localObject1).wBZ;; localObject1 = "")
-      {
-        AppMethodBeat.o(14038);
-        return new Object[] { this, localObject2, Integer.valueOf(paramInt), localObject1 };
-        paramInt = 56;
-        break;
-      }
-    }
-    localObject1 = super.sa(paramInt);
-    AppMethodBeat.o(14038);
-    return localObject1;
-  }
-  
-  public final com.tencent.mm.ui.base.sortview.a sc(int paramInt)
-  {
-    AppMethodBeat.i(14037);
-    int i = super.getCount();
-    if (i != 0)
-    {
-      localObject1 = super.sc(paramInt);
-      AppMethodBeat.o(14037);
-      return localObject1;
-    }
-    Object localObject2 = (com.tencent.mm.plugin.brandservice.ui.base.a)this.jUN.get(paramInt);
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject1 = localObject2;
-      if (this.jUM.size() > 0)
-      {
-        localObject1 = this.jUM.iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label229;
-        }
-        localObject2 = (bsm)((Iterator)localObject1).next();
-        if (i != paramInt) {
-          break label180;
-        }
-        if (((bsm)localObject2).xFV != null) {
-          break label168;
-        }
-        localObject1 = null;
-        label110:
-        bxz localbxz = (bxz)((bsm)localObject2).xFX.get(0);
-        localObject2 = localObject1;
-        localObject1 = localbxz;
-      }
-    }
-    for (;;)
-    {
-      localObject1 = new b(localObject1, (String)localObject2);
-      ((com.tencent.mm.plugin.brandservice.ui.base.a)localObject1).sd(paramInt);
-      ((com.tencent.mm.plugin.brandservice.ui.base.a)localObject1).setPosition(paramInt);
-      this.jUN.put(paramInt, localObject1);
-      AppMethodBeat.o(14037);
-      return localObject1;
-      label168:
-      localObject1 = ((bsm)localObject2).xFV.toString();
-      break label110;
-      label180:
-      if (paramInt < ((bsm)localObject2).xFX.size() + i)
-      {
-        localObject1 = (bxz)((bsm)localObject2).xFX.get(paramInt - i);
-        localObject2 = null;
-      }
-      else
-      {
-        i = ((bsm)localObject2).xFX.size() + i;
-        break;
-        label229:
-        localObject2 = null;
-        localObject1 = null;
-      }
-    }
+    public TextView kXT;
   }
 }
 

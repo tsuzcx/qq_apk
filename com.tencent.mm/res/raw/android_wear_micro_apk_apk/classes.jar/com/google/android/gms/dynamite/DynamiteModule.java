@@ -4,13 +4,13 @@ import java.util.HashMap;
 
 public final class DynamiteModule
 {
-  private static final HashMap<String, byte[]> LE = new HashMap();
-  private static final b LF = new b() {};
-  public static final a LG = new a() {};
-  public static final a LH = new a() {};
-  public static final a LI = new a() {};
-  public static final a LJ = new a() {};
-  public static final a LK = new a() {};
+  private static final HashMap<String, byte[]> Nt = new HashMap();
+  private static final b Nu = new b() {};
+  public static final a Nv = new a() {};
+  public static final a Nw = new a() {};
+  public static final a Nx = new a() {};
+  public static final a Ny = new a() {};
+  public static final a Nz = new a() {};
 }
 
 

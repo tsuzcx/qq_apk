@@ -1,52 +1,57 @@
 package com.tencent.mm.plugin.f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.t;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.vfs.i;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class e
   extends a
 {
-  protected final List<com.tencent.mm.plugin.f.b.a> Q(bi parambi)
+  protected final List<com.tencent.mm.plugin.f.b.a> ac(bl parambl)
   {
-    AppMethodBeat.i(18623);
-    if (parambi == null)
+    AppMethodBeat.i(22732);
+    if (parambl == null)
     {
-      AppMethodBeat.o(18623);
+      AppMethodBeat.o(22732);
       return null;
     }
-    o.alE();
-    Object localObject = t.vf(parambi.field_imgPath);
-    long l = com.tencent.mm.vfs.e.avI((String)localObject);
-    com.tencent.mm.plugin.f.b.a locala = R(parambi);
+    o.aCI();
+    Object localObject = t.zQ(parambl.field_imgPath);
+    long l = i.aMN((String)localObject);
+    com.tencent.mm.plugin.f.b.a locala = ad(parambl);
     locala.field_msgSubType = 1;
-    locala.field_path = Hw((String)localObject);
+    locala.field_path = aUM((String)localObject);
     locala.field_size = l;
-    o.alE();
-    localObject = t.vg(parambi.field_imgPath);
-    l = com.tencent.mm.vfs.e.avI((String)localObject);
-    parambi = R(parambi);
-    parambi.field_msgSubType = 2;
-    parambi.field_path = Hw((String)localObject);
-    parambi.field_size = l;
-    ab.i("MicroMsg.VideoMsgHandler", "%s create video wx file index video[%s] thumb[%s]", new Object[] { bau(), locala, parambi });
-    localObject = new ArrayList();
-    ((List)localObject).add(locala);
-    ((List)localObject).add(parambi);
-    AppMethodBeat.o(18623);
-    return localObject;
+    o.aCI();
+    String str = t.zR(parambl.field_imgPath);
+    l = i.aMN(str);
+    localObject = ad(parambl);
+    ((com.tencent.mm.plugin.f.b.a)localObject).field_msgSubType = 2;
+    ((com.tencent.mm.plugin.f.b.a)localObject).field_path = aUM(str);
+    ((com.tencent.mm.plugin.f.b.a)localObject).field_size = l;
+    if (parambl.cjN()) {
+      ((com.tencent.mm.plugin.f.b.a)localObject).field_path = k.b.ar(parambl.field_content, parambl.field_reserved).thumburl;
+    }
+    ad.i("MicroMsg.VideoMsgHandler", "%s create video wx file index video[%s] thumb[%s]", new Object[] { info(), locala, localObject });
+    parambl = new ArrayList();
+    parambl.add(locala);
+    parambl.add(localObject);
+    AppMethodBeat.o(22732);
+    return parambl;
   }
   
-  protected final String bau()
+  protected final String info()
   {
-    AppMethodBeat.i(18624);
+    AppMethodBeat.i(22733);
     String str = "video_" + hashCode();
-    AppMethodBeat.o(18624);
+    AppMethodBeat.o(22733);
     return str;
   }
 }

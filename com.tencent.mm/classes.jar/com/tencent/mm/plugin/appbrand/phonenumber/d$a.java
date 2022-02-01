@@ -1,9 +1,15 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
-import a.l;
+import com.tencent.mm.vending.c.a;
+import d.g.a.r;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/CgiGetAllPhone$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
-public final class d$a {}
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/JSOperateWxDataResponse;", "kotlin.jvm.PlatformType", "call"})
+final class d$a<_Ret, _Var>
+  implements a<_Ret, _Var>
+{
+  d$a(r paramr) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar

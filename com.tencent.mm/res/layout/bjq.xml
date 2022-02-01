@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/g_s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hd" android:layout_marginRight="@dimen/hd" android:layout_centerHorizontal="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/cnq" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="44.0dip" android:src="@raw/icons_outlined_error" app:iconColor="@color/a9c" />
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/ab" android:gravity="center" android:layout_gravity="center" android:id="@id/jk" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="24.0dip" android:text="@string/gta" />
+            <TextView android:textSize="@dimen/gx" android:textColor="@color/Link" android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@id/g4v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/gtb" />
+        </LinearLayout>
+        <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/g_s" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+            <Button android:layout_gravity="center_horizontal" android:id="@id/cmy" android:layout_marginBottom="64.0dip" android:text="@string/gt_" style="@style/o7" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -18,19 +18,19 @@ public class XWalkV8
   
   static
   {
-    AppMethodBeat.i(85938);
+    AppMethodBeat.i(155042);
     if (!XWalkV8.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(85938);
+      AppMethodBeat.o(155042);
       return;
     }
   }
   
   public XWalkV8()
   {
-    AppMethodBeat.i(85932);
+    AppMethodBeat.i(155036);
     this.initintMethod = new ReflectMethod(null, "init", new Class[0]);
     this.evaluateJavascriptStringValueCallbackMethod = new ReflectMethod(null, "evaluateJavascript", new Class[0]);
     this.cleanupMethod = new ReflectMethod(null, "cleanup", new Class[0]);
@@ -38,16 +38,16 @@ public class XWalkV8
     this.constructorTypes = new ArrayList();
     this.constructorParams = new ArrayList();
     reflectionInit();
-    AppMethodBeat.o(85932);
+    AppMethodBeat.o(155036);
   }
   
   public void addJavascriptInterface(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(85936);
+    AppMethodBeat.i(155040);
     try
     {
       this.addJavascriptInterfaceObjectStringMethod.invoke(new Object[] { paramObject, paramString });
-      AppMethodBeat.o(85936);
+      AppMethodBeat.o(155040);
       return;
     }
     catch (UnsupportedOperationException paramObject)
@@ -55,21 +55,21 @@ public class XWalkV8
       if (this.coreWrapper == null)
       {
         paramObject = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85936);
+        AppMethodBeat.o(155040);
         throw paramObject;
       }
       XWalkCoreWrapper.handleRuntimeError(paramObject);
-      AppMethodBeat.o(85936);
+      AppMethodBeat.o(155040);
     }
   }
   
   public void cleanup()
   {
-    AppMethodBeat.i(85935);
+    AppMethodBeat.i(155039);
     try
     {
       this.cleanupMethod.invoke(new Object[0]);
-      AppMethodBeat.o(85935);
+      AppMethodBeat.o(155039);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -78,21 +78,21 @@ public class XWalkV8
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85935);
+        AppMethodBeat.o(155039);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85935);
+      AppMethodBeat.o(155039);
     }
   }
   
   public void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(85934);
+    AppMethodBeat.i(155038);
     try
     {
       this.evaluateJavascriptStringValueCallbackMethod.invoke(new Object[] { paramString, paramValueCallback });
-      AppMethodBeat.o(85934);
+      AppMethodBeat.o(155038);
       return;
     }
     catch (UnsupportedOperationException paramString)
@@ -100,11 +100,11 @@ public class XWalkV8
       if (this.coreWrapper == null)
       {
         paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85934);
+        AppMethodBeat.o(155038);
         throw paramString;
       }
       XWalkCoreWrapper.handleRuntimeError(paramString);
-      AppMethodBeat.o(85934);
+      AppMethodBeat.o(155038);
     }
   }
   
@@ -115,11 +115,11 @@ public class XWalkV8
   
   public void init(int paramInt)
   {
-    AppMethodBeat.i(85933);
+    AppMethodBeat.i(155037);
     try
     {
       this.initintMethod.invoke(new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(85933);
+      AppMethodBeat.o(155037);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
@@ -128,23 +128,23 @@ public class XWalkV8
       if (this.coreWrapper == null)
       {
         localRuntimeException = new RuntimeException("Crosswalk's APIs are not ready yet");
-        AppMethodBeat.o(85933);
+        AppMethodBeat.o(155037);
         throw localRuntimeException;
       }
       XWalkCoreWrapper.handleRuntimeError(localRuntimeException);
-      AppMethodBeat.o(85933);
+      AppMethodBeat.o(155037);
     }
   }
   
   void reflectionInit()
   {
-    AppMethodBeat.i(85937);
+    AppMethodBeat.i(155041);
     XWalkCoreWrapper.initEmbeddedMode();
     this.coreWrapper = XWalkCoreWrapper.getInstance();
     if (this.coreWrapper == null)
     {
       XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(85937);
+      AppMethodBeat.o(155041);
       return;
     }
     int j = this.constructorTypes.size();
@@ -172,7 +172,7 @@ public class XWalkV8
         }
       } while ($assertionsDisabled);
       localObject1 = new AssertionError();
-      AppMethodBeat.o(85937);
+      AppMethodBeat.o(155041);
       throw ((Throwable)localObject1);
     }
     localObject1[j] = Object.class;
@@ -188,18 +188,18 @@ public class XWalkV8
       this.evaluateJavascriptStringValueCallbackMethod.init(this.bridge, null, "evaluateJavascriptSuper", new Class[] { String.class, ValueCallback.class });
       this.cleanupMethod.init(this.bridge, null, "cleanupSuper", new Class[0]);
       this.addJavascriptInterfaceObjectStringMethod.init(this.bridge, null, "addJavascriptInterfaceSuper", new Class[] { Object.class, String.class });
-      AppMethodBeat.o(85937);
+      AppMethodBeat.o(155041);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
     {
-      AppMethodBeat.o(85937);
+      AppMethodBeat.o(155041);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.XWalkV8
  * JD-Core Version:    0.7.0.1
  */

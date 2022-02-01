@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="#fff2f2f2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:background="@color/a6q" android:padding="12.0dip" android:layout_width="fill_parent" android:layout_height="110.0dip">
-            <ImageView android:id="@id/du4" android:layout_width="86.0dip" android:layout_height="86.0dip" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-            <TextView android:textColor="#ff999999" android:id="@id/du5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="4.0dip" android:maxLines="2" android:layout_toRightOf="@id/du4" android:layout_alignParentTop="true" android:lineSpacingExtra="0.0dip" style="@style/po" />
-            <TextView android:textSize="28.0dip" android:id="@id/du6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginBottom="2.0dip" android:layout_toRightOf="@id/du4" android:layout_alignParentBottom="true" style="@style/po" />
-        </RelativeLayout>
-        <View android:background="#ffd4d4d4" android:layout_width="fill_parent" android:layout_height="2.0px" />
-        <com.tencent.mm.ui.base.MaxListView android:id="@id/du7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2" android:listSelector="@android:color/transparent" android:divider="#00000000" android:dividerHeight="0.0dip" android:choiceMode="singleChoice" />
-        <TextView android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2" android:text="@string/d0g" style="@style/py" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2">
-            <com.tencent.mm.plugin.product.ui.MallProductSelectAmountView android:id="@id/du8" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <TextView android:textColor="@color/y5" android:gravity="center" android:id="@id/du9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/l2" android:text="@string/d0e" style="@style/po" />
+    <TextView android:id="@id/dlh" style="@style/a4o" />
+    <LinearLayout android:orientation="vertical" android:id="@id/dl8" android:background="@drawable/mj" android:paddingLeft="@dimen/h" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn">
+        <TextView android:id="@id/dl9" style="@style/a4m" />
+        <TextView android:id="@id/dlb" android:layout_marginTop="@dimen/d" android:layout_marginBottom="@dimen/jn" style="@style/a4m" />
+        <View style="@style/a4n" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/h" android:layout_marginBottom="@dimen/h">
+            <TextView android:id="@id/dl_" style="@style/h4" />
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:id="@id/dlg" android:background="@drawable/mz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/aa" android:drawableRight="@raw/chatto_voice_playing" />
+                <com.tencent.mm.ui.base.AnimImageView android:layout_gravity="right" android:id="@id/dlf" android:paddingRight="17.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/aa" />
+            </FrameLayout>
         </LinearLayout>
-        <Button android:gravity="center" android:id="@id/du_" android:layout_marginLeft="@dimen/l2" android:layout_marginTop="42.0dip" android:layout_marginRight="@dimen/l2" android:layout_marginBottom="@dimen/l2" android:text="@string/d0i" style="@style/nq" />
+        <View style="@style/a4n" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/dl7" style="@style/a4l" />
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

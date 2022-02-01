@@ -24,34 +24,34 @@ public final class AccountTransfer
   
   static
   {
-    AppMethodBeat.i(76977);
+    AppMethodBeat.i(10636);
     zzau = new Api.ClientKey();
     zzav = new zzd();
     zzaw = new Api("AccountTransfer.ACCOUNT_TRANSFER_API", zzav, zzau);
     zzax = new zzw();
     zzay = new zzw();
-    AppMethodBeat.o(76977);
+    AppMethodBeat.o(10636);
   }
   
   public static AccountTransferClient getAccountTransferClient(Activity paramActivity)
   {
-    AppMethodBeat.i(76975);
+    AppMethodBeat.i(10634);
     paramActivity = new AccountTransferClient(paramActivity);
-    AppMethodBeat.o(76975);
+    AppMethodBeat.o(10634);
     return paramActivity;
   }
   
   public static AccountTransferClient getAccountTransferClient(Context paramContext)
   {
-    AppMethodBeat.i(76976);
+    AppMethodBeat.i(10635);
     paramContext = new AccountTransferClient(paramContext);
-    AppMethodBeat.o(76976);
+    AppMethodBeat.o(10635);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.accounttransfer.AccountTransfer
  * JD-Core Version:    0.7.0.1
  */

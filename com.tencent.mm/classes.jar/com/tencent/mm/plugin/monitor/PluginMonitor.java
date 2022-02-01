@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.monitor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.monitor.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class PluginMonitor
   extends f
@@ -15,21 +15,21 @@ public class PluginMonitor
   
   public void execute(g paramg)
   {
-    AppMethodBeat.i(84516);
-    if (paramg.SD())
+    AppMethodBeat.i(51498);
+    if (paramg.agu())
     {
-      ab.i("MicroMsg.PluginMonitor", "PluginMonitor execute PluginMonitor new SubCoreBaseMonitor");
-      pin(new q(b.class));
+      ad.i("MicroMsg.PluginMonitor", "PluginMonitor execute PluginMonitor new SubCoreBaseMonitor");
+      pin(new t(b.class));
     }
-    AppMethodBeat.o(84516);
+    AppMethodBeat.o(51498);
   }
   
   public void installed()
   {
-    AppMethodBeat.i(84515);
+    AppMethodBeat.i(51497);
     super.installed();
     alias(a.class);
-    AppMethodBeat.o(84515);
+    AppMethodBeat.o(51497);
   }
   
   public String name()
@@ -39,7 +39,7 @@ public class PluginMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.monitor.PluginMonitor
  * JD-Core Version:    0.7.0.1
  */

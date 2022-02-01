@@ -16,13 +16,13 @@ import java.nio.ByteBuffer;
 public class g
   extends e
 {
-  protected final Class AG;
-  protected final Constructor AH;
-  protected final Method AI;
-  protected final Method AJ;
-  protected final Method AK;
-  protected final Method AL;
-  protected final Method AM;
+  protected final Class Hb;
+  protected final Constructor Hc;
+  protected final Method Hd;
+  protected final Method He;
+  protected final Method Hf;
+  protected final Method Hg;
+  protected final Method Hh;
   
   public g()
   {
@@ -34,14 +34,14 @@ public class g
       localMethod4 = localClass.getMethod("addFontFromBuffer", new Class[] { ByteBuffer.class, Integer.TYPE, [Landroid.graphics.fonts.FontVariationAxis.class, Integer.TYPE, Integer.TYPE });
       localMethod3 = localClass.getMethod("freeze", new Class[0]);
       localMethod2 = localClass.getMethod("abortCreation", new Class[0]);
-      Method localMethod1 = k(localClass);
-      this.AG = localClass;
-      this.AH = localConstructor;
-      this.AI = localMethod5;
-      this.AJ = localMethod4;
-      this.AK = localMethod3;
-      this.AL = localMethod2;
-      this.AM = localMethod1;
+      Method localMethod1 = h(localClass);
+      this.Hb = localClass;
+      this.Hc = localConstructor;
+      this.Hd = localMethod5;
+      this.He = localMethod4;
+      this.Hf = localMethod3;
+      this.Hg = localMethod2;
+      this.Hh = localMethod1;
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
@@ -69,7 +69,7 @@ public class g
   {
     try
     {
-      boolean bool = ((Boolean)this.AI.invoke(paramObject, new Object[] { paramContext.getAssets(), paramString, Integer.valueOf(0), Boolean.FALSE, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramArrayOfFontVariationAxis })).booleanValue();
+      boolean bool = ((Boolean)this.Hd.invoke(paramObject, new Object[] { paramContext.getAssets(), paramString, Integer.valueOf(0), Boolean.FALSE, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramArrayOfFontVariationAxis })).booleanValue();
       return bool;
     }
     catch (IllegalAccessException paramContext)
@@ -87,7 +87,7 @@ public class g
   {
     try
     {
-      boolean bool = ((Boolean)this.AJ.invoke(paramObject, new Object[] { paramByteBuffer, Integer.valueOf(paramInt1), null, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) })).booleanValue();
+      boolean bool = ((Boolean)this.He.invoke(paramObject, new Object[] { paramByteBuffer, Integer.valueOf(paramInt1), null, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) })).booleanValue();
       return bool;
     }
     catch (IllegalAccessException paramObject)
@@ -101,11 +101,11 @@ public class g
     }
   }
   
-  private Object cP()
+  private Object dU()
   {
     try
     {
-      Object localObject = this.AH.newInstance(new Object[0]);
+      Object localObject = this.Hc.newInstance(new Object[0]);
       return localObject;
     }
     catch (InstantiationException localInstantiationException)
@@ -123,16 +123,16 @@ public class g
     }
   }
   
-  private boolean cQ()
+  private boolean dV()
   {
-    return this.AI != null;
+    return this.Hd != null;
   }
   
-  private boolean p(Object paramObject)
+  private boolean o(Object paramObject)
   {
     try
     {
-      boolean bool = ((Boolean)this.AK.invoke(paramObject, new Object[0])).booleanValue();
+      boolean bool = ((Boolean)this.Hf.invoke(paramObject, new Object[0])).booleanValue();
       return bool;
     }
     catch (IllegalAccessException paramObject)
@@ -146,11 +146,11 @@ public class g
     }
   }
   
-  private void q(Object paramObject)
+  private void p(Object paramObject)
   {
     try
     {
-      this.AL.invoke(paramObject, new Object[0]);
+      this.Hg.invoke(paramObject, new Object[0]);
       return;
     }
     catch (IllegalAccessException paramObject)
@@ -167,50 +167,50 @@ public class g
   public final Typeface a(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2)
   {
     Object localObject = null;
-    if (!cQ()) {
+    if (!dV()) {
       paramContext = super.a(paramContext, paramResources, paramInt1, paramString, paramInt2);
     }
     do
     {
       return paramContext;
-      paramResources = cP();
+      paramResources = dU();
       if (!a(paramContext, paramResources, paramString, 0, -1, -1, null))
       {
-        q(paramResources);
+        p(paramResources);
         return null;
       }
       paramContext = localObject;
-    } while (!p(paramResources));
-    return o(paramResources);
+    } while (!o(paramResources));
+    return n(paramResources);
   }
   
   public final Typeface a(Context paramContext, c.b paramb, Resources paramResources, int paramInt)
   {
-    if (!cQ()) {
+    if (!dV()) {
       return super.a(paramContext, paramb, paramResources, paramInt);
     }
-    paramResources = cP();
-    paramb = paramb.Ah;
+    paramResources = dU();
+    paramb = paramb.GD;
     int j = paramb.length;
     paramInt = 0;
     while (paramInt < j)
     {
       Object localObject = paramb[paramInt];
       String str = localObject.mFileName;
-      int k = localObject.Al;
-      int m = localObject.Ai;
-      if (localObject.Aj) {}
-      for (int i = 1; !a(paramContext, paramResources, str, k, m, i, FontVariationAxis.fromFontVariationSettings(localObject.Ak)); i = 0)
+      int k = localObject.GH;
+      int m = localObject.GE;
+      if (localObject.GF) {}
+      for (int i = 1; !a(paramContext, paramResources, str, k, m, i, FontVariationAxis.fromFontVariationSettings(localObject.GG)); i = 0)
       {
-        q(paramResources);
+        p(paramResources);
         return null;
       }
       paramInt += 1;
     }
-    if (!p(paramResources)) {
+    if (!o(paramResources)) {
       return null;
     }
-    return o(paramResources);
+    return n(paramResources);
   }
   
   /* Error */
@@ -225,7 +225,7 @@ public class g
     //   7: aload_1
     //   8: areturn
     //   9: aload_0
-    //   10: invokespecial 156	android/support/v4/graphics/g:cQ	()Z
+    //   10: invokespecial 156	android/support/v4/graphics/g:dV	()Z
     //   13: ifne +131 -> 144
     //   16: aload_0
     //   17: aload_2
@@ -256,10 +256,10 @@ public class g
     //   64: invokevirtual 242	android/os/ParcelFileDescriptor:getFileDescriptor	()Ljava/io/FileDescriptor;
     //   67: invokespecial 245	android/graphics/Typeface$Builder:<init>	(Ljava/io/FileDescriptor;)V
     //   70: aload_2
-    //   71: getfield 246	android/support/v4/c/b$b:Ai	I
+    //   71: getfield 246	android/support/v4/c/b$b:GE	I
     //   74: invokevirtual 250	android/graphics/Typeface$Builder:setWeight	(I)Landroid/graphics/Typeface$Builder;
     //   77: aload_2
-    //   78: getfield 251	android/support/v4/c/b$b:Aj	Z
+    //   78: getfield 251	android/support/v4/c/b$b:GF	Z
     //   81: invokevirtual 255	android/graphics/Typeface$Builder:setItalic	(Z)Landroid/graphics/Typeface$Builder;
     //   84: invokevirtual 259	android/graphics/Typeface$Builder:build	()Landroid/graphics/Typeface;
     //   87: astore_2
@@ -299,7 +299,7 @@ public class g
     //   146: invokestatic 267	android/support/v4/c/b:a	(Landroid/content/Context;[Landroid/support/v4/c/b$b;)Ljava/util/Map;
     //   149: astore_1
     //   150: aload_0
-    //   151: invokespecial 160	android/support/v4/graphics/g:cP	()Ljava/lang/Object;
+    //   151: invokespecial 160	android/support/v4/graphics/g:dU	()Ljava/lang/Object;
     //   154: astore 9
     //   156: aload_2
     //   157: arraylength
@@ -324,13 +324,13 @@ public class g
     //   195: aload 11
     //   197: ifnull +62 -> 259
     //   200: aload 10
-    //   202: getfield 274	android/support/v4/c/b$b:Al	I
+    //   202: getfield 274	android/support/v4/c/b$b:GH	I
     //   205: istore 7
     //   207: aload 10
-    //   209: getfield 246	android/support/v4/c/b$b:Ai	I
+    //   209: getfield 246	android/support/v4/c/b$b:GE	I
     //   212: istore 8
     //   214: aload 10
-    //   216: getfield 251	android/support/v4/c/b$b:Aj	Z
+    //   216: getfield 251	android/support/v4/c/b$b:GF	Z
     //   219: ifeq +31 -> 250
     //   222: iconst_1
     //   223: istore 5
@@ -344,7 +344,7 @@ public class g
     //   239: ifne +17 -> 256
     //   242: aload_0
     //   243: aload 9
-    //   245: invokespecial 164	android/support/v4/graphics/g:q	(Ljava/lang/Object;)V
+    //   245: invokespecial 164	android/support/v4/graphics/g:p	(Ljava/lang/Object;)V
     //   248: aconst_null
     //   249: areturn
     //   250: iconst_0
@@ -361,18 +361,18 @@ public class g
     //   270: ifne +11 -> 281
     //   273: aload_0
     //   274: aload 9
-    //   276: invokespecial 164	android/support/v4/graphics/g:q	(Ljava/lang/Object;)V
+    //   276: invokespecial 164	android/support/v4/graphics/g:p	(Ljava/lang/Object;)V
     //   279: aconst_null
     //   280: areturn
     //   281: aload_0
     //   282: aload 9
-    //   284: invokespecial 166	android/support/v4/graphics/g:p	(Ljava/lang/Object;)Z
+    //   284: invokespecial 166	android/support/v4/graphics/g:o	(Ljava/lang/Object;)Z
     //   287: ifne +5 -> 292
     //   290: aconst_null
     //   291: areturn
     //   292: aload_0
     //   293: aload 9
-    //   295: invokevirtual 170	android/support/v4/graphics/g:o	(Ljava/lang/Object;)Landroid/graphics/Typeface;
+    //   295: invokevirtual 170	android/support/v4/graphics/g:n	(Ljava/lang/Object;)Landroid/graphics/Typeface;
     //   298: iload_3
     //   299: invokestatic 282	android/graphics/Typeface:create	(Landroid/graphics/Typeface;I)Landroid/graphics/Typeface;
     //   302: areturn
@@ -411,20 +411,20 @@ public class g
     //   58	88	303	finally
   }
   
-  protected Method k(Class paramClass)
+  protected Method h(Class paramClass)
   {
     paramClass = Typeface.class.getDeclaredMethod("createFromFamiliesWithDefault", new Class[] { Array.newInstance(paramClass, 1).getClass(), Integer.TYPE, Integer.TYPE });
     paramClass.setAccessible(true);
     return paramClass;
   }
   
-  protected Typeface o(Object paramObject)
+  protected Typeface n(Object paramObject)
   {
     try
     {
-      Object localObject = Array.newInstance(this.AG, 1);
+      Object localObject = Array.newInstance(this.Hb, 1);
       Array.set(localObject, 0, paramObject);
-      paramObject = (Typeface)this.AM.invoke(null, new Object[] { localObject, Integer.valueOf(-1), Integer.valueOf(-1) });
+      paramObject = (Typeface)this.Hh.invoke(null, new Object[] { localObject, Integer.valueOf(-1), Integer.valueOf(-1) });
       return paramObject;
     }
     catch (IllegalAccessException paramObject)

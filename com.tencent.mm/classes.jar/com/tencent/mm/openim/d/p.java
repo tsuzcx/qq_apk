@@ -2,112 +2,111 @@ package com.tencent.mm.openim.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.t;
+import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
 
 public final class p
   implements com.tencent.mm.openim.a.a
 {
-  public final void al(String paramString1, String paramString2)
+  public final void Be(String paramString)
   {
-    AppMethodBeat.i(78941);
-    ((j)g.E(j.class)).Yz().c(new k(paramString1, paramString2));
-    AppMethodBeat.o(78941);
+    AppMethodBeat.i(151288);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new a(paramString));
+    AppMethodBeat.o(151288);
   }
   
-  public final void pc(String paramString)
+  public final void Bf(String paramString)
   {
-    AppMethodBeat.i(78935);
-    if (t.nK(paramString))
+    AppMethodBeat.i(151289);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new l(paramString, 1));
+    AppMethodBeat.o(151289);
+  }
+  
+  public final void Bg(String paramString)
+  {
+    AppMethodBeat.i(151290);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new l(paramString, 2));
+    AppMethodBeat.o(151290);
+  }
+  
+  public final void aA(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(151285);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new k(paramString1, paramString2));
+    AppMethodBeat.o(151285);
+  }
+  
+  public final void tP(String paramString)
+  {
+    AppMethodBeat.i(151279);
+    if (w.sn(paramString))
     {
-      ((j)g.E(j.class)).Yz().c(new f(paramString, 1));
-      AppMethodBeat.o(78935);
+      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new f(paramString, 1));
+      AppMethodBeat.o(151279);
       return;
     }
-    ((j)g.E(j.class)).Yz().c(new o(paramString, 1));
-    AppMethodBeat.o(78935);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new o(paramString, 1));
+    AppMethodBeat.o(151279);
   }
   
-  public final void pd(String paramString)
+  public final void tQ(String paramString)
   {
-    AppMethodBeat.i(78936);
-    if (t.nK(paramString))
+    AppMethodBeat.i(151280);
+    if (w.sn(paramString))
     {
-      ((j)g.E(j.class)).Yz().c(new f(paramString, 2));
-      AppMethodBeat.o(78936);
+      ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new f(paramString, 2));
+      AppMethodBeat.o(151280);
       return;
     }
-    ((j)g.E(j.class)).Yz().c(new o(paramString, 2));
-    AppMethodBeat.o(78936);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new o(paramString, 2));
+    AppMethodBeat.o(151280);
   }
   
-  public final void pe(String paramString)
+  public final void tR(String paramString)
   {
-    AppMethodBeat.i(78937);
-    ((j)g.E(j.class)).Yz().c(new n(paramString, 1));
-    AppMethodBeat.o(78937);
+    AppMethodBeat.i(151281);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new n(paramString, 1));
+    AppMethodBeat.o(151281);
   }
   
-  public final void pf(String paramString)
+  public final void tS(String paramString)
   {
-    AppMethodBeat.i(78938);
-    ((j)g.E(j.class)).Yz().c(new n(paramString, 2));
-    AppMethodBeat.o(78938);
+    AppMethodBeat.i(151282);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new n(paramString, 2));
+    AppMethodBeat.o(151282);
   }
   
-  public final void pg(String paramString)
+  public final void tT(String paramString)
   {
-    AppMethodBeat.i(78939);
-    ((j)g.E(j.class)).Yz().c(new m(paramString, 1));
-    AppMethodBeat.o(78939);
+    AppMethodBeat.i(151283);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new m(paramString, 1));
+    AppMethodBeat.o(151283);
   }
   
-  public final void ph(String paramString)
+  public final void tU(String paramString)
   {
-    AppMethodBeat.i(78940);
-    ((j)g.E(j.class)).Yz().c(new m(paramString, 2));
-    AppMethodBeat.o(78940);
+    AppMethodBeat.i(151284);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new m(paramString, 2));
+    AppMethodBeat.o(151284);
   }
   
-  public final void pi(String paramString)
+  public final void tV(String paramString)
   {
-    AppMethodBeat.i(78942);
-    ((j)g.E(j.class)).Yz().c(new h(paramString, 1));
-    AppMethodBeat.o(78942);
+    AppMethodBeat.i(151286);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new h(paramString, 1));
+    AppMethodBeat.o(151286);
   }
   
-  public final void pj(String paramString)
+  public final void tW(String paramString)
   {
-    AppMethodBeat.i(78943);
-    ((j)g.E(j.class)).Yz().c(new h(paramString, 2));
-    AppMethodBeat.o(78943);
-  }
-  
-  public final void wg(String paramString)
-  {
-    AppMethodBeat.i(78944);
-    ((j)g.E(j.class)).Yz().c(new a(paramString));
-    AppMethodBeat.o(78944);
-  }
-  
-  public final void wh(String paramString)
-  {
-    AppMethodBeat.i(78945);
-    ((j)g.E(j.class)).Yz().c(new l(paramString, 1));
-    AppMethodBeat.o(78945);
-  }
-  
-  public final void wi(String paramString)
-  {
-    AppMethodBeat.i(78946);
-    ((j)g.E(j.class)).Yz().c(new l(paramString, 2));
-    AppMethodBeat.o(78946);
+    AppMethodBeat.i(151287);
+    ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apL().c(new h(paramString, 2));
+    AppMethodBeat.o(151287);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.openim.d.p
  * JD-Core Version:    0.7.0.1
  */

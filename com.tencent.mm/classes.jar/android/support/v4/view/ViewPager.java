@@ -4,13 +4,18 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.NotFoundException;
 import android.content.res.TypedArray;
+import android.database.DataSetObserver;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.ClassLoaderCreator;
+import android.os.Parcelable.Creator;
 import android.os.SystemClock;
 import android.support.v4.content.b;
+import android.support.v4.view.a.c;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.FocusFinder;
@@ -28,11 +33,6 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.animation.Interpolator;
 import android.widget.EdgeEffect;
 import android.widget.Scroller;
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -42,7 +42,7 @@ public class ViewPager
   extends ViewGroup
 {
   private static final int CLOSE_ENOUGH = 2;
-  private static final Comparator<ItemInfo> COMPARATOR = new ViewPager.1();
+  private static final Comparator<ItemInfo> COMPARATOR = new Comparator() {};
   private static final boolean DEBUG = false;
   private static final int DEFAULT_GUTTER_SIZE = 16;
   private static final int DEFAULT_OFFSCREEN_PAGES = 1;
@@ -59,11 +59,18 @@ public class ViewPager
   public static final int SCROLL_STATE_SETTLING = 2;
   private static final String TAG = "ViewPager";
   private static final boolean USE_CACHE = false;
-  private static final Interpolator sInterpolator = new ViewPager.2();
-  private static final ViewPager.g sPositionComparator = new ViewPager.g();
+  private static final Interpolator sInterpolator = new Interpolator()
+  {
+    public final float getInterpolation(float paramAnonymousFloat)
+    {
+      paramAnonymousFloat -= 1.0F;
+      return paramAnonymousFloat * (paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat) + 1.0F;
+    }
+  };
+  private static final g sPositionComparator = new g();
   private int mActivePointerId = -1;
   q mAdapter;
-  private List<ViewPager.c> mAdapterChangeListeners;
+  private List<c> mAdapterChangeListeners;
   private int mBottomPageBounds;
   private boolean mCalledSuper;
   private int mChildHeightMeasureSpec;
@@ -74,7 +81,14 @@ public class ViewPager
   private int mDefaultGutterSize;
   private int mDrawingOrder;
   private ArrayList<View> mDrawingOrderedChildren;
-  private final Runnable mEndScrollRunnable = new ViewPager.3(this);
+  private final Runnable mEndScrollRunnable = new Runnable()
+  {
+    public final void run()
+    {
+      ViewPager.this.setScrollState(0);
+      ViewPager.this.populate();
+    }
+  };
   private int mExpectedAdapterCount;
   private long mFakeDragBeginTime;
   private boolean mFakeDragging;
@@ -98,7 +112,7 @@ public class ViewPager
   private int mMaximumVelocity;
   private int mMinimumVelocity;
   private boolean mNeedCalculatePageOffsets = false;
-  private ViewPager.e mObserver;
+  private e mObserver;
   private int mOffscreenPageLimit = 1;
   private ViewPager.OnPageChangeListener mOnPageChangeListener;
   private List<ViewPager.OnPageChangeListener> mOnPageChangeListeners;
@@ -575,7 +589,7 @@ public class ViewPager
   
   private static boolean isDecorView(View paramView)
   {
-    return paramView.getClass().getAnnotation(a.class) != null;
+    return paramView.getClass().getAnnotation(ViewPager.a.class) != null;
   }
   
   private boolean isGutterDrag(float paramFloat1, float paramFloat2)
@@ -732,7 +746,7 @@ public class ViewPager
     for (int i = 0; i < getChildCount(); i = j + 1)
     {
       j = i;
-      if (!((LayoutParams)getChildAt(i).getLayoutParams()).Hb)
+      if (!((LayoutParams)getChildAt(i).getLayoutParams()).NZ)
       {
         removeViewAt(i);
         j = i - 1;
@@ -856,7 +870,7 @@ public class ViewPager
     return localItemInfo;
   }
   
-  public void addOnAdapterChangeListener(ViewPager.c paramc)
+  public void addOnAdapterChangeListener(c paramc)
   {
     if (this.mAdapterChangeListeners == null) {
       this.mAdapterChangeListeners = new ArrayList();
@@ -897,13 +911,13 @@ public class ViewPager
     for (;;)
     {
       LayoutParams localLayoutParams = (LayoutParams)paramLayoutParams;
-      localLayoutParams.Hb |= isDecorView(paramView);
+      localLayoutParams.NZ |= isDecorView(paramView);
       if (this.mInLayout)
       {
-        if ((localLayoutParams != null) && (localLayoutParams.Hb)) {
+        if ((localLayoutParams != null) && (localLayoutParams.NZ)) {
           throw new IllegalStateException("Cannot add pager decor view during layout");
         }
-        localLayoutParams.Hc = true;
+        localLayoutParams.Oa = true;
         addViewInLayout(paramView, paramInt, paramLayoutParams);
         return;
       }
@@ -1107,7 +1121,7 @@ public class ViewPager
           scrollTo(0, m);
         }
       }
-      t.R(this);
+      t.W(this);
       return;
     }
     completeScroll(true);
@@ -1203,7 +1217,7 @@ public class ViewPager
           while (i < k)
           {
             localObject = (LayoutParams)getChildAt(i).getLayoutParams();
-            if (!((LayoutParams)localObject).Hb) {
+            if (!((LayoutParams)localObject).NZ) {
               ((LayoutParams)localObject).widthFactor = 0.0F;
             }
             i += 1;
@@ -1298,7 +1312,7 @@ public class ViewPager
     for (;;)
     {
       if (bool) {
-        t.R(this);
+        t.W(this);
       }
       return;
       this.mLeftEdge.finish();
@@ -1430,7 +1444,7 @@ public class ViewPager
     if (this.mDrawingOrder == 2) {
       i = paramInt1 - 1 - paramInt2;
     }
-    return ((LayoutParams)((View)this.mDrawingOrderedChildren.get(i)).getLayoutParams()).Hd;
+    return ((LayoutParams)((View)this.mDrawingOrderedChildren.get(i)).getLayoutParams()).Ob;
   }
   
   public int getCurrentItem()
@@ -1509,11 +1523,39 @@ public class ViewPager
     this.mFlingDistance = ((int)(25.0F * f));
     this.mCloseEnough = ((int)(2.0F * f));
     this.mDefaultGutterSize = ((int)(16.0F * f));
-    t.a(this, new ViewPager.b(this));
-    if (t.S(this) == 0) {
-      t.o(this, 1);
+    t.a(this, new b());
+    if (t.X(this) == 0) {
+      t.p(this, 1);
     }
-    t.a(this, new ViewPager.4(this));
+    t.a(this, new p()
+    {
+      private final Rect mTempRect = new Rect();
+      
+      public final ab a(View paramAnonymousView, ab paramAnonymousab)
+      {
+        paramAnonymousView = t.a(paramAnonymousView, paramAnonymousab);
+        if (paramAnonymousView.isConsumed()) {
+          return paramAnonymousView;
+        }
+        paramAnonymousab = this.mTempRect;
+        paramAnonymousab.left = paramAnonymousView.getSystemWindowInsetLeft();
+        paramAnonymousab.top = paramAnonymousView.getSystemWindowInsetTop();
+        paramAnonymousab.right = paramAnonymousView.getSystemWindowInsetRight();
+        paramAnonymousab.bottom = paramAnonymousView.getSystemWindowInsetBottom();
+        int i = 0;
+        int j = ViewPager.this.getChildCount();
+        while (i < j)
+        {
+          ab localab = t.b(ViewPager.this.getChildAt(i), paramAnonymousView);
+          paramAnonymousab.left = Math.min(localab.getSystemWindowInsetLeft(), paramAnonymousab.left);
+          paramAnonymousab.top = Math.min(localab.getSystemWindowInsetTop(), paramAnonymousab.top);
+          paramAnonymousab.right = Math.min(localab.getSystemWindowInsetRight(), paramAnonymousab.right);
+          paramAnonymousab.bottom = Math.min(localab.getSystemWindowInsetBottom(), paramAnonymousab.bottom);
+          i += 1;
+        }
+        return paramAnonymousView.f(paramAnonymousab.left, paramAnonymousab.top, paramAnonymousab.right, paramAnonymousab.bottom);
+      }
+    });
   }
   
   public boolean isFakeDragging()
@@ -1640,7 +1682,7 @@ public class ViewPager
         }
         while ((this.mIsBeingDragged) && (performDrag(f2)))
         {
-          t.R(this);
+          t.W(this);
           break;
           f1 = this.mInitialMotionX - this.mTouchSlop;
           break label282;
@@ -1701,7 +1743,7 @@ public class ViewPager
         break label636;
       }
       localLayoutParams = (LayoutParams)localView.getLayoutParams();
-      if (!localLayoutParams.Hb) {
+      if (!localLayoutParams.NZ) {
         break label636;
       }
       paramInt4 = localLayoutParams.gravity;
@@ -1771,16 +1813,16 @@ public class ViewPager
         if (localView.getVisibility() != 8)
         {
           localLayoutParams = (LayoutParams)localView.getLayoutParams();
-          if (!localLayoutParams.Hb)
+          if (!localLayoutParams.NZ)
           {
             ItemInfo localItemInfo = infoForChild(localView);
             if (localItemInfo != null)
             {
               float f = paramInt4;
               i = (int)(localItemInfo.offset * f) + paramInt1;
-              if (localLayoutParams.Hc)
+              if (localLayoutParams.Oa)
               {
-                localLayoutParams.Hc = false;
+                localLayoutParams.Oa = false;
                 f = paramInt4;
                 localView.measure(View.MeasureSpec.makeMeasureSpec((int)(localLayoutParams.widthFactor * f), 1073741824), View.MeasureSpec.makeMeasureSpec(i2 - paramInt2 - j, 1073741824));
               }
@@ -1837,7 +1879,7 @@ public class ViewPager
         {
           i = paramInt1;
           j = paramInt2;
-          if (localLayoutParams.Hb)
+          if (localLayoutParams.NZ)
           {
             i = localLayoutParams.gravity & 0x7;
             m = localLayoutParams.gravity & 0x70;
@@ -1931,7 +1973,7 @@ public class ViewPager
           if (localView.getVisibility() != 8)
           {
             localLayoutParams = (LayoutParams)localView.getLayoutParams();
-            if ((localLayoutParams == null) || (!localLayoutParams.Hb))
+            if ((localLayoutParams == null) || (!localLayoutParams.NZ))
             {
               float f = paramInt1;
               localView.measure(View.MeasureSpec.makeMeasureSpec((int)(localLayoutParams.widthFactor * f), 1073741824), this.mChildHeightMeasureSpec);
@@ -1974,7 +2016,7 @@ public class ViewPager
       {
         localView = getChildAt(m);
         LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
-        if (!localLayoutParams.Hb) {
+        if (!localLayoutParams.NZ) {
           break label339;
         }
         switch (localLayoutParams.gravity & 0x7)
@@ -2020,10 +2062,10 @@ public class ViewPager
         while (paramInt1 < i)
         {
           localView = getChildAt(paramInt1);
-          if (!((LayoutParams)localView.getLayoutParams()).Hb)
+          if (!((LayoutParams)localView.getLayoutParams()).NZ)
           {
             paramFloat = (localView.getLeft() - paramInt2) / getClientWidth();
-            this.mPageTransformer.k(localView, paramFloat);
+            this.mPageTransformer.m(localView, paramFloat);
           }
           paramInt1 += 1;
         }
@@ -2068,30 +2110,30 @@ public class ViewPager
   
   public void onRestoreInstanceState(Parcelable paramParcelable)
   {
-    if (!(paramParcelable instanceof ViewPager.SavedState))
+    if (!(paramParcelable instanceof SavedState))
     {
       super.onRestoreInstanceState(paramParcelable);
       return;
     }
-    paramParcelable = (ViewPager.SavedState)paramParcelable;
-    super.onRestoreInstanceState(paramParcelable.Fo);
+    paramParcelable = (SavedState)paramParcelable;
+    super.onRestoreInstanceState(paramParcelable.Mm);
     if (this.mAdapter != null)
     {
-      this.mAdapter.restoreState(paramParcelable.He, paramParcelable.Hf);
+      this.mAdapter.restoreState(paramParcelable.Oc, paramParcelable.Od);
       setCurrentItemInternal(paramParcelable.position, false, true);
       return;
     }
     this.mRestoredCurItem = paramParcelable.position;
-    this.mRestoredAdapterState = paramParcelable.He;
-    this.mRestoredClassLoader = paramParcelable.Hf;
+    this.mRestoredAdapterState = paramParcelable.Oc;
+    this.mRestoredClassLoader = paramParcelable.Od;
   }
   
   public Parcelable onSaveInstanceState()
   {
-    ViewPager.SavedState localSavedState = new ViewPager.SavedState(super.onSaveInstanceState());
+    SavedState localSavedState = new SavedState(super.onSaveInstanceState());
     localSavedState.position = this.mCurItem;
     if (this.mAdapter != null) {
-      localSavedState.He = this.mAdapter.saveState();
+      localSavedState.Oc = this.mAdapter.saveState();
     }
     return localSavedState;
   }
@@ -2129,7 +2171,7 @@ public class ViewPager
     for (;;)
     {
       if (bool1) {
-        t.R(this);
+        t.W(this);
       }
       return true;
       this.mScroller.abortAnimation();
@@ -2481,8 +2523,8 @@ public class ViewPager
               {
                 localObject2 = getChildAt(paramInt);
                 localObject1 = (LayoutParams)((View)localObject2).getLayoutParams();
-                ((LayoutParams)localObject1).Hd = paramInt;
-                if ((!((LayoutParams)localObject1).Hb) && (((LayoutParams)localObject1).widthFactor == 0.0F))
+                ((LayoutParams)localObject1).Ob = paramInt;
+                if ((!((LayoutParams)localObject1).NZ) && (((LayoutParams)localObject1).widthFactor == 0.0F))
                 {
                   localObject2 = infoForChild((View)localObject2);
                   if (localObject2 != null)
@@ -2532,7 +2574,7 @@ public class ViewPager
     }
   }
   
-  public void removeOnAdapterChangeListener(ViewPager.c paramc)
+  public void removeOnAdapterChangeListener(c paramc)
   {
     if (this.mAdapterChangeListeners != null) {
       this.mAdapterChangeListeners.remove(paramc);
@@ -2584,7 +2626,7 @@ public class ViewPager
     if (this.mAdapter != null)
     {
       if (this.mObserver == null) {
-        this.mObserver = new ViewPager.e(this);
+        this.mObserver = new e();
       }
       this.mAdapter.setViewPagerObserver(this.mObserver);
       this.mPopulatePending = false;
@@ -2606,7 +2648,7 @@ public class ViewPager
       i = j;
       while (i < k)
       {
-        ((ViewPager.c)this.mAdapterChangeListeners.get(i)).a(this, (q)localObject, paramq);
+        ((c)this.mAdapterChangeListeners.get(i)).a(this, (q)localObject, paramq);
         i += 1;
       }
       label300:
@@ -2730,7 +2772,7 @@ public class ViewPager
   
   public void setPageMarginDrawable(int paramInt)
   {
-    setPageMarginDrawable(b.k(getContext(), paramInt));
+    setPageMarginDrawable(b.l(getContext(), paramInt));
   }
   
   public void setPageMarginDrawable(Drawable paramDrawable)
@@ -2887,7 +2929,7 @@ public class ViewPager
       paramInt1 = Math.min(paramInt1, 600);
       this.mIsScrollStarted = false;
       this.mScroller.startScroll(i, j, k, paramInt2, paramInt1);
-      t.R(this);
+      t.W(this);
       return;
       f1 = paramInt1;
       f2 = this.mAdapter.getPageWidth(this.mCurItem);
@@ -2911,9 +2953,9 @@ public class ViewPager
   public static class LayoutParams
     extends ViewGroup.LayoutParams
   {
-    public boolean Hb;
-    boolean Hc;
-    int Hd;
+    public boolean NZ;
+    boolean Oa;
+    int Ob;
     public int gravity;
     int position;
     float widthFactor = 0.0F;
@@ -2932,10 +2974,130 @@ public class ViewPager
     }
   }
   
-  @Inherited
-  @Retention(RetentionPolicy.RUNTIME)
-  @Target({java.lang.annotation.ElementType.TYPE})
-  public static @interface a {}
+  public static class SavedState
+    extends AbsSavedState
+  {
+    public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator() {};
+    Parcelable Oc;
+    ClassLoader Od;
+    int position;
+    
+    SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
+    {
+      super(paramClassLoader);
+      ClassLoader localClassLoader = paramClassLoader;
+      if (paramClassLoader == null) {
+        localClassLoader = getClass().getClassLoader();
+      }
+      this.position = paramParcel.readInt();
+      this.Oc = paramParcel.readParcelable(localClassLoader);
+      this.Od = localClassLoader;
+    }
+    
+    public SavedState(Parcelable paramParcelable)
+    {
+      super();
+    }
+    
+    public String toString()
+    {
+      return "FragmentPager.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " position=" + this.position + "}";
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      super.writeToParcel(paramParcel, paramInt);
+      paramParcel.writeInt(this.position);
+      paramParcel.writeParcelable(this.Oc, paramInt);
+    }
+  }
+  
+  final class b
+    extends a
+  {
+    b() {}
+    
+    private boolean fa()
+    {
+      return (ViewPager.this.mAdapter != null) && (ViewPager.this.mAdapter.getCount() > 1);
+    }
+    
+    public final void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+    {
+      super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
+      paramAccessibilityEvent.setClassName(ViewPager.class.getName());
+      paramAccessibilityEvent.setScrollable(fa());
+      if ((paramAccessibilityEvent.getEventType() == 4096) && (ViewPager.this.mAdapter != null))
+      {
+        paramAccessibilityEvent.setItemCount(ViewPager.this.mAdapter.getCount());
+        paramAccessibilityEvent.setFromIndex(ViewPager.this.mCurItem);
+        paramAccessibilityEvent.setToIndex(ViewPager.this.mCurItem);
+      }
+    }
+    
+    public final void onInitializeAccessibilityNodeInfo(View paramView, c paramc)
+    {
+      super.onInitializeAccessibilityNodeInfo(paramView, paramc);
+      paramc.setClassName(ViewPager.class.getName());
+      paramc.setScrollable(fa());
+      if (ViewPager.this.canScrollHorizontally(1)) {
+        paramc.addAction(4096);
+      }
+      if (ViewPager.this.canScrollHorizontally(-1)) {
+        paramc.addAction(8192);
+      }
+    }
+    
+    public final boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
+    {
+      if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
+        return true;
+      }
+      switch (paramInt)
+      {
+      default: 
+        return false;
+      case 4096: 
+        if (ViewPager.this.canScrollHorizontally(1))
+        {
+          ViewPager.this.setCurrentItem(ViewPager.this.mCurItem + 1);
+          return true;
+        }
+        return false;
+      }
+      if (ViewPager.this.canScrollHorizontally(-1))
+      {
+        ViewPager.this.setCurrentItem(ViewPager.this.mCurItem - 1);
+        return true;
+      }
+      return false;
+    }
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void a(ViewPager paramViewPager, q paramq1, q paramq2);
+  }
+  
+  final class e
+    extends DataSetObserver
+  {
+    e() {}
+    
+    public final void onChanged()
+    {
+      ViewPager.this.dataSetChanged();
+    }
+    
+    public final void onInvalidated()
+    {
+      ViewPager.this.dataSetChanged();
+    }
+  }
+  
+  static final class g
+    implements Comparator<View>
+  {}
 }
 
 

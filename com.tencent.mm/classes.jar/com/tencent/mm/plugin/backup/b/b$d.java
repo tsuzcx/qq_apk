@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.backup.b;
 
 public abstract interface b$d
 {
-  public abstract void aSK();
+  public abstract void bvS();
   
-  public abstract void rf(int paramInt);
+  public abstract void vS(int paramInt);
 }
 
 

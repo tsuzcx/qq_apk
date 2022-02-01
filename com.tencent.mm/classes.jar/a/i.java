@@ -1,49 +1,73 @@
 package a;
 
-import a.f.a.a;
-import a.f.b.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"lazy", "Lkotlin/Lazy;", "T", "initializer", "Lkotlin/Function0;", "lock", "", "mode", "Lkotlin/LazyThreadSafetyMode;", "kotlin-stdlib"}, eaR=1)
-public class i
+public final class i<TResult>
 {
-  public static final <T> f<T> a(k paramk, a<? extends T> parama)
+  final h<TResult> azv;
+  
+  public i()
   {
-    AppMethodBeat.i(56366);
-    j.q(paramk, "mode");
-    j.q(parama, "initializer");
-    switch (h.bLo[paramk.ordinal()])
-    {
-    default: 
-      paramk = new m();
-      AppMethodBeat.o(56366);
-      throw paramk;
-    case 1: 
-      paramk = (f)new s(parama, (byte)0);
-      AppMethodBeat.o(56366);
-      return paramk;
-    case 2: 
-      paramk = (f)new r(parama);
-      AppMethodBeat.o(56366);
-      return paramk;
-    }
-    paramk = (f)new z(parama);
-    AppMethodBeat.o(56366);
-    return paramk;
+    AppMethodBeat.i(53005);
+    this.azv = new h();
+    AppMethodBeat.o(53005);
   }
   
-  public static final <T> f<T> j(a<? extends T> parama)
+  private boolean b(Exception paramException)
   {
-    AppMethodBeat.i(56365);
-    j.q(parama, "initializer");
-    parama = (f)new s(parama, (byte)0);
-    AppMethodBeat.o(56365);
-    return parama;
+    AppMethodBeat.i(53007);
+    boolean bool = this.azv.b(paramException);
+    AppMethodBeat.o(53007);
+    return bool;
+  }
+  
+  private boolean trySetResult(TResult paramTResult)
+  {
+    AppMethodBeat.i(53006);
+    boolean bool = this.azv.trySetResult(paramTResult);
+    AppMethodBeat.o(53006);
+    return bool;
+  }
+  
+  public final void c(Exception paramException)
+  {
+    AppMethodBeat.i(53010);
+    if (!b(paramException))
+    {
+      paramException = new IllegalStateException("Cannot set the error on a completed task.");
+      AppMethodBeat.o(53010);
+      throw paramException;
+    }
+    AppMethodBeat.o(53010);
+  }
+  
+  public final void ng()
+  {
+    AppMethodBeat.i(53008);
+    if (!this.azv.nf())
+    {
+      IllegalStateException localIllegalStateException = new IllegalStateException("Cannot cancel a completed task.");
+      AppMethodBeat.o(53008);
+      throw localIllegalStateException;
+    }
+    AppMethodBeat.o(53008);
+  }
+  
+  public final void setResult(TResult paramTResult)
+  {
+    AppMethodBeat.i(53009);
+    if (!trySetResult(paramTResult))
+    {
+      paramTResult = new IllegalStateException("Cannot set the result of a completed task.");
+      AppMethodBeat.o(53009);
+      throw paramTResult;
+    }
+    AppMethodBeat.o(53009);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     a.i
  * JD-Core Version:    0.7.0.1
  */

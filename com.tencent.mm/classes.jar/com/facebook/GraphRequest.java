@@ -1,13 +1,19 @@
 package com.facebook;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.location.Location;
 import android.net.Uri;
 import android.net.Uri.Builder;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcel;
 import android.os.ParcelFileDescriptor;
+import android.os.ParcelFileDescriptor.AutoCloseInputStream;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Pair;
 import com.facebook.internal.AttributionIdentifiers;
@@ -23,6 +29,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -91,7 +98,7 @@ public class GraphRequest
   private String batchEntryDependsOn;
   private String batchEntryName;
   private boolean batchEntryOmitResultOnSuccess;
-  private GraphRequest.Callback callback;
+  private Callback callback;
   private JSONObject graphObject;
   private String graphPath;
   private HttpMethod httpMethod;
@@ -103,7 +110,7 @@ public class GraphRequest
   
   static
   {
-    AppMethodBeat.i(71723);
+    AppMethodBeat.i(17159);
     TAG = GraphRequest.class.getSimpleName();
     versionPattern = Pattern.compile("^/?v\\d+\\.\\d+/(.*)");
     char[] arrayOfChar = "-_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
@@ -117,7 +124,7 @@ public class GraphRequest
       i += 1;
     }
     MIME_BOUNDARY = localStringBuilder.toString();
-    AppMethodBeat.o(71723);
+    AppMethodBeat.o(17159);
   }
   
   public GraphRequest()
@@ -135,14 +142,14 @@ public class GraphRequest
     this(paramAccessToken, paramString, paramBundle, paramHttpMethod, null);
   }
   
-  public GraphRequest(AccessToken paramAccessToken, String paramString, Bundle paramBundle, HttpMethod paramHttpMethod, GraphRequest.Callback paramCallback)
+  public GraphRequest(AccessToken paramAccessToken, String paramString, Bundle paramBundle, HttpMethod paramHttpMethod, Callback paramCallback)
   {
     this(paramAccessToken, paramString, paramBundle, paramHttpMethod, paramCallback, null);
   }
   
-  public GraphRequest(AccessToken paramAccessToken, String paramString1, Bundle paramBundle, HttpMethod paramHttpMethod, GraphRequest.Callback paramCallback, String paramString2)
+  public GraphRequest(AccessToken paramAccessToken, String paramString1, Bundle paramBundle, HttpMethod paramHttpMethod, Callback paramCallback, String paramString2)
   {
-    AppMethodBeat.i(71664);
+    AppMethodBeat.i(17100);
     this.batchEntryOmitResultOnSuccess = true;
     this.skipClientToken = false;
     this.accessToken = paramAccessToken;
@@ -156,26 +163,26 @@ public class GraphRequest
       if (this.version == null) {
         this.version = FacebookSdk.getGraphApiVersion();
       }
-      AppMethodBeat.o(71664);
+      AppMethodBeat.o(17100);
       return;
     }
   }
   
   GraphRequest(AccessToken paramAccessToken, URL paramURL)
   {
-    AppMethodBeat.i(71665);
+    AppMethodBeat.i(17101);
     this.batchEntryOmitResultOnSuccess = true;
     this.skipClientToken = false;
     this.accessToken = paramAccessToken;
     this.overriddenURL = paramURL.toString();
     setHttpMethod(HttpMethod.GET);
     this.parameters = new Bundle();
-    AppMethodBeat.o(71665);
+    AppMethodBeat.o(17101);
   }
   
   private void addCommonParameters()
   {
-    AppMethodBeat.i(71698);
+    AppMethodBeat.i(17134);
     String str1;
     if (this.accessToken != null) {
       if (!this.parameters.containsKey("access_token"))
@@ -193,7 +200,7 @@ public class GraphRequest
         break;
       }
       this.parameters.putString("debug", "info");
-      AppMethodBeat.o(71698);
+      AppMethodBeat.o(17134);
       return;
       if ((!this.skipClientToken) && (!this.parameters.containsKey("access_token")))
       {
@@ -213,15 +220,15 @@ public class GraphRequest
     if (FacebookSdk.isLoggingBehaviorEnabled(LoggingBehavior.GRAPH_API_DEBUG_WARNING)) {
       this.parameters.putString("debug", "warning");
     }
-    AppMethodBeat.o(71698);
+    AppMethodBeat.o(17134);
   }
   
   private String appendParametersToBaseUrl(String paramString, Boolean paramBoolean)
   {
-    AppMethodBeat.i(71699);
+    AppMethodBeat.i(17135);
     if ((!paramBoolean.booleanValue()) && (this.httpMethod == HttpMethod.POST))
     {
-      AppMethodBeat.o(71699);
+      AppMethodBeat.o(17135);
       return paramString;
     }
     Uri.Builder localBuilder = Uri.parse(paramString).buildUpon();
@@ -241,45 +248,45 @@ public class GraphRequest
       else if (this.httpMethod == HttpMethod.GET)
       {
         paramString = new IllegalArgumentException(String.format(Locale.US, "Unsupported parameter type for GET request: %s", new Object[] { paramString.getClass().getSimpleName() }));
-        AppMethodBeat.o(71699);
+        AppMethodBeat.o(17135);
         throw paramString;
       }
     }
     paramString = localBuilder.toString();
-    AppMethodBeat.o(71699);
+    AppMethodBeat.o(17135);
     return paramString;
   }
   
   private static HttpURLConnection createConnection(URL paramURL)
   {
-    AppMethodBeat.i(71697);
+    AppMethodBeat.i(17133);
     paramURL = (HttpURLConnection)paramURL.openConnection();
     paramURL.setRequestProperty("User-Agent", getUserAgent());
     paramURL.setRequestProperty("Accept-Language", Locale.getDefault().toString());
     paramURL.setChunkedStreamingMode(0);
-    AppMethodBeat.o(71697);
+    AppMethodBeat.o(17133);
     return paramURL;
   }
   
   public static GraphResponse executeAndWait(GraphRequest paramGraphRequest)
   {
-    AppMethodBeat.i(71684);
+    AppMethodBeat.i(17120);
     paramGraphRequest = executeBatchAndWait(new GraphRequest[] { paramGraphRequest });
     if ((paramGraphRequest == null) || (paramGraphRequest.size() != 1))
     {
       paramGraphRequest = new FacebookException("invalid state: expected a single response");
-      AppMethodBeat.o(71684);
+      AppMethodBeat.o(17120);
       throw paramGraphRequest;
     }
     paramGraphRequest = (GraphResponse)paramGraphRequest.get(0);
-    AppMethodBeat.o(71684);
+    AppMethodBeat.o(17120);
     return paramGraphRequest;
   }
   
   public static List<GraphResponse> executeBatchAndWait(GraphRequestBatch paramGraphRequestBatch)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(71687);
+    AppMethodBeat.i(17123);
     Validate.notEmptyAndContainsNoNulls(paramGraphRequestBatch, "requests");
     Object localObject1 = localObject2;
     try
@@ -297,112 +304,112 @@ public class GraphRequest
       localObject1 = localObject2;
       runCallbacks(paramGraphRequestBatch, localList);
       Utility.disconnectQuietly(null);
-      AppMethodBeat.o(71687);
+      AppMethodBeat.o(17123);
       return localList;
     }
     finally
     {
       Utility.disconnectQuietly(localObject1);
-      AppMethodBeat.o(71687);
+      AppMethodBeat.o(17123);
     }
   }
   
   public static List<GraphResponse> executeBatchAndWait(Collection<GraphRequest> paramCollection)
   {
-    AppMethodBeat.i(71686);
+    AppMethodBeat.i(17122);
     paramCollection = executeBatchAndWait(new GraphRequestBatch(paramCollection));
-    AppMethodBeat.o(71686);
+    AppMethodBeat.o(17122);
     return paramCollection;
   }
   
   public static List<GraphResponse> executeBatchAndWait(GraphRequest... paramVarArgs)
   {
-    AppMethodBeat.i(71685);
+    AppMethodBeat.i(17121);
     Validate.notNull(paramVarArgs, "requests");
     paramVarArgs = executeBatchAndWait(Arrays.asList(paramVarArgs));
-    AppMethodBeat.o(71685);
+    AppMethodBeat.o(17121);
     return paramVarArgs;
   }
   
   public static GraphRequestAsyncTask executeBatchAsync(GraphRequestBatch paramGraphRequestBatch)
   {
-    AppMethodBeat.i(71690);
+    AppMethodBeat.i(17126);
     Validate.notEmptyAndContainsNoNulls(paramGraphRequestBatch, "requests");
     paramGraphRequestBatch = new GraphRequestAsyncTask(paramGraphRequestBatch);
     paramGraphRequestBatch.executeOnExecutor(FacebookSdk.getExecutor(), new Void[0]);
-    AppMethodBeat.o(71690);
+    AppMethodBeat.o(17126);
     return paramGraphRequestBatch;
   }
   
   public static GraphRequestAsyncTask executeBatchAsync(Collection<GraphRequest> paramCollection)
   {
-    AppMethodBeat.i(71689);
+    AppMethodBeat.i(17125);
     paramCollection = executeBatchAsync(new GraphRequestBatch(paramCollection));
-    AppMethodBeat.o(71689);
+    AppMethodBeat.o(17125);
     return paramCollection;
   }
   
   public static GraphRequestAsyncTask executeBatchAsync(GraphRequest... paramVarArgs)
   {
-    AppMethodBeat.i(71688);
+    AppMethodBeat.i(17124);
     Validate.notNull(paramVarArgs, "requests");
     paramVarArgs = executeBatchAsync(Arrays.asList(paramVarArgs));
-    AppMethodBeat.o(71688);
+    AppMethodBeat.o(17124);
     return paramVarArgs;
   }
   
   public static List<GraphResponse> executeConnectionAndWait(HttpURLConnection paramHttpURLConnection, GraphRequestBatch paramGraphRequestBatch)
   {
-    AppMethodBeat.i(71692);
+    AppMethodBeat.i(17128);
     List localList = GraphResponse.fromHttpConnection(paramHttpURLConnection, paramGraphRequestBatch);
     Utility.disconnectQuietly(paramHttpURLConnection);
     int i = paramGraphRequestBatch.size();
     if (i != localList.size())
     {
       paramHttpURLConnection = new FacebookException(String.format(Locale.US, "Received %d responses while expecting %d", new Object[] { Integer.valueOf(localList.size()), Integer.valueOf(i) }));
-      AppMethodBeat.o(71692);
+      AppMethodBeat.o(17128);
       throw paramHttpURLConnection;
     }
     runCallbacks(paramGraphRequestBatch, localList);
     AccessTokenManager.getInstance().extendAccessTokenIfNeeded();
-    AppMethodBeat.o(71692);
+    AppMethodBeat.o(17128);
     return localList;
   }
   
   public static List<GraphResponse> executeConnectionAndWait(HttpURLConnection paramHttpURLConnection, Collection<GraphRequest> paramCollection)
   {
-    AppMethodBeat.i(71691);
+    AppMethodBeat.i(17127);
     paramHttpURLConnection = executeConnectionAndWait(paramHttpURLConnection, new GraphRequestBatch(paramCollection));
-    AppMethodBeat.o(71691);
+    AppMethodBeat.o(17127);
     return paramHttpURLConnection;
   }
   
   public static GraphRequestAsyncTask executeConnectionAsync(Handler paramHandler, HttpURLConnection paramHttpURLConnection, GraphRequestBatch paramGraphRequestBatch)
   {
-    AppMethodBeat.i(71694);
+    AppMethodBeat.i(17130);
     Validate.notNull(paramHttpURLConnection, "connection");
     paramHttpURLConnection = new GraphRequestAsyncTask(paramHttpURLConnection, paramGraphRequestBatch);
     paramGraphRequestBatch.setCallbackHandler(paramHandler);
     paramHttpURLConnection.executeOnExecutor(FacebookSdk.getExecutor(), new Void[0]);
-    AppMethodBeat.o(71694);
+    AppMethodBeat.o(17130);
     return paramHttpURLConnection;
   }
   
   public static GraphRequestAsyncTask executeConnectionAsync(HttpURLConnection paramHttpURLConnection, GraphRequestBatch paramGraphRequestBatch)
   {
-    AppMethodBeat.i(71693);
+    AppMethodBeat.i(17129);
     paramHttpURLConnection = executeConnectionAsync(null, paramHttpURLConnection, paramGraphRequestBatch);
-    AppMethodBeat.o(71693);
+    AppMethodBeat.o(17129);
     return paramHttpURLConnection;
   }
   
   private static String getBatchAppId(GraphRequestBatch paramGraphRequestBatch)
   {
-    AppMethodBeat.i(71719);
+    AppMethodBeat.i(17155);
     if (!Utility.isNullOrEmpty(paramGraphRequestBatch.getBatchApplicationId()))
     {
       paramGraphRequestBatch = paramGraphRequestBatch.getBatchApplicationId();
-      AppMethodBeat.o(71719);
+      AppMethodBeat.o(17155);
       return paramGraphRequestBatch;
     }
     paramGraphRequestBatch = paramGraphRequestBatch.iterator();
@@ -414,7 +421,7 @@ public class GraphRequest
         localObject = ((AccessToken)localObject).getApplicationId();
         if (localObject != null)
         {
-          AppMethodBeat.o(71719);
+          AppMethodBeat.o(17155);
           return localObject;
         }
       }
@@ -422,11 +429,11 @@ public class GraphRequest
     if (!Utility.isNullOrEmpty(defaultBatchApplicationId))
     {
       paramGraphRequestBatch = defaultBatchApplicationId;
-      AppMethodBeat.o(71719);
+      AppMethodBeat.o(17155);
       return paramGraphRequestBatch;
     }
     paramGraphRequestBatch = FacebookSdk.getApplicationId();
-    AppMethodBeat.o(71719);
+    AppMethodBeat.o(17155);
     return paramGraphRequestBatch;
   }
   
@@ -446,29 +453,29 @@ public class GraphRequest
   
   private String getGraphPathWithVersion()
   {
-    AppMethodBeat.i(71702);
+    AppMethodBeat.i(17138);
     if (versionPattern.matcher(this.graphPath).matches())
     {
       str = this.graphPath;
-      AppMethodBeat.o(71702);
+      AppMethodBeat.o(17138);
       return str;
     }
     String str = String.format("%s/%s", new Object[] { this.version, this.graphPath });
-    AppMethodBeat.o(71702);
+    AppMethodBeat.o(17138);
     return str;
   }
   
   private static String getMimeContentType()
   {
-    AppMethodBeat.i(71717);
+    AppMethodBeat.i(17153);
     String str = String.format("multipart/form-data; boundary=%s", new Object[] { MIME_BOUNDARY });
-    AppMethodBeat.o(71717);
+    AppMethodBeat.o(17153);
     return str;
   }
   
   private static String getUserAgent()
   {
-    AppMethodBeat.i(71718);
+    AppMethodBeat.i(17154);
     if (userAgent == null)
     {
       userAgent = String.format("%s.%s", new Object[] { "FBAndroidSDK", "4.38.1" });
@@ -478,36 +485,36 @@ public class GraphRequest
       }
     }
     String str = userAgent;
-    AppMethodBeat.o(71718);
+    AppMethodBeat.o(17154);
     return str;
   }
   
   private static boolean hasOnProgressCallbacks(GraphRequestBatch paramGraphRequestBatch)
   {
-    AppMethodBeat.i(71704);
+    AppMethodBeat.i(17140);
     Iterator localIterator = paramGraphRequestBatch.getCallbacks().iterator();
     while (localIterator.hasNext()) {
       if (((GraphRequestBatch.Callback)localIterator.next() instanceof GraphRequestBatch.OnProgressCallback))
       {
-        AppMethodBeat.o(71704);
+        AppMethodBeat.o(17140);
         return true;
       }
     }
     paramGraphRequestBatch = paramGraphRequestBatch.iterator();
     while (paramGraphRequestBatch.hasNext()) {
-      if ((((GraphRequest)paramGraphRequestBatch.next()).getCallback() instanceof GraphRequest.OnProgressCallback))
+      if ((((GraphRequest)paramGraphRequestBatch.next()).getCallback() instanceof OnProgressCallback))
       {
-        AppMethodBeat.o(71704);
+        AppMethodBeat.o(17140);
         return true;
       }
     }
-    AppMethodBeat.o(71704);
+    AppMethodBeat.o(17140);
     return false;
   }
   
   private static boolean isGzipCompressible(GraphRequestBatch paramGraphRequestBatch)
   {
-    AppMethodBeat.i(71706);
+    AppMethodBeat.i(17142);
     GraphRequest localGraphRequest;
     String str;
     do
@@ -524,31 +531,31 @@ public class GraphRequest
       }
       str = (String)localIterator.next();
     } while (!isSupportedAttachmentType(localGraphRequest.parameters.get(str)));
-    AppMethodBeat.o(71706);
+    AppMethodBeat.o(17142);
     return false;
-    AppMethodBeat.o(71706);
+    AppMethodBeat.o(17142);
     return true;
   }
   
   private static boolean isMeRequest(String paramString)
   {
-    AppMethodBeat.i(71711);
+    AppMethodBeat.i(17147);
     Matcher localMatcher = versionPattern.matcher(paramString);
     if (localMatcher.matches()) {
       paramString = localMatcher.group(1);
     }
     if ((paramString.startsWith("me/")) || (paramString.startsWith("/me/")))
     {
-      AppMethodBeat.o(71711);
+      AppMethodBeat.o(17147);
       return true;
     }
-    AppMethodBeat.o(71711);
+    AppMethodBeat.o(17147);
     return false;
   }
   
   private static boolean isSupportedAttachmentType(Object paramObject)
   {
-    return ((paramObject instanceof Bitmap)) || ((paramObject instanceof byte[])) || ((paramObject instanceof Uri)) || ((paramObject instanceof ParcelFileDescriptor)) || ((paramObject instanceof GraphRequest.ParcelableResourceWithMimeType));
+    return ((paramObject instanceof Bitmap)) || ((paramObject instanceof byte[])) || ((paramObject instanceof Uri)) || ((paramObject instanceof ParcelFileDescriptor)) || ((paramObject instanceof ParcelableResourceWithMimeType));
   }
   
   private static boolean isSupportedParameterType(Object paramObject)
@@ -556,17 +563,17 @@ public class GraphRequest
     return ((paramObject instanceof String)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof Number)) || ((paramObject instanceof Date));
   }
   
-  public static GraphRequest newCustomAudienceThirdPartyIdRequest(AccessToken paramAccessToken, Context paramContext, GraphRequest.Callback paramCallback)
+  public static GraphRequest newCustomAudienceThirdPartyIdRequest(AccessToken paramAccessToken, Context paramContext, Callback paramCallback)
   {
-    AppMethodBeat.i(71676);
+    AppMethodBeat.i(17112);
     paramAccessToken = newCustomAudienceThirdPartyIdRequest(paramAccessToken, paramContext, null, paramCallback);
-    AppMethodBeat.o(71676);
+    AppMethodBeat.o(17112);
     return paramAccessToken;
   }
   
-  public static GraphRequest newCustomAudienceThirdPartyIdRequest(AccessToken paramAccessToken, Context paramContext, String paramString, GraphRequest.Callback paramCallback)
+  public static GraphRequest newCustomAudienceThirdPartyIdRequest(AccessToken paramAccessToken, Context paramContext, String paramString, Callback paramCallback)
   {
-    AppMethodBeat.i(71675);
+    AppMethodBeat.i(17111);
     if ((paramString == null) && (paramAccessToken != null)) {
       paramString = paramAccessToken.getApplicationId();
     }
@@ -579,7 +586,7 @@ public class GraphRequest
       if (str == null)
       {
         paramAccessToken = new FacebookException("Facebook App ID cannot be determined");
-        AppMethodBeat.o(71675);
+        AppMethodBeat.o(17111);
         throw paramAccessToken;
       }
       str = str + "/custom_audience_third_party_id";
@@ -590,7 +597,7 @@ public class GraphRequest
         if (localAttributionIdentifiers == null)
         {
           paramAccessToken = new FacebookException("There is no access token and attribution identifiers could not be retrieved");
-          AppMethodBeat.o(71675);
+          AppMethodBeat.o(17111);
           throw paramAccessToken;
         }
         if (localAttributionIdentifiers.getAttributionId() == null) {
@@ -607,81 +614,81 @@ public class GraphRequest
           localBundle.putString("limit_event_usage", "1");
         }
         paramAccessToken = new GraphRequest(paramAccessToken, str, localBundle, HttpMethod.GET, paramCallback);
-        AppMethodBeat.o(71675);
+        AppMethodBeat.o(17111);
         return paramAccessToken;
       }
     }
   }
   
-  public static GraphRequest newDeleteObjectRequest(AccessToken paramAccessToken, String paramString, GraphRequest.Callback paramCallback)
+  public static GraphRequest newDeleteObjectRequest(AccessToken paramAccessToken, String paramString, Callback paramCallback)
   {
-    AppMethodBeat.i(71666);
+    AppMethodBeat.i(17102);
     paramAccessToken = new GraphRequest(paramAccessToken, paramString, null, HttpMethod.DELETE, paramCallback);
-    AppMethodBeat.o(71666);
+    AppMethodBeat.o(17102);
     return paramAccessToken;
   }
   
-  public static GraphRequest newGraphPathRequest(AccessToken paramAccessToken, String paramString, GraphRequest.Callback paramCallback)
+  public static GraphRequest newGraphPathRequest(AccessToken paramAccessToken, String paramString, Callback paramCallback)
   {
-    AppMethodBeat.i(71670);
+    AppMethodBeat.i(17106);
     paramAccessToken = new GraphRequest(paramAccessToken, paramString, null, null, paramCallback);
-    AppMethodBeat.o(71670);
+    AppMethodBeat.o(17106);
     return paramAccessToken;
   }
   
-  public static GraphRequest newMeRequest(AccessToken paramAccessToken, GraphRequest.GraphJSONObjectCallback paramGraphJSONObjectCallback)
+  public static GraphRequest newMeRequest(AccessToken paramAccessToken, GraphJSONObjectCallback paramGraphJSONObjectCallback)
   {
-    AppMethodBeat.i(71667);
-    paramAccessToken = new GraphRequest(paramAccessToken, "me", null, null, new GraphRequest.Callback()
+    AppMethodBeat.i(17103);
+    paramAccessToken = new GraphRequest(paramAccessToken, "me", null, null, new Callback()
     {
       public final void onCompleted(GraphResponse paramAnonymousGraphResponse)
       {
-        AppMethodBeat.i(71640);
+        AppMethodBeat.i(17076);
         if (this.val$callback != null) {
           this.val$callback.onCompleted(paramAnonymousGraphResponse.getJSONObject(), paramAnonymousGraphResponse);
         }
-        AppMethodBeat.o(71640);
+        AppMethodBeat.o(17076);
       }
     });
-    AppMethodBeat.o(71667);
+    AppMethodBeat.o(17103);
     return paramAccessToken;
   }
   
-  public static GraphRequest newMyFriendsRequest(AccessToken paramAccessToken, GraphRequest.GraphJSONArrayCallback paramGraphJSONArrayCallback)
+  public static GraphRequest newMyFriendsRequest(AccessToken paramAccessToken, GraphJSONArrayCallback paramGraphJSONArrayCallback)
   {
-    AppMethodBeat.i(71669);
-    paramAccessToken = new GraphRequest(paramAccessToken, "me/friends", null, null, new GraphRequest.Callback()
+    AppMethodBeat.i(17105);
+    paramAccessToken = new GraphRequest(paramAccessToken, "me/friends", null, null, new Callback()
     {
       public final void onCompleted(GraphResponse paramAnonymousGraphResponse)
       {
-        AppMethodBeat.i(71641);
+        AppMethodBeat.i(17077);
         if (this.val$callback != null)
         {
           localObject = paramAnonymousGraphResponse.getJSONObject();
           if (localObject == null) {
-            break label45;
+            break label47;
           }
         }
-        label45:
+        label47:
         for (Object localObject = ((JSONObject)localObject).optJSONArray("data");; localObject = null)
         {
           this.val$callback.onCompleted((JSONArray)localObject, paramAnonymousGraphResponse);
-          AppMethodBeat.o(71641);
+          AppMethodBeat.o(17077);
           return;
         }
       }
     });
-    AppMethodBeat.o(71669);
+    AppMethodBeat.o(17105);
     return paramAccessToken;
   }
   
-  public static GraphRequest newPlacesSearchRequest(AccessToken paramAccessToken, Location paramLocation, int paramInt1, int paramInt2, String paramString, GraphRequest.GraphJSONArrayCallback paramGraphJSONArrayCallback)
+  public static GraphRequest newPlacesSearchRequest(AccessToken paramAccessToken, Location paramLocation, int paramInt1, int paramInt2, String paramString, GraphJSONArrayCallback paramGraphJSONArrayCallback)
   {
-    AppMethodBeat.i(71671);
+    AppMethodBeat.i(17107);
     if ((paramLocation == null) && (Utility.isNullOrEmpty(paramString)))
     {
       paramAccessToken = new FacebookException("Either location or searchText must be specified.");
-      AppMethodBeat.o(71671);
+      AppMethodBeat.o(17107);
       throw paramAccessToken;
     }
     Bundle localBundle = new Bundle(5);
@@ -695,44 +702,44 @@ public class GraphRequest
     if (!Utility.isNullOrEmpty(paramString)) {
       localBundle.putString("q", paramString);
     }
-    paramLocation = new GraphRequest.Callback()
+    paramLocation = new Callback()
     {
       public final void onCompleted(GraphResponse paramAnonymousGraphResponse)
       {
-        AppMethodBeat.i(71642);
+        AppMethodBeat.i(17078);
         if (this.val$callback != null)
         {
           localObject = paramAnonymousGraphResponse.getJSONObject();
           if (localObject == null) {
-            break label45;
+            break label47;
           }
         }
-        label45:
+        label47:
         for (Object localObject = ((JSONObject)localObject).optJSONArray("data");; localObject = null)
         {
           this.val$callback.onCompleted((JSONArray)localObject, paramAnonymousGraphResponse);
-          AppMethodBeat.o(71642);
+          AppMethodBeat.o(17078);
           return;
         }
       }
     };
     paramAccessToken = new GraphRequest(paramAccessToken, "search", localBundle, HttpMethod.GET, paramLocation);
-    AppMethodBeat.o(71671);
+    AppMethodBeat.o(17107);
     return paramAccessToken;
   }
   
-  public static GraphRequest newPostRequest(AccessToken paramAccessToken, String paramString, JSONObject paramJSONObject, GraphRequest.Callback paramCallback)
+  public static GraphRequest newPostRequest(AccessToken paramAccessToken, String paramString, JSONObject paramJSONObject, Callback paramCallback)
   {
-    AppMethodBeat.i(71668);
+    AppMethodBeat.i(17104);
     paramAccessToken = new GraphRequest(paramAccessToken, paramString, null, HttpMethod.POST, paramCallback);
     paramAccessToken.setGraphObject(paramJSONObject);
-    AppMethodBeat.o(71668);
+    AppMethodBeat.o(17104);
     return paramAccessToken;
   }
   
-  public static GraphRequest newUploadPhotoRequest(AccessToken paramAccessToken, String paramString1, Bitmap paramBitmap, String paramString2, Bundle paramBundle, GraphRequest.Callback paramCallback)
+  public static GraphRequest newUploadPhotoRequest(AccessToken paramAccessToken, String paramString1, Bitmap paramBitmap, String paramString2, Bundle paramBundle, Callback paramCallback)
   {
-    AppMethodBeat.i(71672);
+    AppMethodBeat.i(17108);
     paramString1 = getDefaultPhotoPathIfNull(paramString1);
     Bundle localBundle = new Bundle();
     if (paramBundle != null) {
@@ -743,24 +750,24 @@ public class GraphRequest
       localBundle.putString("caption", paramString2);
     }
     paramAccessToken = new GraphRequest(paramAccessToken, paramString1, localBundle, HttpMethod.POST, paramCallback);
-    AppMethodBeat.o(71672);
+    AppMethodBeat.o(17108);
     return paramAccessToken;
   }
   
-  public static GraphRequest newUploadPhotoRequest(AccessToken paramAccessToken, String paramString1, Uri paramUri, String paramString2, Bundle paramBundle, GraphRequest.Callback paramCallback)
+  public static GraphRequest newUploadPhotoRequest(AccessToken paramAccessToken, String paramString1, Uri paramUri, String paramString2, Bundle paramBundle, Callback paramCallback)
   {
-    AppMethodBeat.i(71674);
+    AppMethodBeat.i(17110);
     paramString1 = getDefaultPhotoPathIfNull(paramString1);
     if (Utility.isFileUri(paramUri))
     {
       paramAccessToken = newUploadPhotoRequest(paramAccessToken, paramString1, new File(paramUri.getPath()), paramString2, paramBundle, paramCallback);
-      AppMethodBeat.o(71674);
+      AppMethodBeat.o(17110);
       return paramAccessToken;
     }
     if (!Utility.isContentUri(paramUri))
     {
       paramAccessToken = new FacebookException("The photo Uri must be either a file:// or content:// Uri");
-      AppMethodBeat.o(71674);
+      AppMethodBeat.o(17110);
       throw paramAccessToken;
     }
     Bundle localBundle = new Bundle();
@@ -772,13 +779,13 @@ public class GraphRequest
       localBundle.putString("caption", paramString2);
     }
     paramAccessToken = new GraphRequest(paramAccessToken, paramString1, localBundle, HttpMethod.POST, paramCallback);
-    AppMethodBeat.o(71674);
+    AppMethodBeat.o(17110);
     return paramAccessToken;
   }
   
-  public static GraphRequest newUploadPhotoRequest(AccessToken paramAccessToken, String paramString1, File paramFile, String paramString2, Bundle paramBundle, GraphRequest.Callback paramCallback)
+  public static GraphRequest newUploadPhotoRequest(AccessToken paramAccessToken, String paramString1, File paramFile, String paramString2, Bundle paramBundle, Callback paramCallback)
   {
-    AppMethodBeat.i(71673);
+    AppMethodBeat.i(17109);
     paramString1 = getDefaultPhotoPathIfNull(paramString1);
     paramFile = ParcelFileDescriptor.open(paramFile, 268435456);
     Bundle localBundle = new Bundle();
@@ -790,39 +797,39 @@ public class GraphRequest
       localBundle.putString("caption", paramString2);
     }
     paramAccessToken = new GraphRequest(paramAccessToken, paramString1, localBundle, HttpMethod.POST, paramCallback);
-    AppMethodBeat.o(71673);
+    AppMethodBeat.o(17109);
     return paramAccessToken;
   }
   
   private static String parameterToString(Object paramObject)
   {
-    AppMethodBeat.i(71720);
+    AppMethodBeat.i(17156);
     if ((paramObject instanceof String))
     {
       paramObject = (String)paramObject;
-      AppMethodBeat.o(71720);
+      AppMethodBeat.o(17156);
       return paramObject;
     }
     if (((paramObject instanceof Boolean)) || ((paramObject instanceof Number)))
     {
       paramObject = paramObject.toString();
-      AppMethodBeat.o(71720);
+      AppMethodBeat.o(17156);
       return paramObject;
     }
     if ((paramObject instanceof Date))
     {
       paramObject = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.US).format(paramObject);
-      AppMethodBeat.o(71720);
+      AppMethodBeat.o(17156);
       return paramObject;
     }
     paramObject = new IllegalArgumentException("Unsupported parameter type.");
-    AppMethodBeat.o(71720);
+    AppMethodBeat.o(17156);
     throw paramObject;
   }
   
-  private static void processGraphObject(JSONObject paramJSONObject, String paramString, GraphRequest.KeyValueSerializer paramKeyValueSerializer)
+  private static void processGraphObject(JSONObject paramJSONObject, String paramString, KeyValueSerializer paramKeyValueSerializer)
   {
-    AppMethodBeat.i(71712);
+    AppMethodBeat.i(17148);
     int i;
     if (isMeRequest(paramString))
     {
@@ -849,15 +856,15 @@ public class GraphRequest
           break;
         }
       }
-      AppMethodBeat.o(71712);
+      AppMethodBeat.o(17148);
       return;
       i = 0;
     }
   }
   
-  private static void processGraphObjectProperty(String paramString, Object paramObject, GraphRequest.KeyValueSerializer paramKeyValueSerializer, boolean paramBoolean)
+  private static void processGraphObjectProperty(String paramString, Object paramObject, KeyValueSerializer paramKeyValueSerializer, boolean paramBoolean)
   {
-    AppMethodBeat.i(71713);
+    AppMethodBeat.i(17149);
     Object localObject;
     for (;;)
     {
@@ -874,7 +881,7 @@ public class GraphRequest
           String str = (String)((Iterator)localObject).next();
           processGraphObjectProperty(String.format("%s[%s]", new Object[] { paramString, str }), paramObject.opt(str), paramKeyValueSerializer, paramBoolean);
         }
-        AppMethodBeat.o(71713);
+        AppMethodBeat.o(17149);
         return;
       }
       if (paramObject.has("id"))
@@ -893,7 +900,7 @@ public class GraphRequest
         paramObject = paramObject.toString();
       }
     }
-    AppMethodBeat.o(71713);
+    AppMethodBeat.o(17149);
     return;
     label167:
     if (JSONArray.class.isAssignableFrom((Class)localObject))
@@ -906,13 +913,13 @@ public class GraphRequest
         processGraphObjectProperty(String.format(Locale.ROOT, "%s[%d]", new Object[] { paramString, Integer.valueOf(i) }), paramObject.opt(i), paramKeyValueSerializer, paramBoolean);
         i += 1;
       }
-      AppMethodBeat.o(71713);
+      AppMethodBeat.o(17149);
       return;
     }
     if ((String.class.isAssignableFrom((Class)localObject)) || (Number.class.isAssignableFrom((Class)localObject)) || (Boolean.class.isAssignableFrom((Class)localObject)))
     {
       paramKeyValueSerializer.writeString(paramString, paramObject.toString());
-      AppMethodBeat.o(71713);
+      AppMethodBeat.o(17149);
       return;
     }
     if (Date.class.isAssignableFrom((Class)localObject))
@@ -920,13 +927,13 @@ public class GraphRequest
       paramObject = (Date)paramObject;
       paramKeyValueSerializer.writeString(paramString, new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.US).format(paramObject));
     }
-    AppMethodBeat.o(71713);
+    AppMethodBeat.o(17149);
   }
   
   private static void processRequest(GraphRequestBatch paramGraphRequestBatch, Logger paramLogger, int paramInt, URL paramURL, OutputStream paramOutputStream, boolean paramBoolean)
   {
-    AppMethodBeat.i(71710);
-    paramOutputStream = new GraphRequest.Serializer(paramOutputStream, paramLogger, paramBoolean);
+    AppMethodBeat.i(17146);
+    paramOutputStream = new Serializer(paramOutputStream, paramLogger, paramBoolean);
     if (paramInt == 1)
     {
       paramGraphRequestBatch = paramGraphRequestBatch.get(0);
@@ -937,7 +944,7 @@ public class GraphRequest
         String str = (String)localIterator.next();
         Object localObject = paramGraphRequestBatch.parameters.get(str);
         if (isSupportedAttachmentType(localObject)) {
-          localHashMap.put(str, new GraphRequest.Attachment(paramGraphRequestBatch, localObject));
+          localHashMap.put(str, new Attachment(paramGraphRequestBatch, localObject));
         }
       }
       if (paramLogger != null) {
@@ -951,14 +958,14 @@ public class GraphRequest
       if (paramGraphRequestBatch.graphObject != null) {
         processGraphObject(paramGraphRequestBatch.graphObject, paramURL.getPath(), paramOutputStream);
       }
-      AppMethodBeat.o(71710);
+      AppMethodBeat.o(17146);
       return;
     }
     paramURL = getBatchAppId(paramGraphRequestBatch);
     if (Utility.isNullOrEmpty(paramURL))
     {
       paramGraphRequestBatch = new FacebookException("App ID was not specified at the request or Settings.");
-      AppMethodBeat.o(71710);
+      AppMethodBeat.o(17146);
       throw paramGraphRequestBatch;
     }
     paramOutputStream.writeString("batch_app_id", paramURL);
@@ -968,12 +975,12 @@ public class GraphRequest
       paramLogger.append("  Attachments:\n");
     }
     serializeAttachments(paramURL, paramOutputStream);
-    AppMethodBeat.o(71710);
+    AppMethodBeat.o(17146);
   }
   
   static void runCallbacks(final GraphRequestBatch paramGraphRequestBatch, List<GraphResponse> paramList)
   {
-    AppMethodBeat.i(71696);
+    AppMethodBeat.i(17132);
     int j = paramGraphRequestBatch.size();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
@@ -991,7 +998,7 @@ public class GraphRequest
       {
         public final void run()
         {
-          AppMethodBeat.i(71644);
+          AppMethodBeat.i(17080);
           Iterator localIterator = this.val$callbacks.iterator();
           while (localIterator.hasNext())
           {
@@ -1002,39 +1009,39 @@ public class GraphRequest
           while (localIterator.hasNext()) {
             ((GraphRequestBatch.Callback)localIterator.next()).onBatchCompleted(paramGraphRequestBatch);
           }
-          AppMethodBeat.o(71644);
+          AppMethodBeat.o(17080);
         }
       };
       paramGraphRequestBatch = paramGraphRequestBatch.getCallbackHandler();
       if (paramGraphRequestBatch == null)
       {
         paramList.run();
-        AppMethodBeat.o(71696);
+        AppMethodBeat.o(17132);
         return;
       }
       paramGraphRequestBatch.post(paramList);
     }
-    AppMethodBeat.o(71696);
+    AppMethodBeat.o(17132);
   }
   
-  private static void serializeAttachments(Map<String, GraphRequest.Attachment> paramMap, GraphRequest.Serializer paramSerializer)
+  private static void serializeAttachments(Map<String, Attachment> paramMap, Serializer paramSerializer)
   {
-    AppMethodBeat.i(71715);
+    AppMethodBeat.i(17151);
     Iterator localIterator = paramMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      GraphRequest.Attachment localAttachment = (GraphRequest.Attachment)paramMap.get(str);
+      Attachment localAttachment = (Attachment)paramMap.get(str);
       if (isSupportedAttachmentType(localAttachment.getValue())) {
         paramSerializer.writeObject(str, localAttachment.getValue(), localAttachment.getRequest());
       }
     }
-    AppMethodBeat.o(71715);
+    AppMethodBeat.o(17151);
   }
   
-  private static void serializeParameters(Bundle paramBundle, GraphRequest.Serializer paramSerializer, GraphRequest paramGraphRequest)
+  private static void serializeParameters(Bundle paramBundle, Serializer paramSerializer, GraphRequest paramGraphRequest)
   {
-    AppMethodBeat.i(71714);
+    AppMethodBeat.i(17150);
     Iterator localIterator = paramBundle.keySet().iterator();
     while (localIterator.hasNext())
     {
@@ -1044,24 +1051,24 @@ public class GraphRequest
         paramSerializer.writeObject(str, localObject, paramGraphRequest);
       }
     }
-    AppMethodBeat.o(71714);
+    AppMethodBeat.o(17150);
   }
   
-  private static void serializeRequestsAsJSON(GraphRequest.Serializer paramSerializer, Collection<GraphRequest> paramCollection, Map<String, GraphRequest.Attachment> paramMap)
+  private static void serializeRequestsAsJSON(Serializer paramSerializer, Collection<GraphRequest> paramCollection, Map<String, Attachment> paramMap)
   {
-    AppMethodBeat.i(71716);
+    AppMethodBeat.i(17152);
     JSONArray localJSONArray = new JSONArray();
     Iterator localIterator = paramCollection.iterator();
     while (localIterator.hasNext()) {
       ((GraphRequest)localIterator.next()).serializeToBatch(localJSONArray, paramMap);
     }
     paramSerializer.writeRequestsAsJson("batch", localJSONArray, paramCollection);
-    AppMethodBeat.o(71716);
+    AppMethodBeat.o(17152);
   }
   
-  private void serializeToBatch(JSONArray paramJSONArray, Map<String, GraphRequest.Attachment> paramMap)
+  private void serializeToBatch(JSONArray paramJSONArray, final Map<String, Attachment> paramMap)
   {
-    AppMethodBeat.i(71703);
+    AppMethodBeat.i(17139);
     JSONObject localJSONObject = new JSONObject();
     if (this.batchEntryName != null)
     {
@@ -1087,7 +1094,7 @@ public class GraphRequest
       {
         String str2 = String.format(Locale.ROOT, "%s%d", new Object[] { "file", Integer.valueOf(paramMap.size()) });
         localArrayList.add(str2);
-        paramMap.put(str2, new GraphRequest.Attachment(this, localObject));
+        paramMap.put(str2, new Attachment(this, localObject));
       }
     }
     if (!localArrayList.isEmpty()) {
@@ -1096,99 +1103,107 @@ public class GraphRequest
     if (this.graphObject != null)
     {
       paramMap = new ArrayList();
-      processGraphObject(this.graphObject, str1, new GraphRequest.6(this, paramMap));
+      processGraphObject(this.graphObject, str1, new KeyValueSerializer()
+      {
+        public void writeString(String paramAnonymousString1, String paramAnonymousString2)
+        {
+          AppMethodBeat.i(17081);
+          paramMap.add(String.format(Locale.US, "%s=%s", new Object[] { paramAnonymousString1, URLEncoder.encode(paramAnonymousString2, "UTF-8") }));
+          AppMethodBeat.o(17081);
+        }
+      });
       localJSONObject.put("body", TextUtils.join("&", paramMap));
     }
     paramJSONArray.put(localJSONObject);
-    AppMethodBeat.o(71703);
+    AppMethodBeat.o(17139);
   }
   
   /* Error */
   static final void serializeToUrlConnection(GraphRequestBatch paramGraphRequestBatch, HttpURLConnection paramHttpURLConnection)
   {
     // Byte code:
-    //   0: ldc_w 1077
-    //   3: invokestatic 181	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 311	com/facebook/internal/Logger
+    //   0: sipush 17145
+    //   3: invokestatic 194	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 319	com/facebook/internal/Logger
     //   9: dup
-    //   10: getstatic 1080	com/facebook/LoggingBehavior:REQUESTS	Lcom/facebook/LoggingBehavior;
-    //   13: ldc_w 1082
-    //   16: invokespecial 1085	com/facebook/internal/Logger:<init>	(Lcom/facebook/LoggingBehavior;Ljava/lang/String;)V
+    //   10: getstatic 1045	com/facebook/LoggingBehavior:REQUESTS	Lcom/facebook/LoggingBehavior;
+    //   13: ldc_w 1047
+    //   16: invokespecial 1050	com/facebook/internal/Logger:<init>	(Lcom/facebook/LoggingBehavior;Ljava/lang/String;)V
     //   19: astore 7
     //   21: aload_0
-    //   22: invokevirtual 572	com/facebook/GraphRequestBatch:size	()I
+    //   22: invokevirtual 570	com/facebook/GraphRequestBatch:size	()I
     //   25: istore_3
     //   26: aload_0
-    //   27: invokestatic 1087	com/facebook/GraphRequest:isGzipCompressible	(Lcom/facebook/GraphRequestBatch;)Z
+    //   27: invokestatic 1052	com/facebook/GraphRequest:isGzipCompressible	(Lcom/facebook/GraphRequestBatch;)Z
     //   30: istore 4
     //   32: iload_3
     //   33: iconst_1
     //   34: if_icmpne +144 -> 178
     //   37: aload_0
     //   38: iconst_0
-    //   39: invokevirtual 930	com/facebook/GraphRequestBatch:get	(I)Lcom/facebook/GraphRequest;
-    //   42: getfield 364	com/facebook/GraphRequest:httpMethod	Lcom/facebook/HttpMethod;
+    //   39: invokevirtual 903	com/facebook/GraphRequestBatch:get	(I)Lcom/facebook/GraphRequest;
+    //   42: getfield 371	com/facebook/GraphRequest:httpMethod	Lcom/facebook/HttpMethod;
     //   45: astore 5
     //   47: aload_1
     //   48: aload 5
-    //   50: invokevirtual 1089	com/facebook/HttpMethod:name	()Ljava/lang/String;
-    //   53: invokevirtual 1092	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   50: invokevirtual 1054	com/facebook/HttpMethod:name	()Ljava/lang/String;
+    //   53: invokevirtual 1057	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   56: aload_1
     //   57: iload 4
-    //   59: invokestatic 1096	com/facebook/GraphRequest:setConnectionContentType	(Ljava/net/HttpURLConnection;Z)V
+    //   59: invokestatic 1061	com/facebook/GraphRequest:setConnectionContentType	(Ljava/net/HttpURLConnection;Z)V
     //   62: aload_1
-    //   63: invokevirtual 1100	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
+    //   63: invokevirtual 1065	java/net/HttpURLConnection:getURL	()Ljava/net/URL;
     //   66: astore 8
     //   68: aload 7
-    //   70: ldc_w 1102
-    //   73: invokevirtual 946	com/facebook/internal/Logger:append	(Ljava/lang/String;)V
+    //   70: ldc_w 1067
+    //   73: invokevirtual 919	com/facebook/internal/Logger:append	(Ljava/lang/String;)V
     //   76: aload 7
-    //   78: ldc_w 1104
+    //   78: ldc_w 1069
     //   81: aload_0
-    //   82: invokevirtual 1107	com/facebook/GraphRequestBatch:getId	()Ljava/lang/String;
-    //   85: invokevirtual 1111	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   82: invokevirtual 1072	com/facebook/GraphRequestBatch:getId	()Ljava/lang/String;
+    //   85: invokevirtual 1076	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
     //   88: aload 7
-    //   90: ldc_w 1113
+    //   90: ldc_w 1078
     //   93: aload 8
-    //   95: invokevirtual 1111	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   95: invokevirtual 1076	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
     //   98: aload 7
-    //   100: ldc_w 1115
+    //   100: ldc_w 1080
     //   103: aload_1
-    //   104: invokevirtual 1118	java/net/HttpURLConnection:getRequestMethod	()Ljava/lang/String;
-    //   107: invokevirtual 1111	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   104: invokevirtual 1083	java/net/HttpURLConnection:getRequestMethod	()Ljava/lang/String;
+    //   107: invokevirtual 1076	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
     //   110: aload 7
-    //   112: ldc 145
+    //   112: ldc 159
     //   114: aload_1
-    //   115: ldc 145
-    //   117: invokevirtual 1121	java/net/HttpURLConnection:getRequestProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   120: invokevirtual 1111	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   115: ldc 159
+    //   117: invokevirtual 1086	java/net/HttpURLConnection:getRequestProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   120: invokevirtual 1076	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
     //   123: aload 7
-    //   125: ldc 74
+    //   125: ldc 88
     //   127: aload_1
-    //   128: ldc 74
-    //   130: invokevirtual 1121	java/net/HttpURLConnection:getRequestProperty	(Ljava/lang/String;)Ljava/lang/String;
-    //   133: invokevirtual 1111	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   128: ldc 88
+    //   130: invokevirtual 1086	java/net/HttpURLConnection:getRequestProperty	(Ljava/lang/String;)Ljava/lang/String;
+    //   133: invokevirtual 1076	com/facebook/internal/Logger:appendKeyValue	(Ljava/lang/String;Ljava/lang/Object;)V
     //   136: aload_1
     //   137: aload_0
-    //   138: invokevirtual 1124	com/facebook/GraphRequestBatch:getTimeout	()I
-    //   141: invokevirtual 1127	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   138: invokevirtual 1089	com/facebook/GraphRequestBatch:getTimeout	()I
+    //   141: invokevirtual 1092	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   144: aload_1
     //   145: aload_0
-    //   146: invokevirtual 1124	com/facebook/GraphRequestBatch:getTimeout	()I
-    //   149: invokevirtual 1130	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   146: invokevirtual 1089	com/facebook/GraphRequestBatch:getTimeout	()I
+    //   149: invokevirtual 1095	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   152: aload 5
-    //   154: getstatic 367	com/facebook/HttpMethod:POST	Lcom/facebook/HttpMethod;
+    //   154: getstatic 374	com/facebook/HttpMethod:POST	Lcom/facebook/HttpMethod;
     //   157: if_acmpne +29 -> 186
     //   160: iconst_1
     //   161: istore_2
     //   162: iload_2
     //   163: ifne +28 -> 191
     //   166: aload 7
-    //   168: invokevirtual 1133	com/facebook/internal/Logger:log	()V
-    //   171: ldc_w 1077
-    //   174: invokestatic 231	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   168: invokevirtual 1098	com/facebook/internal/Logger:log	()V
+    //   171: sipush 17145
+    //   174: invokestatic 244	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   177: return
-    //   178: getstatic 367	com/facebook/HttpMethod:POST	Lcom/facebook/HttpMethod;
+    //   178: getstatic 374	com/facebook/HttpMethod:POST	Lcom/facebook/HttpMethod;
     //   181: astore 5
     //   183: goto -136 -> 47
     //   186: iconst_0
@@ -1196,12 +1211,12 @@ public class GraphRequest
     //   188: goto -26 -> 162
     //   191: aload_1
     //   192: iconst_1
-    //   193: invokevirtual 1137	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   196: new 1139	java/io/BufferedOutputStream
+    //   193: invokevirtual 1102	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   196: new 1104	java/io/BufferedOutputStream
     //   199: dup
     //   200: aload_1
-    //   201: invokevirtual 1143	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   204: invokespecial 1146	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   201: invokevirtual 1108	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   204: invokespecial 1111	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   207: astore 6
     //   209: aload 6
     //   211: astore_1
@@ -1209,23 +1224,23 @@ public class GraphRequest
     //   214: ifeq +17 -> 231
     //   217: aload 6
     //   219: astore 5
-    //   221: new 1148	java/util/zip/GZIPOutputStream
+    //   221: new 1113	java/util/zip/GZIPOutputStream
     //   224: dup
     //   225: aload 6
-    //   227: invokespecial 1149	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   227: invokespecial 1114	java/util/zip/GZIPOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   230: astore_1
     //   231: aload_1
     //   232: astore 5
     //   234: aload_0
-    //   235: invokestatic 1151	com/facebook/GraphRequest:hasOnProgressCallbacks	(Lcom/facebook/GraphRequestBatch;)Z
+    //   235: invokestatic 1116	com/facebook/GraphRequest:hasOnProgressCallbacks	(Lcom/facebook/GraphRequestBatch;)Z
     //   238: ifeq +124 -> 362
     //   241: aload_1
     //   242: astore 5
-    //   244: new 1153	com/facebook/ProgressNoopOutputStream
+    //   244: new 1118	com/facebook/ProgressNoopOutputStream
     //   247: dup
     //   248: aload_0
-    //   249: invokevirtual 992	com/facebook/GraphRequestBatch:getCallbackHandler	()Landroid/os/Handler;
-    //   252: invokespecial 1155	com/facebook/ProgressNoopOutputStream:<init>	(Landroid/os/Handler;)V
+    //   249: invokevirtual 964	com/facebook/GraphRequestBatch:getCallbackHandler	()Landroid/os/Handler;
+    //   252: invokespecial 1120	com/facebook/ProgressNoopOutputStream:<init>	(Landroid/os/Handler;)V
     //   255: astore 6
     //   257: aload_1
     //   258: astore 5
@@ -1235,23 +1250,23 @@ public class GraphRequest
     //   263: aload 8
     //   265: aload 6
     //   267: iload 4
-    //   269: invokestatic 1157	com/facebook/GraphRequest:processRequest	(Lcom/facebook/GraphRequestBatch;Lcom/facebook/internal/Logger;ILjava/net/URL;Ljava/io/OutputStream;Z)V
+    //   269: invokestatic 1122	com/facebook/GraphRequest:processRequest	(Lcom/facebook/GraphRequestBatch;Lcom/facebook/internal/Logger;ILjava/net/URL;Ljava/io/OutputStream;Z)V
     //   272: aload_1
     //   273: astore 5
     //   275: aload 6
-    //   277: invokevirtual 1160	com/facebook/ProgressNoopOutputStream:getMaxProgress	()I
+    //   277: invokevirtual 1125	com/facebook/ProgressNoopOutputStream:getMaxProgress	()I
     //   280: istore_2
     //   281: aload_1
     //   282: astore 5
-    //   284: new 1162	com/facebook/ProgressOutputStream
+    //   284: new 1127	com/facebook/ProgressOutputStream
     //   287: dup
     //   288: aload_1
     //   289: aload_0
     //   290: aload 6
-    //   292: invokevirtual 1166	com/facebook/ProgressNoopOutputStream:getProgressMap	()Ljava/util/Map;
+    //   292: invokevirtual 1131	com/facebook/ProgressNoopOutputStream:getProgressMap	()Ljava/util/Map;
     //   295: iload_2
     //   296: i2l
-    //   297: invokespecial 1169	com/facebook/ProgressOutputStream:<init>	(Ljava/io/OutputStream;Lcom/facebook/GraphRequestBatch;Ljava/util/Map;J)V
+    //   297: invokespecial 1134	com/facebook/ProgressOutputStream:<init>	(Ljava/io/OutputStream;Lcom/facebook/GraphRequestBatch;Ljava/util/Map;J)V
     //   300: astore_1
     //   301: aload_0
     //   302: aload 7
@@ -1259,13 +1274,13 @@ public class GraphRequest
     //   305: aload 8
     //   307: aload_1
     //   308: iload 4
-    //   310: invokestatic 1157	com/facebook/GraphRequest:processRequest	(Lcom/facebook/GraphRequestBatch;Lcom/facebook/internal/Logger;ILjava/net/URL;Ljava/io/OutputStream;Z)V
+    //   310: invokestatic 1122	com/facebook/GraphRequest:processRequest	(Lcom/facebook/GraphRequestBatch;Lcom/facebook/internal/Logger;ILjava/net/URL;Ljava/io/OutputStream;Z)V
     //   313: aload_1
-    //   314: invokevirtual 1174	java/io/OutputStream:close	()V
+    //   314: invokevirtual 1139	java/io/OutputStream:close	()V
     //   317: aload 7
-    //   319: invokevirtual 1133	com/facebook/internal/Logger:log	()V
-    //   322: ldc_w 1077
-    //   325: invokestatic 231	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   319: invokevirtual 1098	com/facebook/internal/Logger:log	()V
+    //   322: sipush 17145
+    //   325: invokestatic 244	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   328: return
     //   329: astore_0
     //   330: aconst_null
@@ -1273,9 +1288,9 @@ public class GraphRequest
     //   333: aload 5
     //   335: ifnull +8 -> 343
     //   338: aload 5
-    //   340: invokevirtual 1174	java/io/OutputStream:close	()V
-    //   343: ldc_w 1077
-    //   346: invokestatic 231	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   340: invokevirtual 1139	java/io/OutputStream:close	()V
+    //   343: sipush 17145
+    //   346: invokestatic 244	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   349: aload_0
     //   350: athrow
     //   351: astore_0
@@ -1310,16 +1325,16 @@ public class GraphRequest
   
   private static void setConnectionContentType(HttpURLConnection paramHttpURLConnection, boolean paramBoolean)
   {
-    AppMethodBeat.i(71705);
+    AppMethodBeat.i(17141);
     if (paramBoolean)
     {
       paramHttpURLConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
       paramHttpURLConnection.setRequestProperty("Content-Encoding", "gzip");
-      AppMethodBeat.o(71705);
+      AppMethodBeat.o(17141);
       return;
     }
     paramHttpURLConnection.setRequestProperty("Content-Type", getMimeContentType());
-    AppMethodBeat.o(71705);
+    AppMethodBeat.o(17141);
   }
   
   public static final void setDefaultBatchApplicationId(String paramString)
@@ -1329,11 +1344,11 @@ public class GraphRequest
   
   static final boolean shouldWarnOnMissingFieldsParam(GraphRequest paramGraphRequest)
   {
-    AppMethodBeat.i(71707);
+    AppMethodBeat.i(17143);
     String str = paramGraphRequest.getVersion();
     if (Utility.isNullOrEmpty(str))
     {
-      AppMethodBeat.o(71707);
+      AppMethodBeat.o(17143);
       return true;
     }
     paramGraphRequest = str;
@@ -1343,16 +1358,16 @@ public class GraphRequest
     paramGraphRequest = paramGraphRequest.split("\\.");
     if (((paramGraphRequest.length >= 2) && (Integer.parseInt(paramGraphRequest[0]) > 2)) || ((Integer.parseInt(paramGraphRequest[0]) >= 2) && (Integer.parseInt(paramGraphRequest[1]) >= 4)))
     {
-      AppMethodBeat.o(71707);
+      AppMethodBeat.o(17143);
       return true;
     }
-    AppMethodBeat.o(71707);
+    AppMethodBeat.o(17143);
     return false;
   }
   
   public static HttpURLConnection toHttpConnection(GraphRequestBatch paramGraphRequestBatch)
   {
-    AppMethodBeat.i(71683);
+    AppMethodBeat.i(17119);
     validateFieldsParamForGetRequests(paramGraphRequestBatch);
     for (;;)
     {
@@ -1369,7 +1384,7 @@ public class GraphRequest
       {
         Object localObject3;
         paramGraphRequestBatch = new FacebookException("could not construct URL for request", paramGraphRequestBatch);
-        AppMethodBeat.o(71683);
+        AppMethodBeat.o(17119);
         throw paramGraphRequestBatch;
       }
       try
@@ -1378,14 +1393,14 @@ public class GraphRequest
         localObject1 = localObject3;
         localObject2 = localObject3;
         serializeToUrlConnection(paramGraphRequestBatch, (HttpURLConnection)localObject3);
-        AppMethodBeat.o(71683);
+        AppMethodBeat.o(17119);
         return localObject3;
       }
       catch (JSONException paramGraphRequestBatch)
       {
         Utility.disconnectQuietly(localObject1);
         paramGraphRequestBatch = new FacebookException("could not construct request body", paramGraphRequestBatch);
-        AppMethodBeat.o(71683);
+        AppMethodBeat.o(17119);
         throw paramGraphRequestBatch;
       }
       catch (IOException paramGraphRequestBatch)
@@ -1401,24 +1416,24 @@ public class GraphRequest
   
   public static HttpURLConnection toHttpConnection(Collection<GraphRequest> paramCollection)
   {
-    AppMethodBeat.i(71682);
+    AppMethodBeat.i(17118);
     Validate.notEmptyAndContainsNoNulls(paramCollection, "requests");
     paramCollection = toHttpConnection(new GraphRequestBatch(paramCollection));
-    AppMethodBeat.o(71682);
+    AppMethodBeat.o(17118);
     return paramCollection;
   }
   
   public static HttpURLConnection toHttpConnection(GraphRequest... paramVarArgs)
   {
-    AppMethodBeat.i(71681);
+    AppMethodBeat.i(17117);
     paramVarArgs = toHttpConnection(Arrays.asList(paramVarArgs));
-    AppMethodBeat.o(71681);
+    AppMethodBeat.o(17117);
     return paramVarArgs;
   }
   
   static final void validateFieldsParamForGetRequests(GraphRequestBatch paramGraphRequestBatch)
   {
-    AppMethodBeat.i(71708);
+    AppMethodBeat.i(17144);
     paramGraphRequestBatch = paramGraphRequestBatch.iterator();
     while (paramGraphRequestBatch.hasNext())
     {
@@ -1431,22 +1446,22 @@ public class GraphRequest
         }
       }
     }
-    AppMethodBeat.o(71708);
+    AppMethodBeat.o(17144);
   }
   
   public final GraphResponse executeAndWait()
   {
-    AppMethodBeat.i(71679);
+    AppMethodBeat.i(17115);
     GraphResponse localGraphResponse = executeAndWait(this);
-    AppMethodBeat.o(71679);
+    AppMethodBeat.o(17115);
     return localGraphResponse;
   }
   
   public final GraphRequestAsyncTask executeAsync()
   {
-    AppMethodBeat.i(71680);
+    AppMethodBeat.i(17116);
     GraphRequestAsyncTask localGraphRequestAsyncTask = executeBatchAsync(new GraphRequest[] { this });
-    AppMethodBeat.o(71680);
+    AppMethodBeat.o(17116);
     return localGraphRequestAsyncTask;
   }
   
@@ -1470,7 +1485,7 @@ public class GraphRequest
     return this.batchEntryOmitResultOnSuccess;
   }
   
-  public final GraphRequest.Callback getCallback()
+  public final Callback getCallback()
   {
     return this.callback;
   }
@@ -1497,18 +1512,18 @@ public class GraphRequest
   
   final String getRelativeUrlForBatchedRequest()
   {
-    AppMethodBeat.i(71700);
+    AppMethodBeat.i(17136);
     if (this.overriddenURL != null)
     {
       localObject = new FacebookException("Can't override URL for a batch request");
-      AppMethodBeat.o(71700);
+      AppMethodBeat.o(17136);
       throw ((Throwable)localObject);
     }
     Object localObject = String.format("%s/%s", new Object[] { ServerProtocol.getGraphUrlBase(), getGraphPathWithVersion() });
     addCommonParameters();
     localObject = Uri.parse(appendParametersToBaseUrl((String)localObject, Boolean.TRUE));
     localObject = String.format("%s?%s", new Object[] { ((Uri)localObject).getPath(), ((Uri)localObject).getQuery() });
-    AppMethodBeat.o(71700);
+    AppMethodBeat.o(17136);
     return localObject;
   }
   
@@ -1519,11 +1534,11 @@ public class GraphRequest
   
   final String getUrlForSingleRequest()
   {
-    AppMethodBeat.i(71701);
+    AppMethodBeat.i(17137);
     if (this.overriddenURL != null)
     {
       str = this.overriddenURL.toString();
-      AppMethodBeat.o(71701);
+      AppMethodBeat.o(17137);
       return str;
     }
     if ((getHttpMethod() == HttpMethod.POST) && (this.graphPath != null) && (this.graphPath.endsWith("/videos"))) {}
@@ -1532,7 +1547,7 @@ public class GraphRequest
       str = String.format("%s/%s", new Object[] { str, getGraphPathWithVersion() });
       addCommonParameters();
       str = appendParametersToBaseUrl(str, Boolean.FALSE);
-      AppMethodBeat.o(71701);
+      AppMethodBeat.o(17137);
       return str;
     }
   }
@@ -1562,17 +1577,92 @@ public class GraphRequest
     this.batchEntryOmitResultOnSuccess = paramBoolean;
   }
   
-  public final void setCallback(GraphRequest.Callback paramCallback)
+  public final void setCallback(final Callback paramCallback)
   {
-    AppMethodBeat.i(71678);
+    AppMethodBeat.i(17114);
     if ((FacebookSdk.isLoggingBehaviorEnabled(LoggingBehavior.GRAPH_API_DEBUG_INFO)) || (FacebookSdk.isLoggingBehaviorEnabled(LoggingBehavior.GRAPH_API_DEBUG_WARNING)))
     {
-      this.callback = new GraphRequest.4(this, paramCallback);
-      AppMethodBeat.o(71678);
+      this.callback = new Callback()
+      {
+        public void onCompleted(GraphResponse paramAnonymousGraphResponse)
+        {
+          AppMethodBeat.i(17079);
+          Object localObject1 = paramAnonymousGraphResponse.getJSONObject();
+          JSONArray localJSONArray;
+          label34:
+          int i;
+          label41:
+          label71:
+          Object localObject2;
+          if (localObject1 != null)
+          {
+            localObject1 = ((JSONObject)localObject1).optJSONObject("__debug__");
+            if (localObject1 == null) {
+              break label187;
+            }
+            localJSONArray = ((JSONObject)localObject1).optJSONArray("messages");
+            if (localJSONArray == null) {
+              break label210;
+            }
+            i = 0;
+            if (i >= localJSONArray.length()) {
+              break label210;
+            }
+            localObject3 = localJSONArray.optJSONObject(i);
+            if (localObject3 == null) {
+              break label193;
+            }
+            localObject1 = ((JSONObject)localObject3).optString("message");
+            if (localObject3 == null) {
+              break label198;
+            }
+            localObject2 = ((JSONObject)localObject3).optString("type");
+            label85:
+            if (localObject3 == null) {
+              break label204;
+            }
+          }
+          label187:
+          label193:
+          label198:
+          label204:
+          for (Object localObject3 = ((JSONObject)localObject3).optString("link");; localObject3 = null)
+          {
+            if ((localObject1 != null) && (localObject2 != null))
+            {
+              LoggingBehavior localLoggingBehavior = LoggingBehavior.GRAPH_API_DEBUG_INFO;
+              if (((String)localObject2).equals("warning")) {
+                localLoggingBehavior = LoggingBehavior.GRAPH_API_DEBUG_WARNING;
+              }
+              localObject2 = localObject1;
+              if (!Utility.isNullOrEmpty((String)localObject3)) {
+                localObject2 = (String)localObject1 + " Link: " + (String)localObject3;
+              }
+              Logger.log(localLoggingBehavior, GraphRequest.TAG, (String)localObject2);
+            }
+            i += 1;
+            break label41;
+            localObject1 = null;
+            break;
+            localJSONArray = null;
+            break label34;
+            localObject1 = null;
+            break label71;
+            localObject2 = null;
+            break label85;
+          }
+          label210:
+          if (paramCallback != null) {
+            paramCallback.onCompleted(paramAnonymousGraphResponse);
+          }
+          AppMethodBeat.o(17079);
+        }
+      };
+      AppMethodBeat.o(17114);
       return;
     }
     this.callback = paramCallback;
-    AppMethodBeat.o(71678);
+    AppMethodBeat.o(17114);
   }
   
   public final void setGraphObject(JSONObject paramJSONObject)
@@ -1587,18 +1677,18 @@ public class GraphRequest
   
   public final void setHttpMethod(HttpMethod paramHttpMethod)
   {
-    AppMethodBeat.i(71677);
+    AppMethodBeat.i(17113);
     if ((this.overriddenURL != null) && (paramHttpMethod != HttpMethod.GET))
     {
       paramHttpMethod = new FacebookException("Can't change HTTP method on request with overridden URL.");
-      AppMethodBeat.o(71677);
+      AppMethodBeat.o(17113);
       throw paramHttpMethod;
     }
     if (paramHttpMethod != null) {}
     for (;;)
     {
       this.httpMethod = paramHttpMethod;
-      AppMethodBeat.o(71677);
+      AppMethodBeat.o(17113);
       return;
       paramHttpMethod = HttpMethod.GET;
     }
@@ -1626,20 +1716,406 @@ public class GraphRequest
   
   public String toString()
   {
-    AppMethodBeat.i(71695);
+    AppMethodBeat.i(17131);
     StringBuilder localStringBuilder = new StringBuilder("{Request:  accessToken: ");
     if (this.accessToken == null) {}
     for (Object localObject = "null";; localObject = this.accessToken)
     {
       localObject = localObject + ", graphPath: " + this.graphPath + ", graphObject: " + this.graphObject + ", httpMethod: " + this.httpMethod + ", parameters: " + this.parameters + "}";
-      AppMethodBeat.o(71695);
+      AppMethodBeat.o(17131);
       return localObject;
+    }
+  }
+  
+  static class Attachment
+  {
+    private final GraphRequest request;
+    private final Object value;
+    
+    public Attachment(GraphRequest paramGraphRequest, Object paramObject)
+    {
+      this.request = paramGraphRequest;
+      this.value = paramObject;
+    }
+    
+    public GraphRequest getRequest()
+    {
+      return this.request;
+    }
+    
+    public Object getValue()
+    {
+      return this.value;
+    }
+  }
+  
+  public static abstract interface Callback
+  {
+    public abstract void onCompleted(GraphResponse paramGraphResponse);
+  }
+  
+  public static abstract interface GraphJSONArrayCallback
+  {
+    public abstract void onCompleted(JSONArray paramJSONArray, GraphResponse paramGraphResponse);
+  }
+  
+  public static abstract interface GraphJSONObjectCallback
+  {
+    public abstract void onCompleted(JSONObject paramJSONObject, GraphResponse paramGraphResponse);
+  }
+  
+  static abstract interface KeyValueSerializer
+  {
+    public abstract void writeString(String paramString1, String paramString2);
+  }
+  
+  public static abstract interface OnProgressCallback
+    extends GraphRequest.Callback
+  {
+    public abstract void onProgress(long paramLong1, long paramLong2);
+  }
+  
+  public static class ParcelableResourceWithMimeType<RESOURCE extends Parcelable>
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<ParcelableResourceWithMimeType> CREATOR;
+    private final String mimeType;
+    private final RESOURCE resource;
+    
+    static
+    {
+      AppMethodBeat.i(17087);
+      CREATOR = new Parcelable.Creator()
+      {
+        public final GraphRequest.ParcelableResourceWithMimeType createFromParcel(Parcel paramAnonymousParcel)
+        {
+          AppMethodBeat.i(17082);
+          paramAnonymousParcel = new GraphRequest.ParcelableResourceWithMimeType(paramAnonymousParcel, null);
+          AppMethodBeat.o(17082);
+          return paramAnonymousParcel;
+        }
+        
+        public final GraphRequest.ParcelableResourceWithMimeType[] newArray(int paramAnonymousInt)
+        {
+          return new GraphRequest.ParcelableResourceWithMimeType[paramAnonymousInt];
+        }
+      };
+      AppMethodBeat.o(17087);
+    }
+    
+    private ParcelableResourceWithMimeType(Parcel paramParcel)
+    {
+      AppMethodBeat.i(17086);
+      this.mimeType = paramParcel.readString();
+      this.resource = paramParcel.readParcelable(FacebookSdk.getApplicationContext().getClassLoader());
+      AppMethodBeat.o(17086);
+    }
+    
+    public ParcelableResourceWithMimeType(RESOURCE paramRESOURCE, String paramString)
+    {
+      this.mimeType = paramString;
+      this.resource = paramRESOURCE;
+    }
+    
+    public int describeContents()
+    {
+      return 1;
+    }
+    
+    public String getMimeType()
+    {
+      return this.mimeType;
+    }
+    
+    public RESOURCE getResource()
+    {
+      return this.resource;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(17085);
+      paramParcel.writeString(this.mimeType);
+      paramParcel.writeParcelable(this.resource, paramInt);
+      AppMethodBeat.o(17085);
+    }
+  }
+  
+  static class Serializer
+    implements GraphRequest.KeyValueSerializer
+  {
+    private boolean firstWrite = true;
+    private final Logger logger;
+    private final OutputStream outputStream;
+    private boolean useUrlEncode = false;
+    
+    public Serializer(OutputStream paramOutputStream, Logger paramLogger, boolean paramBoolean)
+    {
+      this.outputStream = paramOutputStream;
+      this.logger = paramLogger;
+      this.useUrlEncode = paramBoolean;
+    }
+    
+    private RuntimeException getInvalidTypeError()
+    {
+      AppMethodBeat.i(17089);
+      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("value is not a supported type.");
+      AppMethodBeat.o(17089);
+      return localIllegalArgumentException;
+    }
+    
+    public void write(String paramString, Object... paramVarArgs)
+    {
+      AppMethodBeat.i(17098);
+      if (!this.useUrlEncode)
+      {
+        if (this.firstWrite)
+        {
+          this.outputStream.write("--".getBytes());
+          this.outputStream.write(GraphRequest.MIME_BOUNDARY.getBytes());
+          this.outputStream.write("\r\n".getBytes());
+          this.firstWrite = false;
+        }
+        this.outputStream.write(String.format(paramString, paramVarArgs).getBytes());
+        AppMethodBeat.o(17098);
+        return;
+      }
+      this.outputStream.write(URLEncoder.encode(String.format(Locale.US, paramString, paramVarArgs), "UTF-8").getBytes());
+      AppMethodBeat.o(17098);
+    }
+    
+    public void writeBitmap(String paramString, Bitmap paramBitmap)
+    {
+      AppMethodBeat.i(17092);
+      writeContentDisposition(paramString, paramString, "image/png");
+      paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, this.outputStream);
+      writeLine("", new Object[0]);
+      writeRecordBoundary();
+      if (this.logger != null) {
+        this.logger.appendKeyValue("    ".concat(String.valueOf(paramString)), "<Image>");
+      }
+      AppMethodBeat.o(17092);
+    }
+    
+    public void writeBytes(String paramString, byte[] paramArrayOfByte)
+    {
+      AppMethodBeat.i(17093);
+      writeContentDisposition(paramString, paramString, "content/unknown");
+      this.outputStream.write(paramArrayOfByte);
+      writeLine("", new Object[0]);
+      writeRecordBoundary();
+      if (this.logger != null) {
+        this.logger.appendKeyValue("    ".concat(String.valueOf(paramString)), String.format(Locale.ROOT, "<Data: %d>", new Object[] { Integer.valueOf(paramArrayOfByte.length) }));
+      }
+      AppMethodBeat.o(17093);
+    }
+    
+    public void writeContentDisposition(String paramString1, String paramString2, String paramString3)
+    {
+      AppMethodBeat.i(17097);
+      if (!this.useUrlEncode)
+      {
+        write("Content-Disposition: form-data; name=\"%s\"", new Object[] { paramString1 });
+        if (paramString2 != null) {
+          write("; filename=\"%s\"", new Object[] { paramString2 });
+        }
+        writeLine("", new Object[0]);
+        if (paramString3 != null) {
+          writeLine("%s: %s", new Object[] { "Content-Type", paramString3 });
+        }
+        writeLine("", new Object[0]);
+        AppMethodBeat.o(17097);
+        return;
+      }
+      this.outputStream.write(String.format("%s=", new Object[] { paramString1 }).getBytes());
+      AppMethodBeat.o(17097);
+    }
+    
+    public void writeContentUri(String paramString1, Uri paramUri, String paramString2)
+    {
+      AppMethodBeat.i(17094);
+      String str = paramString2;
+      if (paramString2 == null) {
+        str = "content/unknown";
+      }
+      writeContentDisposition(paramString1, paramString1, str);
+      if ((this.outputStream instanceof ProgressNoopOutputStream))
+      {
+        long l = Utility.getContentSize(paramUri);
+        ((ProgressNoopOutputStream)this.outputStream).addProgress(l);
+      }
+      for (int i = 0;; i = Utility.copyAndCloseInputStream(FacebookSdk.getApplicationContext().getContentResolver().openInputStream(paramUri), this.outputStream) + 0)
+      {
+        writeLine("", new Object[0]);
+        writeRecordBoundary();
+        if (this.logger != null) {
+          this.logger.appendKeyValue("    ".concat(String.valueOf(paramString1)), String.format(Locale.ROOT, "<Data: %d>", new Object[] { Integer.valueOf(i) }));
+        }
+        AppMethodBeat.o(17094);
+        return;
+      }
+    }
+    
+    public void writeFile(String paramString1, ParcelFileDescriptor paramParcelFileDescriptor, String paramString2)
+    {
+      AppMethodBeat.i(17095);
+      String str = paramString2;
+      if (paramString2 == null) {
+        str = "content/unknown";
+      }
+      writeContentDisposition(paramString1, paramString1, str);
+      if ((this.outputStream instanceof ProgressNoopOutputStream)) {
+        ((ProgressNoopOutputStream)this.outputStream).addProgress(paramParcelFileDescriptor.getStatSize());
+      }
+      for (int i = 0;; i = Utility.copyAndCloseInputStream(new ParcelFileDescriptor.AutoCloseInputStream(paramParcelFileDescriptor), this.outputStream) + 0)
+      {
+        writeLine("", new Object[0]);
+        writeRecordBoundary();
+        if (this.logger != null) {
+          this.logger.appendKeyValue("    ".concat(String.valueOf(paramString1)), String.format(Locale.ROOT, "<Data: %d>", new Object[] { Integer.valueOf(i) }));
+        }
+        AppMethodBeat.o(17095);
+        return;
+      }
+    }
+    
+    public void writeLine(String paramString, Object... paramVarArgs)
+    {
+      AppMethodBeat.i(17099);
+      write(paramString, paramVarArgs);
+      if (!this.useUrlEncode) {
+        write("\r\n", new Object[0]);
+      }
+      AppMethodBeat.o(17099);
+    }
+    
+    public void writeObject(String paramString, Object paramObject, GraphRequest paramGraphRequest)
+    {
+      AppMethodBeat.i(17088);
+      if ((this.outputStream instanceof RequestOutputStream)) {
+        ((RequestOutputStream)this.outputStream).setCurrentRequest(paramGraphRequest);
+      }
+      if (GraphRequest.access$000(paramObject))
+      {
+        writeString(paramString, GraphRequest.access$100(paramObject));
+        AppMethodBeat.o(17088);
+        return;
+      }
+      if ((paramObject instanceof Bitmap))
+      {
+        writeBitmap(paramString, (Bitmap)paramObject);
+        AppMethodBeat.o(17088);
+        return;
+      }
+      if ((paramObject instanceof byte[]))
+      {
+        writeBytes(paramString, (byte[])paramObject);
+        AppMethodBeat.o(17088);
+        return;
+      }
+      if ((paramObject instanceof Uri))
+      {
+        writeContentUri(paramString, (Uri)paramObject, null);
+        AppMethodBeat.o(17088);
+        return;
+      }
+      if ((paramObject instanceof ParcelFileDescriptor))
+      {
+        writeFile(paramString, (ParcelFileDescriptor)paramObject, null);
+        AppMethodBeat.o(17088);
+        return;
+      }
+      if ((paramObject instanceof GraphRequest.ParcelableResourceWithMimeType))
+      {
+        paramGraphRequest = (GraphRequest.ParcelableResourceWithMimeType)paramObject;
+        paramObject = paramGraphRequest.getResource();
+        paramGraphRequest = paramGraphRequest.getMimeType();
+        if ((paramObject instanceof ParcelFileDescriptor))
+        {
+          writeFile(paramString, (ParcelFileDescriptor)paramObject, paramGraphRequest);
+          AppMethodBeat.o(17088);
+          return;
+        }
+        if ((paramObject instanceof Uri))
+        {
+          writeContentUri(paramString, (Uri)paramObject, paramGraphRequest);
+          AppMethodBeat.o(17088);
+          return;
+        }
+        paramString = getInvalidTypeError();
+        AppMethodBeat.o(17088);
+        throw paramString;
+      }
+      paramString = getInvalidTypeError();
+      AppMethodBeat.o(17088);
+      throw paramString;
+    }
+    
+    public void writeRecordBoundary()
+    {
+      AppMethodBeat.i(17096);
+      if (!this.useUrlEncode)
+      {
+        writeLine("--%s", new Object[] { GraphRequest.MIME_BOUNDARY });
+        AppMethodBeat.o(17096);
+        return;
+      }
+      this.outputStream.write("&".getBytes());
+      AppMethodBeat.o(17096);
+    }
+    
+    public void writeRequestsAsJson(String paramString, JSONArray paramJSONArray, Collection<GraphRequest> paramCollection)
+    {
+      AppMethodBeat.i(17090);
+      if (!(this.outputStream instanceof RequestOutputStream))
+      {
+        writeString(paramString, paramJSONArray.toString());
+        AppMethodBeat.o(17090);
+        return;
+      }
+      RequestOutputStream localRequestOutputStream = (RequestOutputStream)this.outputStream;
+      writeContentDisposition(paramString, null, null);
+      write("[", new Object[0]);
+      paramCollection = paramCollection.iterator();
+      int i = 0;
+      if (paramCollection.hasNext())
+      {
+        GraphRequest localGraphRequest = (GraphRequest)paramCollection.next();
+        JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+        localRequestOutputStream.setCurrentRequest(localGraphRequest);
+        if (i > 0) {
+          write(",%s", new Object[] { localJSONObject.toString() });
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          write("%s", new Object[] { localJSONObject.toString() });
+        }
+      }
+      write("]", new Object[0]);
+      if (this.logger != null) {
+        this.logger.appendKeyValue("    ".concat(String.valueOf(paramString)), paramJSONArray.toString());
+      }
+      AppMethodBeat.o(17090);
+    }
+    
+    public void writeString(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(17091);
+      writeContentDisposition(paramString1, null, null);
+      writeLine("%s", new Object[] { paramString2 });
+      writeRecordBoundary();
+      if (this.logger != null) {
+        this.logger.appendKeyValue("    ".concat(String.valueOf(paramString1)), paramString2);
+      }
+      AppMethodBeat.o(17091);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.GraphRequest
  * JD-Core Version:    0.7.0.1
  */

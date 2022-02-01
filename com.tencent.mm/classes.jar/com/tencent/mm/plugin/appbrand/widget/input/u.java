@@ -7,128 +7,127 @@ import android.support.v4.view.t;
 import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.d.a;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.plugin.appbrand.widget.c.a;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.z;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.Set;
 
 public final class u
   implements a
 {
-  private static Integer jmK = null;
-  private int jmE;
-  private final int[] jmF;
-  private final Rect jmG;
-  private boolean jmH;
-  private View jmI;
-  b jmJ;
-  private final Set<u.c> jmL;
+  private static Integer mcA = null;
+  private final LinkedHashSet<c> mcB;
+  private int mcu;
+  private final int[] mcv;
+  private final Rect mcw;
+  private boolean mcx;
+  private View mcy;
+  b mcz;
   
   public u()
   {
-    AppMethodBeat.i(77430);
-    this.jmE = 0;
-    this.jmF = new int[2];
-    this.jmG = new Rect();
-    this.jmH = false;
-    this.jmL = new LinkedHashSet();
-    AppMethodBeat.o(77430);
+    AppMethodBeat.i(131506);
+    this.mcu = 0;
+    this.mcv = new int[2];
+    this.mcw = new Rect();
+    this.mcx = false;
+    this.mcB = new LinkedHashSet();
+    AppMethodBeat.o(131506);
   }
   
-  private void a(u.a parama)
+  private void a(a parama)
   {
-    AppMethodBeat.i(77435);
-    Iterator localIterator = this.jmL.iterator();
+    AppMethodBeat.i(131511);
+    Iterator localIterator = ((LinkedHashSet)this.mcB.clone()).iterator();
     while (localIterator.hasNext()) {
-      parama.c((u.c)localIterator.next());
+      parama.c((c)localIterator.next());
     }
-    AppMethodBeat.o(77435);
+    AppMethodBeat.o(131511);
   }
   
   private Context getContext()
   {
-    AppMethodBeat.i(77432);
-    if (this.jmI == null)
+    AppMethodBeat.i(131508);
+    if (this.mcy == null)
     {
-      localContext = ah.getContext();
-      AppMethodBeat.o(77432);
+      localContext = aj.getContext();
+      AppMethodBeat.o(131508);
       return localContext;
     }
-    Context localContext = this.jmI.getContext();
-    AppMethodBeat.o(77432);
+    Context localContext = this.mcy.getContext();
+    AppMethodBeat.o(131508);
     return localContext;
   }
   
   private int getFrameHeight()
   {
-    AppMethodBeat.i(77433);
-    if (this.jmI == null) {}
-    for (Object localObject = null; localObject == null; localObject = this.jmI.getRootView())
+    AppMethodBeat.i(131509);
+    if (this.mcy == null) {}
+    for (Object localObject = null; localObject == null; localObject = this.mcy.getRootView())
     {
-      AppMethodBeat.o(77433);
+      AppMethodBeat.o(131509);
       return 0;
     }
-    localObject = this.jmG;
+    localObject = this.mcw;
     getWindowVisibleDisplayFrame((Rect)localObject);
-    if (t.as(this.jmI)) {}
-    for (int i = this.jmI.getMeasuredHeight();; i = getContext().getResources().getDisplayMetrics().heightPixels)
+    if (t.ay(this.mcy)) {}
+    for (int i = this.mcy.getMeasuredHeight();; i = getContext().getResources().getDisplayMetrics().heightPixels)
     {
       int j = ((Rect)localObject).top;
-      AppMethodBeat.o(77433);
+      AppMethodBeat.o(131509);
       return i - j;
     }
   }
   
   private void getWindowVisibleDisplayFrame(Rect paramRect)
   {
-    AppMethodBeat.i(77431);
-    if (this.jmI != null)
+    AppMethodBeat.i(131507);
+    if (this.mcy != null)
     {
-      this.jmI.getWindowVisibleDisplayFrame(paramRect);
-      this.jmI.getLocationInWindow(this.jmF);
-      paramRect.top = this.jmF[1];
+      this.mcy.getWindowVisibleDisplayFrame(paramRect);
+      this.mcy.getLocationInWindow(this.mcv);
+      paramRect.top = this.mcv[1];
     }
-    AppMethodBeat.o(77431);
+    AppMethodBeat.o(131507);
   }
   
-  public final void a(u.c paramc)
+  public final void a(c paramc)
   {
-    AppMethodBeat.i(77436);
-    if (paramc != null) {
-      this.jmL.add(paramc);
+    AppMethodBeat.i(131512);
+    if ((paramc != null) && (!this.mcB.contains(paramc))) {
+      this.mcB.add(paramc);
     }
-    AppMethodBeat.o(77436);
+    AppMethodBeat.o(131512);
   }
   
-  public final void b(u.c paramc)
+  public final void b(c paramc)
   {
-    AppMethodBeat.i(77437);
+    AppMethodBeat.i(131513);
     if (paramc != null) {
-      this.jmL.remove(paramc);
+      this.mcB.remove(paramc);
     }
-    AppMethodBeat.o(77437);
+    AppMethodBeat.o(131513);
   }
   
-  public final void cN(View paramView)
+  public final void dd(View paramView)
   {
     int j = 1;
-    AppMethodBeat.i(77434);
-    this.jmI = paramView;
-    paramView = this.jmG;
+    AppMethodBeat.i(131510);
+    this.mcy = paramView;
+    paramView = this.mcw;
     getWindowVisibleDisplayFrame(paramView);
     int k = paramView.height();
-    boolean bool;
-    if (this.jmE == 0)
+    final boolean bool;
+    if (this.mcu == 0)
     {
-      this.jmE = k;
+      this.mcu = k;
       if (getFrameHeight() <= k) {
         break label242;
       }
       bool = true;
       label53:
-      if (this.jmH == bool) {
+      if (this.mcx == bool) {
         break label248;
       }
     }
@@ -138,37 +137,55 @@ public final class u
     {
       if (i != 0)
       {
-        if (this.jmJ != null) {
-          this.jmJ.bc(bool);
+        if (this.mcz != null) {
+          this.mcz.bu(bool);
         }
-        a(new u.2(this, bool));
+        a(new a()
+        {
+          public final void c(u.c paramAnonymousc)
+          {
+            AppMethodBeat.i(131505);
+            paramAnonymousc.bu(bool);
+            AppMethodBeat.o(131505);
+          }
+        });
       }
-      this.jmH = bool;
-      this.jmE = k;
-      this.jmI = null;
-      AppMethodBeat.o(77434);
+      this.mcx = bool;
+      this.mcu = k;
+      this.mcy = null;
+      AppMethodBeat.o(131510);
       return;
-      int m = getFrameHeight() - k;
+      final int m = getFrameHeight() - k;
       if (m <= 0) {
         break;
       }
       paramView = getContext();
       if (m > 0)
       {
-        if (jmK == null) {
-          jmK = Integer.valueOf(x.gL(paramView));
+        if (mcA == null) {
+          mcA = Integer.valueOf(z.in(paramView));
         }
-        if (jmK.intValue() != m) {
-          jmK = Integer.valueOf(m);
+        if (mcA.intValue() != m) {
+          mcA = Integer.valueOf(m);
         }
       }
       for (i = 1;; i = 0)
       {
-        a(new u.1(this, m));
-        if ((this.jmJ == null) || ((i == 0) && (this.jmJ.getHeight() == m))) {
+        a(new a()
+        {
+          public final void c(u.c paramAnonymousc)
+          {
+            AppMethodBeat.i(131504);
+            if (paramAnonymousc.getHeight() != m) {
+              paramAnonymousc.gM(m);
+            }
+            AppMethodBeat.o(131504);
+          }
+        });
+        if ((this.mcz == null) || ((i == 0) && (this.mcz.getHeight() == m))) {
           break;
         }
-        this.jmJ.fu(m);
+        this.mcz.gM(m);
         break;
       }
       bool = false;
@@ -176,13 +193,27 @@ public final class u
     }
   }
   
+  static abstract interface a
+  {
+    public abstract void c(u.c paramc);
+  }
+  
   static abstract interface b
     extends u.c
   {}
+  
+  public static abstract interface c
+  {
+    public abstract void bu(boolean paramBoolean);
+    
+    public abstract void gM(int paramInt);
+    
+    public abstract int getHeight();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.u
  * JD-Core Version:    0.7.0.1
  */

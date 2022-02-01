@@ -4,8 +4,8 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,17 +13,17 @@ public final class d
   extends j<c>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] goC;
-  public static Map<String, c> goD;
+  private static final String[] iaF;
+  public static Map<String, c> iaG;
   private e db;
   
   static
   {
-    AppMethodBeat.i(44712);
+    AppMethodBeat.i(67625);
     SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "RemittanceRecord") };
-    goC = new String[] { "*", "rowid" };
-    goD = new HashMap();
-    AppMethodBeat.o(44712);
+    iaF = new String[] { "*", "rowid" };
+    iaG = new HashMap();
+    AppMethodBeat.o(67625);
   }
   
   public d(e parame)
@@ -32,15 +32,26 @@ public final class d
     this.db = parame;
   }
   
-  public final c Ye(String paramString)
+  public final boolean a(c paramc)
   {
-    AppMethodBeat.i(44707);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(67621);
+    if ((paramc != null) && (iaG.containsKey(paramc.field_transferId))) {
+      iaG.put(paramc.field_transferId, paramc);
+    }
+    boolean bool = super.replace(paramc);
+    AppMethodBeat.o(67621);
+    return bool;
+  }
+  
+  public final c amc(String paramString)
+  {
+    AppMethodBeat.i(67620);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(44707);
+      AppMethodBeat.o(67620);
       return null;
     }
-    paramString = this.db.a("RemittanceRecord", goC, "transferId=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.a("RemittanceRecord", iaF, "transferId=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -55,33 +66,22 @@ public final class d
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.RemittanceSendRecordStorage", localException, "getRecordByTransferId error: %s", new Object[] { localException.getMessage() });
+        ad.printErrStackTrace("MicroMsg.RemittanceSendRecordStorage", localException, "getRecordByTransferId error: %s", new Object[] { localException.getMessage() });
         paramString.close();
       }
     }
     finally
     {
       paramString.close();
-      AppMethodBeat.o(44707);
+      AppMethodBeat.o(67620);
     }
-    AppMethodBeat.o(44707);
+    AppMethodBeat.o(67620);
     return null;
-  }
-  
-  public final boolean a(c paramc)
-  {
-    AppMethodBeat.i(44708);
-    if ((paramc != null) && (goD.containsKey(paramc.field_transferId))) {
-      goD.put(paramc.field_transferId, paramc);
-    }
-    boolean bool = super.replace(paramc);
-    AppMethodBeat.o(44708);
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.b.d
  * JD-Core Version:    0.7.0.1
  */

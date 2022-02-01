@@ -7,21 +7,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static ConnectivityManager BLO = null;
+  private static ConnectivityManager IWz = null;
   
   public static boolean isConnected(Context paramContext)
   {
     boolean bool1 = false;
-    AppMethodBeat.i(65552);
-    if (BLO == null) {
-      BLO = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    AppMethodBeat.i(3459);
+    if (IWz == null) {
+      IWz = (ConnectivityManager)paramContext.getSystemService("connectivity");
     }
-    if (BLO == null)
+    if (IWz == null)
     {
-      AppMethodBeat.o(65552);
+      AppMethodBeat.o(3459);
       return false;
     }
-    paramContext = BLO.getActiveNetworkInfo();
+    paramContext = IWz.getActiveNetworkInfo();
     if (paramContext != null) {}
     for (;;)
     {
@@ -37,7 +37,7 @@ public final class a
       {
         continue;
       }
-      AppMethodBeat.o(65552);
+      AppMethodBeat.o(3459);
       return bool1;
       bool1 = false;
     }
@@ -45,28 +45,28 @@ public final class a
   
   public static boolean isWifi(Context paramContext)
   {
-    AppMethodBeat.i(65553);
-    if (BLO == null) {
-      BLO = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    AppMethodBeat.i(3460);
+    if (IWz == null) {
+      IWz = (ConnectivityManager)paramContext.getSystemService("connectivity");
     }
-    if (BLO == null)
+    if (IWz == null)
     {
-      AppMethodBeat.o(65553);
+      AppMethodBeat.o(3460);
       return false;
     }
-    paramContext = BLO.getActiveNetworkInfo();
+    paramContext = IWz.getActiveNetworkInfo();
     if ((paramContext != null) && (paramContext.getType() == 1))
     {
-      AppMethodBeat.o(65553);
+      AppMethodBeat.o(3460);
       return true;
     }
-    AppMethodBeat.o(65553);
+    AppMethodBeat.o(3460);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tinkerboots.sdk.b.a
  * JD-Core Version:    0.7.0.1
  */

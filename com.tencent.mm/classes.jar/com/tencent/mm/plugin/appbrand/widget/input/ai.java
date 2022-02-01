@@ -6,10 +6,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ai
 {
-  static ai.a[] f(TextView paramTextView)
+  static ai.a[] h(TextView paramTextView)
   {
     int i = 0;
-    AppMethodBeat.i(77441);
+    AppMethodBeat.i(131517);
     Spannable localSpannable = null;
     Object localObject = localSpannable;
     if (paramTextView != null)
@@ -31,13 +31,13 @@ final class ai
         }
       }
     }
-    AppMethodBeat.o(77441);
+    AppMethodBeat.o(131517);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.ai
  * JD-Core Version:    0.7.0.1
  */

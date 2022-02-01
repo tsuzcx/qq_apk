@@ -1,53 +1,91 @@
 package com.tencent.mm.plugin.appbrand.i;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.d.a.g;
-import com.tencent.mm.d.a.l;
-import com.tencent.mm.d.a.l.7;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.jsruntime.i;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONObject;
 
-public class c
+public abstract class c
   extends a
 {
-  public c()
+  public int A(JSONObject paramJSONObject)
   {
-    this(null, null);
-  }
-  
-  public c(String paramString, byte[] paramArrayOfByte)
-  {
-    super(paramString, paramArrayOfByte);
-  }
-  
-  protected final l a(com.tencent.mm.d.a.c paramc, int paramInt)
-  {
-    AppMethodBeat.i(113933);
-    paramc = paramc.gg(paramInt);
-    AppMethodBeat.o(113933);
-    return paramc;
-  }
-  
-  public final void a(w paramw)
-  {
-    AppMethodBeat.i(145892);
-    if (this.ijd != null)
-    {
-      l locall = this.ijd;
-      locall.cbC.k(new l.7(locall, paramw));
+    if (paramJSONObject == null) {
+      return -1;
     }
-    AppMethodBeat.o(145892);
+    return paramJSONObject.optInt("viewId", -1);
   }
   
-  protected com.tencent.mm.d.a.c r(String paramString, byte[] paramArrayOfByte)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(113932);
-    paramString = g.h(paramString, paramArrayOfByte);
-    AppMethodBeat.o(113932);
-    return paramString;
+    if (paramc == null) {
+      ad.w("MicroMsg.SameLayer.AppBrandPluginAsyncJsApi", "component is null");
+    }
+    for (;;)
+    {
+      return;
+      int i = A(paramJSONObject);
+      if (i == -1)
+      {
+        ad.w("MicroMsg.SameLayer.AppBrandPluginAsyncJsApi", "no viewId in data");
+        paramc.h(paramInt, e("fail:no viewId in data", null));
+        return;
+      }
+      Object localObject;
+      if ((paramc instanceof aa)) {
+        localObject = paramc.aOf();
+      }
+      while (!b(paramc, paramJSONObject, paramInt))
+      {
+        if (localObject == null) {}
+        for (localObject = null;; localObject = (com.tencent.luggage.k.a.b)((i)localObject).P(com.tencent.luggage.k.a.b.class))
+        {
+          if (localObject != null) {
+            break label155;
+          }
+          ad.w("MicroMsg.SameLayer.AppBrandPluginAsyncJsApi", "invalid js runtime");
+          paramc.h(paramInt, e("fail:invalid runtime", null));
+          return;
+          if (!(paramc instanceof q)) {
+            break label219;
+          }
+          localObject = ((q)paramc).getCurrentPageView();
+          if (localObject == null) {
+            break label219;
+          }
+          localObject = ((aa)localObject).aOf();
+          break;
+        }
+        label155:
+        localObject = ((com.tencent.luggage.k.a.b)localObject).getWebViewPluginClientProxy();
+        if (localObject == null)
+        {
+          ad.w("MicroMsg.SameLayer.AppBrandPluginAsyncJsApi", "webview has no plugin client");
+          paramc.h(paramInt, e("fail:webview has no plugin client", null));
+          return;
+        }
+        paramc = new b(paramInt, paramJSONObject, paramc, this);
+        ((com.tencent.luggage.k.a.c.c)localObject).a(aVV(), i, paramc);
+        return;
+        label219:
+        localObject = null;
+      }
+    }
+  }
+  
+  public abstract String aVV();
+  
+  protected boolean b(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.i.c
  * JD-Core Version:    0.7.0.1
  */

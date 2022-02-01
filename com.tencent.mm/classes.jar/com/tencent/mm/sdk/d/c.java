@@ -12,10 +12,10 @@ public class c
   
   public String getName()
   {
-    AppMethodBeat.i(52447);
+    AppMethodBeat.i(158010);
     String str = getClass().getName();
     str = str.substring(str.lastIndexOf('$') + 1);
-    AppMethodBeat.o(52447);
+    AppMethodBeat.o(158010);
     return str;
   }
   
@@ -26,7 +26,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.d.c
  * JD-Core Version:    0.7.0.1
  */

@@ -5,11 +5,11 @@ import android.os.IBinder;
 final class as
   implements aq
 {
-  private IBinder KE;
+  private IBinder Mt;
   
   as(IBinder paramIBinder)
   {
-    this.KE = paramIBinder;
+    this.Mt = paramIBinder;
   }
   
   /* Error */
@@ -39,7 +39,7 @@ final class as
     //   42: iconst_0
     //   43: invokevirtual 43	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
     //   46: aload_0
-    //   47: getfield 15	com/google/android/gms/common/internal/as:KE	Landroid/os/IBinder;
+    //   47: getfield 15	com/google/android/gms/common/internal/as:Mt	Landroid/os/IBinder;
     //   50: iconst_1
     //   51: aload 4
     //   53: aload 5
@@ -82,7 +82,7 @@ final class as
   
   public final IBinder asBinder()
   {
-    return this.KE;
+    return this.Mt;
   }
   
   /* Error */
@@ -109,7 +109,7 @@ final class as
     //   31: iconst_0
     //   32: invokevirtual 43	android/os/Bundle:writeToParcel	(Landroid/os/Parcel;I)V
     //   35: aload_0
-    //   36: getfield 15	com/google/android/gms/common/internal/as:KE	Landroid/os/IBinder;
+    //   36: getfield 15	com/google/android/gms/common/internal/as:Mt	Landroid/os/IBinder;
     //   39: iconst_2
     //   40: aload_3
     //   41: aload 4

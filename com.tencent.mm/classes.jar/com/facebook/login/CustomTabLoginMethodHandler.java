@@ -44,35 +44,49 @@ public class CustomTabLoginMethodHandler
   
   static
   {
-    AppMethodBeat.i(96710);
+    AppMethodBeat.i(7734);
     CHROME_PACKAGES = new String[] { "com.android.chrome", "com.chrome.beta", "com.chrome.dev" };
-    CREATOR = new CustomTabLoginMethodHandler.1();
-    AppMethodBeat.o(96710);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final CustomTabLoginMethodHandler createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(7719);
+        paramAnonymousParcel = new CustomTabLoginMethodHandler(paramAnonymousParcel);
+        AppMethodBeat.o(7719);
+        return paramAnonymousParcel;
+      }
+      
+      public final CustomTabLoginMethodHandler[] newArray(int paramAnonymousInt)
+      {
+        return new CustomTabLoginMethodHandler[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(7734);
   }
   
   CustomTabLoginMethodHandler(Parcel paramParcel)
   {
     super(paramParcel);
-    AppMethodBeat.i(96708);
+    AppMethodBeat.i(7732);
     this.expectedChallenge = paramParcel.readString();
-    AppMethodBeat.o(96708);
+    AppMethodBeat.o(7732);
   }
   
   CustomTabLoginMethodHandler(LoginClient paramLoginClient)
   {
     super(paramLoginClient);
-    AppMethodBeat.i(96698);
+    AppMethodBeat.i(7722);
     this.expectedChallenge = Utility.generateRandomString(20);
-    AppMethodBeat.o(96698);
+    AppMethodBeat.o(7722);
   }
   
   private String getChromePackage()
   {
-    AppMethodBeat.i(96702);
+    AppMethodBeat.i(7726);
     if (this.currentPackage != null)
     {
       localObject1 = this.currentPackage;
-      AppMethodBeat.o(96702);
+      AppMethodBeat.o(7726);
       return localObject1;
     }
     Object localObject1 = this.loginClient.getActivity();
@@ -89,55 +103,55 @@ public class CustomTabLoginMethodHandler
         {
           this.currentPackage = localServiceInfo.packageName;
           localObject1 = this.currentPackage;
-          AppMethodBeat.o(96702);
+          AppMethodBeat.o(7726);
           return localObject1;
         }
       }
     }
-    AppMethodBeat.o(96702);
+    AppMethodBeat.o(7726);
     return null;
   }
   
   private boolean isCustomTabsAllowed()
   {
-    AppMethodBeat.i(96700);
+    AppMethodBeat.i(7724);
     if ((isCustomTabsEnabled()) && (getChromePackage() != null) && (isCustomTabsCompatibleWithAutofill()) && (Validate.hasCustomTabRedirectActivity(FacebookSdk.getApplicationContext())))
     {
-      AppMethodBeat.o(96700);
+      AppMethodBeat.o(7724);
       return true;
     }
-    AppMethodBeat.o(96700);
+    AppMethodBeat.o(7724);
     return false;
   }
   
   private boolean isCustomTabsCompatibleWithAutofill()
   {
-    AppMethodBeat.i(96703);
+    AppMethodBeat.i(7727);
     if (!Utility.isAutofillAvailable(this.loginClient.getActivity()))
     {
-      AppMethodBeat.o(96703);
+      AppMethodBeat.o(7727);
       return true;
     }
-    AppMethodBeat.o(96703);
+    AppMethodBeat.o(7727);
     return false;
   }
   
   private boolean isCustomTabsEnabled()
   {
-    AppMethodBeat.i(96701);
+    AppMethodBeat.i(7725);
     FetchedAppSettings localFetchedAppSettings = FetchedAppSettingsManager.getAppSettingsWithoutQuery(Utility.getMetadataApplicationId(this.loginClient.getActivity()));
     if ((localFetchedAppSettings != null) && (localFetchedAppSettings.getCustomTabsEnabled()))
     {
-      AppMethodBeat.o(96701);
+      AppMethodBeat.o(7725);
       return true;
     }
-    AppMethodBeat.o(96701);
+    AppMethodBeat.o(7725);
     return false;
   }
   
   private void onCustomTabComplete(String paramString, LoginClient.Request paramRequest)
   {
-    AppMethodBeat.i(96705);
+    AppMethodBeat.i(7729);
     Bundle localBundle;
     String str1;
     String str2;
@@ -149,7 +163,7 @@ public class CustomTabLoginMethodHandler
       if (!validateChallengeParam(localBundle))
       {
         super.onComplete(paramRequest, null, new FacebookException("Invalid state parameter"));
-        AppMethodBeat.o(96705);
+        AppMethodBeat.o(7729);
         return;
       }
       paramString = localBundle.getString("error");
@@ -168,7 +182,7 @@ public class CustomTabLoginMethodHandler
       }
       paramString = localBundle.getString("error_code");
       if (Utility.isNullOrEmpty(paramString)) {
-        break label307;
+        break label312;
       }
     }
     for (;;)
@@ -179,7 +193,7 @@ public class CustomTabLoginMethodHandler
         if ((Utility.isNullOrEmpty(str1)) && (Utility.isNullOrEmpty(str2)) && (i == -1))
         {
           super.onComplete(paramRequest, localBundle, null);
-          AppMethodBeat.o(96705);
+          AppMethodBeat.o(7729);
           return;
         }
       }
@@ -190,42 +204,42 @@ public class CustomTabLoginMethodHandler
         if ((str1 != null) && ((str1.equals("access_denied")) || (str1.equals("OAuthAccessDeniedException"))))
         {
           super.onComplete(paramRequest, null, new FacebookOperationCanceledException());
-          AppMethodBeat.o(96705);
+          AppMethodBeat.o(7729);
           return;
         }
         if (i == 4201)
         {
           super.onComplete(paramRequest, null, new FacebookOperationCanceledException());
-          AppMethodBeat.o(96705);
+          AppMethodBeat.o(7729);
           return;
         }
         super.onComplete(paramRequest, null, new FacebookServiceException(new FacebookRequestError(i, str1, str2), str2));
       }
-      AppMethodBeat.o(96705);
+      AppMethodBeat.o(7729);
       return;
-      label307:
+      label312:
       int i = -1;
     }
   }
   
   private boolean validateChallengeParam(Bundle paramBundle)
   {
-    AppMethodBeat.i(96707);
+    AppMethodBeat.i(7731);
     try
     {
       paramBundle = paramBundle.getString("state");
       if (paramBundle == null)
       {
-        AppMethodBeat.o(96707);
+        AppMethodBeat.o(7731);
         return false;
       }
       boolean bool = new JSONObject(paramBundle).getString("7_challenge").equals(this.expectedChallenge);
-      AppMethodBeat.o(96707);
+      AppMethodBeat.o(7731);
       return bool;
     }
     catch (JSONException paramBundle)
     {
-      AppMethodBeat.o(96707);
+      AppMethodBeat.o(7731);
     }
     return false;
   }
@@ -252,38 +266,38 @@ public class CustomTabLoginMethodHandler
   
   boolean onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(96704);
+    AppMethodBeat.i(7728);
     if (paramInt1 != 1)
     {
       boolean bool = super.onActivityResult(paramInt1, paramInt2, paramIntent);
-      AppMethodBeat.o(96704);
+      AppMethodBeat.o(7728);
       return bool;
     }
     LoginClient.Request localRequest = this.loginClient.getPendingRequest();
     if (paramInt2 == -1)
     {
       onCustomTabComplete(paramIntent.getStringExtra(CustomTabMainActivity.EXTRA_URL), localRequest);
-      AppMethodBeat.o(96704);
+      AppMethodBeat.o(7728);
       return true;
     }
     super.onComplete(localRequest, null, new FacebookOperationCanceledException());
-    AppMethodBeat.o(96704);
+    AppMethodBeat.o(7728);
     return false;
   }
   
   protected void putChallengeParam(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(96706);
+    AppMethodBeat.i(7730);
     paramJSONObject.put("7_challenge", this.expectedChallenge);
-    AppMethodBeat.o(96706);
+    AppMethodBeat.o(7730);
   }
   
   boolean tryAuthorize(LoginClient.Request paramRequest)
   {
-    AppMethodBeat.i(96699);
+    AppMethodBeat.i(7723);
     if (!isCustomTabsAllowed())
     {
-      AppMethodBeat.o(96699);
+      AppMethodBeat.o(7723);
       return false;
     }
     paramRequest = addExtraParameters(getParameters(paramRequest), paramRequest);
@@ -291,21 +305,21 @@ public class CustomTabLoginMethodHandler
     localIntent.putExtra(CustomTabMainActivity.EXTRA_PARAMS, paramRequest);
     localIntent.putExtra(CustomTabMainActivity.EXTRA_CHROME_PACKAGE, getChromePackage());
     this.loginClient.getFragment().startActivityForResult(localIntent, 1);
-    AppMethodBeat.o(96699);
+    AppMethodBeat.o(7723);
     return true;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(96709);
+    AppMethodBeat.i(7733);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.expectedChallenge);
-    AppMethodBeat.o(96709);
+    AppMethodBeat.o(7733);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.login.CustomTabLoginMethodHandler
  * JD-Core Version:    0.7.0.1
  */

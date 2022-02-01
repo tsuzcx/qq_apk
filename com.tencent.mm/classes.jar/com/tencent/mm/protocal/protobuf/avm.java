@@ -1,127 +1,134 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class avm
-  extends com.tencent.mm.bv.a
+  extends ckq
 {
-  public String Md5;
-  public String Name;
-  public String Type;
-  public String Url;
-  public int jKn;
-  public String wDo;
-  public String wDs;
+  public String Ddo;
+  public String Dnj;
+  public String Dnk;
+  public String Dnl;
+  public String DuQ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28523);
+    AppMethodBeat.i(91489);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.Type != null) {
-        paramVarArgs.e(1, this.Type);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.kX(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.Name != null) {
-        paramVarArgs.e(2, this.Name);
+      if (this.Dnj != null) {
+        paramVarArgs.d(2, this.Dnj);
       }
-      paramVarArgs.aO(3, this.jKn);
-      if (this.Md5 != null) {
-        paramVarArgs.e(4, this.Md5);
+      if (this.DuQ != null) {
+        paramVarArgs.d(3, this.DuQ);
       }
-      if (this.wDs != null) {
-        paramVarArgs.e(5, this.wDs);
+      if (this.Dnk != null) {
+        paramVarArgs.d(4, this.Dnk);
       }
-      if (this.wDo != null) {
-        paramVarArgs.e(6, this.wDo);
+      if (this.Dnl != null) {
+        paramVarArgs.d(5, this.Dnl);
       }
-      if (this.Url != null) {
-        paramVarArgs.e(7, this.Url);
+      if (this.Ddo != null) {
+        paramVarArgs.d(6, this.Ddo);
       }
-      AppMethodBeat.o(28523);
+      AppMethodBeat.o(91489);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Type == null) {
-        break label575;
+      if (this.BaseRequest == null) {
+        break label614;
       }
     }
-    label575:
-    for (paramInt = e.a.a.b.b.a.f(1, this.Type) + 0;; paramInt = 0)
+    label614:
+    for (int i = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.Name != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.Name);
-      }
-      i += e.a.a.b.b.a.bl(3, this.jKn);
       paramInt = i;
-      if (this.Md5 != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.Md5);
+      if (this.Dnj != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Dnj);
       }
       i = paramInt;
-      if (this.wDs != null) {
-        i = paramInt + e.a.a.b.b.a.f(5, this.wDs);
+      if (this.DuQ != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.DuQ);
       }
       paramInt = i;
-      if (this.wDo != null) {
-        paramInt = i + e.a.a.b.b.a.f(6, this.wDo);
+      if (this.Dnk != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.Dnk);
       }
       i = paramInt;
-      if (this.Url != null) {
-        i = paramInt + e.a.a.b.b.a.f(7, this.Url);
+      if (this.Dnl != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.Dnl);
       }
-      AppMethodBeat.o(28523);
-      return i;
+      paramInt = i;
+      if (this.Ddo != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.Ddo);
+      }
+      AppMethodBeat.o(91489);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(28523);
+        AppMethodBeat.o(91489);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         avm localavm = (avm)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(28523);
+          AppMethodBeat.o(91489);
           return -1;
         case 1: 
-          localavm.Type = locala.CLY.readString();
-          AppMethodBeat.o(28523);
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new ip();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localavm.BaseRequest = ((ip)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91489);
           return 0;
         case 2: 
-          localavm.Name = locala.CLY.readString();
-          AppMethodBeat.o(28523);
+          localavm.Dnj = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91489);
           return 0;
         case 3: 
-          localavm.jKn = locala.CLY.sl();
-          AppMethodBeat.o(28523);
+          localavm.DuQ = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91489);
           return 0;
         case 4: 
-          localavm.Md5 = locala.CLY.readString();
-          AppMethodBeat.o(28523);
+          localavm.Dnk = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91489);
           return 0;
         case 5: 
-          localavm.wDs = locala.CLY.readString();
-          AppMethodBeat.o(28523);
-          return 0;
-        case 6: 
-          localavm.wDo = locala.CLY.readString();
-          AppMethodBeat.o(28523);
+          localavm.Dnl = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91489);
           return 0;
         }
-        localavm.Url = locala.CLY.readString();
-        AppMethodBeat.o(28523);
+        localavm.Ddo = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91489);
         return 0;
       }
-      AppMethodBeat.o(28523);
+      AppMethodBeat.o(91489);
       return -1;
     }
   }

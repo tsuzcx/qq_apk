@@ -15,22 +15,22 @@ final class o
   
   public final void a(HelperHeaderPreference paramHelperHeaderPreference)
   {
-    AppMethodBeat.i(23612);
-    paramHelperHeaderPreference.kf(true);
-    AppMethodBeat.o(23612);
+    AppMethodBeat.i(27227);
+    paramHelperHeaderPreference.oa(true);
+    AppMethodBeat.o(27227);
   }
   
   public final CharSequence getHint()
   {
-    AppMethodBeat.i(23611);
-    String str = this.context.getString(2131298619);
-    AppMethodBeat.o(23611);
+    AppMethodBeat.i(27226);
+    String str = this.context.getString(2131757679);
+    AppMethodBeat.o(27226);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.o
  * JD-Core Version:    0.7.0.1
  */

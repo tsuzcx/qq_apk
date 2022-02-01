@@ -4,7 +4,7 @@ import android.support.v4.view.q;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -12,28 +12,30 @@ import java.util.Queue;
 public abstract class u
   extends q
 {
-  public Queue<View> znL = new LinkedList();
-  public HashMap<Object, Integer> znM = new HashMap();
-  public SparseArray<Object> znN = new SparseArray();
+  public Queue<View> Gbk = new LinkedList();
+  public HashMap<Object, Integer> Gbl = new HashMap();
+  public SparseArray<Object> Gbm = new SparseArray();
   
-  public final View Gm(int paramInt)
+  public abstract MultiTouchImageView Ef(int paramInt);
+  
+  public abstract WxImageView Eg(int paramInt);
+  
+  public final View OT(int paramInt)
   {
-    Object localObject = this.znN.get(paramInt);
+    Object localObject = this.Gbm.get(paramInt);
     if (localObject != null) {
       return (View)localObject;
     }
     return null;
   }
   
-  public abstract Object c(int paramInt, View paramView);
-  
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    ab.d("MicroMsg.MMViewPagerAdapter", "destroyItem position %s", new Object[] { Integer.valueOf(paramInt) });
-    ab.i("MicroMsg.MMViewPagerAdapter", "destroyItem object %s", new Object[] { Integer.valueOf(paramObject.hashCode()) });
-    this.znL.add((View)paramObject);
-    this.znM.remove(paramObject);
-    this.znN.remove(paramInt);
+    ad.d("MicroMsg.MMViewPagerAdapter", "destroyItem position %s", new Object[] { Integer.valueOf(paramInt) });
+    ad.i("MicroMsg.MMViewPagerAdapter", "destroyItem object %s", new Object[] { Integer.valueOf(paramObject.hashCode()) });
+    this.Gbk.add((View)paramObject);
+    this.Gbl.remove(paramObject);
+    this.Gbm.remove(paramInt);
   }
   
   public void detach()
@@ -46,10 +48,12 @@ public abstract class u
     return -1;
   }
   
+  public abstract Object g(int paramInt, View paramView);
+  
   public int getItemPosition(Object paramObject)
   {
-    if (this.znM.containsKey(paramObject)) {
-      return ((Integer)this.znM.get(paramObject)).intValue();
+    if (this.Gbl.containsKey(paramObject)) {
+      return ((Integer)this.Gbl.get(paramObject)).intValue();
     }
     return -2;
   }
@@ -58,17 +62,17 @@ public abstract class u
   {
     long l = System.currentTimeMillis();
     Object localObject = null;
-    if (this.znL.size() > 0) {
-      localObject = (View)this.znL.poll();
+    if (this.Gbk.size() > 0) {
+      localObject = (View)this.Gbk.poll();
     }
-    localObject = c(paramInt, (View)localObject);
-    ab.i("MicroMsg.MMViewPagerAdapter", "instantiateItem object %s, parent %s position:%s", new Object[] { Integer.valueOf(localObject.hashCode()), ((View)localObject).getParent(), Integer.valueOf(paramInt) });
-    this.znM.put(localObject, Integer.valueOf(paramInt));
-    this.znN.put(paramInt, localObject);
+    localObject = g(paramInt, (View)localObject);
+    ad.i("MicroMsg.MMViewPagerAdapter", "instantiateItem object %s, parent %s, position: %s.", new Object[] { Integer.valueOf(localObject.hashCode()), ((View)localObject).getParent(), Integer.valueOf(paramInt) });
+    this.Gbl.put(localObject, Integer.valueOf(paramInt));
+    this.Gbm.put(paramInt, localObject);
     if (((View)localObject).getParent() == null) {
       paramViewGroup.addView((View)localObject);
     }
-    ab.i("MicroMsg.MMViewPagerAdapter", "instantiateItem spent : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ad.i("MicroMsg.MMViewPagerAdapter", "instantiateItem spent : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     return localObject;
   }
   
@@ -84,18 +88,14 @@ public abstract class u
   
   public final void reset()
   {
-    this.znL.clear();
-    this.znM.clear();
-    this.znN.clear();
+    this.Gbk.clear();
+    this.Gbl.clear();
+    this.Gbm.clear();
   }
-  
-  public abstract MultiTouchImageView wT(int paramInt);
-  
-  public abstract WxImageView wU(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.u
  * JD-Core Version:    0.7.0.1
  */

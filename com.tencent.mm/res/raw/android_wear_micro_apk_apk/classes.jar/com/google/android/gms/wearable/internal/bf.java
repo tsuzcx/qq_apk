@@ -10,9 +10,9 @@ public final class bf
   static void a(zzck paramzzck, Parcel paramParcel)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramzzck.Hc);
-    if (paramzzck.TH == null) {}
-    for (paramzzck = null;; paramzzck = paramzzck.TH.asBinder())
+    c.c(paramParcel, 1, paramzzck.IR);
+    if (paramzzck.Vw == null) {}
+    for (paramzzck = null;; paramzzck = paramzzck.Vw.asBinder())
     {
       c.a(paramParcel, 2, paramzzck);
       c.v(paramParcel, i);

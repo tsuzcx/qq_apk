@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class l
 {
-  private int aJm;
-  public int aJn;
-  public int aJo;
+  private int beF;
+  public int beG;
+  public int beH;
   public byte[] data;
   
   public l() {}
@@ -14,166 +14,166 @@ public final class l
   public l(byte[] paramArrayOfByte)
   {
     this(paramArrayOfByte, paramArrayOfByte.length);
-    AppMethodBeat.i(95893);
-    AppMethodBeat.o(95893);
+    AppMethodBeat.i(93155);
+    AppMethodBeat.o(93155);
   }
   
   public l(byte[] paramArrayOfByte, int paramInt)
   {
     this.data = paramArrayOfByte;
-    this.aJm = paramInt;
+    this.beF = paramInt;
   }
   
-  private void qK()
+  private void vH()
   {
-    AppMethodBeat.i(95896);
-    int i = this.aJo + 1;
-    this.aJo = i;
+    AppMethodBeat.i(93158);
+    int i = this.beH + 1;
+    this.beH = i;
     if (i == 8)
     {
-      this.aJo = 0;
-      this.aJn += 1;
+      this.beH = 0;
+      this.beG += 1;
     }
-    ok();
-    AppMethodBeat.o(95896);
+    sW();
+    AppMethodBeat.o(93158);
   }
   
-  public final int dD(int paramInt)
+  public final int eo(int paramInt)
   {
-    AppMethodBeat.i(95899);
+    AppMethodBeat.i(93161);
     if (paramInt == 0)
     {
-      AppMethodBeat.o(95899);
+      AppMethodBeat.o(93161);
       return 0;
     }
-    this.aJo += paramInt;
+    this.beH += paramInt;
     int i = 0;
-    while (this.aJo > 8)
+    while (this.beH > 8)
     {
-      this.aJo -= 8;
+      this.beH -= 8;
       byte[] arrayOfByte = this.data;
-      j = this.aJn;
-      this.aJn = (j + 1);
-      i |= (arrayOfByte[j] & 0xFF) << this.aJo;
+      j = this.beG;
+      this.beG = (j + 1);
+      i |= (arrayOfByte[j] & 0xFF) << this.beH;
     }
-    int j = this.data[this.aJn];
-    int k = this.aJo;
-    if (this.aJo == 8)
+    int j = this.data[this.beG];
+    int k = this.beH;
+    if (this.beH == 8)
     {
-      this.aJo = 0;
-      this.aJn += 1;
+      this.beH = 0;
+      this.beG += 1;
     }
-    ok();
-    AppMethodBeat.o(95899);
+    sW();
+    AppMethodBeat.o(93161);
     return (i | (j & 0xFF) >> 8 - k) & -1 >>> 32 - paramInt;
   }
   
-  public final void dE(int paramInt)
+  public final void ep(int paramInt)
   {
-    AppMethodBeat.i(95897);
+    AppMethodBeat.i(93159);
     int i = paramInt / 8;
-    this.aJn += i;
-    this.aJo = (paramInt - i * 8 + this.aJo);
-    if (this.aJo > 7)
+    this.beG += i;
+    this.beH = (paramInt - i * 8 + this.beH);
+    if (this.beH > 7)
     {
-      this.aJn += 1;
-      this.aJo -= 8;
+      this.beG += 1;
+      this.beH -= 8;
     }
-    ok();
-    AppMethodBeat.o(95897);
+    sW();
+    AppMethodBeat.o(93159);
   }
   
-  public final void l(byte[] paramArrayOfByte, int paramInt)
+  public final void q(byte[] paramArrayOfByte, int paramInt)
   {
     this.data = paramArrayOfByte;
-    this.aJn = 0;
-    this.aJo = 0;
-    this.aJm = paramInt;
+    this.beG = 0;
+    this.beH = 0;
+    this.beF = paramInt;
   }
   
-  public final void m(byte[] paramArrayOfByte, int paramInt)
+  public final void r(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(95901);
-    if (this.aJo == 0) {}
+    AppMethodBeat.i(93163);
+    if (this.beH == 0) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      System.arraycopy(this.data, this.aJn, paramArrayOfByte, 0, paramInt);
-      this.aJn += paramInt;
-      ok();
-      AppMethodBeat.o(95901);
+      System.arraycopy(this.data, this.beG, paramArrayOfByte, 0, paramInt);
+      this.beG += paramInt;
+      sW();
+      AppMethodBeat.o(93163);
       return;
     }
   }
   
-  public final boolean oj()
+  public final boolean sV()
   {
-    AppMethodBeat.i(95898);
-    if ((this.data[this.aJn] & 128 >> this.aJo) != 0) {}
+    AppMethodBeat.i(93160);
+    if ((this.data[this.beG] & 128 >> this.beH) != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      qK();
-      AppMethodBeat.o(95898);
+      vH();
+      AppMethodBeat.o(93160);
       return bool;
     }
   }
   
-  public final void ok()
+  public final void sW()
   {
-    AppMethodBeat.i(95902);
-    if ((this.aJn >= 0) && ((this.aJn < this.aJm) || ((this.aJn == this.aJm) && (this.aJo == 0)))) {}
+    AppMethodBeat.i(93164);
+    if ((this.beG >= 0) && ((this.beG < this.beF) || ((this.beG == this.beF) && (this.beH == 0)))) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      AppMethodBeat.o(95902);
+      AppMethodBeat.o(93164);
       return;
     }
-  }
-  
-  public final int qI()
-  {
-    return (this.aJm - this.aJn) * 8 - this.aJo;
-  }
-  
-  public final int qJ()
-  {
-    AppMethodBeat.i(95894);
-    if (this.aJo == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a.checkState(bool);
-      int i = this.aJn;
-      AppMethodBeat.o(95894);
-      return i;
-    }
-  }
-  
-  public final void qL()
-  {
-    AppMethodBeat.i(95900);
-    if (this.aJo == 0)
-    {
-      AppMethodBeat.o(95900);
-      return;
-    }
-    this.aJo = 0;
-    this.aJn += 1;
-    ok();
-    AppMethodBeat.o(95900);
   }
   
   public final void setPosition(int paramInt)
   {
-    AppMethodBeat.i(95895);
-    this.aJn = (paramInt / 8);
-    this.aJo = (paramInt - this.aJn * 8);
-    ok();
-    AppMethodBeat.o(95895);
+    AppMethodBeat.i(93157);
+    this.beG = (paramInt / 8);
+    this.beH = (paramInt - this.beG * 8);
+    sW();
+    AppMethodBeat.o(93157);
+  }
+  
+  public final int vF()
+  {
+    return (this.beF - this.beG) * 8 - this.beH;
+  }
+  
+  public final int vG()
+  {
+    AppMethodBeat.i(93156);
+    if (this.beH == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a.checkState(bool);
+      int i = this.beG;
+      AppMethodBeat.o(93156);
+      return i;
+    }
+  }
+  
+  public final void vI()
+  {
+    AppMethodBeat.i(93162);
+    if (this.beH == 0)
+    {
+      AppMethodBeat.o(93162);
+      return;
+    }
+    this.beH = 0;
+    this.beG += 1;
+    sW();
+    AppMethodBeat.o(93162);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.i.l
  * JD-Core Version:    0.7.0.1
  */

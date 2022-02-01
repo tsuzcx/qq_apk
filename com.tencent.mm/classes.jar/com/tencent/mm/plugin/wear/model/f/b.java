@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.wear.model.f;
 
 import android.content.Context;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.t;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.model.bi;
+import com.tencent.mm.model.w;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.protocal.protobuf.cxf;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.protocal.protobuf.drj;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.storage.bl;
 
 public abstract class b
   extends c
 {
-  protected static String b(String paramString, bi parambi)
+  protected static String c(String paramString, bl parambl)
   {
-    if (t.lA(paramString))
+    if (w.pF(paramString))
     {
-      paramString = c(paramString, parambi);
-      return String.format(ah.getContext().getString(2131301939), new Object[] { h.agg(paramString), Character.valueOf('​'), h.aj(parambi).ntu });
+      paramString = d(paramString, parambl);
+      return String.format(aj.getContext().getString(2131761701), new Object[] { h.auR(paramString), Character.valueOf('​'), h.az(parambl).gKr });
     }
-    return String.format(ah.getContext().getString(2131301940), new Object[] { h.aj(parambi).ntu });
+    return String.format(aj.getContext().getString(2131761702), new Object[] { h.az(parambl).gKr });
   }
   
-  protected static String c(String paramString, bi parambi)
+  protected static String d(String paramString, bl parambl)
   {
     Object localObject = paramString;
-    if (t.lA(paramString))
+    if (w.pF(paramString))
     {
-      int i = bf.pt(parambi.field_content);
+      int i = bi.uc(parambl.field_content);
       localObject = paramString;
       if (i != -1)
       {
-        parambi = parambi.field_content.substring(0, i).trim();
+        parambl = parambl.field_content.substring(0, i).trim();
         localObject = paramString;
-        if (parambi != null)
+        if (parambl != null)
         {
           localObject = paramString;
-          if (parambi.length() > 0) {
-            localObject = parambi;
+          if (parambl.length() > 0) {
+            localObject = parambl;
           }
         }
       }

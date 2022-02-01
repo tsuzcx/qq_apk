@@ -1,30 +1,59 @@
 package com.tencent.mm.pluginsdk;
 
-import android.view.View;
-import android.view.Window;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.MMFragmentActivity;
+import com.tencent.mm.model.ar.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class f$3
-  implements Runnable
+  implements ar.b.a
 {
-  f$3(MMFragmentActivity paramMMFragmentActivity, View paramView) {}
+  f$3(Intent paramIntent, Context paramContext) {}
   
-  public final void run()
+  public final void p(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(105826);
-    this.vJz.getWindow().getDecorView().setSystemUiVisibility(this.vJz.getWindow().getDecorView().getSystemUiVisibility() | 0x100);
-    ab.i("MicroMsg.FullScreenHelper", "setFullScreenAfterSetContentView to contentView, height: %s", new Object[] { Integer.valueOf(this.val$height) });
-    if (this.vJA != null) {
-      this.vJA.setPadding(0, this.val$height, 0, 0);
+    AppMethodBeat.i(124345);
+    if (!paramBoolean)
+    {
+      ad.e("MicroMsg.DeepLinkHelper", "getContact fail, %s", new Object[] { paramString });
+      AppMethodBeat.o(124345);
+      return;
     }
-    AppMethodBeat.o(105826);
+    this.val$intent.putExtra("Chat_User", paramString);
+    try
+    {
+      if (this.val$context != null)
+      {
+        paramString = this.val$context;
+        localObject = this.val$intent;
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/pluginsdk/DeepLinkHelper$3", "getContactCallBack", "(Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/pluginsdk/DeepLinkHelper$3", "getContactCallBack", "(Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(124345);
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      ad.printErrStackTrace("MicroMsg.DeepLinkHelper", paramString, "", new Object[] { "" });
+      AppMethodBeat.o(124345);
+      return;
+    }
+    paramString = aj.getContext();
+    Object localObject = this.val$intent;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/pluginsdk/DeepLinkHelper$3", "getContactCallBack", "(Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/pluginsdk/DeepLinkHelper$3", "getContactCallBack", "(Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(124345);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.f.3
  * JD-Core Version:    0.7.0.1
  */

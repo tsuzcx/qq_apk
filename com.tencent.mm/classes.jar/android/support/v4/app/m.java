@@ -61,7 +61,7 @@ final class m
     {
       paramObject = (Transition)paramObject;
       final Rect localRect = new Rect();
-      b(paramView, localRect);
+      a(paramView, localRect);
       paramObject.setEpicenterCallback(new Transition.EpicenterCallback()
       {
         public final Rect onGetEpicenter(Transition paramAnonymousTransition)
@@ -268,12 +268,12 @@ final class m
     }
   }
   
-  public final boolean g(Object paramObject)
+  public final boolean f(Object paramObject)
   {
     return paramObject instanceof Transition;
   }
   
-  public final Object h(Object paramObject)
+  public final Object g(Object paramObject)
   {
     Transition localTransition = null;
     if (paramObject != null) {
@@ -282,7 +282,7 @@ final class m
     return localTransition;
   }
   
-  public final Object i(Object paramObject)
+  public final Object h(Object paramObject)
   {
     if (paramObject == null) {
       return null;

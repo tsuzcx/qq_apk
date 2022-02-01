@@ -1,6 +1,5 @@
 package com.tencent.mm.plugin.story.proxy;
 
-import a.l;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
@@ -13,111 +12,100 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.Xfermode;
 import android.graphics.drawable.Drawable;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ba;
+import com.tencent.mm.g.b.a.dl;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.story.api.e;
-import com.tencent.mm.plugin.story.api.i.a;
-import com.tencent.mm.plugin.story.api.m;
 import com.tencent.mm.plugin.story.api.n;
-import com.tencent.mm.plugin.story.g.j.a;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.plugin.story.api.o;
+import com.tencent.mm.plugin.story.h.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.k;
+import d.l;
+import d.v;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/proxy/StoryHintProxy;", "Lcom/tencent/mm/plugin/story/api/IStoryHintProxy;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "MSG_HANDLE_SINGLE_TAB", "", "animator", "Lcom/tencent/mm/plugin/story/animation/SwingAnimator;", "avatarRight", "", "avatarTop", "badgeBgPaint", "Landroid/graphics/Paint;", "badgeRadius", "blueHintDrawable", "Landroid/graphics/drawable/Drawable;", "defaultHintColor", "doubleClickListener", "Lcom/tencent/mm/plugin/story/api/IStoryHintProxy$OnDoubleClickListener;", "hintHeight", "hintMarginEnd", "hintMarginTop", "hintWidth", "host", "Landroid/view/View;", "mClickListener", "Landroid/view/View$OnClickListener;", "mHandler", "com/tencent/mm/plugin/story/proxy/StoryHintProxy$mHandler$1", "Lcom/tencent/mm/plugin/story/proxy/StoryHintProxy$mHandler$1;", "mOriginalClickListener", "originAvatarSize", "pageType", "showStoryHint", "", "userName", "", "weakContext", "Ljava/lang/ref/WeakReference;", "whiteHintDrawable", "checkConfigEnableAnimation", "checkDrawable", "highLight", "getDoubleClickListener", "goStoryGallery", "init", "", "onDrawWithHint", "canvas", "Landroid/graphics/Canvas;", "hintHighLight", "hintBgColor", "onMeasureWithHint", "", "measureWidth", "measureHeight", "performDoubleClick", "report", "setOnClickListener", "listener", "setOnDoubleClickListener", "setShowStoryHint", "show", "setUserNameAndPageNumber", "setWeakContext", "showNoStoryAnimation", "simpleShake", "updateDot", "Companion", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/proxy/StoryHintProxy;", "Lcom/tencent/mm/plugin/story/api/IStoryHintProxy;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "MSG_HANDLE_SINGLE_TAB", "", "animator", "Lcom/tencent/mm/plugin/story/animation/SwingAnimator;", "avatarRight", "", "avatarTop", "badgeBgPaint", "Landroid/graphics/Paint;", "badgeRadius", "blueHintDrawable", "Landroid/graphics/drawable/Drawable;", "defaultHintColor", "doubleClickListener", "Lcom/tencent/mm/plugin/story/api/IStoryHintProxy$OnDoubleClickListener;", "hintHeight", "hintMarginEnd", "hintMarginTop", "hintWidth", "host", "Landroid/view/View;", "mClickListener", "Landroid/view/View$OnClickListener;", "mHandler", "com/tencent/mm/plugin/story/proxy/StoryHintProxy$mHandler$1", "Lcom/tencent/mm/plugin/story/proxy/StoryHintProxy$mHandler$1;", "mOriginalClickListener", "originAvatarSize", "pageType", "showStoryHint", "", "userName", "", "weakContext", "Ljava/lang/ref/WeakReference;", "whiteHintDrawable", "checkConfigEnableAnimation", "checkDrawable", "highLight", "getDoubleClickListener", "goStoryGallery", "init", "", "onDrawWithHint", "canvas", "Landroid/graphics/Canvas;", "hintHighLight", "hintBgColor", "onMeasureWithHint", "", "measureWidth", "measureHeight", "performDoubleClick", "report", "setOnClickListener", "listener", "setOnDoubleClickListener", "setShowStoryHint", "show", "setUserNameAndPageNumber", "setWeakContext", "showNoStoryAnimation", "simpleShake", "updateDot", "Companion", "plugin-story_release"})
 public final class b
   implements com.tencent.mm.plugin.story.api.i
 {
   private static final String TAG = "MicroMsg.StoryHintProxy";
-  public static final b.a sDo;
+  public static final a ymg;
   private final Context context;
-  private View.OnClickListener lPx;
+  private WeakReference<Context> lVp;
   private int pageType;
-  private boolean sCU;
-  private int sCV;
-  private int sCW;
-  private Drawable sCX;
-  private Drawable sCY;
-  private int sCZ;
-  private int sDa;
-  private int sDb;
-  private float sDc;
-  private float sDd;
-  private float sDe;
-  private Paint sDf;
-  private View sDg;
-  private final com.tencent.mm.plugin.story.a.b sDh;
-  private int sDi;
-  private WeakReference<Context> sDj;
-  private final int sDk;
-  private final b.b sDl;
-  private i.a sDm;
-  private final View.OnClickListener sDn;
+  private View.OnClickListener pgj;
   private String userName;
+  private boolean ylN;
+  private int ylO;
+  private int ylP;
+  private Drawable ylQ;
+  private Drawable ylR;
+  private int ylS;
+  private int ylT;
+  private int ylU;
+  private float ylV;
+  private float ylW;
+  private float ylX;
+  private Paint ylY;
+  private View ylZ;
+  private final com.tencent.mm.plugin.story.a.b yma;
+  private int ymb;
+  private final int ymc;
+  private final b ymd;
+  private com.tencent.mm.plugin.story.api.i.a yme;
+  private final View.OnClickListener ymf;
   
   static
   {
-    AppMethodBeat.i(109734);
-    sDo = new b.a((byte)0);
+    AppMethodBeat.i(119377);
+    ymg = new a((byte)0);
     TAG = "MicroMsg.StoryHintProxy";
-    AppMethodBeat.o(109734);
+    AppMethodBeat.o(119377);
   }
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(109733);
+    AppMethodBeat.i(119376);
     this.context = paramContext;
     this.pageType = -1;
-    this.sDh = new com.tencent.mm.plugin.story.a.b();
-    this.sDi = -1;
-    this.sDl = new b.b(this);
-    this.sDn = ((View.OnClickListener)new b.c(this));
-    AppMethodBeat.o(109733);
+    this.yma = new com.tencent.mm.plugin.story.a.b();
+    this.ymb = -1;
+    this.ymd = new b(this);
+    this.ymf = ((View.OnClickListener)new c(this));
+    AppMethodBeat.o(119376);
   }
   
-  private final void IE()
+  private void dIK()
   {
-    AppMethodBeat.i(109730);
-    Object localObject = com.tencent.mm.plugin.story.g.i.sFa;
-    localObject = com.tencent.mm.plugin.story.g.i.cDo();
-    if (this.sCU) {}
-    for (long l = 1L;; l = 0L)
+    AppMethodBeat.i(119374);
+    if (this.ylZ != null)
     {
-      ((ba)localObject).cF(l);
-      localObject = com.tencent.mm.plugin.story.g.i.sFa;
-      localObject = com.tencent.mm.plugin.story.g.i.cDo();
-      j.a locala = com.tencent.mm.plugin.story.g.j.sFb;
-      ((ba)localObject).cE(j.a.FY(this.pageType));
-      AppMethodBeat.o(109730);
-      return;
-    }
-  }
-  
-  private void cCv()
-  {
-    AppMethodBeat.i(109731);
-    if (this.sDg != null)
-    {
-      Object localObject1 = this.sDh.sqG;
+      Object localObject1 = this.yma.ycU;
       if (localObject1 == null) {
-        a.f.b.j.ebi();
+        k.fvU();
       }
       ((AnimatorSet)localObject1).cancel();
-      localObject1 = this.sDh;
-      Object localObject2 = this.sDg;
+      localObject1 = this.yma;
+      Object localObject2 = this.ylZ;
       if (localObject2 == null) {
-        a.f.b.j.ebi();
+        k.fvU();
       }
-      ((com.tencent.mm.plugin.story.a.b)localObject1).ef((View)localObject2);
-      localObject1 = this.sDh;
-      localObject2 = ((com.tencent.mm.plugin.story.a.a)localObject1).sqG;
+      ((com.tencent.mm.plugin.story.a.b)localObject1).eX((View)localObject2);
+      localObject1 = this.yma;
+      localObject2 = ((com.tencent.mm.plugin.story.a.a)localObject1).ycU;
       if (localObject2 == null) {
-        a.f.b.j.ebi();
+        k.fvU();
       }
       localObject2 = ((AnimatorSet)localObject2).getChildAnimations().iterator();
       while (((Iterator)localObject2).hasNext())
@@ -125,128 +113,146 @@ public final class b
         Animator localAnimator = (Animator)((Iterator)localObject2).next();
         if ((localAnimator instanceof ValueAnimator))
         {
-          ((ValueAnimator)localAnimator).setRepeatCount(((com.tencent.mm.plugin.story.a.a)localObject1).sqH);
-          ((ValueAnimator)localAnimator).setRepeatMode(((com.tencent.mm.plugin.story.a.a)localObject1).sqI);
+          ((ValueAnimator)localAnimator).setRepeatCount(((com.tencent.mm.plugin.story.a.a)localObject1).ycV);
+          ((ValueAnimator)localAnimator).setRepeatMode(((com.tencent.mm.plugin.story.a.a)localObject1).ycW);
         }
       }
-      localObject2 = ((com.tencent.mm.plugin.story.a.a)localObject1).sqG;
+      localObject2 = ((com.tencent.mm.plugin.story.a.a)localObject1).ycU;
       if (localObject2 == null) {
-        a.f.b.j.ebi();
+        k.fvU();
       }
       ((AnimatorSet)localObject2).setDuration(((com.tencent.mm.plugin.story.a.a)localObject1).mDuration);
-      localObject1 = ((com.tencent.mm.plugin.story.a.a)localObject1).sqG;
+      localObject1 = ((com.tencent.mm.plugin.story.a.a)localObject1).ycU;
       if (localObject1 == null) {
-        a.f.b.j.ebi();
+        k.fvU();
       }
       ((AnimatorSet)localObject1).start();
-      al.p((Runnable)new b.d(this), 150L);
+      aq.n((Runnable)new d(this), 150L);
     }
-    AppMethodBeat.o(109731);
+    AppMethodBeat.o(119374);
+  }
+  
+  private final void report()
+  {
+    AppMethodBeat.i(119373);
+    Object localObject = h.ynv;
+    localObject = h.dJj();
+    if (this.ylN) {}
+    for (long l = 1L;; l = 0L)
+    {
+      ((dl)localObject).ga(l);
+      localObject = h.ynv;
+      localObject = h.dJj();
+      com.tencent.mm.plugin.story.h.i.a locala = com.tencent.mm.plugin.story.h.i.ynw;
+      ((dl)localObject).fZ(com.tencent.mm.plugin.story.h.i.a.OF(this.pageType));
+      AppMethodBeat.o(119373);
+      return;
+    }
   }
   
   public final void a(Canvas paramCanvas, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(109728);
-    a.f.b.j.q(paramCanvas, "canvas");
-    if (!n.isShowStoryCheck())
+    AppMethodBeat.i(119371);
+    k.h(paramCanvas, "canvas");
+    if (!o.isShowStoryCheck())
     {
-      AppMethodBeat.o(109728);
+      AppMethodBeat.o(119371);
       return;
     }
-    View localView = this.sDg;
+    View localView = this.ylZ;
     if (localView != null)
     {
-      int i = (localView.getWidth() - this.sDb) / 2;
-      if (localView.getWidth() > this.sDb)
+      int i = (localView.getWidth() - this.ylU) / 2;
+      if (localView.getWidth() > this.ylU)
       {
-        this.sDd = (this.sDb + i);
-        this.sDc = i;
+        this.ylW = (this.ylU + i);
+        this.ylV = i;
       }
-      if (this.sCU)
+      if (this.ylN)
       {
-        localObject = this.sDf;
+        localObject = this.ylY;
         if (localObject != null) {
           ((Paint)localObject).setColor(paramInt);
         }
-        localObject = this.sDf;
+        localObject = this.ylY;
         if (localObject != null) {
-          paramCanvas.drawCircle(localView.getWidth() - this.sDe, this.sDe, this.sDe, (Paint)localObject);
+          paramCanvas.drawCircle(localView.getWidth() - this.ylX, this.ylX, this.ylX, (Paint)localObject);
         }
         if (!paramBoolean) {
           break label283;
         }
-        if (this.sCX == null)
+        if (this.ylQ == null)
         {
-          localObject = g.G(e.class);
-          a.f.b.j.p(localObject, "plugin(IPluginStory::class.java)");
-          localObject = ((e)localObject).getStoryUIFactory().lO(true);
-          this.sCX = ((Drawable)localObject);
-          a.f.b.j.p(localObject, "drawable");
-          this.sDa = ((Drawable)localObject).getBounds().right;
-          this.sCZ = ((Drawable)localObject).getBounds().bottom;
+          localObject = g.ad(e.class);
+          k.g(localObject, "plugin(IPluginStory::class.java)");
+          localObject = ((e)localObject).getStoryUIFactory().qD(true);
+          this.ylQ = ((Drawable)localObject);
+          k.g(localObject, "drawable");
+          this.ylT = ((Drawable)localObject).getBounds().right;
+          this.ylS = ((Drawable)localObject).getBounds().bottom;
         }
       }
-      for (Object localObject = this.sCX;; localObject = this.sCY)
+      for (Object localObject = this.ylQ;; localObject = this.ylR)
       {
         paramCanvas.save();
-        paramCanvas.translate(localView.getWidth() - this.sDa - this.sCV, this.sCW);
+        paramCanvas.translate(localView.getWidth() - this.ylT - this.ylO, this.ylP);
         if (localObject != null) {
           ((Drawable)localObject).draw(paramCanvas);
         }
         paramCanvas.restore();
-        AppMethodBeat.o(109728);
+        AppMethodBeat.o(119371);
         return;
         label283:
-        if (this.sCY == null)
+        if (this.ylR == null)
         {
-          localObject = g.G(e.class);
-          a.f.b.j.p(localObject, "plugin(IPluginStory::class.java)");
-          localObject = ((e)localObject).getStoryUIFactory().lO(false);
-          this.sCY = ((Drawable)localObject);
-          a.f.b.j.p(localObject, "drawable");
-          this.sDa = ((Drawable)localObject).getBounds().right;
-          this.sCZ = ((Drawable)localObject).getBounds().bottom;
+          localObject = g.ad(e.class);
+          k.g(localObject, "plugin(IPluginStory::class.java)");
+          localObject = ((e)localObject).getStoryUIFactory().qD(false);
+          this.ylR = ((Drawable)localObject);
+          k.g(localObject, "drawable");
+          this.ylT = ((Drawable)localObject).getBounds().right;
+          this.ylS = ((Drawable)localObject).getBounds().bottom;
         }
       }
     }
-    AppMethodBeat.o(109728);
+    AppMethodBeat.o(119371);
   }
   
-  public final void aT(View paramView)
+  public final void aZ(View paramView)
   {
-    AppMethodBeat.i(109727);
-    a.f.b.j.q(paramView, "host");
-    this.sDg = paramView;
-    this.sCV = com.tencent.mm.cb.a.fromDPToPix(this.context, 2);
-    this.sCW = com.tencent.mm.cb.a.fromDPToPix(this.context, 2);
-    this.sDe = com.tencent.mm.cb.a.fromDPToPix(this.context, 6);
-    paramView.setOnClickListener(this.sDn);
-    this.sDb = paramView.getResources().getDimensionPixelSize(2131427846);
-    this.sDf = new Paint();
-    paramView = this.sDf;
+    AppMethodBeat.i(119370);
+    k.h(paramView, "host");
+    this.ylZ = paramView;
+    this.ylO = com.tencent.mm.cd.a.fromDPToPix(this.context, 2);
+    this.ylP = com.tencent.mm.cd.a.fromDPToPix(this.context, 2);
+    this.ylX = com.tencent.mm.cd.a.fromDPToPix(this.context, 6);
+    paramView.setOnClickListener(this.ymf);
+    this.ylU = paramView.getResources().getDimensionPixelSize(2131165560);
+    this.ylY = new Paint();
+    paramView = this.ylY;
     if (paramView != null) {
       paramView.setAntiAlias(true);
     }
-    paramView = this.sDf;
+    paramView = this.ylY;
     if (paramView != null) {
       paramView.setAlpha(0);
     }
-    paramView = this.sDf;
+    paramView = this.ylY;
     if (paramView != null) {
       paramView.setXfermode((Xfermode)new PorterDuffXfermode(PorterDuff.Mode.SRC));
     }
-    paramView = ah.getContext();
-    a.f.b.j.p(paramView, "MMApplicationContext.getContext()");
-    this.sDi = paramView.getResources().getColor(2131690552);
-    AppMethodBeat.o(109727);
+    paramView = aj.getContext();
+    k.g(paramView, "MMApplicationContext.getContext()");
+    this.ymb = paramView.getResources().getColor(2131100993);
+    AppMethodBeat.o(119370);
   }
   
-  public final View.OnClickListener czr()
+  public final View.OnClickListener dGg()
   {
-    return this.sDn;
+    return this.ymf;
   }
   
-  public final void dw(String paramString, int paramInt)
+  public final void eE(String paramString, int paramInt)
   {
     this.userName = paramString;
     this.pageType = paramInt;
@@ -254,47 +260,126 @@ public final class b
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    if (paramOnClickListener != this.sDn) {
-      this.lPx = paramOnClickListener;
+    if (paramOnClickListener != this.ymf) {
+      this.pgj = paramOnClickListener;
     }
   }
   
-  public final void setOnDoubleClickListener(i.a parama)
+  public final void setOnDoubleClickListener(com.tencent.mm.plugin.story.api.i.a parama)
   {
-    this.sDm = parama;
+    this.yme = parama;
   }
   
   public final void setShowStoryHint(boolean paramBoolean)
   {
-    AppMethodBeat.i(109729);
-    if (com.tencent.mm.plugin.sns.e.a.ZT(this.userName)) {
+    AppMethodBeat.i(119372);
+    if (com.tencent.mm.plugin.sns.g.a.aoa(this.userName)) {
       paramBoolean = false;
     }
-    if (this.sCU != paramBoolean)
+    if (this.ylN != paramBoolean)
     {
-      this.sCU = paramBoolean;
-      View localView = this.sDg;
+      this.ylN = paramBoolean;
+      View localView = this.ylZ;
       if (localView != null)
       {
         localView.invalidate();
-        AppMethodBeat.o(109729);
+        AppMethodBeat.o(119372);
         return;
       }
     }
-    AppMethodBeat.o(109729);
+    AppMethodBeat.o(119372);
   }
   
   public final void setWeakContext(Context paramContext)
   {
-    AppMethodBeat.i(109732);
-    a.f.b.j.q(paramContext, "context");
-    this.sDj = new WeakReference(paramContext);
-    AppMethodBeat.o(109732);
+    AppMethodBeat.i(119375);
+    k.h(paramContext, "context");
+    this.lVp = new WeakReference(paramContext);
+    AppMethodBeat.o(119375);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/proxy/StoryHintProxy$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
+  public static final class a {}
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/story/proxy/StoryHintProxy$mHandler$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-story_release"})
+  public static final class b
+    extends ap
+  {
+    public final void handleMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(119367);
+      Object localObject;
+      if (paramMessage != null) {
+        localObject = paramMessage.obj;
+      }
+      while ((localObject != null) && ((paramMessage.obj instanceof View)) && (paramMessage.what == b.a(this.ymh)))
+      {
+        localObject = b.b(this.ymh);
+        if (localObject != null)
+        {
+          paramMessage = paramMessage.obj;
+          if (paramMessage == null)
+          {
+            paramMessage = new v("null cannot be cast to non-null type android.view.View");
+            AppMethodBeat.o(119367);
+            throw paramMessage;
+            localObject = null;
+          }
+          else
+          {
+            ((View.OnClickListener)localObject).onClick((View)paramMessage);
+            AppMethodBeat.o(119367);
+            return;
+          }
+        }
+      }
+      AppMethodBeat.o(119367);
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/story/proxy/StoryHintProxy$mOriginalClickListener$1", "Landroid/view/View$OnClickListener;", "lastClick", "", "onClick", "", "view", "Landroid/view/View;", "plugin-story_release"})
+  public static final class c
+    implements View.OnClickListener
+  {
+    private long wdB;
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(119368);
+      k.h(paramView, "view");
+      long l = bt.eGO();
+      b.c(this.ymh).removeMessages(b.a(this.ymh));
+      b.c(this.ymh).sendMessageDelayed(b.c(this.ymh).obtainMessage(b.a(this.ymh), paramView), ViewConfiguration.getDoubleTapTimeout());
+      ad.d(b.access$getTAG$cp(), "onClick lastClick=%s now=%s", new Object[] { Long.valueOf(this.wdB), Long.valueOf(l) });
+      if (l - this.wdB < ViewConfiguration.getDoubleTapTimeout())
+      {
+        b.c(this.ymh).removeMessages(b.a(this.ymh));
+        b.d(this.ymh);
+        AppMethodBeat.o(119368);
+        return;
+      }
+      this.wdB = l;
+      AppMethodBeat.o(119368);
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  static final class d
+    implements Runnable
+  {
+    d(b paramb) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(119369);
+      b.dIL();
+      AppMethodBeat.o(119369);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.proxy.b
  * JD-Core Version:    0.7.0.1
  */

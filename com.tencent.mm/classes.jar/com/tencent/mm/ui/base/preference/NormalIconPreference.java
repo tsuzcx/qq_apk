@@ -24,17 +24,17 @@ public class NormalIconPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  protected View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107249);
+    AppMethodBeat.i(142626);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    AppMethodBeat.o(107249);
+    AppMethodBeat.o(142626);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.NormalIconPreference
  * JD-Core Version:    0.7.0.1
  */

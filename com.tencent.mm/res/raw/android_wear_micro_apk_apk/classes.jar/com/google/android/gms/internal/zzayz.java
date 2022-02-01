@@ -12,27 +12,27 @@ public class zzayz
   implements Comparable<zzayz>
 {
   public static final Parcelable.Creator<zzayz> CREATOR = new co();
-  public static final cn Qr = new cn();
+  public static final cn Sg = new cn();
   private static final Charset UTF_8 = Charset.forName("UTF-8");
-  final String PG;
-  final long Ql;
-  final boolean Qm;
-  final double Qn;
-  final byte[] Qo;
-  public final int Qp;
-  public final int Qq;
+  final String Rv;
+  final long Sa;
+  final boolean Sb;
+  final double Sc;
+  final byte[] Sd;
+  public final int Se;
+  public final int Sf;
   public final String name;
   
   public zzayz(String paramString1, long paramLong, boolean paramBoolean, double paramDouble, String paramString2, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     this.name = paramString1;
-    this.Ql = paramLong;
-    this.Qm = paramBoolean;
-    this.Qn = paramDouble;
-    this.PG = paramString2;
-    this.Qo = paramArrayOfByte;
-    this.Qp = paramInt1;
-    this.Qq = paramInt2;
+    this.Sa = paramLong;
+    this.Sb = paramBoolean;
+    this.Sc = paramDouble;
+    this.Rv = paramString2;
+    this.Sd = paramArrayOfByte;
+    this.Se = paramInt1;
+    this.Sf = paramInt2;
   }
   
   private static int compare(int paramInt1, int paramInt2)
@@ -52,7 +52,7 @@ public class zzayz
     if ((paramObject != null) && ((paramObject instanceof zzayz)))
     {
       paramObject = (zzayz)paramObject;
-      if ((!b.b(this.name, paramObject.name)) || (this.Qp != paramObject.Qp) || (this.Qq != paramObject.Qq)) {
+      if ((!b.c(this.name, paramObject.name)) || (this.Se != paramObject.Se) || (this.Sf != paramObject.Sf)) {
         bool = false;
       }
       do
@@ -62,20 +62,20 @@ public class zzayz
           do
           {
             return bool;
-            switch (this.Qp)
+            switch (this.Se)
             {
             default: 
-              int i = this.Qp;
+              int i = this.Se;
               throw new AssertionError(31 + "Invalid enum value: " + i);
             }
-          } while (this.Ql == paramObject.Ql);
+          } while (this.Sa == paramObject.Sa);
           return false;
-        } while (this.Qm == paramObject.Qm);
+        } while (this.Sb == paramObject.Sb);
         return false;
-      } while (this.Qn == paramObject.Qn);
+      } while (this.Sc == paramObject.Sc);
       return false;
-      return b.b(this.PG, paramObject.PG);
-      return Arrays.equals(this.Qo, paramObject.Qo);
+      return b.c(this.Rv, paramObject.Rv);
+      return Arrays.equals(this.Sd, paramObject.Sd);
     }
     return false;
   }
@@ -86,39 +86,39 @@ public class zzayz
     ((StringBuilder)localObject).append("Flag(");
     ((StringBuilder)localObject).append(this.name);
     ((StringBuilder)localObject).append(", ");
-    switch (this.Qp)
+    switch (this.Se)
     {
     default: 
       localObject = this.name;
-      int i = this.Qp;
+      int i = this.Se;
       throw new AssertionError(String.valueOf(localObject).length() + 27 + "Invalid type: " + (String)localObject + ", " + i);
     case 1: 
-      ((StringBuilder)localObject).append(this.Ql);
+      ((StringBuilder)localObject).append(this.Sa);
     }
     for (;;)
     {
       ((StringBuilder)localObject).append(", ");
-      ((StringBuilder)localObject).append(this.Qp);
+      ((StringBuilder)localObject).append(this.Se);
       ((StringBuilder)localObject).append(", ");
-      ((StringBuilder)localObject).append(this.Qq);
+      ((StringBuilder)localObject).append(this.Sf);
       ((StringBuilder)localObject).append(")");
       return ((StringBuilder)localObject).toString();
-      ((StringBuilder)localObject).append(this.Qm);
+      ((StringBuilder)localObject).append(this.Sb);
       continue;
-      ((StringBuilder)localObject).append(this.Qn);
+      ((StringBuilder)localObject).append(this.Sc);
       continue;
       ((StringBuilder)localObject).append("'");
-      ((StringBuilder)localObject).append(this.PG);
+      ((StringBuilder)localObject).append(this.Rv);
       ((StringBuilder)localObject).append("'");
       continue;
-      if (this.Qo == null)
+      if (this.Sd == null)
       {
         ((StringBuilder)localObject).append("null");
       }
       else
       {
         ((StringBuilder)localObject).append("'");
-        ((StringBuilder)localObject).append(new String(this.Qo, UTF_8));
+        ((StringBuilder)localObject).append(new String(this.Sd, UTF_8));
         ((StringBuilder)localObject).append("'");
       }
     }

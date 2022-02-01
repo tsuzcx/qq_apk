@@ -1,69 +1,52 @@
 package com.tencent.mm.plugin.appbrand.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.LinkedList;
-import java.util.List;
 
-final class a
+public final class a
 {
-  static final String[] hvA;
+  private static b jhS;
+  private static String jhT;
   
   static
   {
-    AppMethodBeat.i(65351);
-    LinkedList localLinkedList = new LinkedList();
-    Field[] arrayOfField = android.support.d.a.class.getDeclaredFields();
-    int j = arrayOfField.length;
-    int i = 0;
-    for (;;)
-    {
-      Field localField;
-      if (i < j) {
-        localField = arrayOfField[i];
-      }
-      try
-      {
-        if ((Modifier.isFinal(localField.getModifiers())) && (Modifier.isStatic(localField.getModifiers())) && (localField.getName().startsWith("TAG_"))) {
-          localLinkedList.add((String)localField.get(null));
-        }
-        label85:
-        i += 1;
-        continue;
-        hvA = (String[])localLinkedList.toArray(new String[localLinkedList.size()]);
-        AppMethodBeat.o(65351);
-        return;
-      }
-      catch (Exception localException)
-      {
-        break label85;
-      }
-    }
+    AppMethodBeat.i(195134);
+    jhS = new a.1();
+    AppMethodBeat.o(195134);
   }
   
-  static void a(android.support.d.a parama1, android.support.d.a parama2)
+  public static void a(String paramString, b paramb)
   {
-    AppMethodBeat.i(65350);
-    String[] arrayOfString = hvA;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str1 = arrayOfString[i];
-      String str2 = parama1.getAttribute(str1);
-      if (str2 != null) {
-        parama2.setAttribute(str1, str2);
-      }
-      i += 1;
-    }
-    parama2.saveAttributes();
-    AppMethodBeat.o(65350);
+    jhT = paramString;
+    jhS = paramb;
+  }
+  
+  public static void b(String paramString1, Throwable paramThrowable, String paramString2)
+  {
+    AppMethodBeat.i(195133);
+    jhS.b(paramString1, paramThrowable, paramString2);
+    new StringBuilder().append(jhT).append(paramString1);
+    AppMethodBeat.o(195133);
+  }
+  
+  public static void e(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(195132);
+    jhS.e(jhT + paramString1, paramString2);
+    new StringBuilder().append(jhT).append(paramString1);
+    AppMethodBeat.o(195132);
+  }
+  
+  public static void i(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(195131);
+    jhS.i(jhT + paramString1, paramString2);
+    new StringBuilder().append(jhT).append(paramString1);
+    AppMethodBeat.o(195131);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.h.a
  * JD-Core Version:    0.7.0.1
  */

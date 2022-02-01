@@ -2,8 +2,6 @@ package android.support.v4.app;
 
 public abstract class k
 {
-  public abstract k F(String paramString);
-  
   public abstract k a(int paramInt, Fragment paramFragment);
   
   public abstract k a(int paramInt, Fragment paramFragment, String paramString);
@@ -26,9 +24,11 @@ public abstract class k
   
   public abstract k d(Fragment paramFragment);
   
+  public abstract k dy();
+  
   public abstract k e(Fragment paramFragment);
   
-  public abstract k m(int paramInt1, int paramInt2);
+  public abstract k n(int paramInt1, int paramInt2);
 }
 
 

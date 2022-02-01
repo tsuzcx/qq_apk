@@ -42,12 +42,12 @@ public abstract class AbstractResultService
       com.tencent.tinker.lib.f.a.e("Tinker.AbstractResultService", "AbstractResultService received a null intent, ignoring.", new Object[0]);
       return;
     }
-    a((a)ShareIntentUtil.u(paramIntent, "result_extra"));
+    a((a)ShareIntentUtil.getSerializableExtra(paramIntent, "result_extra"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.lib.service.AbstractResultService
  * JD-Core Version:    0.7.0.1
  */

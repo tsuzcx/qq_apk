@@ -31,31 +31,31 @@ public final class AccountPicker
   
   public static Intent newChooseAccountIntent(Account paramAccount, ArrayList<Account> paramArrayList, String[] paramArrayOfString1, boolean paramBoolean, String paramString1, String paramString2, String[] paramArrayOfString2, Bundle paramBundle)
   {
-    AppMethodBeat.i(89334);
+    AppMethodBeat.i(4356);
     paramAccount = newChooseAccountIntent(paramAccount, paramArrayList, paramArrayOfString1, paramBoolean, paramString1, paramString2, paramArrayOfString2, paramBundle, false);
-    AppMethodBeat.o(89334);
+    AppMethodBeat.o(4356);
     return paramAccount;
   }
   
   public static Intent newChooseAccountIntent(Account paramAccount, ArrayList<Account> paramArrayList, String[] paramArrayOfString1, boolean paramBoolean1, String paramString1, String paramString2, String[] paramArrayOfString2, Bundle paramBundle, boolean paramBoolean2)
   {
-    AppMethodBeat.i(89335);
+    AppMethodBeat.i(4357);
     paramAccount = newChooseAccountIntent(paramAccount, paramArrayList, paramArrayOfString1, paramBoolean1, paramString1, paramString2, paramArrayOfString2, paramBundle, paramBoolean2, 0, 0);
-    AppMethodBeat.o(89335);
+    AppMethodBeat.o(4357);
     return paramAccount;
   }
   
   public static Intent newChooseAccountIntent(Account paramAccount, ArrayList<Account> paramArrayList, String[] paramArrayOfString1, boolean paramBoolean1, String paramString1, String paramString2, String[] paramArrayOfString2, Bundle paramBundle, boolean paramBoolean2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(89336);
+    AppMethodBeat.i(4358);
     paramAccount = newChooseAccountIntent(paramAccount, paramArrayList, paramArrayOfString1, paramBoolean1, paramString1, paramString2, paramArrayOfString2, paramBundle, paramBoolean2, paramInt1, paramInt2, null, false);
-    AppMethodBeat.o(89336);
+    AppMethodBeat.o(4358);
     return paramAccount;
   }
   
   public static Intent newChooseAccountIntent(Account paramAccount, ArrayList<Account> paramArrayList, String[] paramArrayOfString1, boolean paramBoolean1, String paramString1, String paramString2, String[] paramArrayOfString2, Bundle paramBundle, boolean paramBoolean2, int paramInt1, int paramInt2, String paramString3, boolean paramBoolean3)
   {
-    AppMethodBeat.i(89337);
+    AppMethodBeat.i(4359);
     Intent localIntent = new Intent();
     boolean bool;
     if (!paramBoolean3)
@@ -68,10 +68,10 @@ public final class AccountPicker
     }
     else {
       if (!paramBoolean3) {
-        break label189;
+        break label191;
       }
     }
-    label189:
+    label191:
     for (String str = "com.google.android.gms.common.account.CHOOSE_ACCOUNT_USERTILE";; str = "com.google.android.gms.common.account.CHOOSE_ACCOUNT")
     {
       localIntent.setAction(str);
@@ -88,7 +88,7 @@ public final class AccountPicker
       localIntent.putExtra("overrideTheme", paramInt1);
       localIntent.putExtra("overrideCustomTheme", paramInt2);
       localIntent.putExtra("hostedDomainFilter", paramString3);
-      AppMethodBeat.o(89337);
+      AppMethodBeat.o(4359);
       return localIntent;
       bool = false;
       break;

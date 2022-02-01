@@ -5,54 +5,55 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.Map;
 
 public class MCacheItem
   implements Parcelable
 {
   public static final Parcelable.Creator<MCacheItem> CREATOR;
-  private c ecx;
+  private c fmN;
   
   static
   {
-    AppMethodBeat.i(57848);
-    CREATOR = new MCacheItem.1();
-    AppMethodBeat.o(57848);
+    AppMethodBeat.i(131969);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(131969);
   }
   
   public MCacheItem(Parcel paramParcel)
   {
-    AppMethodBeat.i(57845);
-    this.ecx = c(paramParcel);
-    AppMethodBeat.o(57845);
+    AppMethodBeat.i(131966);
+    this.fmN = b(paramParcel);
+    AppMethodBeat.o(131966);
   }
   
   public MCacheItem(c paramc)
   {
-    this.ecx = paramc;
+    this.fmN = paramc;
   }
   
   /* Error */
-  private c c(Parcel paramParcel)
+  private c b(Parcel paramParcel)
   {
     // Byte code:
-    //   0: ldc 46
-    //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 47
+    //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokevirtual 52	android/os/Parcel:readString	()Ljava/lang/String;
-    //   9: invokestatic 58	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   6: invokevirtual 53	android/os/Parcel:readString	()Ljava/lang/String;
+    //   9: invokestatic 59	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   12: astore 4
     //   14: aload_0
     //   15: aload 4
-    //   17: invokevirtual 62	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   20: checkcast 64	com/tencent/mm/sdk/e/c
-    //   23: putfield 42	com/tencent/mm/cache/MCacheItem:ecx	Lcom/tencent/mm/sdk/e/c;
+    //   17: invokevirtual 63	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   20: checkcast 65	com/tencent/mm/sdk/e/c
+    //   23: putfield 43	com/tencent/mm/cache/MCacheItem:fmN	Lcom/tencent/mm/sdk/e/c;
     //   26: aload 4
-    //   28: invokestatic 68	com/tencent/mm/sdk/e/c:getValidFields	(Ljava/lang/Class;)[Ljava/lang/reflect/Field;
+    //   28: invokestatic 69	com/tencent/mm/sdk/e/c:getValidFields	(Ljava/lang/Class;)[Ljava/lang/reflect/Field;
     //   31: astore 4
     //   33: aload 4
     //   35: arraylength
@@ -66,11 +67,11 @@ public class MCacheItem
     //   46: iload_2
     //   47: aaload
     //   48: astore 5
-    //   50: getstatic 72	com/tencent/mm/cache/MCacheItem$a:ecz	Ljava/util/Map;
+    //   50: getstatic 73	com/tencent/mm/cache/MCacheItem$a:fmP	Ljava/util/Map;
     //   53: aload 5
-    //   55: invokevirtual 78	java/lang/reflect/Field:getType	()Ljava/lang/Class;
-    //   58: invokeinterface 84 2 0
-    //   63: checkcast 86	java/lang/reflect/Method
+    //   55: invokevirtual 79	java/lang/reflect/Field:getType	()Ljava/lang/Class;
+    //   58: invokeinterface 85 2 0
+    //   63: checkcast 87	java/lang/reflect/Method
     //   66: astore 6
     //   68: aload 6
     //   70: ifnull +30 -> 100
@@ -89,9 +90,9 @@ public class MCacheItem
     //   89: dup
     //   90: iconst_2
     //   91: aload_0
-    //   92: getfield 42	com/tencent/mm/cache/MCacheItem:ecx	Lcom/tencent/mm/sdk/e/c;
+    //   92: getfield 43	com/tencent/mm/cache/MCacheItem:fmN	Lcom/tencent/mm/sdk/e/c;
     //   95: aastore
-    //   96: invokevirtual 90	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   96: invokevirtual 91	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   99: pop
     //   100: iload_2
     //   101: iconst_1
@@ -99,37 +100,37 @@ public class MCacheItem
     //   103: istore_2
     //   104: goto -65 -> 39
     //   107: astore 5
-    //   109: ldc 92
-    //   111: ldc 94
+    //   109: ldc 93
+    //   111: ldc 95
     //   113: iconst_1
     //   114: anewarray 4	java/lang/Object
     //   117: dup
     //   118: iconst_0
     //   119: aload 5
-    //   121: invokestatic 100	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   121: invokestatic 101	com/tencent/mm/sdk/platformtools/bt:m	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   124: aastore
-    //   125: invokestatic 106	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   125: invokestatic 107	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   128: goto -28 -> 100
     //   131: astore_1
-    //   132: ldc 92
-    //   134: ldc 94
+    //   132: ldc 93
+    //   134: ldc 95
     //   136: iconst_1
     //   137: anewarray 4	java/lang/Object
     //   140: dup
     //   141: iconst_0
     //   142: aload_1
-    //   143: invokestatic 100	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   143: invokestatic 101	com/tencent/mm/sdk/platformtools/bt:m	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   146: aastore
-    //   147: invokestatic 106	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   150: ldc 46
-    //   152: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   147: invokestatic 107	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   150: ldc 47
+    //   152: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   155: aconst_null
     //   156: areturn
     //   157: aload_0
-    //   158: getfield 42	com/tencent/mm/cache/MCacheItem:ecx	Lcom/tencent/mm/sdk/e/c;
+    //   158: getfield 43	com/tencent/mm/cache/MCacheItem:fmN	Lcom/tencent/mm/sdk/e/c;
     //   161: astore_1
-    //   162: ldc 46
-    //   164: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   162: ldc 47
+    //   164: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   167: aload_1
     //   168: areturn
     //   169: astore 5
@@ -163,9 +164,9 @@ public class MCacheItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(57847);
-    paramParcel.writeString(this.ecx.getClass().getName());
-    Field[] arrayOfField = c.getValidFields(this.ecx.getClass());
+    AppMethodBeat.i(131968);
+    paramParcel.writeString(this.fmN.getClass().getName());
+    Field[] arrayOfField = c.getValidFields(this.fmN.getClass());
     int i = arrayOfField.length;
     paramInt = 0;
     for (;;)
@@ -173,28 +174,345 @@ public class MCacheItem
       if (paramInt < i)
       {
         Field localField = arrayOfField[paramInt];
-        Method localMethod = (Method)MCacheItem.a.ecy.get(localField.getType());
+        Method localMethod = (Method)a.fmO.get(localField.getType());
         if (localMethod != null) {}
         try
         {
-          localMethod.invoke(null, new Object[] { paramParcel, localField, this.ecx });
+          localMethod.invoke(null, new Object[] { paramParcel, localField, this.fmN });
           paramInt += 1;
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            ab.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bo.l(localException) });
+            ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(localException) });
           }
         }
       }
     }
-    AppMethodBeat.o(57847);
+    AppMethodBeat.o(131968);
+  }
+  
+  static class a
+  {
+    public static Map<Class<?>, Method> fmO;
+    public static Map<Class<?>, Method> fmP;
+    
+    static
+    {
+      AppMethodBeat.i(131965);
+      fmO = new HashMap();
+      fmP = new HashMap();
+      try
+      {
+        fmO.put([B.class, a.class.getMethod("keep_writeByteArray", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmO.put(Short.TYPE, a.class.getMethod("keep_writeShort", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmO.put(Short.class, a.class.getMethod("keep_writeShort", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmO.put(Boolean.TYPE, a.class.getMethod("keep_writeBoolean", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmO.put(Boolean.class, a.class.getMethod("keep_writeBoolean", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmO.put(Integer.TYPE, a.class.getMethod("keep_writeInt", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmO.put(Integer.class, a.class.getMethod("keep_writeInt", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmO.put(Float.TYPE, a.class.getMethod("keep_writeFloat", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmO.put(Float.class, a.class.getMethod("keep_writeFloat", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmO.put(Double.TYPE, a.class.getMethod("keep_writeDouble", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmO.put(Double.class, a.class.getMethod("keep_writeDouble", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmO.put(Long.TYPE, a.class.getMethod("keep_writeLong", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmO.put(Long.class, a.class.getMethod("keep_writeLong", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmO.put(String.class, a.class.getMethod("keep_writeString", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmP.put([B.class, a.class.getMethod("keep_readByteArray", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmP.put(Short.TYPE, a.class.getMethod("keep_readShort", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmP.put(Short.class, a.class.getMethod("keep_readShort", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmP.put(Boolean.TYPE, a.class.getMethod("keep_readBoolean", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmP.put(Boolean.class, a.class.getMethod("keep_readBoolean", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmP.put(Integer.TYPE, a.class.getMethod("keep_readInt", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmP.put(Integer.class, a.class.getMethod("keep_readInt", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmP.put(Float.TYPE, a.class.getMethod("keep_readFloat", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmP.put(Float.class, a.class.getMethod("keep_readFloat", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmP.put(Double.TYPE, a.class.getMethod("keep_readDouble", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmP.put(Double.class, a.class.getMethod("keep_readDouble", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmP.put(Long.TYPE, a.class.getMethod("keep_readLong", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmP.put(Long.class, a.class.getMethod("keep_readLong", new Class[] { Parcel.class, Field.class, Object.class }));
+        fmP.put(String.class, a.class.getMethod("keep_readString", new Class[] { Parcel.class, Field.class, Object.class }));
+        AppMethodBeat.o(131965);
+        return;
+      }
+      catch (Exception localException)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(localException) });
+        AppMethodBeat.o(131965);
+      }
+    }
+    
+    public static void keep_readBoolean(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131959);
+      try
+      {
+        if (paramParcel.readInt() != 0) {}
+        for (boolean bool = true;; bool = false)
+        {
+          paramField.setBoolean(paramObject, bool);
+          AppMethodBeat.o(131959);
+          return;
+        }
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131959);
+      }
+    }
+    
+    public static void keep_readByteArray(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131957);
+      try
+      {
+        paramField.set(paramObject, paramParcel.createByteArray());
+        AppMethodBeat.o(131957);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131957);
+      }
+    }
+    
+    public static void keep_readDouble(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131962);
+      try
+      {
+        paramField.setDouble(paramObject, paramParcel.readDouble());
+        AppMethodBeat.o(131962);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131962);
+      }
+    }
+    
+    public static void keep_readFloat(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131961);
+      try
+      {
+        paramField.setFloat(paramObject, paramParcel.readFloat());
+        AppMethodBeat.o(131961);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131961);
+      }
+    }
+    
+    public static void keep_readInt(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131960);
+      try
+      {
+        paramField.setInt(paramObject, paramParcel.readInt());
+        AppMethodBeat.o(131960);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131960);
+      }
+    }
+    
+    public static void keep_readLong(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131963);
+      try
+      {
+        paramField.set(paramObject, Long.valueOf(paramParcel.readLong()));
+        AppMethodBeat.o(131963);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131963);
+      }
+    }
+    
+    public static void keep_readShort(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131958);
+      try
+      {
+        paramField.setShort(paramObject, (short)paramParcel.readInt());
+        AppMethodBeat.o(131958);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131958);
+      }
+    }
+    
+    public static void keep_readString(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131964);
+      try
+      {
+        paramField.set(paramObject, paramParcel.readString());
+        AppMethodBeat.o(131964);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131964);
+      }
+    }
+    
+    public static void keep_writeBoolean(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131951);
+      try
+      {
+        if (paramField.getBoolean(paramObject)) {}
+        for (int i = 1;; i = 0)
+        {
+          paramParcel.writeInt(i);
+          AppMethodBeat.o(131951);
+          return;
+        }
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131951);
+      }
+    }
+    
+    public static void keep_writeByteArray(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131949);
+      try
+      {
+        paramParcel.writeByteArray((byte[])paramField.get(paramObject));
+        AppMethodBeat.o(131949);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131949);
+      }
+    }
+    
+    public static void keep_writeDouble(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131954);
+      try
+      {
+        paramParcel.writeDouble(paramField.getDouble(paramObject));
+        AppMethodBeat.o(131954);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131954);
+      }
+    }
+    
+    public static void keep_writeFloat(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131953);
+      try
+      {
+        paramParcel.writeFloat(paramField.getFloat(paramObject));
+        AppMethodBeat.o(131953);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131953);
+      }
+    }
+    
+    public static void keep_writeInt(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131952);
+      try
+      {
+        paramParcel.writeInt(paramField.getInt(paramObject));
+        AppMethodBeat.o(131952);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131952);
+      }
+    }
+    
+    public static void keep_writeLong(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131955);
+      try
+      {
+        paramParcel.writeLong(paramField.getLong(paramObject));
+        AppMethodBeat.o(131955);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131955);
+      }
+    }
+    
+    public static void keep_writeShort(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131950);
+      try
+      {
+        paramParcel.writeInt(paramField.getShort(paramObject));
+        AppMethodBeat.o(131950);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131950);
+      }
+    }
+    
+    public static void keep_writeString(Parcel paramParcel, Field paramField, Object paramObject)
+    {
+      AppMethodBeat.i(131956);
+      try
+      {
+        paramParcel.writeString((String)paramField.get(paramObject));
+        AppMethodBeat.o(131956);
+        return;
+      }
+      catch (Exception paramParcel)
+      {
+        ad.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bt.m(paramParcel) });
+        AppMethodBeat.o(131956);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.cache.MCacheItem
  * JD-Core Version:    0.7.0.1
  */

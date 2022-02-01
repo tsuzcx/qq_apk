@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
-import com.tencent.mm.plugin.appbrand.jsapi.ai;
+import com.tencent.mm.plugin.appbrand.jsapi.ar;
 
 final class e$a
-  extends ai
+  extends ar
 {
   private static final int CTRL_INDEX = 256;
-  private static final String NAME = "onTextViewClick";
+  private static final String NAME = "onImageViewClick";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.e.a
  * JD-Core Version:    0.7.0.1
  */

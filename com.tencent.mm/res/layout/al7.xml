@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="100.0dip" android:layout_marginRight="20.0dip">
+        <EditText android:id="@id/bgk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="60.0dip" android:hint="url" />
+        <Button android:id="@id/cwu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:minHeight="60.0dip" android:text="跳转" />
+        <Button android:id="@id/cwy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:minHeight="60.0dip" android:text="跳转游戏中心首页" />
+    </LinearLayout>
+</LinearLayout>

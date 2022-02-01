@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class er
   extends b
 {
-  public er.a csy;
+  public a dhh;
+  public b dhi;
   
   public er()
   {
@@ -15,16 +16,26 @@ public final class er
   
   private er(byte paramByte)
   {
-    AppMethodBeat.i(15763);
-    this.csy = new er.a();
-    this.ymq = false;
+    AppMethodBeat.i(116009);
+    this.dhh = new a();
+    this.dhi = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15763);
+    AppMethodBeat.o(116009);
   }
+  
+  public static final class a
+  {
+    public String cLR;
+    public String dhj;
+    public int progress;
+  }
+  
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.er
  * JD-Core Version:    0.7.0.1
  */

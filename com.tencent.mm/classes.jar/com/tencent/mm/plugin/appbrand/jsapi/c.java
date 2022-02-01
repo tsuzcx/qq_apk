@@ -2,36 +2,50 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.content.Context;
 import android.os.Handler;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
-import com.tencent.mm.plugin.appbrand.i.i;
-import com.tencent.mm.plugin.appbrand.widget.b.l;
+import com.tencent.mm.plugin.appbrand.appstorage.p;
+import com.tencent.mm.plugin.appbrand.jsruntime.i;
+import com.tencent.mm.plugin.appbrand.jsruntime.o;
 import java.util.Map;
 
 public abstract interface c
 {
-  public abstract void A(Runnable paramRunnable);
+  public abstract i DI();
   
-  public abstract <T extends j> T U(Class<T> paramClass);
+  public abstract Map<String, m> DJ();
   
-  public abstract <T extends k> T V(Class<T> paramClass);
+  public abstract p Ee();
   
-  public abstract void a(ai paramai);
+  public abstract <T extends com.tencent.luggage.a.b> T K(Class<T> paramClass);
   
-  public abstract int aAN();
+  public abstract void L(Runnable paramRunnable);
   
-  public abstract i aAO();
+  public abstract void a(ar paramar);
   
-  public abstract Handler aAP();
+  public abstract void a(ar paramar, o paramo);
   
-  public abstract com.tencent.mm.plugin.appbrand.b.b asW();
+  public abstract boolean a(k paramk);
   
-  public abstract l asX();
+  public abstract com.tencent.mm.plugin.appbrand.b.b aLA();
   
-  public abstract void b(ai paramai);
+  public abstract com.tencent.mm.plugin.appbrand.widget.dialog.m aLB();
+  
+  public abstract boolean aNu();
+  
+  public abstract int aOd();
+  
+  public abstract Handler aOe();
+  
+  public abstract i aOf();
+  
+  public abstract <T extends j> T ar(Class<T> paramClass);
+  
+  public abstract <T extends k> T as(Class<T> paramClass);
+  
+  public abstract void b(ar paramar);
   
   public abstract void b(String paramString1, String paramString2, int[] paramArrayOfInt);
   
-  public abstract void bY(String paramString1, String paramString2);
+  public abstract void bR(String paramString1, String paramString2);
   
   public abstract String getAppId();
   
@@ -41,17 +55,27 @@ public abstract interface c
   
   public abstract boolean isRunning();
   
-  public abstract <T extends com.tencent.luggage.a.b> T q(Class<T> paramClass);
+  public static abstract interface a
+  {
+    public abstract void HF(String paramString);
+    
+    public abstract void proceed();
+  }
   
-  public abstract i wB();
-  
-  public abstract Map<String, m> wC();
-  
-  public abstract o wX();
+  public static abstract interface b
+  {
+    public abstract void P(int paramInt, String paramString);
+    
+    public abstract void a(ar paramar, c.a parama);
+    
+    public abstract void a(m paramm, String paramString1, int paramInt, String paramString2);
+    
+    public abstract boolean a(m paramm, String paramString, int paramInt, c.a parama);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.c
  * JD-Core Version:    0.7.0.1
  */

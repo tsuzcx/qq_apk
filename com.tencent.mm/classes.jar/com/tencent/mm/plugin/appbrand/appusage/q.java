@@ -1,181 +1,145 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.protocal.protobuf.asv;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.protocal.protobuf.bdr;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.c;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
 
 public enum q
 {
-  private static volatile long hbC;
-  private static volatile asv hbD;
-  private static final Set<q.b> hbE;
+  private static volatile bdr iUI;
+  private static final Set<Object> iUJ;
   
   static
   {
-    AppMethodBeat.i(129616);
-    hbF = new q[0];
-    hbE = Collections.newSetFromMap(new ConcurrentHashMap());
-    AppMethodBeat.o(129616);
+    AppMethodBeat.i(44546);
+    iUK = new q[0];
+    iUJ = Collections.newSetFromMap(new ConcurrentHashMap());
+    AppMethodBeat.o(44546);
   }
   
-  public static void a(q.b paramb)
-  {
-    AppMethodBeat.i(129607);
-    hbE.add(paramb);
-    AppMethodBeat.o(129607);
-  }
-  
-  public static boolean axe()
+  public static boolean aRI()
   {
     return true;
   }
   
-  public static boolean axf()
+  public static boolean aRJ()
   {
-    AppMethodBeat.i(129609);
-    switch (3.hbK[axg().ordinal()])
+    AppMethodBeat.i(44539);
+    switch (1.iUL[aRK().ordinal()])
     {
     }
     do
     {
-      AppMethodBeat.o(129609);
+      AppMethodBeat.o(44539);
       return false;
-      AppMethodBeat.o(129609);
+      AppMethodBeat.o(44539);
       return false;
-      AppMethodBeat.o(129609);
+      AppMethodBeat.o(44539);
       return true;
-      if (axh())
+      if (aRL())
       {
-        AppMethodBeat.o(129609);
+        AppMethodBeat.o(44539);
         return true;
       }
-    } while (hbD == null);
-    if (hbD.jAI >= hbD.xhT)
+    } while (iUI == null);
+    if (iUI.msf >= iUI.DBe)
     {
-      AppMethodBeat.o(129609);
+      AppMethodBeat.o(44539);
       return true;
     }
-    AppMethodBeat.o(129609);
+    AppMethodBeat.o(44539);
     return false;
   }
   
-  static q.a axg()
+  static a aRK()
   {
     int i = 0;
-    AppMethodBeat.i(129611);
-    if (!g.RG())
+    AppMethodBeat.i(44541);
+    if (!g.afw())
     {
-      localObject = q.a.hbL;
-      AppMethodBeat.o(129611);
+      localObject = a.iUM;
+      AppMethodBeat.o(44541);
       return localObject;
     }
-    Object localObject = com.tencent.mm.model.c.c.abU().me("100215");
-    if (((com.tencent.mm.storage.c)localObject).isValid())
+    Object localObject = com.tencent.mm.model.c.d.aty().qu("100215");
+    if (((c)localObject).isValid())
     {
-      int j = bo.getInt((String)((com.tencent.mm.storage.c)localObject).dvN().get("isOpenNewNearEntry"), 0);
-      localObject = q.a.values();
+      int j = bt.getInt((String)((c)localObject).eJy().get("isOpenNewNearEntry"), 0);
+      localObject = a.values();
       int k = localObject.length;
       while (i < k)
       {
-        q.a locala = localObject[i];
+        a locala = localObject[i];
         if (locala.value == j)
         {
-          AppMethodBeat.o(129611);
+          AppMethodBeat.o(44541);
           return locala;
         }
         i += 1;
       }
     }
-    localObject = q.a.hbL;
-    AppMethodBeat.o(129611);
+    localObject = a.iUM;
+    AppMethodBeat.o(44541);
     return localObject;
   }
   
-  static boolean axh()
+  static boolean aRL()
   {
-    AppMethodBeat.i(129612);
-    boolean bool = g.RL().Ru().getBoolean(ac.a.yDe, false);
-    AppMethodBeat.o(129612);
+    AppMethodBeat.i(44542);
+    boolean bool = g.afB().afk().getBoolean(ae.a.FlA, false);
+    AppMethodBeat.o(44542);
     return bool;
   }
   
-  static void axi()
+  static void aRM()
   {
-    AppMethodBeat.i(129613);
-    g.RL().Ru().set(ac.a.yDe, Boolean.TRUE);
-    AppMethodBeat.o(129613);
+    AppMethodBeat.i(44543);
+    g.afB().afk().set(ae.a.FlA, Boolean.TRUE);
+    AppMethodBeat.o(44543);
   }
   
-  public static asv axj()
+  public static bdr aRN()
   {
-    return hbD;
-  }
-  
-  public static boolean axk()
-  {
-    AppMethodBeat.i(129614);
-    long l2 = bo.aox();
-    if ((!g.RG()) || (hbD == null)) {}
-    for (long l1 = 0L; l2 >= l1; l1 = hbC)
-    {
-      AppMethodBeat.o(129614);
-      return true;
-    }
-    AppMethodBeat.o(129614);
-    return false;
-  }
-  
-  public static void b(q.b paramb)
-  {
-    AppMethodBeat.i(129608);
-    hbE.remove(paramb);
-    AppMethodBeat.o(129608);
+    return iUI;
   }
   
   public static void clearData()
   {
-    hbD = null;
+    iUI = null;
   }
   
-  public static boolean refresh()
+  static enum a
   {
-    AppMethodBeat.i(129610);
-    hbD = null;
-    hbC = 0L;
-    Object localObject = axg();
-    if (q.a.hbL == localObject)
+    final int value;
+    
+    static
     {
-      AppMethodBeat.o(129610);
-      return false;
+      AppMethodBeat.i(44534);
+      iUM = new a("FORCE_OFF", 0, 0);
+      iUN = new a("FORCE_ON", 1, 1);
+      iUO = new a("DYNAMIC_THRESHOLD", 2, 2);
+      iUP = new a[] { iUM, iUN, iUO };
+      AppMethodBeat.o(44534);
     }
-    localObject = new PBool();
-    PBool localPBool = new PBool();
-    ((PBool)localObject).value = false;
-    localPBool.value = false;
-    ap localap = new ap(Looper.getMainLooper(), new q.1(localPBool, (PBool)localObject), false);
-    long l = TimeUnit.SECONDS.toMillis(20L);
-    localap.ag(l, l);
-    localObject = (b.a)com.tencent.mm.plugin.appbrand.t.e.bq(new q.2((PBool)localObject, localPBool));
-    com.tencent.mm.modelgeo.d.agQ().b((b.a)localObject, false);
-    AppMethodBeat.o(129610);
-    return true;
+    
+    private a(int paramInt)
+    {
+      this.value = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.q
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<inset android:insetLeft="@dimen/a50" android:insetRight="@dimen/a50"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <shape>
-        <solid android:color="@color/a0a" />
-        <corners android:radius="2.0dip" />
-    </shape>
-</inset>
+    <item android:state_focused="true" android:drawable="@drawable/bkp" />
+    <item android:state_pressed="true" android:drawable="@drawable/bkp" />
+    <item android:drawable="@drawable/bko" />
+</selector>

@@ -1,67 +1,307 @@
 package com.tencent.xweb.xwalk;
 
-import android.webkit.ValueCallback;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.webkit.DownloadListener;
+import android.webkit.GeolocationPermissions.Callback;
+import android.webkit.WebChromeClient.CustomViewCallback;
+import android.webkit.WebView.FindListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.i;
-import com.tencent.xweb.m;
+import com.tencent.xweb.JsResult;
+import com.tencent.xweb.WebResourceRequest;
+import com.tencent.xweb.WebResourceResponse;
+import com.tencent.xweb.a.a;
+import com.tencent.xweb.n;
+import com.tencent.xweb.p;
+import java.io.File;
+import java.util.Map;
+import org.xwalk.core.CustomViewCallback;
+import org.xwalk.core.Log;
+import org.xwalk.core.XWalkDownloadListener;
+import org.xwalk.core.XWalkFindListener;
+import org.xwalk.core.XWalkGeolocationPermissionsCallback;
 import org.xwalk.core.XWalkJavascriptResult;
+import org.xwalk.core.XWalkLongScreenshotCallback;
+import org.xwalk.core.XWalkWebResourceRequest;
+import org.xwalk.core.XWalkWebResourceResponse;
 
 public final class f
 {
-  public static final class e
-    extends i
+  public static WebResourceResponse a(XWalkWebResourceResponse paramXWalkWebResourceResponse)
   {
-    public XWalkJavascriptResult BJA;
-    
-    public e(XWalkJavascriptResult paramXWalkJavascriptResult)
+    AppMethodBeat.i(154284);
+    if (paramXWalkWebResourceResponse == null)
     {
-      this.BJA = paramXWalkJavascriptResult;
+      AppMethodBeat.o(154284);
+      return null;
+    }
+    paramXWalkWebResourceResponse = new WebResourceResponse(paramXWalkWebResourceResponse.getMimeType(), paramXWalkWebResourceResponse.getEncoding(), paramXWalkWebResourceResponse.getStatusCode(), paramXWalkWebResourceResponse.getReasonPhrase(), paramXWalkWebResourceResponse.getResponseHeaders(), paramXWalkWebResourceResponse.getData());
+    AppMethodBeat.o(154284);
+    return paramXWalkWebResourceResponse;
+  }
+  
+  public static final class a
+    implements WebChromeClient.CustomViewCallback
+  {
+    CustomViewCallback ITF;
+    
+    a(CustomViewCallback paramCustomViewCallback)
+    {
+      this.ITF = paramCustomViewCallback;
+    }
+    
+    public final void onCustomViewHidden()
+    {
+      AppMethodBeat.i(154265);
+      this.ITF.onCustomViewHidden();
+      AppMethodBeat.o(154265);
+    }
+  }
+  
+  public static final class b
+    implements GeolocationPermissions.Callback
+  {
+    XWalkGeolocationPermissionsCallback ITG;
+    
+    public b(XWalkGeolocationPermissionsCallback paramXWalkGeolocationPermissionsCallback)
+    {
+      this.ITG = paramXWalkGeolocationPermissionsCallback;
+    }
+    
+    public final void invoke(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+    {
+      AppMethodBeat.i(154266);
+      if (this.ITG != null) {
+        this.ITG.invoke(paramString, paramBoolean1, paramBoolean2);
+      }
+      AppMethodBeat.o(154266);
+    }
+  }
+  
+  public static final class c
+    extends JsResult
+  {
+    public XWalkJavascriptResult ITH;
+    
+    public c(XWalkJavascriptResult paramXWalkJavascriptResult)
+    {
+      this.ITH = paramXWalkJavascriptResult;
     }
     
     public final void cancel()
     {
-      AppMethodBeat.i(85224);
-      this.BJA.cancel();
-      AppMethodBeat.o(85224);
+      AppMethodBeat.i(154269);
+      this.ITH.cancel();
+      AppMethodBeat.o(154269);
     }
     
     public final void confirm()
     {
-      AppMethodBeat.i(85223);
-      this.BJA.confirm();
-      AppMethodBeat.o(85223);
+      AppMethodBeat.i(154268);
+      this.ITH.confirm();
+      AppMethodBeat.o(154268);
     }
     
     public final void confirmWithResult(String paramString)
     {
-      AppMethodBeat.i(85222);
-      this.BJA.confirmWithResult(paramString);
-      AppMethodBeat.o(85222);
+      AppMethodBeat.i(154267);
+      this.ITH.confirmWithResult(paramString);
+      AppMethodBeat.o(154267);
     }
   }
   
-  public static final class h
-    implements m
+  public static final class d
+    extends XWalkLongScreenshotCallback
   {
-    ValueCallback<Boolean> BJC;
+    private p ITI;
     
-    public h(ValueCallback<Boolean> paramValueCallback)
+    public d(p paramp)
     {
-      this.BJC = paramValueCallback;
+      this.ITI = paramp;
+    }
+    
+    public final File getCacheFileDir()
+    {
+      AppMethodBeat.i(154271);
+      File localFile = this.ITI.getCacheFileDir();
+      AppMethodBeat.o(154271);
+      return localFile;
+    }
+    
+    public final int getMaxHeightSupported()
+    {
+      AppMethodBeat.i(154274);
+      int i = this.ITI.getMaxHeightSupported();
+      AppMethodBeat.o(154274);
+      return i;
+    }
+    
+    public final File getResultFileDir()
+    {
+      AppMethodBeat.i(154272);
+      File localFile = this.ITI.getResultFileDir();
+      AppMethodBeat.o(154272);
+      return localFile;
+    }
+    
+    public final void onLongScreenshotFinished(int paramInt, String paramString)
+    {
+      AppMethodBeat.i(154270);
+      this.ITI.onLongScreenshotFinished(paramInt, paramString);
+      AppMethodBeat.o(154270);
+    }
+    
+    public final Bitmap overrideScreenshot(Bitmap paramBitmap)
+    {
+      AppMethodBeat.i(154273);
+      paramBitmap = this.ITI.overrideScreenshot(paramBitmap);
+      AppMethodBeat.o(154273);
+      return paramBitmap;
+    }
+  }
+  
+  public static final class e
+    extends n
+  {
+    public XWalkJavascriptResult ITH;
+    
+    public e(XWalkJavascriptResult paramXWalkJavascriptResult)
+    {
+      this.ITH = paramXWalkJavascriptResult;
     }
     
     public final void cancel()
     {
-      AppMethodBeat.i(85228);
-      this.BJC.onReceiveValue(Boolean.FALSE);
-      AppMethodBeat.o(85228);
+      AppMethodBeat.i(154277);
+      this.ITH.cancel();
+      AppMethodBeat.o(154277);
     }
     
-    public final void proceed()
+    public final void confirm()
     {
-      AppMethodBeat.i(85227);
-      this.BJC.onReceiveValue(Boolean.TRUE);
-      AppMethodBeat.o(85227);
+      AppMethodBeat.i(154276);
+      this.ITH.confirm();
+      AppMethodBeat.o(154276);
+    }
+    
+    public final void confirmWithResult(String paramString)
+    {
+      AppMethodBeat.i(154275);
+      this.ITH.confirmWithResult(paramString);
+      AppMethodBeat.o(154275);
+    }
+  }
+  
+  public static final class f
+    extends XWalkDownloadListener
+  {
+    DownloadListener IRM;
+    
+    public f(Context paramContext, DownloadListener paramDownloadListener)
+    {
+      super();
+      this.IRM = paramDownloadListener;
+    }
+    
+    public final void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+    {
+      AppMethodBeat.i(154278);
+      if (this.IRM != null) {
+        this.IRM.onDownloadStart(paramString1, paramString2, paramString3, paramString4, paramLong);
+      }
+      AppMethodBeat.o(154278);
+    }
+  }
+  
+  public static final class g
+    extends XWalkFindListener
+  {
+    WebView.FindListener IRN;
+    
+    public g(WebView.FindListener paramFindListener)
+    {
+      this.IRN = paramFindListener;
+    }
+    
+    public final void onFindResultReceived(int paramInt1, int paramInt2, boolean paramBoolean)
+    {
+      AppMethodBeat.i(154279);
+      if (this.IRN != null) {
+        this.IRN.onFindResultReceived(paramInt1, paramInt2, paramBoolean);
+      }
+      AppMethodBeat.o(154279);
+    }
+  }
+  
+  public static final class i
+    implements WebResourceRequest
+  {
+    private boolean AyM;
+    private Map<String, String> BTs;
+    private boolean IQX;
+    private boolean IQY;
+    a IQZ;
+    private String method;
+    private Uri url;
+    
+    public i(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+    {
+      AppMethodBeat.i(154283);
+      try
+      {
+        this.url = Uri.parse(paramString1);
+        this.IQX = paramBoolean1;
+        this.IQY = paramBoolean2;
+        this.method = paramString2;
+        this.AyM = paramBoolean3;
+        AppMethodBeat.o(154283);
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Log.e("WebResourceRequestImpl", "parse url failed , url = ".concat(String.valueOf(paramString1)));
+        }
+      }
+    }
+    
+    public i(XWalkWebResourceRequest paramXWalkWebResourceRequest)
+    {
+      AppMethodBeat.i(154282);
+      this.url = paramXWalkWebResourceRequest.getUrl();
+      this.IQX = paramXWalkWebResourceRequest.isForMainFrame();
+      this.IQY = paramXWalkWebResourceRequest.hasGesture();
+      this.method = paramXWalkWebResourceRequest.getMethod();
+      this.BTs = paramXWalkWebResourceRequest.getRequestHeaders();
+      this.IQZ = new a(this);
+      AppMethodBeat.o(154282);
+    }
+    
+    public final String getMethod()
+    {
+      return this.method;
+    }
+    
+    public final Map<String, String> getRequestHeaders()
+    {
+      return this.BTs;
+    }
+    
+    public final Uri getUrl()
+    {
+      return this.url;
+    }
+    
+    public final boolean hasGesture()
+    {
+      return this.IQY;
+    }
+    
+    public final boolean isForMainFrame()
+    {
+      return this.IQX;
     }
   }
 }

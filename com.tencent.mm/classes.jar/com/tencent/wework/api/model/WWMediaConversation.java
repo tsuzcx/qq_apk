@@ -6,59 +6,59 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WWMediaConversation
   extends WWMediaMessage.WWMediaObject
 {
-  public byte[] BCJ;
-  public WWMediaMessage.WWMediaObject BCK;
-  public String mBI;
+  public byte[] ILX;
+  public WWMediaMessage.WWMediaObject ILY;
   public String name;
-  public long qsy;
+  public String qjl;
+  public long vJM;
   
   public final boolean checkArgs()
   {
-    AppMethodBeat.i(80497);
+    AppMethodBeat.i(106538);
     if (!super.checkArgs())
     {
-      AppMethodBeat.o(80497);
+      AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.BCJ != null) && (this.BCJ.length > 10485760))
+    if ((this.ILX != null) && (this.ILX.length > 10485760))
     {
-      AppMethodBeat.o(80497);
+      AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.mBI != null) && (this.mBI.length() > 10240))
+    if ((this.qjl != null) && (this.qjl.length() > 10240))
     {
-      AppMethodBeat.o(80497);
+      AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.mBI != null) && (getFileSize(this.mBI) > 10485760))
+    if ((this.qjl != null) && (getFileSize(this.qjl) > 10485760))
     {
-      AppMethodBeat.o(80497);
+      AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.BCK != null) && (this.BCK.checkArgs()))
+    if ((this.ILY != null) && (this.ILY.checkArgs()))
     {
-      AppMethodBeat.o(80497);
+      AppMethodBeat.o(106538);
       return true;
     }
-    AppMethodBeat.o(80497);
+    AppMethodBeat.o(106538);
     return false;
   }
   
   public final void toBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(80498);
+    AppMethodBeat.i(106539);
     super.toBundle(paramBundle);
     paramBundle.putString("_wwconvobject_name", this.name);
-    paramBundle.putLong("_wwconvobject_date", this.qsy);
-    paramBundle.putByteArray("_wwconvobject_avatarData", this.BCJ);
-    paramBundle.putString("_wwconvobject_avatarPath", this.mBI);
-    paramBundle.putBundle("_wwconvobject_message", BaseMessage.b(this.BCK));
-    AppMethodBeat.o(80498);
+    paramBundle.putLong("_wwconvobject_date", this.vJM);
+    paramBundle.putByteArray("_wwconvobject_avatarData", this.ILX);
+    paramBundle.putString("_wwconvobject_avatarPath", this.qjl);
+    paramBundle.putBundle("_wwconvobject_message", BaseMessage.b(this.ILY));
+    AppMethodBeat.o(106539);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wework.api.model.WWMediaConversation
  * JD-Core Version:    0.7.0.1
  */

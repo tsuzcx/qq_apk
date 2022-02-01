@@ -21,54 +21,54 @@ public class AdLandingControlView
     super(paramContext, paramAttributeSet);
   }
   
-  public final void Eg(int paramInt)
+  public final void MK(int paramInt)
   {
-    AppMethodBeat.i(37368);
+    AppMethodBeat.i(96829);
     removeAllViews();
     if (paramInt >= this.count)
     {
-      AppMethodBeat.o(37368);
+      AppMethodBeat.o(96829);
       return;
     }
     int j = this.count;
     int i = 0;
     if (i < j)
     {
-      this.cuM = null;
+      this.djK = null;
       if (paramInt == i)
       {
         if (this.map.size() > i) {
-          this.cuM = ((ImageView)this.map.get(Integer.valueOf(i)));
+          this.djK = ((ImageView)this.map.get(Integer.valueOf(i)));
         }
-        if (this.cuM == null)
+        if (this.djK == null)
         {
-          this.cuM = ((ImageView)View.inflate(this.context, this.zlb, null).findViewById(2131826286));
-          this.map.put(Integer.valueOf(i), this.cuM);
+          this.djK = ((ImageView)View.inflate(this.context, this.FYA, null).findViewById(2131302343));
+          this.map.put(Integer.valueOf(i), this.djK);
         }
-        this.cuM.setSelected(true);
+        this.djK.setSelected(true);
       }
       for (;;)
       {
-        addView(this.cuM);
+        addView(this.djK);
         i += 1;
         break;
         if (this.map.size() > i) {
-          this.cuM = ((ImageView)this.map.get(Integer.valueOf(i)));
+          this.djK = ((ImageView)this.map.get(Integer.valueOf(i)));
         }
-        if (this.cuM == null)
+        if (this.djK == null)
         {
-          this.cuM = ((ImageView)View.inflate(this.context, this.zlb, null).findViewById(2131826286));
-          this.map.put(Integer.valueOf(i), this.cuM);
+          this.djK = ((ImageView)View.inflate(this.context, this.FYA, null).findViewById(2131302343));
+          this.map.put(Integer.valueOf(i), this.djK);
         }
-        this.cuM.setSelected(false);
+        this.djK.setSelected(false);
       }
     }
-    AppMethodBeat.o(37368);
+    AppMethodBeat.o(96829);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingControlView
  * JD-Core Version:    0.7.0.1
  */

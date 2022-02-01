@@ -11,14 +11,14 @@ final class MultiTalkMainUI$7
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(54124);
+    AppMethodBeat.i(114658);
     paramDialogInterface.dismiss();
-    AppMethodBeat.o(54124);
+    AppMethodBeat.o(114658);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.MultiTalkMainUI.7
  * JD-Core Version:    0.7.0.1
  */

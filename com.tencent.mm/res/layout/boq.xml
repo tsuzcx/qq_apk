@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/f40" android:background="@color/lh" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/dg_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/b3">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/f31" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView android:id="@id/ev9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </android.support.design.widget.CoordinatorLayout>
+    <TextView android:textSize="14.0dip" android:gravity="center" android:id="@id/e4d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:text="@string/ccv" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/d42" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip">
+        <ProgressBar android:background="@color/a7c" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:indeterminateDrawable="@drawable/a7e" />
+    </LinearLayout>
+    <ListView android:id="@id/cjs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

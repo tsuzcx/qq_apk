@@ -5,27 +5,27 @@ import org.xwalk.core.Log;
 
 public final class j$b
 {
-  public int BKc;
-  public int BKd;
-  public int BKe;
-  public int BKf;
-  public String BKg;
-  public String BKh;
-  public String xNn;
-  public String xNo;
-  public String xNp;
+  public String Eln;
+  public String Elo;
+  public String Elp;
+  public int IUm;
+  public int IUn;
+  public int IUo;
+  public int IUp;
+  public String IUq;
+  public String IUr;
   
-  public static b c(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4)
+  public static b d(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4)
   {
     k = 1;
-    AppMethodBeat.i(85295);
+    AppMethodBeat.i(154354);
     b localb = new b();
-    localb.xNn = paramString1;
-    localb.BKh = paramString2;
-    localb.BKc = paramInt1;
-    localb.BKe = paramInt2;
-    localb.xNo = paramString3;
-    localb.xNp = paramString4;
+    localb.Eln = paramString1;
+    localb.IUr = paramString2;
+    localb.IUm = paramInt1;
+    localb.IUo = paramInt2;
+    localb.Elo = paramString3;
+    localb.Elp = paramString4;
     if (paramInt1 > 0) {
       for (;;)
       {
@@ -99,33 +99,33 @@ public final class j$b
       Log.e("XWWebView", "getSelectInfo error prefixIndex:" + i + ",suffixIndex:" + paramInt2);
       paramInt2 = 0;
       paramInt1 = 0;
-      localb.BKd = paramInt1;
-      localb.BKf = paramInt2;
-      localb.BKg = (paramString3 + paramString1 + paramString4).substring(paramString3.length() - paramInt1, paramInt2 + (paramString3.length() + paramString1.length()));
-      AppMethodBeat.o(85295);
+      localb.IUn = paramInt1;
+      localb.IUp = paramInt2;
+      localb.IUq = (paramString3 + paramString1 + paramString4).substring(paramString3.length() - paramInt1, paramInt2 + (paramString3.length() + paramString1.length()));
+      AppMethodBeat.o(154354);
       return localb;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(85296);
+    AppMethodBeat.i(154355);
     try
     {
-      String str = "SelectInfo PickedWord:" + this.xNn + ",PrefixText:" + this.xNo + ",SuffixText:" + this.xNp + ",PrefixOffset:" + this.BKc + ",prefixIndex:" + this.BKd + ",SuffixOffset:" + this.BKe + ",SuffixIndex:" + this.BKf + ",ResultPickedWord:" + this.BKh + ",OffsetedPickedWord:" + this.BKg;
-      AppMethodBeat.o(85296);
+      String str = "SelectInfo PickedWord:" + this.Eln + ",PrefixText:" + this.Elo + ",SuffixText:" + this.Elp + ",PrefixOffset:" + this.IUm + ",prefixIndex:" + this.IUn + ",SuffixOffset:" + this.IUo + ",SuffixIndex:" + this.IUp + ",ResultPickedWord:" + this.IUr + ",OffsetedPickedWord:" + this.IUq;
+      AppMethodBeat.o(154355);
       return str;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(85296);
+      AppMethodBeat.o(154355);
     }
     return "SelectInfo toString error";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.xwalk.j.b
  * JD-Core Version:    0.7.0.1
  */

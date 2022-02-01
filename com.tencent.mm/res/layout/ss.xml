@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/sp" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxHeight="@dimen/bb" android:minHeight="@dimen/bc"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/sq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ay5" />
+    <ImageView android:layout_gravity="center" android:id="@id/dov" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" android:maxWidth="@dimen/bb" android:maxHeight="@dimen/bb" android:minWidth="@dimen/bc" android:minHeight="@dimen/bc" />
+    <ImageView android:layout_gravity="bottom|center|left" android:id="@id/cpe" android:paddingLeft="5.0dip" android:paddingBottom="3.0dip" android:layout_width="20.0dip" android:layout_height="20.0dip" />
 </FrameLayout>

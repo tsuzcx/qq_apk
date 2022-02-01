@@ -13,7 +13,12 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class p
 {
-  private static final Set<p> Hs = Collections.newSetFromMap(new WeakHashMap());
+  private static final Set<p> Jh = Collections.newSetFromMap(new WeakHashMap());
+  
+  public <L> bb<L> B(L paramL)
+  {
+    throw new UnsupportedOperationException();
+  }
   
   public abstract ConnectionResult a(TimeUnit paramTimeUnit);
   
@@ -53,11 +58,6 @@ public abstract class p
   }
   
   public abstract boolean isConnected();
-  
-  public <L> bb<L> s(L paramL)
-  {
-    throw new UnsupportedOperationException();
-  }
 }
 
 

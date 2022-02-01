@@ -1,27 +1,28 @@
 package com.tencent.mm.plugin.brandservice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public m createApplication()
   {
-    AppMethodBeat.i(13800);
+    AppMethodBeat.i(5535);
     b localb = new b();
-    AppMethodBeat.o(13800);
+    AppMethodBeat.o(5535);
     return localb;
   }
   
-  public at createSubCore()
+  public aw createSubCore()
   {
     return null;
   }
   
-  public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }

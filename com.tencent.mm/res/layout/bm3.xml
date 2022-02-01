@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/br" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/dm" android:background="@drawable/au" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/h" android:layout_alignParentLeft="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d3" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_quit_webview_icon" android:contentDescription="@string/gh" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/bdj" android:background="@color/bn" android:layout_width="@dimen/bk" android:layout_height="@dimen/hd" />
+    </LinearLayout>
+    <TextView android:ellipsize="end" android:gravity="center_vertical" android:id="@id/gam" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_toLeftOf="@id/dg" android:layout_toRightOf="@id/dm" android:layout_centerVertical="true" style="@style/l6" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dg" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+        <ImageView android:id="@id/df" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/c5" android:src="@raw/actionbar_icon_dark_more" />
+        <TextView android:textColor="@color/bs" android:gravity="center" android:id="@id/dh" android:background="@drawable/au" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/c5" android:text="send" />
+    </LinearLayout>
+</RelativeLayout>

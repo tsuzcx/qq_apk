@@ -10,7 +10,7 @@ public abstract interface b
   
   public abstract boolean isDownloading();
   
-  public abstract boolean jU(Context paramContext);
+  public abstract boolean kZ(Context paramContext);
   
   public abstract void startDownload(Context paramContext, boolean paramBoolean);
   
@@ -18,7 +18,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.x5.sdk.b
  * JD-Core Version:    0.7.0.1
  */

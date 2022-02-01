@@ -7,24 +7,24 @@ import com.tencent.smtt.sdk.WebChromeClient;
 public class b
   extends WebChromeClient
 {
-  public final void dZW()
+  public final void fsO()
   {
-    AppMethodBeat.i(84796);
+    AppMethodBeat.i(153831);
     super.onHideCustomView();
-    AppMethodBeat.o(84796);
+    AppMethodBeat.o(153831);
   }
   
   public View getVideoLoadingProgressView()
   {
-    AppMethodBeat.i(84797);
+    AppMethodBeat.i(153832);
     View localView = super.getVideoLoadingProgressView();
-    AppMethodBeat.o(84797);
+    AppMethodBeat.o(153832);
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.b
  * JD-Core Version:    0.7.0.1
  */

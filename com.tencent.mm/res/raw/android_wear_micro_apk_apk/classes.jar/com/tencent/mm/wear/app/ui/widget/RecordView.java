@@ -14,16 +14,16 @@ import com.tencent.mm.wear.a.b.a;
 public class RecordView
   extends MMCustomSurfaceView
 {
-  private g ail;
-  private b aim;
-  private Bitmap ain;
-  private Bitmap aio;
-  private Paint aip;
-  private Paint aiq;
-  private boolean air;
-  private float ais;
-  private int ait;
-  private int aiu = 0;
+  private g alN;
+  private b alO;
+  private Bitmap alP;
+  private Bitmap alQ;
+  private Paint alR;
+  private Paint alS;
+  private boolean alT;
+  private float alU;
+  private int alV;
+  private int alW = 0;
   private int centerX;
   private int centerY;
   private int height;
@@ -33,40 +33,40 @@ public class RecordView
   public RecordView(Context paramContext)
   {
     super(paramContext);
-    nB();
+    op();
   }
   
   public RecordView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    nB();
+    op();
   }
   
   public RecordView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    nB();
+    op();
   }
   
   private void b(Canvas paramCanvas)
   {
-    this.ail.a(paramCanvas, this.status);
+    this.alN.a(paramCanvas, this.status);
   }
   
-  private void nB()
+  private void op()
   {
     if (isFocusable()) {}
-    for (this.ain = BitmapFactory.decodeResource(getResources(), 2130837603);; this.ain = BitmapFactory.decodeResource(getResources(), 2130837602))
+    for (this.alP = BitmapFactory.decodeResource(getResources(), 2130837603);; this.alP = BitmapFactory.decodeResource(getResources(), 2130837602))
     {
-      this.aio = BitmapFactory.decodeResource(getResources(), 2130837507);
-      this.aip = nE();
-      this.aiq = nE();
-      this.aiq.setStyle(Paint.Style.FILL);
+      this.alQ = BitmapFactory.decodeResource(getResources(), 2130837507);
+      this.alR = os();
+      this.alS = os();
+      this.alS.setStyle(Paint.Style.FILL);
       return;
     }
   }
   
-  private static Paint nE()
+  private static Paint os()
   {
     Paint localPaint = new Paint();
     localPaint.setAntiAlias(true);
@@ -78,15 +78,15 @@ public class RecordView
   
   protected final void a(Canvas paramCanvas)
   {
-    if (!this.air)
+    if (!this.alT)
     {
-      this.air = true;
+      this.alT = true;
       this.width = getMeasuredWidth();
       this.height = getMeasuredHeight();
       this.centerX = (this.width / 2);
       this.centerY = (this.height / 2);
-      this.ais = ((float)Math.pow(this.width * this.width + this.height * this.height, 0.5D));
-      this.ail = new g(this.width, this.height);
+      this.alU = ((float)Math.pow(this.width * this.width + this.height * this.height, 0.5D));
+      this.alN = new g(this.width, this.height);
     }
     paramCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
     switch (this.status)
@@ -105,15 +105,15 @@ public class RecordView
       b(paramCanvas);
       return;
     case 5: 
-      this.ail.a(paramCanvas, this.status);
-      int i = this.centerX - this.aio.getWidth() / 2;
-      int j = this.height - this.aio.getHeight() - 60;
-      paramCanvas.drawArc(new RectF(i - 3, j - 3, this.aio.getWidth() + i + 3, this.aio.getHeight() + j + 3), -90.0F, this.aiu, true, this.aiq);
-      this.aiu += this.ait;
-      if (this.aiu > 370) {
+      this.alN.a(paramCanvas, this.status);
+      int i = this.centerX - this.alQ.getWidth() / 2;
+      int j = this.height - this.alQ.getHeight() - 60;
+      paramCanvas.drawArc(new RectF(i - 3, j - 3, this.alQ.getWidth() + i + 3, this.alQ.getHeight() + j + 3), -90.0F, this.alW, true, this.alS);
+      this.alW += this.alV;
+      if (this.alW > 370) {
         setStatus(6);
       }
-      paramCanvas.drawBitmap(this.aio, i, j, this.aip);
+      paramCanvas.drawBitmap(this.alQ, i, j, this.alR);
       return;
     }
     if (isFocusable())
@@ -121,24 +121,24 @@ public class RecordView
       b(paramCanvas);
       return;
     }
-    this.ail.a(paramCanvas, this.status);
+    this.alN.a(paramCanvas, this.status);
   }
   
   public final void a(b paramb)
   {
-    this.aim = paramb;
+    this.alO = paramb;
   }
   
-  public final void cb(int paramInt)
+  public final void cx(int paramInt)
   {
-    if (this.ail != null) {
-      this.ail.cd(paramInt);
+    if (this.alN != null) {
+      this.alN.cz(paramInt);
     }
   }
   
-  public final void cc(int paramInt)
+  public final void cy(int paramInt)
   {
-    this.ait = paramInt;
+    this.alV = paramInt;
   }
   
   public final int getStatus()
@@ -152,7 +152,7 @@ public class RecordView
     {
       int i = this.status;
       this.status = paramInt;
-      a.aiT.post(new f(this, this.status, i));
+      a.amv.post(new f(this, this.status, i));
     }
   }
 }

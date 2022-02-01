@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/bzg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/ebn" android:background="@color/a6q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a3x" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_alignParentTop="true" />
-    <TextView android:id="@id/awv" android:background="@color/a6q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/e3f" style="@style/lf" />
-    <TextView android:id="@id/ebo" android:background="#cc000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/don" android:layout_width="fill_parent" android:layout_height="0.0dip" android:minHeight="148.0dip" android:layout_weight="1.0">
+        <ImageView android:id="@id/dpm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/confirm_dialog_successful_icon" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dog" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/i" android:textColor="@color/y4" android:gravity="center" android:id="@id/dui" android:padding="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

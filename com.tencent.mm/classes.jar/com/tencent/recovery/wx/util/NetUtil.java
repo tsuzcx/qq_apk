@@ -6,7 +6,14 @@ import android.net.NetworkInfo;
 
 public class NetUtil
 {
-  public static String iX(Context paramContext)
+  private static final String NON_NETWORK = "NOT_NETWORK";
+  private static final String OTHER = "other";
+  private static final String TAG = "Recovery.NetUtil";
+  private static final String WIFI = "WIFI";
+  private static final String _3G = "3G";
+  private static final String _4G = "4G";
+  
+  public static String getCurrentNetWorkStatus(Context paramContext)
   {
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
     if (paramContext == null) {
@@ -33,7 +40,7 @@ public class NetUtil
   
   public static boolean isConnected(Context paramContext)
   {
-    return !iX(paramContext).equals("NOT_NETWORK");
+    return !getCurrentNetWorkStatus(paramContext).equals("NOT_NETWORK");
   }
 }
 

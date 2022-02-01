@@ -9,35 +9,35 @@ import android.widget.SeekBar;
 public class AppCompatSeekBar
   extends SeekBar
 {
-  private final k aaK = new k(this);
+  private final k ahQ = new k(this);
   
   public AppCompatSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130772234);
+    this(paramContext, paramAttributeSet, 2130969430);
   }
   
   public AppCompatSeekBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.aaK.a(paramAttributeSet, paramInt);
+    this.ahQ.a(paramAttributeSet, paramInt);
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    k localk = this.aaK;
-    Drawable localDrawable = localk.aaM;
-    if ((localDrawable != null) && (localDrawable.isStateful()) && (localDrawable.setState(localk.aaL.getDrawableState()))) {
-      localk.aaL.invalidateDrawable(localDrawable);
+    k localk = this.ahQ;
+    Drawable localDrawable = localk.ahS;
+    if ((localDrawable != null) && (localDrawable.isStateful()) && (localDrawable.setState(localk.ahR.getDrawableState()))) {
+      localk.ahR.invalidateDrawable(localDrawable);
     }
   }
   
   public void jumpDrawablesToCurrentState()
   {
     super.jumpDrawablesToCurrentState();
-    k localk = this.aaK;
-    if (localk.aaM != null) {
-      localk.aaM.jumpToCurrentState();
+    k localk = this.ahQ;
+    if (localk.ahS != null) {
+      localk.ahS.jumpToCurrentState();
     }
   }
   
@@ -49,14 +49,14 @@ public class AppCompatSeekBar
       try
       {
         super.onDraw(paramCanvas);
-        k localk = this.aaK;
-        if (localk.aaM != null)
+        k localk = this.ahQ;
+        if (localk.ahS != null)
         {
-          int k = localk.aaL.getMax();
+          int k = localk.ahR.getMax();
           if (k > 1)
           {
-            i = localk.aaM.getIntrinsicWidth();
-            int m = localk.aaM.getIntrinsicHeight();
+            i = localk.ahS.getIntrinsicWidth();
+            int m = localk.ahS.getIntrinsicHeight();
             if (i < 0) {
               break label200;
             }
@@ -64,14 +64,14 @@ public class AppCompatSeekBar
             if (m >= 0) {
               j = m / 2;
             }
-            localk.aaM.setBounds(-i, -j, i, j);
-            float f = (localk.aaL.getWidth() - localk.aaL.getPaddingLeft() - localk.aaL.getPaddingRight()) / k;
+            localk.ahS.setBounds(-i, -j, i, j);
+            float f = (localk.ahR.getWidth() - localk.ahR.getPaddingLeft() - localk.ahR.getPaddingRight()) / k;
             j = paramCanvas.save();
-            paramCanvas.translate(localk.aaL.getPaddingLeft(), localk.aaL.getHeight() / 2);
+            paramCanvas.translate(localk.ahR.getPaddingLeft(), localk.ahR.getHeight() / 2);
             i = 0;
             if (i <= k)
             {
-              localk.aaM.draw(paramCanvas);
+              localk.ahS.draw(paramCanvas);
               paramCanvas.translate(f, 0.0F);
               i += 1;
               continue;

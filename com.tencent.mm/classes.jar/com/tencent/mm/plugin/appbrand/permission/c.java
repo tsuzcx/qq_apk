@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 import org.json.JSONArray;
@@ -12,30 +13,40 @@ import org.json.JSONObject;
 
 public final class c
 {
-  private static Set<String> iBm;
+  private static volatile Set<String> lii;
   
   static
   {
-    AppMethodBeat.i(102245);
+    AppMethodBeat.i(147598);
     HashSet localHashSet = new HashSet();
-    iBm = localHashSet;
+    lii = localHashSet;
     localHashSet.add("operateLivePlayer");
-    iBm.add("operateLivePusher");
-    AppMethodBeat.o(102245);
+    lii.add("operateLivePusher");
+    lii.add("operateXWebLivePlayer");
+    lii.add("operateXWebLivePusher");
+    Collections.addAll(lii, new String[] { "joinVoIPChat", "exitVoIPChat", "onVoIPChatMembersChanged", "onVoIPChatSpeakersChanged", "onVoIPChatInterrupted", "updateVoIPChatMuteConfig", "insertVoIPView", "updateVoIPView", "removeVoIPView" });
+    AppMethodBeat.o(147598);
   }
   
-  static int c(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2)
+  public static void Me(String paramString)
   {
-    AppMethodBeat.i(102244);
-    if ((paramc instanceof v)) {}
-    for (boolean bool = true; !bool; bool = iBm.contains(paramString1))
+    AppMethodBeat.i(169512);
+    lii.add(paramString);
+    AppMethodBeat.o(169512);
+  }
+  
+  static int b(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(147597);
+    if ((paramc instanceof aa)) {}
+    for (boolean bool = true; !bool; bool = lii.contains(paramString1))
     {
-      AppMethodBeat.o(102244);
+      AppMethodBeat.o(147597);
       return -2147483648;
     }
-    if (bo.isNullOrNil(paramString2))
+    if (bt.isNullOrNil(paramString2))
     {
-      AppMethodBeat.o(102244);
+      AppMethodBeat.o(147597);
       return -2147483648;
     }
     try
@@ -44,26 +55,26 @@ public final class c
       bool = paramString2.has("permissionBytes");
       if (!bool)
       {
-        AppMethodBeat.o(102244);
+        AppMethodBeat.o(147597);
         return -2147483648;
       }
       paramString2 = paramString2.getJSONArray("permissionBytes");
       if (paramString2.length() < 3)
       {
-        ab.w("MicroMsg.AppRuntimeApiPermissionController", "permissionBytes length:%d invalid", new Object[] { Integer.valueOf(paramString2.length()) });
-        AppMethodBeat.o(102244);
+        ad.w("MicroMsg.AppRuntimeApiPermissionController", "permissionBytes length:%d invalid", new Object[] { Integer.valueOf(paramString2.length()) });
+        AppMethodBeat.o(147597);
         return -2147483648;
       }
     }
     catch (Exception paramc)
     {
-      ab.e("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy exp:%s", new Object[] { paramc.getMessage() });
-      AppMethodBeat.o(102244);
+      ad.e("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy exp:%s", new Object[] { paramc.getMessage() });
+      AppMethodBeat.o(147597);
       return -2147483648;
     }
     int i;
-    if ((paramc instanceof r)) {
-      switch (c.1.gYx[((r)paramc).getRuntime().gPL.gYj.awr().ordinal()])
+    if ((paramc instanceof q)) {
+      switch (1.iRi[((q)paramc).getRuntime().iDK.iQP.aQO().ordinal()])
       {
       default: 
         i = paramString2.optInt(0, -2147483648);
@@ -71,8 +82,8 @@ public final class c
     }
     for (;;)
     {
-      ab.i("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy api:%s checkRet:%d", new Object[] { paramString1, Integer.valueOf(i) });
-      AppMethodBeat.o(102244);
+      ad.i("MicroMsg.AppRuntimeApiPermissionController", "checkWithSkipStrategy api:%s checkRet:%d", new Object[] { paramString1, Integer.valueOf(i) });
+      AppMethodBeat.o(147597);
       return i;
       i = paramString2.optInt(2, -2147483648);
       continue;
@@ -84,7 +95,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.c
  * JD-Core Version:    0.7.0.1
  */

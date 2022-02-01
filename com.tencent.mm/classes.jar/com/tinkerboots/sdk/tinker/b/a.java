@@ -20,55 +20,55 @@ public final class a
   
   public final void a(File paramFile, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(65536);
+    AppMethodBeat.i(3443);
     super.a(paramFile, paramInt, paramLong);
     Looper.getMainLooper();
     Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler()
     {
       public final boolean queueIdle()
       {
-        AppMethodBeat.i(65535);
-        c.jt(a.this.context).dWy();
-        AppMethodBeat.o(65535);
+        AppMethodBeat.i(3442);
+        c.kN(a.this.context).fpd();
+        AppMethodBeat.o(3442);
         return false;
       }
     });
-    AppMethodBeat.o(65536);
+    AppMethodBeat.o(3443);
   }
   
   public final void a(File paramFile, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(65539);
+    AppMethodBeat.i(3446);
     super.a(paramFile, paramInt, paramBoolean);
     if (paramInt == 1)
     {
-      paramFile = com.tencent.tinker.lib.e.a.jo(this.context).BsT;
-      if ((paramFile.BsY != null) && ("00000000000000000000000000000000".equals(paramFile.BsY)))
+      paramFile = com.tencent.tinker.lib.e.a.kI(this.context).IEQ;
+      if ((paramFile.IEV != null) && ("00000000000000000000000000000000".equals(paramFile.IEV)))
       {
         com.tencent.tinker.lib.f.a.e("Tinker.ServerLoadReporter", "Roll back patch when restarting main process, restart all other process also!", new Object[0]);
-        ShareTinkerInternals.jJ(this.context);
+        ShareTinkerInternals.killAllOtherProcess(this.context);
       }
     }
-    AppMethodBeat.o(65539);
+    AppMethodBeat.o(3446);
   }
   
   public final void a(String paramString1, String paramString2, File paramFile, String paramString3)
   {
-    AppMethodBeat.i(65538);
+    AppMethodBeat.i(3445);
     super.a(paramString1, paramString2, paramFile, paramString3);
-    AppMethodBeat.o(65538);
+    AppMethodBeat.o(3445);
   }
   
   public final void a(Throwable paramThrowable, int paramInt)
   {
-    AppMethodBeat.i(65537);
+    AppMethodBeat.i(3444);
     super.a(paramThrowable, paramInt);
-    AppMethodBeat.o(65537);
+    AppMethodBeat.o(3444);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tinkerboots.sdk.tinker.b.a
  * JD-Core Version:    0.7.0.1
  */

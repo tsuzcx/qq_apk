@@ -4,170 +4,168 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.g.a.ch;
-import com.tencent.mm.g.a.ch.a;
-import com.tencent.mm.g.a.ch.b;
-import com.tencent.mm.g.a.cm;
-import com.tencent.mm.g.a.cm.a;
-import com.tencent.mm.g.a.cm.b;
-import com.tencent.mm.g.a.gi;
-import com.tencent.mm.g.a.nn;
-import com.tencent.mm.g.a.nn.b;
-import com.tencent.mm.g.a.sm;
-import com.tencent.mm.g.a.sm.b;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.a.cn;
+import com.tencent.mm.g.a.cn.a;
+import com.tencent.mm.g.a.cn.b;
+import com.tencent.mm.g.a.cs;
+import com.tencent.mm.g.a.cs.a;
+import com.tencent.mm.g.a.cs.b;
+import com.tencent.mm.g.a.gs;
+import com.tencent.mm.g.a.pa;
+import com.tencent.mm.g.a.pa.b;
+import com.tencent.mm.g.a.uh;
+import com.tencent.mm.g.a.uh.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.v.b;
+import com.tencent.mm.model.y;
+import com.tencent.mm.model.y.b;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.fav.a.ad;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class FavUrlTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<FavUrlTask> CREATOR;
+  public boolean ASK;
+  public boolean ASL;
   public int actionType;
-  public boolean cmX;
-  public Bundle mEJ;
+  public Bundle dow;
+  public boolean result;
   public int ret;
   public int type;
-  public boolean uRc;
-  public boolean uRd;
   
   static
   {
-    AppMethodBeat.i(5978);
-    CREATOR = new FavUrlTask.1();
-    AppMethodBeat.o(5978);
+    AppMethodBeat.i(78192);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(78192);
   }
   
   public FavUrlTask() {}
   
   private FavUrlTask(Parcel paramParcel)
   {
-    AppMethodBeat.i(5977);
-    f(paramParcel);
-    AppMethodBeat.o(5977);
+    AppMethodBeat.i(78191);
+    e(paramParcel);
+    AppMethodBeat.o(78191);
   }
   
-  public final void ata()
+  public final void aEz()
   {
-    AppMethodBeat.i(5974);
+    AppMethodBeat.i(78188);
     switch (this.actionType)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(5974);
+      AppMethodBeat.o(78188);
       return;
       Object localObject2;
       int i;
       Object localObject3;
       boolean bool;
-      if (this.mEJ != null)
+      if (this.dow != null)
       {
-        long l = this.mEJ.getLong("msg_id", -9223372036854775808L);
-        localObject2 = this.mEJ.getString("sns_local_id");
-        i = this.mEJ.getInt("news_svr_id", 0);
-        localObject3 = this.mEJ.getString("news_svr_tweetid");
-        localObject1 = new cm();
+        long l = this.dow.getLong("msg_id", -9223372036854775808L);
+        localObject2 = this.dow.getString("sns_local_id");
+        i = this.dow.getInt("news_svr_id", 0);
+        localObject3 = this.dow.getString("news_svr_tweetid");
+        localObject1 = new cs();
         if (-9223372036854775808L == l) {
-          break label369;
+          break label367;
         }
-        ((cm)localObject1).cpR.cpV = this.mEJ.getInt("message_index", 0);
-        bool = ((ad)g.E(ad.class)).a((cm)localObject1, l);
+        ((cs)localObject1).deQ.deU = this.dow.getInt("message_index", 0);
+        bool = ((com.tencent.mm.plugin.fav.a.ad)g.ab(com.tencent.mm.plugin.fav.a.ad.class)).a((cs)localObject1, l);
         if (!bool) {
-          break label530;
+          break label527;
         }
-        Object localObject4 = bo.nullAsNil(this.mEJ.getString("prePublishId"));
-        localObject2 = v.oQ((String)localObject4);
-        localObject3 = v.aae().z((String)localObject2, true);
-        ((v.b)localObject3).i("sendAppMsgScene", Integer.valueOf(2));
-        ((v.b)localObject3).i("preChatName", this.mEJ.getString("preChatName"));
-        ((v.b)localObject3).i("preMsgIndex", Integer.valueOf(this.mEJ.getInt("preMsgIndex")));
-        ((v.b)localObject3).i("prePublishId", localObject4);
-        ((v.b)localObject3).i("preUsername", this.mEJ.getString("preUsername"));
-        ((v.b)localObject3).i("getA8KeyScene", this.mEJ.getString("getA8KeyScene"));
-        ((v.b)localObject3).i("referUrl", this.mEJ.getString("referUrl"));
-        localObject4 = this.mEJ.getBundle("jsapiargs");
+        Object localObject4 = bt.nullAsNil(this.dow.getString("prePublishId"));
+        localObject2 = y.tD((String)localObject4);
+        localObject3 = y.arz().E((String)localObject2, true);
+        ((y.b)localObject3).m("sendAppMsgScene", Integer.valueOf(2));
+        ((y.b)localObject3).m("preChatName", this.dow.getString("preChatName"));
+        ((y.b)localObject3).m("preMsgIndex", Integer.valueOf(this.dow.getInt("preMsgIndex")));
+        ((y.b)localObject3).m("prePublishId", localObject4);
+        ((y.b)localObject3).m("preUsername", this.dow.getString("preUsername"));
+        ((y.b)localObject3).m("getA8KeyScene", this.dow.getString("getA8KeyScene"));
+        ((y.b)localObject3).m("referUrl", this.dow.getString("referUrl"));
+        localObject4 = this.dow.getBundle("jsapiargs");
         if (localObject4 != null) {
-          ((v.b)localObject3).i("adExtStr", ((Bundle)localObject4).getString("key_snsad_statextstr"));
+          ((y.b)localObject3).m("adExtStr", ((Bundle)localObject4).getString("key_snsad_statextstr"));
         }
-        ((cm)localObject1).cpR.cpW = ((String)localObject2);
-        a.ymk.l((b)localObject1);
+        ((cs)localObject1).deQ.sessionId = ((String)localObject2);
+        a.ESL.l((b)localObject1);
       }
       for (;;)
       {
-        this.ret = ((cm)localObject1).cpS.ret;
-        AppMethodBeat.o(5974);
+        this.ret = ((cs)localObject1).deR.ret;
+        AppMethodBeat.o(78188);
         return;
-        label369:
-        if (!bo.isNullOrNil((String)localObject2))
+        label367:
+        if (!bt.isNullOrNil((String)localObject2))
         {
-          localObject3 = new sm();
-          ((sm)localObject3).cIK.cIN = ((String)localObject2);
-          ((sm)localObject3).cIK.cIO = ((cm)localObject1);
-          ((sm)localObject3).cIK.url = this.mEJ.getString("rawUrl");
-          a.ymk.l((b)localObject3);
-          bool = ((sm)localObject3).cIL.cpz;
+          localObject3 = new uh();
+          ((uh)localObject3).dzB.dzE = ((String)localObject2);
+          ((uh)localObject3).dzB.dzF = ((cs)localObject1);
+          ((uh)localObject3).dzB.url = this.dow.getString("rawUrl");
+          a.ESL.l((b)localObject3);
+          bool = ((uh)localObject3).dzC.dew;
           break;
         }
         if (i != 0)
         {
-          localObject2 = new nn();
-          ((nn)localObject2).cDX.opType = 3;
-          ((nn)localObject2).cDX.cDZ = ((cm)localObject1);
-          ((nn)localObject2).cDX.cEa = i;
-          ((nn)localObject2).cDX.cEb = ((String)localObject3);
-          a.ymk.l((b)localObject2);
-          bool = ((nn)localObject2).cDY.cpz;
+          localObject2 = new pa();
+          ((pa)localObject2).duz.opType = 3;
+          ((pa)localObject2).duz.duB = ((cs)localObject1);
+          ((pa)localObject2).duz.duC = i;
+          ((pa)localObject2).duz.duD = ((String)localObject3);
+          a.ESL.l((b)localObject2);
+          bool = ((pa)localObject2).duA.dew;
           break;
         }
-        this.uRc = true;
-        AppMethodBeat.o(5974);
+        this.ASK = true;
+        AppMethodBeat.o(78188);
         return;
-        label530:
-        if (((cm)localObject1).cpR.cpX == 0) {
-          ((cm)localObject1).cpR.cpX = 2131299721;
+        label527:
+        if (((cs)localObject1).deQ.deV == 0) {
+          ((cs)localObject1).deQ.deV = 2131758893;
         }
-        a.ymk.l((b)localObject1);
+        a.ESL.l((b)localObject1);
       }
-      Object localObject1 = new gi();
-      ((gi)localObject1).cuX.type = 35;
-      a.ymk.l((b)localObject1);
-      AppMethodBeat.o(5974);
+      Object localObject1 = new gs();
+      ((gs)localObject1).dkc.type = 35;
+      a.ESL.l((b)localObject1);
+      AppMethodBeat.o(78188);
       return;
-      this.uRd = d.ahR("favorite");
-      AppMethodBeat.o(5974);
+      this.ASL = d.axB("favorite");
+      AppMethodBeat.o(78188);
       return;
-      localObject1 = new ch();
-      ((ch)localObject1).cpK.cpM = this.mEJ.getLong("fav_local_id", -1L);
-      a.ymk.l((b)localObject1);
-      ab.i("MicroMsg.FavUrlTask", "do del fav web url, local id %d, result %B", new Object[] { Long.valueOf(((ch)localObject1).cpK.cpM), Boolean.valueOf(((ch)localObject1).cpL.cpz) });
-      this.cmX = ((ch)localObject1).cpL.cpz;
+      localObject1 = new cn();
+      ((cn)localObject1).deJ.deL = this.dow.getLong("fav_local_id", -1L);
+      a.ESL.l((b)localObject1);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FavUrlTask", "do del fav web url, local id %d, result %B", new Object[] { Long.valueOf(((cn)localObject1).deJ.deL), Boolean.valueOf(((cn)localObject1).deK.dew) });
+      this.result = ((cn)localObject1).deK.dew;
     }
   }
   
-  public final void f(Parcel paramParcel)
+  public final void e(Parcel paramParcel)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(5975);
+    AppMethodBeat.i(78189);
     this.actionType = paramParcel.readInt();
-    this.mEJ = paramParcel.readBundle();
+    this.dow = paramParcel.readBundle();
     if (paramParcel.readByte() == 1)
     {
       bool1 = true;
-      this.uRc = bool1;
+      this.ASK = bool1;
       if (paramParcel.readByte() != 1) {
         break label97;
       }
       bool1 = true;
       label49:
-      this.cmX = bool1;
+      this.result = bool1;
       this.ret = paramParcel.readInt();
       this.type = paramParcel.readInt();
       if (paramParcel.readByte() != 1) {
@@ -178,8 +176,8 @@ public class FavUrlTask
     label102:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.uRd = bool1;
-      AppMethodBeat.o(5975);
+      this.ASL = bool1;
+      AppMethodBeat.o(78189);
       return;
       bool1 = false;
       break;
@@ -191,14 +189,14 @@ public class FavUrlTask
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(5976);
+    AppMethodBeat.i(78190);
     paramParcel.writeInt(this.actionType);
-    paramParcel.writeBundle(this.mEJ);
-    if (this.uRc)
+    paramParcel.writeBundle(this.dow);
+    if (this.ASK)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.cmX) {
+      if (!this.result) {
         break label97;
       }
       paramInt = 1;
@@ -206,7 +204,7 @@ public class FavUrlTask
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeInt(this.ret);
       paramParcel.writeInt(this.type);
-      if (!this.uRd) {
+      if (!this.ASL) {
         break label102;
       }
     }
@@ -215,7 +213,7 @@ public class FavUrlTask
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      AppMethodBeat.o(5976);
+      AppMethodBeat.o(78190);
       return;
       paramInt = 0;
       break;
@@ -226,7 +224,7 @@ public class FavUrlTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.FavUrlTask
  * JD-Core Version:    0.7.0.1
  */

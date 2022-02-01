@@ -2,10 +2,18 @@ package android.support.v7.widget;
 
 public final class n
 {
-  public int sA;
-  public boolean sB;
-  public boolean sC;
-  public boolean sD;
+  public int uq;
+  public boolean ur;
+  public boolean us;
+  public boolean ut;
+  
+  final void df()
+  {
+    this.uq = 0;
+    this.ur = false;
+    this.us = false;
+    this.ut = false;
+  }
 }
 
 

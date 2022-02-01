@@ -3,43 +3,57 @@ package android.support.design.internal;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.content.res.Resources.Theme;
+import android.graphics.drawable.Drawable;
 import android.support.transition.AutoTransition;
 import android.support.transition.TransitionSet;
-import android.support.v4.e.k.a;
-import android.support.v4.e.k.c;
+import android.support.v4.e.l.a;
+import android.support.v4.e.l.c;
 import android.support.v4.view.b.b;
 import android.support.v4.view.t;
+import android.support.v7.c.a.a;
 import android.support.v7.view.menu.h;
 import android.support.v7.view.menu.j;
 import android.support.v7.view.menu.p;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import java.util.ArrayList;
 
 public class BottomNavigationMenuView
   extends ViewGroup
   implements p
 {
-  private boolean dU = true;
-  final TransitionSet eb;
-  private final int ec;
-  private final int ed;
-  private final int ee;
-  private final int ef;
-  private final k.a<BottomNavigationItemView> eg = new k.c(5);
-  BottomNavigationItemView[] eh;
-  int ei = 0;
-  int ej = 0;
-  private ColorStateList ek;
-  private ColorStateList el;
-  private int em;
-  private int[] eo;
-  BottomNavigationPresenter ep;
-  h eq;
-  private final View.OnClickListener mOnClickListener;
+  private static final int[] gZ = { 16842912 };
+  private static final int[] hl = { -16842910 };
+  private ColorStateList hA;
+  private final ColorStateList hB;
+  private int hC;
+  private int hD;
+  private Drawable hE;
+  private int hF;
+  private int[] hG;
+  BottomNavigationPresenter hH;
+  h hI;
+  int he;
+  final TransitionSet hm;
+  private final int hn;
+  private final int ho;
+  private final int hp;
+  private final int hq;
+  private final int hr;
+  private final View.OnClickListener hs;
+  private final l.a<BottomNavigationItemView> ht = new l.c(5);
+  public boolean hu;
+  BottomNavigationItemView[] hv;
+  int hw = 0;
+  int hx = 0;
+  private ColorStateList hy;
+  private int hz;
   
   public BottomNavigationMenuView(Context paramContext)
   {
@@ -50,22 +64,46 @@ public class BottomNavigationMenuView
   {
     super(paramContext, paramAttributeSet);
     paramContext = getResources();
-    this.ec = paramContext.getDimensionPixelSize(2131428282);
-    this.ed = paramContext.getDimensionPixelSize(2131428283);
-    this.ee = paramContext.getDimensionPixelSize(2131428278);
-    this.ef = paramContext.getDimensionPixelSize(2131428281);
-    this.eb = new AutoTransition();
-    this.eb.U(0);
-    this.eb.f(115L);
-    this.eb.b(new b());
-    this.eb.d(new e());
-    this.mOnClickListener = new BottomNavigationMenuView.1(this);
-    this.eo = new int[5];
+    this.hn = paramContext.getDimensionPixelSize(2131166099);
+    this.ho = paramContext.getDimensionPixelSize(2131166100);
+    this.hp = paramContext.getDimensionPixelSize(2131166093);
+    this.hq = paramContext.getDimensionPixelSize(2131166094);
+    this.hr = paramContext.getDimensionPixelSize(2131166097);
+    this.hB = bf();
+    this.hm = new AutoTransition();
+    this.hm.ao(0);
+    this.hm.f(115L);
+    this.hm.c(new b());
+    this.hm.c(new e());
+    this.hs = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        paramAnonymousView = ((BottomNavigationItemView)paramAnonymousView).getItemData();
+        if (!BottomNavigationMenuView.b(BottomNavigationMenuView.this).a(paramAnonymousView, BottomNavigationMenuView.a(BottomNavigationMenuView.this), 0)) {
+          paramAnonymousView.setChecked(true);
+        }
+      }
+    };
+    this.hG = new int[5];
+  }
+  
+  static boolean f(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == -1) {
+      if (paramInt2 <= 3) {}
+    }
+    while (paramInt1 == 0)
+    {
+      return true;
+      return false;
+    }
+    return false;
   }
   
   private BottomNavigationItemView getNewItem()
   {
-    BottomNavigationItemView localBottomNavigationItemView2 = (BottomNavigationItemView)this.eg.acquire();
+    BottomNavigationItemView localBottomNavigationItemView2 = (BottomNavigationItemView)this.ht.acquire();
     BottomNavigationItemView localBottomNavigationItemView1 = localBottomNavigationItemView2;
     if (localBottomNavigationItemView2 == null) {
       localBottomNavigationItemView1 = new BottomNavigationItemView(getContext());
@@ -75,79 +113,136 @@ public class BottomNavigationMenuView
   
   public final void a(h paramh)
   {
-    this.eq = paramh;
+    this.hI = paramh;
   }
   
-  public final void aF()
+  public final ColorStateList bf()
+  {
+    Object localObject = new TypedValue();
+    if (!getContext().getTheme().resolveAttribute(16842808, (TypedValue)localObject, true)) {}
+    ColorStateList localColorStateList;
+    do
+    {
+      return null;
+      localColorStateList = a.m(getContext(), ((TypedValue)localObject).resourceId);
+    } while (!getContext().getTheme().resolveAttribute(2130968815, (TypedValue)localObject, true));
+    int i = ((TypedValue)localObject).data;
+    int j = localColorStateList.getDefaultColor();
+    localObject = hl;
+    int[] arrayOfInt1 = gZ;
+    int[] arrayOfInt2 = EMPTY_STATE_SET;
+    int k = localColorStateList.getColorForState(hl, j);
+    return new ColorStateList(new int[][] { localObject, arrayOfInt1, arrayOfInt2 }, new int[] { k, i, j });
+  }
+  
+  public final void bg()
   {
     removeAllViews();
     Object localObject1;
-    int i;
-    if (this.eh != null)
+    if (this.hv != null)
     {
-      localObject1 = this.eh;
+      localObject1 = this.hv;
       int j = localObject1.length;
       i = 0;
       while (i < j)
       {
         Object localObject2 = localObject1[i];
-        this.eg.release(localObject2);
+        if (localObject2 != null) {
+          this.ht.release(localObject2);
+        }
         i += 1;
       }
     }
-    if (this.eq.size() == 0)
+    if (this.hI.size() == 0)
     {
-      this.ei = 0;
-      this.ej = 0;
-      this.eh = null;
+      this.hw = 0;
+      this.hx = 0;
+      this.hv = null;
       return;
     }
-    this.eh = new BottomNavigationItemView[this.eq.size()];
-    if (this.eq.size() > 3) {}
-    for (boolean bool = true;; bool = false)
+    this.hv = new BottomNavigationItemView[this.hI.size()];
+    boolean bool = f(this.he, this.hI.hx().size());
+    int i = 0;
+    if (i < this.hI.size())
     {
-      this.dU = bool;
-      i = 0;
-      while (i < this.eq.size())
+      this.hH.hL = true;
+      this.hI.getItem(i).setCheckable(true);
+      this.hH.hL = false;
+      localObject1 = getNewItem();
+      this.hv[i] = localObject1;
+      ((BottomNavigationItemView)localObject1).setIconTintList(this.hy);
+      ((BottomNavigationItemView)localObject1).setIconSize(this.hz);
+      ((BottomNavigationItemView)localObject1).setTextColor(this.hB);
+      ((BottomNavigationItemView)localObject1).setTextAppearanceInactive(this.hC);
+      ((BottomNavigationItemView)localObject1).setTextAppearanceActive(this.hD);
+      ((BottomNavigationItemView)localObject1).setTextColor(this.hA);
+      if (this.hE != null) {
+        ((BottomNavigationItemView)localObject1).setItemBackground(this.hE);
+      }
+      for (;;)
       {
-        this.ep.et = true;
-        this.eq.getItem(i).setCheckable(true);
-        this.ep.et = false;
-        localObject1 = getNewItem();
-        this.eh[i] = localObject1;
-        ((BottomNavigationItemView)localObject1).setIconTintList(this.ek);
-        ((BottomNavigationItemView)localObject1).setTextColor(this.el);
-        ((BottomNavigationItemView)localObject1).setItemBackground(this.em);
-        ((BottomNavigationItemView)localObject1).setShiftingMode(this.dU);
-        ((BottomNavigationItemView)localObject1).a((j)this.eq.getItem(i));
+        ((BottomNavigationItemView)localObject1).setShifting(bool);
+        ((BottomNavigationItemView)localObject1).setLabelVisibilityMode(this.he);
+        ((BottomNavigationItemView)localObject1).a((j)this.hI.getItem(i));
         ((BottomNavigationItemView)localObject1).setItemPosition(i);
-        ((BottomNavigationItemView)localObject1).setOnClickListener(this.mOnClickListener);
+        ((BottomNavigationItemView)localObject1).setOnClickListener(this.hs);
         addView((View)localObject1);
         i += 1;
+        break;
+        ((BottomNavigationItemView)localObject1).setItemBackground(this.hF);
       }
     }
-    this.ej = Math.min(this.eq.size() - 1, this.ej);
-    this.eq.getItem(this.ej).setChecked(true);
+    this.hx = Math.min(this.hI.size() - 1, this.hx);
+    this.hI.getItem(this.hx).setChecked(true);
   }
   
   public ColorStateList getIconTintList()
   {
-    return this.ek;
+    return this.hy;
   }
   
+  public Drawable getItemBackground()
+  {
+    if ((this.hv != null) && (this.hv.length > 0)) {
+      return this.hv[0].getBackground();
+    }
+    return this.hE;
+  }
+  
+  @Deprecated
   public int getItemBackgroundRes()
   {
-    return this.em;
+    return this.hF;
+  }
+  
+  public int getItemIconSize()
+  {
+    return this.hz;
+  }
+  
+  public int getItemTextAppearanceActive()
+  {
+    return this.hD;
+  }
+  
+  public int getItemTextAppearanceInactive()
+  {
+    return this.hC;
   }
   
   public ColorStateList getItemTextColor()
   {
-    return this.el;
+    return this.hA;
+  }
+  
+  public int getLabelVisibilityMode()
+  {
+    return this.he;
   }
   
   public int getSelectedItemId()
   {
-    return this.ei;
+    return this.hw;
   }
   
   public int getWindowAnimations()
@@ -168,7 +263,7 @@ public class BottomNavigationMenuView
       paramInt3 = paramInt2;
       if (localView.getVisibility() != 8)
       {
-        if (t.T(this) != 1) {
+        if (t.Y(this) != 1) {
           break label97;
         }
         localView.layout(j - paramInt2 - localView.getMeasuredWidth(), 0, j - paramInt2, paramInt4);
@@ -187,91 +282,132 @@ public class BottomNavigationMenuView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    paramInt2 = View.MeasureSpec.getSize(paramInt1);
-    int j = getChildCount();
-    int n = View.MeasureSpec.makeMeasureSpec(this.ef, 1073741824);
-    int k;
-    int m;
+    paramInt2 = 1;
+    int i = 1;
+    int i1 = View.MeasureSpec.getSize(paramInt1);
+    int j = this.hI.hx().size();
+    int m = getChildCount();
+    int n = View.MeasureSpec.makeMeasureSpec(this.hr, 1073741824);
     Object localObject;
-    int i;
-    if (this.dU)
+    label158:
+    int k;
+    if ((f(this.he, j)) && (this.hu))
     {
-      paramInt1 = j - 1;
-      k = Math.min(paramInt2 - this.ed * paramInt1, this.ee);
-      m = Math.min((paramInt2 - k) / paramInt1, this.ec);
-      paramInt1 = paramInt2 - k - paramInt1 * m;
-      paramInt2 = 0;
-      if (paramInt2 >= j) {
-        break label228;
-      }
-      localObject = this.eo;
-      if (paramInt2 == this.ej)
+      localObject = getChildAt(this.hx);
+      paramInt2 = this.hq;
+      paramInt1 = paramInt2;
+      if (((View)localObject).getVisibility() != 8)
       {
-        i = k;
-        label102:
+        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(this.hp, -2147483648), n);
+        paramInt1 = Math.max(paramInt2, ((View)localObject).getMeasuredWidth());
+      }
+      if (((View)localObject).getVisibility() != 8)
+      {
+        paramInt2 = 1;
+        paramInt2 = j - paramInt2;
+        j = Math.min(i1 - this.ho * paramInt2, Math.min(paramInt1, this.hp));
+        if (paramInt2 != 0) {
+          break label264;
+        }
+        paramInt1 = i;
+        k = Math.min((i1 - j) / paramInt1, this.hn);
+        paramInt1 = i1 - j - paramInt2 * k;
+        paramInt2 = 0;
+        label187:
+        if (paramInt2 >= m) {
+          break label396;
+        }
+        if (getChildAt(paramInt2).getVisibility() == 8) {
+          break label275;
+        }
+        localObject = this.hG;
+        if (paramInt2 != this.hx) {
+          break label269;
+        }
+        i = j;
+        label223:
         localObject[paramInt2] = i;
         if (paramInt1 <= 0) {
-          break label333;
+          break label282;
         }
-        localObject = this.eo;
+        localObject = this.hG;
         localObject[paramInt2] += 1;
         paramInt1 -= 1;
       }
+      label264:
+      label269:
+      label275:
+      label282:
+      for (;;)
+      {
+        paramInt2 += 1;
+        break label187;
+        paramInt2 = 0;
+        break;
+        paramInt1 = paramInt2;
+        break label158;
+        i = k;
+        break label223;
+        this.hG[paramInt2] = 0;
+      }
     }
-    label333:
-    for (;;)
+    else
     {
-      paramInt2 += 1;
-      break;
-      i = m;
-      break label102;
-      if (j == 0) {}
-      for (paramInt1 = 1;; paramInt1 = j)
+      if (j == 0)
       {
-        k = Math.min(paramInt2 / paramInt1, this.ee);
-        paramInt2 -= k * j;
+        paramInt1 = paramInt2;
+        k = Math.min(i1 / paramInt1, this.hp);
+        paramInt2 = i1 - k * j;
         paramInt1 = 0;
-        while (paramInt1 < j)
-        {
-          this.eo[paramInt1] = k;
-          i = paramInt2;
-          if (paramInt2 > 0)
-          {
-            localObject = this.eo;
-            localObject[paramInt1] += 1;
-            i = paramInt2 - 1;
-          }
-          paramInt1 += 1;
-          paramInt2 = i;
+        label316:
+        if (paramInt1 >= m) {
+          break label396;
         }
-      }
-      label228:
-      paramInt1 = 0;
-      for (paramInt2 = 0; paramInt1 < j; paramInt2 = i)
-      {
-        localObject = getChildAt(paramInt1);
+        if (getChildAt(paramInt1).getVisibility() == 8) {
+          break label384;
+        }
+        this.hG[paramInt1] = k;
         i = paramInt2;
-        if (((View)localObject).getVisibility() != 8)
+        if (paramInt2 > 0)
         {
-          ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(this.eo[paramInt1], 1073741824), n);
-          ((View)localObject).getLayoutParams().width = ((View)localObject).getMeasuredWidth();
-          i = paramInt2 + ((View)localObject).getMeasuredWidth();
+          localObject = this.hG;
+          localObject[paramInt1] += 1;
         }
-        paramInt1 += 1;
       }
-      setMeasuredDimension(View.resolveSizeAndState(paramInt2, View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824), 0), View.resolveSizeAndState(this.ef, n, 0));
-      return;
+      for (i = paramInt2 - 1;; i = paramInt2)
+      {
+        paramInt1 += 1;
+        paramInt2 = i;
+        break label316;
+        paramInt1 = j;
+        break;
+        label384:
+        this.hG[paramInt1] = 0;
+      }
     }
+    label396:
+    paramInt1 = 0;
+    for (paramInt2 = 0; paramInt1 < m; paramInt2 = i)
+    {
+      localObject = getChildAt(paramInt1);
+      i = paramInt2;
+      if (((View)localObject).getVisibility() != 8)
+      {
+        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(this.hG[paramInt1], 1073741824), n);
+        ((View)localObject).getLayoutParams().width = ((View)localObject).getMeasuredWidth();
+        i = paramInt2 + ((View)localObject).getMeasuredWidth();
+      }
+      paramInt1 += 1;
+    }
+    setMeasuredDimension(View.resolveSizeAndState(paramInt2, View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824), 0), View.resolveSizeAndState(this.hr, n, 0));
   }
   
   public void setIconTintList(ColorStateList paramColorStateList)
   {
-    this.ek = paramColorStateList;
-    if (this.eh == null) {}
-    for (;;)
+    this.hy = paramColorStateList;
+    if (this.hv != null)
     {
-      return;
-      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.eh;
+      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.hv;
       int j = arrayOfBottomNavigationItemView.length;
       int i = 0;
       while (i < j)
@@ -282,14 +418,28 @@ public class BottomNavigationMenuView
     }
   }
   
+  public void setItemBackground(Drawable paramDrawable)
+  {
+    this.hE = paramDrawable;
+    if (this.hv != null)
+    {
+      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.hv;
+      int j = arrayOfBottomNavigationItemView.length;
+      int i = 0;
+      while (i < j)
+      {
+        arrayOfBottomNavigationItemView[i].setItemBackground(paramDrawable);
+        i += 1;
+      }
+    }
+  }
+  
   public void setItemBackgroundRes(int paramInt)
   {
-    this.em = paramInt;
-    if (this.eh == null) {}
-    for (;;)
+    this.hF = paramInt;
+    if (this.hv != null)
     {
-      return;
-      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.eh;
+      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.hv;
       int j = arrayOfBottomNavigationItemView.length;
       int i = 0;
       while (i < j)
@@ -300,14 +450,73 @@ public class BottomNavigationMenuView
     }
   }
   
+  public void setItemHorizontalTranslationEnabled(boolean paramBoolean)
+  {
+    this.hu = paramBoolean;
+  }
+  
+  public void setItemIconSize(int paramInt)
+  {
+    this.hz = paramInt;
+    if (this.hv != null)
+    {
+      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.hv;
+      int j = arrayOfBottomNavigationItemView.length;
+      int i = 0;
+      while (i < j)
+      {
+        arrayOfBottomNavigationItemView[i].setIconSize(paramInt);
+        i += 1;
+      }
+    }
+  }
+  
+  public void setItemTextAppearanceActive(int paramInt)
+  {
+    this.hD = paramInt;
+    if (this.hv != null)
+    {
+      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.hv;
+      int j = arrayOfBottomNavigationItemView.length;
+      int i = 0;
+      while (i < j)
+      {
+        BottomNavigationItemView localBottomNavigationItemView = arrayOfBottomNavigationItemView[i];
+        localBottomNavigationItemView.setTextAppearanceActive(paramInt);
+        if (this.hA != null) {
+          localBottomNavigationItemView.setTextColor(this.hA);
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public void setItemTextAppearanceInactive(int paramInt)
+  {
+    this.hC = paramInt;
+    if (this.hv != null)
+    {
+      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.hv;
+      int j = arrayOfBottomNavigationItemView.length;
+      int i = 0;
+      while (i < j)
+      {
+        BottomNavigationItemView localBottomNavigationItemView = arrayOfBottomNavigationItemView[i];
+        localBottomNavigationItemView.setTextAppearanceInactive(paramInt);
+        if (this.hA != null) {
+          localBottomNavigationItemView.setTextColor(this.hA);
+        }
+        i += 1;
+      }
+    }
+  }
+  
   public void setItemTextColor(ColorStateList paramColorStateList)
   {
-    this.el = paramColorStateList;
-    if (this.eh == null) {}
-    for (;;)
+    this.hA = paramColorStateList;
+    if (this.hv != null)
     {
-      return;
-      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.eh;
+      BottomNavigationItemView[] arrayOfBottomNavigationItemView = this.hv;
       int j = arrayOfBottomNavigationItemView.length;
       int i = 0;
       while (i < j)
@@ -318,9 +527,14 @@ public class BottomNavigationMenuView
     }
   }
   
+  public void setLabelVisibilityMode(int paramInt)
+  {
+    this.he = paramInt;
+  }
+  
   public void setPresenter(BottomNavigationPresenter paramBottomNavigationPresenter)
   {
-    this.ep = paramBottomNavigationPresenter;
+    this.hH = paramBottomNavigationPresenter;
   }
 }
 

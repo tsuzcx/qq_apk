@@ -5,12 +5,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class a
 {
-  public static int dqk()
+  public static int eBB()
   {
     if (b.foreground) {
       return 1;
@@ -20,7 +20,7 @@ public class a
   
   public static int getNetType(Context paramContext)
   {
-    AppMethodBeat.i(58787);
+    AppMethodBeat.i(133037);
     for (;;)
     {
       try
@@ -28,7 +28,7 @@ public class a
         paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
         if (paramContext == null)
         {
-          AppMethodBeat.o(58787);
+          AppMethodBeat.o(133037);
           return 0;
         }
         i = paramContext.getSubtype();
@@ -40,11 +40,11 @@ public class a
       }
       catch (Exception paramContext)
       {
-        ab.e("MicroMsg.BgFgBase", "getNetType: %s", new Object[] { bo.l(paramContext) });
+        ad.e("MicroMsg.BgFgBase", "getNetType: %s", new Object[] { bt.m(paramContext) });
         int i = 1;
         continue;
       }
-      AppMethodBeat.o(58787);
+      AppMethodBeat.o(133037);
       return i;
       if ((i == 13) || (i == 15) || (i == 14)) {
         i = 4;
@@ -60,7 +60,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.a
  * JD-Core Version:    0.7.0.1
  */

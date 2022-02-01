@@ -8,62 +8,62 @@ import java.io.IOException;
 final class a
   implements f
 {
-  final long aGe;
-  long aIA;
-  private long aIB;
-  private long aIC;
-  private long aID;
-  private long aIE;
-  private long aIF;
-  private final e aIx;
-  final long aIy;
-  final h aIz;
+  final long bbw;
+  private final e bdP;
+  final long bdQ;
+  final h bdR;
+  long bdS;
+  private long bdT;
+  private long bdU;
+  private long bdV;
+  private long bdW;
+  private long bdX;
   private long start;
   private int state;
   
   public a(long paramLong1, long paramLong2, h paramh, int paramInt, long paramLong3)
   {
-    AppMethodBeat.i(95021);
-    this.aIx = new e();
+    AppMethodBeat.i(92137);
+    this.bdP = new e();
     if ((paramLong1 >= 0L) && (paramLong2 > paramLong1)) {}
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkArgument(bool);
-      this.aIz = paramh;
-      this.aIy = paramLong1;
-      this.aGe = paramLong2;
+      this.bdR = paramh;
+      this.bdQ = paramLong1;
+      this.bbw = paramLong2;
       if (paramInt != paramLong2 - paramLong1) {
         break;
       }
-      this.aIA = paramLong3;
+      this.bdS = paramLong3;
       this.state = 3;
-      AppMethodBeat.o(95021);
+      AppMethodBeat.o(92137);
       return;
     }
     this.state = 0;
-    AppMethodBeat.o(95021);
+    AppMethodBeat.o(92137);
   }
   
   private long a(com.google.android.exoplayer2.c.f paramf, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(95025);
-    this.aIx.c(paramf, false);
-    while (this.aIx.aIU < paramLong1)
+    AppMethodBeat.i(92141);
+    this.bdP.c(paramf, false);
+    while (this.bdP.ben < paramLong1)
     {
-      paramf.dg(this.aIx.aEo + this.aIx.aIZ);
-      paramLong2 = this.aIx.aIU;
-      this.aIx.c(paramf, false);
+      paramf.dR(this.bdP.aZG + this.bdP.bes);
+      paramLong2 = this.bdP.ben;
+      this.bdP.c(paramf, false);
     }
-    paramf.nW();
-    AppMethodBeat.o(95025);
+    paramf.sI();
+    AppMethodBeat.o(92141);
     return paramLong2;
   }
   
   private boolean a(com.google.android.exoplayer2.c.f paramf, long paramLong)
   {
     int j = 2048;
-    AppMethodBeat.i(95024);
-    paramLong = Math.min(3L + paramLong, this.aGe);
+    AppMethodBeat.i(92140);
+    paramLong = Math.min(3L + paramLong, this.bbw);
     byte[] arrayOfByte = new byte[2048];
     for (;;)
     {
@@ -74,7 +74,7 @@ final class a
         i = j;
         if (j < 4)
         {
-          AppMethodBeat.o(95024);
+          AppMethodBeat.o(92140);
           return false;
         }
       }
@@ -84,20 +84,20 @@ final class a
       {
         if ((arrayOfByte[j] == 79) && (arrayOfByte[(j + 1)] == 103) && (arrayOfByte[(j + 2)] == 103) && (arrayOfByte[(j + 3)] == 83))
         {
-          paramf.dg(j);
-          AppMethodBeat.o(95024);
+          paramf.dR(j);
+          AppMethodBeat.o(92140);
           return true;
         }
         j += 1;
       }
-      paramf.dg(i - 3);
+      paramf.dR(i - 3);
       j = i;
     }
   }
   
-  public final long K(long paramLong)
+  public final long Q(long paramLong)
   {
-    AppMethodBeat.i(95023);
+    AppMethodBeat.i(92139);
     boolean bool;
     if ((this.state == 3) || (this.state == 2))
     {
@@ -108,16 +108,16 @@ final class a
       }
     }
     label91:
-    for (paramLong = 0L;; paramLong = this.aIz.M(paramLong))
+    for (paramLong = 0L;; paramLong = this.bdR.S(paramLong))
     {
-      this.aIC = paramLong;
+      this.bdU = paramLong;
       this.state = 2;
-      this.start = this.aIy;
-      this.aID = this.aGe;
-      this.aIE = 0L;
-      this.aIF = this.aIA;
-      paramLong = this.aIC;
-      AppMethodBeat.o(95023);
+      this.start = this.bdQ;
+      this.bdV = this.bbw;
+      this.bdW = 0L;
+      this.bdX = this.bdS;
+      paramLong = this.bdU;
+      AppMethodBeat.o(92139);
       return paramLong;
       bool = false;
       break;
@@ -127,96 +127,96 @@ final class a
   public final long i(com.google.android.exoplayer2.c.f paramf)
   {
     int i = 1;
-    AppMethodBeat.i(95022);
+    AppMethodBeat.i(92138);
     switch (this.state)
     {
     default: 
       paramf = new IllegalStateException();
-      AppMethodBeat.o(95022);
+      AppMethodBeat.o(92138);
       throw paramf;
     case 3: 
-      AppMethodBeat.o(95022);
+      AppMethodBeat.o(92138);
       return -1L;
     case 0: 
-      this.aIB = paramf.getPosition();
+      this.bdT = paramf.getPosition();
       this.state = 1;
-      l1 = this.aGe - 65307L;
-      if (l1 > this.aIB)
+      l1 = this.bbw - 65307L;
+      if (l1 > this.bdT)
       {
-        AppMethodBeat.o(95022);
+        AppMethodBeat.o(92138);
         return l1;
       }
     case 1: 
-      if (!a(paramf, this.aGe))
+      if (!a(paramf, this.bbw))
       {
         paramf = new EOFException();
-        AppMethodBeat.o(95022);
+        AppMethodBeat.o(92138);
         throw paramf;
       }
-      this.aIx.reset();
-      while (((this.aIx.type & 0x4) != 4) && (paramf.getPosition() < this.aGe))
+      this.bdP.reset();
+      while (((this.bdP.type & 0x4) != 4) && (paramf.getPosition() < this.bbw))
       {
-        this.aIx.c(paramf, false);
-        paramf.dg(this.aIx.aEo + this.aIx.aIZ);
+        this.bdP.c(paramf, false);
+        paramf.dR(this.bdP.aZG + this.bdP.bes);
       }
-      this.aIA = this.aIx.aIU;
+      this.bdS = this.bdP.ben;
       this.state = 3;
-      l1 = this.aIB;
-      AppMethodBeat.o(95022);
+      l1 = this.bdT;
+      AppMethodBeat.o(92138);
       return l1;
     }
-    if (this.aIC == 0L) {}
-    for (long l1 = 0L;; l1 = a(paramf, this.aIC, -(l1 + 2L)))
+    if (this.bdU == 0L) {}
+    for (long l1 = 0L;; l1 = a(paramf, this.bdU, -(l1 + 2L)))
     {
       this.state = 3;
       l1 = -(l1 + 2L);
-      AppMethodBeat.o(95022);
+      AppMethodBeat.o(92138);
       return l1;
-      long l2 = this.aIC;
-      if (this.start == this.aID) {
-        l1 = -(this.aIE + 2L);
+      long l2 = this.bdU;
+      if (this.start == this.bdV) {
+        l1 = -(this.bdW + 2L);
       }
       while (l1 >= 0L)
       {
-        AppMethodBeat.o(95022);
+        AppMethodBeat.o(92138);
         return l1;
         l1 = paramf.getPosition();
-        if (!a(paramf, this.aID))
+        if (!a(paramf, this.bdV))
         {
           if (this.start == l1)
           {
             paramf = new IOException("No ogg page can be found.");
-            AppMethodBeat.o(95022);
+            AppMethodBeat.o(92138);
             throw paramf;
           }
           l1 = this.start;
         }
         else
         {
-          this.aIx.c(paramf, false);
-          paramf.nW();
-          l2 -= this.aIx.aIU;
-          int j = this.aIx.aEo + this.aIx.aIZ;
+          this.bdP.c(paramf, false);
+          paramf.sI();
+          l2 -= this.bdP.ben;
+          int j = this.bdP.aZG + this.bdP.bes;
           if ((l2 < 0L) || (l2 > 72000L))
           {
             if (l2 < 0L)
             {
-              this.aID = l1;
-              this.aIF = this.aIx.aIU;
+              this.bdV = l1;
+              this.bdX = this.bdP.ben;
             }
             for (;;)
             {
-              if (this.aID - this.start < 100000L)
+              if (this.bdV - this.start < 100000L)
               {
-                this.aID = this.start;
+                this.bdV = this.start;
                 l1 = this.start;
                 break;
                 this.start = (paramf.getPosition() + j);
-                this.aIE = this.aIx.aIU;
-                if (this.aID - this.start + j < 100000L)
+                this.bdW = this.bdP.ben;
+                if (this.bdV - this.start + j < 100000L)
                 {
-                  paramf.dg(j);
-                  l1 = -(this.aIE + 2L);
+                  paramf.dR(j);
+                  l1 = -(this.bdW + 2L);
                   break;
                 }
               }
@@ -225,12 +225,12 @@ final class a
               i = 2;
             }
             l1 = i * j;
-            l1 = Math.min(Math.max(paramf.getPosition() - l1 + l2 * (this.aID - this.start) / (this.aIF - this.aIE), this.start), this.aID - 1L);
+            l1 = Math.min(Math.max(paramf.getPosition() - l1 + l2 * (this.bdV - this.start) / (this.bdX - this.bdW), this.start), this.bdV - 1L);
           }
           else
           {
-            paramf.dg(j);
-            l1 = -(this.aIx.aIU + 2L);
+            paramf.dR(j);
+            l1 = -(this.bdP.ben + 2L);
           }
         }
       }
@@ -242,40 +242,40 @@ final class a
   {
     private a() {}
     
-    public final long E(long paramLong)
+    public final long K(long paramLong)
     {
-      AppMethodBeat.i(95019);
+      AppMethodBeat.i(92135);
       if (paramLong == 0L)
       {
-        paramLong = a.this.aIy;
-        AppMethodBeat.o(95019);
+        paramLong = a.this.bdQ;
+        AppMethodBeat.o(92135);
         return paramLong;
       }
-      paramLong = a.this.aIz.M(paramLong);
+      paramLong = a.this.bdR.S(paramLong);
       a locala = a.this;
-      long l = a.this.aIy;
-      l = paramLong * (locala.aGe - locala.aIy) / locala.aIA - 30000L + l;
+      long l = a.this.bdQ;
+      l = paramLong * (locala.bbw - locala.bdQ) / locala.bdS - 30000L + l;
       paramLong = l;
-      if (l < locala.aIy) {
-        paramLong = locala.aIy;
+      if (l < locala.bdQ) {
+        paramLong = locala.bdQ;
       }
       l = paramLong;
-      if (paramLong >= locala.aGe) {
-        l = locala.aGe - 1L;
+      if (paramLong >= locala.bbw) {
+        l = locala.bbw - 1L;
       }
-      AppMethodBeat.o(95019);
+      AppMethodBeat.o(92135);
       return l;
     }
     
     public final long getDurationUs()
     {
-      AppMethodBeat.i(95020);
-      long l = a.this.aIz.L(a.this.aIA);
-      AppMethodBeat.o(95020);
+      AppMethodBeat.i(92136);
+      long l = a.this.bdR.R(a.this.bdS);
+      AppMethodBeat.o(92136);
       return l;
     }
     
-    public final boolean nV()
+    public final boolean sH()
     {
       return true;
     }
@@ -283,7 +283,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.c.e.a
  * JD-Core Version:    0.7.0.1
  */

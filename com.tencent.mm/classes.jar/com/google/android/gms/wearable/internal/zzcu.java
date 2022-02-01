@@ -20,30 +20,30 @@ final class zzcu
   
   public final ParcelFileDescriptor getFdForAsset()
   {
-    AppMethodBeat.i(71170);
+    AppMethodBeat.i(101153);
     ParcelFileDescriptor localParcelFileDescriptor = this.zzdj.getFd();
-    AppMethodBeat.o(71170);
+    AppMethodBeat.o(101153);
     return localParcelFileDescriptor;
   }
   
   public final InputStream getInputStream()
   {
-    AppMethodBeat.i(71171);
+    AppMethodBeat.i(101154);
     InputStream localInputStream = this.zzdj.getInputStream();
-    AppMethodBeat.o(71171);
+    AppMethodBeat.o(101154);
     return localInputStream;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(71172);
+    AppMethodBeat.i(101155);
     this.zzdj.release();
-    AppMethodBeat.o(71172);
+    AppMethodBeat.o(101155);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzcu
  * JD-Core Version:    0.7.0.1
  */

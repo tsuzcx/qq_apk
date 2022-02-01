@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView android:id="@id/f7p" android:background="@color/o8" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/iu">
+        <RelativeLayout android:layout_gravity="center" android:id="@id/asv" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView android:id="@id/goc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+            <ImageView android:id="@id/go1" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_centerInParent="true" />
+            <ViewStub android:id="@id/fii" android:layout="@layout/b69" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <ImageView android:id="@id/fsv" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+            <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/gni" android:visibility="gone" android:layout_width="@dimen/act" android:layout_height="@dimen/act" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/a2g" />
+    </LinearLayout>
+</com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView>

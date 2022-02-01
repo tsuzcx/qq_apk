@@ -4,25 +4,38 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a.a ezH;
+  private static a fUD;
   
   static
   {
-    AppMethodBeat.i(152620);
-    ezH = new a.1();
-    AppMethodBeat.o(152620);
+    AppMethodBeat.i(43439);
+    fUD = new a()
+    {
+      public final void loadLibrary(String paramAnonymousString)
+      {
+        AppMethodBeat.i(43437);
+        System.loadLibrary(paramAnonymousString);
+        AppMethodBeat.o(43437);
+      }
+    };
+    AppMethodBeat.o(43439);
   }
   
-  public static void a(a.a parama)
+  public static void a(a parama)
   {
-    ezH = parama;
+    fUD = parama;
   }
   
   public static void loadLibraries()
   {
-    AppMethodBeat.i(152619);
-    ezH.loadLibrary("mmlockstep");
-    AppMethodBeat.o(152619);
+    AppMethodBeat.i(43438);
+    fUD.loadLibrary("mmlockstep");
+    AppMethodBeat.o(43438);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void loadLibrary(String paramString);
   }
 }
 

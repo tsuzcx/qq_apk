@@ -4,19 +4,21 @@ import android.graphics.Matrix;
 
 public abstract interface g
 {
-  public abstract void an(float paramFloat1, float paramFloat2);
+  public abstract void ae(float paramFloat1, float paramFloat2);
   
-  public abstract void ao(float paramFloat1, float paramFloat2);
+  public abstract void af(float paramFloat1, float paramFloat2);
   
-  public abstract void ap(float paramFloat1, float paramFloat2);
+  public abstract void ag(float paramFloat1, float paramFloat2);
   
-  public abstract boolean dDH();
+  public abstract void eSA();
   
-  public abstract boolean dDI();
+  public abstract void eSB();
   
-  public abstract void dDJ();
+  public abstract boolean eSx();
   
-  public abstract void dDK();
+  public abstract boolean eSy();
+  
+  public abstract void eSz();
   
   public abstract float getDoubleTabScale();
   
@@ -30,7 +32,7 @@ public abstract interface g
   
   public abstract float getScaleRate();
   
-  public abstract void k(float paramFloat1, float paramFloat2, float paramFloat3);
+  public abstract void m(float paramFloat1, float paramFloat2, float paramFloat3);
   
   public abstract void setMaxZoomLimit(float paramFloat);
 }

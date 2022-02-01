@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/aj" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/efx" android:background="@color/aj" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/eg0" android:padding="14.0dip" android:visibility="gone" android:persistentDrawingCache="all" android:alwaysDrawnWithCache="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <RelativeLayout android:gravity="center" android:layout_width="250.0dip" android:layout_height="250.0dip">
+                <ImageView android:id="@id/efz" android:layout_width="250.0dip" android:layout_height="250.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" android:contentDescription="@string/h5f" />
+                <ImageView android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/wallet_offline_icon" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/efw" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:visibility="visible" android:persistentDrawingCache="all" android:alwaysDrawnWithCache="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:id="@id/efv" android:layout_width="126.0dip" android:layout_height="430.0dip" android:scaleType="fitXY" android:contentDescription="@string/h4e" />
+            <com.tencent.mm.ui.base.MMVerticalTextView android:id="@id/gl9" android:tag="1" android:focusable="true" android:clickable="true" android:layout_width="24.0dip" android:layout_height="fill_parent" app:direction="gjc" app:text="" app:textBold="true" app:textColor="@color/ab" app:textSize="@dimen/bi" />
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="30.0dip">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="1.0dip" android:layout_marginBottom="5.0dip" android:src="@raw/offline_notification" />
+                <com.tencent.mm.ui.base.MMVerticalTextView android:id="@id/gl8" android:tag="1" android:focusable="true" android:clickable="true" android:layout_width="17.0dip" android:layout_height="wrap_content" app:direction="gjc" app:text="@string/e4l" app:textColor="#ffffc15c" app:textSize="@dimen/jt" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/efy" android:background="@color/aj" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.99">
+        <com.tencent.mm.ui.base.MMVerticalTextView android:id="@id/dkw" android:background="@drawable/afp" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:focusable="true" android:clickable="true" android:layout_width="35.0dip" android:layout_height="190.0dip" app:direction="gjc" app:text="@string/gt3" app:textColor="@color/a7l" app:textSize="@dimen/h8" style="@style/q0" />
+        <RelativeLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.base.MMVerticalTextView android:id="@id/dl1" android:tag="1" android:focusable="true" android:clickable="true" android:layout_width="24.0dip" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_centerVertical="true" app:direction="gjc" app:text="@string/e4n" app:textColor="#ff666666" app:textSize="18.0dip" />
+            <com.tencent.mm.ui.base.MMVerticalTextView android:id="@id/dl0" android:tag="1" android:focusable="true" android:clickable="true" android:layout_width="24.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/dl1" android:layout_centerVertical="true" app:direction="gjc" app:text="@string/e4m" app:textColor="#ff666666" app:textSize="18.0dip" />
+        </RelativeLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginLeft="30.0dip" android:src="@raw/pay_safe" android:rotation="90.0" app:iconColor="@color/a9c" />
+    </LinearLayout>
+</FrameLayout>

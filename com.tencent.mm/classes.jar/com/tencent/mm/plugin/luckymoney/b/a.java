@@ -1,202 +1,295 @@
 package com.tencent.mm.plugin.luckymoney.b;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.g.a.vt;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.bz;
-import com.tencent.mm.model.bz.a;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.luckymoney.model.av;
-import com.tencent.mm.plugin.luckymoney.model.j;
-import com.tencent.mm.plugin.luckymoney.model.m;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.al.f.c;
+import com.tencent.mm.g.a.xt;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.cc;
+import com.tencent.mm.model.cc.a;
+import com.tencent.mm.model.t;
+import com.tencent.mm.plugin.luckymoney.model.ax;
+import com.tencent.mm.plugin.luckymoney.model.i;
+import com.tencent.mm.plugin.luckymoney.model.k;
 import com.tencent.mm.plugin.luckymoney.model.o;
-import com.tencent.mm.pluginsdk.model.app.am;
-import com.tencent.mm.pluginsdk.model.app.d;
-import com.tencent.mm.pluginsdk.model.app.t;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.storage.z;
-import java.io.File;
+import com.tencent.mm.plugin.luckymoney.model.r;
+import com.tencent.mm.pluginsdk.model.app.aq;
+import com.tencent.mm.pluginsdk.model.app.u;
+import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storagebase.h.b;
+import java.net.URLDecoder;
 import java.util.HashMap;
+import java.util.Map;
 
 public class a
-  implements at
+  implements aw
 {
-  private static HashMap<Integer, h.d> baseDBFactories;
-  private bz.a kMG;
-  private j oie;
-  private com.tencent.mm.plugin.luckymoney.model.p oif;
-  private com.tencent.mm.plugin.luckymoney.model.h oig;
-  private av oih;
-  private com.tencent.mm.cm.h<o> oii;
-  private m oij;
-  private com.tencent.mm.sdk.b.c<vt> oik;
+  private static HashMap<Integer, h.b> baseDBFactories;
+  private cc.a nSR;
+  private k sXP;
+  private r sXQ;
+  private i sXR;
+  private ax sXS;
+  private com.tencent.mm.co.h<com.tencent.mm.plugin.luckymoney.model.q> sXT;
+  private com.tencent.mm.co.h<com.tencent.mm.plugin.luckymoney.story.b.b> sXU;
+  private com.tencent.mm.co.h<com.tencent.mm.plugin.luckymoney.story.b.d> sXV;
+  private o sXW;
+  private com.tencent.mm.sdk.b.c<xt> sXX;
   
   static
   {
-    AppMethodBeat.i(41979);
+    AppMethodBeat.i(64867);
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("LuckyMoneyEnvelopeResource".hashCode()), new a.2());
-    AppMethodBeat.o(41979);
+    localHashMap.put(Integer.valueOf("LuckyMoneyEnvelopeResource".hashCode()), new a.4());
+    baseDBFactories.put(Integer.valueOf("LocalRedPacketStoryInfo".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return com.tencent.mm.plugin.luckymoney.story.b.b.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("LocalStoryDetail".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return com.tencent.mm.plugin.luckymoney.story.b.d.SQL_CREATE;
+      }
+    });
+    AppMethodBeat.o(64867);
   }
   
   public a()
   {
-    AppMethodBeat.i(41973);
-    this.oig = new com.tencent.mm.plugin.luckymoney.model.h();
-    this.oii = new com.tencent.mm.cm.h(new a.1(this));
-    this.oij = new m();
-    this.kMG = new a.3(this);
-    this.oik = new a.4(this);
-    File localFile = new File(bMI());
-    if (!localFile.exists()) {
-      localFile.mkdir();
+    AppMethodBeat.i(64861);
+    this.sXR = new i();
+    this.sXT = new com.tencent.mm.co.h(new a.1(this));
+    this.sXU = new com.tencent.mm.co.h(new com.tencent.mm.co.c() {});
+    this.sXV = new com.tencent.mm.co.h(new com.tencent.mm.co.c() {});
+    this.sXW = new o();
+    this.nSR = new cc.a()
+    {
+      public final void a(f.a paramAnonymousa)
+      {
+        AppMethodBeat.i(163535);
+        Object localObject1 = bw.K(com.tencent.mm.platformtools.z.a(paramAnonymousa.fTo.Cxz), "sysmsg");
+        ad.i("MicroMsg.SubCoreLuckyMoney", "helios::::mPayMsgListener");
+        if (localObject1 == null)
+        {
+          ad.e("MicroMsg.SubCoreLuckyMoney", "Resolve msg error");
+          AppMethodBeat.o(163535);
+          return;
+        }
+        if ("14".equals((String)((Map)localObject1).get(".sysmsg.paymsg.PayMsgType")))
+        {
+          paramAnonymousa = URLDecoder.decode((String)((Map)localObject1).get(".sysmsg.paymsg.appmsgcontent"));
+          if (TextUtils.isEmpty(paramAnonymousa))
+          {
+            ad.e("MicroMsg.SubCoreLuckyMoney", "msgxml illegal");
+            AppMethodBeat.o(163535);
+            return;
+          }
+          Object localObject2 = bw.K(paramAnonymousa, "msg");
+          if (localObject2 == null)
+          {
+            ad.e("MicroMsg.SubCoreLuckyMoney", "Resolve appmsgxml error");
+            AppMethodBeat.o(163535);
+            return;
+          }
+          localObject2 = (String)((Map)localObject2).get(".msg.appmsg.wcpayinfo.paymsgid");
+          if (bt.isNullOrNil((String)localObject2))
+          {
+            ad.e("MicroMsg.SubCoreLuckyMoney", "paymsgid is null");
+            AppMethodBeat.o(163535);
+            return;
+          }
+          localObject1 = (String)((Map)localObject1).get(".sysmsg.paymsg.tousername");
+          if ((bt.isNullOrNil(paramAnonymousa)) || (bt.isNullOrNil((String)localObject1)))
+          {
+            ad.e("MicroMsg.SubCoreLuckyMoney", "onRecieveMsg get a illegal msg,which content or toUserName is null");
+            AppMethodBeat.o(163535);
+            return;
+          }
+          if (a.this.cKS().afm((String)localObject2))
+          {
+            ad.i("MicroMsg.SubCoreLuckyMoney", "insert a local msg for luckymoney");
+            if (!com.tencent.mm.plugin.luckymoney.model.z.V(paramAnonymousa, (String)localObject1, 1)) {
+              a.this.cKS().afn((String)localObject2);
+            }
+          }
+        }
+        AppMethodBeat.o(163535);
+      }
+      
+      public final void a(f.c paramAnonymousc) {}
+    };
+    this.sXX = new com.tencent.mm.sdk.b.c() {};
+    com.tencent.mm.vfs.e locale = new com.tencent.mm.vfs.e(cKR());
+    if (!locale.exists()) {
+      locale.mkdirs();
     }
-    AppMethodBeat.o(41973);
+    AppMethodBeat.o(64861);
   }
   
-  public static a bMG()
+  public static a cKP()
   {
-    AppMethodBeat.i(41972);
-    a locala = (a)q.S(a.class);
-    AppMethodBeat.o(41972);
+    AppMethodBeat.i(64860);
+    a locala = (a)t.ap(a.class);
+    AppMethodBeat.o(64860);
     return locala;
   }
   
-  public static j bMH()
+  public static k cKQ()
   {
-    AppMethodBeat.i(41976);
-    com.tencent.mm.kernel.g.RJ().QQ();
-    if (bMG().oie == null) {
-      bMG().oie = new j();
+    AppMethodBeat.i(64864);
+    com.tencent.mm.kernel.g.afz().aeD();
+    if (cKP().sXP == null) {
+      cKP().sXP = new k();
     }
-    j localj = bMG().oie;
-    AppMethodBeat.o(41976);
-    return localj;
+    k localk = cKP().sXP;
+    AppMethodBeat.o(64864);
+    return localk;
   }
   
-  public static String bMI()
+  public static String cKR()
   {
-    AppMethodBeat.i(41977);
-    if (com.tencent.mm.kernel.g.RG())
+    AppMethodBeat.i(64865);
+    if (com.tencent.mm.kernel.g.afw())
     {
-      String str = com.tencent.mm.plugin.i.c.YK() + "luckymoney";
-      AppMethodBeat.o(41977);
+      String str = com.tencent.mm.plugin.image.d.apW() + "luckymoney";
+      AppMethodBeat.o(64865);
       return str;
     }
-    AppMethodBeat.o(41977);
+    AppMethodBeat.o(64865);
     return "";
   }
   
-  public final o bMF()
+  public final com.tencent.mm.plugin.luckymoney.model.q cKM()
   {
-    AppMethodBeat.i(41971);
-    o localo = (o)this.oii.get();
-    AppMethodBeat.o(41971);
-    return localo;
+    AppMethodBeat.i(64859);
+    com.tencent.mm.plugin.luckymoney.model.q localq = (com.tencent.mm.plugin.luckymoney.model.q)this.sXT.get();
+    AppMethodBeat.o(64859);
+    return localq;
   }
   
-  public final com.tencent.mm.plugin.luckymoney.model.p bMJ()
+  public final com.tencent.mm.plugin.luckymoney.story.b.b cKN()
+  {
+    AppMethodBeat.i(163538);
+    com.tencent.mm.plugin.luckymoney.story.b.b localb = (com.tencent.mm.plugin.luckymoney.story.b.b)this.sXU.get();
+    AppMethodBeat.o(163538);
+    return localb;
+  }
+  
+  public final com.tencent.mm.plugin.luckymoney.story.b.d cKO()
+  {
+    AppMethodBeat.i(163539);
+    com.tencent.mm.plugin.luckymoney.story.b.d locald = (com.tencent.mm.plugin.luckymoney.story.b.d)this.sXV.get();
+    AppMethodBeat.o(163539);
+    return locald;
+  }
+  
+  public final r cKS()
   {
     try
     {
-      AppMethodBeat.i(41978);
-      if (this.oif == null) {
-        this.oif = new com.tencent.mm.plugin.luckymoney.model.p();
+      AppMethodBeat.i(64866);
+      if (this.sXQ == null) {
+        this.sXQ = new r();
       }
-      com.tencent.mm.plugin.luckymoney.model.p localp = this.oif;
-      AppMethodBeat.o(41978);
-      return localp;
+      r localr = this.sXQ;
+      AppMethodBeat.o(64866);
+      return localr;
     }
     finally {}
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public HashMap<Integer, h.d> getBaseDBFactories()
+  public HashMap<Integer, h.b> getBaseDBFactories()
   {
     return baseDBFactories;
   }
   
   public void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(41974);
-    am localam = am.dlO();
-    if (com.tencent.mm.kernel.g.RG())
+    AppMethodBeat.i(64862);
+    aq localaq = aq.evU();
+    if (com.tencent.mm.kernel.g.afw())
     {
-      com.tencent.mm.plugin.s.a.caf().a(4, localam);
-      com.tencent.mm.kernel.g.RM();
-      com.tencent.mm.kernel.g.RK().eHt.a(1060, localam);
+      com.tencent.mm.plugin.s.a.cZT().a(4, localaq);
+      com.tencent.mm.kernel.g.afC();
+      com.tencent.mm.kernel.g.afA().gcy.a(1060, localaq);
     }
-    this.oij.alive();
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().a("paymsg", this.kMG, true);
+    this.sXW.alive();
+    ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().a("paymsg", this.nSR, true);
     boolean bool = false;
-    com.tencent.mm.kernel.g.RM();
-    long l = com.tencent.mm.kernel.g.RL().Ru().Ns(352276);
+    com.tencent.mm.kernel.g.afC();
+    long l = com.tencent.mm.kernel.g.afB().afk().Wx(352276);
     if (System.currentTimeMillis() - l >= 43200000L) {
       bool = true;
     }
-    ab.i("MicroMsg.SubCoreLuckyMoney", "isTime=" + bool + ", isUpdate=" + paramBoolean);
+    ad.i("MicroMsg.SubCoreLuckyMoney", "isTime=" + bool + ", isUpdate=" + paramBoolean);
     if ((paramBoolean) || (bool))
     {
-      ab.i("MicroMsg.SubCoreLuckyMoney", "get service applist");
-      am.dlO().fT(ah.getContext());
+      ad.i("MicroMsg.SubCoreLuckyMoney", "get service applist");
+      aq.evU().hf(aj.getContext());
     }
-    com.tencent.mm.sdk.b.a.ymk.c(this.oig);
-    com.tencent.mm.sdk.b.a.ymk.c(this.oik);
-    this.oih = new av();
-    com.tencent.mm.plugin.luckymoney.model.g.bNi();
-    AppMethodBeat.o(41974);
+    com.tencent.mm.sdk.b.a.ESL.c(this.sXR);
+    com.tencent.mm.sdk.b.a.ESL.c(this.sXX);
+    this.sXS = new ax();
+    com.tencent.mm.plugin.luckymoney.model.h.cLr();
+    AppMethodBeat.o(64862);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(41975);
-    Object localObject1 = am.dlO();
-    if (com.tencent.mm.kernel.g.RG())
+    AppMethodBeat.i(64863);
+    Object localObject1 = aq.evU();
+    if (com.tencent.mm.kernel.g.afw())
     {
-      com.tencent.mm.plugin.s.a.caf().b(4, (t)localObject1);
-      com.tencent.mm.kernel.g.RM();
-      com.tencent.mm.kernel.g.RK().eHt.b(1060, (f)localObject1);
-      ((am)localObject1).vMe = false;
-      ((am)localObject1).vMf = false;
+      com.tencent.mm.plugin.s.a.cZT().b(4, (u)localObject1);
+      com.tencent.mm.kernel.g.afC();
+      com.tencent.mm.kernel.g.afA().gcy.b(1060, (com.tencent.mm.al.g)localObject1);
+      ((aq)localObject1).BQR = false;
+      ((aq)localObject1).BQS = false;
     }
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().b("paymsg", this.kMG, true);
+    ((com.tencent.mm.plugin.messenger.foundation.a.q)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.messenger.foundation.a.q.class)).getSysCmdMsgExtension().b("paymsg", this.nSR, true);
     try
     {
-      this.oif = null;
-      com.tencent.mm.sdk.b.a.ymk.d(this.oig);
-      com.tencent.mm.sdk.b.a.ymk.d(this.oik);
-      if (this.oih != null)
+      this.sXQ = null;
+      com.tencent.mm.sdk.b.a.ESL.d(this.sXR);
+      com.tencent.mm.sdk.b.a.ESL.d(this.sXX);
+      if (this.sXS != null)
       {
-        localObject1 = this.oih;
-        com.tencent.mm.sdk.b.a.ymk.d(((av)localObject1).opW);
-        if (((av)localObject1).opT != null)
+        localObject1 = this.sXS;
+        com.tencent.mm.sdk.b.a.ESL.d(((ax)localObject1).tgb);
+        if (((ax)localObject1).tfY != null)
         {
-          com.tencent.mm.kernel.g.RM();
-          com.tencent.mm.kernel.g.RK().eHt.a(((av)localObject1).opT);
-          ((av)localObject1).opT = null;
+          com.tencent.mm.kernel.g.afC();
+          com.tencent.mm.kernel.g.afA().gcy.a(((ax)localObject1).tfY);
+          ((ax)localObject1).tfY = null;
         }
-        if (((av)localObject1).opU != null)
+        if (((ax)localObject1).tfZ != null)
         {
-          com.tencent.mm.kernel.g.RM();
-          com.tencent.mm.kernel.g.RK().eHt.a(((av)localObject1).opU);
-          ((av)localObject1).opU = null;
+          com.tencent.mm.kernel.g.afC();
+          com.tencent.mm.kernel.g.afA().gcy.a(((ax)localObject1).tfZ);
+          ((ax)localObject1).tfZ = null;
         }
       }
-      com.tencent.mm.plugin.luckymoney.model.g.aoR();
-      this.oij.dead();
-      AppMethodBeat.o(41975);
+      com.tencent.mm.plugin.luckymoney.model.h.NX();
+      this.sXW.dead();
+      AppMethodBeat.o(64863);
       return;
     }
     finally
     {
-      AppMethodBeat.o(41975);
+      AppMethodBeat.o(64863);
     }
   }
   
@@ -204,7 +297,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.b.a
  * JD-Core Version:    0.7.0.1
  */

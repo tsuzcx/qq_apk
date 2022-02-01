@@ -1,6 +1,7 @@
 package com.facebook.appevents;
 
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.internal.AppEventUtility;
@@ -20,16 +21,16 @@ class AnalyticsUserIDStore
   
   static
   {
-    AppMethodBeat.i(71864);
+    AppMethodBeat.i(17300);
     TAG = AnalyticsUserIDStore.class.getSimpleName();
     lock = new ReentrantReadWriteLock();
     initialized = false;
-    AppMethodBeat.o(71864);
+    AppMethodBeat.o(17300);
   }
   
   public static String getUserID()
   {
-    AppMethodBeat.i(71861);
+    AppMethodBeat.i(17297);
     if (!initialized) {
       initAndWait();
     }
@@ -42,16 +43,16 @@ class AnalyticsUserIDStore
     finally
     {
       lock.readLock().unlock();
-      AppMethodBeat.o(71861);
+      AppMethodBeat.o(17297);
     }
   }
   
   private static void initAndWait()
   {
-    AppMethodBeat.i(71862);
+    AppMethodBeat.i(17298);
     if (initialized)
     {
-      AppMethodBeat.o(71862);
+      AppMethodBeat.o(17298);
       return;
     }
     lock.writeLock().lock();
@@ -68,36 +69,64 @@ class AnalyticsUserIDStore
     finally
     {
       lock.writeLock().unlock();
-      AppMethodBeat.o(71862);
+      AppMethodBeat.o(17298);
     }
   }
   
   public static void initStore()
   {
-    AppMethodBeat.i(71859);
+    AppMethodBeat.i(17295);
     if (initialized)
     {
-      AppMethodBeat.o(71859);
+      AppMethodBeat.o(17295);
       return;
     }
-    AppEventsLogger.getAnalyticsExecutor().execute(new AnalyticsUserIDStore.1());
-    AppMethodBeat.o(71859);
+    AppEventsLogger.getAnalyticsExecutor().execute(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(17293);
+        AnalyticsUserIDStore.access$000();
+        AppMethodBeat.o(17293);
+      }
+    });
+    AppMethodBeat.o(17295);
   }
   
   public static void setUserID(String paramString)
   {
-    AppMethodBeat.i(71860);
+    AppMethodBeat.i(17296);
     AppEventUtility.assertIsNotMainThread();
     if (!initialized) {
       initAndWait();
     }
-    AppEventsLogger.getAnalyticsExecutor().execute(new AnalyticsUserIDStore.2(paramString));
-    AppMethodBeat.o(71860);
+    AppEventsLogger.getAnalyticsExecutor().execute(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(17294);
+        AnalyticsUserIDStore.lock.writeLock().lock();
+        try
+        {
+          AnalyticsUserIDStore.access$202(this.val$id);
+          SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(FacebookSdk.getApplicationContext()).edit();
+          localEditor.putString("com.facebook.appevents.AnalyticsUserIDStore.userID", AnalyticsUserIDStore.userID);
+          localEditor.apply();
+          return;
+        }
+        finally
+        {
+          AnalyticsUserIDStore.lock.writeLock().unlock();
+          AppMethodBeat.o(17294);
+        }
+      }
+    });
+    AppMethodBeat.o(17296);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.AnalyticsUserIDStore
  * JD-Core Version:    0.7.0.1
  */

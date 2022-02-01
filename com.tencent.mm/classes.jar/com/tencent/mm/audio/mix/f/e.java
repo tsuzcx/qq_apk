@@ -5,22 +5,22 @@ import com.tencent.mm.audio.mix.h.b;
 
 public final class e<T>
 {
-  private T chP;
+  private T cWP;
   
   public e(T paramT)
   {
-    this.chP = paramT;
+    this.cWP = paramT;
   }
   
-  public final T ab(T paramT)
+  public final T aP(T paramT)
   {
     try
     {
-      AppMethodBeat.i(137194);
-      Object localObject = this.chP;
-      this.chP = paramT;
-      b.i("StateRunner", localObject.toString() + " -> " + this.chP.toString());
-      AppMethodBeat.o(137194);
+      AppMethodBeat.i(136943);
+      Object localObject = this.cWP;
+      this.cWP = paramT;
+      b.i("StateRunner", localObject.toString() + " -> " + this.cWP.toString());
+      AppMethodBeat.o(136943);
       return localObject;
     }
     finally
@@ -49,7 +49,7 @@ public final class e<T>
     //   17: aaload
     //   18: astore 4
     //   20: aload_0
-    //   21: getfield 15	com/tencent/mm/audio/mix/f/e:chP	Ljava/lang/Object;
+    //   21: getfield 15	com/tencent/mm/audio/mix/f/e:cWP	Ljava/lang/Object;
     //   24: aload 4
     //   26: invokevirtual 59	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   29: ifeq +14 -> 43
@@ -93,7 +93,7 @@ public final class e<T>
   {
     try
     {
-      Object localObject1 = this.chP;
+      Object localObject1 = this.cWP;
       return localObject1;
     }
     finally
@@ -105,7 +105,7 @@ public final class e<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.f.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,64 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
+import android.graphics.Bitmap;
 
-public final class h
+public abstract interface h
 {
-  public static boolean fY(Context paramContext)
+  public abstract void d(double paramDouble, boolean paramBoolean);
+  
+  public abstract int getCurrentPosition();
+  
+  public abstract int getDuration();
+  
+  public abstract double getLastProgresstime();
+  
+  public abstract long getLastSurfaceUpdateTime();
+  
+  public abstract String getVideoPath();
+  
+  public abstract boolean isPlaying();
+  
+  public abstract void onDetach();
+  
+  public abstract void pause();
+  
+  public abstract void q(double paramDouble);
+  
+  public abstract void setLoop(boolean paramBoolean);
+  
+  public abstract void setMute(boolean paramBoolean);
+  
+  public abstract void setOnInfoCallback(b paramb);
+  
+  public abstract void setOnSeekCompleteCallback(h.c paramc);
+  
+  public abstract void setOnSurfaceCallback(h.d paramd);
+  
+  public abstract void setOneTimeVideoTextureUpdateCallback(h.e parame);
+  
+  public abstract void setPlayProgressCallback(boolean paramBoolean);
+  
+  public abstract void setThumb(Bitmap paramBitmap);
+  
+  public abstract void setVideoCallback(h.a parama);
+  
+  public abstract void setVideoPath(String paramString);
+  
+  public abstract boolean start();
+  
+  public abstract void stop();
+  
+  public abstract boolean y(Context paramContext, boolean paramBoolean);
+  
+  public static abstract interface b
   {
-    AppMethodBeat.i(79947);
-    if (!aj.apk("network_doctor_shown"))
-    {
-      AppMethodBeat.o(79947);
-      return false;
-    }
-    com.tencent.mm.ui.base.h.a(paramContext, 2131301799, 2131297087, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(79946);
-        this.val$context.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
-        AppMethodBeat.o(79946);
-      }
-    }, null);
-    AppMethodBeat.o(79947);
-    return true;
+    public abstract void dZ(int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.h
  * JD-Core Version:    0.7.0.1
  */

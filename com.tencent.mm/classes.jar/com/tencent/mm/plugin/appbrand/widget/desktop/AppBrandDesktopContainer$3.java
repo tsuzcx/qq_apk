@@ -12,16 +12,16 @@ final class AppBrandDesktopContainer$3
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(143639);
-    if ((AppBrandDesktopContainer.a(this.jdI) != null) && (AppBrandDesktopContainer.a(this.jdI).aOX())) {
-      AppBrandDesktopContainer.a(this.jdI).pW(14);
+    AppMethodBeat.i(49442);
+    if ((AppBrandDesktopContainer.a(this.lTG) != null) && (AppBrandDesktopContainer.a(this.lTG).bru())) {
+      AppBrandDesktopContainer.a(this.lTG).uA(14);
     }
-    AppMethodBeat.o(143639);
+    AppMethodBeat.o(49442);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopContainer.3
  * JD-Core Version:    0.7.0.1
  */

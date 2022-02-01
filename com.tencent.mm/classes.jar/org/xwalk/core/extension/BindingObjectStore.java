@@ -20,71 +20,71 @@ public class BindingObjectStore
   
   public BindingObjectStore(MessageHandler paramMessageHandler, ExtensionInstanceHelper paramExtensionInstanceHelper)
   {
-    AppMethodBeat.i(86083);
+    AppMethodBeat.i(155197);
     this.TAG = "BindingObjectStore";
     this.mBindingObjects = new HashMap();
     this.mInstance = paramExtensionInstanceHelper;
     paramMessageHandler.register("JSObjectCollected", "onJSObjectCollected", this);
     paramMessageHandler.register("postMessageToObject", "onPostMessageToObject", this);
     paramMessageHandler.register("postMessageToClass", "onPostMessageToClass", this);
-    AppMethodBeat.o(86083);
+    AppMethodBeat.o(155197);
   }
   
   public boolean addBindingObject(String paramString, BindingObject paramBindingObject)
   {
-    AppMethodBeat.i(86084);
+    AppMethodBeat.i(155198);
     if (this.mBindingObjects.containsKey(paramString))
     {
       Log.w(this.TAG, "Existing binding object:\n".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(86084);
+      AppMethodBeat.o(155198);
       return false;
     }
     paramBindingObject.initBindingInfo(paramString, this.mInstance);
     this.mBindingObjects.put(paramString, paramBindingObject);
     paramBindingObject.onJsBound();
-    AppMethodBeat.o(86084);
+    AppMethodBeat.o(155198);
     return true;
   }
   
   public BindingObject getBindingObject(String paramString)
   {
-    AppMethodBeat.i(86085);
+    AppMethodBeat.i(155199);
     paramString = (BindingObject)this.mBindingObjects.get(paramString);
-    AppMethodBeat.o(86085);
+    AppMethodBeat.o(155199);
     return paramString;
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(86094);
+    AppMethodBeat.i(155208);
     Iterator localIterator = this.mBindingObjects.entrySet().iterator();
     while (localIterator.hasNext()) {
       ((BindingObject)((Map.Entry)localIterator.next()).getValue()).onDestroy();
     }
-    AppMethodBeat.o(86094);
+    AppMethodBeat.o(155208);
   }
   
   public void onJSObjectCollected(MessageInfo paramMessageInfo)
   {
-    AppMethodBeat.i(86087);
+    AppMethodBeat.i(155201);
     removeBindingObject(paramMessageInfo.getObjectId());
-    AppMethodBeat.o(86087);
+    AppMethodBeat.o(155201);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(86092);
+    AppMethodBeat.i(155206);
     Iterator localIterator = this.mBindingObjects.entrySet().iterator();
     while (localIterator.hasNext()) {
       ((BindingObject)((Map.Entry)localIterator.next()).getValue()).onPause();
     }
-    AppMethodBeat.o(86092);
+    AppMethodBeat.o(155206);
   }
   
   public Object onPostMessageToClass(MessageInfo paramMessageInfo)
   {
     Object localObject1 = null;
-    AppMethodBeat.i(86088);
+    AppMethodBeat.i(155202);
     Object localObject2 = paramMessageInfo.getArgs();
     try
     {
@@ -96,7 +96,7 @@ public class BindingObjectStore
       localMessageInfo.setJsName(str);
       localMessageInfo.setArgs(localJSONArray);
       paramMessageInfo = paramMessageInfo.getExtension().getTargetReflect((String)localObject2).handleMessage(localMessageInfo, null);
-      AppMethodBeat.o(86088);
+      AppMethodBeat.o(155202);
       return paramMessageInfo;
     }
     catch (JSONException paramMessageInfo)
@@ -119,7 +119,7 @@ public class BindingObjectStore
   
   public Object onPostMessageToObject(MessageInfo paramMessageInfo)
   {
-    AppMethodBeat.i(86089);
+    AppMethodBeat.i(155203);
     localObject1 = null;
     for (;;)
     {
@@ -158,7 +158,7 @@ public class BindingObjectStore
       {
         continue;
       }
-      AppMethodBeat.o(86089);
+      AppMethodBeat.o(155203);
       return paramMessageInfo;
       localObject2 = paramMessageInfo.getBinaryArgs();
       ((ByteBuffer)localObject2).order(ByteOrder.LITTLE_ENDIAN);
@@ -176,48 +176,48 @@ public class BindingObjectStore
   
   public void onResume()
   {
-    AppMethodBeat.i(86091);
+    AppMethodBeat.i(155205);
     Iterator localIterator = this.mBindingObjects.entrySet().iterator();
     while (localIterator.hasNext()) {
       ((BindingObject)((Map.Entry)localIterator.next()).getValue()).onResume();
     }
-    AppMethodBeat.o(86091);
+    AppMethodBeat.o(155205);
   }
   
   public void onStart()
   {
-    AppMethodBeat.i(86090);
+    AppMethodBeat.i(155204);
     Iterator localIterator = this.mBindingObjects.entrySet().iterator();
     while (localIterator.hasNext()) {
       ((BindingObject)((Map.Entry)localIterator.next()).getValue()).onStart();
     }
-    AppMethodBeat.o(86090);
+    AppMethodBeat.o(155204);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(86093);
+    AppMethodBeat.i(155207);
     Iterator localIterator = this.mBindingObjects.entrySet().iterator();
     while (localIterator.hasNext()) {
       ((BindingObject)((Map.Entry)localIterator.next()).getValue()).onStop();
     }
-    AppMethodBeat.o(86093);
+    AppMethodBeat.o(155207);
   }
   
   public BindingObject removeBindingObject(String paramString)
   {
-    AppMethodBeat.i(86086);
+    AppMethodBeat.i(155200);
     paramString = (BindingObject)this.mBindingObjects.remove(paramString);
     if (paramString != null) {
       paramString.onJsDestroyed();
     }
-    AppMethodBeat.o(86086);
+    AppMethodBeat.o(155200);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.extension.BindingObjectStore
  * JD-Core Version:    0.7.0.1
  */

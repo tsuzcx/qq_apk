@@ -5,14 +5,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class e
   extends g
 {
-  public int dqS = -1;
-  public String edg;
-  public String[] edh;
-  public String[] edi;
-  public int edj;
-  public int edk;
-  public int edl = -1;
+  public int appType = -1;
+  public int evH = -1;
   public int fileType = 0;
+  public String[] fnA;
+  public int fnB;
+  public int fnC;
+  public String fny;
+  public String[] fnz;
   public String host;
   public boolean isColdSnsData;
   public String referer;
@@ -23,15 +23,15 @@ public class e
   
   public e()
   {
-    this.edB = true;
+    this.fnT = true;
   }
   
-  private static String f(String[] paramArrayOfString)
+  private static String h(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(128595);
+    AppMethodBeat.i(120676);
     if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
     {
-      AppMethodBeat.o(128595);
+      AppMethodBeat.o(120676);
       return "";
     }
     String str1 = "";
@@ -43,21 +43,21 @@ public class e
       str1 = str1 + str2 + ",";
       i += 1;
     }
-    AppMethodBeat.o(128595);
+    AppMethodBeat.o(120676);
     return str1;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(128594);
-    String str = String.format("mediaId:%s, url:%s, host:%s, referer:%s, savepath:%s, iplist:%s, slaveIplist:%siplistSource:%d, dcSource:%d, isColdSnsData:%b, signalQuality:%s, snsScene:%s", new Object[] { this.field_mediaId, this.url, this.host, this.referer, this.edg, f(this.edh), f(this.edi), Integer.valueOf(this.edj), Integer.valueOf(this.edk), Boolean.valueOf(this.isColdSnsData), this.signalQuality, this.snsScene });
-    AppMethodBeat.o(128594);
+    AppMethodBeat.i(120675);
+    String str = String.format("mediaId:%s, url:%s, host:%s, referer:%s, savepath:%s, iplist:%s, slaveIplist:%siplistSource:%d, dcSource:%d, isColdSnsData:%b, signalQuality:%s, snsScene:%s", new Object[] { this.field_mediaId, this.url, this.host, this.referer, this.fny, h(this.fnz), h(this.fnA), Integer.valueOf(this.fnB), Integer.valueOf(this.fnC), Boolean.valueOf(this.isColdSnsData), this.signalQuality, this.snsScene });
+    AppMethodBeat.o(120675);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.i.e
  * JD-Core Version:    0.7.0.1
  */

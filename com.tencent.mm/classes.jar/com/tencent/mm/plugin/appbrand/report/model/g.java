@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
-import com.tencent.mm.plugin.appbrand.page.bf;
-import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.page.ae;
+import com.tencent.mm.plugin.appbrand.page.by;
 
 public abstract interface g
 {
-  public abstract void a(z paramz1, z paramz2, bf parambf);
+  public abstract void a(ae paramae1, ae paramae2, by paramby);
   
-  public abstract void b(z paramz);
+  public abstract void d(ae paramae);
   
-  public abstract void c(z paramz);
+  public abstract void e(ae paramae);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/go"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:id="@id/b1f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="50.0dip" android:indeterminate="true" android:indeterminateOnly="true" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <include layout="@layout/o5" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gp">
+        <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
+        <TextView android:id="@id/ala" android:background="@drawable/l8" android:paddingLeft="20.0dip" android:paddingRight="15.0dip" android:minHeight="@dimen/aa" style="@style/h0" />
+        <TextView android:layout_gravity="right" android:id="@id/ano" android:layout_marginRight="10.0dip" android:text="@string/ahk" style="@style/gf" />
+    </LinearLayout>
+</LinearLayout>

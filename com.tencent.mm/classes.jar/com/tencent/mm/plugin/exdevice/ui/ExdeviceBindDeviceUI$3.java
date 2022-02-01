@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.exdevice.ui;
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.model.j.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 final class ExdeviceBindDeviceUI$3
@@ -15,10 +15,10 @@ final class ExdeviceBindDeviceUI$3
   
   public final void g(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(19828);
+    AppMethodBeat.i(23896);
     if ((paramInt != 10) || (paramVarArgs == null))
     {
-      AppMethodBeat.o(19828);
+      AppMethodBeat.o(23896);
       return;
     }
     paramVarArgs = (byte[])paramVarArgs[0];
@@ -30,7 +30,7 @@ final class ExdeviceBindDeviceUI$3
         localObject1 = localJSONObject.getJSONObject("deviceInfo");
         paramVarArgs = ((JSONObject)localObject1).getString("deviceType");
         Object[] arrayOfObject1;
-        ab.printErrStackTrace("MicroMsg.ExdeviceBindDeviceUI", localException1, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.ExdeviceBindDeviceUI", localException1, "", new Object[0]);
       }
       catch (Exception localException1)
       {
@@ -60,7 +60,7 @@ final class ExdeviceBindDeviceUI$3
           if ((arrayOfObject1 != null) && (localObject1 != null)) {
             break;
           }
-          AppMethodBeat.o(19828);
+          AppMethodBeat.o(23896);
           return;
         }
         catch (Exception localException3)
@@ -72,35 +72,43 @@ final class ExdeviceBindDeviceUI$3
         paramVarArgs = null;
       }
       label125:
-      ab.e("MicroMsg.ExdeviceBindDeviceUI", "json decode failed: deviceInfo decode");
+      ad.e("MicroMsg.ExdeviceBindDeviceUI", "json decode failed: deviceInfo decode");
       arrayOfObject2 = paramVarArgs;
       localObject2 = localObject1;
       label151:
       paramVarArgs = null;
       localObject1 = localObject2;
     }
-    localObject2 = new ExdeviceBindDeviceUI.f(this.lKV, (byte)0);
-    ((ExdeviceBindDeviceUI.f)localObject2).lLp = ExdeviceBindDeviceUI.b.lLg;
-    ((ExdeviceBindDeviceUI.f)localObject2).lLr = new ExdeviceBindDeviceUI.d(this.lKV, (byte)0);
-    ((ExdeviceBindDeviceUI.f)localObject2).lLr.lJz = arrayOfObject2;
-    ((ExdeviceBindDeviceUI.f)localObject2).lLr.lEl = ((String)localObject1);
-    if (!bo.isNullOrNil(paramVarArgs))
+    localObject2 = new ExdeviceBindDeviceUI.f(this.pbF, (byte)0);
+    ((ExdeviceBindDeviceUI.f)localObject2).pbZ = ExdeviceBindDeviceUI.b.pbQ;
+    ((ExdeviceBindDeviceUI.f)localObject2).pcb = new ExdeviceBindDeviceUI.d(this.pbF, (byte)0);
+    ((ExdeviceBindDeviceUI.f)localObject2).pcb.mDeviceType = arrayOfObject2;
+    ((ExdeviceBindDeviceUI.f)localObject2).pcb.oUX = ((String)localObject1);
+    if (!bt.isNullOrNil(paramVarArgs))
     {
-      ((ExdeviceBindDeviceUI.f)localObject2).lLw = Base64.encodeToString(paramVarArgs.getBytes(), 2);
-      ab.i("MicroMsg.ExdeviceBindDeviceUI", "device.mManufacturerData: %s", new Object[] { ((ExdeviceBindDeviceUI.f)localObject2).lLw });
+      ((ExdeviceBindDeviceUI.f)localObject2).pcg = Base64.encodeToString(paramVarArgs.getBytes(), 2);
+      ad.i("MicroMsg.ExdeviceBindDeviceUI", "device.mManufacturerData: %s", new Object[] { ((ExdeviceBindDeviceUI.f)localObject2).pcg });
     }
     for (;;)
     {
-      al.d(new ExdeviceBindDeviceUI.3.1(this, (ExdeviceBindDeviceUI.f)localObject2));
-      AppMethodBeat.o(19828);
+      aq.f(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(23895);
+          ExdeviceBindDeviceUI.3.this.pbF.a(this.pbG);
+          AppMethodBeat.o(23895);
+        }
+      });
+      AppMethodBeat.o(23896);
       return;
-      ((ExdeviceBindDeviceUI.f)localObject2).lLw = null;
+      ((ExdeviceBindDeviceUI.f)localObject2).pcg = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceBindDeviceUI.3
  * JD-Core Version:    0.7.0.1
  */

@@ -5,13 +5,13 @@ import java.util.concurrent.TimeUnit;
 
 public final class e
 {
-  public static final long jZT;
+  public static final long ncr;
   
   static
   {
-    AppMethodBeat.i(14389);
-    jZT = TimeUnit.DAYS.toMillis(7L);
-    AppMethodBeat.o(14389);
+    AppMethodBeat.i(6182);
+    ncr = TimeUnit.DAYS.toMillis(7L);
+    AppMethodBeat.o(6182);
   }
 }
 

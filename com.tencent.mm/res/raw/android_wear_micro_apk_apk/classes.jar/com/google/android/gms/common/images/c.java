@@ -13,13 +13,13 @@ import java.util.concurrent.CountDownLatch;
 final class c
   implements Runnable
 {
-  private final Uri IG;
-  private final ParcelFileDescriptor IJ;
+  private final Uri Kv;
+  private final ParcelFileDescriptor Ky;
   
   public c(ImageManager paramImageManager, Uri paramUri, ParcelFileDescriptor paramParcelFileDescriptor)
   {
-    this.IG = paramUri;
-    this.IJ = paramParcelFileDescriptor;
+    this.Kv = paramUri;
+    this.Ky = paramParcelFileDescriptor;
   }
   
   public final void run()
@@ -35,10 +35,10 @@ final class c
     boolean bool2 = false;
     Object localObject1 = null;
     Object localObject3 = null;
-    if (this.IJ != null) {}
+    if (this.Ky != null) {}
     try
     {
-      localObject1 = BitmapFactory.decodeFileDescriptor(this.IJ.getFileDescriptor());
+      localObject1 = BitmapFactory.decodeFileDescriptor(this.Ky.getFileDescriptor());
       bool1 = bool2;
       String str2;
       Object localObject2;
@@ -51,9 +51,9 @@ final class c
       {
         for (;;)
         {
-          this.IJ.close();
+          this.Ky.close();
           localObject3 = new CountDownLatch(1);
-          ImageManager.g(this.II).post(new d(this.II, this.IG, (Bitmap)localObject1, bool1, (CountDownLatch)localObject3));
+          ImageManager.g(this.Kx).post(new d(this.Kx, this.Kv, (Bitmap)localObject1, bool1, (CountDownLatch)localObject3));
           try
           {
             ((CountDownLatch)localObject3).await();
@@ -61,11 +61,11 @@ final class c
           }
           catch (InterruptedException localInterruptedException)
           {
-            str1 = String.valueOf(this.IG);
+            str1 = String.valueOf(this.Kv);
             Log.w("ImageManager", String.valueOf(str1).length() + 32 + "Latch interrupted while posting " + str1);
           }
           localOutOfMemoryError = localOutOfMemoryError;
-          str2 = String.valueOf(this.IG);
+          str2 = String.valueOf(this.Kv);
           Log.e("ImageManager", String.valueOf(str2).length() + 34 + "OOM while loading bitmap for uri: " + str2, localOutOfMemoryError);
           bool1 = true;
           localObject2 = localObject3;

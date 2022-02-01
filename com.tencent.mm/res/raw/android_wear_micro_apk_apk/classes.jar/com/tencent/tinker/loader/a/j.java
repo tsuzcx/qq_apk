@@ -10,23 +10,23 @@ import java.util.HashMap;
 
 public final class j
 {
-  private static String amu = null;
-  private final HashMap<String, String> amv;
-  private final HashMap<String, String> amw;
+  private static String apW = null;
+  private final HashMap<String, String> apX;
+  private final HashMap<String, String> apY;
   private final Context mContext;
   
   public j(Context paramContext)
   {
     this.mContext = paramContext;
-    this.amv = new HashMap();
-    this.amw = new HashMap();
-    if (amu == null)
+    this.apX = new HashMap();
+    this.apY = new HashMap();
+    if (apW == null)
     {
       paramContext = this.mContext;
       try
       {
         paramContext = f.p(paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 64).signatures[0].toByteArray());
-        amu = paramContext;
+        apW = paramContext;
         if (paramContext == null) {
           throw new TinkerRuntimeException("get public key md5 is null");
         }
@@ -37,9 +37,9 @@ public final class j
       }
       finally
       {
-        f.R(null);
+        f.aa(null);
       }
-      f.R(null);
+      f.aa(null);
     }
   }
   
@@ -51,7 +51,7 @@ public final class j
       while (i >= 0) {
         try
         {
-          boolean bool = amu.equals(f.p(paramArrayOfCertificate[i].getEncoded()));
+          boolean bool = apW.equals(f.p(paramArrayOfCertificate[i].getEncoded()));
           if (bool) {
             return true;
           }
@@ -66,17 +66,17 @@ public final class j
     return false;
   }
   
-  public final HashMap<String, String> ol()
+  public final HashMap<String, String> oY()
   {
-    return this.amv;
+    return this.apX;
   }
   
-  public final HashMap<String, String> om()
+  public final HashMap<String, String> oZ()
   {
-    if (!this.amw.isEmpty()) {
-      return this.amw;
+    if (!this.apY.isEmpty()) {
+      return this.apY;
     }
-    Object localObject = (String)this.amv.get("assets/package_meta.txt");
+    Object localObject = (String)this.apX.get("assets/package_meta.txt");
     if (localObject == null) {
       return null;
     }
@@ -90,12 +90,12 @@ public final class j
       {
         arrayOfString = arrayOfString.split("=", 2);
         if ((arrayOfString != null) && (arrayOfString.length >= 2)) {
-          this.amw.put(arrayOfString[0].trim(), arrayOfString[1].trim());
+          this.apY.put(arrayOfString[0].trim(), arrayOfString[1].trim());
         }
       }
       i += 1;
     }
-    return this.amw;
+    return this.apY;
   }
   
   /* Error */
@@ -136,7 +136,7 @@ public final class j
     //   71: invokevirtual 187	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   74: ifeq -49 -> 25
     //   77: aload_0
-    //   78: getfield 30	com/tencent/tinker/loader/a/j:amv	Ljava/util/HashMap;
+    //   78: getfield 30	com/tencent/tinker/loader/a/j:apX	Ljava/util/HashMap;
     //   81: aload 6
     //   83: aload 4
     //   85: aload 5

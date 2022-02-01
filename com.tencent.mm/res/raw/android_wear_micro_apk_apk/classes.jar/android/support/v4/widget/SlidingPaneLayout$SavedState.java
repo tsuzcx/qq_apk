@@ -10,7 +10,7 @@ class SlidingPaneLayout$SavedState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator() {};
-  boolean pM;
+  boolean rC;
   
   SlidingPaneLayout$SavedState(Parcel paramParcel)
   {
@@ -18,7 +18,7 @@ class SlidingPaneLayout$SavedState
     if (paramParcel.readInt() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.pM = bool;
+      this.rC = bool;
       return;
     }
   }
@@ -31,7 +31,7 @@ class SlidingPaneLayout$SavedState
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    if (this.pM) {}
+    if (this.rC) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);

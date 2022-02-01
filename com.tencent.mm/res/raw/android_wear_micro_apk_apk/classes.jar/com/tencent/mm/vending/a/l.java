@@ -5,18 +5,18 @@ import java.util.HashMap;
 final class l<K, V>
   extends HashMap<K, V>
 {
-  private j Zz = null;
+  private j acZ = null;
   
   public final void a(j paramj)
   {
-    this.Zz = paramj;
+    this.acZ = paramj;
   }
   
   public final void clear()
   {
     super.clear();
-    if (this.Zz != null) {
-      this.Zz.lx();
+    if (this.acZ != null) {
+      this.acZ.me();
     }
   }
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/cf" android:paddingStart="@dimen/c5" android:paddingEnd="@dimen/c5"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/tm" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:src="@drawable/aq8" android:layout_marginEnd="@dimen/ci" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/ahj" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/gu" android:textColor="@color/fg" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/e3t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/c1" android:maxLines="1" android:singleLine="true" />
+            <ImageView android:id="@id/ss" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:src="@drawable/bgx" android:layout_marginStart="@dimen/bq" />
+            <TextView android:textSize="@dimen/gu" android:textColor="@color/yh" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/c5l" android:layout_width="wrap_content" android:layout_height="20.0dip" android:maxLines="1" android:paddingStart="@dimen/bq" android:paddingEnd="@dimen/bq" android:layout_marginStart="@dimen/ci" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/ed" android:textColor="@color/kl" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/sr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/c7" android:maxLines="1" android:singleLine="true" />
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dsu" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@raw/icons_outlined_more" android:layout_marginStart="@dimen/c5" app:iconColor="@color/aj" />
+</LinearLayout>

@@ -1,55 +1,55 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.model.bf.b;
+import com.tencent.mm.model.bi.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h.c;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.m;
 
 public abstract class e
 {
-  public static l yww;
-  protected com.tencent.mm.plugin.messenger.foundation.a.a.h ywv;
+  public static m Fef;
+  protected com.tencent.mm.plugin.messenger.foundation.a.a.h Fee;
   
   public e(com.tencent.mm.plugin.messenger.foundation.a.a.h paramh)
   {
-    this.ywv = paramh;
-  }
-  
-  protected final String TC(String paramString)
-  {
-    return this.ywv.TC(paramString);
-  }
-  
-  protected final void a(com.tencent.mm.cg.h paramh, String paramString)
-  {
-    this.ywv.a(paramh, paramString);
+    this.Fee = paramh;
   }
   
   protected final void a(h.b paramb)
   {
-    this.ywv.a(paramb);
+    this.Fee.a(paramb);
   }
   
   protected final void a(h.c paramc)
   {
-    this.ywv.a(paramc);
+    this.Fee.a(paramc);
   }
   
-  protected boolean a(bi parambi, bf.b paramb)
+  protected boolean a(bl parambl, bi.b paramb)
   {
     return true;
   }
   
-  public abstract String aqO(String paramString);
+  public abstract String aHk(String paramString);
   
-  public final com.tencent.mm.cg.h bPX()
+  protected final String agG(String paramString)
   {
-    return this.ywv.bPX();
+    return this.Fee.agG(paramString);
   }
   
-  protected final void im(String paramString1, String paramString2)
+  protected final void c(com.tencent.mm.storagebase.h paramh, String paramString)
   {
-    this.ywv.b(paramString1, paramString2, null);
+    this.Fee.c(paramh, paramString);
+  }
+  
+  public final com.tencent.mm.storagebase.h getDB()
+  {
+    return this.Fee.getDB();
+  }
+  
+  protected final void kX(String paramString1, String paramString2)
+  {
+    this.Fee.b(paramString1, paramString2, null);
   }
 }
 

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/v2" android:layout_width="fill_parent" android:layout_height="@dimen/ce"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/cbs" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="10.0dip" />
-    <FrameLayout android:id="@id/cbh" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ms" android:layout_marginRight="@dimen/ms">
-        <TextView android:textColor="@color/s4" android:ellipsize="end" android:id="@id/cbl" android:paddingTop="@dimen/ms" android:paddingBottom="@dimen/ms" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
-    </FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="@dimen/c5" android:layout_weight="1.0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/ci" android:src="@raw/icons_outlined_time" />
+        <TextView android:ellipsize="end" android:id="@id/b4d" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="-1.0dip" android:text="{title}" android:singleLine="true" android:layout_weight="1.0" style="@style/m3" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ate" android:paddingLeft="@dimen/ci" android:paddingRight="@dimen/c5" android:layout_width="44.0dip" android:layout_height="fill_parent" android:src="@raw/icons_outlined_close" />
+    </LinearLayout>
+    <View android:id="@id/be0" android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/c5" />
 </LinearLayout>

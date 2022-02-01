@@ -1,126 +1,106 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import android.webkit.WebSettings;
-import com.tencent.luggage.a.e;
-import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
-import com.tencent.mm.plugin.appbrand.appstorage.o;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.jsapi.file.c;
-import com.tencent.mm.plugin.appbrand.s.j;
-import com.tencent.mm.plugin.appbrand.s.q;
-import com.tencent.mm.plugin.appbrand.s.q.a;
-import com.tencent.mm.protocal.protobuf.bbx;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class d
+  extends j<c>
 {
-  public static c a(AppBrandSysConfigLU paramAppBrandSysConfigLU)
+  public static final String[] gLs;
+  public final e iMV;
+  
+  static
   {
-    AppMethodBeat.i(101790);
+    AppMethodBeat.i(146960);
+    gLs = new String[] { j.getCreateSQLs(c.gLr, "AppBrandCommonKVData") };
+    AppMethodBeat.o(146960);
+  }
+  
+  public d(e parame)
+  {
+    super(parame, c.gLr, "AppBrandCommonKVData", null);
+    this.iMV = parame;
+  }
+  
+  public final void FM(String paramString)
+  {
+    AppMethodBeat.i(146959);
+    super.execSQL("AppBrandCommonKVData", String.format("delete from %s where %s like '%s%%'", new Object[] { "AppBrandCommonKVData", "key", paramString }));
+    AppMethodBeat.o(146959);
+  }
+  
+  public final boolean cl(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(146956);
+    if (bt.isNullOrNil(paramString1))
+    {
+      AppMethodBeat.o(146956);
+      return false;
+    }
     c localc = new c();
-    localc.bDx = paramAppBrandSysConfigLU.bDx;
-    if (localc.bDx <= 0L) {
-      localc.bDx = 10L;
+    localc.field_key = paramString1;
+    localc.field_value = paramString2;
+    if (bt.isNullOrNil(localc.field_value))
+    {
+      if (!super.delete(localc, new String[0]))
+      {
+        AppMethodBeat.o(146956);
+        return true;
+      }
+      AppMethodBeat.o(146956);
+      return false;
     }
-    localc.hhZ = paramAppBrandSysConfigLU.bDI.hhZ;
-    if (localc.hhZ <= 0L) {
-      localc.hhZ = 30L;
-    }
-    AppMethodBeat.o(101790);
-    return localc;
+    boolean bool = super.replace(localc);
+    AppMethodBeat.o(146956);
+    return bool;
   }
   
-  public static String ayp()
+  public final String get(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(101791);
-    try
+    AppMethodBeat.i(146957);
+    if (bt.isNullOrNil(paramString1))
     {
-      String str1 = WebSettings.getDefaultUserAgent(ah.getContext());
-      str1 = q.a(ah.getContext(), str1, (q.a)e.q(q.a.class));
-      AppMethodBeat.o(101791);
-      return str1;
+      AppMethodBeat.o(146957);
+      return paramString2;
     }
-    catch (Exception localException)
+    c localc = new c();
+    localc.field_key = paramString1;
+    if (super.get(localc, new String[0]))
     {
-      for (;;)
-      {
-        String str2 = System.getProperty("http.agent");
-      }
+      paramString1 = localc.field_value;
+      AppMethodBeat.o(146957);
+      return paramString1;
     }
+    AppMethodBeat.o(146957);
+    return paramString2;
   }
   
-  public static int p(int... paramVarArgs)
+  public final boolean vv(String paramString)
   {
-    int k = 0;
-    int i = 0;
-    if (k < 2)
+    AppMethodBeat.i(146958);
+    if (bt.isNullOrNil(paramString))
     {
-      int m = paramVarArgs[k];
-      int j;
-      if (m > 0) {
-        if (i == 0) {
-          j = m;
-        }
-      }
-      for (;;)
-      {
-        k += 1;
-        i = j;
-        break;
-        j = m;
-        if (m >= i) {
-          j = i;
-        }
-      }
+      AppMethodBeat.o(146958);
+      return false;
     }
-    return i;
-  }
-  
-  public static ArrayList<byte[]> s(i parami)
-  {
-    AppMethodBeat.i(101789);
-    localArrayList = new ArrayList();
-    Object localObject = new j();
-    parami.wX().b("cer", (j)localObject);
-    if (((j)localObject).value == null)
+    c localc = new c();
+    localc.field_key = paramString;
+    localc.field_value = get(paramString, "");
+    if ((TextUtils.isEmpty(localc.field_value)) || (super.delete(localc, new String[0])))
     {
-      AppMethodBeat.o(101789);
-      return localArrayList;
+      AppMethodBeat.o(146958);
+      return true;
     }
-    localObject = com.tencent.mm.plugin.appbrand.s.d.m((ByteBuffer)((j)localObject).value);
-    try
-    {
-      parami = new bbx();
-      parami.parseFrom((byte[])localObject);
-      localObject = parami.xqY;
-      if (localObject == null)
-      {
-        AppMethodBeat.o(101789);
-        return localArrayList;
-      }
-      parami = parami.xqY.iterator();
-      while (parami.hasNext()) {
-        localArrayList.add(((b)parami.next()).pW);
-      }
-      return localArrayList;
-    }
-    catch (Exception parami)
-    {
-      ab.e("", "readPkgCertificate, parse error: ".concat(String.valueOf(parami)));
-      AppMethodBeat.o(101789);
-    }
+    AppMethodBeat.o(146958);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.d
  * JD-Core Version:    0.7.0.1
  */

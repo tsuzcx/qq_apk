@@ -7,16 +7,16 @@ public class AndroidViewModel
   extends ViewModel
 {
   @SuppressLint({"StaticFieldLeak"})
-  private Application bX;
+  private Application ca;
   
   public AndroidViewModel(Application paramApplication)
   {
-    this.bX = paramApplication;
+    this.ca = paramApplication;
   }
   
   public <T extends Application> T getApplication()
   {
-    return this.bX;
+    return this.ca;
   }
 }
 

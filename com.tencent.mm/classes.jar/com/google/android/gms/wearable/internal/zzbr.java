@@ -18,14 +18,14 @@ public final class zzbr
   
   public zzbr()
   {
-    AppMethodBeat.i(71102);
+    AppMethodBeat.i(101085);
     this.lock = new Object();
-    AppMethodBeat.o(71102);
+    AppMethodBeat.o(101085);
   }
   
   public final void zza(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(71104);
+    AppMethodBeat.i(101087);
     synchronized (this.lock)
     {
       zzbs localzzbs = this.zzda;
@@ -34,14 +34,14 @@ public final class zzbr
       if (localzzbs != null) {
         localzzbs.zzb(localzzav);
       }
-      AppMethodBeat.o(71104);
+      AppMethodBeat.o(101087);
       return;
     }
   }
   
   public final void zza(zzbs paramzzbs)
   {
-    AppMethodBeat.i(71103);
+    AppMethodBeat.i(101086);
     synchronized (this.lock)
     {
       this.zzda = ((zzbs)Preconditions.checkNotNull(paramzzbs));
@@ -49,14 +49,14 @@ public final class zzbr
       if (localzzav != null) {
         paramzzbs.zzb(localzzav);
       }
-      AppMethodBeat.o(71103);
+      AppMethodBeat.o(101086);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzbr
  * JD-Core Version:    0.7.0.1
  */

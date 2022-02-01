@@ -13,6 +13,16 @@ public final class g
     return paramMarginLayoutParams.leftMargin;
   }
   
+  public static void a(ViewGroup.MarginLayoutParams paramMarginLayoutParams, int paramInt)
+  {
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      paramMarginLayoutParams.setMarginEnd(paramInt);
+      return;
+    }
+    paramMarginLayoutParams.rightMargin = paramInt;
+  }
+  
   public static int b(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
   {
     if (Build.VERSION.SDK_INT >= 17) {

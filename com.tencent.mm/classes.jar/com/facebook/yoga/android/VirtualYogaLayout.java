@@ -23,11 +23,11 @@ public class VirtualYogaLayout
   public VirtualYogaLayout(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(144200);
+    AppMethodBeat.i(18223);
     this.mChildren = new LinkedList();
     this.mYogaNodes = new HashMap();
     this.mYogaNode = new YogaNode();
-    AppMethodBeat.o(144200);
+    AppMethodBeat.o(18223);
   }
   
   public VirtualYogaLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -38,23 +38,23 @@ public class VirtualYogaLayout
   public VirtualYogaLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(144201);
+    AppMethodBeat.i(18224);
     this.mChildren = new LinkedList();
     this.mYogaNodes = new HashMap();
     this.mYogaNode = new YogaNode();
     YogaLayout.applyLayoutParams(new YogaLayout.LayoutParams(paramContext, paramAttributeSet), this.mYogaNode, this);
-    AppMethodBeat.o(144201);
+    AppMethodBeat.o(18224);
   }
   
   public void addView(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(144202);
+    AppMethodBeat.i(18225);
     if ((paramView instanceof VirtualYogaLayout))
     {
       ((VirtualYogaLayout)paramView).transferChildren(this);
       paramView = ((VirtualYogaLayout)paramView).getYogaNode();
       this.mYogaNode.addChildAt(paramView, this.mYogaNode.getChildCount());
-      AppMethodBeat.o(144202);
+      AppMethodBeat.o(18225);
       return;
     }
     YogaNode localYogaNode = new YogaNode();
@@ -63,15 +63,15 @@ public class VirtualYogaLayout
     localYogaNode.setMeasureFunction(new YogaLayout.ViewMeasureFunction());
     this.mYogaNode.addChildAt(localYogaNode, this.mYogaNode.getChildCount());
     addView(paramView, localYogaNode);
-    AppMethodBeat.o(144202);
+    AppMethodBeat.o(18225);
   }
   
   public void addView(View paramView, YogaNode paramYogaNode)
   {
-    AppMethodBeat.i(144203);
+    AppMethodBeat.i(18226);
     this.mChildren.add(paramView);
     this.mYogaNodes.put(paramView, paramYogaNode);
-    AppMethodBeat.o(144203);
+    AppMethodBeat.o(18226);
   }
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -81,25 +81,25 @@ public class VirtualYogaLayout
   
   protected ViewGroup.LayoutParams generateDefaultLayoutParams()
   {
-    AppMethodBeat.i(144207);
+    AppMethodBeat.i(18230);
     YogaLayout.LayoutParams localLayoutParams = new YogaLayout.LayoutParams(-1, -1);
-    AppMethodBeat.o(144207);
+    AppMethodBeat.o(18230);
     return localLayoutParams;
   }
   
   public ViewGroup.LayoutParams generateLayoutParams(AttributeSet paramAttributeSet)
   {
-    AppMethodBeat.i(144206);
+    AppMethodBeat.i(18229);
     paramAttributeSet = new YogaLayout.LayoutParams(getContext(), paramAttributeSet);
-    AppMethodBeat.o(144206);
+    AppMethodBeat.o(18229);
     return paramAttributeSet;
   }
   
   protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(144208);
+    AppMethodBeat.i(18231);
     paramLayoutParams = new YogaLayout.LayoutParams(paramLayoutParams);
-    AppMethodBeat.o(144208);
+    AppMethodBeat.o(18231);
     return paramLayoutParams;
   }
   
@@ -110,15 +110,15 @@ public class VirtualYogaLayout
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(144205);
+    AppMethodBeat.i(18228);
     RuntimeException localRuntimeException = new RuntimeException("Attempting to layout a VirtualYogaLayout");
-    AppMethodBeat.o(144205);
+    AppMethodBeat.o(18228);
     throw localRuntimeException;
   }
   
   protected void transferChildren(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(144204);
+    AppMethodBeat.i(18227);
     Iterator localIterator;
     View localView;
     if ((paramViewGroup instanceof VirtualYogaLayout))
@@ -140,15 +140,15 @@ public class VirtualYogaLayout
       }
     }
     paramViewGroup = new RuntimeException("VirtualYogaLayout cannot transfer children to ViewGroup of type " + paramViewGroup.getClass().getCanonicalName() + ".  Must either be a VirtualYogaLayout or a YogaLayout.");
-    AppMethodBeat.o(144204);
+    AppMethodBeat.o(18227);
     throw paramViewGroup;
     this.mChildren.clear();
-    AppMethodBeat.o(144204);
+    AppMethodBeat.o(18227);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.facebook.yoga.android.VirtualYogaLayout
  * JD-Core Version:    0.7.0.1
  */

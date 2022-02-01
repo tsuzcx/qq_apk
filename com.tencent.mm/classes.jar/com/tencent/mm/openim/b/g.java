@@ -1,47 +1,46 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.amz;
-import com.tencent.mm.protocal.protobuf.ana;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.axe;
+import com.tencent.mm.protocal.protobuf.axf;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class g
-  extends m
+  extends n
   implements k
 {
-  private f callback;
-  private final String gfK;
+  private com.tencent.mm.al.g callback;
+  private final String dlX;
   private final b rr;
   
   public g(String paramString)
   {
-    AppMethodBeat.i(78852);
+    AppMethodBeat.i(151196);
     b.a locala = new b.a();
-    locala.fsX = new amz();
-    locala.fsY = new ana();
+    locala.gUU = new axe();
+    locala.gUV = new axf();
     locala.uri = "/cgi-bin/micromsg-bin/getopenimchatroomqrcode";
     locala.funcId = 890;
-    this.rr = locala.ado();
-    this.gfK = paramString;
-    ((amz)this.rr.fsV.fta).gfM = paramString;
-    ab.i("MicroMsg.Openim.NetSceneGetOpenIMChatroomQRCode", "get roomname:%s", new Object[] { paramString });
-    AppMethodBeat.o(78852);
+    this.rr = locala.atI();
+    this.dlX = paramString;
+    ((axe)this.rr.gUS.gUX).hNI = paramString;
+    ad.i("MicroMsg.Openim.NetSceneGetOpenIMChatroomQRCode", "get roomname:%s", new Object[] { paramString });
+    AppMethodBeat.o(151196);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(78854);
-    this.callback = paramf;
+    AppMethodBeat.i(151198);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(78854);
+    AppMethodBeat.o(151198);
     return i;
   }
   
@@ -52,17 +51,17 @@ public final class g
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(78853);
-    ab.i("MicroMsg.Openim.NetSceneGetOpenIMChatroomQRCode", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, roomname:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.gfK });
+    AppMethodBeat.i(151197);
+    ad.i("MicroMsg.Openim.NetSceneGetOpenIMChatroomQRCode", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, roomname:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.dlX });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(78853);
+    AppMethodBeat.o(151197);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.b.g
  * JD-Core Version:    0.7.0.1
  */

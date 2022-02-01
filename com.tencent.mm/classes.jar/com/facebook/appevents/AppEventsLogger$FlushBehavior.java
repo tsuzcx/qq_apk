@@ -6,18 +6,18 @@ public enum AppEventsLogger$FlushBehavior
 {
   static
   {
-    AppMethodBeat.i(71913);
+    AppMethodBeat.i(17349);
     AUTO = new FlushBehavior("AUTO", 0);
     EXPLICIT_ONLY = new FlushBehavior("EXPLICIT_ONLY", 1);
     $VALUES = new FlushBehavior[] { AUTO, EXPLICIT_ONLY };
-    AppMethodBeat.o(71913);
+    AppMethodBeat.o(17349);
   }
   
   private AppEventsLogger$FlushBehavior() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.facebook.appevents.AppEventsLogger.FlushBehavior
  * JD-Core Version:    0.7.0.1
  */

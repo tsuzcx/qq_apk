@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge>
-    <RelativeLayout android:id="@id/bpy" android:background="@color/oc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <RelativeLayout android:id="@id/bpz" android:background="@color/oa" android:paddingLeft="48.0dip" android:paddingRight="48.0dip" android:paddingBottom="@dimen/l5" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/bq0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:src="@drawable/b62" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="18.0dip" android:textColor="@color/a6q" android:gravity="center_horizontal" android:id="@id/bq1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/m7" android:text="@string/bmw" android:layout_below="@id/bq0" android:layout_centerHorizontal="true" style="@style/o2" />
-            <TextView android:textSize="18.0dip" android:textColor="@color/a6q" android:gravity="left" android:id="@id/bq2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/bq1" android:layout_alignTop="@id/bq1" style="@style/o2" />
-            <Button android:textColor="@color/a7l" android:id="@id/bq3" android:background="@null" android:visibility="invisible" android:layout_marginTop="40.0dip" android:text="@string/bmx" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/mt" />
-            <Button android:textSize="@dimen/lj" android:textColor="@color/a7l" android:id="@id/b02" android:visibility="invisible" android:text="@string/bmx" android:layout_above="@id/bq3" android:layout_centerHorizontal="true" style="@style/pc" />
-        </RelativeLayout>
-        <TextView android:textSize="@dimen/nh" android:textColor="@color/a95" android:id="@id/bq4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l2" android:text="@string/bme" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-        <Button android:id="@id/bq5" android:visibility="gone" style="@style/id" />
-    </RelativeLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/bl6" android:background="@drawable/emoji_sticker_select_frame" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/bl7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
 </merge>

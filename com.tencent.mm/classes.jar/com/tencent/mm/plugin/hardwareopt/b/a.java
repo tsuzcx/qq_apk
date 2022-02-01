@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.hardwareopt.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.auq;
+import com.tencent.mm.protocal.protobuf.bfs;
 
 public class a
 {
-  private static volatile a nGU = null;
-  private auq nGV = null;
+  private static volatile a suB = null;
+  private bfs suC = null;
   
-  public static a bHP()
+  public static a cFG()
   {
-    AppMethodBeat.i(59273);
-    if (nGU == null) {
+    AppMethodBeat.i(55555);
+    if (suB == null) {
       try
       {
-        if (nGU == null) {
-          nGU = new a();
+        if (suB == null) {
+          suB = new a();
         }
-        a locala1 = nGU;
+        a locala1 = suB;
         return locala1;
       }
       finally
       {
-        AppMethodBeat.o(59273);
+        AppMethodBeat.o(55555);
       }
     }
-    a locala2 = nGU;
-    AppMethodBeat.o(59273);
+    a locala2 = suB;
+    AppMethodBeat.o(55555);
     return locala2;
   }
   
-  public final auq bHQ()
+  public final bfs cFH()
   {
-    AppMethodBeat.i(59274);
-    if (this.nGV == null) {
-      this.nGV = new auq();
+    AppMethodBeat.i(55556);
+    if (this.suC == null) {
+      this.suC = new bfs();
     }
-    auq localauq = this.nGV;
-    AppMethodBeat.o(59274);
-    return localauq;
+    bfs localbfs = this.suC;
+    AppMethodBeat.o(55556);
+    return localbfs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hardwareopt.b.a
  * JD-Core Version:    0.7.0.1
  */

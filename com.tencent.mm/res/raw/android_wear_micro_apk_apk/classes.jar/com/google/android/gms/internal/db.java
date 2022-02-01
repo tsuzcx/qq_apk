@@ -67,7 +67,7 @@ public abstract class db
       if (paramParcel1.readInt() != 0) {}
       for (bool1 = true;; bool1 = false)
       {
-        z(bool1);
+        C(bool1);
         paramParcel2.writeNoException();
         return true;
       }
@@ -82,7 +82,7 @@ public abstract class db
       return true;
     case 7: 
       paramParcel1.enforceInterface("com.google.android.gms.signin.internal.ISignInService");
-      bo(paramParcel1.readInt());
+      bI(paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
     case 8: 
@@ -134,7 +134,7 @@ public abstract class db
     if (paramParcel1.readInt() != 0) {
       bool1 = true;
     }
-    A(bool1);
+    D(bool1);
     paramParcel2.writeNoException();
     return true;
   }

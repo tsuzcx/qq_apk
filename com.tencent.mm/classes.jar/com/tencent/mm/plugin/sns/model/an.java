@@ -1,113 +1,75 @@
 package com.tencent.mm.plugin.sns.model;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.pe;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.security.MessageDigest;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mm.b.g;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class an
 {
-  private static final int rib;
+  private static final Map<String, String> wIX;
   
   static
   {
-    AppMethodBeat.i(36596);
-    rib = com.tencent.mm.m.g.Nq().getInt("SnsUseWeiShiShootingEntranceDisplayTimes", 0);
-    AppMethodBeat.o(36596);
+    AppMethodBeat.i(95922);
+    wIX = new HashMap();
+    AppMethodBeat.o(95922);
   }
   
-  public static boolean cpC()
+  public static String iF(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(36594);
-    com.tencent.mm.kernel.g.RM();
-    int i = ((Integer)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yKA, Integer.valueOf(0))).intValue();
-    ab.d("MicroMsg.SnsLogic", "checkWeishiExposeCount now=%d limit=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(rib) });
-    if (i < rib)
+    AppMethodBeat.i(95920);
+    if ((paramString1 == null) || (paramString2 == null))
     {
-      com.tencent.mm.kernel.g.RM();
-      com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yKA, Integer.valueOf(i + 1));
+      AppMethodBeat.o(95920);
+      return "";
     }
-    for (boolean bool = true;; bool = false)
+    boolean bool = Looper.getMainLooper().equals(Looper.myLooper());
+    if ((bool) && (wIX.containsKey(paramString1 + paramString2)))
     {
-      AppMethodBeat.o(36594);
-      return bool;
-    }
-  }
-  
-  public static void e(ArrayList<String> paramArrayList, String paramString)
-  {
-    AppMethodBeat.i(36593);
-    if ((paramArrayList == null) || (paramArrayList.size() == 0))
-    {
-      AppMethodBeat.o(36593);
-      return;
-    }
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      int i = bo.getInt((String)paramArrayList.next(), 0);
-      if (i != 0)
+      str = (String)wIX.get(paramString1 + paramString2);
+      if (!bt.isNullOrNil(str))
       {
-        Object localObject = ag.cpf().Ez(i);
-        if (localObject != null)
-        {
-          TimeLineObject localTimeLineObject = ((n)localObject).csh();
-          if ((localTimeLineObject != null) && (localTimeLineObject.xTS != null) && (localTimeLineObject.xTS.wNZ == 26))
-          {
-            localTimeLineObject.xTS.wOc = paramString;
-            ag.cpf().b(i, (n)localObject);
-            localObject = new pe();
-            ((pe)localObject).cFO.cFP = i;
-            a.ymk.l((b)localObject);
-          }
-        }
+        AppMethodBeat.o(95920);
+        return str;
       }
     }
-    AppMethodBeat.o(36593);
+    String str = g.getMessageDigest(paramString2.getBytes());
+    StringBuffer localStringBuffer = new StringBuffer(paramString1);
+    if (str.length() > 0)
+    {
+      localStringBuffer.append(str.charAt(0));
+      localStringBuffer.append("/");
+    }
+    if (str.length() >= 2)
+    {
+      localStringBuffer.append(str.charAt(1));
+      localStringBuffer.append("/");
+    }
+    if (bool) {
+      wIX.put(paramString1 + paramString2, localStringBuffer.toString());
+    }
+    paramString1 = localStringBuffer.toString();
+    AppMethodBeat.o(95920);
+    return paramString1;
   }
   
-  public static boolean eT(Context paramContext)
+  public static void release()
   {
-    bool1 = true;
-    AppMethodBeat.i(36595);
     try
     {
-      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.weishi", 64);
-      if (paramContext == null) {
-        break label87;
-      }
-      paramContext = paramContext.signatures[0].toByteArray();
-      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-      localMessageDigest.update(paramContext);
-      boolean bool2 = bo.isEqual(com.tencent.e.f.e.bytesToHexString(localMessageDigest.digest()), "2A281593D71DF33374E6124E9106DF08");
-      if (!bool2) {
-        break label87;
-      }
+      AppMethodBeat.i(95921);
+      wIX.clear();
+      AppMethodBeat.o(95921);
+      return;
     }
-    catch (Exception paramContext)
+    finally
     {
-      for (;;)
-      {
-        ab.w("MicroMsg.SnsLogic", "checkWeishiInstalled Exception: %s", new Object[] { paramContext.getMessage() });
-        bool1 = false;
-      }
+      localObject = finally;
+      throw localObject;
     }
-    AppMethodBeat.o(36595);
-    return bool1;
   }
 }
 

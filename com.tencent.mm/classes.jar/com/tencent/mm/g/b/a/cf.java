@@ -6,129 +6,78 @@ import com.tencent.mm.plugin.report.a;
 public final class cf
   extends a
 {
-  public long cRG = 0L;
-  private String cZA = "";
-  public long cZB = 0L;
-  public long cZD = 0L;
-  public cf.a daL;
-  public long daM = 0L;
-  private String dar = "";
-  private long dat = 0L;
-  public long dau = 0L;
-  public long dav = 0L;
+  private String dKv = "";
+  public long dPH = 0L;
+  public int dQO = 0;
+  public long dQP = 0L;
+  public long dQQ = 0L;
+  private String dQR = "";
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(128694);
+    AppMethodBeat.i(121777);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dar);
+    ((StringBuffer)localObject).append(this.dQO);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cZA);
+    ((StringBuffer)localObject).append(this.dKv);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cZB);
+    ((StringBuffer)localObject).append(this.dPH);
     ((StringBuffer)localObject).append(",");
-    if (this.daL != null) {}
-    for (int i = this.daL.value;; i = -1)
-    {
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.cZD);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dat);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.cRG);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dau);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dav);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.daM);
-      localObject = ((StringBuffer)localObject).toString();
-      Yp((String)localObject);
-      AppMethodBeat.o(128694);
-      return localObject;
-    }
-  }
-  
-  public final String Fg()
-  {
-    AppMethodBeat.i(128695);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("InstanceId:").append(this.dar);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppId:").append(this.cZA);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppVersion:").append(this.cZB);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppState:").append(this.daL);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppType:").append(this.cZD);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CostTimeMs:").append(this.dat);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Scene:").append(this.cRG);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StartTimeStampMs:").append(this.dau);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EndTimeStampMs:").append(this.dav);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isFromAndroidRecents:").append(this.daM);
+    ((StringBuffer)localObject).append(this.dQP);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dQQ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dQR);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(128695);
+    ams((String)localObject);
+    AppMethodBeat.o(121777);
     return localObject;
   }
   
-  public final cf eK(long paramLong)
+  public final String PW()
   {
-    AppMethodBeat.i(128691);
-    this.dat = paramLong;
-    super.ay("CostTimeMs", this.dat);
-    AppMethodBeat.o(128691);
-    return this;
-  }
-  
-  public final cf eL(long paramLong)
-  {
-    AppMethodBeat.i(128692);
-    this.dau = paramLong;
-    super.az("StartTimeStampMs", this.dau);
-    AppMethodBeat.o(128692);
-    return this;
-  }
-  
-  public final cf eM(long paramLong)
-  {
-    AppMethodBeat.i(128693);
-    this.dav = paramLong;
-    super.az("EndTimeStampMs", this.dav);
-    AppMethodBeat.o(128693);
-    return this;
+    AppMethodBeat.i(121778);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("PId:").append(this.dQO);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("PName:").append(this.dKv);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Seq:").append(this.dPH);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SubSeq:").append(this.dQP);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SubSeqSum:").append(this.dQQ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("DataContent:").append(this.dQR);
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(121778);
+    return localObject;
   }
   
   public final int getId()
   {
-    return 16898;
+    return 16974;
   }
   
-  public final cf hi(String paramString)
+  public final cf iU(String paramString)
   {
-    AppMethodBeat.i(128689);
-    this.dar = t("InstanceId", paramString, true);
-    AppMethodBeat.o(128689);
+    AppMethodBeat.i(121775);
+    this.dKv = t("PName", paramString, true);
+    AppMethodBeat.o(121775);
     return this;
   }
   
-  public final cf hj(String paramString)
+  public final cf iV(String paramString)
   {
-    AppMethodBeat.i(128690);
-    this.cZA = t("AppId", paramString, true);
-    AppMethodBeat.o(128690);
+    AppMethodBeat.i(121776);
+    this.dQR = t("DataContent", paramString, false);
+    AppMethodBeat.o(121776);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.b.a.cf
  * JD-Core Version:    0.7.0.1
  */

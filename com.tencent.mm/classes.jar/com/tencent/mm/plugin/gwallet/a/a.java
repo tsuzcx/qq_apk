@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends Exception
 {
-  c nGm;
+  c ssK;
   
   public a(int paramInt, String paramString)
   {
     this(new c(paramInt, paramString));
-    AppMethodBeat.i(41689);
-    AppMethodBeat.o(41689);
+    AppMethodBeat.i(64585);
+    AppMethodBeat.o(64585);
   }
   
   private a(c paramc)
@@ -21,20 +21,20 @@ public final class a
   
   private a(c paramc, Exception paramException)
   {
-    super(paramc.nGF, paramException);
-    this.nGm = paramc;
+    super(paramc.ste, paramException);
+    this.ssK = paramc;
   }
   
   public a(String paramString, Exception paramException)
   {
     this(new c(-1001, paramString), paramException);
-    AppMethodBeat.i(41690);
-    AppMethodBeat.o(41690);
+    AppMethodBeat.i(64586);
+    AppMethodBeat.o(64586);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.gwallet.a.a
  * JD-Core Version:    0.7.0.1
  */

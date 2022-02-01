@@ -1,7 +1,7 @@
 package com.tencent.mapsdk.raster.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tencentmap.mapsdk.a.g;
+import java.util.Arrays;
 
 public final class VisibleRegion
 {
@@ -29,24 +29,24 @@ public final class VisibleRegion
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(101225);
+    AppMethodBeat.i(87581);
     if (this == paramObject)
     {
-      AppMethodBeat.o(101225);
+      AppMethodBeat.o(87581);
       return true;
     }
     if (!(paramObject instanceof VisibleRegion))
     {
-      AppMethodBeat.o(101225);
+      AppMethodBeat.o(87581);
       return false;
     }
     paramObject = (VisibleRegion)paramObject;
     if ((getNearLeft().equals(paramObject.getNearLeft())) && (getNearRight().equals(paramObject.getNearRight())) && (getFarLeft().equals(paramObject.getFarLeft())) && (getFarRight().equals(paramObject.getFarRight())) && (getLatLngBounds().equals(paramObject.getLatLngBounds())))
     {
-      AppMethodBeat.o(101225);
+      AppMethodBeat.o(87581);
       return true;
     }
-    AppMethodBeat.o(101225);
+    AppMethodBeat.o(87581);
     return false;
   }
   
@@ -82,23 +82,23 @@ public final class VisibleRegion
   
   public final int hashCode()
   {
-    AppMethodBeat.i(101224);
-    int i = g.a(new Object[] { getNearLeft(), getNearRight(), getFarLeft(), getFarRight(), getLatLngBounds() });
-    AppMethodBeat.o(101224);
+    AppMethodBeat.i(87580);
+    int i = Arrays.hashCode(new Object[] { getNearLeft(), getNearRight(), getFarLeft(), getFarRight(), getLatLngBounds() });
+    AppMethodBeat.o(87580);
     return i;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(101226);
-    String str = g.a(new String[] { g.a("nearLeft", getNearLeft()), g.a("nearRight", getNearRight()), g.a("farLeft", getFarLeft()), g.a("farRight", getFarRight()), g.a("latLngBounds", getLatLngBounds()) });
-    AppMethodBeat.o(101226);
+    AppMethodBeat.i(87582);
+    String str = "nearLeft" + this.nearLeft + "nearRight" + this.nearRight + "farLeft" + this.farLeft + "farRight" + this.farRight + "latLngBounds" + this.latLngBounds;
+    AppMethodBeat.o(87582);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.VisibleRegion
  * JD-Core Version:    0.7.0.1
  */

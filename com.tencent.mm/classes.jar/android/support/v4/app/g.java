@@ -103,7 +103,10 @@ public abstract class g
     public void onFragmentViewDestroyed(g paramg, Fragment paramFragment) {}
   }
   
-  public static abstract interface c {}
+  public static abstract interface c
+  {
+    public abstract void onBackStackChanged();
+  }
 }
 
 

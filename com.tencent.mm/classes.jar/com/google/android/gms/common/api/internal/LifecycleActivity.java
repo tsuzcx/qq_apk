@@ -13,10 +13,10 @@ public class LifecycleActivity
   
   public LifecycleActivity(Activity paramActivity)
   {
-    AppMethodBeat.i(89480);
+    AppMethodBeat.i(4502);
     Preconditions.checkNotNull(paramActivity, "Activity must not be null");
     this.zzkz = paramActivity;
-    AppMethodBeat.o(89480);
+    AppMethodBeat.o(4502);
   }
   
   public final boolean zzbv()

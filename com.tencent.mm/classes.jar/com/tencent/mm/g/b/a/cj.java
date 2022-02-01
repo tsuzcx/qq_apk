@@ -2,141 +2,166 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bo;
 
 public final class cj
   extends a
 {
-  public long cRG = 0L;
-  private String cZA = "";
-  public long cZB = 0L;
-  public long cZD = 0L;
-  private String dar = "";
-  private long dat = 0L;
-  private long dau = 0L;
-  public long dav = 0L;
-  public cj.a dbh;
-  public long dbi = 0L;
-  private String dbj = "";
+  private long dHq;
+  private String dHr;
+  private long dKe = 0L;
+  private String dNe;
+  private String dRb;
+  private String dRc;
+  private long dRd = 0L;
+  private long dRe = 0L;
+  private long dRf;
+  private String dRg;
+  private long dRh = 0L;
+  private long dRi = 0L;
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(128732);
+    AppMethodBeat.i(187845);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dar);
+    ((StringBuffer)localObject).append(this.dHr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cZA);
+    ((StringBuffer)localObject).append(this.dNe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cZB);
+    ((StringBuffer)localObject).append(this.dKe);
     ((StringBuffer)localObject).append(",");
-    if (this.dbh != null) {}
-    for (int i = this.dbh.value;; i = -1)
-    {
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.cZD);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dat);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.cRG);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dau);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dav);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dbi);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dbj);
-      localObject = ((StringBuffer)localObject).toString();
-      Yp((String)localObject);
-      AppMethodBeat.o(128732);
-      return localObject;
-    }
-  }
-  
-  public final String Fg()
-  {
-    AppMethodBeat.i(128733);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("InstanceId:").append(this.dar);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppId:").append(this.cZA);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppVersion:").append(this.cZB);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppState:").append(this.dbh);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppType:").append(this.cZD);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CostTimeMs:").append(this.dat);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Scene:").append(this.cRG);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StartTimeStampMs:").append(this.dau);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EndTimeStampMs:").append(this.dav);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("fileSize:").append(this.dbi);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("filePath:").append(this.dbj);
+    ((StringBuffer)localObject).append(this.dRb);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dRc);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dRd);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dRe);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dRf);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dRg);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dHq);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dRh);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dRi);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(128733);
+    ams((String)localObject);
+    AppMethodBeat.o(187845);
     return localObject;
   }
   
-  public final cj Ha()
+  public final String PW()
   {
-    AppMethodBeat.i(128730);
-    this.dav = bo.aoy();
-    super.az("EndTimeStampMs", this.dav);
-    AppMethodBeat.o(128730);
+    AppMethodBeat.i(187846);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("SessionId:").append(this.dHr);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SearchId:").append(this.dNe);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Scene:").append(this.dKe);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickMD5:").append(this.dRb);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("QueryMD5:").append(this.dRc);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Offset:").append(this.dRd);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Pos:").append(this.dRe);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClientTimestamp:").append(this.dRf);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RequestId:").append(this.dRg);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ActionType:").append(this.dHq);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Tab:").append(this.dRh);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsSelf:").append(this.dRi);
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(187846);
+    return localObject;
+  }
+  
+  public final cj QB()
+  {
+    this.dKe = 59L;
     return this;
   }
   
-  public final cj eS(long paramLong)
+  public final cj fa(long paramLong)
   {
-    AppMethodBeat.i(128728);
-    this.dat = paramLong;
-    super.ay("CostTimeMs", this.dat);
-    AppMethodBeat.o(128728);
+    this.dRd = paramLong;
     return this;
   }
   
-  public final cj eT(long paramLong)
+  public final cj fb(long paramLong)
   {
-    AppMethodBeat.i(128729);
-    this.dau = paramLong;
-    super.az("StartTimeStampMs", this.dau);
-    AppMethodBeat.o(128729);
+    this.dRe = paramLong;
+    return this;
+  }
+  
+  public final cj fc(long paramLong)
+  {
+    this.dRf = paramLong;
+    return this;
+  }
+  
+  public final cj fd(long paramLong)
+  {
+    this.dHq = paramLong;
+    return this;
+  }
+  
+  public final cj fe(long paramLong)
+  {
+    this.dRi = paramLong;
     return this;
   }
   
   public final int getId()
   {
-    return 16007;
+    return 19651;
   }
   
-  public final cj hq(String paramString)
+  public final cj iY(String paramString)
   {
-    AppMethodBeat.i(128726);
-    this.dar = t("InstanceId", paramString, true);
-    AppMethodBeat.o(128726);
+    AppMethodBeat.i(187840);
+    this.dHr = t("SessionId", paramString, true);
+    AppMethodBeat.o(187840);
     return this;
   }
   
-  public final cj hr(String paramString)
+  public final cj iZ(String paramString)
   {
-    AppMethodBeat.i(128727);
-    this.cZA = t("AppId", paramString, true);
-    AppMethodBeat.o(128727);
+    AppMethodBeat.i(187841);
+    this.dNe = t("SearchId", paramString, true);
+    AppMethodBeat.o(187841);
     return this;
   }
   
-  public final cj hs(String paramString)
+  public final cj ja(String paramString)
   {
-    AppMethodBeat.i(128731);
-    this.dbj = t("filePath", paramString, true);
-    AppMethodBeat.o(128731);
+    AppMethodBeat.i(187842);
+    this.dRb = t("ClickMD5", paramString, true);
+    AppMethodBeat.o(187842);
+    return this;
+  }
+  
+  public final cj jb(String paramString)
+  {
+    AppMethodBeat.i(187843);
+    this.dRc = t("QueryMD5", paramString, true);
+    AppMethodBeat.o(187843);
+    return this;
+  }
+  
+  public final cj jc(String paramString)
+  {
+    AppMethodBeat.i(187844);
+    this.dRg = t("RequestId", paramString, true);
+    AppMethodBeat.o(187844);
     return this;
   }
 }

@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.music.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.sl;
-import com.tencent.mm.protocal.protobuf.sm;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.vd;
+import com.tencent.mm.protocal.protobuf.ve;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
-  extends m
+  extends n
   implements k
 {
-  private f callback;
-  private b fBd;
-  public sl oZM;
+  private g callback;
+  private b hdD;
+  public vd tWX;
   
   public a(int paramInt, com.tencent.mm.plugin.music.model.e.a parama)
   {
-    AppMethodBeat.i(104962);
+    AppMethodBeat.i(63093);
     b.a locala = new b.a();
     locala.funcId = 940;
     locala.uri = "/cgi-bin/micromsg-bin/checkmusic";
-    locala.fsX = new sl();
-    locala.fsY = new sm();
-    this.fBd = locala.ado();
-    this.oZM = ((sl)this.fBd.fsV.fta);
-    this.oZM.Scene = paramInt;
-    this.oZM.fKw = parama.field_appId;
-    this.oZM.wKO = parama.field_songAlbumUrl;
-    this.oZM.wKP = parama.field_songHAlbumUrl;
-    this.oZM.wKR = parama.field_songWifiUrl;
-    this.oZM.wKS = parama.field_songWapLinkUrl;
-    this.oZM.wKQ = parama.field_songWebUrl;
-    this.oZM.Title = parama.field_songName;
-    this.oZM.fKj = parama.field_musicId;
-    AppMethodBeat.o(104962);
+    locala.gUU = new vd();
+    locala.gUV = new ve();
+    this.hdD = locala.atI();
+    this.tWX = ((vd)this.hdD.gUS.gUX);
+    this.tWX.Scene = paramInt;
+    this.tWX.hnC = parama.field_appId;
+    this.tWX.CXd = parama.field_songAlbumUrl;
+    this.tWX.CXe = parama.field_songHAlbumUrl;
+    this.tWX.CXg = parama.field_songWifiUrl;
+    this.tWX.CXh = parama.field_songWapLinkUrl;
+    this.tWX.CXf = parama.field_songWebUrl;
+    this.tWX.Title = parama.field_songName;
+    this.tWX.hnp = parama.field_musicId;
+    AppMethodBeat.o(63093);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(104963);
-    this.callback = paramf;
-    int i = dispatch(parame, this.fBd, this);
-    AppMethodBeat.o(104963);
+    AppMethodBeat.i(63094);
+    this.callback = paramg;
+    int i = dispatch(parame, this.hdD, this);
+    AppMethodBeat.o(63094);
     return i;
   }
   
@@ -59,15 +59,15 @@ public final class a
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(104964);
-    ab.i("MicroMsg.Music.NetSceneCheckMusic", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(63095);
+    ad.i("MicroMsg.Music.NetSceneCheckMusic", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(104964);
+    AppMethodBeat.o(63095);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.b.a
  * JD-Core Version:    0.7.0.1
  */

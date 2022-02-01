@@ -6,21 +6,21 @@ import android.graphics.Bitmap.Config;
 final class d
   implements b
 {
-  public final Bitmap.Config dFm()
+  public final Bitmap d(Bitmap paramBitmap, float paramFloat)
   {
-    return Bitmap.Config.ARGB_8888;
+    return paramBitmap;
   }
   
   public final void destroy() {}
   
-  public final Bitmap e(Bitmap paramBitmap, float paramFloat)
+  public final Bitmap.Config eUf()
   {
-    return paramBitmap;
+    return Bitmap.Config.ARGB_8888;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.blur.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
 package kotlinx.coroutines;
 
-import a.l;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/DispatchException;", "Ljava/lang/RuntimeException;", "Lkotlin/RuntimeException;", "message", "", "cause", "", "(Ljava/lang/String;Ljava/lang/Throwable;)V", "kotlinx-coroutines-core"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"DefaultDelay", "Lkotlinx/coroutines/Delay;", "getDefaultDelay", "()Lkotlinx/coroutines/Delay;", "kotlinx-coroutines-core"})
 public final class ak
-  extends RuntimeException
 {
-  public ak(String paramString, Throwable paramThrowable)
+  private static final an KdK = (an)aj.KdJ;
+  
+  public static final an fLd()
   {
-    super(paramString, paramThrowable);
-    AppMethodBeat.i(118561);
-    AppMethodBeat.o(118561);
+    return KdK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.ak
  * JD-Core Version:    0.7.0.1
  */

@@ -7,35 +7,35 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class n$1
   implements Runnable
 {
-  n$1(n paramn, int paramInt1, int paramInt2, int paramInt3) {}
+  n$1(SliderSeekBar paramSliderSeekBar, int paramInt1, int paramInt2, int paramInt3) {}
   
   public final void run()
   {
-    AppMethodBeat.i(55011);
-    if (this.oLZ <= n.a(this.oMc) * 2)
+    AppMethodBeat.i(94444);
+    if (this.tHk <= SliderSeekBar.a(this.tHn) * 2)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("MaxExtent can not less than sliderWidth * 2");
-      AppMethodBeat.o(55011);
+      AppMethodBeat.o(94444);
       throw localIllegalStateException;
     }
-    n.b(this.oMc);
-    n.a(this.oMc, this.oMa);
-    n.b(this.oMc, Math.min(this.oLZ, this.oMc.getWidth() - this.oMa * 2));
-    n.c(this.oMc, Math.max(this.oMb, n.a(this.oMc) * 2));
-    n.c(this.oMc).setBounds(this.oMa, 0, this.oMa + n.a(this.oMc), this.oMc.getHeight());
-    n.e(this.oMc).setBounds(this.oMa + n.d(this.oMc) - n.a(this.oMc), 0, n.d(this.oMc) + this.oMa, this.oMc.getHeight());
-    if ((n.f(this.oMc) == null) && (n.g(this.oMc) == null))
+    SliderSeekBar.b(this.tHn);
+    SliderSeekBar.a(this.tHn, this.tHl);
+    SliderSeekBar.b(this.tHn, Math.min(this.tHk, this.tHn.getWidth() - this.tHl * 2));
+    SliderSeekBar.c(this.tHn, Math.max(this.tHm, SliderSeekBar.a(this.tHn) * 2));
+    SliderSeekBar.c(this.tHn).setBounds(this.tHl, 0, this.tHl + SliderSeekBar.a(this.tHn), this.tHn.getHeight());
+    SliderSeekBar.e(this.tHn).setBounds(this.tHl + SliderSeekBar.d(this.tHn) - SliderSeekBar.a(this.tHn), 0, SliderSeekBar.d(this.tHn) + this.tHl, this.tHn.getHeight());
+    if ((SliderSeekBar.f(this.tHn) == null) && (SliderSeekBar.g(this.tHn) == null))
     {
-      n.a(this.oMc, new Rect(n.c(this.oMc).getBounds().left, n.c(this.oMc).getBounds().top, n.c(this.oMc).getBounds().right, n.c(this.oMc).getBounds().bottom));
-      n.b(this.oMc, new Rect(n.e(this.oMc).getBounds().left, n.e(this.oMc).getBounds().top, n.e(this.oMc).getBounds().right, n.e(this.oMc).getBounds().bottom));
+      SliderSeekBar.a(this.tHn, new Rect(SliderSeekBar.c(this.tHn).getBounds().left, SliderSeekBar.c(this.tHn).getBounds().top, SliderSeekBar.c(this.tHn).getBounds().right, SliderSeekBar.c(this.tHn).getBounds().bottom));
+      SliderSeekBar.b(this.tHn, new Rect(SliderSeekBar.e(this.tHn).getBounds().left, SliderSeekBar.e(this.tHn).getBounds().top, SliderSeekBar.e(this.tHn).getBounds().right, SliderSeekBar.e(this.tHn).getBounds().bottom));
     }
-    this.oMc.invalidate();
-    AppMethodBeat.o(55011);
+    this.tHn.invalidate();
+    AppMethodBeat.o(94444);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.n.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,13 +6,14 @@ import android.content.ComponentCallbacks2;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.ArrayMap;
+import com.tencent.matrix.b.b;
 import com.tencent.matrix.g.c;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -21,16 +22,17 @@ import java.util.Set;
 
 public enum a
 {
-  private Set<com.tencent.matrix.b.a> bLQ = Collections.synchronizedSet(new HashSet());
-  public boolean bLR = false;
-  public String bLS = "default";
-  a bLT = new a((byte)0);
-  public String bLU;
-  boolean isInited = false;
+  private final Set<b> csT = new HashSet();
+  public boolean csU = false;
+  public String csV = "default";
+  a csW = new a((byte)0);
+  boolean csX = false;
+  public String csY;
+  Handler handler;
   
   private a() {}
   
-  public static String yC()
+  public static String GD()
   {
     l = System.currentTimeMillis();
     try
@@ -68,32 +70,45 @@ public enum a
     {
       for (;;)
       {
-        c.d("Matrix.AppActiveMatrixDelegate", "[getTopActivityName] Cost:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+        c.d("Matrix.AppActiveDelegate", "[getTopActivityName] Cost:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       }
     }
     finally
     {
-      c.d("Matrix.AppActiveMatrixDelegate", "[getTopActivityName] Cost:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      c.d("Matrix.AppActiveDelegate", "[getTopActivityName] Cost:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     }
     return null;
   }
   
-  public final void a(com.tencent.matrix.b.a parama)
+  public final void a(b paramb)
   {
-    this.bLQ.add(parama);
+    synchronized (this.csT)
+    {
+      this.csT.add(paramb);
+      return;
+    }
   }
   
-  public final void cw(String paramString)
+  public final void b(b paramb)
   {
-    c.i("Matrix.AppActiveMatrixDelegate", "[setCurrentFragmentName] fragmentName:%s", new Object[] { paramString });
-    this.bLU = paramString;
+    synchronized (this.csT)
+    {
+      this.csT.remove(paramb);
+      return;
+    }
+  }
+  
+  public final void cQ(String paramString)
+  {
+    c.i("Matrix.AppActiveDelegate", "[setCurrentFragmentName] fragmentName:%s", new Object[] { paramString });
+    this.csY = paramString;
     StringBuilder localStringBuilder = new StringBuilder();
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
       str = "?";
     }
     localStringBuilder.append(str);
-    this.bLS = localStringBuilder.toString();
+    this.csV = localStringBuilder.toString();
   }
   
   final class a
@@ -114,15 +129,13 @@ public enum a
     public final void onActivityStarted(Activity paramActivity)
     {
       a.a(a.this, paramActivity);
-      if (!a.a(a.this)) {
-        a.a(a.this, a.this.bLS);
-      }
+      a.a(a.this, a.this.csV);
     }
     
     public final void onActivityStopped(Activity paramActivity)
     {
-      if (a.yC() == null) {
-        a.b(a.this, a.this.bLS);
+      if (a.GD() == null) {
+        a.b(a.this, a.this.csV);
       }
     }
     
@@ -132,9 +145,9 @@ public enum a
     
     public final void onTrimMemory(int paramInt)
     {
-      c.i("Matrix.AppActiveMatrixDelegate", "[onTrimMemory] level:%s", new Object[] { Integer.valueOf(paramInt) });
-      if ((paramInt == 20) && (a.a(a.this))) {
-        a.b(a.this, a.b(a.this));
+      c.i("Matrix.AppActiveDelegate", "[onTrimMemory] level:%s", new Object[] { Integer.valueOf(paramInt) });
+      if ((paramInt == 20) && (a.b(a.this))) {
+        a.b(a.this, a.c(a.this));
       }
     }
   }

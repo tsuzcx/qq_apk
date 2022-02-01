@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.n;
 
 final class ExdeviceBindDeviceUI$8
   implements Runnable
 {
-  ExdeviceBindDeviceUI$8(ExdeviceBindDeviceUI paramExdeviceBindDeviceUI, int paramInt1, int paramInt2, String paramString, m paramm) {}
+  ExdeviceBindDeviceUI$8(ExdeviceBindDeviceUI paramExdeviceBindDeviceUI, int paramInt1, int paramInt2, String paramString, n paramn) {}
   
   public final void run()
   {
-    AppMethodBeat.i(19832);
-    ExdeviceBindDeviceUI.a(this.lKV, this.lKY, this.lKZ, this.lLa, this.lLb);
-    AppMethodBeat.o(19832);
+    AppMethodBeat.i(23900);
+    ExdeviceBindDeviceUI.a(this.pbF, this.pbI, this.pbJ, this.pbK, this.pbL);
+    AppMethodBeat.o(23900);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceBindDeviceUI.8
  * JD-Core Version:    0.7.0.1
  */

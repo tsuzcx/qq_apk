@@ -7,12 +7,12 @@ import android.widget.TextView;
 public class ChangeNumView
   extends TextView
 {
+  private int Atq = 0;
+  private boolean Atr = false;
+  private final int Ats = 100;
   private int max = 0;
   private int min = 0;
-  private int tal = -1;
-  private int uwv = 0;
-  private boolean uww = false;
-  private final int uwx = 100;
+  private int yGI = -1;
   
   public ChangeNumView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,12 +26,12 @@ public class ChangeNumView
   
   public void setInteral(int paramInt)
   {
-    this.tal = paramInt;
+    this.yGI = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.ChangeNumView
  * JD-Core Version:    0.7.0.1
  */

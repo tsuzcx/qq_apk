@@ -1,6 +1,7 @@
 package com.facebook.appevents;
 
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import com.facebook.FacebookSdk;
@@ -37,19 +38,19 @@ public class UserDataStore
   
   static
   {
-    AppMethodBeat.i(72039);
+    AppMethodBeat.i(17475);
     TAG = UserDataStore.class.getSimpleName();
     lock = new ReentrantReadWriteLock();
     initialized = false;
-    AppMethodBeat.o(72039);
+    AppMethodBeat.o(17475);
   }
   
   private static String encryptData(String paramString)
   {
-    AppMethodBeat.i(72034);
+    AppMethodBeat.i(17470);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      AppMethodBeat.o(72034);
+      AppMethodBeat.o(17470);
       return null;
     }
     try
@@ -57,19 +58,19 @@ public class UserDataStore
       MessageDigest localMessageDigest = MessageDigest.getInstance("SHA-256");
       localMessageDigest.update(paramString.getBytes());
       paramString = AppEventUtility.bytesToHex(localMessageDigest.digest());
-      AppMethodBeat.o(72034);
+      AppMethodBeat.o(17470);
       return paramString;
     }
     catch (NoSuchAlgorithmException paramString)
     {
-      AppMethodBeat.o(72034);
+      AppMethodBeat.o(17470);
     }
     return null;
   }
   
   public static String getHashedUserData()
   {
-    AppMethodBeat.i(72031);
+    AppMethodBeat.i(17467);
     if (!initialized) {
       initAndWait();
     }
@@ -82,16 +83,16 @@ public class UserDataStore
     finally
     {
       lock.readLock().unlock();
-      AppMethodBeat.o(72031);
+      AppMethodBeat.o(17467);
     }
   }
   
   private static String hashUserData(Bundle paramBundle)
   {
-    AppMethodBeat.i(72033);
+    AppMethodBeat.i(17469);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(72033);
+      AppMethodBeat.o(17469);
       return null;
     }
     JSONObject localJSONObject = new JSONObject();
@@ -118,17 +119,17 @@ public class UserDataStore
       }
       catch (JSONException localJSONException) {}
       paramBundle = localJSONObject.toString();
-      AppMethodBeat.o(72033);
+      AppMethodBeat.o(17469);
       return paramBundle;
     }
   }
   
   private static void initAndWait()
   {
-    AppMethodBeat.i(72032);
+    AppMethodBeat.i(17468);
     if (initialized)
     {
-      AppMethodBeat.o(72032);
+      AppMethodBeat.o(17468);
       return;
     }
     lock.writeLock().lock();
@@ -145,33 +146,41 @@ public class UserDataStore
     finally
     {
       lock.writeLock().unlock();
-      AppMethodBeat.o(72032);
+      AppMethodBeat.o(17468);
     }
   }
   
   public static void initStore()
   {
-    AppMethodBeat.i(72028);
+    AppMethodBeat.i(17464);
     if (initialized)
     {
-      AppMethodBeat.o(72028);
+      AppMethodBeat.o(17464);
       return;
     }
-    AppEventsLogger.getAnalyticsExecutor().execute(new UserDataStore.1());
-    AppMethodBeat.o(72028);
+    AppEventsLogger.getAnalyticsExecutor().execute(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(17462);
+        UserDataStore.access$000();
+        AppMethodBeat.o(17462);
+      }
+    });
+    AppMethodBeat.o(17464);
   }
   
   private static boolean maybeSHA256Hashed(String paramString)
   {
-    AppMethodBeat.i(72036);
+    AppMethodBeat.i(17472);
     boolean bool = paramString.matches("[A-Fa-f0-9]{64}");
-    AppMethodBeat.o(72036);
+    AppMethodBeat.o(17472);
     return bool;
   }
   
   private static String normalizeData(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(72035);
+    AppMethodBeat.i(17471);
     String str = "";
     int i = -1;
     switch (paramString1.hashCode())
@@ -186,7 +195,7 @@ public class UserDataStore
     }
     for (;;)
     {
-      AppMethodBeat.o(72035);
+      AppMethodBeat.o(17471);
       return paramString1;
       if (!paramString1.equals("em")) {
         break;
@@ -243,17 +252,37 @@ public class UserDataStore
   
   public static void setUserDataAndHash(Bundle paramBundle)
   {
-    AppMethodBeat.i(72029);
+    AppMethodBeat.i(17465);
     if (!initialized) {
       initAndWait();
     }
-    AppEventsLogger.getAnalyticsExecutor().execute(new UserDataStore.2(paramBundle));
-    AppMethodBeat.o(72029);
+    AppEventsLogger.getAnalyticsExecutor().execute(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(17463);
+        UserDataStore.lock.writeLock().lock();
+        try
+        {
+          UserDataStore.access$202(UserDataStore.access$300(this.val$ud));
+          SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(FacebookSdk.getApplicationContext()).edit();
+          localEditor.putString("com.facebook.appevents.UserDataStore.userData", UserDataStore.hashedUserData);
+          localEditor.apply();
+          return;
+        }
+        finally
+        {
+          UserDataStore.lock.writeLock().unlock();
+          AppMethodBeat.o(17463);
+        }
+      }
+    });
+    AppMethodBeat.o(17465);
   }
   
   public static void setUserDataAndHash(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
   {
-    AppMethodBeat.i(72030);
+    AppMethodBeat.i(17466);
     Bundle localBundle = new Bundle();
     if (paramString1 != null) {
       localBundle.putString("em", paramString1);
@@ -286,12 +315,12 @@ public class UserDataStore
       localBundle.putString("country", paramString10);
     }
     setUserDataAndHash(localBundle);
-    AppMethodBeat.o(72030);
+    AppMethodBeat.o(17466);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.UserDataStore
  * JD-Core Version:    0.7.0.1
  */

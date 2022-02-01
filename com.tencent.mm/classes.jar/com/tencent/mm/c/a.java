@@ -1,258 +1,134 @@
 package com.tencent.mm.c;
 
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Matrix;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.view.animation.LinearInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
-import java.io.RandomAccessFile;
+import com.tencent.mm.e.c;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
+  extends b
 {
-  public a bWq;
-  public b bWr = null;
+  public float cHA;
+  public Rect cHB;
+  public RectF cHC;
+  Matrix cHD;
+  public long cHE;
+  private int cHv;
+  private ValueAnimator cHw;
+  c cHx;
+  public float cHy;
+  public float cHz;
+  public Animator.AnimatorListener tX;
   
-  public a(b paramb)
+  public a(c paramc)
   {
-    this.bWr = paramb;
+    AppMethodBeat.i(9108);
+    this.cHv = 200;
+    this.cHE = 0L;
+    this.cHx = paramc;
+    this.cHD = new Matrix();
+    this.cHC = new RectF();
+    AppMethodBeat.o(9108);
   }
   
-  public static a dn(String paramString)
+  public final void cancel()
   {
-    int i = 0;
-    AppMethodBeat.i(125702);
-    if (paramString == null) {}
-    for (;;)
-    {
-      if (i < 8)
-      {
-        AppMethodBeat.o(125702);
-        return null;
-      }
-      try
-      {
-        localObject = new File(paramString);
-        if (((File)localObject).exists()) {
-          i = (int)((File)localObject).length();
-        }
-      }
-      catch (Exception paramString)
-      {
-        Object localObject;
-        b localb;
-        AppMethodBeat.o(125702);
-      }
+    AppMethodBeat.i(9110);
+    ad.d("MicroMsg.CropActionUpAnim", "[cancel]");
+    this.aJn = false;
+    this.cHI = true;
+    if (this.cHw != null) {
+      this.cHw.cancel();
     }
-    localObject = a.B(j(paramString, i - 8, 8));
-    if (localObject == null)
-    {
-      AppMethodBeat.o(125702);
-      return null;
-    }
-    if (((a)localObject).bWt >= 0)
-    {
-      localb = new b();
-      localb.parseFrom(j(paramString, i - ((a)localObject).bWt - 8, ((a)localObject).bWt));
-      paramString = new a(localb);
-      paramString.bWq = ((a)localObject);
-      AppMethodBeat.o(125702);
-      return paramString;
-    }
-    return null;
+    AppMethodBeat.o(9110);
   }
   
-  public static boolean jdMethod_do(String paramString)
+  public final void play()
   {
-    AppMethodBeat.i(125703);
-    if (paramString == null)
+    AppMethodBeat.i(9109);
+    ad.i("MicroMsg.CropActionUpAnim", "[play]");
+    if (!this.cHI)
     {
-      AppMethodBeat.o(125703);
-      return false;
+      AppMethodBeat.o(9109);
+      return;
     }
-    File localFile = new File(paramString);
-    if (!localFile.exists())
+    this.aJn = false;
+    this.cHI = false;
+    this.cHw = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scale", new float[] { 1.0F, this.cHy }), PropertyValuesHolder.ofFloat("deltaX", new float[] { 0.0F, this.cHz }), PropertyValuesHolder.ofFloat("deltaY", new float[] { 0.0F, this.cHA }), PropertyValuesHolder.ofFloat("background_alpha", new float[] { 0.0F, 255.0F }) });
+    this.cHw.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
-      AppMethodBeat.o(125703);
-      return false;
-    }
-    a locala = dn(paramString);
-    if ((locala != null) && (locala.bWr != null)) {
-      try
+      Matrix cHF;
+      Rect cHG;
+      
+      public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
-        paramString = new File(paramString);
-        if (paramString.exists())
-        {
-          boolean bool = locala.bWr.apkMd5.equalsIgnoreCase(g.a(paramString, (int)(localFile.length() - (locala.bWq.bWt + 8) - 2L), new byte[] { 0, 0 }));
-          AppMethodBeat.o(125703);
-          return bool;
-        }
+        AppMethodBeat.i(9106);
+        float f1 = ((Float)paramAnonymousValueAnimator.getAnimatedValue("deltaY")).floatValue();
+        float f2 = ((Float)paramAnonymousValueAnimator.getAnimatedValue("deltaX")).floatValue();
+        float f3 = ((Float)paramAnonymousValueAnimator.getAnimatedValue("scale")).floatValue();
+        float f4 = ((Float)paramAnonymousValueAnimator.getAnimatedValue("background_alpha")).floatValue();
+        a.this.cHD.reset();
+        a.this.cHD.postTranslate(f2, f1);
+        paramAnonymousValueAnimator = new RectF(this.cHG);
+        a.this.cHD.mapRect(paramAnonymousValueAnimator);
+        paramAnonymousValueAnimator.round(a.this.cHB);
+        a.this.cHD.postScale(f3, f3, a.this.cHB.centerX(), a.this.cHB.centerY());
+        paramAnonymousValueAnimator = new Matrix(this.cHF);
+        paramAnonymousValueAnimator.postConcat(a.this.cHD);
+        a.this.cHx.getMainMatrix().set(paramAnonymousValueAnimator);
+        com.tencent.mm.aa.a.ma((int)f4);
+        paramAnonymousValueAnimator = new RectF(this.cHG);
+        a.this.cHD.mapRect(paramAnonymousValueAnimator);
+        paramAnonymousValueAnimator.round(a.this.cHB);
+        a.this.cHx.Mk();
+        AppMethodBeat.o(9106);
       }
-      catch (Exception paramString) {}
-    }
-    AppMethodBeat.o(125703);
-    return false;
-  }
-  
-  private static byte[] j(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(125704);
-    if (paramString == null)
+    });
+    this.cHw.addListener(new Animator.AnimatorListener()
     {
-      AppMethodBeat.o(125704);
-      return null;
-    }
-    Object localObject = new File(paramString);
-    if (!((File)localObject).exists())
-    {
-      AppMethodBeat.o(125704);
-      return null;
-    }
-    if (paramInt2 == -1)
-    {
-      paramInt2 = (int)((File)localObject).length();
-      for (;;)
+      public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
+      
+      public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        if (paramInt1 < 0)
-        {
-          AppMethodBeat.o(125704);
-          return null;
+        AppMethodBeat.i(9107);
+        a.this.cHI = true;
+        a.this.aJn = false;
+        a.this.cHE = 0L;
+        a.this.cHx.Mn();
+        a.this.cHx.Ml();
+        if (a.this.tX != null) {
+          a.this.tX.onAnimationEnd(paramAnonymousAnimator);
         }
-        if (paramInt2 <= 0)
-        {
-          AppMethodBeat.o(125704);
-          return null;
-        }
-        int i = paramInt2;
-        if (paramInt1 + paramInt2 > (int)((File)localObject).length()) {
-          i = (int)((File)localObject).length() - paramInt1;
-        }
-        try
-        {
-          localObject = new RandomAccessFile(paramString, "r");
-          paramString = new byte[i];
-          l = paramInt1;
-        }
-        catch (Exception paramString)
-        {
-          try
-          {
-            long l;
-            ((RandomAccessFile)localObject).seek(l);
-            ((RandomAccessFile)localObject).readFully(paramString);
-            ((RandomAccessFile)localObject).close();
-            for (;;)
-            {
-              label136:
-              AppMethodBeat.o(125704);
-              return paramString;
-              paramString = paramString;
-              paramString = null;
-            }
-          }
-          catch (Exception localException)
-          {
-            break label136;
-          }
-        }
+        AppMethodBeat.o(9107);
       }
-    }
-  }
-  
-  public final int t(File paramFile)
-  {
-    AppMethodBeat.i(125701);
-    try
-    {
-      if (dn(paramFile.getAbsolutePath()) != null)
+      
+      public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
+      
+      public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
-        System.out.println("Error: duplicate append apk external info!");
-        AppMethodBeat.o(125701);
-        return -1;
+        a.this.cHx.cSc = true;
+        a.this.cHI = false;
+        a.this.aJn = true;
       }
-      byte[] arrayOfByte = this.bWr.toByteArray();
-      Object localObject = new a(arrayOfByte.length);
-      localObject = a.aH(a.bWs << 32 | ((a)localObject).bWt);
-      int i = (byte)((arrayOfByte.length + 8) % 256);
-      int j = (byte)((arrayOfByte.length + 8) / 256);
-      RandomAccessFile localRandomAccessFile = new RandomAccessFile(paramFile, "rw");
-      localRandomAccessFile.seek(paramFile.length() - 2L);
-      localRandomAccessFile.write(new byte[] { i, j });
-      localRandomAccessFile.close();
-      paramFile = new FileOutputStream(paramFile, true);
-      paramFile.write(arrayOfByte);
-      paramFile.write((byte[])localObject);
-      paramFile.flush();
-      paramFile.close();
-      AppMethodBeat.o(125701);
-      return 0;
-    }
-    catch (Exception paramFile)
-    {
-      AppMethodBeat.o(125701);
-    }
-    return -1;
-  }
-  
-  public static final class a
-  {
-    static final long bWs;
-    public int bWt = 0;
-    
-    static
-    {
-      AppMethodBeat.i(125699);
-      bWs = "Micromsg".hashCode();
-      AppMethodBeat.o(125699);
-    }
-    
-    public a(int paramInt)
-    {
-      this.bWt = paramInt;
-    }
-    
-    public static a B(byte[] paramArrayOfByte)
-    {
-      AppMethodBeat.i(125700);
-      long l;
-      int i;
-      if (paramArrayOfByte.length == 8)
-      {
-        l = 0L;
-        i = 0;
-        if (i >= paramArrayOfByte.length) {
-          if (l >> 32 != bWs) {
-            break label73;
-          }
-        }
-      }
-      label73:
-      for (paramArrayOfByte = new a((int)l);; paramArrayOfByte = null)
-      {
-        AppMethodBeat.o(125700);
-        return paramArrayOfByte;
-        l |= (paramArrayOfByte[i] & 0xFF) << i * 8;
-        i += 1;
-        break;
-      }
-    }
-    
-    static byte[] aH(long paramLong)
-    {
-      byte[] arrayOfByte = new byte[8];
-      int i = 0;
-      for (;;)
-      {
-        if (i >= 8) {
-          return arrayOfByte;
-        }
-        arrayOfByte[i] = ((byte)(int)(paramLong >> i * 8 & 0xFF));
-        i += 1;
-      }
-    }
+    });
+    this.cHw.setInterpolator(new LinearInterpolator());
+    this.cHw.setDuration(this.cHv);
+    this.cHw.setStartDelay(this.cHE);
+    this.cHw.start();
+    AppMethodBeat.o(9109);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.c.a
  * JD-Core Version:    0.7.0.1
  */

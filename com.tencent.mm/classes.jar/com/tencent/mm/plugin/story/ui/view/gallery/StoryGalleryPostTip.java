@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.story.ui.view.gallery;
 
-import a.f.b.j;
-import a.l;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -12,77 +10,82 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.aj;
+import com.tencent.mm.ui.am;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "postTipIv", "Landroid/widget/ImageView;", "getPostTipIv", "()Landroid/widget/ImageView;", "setPostTipIv", "(Landroid/widget/ImageView;)V", "postTipLayout", "Landroid/widget/LinearLayout;", "getPostTipLayout", "()Landroid/widget/LinearLayout;", "setPostTipLayout", "(Landroid/widget/LinearLayout;)V", "postTipTv", "Landroid/widget/TextView;", "getPostTipTv", "()Landroid/widget/TextView;", "setPostTipTv", "(Landroid/widget/TextView;)V", "updatePostStatus", "", "item", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "Companion", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "postTipIv", "Landroid/widget/ImageView;", "getPostTipIv", "()Landroid/widget/ImageView;", "setPostTipIv", "(Landroid/widget/ImageView;)V", "postTipLayout", "Landroid/widget/LinearLayout;", "getPostTipLayout", "()Landroid/widget/LinearLayout;", "setPostTipLayout", "(Landroid/widget/LinearLayout;)V", "postTipTv", "Landroid/widget/TextView;", "getPostTipTv", "()Landroid/widget/TextView;", "setPostTipTv", "(Landroid/widget/TextView;)V", "updatePostStatus", "", "item", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "Companion", "plugin-story_release"})
 public final class StoryGalleryPostTip
   extends RelativeLayout
 {
   public static final String TAG = "MicroMsg.StoryGalleryPostTip";
-  public static final StoryGalleryPostTip.a sTp;
-  private LinearLayout sTm;
-  private ImageView sTn;
-  public TextView sTo;
+  public static final a yzn;
+  private LinearLayout yzk;
+  private ImageView yzl;
+  public TextView yzm;
   
   static
   {
-    AppMethodBeat.i(110772);
-    sTp = new StoryGalleryPostTip.a((byte)0);
+    AppMethodBeat.i(120417);
+    yzn = new a((byte)0);
     TAG = "MicroMsg.StoryGalleryPostTip";
-    AppMethodBeat.o(110772);
+    AppMethodBeat.o(120417);
   }
   
   public StoryGalleryPostTip(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(110771);
-    View.inflate(paramContext, 2130970959, (ViewGroup)this);
-    paramContext = findViewById(2131828422);
-    j.p(paramContext, "findViewById(R.id.story_gallery_post_tip_iv)");
-    this.sTn = ((ImageView)paramContext);
-    paramContext = findViewById(2131828423);
-    j.p(paramContext, "findViewById(R.id.story_gallery_post_tip_tv)");
-    this.sTo = ((TextView)paramContext);
-    this.sTn.setImageDrawable(aj.e(getResources().getDrawable(2131231507), -65536));
+    AppMethodBeat.i(120416);
+    View.inflate(paramContext, 2131495697, (ViewGroup)this);
+    paramContext = findViewById(2131305437);
+    k.g(paramContext, "findViewById(R.id.story_gallery_post_tip_iv)");
+    this.yzl = ((ImageView)paramContext);
+    paramContext = findViewById(2131305438);
+    k.g(paramContext, "findViewById(R.id.story_gallery_post_tip_tv)");
+    this.yzm = ((TextView)paramContext);
+    this.yzl.setImageDrawable(am.e(getResources().getDrawable(2131690566), -65536));
     setVisibility(8);
-    AppMethodBeat.o(110771);
+    AppMethodBeat.o(120416);
   }
   
   public final ImageView getPostTipIv()
   {
-    return this.sTn;
+    return this.yzl;
   }
   
   public final LinearLayout getPostTipLayout()
   {
-    return this.sTm;
+    return this.yzk;
   }
   
   public final TextView getPostTipTv()
   {
-    return this.sTo;
+    return this.yzm;
   }
   
   public final void setPostTipIv(ImageView paramImageView)
   {
-    AppMethodBeat.i(110769);
-    j.q(paramImageView, "<set-?>");
-    this.sTn = paramImageView;
-    AppMethodBeat.o(110769);
+    AppMethodBeat.i(120414);
+    k.h(paramImageView, "<set-?>");
+    this.yzl = paramImageView;
+    AppMethodBeat.o(120414);
   }
   
   public final void setPostTipLayout(LinearLayout paramLinearLayout)
   {
-    this.sTm = paramLinearLayout;
+    this.yzk = paramLinearLayout;
   }
   
   public final void setPostTipTv(TextView paramTextView)
   {
-    AppMethodBeat.i(110770);
-    j.q(paramTextView, "<set-?>");
-    this.sTo = paramTextView;
-    AppMethodBeat.o(110770);
+    AppMethodBeat.i(120415);
+    k.h(paramTextView, "<set-?>");
+    this.yzm = paramTextView;
+    AppMethodBeat.o(120415);
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/gallery/StoryGalleryPostTip$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"})
+  public static final class a {}
 }
 
 

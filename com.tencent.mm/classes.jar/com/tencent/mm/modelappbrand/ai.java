@@ -1,18 +1,18 @@
 package com.tencent.mm.modelappbrand;
 
 public abstract class ai
-  implements m
+  implements o
 {
   public final String getName()
   {
     return "onSearchWAWidgetReloadData";
   }
   
-  public abstract void qv(String paramString);
+  public abstract void vl(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.ai
  * JD-Core Version:    0.7.0.1
  */

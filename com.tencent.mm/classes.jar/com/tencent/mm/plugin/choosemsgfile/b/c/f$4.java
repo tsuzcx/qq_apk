@@ -16,18 +16,18 @@ public final class f$4
   
   public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    AppMethodBeat.i(54365);
-    int i = (int)this.val$context.getResources().getDimension(2131427811);
+    AppMethodBeat.i(123336);
+    int i = (int)this.val$context.getResources().getDimension(2131165519);
     paramRect.bottom = i;
     paramRect.top = i;
     paramRect.left = i;
     paramRect.right = i;
-    AppMethodBeat.o(54365);
+    AppMethodBeat.o(123336);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.c.f.4
  * JD-Core Version:    0.7.0.1
  */

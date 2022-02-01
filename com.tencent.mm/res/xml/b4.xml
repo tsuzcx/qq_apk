@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.preference.AccountInfoPreference mm:title="@string/ecy" mm:key="more_tab_setting_personal_info" mm:layout="@layout/ait" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference mm:title="@string/ebh" mm:icon="@raw/icons_outlined_wallet" mm:iconColor="@color/ai" mm:key="settings_mm_wallet" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference mm:title="@string/ebf" mm:icon="@raw/icons_outlined_colorful_favorites" mm:key="settings_mm_favorite" />
-    <NormalIconPreference mm:title="@string/ec0" mm:icon="@raw/icons_outlined_album" mm:iconColor="@color/bd" mm:key="settings_my_album" />
-    <NormalIconPreference mm:title="@string/ebd" mm:icon="@raw/more_my_card" mm:key="settings_mm_cardpackage" />
-    <NormalIconPreference mm:title="@string/e_s" mm:icon="@raw/icons_outlined_emoji" mm:iconColor="@color/c6" mm:key="settings_emoji_store" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference mm:title="@string/efx" mm:icon="@raw/icons_outlined_setting" mm:iconColor="@color/bd" mm:key="more_setting" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference mm:title="@string/f4t" mm:icon="@raw/more_ui_show" mm:key="more_uishow" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory />
-    <Preference mm:key="settings_privacy_agreements" mm:layout="@layout/ah7" />
+    <com.tencent.mm.plugin.setting.ui.setting.SettingsAboutMMHeaderPreference android:key="fix_tools_micromsg_header" android:layout="@layout/b4d" />
+    <PreferenceCategory />
+    <PreferenceTitleCategory android:key="fix_tools_wording" android:title="@string/cfo" />
+    <Preference android:key="fix_tools_fts" android:layout="@layout/aop" android:title="@string/cf8" />
+    <Preference android:key="fix_tools_websearch" android:layout="@layout/aop" android:title="@string/cfn" />
+    <Preference android:key="fix_tools_topstory" android:layout="@layout/aop" android:title="@string/cfd" />
+    <PreferenceCategory />
+    <PreferenceSmallCategory />
+    <Preference android:key="fix_tools_fts_info" android:layout="@layout/aop" android:title="@string/cf9" />
 </PreferenceScreen>

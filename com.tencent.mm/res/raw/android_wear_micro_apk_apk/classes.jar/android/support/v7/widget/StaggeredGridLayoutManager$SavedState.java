@@ -9,45 +9,45 @@ class StaggeredGridLayoutManager$SavedState
   implements Parcelable
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator() {};
-  int sK;
-  boolean sM;
-  boolean sn;
-  boolean vD;
-  List<StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem> vP;
-  int vT;
-  int vU;
-  int[] vV;
-  int vW;
-  int[] vX;
+  int uA;
+  boolean uC;
+  boolean ud;
+  List<StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem> xE;
+  int xI;
+  int xJ;
+  int[] xK;
+  int xL;
+  int[] xM;
+  boolean xs;
   
   public StaggeredGridLayoutManager$SavedState() {}
   
   StaggeredGridLayoutManager$SavedState(Parcel paramParcel)
   {
-    this.sK = paramParcel.readInt();
-    this.vT = paramParcel.readInt();
-    this.vU = paramParcel.readInt();
-    if (this.vU > 0)
+    this.uA = paramParcel.readInt();
+    this.xI = paramParcel.readInt();
+    this.xJ = paramParcel.readInt();
+    if (this.xJ > 0)
     {
-      this.vV = new int[this.vU];
-      paramParcel.readIntArray(this.vV);
+      this.xK = new int[this.xJ];
+      paramParcel.readIntArray(this.xK);
     }
-    this.vW = paramParcel.readInt();
-    if (this.vW > 0)
+    this.xL = paramParcel.readInt();
+    if (this.xL > 0)
     {
-      this.vX = new int[this.vW];
-      paramParcel.readIntArray(this.vX);
+      this.xM = new int[this.xL];
+      paramParcel.readIntArray(this.xM);
     }
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.sn = bool1;
+      this.ud = bool1;
       if (paramParcel.readInt() != 1) {
         break label152;
       }
       bool1 = true;
       label113:
-      this.sM = bool1;
+      this.uC = bool1;
       if (paramParcel.readInt() != 1) {
         break label157;
       }
@@ -56,8 +56,8 @@ class StaggeredGridLayoutManager$SavedState
     label157:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.vD = bool1;
-      this.vP = paramParcel.readArrayList(StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem.class.getClassLoader());
+      this.xs = bool1;
+      this.xE = paramParcel.readArrayList(StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem.class.getClassLoader());
       return;
       bool1 = false;
       break;
@@ -68,16 +68,16 @@ class StaggeredGridLayoutManager$SavedState
   
   public StaggeredGridLayoutManager$SavedState(SavedState paramSavedState)
   {
-    this.vU = paramSavedState.vU;
-    this.sK = paramSavedState.sK;
-    this.vT = paramSavedState.vT;
-    this.vV = paramSavedState.vV;
-    this.vW = paramSavedState.vW;
-    this.vX = paramSavedState.vX;
-    this.sn = paramSavedState.sn;
-    this.sM = paramSavedState.sM;
-    this.vD = paramSavedState.vD;
-    this.vP = paramSavedState.vP;
+    this.xJ = paramSavedState.xJ;
+    this.uA = paramSavedState.uA;
+    this.xI = paramSavedState.xI;
+    this.xK = paramSavedState.xK;
+    this.xL = paramSavedState.xL;
+    this.xM = paramSavedState.xM;
+    this.ud = paramSavedState.ud;
+    this.uC = paramSavedState.uC;
+    this.xs = paramSavedState.xs;
+    this.xE = paramSavedState.xE;
   }
   
   public int describeContents()
@@ -88,27 +88,27 @@ class StaggeredGridLayoutManager$SavedState
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    paramParcel.writeInt(this.sK);
-    paramParcel.writeInt(this.vT);
-    paramParcel.writeInt(this.vU);
-    if (this.vU > 0) {
-      paramParcel.writeIntArray(this.vV);
+    paramParcel.writeInt(this.uA);
+    paramParcel.writeInt(this.xI);
+    paramParcel.writeInt(this.xJ);
+    if (this.xJ > 0) {
+      paramParcel.writeIntArray(this.xK);
     }
-    paramParcel.writeInt(this.vW);
-    if (this.vW > 0) {
-      paramParcel.writeIntArray(this.vX);
+    paramParcel.writeInt(this.xL);
+    if (this.xL > 0) {
+      paramParcel.writeIntArray(this.xM);
     }
-    if (this.sn)
+    if (this.ud)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.sM) {
+      if (!this.uC) {
         break label120;
       }
       paramInt = 1;
       label87:
       paramParcel.writeInt(paramInt);
-      if (!this.vD) {
+      if (!this.xs) {
         break label125;
       }
     }
@@ -117,7 +117,7 @@ class StaggeredGridLayoutManager$SavedState
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeList(this.vP);
+      paramParcel.writeList(this.xE);
       return;
       paramInt = 0;
       break;

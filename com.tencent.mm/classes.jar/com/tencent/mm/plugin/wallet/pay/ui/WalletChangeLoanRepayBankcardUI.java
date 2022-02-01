@@ -3,12 +3,14 @@ package com.tencent.mm.plugin.wallet.pay.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.aj;
-import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.plugin.wallet_core.ui.i;
+import com.tencent.mm.plugin.wallet_core.model.s;
+import com.tencent.mm.plugin.wallet_core.ui.k;
 import com.tencent.mm.ui.base.a;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,22 +19,22 @@ import java.util.Collections;
 public class WalletChangeLoanRepayBankcardUI
   extends WalletChangeBankcardUI
 {
-  protected final void In(int paramInt)
+  protected final void Rn(int paramInt)
   {
-    AppMethodBeat.i(45990);
+    AppMethodBeat.i(69339);
     int i;
     Object localObject;
-    if (this.tNG != null)
+    if (this.zGg != null)
     {
-      i = this.tNG.size();
-      if ((this.tNG == null) || (paramInt >= i)) {
+      i = this.zGg.size();
+      if ((this.zGg == null) || (paramInt >= i)) {
         break label127;
       }
-      localObject = (Bankcard)this.tNG.get(paramInt);
-      this.tNH = ((Bankcard)localObject);
-      this.tVO.upz = ((Bankcard)localObject).field_bindSerial;
-      this.qqy.setEnabled(true);
-      this.tVO.notifyDataSetChanged();
+      localObject = (Bankcard)this.zGg.get(paramInt);
+      this.zGh = ((Bankcard)localObject);
+      this.zQb.Amu = ((Bankcard)localObject).field_bindSerial;
+      this.vHH.setEnabled(true);
+      this.zQb.notifyDataSetChanged();
       Intent localIntent = new Intent();
       localIntent.putExtra("bindSerial", ((Bankcard)localObject).field_bindSerial);
       localIntent.putExtra("ret", 0);
@@ -41,7 +43,7 @@ public class WalletChangeLoanRepayBankcardUI
     for (;;)
     {
       finish();
-      AppMethodBeat.o(45990);
+      AppMethodBeat.o(69339);
       return;
       i = 0;
       break;
@@ -55,16 +57,16 @@ public class WalletChangeLoanRepayBankcardUI
     }
   }
   
-  protected final i cRS()
+  protected final k eae()
   {
-    AppMethodBeat.i(45989);
-    this.tNG = t.cTO().ulH;
-    if (this.tNG != null) {
-      Collections.sort(this.tNG, new WalletChangeBankcardUI.2(this));
+    AppMethodBeat.i(69338);
+    this.zGg = s.ecd().Aib;
+    if (this.zGg != null) {
+      Collections.sort(this.zGg, new WalletChangeBankcardUI.2(this));
     }
-    i locali = new i(this, this.tNG, this.tVN, this.qrf);
-    AppMethodBeat.o(45989);
-    return locali;
+    k localk = new k(this, this.zGg, this.zQa, this.vIq);
+    AppMethodBeat.o(69338);
+    return localk;
   }
   
   public int getForceOrientation()
@@ -74,10 +76,19 @@ public class WalletChangeLoanRepayBankcardUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(45988);
+    AppMethodBeat.i(69337);
     super.onCreate(paramBundle);
-    setBackBtn(new WalletChangeLoanRepayBankcardUI.1(this));
-    AppMethodBeat.o(45988);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(69336);
+        WalletChangeLoanRepayBankcardUI.this.setResult(-1, null);
+        AppMethodBeat.o(69336);
+        return true;
+      }
+    });
+    AppMethodBeat.o(69337);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -88,7 +99,7 @@ public class WalletChangeLoanRepayBankcardUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletChangeLoanRepayBankcardUI
  * JD-Core Version:    0.7.0.1
  */

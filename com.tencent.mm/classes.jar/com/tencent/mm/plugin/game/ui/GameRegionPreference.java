@@ -14,7 +14,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class GameRegionPreference
   extends Preference
 {
-  GameRegionPreference.a nCu;
+  a slU;
   
   public GameRegionPreference(Context paramContext)
   {
@@ -29,35 +29,45 @@ public class GameRegionPreference
   public GameRegionPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(112154);
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(112154);
+    AppMethodBeat.i(42353);
+    setLayoutResource(2131494804);
+    AppMethodBeat.o(42353);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(112157);
+    AppMethodBeat.i(42355);
     super.onBindView(paramView);
-    TextView localTextView = (TextView)paramView.findViewById(2131824745);
-    paramView = (CheckBox)paramView.findViewById(2131824746);
-    if ((localTextView != null) && (paramView != null) && (this.nCu != null))
+    TextView localTextView = (TextView)paramView.findViewById(2131303961);
+    paramView = (CheckBox)paramView.findViewById(2131305186);
+    if ((localTextView != null) && (paramView != null) && (this.slU != null))
     {
-      localTextView.setText(e.a(this.nCu));
-      paramView.setChecked(this.nCu.gDG);
+      localTextView.setText(e.a(this.slU));
+      paramView.setChecked(this.slU.ira);
     }
-    AppMethodBeat.o(112157);
+    AppMethodBeat.o(42355);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(112156);
+    AppMethodBeat.i(42354);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130969810, localViewGroup);
-    AppMethodBeat.o(112156);
+    localLayoutInflater.inflate(2131494375, localViewGroup);
+    AppMethodBeat.o(42354);
     return paramViewGroup;
+  }
+  
+  public static final class a
+  {
+    public String evF;
+    public boolean ira;
+    public boolean isDefault;
+    public String slV;
+    public String slW;
+    public String slX;
   }
 }
 

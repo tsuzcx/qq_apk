@@ -7,7 +7,7 @@ final class AudioPlayerConfigure$1
 {
   public final String findLibPath(String paramString)
   {
-    AppMethodBeat.i(128392);
+    AppMethodBeat.i(114308);
     String str = paramString;
     if (!paramString.startsWith("lib")) {
       str = "lib".concat(String.valueOf(paramString));
@@ -16,21 +16,21 @@ final class AudioPlayerConfigure$1
     if (!str.endsWith(".so")) {
       paramString = str + ".so";
     }
-    AppMethodBeat.o(128392);
+    AppMethodBeat.o(114308);
     return paramString;
   }
   
   public final boolean load(String paramString)
   {
-    AppMethodBeat.i(128391);
+    AppMethodBeat.i(114307);
     System.loadLibrary(paramString);
-    AppMethodBeat.o(128391);
+    AppMethodBeat.o(114307);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.AudioPlayerConfigure.1
  * JD-Core Version:    0.7.0.1
  */

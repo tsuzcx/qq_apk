@@ -1,145 +1,153 @@
 package com.tencent.mm.emoji.loader.f;
 
-import a.f.b.j;
-import a.l;
-import a.l.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
 import com.tencent.tmassistantsdk.util.Base64;
+import d.g.b.k;
+import d.l;
+import d.n.n;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/loader/verify/EmojiFileVerify;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "reportDecrypt", "", "verifyConfig", "Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyConfig;", "success", "", "reportVerify", "verify", "plugin-emojisdk_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/verify/EmojiFileVerify;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "reportDecrypt", "", "verifyConfig", "Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyConfig;", "success", "", "reportVerify", "verify", "plugin-emojisdk_release"})
 public final class a
 {
   private final String TAG = "MicroMsg.EmojiLoader.EmojiFileVerify";
   
   private static void a(b paramb, boolean paramBoolean)
   {
-    AppMethodBeat.i(63230);
+    AppMethodBeat.i(105486);
     if (paramBoolean)
     {
-      switch (paramb.evJ)
+      switch (paramb.fLR)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(63230);
+        AppMethodBeat.o(105486);
         return;
-        c.iX(7L);
-        AppMethodBeat.o(63230);
+        c.oF(7L);
+        AppMethodBeat.o(105486);
         return;
-        c.iX(11L);
+        c.oF(11L);
       }
     }
-    EmojiInfo localEmojiInfo = paramb.evH;
-    switch (paramb.evJ)
+    EmojiInfo localEmojiInfo = paramb.fLP;
+    switch (paramb.fLR)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(63230);
+      AppMethodBeat.o(105486);
       return;
-      c.iX(8L);
-      c.a(localEmojiInfo.Al(), 3, 0, 1, localEmojiInfo.avS(), 1, localEmojiInfo.field_designerID);
-      AppMethodBeat.o(63230);
+      c.oF(8L);
+      c.a(localEmojiInfo.JS(), 3, 0, 1, localEmojiInfo.asy(), 1, localEmojiInfo.field_designerID);
+      AppMethodBeat.o(105486);
       return;
-      c.iX(12L);
-      c.a(localEmojiInfo.Al(), 4, 0, 1, localEmojiInfo.avS(), 1, localEmojiInfo.field_designerID);
+      c.oF(12L);
+      c.a(localEmojiInfo.JS(), 4, 0, 1, localEmojiInfo.asy(), 1, localEmojiInfo.field_designerID);
     }
   }
   
   public final boolean a(b paramb)
   {
-    AppMethodBeat.i(63229);
-    j.q(paramb, "verifyConfig");
-    if (paramb.ewi) {}
+    AppMethodBeat.i(105485);
+    k.h(paramb, "verifyConfig");
+    if (paramb.fMv) {}
+    label273:
+    label479:
+    label486:
     for (;;)
     {
       try
       {
-        boolean bool = com.tencent.mm.a.a.g(Base64.encodeToString(bo.apQ(paramb.ewj), 0), paramb.ewk, paramb.path);
-        e.deleteFile(paramb.ewk);
-        if (!bool)
+        Object localObject = Base64.encodeToString(bt.aGd(paramb.fMw), 0);
+        localObject = com.tencent.mm.b.a.c(i.aR(paramb.fMx, 0, -1), (String)localObject);
+        if ((localObject == null) || (i.B(paramb.path, (byte[])localObject) != 0)) {
+          break label486;
+        }
+        i = 1;
+        i.deleteFile(paramb.fMx);
+        if (i == 0)
         {
           a(paramb, false);
-          AppMethodBeat.o(63229);
+          AppMethodBeat.o(105485);
           return false;
         }
         a(paramb, true);
-        Object localObject = e.avP(paramb.path);
-        ab.i(this.TAG, "file md5 ".concat(String.valueOf(localObject)));
-        if ((bo.isNullOrNil((String)localObject)) || (!m.I((String)localObject, paramb.ewh, true))) {
-          break label262;
+        localObject = i.aEN(paramb.path);
+        ad.i(this.TAG, "file md5 ".concat(String.valueOf(localObject)));
+        if ((bt.isNullOrNil((String)localObject)) || (!n.I((String)localObject, paramb.fMu, true))) {
+          break label273;
         }
         i = 1;
-        localObject = paramb.evH;
+        localObject = paramb.fLP;
         if (i == 0) {
-          break label360;
+          break label362;
         }
-        switch (paramb.evJ)
+        switch (paramb.fLR)
         {
         default: 
-          if ((i == 0) || (!g.RJ().QU())) {
-            break label488;
+          if ((i == 0) || (!g.afz().aeI())) {
+            break label479;
           }
-          localObject = g.G(com.tencent.mm.plugin.emoji.b.d.class);
-          j.p(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
-          ((com.tencent.mm.plugin.emoji.b.d)localObject).getEmojiMgr().c(paramb.evH, true);
-          AppMethodBeat.o(63229);
+          localObject = g.ad(com.tencent.mm.plugin.emoji.b.d.class);
+          k.g(localObject, "MMKernel.plugin(IPluginEmoji::class.java)");
+          ((com.tencent.mm.plugin.emoji.b.d)localObject).getEmojiMgr().a(paramb.fLP, true);
+          AppMethodBeat.o(105485);
           return true;
         }
       }
       catch (Exception localException)
       {
-        ab.printErrStackTrace(this.TAG, (Throwable)localException, "", new Object[0]);
+        ad.printErrStackTrace(this.TAG, (Throwable)localException, "", new Object[0]);
         a(paramb, false);
-        AppMethodBeat.o(63229);
+        AppMethodBeat.o(105485);
         return false;
       }
-      e.aT(paramb.ewk, paramb.path);
+      i.lD(paramb.fMx, paramb.path);
       continue;
-      label262:
       int i = 0;
       continue;
-      c.a(localException.Al(), 4, 0, 0, localException.avS(), 0, localException.field_designerID);
-      c.iX(4L);
+      c.a(localException.JS(), 4, 0, 0, localException.asy(), 0, localException.field_designerID);
+      c.oF(4L);
       continue;
-      c.a(localException.Al(), 2, 0, 0, localException.avS(), 0, localException.field_designerID);
-      c.iX(4L);
+      c.a(localException.JS(), 2, 0, 0, localException.asy(), 0, localException.field_designerID);
+      c.oF(4L);
       continue;
-      c.a(localException.Al(), 4, 0, 0, localException.avS(), 1, localException.field_designerID);
-      c.iX(13L);
+      c.a(localException.JS(), 4, 0, 0, localException.asy(), 1, localException.field_designerID);
+      c.oF(13L);
       continue;
-      label360:
-      switch (paramb.evJ)
+      label362:
+      switch (paramb.fLR)
       {
       default: 
         break;
       case 0: 
-        c.a(localException.Al(), 4, 1, 1, localException.avS(), 1, localException.field_designerID);
-        c.iX(5L);
+        c.a(localException.JS(), 4, 1, 1, localException.asy(), 1, localException.field_designerID);
+        c.oF(5L);
         break;
       case 1: 
-        c.a(localException.Al(), 2, 1, 1, localException.avS(), 1, localException.field_designerID);
-        c.iX(5L);
+        c.a(localException.JS(), 2, 1, 1, localException.asy(), 1, localException.field_designerID);
+        c.oF(5L);
         break;
       case 2: 
-        c.a(localException.Al(), 4, 1, 1, localException.avS(), 1, localException.field_designerID);
-        c.iX(14L);
+        c.a(localException.JS(), 4, 1, 1, localException.asy(), 1, localException.field_designerID);
+        c.oF(14L);
+        continue;
+        AppMethodBeat.o(105485);
+        return false;
+        i = 0;
       }
     }
-    label488:
-    AppMethodBeat.o(63229);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.f.a
  * JD-Core Version:    0.7.0.1
  */

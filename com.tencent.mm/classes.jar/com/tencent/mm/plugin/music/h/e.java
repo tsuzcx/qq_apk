@@ -6,97 +6,117 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.az.f;
 import com.tencent.mm.pointers.PBool;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.json.JSONObject;
 
 public final class e
 {
-  private static final Pattern hpo;
-  private static final String[] pcj;
-  private static String pck;
-  private static String pcl;
+  private static final Pattern jmw;
+  private static final String[] tZH;
+  private static String tZI;
+  private static String tZJ;
   
   static
   {
-    AppMethodBeat.i(137709);
-    pcj = new String[] { "#", "?", "&" };
-    pck = null;
-    pcl = null;
-    hpo = Pattern.compile("songid=([0-9]+)");
-    AppMethodBeat.o(137709);
+    AppMethodBeat.i(137462);
+    tZH = new String[] { "#", "?", "&" };
+    tZI = null;
+    tZJ = null;
+    jmw = Pattern.compile("songid=([0-9]+)");
+    AppMethodBeat.o(137462);
   }
   
-  private static String O(com.tencent.mm.aw.e parame)
+  private static int D(char paramChar)
   {
-    AppMethodBeat.i(137707);
-    if (parame != null) {
-      if (!bo.isNullOrNil(parame.fKp)) {
-        str = parame.fKp;
+    int j = 0;
+    int i;
+    if ((paramChar >= '1') && (paramChar <= '9')) {
+      i = paramChar - '0';
+    }
+    do
+    {
+      do
+      {
+        return i;
+        i = j;
+      } while (paramChar < 'A');
+      i = j;
+    } while (paramChar > 'F');
+    return paramChar - 'A' + 10;
+  }
+  
+  private static String R(f paramf)
+  {
+    AppMethodBeat.i(137460);
+    if (paramf != null) {
+      if (!bt.isNullOrNil(paramf.hnv)) {
+        str = paramf.hnv;
       }
     }
     while (str == null)
     {
-      AppMethodBeat.o(137707);
+      AppMethodBeat.o(137460);
       return null;
-      if (!bo.isNullOrNil(parame.fKr)) {
-        str = parame.fKr;
-      } else if (!bo.isNullOrNil(parame.fKq)) {
-        str = parame.fKq;
+      if (!bt.isNullOrNil(paramf.hnx)) {
+        str = paramf.hnx;
+      } else if (!bt.isNullOrNil(paramf.hnw)) {
+        str = paramf.hnw;
       } else {
         str = null;
       }
     }
-    String str = VK(parame.fKp);
+    String str = aiX(paramf.hnv);
     if (str != null)
     {
-      AppMethodBeat.o(137707);
+      AppMethodBeat.o(137460);
       return str;
     }
-    str = VK(parame.fKr);
+    str = aiX(paramf.hnx);
     if (str != null)
     {
-      AppMethodBeat.o(137707);
+      AppMethodBeat.o(137460);
       return str;
     }
-    parame = VK(parame.fKq);
-    AppMethodBeat.o(137707);
-    return parame;
+    paramf = aiX(paramf.hnw);
+    AppMethodBeat.o(137460);
+    return paramf;
   }
   
-  public static com.tencent.mm.aw.e P(com.tencent.mm.aw.e parame)
+  public static f S(f paramf)
   {
-    AppMethodBeat.i(137708);
-    if (parame != null)
+    AppMethodBeat.i(137461);
+    if (paramf != null)
     {
-      parame.fKy = VM(parame.fKp);
-      if (parame.fKy <= 0)
+      paramf.hnE = aiZ(paramf.hnv);
+      if (paramf.hnE <= 0)
       {
-        parame.fKy = VM(parame.fKr);
-        if (parame.fKy <= 0) {
-          parame.fKy = VM(parame.fKq);
+        paramf.hnE = aiZ(paramf.hnx);
+        if (paramf.hnE <= 0) {
+          paramf.hnE = aiZ(paramf.hnw);
         }
       }
     }
-    if ((parame == null) || (O(parame) == null))
+    if ((paramf == null) || (R(paramf) == null))
     {
-      AppMethodBeat.o(137708);
-      return parame;
+      AppMethodBeat.o(137461);
+      return paramf;
     }
     long l = System.currentTimeMillis();
-    Object localObject = O(parame);
+    Object localObject = R(paramf);
     if (localObject == null)
     {
-      AppMethodBeat.o(137708);
-      return parame;
+      AppMethodBeat.o(137461);
+      return paramf;
     }
-    ab.d("MicroMsg.Music.MusicUrlUtil", "bcdUrl: %s", new Object[] { localObject });
-    String str = new String(VL((String)localObject));
+    ad.d("MicroMsg.Music.MusicUrlUtil", "bcdUrl: %s", new Object[] { localObject });
+    String str = new String(aiY((String)localObject));
     int i = str.indexOf("{");
     localObject = str;
     if (i != -1) {
@@ -105,44 +125,108 @@ public final class e
     try
     {
       localObject = new JSONObject((String)localObject);
-      parame.fKy = ((JSONObject)localObject).optInt("song_ID");
-      if (bo.isNullOrNil(parame.fKl)) {
-        parame.fKl = ((JSONObject)localObject).optString("song_Name");
+      paramf.hnE = ((JSONObject)localObject).optInt("song_ID");
+      if (bt.isNullOrNil(paramf.hnr)) {
+        paramf.hnr = ((JSONObject)localObject).optString("song_Name");
       }
-      if (bo.isNullOrNil(parame.fKq)) {
-        parame.fKq = ((JSONObject)localObject).optString("song_WapLiveURL");
+      if (bt.isNullOrNil(paramf.hnw)) {
+        paramf.hnw = ((JSONObject)localObject).optString("song_WapLiveURL");
       }
-      if (bo.isNullOrNil(parame.fKp)) {
-        parame.fKp = ((JSONObject)localObject).optString("song_WifiURL");
+      if (bt.isNullOrNil(paramf.hnv)) {
+        paramf.hnv = ((JSONObject)localObject).optString("song_WifiURL");
       }
-      if (bo.isNullOrNil(parame.fKn)) {
-        parame.fKn = ((JSONObject)localObject).optString("song_Album");
+      if (bt.isNullOrNil(paramf.hnt)) {
+        paramf.hnt = ((JSONObject)localObject).optString("song_Album");
       }
-      if (bo.isNullOrNil(parame.fKm)) {
-        parame.fKm = ((JSONObject)localObject).optString("song_Singer");
+      if (bt.isNullOrNil(paramf.hns)) {
+        paramf.hns = ((JSONObject)localObject).optString("song_Singer");
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.Music.MusicUrlUtil", localException, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Music.MusicUrlUtil", localException, "", new Object[0]);
       }
     }
-    if (parame.fKy == 0) {
-      parame.fKy = VM(pck);
+    if (paramf.hnE == 0) {
+      paramf.hnE = aiZ(tZI);
     }
-    ab.i("MicroMsg.Music.MusicUrlUtil", "parseBCDForMusicWrapper %s: expend: %d %d", new Object[] { parame.fKj, Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(parame.fKy) });
-    AppMethodBeat.o(137708);
-    return parame;
+    ad.i("MicroMsg.Music.MusicUrlUtil", "parseBCDForMusicWrapper %s: expend: %d %d", new Object[] { paramf.hnp, Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(paramf.hnE) });
+    AppMethodBeat.o(137461);
+    return paramf;
   }
   
-  public static boolean VJ(String paramString)
+  public static String a(String paramString1, String paramString2, boolean paramBoolean, PBool paramPBool)
   {
-    AppMethodBeat.i(137700);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(137455);
+    if ((paramBoolean) || (bt.isNullOrNil(paramString2))) {}
+    for (String str = paramString1; bt.isNullOrNil(str); str = paramString2)
     {
-      AppMethodBeat.o(137700);
+      AppMethodBeat.o(137455);
+      return str;
+    }
+    PString localPString = new PString();
+    ad.i("MicroMsg.Music.MusicUrlUtil", "url[%s], lowBandUrl[%s], isWifi[%B]", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
+    paramString1 = aiX(str);
+    if (paramString1 != null) {
+      if (a(paramString1, paramBoolean, localPString)) {
+        paramPBool.value = paramBoolean;
+      }
+    }
+    for (;;)
+    {
+      paramString1 = localPString.value;
+      AppMethodBeat.o(137455);
+      return paramString1;
+      if (str.contains("wechat_music_url=")) {
+        a(str.substring(str.indexOf("wechat_music_url=") + 17), paramBoolean, localPString);
+      } else {
+        localPString.value = str;
+      }
+    }
+  }
+  
+  private static boolean a(String paramString, boolean paramBoolean, PString paramPString)
+  {
+    AppMethodBeat.i(137457);
+    Object localObject2 = new String(aiY(paramString));
+    int i = ((String)localObject2).indexOf("{");
+    Object localObject1 = localObject2;
+    if (i != -1) {
+      localObject1 = ((String)localObject2).substring(i);
+    }
+    try
+    {
+      localObject2 = new JSONObject((String)localObject1);
+      localObject1 = ((JSONObject)localObject2).getString("song_WapLiveURL");
+      localObject2 = ((JSONObject)localObject2).getString("song_WifiURL");
+      ad.d("MicroMsg.Music.MusicUrlUtil", "waplive: " + (String)localObject1 + "  wifi:" + (String)localObject2);
+      if (paramBoolean) {
+        localObject1 = localObject2;
+      }
+      for (;;)
+      {
+        paramPString.value = ((String)localObject1);
+        AppMethodBeat.o(137457);
+        return true;
+      }
+      return false;
+    }
+    catch (Exception localException)
+    {
+      paramPString.value = paramString;
+      ad.printErrStackTrace("MicroMsg.Music.MusicUrlUtil", localException, "decodeJson", new Object[0]);
+      AppMethodBeat.o(137457);
+    }
+  }
+  
+  public static boolean aiW(String paramString)
+  {
+    AppMethodBeat.i(137453);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(137453);
       return false;
     }
     Uri localUri = Uri.parse(paramString);
@@ -154,33 +238,33 @@ public final class e
     if (str != null)
     {
       bool = localUri.getHost().contains(".qq.com");
-      ab.w("MicroMsg.Music.MusicUrlUtil", "url %s match ? %B", new Object[] { paramString, Boolean.valueOf(bool) });
+      ad.w("MicroMsg.Music.MusicUrlUtil", "url %s match ? %B", new Object[] { paramString, Boolean.valueOf(bool) });
     }
     for (;;)
     {
-      AppMethodBeat.o(137700);
+      AppMethodBeat.o(137453);
       return bool;
-      ab.i("MicroMsg.Music.MusicUrlUtil", "host is null, url is not match .qq.com");
+      ad.i("MicroMsg.Music.MusicUrlUtil", "host is null, url is not match .qq.com");
       bool = false;
     }
   }
   
-  private static String VK(String paramString)
+  private static String aiX(String paramString)
   {
-    AppMethodBeat.i(137703);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(137456);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(137703);
+      AppMethodBeat.o(137456);
       return null;
     }
-    if ((pck != null) && (paramString.equals(pck)))
+    if ((tZI != null) && (paramString.equals(tZI)))
     {
-      paramString = pcl;
-      AppMethodBeat.o(137703);
+      paramString = tZJ;
+      AppMethodBeat.o(137456);
       return paramString;
     }
     Object localObject2 = "";
-    String[] arrayOfString = pcj;
+    String[] arrayOfString = tZH;
     int j = arrayOfString.length;
     int i = 0;
     Object localObject1 = null;
@@ -206,18 +290,18 @@ public final class e
     }
     if (localObject4 == null)
     {
-      AppMethodBeat.o(137703);
+      AppMethodBeat.o(137456);
       return null;
     }
     i = localObject4.indexOf((String)localObject3);
     if (i < 0)
     {
-      ab.w("MicroMsg.Music.MusicUrlUtil", "pIndex is %d, return", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(137703);
+      ad.w("MicroMsg.Music.MusicUrlUtil", "pIndex is %d, return", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(137456);
       return null;
     }
     localObject1 = localObject4.substring(((String)localObject3).length() + i);
-    Object localObject3 = pcj;
+    Object localObject3 = tZH;
     j = localObject3.length;
     i = 0;
     while (i < j)
@@ -232,16 +316,16 @@ public final class e
     }
     if (localObject1 != null)
     {
-      pck = paramString;
-      pcl = (String)localObject1;
+      tZI = paramString;
+      tZJ = (String)localObject1;
     }
-    AppMethodBeat.o(137703);
+    AppMethodBeat.o(137456);
     return localObject1;
   }
   
-  private static byte[] VL(String paramString)
+  private static byte[] aiY(String paramString)
   {
-    AppMethodBeat.i(137705);
+    AppMethodBeat.i(137458);
     byte[] arrayOfByte = new byte[paramString.length() / 2 + paramString.length() % 2];
     int i = 0;
     int j = 0;
@@ -252,132 +336,68 @@ public final class e
         if (i < paramString.length())
         {
           k = i + 1;
-          int n = z(paramString.charAt(i));
+          int n = D(paramString.charAt(i));
           if (k >= paramString.length()) {
-            break label103;
+            break label106;
           }
           i = k + 1;
-          k = z(paramString.charAt(k));
+          k = D(paramString.charAt(k));
           arrayOfByte[j] = ((byte)(k | n << 4));
           j += 1;
           continue;
         }
-        AppMethodBeat.o(137705);
+        AppMethodBeat.o(137458);
       }
       catch (Exception paramString)
       {
-        AppMethodBeat.o(137705);
+        AppMethodBeat.o(137458);
         return null;
       }
       return arrayOfByte;
-      label103:
+      label106:
       int m = 0;
       i = k;
       int k = m;
     }
   }
   
-  private static int VM(String paramString)
+  private static int aiZ(String paramString)
   {
-    AppMethodBeat.i(137706);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(137459);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(137706);
+      AppMethodBeat.o(137459);
       return 0;
     }
-    paramString = hpo.matcher(paramString);
+    paramString = jmw.matcher(paramString);
     if (paramString.find())
     {
       paramString = paramString.group(1);
       try
       {
         int i = Integer.valueOf(paramString).intValue();
-        AppMethodBeat.o(137706);
+        AppMethodBeat.o(137459);
         return i;
       }
       catch (Exception paramString)
       {
-        ab.printErrStackTrace("MicroMsg.Music.MusicUrlUtil", paramString, "getSongId", new Object[0]);
-        AppMethodBeat.o(137706);
+        ad.printErrStackTrace("MicroMsg.Music.MusicUrlUtil", paramString, "getSongId", new Object[0]);
+        AppMethodBeat.o(137459);
         return 0;
       }
     }
-    AppMethodBeat.o(137706);
+    AppMethodBeat.o(137459);
     return 0;
   }
   
-  public static String a(String paramString1, String paramString2, boolean paramBoolean, PBool paramPBool)
+  public static String fC(Context paramContext)
   {
-    AppMethodBeat.i(137702);
-    if ((paramBoolean) || (bo.isNullOrNil(paramString2))) {}
-    for (String str = paramString1; bo.isNullOrNil(str); str = paramString2)
-    {
-      AppMethodBeat.o(137702);
-      return str;
-    }
-    PString localPString = new PString();
-    ab.i("MicroMsg.Music.MusicUrlUtil", "url[%s], lowBandUrl[%s], isWifi[%B]", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
-    paramString1 = VK(str);
-    if (paramString1 != null) {
-      if (a(paramString1, paramBoolean, localPString)) {
-        paramPBool.value = paramBoolean;
-      }
-    }
-    for (;;)
-    {
-      paramString1 = localPString.value;
-      AppMethodBeat.o(137702);
-      return paramString1;
-      if (str.contains("wechat_music_url=")) {
-        a(str.substring(str.indexOf("wechat_music_url=") + 17), paramBoolean, localPString);
-      } else {
-        localPString.value = str;
-      }
-    }
-  }
-  
-  private static boolean a(String paramString, boolean paramBoolean, PString paramPString)
-  {
-    AppMethodBeat.i(137704);
-    Object localObject2 = new String(VL(paramString));
-    int i = ((String)localObject2).indexOf("{");
-    Object localObject1 = localObject2;
-    if (i != -1) {
-      localObject1 = ((String)localObject2).substring(i);
-    }
-    try
-    {
-      localObject2 = new JSONObject((String)localObject1);
-      localObject1 = ((JSONObject)localObject2).getString("song_WapLiveURL");
-      localObject2 = ((JSONObject)localObject2).getString("song_WifiURL");
-      ab.d("MicroMsg.Music.MusicUrlUtil", "waplive: " + (String)localObject1 + "  wifi:" + (String)localObject2);
-      if (paramBoolean) {
-        localObject1 = localObject2;
-      }
-      for (;;)
-      {
-        paramPString.value = ((String)localObject1);
-        AppMethodBeat.o(137704);
-        return true;
-      }
-      return false;
-    }
-    catch (Exception localException)
-    {
-      paramPString.value = paramString;
-      ab.printErrStackTrace("MicroMsg.Music.MusicUrlUtil", localException, "decodeJson", new Object[0]);
-      AppMethodBeat.o(137704);
-    }
-  }
-  
-  public static String eH(Context paramContext)
-  {
-    AppMethodBeat.i(137701);
+    AppMethodBeat.i(137454);
     String str = "";
-    Object localObject2 = ah.getPackageName();
+    Object localObject2 = aj.getPackageName();
     if (localObject2 == null)
     {
-      AppMethodBeat.o(137701);
+      AppMethodBeat.o(137454);
       return "";
     }
     Object localObject1 = str;
@@ -398,35 +418,16 @@ public final class e
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.Music.MusicUrlUtil", paramContext, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.Music.MusicUrlUtil", paramContext, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(137701);
+    AppMethodBeat.o(137454);
     return localObject1;
-  }
-  
-  private static int z(char paramChar)
-  {
-    int j = 0;
-    int i;
-    if ((paramChar >= '1') && (paramChar <= '9')) {
-      i = paramChar - '0';
-    }
-    do
-    {
-      do
-      {
-        return i;
-        i = j;
-      } while (paramChar < 'A');
-      i = j;
-    } while (paramChar > 'F');
-    return paramChar - 'A' + 10;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.music.h.e
  * JD-Core Version:    0.7.0.1
  */

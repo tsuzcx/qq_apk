@@ -1,30 +1,16 @@
 package com.tencent.mm.i;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
 public class g
 {
   public boolean allow_mobile_net_download = false;
-  public boolean cMU;
   public int certificateVerifyPolicy = 2;
   public int connectionCount = 1;
-  public Map<String, String> edA = null;
-  public boolean edB = false;
-  public boolean edC = false;
-  public int edD;
-  public int edE = 1;
-  public g.b edF;
-  public g.a edp;
-  public int edq = -1;
-  public int edr = -1;
-  public String eds = "";
-  public int edt = 0;
-  public int edu = 0;
-  public String[] edv = null;
-  public boolean edw = true;
-  public boolean edx = false;
-  public boolean edy = false;
-  public String edz = "";
+  public String customHeader = "";
+  public boolean dDS;
+  public String emojiExtinfo = "";
   public int expectImageFormat = 1;
   public int field_advideoflag = 0;
   public String field_aesKey = "";
@@ -71,37 +57,83 @@ public class g
   public String field_videoFileId = "";
   public int field_videosource = 0;
   public String field_wxmsgparam = "";
+  public byte[] fileBuffer;
+  public a fnH;
+  public int fnI = -1;
+  public int fnJ = -1;
+  public String fnK = "";
+  public int fnL = 0;
+  public int fnM = 0;
+  public String[] fnN = null;
+  public boolean fnO = true;
+  public boolean fnP = false;
+  public boolean fnQ = false;
+  public String fnR = "";
+  public Map<String, String> fnS = null;
+  public boolean fnT = false;
+  public boolean fnU = false;
+  public boolean fnV = false;
+  public int fnW;
+  public int fnX = 1;
+  public b fnY;
   public boolean is_resume_task = false;
   public int lastError = 0;
+  public long preloadMinSize = 0L;
+  public int snsVersion = 0;
+  public byte[] thumbnailBuffer;
   
-  public final boolean Jp()
+  public final boolean UF()
   {
-    return this.edE == 2;
+    return this.fnX == 2;
   }
   
-  public final boolean Jq()
+  public final boolean UG()
   {
-    return this.edE == 3;
+    return this.fnX == 3;
   }
   
-  public final boolean Jr()
+  public final boolean UH()
   {
-    return this.edE == 1;
+    return this.fnX == 1;
   }
   
-  public final boolean Js()
+  public final boolean UI()
   {
-    return this.edE == 4;
+    return this.fnX == 4;
   }
   
-  public final boolean Jt()
+  public final boolean UJ()
   {
-    return this.edE == 6;
+    return this.fnX == 6;
+  }
+  
+  public final boolean UK()
+  {
+    return this.fnX == 8;
+  }
+  
+  public final boolean ccl()
+  {
+    return this.fnX == 7;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract int a(String paramString, int paramInt, c paramc, d paramd, boolean paramBoolean);
+    
+    public abstract void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream);
+    
+    public abstract byte[] f(String paramString, byte[] paramArrayOfByte);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void a(String paramString, d paramd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.i.g
  * JD-Core Version:    0.7.0.1
  */

@@ -7,24 +7,29 @@ import java.io.OutputStream;
 public final class b
   extends f<byte[]>
 {
-  public String aZn;
-  private f.a ePV;
+  public String bxn;
+  private f.a gly;
   
-  public b(byte[] paramArrayOfByte, String paramString, f.a<byte[]> parama)
+  private b(byte[] paramArrayOfByte, String paramString, f.a<byte[]> parama)
   {
     super(paramArrayOfByte);
-    this.aZn = paramString;
-    this.ePV = parama;
+    this.bxn = paramString;
+    this.gly = parama;
   }
   
-  public final a TU()
+  public static b d(byte[] paramArrayOfByte, String paramString)
   {
-    return this.ePV.TV();
+    new b(paramArrayOfByte, paramString, new f.a() {});
+  }
+  
+  public final a ahF()
+  {
+    return this.gly.ahG();
   }
   
   public final void b(OutputStream paramOutputStream)
   {
-    c localc = c.eNn;
+    c localc = c.giE;
     c.a((byte[])this.data, paramOutputStream);
   }
 }

@@ -26,30 +26,30 @@ import java.util.concurrent.ConcurrentHashMap;
 
 final class m
 {
-  private static final RectF abs = new RectF();
-  private static ConcurrentHashMap<String, Method> abt = new ConcurrentHashMap();
-  private boolean abA = false;
-  private TextPaint abB;
-  int abu = 0;
-  private boolean abv = false;
-  float abw = -1.0F;
-  float abx = -1.0F;
-  float aby = -1.0F;
-  int[] abz = new int[0];
+  private static final RectF aiy = new RectF();
+  private static ConcurrentHashMap<String, Method> aiz = new ConcurrentHashMap();
+  private final TextView Tu;
+  int aiA = 0;
+  private boolean aiB = false;
+  float aiC = -1.0F;
+  float aiD = -1.0F;
+  float aiE = -1.0F;
+  int[] aiF = new int[0];
+  private boolean aiG = false;
+  private TextPaint aiH;
   private final Context mContext;
-  private final TextView md;
   
   m(TextView paramTextView)
   {
-    this.md = paramTextView;
-    this.mContext = this.md.getContext();
+    this.Tu = paramTextView;
+    this.mContext = this.Tu.getContext();
   }
   
-  private static Method Q(String paramString)
+  private static Method C(String paramString)
   {
     try
     {
-      Method localMethod2 = (Method)abt.get(paramString);
+      Method localMethod2 = (Method)aiz.get(paramString);
       Method localMethod1 = localMethod2;
       if (localMethod2 == null)
       {
@@ -58,7 +58,7 @@ final class m
         if (localMethod2 != null)
         {
           localMethod2.setAccessible(true);
-          abt.put(paramString, localMethod2);
+          aiz.put(paramString, localMethod2);
           localMethod1 = localMethod2;
         }
       }
@@ -71,53 +71,27 @@ final class m
     return null;
   }
   
-  private int a(RectF paramRectF)
-  {
-    int j = this.abz.length;
-    if (j == 0) {
-      throw new IllegalStateException("No available text sizes to choose from.");
-    }
-    int i = 1;
-    int k = j - 1;
-    j = 0;
-    while (i <= k)
-    {
-      int m = (i + k) / 2;
-      if (a(this.abz[m], paramRectF))
-      {
-        j = i;
-        i = m + 1;
-      }
-      else
-      {
-        k = m - 1;
-        j = k;
-      }
-    }
-    return this.abz[j];
-  }
-  
   private StaticLayout a(CharSequence paramCharSequence, Layout.Alignment paramAlignment, int paramInt)
   {
     float f1;
     float f2;
     if (Build.VERSION.SDK_INT >= 16)
     {
-      f1 = this.md.getLineSpacingMultiplier();
-      f2 = this.md.getLineSpacingExtra();
+      f1 = this.Tu.getLineSpacingMultiplier();
+      f2 = this.Tu.getLineSpacingExtra();
     }
-    for (boolean bool = this.md.getIncludeFontPadding();; bool = ((Boolean)a(this.md, "getIncludeFontPadding", Boolean.TRUE)).booleanValue())
+    for (boolean bool = this.Tu.getIncludeFontPadding();; bool = ((Boolean)a(this.Tu, "getIncludeFontPadding", Boolean.TRUE)).booleanValue())
     {
-      return new StaticLayout(paramCharSequence, this.abB, paramInt, paramAlignment, f1, f2, bool);
-      f1 = ((Float)a(this.md, "getLineSpacingMultiplier", Float.valueOf(1.0F))).floatValue();
-      f2 = ((Float)a(this.md, "getLineSpacingExtra", Float.valueOf(0.0F))).floatValue();
+      return new StaticLayout(paramCharSequence, this.aiH, paramInt, paramAlignment, f1, f2, bool);
+      f1 = ((Float)a(this.Tu, "getLineSpacingMultiplier", Float.valueOf(1.0F))).floatValue();
+      f2 = ((Float)a(this.Tu, "getLineSpacingExtra", Float.valueOf(0.0F))).floatValue();
     }
   }
   
   private StaticLayout a(CharSequence paramCharSequence, Layout.Alignment paramAlignment, int paramInt1, int paramInt2)
   {
-    TextDirectionHeuristic localTextDirectionHeuristic = (TextDirectionHeuristic)a(this.md, "getTextDirectionHeuristic", TextDirectionHeuristics.FIRSTSTRONG_LTR);
-    paramCharSequence = StaticLayout.Builder.obtain(paramCharSequence, 0, paramCharSequence.length(), this.abB, paramInt1).setAlignment(paramAlignment).setLineSpacing(this.md.getLineSpacingExtra(), this.md.getLineSpacingMultiplier()).setIncludePad(this.md.getIncludeFontPadding()).setBreakStrategy(this.md.getBreakStrategy()).setHyphenationFrequency(this.md.getHyphenationFrequency());
+    TextDirectionHeuristic localTextDirectionHeuristic = (TextDirectionHeuristic)a(this.Tu, "getTextDirectionHeuristic", TextDirectionHeuristics.FIRSTSTRONG_LTR);
+    paramCharSequence = StaticLayout.Builder.obtain(paramCharSequence, 0, paramCharSequence.length(), this.aiH, paramInt1).setAlignment(paramAlignment).setLineSpacing(this.Tu.getLineSpacingExtra(), this.Tu.getLineSpacingMultiplier()).setIncludePad(this.Tu.getIncludeFontPadding()).setBreakStrategy(this.Tu.getBreakStrategy()).setHyphenationFrequency(this.Tu.getHyphenationFrequency());
     paramInt1 = paramInt2;
     if (paramInt2 == -1) {
       paramInt1 = 2147483647;
@@ -129,7 +103,7 @@ final class m
   {
     try
     {
-      paramObject = Q(paramString).invoke(paramObject, new Object[0]);
+      paramObject = C(paramString).invoke(paramObject, new Object[0]);
       if (paramObject == null) {}
       return paramObject;
     }
@@ -144,12 +118,12 @@ final class m
   
   private boolean a(int paramInt, RectF paramRectF)
   {
-    Object localObject2 = this.md.getText();
-    Object localObject3 = this.md.getTransformationMethod();
+    Object localObject2 = this.Tu.getText();
+    Object localObject3 = this.Tu.getTransformationMethod();
     Object localObject1 = localObject2;
     if (localObject3 != null)
     {
-      localObject3 = ((TransformationMethod)localObject3).getTransformation((CharSequence)localObject2, this.md);
+      localObject3 = ((TransformationMethod)localObject3).getTransformation((CharSequence)localObject2, this.Tu);
       localObject1 = localObject2;
       if (localObject3 != null) {
         localObject1 = localObject3;
@@ -158,15 +132,15 @@ final class m
     int i;
     if (Build.VERSION.SDK_INT >= 16)
     {
-      i = this.md.getMaxLines();
-      if (this.abB != null) {
+      i = this.Tu.getMaxLines();
+      if (this.aiH != null) {
         break label199;
       }
-      this.abB = new TextPaint();
+      this.aiH = new TextPaint();
       label89:
-      this.abB.set(this.md.getPaint());
-      this.abB.setTextSize(paramInt);
-      localObject2 = (Layout.Alignment)a(this.md, "getLayoutAlignment", Layout.Alignment.ALIGN_NORMAL);
+      this.aiH.set(this.Tu.getPaint());
+      this.aiH.setTextSize(paramInt);
+      localObject2 = (Layout.Alignment)a(this.Tu, "getLayoutAlignment", Layout.Alignment.ALIGN_NORMAL);
       if (Build.VERSION.SDK_INT < 23) {
         break label209;
       }
@@ -181,7 +155,7 @@ final class m
       return false;
       i = -1;
       break;
-      this.abB.reset();
+      this.aiH.reset();
       break label89;
     }
     label229:
@@ -200,12 +174,38 @@ final class m
         arrayOfInt[i] = paramTypedArray.getDimensionPixelSize(i, -1);
         i += 1;
       }
-      this.abz = i(arrayOfInt);
-      hn();
+      this.aiF = i(arrayOfInt);
+      iK();
     }
   }
   
-  private void f(float paramFloat1, float paramFloat2, float paramFloat3)
+  private int d(RectF paramRectF)
+  {
+    int j = this.aiF.length;
+    if (j == 0) {
+      throw new IllegalStateException("No available text sizes to choose from.");
+    }
+    int i = 1;
+    int k = j - 1;
+    j = 0;
+    while (i <= k)
+    {
+      int m = (i + k) / 2;
+      if (a(this.aiF[m], paramRectF))
+      {
+        j = i;
+        i = m + 1;
+      }
+      else
+      {
+        k = m - 1;
+        j = k;
+      }
+    }
+    return this.aiF[j];
+  }
+  
+  private void h(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     if (paramFloat1 <= 0.0F) {
       throw new IllegalArgumentException("Minimum auto-size text size (" + paramFloat1 + "px) is less or equal to (0px)");
@@ -216,74 +216,11 @@ final class m
     if (paramFloat3 <= 0.0F) {
       throw new IllegalArgumentException("The auto-size step granularity (" + paramFloat3 + "px) is less or equal to (0px)");
     }
-    this.abu = 1;
-    this.abx = paramFloat1;
-    this.aby = paramFloat2;
-    this.abw = paramFloat3;
-    this.abA = false;
-  }
-  
-  private boolean hn()
-  {
-    int i = this.abz.length;
-    if (i > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.abA = bool;
-      if (this.abA)
-      {
-        this.abu = 1;
-        this.abx = this.abz[0];
-        this.aby = this.abz[(i - 1)];
-        this.abw = -1.0F;
-      }
-      return this.abA;
-    }
-  }
-  
-  private boolean ho()
-  {
-    if ((hs()) && (this.abu == 1)) {
-      if ((!this.abA) || (this.abz.length == 0))
-      {
-        float f1 = Math.round(this.abx);
-        int i = 1;
-        while (Math.round(this.abw + f1) <= Math.round(this.aby))
-        {
-          i += 1;
-          f1 += this.abw;
-        }
-        int[] arrayOfInt = new int[i];
-        f1 = this.abx;
-        int j = 0;
-        while (j < i)
-        {
-          arrayOfInt[j] = Math.round(f1);
-          float f2 = this.abw;
-          j += 1;
-          f1 = f2 + f1;
-        }
-        this.abz = i(arrayOfInt);
-      }
-    }
-    for (this.abv = true;; this.abv = false) {
-      return this.abv;
-    }
-  }
-  
-  private void hq()
-  {
-    this.abu = 0;
-    this.abx = -1.0F;
-    this.aby = -1.0F;
-    this.abw = -1.0F;
-    this.abz = new int[0];
-    this.abv = false;
-  }
-  
-  private boolean hs()
-  {
-    return !(this.md instanceof AppCompatEditText);
+    this.aiA = 1;
+    this.aiD = paramFloat1;
+    this.aiE = paramFloat2;
+    this.aiC = paramFloat3;
+    this.aiG = false;
   }
   
   private static int[] i(int[] paramArrayOfInt)
@@ -320,27 +257,90 @@ final class m
     }
   }
   
+  private boolean iK()
+  {
+    int i = this.aiF.length;
+    if (i > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.aiG = bool;
+      if (this.aiG)
+      {
+        this.aiA = 1;
+        this.aiD = this.aiF[0];
+        this.aiE = this.aiF[(i - 1)];
+        this.aiC = -1.0F;
+      }
+      return this.aiG;
+    }
+  }
+  
+  private boolean iL()
+  {
+    if ((iP()) && (this.aiA == 1)) {
+      if ((!this.aiG) || (this.aiF.length == 0))
+      {
+        float f1 = Math.round(this.aiD);
+        int i = 1;
+        while (Math.round(this.aiC + f1) <= Math.round(this.aiE))
+        {
+          i += 1;
+          f1 += this.aiC;
+        }
+        int[] arrayOfInt = new int[i];
+        f1 = this.aiD;
+        int j = 0;
+        while (j < i)
+        {
+          arrayOfInt[j] = Math.round(f1);
+          float f2 = this.aiC;
+          j += 1;
+          f1 = f2 + f1;
+        }
+        this.aiF = i(arrayOfInt);
+      }
+    }
+    for (this.aiB = true;; this.aiB = false) {
+      return this.aiB;
+    }
+  }
+  
+  private void iN()
+  {
+    this.aiA = 0;
+    this.aiD = -1.0F;
+    this.aiE = -1.0F;
+    this.aiC = -1.0F;
+    this.aiF = new int[0];
+    this.aiB = false;
+  }
+  
+  private boolean iP()
+  {
+    return !(this.Tu instanceof AppCompatEditText);
+  }
+  
   private void setRawTextSize(float paramFloat)
   {
-    if (paramFloat != this.md.getPaint().getTextSize())
+    if (paramFloat != this.Tu.getPaint().getTextSize())
     {
-      this.md.getPaint().setTextSize(paramFloat);
+      this.Tu.getPaint().setTextSize(paramFloat);
       if (Build.VERSION.SDK_INT < 18) {
         break label114;
       }
     }
     label81:
     label114:
-    for (boolean bool = this.md.isInLayout();; bool = false)
+    for (boolean bool = this.Tu.isInLayout();; bool = false)
     {
-      if (this.md.getLayout() != null) {
-        this.abv = false;
+      if (this.Tu.getLayout() != null) {
+        this.aiB = false;
       }
       try
       {
-        Method localMethod = Q("nullLayouts");
+        Method localMethod = C("nullLayouts");
         if (localMethod != null) {
-          localMethod.invoke(this.md, new Object[0]);
+          localMethod.invoke(this.Tu, new Object[0]);
         }
       }
       catch (Exception localException)
@@ -348,13 +348,13 @@ final class m
         break label81;
       }
       if (!bool) {
-        this.md.requestLayout();
+        this.Tu.requestLayout();
       }
       for (;;)
       {
-        this.md.invalidate();
+        this.Tu.invalidate();
         return;
-        this.md.forceLayout();
+        this.Tu.forceLayout();
       }
     }
   }
@@ -362,21 +362,21 @@ final class m
   final void a(AttributeSet paramAttributeSet, int paramInt)
   {
     paramAttributeSet = this.mContext.obtainStyledAttributes(paramAttributeSet, a.a.AppCompatTextView, paramInt, 0);
-    if (paramAttributeSet.hasValue(2)) {
-      this.abu = paramAttributeSet.getInt(2, 0);
+    if (paramAttributeSet.hasValue(5)) {
+      this.aiA = paramAttributeSet.getInt(5, 0);
     }
-    if (paramAttributeSet.hasValue(3)) {}
-    for (float f1 = paramAttributeSet.getDimension(3, -1.0F);; f1 = -1.0F)
+    if (paramAttributeSet.hasValue(4)) {}
+    for (float f1 = paramAttributeSet.getDimension(4, -1.0F);; f1 = -1.0F)
     {
-      if (paramAttributeSet.hasValue(5)) {}
-      for (float f2 = paramAttributeSet.getDimension(5, -1.0F);; f2 = -1.0F)
+      if (paramAttributeSet.hasValue(2)) {}
+      for (float f2 = paramAttributeSet.getDimension(2, -1.0F);; f2 = -1.0F)
       {
-        if (paramAttributeSet.hasValue(6)) {}
-        for (float f3 = paramAttributeSet.getDimension(6, -1.0F);; f3 = -1.0F)
+        if (paramAttributeSet.hasValue(1)) {}
+        for (float f3 = paramAttributeSet.getDimension(1, -1.0F);; f3 = -1.0F)
         {
-          if (paramAttributeSet.hasValue(4))
+          if (paramAttributeSet.hasValue(3))
           {
-            paramInt = paramAttributeSet.getResourceId(4, 0);
+            paramInt = paramAttributeSet.getResourceId(3, 0);
             if (paramInt > 0)
             {
               TypedArray localTypedArray = paramAttributeSet.getResources().obtainTypedArray(paramInt);
@@ -385,11 +385,11 @@ final class m
             }
           }
           paramAttributeSet.recycle();
-          if (hs())
+          if (iP())
           {
-            if (this.abu == 1)
+            if (this.aiA == 1)
             {
-              if (!this.abA)
+              if (!this.aiG)
               {
                 paramAttributeSet = this.mContext.getResources().getDisplayMetrics();
                 float f4 = f2;
@@ -404,13 +404,13 @@ final class m
                 if (f1 == -1.0F) {
                   f3 = 1.0F;
                 }
-                f(f4, f2, f3);
+                h(f4, f2, f3);
               }
-              ho();
+              iL();
             }
             return;
           }
-          this.abu = 0;
+          this.aiA = 0;
           return;
         }
       }
@@ -427,55 +427,55 @@ final class m
     }
   }
   
-  final void hp()
+  final void iM()
   {
-    if (!hr()) {}
+    if (!iO()) {}
     do
     {
       return;
-      if (!this.abv) {
+      if (!this.aiB) {
         break;
       }
-    } while ((this.md.getMeasuredHeight() <= 0) || (this.md.getMeasuredWidth() <= 0));
+    } while ((this.Tu.getMeasuredHeight() <= 0) || (this.Tu.getMeasuredWidth() <= 0));
     int i;
-    if (((Boolean)a(this.md, "getHorizontallyScrolling", Boolean.FALSE)).booleanValue()) {
+    if (((Boolean)a(this.Tu, "getHorizontallyScrolling", Boolean.FALSE)).booleanValue()) {
       i = 1048576;
     }
     for (;;)
     {
-      int j = this.md.getHeight() - this.md.getCompoundPaddingBottom() - this.md.getCompoundPaddingTop();
+      int j = this.Tu.getHeight() - this.Tu.getCompoundPaddingBottom() - this.Tu.getCompoundPaddingTop();
       if ((i <= 0) || (j <= 0)) {
         break;
       }
-      synchronized (abs)
+      synchronized (aiy)
       {
-        abs.setEmpty();
-        abs.right = i;
-        abs.bottom = j;
-        float f = a(abs);
-        if (f != this.md.getTextSize()) {
+        aiy.setEmpty();
+        aiy.right = i;
+        aiy.bottom = j;
+        float f = d(aiy);
+        if (f != this.Tu.getTextSize()) {
           e(0, f);
         }
-        this.abv = true;
+        this.aiB = true;
         return;
-        i = this.md.getMeasuredWidth() - this.md.getTotalPaddingLeft() - this.md.getTotalPaddingRight();
+        i = this.Tu.getMeasuredWidth() - this.Tu.getTotalPaddingLeft() - this.Tu.getTotalPaddingRight();
       }
     }
   }
   
-  final boolean hr()
+  final boolean iO()
   {
-    return (hs()) && (this.abu != 0);
+    return (iP()) && (this.aiA != 0);
   }
   
   final void setAutoSizeTextTypeUniformWithConfiguration(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (hs())
+    if (iP())
     {
       DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
-      f(TypedValue.applyDimension(paramInt4, paramInt1, localDisplayMetrics), TypedValue.applyDimension(paramInt4, paramInt2, localDisplayMetrics), TypedValue.applyDimension(paramInt4, paramInt3, localDisplayMetrics));
-      if (ho()) {
-        hp();
+      h(TypedValue.applyDimension(paramInt4, paramInt1, localDisplayMetrics), TypedValue.applyDimension(paramInt4, paramInt2, localDisplayMetrics), TypedValue.applyDimension(paramInt4, paramInt3, localDisplayMetrics));
+      if (iL()) {
+        iM();
       }
     }
   }
@@ -483,7 +483,7 @@ final class m
   final void setAutoSizeTextTypeUniformWithPresetSizes(int[] paramArrayOfInt, int paramInt)
   {
     int i = 0;
-    if (hs())
+    if (iP())
     {
       int j = paramArrayOfInt.length;
       if (j > 0)
@@ -493,8 +493,8 @@ final class m
         if (paramInt == 0)
         {
           arrayOfInt1 = Arrays.copyOf(paramArrayOfInt, j);
-          this.abz = i(arrayOfInt1);
-          if (!hn()) {
+          this.aiF = i(arrayOfInt1);
+          if (!iK()) {
             throw new IllegalArgumentException("None of the preset sizes is valid: " + Arrays.toString(paramArrayOfInt));
           }
         }
@@ -514,32 +514,32 @@ final class m
       }
       else
       {
-        this.abA = false;
+        this.aiG = false;
       }
-      if (ho()) {
-        hp();
+      if (iL()) {
+        iM();
       }
     }
   }
   
   final void setAutoSizeTextTypeWithDefaults(int paramInt)
   {
-    if (hs()) {
+    if (iP()) {
       switch (paramInt)
       {
       default: 
         throw new IllegalArgumentException("Unknown auto-size text type: ".concat(String.valueOf(paramInt)));
       case 0: 
-        hq();
+        iN();
       }
     }
     do
     {
       return;
       DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
-      f(TypedValue.applyDimension(2, 12.0F, localDisplayMetrics), TypedValue.applyDimension(2, 112.0F, localDisplayMetrics), 1.0F);
-    } while (!ho());
-    hp();
+      h(TypedValue.applyDimension(2, 12.0F, localDisplayMetrics), TypedValue.applyDimension(2, 112.0F, localDisplayMetrics), 1.0F);
+    } while (!iL());
+    iM();
   }
 }
 

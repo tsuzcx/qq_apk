@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class km
   extends b
 {
-  public km.a cAj;
-  public km.b cAk;
+  public a doT;
+  public b doU;
   
   public km()
   {
@@ -16,17 +16,29 @@ public final class km
   
   private km(byte paramByte)
   {
-    AppMethodBeat.i(73672);
-    this.cAj = new km.a();
-    this.cAk = new km.b();
-    this.ymq = false;
+    AppMethodBeat.i(89748);
+    this.doT = new a();
+    this.doU = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(73672);
+    AppMethodBeat.o(89748);
+  }
+  
+  public static final class a
+  {
+    public int diR = 0;
+    public String doV;
+    public int doW = 0;
+  }
+  
+  public static final class b
+  {
+    public boolean dew = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.km
  * JD-Core Version:    0.7.0.1
  */

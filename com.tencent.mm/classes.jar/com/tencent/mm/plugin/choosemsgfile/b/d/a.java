@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.choosemsgfile.b.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.choosemsgfile.compat.MsgFile;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -14,97 +14,97 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  private Map<Long, MsgFile> kFP;
-  public boolean kFQ;
-  private Set<Long> kFR;
   public int mMaxCount;
+  private Map<Long, MsgFile> nMP;
+  public boolean nMQ;
+  private Set<Long> nMR;
   
   public a()
   {
-    AppMethodBeat.i(54378);
+    AppMethodBeat.i(123349);
     this.mMaxCount = 2147483647;
-    this.kFP = new ConcurrentHashMap();
-    this.kFR = new HashSet();
-    AppMethodBeat.o(54378);
+    this.nMP = new ConcurrentHashMap();
+    this.nMR = new HashSet();
+    AppMethodBeat.o(123349);
   }
   
   public final boolean a(long paramLong, MsgFile paramMsgFile)
   {
-    AppMethodBeat.i(54383);
+    AppMethodBeat.i(123354);
     if (paramLong == -1L)
     {
-      ab.e("MicroMsg.ChooseMsgFileHelper", "msgid is invalid");
-      AppMethodBeat.o(54383);
+      ad.e("MicroMsg.ChooseMsgFileHelper", "msgid is invalid");
+      AppMethodBeat.o(123354);
       return false;
     }
     if (paramMsgFile == null)
     {
-      ab.e("MicroMsg.ChooseMsgFileHelper", "msgFile is null");
-      AppMethodBeat.o(54383);
+      ad.e("MicroMsg.ChooseMsgFileHelper", "msgFile is null");
+      AppMethodBeat.o(123354);
       return false;
     }
-    if (bo.isNullOrNil(paramMsgFile.filePath))
+    if (bt.isNullOrNil(paramMsgFile.filePath))
     {
-      ab.e("MicroMsg.ChooseMsgFileHelper", "filePath is invalid");
-      AppMethodBeat.o(54383);
+      ad.e("MicroMsg.ChooseMsgFileHelper", "filePath is invalid");
+      AppMethodBeat.o(123354);
       return false;
     }
-    if (jU())
+    if (bc())
     {
-      ab.e("MicroMsg.ChooseMsgFileHelper", "exceed max:%d", new Object[] { Integer.valueOf(this.mMaxCount) });
-      AppMethodBeat.o(54383);
+      ad.e("MicroMsg.ChooseMsgFileHelper", "exceed max:%d", new Object[] { Integer.valueOf(this.mMaxCount) });
+      AppMethodBeat.o(123354);
       return false;
     }
-    if (this.kFP == null)
+    if (this.nMP == null)
     {
-      ab.e("MicroMsg.ChooseMsgFileHelper", "msgIdToMsgFile is null, return");
-      AppMethodBeat.o(54383);
+      ad.e("MicroMsg.ChooseMsgFileHelper", "msgIdToMsgFile is null, return");
+      AppMethodBeat.o(123354);
       return false;
     }
-    ab.i("MicroMsg.ChooseMsgFileHelper", "msgIdToFilePath put msgId:%d filePath:%s", new Object[] { Long.valueOf(paramLong), paramMsgFile });
-    this.kFP.put(Long.valueOf(paramLong), paramMsgFile);
-    AppMethodBeat.o(54383);
+    ad.i("MicroMsg.ChooseMsgFileHelper", "msgIdToFilePath put msgId:%d filePath:%s", new Object[] { Long.valueOf(paramLong), paramMsgFile });
+    this.nMP.put(Long.valueOf(paramLong), paramMsgFile);
+    AppMethodBeat.o(123354);
     return true;
   }
   
-  public final boolean bgB()
+  public final boolean bNM()
   {
-    AppMethodBeat.i(54382);
-    if (this.kFP == null)
+    AppMethodBeat.i(123353);
+    if (this.nMP == null)
     {
-      ab.e("MicroMsg.ChooseMsgFileHelper", "isChange() msgIdToMsgFile is null, return");
-      AppMethodBeat.o(54382);
+      ad.e("MicroMsg.ChooseMsgFileHelper", "isChange() msgIdToMsgFile is null, return");
+      AppMethodBeat.o(123353);
       return false;
     }
-    if ((this.kFP.size() == this.mMaxCount - 1) || (this.kFP.size() == this.mMaxCount))
+    if ((this.nMP.size() == this.mMaxCount - 1) || (this.nMP.size() == this.mMaxCount))
     {
-      AppMethodBeat.o(54382);
+      AppMethodBeat.o(123353);
       return true;
     }
-    AppMethodBeat.o(54382);
+    AppMethodBeat.o(123353);
     return false;
   }
   
-  public final ArrayList<MsgFile> bgC()
+  public final ArrayList<MsgFile> bNN()
   {
-    AppMethodBeat.i(54387);
-    if ((this.kFP == null) || (this.kFP.size() == 0))
+    AppMethodBeat.i(123358);
+    if ((this.nMP == null) || (this.nMP.size() == 0))
     {
-      ab.e("MicroMsg.ChooseMsgFileHelper", "msgIdToFilePath is null, return");
-      AppMethodBeat.o(54387);
+      ad.e("MicroMsg.ChooseMsgFileHelper", "msgIdToFilePath is null, return");
+      AppMethodBeat.o(123358);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.kFP.values().iterator();
+    Iterator localIterator = this.nMP.values().iterator();
     while (localIterator.hasNext()) {
       localArrayList.add((MsgFile)localIterator.next());
     }
-    AppMethodBeat.o(54387);
+    AppMethodBeat.o(123358);
     return localArrayList;
   }
   
   /* Error */
-  public final boolean bgD()
+  public final boolean bNO()
   {
     // Byte code:
     //   0: aload_0
@@ -112,10 +112,10 @@ public final class a
     //   2: ldc 148
     //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:kFR	Ljava/util/Set;
+    //   8: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:nMR	Ljava/util/Set;
     //   11: ifnull +26 -> 37
     //   14: aload_0
-    //   15: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:kFR	Ljava/util/Set;
+    //   15: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:nMR	Ljava/util/Set;
     //   18: invokeinterface 151 1 0
     //   23: ifle +14 -> 37
     //   26: iconst_1
@@ -148,101 +148,137 @@ public final class a
     //   39	44	47	finally
   }
   
+  public final boolean bc()
+  {
+    AppMethodBeat.i(123352);
+    if (this.nMP == null)
+    {
+      ad.e("MicroMsg.ChooseMsgFileHelper", "isInvalid() msgIdToMsgFile is null, return");
+      AppMethodBeat.o(123352);
+      return false;
+    }
+    if (this.nMP.size() >= this.mMaxCount)
+    {
+      AppMethodBeat.o(123352);
+      return true;
+    }
+    AppMethodBeat.o(123352);
+    return false;
+  }
+  
   public final int getSelectCount()
   {
-    AppMethodBeat.i(54386);
-    if (this.kFP == null)
+    AppMethodBeat.i(123357);
+    if (this.nMP == null)
     {
-      AppMethodBeat.o(54386);
+      AppMethodBeat.o(123357);
       return 0;
     }
-    int i = this.kFP.size();
-    AppMethodBeat.o(54386);
+    int i = this.nMP.size();
+    AppMethodBeat.o(123357);
     return i;
   }
   
-  public final boolean ii(long paramLong)
-  {
-    AppMethodBeat.i(54384);
-    if (paramLong == -1L)
-    {
-      ab.e("MicroMsg.ChooseMsgFileHelper", "msgid is invalid");
-      AppMethodBeat.o(54384);
-      return false;
-    }
-    if (this.kFP == null)
-    {
-      ab.e("MicroMsg.ChooseMsgFileHelper", "msgIdToMsgFile is null, return");
-      AppMethodBeat.o(54384);
-      return false;
-    }
-    ab.i("MicroMsg.ChooseMsgFileHelper", "msgIdToFilePath remove msgId:%d", new Object[] { Long.valueOf(paramLong) });
-    this.kFP.remove(Long.valueOf(paramLong));
-    AppMethodBeat.o(54384);
-    return true;
-  }
-  
-  public final boolean ij(long paramLong)
-  {
-    AppMethodBeat.i(54385);
-    if (this.kFP == null)
-    {
-      AppMethodBeat.o(54385);
-      return false;
-    }
-    boolean bool = this.kFP.containsKey(Long.valueOf(paramLong));
-    AppMethodBeat.o(54385);
-    return bool;
-  }
-  
-  public final void ik(long paramLong)
+  public final void init(int paramInt)
   {
     try
     {
-      AppMethodBeat.i(54388);
-      if (this.kFR != null) {
-        this.kFR.add(Long.valueOf(paramLong));
+      AppMethodBeat.i(123350);
+      ad.i("MicroMsg.ChooseMsgFileHelper", "init count:%d", new Object[] { Integer.valueOf(paramInt) });
+      this.mMaxCount = paramInt;
+      this.nMP.clear();
+      AppMethodBeat.o(123350);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final boolean nQ(long paramLong)
+  {
+    AppMethodBeat.i(123355);
+    if (paramLong == -1L)
+    {
+      ad.e("MicroMsg.ChooseMsgFileHelper", "msgid is invalid");
+      AppMethodBeat.o(123355);
+      return false;
+    }
+    if (this.nMP == null)
+    {
+      ad.e("MicroMsg.ChooseMsgFileHelper", "msgIdToMsgFile is null, return");
+      AppMethodBeat.o(123355);
+      return false;
+    }
+    ad.i("MicroMsg.ChooseMsgFileHelper", "msgIdToFilePath remove msgId:%d", new Object[] { Long.valueOf(paramLong) });
+    this.nMP.remove(Long.valueOf(paramLong));
+    AppMethodBeat.o(123355);
+    return true;
+  }
+  
+  public final boolean nR(long paramLong)
+  {
+    AppMethodBeat.i(123356);
+    if (this.nMP == null)
+    {
+      AppMethodBeat.o(123356);
+      return false;
+    }
+    boolean bool = this.nMP.containsKey(Long.valueOf(paramLong));
+    AppMethodBeat.o(123356);
+    return bool;
+  }
+  
+  public final void nS(long paramLong)
+  {
+    try
+    {
+      AppMethodBeat.i(123359);
+      if (this.nMR != null) {
+        this.nMR.add(Long.valueOf(paramLong));
       }
-      AppMethodBeat.o(54388);
+      AppMethodBeat.o(123359);
       return;
     }
     finally {}
   }
   
-  public final void il(long paramLong)
+  public final void nT(long paramLong)
   {
     try
     {
-      AppMethodBeat.i(54389);
-      if (this.kFR != null) {
-        this.kFR.remove(Long.valueOf(paramLong));
+      AppMethodBeat.i(123360);
+      if (this.nMR != null) {
+        this.nMR.remove(Long.valueOf(paramLong));
       }
-      AppMethodBeat.o(54389);
+      AppMethodBeat.o(123360);
       return;
     }
     finally {}
   }
   
   /* Error */
-  public final boolean im(long paramLong)
+  public final boolean nU(long paramLong)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 177
+    //   2: ldc 187
     //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:kFR	Ljava/util/Set;
+    //   8: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:nMR	Ljava/util/Set;
     //   11: ifnull +30 -> 41
     //   14: aload_0
-    //   15: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:kFR	Ljava/util/Set;
+    //   15: getfield 38	com/tencent/mm/plugin/choosemsgfile/b/d/a:nMR	Ljava/util/Set;
     //   18: lload_1
     //   19: invokestatic 97	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   22: invokeinterface 180 2 0
+    //   22: invokeinterface 190 2 0
     //   27: ifeq +14 -> 41
     //   30: iconst_1
     //   31: istore_3
-    //   32: ldc 177
+    //   32: ldc 187
     //   34: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   37: aload_0
     //   38: monitorexit
@@ -250,7 +286,7 @@ public final class a
     //   40: ireturn
     //   41: iconst_0
     //   42: istore_3
-    //   43: ldc 177
+    //   43: ldc 187
     //   45: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   48: goto -11 -> 37
     //   51: astore 4
@@ -271,53 +307,17 @@ public final class a
     //   43	48	51	finally
   }
   
-  public final void init(int paramInt)
-  {
-    try
-    {
-      AppMethodBeat.i(54379);
-      ab.i("MicroMsg.ChooseMsgFileHelper", "init count:%d", new Object[] { Integer.valueOf(paramInt) });
-      this.mMaxCount = paramInt;
-      this.kFP.clear();
-      AppMethodBeat.o(54379);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final boolean jU()
-  {
-    AppMethodBeat.i(54381);
-    if (this.kFP == null)
-    {
-      ab.e("MicroMsg.ChooseMsgFileHelper", "isInvalid() msgIdToMsgFile is null, return");
-      AppMethodBeat.o(54381);
-      return false;
-    }
-    if (this.kFP.size() >= this.mMaxCount)
-    {
-      AppMethodBeat.o(54381);
-      return true;
-    }
-    AppMethodBeat.o(54381);
-    return false;
-  }
-  
   public final void uninit()
   {
     try
     {
-      AppMethodBeat.i(54380);
-      ab.i("MicroMsg.ChooseMsgFileHelper", "uninit");
-      this.kFP.clear();
-      this.kFP = null;
-      this.kFR.clear();
-      this.kFR = null;
-      AppMethodBeat.o(54380);
+      AppMethodBeat.i(123351);
+      ad.i("MicroMsg.ChooseMsgFileHelper", "uninit");
+      this.nMP.clear();
+      this.nMP = null;
+      this.nMR.clear();
+      this.nMR = null;
+      AppMethodBeat.o(123351);
       return;
     }
     finally
@@ -329,7 +329,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.d.a
  * JD-Core Version:    0.7.0.1
  */

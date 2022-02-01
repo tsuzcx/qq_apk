@@ -11,6 +11,8 @@ public abstract class k
   
   public void onConfigurationChanged(Configuration paramConfiguration) {}
   
+  public void onFinish() {}
+  
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     return false;

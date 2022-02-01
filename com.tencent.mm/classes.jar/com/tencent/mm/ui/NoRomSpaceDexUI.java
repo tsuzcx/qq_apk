@@ -1,52 +1,92 @@
 package com.tencent.mm.ui;
 
 import android.app.Activity;
+import android.app.PendingIntent;
+import android.app.PendingIntent.CanceledException;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Process;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class NoRomSpaceDexUI
-  extends Activity
+  extends HellActivity
+  implements DialogInterface.OnClickListener
 {
+  PendingIntent FRz;
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    AppMethodBeat.i(33679);
+    if (this.FRz != null) {}
+    try
+    {
+      this.FRz.send();
+      label19:
+      System.exit(0);
+      Process.killProcess(Process.myPid());
+      AppMethodBeat.o(33679);
+      return;
+    }
+    catch (PendingIntent.CanceledException paramDialogInterface)
+    {
+      break label19;
+    }
+  }
+  
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(29832);
+    AppMethodBeat.i(33678);
     super.onCreate(paramBundle);
-    aa.initLanguage(ah.getContext());
-    setContentView(2130970362);
-    String str = getString(2131298348);
+    ac.initLanguage(aj.getContext());
+    setContentView(2131495023);
+    Object localObject = getIntent();
+    this.FRz = ((PendingIntent)((Intent)localObject).getParcelableExtra("action"));
     paramBundle = new o(this);
-    paramBundle.setTitle(2131298349);
-    paramBundle.zai.setVisibility(0);
-    paramBundle.zag.setVisibility(0);
-    paramBundle.zag.setText(str);
-    str = getString(2131298346);
-    DialogInterface.OnClickListener local1 = new DialogInterface.OnClickListener()
+    if (((Intent)localObject).hasExtra("title"))
     {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(29831);
-        Process.killProcess(Process.myPid());
-        AppMethodBeat.o(29831);
+      paramBundle.setTitle(((Intent)localObject).getStringExtra("title"));
+      if (!((Intent)localObject).hasExtra("message")) {
+        break label141;
       }
-    };
-    if (paramBundle.usy != null)
-    {
-      paramBundle.usy.setVisibility(0);
-      paramBundle.usy.setText(str);
-      paramBundle.usy.setOnClickListener(new o.1(paramBundle, local1));
+      paramBundle.setMessage(((Intent)localObject).getStringExtra("message"));
+      label88:
+      if (!((Intent)localObject).hasExtra("button")) {
+        break label177;
+      }
+      paramBundle.setMessage(((Intent)localObject).getStringExtra("message"));
     }
-    paramBundle.setCancelable(false);
-    paramBundle.dCp();
-    paramBundle.show();
-    AppMethodBeat.o(29832);
+    for (;;)
+    {
+      paramBundle.setCancelable(false);
+      paramBundle.eQS();
+      paramBundle.show();
+      AppMethodBeat.o(33678);
+      return;
+      paramBundle.setTitle(((Intent)localObject).getIntExtra("titleRes", 2131757340));
+      break;
+      label141:
+      int i = ((Intent)localObject).getIntExtra("messageRes", 2131757337);
+      paramBundle.ESe.setVisibility(0);
+      paramBundle.ERW.setVisibility(0);
+      paramBundle.ERW.setText(i);
+      break label88;
+      label177:
+      localObject = getString(((Intent)localObject).getIntExtra("buttonRes", 2131757337));
+      if (paramBundle.zXZ != null)
+      {
+        paramBundle.zXZ.setVisibility(0);
+        paramBundle.zXZ.setText((CharSequence)localObject);
+        paramBundle.zXZ.setOnClickListener(new o.1(paramBundle, this));
+      }
+    }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

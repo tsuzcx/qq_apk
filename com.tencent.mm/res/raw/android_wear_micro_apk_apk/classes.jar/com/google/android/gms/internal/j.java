@@ -13,27 +13,27 @@ final class j
   
   public final void run()
   {
-    if (!this.Mo.ej) {
+    if (!this.Od.hO) {
       return;
     }
-    if (i.a(this.Mo).gl())
+    if (i.a(this.Od).gv())
     {
-      this.Mo.OR.startActivityForResult(GoogleApiActivity.a(this.Mo.getActivity(), i.a(this.Mo).gn(), i.b(this.Mo), false), 1);
+      this.Od.QG.startActivityForResult(GoogleApiActivity.a(this.Od.getActivity(), i.a(this.Od).gx(), i.b(this.Od), false), 1);
       return;
     }
-    if (this.Mo.HF.aZ(i.a(this.Mo).getErrorCode()))
+    if (this.Od.Ju.bt(i.a(this.Od).getErrorCode()))
     {
-      this.Mo.HF.a(this.Mo.getActivity(), this.Mo.OR, i.a(this.Mo).getErrorCode(), this.Mo);
+      this.Od.Ju.a(this.Od.getActivity(), this.Od.QG, i.a(this.Od).getErrorCode(), this.Od);
       return;
     }
-    if (i.a(this.Mo).getErrorCode() == 18)
+    if (i.a(this.Od).getErrorCode() == 18)
     {
-      final Dialog localDialog = b.a(this.Mo.getActivity(), this.Mo);
-      b.a(this.Mo.getActivity().getApplicationContext(), new au()
+      final Dialog localDialog = b.a(this.Od.getActivity(), this.Od);
+      b.a(this.Od.getActivity().getApplicationContext(), new au()
       {
-        public final void jdMethod_if()
+        public final void in()
         {
-          j.this.Mo.ie();
+          j.this.Od.im();
           if (localDialog.isShowing()) {
             localDialog.dismiss();
           }
@@ -41,7 +41,7 @@ final class j
       });
       return;
     }
-    this.Mo.a(i.a(this.Mo), i.b(this.Mo));
+    this.Od.a(i.a(this.Od), i.b(this.Od));
   }
 }
 

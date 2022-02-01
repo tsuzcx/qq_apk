@@ -1,10 +1,10 @@
 package com.tencent.mm.wallet_core.d;
 
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.n;
 
 public abstract interface f
 {
-  public abstract void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm, boolean paramBoolean);
+  public abstract void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn, boolean paramBoolean);
 }
 
 

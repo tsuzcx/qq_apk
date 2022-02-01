@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class hw
   extends b
 {
-  public hw.a cxf;
+  public a dlC;
   
   public hw()
   {
@@ -15,11 +15,17 @@ public final class hw
   
   private hw(byte paramByte)
   {
-    AppMethodBeat.i(77544);
-    this.cxf = new hw.a();
-    this.ymq = false;
+    AppMethodBeat.i(89646);
+    this.dlC = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77544);
+    AppMethodBeat.o(89646);
+  }
+  
+  public static final class a
+  {
+    public int dbV;
+    public String dlB;
   }
 }
 

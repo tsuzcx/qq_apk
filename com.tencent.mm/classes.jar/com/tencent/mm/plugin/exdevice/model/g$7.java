@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ch;
-import com.tencent.mm.plugin.exdevice.h.b;
-import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.g.c.cw;
+import com.tencent.mm.plugin.exdevice.i.b;
+import com.tencent.mm.sdk.platformtools.av.a;
 import java.util.List;
 
 final class g$7
-  implements ap.a
+  implements av.a
 {
   g$7(g paramg) {}
   
   public final boolean onTimerExpired()
   {
-    AppMethodBeat.i(19257);
-    int j = this.lEP.lEA.size();
+    AppMethodBeat.i(23325);
+    int j = this.oVB.oVm.size();
     int i = 0;
     while (i < j)
     {
-      if ((((b)this.lEP.lEA.get(i)).dCP.contains("internet_to_device")) && (((b)this.lEP.lEA.get(i)).dCP.contains("wechat_to_device")) && (!this.lEP.lEB.contains(this.lEP.lEA.get(i))))
+      if ((((b)this.oVB.oVm.get(i)).eKt.contains("internet_to_device")) && (((b)this.oVB.oVm.get(i)).eKt.contains("wechat_to_device")) && (!this.oVB.oVn.contains(this.oVB.oVm.get(i))))
       {
-        this.lEP.lEB.add(this.lEP.lEA.get(i));
-        g.bu(this.lEP.lEB);
+        this.oVB.oVn.add(this.oVB.oVm.get(i));
+        g.cS(this.oVB.oVn);
       }
       i += 1;
     }
-    AppMethodBeat.o(19257);
+    AppMethodBeat.o(23325);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.g.7
  * JD-Core Version:    0.7.0.1
  */

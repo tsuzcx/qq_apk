@@ -1,23 +1,32 @@
 package com.tencent.mm.plugin.card.compat;
 
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.pluginsdk.model.app.l;
+import com.tencent.mm.ai.k.b;
+import com.tencent.mm.compatible.util.f;
+import com.tencent.mm.pluginsdk.model.app.m;
 
 public final class a
   implements com.tencent.mm.plugin.card.compat.a.a
 {
-  public final int b(j.b paramb, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte)
+  public final int a(k.b paramb, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(18647);
-    int i = l.a(paramb, paramString1, paramString2, paramString3, null, paramArrayOfByte);
-    AppMethodBeat.o(18647);
-    return i;
+    AppMethodBeat.i(22756);
+    paramb = m.a(paramb, paramString1, paramString2, paramString3, null, paramArrayOfByte);
+    if (paramb != null)
+    {
+      i = ((Integer)paramb.first).intValue();
+      AppMethodBeat.o(22756);
+      return i;
+    }
+    int i = f.getLine();
+    AppMethodBeat.o(22756);
+    return 0 - i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.compat.a
  * JD-Core Version:    0.7.0.1
  */

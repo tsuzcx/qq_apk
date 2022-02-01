@@ -4,39 +4,39 @@ import android.util.SparseIntArray;
 
 public abstract class GridLayoutManager$b
 {
-  final SparseIntArray afP = new SparseIntArray();
-  private boolean afQ = false;
+  final SparseIntArray amW = new SparseIntArray();
+  private boolean amX = false;
   
-  public int W(int paramInt1, int paramInt2)
+  public int Y(int paramInt1, int paramInt2)
   {
-    int n = bF(paramInt1);
+    int n = bW(paramInt1);
     if (n == paramInt2) {
       return 0;
     }
     int j;
     int i;
     int k;
-    if ((this.afQ) && (this.afP.size() > 0))
+    if ((this.amX) && (this.amW.size() > 0))
     {
-      j = this.afP.size() - 1;
+      j = this.amW.size() - 1;
       i = 0;
       while (i <= j)
       {
         k = i + j >>> 1;
-        if (this.afP.keyAt(k) < paramInt1) {
+        if (this.amW.keyAt(k) < paramInt1) {
           i = k + 1;
         } else {
           j = k - 1;
         }
       }
       i -= 1;
-      if ((i >= 0) && (i < this.afP.size()))
+      if ((i >= 0) && (i < this.amW.size()))
       {
-        i = this.afP.keyAt(i);
+        i = this.amW.keyAt(i);
         if (i < 0) {
           break label216;
         }
-        j = this.afP.get(i) + bF(i);
+        j = this.amW.get(i) + bW(i);
         k = i + 1;
         i = j;
         j = k;
@@ -47,7 +47,7 @@ public abstract class GridLayoutManager$b
       label149:
       if (j < paramInt1)
       {
-        k = bF(j);
+        k = bW(j);
         int m = i + k;
         if (m == paramInt2) {
           i = 0;
@@ -74,34 +74,34 @@ public abstract class GridLayoutManager$b
     }
   }
   
-  final int X(int paramInt1, int paramInt2)
+  final int Z(int paramInt1, int paramInt2)
   {
     int i;
-    if (!this.afQ) {
-      i = W(paramInt1, paramInt2);
+    if (!this.amX) {
+      i = Y(paramInt1, paramInt2);
     }
     int j;
     do
     {
       return i;
-      j = this.afP.get(paramInt1, -1);
+      j = this.amW.get(paramInt1, -1);
       i = j;
     } while (j != -1);
-    paramInt2 = W(paramInt1, paramInt2);
-    this.afP.put(paramInt1, paramInt2);
+    paramInt2 = Y(paramInt1, paramInt2);
+    this.amW.put(paramInt1, paramInt2);
     return paramInt2;
   }
   
-  public final int Y(int paramInt1, int paramInt2)
+  public final int aa(int paramInt1, int paramInt2)
   {
-    int n = bF(paramInt1);
+    int n = bW(paramInt1);
     int k = 0;
     int i = 0;
     int j = 0;
     int m;
     if (k < paramInt1)
     {
-      m = bF(k);
+      m = bW(k);
       j += m;
       if (j == paramInt2)
       {
@@ -136,11 +136,11 @@ public abstract class GridLayoutManager$b
     }
   }
   
-  public abstract int bF(int paramInt);
+  public abstract int bW(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v7.widget.GridLayoutManager.b
  * JD-Core Version:    0.7.0.1
  */

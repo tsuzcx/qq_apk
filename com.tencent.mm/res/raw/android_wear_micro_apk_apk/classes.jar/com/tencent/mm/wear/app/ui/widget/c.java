@@ -7,22 +7,22 @@ import com.tencent.mm.wear.a.c.d;
 final class c
   extends Thread
 {
-  private boolean adQ;
-  private SurfaceHolder ahY;
-  private boolean ahZ;
-  private long aia;
-  private int aib;
-  private int aic;
+  private boolean ahs;
+  private SurfaceHolder alA;
+  private boolean alB;
+  private long alC;
+  private int alD;
+  private int alE;
   
   public c(MMCustomSurfaceView paramMMCustomSurfaceView, SurfaceHolder paramSurfaceHolder)
   {
-    this.ahY = paramSurfaceHolder;
+    this.alA = paramSurfaceHolder;
   }
   
-  public final void nC()
+  public final void oq()
   {
-    this.ahZ = false;
-    this.adQ = true;
+    this.alB = false;
+    this.ahs = true;
     interrupt();
   }
   
@@ -30,10 +30,10 @@ final class c
   {
     for (;;)
     {
-      if (!this.adQ)
+      if (!this.ahs)
       {
         long l1 = System.currentTimeMillis();
-        if (this.ahZ) {}
+        if (this.alB) {}
         try
         {
           Thread.sleep(2147483647L);
@@ -44,31 +44,31 @@ final class c
               for (;;)
               {
                 label24:
-                Canvas localCanvas = this.ahY.lockCanvas(null);
+                Canvas localCanvas = this.alA.lockCanvas(null);
                 try
                 {
                   for (;;)
                   {
-                    localObject3 = this.ahY;
+                    localObject3 = this.alA;
                     if (localCanvas != null) {}
                     try
                     {
                       for (;;)
                       {
-                        this.aid.a(localCanvas);
+                        this.alF.a(localCanvas);
                         if (localCanvas != null) {
-                          this.ahY.unlockCanvasAndPost(localCanvas);
+                          this.alA.unlockCanvasAndPost(localCanvas);
                         }
-                        if (this.aia == 0L) {
-                          this.aia = System.currentTimeMillis();
+                        if (this.alC == 0L) {
+                          this.alC = System.currentTimeMillis();
                         }
                         long l2 = System.currentTimeMillis();
-                        if (l2 - this.aia > 1000L) {
+                        if (l2 - this.alC > 1000L) {
                           break label198;
                         }
-                        this.aib += 1;
+                        this.alD += 1;
                         l1 = l2 - l1;
-                        this.aic = ((int)(this.aic + l1));
+                        this.alE = ((int)(this.alE + l1));
                         l1 = 31L - l1;
                         if (l1 <= 0L) {
                           break;
@@ -102,12 +102,12 @@ final class c
               Object localObject3 = null;
               continue;
             }
-            this.ahY.unlockCanvasAndPost((Canvas)localObject3);
+            this.alA.unlockCanvasAndPost((Canvas)localObject3);
             throw localObject1;
-            d.e("MicroMsg.MMCustomSurfaceView", "fps: %d, avarageDrawTime: %d", new Object[] { Integer.valueOf(this.aib), Integer.valueOf(this.aic / this.aib) });
-            this.aib = 0;
-            this.aia = 0L;
-            this.aic = 0;
+            d.d("MicroMsg.MMCustomSurfaceView", "fps: %d, avarageDrawTime: %d", new Object[] { Integer.valueOf(this.alD), Integer.valueOf(this.alE / this.alD) });
+            this.alD = 0;
+            this.alC = 0L;
+            this.alE = 0;
           }
         }
         catch (InterruptedException localInterruptedException2)

@@ -8,47 +8,19 @@ public abstract class em
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dOk;
-  private static final int dOl;
-  private static final int dOm;
-  private static final int dOn;
-  private static final int dOo;
-  private static final int dOp = "eggIndex".hashCode();
-  private static final int dOq = "position".hashCode();
-  private static final int dkn = "flag".hashCode();
-  private static final int dxX;
-  private static final int key_HASHCODE = "key".hashCode();
+  private static final int eSI = "hit".hashCode();
+  private static final int eSJ = "hitTimeMS".hashCode();
+  private static final int elJ = "appId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean __hadSetkey = true;
-  private boolean dOd = true;
-  private boolean dOe = true;
-  private boolean dOf = true;
-  private boolean dOg = true;
-  private boolean dOh = true;
-  private boolean dOi = true;
-  private boolean dOj = true;
-  private boolean dkl = true;
-  private boolean dxw = true;
-  public String field_cnValue;
-  public int field_eggIndex;
-  public String field_enValue;
-  public String field_fileName;
-  public int field_flag;
-  public String field_key;
-  public int field_position;
-  public String field_qqValue;
-  public String field_thValue;
-  public String field_twValue;
-  
-  static
-  {
-    dOk = "cnValue".hashCode();
-    dOl = "qqValue".hashCode();
-    dOm = "twValue".hashCode();
-    dOn = "enValue".hashCode();
-    dOo = "thValue".hashCode();
-    dxX = "fileName".hashCode();
-  }
+  private static final int type_HASHCODE = "type".hashCode();
+  private boolean __hadSettype = true;
+  private boolean eSG = true;
+  private boolean eSH = true;
+  private boolean els = true;
+  public String field_appId;
+  public int field_hit;
+  public long field_hitTimeMS;
+  public int field_type;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -63,36 +35,23 @@ public abstract class em
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (key_HASHCODE != k) {
-        break label65;
+      if (elJ != k) {
+        break label60;
       }
-      this.field_key = paramCursor.getString(i);
-      this.__hadSetkey = true;
+      this.field_appId = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (dOk == k) {
-        this.field_cnValue = paramCursor.getString(i);
-      } else if (dOl == k) {
-        this.field_qqValue = paramCursor.getString(i);
-      } else if (dOm == k) {
-        this.field_twValue = paramCursor.getString(i);
-      } else if (dOn == k) {
-        this.field_enValue = paramCursor.getString(i);
-      } else if (dOo == k) {
-        this.field_thValue = paramCursor.getString(i);
-      } else if (dxX == k) {
-        this.field_fileName = paramCursor.getString(i);
-      } else if (dOp == k) {
-        this.field_eggIndex = paramCursor.getInt(i);
-      } else if (dOq == k) {
-        this.field_position = paramCursor.getInt(i);
-      } else if (dkn == k) {
-        this.field_flag = paramCursor.getInt(i);
+      label60:
+      if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (eSI == k) {
+        this.field_hit = paramCursor.getInt(i);
+      } else if (eSJ == k) {
+        this.field_hitTimeMS = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -102,35 +61,17 @@ public abstract class em
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.els) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.dOd) {
-      localContentValues.put("cnValue", this.field_cnValue);
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.dOe) {
-      localContentValues.put("qqValue", this.field_qqValue);
+    if (this.eSG) {
+      localContentValues.put("hit", Integer.valueOf(this.field_hit));
     }
-    if (this.dOf) {
-      localContentValues.put("twValue", this.field_twValue);
-    }
-    if (this.dOg) {
-      localContentValues.put("enValue", this.field_enValue);
-    }
-    if (this.dOh) {
-      localContentValues.put("thValue", this.field_thValue);
-    }
-    if (this.dxw) {
-      localContentValues.put("fileName", this.field_fileName);
-    }
-    if (this.dOi) {
-      localContentValues.put("eggIndex", Integer.valueOf(this.field_eggIndex));
-    }
-    if (this.dOj) {
-      localContentValues.put("position", Integer.valueOf(this.field_position));
-    }
-    if (this.dkl) {
-      localContentValues.put("flag", Integer.valueOf(this.field_flag));
+    if (this.eSH) {
+      localContentValues.put("hitTimeMS", Long.valueOf(this.field_hitTimeMS));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -140,7 +81,7 @@ public abstract class em
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.em
  * JD-Core Version:    0.7.0.1
  */

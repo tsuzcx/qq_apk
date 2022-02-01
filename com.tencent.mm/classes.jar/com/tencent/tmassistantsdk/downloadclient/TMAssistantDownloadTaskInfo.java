@@ -18,9 +18,23 @@ public class TMAssistantDownloadTaskInfo
   
   static
   {
-    AppMethodBeat.i(75679);
-    CREATOR = new TMAssistantDownloadTaskInfo.1();
-    AppMethodBeat.o(75679);
+    AppMethodBeat.i(101925);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final TMAssistantDownloadTaskInfo createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(101921);
+        paramAnonymousParcel = new TMAssistantDownloadTaskInfo(paramAnonymousParcel.readString(), paramAnonymousParcel.readString(), paramAnonymousParcel.readInt(), paramAnonymousParcel.readLong(), paramAnonymousParcel.readLong(), paramAnonymousParcel.readString());
+        AppMethodBeat.o(101921);
+        return paramAnonymousParcel;
+      }
+      
+      public final TMAssistantDownloadTaskInfo[] newArray(int paramAnonymousInt)
+      {
+        return new TMAssistantDownloadTaskInfo[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(101925);
   }
   
   public TMAssistantDownloadTaskInfo(String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2, String paramString3)
@@ -40,7 +54,7 @@ public class TMAssistantDownloadTaskInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(75678);
+    AppMethodBeat.i(101924);
     if (this.mUrl != null)
     {
       paramParcel.writeString(this.mUrl);
@@ -55,7 +69,7 @@ public class TMAssistantDownloadTaskInfo
       paramParcel.writeLong(this.mReceiveDataLen);
       paramParcel.writeLong(this.mTotalDataLen);
       paramParcel.writeString(this.mContentType);
-      AppMethodBeat.o(75678);
+      AppMethodBeat.o(101924);
       return;
       paramParcel.writeString("");
       break;
@@ -66,7 +80,7 @@ public class TMAssistantDownloadTaskInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo
  * JD-Core Version:    0.7.0.1
  */

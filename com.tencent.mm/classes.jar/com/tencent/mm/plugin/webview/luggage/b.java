@@ -11,21 +11,21 @@ public final class b
     super(paramContext);
   }
   
-  public final void pB(int paramInt)
+  public final void sG(int paramInt)
   {
-    AppMethodBeat.i(154599);
+    AppMethodBeat.i(78193);
     if (paramInt == 0)
     {
-      AppMethodBeat.o(154599);
+      AppMethodBeat.o(78193);
       return;
     }
-    super.pB(paramInt);
-    AppMethodBeat.o(154599);
+    super.sG(paramInt);
+    AppMethodBeat.o(78193);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.b
  * JD-Core Version:    0.7.0.1
  */

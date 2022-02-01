@@ -14,21 +14,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements View.OnTouchListener
 {
-  private a qkS;
+  private a.a vBV;
   
-  public static a cgY()
+  public static a djP()
   {
-    AppMethodBeat.i(44802);
+    AppMethodBeat.i(67915);
     a locala = new a();
-    AppMethodBeat.o(44802);
+    AppMethodBeat.o(67915);
     return locala;
   }
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(44803);
-    if (this.qkS == null) {
-      this.qkS = new a(paramView);
+    AppMethodBeat.i(67916);
+    if (this.vBV == null) {
+      this.vBV = new a.a(paramView);
     }
     TextView localTextView = (TextView)paramView;
     localTextView.setMovementMethod(null);
@@ -49,53 +49,28 @@ public final class a
       if (paramMotionEvent.length != 0)
       {
         if (i == 0) {
-          paramView.postDelayed(this.qkS, ViewConfiguration.getLongPressTimeout());
+          paramView.postDelayed(this.vBV, ViewConfiguration.getLongPressTimeout());
         }
         for (;;)
         {
-          AppMethodBeat.o(44803);
+          AppMethodBeat.o(67916);
           return true;
-          paramView.removeCallbacks(this.qkS);
+          paramView.removeCallbacks(this.vBV);
           paramMotionEvent[0].onClick(localTextView);
         }
       }
     }
     else if (i == 3)
     {
-      paramView.removeCallbacks(this.qkS);
+      paramView.removeCallbacks(this.vBV);
     }
-    AppMethodBeat.o(44803);
+    AppMethodBeat.o(67916);
     return false;
-  }
-  
-  static final class a
-    implements Runnable
-  {
-    private View view;
-    
-    a(View paramView)
-    {
-      this.view = paramView;
-    }
-    
-    public final void run()
-    {
-      AppMethodBeat.i(44801);
-      View localView = this.view;
-      for (boolean bool = localView.performLongClick(); !bool; bool = localView.performLongClick())
-      {
-        localView = (View)localView.getParent();
-        if (localView == null) {
-          break;
-        }
-      }
-      AppMethodBeat.o(44801);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.a
  * JD-Core Version:    0.7.0.1
  */

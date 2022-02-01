@@ -4,25 +4,25 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 
 public abstract class c
 {
-  public String mBq = "";
-  public boolean vwW = false;
-  public int vwX = 0;
-  public int vwY = -1;
-  public WXRTEditText vwZ;
-  public WXRTEditText vxa;
-  public WXRTEditText vxb;
-  public boolean vxc = false;
-  public boolean vxd = false;
-  public boolean vxe = false;
-  public int vxf = 0;
-  public int vxg = 0;
+  public WXRTEditText BDx;
+  public WXRTEditText BDy;
+  public WXRTEditText BDz;
+  public String dkb = "";
+  public boolean omB = false;
+  public boolean omC = false;
+  public boolean omD = false;
+  public int omE = 0;
+  public int omF = 0;
+  public boolean omv = false;
+  public int omw = 0;
+  public int omx = -1;
   
-  public abstract String dhQ();
-  
-  public String dhR()
+  public String bSi()
   {
     return "";
   }
+  
+  public abstract String esC();
   
   public int getType()
   {
@@ -31,7 +31,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.a.c
  * JD-Core Version:    0.7.0.1
  */

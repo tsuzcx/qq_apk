@@ -3,7 +3,7 @@ package com.tencent.mm.opensdk.modelmsg;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
-import java.io.File;
+import com.tencent.mm.opensdk.utils.d;
 
 public class WXEmojiObject
   implements WXMediaMessage.IMediaObject
@@ -31,54 +31,43 @@ public class WXEmojiObject
   
   private int getFileSize(String paramString)
   {
-    AppMethodBeat.i(128245);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      AppMethodBeat.o(128245);
-      return 0;
-    }
-    paramString = new File(paramString);
-    if (!paramString.exists())
-    {
-      AppMethodBeat.o(128245);
-      return 0;
-    }
-    int i = (int)paramString.length();
-    AppMethodBeat.o(128245);
+    AppMethodBeat.i(3943);
+    int i = d.getFileSize(paramString);
+    AppMethodBeat.o(3943);
     return i;
   }
   
   public boolean checkArgs()
   {
-    AppMethodBeat.i(128244);
+    AppMethodBeat.i(3942);
     if (((this.emojiData == null) || (this.emojiData.length == 0)) && ((this.emojiPath == null) || (this.emojiPath.length() == 0)))
     {
       Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, both arguments is null");
-      AppMethodBeat.o(128244);
+      AppMethodBeat.o(3942);
       return false;
     }
     if ((this.emojiData != null) && (this.emojiData.length > 10485760))
     {
       Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, emojiData is too large");
-      AppMethodBeat.o(128244);
+      AppMethodBeat.o(3942);
       return false;
     }
     if ((this.emojiPath != null) && (getFileSize(this.emojiPath) > 10485760))
     {
       Log.e("MicroMsg.SDK.WXEmojiObject", "checkArgs fail, emojiSize is too large");
-      AppMethodBeat.o(128244);
+      AppMethodBeat.o(3942);
       return false;
     }
-    AppMethodBeat.o(128244);
+    AppMethodBeat.o(3942);
     return true;
   }
   
   public void serialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128242);
+    AppMethodBeat.i(3940);
     paramBundle.putByteArray("_wxemojiobject_emojiData", this.emojiData);
     paramBundle.putString("_wxemojiobject_emojiPath", this.emojiPath);
-    AppMethodBeat.o(128242);
+    AppMethodBeat.o(3940);
   }
   
   public void setEmojiData(byte[] paramArrayOfByte)
@@ -98,10 +87,10 @@ public class WXEmojiObject
   
   public void unserialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128243);
+    AppMethodBeat.i(3941);
     this.emojiData = paramBundle.getByteArray("_wxemojiobject_emojiData");
     this.emojiPath = paramBundle.getString("_wxemojiobject_emojiPath");
-    AppMethodBeat.o(128243);
+    AppMethodBeat.o(3941);
   }
 }
 

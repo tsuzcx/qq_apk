@@ -3,17 +3,19 @@ package com.tencent.mm.plugin.sns.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 
 public class ActivityTestMultilineEllipse
-  extends Activity
+  extends HellActivity
 {
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(38045);
+    AppMethodBeat.i(97665);
     super.onCreate(paramBundle);
     paramBundle = new LinearLayout(this);
     paramBundle.setOrientation(1);
@@ -44,9 +46,29 @@ public class ActivityTestMultilineEllipse
     ((QTextView)localObject).setText("This is some longer text. It should wrap and then eventually be ellipsized once it gets way too long for the horizontal width of the current application screen. We should be fixed to max [N] lines height.");
     ((QTextView)localObject).setPadding(10, 10, 10, 10);
     ((QTextView)localObject).setBackgroundColor(-204878);
-    ((QTextView)localObject).setOnClickListener(new ActivityTestMultilineEllipse.1(this, (QTextView)localObject));
+    ((QTextView)localObject).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(97664);
+        if (this.xjt.getIsExpanded())
+        {
+          paramAnonymousView = this.xjt;
+          paramAnonymousView.nmL = false;
+          paramAnonymousView.requestLayout();
+          paramAnonymousView.invalidate();
+          AppMethodBeat.o(97664);
+          return;
+        }
+        paramAnonymousView = this.xjt;
+        paramAnonymousView.nmL = true;
+        paramAnonymousView.requestLayout();
+        paramAnonymousView.invalidate();
+        AppMethodBeat.o(97664);
+      }
+    });
     paramBundle.addView((View)localObject);
-    AppMethodBeat.o(38045);
+    AppMethodBeat.o(97665);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -57,7 +79,7 @@ public class ActivityTestMultilineEllipse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ActivityTestMultilineEllipse
  * JD-Core Version:    0.7.0.1
  */

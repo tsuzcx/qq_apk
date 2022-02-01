@@ -1,78 +1,79 @@
 package com.tencent.mm.sdk.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.d;
 
-public final class bl
+public class bl<T>
 {
-  private ae<String, String> yqA;
-  private final d yqz;
+  public Object[] mPool;
+  public int mPoolSize;
   
-  public bl(String paramString)
+  public bl(int paramInt)
   {
-    AppMethodBeat.i(52281);
-    this.yqA = new ae(256);
-    this.yqz = new d(paramString);
-    AppMethodBeat.o(52281);
+    AppMethodBeat.i(157835);
+    if (paramInt <= 0)
+    {
+      ad.e("MicroMsg.SimpleObjectPool", "The max pool size must be > 0");
+      AppMethodBeat.o(157835);
+      return;
+    }
+    this.mPool = new Object[paramInt];
+    AppMethodBeat.o(157835);
   }
   
-  public final String decryptTag(String paramString)
+  public T acquire()
   {
-    AppMethodBeat.i(52282);
-    String str1 = paramString;
-    try
-    {
-      if (!paramString.startsWith("!")) {
-        break label192;
-      }
-      if (this.yqA.Z(paramString))
-      {
-        str1 = (String)this.yqA.get(paramString);
-        AppMethodBeat.o(52282);
-        return str1;
-      }
-      str1 = paramString.substring(1);
-      Object localObject2;
-      String str2;
-      int i;
-      ab.printErrStackTrace("MicroMsg.TagDecrypter", localException1, "", new Object[0]);
+    if (this.mPool == null) {}
+    while (this.mPoolSize <= 0) {
+      return null;
     }
-    catch (Exception localException1)
+    int i = this.mPoolSize - 1;
+    Object localObject = this.mPool[i];
+    this.mPool[i] = null;
+    this.mPoolSize -= 1;
+    return localObject;
+  }
+  
+  public boolean release(T paramT)
+  {
+    AppMethodBeat.i(157836);
+    if (this.mPool == null)
     {
-      try
-      {
-        localObject2 = str1.split("@");
-        if (localObject2.length <= 1) {
-          break label209;
-        }
-        str2 = localObject2[0];
-        i = Integer.valueOf(localObject2[0]).intValue();
-        localObject2 = str1.substring(str2.length() + 1, str2.length() + 1 + i);
-        str2 = str1.substring(i + (str2.length() + 1));
-        str2 = this.yqz.cL((String)localObject2) + str2;
-        this.yqA.put(paramString, str2);
-        AppMethodBeat.o(52282);
-        return str2;
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          paramString = (String)localObject1;
-          Object localObject1 = localException2;
-        }
-      }
-      localException1 = localException1;
+      AppMethodBeat.o(157836);
+      return false;
     }
-    localObject1 = "[td]".concat(String.valueOf(paramString));
-    label192:
-    AppMethodBeat.o(52282);
-    return localObject1;
+    if (this.mPool != null)
+    {
+      i = 0;
+      if (i < this.mPoolSize) {
+        if (this.mPool[i] != paramT) {}
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label71;
+      }
+      AppMethodBeat.o(157836);
+      return false;
+      i += 1;
+      break;
+    }
+    label71:
+    if ((this.mPoolSize < this.mPool.length) && (this.mPoolSize >= 0))
+    {
+      this.mPool[this.mPoolSize] = paramT;
+      this.mPoolSize += 1;
+      AppMethodBeat.o(157836);
+      return true;
+    }
+    ad.e("MicroMsg.SimpleObjectPool", "error index %d %d", new Object[] { Integer.valueOf(this.mPoolSize), Integer.valueOf(this.mPool.length) });
+    AppMethodBeat.o(157836);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.bl
  * JD-Core Version:    0.7.0.1
  */

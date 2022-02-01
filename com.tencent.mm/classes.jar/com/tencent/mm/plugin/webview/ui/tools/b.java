@@ -1,158 +1,394 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.RemoteException;
+import android.view.MotionEvent;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import java.util.Collections;
+import com.tencent.mm.plugin.webview.c;
+import com.tencent.mm.plugin.webview.modeltools.j;
+import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.xweb.aa;
+import com.tencent.xweb.x5.export.external.extension.proxy.a;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.concurrent.CountDownLatch;
 
-public final class b
+public class b
+  extends a
 {
-  private static final Map<Integer, Integer> uZV;
-  private static final Map<Integer, Integer> uZW;
-  private static final Map<Integer, Integer> uZX;
-  private static final Map<String, Integer> uZY;
+  private final WeakReference<WebViewUI> Bau;
   
-  static
+  public b(WebViewUI paramWebViewUI)
   {
-    AppMethodBeat.i(7347);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(Integer.valueOf(-1), Integer.valueOf(5));
-    localHashMap.put(Integer.valueOf(-2), Integer.valueOf(6));
-    localHashMap.put(Integer.valueOf(-3), Integer.valueOf(7));
-    localHashMap.put(Integer.valueOf(-4), Integer.valueOf(8));
-    localHashMap.put(Integer.valueOf(-5), Integer.valueOf(9));
-    localHashMap.put(Integer.valueOf(-6), Integer.valueOf(10));
-    localHashMap.put(Integer.valueOf(-7), Integer.valueOf(11));
-    localHashMap.put(Integer.valueOf(-8), Integer.valueOf(12));
-    localHashMap.put(Integer.valueOf(-9), Integer.valueOf(13));
-    localHashMap.put(Integer.valueOf(-10), Integer.valueOf(14));
-    localHashMap.put(Integer.valueOf(-11), Integer.valueOf(15));
-    localHashMap.put(Integer.valueOf(-12), Integer.valueOf(16));
-    localHashMap.put(Integer.valueOf(-13), Integer.valueOf(17));
-    localHashMap.put(Integer.valueOf(-14), Integer.valueOf(18));
-    localHashMap.put(Integer.valueOf(-15), Integer.valueOf(19));
-    uZV = Collections.unmodifiableMap(localHashMap);
-    localHashMap = new HashMap();
-    localHashMap.put(Integer.valueOf(-1), Integer.valueOf(4));
-    localHashMap.put(Integer.valueOf(-2), Integer.valueOf(5));
-    localHashMap.put(Integer.valueOf(-3), Integer.valueOf(6));
-    localHashMap.put(Integer.valueOf(-4), Integer.valueOf(7));
-    localHashMap.put(Integer.valueOf(-5), Integer.valueOf(8));
-    localHashMap.put(Integer.valueOf(-6), Integer.valueOf(9));
-    uZW = Collections.unmodifiableMap(localHashMap);
-    localHashMap = new HashMap();
-    localHashMap.put(Integer.valueOf(0), Integer.valueOf(0));
-    localHashMap.put(Integer.valueOf(1), Integer.valueOf(1));
-    localHashMap.put(Integer.valueOf(2), Integer.valueOf(2));
-    uZX = Collections.unmodifiableMap(localHashMap);
-    localHashMap = new HashMap();
-    localHashMap.put("imagePreview", Integer.valueOf(2));
-    localHashMap.put("profile", Integer.valueOf(3));
-    localHashMap.put("addContact", Integer.valueOf(4));
-    localHashMap.put("shareTimeline", Integer.valueOf(7));
-    localHashMap.put("scanQRCode", Integer.valueOf(8));
-    localHashMap.put("hideOptionMenu", Integer.valueOf(10));
-    localHashMap.put("getBrandWCPayRequest", Integer.valueOf(11));
-    localHashMap.put("editAddress", Integer.valueOf(12));
-    localHashMap.put("getLatestAddress", Integer.valueOf(13));
-    localHashMap.put("jumpWCMall", Integer.valueOf(14));
-    localHashMap.put("geoLocation", Integer.valueOf(15));
-    localHashMap.put("openProductView", Integer.valueOf(16));
-    localHashMap.put("openProductViewWithPid", Integer.valueOf(16));
-    localHashMap.put("openLocation", Integer.valueOf(17));
-    localHashMap.put("hideMenuItems", Integer.valueOf(19));
-    localHashMap.put("connectToFreeWifi", Integer.valueOf(20));
-    localHashMap.put("startRecord", Integer.valueOf(21));
-    localHashMap.put("chooseImage", Integer.valueOf(22));
-    localHashMap.put("scanCover", Integer.valueOf(23));
-    localHashMap.put("openGameWebView", Integer.valueOf(28));
-    uZY = Collections.unmodifiableMap(localHashMap);
-    AppMethodBeat.o(7347);
+    AppMethodBeat.i(79575);
+    this.Bau = new WeakReference(paramWebViewUI);
+    AppMethodBeat.o(79575);
   }
   
-  public static int Kl(int paramInt)
+  private WebViewUI enA()
   {
-    AppMethodBeat.i(7343);
-    Integer localInteger2 = (Integer)uZV.get(Integer.valueOf(paramInt));
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null) {
-      localInteger1 = (Integer)uZV.get(Integer.valueOf(-1));
-    }
-    paramInt = localInteger1.intValue();
-    AppMethodBeat.o(7343);
-    return paramInt;
+    AppMethodBeat.i(79585);
+    WebViewUI localWebViewUI = (WebViewUI)this.Bau.get();
+    AppMethodBeat.o(79585);
+    return localWebViewUI;
   }
   
-  public static int Km(int paramInt)
+  public void computeScroll(View paramView)
   {
-    AppMethodBeat.i(7344);
-    Integer localInteger2 = (Integer)uZW.get(Integer.valueOf(paramInt));
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null) {
-      localInteger1 = (Integer)uZW.get(Integer.valueOf(-1));
-    }
-    paramInt = localInteger1.intValue();
-    AppMethodBeat.o(7344);
-    return paramInt;
+    AppMethodBeat.i(79583);
+    enA().Big.beA();
+    AppMethodBeat.o(79583);
   }
   
-  public static int Kn(int paramInt)
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    AppMethodBeat.i(7345);
-    Integer localInteger2 = (Integer)uZX.get(Integer.valueOf(paramInt));
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null) {
-      localInteger1 = Integer.valueOf(-1);
-    }
-    paramInt = localInteger1.intValue();
-    AppMethodBeat.o(7345);
-    return paramInt;
+    AppMethodBeat.i(79579);
+    boolean bool = enA().Big.C(paramMotionEvent);
+    AppMethodBeat.o(79579);
+    return bool;
   }
   
-  public static void Ko(int paramInt)
+  public void invalidate() {}
+  
+  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    AppMethodBeat.i(153174);
-    h.qsU.idkeyStat(1061L, paramInt, 1L, false);
-    AppMethodBeat.o(153174);
+    AppMethodBeat.i(79578);
+    boolean bool = enA().Big.D(paramMotionEvent);
+    AppMethodBeat.o(79578);
+    return bool;
   }
   
-  public static int ahY(String paramString)
+  public Object onMiscCallBack(String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(7346);
-    Integer localInteger = (Integer)uZY.get(paramString);
-    paramString = localInteger;
-    if (localInteger == null) {
-      paramString = Integer.valueOf(-1);
+    Object localObject = null;
+    AppMethodBeat.i(79576);
+    boolean bool1;
+    boolean bool2;
+    if (paramBundle == null)
+    {
+      bool1 = true;
+      if ((enA() != null) && (enA().kxf != null)) {
+        break label123;
+      }
+      bool2 = true;
+      label35:
+      ad.i("MicroMsg.WebViewLongClickHelper", "method = %s, bundler == null ? %b, invoker == null ? %b", new Object[] { paramString, Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      if ((!bt.isNullOrNil(paramString)) && (paramBundle != null)) {
+        if ((enA() != null) && (!enA().isFinishing())) {
+          break label129;
+        }
+      }
     }
-    int i = paramString.intValue();
-    AppMethodBeat.o(7346);
-    return i;
+    label129:
+    for (int i = 1;; i = 0)
+    {
+      if ((i == 0) && (enA().kxf != null)) {
+        break label134;
+      }
+      AppMethodBeat.o(79576);
+      return null;
+      bool1 = false;
+      break;
+      label123:
+      bool2 = false;
+      break label35;
+    }
+    try
+    {
+      label134:
+      String str1 = enA().kxf.axC("WebviewEnableTbsDownload");
+      ad.i("MicroMsg.WebViewLongClickHelper", "enable value = %s", new Object[] { str1 });
+      if ((!bt.isNullOrNil(str1)) && (str1.equals("0")))
+      {
+        ad.e("MicroMsg.WebViewLongClickHelper", "config closed, not allows tbs download");
+        AppMethodBeat.o(79576);
+        return null;
+      }
+    }
+    catch (Exception localException1)
+    {
+      Bundle localBundle1;
+      for (;;)
+      {
+        ad.e("MicroMsg.WebViewLongClickHelper", "get dynamic config failed");
+        localBundle1 = null;
+      }
+      if (paramString.equals("addDownloadTask")) {
+        try
+        {
+          localBundle1 = enA().kxf.j(14, paramBundle);
+          if (localBundle1 != null)
+          {
+            long l = localBundle1.getLong("download_id", 0L);
+            AppMethodBeat.o(79576);
+            return Long.valueOf(l);
+          }
+        }
+        catch (RemoteException localRemoteException1)
+        {
+          ad.e("MicroMsg.WebViewLongClickHelper", "invoke the add downloadtask failed");
+        }
+      }
+      if (paramString.equals("cancelDownloadTask")) {
+        try
+        {
+          Bundle localBundle2 = enA().kxf.j(16, paramBundle);
+          if (localBundle2 != null)
+          {
+            bool1 = localBundle2.getBoolean("cancel_result", false);
+            AppMethodBeat.o(79576);
+            return Boolean.valueOf(bool1);
+          }
+        }
+        catch (RemoteException localRemoteException2)
+        {
+          ad.e("MicroMsg.WebViewLongClickHelper", "invoke the cancel downloadtask failed");
+        }
+      }
+      if (paramString.equals("queryDownloadTask")) {
+        try
+        {
+          Bundle localBundle3 = enA().kxf.j(15, paramBundle);
+          if (localBundle3 != null)
+          {
+            i = localBundle3.getInt("download_state", 0);
+            AppMethodBeat.o(79576);
+            return Integer.valueOf(i);
+          }
+        }
+        catch (RemoteException localRemoteException3)
+        {
+          ad.e("MicroMsg.WebViewLongClickHelper", "invoke the queryDownloadTask downloadtask failed");
+        }
+      }
+      if (paramString.equals("installDownloadTask")) {
+        try
+        {
+          Bundle localBundle4 = enA().kxf.j(17, paramBundle);
+          if (localBundle4 != null)
+          {
+            bool1 = localBundle4.getBoolean("install_result");
+            AppMethodBeat.o(79576);
+            return Boolean.valueOf(bool1);
+          }
+        }
+        catch (RemoteException localRemoteException4)
+        {
+          ad.e("MicroMsg.WebViewLongClickHelper", "invoke the install downloadtask failed");
+        }
+      }
+      String str2;
+      if (paramString.equals("getDrawable"))
+      {
+        str2 = paramBundle.getString("packageName");
+        i = paramBundle.getInt("resourceId");
+        if ((!bt.isNullOrNil(str2)) && (i > 0)) {
+          try
+          {
+            Drawable localDrawable = com.tencent.mm.ce.b.f(aj.getContext().getPackageManager().getResourcesForApplication(str2), i);
+            AppMethodBeat.o(79576);
+            return localDrawable;
+          }
+          catch (Exception localException3)
+          {
+            ad.e("MicroMsg.WebViewLongClickHelper", "get resource for package : %s, fail, : %s", new Object[] { str2, localException3.getMessage() });
+          }
+        }
+      }
+      if (paramString.equals("getShareUrl")) {
+        try
+        {
+          str2 = enA().kxf.awT(enA().nhy.getUrl());
+          ad.i("MicroMsg.WebViewLongClickHelper", "getShareUrl by x5 core, shareurl = %s", new Object[] { str2 });
+          AppMethodBeat.o(79576);
+          return str2;
+        }
+        catch (Exception localException2)
+        {
+          ad.e("MicroMsg.WebViewLongClickHelper", "getShare url failed");
+        }
+      }
+      if (paramString.equals("smartPickWord"))
+      {
+        if (enA().getMMTitle() != null) {}
+        for (paramString = enA().getMMTitle().toString();; paramString = "")
+        {
+          paramString = com.tencent.mm.plugin.webview.modeltools.f.a(paramBundle, enA().ejo(), paramString);
+          AppMethodBeat.o(79576);
+          return paramString;
+        }
+      }
+      if (paramString.equals("jumpToSos")) {
+        try
+        {
+          com.tencent.mm.plugin.webview.modeltools.f.aq(paramBundle);
+          paramString = enA().kxf.j(104, paramBundle);
+          com.tencent.mm.plugin.webview.modeltools.f.kc(paramBundle.getString("query"), enA().ejo());
+          if (paramString != null)
+          {
+            bool1 = paramString.getBoolean("open_result");
+            AppMethodBeat.o(79576);
+            return Boolean.valueOf(bool1);
+          }
+        }
+        catch (RemoteException paramString)
+        {
+          ad.e("MicroMsg.WebViewLongClickHelper", "jumpToSos failed");
+          AppMethodBeat.o(79576);
+          return null;
+        }
+      }
+      if (paramString.equals("supportSmartPickWord"))
+      {
+        paramString = Boolean.TRUE;
+        AppMethodBeat.o(79576);
+        return paramString;
+      }
+      if (paramString.equals("onShowSos"))
+      {
+        com.tencent.mm.plugin.webview.modeltools.f.p(enA().ejo(), paramBundle);
+        AppMethodBeat.o(79576);
+        return null;
+      }
+      if (paramString.equals("supportImagePreview"))
+      {
+        paramString = Boolean.TRUE;
+        AppMethodBeat.o(79576);
+        return paramString;
+      }
+      if (paramString.equals("onClickCopyBtn"))
+      {
+        com.tencent.mm.plugin.webview.modeltools.f.axb(enA().ejo());
+        AppMethodBeat.o(79576);
+        return null;
+      }
+      if (!paramString.equals("imagePreview")) {}
+    }
+    try
+    {
+      paramString = enA().ASw.j(18, new Bundle());
+      j.a(paramBundle, enA().nhy, paramString, enA().BgP);
+      paramString = Boolean.TRUE;
+      AppMethodBeat.o(79576);
+      return paramString;
+      if (paramString.equals("closeImagePreview"))
+      {
+        j.c(enA().kxf);
+        paramString = Boolean.TRUE;
+        AppMethodBeat.o(79576);
+        return paramString;
+      }
+      if (paramString.equals("onTranslateFinish"))
+      {
+        enA().BhZ.eiS();
+        AppMethodBeat.o(79576);
+        return null;
+      }
+      if (paramString.equals("onTranslateStart"))
+      {
+        paramString = enA().BhZ;
+        paramBundle = enA();
+        if ((paramString.tipDialog != null) && (paramString.tipDialog.isShowing()))
+        {
+          paramString.tipDialog.dismiss();
+          paramString.tipDialog = null;
+        }
+        paramBundle.getString(2131755906);
+        paramString.tipDialog = h.b(paramBundle, paramBundle.getString(2131766132), true, null);
+        AppMethodBeat.o(79576);
+        return null;
+      }
+      if (paramString.equals("onGetTranslateString"))
+      {
+        paramString = (HashMap)paramBundle.getSerializable("translate_hashmap");
+        enA().BhZ.a(enA().nhy, paramString);
+        paramString = Boolean.TRUE;
+        AppMethodBeat.o(79576);
+        return paramString;
+      }
+      if (paramString.equals("onGetSampleString"))
+      {
+        paramString = (HashMap)paramBundle.getSerializable("sample_hashmap");
+        paramBundle = enA().BhZ;
+        enA();
+        ad.i("MicroMsg.WebViewTranslateHelper", "getTranslateSampleString in");
+        paramBundle.AKs = new LinkedList();
+        paramBundle.AKs.addAll(paramString.values());
+        paramBundle.AKx.countDown();
+        ad.i("MicroMsg.WebViewTranslateHelper", "getTranslateSampleString end");
+        paramString = Boolean.TRUE;
+        AppMethodBeat.o(79576);
+        return paramString;
+      }
+      AppMethodBeat.o(79576);
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString = localObject;
+      }
+    }
   }
   
-  public static int np(long paramLong)
+  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
   {
-    if (paramLong < 0L) {
-      return -1;
+    AppMethodBeat.i(79582);
+    enA().Big.d(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
+    AppMethodBeat.o(79582);
+  }
+  
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    AppMethodBeat.i(79581);
+    enA().Big.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+    AppMethodBeat.o(79581);
+  }
+  
+  public boolean onShowLongClickPopupMenu()
+  {
+    AppMethodBeat.i(79584);
+    if (enA().getIntent().getBooleanExtra("show_long_click_popup_menu", true))
+    {
+      AppMethodBeat.o(79584);
+      return false;
     }
-    if (paramLong <= 2000L) {
-      return 1;
-    }
-    if (paramLong <= 6000L) {
-      return 2;
-    }
-    if (paramLong <= 12000L) {
-      return 3;
-    }
-    if (paramLong <= 60000L) {
-      return 4;
-    }
-    return 5;
+    AppMethodBeat.o(79584);
+    return true;
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
+  {
+    AppMethodBeat.i(79577);
+    boolean bool = enA().Big.B(paramMotionEvent);
+    AppMethodBeat.o(79577);
+    return bool;
+  }
+  
+  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
+  {
+    AppMethodBeat.i(79580);
+    paramBoolean = enA().Big.b(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
+    AppMethodBeat.o(79580);
+    return paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.b
  * JD-Core Version:    0.7.0.1
  */

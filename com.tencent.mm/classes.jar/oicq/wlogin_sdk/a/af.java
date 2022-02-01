@@ -3,11 +3,11 @@ package oicq.wlogin_sdk.a;
 public final class af
   extends a
 {
-  public int CNR = 0;
+  public int Kjz = 0;
   
   public af()
   {
-    this.CMD = 323;
+    this.Kik = 323;
   }
 }
 

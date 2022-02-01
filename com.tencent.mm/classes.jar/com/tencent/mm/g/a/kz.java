@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class kz
   extends b
 {
-  public kz.a cBg;
+  public a dpr;
   
   public kz()
   {
@@ -15,16 +15,21 @@ public final class kz
   
   private kz(byte paramByte)
   {
-    AppMethodBeat.i(15787);
-    this.cBg = new kz.a();
-    this.ymq = false;
+    AppMethodBeat.i(131791);
+    this.dpr = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15787);
+    AppMethodBeat.o(131791);
+  }
+  
+  public static final class a
+  {
+    public boolean result;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.kz
  * JD-Core Version:    0.7.0.1
  */

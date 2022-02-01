@@ -1,91 +1,151 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class hz
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int ReqType;
-  public int wsX;
-  public int wux;
-  public LinkedList<String> wuy;
-  
-  public hz()
-  {
-    AppMethodBeat.i(62519);
-    this.wuy = new LinkedList();
-    AppMethodBeat.o(62519);
-  }
+  public String CDt;
+  public String CDu;
+  public String CDv;
+  public String CDw;
+  public String dca;
+  public String szi;
+  public String uns;
+  public String zWw;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(62520);
+    AppMethodBeat.i(91355);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.wux);
-      paramVarArgs.aO(2, this.ReqType);
-      paramVarArgs.e(3, 1, this.wuy);
-      paramVarArgs.aO(4, this.wsX);
-      AppMethodBeat.o(62520);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = e.a.a.b.b.a.bl(1, this.wux);
-      int i = e.a.a.b.b.a.bl(2, this.ReqType);
-      int j = e.a.a.a.c(3, 1, this.wuy);
-      int k = e.a.a.b.b.a.bl(4, this.wsX);
-      AppMethodBeat.o(62520);
-      return paramInt + 0 + i + j + k;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.wuy.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.CDt != null) {
+        paramVarArgs.d(1, this.CDt);
       }
-      AppMethodBeat.o(62520);
+      if (this.zWw != null) {
+        paramVarArgs.d(2, this.zWw);
+      }
+      if (this.dca != null) {
+        paramVarArgs.d(3, this.dca);
+      }
+      if (this.uns != null) {
+        paramVarArgs.d(4, this.uns);
+      }
+      if (this.szi != null) {
+        paramVarArgs.d(5, this.szi);
+      }
+      if (this.CDu != null) {
+        paramVarArgs.d(6, this.CDu);
+      }
+      if (this.CDv != null) {
+        paramVarArgs.d(7, this.CDv);
+      }
+      if (this.CDw != null) {
+        paramVarArgs.d(8, this.CDw);
+      }
+      AppMethodBeat.o(91355);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.CDt == null) {
+        break label642;
+      }
+    }
+    label642:
+    for (int i = f.a.a.b.b.a.e(1, this.CDt) + 0;; i = 0)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      hz localhz = (hz)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = i;
+      if (this.zWw != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.zWw);
+      }
+      i = paramInt;
+      if (this.dca != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.dca);
+      }
+      paramInt = i;
+      if (this.uns != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.uns);
+      }
+      i = paramInt;
+      if (this.szi != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.szi);
+      }
+      paramInt = i;
+      if (this.CDu != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.CDu);
+      }
+      i = paramInt;
+      if (this.CDv != null) {
+        i = paramInt + f.a.a.b.b.a.e(7, this.CDv);
+      }
+      paramInt = i;
+      if (this.CDw != null) {
+        paramInt = i + f.a.a.b.b.a.e(8, this.CDw);
+      }
+      AppMethodBeat.o(91355);
+      return paramInt;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(62520);
-        return -1;
-      case 1: 
-        localhz.wux = locala.CLY.sl();
-        AppMethodBeat.o(62520);
-        return 0;
-      case 2: 
-        localhz.ReqType = locala.CLY.sl();
-        AppMethodBeat.o(62520);
-        return 0;
-      case 3: 
-        localhz.wuy.add(locala.CLY.readString());
-        AppMethodBeat.o(62520);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.fMq();
+          }
+        }
+        AppMethodBeat.o(91355);
         return 0;
       }
-      localhz.wsX = locala.CLY.sl();
-      AppMethodBeat.o(62520);
-      return 0;
+      if (paramInt == 3)
+      {
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        hz localhz = (hz)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(91355);
+          return -1;
+        case 1: 
+          localhz.CDt = locala.KhF.readString();
+          AppMethodBeat.o(91355);
+          return 0;
+        case 2: 
+          localhz.zWw = locala.KhF.readString();
+          AppMethodBeat.o(91355);
+          return 0;
+        case 3: 
+          localhz.dca = locala.KhF.readString();
+          AppMethodBeat.o(91355);
+          return 0;
+        case 4: 
+          localhz.uns = locala.KhF.readString();
+          AppMethodBeat.o(91355);
+          return 0;
+        case 5: 
+          localhz.szi = locala.KhF.readString();
+          AppMethodBeat.o(91355);
+          return 0;
+        case 6: 
+          localhz.CDu = locala.KhF.readString();
+          AppMethodBeat.o(91355);
+          return 0;
+        case 7: 
+          localhz.CDv = locala.KhF.readString();
+          AppMethodBeat.o(91355);
+          return 0;
+        }
+        localhz.CDw = locala.KhF.readString();
+        AppMethodBeat.o(91355);
+        return 0;
+      }
+      AppMethodBeat.o(91355);
+      return -1;
     }
-    AppMethodBeat.o(62520);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.hz
  * JD-Core Version:    0.7.0.1
  */

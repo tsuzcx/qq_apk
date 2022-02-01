@@ -1,91 +1,91 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cf;
+import com.tencent.mm.g.c.cr;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class n
-  extends cf
+  extends cr
 {
   protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(108386);
+    AppMethodBeat.i(131047);
     c.a locala = new c.a();
-    locala.yrK = new Field[16];
+    locala.EYt = new Field[16];
     locala.columns = new String[17];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "googleid";
-    locala.yrM.put("googleid", "TEXT");
+    locala.EYv.put("googleid", "TEXT");
     localStringBuilder.append(" googleid TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "googlename";
-    locala.yrM.put("googlename", "TEXT");
+    locala.EYv.put("googlename", "TEXT");
     localStringBuilder.append(" googlename TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "googlephotourl";
-    locala.yrM.put("googlephotourl", "TEXT");
+    locala.EYv.put("googlephotourl", "TEXT");
     localStringBuilder.append(" googlephotourl TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "googlegmail";
-    locala.yrM.put("googlegmail", "TEXT");
+    locala.EYv.put("googlegmail", "TEXT");
     localStringBuilder.append(" googlegmail TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "username";
-    locala.yrM.put("username", "TEXT");
+    locala.EYv.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "nickname";
-    locala.yrM.put("nickname", "TEXT");
+    locala.EYv.put("nickname", "TEXT");
     localStringBuilder.append(" nickname TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "nicknameqp";
-    locala.yrM.put("nicknameqp", "TEXT");
+    locala.EYv.put("nicknameqp", "TEXT");
     localStringBuilder.append(" nicknameqp TEXT");
     localStringBuilder.append(", ");
     locala.columns[7] = "usernamepy";
-    locala.yrM.put("usernamepy", "TEXT");
+    locala.EYv.put("usernamepy", "TEXT");
     localStringBuilder.append(" usernamepy TEXT");
     localStringBuilder.append(", ");
     locala.columns[8] = "small_url";
-    locala.yrM.put("small_url", "TEXT");
+    locala.EYv.put("small_url", "TEXT");
     localStringBuilder.append(" small_url TEXT");
     localStringBuilder.append(", ");
     locala.columns[9] = "big_url";
-    locala.yrM.put("big_url", "TEXT");
+    locala.EYv.put("big_url", "TEXT");
     localStringBuilder.append(" big_url TEXT");
     localStringBuilder.append(", ");
     locala.columns[10] = "ret";
-    locala.yrM.put("ret", "INTEGER");
+    locala.EYv.put("ret", "INTEGER");
     localStringBuilder.append(" ret INTEGER");
     localStringBuilder.append(", ");
     locala.columns[11] = "status";
-    locala.yrM.put("status", "INTEGER");
+    locala.EYv.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[12] = "googleitemid";
-    locala.yrM.put("googleitemid", "TEXT PRIMARY KEY ");
+    locala.EYv.put("googleitemid", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" googleitemid TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.yrL = "googleitemid";
+    locala.EYu = "googleitemid";
     locala.columns[13] = "googlecgistatus";
-    locala.yrM.put("googlecgistatus", "INTEGER default '2' ");
+    locala.EYv.put("googlecgistatus", "INTEGER default '2' ");
     localStringBuilder.append(" googlecgistatus INTEGER default '2' ");
     localStringBuilder.append(", ");
     locala.columns[14] = "contecttype";
-    locala.yrM.put("contecttype", "TEXT");
+    locala.EYv.put("contecttype", "TEXT");
     localStringBuilder.append(" contecttype TEXT");
     localStringBuilder.append(", ");
     locala.columns[15] = "googlenamepy";
-    locala.yrM.put("googlenamepy", "TEXT");
+    locala.EYv.put("googlenamepy", "TEXT");
     localStringBuilder.append(" googlenamepy TEXT");
     locala.columns[16] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    AppMethodBeat.o(108386);
+    AppMethodBeat.o(131047);
   }
   
   public final c.a getDBInfo()
@@ -95,7 +95,7 @@ public final class n
   
   public final String toString()
   {
-    AppMethodBeat.i(108385);
+    AppMethodBeat.i(131046);
     Object localObject = new StringBuffer();
     ((StringBuffer)localObject).append("googleIDgoogleid\n");
     ((StringBuffer)localObject).append("googleNamegooglename\n");
@@ -114,13 +114,13 @@ public final class n
     ((StringBuffer)localObject).append("contactTypecontecttype\n");
     ((StringBuffer)localObject).append("googleNamePYInitialgooglenamepy\n");
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(108385);
+    AppMethodBeat.o(131046);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.n
  * JD-Core Version:    0.7.0.1
  */

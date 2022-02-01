@@ -9,26 +9,26 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.R.a;
 import com.tencent.mm.pluginsdk.ui.ProfileItemView;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class ProfileNormalItemView
   extends ProfileItemView
 {
-  private TextView iJG;
+  private TextView kEu;
   String mTitle;
-  View pCA;
-  CharSequence pCy;
-  View.OnClickListener pCz;
-  TextView pvv;
+  CharSequence uEo;
+  View.OnClickListener uEp;
+  View uEq;
+  TextView uxf;
   
   public ProfileNormalItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(23753);
+    AppMethodBeat.i(27381);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.a.ProfileNormalItemView);
     this.mTitle = paramContext.getString(0);
     paramContext.recycle();
-    AppMethodBeat.o(23753);
+    AppMethodBeat.o(27381);
   }
   
   public ProfileNormalItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -36,64 +36,64 @@ public class ProfileNormalItemView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final ProfileNormalItemView BH(int paramInt)
+  public final ProfileNormalItemView Ju(int paramInt)
   {
-    AppMethodBeat.i(23755);
+    AppMethodBeat.i(27383);
     this.mTitle = getContext().getString(paramInt);
-    AppMethodBeat.o(23755);
+    AppMethodBeat.o(27383);
     return this;
   }
   
-  public final ProfileNormalItemView BI(int paramInt)
+  public final ProfileNormalItemView Jv(int paramInt)
   {
-    AppMethodBeat.i(23756);
-    this.pCy = getContext().getString(paramInt);
-    AppMethodBeat.o(23756);
+    AppMethodBeat.i(27384);
+    this.uEo = getContext().getString(paramInt);
+    AppMethodBeat.o(27384);
     return this;
   }
   
-  public final ProfileNormalItemView BJ(int paramInt)
+  public final ProfileNormalItemView Jw(int paramInt)
   {
-    AppMethodBeat.i(23757);
-    this.pvv.setTextColor(paramInt);
-    AppMethodBeat.o(23757);
+    AppMethodBeat.i(27385);
+    this.uxf.setTextColor(paramInt);
+    AppMethodBeat.o(27385);
     return this;
   }
   
-  public final boolean ccG()
+  public final boolean dcY()
   {
-    AppMethodBeat.i(23760);
-    this.iJG.setText(this.mTitle);
-    if (bo.aa(this.pCy))
+    AppMethodBeat.i(27386);
+    this.kEu.setText(this.mTitle);
+    if (bt.ai(this.uEo))
     {
       setVisibility(8);
-      AppMethodBeat.o(23760);
+      AppMethodBeat.o(27386);
       return false;
     }
     setVisibility(0);
-    this.pvv.setText(this.pCy);
-    setOnClickListener(this.pCz);
-    AppMethodBeat.o(23760);
+    this.uxf.setText(this.uEo);
+    setOnClickListener(this.uEp);
+    AppMethodBeat.o(27386);
     return true;
   }
   
   public int getLayout()
   {
-    return 2130970468;
+    return 2131495141;
   }
   
   public final void init()
   {
-    AppMethodBeat.i(23754);
-    this.iJG = ((TextView)findViewById(2131826859));
-    this.pvv = ((TextView)findViewById(2131826860));
-    this.pCA = findViewById(2131821555);
-    AppMethodBeat.o(23754);
+    AppMethodBeat.i(27382);
+    this.kEu = ((TextView)findViewById(2131298680));
+    this.uxf = ((TextView)findViewById(2131298679));
+    this.uEq = findViewById(2131304172);
+    AppMethodBeat.o(27382);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.ProfileNormalItemView
  * JD-Core Version:    0.7.0.1
  */

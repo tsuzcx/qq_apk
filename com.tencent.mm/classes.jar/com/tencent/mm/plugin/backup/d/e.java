@@ -2,155 +2,266 @@ package com.tencent.mm.plugin.backup.d;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.backup.b.g;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.model.az;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.protocal.protobuf.vd;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.k.b;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.hs;
+import com.tencent.mm.protocal.protobuf.ht;
+import com.tencent.mm.protocal.protobuf.yf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public final class e
 {
-  LinkedList<vd> jCd;
-  String jCe;
-  private String jCf;
-  private boolean jCg;
-  e.a jCh;
-  private ap jCi;
-  final f jCj;
-  final f jCk;
-  com.tencent.mm.plugin.backup.b.e jyI;
+  com.tencent.mm.plugin.backup.b.e mqe;
+  private String mtA;
+  private boolean mtB;
+  a mtC;
+  private av mtD;
+  final com.tencent.mm.al.g mtE;
+  final com.tencent.mm.al.g mtF;
+  LinkedList<yf> mty;
+  String mtz;
   
-  public e(e.a parama, com.tencent.mm.plugin.backup.b.e parame)
+  public e(a parama, com.tencent.mm.plugin.backup.b.e parame)
   {
-    AppMethodBeat.i(17305);
-    this.jCf = "";
-    this.jCg = false;
-    this.jCi = new ap(Looper.getMainLooper(), new e.1(this), true);
-    this.jCj = new e.2(this);
-    this.jCk = new e.3(this);
-    this.jCh = parama;
-    this.jyI = parame;
-    AppMethodBeat.o(17305);
+    AppMethodBeat.i(21363);
+    this.mtA = "";
+    this.mtB = false;
+    this.mtD = new av(Looper.getMainLooper(), new av.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(21360);
+        e.this.bwT();
+        AppMethodBeat.o(21360);
+        return true;
+      }
+    }, true);
+    this.mtE = new com.tencent.mm.al.g()
+    {
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+      {
+        AppMethodBeat.i(21361);
+        com.tencent.mm.plugin.backup.g.b.b(704, e.this.mtE);
+        ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "backup move receive createQrcode response.[%d,%d,%s]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+        {
+          ad.e("MicroMsg.CheckNetworkGenQrCodeHandler", "create qrcode failed, errMsg:".concat(String.valueOf(paramAnonymousString)));
+          ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "err: %d, %d, %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          if (paramAnonymousInt2 == -100)
+          {
+            az.aeS().a(1000, e.this.mtF);
+            paramAnonymousString = new com.tencent.mm.plugin.backup.e.a(e.this.mty, e.this.mtz, b.bwC().msy);
+            az.aeS().a(paramAnonymousString, 0);
+            AppMethodBeat.o(21361);
+            return;
+          }
+          e.this.mqe.mqj = -11;
+          e.this.mtC.n(-11, null);
+          AppMethodBeat.o(21361);
+          return;
+        }
+        paramAnonymousString = (com.tencent.mm.plugin.backup.e.b)paramAnonymousn;
+        paramAnonymousn = (ht)paramAnonymousString.rr.gUT.gUX;
+        b.bwC().mqb = "";
+        b.bwC().mqc = paramAnonymousn.CCO;
+        b.bwC().mqd = paramAnonymousn.CCP;
+        b.bwC().msy = paramAnonymousn.CCK;
+        paramAnonymousString = (ht)paramAnonymousString.rr.gUT.gUX;
+        if (paramAnonymousString == null) {
+          paramAnonymousString = null;
+        }
+        for (;;)
+        {
+          if (paramAnonymousString != null)
+          {
+            e.this.mqe.mqj = 51;
+            e.this.mtC.n(51, paramAnonymousString);
+          }
+          AppMethodBeat.o(21361);
+          return;
+          if (paramAnonymousString.CCL == null) {
+            paramAnonymousString = null;
+          } else {
+            paramAnonymousString = paramAnonymousString.CCL.getBufferToBytes();
+          }
+        }
+      }
+    };
+    this.mtF = new com.tencent.mm.al.g()
+    {
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+      {
+        AppMethodBeat.i(21362);
+        com.tencent.mm.plugin.backup.g.b.b(1000, e.this.mtF);
+        ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "backup move receive createOffilineQrcode response.[%d,%d,%s]", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+        {
+          ad.e("MicroMsg.CheckNetworkGenQrCodeHandler", "create offline qrcode failed, errMsg:".concat(String.valueOf(paramAnonymousString)));
+          e.this.mqe.mqj = -11;
+          e.this.mtC.n(-11, null);
+          AppMethodBeat.o(21362);
+          return;
+        }
+        paramAnonymousn = ((k.b)((com.tencent.mm.plugin.backup.e.a)paramAnonymousn).gVZ.getRespObj()).Cqx;
+        if (paramAnonymousn == null)
+        {
+          paramAnonymousString = "null";
+          ad.i("MicroMsg.BackupCreateQRCodeOfflineScene", "onGYNetEnd QRCodeUrl:%s", new Object[] { paramAnonymousString });
+          if (paramAnonymousn != null) {
+            break label202;
+          }
+          paramAnonymousString = null;
+        }
+        for (;;)
+        {
+          if (paramAnonymousString != null)
+          {
+            e.this.mqe.mqj = 51;
+            e.this.mtC.n(51, paramAnonymousString);
+          }
+          AppMethodBeat.o(21362);
+          return;
+          paramAnonymousString = paramAnonymousn.CCM;
+          break;
+          label202:
+          if (paramAnonymousn.CCL == null) {
+            paramAnonymousString = null;
+          } else {
+            paramAnonymousString = paramAnonymousn.CCL.getBufferToBytes();
+          }
+        }
+      }
+    };
+    this.mtC = parama;
+    this.mqe = parame;
+    AppMethodBeat.o(21363);
   }
   
-  private boolean aTL()
+  private boolean bwU()
   {
-    AppMethodBeat.i(17309);
-    this.jCd = new LinkedList();
+    AppMethodBeat.i(21367);
+    this.mty = new LinkedList();
     PString localPString = new PString();
     PInt localPInt = new PInt();
-    this.jCe = g.dx(ah.getContext());
-    ab.i("MicroMsg.CheckNetworkGenQrCodeHandler", "wifiName :%s", new Object[] { this.jCe });
-    if (bo.isNullOrNil(this.jCe))
+    this.mtz = com.tencent.mm.plugin.backup.b.g.dZ(aj.getContext());
+    ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "wifiName :%s", new Object[] { this.mtz });
+    if (bt.isNullOrNil(this.mtz))
     {
-      this.jyI.jyN = -4;
-      this.jCh.l(-4, null);
-      this.jCf = "";
-      AppMethodBeat.o(17309);
+      this.mqe.mqj = -4;
+      this.mtC.n(-4, null);
+      this.mtA = "";
+      AppMethodBeat.o(21367);
       return false;
     }
-    if (!b.aTr().aTs().a(localPString, localPInt))
+    if (!b.bwC().bwD().a(localPString, localPInt))
     {
-      this.jyI.jyN = -4;
-      this.jCh.l(-4, null);
-      this.jCf = "";
-      AppMethodBeat.o(17309);
+      this.mqe.mqj = -4;
+      this.mtC.n(-4, null);
+      this.mtA = "";
+      AppMethodBeat.o(21367);
       return false;
     }
-    ab.i("MicroMsg.CheckNetworkGenQrCodeHandler", "server listen result: %s, %d", new Object[] { localPString.value, Integer.valueOf(localPInt.value) });
-    vd localvd = new vd();
-    localvd.wKH = localPString.value;
-    localvd.wNF = new LinkedList();
-    localvd.wNF.add(Integer.valueOf(localPInt.value));
-    this.jCd.add(localvd);
-    AppMethodBeat.o(17309);
+    ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "server listen result: %s, %d", new Object[] { localPString.value, Integer.valueOf(localPInt.value) });
+    yf localyf = new yf();
+    localyf.CWU = localPString.value;
+    localyf.Dai = new LinkedList();
+    localyf.Dai.add(Integer.valueOf(localPInt.value));
+    this.mty.add(localyf);
+    AppMethodBeat.o(21367);
     return true;
   }
   
-  final void aTK()
+  final void bwT()
   {
-    AppMethodBeat.i(17308);
-    Object localObject = g.dx(ah.getContext());
-    ab.i("MicroMsg.CheckNetworkGenQrCodeHandler", "checkNetStatus newWifiName:%s  preWifiName:%s acc:%b hold:%b", new Object[] { localObject, this.jCf, Boolean.valueOf(aw.RG()), Boolean.valueOf(aw.QP()) });
-    if (!((String)localObject).equals(this.jCf))
+    AppMethodBeat.i(21366);
+    Object localObject = com.tencent.mm.plugin.backup.b.g.dZ(aj.getContext());
+    ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "checkNetStatus newWifiName:%s  preWifiName:%s acc:%b hold:%b", new Object[] { localObject, this.mtA, Boolean.valueOf(az.afw()), Boolean.valueOf(az.aeC()) });
+    if (!((String)localObject).equals(this.mtA))
     {
-      if (!aw.RG())
+      if (!az.afw())
       {
-        AppMethodBeat.o(17308);
+        AppMethodBeat.o(21366);
         return;
       }
-      this.jCf = ((String)localObject);
-      if (!aTL())
+      this.mtA = ((String)localObject);
+      if (!bwU())
       {
-        this.jCg = false;
-        AppMethodBeat.o(17308);
+        this.mtB = false;
+        AppMethodBeat.o(21366);
         return;
       }
-      this.jCg = false;
-      if (!aw.QP())
+      this.mtB = false;
+      if (!az.aeC())
       {
-        ab.i("MicroMsg.CheckNetworkGenQrCodeHandler", "begin to netscene create QRCode online ");
-        aw.Rc().a(704, this.jCj);
-        localObject = new com.tencent.mm.plugin.backup.e.b(this.jCd, this.jCe);
-        aw.Rc().a((m)localObject, 0);
-        AppMethodBeat.o(17308);
+        ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "begin to netscene create QRCode online ");
+        az.aeS().a(704, this.mtE);
+        localObject = new com.tencent.mm.plugin.backup.e.b(this.mty, this.mtz);
+        az.aeS().a((n)localObject, 0);
+        AppMethodBeat.o(21366);
         return;
       }
-      ab.i("MicroMsg.CheckNetworkGenQrCodeHandler", "begin to netscene create QRCode offline");
-      aw.Rc().a(1000, this.jCk);
-      localObject = new com.tencent.mm.plugin.backup.e.a(this.jCd, this.jCe, b.aTr().jBb);
-      aw.Rc().a((m)localObject, 0);
+      ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "begin to netscene create QRCode offline");
+      az.aeS().a(1000, this.mtF);
+      localObject = new com.tencent.mm.plugin.backup.e.a(this.mty, this.mtz, b.bwC().msy);
+      az.aeS().a((n)localObject, 0);
     }
-    AppMethodBeat.o(17308);
+    AppMethodBeat.o(21366);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(17306);
-    ab.i("MicroMsg.CheckNetworkGenQrCodeHandler", "start check network and gen qrcode handler starting:%b stop:%b .%s %s", new Object[] { Boolean.valueOf(this.jCg), Boolean.valueOf(this.jCi.dtj()), this, bo.dtY() });
-    if (this.jCg)
+    AppMethodBeat.i(21364);
+    ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "start check network and gen qrcode handler starting:%b stop:%b .%s %s", new Object[] { Boolean.valueOf(this.mtB), Boolean.valueOf(this.mtD.eFX()), this, bt.eGN() });
+    if (this.mtB)
     {
-      AppMethodBeat.o(17306);
+      AppMethodBeat.o(21364);
       return;
     }
-    this.jCg = true;
-    if (aTL())
+    this.mtB = true;
+    if (bwU())
     {
-      this.jCf = null;
-      aTK();
+      this.mtA = null;
+      bwT();
     }
     for (;;)
     {
-      this.jCi.ag(500L, 500L);
-      AppMethodBeat.o(17306);
+      this.mtD.av(500L, 500L);
+      AppMethodBeat.o(21364);
       return;
-      this.jyI.jyN = -4;
-      this.jCh.l(-4, null);
+      this.mqe.mqj = -4;
+      this.mtC.n(-4, null);
     }
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(17307);
-    ab.i("MicroMsg.CheckNetworkGenQrCodeHandler", "stop check network and gen qrcode handler.");
-    this.jCg = false;
-    aw.Rc().b(704, this.jCj);
-    aw.Rc().b(1000, this.jCk);
-    this.jCi.stopTimer();
-    AppMethodBeat.o(17307);
+    AppMethodBeat.i(21365);
+    ad.i("MicroMsg.CheckNetworkGenQrCodeHandler", "stop check network and gen qrcode handler.");
+    this.mtB = false;
+    az.aeS().b(704, this.mtE);
+    az.aeS().b(1000, this.mtF);
+    this.mtD.stopTimer();
+    AppMethodBeat.o(21365);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void n(int paramInt, byte[] paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.d.e
  * JD-Core Version:    0.7.0.1
  */

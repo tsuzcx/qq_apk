@@ -7,89 +7,94 @@ import java.util.List;
 
 public final class j
 {
-  private static j lFn;
-  private SparseArray<List<j.a>> lFo;
+  private static j oVZ;
+  private SparseArray<List<a>> oWa;
   
   private j()
   {
-    AppMethodBeat.i(19306);
-    this.lFo = new SparseArray();
-    AppMethodBeat.o(19306);
+    AppMethodBeat.i(23375);
+    this.oWa = new SparseArray();
+    AppMethodBeat.o(23375);
   }
   
-  public static j bpP()
+  public static j bZx()
   {
-    AppMethodBeat.i(19307);
-    if (lFn == null) {
-      lFn = new j();
+    AppMethodBeat.i(23376);
+    if (oVZ == null) {
+      oVZ = new j();
     }
-    j localj = lFn;
-    AppMethodBeat.o(19307);
+    j localj = oVZ;
+    AppMethodBeat.o(23376);
     return localj;
   }
   
-  public final boolean a(int paramInt, j.a parama)
+  public final boolean a(int paramInt, a parama)
   {
-    AppMethodBeat.i(19308);
+    AppMethodBeat.i(23377);
     if (parama == null)
     {
-      AppMethodBeat.o(19308);
+      AppMethodBeat.o(23377);
       return false;
     }
-    List localList = (List)this.lFo.get(paramInt);
+    List localList = (List)this.oWa.get(paramInt);
     Object localObject;
     if (localList == null)
     {
       localObject = new LinkedList();
-      this.lFo.put(paramInt, localObject);
+      this.oWa.put(paramInt, localObject);
     }
     do
     {
       boolean bool = ((List)localObject).add(parama);
-      AppMethodBeat.o(19308);
+      AppMethodBeat.o(23377);
       return bool;
       localObject = localList;
     } while (!localList.contains(parama));
-    AppMethodBeat.o(19308);
+    AppMethodBeat.o(23377);
     return false;
   }
   
-  public final boolean b(int paramInt, j.a parama)
+  public final boolean b(int paramInt, a parama)
   {
-    AppMethodBeat.i(19309);
-    List localList = (List)this.lFo.get(paramInt);
+    AppMethodBeat.i(23378);
+    List localList = (List)this.oWa.get(paramInt);
     if (localList != null)
     {
       localList.remove(parama);
       if (localList.size() == 0) {
-        this.lFo.remove(paramInt);
+        this.oWa.remove(paramInt);
       }
     }
-    AppMethodBeat.o(19309);
+    AppMethodBeat.o(23378);
     return false;
   }
   
   public final void h(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(19310);
-    List localList = (List)this.lFo.get(paramInt);
+    AppMethodBeat.i(23379);
+    List localList = (List)this.oWa.get(paramInt);
     if ((localList == null) || (localList.size() == 0))
     {
-      AppMethodBeat.o(19310);
+      AppMethodBeat.o(23379);
       return;
     }
     int i = 0;
     while (i < localList.size())
     {
-      ((j.a)localList.get(i)).g(paramInt, paramVarArgs);
+      ((a)localList.get(i)).g(paramInt, paramVarArgs);
       i += 1;
     }
-    AppMethodBeat.o(19310);
+    AppMethodBeat.o(23379);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void g(int paramInt, Object... paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.j
  * JD-Core Version:    0.7.0.1
  */

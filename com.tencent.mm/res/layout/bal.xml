@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="156.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.MMImageView android:id="@id/fuj" android:layout_width="fill_parent" android:layout_height="156.0dip" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/fuk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="#66000000" android:layout_alignParentStart="true" />
+    <FrameLayout android:id="@id/fuh" android:paddingTop="@dimen/jn" android:paddingBottom="@dimen/ha" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@id/fuj" android:paddingStart="@dimen/ha" android:paddingEnd="@dimen/jn" android:layout_alignEnd="@id/fuj">
+        <CheckBox android:layout_gravity="center_vertical" android:id="@id/fui" android:background="@drawable/ad0" android:layout_width="@dimen/ao" android:layout_height="@dimen/ao" />
+    </FrameLayout>
+</RelativeLayout>

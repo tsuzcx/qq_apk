@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.websearch.widget.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class b
   extends a
 {
-  private String cJG;
+  private String dAA;
   private int x;
   private int y;
   
@@ -16,27 +16,27 @@ public final class b
   {
     this.x = paramInt1;
     this.y = paramInt2;
-    this.cJG = paramString;
+    this.dAA = paramString;
   }
   
-  public final String dae()
+  public final String eiD()
   {
-    AppMethodBeat.i(91461);
+    AppMethodBeat.i(116656);
     Object localObject = new JSONObject();
     try
     {
       ((JSONObject)localObject).put("x", this.x);
       ((JSONObject)localObject).put("y", this.y);
-      ((JSONObject)localObject).put("eventId", this.cJG);
+      ((JSONObject)localObject).put("eventId", this.dAA);
       localObject = ((JSONObject)localObject).toString();
-      AppMethodBeat.o(91461);
+      AppMethodBeat.o(116656);
       return localObject;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        ab.printErrStackTrace("onTap", localJSONException, "", new Object[0]);
+        ad.printErrStackTrace("onTap", localJSONException, "", new Object[0]);
       }
     }
   }
@@ -48,7 +48,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.c.b
  * JD-Core Version:    0.7.0.1
  */

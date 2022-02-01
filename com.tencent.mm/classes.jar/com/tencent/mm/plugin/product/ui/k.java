@@ -14,32 +14,32 @@ public final class k
   extends BaseAdapter
 {
   private Context mContext;
-  AdapterView.OnItemClickListener pwD;
-  List<n> pwK;
+  AdapterView.OnItemClickListener uyl;
+  List<n> uys;
   
   public k(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private n Bq(int paramInt)
+  private n Jc(int paramInt)
   {
-    AppMethodBeat.i(44130);
-    n localn = (n)this.pwK.get(paramInt);
-    AppMethodBeat.o(44130);
+    AppMethodBeat.i(67037);
+    n localn = (n)this.uys.get(paramInt);
+    AppMethodBeat.o(67037);
     return localn;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(44129);
-    if (this.pwK != null)
+    AppMethodBeat.i(67036);
+    if (this.uys != null)
     {
-      int i = this.pwK.size();
-      AppMethodBeat.o(44129);
+      int i = this.uys.size();
+      AppMethodBeat.o(67036);
       return i;
     }
-    AppMethodBeat.o(44129);
+    AppMethodBeat.o(67036);
     return 0;
   }
   
@@ -50,36 +50,45 @@ public final class k
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(44131);
-    n localn = Bq(paramInt);
+    AppMethodBeat.i(67038);
+    n localn = Jc(paramInt);
     View localView;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = new k.a(this);
-      localView = View.inflate(this.mContext, 2130970457, null);
-      paramView.pwE = ((TextView)localView.findViewById(2131826813));
-      paramView.pwF = ((MaxGridView)localView.findViewById(2131826814));
-      paramView.pwL = new l(this.mContext);
+      paramView = new a();
+      localView = View.inflate(this.mContext, 2131495130, null);
+      paramView.uym = ((TextView)localView.findViewById(2131302112));
+      paramView.uyn = ((MaxGridView)localView.findViewById(2131302111));
+      paramView.uyt = new l(this.mContext);
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }
     for (;;)
     {
-      paramViewGroup.pwE.setText(localn.name);
-      paramViewGroup.pwF.setOnItemClickListener(this.pwD);
-      paramViewGroup.pwL.pwN = localn.puH;
-      paramViewGroup.pwL.notifyDataSetChanged();
-      paramViewGroup.pwF.setAdapter(paramViewGroup.pwL);
-      AppMethodBeat.o(44131);
+      paramViewGroup.uym.setText(localn.name);
+      paramViewGroup.uyn.setOnItemClickListener(this.uyl);
+      paramViewGroup.uyt.uyv = localn.uws;
+      paramViewGroup.uyt.notifyDataSetChanged();
+      paramViewGroup.uyn.setAdapter(paramViewGroup.uyt);
+      AppMethodBeat.o(67038);
       return localView;
-      paramViewGroup = (k.a)paramView.getTag();
+      paramViewGroup = (a)paramView.getTag();
       localView = paramView;
     }
+  }
+  
+  final class a
+  {
+    public TextView uym = null;
+    public MaxGridView uyn = null;
+    public l uyt = null;
+    
+    a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.k
  * JD-Core Version:    0.7.0.1
  */

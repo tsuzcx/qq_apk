@@ -1,62 +1,69 @@
 package com.tencent.mm.ui.chatting.c.b;
 
-import com.tencent.mm.aj.a.c;
-import com.tencent.mm.aj.a.j;
-import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.e;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.am.a.k;
+import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.g;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.ui.chatting.c.ab;
 import com.tencent.mm.ui.chatting.c.c.a;
-import com.tencent.mm.ui.chatting.c.v;
+import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.ui.chatting.viewitems.bi;
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract interface d
-  extends v
+  extends ab
 {
-  public abstract void aM(LinkedList<String> paramLinkedList);
+  public abstract long QU();
   
-  public abstract String atR(String paramString);
+  public abstract boolean a(a parama, bi parambi);
   
-  public abstract List<bi> dHA();
+  public abstract String aKF(String paramString);
   
-  public abstract boolean dHB();
+  public abstract void bh(LinkedList<String> paramLinkedList);
   
-  public abstract void dHC();
+  public abstract com.tencent.mm.am.a.c eWA();
   
-  public abstract void dHD();
+  public abstract k eWB();
   
-  public abstract int dHE();
+  public abstract boolean eWC();
   
-  public abstract String dHF();
+  public abstract boolean eWD();
   
-  public abstract boolean dHG();
+  public abstract boolean eWE();
   
-  public abstract boolean dHH();
+  public abstract c.a eWF();
   
-  public abstract long dHI();
+  public abstract ChatFooter.g eWG();
   
-  public abstract void dHJ();
+  public abstract List<bl> eWH();
   
-  public abstract com.tencent.mm.aj.d dHs();
+  public abstract boolean eWI();
   
-  public abstract c dHt();
+  public abstract void eWJ();
   
-  public abstract j dHu();
+  public abstract void eWK();
   
-  public abstract boolean dHv();
+  public abstract int eWL();
   
-  public abstract boolean dHw();
+  public abstract String eWM();
   
-  public abstract boolean dHx();
+  public abstract boolean eWN();
   
-  public abstract c.a dHy();
+  public abstract boolean eWO();
   
-  public abstract ChatFooter.e dHz();
+  public abstract long eWP();
   
-  public abstract String sp(String paramString);
+  public abstract void eWQ();
+  
+  public abstract com.tencent.mm.api.c eWz();
+  
+  public abstract void fX(String paramString, int paramInt);
+  
+  public abstract String xn(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.b.d
  * JD-Core Version:    0.7.0.1
  */

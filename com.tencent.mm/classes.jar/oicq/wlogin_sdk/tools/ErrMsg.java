@@ -9,16 +9,16 @@ public class ErrMsg
   implements Parcelable, Cloneable
 {
   public static final Parcelable.Creator<ErrMsg> CREATOR;
-  public String COd;
+  public String KjL;
   public String message;
   public String title;
   private int type;
   
   static
   {
-    AppMethodBeat.i(96553);
+    AppMethodBeat.i(88192);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(96553);
+    AppMethodBeat.o(88192);
   }
   
   public ErrMsg()
@@ -26,24 +26,24 @@ public class ErrMsg
     this.type = 0;
     this.title = "";
     this.message = "";
-    this.COd = "";
+    this.KjL = "";
   }
   
   private ErrMsg(Parcel paramParcel)
   {
-    AppMethodBeat.i(96555);
+    AppMethodBeat.i(88194);
     this.type = paramParcel.readInt();
     this.title = paramParcel.readString();
     this.message = paramParcel.readString();
-    this.COd = paramParcel.readString();
-    AppMethodBeat.o(96555);
+    this.KjL = paramParcel.readString();
+    AppMethodBeat.o(88194);
   }
   
   public Object clone()
   {
-    AppMethodBeat.i(96554);
+    AppMethodBeat.i(88193);
     Object localObject = super.clone();
-    AppMethodBeat.o(96554);
+    AppMethodBeat.o(88193);
     return localObject;
   }
   
@@ -52,22 +52,22 @@ public class ErrMsg
     return 0;
   }
   
-  public final void eri()
+  public final void fML()
   {
     this.type = 0;
     this.title = "";
     this.message = "";
-    this.COd = "";
+    this.KjL = "";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(96556);
+    AppMethodBeat.i(88195);
     paramParcel.writeInt(this.type);
     paramParcel.writeString(this.title);
     paramParcel.writeString(this.message);
-    paramParcel.writeString(this.COd);
-    AppMethodBeat.o(96556);
+    paramParcel.writeString(this.KjL);
+    AppMethodBeat.o(88195);
   }
 }
 

@@ -14,29 +14,29 @@ final class ah
   extends af
   implements Handler.Callback
 {
-  private final Context Hj;
-  private final HashMap<ag, ai> Ku = new HashMap();
-  private final a Kv;
-  private final long Kw;
-  private final long Kx;
-  private final Handler mHandler;
+  private final Context IY;
+  private final HashMap<ag, ai> Mj = new HashMap();
+  private final a Mk;
+  private final long Ml;
+  private final long Mm;
+  private final Handler dG;
   
   ah(Context paramContext)
   {
-    this.Hj = paramContext.getApplicationContext();
-    this.mHandler = new Handler(paramContext.getMainLooper(), this);
-    this.Kv = a.hR();
-    this.Kw = 5000L;
-    this.Kx = 300000L;
+    this.IY = paramContext.getApplicationContext();
+    this.dG = new Handler(paramContext.getMainLooper(), this);
+    this.Mk = a.ib();
+    this.Ml = 5000L;
+    this.Mm = 300000L;
   }
   
   protected final void a(ag paramag, ServiceConnection paramServiceConnection)
   {
-    d.e(paramServiceConnection, "ServiceConnection must not be null");
+    d.g(paramServiceConnection, "ServiceConnection must not be null");
     ai localai;
-    synchronized (this.Ku)
+    synchronized (this.Mj)
     {
-      localai = (ai)this.Ku.get(paramag);
+      localai = (ai)this.Mj.get(paramag);
       if (localai == null)
       {
         paramag = String.valueOf(paramag);
@@ -49,32 +49,32 @@ final class ah
       throw new IllegalStateException(String.valueOf(paramag).length() + 76 + "Trying to unbind a GmsServiceConnection  that was not bound before.  config=" + paramag);
     }
     localai.b(paramServiceConnection);
-    if (localai.hA())
+    if (localai.hK())
     {
-      paramag = this.mHandler.obtainMessage(0, paramag);
-      this.mHandler.sendMessageDelayed(paramag, this.Kw);
+      paramag = this.dG.obtainMessage(0, paramag);
+      this.dG.sendMessageDelayed(paramag, this.Ml);
     }
   }
   
   protected final boolean a(ag paramag, ServiceConnection paramServiceConnection, String paramString)
   {
-    d.e(paramServiceConnection, "ServiceConnection must not be null");
+    d.g(paramServiceConnection, "ServiceConnection must not be null");
     for (;;)
     {
-      synchronized (this.Ku)
+      synchronized (this.Mj)
       {
-        paramString = (ai)this.Ku.get(paramag);
+        paramString = (ai)this.Mj.get(paramag);
         if (paramString == null)
         {
           paramString = new ai(this, paramag);
           paramString.a(paramServiceConnection);
-          paramString.hy();
-          this.Ku.put(paramag, paramString);
+          paramString.hI();
+          this.Mj.put(paramag, paramString);
           paramag = paramString;
           boolean bool = paramag.isBound();
           return bool;
         }
-        this.mHandler.removeMessages(0, paramag);
+        this.dG.removeMessages(0, paramag);
         if (paramString.c(paramServiceConnection))
         {
           paramag = String.valueOf(paramag);
@@ -89,7 +89,7 @@ final class ah
         paramag = paramString;
         break;
       case 2: 
-        paramString.hy();
+        paramString.hI();
         paramag = paramString;
         break;
       default: 
@@ -105,26 +105,26 @@ final class ah
     default: 
       return false;
     case 0: 
-      synchronized (this.Ku)
+      synchronized (this.Mj)
       {
         paramMessage = (ag)paramMessage.obj;
-        ??? = (ai)this.Ku.get(paramMessage);
-        if ((??? != null) && (((ai)???).hA()))
+        ??? = (ai)this.Mj.get(paramMessage);
+        if ((??? != null) && (((ai)???).hK()))
         {
           if (((ai)???).isBound()) {
-            ((ai)???).hz();
+            ((ai)???).hJ();
           }
-          this.Ku.remove(paramMessage);
+          this.Mj.remove(paramMessage);
         }
         return true;
       }
     }
     for (;;)
     {
-      synchronized (this.Ku)
+      synchronized (this.Mj)
       {
         ag localag = (ag)paramMessage.obj;
-        ai localai = (ai)this.Ku.get(localag);
+        ai localai = (ai)this.Mj.get(localag);
         if ((localai != null) && (localai.getState() == 3))
         {
           paramMessage = String.valueOf(localag);

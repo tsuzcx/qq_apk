@@ -1,71 +1,71 @@
 package com.tencent.mm.plugin.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ea;
+import com.tencent.mm.g.c.ev;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class j
-  extends ea
+  extends ev
   implements c
 {
   public static c.a info;
   
   static
   {
-    AppMethodBeat.i(57136);
+    AppMethodBeat.i(140938);
     c.a locala = new c.a();
-    locala.yrK = new Field[10];
+    locala.EYt = new Field[10];
     locala.columns = new String[11];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "localId";
-    locala.yrM.put("localId", "INTEGER PRIMARY KEY ");
+    locala.EYv.put("localId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" localId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.yrL = "localId";
+    locala.EYu = "localId";
     locala.columns[1] = "msgId";
-    locala.yrM.put("msgId", "LONG default '-1' ");
+    locala.EYv.put("msgId", "LONG default '-1' ");
     localStringBuilder.append(" msgId LONG default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "oriMsgId";
-    locala.yrM.put("oriMsgId", "LONG default '-1' ");
+    locala.EYv.put("oriMsgId", "LONG default '-1' ");
     localStringBuilder.append(" oriMsgId LONG default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "toUser";
-    locala.yrM.put("toUser", "TEXT default '' ");
+    locala.EYv.put("toUser", "TEXT default '' ");
     localStringBuilder.append(" toUser TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "title";
-    locala.yrM.put("title", "TEXT");
+    locala.EYv.put("title", "TEXT");
     localStringBuilder.append(" title TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "desc";
-    locala.yrM.put("desc", "TEXT");
+    locala.EYv.put("desc", "TEXT");
     localStringBuilder.append(" desc TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "dataProto";
-    locala.yrM.put("dataProto", "BLOB");
+    locala.EYv.put("dataProto", "BLOB");
     localStringBuilder.append(" dataProto BLOB");
     localStringBuilder.append(", ");
     locala.columns[7] = "type";
-    locala.yrM.put("type", "INTEGER default '0' ");
+    locala.EYv.put("type", "INTEGER default '0' ");
     localStringBuilder.append(" type INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "status";
-    locala.yrM.put("status", "INTEGER default '0' ");
+    locala.EYv.put("status", "INTEGER default '0' ");
     localStringBuilder.append(" status INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[9] = "favFrom";
-    locala.yrM.put("favFrom", "TEXT");
+    locala.EYv.put("favFrom", "TEXT");
     localStringBuilder.append(" favFrom TEXT");
     locala.columns[10] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    AppMethodBeat.o(57136);
+    AppMethodBeat.o(140938);
   }
   
-  public final int cfL()
+  public final int dgb()
   {
     return this.field_localId;
   }
@@ -77,7 +77,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a.j
  * JD-Core Version:    0.7.0.1
  */

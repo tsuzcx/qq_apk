@@ -4,13 +4,13 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a;
-import com.tencent.mm.plugin.fts.a.a.k;
+import com.tencent.mm.plugin.fts.a.a.l;
 import com.tencent.mm.plugin.fts.a.c.a;
 import com.tencent.mm.plugin.fts.a.i;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.wcdb.database.SQLiteStatement;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,83 +21,91 @@ import java.util.regex.Pattern;
 public final class e
   extends a
 {
-  public SQLiteStatement mVK;
-  public SQLiteStatement mVL;
-  private SQLiteStatement mVM;
+  public SQLiteStatement rsA;
+  public SQLiteStatement rsB;
+  private SQLiteStatement rsC;
   
-  public static boolean Ps(String paramString)
+  public static boolean abs(String paramString)
   {
-    AppMethodBeat.i(136841);
+    AppMethodBeat.i(52814);
     long l = System.currentTimeMillis();
-    if (((j)g.E(j.class)).bPQ().TE(paramString) < l - 5184000000L)
+    if (((k)g.ab(k.class)).cOI().agI(paramString) < l - 5184000000L)
     {
-      AppMethodBeat.o(136841);
+      AppMethodBeat.o(52814);
       return true;
     }
-    AppMethodBeat.o(136841);
+    AppMethodBeat.o(52814);
     return false;
   }
   
-  public final void Pn()
+  public final void abr(String paramString)
   {
-    AppMethodBeat.i(136838);
-    if (Po()) {
-      this.mQr.M(-100L, 3L);
-    }
-    this.mQr.execSQL(String.format("CREATE INDEX IF NOT EXISTS %s_query ON %s(query);", new Object[] { bBR(), bBR() }));
-    this.mQr.execSQL(String.format("CREATE INDEX IF NOT EXISTS %s_score ON %s(score);", new Object[] { bBR(), bBR() }));
-    String str = String.format("INSERT INTO %s (content) VALUES (?);", new Object[] { bBS() });
-    this.mVK = this.mQr.compileStatement(str);
-    str = String.format("INSERT INTO %s (docid, type, subtype, entity_id, aux_index, timestamp, query, score, scene, meta_content) VALUES (last_insert_rowid(), ?, ?, ?, ?, ?, ?, ?, ?, ?);", new Object[] { bBR() });
-    this.mVL = this.mQr.compileStatement(str);
-    str = String.format("UPDATE %s SET status=? WHERE aux_index=?", new Object[] { bBR() });
-    this.mVM = this.mQr.compileStatement(str);
-    AppMethodBeat.o(136838);
+    AppMethodBeat.i(52812);
+    this.rsC.bindLong(1, 1L);
+    this.rsC.bindString(2, paramString);
+    this.rsC.execute();
+    AppMethodBeat.o(52812);
   }
   
-  public final boolean Po()
+  public final void acM()
   {
-    AppMethodBeat.i(136844);
-    if (!er(-100, 3))
+    AppMethodBeat.i(52811);
+    if (acN()) {
+      this.rni.U(-100L, 5L);
+    }
+    this.rni.execSQL(String.format("CREATE INDEX IF NOT EXISTS %s_query ON %s(query);", new Object[] { cxe(), cxe() }));
+    this.rni.execSQL(String.format("CREATE INDEX IF NOT EXISTS %s_score ON %s(score);", new Object[] { cxe(), cxe() }));
+    String str = String.format("INSERT INTO %s (content) VALUES (?);", new Object[] { cxf() });
+    this.rsA = this.rni.compileStatement(str);
+    str = String.format("INSERT INTO %s (docid, type, subtype, entity_id, aux_index, timestamp, query, score, scene, meta_content) VALUES (last_insert_rowid(), ?, ?, ?, ?, ?, ?, ?, ?, ?);", new Object[] { cxe() });
+    this.rsB = this.rni.compileStatement(str);
+    str = String.format("UPDATE %s SET status=? WHERE aux_index=?", new Object[] { cxe() });
+    this.rsC = this.rni.compileStatement(str);
+    AppMethodBeat.o(52811);
+  }
+  
+  public final boolean acN()
+  {
+    AppMethodBeat.i(52817);
+    if (!fH(-100, 5))
     {
-      AppMethodBeat.o(136844);
+      AppMethodBeat.o(52817);
       return true;
     }
-    AppMethodBeat.o(136844);
+    AppMethodBeat.o(52817);
     return false;
   }
   
-  public final boolean Pp()
+  public final boolean acO()
   {
-    AppMethodBeat.i(136842);
-    super.Pp();
-    this.mVK.close();
-    this.mVL.close();
-    this.mVM.close();
-    AppMethodBeat.o(136842);
+    AppMethodBeat.i(52815);
+    super.acO();
+    this.rsA.close();
+    this.rsB.close();
+    this.rsC.close();
+    AppMethodBeat.o(52815);
     return true;
   }
   
-  public final void Pr(String paramString)
+  public final String ciy()
   {
-    AppMethodBeat.i(136839);
-    this.mVM.bindLong(1, 1L);
-    this.mVM.bindString(2, paramString);
-    this.mVM.execute();
-    AppMethodBeat.o(136839);
+    AppMethodBeat.i(52816);
+    String str = String.format("CREATE TABLE IF NOT EXISTS %s (docid INTEGER PRIMARY KEY, type INT, subtype INT DEFAULT 0, entity_id INTEGER, aux_index TEXT, timestamp INTEGER, status INT DEFAULT 0, query TEXT COLLATE NOCASE, score INT, scene INT, meta_content TEXT);", new Object[] { cxe() });
+    AppMethodBeat.o(52816);
+    return str;
   }
   
-  public final int bCw()
+  public final int cxK()
   {
-    AppMethodBeat.i(136840);
-    Object localObject1 = String.format("SELECT docid, query, score, scene, aux_index, entity_id, type, subtype, timestamp, meta_content FROM %s WHERE status > 0;", new Object[] { bBR() });
-    Object localObject2 = this.mQr.rawQuery((String)localObject1, null);
+    AppMethodBeat.i(52813);
+    Object localObject1 = String.format("SELECT docid, query, score, scene, aux_index, entity_id, type, subtype, timestamp, meta_content FROM %s WHERE status > 0;", new Object[] { cxe() });
+    Object localObject2 = this.rni.rawQuery((String)localObject1, null);
     localObject1 = new ArrayList();
     Object localObject3;
     while (((Cursor)localObject2).moveToNext())
     {
-      localObject3 = new k();
-      ((k)localObject3).convertFrom((Cursor)localObject2);
+      localObject3 = new l();
+      ((l)localObject3).convertFrom((Cursor)localObject2);
       ((List)localObject1).add(localObject3);
     }
     ((Cursor)localObject2).close();
@@ -108,24 +116,24 @@ public final class e
     boolean bool;
     while (localIterator.hasNext())
     {
-      k localk = (k)localIterator.next();
+      l locall = (l)localIterator.next();
       bool = false;
-      if (localk.type == 262144) {
-        localObject2 = ((n)g.G(n.class)).getFTSIndexStorage(17);
+      if (locall.type == 262144) {
+        localObject2 = ((n)g.ad(n.class)).getFTSIndexStorage(17);
       }
       for (;;)
       {
         localObject1 = null;
         if (!bool) {
-          localObject1 = ((i)localObject2).co(localk.mRV, localk.mRU);
+          localObject1 = ((i)localObject2).di(locall.roN, locall.roM);
         }
-        if (bo.isNullOrNil((String)localObject1)) {
-          break label464;
+        if (bt.isNullOrNil((String)localObject1)) {
+          break label465;
         }
-        if (!localk.query.equals("​chatroom_tophits")) {
-          break label402;
+        if (!locall.query.equals("​chatroom_tophits")) {
+          break label403;
         }
-        String[] arrayOfString = c.a.mQY.split(localk.mTa);
+        String[] arrayOfString = c.a.rnP.split(locall.rpU);
         localObject2 = "";
         int j = arrayOfString.length;
         i = 0;
@@ -139,63 +147,63 @@ public final class e
           i += 1;
           localObject2 = localObject3;
         }
-        localObject2 = ((n)g.G(n.class)).getFTSIndexStorage(3);
-        bool = Ps(localk.mRV);
+        localObject2 = ((n)g.ad(n.class)).getFTSIndexStorage(3);
+        bool = abs(locall.roN);
       }
-      if (!localk.mTa.equals(localObject2))
+      if (!locall.rpU.equals(localObject2))
       {
-        localk.mTa = ((String)localObject2);
-        localLinkedList2.add(Long.valueOf(localk.mSX));
-        localLinkedList3.add(localk);
+        locall.rpU = ((String)localObject2);
+        localLinkedList2.add(Long.valueOf(locall.rpR));
+        localLinkedList3.add(locall);
       }
       else
       {
-        localLinkedList1.add(Long.valueOf(localk.mSX));
+        localLinkedList1.add(Long.valueOf(locall.rpR));
         continue;
-        label402:
-        if (!localk.mTa.equals(localObject1))
+        label403:
+        if (!locall.rpU.equals(localObject1))
         {
-          localk.mTa = ((String)localObject1);
-          localLinkedList2.add(Long.valueOf(localk.mSX));
-          localLinkedList3.add(localk);
+          locall.rpU = ((String)localObject1);
+          localLinkedList2.add(Long.valueOf(locall.rpR));
+          localLinkedList3.add(locall);
         }
         else
         {
-          localLinkedList1.add(Long.valueOf(localk.mSX));
+          localLinkedList1.add(Long.valueOf(locall.rpR));
           continue;
-          label464:
-          localLinkedList2.add(Long.valueOf(localk.mSX));
+          label465:
+          localLinkedList2.add(Long.valueOf(locall.rpR));
         }
       }
     }
-    ab.i("MicroMsg.FTS.FTS5TopHitsStorage", "updateTopHitsDirty deleteDocIdList=%d needToInsertTopHitListSize=%d normalDocIdList=%d", new Object[] { Integer.valueOf(localLinkedList2.size()), Integer.valueOf(localLinkedList3.size()), Integer.valueOf(localLinkedList1.size()) });
+    ad.i("MicroMsg.FTS.FTS5TopHitsStorage", "updateTopHitsDirty deleteDocIdList=%d needToInsertTopHitListSize=%d normalDocIdList=%d", new Object[] { Integer.valueOf(localLinkedList2.size()), Integer.valueOf(localLinkedList3.size()), Integer.valueOf(localLinkedList1.size()) });
     if (localLinkedList2.size() > 0) {
-      bS(localLinkedList2);
+      dD(localLinkedList2);
     }
     if (localLinkedList3.size() > 0)
     {
-      bool = this.mQr.inTransaction();
+      bool = this.rni.inTransaction();
       if (!bool) {
-        this.mQr.beginTransaction();
+        this.rni.beginTransaction();
       }
       localObject1 = localLinkedList3.iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (k)((Iterator)localObject1).next();
-        if (!bo.isNullOrNil(((k)localObject2).mTa))
+        localObject2 = (l)((Iterator)localObject1).next();
+        if (!bt.isNullOrNil(((l)localObject2).rpU))
         {
-          this.mVK.bindString(1, ((k)localObject2).mTa);
-          this.mVK.execute();
-          this.mVL.bindLong(1, ((k)localObject2).type);
-          this.mVL.bindLong(2, ((k)localObject2).mRU);
-          this.mVL.bindLong(3, ((k)localObject2).mSZ);
-          this.mVL.bindString(4, ((k)localObject2).mRV);
-          this.mVL.bindLong(5, ((k)localObject2).timestamp);
-          this.mVL.bindString(6, ((k)localObject2).query);
-          this.mVL.bindLong(7, ((k)localObject2).mSY);
-          this.mVL.bindLong(8, ((k)localObject2).foo);
-          this.mVL.bindString(9, ((k)localObject2).mTa);
-          this.mVL.execute();
+          this.rsA.bindString(1, ((l)localObject2).rpU);
+          this.rsA.execute();
+          this.rsB.bindLong(1, ((l)localObject2).type);
+          this.rsB.bindLong(2, ((l)localObject2).roM);
+          this.rsB.bindLong(3, ((l)localObject2).rpT);
+          this.rsB.bindString(4, ((l)localObject2).roN);
+          this.rsB.bindLong(5, ((l)localObject2).timestamp);
+          this.rsB.bindString(6, ((l)localObject2).query);
+          this.rsB.bindLong(7, ((l)localObject2).rpS);
+          this.rsB.bindLong(8, ((l)localObject2).gri);
+          this.rsB.bindString(9, ((l)localObject2).rpU);
+          this.rsB.execute();
         }
       }
       if (!bool) {
@@ -203,19 +211,11 @@ public final class e
       }
     }
     if (localLinkedList1.size() > 0) {
-      l(localLinkedList1, 0);
+      o(localLinkedList1, 0);
     }
     int i = localLinkedList2.size();
-    AppMethodBeat.o(136840);
+    AppMethodBeat.o(52813);
     return i;
-  }
-  
-  public final String bxi()
-  {
-    AppMethodBeat.i(136843);
-    String str = String.format("CREATE TABLE IF NOT EXISTS %s (docid INTEGER PRIMARY KEY, type INT, subtype INT DEFAULT 0, entity_id INTEGER, aux_index TEXT, timestamp INTEGER, status INT DEFAULT 0, query TEXT COLLATE NOCASE, score INT, scene INT, meta_content TEXT);", new Object[] { bBR() });
-    AppMethodBeat.o(136843);
-    return str;
   }
   
   public final String getName()
@@ -240,7 +240,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.c.e
  * JD-Core Version:    0.7.0.1
  */

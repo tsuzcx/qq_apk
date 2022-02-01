@@ -4,7 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
+import com.tencent.mm.bs.d;
 
 final class SnsUploadConfigView$4
   implements DialogInterface.OnClickListener
@@ -13,12 +13,12 @@ final class SnsUploadConfigView$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(39692);
+    AppMethodBeat.i(99522);
     paramDialogInterface = new Intent();
     paramDialogInterface.putExtra("is_force_unbind", true);
     paramDialogInterface.putExtra("shake_music", true);
-    d.b(this.sbB.getContext(), "account", ".ui.FacebookAuthUI", paramDialogInterface, 8);
-    AppMethodBeat.o(39692);
+    d.b(this.xKd.getContext(), "account", ".ui.FacebookAuthUI", paramDialogInterface, 8);
+    AppMethodBeat.o(99522);
   }
 }
 

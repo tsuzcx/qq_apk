@@ -9,14 +9,14 @@ final class a$3
 {
   a$3(a parama)
   {
-    AppMethodBeat.i(40908);
+    AppMethodBeat.i(160789);
     this.__eventId = k.class.getName().hashCode();
-    AppMethodBeat.o(40908);
+    AppMethodBeat.o(160789);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.a.a.3
  * JD-Core Version:    0.7.0.1
  */

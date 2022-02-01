@@ -1,37 +1,38 @@
 package com.tencent.mm.plugin.forcenotify.c;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.protocal.protobuf.bwk;
-import com.tencent.mm.protocal.protobuf.bwl;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.c;
+import com.tencent.mm.protocal.protobuf.cmn;
+import com.tencent.mm.protocal.protobuf.cmo;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/forcenotify/model/CgiAcceptForceNotify;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/ScanAppForcePushResponse;", "data", "", "(Ljava/lang/String;)V", "TAG", "getTAG", "()Ljava/lang/String;", "result", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "getResult", "()Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "setResult", "(Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;)V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-force-notify_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/forcenotify/model/CgiAcceptForceNotify;", "Lcom/tencent/mm/modelbase/DeprecatedCgi;", "Lcom/tencent/mm/protocal/protobuf/ScanAppForcePushResponse;", "data", "", "(Ljava/lang/String;)V", "TAG", "getTAG", "()Ljava/lang/String;", "result", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "getResult", "()Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "setResult", "(Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;)V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-force-notify_release"})
 public final class a
-  extends com.tencent.mm.ai.a<bwl>
+  extends c<cmo>
 {
   private final String TAG;
   
   public a(String paramString)
   {
-    AppMethodBeat.i(140596);
+    AppMethodBeat.i(149177);
     this.TAG = "MicroMsg.CgiAcceptForceNotify";
     b.a locala = new b.a();
-    bwk localbwk = new bwk();
-    localbwk.xJP = paramString;
-    locala.a((com.tencent.mm.bv.a)localbwk);
-    locala.b((com.tencent.mm.bv.a)new bwl());
-    locala.rl("/cgi-bin/micromsg-bin/subappforcepush");
-    locala.kT(3743);
-    locala.kU(0);
-    locala.kV(0);
-    a(locala.ado());
-    AppMethodBeat.o(140596);
+    cmn localcmn = new cmn();
+    localcmn.Ehy = paramString;
+    locala.c((com.tencent.mm.bx.a)localcmn);
+    locala.d((com.tencent.mm.bx.a)new cmo());
+    locala.wg("/cgi-bin/micromsg-bin/subappforcepush");
+    locala.nB(3743);
+    locala.nD(0);
+    locala.nE(0);
+    c(locala.atI());
+    AppMethodBeat.o(149177);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.c.a
  * JD-Core Version:    0.7.0.1
  */

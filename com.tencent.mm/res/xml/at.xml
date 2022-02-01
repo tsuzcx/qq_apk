@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.FriendSnsPreference android:title="@string/eoq" android:key="album_dyna_photo_ui_title" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference android:title="@string/bvr" android:icon="@raw/icons_outlined_scan" android:iconColor="@color/bd" android:key="find_friends_by_qrcode" />
-    <NormalIconPreference android:title="@string/ejx" android:icon="@raw/icons_outlined_shake" android:iconColor="@color/bd" android:key="find_friends_by_shake" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference android:title="@string/bvy" android:icon="@raw/icons_outlined_news" android:iconColor="@color/d8" android:key="find_friends_by_look" />
-    <NormalIconPreference android:title="@string/bw2" android:icon="@raw/icons_outlined_searchlogo" android:iconColor="@color/cv" android:key="find_friends_by_search" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference android:title="@string/d8c" android:icon="@raw/icons_outlined_nearby" android:iconColor="@color/bd" android:key="find_friends_by_near" />
-    <NormalIconPreference android:title="@string/FF_Entry_Nearby" android:icon="@raw/my_life_around_default_icon" android:key="my_life_around" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference android:icon="@raw/icons_outlined_shop" android:iconColor="@color/cv" android:key="jd_market_entrance" />
-    <NormalIconPreference android:title="@string/c_4" android:icon="@raw/icons_outlined_colorful_game" android:key="more_tab_game_recommend" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference android:title="@string/ip" android:icon="@raw/icons_outlined_miniprogram" android:iconColor="@color/cf" android:key="app_brand_entrance" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference android:title="@string/cjg" android:icon="@raw/icons_outlined_wechatout" android:iconColor="@color/ai" android:key="ip_call_entrance" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="face_debug_switch" android:title="@string/bx2" />
+    <PreferenceCategory />
+    <PreferenceCategory />
+    <PreferenceCategory />
+    <PreferenceCategory />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="face_debug_save_pic_switch" android:title="@string/bwu" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="face_debug_save_final_switch" android:title="@string/bww" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="face_debug_save_lipreading_switch" android:title="@string/bwx" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="face_debug_save_voice_switch" android:title="@string/bwy" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="face_debug_force_upload_video" android:title="@string/bwq" />
+    <Preference android:key="face_debug_check_resource" android:layout="@layout/aop" android:title="@string/bwo" />
+    <Preference android:key="face_debug_clear_resource" android:layout="@layout/aop" android:title="@string/bwp" />
+    <PreferenceCategory />
 </PreferenceScreen>

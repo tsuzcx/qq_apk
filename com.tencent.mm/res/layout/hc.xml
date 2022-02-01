@@ -1,22 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:background="#00000000" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" style="@style/q1"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/he" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/h7" />
-    <LinearLayout android:orientation="vertical" android:id="@id/a90" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ViewStub android:id="@id/a91" android:layout="@layout/hj" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ViewStub android:id="@id/a92" android:layout="@layout/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ViewStub android:id="@id/a93" android:layout="@layout/hl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ViewStub android:id="@id/a94" android:layout="@layout/hq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ViewStub android:id="@id/a95" android:layout="@layout/ht" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ViewStub android:id="@id/a96" android:layout="@layout/hk" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <ViewStub android:id="@id/a97" android:layout="@layout/hr" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/a98" android:background="@drawable/fa" android:paddingLeft="@dimen/uk" android:paddingRight="@dimen/uk" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:background="@color/k0" android:layout_width="fill_parent" android:layout_height="1.0px" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dv" android:layout_marginBottom="@dimen/dv">
-            <TextView android:textSize="@dimen/na" android:textColor="@color/tc" android:layout_gravity="center_vertical" android:id="@id/a99" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" style="@style/o2" />
-            <ImageView android:layout_gravity="center_vertical" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/biz_item_more_icon" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+<com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitSortView android:id="@id/a8k" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

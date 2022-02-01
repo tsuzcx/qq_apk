@@ -64,9 +64,9 @@ public final class PlatformVersion
   @Deprecated
   public static boolean isAtLeastKeyLimePie()
   {
-    AppMethodBeat.i(90253);
+    AppMethodBeat.i(5275);
     boolean bool = isAtLeastKitKat();
-    AppMethodBeat.o(90253);
+    AppMethodBeat.o(5275);
     return bool;
   }
   
@@ -83,9 +83,9 @@ public final class PlatformVersion
   @Deprecated
   public static boolean isAtLeastL()
   {
-    AppMethodBeat.i(90254);
+    AppMethodBeat.i(5276);
     boolean bool = isAtLeastLollipop();
-    AppMethodBeat.o(90254);
+    AppMethodBeat.o(5276);
     return bool;
   }
   
@@ -126,14 +126,7 @@ public final class PlatformVersion
   
   public static boolean isAtLeastP()
   {
-    AppMethodBeat.i(90255);
-    if (Build.VERSION.SDK_INT >= 28)
-    {
-      AppMethodBeat.o(90255);
-      return true;
-    }
-    AppMethodBeat.o(90255);
-    return false;
+    return Build.VERSION.SDK_INT >= 28;
   }
 }
 

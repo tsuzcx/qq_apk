@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class dh
   extends b
 {
-  public dh.a cqL;
-  public dh.b cqM;
+  public a dfs;
   
   public dh()
   {
@@ -16,12 +15,19 @@ public final class dh
   
   private dh(byte paramByte)
   {
-    AppMethodBeat.i(70143);
-    this.cqL = new dh.a();
-    this.cqM = new dh.b();
-    this.ymq = false;
+    AppMethodBeat.i(104416);
+    this.dfs = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70143);
+    AppMethodBeat.o(104416);
+  }
+  
+  public static final class a
+  {
+    public String dft;
+    public String dfu;
+    public int progress = 0;
+    public int status = 0;
   }
 }
 

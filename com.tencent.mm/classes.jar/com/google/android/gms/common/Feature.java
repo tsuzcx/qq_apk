@@ -27,9 +27,9 @@ public class Feature
   
   static
   {
-    AppMethodBeat.i(89356);
+    AppMethodBeat.i(4378);
     CREATOR = new FeatureCreator();
-    AppMethodBeat.o(89356);
+    AppMethodBeat.o(4378);
   }
   
   @SafeParcelable.Constructor
@@ -49,19 +49,19 @@ public class Feature
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(89353);
+    AppMethodBeat.i(4375);
     if ((paramObject instanceof Feature))
     {
       paramObject = (Feature)paramObject;
       if (((getName() != null) && (getName().equals(paramObject.getName()))) || ((getName() == null) && (paramObject.getName() == null) && (getVersion() == paramObject.getVersion())))
       {
-        AppMethodBeat.o(89353);
+        AppMethodBeat.o(4375);
         return true;
       }
-      AppMethodBeat.o(89353);
+      AppMethodBeat.o(4375);
       return false;
     }
-    AppMethodBeat.o(89353);
+    AppMethodBeat.o(4375);
     return false;
   }
   
@@ -80,29 +80,29 @@ public class Feature
   
   public int hashCode()
   {
-    AppMethodBeat.i(89354);
+    AppMethodBeat.i(4376);
     int i = Objects.hashCode(new Object[] { getName(), Long.valueOf(getVersion()) });
-    AppMethodBeat.o(89354);
+    AppMethodBeat.o(4376);
     return i;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(89355);
+    AppMethodBeat.i(4377);
     String str = Objects.toStringHelper(this).add("name", getName()).add("version", Long.valueOf(getVersion())).toString();
-    AppMethodBeat.o(89355);
+    AppMethodBeat.o(4377);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(89352);
+    AppMethodBeat.i(4374);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeString(paramParcel, 1, getName(), false);
     SafeParcelWriter.writeInt(paramParcel, 2, this.zzaq);
     SafeParcelWriter.writeLong(paramParcel, 3, getVersion());
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(89352);
+    AppMethodBeat.o(4374);
   }
 }
 

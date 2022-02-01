@@ -16,58 +16,88 @@ import java.util.Set;
 
 public final class f
 {
-  private final int hHX;
-  public final List<ParcelUuid> hHY;
-  public final SparseArray<byte[]> hHZ;
-  public final Map<ParcelUuid, byte[]> hIa;
-  private final int hIb;
-  final byte[] mBytes;
+  private final int jLk;
+  public final List<ParcelUuid> jLl;
+  public final SparseArray<byte[]> jLm;
+  public final Map<ParcelUuid, byte[]> jLn;
+  private final int jLo;
+  final byte[] jLp;
   public final String mDeviceName;
   
   @TargetApi(21)
   f(ScanRecord paramScanRecord)
   {
-    AppMethodBeat.i(94320);
-    this.hHY = paramScanRecord.getServiceUuids();
-    this.hHZ = paramScanRecord.getManufacturerSpecificData();
-    this.hIa = paramScanRecord.getServiceData();
+    AppMethodBeat.i(144632);
+    this.jLl = paramScanRecord.getServiceUuids();
+    this.jLm = paramScanRecord.getManufacturerSpecificData();
+    this.jLn = paramScanRecord.getServiceData();
     this.mDeviceName = paramScanRecord.getDeviceName();
-    this.hHX = paramScanRecord.getAdvertiseFlags();
-    this.hIb = paramScanRecord.getTxPowerLevel();
-    this.mBytes = paramScanRecord.getBytes();
-    AppMethodBeat.o(94320);
+    this.jLk = paramScanRecord.getAdvertiseFlags();
+    this.jLo = paramScanRecord.getTxPowerLevel();
+    this.jLp = paramScanRecord.getBytes();
+    AppMethodBeat.o(144632);
   }
   
   private f(List<ParcelUuid> paramList, SparseArray<byte[]> paramSparseArray, Map<ParcelUuid, byte[]> paramMap, int paramInt1, int paramInt2, String paramString, byte[] paramArrayOfByte)
   {
-    this.hHY = paramList;
-    this.hHZ = paramSparseArray;
-    this.hIa = paramMap;
+    this.jLl = paramList;
+    this.jLm = paramSparseArray;
+    this.jLn = paramMap;
     this.mDeviceName = paramString;
-    this.hHX = paramInt1;
-    this.hIb = paramInt2;
-    this.mBytes = paramArrayOfByte;
+    this.jLk = paramInt1;
+    this.jLo = paramInt2;
+    this.jLp = paramArrayOfByte;
+  }
+  
+  private static <T> String D(Map<T, byte[]> paramMap)
+  {
+    AppMethodBeat.i(144638);
+    if (paramMap == null)
+    {
+      AppMethodBeat.o(144638);
+      return "null";
+    }
+    if (paramMap.isEmpty())
+    {
+      AppMethodBeat.o(144638);
+      return "{}";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append('{');
+    Iterator localIterator = paramMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = ((Map.Entry)localIterator.next()).getKey();
+      localStringBuilder.append(localObject).append("=").append(Arrays.toString((byte[])paramMap.get(localObject)));
+      if (localIterator.hasNext()) {
+        localStringBuilder.append(", ");
+      }
+    }
+    localStringBuilder.append('}');
+    paramMap = localStringBuilder.toString();
+    AppMethodBeat.o(144638);
+    return paramMap;
   }
   
   private static int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, List<ParcelUuid> paramList)
   {
-    AppMethodBeat.i(94323);
+    AppMethodBeat.i(144635);
     while (paramInt2 > 0)
     {
-      paramList.add(c.ah(p(paramArrayOfByte, paramInt1, paramInt3)));
+      paramList.add(c.as(s(paramArrayOfByte, paramInt1, paramInt3)));
       paramInt2 -= paramInt3;
       paramInt1 += paramInt3;
     }
-    AppMethodBeat.o(94323);
+    AppMethodBeat.o(144635);
     return paramInt1;
   }
   
-  public static f ai(byte[] paramArrayOfByte)
+  public static f at(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(94321);
+    AppMethodBeat.i(144633);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(94321);
+      AppMethodBeat.o(144633);
       return null;
     }
     int k = 0;
@@ -101,18 +131,18 @@ public final class f
     {
       new StringBuilder("unable to parse scan record: ").append(Arrays.toString(paramArrayOfByte));
       paramArrayOfByte = new f(null, null, null, -1, -2147483648, null, paramArrayOfByte);
-      AppMethodBeat.o(94321);
+      AppMethodBeat.o(144633);
       return paramArrayOfByte;
     }
     a(paramArrayOfByte, m, k, 4, localArrayList2);
     break label422;
     a(paramArrayOfByte, m, k, 16, localArrayList2);
     break label422;
-    Object localObject2 = new String(p(paramArrayOfByte, m, k));
+    Object localObject2 = new String(s(paramArrayOfByte, m, k));
     break label422;
-    locala.put(c.ah(p(paramArrayOfByte, m, 2)), p(paramArrayOfByte, m + 2, k - 2));
+    locala.put(c.as(s(paramArrayOfByte, m, 2)), s(paramArrayOfByte, m + 2, k - 2));
     break label422;
-    localSparseArray.put(((paramArrayOfByte[(m + 1)] & 0xFF) << 8) + (paramArrayOfByte[m] & 0xFF), p(paramArrayOfByte, m + 2, k - 2));
+    localSparseArray.put(((paramArrayOfByte[(m + 1)] & 0xFF) << 8) + (paramArrayOfByte[m] & 0xFF), s(paramArrayOfByte, m + 2, k - 2));
     break label422;
     label377:
     ArrayList localArrayList1 = localArrayList2;
@@ -120,7 +150,7 @@ public final class f
       localArrayList1 = null;
     }
     localObject2 = new f(localArrayList1, localSparseArray, locala, j, i, (String)localObject2, paramArrayOfByte);
-    AppMethodBeat.o(94321);
+    AppMethodBeat.o(144633);
     return localObject2;
     for (;;)
     {
@@ -135,15 +165,15 @@ public final class f
   
   private static String c(SparseArray<byte[]> paramSparseArray)
   {
-    AppMethodBeat.i(94325);
+    AppMethodBeat.i(144637);
     if (paramSparseArray == null)
     {
-      AppMethodBeat.o(94325);
+      AppMethodBeat.o(144637);
       return "null";
     }
     if (paramSparseArray.size() == 0)
     {
-      AppMethodBeat.o(94325);
+      AppMethodBeat.o(144637);
       return "{}";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -156,60 +186,30 @@ public final class f
     }
     localStringBuilder.append('}');
     paramSparseArray = localStringBuilder.toString();
-    AppMethodBeat.o(94325);
+    AppMethodBeat.o(144637);
     return paramSparseArray;
   }
   
-  private static byte[] p(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private static byte[] s(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(94324);
+    AppMethodBeat.i(144636);
     byte[] arrayOfByte = new byte[paramInt2];
     System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, paramInt2);
-    AppMethodBeat.o(94324);
+    AppMethodBeat.o(144636);
     return arrayOfByte;
-  }
-  
-  private static <T> String y(Map<T, byte[]> paramMap)
-  {
-    AppMethodBeat.i(94326);
-    if (paramMap == null)
-    {
-      AppMethodBeat.o(94326);
-      return "null";
-    }
-    if (paramMap.isEmpty())
-    {
-      AppMethodBeat.o(94326);
-      return "{}";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append('{');
-    Iterator localIterator = paramMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = ((Map.Entry)localIterator.next()).getKey();
-      localStringBuilder.append(localObject).append("=").append(Arrays.toString((byte[])paramMap.get(localObject)));
-      if (localIterator.hasNext()) {
-        localStringBuilder.append(", ");
-      }
-    }
-    localStringBuilder.append('}');
-    paramMap = localStringBuilder.toString();
-    AppMethodBeat.o(94326);
-    return paramMap;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(94322);
-    String str = "ScanRecord [mAdvertiseFlags=" + this.hHX + ", mServiceUuids=" + this.hHY + ", mManufacturerSpecificData=" + c(this.hHZ) + ", mServiceData=" + y(this.hIa) + ", mTxPowerLevel=" + this.hIb + ", mDeviceName=" + this.mDeviceName + "]";
-    AppMethodBeat.o(94322);
+    AppMethodBeat.i(144634);
+    String str = "ScanRecord [mAdvertiseFlags=" + this.jLk + ", mServiceUuids=" + this.jLl + ", mManufacturerSpecificData=" + c(this.jLm) + ", mServiceData=" + D(this.jLn) + ", mTxPowerLevel=" + this.jLo + ", mDeviceName=" + this.mDeviceName + "]";
+    AppMethodBeat.o(144634);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.f
  * JD-Core Version:    0.7.0.1
  */

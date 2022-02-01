@@ -7,19 +7,19 @@ public final class a
 {
   public final void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(18521);
-    if (!com.tencent.mm.kernel.a.QP())
+    AppMethodBeat.i(22632);
+    if (!com.tencent.mm.kernel.a.aeC())
     {
-      com.tencent.mm.kernel.g.RJ().eGY = true;
-      com.tencent.mm.kernel.g.RJ().initialize();
-      com.tencent.mm.kernel.g.RJ().eGY = false;
+      com.tencent.mm.kernel.g.afz().gcf = true;
+      com.tencent.mm.kernel.g.afz().initialize();
+      com.tencent.mm.kernel.g.afz().gcf = false;
     }
-    AppMethodBeat.o(18521);
+    AppMethodBeat.o(22632);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.e.a
  * JD-Core Version:    0.7.0.1
  */

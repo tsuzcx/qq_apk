@@ -6,14 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.SummaryBelowPreference;
 
 public class RightBelowPreference
   extends SummaryBelowPreference
 {
-  private CharSequence tYm;
+  private CharSequence zSG;
   
   public RightBelowPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,37 +25,37 @@ public class RightBelowPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void J(CharSequence paramCharSequence)
+  public final void P(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(46206);
-    this.tYm = paramCharSequence;
+    AppMethodBeat.i(69585);
+    this.zSG = paramCharSequence;
     notifyChanged();
-    AppMethodBeat.o(46206);
+    AppMethodBeat.o(69585);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(46205);
+    AppMethodBeat.i(69584);
     super.onBindView(paramView);
-    if (!bo.aa(this.tYm)) {
-      ((TextView)paramView.findViewById(2131829355)).setText(this.tYm);
+    if (!bt.ai(this.zSG)) {
+      ((TextView)paramView.findViewById(2131304183)).setText(this.zSG);
     }
-    paramView.findViewById(2131821555).setVisibility(8);
-    AppMethodBeat.o(46205);
+    paramView.findViewById(2131304172).setVisibility(8);
+    AppMethodBeat.o(69584);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(46204);
+    AppMethodBeat.i(69583);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ((ViewGroup)((ViewGroup)paramViewGroup.findViewById(2131820946)).findViewById(16908312)).addView((ViewGroup)View.inflate(this.mContext, 2130971236, null));
-    AppMethodBeat.o(46204);
+    ((ViewGroup)((ViewGroup)paramViewGroup.findViewById(2131298739)).findViewById(16908312)).addView((ViewGroup)View.inflate(this.mContext, 2131496013, null));
+    AppMethodBeat.o(69583);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.RightBelowPreference
  * JD-Core Version:    0.7.0.1
  */

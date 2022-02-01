@@ -13,61 +13,61 @@ final class zzas
   
   public final void onConnected(Bundle paramBundle)
   {
-    AppMethodBeat.i(60759);
+    AppMethodBeat.i(11251);
     zzaj.zzf(this.zzhv).signIn(new zzaq(this.zzhv));
-    AppMethodBeat.o(60759);
+    AppMethodBeat.o(11251);
   }
   
   /* Error */
   public final void onConnectionFailed(com.google.android.gms.common.ConnectionResult paramConnectionResult)
   {
     // Byte code:
-    //   0: ldc 51
-    //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: getfield 14	com/google/android/gms/common/api/internal/zzas:zzhv	Lcom/google/android/gms/common/api/internal/zzaj;
-    //   9: invokestatic 55	com/google/android/gms/common/api/internal/zzaj:zzc	(Lcom/google/android/gms/common/api/internal/zzaj;)Ljava/util/concurrent/locks/Lock;
-    //   12: invokeinterface 60 1 0
-    //   17: aload_0
-    //   18: getfield 14	com/google/android/gms/common/api/internal/zzas:zzhv	Lcom/google/android/gms/common/api/internal/zzaj;
-    //   21: aload_1
-    //   22: invokestatic 64	com/google/android/gms/common/api/internal/zzaj:zzb	(Lcom/google/android/gms/common/api/internal/zzaj;Lcom/google/android/gms/common/ConnectionResult;)Z
-    //   25: ifeq +35 -> 60
-    //   28: aload_0
-    //   29: getfield 14	com/google/android/gms/common/api/internal/zzas:zzhv	Lcom/google/android/gms/common/api/internal/zzaj;
-    //   32: invokestatic 67	com/google/android/gms/common/api/internal/zzaj:zzi	(Lcom/google/android/gms/common/api/internal/zzaj;)V
-    //   35: aload_0
-    //   36: getfield 14	com/google/android/gms/common/api/internal/zzas:zzhv	Lcom/google/android/gms/common/api/internal/zzaj;
-    //   39: invokestatic 70	com/google/android/gms/common/api/internal/zzaj:zzj	(Lcom/google/android/gms/common/api/internal/zzaj;)V
-    //   42: aload_0
-    //   43: getfield 14	com/google/android/gms/common/api/internal/zzas:zzhv	Lcom/google/android/gms/common/api/internal/zzaj;
-    //   46: invokestatic 55	com/google/android/gms/common/api/internal/zzaj:zzc	(Lcom/google/android/gms/common/api/internal/zzaj;)Ljava/util/concurrent/locks/Lock;
-    //   49: invokeinterface 73 1 0
-    //   54: ldc 51
-    //   56: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   59: return
-    //   60: aload_0
-    //   61: getfield 14	com/google/android/gms/common/api/internal/zzas:zzhv	Lcom/google/android/gms/common/api/internal/zzaj;
-    //   64: aload_1
-    //   65: invokestatic 77	com/google/android/gms/common/api/internal/zzaj:zza	(Lcom/google/android/gms/common/api/internal/zzaj;Lcom/google/android/gms/common/ConnectionResult;)V
-    //   68: goto -26 -> 42
-    //   71: astore_1
-    //   72: aload_0
-    //   73: getfield 14	com/google/android/gms/common/api/internal/zzas:zzhv	Lcom/google/android/gms/common/api/internal/zzaj;
-    //   76: invokestatic 55	com/google/android/gms/common/api/internal/zzaj:zzc	(Lcom/google/android/gms/common/api/internal/zzaj;)Ljava/util/concurrent/locks/Lock;
-    //   79: invokeinterface 73 1 0
-    //   84: ldc 51
-    //   86: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   89: aload_1
-    //   90: athrow
+    //   0: sipush 11252
+    //   3: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 14	com/google/android/gms/common/api/internal/zzas:zzhv	Lcom/google/android/gms/common/api/internal/zzaj;
+    //   10: invokestatic 53	com/google/android/gms/common/api/internal/zzaj:zzc	(Lcom/google/android/gms/common/api/internal/zzaj;)Ljava/util/concurrent/locks/Lock;
+    //   13: invokeinterface 58 1 0
+    //   18: aload_0
+    //   19: getfield 14	com/google/android/gms/common/api/internal/zzas:zzhv	Lcom/google/android/gms/common/api/internal/zzaj;
+    //   22: aload_1
+    //   23: invokestatic 62	com/google/android/gms/common/api/internal/zzaj:zzb	(Lcom/google/android/gms/common/api/internal/zzaj;Lcom/google/android/gms/common/ConnectionResult;)Z
+    //   26: ifeq +36 -> 62
+    //   29: aload_0
+    //   30: getfield 14	com/google/android/gms/common/api/internal/zzas:zzhv	Lcom/google/android/gms/common/api/internal/zzaj;
+    //   33: invokestatic 65	com/google/android/gms/common/api/internal/zzaj:zzi	(Lcom/google/android/gms/common/api/internal/zzaj;)V
+    //   36: aload_0
+    //   37: getfield 14	com/google/android/gms/common/api/internal/zzas:zzhv	Lcom/google/android/gms/common/api/internal/zzaj;
+    //   40: invokestatic 68	com/google/android/gms/common/api/internal/zzaj:zzj	(Lcom/google/android/gms/common/api/internal/zzaj;)V
+    //   43: aload_0
+    //   44: getfield 14	com/google/android/gms/common/api/internal/zzas:zzhv	Lcom/google/android/gms/common/api/internal/zzaj;
+    //   47: invokestatic 53	com/google/android/gms/common/api/internal/zzaj:zzc	(Lcom/google/android/gms/common/api/internal/zzaj;)Ljava/util/concurrent/locks/Lock;
+    //   50: invokeinterface 71 1 0
+    //   55: sipush 11252
+    //   58: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   61: return
+    //   62: aload_0
+    //   63: getfield 14	com/google/android/gms/common/api/internal/zzas:zzhv	Lcom/google/android/gms/common/api/internal/zzaj;
+    //   66: aload_1
+    //   67: invokestatic 75	com/google/android/gms/common/api/internal/zzaj:zza	(Lcom/google/android/gms/common/api/internal/zzaj;Lcom/google/android/gms/common/ConnectionResult;)V
+    //   70: goto -27 -> 43
+    //   73: astore_1
+    //   74: aload_0
+    //   75: getfield 14	com/google/android/gms/common/api/internal/zzas:zzhv	Lcom/google/android/gms/common/api/internal/zzaj;
+    //   78: invokestatic 53	com/google/android/gms/common/api/internal/zzaj:zzc	(Lcom/google/android/gms/common/api/internal/zzaj;)Ljava/util/concurrent/locks/Lock;
+    //   81: invokeinterface 71 1 0
+    //   86: sipush 11252
+    //   89: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   92: aload_1
+    //   93: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	91	0	this	zzas
-    //   0	91	1	paramConnectionResult	com.google.android.gms.common.ConnectionResult
+    //   0	94	0	this	zzas
+    //   0	94	1	paramConnectionResult	com.google.android.gms.common.ConnectionResult
     // Exception table:
     //   from	to	target	type
-    //   17	42	71	finally
-    //   60	68	71	finally
+    //   18	43	73	finally
+    //   62	70	73	finally
   }
   
   public final void onConnectionSuspended(int paramInt) {}

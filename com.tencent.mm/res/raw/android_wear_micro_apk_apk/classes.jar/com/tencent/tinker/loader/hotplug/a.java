@@ -5,19 +5,19 @@ import java.util.Map;
 
 public final class a
 {
-  private static Map<String, String> akY = new HashMap();
-  private static final int[] akZ = { 10, 3 };
-  private static final int[] ala = { 10, 3 };
-  private static final int[] alb = { 10, 3 };
-  private static final int[] alc = { 10, 3 };
-  private static final int[] ald = { 0, 0 };
-  private static final int[] ale = { 0, 0 };
-  private static final int[] alf = { 0, 0 };
-  private static final int[] alg = { 0, 0 };
+  private static final int[] aoA = { 10, 3 };
+  private static final int[] aoB = { 10, 3 };
+  private static final int[] aoC = { 10, 3 };
+  private static final int[] aoD = { 0, 0 };
+  private static final int[] aoE = { 0, 0 };
+  private static final int[] aoF = { 0, 0 };
+  private static final int[] aoG = { 0, 0 };
+  private static Map<String, String> aoy = new HashMap();
+  private static final int[] aoz = { 10, 3 };
   
   public static String a(String paramString, int paramInt, boolean paramBoolean)
   {
-    String str = (String)akY.get(paramString);
+    String str = (String)aoy.get(paramString);
     if (str != null) {
       return str;
     }
@@ -28,9 +28,9 @@ public final class a
     switch (paramInt)
     {
     default: 
-      str = ActivityStubs.ali;
-      arrayOfInt2 = ald;
-      arrayOfInt1 = akZ;
+      str = ActivityStubs.aoI;
+      arrayOfInt2 = aoD;
+      arrayOfInt1 = aoz;
       if (paramBoolean)
       {
         str = str + "_T";
@@ -48,19 +48,19 @@ public final class a
     for (paramInt = 0;; paramInt = i)
     {
       str = String.format(str, new Object[] { Integer.valueOf(paramInt) });
-      akY.put(paramString, str);
+      aoy.put(paramString, str);
       return str;
-      str = ActivityStubs.alj;
-      arrayOfInt2 = ale;
-      arrayOfInt1 = ala;
+      str = ActivityStubs.aoJ;
+      arrayOfInt2 = aoE;
+      arrayOfInt1 = aoA;
       break;
-      str = ActivityStubs.alk;
-      arrayOfInt2 = alf;
-      arrayOfInt1 = alb;
+      str = ActivityStubs.aoK;
+      arrayOfInt2 = aoF;
+      arrayOfInt1 = aoB;
       break;
-      str = ActivityStubs.all;
-      arrayOfInt2 = alg;
-      arrayOfInt1 = alc;
+      str = ActivityStubs.aoL;
+      arrayOfInt2 = aoG;
+      arrayOfInt1 = aoC;
       break;
       paramInt = 0;
       break label91;

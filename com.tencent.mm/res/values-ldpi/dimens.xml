@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="a7w">180.0dip</dimen>
+    <dimen name="alp">36.0dip</dimen>
+    <dimen name="alq">6.0dip</dimen>
+    <dimen name="alr">40.0dip</dimen>
+    <dimen name="als">32.0dip</dimen>
+    <dimen name="alt">30.0dip</dimen>
+</resources>

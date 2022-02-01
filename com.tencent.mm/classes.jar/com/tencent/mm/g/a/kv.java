@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class kv
   extends b
 {
-  public a cAW;
+  public a dpp;
   
   public kv()
   {
@@ -15,24 +15,21 @@ public final class kv
   
   private kv(byte paramByte)
   {
-    AppMethodBeat.i(57680);
-    this.cAW = new a();
-    this.ymq = false;
+    AppMethodBeat.i(149870);
+    this.dpp = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(57680);
+    AppMethodBeat.o(149870);
   }
   
   public static final class a
   {
-    public int cAX = 0;
-    public boolean cAY = false;
-    public String cAZ;
-    public int status = 0;
+    public b dpq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.kv
  * JD-Core Version:    0.7.0.1
  */

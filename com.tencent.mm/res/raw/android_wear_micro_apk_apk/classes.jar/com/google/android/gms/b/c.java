@@ -2,26 +2,26 @@ package com.google.android.gms.b;
 
 public final class c<TResult>
 {
-  private final g<TResult> RW = new g();
+  private final g<TResult> TL = new g();
   
   public final void a(Exception paramException)
   {
-    this.RW.a(paramException);
+    this.TL.a(paramException);
   }
   
   public final boolean b(Exception paramException)
   {
-    return this.RW.b(paramException);
+    return this.TL.b(paramException);
   }
   
-  public final b<TResult> ia()
+  public final b<TResult> ii()
   {
-    return this.RW;
+    return this.TL;
   }
   
-  public final void kn()
+  public final void kw()
   {
-    this.RW.x(null);
+    this.TL.G(null);
   }
 }
 

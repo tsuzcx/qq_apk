@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vn
   extends b
 {
-  public vn.a cMH;
-  public vn.b cMI;
+  public a dBa;
   
   public vn()
   {
@@ -16,17 +15,21 @@ public final class vn
   
   private vn(byte paramByte)
   {
-    AppMethodBeat.i(56584);
-    this.cMH = new vn.a();
-    this.cMI = new vn.b();
-    this.ymq = false;
+    AppMethodBeat.i(94819);
+    this.dBa = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(56584);
+    AppMethodBeat.o(94819);
+  }
+  
+  public static final class a
+  {
+    public long ed = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.vn
  * JD-Core Version:    0.7.0.1
  */

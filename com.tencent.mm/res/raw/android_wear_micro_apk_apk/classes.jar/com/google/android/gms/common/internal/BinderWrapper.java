@@ -11,13 +11,13 @@ public final class BinderWrapper
   implements Parcelable
 {
   public static final Parcelable.Creator<BinderWrapper> CREATOR = new Parcelable.Creator() {};
-  private IBinder IT = null;
+  private IBinder KI = null;
   
   public BinderWrapper() {}
   
   private BinderWrapper(Parcel paramParcel)
   {
-    this.IT = paramParcel.readStrongBinder();
+    this.KI = paramParcel.readStrongBinder();
   }
   
   public final int describeContents()
@@ -27,7 +27,7 @@ public final class BinderWrapper
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeStrongBinder(this.IT);
+    paramParcel.writeStrongBinder(this.KI);
   }
 }
 

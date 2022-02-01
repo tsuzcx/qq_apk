@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.offline.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.q;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.offline.c.a;
 import com.tencent.mm.plugin.offline.k;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,43 +17,43 @@ import org.json.JSONObject;
 public final class n
   extends m
 {
-  public static String plG = "";
-  public static String pln = "";
-  private int cnK;
-  private String kNv;
-  public String plH;
-  public String plI;
-  public String plJ;
-  final Map<String, String> plK;
-  public int pld;
-  public String ple;
+  public static String ujT = "";
+  public static String ukm = "";
+  private int dcG;
+  private String nTK;
+  public int ujJ;
+  public String ujK;
+  public String ukn;
+  public String uko;
+  public String ukp;
+  final Map<String, String> ukq;
   
   public n(String paramString, int paramInt)
   {
-    AppMethodBeat.i(43411);
-    this.cnK = -1;
-    this.kNv = "";
-    this.pld = -1;
-    this.ple = "";
-    this.plH = "";
-    this.plI = "";
-    this.plJ = "";
-    this.plK = new HashMap();
-    this.plK.put("device_id", q.LK());
-    this.plK.put("timestamp", paramString);
-    this.plK.put("scene", String.valueOf(paramInt));
+    AppMethodBeat.i(66310);
+    this.dcG = -1;
+    this.nTK = "";
+    this.ujJ = -1;
+    this.ujK = "";
+    this.ukn = "";
+    this.uko = "";
+    this.ukp = "";
+    this.ukq = new HashMap();
+    this.ukq.put("device_id", q.Xa());
+    this.ukq.put("timestamp", paramString);
+    this.ukq.put("scene", String.valueOf(paramInt));
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(q.LK());
+    localStringBuilder.append(q.Xa());
     localStringBuilder.append("&");
     localStringBuilder.append(paramString);
     paramString = localStringBuilder.toString();
-    this.plK.put("sign", ag.cE(paramString));
-    paramString = this.plK;
+    this.ukq.put("sign", ai.du(paramString));
+    paramString = this.ukq;
     localStringBuilder = new StringBuilder();
-    g.RM();
-    paramString.put("code_ver", g.RL().Ru().get(ac.a.yxv, ""));
-    setRequestData(this.plK);
-    AppMethodBeat.o(43411);
+    g.afC();
+    paramString.put("code_ver", g.afB().afk().get(ae.a.FfP, ""));
+    setRequestData(this.ukq);
+    AppMethodBeat.o(66310);
   }
   
   public final int getFuncId()
@@ -73,37 +73,37 @@ public final class n
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(43412);
+    AppMethodBeat.i(66311);
     if (paramJSONObject != null)
     {
-      pln = paramJSONObject.optString("limit_fee");
-      plG = paramJSONObject.optString("is_show_order_detail");
+      ujT = paramJSONObject.optString("limit_fee");
+      ukm = paramJSONObject.optString("is_show_order_detail");
       paramString = paramJSONObject.optString("pay_amount");
       String str1 = paramJSONObject.optString("pay_number");
       String str2 = paramJSONObject.optString("card_logos");
-      k.bYF();
-      k.aT(196629, pln);
-      k.bYF();
-      k.aT(196641, plG);
-      k.bYF();
-      k.aT(196645, paramString);
-      k.bYF();
-      k.aT(196646, str1);
-      a.Wv(str2);
-      this.cnK = paramJSONObject.optInt("retcode");
-      this.kNv = paramJSONObject.optString("retmsg");
-      this.pld = paramJSONObject.optInt("wx_error_type");
-      this.ple = paramJSONObject.optString("wx_error_msg");
-      this.plH = paramJSONObject.optString("get_code_flag");
-      this.plI = paramJSONObject.optString("micropay_pause_flag");
-      this.plJ = paramJSONObject.optString("micropay_pause_word");
+      k.cYr();
+      k.bp(196629, ujT);
+      k.cYr();
+      k.bp(196641, ukm);
+      k.cYr();
+      k.bp(196645, paramString);
+      k.cYr();
+      k.bp(196646, str1);
+      a.ajP(str2);
+      this.dcG = paramJSONObject.optInt("retcode");
+      this.nTK = paramJSONObject.optString("retmsg");
+      this.ujJ = paramJSONObject.optInt("wx_error_type");
+      this.ujK = paramJSONObject.optString("wx_error_msg");
+      this.ukn = paramJSONObject.optString("get_code_flag");
+      this.uko = paramJSONObject.optString("micropay_pause_flag");
+      this.ukp = paramJSONObject.optString("micropay_pause_word");
     }
-    AppMethodBeat.o(43412);
+    AppMethodBeat.o(66311);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.n
  * JD-Core Version:    0.7.0.1
  */

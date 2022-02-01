@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/l1" android:layout_width="wrap_content" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="horizontal" android:id="@id/l2" android:background="@drawable/am" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:id="@id/l3" android:background="@null" android:paddingLeft="@dimen/gc" android:paddingRight="@dimen/gc" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/gg" />
+<LinearLayout android:orientation="vertical" android:id="@id/gd0" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="start|center" android:orientation="horizontal" android:id="@id/gbr" android:paddingLeft="?id" android:paddingTop="@dimen/md" android:paddingRight="?id" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@android:id/icon" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="8.0dip" android:src="@null" android:scaleType="fitCenter" android:layout_marginEnd="8.0dip" />
+        <android.support.v7.widget.DialogTitle android:ellipsize="end" android:id="@id/jf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:textAlignment="viewStart" style="?android:windowTitleStyle" />
     </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <TextView android:textSize="@dimen/dw" android:textColor="@color/e6" android:ellipsize="middle" android:gravity="center_vertical" android:id="@id/l4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sg" android:singleLine="true" android:includeFontPadding="false" />
-        <TextView android:textSize="@dimen/ko" android:textColor="#ff999999" android:ellipsize="end" android:id="@id/l5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sg" android:singleLine="true" />
-    </LinearLayout>
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/l6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:src="@raw/chat_force_notify_icon" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/l7" android:visibility="gone" android:layout_width="@dimen/g2" android:layout_height="@dimen/g2" android:layout_marginLeft="@dimen/dl" android:src="@raw/icons_outlined_bellring_off" app:iconColor="@color/w" />
-    <ImageView android:id="@id/l8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:src="@raw/chat_phone_notify_title_icon" />
-    <ImageView android:id="@id/l9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:src="@raw/qq" />
-    <ImageView android:id="@id/l_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dl" android:src="@raw/chat_reject_title_icon" />
+    <android.widget.Space android:id="@id/gan" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/me" />
 </LinearLayout>

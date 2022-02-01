@@ -1,111 +1,116 @@
 package com.tencent.mm.vfs;
 
 import android.os.CancellationSignal;
+import android.os.ParcelFileDescriptor;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.List;
+import java.nio.channels.ByteChannel;
+import java.nio.channels.ReadableByteChannel;
+import java.nio.channels.WritableByteChannel;
 import java.util.Map;
 
 public abstract interface FileSystem
   extends Parcelable
 {
-  public abstract boolean A(String paramString, long paramLong);
-  
-  public abstract OutputStream M(String paramString, boolean paramBoolean);
-  
-  public abstract List<a> N(String paramString, boolean paramBoolean);
-  
-  public abstract boolean O(String paramString, boolean paramBoolean);
-  
-  public abstract String P(String paramString, boolean paramBoolean);
-  
   public abstract void a(CancellationSignal paramCancellationSignal);
   
-  public abstract boolean aV(String paramString1, String paramString2);
+  public abstract boolean a(String paramString1, FileSystem paramFileSystem, String paramString2);
   
-  public abstract int ajj();
+  public abstract ReadableByteChannel aMA(String paramString);
   
-  public abstract boolean exists(String paramString);
+  public abstract ByteChannel aMB(String paramString);
+  
+  public abstract b aMC(String paramString);
+  
+  public abstract boolean aMD(String paramString);
+  
+  public abstract a aME(String paramString);
+  
+  public abstract boolean aMF(String paramString);
+  
+  public abstract void bN(Map<String, String> paramMap);
+  
+  public abstract long c(String paramString1, FileSystem paramFileSystem, String paramString2);
+  
+  public abstract WritableByteChannel cL(String paramString, boolean paramBoolean);
+  
+  public abstract OutputStream cM(String paramString, boolean paramBoolean);
+  
+  public abstract Iterable<a> cN(String paramString, boolean paramBoolean);
+  
+  public abstract boolean cO(String paramString, boolean paramBoolean);
+  
+  public abstract String cP(String paramString, boolean paramBoolean);
+  
+  public abstract boolean cf(String paramString, long paramLong);
+  
+  public abstract int fhA();
+  
+  public abstract ParcelFileDescriptor lw(String paramString1, String paramString2);
   
   public abstract InputStream openRead(String paramString);
   
-  public abstract void q(Map<String, String> paramMap);
-  
-  public abstract boolean qD(String paramString);
-  
-  public abstract b uk(String paramString);
-  
-  public abstract a ul(String paramString);
-  
-  public abstract boolean um(String paramString);
+  public abstract boolean vv(String paramString);
   
   public static final class a
   {
-    public final String APr;
-    public final long APs;
-    public final long APt;
-    public final boolean APu;
-    private final FileSystem APv;
+    public final String EQk;
+    public final long HRA;
+    public final boolean HRB;
+    final FileSystem HRC;
+    public final long HRz;
     public final String name;
     public final long size;
     
     public a(FileSystem paramFileSystem, String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
     {
-      this.APv = paramFileSystem;
-      this.APr = paramString1;
+      this.HRC = paramFileSystem;
+      this.EQk = paramString1;
       this.name = paramString2;
       this.size = paramLong1;
-      this.APs = paramLong2;
-      this.APt = paramLong3;
-      this.APu = paramBoolean;
-    }
-    
-    public final InputStream dQA()
-    {
-      AppMethodBeat.i(54504);
-      InputStream localInputStream = this.APv.openRead(this.APr);
-      AppMethodBeat.o(54504);
-      return localInputStream;
+      this.HRz = paramLong2;
+      this.HRA = paramLong3;
+      this.HRB = paramBoolean;
     }
     
     public final boolean delete()
     {
-      AppMethodBeat.i(54505);
-      if (this.APu)
+      AppMethodBeat.i(13102);
+      if (this.HRB)
       {
-        bool = this.APv.O(this.APr, false);
-        AppMethodBeat.o(54505);
+        bool = this.HRC.cO(this.EQk, false);
+        AppMethodBeat.o(13102);
         return bool;
       }
-      boolean bool = this.APv.qD(this.APr);
-      AppMethodBeat.o(54505);
+      boolean bool = this.HRC.vv(this.EQk);
+      AppMethodBeat.o(13102);
       return bool;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(54506);
-      String str = this.APr + " -> " + this.APv.toString();
-      if (this.APu)
+      AppMethodBeat.i(13103);
+      String str = this.EQk + " -> " + this.HRC.toString();
+      if (this.HRB)
       {
         str = "[DIR] ".concat(String.valueOf(str));
-        AppMethodBeat.o(54506);
+        AppMethodBeat.o(13103);
         return str;
       }
-      AppMethodBeat.o(54506);
+      AppMethodBeat.o(13103);
       return str;
     }
   }
   
   public static final class b
   {
-    public long APw;
-    public long bau;
-    public long yqe;
-    public long yqg;
-    public long yqh;
+    public long EWO;
+    public long EWQ;
+    public long EWR;
+    public long HRD;
+    public long byv;
   }
 }
 

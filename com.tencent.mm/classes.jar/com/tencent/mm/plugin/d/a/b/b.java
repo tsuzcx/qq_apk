@@ -9,12 +9,10 @@ import android.content.pm.PackageManager;
 import android.hardware.input.InputManager;
 import android.location.LocationManager;
 import android.os.Build.VERSION;
-import android.os.HandlerThread;
 import android.view.InputDevice;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -25,97 +23,177 @@ import junit.framework.Assert;
 @TargetApi(18)
 public final class b
 {
-  public b.a jNN;
-  public final HashMap<String, d> jNO;
-  volatile boolean jNP;
-  public c jNQ;
-  public g jNR;
-  final HashSet<Long> jNS;
-  private c.a jNT;
-  private g.a jNU;
-  public BluetoothAdapter jNi;
-  public ak mHandler;
+  public Context FZ;
+  public ap mHandler;
   public volatile boolean mIsInit;
+  public a mMQ;
+  public final HashMap<String, d> mMR;
+  volatile boolean mMS;
+  public c mMT;
+  public g mMU;
+  final HashSet<Long> mMV;
+  private c.a mMW;
+  private g.a mMX;
+  public BluetoothAdapter mMl;
   private Runnable mRunnable;
-  public Context zF;
   
-  public b(al paramal)
+  public b(String paramString)
   {
-    AppMethodBeat.i(18371);
-    this.jNN = null;
-    this.zF = null;
-    this.jNO = new HashMap();
-    this.jNi = null;
+    AppMethodBeat.i(179580);
+    this.mMQ = null;
+    this.FZ = null;
+    this.mMR = new HashMap();
+    this.mMl = null;
     this.mHandler = null;
     this.mRunnable = null;
-    this.jNP = false;
+    this.mMS = false;
     this.mIsInit = false;
-    this.jNS = new HashSet();
-    this.jNT = new b.2(this);
-    this.jNU = new b.3(this);
-    this.mRunnable = new b.1(this);
-    this.mHandler = new ak(paramal.oNc.getLooper());
-    AppMethodBeat.o(18371);
+    this.mMV = new HashSet();
+    this.mMW = new c.a()
+    {
+      public final void a(final BluetoothDevice paramAnonymousBluetoothDevice, final int paramAnonymousInt, final byte[] paramAnonymousArrayOfByte)
+      {
+        AppMethodBeat.i(22476);
+        ad.d("MicroMsg.exdevice.BluetoothLEManager", "------onDiscover------ device Name = %s, mac = %s(%d)", new Object[] { paramAnonymousBluetoothDevice.getName(), paramAnonymousBluetoothDevice.getAddress(), Long.valueOf(com.tencent.mm.plugin.exdevice.k.b.Vg(paramAnonymousBluetoothDevice.getAddress())) });
+        b.this.mHandler.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(22475);
+            b.a(b.this, paramAnonymousBluetoothDevice, paramAnonymousInt, paramAnonymousArrayOfByte);
+            AppMethodBeat.o(22475);
+          }
+        });
+        AppMethodBeat.o(22476);
+      }
+      
+      public final void bBw() {}
+    };
+    this.mMX = new g.a()
+    {
+      public final void a(final BluetoothDevice paramAnonymousBluetoothDevice, final int paramAnonymousInt, final byte[] paramAnonymousArrayOfByte)
+      {
+        AppMethodBeat.i(22479);
+        ad.d("MicroMsg.exdevice.BluetoothLEManager", "------onDiscover------ device Name = %s, mac = %s(%d)", new Object[] { paramAnonymousBluetoothDevice.getName(), paramAnonymousBluetoothDevice.getAddress(), Long.valueOf(com.tencent.mm.plugin.exdevice.k.b.Vg(paramAnonymousBluetoothDevice.getAddress())) });
+        b.this.mHandler.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(22477);
+            b.a(b.this, paramAnonymousBluetoothDevice, paramAnonymousInt, paramAnonymousArrayOfByte);
+            AppMethodBeat.o(22477);
+          }
+        });
+        AppMethodBeat.o(22479);
+      }
+      
+      public final void xu(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(22480);
+        ad.i("MicroMsg.exdevice.BluetoothLEManager", "(API21)start ble scan failed, errorCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        if (paramAnonymousInt != 1) {
+          b.this.mHandler.post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(22478);
+              if (!b.this.mMV.isEmpty())
+              {
+                Iterator localIterator = b.this.mMV.iterator();
+                while (localIterator.hasNext())
+                {
+                  Long localLong = (Long)localIterator.next();
+                  ad.e("MicroMsg.exdevice.BluetoothLEManager", "Cannot scan out Remote device(Mac = %d), Connect Failed!!!", new Object[] { localLong });
+                  if (b.this.mMQ != null) {
+                    b.this.mMQ.k(localLong.longValue(), false);
+                  }
+                }
+                b.this.mMV.clear();
+              }
+              AppMethodBeat.o(22478);
+            }
+          });
+        }
+        AppMethodBeat.o(22480);
+      }
+    };
+    this.mRunnable = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(22474);
+        b.this.mMS = false;
+        b.this.iw(false);
+        ad.i("MicroMsg.exdevice.BluetoothLEManager", "Time out for discovering. Stop it");
+        b.this.bBu();
+        if (b.this.mMQ != null) {
+          b.this.mMQ.bBw();
+        }
+        AppMethodBeat.o(22474);
+      }
+    };
+    this.mHandler = new ap(paramString);
+    AppMethodBeat.o(179580);
   }
   
   private void stopScan()
   {
-    AppMethodBeat.i(18374);
-    if (!this.jNP)
+    AppMethodBeat.i(22485);
+    if (!this.mMS)
     {
-      AppMethodBeat.o(18374);
+      AppMethodBeat.o(22485);
       return;
     }
     this.mHandler.removeCallbacks(this.mRunnable);
-    this.jNP = false;
-    fJ(false);
-    aVS();
-    if (this.jNN != null) {
-      this.jNN.aVU();
+    this.mMS = false;
+    iw(false);
+    bBu();
+    if (this.mMQ != null) {
+      this.mMQ.bBw();
     }
-    AppMethodBeat.o(18374);
+    AppMethodBeat.o(22485);
   }
   
   public final boolean a(boolean paramBoolean, int... paramVarArgs)
   {
-    AppMethodBeat.i(18375);
+    AppMethodBeat.i(22486);
     StringBuilder localStringBuilder = new StringBuilder("------scanLEDevice------");
     if (paramBoolean) {}
     for (Object localObject = "true";; localObject = "false")
     {
-      ab.i("MicroMsg.exdevice.BluetoothLEManager", (String)localObject);
+      ad.i("MicroMsg.exdevice.BluetoothLEManager", (String)localObject);
       Assert.assertTrue(this.mIsInit);
-      if (aVT()) {
+      if (bBv()) {
         break;
       }
-      ab.e("MicroMsg.exdevice.BluetoothLEManager", "BLE Unsupport");
-      AppMethodBeat.o(18375);
+      ad.e("MicroMsg.exdevice.BluetoothLEManager", "BLE Unsupport");
+      AppMethodBeat.o(22486);
       return false;
     }
     if (paramBoolean)
     {
-      if (this.jNP)
+      if (this.mMS)
       {
-        AppMethodBeat.o(18375);
+        AppMethodBeat.o(22486);
         return true;
       }
-      if (!fJ(paramBoolean))
+      if (!iw(paramBoolean))
       {
-        ab.e("MicroMsg.exdevice.BluetoothLEManager", "mAdapter.startLeScan Failed!!!");
-        if (!this.jNS.isEmpty())
+        ad.e("MicroMsg.exdevice.BluetoothLEManager", "mAdapter.startLeScan Failed!!!");
+        if (!this.mMV.isEmpty())
         {
-          paramVarArgs = this.jNS.iterator();
+          paramVarArgs = this.mMV.iterator();
           while (paramVarArgs.hasNext())
           {
             localObject = (Long)paramVarArgs.next();
-            ab.e("MicroMsg.exdevice.BluetoothLEManager", "Cannot scan out Remote device(Mac = %d), Connect Failed!!!", new Object[] { localObject });
-            if (this.jNN != null) {
-              this.jNN.l(((Long)localObject).longValue(), false);
+            ad.e("MicroMsg.exdevice.BluetoothLEManager", "Cannot scan out Remote device(Mac = %d), Connect Failed!!!", new Object[] { localObject });
+            if (this.mMQ != null) {
+              this.mMQ.k(((Long)localObject).longValue(), false);
             }
           }
-          this.jNS.clear();
+          this.mMV.clear();
         }
-        AppMethodBeat.o(18375);
+        AppMethodBeat.o(22486);
         return false;
       }
       if ((paramVarArgs != null) && (paramVarArgs.length > 0) && (paramVarArgs[0] == 1)) {
@@ -123,85 +201,85 @@ public final class b
       }
       for (;;)
       {
-        this.jNP = true;
-        AppMethodBeat.o(18375);
+        this.mMS = true;
+        AppMethodBeat.o(22486);
         return true;
         this.mHandler.postDelayed(this.mRunnable, 10000L);
       }
     }
     stopScan();
-    AppMethodBeat.o(18375);
+    AppMethodBeat.o(22486);
     return true;
   }
   
-  final void aVS()
+  final void bBu()
   {
-    AppMethodBeat.i(18372);
-    ab.i("MicroMsg.exdevice.BluetoothLEManager", "tryToCleanPreScanSet");
-    if (!this.jNS.isEmpty())
+    AppMethodBeat.i(22483);
+    ad.i("MicroMsg.exdevice.BluetoothLEManager", "tryToCleanPreScanSet");
+    if (!this.mMV.isEmpty())
     {
-      Iterator localIterator = this.jNS.iterator();
+      Iterator localIterator = this.mMV.iterator();
       while (localIterator.hasNext())
       {
         Long localLong = (Long)localIterator.next();
-        ab.e("MicroMsg.exdevice.BluetoothLEManager", "Cannot scan out Remote device(Mac = %d), Connect Failed!!!", new Object[] { localLong });
-        if (this.jNN != null) {
-          this.jNN.l(localLong.longValue(), false);
+        ad.e("MicroMsg.exdevice.BluetoothLEManager", "Cannot scan out Remote device(Mac = %d), Connect Failed!!!", new Object[] { localLong });
+        if (this.mMQ != null) {
+          this.mMQ.k(localLong.longValue(), false);
         }
       }
-      this.jNS.clear();
+      this.mMV.clear();
     }
-    AppMethodBeat.o(18372);
+    AppMethodBeat.o(22483);
   }
   
   @TargetApi(18)
-  public final boolean aVT()
+  public final boolean bBv()
   {
-    AppMethodBeat.i(18373);
+    AppMethodBeat.i(22484);
     Assert.assertTrue(this.mIsInit);
-    boolean bool = this.zF.getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
-    AppMethodBeat.o(18373);
+    boolean bool = this.FZ.getPackageManager().hasSystemFeature("android.hardware.bluetooth_le");
+    AppMethodBeat.o(22484);
     return bool;
   }
   
   public final boolean connect(long paramLong)
   {
-    AppMethodBeat.i(18377);
-    ab.i("MicroMsg.exdevice.BluetoothLEManager", "------connect------ sessionId = %d ", new Object[] { Long.valueOf(paramLong) });
+    AppMethodBeat.i(22488);
+    ad.i("MicroMsg.exdevice.BluetoothLEManager", "------connect------ sessionId = %d ", new Object[] { Long.valueOf(paramLong) });
     Assert.assertTrue(this.mIsInit);
-    if (!aVT())
+    if (!bBv())
     {
-      ab.e("MicroMsg.exdevice.BluetoothLEManager", "BLE Unsupport");
-      AppMethodBeat.o(18377);
+      ad.e("MicroMsg.exdevice.BluetoothLEManager", "BLE Unsupport");
+      AppMethodBeat.o(22488);
       return false;
     }
-    d locald = (d)this.jNO.get(String.valueOf(paramLong));
+    d locald = (d)this.mMR.get(String.valueOf(paramLong));
     boolean bool;
     Object localObject1;
     if (locald != null)
     {
       bool = true;
       Assert.assertTrue(bool);
-      localObject1 = (BluetoothManager)this.zF.getSystemService("bluetooth");
+      localObject1 = (BluetoothManager)this.FZ.getSystemService("bluetooth");
       if (localObject1 != null) {
         break label148;
       }
-      ab.e("MicroMsg.exdevice.BluetoothLEManager", "null == bluetoothManager");
+      ad.e("MicroMsg.exdevice.BluetoothLEManager", "null == bluetoothManager");
     }
     label148:
     label632:
     for (;;)
     {
-      this.jNS.add(Long.valueOf(paramLong));
+      this.mMV.add(Long.valueOf(paramLong));
       bool = a(true, new int[0]);
-      AppMethodBeat.o(18377);
+      AppMethodBeat.o(22488);
       return bool;
       bool = false;
       break;
       Object localObject2 = ((BluetoothManager)localObject1).getConnectedDevices(8);
       if (localObject2 == null)
       {
-        ab.i("MicroMsg.exdevice.BluetoothLEManager", "null == list, may be no device is connected phone now");
+        ad.i("MicroMsg.exdevice.BluetoothLEManager", "null == list, may be no device is connected phone now");
       }
       else
       {
@@ -211,27 +289,27 @@ public final class b
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (BluetoothDevice)((Iterator)localObject2).next();
-          l = com.tencent.mm.plugin.exdevice.j.b.LX(((BluetoothDevice)localObject3).getAddress());
-          ab.i("MicroMsg.exdevice.BluetoothLEManager", "get connected device: mac = %s, long of mac =%d, name = %s", new Object[] { ((BluetoothDevice)localObject3).getAddress(), Long.valueOf(l), ((BluetoothDevice)localObject3).getName() });
+          l = com.tencent.mm.plugin.exdevice.k.b.Vg(((BluetoothDevice)localObject3).getAddress());
+          ad.i("MicroMsg.exdevice.BluetoothLEManager", "get connected device: mac = %s, long of mac =%d, name = %s", new Object[] { ((BluetoothDevice)localObject3).getAddress(), Long.valueOf(l), ((BluetoothDevice)localObject3).getName() });
           if (paramLong == l)
           {
-            ab.i("MicroMsg.exdevice.BluetoothLEManager", "This device is connected to phone now, start connecting without scan...");
+            ad.i("MicroMsg.exdevice.BluetoothLEManager", "This device is connected to phone now, start connecting without scan...");
             bool = locald.connect();
-            AppMethodBeat.o(18377);
+            AppMethodBeat.o(22488);
             return bool;
           }
         }
-        ab.i("MicroMsg.exdevice.BluetoothLEManager", "Android version realse code: %s", new Object[] { Build.VERSION.RELEASE });
-        if ((com.tencent.mm.compatible.util.d.fv(23)) && (!((LocationManager)this.zF.getSystemService("location")).isProviderEnabled("gps")) && (!Build.VERSION.RELEASE.equalsIgnoreCase("6.0")) && (!Build.VERSION.RELEASE.equalsIgnoreCase("6.0.0")))
+        ad.i("MicroMsg.exdevice.BluetoothLEManager", "Android version realse code: %s", new Object[] { Build.VERSION.RELEASE });
+        if ((com.tencent.mm.compatible.util.d.lf(23)) && (!((LocationManager)this.FZ.getSystemService("location")).isProviderEnabled("gps")) && (!Build.VERSION.RELEASE.equalsIgnoreCase("6.0")) && (!Build.VERSION.RELEASE.equalsIgnoreCase("6.0.0")))
         {
           bool = locald.connect();
-          AppMethodBeat.o(18377);
+          AppMethodBeat.o(22488);
           return bool;
         }
         localObject1 = ((BluetoothManager)localObject1).getAdapter().getBondedDevices();
         if (localObject1 == null)
         {
-          ab.i("MicroMsg.exdevice.BluetoothLEManager", "null == pairedDevices,get paired devices failed");
+          ad.i("MicroMsg.exdevice.BluetoothLEManager", "null == pairedDevices,get paired devices failed");
         }
         else
         {
@@ -242,16 +320,16 @@ public final class b
               break label632;
             }
             localObject2 = (BluetoothDevice)((Iterator)localObject1).next();
-            l = com.tencent.mm.plugin.exdevice.j.b.LX(((BluetoothDevice)localObject2).getAddress());
-            ab.i("MicroMsg.exdevice.BluetoothLEManager", "get paired device: mac = %s, long of mac =%d, name = %s", new Object[] { ((BluetoothDevice)localObject2).getAddress(), Long.valueOf(l), ((BluetoothDevice)localObject2).getName() });
+            l = com.tencent.mm.plugin.exdevice.k.b.Vg(((BluetoothDevice)localObject2).getAddress());
+            ad.i("MicroMsg.exdevice.BluetoothLEManager", "get paired device: mac = %s, long of mac =%d, name = %s", new Object[] { ((BluetoothDevice)localObject2).getAddress(), Long.valueOf(l), ((BluetoothDevice)localObject2).getName() });
             if (paramLong == l)
             {
-              ab.i("MicroMsg.exdevice.BluetoothLEManager", "This HID device is paired to phone now, check if it is connected...");
-              localObject3 = (InputManager)this.zF.getSystemService("input");
+              ad.i("MicroMsg.exdevice.BluetoothLEManager", "This HID device is paired to phone now, check if it is connected...");
+              localObject3 = (InputManager)this.FZ.getSystemService("input");
               int[] arrayOfInt = ((InputManager)localObject3).getInputDeviceIds();
               if (arrayOfInt == null)
               {
-                ab.i("MicroMsg.exdevice.BluetoothLEManager", "get input devices failed");
+                ad.i("MicroMsg.exdevice.BluetoothLEManager", "get input devices failed");
                 break;
               }
               int i = 0;
@@ -261,18 +339,18 @@ public final class b
                 if (localObject4 != null)
                 {
                   localObject4 = ((InputDevice)localObject4).getName();
-                  ab.d("MicroMsg.exdevice.BluetoothLEManager", "Input devices: %s", new Object[] { localObject4 });
+                  ad.d("MicroMsg.exdevice.BluetoothLEManager", "Input devices: %s", new Object[] { localObject4 });
                   if ((localObject4 != null) && (((String)localObject4).equals(((BluetoothDevice)localObject2).getName())))
                   {
-                    ab.i("MicroMsg.exdevice.BluetoothLEManager", "This HID deivce has connected to phone as a input device");
+                    ad.i("MicroMsg.exdevice.BluetoothLEManager", "This HID deivce has connected to phone as a input device");
                     bool = locald.connect();
-                    AppMethodBeat.o(18377);
+                    AppMethodBeat.o(22488);
                     return bool;
                   }
                 }
                 i += 1;
               }
-              ab.i("MicroMsg.exdevice.BluetoothLEManager", "This HID device hasn't been connected...");
+              ad.i("MicroMsg.exdevice.BluetoothLEManager", "This HID device hasn't been connected...");
             }
           }
         }
@@ -280,32 +358,80 @@ public final class b
     }
   }
   
-  final boolean fJ(boolean paramBoolean)
+  final boolean iw(boolean paramBoolean)
   {
-    AppMethodBeat.i(18376);
+    AppMethodBeat.i(22487);
     boolean bool = false;
-    if ((com.tencent.mm.compatible.util.d.fv(21)) && (this.jNR != null)) {
-      paramBoolean = this.jNR.a(paramBoolean, this.jNU);
+    if ((com.tencent.mm.compatible.util.d.lf(21)) && (this.mMU != null)) {
+      paramBoolean = this.mMU.a(paramBoolean, this.mMX);
     }
     for (;;)
     {
-      AppMethodBeat.o(18376);
+      AppMethodBeat.o(22487);
       return paramBoolean;
-      if (this.jNQ != null)
+      if (this.mMT != null)
       {
-        paramBoolean = this.jNQ.a(paramBoolean, this.jNT);
+        paramBoolean = this.mMT.a(paramBoolean, this.mMW);
       }
       else
       {
-        ab.e("MicroMsg.exdevice.BluetoothLEManager", "Scanner is null");
+        ad.e("MicroMsg.exdevice.BluetoothLEManager", "Scanner is null");
         paramBoolean = bool;
       }
+    }
+  }
+  
+  public static abstract class a
+  {
+    public void a(String paramString1, String paramString2, int paramInt, byte[] paramArrayOfByte) {}
+    
+    public void b(long paramLong, byte[] paramArrayOfByte) {}
+    
+    public void bBw() {}
+    
+    public void h(long paramLong1, long paramLong2, long paramLong3) {}
+    
+    public void k(long paramLong, boolean paramBoolean) {}
+    
+    public void l(long paramLong, boolean paramBoolean) {}
+  }
+  
+  public final class b
+    implements Runnable
+  {
+    private long mNc = 0L;
+    private long mNd = 0L;
+    
+    public b(long paramLong1, long paramLong2)
+    {
+      this.mNc = paramLong1;
+      this.mNd = paramLong2;
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(22481);
+      b localb = b.this;
+      long l = this.mNc;
+      d locald1 = new d(l, localb.FZ, localb);
+      String str = String.valueOf(locald1.mSessionId);
+      ad.i("MicroMsg.exdevice.BluetoothLEManager", "BluetoothLESession hashCode = %d, macAddr = %d, mapKey = %s", new Object[] { Integer.valueOf(locald1.hashCode()), Long.valueOf(l), str });
+      d locald2 = (d)localb.mMR.remove(str);
+      if (locald2 != null) {
+        locald2.close();
+      }
+      localb.mMR.put(str, locald1);
+      l = locald1.mSessionId;
+      if (b.this.mMQ != null) {
+        b.this.mMQ.h(l, this.mNc, this.mNd);
+      }
+      AppMethodBeat.o(22481);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.b.b
  * JD-Core Version:    0.7.0.1
  */

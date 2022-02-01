@@ -25,27 +25,27 @@ public final class IPCHead
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(75995);
+    AppMethodBeat.i(102241);
     this.requestId = paramJceInputStream.read(this.requestId, 0, true);
     this.cmdId = paramJceInputStream.read(this.cmdId, 1, true);
     this.hostPackageName = paramJceInputStream.readString(2, true);
     this.hostVersionCode = paramJceInputStream.readString(3, true);
-    AppMethodBeat.o(75995);
+    AppMethodBeat.o(102241);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(75994);
+    AppMethodBeat.i(102240);
     paramJceOutputStream.write(this.requestId, 0);
     paramJceOutputStream.write(this.cmdId, 1);
     paramJceOutputStream.write(this.hostPackageName, 2);
     paramJceOutputStream.write(this.hostVersionCode, 3);
-    AppMethodBeat.o(75994);
+    AppMethodBeat.o(102240);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.IPCHead
  * JD-Core Version:    0.7.0.1
  */

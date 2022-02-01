@@ -6,7 +6,7 @@ public abstract interface q
   
   public abstract void a(q.a parama);
   
-  public abstract void aC(boolean paramBoolean);
+  public abstract void aO(boolean paramBoolean);
   
   public abstract void b(q.a parama);
   
@@ -20,11 +20,11 @@ public abstract interface q
   
   public abstract boolean isLoading();
   
-  public abstract int mJ();
-  
-  public abstract boolean mK();
-  
   public abstract void release();
+  
+  public abstract int rt();
+  
+  public abstract boolean ru();
   
   public abstract void seekTo(long paramLong);
   
@@ -34,7 +34,7 @@ public abstract interface q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.exoplayer2.q
  * JD-Core Version:    0.7.0.1
  */

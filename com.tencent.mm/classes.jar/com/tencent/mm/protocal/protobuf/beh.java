@@ -3,65 +3,70 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class beh
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public long xtV;
-  public long xtW;
+  public int CtZ;
+  public String Cua;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(140667);
+    AppMethodBeat.i(114043);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.am(1, this.xtV);
-      paramVarArgs.am(2, this.xtW);
-      AppMethodBeat.o(140667);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.CtZ);
+      if (this.Cua != null) {
+        paramVarArgs.d(2, this.Cua);
+      }
+      AppMethodBeat.o(114043);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.p(1, this.xtV);
-      int i = e.a.a.b.b.a.p(2, this.xtW);
-      AppMethodBeat.o(140667);
-      return paramInt + 0 + i;
+      int i = f.a.a.b.b.a.bA(1, this.CtZ) + 0;
+      paramInt = i;
+      if (this.Cua != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.Cua);
+      }
+      AppMethodBeat.o(114043);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      AppMethodBeat.o(140667);
+      AppMethodBeat.o(114043);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       beh localbeh = (beh)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(140667);
+        AppMethodBeat.o(114043);
         return -1;
       case 1: 
-        localbeh.xtV = locala.CLY.sm();
-        AppMethodBeat.o(140667);
+        localbeh.CtZ = locala.KhF.xS();
+        AppMethodBeat.o(114043);
         return 0;
       }
-      localbeh.xtW = locala.CLY.sm();
-      AppMethodBeat.o(140667);
+      localbeh.Cua = locala.KhF.readString();
+      AppMethodBeat.o(114043);
       return 0;
     }
-    AppMethodBeat.o(140667);
+    AppMethodBeat.o(114043);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.beh
  * JD-Core Version:    0.7.0.1
  */

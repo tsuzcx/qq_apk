@@ -1,15 +1,17 @@
 package com.tencent.mm.plugin.appbrand.media.encode;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.k;
+import com.tencent.mm.plugin.appbrand.media.record.h;
+import com.tencent.mm.plugin.appbrand.media.record.h.a;
 
 public class Mp3EncodeJni
 {
   static
   {
-    AppMethodBeat.i(105581);
-    k.a("mp3lame", Mp3EncodeJni.class.getClassLoader());
-    AppMethodBeat.o(105581);
+    AppMethodBeat.i(146314);
+    Mp3EncodeJni.class.getClassLoader();
+    h.bhZ().cP("mp3lame");
+    AppMethodBeat.o(146314);
   }
   
   public static native void close();
@@ -28,7 +30,7 @@ public class Mp3EncodeJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.encode.Mp3EncodeJni
  * JD-Core Version:    0.7.0.1
  */

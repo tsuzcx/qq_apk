@@ -11,52 +11,52 @@ import java.io.IOException;
 final class e
   extends com.tencent.mm.wear.app.g.a
 {
-  private String aas;
-  private int ada;
-  private String adf;
-  private long agy;
+  private String adT;
+  private int agB;
+  private String agG;
+  private long aka;
   
   public e(ReplyVoiceUI paramReplyVoiceUI, String paramString1, long paramLong, String paramString2, int paramInt)
   {
-    this.aas = paramString1;
-    this.agy = paramLong;
-    this.adf = paramString2;
-    this.ada = paramInt;
+    this.adT = paramString1;
+    this.aka = paramLong;
+    this.agG = paramString2;
+    this.agB = paramInt;
   }
   
   protected final void execute()
   {
-    Object localObject = c.a(new File(this.aas));
-    c.S(this.aas);
+    Object localObject = c.a(new File(this.adT));
+    c.Z(this.adT);
     if (localObject == null) {
       return;
     }
-    d.c("MicroMsg.ReplyVoiceUI", "try to send voice data to phone, data size=%d | talker=%s", new Object[] { Integer.valueOf(localObject.length), this.adf });
+    d.c("MicroMsg.ReplyVoiceUI", "try to send voice data to phone, data size=%d | talker=%s", new Object[] { Integer.valueOf(localObject.length), this.agG });
     try
     {
       ai localai = new ai();
-      localai.VN = this.adf;
-      localai.Wu = this.agy;
-      localai.Wo = new com.tencent.mm.d.b((byte[])localObject);
-      if (this.ada > 0) {}
-      for (localai.Ws = 2;; localai.Ws = 1)
+      localai.XI = this.agG;
+      localai.Yp = this.aka;
+      localai.Yj = new com.tencent.mm.d.b((byte[])localObject);
+      if (this.agB > 0) {}
+      for (localai.Yn = 2;; localai.Yn = 1)
       {
-        localObject = new com.tencent.mm.wear.app.f.e(this.ada, 11022, localai.toByteArray());
+        localObject = new com.tencent.mm.wear.app.f.e(this.agB, 11022, localai.toByteArray());
         ((com.tencent.mm.wear.app.f.e)localObject).a(new g()
         {
-          public final void mV()
+          public final void nH()
           {
-            com.tencent.mm.wear.a.b.a.aiT.postDelayed(new Runnable()
+            com.tencent.mm.wear.a.b.a.amv.postDelayed(new Runnable()
             {
               public final void run()
               {
-                e.this.agA.finish();
+                e.this.akc.finish();
               }
             }, 1000L);
           }
         });
-        h.mc().a((com.tencent.mm.wear.app.g.a)localObject);
-        com.tencent.mm.wear.app.d.a.bM(1);
+        h.mP().a((com.tencent.mm.wear.app.g.a)localObject);
+        com.tencent.mm.wear.app.d.a.ci(1);
         return;
       }
       return;

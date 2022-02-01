@@ -9,23 +9,23 @@ import java.lang.reflect.Type;
 
 final class c
 {
-  final WeakReference<Object> Xc = new WeakReference(new Object());
-  WeakReference<Activity> Xd;
-  Class<?> Xe;
-  Field Xf;
-  Throwable Xg;
-  int Xh;
+  final WeakReference<Object> Ze = new WeakReference(new Object());
+  WeakReference<Activity> Zf;
+  Class<?> Zg;
+  Field Zh;
+  Throwable Zi;
+  int Zj;
   
   c(Activity paramActivity, Field paramField, Throwable paramThrowable)
   {
-    this.Xd = new WeakReference(paramActivity);
-    this.Xe = paramActivity.getClass();
-    this.Xf = paramField;
-    this.Xg = paramThrowable;
-    this.Xh = 0;
+    this.Zf = new WeakReference(paramActivity);
+    this.Zg = paramActivity.getClass();
+    this.Zh = paramField;
+    this.Zi = paramThrowable;
+    this.Zj = 0;
   }
   
-  private String ll()
+  private String ly()
   {
     StringWriter localStringWriter = new StringWriter();
     try
@@ -37,7 +37,7 @@ final class c
     {
       try
       {
-        this.Xg.printStackTrace(localPrintWriter);
+        this.Zi.printStackTrace(localPrintWriter);
         q.b(localPrintWriter);
         return localStringWriter.toString();
       }
@@ -48,14 +48,14 @@ final class c
     throw localObject1;
   }
   
-  private String lm()
+  private String lz()
   {
-    if (this.Xf == null) {
+    if (this.Zh == null) {
       return "#null#";
     }
-    Object localObject = this.Xf.getDeclaringClass();
+    Object localObject = this.Zh.getDeclaringClass();
     if (!((Class)localObject).isAnonymousClass()) {
-      return "field " + this.Xf.getName() + " defined in " + ((Class)localObject).getName();
+      return "field " + this.Zh.getName() + " defined in " + ((Class)localObject).getName();
     }
     Type localType = ((Class)localObject).getGenericSuperclass();
     if (Object.class.equals(localType)) {
@@ -63,7 +63,7 @@ final class c
     }
     for (;;)
     {
-      return "field " + this.Xf.getName() + " define in anonymous class of " + localObject.toString().replace('<', '#').replace('>', '#');
+      return "field " + this.Zh.getName() + " define in anonymous class of " + localObject.toString().replace('<', '#').replace('>', '#');
       if (localType != null) {
         localObject = localType;
       }
@@ -77,8 +77,8 @@ final class c
       return false;
     }
     paramObject = (c)paramObject;
-    Object localObject1 = this.Xd.get();
-    Object localObject2 = paramObject.Xd.get();
+    Object localObject1 = this.Zf.get();
+    Object localObject2 = paramObject.Zf.get();
     boolean bool1;
     if ((localObject1 == null) && (localObject2 == null))
     {
@@ -87,8 +87,8 @@ final class c
       if (!bool1) {
         break label130;
       }
-      localObject1 = this.Xf;
-      localObject2 = paramObject.Xf;
+      localObject1 = this.Zh;
+      localObject2 = paramObject.Zh;
       if ((localObject1 != null) || (localObject2 != null)) {
         break label132;
       }
@@ -97,8 +97,8 @@ final class c
       if (!bool1) {
         break label156;
       }
-      localObject1 = this.Xg;
-      paramObject = paramObject.Xg;
+      localObject1 = this.Zi;
+      paramObject = paramObject.Zi;
       if ((localObject1 != null) || (paramObject != null)) {
         break label158;
       }
@@ -138,20 +138,20 @@ final class c
   public final int hashCode()
   {
     int k = 0;
-    Object localObject = this.Xd.get();
+    Object localObject = this.Zf.get();
     int i;
     if (localObject != null)
     {
       i = localObject.hashCode();
-      if (this.Xf == null) {
+      if (this.Zh == null) {
         break label63;
       }
     }
     label63:
-    for (int j = this.Xf.hashCode();; j = 0)
+    for (int j = this.Zh.hashCode();; j = 0)
     {
-      if (this.Xg != null) {
-        k = this.Xg.hashCode();
+      if (this.Zi != null) {
+        k = this.Zi.hashCode();
       }
       return i + j + k;
       i = 0;
@@ -159,24 +159,24 @@ final class c
     }
   }
   
-  public final String lk()
+  public final String lx()
   {
-    if (this.Xd.get() == null)
+    if (this.Zf.get() == null)
     {
-      if (this.Xf != null) {
-        return "ui of class [" + this.Xe.getName() + "] held by\n [" + lm() + "] is recycled";
+      if (this.Zh != null) {
+        return "ui of class [" + this.Zg.getName() + "] held by\n [" + lz() + "] is recycled";
       }
-      return "ui of class [" + this.Xe.getName() + "] which is subclass of\n listener or callback and held by other 'Manager' class is recycled";
+      return "ui of class [" + this.Zg.getName() + "] which is subclass of\n listener or callback and held by other 'Manager' class is recycled";
     }
-    if (this.Xf != null) {
-      return "ui of class [" + this.Xe.getName() + "] held by\n [" + lm() + "] is leaked.\n Perhaps you should remove the holder from any 'Manager' class when the leaked ui was destroyed.";
+    if (this.Zh != null) {
+      return "ui of class [" + this.Zg.getName() + "] held by\n [" + lz() + "] is leaked.\n Perhaps you should remove the holder from any 'Manager' class when the leaked ui was destroyed.";
     }
-    return "ui of class [" + this.Xe.getName() + "] which is subclass of\n listener or callback and held by other 'Manager' class is leaked.\n Perhaps you should remove any instance of this class from any 'Manager'";
+    return "ui of class [" + this.Zg.getName() + "] which is subclass of\n listener or callback and held by other 'Manager' class is leaked.\n Perhaps you should remove any instance of this class from any 'Manager'";
   }
   
   public final String toString()
   {
-    return lm() + "@" + ll().replace('\n', '|');
+    return lz() + "@" + ly().replace('\n', '|');
   }
 }
 

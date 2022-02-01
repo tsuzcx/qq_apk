@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a6q" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="fill_parent" android:layout_height="@dimen/ci"
+<android.support.design.widget.CoordinatorLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/cm" android:textColor="@color/x7" android:gravity="center|left" android:id="@id/cpq" android:layout_width="@dimen/ch" android:layout_height="wrap_content" android:singleLine="false" android:layout_alignParentLeft="true" />
-    <TextView android:textSize="@dimen/cm" android:textColor="@color/x7" android:gravity="left" android:id="@id/cpr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ck" android:singleLine="true" android:layout_toRightOf="@id/cpq" />
-    <TextView android:textSize="@dimen/cm" android:textColor="@color/x7" android:layout_gravity="right" android:id="@id/cps" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" />
-</RelativeLayout>
+    <View android:id="@id/geh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:soundEffectsEnabled="false" />
+    <FrameLayout android:layout_gravity="bottom" android:id="@id/dn8" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:layout_gravity="right" android:id="@id/dn9" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+</android.support.design.widget.CoordinatorLayout>

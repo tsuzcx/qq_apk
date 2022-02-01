@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:padding="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:textColor="@color/w_" android:id="@id/ec4" android:singleLine="true" style="@style/mk" />
-</LinearLayout>
+    <TextView android:textSize="@dimen/hs" android:id="@id/b8r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <com.tencent.mm.plugin.mmsight.api.MMSightRecordView android:id="@id/ev0" android:layout_width="300.0dip" android:layout_height="450.0dip" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/cox" android:layout_width="125.0dip" android:layout_height="78.0dip" android:scaleType="centerInside" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <Button android:id="@id/g4x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="take picture" android:layout_below="@id/ev0" android:layout_centerHorizontal="true" />
+    <Button android:id="@id/fsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="start record" android:layout_below="@id/g4x" android:layout_centerHorizontal="true" />
+    <Button android:id="@id/g35" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="switch camera" android:layout_below="@id/fsg" android:layout_centerHorizontal="true" />
+</RelativeLayout>

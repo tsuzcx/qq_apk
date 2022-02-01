@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="?b" android:paddingLeft="@dimen/i_" android:paddingTop="@dimen/d" android:paddingRight="@dimen/i_" android:paddingBottom="@dimen/js" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center" android:id="@id/f9d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/aew" android:scaleType="fitCenter" android:layout_centerInParent="true" />
-    <View android:id="@id/f9e" android:background="#c0000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ProgressBar android:gravity="center" android:id="@id/f9f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/zs" />
+    <TextView android:textSize="@dimen/jv" android:textColor="@color/rk" android:id="@id/cj9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{header}" android:layout_alignParentBottom="true" />
 </RelativeLayout>

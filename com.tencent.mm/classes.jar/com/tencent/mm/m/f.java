@@ -3,20 +3,20 @@ package com.tencent.mm.m;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ux;
-import com.tencent.mm.g.a.ux.b;
+import com.tencent.mm.g.a.ww;
+import com.tencent.mm.g.a.ww.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.t;
 import com.tencent.mm.model.u;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bl;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,310 +25,312 @@ public final class f
 {
   private static String TAG = "MicroMsg.NotificationConfig";
   
-  public static boolean Ni()
+  public static boolean YV()
   {
-    AppMethodBeat.i(77677);
-    boolean bool = com.tencent.mm.kernel.a.jM(com.tencent.mm.kernel.a.QS());
-    AppMethodBeat.o(77677);
+    AppMethodBeat.i(150012);
+    boolean bool = com.tencent.mm.kernel.a.mp(com.tencent.mm.kernel.a.aeF());
+    AppMethodBeat.o(150012);
     return bool;
   }
   
-  public static boolean Nj()
+  public static boolean YW()
   {
-    AppMethodBeat.i(77679);
-    boolean bool = r.kt(Mu().getInt("notification.status.webonline.push.open", 0));
-    AppMethodBeat.o(77679);
+    AppMethodBeat.i(150014);
+    boolean bool = u.mY(Yf().getInt("notification.status.webonline.push.open", 0));
+    AppMethodBeat.o(150014);
     return bool;
   }
   
-  public static int Nk()
+  public static int YX()
   {
-    AppMethodBeat.i(77682);
-    if (!g.RG())
+    AppMethodBeat.i(150017);
+    if (!g.afw())
     {
-      ab.w(TAG, "getUnReadTalkerCount, but mmcore not ready");
-      AppMethodBeat.o(77682);
+      ad.w(TAG, "getUnReadTalkerCount, but mmcore not ready");
+      AppMethodBeat.o(150017);
       return 0;
     }
-    int i = u.f(t.flc, Nn());
-    AppMethodBeat.o(77682);
+    int i = x.e(w.gMn, Za());
+    AppMethodBeat.o(150017);
     return i;
   }
   
-  public static List<String> Nl()
+  public static List<String> YY()
   {
-    AppMethodBeat.i(77683);
-    List localList = u.P(t.flc, -1);
-    AppMethodBeat.o(77683);
+    AppMethodBeat.i(150018);
+    List localList = x.X(w.gMn, -1);
+    AppMethodBeat.o(150018);
     return localList;
   }
   
-  public static int Nm()
+  public static int YZ()
   {
-    AppMethodBeat.i(77684);
-    if (!g.RG())
+    AppMethodBeat.i(150019);
+    if (!g.afw())
     {
-      ab.w(TAG, "getUnReadMsgCoun, but mmcore not ready");
-      AppMethodBeat.o(77684);
+      ad.w(TAG, "getUnReadMsgCoun, but mmcore not ready");
+      AppMethodBeat.o(150019);
       return 0;
     }
-    int i = u.e(t.flc, Nn());
-    AppMethodBeat.o(77684);
+    int i = x.d(w.gMn, Za());
+    AppMethodBeat.o(150019);
     return i;
   }
   
-  private static List<String> Nn()
+  private static List<String> Za()
   {
-    AppMethodBeat.i(151539);
+    AppMethodBeat.i(150020);
     ArrayList localArrayList = new ArrayList();
-    if (!g.RG())
+    if (!g.afw())
     {
-      ab.w(TAG, "getUnReadTalkerCount, but mmcore not ready");
-      AppMethodBeat.o(151539);
+      ad.w(TAG, "getUnReadTalkerCount, but mmcore not ready");
+      AppMethodBeat.o(150020);
       return localArrayList;
     }
-    if (!g.RL().Ru().getBoolean(ac.a.yDB, true))
+    if (!g.afB().afk().getBoolean(ae.a.FlZ, true))
     {
       localArrayList.add("notifymessage");
-      ab.d(TAG, "add service notify message into show unread count blacklist.");
+      ad.d(TAG, "add service notify message into show unread count blacklist.");
     }
-    if (!g.RL().Ru().getBoolean(ac.a.yDC, true))
+    if (!g.afB().afk().getBoolean(ae.a.Fma, true))
     {
       localArrayList.add("appbrandcustomerservicemsg");
-      ab.d(TAG, "add wxa custom session notify message into show unread count blacklist.");
+      ad.d(TAG, "add wxa custom session notify message into show unread count blacklist.");
     }
-    AppMethodBeat.o(151539);
+    localArrayList.add("appbrand_notify_message");
+    ad.d(TAG, "add appbrand notify message into show unread count blacklist.");
+    AppMethodBeat.o(150020);
     return localArrayList;
   }
   
-  public static boolean No()
+  public static boolean Zb()
   {
-    AppMethodBeat.i(77691);
-    boolean bool = ((Boolean)g.RL().Ru().get(73217, Boolean.TRUE)).booleanValue();
-    AppMethodBeat.o(77691);
+    AppMethodBeat.i(150027);
+    boolean bool = ((Boolean)g.afB().afk().get(73217, Boolean.TRUE)).booleanValue();
+    AppMethodBeat.o(150027);
     return bool;
   }
   
-  public static boolean Np()
+  public static boolean Zc()
   {
-    AppMethodBeat.i(77692);
-    boolean bool = ((Boolean)g.RL().Ru().get(73218, Boolean.TRUE)).booleanValue();
-    AppMethodBeat.o(77692);
+    AppMethodBeat.i(150028);
+    boolean bool = ((Boolean)g.afB().afk().get(73218, Boolean.TRUE)).booleanValue();
+    AppMethodBeat.o(150028);
     return bool;
   }
   
-  public static void bT(boolean paramBoolean)
+  public static void cP(boolean paramBoolean)
   {
-    AppMethodBeat.i(77664);
-    Mu().edit().putBoolean("settings_new_msg_notification", paramBoolean).commit();
-    ab.i(TAG, "[NOTIFICATION SETTINGS]double write : saveNewMsgNotification: %B", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(77664);
+    AppMethodBeat.i(149999);
+    Yf().edit().putBoolean("settings_new_msg_notification", paramBoolean).commit();
+    ad.i(TAG, "[NOTIFICATION SETTINGS]double write : saveNewMsgNotification: %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(149999);
   }
   
-  public static void bU(boolean paramBoolean)
+  public static void cQ(boolean paramBoolean)
   {
-    AppMethodBeat.i(77665);
-    Mu().edit().putBoolean("settings_new_voip_msg_notification", paramBoolean).commit();
-    ab.i(TAG, "[NOTIFICATION SETTINGS]double write : saveNewVoIPMsgNotification: %B", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(77665);
+    AppMethodBeat.i(150000);
+    Yf().edit().putBoolean("settings_new_voip_msg_notification", paramBoolean).commit();
+    ad.i(TAG, "[NOTIFICATION SETTINGS]double write : saveNewVoIPMsgNotification: %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(150000);
   }
   
-  public static void bV(boolean paramBoolean)
+  public static void cR(boolean paramBoolean)
   {
-    AppMethodBeat.i(77666);
-    Mu().edit().putBoolean("settings_show_detail", paramBoolean).commit();
-    ab.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsShowDetail: %B", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(77666);
+    AppMethodBeat.i(150001);
+    Yf().edit().putBoolean("settings_show_detail", paramBoolean).commit();
+    ad.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsShowDetail: %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(150001);
   }
   
-  public static void bW(boolean paramBoolean)
+  public static void cS(boolean paramBoolean)
   {
-    AppMethodBeat.i(77667);
-    Mu().edit().putBoolean("settings_sound", paramBoolean).commit();
-    ab.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsSound: %B", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(77667);
+    AppMethodBeat.i(150002);
+    Yf().edit().putBoolean("settings_sound", paramBoolean).commit();
+    ad.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsSound: %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(150002);
   }
   
-  public static void bX(boolean paramBoolean)
+  public static void cT(boolean paramBoolean)
   {
-    AppMethodBeat.i(77668);
-    Mu().edit().putBoolean("settings_shake", paramBoolean).commit();
-    ab.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsShake: %B", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(77668);
+    AppMethodBeat.i(150003);
+    Yf().edit().putBoolean("settings_shake", paramBoolean).commit();
+    ad.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsShake: %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(150003);
   }
   
-  public static void bY(int paramInt1, int paramInt2)
+  public static void cU(boolean paramBoolean)
   {
-    AppMethodBeat.i(77675);
-    SharedPreferences localSharedPreferences = Mu();
+    AppMethodBeat.i(150005);
+    Yf().edit().putBoolean("settings_special_scene_sound", paramBoolean).commit();
+    ad.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsSoundInSpecialScene: %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(150005);
+  }
+  
+  public static void cV(boolean paramBoolean)
+  {
+    AppMethodBeat.i(150006);
+    Yf().edit().putBoolean("settings_special_scene_shake", paramBoolean).commit();
+    ad.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsShakeInSpecialScene: %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(150006);
+  }
+  
+  public static void cW(boolean paramBoolean)
+  {
+    AppMethodBeat.i(150007);
+    Yf().edit().putBoolean("settings_voip_scene_sound", paramBoolean).commit();
+    ad.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsSoundInVoip: %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(150007);
+  }
+  
+  public static void cX(boolean paramBoolean)
+  {
+    AppMethodBeat.i(150008);
+    Yf().edit().putBoolean("settings_voip_scene_shake", paramBoolean).commit();
+    ad.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsShakeInVoip: %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(150008);
+  }
+  
+  public static void cY(boolean paramBoolean)
+  {
+    AppMethodBeat.i(150009);
+    Yf().edit().putBoolean("settings_active_time_full", paramBoolean).commit();
+    ad.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsActiveTime: %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(150009);
+  }
+  
+  public static void cs(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(150010);
+    SharedPreferences localSharedPreferences = Yf();
     localSharedPreferences.edit().putInt("settings_active_begin_time_hour", paramInt1).commit();
     localSharedPreferences.edit().putInt("settings_active_begin_time_min", paramInt2).commit();
-    ab.i(TAG, "[NOTIFICATION SETTINGS]double write : saveActiveBegine: %d:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(77675);
+    ad.i(TAG, "[NOTIFICATION SETTINGS]double write : saveActiveBegine: %d:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(150010);
   }
   
-  public static void bY(boolean paramBoolean)
+  public static void ct(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(77670);
-    Mu().edit().putBoolean("settings_special_scene_sound", paramBoolean).commit();
-    ab.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsSoundInSpecialScene: %B", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(77670);
-  }
-  
-  public static void bZ(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(77676);
-    SharedPreferences localSharedPreferences = Mu();
+    AppMethodBeat.i(150011);
+    SharedPreferences localSharedPreferences = Yf();
     localSharedPreferences.edit().putInt("settings_active_end_time_hour", paramInt1).commit();
     localSharedPreferences.edit().putInt("settings_active_end_time_min", paramInt2).commit();
-    ab.i(TAG, "[NOTIFICATION SETTINGS]double write : saveActiveEnd: %d:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(77676);
+    ad.i(TAG, "[NOTIFICATION SETTINGS]double write : saveActiveEnd: %d:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(150011);
   }
   
-  public static void bZ(boolean paramBoolean)
+  public static void lk(int paramInt)
   {
-    AppMethodBeat.i(77671);
-    Mu().edit().putBoolean("settings_special_scene_shake", paramBoolean).commit();
-    ab.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsShakeInSpecialScene: %B", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(77671);
+    AppMethodBeat.i(150013);
+    Yf().edit().putInt("notification.status.webonline.push.open", paramInt).commit();
+    AppMethodBeat.o(150013);
   }
   
-  public static void ca(boolean paramBoolean)
-  {
-    AppMethodBeat.i(77672);
-    Mu().edit().putBoolean("settings_voip_scene_sound", paramBoolean).commit();
-    ab.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsSoundInVoip: %B", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(77672);
-  }
-  
-  public static void cb(boolean paramBoolean)
-  {
-    AppMethodBeat.i(77673);
-    Mu().edit().putBoolean("settings_voip_scene_shake", paramBoolean).commit();
-    ab.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsShakeInVoip: %B", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(77673);
-  }
-  
-  public static void cc(boolean paramBoolean)
-  {
-    AppMethodBeat.i(77674);
-    Mu().edit().putBoolean("settings_active_time_full", paramBoolean).commit();
-    ab.i(TAG, "[NOTIFICATION SETTINGS]double write : saveIsActiveTime: %B", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(77674);
-  }
-  
-  public static boolean i(bi parambi)
-  {
-    AppMethodBeat.i(77690);
-    if (parambi == null)
-    {
-      AppMethodBeat.o(77690);
-      return false;
-    }
-    boolean bool = parambi.asi(r.Zn());
-    AppMethodBeat.o(77690);
-    return bool;
-  }
-  
-  public static void iW(int paramInt)
-  {
-    AppMethodBeat.i(77678);
-    Mu().edit().putInt("notification.status.webonline.push.open", paramInt).commit();
-    AppMethodBeat.o(77678);
-  }
-  
-  public static boolean iX(int paramInt)
+  public static boolean ll(int paramInt)
   {
     return (paramInt == 50) || (paramInt == 53);
   }
   
-  public static boolean lA(String paramString)
+  public static boolean p(bl parambl)
   {
-    AppMethodBeat.i(77687);
-    boolean bool = t.nI(paramString);
-    AppMethodBeat.o(77687);
+    AppMethodBeat.i(150026);
+    if (parambl == null)
+    {
+      AppMethodBeat.o(150026);
+      return false;
+    }
+    boolean bool = parambl.aIN(u.aqG());
+    AppMethodBeat.o(150026);
     return bool;
   }
   
-  public static boolean lB(String paramString)
+  public static boolean pB(String paramString)
   {
-    AppMethodBeat.i(77688);
-    if ((t.oI(paramString)) || ((t.lA(paramString)) && (!t.oH(paramString))) || ((t.nK(paramString)) && (!t.oH(paramString))))
+    AppMethodBeat.i(150015);
+    ww localww = new ww();
+    localww.dCp.djq = 1;
+    localww.dCp.content = paramString;
+    com.tencent.mm.sdk.b.a.ESL.l(localww);
+    if ((localww.dCq.type == 2) || (paramString.equals(bl.FzN)))
     {
-      AppMethodBeat.o(77688);
+      AppMethodBeat.o(150015);
       return true;
     }
-    AppMethodBeat.o(77688);
+    AppMethodBeat.o(150015);
     return false;
   }
   
-  public static int lC(String paramString)
+  public static boolean pC(String paramString)
   {
-    AppMethodBeat.i(77689);
-    int i = ((j)g.E(j.class)).YF().arV(paramString);
-    AppMethodBeat.o(77689);
+    AppMethodBeat.i(150016);
+    ww localww = new ww();
+    localww.dCp.djq = 1;
+    localww.dCp.content = paramString;
+    com.tencent.mm.sdk.b.a.ESL.l(localww);
+    if ((localww.dCq.type == 3) || (paramString.equals(bl.FzM)))
+    {
+      AppMethodBeat.o(150016);
+      return true;
+    }
+    AppMethodBeat.o(150016);
+    return false;
+  }
+  
+  public static int pD(String paramString)
+  {
+    AppMethodBeat.i(150021);
+    int i = x.av(paramString, null);
+    AppMethodBeat.o(150021);
     return i;
   }
   
-  public static void lt(String paramString)
+  public static boolean pE(String paramString)
   {
-    AppMethodBeat.i(77669);
-    a.lt(paramString);
-    ab.i(TAG, "[NOTIFICATION SETTINGS]double write : saveSoundTone: %s", new Object[] { paramString });
-    AppMethodBeat.o(77669);
-  }
-  
-  public static boolean lw(String paramString)
-  {
-    AppMethodBeat.i(77680);
-    ux localux = new ux();
-    localux.cLs.cut = 1;
-    localux.cLs.content = paramString;
-    com.tencent.mm.sdk.b.a.ymk.l(localux);
-    if ((localux.cLt.type == 2) || (paramString.equals(bi.yOc)))
-    {
-      AppMethodBeat.o(77680);
-      return true;
-    }
-    AppMethodBeat.o(77680);
-    return false;
-  }
-  
-  public static boolean lx(String paramString)
-  {
-    AppMethodBeat.i(77681);
-    ux localux = new ux();
-    localux.cLs.cut = 1;
-    localux.cLs.content = paramString;
-    com.tencent.mm.sdk.b.a.ymk.l(localux);
-    if ((localux.cLt.type == 3) || (paramString.equals(bi.yOb)))
-    {
-      AppMethodBeat.o(77681);
-      return true;
-    }
-    AppMethodBeat.o(77681);
-    return false;
-  }
-  
-  public static int ly(String paramString)
-  {
-    AppMethodBeat.i(77685);
-    int i = u.ag(paramString, null);
-    AppMethodBeat.o(77685);
-    return i;
-  }
-  
-  public static boolean lz(String paramString)
-  {
-    AppMethodBeat.i(77686);
-    boolean bool = ad.nM(paramString);
-    AppMethodBeat.o(77686);
+    AppMethodBeat.i(150022);
+    boolean bool = af.st(paramString);
+    AppMethodBeat.o(150022);
     return bool;
+  }
+  
+  public static boolean pF(String paramString)
+  {
+    AppMethodBeat.i(150023);
+    boolean bool = w.sl(paramString);
+    AppMethodBeat.o(150023);
+    return bool;
+  }
+  
+  public static boolean pG(String paramString)
+  {
+    AppMethodBeat.i(150024);
+    if ((w.tt(paramString)) || ((w.pF(paramString)) && (!w.ts(paramString))) || ((w.sn(paramString)) && (!w.ts(paramString))))
+    {
+      AppMethodBeat.o(150024);
+      return true;
+    }
+    AppMethodBeat.o(150024);
+    return false;
+  }
+  
+  public static int pH(String paramString)
+  {
+    AppMethodBeat.i(150025);
+    int i = ((k)g.ab(k.class)).apR().aIB(paramString);
+    AppMethodBeat.o(150025);
+    return i;
+  }
+  
+  public static void py(String paramString)
+  {
+    AppMethodBeat.i(150004);
+    a.py(paramString);
+    ad.i(TAG, "[NOTIFICATION SETTINGS]double write : saveSoundTone: %s", new Object[] { paramString });
+    AppMethodBeat.o(150004);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.m.f
  * JD-Core Version:    0.7.0.1
  */

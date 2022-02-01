@@ -4,50 +4,51 @@ import android.util.SparseIntArray;
 
 public abstract class k
 {
-  final SparseIntArray sb;
-  private boolean sc;
+  final SparseIntArray tR;
+  private boolean tS;
   
-  private int v(int paramInt1, int paramInt2)
+  private int aq(int paramInt)
   {
-    int n = cO();
+    int i = 0;
+    int j = this.tR.size() - 1;
+    while (i <= j)
+    {
+      int k = i + j >>> 1;
+      if (this.tR.keyAt(k) < paramInt) {
+        i = k + 1;
+      } else {
+        j = k - 1;
+      }
+    }
+    paramInt = i - 1;
+    if ((paramInt >= 0) && (paramInt < this.tR.size())) {
+      return this.tR.keyAt(paramInt);
+    }
+    return -1;
+  }
+  
+  private int w(int paramInt1, int paramInt2)
+  {
+    int n = cW();
     if (n == paramInt2) {
       return 0;
     }
     int j;
     int i;
-    int k;
-    if ((this.sc) && (this.sb.size() > 0))
+    if ((this.tS) && (this.tR.size() > 0))
     {
-      j = this.sb.size() - 1;
-      i = 0;
-      while (i <= j)
+      j = aq(paramInt1);
+      if (j >= 0)
       {
-        k = i + j >>> 1;
-        if (this.sb.keyAt(k) < paramInt1) {
-          i = k + 1;
-        } else {
-          j = k - 1;
-        }
-      }
-      i -= 1;
-      if ((i >= 0) && (i < this.sb.size()))
-      {
-        i = this.sb.keyAt(i);
-        if (i < 0) {
-          break label212;
-        }
-        j = this.sb.get(i) + cO();
-        k = i + 1;
-        i = j;
-        j = k;
+        i = this.tR.get(j) + cW();
+        j += 1;
       }
     }
     for (;;)
     {
-      label147:
       if (j < paramInt1)
       {
-        k = cO();
+        int k = cW();
         int m = i + k;
         if (m == paramInt2) {
           i = 0;
@@ -55,8 +56,6 @@ public abstract class k
         for (;;)
         {
           j += 1;
-          break label147;
-          i = -1;
           break;
           i = k;
           if (m <= paramInt2) {
@@ -68,42 +67,41 @@ public abstract class k
         break;
       }
       return i;
-      label212:
       j = 0;
       i = 0;
     }
   }
   
-  public abstract int cO();
+  public abstract int cW();
   
-  final int u(int paramInt1, int paramInt2)
+  final int v(int paramInt1, int paramInt2)
   {
     int i;
-    if (!this.sc) {
-      i = v(paramInt1, paramInt2);
+    if (!this.tS) {
+      i = w(paramInt1, paramInt2);
     }
     int j;
     do
     {
       return i;
-      j = this.sb.get(paramInt1, -1);
+      j = this.tR.get(paramInt1, -1);
       i = j;
     } while (j != -1);
-    paramInt2 = v(paramInt1, paramInt2);
-    this.sb.put(paramInt1, paramInt2);
+    paramInt2 = w(paramInt1, paramInt2);
+    this.tR.put(paramInt1, paramInt2);
     return paramInt2;
   }
   
-  public final int w(int paramInt1, int paramInt2)
+  public final int x(int paramInt1, int paramInt2)
   {
-    int n = cO();
+    int n = cW();
     int k = 0;
     int i = 0;
     int j = 0;
     int m;
     if (k < paramInt1)
     {
-      m = cO();
+      m = cW();
       j += m;
       if (j == paramInt2)
       {

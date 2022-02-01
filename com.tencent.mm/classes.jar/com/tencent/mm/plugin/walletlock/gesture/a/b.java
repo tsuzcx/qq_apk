@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.walletlock.gesture.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 
 public final class b
 {
-  public static boolean cXK()
+  public static boolean ege()
   {
-    AppMethodBeat.i(51547);
-    boolean bool = ((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yHZ, Boolean.FALSE)).booleanValue();
-    AppMethodBeat.o(51547);
+    AppMethodBeat.i(129752);
+    boolean bool = ((Boolean)com.tencent.mm.kernel.g.afB().afk().get(ae.a.FqV, Boolean.FALSE)).booleanValue();
+    AppMethodBeat.o(129752);
     return bool;
   }
   
-  public static boolean cXL()
+  public static boolean egf()
   {
-    AppMethodBeat.i(51549);
-    g localg = d.cXM();
-    ab.v("MicroMsg.GestureUtil", "alvinluo timeInfo: %d, %d", new Object[] { Long.valueOf(localg.uEM), Long.valueOf(localg.uEN) });
-    if (localg.uEM != -1L)
+    AppMethodBeat.i(129754);
+    g localg = d.egg();
+    ad.v("MicroMsg.GestureUtil", "alvinluo timeInfo: %d, %d", new Object[] { Long.valueOf(localg.ABS), Long.valueOf(localg.ABT) });
+    if (localg.ABS != -1L)
     {
       e.a(localg);
-      if (localg.uEN / 1000L < 600L)
+      if (localg.ABT / 1000L < 600L)
       {
-        d.ae(localg.uEM, localg.uEN);
-        AppMethodBeat.o(51549);
+        d.ar(localg.ABS, localg.ABT);
+        AppMethodBeat.o(129754);
         return true;
       }
-      d.cXN();
+      d.egh();
     }
-    AppMethodBeat.o(51549);
+    AppMethodBeat.o(129754);
     return false;
   }
   
-  public static void oa(boolean paramBoolean)
+  public static void sV(boolean paramBoolean)
   {
-    AppMethodBeat.i(51548);
-    ab.i("MicroMsg.GestureGuardManager", "alvinluo setUserSetGesturePwd: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yHZ, Boolean.valueOf(paramBoolean));
-    com.tencent.mm.kernel.g.RL().Ru().dww();
-    AppMethodBeat.o(51548);
+    AppMethodBeat.i(129753);
+    ad.i("MicroMsg.GestureGuardManager", "alvinluo setUserSetGesturePwd: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.kernel.g.afB().afk().set(ae.a.FqV, Boolean.valueOf(paramBoolean));
+    com.tencent.mm.kernel.g.afB().afk().eKy();
+    AppMethodBeat.o(129753);
   }
 }
 

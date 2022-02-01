@@ -10,15 +10,15 @@ final class zzf
   
   public final void run()
   {
-    AppMethodBeat.i(57563);
+    AppMethodBeat.i(2517);
     this.zzbd.handleIntent(this.zzbb);
     zze.zzd(this.zzbd, this.zzbc);
-    AppMethodBeat.o(57563);
+    AppMethodBeat.o(2517);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.iid.zzf
  * JD-Core Version:    0.7.0.1
  */

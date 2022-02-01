@@ -1,54 +1,42 @@
 package com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class c
 {
-  public String hBF = "ok";
-  public List<b> ihJ = null;
+  public int frequency;
+  public String kxV = "";
+  public String kxW = "";
+  public int kxX;
+  public boolean kxY = false;
+  public boolean kxZ = false;
+  public boolean kya = false;
   
-  public final JSONArray aGq()
+  public final JSONObject toJSONObject()
   {
-    AppMethodBeat.i(94382);
-    JSONArray localJSONArray = new JSONArray();
-    Iterator localIterator = this.ihJ.iterator();
-    while (localIterator.hasNext()) {
-      localJSONArray.put(((b)localIterator.next()).toJSONObject());
-    }
-    AppMethodBeat.o(94382);
-    return localJSONArray;
+    AppMethodBeat.i(144695);
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("SSID", this.kxV);
+    localJSONObject.put("BSSID", this.kxW);
+    localJSONObject.put("secure", this.kxY);
+    localJSONObject.put("signalStrength", this.kxX);
+    localJSONObject.put("frequency", this.frequency);
+    AppMethodBeat.o(144695);
+    return localJSONObject;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(94381);
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("mErrorMsg:");
-    ((StringBuilder)localObject).append(this.hBF);
-    ((StringBuilder)localObject).append(" mWifiList:");
-    Iterator localIterator;
-    if ((this.ihJ != null) && (this.ihJ.size() > 0)) {
-      localIterator = this.ihJ.iterator();
-    }
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      ((StringBuilder)localObject).append(" WiFiItem:");
-      ((StringBuilder)localObject).append(localb);
-      continue;
-      ((StringBuilder)localObject).append("null:");
-    }
-    localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(94381);
-    return localObject;
+    AppMethodBeat.i(144694);
+    String str = "WiFiItem{mSsid='" + this.kxV + '\'' + ", mBssid='" + this.kxW + '\'' + ", mSignalStrength=" + this.kxX + ", mSecurity=" + this.kxY + ", frequency=" + this.frequency + '}';
+    AppMethodBeat.o(144694);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.c
  * JD-Core Version:    0.7.0.1
  */

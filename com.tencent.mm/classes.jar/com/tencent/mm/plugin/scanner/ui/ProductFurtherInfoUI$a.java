@@ -10,12 +10,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.x;
-import com.tencent.mm.platformtools.x.a;
-import com.tencent.mm.plugin.scanner.util.s;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.platformtools.u;
+import com.tencent.mm.platformtools.u.a;
+import com.tencent.mm.plugin.scanner.util.n;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,66 +23,66 @@ import java.util.Map;
 
 final class ProductFurtherInfoUI$a
   extends q
-  implements x.a
+  implements u.a
 {
   private Context mContext;
-  List<String> qxu;
-  private Map<String, ImageView> qxv;
-  private int qxw;
+  List<String> vSo;
+  private Map<String, ImageView> vSp;
+  private int vSq;
   
   public ProductFurtherInfoUI$a(ProductFurtherInfoUI paramProductFurtherInfoUI, Context paramContext)
   {
-    AppMethodBeat.i(81049);
-    this.qxu = new ArrayList();
-    this.qxv = new HashMap();
+    AppMethodBeat.i(51821);
+    this.vSo = new ArrayList();
+    this.vSp = new HashMap();
     this.mContext = paramContext;
-    x.a(this);
-    this.qxw = this.mContext.getResources().getColor(2131690169);
-    AppMethodBeat.o(81049);
+    u.a(this);
+    this.vSq = this.mContext.getResources().getColor(2131100491);
+    AppMethodBeat.o(51821);
   }
   
-  private ImageView YB(String paramString)
+  private ImageView amE(String paramString)
   {
-    AppMethodBeat.i(81051);
-    if (this.qxv.containsKey(paramString))
+    AppMethodBeat.i(51822);
+    if (this.vSp.containsKey(paramString))
     {
-      paramString = (ImageView)this.qxv.get(paramString);
-      AppMethodBeat.o(81051);
+      paramString = (ImageView)this.vSp.get(paramString);
+      AppMethodBeat.o(51822);
       return paramString;
     }
     ImageView localImageView = new ImageView(this.mContext);
     localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     localImageView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.qxv.put(paramString, localImageView);
-    AppMethodBeat.o(81051);
+    this.vSp.put(paramString, localImageView);
+    AppMethodBeat.o(51822);
     return localImageView;
   }
   
   public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(81053);
+    AppMethodBeat.i(51824);
     paramViewGroup.removeView((ImageView)paramObject);
-    paramViewGroup = (String)this.qxu.get(paramInt);
-    if (this.qxv.containsKey(paramViewGroup)) {
-      this.qxv.remove(paramViewGroup);
+    paramViewGroup = (String)this.vSo.get(paramInt);
+    if (this.vSp.containsKey(paramViewGroup)) {
+      this.vSp.remove(paramViewGroup);
     }
-    AppMethodBeat.o(81053);
+    AppMethodBeat.o(51824);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(81054);
-    int i = this.qxu.size();
-    AppMethodBeat.o(81054);
+    AppMethodBeat.i(51825);
+    int i = this.vSo.size();
+    AppMethodBeat.o(51825);
     return i;
   }
   
   public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    AppMethodBeat.i(81052);
-    Object localObject = (String)this.qxu.get(paramInt);
-    ImageView localImageView = YB((String)localObject);
-    localObject = x.a(new s((String)localObject));
+    AppMethodBeat.i(51823);
+    Object localObject = (String)this.vSo.get(paramInt);
+    ImageView localImageView = amE((String)localObject);
+    localObject = u.a(new n((String)localObject));
     if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
       localImageView.setImageBitmap((Bitmap)localObject);
@@ -93,17 +93,17 @@ final class ProductFurtherInfoUI$a
       for (;;)
       {
         paramViewGroup.addView(localImageView);
-        AppMethodBeat.o(81052);
+        AppMethodBeat.o(51823);
         return localImageView;
         localImageView.setImageBitmap(null);
-        localImageView.setBackgroundColor(this.qxw);
+        localImageView.setBackgroundColor(this.vSq);
       }
     }
     catch (Exception paramViewGroup)
     {
       for (;;)
       {
-        ab.e("MicroMsg.ProductFurtherInfoUI", "Add view failed: " + paramViewGroup.getMessage());
+        ad.e("MicroMsg.ProductFurtherInfoUI", "Add view failed: " + paramViewGroup.getMessage());
       }
     }
   }
@@ -113,22 +113,31 @@ final class ProductFurtherInfoUI$a
     return paramView == paramObject;
   }
   
-  public final void m(String paramString, Bitmap paramBitmap)
+  public final void l(final String paramString, final Bitmap paramBitmap)
   {
-    AppMethodBeat.i(81055);
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled()) && (!bo.isNullOrNil(paramString)))
+    AppMethodBeat.i(51826);
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()) && (!bt.isNullOrNil(paramString)))
     {
-      paramString = YB(paramString);
+      paramString = amE(paramString);
       if (paramString != null) {
-        al.d(new ProductFurtherInfoUI.a.1(this, paramString, paramBitmap));
+        aq.f(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(51820);
+            paramString.setImageBitmap(paramBitmap);
+            paramString.setBackgroundColor(0);
+            AppMethodBeat.o(51820);
+          }
+        });
       }
     }
-    AppMethodBeat.o(81055);
+    AppMethodBeat.o(51826);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ProductFurtherInfoUI.a
  * JD-Core Version:    0.7.0.1
  */

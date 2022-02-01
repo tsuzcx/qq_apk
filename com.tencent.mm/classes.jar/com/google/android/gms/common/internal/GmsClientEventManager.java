@@ -30,7 +30,7 @@ public final class GmsClientEventManager
   
   public GmsClientEventManager(Looper paramLooper, GmsClientEventState paramGmsClientEventState)
   {
-    AppMethodBeat.i(61334);
+    AppMethodBeat.i(11826);
     this.zztg = new ArrayList();
     this.zzth = new ArrayList();
     this.zzti = new ArrayList();
@@ -40,7 +40,7 @@ public final class GmsClientEventManager
     this.mLock = new Object();
     this.zztf = paramGmsClientEventState;
     this.mHandler = new Handler(paramLooper, this);
-    AppMethodBeat.o(61334);
+    AppMethodBeat.o(11826);
   }
   
   public final boolean areCallbacksEnabled()
@@ -50,10 +50,10 @@ public final class GmsClientEventManager
   
   public final void disableCallbacks()
   {
-    AppMethodBeat.i(61335);
+    AppMethodBeat.i(11827);
     this.zztj = false;
     this.zztk.incrementAndGet();
-    AppMethodBeat.o(61335);
+    AppMethodBeat.o(11827);
   }
   
   public final void enableCallbacks()
@@ -63,7 +63,7 @@ public final class GmsClientEventManager
   
   public final boolean handleMessage(Message arg1)
   {
-    AppMethodBeat.i(61346);
+    AppMethodBeat.i(11838);
     if (???.what == 1)
     {
       GoogleApiClient.ConnectionCallbacks localConnectionCallbacks = (GoogleApiClient.ConnectionCallbacks)???.obj;
@@ -72,36 +72,36 @@ public final class GmsClientEventManager
         if ((this.zztj) && (this.zztf.isConnected()) && (this.zztg.contains(localConnectionCallbacks))) {
           localConnectionCallbacks.onConnected(this.zztf.getConnectionHint());
         }
-        AppMethodBeat.o(61346);
+        AppMethodBeat.o(11838);
         return true;
       }
     }
     int i = ???.what;
     Log.wtf("GmsClientEvents", 45 + "Don't know how to handle message: " + i, new Exception());
-    AppMethodBeat.o(61346);
+    AppMethodBeat.o(11838);
     return false;
   }
   
   public final boolean isConnectionCallbacksRegistered(GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks)
   {
-    AppMethodBeat.i(61341);
+    AppMethodBeat.i(11833);
     Preconditions.checkNotNull(paramConnectionCallbacks);
     synchronized (this.mLock)
     {
       boolean bool = this.zztg.contains(paramConnectionCallbacks);
-      AppMethodBeat.o(61341);
+      AppMethodBeat.o(11833);
       return bool;
     }
   }
   
   public final boolean isConnectionFailedListenerRegistered(GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
-    AppMethodBeat.i(61344);
+    AppMethodBeat.i(11836);
     Preconditions.checkNotNull(paramOnConnectionFailedListener);
     synchronized (this.mLock)
     {
       boolean bool = this.zzti.contains(paramOnConnectionFailedListener);
-      AppMethodBeat.o(61344);
+      AppMethodBeat.o(11836);
       return bool;
     }
   }
@@ -110,7 +110,7 @@ public final class GmsClientEventManager
   public final void onConnectionFailure(ConnectionResult paramConnectionResult)
   {
     int i = 0;
-    AppMethodBeat.i(61339);
+    AppMethodBeat.i(11831);
     boolean bool;
     if (Looper.myLooper() == this.mHandler.getLooper()) {
       bool = true;
@@ -134,7 +134,7 @@ public final class GmsClientEventManager
             localObject2 = (GoogleApiClient.OnConnectionFailedListener)localObject2;
             if ((!this.zztj) || (this.zztk.get() != k))
             {
-              AppMethodBeat.o(61339);
+              AppMethodBeat.o(11831);
               return;
               bool = false;
               break;
@@ -149,17 +149,17 @@ public final class GmsClientEventManager
         }
       }
     }
-    AppMethodBeat.o(61339);
+    AppMethodBeat.o(11831);
   }
   
   @VisibleForTesting
   protected final void onConnectionSuccess()
   {
-    AppMethodBeat.i(61336);
+    AppMethodBeat.i(11828);
     synchronized (this.mLock)
     {
       onConnectionSuccess(this.zztf.getConnectionHint());
-      AppMethodBeat.o(61336);
+      AppMethodBeat.o(11828);
       return;
     }
   }
@@ -169,7 +169,7 @@ public final class GmsClientEventManager
   {
     boolean bool2 = true;
     int i = 0;
-    AppMethodBeat.i(61337);
+    AppMethodBeat.i(11829);
     boolean bool1;
     if (Looper.myLooper() == this.mHandler.getLooper())
     {
@@ -181,14 +181,14 @@ public final class GmsClientEventManager
       synchronized (this.mLock)
       {
         if (this.zztl) {
-          break label225;
+          break label227;
         }
         bool1 = true;
         Preconditions.checkState(bool1);
         this.mHandler.removeMessages(1);
         this.zztl = true;
         if (this.zzth.size() != 0) {
-          break label231;
+          break label233;
         }
         bool1 = bool2;
         Preconditions.checkState(bool1);
@@ -197,13 +197,13 @@ public final class GmsClientEventManager
         localArrayList = (ArrayList)localArrayList;
         int m = localArrayList.size();
         if (i >= m) {
-          break label237;
+          break label239;
         }
         Object localObject2 = localArrayList.get(i);
         int j = i + 1;
         localObject2 = (GoogleApiClient.ConnectionCallbacks)localObject2;
         if ((!this.zztj) || (!this.zztf.isConnected()) || (this.zztk.get() != k)) {
-          break label237;
+          break label239;
         }
         i = j;
         if (this.zzth.contains(localObject2)) {
@@ -214,23 +214,23 @@ public final class GmsClientEventManager
       }
       bool1 = false;
       break;
-      label225:
+      label227:
       bool1 = false;
       continue;
-      label231:
+      label233:
       bool1 = false;
     }
-    label237:
+    label239:
     this.zzth.clear();
     this.zztl = false;
-    AppMethodBeat.o(61337);
+    AppMethodBeat.o(11829);
   }
   
   @VisibleForTesting
   public final void onUnintentionalDisconnection(int paramInt)
   {
     int i = 0;
-    AppMethodBeat.i(61338);
+    AppMethodBeat.i(11830);
     if (Looper.myLooper() == this.mHandler.getLooper()) {}
     for (boolean bool = true;; bool = false)
     {
@@ -264,12 +264,12 @@ public final class GmsClientEventManager
     }
     this.zzth.clear();
     this.zztl = false;
-    AppMethodBeat.o(61338);
+    AppMethodBeat.o(11830);
   }
   
   public final void registerConnectionCallbacks(GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks)
   {
-    AppMethodBeat.i(61340);
+    AppMethodBeat.i(11832);
     Preconditions.checkNotNull(paramConnectionCallbacks);
     synchronized (this.mLock)
     {
@@ -280,7 +280,7 @@ public final class GmsClientEventManager
         if (this.zztf.isConnected()) {
           this.mHandler.sendMessage(this.mHandler.obtainMessage(1, paramConnectionCallbacks));
         }
-        AppMethodBeat.o(61340);
+        AppMethodBeat.o(11832);
         return;
       }
       this.zztg.add(paramConnectionCallbacks);
@@ -289,7 +289,7 @@ public final class GmsClientEventManager
   
   public final void registerConnectionFailedListener(GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
-    AppMethodBeat.i(61343);
+    AppMethodBeat.i(11835);
     Preconditions.checkNotNull(paramOnConnectionFailedListener);
     synchronized (this.mLock)
     {
@@ -297,7 +297,7 @@ public final class GmsClientEventManager
       {
         paramOnConnectionFailedListener = String.valueOf(paramOnConnectionFailedListener);
         new StringBuilder(String.valueOf(paramOnConnectionFailedListener).length() + 67).append("registerConnectionFailedListener(): listener ").append(paramOnConnectionFailedListener).append(" is already registered");
-        AppMethodBeat.o(61343);
+        AppMethodBeat.o(11835);
         return;
       }
       this.zzti.add(paramOnConnectionFailedListener);
@@ -306,7 +306,7 @@ public final class GmsClientEventManager
   
   public final void unregisterConnectionCallbacks(GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks)
   {
-    AppMethodBeat.i(61342);
+    AppMethodBeat.i(11834);
     Preconditions.checkNotNull(paramConnectionCallbacks);
     synchronized (this.mLock)
     {
@@ -317,7 +317,7 @@ public final class GmsClientEventManager
       }
       while (!this.zztl)
       {
-        AppMethodBeat.o(61342);
+        AppMethodBeat.o(11834);
         return;
       }
       this.zzth.add(paramConnectionCallbacks);
@@ -326,7 +326,7 @@ public final class GmsClientEventManager
   
   public final void unregisterConnectionFailedListener(GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
-    AppMethodBeat.i(61345);
+    AppMethodBeat.i(11837);
     Preconditions.checkNotNull(paramOnConnectionFailedListener);
     synchronized (this.mLock)
     {
@@ -335,7 +335,7 @@ public final class GmsClientEventManager
         paramOnConnectionFailedListener = String.valueOf(paramOnConnectionFailedListener);
         new StringBuilder(String.valueOf(paramOnConnectionFailedListener).length() + 57).append("unregisterConnectionFailedListener(): listener ").append(paramOnConnectionFailedListener).append(" not found");
       }
-      AppMethodBeat.o(61345);
+      AppMethodBeat.o(11837);
       return;
     }
   }

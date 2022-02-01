@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.widget.input.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class d
 {
-  private static int ag(Class paramClass)
+  private static int aJ(Class paramClass)
   {
-    AppMethodBeat.i(77453);
+    AppMethodBeat.i(131529);
     if (!paramClass.isEnum())
     {
-      AppMethodBeat.o(77453);
+      AppMethodBeat.o(131529);
       return 0;
     }
     paramClass = paramClass.getEnumConstants();
@@ -22,51 +22,51 @@ public final class d
       j = Math.max(((Enum)paramClass[i]).name().length(), j);
       i += 1;
     }
-    AppMethodBeat.o(77453);
+    AppMethodBeat.o(131529);
     return j;
   }
   
-  public static Integer bk(Object paramObject)
+  public static Integer cw(Object paramObject)
   {
-    AppMethodBeat.i(77455);
+    AppMethodBeat.i(131531);
     if (paramObject == null)
     {
-      AppMethodBeat.o(77455);
+      AppMethodBeat.o(131531);
       return null;
     }
     if ((paramObject instanceof Integer))
     {
       paramObject = (Integer)paramObject;
-      AppMethodBeat.o(77455);
+      AppMethodBeat.o(131531);
       return paramObject;
     }
     int i;
     if ((paramObject instanceof Number))
     {
       i = ((Number)paramObject).intValue();
-      AppMethodBeat.o(77455);
+      AppMethodBeat.o(131531);
       return Integer.valueOf(i);
     }
     if ((paramObject instanceof String)) {
       try
       {
         i = (int)Double.parseDouble((String)paramObject);
-        AppMethodBeat.o(77455);
+        AppMethodBeat.o(131531);
         return Integer.valueOf(i);
       }
       catch (NumberFormatException paramObject) {}
     }
-    AppMethodBeat.o(77455);
+    AppMethodBeat.o(131531);
     return null;
   }
   
-  static <T extends Enum> T g(String paramString, Class<T> paramClass)
+  static <T extends Enum> T h(String paramString, Class<T> paramClass)
   {
-    AppMethodBeat.i(77454);
-    int i = ag(paramClass);
-    if ((bo.isNullOrNil(paramString)) || (paramString.length() > i))
+    AppMethodBeat.i(131530);
+    int i = aJ(paramClass);
+    if ((bt.isNullOrNil(paramString)) || (paramString.length() > i))
     {
-      AppMethodBeat.o(77454);
+      AppMethodBeat.o(131530);
       return null;
     }
     paramString = paramString.toUpperCase();
@@ -79,12 +79,12 @@ public final class d
       if (paramString.equals(((Enum)localObject).name()))
       {
         paramString = (Enum)localObject;
-        AppMethodBeat.o(77454);
+        AppMethodBeat.o(131530);
         return paramString;
       }
       i += 1;
     }
-    AppMethodBeat.o(77454);
+    AppMethodBeat.o(131530);
     return null;
   }
 }

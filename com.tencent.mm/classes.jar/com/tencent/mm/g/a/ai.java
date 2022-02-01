@@ -1,12 +1,11 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
 
 public final class ai
-  extends b
+  extends com.tencent.mm.sdk.b.b
 {
-  public a cns;
+  public a dcd;
   
   public ai()
   {
@@ -15,16 +14,18 @@ public final class ai
   
   private ai(byte paramByte)
   {
-    AppMethodBeat.i(13796);
-    this.cns = new a();
-    this.ymq = false;
+    AppMethodBeat.i(149852);
+    this.dcd = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(13796);
+    AppMethodBeat.o(149852);
   }
   
   public static final class a
   {
-    public String userName;
+    public com.tencent.mm.pluginsdk.ui.b.b dce;
+    public boolean independent = true;
+    public int level = 1;
   }
 }
 

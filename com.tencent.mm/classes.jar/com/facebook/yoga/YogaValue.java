@@ -12,18 +12,18 @@ public class YogaValue
   
   static
   {
-    AppMethodBeat.i(144195);
+    AppMethodBeat.i(18218);
     UNDEFINED = new YogaValue(1.0E+021F, YogaUnit.UNDEFINED);
     ZERO = new YogaValue(0.0F, YogaUnit.POINT);
     AUTO = new YogaValue(1.0E+021F, YogaUnit.AUTO);
-    AppMethodBeat.o(144195);
+    AppMethodBeat.o(18218);
   }
   
   YogaValue(float paramFloat, int paramInt)
   {
     this(paramFloat, YogaUnit.fromInt(paramInt));
-    AppMethodBeat.i(144190);
-    AppMethodBeat.o(144190);
+    AppMethodBeat.i(18213);
+    AppMethodBeat.o(18213);
   }
   
   public YogaValue(float paramFloat, YogaUnit paramYogaUnit)
@@ -34,38 +34,38 @@ public class YogaValue
   
   public static YogaValue parse(String paramString)
   {
-    AppMethodBeat.i(144194);
+    AppMethodBeat.i(18217);
     if (paramString == null)
     {
-      AppMethodBeat.o(144194);
+      AppMethodBeat.o(18217);
       return null;
     }
     if ("undefined".equals(paramString))
     {
       paramString = UNDEFINED;
-      AppMethodBeat.o(144194);
+      AppMethodBeat.o(18217);
       return paramString;
     }
     if ("auto".equals(paramString))
     {
       paramString = AUTO;
-      AppMethodBeat.o(144194);
+      AppMethodBeat.o(18217);
       return paramString;
     }
     if (paramString.endsWith("%"))
     {
       paramString = new YogaValue(Float.parseFloat(paramString.substring(0, paramString.length() - 1)), YogaUnit.PERCENT);
-      AppMethodBeat.o(144194);
+      AppMethodBeat.o(18217);
       return paramString;
     }
     paramString = new YogaValue(Float.parseFloat(paramString), YogaUnit.POINT);
-    AppMethodBeat.o(144194);
+    AppMethodBeat.o(18217);
     return paramString;
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(144191);
+    AppMethodBeat.i(18214);
     if ((paramObject instanceof YogaValue))
     {
       paramObject = (YogaValue)paramObject;
@@ -73,49 +73,49 @@ public class YogaValue
       {
         if ((this.unit == YogaUnit.UNDEFINED) || (Float.compare(this.value, paramObject.value) == 0))
         {
-          AppMethodBeat.o(144191);
+          AppMethodBeat.o(18214);
           return true;
         }
-        AppMethodBeat.o(144191);
+        AppMethodBeat.o(18214);
         return false;
       }
     }
-    AppMethodBeat.o(144191);
+    AppMethodBeat.o(18214);
     return false;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(144192);
+    AppMethodBeat.i(18215);
     int i = Float.floatToIntBits(this.value);
     int j = this.unit.intValue();
-    AppMethodBeat.o(144192);
+    AppMethodBeat.o(18215);
     return i + j;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(144193);
+    AppMethodBeat.i(18216);
     Object localObject;
-    switch (YogaValue.1.$SwitchMap$com$facebook$yoga$YogaUnit[this.unit.ordinal()])
+    switch (1.$SwitchMap$com$facebook$yoga$YogaUnit[this.unit.ordinal()])
     {
     default: 
       localObject = new IllegalStateException();
-      AppMethodBeat.o(144193);
+      AppMethodBeat.o(18216);
       throw ((Throwable)localObject);
     case 1: 
-      AppMethodBeat.o(144193);
+      AppMethodBeat.o(18216);
       return "undefined";
     case 2: 
       localObject = Float.toString(this.value);
-      AppMethodBeat.o(144193);
+      AppMethodBeat.o(18216);
       return localObject;
     case 3: 
       localObject = this.value + "%";
-      AppMethodBeat.o(144193);
+      AppMethodBeat.o(18216);
       return localObject;
     }
-    AppMethodBeat.o(144193);
+    AppMethodBeat.o(18216);
     return "auto";
   }
 }

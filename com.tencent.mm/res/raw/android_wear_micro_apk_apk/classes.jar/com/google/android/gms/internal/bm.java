@@ -9,7 +9,7 @@ public abstract interface bm
 {
   public abstract void b(ak paramak, Set<Scope> paramSet);
   
-  public abstract void k(ConnectionResult paramConnectionResult);
+  public abstract void l(ConnectionResult paramConnectionResult);
 }
 
 

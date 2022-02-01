@@ -28,7 +28,7 @@ public class Stsz
   
   public void parse(Parsable paramParsable, Box paramBox)
   {
-    AppMethodBeat.i(128482);
+    AppMethodBeat.i(114263);
     super.parse(paramParsable, paramBox);
     this.sampleSize = paramParsable.readInt();
     this.sampleCount = paramParsable.readInt();
@@ -38,15 +38,15 @@ public class Stsz
     if ((this.sampleSize == 0) && (this.sampleCount == 0))
     {
       paramParsable = new InvalidBoxException("invalide stsz: both [sample_count] and [sample_size] is 0!");
-      AppMethodBeat.o(128482);
+      AppMethodBeat.o(114263);
       throw paramParsable;
     }
-    AppMethodBeat.o(128482);
+    AppMethodBeat.o(114263);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.mpeg4.boxes.Stsz
  * JD-Core Version:    0.7.0.1
  */

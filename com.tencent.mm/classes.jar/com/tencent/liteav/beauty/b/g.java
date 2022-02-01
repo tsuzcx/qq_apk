@@ -16,7 +16,7 @@ public class g
   
   public int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(66910);
+    AppMethodBeat.i(15097);
     int k = this.s.size();
     k();
     int j = 0;
@@ -27,33 +27,33 @@ public class g
       if (i != 0)
       {
         paramInt1 = localg.a(paramInt1, paramInt2, paramInt3);
-        label63:
+        label64:
         if (i == 0) {
-          break label102;
+          break label103;
         }
       }
-      label102:
+      label103:
       for (i = 0;; i = 1)
       {
         j += 1;
         break;
         paramInt1 = localg.a(paramInt1, this.t[0], this.u[0]);
-        break label63;
+        break label64;
       }
     }
     if (i != 0) {
       this.v.a(paramInt1, paramInt2, paramInt3);
     }
-    AppMethodBeat.o(66910);
+    AppMethodBeat.o(15097);
     return paramInt3;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(66909);
+    AppMethodBeat.i(15096);
     if ((this.e == paramInt1) && (this.f == paramInt2))
     {
-      AppMethodBeat.o(66909);
+      AppMethodBeat.o(15096);
       return;
     }
     if (this.t != null) {
@@ -91,12 +91,12 @@ public class g
         i += 1;
       }
     }
-    AppMethodBeat.o(66909);
+    AppMethodBeat.o(15096);
   }
   
   public boolean b()
   {
-    AppMethodBeat.i(66906);
+    AppMethodBeat.i(15093);
     boolean bool2 = super.b();
     boolean bool1 = bool2;
     if (bool2)
@@ -115,27 +115,27 @@ public class g
     }
     if ((bool1) && (GLES20.glGetError() == 0))
     {
-      AppMethodBeat.o(66906);
+      AppMethodBeat.o(15093);
       return true;
     }
-    AppMethodBeat.o(66906);
+    AppMethodBeat.o(15093);
     return false;
   }
   
   public void e()
   {
-    AppMethodBeat.i(66907);
+    AppMethodBeat.i(15094);
     super.e();
     Iterator localIterator = this.r.iterator();
     while (localIterator.hasNext()) {
       ((com.tencent.liteav.basic.d.g)localIterator.next()).d();
     }
-    AppMethodBeat.o(66907);
+    AppMethodBeat.o(15094);
   }
   
   public void f()
   {
-    AppMethodBeat.i(66908);
+    AppMethodBeat.i(15095);
     super.f();
     if (this.u != null)
     {
@@ -147,7 +147,7 @@ public class g
       GLES20.glDeleteFramebuffers(2, this.t, 0);
       this.t = null;
     }
-    AppMethodBeat.o(66908);
+    AppMethodBeat.o(15095);
   }
 }
 

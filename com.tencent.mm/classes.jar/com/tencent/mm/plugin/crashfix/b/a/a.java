@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.crashfix.b.a;
 
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.reflect.Proxy;
 
 public final class a
 {
   public static WindowManager a(WindowManager paramWindowManager)
   {
-    AppMethodBeat.i(156352);
+    AppMethodBeat.i(145622);
     paramWindowManager = (WindowManager)Proxy.newProxyInstance(paramWindowManager.getClass().getClassLoader(), paramWindowManager.getClass().getInterfaces(), new b(paramWindowManager));
-    ab.i("MicroMsg.SafeWindowManager", "proxy");
-    AppMethodBeat.o(156352);
+    ad.i("MicroMsg.SafeWindowManager", "proxy");
+    AppMethodBeat.o(145622);
     return paramWindowManager;
   }
 }

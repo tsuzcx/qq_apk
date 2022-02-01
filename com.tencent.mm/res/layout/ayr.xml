@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:paddingTop="@dimen/m1" android:paddingBottom="@dimen/m1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:id="@id/al4" android:background="@color/kh" style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/etw" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lz" android:layout_height="@dimen/lz" android:src="@drawable/b8" android:scaleType="fitCenter" android:contentDescription="@string/eta" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/etx" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lz" android:layout_height="@dimen/lz" android:src="@raw/album_wesee_icon_normal" android:scaleType="fitCenter" android:contentDescription="@string/etb" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/ety" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lz" android:layout_height="@dimen/lz" android:src="@drawable/b2" android:scaleType="fitCenter" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/etz" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/dl" android:layout_width="@dimen/lz" android:layout_height="@dimen/lz" android:src="@drawable/b9" android:scaleType="fitCenter" />
-        </LinearLayout>
-    </LinearLayout>
+    <TextView android:ellipsize="none" android:id="@id/bm1" android:padding="10.0dip" android:visibility="gone" android:singleLine="false" style="@style/lv" />
+    <com.tencent.mm.ui.base.MMPullDownView android:id="@id/eri" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:id="@id/erf" android:background="@null" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/a2p" android:transcriptMode="alwaysScroll" android:cacheColorHint="#00000000" android:divider="@null" />
+    </com.tencent.mm.ui.base.MMPullDownView>
 </LinearLayout>

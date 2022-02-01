@@ -4,30 +4,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class u
 {
-  public long aJP;
-  private long bbr;
-  public volatile long bbs;
+  public long bfn;
+  private long bzs;
+  public volatile long bzt;
   
   public u(long paramLong)
   {
-    AppMethodBeat.i(95941);
-    this.bbs = -9223372036854775807L;
-    ag(paramLong);
-    AppMethodBeat.o(95941);
+    AppMethodBeat.i(93205);
+    this.bzt = -9223372036854775807L;
+    ar(paramLong);
+    AppMethodBeat.o(93205);
   }
   
-  public static long aj(long paramLong)
+  public static long au(long paramLong)
   {
     return 1000000L * paramLong / 90000L;
   }
   
-  public static long ak(long paramLong)
+  public static long av(long paramLong)
   {
     return 90000L * paramLong / 1000000L;
   }
   
   /* Error */
-  public final void ag(long paramLong)
+  public final void ar(long paramLong)
   {
     // Byte code:
     //   0: aload_0
@@ -35,7 +35,7 @@ public final class u
     //   2: ldc 39
     //   4: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 24	com/google/android/exoplayer2/i/u:bbs	J
+    //   8: getfield 24	com/google/android/exoplayer2/i/u:bzt	J
     //   11: ldc2_w 21
     //   14: lcmp
     //   15: ifne +22 -> 37
@@ -45,7 +45,7 @@ public final class u
     //   21: invokestatic 45	com/google/android/exoplayer2/i/a:checkState	(Z)V
     //   24: aload_0
     //   25: lload_1
-    //   26: putfield 47	com/google/android/exoplayer2/i/u:aJP	J
+    //   26: putfield 47	com/google/android/exoplayer2/i/u:bfn	J
     //   29: ldc 39
     //   31: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   34: aload_0
@@ -71,17 +71,17 @@ public final class u
     //   20	34	42	finally
   }
   
-  public final long ah(long paramLong)
+  public final long as(long paramLong)
   {
-    AppMethodBeat.i(95943);
+    AppMethodBeat.i(93207);
     if (paramLong == -9223372036854775807L)
     {
-      AppMethodBeat.o(95943);
+      AppMethodBeat.o(93207);
       return -9223372036854775807L;
     }
-    if (this.bbs != -9223372036854775807L)
+    if (this.bzt != -9223372036854775807L)
     {
-      long l2 = ak(this.bbs);
+      long l2 = av(this.bzt);
       long l3 = (4294967296L + l2) / 8589934592L;
       long l1 = (l3 - 1L) * 8589934592L + paramLong;
       paramLong = l3 * 8589934592L + paramLong;
@@ -91,71 +91,71 @@ public final class u
     }
     for (;;)
     {
-      paramLong = ai(aj(paramLong));
-      AppMethodBeat.o(95943);
+      paramLong = at(au(paramLong));
+      AppMethodBeat.o(93207);
       return paramLong;
     }
   }
   
-  public final long ai(long paramLong)
+  public final long at(long paramLong)
   {
-    AppMethodBeat.i(95944);
+    AppMethodBeat.i(93208);
     if (paramLong == -9223372036854775807L)
     {
-      AppMethodBeat.o(95944);
+      AppMethodBeat.o(93208);
       return -9223372036854775807L;
     }
-    if (this.bbs != -9223372036854775807L) {
-      this.bbs = paramLong;
+    if (this.bzt != -9223372036854775807L) {
+      this.bzt = paramLong;
     }
     for (;;)
     {
-      long l = this.bbr;
-      AppMethodBeat.o(95944);
+      long l = this.bzs;
+      AppMethodBeat.o(93208);
       return l + paramLong;
-      if (this.aJP != 9223372036854775807L) {
-        this.bbr = (this.aJP - paramLong);
+      if (this.bfn != 9223372036854775807L) {
+        this.bzs = (this.bfn - paramLong);
       }
       try
       {
-        this.bbs = paramLong;
+        this.bzt = paramLong;
         notifyAll();
       }
       finally
       {
-        AppMethodBeat.o(95944);
+        AppMethodBeat.o(93208);
       }
     }
   }
   
-  public final long rb()
+  public final long vY()
   {
     long l = -9223372036854775807L;
-    if (this.aJP == 9223372036854775807L) {
+    if (this.bfn == 9223372036854775807L) {
       l = 0L;
     }
-    while (this.bbs == -9223372036854775807L) {
+    while (this.bzt == -9223372036854775807L) {
       return l;
     }
-    return this.bbr;
+    return this.bzs;
   }
   
-  public final void rc()
+  public final void vZ()
   {
     try
     {
-      AppMethodBeat.i(95945);
-      while (this.bbs == -9223372036854775807L) {
+      AppMethodBeat.i(93209);
+      while (this.bzt == -9223372036854775807L) {
         wait();
       }
-      AppMethodBeat.o(95945);
+      AppMethodBeat.o(93209);
     }
     finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.i.u
  * JD-Core Version:    0.7.0.1
  */

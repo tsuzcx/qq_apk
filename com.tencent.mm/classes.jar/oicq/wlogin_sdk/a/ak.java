@@ -5,7 +5,7 @@ public final class ak
 {
   public ak()
   {
-    this.CMD = 356;
+    this.Kik = 356;
   }
 }
 

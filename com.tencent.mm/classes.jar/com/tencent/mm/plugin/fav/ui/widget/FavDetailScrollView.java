@@ -8,7 +8,7 @@ import com.tencent.mm.ui.widget.MMLoadScrollView;
 public class FavDetailScrollView
   extends MMLoadScrollView
 {
-  private FavDetailScrollView.a mDT;
+  private a qlE;
   
   public FavDetailScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,28 +22,35 @@ public class FavDetailScrollView
   
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(74670);
+    AppMethodBeat.i(107511);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((getScrollY() == 0) && (this.mDT != null))
+    if ((getScrollY() == 0) && (this.qlE != null))
     {
-      this.mDT.bxW();
-      AppMethodBeat.o(74670);
+      this.qlE.cjx();
+      AppMethodBeat.o(107511);
       return;
     }
-    if (this.mDT != null) {
-      this.mDT.bxV();
+    if (this.qlE != null) {
+      this.qlE.cjw();
     }
-    AppMethodBeat.o(74670);
+    AppMethodBeat.o(107511);
   }
   
-  public void setOnScrollChangeListener(FavDetailScrollView.a parama)
+  public void setOnScrollChangeListener(a parama)
   {
-    this.mDT = parama;
+    this.qlE = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void cjw();
+    
+    public abstract void cjx();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView
  * JD-Core Version:    0.7.0.1
  */

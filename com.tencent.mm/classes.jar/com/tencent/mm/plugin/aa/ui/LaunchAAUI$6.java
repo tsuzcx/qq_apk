@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.aa.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.q;
 
 final class LaunchAAUI$6
   implements View.OnClickListener
@@ -11,9 +12,9 @@ final class LaunchAAUI$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(40828);
-    LaunchAAUI.i(this.grm);
-    AppMethodBeat.o(40828);
+    AppMethodBeat.i(63633);
+    q.aP(this.idP);
+    AppMethodBeat.o(63633);
   }
 }
 

@@ -28,17 +28,17 @@ public final class zzi
   
   static
   {
-    AppMethodBeat.i(50443);
+    AppMethodBeat.i(88338);
     zzer = new Logger("GoogleSignInCommon", new String[0]);
-    AppMethodBeat.o(50443);
+    AppMethodBeat.o(88338);
   }
   
   public static GoogleSignInResult getSignInResultFromIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(50442);
+    AppMethodBeat.i(88337);
     if ((paramIntent == null) || ((!paramIntent.hasExtra("googleSignInStatus")) && (!paramIntent.hasExtra("googleSignInAccount"))))
     {
-      AppMethodBeat.o(50442);
+      AppMethodBeat.o(88337);
       return null;
     }
     GoogleSignInAccount localGoogleSignInAccount = (GoogleSignInAccount)paramIntent.getParcelableExtra("googleSignInAccount");
@@ -47,13 +47,13 @@ public final class zzi
       paramIntent = Status.RESULT_SUCCESS;
     }
     paramIntent = new GoogleSignInResult(localGoogleSignInAccount, paramIntent);
-    AppMethodBeat.o(50442);
+    AppMethodBeat.o(88337);
     return paramIntent;
   }
   
   public static Intent zzd(Context paramContext, GoogleSignInOptions paramGoogleSignInOptions)
   {
-    AppMethodBeat.i(50435);
+    AppMethodBeat.i(88330);
     zzer.d("getSignInIntent()", new Object[0]);
     paramGoogleSignInOptions = new SignInConfiguration(paramContext.getPackageName(), paramGoogleSignInOptions);
     Intent localIntent = new Intent("com.google.android.gms.auth.GOOGLE_SIGN_IN");
@@ -62,13 +62,13 @@ public final class zzi
     paramContext = new Bundle();
     paramContext.putParcelable("config", paramGoogleSignInOptions);
     localIntent.putExtra("config", paramContext);
-    AppMethodBeat.o(50435);
+    AppMethodBeat.o(88330);
     return localIntent;
   }
   
   public static OptionalPendingResult<GoogleSignInResult> zzd(GoogleApiClient paramGoogleApiClient, Context paramContext, GoogleSignInOptions paramGoogleSignInOptions, boolean paramBoolean)
   {
-    AppMethodBeat.i(50438);
+    AppMethodBeat.i(88333);
     zzer.d("silentSignIn()", new Object[0]);
     zzer.d("getEligibleSavedSignInResult()", new Object[0]);
     Preconditions.checkNotNull(paramGoogleSignInOptions);
@@ -102,7 +102,7 @@ public final class zzi
       }
       zzer.d("Eligible saved sign in result found", new Object[0]);
       paramGoogleApiClient = PendingResults.immediatePendingResult((Result)localObject, paramGoogleApiClient);
-      AppMethodBeat.o(50438);
+      AppMethodBeat.o(88333);
       return paramGoogleApiClient;
       bool = false;
       break;
@@ -113,83 +113,83 @@ public final class zzi
     if (paramBoolean)
     {
       paramGoogleApiClient = PendingResults.immediatePendingResult(new GoogleSignInResult(null, new Status(4)), paramGoogleApiClient);
-      AppMethodBeat.o(50438);
+      AppMethodBeat.o(88333);
       return paramGoogleApiClient;
     }
     zzer.d("trySilentSignIn()", new Object[0]);
     paramGoogleApiClient = new OptionalPendingResultImpl(paramGoogleApiClient.enqueue(new zzj(paramGoogleApiClient, paramContext, paramGoogleSignInOptions)));
-    AppMethodBeat.o(50438);
+    AppMethodBeat.o(88333);
     return paramGoogleApiClient;
   }
   
   public static PendingResult<Status> zzd(GoogleApiClient paramGoogleApiClient, Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(50439);
+    AppMethodBeat.i(88334);
     zzer.d("Signing out", new Object[0]);
     zzd(paramContext);
     if (paramBoolean)
     {
       paramGoogleApiClient = PendingResults.immediatePendingResult(Status.RESULT_SUCCESS, paramGoogleApiClient);
-      AppMethodBeat.o(50439);
+      AppMethodBeat.o(88334);
       return paramGoogleApiClient;
     }
     paramGoogleApiClient = paramGoogleApiClient.execute(new zzl(paramGoogleApiClient));
-    AppMethodBeat.o(50439);
+    AppMethodBeat.o(88334);
     return paramGoogleApiClient;
   }
   
   private static void zzd(Context paramContext)
   {
-    AppMethodBeat.i(50441);
+    AppMethodBeat.i(88336);
     zzq.zze(paramContext).clear();
     paramContext = GoogleApiClient.getAllClients().iterator();
     while (paramContext.hasNext()) {
       ((GoogleApiClient)paramContext.next()).maybeSignOut();
     }
     GoogleApiManager.reportSignOut();
-    AppMethodBeat.o(50441);
+    AppMethodBeat.o(88336);
   }
   
   public static Intent zze(Context paramContext, GoogleSignInOptions paramGoogleSignInOptions)
   {
-    AppMethodBeat.i(50436);
+    AppMethodBeat.i(88331);
     zzer.d("getFallbackSignInIntent()", new Object[0]);
     paramContext = zzd(paramContext, paramGoogleSignInOptions);
     paramContext.setAction("com.google.android.gms.auth.APPAUTH_SIGN_IN");
-    AppMethodBeat.o(50436);
+    AppMethodBeat.o(88331);
     return paramContext;
   }
   
   public static PendingResult<Status> zze(GoogleApiClient paramGoogleApiClient, Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(50440);
+    AppMethodBeat.i(88335);
     zzer.d("Revoking access", new Object[0]);
     String str = Storage.getInstance(paramContext).getSavedRefreshToken();
     zzd(paramContext);
     if (paramBoolean)
     {
       paramGoogleApiClient = zze.zzg(str);
-      AppMethodBeat.o(50440);
+      AppMethodBeat.o(88335);
       return paramGoogleApiClient;
     }
     paramGoogleApiClient = paramGoogleApiClient.execute(new zzn(paramGoogleApiClient));
-    AppMethodBeat.o(50440);
+    AppMethodBeat.o(88335);
     return paramGoogleApiClient;
   }
   
   public static Intent zzf(Context paramContext, GoogleSignInOptions paramGoogleSignInOptions)
   {
-    AppMethodBeat.i(50437);
+    AppMethodBeat.i(88332);
     zzer.d("getNoImplementationSignInIntent()", new Object[0]);
     paramContext = zzd(paramContext, paramGoogleSignInOptions);
     paramContext.setAction("com.google.android.gms.auth.NO_IMPL");
-    AppMethodBeat.o(50437);
+    AppMethodBeat.o(88332);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.internal.zzi
  * JD-Core Version:    0.7.0.1
  */

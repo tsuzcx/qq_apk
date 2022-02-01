@@ -1,199 +1,285 @@
 package com.tencent.mm.pluginsdk.ui.preference;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bi.c;
-import com.tencent.mm.bi.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bk.d;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.messenger.foundation.a.a.l;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ax;
-import com.tencent.mm.storage.ay;
-import com.tencent.mm.storage.bf;
-import com.tencent.mm.storage.bg;
-import com.tencent.mm.storage.bi.d;
-import com.tencent.mm.storage.bt;
+import com.tencent.mm.pluginsdk.model.o;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ba;
+import com.tencent.mm.storage.bb;
+import com.tencent.mm.storage.bi;
+import com.tencent.mm.storage.bj;
+import com.tencent.mm.storage.bl.d;
 import com.tencent.mm.storage.bu;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.p;
 
 public final class a
   extends LinearLayout
-  implements com.tencent.mm.ai.f
+  implements com.tencent.mm.al.g
 {
-  private static a.a waB;
+  private static a Cih;
+  private Button Cii;
   private Context context;
-  private TextView gMp;
-  private com.tencent.mm.ui.base.p tipDialog;
-  private Button waC;
+  private TextView izX;
+  private p tipDialog;
   
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(28030);
+    AppMethodBeat.i(31814);
     this.context = paramContext;
-    paramContext = View.inflate(this.context, 2130969617, this);
-    this.gMp = ((TextView)paramContext.findViewById(2131824228));
-    this.waC = ((Button)paramContext.findViewById(2131824229));
-    this.waC.setOnClickListener(new a.1(this));
-    AppMethodBeat.o(28030);
+    paramContext = View.inflate(this.context, 2131494158, this);
+    this.izX = ((TextView)paramContext.findViewById(2131300168));
+    this.Cii = ((Button)paramContext.findViewById(2131300169));
+    this.Cii.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(31812);
+        paramAnonymousView = View.inflate(a.a(a.this), 2131495371, null);
+        ((TextView)paramAnonymousView.findViewById(2131304591)).setVisibility(8);
+        final TextView localTextView = (TextView)paramAnonymousView.findViewById(2131307005);
+        localTextView.setVisibility(0);
+        localTextView.setText("50");
+        final EditText localEditText = (EditText)paramAnonymousView.findViewById(2131304590);
+        localEditText.setSingleLine(false);
+        com.tencent.mm.ui.tools.b.c.d(localEditText).aaj(100).a(null);
+        localEditText.addTextChangedListener(new TextWatcher()
+        {
+          public final void afterTextChanged(Editable paramAnonymous2Editable)
+          {
+            AppMethodBeat.i(31809);
+            int i = com.tencent.mm.ui.tools.f.cJ(100, paramAnonymous2Editable.toString());
+            if (localTextView != null) {
+              localTextView.setText(String.valueOf(i));
+            }
+            AppMethodBeat.o(31809);
+          }
+          
+          public final void beforeTextChanged(CharSequence paramAnonymous2CharSequence, int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3) {}
+          
+          public final void onTextChanged(CharSequence paramAnonymous2CharSequence, int paramAnonymous2Int1, int paramAnonymous2Int2, int paramAnonymous2Int3) {}
+        });
+        h.a(a.a(a.this), a.a(a.this).getString(2131755875), paramAnonymousView, new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+          {
+            AppMethodBeat.i(31810);
+            paramAnonymous2DialogInterface = localEditText.getText().toString().trim();
+            if ((paramAnonymous2DialogInterface != null) && (paramAnonymous2DialogInterface.length() > 0)) {
+              try
+              {
+                a.a(a.this, paramAnonymous2DialogInterface);
+                AppMethodBeat.o(31810);
+                return;
+              }
+              catch (ArrayIndexOutOfBoundsException paramAnonymous2DialogInterface)
+              {
+                ad.printErrStackTrace("MicroMsg.FMessageItemView", paramAnonymous2DialogInterface, "", new Object[0]);
+                if ((a.b(a.this) != null) && (a.b(a.this).isShowing())) {
+                  a.b(a.this).dismiss();
+                }
+              }
+            }
+            AppMethodBeat.o(31810);
+          }
+        }, null);
+        localEditText.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(31811);
+            if ((a.a(a.this) instanceof MMActivity)) {
+              ((MMActivity)a.a(a.this)).showVKB();
+            }
+            AppMethodBeat.o(31811);
+          }
+        });
+        AppMethodBeat.o(31812);
+      }
+    });
+    AppMethodBeat.o(31814);
   }
   
-  private static int amu(String paramString)
+  private static int aCh(String paramString)
   {
-    AppMethodBeat.i(28032);
+    AppMethodBeat.i(31816);
     if (paramString == null)
     {
-      ab.d("MicroMsg.FMessageItemView", "getOpCodeFromVerify fail, xml is null");
-      AppMethodBeat.o(28032);
+      ad.d("MicroMsg.FMessageItemView", "getOpCodeFromVerify fail, xml is null");
+      AppMethodBeat.o(31816);
       return 6;
     }
-    switch (bi.d.asm(paramString).cut)
+    switch (bl.d.aIR(paramString).djq)
     {
     case 3: 
     case 4: 
     default: 
-      AppMethodBeat.o(28032);
+      AppMethodBeat.o(31816);
       return 6;
     case 2: 
     case 5: 
-      AppMethodBeat.o(28032);
+      AppMethodBeat.o(31816);
       return 6;
     }
-    AppMethodBeat.o(28032);
+    AppMethodBeat.o(31816);
     return 5;
   }
   
-  public static void setFMessageArgs(a.a parama)
+  public static void setFMessageArgs(a parama)
   {
-    waB = parama;
+    Cih = parama;
   }
   
   public final void detach()
   {
-    AppMethodBeat.i(28031);
-    aw.Rc().b(30, this);
+    AppMethodBeat.i(31815);
+    az.aeS().b(30, this);
     if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
       this.tipDialog.dismiss();
     }
-    AppMethodBeat.o(28031);
+    AppMethodBeat.o(31815);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(28035);
-    if (paramm.getType() != 30)
+    AppMethodBeat.i(31819);
+    if (paramn.getType() != 30)
     {
-      AppMethodBeat.o(28035);
+      AppMethodBeat.o(31819);
       return;
     }
-    ab.d("MicroMsg.FMessageItemView", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    ad.d("MicroMsg.FMessageItemView", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramInt1 = ((com.tencent.mm.pluginsdk.model.m)paramm).cut;
-      paramString = ((com.tencent.mm.pluginsdk.model.m)paramm).vKt;
-      ab.d("MicroMsg.FMessageItemView", "onSceneEnd, pre insert fmsg, opcode = " + paramInt1 + ", verifyContent = " + paramString);
-      ab.d("MicroMsg.FMessageItemView", "onSceneEnd, type = " + waB.type);
-      switch (waB.type)
+      paramInt1 = ((o)paramn).djq;
+      paramString = ((o)paramn).BOX;
+      ad.d("MicroMsg.FMessageItemView", "onSceneEnd, pre insert fmsg, opcode = " + paramInt1 + ", verifyContent = " + paramString);
+      ad.d("MicroMsg.FMessageItemView", "onSceneEnd, type = " + Cih.type);
+      switch (Cih.type)
       {
       default: 
-        paramm = new ax();
-        paramm.field_createTime = c.x(waB.talker, 0L);
-        paramm.field_isSend = 1;
-        paramm.field_msgContent = paramString;
-        paramm.field_talker = waB.talker;
+        paramn = new ba();
+        paramn.field_createTime = com.tencent.mm.bk.c.y(Cih.talker, 0L);
+        paramn.field_isSend = 1;
+        paramn.field_msgContent = paramString;
+        paramn.field_talker = Cih.talker;
         if (paramInt1 != 5) {
           break;
         }
       }
       for (paramInt1 = 2;; paramInt1 = 3)
       {
-        paramm.field_type = paramInt1;
-        ab.d("MicroMsg.FMessageItemView", "onSceneEnd, insert fmsg, ret = ".concat(String.valueOf(d.alh().b(paramm))));
+        paramn.field_type = paramInt1;
+        ad.d("MicroMsg.FMessageItemView", "onSceneEnd, insert fmsg, ret = ".concat(String.valueOf(d.aCn().b(paramn))));
         for (;;)
         {
-          aw.Rc().b(30, this);
-          AppMethodBeat.o(28035);
+          az.aeS().b(30, this);
+          AppMethodBeat.o(31819);
           return;
-          paramm = new bf();
-          paramm.field_createtime = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPN().Tg(waB.talker);
-          paramm.field_isSend = 1;
-          paramm.field_content = paramString;
-          paramm.field_talker = "fmessage";
-          paramm.field_sayhiuser = waB.talker;
-          paramm.field_svrid = System.currentTimeMillis();
-          paramm.field_status = 4;
-          d.alj().a(paramm);
+          paramn = new bi();
+          paramn.field_createtime = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).cOF().agk(Cih.talker);
+          paramn.field_isSend = 1;
+          paramn.field_content = paramString;
+          paramn.field_talker = "fmessage";
+          paramn.field_sayhiuser = Cih.talker;
+          paramn.field_svrid = System.currentTimeMillis();
+          paramn.field_status = 4;
+          d.aCp().a(paramn);
           continue;
-          paramm = new bt();
-          paramm.field_createtime = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPM().Tg(waB.talker);
-          paramm.field_isSend = 1;
-          paramm.field_content = paramString;
-          paramm.field_talker = "fmessage";
-          paramm.field_sayhiuser = waB.talker;
-          paramm.field_svrid = System.currentTimeMillis();
-          paramm.field_status = 4;
-          ab.d("MicroMsg.FMessageItemView", "onSceneEnd, insert shake, ret = ".concat(String.valueOf(d.alk().a(paramm))));
+          paramn = new bu();
+          paramn.field_createtime = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).cOE().agk(Cih.talker);
+          paramn.field_isSend = 1;
+          paramn.field_content = paramString;
+          paramn.field_talker = "fmessage";
+          paramn.field_sayhiuser = Cih.talker;
+          paramn.field_svrid = System.currentTimeMillis();
+          paramn.field_status = 4;
+          ad.d("MicroMsg.FMessageItemView", "onSceneEnd, insert shake, ret = ".concat(String.valueOf(d.aCq().a(paramn))));
         }
       }
     }
     if ((paramInt1 == 4) && (paramInt2 == -34)) {
-      paramm = this.context.getString(2131300013);
+      paramn = this.context.getString(2131759479);
     }
     for (;;)
     {
-      Toast.makeText(this.context, paramm, 1).show();
+      Toast.makeText(this.context, paramn, 1).show();
       break;
       if ((paramInt1 == 4) && (paramInt2 == -94))
       {
-        paramm = this.context.getString(2131300016);
+        paramn = this.context.getString(2131759482);
       }
       else if ((paramInt1 == 4) && (paramInt2 == -24))
       {
-        paramm = paramString;
-        if (!bo.isNullOrNil(paramString)) {}
+        paramn = paramString;
+        if (!bt.isNullOrNil(paramString)) {}
       }
       else
       {
-        paramm = this.context.getString(2131303126);
+        paramn = this.context.getString(2131763075);
       }
     }
   }
   
   public final void setBtnVisibility(int paramInt)
   {
-    AppMethodBeat.i(28034);
-    if (this.waC != null) {
-      this.waC.setVisibility(paramInt);
+    AppMethodBeat.i(31818);
+    if (this.Cii != null) {
+      this.Cii.setVisibility(paramInt);
     }
-    AppMethodBeat.o(28034);
+    AppMethodBeat.o(31818);
   }
   
   public final void setContentText(String paramString)
   {
-    AppMethodBeat.i(28033);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(31817);
+    if (bt.isNullOrNil(paramString))
     {
-      this.gMp.setVisibility(8);
-      AppMethodBeat.o(28033);
+      this.izX.setVisibility(8);
+      AppMethodBeat.o(31817);
       return;
     }
-    this.gMp.setVisibility(0);
-    this.gMp.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.context, bo.nullAsNil(paramString), this.gMp.getTextSize()));
-    AppMethodBeat.o(28033);
+    this.izX.setVisibility(0);
+    this.izX.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.context, bt.nullAsNil(paramString), this.izX.getTextSize()));
+    AppMethodBeat.o(31817);
+  }
+  
+  public static final class a
+  {
+    public String Cin;
+    public String rso;
+    public int scene;
+    public String talker;
+    public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.a
  * JD-Core Version:    0.7.0.1
  */

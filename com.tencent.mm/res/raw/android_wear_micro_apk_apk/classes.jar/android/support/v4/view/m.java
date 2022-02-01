@@ -4,27 +4,37 @@ import android.view.ViewGroup;
 
 public final class m
 {
-  private final ViewGroup jT;
-  private int jU;
+  private final ViewGroup lQ;
+  private int lR;
   
   public m(ViewGroup paramViewGroup)
   {
-    this.jT = paramViewGroup;
+    this.lQ = paramViewGroup;
   }
   
-  public final void bo()
+  public final void G(int paramInt)
   {
-    this.jU = 0;
+    this.lR = paramInt;
+  }
+  
+  public final void H(int paramInt)
+  {
+    this.lR = paramInt;
+  }
+  
+  public final void bE()
+  {
+    this.lR = 0;
+  }
+  
+  public final void bF()
+  {
+    this.lR = 0;
   }
   
   public final int getNestedScrollAxes()
   {
-    return this.jU;
-  }
-  
-  public final void w(int paramInt)
-  {
-    this.jU = paramInt;
+    return this.lR;
   }
 }
 

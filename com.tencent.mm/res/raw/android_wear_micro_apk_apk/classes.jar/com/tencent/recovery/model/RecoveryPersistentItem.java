@@ -5,11 +5,11 @@ import android.os.Parcelable;
 public abstract class RecoveryPersistentItem
   implements Parcelable
 {
-  public abstract String nO();
+  public abstract String oC();
   
   public String toString()
   {
-    return nO();
+    return oC();
   }
 }
 

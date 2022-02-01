@@ -18,10 +18,10 @@ public class SQLiteLintUtil
   public static String extractDbName(String paramString)
   {
     Object localObject = null;
-    AppMethodBeat.i(94122);
+    AppMethodBeat.i(52966);
     if (isNullOrNil(paramString))
     {
-      AppMethodBeat.o(94122);
+      AppMethodBeat.o(52966);
       return null;
     }
     String[] arrayOfString = paramString.split("/");
@@ -33,85 +33,85 @@ public class SQLiteLintUtil
         paramString = arrayOfString[(arrayOfString.length - 1)];
       }
     }
-    AppMethodBeat.o(94122);
+    AppMethodBeat.o(52966);
     return paramString;
   }
   
   public static String formatTime(String paramString, long paramLong)
   {
-    AppMethodBeat.i(94124);
+    AppMethodBeat.i(52968);
     paramString = new SimpleDateFormat(paramString).format(new Date(paramLong));
-    AppMethodBeat.o(94124);
+    AppMethodBeat.o(52968);
     return paramString;
   }
   
   public static int getInt(String paramString, int paramInt)
   {
-    AppMethodBeat.i(94123);
+    AppMethodBeat.i(52967);
     if (paramString != null) {}
     try
     {
       if (paramString.length() <= 0)
       {
-        AppMethodBeat.o(94123);
+        AppMethodBeat.o(52967);
         return paramInt;
       }
       int i = Integer.parseInt(paramString);
-      AppMethodBeat.o(94123);
+      AppMethodBeat.o(52967);
       return i;
     }
     catch (NumberFormatException paramString)
     {
-      AppMethodBeat.o(94123);
+      AppMethodBeat.o(52967);
     }
     return paramInt;
   }
   
   public static String getThrowableStack()
   {
-    AppMethodBeat.i(94128);
+    AppMethodBeat.i(52972);
     try
     {
       String str = getThrowableStack(new Throwable());
-      AppMethodBeat.o(94128);
+      AppMethodBeat.o(52972);
       return str;
     }
     catch (Throwable localThrowable)
     {
       SLog.e("SQLiteLint.SQLiteLintUtil", "getThrowableStack ex %s", new Object[] { localThrowable.getMessage() });
-      AppMethodBeat.o(94128);
+      AppMethodBeat.o(52972);
     }
     return "";
   }
   
   public static String getThrowableStack(Throwable paramThrowable)
   {
-    AppMethodBeat.i(94127);
+    AppMethodBeat.i(52971);
     if (paramThrowable == null)
     {
-      AppMethodBeat.o(94127);
+      AppMethodBeat.o(52971);
       return "";
     }
     paramThrowable = stackTraceToString(paramThrowable.getStackTrace());
-    AppMethodBeat.o(94127);
+    AppMethodBeat.o(52971);
     return paramThrowable;
   }
   
   public static boolean isNullOrNil(String paramString)
   {
-    AppMethodBeat.i(94121);
+    AppMethodBeat.i(52965);
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      AppMethodBeat.o(94121);
+      AppMethodBeat.o(52965);
       return true;
     }
-    AppMethodBeat.o(94121);
+    AppMethodBeat.o(52965);
     return false;
   }
   
   public static void mkdirs(String paramString)
   {
-    AppMethodBeat.i(94125);
+    AppMethodBeat.i(52969);
     paramString = new File(paramString);
     if (!paramString.exists())
     {
@@ -120,7 +120,7 @@ public class SQLiteLintUtil
         paramString.mkdirs();
       }
     }
-    AppMethodBeat.o(94125);
+    AppMethodBeat.o(52969);
   }
   
   public static String nullAsNil(String paramString)
@@ -134,10 +134,10 @@ public class SQLiteLintUtil
   
   public static String stackTraceToString(StackTraceElement[] paramArrayOfStackTraceElement)
   {
-    AppMethodBeat.i(94126);
+    AppMethodBeat.i(52970);
     if (paramArrayOfStackTraceElement == null)
     {
-      AppMethodBeat.o(94126);
+      AppMethodBeat.o(52970);
       return "";
     }
     Object localObject = new ArrayList(paramArrayOfStackTraceElement.length);
@@ -168,13 +168,13 @@ public class SQLiteLintUtil
       paramArrayOfStackTraceElement.append((StackTraceElement)((Iterator)localObject).next()).append('\n');
     }
     paramArrayOfStackTraceElement = paramArrayOfStackTraceElement.toString();
-    AppMethodBeat.o(94126);
+    AppMethodBeat.o(52970);
     return paramArrayOfStackTraceElement;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.sqlitelint.util.SQLiteLintUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,12 @@
 package com.tencent.mm.plugin.scanner;
 
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.g.c.fb;
+import com.tencent.mm.kernel.b.d;
 
-public final class c
-  implements o
+public abstract interface c
+  extends d
 {
-  public static n gmO;
-  
-  public final void a(m paramm) {}
-  
-  public final void a(n paramn)
-  {
-    gmO = paramn;
-  }
+  public abstract fb getTranslationResult(String paramString);
 }
 
 

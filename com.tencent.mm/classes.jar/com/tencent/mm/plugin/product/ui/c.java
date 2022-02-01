@@ -3,28 +3,27 @@ package com.tencent.mm.plugin.product.ui;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.platformtools.v;
-import com.tencent.mm.platformtools.v.a;
-import com.tencent.mm.platformtools.v.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.d;
-import java.io.File;
+import com.tencent.mm.b.g;
+import com.tencent.mm.platformtools.s;
+import com.tencent.mm.platformtools.s.a;
+import com.tencent.mm.platformtools.s.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.vfs.e;
 import java.io.IOException;
 
 public final class c
-  implements v
+  implements s
 {
-  private static final String knX;
+  private static final String ntl;
   private String url;
   
   static
   {
-    AppMethodBeat.i(44048);
-    knX = e.eQz + "wallet";
-    AppMethodBeat.o(44048);
+    AppMethodBeat.i(66955);
+    ntl = com.tencent.mm.wallet_core.c.fjo();
+    AppMethodBeat.o(66955);
   }
   
   public c(String paramString)
@@ -32,31 +31,31 @@ public final class c
     this.url = paramString;
   }
   
-  public static String WX(String paramString)
+  public static String akx(String paramString)
   {
-    AppMethodBeat.i(44047);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(66954);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.w("MicroMsg.WalletGetPicStrategy", "getStoragePath: but url is null");
-      AppMethodBeat.o(44047);
+      ad.w("MicroMsg.WalletGetPicStrategy", "getStoragePath: but url is null");
+      AppMethodBeat.o(66954);
       return null;
     }
-    paramString = String.format("%s/%s", new Object[] { knX, g.w(paramString.getBytes()) });
-    AppMethodBeat.o(44047);
+    paramString = String.format("%s/%s", new Object[] { ntl, g.getMessageDigest(paramString.getBytes()) });
+    AppMethodBeat.o(66954);
     return paramString;
   }
   
-  public final void W(String paramString, boolean paramBoolean) {}
+  public final void Z(String paramString, boolean paramBoolean) {}
   
-  public final Bitmap a(Bitmap paramBitmap, v.a parama, String paramString)
+  public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
-    AppMethodBeat.i(44046);
-    if (v.a.gjx == parama) {}
+    AppMethodBeat.i(66953);
+    if (s.a.hUk == parama) {}
     try
     {
-      d.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, WX(this.url), false);
-      ab.d("MicroMsg.WalletGetPicStrategy", "get bitmap, from %s", new Object[] { parama.toString() });
-      AppMethodBeat.o(44046);
+      f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, akx(this.url), false);
+      ad.d("MicroMsg.WalletGetPicStrategy", "get bitmap, from %s", new Object[] { parama.toString() });
+      AppMethodBeat.o(66953);
       return paramBitmap;
     }
     catch (IOException paramString)
@@ -65,63 +64,63 @@ public final class c
       {
         try
         {
-          paramString = new File(knX);
+          paramString = new e(ntl);
           if (!paramString.exists()) {
-            paramString.mkdir();
+            paramString.mkdirs();
           }
-          ab.w("MicroMsg.WalletGetPicStrategy", " retry saving bitmap");
-          d.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, WX(this.url), false);
+          ad.w("MicroMsg.WalletGetPicStrategy", " retry saving bitmap");
+          f.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, akx(this.url), false);
         }
         catch (IOException paramString)
         {
-          ab.printErrStackTrace("MicroMsg.WalletGetPicStrategy", paramString, "", new Object[0]);
-          ab.w("MicroMsg.WalletGetPicStrategy", "save bitmap fail");
+          ad.printErrStackTrace("MicroMsg.WalletGetPicStrategy", paramString, "", new Object[0]);
+          ad.w("MicroMsg.WalletGetPicStrategy", "save bitmap fail");
         }
       }
     }
   }
   
-  public final void a(v.a parama, String paramString) {}
+  public final void a(s.a parama, String paramString) {}
   
-  public final v.b aom()
-  {
-    return null;
-  }
-  
-  public final String aon()
-  {
-    AppMethodBeat.i(44045);
-    String str = WX(this.url);
-    AppMethodBeat.o(44045);
-    return str;
-  }
-  
-  public final String aoo()
+  public final String aGA()
   {
     return this.url;
   }
   
-  public final String aop()
-  {
-    return this.url;
-  }
-  
-  public final boolean aoq()
+  public final boolean aGB()
   {
     return true;
   }
   
-  public final boolean aor()
+  public final boolean aGC()
   {
     return false;
   }
   
-  public final Bitmap aos()
+  public final Bitmap aGD()
   {
     return null;
   }
   
-  public final void aot() {}
+  public final void aGE() {}
+  
+  public final s.b aGx()
+  {
+    return null;
+  }
+  
+  public final String aGy()
+  {
+    AppMethodBeat.i(66952);
+    String str = akx(this.url);
+    AppMethodBeat.o(66952);
+    return str;
+  }
+  
+  public final String aGz()
+  {
+    return this.url;
+  }
   
   public final String getCacheKey()
   {
@@ -130,7 +129,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.c
  * JD-Core Version:    0.7.0.1
  */

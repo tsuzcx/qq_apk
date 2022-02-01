@@ -21,34 +21,34 @@ public class DataBufferSafeParcelable<T extends SafeParcelable>
   
   public static <T extends SafeParcelable> void addValue(DataHolder.Builder paramBuilder, T paramT)
   {
-    AppMethodBeat.i(61066);
+    AppMethodBeat.i(11558);
     Parcel localParcel = Parcel.obtain();
     paramT.writeToParcel(localParcel, 0);
     paramT = new ContentValues();
     paramT.put("data", localParcel.marshall());
     paramBuilder.withRow(paramT);
     localParcel.recycle();
-    AppMethodBeat.o(61066);
+    AppMethodBeat.o(11558);
   }
   
   public static DataHolder.Builder buildDataHolder()
   {
-    AppMethodBeat.i(61065);
+    AppMethodBeat.i(11557);
     DataHolder.Builder localBuilder = DataHolder.builder(zznk);
-    AppMethodBeat.o(61065);
+    AppMethodBeat.o(11557);
     return localBuilder;
   }
   
   public T get(int paramInt)
   {
-    AppMethodBeat.i(61067);
+    AppMethodBeat.i(11559);
     Object localObject = this.mDataHolder.getByteArray("data", paramInt, this.mDataHolder.getWindowIndex(paramInt));
     Parcel localParcel = Parcel.obtain();
     localParcel.unmarshall((byte[])localObject, 0, localObject.length);
     localParcel.setDataPosition(0);
     localObject = (SafeParcelable)this.zznl.createFromParcel(localParcel);
     localParcel.recycle();
-    AppMethodBeat.o(61067);
+    AppMethodBeat.o(11559);
     return localObject;
   }
 }

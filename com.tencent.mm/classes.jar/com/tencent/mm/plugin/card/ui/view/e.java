@@ -7,56 +7,56 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.protobuf.ov;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.rd;
+import com.tencent.mm.protocal.protobuf.ro;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class e
   extends i
 {
-  private View kAZ;
+  private View nHY;
   
-  public final void bfq()
+  public final void bMB()
   {
-    AppMethodBeat.i(88743);
-    if (this.kAZ != null) {
-      this.kAZ.setVisibility(8);
+    AppMethodBeat.i(113670);
+    if (this.nHY != null) {
+      this.nHY.setVisibility(8);
     }
-    AppMethodBeat.o(88743);
+    AppMethodBeat.o(113670);
   }
   
   public final void initView() {}
   
   public final void update()
   {
-    AppMethodBeat.i(88742);
-    b localb = this.kBh.bdv();
-    ov localov = localb.bbd().wGn;
-    if (localov != null)
+    AppMethodBeat.i(113669);
+    b localb = this.nIg.bKt();
+    rd localrd = localb.bHV().CRS;
+    if (localrd != null)
     {
-      ab.i("MicroMsg.CardAnnoucementView", "card tp annoucement  endtime: " + localov.qNK);
-      ab.i("MicroMsg.CardAnnoucementView", "card tp annoucement  text: " + localov.text);
-      ab.i("MicroMsg.CardAnnoucementView", "card tp annoucement  thumb_url: " + localov.wFr);
+      ad.i("MicroMsg.CardAnnoucementView", "card tp annoucement  endtime: " + localrd.wmA);
+      ad.i("MicroMsg.CardAnnoucementView", "card tp annoucement  text: " + localrd.text);
+      ad.i("MicroMsg.CardAnnoucementView", "card tp annoucement  thumb_url: " + localrd.CQW);
     }
-    if ((localov != null) && (!TextUtils.isEmpty(localov.text)) && (localb.bbb()))
+    if ((localrd != null) && (!TextUtils.isEmpty(localrd.text)) && (localb.bHT()))
     {
-      if (this.kAZ == null) {
-        this.kAZ = ((ViewStub)findViewById(2131822081)).inflate();
+      if (this.nHY == null) {
+        this.nHY = ((ViewStub)findViewById(2131297731)).inflate();
       }
-      ((TextView)this.kAZ.findViewById(2131821997)).setText(localov.text);
-      this.kAZ.setOnClickListener(this.kBh.bdz());
-      AppMethodBeat.o(88742);
+      ((TextView)this.nHY.findViewById(2131303541)).setText(localrd.text);
+      this.nHY.setOnClickListener(this.nIg.bKx());
+      AppMethodBeat.o(113669);
       return;
     }
-    if (this.kAZ != null) {
-      this.kAZ.setVisibility(8);
+    if (this.nHY != null) {
+      this.nHY.setVisibility(8);
     }
-    AppMethodBeat.o(88742);
+    AppMethodBeat.o(113669);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.e
  * JD-Core Version:    0.7.0.1
  */

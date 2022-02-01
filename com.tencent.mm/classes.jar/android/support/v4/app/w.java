@@ -8,14 +8,14 @@ import android.view.ViewTreeObserver.OnPreDrawListener;
 final class w
   implements View.OnAttachStateChangeListener, ViewTreeObserver.OnPreDrawListener
 {
+  private ViewTreeObserver FG;
   private final Runnable mRunnable;
   private final View mView;
-  private ViewTreeObserver zm;
   
   private w(View paramView, Runnable paramRunnable)
   {
     this.mView = paramView;
-    this.zm = paramView.getViewTreeObserver();
+    this.FG = paramView.getViewTreeObserver();
     this.mRunnable = paramRunnable;
   }
   
@@ -29,8 +29,8 @@ final class w
   
   private void removeListener()
   {
-    if (this.zm.isAlive()) {
-      this.zm.removeOnPreDrawListener(this);
+    if (this.FG.isAlive()) {
+      this.FG.removeOnPreDrawListener(this);
     }
     for (;;)
     {
@@ -49,7 +49,7 @@ final class w
   
   public final void onViewAttachedToWindow(View paramView)
   {
-    this.zm = paramView.getViewTreeObserver();
+    this.FG = paramView.getViewTreeObserver();
   }
   
   public final void onViewDetachedFromWindow(View paramView)

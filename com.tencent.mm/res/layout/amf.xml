@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:id="@android:id/title" android:background="@color/yn" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/n0" android:maxHeight="@dimen/n0" android:minHeight="@dimen/n0" android:contentDescription="@string/b86"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="148.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="@dimen/a7n" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/a_c" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/amv" android:paddingLeft="@dimen/jn" android:paddingTop="@dimen/ha" android:paddingRight="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginRight="@dimen/ha">
+            <include android:id="@id/e9m" layout="@layout/ame" />
+            <include android:id="@id/e9n" layout="@layout/ame" />
+            <include android:id="@id/e9o" layout="@layout/ame" />
+            <include android:id="@id/e9p" android:layout_marginRight="0.0dip" layout="@layout/ame" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

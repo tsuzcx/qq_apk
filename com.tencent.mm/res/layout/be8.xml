@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/gds" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/gdr" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <include layout="@layout/be9" />
+        <View android:id="@id/gdq" android:background="@color/BW_93" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <com.tencent.mm.plugin.topstory.ui.widget.TopStoryViewPager android:id="@id/gdt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

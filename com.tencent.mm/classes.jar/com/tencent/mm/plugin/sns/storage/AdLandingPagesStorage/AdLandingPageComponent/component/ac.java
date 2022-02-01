@@ -1,109 +1,135 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.text.Spannable;
-import android.util.Log;
-import android.view.View;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ad;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.RadarChart;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
-import com.tencent.mm.sdk.g.d;
-import java.util.concurrent.CountDownLatch;
+import com.tencent.mm.plugin.sns.data.g;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.p;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.lang.ref.WeakReference;
 
 public final class ac
-  extends h
+  extends o
 {
-  private static final int ryc;
-  private CountDownLatch countDownLatch;
-  private Bitmap maskBitmap;
-  private RadarChart ryd;
-  private Bitmap rye;
+  private g wZQ;
+  private z xcH;
+  String xcI = "";
   
-  static
+  public ac(Context paramContext, z paramz, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(37358);
-    ryc = Color.parseColor("#26eae9e2");
-    AppMethodBeat.o(37358);
+    super(paramContext, paramz, paramViewGroup);
+    this.xcH = paramz;
   }
   
-  public ac(Context paramContext, ad paramad, ViewGroup paramViewGroup)
+  private void dwv()
   {
-    super(paramContext, paramad, paramViewGroup);
-    AppMethodBeat.i(37351);
-    this.countDownLatch = new CountDownLatch(2);
-    AppMethodBeat.o(37351);
-  }
-  
-  private static void a(Spannable paramSpannable, int paramInt1, int paramInt2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(37356);
-    int i = 0;
-    while (i < 2)
+    AppMethodBeat.i(187419);
+    Bundle localBundle;
+    if (this.wZQ == null)
     {
-      paramSpannable.setSpan(paramVarArgs[i], paramInt1, paramInt2, 18);
-      i += 1;
+      localBundle = new Bundle();
+      localObject = this.xcH;
+      if (localObject == null) {
+        break label68;
+      }
     }
-    AppMethodBeat.o(37356);
-  }
-  
-  public final void cqK()
-  {
-    AppMethodBeat.i(37352);
-    this.ryd = ((RadarChart)this.contentView.findViewById(2131824191));
-    AppMethodBeat.o(37352);
-  }
-  
-  protected final void cqP()
-  {
-    AppMethodBeat.i(37354);
-    d.h(new ac.1(this), "AdlandingRadarComp").start();
-    ad localad = (ad)crb();
-    if (localad != null)
+    label68:
+    for (Object localObject = ((z)localObject).wWr;; localObject = "")
     {
-      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(localad.rtn, localad.rsJ, new ac.2(this));
-      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(localad.rtt, localad.rsJ, new ac.3(this));
-      cqQ();
-      AppMethodBeat.o(37354);
+      localBundle.putString("qrExtInfo", (String)localObject);
+      this.wZQ = new g(this.context, dwi(), 3, localBundle);
+      AppMethodBeat.o(187419);
       return;
     }
-    Log.wtf("AdlandingRadarChartComp", "null info");
-    AppMethodBeat.o(37354);
   }
   
-  protected final void cqQ()
+  protected final void dvN()
   {
-    AppMethodBeat.i(37353);
-    ViewGroup.LayoutParams localLayoutParams = this.contentView.getLayoutParams();
-    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      ((ViewGroup.MarginLayoutParams)localLayoutParams).setMargins((int)this.rve.paddingLeft, (int)this.rve.paddingTop, (int)this.rve.paddingRight, (int)this.rve.paddingBottom);
+    AppMethodBeat.i(187417);
+    super.dvN();
+    if (this.xcH != null)
+    {
+      String str = this.xcH.wWQ;
+      ad.d("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "the qr code img url: ".concat(String.valueOf(str)));
+      h.a(str, dwo().wWF, new a(this));
     }
-    this.contentView.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(37353);
+    AppMethodBeat.o(187417);
   }
   
-  public final void cqz()
+  protected final void dvW()
   {
-    AppMethodBeat.i(37355);
-    super.cqz();
-    this.countDownLatch.countDown();
-    this.countDownLatch.countDown();
-    AppMethodBeat.o(37355);
+    AppMethodBeat.i(187418);
+    dwv();
+    if (!TextUtils.isEmpty(this.xcI)) {
+      try
+      {
+        this.xas.iQ("qrUrl", this.xcH.wWQ);
+        this.wZQ.iw(this.xcI, this.xcH.wWQ);
+        AppMethodBeat.o(187418);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        ad.e("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "the ad qr helper has something wrong. exception: ".concat(String.valueOf(localThrowable)));
+      }
+    }
+    AppMethodBeat.o(187418);
   }
   
-  protected final int getLayout()
+  public final void dvx()
   {
-    return 2130970775;
+    AppMethodBeat.i(187416);
+    super.dvx();
+    dwv();
+    AppMethodBeat.o(187416);
+  }
+  
+  public static final class a
+    implements f.a
+  {
+    WeakReference<ac> xcJ;
+    
+    a(ac paramac)
+    {
+      AppMethodBeat.i(187413);
+      this.xcJ = new WeakReference(paramac);
+      AppMethodBeat.o(187413);
+    }
+    
+    public final void apm(String paramString)
+    {
+      AppMethodBeat.i(187415);
+      ad.d("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "download qr image completed");
+      ac localac = (ac)this.xcJ.get();
+      if (localac != null)
+      {
+        localac.xcI = paramString;
+        AppMethodBeat.o(187415);
+        return;
+      }
+      ad.w("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "qrCodeBtnComp is null in weak ref");
+      AppMethodBeat.o(187415);
+    }
+    
+    public final void dsA()
+    {
+      AppMethodBeat.i(187414);
+      ad.e("MicroMsg.Sns.AdLandingPageQRCodeBtnComp", "there is something error happening when downloading qr image.");
+      AppMethodBeat.o(187414);
+    }
+    
+    public final void duP() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ac
  * JD-Core Version:    0.7.0.1
  */

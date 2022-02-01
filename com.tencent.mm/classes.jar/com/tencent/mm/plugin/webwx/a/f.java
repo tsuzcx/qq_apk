@@ -3,34 +3,39 @@ package com.tencent.mm.plugin.webwx.a;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.ai.e.b;
-import com.tencent.mm.ai.e.c;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.aj.a.i;
-import com.tencent.mm.at.d.a;
-import com.tencent.mm.bi.d;
-import com.tencent.mm.g.a.su;
-import com.tencent.mm.g.a.su.a;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.al.f.b;
+import com.tencent.mm.al.f.c;
+import com.tencent.mm.al.q;
+import com.tencent.mm.am.a.i;
+import com.tencent.mm.am.af;
+import com.tencent.mm.aw.d.a;
+import com.tencent.mm.g.a.ur;
+import com.tencent.mm.g.a.ur.a;
+import com.tencent.mm.g.c.ay;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.t;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
+import com.tencent.mm.modelsimple.aa;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.handoff.model.HandOffFile;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.plugin.webwx.ui.WebWXLogoutUI;
 import com.tencent.mm.plugin.webwx.ui.WebWXPopupUnlockUI;
-import com.tencent.mm.protocal.protobuf.cgm;
-import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.model.app.al;
+import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.protocal.protobuf.cxo;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.ak;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.am;
+import com.tencent.mm.storage.bh;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,84 +44,84 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class f
-  implements e, d.a
+  implements com.tencent.mm.al.f, d.a
 {
   public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject) {}
   
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, com.tencent.mm.ai.m paramm) {}
+  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, com.tencent.mm.al.n paramn) {}
   
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, String paramString, com.tencent.mm.ai.m paramm)
+  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, String paramString, com.tencent.mm.al.n paramn)
   {
-    AppMethodBeat.i(26507);
-    ab.i("MicroMsg.StatusNotifyMsgExtension", "onImgTaskEnd imgLocalId:%d, msgLocalId:%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    AppMethodBeat.o(26507);
+    AppMethodBeat.i(30182);
+    ad.i("MicroMsg.StatusNotifyMsgExtension", "onImgTaskEnd imgLocalId:%d, msgLocalId:%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    AppMethodBeat.o(30182);
   }
   
-  public final void a(e.c paramc) {}
-  
-  public final e.b b(e.a parama)
+  public final f.b b(f.a parama)
   {
-    AppMethodBeat.i(26506);
-    parama = parama.eyJ;
+    AppMethodBeat.i(30181);
+    parama = parama.fTo;
     Object localObject1;
     Object localObject2;
     int i;
-    if ((parama != null) && (parama.nqW == 51))
+    if ((parama != null) && (parama.saz == 51))
     {
-      ab.d("MicroMsg.StatusNotifyMsgExtension", "msgType %d %d", new Object[] { Integer.valueOf(parama.nqW), Integer.valueOf(51) });
-      localObject1 = com.tencent.mm.platformtools.aa.a(parama.woQ);
-      if (!bo.isNullOrNil((String)localObject1))
+      ad.d("MicroMsg.StatusNotifyMsgExtension", "msgType %d %d", new Object[] { Integer.valueOf(parama.saz), Integer.valueOf(51) });
+      localObject1 = z.a(parama.Cxy);
+      if (!bt.isNullOrNil((String)localObject1))
       {
-        localObject2 = com.tencent.mm.platformtools.aa.a(parama.woR).trim();
-        parama = br.F((String)localObject2, "msg");
+        localObject2 = z.a(parama.Cxz).trim();
+        parama = bw.K((String)localObject2, "msg");
         if (parama != null)
         {
-          i = bo.getInt((String)parama.get(".msg.op.$id"), 0);
-          ab.d("MicroMsg.StatusNotifyMsgExtension", "handleStatusNotifyMsg, %d", new Object[] { Integer.valueOf(i) });
+          i = bt.getInt((String)parama.get(".msg.op.$id"), 0);
+          ad.i("MicroMsg.StatusNotifyMsgExtension", "handleStatusNotifyMsg, %d", new Object[] { Integer.valueOf(i) });
           if ((i != 1) && (i != 2) && (i != 5)) {
             break label354;
           }
-          ab.i("MicroMsg.StatusNotifyMsgExtension", "summerbadcr mark conversation readed. userName = ".concat(String.valueOf(localObject1)));
-          com.tencent.mm.model.aw.aaz();
-          c.YC().Tj((String)localObject1);
-          com.tencent.mm.plugin.webwx.a.gmO.cancelNotification((String)localObject1);
-          if (!t.nY((String)localObject1)) {
+          ad.i("MicroMsg.StatusNotifyMsgExtension", "summerbadcr mark conversation readed. userName = ".concat(String.valueOf(localObject1)));
+          com.tencent.mm.model.az.arV();
+          c.apO().agn((String)localObject1);
+          com.tencent.mm.plugin.webwx.a.hYt.cancelNotification((String)localObject1);
+          if (!w.sI((String)localObject1)) {
             break label221;
           }
-          com.tencent.mm.model.aw.aaz();
-          c.Ru().set(143618, Integer.valueOf(0));
-          d.ali().dxx();
+          com.tencent.mm.model.az.arV();
+          c.afk().set(143618, Integer.valueOf(0));
+          com.tencent.mm.bk.d.aCo().eLC();
         }
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(26506);
+      AppMethodBeat.o(30181);
       return null;
       label221:
-      ab.i("MicroMsg.StatusNotifyMsgExtension", "summerbadcr STATUSNOTIFY clearChatRoomMsgSeq");
-      com.tencent.mm.model.aw.aaz();
-      c.YF().arJ((String)localObject1);
-      if (t.lA((String)localObject1))
+      ad.i("MicroMsg.StatusNotifyMsgExtension", "summerbadcr STATUSNOTIFY clearChatRoomMsgSeq");
+      com.tencent.mm.model.az.arV();
+      c.apR().aIp((String)localObject1);
+      if (w.pF((String)localObject1))
       {
-        com.tencent.mm.model.aw.aaz();
-        parama = c.YF().arH((String)localObject1);
+        com.tencent.mm.model.az.arV();
+        parama = c.apR().aIn((String)localObject1);
         if ((parama != null) && (parama.field_unReadCount > 0) && (parama.field_UnDeliverCount > 0))
         {
-          ab.i("MicroMsg.StatusNotifyMsgExtension", "summerbadcr STATUSNOTIFY clearChatRoomMsgSeq chatroom[%s], UnDeliver[%d], Unread[%d]", new Object[] { localObject1, Integer.valueOf(parama.field_UnDeliverCount), Integer.valueOf(parama.field_unReadCount) });
-          com.tencent.mm.plugin.webwx.a.gmP.dH((String)localObject1);
-          parama.hJ(0);
-          com.tencent.mm.model.aw.aaz();
-          c.YF().a(parama, (String)localObject1);
+          ad.i("MicroMsg.StatusNotifyMsgExtension", "summerbadcr STATUSNOTIFY clearChatRoomMsgSeq chatroom[%s], UnDeliver[%d], Unread[%d]", new Object[] { localObject1, Integer.valueOf(parama.field_UnDeliverCount), Integer.valueOf(parama.field_unReadCount) });
+          com.tencent.mm.plugin.webwx.a.hYu.eO((String)localObject1);
+          parama.jT(0);
+          com.tencent.mm.model.az.arV();
+          c.apR().a(parama, (String)localObject1);
           continue;
           label354:
           long l;
+          Object localObject3;
+          Object localObject4;
           if (i == 3)
           {
-            ab.i("MicroMsg.StatusNotifyMsgExtension", "summerstatus op[%s]", new Object[] { Integer.valueOf(i) });
+            ad.i("MicroMsg.StatusNotifyMsgExtension", "summerstatus op[%s]", new Object[] { Integer.valueOf(i) });
             l = System.currentTimeMillis();
-            com.tencent.mm.model.aw.aaz();
-            localObject2 = c.YF().dxi();
+            com.tencent.mm.model.az.arV();
+            localObject2 = c.apR().eLk();
             localObject1 = new StringBuilder();
             i = 0;
             if (i < ((List)localObject2).size())
@@ -130,200 +135,275 @@ public final class f
                 break;
               }
             }
-            ab.i("MicroMsg.StatusNotifyMsgExtension", "summerstatus userNames[%s] take[%d]ms", new Object[] { Integer.valueOf(((List)localObject2).size()), Long.valueOf(System.currentTimeMillis() - l) });
-            Object localObject3 = u.P(t.flc, 0);
+            ad.i("MicroMsg.StatusNotifyMsgExtension", "summerstatus userNames[%s] take[%d]ms", new Object[] { Integer.valueOf(((List)localObject2).size()), Long.valueOf(System.currentTimeMillis() - l) });
+            localObject3 = x.X(w.gMn, 0);
             if (localObject3 == null)
             {
               i = -1;
-              ab.i("MicroMsg.StatusNotifyMsgExtension", "summerstatus unreadUsernames[%s] take[%d]ms", new Object[] { Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l) });
+              ad.i("MicroMsg.StatusNotifyMsgExtension", "summerstatus unreadUsernames[%s] take[%d]ms", new Object[] { Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l) });
               if (localObject3 != null) {
-                break label667;
+                break label668;
               }
             }
-            label667:
+            label668:
             for (i = 0;; i = ((List)localObject3).size())
             {
               parama = null;
               if (i <= 0) {
-                break label678;
+                break label679;
               }
               parama = new LinkedList();
-              localObject2 = ((j)com.tencent.mm.kernel.g.E(j.class)).YF();
+              localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apR();
               localObject3 = ((List)localObject3).iterator();
               while (((Iterator)localObject3).hasNext())
               {
-                String str = (String)((Iterator)localObject3).next();
-                cgm localcgm = new cgm();
-                localcgm.jJA = str;
-                localcgm.xRn = ((int)((be)localObject2).arH(str).field_conversationTime);
-                parama.add(localcgm);
+                localObject4 = (String)((Iterator)localObject3).next();
+                cxo localcxo = new cxo();
+                localcxo.mAQ = ((String)localObject4);
+                localcxo.EpH = ((int)((bh)localObject2).aIn((String)localObject4).field_conversationTime);
+                parama.add(localcxo);
               }
               i = ((List)localObject3).size();
               break;
             }
-            label678:
-            parama = new com.tencent.mm.modelsimple.aa(((StringBuilder)localObject1).toString(), 4, i, parama);
-            com.tencent.mm.model.aw.Rc().a(parama, 0);
+            label679:
+            parama = new aa(((StringBuilder)localObject1).toString(), 4, i, parama);
+            com.tencent.mm.model.az.aeS().a(parama, 0);
           }
           else if (i == 6)
           {
-            ab.v("MicroMsg.StatusNotifyMsgExtension", "lyh statusNotify, %d, %s", new Object[] { Integer.valueOf(i), localObject2 });
+            ad.v("MicroMsg.StatusNotifyMsgExtension", "lyh statusNotify, %d, %s", new Object[] { Integer.valueOf(i), localObject2 });
           }
           else if (i == 7)
           {
-            ab.v("MicroMsg.StatusNotifyMsgExtension", "lyh statusNotify, %d, %s", new Object[] { Integer.valueOf(i), localObject2 });
-            com.tencent.mm.model.aw.aaz();
-            ab.d("MicroMsg.StatusNotifyMsgExtension", "onlineversion: %d,%d", new Object[] { Integer.valueOf(c.Yx()), Integer.valueOf(com.tencent.mm.modelsimple.n.ajB()) });
-            localObject1 = bo.nullAsNil((String)parama.get(".msg.op.name")).trim();
-            parama = bo.nullAsNil((String)parama.get(".msg.op.arg")).trim();
+            ad.v("MicroMsg.StatusNotifyMsgExtension", "lyh statusNotify, %d, %s", new Object[] { Integer.valueOf(i), localObject2 });
+            com.tencent.mm.model.az.arV();
+            ad.d("MicroMsg.StatusNotifyMsgExtension", "onlineversion: %d,%d", new Object[] { Integer.valueOf(c.apJ()), Integer.valueOf(com.tencent.mm.modelsimple.n.aAF()) });
+            localObject1 = bt.nullAsNil((String)parama.get(".msg.op.name")).trim();
+            parama = bt.nullAsNil((String)parama.get(".msg.op.arg")).trim();
             if ("WeixinStatus".equals(localObject1))
             {
-              com.tencent.mm.model.aw.aaz();
-              if ((c.Yx() == com.tencent.mm.modelsimple.n.ajB()) && (com.tencent.mm.modelsimple.n.fPn != null) && (com.tencent.mm.modelsimple.n.fPn.trim().length() > 0))
+              com.tencent.mm.model.az.arV();
+              if ((c.apJ() == com.tencent.mm.modelsimple.n.aAF()) && (com.tencent.mm.modelsimple.n.hrQ != null) && (com.tencent.mm.modelsimple.n.hrQ.trim().length() > 0))
               {
-                parama = new Intent(ah.getContext(), WebWXLogoutUI.class);
-                parama.setFlags(603979776);
-                parama.addFlags(268435456);
-                parama.putExtra("intent.key.online_version", com.tencent.mm.modelsimple.n.ajB());
-                ah.getContext().startActivity(parama);
+                localObject1 = new Intent(aj.getContext(), WebWXLogoutUI.class);
+                ((Intent)localObject1).setFlags(603979776);
+                ((Intent)localObject1).addFlags(268435456);
+                ((Intent)localObject1).putExtra("intent.key.online_version", com.tencent.mm.modelsimple.n.aAF());
+                parama = aj.getContext();
+                localObject1 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject1);
+                com.tencent.mm.hellhoundlib.a.a.a(parama, ((com.tencent.mm.hellhoundlib.b.a)localObject1).adn(), "com/tencent/mm/plugin/webwx/model/StatusNotifyMsgExtension", "handleStatusNotifyMsg", "(Lcom/tencent/mm/protocal/protobuf/AddMsg;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                parama.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).lS(0));
+                com.tencent.mm.hellhoundlib.a.a.a(parama, "com/tencent/mm/plugin/webwx/model/StatusNotifyMsgExtension", "handleStatusNotifyMsg", "(Lcom/tencent/mm/protocal/protobuf/AddMsg;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
               }
             }
             else if ("MomentsUnreadMsgStatus".equals(localObject1))
             {
-              localObject2 = new su();
-              ((su)localObject2).cJs.ctW = 7;
-              ((su)localObject2).cJs.cJt = ((String)localObject1);
-              ((su)localObject2).cJs.cJu = bo.getInt(parama, 0);
-              ab.i("MicroMsg.StatusNotifyMsgExtension", "sns enter function, %d, %s, %d", new Object[] { Integer.valueOf(((su)localObject2).cJs.ctW), ((su)localObject2).cJs.cJt, Long.valueOf(((su)localObject2).cJs.cJu) });
-              com.tencent.mm.sdk.b.a.ymk.l((b)localObject2);
+              localObject2 = new ur();
+              ((ur)localObject2).dAm.diR = 7;
+              ((ur)localObject2).dAm.dAn = ((String)localObject1);
+              ((ur)localObject2).dAm.dAo = bt.getInt(parama, 0);
+              ad.i("MicroMsg.StatusNotifyMsgExtension", "sns enter function, %d, %s, %d", new Object[] { Integer.valueOf(((ur)localObject2).dAm.diR), ((ur)localObject2).dAm.dAn, Long.valueOf(((ur)localObject2).dAm.dAo) });
+              com.tencent.mm.sdk.b.a.ESL.l((b)localObject2);
             }
             else if ("EnterpriseChatStatus".equals(localObject1))
             {
-              com.tencent.mm.aj.z.afv();
-              i.h(i, (String)localObject1, parama);
+              af.awr();
+              i.i(i, (String)localObject1, parama);
             }
           }
           else if (i == 8)
           {
-            ab.v("MicroMsg.StatusNotifyMsgExtension", "lyh statusNotify, %d, %s", new Object[] { Integer.valueOf(i), localObject2 });
-            localObject1 = bo.nullAsNil((String)parama.get(".msg.op.name")).trim();
-            parama = bo.nullAsNil((String)parama.get(".msg.op.arg")).trim();
+            ad.v("MicroMsg.StatusNotifyMsgExtension", "lyh statusNotify, %d, %s", new Object[] { Integer.valueOf(i), localObject2 });
+            localObject1 = bt.nullAsNil((String)parama.get(".msg.op.name")).trim();
+            parama = bt.nullAsNil((String)parama.get(".msg.op.arg")).trim();
             if ("EnterpriseChatStatus".equals(localObject1))
             {
-              com.tencent.mm.aj.z.afv();
-              i.h(i, (String)localObject1, parama);
+              af.awr();
+              i.i(i, (String)localObject1, parama);
             }
             else
             {
-              parama = new su();
-              parama.cJs.ctW = 8;
-              com.tencent.mm.sdk.b.a.ymk.l(parama);
+              parama = new ur();
+              parama.dAm.diR = 8;
+              com.tencent.mm.sdk.b.a.ESL.l(parama);
             }
           }
           else if (i == 9)
           {
-            ab.v("MicroMsg.StatusNotifyMsgExtension", "lyh statusNotify, %d, %s", new Object[] { Integer.valueOf(i), localObject2 });
-            localObject1 = bo.nullAsNil((String)parama.get(".msg.op.name")).trim();
-            parama = bo.nullAsNil((String)parama.get(".msg.op.arg")).trim();
+            ad.v("MicroMsg.StatusNotifyMsgExtension", "lyh statusNotify, %d, %s", new Object[] { Integer.valueOf(i), localObject2 });
+            localObject1 = bt.nullAsNil((String)parama.get(".msg.op.name")).trim();
+            parama = bt.nullAsNil((String)parama.get(".msg.op.arg")).trim();
             if ("MomentsTimelineStatus".equals(localObject1))
             {
               parama = parama.split(",");
               if (parama.length == 2)
               {
-                localObject2 = new su();
-                ((su)localObject2).cJs.ctW = 9;
-                ((su)localObject2).cJs.cJt = ((String)localObject1);
-                ((su)localObject2).cJs.cJu = bo.getInt(parama[1], 0);
-                ((su)localObject2).cJs.cJv = parama[0];
-                com.tencent.mm.sdk.b.a.ymk.l((b)localObject2);
+                localObject2 = new ur();
+                ((ur)localObject2).dAm.diR = 9;
+                ((ur)localObject2).dAm.dAn = ((String)localObject1);
+                ((ur)localObject2).dAm.dAo = bt.getInt(parama[1], 0);
+                ((ur)localObject2).dAm.dAp = parama[0];
+                com.tencent.mm.sdk.b.a.ESL.l((b)localObject2);
               }
             }
             else if ("EnterpriseChatStatus".equals(localObject1))
             {
-              com.tencent.mm.aj.z.afv();
-              i.h(i, (String)localObject1, parama);
+              af.awr();
+              i.i(i, (String)localObject1, parama);
             }
           }
           else if (i == 11)
           {
-            localObject1 = bo.nullAsNil((String)parama.get(".msg.op.name")).trim();
-            parama = bo.nullAsNil((String)parama.get(".msg.op.arg")).trim();
-            if (!"DownloadFile".equals(localObject1)) {
-              ab.i("MicroMsg.StatusNotifyMsgExtension", "[MultiTerminalSyncMgr]not DownloadFile, ignore");
-            }
-            localObject1 = br.F(parama, "downloadList");
-            if (localObject1 != null)
+            localObject1 = bt.nullAsNil((String)parama.get(".msg.op.name")).trim();
+            localObject2 = bt.nullAsNil((String)parama.get(".msg.op.arg")).trim();
+            if ("DownloadFile".equals(localObject1))
             {
-              i = 0;
-              for (;;)
+              localObject1 = bw.K((String)localObject2, "downloadList");
+              if (localObject1 != null)
               {
-                label1465:
-                localObject2 = new StringBuilder(".downloadList.downloadItem");
-                if (i == 0) {}
-                for (parama = "";; parama = Integer.valueOf(i))
+                i = 0;
+                for (;;)
                 {
-                  localObject2 = parama;
-                  i += 1;
-                  parama = (String)localObject2 + ".username";
-                  localObject2 = (String)localObject2 + ".msgsvrid";
-                  parama = (String)((Map)localObject1).get(parama);
-                  if (bo.isNullOrNil(parama)) {
-                    break;
+                  label1538:
+                  localObject2 = new StringBuilder(".downloadList.downloadItem");
+                  if (i == 0) {}
+                  for (parama = "";; parama = Integer.valueOf(i))
+                  {
+                    localObject2 = parama;
+                    i += 1;
+                    parama = (String)localObject2 + ".username";
+                    localObject2 = (String)localObject2 + ".msgsvrid";
+                    parama = (String)((Map)localObject1).get(parama);
+                    if (bt.isNullOrNil(parama)) {
+                      break;
+                    }
+                    l = bt.getLong((String)((Map)localObject1).get(localObject2), -1L);
+                    if (l == -1L) {
+                      break;
+                    }
+                    com.tencent.mm.model.az.arV();
+                    parama = c.apO().aD(parama, l);
+                    if (parama.field_msgSvrId != 0L) {
+                      break label1718;
+                    }
+                    ad.i("MicroMsg.StatusNotifyMsgExtension", "[MicroMsg.MultiTerminalSyncMgr] msg not exit, svrID:%d", new Object[] { Long.valueOf(l) });
+                    break label1538;
                   }
-                  l = bo.getLong((String)((Map)localObject1).get(localObject2), -1L);
-                  if (l == -1L) {
-                    break;
-                  }
-                  com.tencent.mm.model.aw.aaz();
-                  parama = c.YC().ag(parama, l);
-                  if (parama.field_msgSvrId != 0L) {
-                    break label1645;
-                  }
-                  ab.i("MicroMsg.StatusNotifyMsgExtension", "[MicroMsg.MultiTerminalSyncMgr] msg not exit, svrID:%d", new Object[] { Long.valueOf(l) });
-                  break label1465;
+                  label1718:
+                  g.erW().erY().vc(parama.field_msgId);
                 }
-                label1645:
-                g.dhh().dhj().nr(parama.field_msgId);
               }
+            }
+            else if ("HandOff".equals(localObject1))
+            {
+              i = bt.getInt((String)parama.get(".msg.op.arg.handofflist.$opcode"), 0);
+              if (i == 6) {
+                ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).cFt();
+              } else if (i == 5) {
+                try
+                {
+                  localObject1 = ((String)parama.get(".msg.op.arg.handofflist.handoff.$from")).trim();
+                  l = bt.getLong(((String)parama.get(".msg.op.arg.handofflist.handoff.id")).trim(), 0L);
+                  localObject3 = ((String)parama.get(".msg.op.arg.handofflist.handoff.$id")).trim();
+                  com.tencent.mm.model.az.arV();
+                  parama = c.apO().aD((String)localObject1, l);
+                  localObject1 = ap.bxS().vj(parama.field_msgId);
+                  parama = (f.a)localObject1;
+                  if (localObject1 == null)
+                  {
+                    localObject4 = ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).adx((String)localObject3);
+                    parama = (f.a)localObject1;
+                    if ((localObject4 instanceof HandOffFile)) {
+                      parama = al.a((HandOffFile)localObject4);
+                    }
+                  }
+                  if (parama != null)
+                  {
+                    if (!((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).a((String)localObject3, parama)) {
+                      continue;
+                    }
+                    com.tencent.mm.model.az.aeS().a(new al((String)localObject3, parama), 0);
+                  }
+                }
+                catch (NullPointerException parama)
+                {
+                  ad.e("MicroMsg.StatusNotifyMsgExtension", "[timyiluo] handoff received EXPIRED command, arg is invalid: " + parama.getLocalizedMessage());
+                  continue;
+                  ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).gO((String)localObject3, (String)localObject2);
+                }
+                catch (AssertionError parama)
+                {
+                  ad.e("MicroMsg.StatusNotifyMsgExtension", "[timyiluo] handoff received EXPIRED command, arg is invalid: " + parama.getLocalizedMessage());
+                }
+                catch (Exception parama)
+                {
+                  ad.e("MicroMsg.StatusNotifyMsgExtension", "[timyiluo] handoff received EXPIRED command, arg is invalid: " + parama.getLocalizedMessage());
+                }
+              } else if (i == 9) {
+                try
+                {
+                  parama = ((String)parama.get(".msg.op.arg.handofflist.handoff.md5")).trim();
+                  ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).ady(parama);
+                }
+                catch (NullPointerException parama)
+                {
+                  ad.e("MicroMsg.StatusNotifyMsgExtension", "[timyiluo] handoff received EXPIRED command, arg is invalid: " + parama.getLocalizedMessage());
+                }
+                catch (Exception parama)
+                {
+                  ad.e("MicroMsg.StatusNotifyMsgExtension", "[timyiluo] handoff received EXPIRED command, arg is invalid: " + parama.getLocalizedMessage());
+                }
+              }
+            }
+            else
+            {
+              ad.d("MicroMsg.StatusNotifyMsgExtension", "[SendCommand]unknown function: " + (String)localObject1 + " , ignore");
             }
           }
           else if (i == 12)
           {
-            ab.d("MicroMsg.StatusNotifyMsgExtension", "williamjin extdevice unlock ".concat(String.valueOf(localObject2)), new Object[] { Integer.valueOf(i) });
+            ad.d("MicroMsg.StatusNotifyMsgExtension", "williamjin extdevice unlock ".concat(String.valueOf(localObject2)), new Object[] { Integer.valueOf(i) });
             try
             {
               if (parama.get(".msg.op.arg") == null) {
-                break label1815;
+                break label2426;
               }
-              parama = new JSONObject((String)parama.get(".msg.op.arg")).get("deviceName").toString();
-              if (!com.tencent.mm.modelsimple.n.ajA()) {
+              localObject1 = new JSONObject((String)parama.get(".msg.op.arg")).get("deviceName").toString();
+              if (!com.tencent.mm.modelsimple.n.aAE()) {
                 continue;
               }
-              localObject1 = new Intent(ah.getContext(), WebWXPopupUnlockUI.class);
-              ((Intent)localObject1).setFlags(872415232);
-              ((Intent)localObject1).putExtra("deviceName", parama);
-              ah.getContext().startActivity((Intent)localObject1);
+              parama = new Intent(aj.getContext(), WebWXPopupUnlockUI.class);
+              parama.setFlags(872415232);
+              parama.putExtra("deviceName", (String)localObject1);
+              localObject1 = aj.getContext();
+              parama = new com.tencent.mm.hellhoundlib.b.a().bd(parama);
+              com.tencent.mm.hellhoundlib.a.a.a(localObject1, parama.adn(), "com/tencent/mm/plugin/webwx/model/StatusNotifyMsgExtension", "handleStatusNotifyMsg", "(Lcom/tencent/mm/protocal/protobuf/AddMsg;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              ((Context)localObject1).startActivity((Intent)parama.lS(0));
+              com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/webwx/model/StatusNotifyMsgExtension", "handleStatusNotifyMsg", "(Lcom/tencent/mm/protocal/protobuf/AddMsg;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             }
             catch (JSONException parama)
             {
-              ab.e("MicroMsg.StatusNotifyMsgExtension", "[williamjin] " + parama.getMessage());
+              ad.e("MicroMsg.StatusNotifyMsgExtension", "[williamjin] " + parama.getMessage());
             }
             continue;
-            label1815:
-            ab.d("MicroMsg.StatusNotifyMsgExtension", "[williamjin] can not find the tag  .msg.op.arg");
+            label2426:
+            ad.d("MicroMsg.StatusNotifyMsgExtension", "[williamjin] can not find the tag  .msg.op.arg");
           }
           else
           {
-            ab.e("MicroMsg.StatusNotifyMsgExtension", "unknow opCode, %d", new Object[] { Integer.valueOf(i) });
+            ad.e("MicroMsg.StatusNotifyMsgExtension", "unknow opCode, %d", new Object[] { Integer.valueOf(i) });
           }
         }
       }
     }
   }
+  
+  public final void b(f.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.a.f
  * JD-Core Version:    0.7.0.1
  */

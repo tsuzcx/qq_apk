@@ -1,25 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.a;
 
-import a.l;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.luggage.g.d;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vending.g.b;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.phonenumber.PhoneItem;
+import d.g.a.r;
+import java.util.List;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "invoke"})
 final class c$m
-  implements DialogInterface.OnClickListener
+  extends d.g.b.l
+  implements d.g.a.b<Integer, d.y>
 {
-  c$m(b paramb) {}
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  c$m(com.tencent.mm.plugin.appbrand.phonenumber.y paramy, aa paramaa, String paramString, boolean paramBoolean, com.tencent.mm.vending.g.b paramb)
   {
-    AppMethodBeat.i(143760);
-    d.i("MicroMsg.JsApiGetPhoneNumberNew", "cancel to bind phone number");
-    paramDialogInterface.dismiss();
-    this.hEh.cK("user cancel");
-    AppMethodBeat.o(143760);
+    super(1);
   }
 }
 

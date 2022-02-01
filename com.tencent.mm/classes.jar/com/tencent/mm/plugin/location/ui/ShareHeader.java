@@ -15,77 +15,77 @@ public class ShareHeader
   extends LinearLayout
 {
   private Context mContext;
-  private ViewGroup ocW;
-  private MMImageButton ocX;
-  private MMImageButton ocY;
+  private ViewGroup sRI;
+  private MMImageButton sRJ;
+  private MMImageButton sRK;
   private TextView titleTv;
   
   public ShareHeader(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(113486);
+    AppMethodBeat.i(55886);
     this.mContext = paramContext;
     init();
-    AppMethodBeat.o(113486);
+    AppMethodBeat.o(55886);
   }
   
   @TargetApi(11)
   public ShareHeader(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(113485);
+    AppMethodBeat.i(55885);
     this.mContext = paramContext;
     init();
-    AppMethodBeat.o(113485);
+    AppMethodBeat.o(55885);
   }
   
   private void init()
   {
-    AppMethodBeat.i(113487);
-    View localView = View.inflate(this.mContext, 2130970722, this);
-    this.ocW = ((ViewGroup)localView.findViewById(2131826116));
-    this.ocX = ((MMImageButton)localView.findViewById(2131827759));
-    this.ocY = ((MMImageButton)localView.findViewById(2131827761));
-    this.titleTv = ((TextView)localView.findViewById(2131820680));
-    AppMethodBeat.o(113487);
+    AppMethodBeat.i(55887);
+    View localView = View.inflate(this.mContext, 2131495426, this);
+    this.sRI = ((ViewGroup)localView.findViewById(2131300707));
+    this.sRJ = ((MMImageButton)localView.findViewById(2131305935));
+    this.sRK = ((MMImageButton)localView.findViewById(2131305942));
+    this.titleTv = ((TextView)localView.findViewById(2131305902));
+    AppMethodBeat.o(55887);
   }
   
   public ViewGroup getHeaderBar()
   {
-    return this.ocW;
+    return this.sRI;
   }
   
   public void setOnLeftClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(113488);
-    this.ocX.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(113488);
+    AppMethodBeat.i(55888);
+    this.sRJ.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(55888);
   }
   
   public void setOnRightClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(113489);
-    this.ocY.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(113489);
+    AppMethodBeat.i(55889);
+    this.sRK.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(55889);
   }
   
   public void setTitle(String paramString)
   {
-    AppMethodBeat.i(113490);
+    AppMethodBeat.i(55890);
     this.titleTv.setText(paramString);
-    AppMethodBeat.o(113490);
+    AppMethodBeat.o(55890);
   }
   
   public void setTitleColor(int paramInt)
   {
-    AppMethodBeat.i(113491);
+    AppMethodBeat.i(55891);
     this.titleTv.setTextColor(paramInt);
-    AppMethodBeat.o(113491);
+    AppMethodBeat.o(55891);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.ShareHeader
  * JD-Core Version:    0.7.0.1
  */

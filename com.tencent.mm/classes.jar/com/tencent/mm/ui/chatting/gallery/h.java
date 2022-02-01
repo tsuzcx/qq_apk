@@ -1,139 +1,158 @@
 package com.tencent.mm.ui.chatting.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bl;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class h
 {
-  public ArrayList<bi> mCl;
-  public boolean mCm;
-  ArrayList<h.b> mCn;
+  public ArrayList<bl> qjT;
+  public boolean qjU;
+  ArrayList<b> qjV;
   
   private h()
   {
-    AppMethodBeat.i(32166);
-    this.mCl = new ArrayList();
-    this.mCm = false;
-    this.mCn = new ArrayList();
-    AppMethodBeat.o(32166);
+    AppMethodBeat.i(36079);
+    this.qjT = new ArrayList();
+    this.qjU = false;
+    this.qjV = new ArrayList();
+    AppMethodBeat.o(36079);
   }
   
-  private void bfY()
+  private void bNj()
   {
-    AppMethodBeat.i(32174);
-    Iterator localIterator = this.mCn.iterator();
+    AppMethodBeat.i(36087);
+    Iterator localIterator = this.qjV.iterator();
     while (localIterator.hasNext()) {
-      ((h.b)localIterator.next()).clear();
+      ((b)localIterator.next()).clear();
     }
-    AppMethodBeat.o(32174);
+    AppMethodBeat.o(36087);
   }
   
-  private void dKf()
+  private void eZz()
   {
-    AppMethodBeat.i(32173);
-    Iterator localIterator = this.mCn.iterator();
+    AppMethodBeat.i(36086);
+    Iterator localIterator = this.qjV.iterator();
     while (localIterator.hasNext()) {
-      ((h.b)localIterator.next()).dKd();
+      ((b)localIterator.next()).eZx();
     }
-    AppMethodBeat.o(32173);
+    AppMethodBeat.o(36086);
   }
   
-  private bi oL(long paramLong)
+  private bl wM(long paramLong)
   {
-    AppMethodBeat.i(32168);
-    Iterator localIterator = this.mCl.iterator();
+    AppMethodBeat.i(36081);
+    Iterator localIterator = this.qjT.iterator();
     while (localIterator.hasNext())
     {
-      bi localbi = (bi)localIterator.next();
-      if (localbi.field_msgId == paramLong)
+      bl localbl = (bl)localIterator.next();
+      if (localbl.field_msgId == paramLong)
       {
-        AppMethodBeat.o(32168);
-        return localbi;
+        AppMethodBeat.o(36081);
+        return localbl;
       }
     }
-    AppMethodBeat.o(32168);
+    AppMethodBeat.o(36081);
     return null;
   }
   
-  public final void a(h.b paramb)
+  public final void a(b paramb)
   {
-    AppMethodBeat.i(32175);
-    this.mCn.remove(paramb);
-    this.mCn.add(paramb);
-    AppMethodBeat.o(32175);
+    AppMethodBeat.i(36088);
+    this.qjV.remove(paramb);
+    this.qjV.add(paramb);
+    AppMethodBeat.o(36088);
   }
   
-  public final void bD(bi parambi)
+  public final void cd(bl parambl)
   {
-    AppMethodBeat.i(32167);
-    if (parambi == null)
+    AppMethodBeat.i(36080);
+    if (parambl == null)
     {
-      AppMethodBeat.o(32167);
+      AppMethodBeat.o(36080);
       return;
     }
-    ab.i("MicroMsg.ImageGallerySelectedHandle", "add : %s", new Object[] { Long.valueOf(parambi.field_msgId) });
-    this.mCl.remove(parambi);
-    this.mCl.remove(oL(parambi.field_msgId));
-    this.mCl.add(parambi);
-    dKf();
-    AppMethodBeat.o(32167);
+    ad.i("MicroMsg.ImageGallerySelectedHandle", "add : %s", new Object[] { Long.valueOf(parambl.field_msgId) });
+    this.qjT.remove(parambl);
+    this.qjT.remove(wM(parambl.field_msgId));
+    this.qjT.add(parambl);
+    eZz();
+    AppMethodBeat.o(36080);
   }
   
-  public final void bE(bi parambi)
+  public final void ce(bl parambl)
   {
-    AppMethodBeat.i(32169);
-    if (parambi == null)
+    AppMethodBeat.i(36082);
+    if (parambl == null)
     {
-      AppMethodBeat.o(32169);
+      AppMethodBeat.o(36082);
       return;
     }
-    ab.i("MicroMsg.ImageGallerySelectedHandle", "remove : %s", new Object[] { Long.valueOf(parambi.field_msgId) });
-    this.mCl.remove(parambi);
-    this.mCl.remove(oL(parambi.field_msgId));
-    dKf();
-    AppMethodBeat.o(32169);
+    ad.i("MicroMsg.ImageGallerySelectedHandle", "remove : %s", new Object[] { Long.valueOf(parambl.field_msgId) });
+    this.qjT.remove(parambl);
+    this.qjT.remove(wM(parambl.field_msgId));
+    eZz();
+    AppMethodBeat.o(36082);
   }
   
-  public final boolean bF(bi parambi)
+  public final boolean cf(bl parambl)
   {
-    AppMethodBeat.i(32172);
-    if (parambi == null)
+    AppMethodBeat.i(36085);
+    if (parambl == null)
     {
-      AppMethodBeat.o(32172);
+      AppMethodBeat.o(36085);
       return false;
     }
-    Iterator localIterator = this.mCl.iterator();
+    Iterator localIterator = this.qjT.iterator();
     while (localIterator.hasNext()) {
-      if (((bi)localIterator.next()).field_msgId == parambi.field_msgId)
+      if (((bl)localIterator.next()).field_msgId == parambl.field_msgId)
       {
-        AppMethodBeat.o(32172);
+        AppMethodBeat.o(36085);
         return true;
       }
     }
-    AppMethodBeat.o(32172);
+    AppMethodBeat.o(36085);
     return false;
   }
   
   public final void clear()
   {
-    AppMethodBeat.i(32170);
-    ab.i("MicroMsg.ImageGallerySelectedHandle", "clear..");
-    this.mCl.clear();
-    bfY();
-    AppMethodBeat.o(32170);
+    AppMethodBeat.i(36083);
+    ad.i("MicroMsg.ImageGallerySelectedHandle", "clear..");
+    this.qjT.clear();
+    bNj();
+    AppMethodBeat.o(36083);
   }
   
   public final void detach()
   {
-    AppMethodBeat.i(32171);
-    this.mCn.clear();
+    AppMethodBeat.i(36084);
+    this.qjV.clear();
     clear();
-    this.mCm = false;
-    AppMethodBeat.o(32171);
+    this.qjU = false;
+    AppMethodBeat.o(36084);
+  }
+  
+  public static final class a
+  {
+    private static final h GBY;
+    
+    static
+    {
+      AppMethodBeat.i(36078);
+      GBY = new h((byte)0);
+      AppMethodBeat.o(36078);
+    }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void clear();
+    
+    public abstract void eZx();
   }
 }
 

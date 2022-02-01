@@ -23,28 +23,28 @@ public class TbsDownloadConfig
   public static final int ERROR_REPORTED = 0;
   public static final int ERROR_UNZIP = 4;
   public static final int ERROR_VERIFY = 3;
-  private static TbsDownloadConfig b;
-  Map<String, Object> a;
-  private Context c;
+  private static TbsDownloadConfig a;
+  private Context b;
   public SharedPreferences mPreferences;
+  public Map<String, Object> mSyncMap;
   
   private TbsDownloadConfig(Context paramContext)
   {
-    AppMethodBeat.i(64320);
-    this.a = new HashMap();
+    AppMethodBeat.i(54073);
+    this.mSyncMap = new HashMap();
     this.mPreferences = paramContext.getSharedPreferences("tbs_download_config", 4);
-    this.c = paramContext.getApplicationContext();
-    if (this.c == null) {
-      this.c = paramContext;
+    this.b = paramContext.getApplicationContext();
+    if (this.b == null) {
+      this.b = paramContext;
     }
-    AppMethodBeat.o(64320);
+    AppMethodBeat.o(54073);
   }
   
   public static TbsDownloadConfig getInstance()
   {
     try
     {
-      TbsDownloadConfig localTbsDownloadConfig = b;
+      TbsDownloadConfig localTbsDownloadConfig = a;
       return localTbsDownloadConfig;
     }
     finally
@@ -58,12 +58,12 @@ public class TbsDownloadConfig
   {
     try
     {
-      AppMethodBeat.i(64321);
-      if (b == null) {
-        b = new TbsDownloadConfig(paramContext);
+      AppMethodBeat.i(54074);
+      if (a == null) {
+        a = new TbsDownloadConfig(paramContext);
       }
-      paramContext = b;
-      AppMethodBeat.o(64321);
+      paramContext = a;
+      AppMethodBeat.o(54074);
       return paramContext;
     }
     finally {}
@@ -71,19 +71,19 @@ public class TbsDownloadConfig
   
   public void clear()
   {
-    AppMethodBeat.i(64337);
+    AppMethodBeat.i(54090);
     try
     {
-      this.a.clear();
+      this.mSyncMap.clear();
       SharedPreferences.Editor localEditor = this.mPreferences.edit();
       localEditor.clear();
       localEditor.commit();
-      AppMethodBeat.o(64337);
+      AppMethodBeat.o(54090);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(64337);
+      AppMethodBeat.o(54090);
     }
   }
   
@@ -95,16 +95,16 @@ public class TbsDownloadConfig
       Object localObject2;
       try
       {
-        AppMethodBeat.i(64336);
+        AppMethodBeat.i(54089);
         try
         {
           SharedPreferences.Editor localEditor = this.mPreferences.edit();
-          Iterator localIterator = this.a.keySet().iterator();
+          Iterator localIterator = this.mSyncMap.keySet().iterator();
           if (!localIterator.hasNext()) {
             break label209;
           }
           str = (String)localIterator.next();
-          localObject2 = this.a.get(str);
+          localObject2 = this.mSyncMap.get(str);
           if (!(localObject2 instanceof String)) {
             continue;
           }
@@ -113,7 +113,7 @@ public class TbsDownloadConfig
         }
         catch (Exception localException)
         {
-          AppMethodBeat.o(64336);
+          AppMethodBeat.o(54089);
         }
         return;
       }
@@ -136,8 +136,8 @@ public class TbsDownloadConfig
         continue;
         label209:
         localObject1.commit();
-        this.a.clear();
-        AppMethodBeat.o(64336);
+        this.mSyncMap.clear();
+        AppMethodBeat.o(54089);
       }
     }
   }
@@ -206,7 +206,7 @@ public class TbsDownloadConfig
     //   27: new 194	java/io/File
     //   30: dup
     //   31: aload_0
-    //   32: getfield 71	com/tencent/smtt/sdk/TbsDownloadConfig:c	Landroid/content/Context;
+    //   32: getfield 71	com/tencent/smtt/sdk/TbsDownloadConfig:b	Landroid/content/Context;
     //   35: invokevirtual 198	android/content/Context:getFilesDir	()Ljava/io/File;
     //   38: ldc 200
     //   40: invokespecial 203	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
@@ -219,11 +219,11 @@ public class TbsDownloadConfig
     //   56: bipush 159
     //   58: istore_1
     //   59: aload_0
-    //   60: getfield 71	com/tencent/smtt/sdk/TbsDownloadConfig:c	Landroid/content/Context;
+    //   60: getfield 71	com/tencent/smtt/sdk/TbsDownloadConfig:b	Landroid/content/Context;
     //   63: ifnull +159 -> 222
     //   66: ldc 208
     //   68: aload_0
-    //   69: getfield 71	com/tencent/smtt/sdk/TbsDownloadConfig:c	Landroid/content/Context;
+    //   69: getfield 71	com/tencent/smtt/sdk/TbsDownloadConfig:b	Landroid/content/Context;
     //   72: invokevirtual 212	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
     //   75: getfield 218	android/content/pm/ApplicationInfo:packageName	Ljava/lang/String;
     //   78: invokevirtual 222	java/lang/String:equals	(Ljava/lang/Object;)Z
@@ -340,14 +340,14 @@ public class TbsDownloadConfig
   {
     try
     {
-      AppMethodBeat.i(64322);
+      AppMethodBeat.i(54075);
       int j = this.mPreferences.getInt("tbs_download_maxflow", 0);
       int i = j;
       if (j == 0) {
         i = 20;
       }
       long l = i * 1024;
-      AppMethodBeat.o(64322);
+      AppMethodBeat.o(54075);
       return l * 1024L;
     }
     finally {}
@@ -547,7 +547,7 @@ public class TbsDownloadConfig
     label26:
     try
     {
-      AppMethodBeat.i(64330);
+      AppMethodBeat.i(54083);
     }
     finally {}
     try
@@ -559,7 +559,7 @@ public class TbsDownloadConfig
     {
       break label26;
     }
-    AppMethodBeat.o(64330);
+    AppMethodBeat.o(54083);
     return bool1;
   }
   
@@ -570,7 +570,7 @@ public class TbsDownloadConfig
     label26:
     try
     {
-      AppMethodBeat.i(64331);
+      AppMethodBeat.i(54084);
     }
     finally {}
     try
@@ -582,7 +582,7 @@ public class TbsDownloadConfig
     {
       break label26;
     }
-    AppMethodBeat.o(64331);
+    AppMethodBeat.o(54084);
     return bool1;
   }
   
@@ -590,9 +590,9 @@ public class TbsDownloadConfig
   {
     try
     {
-      AppMethodBeat.i(64335);
+      AppMethodBeat.i(54088);
       boolean bool = this.mPreferences.getBoolean("is_oversea", false);
-      AppMethodBeat.o(64335);
+      AppMethodBeat.o(54088);
       return bool;
     }
     finally
@@ -606,20 +606,20 @@ public class TbsDownloadConfig
   {
     try
     {
-      AppMethodBeat.i(64327);
+      AppMethodBeat.i(54080);
       try
       {
         SharedPreferences.Editor localEditor = this.mPreferences.edit();
         localEditor.putInt("tbs_download_interrupt_code", paramInt);
         localEditor.putLong("tbs_download_interrupt_time", System.currentTimeMillis());
         localEditor.commit();
-        AppMethodBeat.o(64327);
+        AppMethodBeat.o(54080);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          AppMethodBeat.o(64327);
+          AppMethodBeat.o(54080);
         }
       }
       return;
@@ -631,11 +631,11 @@ public class TbsDownloadConfig
   {
     try
     {
-      AppMethodBeat.i(64338);
+      AppMethodBeat.i(54091);
       SharedPreferences.Editor localEditor = this.mPreferences.edit();
       localEditor.putInt("tbs_install_interrupt_code", paramInt);
       localEditor.commit();
-      AppMethodBeat.o(64338);
+      AppMethodBeat.o(54091);
       return;
     }
     finally
@@ -649,19 +649,19 @@ public class TbsDownloadConfig
   {
     try
     {
-      AppMethodBeat.i(64328);
+      AppMethodBeat.i(54081);
       try
       {
         SharedPreferences.Editor localEditor = this.mPreferences.edit();
         localEditor.putBoolean("tbs_core_load_rename_file_lock_enable", paramBoolean);
         localEditor.commit();
-        AppMethodBeat.o(64328);
+        AppMethodBeat.o(54081);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          AppMethodBeat.o(64328);
+          AppMethodBeat.o(54081);
         }
       }
       return;
@@ -673,19 +673,19 @@ public class TbsDownloadConfig
   {
     try
     {
-      AppMethodBeat.i(64329);
+      AppMethodBeat.i(54082);
       try
       {
         SharedPreferences.Editor localEditor = this.mPreferences.edit();
         localEditor.putBoolean("tbs_core_load_rename_file_lock_wait_enable", paramBoolean);
         localEditor.commit();
-        AppMethodBeat.o(64329);
+        AppMethodBeat.o(54082);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          AppMethodBeat.o(64329);
+          AppMethodBeat.o(54082);
         }
       }
       return;
@@ -699,7 +699,7 @@ public class TbsDownloadConfig
     {
       try
       {
-        AppMethodBeat.i(64332);
+        AppMethodBeat.i(54085);
         if (paramContext != null) {}
         try
         {
@@ -720,12 +720,12 @@ public class TbsDownloadConfig
           int j;
           TbsLogReport.TbsLogInfo localTbsLogInfo;
           int k;
-          AppMethodBeat.o(64332);
+          AppMethodBeat.o(54085);
           continue;
         }
         try
         {
-          bool = new File(new File(this.c.getFilesDir(), "shared_prefs"), "tbs_download_config").exists();
+          bool = new File(new File(this.b.getFilesDir(), "shared_prefs"), "tbs_download_config").exists();
           if (bool) {
             continue;
           }
@@ -745,7 +745,7 @@ public class TbsDownloadConfig
           localTbsLogInfo.setFailDetail(" ".concat(String.valueOf(i)));
           TbsLogReport.getInstance(paramContext).eventReport(TbsLogReport.EventType.TYPE_DOWNLOAD, localTbsLogInfo);
         }
-        AppMethodBeat.o(64332);
+        AppMethodBeat.o(54085);
         return;
       }
       finally {}
@@ -790,7 +790,7 @@ public class TbsDownloadConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsDownloadConfig
  * JD-Core Version:    0.7.0.1
  */

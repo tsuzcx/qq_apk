@@ -1,100 +1,53 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import android.content.Context;
-import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.wallet_core.c.aa;
+import java.util.Map;
 
 public final class v
 {
-  public List<ElementQuery> ubS = null;
-  public SparseArray<String> ulh = null;
+  public String AhA;
+  public String Ahw;
+  public int Ahx;
+  public String Ahy;
+  public String Ahz;
+  public String doh;
+  public String wUC;
   
-  public final String ab(Context paramContext, int paramInt)
+  public static v aO(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(46888);
-    if (this.ulh != null)
+    AppMethodBeat.i(70408);
+    if (paramMap == null)
     {
-      String str = (String)this.ulh.get(paramInt);
-      if (!bo.isNullOrNil(str))
-      {
-        AppMethodBeat.o(46888);
-        return str;
-      }
-    }
-    paramContext = paramContext.getString(2131304913);
-    AppMethodBeat.o(46888);
-    return paramContext;
-  }
-  
-  public final ElementQuery afh(String paramString)
-  {
-    AppMethodBeat.i(46889);
-    if ((this.ubS != null) && (this.ubS.size() != 0))
-    {
-      Iterator localIterator = this.ubS.iterator();
-      while (localIterator.hasNext())
-      {
-        ElementQuery localElementQuery = (ElementQuery)localIterator.next();
-        if ((localElementQuery.poq != null) && (localElementQuery.poq.equals(paramString)))
-        {
-          AppMethodBeat.o(46889);
-          return localElementQuery;
-        }
-      }
-      ab.w("MicroMsg.WalletBankElementManager", "hy: not found given banktype: %s", new Object[] { paramString });
-      AppMethodBeat.o(46889);
+      AppMethodBeat.o(70408);
       return null;
     }
-    ab.w("MicroMsg.WalletBankElementManager", "hy: no element from given banktype");
-    AppMethodBeat.o(46889);
-    return null;
+    v localv = new v();
+    localv.doh = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.wording"));
+    localv.Ahw = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.wording_color"));
+    localv.wUC = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.bg_color"));
+    localv.Ahy = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.route_url"));
+    localv.Ahz = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.left_icon"));
+    localv.AhA = ((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.right_icon"));
+    localv.Ahx = bt.getInt((String)paramMap.get(".sysmsg.paymsg.BalanceNotice.wording_size"), 14);
+    AppMethodBeat.o(70408);
+    return localv;
   }
   
-  public final ElementQuery afi(String paramString)
+  public static void atO(String paramString)
   {
-    AppMethodBeat.i(46890);
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.w("MicroMsg.WalletBankElementManager", "hy: bindSerail given is null");
-      AppMethodBeat.o(46890);
-      return null;
-    }
-    if ((this.ubS != null) && (this.ubS.size() != 0))
-    {
-      Iterator localIterator = this.ubS.iterator();
-      while (localIterator.hasNext())
-      {
-        ElementQuery localElementQuery = (ElementQuery)localIterator.next();
-        if (paramString.equals(localElementQuery.por))
-        {
-          AppMethodBeat.o(46890);
-          return localElementQuery;
-        }
-      }
-      ab.w("MicroMsg.WalletBankElementManager", "hy: not found given element query");
-      AppMethodBeat.o(46890);
-      return null;
-    }
-    ab.w("MicroMsg.WalletBankElementManager", "hy: element list is null. get element failed");
-    AppMethodBeat.o(46890);
-    return null;
-  }
-  
-  public final String fq(Context paramContext)
-  {
-    AppMethodBeat.i(46887);
-    paramContext = ab(paramContext, t.cTN().cUv());
-    AppMethodBeat.o(46887);
-    return paramContext;
+    AppMethodBeat.i(70409);
+    ((a)g.ad(a.class)).getWalletCacheStg().set(ae.a.Fsu, paramString);
+    AppMethodBeat.o(70409);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.v
  * JD-Core Version:    0.7.0.1
  */

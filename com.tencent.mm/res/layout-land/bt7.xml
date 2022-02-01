@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/hnm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/hni" android:background="@color/aaa" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/hnf" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <RelativeLayout android:layout_gravity="bottom" android:id="@id/hnh" android:background="@drawable/c5z" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="15.0dip" android:textColor="@color/aae" android:id="@id/hnl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c8" android:layout_marginBottom="@dimen/c_" android:text="@string/hp9" android:layout_marginStart="@dimen/c8" />
+            <RelativeLayout android:id="@id/ho9" android:layout_width="192.0dip" android:layout_height="108.0dip" android:layout_marginBottom="@dimen/c8" android:layout_below="@id/hnl" android:layout_centerHorizontal="true">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hnk" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:layout_marginTop="@dimen/bq" android:src="@raw/icons_filled_camera_switch" android:layout_marginEnd="@dimen/bq" android:layout_alignParentEnd="true" app:iconColor="@color/a_u" />
+            </RelativeLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/hs2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c8" android:weightSum="2.0" android:layout_below="@id/ho9" android:layout_centerHorizontal="true">
+                <Button android:textColor="@color/aae" android:id="@id/hng" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/r5" android:layout_weight="1.0" android:layout_marginStart="@dimen/cg" android:layout_marginEnd="@dimen/bq" style="@style/od" />
+                <Button android:textColor="@color/a_u" android:id="@id/hnj" android:background="@drawable/c6h" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/hpp" android:layout_weight="1.0" android:layout_marginStart="@dimen/bq" android:layout_marginEnd="@dimen/cg" style="@style/od" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/hjd" android:background="@color/aaa" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/hj4" android:layout_width="fill_parent" android:layout_height="240.0dip" />
+    <com.tencent.mm.live.view.LiveBottomSheetPanel android:orientation="vertical" android:id="@id/hj5" android:background="@drawable/c5z" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <RelativeLayout android:id="@id/hj_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip">
+            <ImageView android:id="@id/hj9" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/a_u" android:id="@id/hja" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <TextView android:textSize="13.0dip" android:textColor="@color/ry" android:id="@id/hjc" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ci" android:layout_below="@id/hj_" android:layout_marginStart="@dimen/c5" />
+        <android.support.v7.widget.RecyclerView android:id="@id/hjb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/hjc" />
+        <ProgressBar android:id="@id/hj7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a4p" />
+        <TextView android:textColor="@color/a_u" android:id="@id/hj8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hmv" android:layout_centerInParent="true" />
+        <TextView android:textColor="@color/a_u" android:id="@id/hj6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hmt" android:layout_centerInParent="true" />
+    </com.tencent.mm.live.view.LiveBottomSheetPanel>
+</LinearLayout>

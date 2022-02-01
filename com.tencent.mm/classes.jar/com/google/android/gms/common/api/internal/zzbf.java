@@ -15,21 +15,21 @@ final class zzbf
   
   public final void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(60834);
+    AppMethodBeat.i(11326);
     switch (paramMessage.what)
     {
     default: 
       int i = paramMessage.what;
       new StringBuilder(31).append("Unknown message id: ").append(i);
-      AppMethodBeat.o(60834);
+      AppMethodBeat.o(11326);
       return;
     case 1: 
       ((zzbe)paramMessage.obj).zzc(this.zzjh);
-      AppMethodBeat.o(60834);
+      AppMethodBeat.o(11326);
       return;
     }
     paramMessage = (RuntimeException)paramMessage.obj;
-    AppMethodBeat.o(60834);
+    AppMethodBeat.o(11326);
     throw paramMessage;
   }
 }

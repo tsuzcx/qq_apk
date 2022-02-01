@@ -8,31 +8,31 @@ import java.io.IOException;
 final class c
   extends a
 {
-  private boolean adQ;
-  private boolean adR;
+  private boolean ahs;
+  private boolean aht;
   private byte[] data;
   
   public c(b paramb, byte[] paramArrayOfByte, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.data = paramArrayOfByte;
-    this.adQ = paramBoolean1;
-    this.adR = paramBoolean2;
+    this.ahs = paramBoolean1;
+    this.aht = paramBoolean2;
   }
   
   protected final void execute()
   {
     al localal = new al();
-    localal.VN = b.a(this.adU);
-    localal.WB = this.adQ;
-    localal.WC = this.adR;
+    localal.XI = b.a(this.ahw);
+    localal.Yw = this.ahs;
+    localal.Yx = this.aht;
     if (this.data != null)
     {
-      localal.WA = this.data.length;
-      localal.Wo = new com.tencent.mm.d.b(this.data, 0, this.data.length);
+      localal.Yv = this.data.length;
+      localal.Yj = new com.tencent.mm.d.b(this.data, 0, this.data.length);
     }
     try
     {
-      b.b(this.adU).i(localal.toByteArray());
+      b.b(this.ahw).i(localal.toByteArray());
       return;
     }
     catch (IOException localIOException) {}

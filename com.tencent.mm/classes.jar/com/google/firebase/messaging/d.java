@@ -10,7 +10,7 @@ final class d
 {
   static void a(String paramString, Intent paramIntent)
   {
-    AppMethodBeat.i(77231);
+    AppMethodBeat.i(116802);
     Bundle localBundle = new Bundle();
     String str = paramIntent.getStringExtra("google.c.a.c_id");
     if (str != null) {
@@ -45,16 +45,16 @@ final class d
             paramIntent = String.valueOf(localBundle);
             new StringBuilder(String.valueOf(paramString).length() + 22 + String.valueOf(paramIntent).length()).append("Sending event=").append(paramString).append(" params=").append(paramIntent);
           }
-          paramIntent = (com.google.firebase.analytics.connector.a)com.google.firebase.a.rB().m(com.google.firebase.analytics.connector.a.class);
+          paramIntent = (com.google.firebase.analytics.connector.a)com.google.firebase.a.wA().w(com.google.firebase.analytics.connector.a.class);
           if (paramIntent != null)
           {
             paramIntent.logEvent("fcm", paramString, localBundle);
-            AppMethodBeat.o(77231);
+            AppMethodBeat.o(116802);
             return;
             str = null;
             continue;
           }
-          AppMethodBeat.o(77231);
+          AppMethodBeat.o(116802);
           return;
         }
         catch (NumberFormatException paramIntent)
@@ -71,7 +71,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.messaging.d
  * JD-Core Version:    0.7.0.1
  */

@@ -12,17 +12,17 @@ class MMKView$3
   
   public boolean onLongClick(View paramView)
   {
-    AppMethodBeat.i(144964);
+    AppMethodBeat.i(19123);
     if (MMKView.access$400(this.this$0) != null) {
       MMKView.access$400(this.this$0).onLongClick(this.this$0);
     }
-    AppMethodBeat.o(144964);
+    AppMethodBeat.o(19123);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKView.3
  * JD-Core Version:    0.7.0.1
  */

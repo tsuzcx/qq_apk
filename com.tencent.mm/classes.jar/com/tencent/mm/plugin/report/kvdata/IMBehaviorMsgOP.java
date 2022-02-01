@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.report.kvdata;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class IMBehaviorMsgOP
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
   public int appMsgInnerType;
   public int count;
@@ -12,70 +12,70 @@ public class IMBehaviorMsgOP
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(79151);
+    AppMethodBeat.i(151537);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.msgType);
-      paramVarArgs.aO(2, this.msgOpType);
-      paramVarArgs.aO(3, this.appMsgInnerType);
-      paramVarArgs.aO(4, this.count);
-      AppMethodBeat.o(79151);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.msgType);
+      paramVarArgs.aR(2, this.msgOpType);
+      paramVarArgs.aR(3, this.appMsgInnerType);
+      paramVarArgs.aR(4, this.count);
+      AppMethodBeat.o(151537);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.bl(1, this.msgType);
-      int i = e.a.a.b.b.a.bl(2, this.msgOpType);
-      int j = e.a.a.b.b.a.bl(3, this.appMsgInnerType);
-      int k = e.a.a.b.b.a.bl(4, this.count);
-      AppMethodBeat.o(79151);
+      paramInt = f.a.a.b.b.a.bA(1, this.msgType);
+      int i = f.a.a.b.b.a.bA(2, this.msgOpType);
+      int j = f.a.a.b.b.a.bA(3, this.appMsgInnerType);
+      int k = f.a.a.b.b.a.bA(4, this.count);
+      AppMethodBeat.o(151537);
       return paramInt + 0 + i + j + k;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      AppMethodBeat.o(79151);
+      AppMethodBeat.o(151537);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       IMBehaviorMsgOP localIMBehaviorMsgOP = (IMBehaviorMsgOP)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(79151);
+        AppMethodBeat.o(151537);
         return -1;
       case 1: 
-        localIMBehaviorMsgOP.msgType = locala.CLY.sl();
-        AppMethodBeat.o(79151);
+        localIMBehaviorMsgOP.msgType = locala.KhF.xS();
+        AppMethodBeat.o(151537);
         return 0;
       case 2: 
-        localIMBehaviorMsgOP.msgOpType = locala.CLY.sl();
-        AppMethodBeat.o(79151);
+        localIMBehaviorMsgOP.msgOpType = locala.KhF.xS();
+        AppMethodBeat.o(151537);
         return 0;
       case 3: 
-        localIMBehaviorMsgOP.appMsgInnerType = locala.CLY.sl();
-        AppMethodBeat.o(79151);
+        localIMBehaviorMsgOP.appMsgInnerType = locala.KhF.xS();
+        AppMethodBeat.o(151537);
         return 0;
       }
-      localIMBehaviorMsgOP.count = locala.CLY.sl();
-      AppMethodBeat.o(79151);
+      localIMBehaviorMsgOP.count = locala.KhF.xS();
+      AppMethodBeat.o(151537);
       return 0;
     }
-    AppMethodBeat.o(79151);
+    AppMethodBeat.o(151537);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.report.kvdata.IMBehaviorMsgOP
  * JD-Core Version:    0.7.0.1
  */

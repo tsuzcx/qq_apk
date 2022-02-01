@@ -11,15 +11,15 @@ final class SnsLuckyMoneyDetailUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(45184);
-    this.rcz.finish();
-    AppMethodBeat.o(45184);
+    AppMethodBeat.i(68356);
+    this.wCP.finish();
+    AppMethodBeat.o(68356);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.ui.SnsLuckyMoneyDetailUI.2
  * JD-Core Version:    0.7.0.1
  */

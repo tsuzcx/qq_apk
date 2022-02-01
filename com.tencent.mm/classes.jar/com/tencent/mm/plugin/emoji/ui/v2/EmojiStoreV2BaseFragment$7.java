@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.emoji.ui.v2;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 final class EmojiStoreV2BaseFragment$7
-  implements Runnable
+  implements View.OnTouchListener
 {
   EmojiStoreV2BaseFragment$7(EmojiStoreV2BaseFragment paramEmojiStoreV2BaseFragment) {}
   
-  public final void run()
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(53577);
-    this.loZ.gK(false);
-    AppMethodBeat.o(53577);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2BaseFragment.7
  * JD-Core Version:    0.7.0.1
  */

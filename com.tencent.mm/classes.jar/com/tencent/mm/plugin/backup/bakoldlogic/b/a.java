@@ -9,80 +9,80 @@ public final class a
   extends com.tencent.mm.plugin.backup.b.a
 {
   private static String END = "img";
-  private static String jDG = "icon_";
-  private static String jDH = "iphone";
-  private static String jDI = "android";
-  private static String jDJ = "s60v3";
-  private static String jDK = "s60v5";
-  private static a jGT;
-  private Map<String, a.a> jDM;
+  private static String mva = "icon_";
+  private static String mvb = "iphone";
+  private static String mvc = "android";
+  private static String mvd = "s60v3";
+  private static String mve = "s60v5";
+  private static a mym;
+  private Map<String, a> mvg;
   
   public a()
   {
-    AppMethodBeat.i(17765);
-    this.jDM = null;
-    aTV();
-    AppMethodBeat.o(17765);
+    AppMethodBeat.i(21822);
+    this.mvg = null;
+    bxc();
+    AppMethodBeat.o(21822);
   }
   
-  public static a.a Gx(String paramString)
+  public static a OA(String paramString)
   {
-    AppMethodBeat.i(17763);
-    if (jGT == null) {
-      jGT = new a();
-    }
-    Object localObject = jGT;
-    if (((a)localObject).jDM == null) {
-      ((a)localObject).aTV();
-    }
-    localObject = ((a)localObject).jDM.values().iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      a.a locala = (a.a)((Iterator)localObject).next();
-      if ((locala.jDO != null) && (locala.jDO.equals(paramString)))
-      {
-        AppMethodBeat.o(17763);
-        return locala;
-      }
-    }
-    AppMethodBeat.o(17763);
-    return null;
-  }
-  
-  public static a.a Gy(String paramString)
-  {
-    AppMethodBeat.i(17764);
-    if (jGT == null)
+    AppMethodBeat.i(21821);
+    if (mym == null)
     {
       locala = new a();
-      jGT = locala;
+      mym = locala;
       a(locala);
     }
-    a locala = jGT;
-    if (locala.jDM == null) {
-      locala.aTV();
+    a locala = mym;
+    if (locala.mvg == null) {
+      locala.bxc();
     }
-    paramString = (a.a)locala.jDM.get(paramString);
-    AppMethodBeat.o(17764);
+    paramString = (a)locala.mvg.get(paramString);
+    AppMethodBeat.o(21821);
     return paramString;
   }
   
+  public static a Oz(String paramString)
+  {
+    AppMethodBeat.i(21820);
+    if (mym == null) {
+      mym = new a();
+    }
+    Object localObject = mym;
+    if (((a)localObject).mvg == null) {
+      ((a)localObject).bxc();
+    }
+    localObject = ((a)localObject).mvg.values().iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      a locala = (a)((Iterator)localObject).next();
+      if ((locala.mvi != null) && (locala.mvi.equals(paramString)))
+      {
+        AppMethodBeat.o(21820);
+        return locala;
+      }
+    }
+    AppMethodBeat.o(21820);
+    return null;
+  }
+  
   /* Error */
-  private void aTV()
+  private void bxc()
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore_2
     //   2: iconst_0
     //   3: istore_1
-    //   4: sipush 17766
-    //   7: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   4: sipush 21823
+    //   7: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   10: aload_0
     //   11: new 113	java/util/HashMap
     //   14: dup
     //   15: invokespecial 114	java/util/HashMap:<init>	()V
-    //   18: putfield 56	com/tencent/mm/plugin/backup/bakoldlogic/b/a:jDM	Ljava/util/Map;
-    //   21: invokestatic 120	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
+    //   18: putfield 57	com/tencent/mm/plugin/backup/bakoldlogic/b/a:mvg	Ljava/util/Map;
+    //   21: invokestatic 120	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
     //   24: invokevirtual 126	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   27: astore_3
     //   28: aload_3
@@ -112,7 +112,7 @@ public final class a
     //   77: aload_3
     //   78: astore 6
     //   80: aload 7
-    //   82: getstatic 24	com/tencent/mm/plugin/backup/bakoldlogic/b/a:jDG	Ljava/lang/String;
+    //   82: getstatic 25	com/tencent/mm/plugin/backup/bakoldlogic/b/a:mva	Ljava/lang/String;
     //   85: invokevirtual 154	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   88: ifeq -34 -> 54
     //   91: aload 4
@@ -137,7 +137,7 @@ public final class a
     //   130: aload_3
     //   131: astore 6
     //   133: aload 8
-    //   135: getstatic 28	com/tencent/mm/plugin/backup/bakoldlogic/b/a:END	Ljava/lang/String;
+    //   135: getstatic 29	com/tencent/mm/plugin/backup/bakoldlogic/b/a:END	Ljava/lang/String;
     //   138: invokevirtual 154	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   141: ifne +314 -> 455
     //   144: aload 4
@@ -173,7 +173,7 @@ public final class a
     //   198: aload_3
     //   199: astore 6
     //   201: aload 8
-    //   203: getstatic 32	com/tencent/mm/plugin/backup/bakoldlogic/b/a:jDH	Ljava/lang/String;
+    //   203: getstatic 33	com/tencent/mm/plugin/backup/bakoldlogic/b/a:mvb	Ljava/lang/String;
     //   206: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   209: ifeq +109 -> 318
     //   212: aload 4
@@ -182,15 +182,15 @@ public final class a
     //   217: astore 6
     //   219: aload 7
     //   221: aload 9
-    //   223: putfield 92	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:jDO	Ljava/lang/String;
+    //   223: putfield 101	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:mvi	Ljava/lang/String;
     //   226: aload 4
     //   228: astore 5
     //   230: aload_3
     //   231: astore 6
     //   233: aload_0
-    //   234: getfield 56	com/tencent/mm/plugin/backup/bakoldlogic/b/a:jDM	Ljava/util/Map;
+    //   234: getfield 57	com/tencent/mm/plugin/backup/bakoldlogic/b/a:mvg	Ljava/util/Map;
     //   237: aload 7
-    //   239: getfield 176	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:jDN	Ljava/lang/String;
+    //   239: getfield 176	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:mvh	Ljava/lang/String;
     //   242: aload 7
     //   244: invokeinterface 180 3 0
     //   249: pop
@@ -205,7 +205,7 @@ public final class a
     //   266: ldc 184
     //   268: iconst_0
     //   269: anewarray 186	java/lang/Object
-    //   272: invokestatic 192	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   272: invokestatic 192	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   275: aload 4
     //   277: ifnull +8 -> 285
     //   280: aload 4
@@ -223,16 +223,16 @@ public final class a
     //   301: iload_2
     //   302: invokestatic 203	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   305: invokevirtual 207	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   308: invokestatic 211	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   311: sipush 17766
-    //   314: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   308: invokestatic 211	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   311: sipush 21823
+    //   314: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   317: return
     //   318: aload 4
     //   320: astore 5
     //   322: aload_3
     //   323: astore 6
     //   325: aload 8
-    //   327: getstatic 36	com/tencent/mm/plugin/backup/bakoldlogic/b/a:jDI	Ljava/lang/String;
+    //   327: getstatic 37	com/tencent/mm/plugin/backup/bakoldlogic/b/a:mvc	Ljava/lang/String;
     //   330: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   333: ifeq +52 -> 385
     //   336: aload 4
@@ -241,7 +241,7 @@ public final class a
     //   341: astore 6
     //   343: aload 7
     //   345: aload 9
-    //   347: putfield 176	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:jDN	Ljava/lang/String;
+    //   347: putfield 176	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:mvh	Ljava/lang/String;
     //   350: goto -124 -> 226
     //   353: astore 4
     //   355: aload 6
@@ -254,8 +254,8 @@ public final class a
     //   369: ifnull +7 -> 376
     //   372: aload_3
     //   373: invokevirtual 198	java/io/InputStream:close	()V
-    //   376: sipush 17766
-    //   379: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   376: sipush 21823
+    //   379: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   382: aload 4
     //   384: athrow
     //   385: aload 4
@@ -263,7 +263,7 @@ public final class a
     //   389: aload_3
     //   390: astore 6
     //   392: aload 8
-    //   394: getstatic 40	com/tencent/mm/plugin/backup/bakoldlogic/b/a:jDJ	Ljava/lang/String;
+    //   394: getstatic 41	com/tencent/mm/plugin/backup/bakoldlogic/b/a:mvd	Ljava/lang/String;
     //   397: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   400: ifeq +20 -> 420
     //   403: aload 4
@@ -272,14 +272,14 @@ public final class a
     //   408: astore 6
     //   410: aload 7
     //   412: aload 9
-    //   414: putfield 214	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:jDP	Ljava/lang/String;
+    //   414: putfield 214	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:mvj	Ljava/lang/String;
     //   417: goto -191 -> 226
     //   420: aload 4
     //   422: astore 5
     //   424: aload_3
     //   425: astore 6
     //   427: aload 8
-    //   429: getstatic 44	com/tencent/mm/plugin/backup/bakoldlogic/b/a:jDK	Ljava/lang/String;
+    //   429: getstatic 45	com/tencent/mm/plugin/backup/bakoldlogic/b/a:mve	Ljava/lang/String;
     //   432: invokevirtual 173	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   435: ifeq -209 -> 226
     //   438: aload 4
@@ -288,7 +288,7 @@ public final class a
     //   443: astore 6
     //   445: aload 7
     //   447: aload 9
-    //   449: putfield 217	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:jDQ	Ljava/lang/String;
+    //   449: putfield 217	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:mvk	Ljava/lang/String;
     //   452: goto -226 -> 226
     //   455: aload 4
     //   457: astore 5
@@ -303,7 +303,7 @@ public final class a
     //   472: aload 7
     //   474: invokevirtual 222	com/tencent/mm/plugin/backup/bakoldlogic/b/a$a:toString	()Ljava/lang/String;
     //   477: aastore
-    //   478: invokestatic 225	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   478: invokestatic 225	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   481: iload_1
     //   482: iconst_1
     //   483: iadd
@@ -429,14 +429,40 @@ public final class a
     //   35	54	554	java/io/IOException
   }
   
-  public final void aSG()
+  public final void bvO()
   {
-    jGT = null;
+    mym = null;
+  }
+  
+  public static final class a
+  {
+    public String mvh = "";
+    public String mvi = "";
+    public String mvj = "";
+    public String mvk = "";
+    
+    public a() {}
+    
+    public a(String paramString1, String paramString2, String paramString3, String paramString4)
+    {
+      this.mvh = paramString1;
+      this.mvi = paramString2;
+      this.mvj = paramString3;
+      this.mvk = paramString4;
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(21819);
+      String str = this.mvh + " " + this.mvi + " " + this.mvj + " " + this.mvk;
+      AppMethodBeat.o(21819);
+      return str;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.b.a
  * JD-Core Version:    0.7.0.1
  */

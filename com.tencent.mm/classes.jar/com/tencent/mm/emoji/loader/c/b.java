@@ -1,118 +1,202 @@
 package com.tencent.mm.emoji.loader.c;
 
-import a.f.b.j;
-import a.l;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
+import com.tencent.mars.cdn.CdnLogic;
+import com.tencent.mars.cdn.CdnLogic.C2CDownloadRequest;
+import com.tencent.mars.cdn.CdnLogic.C2CDownloadResult;
+import com.tencent.mars.cdn.CdnLogic.DownloadCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.decode.MMGIFJNIFactory;
-import com.tencent.mm.emoji.decode.MMGIFJNIFactory.Companion;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.emoji.PluginEmoji;
-import com.tencent.mm.plugin.emoji.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.g.b.a.h;
+import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import java.io.IOException;
+import d.g.b.k;
+import d.l;
+import d.n.n;
+import d.v;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiCoverFetcher;", "", "()V", "fetch", "Lcom/tencent/mm/emoji/loader/request/Request;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "", "readFromCache", "Companion", "plugin-emojisdk_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiCdnHttpsFetcher;", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcher;", "()V", "TAG", "", "callback", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "success", "", "cdnCallback", "com/tencent/mm/emoji/loader/fetcher/EmojiCdnHttpsFetcher$cdnCallback$1", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiCdnHttpsFetcher$cdnCallback$1;", "cdnMediaType", "", "fetcherConfig", "Lcom/tencent/mm/emoji/loader/fetcher/EmojiFetcherConfig;", "startRet", "startTime", "", "fetch", "reportResult", "reportStart", "plugin-emojisdk_release"})
 public final class b
+  implements d
 {
-  public static final a evy;
+  private final String TAG;
+  private int fLB;
+  private int fLC;
+  private final a fLD;
+  private e fLx;
+  private d.g.a.b<? super Boolean, y> fLy;
+  private long startTime;
   
-  static
+  public b()
   {
-    AppMethodBeat.i(63178);
-    evy = new a((byte)0);
-    AppMethodBeat.o(63178);
+    AppMethodBeat.i(193389);
+    this.TAG = "MicroMsg.EmojiCdnHttpsFetcher";
+    this.fLD = new a(this);
+    AppMethodBeat.o(193389);
   }
   
-  public static final boolean d(EmojiInfo paramEmojiInfo)
+  private final void de(boolean paramBoolean)
   {
-    AppMethodBeat.i(63179);
-    boolean bool = a.d(paramEmojiInfo);
-    AppMethodBeat.o(63179);
-    return bool;
-  }
-  
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/loader/fetcher/EmojiCoverFetcher$Companion;", "", "()V", "ThumbSize", "", "createThumb", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "plugin-emojisdk_release"})
-  public static final class a
-  {
-    public static boolean d(EmojiInfo paramEmojiInfo)
+    AppMethodBeat.i(193388);
+    e locale = this.fLx;
+    if (locale != null)
     {
-      AppMethodBeat.i(63176);
-      j.q(paramEmojiInfo, "emojiInfo");
-      ab.i("MicroMsg.EmojiCoverFetcher", "createThumb: " + paramEmojiInfo.Al());
-      Object localObject2 = MMGIFJNIFactory.Companion.getDecoder(paramEmojiInfo);
-      if (!MMGIFJNIFactory.Companion.isValid((com.tencent.mm.emoji.decode.b)localObject2))
+      if (paramBoolean)
       {
-        ab.w("MicroMsg.EmojiCoverFetcher", "createThumb: invalid decoder");
-        ((com.tencent.mm.emoji.decode.b)localObject2).destroy();
-        AppMethodBeat.o(63176);
-        return false;
+        com.tencent.mm.plugin.emoji.c.oF(21L);
+        com.tencent.mm.plugin.emoji.c.oF(2L);
+        AppMethodBeat.o(193388);
+        return;
       }
-      Object localObject1;
-      if (((localObject2 instanceof com.tencent.mm.emoji.decode.e)) && (((com.tencent.mm.emoji.decode.b)localObject2).Oo() == 1))
+      com.tencent.mm.plugin.emoji.c.oF(22L);
+      com.tencent.mm.plugin.emoji.c.oF(3L);
+      switch (locale.fLR)
       {
-        ((com.tencent.mm.emoji.decode.b)localObject2).destroy();
-        localObject1 = g.G(PluginEmoji.class);
-        j.p(localObject1, "MMKernel.plugin(PluginEmoji::class.java)");
-        localObject1 = ((PluginEmoji)localObject1).getProvider().l(paramEmojiInfo);
-        if (localObject1 == null) {
-          break label290;
-        }
-        localObject1 = ((c)g.E(c.class)).aF((byte[])localObject1);
-        if (localObject1 == null) {
-          break label290;
-        }
-        localObject1 = d.bT((byte[])localObject1);
       }
       for (;;)
       {
-        if (localObject1 == null)
+        AppMethodBeat.o(193388);
+        return;
+        com.tencent.mm.plugin.emoji.c.a(locale.fLP.JS(), 4, 1, 1, locale.fLP.asy(), 1, locale.fLP.field_designerID);
+        AppMethodBeat.o(193388);
+        return;
+        com.tencent.mm.plugin.emoji.c.a(locale.fLP.JS(), 2, 1, 1, locale.fLP.asy(), 1, locale.fLP.field_designerID);
+        AppMethodBeat.o(193388);
+        return;
+        com.tencent.mm.plugin.emoji.c.a(locale.fLP.JS(), 4, 1, 1, locale.fLP.asy(), 1, locale.fLP.field_designerID);
+      }
+    }
+    AppMethodBeat.o(193388);
+  }
+  
+  public final void a(e parame, d.g.a.b<? super Boolean, y> paramb)
+  {
+    AppMethodBeat.i(193387);
+    k.h(parame, "fetcherConfig");
+    this.fLx = parame;
+    this.fLy = paramb;
+    new com.tencent.mm.vfs.e(parame.path).fhT().mkdirs();
+    int i;
+    if (parame.fLR == 2)
+    {
+      i = 20403;
+      this.fLB = i;
+      this.startTime = bt.eGO();
+      paramb = new CdnLogic.C2CDownloadRequest();
+      paramb.queueTimeoutSeconds = 60;
+      paramb.transforTimeoutSeconds = 60;
+      paramb.taskStartTime = this.startTime;
+      paramb.fileType = this.fLB;
+      paramb.fileKey = (d.a.abc() + parame.fLP.JS());
+      paramb.url = parame.url;
+      paramb.setSavePath(parame.path);
+      this.fLC = CdnLogic.startHttpsDownload(paramb, (CdnLogic.DownloadCallback)this.fLD);
+      ad.i(this.TAG, "fetch: start " + parame.fLP.JS() + ' ' + this.fLC);
+      com.tencent.mm.plugin.emoji.c.oF(20L);
+      parame = this.fLx;
+      if (parame != null) {
+        switch (parame.fLR)
         {
-          ab.e("MicroMsg.EmojiCoverFetcher", "bitmap is null");
-          AppMethodBeat.o(63176);
-          return false;
-          ((com.tencent.mm.emoji.decode.b)localObject2).Om();
-          localObject1 = ((com.tencent.mm.emoji.decode.b)localObject2).On();
-          ((com.tencent.mm.emoji.decode.b)localObject2).destroy();
-        }
-        else
-        {
-          try
-          {
-            d.a((Bitmap)localObject1, 100, Bitmap.CompressFormat.PNG, paramEmojiInfo.dQC(), false);
-            if (((Bitmap)localObject1).getWidth() <= 120)
-            {
-              localObject2 = localObject1;
-              if (((Bitmap)localObject1).getHeight() <= 120) {}
-            }
-            else
-            {
-              localObject1 = d.a((Bitmap)localObject1, 120, 120, false, true);
-              localObject2 = localObject1;
-              if (localObject1 == null)
-              {
-                AppMethodBeat.o(63176);
-                return false;
-              }
-            }
-            localObject1 = com.tencent.mm.emoji.loader.a.b.evt;
-            com.tencent.mm.emoji.loader.a.b.c(paramEmojiInfo.Al(), (Bitmap)localObject2);
-            AppMethodBeat.o(63176);
-            return true;
-          }
-          catch (IOException paramEmojiInfo)
-          {
-            ab.printErrStackTrace("MicroMsg.EmojiCoverFetcher", (Throwable)paramEmojiInfo, "saveBitmapToImage failed", new Object[0]);
-            AppMethodBeat.o(63176);
-            return false;
-          }
-          label290:
-          localObject1 = null;
         }
       }
+    }
+    for (;;)
+    {
+      if (this.fLC != 0)
+      {
+        new h(a.s(new Object[] { Integer.valueOf(this.fLC), Integer.valueOf(2), Long.valueOf(this.startTime), Long.valueOf(bt.eGO()), Integer.valueOf(com.tencent.mm.ao.c.cu(aj.getContext())), Integer.valueOf(this.fLB) })).aBj();
+        parame = this.fLy;
+        if (parame != null) {
+          parame.aA(Boolean.FALSE);
+        }
+        de(false);
+      }
+      AppMethodBeat.o(193387);
+      return;
+      i = 20401;
+      break;
+      com.tencent.mm.plugin.emoji.c.oF(1L);
+      continue;
+      com.tencent.mm.plugin.emoji.c.oF(6L);
+      continue;
+      com.tencent.mm.plugin.emoji.c.oF(10L);
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/emoji/loader/fetcher/EmojiCdnHttpsFetcher$cdnCallback$1", "Lcom/tencent/mars/cdn/CdnLogic$DownloadCallback;", "onC2CDownloadCompleted", "", "filekey", "", "result", "Lcom/tencent/mars/cdn/CdnLogic$C2CDownloadResult;", "onDownloadProgressChanged", "finished", "", "total", "tryshow", "", "plugin-emojisdk_release"})
+  public static final class a
+    implements CdnLogic.DownloadCallback
+  {
+    public final void onC2CDownloadCompleted(String paramString, CdnLogic.C2CDownloadResult paramC2CDownloadResult)
+    {
+      AppMethodBeat.i(193385);
+      k.h(paramString, "filekey");
+      k.h(paramC2CDownloadResult, "result");
+      ad.i(b.a(this.fLE), "onC2CDownloadCompleted: " + paramString + ", " + paramC2CDownloadResult.errorCode);
+      String str = "";
+      paramString = "";
+      if (!bt.isNullOrNil(paramC2CDownloadResult.transforMsg))
+      {
+        paramString = paramC2CDownloadResult.transforMsg;
+        k.g(paramString, "result.transforMsg");
+        int i = n.a((CharSequence)paramString, "@,", 0, false, 6);
+        if (i <= 0) {
+          break label391;
+        }
+        paramString = paramC2CDownloadResult.transforMsg;
+        k.g(paramString, "result.transforMsg");
+        if (paramString == null)
+        {
+          paramString = new v("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(193385);
+          throw paramString;
+        }
+        paramString = paramString.substring(i + 2);
+        k.g(paramString, "(this as java.lang.String).substring(startIndex)");
+        str = paramC2CDownloadResult.transforMsg;
+        k.g(str, "result.transforMsg");
+        if (str == null)
+        {
+          paramString = new v("null cannot be cast to non-null type java.lang.String");
+          AppMethodBeat.o(193385);
+          throw paramString;
+        }
+        str = str.substring(0, i);
+        k.g(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
+      }
+      for (;;)
+      {
+        new h(a.s(new Object[] { Integer.valueOf(b.b(this.fLE)), Integer.valueOf(2), Long.valueOf(b.c(this.fLE)), Long.valueOf(bt.eGO()), Integer.valueOf(com.tencent.mm.ao.c.cu(aj.getContext())), Integer.valueOf(b.d(this.fLE)), Long.valueOf(paramC2CDownloadResult.fileSize), str, "", "", "", "", "", "", "", paramString })).aBj();
+        if (paramC2CDownloadResult.errorCode == 0) {
+          break;
+        }
+        paramString = b.e(this.fLE);
+        if (paramString != null) {
+          paramString.aA(Boolean.FALSE);
+        }
+        b.a(this.fLE, false);
+        AppMethodBeat.o(193385);
+        return;
+        label391:
+        str = paramC2CDownloadResult.transforMsg;
+        k.g(str, "result.transforMsg");
+        paramString = "";
+      }
+      paramString = b.e(this.fLE);
+      if (paramString != null) {
+        paramString.aA(Boolean.TRUE);
+      }
+      b.a(this.fLE, true);
+      AppMethodBeat.o(193385);
+    }
+    
+    public final void onDownloadProgressChanged(String paramString, long paramLong1, long paramLong2, boolean paramBoolean)
+    {
+      AppMethodBeat.i(193386);
+      k.h(paramString, "filekey");
+      AppMethodBeat.o(193386);
     }
   }
 }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@drawable/ajz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.luggage.game.widget.input.WAGamePanelInputEditText android:textColor="@color/y4" android:layout_gravity="bottom" android:id="@id/cb9" android:layout_width="0.0dip" android:layout_marginTop="8.0dip" android:maxHeight="84.0dip" android:minHeight="32.0dip" android:hint="@null" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" style="@style/a3q" />
+    <Button android:id="@id/cb8" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="8.0dip" android:minWidth="44.0dip" style="@style/o8" />
+</LinearLayout>

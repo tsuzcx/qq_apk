@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:padding="@dimen/e4" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameInstalledView android:orientation="vertical" android:id="@id/c6f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:text="@string/c8h" style="@style/mf" />
-        <com.tencent.mm.plugin.game.widget.BouncyHScrollView android:id="@id/c6g" android:background="@color/a6q" android:paddingLeft="@dimen/m1" android:paddingTop="@dimen/m1" android:paddingRight="@dimen/m1" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="false" android:overScrollMode="never">
-            <LinearLayout android:orientation="horizontal" android:id="@id/c6h" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </com.tencent.mm.plugin.game.widget.BouncyHScrollView>
-    </com.tencent.mm.plugin.game.ui.GameInstalledView>
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <include layout="@layout/a43" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/buu" style="@style/iv" />
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dz">
+                    <TextView android:id="@id/bwa" android:text="{title}" style="@style/j2" />
+                    <TextView android:id="@id/buh" android:layout_marginTop="@dimen/e9" android:text="{detail}" style="@style/iz" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

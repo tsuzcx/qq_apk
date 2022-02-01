@@ -16,36 +16,57 @@ public class CollectSession
   implements Parcelable
 {
   public static final Parcelable.Creator<CollectSession> CREATOR;
-  public final Bundle cwp;
+  public final Bundle dlO;
   String groupId;
-  TimePoint hgv;
-  TimePoint hgw;
-  final Map<String, TimePoint> hgx;
-  String hgy;
   String id;
+  TimePoint jaG;
+  TimePoint jaH;
+  final Map<String, TimePoint> jaI;
+  String jaJ;
   
   static
   {
-    AppMethodBeat.i(57019);
-    CREATOR = new CollectSession.1();
-    AppMethodBeat.o(57019);
+    AppMethodBeat.i(146084);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(146084);
   }
   
   CollectSession()
   {
-    AppMethodBeat.i(57014);
-    this.hgx = new HashMap();
-    this.cwp = new Bundle();
-    AppMethodBeat.o(57014);
+    AppMethodBeat.i(146079);
+    this.jaI = new HashMap();
+    this.dlO = new Bundle();
+    AppMethodBeat.o(146079);
   }
   
   public CollectSession(String paramString)
   {
-    AppMethodBeat.i(57015);
-    this.hgx = new HashMap();
-    this.cwp = new Bundle();
+    AppMethodBeat.i(146080);
+    this.jaI = new HashMap();
+    this.dlO = new Bundle();
     this.id = paramString;
-    AppMethodBeat.o(57015);
+    AppMethodBeat.o(146080);
+  }
+  
+  public final void Fw(String paramString)
+  {
+    AppMethodBeat.i(146082);
+    Assert.assertNotNull(this.jaH);
+    long l = System.nanoTime();
+    TimePoint localTimePoint = (TimePoint)this.jaI.get(paramString);
+    if (localTimePoint == null)
+    {
+      localTimePoint = new TimePoint(paramString, l);
+      localTimePoint.jaR.set(1);
+      this.jaI.put(paramString, localTimePoint);
+      this.jaH.jaT.set(localTimePoint);
+      this.jaH = localTimePoint;
+      AppMethodBeat.o(146082);
+      return;
+    }
+    localTimePoint.jaS.set((l + localTimePoint.jaS.get() * localTimePoint.jaR.get()) / (localTimePoint.jaR.get() + 1));
+    localTimePoint.jaR.incrementAndGet();
+    AppMethodBeat.o(146082);
   }
   
   public int describeContents()
@@ -53,47 +74,26 @@ public class CollectSession
     return 0;
   }
   
+  public final void pP(String paramString)
+  {
+    AppMethodBeat.i(146081);
+    Assert.assertNull(this.jaG);
+    this.jaG = new TimePoint(paramString, System.nanoTime());
+    this.jaH = this.jaG;
+    this.jaG.jaR.set(1);
+    this.jaI.put(paramString, this.jaG);
+    AppMethodBeat.o(146081);
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(57018);
+    AppMethodBeat.i(146083);
     paramParcel.writeString(this.groupId);
     paramParcel.writeString(this.id);
-    paramParcel.writeParcelable(this.hgv, paramInt);
-    paramParcel.writeString(this.hgy);
-    paramParcel.writeBundle(this.cwp);
-    AppMethodBeat.o(57018);
-  }
-  
-  public final void zH(String paramString)
-  {
-    AppMethodBeat.i(57016);
-    Assert.assertNull(this.hgv);
-    this.hgv = new TimePoint(paramString, System.nanoTime());
-    this.hgw = this.hgv;
-    this.hgv.hgG.set(1);
-    this.hgx.put(paramString, this.hgv);
-    AppMethodBeat.o(57016);
-  }
-  
-  public final void zI(String paramString)
-  {
-    AppMethodBeat.i(57017);
-    Assert.assertNotNull(this.hgw);
-    long l = System.nanoTime();
-    TimePoint localTimePoint = (TimePoint)this.hgx.get(paramString);
-    if (localTimePoint == null)
-    {
-      localTimePoint = new TimePoint(paramString, l);
-      localTimePoint.hgG.set(1);
-      this.hgx.put(paramString, localTimePoint);
-      this.hgw.hgI.set(localTimePoint);
-      this.hgw = localTimePoint;
-      AppMethodBeat.o(57017);
-      return;
-    }
-    localTimePoint.hgH.set((l + localTimePoint.hgH.get() * localTimePoint.hgG.get()) / (localTimePoint.hgG.get() + 1));
-    localTimePoint.hgG.incrementAndGet();
-    AppMethodBeat.o(57017);
+    paramParcel.writeParcelable(this.jaG, paramInt);
+    paramParcel.writeString(this.jaJ);
+    paramParcel.writeBundle(this.dlO);
+    AppMethodBeat.o(146083);
   }
 }
 

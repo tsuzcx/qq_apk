@@ -3,11 +3,12 @@ package com.tencent.mm.plugin.remittance.bankcard.ui;
 import android.app.Activity;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -15,7 +16,26 @@ import java.lang.reflect.Method;
 public abstract class BankRemitBaseUI
   extends WalletBaseUI
 {
-  public static int ae(Activity paramActivity)
+  private static boolean a(Window paramWindow)
+  {
+    if (paramWindow != null) {
+      try
+      {
+        WindowManager.LayoutParams localLayoutParams = paramWindow.getAttributes();
+        Field localField1 = WindowManager.LayoutParams.class.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON");
+        Field localField2 = WindowManager.LayoutParams.class.getDeclaredField("meizuFlags");
+        localField1.setAccessible(true);
+        localField2.setAccessible(true);
+        localField2.setInt(localLayoutParams, localField1.getInt(null) | localField2.getInt(localLayoutParams));
+        paramWindow.setAttributes(localLayoutParams);
+        return true;
+      }
+      catch (Exception paramWindow) {}
+    }
+    return false;
+  }
+  
+  public static int aw(Activity paramActivity)
   {
     int j = 0;
     int i = j;
@@ -31,15 +51,15 @@ public abstract class BankRemitBaseUI
     do
     {
       return i;
-      if (af(paramActivity)) {
+      if (ax(paramActivity)) {
         return 1;
       }
       i = j;
-    } while (!d(paramActivity.getWindow()));
+    } while (!a(paramActivity.getWindow()));
     return 2;
   }
   
-  private static boolean af(Activity paramActivity)
+  private static boolean ax(Activity paramActivity)
   {
     Window localWindow = paramActivity.getWindow();
     if (localWindow != null)
@@ -71,35 +91,30 @@ public abstract class BankRemitBaseUI
     }
   }
   
-  private static boolean d(Window paramWindow)
-  {
-    if (paramWindow != null) {
-      try
-      {
-        WindowManager.LayoutParams localLayoutParams = paramWindow.getAttributes();
-        Field localField1 = WindowManager.LayoutParams.class.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON");
-        Field localField2 = WindowManager.LayoutParams.class.getDeclaredField("meizuFlags");
-        localField1.setAccessible(true);
-        localField2.setAccessible(true);
-        localField2.setInt(localLayoutParams, localField1.getInt(null) | localField2.getInt(localLayoutParams));
-        paramWindow.setAttributes(localLayoutParams);
-        return true;
-      }
-      catch (Exception paramWindow) {}
-    }
-    return false;
-  }
-  
-  protected void bHV()
-  {
-    ab.i("BankRemitBase", "ret: %s", new Object[] { Integer.valueOf(ae(this)) });
-  }
+  protected void cFM() {}
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bHV();
-    setBackBtn(new BankRemitBaseUI.1(this));
+    cFM();
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(67500);
+        if (BankRemitBaseUI.a(BankRemitBaseUI.this))
+        {
+          BankRemitBaseUI.this.hideVKB();
+          BankRemitBaseUI.this.showDialog(1000);
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(67500);
+          return true;
+          BankRemitBaseUI.this.finish();
+        }
+      }
+    });
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -110,7 +125,7 @@ public abstract class BankRemitBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitBaseUI
  * JD-Core Version:    0.7.0.1
  */

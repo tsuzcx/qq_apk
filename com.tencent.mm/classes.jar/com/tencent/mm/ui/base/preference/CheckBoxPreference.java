@@ -9,17 +9,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
+import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 
 public class CheckBoxPreference
   extends Preference
 {
-  private MMSwitchBtn iDy;
+  public boolean lG;
   private View mView;
-  private TextView ubi;
-  private int ubj;
-  private String ubk;
-  private int ubl;
-  public boolean vxW;
+  private MMSwitchBtn sLH;
+  private TextView zVJ;
+  private int zVK;
+  private String zVL;
+  private int zVM;
   
   public CheckBoxPreference(Context paramContext)
   {
@@ -34,97 +35,110 @@ public class CheckBoxPreference
   public CheckBoxPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107135);
-    this.vxW = false;
-    this.ubj = -1;
-    this.ubk = "";
-    this.ubl = 8;
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(107135);
+    AppMethodBeat.i(142512);
+    this.lG = false;
+    this.zVK = -1;
+    this.zVL = "";
+    this.zVM = 8;
+    setLayoutResource(2131494804);
+    AppMethodBeat.o(142512);
   }
   
-  public void Iu(int paramInt)
+  public void Ru(int paramInt)
   {
-    AppMethodBeat.i(107140);
-    this.ubl = paramInt;
-    if (this.ubi != null) {
-      this.ubi.setVisibility(this.ubl);
+    AppMethodBeat.i(142517);
+    this.zVM = paramInt;
+    if (this.zVJ != null) {
+      this.zVJ.setVisibility(this.zVM);
     }
-    AppMethodBeat.o(107140);
+    AppMethodBeat.o(142517);
   }
   
-  public void dE(String paramString, int paramInt)
+  public void eM(String paramString, int paramInt)
   {
-    AppMethodBeat.i(107139);
-    this.ubj = paramInt;
-    this.ubk = paramString;
-    if (this.ubi != null)
+    AppMethodBeat.i(142516);
+    this.zVK = paramInt;
+    this.zVL = paramString;
+    if (this.zVJ != null)
     {
       if (paramInt > 0) {
-        this.ubi.setBackgroundResource(this.ubj);
+        this.zVJ.setBackgroundResource(this.zVK);
       }
-      if (!TextUtils.isEmpty(this.ubk)) {
-        this.ubi.setText(this.ubk);
+      if (!TextUtils.isEmpty(this.zVL)) {
+        this.zVJ.setText(this.zVL);
       }
     }
-    AppMethodBeat.o(107139);
+    AppMethodBeat.o(142516);
   }
   
   public final boolean isChecked()
   {
-    if (this.iDy != null) {
-      return this.iDy.ADA;
+    if (this.sLH != null) {
+      return this.sLH.HAh;
     }
-    return this.vxW;
+    return this.lG;
   }
   
   public void onBindView(View paramView)
   {
-    AppMethodBeat.i(107137);
+    AppMethodBeat.i(142514);
     super.onBindView(paramView);
-    OW(8);
-    this.iDy = ((MMSwitchBtn)paramView.findViewById(2131820950));
-    this.iDy.setSwitchListener(new CheckBoxPreference.1(this));
-    this.iDy.setCheck(this.vxW);
+    Yb(8);
+    this.sLH = ((MMSwitchBtn)paramView.findViewById(2131298255));
+    this.sLH.setSwitchListener(new MMSwitchBtn.a()
+    {
+      public final void onStatusChange(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(142511);
+        CheckBoxPreference.this.callChangeListener(Boolean.valueOf(paramAnonymousBoolean));
+        AppMethodBeat.o(142511);
+      }
+    });
+    this.sLH.setCheck(this.lG);
     if (!isEnabled())
     {
-      this.iDy.setEnabled(false);
-      ((TextView)paramView.findViewById(16908310)).setTextColor(paramView.getResources().getColor(2131689963));
-      ((TextView)paramView.findViewById(16908304)).setTextColor(paramView.getResources().getColor(2131689963));
+      this.sLH.setEnabled(false);
+      ((TextView)paramView.findViewById(16908310)).setTextColor(paramView.getResources().getColor(2131100249));
+      ((TextView)paramView.findViewById(16908304)).setTextColor(paramView.getResources().getColor(2131100249));
     }
-    this.ubi = ((TextView)paramView.findViewById(2131826257));
-    dE(this.ubk, this.ubj);
-    Iu(this.ubl);
-    AppMethodBeat.o(107137);
+    this.zVJ = ((TextView)paramView.findViewById(2131305883));
+    eM(this.zVL, this.zVK);
+    Ru(this.zVM);
+    AppMethodBeat.o(142514);
   }
   
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107136);
+    AppMethodBeat.i(142513);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2130970259, localViewGroup);
+    View.inflate(this.mContext, 2131494889, localViewGroup);
     this.mView = paramViewGroup;
     paramViewGroup = this.mView;
-    AppMethodBeat.o(107136);
+    AppMethodBeat.o(142513);
     return paramViewGroup;
   }
   
-  public final void qH(boolean paramBoolean)
+  public final void setChecked(boolean paramBoolean)
   {
-    AppMethodBeat.i(107138);
-    if (this.iDy != null)
+    this.lG = paramBoolean;
+  }
+  
+  public final void vP(boolean paramBoolean)
+  {
+    AppMethodBeat.i(142515);
+    if (this.sLH != null)
     {
-      this.vxW = paramBoolean;
-      this.iDy.setCheck(paramBoolean);
+      this.lG = paramBoolean;
+      this.sLH.setCheck(paramBoolean);
     }
-    AppMethodBeat.o(107138);
+    AppMethodBeat.o(142515);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.CheckBoxPreference
  * JD-Core Version:    0.7.0.1
  */

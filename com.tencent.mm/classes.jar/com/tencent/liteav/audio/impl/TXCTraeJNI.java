@@ -3,11 +3,11 @@ package com.tencent.liteav.audio.impl;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import com.tencent.liteav.audio.TXCLiveBGMPlayer;
-import com.tencent.liteav.audio.d;
-import com.tencent.liteav.audio.impl.Play.TXCAudioBasePlayController;
+import com.tencent.liteav.audio.TXCSoundEffectPlayer;
+import com.tencent.liteav.audio.e;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.TXCTimeUtil;
-import com.tencent.liteav.basic.util.b;
+import com.tencent.liteav.basic.structs.a;
+import com.tencent.liteav.basic.util.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -15,48 +15,48 @@ import java.lang.ref.WeakReference;
 public class TXCTraeJNI
 {
   private static Context mContext;
-  private static WeakReference<d> mTraeRecordListener;
+  private static WeakReference<e> mTraeRecordListener;
   
   static
   {
-    AppMethodBeat.i(66566);
-    b.f();
+    AppMethodBeat.i(16474);
+    d.f();
     nativeCacheClassForNative();
-    AppMethodBeat.o(66566);
+    mTraeRecordListener = null;
+    AppMethodBeat.o(16474);
   }
   
   public static void InitTraeEngineLibrary(Context paramContext)
   {
-    AppMethodBeat.i(66562);
+    AppMethodBeat.i(16463);
     if (paramContext == null)
     {
       TXCLog.e("TXCAudioJNI", "nativeInitTraeEngine failed, context is null!");
-      AppMethodBeat.o(66562);
+      AppMethodBeat.o(16463);
       return;
     }
     try
     {
-      Object localObject = paramContext.getApplicationInfo();
-      paramContext = ((ApplicationInfo)localObject).nativeLibraryDir;
-      String str = ((ApplicationInfo)localObject).dataDir + "/lib";
-      localObject = "/data/data/" + ((ApplicationInfo)localObject).packageName + "/lib";
+      paramContext = paramContext.getApplicationInfo();
+      String str2 = paramContext.nativeLibraryDir;
+      String str3 = paramContext.dataDir + "/lib";
+      String str4 = "/data/data/" + paramContext.packageName + "/lib";
+      String str1 = d.g();
+      paramContext = str1;
+      if (str1 == null) {
+        paramContext = "";
+      }
+      nativeAppendLibraryPath("add_libpath:".concat(String.valueOf(str2)));
+      nativeAppendLibraryPath("add_libpath:".concat(String.valueOf(str3)));
+      nativeAppendLibraryPath("add_libpath:".concat(String.valueOf(str4)));
       nativeAppendLibraryPath("add_libpath:".concat(String.valueOf(paramContext)));
-      nativeAppendLibraryPath("add_libpath:".concat(String.valueOf(str)));
-      nativeAppendLibraryPath("add_libpath:".concat(String.valueOf(localObject)));
-      AppMethodBeat.o(66562);
+      AppMethodBeat.o(16463);
       return;
     }
     catch (UnsatisfiedLinkError paramContext)
     {
-      AppMethodBeat.o(66562);
+      AppMethodBeat.o(16463);
     }
-  }
-  
-  public static void SetAudioMode(int paramInt)
-  {
-    AppMethodBeat.i(66561);
-    a.a().b(paramInt);
-    AppMethodBeat.o(66561);
   }
   
   public static native void nativeAppendLibraryPath(String paramString);
@@ -65,91 +65,101 @@ public class TXCTraeJNI
   
   public static boolean nativeCheckTraeEngine(Context paramContext)
   {
-    AppMethodBeat.i(66563);
+    AppMethodBeat.i(16464);
     if (paramContext == null)
     {
       TXCLog.e("TXCAudioJNI", "nativeCheckTraeEngine failed, context is null!");
-      AppMethodBeat.o(66563);
+      AppMethodBeat.o(16464);
       return false;
+    }
+    if (d.a("traeimp-rtmp"))
+    {
+      TXCLog.e("TXCAudioJNI", "link traeimp-rtmp success !");
+      AppMethodBeat.o(16464);
+      return true;
     }
     paramContext = paramContext.getApplicationInfo();
     String str2 = paramContext.nativeLibraryDir;
     String str3 = paramContext.dataDir + "/lib";
     String str4 = "/data/data/" + paramContext.packageName + "/lib";
-    String str1 = b.g();
+    String str1 = d.g();
     paramContext = str1;
     if (str1 == null) {
       paramContext = "";
     }
     int i;
-    if (new File(str2 + "/libTRAECodec.so").exists()) {
+    if (new File(str2 + "/libtraeimp-rtmp.so").exists()) {
       i = 1;
     }
-    for (;;)
+    while (i != 0)
     {
-      int j;
-      if (new File(str2 + "/libtraeimp-rtmp.so").exists()) {
-        j = 1;
-      }
-      for (;;)
+      AppMethodBeat.o(16464);
+      return true;
+      TXCLog.w("TXCAudioJNI", "nativeCheckTraeEngine load so error " + str2 + "/libtraeimp-rtmp.so");
+      if (new File(str3 + "/libtraeimp-rtmp.so").exists())
       {
-        if ((i != 0) && (j != 0))
-        {
-          AppMethodBeat.o(66563);
-          return true;
-          if (new File(str3 + "/libTRAECodec.so").exists())
-          {
-            i = 1;
-            break;
-          }
-          if (new File(str4 + "/libTRAECodec.so").exists())
-          {
-            i = 1;
-            break;
-          }
-          if (!new File(paramContext + "/libTRAECodec.so").exists()) {
-            break label427;
-          }
-          i = 1;
-          break;
-          if (new File(str3 + "/libtraeimp-rtmp.so").exists())
-          {
-            j = 1;
-            continue;
-          }
-          if (new File(str4 + "/libtraeimp-rtmp.so").exists())
-          {
-            j = 1;
-            continue;
-          }
-          if (!new File(paramContext + "/libtraeimp-rtmp.so").exists()) {
-            break label422;
-          }
-          j = 1;
-          continue;
-        }
-        TXCLog.e("TXCAudioJNI", "nativeCheckTraeEngine failed, can not find trae libs !");
-        AppMethodBeat.o(66563);
-        return false;
-        label422:
-        j = 0;
+        i = 1;
       }
-      label427:
-      i = 0;
+      else
+      {
+        TXCLog.w("TXCAudioJNI", "nativeCheckTraeEngine load so error " + str3 + "/libtraeimp-rtmp.so");
+        if (new File(str4 + "/libtraeimp-rtmp.so").exists())
+        {
+          i = 1;
+        }
+        else
+        {
+          TXCLog.w("TXCAudioJNI", "nativeCheckTraeEngine load so error " + str4 + "/libtraeimp-rtmp.so");
+          if (new File(paramContext + "/libtraeimp-rtmp.so").exists())
+          {
+            i = 1;
+          }
+          else
+          {
+            TXCLog.w("TXCAudioJNI", "nativeCheckTraeEngine load so error " + paramContext + "/libtraeimp-rtmp.so");
+            i = 0;
+          }
+        }
+      }
     }
+    TXCLog.e("TXCAudioJNI", "nativeCheckTraeEngine failed, can not find trae libs !");
+    AppMethodBeat.o(16464);
+    return false;
   }
+  
+  public static native void nativeDeleteAudioSessionDuplicate();
+  
+  public static native void nativeEncodeAfterCallback(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public static native void nativeInitBeforeEngineCreate(Context paramContext);
+  
+  public static native void nativeNewAudioSessionDuplicate(Context paramContext);
+  
+  public static native void nativeSendCustomPCMData(byte[] paramArrayOfByte, int paramInt, long paramLong);
   
   public static native void nativeSetAudioMode(int paramInt);
   
-  public static native void nativeSetEncBitRate(int paramInt);
-  
-  public static native void nativeSetEncFrameLenMs(int paramInt);
+  public static native void nativeSetAudioRoute(int paramInt);
   
   public static native void nativeSetEncInfo(int paramInt1, int paramInt2);
   
   public static native void nativeSetFecRatio(float paramFloat);
   
+  public static native void nativeSetTraeAEC(boolean paramBoolean, int paramInt);
+  
+  public static native void nativeSetTraeAGC(boolean paramBoolean, int paramInt);
+  
+  public static native void nativeSetTraeANS(boolean paramBoolean, int paramInt);
+  
   public static native void nativeSetTraeConfig(String paramString);
+  
+  public static native void nativeSetTraeRecordListener(boolean paramBoolean);
+  
+  public static native int nativeTraeChangeVolumeType(int paramInt);
+  
+  public static native void nativeTraeEnableEosMode(boolean paramBoolean);
+  
+  public static native void nativeTraeEnableVolumeLevel(boolean paramBoolean);
   
   public static native int nativeTraeGetVolumeLevel();
   
@@ -157,59 +167,88 @@ public class TXCTraeJNI
   
   public static native boolean nativeTraeIsRecording();
   
+  public static native void nativeTraePauseAuioRecord(boolean paramBoolean);
+  
+  public static native void nativeTraeResumeAuioRecord();
+  
   public static native void nativeTraeSetChangerType(int paramInt1, int paramInt2);
   
-  public static native void nativeTraeSetEnableVolumeLevel(boolean paramBoolean);
+  public static native void nativeTraeSetDevState(int paramInt);
+  
+  public static native void nativeTraeSetIsCustomRecord(boolean paramBoolean);
+  
+  public static native void nativeTraeSetPlayoutVolume(float paramFloat);
   
   public static native void nativeTraeSetRecordMute(boolean paramBoolean);
   
   public static native void nativeTraeSetRecordReverb(int paramInt);
   
-  public static native void nativeTraeSetVolume(float paramFloat);
+  public static native void nativeTraeSetRecordVolume(float paramFloat);
+  
+  public static native void nativeTraeSetSilence(boolean paramBoolean);
   
   private static native void nativeTraeStartPlay(Context paramContext);
   
-  public static native void nativeTraeStartRecord(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  public static native void nativeTraeStartRecord(Context paramContext, int paramInt1, int paramInt2, int paramInt3);
   
   private static native void nativeTraeStopPlay();
   
-  public static native void nativeTraeStopRecord(boolean paramBoolean);
+  public static native void nativeTraeStopRecord();
   
-  public static void onRecordEncData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3)
+  public static native void nativeUnInitEngine();
+  
+  public static native int nativesetAudioEarMonitoring(boolean paramBoolean);
+  
+  public static void onRecordEncData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(66559);
+    AppMethodBeat.i(16461);
     if ((mTraeRecordListener != null) && (mTraeRecordListener.get() != null)) {
-      ((d)mTraeRecordListener.get()).b(paramArrayOfByte, paramLong, paramInt1, paramInt2, paramInt3);
+      ((e)mTraeRecordListener.get()).onRecordEncData(paramArrayOfByte, paramLong, paramInt1, paramInt2, 16);
     }
-    AppMethodBeat.o(66559);
+    AppMethodBeat.o(16461);
   }
   
   public static void onRecordError(int paramInt, String paramString)
   {
-    AppMethodBeat.i(66560);
+    AppMethodBeat.i(16462);
     TXCLog.e("TXCAudioJNI", "trae audio record error: " + paramInt + ", " + paramString);
     if ((mTraeRecordListener != null) && (mTraeRecordListener.get() != null)) {
-      ((d)mTraeRecordListener.get()).a(paramInt, paramString);
+      ((e)mTraeRecordListener.get()).onRecordError(paramInt, paramString);
     }
-    AppMethodBeat.o(66560);
+    AppMethodBeat.o(16462);
   }
   
-  public static void onRecordPcmData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public static void onRecordPcmData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(66558);
+    AppMethodBeat.i(16460);
     if ((mTraeRecordListener != null) && (mTraeRecordListener.get() != null)) {
-      ((d)mTraeRecordListener.get()).a(paramArrayOfByte, TXCTimeUtil.getTimeTick(), paramInt1, paramInt2, paramInt3);
+      ((e)mTraeRecordListener.get()).onRecordPcmData(paramArrayOfByte, paramLong, paramInt1, paramInt2, paramInt3);
     }
-    AppMethodBeat.o(66558);
+    nativeEncodeAfterCallback(paramArrayOfByte, paramArrayOfByte.length, paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(16460);
   }
   
-  public static void onRecordRawPcmData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public static void onRecordRawPcmData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(66557);
+    AppMethodBeat.i(16459);
     if ((mTraeRecordListener != null) && (mTraeRecordListener.get() != null)) {
-      ((d)mTraeRecordListener.get()).a(paramArrayOfByte, TXCTimeUtil.getTimeTick(), paramInt1, paramInt2, paramInt3, false);
+      ((e)mTraeRecordListener.get()).onRecordRawPcmData(paramArrayOfByte, paramLong, paramInt1, paramInt2, paramInt3, false);
     }
-    AppMethodBeat.o(66557);
+    AppMethodBeat.o(16459);
+  }
+  
+  public static void sendCustomPCMData(a parama)
+  {
+    AppMethodBeat.i(16473);
+    nativeSendCustomPCMData(parama.f, parama.f.length, parama.e);
+    AppMethodBeat.o(16473);
+  }
+  
+  public static void sendCustomPCMData(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(16472);
+    nativeSendCustomPCMData(paramArrayOfByte, paramArrayOfByte.length, 0L);
+    AppMethodBeat.o(16472);
   }
   
   public static void setContext(Context paramContext)
@@ -217,41 +256,77 @@ public class TXCTraeJNI
     mContext = paramContext;
   }
   
-  public static void setTraeRecordListener(WeakReference<d> paramWeakReference)
+  public static void setIsCustomRecord(boolean paramBoolean)
   {
+    AppMethodBeat.i(16471);
+    nativeTraeSetIsCustomRecord(paramBoolean);
+    AppMethodBeat.o(16471);
+  }
+  
+  public static void setTraeRecordListener(WeakReference<e> paramWeakReference)
+  {
+    AppMethodBeat.i(16458);
     mTraeRecordListener = paramWeakReference;
+    if (paramWeakReference == null) {}
+    for (boolean bool = false;; bool = true)
+    {
+      nativeSetTraeRecordListener(bool);
+      AppMethodBeat.o(16458);
+      return;
+    }
+  }
+  
+  public static void traePauseAuioRecord(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16468);
+    nativeTraePauseAuioRecord(paramBoolean);
+    AppMethodBeat.o(16468);
+  }
+  
+  public static void traeResumeAuioRecord()
+  {
+    AppMethodBeat.i(16469);
+    nativeTraeResumeAuioRecord();
+    AppMethodBeat.o(16469);
+  }
+  
+  public static void traeSetSilence(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16470);
+    nativeTraeSetSilence(paramBoolean);
+    AppMethodBeat.o(16470);
   }
   
   public static boolean traeStartPlay(Context paramContext)
   {
-    AppMethodBeat.i(66564);
-    if ((!TXCAudioBasePlayController.nativeIsTracksEmpty()) || (TXCLiveBGMPlayer.getInstance().isPlaying()))
+    AppMethodBeat.i(16466);
+    if ((!TXCJitter.nativeIsTracksEmpty()) || (TXCLiveBGMPlayer.getInstance().isPlaying()) || (TXCSoundEffectPlayer.getInstance().isPlaying()))
     {
       InitTraeEngineLibrary(paramContext);
       nativeTraeStartPlay(paramContext);
-      AppMethodBeat.o(66564);
+      AppMethodBeat.o(16466);
       return true;
     }
-    AppMethodBeat.o(66564);
+    AppMethodBeat.o(16466);
     return false;
   }
   
   public static boolean traeStopPlay()
   {
-    AppMethodBeat.i(66565);
-    if ((TXCAudioBasePlayController.nativeIsTracksEmpty()) && (!TXCLiveBGMPlayer.getInstance().isPlaying()))
+    AppMethodBeat.i(16467);
+    if ((TXCJitter.nativeIsTracksEmpty()) && (!TXCLiveBGMPlayer.getInstance().isPlaying()) && (!TXCSoundEffectPlayer.getInstance().isPlaying()))
     {
       nativeTraeStopPlay();
-      AppMethodBeat.o(66565);
+      AppMethodBeat.o(16467);
       return true;
     }
-    AppMethodBeat.o(66565);
+    AppMethodBeat.o(16467);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.audio.impl.TXCTraeJNI
  * JD-Core Version:    0.7.0.1
  */

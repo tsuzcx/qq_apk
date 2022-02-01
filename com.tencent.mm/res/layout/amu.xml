@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/l0"
+<LinearLayout android:orientation="vertical" style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <AutoCompleteTextView android:textSize="@dimen/m2" android:layout_gravity="center|left" android:id="@id/dty" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="120.0dip" android:completionThreshold="1" android:dropDownSelector="@color/vy" android:dropDownWidth="fill_parent" android:dropDownHeight="wrap_content" android:dropDownHorizontalOffset="-20.0dip" android:dropDownVerticalOffset="-5.0dip" style="@style/ml" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.tencent.mm.ui.base.MMPullDownView android:id="@id/dl6" android:background="@color/in" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ListView android:id="@id/dl5" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" style="@style/n3" />
+        </com.tencent.mm.ui.base.MMPullDownView>
+        <ScrollView android:id="@id/dl4" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:layout_width="@dimen/hc" android:layout_height="@dimen/hc" android:layout_marginTop="@dimen/h3" android:src="@raw/mass_send_icon" />
+                <TextView android:gravity="center" android:layout_marginLeft="@dimen/jd" android:layout_marginTop="@dimen/hd" android:layout_marginRight="@dimen/jd" android:text="@string/doe" android:lineSpacingExtra="4.0dip" style="@style/le" />
+                <Button android:id="@id/dlm" android:layout_marginLeft="@dimen/jd" android:layout_marginTop="@dimen/he" android:layout_marginRight="@dimen/jd" android:text="@string/do9" style="@style/o6" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:id="@id/dll" android:background="@drawable/ajz" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/dlk" android:layout_margin="@dimen/jn" android:text="@string/do9" style="@style/o8" />
+    </LinearLayout>
 </LinearLayout>

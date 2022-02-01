@@ -389,9 +389,9 @@ public abstract class AbstractCursor
     public SelfContentObserver(AbstractCursor paramAbstractCursor)
     {
       super();
-      AppMethodBeat.i(11958);
+      AppMethodBeat.i(2639);
       this.mCursor = new WeakReference(paramAbstractCursor);
-      AppMethodBeat.o(11958);
+      AppMethodBeat.o(2639);
     }
     
     public boolean deliverSelfNotifications()
@@ -401,12 +401,12 @@ public abstract class AbstractCursor
     
     public void onChange(boolean paramBoolean)
     {
-      AppMethodBeat.i(11959);
+      AppMethodBeat.i(2640);
       AbstractCursor localAbstractCursor = (AbstractCursor)this.mCursor.get();
       if (localAbstractCursor != null) {
         localAbstractCursor.onChange(false);
       }
-      AppMethodBeat.o(11959);
+      AppMethodBeat.o(2640);
     }
   }
 }

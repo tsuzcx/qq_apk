@@ -13,143 +13,152 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.i;
 
 final class o
   extends i
   implements DialogInterface
 {
-  private boolean gKc;
-  private View jaX;
-  private TextView jhF;
+  private LinearLayout ERU;
+  TextView ERW;
+  private TextView ERX;
+  LinearLayout ESe;
+  private LinearLayout ESg;
+  private boolean lA;
+  private View lQS;
+  private TextView lWE;
   private Context mContext;
-  Button usy;
-  private LinearLayout zaf;
-  TextView zag;
-  private TextView zah;
-  LinearLayout zai;
-  private LinearLayout zaj;
+  Button zXZ;
   
   public o(Context paramContext)
   {
-    super(paramContext, 2131493881);
-    AppMethodBeat.i(29538);
+    super(paramContext, 2131821723);
+    AppMethodBeat.i(33393);
     this.mContext = paramContext;
-    this.zaf = ((LinearLayout)w.hM(this.mContext).inflate(2130970143, null));
-    this.usy = ((Button)this.zaf.findViewById(2131822981));
-    this.jhF = ((TextView)this.zaf.findViewById(2131826145));
-    this.zag = ((TextView)this.zaf.findViewById(2131826150));
-    this.zah = ((TextView)this.zaf.findViewById(2131822986));
-    this.jaX = this.zaf.findViewById(2131826144);
-    this.zai = ((LinearLayout)this.zaf.findViewById(2131824644));
-    this.zaj = ((LinearLayout)this.zaf.findViewById(2131826151));
+    this.ERU = ((LinearLayout)y.js(this.mContext).inflate(2131494765, null));
+    this.zXZ = ((Button)this.ERU.findViewById(2131302314));
+    this.lWE = ((TextView)this.ERU.findViewById(2131302315));
+    this.ERW = ((TextView)this.ERU.findViewById(2131302307));
+    this.ERX = ((TextView)this.ERU.findViewById(2131302312));
+    this.lQS = this.ERU.findViewById(2131302316);
+    this.ESe = ((LinearLayout)this.ERU.findViewById(2131302308));
+    this.ESg = ((LinearLayout)this.ERU.findViewById(2131302303));
     setCanceledOnTouchOutside(true);
-    AppMethodBeat.o(29538);
+    AppMethodBeat.o(33393);
   }
   
-  private void dCo()
+  private void eQR()
   {
-    AppMethodBeat.i(29542);
-    if (this.zag != null) {
-      this.zag.setTextColor(this.zag.getContext().getResources().getColor(2131689956));
+    AppMethodBeat.i(33397);
+    if (this.ERW != null) {
+      this.ERW.setTextColor(this.ERW.getContext().getResources().getColor(2131100242));
     }
-    AppMethodBeat.o(29542);
-  }
-  
-  public final void dCp()
-  {
-    AppMethodBeat.i(29544);
-    super.setCancelable(true);
-    AppMethodBeat.o(29544);
+    AppMethodBeat.o(33397);
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(29546);
+    AppMethodBeat.i(33402);
     if (Looper.myLooper() != Looper.getMainLooper())
     {
-      al.d(new Runnable()
+      aq.f(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(29537);
+          AppMethodBeat.i(33392);
           o.this.dismiss();
-          AppMethodBeat.o(29537);
+          AppMethodBeat.o(33392);
         }
       });
-      ab.e("MicroMsg.LiteDependDialog", bo.dtY().toString());
-      AppMethodBeat.o(29546);
+      ad.e("MicroMsg.LiteDependDialog", bt.eGN().toString());
+      AppMethodBeat.o(33402);
       return;
     }
     try
     {
       super.dismiss();
-      AppMethodBeat.o(29546);
+      AppMethodBeat.o(33402);
       return;
     }
     catch (Exception localException)
     {
-      ab.e("MicroMsg.LiteDependDialog", "dismiss exception, e = " + localException.getMessage());
-      AppMethodBeat.o(29546);
+      ad.e("MicroMsg.LiteDependDialog", "dismiss exception, e = " + localException.getMessage());
+      AppMethodBeat.o(33402);
     }
+  }
+  
+  public final void eQS()
+  {
+    AppMethodBeat.i(33400);
+    super.setCancelable(false);
+    AppMethodBeat.o(33400);
   }
   
   protected final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(29539);
+    AppMethodBeat.i(33394);
     super.onCreate(paramBundle);
-    setContentView(this.zaf);
-    AppMethodBeat.o(29539);
+    setContentView(this.ERU);
+    AppMethodBeat.o(33394);
   }
   
   public final void setCancelable(boolean paramBoolean)
   {
-    AppMethodBeat.i(29543);
+    AppMethodBeat.i(33399);
     super.setCancelable(paramBoolean);
-    this.gKc = paramBoolean;
-    setCanceledOnTouchOutside(this.gKc);
-    AppMethodBeat.o(29543);
+    this.lA = paramBoolean;
+    setCanceledOnTouchOutside(this.lA);
+    AppMethodBeat.o(33399);
+  }
+  
+  public final void setMessage(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(33398);
+    this.ESe.setVisibility(0);
+    this.ERW.setVisibility(0);
+    this.ERW.setText(paramCharSequence);
+    AppMethodBeat.o(33398);
   }
   
   public final void setTitle(int paramInt)
   {
-    AppMethodBeat.i(29541);
-    this.jaX.setVisibility(0);
-    this.jhF.setVisibility(0);
-    this.jhF.setMaxLines(2);
-    this.jhF.setText(paramInt);
-    dCo();
-    AppMethodBeat.o(29541);
+    AppMethodBeat.i(33396);
+    this.lQS.setVisibility(0);
+    this.lWE.setVisibility(0);
+    this.lWE.setMaxLines(2);
+    this.lWE.setText(paramInt);
+    eQR();
+    AppMethodBeat.o(33396);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(29540);
-    this.jaX.setVisibility(0);
-    this.jhF.setVisibility(0);
-    this.jhF.setMaxLines(2);
-    this.jhF.setText(paramCharSequence);
-    dCo();
-    AppMethodBeat.o(29540);
+    AppMethodBeat.i(33395);
+    this.lQS.setVisibility(0);
+    this.lWE.setVisibility(0);
+    this.lWE.setMaxLines(2);
+    this.lWE.setText(paramCharSequence);
+    eQR();
+    AppMethodBeat.o(33395);
   }
   
   public final void show()
   {
-    AppMethodBeat.i(29545);
+    AppMethodBeat.i(33401);
     try
     {
       super.show();
-      AppMethodBeat.o(29545);
+      AppMethodBeat.o(33401);
       return;
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace("MicroMsg.LiteDependDialog", localException, "", new Object[0]);
-      AppMethodBeat.o(29545);
+      ad.printErrStackTrace("MicroMsg.LiteDependDialog", localException, "", new Object[0]);
+      AppMethodBeat.o(33401);
     }
   }
 }

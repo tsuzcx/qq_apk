@@ -1,61 +1,39 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
+import android.content.Context;
+import android.content.res.Resources.Theme;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.b;
+import android.util.TypedValue;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.ipcinvoker.type.IPCInteger;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.webview.e.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import d.l;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"toColor", "", "context", "Landroid/content/Context;", "toDrawable", "Landroid/graphics/drawable/Drawable;", "plugin-webview_release"})
 public final class o
 {
-  static void KZ(int paramInt)
+  static final int c(int paramInt, Context paramContext)
   {
-    AppMethodBeat.i(80452);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(80452);
-      return;
-      if (g.E(a.class) != null)
-      {
-        ((a)g.E(a.class)).dcS();
-        AppMethodBeat.o(80452);
-        return;
-      }
-      ab.e("MicroMsg.WebViewBagService", "doOp MMKernel.service(IWebViewBagService.class) null");
-      AppMethodBeat.o(80452);
-      return;
-      if (g.E(a.class) != null)
-      {
-        ((a)g.E(a.class)).dcT();
-        AppMethodBeat.o(80452);
-        return;
-      }
-      ab.e("MicroMsg.WebViewBagService", "doOp MMKernel.service(IWebViewBagService.class) null");
-    }
+    AppMethodBeat.i(82750);
+    TypedValue localTypedValue = new TypedValue();
+    paramContext.getTheme().resolveAttribute(paramInt, localTypedValue, true);
+    paramInt = b.n(paramContext, localTypedValue.resourceId);
+    AppMethodBeat.o(82750);
+    return paramInt;
   }
   
-  public static void La(int paramInt)
+  static final Drawable gK(Context paramContext)
   {
-    AppMethodBeat.i(80453);
-    if (ah.brt())
-    {
-      ab.i("MicroMsg.WebViewBagService", "in mm process op:%d", new Object[] { Integer.valueOf(paramInt) });
-      KZ(paramInt);
-      AppMethodBeat.o(80453);
-      return;
-    }
-    XIPCInvoker.a("com.tencent.mm", new IPCInteger(paramInt), o.a.class, new o.1());
-    AppMethodBeat.o(80453);
+    AppMethodBeat.i(175713);
+    TypedValue localTypedValue = new TypedValue();
+    paramContext.getTheme().resolveAttribute(2130968841, localTypedValue, true);
+    paramContext = b.l(paramContext, localTypedValue.resourceId);
+    AppMethodBeat.o(175713);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.o
  * JD-Core Version:    0.7.0.1
  */

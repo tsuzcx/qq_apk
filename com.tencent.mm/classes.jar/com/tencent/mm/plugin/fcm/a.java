@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fcm;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -7,214 +8,293 @@ import android.os.Build.VERSION;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class a
-  implements f
+  implements com.tencent.mm.al.g
 {
-  private static a mEQ;
-  final Context context;
-  private int mER;
+  @SuppressLint({"StaticFieldLeak"})
+  private static a qmL;
+  private static volatile boolean qmM = false;
+  private final Context context;
+  private int qmN;
   
   private a(Context paramContext)
   {
     this.context = paramContext;
   }
   
-  private SharedPreferences byB()
+  public static a ckh()
   {
-    AppMethodBeat.i(56433);
+    AppMethodBeat.i(127566);
+    Object localObject1;
+    if (qmL != null)
+    {
+      localObject1 = qmL;
+      AppMethodBeat.o(127566);
+      return localObject1;
+    }
+    try
+    {
+      if (qmL != null)
+      {
+        localObject1 = qmL;
+        return localObject1;
+      }
+      localObject1 = aj.getContext();
+      if (localObject1 == null)
+      {
+        ad.e("MicroMsg.FCM.FcmRegister", "FCM appcontext null");
+        return null;
+      }
+      localObject1 = new a((Context)localObject1);
+      qmL = (a)localObject1;
+      return localObject1;
+    }
+    finally
+    {
+      AppMethodBeat.o(127566);
+    }
+  }
+  
+  private SharedPreferences ckm()
+  {
+    AppMethodBeat.i(127573);
     SharedPreferences localSharedPreferences = this.context.getSharedPreferences(a.class.getSimpleName(), 0);
-    AppMethodBeat.o(56433);
+    AppMethodBeat.o(127573);
     return localSharedPreferences;
   }
   
-  public static a byx()
+  private void kM(boolean paramBoolean)
   {
-    AppMethodBeat.i(56427);
-    if (mEQ != null)
-    {
-      localObject = mEQ;
-      AppMethodBeat.o(56427);
-      return localObject;
-    }
-    Object localObject = ah.getContext();
-    if (localObject == null)
-    {
-      ab.e("MicroMsg.FCM.FcmRegister", "FCM appcontext null");
-      AppMethodBeat.o(56427);
-      return null;
-    }
-    localObject = new a((Context)localObject);
-    mEQ = (a)localObject;
-    AppMethodBeat.o(56427);
-    return localObject;
-  }
-  
-  private void hG(boolean paramBoolean)
-  {
-    AppMethodBeat.i(56432);
-    Object localObject = byB();
-    ab.i("MicroMsg.FCM.FcmRegister", "Saving regSvrResult: ".concat(String.valueOf(paramBoolean)));
+    AppMethodBeat.i(127572);
+    Object localObject = ckm();
+    ad.i("MicroMsg.FCM.FcmRegister", "Saving regSvrResult: ".concat(String.valueOf(paramBoolean)));
     localObject = ((SharedPreferences)localObject).edit();
     ((SharedPreferences.Editor)localObject).putBoolean("isRegToSvr", paramBoolean);
     ((SharedPreferences.Editor)localObject).commit();
     if (paramBoolean)
     {
-      this.mER = com.tencent.mm.kernel.a.QW();
-      AppMethodBeat.o(56432);
+      this.qmN = com.tencent.mm.kernel.a.aeL();
+      AppMethodBeat.o(127572);
       return;
     }
-    this.mER = 0;
-    AppMethodBeat.o(56432);
+    this.qmN = 0;
+    AppMethodBeat.o(127572);
   }
   
-  public final void Oi(String paramString)
+  public final void YJ(String paramString)
   {
-    AppMethodBeat.i(56430);
-    ab.i("MicroMsg.FCM.FcmRegister", "register token to svr: %s", new Object[] { paramString });
-    e.qrI.idkeyStat(901L, 11L, 1L, false);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(127570);
+    ad.i("MicroMsg.FCM.FcmRegister", "register token to svr: %s", new Object[] { paramString });
+    e.vIY.idkeyStat(901L, 11L, 1L, false);
+    if (bt.isNullOrNil(paramString))
     {
-      e.qrI.idkeyStat(901L, 13L, 1L, false);
-      ab.e("MicroMsg.FCM.FcmRegister", "token is null, fail reg");
-      AppMethodBeat.o(56430);
+      e.vIY.idkeyStat(901L, 13L, 1L, false);
+      ad.e("MicroMsg.FCM.FcmRegister", "token is null, fail reg");
+      AppMethodBeat.o(127570);
       return;
     }
-    if (this.mER == com.tencent.mm.kernel.a.QW())
+    if (this.qmN == com.tencent.mm.kernel.a.aeL())
     {
-      e.qrI.idkeyStat(901L, 12L, 1L, false);
-      ab.w("MicroMsg.FCM.FcmRegister", "have registered yet.");
-      AppMethodBeat.o(56430);
+      e.vIY.idkeyStat(901L, 12L, 1L, false);
+      ad.w("MicroMsg.FCM.FcmRegister", "have registered yet.");
+      AppMethodBeat.o(127570);
       return;
     }
     paramString = new b(paramString);
-    g.RM();
-    g.RK().eHt.a(paramString.getType(), this);
-    g.RM();
-    g.RK().eHt.a(paramString, 0);
-    e.qrI.idkeyStat(901L, 14L, 1L, false);
-    AppMethodBeat.o(56430);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a(paramString.getType(), this);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a(paramString, 0);
+    e.vIY.idkeyStat(901L, 14L, 1L, false);
+    AppMethodBeat.o(127570);
   }
   
-  public final boolean byA()
+  /* Error */
+  final boolean cki()
   {
-    AppMethodBeat.i(56431);
-    boolean bool = byB().getBoolean("isRegToSvr", false);
-    AppMethodBeat.o(56431);
-    return bool;
+    // Byte code:
+    //   0: ldc 197
+    //   2: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: getstatic 21	com/tencent/mm/plugin/fcm/a:qmM	Z
+    //   8: ifne +36 -> 44
+    //   11: aload_0
+    //   12: monitorenter
+    //   13: getstatic 21	com/tencent/mm/plugin/fcm/a:qmM	Z
+    //   16: istore_1
+    //   17: iload_1
+    //   18: ifne +24 -> 42
+    //   21: aload_0
+    //   22: getfield 28	com/tencent/mm/plugin/fcm/a:context	Landroid/content/Context;
+    //   25: invokestatic 203	com/google/firebase/a:ai	(Landroid/content/Context;)Lcom/google/firebase/a;
+    //   28: pop
+    //   29: invokestatic 209	com/google/firebase/messaging/a:xh	()Lcom/google/firebase/messaging/a;
+    //   32: getfield 213	com/google/firebase/messaging/a:bDM	Lcom/google/firebase/iid/FirebaseInstanceId;
+    //   35: invokevirtual 218	com/google/firebase/iid/FirebaseInstanceId:wT	()V
+    //   38: iconst_1
+    //   39: putstatic 21	com/tencent/mm/plugin/fcm/a:qmM	Z
+    //   42: aload_0
+    //   43: monitorexit
+    //   44: ldc 197
+    //   46: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   49: iconst_1
+    //   50: ireturn
+    //   51: astore_2
+    //   52: ldc 50
+    //   54: aload_2
+    //   55: ldc 220
+    //   57: iconst_0
+    //   58: anewarray 4	java/lang/Object
+    //   61: invokestatic 224	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   64: aload_0
+    //   65: monitorexit
+    //   66: ldc 197
+    //   68: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   71: iconst_0
+    //   72: ireturn
+    //   73: astore_2
+    //   74: aload_0
+    //   75: monitorexit
+    //   76: ldc 197
+    //   78: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   81: aload_2
+    //   82: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	83	0	this	a
+    //   16	2	1	bool	boolean
+    //   51	4	2	localThrowable	Throwable
+    //   73	9	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   21	42	51	java/lang/Throwable
+    //   13	17	73	finally
+    //   21	42	73	finally
+    //   42	44	73	finally
+    //   52	66	73	finally
+    //   74	76	73	finally
   }
   
-  final boolean byy()
+  final boolean ckj()
   {
-    AppMethodBeat.i(56428);
+    AppMethodBeat.i(127568);
     try
     {
       if (Build.VERSION.SDK_INT < 14)
       {
-        ab.w("MicroMsg.FCM.FcmRegister", "device not support FCM reason = version < 14");
-        AppMethodBeat.o(56428);
+        ad.w("MicroMsg.FCM.FcmRegister", "device not support FCM reason = version < 14");
+        AppMethodBeat.o(127568);
         return false;
       }
       int i = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this.context);
       if (i != 0)
       {
-        ab.w("MicroMsg.FCM.FcmRegister", "device not support FCM reason = ".concat(String.valueOf(i)));
-        AppMethodBeat.o(56428);
+        ad.w("MicroMsg.FCM.FcmRegister", "device not support FCM reason = ".concat(String.valueOf(i)));
+        AppMethodBeat.o(127568);
         return false;
       }
     }
     catch (Throwable localThrowable)
     {
-      ab.e("MicroMsg.FCM.FcmRegister", localThrowable.toString());
-      AppMethodBeat.o(56428);
+      ad.e("MicroMsg.FCM.FcmRegister", localThrowable.toString());
+      AppMethodBeat.o(127568);
       return false;
     }
-    AppMethodBeat.o(56428);
+    AppMethodBeat.o(127568);
     return true;
   }
   
-  final void byz()
+  final void ckk()
   {
-    AppMethodBeat.i(56429);
-    e.qrI.idkeyStat(901L, 18L, 1L, false);
-    Object localObject = FirebaseInstanceId.rL().getToken();
-    if (bo.isNullOrNil((String)localObject))
+    AppMethodBeat.i(127569);
+    e.vIY.idkeyStat(901L, 18L, 1L, false);
+    Object localObject = null;
+    if (cki()) {
+      localObject = FirebaseInstanceId.wK().getToken();
+    }
+    if (bt.isNullOrNil((String)localObject))
     {
-      e.qrI.idkeyStat(901L, 19L, 1L, false);
-      ab.w("MicroMsg.FCM.FcmRegister", "unreg fail, token is null");
-      AppMethodBeat.o(56429);
+      e.vIY.idkeyStat(901L, 19L, 1L, false);
+      ad.w("MicroMsg.FCM.FcmRegister", "unreg fail, token is null");
+      AppMethodBeat.o(127569);
       return;
     }
-    hG(false);
+    kM(false);
     localObject = new c((String)localObject);
-    g.RM();
-    g.RK().eHt.a(((c)localObject).getType(), this);
-    g.RM();
-    g.RK().eHt.a((m)localObject, 0);
-    e.qrI.idkeyStat(901L, 21L, 1L, false);
-    AppMethodBeat.o(56429);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a(((c)localObject).getType(), this);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a((n)localObject, 0);
+    e.vIY.idkeyStat(901L, 21L, 1L, false);
+    AppMethodBeat.o(127569);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean ckl()
+  {
+    AppMethodBeat.i(127571);
+    boolean bool = ckm().getBoolean("isRegToSvr", false);
+    AppMethodBeat.o(127571);
+    return bool;
+  }
+  
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     boolean bool = false;
-    AppMethodBeat.i(56434);
-    if (paramm == null)
+    AppMethodBeat.i(127574);
+    if (paramn == null)
     {
-      AppMethodBeat.o(56434);
+      AppMethodBeat.o(127574);
       return;
     }
-    if ((paramm instanceof b))
+    if ((paramn instanceof b))
     {
-      g.RM();
-      g.RK().eHt.a(((b)paramm).getType(), this);
+      com.tencent.mm.kernel.g.afC();
+      com.tencent.mm.kernel.g.afA().gcy.a(((b)paramn).getType(), this);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        ab.i("MicroMsg.FCM.FcmRegister", "NetSceneFcmReg success.");
-        e.qrI.idkeyStat(901L, 16L, 1L, false);
+        ad.i("MicroMsg.FCM.FcmRegister", "NetSceneFcmReg success.");
+        e.vIY.idkeyStat(901L, 16L, 1L, false);
         bool = true;
       }
       for (;;)
       {
-        hG(bool);
-        AppMethodBeat.o(56434);
+        kM(bool);
+        AppMethodBeat.o(127574);
         return;
-        ab.i("MicroMsg.FCM.FcmRegister", "NetSceneFcmReg faild.");
-        e.qrI.idkeyStat(901L, 17L, 1L, false);
+        ad.i("MicroMsg.FCM.FcmRegister", "NetSceneFcmReg faild.");
+        e.vIY.idkeyStat(901L, 17L, 1L, false);
       }
     }
-    if ((paramm instanceof c))
+    if ((paramn instanceof c))
     {
-      g.RM();
-      g.RK().eHt.a(((c)paramm).getType(), this);
+      com.tencent.mm.kernel.g.afC();
+      com.tencent.mm.kernel.g.afA().gcy.a(((c)paramn).getType(), this);
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break label187;
+        break label194;
       }
-      ab.i("MicroMsg.FCM.FcmRegister", "NetSceneFcmUnreg success.");
-      e.qrI.idkeyStat(901L, 23L, 1L, false);
+      ad.i("MicroMsg.FCM.FcmRegister", "NetSceneFcmUnreg success.");
+      e.vIY.idkeyStat(901L, 23L, 1L, false);
     }
     for (;;)
     {
-      hG(false);
-      AppMethodBeat.o(56434);
+      kM(false);
+      AppMethodBeat.o(127574);
       return;
-      label187:
-      ab.e("MicroMsg.FCM.FcmRegister", "NetSceneFcmUnreg faild.");
-      e.qrI.idkeyStat(901L, 24L, 1L, false);
+      label194:
+      ad.e("MicroMsg.FCM.FcmRegister", "NetSceneFcmUnreg faild.");
+      e.vIY.idkeyStat(901L, 24L, 1L, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fcm.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,333 +1,618 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.model.ak;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.plugin.sns.data.j;
+import com.tencent.mm.plugin.sns.data.q;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
+import com.tencent.mm.plugin.sns.storage.b;
+import com.tencent.mm.plugin.sns.storage.b.m;
+import com.tencent.mm.plugin.sns.storage.p;
+import com.tencent.mm.plugin.sns.ui.item.d.a;
+import com.tencent.mm.plugin.sns.ui.widget.SnsAdSphereAnimView;
+import com.tencent.mm.plugin.sns.ui.widget.SnsAdSphereAnimView.1;
+import com.tencent.mm.plugin.sns.ui.widget.SnsAdTimelineVideoView;
+import com.tencent.mm.plugin.sns.ui.widget.SnsAdTouchProgressView;
+import com.tencent.mm.plugin.sns.ui.widget.SnsAdTouchProgressView.a;
+import com.tencent.mm.plugin.sns.ui.widget.a.c;
+import com.tencent.mm.plugin.sns.ui.widget.a.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.f;
+import org.json.JSONObject;
 
 public final class au
-  extends d<n>
 {
-  private boolean ctJ;
-  List<n> list;
-  private String meP;
-  private int rEf;
-  private int rEg;
-  private boolean rVp;
-  private au.b rVq;
-  private au.a rVr;
-  private Comparator<n> rcR;
-  private String userName;
+  private Context mContext;
+  int mScene;
+  protected long mStartTime;
+  p wvM;
+  Bitmap xuX;
+  b.m xuY;
+  SnsAdTouchProgressView xuZ;
+  SnsAdSphereAnimView xva;
+  an xvb;
+  int xvc;
+  private volatile boolean xvd;
+  protected SnsAdTouchProgressView.a xve;
+  protected boolean xvf;
+  public SnsAdTouchProgressView.a xvg;
   
-  public au(au.b paramb, String paramString, boolean paramBoolean)
+  public au(Context paramContext, d.a parama)
   {
-    AppMethodBeat.i(39233);
-    this.userName = "";
-    this.list = new ArrayList();
-    this.ctJ = false;
-    this.rEf = 0;
-    this.rEg = 0;
-    this.meP = "";
-    this.rVp = false;
-    this.rcR = new au.1(this);
-    this.rVq = paramb;
-    this.userName = paramString;
-    this.ctJ = paramBoolean;
-    AppMethodBeat.o(39233);
+    AppMethodBeat.i(179199);
+    this.xvd = false;
+    this.xve = new SnsAdTouchProgressView.a()
+    {
+      public final void onCancel()
+      {
+        AppMethodBeat.i(179193);
+        if (au.this.xvf)
+        {
+          ad.e("SnsAdPressGestureCtrl", "onCancel, isCalledOnFinish==true");
+          AppMethodBeat.o(179193);
+          return;
+        }
+        if (au.this.xuY == null)
+        {
+          ad.e("SnsAdPressGestureCtrl", "onCancel, mGestureInfo == null");
+          AppMethodBeat.o(179193);
+          return;
+        }
+        ad.i("SnsAdPressGestureCtrl", "onCancel, seekto=" + au.this.xuY.wUK);
+        au.this.xvb.xso.seekTo(au.this.xuY.wUK);
+        au.this.qk(true);
+        if (au.this.xvg != null) {
+          au.this.xvg.onCancel();
+        }
+        au.a(au.this.wvM, 1, (int)(System.currentTimeMillis() - au.this.mStartTime), au.this.mScene);
+        AppMethodBeat.o(179193);
+      }
+      
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(179194);
+        ad.i("SnsAdPressGestureCtrl", "onClick");
+        if (au.this.xvg != null) {
+          au.this.xvg.onClick(paramAnonymousView);
+        }
+        AppMethodBeat.o(179194);
+      }
+      
+      public final void onFinish()
+      {
+        AppMethodBeat.i(179195);
+        if (!au.this.xvf)
+        {
+          au.this.xvf = true;
+          ad.i("SnsAdPressGestureCtrl", "onFinish");
+          au.this.qk(true);
+          if (au.this.xvg != null) {
+            au.this.xvg.onFinish();
+          }
+          au.a(au.this.wvM, 2, (int)(System.currentTimeMillis() - au.this.mStartTime), au.this.mScene);
+          AppMethodBeat.o(179195);
+          return;
+        }
+        ad.e("SnsAdPressGestureCtrl", "onFinish, secondTimes");
+        AppMethodBeat.o(179195);
+      }
+      
+      public final void onStart()
+      {
+        AppMethodBeat.i(179192);
+        au.this.mStartTime = System.currentTimeMillis();
+        au.this.xvf = false;
+        if (au.this.xuY == null)
+        {
+          ad.e("SnsAdPressGestureCtrl", "onStart, mGestureInfo == null");
+          AppMethodBeat.o(179192);
+          return;
+        }
+        ad.i("SnsAdPressGestureCtrl", "onStart, seekto=" + au.this.xuY.wUL);
+        q.d(new long[] { 20L, 100L });
+        au.this.xvb.xso.seekTo(au.this.xuY.wUL);
+        au localau = au.this;
+        SnsAdSphereAnimView localSnsAdSphereAnimView;
+        Bitmap localBitmap;
+        int i;
+        int j;
+        int k;
+        int m;
+        int n;
+        if ((localau.xuY != null) && (localau.xva != null) && (localau.xva.getVisibility() != 0))
+        {
+          ad.i("SnsAdPressGestureCtrl", "showSphereAnimView");
+          if (localau.xuX != null)
+          {
+            localSnsAdSphereAnimView = localau.xva;
+            localBitmap = localau.xuX;
+            i = localau.xuY.wUO;
+            j = localau.xvc;
+            k = localau.xuY.wUM;
+            ad.i("SnsAdSphereAnimView", "setData, sceneType=" + i + ", duration=" + k + ", h=" + j + ", bmp=" + localBitmap);
+            if (localBitmap != null)
+            {
+              localSnsAdSphereAnimView.xXv = i;
+              m = com.tencent.mm.cd.a.fromDPToPix(localSnsAdSphereAnimView.mContext, 30);
+              n = com.tencent.mm.cd.a.fromDPToPix(localSnsAdSphereAnimView.mContext, 36);
+              if (i != SnsAdSphereAnimView.xXr) {
+                break label380;
+              }
+              localSnsAdSphereAnimView.xXu = new c(localSnsAdSphereAnimView.getContext(), localBitmap, m, n, j, k);
+            }
+          }
+        }
+        for (;;)
+        {
+          localSnsAdSphereAnimView.invalidate();
+          localSnsAdSphereAnimView = localau.xva;
+          ad.i("SnsAdSphereAnimView", "start");
+          localSnsAdSphereAnimView.invalidate();
+          localau.xva.setVisibility(0);
+          if (au.this.xvg != null) {
+            au.this.xvg.onStart();
+          }
+          AppMethodBeat.o(179192);
+          return;
+          label380:
+          if (i == SnsAdSphereAnimView.xXs) {
+            localSnsAdSphereAnimView.xXu = new d(localSnsAdSphereAnimView.mContext, localBitmap, m, n, j, k);
+          } else if (i == SnsAdSphereAnimView.xXt) {
+            localSnsAdSphereAnimView.xSa.postDelayed(new SnsAdSphereAnimView.1(localSnsAdSphereAnimView, localBitmap, m, n, k), 50L);
+          }
+        }
+      }
+    };
+    this.xvf = false;
+    this.mContext = paramContext;
+    this.xuZ = parama.xPt;
+    this.xva = parama.xPu;
+    this.xvb = parama.xOO;
+    this.mScene = 1;
+    AppMethodBeat.o(179199);
   }
   
-  private int a(int paramInt1, int paramInt2, List<n> paramList)
+  public au(Context paramContext, SnsAdTouchProgressView paramSnsAdTouchProgressView, SnsAdSphereAnimView paramSnsAdSphereAnimView, an paraman)
   {
-    int i = 1;
-    AppMethodBeat.i(39239);
-    Object localObject = this.rVr;
-    ((au.a)localObject).rVu = -1;
-    ((au.a)localObject).rVE = -1;
-    ((au.a)localObject).rVt = -1;
-    ((au.a)localObject).rVy = "";
-    ((au.a)localObject).rVz = "";
-    ((au.a)localObject).rVA = "";
-    ((au.a)localObject).rVD = false;
-    ((au.a)localObject).rVv = false;
-    ((au.a)localObject).rVF = false;
-    ((au.a)localObject).rVG = -1;
-    ((au.a)localObject).rVw = -1;
-    ((au.a)localObject).rVB = -1;
-    ((au.a)localObject).rVC = 0;
-    ((au.a)localObject).rVx = 0;
-    ((au.a)localObject).rVH = 0;
-    if ((this.ctJ) && (paramInt1 == 0))
+    AppMethodBeat.i(179200);
+    this.xvd = false;
+    this.xve = new SnsAdTouchProgressView.a()
     {
-      AppMethodBeat.o(39239);
-      return 1;
-    }
-    TimeLineObject localTimeLineObject;
-    if (paramInt1 + 1 < paramInt2)
-    {
-      localObject = (n)paramList.get(paramInt1 + 1);
-      this.rVr.rVu = ((n)localObject).field_head;
-      localTimeLineObject = ((n)localObject).csh();
-      this.rVr.rVy = localTimeLineObject.xTP;
-      this.rVr.rVv = ak.ad(((n)localObject).field_localPrivate, this.ctJ);
-      this.rVr.rVw = ((n)localObject).field_type;
-      if (localTimeLineObject.xTS != null) {
-        this.rVr.rVx = localTimeLineObject.xTS.wOa.size();
-      }
-    }
-    else
-    {
-      if (paramInt1 + 2 < paramInt2)
+      public final void onCancel()
       {
-        localObject = (n)paramList.get(paramInt1 + 2);
-        this.rVr.rVE = ((n)localObject).field_head;
-        localTimeLineObject = ((n)localObject).csh();
-        this.rVr.rVz = localTimeLineObject.xTP;
-        this.rVr.rVF = ak.ad(((n)localObject).field_localPrivate, this.ctJ);
-        this.rVr.rVG = ((n)localObject).field_type;
-        if (localTimeLineObject.xTS == null) {
-          break label475;
+        AppMethodBeat.i(179193);
+        if (au.this.xvf)
+        {
+          ad.e("SnsAdPressGestureCtrl", "onCancel, isCalledOnFinish==true");
+          AppMethodBeat.o(179193);
+          return;
         }
-        this.rVr.rVH = localTimeLineObject.xTS.wOa.size();
+        if (au.this.xuY == null)
+        {
+          ad.e("SnsAdPressGestureCtrl", "onCancel, mGestureInfo == null");
+          AppMethodBeat.o(179193);
+          return;
+        }
+        ad.i("SnsAdPressGestureCtrl", "onCancel, seekto=" + au.this.xuY.wUK);
+        au.this.xvb.xso.seekTo(au.this.xuY.wUK);
+        au.this.qk(true);
+        if (au.this.xvg != null) {
+          au.this.xvg.onCancel();
+        }
+        au.a(au.this.wvM, 1, (int)(System.currentTimeMillis() - au.this.mStartTime), au.this.mScene);
+        AppMethodBeat.o(179193);
       }
-      label343:
-      paramList = (n)paramList.get(paramInt1);
-      this.rVr.rVt = paramList.field_head;
-      localObject = paramList.csh();
-      this.rVr.rVA = ((TimeLineObject)localObject).xTP;
-      this.rVr.rVB = paramList.field_type;
-      this.rVr.rVD = ak.ad(paramList.field_localPrivate, this.ctJ);
-      if (((TimeLineObject)localObject).xTS == null) {
-        break label486;
+      
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(179194);
+        ad.i("SnsAdPressGestureCtrl", "onClick");
+        if (au.this.xvg != null) {
+          au.this.xvg.onClick(paramAnonymousView);
+        }
+        AppMethodBeat.o(179194);
       }
-      this.rVr.rVC = ((TimeLineObject)localObject).xTS.wOa.size();
-      label438:
-      paramList = this.rVr;
-      if (paramList.rVB != 2) {
-        break label497;
+      
+      public final void onFinish()
+      {
+        AppMethodBeat.i(179195);
+        if (!au.this.xvf)
+        {
+          au.this.xvf = true;
+          ad.i("SnsAdPressGestureCtrl", "onFinish");
+          au.this.qk(true);
+          if (au.this.xvg != null) {
+            au.this.xvg.onFinish();
+          }
+          au.a(au.this.wvM, 2, (int)(System.currentTimeMillis() - au.this.mStartTime), au.this.mScene);
+          AppMethodBeat.o(179195);
+          return;
+        }
+        ad.e("SnsAdPressGestureCtrl", "onFinish, secondTimes");
+        AppMethodBeat.o(179195);
       }
-      paramInt1 = 1;
+      
+      public final void onStart()
+      {
+        AppMethodBeat.i(179192);
+        au.this.mStartTime = System.currentTimeMillis();
+        au.this.xvf = false;
+        if (au.this.xuY == null)
+        {
+          ad.e("SnsAdPressGestureCtrl", "onStart, mGestureInfo == null");
+          AppMethodBeat.o(179192);
+          return;
+        }
+        ad.i("SnsAdPressGestureCtrl", "onStart, seekto=" + au.this.xuY.wUL);
+        q.d(new long[] { 20L, 100L });
+        au.this.xvb.xso.seekTo(au.this.xuY.wUL);
+        au localau = au.this;
+        SnsAdSphereAnimView localSnsAdSphereAnimView;
+        Bitmap localBitmap;
+        int i;
+        int j;
+        int k;
+        int m;
+        int n;
+        if ((localau.xuY != null) && (localau.xva != null) && (localau.xva.getVisibility() != 0))
+        {
+          ad.i("SnsAdPressGestureCtrl", "showSphereAnimView");
+          if (localau.xuX != null)
+          {
+            localSnsAdSphereAnimView = localau.xva;
+            localBitmap = localau.xuX;
+            i = localau.xuY.wUO;
+            j = localau.xvc;
+            k = localau.xuY.wUM;
+            ad.i("SnsAdSphereAnimView", "setData, sceneType=" + i + ", duration=" + k + ", h=" + j + ", bmp=" + localBitmap);
+            if (localBitmap != null)
+            {
+              localSnsAdSphereAnimView.xXv = i;
+              m = com.tencent.mm.cd.a.fromDPToPix(localSnsAdSphereAnimView.mContext, 30);
+              n = com.tencent.mm.cd.a.fromDPToPix(localSnsAdSphereAnimView.mContext, 36);
+              if (i != SnsAdSphereAnimView.xXr) {
+                break label380;
+              }
+              localSnsAdSphereAnimView.xXu = new c(localSnsAdSphereAnimView.getContext(), localBitmap, m, n, j, k);
+            }
+          }
+        }
+        for (;;)
+        {
+          localSnsAdSphereAnimView.invalidate();
+          localSnsAdSphereAnimView = localau.xva;
+          ad.i("SnsAdSphereAnimView", "start");
+          localSnsAdSphereAnimView.invalidate();
+          localau.xva.setVisibility(0);
+          if (au.this.xvg != null) {
+            au.this.xvg.onStart();
+          }
+          AppMethodBeat.o(179192);
+          return;
+          label380:
+          if (i == SnsAdSphereAnimView.xXs) {
+            localSnsAdSphereAnimView.xXu = new d(localSnsAdSphereAnimView.mContext, localBitmap, m, n, j, k);
+          } else if (i == SnsAdSphereAnimView.xXt) {
+            localSnsAdSphereAnimView.xSa.postDelayed(new SnsAdSphereAnimView.1(localSnsAdSphereAnimView, localBitmap, m, n, k), 50L);
+          }
+        }
+      }
+    };
+    this.xvf = false;
+    this.mContext = paramContext;
+    this.xuZ = paramSnsAdTouchProgressView;
+    this.xva = paramSnsAdSphereAnimView;
+    this.xvb = paraman;
+    this.mScene = 2;
+    AppMethodBeat.o(179200);
+  }
+  
+  public static void a(p paramp, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(179206);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("snsid", paramp.field_snsId);
+      localJSONObject.put("uxinfo", bt.nullAsNil(paramp.dxu().dvK));
+      localJSONObject.put("scene", paramInt3);
+      paramp = new JSONObject();
+      paramp.put("result", paramInt1);
+      paramp.put("pressTotalTime", paramInt2);
+      localJSONObject.put("extInfo", paramp);
+      paramp = localJSONObject.toString();
+      j.ix("timeline_fullcard_longpress_action", paramp);
+      ad.i("SnsAdPressGestureCtrl", "reportAction, content=" + paramp + ", channel=timeline_fullcard_longpress_action");
+      AppMethodBeat.o(179206);
+      return;
+    }
+    catch (Exception paramp)
+    {
+      ad.i("SnsAdPressGestureCtrl", "reportAction, exp=" + paramp.toString());
+      AppMethodBeat.o(179206);
+    }
+  }
+  
+  private static boolean a(b.m paramm, p paramp)
+  {
+    AppMethodBeat.i(179202);
+    if ((paramm == null) || (paramp == null))
+    {
+      AppMethodBeat.o(179202);
+      return false;
+    }
+    try
+    {
+      if (paramm.wUK > 0)
+      {
+        int i = paramm.wUL;
+        int j = paramm.wUK;
+        if (i > j) {}
+      }
+      else
+      {
+        AppMethodBeat.o(179202);
+        return false;
+      }
+      boolean bool = TextUtils.isEmpty(paramp.dxs().dvu());
+      if (bool)
+      {
+        AppMethodBeat.o(179202);
+        return false;
+      }
+      AppMethodBeat.o(179202);
+      return true;
+    }
+    catch (Exception paramm)
+    {
+      ad.e("SnsAdPressGestureCtrl", "isValidLongPressGestureAd, exp=" + paramm.toString());
+      AppMethodBeat.o(179202);
+    }
+    return false;
+  }
+  
+  public final void a(com.tencent.mm.plugin.sns.a.b.i parami, final long paramLong1, final long paramLong2)
+  {
+    AppMethodBeat.i(179203);
+    if (!this.xvd)
+    {
+      AppMethodBeat.o(179203);
+      return;
+    }
+    aq.f(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(179191);
+        try
+        {
+          boolean bool = au.this.xvb.xso.dzx();
+          ad.d("SnsAdPressGestureCtrl", "checkLongPressGesture, start=" + au.this.xuY.wUK + ", end=" + au.this.xuY.wUL + ", duration=" + au.this.xuY.wUM + ", curPlayTime=" + paramLong1 + ", isPlaying=" + bool);
+          if ((paramLong1 >= au.this.xuY.wUK) && (bool))
+          {
+            au localau = au.this;
+            if ((localau.xuZ != null) && (localau.xuZ.getVisibility() != 0))
+            {
+              ad.i("SnsAdPressGestureCtrl", "enableLongPressGestureView");
+              localau.xuZ.setVisibility(0);
+            }
+          }
+          for (;;)
+          {
+            if ((paramLong1 > au.this.xuY.wUL - 250) && (!au.this.xuZ.isAnimating()))
+            {
+              ad.i("SnsAdPressGestureCtrl", "checkLongPressGesture, seekto 0");
+              au.this.xvb.xso.seekTo(0);
+              if (paramLong2 != null)
+              {
+                ad.i("SnsAdPressGestureCtrl", "checkLongPressGesture, addIdCount:" + this.xvj);
+                paramLong2.A(this.xvj, false);
+              }
+            }
+            AppMethodBeat.o(179191);
+            return;
+            au.this.dAJ();
+            au.this.qk(false);
+          }
+          return;
+        }
+        catch (Exception localException)
+        {
+          ad.e("SnsAdPressGestureCtrl", "checkLongPressGesture, exp=" + localException.toString());
+          AppMethodBeat.o(179191);
+        }
+      }
+    });
+    AppMethodBeat.o(179203);
+  }
+  
+  public final boolean a(final p paramp, b.m paramm, int paramInt)
+  {
+    AppMethodBeat.i(179201);
+    if ((this.wvM == null) || (this.wvM.field_snsId != paramp.field_snsId))
+    {
+      this.xuY = paramm;
+      this.wvM = paramp;
+      this.xuX = null;
+      this.xvc = paramInt;
+      this.xvd = a(paramm, paramp);
+      ad.i("SnsAdPressGestureCtrl", "initData, isValidGestureAd=" + this.xvd + ", snsId=" + paramp.field_snsId);
+      if (!this.xvd) {
+        break label260;
+      }
+      ad.i("SnsAdPressGestureCtrl", "initData, start=" + this.xuY.wUK + ", end=" + this.xuY.wUL + ", duration=" + this.xuY.wUM + ", pressDuration=" + this.xuY.wUM);
+      this.xuZ.setActionListener(this.xve);
+      this.xuZ.setDuration(paramm.wUM);
+      this.xvb.xso.setTimerInterval(250);
+      paramp = paramm.wUN;
+      ad.i("SnsAdPressGestureCtrl", "loadSpriteImage:".concat(String.valueOf(paramp)));
+      if (!TextUtils.isEmpty(paramp)) {
+        h.a(paramp, new f.a()
+        {
+          public final void apm(String paramAnonymousString)
+          {
+            AppMethodBeat.i(187662);
+            if (au.this.xuY != null)
+            {
+              String str2 = au.this.xuY.wUN;
+              String str1;
+              if (TextUtils.isEmpty(str2)) {
+                str1 = "";
+              }
+              while ((!TextUtils.isEmpty(paramAnonymousString)) && (paramAnonymousString.equals(str1)))
+              {
+                paramAnonymousString = f.decodeFile(paramAnonymousString, null);
+                if (paramAnonymousString != null)
+                {
+                  au.this.xuX = paramAnonymousString;
+                  ad.i("SnsAdPressGestureCtrl", "onDownloaded succ, tagUrl=".concat(String.valueOf(str2)));
+                  AppMethodBeat.o(187662);
+                  return;
+                  str1 = h.iU("adId", str2);
+                }
+                else
+                {
+                  ad.e("SnsAdPressGestureCtrl", "onDownloaded, bitmap==null");
+                  AppMethodBeat.o(187662);
+                  return;
+                }
+              }
+              ad.e("SnsAdPressGestureCtrl", "onDownloaded, url changed");
+            }
+            AppMethodBeat.o(187662);
+          }
+          
+          public final void dsA()
+          {
+            AppMethodBeat.i(187661);
+            StringBuilder localStringBuilder = new StringBuilder("onDownloadError, snsId=");
+            if (au.this.wvM == null) {}
+            for (Object localObject = "";; localObject = Long.valueOf(au.this.wvM.field_snsId))
+            {
+              ad.e("SnsAdPressGestureCtrl", localObject + ", url=" + paramp);
+              AppMethodBeat.o(187661);
+              return;
+            }
+          }
+          
+          public final void duP() {}
+        });
+      }
     }
     for (;;)
     {
-      if (paramInt1 == 0) {
-        break label646;
-      }
-      AppMethodBeat.o(39239);
-      return 1;
-      this.rVr.rVx = 0;
-      break;
-      label475:
-      this.rVr.rVH = 0;
-      break label343;
-      label486:
-      this.rVr.rVC = 0;
-      break label438;
-      label497:
-      if (paramList.rVu == -1) {
-        paramInt1 = 1;
-      } else if (paramList.rVB != paramList.rVw) {
-        paramInt1 = 1;
-      } else if (au.a.EV(paramList.rVB)) {
-        paramInt1 = 1;
-      } else if (au.a.EV(paramList.rVw)) {
-        paramInt1 = 1;
-      } else if ((paramList.rVC > 1) || (paramList.rVx > 1)) {
-        paramInt1 = 1;
-      } else if ((paramList.rVA != null) && (!paramList.rVA.equals(""))) {
-        paramInt1 = 1;
-      } else if ((paramList.rVy != null) && (!paramList.rVy.equals(""))) {
-        paramInt1 = 1;
-      } else if (paramList.rVt != paramList.rVu) {
-        paramInt1 = 1;
-      } else {
-        paramInt1 = 0;
-      }
+      boolean bool = this.xvd;
+      AppMethodBeat.o(179201);
+      return bool;
+      label260:
+      this.xuZ.setActionListener(null);
+      qk(false);
+      dAJ();
+      this.xvb.xso.setTimerInterval(1000);
     }
-    label646:
-    paramList = this.rVr;
-    if (paramList.rVE == -1) {
-      paramInt1 = i;
-    }
-    while (paramInt1 != 0)
+  }
+  
+  public final boolean dAI()
+  {
+    AppMethodBeat.i(187663);
+    if (this.xvd)
     {
-      AppMethodBeat.o(39239);
-      return 2;
-      paramInt1 = i;
-      if (paramList.rVw == paramList.rVG)
+      boolean bool;
+      if (this.xuZ != null)
       {
-        paramInt1 = i;
-        if (!au.a.EV(paramList.rVG))
-        {
-          paramInt1 = i;
-          if (paramList.rVH <= 1) {
-            if (paramList.rVz != null)
-            {
-              paramInt1 = i;
-              if (!paramList.rVz.equals("")) {}
-            }
-            else
-            {
-              paramInt1 = i;
-              if (paramList.rVu == paramList.rVE) {
-                paramInt1 = 0;
-              }
-            }
-          }
+        bool = this.xuZ.isAnimating();
+        if (!bool) {
+          break label137;
+        }
+        if (this.wvM != null) {
+          break label123;
         }
       }
-    }
-    AppMethodBeat.o(39239);
-    return 3;
-  }
-  
-  private void c(boolean paramBoolean, List<n> paramList)
-  {
-    AppMethodBeat.i(39240);
-    if (!paramBoolean)
-    {
-      AppMethodBeat.o(39240);
-      return;
-    }
-    if (this.ctJ)
-    {
-      n localn = new n((byte)0);
-      localn.field_snsId = 0L;
-      localn.rCV = -1;
-      localn.lp((int)(System.currentTimeMillis() / 1000L));
-      paramList.add(0, localn);
-    }
-    AppMethodBeat.o(39240);
-  }
-  
-  private void d(boolean paramBoolean, List<n> paramList)
-  {
-    AppMethodBeat.i(39241);
-    this.rVr = new au.a(this);
-    HashMap localHashMap1 = new HashMap();
-    HashMap localHashMap2 = new HashMap();
-    HashMap localHashMap3 = new HashMap();
-    long l = System.currentTimeMillis();
-    int m = 0;
-    int k = 0;
-    int i = 0;
-    c(paramBoolean, paramList);
-    int n = paramList.size();
-    ab.d("MicroMsg.SnsSelfHelper", "initFixType ".concat(String.valueOf(n)));
-    int j = 0;
-    while (j < n)
-    {
-      int i1 = a(j, n, paramList);
-      localHashMap1.put(Integer.valueOf(i), Integer.valueOf(m));
-      localHashMap2.put(Integer.valueOf(i), Integer.valueOf(i1));
-      m += i1;
-      localHashMap3.put(Integer.valueOf(i), Integer.valueOf(k));
-      k += fM(j, i1);
-      j += i1;
-      i += 1;
-    }
-    this.rEf = i;
-    this.rEg = paramList.size();
-    ab.d("MicroMsg.SnsSelfHelper", "icount " + this.rEf);
-    this.list = paramList;
-    i.aC("SnsphotoAdapter initFixType ", l);
-    this.rVq.a(this.list, localHashMap1, localHashMap2, localHashMap3, this.rEg, this.rEf);
-    AppMethodBeat.o(39241);
-  }
-  
-  private int fM(int paramInt1, int paramInt2)
-  {
-    int i = 0;
-    int j = 0;
-    if ((this.ctJ) && (paramInt1 == 0)) {
-      paramInt1 = j;
-    }
-    do
-    {
-      do
+      label123:
+      for (String str = "";; str = q.st(this.wvM.field_snsId))
       {
-        return paramInt1;
-        paramInt1 = i;
-        if (paramInt2 > 0)
+        int i = (int)(System.currentTimeMillis() - this.mStartTime);
+        com.tencent.mm.plugin.sns.data.i.b(com.tencent.mm.plugin.sns.data.i.wAM, str, this.mScene, i, "");
+        ad.i("SnsAdPressGestureCtrl", "checkLongPressGesture, videoEnd && isAnimating, snsId=" + str + ", pressDuration=" + i);
+        aq.f(new Runnable()
         {
-          paramInt1 = i;
-          if (this.rVr.rVB == 1) {
-            paramInt1 = 1;
+          public final void run()
+          {
+            AppMethodBeat.i(187659);
+            au.this.xve.onFinish();
+            AppMethodBeat.o(187659);
           }
-        }
-        i = paramInt1;
-        if (paramInt2 >= 2)
-        {
-          i = paramInt1;
-          if (this.rVr.rVw == 1) {
-            i = paramInt1 + 1;
-          }
-        }
-        paramInt1 = i;
-      } while (paramInt2 < 3);
-      paramInt1 = i;
-    } while (this.rVr.rVG != 1);
-    return i + 1;
-  }
-  
-  public final List<n> Kq()
-  {
-    AppMethodBeat.i(39235);
-    List localList = ak.a(this.userName, this.ctJ, this.meP, this.rVp);
-    ab.i("MicroMsg.SnsSelfHelper", "loadData thread: %d count: %d", new Object[] { Long.valueOf(Thread.currentThread().getId()), Integer.valueOf(localList.size()) });
-    AppMethodBeat.o(39235);
-    return localList;
-  }
-  
-  public final void cvN()
-  {
-    AppMethodBeat.i(39236);
-    Collections.sort(this.list, this.rcR);
-    AppMethodBeat.o(39236);
-  }
-  
-  final void cvO()
-  {
-    AppMethodBeat.i(39237);
-    d(false, this.list);
-    AppMethodBeat.o(39237);
-  }
-  
-  public final void dl(List<n> paramList)
-  {
-    AppMethodBeat.i(39234);
-    if (this.rVq != null)
-    {
-      if (paramList != null) {
-        d(true, paramList);
+        });
+        AppMethodBeat.o(187663);
+        return true;
+        bool = false;
+        break;
       }
-      this.rVq.cvM();
     }
-    AppMethodBeat.o(39234);
+    label137:
+    AppMethodBeat.o(187663);
+    return false;
   }
   
-  public final void h(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public final void dAJ()
   {
-    AppMethodBeat.i(39238);
-    ab.d("MicroMsg.SnsSelfHelper", "limitSeq ".concat(String.valueOf(paramString)));
-    this.meP = paramString;
-    this.rVp = paramBoolean1;
-    ie(paramBoolean2);
-    AppMethodBeat.o(39238);
+    AppMethodBeat.i(179204);
+    if ((this.xuZ != null) && (this.xuZ.getVisibility() != 8))
+    {
+      ad.i("SnsAdPressGestureCtrl", "disableLongPressGestureView");
+      this.xuZ.clear();
+      this.xuZ.setVisibility(8);
+    }
+    AppMethodBeat.o(179204);
+  }
+  
+  public final void qk(boolean paramBoolean)
+  {
+    AppMethodBeat.i(179205);
+    if ((this.xva != null) && (this.xva.getVisibility() != 8))
+    {
+      ad.i("SnsAdPressGestureCtrl", "hideSphereAnimView");
+      if (!paramBoolean)
+      {
+        this.xva.clear();
+        this.xva.setVisibility(8);
+        AppMethodBeat.o(179205);
+        return;
+      }
+      AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+      localAlphaAnimation.setDuration(250L);
+      localAlphaAnimation.setAnimationListener(new Animation.AnimationListener()
+      {
+        public final void onAnimationEnd(Animation paramAnonymousAnimation)
+        {
+          AppMethodBeat.i(187660);
+          au.this.xva.setVisibility(8);
+          au.this.xva.clear();
+          AppMethodBeat.o(187660);
+        }
+        
+        public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+        
+        public final void onAnimationStart(Animation paramAnonymousAnimation) {}
+      });
+      this.xva.startAnimation(localAlphaAnimation);
+    }
+    AppMethodBeat.o(179205);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.au
  * JD-Core Version:    0.7.0.1
  */

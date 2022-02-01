@@ -5,55 +5,55 @@ import a.a.a.b;
 public final class p
   extends com.tencent.mm.d.a
 {
-  public String VN;
-  public long VP;
-  public String Vp;
+  public String XI;
+  public long XK;
+  public String Xk;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.VN == null) {
+      if (this.XI == null) {
         throw new b("Not all required fields were included: Talker");
       }
-      if (this.Vp == null) {
+      if (this.Xk == null) {
         throw new b("Not all required fields were included: NickName");
       }
-      if (this.VN != null) {
-        paramVarArgs.d(1, this.VN);
+      if (this.XI != null) {
+        paramVarArgs.d(1, this.XI);
       }
-      if (this.Vp != null) {
-        paramVarArgs.d(2, this.Vp);
+      if (this.Xk != null) {
+        paramVarArgs.d(2, this.Xk);
       }
-      paramVarArgs.g(3, this.VP);
+      paramVarArgs.g(3, this.XK);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.VN == null) {
+      if (this.XI == null) {
         break label324;
       }
     }
     label324:
-    for (paramInt = a.a.a.b.b.a.e(1, this.VN) + 0;; paramInt = 0)
+    for (paramInt = a.a.a.b.b.a.e(1, this.XI) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.Vp != null) {
-        i = paramInt + a.a.a.b.b.a.e(2, this.Vp);
+      if (this.Xk != null) {
+        i = paramInt + a.a.a.b.b.a.e(2, this.Xk);
       }
-      return i + a.a.a.a.e(3, this.VP);
+      return i + a.a.a.b.b.a.f(3, this.XK);
       if (paramInt == 2)
       {
-        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-        for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+        for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
           if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.oz();
+            paramVarArgs.pm();
           }
         }
-        if (this.VN == null) {
+        if (this.XI == null) {
           throw new b("Not all required fields were included: Talker");
         }
-        if (this.Vp != null) {
+        if (this.Xk != null) {
           break;
         }
         throw new b("Not all required fields were included: NickName");
@@ -67,13 +67,13 @@ public final class p
         default: 
           return -1;
         case 1: 
-          localp.VN = locala.ou();
+          localp.XI = locala.ph();
           return 0;
         case 2: 
-          localp.Vp = locala.ou();
+          localp.Xk = locala.ph();
           return 0;
         }
-        localp.VP = locala.ow();
+        localp.XK = locala.pj();
         return 0;
       }
       return -1;

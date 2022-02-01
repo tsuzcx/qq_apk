@@ -14,25 +14,25 @@ public final class b
 {
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    AppMethodBeat.i(103178);
-    paramCanvas.clipPath(e.a.hfO.a((PathActionArgWrapper)paramDrawActionArg));
-    AppMethodBeat.o(103178);
+    AppMethodBeat.i(144861);
+    paramCanvas.clipPath(e.a.iZZ.a((PathActionArgWrapper)paramDrawActionArg));
+    AppMethodBeat.o(144861);
     return true;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103177);
-    paramCanvas.clipPath(e.a.hfO.g(paramJSONArray));
-    AppMethodBeat.o(103177);
+    AppMethodBeat.i(144860);
+    paramCanvas.clipPath(e.a.iZZ.g(paramJSONArray));
+    AppMethodBeat.o(144860);
     return true;
   }
   
-  public final BaseDrawActionArg axW()
+  public final BaseDrawActionArg aSP()
   {
-    AppMethodBeat.i(103176);
+    AppMethodBeat.i(144859);
     PathActionArgWrapper localPathActionArgWrapper = new PathActionArgWrapper();
-    AppMethodBeat.o(103176);
+    AppMethodBeat.o(144859);
     return localPathActionArgWrapper;
   }
   
@@ -43,7 +43,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/dzz" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/xo" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/fti" android:background="@color/a66" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <com.tencent.mm.plugin.webview.ui.tools.widget.FontChooserView android:id="@id/ftj" android:background="@color/a65" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_below="@id/fti" />
-    <ImageView android:id="@id/ftk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a8d" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-</RelativeLayout>
+    <ListView android:id="@id/fnx" android:background="@null" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="#00000000" android:divider="@null" android:layout_weight="1.0" style="@style/n3" />
+    <TextView android:textSize="@dimen/i" android:textColor="@color/wc" android:gravity="center" android:id="@id/fnv" android:background="@drawable/oc" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/fnw" />
+</LinearLayout>

@@ -1,17 +1,26 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
+import android.support.v7.widget.GridLayoutManager.b;
+import android.support.v7.widget.RecyclerView.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandDesktopView$10
-  implements Runnable
+  extends GridLayoutManager.b
 {
   AppBrandDesktopView$10(AppBrandDesktopView paramAppBrandDesktopView) {}
   
-  public final void run()
+  public final int bW(int paramInt)
   {
-    AppMethodBeat.i(154870);
-    AppBrandDesktopView.r(this.jfg);
-    AppMethodBeat.o(154870);
+    AppMethodBeat.i(49577);
+    paramInt = this.lVl.getAdapter().getItemViewType(paramInt);
+    if ((paramInt == 3) || (paramInt == 11) || (paramInt == 10) || (paramInt == 2) || (paramInt == 6) || (paramInt == 8) || (paramInt == 9))
+    {
+      paramInt = this.lVl.amN;
+      AppMethodBeat.o(49577);
+      return paramInt;
+    }
+    AppMethodBeat.o(49577);
+    return 1;
   }
 }
 

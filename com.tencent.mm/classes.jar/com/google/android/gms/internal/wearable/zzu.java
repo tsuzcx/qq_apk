@@ -10,7 +10,7 @@ public final class zzu
 {
   private static void zza(String paramString, Object paramObject, StringBuffer paramStringBuffer1, StringBuffer paramStringBuffer2)
   {
-    AppMethodBeat.i(70780);
+    AppMethodBeat.i(100763);
     int i;
     int j;
     if (paramObject != null)
@@ -105,7 +105,7 @@ public final class zzu
           paramStringBuffer1.setLength(m);
           paramStringBuffer2.append(paramStringBuffer1).append(">\n");
         }
-        AppMethodBeat.o(70780);
+        AppMethodBeat.o(100763);
         return;
       }
       paramString = zzh(paramString);
@@ -144,7 +144,7 @@ public final class zzu
     for (;;)
     {
       paramStringBuffer2.append("\n");
-      AppMethodBeat.o(70780);
+      AppMethodBeat.o(100763);
       return;
       label694:
       if ((paramObject instanceof byte[]))
@@ -187,10 +187,10 @@ public final class zzu
   
   public static <T extends zzt> String zzc(T paramT)
   {
-    AppMethodBeat.i(70779);
+    AppMethodBeat.i(100762);
     if (paramT == null)
     {
-      AppMethodBeat.o(70779);
+      AppMethodBeat.o(100762);
       return "";
     }
     StringBuffer localStringBuffer = new StringBuffer();
@@ -198,7 +198,7 @@ public final class zzu
     {
       zza(null, paramT, new StringBuffer(), localStringBuffer);
       paramT = localStringBuffer.toString();
-      AppMethodBeat.o(70779);
+      AppMethodBeat.o(100762);
       return paramT;
     }
     catch (IllegalAccessException paramT)
@@ -207,11 +207,11 @@ public final class zzu
       if (paramT.length() != 0)
       {
         paramT = "Error printing proto: ".concat(paramT);
-        AppMethodBeat.o(70779);
+        AppMethodBeat.o(100762);
         return paramT;
       }
       paramT = new String("Error printing proto: ");
-      AppMethodBeat.o(70779);
+      AppMethodBeat.o(100762);
       return paramT;
     }
     catch (InvocationTargetException paramT)
@@ -220,18 +220,18 @@ public final class zzu
       if (paramT.length() != 0)
       {
         paramT = "Error printing proto: ".concat(paramT);
-        AppMethodBeat.o(70779);
+        AppMethodBeat.o(100762);
         return paramT;
       }
       paramT = new String("Error printing proto: ");
-      AppMethodBeat.o(70779);
+      AppMethodBeat.o(100762);
     }
     return paramT;
   }
   
   private static String zzh(String paramString)
   {
-    AppMethodBeat.i(70781);
+    AppMethodBeat.i(100764);
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
     if (i < paramString.length())
@@ -252,7 +252,7 @@ public final class zzu
       }
     }
     paramString = localStringBuffer.toString();
-    AppMethodBeat.o(70781);
+    AppMethodBeat.o(100764);
     return paramString;
   }
 }

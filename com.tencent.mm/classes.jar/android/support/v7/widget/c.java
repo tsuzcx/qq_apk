@@ -9,74 +9,80 @@ import android.content.pm.ResolveInfo;
 import android.database.DataSetObservable;
 import android.os.AsyncTask;
 import android.text.TextUtils;
+import android.util.Xml;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.xmlpull.v1.XmlSerializer;
 
 class c
   extends DataSetObservable
 {
   static final String LOG_TAG = c.class.getSimpleName();
-  private static final Object Zd = new Object();
-  private static final Map<String, c> Ze = new HashMap();
-  final Object Zf;
-  final List<c.a> Zg;
-  private final List<c.c> Zh;
-  final String Zi;
-  private b Zj;
-  private int Zk;
-  boolean Zl;
-  private boolean Zm;
-  private boolean Zn;
-  private boolean Zo;
-  private c.d Zp;
+  private static final Object agi = new Object();
+  private static final Map<String, c> agj = new HashMap();
+  final Object agk;
+  final List<a> agl;
+  private final List<c> agm;
+  final String agn;
+  private b ago;
+  private int agp;
+  boolean agq;
+  private boolean agr;
+  private boolean ags;
+  private boolean agt;
+  private d agu;
   final Context mContext;
   private Intent mIntent;
   
-  private void gK()
+  private void ig()
   {
-    if (!this.Zm) {
+    if (!this.agr) {
       throw new IllegalStateException("No preceding call to #readHistoricalData");
     }
-    if (!this.Zn) {}
+    if (!this.ags) {}
     do
     {
       return;
-      this.Zn = false;
-    } while (TextUtils.isEmpty(this.Zi));
-    new c.e(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Object[] { new ArrayList(this.Zh), this.Zi });
+      this.ags = false;
+    } while (TextUtils.isEmpty(this.agn));
+    new e().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Object[] { new ArrayList(this.agm), this.agn });
   }
   
-  private boolean gM()
+  private boolean ii()
   {
-    if ((this.Zj != null) && (this.mIntent != null) && (!this.Zg.isEmpty()) && (!this.Zh.isEmpty()))
+    if ((this.ago != null) && (this.mIntent != null) && (!this.agl.isEmpty()) && (!this.agm.isEmpty()))
     {
-      Collections.unmodifiableList(this.Zh);
+      Collections.unmodifiableList(this.agm);
       return true;
     }
     return false;
   }
   
-  private boolean gN()
+  private boolean ij()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.Zo)
+    if (this.agt)
     {
       bool1 = bool2;
       if (this.mIntent != null)
       {
-        this.Zo = false;
-        this.Zg.clear();
+        this.agt = false;
+        this.agl.clear();
         List localList = this.mContext.getPackageManager().queryIntentActivities(this.mIntent, 0);
         int j = localList.size();
         int i = 0;
         while (i < j)
         {
           ResolveInfo localResolveInfo = (ResolveInfo)localList.get(i);
-          this.Zg.add(new c.a(localResolveInfo));
+          this.agl.add(new a(localResolveInfo));
           i += 1;
         }
         bool1 = true;
@@ -85,51 +91,51 @@ class c
     return bool1;
   }
   
-  private boolean gO()
+  private boolean ik()
   {
-    if ((this.Zl) && (this.Zn) && (!TextUtils.isEmpty(this.Zi)))
+    if ((this.agq) && (this.ags) && (!TextUtils.isEmpty(this.agn)))
     {
-      this.Zl = false;
-      this.Zm = true;
-      gQ();
+      this.agq = false;
+      this.agr = true;
+      im();
       return true;
     }
     return false;
   }
   
-  private void gP()
+  private void il()
   {
-    int j = this.Zh.size() - this.Zk;
+    int j = this.agm.size() - this.agp;
     if (j <= 0) {}
     for (;;)
     {
       return;
-      this.Zn = true;
+      this.ags = true;
       int i = 0;
       while (i < j)
       {
-        this.Zh.remove(0);
+        this.agm.remove(0);
         i += 1;
       }
     }
   }
   
   /* Error */
-  private void gQ()
+  private void im()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 133	android/support/v7/widget/c:mContext	Landroid/content/Context;
+    //   1: getfield 137	android/support/v7/widget/c:mContext	Landroid/content/Context;
     //   4: aload_0
-    //   5: getfield 81	android/support/v7/widget/c:Zi	Ljava/lang/String;
-    //   8: invokevirtual 184	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
+    //   5: getfield 85	android/support/v7/widget/c:agn	Ljava/lang/String;
+    //   8: invokevirtual 188	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
     //   11: astore_2
-    //   12: invokestatic 190	android/util/Xml:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
+    //   12: invokestatic 194	android/util/Xml:newPullParser	()Lorg/xmlpull/v1/XmlPullParser;
     //   15: astore_3
     //   16: aload_3
     //   17: aload_2
-    //   18: ldc 192
-    //   20: invokeinterface 198 3 0
+    //   18: ldc 196
+    //   20: invokeinterface 202 3 0
     //   25: iconst_0
     //   26: istore_1
     //   27: iload_1
@@ -139,40 +145,40 @@ class c
     //   33: iconst_2
     //   34: if_icmpeq +13 -> 47
     //   37: aload_3
-    //   38: invokeinterface 201 1 0
+    //   38: invokeinterface 205 1 0
     //   43: istore_1
     //   44: goto -17 -> 27
-    //   47: ldc 203
+    //   47: ldc 207
     //   49: aload_3
-    //   50: invokeinterface 206 1 0
-    //   55: invokevirtual 211	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   50: invokeinterface 210 1 0
+    //   55: invokevirtual 215	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   58: ifne +40 -> 98
-    //   61: new 178	org/xmlpull/v1/XmlPullParserException
+    //   61: new 182	org/xmlpull/v1/XmlPullParserException
     //   64: dup
-    //   65: ldc 213
-    //   67: invokespecial 214	org/xmlpull/v1/XmlPullParserException:<init>	(Ljava/lang/String;)V
+    //   65: ldc 217
+    //   67: invokespecial 218	org/xmlpull/v1/XmlPullParserException:<init>	(Ljava/lang/String;)V
     //   70: athrow
     //   71: astore_3
-    //   72: new 216	java/lang/StringBuilder
+    //   72: new 220	java/lang/StringBuilder
     //   75: dup
-    //   76: ldc 218
-    //   78: invokespecial 219	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   76: ldc 222
+    //   78: invokespecial 223	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   81: aload_0
-    //   82: getfield 81	android/support/v7/widget/c:Zi	Ljava/lang/String;
-    //   85: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: getfield 85	android/support/v7/widget/c:agn	Ljava/lang/String;
+    //   85: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   88: pop
     //   89: aload_2
     //   90: ifnull +7 -> 97
     //   93: aload_2
-    //   94: invokevirtual 228	java/io/FileInputStream:close	()V
+    //   94: invokevirtual 232	java/io/FileInputStream:close	()V
     //   97: return
     //   98: aload_0
-    //   99: getfield 100	android/support/v7/widget/c:Zh	Ljava/util/List;
+    //   99: getfield 104	android/support/v7/widget/c:agm	Ljava/util/List;
     //   102: astore 4
     //   104: aload 4
-    //   106: invokeinterface 131 1 0
+    //   106: invokeinterface 135 1 0
     //   111: aload_3
-    //   112: invokeinterface 201 1 0
+    //   112: invokeinterface 205 1 0
     //   117: istore_1
     //   118: iload_1
     //   119: iconst_1
@@ -183,64 +189,64 @@ class c
     //   128: iload_1
     //   129: iconst_4
     //   130: if_icmpeq -19 -> 111
-    //   133: ldc 230
+    //   133: ldc 234
     //   135: aload_3
-    //   136: invokeinterface 206 1 0
-    //   141: invokevirtual 211	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   136: invokeinterface 210 1 0
+    //   141: invokevirtual 215	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   144: ifne +42 -> 186
-    //   147: new 178	org/xmlpull/v1/XmlPullParserException
+    //   147: new 182	org/xmlpull/v1/XmlPullParserException
     //   150: dup
-    //   151: ldc 232
-    //   153: invokespecial 214	org/xmlpull/v1/XmlPullParserException:<init>	(Ljava/lang/String;)V
+    //   151: ldc 236
+    //   153: invokespecial 218	org/xmlpull/v1/XmlPullParserException:<init>	(Ljava/lang/String;)V
     //   156: athrow
     //   157: astore_3
-    //   158: new 216	java/lang/StringBuilder
+    //   158: new 220	java/lang/StringBuilder
     //   161: dup
-    //   162: ldc 218
-    //   164: invokespecial 219	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   162: ldc 222
+    //   164: invokespecial 223	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   167: aload_0
-    //   168: getfield 81	android/support/v7/widget/c:Zi	Ljava/lang/String;
-    //   171: invokevirtual 223	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: getfield 85	android/support/v7/widget/c:agn	Ljava/lang/String;
+    //   171: invokevirtual 227	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   174: pop
     //   175: aload_2
     //   176: ifnull -79 -> 97
     //   179: aload_2
-    //   180: invokevirtual 228	java/io/FileInputStream:close	()V
+    //   180: invokevirtual 232	java/io/FileInputStream:close	()V
     //   183: return
     //   184: astore_2
     //   185: return
     //   186: aload 4
-    //   188: new 11	android/support/v7/widget/c$c
+    //   188: new 12	android/support/v7/widget/c$c
     //   191: dup
     //   192: aload_3
     //   193: aconst_null
-    //   194: ldc 234
-    //   196: invokeinterface 238 3 0
+    //   194: ldc 238
+    //   196: invokeinterface 242 3 0
     //   201: aload_3
     //   202: aconst_null
-    //   203: ldc 240
-    //   205: invokeinterface 238 3 0
-    //   210: invokestatic 246	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   203: ldc 244
+    //   205: invokeinterface 242 3 0
+    //   210: invokestatic 250	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   213: aload_3
     //   214: aconst_null
-    //   215: ldc 248
-    //   217: invokeinterface 238 3 0
-    //   222: invokestatic 254	java/lang/Float:parseFloat	(Ljava/lang/String;)F
-    //   225: invokespecial 257	android/support/v7/widget/c$c:<init>	(Ljava/lang/String;JF)V
-    //   228: invokeinterface 162 2 0
+    //   215: ldc 252
+    //   217: invokeinterface 242 3 0
+    //   222: invokestatic 258	java/lang/Float:parseFloat	(Ljava/lang/String;)F
+    //   225: invokespecial 261	android/support/v7/widget/c$c:<init>	(Ljava/lang/String;JF)V
+    //   228: invokeinterface 166 2 0
     //   233: pop
     //   234: goto -123 -> 111
     //   237: astore_3
     //   238: aload_2
     //   239: ifnull +7 -> 246
     //   242: aload_2
-    //   243: invokevirtual 228	java/io/FileInputStream:close	()V
+    //   243: invokevirtual 232	java/io/FileInputStream:close	()V
     //   246: aload_3
     //   247: athrow
     //   248: aload_2
     //   249: ifnull -152 -> 97
     //   252: aload_2
-    //   253: invokevirtual 228	java/io/FileInputStream:close	()V
+    //   253: invokevirtual 232	java/io/FileInputStream:close	()V
     //   256: return
     //   257: astore_2
     //   258: return
@@ -255,14 +261,14 @@ class c
     //   0	267	0	this	c
     //   26	105	1	i	int
     //   11	169	2	localFileInputStream	java.io.FileInputStream
-    //   184	69	2	localIOException1	java.io.IOException
-    //   257	1	2	localIOException2	java.io.IOException
-    //   259	1	2	localIOException3	java.io.IOException
-    //   261	1	2	localIOException4	java.io.IOException
-    //   265	1	2	localFileNotFoundException	java.io.FileNotFoundException
+    //   184	69	2	localIOException1	IOException
+    //   257	1	2	localIOException2	IOException
+    //   259	1	2	localIOException3	IOException
+    //   261	1	2	localIOException4	IOException
+    //   265	1	2	localFileNotFoundException	FileNotFoundException
     //   15	35	3	localXmlPullParser	org.xmlpull.v1.XmlPullParser
     //   71	65	3	localXmlPullParserException	org.xmlpull.v1.XmlPullParserException
-    //   157	57	3	localIOException5	java.io.IOException
+    //   157	57	3	localIOException5	IOException
     //   237	10	3	localObject	Object
     //   102	85	4	localList	List
     // Exception table:
@@ -302,15 +308,15 @@ class c
     for (;;)
     {
       int i;
-      synchronized (this.Zf)
+      synchronized (this.agk)
       {
-        gL();
-        List localList = this.Zg;
+        ih();
+        List localList = this.agl;
         int j = localList.size();
         i = 0;
         if (i < j)
         {
-          if (((c.a)localList.get(i)).resolveInfo == paramResolveInfo) {
+          if (((a)localList.get(i)).resolveInfo == paramResolveInfo) {
             return i;
           }
         }
@@ -322,105 +328,355 @@ class c
     }
   }
   
-  final boolean a(c.c paramc)
+  final boolean a(c paramc)
   {
-    boolean bool = this.Zh.add(paramc);
+    boolean bool = this.agm.add(paramc);
     if (bool)
     {
-      this.Zn = true;
-      gP();
-      gK();
-      gM();
+      this.ags = true;
+      il();
+      ig();
+      ii();
       notifyChanged();
     }
     return bool;
   }
   
-  public final ResolveInfo be(int paramInt)
+  public final ResolveInfo bx(int paramInt)
   {
-    synchronized (this.Zf)
+    synchronized (this.agk)
     {
-      gL();
-      ResolveInfo localResolveInfo = ((c.a)this.Zg.get(paramInt)).resolveInfo;
+      ih();
+      ResolveInfo localResolveInfo = ((a)this.agl.get(paramInt)).resolveInfo;
       return localResolveInfo;
     }
   }
   
-  public final Intent bg(int paramInt)
+  public final Intent by(int paramInt)
   {
-    synchronized (this.Zf)
+    synchronized (this.agk)
     {
       if (this.mIntent == null) {
         return null;
       }
-      gL();
-      Object localObject2 = (c.a)this.Zg.get(paramInt);
-      localObject2 = new ComponentName(((c.a)localObject2).resolveInfo.activityInfo.packageName, ((c.a)localObject2).resolveInfo.activityInfo.name);
+      ih();
+      Object localObject2 = (a)this.agl.get(paramInt);
+      localObject2 = new ComponentName(((a)localObject2).resolveInfo.activityInfo.packageName, ((a)localObject2).resolveInfo.activityInfo.name);
       Intent localIntent = new Intent(this.mIntent);
       localIntent.setComponent((ComponentName)localObject2);
-      if (this.Zp != null)
+      if (this.agu != null)
       {
         new Intent(localIntent);
-        if (this.Zp.gR()) {
+        if (this.agu.in()) {
           return null;
         }
       }
-      a(new c.c((ComponentName)localObject2, System.currentTimeMillis(), 1.0F));
+      a(new c((ComponentName)localObject2, System.currentTimeMillis(), 1.0F));
       return localIntent;
     }
   }
   
-  public final int gI()
+  public final int getHistorySize()
   {
-    synchronized (this.Zf)
+    synchronized (this.agk)
     {
-      gL();
-      int i = this.Zg.size();
+      ih();
+      int i = this.agm.size();
       return i;
     }
   }
   
-  public final ResolveInfo gJ()
+  public final int ie()
   {
-    synchronized (this.Zf)
+    synchronized (this.agk)
     {
-      gL();
-      if (!this.Zg.isEmpty())
+      ih();
+      int i = this.agl.size();
+      return i;
+    }
+  }
+  
+  public final ResolveInfo jdMethod_if()
+  {
+    synchronized (this.agk)
+    {
+      ih();
+      if (!this.agl.isEmpty())
       {
-        ResolveInfo localResolveInfo = ((c.a)this.Zg.get(0)).resolveInfo;
+        ResolveInfo localResolveInfo = ((a)this.agl.get(0)).resolveInfo;
         return localResolveInfo;
       }
       return null;
     }
   }
   
-  final void gL()
+  final void ih()
   {
-    boolean bool1 = gN();
-    boolean bool2 = gO();
-    gP();
+    boolean bool1 = ij();
+    boolean bool2 = ik();
+    il();
     if ((bool1 | bool2))
     {
-      gM();
+      ii();
       notifyChanged();
     }
   }
   
-  public final int getHistorySize()
+  public static final class a
+    implements Comparable<a>
   {
-    synchronized (this.Zf)
+    public final ResolveInfo resolveInfo;
+    public float weight;
+    
+    public a(ResolveInfo paramResolveInfo)
     {
-      gL();
-      int i = this.Zh.size();
-      return i;
+      this.resolveInfo = paramResolveInfo;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      if (this == paramObject) {}
+      do
+      {
+        return true;
+        if (paramObject == null) {
+          return false;
+        }
+        if (getClass() != paramObject.getClass()) {
+          return false;
+        }
+        paramObject = (a)paramObject;
+      } while (Float.floatToIntBits(this.weight) == Float.floatToIntBits(paramObject.weight));
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      return Float.floatToIntBits(this.weight) + 31;
+    }
+    
+    public final String toString()
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append("resolveInfo:").append(this.resolveInfo.toString());
+      localStringBuilder.append("; weight:").append(new BigDecimal(this.weight));
+      localStringBuilder.append("]");
+      return localStringBuilder.toString();
     }
   }
   
   public static abstract interface b {}
+  
+  public static final class c
+  {
+    public final ComponentName agv;
+    public final long time;
+    public final float weight;
+    
+    public c(ComponentName paramComponentName, long paramLong, float paramFloat)
+    {
+      this.agv = paramComponentName;
+      this.time = paramLong;
+      this.weight = paramFloat;
+    }
+    
+    public c(String paramString, long paramLong, float paramFloat)
+    {
+      this(ComponentName.unflattenFromString(paramString), paramLong, paramFloat);
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      if (this == paramObject) {}
+      do
+      {
+        return true;
+        if (paramObject == null) {
+          return false;
+        }
+        if (getClass() != paramObject.getClass()) {
+          return false;
+        }
+        paramObject = (c)paramObject;
+        if (this.agv == null)
+        {
+          if (paramObject.agv != null) {
+            return false;
+          }
+        }
+        else if (!this.agv.equals(paramObject.agv)) {
+          return false;
+        }
+        if (this.time != paramObject.time) {
+          return false;
+        }
+      } while (Float.floatToIntBits(this.weight) == Float.floatToIntBits(paramObject.weight));
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      if (this.agv == null) {}
+      for (int i = 0;; i = this.agv.hashCode()) {
+        return ((i + 31) * 31 + (int)(this.time ^ this.time >>> 32)) * 31 + Float.floatToIntBits(this.weight);
+      }
+    }
+    
+    public final String toString()
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[");
+      localStringBuilder.append("; activity:").append(this.agv);
+      localStringBuilder.append("; time:").append(this.time);
+      localStringBuilder.append("; weight:").append(new BigDecimal(this.weight));
+      localStringBuilder.append("]");
+      return localStringBuilder.toString();
+    }
+  }
+  
+  public static abstract interface d
+  {
+    public abstract boolean in();
+  }
+  
+  final class e
+    extends AsyncTask<Object, Void, Void>
+  {
+    e() {}
+    
+    private Void b(Object... paramVarArgs)
+    {
+      int i = 0;
+      List localList = (List)paramVarArgs[0];
+      paramVarArgs = (String)paramVarArgs[1];
+      for (;;)
+      {
+        try
+        {
+          paramVarArgs = c.this.mContext.openFileOutput(paramVarArgs, 0);
+          localXmlSerializer = Xml.newSerializer();
+          int j;
+          c.c localc;
+          localXmlSerializer.endTag(null, "historical-records");
+        }
+        catch (FileNotFoundException paramVarArgs)
+        {
+          try
+          {
+            localXmlSerializer.setOutput(paramVarArgs, null);
+            localXmlSerializer.startDocument("UTF-8", Boolean.TRUE);
+            localXmlSerializer.startTag(null, "historical-records");
+            j = localList.size();
+            if (i >= j) {
+              break label186;
+            }
+            localc = (c.c)localList.remove(0);
+            localXmlSerializer.startTag(null, "historical-record");
+            localXmlSerializer.attribute(null, "activity", localc.agv.flattenToString());
+            localXmlSerializer.attribute(null, "time", String.valueOf(localc.time));
+            localXmlSerializer.attribute(null, "weight", String.valueOf(localc.weight));
+            localXmlSerializer.endTag(null, "historical-record");
+            i += 1;
+            continue;
+            paramVarArgs = paramVarArgs;
+            paramVarArgs = c.LOG_TAG;
+          }
+          catch (IllegalArgumentException localIllegalArgumentException)
+          {
+            XmlSerializer localXmlSerializer;
+            String str1 = c.LOG_TAG;
+            new StringBuilder("Error writing historical record file: ").append(c.this.agn);
+            c.this.agq = true;
+            if (paramVarArgs == null) {
+              continue;
+            }
+            try
+            {
+              paramVarArgs.close();
+              return null;
+            }
+            catch (IOException paramVarArgs)
+            {
+              return null;
+            }
+          }
+          catch (IllegalStateException localIllegalStateException)
+          {
+            String str2 = c.LOG_TAG;
+            new StringBuilder("Error writing historical record file: ").append(c.this.agn);
+            c.this.agq = true;
+            if (paramVarArgs == null) {
+              continue;
+            }
+            try
+            {
+              paramVarArgs.close();
+              return null;
+            }
+            catch (IOException paramVarArgs)
+            {
+              return null;
+            }
+          }
+          catch (IOException localIOException)
+          {
+            String str3 = c.LOG_TAG;
+            new StringBuilder("Error writing historical record file: ").append(c.this.agn);
+            c.this.agq = true;
+            if (paramVarArgs == null) {
+              continue;
+            }
+            try
+            {
+              paramVarArgs.close();
+              return null;
+            }
+            catch (IOException paramVarArgs)
+            {
+              return null;
+            }
+          }
+          finally
+          {
+            c.this.agq = true;
+            if (paramVarArgs == null) {
+              break label387;
+            }
+          }
+          return null;
+        }
+        label186:
+        localXmlSerializer.endDocument();
+        c.this.agq = true;
+        if (paramVarArgs != null) {
+          try
+          {
+            paramVarArgs.close();
+            return null;
+          }
+          catch (IOException paramVarArgs)
+          {
+            return null;
+          }
+        }
+      }
+      try
+      {
+        paramVarArgs.close();
+        label387:
+        throw localObject;
+      }
+      catch (IOException paramVarArgs)
+      {
+        break label387;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v7.widget.c
  * JD-Core Version:    0.7.0.1
  */

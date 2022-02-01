@@ -7,8 +7,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.i;
 import com.tencent.mm.wallet_core.ui.e;
 
@@ -16,9 +16,9 @@ public final class f
   extends i
   implements View.OnClickListener
 {
-  protected View iCk;
+  protected View hIZ;
   private int mScene;
-  private View.OnClickListener qoU;
+  private View.OnClickListener vGe;
   
   private f(Context paramContext)
   {
@@ -27,73 +27,85 @@ public final class f
   
   private f(Context paramContext, byte paramByte)
   {
-    super(paramContext, 2131493885);
-    AppMethodBeat.i(44982);
+    super(paramContext, 2131821727);
+    AppMethodBeat.i(68111);
     this.mScene = 0;
-    this.iCk = View.inflate(paramContext, 2130970573, null);
-    setContentView(this.iCk);
-    ((Button)this.iCk.findViewById(2131822887)).setOnClickListener(this);
-    ((Button)this.iCk.findViewById(2131827307)).setOnClickListener(this);
-    AppMethodBeat.o(44982);
+    this.hIZ = View.inflate(paramContext, 2131495257, null);
+    setContentView(this.hIZ);
+    ((Button)this.hIZ.findViewById(2131297690)).setOnClickListener(this);
+    ((Button)this.hIZ.findViewById(2131300913)).setOnClickListener(this);
+    AppMethodBeat.o(68111);
   }
   
   public static f a(Context paramContext, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3, String paramString, View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(44985);
-    ab.i("RemittanceChargeDialog", "showCostDetail");
+    AppMethodBeat.i(68114);
+    ad.i("RemittanceChargeDialog", "showCostDetail");
     f localf = new f(paramContext);
     localf.mScene = paramInt;
     if (paramDouble1 == 0.0D) {
-      ab.i("RemittanceChargeDialog", "showCostDetail ::: remian_fee = 0");
+      ad.i("RemittanceChargeDialog", "showCostDetail ::: remian_fee = 0");
     }
-    ((TextView)localf.findViewById(2131827303)).setText(e.F(paramDouble1));
-    ((TextView)localf.findViewById(2131827304)).setText(e.F(paramDouble2));
+    ((TextView)localf.findViewById(2131304076)).setText(e.E(paramDouble1));
+    ((TextView)localf.findViewById(2131299539)).setText(e.E(paramDouble2));
     if (paramDouble3 == 0.0D) {
-      ab.e("RemittanceChargeDialog", "showCostDetail ::: transaction_costs = 0");
+      ad.e("RemittanceChargeDialog", "showCostDetail ::: transaction_costs = 0");
     }
-    ((TextView)localf.findViewById(2131827301)).setText(e.F(paramDouble3));
-    localf.findViewById(2131827300).setVisibility(0);
-    if (!bo.isNullOrNil(paramString))
+    ((TextView)localf.findViewById(2131306062)).setText(e.E(paramDouble3));
+    localf.findViewById(2131304012).setVisibility(0);
+    if (!bt.isNullOrNil(paramString))
     {
-      TextView localTextView = (TextView)localf.findViewById(2131827297);
+      TextView localTextView = (TextView)localf.findViewById(2131304034);
       localTextView.setText(paramString);
       localTextView.setVisibility(0);
     }
-    localf.findViewById(2131827305).setVisibility(0);
-    localf.qoU = paramOnClickListener;
-    localf.findViewById(2131823301).setOnClickListener(new f.1(localf));
+    localf.findViewById(2131305877).setVisibility(0);
+    localf.vGe = paramOnClickListener;
+    localf.findViewById(2131302999).setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(68110);
+        if (f.a(f.this) != null)
+        {
+          f.a(f.this).onClick(paramAnonymousView);
+          f.this.dismiss();
+        }
+        AppMethodBeat.o(68110);
+      }
+    });
     localf.show();
     com.tencent.mm.ui.base.h.a(paramContext, localf);
     if (paramInt == 1) {
-      com.tencent.mm.plugin.report.service.h.qsU.e(12689, new Object[] { Integer.valueOf(10), Integer.valueOf(1) });
+      com.tencent.mm.plugin.report.service.h.vKh.f(12689, new Object[] { Integer.valueOf(10), Integer.valueOf(1) });
     }
     for (;;)
     {
-      AppMethodBeat.o(44985);
+      AppMethodBeat.o(68114);
       return localf;
-      com.tencent.mm.plugin.report.service.h.qsU.e(12689, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
+      com.tencent.mm.plugin.report.service.h.vKh.f(12689, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
     }
   }
   
   public static void a(Context paramContext, int paramInt, String paramString, double paramDouble)
   {
-    AppMethodBeat.i(44984);
-    ab.i("RemittanceChargeDialog", "showAlert");
+    AppMethodBeat.i(68113);
+    ad.i("RemittanceChargeDialog", "showAlert");
     f localf = new f(paramContext);
     localf.mScene = paramInt;
-    ab.i("RemittanceChargeDialog", "showTips");
-    TextView localTextView = (TextView)localf.findViewById(2131827297);
-    if (bo.isNullOrNil(paramString)) {
-      ab.e("RemittanceChargeDialog", "desc is null");
+    ad.i("RemittanceChargeDialog", "showTips");
+    TextView localTextView = (TextView)localf.findViewById(2131304034);
+    if (bt.isNullOrNil(paramString)) {
+      ad.e("RemittanceChargeDialog", "desc is null");
     }
     for (;;)
     {
-      ((TextView)localf.findViewById(2131827299)).setText(paramContext.getResources().getString(2131302587, new Object[] { e.F(paramDouble) }));
-      localf.findViewById(2131827306).setVisibility(0);
-      localf.findViewById(2131827298).setVisibility(0);
+      ((TextView)localf.findViewById(2131301015)).setText(paramContext.getResources().getString(2131762493, new Object[] { e.E(paramDouble) }));
+      localf.findViewById(2131305863).setVisibility(0);
+      localf.findViewById(2131301016).setVisibility(0);
       localf.show();
       com.tencent.mm.ui.base.h.a(paramContext, localf);
-      AppMethodBeat.o(44984);
+      AppMethodBeat.o(68113);
       return;
       localTextView.setText(paramString);
       localTextView.setVisibility(0);
@@ -102,28 +114,28 @@ public final class f
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(44983);
-    if (paramView.getId() != 2131823301)
+    AppMethodBeat.i(68112);
+    if (paramView.getId() != 2131302999)
     {
-      ab.i("RemittanceChargeDialog", "click cancel");
+      ad.i("RemittanceChargeDialog", "click cancel");
       dismiss();
     }
-    if (paramView.getId() == 2131822887)
+    if (paramView.getId() == 2131297690)
     {
       if (this.mScene == 1)
       {
-        com.tencent.mm.plugin.report.service.h.qsU.e(12689, new Object[] { Integer.valueOf(11), Integer.valueOf(1) });
-        AppMethodBeat.o(44983);
+        com.tencent.mm.plugin.report.service.h.vKh.f(12689, new Object[] { Integer.valueOf(11), Integer.valueOf(1) });
+        AppMethodBeat.o(68112);
         return;
       }
-      com.tencent.mm.plugin.report.service.h.qsU.e(12689, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
+      com.tencent.mm.plugin.report.service.h.vKh.f(12689, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
     }
-    AppMethodBeat.o(44983);
+    AppMethodBeat.o(68112);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.f
  * JD-Core Version:    0.7.0.1
  */

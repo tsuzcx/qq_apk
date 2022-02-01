@@ -2,7 +2,9 @@ package android.support.v4.app;
 
 public abstract interface c
 {
-  public abstract void a(int paramInt);
+  public abstract boolean A();
+  
+  public abstract boolean B();
 }
 
 

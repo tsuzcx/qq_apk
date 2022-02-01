@@ -3,33 +3,33 @@ package com.google.android.gms.internal;
 public final class dk
   extends dq<dk>
 {
-  private static volatile dk[] QP;
-  public dl QQ = null;
+  private static volatile dk[] SE;
+  public dl SF = null;
   public String name = "";
   
   public dk()
   {
-    this.Rr = null;
-    this.RB = -1;
+    this.Tg = null;
+    this.Tq = -1;
   }
   
-  public static dk[] jO()
+  public static dk[] jX()
   {
-    if (QP == null) {}
-    synchronized (du.RA)
+    if (SE == null) {}
+    synchronized (du.Tp)
     {
-      if (QP == null) {
-        QP = new dk[0];
+      if (SE == null) {
+        SE = new dk[0];
       }
-      return QP;
+      return SE;
     }
   }
   
   public final void a(do paramdo)
   {
     paramdo.b(1, this.name);
-    if (this.QQ != null) {
-      paramdo.a(2, this.QQ);
+    if (this.SF != null) {
+      paramdo.a(2, this.SF);
     }
     super.a(paramdo);
   }
@@ -53,21 +53,21 @@ public final class dk
       else if (!this.name.equals(paramObject.name)) {
         return false;
       }
-      if (this.QQ == null)
+      if (this.SF == null)
       {
-        if (paramObject.QQ != null) {
+        if (paramObject.SF != null) {
           return false;
         }
       }
-      else if (!this.QQ.equals(paramObject.QQ)) {
+      else if (!this.SF.equals(paramObject.SF)) {
         return false;
       }
-      if ((this.Rr != null) && (!this.Rr.isEmpty())) {
+      if ((this.Tg != null) && (!this.Tg.isEmpty())) {
         break;
       }
-    } while ((paramObject.Rr == null) || (paramObject.Rr.isEmpty()));
+    } while ((paramObject.Tg == null) || (paramObject.Tg.isEmpty()));
     return false;
-    return this.Rr.equals(paramObject.Rr);
+    return this.Tg.equals(paramObject.Tg);
   }
   
   public final int hashCode()
@@ -79,36 +79,36 @@ public final class dk
     if (this.name == null)
     {
       i = 0;
-      if (this.QQ != null) {
+      if (this.SF != null) {
         break label89;
       }
       j = 0;
       label33:
       k = m;
-      if (this.Rr != null) {
-        if (!this.Rr.isEmpty()) {
+      if (this.Tg != null) {
+        if (!this.Tg.isEmpty()) {
           break label100;
         }
       }
     }
     label89:
     label100:
-    for (int k = m;; k = this.Rr.hashCode())
+    for (int k = m;; k = this.Tg.hashCode())
     {
       return (j + (i + (n + 527) * 31) * 31) * 31 + k;
       i = this.name.hashCode();
       break;
-      j = this.QQ.hashCode();
+      j = this.SF.hashCode();
       break label33;
     }
   }
   
-  protected final int jN()
+  protected final int jW()
   {
-    int j = super.jN() + do.c(1, this.name);
+    int j = super.jW() + do.c(1, this.name);
     int i = j;
-    if (this.QQ != null) {
-      i = j + do.b(2, this.QQ);
+    if (this.SF != null) {
+      i = j + do.c(2, this.SF);
     }
     return i;
   }

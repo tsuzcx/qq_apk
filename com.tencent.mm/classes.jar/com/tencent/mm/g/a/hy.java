@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class hy
   extends b
 {
-  public hy.a cxh;
-  public hy.b cxi;
+  public a dlF;
+  public b dlG;
   
   public hy()
   {
@@ -16,17 +16,31 @@ public final class hy
   
   private hy(byte paramByte)
   {
-    AppMethodBeat.i(77545);
-    this.cxh = new hy.a();
-    this.cxi = new hy.b();
-    this.ymq = false;
+    AppMethodBeat.i(91206);
+    this.dlF = new a();
+    this.dlG = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77545);
+    AppMethodBeat.o(91206);
+  }
+  
+  public static final class a
+  {
+    public boolean dlH = false;
+    public int dlI = 0;
+    public String dlJ;
+  }
+  
+  public static final class b
+  {
+    public boolean dhg = false;
+    public String dlK;
+    public String dlL;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.hy
  * JD-Core Version:    0.7.0.1
  */

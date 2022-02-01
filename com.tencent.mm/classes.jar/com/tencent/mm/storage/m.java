@@ -1,43 +1,123 @@
 package com.tencent.mm.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.y;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storagebase.h;
+import java.util.HashMap;
 
 public final class m
-  extends y
+  extends j<l>
 {
-  protected static c.a info;
+  public static final String[] SQL_CREATE;
+  public h gPa;
   
   static
   {
-    AppMethodBeat.i(29018);
-    c.a locala = new c.a();
-    locala.yrK = new Field[3];
-    locala.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "sessionName";
-    locala.yrM.put("sessionName", "TEXT default '' ");
-    localStringBuilder.append(" sessionName TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[1] = "startTime";
-    locala.yrM.put("startTime", "LONG default '0' ");
-    localStringBuilder.append(" startTime LONG default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "endTime";
-    locala.yrM.put("endTime", "LONG default '0' ");
-    localStringBuilder.append(" endTime LONG default '0' ");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(29018);
+    AppMethodBeat.i(32832);
+    SQL_CREATE = new String[] { j.getCreateSQLs(l.info, "BackupRecoverMsgListDataId") };
+    AppMethodBeat.o(32832);
   }
   
-  public final c.a getDBInfo()
+  public m(h paramh)
   {
-    return info;
+    super(paramh, l.info, "BackupRecoverMsgListDataId", null);
+    this.gPa = paramh;
+  }
+  
+  public final String aHm(String paramString)
+  {
+    AppMethodBeat.i(32826);
+    Object localObject = "SELECT * FROM BackupRecoverMsgListDataId WHERE msgListDataId = \"" + paramString + "\" ";
+    ad.d("MicroMsg.BackupRecoverMsgListDataIdStorage", "getSessionNameByMsgListDataId:".concat(String.valueOf(localObject)));
+    localObject = this.gPa.a((String)localObject, null, 0);
+    if (localObject == null)
+    {
+      ad.e("MicroMsg.BackupRecoverMsgListDataIdStorage", "getSessionNameByMsgListDataId failed, msgListDataId:%s", new Object[] { paramString });
+      AppMethodBeat.o(32826);
+      return null;
+    }
+    if (((Cursor)localObject).moveToFirst())
+    {
+      paramString = new l();
+      paramString.convertFrom((Cursor)localObject);
+      ((Cursor)localObject).close();
+      paramString = paramString.field_sessionName;
+      AppMethodBeat.o(32826);
+      return paramString;
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(32826);
+    return null;
+  }
+  
+  public final boolean cWA()
+  {
+    AppMethodBeat.i(32830);
+    boolean bool = this.gPa.execSQL("BackupRecoverMsgListDataId", "delete from BackupRecoverMsgListDataId");
+    ad.i("MicroMsg.BackupRecoverMsgListDataIdStorage", "deleteAllData, result:%b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(32830);
+    return bool;
+  }
+  
+  public final HashMap<String, String> eJB()
+  {
+    AppMethodBeat.i(32827);
+    HashMap localHashMap = new HashMap();
+    Cursor localCursor = getAll();
+    if (localCursor == null)
+    {
+      ad.e("MicroMsg.BackupRecoverMsgListDataIdStorage", "getAllData failed.");
+      AppMethodBeat.o(32827);
+      return localHashMap;
+    }
+    while (localCursor.moveToNext())
+    {
+      l locall = new l();
+      locall.convertFrom(localCursor);
+      localHashMap.put(locall.field_msgListDataId, locall.field_sessionName);
+    }
+    localCursor.close();
+    AppMethodBeat.o(32827);
+    return localHashMap;
+  }
+  
+  public final boolean eJC()
+  {
+    AppMethodBeat.i(32828);
+    ad.d("MicroMsg.BackupRecoverMsgListDataIdStorage", "isMsgListDataIdExist:".concat(String.valueOf("SELECT * FROM BackupRecoverMsgListDataId")));
+    Cursor localCursor = this.gPa.a("SELECT * FROM BackupRecoverMsgListDataId", null, 0);
+    if (localCursor == null)
+    {
+      ad.e("MicroMsg.BackupRecoverMsgListDataIdStorage", "isMsgListDataIdExist failed.");
+      AppMethodBeat.o(32828);
+      return false;
+    }
+    if (localCursor.getCount() <= 0)
+    {
+      ad.e("MicroMsg.BackupRecoverMsgListDataIdStorage", "No data in BackupRecoverMsgListDataIdStorage.");
+      localCursor.close();
+      AppMethodBeat.o(32828);
+      return false;
+    }
+    localCursor.close();
+    AppMethodBeat.o(32828);
+    return true;
+  }
+  
+  public final int eJD()
+  {
+    int i = 0;
+    AppMethodBeat.i(32829);
+    ad.d("MicroMsg.BackupRecoverMsgListDataIdStorage", "getSessionCount:".concat(String.valueOf("SELECT COUNT(DISTINCT sessionName) FROM BackupRecoverMsgListDataId ")));
+    Cursor localCursor = this.gPa.a("SELECT COUNT(DISTINCT sessionName) FROM BackupRecoverMsgListDataId ", null, 0);
+    if (localCursor.moveToLast()) {
+      i = localCursor.getInt(0);
+    }
+    localCursor.close();
+    AppMethodBeat.o(32829);
+    return i;
   }
 }
 

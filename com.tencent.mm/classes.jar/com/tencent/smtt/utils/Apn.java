@@ -17,7 +17,7 @@ public class Apn
   
   public static String getApnInfo(Context paramContext)
   {
-    AppMethodBeat.i(65169);
+    AppMethodBeat.i(54006);
     try
     {
       paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
@@ -37,7 +37,7 @@ public class Apn
     paramContext = "unknown";
     for (;;)
     {
-      AppMethodBeat.o(65169);
+      AppMethodBeat.o(54006);
       return paramContext;
       paramContext = "wifi";
       continue;
@@ -47,7 +47,7 @@ public class Apn
   
   public static int getApnType(Context paramContext)
   {
-    AppMethodBeat.i(65170);
+    AppMethodBeat.i(54007);
     paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
     int i;
     if ((paramContext != null) && (paramContext.isConnectedOrConnecting())) {
@@ -59,7 +59,7 @@ public class Apn
     }
     for (;;)
     {
-      AppMethodBeat.o(65170);
+      AppMethodBeat.o(54007);
       return i;
       i = 3;
       continue;
@@ -96,7 +96,7 @@ public class Apn
   
   public static String getWifiSSID(Context paramContext)
   {
-    AppMethodBeat.i(65172);
+    AppMethodBeat.i(54009);
     for (;;)
     {
       try
@@ -105,13 +105,13 @@ public class Apn
         if (paramContext != null)
         {
           paramContext = paramContext.getBSSID();
-          AppMethodBeat.o(65172);
+          AppMethodBeat.o(54009);
           return paramContext;
         }
       }
       catch (Throwable paramContext)
       {
-        AppMethodBeat.o(65172);
+        AppMethodBeat.o(54009);
         return "";
       }
       paramContext = null;
@@ -120,25 +120,25 @@ public class Apn
   
   public static boolean isNetworkAvailable(Context paramContext)
   {
-    AppMethodBeat.i(65171);
+    AppMethodBeat.i(54008);
     paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
     if (paramContext == null)
     {
-      AppMethodBeat.o(65171);
+      AppMethodBeat.o(54008);
       return false;
     }
     if ((paramContext.isConnected()) || (paramContext.isAvailable()))
     {
-      AppMethodBeat.o(65171);
+      AppMethodBeat.o(54008);
       return true;
     }
-    AppMethodBeat.o(65171);
+    AppMethodBeat.o(54008);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.utils.Apn
  * JD-Core Version:    0.7.0.1
  */

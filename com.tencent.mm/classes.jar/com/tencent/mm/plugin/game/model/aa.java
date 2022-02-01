@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.d.cw;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.game.d.cx;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,110 +11,110 @@ import java.util.List;
 public final class aa
 {
   public String mAppId;
-  public List<aa.a> now;
+  public List<a> rXR;
   
   public aa(String paramString)
   {
-    AppMethodBeat.i(111366);
+    AppMethodBeat.i(41531);
     this.mAppId = "";
-    this.now = new LinkedList();
-    if (bo.isNullOrNil(paramString))
+    this.rXR = new LinkedList();
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(111366);
+      AppMethodBeat.o(41531);
       return;
     }
     this.mAppId = paramString;
-    this.now.addAll(bGI());
-    AppMethodBeat.o(111366);
+    this.rXR.addAll(cDD());
+    AppMethodBeat.o(41531);
   }
   
-  public aa(String paramString, List<cw> paramList)
+  public aa(String paramString, List<cx> paramList)
   {
-    AppMethodBeat.i(111367);
+    AppMethodBeat.i(41532);
     this.mAppId = "";
-    this.now = new LinkedList();
-    if ((bo.isNullOrNil(paramString)) || (paramList == null) || (paramList.isEmpty()))
+    this.rXR = new LinkedList();
+    if ((bt.isNullOrNil(paramString)) || (paramList == null) || (paramList.isEmpty()))
     {
-      AppMethodBeat.o(111367);
+      AppMethodBeat.o(41532);
       return;
     }
     this.mAppId = paramString;
-    this.now.clear();
+    this.rXR.clear();
     paramString = paramList.iterator();
     while (paramString.hasNext())
     {
-      paramList = (cw)paramString.next();
-      aa.a locala = new aa.a();
-      locala.nox = paramList.ntX;
-      locala.cDt = paramList.jJA;
+      paramList = (cx)paramString.next();
+      a locala = new a();
+      locala.rXS = paramList.sdA;
+      locala.dtV = paramList.mAQ;
       locala.tag = paramList.Label;
-      locala.mSY = paramList.ntY;
-      locala.noz = paramList.ntZ;
-      locala.noy = paramList.nua;
-      locala.noA = paramList.nub;
-      this.now.add(locala);
+      locala.rpS = paramList.sdB;
+      locala.rXU = paramList.sdC;
+      locala.rXT = paramList.sdD;
+      locala.rXV = paramList.sdE;
+      this.rXR.add(locala);
     }
-    bGJ();
-    AppMethodBeat.o(111367);
+    cDE();
+    AppMethodBeat.o(41532);
   }
   
   /* Error */
-  private List<aa.a> bGI()
+  private List<a> cDD()
   {
     // Byte code:
-    //   0: ldc 136
-    //   2: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 138	java/lang/StringBuilder
+    //   0: ldc 137
+    //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 139	java/lang/StringBuilder
     //   8: dup
-    //   9: invokespecial 139	java/lang/StringBuilder:<init>	()V
+    //   9: invokespecial 140	java/lang/StringBuilder:<init>	()V
     //   12: aload_0
-    //   13: getfield 27	com/tencent/mm/plugin/game/model/aa:mAppId	Ljava/lang/String;
-    //   16: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: ldc 145
-    //   21: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   13: getfield 28	com/tencent/mm/plugin/game/model/aa:mAppId	Ljava/lang/String;
+    //   16: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   19: ldc 146
+    //   21: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   27: astore_1
-    //   28: new 29	java/util/LinkedList
+    //   28: new 30	java/util/LinkedList
     //   31: dup
-    //   32: invokespecial 30	java/util/LinkedList:<init>	()V
+    //   32: invokespecial 31	java/util/LinkedList:<init>	()V
     //   35: astore 4
-    //   37: ldc 151
-    //   39: invokestatic 157	com/tencent/mm/kernel/g:E	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-    //   42: checkcast 151	com/tencent/mm/plugin/game/api/e
-    //   45: invokeinterface 161 1 0
+    //   37: ldc 152
+    //   39: invokestatic 158	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   42: checkcast 152	com/tencent/mm/plugin/game/api/e
+    //   45: invokeinterface 162 1 0
     //   50: aload_1
-    //   51: invokevirtual 167	com/tencent/mm/plugin/game/model/w:PN	(Ljava/lang/String;)[B
+    //   51: invokevirtual 168	com/tencent/mm/plugin/game/model/w:abW	(Ljava/lang/String;)[B
     //   54: astore_1
     //   55: aload_1
     //   56: ifnonnull +11 -> 67
-    //   59: ldc 136
-    //   61: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   59: ldc 137
+    //   61: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   64: aload 4
     //   66: areturn
-    //   67: new 169	java/io/ByteArrayInputStream
+    //   67: new 170	java/io/ByteArrayInputStream
     //   70: dup
     //   71: aload_1
-    //   72: invokespecial 172	java/io/ByteArrayInputStream:<init>	([B)V
+    //   72: invokespecial 173	java/io/ByteArrayInputStream:<init>	([B)V
     //   75: astore 5
-    //   77: new 174	java/io/ObjectInputStream
+    //   77: new 175	java/io/ObjectInputStream
     //   80: dup
     //   81: aload 5
-    //   83: invokespecial 177	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   83: invokespecial 178	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   86: astore_2
     //   87: aload_2
     //   88: astore_1
     //   89: aload 4
     //   91: aload_2
-    //   92: invokeinterface 182 1 0
-    //   97: checkcast 47	java/util/List
-    //   100: invokeinterface 51 2 0
+    //   92: invokeinterface 183 1 0
+    //   97: checkcast 48	java/util/List
+    //   100: invokeinterface 52 2 0
     //   105: pop
     //   106: aload 5
-    //   108: invokevirtual 185	java/io/ByteArrayInputStream:close	()V
+    //   108: invokevirtual 186	java/io/ByteArrayInputStream:close	()V
     //   111: aload_2
-    //   112: invokeinterface 186 1 0
-    //   117: ldc 136
-    //   119: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   112: invokeinterface 187 1 0
+    //   117: ldc 137
+    //   119: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   122: aload 4
     //   124: areturn
     //   125: astore_3
@@ -121,18 +122,18 @@ public final class aa
     //   127: astore_2
     //   128: aload_2
     //   129: astore_1
-    //   130: ldc 188
+    //   130: ldc 189
     //   132: aload_3
-    //   133: ldc 25
+    //   133: ldc 26
     //   135: iconst_0
     //   136: anewarray 4	java/lang/Object
-    //   139: invokestatic 194	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   139: invokestatic 195	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   142: aload 5
-    //   144: invokevirtual 185	java/io/ByteArrayInputStream:close	()V
+    //   144: invokevirtual 186	java/io/ByteArrayInputStream:close	()V
     //   147: aload_2
     //   148: ifnull -31 -> 117
     //   151: aload_2
-    //   152: invokeinterface 186 1 0
+    //   152: invokeinterface 187 1 0
     //   157: goto -40 -> 117
     //   160: astore_1
     //   161: goto -44 -> 117
@@ -140,13 +141,13 @@ public final class aa
     //   165: aconst_null
     //   166: astore_1
     //   167: aload 5
-    //   169: invokevirtual 185	java/io/ByteArrayInputStream:close	()V
+    //   169: invokevirtual 186	java/io/ByteArrayInputStream:close	()V
     //   172: aload_1
     //   173: ifnull +9 -> 182
     //   176: aload_1
-    //   177: invokeinterface 186 1 0
-    //   182: ldc 136
-    //   184: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   177: invokeinterface 187 1 0
+    //   182: ldc 137
+    //   184: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   187: aload_2
     //   188: athrow
     //   189: astore_1
@@ -197,85 +198,85 @@ public final class aa
   }
   
   /* Error */
-  public final void bGJ()
+  public final void cDE()
   {
     // Byte code:
-    //   0: ldc 196
-    //   2: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 138	java/lang/StringBuilder
+    //   0: ldc 197
+    //   2: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 139	java/lang/StringBuilder
     //   8: dup
-    //   9: invokespecial 139	java/lang/StringBuilder:<init>	()V
+    //   9: invokespecial 140	java/lang/StringBuilder:<init>	()V
     //   12: aload_0
-    //   13: getfield 27	com/tencent/mm/plugin/game/model/aa:mAppId	Ljava/lang/String;
-    //   16: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: ldc 145
-    //   21: invokevirtual 143	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   13: getfield 28	com/tencent/mm/plugin/game/model/aa:mAppId	Ljava/lang/String;
+    //   16: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   19: ldc 146
+    //   21: invokevirtual 144	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: invokevirtual 150	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   27: astore_3
-    //   28: new 198	java/io/ByteArrayOutputStream
+    //   28: new 199	java/io/ByteArrayOutputStream
     //   31: dup
-    //   32: invokespecial 199	java/io/ByteArrayOutputStream:<init>	()V
+    //   32: invokespecial 200	java/io/ByteArrayOutputStream:<init>	()V
     //   35: astore 4
-    //   37: new 201	java/io/ObjectOutputStream
+    //   37: new 202	java/io/ObjectOutputStream
     //   40: dup
     //   41: aload 4
-    //   43: invokespecial 204	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   43: invokespecial 205	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   46: astore_2
     //   47: aload_2
     //   48: astore_1
     //   49: aload_2
     //   50: aload_0
-    //   51: getfield 32	com/tencent/mm/plugin/game/model/aa:now	Ljava/util/List;
-    //   54: invokeinterface 210 2 0
+    //   51: getfield 33	com/tencent/mm/plugin/game/model/aa:rXR	Ljava/util/List;
+    //   54: invokeinterface 211 2 0
     //   59: aload_2
     //   60: astore_1
     //   61: aload 4
-    //   63: invokevirtual 214	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   63: invokevirtual 215	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   66: astore 5
     //   68: aload_2
     //   69: astore_1
-    //   70: ldc 151
-    //   72: invokestatic 157	com/tencent/mm/kernel/g:E	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-    //   75: checkcast 151	com/tencent/mm/plugin/game/api/e
-    //   78: invokeinterface 161 1 0
+    //   70: ldc 152
+    //   72: invokestatic 158	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   75: checkcast 152	com/tencent/mm/plugin/game/api/e
+    //   78: invokeinterface 162 1 0
     //   83: aload_3
     //   84: aload 5
-    //   86: invokevirtual 218	com/tencent/mm/plugin/game/model/w:w	(Ljava/lang/String;[B)Z
+    //   86: invokevirtual 219	com/tencent/mm/plugin/game/model/w:q	(Ljava/lang/String;[B)Z
     //   89: pop
     //   90: aload_2
-    //   91: invokeinterface 219 1 0
+    //   91: invokeinterface 220 1 0
     //   96: aload 4
-    //   98: invokevirtual 220	java/io/ByteArrayOutputStream:close	()V
-    //   101: ldc 196
-    //   103: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: invokevirtual 221	java/io/ByteArrayOutputStream:close	()V
+    //   101: ldc 197
+    //   103: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   106: return
     //   107: astore_1
-    //   108: ldc 196
-    //   110: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   108: ldc 197
+    //   110: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   113: return
     //   114: astore_3
     //   115: aconst_null
     //   116: astore_2
     //   117: aload_2
     //   118: astore_1
-    //   119: ldc 188
+    //   119: ldc 189
     //   121: aload_3
-    //   122: ldc 25
+    //   122: ldc 26
     //   124: iconst_0
     //   125: anewarray 4	java/lang/Object
-    //   128: invokestatic 194	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   128: invokestatic 195	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   131: aload_2
     //   132: ifnull +9 -> 141
     //   135: aload_2
-    //   136: invokeinterface 219 1 0
+    //   136: invokeinterface 220 1 0
     //   141: aload 4
-    //   143: invokevirtual 220	java/io/ByteArrayOutputStream:close	()V
-    //   146: ldc 196
-    //   148: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   143: invokevirtual 221	java/io/ByteArrayOutputStream:close	()V
+    //   146: ldc 197
+    //   148: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   151: return
     //   152: astore_1
-    //   153: ldc 196
-    //   155: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   153: ldc 197
+    //   155: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   158: return
     //   159: astore_2
     //   160: aconst_null
@@ -283,11 +284,11 @@ public final class aa
     //   162: aload_1
     //   163: ifnull +9 -> 172
     //   166: aload_1
-    //   167: invokeinterface 219 1 0
+    //   167: invokeinterface 220 1 0
     //   172: aload 4
-    //   174: invokevirtual 220	java/io/ByteArrayOutputStream:close	()V
-    //   177: ldc 196
-    //   179: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   174: invokevirtual 221	java/io/ByteArrayOutputStream:close	()V
+    //   177: ldc 197
+    //   179: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   182: aload_2
     //   183: athrow
     //   184: astore_1
@@ -340,10 +341,22 @@ public final class aa
     //   61	68	204	java/lang/Exception
     //   70	90	204	java/lang/Exception
   }
+  
+  public static final class a
+    implements Serializable
+  {
+    public String dtV;
+    public int rXS;
+    public int rXT;
+    public boolean rXU;
+    public String rXV;
+    public long rpS;
+    public String tag;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.aa
  * JD-Core Version:    0.7.0.1
  */

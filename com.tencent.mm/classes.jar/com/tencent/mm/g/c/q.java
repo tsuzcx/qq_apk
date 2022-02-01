@@ -7,17 +7,14 @@ import com.tencent.mm.sdk.e.c;
 public abstract class q
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandStarAppUpdateTimeIndex ON AppBrandStarApp(updateTime)", "CREATE INDEX IF NOT EXISTS AppBrandStarAppOrderSequenceIndex ON AppBrandStarApp(orderSequence)" };
-  private static final int dhU = "username".hashCode();
-  private static final int dhV = "updateTime".hashCode();
-  private static final int dip = "versionType".hashCode();
-  private static final int diu = "orderSequence".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandLocalUsageRecordUpdateTimeIndex ON AppBrandLocalUsageRecord(updateTime)" };
+  private static final int eme = "username".hashCode();
+  private static final int emf = "updateTime".hashCode();
+  private static final int emu = "versionType".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dhS = true;
-  private boolean dhT = true;
-  private boolean dim = true;
-  private boolean dit = true;
-  public long field_orderSequence;
+  private boolean emb = true;
+  private boolean emc = true;
+  private boolean emq = true;
   public long field_updateTime;
   public String field_username;
   public int field_versionType;
@@ -35,7 +32,7 @@ public abstract class q
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dhU != k) {
+      if (eme != k) {
         break label60;
       }
       this.field_username = paramCursor.getString(i);
@@ -46,12 +43,10 @@ public abstract class q
       break label20;
       break;
       label60:
-      if (dip == k) {
+      if (emu == k) {
         this.field_versionType = paramCursor.getInt(i);
-      } else if (dhV == k) {
+      } else if (emf == k) {
         this.field_updateTime = paramCursor.getLong(i);
-      } else if (diu == k) {
-        this.field_orderSequence = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -61,17 +56,14 @@ public abstract class q
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dhS) {
+    if (this.emb) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.dim) {
+    if (this.emq) {
       localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
     }
-    if (this.dhT) {
+    if (this.emc) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
-    }
-    if (this.dit) {
-      localContentValues.put("orderSequence", Long.valueOf(this.field_orderSequence));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -81,7 +73,7 @@ public abstract class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.q
  * JD-Core Version:    0.7.0.1
  */

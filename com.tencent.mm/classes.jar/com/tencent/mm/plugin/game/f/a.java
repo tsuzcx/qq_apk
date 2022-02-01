@@ -5,9 +5,9 @@ import android.content.res.AssetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.model.e;
 import com.tencent.mm.plugin.game.ui.GameRegionPreference.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
@@ -18,31 +18,31 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  private Map<String, GameRegionPreference.a> nCy;
-  public boolean nDX;
-  private Map<String, Boolean> nDY;
+  private Map<String, GameRegionPreference.a> slY;
+  public boolean soh;
+  private Map<String, Boolean> soi;
   
   private a()
   {
-    AppMethodBeat.i(112284);
-    this.nDX = false;
-    this.nDY = new ConcurrentHashMap();
-    AppMethodBeat.o(112284);
+    AppMethodBeat.i(42483);
+    this.soh = false;
+    this.soi = new ConcurrentHashMap();
+    AppMethodBeat.o(42483);
   }
   
   /* Error */
-  public final boolean Qw(String paramString)
+  public final boolean acV(String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 40
-    //   4: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc 41
+    //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_1
-    //   8: invokestatic 45	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
+    //   8: invokestatic 46	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
     //   11: ifeq +14 -> 25
-    //   14: ldc 40
-    //   16: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   14: ldc 41
+    //   16: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: iconst_0
     //   20: istore_2
     //   21: aload_0
@@ -50,39 +50,39 @@ public final class a
     //   23: iload_2
     //   24: ireturn
     //   25: aload_0
-    //   26: getfield 31	com/tencent/mm/plugin/game/f/a:nDY	Ljava/util/Map;
+    //   26: getfield 32	com/tencent/mm/plugin/game/f/a:soi	Ljava/util/Map;
     //   29: aload_1
-    //   30: invokeinterface 51 2 0
+    //   30: invokeinterface 52 2 0
     //   35: ifeq +22 -> 57
     //   38: aload_0
-    //   39: getfield 31	com/tencent/mm/plugin/game/f/a:nDY	Ljava/util/Map;
+    //   39: getfield 32	com/tencent/mm/plugin/game/f/a:soi	Ljava/util/Map;
     //   42: aload_1
-    //   43: invokeinterface 55 2 0
-    //   48: checkcast 57	java/lang/Boolean
-    //   51: invokevirtual 61	java/lang/Boolean:booleanValue	()Z
+    //   43: invokeinterface 56 2 0
+    //   48: checkcast 58	java/lang/Boolean
+    //   51: invokevirtual 62	java/lang/Boolean:booleanValue	()Z
     //   54: ifne +42 -> 96
-    //   57: ldc 63
-    //   59: ldc 65
+    //   57: ldc 64
+    //   59: ldc 66
     //   61: iconst_1
     //   62: anewarray 4	java/lang/Object
     //   65: dup
     //   66: iconst_0
     //   67: aload_1
     //   68: aastore
-    //   69: invokestatic 70	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   69: invokestatic 71	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   72: aload_0
-    //   73: getfield 31	com/tencent/mm/plugin/game/f/a:nDY	Ljava/util/Map;
+    //   73: getfield 32	com/tencent/mm/plugin/game/f/a:soi	Ljava/util/Map;
     //   76: aload_1
-    //   77: getstatic 74	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   80: invokeinterface 78 3 0
+    //   77: getstatic 75	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
+    //   80: invokeinterface 79 3 0
     //   85: pop
-    //   86: ldc 40
-    //   88: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   86: ldc 41
+    //   88: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   91: iconst_1
     //   92: istore_2
     //   93: goto -72 -> 21
-    //   96: ldc 40
-    //   98: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   96: ldc 41
+    //   98: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   101: iconst_0
     //   102: istore_2
     //   103: goto -82 -> 21
@@ -104,57 +104,40 @@ public final class a
     //   96	101	106	finally
   }
   
-  public final void Qx(String paramString)
+  public final void acW(String paramString)
   {
     try
     {
-      AppMethodBeat.i(112290);
-      if ((!bo.isNullOrNil(paramString)) && (this.nDY.containsKey(paramString)))
+      AppMethodBeat.i(42489);
+      if ((!bt.isNullOrNil(paramString)) && (this.soi.containsKey(paramString)))
       {
-        ab.i("MicroMsg.GameCacheUtil", "download entrance image finish : %s", new Object[] { paramString });
-        this.nDY.remove(paramString);
+        ad.i("MicroMsg.GameCacheUtil", "download entrance image finish : %s", new Object[] { paramString });
+        this.soi.remove(paramString);
       }
-      AppMethodBeat.o(112290);
+      AppMethodBeat.o(42489);
       return;
     }
     finally {}
   }
   
-  public final Map<String, GameRegionPreference.a> bHA()
+  public final void cEv()
   {
     try
     {
-      AppMethodBeat.i(112288);
-      bHz();
-      Map localMap = this.nCy;
-      AppMethodBeat.o(112288);
-      return localMap;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void bHy()
-  {
-    try
-    {
-      AppMethodBeat.i(112286);
-      if (this.nCy != null)
+      AppMethodBeat.i(42485);
+      if (this.slY != null)
       {
-        Iterator localIterator = this.nCy.values().iterator();
+        Iterator localIterator = this.slY.values().iterator();
         while (localIterator.hasNext()) {
-          ((GameRegionPreference.a)localIterator.next()).gDG = false;
+          ((GameRegionPreference.a)localIterator.next()).ira = false;
         }
       }
-      AppMethodBeat.o(112286);
+      AppMethodBeat.o(42485);
     }
     finally {}
   }
   
-  public final void bHz()
+  public final void cEw()
   {
     Object localObject6;
     for (;;)
@@ -164,11 +147,11 @@ public final class a
       Object localObject7;
       try
       {
-        AppMethodBeat.i(112287);
-        if (this.nCy == null) {
-          this.nCy = new LinkedHashMap();
+        AppMethodBeat.i(42486);
+        if (this.slY == null) {
+          this.slY = new LinkedHashMap();
         }
-        if (this.nCy.size() > 0) {
+        if (this.slY.size() > 0) {
           break label423;
         }
         localObject6 = null;
@@ -177,7 +160,7 @@ public final class a
       finally {}
       try
       {
-        localInputStream = ah.getContext().getAssets().open("game_region_data.txt");
+        localInputStream = aj.getContext().getAssets().open("game_region_data.txt");
         localObject1 = localInputStream;
         localObject6 = localInputStream;
         localObject7 = new byte[localInputStream.available()];
@@ -193,7 +176,7 @@ public final class a
       catch (IOException localIOException4)
       {
         localObject6 = localObject3;
-        ab.e("MicroMsg.GameCacheUtil", "exception:%s", new Object[] { bo.l(localIOException4) });
+        ad.e("MicroMsg.GameCacheUtil", "exception:%s", new Object[] { bt.m(localIOException4) });
         if (localObject3 == null) {
           break label431;
         }
@@ -204,7 +187,7 @@ public final class a
         }
         catch (IOException localIOException2)
         {
-          ab.e("MicroMsg.GameCacheUtil", "exception:%s", new Object[] { bo.l(localIOException2) });
+          ad.e("MicroMsg.GameCacheUtil", "exception:%s", new Object[] { bt.m(localIOException2) });
           str2 = "";
         }
         continue;
@@ -217,24 +200,24 @@ public final class a
         try
         {
           ((InputStream)localObject6).close();
-          AppMethodBeat.o(112287);
+          AppMethodBeat.o(42486);
           throw localObject4;
         }
         catch (IOException localIOException3)
         {
           for (;;)
           {
-            ab.e("MicroMsg.GameCacheUtil", "exception:%s", new Object[] { bo.l(localIOException3) });
+            ad.e("MicroMsg.GameCacheUtil", "exception:%s", new Object[] { bt.m(localIOException3) });
           }
         }
         locala = new GameRegionPreference.a();
-        locala.nCv = localIOException3[0];
-        locala.nCw = localIOException3[1];
-        locala.nCx = localIOException3[2];
-        locala.dqQ = localIOException3[3];
-        locala.gDG = false;
+        locala.slV = localIOException3[0];
+        locala.slW = localIOException3[1];
+        locala.slX = localIOException3[2];
+        locala.evF = localIOException3[3];
+        locala.ira = false;
         locala.isDefault = false;
-        this.nCy.put(locala.dqQ, locala);
+        this.slY.put(locala.evF, locala);
         break label437;
       }
       try
@@ -244,7 +227,7 @@ public final class a
       }
       catch (IOException localIOException1)
       {
-        ab.e("MicroMsg.GameCacheUtil", "exception:%s", new Object[] { bo.l(localIOException1) });
+        ad.e("MicroMsg.GameCacheUtil", "exception:%s", new Object[] { bt.m(localIOException1) });
         localObject2 = localObject7;
       }
     }
@@ -257,7 +240,7 @@ public final class a
         localObject6 = localObject1[i].trim().split("\\|");
         if (localObject6.length < 4)
         {
-          ab.e("MicroMsg.GameCacheUtil", "this GameRegion item has problem %s", new Object[] { localObject1[i] });
+          ad.e("MicroMsg.GameCacheUtil", "this GameRegion item has problem %s", new Object[] { localObject1[i] });
           break label437;
         }
       }
@@ -266,17 +249,17 @@ public final class a
       String str2;
       label273:
       GameRegionPreference.a locala;
-      Object localObject5 = e.bFT();
-      localObject5 = (GameRegionPreference.a)this.nCy.get(localObject5);
+      Object localObject5 = e.cCM();
+      localObject5 = (GameRegionPreference.a)this.slY.get(localObject5);
       if (localObject5 != null)
       {
-        ((GameRegionPreference.a)localObject5).nCv = e.bFU();
-        ((GameRegionPreference.a)localObject5).nCw = e.bFV();
-        ((GameRegionPreference.a)localObject5).nCx = e.bFW();
+        ((GameRegionPreference.a)localObject5).slV = e.cCN();
+        ((GameRegionPreference.a)localObject5).slW = e.cCO();
+        ((GameRegionPreference.a)localObject5).slX = e.cCP();
         ((GameRegionPreference.a)localObject5).isDefault = true;
       }
       label423:
-      AppMethodBeat.o(112287);
+      AppMethodBeat.o(42486);
       return;
       label431:
       localObject5 = "";
@@ -286,24 +269,53 @@ public final class a
     }
   }
   
+  public final Map<String, GameRegionPreference.a> cEx()
+  {
+    try
+    {
+      AppMethodBeat.i(42487);
+      cEw();
+      Map localMap = this.slY;
+      AppMethodBeat.o(42487);
+      return localMap;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
   public final void clearCache()
   {
     try
     {
-      AppMethodBeat.i(112285);
-      if (this.nCy != null) {
-        this.nCy.clear();
+      AppMethodBeat.i(42484);
+      if (this.slY != null) {
+        this.slY.clear();
       }
-      this.nDX = false;
-      AppMethodBeat.o(112285);
+      this.soh = false;
+      AppMethodBeat.o(42484);
       return;
     }
     finally {}
   }
+  
+  public static final class a
+  {
+    private static a soj;
+    
+    static
+    {
+      AppMethodBeat.i(42482);
+      soj = new a((byte)0);
+      AppMethodBeat.o(42482);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.f.a
  * JD-Core Version:    0.7.0.1
  */

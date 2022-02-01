@@ -1,58 +1,74 @@
 package com.tencent.xweb.x5;
 
-import android.graphics.Bitmap;
-import android.view.View;
-import android.webkit.WebChromeClient.CustomViewCallback;
+import android.webkit.WebHistoryItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.xweb.c.f;
-import com.tencent.xweb.j;
 
 public final class i
-  implements f
+  extends android.webkit.WebBackForwardList
 {
-  c BIg;
-  b BIh;
-  WebView BIi;
+  private com.tencent.smtt.sdk.WebBackForwardList ISh;
   
-  public i(WebView paramWebView)
+  public i(com.tencent.smtt.sdk.WebBackForwardList paramWebBackForwardList)
   {
-    AppMethodBeat.i(84853);
-    this.BIi = paramWebView;
-    this.BIg = new c();
-    this.BIh = new b();
-    AppMethodBeat.o(84853);
+    this.ISh = paramWebBackForwardList;
   }
   
-  public final boolean a(String paramString1, String paramString2, j paramj)
+  protected final android.webkit.WebBackForwardList clone()
   {
-    return false;
+    AppMethodBeat.i(194678);
+    i locali = new i(this.ISh);
+    AppMethodBeat.o(194678);
+    return locali;
   }
   
-  public final boolean a(String paramString1, String paramString2, String paramString3, com.tencent.xweb.i parami)
+  public final int getCurrentIndex()
   {
-    return false;
+    AppMethodBeat.i(194675);
+    if (this.ISh == null) {}
+    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.ISh.getCurrentIndex()))
+    {
+      int i = localInteger.intValue();
+      AppMethodBeat.o(194675);
+      return i;
+    }
   }
   
-  public final boolean b(String paramString1, String paramString2, j paramj)
+  public final WebHistoryItem getCurrentItem()
   {
-    return false;
+    AppMethodBeat.i(194674);
+    if (this.ISh == null)
+    {
+      AppMethodBeat.o(194674);
+      return null;
+    }
+    k localk = new k(this.ISh.getCurrentItem());
+    AppMethodBeat.o(194674);
+    return localk;
   }
   
-  public final void onHideCustomView()
+  public final WebHistoryItem getItemAtIndex(int paramInt)
   {
-    AppMethodBeat.i(84855);
-    this.BIh.dZW();
-    AppMethodBeat.o(84855);
+    AppMethodBeat.i(194676);
+    if (this.ISh == null)
+    {
+      AppMethodBeat.o(194676);
+      return null;
+    }
+    k localk = new k(this.ISh.getItemAtIndex(paramInt));
+    AppMethodBeat.o(194676);
+    return localk;
   }
   
-  public final void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback) {}
-  
-  public final void w(String paramString, Bitmap paramBitmap)
+  public final int getSize()
   {
-    AppMethodBeat.i(84854);
-    this.BIg.b(this.BIi, paramString, paramBitmap);
-    AppMethodBeat.o(84854);
+    AppMethodBeat.i(194677);
+    if (this.ISh == null) {}
+    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.ISh.getSize()))
+    {
+      int i = localInteger.intValue();
+      AppMethodBeat.o(194677);
+      return i;
+    }
   }
 }
 

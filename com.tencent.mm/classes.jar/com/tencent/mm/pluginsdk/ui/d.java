@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public final class d
   implements AbsListView.OnScrollListener
 {
-  private AbsListView.OnScrollListener vPV;
-  private ArrayList<WeakReference<d.a>> vPW;
+  private AbsListView.OnScrollListener BUD;
+  private ArrayList<WeakReference<a>> BUE;
   
   public d()
   {
@@ -19,69 +19,74 @@ public final class d
   
   public d(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    AppMethodBeat.i(79676);
-    this.vPW = new ArrayList();
-    this.vPV = paramOnScrollListener;
-    AppMethodBeat.o(79676);
+    AppMethodBeat.i(152123);
+    this.BUE = new ArrayList();
+    this.BUD = paramOnScrollListener;
+    AppMethodBeat.o(152123);
   }
   
-  private void pa(boolean paramBoolean)
+  private void tV(boolean paramBoolean)
   {
-    AppMethodBeat.i(79680);
+    AppMethodBeat.i(152127);
     int i = 0;
-    if (i < this.vPW.size())
+    if (i < this.BUE.size())
     {
-      Object localObject = (WeakReference)this.vPW.get(i);
+      Object localObject = (WeakReference)this.BUE.get(i);
       if (localObject != null)
       {
-        localObject = (d.a)((WeakReference)localObject).get();
+        localObject = (a)((WeakReference)localObject).get();
         if (localObject != null) {
-          ((d.a)localObject).onScrollStateChanged(paramBoolean);
+          ((a)localObject).onScrollStateChanged(paramBoolean);
         }
       }
       for (;;)
       {
         i += 1;
         break;
-        this.vPW.remove(i);
+        this.BUE.remove(i);
         continue;
-        this.vPW.remove(i);
+        this.BUE.remove(i);
       }
     }
-    AppMethodBeat.o(79680);
+    AppMethodBeat.o(152127);
   }
   
-  public final void a(d.a parama)
+  public final void a(a parama)
   {
-    AppMethodBeat.i(79679);
-    this.vPW.add(new WeakReference(parama));
-    AppMethodBeat.o(79679);
+    AppMethodBeat.i(152126);
+    this.BUE.add(new WeakReference(parama));
+    AppMethodBeat.o(152126);
   }
   
   public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(79677);
-    if (this.vPV != null) {
-      this.vPV.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.i(152124);
+    if (this.BUD != null) {
+      this.BUD.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
-    AppMethodBeat.o(79677);
+    AppMethodBeat.o(152124);
   }
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    AppMethodBeat.i(79678);
+    AppMethodBeat.i(152125);
     if (paramInt == 2) {
-      pa(true);
+      tV(true);
     }
     for (;;)
     {
-      if (this.vPV != null) {
-        this.vPV.onScrollStateChanged(paramAbsListView, paramInt);
+      if (this.BUD != null) {
+        this.BUD.onScrollStateChanged(paramAbsListView, paramInt);
       }
-      AppMethodBeat.o(79678);
+      AppMethodBeat.o(152125);
       return;
-      pa(false);
+      tV(false);
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onScrollStateChanged(boolean paramBoolean);
   }
 }
 

@@ -2,50 +2,50 @@ package com.tencent.xweb.x5.sdk;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.ac;
+import com.tencent.xweb.ah;
 import org.xwalk.core.Log;
 
 public final class f
 {
-  static b BIB;
+  static b ISC;
   
   static
   {
-    AppMethodBeat.i(4158);
-    ac.initInterface();
-    AppMethodBeat.o(4158);
+    AppMethodBeat.i(157157);
+    ah.initInterface();
+    AppMethodBeat.o(157157);
   }
   
   public static void a(b paramb)
   {
-    BIB = paramb;
+    ISC = paramb;
   }
   
   public static boolean a(Context paramContext, boolean paramBoolean1, boolean paramBoolean2, a parama)
   {
-    AppMethodBeat.i(4152);
-    if (BIB != null)
+    AppMethodBeat.i(157151);
+    if (ISC != null)
     {
-      paramBoolean1 = BIB.a(paramContext, paramBoolean1, paramBoolean2, parama);
-      AppMethodBeat.o(4152);
+      paramBoolean1 = ISC.a(paramContext, paramBoolean1, paramBoolean2, parama);
+      AppMethodBeat.o(157151);
       return paramBoolean1;
     }
     Log.e("TbsDownloader", "needDownload: sImp is null");
-    AppMethodBeat.o(4152);
+    AppMethodBeat.o(157151);
     return false;
   }
   
   public static boolean isDownloadForeground()
   {
-    AppMethodBeat.i(4157);
-    if (BIB != null)
+    AppMethodBeat.i(157156);
+    if (ISC != null)
     {
-      boolean bool = BIB.isDownloadForeground();
-      AppMethodBeat.o(4157);
+      boolean bool = ISC.isDownloadForeground();
+      AppMethodBeat.o(157156);
       return bool;
     }
     Log.e("TbsDownloader", "isDownloadForeground: sImp is null");
-    AppMethodBeat.o(4157);
+    AppMethodBeat.o(157156);
     return false;
   }
   
@@ -55,70 +55,70 @@ public final class f
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: sipush 4156
-    //   6: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: getstatic 29	com/tencent/xweb/x5/sdk/f:BIB	Lcom/tencent/xweb/x5/sdk/b;
-    //   12: ifnull +23 -> 35
-    //   15: getstatic 29	com/tencent/xweb/x5/sdk/f:BIB	Lcom/tencent/xweb/x5/sdk/b;
-    //   18: invokeinterface 53 1 0
-    //   23: istore_0
-    //   24: sipush 4156
-    //   27: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   30: ldc 2
-    //   32: monitorexit
-    //   33: iload_0
-    //   34: ireturn
-    //   35: ldc 36
-    //   37: ldc 55
-    //   39: invokestatic 44	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   42: iconst_0
-    //   43: istore_0
-    //   44: sipush 4156
-    //   47: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   50: goto -20 -> 30
-    //   53: astore_1
-    //   54: ldc 2
-    //   56: monitorexit
-    //   57: aload_1
-    //   58: athrow
+    //   3: ldc 55
+    //   5: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 30	com/tencent/xweb/x5/sdk/f:ISC	Lcom/tencent/xweb/x5/sdk/b;
+    //   11: ifnull +22 -> 33
+    //   14: getstatic 30	com/tencent/xweb/x5/sdk/f:ISC	Lcom/tencent/xweb/x5/sdk/b;
+    //   17: invokeinterface 57 1 0
+    //   22: istore_0
+    //   23: ldc 55
+    //   25: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   28: ldc 2
+    //   30: monitorexit
+    //   31: iload_0
+    //   32: ireturn
+    //   33: ldc 38
+    //   35: ldc 59
+    //   37: invokestatic 46	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   40: iconst_0
+    //   41: istore_0
+    //   42: ldc 55
+    //   44: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   47: goto -19 -> 28
+    //   50: astore_1
+    //   51: ldc 2
+    //   53: monitorexit
+    //   54: aload_1
+    //   55: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   23	21	0	bool	boolean
-    //   53	5	1	localObject	Object
+    //   22	20	0	bool	boolean
+    //   50	5	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   3	30	53	finally
-    //   35	42	53	finally
-    //   44	50	53	finally
+    //   3	28	50	finally
+    //   33	40	50	finally
+    //   42	47	50	finally
   }
   
-  public static boolean jU(Context paramContext)
+  public static boolean kZ(Context paramContext)
   {
-    AppMethodBeat.i(4150);
-    if (BIB != null)
+    AppMethodBeat.i(157149);
+    if (ISC != null)
     {
-      boolean bool = BIB.jU(paramContext);
-      AppMethodBeat.o(4150);
+      boolean bool = ISC.kZ(paramContext);
+      AppMethodBeat.o(157149);
       return bool;
     }
     Log.e("TbsDownloader", "needSendRequest: sImp is null");
-    AppMethodBeat.o(4150);
+    AppMethodBeat.o(157149);
     return false;
   }
   
   public static boolean needDownload(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(4151);
+    AppMethodBeat.i(157150);
     paramBoolean = a(paramContext, paramBoolean, false, null);
-    AppMethodBeat.o(4151);
+    AppMethodBeat.o(157150);
     return paramBoolean;
   }
   
   public static void startDownload(Context paramContext)
   {
-    AppMethodBeat.i(4153);
+    AppMethodBeat.i(157152);
     startDownload(paramContext, false);
-    AppMethodBeat.o(4153);
+    AppMethodBeat.o(157152);
   }
   
   /* Error */
@@ -127,51 +127,51 @@ public final class f
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: sipush 4154
-    //   6: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: getstatic 29	com/tencent/xweb/x5/sdk/f:BIB	Lcom/tencent/xweb/x5/sdk/b;
-    //   12: ifnull +23 -> 35
-    //   15: getstatic 29	com/tencent/xweb/x5/sdk/f:BIB	Lcom/tencent/xweb/x5/sdk/b;
-    //   18: aload_0
-    //   19: iload_1
-    //   20: invokeinterface 70 3 0
-    //   25: sipush 4154
-    //   28: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   31: ldc 2
-    //   33: monitorexit
-    //   34: return
-    //   35: ldc 36
-    //   37: ldc 72
-    //   39: invokestatic 44	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   42: sipush 4154
-    //   45: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   48: goto -17 -> 31
-    //   51: astore_0
-    //   52: ldc 2
-    //   54: monitorexit
-    //   55: aload_0
-    //   56: athrow
+    //   3: ldc 77
+    //   5: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 30	com/tencent/xweb/x5/sdk/f:ISC	Lcom/tencent/xweb/x5/sdk/b;
+    //   11: ifnull +22 -> 33
+    //   14: getstatic 30	com/tencent/xweb/x5/sdk/f:ISC	Lcom/tencent/xweb/x5/sdk/b;
+    //   17: aload_0
+    //   18: iload_1
+    //   19: invokeinterface 78 3 0
+    //   24: ldc 77
+    //   26: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   29: ldc 2
+    //   31: monitorexit
+    //   32: return
+    //   33: ldc 38
+    //   35: ldc 80
+    //   37: invokestatic 46	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   40: ldc 77
+    //   42: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: goto -16 -> 29
+    //   48: astore_0
+    //   49: ldc 2
+    //   51: monitorexit
+    //   52: aload_0
+    //   53: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	57	0	paramContext	Context
-    //   0	57	1	paramBoolean	boolean
+    //   0	54	0	paramContext	Context
+    //   0	54	1	paramBoolean	boolean
     // Exception table:
     //   from	to	target	type
-    //   3	31	51	finally
-    //   35	48	51	finally
+    //   3	29	48	finally
+    //   33	45	48	finally
   }
   
   public static void stopDownload()
   {
-    AppMethodBeat.i(4155);
-    if (BIB != null)
+    AppMethodBeat.i(157154);
+    if (ISC != null)
     {
-      BIB.stopDownload();
-      AppMethodBeat.o(4155);
+      ISC.stopDownload();
+      AppMethodBeat.o(157154);
       return;
     }
     Log.e("TbsDownloader", "stopDownload: sImp is null");
-    AppMethodBeat.o(4155);
+    AppMethodBeat.o(157154);
   }
   
   public static abstract interface a

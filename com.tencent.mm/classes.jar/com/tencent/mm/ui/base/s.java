@@ -1,93 +1,109 @@
 package com.tencent.mm.ui.base;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
 import android.os.Looper;
+import android.os.Message;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class s
   extends i
   implements DialogInterface
 {
-  private View iCk;
-  private TextView jbI;
+  private ImageView GaC;
+  private View hIZ;
   private Context mContext;
+  private TextView mkg;
   private int style;
-  private ImageView zmW;
   
   private s(Context paramContext)
   {
-    super(paramContext, 2131493886);
-    AppMethodBeat.i(106866);
+    super(paramContext, 2131821728);
+    AppMethodBeat.i(142226);
     this.mContext = paramContext;
     this.style = 0;
     int i = j;
     switch (this.style)
     {
     }
-    for (i = j;; i = 2130970278)
+    for (i = j;; i = 2131494909)
     {
-      this.iCk = View.inflate(this.mContext, i, null);
-      this.jbI = ((TextView)this.iCk.findViewById(2131824171));
-      this.zmW = ((ImageView)this.iCk.findViewById(2131820929));
+      this.hIZ = View.inflate(this.mContext, i, null);
+      this.mkg = ((TextView)this.hIZ.findViewById(2131302519));
+      this.GaC = ((ImageView)this.hIZ.findViewById(2131300874));
       setCanceledOnTouchOutside(true);
-      AppMethodBeat.o(106866);
+      AppMethodBeat.o(142226);
       return;
     }
   }
   
-  public static s a(CharSequence paramCharSequence, Context paramContext)
+  public static s a(CharSequence paramCharSequence, final Context paramContext, DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    AppMethodBeat.i(106868);
-    s locals = new s(paramContext);
-    locals.jbI.setText(paramCharSequence);
+    AppMethodBeat.i(142228);
+    final s locals = new s(paramContext);
+    locals.mkg.setText(paramCharSequence);
     locals.setCanceledOnTouchOutside(true);
     locals.show();
-    locals.setOnDismissListener(null);
-    new s.1(Looper.getMainLooper(), paramContext, locals).sendEmptyMessageDelayed(0, 1000L);
-    AppMethodBeat.o(106868);
+    locals.setOnDismissListener(paramOnDismissListener);
+    new ap(Looper.getMainLooper())
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(142225);
+        if (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()))
+        {
+          AppMethodBeat.o(142225);
+          return;
+        }
+        locals.dismiss();
+        AppMethodBeat.o(142225);
+      }
+    }.sendEmptyMessageDelayed(0, 1000L);
+    AppMethodBeat.o(142228);
     return locals;
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(106869);
+    AppMethodBeat.i(142229);
     try
     {
       super.dismiss();
-      AppMethodBeat.o(106869);
+      AppMethodBeat.o(142229);
       return;
     }
     catch (Exception localException)
     {
-      ab.e("MicroMsg.MMTipsDialog", "dismiss exception, e = " + localException.getMessage());
-      AppMethodBeat.o(106869);
+      ad.e("MicroMsg.MMTipsDialog", "dismiss exception, e = " + localException.getMessage());
+      AppMethodBeat.o(142229);
     }
   }
   
   protected final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(106867);
+    AppMethodBeat.i(142227);
     super.onCreate(paramBundle);
-    setContentView(this.iCk, new LinearLayout.LayoutParams(-1, -1));
+    setContentView(this.hIZ, new LinearLayout.LayoutParams(-1, -1));
     paramBundle = getWindow().getAttributes();
     paramBundle.width = -1;
     paramBundle.height = -2;
     onWindowAttributesChanged(paramBundle);
-    AppMethodBeat.o(106867);
+    AppMethodBeat.o(142227);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.base.s
  * JD-Core Version:    0.7.0.1
  */

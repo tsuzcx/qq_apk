@@ -1,18 +1,18 @@
 package com.tencent.mm.ui.chatting;
 
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.storage.bl;
 
 public final class s$o
 {
-  bi cEE;
-  String fhC;
-  String tac;
+  bl drF;
+  String gIj;
+  String yGA;
   
-  public s$o(String paramString1, bi parambi, String paramString2)
+  public s$o(String paramString1, bl parambl, String paramString2)
   {
-    this.fhC = paramString1;
-    this.cEE = parambi;
-    this.tac = paramString2;
+    this.gIj = paramString1;
+    this.drF = parambl;
+    this.yGA = paramString2;
   }
 }
 

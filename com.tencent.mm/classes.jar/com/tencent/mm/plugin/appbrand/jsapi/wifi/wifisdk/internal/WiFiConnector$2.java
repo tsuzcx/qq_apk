@@ -10,7 +10,7 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class WiFiConnector$2
   extends BroadcastReceiver
@@ -19,28 +19,28 @@ public final class WiFiConnector$2
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(94388);
+    AppMethodBeat.i(144703);
     if (paramIntent == null)
     {
-      AppMethodBeat.o(94388);
+      AppMethodBeat.o(144703);
       return;
     }
     paramContext = paramIntent.getAction();
     if (TextUtils.isEmpty(paramContext))
     {
-      AppMethodBeat.o(94388);
+      AppMethodBeat.o(144703);
       return;
     }
     if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramContext))
     {
-      paramContext = this.ihW.ihS.getActiveNetworkInfo();
+      paramContext = this.kyq.kym.getActiveNetworkInfo();
       paramIntent = c.getConnectionInfo();
-      if ((paramContext != null) && (paramIntent != null) && (paramContext.getType() == 1) && (paramContext.getDetailedState() == NetworkInfo.DetailedState.CONNECTED) && (paramIntent.getNetworkId() == this.ihW.ihR.networkId))
+      if ((paramContext != null) && (paramIntent != null) && (paramContext.getType() == 1) && (paramContext.getDetailedState() == NetworkInfo.DetailedState.CONNECTED) && (paramIntent.getNetworkId() == this.kyq.kyl.networkId))
       {
-        this.ihW.k(true, "");
-        ab.i("MicroMsg.wifi_event", "CONNECTIVITY_ACTION CONNECTED.");
+        this.kyq.m(true, "");
+        ad.i("MicroMsg.wifi_event", "CONNECTIVITY_ACTION CONNECTED.");
       }
-      AppMethodBeat.o(94388);
+      AppMethodBeat.o(144703);
       return;
     }
     if ("android.net.wifi.supplicant.STATE_CHANGE".equals(paramContext)) {}
@@ -49,18 +49,18 @@ public final class WiFiConnector$2
       i = paramIntent.getIntExtra("supplicantError", -1);
       if (i == 1)
       {
-        ab.e("MicroMsg.WiFiConnector", "ERROR_AUTHENTICATING");
-        ab.i("MicroMsg.wifi_event", "ERROR_AUTHENTICATING FAIL.");
-        paramIntent = this.ihW;
-        if (this.ihW.ihV)
+        ad.e("MicroMsg.WiFiConnector", "ERROR_AUTHENTICATING");
+        ad.i("MicroMsg.wifi_event", "ERROR_AUTHENTICATING FAIL.");
+        paramIntent = this.kyq;
+        if (this.kyq.kyp)
         {
           paramContext = "wifi config may be expired";
-          paramIntent.k(false, paramContext);
+          paramIntent.m(false, paramContext);
         }
       }
       else
       {
-        AppMethodBeat.o(94388);
+        AppMethodBeat.o(144703);
         return;
       }
     }
@@ -68,7 +68,7 @@ public final class WiFiConnector$2
     {
       for (;;)
       {
-        ab.e("MicroMsg.WiFiConnector", paramContext.getMessage());
+        ad.e("MicroMsg.WiFiConnector", paramContext.getMessage());
         int i = -1;
         continue;
         paramContext = "password error";

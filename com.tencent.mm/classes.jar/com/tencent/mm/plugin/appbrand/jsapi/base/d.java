@@ -1,26 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi.base;
 
+import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.s.g;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class d<CONTEXT extends c>
   extends a<CONTEXT>
 {
-  protected static Boolean A(JSONObject paramJSONObject)
-  {
-    try
-    {
-      boolean bool = paramJSONObject.getBoolean("fullscreen");
-      return Boolean.valueOf(bool);
-    }
-    catch (JSONException paramJSONObject) {}
-    return null;
-  }
-  
-  protected static float[] x(JSONObject paramJSONObject)
+  protected static float[] E(JSONObject paramJSONObject)
   {
     try
     {
@@ -31,7 +20,7 @@ public abstract class d<CONTEXT extends c>
     return null;
   }
   
-  protected static int y(JSONObject paramJSONObject)
+  protected static int F(JSONObject paramJSONObject)
   {
     try
     {
@@ -45,7 +34,7 @@ public abstract class d<CONTEXT extends c>
     return -1;
   }
   
-  protected static Boolean z(JSONObject paramJSONObject)
+  protected static Boolean G(JSONObject paramJSONObject)
   {
     try
     {
@@ -56,14 +45,30 @@ public abstract class d<CONTEXT extends c>
     return null;
   }
   
-  protected int w(JSONObject paramJSONObject)
+  protected static Boolean H(JSONObject paramJSONObject)
+  {
+    try
+    {
+      boolean bool = paramJSONObject.getBoolean("fullscreen");
+      return Boolean.valueOf(bool);
+    }
+    catch (JSONException paramJSONObject) {}
+    return null;
+  }
+  
+  protected int A(JSONObject paramJSONObject)
   {
     throw new JSONException("viewId do not exist, override the method getViewId(data).");
+  }
+  
+  protected Boolean B(JSONObject paramJSONObject)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.base.d
  * JD-Core Version:    0.7.0.1
  */

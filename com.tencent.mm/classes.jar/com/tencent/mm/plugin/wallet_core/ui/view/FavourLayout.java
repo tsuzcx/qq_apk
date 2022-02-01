@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -25,7 +25,7 @@ public class FavourLayout
   
   public void setWording(LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(47879);
+    AppMethodBeat.i(71482);
     removeAllViews();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
@@ -34,15 +34,15 @@ public class FavourLayout
       TextView localTextView = new TextView(getContext());
       localTextView.setText(str);
       localTextView.setTextColor(Color.parseColor("#ff891e"));
-      localTextView.setTextSize(0, a.ao(getContext(), 2131427855));
+      localTextView.setTextSize(0, a.ao(getContext(), 2131165569));
       addView(localTextView);
     }
-    AppMethodBeat.o(47879);
+    AppMethodBeat.o(71482);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.FavourLayout
  * JD-Core Version:    0.7.0.1
  */

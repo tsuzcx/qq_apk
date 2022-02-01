@@ -1,269 +1,137 @@
 package e.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
 import java.util.LinkedList;
 
 public final class a
+  extends com.tencent.mm.bx.a
 {
-  public static int Wo(int paramInt)
-  {
-    AppMethodBeat.i(51860);
-    paramInt = e.a.a.b.b.a.eW(paramInt);
-    AppMethodBeat.o(51860);
-    return paramInt + 1;
-  }
+  public String Dvu;
+  public String KgO;
+  public String KgP;
+  public int KgQ;
+  public g KgR;
+  public String url;
   
-  public static int c(int paramInt1, int paramInt2, LinkedList<?> paramLinkedList)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(51862);
-    int i;
-    if (paramLinkedList != null) {
-      switch (paramInt2)
-      {
-      default: 
-        paramLinkedList = new IllegalArgumentException("The data type was not found, the id used was ".concat(String.valueOf(paramInt2)));
-        AppMethodBeat.o(51862);
-        throw paramLinkedList;
-      case 6: 
-        paramInt2 = 0;
-        i = 0;
-        if (i < paramLinkedList.size()) {
-          break;
-        }
-      }
-    }
-    for (;;)
+    AppMethodBeat.i(91738);
+    if (paramInt == 0)
     {
-      AppMethodBeat.o(51862);
-      return paramInt2;
-      int j = e.a.a.b.b.a.b(paramInt1, (b)paramLinkedList.get(i));
-      i += 1;
-      paramInt2 = j + paramInt2;
-      break;
-      i = 0;
-      j = 0;
-      for (;;)
-      {
-        paramInt2 = i;
-        if (j >= paramLinkedList.size()) {
-          break;
-        }
-        ((Double)paramLinkedList.get(j)).doubleValue();
-        paramInt2 = e.a.a.b.b.a.eW(paramInt1);
-        j += 1;
-        i = paramInt2 + 8 + i;
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.KgO != null) {
+        paramVarArgs.d(1, this.KgO);
       }
-      i = 0;
-      j = 0;
-      for (;;)
-      {
-        paramInt2 = i;
-        if (j >= paramLinkedList.size()) {
-          break;
-        }
-        ((Float)paramLinkedList.get(j)).floatValue();
-        paramInt2 = e.a.a.b.b.a.eW(paramInt1);
-        j += 1;
-        i = paramInt2 + 4 + i;
+      if (this.KgP != null) {
+        paramVarArgs.d(2, this.KgP);
       }
-      i = 0;
-      j = 0;
-      for (;;)
-      {
-        paramInt2 = i;
-        if (j >= paramLinkedList.size()) {
-          break;
-        }
-        paramInt2 = e.a.a.b.b.a.bl(paramInt1, ((Integer)paramLinkedList.get(j)).intValue());
-        j += 1;
-        i = paramInt2 + i;
+      paramVarArgs.aR(3, this.KgQ);
+      if (this.url != null) {
+        paramVarArgs.d(4, this.url);
       }
-      i = 0;
-      j = 0;
-      for (;;)
+      if (this.KgR != null)
       {
-        paramInt2 = i;
-        if (j >= paramLinkedList.size()) {
-          break;
-        }
-        paramInt2 = e.a.a.b.b.a.p(paramInt1, ((Long)paramLinkedList.get(j)).longValue());
-        j += 1;
-        i = paramInt2 + i;
+        paramVarArgs.kX(5, this.KgR.computeSize());
+        this.KgR.writeFields(paramVarArgs);
       }
-      i = 0;
-      j = 0;
-      for (;;)
-      {
-        paramInt2 = i;
-        if (j >= paramLinkedList.size()) {
-          break;
-        }
-        paramInt2 = e.a.a.b.b.a.f(paramInt1, (String)paramLinkedList.get(j));
-        j += 1;
-        i = paramInt2 + i;
+      if (this.Dvu != null) {
+        paramVarArgs.d(6, this.Dvu);
       }
-      i = 0;
-      j = 0;
-      for (;;)
-      {
-        paramInt2 = i;
-        if (j >= paramLinkedList.size()) {
-          break;
-        }
-        ((Boolean)paramLinkedList.get(j)).booleanValue();
-        paramInt2 = e.a.a.b.b.a.eW(paramInt1);
-        j += 1;
-        i = paramInt2 + 1 + i;
-      }
-      i = 0;
-      j = 0;
-      for (;;)
-      {
-        paramInt2 = i;
-        if (j >= paramLinkedList.size()) {
-          break;
-        }
-        paramInt2 = iP(paramInt1, ((com.tencent.mm.bv.a)paramLinkedList.get(j)).computeSize());
-        j += 1;
-        i = paramInt2 + i;
-      }
-      paramInt2 = 0;
+      AppMethodBeat.o(91738);
+      return 0;
     }
-  }
-  
-  public static int d(int paramInt1, int paramInt2, LinkedList<?> paramLinkedList)
-  {
-    int j = 0;
-    AppMethodBeat.i(51863);
-    int i = j;
-    if (paramLinkedList != null) {
-      switch (paramInt2)
+    if (paramInt == 1) {
+      if (this.KgO == null) {
+        break label598;
+      }
+    }
+    label598:
+    for (paramInt = f.a.a.b.b.a.e(1, this.KgO) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.KgP != null) {
+        i = paramInt + f.a.a.b.b.a.e(2, this.KgP);
+      }
+      i += f.a.a.b.b.a.bA(3, this.KgQ);
+      paramInt = i;
+      if (this.url != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.url);
+      }
+      i = paramInt;
+      if (this.KgR != null) {
+        i = paramInt + f.a.a.a.kW(5, this.KgR.computeSize());
+      }
+      paramInt = i;
+      if (this.Dvu != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.Dvu);
+      }
+      AppMethodBeat.o(91738);
+      return paramInt;
+      if (paramInt == 2)
       {
-      default: 
-        paramLinkedList = new IllegalArgumentException("The data type was not found, the id used was ".concat(String.valueOf(paramInt2)));
-        AppMethodBeat.o(51863);
-        throw paramLinkedList;
-      case 2: 
-        i = j;
-        if (paramLinkedList.size() > 0)
-        {
-          paramInt2 = 0;
-          i = 0;
-          if (i < paramLinkedList.size()) {
-            break label105;
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.fMq();
           }
-          i = e.a.a.b.b.a.eY(paramInt2) + paramInt2 + e.a.a.b.b.a.eW(paramInt1);
         }
-        break;
+        AppMethodBeat.o(91738);
+        return 0;
       }
-    }
-    label105:
-    do
-    {
-      AppMethodBeat.o(51863);
-      return i;
-      j = e.a.a.b.b.a.eY(((Integer)paramLinkedList.get(i)).intValue());
-      i += 1;
-      paramInt2 = j + paramInt2;
-      break;
-      i = j;
-    } while (paramLinkedList.size() <= 0);
-    paramInt2 = 0;
-    i = 0;
-    for (;;)
-    {
-      if (i >= paramLinkedList.size())
+      if (paramInt == 3)
       {
-        i = e.a.a.b.b.a.eY(paramInt2) + paramInt2 + e.a.a.b.b.a.eW(paramInt1);
-        break;
-      }
-      j = e.a.a.b.b.a.ap(((Long)paramLinkedList.get(i)).longValue());
-      i += 1;
-      paramInt2 = j + paramInt2;
-    }
-  }
-  
-  public static int e(int paramInt, LinkedList<?> paramLinkedList)
-  {
-    int j = 0;
-    AppMethodBeat.i(51864);
-    int i = j;
-    if (paramLinkedList != null) {
-      switch (paramInt)
-      {
-      default: 
-        paramLinkedList = new IllegalArgumentException("The data type was not found, the id used was ".concat(String.valueOf(paramInt)));
-        AppMethodBeat.o(51864);
-        throw paramLinkedList;
-      case 2: 
-        i = j;
-        if (paramLinkedList.size() > 0)
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        a locala = (a)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
+        default: 
+          AppMethodBeat.o(91738);
+          return -1;
+        case 1: 
+          locala.KgO = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91738);
+          return 0;
+        case 2: 
+          locala.KgP = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91738);
+          return 0;
+        case 3: 
+          locala.KgQ = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(91738);
+          return 0;
+        case 4: 
+          locala.url = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91738);
+          return 0;
+        case 5: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
           paramInt = 0;
-          i = 0;
-          if (i < paramLinkedList.size()) {
-            break label90;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new g();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((g)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            locala.KgR = ((g)localObject1);
+            paramInt += 1;
           }
-          i = paramInt;
+          AppMethodBeat.o(91738);
+          return 0;
         }
-        break;
+        locala.Dvu = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(91738);
+        return 0;
       }
+      AppMethodBeat.o(91738);
+      return -1;
     }
-    label90:
-    do
-    {
-      AppMethodBeat.o(51864);
-      return i;
-      j = e.a.a.b.b.a.eY(((Integer)paramLinkedList.get(i)).intValue());
-      i += 1;
-      paramInt = j + paramInt;
-      break;
-      i = j;
-    } while (paramLinkedList.size() <= 0);
-    paramInt = 0;
-    i = 0;
-    for (;;)
-    {
-      if (i >= paramLinkedList.size())
-      {
-        i = paramInt;
-        break;
-      }
-      j = e.a.a.b.b.a.ap(((Long)paramLinkedList.get(i)).longValue());
-      i += 1;
-      paramInt = j + paramInt;
-    }
-  }
-  
-  public static int f(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(156876);
-    paramInt = e.a.a.b.b.a.f(paramInt, paramString);
-    AppMethodBeat.o(156876);
-    return paramInt;
-  }
-  
-  public static int iO(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(156875);
-    paramInt1 = e.a.a.b.b.a.bl(paramInt1, paramInt2);
-    AppMethodBeat.o(156875);
-    return paramInt1;
-  }
-  
-  public static int iP(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(51861);
-    paramInt1 = e.a.a.b.b.a.eW(paramInt1);
-    int i = e.a.a.b.b.a.eY(paramInt2);
-    AppMethodBeat.o(51861);
-    return paramInt1 + i + paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     e.a.a.a
  * JD-Core Version:    0.7.0.1
  */

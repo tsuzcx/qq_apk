@@ -11,9 +11,9 @@ public final class j
   
   static
   {
-    AppMethodBeat.i(87841);
+    AppMethodBeat.i(112783);
     SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(i.info, "CardQrCodeConfi") };
-    AppMethodBeat.o(87841);
+    AppMethodBeat.o(112783);
   }
   
   public j(e parame)
@@ -22,17 +22,17 @@ public final class j
     this.db = parame;
   }
   
-  public final i HK(String paramString)
+  public final i Qu(String paramString)
   {
-    AppMethodBeat.i(87840);
+    AppMethodBeat.i(112782);
     i locali = new i();
     locali.field_card_id = paramString;
     if (get(locali, new String[0]))
     {
-      AppMethodBeat.o(87840);
+      AppMethodBeat.o(112782);
       return locali;
     }
-    AppMethodBeat.o(87840);
+    AppMethodBeat.o(112782);
     return null;
   }
 }

@@ -2,28 +2,28 @@ package com.tencent.mm.plugin.sns.lucky.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.lucky.a.m;
-import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.mm.plugin.sns.storage.p;
 
 public final class a
 {
-  public static void a(int paramInt, n paramn)
+  public static void a(int paramInt, p paramp)
   {
-    AppMethodBeat.i(35899);
-    if (paramn != null)
+    AppMethodBeat.i(95196);
+    if (paramp != null)
     {
-      paramn.csh();
+      paramp.dxy();
       if (paramInt == 2) {
-        m.k(paramn);
+        m.n(paramp);
       }
-      m.m(paramn);
+      m.p(paramp);
       System.currentTimeMillis();
     }
-    AppMethodBeat.o(35899);
+    AppMethodBeat.o(95196);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.b.a
  * JD-Core Version:    0.7.0.1
  */

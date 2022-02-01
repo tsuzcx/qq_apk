@@ -2,7 +2,7 @@ package com.tencent.mm.wear.app.ui.widget;
 
 public abstract interface b
 {
-  public abstract void aj(int paramInt1, int paramInt2);
+  public abstract void am(int paramInt1, int paramInt2);
 }
 
 

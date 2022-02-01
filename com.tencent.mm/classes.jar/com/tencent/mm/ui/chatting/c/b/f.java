@@ -1,22 +1,28 @@
 package com.tencent.mm.ui.chatting.c.b;
 
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.c.v;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.ui.chatting.c.ab;
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract interface f
-  extends v
+  extends ab
 {
-  public abstract void a(List<String> paramList, String paramString, bi parambi);
+  public abstract boolean Vq();
   
-  public abstract void aO(LinkedList<String> paramLinkedList);
+  public abstract void a(List<String> paramList, String paramString, bl parambl);
   
-  public abstract CharSequence atS(String paramString);
+  public abstract CharSequence aKG(String paramString);
   
-  public abstract boolean dHN();
+  public abstract void bj(LinkedList<String> paramLinkedList);
   
-  public abstract boolean dHO();
+  public abstract boolean eWU();
+  
+  public abstract boolean eWV();
+  
+  public abstract boolean eWW();
+  
+  public abstract boolean eWX();
 }
 
 

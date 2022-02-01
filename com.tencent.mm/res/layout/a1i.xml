@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/y" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView android:id="@id/lo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="@dimen/g2" android:textColor="@color/n" android:id="@id/zt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/fy" android:text="@string/c1m" />
-    <ProgressBar android:id="@id/byv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/fy" style="@style/a00" />
-</LinearLayout>
+<merge>
+    <RelativeLayout android:background="@color/nd" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textSize="@dimen/a2n" android:textColor="@color/a_u" android:id="@id/cjj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:text="@string/bwb" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
+        <Button android:textSize="@dimen/hs" android:id="@id/bs5" android:layout_height="wrap_content" android:layout_marginBottom="36.0dip" android:text="@string/bw_" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/o7" />
+    </RelativeLayout>
+</merge>

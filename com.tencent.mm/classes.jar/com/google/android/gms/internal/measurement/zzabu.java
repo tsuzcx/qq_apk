@@ -8,7 +8,7 @@ public enum zzabu
   
   static
   {
-    AppMethodBeat.i(3430);
+    AppMethodBeat.i(40220);
     zzbwe = new zzabu("INT", 0, Integer.valueOf(0));
     zzbwf = new zzabu("LONG", 1, Long.valueOf(0L));
     zzbwg = new zzabu("FLOAT", 2, Float.valueOf(0.0F));
@@ -19,7 +19,7 @@ public enum zzabu
     zzbwl = new zzabu("ENUM", 7, null);
     zzbwm = new zzabu("MESSAGE", 8, null);
     zzbwo = new zzabu[] { zzbwe, zzbwf, zzbwg, zzbwh, zzbwi, zzbwj, zzbwk, zzbwl, zzbwm };
-    AppMethodBeat.o(3430);
+    AppMethodBeat.o(40220);
   }
   
   private zzabu(Object paramObject)

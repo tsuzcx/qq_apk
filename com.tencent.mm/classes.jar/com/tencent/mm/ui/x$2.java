@@ -1,22 +1,39 @@
 package com.tencent.mm.ui;
 
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ub;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.platformtools.t;
+import com.tencent.mm.ui.base.b;
 
 final class x$2
-  extends c<ub>
+  implements DialogInterface.OnClickListener
 {
-  x$2(x paramx)
+  x$2(Intent paramIntent, Activity paramActivity) {}
+  
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(29655);
-    this.__eventId = ub.class.getName().hashCode();
-    AppMethodBeat.o(29655);
+    AppMethodBeat.i(33438);
+    if (this.FPa != null)
+    {
+      this.hUJ.finish();
+      paramDialogInterface = this.hUJ;
+      Object localObject = this.FPa;
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/ui/MMErrorProcessor$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(paramDialogInterface, "com/tencent/mm/ui/MMErrorProcessor$3", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      b.W(this.hUJ, this.FPa);
+      t.cO(this.hUJ);
+    }
+    AppMethodBeat.o(33438);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.x.2
  * JD-Core Version:    0.7.0.1
  */

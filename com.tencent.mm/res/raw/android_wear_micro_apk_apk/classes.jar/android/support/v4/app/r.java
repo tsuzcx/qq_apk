@@ -1,298 +1,156 @@
 package android.support.v4.app;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.b.q;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.content.res.Configuration;
+import android.os.Parcelable;
+import android.util.AttributeSet;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
-import java.io.FileDescriptor;
-import java.io.PrintWriter;
 
-public abstract class r<E>
-  extends p
+public final class r
 {
-  final t aY = new t();
-  private ak bs;
-  private boolean bt;
-  private boolean bu;
-  private final Activity cj;
-  final int ck;
-  private q<String, ai> cl;
-  private boolean cm;
-  final Context mContext;
-  private final Handler mHandler;
+  private final s<?> cJ;
   
-  private r(Activity paramActivity, Context paramContext, Handler paramHandler)
+  private r(s<?> params)
   {
-    this.cj = paramActivity;
-    this.mContext = paramContext;
-    this.mHandler = paramHandler;
-    this.ck = 0;
+    this.cJ = params;
   }
   
-  r(FragmentActivity paramFragmentActivity)
+  public static r a(s<?> params)
   {
-    this(paramFragmentActivity, paramFragmentActivity, paramFragmentActivity.mHandler);
+    return new r(params);
   }
   
-  public boolean S()
+  public final Fragment a(String paramString)
   {
-    return true;
+    return this.cJ.cI.a(paramString);
   }
   
-  public void T() {}
-  
-  final q<String, ai> X()
+  public final void a(Parcelable paramParcelable, ae paramae)
   {
-    int k;
-    if (this.cl != null)
-    {
-      int m = this.cl.size();
-      ak[] arrayOfak = new ak[m];
-      int i = m - 1;
-      while (i >= 0)
-      {
-        arrayOfak[i] = ((ak)this.cl.valueAt(i));
-        i -= 1;
-      }
-      boolean bool = this.cm;
-      int j = 0;
-      i = 0;
-      k = i;
-      if (j < m)
-      {
-        ak localak = arrayOfak[j];
-        if ((!localak.bj) && (bool))
-        {
-          if (!localak.ej) {
-            localak.as();
-          }
-          localak.au();
-        }
-        if (localak.bj) {
-          i = 1;
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
-          localak.ax();
-          this.cl.remove(localak.aM);
-        }
-      }
-    }
-    else
-    {
-      k = 0;
-    }
-    if (k != 0) {
-      return this.cl;
-    }
-    return null;
+    this.cJ.cI.a(paramParcelable, paramae);
   }
   
-  final boolean Y()
+  public final t ah()
   {
-    return this.cm;
+    return this.cJ.cI;
   }
   
-  final ak a(String paramString, boolean paramBoolean)
+  public final void al()
   {
-    if (this.cl == null) {
-      this.cl = new q();
-    }
-    paramString = (ak)this.cl.get(paramString);
-    if ((paramBoolean) && (paramString != null) && (!paramString.ej)) {
-      paramString.as();
-    }
-    return paramString;
+    this.cJ.cI.a(this.cJ, this.cJ, null);
   }
   
-  public void a(Fragment paramFragment, Intent paramIntent, int paramInt, Bundle paramBundle)
+  public final ae am()
   {
-    if (paramInt != -1) {
-      throw new IllegalStateException("Starting activity with a requestCode requires a FragmentActivity host");
-    }
-    this.mContext.startActivity(paramIntent);
+    return this.cJ.cI.ay();
   }
   
-  final void a(q<String, ai> paramq)
+  public final void an()
   {
-    if (paramq != null)
-    {
-      int j = paramq.size();
-      int i = 0;
-      while (i < j)
-      {
-        ((ak)paramq.valueAt(i)).aZ = this;
-        i += 1;
-      }
-    }
-    this.cl = paramq;
+    this.cJ.cI.an();
   }
   
-  public void a(String paramString, PrintWriter paramPrintWriter, String[] paramArrayOfString) {}
-  
-  final void b(String paramString)
+  public final void dispatchActivityCreated()
   {
-    if (this.cl != null)
-    {
-      ak localak = (ak)this.cl.get(paramString);
-      if ((localak != null) && (!localak.bj))
-      {
-        localak.ax();
-        this.cl.remove(paramString);
-      }
-    }
+    this.cJ.cI.dispatchActivityCreated();
   }
   
-  final void doLoaderDestroy()
+  public final void dispatchConfigurationChanged(Configuration paramConfiguration)
   {
-    if (this.bs == null) {
-      return;
-    }
-    this.bs.ax();
+    this.cJ.cI.dispatchConfigurationChanged(paramConfiguration);
   }
   
-  final void doLoaderStart()
+  public final boolean dispatchContextItemSelected(MenuItem paramMenuItem)
   {
-    if (this.bt) {
-      return;
-    }
-    this.bt = true;
-    if (this.bs != null) {
-      this.bs.as();
-    }
-    for (;;)
-    {
-      this.bu = true;
-      return;
-      if (!this.bu)
-      {
-        this.bs = a("(root)", this.bt);
-        if ((this.bs != null) && (!this.bs.ej)) {
-          this.bs.as();
-        }
-      }
-    }
+    return this.cJ.cI.dispatchContextItemSelected(paramMenuItem);
   }
   
-  final void doLoaderStop(boolean paramBoolean)
+  public final void dispatchCreate()
   {
-    this.cm = paramBoolean;
-    if (this.bs == null) {}
-    while (!this.bt) {
-      return;
-    }
-    this.bt = false;
-    if (paramBoolean)
-    {
-      this.bs.au();
-      return;
-    }
-    this.bs.at();
+    this.cJ.cI.dispatchCreate();
   }
   
-  final void dumpLoaders(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
+  public final boolean dispatchCreateOptionsMenu(Menu paramMenu, MenuInflater paramMenuInflater)
   {
-    paramPrintWriter.print(paramString);
-    paramPrintWriter.print("mLoadersStarted=");
-    paramPrintWriter.println(this.bt);
-    if (this.bs != null)
-    {
-      paramPrintWriter.print(paramString);
-      paramPrintWriter.print("Loader Manager ");
-      paramPrintWriter.print(Integer.toHexString(System.identityHashCode(this.bs)));
-      paramPrintWriter.println(":");
-      this.bs.dump(paramString + "  ", paramFileDescriptor, paramPrintWriter, paramArrayOfString);
-    }
+    return this.cJ.cI.dispatchCreateOptionsMenu(paramMenu, paramMenuInflater);
   }
   
-  final Activity getActivity()
+  public final void dispatchDestroy()
   {
-    return this.cj;
+    this.cJ.cI.dispatchDestroy();
   }
   
-  final Handler getHandler()
+  public final void dispatchLowMemory()
   {
-    return this.mHandler;
+    this.cJ.cI.dispatchLowMemory();
   }
   
-  public View onFindViewById(int paramInt)
+  public final void dispatchMultiWindowModeChanged(boolean paramBoolean)
   {
-    return null;
+    this.cJ.cI.dispatchMultiWindowModeChanged(paramBoolean);
   }
   
-  public LayoutInflater onGetLayoutInflater()
+  public final boolean dispatchOptionsItemSelected(MenuItem paramMenuItem)
   {
-    return (LayoutInflater)this.mContext.getSystemService("layout_inflater");
+    return this.cJ.cI.dispatchOptionsItemSelected(paramMenuItem);
   }
   
-  public int onGetWindowAnimations()
+  public final void dispatchOptionsMenuClosed(Menu paramMenu)
   {
-    return this.ck;
+    this.cJ.cI.dispatchOptionsMenuClosed(paramMenu);
   }
   
-  public boolean onHasView()
+  public final void dispatchPause()
   {
-    return true;
+    this.cJ.cI.dispatchPause();
   }
   
-  public boolean onHasWindowAnimations()
+  public final void dispatchPictureInPictureModeChanged(boolean paramBoolean)
   {
-    return true;
+    this.cJ.cI.dispatchPictureInPictureModeChanged(paramBoolean);
   }
   
-  final void reportLoaderStart()
+  public final boolean dispatchPrepareOptionsMenu(Menu paramMenu)
   {
-    if (this.cl != null)
-    {
-      int k = this.cl.size();
-      ak[] arrayOfak = new ak[k];
-      int i = k - 1;
-      while (i >= 0)
-      {
-        arrayOfak[i] = ((ak)this.cl.valueAt(i));
-        i -= 1;
-      }
-      i = 0;
-      while (i < k)
-      {
-        ak localak = arrayOfak[i];
-        if (localak.bj)
-        {
-          if (ak.DEBUG) {
-            Log.v("LoaderManager", "Finished Retaining in " + localak);
-          }
-          localak.bj = false;
-          int j = localak.eh.size() - 1;
-          while (j >= 0)
-          {
-            al localal = (al)localak.eh.valueAt(j);
-            if (localal.bj)
-            {
-              if (ak.DEBUG) {
-                Log.v("LoaderManager", "  Finished Retaining: " + localal);
-              }
-              localal.bj = false;
-              if ((localal.ej != localal.eq) && (!localal.ej)) {
-                localal.stop();
-              }
-            }
-            if ((localal.ej) && (localal.en) && (!localal.er)) {
-              localal.a(localal.em, localal.ep);
-            }
-            j -= 1;
-          }
-        }
-        localak.aw();
-        i += 1;
-      }
-    }
+    return this.cJ.cI.dispatchPrepareOptionsMenu(paramMenu);
+  }
+  
+  public final void dispatchResume()
+  {
+    this.cJ.cI.dispatchResume();
+  }
+  
+  public final void dispatchStart()
+  {
+    this.cJ.cI.dispatchStart();
+  }
+  
+  public final void dispatchStop()
+  {
+    this.cJ.cI.dispatchStop();
+  }
+  
+  public final boolean execPendingActions()
+  {
+    return this.cJ.cI.execPendingActions();
+  }
+  
+  public final void noteStateNotSaved()
+  {
+    this.cJ.cI.noteStateNotSaved();
+  }
+  
+  public final View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    return this.cJ.cI.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
+  }
+  
+  public final Parcelable saveAllState()
+  {
+    return this.cJ.cI.saveAllState();
   }
 }
 

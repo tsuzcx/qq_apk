@@ -6,44 +6,44 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a BxY;
-  private a BxZ;
-  private Handler Bya;
+  private static a IHb;
+  private a IHc;
+  private Handler IHd;
   private HandlerThread mThread;
   
   static
   {
-    AppMethodBeat.i(113227);
-    BxY = new a();
-    AppMethodBeat.o(113227);
+    AppMethodBeat.i(159964);
+    IHb = new a();
+    AppMethodBeat.o(159964);
   }
   
-  public static a dWP()
+  public static a fpj()
   {
-    return BxY;
+    return IHb;
   }
   
   public final void execute(Runnable paramRunnable)
   {
-    AppMethodBeat.i(113226);
-    if (this.BxZ == null)
+    AppMethodBeat.i(159963);
+    if (this.IHc == null)
     {
       if ((this.mThread == null) || (!this.mThread.isAlive()))
       {
         this.mThread = new HandlerThread("WhenHandler");
         this.mThread.start();
-        this.Bya = new Handler(this.mThread.getLooper());
+        this.IHd = new Handler(this.mThread.getLooper());
       }
-      this.Bya.post(paramRunnable);
+      this.IHd.post(paramRunnable);
     }
-    AppMethodBeat.o(113226);
+    AppMethodBeat.o(159963);
   }
   
   public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.toybrick.e.a
  * JD-Core Version:    0.7.0.1
  */

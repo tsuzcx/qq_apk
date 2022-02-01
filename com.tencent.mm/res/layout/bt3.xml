@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/hmz" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/hmu" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/hmv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ci" android:layout_toEndOf="@id/hmu">
+        <TextView android:textSize="15.0dip" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hmw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hmx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="xxx的直播" android:singleLine="true" />
+    </LinearLayout>
+</RelativeLayout>

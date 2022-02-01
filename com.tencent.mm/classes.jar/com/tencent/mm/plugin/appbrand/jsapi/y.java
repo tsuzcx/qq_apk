@@ -1,15 +1,21 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-abstract class y
-  implements c.a
+import com.tencent.mm.plugin.appbrand.jsruntime.o;
+import org.json.JSONObject;
+
+public abstract class y<CONTEXT extends c>
+  extends m
 {
-  public final void BI(String paramString) {}
+  public abstract String a(CONTEXT paramCONTEXT, JSONObject paramJSONObject);
   
-  public void proceed() {}
+  public String a(CONTEXT paramCONTEXT, JSONObject paramJSONObject, o paramo)
+  {
+    return "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.y
  * JD-Core Version:    0.7.0.1
  */

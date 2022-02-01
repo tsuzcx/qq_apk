@@ -2,12 +2,12 @@ package com.tencent.mm.vending.a;
 
 public final class h
 {
-  private _Index Zv;
+  private _Index acV;
   
   h(_Index param_Index)
   {
     Object localObject;
-    this.Zv = localObject;
+    this.acV = localObject;
   }
 }
 

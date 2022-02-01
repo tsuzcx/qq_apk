@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/gqn" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="5.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="3.0">
+        <com.tencent.mm.pluginsdk.ui.VoiceInputScrollView android:layout_gravity="center" android:id="@id/gqq" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="18.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="18.0dip" android:layout_marginBottom="18.0dip" android:fillViewport="true" android:fadeScrollbars="false">
+            <FrameLayout android:id="@id/gqo" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/akw" android:textColor="@color/y4" android:gravity="center|left|top" android:layout_gravity="center|left|top" android:id="@id/gqt" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cursorVisible="true" android:layout_centerHorizontal="true" android:lineSpacingMultiplier="1.2" android:textCursorDrawable="@drawable/x5" />
+                <ImageView android:gravity="center|left|top" android:layout_gravity="center|left|top" android:id="@id/gqs" android:paddingTop="10.0dip" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="2.0dip" android:layout_centerHorizontal="true" />
+            </FrameLayout>
+        </com.tencent.mm.pluginsdk.ui.VoiceInputScrollView>
+        <TextView android:textSize="13.0dip" android:textColor="@color/y0" android:id="@id/ft4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ahb" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/gqk" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginBottom="15.0dip" android:weightSum="4.0" android:layout_weight="2.0">
+        <ImageButton android:gravity="center" android:layout_gravity="center" android:id="@id/gqm" android:background="@null" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:src="@drawable/ago" android:layout_weight="1.0" />
+        <Button android:textSize="16.0dip" android:textColor="@color/fj" android:gravity="center" android:layout_gravity="center" android:id="@id/gql" android:background="@null" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/r8" android:layout_weight="1.0" />
+        <com.tencent.mm.pluginsdk.ui.websearch.WebSearchVoiceInputLayoutImpl android:layout_gravity="center" android:id="@id/gqu" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="2.0" />
+        <Button android:textSize="16.0dip" android:textColor="@color/fx" android:gravity="center" android:layout_gravity="center" android:id="@id/gqr" android:background="@null" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="@string/g_h" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/cy1" android:key="mail_receiver_info_name" android:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/cy0" android:key="mail_receiver_info_addr" android:layout="@layout/afi" />
+    <com.tencent.mm.ui.base.preference.HeadImgNewPreference android:key="settings_avatar" android:layout="@layout/aop" android:title="@string/c8x" />
+    <Preference android:key="settings_nickname" android:layout="@layout/aop" android:title="@string/cb_" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/dgc" android:key="mail_compose_btn" android:layout="@layout/a95" />
+    <Preference android:key="settings_sex" android:layout="@layout/aop" android:title="@string/f_v" />
+    <Preference android:key="settings_district" android:layout="@layout/aop" android:title="@string/c_0" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_signature" android:layout="@layout/aop" android:title="@string/cde" />
 </PreferenceScreen>

@@ -2,138 +2,144 @@ package com.tencent.mm.plugin.appbrand;
 
 import android.support.v4.e.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ad.b;
 import com.tencent.mm.plugin.appbrand.page.a.c.a;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class n
 {
-  private static final Map<String, n> eEq;
-  private static final n gQU;
-  public volatile String gQV;
-  public final AtomicInteger gQW;
-  public final AtomicBoolean gQX;
-  public c.a gQY;
-  public volatile String gQZ;
-  public volatile String gRa;
-  public volatile boolean gRb;
-  public volatile boolean gRc;
-  public volatile boolean gRd;
-  public volatile String gRe;
-  public volatile int gRf;
-  public volatile boolean gRg;
-  public volatile boolean gRh;
-  public volatile boolean gRi;
+  private static final Map<String, n> fZD;
+  private static final n iFJ;
+  public b iFK;
+  public volatile String iFL;
+  public final AtomicInteger iFM;
+  public final AtomicBoolean iFN;
+  public c.a iFO;
+  public volatile String iFP;
+  public volatile String iFQ;
+  public volatile boolean iFR;
+  public volatile boolean iFS;
+  public volatile boolean iFT;
+  public volatile String iFU;
+  public volatile int iFV;
+  public volatile boolean iFW;
+  public volatile boolean iFX;
+  public volatile boolean iFY;
+  public volatile boolean iFZ;
+  public volatile long lastResumeTime;
   
   static
   {
-    AppMethodBeat.i(86746);
-    eEq = new a();
-    gQU = new n();
-    AppMethodBeat.o(86746);
+    AppMethodBeat.i(134573);
+    fZD = new a();
+    iFJ = new n();
+    AppMethodBeat.o(134573);
   }
   
   private n()
   {
-    AppMethodBeat.i(86739);
-    this.gQW = new AtomicInteger();
-    this.gQX = new AtomicBoolean(false);
-    this.gQY = null;
-    this.gRg = false;
-    this.gRh = false;
-    this.gRi = false;
-    AppMethodBeat.o(86739);
+    AppMethodBeat.i(134566);
+    this.iFK = new b();
+    this.iFM = new AtomicInteger();
+    this.iFN = new AtomicBoolean(false);
+    this.iFO = null;
+    this.iFW = false;
+    this.iFX = false;
+    this.iFY = false;
+    this.iFZ = false;
+    AppMethodBeat.o(134566);
   }
   
-  static void remove(String paramString)
+  public static n Dl(String paramString)
   {
-    AppMethodBeat.i(86743);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(86743);
-      return;
-    }
-    synchronized (eEq)
-    {
-      eEq.remove(paramString);
-      AppMethodBeat.o(86743);
-      return;
-    }
-  }
-  
-  public static n xZ(String paramString)
-  {
-    AppMethodBeat.i(86740);
-    paramString = ya(paramString);
-    AppMethodBeat.o(86740);
+    AppMethodBeat.i(134567);
+    paramString = Dm(paramString);
+    AppMethodBeat.o(134567);
     return paramString;
   }
   
-  private static n ya(String paramString)
+  private static n Dm(String paramString)
   {
-    AppMethodBeat.i(86741);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(134568);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(86741);
+      AppMethodBeat.o(134568);
       return null;
     }
-    synchronized (eEq)
+    synchronized (fZD)
     {
-      n localn2 = (n)eEq.get(paramString);
+      n localn2 = (n)fZD.get(paramString);
       n localn1 = localn2;
       if (localn2 == null)
       {
         localn1 = new n();
-        eEq.put(paramString, localn1);
+        fZD.put(paramString, localn1);
       }
-      AppMethodBeat.o(86741);
+      AppMethodBeat.o(134568);
       return localn1;
     }
   }
   
-  private static n yb(String paramString)
+  private static n Dn(String paramString)
   {
-    AppMethodBeat.i(86742);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(134569);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(86742);
+      AppMethodBeat.o(134569);
       return null;
     }
-    synchronized (eEq)
+    synchronized (fZD)
     {
-      paramString = (n)eEq.get(paramString);
-      AppMethodBeat.o(86742);
+      paramString = (n)fZD.get(paramString);
+      AppMethodBeat.o(134569);
       return paramString;
     }
   }
   
-  public static n yc(String paramString)
+  public static n Do(String paramString)
   {
-    AppMethodBeat.i(86744);
-    paramString = yb(paramString);
+    AppMethodBeat.i(134571);
+    paramString = Dn(paramString);
     if (paramString == null)
     {
-      paramString = gQU;
-      AppMethodBeat.o(86744);
+      paramString = iFJ;
+      AppMethodBeat.o(134571);
       return paramString;
     }
-    AppMethodBeat.o(86744);
+    AppMethodBeat.o(134571);
     return paramString;
   }
   
-  public static n yd(String paramString)
+  public static n Dp(String paramString)
   {
-    AppMethodBeat.i(86745);
-    paramString = ya(paramString);
-    AppMethodBeat.o(86745);
+    AppMethodBeat.i(134572);
+    paramString = Dm(paramString);
+    AppMethodBeat.o(134572);
     return paramString;
+  }
+  
+  static void remove(String paramString)
+  {
+    AppMethodBeat.i(134570);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(134570);
+      return;
+    }
+    synchronized (fZD)
+    {
+      fZD.remove(paramString);
+      AppMethodBeat.o(134570);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.n
  * JD-Core Version:    0.7.0.1
  */

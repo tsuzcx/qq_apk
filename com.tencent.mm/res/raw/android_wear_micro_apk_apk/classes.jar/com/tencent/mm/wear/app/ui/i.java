@@ -6,7 +6,7 @@ import com.tencent.mm.wear.app.MMApplication;
 
 public final class i
 {
-  public static Typeface afr = Typeface.createFromAsset(MMApplication.getContext().getAssets(), "NotoSans-Regular.ttf");
+  public static Typeface aiT = Typeface.createFromAsset(MMApplication.getContext().getAssets(), "NotoSans-Regular.ttf");
 }
 
 

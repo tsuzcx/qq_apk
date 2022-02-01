@@ -1,11 +1,11 @@
 package com.tencent.mm.loader.h.a;
 
-import a.l;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/loader/model/data/ILoaderData;", "", "uniqueValue", "", "libimageloader_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/model/data/ILoaderData;", "", "isLegal", "", "uniqueValue", "", "libimageloader_release"})
 public abstract interface c
 {
-  public abstract String Ug();
+  public abstract String aaX();
 }
 
 

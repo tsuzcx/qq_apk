@@ -14,24 +14,24 @@ final class q$4
   
   public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(123701);
-    if ((!TextUtils.isEmpty(paramCharSequence)) && (q.a(this.jmB) != null))
+    AppMethodBeat.i(136435);
+    if ((!TextUtils.isEmpty(paramCharSequence)) && (q.a(this.mcr) != null))
     {
       if ((paramCharSequence instanceof Spannable)) {}
       for (paramCharSequence = (Spannable)paramCharSequence;; paramCharSequence = new SpannableStringBuilder(paramCharSequence))
       {
-        paramCharSequence.setSpan(q.a(this.jmB), 0, paramCharSequence.length(), 18);
-        AppMethodBeat.o(123701);
+        paramCharSequence.setSpan(q.a(this.mcr), 0, paramCharSequence.length(), 18);
+        AppMethodBeat.o(136435);
         return paramCharSequence;
       }
     }
-    AppMethodBeat.o(123701);
+    AppMethodBeat.o(136435);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.q.4
  * JD-Core Version:    0.7.0.1
  */

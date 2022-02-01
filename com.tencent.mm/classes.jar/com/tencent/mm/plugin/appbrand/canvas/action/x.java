@@ -14,61 +14,61 @@ public final class x
 {
   private static boolean b(com.tencent.mm.plugin.appbrand.canvas.d paramd, String paramString)
   {
-    AppMethodBeat.i(103260);
+    AppMethodBeat.i(144943);
     if ("butt".equalsIgnoreCase(paramString))
     {
-      paramd.heC.setStrokeCap(Paint.Cap.BUTT);
-      paramd.heB.setStrokeCap(Paint.Cap.BUTT);
+      paramd.iYM.setStrokeCap(Paint.Cap.BUTT);
+      paramd.iYL.setStrokeCap(Paint.Cap.BUTT);
     }
     for (;;)
     {
-      AppMethodBeat.o(103260);
+      AppMethodBeat.o(144943);
       return true;
       if ("round".equalsIgnoreCase(paramString))
       {
-        paramd.heC.setStrokeCap(Paint.Cap.ROUND);
-        paramd.heB.setStrokeCap(Paint.Cap.ROUND);
+        paramd.iYM.setStrokeCap(Paint.Cap.ROUND);
+        paramd.iYL.setStrokeCap(Paint.Cap.ROUND);
       }
       else if ("square".equalsIgnoreCase(paramString))
       {
-        paramd.heC.setStrokeCap(Paint.Cap.SQUARE);
-        paramd.heB.setStrokeCap(Paint.Cap.SQUARE);
+        paramd.iYM.setStrokeCap(Paint.Cap.SQUARE);
+        paramd.iYL.setStrokeCap(Paint.Cap.SQUARE);
       }
     }
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    AppMethodBeat.i(103261);
+    AppMethodBeat.i(144944);
     paramCanvas = (SetLineCapActionArg)paramDrawActionArg;
     if (paramCanvas == null)
     {
-      AppMethodBeat.o(103261);
+      AppMethodBeat.o(144944);
       return false;
     }
-    boolean bool = b(paramd, paramCanvas.hfe);
-    AppMethodBeat.o(103261);
+    boolean bool = b(paramd, paramCanvas.iZn);
+    AppMethodBeat.o(144944);
     return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103259);
+    AppMethodBeat.i(144942);
     if (paramJSONArray.length() <= 0)
     {
-      AppMethodBeat.o(103259);
+      AppMethodBeat.o(144942);
       return false;
     }
     boolean bool = b(paramd, paramJSONArray.optString(0));
-    AppMethodBeat.o(103259);
+    AppMethodBeat.o(144942);
     return bool;
   }
   
-  public final BaseDrawActionArg axW()
+  public final BaseDrawActionArg aSP()
   {
-    AppMethodBeat.i(103258);
+    AppMethodBeat.i(144941);
     SetLineCapActionArg localSetLineCapActionArg = new SetLineCapActionArg();
-    AppMethodBeat.o(103258);
+    AppMethodBeat.o(144941);
     return localSetLineCapActionArg;
   }
   
@@ -79,7 +79,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.x
  * JD-Core Version:    0.7.0.1
  */

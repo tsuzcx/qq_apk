@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="t">बाहेर पडा</string>
+    <string name="dismiss_overlay_button_label">बाहेर पडा</string>
 </resources>

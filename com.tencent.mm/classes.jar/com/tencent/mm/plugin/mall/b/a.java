@@ -2,92 +2,82 @@ package com.tencent.mm.plugin.mall.b;
 
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.g;
-import com.tencent.mm.at.a.a.c;
-import com.tencent.mm.at.a.a.c.a;
-import com.tencent.mm.at.o;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.g.a.tg;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.aw.a.a.c;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.aw.o;
+import com.tencent.mm.b.g;
+import com.tencent.mm.g.a.vd;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.text.SimpleDateFormat;
 
 public final class a
 {
-  private static SimpleDateFormat kCj;
-  private static SimpleDateFormat kCk;
-  private static final String oBb;
+  private static SimpleDateFormat nJi = null;
+  private static SimpleDateFormat nJj = null;
   
-  static
+  private static String afC(String paramString)
   {
-    AppMethodBeat.i(43283);
-    kCj = null;
-    kCk = null;
-    oBb = e.eQz + "wallet/mall";
-    AppMethodBeat.o(43283);
-  }
-  
-  private static String SA(String paramString)
-  {
-    AppMethodBeat.i(43282);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(66185);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(43282);
+      AppMethodBeat.o(66185);
       return null;
     }
-    paramString = String.format("%s/%s", new Object[] { oBb, g.w(paramString.getBytes()) });
-    AppMethodBeat.o(43282);
+    paramString = String.format("%s/%s", new Object[] { b.aih() + "wallet/mall", g.getMessageDigest(paramString.getBytes()) });
+    AppMethodBeat.o(66185);
     return paramString;
   }
   
-  public static void bOS()
+  public static void cNI()
   {
-    AppMethodBeat.i(43279);
-    tg localtg = new tg();
-    localtg.cJH.cJI = false;
-    com.tencent.mm.sdk.b.a.ymk.l(localtg);
-    AppMethodBeat.o(43279);
+    AppMethodBeat.i(66182);
+    vd localvd = new vd();
+    localvd.dAB.dAC = false;
+    com.tencent.mm.sdk.b.a.ESL.l(localvd);
+    AppMethodBeat.o(66182);
   }
   
   public static void d(ImageView paramImageView, String paramString, int paramInt)
   {
-    AppMethodBeat.i(43281);
+    AppMethodBeat.i(66184);
     if (paramImageView == null)
     {
-      AppMethodBeat.o(43281);
+      AppMethodBeat.o(66184);
       return;
     }
     paramImageView.setImageBitmap(null);
-    if (!bo.isNullOrNil(paramString))
+    if (!bt.isNullOrNil(paramString))
     {
       Object localObject = new c.a();
-      ((c.a)localObject).eNP = SA(paramString);
-      ((c.a)localObject).eNM = true;
-      ((c.a)localObject).eOe = true;
-      ((c.a)localObject).eOk = false;
+      ((c.a)localObject).prefixPath = afC(paramString);
+      ((c.a)localObject).hjU = true;
+      ((c.a)localObject).gjA = true;
+      ((c.a)localObject).gkG = false;
       if (paramInt != 0) {
-        ((c.a)localObject).eNY = paramInt;
+        ((c.a)localObject).hkf = paramInt;
       }
-      localObject = ((c.a)localObject).ahY();
-      o.ahG().a(paramString, paramImageView, (c)localObject);
-      AppMethodBeat.o(43281);
+      localObject = ((c.a)localObject).azc();
+      o.ayJ().a(paramString, paramImageView, (c)localObject);
+      AppMethodBeat.o(66184);
       return;
     }
     if (paramInt != 0) {
       paramImageView.setImageResource(paramInt);
     }
-    AppMethodBeat.o(43281);
+    AppMethodBeat.o(66184);
   }
   
-  public static void o(ImageView paramImageView, String paramString)
+  public static void q(ImageView paramImageView, String paramString)
   {
-    AppMethodBeat.i(43280);
+    AppMethodBeat.i(66183);
     d(paramImageView, paramString, 0);
-    AppMethodBeat.o(43280);
+    AppMethodBeat.o(66183);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.b.a
  * JD-Core Version:    0.7.0.1
  */

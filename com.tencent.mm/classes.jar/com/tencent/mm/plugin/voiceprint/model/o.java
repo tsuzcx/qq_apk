@@ -2,70 +2,102 @@ package com.tencent.mm.plugin.voiceprint.model;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.g.a.wq;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 
 public final class o
 {
-  int trA;
-  int trB;
-  public com.tencent.mm.modelvoice.m jdField_try;
-  public ap trz;
+  public com.tencent.mm.modelvoice.m zdI;
+  public av zdJ;
+  int zdK;
+  int zdL;
   
   public o()
   {
-    AppMethodBeat.i(26118);
-    this.jdField_try = null;
-    this.trz = null;
-    this.trA = 0;
-    this.trB = 0;
-    this.jdField_try = new com.tencent.mm.modelvoice.m();
-    this.trz = new ap(Looper.getMainLooper(), new o.1(this), true);
-    AppMethodBeat.o(26118);
+    AppMethodBeat.i(29799);
+    this.zdI = null;
+    this.zdJ = null;
+    this.zdK = 0;
+    this.zdL = 0;
+    this.zdI = new com.tencent.mm.modelvoice.m();
+    this.zdJ = new av(Looper.getMainLooper(), new av.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(29798);
+        o.this.zdK += 100;
+        o.this.zdL += o.this.zdI.getMaxAmplitude() * 100 / 100;
+        if (o.this.zdK >= 3000)
+        {
+          Object localObject = o.this;
+          ad.d("MicroMsg.VoicePrintNoiseDetector", "onDetectFinish");
+          ((o)localObject).zdI.Ob();
+          ((o)localObject).zdJ.stopTimer();
+          ((o)localObject).zdL /= 30;
+          if (((o)localObject).zdL >= 30) {}
+          for (boolean bool = true;; bool = false)
+          {
+            ad.d("MicroMsg.VoicePrintNoiseDetector", "average amplitude: %d, hasNoise:%b", new Object[] { Integer.valueOf(((o)localObject).zdL), Boolean.valueOf(bool) });
+            localObject = new wq();
+            ((wq)localObject).dCd.dCe = bool;
+            a.ESL.l((b)localObject);
+            AppMethodBeat.o(29798);
+            return false;
+          }
+        }
+        AppMethodBeat.o(29798);
+        return true;
+      }
+    }, true);
+    AppMethodBeat.o(29799);
   }
   
   private void stopRecord()
   {
-    AppMethodBeat.i(26119);
-    this.jdField_try.Et();
-    ab.d("MicroMsg.VoicePrintNoiseDetector", "stop record");
-    AppMethodBeat.o(26119);
+    AppMethodBeat.i(29800);
+    this.zdI.Ob();
+    ad.d("MicroMsg.VoicePrintNoiseDetector", "stop record");
+    AppMethodBeat.o(29800);
   }
   
-  public final void cLi()
+  public final void dRq()
   {
-    AppMethodBeat.i(26120);
-    ab.d("MicroMsg.VoicePrintNoiseDetector", "start detect noise");
+    AppMethodBeat.i(29801);
+    ad.d("MicroMsg.VoicePrintNoiseDetector", "start detect noise");
     reset();
-    String str = m.bE("voice_pt_voice_print_noise_detect.rec", true);
-    if (!this.jdField_try.eH(str))
+    String str = m.bP("voice_pt_voice_print_noise_detect.rec", true);
+    if (!this.zdI.fO(str))
     {
-      this.jdField_try.Et();
+      this.zdI.Ob();
       reset();
-      ab.d("MicroMsg.VoicePrintNoiseDetector", "start record fail");
+      ad.d("MicroMsg.VoicePrintNoiseDetector", "start record fail");
     }
     for (;;)
     {
-      this.trz.ag(100L, 100L);
-      AppMethodBeat.o(26120);
+      this.zdJ.av(100L, 100L);
+      AppMethodBeat.o(29801);
       return;
-      ab.d("MicroMsg.VoicePrintNoiseDetector", "start record");
+      ad.d("MicroMsg.VoicePrintNoiseDetector", "start record");
     }
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(26121);
+    AppMethodBeat.i(29802);
     stopRecord();
-    this.trz.stopTimer();
-    this.trA = 0;
-    this.trB = 0;
-    AppMethodBeat.o(26121);
+    this.zdJ.stopTimer();
+    this.zdK = 0;
+    this.zdL = 0;
+    AppMethodBeat.o(29802);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.o
  * JD-Core Version:    0.7.0.1
  */

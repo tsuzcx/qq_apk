@@ -2,7 +2,6 @@ package com.tencent.liteav;
 
 import android.content.Context;
 import android.view.Surface;
-import android.view.TextureView;
 import com.tencent.liteav.basic.c.a;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.rtmp.TXLivePlayer.ITXAudioRawDataListener;
@@ -56,6 +55,8 @@ public abstract class m
     this.d = new WeakReference(parama);
   }
   
+  public abstract void a(com.tencent.liteav.basic.d.n paramn);
+  
   public void a(g paramg)
   {
     this.a = paramg;
@@ -84,42 +85,45 @@ public abstract class m
   
   public abstract void b(boolean paramBoolean);
   
-  public abstract int c(int paramInt);
+  public abstract void c(int paramInt);
   
-  public void c(boolean paramBoolean)
-  {
-    TXCLog.w("TXIPlayer", "autoPlay not implement");
-  }
+  public abstract void c(boolean paramBoolean);
   
   public abstract boolean c();
   
-  public TextureView d()
-  {
-    return null;
-  }
+  public abstract int d();
   
-  public void d(int paramInt)
+  public abstract int d(int paramInt);
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public void e(int paramInt)
   {
     TXCLog.w("TXIPlayer", "seek not support");
   }
   
-  public abstract int e();
+  public void e(boolean paramBoolean)
+  {
+    TXCLog.w("TXIPlayer", "autoPlay not implement");
+  }
   
-  public boolean f()
+  public boolean e()
   {
     return false;
   }
   
-  public void g() {}
+  public void f() {}
   
-  public g h()
+  public abstract int h();
+  
+  public g i()
   {
     return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.m
  * JD-Core Version:    0.7.0.1
  */

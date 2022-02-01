@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bvg" android:background="@color/a6q" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/e5p" android:background="@color/a_r" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView android:id="@id/bl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
-    <ViewStub android:id="@id/atu" android:layout="@layout/auu" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/li" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/wj" android:visibility="gone" android:layout_width="@dimen/a81" android:layout_height="@dimen/a81" android:layout_centerInParent="true" />
+    <include android:id="@id/bga" layout="@layout/aus" />
+    <android.support.v7.widget.RecyclerView android:scrollbarStyle="outsideOverlay" android:id="@id/h3x" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/bga" android:layout_alignParentTop="true" android:windowSoftInputMode="adjustResize" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/Link_100" android:id="@id/e5c" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" android:text="@string/e0o" android:layout_alignBottom="@id/h3x" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/h3m" android:background="#00000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
+        <RelativeLayout android:orientation="horizontal" android:background="#86222222" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_alignParentTop="true" />
+    </RelativeLayout>
 </RelativeLayout>

@@ -2,7 +2,7 @@ package com.tencent.mm.wear.app.ui.emoji;
 
 public abstract interface c
 {
-  public abstract void bW(int paramInt);
+  public abstract void cs(int paramInt);
 }
 
 

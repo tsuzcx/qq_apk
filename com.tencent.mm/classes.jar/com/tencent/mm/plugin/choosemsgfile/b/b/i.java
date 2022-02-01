@@ -15,18 +15,18 @@ public final class i
     super(paramg, paramLong);
   }
   
-  public final void a(l paraml, int paramInt)
+  public final void a(l paraml, int paramInt, a parama)
   {
-    AppMethodBeat.i(54308);
-    super.a(paraml, paramInt);
-    paraml.gpp.setTextColor(getContext().getResources().getColor(2131689887));
-    paraml.kFc.setBackgroundColor(getContext().getResources().getColor(2131689886));
-    AppMethodBeat.o(54308);
+    AppMethodBeat.i(162331);
+    super.a(paraml, paramInt, parama);
+    paraml.ibF.setTextColor(getContext().getResources().getColor(2131100154));
+    paraml.nMd.setBackgroundColor(getContext().getResources().getColor(2131100153));
+    AppMethodBeat.o(162331);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.i
  * JD-Core Version:    0.7.0.1
  */

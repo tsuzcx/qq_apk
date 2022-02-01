@@ -7,14 +7,14 @@ import java.util.List;
 final class y<T extends x>
   extends v<T>
 {
-  public y(T paramT)
+  y(T paramT)
   {
     super(paramT);
   }
   
   public final void onChildrenLoaded(String paramString, List<MediaBrowser.MediaItem> paramList, Bundle paramBundle)
   {
-    ((x)this.gS).e(paramList);
+    ((x)this.iQ).e(paramList);
   }
   
   public final void onError(String paramString, Bundle paramBundle) {}

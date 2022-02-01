@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/cmy" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:id="@id/f94" style="@style/il">
+        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/if" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ds" style="@style/a5o" />
+        <TextView android:textColor="@color/Link" android:layout_gravity="center_vertical" android:id="@id/ga1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dn" android:text="{tip}" style="@style/m3" />
+    </LinearLayout>
+</RelativeLayout>

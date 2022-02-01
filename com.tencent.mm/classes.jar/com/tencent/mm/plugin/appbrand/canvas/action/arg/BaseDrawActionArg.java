@@ -28,7 +28,7 @@ public abstract class BaseDrawActionArg
     return false;
   }
   
-  public boolean axX()
+  public boolean aSQ()
   {
     return false;
   }
@@ -59,7 +59,7 @@ public abstract class BaseDrawActionArg
     return super.hashCode();
   }
   
-  public void p(JSONObject paramJSONObject)
+  public void parse(JSONObject paramJSONObject)
   {
     this.method = paramJSONObject.optString("method");
   }
@@ -78,7 +78,7 @@ public abstract class BaseDrawActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg
  * JD-Core Version:    0.7.0.1
  */

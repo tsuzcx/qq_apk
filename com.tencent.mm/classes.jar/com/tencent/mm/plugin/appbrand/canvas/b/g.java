@@ -11,36 +11,36 @@ public final class g
 {
   public final boolean a(Path paramPath, BasePathActionArg paramBasePathActionArg)
   {
-    AppMethodBeat.i(103687);
+    AppMethodBeat.i(145370);
     paramBasePathActionArg = (PathLineToActionArg)paramBasePathActionArg;
     if (paramBasePathActionArg == null)
     {
-      AppMethodBeat.o(103687);
+      AppMethodBeat.o(145370);
       return false;
     }
     paramPath.lineTo(paramBasePathActionArg.x, paramBasePathActionArg.y);
-    AppMethodBeat.o(103687);
+    AppMethodBeat.o(145370);
     return true;
   }
   
   public final boolean a(Path paramPath, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103686);
+    AppMethodBeat.i(145369);
     if (paramJSONArray.length() < 2)
     {
-      AppMethodBeat.o(103686);
+      AppMethodBeat.o(145369);
       return false;
     }
-    paramPath.lineTo(com.tencent.mm.plugin.appbrand.s.g.d(paramJSONArray, 0), com.tencent.mm.plugin.appbrand.s.g.d(paramJSONArray, 1));
-    AppMethodBeat.o(103686);
+    paramPath.lineTo(com.tencent.mm.plugin.appbrand.aa.g.f(paramJSONArray, 0), com.tencent.mm.plugin.appbrand.aa.g.f(paramJSONArray, 1));
+    AppMethodBeat.o(145369);
     return true;
   }
   
-  public final BasePathActionArg ayi()
+  public final BasePathActionArg aTb()
   {
-    AppMethodBeat.i(103688);
+    AppMethodBeat.i(145371);
     PathLineToActionArg localPathLineToActionArg = new PathLineToActionArg();
-    AppMethodBeat.o(103688);
+    AppMethodBeat.o(145371);
     return localPathLineToActionArg;
   }
   
@@ -51,7 +51,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.b.g
  * JD-Core Version:    0.7.0.1
  */

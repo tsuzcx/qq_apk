@@ -1,0 +1,13 @@
+{
+  "IdentityReg" : 0.05,
+  "ExpressionReg" : 0.05,
+  "PerspectiveCamera" : true,
+  "AutoBoundary" : true,
+  "FitPose" : true,
+  "FitIdentity" : false,
+  "FitExpression" : false,
+  "ExportLandmarks3D" : true,
+  "ExportVertices" : true,
+  "ExportNormal" : false,
+  "ExportAction": true
+}

@@ -1,5 +1,7 @@
 package android.support.v7.widget;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.TimeInterpolator;
 import android.animation.ValueAnimator;
 import android.support.v4.view.t;
@@ -12,68 +14,68 @@ import java.util.List;
 public class v
   extends as
 {
-  private static TimeInterpolator acf;
-  private ArrayList<RecyclerView.v> acg = new ArrayList();
-  private ArrayList<RecyclerView.v> ach = new ArrayList();
-  private ArrayList<v.b> aci = new ArrayList();
-  private ArrayList<v.a> acj = new ArrayList();
-  ArrayList<ArrayList<RecyclerView.v>> ack = new ArrayList();
-  ArrayList<ArrayList<v.b>> acl = new ArrayList();
-  ArrayList<ArrayList<v.a>> acm = new ArrayList();
-  ArrayList<RecyclerView.v> acn = new ArrayList();
-  ArrayList<RecyclerView.v> aco = new ArrayList();
-  ArrayList<RecyclerView.v> acp = new ArrayList();
-  ArrayList<RecyclerView.v> acq = new ArrayList();
+  private static TimeInterpolator ajm;
+  private ArrayList<RecyclerView.v> ajn = new ArrayList();
+  private ArrayList<RecyclerView.v> ajo = new ArrayList();
+  private ArrayList<b> ajp = new ArrayList();
+  private ArrayList<a> ajq = new ArrayList();
+  ArrayList<ArrayList<RecyclerView.v>> ajr = new ArrayList();
+  ArrayList<ArrayList<b>> ajs = new ArrayList();
+  ArrayList<ArrayList<a>> ajt = new ArrayList();
+  ArrayList<RecyclerView.v> aju = new ArrayList();
+  ArrayList<RecyclerView.v> ajv = new ArrayList();
+  ArrayList<RecyclerView.v> ajw = new ArrayList();
+  ArrayList<RecyclerView.v> ajx = new ArrayList();
   
-  private void a(v.a parama)
+  private void a(a parama)
   {
-    if (parama.acD != null) {
-      a(parama, parama.acD);
+    if (parama.ajK != null) {
+      a(parama, parama.ajK);
     }
-    if (parama.acE != null) {
-      a(parama, parama.acE);
+    if (parama.ajL != null) {
+      a(parama, parama.ajL);
     }
   }
   
-  private void a(List<v.a> paramList, RecyclerView.v paramv)
+  private void a(List<a> paramList, RecyclerView.v paramv)
   {
     int i = paramList.size() - 1;
     while (i >= 0)
     {
-      v.a locala = (v.a)paramList.get(i);
-      if ((a(locala, paramv)) && (locala.acD == null) && (locala.acE == null)) {
+      a locala = (a)paramList.get(i);
+      if ((a(locala, paramv)) && (locala.ajK == null) && (locala.ajL == null)) {
         paramList.remove(locala);
       }
       i -= 1;
     }
   }
   
-  private boolean a(v.a parama, RecyclerView.v paramv)
+  private boolean a(a parama, RecyclerView.v paramv)
   {
-    if (parama.acE == paramv) {
-      parama.acE = null;
+    if (parama.ajL == paramv) {
+      parama.ajL = null;
     }
     for (;;)
     {
-      paramv.aku.setAlpha(1.0F);
-      paramv.aku.setTranslationX(0.0F);
-      paramv.aku.setTranslationY(0.0F);
-      m(paramv);
+      paramv.arI.setAlpha(1.0F);
+      paramv.arI.setTranslationX(0.0F);
+      paramv.arI.setTranslationY(0.0F);
+      n(paramv);
       return true;
-      if (parama.acD != paramv) {
+      if (parama.ajK != paramv) {
         break;
       }
-      parama.acD = null;
+      parama.ajK = null;
     }
     return false;
   }
   
   private void e(RecyclerView.v paramv)
   {
-    if (acf == null) {
-      acf = new ValueAnimator().getInterpolator();
+    if (ajm == null) {
+      ajm = new ValueAnimator().getInterpolator();
     }
-    paramv.aku.animate().setInterpolator(acf);
+    paramv.arI.animate().setInterpolator(ajm);
     d(paramv);
   }
   
@@ -82,22 +84,22 @@ public class v
     int i = paramList.size() - 1;
     while (i >= 0)
     {
-      ((RecyclerView.v)paramList.get(i)).aku.animate().cancel();
+      ((RecyclerView.v)paramList.get(i)).arI.animate().cancel();
       i -= 1;
     }
   }
   
   public boolean a(RecyclerView.v paramv, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    View localView = paramv.aku;
-    paramInt1 += (int)paramv.aku.getTranslationX();
-    paramInt2 += (int)paramv.aku.getTranslationY();
+    View localView = paramv.arI;
+    paramInt1 += (int)paramv.arI.getTranslationX();
+    paramInt2 += (int)paramv.arI.getTranslationY();
     e(paramv);
     int i = paramInt3 - paramInt1;
     int j = paramInt4 - paramInt2;
     if ((i == 0) && (j == 0))
     {
-      C(paramv);
+      x(paramv);
       return false;
     }
     if (i != 0) {
@@ -106,7 +108,7 @@ public class v
     if (j != 0) {
       localView.setTranslationY(-j);
     }
-    this.aci.add(new v.b(paramv, paramInt1, paramInt2, paramInt3, paramInt4));
+    this.ajp.add(new b(paramv, paramInt1, paramInt2, paramInt3, paramInt4));
     return true;
   }
   
@@ -115,23 +117,23 @@ public class v
     if (paramv1 == paramv2) {
       return a(paramv1, paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    float f1 = paramv1.aku.getTranslationX();
-    float f2 = paramv1.aku.getTranslationY();
-    float f3 = paramv1.aku.getAlpha();
+    float f1 = paramv1.arI.getTranslationX();
+    float f2 = paramv1.arI.getTranslationY();
+    float f3 = paramv1.arI.getAlpha();
     e(paramv1);
     int i = (int)(paramInt3 - paramInt1 - f1);
     int j = (int)(paramInt4 - paramInt2 - f2);
-    paramv1.aku.setTranslationX(f1);
-    paramv1.aku.setTranslationY(f2);
-    paramv1.aku.setAlpha(f3);
+    paramv1.arI.setTranslationX(f1);
+    paramv1.arI.setTranslationY(f2);
+    paramv1.arI.setAlpha(f3);
     if (paramv2 != null)
     {
       e(paramv2);
-      paramv2.aku.setTranslationX(-i);
-      paramv2.aku.setTranslationY(-j);
-      paramv2.aku.setAlpha(0.0F);
+      paramv2.arI.setTranslationX(-i);
+      paramv2.arI.setTranslationY(-j);
+      paramv2.arI.setAlpha(0.0F);
     }
-    this.acj.add(new v.a(paramv1, paramv2, paramInt1, paramInt2, paramInt3, paramInt4));
+    this.ajq.add(new a(paramv1, paramv2, paramInt1, paramInt2, paramInt3, paramInt4));
     return true;
   }
   
@@ -143,74 +145,74 @@ public class v
   public boolean b(RecyclerView.v paramv)
   {
     e(paramv);
-    this.acg.add(paramv);
+    this.ajn.add(paramv);
     return true;
   }
   
   public boolean c(RecyclerView.v paramv)
   {
     e(paramv);
-    paramv.aku.setAlpha(0.0F);
-    this.ach.add(paramv);
+    paramv.arI.setAlpha(0.0F);
+    this.ajo.add(paramv);
     return true;
   }
   
   public void d(RecyclerView.v paramv)
   {
-    View localView = paramv.aku;
+    View localView = paramv.arI;
     localView.animate().cancel();
-    int i = this.aci.size() - 1;
+    int i = this.ajp.size() - 1;
     while (i >= 0)
     {
-      if (((v.b)this.aci.get(i)).acJ == paramv)
+      if (((b)this.ajp.get(i)).ajQ == paramv)
       {
         localView.setTranslationY(0.0F);
         localView.setTranslationX(0.0F);
-        C(paramv);
-        this.aci.remove(i);
+        x(paramv);
+        this.ajp.remove(i);
       }
       i -= 1;
     }
-    a(this.acj, paramv);
-    if (this.acg.remove(paramv))
+    a(this.ajq, paramv);
+    if (this.ajn.remove(paramv))
     {
       localView.setAlpha(1.0F);
-      B(paramv);
+      w(paramv);
     }
-    if (this.ach.remove(paramv))
+    if (this.ajo.remove(paramv))
     {
       localView.setAlpha(1.0F);
-      m(paramv);
+      n(paramv);
     }
-    i = this.acm.size() - 1;
+    i = this.ajt.size() - 1;
     ArrayList localArrayList;
     while (i >= 0)
     {
-      localArrayList = (ArrayList)this.acm.get(i);
+      localArrayList = (ArrayList)this.ajt.get(i);
       a(localArrayList, paramv);
       if (localArrayList.isEmpty()) {
-        this.acm.remove(i);
+        this.ajt.remove(i);
       }
       i -= 1;
     }
-    i = this.acl.size() - 1;
+    i = this.ajs.size() - 1;
     if (i >= 0)
     {
-      localArrayList = (ArrayList)this.acl.get(i);
+      localArrayList = (ArrayList)this.ajs.get(i);
       int j = localArrayList.size() - 1;
       for (;;)
       {
         if (j >= 0)
         {
-          if (((v.b)localArrayList.get(j)).acJ != paramv) {
+          if (((b)localArrayList.get(j)).ajQ != paramv) {
             break label293;
           }
           localView.setTranslationY(0.0F);
           localView.setTranslationX(0.0F);
-          C(paramv);
+          x(paramv);
           localArrayList.remove(j);
           if (localArrayList.isEmpty()) {
-            this.acl.remove(i);
+            this.ajs.remove(i);
           }
         }
         i -= 1;
@@ -219,46 +221,46 @@ public class v
         j -= 1;
       }
     }
-    i = this.ack.size() - 1;
+    i = this.ajr.size() - 1;
     while (i >= 0)
     {
-      localArrayList = (ArrayList)this.ack.get(i);
+      localArrayList = (ArrayList)this.ajr.get(i);
       if (localArrayList.remove(paramv))
       {
         localView.setAlpha(1.0F);
-        m(paramv);
+        n(paramv);
         if (localArrayList.isEmpty()) {
-          this.ack.remove(i);
+          this.ajr.remove(i);
         }
       }
       i -= 1;
     }
-    this.acp.remove(paramv);
-    this.acn.remove(paramv);
-    this.acq.remove(paramv);
-    this.aco.remove(paramv);
-    hB();
+    this.ajw.remove(paramv);
+    this.aju.remove(paramv);
+    this.ajx.remove(paramv);
+    this.ajv.remove(paramv);
+    iX();
   }
   
-  public void hA()
+  public void iW()
   {
     int i;
     int j;
     label24:
     int k;
-    if (!this.acg.isEmpty())
+    if (!this.ajn.isEmpty())
     {
       i = 1;
-      if (this.aci.isEmpty()) {
+      if (this.ajp.isEmpty()) {
         break label72;
       }
       j = 1;
-      if (this.acj.isEmpty()) {
+      if (this.ajq.isEmpty()) {
         break label77;
       }
       k = 1;
       label36:
-      if (this.ach.isEmpty()) {
+      if (this.ajo.isEmpty()) {
         break label82;
       }
     }
@@ -279,17 +281,32 @@ public class v
       break label36;
     }
     label88:
-    Object localObject1 = this.acg.iterator();
+    Object localObject1 = this.ajn.iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (RecyclerView.v)((Iterator)localObject1).next();
-      View localView = ((RecyclerView.v)localObject2).aku;
-      ViewPropertyAnimator localViewPropertyAnimator = localView.animate();
-      this.acp.add(localObject2);
-      localViewPropertyAnimator.setDuration(this.ajg).alpha(0.0F).setListener(new v.4(this, (RecyclerView.v)localObject2, localViewPropertyAnimator, localView)).start();
+      final View localView = ((RecyclerView.v)localObject2).arI;
+      final ViewPropertyAnimator localViewPropertyAnimator = localView.animate();
+      this.ajw.add(localObject2);
+      localViewPropertyAnimator.setDuration(kQ()).alpha(0.0F).setListener(new AnimatorListenerAdapter()
+      {
+        public final void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          localViewPropertyAnimator.setListener(null);
+          localView.setAlpha(1.0F);
+          v.this.w(this.ajC);
+          v.this.ajw.remove(this.ajC);
+          v.this.iX();
+        }
+        
+        public final void onAnimationStart(Animator paramAnonymousAnimator)
+        {
+          v.this.A(this.ajC);
+        }
+      }).start();
     }
-    this.acg.clear();
+    this.ajn.clear();
     label266:
     label346:
     long l1;
@@ -298,12 +315,42 @@ public class v
     if (j != 0)
     {
       localObject1 = new ArrayList();
-      ((ArrayList)localObject1).addAll(this.aci);
-      this.acl.add(localObject1);
-      this.aci.clear();
-      localObject2 = new v.1(this, (ArrayList)localObject1);
+      ((ArrayList)localObject1).addAll(this.ajp);
+      this.ajs.add(localObject1);
+      this.ajp.clear();
+      localObject2 = new Runnable()
+      {
+        public final void run()
+        {
+          Iterator localIterator = this.ajy.iterator();
+          while (localIterator.hasNext())
+          {
+            Object localObject = (v.b)localIterator.next();
+            v localv = v.this;
+            RecyclerView.v localv1 = ((v.b)localObject).ajQ;
+            int k = ((v.b)localObject).ajM;
+            int i = ((v.b)localObject).ajN;
+            int m = ((v.b)localObject).ajO;
+            int j = ((v.b)localObject).ajP;
+            localObject = localv1.arI;
+            k = m - k;
+            i = j - i;
+            if (k != 0) {
+              ((View)localObject).animate().translationX(0.0F);
+            }
+            if (i != 0) {
+              ((View)localObject).animate().translationY(0.0F);
+            }
+            ViewPropertyAnimator localViewPropertyAnimator = ((View)localObject).animate();
+            localv.ajv.add(localv1);
+            localViewPropertyAnimator.setDuration(localv.aqr).setListener(new v.6(localv, localv1, k, (View)localObject, i, localViewPropertyAnimator)).start();
+          }
+          this.ajy.clear();
+          v.this.ajs.remove(this.ajy);
+        }
+      };
       if (i != 0) {
-        t.a(((v.b)((ArrayList)localObject1).get(0)).acJ.aku, (Runnable)localObject2, this.ajg);
+        t.a(((b)((ArrayList)localObject1).get(0)).ajQ.arI, (Runnable)localObject2, kQ());
       }
     }
     else
@@ -311,34 +358,95 @@ public class v
       if (k != 0)
       {
         localObject1 = new ArrayList();
-        ((ArrayList)localObject1).addAll(this.acj);
-        this.acm.add(localObject1);
-        this.acj.clear();
-        localObject2 = new v.2(this, (ArrayList)localObject1);
+        ((ArrayList)localObject1).addAll(this.ajq);
+        this.ajt.add(localObject1);
+        this.ajq.clear();
+        localObject2 = new Runnable()
+        {
+          public final void run()
+          {
+            Iterator localIterator = this.ajA.iterator();
+            if (localIterator.hasNext())
+            {
+              v.a locala = (v.a)localIterator.next();
+              v localv = v.this;
+              Object localObject1 = locala.ajK;
+              if (localObject1 == null)
+              {
+                localObject1 = null;
+                label46:
+                localObject2 = locala.ajL;
+                if (localObject2 == null) {
+                  break label229;
+                }
+              }
+              label229:
+              for (Object localObject2 = ((RecyclerView.v)localObject2).arI;; localObject2 = null)
+              {
+                if (localObject1 != null)
+                {
+                  ViewPropertyAnimator localViewPropertyAnimator = ((View)localObject1).animate().setDuration(localv.aqs);
+                  localv.ajx.add(locala.ajK);
+                  localViewPropertyAnimator.translationX(locala.ajO - locala.ajM);
+                  localViewPropertyAnimator.translationY(locala.ajP - locala.ajN);
+                  localViewPropertyAnimator.alpha(0.0F).setListener(new v.7(localv, locala, localViewPropertyAnimator, (View)localObject1)).start();
+                }
+                if (localObject2 == null) {
+                  break;
+                }
+                localObject1 = ((View)localObject2).animate();
+                localv.ajx.add(locala.ajL);
+                ((ViewPropertyAnimator)localObject1).translationX(0.0F).translationY(0.0F).setDuration(localv.aqs).alpha(1.0F).setListener(new v.8(localv, locala, (ViewPropertyAnimator)localObject1, (View)localObject2)).start();
+                break;
+                localObject1 = ((RecyclerView.v)localObject1).arI;
+                break label46;
+              }
+            }
+            this.ajA.clear();
+            v.this.ajt.remove(this.ajA);
+          }
+        };
         if (i == 0) {
           break label483;
         }
-        t.a(((v.a)((ArrayList)localObject1).get(0)).acD.aku, (Runnable)localObject2, this.ajg);
+        t.a(((a)((ArrayList)localObject1).get(0)).ajK.arI, (Runnable)localObject2, kQ());
       }
       if (m == 0) {
         break label491;
       }
       localObject1 = new ArrayList();
-      ((ArrayList)localObject1).addAll(this.ach);
-      this.ack.add(localObject1);
-      this.ach.clear();
-      localObject2 = new v.3(this, (ArrayList)localObject1);
+      ((ArrayList)localObject1).addAll(this.ajo);
+      this.ajr.add(localObject1);
+      this.ajo.clear();
+      localObject2 = new Runnable()
+      {
+        public final void run()
+        {
+          Iterator localIterator = this.ajB.iterator();
+          while (localIterator.hasNext())
+          {
+            RecyclerView.v localv = (RecyclerView.v)localIterator.next();
+            v localv1 = v.this;
+            View localView = localv.arI;
+            ViewPropertyAnimator localViewPropertyAnimator = localView.animate();
+            localv1.aju.add(localv);
+            localViewPropertyAnimator.alpha(1.0F).setDuration(localv1.kP()).setListener(new v.5(localv1, localv, localView, localViewPropertyAnimator)).start();
+          }
+          this.ajB.clear();
+          v.this.ajr.remove(this.ajB);
+        }
+      };
       if ((i == 0) && (j == 0) && (k == 0)) {
         break label511;
       }
       if (i == 0) {
         break label493;
       }
-      l1 = this.ajg;
+      l1 = kQ();
       if (j == 0) {
         break label499;
       }
-      l2 = this.ajh;
+      l2 = this.aqr;
       label431:
       if (k == 0) {
         break label505;
@@ -349,10 +457,10 @@ public class v
     label493:
     label499:
     label505:
-    for (long l3 = this.aji;; l3 = 0L)
+    for (long l3 = this.aqs;; l3 = 0L)
     {
       l2 = Math.max(l2, l3);
-      t.a(((RecyclerView.v)((ArrayList)localObject1).get(0)).aku, (Runnable)localObject2, l1 + l2);
+      t.a(((RecyclerView.v)((ArrayList)localObject1).get(0)).arI, (Runnable)localObject2, l1 + l2);
       return;
       ((Runnable)localObject2).run();
       break label266;
@@ -368,123 +476,171 @@ public class v
     ((Runnable)localObject2).run();
   }
   
-  final void hB()
+  final void iX()
   {
     if (!isRunning()) {
-      jw();
+      kU();
     }
   }
   
-  public final void hC()
+  public final void iY()
   {
-    int i = this.aci.size() - 1;
+    int i = this.ajp.size() - 1;
     Object localObject1;
     Object localObject2;
     while (i >= 0)
     {
-      localObject1 = (v.b)this.aci.get(i);
-      localObject2 = ((v.b)localObject1).acJ.aku;
+      localObject1 = (b)this.ajp.get(i);
+      localObject2 = ((b)localObject1).ajQ.arI;
       ((View)localObject2).setTranslationY(0.0F);
       ((View)localObject2).setTranslationX(0.0F);
-      C(((v.b)localObject1).acJ);
-      this.aci.remove(i);
+      x(((b)localObject1).ajQ);
+      this.ajp.remove(i);
       i -= 1;
     }
-    i = this.acg.size() - 1;
+    i = this.ajn.size() - 1;
     while (i >= 0)
     {
-      B((RecyclerView.v)this.acg.get(i));
-      this.acg.remove(i);
+      w((RecyclerView.v)this.ajn.get(i));
+      this.ajn.remove(i);
       i -= 1;
     }
-    i = this.ach.size() - 1;
+    i = this.ajo.size() - 1;
     while (i >= 0)
     {
-      localObject1 = (RecyclerView.v)this.ach.get(i);
-      ((RecyclerView.v)localObject1).aku.setAlpha(1.0F);
-      m((RecyclerView.v)localObject1);
-      this.ach.remove(i);
+      localObject1 = (RecyclerView.v)this.ajo.get(i);
+      ((RecyclerView.v)localObject1).arI.setAlpha(1.0F);
+      n((RecyclerView.v)localObject1);
+      this.ajo.remove(i);
       i -= 1;
     }
-    i = this.acj.size() - 1;
+    i = this.ajq.size() - 1;
     while (i >= 0)
     {
-      a((v.a)this.acj.get(i));
+      a((a)this.ajq.get(i));
       i -= 1;
     }
-    this.acj.clear();
+    this.ajq.clear();
     if (!isRunning()) {
       return;
     }
-    i = this.acl.size() - 1;
+    i = this.ajs.size() - 1;
     int j;
     while (i >= 0)
     {
-      localObject1 = (ArrayList)this.acl.get(i);
+      localObject1 = (ArrayList)this.ajs.get(i);
       j = ((ArrayList)localObject1).size() - 1;
       while (j >= 0)
       {
-        localObject2 = (v.b)((ArrayList)localObject1).get(j);
-        View localView = ((v.b)localObject2).acJ.aku;
+        localObject2 = (b)((ArrayList)localObject1).get(j);
+        View localView = ((b)localObject2).ajQ.arI;
         localView.setTranslationY(0.0F);
         localView.setTranslationX(0.0F);
-        C(((v.b)localObject2).acJ);
+        x(((b)localObject2).ajQ);
         ((ArrayList)localObject1).remove(j);
         if (((ArrayList)localObject1).isEmpty()) {
-          this.acl.remove(localObject1);
+          this.ajs.remove(localObject1);
         }
         j -= 1;
       }
       i -= 1;
     }
-    i = this.ack.size() - 1;
+    i = this.ajr.size() - 1;
     while (i >= 0)
     {
-      localObject1 = (ArrayList)this.ack.get(i);
+      localObject1 = (ArrayList)this.ajr.get(i);
       j = ((ArrayList)localObject1).size() - 1;
       while (j >= 0)
       {
         localObject2 = (RecyclerView.v)((ArrayList)localObject1).get(j);
-        ((RecyclerView.v)localObject2).aku.setAlpha(1.0F);
-        m((RecyclerView.v)localObject2);
+        ((RecyclerView.v)localObject2).arI.setAlpha(1.0F);
+        n((RecyclerView.v)localObject2);
         ((ArrayList)localObject1).remove(j);
         if (((ArrayList)localObject1).isEmpty()) {
-          this.ack.remove(localObject1);
+          this.ajr.remove(localObject1);
         }
         j -= 1;
       }
       i -= 1;
     }
-    i = this.acm.size() - 1;
+    i = this.ajt.size() - 1;
     while (i >= 0)
     {
-      localObject1 = (ArrayList)this.acm.get(i);
+      localObject1 = (ArrayList)this.ajt.get(i);
       j = ((ArrayList)localObject1).size() - 1;
       while (j >= 0)
       {
-        a((v.a)((ArrayList)localObject1).get(j));
+        a((a)((ArrayList)localObject1).get(j));
         if (((ArrayList)localObject1).isEmpty()) {
-          this.acm.remove(localObject1);
+          this.ajt.remove(localObject1);
         }
         j -= 1;
       }
       i -= 1;
     }
-    o(this.acp);
-    o(this.aco);
-    o(this.acn);
-    o(this.acq);
-    jw();
+    o(this.ajw);
+    o(this.ajv);
+    o(this.aju);
+    o(this.ajx);
+    kU();
   }
   
   public boolean isRunning()
   {
-    return (!this.ach.isEmpty()) || (!this.acj.isEmpty()) || (!this.aci.isEmpty()) || (!this.acg.isEmpty()) || (!this.aco.isEmpty()) || (!this.acp.isEmpty()) || (!this.acn.isEmpty()) || (!this.acq.isEmpty()) || (!this.acl.isEmpty()) || (!this.ack.isEmpty()) || (!this.acm.isEmpty());
+    return (!this.ajo.isEmpty()) || (!this.ajq.isEmpty()) || (!this.ajp.isEmpty()) || (!this.ajn.isEmpty()) || (!this.ajv.isEmpty()) || (!this.ajw.isEmpty()) || (!this.aju.isEmpty()) || (!this.ajx.isEmpty()) || (!this.ajs.isEmpty()) || (!this.ajr.isEmpty()) || (!this.ajt.isEmpty());
+  }
+  
+  static final class a
+  {
+    public RecyclerView.v ajK;
+    public RecyclerView.v ajL;
+    public int ajM;
+    public int ajN;
+    public int ajO;
+    public int ajP;
+    
+    private a(RecyclerView.v paramv1, RecyclerView.v paramv2)
+    {
+      this.ajK = paramv1;
+      this.ajL = paramv2;
+    }
+    
+    a(RecyclerView.v paramv1, RecyclerView.v paramv2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      this(paramv1, paramv2);
+      this.ajM = paramInt1;
+      this.ajN = paramInt2;
+      this.ajO = paramInt3;
+      this.ajP = paramInt4;
+    }
+    
+    public final String toString()
+    {
+      return "ChangeInfo{oldHolder=" + this.ajK + ", newHolder=" + this.ajL + ", fromX=" + this.ajM + ", fromY=" + this.ajN + ", toX=" + this.ajO + ", toY=" + this.ajP + '}';
+    }
+  }
+  
+  static final class b
+  {
+    public int ajM;
+    public int ajN;
+    public int ajO;
+    public int ajP;
+    public RecyclerView.v ajQ;
+    
+    b(RecyclerView.v paramv, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    {
+      this.ajQ = paramv;
+      this.ajM = paramInt1;
+      this.ajN = paramInt2;
+      this.ajO = paramInt3;
+      this.ajP = paramInt4;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v7.widget.v
  * JD-Core Version:    0.7.0.1
  */

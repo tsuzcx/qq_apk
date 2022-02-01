@@ -5,24 +5,26 @@ import android.content.Context;
 import android.location.LocationManager;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.plugin.shake.b.e;
 import com.tencent.mm.plugin.shake.b.l.a;
 import com.tencent.mm.plugin.shake.b.l.b;
-import com.tencent.mm.protocal.protobuf.avu;
-import com.tencent.mm.protocal.protobuf.avz;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.shake.b.m;
+import com.tencent.mm.protocal.protobuf.bgz;
+import com.tencent.mm.protocal.protobuf.bhe;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,45 +34,61 @@ import org.json.JSONObject;
 
 public final class h
   extends l.b
-  implements f
+  implements g
 {
-  public static int qPa = 3;
-  private b.a dZA;
-  private float dZu;
-  private float dZv;
-  private com.tencent.mm.modelgeo.d fwu;
-  private int qAl;
-  private d qOV;
-  public Collection<h.a> qOW;
-  private int qOX;
-  private int qOY;
-  private int qOZ;
+  public static int wnP = 3;
+  private float fjD;
+  private float fjE;
+  private b.a fjJ;
+  private com.tencent.mm.modelgeo.d gXu;
+  private int wlE;
+  private d wnK;
+  public Collection<a> wnL;
+  private int wnM;
+  private int wnN;
+  private int wnO;
   
   public h(l.a parama)
   {
     super(parama);
-    AppMethodBeat.i(24623);
-    this.qOW = null;
-    this.dZu = -85.0F;
-    this.dZv = -1000.0F;
-    this.qAl = -1000;
-    this.qOX = 10001;
-    this.qOY = 10002;
-    this.qOZ = 10003;
-    this.dZA = new h.1(this);
-    AppMethodBeat.o(24623);
+    AppMethodBeat.i(28293);
+    this.wnL = null;
+    this.fjD = -85.0F;
+    this.fjE = -1000.0F;
+    this.wlE = -1000;
+    this.wnM = 10001;
+    this.wnN = 10002;
+    this.wnO = 10003;
+    this.fjJ = new b.a()
+    {
+      public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
+      {
+        AppMethodBeat.i(28289);
+        if (!paramAnonymousBoolean)
+        {
+          AppMethodBeat.o(28289);
+          return true;
+        }
+        h.a(h.this, paramAnonymousFloat2);
+        h.b(h.this, paramAnonymousFloat1);
+        h.a(h.this, (int)paramAnonymousDouble2);
+        AppMethodBeat.o(28289);
+        return false;
+      }
+    };
+    AppMethodBeat.o(28293);
   }
   
   public static void a(com.tencent.mm.plugin.shake.b.d paramd)
   {
-    AppMethodBeat.i(24632);
-    if ((paramd != null) && (paramd.field_sex == qPa))
+    AppMethodBeat.i(28302);
+    if ((paramd != null) && (paramd.field_sex == wnP))
     {
-      aw.aaz();
-      c.Ru().set(ac.a.yBd, Boolean.TRUE);
-      long l = bo.aox();
-      aw.aaz();
-      c.Ru().set(ac.a.yBe, Long.valueOf(l));
+      az.arV();
+      c.afk().set(ae.a.Fjz, Boolean.TRUE);
+      long l = bt.aGK();
+      az.arV();
+      c.afk().set(ae.a.FjA, Long.valueOf(l));
     }
     try
     {
@@ -80,18 +98,18 @@ public final class h
         paramd = paramd.split(",");
         if (paramd.length == 4)
         {
-          aw.aaz();
-          c.Ru().set(ac.a.yAW, Long.valueOf(paramd[0]));
+          az.arV();
+          c.afk().set(ae.a.Fjs, Long.valueOf(paramd[0]));
         }
       }
-      AppMethodBeat.o(24632);
+      AppMethodBeat.o(28302);
       return;
     }
     catch (UnsupportedEncodingException paramd)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.ShakeIbeaconService", paramd, "%s", new Object[] { "Unsupported" });
+        ad.printErrStackTrace("MicroMsg.ShakeIbeaconService", paramd, "%s", new Object[] { "Unsupported" });
         paramd = null;
       }
     }
@@ -99,7 +117,7 @@ public final class h
   
   public static void b(com.tencent.mm.plugin.shake.b.d paramd)
   {
-    AppMethodBeat.i(24633);
+    AppMethodBeat.i(28303);
     if (paramd != null) {}
     try
     {
@@ -112,63 +130,63 @@ public final class h
           paramd = localObject[1];
           String str = localObject[2];
           localObject = localObject[3];
-          h.a locala = new h.a();
-          locala.eAx = paramd;
-          locala.major = bo.getInt(str, 0);
-          locala.minor = bo.getInt((String)localObject, 0);
+          a locala = new a();
+          locala.uuid = paramd;
+          locala.major = bt.getInt(str, 0);
+          locala.minor = bt.getInt((String)localObject, 0);
         }
       }
-      AppMethodBeat.o(24633);
+      AppMethodBeat.o(28303);
       return;
     }
     catch (UnsupportedEncodingException paramd)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.ShakeIbeaconService", paramd, "%s", new Object[] { "Unsupported" });
+        ad.printErrStackTrace("MicroMsg.ShakeIbeaconService", paramd, "%s", new Object[] { "Unsupported" });
         paramd = null;
       }
     }
   }
   
-  private void ckQ()
+  private void doE()
   {
-    AppMethodBeat.i(24629);
-    this.fwu = com.tencent.mm.modelgeo.d.agQ();
-    this.fwu.a(this.dZA, true);
-    AppMethodBeat.o(24629);
+    AppMethodBeat.i(28299);
+    this.gXu = com.tencent.mm.modelgeo.d.axT();
+    this.gXu.a(this.fjJ, true);
+    AppMethodBeat.o(28299);
   }
   
-  public final void ckR()
+  public final void doF()
   {
-    AppMethodBeat.i(24630);
-    super.ckR();
-    aw.Rc().b(658, this);
-    AppMethodBeat.o(24630);
+    AppMethodBeat.i(28300);
+    super.doF();
+    az.aeS().b(658, this);
+    AppMethodBeat.o(28300);
   }
   
   public final void init()
   {
-    AppMethodBeat.i(24624);
-    aw.Rc().a(658, this);
-    ckQ();
-    AppMethodBeat.o(24624);
+    AppMethodBeat.i(28294);
+    az.aeS().a(658, this);
+    doE();
+    AppMethodBeat.o(28294);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(24631);
-    ab.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService]onSceneEnd :netId:%s,errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramm.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.i(28301);
+    ad.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService]onSceneEnd :netId:%s,errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = (d)paramm;
-      if ((658 == paramm.getType()) && (paramString.action == 1))
+      paramString = (d)paramn;
+      if ((658 == paramn.getType()) && (paramString.action == 1))
       {
-        paramString = (avu)paramString.fBd.fsW.fta;
-        if (paramString.xlj.wKy == 0)
+        paramString = (bgz)paramString.hdD.gUT.gUX;
+        if (paramString.DEW.CWL == 0)
         {
-          ab.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]onSceneEnd :message:%s,tips:%s,result:%s", new Object[] { paramString.xlj.nqz, paramString.xlj.puI, Integer.valueOf(paramString.xlj.wKy) });
-          paramString = paramString.xlj.nqz;
+          ad.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]onSceneEnd :message:%s,tips:%s,result:%s", new Object[] { paramString.DEW.sac, paramString.DEW.uwt, Integer.valueOf(paramString.DEW.CWL) });
+          paramString = paramString.DEW.sac;
         }
       }
     }
@@ -178,29 +196,29 @@ public final class h
       {
         paramString = new JSONObject(paramString);
         JSONArray localJSONArray = paramString.getJSONArray("msgs");
-        paramm = paramString.getJSONObject("guide_switch");
-        paramInt2 = paramm.getInt("channel_open_method");
-        long l = paramm.getLong("channel_open_time");
-        paramInt1 = paramm.getInt("shake_tab_display");
+        paramn = paramString.getJSONObject("guide_switch");
+        paramInt2 = paramn.getInt("channel_open_method");
+        long l = paramn.getLong("channel_open_time");
+        paramInt1 = paramn.getInt("shake_tab_display");
         int i = paramString.getJSONObject("gated_launch_option").getInt("tab_state");
-        aw.aaz();
-        c.Ru().set(ac.a.yAX, Integer.valueOf(paramInt2));
-        aw.aaz();
-        c.Ru().set(ac.a.yAY, Long.valueOf(l));
-        aw.aaz();
-        c.Ru().set(ac.a.yAZ, Integer.valueOf(paramInt1));
-        aw.aaz();
-        c.Ru().set(ac.a.yBi, Integer.valueOf(i));
-        ab.i("MicroMsg.ShakeIbeaconService", "[shakezb]channel_open_method is " + paramInt2 + " ,channel_open_time is " + l + ", shake_tab_display is " + paramInt1);
+        az.arV();
+        c.afk().set(ae.a.Fjt, Integer.valueOf(paramInt2));
+        az.arV();
+        c.afk().set(ae.a.Fju, Long.valueOf(l));
+        az.arV();
+        c.afk().set(ae.a.Fjv, Integer.valueOf(paramInt1));
+        az.arV();
+        c.afk().set(ae.a.FjE, Integer.valueOf(i));
+        ad.i("MicroMsg.ShakeIbeaconService", "[shakezb]channel_open_method is " + paramInt2 + " ,channel_open_time is " + l + ", shake_tab_display is " + paramInt1);
         i = localJSONArray.length();
         paramString = null;
-        e locale = com.tencent.mm.plugin.shake.b.m.cln();
-        locale.cld();
+        e locale = m.dpb();
+        locale.doR();
         if (i > 0)
         {
-          paramm = new ArrayList();
+          paramn = new ArrayList();
           paramInt1 = 0;
-          paramString = paramm;
+          paramString = paramn;
           if (paramInt1 < i)
           {
             paramString = new com.tencent.mm.plugin.shake.b.d();
@@ -225,54 +243,54 @@ public final class h
             paramString.field_province = str4;
             paramString.field_city = str1;
             if (j == 1) {
-              paramString.field_sex = qPa;
+              paramString.field_sex = wnP;
             }
             paramString.field_lvbuffer = (String.valueOf(str5) + "," + String.valueOf(str6) + "," + String.valueOf(str7) + "," + String.valueOf(localObject)).getBytes("utf-8");
             paramString.field_insertBatch = 2;
             paramString.field_reserved3 = (str8 + "," + str9 + "," + k);
-            paramm.add(paramString);
+            paramn.add(paramString);
             locale.a(paramString, true);
-            if ((paramString.field_sex != qPa) || (paramInt2 != 1)) {
+            if ((paramString.field_sex != wnP) || (paramInt2 != 1)) {
               break label926;
             }
             a(paramString);
             break label926;
           }
         }
-        this.qNe.b(paramString, 1L);
-        AppMethodBeat.o(24631);
+        this.wlU.c(paramString, 1L);
+        AppMethodBeat.o(28301);
         return;
       }
       catch (Exception paramString)
       {
-        ab.e("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb] parse error.%s", new Object[] { bo.nullAsNil(paramString.getMessage()) });
-        this.qNe.b(null, 1L);
-        AppMethodBeat.o(24631);
+        ad.e("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb] parse error.%s", new Object[] { bt.nullAsNil(paramString.getMessage()) });
+        this.wlU.c(null, 1L);
+        AppMethodBeat.o(28301);
         return;
       }
-      if (paramString.xlj.wKy == this.qOX)
+      if (paramString.DEW.CWL == this.wnM)
       {
-        this.qNe.b(null, 6L);
-        AppMethodBeat.o(24631);
+        this.wlU.c(null, 6L);
+        AppMethodBeat.o(28301);
         return;
       }
-      if (paramString.xlj.wKy == this.qOY)
+      if (paramString.DEW.CWL == this.wnN)
       {
-        this.qNe.b(null, 7L);
-        AppMethodBeat.o(24631);
+        this.wlU.c(null, 7L);
+        AppMethodBeat.o(28301);
         return;
       }
-      if (paramString.xlj.wKy == this.qOZ)
+      if (paramString.DEW.CWL == this.wnO)
       {
-        this.qNe.b(null, 8L);
-        AppMethodBeat.o(24631);
+        this.wlU.c(null, 8L);
+        AppMethodBeat.o(28301);
         return;
       }
-      this.qNe.b(null, 1L);
-      AppMethodBeat.o(24631);
+      this.wlU.c(null, 1L);
+      AppMethodBeat.o(28301);
       return;
-      this.qNe.b(null, 3L);
-      AppMethodBeat.o(24631);
+      this.wlU.c(null, 3L);
+      AppMethodBeat.o(28301);
       return;
       label926:
       paramInt1 += 1;
@@ -281,45 +299,45 @@ public final class h
   
   public final void pause()
   {
-    AppMethodBeat.i(24627);
-    if (this.fwu != null) {
-      this.fwu.c(this.dZA);
+    AppMethodBeat.i(28297);
+    if (this.gXu != null) {
+      this.gXu.c(this.fjJ);
     }
-    AppMethodBeat.o(24627);
+    AppMethodBeat.o(28297);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(24625);
-    if (this.qOV != null) {
-      aw.Rc().a(this.qOV);
+    AppMethodBeat.i(28295);
+    if (this.wnK != null) {
+      az.aeS().a(this.wnK);
     }
-    AppMethodBeat.o(24625);
+    AppMethodBeat.o(28295);
   }
   
   public final void resume()
   {
-    AppMethodBeat.i(24628);
-    if (this.fwu != null) {
-      this.fwu.a(this.dZA, true);
+    AppMethodBeat.i(28298);
+    if (this.gXu != null) {
+      this.gXu.a(this.fjJ, true);
     }
-    AppMethodBeat.o(24628);
+    AppMethodBeat.o(28298);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(24626);
-    ab.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]:start");
+    AppMethodBeat.i(28296);
+    ad.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]:start");
     init();
     reset();
-    if (this.fwu == null) {
-      ckQ();
+    if (this.gXu == null) {
+      doE();
     }
-    this.fwu.b(this.dZA, true);
+    this.gXu.b(this.fjJ, true);
     Object localObject;
     if ((!Build.VERSION.RELEASE.equals("6.0")) && (!Build.VERSION.RELEASE.equals("6.0.0")) && (Build.VERSION.SDK_INT >= 23))
     {
-      localObject = (LocationManager)ah.getContext().getSystemService("location");
+      localObject = (LocationManager)aj.getContext().getSystemService("location");
       if (localObject == null) {
         break label301;
       }
@@ -329,38 +347,73 @@ public final class h
     {
       if (!bool)
       {
-        new ak().postDelayed(new h.2(this), 1000L);
-        AppMethodBeat.o(24626);
+        new ap().postDelayed(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(28290);
+            h.a(h.this).c(null, 8L);
+            AppMethodBeat.o(28290);
+          }
+        }, 1000L);
+        AppMethodBeat.o(28296);
         return;
       }
       localObject = BluetoothAdapter.getDefaultAdapter();
       if ((localObject != null) && (((BluetoothAdapter)localObject).getState() != 12))
       {
-        new ak().postDelayed(new h.3(this), 1000L);
-        AppMethodBeat.o(24626);
+        new ap().postDelayed(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(28291);
+            h.b(h.this).c(null, 9L);
+            AppMethodBeat.o(28291);
+          }
+        }, 1000L);
+        AppMethodBeat.o(28296);
         return;
       }
       if (localObject == null)
       {
-        new ak().postDelayed(new h.4(this), 1000L);
-        AppMethodBeat.o(24626);
+        new ap().postDelayed(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(28292);
+            h.c(h.this).c(null, 10L);
+            AppMethodBeat.o(28292);
+          }
+        }, 1000L);
+        AppMethodBeat.o(28296);
         return;
       }
-      if (this.qOW != null) {}
-      for (int i = this.qOW.size();; i = 0)
+      if (this.wnL != null) {}
+      for (int i = this.wnL.size();; i = 0)
       {
-        ab.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]:beaconCollection.size:%d", new Object[] { Integer.valueOf(i) });
-        this.qOV = new d(this.qOW, this.dZu, this.dZv, this.qAl);
-        aw.Rc().a(this.qOV, 0);
-        AppMethodBeat.o(24626);
+        ad.i("MicroMsg.ShakeIbeaconService", "[oneliang][ShakeIbeaconService][shakezb]:beaconCollection.size:%d", new Object[] { Integer.valueOf(i) });
+        this.wnK = new d(this.wnL, this.fjD, this.fjE, this.wlE);
+        az.aeS().a(this.wnK, 0);
+        AppMethodBeat.o(28296);
         return;
       }
     }
   }
+  
+  public static final class a
+  {
+    public double hqY = 0.0D;
+    public int major = 0;
+    public int minor = 0;
+    public String uuid = null;
+    public String wnR = "";
+    public double wnS = 0.0D;
+    public int wnT = 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.h
  * JD-Core Version:    0.7.0.1
  */

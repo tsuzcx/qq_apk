@@ -11,7 +11,7 @@ public class ViewUtils
 {
   public static String getXmlAttributeString(String paramString1, String paramString2, Context paramContext, AttributeSet paramAttributeSet, boolean paramBoolean1, boolean paramBoolean2, String paramString3)
   {
-    AppMethodBeat.i(89728);
+    AppMethodBeat.i(4750);
     if (paramAttributeSet == null) {
       paramString1 = null;
     }
@@ -42,7 +42,7 @@ public class ViewUtils
           if ((paramBoolean2) && (paramAttributeSet == null)) {
             new StringBuilder(String.valueOf(paramString2).length() + 33).append("Required XML attribute \"").append(paramString2).append("\" missing");
           }
-          AppMethodBeat.o(89728);
+          AppMethodBeat.o(4750);
           return paramAttributeSet;
           paramString1 = paramAttributeSet.getAttributeValue(paramString1, paramString2);
         }
@@ -63,7 +63,7 @@ public class ViewUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.gms.common.internal.ViewUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class al
   extends b
 {
-  public al.a cnH;
+  public a dcj;
   
   public al()
   {
@@ -15,16 +15,21 @@ public final class al
   
   private al(byte paramByte)
   {
-    AppMethodBeat.i(141123);
-    this.cnH = new al.a();
-    this.ymq = false;
+    AppMethodBeat.i(5531);
+    this.dcj = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(141123);
+    AppMethodBeat.o(5531);
+  }
+  
+  public static final class a
+  {
+    public String userName;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.al
  * JD-Core Version:    0.7.0.1
  */

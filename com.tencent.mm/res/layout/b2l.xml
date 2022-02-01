@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<ScrollView android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/f65" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/i9" android:background="@drawable/arw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
-        <ProgressBar android:id="@id/f66" android:layout_width="30.0dip" android:layout_height="30.0dip" android:indeterminate="false" android:layout_centerInParent="true" android:layout_centerVertical="true" style="?android:attr/progressBarStyleSmall" />
-    </RelativeLayout>
-    <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@android:color/white" android:id="@id/aqp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1" android:layout_toRightOf="@id/f65" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/f67" android:background="@drawable/yv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_toRightOf="@id/aqp" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_gravity="start" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hd" android:layout_marginTop="38.0dip" android:layout_marginRight="@dimen/hd">
+                <ImageView android:id="@id/dzs" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:src="@raw/login_app_default_avatar" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/dh" android:layout_gravity="center" android:id="@id/dzv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:maxLines="2" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/dh" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dyt" />
+            </LinearLayout>
+            <TextView android:textSize="22.0dip" android:textColor="@color/y4" android:layout_gravity="start" android:id="@id/sn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hd" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/hd" android:text="" android:lineSpacingMultiplier="1.25" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/sm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hd" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/hd" android:text="用于在QQ浏览器中使用王者荣耀云游戏" />
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hd" android:layout_marginTop="60.0dip" android:layout_marginRight="@dimen/hd" android:layout_marginBottom="@dimen/i_">
+                <Button android:id="@id/d5o" android:text="同意" style="@style/o7" />
+                <Button android:id="@id/d5r" android:layout_marginTop="@dimen/c5" android:text="拒绝" style="@style/od" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

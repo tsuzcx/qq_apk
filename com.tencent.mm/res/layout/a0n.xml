@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingBottom="@dimen/m7" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/bwg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bx5" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/l1" />
+<RelativeLayout android:id="@id/box" android:layout_width="fill_parent" android:layout_height="@dimen/d2"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/boz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:baselineAligned="false" android:weightSum="1.0" style="@style/i4">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <ImageView android:id="@id/bow" android:layout_marginLeft="@dimen/d6" style="@style/i_" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="wrap_content" android:layout_marginRight="@dimen/d7" style="@style/ia">
+            <RelativeLayout android:paddingLeft="@dimen/d6" android:layout_width="wrap_content" android:layout_height="55.0dip" android:layout_toLeftOf="@id/bov" android:layout_centerVertical="true">
+                <View android:id="@id/bp0" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentBottom="true" />
+                <com.tencent.mm.ui.base.NoMeasuredTextView android:id="@id/bp1" android:singleLine="true" android:layout_toLeftOf="@id/bp2" android:layout_alignLeft="@id/bp0" android:layout_centerInParent="true" style="@style/ib" />
+                <TextView android:id="@id/bp2" android:layout_marginLeft="50.0dip" android:minWidth="100.0dip" android:layout_alignRight="@id/bp0" android:layout_centerInParent="true" android:layout_centerVertical="true" style="@style/if" />
+            </RelativeLayout>
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bov" android:layout_marginLeft="0.0dip" android:src="@raw/arrow_right" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/ee" style="@style/i3" />
+        </RelativeLayout>
+    </LinearLayout>
+    <View android:id="@id/boy" android:background="@color/mu" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
 </RelativeLayout>

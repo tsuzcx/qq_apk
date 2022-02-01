@@ -9,7 +9,7 @@ public final class b
 {
   public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(104219);
+    AppMethodBeat.i(12767);
     if (paramBoolean)
     {
       localIntent = new Intent(paramActivity, RoomUpgradeUI.class);
@@ -19,20 +19,23 @@ public final class b
       paramString.setClassName(paramActivity, "com.tencent.mm.plugin.account.ui.bind.BindMobileUI");
       paramString.putExtra("is_bind_for_chatroom_upgrade", true);
       MMWizardActivity.b(paramActivity, paramString, localIntent);
-      AppMethodBeat.o(104219);
+      AppMethodBeat.o(12767);
       return;
     }
     Intent localIntent = new Intent(paramActivity, RoomUpgradeUI.class);
     localIntent.setFlags(603979776);
     localIntent.putExtra("room_name", paramString);
     localIntent.putExtra("announce_ok", true);
-    paramActivity.startActivity(localIntent);
-    AppMethodBeat.o(104219);
+    paramString = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramString.adn(), "com/tencent/mm/chatroom/ui/RoomUpgradeHelper", "goUpgrade", "(Landroid/app/Activity;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramString.lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/chatroom/ui/RoomUpgradeHelper", "goUpgrade", "(Landroid/app/Activity;Ljava/lang/String;Z)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(12767);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.b
  * JD-Core Version:    0.7.0.1
  */

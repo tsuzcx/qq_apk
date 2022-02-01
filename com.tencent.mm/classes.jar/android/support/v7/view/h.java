@@ -10,90 +10,90 @@ import java.util.Iterator;
 
 public final class h
 {
-  y Uw;
-  boolean Ux;
-  private final z Uy = new z()
+  y abA;
+  private final z abB = new z()
   {
-    private int UA = 0;
-    private boolean Uz = false;
+    private boolean abC = false;
+    private int abD = 0;
     
-    public final void aB(View paramAnonymousView)
+    public final void aH(View paramAnonymousView)
     {
-      if (this.Uz) {}
+      if (this.abC) {}
       do
       {
         return;
-        this.Uz = true;
-      } while (h.this.Uw == null);
-      h.this.Uw.aB(null);
+        this.abC = true;
+      } while (h.this.abA == null);
+      h.this.abA.aH(null);
     }
     
-    public final void aC(View paramAnonymousView)
+    public final void aI(View paramAnonymousView)
     {
-      int i = this.UA + 1;
-      this.UA = i;
-      if (i == h.this.nD.size())
+      int i = this.abD + 1;
+      this.abD = i;
+      if (i == h.this.ud.size())
       {
-        if (h.this.Uw != null) {
-          h.this.Uw.aC(null);
+        if (h.this.abA != null) {
+          h.this.abA.aI(null);
         }
-        this.UA = 0;
-        this.Uz = false;
-        h.this.Ux = false;
+        this.abD = 0;
+        this.abC = false;
+        h.this.mIsStarted = false;
       }
     }
   };
   private long mDuration = -1L;
   private Interpolator mInterpolator;
-  final ArrayList<x> nD = new ArrayList();
+  boolean mIsStarted;
+  final ArrayList<x> ud = new ArrayList();
   
   public final h a(x paramx)
   {
-    if (!this.Ux) {
-      this.nD.add(paramx);
+    if (!this.mIsStarted) {
+      this.ud.add(paramx);
     }
     return this;
   }
   
   public final h a(x paramx1, x paramx2)
   {
-    this.nD.add(paramx1);
+    this.ud.add(paramx1);
     paramx2.i(paramx1.getDuration());
-    this.nD.add(paramx2);
+    this.ud.add(paramx2);
     return this;
   }
   
   public final h b(y paramy)
   {
-    if (!this.Ux) {
-      this.Uw = paramy;
+    if (!this.mIsStarted) {
+      this.abA = paramy;
+    }
+    return this;
+  }
+  
+  public final h b(Interpolator paramInterpolator)
+  {
+    if (!this.mIsStarted) {
+      this.mInterpolator = paramInterpolator;
     }
     return this;
   }
   
   public final void cancel()
   {
-    if (!this.Ux) {
+    if (!this.mIsStarted) {
       return;
     }
-    Iterator localIterator = this.nD.iterator();
+    Iterator localIterator = this.ud.iterator();
     while (localIterator.hasNext()) {
       ((x)localIterator.next()).cancel();
     }
-    this.Ux = false;
+    this.mIsStarted = false;
   }
   
-  public final h d(Interpolator paramInterpolator)
+  public final h hb()
   {
-    if (!this.Ux) {
-      this.mInterpolator = paramInterpolator;
-    }
-    return this;
-  }
-  
-  public final h fF()
-  {
-    if (!this.Ux) {
+    if (!this.mIsStarted) {
       this.mDuration = 250L;
     }
     return this;
@@ -101,10 +101,10 @@ public final class h
   
   public final void start()
   {
-    if (this.Ux) {
+    if (this.mIsStarted) {
       return;
     }
-    Iterator localIterator = this.nD.iterator();
+    Iterator localIterator = this.ud.iterator();
     while (localIterator.hasNext())
     {
       x localx = (x)localIterator.next();
@@ -112,14 +112,14 @@ public final class h
         localx.h(this.mDuration);
       }
       if (this.mInterpolator != null) {
-        localx.c(this.mInterpolator);
+        localx.a(this.mInterpolator);
       }
-      if (this.Uw != null) {
-        localx.a(this.Uy);
+      if (this.abA != null) {
+        localx.a(this.abB);
       }
       localx.start();
     }
-    this.Ux = true;
+    this.mIsStarted = true;
   }
 }
 

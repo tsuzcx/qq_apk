@@ -5,7 +5,10 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaFormat;
+import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
@@ -21,7 +24,7 @@ public class a
   private static final String a;
   private int b;
   private long c;
-  private a.a d;
+  private a d;
   private HandlerThread e;
   private boolean f;
   private b g;
@@ -31,18 +34,18 @@ public class a
   private Bitmap k;
   private int l;
   private int m;
-  private WeakReference<a.b> n;
+  private WeakReference<b> n;
   
   static
   {
-    AppMethodBeat.i(67720);
+    AppMethodBeat.i(14967);
     a = a.class.getSimpleName();
-    AppMethodBeat.o(67720);
+    AppMethodBeat.o(14967);
   }
   
-  public a(a.b paramb)
+  public a(b paramb)
   {
-    AppMethodBeat.i(67710);
+    AppMethodBeat.i(14958);
     this.b = 300;
     this.c = 0L;
     this.f = false;
@@ -53,12 +56,12 @@ public class a
     this.m = 0;
     this.n = null;
     this.n = new WeakReference(paramb);
-    AppMethodBeat.o(67710);
+    AppMethodBeat.o(14958);
   }
   
   private void b(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(67715);
+    AppMethodBeat.i(14962);
     int i1;
     if (paramInt1 > 0) {
       if (paramInt1 >= 8) {
@@ -69,10 +72,10 @@ public class a
     {
       long l1 = paramInt2;
       if (paramInt2 <= 0) {
-        break label77;
+        break label79;
       }
       this.c = (l1 * 1000L + System.currentTimeMillis());
-      AppMethodBeat.o(67715);
+      AppMethodBeat.o(14962);
       return;
       i1 = paramInt1;
       if (paramInt1 > 3) {
@@ -81,24 +84,30 @@ public class a
       i1 = 3;
       break;
     }
-    label77:
-    this.c = (System.currentTimeMillis() + 300000L);
-    AppMethodBeat.o(67715);
-  }
-  
-  private void c()
-  {
-    AppMethodBeat.i(67716);
-    d();
-    this.e = new HandlerThread("TXImageCapturer");
-    this.e.start();
-    this.d = new a.a(this, this.e.getLooper(), this.b, this.c);
-    AppMethodBeat.o(67716);
+    label79:
+    if (paramInt2 == 0)
+    {
+      this.c = (System.currentTimeMillis() + 300000L);
+      AppMethodBeat.o(14962);
+      return;
+    }
+    this.c = -1L;
+    AppMethodBeat.o(14962);
   }
   
   private void d()
   {
-    AppMethodBeat.i(67717);
+    AppMethodBeat.i(14963);
+    e();
+    this.e = new HandlerThread("TXImageCapturer");
+    this.e.start();
+    this.d = new a(this.e.getLooper(), this.b, this.c);
+    AppMethodBeat.o(14963);
+  }
+  
+  private void e()
+  {
+    AppMethodBeat.i(14964);
     if (this.d != null)
     {
       this.d.removeCallbacksAndMessages(null);
@@ -109,190 +118,190 @@ public class a
       this.e.quit();
       this.e = null;
     }
-    AppMethodBeat.o(67717);
+    AppMethodBeat.o(14964);
   }
   
   /* Error */
-  private void e()
+  private void f()
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore 4
     //   3: iconst_0
     //   4: istore_2
-    //   5: ldc 143
-    //   7: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: aload_0
-    //   11: getfield 82	com/tencent/liteav/a:n	Ljava/lang/ref/WeakReference;
-    //   14: ifnull +141 -> 155
-    //   17: aload_0
-    //   18: getfield 70	com/tencent/liteav/a:f	Z
-    //   21: ifeq +134 -> 155
-    //   24: aload_0
-    //   25: getfield 82	com/tencent/liteav/a:n	Ljava/lang/ref/WeakReference;
-    //   28: invokevirtual 147	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   31: checkcast 12	com/tencent/liteav/a$b
-    //   34: astore 6
-    //   36: aload 6
-    //   38: ifnull +117 -> 155
-    //   41: aload_0
-    //   42: getfield 76	com/tencent/liteav/a:k	Landroid/graphics/Bitmap;
-    //   45: astore 7
-    //   47: aload_0
-    //   48: getfield 74	com/tencent/liteav/a:j	Ljava/nio/ByteBuffer;
-    //   51: astore 5
-    //   53: aload 5
-    //   55: ifnonnull +215 -> 270
-    //   58: aload 7
-    //   60: ifnull +210 -> 270
-    //   63: aload 7
-    //   65: invokevirtual 153	android/graphics/Bitmap:getWidth	()I
-    //   68: istore_1
-    //   69: aload 7
-    //   71: invokevirtual 156	android/graphics/Bitmap:getHeight	()I
-    //   74: istore_3
-    //   75: iload_3
-    //   76: istore_2
-    //   77: iload_3
-    //   78: istore 4
-    //   80: iload_1
-    //   81: iload_3
-    //   82: imul
-    //   83: iconst_4
-    //   84: imul
-    //   85: invokestatic 162	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
-    //   88: astore 5
-    //   90: iload_3
-    //   91: istore_2
-    //   92: iload_3
-    //   93: istore 4
-    //   95: aload 7
-    //   97: aload 5
-    //   99: invokevirtual 166	android/graphics/Bitmap:copyPixelsToBuffer	(Ljava/nio/Buffer;)V
-    //   102: iload_3
-    //   103: istore_2
-    //   104: iload_3
-    //   105: istore 4
-    //   107: aload 5
-    //   109: invokevirtual 170	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
-    //   112: pop
-    //   113: iload_3
-    //   114: istore_2
-    //   115: iload_3
-    //   116: istore 4
-    //   118: aload_0
-    //   119: aload 5
-    //   121: putfield 74	com/tencent/liteav/a:j	Ljava/nio/ByteBuffer;
-    //   124: iload_3
-    //   125: istore_2
-    //   126: aload 7
-    //   128: ifnull +27 -> 155
-    //   131: aload 5
-    //   133: ifnull +22 -> 155
-    //   136: aload 6
-    //   138: aload 7
-    //   140: aload 5
-    //   142: aload_0
-    //   143: getfield 78	com/tencent/liteav/a:l	I
-    //   146: aload_0
-    //   147: getfield 80	com/tencent/liteav/a:m	I
-    //   150: invokeinterface 173 5 0
-    //   155: ldc 143
-    //   157: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   160: return
-    //   161: astore 5
-    //   163: iconst_0
-    //   164: istore_2
+    //   5: sipush 14965
+    //   8: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   11: aload_0
+    //   12: getfield 80	com/tencent/liteav/a:n	Ljava/lang/ref/WeakReference;
+    //   15: ifnull +141 -> 156
+    //   18: aload_0
+    //   19: getfield 68	com/tencent/liteav/a:f	Z
+    //   22: ifeq +134 -> 156
+    //   25: aload_0
+    //   26: getfield 80	com/tencent/liteav/a:n	Ljava/lang/ref/WeakReference;
+    //   29: invokevirtual 142	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   32: checkcast 13	com/tencent/liteav/a$b
+    //   35: astore 6
+    //   37: aload 6
+    //   39: ifnull +117 -> 156
+    //   42: aload_0
+    //   43: getfield 74	com/tencent/liteav/a:k	Landroid/graphics/Bitmap;
+    //   46: astore 7
+    //   48: aload_0
+    //   49: getfield 72	com/tencent/liteav/a:j	Ljava/nio/ByteBuffer;
+    //   52: astore 5
+    //   54: aload 5
+    //   56: ifnonnull +218 -> 274
+    //   59: aload 7
+    //   61: ifnull +213 -> 274
+    //   64: aload 7
+    //   66: invokevirtual 148	android/graphics/Bitmap:getWidth	()I
+    //   69: istore_1
+    //   70: aload 7
+    //   72: invokevirtual 151	android/graphics/Bitmap:getHeight	()I
+    //   75: istore_3
+    //   76: iload_3
+    //   77: istore_2
+    //   78: iload_3
+    //   79: istore 4
+    //   81: iload_1
+    //   82: iload_3
+    //   83: imul
+    //   84: iconst_4
+    //   85: imul
+    //   86: invokestatic 157	java/nio/ByteBuffer:allocateDirect	(I)Ljava/nio/ByteBuffer;
+    //   89: astore 5
+    //   91: iload_3
+    //   92: istore_2
+    //   93: iload_3
+    //   94: istore 4
+    //   96: aload 7
+    //   98: aload 5
+    //   100: invokevirtual 161	android/graphics/Bitmap:copyPixelsToBuffer	(Ljava/nio/Buffer;)V
+    //   103: iload_3
+    //   104: istore_2
+    //   105: iload_3
+    //   106: istore 4
+    //   108: aload 5
+    //   110: invokevirtual 165	java/nio/ByteBuffer:rewind	()Ljava/nio/Buffer;
+    //   113: pop
+    //   114: iload_3
+    //   115: istore_2
+    //   116: iload_3
+    //   117: istore 4
+    //   119: aload_0
+    //   120: aload 5
+    //   122: putfield 72	com/tencent/liteav/a:j	Ljava/nio/ByteBuffer;
+    //   125: iload_3
+    //   126: istore_2
+    //   127: aload 7
+    //   129: ifnull +27 -> 156
+    //   132: aload 5
+    //   134: ifnull +22 -> 156
+    //   137: aload 6
+    //   139: aload 7
+    //   141: aload 5
+    //   143: aload_0
+    //   144: getfield 76	com/tencent/liteav/a:l	I
+    //   147: aload_0
+    //   148: getfield 78	com/tencent/liteav/a:m	I
+    //   151: invokeinterface 168 5 0
+    //   156: sipush 14965
+    //   159: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   162: return
+    //   163: astore 5
     //   165: iconst_0
-    //   166: istore_1
-    //   167: getstatic 55	com/tencent/liteav/a:a	Ljava/lang/String;
-    //   170: new 175	java/lang/StringBuilder
-    //   173: dup
-    //   174: ldc 177
-    //   176: invokespecial 178	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   179: iload_1
-    //   180: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   183: ldc 184
-    //   185: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   188: iload_2
-    //   189: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   192: invokevirtual 190	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   195: invokestatic 196	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   198: ldc 143
-    //   200: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   203: return
-    //   204: astore 5
-    //   206: iconst_0
-    //   207: istore_2
-    //   208: iconst_0
-    //   209: istore_1
-    //   210: getstatic 55	com/tencent/liteav/a:a	Ljava/lang/String;
-    //   213: new 175	java/lang/StringBuilder
-    //   216: dup
-    //   217: ldc 198
-    //   219: invokespecial 178	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   222: iload_1
-    //   223: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   226: ldc 184
-    //   228: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   231: iload_2
-    //   232: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   235: invokevirtual 190	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   238: invokestatic 196	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   241: ldc 143
-    //   243: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   246: return
-    //   247: astore 5
-    //   249: goto -39 -> 210
-    //   252: astore 5
-    //   254: goto -44 -> 210
-    //   257: astore 5
-    //   259: iload 4
-    //   261: istore_2
-    //   262: goto -95 -> 167
-    //   265: astore 5
-    //   267: goto -100 -> 167
-    //   270: iconst_0
-    //   271: istore_2
-    //   272: iconst_0
-    //   273: istore_1
-    //   274: goto -148 -> 126
+    //   166: istore_2
+    //   167: iconst_0
+    //   168: istore_1
+    //   169: getstatic 54	com/tencent/liteav/a:a	Ljava/lang/String;
+    //   172: new 170	java/lang/StringBuilder
+    //   175: dup
+    //   176: ldc 172
+    //   178: invokespecial 173	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   181: iload_1
+    //   182: invokevirtual 177	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   185: ldc 179
+    //   187: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   190: iload_2
+    //   191: invokevirtual 177	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   194: invokevirtual 185	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   197: invokestatic 191	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   200: sipush 14965
+    //   203: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   206: return
+    //   207: astore 5
+    //   209: iconst_0
+    //   210: istore_2
+    //   211: iconst_0
+    //   212: istore_1
+    //   213: getstatic 54	com/tencent/liteav/a:a	Ljava/lang/String;
+    //   216: new 170	java/lang/StringBuilder
+    //   219: dup
+    //   220: ldc 193
+    //   222: invokespecial 173	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   225: iload_1
+    //   226: invokevirtual 177	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   229: ldc 179
+    //   231: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: iload_2
+    //   235: invokevirtual 177	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   238: invokevirtual 185	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   241: invokestatic 191	com/tencent/liteav/basic/log/TXCLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   244: sipush 14965
+    //   247: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   250: return
+    //   251: astore 5
+    //   253: goto -40 -> 213
+    //   256: astore 5
+    //   258: goto -45 -> 213
+    //   261: astore 5
+    //   263: iload 4
+    //   265: istore_2
+    //   266: goto -97 -> 169
+    //   269: astore 5
+    //   271: goto -102 -> 169
+    //   274: iconst_0
+    //   275: istore_2
+    //   276: iconst_0
+    //   277: istore_1
+    //   278: goto -151 -> 127
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	277	0	this	a
-    //   68	206	1	i1	int
-    //   4	268	2	i2	int
-    //   74	51	3	i3	int
-    //   1	259	4	i4	int
-    //   51	90	5	localByteBuffer	ByteBuffer
-    //   161	1	5	localException1	Exception
-    //   204	1	5	localError1	Error
-    //   247	1	5	localError2	Error
-    //   252	1	5	localError3	Error
-    //   257	1	5	localException2	Exception
-    //   265	1	5	localException3	Exception
-    //   34	103	6	localb	a.b
-    //   45	94	7	localBitmap	Bitmap
+    //   0	281	0	this	a
+    //   69	209	1	i1	int
+    //   4	272	2	i2	int
+    //   75	51	3	i3	int
+    //   1	263	4	i4	int
+    //   52	90	5	localByteBuffer	ByteBuffer
+    //   163	1	5	localException1	Exception
+    //   207	1	5	localError1	Error
+    //   251	1	5	localError2	Error
+    //   256	1	5	localError3	Error
+    //   261	1	5	localException2	Exception
+    //   269	1	5	localException3	Exception
+    //   35	103	6	localb	b
+    //   46	94	7	localBitmap	Bitmap
     // Exception table:
     //   from	to	target	type
-    //   10	36	161	java/lang/Exception
-    //   41	53	161	java/lang/Exception
-    //   63	69	161	java/lang/Exception
-    //   10	36	204	java/lang/Error
-    //   41	53	204	java/lang/Error
-    //   63	69	204	java/lang/Error
-    //   69	75	247	java/lang/Error
-    //   80	90	247	java/lang/Error
-    //   95	102	247	java/lang/Error
-    //   107	113	247	java/lang/Error
-    //   118	124	247	java/lang/Error
-    //   136	155	252	java/lang/Error
-    //   69	75	257	java/lang/Exception
-    //   80	90	257	java/lang/Exception
-    //   95	102	257	java/lang/Exception
-    //   107	113	257	java/lang/Exception
-    //   118	124	257	java/lang/Exception
-    //   136	155	265	java/lang/Exception
+    //   11	37	163	java/lang/Exception
+    //   42	54	163	java/lang/Exception
+    //   64	70	163	java/lang/Exception
+    //   11	37	207	java/lang/Error
+    //   42	54	207	java/lang/Error
+    //   64	70	207	java/lang/Error
+    //   70	76	251	java/lang/Error
+    //   81	91	251	java/lang/Error
+    //   96	103	251	java/lang/Error
+    //   108	114	251	java/lang/Error
+    //   119	125	251	java/lang/Error
+    //   137	156	256	java/lang/Error
+    //   70	76	261	java/lang/Exception
+    //   81	91	261	java/lang/Exception
+    //   96	103	261	java/lang/Exception
+    //   108	114	261	java/lang/Exception
+    //   119	125	261	java/lang/Exception
+    //   137	156	269	java/lang/Exception
   }
   
   public int a(int paramInt1, int paramInt2, int paramInt3)
@@ -300,53 +309,44 @@ public class a
     return 0;
   }
   
-  public void a()
-  {
-    AppMethodBeat.i(67713);
-    this.f = false;
-    this.j = null;
-    this.k = null;
-    TXCLog.w(a, "bkgpush: stop background publish");
-    d();
-    AppMethodBeat.o(67713);
-  }
+  public void a(int paramInt) {}
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(67711);
+    AppMethodBeat.i(14959);
     if (this.f)
     {
       TXCLog.w(a, "bkgpush: start background publish return when started");
-      AppMethodBeat.o(67711);
+      AppMethodBeat.o(14959);
       return;
     }
     this.f = true;
     b(paramInt1, paramInt2);
-    c();
+    d();
     if (this.d != null) {
       this.d.sendEmptyMessageDelayed(1001, this.b);
     }
     TXCLog.w(a, "bkgpush: start background publish with time:" + (this.c - System.currentTimeMillis()) / 1000L + ", interval:" + this.b);
-    AppMethodBeat.o(67711);
+    AppMethodBeat.o(14959);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    AppMethodBeat.i(67708);
+    AppMethodBeat.i(14956);
     TXCLog.w(a, "bkgpush: got texture");
     if (this.g != null) {
-      this.g.a(paramInt1, paramInt2, paramInt3, TXCTimeUtil.getTimeTick());
+      this.g.a(paramInt1, paramInt2, paramInt3, TXCTimeUtil.generatePtsMS());
     }
-    AppMethodBeat.o(67708);
+    AppMethodBeat.o(14956);
   }
   
   public void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(67712);
+    AppMethodBeat.i(14960);
     if (this.f)
     {
       TXCLog.w(a, "bkgpush: start background publish return when started");
-      AppMethodBeat.o(67712);
+      AppMethodBeat.o(14960);
       return;
     }
     Bitmap localBitmap = paramBitmap;
@@ -362,18 +362,20 @@ public class a
     }
     catch (Error paramBitmap)
     {
-      break label141;
+      break label142;
     }
     catch (Exception paramBitmap)
     {
-      label141:
-      break label141;
+      label142:
+      break label142;
     }
     this.l = paramInt3;
     this.m = paramInt4;
     a(paramInt1, paramInt2);
-    AppMethodBeat.o(67712);
+    AppMethodBeat.o(14960);
   }
+  
+  public void a(long paramLong) {}
   
   public void a(long paramLong1, long paramLong2, long paramLong3) {}
   
@@ -381,7 +383,7 @@ public class a
   
   public void a(TXSNALPacket paramTXSNALPacket, int paramInt)
   {
-    AppMethodBeat.i(146455);
+    AppMethodBeat.i(14957);
     this.h = paramTXSNALPacket;
     String str = a;
     StringBuilder localStringBuilder = new StringBuilder("bkgpush: got nal type: ");
@@ -398,24 +400,98 @@ public class a
       {
         if (this.n != null)
         {
-          localObject = (a.b)this.n.get();
+          localObject = (b)this.n.get();
           if (localObject != null) {
-            ((a.b)localObject).a(paramTXSNALPacket);
+            ((b)localObject).a(paramTXSNALPacket);
           }
         }
-        AppMethodBeat.o(146455);
+        AppMethodBeat.o(14957);
         return;
       }
       catch (Exception paramTXSNALPacket) {}
     }
-    AppMethodBeat.o(146455);
+    AppMethodBeat.o(14957);
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  
+  public boolean a()
+  {
+    return this.f;
+  }
+  
+  public void b()
+  {
+    AppMethodBeat.i(14961);
+    this.f = false;
+    this.j = null;
+    this.k = null;
+    TXCLog.w(a, "bkgpush: stop background publish");
+    e();
+    AppMethodBeat.o(14961);
+  }
+  
+  class a
+    extends Handler
+  {
+    private int b;
+    private long c;
+    
+    public a(Looper paramLooper, int paramInt, long paramLong)
+    {
+      super();
+      AppMethodBeat.i(15536);
+      this.b = 300;
+      this.c = 0L;
+      this.b = paramInt;
+      this.c = paramLong;
+      TXCLog.w(a.c(), "bkgpush:init publish time delay:" + this.b + ", end:" + this.c);
+      AppMethodBeat.o(15536);
+    }
+    
+    public void handleMessage(Message paramMessage)
+    {
+      AppMethodBeat.i(15537);
+      if (paramMessage.what == 1001) {
+        try
+        {
+          a.a(a.this);
+          if ((this.c < 0L) || (System.currentTimeMillis() < this.c))
+          {
+            sendEmptyMessageDelayed(1001, this.b);
+            AppMethodBeat.o(15537);
+            return;
+          }
+          TXCLog.w(a.c(), "bkgpush:stop background publish when timeout");
+          if ((a.b(a.this) != null) && (a.c(a.this)))
+          {
+            paramMessage = (a.b)a.b(a.this).get();
+            if (paramMessage != null) {
+              paramMessage.a();
+            }
+            a.a(a.this, false);
+          }
+          AppMethodBeat.o(15537);
+          return;
+        }
+        catch (Exception paramMessage) {}
+      }
+      AppMethodBeat.o(15537);
+    }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void a();
+    
+    public abstract void a(Bitmap paramBitmap, ByteBuffer paramByteBuffer, int paramInt1, int paramInt2);
+    
+    public abstract void a(b paramb);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.a
  * JD-Core Version:    0.7.0.1
  */

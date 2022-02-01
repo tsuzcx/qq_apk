@@ -20,16 +20,16 @@ final class zzfd
   
   public final SQLiteDatabase getWritableDatabase()
   {
-    AppMethodBeat.i(68829);
+    AppMethodBeat.i(1352);
     try
     {
       SQLiteDatabase localSQLiteDatabase1 = super.getWritableDatabase();
-      AppMethodBeat.o(68829);
+      AppMethodBeat.o(1352);
       return localSQLiteDatabase1;
     }
     catch (SQLiteDatabaseLockedException localSQLiteDatabaseLockedException)
     {
-      AppMethodBeat.o(68829);
+      AppMethodBeat.o(1352);
       throw localSQLiteDatabaseLockedException;
     }
     catch (SQLiteException localSQLiteException1)
@@ -41,13 +41,13 @@ final class zzfd
       try
       {
         SQLiteDatabase localSQLiteDatabase2 = super.getWritableDatabase();
-        AppMethodBeat.o(68829);
+        AppMethodBeat.o(1352);
         return localSQLiteDatabase2;
       }
       catch (SQLiteException localSQLiteException2)
       {
         this.zzaii.zzge().zzim().zzg("Failed to open local database. Events will bypass local storage", localSQLiteException2);
-        AppMethodBeat.o(68829);
+        AppMethodBeat.o(1352);
       }
     }
     return null;
@@ -55,9 +55,9 @@ final class zzfd
   
   public final void onCreate(SQLiteDatabase paramSQLiteDatabase)
   {
-    AppMethodBeat.i(68831);
+    AppMethodBeat.i(1354);
     zzei.zza(this.zzaii.zzge(), paramSQLiteDatabase);
-    AppMethodBeat.o(68831);
+    AppMethodBeat.o(1354);
   }
   
   public final void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
@@ -68,65 +68,65 @@ final class zzfd
     // Byte code:
     //   0: aconst_null
     //   1: astore_2
-    //   2: ldc 92
-    //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: getstatic 98	android/os/Build$VERSION:SDK_INT	I
-    //   10: bipush 15
-    //   12: if_icmpge +28 -> 40
-    //   15: aload_1
-    //   16: ldc 100
-    //   18: aconst_null
-    //   19: invokevirtual 106	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   22: astore_3
-    //   23: aload_3
-    //   24: invokeinterface 111 1 0
-    //   29: pop
-    //   30: aload_3
-    //   31: ifnull +9 -> 40
-    //   34: aload_3
-    //   35: invokeinterface 115 1 0
-    //   40: aload_0
-    //   41: getfield 11	com/google/android/gms/internal/measurement/zzfd:zzaii	Lcom/google/android/gms/internal/measurement/zzfc;
-    //   44: invokevirtual 39	com/google/android/gms/internal/measurement/zzhg:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
-    //   47: aload_1
-    //   48: ldc 117
-    //   50: ldc 119
-    //   52: ldc 121
-    //   54: aconst_null
-    //   55: invokestatic 124	com/google/android/gms/internal/measurement/zzei:zza	(Lcom/google/android/gms/internal/measurement/zzfg;Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
-    //   58: ldc 92
-    //   60: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   63: return
-    //   64: astore_1
-    //   65: aload_2
-    //   66: ifnull +9 -> 75
-    //   69: aload_2
-    //   70: invokeinterface 115 1 0
-    //   75: ldc 92
-    //   77: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   80: aload_1
-    //   81: athrow
-    //   82: astore_1
-    //   83: aload_3
-    //   84: astore_2
-    //   85: goto -20 -> 65
+    //   2: sipush 1353
+    //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 95	android/os/Build$VERSION:SDK_INT	I
+    //   11: bipush 15
+    //   13: if_icmpge +28 -> 41
+    //   16: aload_1
+    //   17: ldc 97
+    //   19: aconst_null
+    //   20: invokevirtual 103	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   23: astore_3
+    //   24: aload_3
+    //   25: invokeinterface 108 1 0
+    //   30: pop
+    //   31: aload_3
+    //   32: ifnull +9 -> 41
+    //   35: aload_3
+    //   36: invokeinterface 112 1 0
+    //   41: aload_0
+    //   42: getfield 11	com/google/android/gms/internal/measurement/zzfd:zzaii	Lcom/google/android/gms/internal/measurement/zzfc;
+    //   45: invokevirtual 38	com/google/android/gms/internal/measurement/zzhg:zzge	()Lcom/google/android/gms/internal/measurement/zzfg;
+    //   48: aload_1
+    //   49: ldc 114
+    //   51: ldc 116
+    //   53: ldc 118
+    //   55: aconst_null
+    //   56: invokestatic 121	com/google/android/gms/internal/measurement/zzei:zza	(Lcom/google/android/gms/internal/measurement/zzfg;Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)V
+    //   59: sipush 1353
+    //   62: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   65: return
+    //   66: astore_1
+    //   67: aload_2
+    //   68: ifnull +9 -> 77
+    //   71: aload_2
+    //   72: invokeinterface 112 1 0
+    //   77: sipush 1353
+    //   80: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   83: aload_1
+    //   84: athrow
+    //   85: astore_1
+    //   86: aload_3
+    //   87: astore_2
+    //   88: goto -21 -> 67
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	88	0	this	zzfd
-    //   0	88	1	paramSQLiteDatabase	SQLiteDatabase
-    //   1	84	2	localObject	java.lang.Object
-    //   22	62	3	localCursor	android.database.Cursor
+    //   0	91	0	this	zzfd
+    //   0	91	1	paramSQLiteDatabase	SQLiteDatabase
+    //   1	87	2	localObject	java.lang.Object
+    //   23	64	3	localCursor	android.database.Cursor
     // Exception table:
     //   from	to	target	type
-    //   15	23	64	finally
-    //   23	30	82	finally
+    //   16	24	66	finally
+    //   24	31	85	finally
   }
   
   public final void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzfd
  * JD-Core Version:    0.7.0.1
  */

@@ -22,41 +22,41 @@ public class ReplyTextUI
   extends MMAvatarActivity
   implements k, com.tencent.mm.wear.app.d.a.b.e, com.tencent.mm.wear.app.ui.widget.b
 {
-  private BlockingQueue<com.tencent.mm.wear.app.d.a.b.g> adP;
-  private i adT;
-  private com.tencent.mm.wear.app.d.a.b.b agn;
-  private com.tencent.mm.wear.app.d.a.b.d ago;
-  private Vibrator agp;
-  private RecordView agq;
-  private TextView agr;
-  private TextView ags;
-  private d agt = new d(this, (byte)0);
-  private int agu;
+  private BlockingQueue<com.tencent.mm.wear.app.d.a.b.g> ahr;
+  private i ahv;
+  private com.tencent.mm.wear.app.d.a.b.b ajP;
+  private com.tencent.mm.wear.app.d.a.b.d ajQ;
+  private Vibrator ajR;
+  private RecordView ajS;
+  private TextView ajT;
+  private TextView ajU;
+  private d ajV = new d(this, (byte)0);
+  private int ajW;
   
-  private void P(String paramString)
+  private void W(String paramString)
   {
-    this.agr.setText(paramString);
-    this.ags.setText("");
+    this.ajT.setText(paramString);
+    this.ajU.setText("");
   }
   
-  private void nr()
+  private void oe()
   {
-    if (this.ago != null)
+    if (this.ajQ != null)
     {
-      this.ago.mP();
-      this.ago = null;
+      this.ajQ.nB();
+      this.ajQ = null;
     }
-    if (this.agn != null)
+    if (this.ajP != null)
     {
-      this.agn.mO();
-      this.agn = null;
+      this.ajP.nA();
+      this.ajP = null;
     }
   }
   
-  private void ns()
+  private void of()
   {
-    this.agu = 0;
-    this.agt.removeMessages(4098);
+    this.ajW = 0;
+    this.ajV.removeMessages(4098);
     com.tencent.mm.wear.a.c.d.c("MicroMsg.ReplyTextUI", "stop time ticker", new Object[0]);
   }
   
@@ -69,30 +69,30 @@ public class ReplyTextUI
     do
     {
       return;
-      paramArrayOfByte = h.mb().l(paramArrayOfByte);
+      paramArrayOfByte = h.mO().l(paramArrayOfByte);
       am localam = new am();
       for (;;)
       {
         try
         {
           localam.h(paramArrayOfByte);
-          com.tencent.mm.wear.a.c.d.c("MicroMsg.ReplyTextUI", "response %b %s %d %s", new Object[] { Boolean.valueOf(localam.WD), localam.VN, Integer.valueOf(localam.WE), localam.Wt });
-          if ((!localam.WD) || (localam.WE != 0)) {
+          com.tencent.mm.wear.a.c.d.c("MicroMsg.ReplyTextUI", "response %b %s %d %s", new Object[] { Boolean.valueOf(localam.Yy), localam.XI, Integer.valueOf(localam.Yz), localam.Yo });
+          if ((!localam.Yy) || (localam.Yz != 0)) {
             break label237;
           }
-          paramArrayOfByte = localam.Wt;
+          paramArrayOfByte = localam.Yo;
           if (paramArrayOfByte.length() <= 10)
           {
-            this.agq.cc(6);
-            this.agq.setStatus(5);
-            this.agr.setText("");
-            this.ags.setText(paramArrayOfByte);
-            this.agp.vibrate(150L);
-            if (this.adT == null) {
+            this.ajS.cy(6);
+            this.ajS.setStatus(5);
+            this.ajT.setText("");
+            this.ajU.setText(paramArrayOfByte);
+            this.ajR.vibrate(150L);
+            if (this.ahv == null) {
               break;
             }
-            this.adT.stop();
-            this.adT = null;
+            this.ahv.stop();
+            this.ahv = null;
             return;
           }
         }
@@ -102,23 +102,23 @@ public class ReplyTextUI
           return;
         }
         if (paramArrayOfByte.length() <= 20) {
-          this.agq.cc(3);
+          this.ajS.cy(3);
         } else {
-          this.agq.cc(2);
+          this.ajS.cy(2);
         }
       }
-      if (localam.WE == 1)
+      if (localam.Yz == 1)
       {
-        this.agq.setStatus(4);
+        this.ajS.setStatus(4);
         return;
       }
-      this.agq.setStatus(-2);
-    } while (this.adT == null);
-    this.adT.stop();
-    this.adT = null;
+      this.ajS.setStatus(-2);
+    } while (this.ahv == null);
+    this.ahv.stop();
+    this.ahv = null;
   }
   
-  public final void aj(int paramInt1, int paramInt2)
+  public final void am(int paramInt1, int paramInt2)
   {
     paramInt2 = 2;
     switch (paramInt1)
@@ -131,78 +131,78 @@ public class ReplyTextUI
       return;
     case 2: 
       com.tencent.mm.wear.a.c.d.c("MicroMsg.ReplyTextUI", "start to record", new Object[0]);
-      this.adP = new LinkedBlockingQueue();
-      this.adT = new i(h.mb().lS());
-      this.adT.a(this);
-      this.ago = new com.tencent.mm.wear.app.d.a.b.d(this.adP, 16000);
-      this.ago.setPriority(1);
-      this.ago.a(this);
-      this.ago.start();
-      this.agn = new com.tencent.mm.wear.app.d.a.b.b(this.adP, getUsername(), this.adT);
-      this.agn.setPriority(1);
-      this.agn.start();
-      this.agu = 30;
-      this.agt.removeMessages(4098);
-      this.agt.sendEmptyMessage(4098);
+      this.ahr = new LinkedBlockingQueue();
+      this.ahv = new i(h.mO().mF());
+      this.ahv.a(this);
+      this.ajQ = new com.tencent.mm.wear.app.d.a.b.d(this.ahr, 16000);
+      this.ajQ.setPriority(1);
+      this.ajQ.a(this);
+      this.ajQ.start();
+      this.ajP = new com.tencent.mm.wear.app.d.a.b.b(this.ahr, getUsername(), this.ahv);
+      this.ajP.setPriority(1);
+      this.ajP.start();
+      this.ajW = 30;
+      this.ajV.removeMessages(4098);
+      this.ajV.sendEmptyMessage(4098);
       com.tencent.mm.wear.a.c.d.c("MicroMsg.ReplyTextUI", "start time ticker", new Object[0]);
-      P(getString(2131165233));
+      W(getString(2131165234));
       return;
     case 3: 
-      P(getString(2131165228));
+      W(getString(2131165229));
       return;
     case 4: 
       com.tencent.mm.wear.a.c.d.c("MicroMsg.ReplyTextUI", "stop to record", new Object[0]);
       long l = 0L;
-      if (this.ago != null)
+      if (this.ajQ != null)
       {
-        this.ago.mP();
-        l = this.ago.mQ();
-        this.ago = null;
+        this.ajQ.nB();
+        l = this.ajQ.nC();
+        this.ajQ = null;
       }
-      if (this.agn != null)
+      if (this.ajP != null)
       {
         if (l >= 1500L) {
           break label331;
         }
-        this.agn.mO();
-        this.agq.setStatus(-1);
+        this.ajP.nA();
+        this.ajS.setStatus(-1);
       }
       for (;;)
       {
-        this.agn = null;
-        ns();
+        this.ajP = null;
+        of();
         return;
-        this.agn.mN();
-        P(getString(2131165236));
+        this.ajP.nz();
+        W(getString(2131165237));
       }
     case -1: 
-      P(getString(2131165239));
-      nr();
+      W(getString(2131165240));
+      oe();
       return;
     case -2: 
-      P(getString(2131165235));
-      nr();
+      W(getString(2131165236));
+      oe();
       return;
     case 6: 
       label331:
-      Object localObject = this.ags.getText().toString();
-      P("");
-      this.agq.setStatus(7);
-      if (nd() > 0) {}
+      Object localObject = this.ajU.getText().toString();
+      W("");
+      this.ajS.setStatus(7);
+      if (nQ() > 0) {}
       for (paramInt1 = paramInt2;; paramInt1 = 1) {
         try
         {
           ah localah = new ah();
-          localah.VN = getUsername();
-          localah.Ws = paramInt1;
-          localah.Wt = ((String)localObject);
-          localObject = new com.tencent.mm.wear.app.f.e(nd(), 11023, localah.toByteArray());
-          ((com.tencent.mm.wear.app.f.e)localObject).mU();
+          localah.XI = getUsername();
+          localah.Yn = paramInt1;
+          localah.Yo = ((String)localObject);
+          localObject = new com.tencent.mm.wear.app.f.e(nQ(), 11023, localah.toByteArray());
+          ((com.tencent.mm.wear.app.f.e)localObject).nG();
           ((com.tencent.mm.wear.app.f.e)localObject).a(new com.tencent.mm.wear.app.f.g()
           {
-            public final void mV()
+            public final void nH()
             {
-              com.tencent.mm.wear.a.b.a.aiT.postDelayed(new Runnable()
+              com.tencent.mm.wear.a.b.a.amv.postDelayed(new Runnable()
               {
                 public final void run()
                 {
@@ -211,8 +211,8 @@ public class ReplyTextUI
               }, 1000L);
             }
           });
-          h.mc().a((com.tencent.mm.wear.app.g.a)localObject);
-          com.tencent.mm.wear.app.d.a.bM(2);
+          h.mP().a((com.tencent.mm.wear.app.g.a)localObject);
+          com.tencent.mm.wear.app.d.a.ci(2);
           return;
         }
         catch (IOException localIOException)
@@ -221,16 +221,16 @@ public class ReplyTextUI
         }
       }
     }
-    nr();
+    oe();
     finish();
   }
   
-  public final void bP(int paramInt)
+  public final void cl(int paramInt)
   {
-    if ((paramInt > 1000) && (this.agq.getStatus() == 2)) {
-      this.agq.setStatus(3);
+    if ((paramInt > 1000) && (this.ajS.getStatus() == 2)) {
+      this.ajS.setStatus(3);
     }
-    this.agq.cb(paramInt);
+    this.ajS.cx(paramInt);
   }
   
   public final int getLayoutId()
@@ -245,12 +245,12 @@ public class ReplyTextUI
   {
     super.onCreate(paramBundle);
     getWindow().addFlags(128);
-    this.agq = ((RecordView)findViewById(2131558516));
-    this.agr = ((TextView)findViewById(2131558517));
-    this.ags = ((TextView)findViewById(2131558518));
-    P("");
-    this.agq.a(this);
-    this.agq.setOnClickListener(new View.OnClickListener()
+    this.ajS = ((RecordView)findViewById(2131558517));
+    this.ajT = ((TextView)findViewById(2131558518));
+    this.ajU = ((TextView)findViewById(2131558519));
+    W("");
+    this.ajS.a(this);
+    this.ajS.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
@@ -273,15 +273,15 @@ public class ReplyTextUI
         ReplyTextUI.a(ReplyTextUI.this).setStatus(-3);
       }
     });
-    this.agq.setStatus(2);
-    this.agp = ((Vibrator)getSystemService("vibrator"));
-    N(getUsername());
+    this.ajS.setStatus(2);
+    this.ajR = ((Vibrator)getSystemService("vibrator"));
+    U(getUsername());
   }
   
   protected void onDestroy()
   {
-    nr();
-    ns();
+    oe();
+    of();
     super.onDestroy();
   }
 }

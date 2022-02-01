@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:title="@string/egf" android:key="settings_bind_qq" android:layout="@layout/afi" />
-    <Preference android:title="@string/e_m" android:key="settings_email_addr" android:layout="@layout/afi" />
-    <Preference android:title="@string/e9_" android:key="settings_about_domainmail" android:layout="@layout/afi" />
-    <Preference android:title="@string/cci" android:key="settings_facebook" android:layout="@layout/afi" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/e_l" android:key="settings_dump_personal_data" android:layout="@layout/afi" />
-    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference android:title="@string/dfu" android:key="settings_phone_security" android:layout="@layout/afi" />
-    <Preference android:title="@string/e86" android:key="settings_delete_account" android:layout="@layout/afi" />
+    <Preference android:key="timline_outside_permiss" android:title="@string/fo3" />
+    <Preference android:key="timeline_black_permiss" android:title="@string/fk8" />
+    <PreferenceCategory />
+    <CheckBoxPreference android:key="timeline_stranger_show" android:layout="@layout/aop" android:title="@string/b6a" />
 </PreferenceScreen>

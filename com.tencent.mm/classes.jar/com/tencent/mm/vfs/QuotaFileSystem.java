@@ -7,11 +7,15 @@ import android.os.HandlerThread;
 import android.os.Message;
 import android.os.OperationCanceledException;
 import android.os.Parcel;
+import android.os.ParcelFileDescriptor;
 import android.os.Parcelable.Creator;
-import com.tencent.f.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.stubs.logger.Log;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.channels.ByteChannel;
+import java.nio.channels.ReadableByteChannel;
+import java.nio.channels.WritableByteChannel;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -23,451 +27,500 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class QuotaFileSystem
-  extends FileSystemWrapper
+  extends DelegateFileSystem
   implements Handler.Callback
 {
   public static final Parcelable.Creator<QuotaFileSystem> CREATOR;
-  private final long AQf;
-  private final long AQg;
-  private final boolean AQh;
-  private final Object AQi;
-  private HashMap<String, Long> AQj;
-  private final Handler AQk;
-  private final long AQl;
-  private final long irn;
+  private final FileSystem HRw;
+  private final Iterable<FileSystem> HRx;
+  private final long HSB;
+  private final long HSC;
+  private final boolean HSD;
+  private final Object HSE;
+  private HashMap<String, Long> HSF;
+  private final Handler HSG;
+  private final long HSH;
+  private final long kSM;
   
   static
   {
-    AppMethodBeat.i(54569);
+    AppMethodBeat.i(13202);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(54569);
+    AppMethodBeat.o(13202);
   }
   
-  public QuotaFileSystem(FileSystem paramFileSystem)
+  protected QuotaFileSystem(Parcel paramParcel)
   {
-    super(paramFileSystem);
-    AppMethodBeat.i(54560);
-    this.AQi = new Object();
-    this.AQl = 60000L;
-    this.AQf = 402653184L;
-    this.AQg = 536870912L;
-    this.irn = 7776000000L;
-    this.AQh = true;
-    if (this.AQh) {
-      this.AQj = new HashMap();
-    }
-    for (this.AQk = new Handler(FileSystemManager.dQE().APN.getLooper(), this);; this.AQk = null)
+    AppMethodBeat.i(13189);
+    this.HSE = new Object();
+    this.HSH = 60000L;
+    q.a(paramParcel, QuotaFileSystem.class, 2);
+    this.HRw = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
+    if (this.HRw == null)
     {
-      dQF();
-      AppMethodBeat.o(54560);
-      return;
-      this.AQj = null;
+      paramParcel = new IllegalArgumentException("Wrong wrapped filesystem.");
+      AppMethodBeat.o(13189);
+      throw paramParcel;
     }
-  }
-  
-  protected QuotaFileSystem(FileSystem paramFileSystem, Parcel paramParcel)
-  {
-    super(paramFileSystem);
-    AppMethodBeat.i(54561);
-    this.AQi = new Object();
-    this.AQl = 60000L;
-    this.AQf = paramParcel.readLong();
-    this.AQg = paramParcel.readLong();
-    this.irn = paramParcel.readLong();
+    this.HRx = Collections.singletonList(this.HRw);
+    this.HSB = paramParcel.readLong();
+    this.HSC = paramParcel.readLong();
+    this.kSM = paramParcel.readLong();
     boolean bool;
     if (paramParcel.readByte() != 0)
     {
       bool = true;
-      this.AQh = bool;
-      if (!this.AQh) {
-        break label120;
+      this.HSD = bool;
+      if (!this.HSD) {
+        break label182;
       }
-      this.AQj = new HashMap();
+      this.HSF = new HashMap();
     }
-    for (this.AQk = new Handler(FileSystemManager.dQE().APN.getLooper(), this);; this.AQk = null)
+    for (this.HSG = new Handler(a.gap().LDp.getLooper(), this);; this.HSG = null)
     {
-      dQF();
-      AppMethodBeat.o(54561);
+      fhO();
+      AppMethodBeat.o(13189);
       return;
       bool = false;
       break;
-      label120:
-      this.AQj = null;
+      label182:
+      this.HSF = null;
     }
   }
   
-  private void dQF()
+  public QuotaFileSystem(FileSystem paramFileSystem, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(54562);
-    if (this.AQg < this.AQf)
+    AppMethodBeat.i(13188);
+    this.HSE = new Object();
+    this.HSH = 60000L;
+    this.HRw = paramFileSystem;
+    this.HRx = Collections.singletonList(this.HRw);
+    this.HSB = paramLong1;
+    this.HSC = paramLong2;
+    this.kSM = 7776000000L;
+    this.HSD = true;
+    if (this.HSD) {
+      this.HSF = new HashMap();
+    }
+    for (this.HSG = new Handler(a.gap().LDp.getLooper(), this);; this.HSG = null)
+    {
+      fhO();
+      AppMethodBeat.o(13188);
+      return;
+      this.HSF = null;
+    }
+  }
+  
+  private void cR(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(13191);
+    if (!this.HSD)
+    {
+      AppMethodBeat.o(13191);
+      return;
+    }
+    if (paramBoolean) {
+      synchronized (this.HSE)
+      {
+        this.HSF.remove(paramString);
+        AppMethodBeat.o(13191);
+        return;
+      }
+    }
+    long l = System.currentTimeMillis();
+    synchronized (this.HSE)
+    {
+      paramBoolean = this.HSF.isEmpty();
+      this.HSF.put(paramString, Long.valueOf(l));
+      if (paramBoolean) {
+        this.HSG.sendMessageDelayed(Message.obtain(), 60000L);
+      }
+      AppMethodBeat.o(13191);
+      return;
+    }
+  }
+  
+  private void fhO()
+  {
+    AppMethodBeat.i(13190);
+    if (this.HSC < this.HSB)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Cleaning threshold must not less than target size.");
-      AppMethodBeat.o(54562);
+      AppMethodBeat.o(13190);
       throw localIllegalArgumentException;
     }
-    AppMethodBeat.o(54562);
-  }
-  
-  public final OutputStream M(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(54564);
-    OutputStream localOutputStream = this.APv.M(paramString, paramBoolean);
-    if (this.AQh) {}
-    synchronized (this.AQi)
-    {
-      this.AQj.remove(paramString);
-      AppMethodBeat.o(54564);
-      return localOutputStream;
-    }
+    AppMethodBeat.o(13190);
   }
   
   public final void a(CancellationSignal paramCancellationSignal)
   {
-    AppMethodBeat.i(54565);
+    AppMethodBeat.i(13198);
     long l2 = 0L;
     int i1 = 0;
-    int j = 0;
     int i = 0;
+    int j = 0;
     int n = 0;
-    int m = n;
-    int k = j;
+    int k = n;
+    int m = i;
     long l1 = l2;
     int i2;
-    label154:
-    label204:
+    label153:
+    label203:
     Object localObject1;
     label259:
     Object localObject2;
     Object localObject4;
-    label663:
     long l3;
     for (;;)
     {
       try
       {
-        i2 = this.APv.ajj();
+        i2 = this.HRw.fhA();
         if ((i2 & 0x1) == 0)
         {
-          m = n;
-          k = j;
+          k = n;
+          m = i;
           l1 = l2;
-          b.w("VFS.QuotaFileSystem", "No quota operation can be done on read-only file system: " + this.APv.toString());
-          this.APv.a(paramCancellationSignal);
-          AppMethodBeat.o(54565);
+          Log.w("VFS.QuotaFileSystem", "No quota operation can be done on read-only file system: " + this.HRw.toString());
+          super.a(paramCancellationSignal);
+          AppMethodBeat.o(13198);
           return;
         }
-        if ((i2 & 0x8) != 0) {
+        if ((i2 & 0x4) != 0) {
           break label259;
         }
-        m = n;
-        k = j;
+        k = n;
+        m = i;
         l1 = l2;
-        b.w("VFS.QuotaFileSystem", "No quota operation can be done on non-listable file system: " + this.APv.toString());
+        Log.w("VFS.QuotaFileSystem", "No quota operation can be done on non-listable file system: " + this.HRw.toString());
         continue;
         if (!(paramCancellationSignal instanceof OperationCanceledException)) {
-          break label2100;
+          break label2137;
         }
       }
       catch (Exception paramCancellationSignal)
       {
-        i = m;
+        j = m;
+        i = k;
       }
-      b.i("VFS.QuotaFileSystem", "Maintenance cancelled. files: " + k + ", dirs: " + i + ", totalSize: " + l1);
-      j = 4;
-      k(j, new Object[] { "fileCount", Integer.valueOf(k), "dirCount", Integer.valueOf(i), "totalSize", Long.valueOf(l1) });
-      AppMethodBeat.o(54565);
+      Log.i("VFS.QuotaFileSystem", "Maintenance cancelled. files: " + j + ", dirs: " + i + ", totalSize: " + l1);
+      k = 4;
+      k(k, new Object[] { "fileCount", Integer.valueOf(j), "dirCount", Integer.valueOf(i), "totalSize", Long.valueOf(l1) });
+      AppMethodBeat.o(13198);
       throw paramCancellationSignal;
-      m = n;
-      k = j;
+      k = n;
+      m = i;
       l1 = l2;
       paramCancellationSignal.throwIfCanceled();
-      m = n;
-      k = j;
+      k = n;
+      m = i;
       l1 = l2;
-      k(1, new Object[] { "destination", this.APv });
-      m = n;
-      k = j;
+      k(1, new Object[] { "destination", this.HRw });
+      k = n;
+      m = i;
       l1 = l2;
-      if (this.AQh)
+      if (this.HSD)
       {
         localObject1 = null;
-        m = n;
-        k = j;
+        k = n;
+        m = i;
         l1 = l2;
-        localObject2 = this.AQi;
-        m = n;
-        k = j;
+        localObject2 = this.HSE;
+        k = n;
+        m = i;
         l1 = l2;
         try
         {
-          if (!this.AQj.isEmpty())
+          if (!this.HSF.isEmpty())
           {
-            localObject1 = this.AQj;
-            this.AQj = new HashMap();
+            localObject1 = this.HSF;
+            this.HSF = new HashMap();
           }
           if (localObject1 != null)
           {
-            m = n;
-            k = j;
+            k = n;
+            m = i;
             l1 = l2;
             localObject1 = ((HashMap)localObject1).entrySet().iterator();
             for (;;)
             {
-              m = n;
-              k = j;
+              k = n;
+              m = i;
               l1 = l2;
               if (!((Iterator)localObject1).hasNext()) {
                 break;
               }
-              m = n;
-              k = j;
+              k = n;
+              m = i;
               l1 = l2;
               localObject2 = (Map.Entry)((Iterator)localObject1).next();
-              m = n;
-              k = j;
+              k = n;
+              m = i;
               l1 = l2;
               paramCancellationSignal.throwIfCanceled();
-              m = n;
-              k = j;
+              k = n;
+              m = i;
               l1 = l2;
-              this.APv.A((String)((Map.Entry)localObject2).getKey(), ((Long)((Map.Entry)localObject2).getValue()).longValue());
+              this.HRw.cf((String)((Map.Entry)localObject2).getKey(), ((Long)((Map.Entry)localObject2).getValue()).longValue());
             }
           }
-          m = n;
+          k = n;
         }
         finally
         {
-          m = n;
-          k = j;
+          k = n;
+          m = i;
           l1 = l2;
-          AppMethodBeat.o(54565);
-          m = n;
-          k = j;
+          AppMethodBeat.o(13198);
+          k = n;
+          m = i;
           l1 = l2;
         }
       }
-      k = j;
+      m = i;
       l1 = l2;
       paramCancellationSignal.throwIfCanceled();
-      m = n;
-      k = j;
+      k = n;
+      m = i;
       l1 = l2;
-      localObject4 = this.APv.N("", true);
-      if (localObject4 == null)
+      localObject4 = new ArrayList();
+      k = n;
+      m = i;
+      l1 = l2;
+      localObject1 = this.HRw.cN("", true);
+      if (localObject1 == null)
       {
-        m = n;
-        k = j;
+        k = n;
+        m = i;
         l1 = l2;
-        b.e("VFS.QuotaFileSystem", "Unable to list files in FS: " + toString());
+        Log.e("VFS.QuotaFileSystem", "Unable to list files in FS: " + toString());
       }
       else
       {
-        m = n;
-        k = j;
-        l1 = l2;
-        localObject1 = ((List)localObject4).iterator();
-        j = i1;
+        k = n;
         m = i;
+        l1 = l2;
+        localObject1 = ((Iterable)localObject1).iterator();
+        i = i1;
         k = j;
+        m = i;
         l1 = l2;
         if (((Iterator)localObject1).hasNext())
         {
-          m = i;
           k = j;
+          m = i;
           l1 = l2;
           localObject2 = (FileSystem.a)((Iterator)localObject1).next();
-          m = i;
           k = j;
+          m = i;
           l1 = l2;
-          if (((FileSystem.a)localObject2).APs < 0L)
+          paramCancellationSignal.throwIfCanceled();
+          k = j;
+          m = i;
+          l1 = l2;
+          if (((FileSystem.a)localObject2).HRz < 0L)
           {
-            m = i;
             k = j;
+            m = i;
             l1 = l2;
             l3 = ((FileSystem.a)localObject2).size;
           }
           for (l1 = l3;; l1 = l3)
           {
-            l2 += l1;
-            m = i;
-            k = j;
-            l1 = l2;
-            if (!((FileSystem.a)localObject2).APu) {
-              break label2145;
+            for (;;)
+            {
+              l2 += l1;
+              k = j;
+              m = i;
+              l1 = l2;
+              boolean bool = ((FileSystem.a)localObject2).HRB;
+              if (!bool) {
+                break label2205;
+              }
+              j += 1;
+              try
+              {
+                label815:
+                ((List)localObject4).add(localObject2);
+              }
+              catch (Exception paramCancellationSignal)
+              {
+                Iterator localIterator;
+                Object localObject3;
+                k = i;
+                i = j;
+                j = k;
+                l1 = l2;
+              }
             }
-            i += 1;
-            break;
-            m = i;
             k = j;
+            m = i;
             l1 = l2;
-            l3 = ((FileSystem.a)localObject2).APs;
+            l3 = ((FileSystem.a)localObject2).HRz;
           }
         }
-        m = i;
         k = j;
-        l1 = l2;
-        b.i("VFS.QuotaFileSystem", "Total size: " + l2 + ", Cleaning threshold: " + this.AQg);
         m = i;
-        k = j;
         l1 = l2;
-        k(2, new Object[] { "fileCount", Integer.valueOf(j), "dirCount", Integer.valueOf(i), "totalSize", Long.valueOf(l2) });
+        Log.i("VFS.QuotaFileSystem", "Total size: " + l2 + ", Cleaning threshold: " + this.HSC);
+        k = j;
         m = i;
-        k = j;
         l1 = l2;
-        if (l2 > this.AQg) {
+        k(2, new Object[] { "fileCount", Integer.valueOf(i), "dirCount", Integer.valueOf(j), "totalSize", Long.valueOf(l2) });
+        k = j;
+        m = i;
+        l1 = l2;
+        if (l2 > this.HSC) {
           break;
         }
-        m = i;
         k = j;
-        l1 = l2;
-        b.i("VFS.QuotaFileSystem", "Threshold not reached, skip cleaning.");
         m = i;
-        k = j;
         l1 = l2;
-        k(6, new Object[] { "fileCount", Integer.valueOf(j), "dirCount", Integer.valueOf(i), "totalSize", Long.valueOf(l2) });
+        Log.i("VFS.QuotaFileSystem", "Threshold not reached, skip cleaning.");
+        k = j;
+        m = i;
+        l1 = l2;
+        k(6, new Object[] { "fileCount", Integer.valueOf(i), "dirCount", Integer.valueOf(j), "totalSize", Long.valueOf(l2) });
       }
     }
-    m = i;
-    k = j;
-    l1 = l2;
-    paramCancellationSignal.throwIfCanceled();
-    if ((i2 & 0x20) != 0)
+    if ((i2 & 0x8) != 0)
     {
-      m = i;
       k = j;
+      m = i;
       l1 = l2;
       localObject2 = new HashMap();
-      m = i;
       k = j;
+      m = i;
       l1 = l2;
-      Iterator localIterator = ((List)localObject4).iterator();
+      localIterator = ((List)localObject4).iterator();
       for (;;)
       {
-        m = i;
         k = j;
+        m = i;
         l1 = l2;
         if (!localIterator.hasNext()) {
           break;
         }
-        m = i;
         k = j;
+        m = i;
         l1 = l2;
         FileSystem.a locala = (FileSystem.a)localIterator.next();
-        m = i;
         k = j;
+        m = i;
         l1 = l2;
-        if (locala.APu)
+        if (locala.HRB)
         {
-          m = i;
           k = j;
+          m = i;
           l1 = l2;
-          if (!((HashMap)localObject2).containsKey(locala.APr))
+          if (!((HashMap)localObject2).containsKey(locala.EQk))
           {
-            m = i;
             k = j;
+            m = i;
             l1 = l2;
-            ((HashMap)localObject2).put(locala.APr, new a(locala));
+            ((HashMap)localObject2).put(locala.EQk, new a(locala));
           }
         }
-        m = i;
         k = j;
+        m = i;
         l1 = l2;
-        String str = j.avQ(locala.APr);
+        String str = q.aMW(locala.EQk);
         if (str != null)
         {
-          m = i;
           k = j;
+          m = i;
           l1 = l2;
           localObject3 = (a)((HashMap)localObject2).get(str);
           localObject1 = localObject3;
           if (localObject3 == null)
           {
-            m = i;
             k = j;
+            m = i;
             l1 = l2;
             localObject1 = new a(locala);
-            m = i;
             k = j;
+            m = i;
             l1 = l2;
             ((HashMap)localObject2).put(str, localObject1);
           }
-          m = i;
           k = j;
+          m = i;
           l1 = l2;
-          ((a)localObject1).jRS += 1;
+          ((a)localObject1).mRc += 1;
         }
       }
-      m = i;
       k = j;
+      m = i;
       l1 = l2;
       paramCancellationSignal.throwIfCanceled();
       localObject1 = localObject2;
-      label1317:
-      m = i;
+      label1353:
       k = j;
+      m = i;
       l1 = l2;
-      Object localObject3 = new ArrayList(((List)localObject4).size());
-      m = i;
+      localObject3 = new ArrayList(((List)localObject4).size());
       k = j;
+      m = i;
       l1 = l2;
       localObject2 = ((List)localObject4).iterator();
       for (;;)
       {
-        m = i;
         k = j;
+        m = i;
         l1 = l2;
         if (!((Iterator)localObject2).hasNext()) {
           break;
         }
-        m = i;
         k = j;
+        m = i;
         l1 = l2;
         localObject4 = (FileSystem.a)((Iterator)localObject2).next();
-        m = i;
         k = j;
+        m = i;
         l1 = l2;
-        if (!((FileSystem.a)localObject4).APu)
+        if (!((FileSystem.a)localObject4).HRB)
         {
-          m = i;
           k = j;
+          m = i;
           l1 = l2;
           ((ArrayList)localObject3).add(localObject4);
         }
       }
-      m = i;
       k = j;
+      m = i;
       l1 = l2;
       Collections.sort((List)localObject3, new Comparator()
       {
-        private final long AQm;
+        private final long HSI;
       });
-      m = i;
       k = j;
+      m = i;
       l1 = l2;
       n = ((ArrayList)localObject3).size();
       n -= 1;
       l1 = l2;
-      k = j;
+      k = i;
+      i = j;
       for (;;)
       {
         try
         {
-          if ((l1 > this.AQf) && (n >= 0))
+          if ((l1 > this.HSB) && (n >= 0))
           {
             paramCancellationSignal.throwIfCanceled();
             localObject2 = (FileSystem.a)((ArrayList)localObject3).get(n);
-            localObject4 = ((FileSystem.a)localObject2).APr;
-            if (!this.APv.qD((String)localObject4)) {
-              break label2132;
+            localObject4 = ((FileSystem.a)localObject2).EQk;
+            if (!this.HRw.vv((String)localObject4)) {
+              break label2192;
             }
-            if (((FileSystem.a)localObject2).APs < 0L)
+            if (((FileSystem.a)localObject2).HRz < 0L)
             {
               l2 = ((FileSystem.a)localObject2).size;
               l2 = l1 - l2;
               k -= 1;
-              label1578:
+              label1616:
               if (localObject1 == null) {
-                break label2129;
+                break label2189;
               }
               j = i;
               l1 = l2;
@@ -476,29 +529,32 @@ public class QuotaFileSystem
           }
           try
           {
-            localObject2 = j.avQ((String)localObject4);
+            localObject2 = q.aMW((String)localObject4);
             if (localObject2 == null) {}
           }
           catch (Exception paramCancellationSignal)
           {
-            label1750:
+            label1788:
             i = j;
-            k = m;
+            j = m;
           }
         }
-        catch (Exception paramCancellationSignal) {}
+        catch (Exception paramCancellationSignal)
+        {
+          j = k;
+        }
         try
         {
           localObject4 = (a)((HashMap)localObject1).get(localObject2);
           if (localObject4 != null)
           {
-            j = ((a)localObject4).jRS - 1;
-            ((a)localObject4).jRS = j;
-            if ((j == 0) && (this.APv.O((String)localObject2, false)))
+            j = ((a)localObject4).mRc - 1;
+            ((a)localObject4).mRc = j;
+            if ((j == 0) && (this.HRw.cO((String)localObject2, false)))
             {
-              if (((a)localObject4).AQo.APs < 0L)
+              if (((a)localObject4).HSK.HRz < 0L)
               {
-                l1 = ((a)localObject4).AQo.size;
+                l1 = ((a)localObject4).HSK.size;
                 l2 -= l1;
                 i -= 1;
                 j = i;
@@ -508,12 +564,12 @@ public class QuotaFileSystem
                 j = i;
                 l1 = l2;
                 m = k;
-                localObject2 = j.avQ((String)localObject2);
+                localObject2 = q.aMW((String)localObject2);
                 continue;
-                l2 = ((FileSystem.a)localObject2).APs;
+                l2 = ((FileSystem.a)localObject2).HRz;
                 continue;
               }
-              l1 = ((a)localObject4).AQo.APs;
+              l1 = ((a)localObject4).HSK.HRz;
               continue;
             }
           }
@@ -523,14 +579,15 @@ public class QuotaFileSystem
         catch (Exception paramCancellationSignal)
         {
           l1 = l2;
+          j = k;
         }
       }
       if (localObject1 == null) {
-        break label2166;
+        break label2226;
       }
       localObject1 = ((HashMap)localObject1).values().iterator();
       l2 = l1;
-      label1784:
+      label1822:
       n = i;
       l3 = l2;
       j = i;
@@ -545,8 +602,8 @@ public class QuotaFileSystem
         j = i;
         l1 = l2;
         m = k;
-        if (((a)localObject2).jRS != 0) {
-          break label2126;
+        if (((a)localObject2).mRc != 0) {
+          break label2186;
         }
         j = i;
         l1 = l2;
@@ -555,27 +612,27 @@ public class QuotaFileSystem
         j = i;
         l1 = l2;
         m = k;
-        if (!this.APv.O(((a)localObject2).AQo.APr, false)) {
-          break label2126;
+        if (!this.HRw.cO(((a)localObject2).HSK.EQk, false)) {
+          break label2186;
         }
         j = i;
         l1 = l2;
         m = k;
-        if (((a)localObject2).AQo.APs < 0L)
+        if (((a)localObject2).HSK.HRz < 0L)
         {
           j = i;
           l1 = l2;
           m = k;
-          l3 = ((a)localObject2).AQo.size;
+          l3 = ((a)localObject2).HSK.size;
           l1 = l3;
-          break label2152;
+          break label2212;
         }
         j = i;
         l1 = l2;
         m = k;
-        l3 = ((a)localObject2).AQo.APs;
+        l3 = ((a)localObject2).HSK.HRz;
         l1 = l3;
-        break label2152;
+        break label2212;
       }
     }
     for (;;)
@@ -583,54 +640,101 @@ public class QuotaFileSystem
       j = n;
       l1 = l3;
       m = k;
-      b.i("VFS.QuotaFileSystem", "Maintenance done. files: " + k + ", dirs: " + n + ", totalSize: " + l3);
+      Log.i("VFS.QuotaFileSystem", "Maintenance done. files: " + k + ", dirs: " + n + ", totalSize: " + l3);
       j = n;
       l1 = l3;
       m = k;
       k(3, new Object[] { "fileCount", Integer.valueOf(k), "dirCount", Integer.valueOf(n), "totalSize", Long.valueOf(l3) });
       break;
-      break label154;
-      label2100:
-      b.b("VFS.QuotaFileSystem", paramCancellationSignal, "Maintenance failed.");
-      j = 5;
-      break label204;
-      break label154;
-      break label154;
-      label2126:
-      break label2163;
-      label2129:
-      break label1750;
-      label2132:
+      break label153;
+      label2137:
+      Log.e("VFS.QuotaFileSystem", paramCancellationSignal, "Maintenance failed.");
+      k = 5;
+      break label203;
+      break label153;
+      break label153;
+      break label153;
+      label2186:
+      break label2223;
+      label2189:
+      break label1788;
+      label2192:
       l2 = l1;
-      break label1578;
+      break label1616;
       localObject1 = null;
-      break label1317;
-      label2145:
-      j += 1;
-      break label663;
-      label2152:
+      break label1353;
+      label2205:
+      i += 1;
+      break label815;
+      label2212:
       l2 -= l1;
       i -= 1;
-      label2163:
-      break label1784;
-      label2166:
+      label2223:
+      break label1822;
+      label2226:
       n = i;
       l3 = l1;
     }
   }
   
+  public final ReadableByteChannel aMA(String paramString)
+  {
+    AppMethodBeat.i(13193);
+    ReadableByteChannel localReadableByteChannel = this.HRw.aMA(paramString);
+    cR(paramString, false);
+    AppMethodBeat.o(13193);
+    return localReadableByteChannel;
+  }
+  
+  public final ByteChannel aMB(String paramString)
+  {
+    AppMethodBeat.i(13196);
+    ByteChannel localByteChannel = this.HRw.aMB(paramString);
+    cR(paramString, true);
+    AppMethodBeat.o(13196);
+    return localByteChannel;
+  }
+  
+  public final WritableByteChannel cL(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(13195);
+    WritableByteChannel localWritableByteChannel = this.HRw.cL(paramString, paramBoolean);
+    cR(paramString, true);
+    AppMethodBeat.o(13195);
+    return localWritableByteChannel;
+  }
+  
+  public final OutputStream cM(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(13194);
+    OutputStream localOutputStream = this.HRw.cM(paramString, paramBoolean);
+    cR(paramString, true);
+    AppMethodBeat.o(13194);
+    return localOutputStream;
+  }
+  
+  protected final Iterable<FileSystem> fhB()
+  {
+    return this.HRx;
+  }
+  
+  protected final FileSystem gj(String paramString, int paramInt)
+  {
+    return this.HRw;
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(54566);
+    AppMethodBeat.i(13199);
     for (;;)
     {
-      synchronized (this.AQi)
+      synchronized (this.HSE)
       {
-        if (this.AQj.isEmpty()) {
+        if (this.HSF.isEmpty()) {
           break label152;
         }
-        paramMessage = this.AQj;
-        this.AQj = new HashMap();
+        paramMessage = this.HSF;
+        this.HSF = new HashMap();
         if (paramMessage == null) {
           break label144;
         }
@@ -638,81 +742,78 @@ public class QuotaFileSystem
         if (((Iterator)???).hasNext())
         {
           Map.Entry localEntry = (Map.Entry)((Iterator)???).next();
-          this.APv.A((String)localEntry.getKey(), ((Long)localEntry.getValue()).longValue());
+          this.HRw.cf((String)localEntry.getKey(), ((Long)localEntry.getValue()).longValue());
         }
       }
-      b.d("VFS.QuotaFileSystem", "Flush access time cache entries: " + paramMessage.size());
+      Log.d("VFS.QuotaFileSystem", "Flush access time cache entries: " + paramMessage.size());
       label144:
-      AppMethodBeat.o(54566);
+      AppMethodBeat.o(13199);
       return true;
       label152:
       paramMessage = null;
     }
   }
   
+  public final ParcelFileDescriptor lw(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(13197);
+    ParcelFileDescriptor localParcelFileDescriptor = this.HRw.lw(paramString1, paramString2);
+    cR(paramString1, paramString2.contains("w"));
+    AppMethodBeat.o(13197);
+    return localParcelFileDescriptor;
+  }
+  
   public final InputStream openRead(String paramString)
   {
-    AppMethodBeat.i(54563);
-    InputStream localInputStream = this.APv.openRead(paramString);
-    long l;
-    if (this.AQh) {
-      l = System.currentTimeMillis();
-    }
-    synchronized (this.AQi)
-    {
-      boolean bool = this.AQj.isEmpty();
-      this.AQj.put(paramString, Long.valueOf(l));
-      if (bool) {
-        this.AQk.sendMessageDelayed(Message.obtain(), 60000L);
-      }
-      AppMethodBeat.o(54563);
-      return localInputStream;
-    }
+    AppMethodBeat.i(13192);
+    InputStream localInputStream = this.HRw.openRead(paramString);
+    cR(paramString, false);
+    AppMethodBeat.o(13192);
+    return localInputStream;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(54567);
-    long l = this.AQf / 1024L / 1024L;
-    String str = "QuotaFS [" + l + "MB | " + this.APv.toString() + "]";
-    AppMethodBeat.o(54567);
+    AppMethodBeat.i(13200);
+    long l = this.HSB / 1024L / 1024L;
+    String str = "QuotaFS [" + l + "MB | " + this.HRw.toString() + "]";
+    AppMethodBeat.o(13200);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 1;
-    AppMethodBeat.i(54568);
-    paramParcel.writeInt(1);
-    super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeLong(this.AQf);
-    paramParcel.writeLong(this.AQg);
-    paramParcel.writeLong(this.irn);
-    if (this.AQh) {}
-    for (paramInt = i;; paramInt = 0)
+    AppMethodBeat.i(13201);
+    q.b(paramParcel, QuotaFileSystem.class, 2);
+    paramParcel.writeParcelable(this.HRw, paramInt);
+    paramParcel.writeLong(this.HSB);
+    paramParcel.writeLong(this.HSC);
+    paramParcel.writeLong(this.kSM);
+    if (this.HSD) {}
+    for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      AppMethodBeat.o(54568);
+      AppMethodBeat.o(13201);
       return;
     }
   }
   
   static final class a
   {
-    FileSystem.a AQo;
-    int jRS;
+    FileSystem.a HSK;
+    int mRc;
     
     a(FileSystem.a parama)
     {
-      this.AQo = parama;
-      this.jRS = 0;
+      this.HSK = parama;
+      this.mRc = 0;
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(54559);
-      String str = "children: " + this.jRS + " [" + this.AQo + "]";
-      AppMethodBeat.o(54559);
+      AppMethodBeat.i(13187);
+      String str = "children: " + this.mRc + " [" + this.HSK + "]";
+      AppMethodBeat.o(13187);
       return str;
     }
   }

@@ -13,17 +13,27 @@ public abstract class AppBrandProxyUIProcessTask$ProcessRequest
     j(paramParcel);
   }
   
-  protected boolean aBm()
+  protected abstract Class<? extends AppBrandProxyUIProcessTask> aWl();
+  
+  protected boolean aXq()
   {
     return false;
   }
   
-  protected String aBn()
+  protected String aXr()
   {
     return null;
   }
   
-  protected abstract Class<? extends AppBrandProxyUIProcessTask> aBo();
+  protected int aXs()
+  {
+    return -1;
+  }
+  
+  protected boolean aXt()
+  {
+    return false;
+  }
   
   public int describeContents()
   {
@@ -36,7 +46,7 @@ public abstract class AppBrandProxyUIProcessTask$ProcessRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest
  * JD-Core Version:    0.7.0.1
  */

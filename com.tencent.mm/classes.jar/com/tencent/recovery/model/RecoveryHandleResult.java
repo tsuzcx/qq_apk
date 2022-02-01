@@ -2,12 +2,12 @@ package com.tencent.recovery.model;
 
 public class RecoveryHandleResult
 {
-  public boolean cmX;
+  public boolean result;
   public boolean retry;
   
   public String toString()
   {
-    return "RecoveryHandleResult{result=" + this.cmX + ", retry=" + this.retry + '}';
+    return "RecoveryHandleResult{result=" + this.result + ", retry=" + this.retry + '}';
   }
 }
 

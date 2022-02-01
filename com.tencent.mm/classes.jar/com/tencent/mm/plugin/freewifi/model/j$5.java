@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.freewifi.model;
 
-import com.tencent.mm.cg.h.d;
 import com.tencent.mm.plugin.freewifi.g.b;
+import com.tencent.mm.storagebase.h.b;
 
 final class j$5
-  implements h.d
+  implements h.b
 {
   public final String[] getSQLs()
   {
@@ -13,7 +13,7 @@ final class j$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.model.j.5
  * JD-Core Version:    0.7.0.1
  */

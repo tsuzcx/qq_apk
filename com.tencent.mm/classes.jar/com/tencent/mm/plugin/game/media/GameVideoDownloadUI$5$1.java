@@ -10,14 +10,14 @@ final class GameVideoDownloadUI$5$1
   
   public final void run()
   {
-    AppMethodBeat.i(151850);
-    this.nlG.nlF.setVisibility(8);
-    AppMethodBeat.o(151850);
+    AppMethodBeat.i(41125);
+    this.rTl.rTk.setVisibility(8);
+    AppMethodBeat.o(41125);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.GameVideoDownloadUI.5.1
  * JD-Core Version:    0.7.0.1
  */

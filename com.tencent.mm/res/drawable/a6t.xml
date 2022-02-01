@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ff0db209" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@raw/product_media_play_btn_pressed" />
+    <item android:drawable="@raw/product_media_play_btn_normal" />
+</selector>

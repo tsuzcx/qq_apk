@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/edv" android:padding="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout android:background="#99000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:id="@id/edw" android:password="true" android:maxLength="16" style="@style/ml" />
-</LinearLayout>
+    <RelativeLayout android:layout_gravity="bottom" android:id="@id/duh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="635.0dip">
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/du1" android:background="?gr" android:paddingLeft="@dimen/a_m" android:paddingTop="@dimen/a_m" android:paddingRight="@dimen/a_m" android:paddingBottom="@dimen/a_m" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/du2" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:src="@raw/actionbar_icon_dark_close" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="@dimen/hs" android:textColor="?gq" android:id="@id/du7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/afq" android:layout_centerHorizontal="true" />
+            <Button android:textSize="@dimen/ji" android:id="@id/du4" android:text="@string/af9" android:layout_alignParentRight="true" style="?gf" />
+        </RelativeLayout>
+        <ScrollView android:id="@id/dug" android:background="@color/BW_97" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/du1">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:background="@color/a_r" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_3" android:ellipsize="end" android:gravity="left" android:id="@id/a45" android:background="@color/lc" android:paddingLeft="8.0dip" android:paddingTop="8.0dip" android:paddingRight="8.0dip" android:paddingBottom="8.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:singleLine="false" />
+                </LinearLayout>
+                <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/ia" android:textColor="?gp" android:textColorHint="?gm" android:gravity="center|left|top" android:id="@id/du3" android:background="@color/a_r" android:paddingLeft="@dimen/a_m" android:paddingRight="@dimen/a_m" android:paddingBottom="@dimen/a_m" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/afs" android:maxLines="5" android:minLines="5" android:imeOptions="actionDone" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/a3z" android:paddingLeft="@dimen/a_m" android:paddingTop="20.0dip" android:paddingBottom="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/afd" />
+                <com.tencent.mm.ui.base.MaxListView android:id="@id/a3y" android:paddingLeft="@dimen/a_m" android:paddingRight="@dimen/a_m" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/hp" />
+            </LinearLayout>
+        </ScrollView>
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <com.tencent.mm.plugin.webview.ui.tools.widget.MPSmileyFooter android:id="@id/dtw" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+</com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout>

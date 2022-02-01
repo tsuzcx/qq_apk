@@ -3,12 +3,12 @@ package com.tencent.mm.plugin.appbrand.canvas.widget;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.e.i.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionWrapper;
-import com.tencent.mm.plugin.appbrand.canvas.action.arg.a.c;
-import com.tencent.mm.sdk.g.a.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.canvas.action.arg.a.d;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,47 +20,47 @@ public class DrawCanvasArg
   implements Parcelable
 {
   public static final Parcelable.Creator<DrawCanvasArg> CREATOR;
-  public boolean hfP;
-  public String hfQ;
-  public long hfR;
-  public boolean hfS;
-  public JSONArray hfT;
-  public volatile Runnable hfU;
-  private volatile boolean hfV;
-  public volatile boolean hfW;
-  protected volatile int hfX;
-  protected volatile int hfY;
-  public List<DrawActionWrapper> hfq;
+  public List<DrawActionWrapper> iZB;
+  public boolean jaa;
+  public String jab;
+  public long jac;
+  public boolean jad;
+  public JSONArray jae;
+  public volatile b jaf;
+  private volatile boolean jag;
+  public volatile boolean jah;
+  protected volatile int jai;
+  protected volatile int jaj;
   
   static
   {
-    AppMethodBeat.i(103710);
-    CREATOR = new DrawCanvasArg.2();
-    AppMethodBeat.o(103710);
+    AppMethodBeat.i(145393);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145393);
   }
   
   public DrawCanvasArg()
   {
-    AppMethodBeat.i(103702);
-    this.hfq = new ArrayList();
-    this.hfV = false;
-    this.hfW = false;
-    AppMethodBeat.o(103702);
+    AppMethodBeat.i(145385);
+    this.iZB = new ArrayList();
+    this.jag = false;
+    this.jah = false;
+    AppMethodBeat.o(145385);
   }
   
   public DrawCanvasArg(Parcel paramParcel)
   {
-    AppMethodBeat.i(103703);
-    this.hfq = new ArrayList();
-    this.hfV = false;
-    this.hfW = false;
+    AppMethodBeat.i(145386);
+    this.iZB = new ArrayList();
+    this.jag = false;
+    this.jah = false;
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.hfP = bool1;
-      this.hfQ = paramParcel.readString();
-      this.hfq = paramParcel.readArrayList(DrawCanvasArg.class.getClassLoader());
-      this.hfR = paramParcel.readLong();
+      this.jaa = bool1;
+      this.jab = paramParcel.readString();
+      this.iZB = paramParcel.readArrayList(DrawCanvasArg.class.getClassLoader());
+      this.jac = paramParcel.readLong();
       if (paramParcel.readInt() != 1) {
         break label102;
       }
@@ -68,8 +68,8 @@ public class DrawCanvasArg
     label102:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.hfS = bool1;
-      AppMethodBeat.o(103703);
+      this.jad = bool1;
+      AppMethodBeat.o(145386);
       return;
       bool1 = false;
       break;
@@ -80,19 +80,19 @@ public class DrawCanvasArg
   {
     try
     {
-      AppMethodBeat.i(103706);
-      ab.i("DrawCanvasArg", "release %s", new Object[] { toString() });
-      this.hfY = 0;
-      this.hfX = 0;
-      this.hfU = null;
-      this.hfP = false;
-      this.hfT = null;
-      this.hfQ = null;
-      this.hfR = 0L;
-      this.hfS = false;
-      this.hfV = false;
-      this.hfW = false;
-      Iterator localIterator = this.hfq.iterator();
+      AppMethodBeat.i(145389);
+      ad.i("DrawCanvasArg", "release %s", new Object[] { toString() });
+      this.jaj = 0;
+      this.jai = 0;
+      this.jaf = null;
+      this.jaa = false;
+      this.jae = null;
+      this.jab = null;
+      this.jac = 0L;
+      this.jad = false;
+      this.jag = false;
+      this.jah = false;
+      Iterator localIterator = this.iZB.iterator();
       while (localIterator.hasNext())
       {
         DrawActionWrapper localDrawActionWrapper = (DrawActionWrapper)localIterator.next();
@@ -101,10 +101,10 @@ public class DrawCanvasArg
         }
         localIterator.remove();
       }
-      com.tencent.mm.plugin.appbrand.canvas.action.arg.a.d.ayb().hfu.release(this);
+      d.aSU().iZF.release(this);
     }
     finally {}
-    AppMethodBeat.o(103706);
+    AppMethodBeat.o(145389);
   }
   
   public int describeContents()
@@ -114,14 +114,14 @@ public class DrawCanvasArg
   
   public final void h(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103704);
+    AppMethodBeat.i(145387);
     int i = 0;
     DrawActionWrapper localDrawActionWrapper;
-    if ((i < paramJSONArray.length()) && (!this.hfV))
+    if ((i < paramJSONArray.length()) && (!this.jag))
     {
       JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
-      BaseDrawActionArg localBaseDrawActionArg = c.aya().zA(localJSONObject.optString("method"));
-      localDrawActionWrapper = (DrawActionWrapper)com.tencent.mm.plugin.appbrand.canvas.action.arg.a.d.ayb().hfv.acquire();
+      BaseDrawActionArg localBaseDrawActionArg = com.tencent.mm.plugin.appbrand.canvas.action.arg.a.c.aST().Fq(localJSONObject.optString("method"));
+      localDrawActionWrapper = (DrawActionWrapper)d.aSU().iZG.acquire();
       localObject = localDrawActionWrapper;
       if (localDrawActionWrapper == null) {
         localObject = new DrawActionWrapper();
@@ -129,26 +129,26 @@ public class DrawCanvasArg
       if (localBaseDrawActionArg != null)
       {
         ((DrawActionWrapper)localObject).type = 2;
-        localBaseDrawActionArg.p(localJSONObject);
-        ((DrawActionWrapper)localObject).heL = localBaseDrawActionArg;
+        localBaseDrawActionArg.parse(localJSONObject);
+        ((DrawActionWrapper)localObject).iYV = localBaseDrawActionArg;
       }
       for (;;)
       {
-        this.hfq.add(localObject);
+        this.iZB.add(localObject);
         i += 1;
         break;
         ((DrawActionWrapper)localObject).type = 1;
-        ((DrawActionWrapper)localObject).heM = localJSONObject;
+        ((DrawActionWrapper)localObject).iYW = localJSONObject;
       }
     }
     paramJSONArray = new LinkedList();
     Object localObject = new ArrayList();
-    this.hfY += this.hfq.size();
-    int j = this.hfq.size() - 1;
+    this.jaj += this.iZB.size();
+    int j = this.iZB.size() - 1;
     i = 0;
     if (j >= 0)
     {
-      localDrawActionWrapper = (DrawActionWrapper)this.hfq.get(j);
+      localDrawActionWrapper = (DrawActionWrapper)this.iZB.get(j);
       boolean bool;
       switch (localDrawActionWrapper.type)
       {
@@ -157,7 +157,7 @@ public class DrawCanvasArg
         label235:
         if (bool)
         {
-          ab.i("DrawCanvasArg", "found redudant method %s", new Object[] { localDrawActionWrapper.getMethod() });
+          ad.i("DrawCanvasArg", "found redudant method %s", new Object[] { localDrawActionWrapper.getMethod() });
           ((List)localObject).add(localDrawActionWrapper);
           i += 1;
         }
@@ -169,7 +169,7 @@ public class DrawCanvasArg
         break;
         bool = false;
         break label235;
-        bool = localDrawActionWrapper.heL.axX();
+        bool = localDrawActionWrapper.iYV.aSQ();
         break label235;
         if ("save".equals(localDrawActionWrapper.getMethod()))
         {
@@ -193,44 +193,44 @@ public class DrawCanvasArg
         }
       }
     }
-    this.hfX += ((List)localObject).size();
+    this.jai += ((List)localObject).size();
     paramJSONArray = ((List)localObject).iterator();
     while (paramJSONArray.hasNext())
     {
       localObject = (DrawActionWrapper)paramJSONArray.next();
-      this.hfq.remove(localObject);
+      this.iZB.remove(localObject);
       ((DrawActionWrapper)localObject).reset();
     }
-    ab.i("DrawCanvasArg", "optimize save&restore %d times, redudant count %d, allOpCount %d ", new Object[] { Integer.valueOf(this.hfX), Integer.valueOf(i), Integer.valueOf(this.hfY) });
-    AppMethodBeat.o(103704);
+    ad.i("DrawCanvasArg", "optimize save&restore %d times, redudant count %d, allOpCount %d ", new Object[] { Integer.valueOf(this.jai), Integer.valueOf(i), Integer.valueOf(this.jaj) });
+    AppMethodBeat.o(145387);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(103705);
-    if ((this.hfU != null) && (!com.tencent.mm.sdk.g.d.ysm.remove(this.hfU)))
+    AppMethodBeat.i(145388);
+    if ((this.jaf != null) && (!this.jaf.cancel()))
     {
-      ab.i("DrawCanvasArg", "wait for async over");
-      this.hfV = true;
-      AppMethodBeat.o(103705);
+      ad.i("DrawCanvasArg", "wait for async over");
+      this.jag = true;
+      AppMethodBeat.o(145388);
       return;
     }
     release();
-    AppMethodBeat.o(103705);
+    AppMethodBeat.o(145388);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(103707);
-    if (this.hfP)
+    AppMethodBeat.i(145390);
+    if (this.jaa)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.hfQ);
-      paramParcel.writeList(this.hfq);
-      paramParcel.writeLong(this.hfR);
-      if (!this.hfS) {
+      paramParcel.writeString(this.jab);
+      paramParcel.writeList(this.iZB);
+      paramParcel.writeLong(this.jac);
+      if (!this.jad) {
         break label72;
       }
     }
@@ -238,7 +238,7 @@ public class DrawCanvasArg
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      AppMethodBeat.o(103707);
+      AppMethodBeat.o(145390);
       return;
       paramInt = 0;
       break;

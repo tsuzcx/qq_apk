@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.widget.input.panel;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -13,230 +14,230 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.compatible.util.i;
+import com.tencent.mm.plugin.appbrand.ui.b;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.ui.base.MMDotView;
 
 public class AppBrandSmileyPanelBase
   extends LinearLayout
   implements ViewPager.OnPageChangeListener, AppBrandSmileyViewPager.b
 {
-  private View Qz;
-  private boolean jnt;
-  private c jpK;
-  private f jpW;
-  private MMActivity jpX;
-  private AppBrandSmileyViewPager jpY;
-  private MMDotView jpZ;
-  private boolean jqa;
+  private Activity mActivity;
+  private View mContentView;
+  private boolean mdi;
+  private c mfD;
+  private f mfP;
+  private AppBrandSmileyViewPager mfQ;
+  private MMDotView mfR;
+  private boolean mfS;
   
   public AppBrandSmileyPanelBase(Context paramContext)
   {
     super(paramContext, null);
-    AppMethodBeat.i(134318);
-    this.jnt = false;
-    this.Qz = null;
-    this.jpY = null;
-    this.jqa = true;
+    AppMethodBeat.i(49941);
+    this.mdi = false;
+    this.mContentView = null;
+    this.mfQ = null;
+    this.mfS = true;
     init();
-    AppMethodBeat.o(134318);
+    AppMethodBeat.o(49941);
   }
   
   public AppBrandSmileyPanelBase(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(134319);
-    this.jnt = false;
-    this.Qz = null;
-    this.jpY = null;
-    this.jqa = true;
+    AppMethodBeat.i(49942);
+    this.mdi = false;
+    this.mContentView = null;
+    this.mfQ = null;
+    this.mfS = true;
     init();
-    AppMethodBeat.o(134319);
+    AppMethodBeat.o(49942);
   }
   
-  private void aRM()
+  private void bud()
   {
-    AppMethodBeat.i(134327);
-    this.Qz.setVisibility(0);
-    AppMethodBeat.o(134327);
+    AppMethodBeat.i(49950);
+    this.mContentView.setVisibility(0);
+    AppMethodBeat.o(49950);
   }
   
-  private void aRN()
+  private void bue()
   {
-    AppMethodBeat.i(134329);
-    if (this.jpZ == null)
+    AppMethodBeat.i(49952);
+    if (this.mfR == null)
     {
-      AppMethodBeat.o(134329);
+      AppMethodBeat.o(49952);
       return;
     }
-    boolean bool = j.gN(getContext());
+    boolean bool = i.ip(getContext());
     RelativeLayout.LayoutParams localLayoutParams;
-    if (bool != this.jqa)
+    if (bool != this.mfS)
     {
       if (!bool) {
         break label106;
       }
-      this.jpZ.setPadding(0, 0, 0, getContext().getResources().getDimensionPixelSize(2131427792));
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jpZ.getLayoutParams();
-      localLayoutParams.bottomMargin = getContext().getResources().getDimensionPixelSize(2131428385);
-      this.jpZ.setLayoutParams(localLayoutParams);
+      this.mfR.setPadding(0, 0, 0, getContext().getResources().getDimensionPixelSize(2131165500));
+      localLayoutParams = (RelativeLayout.LayoutParams)this.mfR.getLayoutParams();
+      localLayoutParams.bottomMargin = getContext().getResources().getDimensionPixelSize(2131166250);
+      this.mfR.setLayoutParams(localLayoutParams);
     }
     for (;;)
     {
-      this.jqa = bool;
-      AppMethodBeat.o(134329);
+      this.mfS = bool;
+      AppMethodBeat.o(49952);
       return;
       label106:
-      this.jpZ.setPadding(0, 0, 0, getContext().getResources().getDimensionPixelSize(2131427782));
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jpZ.getLayoutParams();
+      this.mfR.setPadding(0, 0, 0, getContext().getResources().getDimensionPixelSize(2131165490));
+      localLayoutParams = (RelativeLayout.LayoutParams)this.mfR.getLayoutParams();
       localLayoutParams.bottomMargin = 0;
-      this.jpZ.setLayoutParams(localLayoutParams);
+      this.mfR.setLayoutParams(localLayoutParams);
     }
   }
   
   private void init()
   {
-    AppMethodBeat.i(134323);
-    this.jpX = ((MMActivity)com.tencent.mm.sdk.f.a.hr(getContext()));
-    this.jpK = aRg();
-    this.jpK.jpJ = getContext();
-    this.jpK.jqd = this.jpW;
-    AppMethodBeat.o(134323);
+    AppMethodBeat.i(49946);
+    this.mActivity = com.tencent.mm.sdk.f.a.iV(getContext());
+    this.mfD = btx();
+    this.mfD.mfC = getContext();
+    this.mfD.mfV = this.mfP;
+    AppMethodBeat.o(49946);
   }
   
-  public final void aRJ()
+  protected c btx()
   {
-    AppMethodBeat.i(134314);
-    if (this.jpY == null)
+    AppMethodBeat.i(49947);
+    c localc = new c();
+    AppMethodBeat.o(49947);
+    return localc;
+  }
+  
+  public final void bua()
+  {
+    AppMethodBeat.i(49937);
+    if (this.mfQ == null)
     {
-      AppMethodBeat.o(134314);
+      AppMethodBeat.o(49937);
       return;
     }
-    this.jpK.jqa = j.gN(getContext());
-    AppBrandSmileyViewPager.a locala = (AppBrandSmileyViewPager.a)this.jpY.getAdapter();
+    this.mfD.mfS = i.ip(getContext());
+    AppBrandSmileyViewPager.a locala = (AppBrandSmileyViewPager.a)this.mfQ.getAdapter();
     if (locala != null)
     {
-      locala.jqk.clear();
-      locala.jpK = this.jpK;
+      locala.mgc.clear();
+      locala.mfD = this.mfD;
       locala.notifyDataSetChanged();
     }
     for (;;)
     {
-      this.jpY.post(new Runnable()
+      this.mfQ.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(134312);
+          AppMethodBeat.i(49935);
           AppBrandSmileyPanelBase.this.onPageSelected(AppBrandSmileyPanelBase.a(AppBrandSmileyPanelBase.this).getCurrentItem());
-          AppMethodBeat.o(134312);
+          AppMethodBeat.o(49935);
         }
       });
-      AppMethodBeat.o(134314);
+      AppMethodBeat.o(49937);
       return;
       locala = new AppBrandSmileyViewPager.a();
-      locala.jpK = this.jpK;
-      this.jpY.setAdapter(locala);
+      locala.mfD = this.mfD;
+      this.mfQ.setAdapter(locala);
     }
   }
   
-  public final void aRK()
+  public final void bub()
   {
-    AppMethodBeat.i(134321);
-    if (this.Qz != null) {
-      this.Qz.setVisibility(0);
+    AppMethodBeat.i(49944);
+    if (this.mContentView != null) {
+      this.mContentView.setVisibility(0);
     }
-    AppMethodBeat.o(134321);
+    AppMethodBeat.o(49944);
   }
   
-  public final void aRL()
+  public final void buc()
   {
-    AppMethodBeat.i(134322);
-    if (this.Qz != null) {
-      this.Qz.setVisibility(4);
+    AppMethodBeat.i(49945);
+    if (this.mContentView != null) {
+      this.mContentView.setVisibility(4);
     }
-    AppMethodBeat.o(134322);
-  }
-  
-  protected c aRg()
-  {
-    AppMethodBeat.i(134324);
-    c localc = new c();
-    AppMethodBeat.o(134324);
-    return localc;
+    AppMethodBeat.o(49945);
   }
   
   @SuppressLint({"WrongCall"})
-  protected final void dz(int paramInt1, int paramInt2)
+  protected final void eu(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(134317);
+    AppMethodBeat.i(49940);
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(134317);
+    AppMethodBeat.o(49940);
   }
   
   protected final c getManager()
   {
-    return this.jpK;
+    return this.mfD;
   }
   
   protected final void initView()
   {
-    AppMethodBeat.i(134328);
-    if ((this.Qz != null) && (getChildCount() > 0))
+    AppMethodBeat.i(49951);
+    if ((this.mContentView != null) && (getChildCount() > 0))
     {
-      aRM();
-      AppMethodBeat.o(134328);
+      bud();
+      AppMethodBeat.o(49951);
       return;
     }
-    if (this.Qz == null) {
-      this.Qz = View.inflate(ah.getContext(), 2130968777, null);
+    if (this.mContentView == null) {
+      this.mContentView = View.inflate(aj.getContext(), 2131493106, null);
     }
     for (;;)
     {
-      this.jpY = ((AppBrandSmileyViewPager)this.Qz.findViewById(2131821544));
-      this.jpY.setOnPageChangeListener(this);
-      this.jpY.setPanelManager(this.jpK);
-      this.jpY.setOnSizeChangedListener(this);
-      this.jpZ = ((MMDotView)this.Qz.findViewById(2131821543));
-      this.jpZ.setDotCount(1);
-      aRN();
-      addView(this.Qz, new LinearLayout.LayoutParams(-1, -1));
-      AppMethodBeat.o(134328);
+      this.mfQ = ((AppBrandSmileyViewPager)this.mContentView.findViewById(2131304873));
+      this.mfQ.setOnPageChangeListener(this);
+      this.mfQ.setPanelManager(this.mfD);
+      this.mfQ.setOnSizeChangedListener(this);
+      this.mfR = ((MMDotView)this.mContentView.findViewById(2131304870));
+      this.mfR.setDotCount(1);
+      bue();
+      addView(this.mContentView, new LinearLayout.LayoutParams(-1, -1));
+      AppMethodBeat.o(49951);
       return;
-      if (this.Qz.getParent() != null) {
-        ((ViewGroup)this.Qz.getParent()).removeView(this.Qz);
+      if (this.mContentView.getParent() != null) {
+        ((ViewGroup)this.mContentView.getParent()).removeView(this.mContentView);
       }
     }
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(134320);
-    c localc = this.jpK;
-    localc.jqc = null;
-    localc.jpJ = null;
-    if (this.Qz != null)
+    AppMethodBeat.i(49943);
+    c localc = this.mfD;
+    localc.mfU = null;
+    localc.mfC = null;
+    if (this.mContentView != null)
     {
-      ((ViewGroup)this.Qz.getParent()).removeView(this.Qz);
-      ((ViewGroup)this.Qz).removeAllViews();
-      this.Qz = null;
+      ((ViewGroup)this.mContentView.getParent()).removeView(this.mContentView);
+      ((ViewGroup)this.mContentView).removeAllViews();
+      this.mContentView = null;
     }
-    this.jpX = null;
-    AppMethodBeat.o(134320);
+    this.mActivity = null;
+    AppMethodBeat.o(49943);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(134316);
-    if (this.jnt)
+    AppMethodBeat.i(49939);
+    if (this.mdi)
     {
       super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(0, -2147483648));
-      AppMethodBeat.o(134316);
+      AppMethodBeat.o(49939);
       return;
     }
-    j.gN(getContext());
+    i.ip(getContext());
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(134316);
+    AppMethodBeat.o(49939);
   }
   
   public void onPageScrollStateChanged(int paramInt) {}
@@ -245,63 +246,63 @@ public class AppBrandSmileyPanelBase
   
   public void onPageSelected(int paramInt)
   {
-    AppMethodBeat.i(134313);
-    a locala = this.jpK.aRO();
+    AppMethodBeat.i(49936);
+    a locala = this.mfD.buf();
     int i = locala.getPageCount();
-    int j = locala.jpL;
+    int j = locala.mfE;
     if (i <= 1)
     {
-      this.jpZ.setVisibility(4);
-      AppMethodBeat.o(134313);
+      this.mfR.setVisibility(4);
+      AppMethodBeat.o(49936);
       return;
     }
-    this.jpZ.setVisibility(0);
-    this.jpZ.setDotCount(i);
-    this.jpZ.setSelectedDot(paramInt - j);
-    AppMethodBeat.o(134313);
+    this.mfR.setVisibility(0);
+    this.mfR.setDotCount(i);
+    this.mfR.setSelectedDot(paramInt - j);
+    AppMethodBeat.o(49936);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(134315);
+    AppMethodBeat.i(49938);
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    aRN();
-    AppMethodBeat.o(134315);
-  }
-  
-  protected final void qx(int paramInt)
-  {
-    AppMethodBeat.i(134326);
-    super.setVisibility(paramInt);
-    AppMethodBeat.o(134326);
+    bue();
+    AppMethodBeat.o(49938);
   }
   
   public void setOnTextOperationListener(f paramf)
   {
-    this.jpW = paramf;
-    this.jpK.jqd = this.jpW;
+    this.mfP = paramf;
+    this.mfD.mfV = this.mfP;
   }
   
   public void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(134325);
+    AppMethodBeat.i(49948);
     if (paramInt == 0) {}
-    for (this.jnt = false;; this.jnt = true)
+    for (this.mdi = false;; this.mdi = true)
     {
       super.setVisibility(paramInt);
-      if (!this.jnt)
+      if (!this.mdi)
       {
-        this.jpX.hideVKB();
+        b.F(this.mActivity);
         initView();
       }
-      AppMethodBeat.o(134325);
+      AppMethodBeat.o(49948);
       return;
     }
+  }
+  
+  protected final void uZ(int paramInt)
+  {
+    AppMethodBeat.i(49949);
+    super.setVisibility(paramInt);
+    AppMethodBeat.o(49949);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.panel.AppBrandSmileyPanelBase
  * JD-Core Version:    0.7.0.1
  */

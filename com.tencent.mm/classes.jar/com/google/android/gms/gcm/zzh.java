@@ -16,16 +16,16 @@ public final class zzh
   
   public final void zzf(int paramInt)
   {
-    AppMethodBeat.i(70030);
+    AppMethodBeat.i(3706);
     Parcel localParcel = obtainAndWriteInterfaceToken();
     localParcel.writeInt(paramInt);
     transactAndReadExceptionReturnVoid(2, localParcel);
-    AppMethodBeat.o(70030);
+    AppMethodBeat.o(3706);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.gcm.zzh
  * JD-Core Version:    0.7.0.1
  */

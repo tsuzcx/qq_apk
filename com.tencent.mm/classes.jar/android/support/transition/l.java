@@ -1,41 +1,24 @@
 package android.support.transition;
 
-import android.animation.Animator;
-import android.graphics.Matrix;
+import android.animation.PropertyValuesHolder;
+import android.graphics.Path;
+import android.graphics.PointF;
 import android.os.Build.VERSION;
-import android.widget.ImageView;
+import android.util.Property;
 
 final class l
 {
-  private static final o rZ = new m();
-  
-  static
+  static PropertyValuesHolder a(Property<?, PointF> paramProperty, Path paramPath)
   {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      rZ = new n();
-      return;
+    if (Build.VERSION.SDK_INT >= 21) {
+      return PropertyValuesHolder.ofObject(paramProperty, null, paramPath);
     }
-  }
-  
-  static void a(ImageView paramImageView)
-  {
-    rZ.a(paramImageView);
-  }
-  
-  static void a(ImageView paramImageView, Animator paramAnimator)
-  {
-    rZ.a(paramImageView, paramAnimator);
-  }
-  
-  static void a(ImageView paramImageView, Matrix paramMatrix)
-  {
-    rZ.a(paramImageView, paramMatrix);
+    return PropertyValuesHolder.ofFloat(new k(paramProperty, paramPath), new float[] { 0.0F, 1.0F });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.l
  * JD-Core Version:    0.7.0.1
  */

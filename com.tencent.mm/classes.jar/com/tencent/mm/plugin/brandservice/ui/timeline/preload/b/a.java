@@ -1,36 +1,37 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.protocal.protobuf.sy;
-import com.tencent.mm.protocal.protobuf.sz;
-import com.tencent.mm.protocal.protobuf.ta;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.c;
+import com.tencent.mm.protocal.protobuf.vr;
+import com.tencent.mm.protocal.protobuf.vs;
+import com.tencent.mm.protocal.protobuf.vt;
 import java.util.LinkedList;
 
 public final class a
-  extends com.tencent.mm.ai.a<ta>
+  extends c<vt>
 {
-  public a(LinkedList<sy> paramLinkedList, int paramInt, String paramString)
+  public a(LinkedList<vr> paramLinkedList, int paramInt, String paramString)
   {
-    AppMethodBeat.i(14407);
+    AppMethodBeat.i(6200);
     b.a locala = new b.a();
     locala.funcId = 2731;
     locala.uri = "/cgi-bin/mmbiz-bin/checktmplver";
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    sz localsz = new sz();
-    localsz.Scene = paramInt;
-    localsz.wuH = paramString;
-    localsz.wLw = paramLinkedList;
-    locala.fsX = localsz;
-    locala.fsY = new ta();
-    this.rr = locala.ado();
-    AppMethodBeat.o(14407);
+    vs localvs = new vs();
+    localvs.Scene = paramInt;
+    localvs.nlG = paramString;
+    localvs.CXO = paramLinkedList;
+    locala.gUU = localvs;
+    locala.gUV = new vt();
+    this.rr = locala.atI();
+    AppMethodBeat.o(6200);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.a
  * JD-Core Version:    0.7.0.1
  */

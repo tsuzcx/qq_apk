@@ -4,13 +4,13 @@ final class aa
 {
   int bottom;
   int left;
-  an rP;
   int right;
+  an tF;
   int top;
   
   aa(an paraman, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.rP = paraman;
+    this.tF = paraman;
     this.left = paramInt1;
     this.top = paramInt2;
     this.right = paramInt3;

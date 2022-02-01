@@ -12,37 +12,37 @@ public class TimePoint
   implements Parcelable
 {
   public static final Parcelable.Creator<TimePoint> CREATOR;
-  final AtomicInteger hgG;
-  final AtomicLong hgH;
-  final AtomicReference<TimePoint> hgI;
+  final AtomicInteger jaR;
+  final AtomicLong jaS;
+  final AtomicReference<TimePoint> jaT;
   String name;
   
   static
   {
-    AppMethodBeat.i(57064);
-    CREATOR = new TimePoint.1();
-    AppMethodBeat.o(57064);
+    AppMethodBeat.i(146129);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(146129);
   }
   
   TimePoint()
   {
-    AppMethodBeat.i(57061);
-    this.hgG = new AtomicInteger();
-    this.hgH = new AtomicLong();
-    this.hgI = new AtomicReference();
+    AppMethodBeat.i(146126);
+    this.jaR = new AtomicInteger();
+    this.jaS = new AtomicLong();
+    this.jaT = new AtomicReference();
     this.name = "";
-    AppMethodBeat.o(57061);
+    AppMethodBeat.o(146126);
   }
   
   public TimePoint(String paramString, long paramLong)
   {
-    AppMethodBeat.i(57062);
-    this.hgG = new AtomicInteger();
-    this.hgH = new AtomicLong();
-    this.hgI = new AtomicReference();
+    AppMethodBeat.i(146127);
+    this.jaR = new AtomicInteger();
+    this.jaS = new AtomicLong();
+    this.jaT = new AtomicReference();
     this.name = paramString;
-    this.hgH.set(paramLong);
-    AppMethodBeat.o(57062);
+    this.jaS.set(paramLong);
+    AppMethodBeat.o(146127);
   }
   
   public int describeContents()
@@ -52,17 +52,17 @@ public class TimePoint
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(57063);
+    AppMethodBeat.i(146128);
     paramParcel.writeString(this.name);
-    paramParcel.writeLong(this.hgH.get());
-    paramParcel.writeInt(this.hgG.get());
-    paramParcel.writeParcelable((Parcelable)this.hgI.get(), paramInt);
-    AppMethodBeat.o(57063);
+    paramParcel.writeLong(this.jaS.get());
+    paramParcel.writeInt(this.jaR.get());
+    paramParcel.writeParcelable((Parcelable)this.jaT.get(), paramInt);
+    AppMethodBeat.o(146128);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.collector.TimePoint
  * JD-Core Version:    0.7.0.1
  */

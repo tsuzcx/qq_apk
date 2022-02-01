@@ -2,7 +2,7 @@ package com.tencent.mm.wear.app.d.a.b;
 
 public final class g
 {
-  public boolean aed;
+  public boolean ahF;
   public byte[] data;
   public int size;
 }

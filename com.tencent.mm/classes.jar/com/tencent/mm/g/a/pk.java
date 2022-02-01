@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class pk
   extends b
 {
-  public pk.a cFV;
+  public a duZ;
   
   public pk()
   {
@@ -15,16 +15,21 @@ public final class pk
   
   private pk(byte paramByte)
   {
-    AppMethodBeat.i(151535);
-    this.cFV = new pk.a();
-    this.ymq = false;
+    AppMethodBeat.i(116041);
+    this.duZ = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(151535);
+    AppMethodBeat.o(116041);
+  }
+  
+  public static final class a
+  {
+    public String filePath;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.pk
  * JD-Core Version:    0.7.0.1
  */

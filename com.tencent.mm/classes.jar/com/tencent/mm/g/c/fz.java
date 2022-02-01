@@ -8,30 +8,23 @@ public abstract class fz
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dJG;
-  private static final int dXj = "shareKeyHash".hashCode();
-  private static final int dXk = "btnState".hashCode();
-  private static final int dXl = "contentColor".hashCode();
-  private static final int dXm = "updatePeroid".hashCode();
-  private static final int dgT;
+  private static final int eZR = "canvasExt".hashCode();
+  private static final int ekU;
+  private static final int esm = "canvasId".hashCode();
+  private static final int esn = "canvasXml".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dJD = true;
-  private boolean dXf = true;
-  private boolean dXg = true;
-  private boolean dXh = true;
-  private boolean dXi = true;
-  private boolean dgw = true;
-  public int field_btnState;
-  public String field_content;
-  public String field_contentColor;
-  public int field_msgState;
-  public int field_shareKeyHash;
-  public int field_updatePeroid;
+  private boolean eZQ = true;
+  private boolean ekx = true;
+  private boolean esk = true;
+  private boolean esl = true;
+  public String field_canvasExt;
+  public String field_canvasId;
+  public String field_canvasXml;
+  public long field_createTime;
   
   static
   {
-    dJG = "msgState".hashCode();
-    dgT = "content".hashCode();
+    ekU = "createTime".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -47,11 +40,11 @@ public abstract class fz
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dXj != k) {
+      if (esm != k) {
         break label65;
       }
-      this.field_shareKeyHash = paramCursor.getInt(i);
-      this.dXf = true;
+      this.field_canvasId = paramCursor.getString(i);
+      this.esk = true;
     }
     for (;;)
     {
@@ -59,16 +52,12 @@ public abstract class fz
       break label20;
       break;
       label65:
-      if (dXk == k) {
-        this.field_btnState = paramCursor.getInt(i);
-      } else if (dJG == k) {
-        this.field_msgState = paramCursor.getInt(i);
-      } else if (dgT == k) {
-        this.field_content = paramCursor.getString(i);
-      } else if (dXl == k) {
-        this.field_contentColor = paramCursor.getString(i);
-      } else if (dXm == k) {
-        this.field_updatePeroid = paramCursor.getInt(i);
+      if (esn == k) {
+        this.field_canvasXml = paramCursor.getString(i);
+      } else if (ekU == k) {
+        this.field_createTime = paramCursor.getLong(i);
+      } else if (eZR == k) {
+        this.field_canvasExt = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -78,23 +67,17 @@ public abstract class fz
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dXf) {
-      localContentValues.put("shareKeyHash", Integer.valueOf(this.field_shareKeyHash));
+    if (this.esk) {
+      localContentValues.put("canvasId", this.field_canvasId);
     }
-    if (this.dXg) {
-      localContentValues.put("btnState", Integer.valueOf(this.field_btnState));
+    if (this.esl) {
+      localContentValues.put("canvasXml", this.field_canvasXml);
     }
-    if (this.dJD) {
-      localContentValues.put("msgState", Integer.valueOf(this.field_msgState));
+    if (this.ekx) {
+      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.dgw) {
-      localContentValues.put("content", this.field_content);
-    }
-    if (this.dXh) {
-      localContentValues.put("contentColor", this.field_contentColor);
-    }
-    if (this.dXi) {
-      localContentValues.put("updatePeroid", Integer.valueOf(this.field_updatePeroid));
+    if (this.eZQ) {
+      localContentValues.put("canvasExt", this.field_canvasExt);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -104,7 +87,7 @@ public abstract class fz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.fz
  * JD-Core Version:    0.7.0.1
  */

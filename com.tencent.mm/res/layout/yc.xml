@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/bp9" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:paddingLeft="@dimen/jd" android:paddingRight="@dimen/jd" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/l5">
-        <ImageView android:id="@id/bpr" android:background="@drawable/b5_" android:layout_width="@dimen/x8" android:layout_height="@dimen/x8" android:layout_marginTop="@dimen/l6" />
-        <TextView android:textSize="24.0dip" android:textColor="@color/h6" android:gravity="center" android:id="@id/bps" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:text="@string/bmu" />
-        <RelativeLayout android:gravity="center" android:orientation="horizontal" android:id="@id/bpt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="80.0dip">
-            <Button android:textSize="@dimen/dq" android:id="@id/bpb" android:padding="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2" android:text="@string/bmt" style="@style/nq" />
-        </RelativeLayout>
-    </LinearLayout>
+    <TextView android:gravity="bottom|center|left" android:id="@android:id/title" style="@style/o3" />
 </LinearLayout>

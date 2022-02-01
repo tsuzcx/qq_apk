@@ -4,9 +4,9 @@ import android.os.Looper;
 
 public abstract interface a
 {
-  public abstract void d(Runnable paramRunnable, long paramLong);
+  public abstract void c(Runnable paramRunnable, long paramLong);
   
-  public abstract void dU();
+  public abstract void fm();
   
   public abstract Looper getLooper();
   

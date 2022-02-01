@@ -12,31 +12,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class l
   extends RecyclerView.v
 {
-  public TextView gpp;
-  public LinearLayout kFc;
-  public ProgressBar kFd;
+  public TextView ibF;
+  public LinearLayout nMd;
+  public ProgressBar nMe;
   
   private l(View paramView)
   {
     super(paramView);
-    AppMethodBeat.i(54325);
-    this.kFc = ((LinearLayout)paramView.findViewById(2131822806));
-    this.gpp = ((TextView)paramView.findViewById(2131822808));
-    this.kFd = ((ProgressBar)paramView.findViewById(2131822807));
-    AppMethodBeat.o(54325);
+    AppMethodBeat.i(123297);
+    this.nMd = ((LinearLayout)paramView.findViewById(2131298738));
+    this.ibF = ((TextView)paramView.findViewById(2131298933));
+    this.nMe = ((ProgressBar)paramView.findViewById(2131303528));
+    AppMethodBeat.o(123297);
   }
   
-  public static RecyclerView.v m(ViewGroup paramViewGroup)
+  public static RecyclerView.v o(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(54326);
-    paramViewGroup = new l(LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969149, paramViewGroup, false));
-    AppMethodBeat.o(54326);
+    AppMethodBeat.i(123298);
+    paramViewGroup = new l(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131493531, paramViewGroup, false));
+    AppMethodBeat.o(123298);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.l
  * JD-Core Version:    0.7.0.1
  */

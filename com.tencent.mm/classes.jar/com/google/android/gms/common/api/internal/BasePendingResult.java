@@ -532,8 +532,8 @@ public abstract class BasePendingResult<R extends Result>
     public CallbackHandler()
     {
       this(Looper.getMainLooper());
-      AppMethodBeat.i(60564);
-      AppMethodBeat.o(60564);
+      AppMethodBeat.i(11056);
+      AppMethodBeat.o(11056);
     }
     
     public CallbackHandler(Looper paramLooper)
@@ -543,13 +543,13 @@ public abstract class BasePendingResult<R extends Result>
     
     public void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(60566);
+      AppMethodBeat.i(11058);
       switch (paramMessage.what)
       {
       default: 
         int i = paramMessage.what;
         Log.wtf("BasePendingResult", 45 + "Don't know how to handle message: " + i, new Exception());
-        AppMethodBeat.o(60566);
+        AppMethodBeat.o(11058);
         return;
       case 1: 
         Object localObject = (Pair)paramMessage.obj;
@@ -558,25 +558,25 @@ public abstract class BasePendingResult<R extends Result>
         try
         {
           paramMessage.onResult((Result)localObject);
-          AppMethodBeat.o(60566);
+          AppMethodBeat.o(11058);
           return;
         }
         catch (RuntimeException paramMessage)
         {
           BasePendingResult.zzb((Result)localObject);
-          AppMethodBeat.o(60566);
+          AppMethodBeat.o(11058);
           throw paramMessage;
         }
       }
       ((BasePendingResult)paramMessage.obj).zzb(Status.RESULT_TIMEOUT);
-      AppMethodBeat.o(60566);
+      AppMethodBeat.o(11058);
     }
     
     public final void zza(ResultCallback<? super R> paramResultCallback, R paramR)
     {
-      AppMethodBeat.i(60565);
+      AppMethodBeat.i(11057);
       sendMessage(obtainMessage(1, new Pair(paramResultCallback, paramR)));
-      AppMethodBeat.o(60565);
+      AppMethodBeat.o(11057);
     }
   }
   
@@ -586,10 +586,10 @@ public abstract class BasePendingResult<R extends Result>
     
     protected final void finalize()
     {
-      AppMethodBeat.i(60567);
+      AppMethodBeat.i(11059);
       BasePendingResult.zzb(BasePendingResult.zza(BasePendingResult.this));
       super.finalize();
-      AppMethodBeat.o(60567);
+      AppMethodBeat.o(11059);
     }
   }
 }

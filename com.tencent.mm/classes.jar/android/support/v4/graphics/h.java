@@ -8,20 +8,20 @@ import java.lang.reflect.Method;
 public final class h
   extends g
 {
-  protected final Method k(Class paramClass)
+  protected final Method h(Class paramClass)
   {
     paramClass = Typeface.class.getDeclaredMethod("createFromFamiliesWithDefault", new Class[] { Array.newInstance(paramClass, 1).getClass(), String.class, Integer.TYPE, Integer.TYPE });
     paramClass.setAccessible(true);
     return paramClass;
   }
   
-  protected final Typeface o(Object paramObject)
+  protected final Typeface n(Object paramObject)
   {
     try
     {
-      Object localObject = Array.newInstance(this.AG, 1);
+      Object localObject = Array.newInstance(this.Hb, 1);
       Array.set(localObject, 0, paramObject);
-      paramObject = (Typeface)this.AM.invoke(null, new Object[] { localObject, "sans-serif", Integer.valueOf(-1), Integer.valueOf(-1) });
+      paramObject = (Typeface)this.Hh.invoke(null, new Object[] { localObject, "sans-serif", Integer.valueOf(-1), Integer.valueOf(-1) });
       return paramObject;
     }
     catch (IllegalAccessException paramObject)

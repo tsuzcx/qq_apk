@@ -2,16 +2,16 @@ package com.tencent.matrix.resource;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.matrix.resource.analyzer.model.a;
+import com.tencent.matrix.resource.analyzer.model.f;
 
 public class CanaryWorkerService
   extends MatrixJobIntentService
 {
-  public static void a(Context paramContext, a parama)
+  public static void a(Context paramContext, f paramf)
   {
     Intent localIntent = new Intent(paramContext, CanaryWorkerService.class);
     localIntent.setAction("com.tencent.matrix.resource.worker.action.SHRINK_HPROF");
-    localIntent.putExtra("com.tencent.matrix.resource.worker.param.HEAPDUMP", parama);
+    localIntent.putExtra("com.tencent.matrix.resource.worker.param.HEAPDUMP", paramf);
     a(paramContext, CanaryWorkerService.class, -84148995, localIntent);
   }
   
@@ -20,483 +20,501 @@ public class CanaryWorkerService
   {
     // Byte code:
     //   0: aload_1
-    //   1: ifnull +718 -> 719
+    //   1: ifnull +727 -> 728
     //   4: ldc 18
     //   6: aload_1
     //   7: invokevirtual 42	android/content/Intent:getAction	()Ljava/lang/String;
     //   10: invokevirtual 48	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   13: ifeq +706 -> 719
+    //   13: ifeq +715 -> 728
     //   16: aload_1
-    //   17: ldc 24
-    //   19: invokevirtual 52	android/content/Intent:getSerializableExtra	(Ljava/lang/String;)Ljava/io/Serializable;
-    //   22: checkcast 54	com/tencent/matrix/resource/analyzer/model/a
-    //   25: astore 6
-    //   27: aload 6
-    //   29: ifnull +759 -> 788
-    //   32: aload 6
-    //   34: getfield 58	com/tencent/matrix/resource/analyzer/model/a:bOU	Ljava/io/File;
-    //   37: invokevirtual 64	java/io/File:getParentFile	()Ljava/io/File;
-    //   40: astore_1
-    //   41: aload 6
-    //   43: getfield 58	com/tencent/matrix/resource/analyzer/model/a:bOU	Ljava/io/File;
-    //   46: invokevirtual 67	java/io/File:getName	()Ljava/lang/String;
-    //   49: astore 4
-    //   51: aload 4
-    //   53: iconst_0
-    //   54: aload 4
-    //   56: ldc 69
-    //   58: invokevirtual 73	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   61: invokevirtual 77	java/lang/String:substring	(II)Ljava/lang/String;
-    //   64: astore 4
-    //   66: new 60	java/io/File
-    //   69: dup
-    //   70: aload_1
-    //   71: new 79	java/lang/StringBuilder
-    //   74: dup
-    //   75: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   78: aload 4
-    //   80: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: ldc 86
-    //   85: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   91: invokespecial 92	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   94: astore 7
-    //   96: new 79	java/lang/StringBuilder
-    //   99: dup
-    //   100: ldc 94
-    //   102: invokespecial 97	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   105: invokestatic 103	android/os/Process:myPid	()I
-    //   108: invokevirtual 106	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   111: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   114: astore 4
-    //   116: new 79	java/lang/StringBuilder
-    //   119: dup
-    //   120: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   123: astore 5
-    //   125: aload 5
-    //   127: aload 4
-    //   129: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: bipush 95
-    //   134: invokevirtual 109	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   137: new 111	java/text/SimpleDateFormat
-    //   140: dup
-    //   141: ldc 113
-    //   143: getstatic 119	java/util/Locale:ENGLISH	Ljava/util/Locale;
-    //   146: invokespecial 122	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;Ljava/util/Locale;)V
-    //   149: new 124	java/util/Date
-    //   152: dup
-    //   153: invokespecial 125	java/util/Date:<init>	()V
-    //   156: invokevirtual 129	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
-    //   159: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   162: ldc 131
-    //   164: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   167: pop
-    //   168: new 60	java/io/File
-    //   171: dup
-    //   172: aload_1
-    //   173: aload 5
-    //   175: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: invokespecial 92	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   181: astore 8
-    //   183: aload 6
-    //   185: getfield 58	com/tencent/matrix/resource/analyzer/model/a:bOU	Ljava/io/File;
-    //   188: astore 9
-    //   190: invokestatic 137	java/lang/System:currentTimeMillis	()J
-    //   193: lstore_2
-    //   194: new 139	com/tencent/matrix/resource/c/a
-    //   197: dup
-    //   198: invokespecial 140	com/tencent/matrix/resource/c/a:<init>	()V
-    //   201: astore_1
-    //   202: new 142	java/io/FileInputStream
+    //   17: aload_0
+    //   18: invokevirtual 52	com/tencent/matrix/resource/CanaryWorkerService:getClassLoader	()Ljava/lang/ClassLoader;
+    //   21: invokevirtual 56	android/content/Intent:setExtrasClassLoader	(Ljava/lang/ClassLoader;)V
+    //   24: aload_1
+    //   25: ldc 24
+    //   27: invokevirtual 60	android/content/Intent:getSerializableExtra	(Ljava/lang/String;)Ljava/io/Serializable;
+    //   30: checkcast 62	com/tencent/matrix/resource/analyzer/model/f
+    //   33: astore 6
+    //   35: aload 6
+    //   37: ifnull +775 -> 812
+    //   40: aload 6
+    //   42: getfield 66	com/tencent/matrix/resource/analyzer/model/f:cyK	Ljava/io/File;
+    //   45: invokevirtual 72	java/io/File:getParentFile	()Ljava/io/File;
+    //   48: astore_1
+    //   49: aload 6
+    //   51: getfield 66	com/tencent/matrix/resource/analyzer/model/f:cyK	Ljava/io/File;
+    //   54: invokevirtual 75	java/io/File:getName	()Ljava/lang/String;
+    //   57: astore 4
+    //   59: aload 4
+    //   61: iconst_0
+    //   62: aload 4
+    //   64: ldc 77
+    //   66: invokevirtual 81	java/lang/String:indexOf	(Ljava/lang/String;)I
+    //   69: invokevirtual 85	java/lang/String:substring	(II)Ljava/lang/String;
+    //   72: astore 4
+    //   74: new 68	java/io/File
+    //   77: dup
+    //   78: aload_1
+    //   79: new 87	java/lang/StringBuilder
+    //   82: dup
+    //   83: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   86: aload 4
+    //   88: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: ldc 94
+    //   93: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   99: invokespecial 100	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   102: astore 7
+    //   104: new 87	java/lang/StringBuilder
+    //   107: dup
+    //   108: ldc 102
+    //   110: invokespecial 105	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   113: invokestatic 111	android/os/Process:myPid	()I
+    //   116: invokevirtual 114	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   119: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   122: astore 4
+    //   124: new 87	java/lang/StringBuilder
+    //   127: dup
+    //   128: invokespecial 88	java/lang/StringBuilder:<init>	()V
+    //   131: astore 5
+    //   133: aload 5
+    //   135: aload 4
+    //   137: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: bipush 95
+    //   142: invokevirtual 117	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   145: new 119	java/text/SimpleDateFormat
+    //   148: dup
+    //   149: ldc 121
+    //   151: getstatic 127	java/util/Locale:ENGLISH	Ljava/util/Locale;
+    //   154: invokespecial 130	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;Ljava/util/Locale;)V
+    //   157: new 132	java/util/Date
+    //   160: dup
+    //   161: invokespecial 133	java/util/Date:<init>	()V
+    //   164: invokevirtual 137	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
+    //   167: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: ldc 139
+    //   172: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   175: pop
+    //   176: new 68	java/io/File
+    //   179: dup
+    //   180: aload_1
+    //   181: aload 5
+    //   183: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   186: invokespecial 100	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   189: astore 8
+    //   191: aload 6
+    //   193: getfield 66	com/tencent/matrix/resource/analyzer/model/f:cyK	Ljava/io/File;
+    //   196: astore 9
+    //   198: invokestatic 145	java/lang/System:currentTimeMillis	()J
+    //   201: lstore_2
+    //   202: new 147	com/tencent/matrix/resource/c/a
     //   205: dup
-    //   206: aload 9
-    //   208: invokespecial 145	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   211: astore 5
-    //   213: new 147	java/io/BufferedOutputStream
-    //   216: dup
-    //   217: new 149	java/io/FileOutputStream
-    //   220: dup
-    //   221: aload 7
-    //   223: invokespecial 150	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   226: invokespecial 153	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   229: astore 4
-    //   231: new 155	com/tencent/matrix/resource/c/c
-    //   234: dup
-    //   235: new 157	java/io/BufferedInputStream
-    //   238: dup
-    //   239: aload 5
-    //   241: invokespecial 160	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   244: invokespecial 161	com/tencent/matrix/resource/c/c:<init>	(Ljava/io/InputStream;)V
-    //   247: astore 10
-    //   249: aload 10
-    //   251: new 163	com/tencent/matrix/resource/c/a$b
-    //   254: dup
-    //   255: aload_1
-    //   256: invokespecial 166	com/tencent/matrix/resource/c/a$b:<init>	(Lcom/tencent/matrix/resource/c/a;)V
-    //   259: invokevirtual 169	com/tencent/matrix/resource/c/c:a	(Lcom/tencent/matrix/resource/c/d;)V
-    //   262: aload 5
-    //   264: invokevirtual 173	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   267: lconst_0
-    //   268: invokevirtual 179	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
-    //   271: pop
-    //   272: aload 10
-    //   274: new 181	com/tencent/matrix/resource/c/a$c
-    //   277: dup
-    //   278: aload_1
-    //   279: invokespecial 182	com/tencent/matrix/resource/c/a$c:<init>	(Lcom/tencent/matrix/resource/c/a;)V
-    //   282: invokevirtual 169	com/tencent/matrix/resource/c/c:a	(Lcom/tencent/matrix/resource/c/d;)V
-    //   285: aload 5
-    //   287: invokevirtual 173	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   290: lconst_0
-    //   291: invokevirtual 179	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
-    //   294: pop
-    //   295: aload 10
-    //   297: new 184	com/tencent/matrix/resource/c/a$a
-    //   300: dup
-    //   301: aload_1
-    //   302: new 186	com/tencent/matrix/resource/c/e
-    //   305: dup
-    //   306: aload 4
-    //   308: invokespecial 187	com/tencent/matrix/resource/c/e:<init>	(Ljava/io/OutputStream;)V
-    //   311: invokespecial 190	com/tencent/matrix/resource/c/a$a:<init>	(Lcom/tencent/matrix/resource/c/a;Lcom/tencent/matrix/resource/c/e;)V
-    //   314: invokevirtual 169	com/tencent/matrix/resource/c/c:a	(Lcom/tencent/matrix/resource/c/d;)V
-    //   317: aload 4
-    //   319: invokevirtual 195	java/io/OutputStream:close	()V
-    //   322: aload 5
-    //   324: invokevirtual 196	java/io/FileInputStream:close	()V
-    //   327: ldc 198
-    //   329: ldc 200
-    //   331: iconst_5
-    //   332: anewarray 202	java/lang/Object
-    //   335: dup
-    //   336: iconst_0
-    //   337: aload 9
-    //   339: invokevirtual 205	java/io/File:getPath	()Ljava/lang/String;
-    //   342: aastore
+    //   206: invokespecial 148	com/tencent/matrix/resource/c/a:<init>	()V
+    //   209: astore_1
+    //   210: new 150	java/io/FileInputStream
+    //   213: dup
+    //   214: aload 9
+    //   216: invokespecial 153	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   219: astore 5
+    //   221: new 155	java/io/BufferedOutputStream
+    //   224: dup
+    //   225: new 157	java/io/FileOutputStream
+    //   228: dup
+    //   229: aload 7
+    //   231: invokespecial 158	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   234: invokespecial 161	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   237: astore 4
+    //   239: new 163	com/tencent/matrix/resource/c/c
+    //   242: dup
+    //   243: new 165	java/io/BufferedInputStream
+    //   246: dup
+    //   247: aload 5
+    //   249: invokespecial 168	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   252: invokespecial 169	com/tencent/matrix/resource/c/c:<init>	(Ljava/io/InputStream;)V
+    //   255: astore 10
+    //   257: aload 10
+    //   259: new 171	com/tencent/matrix/resource/c/a$b
+    //   262: dup
+    //   263: aload_1
+    //   264: invokespecial 174	com/tencent/matrix/resource/c/a$b:<init>	(Lcom/tencent/matrix/resource/c/a;)V
+    //   267: invokevirtual 177	com/tencent/matrix/resource/c/c:a	(Lcom/tencent/matrix/resource/c/d;)V
+    //   270: aload 5
+    //   272: invokevirtual 181	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   275: lconst_0
+    //   276: invokevirtual 187	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
+    //   279: pop
+    //   280: aload 10
+    //   282: new 189	com/tencent/matrix/resource/c/a$c
+    //   285: dup
+    //   286: aload_1
+    //   287: invokespecial 190	com/tencent/matrix/resource/c/a$c:<init>	(Lcom/tencent/matrix/resource/c/a;)V
+    //   290: invokevirtual 177	com/tencent/matrix/resource/c/c:a	(Lcom/tencent/matrix/resource/c/d;)V
+    //   293: aload 5
+    //   295: invokevirtual 181	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   298: lconst_0
+    //   299: invokevirtual 187	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
+    //   302: pop
+    //   303: aload 10
+    //   305: new 192	com/tencent/matrix/resource/c/a$a
+    //   308: dup
+    //   309: aload_1
+    //   310: new 194	com/tencent/matrix/resource/c/e
+    //   313: dup
+    //   314: aload 4
+    //   316: invokespecial 195	com/tencent/matrix/resource/c/e:<init>	(Ljava/io/OutputStream;)V
+    //   319: invokespecial 198	com/tencent/matrix/resource/c/a$a:<init>	(Lcom/tencent/matrix/resource/c/a;Lcom/tencent/matrix/resource/c/e;)V
+    //   322: invokevirtual 177	com/tencent/matrix/resource/c/c:a	(Lcom/tencent/matrix/resource/c/d;)V
+    //   325: aload 4
+    //   327: invokevirtual 203	java/io/OutputStream:close	()V
+    //   330: aload 5
+    //   332: invokevirtual 204	java/io/FileInputStream:close	()V
+    //   335: ldc 206
+    //   337: ldc 208
+    //   339: iconst_5
+    //   340: anewarray 210	java/lang/Object
     //   343: dup
-    //   344: iconst_1
+    //   344: iconst_0
     //   345: aload 9
-    //   347: invokevirtual 208	java/io/File:length	()J
-    //   350: ldc2_w 209
-    //   353: ldiv
-    //   354: invokestatic 216	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   357: aastore
-    //   358: dup
-    //   359: iconst_2
-    //   360: aload 7
-    //   362: invokevirtual 205	java/io/File:getPath	()Ljava/lang/String;
+    //   347: invokevirtual 213	java/io/File:getPath	()Ljava/lang/String;
+    //   350: aastore
+    //   351: dup
+    //   352: iconst_1
+    //   353: aload 9
+    //   355: invokevirtual 216	java/io/File:length	()J
+    //   358: ldc2_w 217
+    //   361: ldiv
+    //   362: invokestatic 224	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   365: aastore
     //   366: dup
-    //   367: iconst_3
+    //   367: iconst_2
     //   368: aload 7
-    //   370: invokevirtual 208	java/io/File:length	()J
-    //   373: ldc2_w 209
-    //   376: ldiv
-    //   377: invokestatic 216	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   380: aastore
-    //   381: dup
-    //   382: iconst_4
-    //   383: invokestatic 137	java/lang/System:currentTimeMillis	()J
-    //   386: lload_2
-    //   387: lsub
-    //   388: invokestatic 216	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   391: aastore
-    //   392: invokestatic 222	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   395: new 224	java/util/zip/ZipOutputStream
-    //   398: dup
-    //   399: new 147	java/io/BufferedOutputStream
-    //   402: dup
-    //   403: new 149	java/io/FileOutputStream
+    //   370: invokevirtual 213	java/io/File:getPath	()Ljava/lang/String;
+    //   373: aastore
+    //   374: dup
+    //   375: iconst_3
+    //   376: aload 7
+    //   378: invokevirtual 216	java/io/File:length	()J
+    //   381: ldc2_w 217
+    //   384: ldiv
+    //   385: invokestatic 224	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   388: aastore
+    //   389: dup
+    //   390: iconst_4
+    //   391: invokestatic 145	java/lang/System:currentTimeMillis	()J
+    //   394: lload_2
+    //   395: lsub
+    //   396: invokestatic 224	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   399: aastore
+    //   400: invokestatic 230	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   403: new 232	java/util/zip/ZipOutputStream
     //   406: dup
-    //   407: aload 8
-    //   409: invokespecial 150	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   412: invokespecial 153	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   415: invokespecial 225	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   418: astore 4
-    //   420: aload 4
-    //   422: astore_1
-    //   423: new 227	java/util/zip/ZipEntry
-    //   426: dup
-    //   427: ldc 229
-    //   429: invokespecial 230	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   432: astore 10
-    //   434: aload 4
-    //   436: astore_1
-    //   437: new 227	java/util/zip/ZipEntry
-    //   440: dup
-    //   441: aload 7
-    //   443: invokevirtual 67	java/io/File:getName	()Ljava/lang/String;
-    //   446: invokespecial 230	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   449: astore 5
-    //   451: aload 4
-    //   453: astore_1
-    //   454: aload 4
-    //   456: aload 10
-    //   458: invokevirtual 234	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
-    //   461: aload 4
-    //   463: astore_1
-    //   464: new 236	java/io/PrintWriter
-    //   467: dup
-    //   468: new 238	java/io/OutputStreamWriter
-    //   471: dup
-    //   472: aload 4
-    //   474: ldc 240
-    //   476: invokestatic 246	java/nio/charset/Charset:forName	(Ljava/lang/String;)Ljava/nio/charset/Charset;
-    //   479: invokespecial 249	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/nio/charset/Charset;)V
-    //   482: invokespecial 252	java/io/PrintWriter:<init>	(Ljava/io/Writer;)V
-    //   485: astore 10
-    //   487: aload 4
-    //   489: astore_1
-    //   490: aload 10
-    //   492: ldc 254
-    //   494: invokevirtual 257	java/io/PrintWriter:println	(Ljava/lang/String;)V
-    //   497: aload 4
-    //   499: astore_1
-    //   500: aload 10
-    //   502: new 79	java/lang/StringBuilder
-    //   505: dup
-    //   506: ldc_w 259
-    //   509: invokespecial 97	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   512: getstatic 265	android/os/Build$VERSION:SDK_INT	I
-    //   515: invokevirtual 106	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   518: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   521: invokevirtual 257	java/io/PrintWriter:println	(Ljava/lang/String;)V
-    //   524: aload 4
-    //   526: astore_1
-    //   527: aload 10
-    //   529: new 79	java/lang/StringBuilder
-    //   532: dup
-    //   533: ldc_w 267
-    //   536: invokespecial 97	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   539: getstatic 273	android/os/Build:MANUFACTURER	Ljava/lang/String;
-    //   542: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   545: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   548: invokevirtual 257	java/io/PrintWriter:println	(Ljava/lang/String;)V
-    //   551: aload 4
-    //   553: astore_1
-    //   554: aload 10
-    //   556: new 79	java/lang/StringBuilder
-    //   559: dup
-    //   560: ldc_w 275
-    //   563: invokespecial 97	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   566: aload 5
-    //   568: invokevirtual 276	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
-    //   571: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   574: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   577: invokevirtual 257	java/io/PrintWriter:println	(Ljava/lang/String;)V
-    //   580: aload 4
-    //   582: astore_1
-    //   583: aload 10
-    //   585: new 79	java/lang/StringBuilder
-    //   588: dup
-    //   589: ldc_w 278
-    //   592: invokespecial 97	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   595: aload 6
-    //   597: getfield 281	com/tencent/matrix/resource/analyzer/model/a:bOV	Ljava/lang/String;
-    //   600: invokevirtual 84	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   603: invokevirtual 89	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   606: invokevirtual 257	java/io/PrintWriter:println	(Ljava/lang/String;)V
-    //   609: aload 4
-    //   611: astore_1
-    //   612: aload 10
-    //   614: invokevirtual 284	java/io/PrintWriter:flush	()V
-    //   617: aload 4
-    //   619: astore_1
-    //   620: aload 4
-    //   622: invokevirtual 287	java/util/zip/ZipOutputStream:closeEntry	()V
-    //   625: aload 4
-    //   627: astore_1
-    //   628: aload 4
-    //   630: aload 5
-    //   632: invokevirtual 234	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
-    //   635: aload 4
-    //   637: astore_1
-    //   638: aload 7
-    //   640: aload 4
-    //   642: invokestatic 292	com/tencent/matrix/resource/a/a/c:a	(Ljava/io/File;Ljava/io/OutputStream;)V
-    //   645: aload 4
-    //   647: astore_1
-    //   648: aload 4
-    //   650: invokevirtual 287	java/util/zip/ZipOutputStream:closeEntry	()V
-    //   653: aload 4
-    //   655: astore_1
-    //   656: aload 7
-    //   658: invokevirtual 296	java/io/File:delete	()Z
-    //   661: pop
+    //   407: new 155	java/io/BufferedOutputStream
+    //   410: dup
+    //   411: new 157	java/io/FileOutputStream
+    //   414: dup
+    //   415: aload 8
+    //   417: invokespecial 158	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   420: invokespecial 161	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   423: invokespecial 233	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   426: astore 4
+    //   428: aload 4
+    //   430: astore_1
+    //   431: new 235	java/util/zip/ZipEntry
+    //   434: dup
+    //   435: ldc 237
+    //   437: invokespecial 238	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   440: astore 10
+    //   442: aload 4
+    //   444: astore_1
+    //   445: new 235	java/util/zip/ZipEntry
+    //   448: dup
+    //   449: aload 7
+    //   451: invokevirtual 75	java/io/File:getName	()Ljava/lang/String;
+    //   454: invokespecial 238	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   457: astore 5
+    //   459: aload 4
+    //   461: astore_1
+    //   462: aload 4
+    //   464: aload 10
+    //   466: invokevirtual 242	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   469: aload 4
+    //   471: astore_1
+    //   472: new 244	java/io/PrintWriter
+    //   475: dup
+    //   476: new 246	java/io/OutputStreamWriter
+    //   479: dup
+    //   480: aload 4
+    //   482: ldc 248
+    //   484: invokestatic 254	java/nio/charset/Charset:forName	(Ljava/lang/String;)Ljava/nio/charset/Charset;
+    //   487: invokespecial 257	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/nio/charset/Charset;)V
+    //   490: invokespecial 260	java/io/PrintWriter:<init>	(Ljava/io/Writer;)V
+    //   493: astore 10
+    //   495: aload 4
+    //   497: astore_1
+    //   498: aload 10
+    //   500: ldc_w 262
+    //   503: invokevirtual 265	java/io/PrintWriter:println	(Ljava/lang/String;)V
+    //   506: aload 4
+    //   508: astore_1
+    //   509: aload 10
+    //   511: new 87	java/lang/StringBuilder
+    //   514: dup
+    //   515: ldc_w 267
+    //   518: invokespecial 105	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   521: getstatic 273	android/os/Build$VERSION:SDK_INT	I
+    //   524: invokevirtual 114	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   527: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   530: invokevirtual 265	java/io/PrintWriter:println	(Ljava/lang/String;)V
+    //   533: aload 4
+    //   535: astore_1
+    //   536: aload 10
+    //   538: new 87	java/lang/StringBuilder
+    //   541: dup
+    //   542: ldc_w 275
+    //   545: invokespecial 105	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   548: getstatic 281	android/os/Build:MANUFACTURER	Ljava/lang/String;
+    //   551: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   554: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   557: invokevirtual 265	java/io/PrintWriter:println	(Ljava/lang/String;)V
+    //   560: aload 4
+    //   562: astore_1
+    //   563: aload 10
+    //   565: new 87	java/lang/StringBuilder
+    //   568: dup
+    //   569: ldc_w 283
+    //   572: invokespecial 105	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   575: aload 5
+    //   577: invokevirtual 284	java/util/zip/ZipEntry:getName	()Ljava/lang/String;
+    //   580: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   583: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   586: invokevirtual 265	java/io/PrintWriter:println	(Ljava/lang/String;)V
+    //   589: aload 4
+    //   591: astore_1
+    //   592: aload 10
+    //   594: new 87	java/lang/StringBuilder
+    //   597: dup
+    //   598: ldc_w 286
+    //   601: invokespecial 105	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   604: aload 6
+    //   606: getfield 289	com/tencent/matrix/resource/analyzer/model/f:cxG	Ljava/lang/String;
+    //   609: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   612: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   615: invokevirtual 265	java/io/PrintWriter:println	(Ljava/lang/String;)V
+    //   618: aload 4
+    //   620: astore_1
+    //   621: aload 10
+    //   623: invokevirtual 292	java/io/PrintWriter:flush	()V
+    //   626: aload 4
+    //   628: astore_1
+    //   629: aload 4
+    //   631: invokevirtual 295	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   634: aload 4
+    //   636: astore_1
+    //   637: aload 4
+    //   639: aload 5
+    //   641: invokevirtual 242	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   644: aload 4
+    //   646: astore_1
+    //   647: aload 7
+    //   649: aload 4
+    //   651: invokestatic 300	com/tencent/matrix/resource/a/a/c:a	(Ljava/io/File;Ljava/io/OutputStream;)V
+    //   654: aload 4
+    //   656: astore_1
+    //   657: aload 4
+    //   659: invokevirtual 295	java/util/zip/ZipOutputStream:closeEntry	()V
     //   662: aload 4
     //   664: astore_1
-    //   665: aload 9
-    //   667: invokevirtual 296	java/io/File:delete	()Z
+    //   665: aload 7
+    //   667: invokevirtual 304	java/io/File:delete	()Z
     //   670: pop
     //   671: aload 4
     //   673: astore_1
-    //   674: ldc 198
-    //   676: ldc_w 298
-    //   679: iconst_1
-    //   680: anewarray 202	java/lang/Object
-    //   683: dup
-    //   684: iconst_0
-    //   685: invokestatic 137	java/lang/System:currentTimeMillis	()J
-    //   688: lload_2
-    //   689: lsub
-    //   690: invokestatic 216	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   693: aastore
-    //   694: invokestatic 222	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   697: aload 4
-    //   699: astore_1
-    //   700: aload_0
-    //   701: aload 8
-    //   703: invokevirtual 301	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   706: aload 6
-    //   708: getfield 304	com/tencent/matrix/resource/analyzer/model/a:mActivityName	Ljava/lang/String;
-    //   711: invokestatic 310	com/tencent/matrix/resource/CanaryResultService:d	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
-    //   714: aload 4
-    //   716: invokestatic 314	com/tencent/matrix/resource/a/a/c:V	(Ljava/lang/Object;)V
-    //   719: return
-    //   720: astore_1
-    //   721: aconst_null
-    //   722: astore 4
-    //   724: aconst_null
-    //   725: astore 5
-    //   727: aload 4
-    //   729: ifnull +8 -> 737
-    //   732: aload 4
-    //   734: invokevirtual 195	java/io/OutputStream:close	()V
-    //   737: aload 5
-    //   739: ifnull +8 -> 747
-    //   742: aload 5
-    //   744: invokevirtual 196	java/io/FileInputStream:close	()V
-    //   747: aload_1
-    //   748: athrow
-    //   749: astore 5
-    //   751: aconst_null
-    //   752: astore 4
-    //   754: aload 4
-    //   756: astore_1
-    //   757: ldc 198
-    //   759: aload 5
-    //   761: ldc_w 316
-    //   764: iconst_0
-    //   765: anewarray 202	java/lang/Object
-    //   768: invokestatic 320	com/tencent/matrix/g/c:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   771: aload 4
-    //   773: invokestatic 314	com/tencent/matrix/resource/a/a/c:V	(Ljava/lang/Object;)V
-    //   776: return
-    //   777: astore 4
-    //   779: aconst_null
-    //   780: astore_1
-    //   781: aload_1
-    //   782: invokestatic 314	com/tencent/matrix/resource/a/a/c:V	(Ljava/lang/Object;)V
-    //   785: aload 4
-    //   787: athrow
-    //   788: ldc 198
-    //   790: ldc_w 322
+    //   674: aload 9
+    //   676: invokevirtual 304	java/io/File:delete	()Z
+    //   679: pop
+    //   680: aload 4
+    //   682: astore_1
+    //   683: ldc 206
+    //   685: ldc_w 306
+    //   688: iconst_1
+    //   689: anewarray 210	java/lang/Object
+    //   692: dup
+    //   693: iconst_0
+    //   694: invokestatic 145	java/lang/System:currentTimeMillis	()J
+    //   697: lload_2
+    //   698: lsub
+    //   699: invokestatic 224	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   702: aastore
+    //   703: invokestatic 230	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   706: aload 4
+    //   708: astore_1
+    //   709: aload_0
+    //   710: aload 8
+    //   712: invokevirtual 309	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   715: aload 6
+    //   717: getfield 312	com/tencent/matrix/resource/analyzer/model/f:mActivityName	Ljava/lang/String;
+    //   720: invokestatic 318	com/tencent/matrix/resource/CanaryResultService:c	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+    //   723: aload 4
+    //   725: invokestatic 322	com/tencent/matrix/resource/a/a/c:closeQuietly	(Ljava/lang/Object;)V
+    //   728: return
+    //   729: astore_1
+    //   730: aconst_null
+    //   731: astore 4
+    //   733: aconst_null
+    //   734: astore 5
+    //   736: aload 4
+    //   738: ifnull +8 -> 746
+    //   741: aload 4
+    //   743: invokevirtual 203	java/io/OutputStream:close	()V
+    //   746: aload 5
+    //   748: ifnull +8 -> 756
+    //   751: aload 5
+    //   753: invokevirtual 204	java/io/FileInputStream:close	()V
+    //   756: aload_1
+    //   757: athrow
+    //   758: astore 5
+    //   760: aconst_null
+    //   761: astore 4
+    //   763: aload 4
+    //   765: astore_1
+    //   766: ldc 206
+    //   768: aload 5
+    //   770: ldc_w 324
+    //   773: iconst_0
+    //   774: anewarray 210	java/lang/Object
+    //   777: invokestatic 328	com/tencent/matrix/g/c:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   780: aload 4
+    //   782: invokestatic 322	com/tencent/matrix/resource/a/a/c:closeQuietly	(Ljava/lang/Object;)V
+    //   785: return
+    //   786: astore_1
+    //   787: ldc 206
+    //   789: aload_1
+    //   790: ldc_w 330
     //   793: iconst_0
-    //   794: anewarray 202	java/lang/Object
-    //   797: invokestatic 325	com/tencent/matrix/g/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   794: anewarray 210	java/lang/Object
+    //   797: invokestatic 328	com/tencent/matrix/g/c:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   800: return
-    //   801: astore_1
-    //   802: goto -480 -> 322
-    //   805: astore_1
-    //   806: goto -479 -> 327
-    //   809: astore 4
-    //   811: goto -74 -> 737
-    //   814: astore 4
-    //   816: goto -69 -> 747
-    //   819: astore 4
-    //   821: goto -40 -> 781
-    //   824: astore 5
-    //   826: goto -72 -> 754
+    //   801: astore 4
+    //   803: aconst_null
+    //   804: astore_1
+    //   805: aload_1
+    //   806: invokestatic 322	com/tencent/matrix/resource/a/a/c:closeQuietly	(Ljava/lang/Object;)V
+    //   809: aload 4
+    //   811: athrow
+    //   812: ldc 206
+    //   814: ldc_w 330
+    //   817: iconst_0
+    //   818: anewarray 210	java/lang/Object
+    //   821: invokestatic 333	com/tencent/matrix/g/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   824: return
+    //   825: astore_1
+    //   826: goto -496 -> 330
     //   829: astore_1
-    //   830: aconst_null
-    //   831: astore 4
-    //   833: goto -106 -> 727
-    //   836: astore_1
-    //   837: goto -110 -> 727
+    //   830: goto -495 -> 335
+    //   833: astore 4
+    //   835: goto -89 -> 746
+    //   838: astore 4
+    //   840: goto -84 -> 756
+    //   843: astore 4
+    //   845: goto -40 -> 805
+    //   848: astore 5
+    //   850: goto -87 -> 763
+    //   853: astore_1
+    //   854: aconst_null
+    //   855: astore 4
+    //   857: goto -121 -> 736
+    //   860: astore_1
+    //   861: goto -125 -> 736
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	840	0	this	CanaryWorkerService
-    //   0	840	1	paramIntent	Intent
-    //   193	496	2	l	long
-    //   49	723	4	localObject1	java.lang.Object
-    //   777	9	4	localObject2	java.lang.Object
-    //   809	1	4	localThrowable1	java.lang.Throwable
-    //   814	1	4	localThrowable2	java.lang.Throwable
-    //   819	1	4	localObject3	java.lang.Object
-    //   831	1	4	localObject4	java.lang.Object
-    //   123	620	5	localObject5	java.lang.Object
-    //   749	11	5	localIOException1	java.io.IOException
-    //   824	1	5	localIOException2	java.io.IOException
-    //   25	682	6	locala	a
-    //   94	563	7	localFile1	java.io.File
-    //   181	521	8	localFile2	java.io.File
-    //   188	478	9	localFile3	java.io.File
-    //   247	366	10	localObject6	java.lang.Object
+    //   0	864	0	this	CanaryWorkerService
+    //   0	864	1	paramIntent	Intent
+    //   201	497	2	l	long
+    //   57	724	4	localObject1	java.lang.Object
+    //   801	9	4	localObject2	java.lang.Object
+    //   833	1	4	localThrowable1	java.lang.Throwable
+    //   838	1	4	localThrowable2	java.lang.Throwable
+    //   843	1	4	localObject3	java.lang.Object
+    //   855	1	4	localObject4	java.lang.Object
+    //   131	621	5	localObject5	java.lang.Object
+    //   758	11	5	localIOException1	java.io.IOException
+    //   848	1	5	localIOException2	java.io.IOException
+    //   33	683	6	localf	f
+    //   102	564	7	localFile1	java.io.File
+    //   189	522	8	localFile2	java.io.File
+    //   196	479	9	localFile3	java.io.File
+    //   255	367	10	localObject6	java.lang.Object
     // Exception table:
     //   from	to	target	type
-    //   202	213	720	finally
-    //   190	202	749	java/io/IOException
-    //   317	322	749	java/io/IOException
-    //   322	327	749	java/io/IOException
-    //   327	420	749	java/io/IOException
-    //   732	737	749	java/io/IOException
-    //   742	747	749	java/io/IOException
-    //   747	749	749	java/io/IOException
-    //   190	202	777	finally
-    //   317	322	777	finally
-    //   322	327	777	finally
-    //   327	420	777	finally
-    //   732	737	777	finally
-    //   742	747	777	finally
-    //   747	749	777	finally
-    //   317	322	801	java/lang/Throwable
-    //   322	327	805	java/lang/Throwable
-    //   732	737	809	java/lang/Throwable
-    //   742	747	814	java/lang/Throwable
-    //   423	434	819	finally
-    //   437	451	819	finally
-    //   454	461	819	finally
-    //   464	487	819	finally
-    //   490	497	819	finally
-    //   500	524	819	finally
-    //   527	551	819	finally
-    //   554	580	819	finally
-    //   583	609	819	finally
-    //   612	617	819	finally
-    //   620	625	819	finally
-    //   628	635	819	finally
-    //   638	645	819	finally
-    //   648	653	819	finally
-    //   656	662	819	finally
-    //   665	671	819	finally
-    //   674	697	819	finally
-    //   700	714	819	finally
-    //   757	771	819	finally
-    //   423	434	824	java/io/IOException
-    //   437	451	824	java/io/IOException
-    //   454	461	824	java/io/IOException
-    //   464	487	824	java/io/IOException
-    //   490	497	824	java/io/IOException
-    //   500	524	824	java/io/IOException
-    //   527	551	824	java/io/IOException
-    //   554	580	824	java/io/IOException
-    //   583	609	824	java/io/IOException
-    //   612	617	824	java/io/IOException
-    //   620	625	824	java/io/IOException
-    //   628	635	824	java/io/IOException
-    //   638	645	824	java/io/IOException
-    //   648	653	824	java/io/IOException
-    //   656	662	824	java/io/IOException
-    //   665	671	824	java/io/IOException
-    //   674	697	824	java/io/IOException
-    //   700	714	824	java/io/IOException
-    //   213	231	829	finally
-    //   231	317	836	finally
+    //   210	221	729	finally
+    //   198	210	758	java/io/IOException
+    //   325	330	758	java/io/IOException
+    //   330	335	758	java/io/IOException
+    //   335	428	758	java/io/IOException
+    //   741	746	758	java/io/IOException
+    //   751	756	758	java/io/IOException
+    //   756	758	758	java/io/IOException
+    //   16	35	786	java/lang/Throwable
+    //   40	198	786	java/lang/Throwable
+    //   723	728	786	java/lang/Throwable
+    //   780	785	786	java/lang/Throwable
+    //   805	812	786	java/lang/Throwable
+    //   812	824	786	java/lang/Throwable
+    //   198	210	801	finally
+    //   325	330	801	finally
+    //   330	335	801	finally
+    //   335	428	801	finally
+    //   741	746	801	finally
+    //   751	756	801	finally
+    //   756	758	801	finally
+    //   325	330	825	java/lang/Throwable
+    //   330	335	829	java/lang/Throwable
+    //   741	746	833	java/lang/Throwable
+    //   751	756	838	java/lang/Throwable
+    //   431	442	843	finally
+    //   445	459	843	finally
+    //   462	469	843	finally
+    //   472	495	843	finally
+    //   498	506	843	finally
+    //   509	533	843	finally
+    //   536	560	843	finally
+    //   563	589	843	finally
+    //   592	618	843	finally
+    //   621	626	843	finally
+    //   629	634	843	finally
+    //   637	644	843	finally
+    //   647	654	843	finally
+    //   657	662	843	finally
+    //   665	671	843	finally
+    //   674	680	843	finally
+    //   683	706	843	finally
+    //   709	723	843	finally
+    //   766	780	843	finally
+    //   431	442	848	java/io/IOException
+    //   445	459	848	java/io/IOException
+    //   462	469	848	java/io/IOException
+    //   472	495	848	java/io/IOException
+    //   498	506	848	java/io/IOException
+    //   509	533	848	java/io/IOException
+    //   536	560	848	java/io/IOException
+    //   563	589	848	java/io/IOException
+    //   592	618	848	java/io/IOException
+    //   621	626	848	java/io/IOException
+    //   629	634	848	java/io/IOException
+    //   637	644	848	java/io/IOException
+    //   647	654	848	java/io/IOException
+    //   657	662	848	java/io/IOException
+    //   665	671	848	java/io/IOException
+    //   674	680	848	java/io/IOException
+    //   683	706	848	java/io/IOException
+    //   709	723	848	java/io/IOException
+    //   221	239	853	finally
+    //   239	325	860	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.resource.CanaryWorkerService
  * JD-Core Version:    0.7.0.1
  */

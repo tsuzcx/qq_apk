@@ -40,17 +40,17 @@ public abstract interface u
   
   public abstract int getVisibility();
   
-  public abstract boolean gx();
+  public abstract boolean hS();
   
-  public abstract boolean gy();
+  public abstract boolean hT();
   
-  public abstract void gz();
+  public abstract void hU();
   
   public abstract boolean hasExpandedActionView();
   
   public abstract boolean hideOverflowMenu();
   
-  public abstract ViewGroup hz();
+  public abstract ViewGroup iV();
   
   public abstract boolean isOverflowMenuShowing();
   

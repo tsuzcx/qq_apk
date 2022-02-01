@@ -2,39 +2,39 @@ package com.tencent.mm.plugin.wenote.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.afy;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class m
 {
-  public long cBE;
-  public String cEB;
-  public long cpO;
+  public String BDB;
+  public String BDC;
+  public String BDD;
+  public long BDE;
   public int dataType;
-  public g mCk;
-  public List<aca> pZa;
-  public String vxm;
-  public String vxn;
-  public String vxo;
-  public long vxp;
+  public long dsa;
+  public String dvd;
+  public long msgId;
+  public g okO;
+  public List<afy> vaT;
   
   public m()
   {
-    AppMethodBeat.i(26683);
-    this.cpO = -1L;
-    this.cBE = -1L;
-    this.cEB = "";
-    this.pZa = new ArrayList();
-    this.vxn = "";
-    this.vxo = "";
-    this.vxp = 0L;
-    AppMethodBeat.o(26683);
+    AppMethodBeat.i(30376);
+    this.msgId = -1L;
+    this.dsa = -1L;
+    this.dvd = "";
+    this.vaT = new ArrayList();
+    this.BDC = "";
+    this.BDD = "";
+    this.BDE = 0L;
+    AppMethodBeat.o(30376);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.a.m
  * JD-Core Version:    0.7.0.1
  */

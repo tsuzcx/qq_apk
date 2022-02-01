@@ -18,22 +18,22 @@ public class SightLocationWidget
   
   protected int getLayoutResource()
   {
-    return 2130969996;
+    return 2131494601;
   }
   
   protected int getNormalStateImageResource()
   {
-    return 2131231990;
+    return 2131691176;
   }
   
   protected int getSelectedStateImageResource()
   {
-    return 2131231991;
+    return 2131691177;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SightLocationWidget
  * JD-Core Version:    0.7.0.1
  */

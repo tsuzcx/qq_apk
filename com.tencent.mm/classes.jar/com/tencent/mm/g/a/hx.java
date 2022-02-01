@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class hx
   extends b
 {
-  public a cxg;
+  public a dlD;
   
   public hx()
   {
@@ -15,16 +15,20 @@ public final class hx
   
   private hx(byte paramByte)
   {
-    AppMethodBeat.i(73668);
-    this.cxg = new a();
-    this.ymq = false;
+    AppMethodBeat.i(149861);
+    this.dlD = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(73668);
+    AppMethodBeat.o(149861);
   }
   
   public static final class a
   {
-    public int scene = 1;
+    public String appId;
+    public String deE;
+    public int dlE;
+    public int opType;
+    public String openId;
   }
 }
 

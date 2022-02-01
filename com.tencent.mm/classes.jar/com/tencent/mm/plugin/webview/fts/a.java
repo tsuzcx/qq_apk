@@ -1,28 +1,30 @@
 package com.tencent.mm.plugin.webview.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.d;
-import com.tencent.mm.ah.i;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.g.a.gc;
-import com.tencent.mm.g.a.gc.a;
-import com.tencent.mm.g.a.gc.b;
-import com.tencent.mm.g.a.rt;
-import com.tencent.mm.g.a.rt.a;
+import com.tencent.mm.ak.e;
+import com.tencent.mm.ak.j;
+import com.tencent.mm.ak.p;
+import com.tencent.mm.g.a.gj;
+import com.tencent.mm.g.a.gj.a;
+import com.tencent.mm.g.a.gj.b;
+import com.tencent.mm.g.a.tn;
+import com.tencent.mm.g.a.tn.a;
+import com.tencent.mm.plugin.sns.c.n;
 import com.tencent.mm.plugin.websearch.api.aa;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.f;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.i.a;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.protocal.protobuf.vi;
+import com.tencent.mm.protocal.protobuf.bpi;
+import com.tencent.mm.protocal.protobuf.yk;
 import com.tencent.mm.sdk.b.b;
 import com.tencent.mm.sdk.b.c;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -36,38 +38,142 @@ import org.json.JSONObject;
 public final class a
   implements k.a
 {
-  public c rbF;
-  private volatile HashMap<String, HashSet<String>> uOp;
-  volatile HashMap<String, HashSet<String>> uOq;
-  volatile HashMap<String, HashSet<String>> uOr;
-  private volatile HashMap<String, Integer> uOs;
-  volatile HashMap<String, Integer> uOt;
-  volatile HashMap<String, Integer> uOu;
-  public c<gc> uOv;
+  private volatile HashMap<String, HashSet<String>> AOj;
+  volatile HashMap<String, HashSet<String>> AOk;
+  volatile HashMap<String, HashSet<String>> AOl;
+  private volatile HashMap<String, Integer> AOm;
+  volatile HashMap<String, Integer> AOn;
+  volatile HashMap<String, Integer> AOo;
+  public c<gj> AOp;
+  public c wBV;
   
   public a()
   {
-    AppMethodBeat.i(5667);
-    this.uOv = new a.1(this);
-    this.rbF = new a.2(this);
-    this.uOp = new HashMap();
-    this.uOq = new HashMap();
-    this.uOs = new HashMap();
-    this.uOt = new HashMap();
-    this.uOr = new HashMap();
-    this.uOu = new HashMap();
-    this.rbF.alive();
-    this.uOv.alive();
-    o.adg().add(this);
-    AppMethodBeat.o(5667);
+    AppMethodBeat.i(77880);
+    this.AOp = new c()
+    {
+      private boolean a(gj paramAnonymousgj)
+      {
+        AppMethodBeat.i(77876);
+        if (paramAnonymousgj.djz.dbV == 2)
+        {
+          ad.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "Emoji Download callback %s", new Object[] { paramAnonymousgj.djz.md5 });
+          if (!a.this.AOl.containsKey(paramAnonymousgj.djz.md5)) {}
+        }
+        for (;;)
+        {
+          int i;
+          JSONArray localJSONArray;
+          String str1;
+          String str2;
+          JSONObject localJSONObject;
+          synchronized (a.this.AOl)
+          {
+            i = ((Integer)a.this.AOo.get(paramAnonymousgj.djz.md5)).intValue();
+            Object localObject = (HashSet)a.this.AOl.get(paramAnonymousgj.djz.md5);
+            localJSONArray = new JSONArray();
+            localObject = ((HashSet)localObject).iterator();
+            if (((Iterator)localObject).hasNext())
+            {
+              str1 = (String)((Iterator)localObject).next();
+              str2 = "weixin://fts/emoji?path=" + paramAnonymousgj.djA.path;
+              localJSONObject = new JSONObject();
+            }
+          }
+          try
+          {
+            localJSONObject.put("id", str1);
+            localJSONObject.put("src", str2);
+            label204:
+            localJSONArray.put(localJSONObject);
+            continue;
+            paramAnonymousgj = finally;
+            AppMethodBeat.o(77876);
+            throw paramAnonymousgj;
+            com.tencent.mm.plugin.webview.ui.tools.jsapi.g.TO(i).cq(0, localJSONArray.toString());
+            a.this.AOl.remove(paramAnonymousgj.djz.md5);
+            a.this.AOo.remove(paramAnonymousgj.djz.md5);
+            AppMethodBeat.o(77876);
+            return false;
+          }
+          catch (JSONException localJSONException)
+          {
+            break label204;
+          }
+        }
+      }
+    };
+    this.wBV = new c()
+    {
+      private boolean a(tn paramAnonymoustn)
+      {
+        AppMethodBeat.i(77878);
+        if (((paramAnonymoustn instanceof tn)) && (paramAnonymoustn.dyR.dbV == 2))
+        {
+          ad.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "Download callback %s", new Object[] { paramAnonymoustn.dyR.mediaId });
+          if (!a.this.AOk.containsKey(paramAnonymoustn.dyR.mediaId)) {}
+        }
+        for (;;)
+        {
+          int i;
+          JSONArray localJSONArray;
+          String str1;
+          String str2;
+          JSONObject localJSONObject;
+          synchronized (a.this.AOk)
+          {
+            i = ((Integer)a.this.AOn.get(paramAnonymoustn.dyR.mediaId)).intValue();
+            Object localObject = (HashSet)a.this.AOk.get(paramAnonymoustn.dyR.mediaId);
+            localJSONArray = new JSONArray();
+            localObject = ((HashSet)localObject).iterator();
+            if (((Iterator)localObject).hasNext())
+            {
+              str1 = (String)((Iterator)localObject).next();
+              str2 = "weixin://fts/sns?path=" + com.tencent.mm.vfs.i.k(paramAnonymoustn.dyR.path, false);
+              localJSONObject = new JSONObject();
+            }
+          }
+          try
+          {
+            localJSONObject.put("id", str1);
+            localJSONObject.put("src", str2);
+            label215:
+            localJSONArray.put(localJSONObject);
+            continue;
+            paramAnonymoustn = finally;
+            AppMethodBeat.o(77878);
+            throw paramAnonymoustn;
+            com.tencent.mm.plugin.webview.ui.tools.jsapi.g.TO(i).cq(0, localJSONArray.toString());
+            a.this.AOk.remove(paramAnonymoustn.dyR.mediaId);
+            a.this.AOn.remove(paramAnonymoustn.dyR.mediaId);
+            AppMethodBeat.o(77878);
+            return false;
+          }
+          catch (JSONException localJSONException)
+          {
+            break label215;
+          }
+        }
+      }
+    };
+    this.AOj = new HashMap();
+    this.AOk = new HashMap();
+    this.AOm = new HashMap();
+    this.AOn = new HashMap();
+    this.AOl = new HashMap();
+    this.AOo = new HashMap();
+    this.wBV.alive();
+    this.AOp.alive();
+    p.auF().add(this);
+    AppMethodBeat.o(77880);
   }
   
-  public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
+  public final void a(String paramString, m paramm)
   {
-    AppMethodBeat.i(5671);
+    AppMethodBeat.i(77884);
     if ((paramm == null) || (paramm.obj == null))
     {
-      AppMethodBeat.o(5671);
+      AppMethodBeat.o(77884);
       return;
     }
     for (;;)
@@ -76,22 +182,22 @@ public final class a
       String str1;
       String str2;
       JSONObject localJSONObject;
-      synchronized (this.uOp)
+      synchronized (this.AOj)
       {
-        ab.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "event %s，eventData %s", new Object[] { paramString, paramm.toString() });
+        ad.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "event %s，eventData %s", new Object[] { paramString, paramm.toString() });
         paramString = paramm.obj.toString();
-        if ((this.uOp.containsKey(paramString)) && (this.uOs.containsKey(paramString)))
+        if ((this.AOj.containsKey(paramString)) && (this.AOm.containsKey(paramString)))
         {
-          ab.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "notify avatar changed %s", new Object[] { paramString });
-          i = ((Integer)this.uOs.get(paramString)).intValue();
-          Object localObject = new HashSet((HashSet)this.uOp.get(paramString));
+          ad.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "notify avatar changed %s", new Object[] { paramString });
+          i = ((Integer)this.AOm.get(paramString)).intValue();
+          Object localObject = new HashSet((HashSet)this.AOj.get(paramString));
           paramm = new JSONArray();
           localObject = ((HashSet)localObject).iterator();
           if (((Iterator)localObject).hasNext())
           {
             str1 = (String)((Iterator)localObject).next();
-            o.acQ();
-            str2 = "weixin://fts/avatar?path=".concat(String.valueOf(d.E(paramString, false)));
+            p.auq();
+            str2 = "weixin://fts/avatar?path=".concat(String.valueOf(e.J(paramString, false)));
             localJSONObject = new JSONObject();
           }
         }
@@ -100,31 +206,31 @@ public final class a
       {
         localJSONObject.put("id", str1);
         localJSONObject.put("src", str2);
-        label220:
+        label218:
         paramm.put(localJSONObject);
         continue;
         paramString = finally;
-        AppMethodBeat.o(5671);
+        AppMethodBeat.o(77884);
         throw paramString;
-        com.tencent.mm.plugin.webview.ui.tools.jsapi.h.KW(i).bG(0, paramm.toString());
-        this.uOp.remove(paramString);
-        this.uOs.remove(paramString);
-        AppMethodBeat.o(5671);
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.TO(i).cq(0, paramm.toString());
+        this.AOj.remove(paramString);
+        this.AOm.remove(paramString);
+        AppMethodBeat.o(77884);
         return;
       }
       catch (JSONException localJSONException)
       {
-        break label220;
+        break label218;
       }
     }
   }
   
-  public final boolean as(Map<String, Object> paramMap)
+  public final boolean aX(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(5668);
-    ab.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "getSearchAvatarList");
-    Object localObject1 = aa.t(paramMap, "data");
-    int j = bo.f(paramMap.get("webview_instance_id"), -1);
+    AppMethodBeat.i(77881);
+    ad.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "getSearchAvatarList");
+    Object localObject1 = aa.w(paramMap, "data");
+    int j = bt.i(paramMap.get("webview_instance_id"), -1);
     for (;;)
     {
       JSONArray localJSONArray2;
@@ -138,7 +244,7 @@ public final class a
         localObject1 = null;
         i = 0;
         if (i >= localJSONArray1.length()) {
-          break label436;
+          break label431;
         }
         paramMap = localJSONArray1.getJSONObject(i);
         str1 = paramMap.optString("id");
@@ -150,18 +256,18 @@ public final class a
         switch (k)
         {
         case 1: 
-          o.acQ();
-          paramMap = d.E(str2, false);
-          if (!e.cN(paramMap)) {
+          p.auq();
+          paramMap = e.J(str2, false);
+          if (!com.tencent.mm.vfs.i.eK(paramMap)) {
             break;
           }
-          ab.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "avatar file exist %s", new Object[] { paramMap });
+          ad.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "avatar file exist %s", new Object[] { paramMap });
           paramMap = "weixin://fts/avatar?path=".concat(String.valueOf(paramMap));
         case 4: 
         case 64: 
           localObject1 = paramMap;
           if (paramMap == null) {
-            break label463;
+            break label458;
           }
           localObject1 = new JSONObject();
           ((JSONObject)localObject1).put("id", str1);
@@ -173,50 +279,50 @@ public final class a
       catch (JSONException paramMap)
       {
         String str3;
-        ab.printErrStackTrace("MicroMsg.WebSearch.FTSWebViewImageLogic", paramMap, "", new Object[0]);
-        com.tencent.mm.plugin.webview.ui.tools.jsapi.h.KW(j).bG(-1, "");
-        AppMethodBeat.o(5668);
+        ad.printErrStackTrace("MicroMsg.WebSearch.FTSWebViewImageLogic", paramMap, "", new Object[0]);
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.TO(j).cq(-1, "");
+        AppMethodBeat.o(77881);
         return false;
       }
-      paramMap = new com.tencent.mm.ah.h();
+      paramMap = new com.tencent.mm.ak.i();
       paramMap.username = str2;
-      paramMap.fsl = str3;
-      paramMap.fsk = ((String)localObject2);
-      paramMap.bsY = -1;
-      paramMap.dqB = 3;
-      paramMap.cM(true);
-      o.adg().b(paramMap);
+      paramMap.gUg = str3;
+      paramMap.gUf = ((String)localObject2);
+      paramMap.dtM = -1;
+      paramMap.evo = 3;
+      paramMap.ee(true);
+      p.auF().b(paramMap);
       continue;
-      ab.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "avatar file not exist %s", new Object[] { paramMap });
-      this.uOs.put(str2, Integer.valueOf(j));
-      Object localObject2 = (HashSet)this.uOp.get(str2);
+      ad.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "avatar file not exist %s", new Object[] { paramMap });
+      this.AOm.put(str2, Integer.valueOf(j));
+      Object localObject2 = (HashSet)this.AOj.get(str2);
       paramMap = (Map<String, Object>)localObject2;
       if (localObject2 == null) {
         paramMap = new HashSet();
       }
       paramMap.add(str1);
-      this.uOp.put(str2, paramMap);
-      a.b.dmT().dt(str2);
+      this.AOj.put(str2, paramMap);
+      a.b.exg().ew(str2);
       paramMap = (Map<String, Object>)localObject1;
       continue;
-      label436:
+      label431:
       if (localJSONArray2.length() > 0)
       {
-        com.tencent.mm.plugin.webview.ui.tools.jsapi.h.KW(j).bG(0, localJSONArray2.toString());
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.TO(j).cq(0, localJSONArray2.toString());
         continue;
         continue;
-        label463:
+        label458:
         i += 1;
       }
     }
   }
   
-  public final boolean at(Map<String, Object> paramMap)
+  public final boolean aY(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(5669);
-    ab.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "getSearchSnsImageList");
-    Object localObject1 = aa.t(paramMap, "data");
-    int j = bo.f(paramMap.get("webview_instance_id"), -1);
+    AppMethodBeat.i(77882);
+    ad.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "getSearchSnsImageList");
+    Object localObject1 = aa.w(paramMap, "data");
+    int j = bt.i(paramMap.get("webview_instance_id"), -1);
     for (;;)
     {
       JSONArray localJSONArray2;
@@ -233,42 +339,42 @@ public final class a
           String str = ((JSONObject)localObject1).getString("id");
           Object localObject2 = ((JSONObject)localObject1).getString("objectXmlDesc");
           int k = ((JSONObject)localObject1).getInt("index");
-          localObject1 = ((com.tencent.mm.plugin.sns.b.m)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.sns.b.m.class)).uA((String)localObject2);
-          if (((TimeLineObject)localObject1).xTS.wOa.size() <= k) {
-            break label490;
+          localObject1 = ((n)com.tencent.mm.kernel.g.ab(n.class)).zn((String)localObject2);
+          if (((TimeLineObject)localObject1).Etm.DaC.size() <= k) {
+            break label494;
           }
-          localObject2 = (bcs)((TimeLineObject)localObject1).xTS.wOa.get(k);
-          localObject1 = new rt();
-          ((rt)localObject1).cIb.coO = 3;
-          ((rt)localObject1).cIb.cBO = ((bcs)localObject2).Id;
-          com.tencent.mm.sdk.b.a.ymk.l((b)localObject1);
-          ab.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "generatePath: %s", new Object[] { ((rt)localObject1).cIb.path });
-          if (e.cN(((rt)localObject1).cIb.path))
+          localObject2 = (bpi)((TimeLineObject)localObject1).Etm.DaC.get(k);
+          localObject1 = new tn();
+          ((tn)localObject1).dyR.dbV = 3;
+          ((tn)localObject1).dyR.mediaId = ((bpi)localObject2).Id;
+          com.tencent.mm.sdk.b.a.ESL.l((b)localObject1);
+          ad.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "generatePath: %s", new Object[] { ((tn)localObject1).dyR.path });
+          if (com.tencent.mm.vfs.i.eK(((tn)localObject1).dyR.path))
           {
-            localObject1 = "weixin://fts/sns?path=" + ((rt)localObject1).cIb.path;
+            localObject1 = "weixin://fts/sns?path=" + com.tencent.mm.vfs.i.k(((tn)localObject1).dyR.path, false);
             paramMap = (Map<String, Object>)localObject1;
             if (localObject1 == null) {
-              break label490;
+              break label494;
             }
             paramMap = new JSONObject();
             paramMap.put("id", str);
             paramMap.put("src", localObject1);
             localJSONArray2.put(paramMap);
             paramMap = null;
-            break label490;
+            break label494;
           }
-          synchronized (this.uOq)
+          synchronized (this.AOk)
           {
-            if (this.uOq.containsKey(((bcs)localObject2).Id))
+            if (this.AOk.containsKey(((bpi)localObject2).Id))
             {
-              localObject1 = (HashSet)this.uOq.get(((bcs)localObject2).Id);
+              localObject1 = (HashSet)this.AOk.get(((bpi)localObject2).Id);
               ((HashSet)localObject1).add(str);
-              this.uOq.put(((bcs)localObject2).Id, localObject1);
-              this.uOt.put(((bcs)localObject2).Id, Integer.valueOf(j));
-              localObject1 = new rt();
-              ((rt)localObject1).cIb.coO = 1;
-              ((rt)localObject1).cIb.cIc = ((bcs)localObject2);
-              com.tencent.mm.sdk.b.a.ymk.l((b)localObject1);
+              this.AOk.put(((bpi)localObject2).Id, localObject1);
+              this.AOn.put(((bpi)localObject2).Id, Integer.valueOf(j));
+              localObject1 = new tn();
+              ((tn)localObject1).dyR.dbV = 1;
+              ((tn)localObject1).dyR.dyS = ((bpi)localObject2);
+              com.tencent.mm.sdk.b.a.ESL.l((b)localObject1);
               localObject1 = paramMap;
               continue;
             }
@@ -281,24 +387,24 @@ public final class a
       }
       catch (JSONException paramMap)
       {
-        AppMethodBeat.o(5669);
+        AppMethodBeat.o(77882);
         return false;
       }
-      com.tencent.mm.plugin.webview.ui.tools.jsapi.h.KW(j).bG(0, localJSONArray2.toString());
+      com.tencent.mm.plugin.webview.ui.tools.jsapi.g.TO(j).cq(0, localJSONArray2.toString());
       continue;
-      label490:
+      label494:
       i += 1;
     }
   }
   
-  public final boolean au(Map<String, Object> paramMap)
+  public final boolean aZ(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(5670);
-    ab.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "getSearchImageList");
+    AppMethodBeat.i(77883);
+    ad.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "getSearchImageList");
     i = aa.d(paramMap, "requestType", 0);
-    Object localObject1 = aa.t(paramMap, "data");
-    int j = bo.f(paramMap.get("webview_instance_id"), -1);
-    boolean bool = at.isWifi(ah.getContext());
+    Object localObject1 = aa.w(paramMap, "data");
+    int j = bt.i(paramMap.get("webview_instance_id"), -1);
+    boolean bool = ay.isWifi(aj.getContext());
     switch (i)
     {
     }
@@ -346,20 +452,20 @@ public final class a
           localObject4 = ((JSONObject)localObject1).optString("id");
           if (k == 2)
           {
-            localObject5 = new gc();
-            ((gc)localObject5).cuC.coO = 3;
-            ((gc)localObject5).cuC.cqq = ((JSONObject)localObject1).optString("md5");
-            ((gc)localObject5).cuC.cuE = ((JSONObject)localObject1).optString("designerId");
-            ((gc)localObject5).cuC.aeskey = ((JSONObject)localObject1).optString("aesKey");
-            ((gc)localObject5).cuC.cuF = ((JSONObject)localObject1).optString("encryptUrl");
-            ((gc)localObject5).cuC.cqx = ((JSONObject)localObject1).optString("productID");
-            ((gc)localObject5).cuC.name = ((JSONObject)localObject1).optString("express");
-            ((gc)localObject5).cuC.thumbUrl = ((JSONObject)localObject1).optString("imageUrl");
-            com.tencent.mm.sdk.b.a.ymk.l((b)localObject5);
-            if (e.cN(((gc)localObject5).cuD.path))
+            localObject5 = new gj();
+            ((gj)localObject5).djz.dbV = 3;
+            ((gj)localObject5).djz.md5 = ((JSONObject)localObject1).optString("md5");
+            ((gj)localObject5).djz.djB = ((JSONObject)localObject1).optString("designerId");
+            ((gj)localObject5).djz.aeskey = ((JSONObject)localObject1).optString("aesKey");
+            ((gj)localObject5).djz.djC = ((JSONObject)localObject1).optString("encryptUrl");
+            ((gj)localObject5).djz.dft = ((JSONObject)localObject1).optString("productID");
+            ((gj)localObject5).djz.name = ((JSONObject)localObject1).optString("express");
+            ((gj)localObject5).djz.thumbUrl = ((JSONObject)localObject1).optString("imageUrl");
+            com.tencent.mm.sdk.b.a.ESL.l((b)localObject5);
+            if (com.tencent.mm.vfs.i.eK(((gj)localObject5).djA.path))
             {
-              localObject1 = "weixin://fts/emoji?path=" + ((gc)localObject5).cuD.path;
-              ab.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "path=%s", new Object[] { ((gc)localObject5).cuD.path });
+              localObject1 = "weixin://fts/emoji?path=" + ((gj)localObject5).djA.path;
+              ad.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "path=%s", new Object[] { ((gj)localObject5).djA.path });
               paramMap = (Map<String, Object>)localObject1;
               if (localObject1 == null) {
                 continue;
@@ -373,22 +479,22 @@ public final class a
             }
             if (bool)
             {
-              synchronized (this.uOr)
+              synchronized (this.AOl)
               {
-                if (this.uOr.containsKey(((gc)localObject5).cuC.cqq))
+                if (this.AOl.containsKey(((gj)localObject5).djz.md5))
                 {
-                  localObject1 = (HashSet)this.uOr.get(((gc)localObject5).cuC.cqq);
+                  localObject1 = (HashSet)this.AOl.get(((gj)localObject5).djz.md5);
                   ((HashSet)localObject1).add(localObject4);
-                  this.uOr.put(((gc)localObject5).cuC.cqq, localObject1);
-                  this.uOu.put(((gc)localObject5).cuC.cqq, Integer.valueOf(j));
-                  ((gc)localObject5).cuC.coO = 1;
-                  com.tencent.mm.sdk.b.a.ymk.l((b)localObject5);
+                  this.AOl.put(((gj)localObject5).djz.md5, localObject1);
+                  this.AOo.put(((gj)localObject5).djz.md5, Integer.valueOf(j));
+                  ((gj)localObject5).djz.dbV = 1;
+                  com.tencent.mm.sdk.b.a.ESL.l((b)localObject5);
                   localObject1 = paramMap;
                   continue;
                 }
                 localObject1 = new HashSet();
               }
-              AppMethodBeat.o(5670);
+              AppMethodBeat.o(77883);
             }
           }
         }
@@ -421,16 +527,16 @@ public final class a
       break label817;
       if (((JSONArray)localObject3).length() > 0)
       {
-        com.tencent.mm.plugin.webview.ui.tools.jsapi.h.KW(j).bG(0, ((JSONArray)localObject3).toString());
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.TO(j).cq(0, ((JSONArray)localObject3).toString());
         continue;
-        com.tencent.mm.plugin.webview.ui.tools.jsapi.h.KW(j).bG(0, ((JSONArray)localObject1).toString());
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.g.TO(j).cq(0, ((JSONArray)localObject1).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.a
  * JD-Core Version:    0.7.0.1
  */

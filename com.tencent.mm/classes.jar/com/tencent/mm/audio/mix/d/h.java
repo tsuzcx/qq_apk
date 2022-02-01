@@ -9,19 +9,19 @@ import java.util.concurrent.TimeUnit;
 
 public class h
 {
-  private static h cfX;
-  private ThreadPoolExecutor cfY;
-  private PriorityBlockingQueue<Runnable> cfZ;
-  private LinkedList<i> cga;
-  private int cgb;
+  private static h cUV;
+  private ThreadPoolExecutor cUW;
+  private PriorityBlockingQueue<Runnable> cUX;
+  private LinkedList<i> cUY;
+  private int cUZ;
   private Object lock;
   
   private h()
   {
-    AppMethodBeat.i(137077);
+    AppMethodBeat.i(136825);
     this.lock = new Object();
-    this.cfZ = new PriorityBlockingQueue(33);
-    this.cga = new LinkedList();
+    this.cUX = new PriorityBlockingQueue(33);
+    this.cUY = new LinkedList();
     int j = Runtime.getRuntime().availableProcessors();
     b.i("MicroMsg.Mix.AudioThreadPool", "getNormalCorePoolSize cpuCount:%d", new Object[] { Integer.valueOf(j) });
     j = j * 2 + 2;
@@ -30,11 +30,11 @@ public class h
     }
     for (;;)
     {
-      this.cgb = i;
-      this.cfY = new ThreadPoolExecutor(i, 32, 120L, TimeUnit.SECONDS, this.cfZ, new g());
-      this.cfY.setMaximumPoolSize(32);
+      this.cUZ = i;
+      this.cUW = new ThreadPoolExecutor(i, 32, 120L, TimeUnit.SECONDS, this.cUX, new g());
+      this.cUW.setMaximumPoolSize(32);
       b.i("MicroMsg.Mix.AudioThreadPool", "new AudioThreadPool poolSize:%d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(137077);
+      AppMethodBeat.o(136825);
       return;
       if (j >= 8) {
         i = j;
@@ -42,84 +42,84 @@ public class h
     }
   }
   
-  public static h DI()
+  public static h Nr()
   {
-    AppMethodBeat.i(137076);
-    if (cfX == null) {}
+    AppMethodBeat.i(136824);
+    if (cUV == null) {}
     try
     {
-      if (cfX == null) {
-        cfX = new h();
+      if (cUV == null) {
+        cUV = new h();
       }
-      h localh = cfX;
-      AppMethodBeat.o(137076);
+      h localh = cUV;
+      AppMethodBeat.o(136824);
       return localh;
     }
     finally
     {
-      AppMethodBeat.o(137076);
+      AppMethodBeat.o(136824);
     }
   }
   
   public static void a(i parami)
   {
-    AppMethodBeat.i(137079);
-    h localh = DI();
+    AppMethodBeat.i(136827);
+    h localh = Nr();
     synchronized (localh.lock)
     {
       parami.reset();
-      localh.cga.add(parami);
-      int i = localh.cgb;
-      if (localh.cga.size() > i) {
+      localh.cUY.add(parami);
+      int i = localh.cUZ;
+      if (localh.cUY.size() > i) {
         localh.setCorePoolSize(i + 2);
       }
-      localh.cfY.execute(parami);
-      AppMethodBeat.o(137079);
+      localh.cUW.execute(parami);
+      AppMethodBeat.o(136827);
       return;
     }
   }
   
   public static void b(i parami)
   {
-    AppMethodBeat.i(137080);
-    h localh = DI();
+    AppMethodBeat.i(136828);
+    h localh = Nr();
     synchronized (localh.lock)
     {
-      localh.cga.remove(parami);
-      if (localh.cga.size() <= 4)
+      localh.cUY.remove(parami);
+      if (localh.cUY.size() <= 4)
       {
-        localh.cgb = 4;
-        localh.setCorePoolSize(localh.cgb);
+        localh.cUZ = 4;
+        localh.setCorePoolSize(localh.cUZ);
       }
-      localh.cfY.remove(parami);
-      AppMethodBeat.o(137080);
+      localh.cUW.remove(parami);
+      AppMethodBeat.o(136828);
       return;
     }
   }
   
   private void setCorePoolSize(int paramInt)
   {
-    AppMethodBeat.i(137078);
+    AppMethodBeat.i(136826);
     if (paramInt > 32) {
-      this.cgb = 32;
+      this.cUZ = 32;
     }
     for (;;)
     {
       b.i("MicroMsg.Mix.AudioThreadPool", "setCorePoolSize poolSize:%d", new Object[] { Integer.valueOf(paramInt) });
-      this.cfY.setCorePoolSize(paramInt);
-      AppMethodBeat.o(137078);
+      this.cUW.setCorePoolSize(paramInt);
+      AppMethodBeat.o(136826);
       return;
       if (paramInt < 4) {
-        this.cgb = 4;
+        this.cUZ = 4;
       } else {
-        this.cgb = paramInt;
+        this.cUZ = paramInt;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.mix.d.h
  * JD-Core Version:    0.7.0.1
  */

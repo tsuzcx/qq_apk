@@ -11,9 +11,9 @@ final class zzb
   zzb(byte[] paramArrayOfByte)
   {
     super(Arrays.copyOfRange(paramArrayOfByte, 0, 25));
-    AppMethodBeat.i(90331);
+    AppMethodBeat.i(5352);
     this.zzbd = paramArrayOfByte;
-    AppMethodBeat.o(90331);
+    AppMethodBeat.o(5352);
   }
   
   final byte[] getBytes()

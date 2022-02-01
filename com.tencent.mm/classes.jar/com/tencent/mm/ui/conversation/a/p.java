@@ -4,82 +4,85 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.r;
+import com.tencent.mm.model.u;
 import com.tencent.mm.modelsimple.n;
-import com.tencent.mm.platformtools.ah;
 import com.tencent.mm.pluginsdk.ui.b.b;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.h;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.lang.ref.WeakReference;
 
 public final class p
   extends b
 {
-  private boolean Anm;
-  private WeImageView Any;
-  private View jGC;
-  private View jGD;
+  private WeImageView HhJ;
+  private boolean Hhx;
+  private View mxV;
+  private View mxW;
   private TextView titleTv;
   
   public p(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(34728);
-    this.Anm = false;
-    if ((!this.Anm) && (this.view != null))
+    AppMethodBeat.i(38853);
+    this.Hhx = false;
+    if ((!this.Hhx) && (this.view != null))
     {
-      this.jGC = this.view.findViewById(2131824232);
-      this.jGD = this.view.findViewById(2131821667);
-      this.Any = ((WeImageView)this.view.findViewById(2131826645));
-      this.Any.setIconColor(((Context)this.vUD.get()).getResources().getColor(2131690589));
-      this.titleTv = ((TextView)this.view.findViewById(2131826646));
-      this.Anm = true;
+      this.mxV = this.view.findViewById(2131297178);
+      this.mxW = this.view.findViewById(2131297183);
+      this.HhJ = ((WeImageView)this.view.findViewById(2131297180));
+      this.HhJ.setIconColor(((Context)this.BZM.get()).getResources().getColor(2131099676));
+      this.titleTv = ((TextView)this.view.findViewById(2131297184));
+      this.Hhx = true;
     }
-    AppMethodBeat.o(34728);
+    AppMethodBeat.o(38853);
   }
   
-  private static boolean j(Object paramObject, int paramInt)
+  private static boolean k(Object paramObject, int paramInt)
   {
-    AppMethodBeat.i(34731);
+    AppMethodBeat.i(38856);
     if (paramObject == null)
     {
-      AppMethodBeat.o(34731);
+      AppMethodBeat.o(38856);
       return true;
     }
     if (((Integer)paramObject).intValue() != paramInt)
     {
-      AppMethodBeat.o(34731);
+      AppMethodBeat.o(38856);
       return true;
     }
-    AppMethodBeat.o(34731);
+    AppMethodBeat.o(38856);
     return false;
   }
   
-  public final boolean aMK()
+  public final boolean boZ()
   {
-    AppMethodBeat.i(34730);
+    AppMethodBeat.i(38855);
     Object localObject;
     boolean bool;
-    if ((this.nwf) && (this.eUx))
+    if ((this.isFirst) && (this.gqE))
     {
-      this.jGD.setBackgroundResource(2130840583);
-      this.jGC.setBackground(null);
+      this.mxW.setBackgroundResource(2131234377);
+      this.mxV.setBackground(null);
       this.titleTv.setBackground(null);
-      aw.aaz();
-      if (!c.Yw()) {
+      az.arV();
+      if (!c.aeG()) {
         break label211;
       }
-      aw.aaz();
-      if (!n.lT(c.Yx())) {
+      az.arV();
+      if (!n.oB(c.apJ())) {
         break label211;
       }
-      localObject = aw.Rc();
-      aw.aaz();
-      ((com.tencent.mm.ai.p)localObject).a(new n(c.Yx()), 0);
+      localObject = az.aeS();
+      az.arV();
+      ((q)localObject).a(new n(c.apJ()), 0);
       bool = false;
     }
     for (;;)
@@ -90,125 +93,141 @@ public final class p
       }
       for (;;)
       {
-        AppMethodBeat.o(34730);
+        AppMethodBeat.o(38855);
         return bool;
-        if (this.nwf)
+        if (this.isFirst)
         {
-          this.jGD.setBackgroundResource(2130839279);
-          this.jGC.setBackgroundResource(2130839278);
-          this.titleTv.setBackgroundResource(2130839276);
+          this.mxW.setBackgroundResource(2131232872);
+          this.mxV.setBackgroundResource(2131232870);
+          this.titleTv.setBackgroundResource(2131232867);
           break;
         }
-        if (this.eUx)
+        if (this.gqE)
         {
-          this.jGD.setBackgroundResource(2130839279);
-          this.jGC.setBackgroundResource(2130839276);
+          this.mxW.setBackgroundResource(2131232872);
+          this.mxV.setBackgroundResource(2131232867);
           this.titleTv.setBackground(null);
           break;
         }
-        this.jGD.setBackgroundResource(2130839279);
-        this.jGC.setBackground(null);
-        this.titleTv.setBackgroundResource(2130839276);
+        this.mxW.setBackgroundResource(2131232872);
+        this.mxV.setBackground(null);
+        this.titleTv.setBackgroundResource(2131232867);
         break;
         label211:
-        aw.aaz();
-        if ((c.Yw()) && (!ah.isNullOrNil(n.fPe)) && (!n.ajz()))
+        az.arV();
+        if ((c.aeG()) && (!bt.isNullOrNil(n.hrI)) && (!n.aAD()))
         {
-          if (r.kt(r.Zt())) {
-            if ((!n.ajC()) && (n.ajA()))
+          if (u.mY(u.aqM())) {
+            if ((!n.aAG()) && (n.aAE()))
             {
-              this.titleTv.setText(n.fPl);
+              this.titleTv.setText(n.hrO);
               label267:
-              this.Any.setIconColor(((Context)this.vUD.get()).getResources().getColor(2131690589));
-              if (n.ajy() != 1) {
-                break label425;
+              this.HhJ.setIconColor(((Context)this.BZM.get()).getResources().getColor(2131099676));
+              if (n.aAC() != 1) {
+                break label449;
               }
-              if (j(this.Any.getTag(), 2131231504))
+              if (k(this.HhJ.getTag(), 2131690555))
               {
-                this.Any.setTag(Integer.valueOf(2131231504));
-                this.Any.setImageResource(2131231504);
+                this.HhJ.setTag(Integer.valueOf(2131690555));
+                this.HhJ.setImageResource(2131690555);
               }
             }
           }
           for (;;)
           {
             localObject = new Intent();
-            ((Intent)localObject).putExtra("intent.key.online_version", n.ajB());
-            this.view.setOnClickListener(new p.1(this, (Intent)localObject));
+            ((Intent)localObject).putExtra("intent.key.online_version", n.aAF());
+            this.view.setOnClickListener(new View.OnClickListener()
+            {
+              public final void onClick(View paramAnonymousView)
+              {
+                AppMethodBeat.i(38852);
+                d.b((Context)p.this.BZM.get(), "webwx", ".ui.WebWXLogoutUI", this.val$intent);
+                AppMethodBeat.o(38852);
+              }
+            });
             bool = true;
             break;
-            this.titleTv.setText(n.fPe);
+            this.titleTv.setText(n.hrI + " " + n.hrJ);
             break label267;
-            if ((!n.ajC()) && (n.ajA()))
+            if ((!n.aAG()) && (n.aAE()))
             {
-              this.titleTv.setText(n.fPm);
+              this.titleTv.setText(n.hrP);
               break label267;
             }
-            this.titleTv.setText(n.fPh);
+            this.titleTv.setText(n.hrM);
             break label267;
-            label425:
-            if (n.ajy() == 2)
+            label449:
+            if (n.aAC() == 2)
             {
-              if (n.ajA())
+              if (n.aAE())
               {
-                if (j(this.Any.getTag(), 2131231510))
+                if (k(this.HhJ.getTag(), 2131690584))
                 {
-                  this.Any.setTag(Integer.valueOf(2131231510));
-                  this.Any.setImageResource(2131231510);
+                  this.HhJ.setTag(Integer.valueOf(2131690584));
+                  this.HhJ.setImageResource(2131690584);
                 }
               }
-              else if (j(this.Any.getTag(), 2131231509))
+              else if (k(this.HhJ.getTag(), 2131690583))
               {
-                this.Any.setTag(Integer.valueOf(2131231509));
-                this.Any.setImageResource(2131231509);
+                this.HhJ.setTag(Integer.valueOf(2131690583));
+                this.HhJ.setImageResource(2131690583);
               }
             }
-            else if (n.ajy() == 3)
+            else if (n.aAC() == 3)
             {
-              if (j(this.Any.getTag(), 2131231526))
+              if (k(this.HhJ.getTag(), 2131690615))
               {
-                this.Any.setTag(Integer.valueOf(2131231526));
-                this.Any.setImageResource(2131231526);
+                this.HhJ.setTag(Integer.valueOf(2131690615));
+                this.HhJ.setImageResource(2131690615);
               }
             }
-            else if (j(this.Any.getTag(), 2131232090))
+            else if (n.aAC() == 6)
             {
-              this.Any.setTag(Integer.valueOf(2131232090));
-              this.Any.setImageResource(2131232090);
+              if (k(this.HhJ.getTag(), 2131689964))
+              {
+                this.HhJ.setTag(Integer.valueOf(2131689964));
+                this.HhJ.setImageResource(2131689964);
+              }
+            }
+            else if (k(this.HhJ.getTag(), 2131691293))
+            {
+              this.HhJ.setTag(Integer.valueOf(2131691293));
+              this.HhJ.setImageResource(2131691293);
             }
           }
         }
-        if (!f.EX_DEVICE_LOGIN) {
-          break label728;
+        if (!h.EX_DEVICE_LOGIN) {
+          break label801;
         }
-        aw.aaz();
-        if (!c.Yw()) {
-          break label728;
+        az.arV();
+        if (!c.aeG()) {
+          break label801;
         }
         int i = n.getDeviceType();
-        if ((n.ajy() != 0) || ((i != 2) && (i != 1))) {
-          break label728;
+        if ((n.aAC() != 0) || ((i != 2) && (i != 1))) {
+          break label801;
         }
         this.view.setOnClickListener(null);
-        if (j(this.Any.getTag(), 2131232090))
+        if (k(this.HhJ.getTag(), 2131691293))
         {
-          this.Any.setTag(Integer.valueOf(2131232090));
-          this.Any.setImageResource(2131232090);
+          this.HhJ.setTag(Integer.valueOf(2131691293));
+          this.HhJ.setImageResource(2131691293);
         }
         if (i == 2)
         {
-          this.titleTv.setText(2131306159);
+          this.titleTv.setText(2131758551);
           bool = true;
           break label93;
         }
         if (i == 1) {
-          this.titleTv.setText(2131306160);
+          this.titleTv.setText(2131758552);
         }
         bool = true;
         break label93;
         setVisibility(8);
       }
-      label728:
+      label801:
       bool = false;
     }
   }
@@ -217,7 +236,7 @@ public final class p
   
   public final int getLayoutId()
   {
-    return 2130970397;
+    return 2131495061;
   }
   
   public final int getOrder()
@@ -227,16 +246,16 @@ public final class p
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(34729);
-    if (this.jGC != null) {
-      this.jGC.setVisibility(paramInt);
+    AppMethodBeat.i(38854);
+    if (this.mxV != null) {
+      this.mxV.setVisibility(paramInt);
     }
-    AppMethodBeat.o(34729);
+    AppMethodBeat.o(38854);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.p
  * JD-Core Version:    0.7.0.1
  */

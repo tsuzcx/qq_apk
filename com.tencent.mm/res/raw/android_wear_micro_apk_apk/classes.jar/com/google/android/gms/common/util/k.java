@@ -1,41 +1,17 @@
 package com.google.android.gms.common.util;
 
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.util.Log;
-import com.google.android.gms.common.o;
-import com.google.android.gms.internal.cg;
-import com.google.android.gms.internal.ch;
+import android.os.Build.VERSION;
 
 public final class k
 {
-  @TargetApi(19)
-  public static boolean b(Context paramContext, int paramInt, String paramString)
+  public static boolean id()
   {
-    return ch.u(paramContext).a(paramInt, paramString);
+    return Build.VERSION.SDK_INT >= 20;
   }
   
-  public static boolean h(Context paramContext, int paramInt)
+  public static boolean ie()
   {
-    if (!b(paramContext, paramInt, "com.google.android.gms")) {}
-    do
-    {
-      return false;
-      Object localObject = paramContext.getPackageManager();
-      try
-      {
-        localObject = ((PackageManager)localObject).getPackageInfo("com.google.android.gms", 64);
-        o localo = o.p(paramContext);
-        paramContext.getPackageManager();
-        return localo.a((PackageInfo)localObject);
-      }
-      catch (PackageManager.NameNotFoundException paramContext) {}
-    } while (!Log.isLoggable("UidVerifier", 3));
-    Log.d("UidVerifier", "Package manager can't find google play services package, defaulting to false");
-    return false;
+    return Build.VERSION.SDK_INT >= 21;
   }
 }
 

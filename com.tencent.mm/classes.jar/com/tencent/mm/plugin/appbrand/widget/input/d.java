@@ -3,281 +3,282 @@ package com.tencent.mm.plugin.appbrand.widget.input;
 import android.graphics.Rect;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.aa;
 import com.tencent.mm.plugin.appbrand.widget.input.d.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
 final class d
   extends c<s>
 {
-  int jkI;
-  s jkJ;
-  v jkK;
-  com.tencent.mm.plugin.appbrand.widget.input.d.h jkL;
-  boolean jkM;
-  boolean jkN;
+  v maA;
+  com.tencent.mm.plugin.appbrand.widget.input.d.h maB;
+  boolean maC;
+  boolean maD;
+  int may;
+  s maz;
   
-  d(String paramString, com.tencent.mm.plugin.appbrand.page.v paramv, e parame)
+  d(String paramString, aa paramaa, e parame)
   {
-    super(paramString, paramv, parame.jkB);
-    AppMethodBeat.i(123583);
-    this.jkI = 0;
-    this.jkJ = new s(paramv.getContext());
-    this.jkI = bo.a((Integer)o.jmi.get(paramString), 0);
-    AppMethodBeat.o(123583);
+    super(paramString, paramaa, parame.mao);
+    AppMethodBeat.i(136314);
+    this.may = 0;
+    this.maz = new s(paramaa.getContext());
+    this.may = bt.a((Integer)o.mbY.get(paramString), 0);
+    AppMethodBeat.o(136314);
   }
   
-  private v aQC()
+  private v bsT()
   {
-    AppMethodBeat.i(123594);
-    if (this.jkK != null)
+    AppMethodBeat.i(136325);
+    if (this.maA != null)
     {
-      localv = this.jkK;
-      AppMethodBeat.o(123594);
+      localv = this.maA;
+      AppMethodBeat.o(136325);
       return localv;
     }
-    v localv = this.jkJ.getInputPanel();
-    this.jkK = localv;
-    AppMethodBeat.o(123594);
+    v localv = this.maz.getInputPanel();
+    this.maA = localv;
+    AppMethodBeat.o(136325);
     return localv;
   }
   
   private boolean isFocused()
   {
-    AppMethodBeat.i(123592);
-    if (this.jkJ == null)
+    AppMethodBeat.i(136323);
+    if (this.maz == null)
     {
-      AppMethodBeat.o(123592);
+      AppMethodBeat.o(136323);
       return false;
     }
-    if (this.jkJ.isFocused())
+    if (this.maz.isFocused())
     {
-      AppMethodBeat.o(123592);
+      AppMethodBeat.o(136323);
       return true;
     }
-    if (aQC() == null)
+    if (bsT() == null)
     {
-      AppMethodBeat.o(123592);
+      AppMethodBeat.o(136323);
       return false;
     }
-    if (!aQC().isShown())
+    if (!bsT().isShown())
     {
-      AppMethodBeat.o(123592);
+      AppMethodBeat.o(136323);
       return false;
     }
-    if (this.jkK.getAttachedEditText() == this.jkJ)
+    if (this.maA.getAttachedEditText() == this.maz)
     {
-      AppMethodBeat.o(123592);
+      AppMethodBeat.o(136323);
       return true;
     }
-    AppMethodBeat.o(123592);
+    AppMethodBeat.o(136323);
     return false;
   }
   
-  public final boolean FN(String paramString)
+  public final boolean NK(String paramString)
   {
-    AppMethodBeat.i(123589);
-    if (this.jkJ == null)
+    AppMethodBeat.i(136320);
+    if (this.maz == null)
     {
-      AppMethodBeat.o(123589);
+      AppMethodBeat.o(136320);
       return false;
     }
-    this.jkJ.z(paramString);
-    AppMethodBeat.o(123589);
+    this.maz.D(paramString);
+    AppMethodBeat.o(136320);
     return true;
-  }
-  
-  public final int aQA()
-  {
-    AppMethodBeat.i(123586);
-    if ((this.jkL == null) || (this.jkL.jrc == null))
-    {
-      AppMethodBeat.o(123586);
-      return 0;
-    }
-    int i = this.jkL.jrc.intValue();
-    AppMethodBeat.o(123586);
-    return i;
-  }
-  
-  public final boolean aQB()
-  {
-    AppMethodBeat.i(123591);
-    if (aQC() == null)
-    {
-      AppMethodBeat.o(123591);
-      return false;
-    }
-    if (isFocused())
-    {
-      Object localObject = this.jkK;
-      ((v)localObject).setVisibility(8);
-      ((v)localObject).aRe();
-      ab.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] disableInputFocus %s", new Object[] { this.jkJ });
-      if (this.jkJ != null)
-      {
-        this.jkJ.setFocusable(false);
-        this.jkJ.setFocusableInTouchMode(false);
-        this.jkJ.setEnabled(false);
-      }
-      localObject = (com.tencent.mm.plugin.appbrand.page.v)this.jkD.get();
-      if ((localObject != null) && (((com.tencent.mm.plugin.appbrand.page.v)localObject).iuy != null)) {
-        h.aQF().d(((com.tencent.mm.plugin.appbrand.page.v)localObject).iuy);
-      }
-      k.a(this.jkD).qs(this.jkB);
-      AppMethodBeat.o(123591);
-      return true;
-    }
-    AppMethodBeat.o(123591);
-    return false;
-  }
-  
-  final Rect aQu()
-  {
-    AppMethodBeat.i(123587);
-    Rect localRect = new Rect(this.jkL.jqL.intValue(), this.jkL.jqK.intValue(), this.jkL.jqL.intValue() + this.jkL.jqI.intValue(), this.jkL.jqK.intValue() + this.jkL.jqJ.intValue());
-    AppMethodBeat.o(123587);
-    return localRect;
-  }
-  
-  public final boolean aQz()
-  {
-    AppMethodBeat.i(123585);
-    if ((this.jkL != null) && (aj.g(this.jkL.jrf)))
-    {
-      AppMethodBeat.o(123585);
-      return true;
-    }
-    AppMethodBeat.o(123585);
-    return false;
   }
   
   public final com.tencent.mm.plugin.appbrand.widget.input.d.h b(com.tencent.mm.plugin.appbrand.widget.input.d.h paramh)
   {
-    AppMethodBeat.i(123588);
-    if (this.jkL == null)
+    AppMethodBeat.i(136319);
+    if (this.maB == null)
     {
-      this.jkL = paramh;
-      if ((aj.g(paramh.jrn)) && (this.jkJ != null)) {
-        this.jkJ.setPasswordMode(true);
+      this.maB = paramh;
+      if ((aj.g(paramh.mhe)) && (this.maz != null)) {
+        this.maz.setPasswordMode(true);
       }
     }
-    while (this.jkJ == null)
+    while (this.maz == null)
     {
-      AppMethodBeat.o(123588);
+      AppMethodBeat.o(136319);
       return null;
-      this.jkL.a(paramh);
+      this.maB.a(paramh);
     }
-    b.a(this.jkJ, this.jkL);
-    paramh = this.jkL;
-    AppMethodBeat.o(123588);
+    b.a(this.maz, this.maB);
+    paramh = this.maB;
+    AppMethodBeat.o(136319);
     return paramh;
   }
   
-  public final boolean dw(int paramInt1, int paramInt2)
+  final Rect bsK()
   {
-    AppMethodBeat.i(123590);
-    if (this.jkJ == null)
+    AppMethodBeat.i(136318);
+    Rect localRect = new Rect(this.maB.mgC.intValue(), this.maB.mgB.intValue(), this.maB.mgC.intValue() + this.maB.mgz.intValue(), this.maB.mgB.intValue() + this.maB.mgA.intValue());
+    AppMethodBeat.o(136318);
+    return localRect;
+  }
+  
+  public final boolean bsQ()
+  {
+    AppMethodBeat.i(136316);
+    if ((this.maB != null) && (aj.g(this.maB.mgW)))
     {
-      AppMethodBeat.o(123590);
+      AppMethodBeat.o(136316);
+      return true;
+    }
+    AppMethodBeat.o(136316);
+    return false;
+  }
+  
+  public final int bsR()
+  {
+    AppMethodBeat.i(136317);
+    if ((this.maB == null) || (this.maB.mgT == null))
+    {
+      AppMethodBeat.o(136317);
+      return 0;
+    }
+    int i = this.maB.mgT.intValue();
+    AppMethodBeat.o(136317);
+    return i;
+  }
+  
+  public final boolean bsS()
+  {
+    AppMethodBeat.i(136322);
+    if (bsT() == null)
+    {
+      AppMethodBeat.o(136322);
       return false;
     }
-    this.jkK = v.cP(((com.tencent.mm.plugin.appbrand.page.v)this.jkD.get()).hmw);
-    if (this.jkK == null)
+    if (isFocused())
     {
-      AppMethodBeat.o(123590);
+      Object localObject = this.maA;
+      ((v)localObject).setVisibility(8);
+      ((v)localObject).btv();
+      ad.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] disableInputFocus %s", new Object[] { this.maz });
+      if (this.maz != null)
+      {
+        this.maz.setFocusable(false);
+        this.maz.setFocusableInTouchMode(false);
+        this.maz.setEnabled(false);
+      }
+      localObject = (aa)this.mar.get();
+      if ((localObject != null) && (((aa)localObject).kWU != null)) {
+        h.bsW().e(((aa)localObject).kWU);
+      }
+      k.a(this.mar).uU(this.mao);
+      AppMethodBeat.o(136322);
+      return true;
+    }
+    AppMethodBeat.o(136322);
+    return false;
+  }
+  
+  public final boolean er(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(136321);
+    if (this.maz == null)
+    {
+      AppMethodBeat.o(136321);
       return false;
     }
-    this.jkN = true;
-    Object localObject = (com.tencent.mm.plugin.appbrand.page.v)this.jkD.get();
-    if ((localObject != null) && (((com.tencent.mm.plugin.appbrand.page.v)localObject).iuy != null)) {
-      h.aQF().c(((com.tencent.mm.plugin.appbrand.page.v)localObject).iuy);
+    this.maA = v.df(((aa)this.mar.get()).jhz);
+    if (this.maA == null)
+    {
+      AppMethodBeat.o(136321);
+      return false;
     }
-    this.jkK.setXMode(this.jkI);
-    localObject = this.jkK;
-    s locals = this.jkJ;
+    this.maD = true;
+    Object localObject = (aa)this.mar.get();
+    if ((localObject != null) && (((aa)localObject).kWU != null)) {
+      h.bsW().d(((aa)localObject).kWU);
+    }
+    this.maA.setXMode(this.may);
+    localObject = this.maA;
+    s locals = this.maz;
     if (locals != null)
     {
       if (((v)localObject).mEditText != locals) {
-        ((v)localObject).aRe();
+        ((v)localObject).btv();
       }
       ((v)localObject).setInputEditText(locals);
       ((v)localObject).setVisibility(0);
     }
-    this.jkK.setOnDoneListener(new v.a()
+    this.maA.setOnDoneListener(new v.a()
     {
       public final void onDone()
       {
-        AppMethodBeat.i(123582);
-        d.this.a(d.this.aQH());
-        d.this.fo(false);
-        AppMethodBeat.o(123582);
+        AppMethodBeat.i(136313);
+        d.this.a(d.this.fQZ());
+        d.this.hA(false);
+        AppMethodBeat.o(136313);
       }
     });
-    dv(paramInt1, paramInt2);
-    k.a(this.jkD).qr(this.jkB);
-    this.jkN = false;
-    AppMethodBeat.o(123590);
+    ja(paramInt1, paramInt2);
+    k.a(this.mar).uT(this.mao);
+    this.maD = false;
+    AppMethodBeat.o(136321);
     return true;
-  }
-  
-  protected final boolean fo(boolean paramBoolean)
-  {
-    AppMethodBeat.i(123593);
-    ab.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] onFocusChanged hasFocus %b, isFocused %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(isFocused()) });
-    if (!paramBoolean)
-    {
-      if (this.jkM)
-      {
-        AppMethodBeat.o(123593);
-        return true;
-      }
-      if (!isFocused())
-      {
-        AppMethodBeat.o(123593);
-        return true;
-      }
-      this.jkM = true;
-      a(aQH());
-      aQB();
-      aQx();
-      this.jkM = false;
-      this.jkJ = null;
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(123593);
-      return true;
-      if (this.jkN)
-      {
-        AppMethodBeat.o(123593);
-        return true;
-      }
-      if (isFocused())
-      {
-        AppMethodBeat.o(123593);
-        return true;
-      }
-      this.jkN = true;
-      dw(-2, -2);
-      this.jkN = false;
-    }
   }
   
   public final View getInputPanel()
   {
-    AppMethodBeat.i(123584);
-    aQC();
-    v localv = this.jkK;
-    AppMethodBeat.o(123584);
+    AppMethodBeat.i(136315);
+    bsT();
+    v localv = this.maA;
+    AppMethodBeat.o(136315);
     return localv;
+  }
+  
+  protected final boolean hA(boolean paramBoolean)
+  {
+    AppMethodBeat.i(136324);
+    ad.d("MicroMsg.AppBrandInputComponentAsNumber", "[input_switch] onFocusChanged hasFocus %b, isFocused %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(isFocused()) });
+    if (!paramBoolean)
+    {
+      if (this.maC)
+      {
+        AppMethodBeat.o(136324);
+        return true;
+      }
+      if (!isFocused())
+      {
+        AppMethodBeat.o(136324);
+        return true;
+      }
+      this.maC = true;
+      a(fQZ());
+      bsS();
+      bsN();
+      this.maC = false;
+      this.maz = null;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(136324);
+      return true;
+      if (this.maD)
+      {
+        AppMethodBeat.o(136324);
+        return true;
+      }
+      if (isFocused())
+      {
+        AppMethodBeat.o(136324);
+        return true;
+      }
+      this.maD = true;
+      er(-2, -2);
+      this.maD = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d
  * JD-Core Version:    0.7.0.1
  */

@@ -8,24 +8,24 @@ import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 
 final class WalletUniversalPayOrderUI$b
 {
-  public View iDS;
-  public CdnImageView ubf;
-  public TextView ubg;
-  public ImageView ubh;
+  public View jGG;
+  public CdnImageView zVG;
+  public TextView zVH;
+  public ImageView zVI;
   
   public WalletUniversalPayOrderUI$b(View paramView)
   {
-    AppMethodBeat.i(46438);
-    this.iDS = paramView;
-    this.ubf = ((CdnImageView)paramView.findViewById(2131829109));
-    this.ubg = ((TextView)paramView.findViewById(2131829110));
-    this.ubh = ((ImageView)paramView.findViewById(2131829111));
-    AppMethodBeat.o(46438);
+    AppMethodBeat.i(69835);
+    this.jGG = paramView;
+    this.zVG = ((CdnImageView)paramView.findViewById(2131306889));
+    this.zVH = ((TextView)paramView.findViewById(2131306890));
+    this.zVI = ((ImageView)paramView.findViewById(2131306888));
+    AppMethodBeat.o(69835);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletUniversalPayOrderUI.b
  * JD-Core Version:    0.7.0.1
  */

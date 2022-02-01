@@ -1,35 +1,16 @@
 package com.tencent.mm.plugin.appbrand.page.c;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import d.l;
 
-public final class d
-  extends p
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/page/navigation/IAppBrandPageNavigateBackInterceptor;", "T", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "", "intercept", "", "runtime", "scene", "", "continueNavigateBack", "Ljava/lang/Runnable;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;Ljava/lang/String;Ljava/lang/Runnable;)Z", "luggage-wxa-app_release"})
+public abstract interface d<T extends AppBrandRuntime>
 {
-  private static final int CTRL_INDEX = 633;
-  private static final String NAME = "onCustomRightButtonClick";
-  private static d iAD;
-  
-  static
-  {
-    AppMethodBeat.i(87378);
-    iAD = new d();
-    AppMethodBeat.o(87378);
-  }
-  
-  public static void d(v paramv)
-  {
-    AppMethodBeat.i(87377);
-    ab.i("onCustomRightButtonClickEvent", "onCustomRightButtonClickEvent dispatch");
-    iAD.i(paramv.ws()).aBz();
-    AppMethodBeat.o(87377);
-  }
+  public abstract boolean a(T paramT, String paramString, Runnable paramRunnable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.c.d
  * JD-Core Version:    0.7.0.1
  */

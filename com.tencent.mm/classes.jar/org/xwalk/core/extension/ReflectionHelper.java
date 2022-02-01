@@ -22,21 +22,21 @@ class ReflectionHelper
   static Set<Class<?>> primitives;
   private Map<String, String> bindingClasses;
   private Map<String, ReflectionHelper> constructorReflections;
-  private ReflectionHelper.MemberInfo entryPoint;
+  private MemberInfo entryPoint;
   private String[] eventList;
-  private Map<String, ReflectionHelper.MemberInfo> members;
+  private Map<String, MemberInfo> members;
   private Class<?> myClass;
   
   static
   {
-    AppMethodBeat.i(86160);
+    AppMethodBeat.i(155274);
     primitives = new HashSet();
-    AppMethodBeat.o(86160);
+    AppMethodBeat.o(155274);
   }
   
   public ReflectionHelper(Class<?> paramClass)
   {
-    AppMethodBeat.i(86140);
+    AppMethodBeat.i(155254);
     this.members = new HashMap();
     this.bindingClasses = new HashMap();
     this.constructorReflections = new HashMap();
@@ -44,69 +44,69 @@ class ReflectionHelper
     this.entryPoint = null;
     this.myClass = paramClass;
     init();
-    AppMethodBeat.o(86140);
+    AppMethodBeat.o(155254);
   }
   
   public static boolean isSerializable(Object paramObject)
   {
-    AppMethodBeat.i(86151);
+    AppMethodBeat.i(155265);
     Class localClass = paramObject.getClass();
     if ((localClass.isPrimitive()) || (primitives.contains(localClass)) || ((paramObject instanceof String)) || ((paramObject instanceof Map)) || ((paramObject instanceof JSONArray)) || ((paramObject instanceof JSONObject)))
     {
-      AppMethodBeat.o(86151);
+      AppMethodBeat.o(155265);
       return true;
     }
-    AppMethodBeat.o(86151);
+    AppMethodBeat.o(155265);
     return false;
   }
   
   public static String objToJSON(Object paramObject)
   {
-    AppMethodBeat.i(86153);
+    AppMethodBeat.i(155267);
     if (paramObject == null)
     {
-      AppMethodBeat.o(86153);
+      AppMethodBeat.o(155267);
       return "null";
     }
     paramObject = toSerializableObject(paramObject);
     if (paramObject == null)
     {
-      AppMethodBeat.o(86153);
+      AppMethodBeat.o(155267);
       return "null";
     }
     if ((paramObject instanceof String))
     {
       paramObject = JSONObject.quote(paramObject.toString());
-      AppMethodBeat.o(86153);
+      AppMethodBeat.o(155267);
       return paramObject;
     }
     paramObject = paramObject.toString();
-    AppMethodBeat.o(86153);
+    AppMethodBeat.o(155267);
     return paramObject;
   }
   
   public static void registerHandlers(ReflectionHelper paramReflectionHelper, MessageHandler paramMessageHandler, Object paramObject)
   {
-    AppMethodBeat.i(86144);
+    AppMethodBeat.i(155258);
     if ((paramReflectionHelper == null) || (paramMessageHandler == null))
     {
-      AppMethodBeat.o(86144);
+      AppMethodBeat.o(155258);
       return;
     }
     Iterator localIterator = paramReflectionHelper.getMembers().keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (ReflectionHelper.MemberInfo)paramReflectionHelper.getMembers().get(localObject);
-      paramMessageHandler.register(((ReflectionHelper.MemberInfo)localObject).jsName, ((ReflectionHelper.MemberInfo)localObject).javaName, ((ReflectionHelper.MemberInfo)localObject).type, paramObject, paramReflectionHelper);
+      localObject = (MemberInfo)paramReflectionHelper.getMembers().get(localObject);
+      paramMessageHandler.register(((MemberInfo)localObject).jsName, ((MemberInfo)localObject).javaName, ((MemberInfo)localObject).type, paramObject, paramReflectionHelper);
     }
-    AppMethodBeat.o(86144);
+    AppMethodBeat.o(155258);
   }
   
   public static Object toSerializableObject(Object paramObject)
   {
     int i = 0;
-    AppMethodBeat.i(86152);
+    AppMethodBeat.i(155266);
     Object localObject1;
     if (paramObject.getClass().isArray())
     {
@@ -123,11 +123,11 @@ class ReflectionHelper
         label53:
         i += 1;
         continue;
-        AppMethodBeat.o(86152);
+        AppMethodBeat.o(155266);
         return localObject1;
         if (isSerializable(paramObject))
         {
-          AppMethodBeat.o(86152);
+          AppMethodBeat.o(155266);
           return paramObject;
         }
         try
@@ -136,11 +136,11 @@ class ReflectionHelper
           if (((String)localObject1).trim().charAt(0) == '[')
           {
             localObject1 = new JSONArray((String)localObject1);
-            AppMethodBeat.o(86152);
+            AppMethodBeat.o(155266);
             return localObject1;
           }
           localObject1 = new JSONObject((String)localObject1);
-          AppMethodBeat.o(86152);
+          AppMethodBeat.o(155266);
           return localObject1;
         }
         catch (Exception localException1)
@@ -158,13 +158,13 @@ class ReflectionHelper
               localJSONObject.put(localObject3.getName(), localObject3.get(paramObject));
               i += 1;
             }
-            AppMethodBeat.o(86152);
+            AppMethodBeat.o(155266);
             return localJSONObject;
           }
           catch (Exception paramObject)
           {
             Log.e("JsStubReflectHelper", "Field to serialize object to JSON.");
-            AppMethodBeat.o(86152);
+            AppMethodBeat.o(155266);
             return null;
           }
         }
@@ -179,7 +179,7 @@ class ReflectionHelper
   Object[] getArgsFromJson(XWalkExternalExtension paramXWalkExternalExtension, int paramInt, Method paramMethod, JSONArray paramJSONArray)
   {
     i = 0;
-    AppMethodBeat.i(86150);
+    AppMethodBeat.i(155264);
     Class[] arrayOfClass = paramMethod.getParameterTypes();
     Object[] arrayOfObject = new Object[arrayOfClass.length];
     boolean bool1 = Modifier.isStatic(paramMethod.getModifiers());
@@ -215,24 +215,24 @@ class ReflectionHelper
         arrayOfObject[i] = paramJSONArray.get(i);
       }
     }
-    AppMethodBeat.o(86150);
+    AppMethodBeat.o(155264);
     return arrayOfObject;
   }
   
   ReflectionHelper getConstructorReflection(String paramString)
   {
-    AppMethodBeat.i(86145);
+    AppMethodBeat.i(155259);
     if (!this.constructorReflections.containsKey(paramString))
     {
-      AppMethodBeat.o(86145);
+      AppMethodBeat.o(155259);
       return null;
     }
     paramString = (ReflectionHelper)this.constructorReflections.get(paramString);
-    AppMethodBeat.o(86145);
+    AppMethodBeat.o(155259);
     return paramString;
   }
   
-  ReflectionHelper.MemberInfo getEntryPoint()
+  MemberInfo getEntryPoint()
   {
     return this.entryPoint;
   }
@@ -242,17 +242,17 @@ class ReflectionHelper
     return this.eventList;
   }
   
-  ReflectionHelper.MemberInfo getMemberInfo(String paramString)
+  MemberInfo getMemberInfo(String paramString)
   {
-    AppMethodBeat.i(86149);
-    paramString = (ReflectionHelper.MemberInfo)this.members.get(paramString);
-    AppMethodBeat.o(86149);
+    AppMethodBeat.i(155263);
+    paramString = (MemberInfo)this.members.get(paramString);
+    AppMethodBeat.o(155263);
     return paramString;
   }
   
-  void getMemberInfo(AccessibleObject[] paramArrayOfAccessibleObject, ReflectionHelper.MemberType paramMemberType)
+  void getMemberInfo(AccessibleObject[] paramArrayOfAccessibleObject, MemberType paramMemberType)
   {
-    AppMethodBeat.i(86141);
+    AppMethodBeat.i(155255);
     int j = paramArrayOfAccessibleObject.length;
     int i = 0;
     Object localObject;
@@ -263,7 +263,7 @@ class ReflectionHelper
       localObject = paramArrayOfAccessibleObject[i];
       if ((((AccessibleObject)localObject).isAnnotationPresent(JsApi.class)) || (((AccessibleObject)localObject).isAnnotationPresent(JsConstructor.class)))
       {
-        ReflectionHelper.MemberInfo localMemberInfo = new ReflectionHelper.MemberInfo(this);
+        MemberInfo localMemberInfo = new MemberInfo();
         str = ((Member)localObject).getName();
         localMemberInfo.javaName = str;
         localMemberInfo.accesser = ((AccessibleObject)localObject);
@@ -272,7 +272,7 @@ class ReflectionHelper
           break label324;
         }
         localJsApi = (JsApi)((AccessibleObject)localObject).getAnnotation(JsApi.class);
-        if ((paramMemberType != ReflectionHelper.MemberType.JS_PROPERTY) || (!localJsApi.isEventList())) {
+        if ((paramMemberType != MemberType.JS_PROPERTY) || (!localJsApi.isEventList())) {
           break label207;
         }
         if (((Field)localObject).getType().equals([Ljava.lang.String.class)) {
@@ -313,13 +313,13 @@ class ReflectionHelper
               if (!((AccessibleObject)localObject).isAnnotationPresent(JsConstructor.class)) {
                 continue;
               }
-              if (paramMemberType != ReflectionHelper.MemberType.JS_METHOD)
+              if (paramMemberType != MemberType.JS_METHOD)
               {
                 Log.w("JsStubReflectHelper", "Invalid @JsConstructor on non-function member:".concat(String.valueOf(str)));
                 break;
               }
               localObject = (JsConstructor)((AccessibleObject)localObject).getAnnotation(JsConstructor.class);
-              localIllegalArgumentException.type = ReflectionHelper.MemberType.JS_CONSTRUCTOR;
+              localIllegalArgumentException.type = MemberType.JS_CONSTRUCTOR;
               localIllegalArgumentException.isEntryPoint = ((JsConstructor)localObject).isEntryPoint();
               localIllegalArgumentException.mainClass = ((JsConstructor)localObject).mainClass();
               localIllegalArgumentException.withPromise = false;
@@ -331,7 +331,7 @@ class ReflectionHelper
               this.constructorReflections.put(localIllegalArgumentException.jsName, new ReflectionHelper(localIllegalArgumentException.mainClass));
               continue;
             }
-            if ((paramMemberType == ReflectionHelper.MemberType.JS_PROPERTY) && (!isBindingClass(((Field)localIllegalArgumentException.accesser).getType())))
+            if ((paramMemberType == MemberType.JS_PROPERTY) && (!isBindingClass(((Field)localIllegalArgumentException.accesser).getType())))
             {
               Log.w("JsStubReflectHelper", "Invalid entry point setting on property:".concat(String.valueOf(str)));
               break;
@@ -347,7 +347,7 @@ class ReflectionHelper
         {
           this.members.put(localIllegalArgumentException.jsName, localIllegalArgumentException);
           continue;
-          AppMethodBeat.o(86141);
+          AppMethodBeat.o(155255);
           return;
         }
       }
@@ -355,52 +355,52 @@ class ReflectionHelper
     }
   }
   
-  Map<String, ReflectionHelper.MemberInfo> getMembers()
+  Map<String, MemberInfo> getMembers()
   {
     return this.members;
   }
   
   Object getProperty(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(86155);
+    AppMethodBeat.i(155269);
     if (!hasProperty(paramString).booleanValue())
     {
       paramObject = new NoSuchFieldException("No such property:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(86155);
+      AppMethodBeat.o(155269);
       throw paramObject;
     }
     if ((!getMemberInfo(paramString).isStatic) && (!this.myClass.isInstance(paramObject)))
     {
       paramObject = new InvocationTargetException(new Exception("Invalid target to set property:".concat(String.valueOf(paramString))));
-      AppMethodBeat.o(86155);
+      AppMethodBeat.o(155269);
       throw paramObject;
     }
-    paramString = (Field)((ReflectionHelper.MemberInfo)this.members.get(paramString)).accesser;
+    paramString = (Field)((MemberInfo)this.members.get(paramString)).accesser;
     if (!paramString.isAccessible()) {
       paramString.setAccessible(true);
     }
     paramObject = paramString.get(paramObject);
-    AppMethodBeat.o(86155);
+    AppMethodBeat.o(155269);
     return paramObject;
   }
   
   ReflectionHelper getReflectionByBindingClass(String paramString)
   {
-    AppMethodBeat.i(86146);
+    AppMethodBeat.i(155260);
     if (!this.bindingClasses.containsKey(paramString))
     {
-      AppMethodBeat.o(86146);
+      AppMethodBeat.o(155260);
       return null;
     }
     paramString = getConstructorReflection((String)this.bindingClasses.get(paramString));
-    AppMethodBeat.o(86146);
+    AppMethodBeat.o(155260);
     return paramString;
   }
   
   public Object handleMessage(MessageInfo paramMessageInfo, Object paramObject)
   {
     i = 0;
-    AppMethodBeat.i(86159);
+    AppMethodBeat.i(155273);
     try
     {
       str1 = paramMessageInfo.getCmd();
@@ -440,7 +440,7 @@ class ReflectionHelper
     paramMessageInfo = null;
     for (;;)
     {
-      AppMethodBeat.o(86159);
+      AppMethodBeat.o(155273);
       return paramMessageInfo;
       localJSONArray = paramMessageInfo.getArgs();
       break;
@@ -477,42 +477,42 @@ class ReflectionHelper
   
   Boolean hasMethod(String paramString)
   {
-    AppMethodBeat.i(86147);
+    AppMethodBeat.i(155261);
     if (!this.members.containsKey(paramString))
     {
       paramString = Boolean.FALSE;
-      AppMethodBeat.o(86147);
+      AppMethodBeat.o(155261);
       return paramString;
     }
-    paramString = (ReflectionHelper.MemberInfo)this.members.get(paramString);
-    if ((paramString.type == ReflectionHelper.MemberType.JS_METHOD) || (paramString.type == ReflectionHelper.MemberType.JS_CONSTRUCTOR)) {}
+    paramString = (MemberInfo)this.members.get(paramString);
+    if ((paramString.type == MemberType.JS_METHOD) || (paramString.type == MemberType.JS_CONSTRUCTOR)) {}
     for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(86147);
+      AppMethodBeat.o(155261);
       return Boolean.valueOf(bool);
     }
   }
   
   Boolean hasProperty(String paramString)
   {
-    AppMethodBeat.i(86148);
+    AppMethodBeat.i(155262);
     if (!this.members.containsKey(paramString))
     {
       paramString = Boolean.FALSE;
-      AppMethodBeat.o(86148);
+      AppMethodBeat.o(155262);
       return paramString;
     }
-    if (((ReflectionHelper.MemberInfo)this.members.get(paramString)).type == ReflectionHelper.MemberType.JS_PROPERTY) {}
+    if (((MemberInfo)this.members.get(paramString)).type == MemberType.JS_PROPERTY) {}
     for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(86148);
+      AppMethodBeat.o(155262);
       return Boolean.valueOf(bool);
     }
   }
   
   void init()
   {
-    AppMethodBeat.i(86143);
+    AppMethodBeat.i(155257);
     primitives.add(Byte.class);
     primitives.add(Integer.class);
     primitives.add(Long.class);
@@ -521,49 +521,49 @@ class ReflectionHelper
     primitives.add(Float.class);
     primitives.add(Boolean.class);
     primitives.add(Short.class);
-    getMemberInfo(this.myClass.getDeclaredMethods(), ReflectionHelper.MemberType.JS_METHOD);
-    getMemberInfo(this.myClass.getDeclaredFields(), ReflectionHelper.MemberType.JS_PROPERTY);
-    AppMethodBeat.o(86143);
+    getMemberInfo(this.myClass.getDeclaredMethods(), MemberType.JS_METHOD);
+    getMemberInfo(this.myClass.getDeclaredFields(), MemberType.JS_PROPERTY);
+    AppMethodBeat.o(155257);
   }
   
   Object invokeMethod(XWalkExternalExtension paramXWalkExternalExtension, int paramInt, Object paramObject, String paramString, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(86154);
+    AppMethodBeat.i(155268);
     if (!hasMethod(paramString).booleanValue())
     {
       paramXWalkExternalExtension = new NoSuchMethodException("No such method:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(86154);
+      AppMethodBeat.o(155268);
       throw paramXWalkExternalExtension;
     }
     if ((!getMemberInfo(paramString).isStatic) && (!this.myClass.isInstance(paramObject)))
     {
       paramXWalkExternalExtension = new InvocationTargetException(new Exception("Invalid target to set property:".concat(String.valueOf(paramString))));
-      AppMethodBeat.o(86154);
+      AppMethodBeat.o(155268);
       throw paramXWalkExternalExtension;
     }
-    paramString = (Method)((ReflectionHelper.MemberInfo)this.members.get(paramString)).accesser;
+    paramString = (Method)((MemberInfo)this.members.get(paramString)).accesser;
     if (!paramString.isAccessible()) {
       paramString.setAccessible(true);
     }
     paramXWalkExternalExtension = paramString.invoke(paramObject, getArgsFromJson(paramXWalkExternalExtension, paramInt, paramString, paramJSONArray));
-    AppMethodBeat.o(86154);
+    AppMethodBeat.o(155268);
     return paramXWalkExternalExtension;
   }
   
   boolean isBindingClass(Class<?> paramClass)
   {
-    AppMethodBeat.i(86142);
+    AppMethodBeat.i(155256);
     boolean bool = BindingObject.class.isAssignableFrom(paramClass);
-    AppMethodBeat.o(86142);
+    AppMethodBeat.o(155256);
     return bool;
   }
   
   boolean isEventSupported(String paramString)
   {
-    AppMethodBeat.i(86157);
+    AppMethodBeat.i(155271);
     if (this.eventList == null)
     {
-      AppMethodBeat.o(86157);
+      AppMethodBeat.o(155271);
       return false;
     }
     int i = 0;
@@ -571,49 +571,81 @@ class ReflectionHelper
     {
       if (this.eventList[i].equals(paramString))
       {
-        AppMethodBeat.o(86157);
+        AppMethodBeat.o(155271);
         return true;
       }
       i += 1;
     }
-    AppMethodBeat.o(86157);
+    AppMethodBeat.o(155271);
     return false;
   }
   
   boolean isInstance(Object paramObject)
   {
-    AppMethodBeat.i(86158);
+    AppMethodBeat.i(155272);
     boolean bool = this.myClass.isInstance(paramObject);
-    AppMethodBeat.o(86158);
+    AppMethodBeat.o(155272);
     return bool;
   }
   
   void setProperty(Object paramObject1, String paramString, Object paramObject2)
   {
-    AppMethodBeat.i(86156);
+    AppMethodBeat.i(155270);
     if (!hasProperty(paramString).booleanValue())
     {
       paramObject1 = new NoSuchFieldException("No such property:".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(86156);
+      AppMethodBeat.o(155270);
       throw paramObject1;
     }
     if ((!getMemberInfo(paramString).isStatic) && (!this.myClass.isInstance(paramObject1)))
     {
       paramObject1 = new InvocationTargetException(new Exception("Invalid target to set property:".concat(String.valueOf(paramString))));
-      AppMethodBeat.o(86156);
+      AppMethodBeat.o(155270);
       throw paramObject1;
     }
-    paramString = (Field)((ReflectionHelper.MemberInfo)this.members.get(paramString)).accesser;
+    paramString = (Field)((MemberInfo)this.members.get(paramString)).accesser;
     if (!paramString.isAccessible()) {
       paramString.setAccessible(true);
     }
     paramString.set(paramObject1, paramObject2);
-    AppMethodBeat.o(86156);
+    AppMethodBeat.o(155270);
+  }
+  
+  public class MemberInfo
+  {
+    AccessibleObject accesser;
+    boolean isEntryPoint;
+    boolean isStatic;
+    boolean isWritable;
+    String javaName;
+    String jsName;
+    Class<?> mainClass;
+    ReflectionHelper.MemberType type;
+    boolean withPromise;
+    String wrapArgs = "";
+    String wrapReturns = "";
+    
+    public MemberInfo() {}
+  }
+  
+  public static enum MemberType
+  {
+    static
+    {
+      AppMethodBeat.i(155253);
+      JS_METHOD = new MemberType("JS_METHOD", 0);
+      JS_PROPERTY = new MemberType("JS_PROPERTY", 1);
+      JS_CONSTRUCTOR = new MemberType("JS_CONSTRUCTOR", 2);
+      $VALUES = new MemberType[] { JS_METHOD, JS_PROPERTY, JS_CONSTRUCTOR };
+      AppMethodBeat.o(155253);
+    }
+    
+    private MemberType() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.extension.ReflectionHelper
  * JD-Core Version:    0.7.0.1
  */

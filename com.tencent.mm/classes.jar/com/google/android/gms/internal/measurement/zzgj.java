@@ -17,7 +17,7 @@ final class zzgj<V>
   zzgj(zzgg paramzzgg, Runnable paramRunnable, boolean paramBoolean, String paramString)
   {
     super(paramRunnable, null);
-    AppMethodBeat.i(69056);
+    AppMethodBeat.i(1579);
     Preconditions.checkNotNull(paramString);
     this.zzama = zzgg.zzjm().getAndIncrement();
     this.zzaly = paramString;
@@ -25,13 +25,13 @@ final class zzgj<V>
     if (this.zzama == 9223372036854775807L) {
       paramzzgg.zzge().zzim().log("Tasks index overflow");
     }
-    AppMethodBeat.o(69056);
+    AppMethodBeat.o(1579);
   }
   
   zzgj(Callable<V> paramCallable, boolean paramBoolean, String paramString)
   {
     super(paramBoolean);
-    AppMethodBeat.i(69055);
+    AppMethodBeat.i(1578);
     Object localObject;
     Preconditions.checkNotNull(localObject);
     this.zzama = zzgg.zzjm().getAndIncrement();
@@ -40,23 +40,23 @@ final class zzgj<V>
     if (this.zzama == 9223372036854775807L) {
       paramCallable.zzge().zzim().log("Tasks index overflow");
     }
-    AppMethodBeat.o(69055);
+    AppMethodBeat.o(1578);
   }
   
   protected final void setException(Throwable paramThrowable)
   {
-    AppMethodBeat.i(69057);
+    AppMethodBeat.i(1580);
     this.zzalz.zzge().zzim().zzg(this.zzaly, paramThrowable);
     if ((paramThrowable instanceof zzgh)) {
       Thread.getDefaultUncaughtExceptionHandler().uncaughtException(Thread.currentThread(), paramThrowable);
     }
     super.setException(paramThrowable);
-    AppMethodBeat.o(69057);
+    AppMethodBeat.o(1580);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzgj
  * JD-Core Version:    0.7.0.1
  */

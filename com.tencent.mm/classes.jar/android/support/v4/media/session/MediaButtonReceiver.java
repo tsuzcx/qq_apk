@@ -9,8 +9,11 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.pm.ServiceInfo;
 import android.os.Build.VERSION;
+import android.os.RemoteException;
 import android.support.v4.media.MediaBrowserCompat;
+import android.support.v4.media.MediaBrowserCompat.b;
 import android.support.v4.media.MediaBrowserCompat.d;
+import android.view.KeyEvent;
 import java.util.List;
 
 public class MediaButtonReceiver
@@ -57,18 +60,70 @@ public class MediaButtonReceiver
     {
       BroadcastReceiver.PendingResult localPendingResult = goAsync();
       paramContext = paramContext.getApplicationContext();
-      paramIntent = new MediaButtonReceiver.a(paramContext, paramIntent, localPendingResult);
+      paramIntent = new a(paramContext, paramIntent, localPendingResult);
       paramContext = new MediaBrowserCompat(paramContext, localComponentName, paramIntent);
-      paramIntent.CK = paramContext;
-      paramContext.Bo.connect();
+      paramIntent.JA = paramContext;
+      paramContext.HS.connect();
       return;
     }
     throw new IllegalStateException("Could not find any Service that handles android.intent.action.MEDIA_BUTTON or implements a media browser service.");
   }
+  
+  static final class a
+    extends MediaBrowserCompat.b
+  {
+    MediaBrowserCompat JA;
+    private final BroadcastReceiver.PendingResult Jz;
+    private final Context mContext;
+    private final Intent mIntent;
+    
+    a(Context paramContext, Intent paramIntent, BroadcastReceiver.PendingResult paramPendingResult)
+    {
+      this.mContext = paramContext;
+      this.mIntent = paramIntent;
+      this.Jz = paramPendingResult;
+    }
+    
+    private void finish()
+    {
+      this.JA.disconnect();
+      this.Jz.finish();
+    }
+    
+    public final void onConnected()
+    {
+      KeyEvent localKeyEvent;
+      try
+      {
+        MediaControllerCompat localMediaControllerCompat = new MediaControllerCompat(this.mContext, this.JA.HS.eh());
+        localKeyEvent = (KeyEvent)this.mIntent.getParcelableExtra("android.intent.extra.KEY_EVENT");
+        if (localKeyEvent == null) {
+          throw new IllegalArgumentException("KeyEvent may not be null");
+        }
+      }
+      catch (RemoteException localRemoteException) {}
+      for (;;)
+      {
+        finish();
+        return;
+        localRemoteException.JB.dispatchMediaButtonEvent(localKeyEvent);
+      }
+    }
+    
+    public final void onConnectionFailed()
+    {
+      finish();
+    }
+    
+    public final void onConnectionSuspended()
+    {
+      finish();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.media.session.MediaButtonReceiver
  * JD-Core Version:    0.7.0.1
  */

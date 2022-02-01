@@ -11,15 +11,15 @@ public final class p
 {
   public static o a(Context paramContext, View paramView, String[] paramArrayOfString, AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    AppMethodBeat.i(125300);
-    View localView = View.inflate(paramContext, 2130970428, null);
-    HorizontalListView localHorizontalListView = (HorizontalListView)localView.findViewById(2131826758);
+    AppMethodBeat.i(128472);
+    View localView = View.inflate(paramContext, 2131495101, null);
+    HorizontalListView localHorizontalListView = (HorizontalListView)localView.findViewById(2131305538);
     paramArrayOfString = new a(paramContext, paramArrayOfString);
     localHorizontalListView.setAdapter(paramArrayOfString);
     localHorizontalListView.setOnItemClickListener(paramOnItemClickListener);
-    localHorizontalListView.setBackgroundResource(2130840349);
+    localHorizontalListView.setBackgroundResource(2131234062);
     paramOnItemClickListener = new o(localView);
-    paramOnItemClickListener.setHeight(com.tencent.mm.cb.a.fromDPToPix(paramContext, 120));
+    paramOnItemClickListener.setHeight(com.tencent.mm.cd.a.fromDPToPix(paramContext, 120));
     int i = 0;
     int j = 0;
     while (i < paramArrayOfString.getCount())
@@ -29,15 +29,15 @@ public final class p
       j += localView.getMeasuredWidth();
       i += 1;
     }
-    paramOnItemClickListener.setWidth(com.tencent.mm.cb.a.fromDPToPix(paramContext, 20) + j);
-    paramOnItemClickListener.showAsDropDown(paramView, (paramView.getWidth() - (com.tencent.mm.cb.a.fromDPToPix(paramContext, 20) + j)) / 2, 0);
-    AppMethodBeat.o(125300);
+    paramOnItemClickListener.setWidth(com.tencent.mm.cd.a.fromDPToPix(paramContext, 20) + j);
+    paramOnItemClickListener.showAsDropDown(paramView, (paramView.getWidth() - (com.tencent.mm.cd.a.fromDPToPix(paramContext, 20) + j)) / 2, 0);
+    AppMethodBeat.o(128472);
     return paramOnItemClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.p
  * JD-Core Version:    0.7.0.1
  */

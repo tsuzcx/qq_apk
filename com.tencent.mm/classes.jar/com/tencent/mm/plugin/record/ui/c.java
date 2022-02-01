@@ -3,88 +3,88 @@ package com.tencent.mm.plugin.record.ui;
 import android.content.Context;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gf;
-import com.tencent.mm.g.a.gf.a;
-import com.tencent.mm.g.a.gf.b;
-import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.g.a.gn;
+import com.tencent.mm.g.a.gn.a;
+import com.tencent.mm.g.a.gn.b;
+import com.tencent.mm.protocal.protobuf.afy;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
   implements h.a
 {
   public c(Context paramContext)
   {
-    AppMethodBeat.i(24190);
-    gf localgf = new gf();
-    localgf.cuJ.opType = 3;
-    localgf.cuJ.context = paramContext;
-    a.ymk.l(localgf);
-    AppMethodBeat.o(24190);
+    AppMethodBeat.i(27831);
+    gn localgn = new gn();
+    localgn.djH.opType = 3;
+    localgn.djH.context = paramContext;
+    a.ESL.l(localgn);
+    AppMethodBeat.o(27831);
   }
   
   public final Bitmap a(h.a.b paramb)
   {
-    AppMethodBeat.i(24193);
-    gf localgf = new gf();
-    localgf.cuJ.opType = 2;
-    localgf.cuJ.cuQ = false;
-    if (paramb.cuO)
+    AppMethodBeat.i(27834);
+    gn localgn = new gn();
+    localgn.djH.opType = 2;
+    localgn.djH.djO = false;
+    if (paramb.djM)
     {
-      localgf.cuJ.cuL = paramb.cuL;
-      localgf.cuJ.cuO = paramb.cuO;
+      localgn.djH.djJ = paramb.djJ;
+      localgn.djH.djM = paramb.djM;
     }
     for (;;)
     {
-      a.ymk.l(localgf);
-      ab.d("MicroMsg.FavImageServiceProxy", "getSuitableBigImg favLocalId %s, dataId %s, retBmp %s, fromCache", new Object[] { Long.valueOf(paramb.pZy), paramb.cuL.mBq, localgf.cuK.cuR, Boolean.valueOf(localgf.cuJ.cuO) });
-      paramb = localgf.cuK.cuR;
-      AppMethodBeat.o(24193);
+      a.ESL.l(localgn);
+      ad.d("MicroMsg.FavImageServiceProxy", "getSuitableBigImg favLocalId %s, dataId %s, retBmp %s, fromCache", new Object[] { Long.valueOf(paramb.vbr), paramb.djJ.dkb, localgn.djI.djP, Boolean.valueOf(localgn.djH.djM) });
+      paramb = localgn.djI.djP;
+      AppMethodBeat.o(27834);
       return paramb;
-      localgf.cuJ.cuL = paramb.cuL;
-      localgf.cuJ.cpM = paramb.pZy;
-      localgf.cuJ.maxWidth = paramb.maxWidth;
-      localgf.cuJ.cuP = paramb.cuP;
+      localgn.djH.djJ = paramb.djJ;
+      localgn.djH.deL = paramb.vbr;
+      localgn.djH.maxWidth = paramb.maxWidth;
+      localgn.djH.djN = paramb.djN;
     }
   }
   
   public final Bitmap a(h.a.c paramc)
   {
-    AppMethodBeat.i(24192);
-    gf localgf = new gf();
-    localgf.cuJ.opType = 0;
-    localgf.cuJ.cuL = paramc.cuL;
-    localgf.cuJ.cpM = paramc.pZy;
-    a.ymk.l(localgf);
-    ab.d("MicroMsg.FavImageServiceProxy", "getThumb favLocalId %s, retBmp %s", new Object[] { Long.valueOf(paramc.pZy), localgf.cuK.cuR });
-    paramc = localgf.cuK.cuR;
-    AppMethodBeat.o(24192);
+    AppMethodBeat.i(27833);
+    gn localgn = new gn();
+    localgn.djH.opType = 0;
+    localgn.djH.djJ = paramc.djJ;
+    localgn.djH.deL = paramc.vbr;
+    a.ESL.l(localgn);
+    ad.d("MicroMsg.FavImageServiceProxy", "getThumb favLocalId %s, retBmp %s", new Object[] { Long.valueOf(paramc.vbr), localgn.djI.djP });
+    paramc = localgn.djI.djP;
+    AppMethodBeat.o(27833);
     return paramc;
   }
   
   public final void a(h.a.a parama)
   {
-    AppMethodBeat.i(24191);
-    ab.d("MicroMsg.FavImageServiceProxy", "attachThumb favLocalId %s", new Object[] { Long.valueOf(parama.pZy) });
-    gf localgf = new gf();
-    localgf.cuJ.opType = 1;
-    localgf.cuJ.cuM = parama.cuM;
-    localgf.cuJ.cuL = parama.cuL;
-    localgf.cuJ.cpM = parama.pZy;
-    localgf.cuJ.cuN = parama.cuN;
-    localgf.cuJ.width = parama.width;
-    localgf.cuJ.height = parama.height;
-    a.ymk.l(localgf);
-    AppMethodBeat.o(24191);
+    AppMethodBeat.i(27832);
+    ad.d("MicroMsg.FavImageServiceProxy", "attachThumb favLocalId %s", new Object[] { Long.valueOf(parama.vbr) });
+    gn localgn = new gn();
+    localgn.djH.opType = 1;
+    localgn.djH.djK = parama.djK;
+    localgn.djH.djJ = parama.djJ;
+    localgn.djH.deL = parama.vbr;
+    localgn.djH.djL = parama.djL;
+    localgn.djH.width = parama.width;
+    localgn.djH.height = parama.height;
+    a.ESL.l(localgn);
+    AppMethodBeat.o(27832);
   }
   
-  public final void cfT()
+  public final void dgj()
   {
-    AppMethodBeat.i(24194);
-    gf localgf = new gf();
-    localgf.cuJ.opType = 4;
-    a.ymk.l(localgf);
-    AppMethodBeat.o(24194);
+    AppMethodBeat.i(27835);
+    gn localgn = new gn();
+    localgn.djH.opType = 4;
+    a.ESL.l(localgn);
+    AppMethodBeat.o(27835);
   }
 }
 

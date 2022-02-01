@@ -13,33 +13,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class CycleProgressView
   extends View
 {
-  private float nkS;
   private Paint paint;
   private int progress;
+  private float rQO;
   
   public CycleProgressView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(151794);
+    AppMethodBeat.i(40885);
     this.progress = 0;
     init();
-    AppMethodBeat.o(151794);
+    AppMethodBeat.o(40885);
   }
   
   public CycleProgressView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(151795);
+    AppMethodBeat.i(40886);
     this.progress = 0;
     init();
-    AppMethodBeat.o(151795);
+    AppMethodBeat.o(40886);
   }
   
   private void init()
   {
-    AppMethodBeat.i(151796);
+    AppMethodBeat.i(40887);
     this.paint = new Paint();
-    AppMethodBeat.o(151796);
+    AppMethodBeat.o(40887);
   }
   
   public int getProgress()
@@ -49,38 +49,38 @@ public class CycleProgressView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(151797);
+    AppMethodBeat.i(40888);
     super.onDraw(paramCanvas);
     int i = getWidth() / 2;
-    if (this.nkS == 0.0F) {
-      this.nkS = ((int)(getWidth() / 2 * 0.167D));
+    if (this.rQO == 0.0F) {
+      this.rQO = ((int)(getWidth() / 2 * 0.167D));
     }
-    int j = (int)(i - this.nkS / 2.0F);
-    this.paint.setStrokeWidth(this.nkS);
-    this.paint.setColor(b.m(getContext(), 2131689482));
+    int j = (int)(i - this.rQO / 2.0F);
+    this.paint.setStrokeWidth(this.rQO);
+    this.paint.setColor(b.n(getContext(), 2131099656));
     this.paint.setAntiAlias(true);
     this.paint.setStyle(Paint.Style.STROKE);
     paramCanvas.drawCircle(i, i, j, this.paint);
-    this.paint.setStrokeWidth(this.nkS);
-    this.paint.setColor(b.m(getContext(), 2131690709));
+    this.paint.setStrokeWidth(this.rQO);
+    this.paint.setColor(b.n(getContext(), 2131101179));
     paramCanvas.drawArc(new RectF(i - j, i - j, i + j, i + j), -90.0F, this.progress * 360 / 100, false, this.paint);
     this.paint.setStrokeWidth(0.0F);
     this.paint.setStyle(Paint.Style.FILL);
-    AppMethodBeat.o(151797);
+    AppMethodBeat.o(40888);
   }
   
   public void setProgress(int paramInt)
   {
-    AppMethodBeat.i(151798);
+    AppMethodBeat.i(40889);
     this.progress = Math.max(0, paramInt);
     this.progress = Math.min(paramInt, 100);
     invalidate();
-    AppMethodBeat.o(151798);
+    AppMethodBeat.o(40889);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.CycleProgressView
  * JD-Core Version:    0.7.0.1
  */

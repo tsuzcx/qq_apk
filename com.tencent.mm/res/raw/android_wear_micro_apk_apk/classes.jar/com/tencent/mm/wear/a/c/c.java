@@ -10,46 +10,41 @@ import java.util.Date;
 public final class c
   implements e
 {
-  private f aiZ;
-  private SimpleDateFormat aja;
+  private f amB;
+  private SimpleDateFormat amC;
   
   public c()
   {
-    File localFile = new File(h.mk(), "log.log");
+    File localFile = new File(h.mW(), "log.log");
     if (localFile.length() > 5242880L) {
       localFile.delete();
     }
-    this.aiZ = new f(localFile.getAbsolutePath());
-    this.aja = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+    this.amB = new f(localFile.getAbsolutePath());
+    this.amC = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
   }
   
   private String b(String paramString1, String paramString2, String paramString3)
   {
-    String str = this.aja.format(new Date());
+    String str = this.amC.format(new Date());
     return String.format("[%s][%s][%d][%d][%s]: %s\n​​", new Object[] { paramString1, paramString2, Integer.valueOf(Process.myPid()), Long.valueOf(Thread.currentThread().getId()), str, paramString3 });
   }
   
   public final void a(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    b(b("E", paramString1, String.format(paramString2, paramVarArgs)), false);
+    a(b("E", paramString1, String.format(paramString2, paramVarArgs)), false);
   }
   
   public final void a(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     paramString2 = String.format(paramString2, paramVarArgs);
-    b(b("E", paramString1, paramString2 + "  " + Log.getStackTraceString(paramThrowable)), false);
+    a(b("E", paramString1, paramString2 + "  " + Log.getStackTraceString(paramThrowable)), false);
   }
   
-  public final void b(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    b(b("W", paramString1, String.format(paramString2, paramVarArgs)), false);
-  }
-  
-  public final void b(String paramString, boolean paramBoolean)
+  public final void a(String paramString, boolean paramBoolean)
   {
     try
     {
-      this.aiZ.a(paramString.getBytes(), paramBoolean);
+      this.amB.a(paramString.getBytes(), paramBoolean);
       return;
     }
     finally
@@ -59,19 +54,24 @@ public final class c
     }
   }
   
+  public final void b(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    a(b("W", paramString1, String.format(paramString2, paramVarArgs)), false);
+  }
+  
   public final void c(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    b(b("I", paramString1, String.format(paramString2, paramVarArgs)), false);
+    a(b("I", paramString1, String.format(paramString2, paramVarArgs)), false);
   }
   
   public final void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    b(b("V", paramString1, String.format(paramString2, paramVarArgs)), false);
+    a(b("D", paramString1, String.format(paramString2, paramVarArgs)), false);
   }
   
   public final void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    b(b("D", paramString1, String.format(paramString2, paramVarArgs)), false);
+    a(b("V", paramString1, String.format(paramString2, paramVarArgs)), false);
   }
 }
 

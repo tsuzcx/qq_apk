@@ -1,167 +1,133 @@
 package com.tencent.mm.plugin.music.f.a;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.sdk.g.b;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.qqmusic.mediaplayer.AudioPlayerConfigure;
+import com.tencent.qqmusic.mediaplayer.ISoLibraryLoader;
 import com.tencent.qqmusic.mediaplayer.NativeLibs;
-import java.util.HashMap;
 
 public class a
 {
-  private static boolean are;
-  private static c paT;
-  private static boolean paU;
+  private static boolean aLQ;
+  private static c tYg;
+  private static boolean tYh;
   
   static
   {
-    AppMethodBeat.i(137648);
-    paT = new a((byte)0);
-    paU = false;
-    are = false;
-    AppMethodBeat.o(137648);
+    AppMethodBeat.i(137400);
+    tYg = new a.a((byte)0);
+    tYh = false;
+    aLQ = false;
+    AppMethodBeat.o(137400);
   }
   
   public static void a(c paramc)
   {
-    paT = paramc;
+    tYg = paramc;
   }
   
-  public static void bWg()
+  public static void cVI()
   {
-    AppMethodBeat.i(137646);
-    ab.i("MicroMsg.Audio.AudioPlayerUtils", "configQQMusicSdkConfig");
+    AppMethodBeat.i(137398);
+    ad.i("MicroMsg.Audio.AudioPlayerUtils", "configQQMusicSdkConfig");
     AudioPlayerConfigure.setLog(new a.1());
-    AudioPlayerConfigure.setSoLibraryLoader(new a.2());
-    if ((!paU) && (!are))
+    AudioPlayerConfigure.setSoLibraryLoader(new ISoLibraryLoader()
     {
-      are = true;
-      com.tencent.mm.sdk.g.d.post(new a.3(), "audio load NLog");
+      public final String findLibPath(String paramAnonymousString)
+      {
+        AppMethodBeat.i(137392);
+        if (a.cVK() != null)
+        {
+          paramAnonymousString = a.cVK().findLibPath(paramAnonymousString);
+          AppMethodBeat.o(137392);
+          return paramAnonymousString;
+        }
+        AppMethodBeat.o(137392);
+        return null;
+      }
+      
+      public final boolean load(String paramAnonymousString)
+      {
+        AppMethodBeat.i(137391);
+        if (a.cVK() != null)
+        {
+          boolean bool = a.cVK().load(paramAnonymousString);
+          AppMethodBeat.o(137391);
+          return bool;
+        }
+        AppMethodBeat.o(137391);
+        return false;
+      }
+    });
+    if ((!tYh) && (!aLQ))
+    {
+      aLQ = true;
+      b.c(new a.3(), "audio load NLog");
     }
-    AppMethodBeat.o(137646);
+    AppMethodBeat.o(137398);
   }
   
-  public static boolean bWh()
+  public static boolean cVJ()
   {
     boolean bool1 = false;
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(137647);
-        if (paU)
+        AppMethodBeat.i(137399);
+        if (tYh)
         {
           bool1 = true;
-          AppMethodBeat.o(137647);
+          AppMethodBeat.o(137399);
           return bool1;
         }
-        if (paT == null)
+        if (tYg == null)
         {
-          AppMethodBeat.o(137647);
+          AppMethodBeat.o(137399);
           continue;
         }
-        paT.load(NativeLibs.nlog.getName());
+        tYg.load(NativeLibs.nlog.getName());
       }
       finally {}
-      boolean bool2 = paT.VA(NativeLibs.nlog.getName());
+      boolean bool2 = tYg.aiN(NativeLibs.nlog.getName());
       if (bool2)
       {
         try
         {
-          paU = AudioPlayerConfigure.enableNativeLog(null);
-          if (paU) {
-            ab.i("MicroMsg.Audio.AudioPlayerUtils", "enableNativeLog success");
+          tYh = AudioPlayerConfigure.enableNativeLog(null);
+          if (tYh) {
+            ad.i("MicroMsg.Audio.AudioPlayerUtils", "enableNativeLog success");
           }
-          bool1 = paU;
-          AppMethodBeat.o(137647);
+          bool1 = tYh;
+          AppMethodBeat.o(137399);
         }
         catch (Throwable localThrowable)
         {
           for (;;)
           {
-            ab.printErrStackTrace("MicroMsg.Audio.AudioPlayerUtils", localThrowable, "checkNLogLoad", new Object[0]);
-            if (!com.tencent.mm.compatible.util.d.fw(20)) {
+            ad.printErrStackTrace("MicroMsg.Audio.AudioPlayerUtils", localThrowable, "checkNLogLoad", new Object[0]);
+            if (!d.lg(20)) {
               break;
             }
-            paU = AudioPlayerConfigure.enableNativeLog(null);
+            tYh = AudioPlayerConfigure.enableNativeLog(null);
           }
-          AppMethodBeat.o(137647);
+          AppMethodBeat.o(137399);
           throw localThrowable;
         }
       }
       else
       {
-        ab.i("MicroMsg.Audio.AudioPlayerUtils", "enableNativeLog fail");
-        AppMethodBeat.o(137647);
+        ad.i("MicroMsg.Audio.AudioPlayerUtils", "enableNativeLog fail");
+        AppMethodBeat.o(137399);
       }
-    }
-  }
-  
-  static final class a
-    implements c
-  {
-    private HashMap<String, Boolean> paV;
-    
-    private a()
-    {
-      AppMethodBeat.i(137642);
-      this.paV = new HashMap();
-      AppMethodBeat.o(137642);
-    }
-    
-    public final boolean VA(String paramString)
-    {
-      AppMethodBeat.i(137645);
-      if (this.paV.containsKey(paramString))
-      {
-        AppMethodBeat.o(137645);
-        return true;
-      }
-      AppMethodBeat.o(137645);
-      return false;
-    }
-    
-    public final String findLibPath(String paramString)
-    {
-      AppMethodBeat.i(137644);
-      ab.i("MicroMsg.Audio.AudioPlayerUtils", "findLibPath %s", new Object[] { paramString });
-      String str = paramString;
-      if (!paramString.startsWith("lib")) {
-        str = "lib".concat(String.valueOf(paramString));
-      }
-      paramString = str;
-      if (!str.endsWith(".so")) {
-        paramString = str + ".so";
-      }
-      AppMethodBeat.o(137644);
-      return paramString;
-    }
-    
-    public final boolean load(String paramString)
-    {
-      AppMethodBeat.i(137643);
-      if (TextUtils.isEmpty(paramString))
-      {
-        ab.e("MicroMsg.Audio.AudioPlayerUtils", "LoadLibrary lib_name is null");
-        AppMethodBeat.o(137643);
-        return false;
-      }
-      if ((this.paV.containsKey(paramString)) && (((Boolean)this.paV.get(paramString)).booleanValue()))
-      {
-        ab.e("MicroMsg.Audio.AudioPlayerUtils", "LoadLibrary lib_name %s is loaded", new Object[] { paramString });
-        AppMethodBeat.o(137643);
-        return true;
-      }
-      this.paV.put(paramString, Boolean.TRUE);
-      System.loadLibrary(paramString);
-      AppMethodBeat.o(137643);
-      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.a.a
  * JD-Core Version:    0.7.0.1
  */

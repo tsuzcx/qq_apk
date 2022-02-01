@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/h6" android:id="@id/nv" android:background="@null" android:layout_width="wrap_content" style="@style/mo" />
+    <TextView android:gravity="center" android:id="@id/bs" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/l6" />
 </LinearLayout>

@@ -4,67 +4,67 @@ import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 final class b
 {
-  static boolean L(Intent paramIntent)
+  static boolean P(Intent paramIntent)
   {
-    AppMethodBeat.i(133269);
+    AppMethodBeat.i(48988);
     if (paramIntent == null)
     {
-      AppMethodBeat.o(133269);
+      AppMethodBeat.o(48988);
       return false;
     }
-    String str1 = paramIntent.getStringExtra(b.a.iQI.tX());
-    int j = paramIntent.getIntExtra(b.a.iQJ.tX(), 0);
-    String str2 = paramIntent.getStringExtra(b.a.iQK.tX());
-    String str3 = paramIntent.getStringExtra(b.a.iQL.tX());
-    String str4 = paramIntent.getStringExtra(b.a.iQM.tX());
-    b.a[] arrayOfa = b.a.values();
+    String str1 = paramIntent.getStringExtra(a.lFi.AL());
+    int j = paramIntent.getIntExtra(a.lFj.AL(), 0);
+    String str2 = paramIntent.getStringExtra(a.lFk.AL());
+    String str3 = paramIntent.getStringExtra(a.lFl.AL());
+    String str4 = paramIntent.getStringExtra(a.lFm.AL());
+    a[] arrayOfa = a.values();
     int k = arrayOfa.length;
     int i = 0;
     while (i < k)
     {
-      paramIntent.removeExtra(arrayOfa[i].tX());
+      paramIntent.removeExtra(arrayOfa[i].AL());
       i += 1;
     }
-    if ((bo.isNullOrNil(str1)) || (bo.isNullOrNil(str2)))
+    if ((bt.isNullOrNil(str1)) || (bt.isNullOrNil(str2)))
     {
-      AppMethodBeat.o(133269);
+      AppMethodBeat.o(48988);
       return false;
     }
     a(str1, j, str2, str3, str4);
-    AppMethodBeat.o(133269);
+    AppMethodBeat.o(48988);
     return true;
   }
   
   static void a(Intent paramIntent, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(133271);
+    AppMethodBeat.i(48990);
     if (paramIntent == null)
     {
-      AppMethodBeat.o(133271);
+      AppMethodBeat.o(48990);
       return;
     }
-    paramIntent.putExtra(b.a.iQI.tX(), paramString1);
-    paramIntent.putExtra(b.a.iQJ.tX(), paramInt);
-    paramIntent.putExtra(b.a.iQK.tX(), paramString2);
-    paramIntent.putExtra(b.a.iQL.tX(), paramString3);
-    paramIntent.putExtra(b.a.iQM.tX(), paramString4);
-    AppMethodBeat.o(133271);
+    paramIntent.putExtra(a.lFi.AL(), paramString1);
+    paramIntent.putExtra(a.lFj.AL(), paramInt);
+    paramIntent.putExtra(a.lFk.AL(), paramString2);
+    paramIntent.putExtra(a.lFl.AL(), paramString3);
+    paramIntent.putExtra(a.lFm.AL(), paramString4);
+    AppMethodBeat.o(48990);
   }
   
   private static void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(133272);
-    if (!g.RG())
+    AppMethodBeat.i(48991);
+    if (!g.afw())
     {
-      AppMethodBeat.o(133272);
+      AppMethodBeat.o(48991);
       return;
     }
     JSONArray localJSONArray = new JSONArray();
@@ -72,114 +72,142 @@ final class b
     localJSONArray.put(String.valueOf(paramInt));
     localJSONArray.put(paramString2);
     localJSONArray.put(paramString3);
-    localJSONArray.put(bo.nullAsNil(paramString4));
+    localJSONArray.put(bt.nullAsNil(paramString4));
     paramString1 = localJSONArray.toString();
     try
     {
-      g.RL().Ru().set(ac.a.yDf, paramString1);
+      g.afB().afk().set(ae.a.FlB, paramString1);
       return;
     }
     finally
     {
-      AppMethodBeat.o(133272);
+      AppMethodBeat.o(48991);
     }
   }
   
   static boolean a(AppBrandStickyBannerLogic.OperateTask paramOperateTask)
   {
-    AppMethodBeat.i(133270);
-    if ((paramOperateTask == null) || (!g.RG()))
+    AppMethodBeat.i(48989);
+    if ((paramOperateTask == null) || (!g.afw()))
     {
-      AppMethodBeat.o(133270);
+      AppMethodBeat.o(48989);
       return false;
     }
-    BannerModel localBannerModel = BannerModel.aMQ();
+    BannerModel localBannerModel = BannerModel.bpf();
     if (localBannerModel == null)
     {
-      AppMethodBeat.o(133270);
+      AppMethodBeat.o(48989);
       return false;
     }
-    if ((localBannerModel.appId.equals(paramOperateTask.hSW)) && (localBannerModel.hcr == paramOperateTask.iRe))
+    if ((localBannerModel.appId.equals(paramOperateTask.lFE)) && (localBannerModel.gXn == paramOperateTask.lFF))
     {
-      a(localBannerModel.appId, localBannerModel.hcr, localBannerModel.appName, localBannerModel.hcN, paramOperateTask.iRf);
-      AppMethodBeat.o(133270);
+      a(localBannerModel.appId, localBannerModel.gXn, localBannerModel.appName, localBannerModel.iVP, paramOperateTask.lFG);
+      AppMethodBeat.o(48989);
       return true;
     }
-    AppMethodBeat.o(133270);
+    AppMethodBeat.o(48989);
     return false;
   }
   
-  private static Object[] aMI()
+  private static Object[] boX()
   {
-    AppMethodBeat.i(133273);
-    if (!g.RG())
+    AppMethodBeat.i(48992);
+    if (!g.afw())
     {
-      AppMethodBeat.o(133273);
+      AppMethodBeat.o(48992);
       return null;
     }
     try
     {
-      String str1 = (String)g.RL().Ru().get(ac.a.yDf, "");
-      if (bo.isNullOrNil(str1))
+      String str1 = (String)g.afB().afk().get(ae.a.FlB, "");
+      if (bt.isNullOrNil(str1))
       {
-        AppMethodBeat.o(133273);
+        AppMethodBeat.o(48992);
         return null;
       }
     }
     finally
     {
-      AppMethodBeat.o(133273);
+      AppMethodBeat.o(48992);
     }
     try
     {
       JSONArray localJSONArray = new JSONArray(str2);
       int i = localJSONArray.length();
-      int j = b.a.iQN;
+      int j = a.lFn;
       if (i != j)
       {
-        AppMethodBeat.o(133273);
+        AppMethodBeat.o(48992);
         return null;
       }
-      Object[] arrayOfObject = new Object[b.a.iQN];
+      Object[] arrayOfObject = new Object[a.lFn];
       i = 0;
-      while (i < b.a.iQN)
+      while (i < a.lFn)
       {
         arrayOfObject[i] = localJSONArray.optString(i, "");
         i += 1;
       }
-      arrayOfObject[b.a.iQJ.ordinal()] = Integer.valueOf(bo.getInt((String)arrayOfObject[b.a.iQJ.ordinal()], 0));
-      AppMethodBeat.o(133273);
+      arrayOfObject[a.lFj.ordinal()] = Integer.valueOf(bt.getInt((String)arrayOfObject[a.lFj.ordinal()], 0));
+      AppMethodBeat.o(48992);
       return arrayOfObject;
     }
     catch (JSONException localJSONException)
     {
-      AppMethodBeat.o(133273);
+      AppMethodBeat.o(48992);
     }
     return null;
   }
   
-  static BannerModel aMJ()
+  static BannerModel boY()
   {
-    AppMethodBeat.i(133274);
-    Object[] arrayOfObject = aMI();
+    AppMethodBeat.i(48993);
+    Object[] arrayOfObject = boX();
     if (arrayOfObject == null)
     {
-      AppMethodBeat.o(133274);
+      AppMethodBeat.o(48993);
       return null;
     }
     BannerModel localBannerModel = new BannerModel();
-    localBannerModel.appId = ((String)arrayOfObject[b.a.iQI.ordinal()]);
-    localBannerModel.hcr = ((Integer)arrayOfObject[b.a.iQJ.ordinal()]).intValue();
-    localBannerModel.appName = ((String)arrayOfObject[b.a.iQK.ordinal()]);
-    localBannerModel.hcN = ((String)arrayOfObject[b.a.iQL.ordinal()]);
-    localBannerModel.iRl = ((String)arrayOfObject[b.a.iQM.ordinal()]);
-    AppMethodBeat.o(133274);
+    localBannerModel.appId = ((String)arrayOfObject[a.lFi.ordinal()]);
+    localBannerModel.gXn = ((Integer)arrayOfObject[a.lFj.ordinal()]).intValue();
+    localBannerModel.appName = ((String)arrayOfObject[a.lFk.ordinal()]);
+    localBannerModel.iVP = ((String)arrayOfObject[a.lFl.ordinal()]);
+    localBannerModel.lFM = ((String)arrayOfObject[a.lFm.ordinal()]);
+    AppMethodBeat.o(48993);
     return localBannerModel;
+  }
+  
+  static enum a
+  {
+    static final int lFn;
+    
+    static
+    {
+      AppMethodBeat.i(48987);
+      lFi = new a("appId", 0);
+      lFj = new a("versionType", 1);
+      lFk = new a("appName", 2);
+      lFl = new a("iconURL", 3);
+      lFm = new a("customText", 4);
+      lFo = new a[] { lFi, lFj, lFk, lFl, lFm };
+      lFn = values().length;
+      AppMethodBeat.o(48987);
+    }
+    
+    private a() {}
+    
+    public final String AL()
+    {
+      AppMethodBeat.i(48986);
+      String str = "appbrand_top_banner_in_chatting_extra_key_" + name();
+      AppMethodBeat.o(48986);
+      return str;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.banner.b
  * JD-Core Version:    0.7.0.1
  */

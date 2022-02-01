@@ -31,7 +31,7 @@ public class PlayerConfigManager
   
   private PlayerConfigManager()
   {
-    AppMethodBeat.i(104500);
+    AppMethodBeat.i(76713);
     this.mBufRatio = 4;
     this.count = 0;
     this.mStartTime = 0L;
@@ -44,7 +44,7 @@ public class PlayerConfigManager
     this.mBufRatio = 4;
     this.count = 0;
     this.mStartTime = 0L;
-    AppMethodBeat.o(104500);
+    AppMethodBeat.o(76713);
   }
   
   private boolean add()
@@ -56,12 +56,12 @@ public class PlayerConfigManager
   {
     try
     {
-      AppMethodBeat.i(104501);
+      AppMethodBeat.i(76714);
       if (mInstance == null) {
         mInstance = new PlayerConfigManager();
       }
       PlayerConfigManager localPlayerConfigManager = mInstance;
-      AppMethodBeat.o(104501);
+      AppMethodBeat.o(76714);
       return localPlayerConfigManager;
     }
     finally {}
@@ -74,10 +74,10 @@ public class PlayerConfigManager
   
   public void calDTSCostEnd()
   {
-    AppMethodBeat.i(104504);
+    AppMethodBeat.i(76717);
     if (this.mBufRatio == 8)
     {
-      AppMethodBeat.o(104504);
+      AppMethodBeat.o(76717);
       return;
     }
     if (System.currentTimeMillis() - this.mStartTime > 40L)
@@ -89,24 +89,24 @@ public class PlayerConfigManager
         this.count = 0;
       }
     }
-    AppMethodBeat.o(104504);
+    AppMethodBeat.o(76717);
   }
   
   public void calDTSCostStart()
   {
-    AppMethodBeat.i(104503);
+    AppMethodBeat.i(76716);
     if (this.mBufRatio == 8)
     {
-      AppMethodBeat.o(104503);
+      AppMethodBeat.o(76716);
       return;
     }
     this.mStartTime = System.currentTimeMillis();
-    AppMethodBeat.o(104503);
+    AppMethodBeat.o(76716);
   }
   
   public void changeDecodeThreadPriority()
   {
-    AppMethodBeat.i(104507);
+    AppMethodBeat.i(76720);
     if (this.mCommonPlayerRef != null)
     {
       CorePlayer localCorePlayer = (CorePlayer)this.mCommonPlayerRef.get();
@@ -114,13 +114,13 @@ public class PlayerConfigManager
         localCorePlayer.changePlayThreadPriorityImmediately();
       }
     }
-    AppMethodBeat.o(104507);
+    AppMethodBeat.o(76720);
   }
   
   public void changeDecodeThreadPriorityIfNeed()
   {
     int j = 0;
-    AppMethodBeat.i(104508);
+    AppMethodBeat.i(76721);
     for (;;)
     {
       int i;
@@ -136,7 +136,7 @@ public class PlayerConfigManager
               break label168;
             }
             Logger.i("PlayerConfigManager", "changeDecodeThreadPriorityIfNeed don't change Priority mCurrPriorityIndex = " + this.THREAD_PRIORITY[this.mCurrPriorityIndex]);
-            AppMethodBeat.o(104508);
+            AppMethodBeat.o(76721);
             return;
           }
           i = k;
@@ -149,13 +149,13 @@ public class PlayerConfigManager
           this.mAddPriority = 0;
         }
         Process.setThreadPriority(0);
-        AppMethodBeat.o(104508);
+        AppMethodBeat.o(76721);
         return;
       }
       catch (Throwable localThrowable)
       {
         Logger.e("PlayerConfigManager", localThrowable);
-        AppMethodBeat.o(104508);
+        AppMethodBeat.o(76721);
         return;
       }
       if (i >= this.THREAD_PRIORITY.length)
@@ -176,7 +176,7 @@ public class PlayerConfigManager
   
   public int getBufRatio()
   {
-    AppMethodBeat.i(104502);
+    AppMethodBeat.i(76715);
     if (this.mBufRatio <= 1) {
       this.mBufRatio = 4;
     }
@@ -185,7 +185,7 @@ public class PlayerConfigManager
       Logger.i("PlayerConfigManager", "getBufRatio = " + this.mBufRatio);
       this.count = 0;
       int i = this.mBufRatio;
-      AppMethodBeat.o(104502);
+      AppMethodBeat.o(76715);
       return i;
       if (this.mBufRatio > 8) {
         this.mBufRatio = 8;
@@ -195,20 +195,20 @@ public class PlayerConfigManager
   
   public boolean isSingleCpuOrScreenOff()
   {
-    AppMethodBeat.i(104505);
+    AppMethodBeat.i(76718);
     this.mProcessorNumber = Runtime.getRuntime().availableProcessors();
     if (this.mProcessorNumber <= 1)
     {
-      AppMethodBeat.o(104505);
+      AppMethodBeat.o(76718);
       return true;
     }
-    AppMethodBeat.o(104505);
+    AppMethodBeat.o(76718);
     return false;
   }
   
   public void setCommonPlayerRef(CorePlayer paramCorePlayer)
   {
-    AppMethodBeat.i(104506);
+    AppMethodBeat.i(76719);
     if (paramCorePlayer != null)
     {
       this.mCommonPlayerRef = new WeakReference(paramCorePlayer);
@@ -221,14 +221,14 @@ public class PlayerConfigManager
         Logger.i("PlayerConfigManager", "setCommonPlayerRef info = " + paramCorePlayer + ",mPlaySpeed = " + this.mPlaySpeed);
       }
     }
-    AppMethodBeat.o(104506);
+    AppMethodBeat.o(76719);
   }
   
   public void updateDecodeSpeed(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.PlayerConfigManager
  * JD-Core Version:    0.7.0.1
  */

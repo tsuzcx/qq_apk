@@ -21,32 +21,32 @@ public class LegacyNativeDialogParameters
 {
   private static Bundle create(ShareLinkContent paramShareLinkContent, boolean paramBoolean)
   {
-    AppMethodBeat.i(96976);
+    AppMethodBeat.i(8000);
     Bundle localBundle = createBaseParameters(paramShareLinkContent, paramBoolean);
     Utility.putNonEmptyString(localBundle, "com.facebook.platform.extra.TITLE", paramShareLinkContent.getContentTitle());
     Utility.putNonEmptyString(localBundle, "com.facebook.platform.extra.DESCRIPTION", paramShareLinkContent.getContentDescription());
     Utility.putUri(localBundle, "com.facebook.platform.extra.IMAGE", paramShareLinkContent.getImageUrl());
-    AppMethodBeat.o(96976);
+    AppMethodBeat.o(8000);
     return localBundle;
   }
   
   private static Bundle create(ShareOpenGraphContent paramShareOpenGraphContent, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(96978);
+    AppMethodBeat.i(8002);
     Bundle localBundle = createBaseParameters(paramShareOpenGraphContent, paramBoolean);
     Utility.putNonEmptyString(localBundle, "com.facebook.platform.extra.PREVIEW_PROPERTY_NAME", paramShareOpenGraphContent.getPreviewPropertyName());
     Utility.putNonEmptyString(localBundle, "com.facebook.platform.extra.ACTION_TYPE", paramShareOpenGraphContent.getAction().getActionType());
     Utility.putNonEmptyString(localBundle, "com.facebook.platform.extra.ACTION", paramJSONObject.toString());
-    AppMethodBeat.o(96978);
+    AppMethodBeat.o(8002);
     return localBundle;
   }
   
   private static Bundle create(SharePhotoContent paramSharePhotoContent, List<String> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(96977);
+    AppMethodBeat.i(8001);
     paramSharePhotoContent = createBaseParameters(paramSharePhotoContent, paramBoolean);
     paramSharePhotoContent.putStringArrayList("com.facebook.platform.extra.PHOTOS", new ArrayList(paramList));
-    AppMethodBeat.o(96977);
+    AppMethodBeat.o(8001);
     return paramSharePhotoContent;
   }
   
@@ -57,7 +57,7 @@ public class LegacyNativeDialogParameters
   
   public static Bundle create(UUID paramUUID, ShareContent paramShareContent, boolean paramBoolean)
   {
-    AppMethodBeat.i(96975);
+    AppMethodBeat.i(7999);
     Validate.notNull(paramShareContent, "shareContent");
     Validate.notNull(paramUUID, "callId");
     Bundle localBundle = null;
@@ -66,7 +66,7 @@ public class LegacyNativeDialogParameters
     }
     for (;;)
     {
-      AppMethodBeat.o(96975);
+      AppMethodBeat.o(7999);
       return localBundle;
       if ((paramShareContent instanceof SharePhotoContent))
       {
@@ -90,7 +90,7 @@ public class LegacyNativeDialogParameters
       catch (JSONException paramUUID)
       {
         paramUUID = new FacebookException("Unable to create a JSON Object from the provided ShareOpenGraphContent: " + paramUUID.getMessage());
-        AppMethodBeat.o(96975);
+        AppMethodBeat.o(7999);
         throw paramUUID;
       }
     }
@@ -98,7 +98,7 @@ public class LegacyNativeDialogParameters
   
   private static Bundle createBaseParameters(ShareContent paramShareContent, boolean paramBoolean)
   {
-    AppMethodBeat.i(96979);
+    AppMethodBeat.i(8003);
     Bundle localBundle = new Bundle();
     Utility.putUri(localBundle, "com.facebook.platform.extra.LINK", paramShareContent.getContentUrl());
     Utility.putNonEmptyString(localBundle, "com.facebook.platform.extra.PLACE", paramShareContent.getPlaceId());
@@ -108,13 +108,13 @@ public class LegacyNativeDialogParameters
     if (!Utility.isNullOrEmpty(paramShareContent)) {
       localBundle.putStringArrayList("com.facebook.platform.extra.FRIENDS", new ArrayList(paramShareContent));
     }
-    AppMethodBeat.o(96979);
+    AppMethodBeat.o(8003);
     return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.share.internal.LegacyNativeDialogParameters
  * JD-Core Version:    0.7.0.1
  */

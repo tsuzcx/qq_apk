@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.math.BigInteger;
 
 public final class c
 {
-  public static String aeA(String paramString)
+  public static String asU(String paramString)
   {
-    AppMethodBeat.i(50970);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(127140);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(50970);
+      AppMethodBeat.o(127140);
       return "";
     }
-    paramString = new BigInteger(Long.toBinaryString(bo.getLong(paramString, 0L)), 2).toString();
-    AppMethodBeat.o(50970);
+    paramString = new BigInteger(Long.toBinaryString(bt.getLong(paramString, 0L)), 2).toString();
+    AppMethodBeat.o(127140);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.video.c
  * JD-Core Version:    0.7.0.1
  */

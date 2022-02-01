@@ -19,7 +19,8 @@ import java.lang.reflect.Modifier;
 public class MHMessageHandler
   implements HandlerMessageInterceptor.MessageHandler
 {
-  private static final int yvM;
+  private static final int LAUNCH_ACTIVITY;
+  private static final String TAG = "Tinker.MHMsgHndlr";
   private final Context mContext;
   
   static
@@ -29,8 +30,8 @@ public class MHMessageHandler
     if (Build.VERSION.SDK_INT < 27) {}
     try
     {
-      i = ShareReflectUtil.g(Class.forName("android.app.ActivityThread$H"), "LAUNCH_ACTIVITY").getInt(null);
-      yvM = i;
+      i = ShareReflectUtil.findField(Class.forName("android.app.ActivityThread$H"), "LAUNCH_ACTIVITY").getInt(null);
+      LAUNCH_ACTIVITY = i;
       return;
     }
     catch (Throwable localThrowable)
@@ -55,7 +56,7 @@ public class MHMessageHandler
     this.mContext = paramContext;
   }
   
-  private static <T> void D(T paramT1, T paramT2)
+  private <T> void copyInstanceFields(T paramT1, T paramT2)
   {
     if ((paramT1 == null) || (paramT2 == null)) {
       return;
@@ -66,7 +67,7 @@ public class MHMessageHandler
       Field[] arrayOfField = localClass.getDeclaredFields();
       int j = arrayOfField.length;
       int i = 0;
-      label38:
+      label39:
       Field localField;
       if (i < j)
       {
@@ -80,69 +81,73 @@ public class MHMessageHandler
       try
       {
         localField.set(paramT2, localField.get(paramT1));
-        label94:
+        label96:
         i += 1;
-        break label38;
+        break label39;
         localClass = localClass.getSuperclass();
       }
       catch (Throwable localThrowable)
       {
-        break label94;
+        break label96;
       }
     }
   }
   
-  public final boolean handleMessage(Message paramMessage)
+  private void fixActivityScreenOrientation(Object paramObject, int paramInt)
   {
-    int i = 2;
-    if (paramMessage.what == yvM) {}
+    int i = paramInt;
+    if (paramInt == -1) {
+      i = 2;
+    }
     try
     {
-      Object localObject1 = paramMessage.obj;
-      if (localObject1 == null)
+      paramObject = ShareReflectUtil.findField(paramObject, "token").get(paramObject);
+      Object localObject = ShareReflectUtil.findMethod(Class.forName("android.app.ActivityManagerNative"), "getDefault", new Class[0]).invoke(null, new Object[0]);
+      ShareReflectUtil.findMethod(localObject, "setRequestedOrientation", new Class[] { IBinder.class, Integer.TYPE }).invoke(localObject, new Object[] { paramObject, Integer.valueOf(i) });
+      return;
+    }
+    catch (Throwable paramObject) {}
+  }
+  
+  private void fixStubActivityInfo(ActivityInfo paramActivityInfo1, ActivityInfo paramActivityInfo2)
+  {
+    copyInstanceFields(paramActivityInfo2, paramActivityInfo1);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == LAUNCH_ACTIVITY) {}
+    try
+    {
+      Object localObject = paramMessage.obj;
+      if (localObject == null)
       {
         new StringBuilder("msg: [").append(paramMessage.what).append("] has no 'obj' value.");
         return false;
       }
-      paramMessage = (Intent)ShareReflectUtil.b(localObject1, "intent").get(localObject1);
+      paramMessage = (Intent)ShareReflectUtil.findField(localObject, "intent").get(localObject);
       if (paramMessage != null)
       {
-        ShareIntentUtil.a(paramMessage, this.mContext.getClassLoader());
+        ShareIntentUtil.fixIntentClassLoader(paramMessage, this.mContext.getClassLoader());
         ComponentName localComponentName = (ComponentName)paramMessage.getParcelableExtra("tinker_iek_old_component");
         if (localComponentName == null)
         {
           new StringBuilder("oldComponent was null, start ").append(paramMessage.getComponent()).append(" next.");
           return false;
         }
-        ActivityInfo localActivityInfo1 = (ActivityInfo)ShareReflectUtil.b(localObject1, "activityInfo").get(localObject1);
+        ActivityInfo localActivityInfo1 = (ActivityInfo)ShareReflectUtil.findField(localObject, "activityInfo").get(localObject);
         if (localActivityInfo1 != null)
         {
-          ActivityInfo localActivityInfo2 = IncrementComponentManager.awY(localComponentName.getClassName());
+          ActivityInfo localActivityInfo2 = IncrementComponentManager.queryActivityInfo(localComponentName.getClassName());
           if (localActivityInfo2 == null)
           {
             new StringBuilder("Failed to query target activity's info, perhaps the target is not hotpluged component. Target: ").append(localComponentName.getClassName());
             return false;
           }
-          int j = localActivityInfo2.screenOrientation;
-          if (j == -1) {}
-          for (;;)
-          {
-            try
-            {
-              localObject1 = ShareReflectUtil.b(localObject1, "token").get(localObject1);
-              Object localObject2 = ShareReflectUtil.d(Class.forName("android.app.ActivityManagerNative"), "getDefault", new Class[0]).invoke(null, new Object[0]);
-              ShareReflectUtil.b(localObject2, "setRequestedOrientation", new Class[] { IBinder.class, Integer.TYPE }).invoke(localObject2, new Object[] { localObject1, Integer.valueOf(i) });
-              D(localActivityInfo2, localActivityInfo1);
-              paramMessage.setComponent(localComponentName);
-              paramMessage.removeExtra("tinker_iek_old_component");
-              return false;
-            }
-            catch (Throwable localThrowable)
-            {
-              continue;
-            }
-            i = j;
-          }
+          fixActivityScreenOrientation(localObject, localActivityInfo2.screenOrientation);
+          fixStubActivityInfo(localActivityInfo1, localActivityInfo2);
+          paramMessage.setComponent(localComponentName);
+          paramMessage.removeExtra("tinker_iek_old_component");
         }
       }
       return false;

@@ -5,20 +5,20 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public enum b
   implements a
 {
-  private static a pgR;
+  private static a uft;
   
   static
   {
-    AppMethodBeat.i(115605);
-    pgQ = new b("INSTANCE");
-    pgS = new b[] { pgQ };
-    pgR = new a((byte)0);
-    AppMethodBeat.o(115605);
+    AppMethodBeat.i(155541);
+    ufs = new b("INSTANCE");
+    ufu = new b[] { ufs };
+    uft = new a((byte)0);
+    AppMethodBeat.o(155541);
   }
   
   private b() {}
@@ -26,425 +26,505 @@ public enum b
   public static void a(a parama)
   {
     if (parama != null) {
-      pgR = parama;
+      uft = parama;
     }
   }
   
-  public final byte[] AO(int paramInt)
+  public final byte[] Iw(int paramInt)
   {
-    AppMethodBeat.i(115578);
-    byte[] arrayOfByte = pgR.AO(paramInt);
-    AppMethodBeat.o(115578);
+    AppMethodBeat.i(155510);
+    byte[] arrayOfByte = uft.Iw(paramInt);
+    AppMethodBeat.o(155510);
     return arrayOfByte;
   }
   
-  public final String AP(int paramInt)
+  public final String Ix(int paramInt)
   {
-    AppMethodBeat.i(115581);
-    String str = pgR.AP(paramInt);
-    AppMethodBeat.o(115581);
+    AppMethodBeat.i(155513);
+    String str = uft.Ix(paramInt);
+    AppMethodBeat.o(155513);
     return str;
   }
   
-  public final void AQ(int paramInt)
+  public final void Iy(int paramInt)
   {
-    AppMethodBeat.i(115593);
-    pgR.AQ(paramInt);
-    AppMethodBeat.o(115593);
+    AppMethodBeat.i(155522);
+    uft.Iy(paramInt);
+    AppMethodBeat.o(155522);
   }
   
-  public final void VV(String paramString)
+  public final byte[] Iz(int paramInt)
   {
-    AppMethodBeat.i(115595);
-    pgR.VV(paramString);
-    AppMethodBeat.o(115595);
-  }
-  
-  public final void VW(String paramString)
-  {
-    AppMethodBeat.i(115596);
-    pgR.VW(paramString);
-    AppMethodBeat.o(115596);
-  }
-  
-  public final void VX(String paramString)
-  {
-    AppMethodBeat.i(115597);
-    pgR.VX(paramString);
-    AppMethodBeat.o(115597);
-  }
-  
-  public final boolean VY(String paramString)
-  {
-    AppMethodBeat.i(115598);
-    boolean bool = pgR.VY(paramString);
-    AppMethodBeat.o(115598);
-    return bool;
-  }
-  
-  public final byte[] VZ(String paramString)
-  {
-    AppMethodBeat.i(115599);
-    paramString = pgR.VZ(paramString);
-    AppMethodBeat.o(115599);
-    return paramString;
-  }
-  
-  public final void Wa(String paramString)
-  {
-    AppMethodBeat.i(115602);
-    pgR.Wa(paramString);
-    AppMethodBeat.o(115602);
-  }
-  
-  public final boolean Wb(String paramString)
-  {
-    AppMethodBeat.i(115603);
-    boolean bool = pgR.Wb(paramString);
-    AppMethodBeat.o(115603);
-    return bool;
-  }
-  
-  public final byte[] Wc(String paramString)
-  {
-    AppMethodBeat.i(115604);
-    paramString = pgR.Wc(paramString);
-    AppMethodBeat.o(115604);
-    return paramString;
-  }
-  
-  public final String Wd(String paramString)
-  {
-    AppMethodBeat.i(115580);
-    paramString = pgR.Wd(paramString);
-    AppMethodBeat.o(115580);
-    return paramString;
+    AppMethodBeat.i(155536);
+    byte[] arrayOfByte = uft.Iz(paramInt);
+    AppMethodBeat.o(155536);
+    return arrayOfByte;
   }
   
   public final void a(View paramView, Class<? extends com.tencent.mm.sdk.b.b> paramClass)
   {
-    AppMethodBeat.i(115592);
-    pgR.a(paramView, paramClass);
-    AppMethodBeat.o(115592);
+    AppMethodBeat.i(155521);
+    uft.a(paramView, paramClass);
+    AppMethodBeat.o(155521);
   }
   
   public final void a(String paramString, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(115601);
-    pgR.a(paramString, paramMotionEvent);
-    AppMethodBeat.o(115601);
+    AppMethodBeat.i(155531);
+    uft.a(paramString, paramMotionEvent);
+    AppMethodBeat.o(155531);
+  }
+  
+  public final boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, PByteArray paramPByteArray)
+  {
+    AppMethodBeat.i(155524);
+    boolean bool = uft.a(paramInt1, paramArrayOfByte, paramInt2, paramInt3, paramPByteArray);
+    AppMethodBeat.o(155524);
+    return bool;
   }
   
   public final boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, PInt paramPInt1, PInt paramPInt2, PByteArray paramPByteArray)
   {
-    AppMethodBeat.i(115594);
-    boolean bool = pgR.a(paramInt1, paramArrayOfByte, paramInt2, paramInt3, paramPInt1, paramPInt2, paramPByteArray);
-    AppMethodBeat.o(115594);
+    AppMethodBeat.i(155523);
+    boolean bool = uft.a(paramInt1, paramArrayOfByte, paramInt2, paramInt3, paramPInt1, paramPInt2, paramPByteArray);
+    AppMethodBeat.o(155523);
     return bool;
   }
   
-  public final void ad(int paramInt1, int paramInt2, int paramInt3)
+  public final String ajp(String paramString)
   {
-    AppMethodBeat.i(115579);
-    pgR.ad(paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(115579);
+    AppMethodBeat.i(155512);
+    paramString = uft.ajp(paramString);
+    AppMethodBeat.o(155512);
+    return paramString;
   }
   
-  public final boolean bXh()
+  public final void ajr(String paramString)
   {
-    AppMethodBeat.i(115584);
-    boolean bool = pgR.bXh();
-    AppMethodBeat.o(115584);
+    AppMethodBeat.i(155525);
+    uft.ajr(paramString);
+    AppMethodBeat.o(155525);
+  }
+  
+  public final void ajs(String paramString)
+  {
+    AppMethodBeat.i(155526);
+    uft.ajs(paramString);
+    AppMethodBeat.o(155526);
+  }
+  
+  public final void ajt(String paramString)
+  {
+    AppMethodBeat.i(155527);
+    uft.ajt(paramString);
+    AppMethodBeat.o(155527);
+  }
+  
+  public final boolean aju(String paramString)
+  {
+    AppMethodBeat.i(155528);
+    boolean bool = uft.aju(paramString);
+    AppMethodBeat.o(155528);
     return bool;
   }
   
-  public final boolean bXk()
+  public final byte[] ajv(String paramString)
   {
-    AppMethodBeat.i(115586);
-    boolean bool = pgR.bXk();
-    AppMethodBeat.o(115586);
+    AppMethodBeat.i(155529);
+    paramString = uft.ajv(paramString);
+    AppMethodBeat.o(155529);
+    return paramString;
+  }
+  
+  public final void ajw(String paramString)
+  {
+    AppMethodBeat.i(155532);
+    uft.ajw(paramString);
+    AppMethodBeat.o(155532);
+  }
+  
+  public final boolean ajx(String paramString)
+  {
+    AppMethodBeat.i(155533);
+    boolean bool = uft.ajx(paramString);
+    AppMethodBeat.o(155533);
     return bool;
   }
   
-  public final boolean bXl()
+  public final byte[] ajy(String paramString)
   {
-    AppMethodBeat.i(115587);
-    boolean bool = pgR.bXl();
-    AppMethodBeat.o(115587);
-    return bool;
+    AppMethodBeat.i(155534);
+    paramString = uft.ajy(paramString);
+    AppMethodBeat.o(155534);
+    return paramString;
   }
   
-  public final boolean bXm()
+  public final void am(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(115588);
-    boolean bool = pgR.bXm();
-    AppMethodBeat.o(115588);
-    return bool;
+    AppMethodBeat.i(155511);
+    uft.am(paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(155511);
   }
   
-  public final String bXo()
+  public final String cWO()
   {
-    AppMethodBeat.i(115583);
-    String str = pgR.bXo();
-    AppMethodBeat.o(115583);
+    AppMethodBeat.i(155515);
+    String str = uft.cWO();
+    AppMethodBeat.o(155515);
     return str;
   }
   
-  public final boolean bXp()
+  public final boolean cWP()
   {
-    AppMethodBeat.i(115585);
-    boolean bool = pgR.bXp();
-    AppMethodBeat.o(115585);
+    AppMethodBeat.i(155516);
+    boolean bool = uft.cWP();
+    AppMethodBeat.o(155516);
     return bool;
   }
   
-  public final byte[] bXq()
+  public final boolean cWQ()
   {
-    AppMethodBeat.i(115590);
-    byte[] arrayOfByte = pgR.bXq();
-    AppMethodBeat.o(115590);
+    AppMethodBeat.i(155517);
+    boolean bool = uft.cWQ();
+    AppMethodBeat.o(155517);
+    return bool;
+  }
+  
+  public final byte[] cWU()
+  {
+    AppMethodBeat.i(155519);
+    byte[] arrayOfByte = uft.cWU();
+    AppMethodBeat.o(155519);
     return arrayOfByte;
   }
   
-  public final boolean bY(Object paramObject)
+  public final byte[] cWV()
   {
-    AppMethodBeat.i(115591);
-    boolean bool = pgR.bY(paramObject);
-    AppMethodBeat.o(115591);
+    AppMethodBeat.i(155535);
+    byte[] arrayOfByte = uft.cWV();
+    AppMethodBeat.o(155535);
+    return arrayOfByte;
+  }
+  
+  public final boolean cWW()
+  {
+    AppMethodBeat.i(155538);
+    boolean bool = uft.cWW();
+    AppMethodBeat.o(155538);
     return bool;
   }
   
-  public final boolean d(Object paramObject, Class paramClass)
+  public final byte[] cWX()
   {
-    AppMethodBeat.i(115589);
-    boolean bool = pgR.d(paramObject, paramClass);
-    AppMethodBeat.o(115589);
+    AppMethodBeat.i(155539);
+    byte[] arrayOfByte = uft.cWX();
+    AppMethodBeat.o(155539);
+    return arrayOfByte;
+  }
+  
+  public final boolean cWY()
+  {
+    AppMethodBeat.i(195145);
+    boolean bool = uft.cWY();
+    AppMethodBeat.o(195145);
     return bool;
   }
   
-  public final void fD(String paramString1, String paramString2)
+  public final boolean dt(Object paramObject)
   {
-    AppMethodBeat.i(115600);
-    pgR.fD(paramString1, paramString2);
-    AppMethodBeat.o(115600);
+    AppMethodBeat.i(155520);
+    boolean bool = uft.dt(paramObject);
+    AppMethodBeat.o(155520);
+    return bool;
   }
   
-  public final String jU(boolean paramBoolean)
+  public final boolean e(Object paramObject, Class paramClass)
   {
-    AppMethodBeat.i(115582);
-    String str = pgR.jU(paramBoolean);
-    AppMethodBeat.o(115582);
+    AppMethodBeat.i(155518);
+    boolean bool = uft.e(paramObject, paramClass);
+    AppMethodBeat.o(155518);
+    return bool;
+  }
+  
+  public final String getOAID()
+  {
+    AppMethodBeat.i(155540);
+    String str = uft.getOAID();
+    AppMethodBeat.o(155540);
     return str;
+  }
+  
+  public final void hK(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(155530);
+    uft.hK(paramString1, paramString2);
+    AppMethodBeat.o(155530);
+  }
+  
+  public final String nP(boolean paramBoolean)
+  {
+    AppMethodBeat.i(155514);
+    String str = uft.nP(paramBoolean);
+    AppMethodBeat.o(155514);
+    return str;
+  }
+  
+  public final boolean z(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(155537);
+    boolean bool = uft.z(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.o(155537);
+    return bool;
   }
   
   static final class a
     implements a
   {
-    public final byte[] AO(int paramInt)
+    public final byte[] Iw(int paramInt)
     {
-      AppMethodBeat.i(115549);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115549);
+      AppMethodBeat.i(155477);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155477);
       return new byte[0];
     }
     
-    public final String AP(int paramInt)
+    public final String Ix(int paramInt)
     {
-      AppMethodBeat.i(115552);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115552);
+      AppMethodBeat.i(155480);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155480);
       return "";
     }
     
-    public final void AQ(int paramInt)
+    public final void Iy(int paramInt)
     {
-      AppMethodBeat.i(115564);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115564);
+      AppMethodBeat.i(155489);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155489);
     }
     
-    public final void VV(String paramString)
+    public final byte[] Iz(int paramInt)
     {
-      AppMethodBeat.i(115566);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115566);
-    }
-    
-    public final void VW(String paramString)
-    {
-      AppMethodBeat.i(115567);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115567);
-    }
-    
-    public final void VX(String paramString)
-    {
-      AppMethodBeat.i(115568);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115568);
-    }
-    
-    public final boolean VY(String paramString)
-    {
-      AppMethodBeat.i(115569);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115569);
-      return false;
-    }
-    
-    public final byte[] VZ(String paramString)
-    {
-      AppMethodBeat.i(115570);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115570);
+      AppMethodBeat.i(155503);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155503);
       return new byte[0];
-    }
-    
-    public final void Wa(String paramString)
-    {
-      AppMethodBeat.i(115573);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115573);
-    }
-    
-    public final boolean Wb(String paramString)
-    {
-      AppMethodBeat.i(115574);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115574);
-      return false;
-    }
-    
-    public final byte[] Wc(String paramString)
-    {
-      AppMethodBeat.i(115575);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115575);
-      return new byte[0];
-    }
-    
-    public final String Wd(String paramString)
-    {
-      AppMethodBeat.i(115551);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115551);
-      return paramString;
     }
     
     public final void a(View paramView, Class<? extends com.tencent.mm.sdk.b.b> paramClass)
     {
-      AppMethodBeat.i(115563);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115563);
+      AppMethodBeat.i(155488);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155488);
     }
     
     public final void a(String paramString, MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(115572);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115572);
+      AppMethodBeat.i(155498);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155498);
+    }
+    
+    public final boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, PByteArray paramPByteArray)
+    {
+      AppMethodBeat.i(155491);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155491);
+      return false;
     }
     
     public final boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, PInt paramPInt1, PInt paramPInt2, PByteArray paramPByteArray)
     {
-      AppMethodBeat.i(115565);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115565);
+      AppMethodBeat.i(155490);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155490);
       return false;
     }
     
-    public final void ad(int paramInt1, int paramInt2, int paramInt3)
+    public final String ajp(String paramString)
     {
-      AppMethodBeat.i(115550);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115550);
+      AppMethodBeat.i(155479);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155479);
+      return paramString;
     }
     
-    public final boolean bXh()
+    public final void ajr(String paramString)
     {
-      AppMethodBeat.i(115555);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115555);
+      AppMethodBeat.i(155492);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155492);
+    }
+    
+    public final void ajs(String paramString)
+    {
+      AppMethodBeat.i(155493);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155493);
+    }
+    
+    public final void ajt(String paramString)
+    {
+      AppMethodBeat.i(155494);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155494);
+    }
+    
+    public final boolean aju(String paramString)
+    {
+      AppMethodBeat.i(155495);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155495);
       return false;
     }
     
-    public final boolean bXk()
+    public final byte[] ajv(String paramString)
     {
-      AppMethodBeat.i(115557);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115557);
-      return false;
-    }
-    
-    public final boolean bXl()
-    {
-      AppMethodBeat.i(115558);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115558);
-      return false;
-    }
-    
-    public final boolean bXm()
-    {
-      AppMethodBeat.i(115559);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115559);
-      return false;
-    }
-    
-    public final String bXo()
-    {
-      AppMethodBeat.i(115554);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115554);
-      return "";
-    }
-    
-    public final boolean bXp()
-    {
-      AppMethodBeat.i(115556);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115556);
-      return false;
-    }
-    
-    public final byte[] bXq()
-    {
-      AppMethodBeat.i(115561);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115561);
+      AppMethodBeat.i(155496);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155496);
       return new byte[0];
     }
     
-    public final boolean bY(Object paramObject)
+    public final void ajw(String paramString)
     {
-      AppMethodBeat.i(115562);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115562);
+      AppMethodBeat.i(155499);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155499);
+    }
+    
+    public final boolean ajx(String paramString)
+    {
+      AppMethodBeat.i(155500);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155500);
       return false;
     }
     
-    public final boolean d(Object paramObject, Class paramClass)
+    public final byte[] ajy(String paramString)
     {
-      AppMethodBeat.i(115560);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115560);
-      return false;
+      AppMethodBeat.i(155501);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155501);
+      return new byte[0];
     }
     
-    public final void fD(String paramString1, String paramString2)
+    public final void am(int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(115571);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115571);
+      AppMethodBeat.i(155478);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155478);
     }
     
-    public final String jU(boolean paramBoolean)
+    public final String cWO()
     {
-      AppMethodBeat.i(115553);
-      ab.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
-      AppMethodBeat.o(115553);
+      AppMethodBeat.i(155482);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155482);
       return "";
+    }
+    
+    public final boolean cWP()
+    {
+      AppMethodBeat.i(155483);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155483);
+      return false;
+    }
+    
+    public final boolean cWQ()
+    {
+      AppMethodBeat.i(155484);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155484);
+      return false;
+    }
+    
+    public final byte[] cWU()
+    {
+      AppMethodBeat.i(155486);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155486);
+      return new byte[0];
+    }
+    
+    public final byte[] cWV()
+    {
+      AppMethodBeat.i(155502);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155502);
+      return new byte[0];
+    }
+    
+    public final boolean cWW()
+    {
+      AppMethodBeat.i(155505);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155505);
+      return false;
+    }
+    
+    public final byte[] cWX()
+    {
+      AppMethodBeat.i(155506);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155506);
+      return new byte[0];
+    }
+    
+    public final boolean cWY()
+    {
+      AppMethodBeat.i(195144);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(195144);
+      return false;
+    }
+    
+    public final boolean dt(Object paramObject)
+    {
+      AppMethodBeat.i(155487);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155487);
+      return false;
+    }
+    
+    public final boolean e(Object paramObject, Class paramClass)
+    {
+      AppMethodBeat.i(155485);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155485);
+      return false;
+    }
+    
+    public final String getOAID()
+    {
+      AppMethodBeat.i(155507);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155507);
+      return "";
+    }
+    
+    public final void hK(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(155497);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155497);
+    }
+    
+    public final String nP(boolean paramBoolean)
+    {
+      AppMethodBeat.i(155481);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155481);
+      return "";
+    }
+    
+    public final boolean z(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(155504);
+      ad.w("MicroMsg.NormsgSource", "!! Dummy implementation !!");
+      AppMethodBeat.o(155504);
+      return false;
     }
   }
 }

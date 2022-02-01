@@ -1,25 +1,25 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.k;
+import com.tencent.mm.al.l;
 import com.tencent.mm.protocal.j.c;
 import com.tencent.mm.protocal.j.d;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.l.e;
 
 public final class c
-  extends k
+  extends l
 {
-  private static int fOC = 3941;
-  private final l.e fum;
+  private static int hrg = 3941;
+  private final l.e gWr;
   private final l.d req;
   
   public c()
   {
-    AppMethodBeat.i(154514);
+    AppMethodBeat.i(134153);
     this.req = new j.c();
-    this.fum = new j.d();
-    AppMethodBeat.o(154514);
+    this.gWr = new j.d();
+    AppMethodBeat.o(134153);
   }
   
   public final l.d getReqObjImp()
@@ -29,12 +29,12 @@ public final class c
   
   public final l.e getRespObj()
   {
-    return this.fum;
+    return this.gWr;
   }
   
   public final int getType()
   {
-    return fOC;
+    return hrg;
   }
   
   public final String getUri()
@@ -44,7 +44,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelsimple.c
  * JD-Core Version:    0.7.0.1
  */

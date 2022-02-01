@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class uh
   extends b
 {
-  public uh.a cKM;
+  public a dzB;
+  public b dzC;
   
   public uh()
   {
@@ -15,16 +16,30 @@ public final class uh
   
   private uh(byte paramByte)
   {
-    AppMethodBeat.i(139620);
-    this.cKM = new uh.a();
-    this.ymq = false;
+    AppMethodBeat.i(127410);
+    this.dzB = new a();
+    this.dzC = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(139620);
+    AppMethodBeat.o(127410);
+  }
+  
+  public static final class a
+  {
+    public boolean dzD;
+    public String dzE;
+    public cs dzF;
+    public String url;
+  }
+  
+  public static final class b
+  {
+    public boolean dew = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.uh
  * JD-Core Version:    0.7.0.1
  */

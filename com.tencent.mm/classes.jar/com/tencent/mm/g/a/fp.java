@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bk.a;
+import com.tencent.mm.al.n;
 import com.tencent.mm.sdk.b.b;
 
 public final class fp
   extends b
 {
-  public a ctH;
+  public a dim;
+  public b din;
   
   public fp()
   {
@@ -16,21 +17,26 @@ public final class fp
   
   private fp(byte paramByte)
   {
-    AppMethodBeat.i(70186);
-    this.ctH = new a();
-    this.ymq = false;
+    AppMethodBeat.i(116018);
+    this.dim = new a();
+    this.din = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70186);
+    AppMethodBeat.o(116018);
   }
   
   public static final class a
   {
-    public boolean ctI;
-    public boolean ctJ;
-    public int ctK;
-    public bk.a ctL;
+    public String content;
+    public String dio;
+    public int flags;
     public int type;
-    public String username;
+  }
+  
+  public static final class b
+  {
+    public n dip;
+    public long msgId = 0L;
   }
 }
 

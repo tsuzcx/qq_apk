@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/bj6" style="@style/q1"
+<LinearLayout android:orientation="vertical" android:padding="@dimen/ha" android:layout_width="255.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/bj_" android:background="@color/zm" android:paddingTop="@dimen/la" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bja" android:background="@color/zm" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/n9" style="@style/q1">
-            <TextView android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/bjb" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/bd_" android:layout_weight="1.0" style="@style/my" />
-        </LinearLayout>
-        <com.tencent.mm.plugin.emoji.ui.v2.PreViewListGridView android:gravity="center" android:id="@id/bjc" android:background="@color/vy" android:paddingBottom="@dimen/m1" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/a_a" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:choiceMode="none" />
-        <LinearLayout android:background="@color/vy" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <View android:id="@id/bjd" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bje" android:background="@drawable/emoji_store_v2_single_bar" android:paddingLeft="@dimen/m1" android:paddingRight="@dimen/m1" android:layout_width="fill_parent" android:layout_height="@dimen/n9" style="@style/q1">
-            <TextView android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/bjf" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/bd9" android:layout_weight="1.0" style="@style/my" />
-        </LinearLayout>
-    </LinearLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:layout_width="200.0dip" android:layout_height="118.0dip" android:src="@drawable/bux" />
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:text="@string/bdm" />
 </LinearLayout>

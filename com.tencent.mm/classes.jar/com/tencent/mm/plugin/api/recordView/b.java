@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.api.recordView;
 
 import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
-  private static int M(String paramString, int paramInt)
+  private static int Q(String paramString, int paramInt)
   {
-    AppMethodBeat.i(76326);
+    AppMethodBeat.i(89208);
     int[] arrayOfInt = new int[1];
     paramInt = GLES20.glCreateShader(paramInt);
     GLES20.glShaderSource(paramInt, paramString);
@@ -16,17 +16,17 @@ public final class b
     GLES20.glGetShaderiv(paramInt, 35713, arrayOfInt, 0);
     if (arrayOfInt[0] == 0)
     {
-      ab.e("loadShader error, infoLog: %s", GLES20.glGetShaderInfoLog(paramInt));
-      AppMethodBeat.o(76326);
+      ad.e("loadShader error, infoLog: %s", GLES20.glGetShaderInfoLog(paramInt));
+      AppMethodBeat.o(89208);
       return 0;
     }
-    AppMethodBeat.o(76326);
+    AppMethodBeat.o(89208);
     return paramInt;
   }
   
-  public static int Vm()
+  public static int akA()
   {
-    AppMethodBeat.i(76325);
+    AppMethodBeat.i(89207);
     int[] arrayOfInt = new int[1];
     GLES20.glGenTextures(1, arrayOfInt, 0);
     GLES20.glBindTexture(3553, arrayOfInt[0]);
@@ -35,26 +35,26 @@ public final class b
     GLES20.glTexParameteri(3553, 10242, 33071);
     GLES20.glTexParameteri(3553, 10243, 33071);
     int i = arrayOfInt[0];
-    AppMethodBeat.o(76325);
+    AppMethodBeat.o(89207);
     return i;
   }
   
-  public static int Z(String paramString1, String paramString2)
+  public static int ap(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(76327);
+    AppMethodBeat.i(89209);
     int[] arrayOfInt = new int[1];
-    int i = M(paramString1, 35633);
+    int i = Q(paramString1, 35633);
     if (i == 0)
     {
-      ab.e("MicroMsg.MMSightCameraGLUtil", "load vertex shader failed");
-      AppMethodBeat.o(76327);
+      ad.e("MicroMsg.MMSightCameraGLUtil", "load vertex shader failed");
+      AppMethodBeat.o(89209);
       return 0;
     }
-    int j = M(paramString2, 35632);
+    int j = Q(paramString2, 35632);
     if (j == 0)
     {
-      ab.e("MicroMsg.MMSightCameraGLUtil", "load fragment shader failed");
-      AppMethodBeat.o(76327);
+      ad.e("MicroMsg.MMSightCameraGLUtil", "load fragment shader failed");
+      AppMethodBeat.o(89209);
       return 0;
     }
     int k = GLES20.glCreateProgram();
@@ -64,13 +64,13 @@ public final class b
     GLES20.glGetProgramiv(k, 35714, arrayOfInt, 0);
     if (arrayOfInt[0] <= 0)
     {
-      ab.e("MicroMsg.MMSightCameraGLUtil", "link program failed");
-      AppMethodBeat.o(76327);
+      ad.e("MicroMsg.MMSightCameraGLUtil", "link program failed");
+      AppMethodBeat.o(89209);
       return 0;
     }
     GLES20.glDeleteShader(i);
     GLES20.glDeleteShader(j);
-    AppMethodBeat.o(76327);
+    AppMethodBeat.o(89209);
     return k;
   }
 }

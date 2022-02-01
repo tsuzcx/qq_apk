@@ -37,7 +37,7 @@ public class MMKViewBackgroundBorderDrawable
   
   public MMKViewBackgroundBorderDrawable(View paramView)
   {
-    AppMethodBeat.i(145082);
+    AppMethodBeat.i(19246);
     this.borderWidth = 0.0F;
     this.borderRadius = 0.0F;
     this.topLeftBorderRadius = 0.0F;
@@ -56,7 +56,7 @@ public class MMKViewBackgroundBorderDrawable
     this.borderPath = new Path();
     this.insetDrawableClipPath = new Path();
     this.mView = paramView;
-    AppMethodBeat.o(145082);
+    AppMethodBeat.o(19246);
   }
   
   private boolean containsPressedState(int[] paramArrayOfInt)
@@ -81,7 +81,7 @@ public class MMKViewBackgroundBorderDrawable
   
   private void drawClipRadiusBorder(Canvas paramCanvas)
   {
-    AppMethodBeat.i(145096);
+    AppMethodBeat.i(19260);
     this.paint.reset();
     this.borderPath.reset();
     this.insetDrawableClipPath.reset();
@@ -143,35 +143,35 @@ public class MMKViewBackgroundBorderDrawable
     if ((Color.alpha(this.borderColor) > 0) && (!this.isPressed))
     {
       this.paint.setColor(this.borderColor);
-      this.paint.setStyle(Paint.Style.FILL);
+      this.paint.setStyle(Paint.Style.STROKE);
       paramCanvas.drawPath(this.borderPath, this.paint);
       if (this.insetDrawable != null)
       {
         paramCanvas.clipPath(this.insetDrawableClipPath);
-        AppMethodBeat.o(145096);
+        AppMethodBeat.o(19260);
       }
     }
     else if ((Color.alpha(this.borderPressedColor) > 0) && (this.isPressed))
     {
       this.paint.setColor(this.borderPressedColor);
-      this.paint.setStyle(Paint.Style.FILL);
+      this.paint.setStyle(Paint.Style.STROKE);
       paramCanvas.drawPath(this.borderPath, this.paint);
       if (this.insetDrawable != null)
       {
         paramCanvas.clipPath(this.insetDrawableClipPath);
-        AppMethodBeat.o(145096);
+        AppMethodBeat.o(19260);
       }
     }
     else
     {
       paramCanvas.clipPath(this.insetDrawableClipPath);
     }
-    AppMethodBeat.o(145096);
+    AppMethodBeat.o(19260);
   }
   
   private void drawClipRectBorder(Canvas paramCanvas)
   {
-    AppMethodBeat.i(145095);
+    AppMethodBeat.i(19259);
     Rect localRect = getBounds();
     int i = localRect.top;
     int j = localRect.left;
@@ -214,7 +214,7 @@ public class MMKViewBackgroundBorderDrawable
       this.borderPath.lineTo(j + this.borderWidth, m + i - this.borderWidth);
       paramCanvas.drawPath(this.borderPath, this.paint);
       this.paint.setAntiAlias(false);
-      AppMethodBeat.o(145095);
+      AppMethodBeat.o(19259);
       return;
       this.paint.setColor(this.borderColor);
     }
@@ -222,13 +222,13 @@ public class MMKViewBackgroundBorderDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(145094);
+    AppMethodBeat.i(19258);
     Rect localRect = getBounds();
     int i = localRect.width();
     int j = localRect.height();
     if ((i <= 0) || (j <= 0))
     {
-      AppMethodBeat.o(145094);
+      AppMethodBeat.o(19258);
       return;
     }
     this.paint.reset();
@@ -240,7 +240,7 @@ public class MMKViewBackgroundBorderDrawable
     while (this.borderWidth > 0.0F)
     {
       drawClipRectBorder(paramCanvas);
-      AppMethodBeat.o(145094);
+      AppMethodBeat.o(19258);
       return;
       this.insetDrawable.draw(paramCanvas);
       continue;
@@ -249,51 +249,51 @@ public class MMKViewBackgroundBorderDrawable
         this.insetDrawable.draw(paramCanvas);
       }
     }
-    AppMethodBeat.o(145094);
+    AppMethodBeat.o(19258);
   }
   
   public int getOpacity()
   {
-    AppMethodBeat.i(145084);
+    AppMethodBeat.i(19248);
     if (this.insetDrawable != null)
     {
       int i = this.insetDrawable.getOpacity();
-      AppMethodBeat.o(145084);
+      AppMethodBeat.o(19248);
       return i;
     }
     if (this.backgroundColor == 0)
     {
-      AppMethodBeat.o(145084);
+      AppMethodBeat.o(19248);
       return -2;
     }
     if (Color.alpha(this.backgroundColor) > 0)
     {
-      AppMethodBeat.o(145084);
+      AppMethodBeat.o(19248);
       return -3;
     }
-    AppMethodBeat.o(145084);
+    AppMethodBeat.o(19248);
     return -1;
   }
   
   public boolean isStateful()
   {
-    AppMethodBeat.i(145097);
+    AppMethodBeat.i(19261);
     if (this.insetDrawable != null)
     {
       boolean bool = this.insetDrawable.isStateful();
-      AppMethodBeat.o(145097);
+      AppMethodBeat.o(19261);
       return bool;
     }
-    AppMethodBeat.o(145097);
+    AppMethodBeat.o(19261);
     return false;
   }
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(145098);
+    AppMethodBeat.i(19262);
     if ((this.mView != null) && (!this.mView.isEnabled()) && (containsPressedState(paramArrayOfInt)) && (!this.isPressed))
     {
-      AppMethodBeat.o(145098);
+      AppMethodBeat.o(19262);
       return false;
     }
     if (containsPressedState(paramArrayOfInt)) {}
@@ -301,142 +301,142 @@ public class MMKViewBackgroundBorderDrawable
     {
       bool = this.insetDrawable.setState(paramArrayOfInt);
       invalidateSelf();
-      AppMethodBeat.o(145098);
+      AppMethodBeat.o(19262);
       return bool;
     }
     boolean bool = super.onStateChange(paramArrayOfInt);
-    AppMethodBeat.o(145098);
+    AppMethodBeat.o(19262);
     return bool;
   }
   
   public void setAlpha(int paramInt)
   {
-    AppMethodBeat.i(145099);
+    AppMethodBeat.i(19263);
     if (this.insetDrawable != null) {
       this.insetDrawable.setAlpha(paramInt);
     }
-    AppMethodBeat.o(145099);
+    AppMethodBeat.o(19263);
   }
   
   public void setBackgroundColor(int paramInt)
   {
-    AppMethodBeat.i(145093);
+    AppMethodBeat.i(19257);
     if (this.backgroundColor != paramInt)
     {
       this.backgroundColor = paramInt;
       invalidateSelf();
     }
-    AppMethodBeat.o(145093);
+    AppMethodBeat.o(19257);
   }
   
   public void setBorderColor(int paramInt)
   {
-    AppMethodBeat.i(145086);
+    AppMethodBeat.i(19250);
     if (this.borderColor != paramInt)
     {
       this.borderColor = paramInt;
       invalidateSelf();
     }
-    AppMethodBeat.o(145086);
+    AppMethodBeat.o(19250);
   }
   
   public void setBorderPressedColor(int paramInt)
   {
-    AppMethodBeat.i(145087);
+    AppMethodBeat.i(19251);
     if (this.borderPressedColor != paramInt)
     {
       this.borderPressedColor = paramInt;
       invalidateSelf();
     }
-    AppMethodBeat.o(145087);
+    AppMethodBeat.o(19251);
   }
   
   public void setBorderRadius(float paramFloat)
   {
-    AppMethodBeat.i(145088);
+    AppMethodBeat.i(19252);
     if (this.borderRadius != paramFloat)
     {
       this.borderRadius = paramFloat;
       invalidateSelf();
     }
-    AppMethodBeat.o(145088);
+    AppMethodBeat.o(19252);
   }
   
   public void setBorderWidth(float paramFloat)
   {
-    AppMethodBeat.i(145085);
+    AppMethodBeat.i(19249);
     if (this.borderWidth != paramFloat)
     {
       this.borderWidth = paramFloat;
       invalidateSelf();
     }
-    AppMethodBeat.o(145085);
+    AppMethodBeat.o(19249);
   }
   
   public void setBottomLeftBorderRadius(float paramFloat)
   {
-    AppMethodBeat.i(145091);
+    AppMethodBeat.i(19255);
     if (this.bottomLeftBorderRadius != paramFloat)
     {
       this.bottomLeftBorderRadius = paramFloat;
       invalidateSelf();
     }
-    AppMethodBeat.o(145091);
+    AppMethodBeat.o(19255);
   }
   
   public void setBottomRightBorderRadius(float paramFloat)
   {
-    AppMethodBeat.i(145092);
+    AppMethodBeat.i(19256);
     if (this.bottomRightBorderRadius != paramFloat)
     {
       this.bottomRightBorderRadius = paramFloat;
       invalidateSelf();
     }
-    AppMethodBeat.o(145092);
+    AppMethodBeat.o(19256);
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    AppMethodBeat.i(145100);
+    AppMethodBeat.i(19264);
     if (this.insetDrawable != null) {
       this.insetDrawable.setColorFilter(paramColorFilter);
     }
-    AppMethodBeat.o(145100);
+    AppMethodBeat.o(19264);
   }
   
   public void setInsetDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(145083);
+    AppMethodBeat.i(19247);
     this.insetDrawable = paramDrawable;
     invalidateSelf();
-    AppMethodBeat.o(145083);
+    AppMethodBeat.o(19247);
   }
   
   public void setTopLeftBorderRadius(float paramFloat)
   {
-    AppMethodBeat.i(145089);
+    AppMethodBeat.i(19253);
     if (this.topLeftBorderRadius != paramFloat)
     {
       this.topLeftBorderRadius = paramFloat;
       invalidateSelf();
     }
-    AppMethodBeat.o(145089);
+    AppMethodBeat.o(19253);
   }
   
   public void setTopRightBorderRadius(float paramFloat)
   {
-    AppMethodBeat.i(145090);
+    AppMethodBeat.i(19254);
     if (this.topRightBorderRadius != paramFloat)
     {
       this.topRightBorderRadius = paramFloat;
       invalidateSelf();
     }
-    AppMethodBeat.o(145090);
+    AppMethodBeat.o(19254);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKViewBackgroundBorderDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -11,21 +11,21 @@ final class zzn
   
   public final void onFailure(Status paramStatus)
   {
-    AppMethodBeat.i(77002);
+    AppMethodBeat.i(10661);
     this.zzbj.zzd(paramStatus);
-    AppMethodBeat.o(77002);
+    AppMethodBeat.o(10661);
   }
   
   public final void zzi()
   {
-    AppMethodBeat.i(77001);
+    AppMethodBeat.i(10660);
     this.zzbj.setResult(null);
-    AppMethodBeat.o(77001);
+    AppMethodBeat.o(10660);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.accounttransfer.zzn
  * JD-Core Version:    0.7.0.1
  */

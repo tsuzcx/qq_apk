@@ -13,125 +13,123 @@ import java.util.Set;
 final class ai
   implements ServiceConnection
 {
-  private IBinder IT;
-  private final ag KA;
-  private ComponentName Kt;
-  private final Set<ServiceConnection> Ky;
-  private boolean Kz;
-  private int aJ;
+  private IBinder KI;
+  private ComponentName Mi;
+  private final Set<ServiceConnection> Mn;
+  private boolean Mo;
+  private final ag Mp;
+  private int cs;
   
   public ai(ah paramah, ag paramag)
   {
-    this.KA = paramag;
-    this.Ky = new HashSet();
-    this.aJ = 2;
+    this.Mp = paramag;
+    this.Mn = new HashSet();
+    this.cs = 2;
   }
   
   public final void a(ServiceConnection paramServiceConnection)
   {
-    ah.d(this.KB);
-    ah.c(this.KB);
-    this.KA.hx();
-    a.hS();
-    this.Ky.add(paramServiceConnection);
+    ah.d(this.Mq);
+    ah.c(this.Mq);
+    this.Mp.hH();
+    this.Mn.add(paramServiceConnection);
   }
   
   public final void b(ServiceConnection paramServiceConnection)
   {
-    ah.d(this.KB);
-    ah.c(this.KB);
-    a.hT();
-    this.Ky.remove(paramServiceConnection);
+    ah.d(this.Mq);
+    ah.c(this.Mq);
+    this.Mn.remove(paramServiceConnection);
   }
   
   public final boolean c(ServiceConnection paramServiceConnection)
   {
-    return this.Ky.contains(paramServiceConnection);
+    return this.Mn.contains(paramServiceConnection);
   }
   
   public final IBinder getBinder()
   {
-    return this.IT;
+    return this.KI;
   }
   
   public final ComponentName getComponentName()
   {
-    return this.Kt;
+    return this.Mi;
   }
   
   public final int getState()
   {
-    return this.aJ;
+    return this.cs;
   }
   
-  public final boolean hA()
+  public final void hI()
   {
-    return this.Ky.isEmpty();
-  }
-  
-  public final void hy()
-  {
-    this.aJ = 3;
-    ah.d(this.KB);
-    this.Kz = a.a(ah.c(this.KB), this.KA.hx(), this);
-    if (this.Kz)
+    this.cs = 3;
+    ah.d(this.Mq);
+    this.Mo = a.a(ah.c(this.Mq), this.Mp.hH(), this);
+    if (this.Mo)
     {
-      Message localMessage = ah.b(this.KB).obtainMessage(1, this.KA);
-      ah.b(this.KB).sendMessageDelayed(localMessage, ah.e(this.KB));
+      Message localMessage = ah.b(this.Mq).obtainMessage(1, this.Mp);
+      ah.b(this.Mq).sendMessageDelayed(localMessage, ah.e(this.Mq));
       return;
     }
-    this.aJ = 2;
+    this.cs = 2;
     try
     {
-      ah.d(this.KB);
-      a.a(ah.c(this.KB), this);
+      ah.d(this.Mq);
+      a.a(ah.c(this.Mq), this);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException) {}
   }
   
-  public final void hz()
+  public final void hJ()
   {
-    ah.b(this.KB).removeMessages(1, this.KA);
-    ah.d(this.KB);
-    a.a(ah.c(this.KB), this);
-    this.Kz = false;
-    this.aJ = 2;
+    ah.b(this.Mq).removeMessages(1, this.Mp);
+    ah.d(this.Mq);
+    a.a(ah.c(this.Mq), this);
+    this.Mo = false;
+    this.cs = 2;
+  }
+  
+  public final boolean hK()
+  {
+    return this.Mn.isEmpty();
   }
   
   public final boolean isBound()
   {
-    return this.Kz;
+    return this.Mo;
   }
   
   public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    synchronized (ah.a(this.KB))
+    synchronized (ah.a(this.Mq))
     {
-      ah.b(this.KB).removeMessages(1, this.KA);
-      this.IT = paramIBinder;
-      this.Kt = paramComponentName;
-      Iterator localIterator = this.Ky.iterator();
+      ah.b(this.Mq).removeMessages(1, this.Mp);
+      this.KI = paramIBinder;
+      this.Mi = paramComponentName;
+      Iterator localIterator = this.Mn.iterator();
       if (localIterator.hasNext()) {
         ((ServiceConnection)localIterator.next()).onServiceConnected(paramComponentName, paramIBinder);
       }
     }
-    this.aJ = 1;
+    this.cs = 1;
   }
   
   public final void onServiceDisconnected(ComponentName paramComponentName)
   {
-    synchronized (ah.a(this.KB))
+    synchronized (ah.a(this.Mq))
     {
-      ah.b(this.KB).removeMessages(1, this.KA);
-      this.IT = null;
-      this.Kt = paramComponentName;
-      Iterator localIterator = this.Ky.iterator();
+      ah.b(this.Mq).removeMessages(1, this.Mp);
+      this.KI = null;
+      this.Mi = paramComponentName;
+      Iterator localIterator = this.Mn.iterator();
       if (localIterator.hasNext()) {
         ((ServiceConnection)localIterator.next()).onServiceDisconnected(paramComponentName);
       }
     }
-    this.aJ = 2;
+    this.cs = 2;
   }
 }
 

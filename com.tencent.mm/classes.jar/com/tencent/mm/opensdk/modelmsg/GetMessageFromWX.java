@@ -3,6 +3,8 @@ package com.tencent.mm.opensdk.modelmsg;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mm.opensdk.utils.Log;
 
 public final class GetMessageFromWX
 {
@@ -17,9 +19,9 @@ public final class GetMessageFromWX
     
     public Req(Bundle paramBundle)
     {
-      AppMethodBeat.i(128308);
+      AppMethodBeat.i(4008);
       fromBundle(paramBundle);
-      AppMethodBeat.o(128308);
+      AppMethodBeat.o(4008);
     }
     
     public boolean checkArgs()
@@ -29,11 +31,11 @@ public final class GetMessageFromWX
     
     public void fromBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(128310);
+      AppMethodBeat.i(4010);
       super.fromBundle(paramBundle);
       this.lang = paramBundle.getString("_wxapi_getmessage_req_lang");
       this.country = paramBundle.getString("_wxapi_getmessage_req_country");
-      AppMethodBeat.o(128310);
+      AppMethodBeat.o(4010);
     }
     
     public int getType()
@@ -43,11 +45,62 @@ public final class GetMessageFromWX
     
     public void toBundle(Bundle paramBundle)
     {
-      AppMethodBeat.i(128309);
+      AppMethodBeat.i(4009);
       super.toBundle(paramBundle);
       paramBundle.putString("_wxapi_getmessage_req_lang", this.lang);
       paramBundle.putString("_wxapi_getmessage_req_country", this.country);
-      AppMethodBeat.o(128309);
+      AppMethodBeat.o(4009);
+    }
+  }
+  
+  public static class Resp
+    extends BaseResp
+  {
+    private static final String TAG = "MicroMsg.SDK.GetMessageFromWX.Resp";
+    public WXMediaMessage message;
+    
+    public Resp() {}
+    
+    public Resp(Bundle paramBundle)
+    {
+      AppMethodBeat.i(4017);
+      fromBundle(paramBundle);
+      AppMethodBeat.o(4017);
+    }
+    
+    public boolean checkArgs()
+    {
+      AppMethodBeat.i(4020);
+      if (this.message == null)
+      {
+        Log.e("MicroMsg.SDK.GetMessageFromWX.Resp", "checkArgs fail, message is null");
+        AppMethodBeat.o(4020);
+        return false;
+      }
+      boolean bool = this.message.checkArgs();
+      AppMethodBeat.o(4020);
+      return bool;
+    }
+    
+    public void fromBundle(Bundle paramBundle)
+    {
+      AppMethodBeat.i(4018);
+      super.fromBundle(paramBundle);
+      this.message = WXMediaMessage.Builder.fromBundle(paramBundle);
+      AppMethodBeat.o(4018);
+    }
+    
+    public int getType()
+    {
+      return 3;
+    }
+    
+    public void toBundle(Bundle paramBundle)
+    {
+      AppMethodBeat.i(4019);
+      super.toBundle(paramBundle);
+      paramBundle.putAll(WXMediaMessage.Builder.toBundle(this.message));
+      AppMethodBeat.o(4019);
     }
   }
 }

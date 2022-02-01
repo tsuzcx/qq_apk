@@ -1,87 +1,90 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.g.a.gn;
-import com.tencent.mm.g.c.aq;
+import com.tencent.mm.al.n;
+import com.tencent.mm.g.a.hg;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.r;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.plugin.sns.storage.o;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceTitleCategory;
-import com.tencent.mm.ui.q.b;
+import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.r.b;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
 public class SnsNotInterestUI
   extends MMPreference
-  implements com.tencent.mm.ai.f
+  implements com.tencent.mm.al.g
 {
-  private static final String[] rTA = { "sns_expose_reason_not_fav", "sns_expose_reason_too_freq", "sns_expose_reason_too_many_same_content", "sns_expose_reason_marketing", "sns_expose_reason_content_sexy", "sns_expose_reason_rumour", "sns_expose_reason_other" };
-  private static final int[] rTB = { 1, 2, 4, 8, 16, 32, 64 };
-  private static final int[] rTF = { 2131303807, 2131303812, 2131303813, 2131303806, 2131303805, 2131303810, 2131303808 };
-  private com.tencent.mm.ui.base.p ehb;
-  private com.tencent.mm.ui.base.preference.f iLA;
-  private String pHZ;
-  private HashMap<String, Boolean> rTC;
-  private HashMap<Integer, Boolean> rTD;
-  private HashMap<String, Integer> rTE;
-  private TextView rTG;
-  private EditText rTH;
-  private ListView rTI;
-  private LinearLayout rTJ;
-  private int rTK;
-  private int rTL;
-  private long rTM;
-  private boolean rTN;
-  private boolean rTO;
-  r rTP;
+  private static final String[] xCc = { "sns_expose_reason_not_fav", "sns_expose_reason_too_freq", "sns_expose_reason_too_many_same_content", "sns_expose_reason_marketing", "sns_expose_reason_content_sexy", "sns_expose_reason_rumour", "sns_expose_reason_other" };
+  private static final int[] xCd = { 1, 2, 4, 8, 16, 32, 64 };
+  private static final int[] xCh = { 2131763816, 2131763821, 2131763822, 2131763815, 2131763814, 2131763819, 2131763817 };
+  private com.tencent.mm.ui.base.p ftP;
+  private f lxI;
+  private String uKp;
+  private HashMap<String, Boolean> xCe;
+  private HashMap<Integer, Boolean> xCf;
+  private HashMap<String, Integer> xCg;
+  private TextView xCi;
+  private EditText xCj;
+  private ListView xCk;
+  private LinearLayout xCl;
+  private int xCm;
+  private int xCn;
+  private long xCo;
+  private boolean xCp;
+  private boolean xCq;
+  com.tencent.mm.plugin.sns.model.q xCr;
   
   public SnsNotInterestUI()
   {
-    AppMethodBeat.i(39127);
-    this.rTC = new HashMap(rTA.length);
-    this.rTD = new HashMap(rTB.length);
-    this.rTE = new HashMap(rTB.length);
-    this.pHZ = null;
-    this.rTN = false;
-    this.rTO = false;
-    this.ehb = null;
-    this.rTP = null;
-    AppMethodBeat.o(39127);
+    AppMethodBeat.i(98923);
+    this.xCe = new HashMap(xCc.length);
+    this.xCf = new HashMap(xCd.length);
+    this.xCg = new HashMap(xCd.length);
+    this.uKp = null;
+    this.xCp = false;
+    this.xCq = false;
+    this.ftP = null;
+    this.xCr = null;
+    AppMethodBeat.o(98923);
   }
   
-  private void cvG()
+  private void dBE()
   {
     int k = 0;
-    AppMethodBeat.i(39129);
-    Object localObject1 = rTA;
+    AppMethodBeat.i(98925);
+    Object localObject1 = xCc;
     int j = localObject1.length;
     int i = 0;
     while (i < j)
     {
       Object localObject2 = localObject1[i];
-      this.rTC.put(localObject2, Boolean.FALSE);
+      this.xCe.put(localObject2, Boolean.FALSE);
       i += 1;
     }
-    localObject1 = rTB;
+    localObject1 = xCd;
     int m = localObject1.length;
     i = 0;
     for (;;)
@@ -91,20 +94,20 @@ public class SnsNotInterestUI
         break;
       }
       j = localObject1[i];
-      this.rTD.put(Integer.valueOf(j), Boolean.FALSE);
+      this.xCf.put(Integer.valueOf(j), Boolean.FALSE);
       i += 1;
     }
-    while (j < rTB.length)
+    while (j < xCd.length)
     {
-      this.rTE.put(rTA[j], Integer.valueOf(rTB[j]));
+      this.xCg.put(xCc[j], Integer.valueOf(xCd[j]));
       j += 1;
     }
-    AppMethodBeat.o(39129);
+    AppMethodBeat.o(98925);
   }
   
   public int getLayoutId()
   {
-    return 2130970822;
+    return 2131495545;
   }
   
   public int getResourceId()
@@ -114,48 +117,75 @@ public class SnsNotInterestUI
   
   public void initView()
   {
-    AppMethodBeat.i(39131);
+    AppMethodBeat.i(98927);
     super.initView();
-    setMMTitle(2131303816);
-    setBackBtn(new SnsNotInterestUI.1(this));
-    this.rTG = ((TextView)findViewById(2131827970));
-    this.rTH = ((EditText)findViewById(2131827971));
-    this.rTI = ((ListView)findViewById(16908298));
-    this.rTJ = ((LinearLayout)findViewById(2131827969));
-    this.rTJ.setOnClickListener(new SnsNotInterestUI.2(this));
-    this.rTH.setVisibility(8);
-    this.rTG.setVisibility(8);
-    this.iLA = getPreferenceScreen();
-    if (this.iLA == null) {
-      ab.e("MicroMsg.SnsNotInterestUI", "initPref error, PreferenceScreen is null!");
+    setMMTitle(2131763825);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(98919);
+        SnsNotInterestUI.this.finish();
+        AppMethodBeat.o(98919);
+        return true;
+      }
+    });
+    this.xCi = ((TextView)findViewById(2131304977));
+    this.xCj = ((EditText)findViewById(2131304978));
+    this.xCk = ((ListView)findViewById(16908298));
+    this.xCl = ((LinearLayout)findViewById(2131299605));
+    this.xCl.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(98920);
+        SnsNotInterestUI.a(SnsNotInterestUI.this).requestFocus();
+        SnsNotInterestUI.this.hideVKB();
+        AppMethodBeat.o(98920);
+      }
+    });
+    this.xCj.setVisibility(8);
+    this.xCi.setVisibility(8);
+    this.lxI = getPreferenceScreen();
+    if (this.lxI == null) {
+      ad.e("MicroMsg.SnsNotInterestUI", "initPref error, PreferenceScreen is null!");
     }
     for (;;)
     {
-      addTextOptionMenu(0, getString(2131297683), new SnsNotInterestUI.3(this), null, q.b.zby);
+      addTextOptionMenu(0, getString(2131756595), new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(98921);
+          SnsNotInterestUI.b(SnsNotInterestUI.this);
+          AppMethodBeat.o(98921);
+          return true;
+        }
+      }, null, r.b.FOB);
       enableOptionMenu(0, false);
-      AppMethodBeat.o(39131);
+      AppMethodBeat.o(98927);
       return;
       Object localObject;
-      if (this.iLA.atx("sns_expose_desc") == null)
+      if (this.lxI.aKk("sns_expose_desc") == null)
       {
         localObject = new PreferenceTitleCategory(this);
-        ((Preference)localObject).setTitle(2131303803);
+        ((Preference)localObject).setTitle(2131763812);
         ((Preference)localObject).setKey("sns_expose_desc");
-        this.iLA.b((Preference)localObject);
+        this.lxI.b((Preference)localObject);
       }
       int i = 0;
-      while (i < rTA.length)
+      while (i < xCc.length)
       {
-        localObject = rTA[i];
-        int j = rTF[i];
-        if (this.iLA.atx((String)localObject) == null)
+        localObject = xCc[i];
+        int j = xCh[i];
+        if (this.lxI.aKk((String)localObject) == null)
         {
           Preference localPreference = new Preference(this);
           localPreference.setTitle(j);
           localPreference.setKey((String)localObject);
-          localPreference.setLayoutResource(2130970179);
-          localPreference.setWidgetLayoutResource(2130970189);
-          this.iLA.b(localPreference);
+          localPreference.setLayoutResource(2131494804);
+          localPreference.setWidgetLayoutResource(2131494814);
+          this.lxI.b(localPreference);
         }
         i += 1;
       }
@@ -164,79 +194,79 @@ public class SnsNotInterestUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(39128);
+    AppMethodBeat.i(98924);
     super.onCreate(paramBundle);
-    this.rTK = getIntent().getIntExtra("sns_info_not_interest_scene", 0);
-    this.rTM = getIntent().getLongExtra("sns_info_svr_id", 0L);
-    if (this.rTM != 0L)
+    this.xCm = getIntent().getIntExtra("sns_info_not_interest_scene", 0);
+    this.xCo = getIntent().getLongExtra("sns_info_svr_id", 0L);
+    if (this.xCo != 0L)
     {
-      paramBundle = ag.cpf().lZ(this.rTM).field_userName;
+      paramBundle = af.dtu().th(this.xCo).field_userName;
       if (paramBundle != null)
       {
-        g.RM();
-        paramBundle = ((j)g.E(j.class)).YA().arv(paramBundle);
-        if (paramBundle.dqC != 2) {
+        com.tencent.mm.kernel.g.afC();
+        paramBundle = ((k)com.tencent.mm.kernel.g.ab(k.class)).apM().aHX(paramBundle);
+        if (paramBundle.evp != 2) {
           break label141;
         }
-        rTF[1] = 2131303811;
+        xCh[1] = 2131763820;
       }
     }
     for (;;)
     {
-      g.RM();
-      g.RK().eHt.a(218, this);
-      cvG();
+      com.tencent.mm.kernel.g.afC();
+      com.tencent.mm.kernel.g.afA().gcy.a(218, this);
+      dBE();
       initView();
-      AppMethodBeat.o(39128);
+      AppMethodBeat.o(98924);
       return;
       label141:
-      if (paramBundle.dqC == 1) {
-        rTF[1] = 2131303812;
+      if (paramBundle.evp == 1) {
+        xCh[1] = 2131763821;
       }
     }
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(39130);
+    AppMethodBeat.i(98926);
     super.onDestroy();
-    cvG();
-    g.RM();
-    g.RK().eHt.b(218, this);
-    gn localgn = new gn();
-    localgn.cvv.cvw = this.rTN;
-    localgn.cvv.cvx = this.rTM;
-    a.ymk.l(localgn);
-    AppMethodBeat.o(39130);
+    dBE();
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.b(218, this);
+    hg localhg = new hg();
+    localhg.dkS.dkT = this.xCp;
+    localhg.dkS.dkU = this.xCo;
+    a.ESL.l(localhg);
+    AppMethodBeat.o(98926);
   }
   
-  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(39133);
+    AppMethodBeat.i(98928);
     if (paramPreference == null)
     {
-      AppMethodBeat.o(39133);
+      AppMethodBeat.o(98928);
       return false;
     }
     String str = paramPreference.mKey;
-    if (this.rTC.containsKey(str))
+    if (this.xCe.containsKey(str))
     {
-      boolean bool = ((Boolean)this.rTC.get(str)).booleanValue();
+      boolean bool = ((Boolean)this.xCe.get(str)).booleanValue();
       label79:
       int i;
       if (bool)
       {
-        paramPreference.setWidgetLayoutResource(2130970189);
+        paramPreference.setWidgetLayoutResource(2131494814);
         paramf.notifyDataSetChanged();
         if (bool) {
           break label274;
         }
         bool = true;
-        this.rTC.put(str, Boolean.valueOf(bool));
-        i = ((Integer)this.rTE.get(str)).intValue();
-        this.rTD.put(Integer.valueOf(i), Boolean.valueOf(bool));
-        ab.d("MicroMsg.SnsNotInterestUI", "click: %s, notInterestType: %d, isCheck: %b", new Object[] { str, Integer.valueOf(i), Boolean.valueOf(bool) });
-        paramf = this.rTC.values().iterator();
+        this.xCe.put(str, Boolean.valueOf(bool));
+        i = ((Integer)this.xCg.get(str)).intValue();
+        this.xCf.put(Integer.valueOf(i), Boolean.valueOf(bool));
+        ad.d("MicroMsg.SnsNotInterestUI", "click: %s, notInterestType: %d, isCheck: %b", new Object[] { str, Integer.valueOf(i), Boolean.valueOf(bool) });
+        paramf = this.xCe.values().iterator();
         while (paramf.hasNext()) {
           if (((Boolean)paramf.next()).booleanValue())
           {
@@ -250,19 +280,19 @@ public class SnsNotInterestUI
             if ((!bool) || (!str.equals("sns_expose_reason_other"))) {
               break label294;
             }
-            this.rTH.setVisibility(0);
-            this.rTG.setVisibility(0);
-            this.rTH.requestFocus();
-            this.rTO = true;
+            this.xCj.setVisibility(0);
+            this.xCi.setVisibility(0);
+            this.xCj.requestFocus();
+            this.xCq = true;
             showVKB();
           }
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(39133);
+        AppMethodBeat.o(98928);
         return true;
-        paramPreference.setWidgetLayoutResource(2130970188);
+        paramPreference.setWidgetLayoutResource(2131494813);
         break;
         label274:
         bool = false;
@@ -273,48 +303,48 @@ public class SnsNotInterestUI
         enableOptionMenu(0, false);
         break label208;
         label294:
-        if (!((Boolean)this.rTC.get("sns_expose_reason_other")).booleanValue())
+        if (!((Boolean)this.xCe.get("sns_expose_reason_other")).booleanValue())
         {
-          this.rTH.setVisibility(8);
-          this.rTG.setVisibility(8);
-          this.rTI.requestFocus();
-          this.rTO = false;
+          this.xCj.setVisibility(8);
+          this.xCi.setVisibility(8);
+          this.xCk.requestFocus();
+          this.xCq = false;
           hideVKB();
         }
         else
         {
-          this.rTI.requestFocus();
+          this.xCk.requestFocus();
           hideVKB();
         }
       }
     }
-    AppMethodBeat.o(39133);
+    AppMethodBeat.o(98928);
     return false;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(39134);
-    ab.d("MicroMsg.SnsNotInterestUI", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (paramm.getType() == 218)
+    AppMethodBeat.i(98929);
+    ad.d("MicroMsg.SnsNotInterestUI", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (paramn.getType() == 218)
     {
-      this.ehb.dismiss();
-      this.ehb = null;
-      if (((r)paramm).type == 9)
+      this.ftP.dismiss();
+      this.ftP = null;
+      if (((com.tencent.mm.plugin.sns.model.q)paramn).type == 9)
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          this.rTN = true;
-          Toast.makeText(this, 2131303815, 1).show();
+          this.xCp = true;
+          Toast.makeText(this, 2131763824, 1).show();
           finish();
-          AppMethodBeat.o(39134);
+          AppMethodBeat.o(98929);
           return;
         }
-        this.rTN = false;
-        Toast.makeText(this, 2131303804, 1).show();
+        this.xCp = false;
+        Toast.makeText(this, 2131763813, 1).show();
       }
     }
-    AppMethodBeat.o(39134);
+    AppMethodBeat.o(98929);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -325,7 +355,7 @@ public class SnsNotInterestUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsNotInterestUI
  * JD-Core Version:    0.7.0.1
  */

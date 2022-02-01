@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:background="@color/vy" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:padding="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/g2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="//TODO 这里应该展示 Matrix 上报的 JSON 数据" />
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/dg4" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dlg" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/jn" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <CheckBox android:id="@id/cfs" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/jn" android:checked="true" style="@style/lj" />
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/y4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rq" />
+    </LinearLayout>
 </LinearLayout>

@@ -3,6 +3,11 @@ package com.tencent.tinker.loader.hotplug;
 public class UnsupportedEnvironmentException
   extends UnsupportedOperationException
 {
+  public UnsupportedEnvironmentException(String paramString)
+  {
+    super(paramString);
+  }
+  
   public UnsupportedEnvironmentException(Throwable paramThrowable)
   {
     super(paramThrowable);

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import org.json.JSONObject;
 
@@ -12,10 +12,10 @@ final class g$6
   
   public final void g(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(19256);
+    AppMethodBeat.i(23324);
     if ((paramInt != 13) || (paramVarArgs == null) || (paramVarArgs.length < 2) || (!(paramVarArgs[0] instanceof String)) || (!(paramVarArgs[1] instanceof Integer)))
     {
-      AppMethodBeat.o(19256);
+      AppMethodBeat.o(23324);
       return;
     }
     Object localObject = (String)paramVarArgs[0];
@@ -35,12 +35,12 @@ final class g$6
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", localException, "", new Object[0]);
-        ab.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "JSON decode failed in device ConnState notify callback");
+        ad.printErrStackTrace("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", localException, "", new Object[0]);
+        ad.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "JSON decode failed in device ConnState notify callback");
       }
-      this.lEP.lEE.put(paramVarArgs, Boolean.FALSE);
-      ab.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "device not connect stateCode = ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(19256);
+      this.oVB.oVq.put(paramVarArgs, Boolean.FALSE);
+      ad.e("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "device not connect stateCode = ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(23324);
       return;
     }
     switch (paramInt)
@@ -48,16 +48,16 @@ final class g$6
     }
     for (;;)
     {
-      AppMethodBeat.o(19256);
+      AppMethodBeat.o(23324);
       return;
-      this.lEP.lEE.put(paramVarArgs, Boolean.TRUE);
-      ab.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "device connect");
+      this.oVB.oVq.put(paramVarArgs, Boolean.TRUE);
+      ad.i("MicroMsg.exdevice.ExdeviceSendDataToNetworkDevice", "device connect");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.g.6
  * JD-Core Version:    0.7.0.1
  */

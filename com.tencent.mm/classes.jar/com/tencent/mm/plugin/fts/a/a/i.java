@@ -1,102 +1,109 @@
 package com.tencent.mm.plugin.fts.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mm.plugin.fts.a.l;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.io.UnsupportedEncodingException;
+import java.lang.ref.WeakReference;
 
-public class i
+public abstract class i
+  extends a
 {
-  private static final AtomicInteger mSM;
-  public ak handler;
-  public int hdl;
-  public final int id;
-  public String mSN;
-  public String mSO;
-  public int[] mSP;
-  public int[] mSQ;
-  public int mSR;
-  public HashSet<String> mSS;
-  public Comparator<l> mST;
-  public com.tencent.mm.plugin.fts.a.l mSU;
-  public String query;
-  public int scene;
-  public String talker;
+  private WeakReference<l> rmb;
+  public j rpD;
+  public k rpE;
   
-  static
+  public i(j paramj)
   {
-    AppMethodBeat.i(114271);
-    mSM = new AtomicInteger(0);
-    AppMethodBeat.o(114271);
+    this.rpD = paramj;
+    this.rmb = new WeakReference(paramj.rpO);
+    this.rpD.rpO = null;
   }
   
-  public i()
+  protected void a(k paramk)
   {
-    AppMethodBeat.i(114267);
-    this.hdl = 0;
-    this.query = null;
-    this.mSN = null;
-    this.mSO = null;
-    this.talker = null;
-    this.mSP = null;
-    this.mSQ = null;
-    this.mSR = 2147483647;
-    this.mSS = new HashSet();
-    this.mST = null;
-    this.mSU = null;
-    this.handler = null;
-    this.scene = -1;
-    this.id = mSM.incrementAndGet();
-    AppMethodBeat.o(114267);
+    paramk.roS = h.bc(this.rpD.query, false);
+    paramk.bRZ = -5;
   }
   
-  public static i a(String paramString, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt, HashSet<String> paramHashSet, Comparator<l> paramComparator, com.tencent.mm.plugin.fts.a.l paraml, ak paramak)
+  public final boolean execute()
   {
-    AppMethodBeat.i(114268);
-    i locali = new i();
-    locali.query = paramString;
-    locali.mSN = null;
-    locali.mSP = paramArrayOfInt1;
-    locali.mSQ = paramArrayOfInt2;
-    locali.mSR = paramInt;
-    locali.mSS = paramHashSet;
-    locali.mST = paramComparator;
-    locali.mSU = paraml;
-    locali.handler = paramak;
-    AppMethodBeat.o(114268);
-    return locali;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(114269);
-    if (this == paramObject)
+    Object localObject1 = this.rpD;
+    if (!bt.isNullOrNil(((j)localObject1).query)) {}
+    try
     {
-      AppMethodBeat.o(114269);
-      return true;
+      ((j)localObject1).query = new String(((j)localObject1).query.getBytes("UTF8"), "UTF8");
+      label37:
+      this.rpE = new k(this.rpD);
+      try
+      {
+        this.rpE.rpP = this;
+        a(this.rpE);
+        this.rpE.bRZ = 0;
+        if (this.rpD.handler == null)
+        {
+          localObject1 = (l)this.rmb.get();
+          if (localObject1 != null) {
+            ((l)localObject1).b(this.rpE);
+          }
+          return true;
+        }
+        this.rpD.handler.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(131702);
+            l locall = (l)i.a(i.this).get();
+            if (locall != null) {
+              locall.b(i.b(i.this));
+            }
+            AppMethodBeat.o(131702);
+          }
+        });
+        return true;
+      }
+      catch (Exception localException)
+      {
+        if ((localException instanceof InterruptedException))
+        {
+          this.rpE.bRZ = 1;
+          throw localException;
+        }
+      }
+      finally
+      {
+        if (this.rpD.handler == null)
+        {
+          l locall = (l)this.rmb.get();
+          if (locall != null) {
+            locall.b(this.rpE);
+          }
+        }
+        for (;;)
+        {
+          throw localObject2;
+          this.rpE.bRZ = -1;
+          break;
+          this.rpD.handler.post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(131702);
+              l locall = (l)i.a(i.this).get();
+              if (locall != null) {
+                locall.b(i.b(i.this));
+              }
+              AppMethodBeat.o(131702);
+            }
+          });
+        }
+      }
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass()))
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      AppMethodBeat.o(114269);
-      return false;
+      break label37;
     }
-    paramObject = (i)paramObject;
-    if (this.id != paramObject.id)
-    {
-      AppMethodBeat.o(114269);
-      return false;
-    }
-    AppMethodBeat.o(114269);
-    return true;
-  }
-  
-  public String toString()
-  {
-    AppMethodBeat.i(114270);
-    String str = String.format("{id: %d, query: %s}", new Object[] { Integer.valueOf(this.id), this.query });
-    AppMethodBeat.o(114270);
-    return str;
   }
 }
 

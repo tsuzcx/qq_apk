@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class eo
   extends b
 {
-  public eo.a csr;
-  public b css;
+  public a dgY;
+  public b dgZ;
   
   public eo()
   {
@@ -16,22 +16,29 @@ public final class eo
   
   private eo(byte paramByte)
   {
-    AppMethodBeat.i(15760);
-    this.csr = new eo.a();
-    this.css = new b();
-    this.ymq = false;
+    AppMethodBeat.i(116006);
+    this.dgY = new a();
+    this.dgZ = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15760);
+    AppMethodBeat.o(116006);
+  }
+  
+  public static final class a
+  {
+    public String cLR;
+    public byte[] data;
+    public String dfM;
   }
   
   public static final class b
   {
-    public boolean cqS;
+    public boolean dfO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.eo
  * JD-Core Version:    0.7.0.1
  */

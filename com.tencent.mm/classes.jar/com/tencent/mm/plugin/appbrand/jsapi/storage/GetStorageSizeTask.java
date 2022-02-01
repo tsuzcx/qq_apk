@@ -3,7 +3,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.storage;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.luggage.a.e;
+import com.tencent.luggage.sdk.customize.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.d;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 
 public class GetStorageSizeTask
@@ -11,69 +13,69 @@ public class GetStorageSizeTask
 {
   public static final Parcelable.Creator<GetStorageSizeTask> CREATOR;
   public String appId;
-  public Runnable hxp;
+  public Runnable jwt;
   public int size;
   
   static
   {
-    AppMethodBeat.i(102021);
-    CREATOR = new GetStorageSizeTask.1();
-    AppMethodBeat.o(102021);
+    AppMethodBeat.i(147227);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(147227);
   }
   
   public GetStorageSizeTask() {}
   
   protected GetStorageSizeTask(Parcel paramParcel)
   {
-    AppMethodBeat.i(102020);
-    f(paramParcel);
-    AppMethodBeat.o(102020);
+    AppMethodBeat.i(147226);
+    e(paramParcel);
+    AppMethodBeat.o(147226);
   }
   
-  public final void ata()
+  public final void aEA()
   {
-    AppMethodBeat.i(102016);
-    if (e.q(com.tencent.luggage.sdk.customize.b.class) == null) {}
-    for (com.tencent.mm.plugin.appbrand.appstorage.b localb = null; localb == null; localb = ((com.tencent.luggage.sdk.customize.b)e.q(com.tencent.luggage.sdk.customize.b.class)).wf())
+    AppMethodBeat.i(147223);
+    if (this.jwt != null) {
+      this.jwt.run();
+    }
+    AppMethodBeat.o(147223);
+  }
+  
+  public final void aEz()
+  {
+    AppMethodBeat.i(147222);
+    if (e.K(a.class) == null) {}
+    for (d locald = null; locald == null; locald = ((a)e.K(a.class)).Dg())
     {
-      aBp();
-      AppMethodBeat.o(102016);
+      aXw();
+      AppMethodBeat.o(147222);
       return;
     }
-    this.size = localb.yT(this.appId);
-    aBp();
-    AppMethodBeat.o(102016);
+    this.size = locald.EE(this.appId);
+    aXw();
+    AppMethodBeat.o(147222);
   }
   
-  public final void atb()
+  public final void e(Parcel paramParcel)
   {
-    AppMethodBeat.i(102017);
-    if (this.hxp != null) {
-      this.hxp.run();
-    }
-    AppMethodBeat.o(102017);
-  }
-  
-  public final void f(Parcel paramParcel)
-  {
-    AppMethodBeat.i(102019);
+    AppMethodBeat.i(147225);
     this.appId = paramParcel.readString();
     this.size = paramParcel.readInt();
-    AppMethodBeat.o(102019);
+    AppMethodBeat.o(147225);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(102018);
+    AppMethodBeat.i(147224);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.appId);
     paramParcel.writeInt(this.size);
-    AppMethodBeat.o(102018);
+    AppMethodBeat.o(147224);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.GetStorageSizeTask
  * JD-Core Version:    0.7.0.1
  */

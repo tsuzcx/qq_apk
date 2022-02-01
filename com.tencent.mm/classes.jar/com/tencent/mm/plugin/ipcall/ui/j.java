@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -7,6 +9,7 @@ import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.text.Editable;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -14,444 +17,580 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.model.an;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.ipcall.a.b.b.a;
-import com.tencent.mm.plugin.ipcall.a.f;
-import com.tencent.mm.plugin.ipcall.a.g;
-import com.tencent.mm.plugin.ipcall.a.i;
+import com.tencent.mm.model.aq;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.ipcall.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.ipcall.model.a.a.b;
+import com.tencent.mm.plugin.ipcall.model.f;
+import com.tencent.mm.plugin.ipcall.model.g;
+import com.tencent.mm.plugin.voip.model.v2protocal;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class j
-  implements b.a, e
+  implements e, a.b
 {
-  ImageView ehv;
-  private String gJX;
-  private TextView gpr;
+  ImageView fuj;
+  private TextView fxX;
+  private String ixE;
   private String mCountryCode;
-  DialPad nQw;
-  private String nSM;
-  private String nSN;
-  private String nSO;
-  private int nSP;
-  private int nSQ;
-  Bitmap nWM;
-  EditText nWV;
-  TextView nWW;
-  ImageView nWX;
-  private IPCallFuncButton nWY;
-  private IPCallFuncButton nWZ;
-  private IPCallFuncButton nXa;
-  private ImageButton nXb;
-  public TextView nXc;
-  public View nXd;
-  private ImageButton nXe;
-  private int nXf;
-  String nXg;
-  IPCallTalkUI nXh;
-  com.tencent.mm.plugin.ipcall.c nXi;
-  j.a nXj;
-  private long nXk;
-  long nXl;
-  boolean nXm;
-  boolean nXn;
-  private AudioManager nXo;
-  private boolean nXp;
-  private boolean nXq;
-  private boolean nXr;
+  DialPad sEr;
+  private String sGH;
+  private String sGI;
+  private String sGJ;
+  private int sGK;
+  private int sGL;
+  Bitmap sKG;
+  EditText sKP;
+  TextView sKQ;
+  ImageView sKR;
+  private IPCallFuncButton sKS;
+  private IPCallFuncButton sKT;
+  private IPCallFuncButton sKU;
+  private ImageButton sKV;
+  public TextView sKW;
+  public View sKX;
+  private ImageButton sKY;
+  private int sKZ;
+  String sLa;
+  IPCallTalkUI sLb;
+  com.tencent.mm.plugin.ipcall.c sLd;
+  a sLe;
+  private long sLf;
+  long sLg;
+  boolean sLh;
+  boolean sLi;
+  private AudioManager sLj;
+  private boolean sLk;
+  private boolean sLl;
+  private boolean sLm;
+  boolean sLn;
+  boolean sLo;
   
   public j(IPCallTalkUI paramIPCallTalkUI)
   {
-    AppMethodBeat.i(22411);
-    this.nXf = -1;
-    this.nXl = -1L;
-    this.nXm = false;
-    this.nXn = false;
-    this.nXo = null;
-    this.nXp = false;
-    this.nXq = true;
-    this.nXr = false;
-    this.nXh = paramIPCallTalkUI;
-    this.nXi = i.bJs();
-    this.nXi.nLC = this;
-    AppMethodBeat.o(22411);
+    AppMethodBeat.i(26034);
+    this.sKZ = -1;
+    this.sLg = -1L;
+    this.sLh = false;
+    this.sLi = false;
+    this.sLj = null;
+    this.sLk = false;
+    this.sLl = true;
+    this.sLm = false;
+    this.sLn = false;
+    this.sLo = false;
+    this.sLb = paramIPCallTalkUI;
+    this.sLd = com.tencent.mm.plugin.ipcall.model.i.cHp();
+    this.sLd.szu = this;
+    AppMethodBeat.o(26034);
   }
   
-  private void bKA()
+  private void Fx(int paramInt)
   {
-    AppMethodBeat.i(22422);
-    this.nXf = com.tencent.mm.plugin.ipcall.b.a.eW(this.nSN, this.nSM);
-    xV(1);
-    this.nXi.a(this.gJX, this.nSM, this.nSO, this.nXg, this.nSN, this.nXf, this.nSP, this.nSQ);
-    ab.i("MicroMsg.TalkUIController", "startLaunchTalk, callNumber: %s", new Object[] { this.nXg });
-    i.bJp().setCountryCode(this.mCountryCode);
-    AppMethodBeat.o(22422);
-  }
-  
-  private void bKB()
-  {
-    AppMethodBeat.i(22423);
-    if (i.bJn().nMs != null)
+    AppMethodBeat.i(26050);
+    switch (paramInt)
     {
-      this.gJX = i.bJn().nMs.nickname;
-      this.nXg = i.bJn().nMs.nNB;
-      this.nSO = i.bJn().nMs.cGY;
-      this.nSN = i.bJn().nMs.cJk;
-      this.nSM = i.bJn().nMs.nNA;
-      this.nXf = i.bJn().nMs.nND;
-      ab.i("MicroMsg.TalkUIController", "restoreParam nickname:%s,fianlPhoneNumber:%s,toUserName:%s,contactId:%s,phoneNumber:%s,phoneType:%d", new Object[] { this.gJX, this.nXg, this.nSO, this.nSN, this.nSM, Integer.valueOf(this.nXf) });
     }
-    AppMethodBeat.o(22423);
-  }
-  
-  private void bKC()
-  {
-    AppMethodBeat.i(22424);
-    i.bJr();
-    ab.i("MicroMsg.TalkUIController", f.stateToString(i.bJr().mCurrentState));
-    xV(i.bJr().mCurrentState);
-    bKE();
-    bKD();
-    AppMethodBeat.o(22424);
-  }
-  
-  private void bKD()
-  {
-    AppMethodBeat.i(22425);
-    if (i.bJr().bJi())
+    for (;;)
     {
-      IPCallFuncButton localIPCallFuncButton = this.nXa;
-      i.bJq();
-      localIPCallFuncButton.setChecked(com.tencent.mm.plugin.ipcall.a.b.a.KM());
-      this.nWY.setChecked(i.bJq().nNL.efg);
+      AppMethodBeat.o(26050);
+      return;
+      AppMethodBeat.o(26050);
+      return;
+      String str1 = com.tencent.mm.plugin.ipcall.a.c.FA(com.tencent.mm.plugin.ipcall.model.i.cHk().sAl.sBn);
+      if (this.sKZ != -1)
+      {
+        String str2 = com.tencent.mm.plugin.ipcall.a.a.Fy(this.sKZ);
+        this.fxX.setText(str1 + this.sLb.getString(2131760497, new Object[] { str2 }));
+        AppMethodBeat.o(26050);
+        return;
+      }
+      this.fxX.setText(str1 + this.sLb.getString(2131760496));
+      AppMethodBeat.o(26050);
+      return;
+      AppMethodBeat.o(26050);
+      return;
+      this.fxX.setText(String.format("%02d:%02d", new Object[] { Long.valueOf(this.sLf / 60L), Long.valueOf(this.sLf % 60L) }));
+      AppMethodBeat.o(26050);
+      return;
+      this.fxX.setText(2131760500);
     }
-    AppMethodBeat.o(22425);
   }
   
-  private void bKE()
+  private void cIA()
   {
-    AppMethodBeat.i(22426);
-    String str1 = i.bJn().nMs.nNB;
-    String str2 = i.bJn().nMs.nNC;
-    if (!bo.isNullOrNil(str2))
+    AppMethodBeat.i(26048);
+    if (com.tencent.mm.plugin.ipcall.model.i.cHo().cHe())
     {
-      Rw(str2);
-      this.nWW.setText(com.tencent.mm.plugin.ipcall.b.a.RG(str2));
-      AppMethodBeat.o(22426);
+      this.sKU.setChecked(com.tencent.mm.plugin.ipcall.model.i.cHn().sBG.isSpeakerphoneOn());
+      this.sKS.setChecked(com.tencent.mm.plugin.ipcall.model.i.cHn().sBG.sAR.fqj);
+    }
+    AppMethodBeat.o(26048);
+  }
+  
+  private void cIB()
+  {
+    AppMethodBeat.i(26049);
+    String str1 = com.tencent.mm.plugin.ipcall.model.i.cHk().sAl.sBz;
+    String str2 = com.tencent.mm.plugin.ipcall.model.i.cHk().sAl.sBA;
+    if (!bt.isNullOrNil(str2))
+    {
+      aeq(str2);
+      this.sKQ.setText(com.tencent.mm.plugin.ipcall.a.a.aeA(str2));
+      AppMethodBeat.o(26049);
       return;
     }
-    if (!bo.isNullOrNil(str1))
+    if (!bt.isNullOrNil(str1))
     {
-      Rw(str1);
-      this.nWW.setText(com.tencent.mm.plugin.ipcall.b.a.RG(str1));
+      aeq(str1);
+      this.sKQ.setText(com.tencent.mm.plugin.ipcall.a.a.aeA(str1));
     }
-    AppMethodBeat.o(22426);
+    AppMethodBeat.o(26049);
   }
   
-  private void bKu()
+  private void cIr()
   {
-    AppMethodBeat.i(22413);
-    com.tencent.mm.plugin.report.service.h.qsU.kvStat(12058, this.mCountryCode);
-    com.tencent.mm.ui.base.h.a(this.nXh, this.nXh.getString(2131297832), this.nXh.getString(2131297833), false, new j.6(this));
-    AppMethodBeat.o(22413);
-  }
-  
-  private void bKv()
-  {
-    AppMethodBeat.i(22415);
-    if ((!bo.isNullOrNil(this.mCountryCode)) && (!com.tencent.mm.plugin.ipcall.b.a.RE(this.nSM)))
+    AppMethodBeat.i(26036);
+    com.tencent.mm.plugin.report.service.h.vKh.kvStat(12058, this.mCountryCode);
+    com.tencent.mm.ui.base.h.a(this.sLb, this.sLb.getString(2131756761), this.sLb.getString(2131756762), false, new DialogInterface.OnClickListener()
     {
-      this.nXg = (this.mCountryCode + this.nSM);
-      if (!this.nXg.startsWith("+"))
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
-        this.nXg = ("+" + this.nXg);
-        AppMethodBeat.o(22415);
+        AppMethodBeat.i(26027);
+        j.this.sLb.finish();
+        j.this.sLb = null;
+        AppMethodBeat.o(26027);
+      }
+    });
+    AppMethodBeat.o(26036);
+  }
+  
+  private void cIs()
+  {
+    AppMethodBeat.i(26038);
+    if ((!bt.isNullOrNil(this.mCountryCode)) && (!com.tencent.mm.plugin.ipcall.a.a.aey(this.sGH)))
+    {
+      this.sLa = (this.mCountryCode + this.sGH);
+      if (!this.sLa.startsWith("+"))
+      {
+        this.sLa = ("+" + this.sLa);
+        AppMethodBeat.o(26038);
       }
     }
     else
     {
-      this.nXg = this.nSM;
+      this.sLa = this.sGH;
     }
-    AppMethodBeat.o(22415);
+    AppMethodBeat.o(26038);
   }
   
-  private void bKw()
+  private void cIt()
   {
-    AppMethodBeat.i(22416);
-    i.bJq().cmc = this.nXh;
-    i.bJq().bJF();
-    i.bJq().nNP = this;
-    i.bJq().a(this);
-    AppMethodBeat.o(22416);
+    AppMethodBeat.i(26039);
+    com.tencent.mm.plugin.ipcall.model.i.cHn().imP = this.sLb;
+    com.tencent.mm.plugin.ipcall.model.i.cHn().cHC();
+    com.tencent.mm.plugin.ipcall.model.i.cHn().a(this);
+    com.tencent.mm.plugin.ipcall.model.i.cHn().a(this);
+    AppMethodBeat.o(26039);
   }
   
-  private void bKx()
+  private void cIu()
   {
-    AppMethodBeat.i(22417);
-    this.nWV.setKeyListener(null);
-    this.nWV.setHorizontallyScrolling(true);
-    this.nQw.setVisibility(4);
-    this.nQw.setTalkUIMode(true);
-    bKy();
-    bKz();
-    AppMethodBeat.o(22417);
+    AppMethodBeat.i(26040);
+    this.sKP.setKeyListener(null);
+    this.sKP.setHorizontallyScrolling(true);
+    this.sEr.setVisibility(4);
+    this.sEr.setTalkUIMode(true);
+    cIv();
+    cIw();
+    AppMethodBeat.o(26040);
   }
   
-  private void bKy()
+  private void cIv()
   {
-    AppMethodBeat.i(22419);
-    if (!bo.isNullOrNil(this.nXg)) {
-      Rw(this.nXg);
+    AppMethodBeat.i(26042);
+    if (!bt.isNullOrNil(this.sLa)) {
+      aeq(this.sLa);
     }
-    if (d.fv(16))
+    if (d.lf(16))
     {
-      this.nWV.setTypeface(Typeface.create("sans-serif-light", 0));
-      this.nWW.setTypeface(Typeface.create("sans-serif-light", 0));
+      this.sKP.setTypeface(Typeface.create("sans-serif-light", 0));
+      this.sKQ.setTypeface(Typeface.create("sans-serif-light", 0));
     }
-    if (!bo.isNullOrNil(this.nSN)) {
-      this.nWM = com.tencent.mm.plugin.ipcall.b.a.f(this.nXh, this.nSN, true);
+    if (!bt.isNullOrNil(this.sGI)) {
+      this.sKG = com.tencent.mm.plugin.ipcall.a.a.h(this.sLb, this.sGI, true);
     }
-    if ((this.nWM == null) && (!bo.isNullOrNil(this.nSM)) && (com.tencent.mm.plugin.ipcall.b.a.aqt())) {
-      this.nWM = com.tencent.mm.plugin.ipcall.b.a.aI(this.nXh, this.nSM);
+    if ((this.sKG == null) && (!bt.isNullOrNil(this.sGH)) && (com.tencent.mm.plugin.ipcall.a.a.aIO())) {
+      this.sKG = com.tencent.mm.plugin.ipcall.a.a.aL(this.sLb, this.sGH);
     }
-    if ((this.nWM == null) && (!bo.isNullOrNil(this.nSO))) {
-      this.nWM = com.tencent.mm.ah.b.d(this.nSO, 480, 480, 4);
+    if ((this.sKG == null) && (!bt.isNullOrNil(this.sGJ))) {
+      this.sKG = com.tencent.mm.ak.c.e(this.sGJ, 480, 480, 4);
     }
-    if (this.nWM == null)
+    if (this.sKG == null)
     {
-      this.nWX.setVisibility(0);
-      this.ehv.setVisibility(8);
+      this.sKR.setVisibility(0);
+      this.fuj.setVisibility(8);
     }
-    if (this.nWM != null)
+    if (this.sKG != null)
     {
-      this.nWX.setVisibility(8);
-      this.ehv.setVisibility(0);
-      this.ehv.setImageBitmap(this.nWM);
+      this.sKR.setVisibility(8);
+      this.fuj.setVisibility(0);
+      this.fuj.setImageBitmap(this.sKG);
     }
-    this.nXe.setOnClickListener(new j.8(this));
-    this.nXa.setClickCallback(new j.9(this));
-    this.nWY.setClickCallback(new j.10(this));
-    this.nWZ.setClickCallback(new j.11(this));
-    this.nXb.setOnClickListener(new j.12(this));
-    AppMethodBeat.o(22419);
-  }
-  
-  private void bKz()
-  {
-    AppMethodBeat.i(22420);
-    this.nQw.setDialButtonClickListener(new DialPad.a()
+    this.sKY.setOnClickListener(new View.OnClickListener()
     {
-      public final void Rh(String paramAnonymousString)
+      public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(22400);
-        String str2 = j.this.nWV.getText().toString();
-        if (bo.isNullOrNil(str2)) {
-          j.this.nXl = System.currentTimeMillis();
+        AppMethodBeat.i(26029);
+        com.tencent.mm.plugin.ipcall.model.i.cHp().cGK();
+        AppMethodBeat.o(26029);
+      }
+    });
+    this.sKU.setClickCallback(new IPCallFuncButton.a()
+    {
+      public final void mA(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(26030);
+        ad.d("MicroMsg.TalkUIController", "switch speaker, isChecked: %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        if (com.tencent.mm.plugin.ipcall.model.i.cHo().cHe())
+        {
+          j.this.sLh = paramAnonymousBoolean;
+          j.this.sLi = paramAnonymousBoolean;
+          com.tencent.mm.plugin.ipcall.model.i.cHn().mw(paramAnonymousBoolean);
+          com.tencent.mm.plugin.report.service.h.vKh.f(12057, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0) });
+          AppMethodBeat.o(26030);
+          return;
+        }
+        if ((!com.tencent.mm.plugin.ipcall.model.i.cHu().Nc()) && (!com.tencent.mm.plugin.ipcall.model.i.cHo().cHg())) {
+          com.tencent.mm.plugin.ipcall.model.i.cHu().rW(paramAnonymousBoolean);
+        }
+        AppMethodBeat.o(26030);
+      }
+    });
+    this.sKS.setClickCallback(new IPCallFuncButton.a()
+    {
+      public final void mA(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(26031);
+        com.tencent.mm.plugin.ipcall.model.d.a locala;
+        if (com.tencent.mm.plugin.ipcall.model.i.cHo().cHf())
+        {
+          ad.d("MicroMsg.TalkUIController", "switch mute, isChecked: %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+          locala = com.tencent.mm.plugin.ipcall.model.i.cHl();
+          if (!paramAnonymousBoolean) {
+            break label131;
+          }
+        }
+        label131:
+        for (int i = locala.sBX.setAppCmd(412);; i = locala.sBX.setAppCmd(413))
+        {
+          if (i < 0) {
+            ad.e("MicroMsg.IPCallEngineManager", "tryMuteMicrophone ret:".concat(String.valueOf(i)));
+          }
+          com.tencent.mm.plugin.ipcall.model.i.cHn().sBG.sAR.setMute(paramAnonymousBoolean);
+          com.tencent.mm.plugin.report.service.h.vKh.f(12057, new Object[] { Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+          AppMethodBeat.o(26031);
+          return;
+        }
+      }
+    });
+    this.sKT.setClickCallback(new IPCallFuncButton.a()
+    {
+      public final void mA(boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(26032);
+        if (paramAnonymousBoolean)
+        {
+          localj = j.this;
+          if (localj.sKG == null) {
+            localj.fuj.setVisibility(8);
+          }
+          for (;;)
+          {
+            localj.fuj.setVisibility(8);
+            localj.sKR.setVisibility(8);
+            localj.sKP.setText("");
+            localj.sKQ.setText("");
+            localj.sEr.setVisibility(0);
+            com.tencent.mm.plugin.report.service.h.vKh.f(12057, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
+            AppMethodBeat.o(26032);
+            return;
+            localj.fuj.setVisibility(4);
+          }
+        }
+        j localj = j.this;
+        if (localj.sKG != null)
+        {
+          localj.fuj.setVisibility(0);
+          localj.sKR.setVisibility(8);
+        }
+        for (;;)
+        {
+          localj.aeq(localj.sLa);
+          localj.sEr.setVisibility(4);
+          break;
+          localj.sKR.setVisibility(0);
+          localj.fuj.setVisibility(8);
+        }
+      }
+    });
+    this.sKV.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(26033);
+        j.b(j.this);
+        AppMethodBeat.o(26033);
+      }
+    });
+    AppMethodBeat.o(26042);
+  }
+  
+  private void cIw()
+  {
+    AppMethodBeat.i(26043);
+    this.sEr.setDialButtonClickListener(new DialPad.a()
+    {
+      public final void aeb(String paramAnonymousString)
+      {
+        AppMethodBeat.i(26023);
+        String str2 = j.this.sKP.getText().toString();
+        if (bt.isNullOrNil(str2)) {
+          j.this.sLg = System.currentTimeMillis();
         }
         long l = System.currentTimeMillis();
         String str1 = str2;
-        if (l - j.this.nXl >= 3000L) {
+        if (l - j.this.sLg >= 3000L) {
           str1 = str2 + " ";
         }
         str1 = str1 + paramAnonymousString;
-        j.this.nXl = l;
-        j.this.eV(str1, "");
-        com.tencent.mm.plugin.ipcall.c.QV(paramAnonymousString);
-        com.tencent.mm.plugin.report.service.h.qsU.e(12057, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
-        AppMethodBeat.o(22400);
+        j.this.sLg = l;
+        j.this.gW(str1, "");
+        com.tencent.mm.plugin.ipcall.c.adP(paramAnonymousString);
+        com.tencent.mm.plugin.report.service.h.vKh.f(12057, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
+        AppMethodBeat.o(26023);
       }
       
-      public final void Ri(String paramAnonymousString) {}
+      public final void aec(String paramAnonymousString) {}
     });
-    AppMethodBeat.o(22420);
+    AppMethodBeat.o(26043);
   }
   
-  private void d(String paramString1, String paramString2, int paramInt, String paramString3)
+  private void cIx()
   {
-    AppMethodBeat.i(22414);
-    bKF();
-    if (!bo.isNullOrNil(paramString1)) {}
+    AppMethodBeat.i(26045);
+    this.sKZ = com.tencent.mm.plugin.ipcall.a.a.gX(this.sGI, this.sGH);
+    Fx(1);
+    this.sLd.a(this.ixE, this.sGH, this.sGJ, this.sLa, this.sGI, this.sKZ, this.sGK, this.sGL);
+    ad.i("MicroMsg.TalkUIController", "startLaunchTalk, callNumber: %s", new Object[] { this.sLa });
+    com.tencent.mm.plugin.ipcall.model.i.cHm().setCountryCode(this.mCountryCode);
+    AppMethodBeat.o(26045);
+  }
+  
+  private void cIy()
+  {
+    AppMethodBeat.i(26046);
+    if (com.tencent.mm.plugin.ipcall.model.i.cHk().sAl != null)
+    {
+      this.ixE = com.tencent.mm.plugin.ipcall.model.i.cHk().sAl.nickname;
+      this.sLa = com.tencent.mm.plugin.ipcall.model.i.cHk().sAl.sBz;
+      this.sGJ = com.tencent.mm.plugin.ipcall.model.i.cHk().sAl.dxK;
+      this.sGI = com.tencent.mm.plugin.ipcall.model.i.cHk().sAl.dAc;
+      this.sGH = com.tencent.mm.plugin.ipcall.model.i.cHk().sAl.sBy;
+      this.sKZ = com.tencent.mm.plugin.ipcall.model.i.cHk().sAl.sBB;
+      ad.i("MicroMsg.TalkUIController", "restoreParam nickname:%s,fianlPhoneNumber:%s,toUserName:%s,contactId:%s,phoneNumber:%s,phoneType:%d", new Object[] { this.ixE, this.sLa, this.sGJ, this.sGI, this.sGH, Integer.valueOf(this.sKZ) });
+    }
+    AppMethodBeat.o(26046);
+  }
+  
+  private void cIz()
+  {
+    AppMethodBeat.i(26047);
+    com.tencent.mm.plugin.ipcall.model.i.cHo();
+    ad.i("MicroMsg.TalkUIController", f.stateToString(com.tencent.mm.plugin.ipcall.model.i.cHo().ksb));
+    Fx(com.tencent.mm.plugin.ipcall.model.i.cHo().ksb);
+    cIB();
+    cIA();
+    AppMethodBeat.o(26047);
+  }
+  
+  private void f(String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    AppMethodBeat.i(26037);
+    cIC();
+    if (!bt.isNullOrNil(paramString1)) {}
     for (;;)
     {
       if ((2 == paramInt) && (paramString2 != null))
       {
-        this.gpr.setText(paramString2);
-        AppMethodBeat.o(22414);
+        this.fxX.setText(paramString2);
+        AppMethodBeat.o(26037);
         return;
-        if (bo.isNullOrNil(paramString3)) {
-          paramString1 = this.nXh.getString(2131300831);
+        if (bt.isNullOrNil(paramString3)) {
+          paramString1 = this.sLb.getString(2131760432);
         }
       }
       else
       {
         if ((1 == paramInt) && (paramString2 != null)) {
-          com.tencent.mm.ui.base.h.a(this.nXh, paramString2, paramString1, this.nXh.getString(2131300832), false, new j.7(this));
+          com.tencent.mm.ui.base.h.a(this.sLb, paramString2, paramString1, this.sLb.getString(2131760433), false, new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(26028);
+              j.this.sLb.finish();
+              AppMethodBeat.o(26028);
+            }
+          });
         }
-        AppMethodBeat.o(22414);
+        AppMethodBeat.o(26037);
         return;
       }
       paramString1 = paramString3;
     }
   }
   
-  private void xV(int paramInt)
+  final void aeq(String paramString)
   {
-    AppMethodBeat.i(22427);
-    switch (paramInt)
+    AppMethodBeat.i(26041);
+    if (!bt.isNullOrNil(this.ixE))
     {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(22427);
-      return;
-      AppMethodBeat.o(22427);
-      return;
-      String str1 = com.tencent.mm.plugin.ipcall.b.c.xY(i.bJn().nMs.nNp);
-      if (this.nXf != -1)
-      {
-        String str2 = com.tencent.mm.plugin.ipcall.b.a.xW(this.nXf);
-        this.gpr.setText(str1 + this.nXh.getString(2131300896, new Object[] { str2 }));
-        AppMethodBeat.o(22427);
-        return;
-      }
-      this.gpr.setText(str1 + this.nXh.getString(2131300895));
-      AppMethodBeat.o(22427);
-      return;
-      AppMethodBeat.o(22427);
-      return;
-      this.gpr.setText(String.format("%02d:%02d", new Object[] { Long.valueOf(this.nXk / 60L), Long.valueOf(this.nXk % 60L) }));
-      AppMethodBeat.o(22427);
-      return;
-      this.gpr.setText(2131300899);
-    }
-  }
-  
-  final void Rw(String paramString)
-  {
-    AppMethodBeat.i(22418);
-    if (!bo.isNullOrNil(this.gJX))
-    {
-      eV(this.gJX, com.tencent.mm.plugin.ipcall.b.a.RG(paramString));
-      AppMethodBeat.o(22418);
+      gW(this.ixE, com.tencent.mm.plugin.ipcall.a.a.aeA(paramString));
+      AppMethodBeat.o(26041);
       return;
     }
-    eV(com.tencent.mm.plugin.ipcall.b.a.RG(paramString), "");
-    AppMethodBeat.o(22418);
+    gW(com.tencent.mm.plugin.ipcall.a.a.aeA(paramString), "");
+    AppMethodBeat.o(26041);
   }
   
   public final void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(22412);
-    this.nXp = this.nXh.getIntent().getBooleanExtra("IPCallTalkUI_isFromMiniNotification", false);
-    ab.i("MicroMsg.TalkUIController", "onCreate, mNickname: %s, mPhoneNumber: %s, mContactId: %s, mCountryCode: %s, toUsername: %s, isFromMinimize: %b", new Object[] { paramString1, paramString2, paramString3, paramString4, paramString5, Boolean.valueOf(this.nXp) });
-    this.nWX = ((ImageView)this.nXh.findViewById(2131825230));
-    this.ehv = ((ImageView)this.nXh.findViewById(2131825231));
-    this.nWV = ((EditText)this.nXh.findViewById(2131825223));
-    this.gpr = ((TextView)this.nXh.findViewById(2131825220));
-    this.nWW = ((TextView)this.nXh.findViewById(2131825228));
-    this.nWY = ((IPCallFuncButton)this.nXh.findViewById(2131825225));
-    this.nWZ = ((IPCallFuncButton)this.nXh.findViewById(2131825226));
-    this.nXa = ((IPCallFuncButton)this.nXh.findViewById(2131825227));
-    this.nXb = ((ImageButton)this.nXh.findViewById(2131825232));
-    this.nXe = ((ImageButton)this.nXh.findViewById(2131825233));
-    this.nXc = ((TextView)this.nXh.findViewById(2131825222));
-    this.nXd = this.nXh.findViewById(2131825221);
-    this.nQw = ((DialPad)this.nXh.findViewById(2131825219));
-    if (this.nXp)
+    AppMethodBeat.i(26035);
+    this.sLk = this.sLb.getIntent().getBooleanExtra("IPCallTalkUI_isFromMiniNotification", false);
+    ad.i("MicroMsg.TalkUIController", "onCreate, mNickname: %s, mPhoneNumber: %s, mContactId: %s, mCountryCode: %s, toUsername: %s, isFromMinimize: %b", new Object[] { paramString1, paramString2, paramString3, paramString4, paramString5, Boolean.valueOf(this.sLk) });
+    this.sKR = ((ImageView)this.sLb.findViewById(2131305655));
+    this.fuj = ((ImageView)this.sLb.findViewById(2131305653));
+    this.sKP = ((EditText)this.sLb.findViewById(2131305660));
+    this.fxX = ((TextView)this.sLb.findViewById(2131305663));
+    this.sKQ = ((TextView)this.sLb.findViewById(2131305661));
+    this.sKS = ((IPCallFuncButton)this.sLb.findViewById(2131305659));
+    this.sKT = ((IPCallFuncButton)this.sLb.findViewById(2131305656));
+    this.sKU = ((IPCallFuncButton)this.sLb.findViewById(2131305662));
+    this.sKV = ((ImageButton)this.sLb.findViewById(2131305658));
+    this.sKY = ((ImageButton)this.sLb.findViewById(2131301125));
+    this.sKW = ((TextView)this.sLb.findViewById(2131306581));
+    this.sKX = this.sLb.findViewById(2131306582);
+    this.sEr = ((DialPad)this.sLb.findViewById(2131299111));
+    if (this.sLk)
     {
-      bKB();
-      bKw();
-      bKx();
-      bKC();
-      AppMethodBeat.o(22412);
+      cIy();
+      cIt();
+      cIu();
+      cIz();
+      AppMethodBeat.o(26035);
       return;
     }
-    if (i.bJr().bJh())
+    if (com.tencent.mm.plugin.ipcall.model.i.cHo().cHd())
     {
-      com.tencent.mm.ui.base.h.a(this.nXh, 2131300736, 2131297087, false, new j.1(this));
-      AppMethodBeat.o(22412);
-      return;
-    }
-    bKw();
-    this.gJX = paramString1;
-    this.nSM = paramString2;
-    this.nSN = paramString3;
-    this.mCountryCode = paramString4;
-    this.nSP = paramInt1;
-    this.nSQ = paramInt2;
-    if (!bo.isNullOrNil(this.nSM)) {
-      this.nSM = com.tencent.mm.plugin.ipcall.b.c.RK(this.nSM);
-    }
-    if (bo.isNullOrNil(this.mCountryCode)) {
-      if (com.tencent.mm.plugin.ipcall.b.a.RE(this.nSM))
+      com.tencent.mm.ui.base.h.a(this.sLb, 2131760337, 2131755906, false, new DialogInterface.OnClickListener()
       {
-        paramString1 = com.tencent.mm.plugin.ipcall.b.a.RC(this.nSM);
-        if (!bo.isNullOrNil(paramString1)) {
-          break label578;
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(26022);
+          j.this.sLb.finish();
+          AppMethodBeat.o(26022);
         }
-        this.nSM = com.tencent.mm.plugin.ipcall.b.a.RF(this.nSM);
+      });
+      AppMethodBeat.o(26035);
+      return;
+    }
+    cIt();
+    this.ixE = paramString1;
+    this.sGH = paramString2;
+    this.sGI = paramString3;
+    this.mCountryCode = paramString4;
+    this.sGK = paramInt1;
+    this.sGL = paramInt2;
+    if (!bt.isNullOrNil(this.sGH)) {
+      this.sGH = com.tencent.mm.plugin.ipcall.a.c.aeE(this.sGH);
+    }
+    if (bt.isNullOrNil(this.mCountryCode)) {
+      if (com.tencent.mm.plugin.ipcall.a.a.aey(this.sGH))
+      {
+        paramString1 = com.tencent.mm.plugin.ipcall.a.a.aew(this.sGH);
+        if (!bt.isNullOrNil(paramString1)) {
+          break label581;
+        }
+        this.sGH = com.tencent.mm.plugin.ipcall.a.a.aez(this.sGH);
       }
     }
-    for (this.mCountryCode = com.tencent.mm.plugin.ipcall.b.c.bKM();; this.mCountryCode = paramString1)
+    for (this.mCountryCode = com.tencent.mm.plugin.ipcall.a.c.cIJ();; this.mCountryCode = paramString1)
     {
-      ab.i("MicroMsg.TalkUIController", "final mCountryCode: %s", new Object[] { this.mCountryCode });
-      com.tencent.mm.plugin.ipcall.a.c.bIZ().QX(this.mCountryCode);
-      if (bo.isNullOrNil(this.gJX)) {
-        this.gJX = com.tencent.mm.plugin.ipcall.b.a.aF(this.nXh, this.nSM);
+      ad.i("MicroMsg.TalkUIController", "final mCountryCode: %s", new Object[] { this.mCountryCode });
+      com.tencent.mm.plugin.ipcall.model.c.cGV().adR(this.mCountryCode);
+      if (bt.isNullOrNil(this.ixE)) {
+        this.ixE = com.tencent.mm.plugin.ipcall.a.a.aI(this.sLb, this.sGH);
       }
-      this.nSO = paramString5;
-      bKv();
-      ab.i("MicroMsg.TalkUIController", "final call mPhoneNumber: %s", new Object[] { this.nXg });
-      if (!com.tencent.mm.plugin.ipcall.a.c.bIZ().xE(bo.getInt(this.mCountryCode, -1))) {
+      this.sGJ = paramString5;
+      cIs();
+      ad.i("MicroMsg.TalkUIController", "final call mPhoneNumber: %s", new Object[] { this.sLa });
+      if (!com.tencent.mm.plugin.ipcall.model.c.cGV().Fg(bt.getInt(this.mCountryCode, -1))) {
         break;
       }
-      bKu();
-      AppMethodBeat.o(22412);
+      cIr();
+      AppMethodBeat.o(26035);
       return;
-      label578:
-      this.nSM = com.tencent.mm.plugin.ipcall.b.a.RH(this.nSM);
+      label581:
+      this.sGH = com.tencent.mm.plugin.ipcall.a.a.aeB(this.sGH);
     }
-    if (!at.isNetworkConnected(this.nXh))
+    if (!ay.isNetworkConnected(this.sLb))
     {
-      Toast.makeText(this.nXh, 2131304713, 1).show();
-      this.nXh.finish();
-      AppMethodBeat.o(22412);
+      Toast.makeText(this.sLb, 2131764895, 1).show();
+      this.sLb.finish();
+      AppMethodBeat.o(26035);
       return;
     }
-    long l1 = this.nXh.getSharedPreferences("IPCall_LastInputPref", 0).getLong("IPCall_LastInvite", -1L);
+    long l1 = this.sLb.getSharedPreferences("IPCall_LastInputPref", 0).getLong("IPCall_LastInvite", -1L);
     long l2 = System.currentTimeMillis();
     if ((l1 > l2) && (l1 != -1L))
     {
-      ab.i("MicroMsg.TalkUIController", "onDisasterHappen");
-      com.tencent.mm.ui.base.h.a(this.nXh, this.nXh.getString(2131300841, new Object[] { String.valueOf((l1 - l2) / 1000L + 1L) }), this.nXh.getString(2131300831), this.nXh.getString(2131300832), false, new j.5(this));
-      AppMethodBeat.o(22412);
+      ad.i("MicroMsg.TalkUIController", "onDisasterHappen");
+      com.tencent.mm.ui.base.h.a(this.sLb, this.sLb.getString(2131760442, new Object[] { String.valueOf((l1 - l2) / 1000L + 1L) }), this.sLb.getString(2131760432), this.sLb.getString(2131760433), false, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(26026);
+          j.this.sLb.finish();
+          AppMethodBeat.o(26026);
+        }
+      });
+      AppMethodBeat.o(26035);
       return;
     }
-    bKx();
-    if ((!this.nXp) || (!i.bJr().bJh())) {
-      bKA();
+    cIu();
+    if ((!this.sLk) || (!com.tencent.mm.plugin.ipcall.model.i.cHo().cHd())) {
+      cIx();
     }
-    this.nXr = false;
-    AppMethodBeat.o(22412);
+    this.sLm = false;
+    AppMethodBeat.o(26035);
   }
   
-  public final void bIG()
+  public final void cGB()
   {
     int j = 0;
-    AppMethodBeat.i(22428);
-    ab.i("MicroMsg.TalkUIController", "onInviteSuccess");
-    String str1 = i.bJn().nMs.nNB;
-    String str2 = i.bJn().nMs.nNC;
-    if ((!bo.isNullOrNil(str1)) && (!bo.isNullOrNil(str2)) && (!str1.equals(str2)))
+    AppMethodBeat.i(26051);
+    ad.i("MicroMsg.TalkUIController", "onInviteSuccess");
+    String str1 = com.tencent.mm.plugin.ipcall.model.i.cHk().sAl.sBz;
+    String str2 = com.tencent.mm.plugin.ipcall.model.i.cHk().sAl.sBA;
+    if ((!bt.isNullOrNil(str1)) && (!bt.isNullOrNil(str2)) && (!str1.equals(str2)))
     {
-      ab.i("MicroMsg.TalkUIController", "toPhoneNumber:%s,serverRetPhoneNumber:%s", new Object[] { str1, str2 });
-      Rw(str2);
+      ad.i("MicroMsg.TalkUIController", "toPhoneNumber:%s,serverRetPhoneNumber:%s", new Object[] { str1, str2 });
+      aeq(str2);
     }
-    ab.i("MicroMsg.TalkUIController", "callFlag:" + i.bJn().nMs.nNp);
-    int k = i.bJn().nMs.nNp;
+    ad.i("MicroMsg.TalkUIController", "callFlag:" + com.tencent.mm.plugin.ipcall.model.i.cHk().sAl.sBn);
+    int k = com.tencent.mm.plugin.ipcall.model.i.cHk().sAl.sBn;
     int i = j;
     if ((k & 0x1) > 0)
     {
@@ -466,175 +605,195 @@ public final class j
     }
     if (i != 0)
     {
-      ab.i("MicroMsg.TalkUIController", "isNotFree");
-      com.tencent.mm.ui.base.h.a(this.nXh, 2131300911, 2131300912, 2131300910, 2131300909, true, null, new j.3(this));
+      ad.i("MicroMsg.TalkUIController", "isNotFree");
+      com.tencent.mm.ui.base.h.a(this.sLb, 2131760512, 2131760513, 2131760511, 2131760510, true, null, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(26024);
+          ad.i("MicroMsg.TalkUIController", "user choose end this call because isNotFree");
+          j.b(j.this);
+          AppMethodBeat.o(26024);
+        }
+      });
     }
-    xV(3);
-    AppMethodBeat.o(22428);
+    Fx(3);
+    AppMethodBeat.o(26051);
   }
   
-  public final void bIH()
+  public final void cGC()
   {
-    AppMethodBeat.i(22429);
-    ab.d("MicroMsg.TalkUIController", "onStartRing");
-    if (i.bJr().bJi())
+    AppMethodBeat.i(26052);
+    ad.d("MicroMsg.TalkUIController", "onStartRing");
+    if (com.tencent.mm.plugin.ipcall.model.i.cHo().cHe())
     {
-      this.nXm = this.nXa.isChecked();
-      this.nXn = this.nXa.isChecked();
-      i.bJq().iE(this.nXa.isChecked());
+      this.sLh = this.sKU.isChecked();
+      this.sLi = this.sKU.isChecked();
+      com.tencent.mm.plugin.ipcall.model.i.cHn().mw(this.sKU.isChecked());
     }
-    AppMethodBeat.o(22429);
+    AppMethodBeat.o(26052);
   }
   
-  public final void bIU()
+  public final void cGP()
   {
-    AppMethodBeat.i(22430);
-    ab.d("MicroMsg.TalkUIController", "onUserAccept");
-    if (i.bJr().bJi())
+    AppMethodBeat.i(26053);
+    ad.d("MicroMsg.TalkUIController", "onUserAccept");
+    if (com.tencent.mm.plugin.ipcall.model.i.cHo().cHe())
     {
-      this.nXm = this.nXa.isChecked();
-      this.nXn = this.nXa.isChecked();
-      i.bJq().iE(this.nXa.isChecked());
+      this.sLh = this.sKU.isChecked();
+      this.sLi = this.sKU.isChecked();
+      com.tencent.mm.plugin.ipcall.model.i.cHn().mw(this.sKU.isChecked());
     }
-    if (i.bJr().bJj()) {
-      i.bJq().nNL.setMute(this.nWY.isChecked());
+    if (com.tencent.mm.plugin.ipcall.model.i.cHo().cHf()) {
+      com.tencent.mm.plugin.ipcall.model.i.cHn().sBG.sAR.setMute(this.sKS.isChecked());
     }
-    AppMethodBeat.o(22430);
+    AppMethodBeat.o(26053);
   }
   
-  public final void bIV()
+  public final void cGQ()
   {
-    AppMethodBeat.i(22431);
-    ab.d("MicroMsg.TalkUIController", "onOthersideShutdown");
-    bKF();
-    xV(10);
-    aw.getNotification().cancel(42);
-    if (this.nXj != null) {
-      this.nXj.iN(true);
+    AppMethodBeat.i(26054);
+    ad.d("MicroMsg.TalkUIController", "onOthersideShutdown");
+    cIC();
+    Fx(10);
+    az.getNotification().cancel(42);
+    if (this.sLe != null) {
+      this.sLe.mC(true);
     }
-    AppMethodBeat.o(22431);
+    AppMethodBeat.o(26054);
   }
   
-  public final void bIW()
+  public final void cGR()
   {
-    AppMethodBeat.i(22436);
-    this.nXh.finish();
-    AppMethodBeat.o(22436);
+    AppMethodBeat.i(26059);
+    this.sLb.finish();
+    AppMethodBeat.o(26059);
   }
   
-  public final void bIX()
+  public final void cGS()
   {
-    AppMethodBeat.i(22435);
-    this.nXk = i.bJs().bIR();
-    xV(5);
-    AppMethodBeat.o(22435);
+    AppMethodBeat.i(26058);
+    this.sLf = com.tencent.mm.plugin.ipcall.model.i.cHp().cGM();
+    Fx(5);
+    AppMethodBeat.o(26058);
   }
   
-  public final void bKF()
+  public final void cIC()
   {
-    AppMethodBeat.i(22437);
-    if (this.nXc != null) {
-      this.nXc.setVisibility(4);
+    AppMethodBeat.i(26060);
+    if (this.sKW != null) {
+      this.sKW.setVisibility(4);
     }
-    if (this.nXd != null) {
-      this.nXd.setVisibility(4);
+    if (this.sKX != null) {
+      this.sKX.setVisibility(4);
     }
-    AppMethodBeat.o(22437);
+    AppMethodBeat.o(26060);
   }
   
-  public final void d(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public final void f(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    AppMethodBeat.i(22432);
-    ab.d("MicroMsg.TalkUIController", "onError, error: %d", new Object[] { Integer.valueOf(paramInt1) });
+    AppMethodBeat.i(26055);
+    ad.d("MicroMsg.TalkUIController", "onError, error: %d", new Object[] { Integer.valueOf(paramInt1) });
     if (paramInt2 == 1) {
-      this.nXq = false;
+      this.sLl = false;
     }
     if (paramInt1 == 8) {
       if (paramInt2 == 1)
       {
-        if (!bo.isNullOrNil(paramString1)) {
-          break label172;
+        if (!bt.isNullOrNil(paramString1)) {
+          break label173;
         }
-        paramString1 = this.nXh.getString(2131300831);
+        paramString1 = this.sLb.getString(2131760432);
       }
     }
-    label172:
+    label173:
     for (;;)
     {
-      com.tencent.mm.ui.base.h.a(this.nXh, paramString2, paramString1, this.nXh.getString(2131300832), false, new j.4(this));
+      com.tencent.mm.ui.base.h.a(this.sLb, paramString2, paramString1, this.sLb.getString(2131760433), false, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(26025);
+          j.this.sLb.finish();
+          AppMethodBeat.o(26025);
+        }
+      });
       for (;;)
       {
-        aw.getNotification().cancel(42);
-        if ((this.nXj != null) && (!this.nXr)) {
-          this.nXj.iN(this.nXq);
+        az.getNotification().cancel(42);
+        if ((this.sLe != null) && (!this.sLm)) {
+          this.sLe.mC(this.sLl);
         }
-        AppMethodBeat.o(22432);
+        AppMethodBeat.o(26055);
         return;
-        d(paramString1, paramString2, paramInt2, this.nXh.getString(2131300830));
+        f(paramString1, paramString2, paramInt2, this.sLb.getString(2131760431));
         continue;
-        d(paramString1, paramString2, paramInt2, null);
+        f(paramString1, paramString2, paramInt2, null);
       }
     }
   }
   
-  final void eV(String paramString1, String paramString2)
+  final void gW(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(22421);
-    this.nWV.setText(paramString1);
-    if (!bo.isNullOrNil(paramString1)) {
-      this.nWV.setSelection(this.nWV.getText().length() - 1);
+    AppMethodBeat.i(26044);
+    this.sKP.setText(paramString1);
+    if (!bt.isNullOrNil(paramString1)) {
+      this.sKP.setSelection(this.sKP.getText().length() - 1);
     }
-    this.nWW.setText(paramString2);
-    AppMethodBeat.o(22421);
+    this.sKQ.setText(paramString2);
+    AppMethodBeat.o(26044);
   }
   
-  public final void iH(boolean paramBoolean)
+  public final void mu(boolean paramBoolean)
   {
-    AppMethodBeat.i(22433);
-    ab.d("MicroMsg.TalkUIController", "onHeadsetPlugStateChange, isPlugged: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (i.bJr().bJi())
+    AppMethodBeat.i(26056);
+    ad.d("MicroMsg.TalkUIController", "onHeadsetPlugStateChange, isPlugged: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (com.tencent.mm.plugin.ipcall.model.i.cHo().cHe())
     {
       if (paramBoolean)
       {
-        i.bJq();
-        this.nXm = com.tencent.mm.plugin.ipcall.a.b.a.KM();
-        i.bJq().iE(false);
-        this.nXa.setEnable(false);
-        AppMethodBeat.o(22433);
+        this.sLh = com.tencent.mm.plugin.ipcall.model.i.cHn().sBG.isSpeakerphoneOn();
+        com.tencent.mm.plugin.ipcall.model.i.cHn().mw(false);
+        this.sKU.setEnable(false);
+        AppMethodBeat.o(26056);
         return;
       }
-      i.bJq().iE(this.nXm);
-      this.nXa.setEnable(true);
-      this.nXa.setChecked(this.nXm);
+      com.tencent.mm.plugin.ipcall.model.i.cHn().mw(this.sLh);
+      this.sKU.setEnable(true);
+      this.sKU.setChecked(this.sLh);
     }
-    AppMethodBeat.o(22433);
+    AppMethodBeat.o(26056);
   }
   
-  public final void iI(boolean paramBoolean)
+  public final void mv(boolean paramBoolean)
   {
-    AppMethodBeat.i(22434);
-    ab.d("MicroMsg.TalkUIController", "onBluetoothPlugStateChange, isPlugged: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (i.bJr().bJi())
+    AppMethodBeat.i(26057);
+    ad.d("MicroMsg.TalkUIController", "onBluetoothPlugStateChange, isPlugged: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (com.tencent.mm.plugin.ipcall.model.i.cHo().cHe())
     {
       if (paramBoolean)
       {
-        i.bJq();
-        this.nXn = com.tencent.mm.plugin.ipcall.a.b.a.KM();
-        i.bJq().iE(false);
-        this.nXa.setEnable(false);
-        AppMethodBeat.o(22434);
+        this.sLi = com.tencent.mm.plugin.ipcall.model.i.cHn().sBG.isSpeakerphoneOn();
+        com.tencent.mm.plugin.ipcall.model.i.cHn().mw(false);
+        this.sKU.setEnable(false);
+        AppMethodBeat.o(26057);
         return;
       }
-      i.bJq().iE(this.nXn);
-      this.nXa.setEnable(true);
-      this.nXa.setChecked(this.nXn);
+      com.tencent.mm.plugin.ipcall.model.i.cHn().mw(this.sLi);
+      this.sKU.setEnable(true);
+      this.sKU.setChecked(this.sLi);
     }
-    AppMethodBeat.o(22434);
+    AppMethodBeat.o(26057);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void mC(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.j
  * JD-Core Version:    0.7.0.1
  */

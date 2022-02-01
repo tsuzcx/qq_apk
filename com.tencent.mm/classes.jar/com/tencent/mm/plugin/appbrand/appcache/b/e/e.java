@@ -2,45 +2,45 @@ package com.tencent.mm.plugin.appbrand.appcache.b.e;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bv.b;
-import com.tencent.mm.protocal.protobuf.azn;
-import com.tencent.mm.protocal.protobuf.se;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.protocal.protobuf.bkx;
+import com.tencent.mm.protocal.protobuf.uw;
 import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.List;
 
 public class e
-  extends com.tencent.mm.plugin.appbrand.r.c<f>
+  extends com.tencent.mm.plugin.appbrand.z.c<f>
 {
-  public static final String[] fkl;
+  public static final String[] gLs;
   
   static
   {
-    AppMethodBeat.i(129515);
-    fkl = new String[] { j.getCreateSQLs(f.fkk, "PredownloadIssueLaunchWxaAppResponse") };
-    AppMethodBeat.o(129515);
+    AppMethodBeat.i(44442);
+    gLs = new String[] { j.getCreateSQLs(f.gLr, "PredownloadIssueLaunchWxaAppResponse") };
+    AppMethodBeat.o(44442);
   }
   
   public e(com.tencent.mm.sdk.e.e parame)
   {
-    super(parame, f.fkk, "PredownloadIssueLaunchWxaAppResponse", f.INDEX_CREATE);
+    super(parame, f.gLr, "PredownloadIssueLaunchWxaAppResponse", f.INDEX_CREATE);
   }
   
   public final boolean a(byte[] paramArrayOfByte, String paramString, List<Integer> paramList, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(129513);
-    if ((bo.ce(paramArrayOfByte)) || (bo.isNullOrNil(paramString)))
+    AppMethodBeat.i(44440);
+    if ((bt.cw(paramArrayOfByte)) || (bt.isNullOrNil(paramString)))
     {
-      ab.i("MicroMsg.AppBrand.Predownload.DuplicateLaunchWxaAppCacheStorage", "setLaunchData, invalid input %s", new Object[] { paramString });
-      AppMethodBeat.o(129513);
+      ad.i("MicroMsg.AppBrand.Predownload.DuplicateLaunchWxaAppCacheStorage", "setLaunchData, invalid input %s", new Object[] { paramString });
+      AppMethodBeat.o(44440);
       return false;
     }
-    if (bo.es(paramList))
+    if (bt.gL(paramList))
     {
-      ab.e("MicroMsg.AppBrand.Predownload.DuplicateLaunchWxaAppCacheStorage", "setLaunchData, appId %s, empty sceneList", new Object[] { paramString });
-      AppMethodBeat.o(129513);
+      ad.e("MicroMsg.AppBrand.Predownload.DuplicateLaunchWxaAppCacheStorage", "setLaunchData, appId %s, empty sceneList", new Object[] { paramString });
+      AppMethodBeat.o(44440);
       return false;
     }
     Iterator localIterator = paramList.iterator();
@@ -62,45 +62,45 @@ public class e
         break;
       }
     }
-    ab.i("MicroMsg.AppBrand.Predownload.DuplicateLaunchWxaAppCacheStorage", "setLaunchData, appId %s, sceneList %d, setOk %b", new Object[] { paramString, Integer.valueOf(paramList.size()), Boolean.valueOf(bool1) });
-    AppMethodBeat.o(129513);
+    ad.i("MicroMsg.AppBrand.Predownload.DuplicateLaunchWxaAppCacheStorage", "setLaunchData, appId %s, sceneList %d, setOk %b", new Object[] { paramString, Integer.valueOf(paramList.size()), Boolean.valueOf(bool1) });
+    AppMethodBeat.o(44440);
     return bool1;
   }
   
-  public final Pair<azn, Long> aA(String paramString, int paramInt)
+  public final Pair<bkx, Long> aP(String paramString, int paramInt)
   {
-    AppMethodBeat.i(129514);
+    AppMethodBeat.i(44441);
     try
     {
-      long l = bo.aox();
+      long l = bt.aGK();
       Object localObject = new f();
       ((f)localObject).field_appId = paramString;
       ((f)localObject).field_scene = paramInt;
       if (get((com.tencent.mm.sdk.e.c)localObject, new String[0]))
       {
-        ab.i("MicroMsg.AppBrand.Predownload.DuplicateLaunchWxaAppCacheStorage", "found info with appId(%s) scene(%d), [%d, %d]", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(((f)localObject).field_startTime), Long.valueOf(((f)localObject).field_endTime) });
+        ad.i("MicroMsg.AppBrand.Predownload.DuplicateLaunchWxaAppCacheStorage", "found info with appId(%s) scene(%d), [%d, %d]", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(((f)localObject).field_startTime), Long.valueOf(((f)localObject).field_endTime) });
         if ((((f)localObject).field_startTime <= l) && (l <= ((f)localObject).field_endTime))
         {
-          azn localazn = new azn();
-          localazn.parseFrom(((f)localObject).field_launchProtoBlob);
-          if (localazn.xoU.wKA.pW.length > 0)
+          bkx localbkx = new bkx();
+          localbkx.parseFrom(((f)localObject).field_launchProtoBlob);
+          if (localbkx.DIL.CWN.wA.length > 0)
           {
-            localObject = Pair.create(localazn, Long.valueOf(((f)localObject).field_reportId));
-            AppMethodBeat.o(129514);
+            localObject = Pair.create(localbkx, Long.valueOf(((f)localObject).field_reportId));
+            AppMethodBeat.o(44441);
             return localObject;
           }
-          ab.e("MicroMsg.AppBrand.Predownload.DuplicateLaunchWxaAppCacheStorage", "found into with appId(%s) scene(%d), but jsapi_control_bytes invalid", new Object[] { paramString, Integer.valueOf(paramInt) });
+          ad.e("MicroMsg.AppBrand.Predownload.DuplicateLaunchWxaAppCacheStorage", "found into with appId(%s) scene(%d), but jsapi_control_bytes invalid", new Object[] { paramString, Integer.valueOf(paramInt) });
         }
       }
       paramString = Pair.create(null, Long.valueOf(-1L));
-      AppMethodBeat.o(129514);
+      AppMethodBeat.o(44441);
       return paramString;
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace("MicroMsg.AppBrand.Predownload.DuplicateLaunchWxaAppCacheStorage", localException, "get with appId(%s) scene(%d)", new Object[] { paramString, Integer.valueOf(paramInt) });
+      ad.printErrStackTrace("MicroMsg.AppBrand.Predownload.DuplicateLaunchWxaAppCacheStorage", localException, "get with appId(%s) scene(%d)", new Object[] { paramString, Integer.valueOf(paramInt) });
       paramString = Pair.create(null, Long.valueOf(-1L));
-      AppMethodBeat.o(129514);
+      AppMethodBeat.o(44441);
     }
     return paramString;
   }

@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.Surface;
 import android.view.TextureView;
+import com.tencent.liteav.a.a.b;
+import com.tencent.liteav.audio.c;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.TXCStatus;
@@ -20,84 +22,122 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.rtmp.TXLivePlayer.ITXAudioRawDataListener;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.tencent.ugc.TXRecordCommon.ITXVideoRecordListener;
+import com.tencent.ugc.TXRecordCommon.TXRecordResult;
+import java.lang.ref.WeakReference;
 
 public class e
   extends m
-  implements TXCRenderAndDec.a, com.tencent.liteav.basic.c.a, f, com.tencent.liteav.renderer.a.a, com.tencent.liteav.renderer.g
+  implements TXCRenderAndDec.a, TXCRenderAndDec.b, c, com.tencent.liteav.audio.d, com.tencent.liteav.basic.c.a, f, com.tencent.liteav.renderer.a.a, com.tencent.liteav.renderer.g
 {
-  private float[] A;
-  private String B;
-  private int C;
-  private TXLivePlayer.ITXAudioRawDataListener D;
+  private h A;
+  private h B;
+  private float[] C;
+  private float[] D;
   private String E;
-  private boolean F;
-  private long G;
-  private long H;
-  private boolean I;
+  private int F;
+  private boolean G;
+  private TXLivePlayer.ITXAudioRawDataListener H;
+  private String I;
+  private boolean J;
+  private long K;
+  private long L;
+  private a M;
   private TXCRenderAndDec e;
   private com.tencent.liteav.renderer.a f;
   private TXCStreamDownloader g;
   private Handler h;
   private TextureView i;
   private boolean j;
-  private int k;
+  private boolean k;
   private int l;
-  private boolean m;
-  private Surface n;
-  private int o;
-  private int p;
+  private int m;
+  private int n;
+  private boolean o;
+  private Surface p;
   private int q;
-  private boolean r;
-  private com.tencent.liteav.a.a s;
-  private TXRecordCommon.ITXVideoRecordListener t;
-  private d u;
-  private int v;
-  private int w;
-  private h x;
-  private h y;
-  private float[] z;
+  private int r;
+  private int s;
+  private boolean t;
+  private boolean u;
+  private com.tencent.liteav.a.a v;
+  private TXRecordCommon.ITXVideoRecordListener w;
+  private d x;
+  private int y;
+  private int z;
   
   public e(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(66322);
+    AppMethodBeat.i(16559);
     this.e = null;
     this.f = null;
     this.g = null;
     this.j = false;
-    this.k = 0;
-    this.l = 0;
-    this.m = false;
-    this.o = 0;
-    this.p = 0;
-    this.q = 16;
-    this.r = false;
-    this.v = 0;
-    this.w = 0;
-    this.x = null;
-    this.y = null;
-    this.z = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
-    this.A = new float[16];
-    this.B = "";
+    this.k = false;
+    this.l = 100;
+    this.m = 0;
+    this.n = 0;
+    this.o = false;
+    this.q = 2;
+    this.r = 48000;
+    this.s = 16;
+    this.t = false;
+    this.u = false;
+    this.y = 0;
+    this.z = 0;
+    this.A = null;
+    this.B = null;
+    this.C = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, -1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F };
+    this.D = new float[16];
     this.E = "";
-    this.F = false;
-    this.G = 0L;
-    this.H = 0L;
-    this.I = false;
+    this.G = false;
+    this.I = "";
+    this.J = false;
+    this.K = 0L;
+    this.L = 0L;
+    this.M = null;
+    com.tencent.liteav.audio.a.a(paramContext);
     this.h = new Handler(Looper.getMainLooper());
     this.f = new com.tencent.liteav.renderer.a();
     this.f.a(this);
-    AppMethodBeat.o(66322);
+    this.M = new a(this);
+    AppMethodBeat.o(16559);
+  }
+  
+  private void a(final int paramInt, String paramString)
+  {
+    AppMethodBeat.i(16597);
+    if (this.d != null)
+    {
+      final Bundle localBundle = new Bundle();
+      localBundle.putInt("EVT_ID", paramInt);
+      localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
+      if (paramString != null) {
+        localBundle.putCharSequence("EVT_MSG", paramString);
+      }
+      if (this.h != null) {
+        this.h.post(new Runnable()
+        {
+          public void run()
+          {
+            AppMethodBeat.i(15534);
+            com.tencent.liteav.basic.util.d.a(e.this.d, paramInt, localBundle);
+            AppMethodBeat.o(15534);
+          }
+        });
+      }
+    }
+    AppMethodBeat.o(16597);
   }
   
   private int b(String paramString, int paramInt)
   {
     int i1 = 0;
-    AppMethodBeat.i(66345);
+    AppMethodBeat.i(16587);
     if (paramInt == 0)
     {
       this.g = new TXCStreamDownloader(this.b, 1);
-      this.g.setID(this.E);
+      this.g.setID(this.I);
       this.g.setListener(this);
       this.g.setNotifyListener(this);
       this.g.setHeaders(this.a.o);
@@ -105,15 +145,15 @@ public class e
         i1 = 1;
       }
       if (i1 == 0) {
-        break label175;
+        break label184;
       }
       this.g.setRetryTimes(5);
       this.g.setRetryInterval(1);
     }
     for (;;)
     {
-      paramInt = this.g.start(paramString, this.a.j, this.a.l, this.a.k);
-      AppMethodBeat.o(66345);
+      paramInt = this.g.start(paramString, this.a.i, this.a.l, this.a.j, this.a.k);
+      AppMethodBeat.o(16587);
       return paramInt;
       if (paramInt == 5)
       {
@@ -122,7 +162,7 @@ public class e
       }
       this.g = new TXCStreamDownloader(this.b, 0);
       break;
-      label175:
+      label184:
       this.g.setRetryTimes(this.a.e);
       this.g.setRetryInterval(this.a.f);
     }
@@ -130,27 +170,27 @@ public class e
   
   private void b(String paramString)
   {
-    AppMethodBeat.i(66349);
-    this.E = String.format("%s-%d", new Object[] { paramString, Long.valueOf(TXCTimeUtil.getTimeTick() % 10000L) });
+    AppMethodBeat.i(16591);
+    this.I = String.format("%s-%d", new Object[] { paramString, Long.valueOf(TXCTimeUtil.getTimeTick() % 10000L) });
     if (this.e != null) {
-      this.e.setID(this.E);
+      this.e.setID(this.I);
     }
     if (this.f != null) {
-      this.f.setID(this.E);
+      this.f.setID(this.I);
     }
     if (this.g != null) {
-      this.g.setID(this.E);
+      this.g.setID(this.I);
     }
-    if (this.u != null) {
-      this.u.d(this.E);
+    if (this.x != null) {
+      this.x.d(this.I);
     }
-    AppMethodBeat.o(66349);
+    AppMethodBeat.o(16591);
   }
   
-  private void e(int paramInt)
+  private void f(int paramInt)
   {
-    boolean bool = true;
-    AppMethodBeat.i(146793);
+    boolean bool = false;
+    AppMethodBeat.i(16583);
     if (this.i != null) {
       this.i.setVisibility(0);
     }
@@ -158,98 +198,115 @@ public class e
     this.e.setNotifyListener(this);
     this.e.setVideoRender(this.f);
     this.e.setDecListener(this);
+    this.e.setRenderAndDecDelegate(this);
     this.e.setConfig(this.a);
-    this.e.setID(this.E);
-    TXCRenderAndDec localTXCRenderAndDec;
-    if (paramInt == 0)
-    {
-      this.e.setStreamFormat(2);
-      localTXCRenderAndDec = this.e;
-      if (paramInt != 5) {
-        break label179;
-      }
+    this.e.setID(this.I);
+    TXCRenderAndDec localTXCRenderAndDec = this.e;
+    if (paramInt == 5) {
+      bool = true;
     }
-    for (;;)
-    {
-      localTXCRenderAndDec.start(bool);
-      this.e.setMute(this.j);
-      this.e.setRenderMode(this.l);
-      this.e.setRenderRotation(this.k);
-      AppMethodBeat.o(146793);
-      return;
-      if (paramInt == 5)
-      {
-        this.e.setStreamFormat(5);
-        break;
-      }
-      this.e.setStreamFormat(1);
-      break;
-      label179:
-      bool = false;
-    }
-  }
-  
-  private void i()
-  {
-    AppMethodBeat.i(66340);
-    if (this.s == null)
-    {
-      this.v = this.f.m();
-      this.w = this.f.n();
-      com.tencent.liteav.a.a.a locala = k();
-      this.s = new com.tencent.liteav.a.a(this.b);
-      this.s.a(locala);
-      this.s.a(new e.1(this));
-    }
-    if (this.x == null)
-    {
-      this.x = new h(Boolean.TRUE);
-      this.x.b();
-      this.x.b(this.v, this.w);
-      this.x.a(this.v, this.w);
-    }
-    if (this.y == null)
-    {
-      this.y = new h(Boolean.FALSE);
-      this.y.b();
-      this.y.b(this.f.k(), this.f.l());
-      this.y.a(this.f.k(), this.f.l());
-      Matrix.setIdentityM(this.A, 0);
-    }
-    AppMethodBeat.o(66340);
+    localTXCRenderAndDec.start(bool);
+    this.e.setRenderMode(this.n);
+    this.e.setRenderRotation(this.m);
+    AppMethodBeat.o(16583);
   }
   
   private void j()
   {
-    AppMethodBeat.i(66341);
-    if (this.x != null)
+    AppMethodBeat.i(16581);
+    if (this.v == null)
     {
-      this.x.c();
-      this.x = null;
+      this.y = this.f.j();
+      this.z = this.f.k();
+      com.tencent.liteav.a.a.a locala = l();
+      this.v = new com.tencent.liteav.a.a(this.b);
+      this.v.a(locala);
+      this.v.a(new a.b()
+      {
+        public void a(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3)
+        {
+          AppMethodBeat.i(16613);
+          TXRecordCommon.TXRecordResult localTXRecordResult;
+          if (e.a(e.this) != null)
+          {
+            localTXRecordResult = new TXRecordCommon.TXRecordResult();
+            if (paramAnonymousInt != 0) {
+              break label97;
+            }
+          }
+          label97:
+          for (localTXRecordResult.retCode = 0;; localTXRecordResult.retCode = -1)
+          {
+            localTXRecordResult.descMsg = paramAnonymousString1;
+            localTXRecordResult.videoPath = paramAnonymousString2;
+            localTXRecordResult.coverPath = paramAnonymousString3;
+            e.a(e.this).onRecordComplete(localTXRecordResult);
+            e.b(e.this).a(null);
+            e.b(e.this).a(null);
+            AppMethodBeat.o(16613);
+            return;
+          }
+        }
+        
+        public void a(long paramAnonymousLong)
+        {
+          AppMethodBeat.i(16614);
+          if (e.a(e.this) != null) {
+            e.a(e.this).onRecordProgress(paramAnonymousLong);
+          }
+          AppMethodBeat.o(16614);
+        }
+      });
     }
-    if (this.y != null)
+    if (this.A == null)
     {
-      this.y.c();
-      this.y = null;
+      this.A = new h(Boolean.TRUE);
+      this.A.b();
+      this.A.b(this.y, this.z);
+      this.A.a(this.y, this.z);
     }
-    AppMethodBeat.o(66341);
+    if (this.B == null)
+    {
+      this.B = new h(Boolean.FALSE);
+      this.B.b();
+      this.B.b(this.f.h(), this.f.i());
+      this.B.a(this.f.h(), this.f.i());
+      Matrix.setIdentityM(this.D, 0);
+    }
+    AppMethodBeat.o(16581);
   }
   
-  private com.tencent.liteav.a.a.a k()
+  private void k()
   {
-    AppMethodBeat.i(66342);
+    AppMethodBeat.i(182276);
+    if (this.A != null)
+    {
+      this.A.c();
+      this.A = null;
+    }
+    if (this.B != null)
+    {
+      this.B.c();
+      this.B = null;
+    }
+    AppMethodBeat.o(182276);
+  }
+  
+  private com.tencent.liteav.a.a.a l()
+  {
+    AppMethodBeat.i(182277);
     int i3 = 480;
     int i4 = 640;
     int i2 = i4;
     int i1 = i3;
-    if (this.v > 0)
+    if (this.y > 0)
     {
       i2 = i4;
       i1 = i3;
-      if (this.w > 0)
+      if (this.z > 0)
       {
-        i1 = this.v;
-        i2 = this.w;
+        i1 = this.y;
+        i2 = this.z;
       }
     }
     com.tencent.liteav.a.a.a locala = new com.tencent.liteav.a.a.a();
@@ -258,20 +315,20 @@ public class e
     locala.c = 20;
     double d = i1 * i1;
     locala.d = ((int)(Math.sqrt(i2 * i2 + d * 1.0D) * 1.2D));
-    locala.h = this.o;
-    locala.i = this.p;
-    locala.j = this.q;
+    locala.h = this.q;
+    locala.i = this.r;
+    locala.j = this.s;
     locala.f = com.tencent.liteav.a.a.a(this.b, ".mp4");
     locala.g = com.tencent.liteav.a.a.a(this.b, ".jpg");
     locala.e = this.f.b();
     TXCLog.d("TXCLivePlayer", "record config: ".concat(String.valueOf(locala)));
-    AppMethodBeat.o(66342);
+    AppMethodBeat.o(182277);
     return locala;
   }
   
-  private void l()
+  private void m()
   {
-    AppMethodBeat.i(66344);
+    AppMethodBeat.i(16585);
     if (this.e != null)
     {
       this.e.stop();
@@ -280,12 +337,54 @@ public class e
       this.e.setNotifyListener(null);
       this.e = null;
     }
-    AppMethodBeat.o(66344);
+    AppMethodBeat.o(16585);
   }
   
-  private void m()
+  private void n()
   {
-    AppMethodBeat.i(66346);
+    AppMethodBeat.i(16586);
+    com.tencent.liteav.audio.a.a().b(this.I);
+    com.tencent.liteav.audio.a.a();
+    com.tencent.liteav.audio.a.a(this.G);
+    a(this.H);
+    if (this.F == 5)
+    {
+      com.tencent.liteav.audio.a.a().a(this.I, true);
+      com.tencent.liteav.audio.a.a().a(this.I, com.tencent.liteav.basic.a.a.b);
+      com.tencent.liteav.audio.a.a().c(this.I, com.tencent.liteav.basic.a.a.b);
+      com.tencent.liteav.audio.a.a().b(this.I, com.tencent.liteav.basic.a.a.c);
+      com.tencent.liteav.audio.a.a().b(this.I, this.a.g);
+    }
+    for (;;)
+    {
+      com.tencent.liteav.audio.a.a().c(this.I, this.j);
+      com.tencent.liteav.audio.a.a().d(this.I, this.k);
+      com.tencent.liteav.audio.a.a().a(this.I, this.l);
+      com.tencent.liteav.audio.a.a().a(this.I, this);
+      w();
+      com.tencent.liteav.audio.a.a().c(this.I);
+      AppMethodBeat.o(16586);
+      return;
+      com.tencent.liteav.audio.a.a().a(this.I, false);
+      com.tencent.liteav.audio.a.a().a(this.I, this.a.a);
+      com.tencent.liteav.audio.a.a().c(this.I, this.a.c);
+      com.tencent.liteav.audio.a.a().b(this.I, this.a.b);
+      com.tencent.liteav.audio.a.a().b(this.I, this.a.g);
+    }
+  }
+  
+  private void o()
+  {
+    AppMethodBeat.i(16588);
+    com.tencent.liteav.audio.a.a().a(this.I, null);
+    com.tencent.liteav.audio.a.a().a(this.I, null);
+    com.tencent.liteav.audio.a.a().d(this.I);
+    AppMethodBeat.o(16588);
+  }
+  
+  private void p()
+  {
+    AppMethodBeat.i(16589);
     if (this.g != null)
     {
       this.g.setListener(null);
@@ -293,219 +392,194 @@ public class e
       this.g.stop();
       this.g = null;
     }
-    AppMethodBeat.o(66346);
-  }
-  
-  private void n()
-  {
-    AppMethodBeat.i(66347);
-    this.u = new d(this.b);
-    this.u.a(this.B);
-    d locald = this.u;
-    if (this.C == 5) {}
-    for (boolean bool = true;; bool = false)
-    {
-      locald.a(bool);
-      this.u.d(this.E);
-      this.u.a();
-      AppMethodBeat.o(66347);
-      return;
-    }
-  }
-  
-  private void o()
-  {
-    AppMethodBeat.i(66348);
-    if (this.u != null)
-    {
-      this.u.c();
-      this.u = null;
-    }
-    AppMethodBeat.o(66348);
-  }
-  
-  private void p()
-  {
-    this.F = false;
+    AppMethodBeat.o(16589);
   }
   
   private void q()
   {
-    AppMethodBeat.i(66351);
-    if (this.G > 0L)
+    AppMethodBeat.i(16590);
+    this.x = new d(this.b);
+    this.x.a(this.E);
+    d locald = this.x;
+    if (this.F == 5) {}
+    for (boolean bool = true;; bool = false)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("EVT_PLAY_PROGRESS", (int)(this.G / 1000L));
-      localBundle.putInt("EVT_PLAY_PROGRESS_MS", (int)this.G);
-      onNotifyEvent(2005, localBundle);
-    }
-    if ((this.h != null) && (this.F)) {
-      this.h.postDelayed(new Runnable()
-      {
-        public void run()
-        {
-          AppMethodBeat.i(67357);
-          if (e.c(e.this)) {
-            e.d(e.this);
-          }
-          AppMethodBeat.o(67357);
-        }
-      }, 1000L);
-    }
-    AppMethodBeat.o(66351);
-  }
-  
-  private void r()
-  {
-    AppMethodBeat.i(66352);
-    this.I = true;
-    if (this.h != null) {
-      this.h.postDelayed(new e.4(this), 2000L);
-    }
-    AppMethodBeat.o(66352);
-  }
-  
-  private void s()
-  {
-    this.I = false;
-  }
-  
-  private void t()
-  {
-    AppMethodBeat.i(66353);
-    Object localObject = com.tencent.liteav.basic.util.b.a();
-    int i1 = localObject[0] / 10;
-    int i2 = localObject[1] / 10;
-    localObject = i1 + "/" + i2 + "%";
-    int i3 = TXCStatus.c(this.E, 7102);
-    int i4 = TXCStatus.c(this.E, 7101);
-    String str = TXCStatus.b(this.E, 7110);
-    i2 = (int)TXCStatus.d(this.E, 6002);
-    Bundle localBundle = new Bundle();
-    if (this.f != null)
-    {
-      localBundle.putInt("VIDEO_WIDTH", this.f.m());
-      localBundle.putInt("VIDEO_HEIGHT", this.f.n());
-    }
-    if (this.e != null)
-    {
-      localBundle.putInt("VIDEO_CACHE", (int)this.e.getVideoCacheDuration());
-      localBundle.putInt("AUDIO_CACHE", (int)this.e.getAudioCacheDuration());
-      localBundle.putInt("V_SUM_CACHE_SIZE", (int)this.e.getVideoCacheFrameCount());
-      localBundle.putInt("V_DEC_CACHE_SIZE", this.e.getVideoDecCacheFrameCount());
-      localBundle.putInt("AV_PLAY_INTERVAL", (int)this.e.getAVPlayInterval());
-      localBundle.putString("AUDIO_PLAY_INFO", this.e.getAudioInfo());
-      localBundle.putInt("NET_JITTER", this.e.getAudioJitter());
-      localBundle.putInt("AV_RECV_INTERVAL", (int)this.e.getAVNetRecvInterval());
-      localBundle.putFloat("AUDIO_CACHE_THRESHOLD", this.e.getAudioCacheThreshold());
-      if (i2 != 0) {
-        break label480;
-      }
-    }
-    label480:
-    for (i1 = 15;; i1 = i2)
-    {
-      localBundle.putInt("VIDEO_GOP", (int)(TXCStatus.c(this.E, 7120) * 10 / i1 / 10.0F + 0.5D));
-      localBundle.putInt("NET_SPEED", i4 + i3);
-      localBundle.putInt("VIDEO_FPS", i2);
-      localBundle.putInt("VIDEO_BITRATE", i4);
-      localBundle.putInt("AUDIO_BITRATE", i3);
-      localBundle.putCharSequence("SERVER_IP", str);
-      localBundle.putCharSequence("CPU_USAGE", (CharSequence)localObject);
-      com.tencent.liteav.basic.util.b.a(this.d, 15001, localBundle);
-      if (this.e != null) {
-        this.e.updateLoadInfo();
-      }
-      if (this.u != null) {
-        this.u.f();
-      }
-      if ((this.h != null) && (this.I)) {
-        this.h.postDelayed(new e.5(this), 2000L);
-      }
-      AppMethodBeat.o(66353);
+      locald.a(bool);
+      this.x.d(this.I);
+      this.x.a();
+      AppMethodBeat.o(16590);
       return;
     }
   }
   
+  private void r()
+  {
+    AppMethodBeat.i(16593);
+    if (this.x != null)
+    {
+      this.x.c();
+      this.x = null;
+    }
+    AppMethodBeat.o(16593);
+  }
+  
+  private void s()
+  {
+    AppMethodBeat.i(16594);
+    this.J = false;
+    w();
+    AppMethodBeat.o(16594);
+  }
+  
+  private void t()
+  {
+    AppMethodBeat.i(16595);
+    if (this.K > 0L)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("EVT_PLAY_PROGRESS", (int)(this.K / 1000L));
+      localBundle.putInt("EVT_PLAY_PROGRESS_MS", (int)this.K);
+      onNotifyEvent(2005, localBundle);
+    }
+    if ((this.h != null) && (this.J)) {
+      this.h.postDelayed(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(14781);
+          if (e.c(e.this)) {
+            e.d(e.this);
+          }
+          AppMethodBeat.o(14781);
+        }
+      }, 1000L);
+    }
+    AppMethodBeat.o(16595);
+  }
+  
+  private void u()
+  {
+    AppMethodBeat.i(182278);
+    if (this.h != null) {
+      this.h.postDelayed(this.M, 2000L);
+    }
+    AppMethodBeat.o(182278);
+  }
+  
+  private void v()
+  {
+    AppMethodBeat.i(16596);
+    if (this.h != null) {
+      this.h.removeCallbacks(this.M);
+    }
+    AppMethodBeat.o(16596);
+  }
+  
+  private void w()
+  {
+    AppMethodBeat.i(16598);
+    if ((this.t) || (this.H != null) || (this.J)) {
+      com.tencent.liteav.audio.a.a().a(this.I, this);
+    }
+    if ((!this.t) && (this.H == null) && (!this.J)) {
+      com.tencent.liteav.audio.a.a().a(this.I, null);
+    }
+    AppMethodBeat.o(16598);
+  }
+  
   public int a(int paramInt, float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(66357);
-    paramArrayOfFloat = this.s;
-    if ((this.r) && (paramArrayOfFloat != null) && (this.x != null))
+    AppMethodBeat.i(16601);
+    paramArrayOfFloat = this.v;
+    if ((this.t) && (paramArrayOfFloat != null) && (this.A != null))
     {
-      int i1 = this.x.d(paramInt);
+      int i1 = this.A.d(paramInt);
       paramArrayOfFloat.a(i1, TXCTimeUtil.getTimeTick());
-      this.f.a(i1, this.v, this.w, false, 0);
+      this.f.a(i1, this.y, this.z, false, 0);
     }
-    if (this.r) {
-      i();
+    if (this.t) {
+      j();
     }
     for (;;)
     {
-      AppMethodBeat.o(66357);
+      AppMethodBeat.o(16601);
       return paramInt;
-      j();
+      k();
     }
   }
   
   public int a(String paramString)
   {
-    AppMethodBeat.i(66329);
+    AppMethodBeat.i(16566);
     if ((c()) && (this.g != null))
     {
       boolean bool = this.g.switchStream(paramString);
       if (this.e != null) {
-        TXCLog.w("TXCLivePlayer", " stream_switch video cache " + this.e.getVideoCacheDuration() + " audio cache " + this.e.getAudioCacheDuration());
+        TXCLog.w("TXCLivePlayer", " stream_switch video cache " + this.e.getVideoCacheDuration() + " audio cache " + TXCStatus.c(this.I, 2007));
       }
       if (bool)
       {
-        this.B = paramString;
-        AppMethodBeat.o(66329);
+        this.E = paramString;
+        AppMethodBeat.o(16566);
         return 0;
       }
-      AppMethodBeat.o(66329);
+      AppMethodBeat.o(16566);
       return -2;
     }
-    AppMethodBeat.o(66329);
+    AppMethodBeat.o(16566);
     return -1;
   }
   
   public int a(String paramString, int paramInt)
   {
-    AppMethodBeat.i(66327);
+    AppMethodBeat.i(16564);
     if (c())
     {
       TXCLog.w("TXCLivePlayer", "play: ignore start play when is playing");
-      AppMethodBeat.o(66327);
+      AppMethodBeat.o(16564);
       return -2;
     }
-    this.B = paramString;
-    this.C = paramInt;
+    if ((this.a != null) && (this.a.c > this.a.b))
+    {
+      TXCLog.e("TXCLivePlayer", "play: can not start play while invalid cache config [minAutoAdjustCacheTime(" + this.a.c + ") > maxAutoAdjustCacheTime(" + this.a.b + ")]!!!!!!");
+      AppMethodBeat.o(16564);
+      return -1;
+    }
+    if ((this.a.a > this.a.b) || (this.a.a < this.a.c))
+    {
+      TXCLog.w("TXCLivePlayer", "play: invalid cacheTime " + this.a.a + ", need between minAutoAdjustCacheTime " + this.a.c + " and maxAutoAdjustCacheTime " + this.a.b + " , fix to maxAutoAdjustCacheTime");
+      this.a.a = this.a.b;
+    }
+    this.E = paramString;
+    this.F = paramInt;
     b(paramString);
-    this.m = true;
-    e(paramInt);
+    this.o = true;
+    this.u = true;
+    f(paramInt);
+    n();
     paramInt = b(paramString, paramInt);
     if (paramInt != 0)
     {
-      this.m = false;
+      this.o = false;
+      p();
       m();
-      l();
+      o();
       if (this.i != null) {
         this.i.setVisibility(8);
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(66327);
+      AppMethodBeat.o(16564);
       return paramInt;
-      a(this.n);
-      n();
-      r();
-      TXCDRApi.txReportDAU(this.b, com.tencent.liteav.basic.datareport.a.bq);
+      a(this.p);
+      q();
+      u();
+      TXCDRApi.txReportDAU(this.b, com.tencent.liteav.basic.datareport.a.bt);
       try
       {
         if (Class.forName("com.tencent.liteav.demo.play.SuperPlayerView") != null) {
-          TXCDRApi.txReportDAU(this.b, com.tencent.liteav.basic.datareport.a.bB);
+          TXCDRApi.txReportDAU(this.b, com.tencent.liteav.basic.datareport.a.bE);
         }
       }
       catch (Exception paramString) {}
@@ -514,17 +588,17 @@ public class e
   
   public int a(boolean paramBoolean)
   {
-    AppMethodBeat.i(66328);
+    AppMethodBeat.i(16565);
     if (!c())
     {
       TXCLog.w("TXCLivePlayer", "play: ignore stop play when not started");
-      AppMethodBeat.o(66328);
+      AppMethodBeat.o(16565);
       return -2;
     }
     TXCLog.v("TXCLivePlayer", "play: stop");
-    this.m = false;
+    this.o = false;
+    p();
     m();
-    l();
     if ((this.i != null) && (paramBoolean)) {
       this.i.setVisibility(8);
     }
@@ -532,109 +606,108 @@ public class e
       this.f.a(null);
     }
     o();
+    r();
+    v();
     s();
-    p();
-    AppMethodBeat.o(66328);
+    AppMethodBeat.o(16565);
     return 0;
   }
   
   public void a()
   {
-    AppMethodBeat.i(66330);
+    AppMethodBeat.i(16567);
     a(false);
-    AppMethodBeat.o(66330);
+    AppMethodBeat.o(16567);
   }
   
   public void a(int paramInt)
   {
-    AppMethodBeat.i(66332);
-    this.l = paramInt;
+    AppMethodBeat.i(16569);
+    this.n = paramInt;
     if (this.e != null) {
       this.e.setRenderMode(paramInt);
     }
-    AppMethodBeat.o(66332);
+    AppMethodBeat.o(16569);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(66325);
+    AppMethodBeat.i(16562);
     if (this.f != null) {
       this.f.c(paramInt1, paramInt2);
     }
-    AppMethodBeat.o(66325);
+    AppMethodBeat.o(16562);
   }
   
   public void a(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(66335);
-    TXCRenderAndDec.setAudioMode(paramContext, paramInt);
-    AppMethodBeat.o(66335);
+    AppMethodBeat.i(16574);
+    com.tencent.liteav.audio.a.a();
+    com.tencent.liteav.audio.a.c(paramInt);
+    AppMethodBeat.o(16574);
   }
   
   public void a(SurfaceTexture paramSurfaceTexture)
   {
-    AppMethodBeat.i(66359);
-    j();
-    e();
-    AppMethodBeat.o(66359);
+    AppMethodBeat.i(16603);
+    k();
+    d();
+    AppMethodBeat.o(16603);
   }
   
   public void a(Surface paramSurface)
   {
-    AppMethodBeat.i(66324);
-    this.n = paramSurface;
+    AppMethodBeat.i(16561);
+    this.p = paramSurface;
     if (this.f != null) {
       this.f.a(paramSurface);
     }
-    AppMethodBeat.o(66324);
+    AppMethodBeat.o(16561);
   }
   
-  public void a(com.tencent.liteav.basic.structs.a parama)
+  public void a(com.tencent.liteav.basic.d.n paramn)
   {
-    AppMethodBeat.i(146798);
-    TXCLog.d("TXCLivePlayer", "onPlayAudioInfoChanged, samplerate=" + parama.a + ", channels=" + parama.b + ", bits=" + parama.c);
-    this.o = parama.b;
-    this.p = parama.a;
-    if (parama.c > 1) {
-      this.q = parama.c;
+    AppMethodBeat.i(16579);
+    if (this.f != null) {
+      this.f.a(paramn);
     }
-    if (this.D != null) {
-      this.D.onAudioInfoChanged(parama.a, parama.b, parama.c);
-    }
-    AppMethodBeat.o(146798);
+    AppMethodBeat.o(16579);
   }
   
   public void a(g paramg)
   {
-    AppMethodBeat.i(66326);
+    AppMethodBeat.i(16563);
     super.a(paramg);
     if (this.e != null) {
       this.e.setConfig(paramg);
     }
-    AppMethodBeat.o(66326);
+    AppMethodBeat.o(16563);
   }
   
   public void a(n paramn)
   {
-    AppMethodBeat.i(146792);
+    AppMethodBeat.i(16578);
     if (this.e != null)
     {
-      this.e.setVideoFrameListener(paramn);
-      AppMethodBeat.o(146792);
+      this.e.setVideoFrameListener(paramn, 1);
+      AppMethodBeat.o(16578);
       return;
     }
     TXCLog.w("TXCLivePlayer", "setVideoFrameListener->enter with renderAndDec is empty");
-    AppMethodBeat.o(146792);
+    AppMethodBeat.o(16578);
   }
   
   public void a(TXLivePlayer.ITXAudioRawDataListener paramITXAudioRawDataListener)
   {
-    this.D = paramITXAudioRawDataListener;
+    AppMethodBeat.i(16576);
+    this.H = paramITXAudioRawDataListener;
+    w();
+    AppMethodBeat.o(16576);
   }
   
   public void a(TXCloudVideoView paramTXCloudVideoView)
   {
-    AppMethodBeat.i(66323);
+    AppMethodBeat.i(16560);
     if ((this.c != null) && (this.c != paramTXCloudVideoView))
     {
       TextureView localTextureView = this.c.getVideoView();
@@ -654,170 +727,295 @@ public class e
     if (this.f != null) {
       this.f.a(this.i);
     }
-    AppMethodBeat.o(66323);
+    AppMethodBeat.o(16560);
   }
   
   public void a(TXRecordCommon.ITXVideoRecordListener paramITXVideoRecordListener)
   {
-    this.t = paramITXVideoRecordListener;
+    this.w = paramITXVideoRecordListener;
   }
   
-  public void a(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2)
+  public void b()
   {
-    AppMethodBeat.i(146797);
+    AppMethodBeat.i(16568);
+    a(this.E, this.F);
+    AppMethodBeat.o(16568);
+  }
+  
+  public void b(int paramInt)
+  {
+    AppMethodBeat.i(16570);
+    this.m = paramInt;
+    if (this.e != null) {
+      this.e.setRenderRotation(paramInt);
+    }
+    AppMethodBeat.o(16570);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16571);
+    this.j = paramBoolean;
+    com.tencent.liteav.audio.a.a().c(this.I, this.j);
+    AppMethodBeat.o(16571);
+  }
+  
+  public void c(int paramInt)
+  {
+    AppMethodBeat.i(16573);
+    this.l = paramInt;
+    com.tencent.liteav.audio.a.a().a(this.I, this.l);
+    AppMethodBeat.o(16573);
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16572);
+    this.k = paramBoolean;
+    com.tencent.liteav.audio.a.a().d(this.I, paramBoolean);
+    AppMethodBeat.o(16572);
+  }
+  
+  public boolean c()
+  {
+    return this.o;
+  }
+  
+  public int d()
+  {
+    AppMethodBeat.i(16577);
+    if (!this.t)
+    {
+      TXCLog.w("TXCLivePlayer", "stopRecord: no recording task exist");
+      AppMethodBeat.o(16577);
+      return -1;
+    }
+    this.t = false;
+    w();
+    if (this.v != null)
+    {
+      this.v.a();
+      this.v = null;
+    }
+    AppMethodBeat.o(16577);
+    return 0;
+  }
+  
+  public int d(int paramInt)
+  {
+    AppMethodBeat.i(16575);
+    if (this.t)
+    {
+      TXCLog.e("TXCLivePlayer", "startRecord: there is existing uncompleted record task");
+      AppMethodBeat.o(16575);
+      return -1;
+    }
+    this.t = true;
+    this.f.a(this);
+    this.f.a(this);
+    w();
+    TXCDRApi.txReportDAU(this.b, com.tencent.liteav.basic.datareport.a.av);
+    AppMethodBeat.o(16575);
+    return 0;
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    AppMethodBeat.i(16606);
+    this.G = paramBoolean;
+    com.tencent.liteav.audio.a.a();
+    com.tencent.liteav.audio.a.a(paramBoolean);
+    AppMethodBeat.o(16606);
+  }
+  
+  public boolean e()
+  {
+    return true;
+  }
+  
+  public void f()
+  {
+    AppMethodBeat.i(16592);
+    this.L = 0L;
+    if (this.J)
+    {
+      AppMethodBeat.o(16592);
+      return;
+    }
+    this.J = true;
+    w();
+    if (this.h != null) {
+      this.h.postDelayed(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(15552);
+          if (e.c(e.this)) {
+            e.d(e.this);
+          }
+          AppMethodBeat.o(15552);
+        }
+      }, 1000L);
+    }
+    AppMethodBeat.o(16592);
+  }
+  
+  public void g()
+  {
+    AppMethodBeat.i(182279);
+    Object localObject = com.tencent.liteav.basic.util.d.a();
+    int i1 = localObject[0] / 10;
+    int i2 = localObject[1] / 10;
+    localObject = i1 + "/" + i2 + "%";
+    int i3 = TXCStatus.c(this.I, 7102);
+    int i4 = TXCStatus.c(this.I, 7101);
+    String str = TXCStatus.b(this.I, 7110);
+    i2 = (int)TXCStatus.d(this.I, 6002);
+    Bundle localBundle = new Bundle();
+    if (this.f != null)
+    {
+      localBundle.putInt("VIDEO_WIDTH", this.f.j());
+      localBundle.putInt("VIDEO_HEIGHT", this.f.k());
+    }
+    if (this.e != null)
+    {
+      localBundle.putInt("VIDEO_CACHE", (int)this.e.getVideoCacheDuration());
+      localBundle.putInt("V_SUM_CACHE_SIZE", (int)this.e.getVideoCacheFrameCount());
+      localBundle.putInt("V_DEC_CACHE_SIZE", this.e.getVideoDecCacheFrameCount());
+      localBundle.putInt("AV_PLAY_INTERVAL", (int)this.e.getAVPlayInterval());
+      localBundle.putInt("AV_RECV_INTERVAL", (int)this.e.getAVNetRecvInterval());
+      if (i2 != 0) {
+        break label554;
+      }
+    }
+    label554:
+    for (i1 = 15;; i1 = i2)
+    {
+      localBundle.putInt("VIDEO_GOP", (int)(TXCStatus.c(this.I, 7120) * 10 / i1 / 10.0F + 0.5D));
+      i1 = com.tencent.liteav.audio.a.a().h();
+      int i5 = TXCStatus.c(this.I, 2019);
+      int i6 = TXCStatus.c(this.I, 2020);
+      int i7 = com.tencent.liteav.audio.a.a().f();
+      int i8 = com.tencent.liteav.audio.a.a().g();
+      localBundle.putString("AUDIO_PLAY_INFO", i1 + " | " + i5 + "," + i6 + " | " + i7 + "," + i8);
+      localBundle.putInt("AUDIO_CACHE", TXCStatus.c(this.I, 2007));
+      localBundle.putInt("NET_JITTER", TXCStatus.c(this.I, 2018));
+      localBundle.putFloat("AUDIO_CACHE_THRESHOLD", (float)TXCStatus.d(this.I, 2021));
+      localBundle.putInt("NET_SPEED", i4 + i3);
+      localBundle.putInt("VIDEO_FPS", i2);
+      localBundle.putInt("VIDEO_BITRATE", i4);
+      localBundle.putInt("AUDIO_BITRATE", i3);
+      localBundle.putCharSequence("SERVER_IP", str);
+      localBundle.putCharSequence("CPU_USAGE", (CharSequence)localObject);
+      com.tencent.liteav.basic.util.d.a(this.d, 15001, localBundle);
+      if (this.e != null) {
+        this.e.updateLoadInfo();
+      }
+      if (this.x != null) {
+        this.x.f();
+      }
+      AppMethodBeat.o(182279);
+      return;
+    }
+  }
+  
+  public int h()
+  {
+    AppMethodBeat.i(182280);
+    int i1 = com.tencent.liteav.audio.a.a().e(this.I);
+    AppMethodBeat.o(182280);
+    return i1;
+  }
+  
+  public void onAudioJitterBufferError(String paramString1, int paramInt, String paramString2) {}
+  
+  public void onAudioJitterBufferNotify(String paramString1, int paramInt, String paramString2)
+  {
+    AppMethodBeat.i(16605);
+    onNotifyEvent(paramInt, null);
+    AppMethodBeat.o(16605);
+  }
+  
+  public void onAudioPlayPcmData(String paramString, byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(16604);
+    this.r = paramInt1;
+    this.q = paramInt2;
     long l1 = paramLong;
-    if (this.s != null)
+    if (this.v != null)
     {
       l1 = paramLong;
       if (paramLong <= 0L) {
         l1 = TXCTimeUtil.getTimeTick();
       }
-      this.s.a(paramArrayOfByte, l1);
+      this.v.a(paramArrayOfByte, l1);
     }
-    if (this.D != null) {
-      this.D.onPcmDataAvailable(paramArrayOfByte, l1);
+    if ((this.L <= 0L) && (this.H != null)) {
+      this.H.onAudioInfoChanged(paramInt1, paramInt2, 16);
     }
-    if (this.H <= 0L)
+    if (this.H != null) {
+      this.H.onPcmDataAvailable(paramArrayOfByte, l1);
+    }
+    if (this.L <= 0L)
     {
-      this.H = l1;
-      paramArrayOfByte = new com.tencent.liteav.basic.structs.a();
-      paramArrayOfByte.a = paramInt1;
-      paramArrayOfByte.b = paramInt2;
-      paramArrayOfByte.c = 16;
-      a(paramArrayOfByte);
-      AppMethodBeat.o(146797);
+      this.L = l1;
+      AppMethodBeat.o(16604);
       return;
     }
-    this.G = (l1 - this.H);
-    AppMethodBeat.o(146797);
+    this.K = (l1 - this.L);
+    AppMethodBeat.o(16604);
   }
   
-  public void b()
+  public void onNotifyEvent(final int paramInt, final Bundle paramBundle)
   {
-    AppMethodBeat.i(66331);
-    a(this.B, this.C);
-    AppMethodBeat.o(66331);
-  }
-  
-  public void b(int paramInt)
-  {
-    AppMethodBeat.i(66333);
-    this.k = paramInt;
-    if (this.e != null) {
-      this.e.setRenderRotation(paramInt);
-    }
-    AppMethodBeat.o(66333);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    AppMethodBeat.i(66334);
-    this.j = paramBoolean;
-    if (this.e != null) {
-      this.e.setMute(this.j);
-    }
-    AppMethodBeat.o(66334);
-  }
-  
-  public int c(int paramInt)
-  {
-    AppMethodBeat.i(66336);
-    if (this.r)
+    AppMethodBeat.i(16600);
+    if (((2003 == paramInt) || (2026 == paramInt)) && (this.u))
     {
-      TXCLog.e("TXCLivePlayer", "startRecord: there is existing uncompleted record task");
-      AppMethodBeat.o(66336);
-      return -1;
+      a(2004, "视频播放开始");
+      this.u = false;
+      if (2026 == paramInt)
+      {
+        AppMethodBeat.o(16600);
+        return;
+      }
     }
-    this.r = true;
-    this.f.a(this);
-    this.f.a(this);
-    TXCDRApi.txReportDAU(this.b, com.tencent.liteav.basic.datareport.a.av);
-    AppMethodBeat.o(66336);
-    return 0;
-  }
-  
-  public boolean c()
-  {
-    return this.m;
-  }
-  
-  public TextureView d()
-  {
-    return this.i;
-  }
-  
-  public int e()
-  {
-    AppMethodBeat.i(66337);
-    if (!this.r)
+    if (2025 == paramInt)
     {
-      TXCLog.w("TXCLivePlayer", "stopRecord: no recording task exist");
-      AppMethodBeat.o(66337);
-      return -1;
-    }
-    this.r = false;
-    if (this.s != null)
-    {
-      this.s.a();
-      this.s = null;
-    }
-    AppMethodBeat.o(66337);
-    return 0;
-  }
-  
-  public boolean f()
-  {
-    return true;
-  }
-  
-  public void g()
-  {
-    AppMethodBeat.i(66350);
-    this.H = 0L;
-    if (this.F)
-    {
-      AppMethodBeat.o(66350);
+      a(2004, "视频播放开始");
+      AppMethodBeat.o(16600);
       return;
     }
-    this.F = true;
-    if (this.h != null) {
-      this.h.postDelayed(new e.2(this), 1000L);
-    }
-    AppMethodBeat.o(66350);
-  }
-  
-  public void onNotifyEvent(int paramInt, Bundle paramBundle)
-  {
-    AppMethodBeat.i(66356);
-    if ((-2302 == paramInt) && (this.e != null)) {
-      this.e.setSmoothMode((int)com.tencent.liteav.basic.e.b.a().a("Audio", "SmoothModeAdjust"));
+    if ((2023 == paramInt) || (2024 == paramInt))
+    {
+      a(2007, "视频播放 loading");
+      AppMethodBeat.o(16600);
+      return;
     }
     if (this.h != null) {
-      this.h.post(new e.6(this, paramInt, paramBundle));
+      this.h.post(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(16063);
+          com.tencent.liteav.basic.util.d.a(e.this.d, paramInt, paramBundle);
+          if ((paramInt == 2103) && (e.f(e.this) != null)) {
+            e.f(e.this).restartDecoder();
+          }
+          AppMethodBeat.o(16063);
+        }
+      });
     }
-    AppMethodBeat.o(66356);
+    AppMethodBeat.o(16600);
   }
   
-  public void onPullAudio(com.tencent.liteav.basic.structs.a parama)
-  {
-    AppMethodBeat.i(146794);
-    if (!this.m)
-    {
-      AppMethodBeat.o(146794);
-      return;
-    }
-    if (this.e != null) {
-      this.e.decAudio(parama);
-    }
-    AppMethodBeat.o(146794);
-  }
+  public void onPullAudio(com.tencent.liteav.basic.structs.a parama) {}
   
   public void onPullNAL(TXSNALPacket paramTXSNALPacket)
   {
-    AppMethodBeat.i(146795);
-    if (!this.m)
+    AppMethodBeat.i(16599);
+    if (!this.o)
     {
-      AppMethodBeat.o(146795);
+      AppMethodBeat.o(16599);
       return;
     }
     try
@@ -825,39 +1023,75 @@ public class e
       if (this.e != null) {
         this.e.decVideo(paramTXSNALPacket);
       }
-      AppMethodBeat.o(146795);
+      AppMethodBeat.o(16599);
       return;
     }
     catch (Exception paramTXSNALPacket)
     {
-      AppMethodBeat.o(146795);
+      AppMethodBeat.o(16599);
     }
   }
   
-  public void onTextureProcess(int paramInt1, int paramInt2, int paramInt3)
+  public void onRequestKeyFrame(String paramString, int paramInt)
   {
-    AppMethodBeat.i(146796);
-    com.tencent.liteav.a.a locala = this.s;
-    if ((this.r) && (locala != null) && (this.y != null))
-    {
-      this.y.a(this.z);
-      locala.a(this.y.d(paramInt1), TXCTimeUtil.getTimeTick());
-      this.y.a(this.A);
-      this.y.c(paramInt1);
+    AppMethodBeat.i(16608);
+    if ((this.o) && (this.g != null)) {
+      this.g.requestKeyFrame(this.E);
     }
-    if (this.r)
+    AppMethodBeat.o(16608);
+  }
+  
+  public void onTextureProcess(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(16602);
+    com.tencent.liteav.a.a locala = this.v;
+    if ((this.t) && (locala != null) && (this.B != null))
     {
-      i();
-      AppMethodBeat.o(146796);
+      this.B.a(this.C);
+      locala.a(this.B.d(paramInt1), TXCTimeUtil.getTimeTick());
+      this.B.a(this.D);
+      this.B.c(paramInt1);
+    }
+    if (this.t)
+    {
+      j();
+      AppMethodBeat.o(16602);
       return;
     }
-    j();
-    AppMethodBeat.o(146796);
+    k();
+    AppMethodBeat.o(16602);
+  }
+  
+  static class a
+    implements Runnable
+  {
+    private WeakReference<e> a;
+    
+    a(e parame)
+    {
+      AppMethodBeat.i(182417);
+      this.a = new WeakReference(parame);
+      AppMethodBeat.o(182417);
+    }
+    
+    public void run()
+    {
+      AppMethodBeat.i(182418);
+      e locale = (e)this.a.get();
+      if (locale == null)
+      {
+        AppMethodBeat.o(182418);
+        return;
+      }
+      locale.g();
+      e.e(locale);
+      AppMethodBeat.o(182418);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.e
  * JD-Core Version:    0.7.0.1
  */

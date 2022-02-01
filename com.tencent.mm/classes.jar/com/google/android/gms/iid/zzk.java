@@ -27,31 +27,31 @@ public final class zzk
   public zzk(Context paramContext, String paramString)
   {
     this(paramContext, paramString, new ScheduledThreadPoolExecutor(0));
-    AppMethodBeat.i(57569);
-    AppMethodBeat.o(57569);
+    AppMethodBeat.i(2523);
+    AppMethodBeat.o(2523);
   }
   
   private zzk(Context paramContext, String paramString, ScheduledExecutorService paramScheduledExecutorService)
   {
-    AppMethodBeat.i(57570);
+    AppMethodBeat.i(2524);
     this.zzbn = new ArrayDeque();
     this.zzbp = false;
     this.zzk = paramContext.getApplicationContext();
     this.zzbl = new Intent(paramString).setPackage(this.zzk.getPackageName());
     this.zzbm = paramScheduledExecutorService;
-    AppMethodBeat.o(57570);
+    AppMethodBeat.o(2524);
   }
   
   private final void zzl()
   {
     try
     {
-      AppMethodBeat.i(57572);
+      AppMethodBeat.i(2526);
       Log.isLoggable("EnhancedIntentService", 3);
       for (;;)
       {
         if (this.zzbn.isEmpty()) {
-          break label208;
+          break label211;
         }
         Log.isLoggable("EnhancedIntentService", 3);
         if ((this.zzbo == null) || (!this.zzbo.isBinderAlive())) {
@@ -62,7 +62,7 @@ public final class zzk
         this.zzbo.zzd(localzzg);
       }
       if (!Log.isLoggable("EnhancedIntentService", 3)) {
-        break label123;
+        break label124;
       }
     }
     finally {}
@@ -71,9 +71,9 @@ public final class zzk
     {
       bool = true;
       new StringBuilder(39).append("binder is dead. start connection? ").append(bool);
-      label123:
+      label124:
       if (this.zzbp) {
-        break label200;
+        break label202;
       }
       this.zzbp = true;
     }
@@ -85,13 +85,13 @@ public final class zzk
         if (!bool) {
           continue;
         }
-        AppMethodBeat.o(57572);
+        AppMethodBeat.o(2526);
         return;
       }
       catch (SecurityException localSecurityException)
       {
-        label200:
-        label208:
+        label202:
+        label211:
         continue;
       }
       bool = false;
@@ -102,16 +102,16 @@ public final class zzk
       }
       else
       {
-        AppMethodBeat.o(57572);
+        AppMethodBeat.o(2526);
         continue;
-        AppMethodBeat.o(57572);
+        AppMethodBeat.o(2526);
       }
     }
   }
   
   public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    AppMethodBeat.i(57573);
+    AppMethodBeat.i(2527);
     try
     {
       this.zzbp = false;
@@ -126,31 +126,31 @@ public final class zzk
     }
     finally
     {
-      AppMethodBeat.o(57573);
+      AppMethodBeat.o(2527);
     }
   }
   
   public final void onServiceDisconnected(ComponentName paramComponentName)
   {
-    AppMethodBeat.i(57574);
+    AppMethodBeat.i(2528);
     if (Log.isLoggable("EnhancedIntentService", 3))
     {
       paramComponentName = String.valueOf(paramComponentName);
       new StringBuilder(String.valueOf(paramComponentName).length() + 23).append("onServiceDisconnected: ").append(paramComponentName);
     }
     zzl();
-    AppMethodBeat.o(57574);
+    AppMethodBeat.o(2528);
   }
   
   public final void zzd(Intent paramIntent, BroadcastReceiver.PendingResult paramPendingResult)
   {
     try
     {
-      AppMethodBeat.i(57571);
+      AppMethodBeat.i(2525);
       Log.isLoggable("EnhancedIntentService", 3);
       this.zzbn.add(new zzg(paramIntent, paramPendingResult, this.zzbm));
       zzl();
-      AppMethodBeat.o(57571);
+      AppMethodBeat.o(2525);
       return;
     }
     finally
@@ -162,7 +162,7 @@ public final class zzk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.iid.zzk
  * JD-Core Version:    0.7.0.1
  */

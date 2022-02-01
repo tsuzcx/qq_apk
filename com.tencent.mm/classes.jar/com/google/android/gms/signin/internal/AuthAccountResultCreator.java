@@ -13,7 +13,7 @@ public class AuthAccountResultCreator
   
   public AuthAccountResult createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61654);
+    AppMethodBeat.i(12146);
     int k = SafeParcelReader.validateObjectHeader(paramParcel);
     Intent localIntent = null;
     int j = 0;
@@ -38,7 +38,7 @@ public class AuthAccountResultCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, k);
     paramParcel = new AuthAccountResult(i, j, localIntent);
-    AppMethodBeat.o(61654);
+    AppMethodBeat.o(12146);
     return paramParcel;
   }
   

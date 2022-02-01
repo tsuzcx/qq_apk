@@ -5,63 +5,63 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 
 public abstract interface a
 {
-  public abstract void Lc(int paramInt);
-  
-  public abstract void Ld(int paramInt);
-  
-  public abstract void Le(int paramInt);
-  
-  public abstract void Lf(int paramInt);
+  public abstract void N(int paramInt, long paramLong);
   
   public abstract void a(WXRTEditText paramWXRTEditText);
   
   public abstract void a(WXRTEditText paramWXRTEditText, boolean paramBoolean, int paramInt);
   
-  public abstract void aj(int paramInt, long paramLong);
+  public abstract void bRB();
   
-  public abstract void c(Object paramObject, boolean paramBoolean);
+  public abstract void bRC();
   
-  public abstract void dhV();
+  public abstract void bRD();
   
-  public abstract void dhW();
+  public abstract void bRF();
   
-  public abstract void dhX();
+  public abstract int bRG();
   
-  public abstract void dhY();
+  public abstract int bRH();
   
-  public abstract void dhZ();
+  public abstract boolean bRI();
   
-  public abstract void dia();
+  public abstract RecyclerView bRJ();
   
-  public abstract void dib();
+  public abstract void bRx();
   
-  public abstract void dic();
+  public abstract void bRy();
   
-  public abstract int did();
+  public abstract void bRz();
   
-  public abstract int die();
+  public abstract void e(Object paramObject, boolean paramBoolean);
   
-  public abstract boolean dif();
+  public abstract void e(boolean paramBoolean, long paramLong);
   
-  public abstract RecyclerView dig();
+  public abstract void eV(int paramInt1, int paramInt2);
   
-  public abstract void dih();
+  public abstract void eW(int paramInt1, int paramInt2);
   
-  public abstract void dii();
+  public abstract void eX(int paramInt1, int paramInt2);
   
-  public abstract void gS(int paramInt1, int paramInt2);
+  public abstract void esE();
   
-  public abstract void gT(int paramInt1, int paramInt2);
+  public abstract void esF();
   
-  public abstract void gU(int paramInt1, int paramInt2);
+  public abstract void esG();
   
-  public abstract void h(boolean paramBoolean, long paramLong);
+  public abstract void tL(boolean paramBoolean);
   
-  public abstract void oM(boolean paramBoolean);
+  public abstract void zV(int paramInt);
+  
+  public abstract void zW(int paramInt);
+  
+  public abstract void zX(int paramInt);
+  
+  public abstract void zY(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.b.a
  * JD-Core Version:    0.7.0.1
  */

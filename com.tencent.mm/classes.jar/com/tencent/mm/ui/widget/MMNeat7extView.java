@@ -15,266 +15,281 @@ import android.widget.TextView.BufferType;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.neattextview.textview.view.NeatTextView;
 import com.tencent.neattextview.textview.view.NeatTextView.b;
 
 public class MMNeat7extView
   extends NeatTextView
 {
-  public static boolean ACX;
-  private static final String ACY;
-  private static boolean LB;
-  private View.OnLongClickListener ACZ;
-  private a ADa;
-  private b ADb;
-  private GestureDetector idY;
+  public static boolean HzC;
+  private static final String HzD;
+  private static boolean SE;
+  private View.OnLongClickListener HzE;
+  private a HzF;
+  private b HzG;
+  private GestureDetector ktZ;
   
   static
   {
-    AppMethodBeat.i(107897);
-    ACX = false;
-    ACY = "^[\\u0001-\\u00b7\\u4E00-\\u9FA5\\ue001-\\ue537\\u2005-\\u2027\\u3001-\\u3011\\uff01-\\uffe5\\u2100-\\u2900[\\ud83c\\udc00-\\ud83c\\udfff]|[\\ud83d\\udc00-\\ud83d\\udfff]]+$".substring(1, 149);
-    LB = true;
-    AppMethodBeat.o(107897);
+    AppMethodBeat.i(143376);
+    HzC = false;
+    HzD = "^[\\u0001-\\u00b7\\u4E00-\\u9FA5\\ue001-\\ue537\\u2005-\\u2027\\u3001-\\u3011\\uff01-\\uffe5\\u2100-\\u2900[\\ud83c\\udc00-\\ud83c\\udfff]|[\\ud83d\\udc00-\\ud83d\\udfff]]+$".substring(1, 149);
+    SE = true;
+    AppMethodBeat.o(143376);
+  }
+  
+  public MMNeat7extView(Context paramContext)
+  {
+    super(paramContext);
+    AppMethodBeat.i(164209);
+    init();
+    AppMethodBeat.o(164209);
   }
   
   public MMNeat7extView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(107887);
-    this.idY = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
+    AppMethodBeat.i(143366);
+    init();
+    AppMethodBeat.o(143366);
+  }
+  
+  private void init()
+  {
+    AppMethodBeat.i(164210);
+    this.ktZ = new GestureDetector(getContext(), new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(107885);
+        AppMethodBeat.i(143364);
         if (MMNeat7extView.this.getOnDoubleClickListener() == null)
         {
-          AppMethodBeat.o(107885);
+          AppMethodBeat.o(143364);
           return false;
         }
-        boolean bool = MMNeat7extView.this.getOnDoubleClickListener().fp(MMNeat7extView.this);
-        AppMethodBeat.o(107885);
+        boolean bool = MMNeat7extView.this.getOnDoubleClickListener().fT(MMNeat7extView.this);
+        AppMethodBeat.o(143364);
         return bool;
       }
     });
-    AppMethodBeat.o(107887);
+    AppMethodBeat.o(164210);
   }
   
   public final void a(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
-    AppMethodBeat.i(107894);
+    AppMethodBeat.i(143373);
     try
     {
       super.a(paramCharSequence, paramBufferType);
-      if ((this.kji) && (this.ADb != null)) {
+      if ((this.nmV) && (this.HzG != null)) {
         paramCharSequence.toString();
       }
-      if (this.ADa != null) {
-        this.ADa.ae(paramCharSequence);
+      if (this.HzF != null) {
+        this.HzF.an(paramCharSequence);
       }
-      AppMethodBeat.o(107894);
+      AppMethodBeat.o(143373);
       return;
     }
     catch (Exception paramBufferType)
     {
       for (;;)
       {
-        String str = dTB().toString().replaceAll(ACY, "*");
-        ab.e("MicroMsg.MMNeat7extView", "[_setText] replaceContent:%s exception:%s", new Object[] { str, paramBufferType });
-        if (this.ADb == null) {
+        String str = fli().toString().replaceAll(HzD, "*");
+        ad.e("MicroMsg.MMNeat7extView", "[_setText] replaceContent:%s exception:%s", new Object[] { str, paramBufferType });
+        if (this.HzG == null) {
           break;
         }
-        this.ADb.a(paramBufferType, str, "_setText");
+        this.HzG.a(paramBufferType, str, "_setText");
       }
-      AppMethodBeat.o(107894);
+      AppMethodBeat.o(143373);
       throw paramBufferType;
     }
   }
   
-  public final void af(CharSequence paramCharSequence)
+  public final void aq(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(107893);
+    AppMethodBeat.i(143372);
     for (;;)
     {
       try
       {
-        super.af(paramCharSequence);
-        if ((this.kji) && (this.ADb != null)) {
+        super.aq(paramCharSequence);
+        if ((this.nmV) && (this.HzG != null)) {
           paramCharSequence.toString();
         }
-        if (this.ADa != null)
+        if (this.HzF != null)
         {
-          a locala = this.ADa;
+          a locala = this.HzF;
           if ((paramCharSequence instanceof Spannable))
           {
             localObject = TextView.BufferType.SPANNABLE;
-            locala.ae(paramCharSequence);
+            locala.an(paramCharSequence);
           }
         }
         else
         {
-          AppMethodBeat.o(107893);
+          AppMethodBeat.o(143372);
           return;
         }
       }
       catch (Exception localException)
       {
-        localObject = dTB().toString().replaceAll(ACY, "*");
-        ab.e("MicroMsg.MMNeat7extView", "[_setText] replaceContent:%s exception:%s", new Object[] { localObject, localException });
-        if (this.ADb != null)
+        localObject = fli().toString().replaceAll(HzD, "*");
+        ad.e("MicroMsg.MMNeat7extView", "[_setText] replaceContent:%s exception:%s", new Object[] { localObject, localException });
+        if (this.HzG != null)
         {
-          this.ADb.a(localException, (String)localObject, "_setText");
+          this.HzG.a(localException, (String)localObject, "_setText");
           continue;
         }
-        AppMethodBeat.o(107893);
+        AppMethodBeat.o(143372);
         throw localException;
       }
       Object localObject = TextView.BufferType.NORMAL;
     }
   }
   
-  public final boolean dOE()
+  public final boolean feI()
   {
-    return LB;
+    return SE;
   }
   
   @SuppressLint({"GetContentDescriptionOverride"})
   public CharSequence getContentDescription()
   {
-    AppMethodBeat.i(107889);
-    ab.d("MicroMsg.MMNeat7extView", "[isOpen] %s", new Object[] { Boolean.FALSE });
+    AppMethodBeat.i(143368);
+    ad.d("MicroMsg.MMNeat7extView", "[isOpen] %s", new Object[] { Boolean.FALSE });
     Object localObject = (AccessibilityManager)getContext().getSystemService("accessibility");
     boolean bool1 = ((AccessibilityManager)localObject).isEnabled();
     boolean bool2 = ((AccessibilityManager)localObject).isTouchExplorationEnabled();
     if ((bool1) && (bool2)) {}
-    for (int i = 1; (i != 0) || (b.dsf()); i = 0)
+    for (int i = 1; (i != 0) || (b.eEQ()); i = 0)
     {
-      localObject = super.dTB();
-      AppMethodBeat.o(107889);
+      localObject = super.fli();
+      AppMethodBeat.o(143368);
       return localObject;
     }
-    AppMethodBeat.o(107889);
+    AppMethodBeat.o(143368);
     return "";
   }
   
   public float getVerticalOffset()
   {
-    AppMethodBeat.i(107888);
-    if (ACX)
+    AppMethodBeat.i(143367);
+    if (HzC)
     {
       f = super.getVerticalOffset();
       getMeasuredHeight();
-      AppMethodBeat.o(107888);
+      AppMethodBeat.o(143367);
       return f;
     }
     float f = super.getVerticalOffset();
-    AppMethodBeat.o(107888);
+    AppMethodBeat.o(143367);
     return f;
   }
   
   public void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(107891);
+    AppMethodBeat.i(143370);
     try
     {
       super.onDraw(paramCanvas);
-      AppMethodBeat.o(107891);
+      AppMethodBeat.o(143370);
       return;
     }
     catch (Exception paramCanvas)
     {
-      String str = dTB().toString().replaceAll(ACY, "*");
-      ab.e("MicroMsg.MMNeat7extView", "[onDraw] replaceContent:%s exception:%s", new Object[] { str, paramCanvas });
-      if (this.ADb != null)
+      String str = fli().toString().replaceAll(HzD, "*");
+      ad.e("MicroMsg.MMNeat7extView", "[onDraw] replaceContent:%s exception:%s", new Object[] { str, paramCanvas });
+      if (this.HzG != null)
       {
-        this.ADb.a(paramCanvas, str, "onDraw");
-        AppMethodBeat.o(107891);
+        this.HzG.a(paramCanvas, str, "onDraw");
+        AppMethodBeat.o(143370);
         return;
       }
-      AppMethodBeat.o(107891);
+      AppMethodBeat.o(143370);
       throw paramCanvas;
     }
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(107892);
+    AppMethodBeat.i(143371);
     try
     {
       super.onMeasure(paramInt1, paramInt2);
-      AppMethodBeat.o(107892);
+      AppMethodBeat.o(143371);
       return;
     }
     catch (Exception localException)
     {
-      String str = dTB().toString().replaceAll(ACY, "*");
-      ab.e("MicroMsg.MMNeat7extView", "[onMeasure] replaceContent:%s exception:%s", new Object[] { str, localException });
-      if (this.ADb != null)
+      String str = fli().toString().replaceAll(HzD, "*");
+      ad.e("MicroMsg.MMNeat7extView", "[onMeasure] replaceContent:%s exception:%s", new Object[] { str, localException });
+      if (this.HzG != null)
       {
-        this.ADb.a(localException, str, "onMeasure");
-        AppMethodBeat.o(107892);
+        this.HzG.a(localException, str, "onMeasure");
+        AppMethodBeat.o(143371);
         return;
       }
-      AppMethodBeat.o(107892);
+      AppMethodBeat.o(143371);
       throw localException;
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(107890);
-    if ((!LB) || ((this.kji) && (this.idY != null))) {
-      this.idY.onTouchEvent(paramMotionEvent);
+    AppMethodBeat.i(143369);
+    if ((!SE) || ((this.nmV) && (this.ktZ != null))) {
+      this.ktZ.onTouchEvent(paramMotionEvent);
     }
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(107890);
+    AppMethodBeat.o(143369);
     return bool;
   }
   
   public void setIsOpen(boolean paramBoolean)
   {
-    LB = paramBoolean;
+    SE = paramBoolean;
   }
   
   public void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
-    AppMethodBeat.i(107895);
-    this.ACZ = paramOnLongClickListener;
+    AppMethodBeat.i(143374);
+    this.HzE = paramOnLongClickListener;
     super.setOnLongClickListener(new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(107886);
-        if (MMNeat7extView.ACX) {
-          Toast.makeText(MMNeat7extView.this.getContext(), MMNeat7extView.avl(MMNeat7extView.this.dTB().toString()), 1).show();
+        AppMethodBeat.i(143365);
+        if (MMNeat7extView.HzC) {
+          Toast.makeText(MMNeat7extView.this.getContext(), MMNeat7extView.aMe(MMNeat7extView.this.fli().toString()), 1).show();
         }
         if (MMNeat7extView.b(MMNeat7extView.this) != null)
         {
           boolean bool = MMNeat7extView.b(MMNeat7extView.this).onLongClick(paramAnonymousView);
-          AppMethodBeat.o(107886);
+          AppMethodBeat.o(143365);
           return bool;
         }
-        AppMethodBeat.o(107886);
+        AppMethodBeat.o(143365);
         return false;
       }
     });
-    AppMethodBeat.o(107895);
+    AppMethodBeat.o(143374);
   }
   
   public void setTextCrashListener(b paramb)
   {
-    this.ADb = paramb;
+    this.HzG = paramb;
   }
   
   public void setTextListener(a parama)
   {
-    this.ADa = parama;
+    this.HzF = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void ae(CharSequence paramCharSequence);
+    public abstract void an(CharSequence paramCharSequence);
   }
   
   public static abstract interface b

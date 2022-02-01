@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bs6" android:background="@drawable/b03" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip"
+<LinearLayout android:orientation="vertical" style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="13.0dip" android:textColor="#ffaaaaaa" android:id="@id/bs7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <Button android:textSize="@dimen/ko" android:id="@id/bs8" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:minWidth="60.0dip" android:text="@string/pn" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/nt" />
-</RelativeLayout>
+    <com.tencent.mm.ui.base.MMPullDownView android:id="@id/d3m" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:gravity="center" android:id="@android:id/list" android:background="@color/a7c" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a7c" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:choiceMode="none" />
+    </com.tencent.mm.ui.base.MMPullDownView>
+    <include android:visibility="gone" layout="@layout/yi" />
+</LinearLayout>

@@ -4,6 +4,8 @@ public class e
 {
   public static native double b(int paramInt1, int paramInt2, double[] paramArrayOfDouble);
   
+  public static native String[] l();
+  
   public static native int o(byte[] paramArrayOfByte, int paramInt);
   
   public static native double r(double paramDouble, int paramInt1, int paramInt2);
@@ -14,7 +16,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tencentmap.lbssdk.service.e
  * JD-Core Version:    0.7.0.1
  */

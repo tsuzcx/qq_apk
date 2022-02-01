@@ -1,35 +1,24 @@
 package com.tencent.xweb.xwalk;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.File;
 
 final class c$44
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  c$44(c paramc, String paramString) {}
+  c$44(c paramc) {}
   
-  public final void run()
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(139578);
-    try
-    {
-      Thread.sleep(5000L);
-      label11:
-      File localFile = new File(this.BJh);
-      String str = this.BJh + ".zip";
-      o.a(new File[] { localFile }, str);
-      AppMethodBeat.o(139578);
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      break label11;
-    }
+    AppMethodBeat.i(154207);
+    this.IST.aVK();
+    AppMethodBeat.o(154207);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.xweb.xwalk.c.44
  * JD-Core Version:    0.7.0.1
  */

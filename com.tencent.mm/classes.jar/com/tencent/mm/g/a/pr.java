@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class pr
   extends b
 {
-  public pr.a cGh;
+  public a dvs;
   
   public pr()
   {
@@ -15,11 +15,16 @@ public final class pr
   
   private pr(byte paramByte)
   {
-    AppMethodBeat.i(15797);
-    this.cGh = new pr.a();
-    this.ymq = false;
+    AppMethodBeat.i(168780);
+    this.dvs = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15797);
+    AppMethodBeat.o(168780);
+  }
+  
+  public static final class a
+  {
+    public boolean dvt = false;
   }
 }
 

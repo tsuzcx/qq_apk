@@ -9,28 +9,28 @@ import org.json.JSONObject;
 public final class b
   extends a
 {
-  public String cHB;
-  public String czq;
+  public String Azq;
+  public String dpw;
+  public String dyq;
   public String pin;
-  public String uCk;
   
   public b(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(48371);
-    this.uCk = paramString1;
-    this.cHB = paramString2;
+    AppMethodBeat.i(72011);
+    this.Azq = paramString1;
+    this.dyq = paramString2;
     this.pin = paramString3;
-    this.czq = paramString4;
+    this.dpw = paramString4;
     HashMap localHashMap = new HashMap();
     localHashMap.put("dial_code", paramString1);
     localHashMap.put("number", paramString2);
     localHashMap.put("pin", paramString3);
     localHashMap.put("payu_reference", paramString4);
     setRequestData(localHashMap);
-    AppMethodBeat.o(48371);
+    AppMethodBeat.o(72011);
   }
   
-  public final int cTa()
+  public final int ebo()
   {
     return 17;
   }
@@ -39,7 +39,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.create.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,132 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.qg;
-import com.tencent.mm.protocal.protobuf.qh;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.wallet_core.b.a.a;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
 public final class n
-  extends m
-  implements k
+  extends a
 {
-  private final String TAG;
-  private f callback;
-  public String cpq;
-  public qh kNK;
-  private com.tencent.mm.ai.b rr;
+  public long dEb;
+  public int dcG;
+  public String desc;
+  public String iau;
+  public String iav;
+  public String nTK;
+  public String nTL;
+  public int nTM;
+  public String nTN;
+  public String nTO;
+  public String nTP;
+  public String nTQ;
+  public String nTR;
+  public String nTS;
+  public int nTT;
+  public String nTU;
+  public String nTV;
+  public int nTW;
   
-  public n(int paramInt, com.tencent.mm.bv.b paramb, String paramString)
+  public n(int paramInt)
   {
-    AppMethodBeat.i(40983);
-    this.TAG = "MicroMsg.NetSceneMDRcvVoice";
-    Object localObject = new b.a();
-    ((b.a)localObject).fsX = new qg();
-    ((b.a)localObject).fsY = new qh();
-    ((b.a)localObject).funcId = 1317;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/getmdrcvvoice";
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (qg)this.rr.fsV.fta;
-    ((qg)localObject).okH = paramInt;
-    ((qg)localObject).wIn = 0;
-    ((qg)localObject).kNU = paramString;
-    ((qg)localObject).wIl = null;
-    ((qg)localObject).wIm = paramb;
-    this.cpq = paramString;
-    ab.i("MicroMsg.NetSceneMDRcvVoice", "amount: %d, outtradeno: %s", new Object[] { Integer.valueOf(paramInt), paramString });
-    AppMethodBeat.o(40983);
+    AppMethodBeat.i(63832);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("set_amount", "0");
+    localHashMap.put("wallet_type", String.valueOf(paramInt));
+    setRequestData(localHashMap);
+    ad.i("MicroMsg.NetSceneH5F2fTransferGetQrCode", "setAmount: %s, walletType: %s", new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt) });
+    AppMethodBeat.o(63832);
   }
   
-  public final int doScene(e parame, f paramf)
+  public n(long paramLong, String paramString, int paramInt)
   {
-    AppMethodBeat.i(40984);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(40984);
-    return i;
+    AppMethodBeat.i(63833);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("amount", String.valueOf(paramLong));
+    localHashMap.put("set_amount", "1");
+    try
+    {
+      if (!bt.isNullOrNil(paramString)) {
+        localHashMap.put("desc", URLEncoder.encode(paramString, "UTF-8"));
+      }
+      localHashMap.put("wallet_type", String.valueOf(paramInt));
+      setRequestData(localHashMap);
+      this.dEb = paramLong;
+      this.desc = paramString;
+      ad.i("MicroMsg.NetSceneH5F2fTransferGetQrCode", "amount: %d, setAmount: %s, desc: %s, walletType: %s", new Object[] { Long.valueOf(paramLong), Integer.valueOf(1), paramString, Integer.valueOf(paramInt) });
+      AppMethodBeat.o(63833);
+      return;
+    }
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.NetSceneH5F2fTransferGetQrCode", localUnsupportedEncodingException, "", new Object[0]);
+      }
+    }
+  }
+  
+  public final String bOB()
+  {
+    return "/cgi-bin/mmpay-bin/h5f2ftransfergetqrcode";
+  }
+  
+  public final int bOC()
+  {
+    return 1335;
+  }
+  
+  public final boolean bOD()
+  {
+    return true;
   }
   
   public final int getType()
   {
-    return 1317;
+    return 1335;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(40985);
-    ab.i("MicroMsg.NetSceneMDRcvVoice", "errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.kNK = ((qh)((com.tencent.mm.ai.b)paramq).fsW.fta);
-    ab.i("MicroMsg.NetSceneMDRcvVoice", "ret_code: %d, ret_msg: %s，voice_type: %d", new Object[] { Integer.valueOf(this.kNK.cnK), this.kNK.kNv, Integer.valueOf(this.kNK.wIn) });
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(63834);
+    this.dcG = paramJSONObject.optInt("retcode", 0);
+    this.nTK = paramJSONObject.optString("retmsg", "");
+    this.nTL = paramJSONObject.optString("qrcode_url", "");
+    this.nTM = paramJSONObject.optInt("alert_type", 0);
+    this.nTN = paramJSONObject.optString("alert_title", "");
+    this.nTO = paramJSONObject.optString("left_button_text", "");
+    this.nTP = paramJSONObject.optString("right_button_text", "");
+    this.nTQ = paramJSONObject.optString("right_button_url", "");
+    this.nTR = paramJSONObject.optString("bottom_text", "");
+    this.nTS = paramJSONObject.optString("bottom_url", "");
+    this.nTT = paramJSONObject.optInt("currency", 0);
+    this.nTU = paramJSONObject.optString("currencyunit", "");
+    this.iau = paramJSONObject.optString("notice", "");
+    this.iav = paramJSONObject.optString("notice_url", "");
+    this.nTV = paramJSONObject.optString("recv_realname", "");
+    this.nTW = paramJSONObject.optInt("set_amount", 0);
+    if (this.nTW == 0)
+    {
+      g.afC();
+      g.afB().afk().set(ae.a.Fpu, this.nTL);
+      ad.i("MicroMsg.NetSceneH5F2fTransferGetQrCode", "set payurl: %s", new Object[] { this.nTL });
     }
-    AppMethodBeat.o(40985);
+    ad.d("MicroMsg.NetSceneH5F2fTransferGetQrCode", "url: %s, currency: %s", new Object[] { this.nTL, Integer.valueOf(this.nTT) });
+    AppMethodBeat.o(63834);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.n
  * JD-Core Version:    0.7.0.1
  */

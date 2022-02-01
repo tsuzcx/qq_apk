@@ -14,27 +14,27 @@ import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class MMADFlipper
   extends ViewGroup
 {
-  private View Ww;
-  private View llk;
+  private int FVW;
+  private Interpolator FVX;
+  private int FVY;
+  private int FVZ;
+  private boolean FWa;
+  private boolean FWb;
+  private a FWc;
+  private View adC;
   private Context mContext;
   private float mLastMotionX;
   private float mLastMotionY;
   private Scroller mScroller;
   private int mTouchSlop;
   private VelocityTracker mVelocityTracker;
-  private int zis;
-  private Interpolator zit;
-  private int ziu;
-  private int ziv;
-  private boolean ziw;
-  private boolean zix;
-  private MMADFlipper.a ziy;
+  private View oBA;
   
   public MMADFlipper(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,29 +44,29 @@ public class MMADFlipper
   public MMADFlipper(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(106388);
-    this.zis = 0;
-    this.ziw = false;
-    this.zix = true;
+    AppMethodBeat.i(141755);
+    this.FVW = 0;
+    this.FWa = false;
+    this.FWb = true;
     this.mContext = paramContext;
-    this.zit = getInterpolator();
-    this.mScroller = new Scroller(this.mContext, this.zit);
+    this.FVX = getInterpolator();
+    this.mScroller = new Scroller(this.mContext, this.FVX);
     this.mTouchSlop = ViewConfiguration.get(this.mContext).getScaledDoubleTapSlop();
-    AppMethodBeat.o(106388);
+    AppMethodBeat.o(141755);
   }
   
-  private void OB(int paramInt)
+  private void XH(int paramInt)
   {
-    AppMethodBeat.i(106398);
-    OC(paramInt);
-    ab.d("MicroMsg.MMFlipper", "mCurScreen:%d, mLastScreen:%d, whichScreen:%d", new Object[] { Integer.valueOf(this.ziu), Integer.valueOf(this.ziv), Integer.valueOf(paramInt) });
-    this.ziv = paramInt;
-    AppMethodBeat.o(106398);
+    AppMethodBeat.i(141765);
+    XI(paramInt);
+    ad.d("MicroMsg.MMFlipper", "mCurScreen:%d, mLastScreen:%d, whichScreen:%d", new Object[] { Integer.valueOf(this.FVY), Integer.valueOf(this.FVZ), Integer.valueOf(paramInt) });
+    this.FVZ = paramInt;
+    AppMethodBeat.o(141765);
   }
   
-  private void OC(int paramInt)
+  private void XI(int paramInt)
   {
-    AppMethodBeat.i(106399);
+    AppMethodBeat.i(141766);
     paramInt = Math.max(0, Math.min(paramInt, getChildCount() - 1));
     if (getScrollX() != getWidth() * paramInt)
     {
@@ -74,118 +74,118 @@ public class MMADFlipper
       this.mScroller.startScroll(getScrollX(), 0, paramInt, 0, a.ar(getContext(), Math.abs(paramInt) * 2));
       invalidate();
     }
-    AppMethodBeat.o(106399);
+    AppMethodBeat.o(141766);
   }
   
-  private boolean dDL()
+  private boolean eSC()
   {
-    AppMethodBeat.i(106395);
+    AppMethodBeat.i(141762);
     if (getChildCount() > 1)
     {
-      AppMethodBeat.o(106395);
+      AppMethodBeat.o(141762);
       return true;
     }
-    AppMethodBeat.o(106395);
+    AppMethodBeat.o(141762);
     return false;
   }
   
   private Interpolator getInterpolator()
   {
-    AppMethodBeat.i(106394);
+    AppMethodBeat.i(141761);
     LinearInterpolator localLinearInterpolator = new LinearInterpolator();
-    AppMethodBeat.o(106394);
+    AppMethodBeat.o(141761);
     return localLinearInterpolator;
   }
   
   public void computeScroll()
   {
-    AppMethodBeat.i(106400);
+    AppMethodBeat.i(141767);
     if (this.mScroller.computeScrollOffset())
     {
       scrollTo(this.mScroller.getCurrX(), this.mScroller.getCurrY());
       postInvalidate();
-      AppMethodBeat.o(106400);
+      AppMethodBeat.o(141767);
       return;
     }
-    if (this.ziw)
+    if (this.FWa)
     {
-      this.ziw = false;
-      if (this.ziu <= 0)
+      this.FWa = false;
+      if (this.FVY <= 0)
       {
-        this.ziu = getRealChildCount();
-        setScrollXOffest(this.ziu * getWidth());
-        AppMethodBeat.o(106400);
+        this.FVY = getRealChildCount();
+        setScrollXOffest(this.FVY * getWidth());
+        AppMethodBeat.o(141767);
         return;
       }
-      if (this.ziu >= getChildCount() - 1)
+      if (this.FVY >= getChildCount() - 1)
       {
-        this.ziu = 1;
-        setScrollXOffest(this.ziu * getWidth());
+        this.FVY = 1;
+        setScrollXOffest(this.FVY * getWidth());
       }
     }
-    AppMethodBeat.o(106400);
+    AppMethodBeat.o(141767);
   }
   
   public int getCurScreen()
   {
-    return this.ziu;
+    return this.FVY;
   }
   
   public int getRealChildCount()
   {
-    AppMethodBeat.i(106396);
+    AppMethodBeat.i(141763);
     if (getChildCount() > 1)
     {
       i = getChildCount();
-      AppMethodBeat.o(106396);
+      AppMethodBeat.o(141763);
       return i - 2;
     }
     int i = getChildCount();
-    AppMethodBeat.o(106396);
+    AppMethodBeat.o(141763);
     return i;
   }
   
   public int getRealCurScreen()
   {
-    AppMethodBeat.i(106397);
+    AppMethodBeat.i(141764);
     if (getChildCount() > 1)
     {
-      i = this.ziu;
-      AppMethodBeat.o(106397);
+      i = this.FVY;
+      AppMethodBeat.o(141764);
       return i - 1;
     }
-    int i = this.ziu;
-    AppMethodBeat.o(106397);
+    int i = this.FVY;
+    AppMethodBeat.o(141764);
     return i;
   }
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(106389);
+    AppMethodBeat.i(141756);
     super.onFinishInflate();
-    AppMethodBeat.o(106389);
+    AppMethodBeat.o(141756);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(106392);
+    AppMethodBeat.i(141759);
     boolean bool;
-    if (!this.zix)
+    if (!this.FWb)
     {
       bool = super.onInterceptTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(106392);
+      AppMethodBeat.o(141759);
       return bool;
     }
     if (getChildCount() == 1)
     {
       bool = super.onInterceptTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(106392);
+      AppMethodBeat.o(141759);
       return bool;
     }
     int i = paramMotionEvent.getAction();
-    if ((i == 2) && (this.zis != 0))
+    if ((i == 2) && (this.FVW != 0))
     {
-      AppMethodBeat.o(106392);
+      AppMethodBeat.o(141759);
       return true;
     }
     float f1 = paramMotionEvent.getX();
@@ -193,9 +193,9 @@ public class MMADFlipper
     switch (i)
     {
     }
-    while (this.zis != 0)
+    while (this.FVW != 0)
     {
-      AppMethodBeat.o(106392);
+      AppMethodBeat.o(141759);
       return true;
       i = (int)Math.abs(this.mLastMotionX - f1);
       int j = (int)Math.abs(this.mLastMotionY - f2);
@@ -205,29 +205,29 @@ public class MMADFlipper
         if (i == 0) {
           break label198;
         }
-        this.zis = 1;
+        this.FVW = 1;
         break;
       }
       label198:
-      this.zis = 0;
+      this.FVW = 0;
       continue;
       this.mLastMotionX = f1;
       this.mLastMotionY = f2;
       if (this.mScroller.isFinished()) {}
       for (i = 0;; i = 1)
       {
-        this.zis = i;
+        this.FVW = i;
         break;
       }
-      this.zis = 0;
+      this.FVW = 0;
     }
-    AppMethodBeat.o(106392);
+    AppMethodBeat.o(141759);
     return false;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(106390);
+    AppMethodBeat.i(141757);
     paramInt4 = getChildCount();
     paramInt1 = 0;
     for (paramInt2 = 0; paramInt1 < paramInt4; paramInt2 = paramInt3)
@@ -242,12 +242,12 @@ public class MMADFlipper
       }
       paramInt1 += 1;
     }
-    AppMethodBeat.o(106390);
+    AppMethodBeat.o(141757);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106391);
+    AppMethodBeat.i(141758);
     super.onMeasure(paramInt1, paramInt2);
     View.MeasureSpec.getSize(paramInt1);
     View.MeasureSpec.getSize(paramInt2);
@@ -258,16 +258,16 @@ public class MMADFlipper
       getChildAt(i).measure(paramInt1, paramInt2);
       i += 1;
     }
-    AppMethodBeat.o(106391);
+    AppMethodBeat.o(141758);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(106393);
+    AppMethodBeat.i(141760);
     if (getChildCount() == 1)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(106393);
+      AppMethodBeat.o(141760);
       return bool;
     }
     if (this.mVelocityTracker == null) {
@@ -283,7 +283,7 @@ public class MMADFlipper
     case 2: 
       for (;;)
       {
-        AppMethodBeat.o(106393);
+        AppMethodBeat.o(141760);
         return true;
         if (!this.mScroller.isFinished()) {
           this.mScroller.abortAnimation();
@@ -300,12 +300,12 @@ public class MMADFlipper
     i = (int)paramMotionEvent.getXVelocity();
     if (i > 600)
     {
-      if (dDL())
+      if (eSC())
       {
-        this.ziu -= 1;
-        OB(this.ziu);
+        this.FVY -= 1;
+        XH(this.FVY);
       }
-      this.ziw = true;
+      this.FWa = true;
     }
     for (;;)
     {
@@ -314,66 +314,68 @@ public class MMADFlipper
         this.mVelocityTracker.recycle();
         this.mVelocityTracker = null;
       }
-      this.zis = 0;
+      this.FVW = 0;
       this.mLastMotionX = 0.0F;
       this.mLastMotionY = 0.0F;
       break;
       if (i < -600)
       {
-        if (dDL())
+        if (eSC())
         {
-          this.ziu += 1;
-          OB(this.ziu);
+          this.FVY += 1;
+          XH(this.FVY);
         }
-        this.ziw = true;
+        this.FWa = true;
       }
       else
       {
         i = getWidth();
-        OB((getScrollX() + i / 2) / i);
+        XH((getScrollX() + i / 2) / i);
       }
     }
   }
   
   public void setFooterView(View paramView)
   {
-    this.llk = paramView;
+    this.oBA = paramView;
   }
   
   public void setHeaderView(View paramView)
   {
-    this.Ww = paramView;
+    this.adC = paramView;
   }
   
-  public void setOnScreenChangedListener(MMADFlipper.a parama)
+  public void setOnScreenChangedListener(a parama)
   {
-    this.ziy = parama;
+    this.FWc = parama;
   }
   
   public void setScrollEnable(boolean paramBoolean)
   {
-    this.zix = paramBoolean;
+    this.FWb = paramBoolean;
   }
   
   @TargetApi(14)
   public void setScrollXOffest(int paramInt)
   {
-    AppMethodBeat.i(106401);
+    AppMethodBeat.i(141768);
     if (Build.VERSION.SDK_INT >= 14)
     {
       setScrollX(paramInt);
-      AppMethodBeat.o(106401);
+      AppMethodBeat.o(141768);
       return;
     }
     if (this.mScroller != null) {
       this.mScroller.setFinalX(paramInt);
     }
-    AppMethodBeat.o(106401);
+    AppMethodBeat.o(141768);
   }
+  
+  public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMADFlipper
  * JD-Core Version:    0.7.0.1
  */

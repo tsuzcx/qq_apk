@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.base.MaskLayout android:id="@id/ap9" android:clipChildren="false" android:clipToPadding="false" style="@style/gc"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.chatting.view.AvatarImageView android:id="@id/ow" android:focusable="false" style="@style/ge" />
-    <ViewStub android:id="@id/ap_" android:layout="@layout/m3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_alignParentBottom="true" />
-</com.tencent.mm.ui.base.MaskLayout>
+<TextView android:layout_gravity="center_vertical" android:background="@color/FG_3" android:visibility="visible" android:layout_width="1.0px" android:layout_height="65.0dip" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

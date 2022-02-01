@@ -27,30 +27,30 @@ public final class zzaa
   public zzaa(Activity paramActivity, GoogleApi.Settings paramSettings)
   {
     super(paramActivity, paramSettings);
-    AppMethodBeat.i(70970);
+    AppMethodBeat.i(100953);
     this.zzbw = new zzo();
-    AppMethodBeat.o(70970);
+    AppMethodBeat.o(100953);
   }
   
   public zzaa(Context paramContext, GoogleApi.Settings paramSettings)
   {
     super(paramContext, paramSettings);
-    AppMethodBeat.i(70969);
+    AppMethodBeat.i(100952);
     this.zzbw = new zzo();
-    AppMethodBeat.o(70969);
+    AppMethodBeat.o(100952);
   }
   
   private final Task<Void> zza(ListenerHolder<CapabilityClient.OnCapabilityChangedListener> paramListenerHolder, CapabilityClient.OnCapabilityChangedListener paramOnCapabilityChangedListener, IntentFilter[] paramArrayOfIntentFilter)
   {
-    AppMethodBeat.i(70979);
+    AppMethodBeat.i(100962);
     paramListenerHolder = doRegisterEventListener(new zzaf(paramOnCapabilityChangedListener, paramArrayOfIntentFilter, paramListenerHolder, null), new zzag(paramOnCapabilityChangedListener, paramListenerHolder.getListenerKey(), null));
-    AppMethodBeat.o(70979);
+    AppMethodBeat.o(100962);
     return paramListenerHolder;
   }
   
   public final Task<Void> addListener(CapabilityClient.OnCapabilityChangedListener paramOnCapabilityChangedListener, Uri paramUri, int paramInt)
   {
-    AppMethodBeat.i(70977);
+    AppMethodBeat.i(100960);
     Asserts.checkNotNull(paramOnCapabilityChangedListener, "listener must not be null");
     Asserts.checkNotNull(paramUri, "uri must not be null");
     if ((paramInt == 0) || (paramInt == 1)) {}
@@ -59,14 +59,14 @@ public final class zzaa
       Preconditions.checkArgument(bool, "invalid filter type");
       paramUri = zzgj.zza("com.google.android.gms.wearable.CAPABILITY_CHANGED", paramUri, paramInt);
       paramOnCapabilityChangedListener = zza(ListenerHolders.createListenerHolder(paramOnCapabilityChangedListener, getLooper(), "CapabilityListener"), paramOnCapabilityChangedListener, new IntentFilter[] { paramUri });
-      AppMethodBeat.o(70977);
+      AppMethodBeat.o(100960);
       return paramOnCapabilityChangedListener;
     }
   }
   
   public final Task<Void> addListener(CapabilityClient.OnCapabilityChangedListener paramOnCapabilityChangedListener, String paramString)
   {
-    AppMethodBeat.i(70975);
+    AppMethodBeat.i(100958);
     Asserts.checkNotNull(paramOnCapabilityChangedListener, "listener must not be null");
     Asserts.checkNotNull(paramString, "capability must not be null");
     IntentFilter localIntentFilter = zzgj.zzc("com.google.android.gms.wearable.CAPABILITY_CHANGED");
@@ -86,7 +86,7 @@ public final class zzaa
       for (str = "CapabilityListener:".concat(str);; str = new String("CapabilityListener:"))
       {
         paramOnCapabilityChangedListener = zza(ListenerHolders.createListenerHolder(paramOnCapabilityChangedListener, localLooper, str), new zzae(paramOnCapabilityChangedListener, paramString), new IntentFilter[] { localIntentFilter });
-        AppMethodBeat.o(70975);
+        AppMethodBeat.o(100958);
         return paramOnCapabilityChangedListener;
         paramString = new String("/");
         break;
@@ -96,42 +96,42 @@ public final class zzaa
   
   public final Task<Void> addLocalCapability(String paramString)
   {
-    AppMethodBeat.i(70973);
+    AppMethodBeat.i(100956);
     Asserts.checkNotNull(paramString, "capability must not be null");
     paramString = PendingResultUtil.toVoidTask(this.zzbw.addLocalCapability(asGoogleApiClient(), paramString));
-    AppMethodBeat.o(70973);
+    AppMethodBeat.o(100956);
     return paramString;
   }
   
   public final Task<Map<String, CapabilityInfo>> getAllCapabilities(int paramInt)
   {
-    AppMethodBeat.i(70972);
+    AppMethodBeat.i(100955);
     Task localTask = PendingResultUtil.toTask(this.zzbw.getAllCapabilities(asGoogleApiClient(), paramInt), zzac.zzbx);
-    AppMethodBeat.o(70972);
+    AppMethodBeat.o(100955);
     return localTask;
   }
   
   public final Task<CapabilityInfo> getCapability(String paramString, int paramInt)
   {
-    AppMethodBeat.i(70971);
+    AppMethodBeat.i(100954);
     Asserts.checkNotNull(paramString, "capability must not be null");
     paramString = PendingResultUtil.toTask(this.zzbw.getCapability(asGoogleApiClient(), paramString, paramInt), zzab.zzbx);
-    AppMethodBeat.o(70971);
+    AppMethodBeat.o(100954);
     return paramString;
   }
   
   public final Task<Boolean> removeListener(CapabilityClient.OnCapabilityChangedListener paramOnCapabilityChangedListener)
   {
-    AppMethodBeat.i(70978);
+    AppMethodBeat.i(100961);
     Asserts.checkNotNull(paramOnCapabilityChangedListener, "listener must not be null");
     paramOnCapabilityChangedListener = doUnregisterEventListener(ListenerHolders.createListenerHolder(paramOnCapabilityChangedListener, getLooper(), "CapabilityListener").getListenerKey());
-    AppMethodBeat.o(70978);
+    AppMethodBeat.o(100961);
     return paramOnCapabilityChangedListener;
   }
   
   public final Task<Boolean> removeListener(CapabilityClient.OnCapabilityChangedListener paramOnCapabilityChangedListener, String paramString)
   {
-    AppMethodBeat.i(70976);
+    AppMethodBeat.i(100959);
     Asserts.checkNotNull(paramOnCapabilityChangedListener, "listener must not be null");
     Asserts.checkNotNull(paramString, "capability must not be null");
     if (!paramString.startsWith("/"))
@@ -149,7 +149,7 @@ public final class zzaa
       for (paramString = "CapabilityListener:".concat(paramString);; paramString = new String("CapabilityListener:"))
       {
         paramOnCapabilityChangedListener = doUnregisterEventListener(ListenerHolders.createListenerHolder(paramOnCapabilityChangedListener, localLooper, paramString).getListenerKey());
-        AppMethodBeat.o(70976);
+        AppMethodBeat.o(100959);
         return paramOnCapabilityChangedListener;
         paramString = new String("/");
         break;
@@ -159,16 +159,16 @@ public final class zzaa
   
   public final Task<Void> removeLocalCapability(String paramString)
   {
-    AppMethodBeat.i(70974);
+    AppMethodBeat.i(100957);
     Asserts.checkNotNull(paramString, "capability must not be null");
     paramString = PendingResultUtil.toVoidTask(this.zzbw.removeLocalCapability(asGoogleApiClient(), paramString));
-    AppMethodBeat.o(70974);
+    AppMethodBeat.o(100957);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzaa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.appbrand;
 
-import a.f.b.j;
-import a.l;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,29 +7,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.task.AppBrandRemoteTaskController;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/IPC_PARAM_stashPersistentApp;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "appId", "", "processName", "taskController", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandRemoteTaskController;", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/task/AppBrandRemoteTaskController;)V", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "getProcessName", "setProcessName", "getTaskController", "()Lcom/tencent/mm/plugin/appbrand/task/AppBrandRemoteTaskController;", "setTaskController", "(Lcom/tencent/mm/plugin/appbrand/task/AppBrandRemoteTaskController;)V", "describeContents", "", "writeToParcel", "", "dest", "flags", "Companion", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/IPC_PARAM_stashPersistentApp;", "Landroid/os/Parcelable;", "source", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "appId", "", "processName", "taskController", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandRemoteTaskController;", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/plugin/appbrand/task/AppBrandRemoteTaskController;)V", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "getProcessName", "setProcessName", "getTaskController", "()Lcom/tencent/mm/plugin/appbrand/task/AppBrandRemoteTaskController;", "setTaskController", "(Lcom/tencent/mm/plugin/appbrand/task/AppBrandRemoteTaskController;)V", "describeContents", "", "writeToParcel", "", "dest", "flags", "Companion", "plugin-appbrand-integration_release"})
 final class IPC_PARAM_stashPersistentApp
   implements Parcelable
 {
   public static final Parcelable.Creator<IPC_PARAM_stashPersistentApp> CREATOR;
-  public static final IPC_PARAM_stashPersistentApp.a gSd;
+  public static final a iHP;
   String appId;
-  AppBrandRemoteTaskController gSc;
+  AppBrandRemoteTaskController iHO;
   String processName;
   
   static
   {
-    AppMethodBeat.i(143728);
-    gSd = new IPC_PARAM_stashPersistentApp.a((byte)0);
-    CREATOR = (Parcelable.Creator)new IPC_PARAM_stashPersistentApp.b();
-    AppMethodBeat.o(143728);
+    AppMethodBeat.i(50155);
+    iHP = new a((byte)0);
+    CREATOR = (Parcelable.Creator)new b();
+    AppMethodBeat.o(50155);
   }
   
   public IPC_PARAM_stashPersistentApp(Parcel paramParcel)
   {
     this();
-    AppMethodBeat.i(143727);
+    AppMethodBeat.i(50154);
     this.appId = paramParcel.readString();
     this.processName = paramParcel.readString();
     paramParcel = paramParcel.readBundle(AppBrandRemoteTaskController.class.getClassLoader());
@@ -42,18 +42,18 @@ final class IPC_PARAM_stashPersistentApp
       if (!(localMainProcessTask instanceof AppBrandRemoteTaskController)) {
         paramParcel = null;
       }
-      this.gSc = ((AppBrandRemoteTaskController)paramParcel);
-      AppMethodBeat.o(143727);
+      this.iHO = ((AppBrandRemoteTaskController)paramParcel);
+      AppMethodBeat.o(50154);
       return;
     }
-    AppMethodBeat.o(143727);
+    AppMethodBeat.o(50154);
   }
   
   public IPC_PARAM_stashPersistentApp(String paramString1, String paramString2, AppBrandRemoteTaskController paramAppBrandRemoteTaskController)
   {
     this.appId = paramString1;
     this.processName = paramString2;
-    this.gSc = paramAppBrandRemoteTaskController;
+    this.iHO = paramAppBrandRemoteTaskController;
   }
   
   public final int describeContents()
@@ -63,23 +63,31 @@ final class IPC_PARAM_stashPersistentApp
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(143726);
-    j.q(paramParcel, "dest");
+    AppMethodBeat.i(50153);
+    k.h(paramParcel, "dest");
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.processName);
-    if (this.gSc != null)
+    if (this.iHO != null)
     {
-      paramParcel.writeBundle(AppBrandMainProcessService.a((MainProcessTask)this.gSc, true));
-      AppMethodBeat.o(143726);
+      paramParcel.writeBundle(AppBrandMainProcessService.a((MainProcessTask)this.iHO, true));
+      AppMethodBeat.o(50153);
       return;
     }
     paramParcel.writeBundle(null);
-    AppMethodBeat.o(143726);
+    AppMethodBeat.o(50153);
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/IPC_PARAM_stashPersistentApp$Companion;", "", "()V", "CREATOR", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/IPC_PARAM_stashPersistentApp;", "plugin-appbrand-integration_release"})
+  public static final class a {}
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/appbrand/IPC_PARAM_stashPersistentApp$Companion$CREATOR$1", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/IPC_PARAM_stashPersistentApp;", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/IPC_PARAM_stashPersistentApp;", "plugin-appbrand-integration_release"})
+  public static final class b
+    implements Parcelable.Creator<IPC_PARAM_stashPersistentApp>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.IPC_PARAM_stashPersistentApp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,743 +1,793 @@
 package com.tencent.mm.plugin.webview.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
 import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.websearch.api.a;
-import com.tencent.mm.plugin.websearch.api.an;
-import com.tencent.mm.plugin.websearch.api.s;
+import com.tencent.mm.plugin.websearch.api.ak;
 import com.tencent.mm.plugin.websearch.api.z;
-import com.tencent.mm.protocal.protobuf.cdv;
-import com.tencent.mm.protocal.protobuf.cpj;
-import com.tencent.mm.protocal.protobuf.cym;
-import com.tencent.mm.protocal.protobuf.cyn;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.cur;
+import com.tencent.mm.protocal.protobuf.dis;
+import com.tencent.mm.protocal.protobuf.dsy;
+import com.tencent.mm.protocal.protobuf.dsz;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 
 public final class e
   extends a
   implements k
 {
-  private f callback;
-  private b fBd;
-  private s fpY;
+  private int AFN;
+  private com.tencent.mm.plugin.websearch.api.q AGj;
+  private dsz AOU;
+  private dsy AOV;
+  private g callback;
+  private b hdD;
   private int scene;
-  private int uIE;
-  private cyn uPc;
-  private cym uPd;
   
   /* Error */
-  public e(s params)
+  public e(com.tencent.mm.plugin.websearch.api.q paramq)
   {
     // Byte code:
-    //   0: iconst_0
+    //   0: iconst_1
     //   1: istore 7
     //   3: aload_0
     //   4: invokespecial 28	com/tencent/mm/plugin/websearch/api/a:<init>	()V
-    //   7: sipush 5714
-    //   10: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   13: aload_0
-    //   14: aload_1
-    //   15: putfield 36	com/tencent/mm/plugin/webview/fts/e:fpY	Lcom/tencent/mm/plugin/websearch/api/s;
-    //   18: aload_0
-    //   19: aload_1
-    //   20: getfield 42	com/tencent/mm/plugin/websearch/api/s:cnv	Ljava/lang/String;
-    //   23: putfield 45	com/tencent/mm/plugin/webview/fts/e:uIC	Ljava/lang/String;
-    //   26: aload_0
-    //   27: aload_1
-    //   28: getfield 48	com/tencent/mm/plugin/websearch/api/s:ohe	Ljava/lang/String;
-    //   31: putfield 51	com/tencent/mm/plugin/webview/fts/e:cCX	Ljava/lang/String;
-    //   34: aload_0
-    //   35: aload_1
-    //   36: getfield 54	com/tencent/mm/plugin/websearch/api/s:offset	I
-    //   39: putfield 57	com/tencent/mm/plugin/webview/fts/e:Fb	I
-    //   42: aload_0
-    //   43: aload_1
-    //   44: getfield 59	com/tencent/mm/plugin/websearch/api/s:scene	I
-    //   47: putfield 62	com/tencent/mm/plugin/webview/fts/e:mScene	I
-    //   50: aload_0
-    //   51: aload_1
-    //   52: getfield 65	com/tencent/mm/plugin/websearch/api/s:cCT	I
-    //   55: putfield 68	com/tencent/mm/plugin/webview/fts/e:uIB	I
-    //   58: aload_0
-    //   59: aload_1
-    //   60: getfield 70	com/tencent/mm/plugin/websearch/api/s:uIE	I
-    //   63: putfield 71	com/tencent/mm/plugin/webview/fts/e:uIE	I
-    //   66: aload_0
-    //   67: aload_1
-    //   68: putfield 36	com/tencent/mm/plugin/webview/fts/e:fpY	Lcom/tencent/mm/plugin/websearch/api/s;
-    //   71: aload_0
-    //   72: aload_1
-    //   73: getfield 75	com/tencent/mm/plugin/websearch/api/s:uIV	Landroid/os/Bundle;
-    //   76: putfield 78	com/tencent/mm/plugin/webview/fts/e:uID	Landroid/os/Bundle;
-    //   79: aload_1
-    //   80: getfield 42	com/tencent/mm/plugin/websearch/api/s:cnv	Ljava/lang/String;
-    //   83: invokestatic 84	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
-    //   86: ifne +1322 -> 1408
-    //   89: ldc 86
-    //   91: ldc 88
-    //   93: iconst_1
-    //   94: anewarray 90	java/lang/Object
-    //   97: dup
-    //   98: iconst_0
-    //   99: aload_1
-    //   100: getfield 42	com/tencent/mm/plugin/websearch/api/s:cnv	Ljava/lang/String;
-    //   103: aastore
-    //   104: invokestatic 95	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   107: aload_0
-    //   108: aload_1
-    //   109: getfield 59	com/tencent/mm/plugin/websearch/api/s:scene	I
-    //   112: putfield 96	com/tencent/mm/plugin/webview/fts/e:scene	I
-    //   115: new 98	com/tencent/mm/ai/b$a
-    //   118: dup
-    //   119: invokespecial 99	com/tencent/mm/ai/b$a:<init>	()V
-    //   122: astore 8
-    //   124: aload_1
-    //   125: getfield 59	com/tencent/mm/plugin/websearch/api/s:scene	I
-    //   128: sipush 201
-    //   131: if_icmpeq +11 -> 142
-    //   134: aload_1
-    //   135: getfield 102	com/tencent/mm/plugin/websearch/api/s:uIQ	I
-    //   138: iconst_1
-    //   139: if_icmpne +1199 -> 1338
-    //   142: iconst_1
-    //   143: istore 4
-    //   145: iload 4
-    //   147: ifeq +1197 -> 1344
-    //   150: invokestatic 108	com/tencent/mm/plugin/appbrand/s/r:aNV	()Z
-    //   153: ifeq +1191 -> 1344
-    //   156: aload 8
-    //   158: sipush 2676
-    //   161: putfield 111	com/tencent/mm/ai/b$a:funcId	I
+    //   7: ldc 29
+    //   9: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   12: aload_0
+    //   13: aload_1
+    //   14: putfield 37	com/tencent/mm/plugin/webview/fts/e:AGj	Lcom/tencent/mm/plugin/websearch/api/q;
+    //   17: aload_0
+    //   18: aload_1
+    //   19: getfield 43	com/tencent/mm/plugin/websearch/api/q:dcm	Ljava/lang/String;
+    //   22: putfield 46	com/tencent/mm/plugin/webview/fts/e:rLL	Ljava/lang/String;
+    //   25: aload_0
+    //   26: aload_1
+    //   27: getfield 49	com/tencent/mm/plugin/websearch/api/q:dnB	Ljava/lang/String;
+    //   30: putfield 52	com/tencent/mm/plugin/webview/fts/e:dtx	Ljava/lang/String;
+    //   33: aload_0
+    //   34: aload_1
+    //   35: getfield 55	com/tencent/mm/plugin/websearch/api/q:offset	I
+    //   38: putfield 58	com/tencent/mm/plugin/webview/fts/e:LZ	I
+    //   41: aload_0
+    //   42: aload_1
+    //   43: getfield 60	com/tencent/mm/plugin/websearch/api/q:scene	I
+    //   46: putfield 63	com/tencent/mm/plugin/webview/fts/e:mScene	I
+    //   49: aload_0
+    //   50: aload_1
+    //   51: getfield 66	com/tencent/mm/plugin/websearch/api/q:dtt	I
+    //   54: putfield 69	com/tencent/mm/plugin/webview/fts/e:AFI	I
+    //   57: aload_0
+    //   58: aload_1
+    //   59: getfield 71	com/tencent/mm/plugin/websearch/api/q:AFN	I
+    //   62: putfield 72	com/tencent/mm/plugin/webview/fts/e:AFN	I
+    //   65: aload_0
+    //   66: aload_1
+    //   67: putfield 37	com/tencent/mm/plugin/webview/fts/e:AGj	Lcom/tencent/mm/plugin/websearch/api/q;
+    //   70: aload_0
+    //   71: aload_1
+    //   72: getfield 76	com/tencent/mm/plugin/websearch/api/q:AGe	Landroid/os/Bundle;
+    //   75: putfield 79	com/tencent/mm/plugin/webview/fts/e:AFJ	Landroid/os/Bundle;
+    //   78: aload_1
+    //   79: getfield 43	com/tencent/mm/plugin/websearch/api/q:dcm	Ljava/lang/String;
+    //   82: invokestatic 85	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   85: ifne +1430 -> 1515
+    //   88: ldc 87
+    //   90: ldc 89
+    //   92: iconst_1
+    //   93: anewarray 91	java/lang/Object
+    //   96: dup
+    //   97: iconst_0
+    //   98: aload_1
+    //   99: getfield 43	com/tencent/mm/plugin/websearch/api/q:dcm	Ljava/lang/String;
+    //   102: aastore
+    //   103: invokestatic 96	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   106: aload_0
+    //   107: aload_1
+    //   108: getfield 60	com/tencent/mm/plugin/websearch/api/q:scene	I
+    //   111: putfield 97	com/tencent/mm/plugin/webview/fts/e:scene	I
+    //   114: new 99	com/tencent/mm/al/b$a
+    //   117: dup
+    //   118: invokespecial 100	com/tencent/mm/al/b$a:<init>	()V
+    //   121: astore 8
+    //   123: aload_1
+    //   124: getfield 60	com/tencent/mm/plugin/websearch/api/q:scene	I
+    //   127: sipush 201
+    //   130: if_icmpeq +11 -> 141
+    //   133: aload_1
+    //   134: getfield 103	com/tencent/mm/plugin/websearch/api/q:AFZ	I
+    //   137: iconst_1
+    //   138: if_icmpne +1274 -> 1412
+    //   141: iconst_1
+    //   142: istore 4
+    //   144: iload 4
+    //   146: ifeq +1272 -> 1418
+    //   149: aload 8
+    //   151: sipush 2676
+    //   154: putfield 106	com/tencent/mm/al/b$a:funcId	I
+    //   157: aload 8
+    //   159: ldc 108
+    //   161: putfield 111	com/tencent/mm/al/b$a:uri	Ljava/lang/String;
     //   164: aload 8
-    //   166: ldc 113
-    //   168: putfield 116	com/tencent/mm/ai/b$a:uri	Ljava/lang/String;
-    //   171: aload 8
-    //   173: new 118	com/tencent/mm/protocal/protobuf/cym
-    //   176: dup
-    //   177: invokespecial 119	com/tencent/mm/protocal/protobuf/cym:<init>	()V
-    //   180: putfield 123	com/tencent/mm/ai/b$a:fsX	Lcom/tencent/mm/bv/a;
-    //   183: aload 8
-    //   185: new 125	com/tencent/mm/protocal/protobuf/cyn
-    //   188: dup
-    //   189: invokespecial 126	com/tencent/mm/protocal/protobuf/cyn:<init>	()V
-    //   192: putfield 129	com/tencent/mm/ai/b$a:fsY	Lcom/tencent/mm/bv/a;
-    //   195: aload_0
-    //   196: aload 8
-    //   198: invokevirtual 133	com/tencent/mm/ai/b$a:ado	()Lcom/tencent/mm/ai/b;
-    //   201: putfield 135	com/tencent/mm/plugin/webview/fts/e:fBd	Lcom/tencent/mm/ai/b;
-    //   204: aload_0
-    //   205: aload_0
-    //   206: getfield 135	com/tencent/mm/plugin/webview/fts/e:fBd	Lcom/tencent/mm/ai/b;
-    //   209: getfield 141	com/tencent/mm/ai/b:fsV	Lcom/tencent/mm/ai/b$b;
-    //   212: getfield 146	com/tencent/mm/ai/b$b:fta	Lcom/tencent/mm/bv/a;
-    //   215: checkcast 118	com/tencent/mm/protocal/protobuf/cym
-    //   218: putfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   221: aload_0
-    //   222: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   225: aload_1
-    //   226: getfield 42	com/tencent/mm/plugin/websearch/api/s:cnv	Ljava/lang/String;
-    //   229: putfield 151	com/tencent/mm/protocal/protobuf/cym:wXt	Ljava/lang/String;
-    //   232: aload_0
-    //   233: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   236: aload_1
-    //   237: getfield 70	com/tencent/mm/plugin/websearch/api/s:uIE	I
-    //   240: putfield 154	com/tencent/mm/protocal/protobuf/cym:xHM	I
-    //   243: aload_0
-    //   244: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   247: aload_1
-    //   248: getfield 157	com/tencent/mm/plugin/websearch/api/s:businessType	I
-    //   251: i2l
-    //   252: putfield 161	com/tencent/mm/protocal/protobuf/cym:wBW	J
-    //   255: aload_0
-    //   256: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   259: invokestatic 167	com/tencent/mm/plugin/websearch/api/aa:acv	()Lcom/tencent/mm/protocal/protobuf/azu;
-    //   262: putfield 171	com/tencent/mm/protocal/protobuf/cym:xqU	Lcom/tencent/mm/protocal/protobuf/azu;
-    //   265: aload_0
-    //   266: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   269: aload_1
-    //   270: getfield 54	com/tencent/mm/plugin/websearch/api/s:offset	I
-    //   273: putfield 174	com/tencent/mm/protocal/protobuf/cym:wzS	I
-    //   276: aload_0
-    //   277: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   280: iconst_0
-    //   281: invokestatic 178	com/tencent/mm/plugin/websearch/api/aa:Jf	(I)I
-    //   284: putfield 181	com/tencent/mm/protocal/protobuf/cym:xpF	I
-    //   287: aload_0
-    //   288: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   291: aload_1
-    //   292: getfield 185	com/tencent/mm/plugin/websearch/api/s:uIF	Ljava/util/LinkedList;
-    //   295: putfield 188	com/tencent/mm/protocal/protobuf/cym:xKn	Ljava/util/LinkedList;
-    //   298: aload_0
-    //   299: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   302: aload_1
-    //   303: getfield 59	com/tencent/mm/plugin/websearch/api/s:scene	I
-    //   306: putfield 191	com/tencent/mm/protocal/protobuf/cym:Scene	I
-    //   309: aload_0
-    //   310: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   313: aload_1
-    //   314: getfield 194	com/tencent/mm/plugin/websearch/api/s:low	Ljava/lang/String;
-    //   317: putfield 197	com/tencent/mm/protocal/protobuf/cym:wBZ	Ljava/lang/String;
-    //   320: aload_0
-    //   321: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   324: aload_1
-    //   325: getfield 200	com/tencent/mm/plugin/websearch/api/s:cDa	I
-    //   328: putfield 203	com/tencent/mm/protocal/protobuf/cym:xHQ	I
-    //   331: aload_0
-    //   332: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   335: aload_1
-    //   336: getfield 206	com/tencent/mm/plugin/websearch/api/s:uIG	Ljava/lang/String;
-    //   339: putfield 209	com/tencent/mm/protocal/protobuf/cym:yfx	Ljava/lang/String;
-    //   342: aload_0
-    //   343: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   346: aload_1
-    //   347: getfield 212	com/tencent/mm/plugin/websearch/api/s:uII	I
-    //   350: putfield 215	com/tencent/mm/protocal/protobuf/cym:yfz	I
-    //   353: aload_0
-    //   354: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   357: aload_1
-    //   358: getfield 218	com/tencent/mm/plugin/websearch/api/s:uIH	Ljava/lang/String;
-    //   361: putfield 221	com/tencent/mm/protocal/protobuf/cym:yfy	Ljava/lang/String;
-    //   364: aload_0
-    //   365: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   368: aload_1
-    //   369: getfield 224	com/tencent/mm/plugin/websearch/api/s:uIJ	Ljava/util/LinkedList;
-    //   372: putfield 227	com/tencent/mm/protocal/protobuf/cym:yfA	Ljava/util/LinkedList;
-    //   375: aload_0
-    //   376: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   379: aload_1
-    //   380: getfield 230	com/tencent/mm/plugin/websearch/api/s:uIO	Ljava/util/LinkedList;
-    //   383: putfield 233	com/tencent/mm/protocal/protobuf/cym:yel	Ljava/util/LinkedList;
-    //   386: aload_0
-    //   387: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   390: getfield 233	com/tencent/mm/protocal/protobuf/cym:yel	Ljava/util/LinkedList;
-    //   393: astore 9
-    //   395: aload 9
-    //   397: invokestatic 237	com/tencent/mm/sdk/platformtools/bo:es	(Ljava/util/List;)Z
-    //   400: ifne +151 -> 551
-    //   403: aload 9
-    //   405: invokevirtual 243	java/util/LinkedList:iterator	()Ljava/util/Iterator;
-    //   408: astore 8
-    //   410: aload 8
-    //   412: invokeinterface 248 1 0
-    //   417: ifeq +1016 -> 1433
-    //   420: aload 8
-    //   422: invokeinterface 252 1 0
-    //   427: checkcast 254	com/tencent/mm/protocal/protobuf/up
-    //   430: astore 10
+    //   166: new 113	com/tencent/mm/protocal/protobuf/dsy
+    //   169: dup
+    //   170: invokespecial 114	com/tencent/mm/protocal/protobuf/dsy:<init>	()V
+    //   173: putfield 118	com/tencent/mm/al/b$a:gUU	Lcom/tencent/mm/bx/a;
+    //   176: aload 8
+    //   178: new 120	com/tencent/mm/protocal/protobuf/dsz
+    //   181: dup
+    //   182: invokespecial 121	com/tencent/mm/protocal/protobuf/dsz:<init>	()V
+    //   185: putfield 124	com/tencent/mm/al/b$a:gUV	Lcom/tencent/mm/bx/a;
+    //   188: aload_0
+    //   189: aload 8
+    //   191: invokevirtual 128	com/tencent/mm/al/b$a:atI	()Lcom/tencent/mm/al/b;
+    //   194: putfield 130	com/tencent/mm/plugin/webview/fts/e:hdD	Lcom/tencent/mm/al/b;
+    //   197: aload_0
+    //   198: aload_0
+    //   199: getfield 130	com/tencent/mm/plugin/webview/fts/e:hdD	Lcom/tencent/mm/al/b;
+    //   202: getfield 136	com/tencent/mm/al/b:gUS	Lcom/tencent/mm/al/b$b;
+    //   205: getfield 141	com/tencent/mm/al/b$b:gUX	Lcom/tencent/mm/bx/a;
+    //   208: checkcast 113	com/tencent/mm/protocal/protobuf/dsy
+    //   211: putfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   214: aload_0
+    //   215: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   218: aload_1
+    //   219: getfield 43	com/tencent/mm/plugin/websearch/api/q:dcm	Ljava/lang/String;
+    //   222: putfield 146	com/tencent/mm/protocal/protobuf/dsy:Dop	Ljava/lang/String;
+    //   225: aload_0
+    //   226: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   229: aload_1
+    //   230: getfield 71	com/tencent/mm/plugin/websearch/api/q:AFN	I
+    //   233: putfield 149	com/tencent/mm/protocal/protobuf/dsy:Efc	I
+    //   236: aload_0
+    //   237: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   240: aload_1
+    //   241: getfield 152	com/tencent/mm/plugin/websearch/api/q:businessType	I
+    //   244: i2l
+    //   245: putfield 156	com/tencent/mm/protocal/protobuf/dsy:CNp	J
+    //   248: aload_0
+    //   249: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   252: invokestatic 162	com/tencent/mm/plugin/websearch/api/aa:bCk	()Lcom/tencent/mm/protocal/protobuf/ble;
+    //   255: putfield 166	com/tencent/mm/protocal/protobuf/dsy:DLE	Lcom/tencent/mm/protocal/protobuf/ble;
+    //   258: aload_0
+    //   259: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   262: aload_1
+    //   263: getfield 55	com/tencent/mm/plugin/websearch/api/q:offset	I
+    //   266: putfield 169	com/tencent/mm/protocal/protobuf/dsy:CNt	I
+    //   269: aload_0
+    //   270: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   273: iconst_0
+    //   274: invokestatic 173	com/tencent/mm/plugin/websearch/api/aa:Sb	(I)I
+    //   277: putfield 176	com/tencent/mm/protocal/protobuf/dsy:EHx	I
+    //   280: aload_0
+    //   281: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   284: aload_1
+    //   285: getfield 180	com/tencent/mm/plugin/websearch/api/q:AFO	Ljava/util/LinkedList;
+    //   288: putfield 183	com/tencent/mm/protocal/protobuf/dsy:EhY	Ljava/util/LinkedList;
+    //   291: aload_0
+    //   292: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   295: aload_1
+    //   296: getfield 60	com/tencent/mm/plugin/websearch/api/q:scene	I
+    //   299: putfield 186	com/tencent/mm/protocal/protobuf/dsy:Scene	I
+    //   302: aload_0
+    //   303: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   306: aload_1
+    //   307: getfield 189	com/tencent/mm/plugin/websearch/api/q:oEK	Ljava/lang/String;
+    //   310: putfield 192	com/tencent/mm/protocal/protobuf/dsy:CNs	Ljava/lang/String;
+    //   313: aload_0
+    //   314: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   317: aload_1
+    //   318: getfield 195	com/tencent/mm/plugin/websearch/api/q:dtA	I
+    //   321: putfield 198	com/tencent/mm/protocal/protobuf/dsy:Efg	I
+    //   324: aload_0
+    //   325: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   328: aload_1
+    //   329: getfield 201	com/tencent/mm/plugin/websearch/api/q:AFP	Ljava/lang/String;
+    //   332: putfield 204	com/tencent/mm/protocal/protobuf/dsy:EHy	Ljava/lang/String;
+    //   335: aload_0
+    //   336: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   339: aload_1
+    //   340: getfield 207	com/tencent/mm/plugin/websearch/api/q:AFR	I
+    //   343: putfield 210	com/tencent/mm/protocal/protobuf/dsy:EHA	I
+    //   346: aload_0
+    //   347: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   350: aload_1
+    //   351: getfield 213	com/tencent/mm/plugin/websearch/api/q:AFQ	Ljava/lang/String;
+    //   354: putfield 216	com/tencent/mm/protocal/protobuf/dsy:EHz	Ljava/lang/String;
+    //   357: aload_0
+    //   358: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   361: aload_1
+    //   362: getfield 219	com/tencent/mm/plugin/websearch/api/q:AFS	Ljava/util/LinkedList;
+    //   365: putfield 222	com/tencent/mm/protocal/protobuf/dsy:EHB	Ljava/util/LinkedList;
+    //   368: aload_0
+    //   369: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   372: aload_1
+    //   373: getfield 225	com/tencent/mm/plugin/websearch/api/q:AFX	Ljava/util/LinkedList;
+    //   376: putfield 228	com/tencent/mm/protocal/protobuf/dsy:EFX	Ljava/util/LinkedList;
+    //   379: aload_0
+    //   380: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   383: getfield 228	com/tencent/mm/protocal/protobuf/dsy:EFX	Ljava/util/LinkedList;
+    //   386: astore 9
+    //   388: aload 9
+    //   390: invokestatic 232	com/tencent/mm/sdk/platformtools/bt:gL	(Ljava/util/List;)Z
+    //   393: ifne +150 -> 543
+    //   396: aload 9
+    //   398: invokevirtual 238	java/util/LinkedList:iterator	()Ljava/util/Iterator;
+    //   401: astore 8
+    //   403: aload 8
+    //   405: invokeinterface 244 1 0
+    //   410: ifeq +1129 -> 1539
+    //   413: aload 8
+    //   415: invokeinterface 248 1 0
+    //   420: checkcast 250	com/tencent/mm/protocal/protobuf/xp
+    //   423: astore 10
+    //   425: aload 10
+    //   427: ifnull -24 -> 403
+    //   430: ldc 252
     //   432: aload 10
-    //   434: ifnull -24 -> 410
-    //   437: ldc_w 256
-    //   440: aload 10
-    //   442: getfield 259	com/tencent/mm/protocal/protobuf/up:key	Ljava/lang/String;
-    //   445: invokevirtual 265	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   448: ifeq -38 -> 410
-    //   451: aload 10
-    //   453: getfield 268	com/tencent/mm/protocal/protobuf/up:wMN	Ljava/lang/String;
-    //   456: astore 8
-    //   458: ldc 86
-    //   460: ldc_w 270
-    //   463: iconst_1
-    //   464: anewarray 90	java/lang/Object
-    //   467: dup
-    //   468: iconst_0
-    //   469: aload 8
-    //   471: aastore
-    //   472: invokestatic 95	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   475: aload 8
-    //   477: invokestatic 84	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
-    //   480: ifne +71 -> 551
-    //   483: invokestatic 276	com/tencent/mm/model/v:aae	()Lcom/tencent/mm/model/v;
-    //   486: aload 8
-    //   488: invokevirtual 280	com/tencent/mm/model/v:oP	(Ljava/lang/String;)Lcom/tencent/mm/model/v$b;
-    //   491: astore 8
-    //   493: aload 8
-    //   495: ifnull +56 -> 551
-    //   498: aload 8
-    //   500: ldc_w 282
-    //   503: ldc_w 284
-    //   506: invokevirtual 290	com/tencent/mm/model/v$b:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   509: astore 8
-    //   511: aload 8
-    //   513: invokestatic 84	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
-    //   516: ifne +35 -> 551
-    //   519: new 254	com/tencent/mm/protocal/protobuf/up
-    //   522: dup
-    //   523: invokespecial 291	com/tencent/mm/protocal/protobuf/up:<init>	()V
-    //   526: astore 10
+    //   434: getfield 255	com/tencent/mm/protocal/protobuf/xp:key	Ljava/lang/String;
+    //   437: invokevirtual 261	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   440: ifeq -37 -> 403
+    //   443: aload 10
+    //   445: getfield 264	com/tencent/mm/protocal/protobuf/xp:CZj	Ljava/lang/String;
+    //   448: astore 8
+    //   450: ldc 87
+    //   452: ldc_w 266
+    //   455: iconst_1
+    //   456: anewarray 91	java/lang/Object
+    //   459: dup
+    //   460: iconst_0
+    //   461: aload 8
+    //   463: aastore
+    //   464: invokestatic 96	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   467: aload 8
+    //   469: invokestatic 85	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   472: ifne +71 -> 543
+    //   475: invokestatic 272	com/tencent/mm/model/y:arz	()Lcom/tencent/mm/model/y;
+    //   478: aload 8
+    //   480: invokevirtual 276	com/tencent/mm/model/y:tC	(Ljava/lang/String;)Lcom/tencent/mm/model/y$b;
+    //   483: astore 8
+    //   485: aload 8
+    //   487: ifnull +56 -> 543
+    //   490: aload 8
+    //   492: ldc_w 278
+    //   495: ldc_w 280
+    //   498: invokevirtual 286	com/tencent/mm/model/y$b:getString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   501: astore 8
+    //   503: aload 8
+    //   505: invokestatic 85	com/tencent/mm/sdk/platformtools/bt:isNullOrNil	(Ljava/lang/String;)Z
+    //   508: ifne +35 -> 543
+    //   511: new 250	com/tencent/mm/protocal/protobuf/xp
+    //   514: dup
+    //   515: invokespecial 287	com/tencent/mm/protocal/protobuf/xp:<init>	()V
+    //   518: astore 10
+    //   520: aload 10
+    //   522: ldc_w 278
+    //   525: putfield 255	com/tencent/mm/protocal/protobuf/xp:key	Ljava/lang/String;
     //   528: aload 10
-    //   530: ldc_w 282
-    //   533: putfield 259	com/tencent/mm/protocal/protobuf/up:key	Ljava/lang/String;
-    //   536: aload 10
-    //   538: aload 8
-    //   540: putfield 268	com/tencent/mm/protocal/protobuf/up:wMN	Ljava/lang/String;
-    //   543: aload 9
-    //   545: aload 10
-    //   547: invokevirtual 294	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   550: pop
-    //   551: aload_0
-    //   552: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   555: aload_1
-    //   556: getfield 298	com/tencent/mm/plugin/websearch/api/s:uIN	Lcom/tencent/mm/protocal/protobuf/cjh;
-    //   559: putfield 299	com/tencent/mm/protocal/protobuf/cym:uIN	Lcom/tencent/mm/protocal/protobuf/cjh;
-    //   562: aload_0
-    //   563: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   566: aload_1
-    //   567: getfield 302	com/tencent/mm/plugin/websearch/api/s:uIP	Ljava/util/LinkedList;
-    //   570: putfield 305	com/tencent/mm/protocal/protobuf/cym:yfB	Ljava/util/LinkedList;
-    //   573: aload_0
-    //   574: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   577: aload_1
-    //   578: getfield 308	com/tencent/mm/plugin/websearch/api/s:axa	Ljava/lang/String;
-    //   581: putfield 311	com/tencent/mm/protocal/protobuf/cym:lGH	Ljava/lang/String;
-    //   584: aload_0
-    //   585: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   588: aload_1
-    //   589: getfield 314	com/tencent/mm/plugin/websearch/api/s:cpW	Ljava/lang/String;
-    //   592: putfield 317	com/tencent/mm/protocal/protobuf/cym:xpJ	Ljava/lang/String;
-    //   595: aload_1
-    //   596: getfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   599: ifnonnull +14 -> 613
-    //   602: aload_1
-    //   603: new 323	com/tencent/mm/protocal/protobuf/cyi
-    //   606: dup
-    //   607: invokespecial 324	com/tencent/mm/protocal/protobuf/cyi:<init>	()V
-    //   610: putfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   613: aload_1
-    //   614: getfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   617: getfield 328	com/tencent/mm/protocal/protobuf/cyi:yft	Lcom/tencent/mm/protocal/protobuf/mc;
-    //   620: ifnonnull +17 -> 637
-    //   623: aload_1
-    //   624: getfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   627: new 330	com/tencent/mm/protocal/protobuf/mc
-    //   630: dup
-    //   631: invokespecial 331	com/tencent/mm/protocal/protobuf/mc:<init>	()V
-    //   634: putfield 328	com/tencent/mm/protocal/protobuf/cyi:yft	Lcom/tencent/mm/protocal/protobuf/mc;
+    //   530: aload 8
+    //   532: putfield 264	com/tencent/mm/protocal/protobuf/xp:CZj	Ljava/lang/String;
+    //   535: aload 9
+    //   537: aload 10
+    //   539: invokevirtual 290	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   542: pop
+    //   543: aload_0
+    //   544: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   547: aload_1
+    //   548: getfield 294	com/tencent/mm/plugin/websearch/api/q:AFW	Lcom/tencent/mm/protocal/protobuf/day;
+    //   551: putfield 295	com/tencent/mm/protocal/protobuf/dsy:AFW	Lcom/tencent/mm/protocal/protobuf/day;
+    //   554: aload_0
+    //   555: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   558: aload_1
+    //   559: getfield 298	com/tencent/mm/plugin/websearch/api/q:AFY	Ljava/util/LinkedList;
+    //   562: putfield 301	com/tencent/mm/protocal/protobuf/dsy:EHC	Ljava/util/LinkedList;
+    //   565: aload_0
+    //   566: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   569: aload_1
+    //   570: getfield 304	com/tencent/mm/plugin/websearch/api/q:aSt	Ljava/lang/String;
+    //   573: putfield 307	com/tencent/mm/protocal/protobuf/dsy:oXs	Ljava/lang/String;
+    //   576: aload_0
+    //   577: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   580: aload_1
+    //   581: getfield 310	com/tencent/mm/plugin/websearch/api/q:sessionId	Ljava/lang/String;
+    //   584: putfield 313	com/tencent/mm/protocal/protobuf/dsy:EHj	Ljava/lang/String;
+    //   587: aload_0
+    //   588: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   591: astore 8
+    //   593: invokestatic 318	com/tencent/mm/ui/ai:Eq	()Z
+    //   596: ifeq +841 -> 1437
+    //   599: iconst_1
+    //   600: istore 4
+    //   602: aload 8
+    //   604: iload 4
+    //   606: putfield 321	com/tencent/mm/protocal/protobuf/dsy:DVd	I
+    //   609: aload_1
+    //   610: getfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   613: ifnonnull +14 -> 627
+    //   616: aload_1
+    //   617: new 327	com/tencent/mm/protocal/protobuf/dsu
+    //   620: dup
+    //   621: invokespecial 328	com/tencent/mm/protocal/protobuf/dsu:<init>	()V
+    //   624: putfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   627: aload_1
+    //   628: getfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   631: getfield 332	com/tencent/mm/protocal/protobuf/dsu:EHt	Lcom/tencent/mm/protocal/protobuf/of;
+    //   634: ifnonnull +17 -> 651
     //   637: aload_1
-    //   638: getfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   641: getfield 328	com/tencent/mm/protocal/protobuf/cyi:yft	Lcom/tencent/mm/protocal/protobuf/mc;
-    //   644: invokestatic 337	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
-    //   647: invokevirtual 343	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   650: invokevirtual 349	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   653: getfield 354	android/util/DisplayMetrics:widthPixels	I
-    //   656: invokestatic 359	com/tencent/mm/plugin/appbrand/s/p:pP	(I)I
-    //   659: putfield 362	com/tencent/mm/protocal/protobuf/mc:qUB	I
-    //   662: ldc 86
-    //   664: ldc_w 364
-    //   667: iconst_3
-    //   668: anewarray 90	java/lang/Object
-    //   671: dup
-    //   672: iconst_0
-    //   673: invokestatic 337	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
-    //   676: invokevirtual 343	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   679: invokevirtual 349	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   682: getfield 354	android/util/DisplayMetrics:widthPixels	I
-    //   685: invokestatic 370	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   688: aastore
-    //   689: dup
-    //   690: iconst_1
-    //   691: aload_1
-    //   692: getfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   695: getfield 328	com/tencent/mm/protocal/protobuf/cyi:yft	Lcom/tencent/mm/protocal/protobuf/mc;
-    //   698: getfield 362	com/tencent/mm/protocal/protobuf/mc:qUB	I
-    //   701: invokestatic 370	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   704: aastore
-    //   705: dup
-    //   706: iconst_2
-    //   707: invokestatic 337	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
-    //   710: invokevirtual 343	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   713: invokevirtual 349	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   716: getfield 374	android/util/DisplayMetrics:density	F
-    //   719: invokestatic 379	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   722: aastore
-    //   723: invokestatic 382	com/tencent/mm/sdk/platformtools/ab:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   726: fconst_0
-    //   727: fstore_3
-    //   728: fconst_0
-    //   729: fstore_2
-    //   730: aload_0
-    //   731: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   734: getfield 171	com/tencent/mm/protocal/protobuf/cym:xqU	Lcom/tencent/mm/protocal/protobuf/azu;
-    //   737: ifnull +632 -> 1369
-    //   740: aload_1
-    //   741: getfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   744: getfield 328	com/tencent/mm/protocal/protobuf/cyi:yft	Lcom/tencent/mm/protocal/protobuf/mc;
-    //   747: astore 8
-    //   749: invokestatic 388	com/tencent/mm/modelgeo/d:agQ	()Lcom/tencent/mm/modelgeo/d;
-    //   752: invokevirtual 391	com/tencent/mm/modelgeo/d:agT	()Z
-    //   755: ifeq +608 -> 1363
-    //   758: iconst_0
-    //   759: istore 4
-    //   761: aload 8
-    //   763: iload 4
-    //   765: putfield 394	com/tencent/mm/protocal/protobuf/mc:wAD	I
-    //   768: aload_0
-    //   769: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   772: getfield 171	com/tencent/mm/protocal/protobuf/cym:xqU	Lcom/tencent/mm/protocal/protobuf/azu;
-    //   775: getfield 399	com/tencent/mm/protocal/protobuf/azu:wDh	F
-    //   778: fstore_3
-    //   779: aload_0
-    //   780: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   783: getfield 171	com/tencent/mm/protocal/protobuf/cym:xqU	Lcom/tencent/mm/protocal/protobuf/azu;
-    //   786: getfield 402	com/tencent/mm/protocal/protobuf/azu:wDi	F
-    //   789: fstore_2
-    //   790: ldc 86
-    //   792: ldc_w 404
-    //   795: iconst_3
-    //   796: anewarray 90	java/lang/Object
-    //   799: dup
-    //   800: iconst_0
-    //   801: fload_3
-    //   802: invokestatic 379	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   805: aastore
-    //   806: dup
-    //   807: iconst_1
-    //   808: fload_2
-    //   809: invokestatic 379	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   812: aastore
-    //   813: dup
-    //   814: iconst_2
-    //   815: aload_1
-    //   816: getfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   819: getfield 328	com/tencent/mm/protocal/protobuf/cyi:yft	Lcom/tencent/mm/protocal/protobuf/mc;
-    //   822: getfield 394	com/tencent/mm/protocal/protobuf/mc:wAD	I
-    //   825: invokestatic 370	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   828: aastore
-    //   829: invokestatic 95	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   832: aload_1
-    //   833: getfield 407	com/tencent/mm/plugin/websearch/api/s:uIT	Ljava/lang/String;
-    //   836: invokestatic 413	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   839: ifne +148 -> 987
-    //   842: aload_1
-    //   843: getfield 407	com/tencent/mm/plugin/websearch/api/s:uIT	Ljava/lang/String;
-    //   846: invokestatic 419	java/net/URLDecoder:decode	(Ljava/lang/String;)Ljava/lang/String;
-    //   849: astore 8
-    //   851: new 421	org/json/JSONObject
-    //   854: dup
-    //   855: aload 8
-    //   857: invokespecial 424	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   860: astore 8
-    //   862: new 426	com/tencent/mm/protocal/protobuf/bmt
-    //   865: dup
-    //   866: invokespecial 427	com/tencent/mm/protocal/protobuf/bmt:<init>	()V
-    //   869: astore 9
-    //   871: aload 9
-    //   873: aload 8
-    //   875: ldc_w 429
-    //   878: invokevirtual 432	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   881: putfield 435	com/tencent/mm/protocal/protobuf/bmt:gwR	Ljava/lang/String;
-    //   884: aload 9
-    //   886: aload 8
-    //   888: ldc_w 437
-    //   891: invokevirtual 432	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   894: putfield 440	com/tencent/mm/protocal/protobuf/bmt:gwY	Ljava/lang/String;
-    //   897: aload 9
-    //   899: aload 8
-    //   901: ldc_w 442
-    //   904: invokevirtual 446	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
-    //   907: d2f
-    //   908: putfield 447	com/tencent/mm/protocal/protobuf/bmt:wDi	F
-    //   911: aload 9
-    //   913: aload 8
-    //   915: ldc_w 449
-    //   918: invokevirtual 446	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
-    //   921: d2f
-    //   922: putfield 450	com/tencent/mm/protocal/protobuf/bmt:wDh	F
-    //   925: aload 9
-    //   927: aload 8
-    //   929: ldc_w 452
-    //   932: invokevirtual 432	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   935: putfield 455	com/tencent/mm/protocal/protobuf/bmt:xBc	Ljava/lang/String;
-    //   938: aload 9
-    //   940: aload 8
-    //   942: ldc_w 457
-    //   945: invokevirtual 432	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   948: putfield 460	com/tencent/mm/protocal/protobuf/bmt:xlb	Ljava/lang/String;
-    //   951: aload 9
-    //   953: aload 8
-    //   955: ldc_w 462
-    //   958: invokevirtual 432	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   961: invokestatic 466	com/tencent/mm/plugin/websearch/api/aa:ZN	(Ljava/lang/String;)J
-    //   964: putfield 469	com/tencent/mm/protocal/protobuf/bmt:xBe	J
-    //   967: aload 9
-    //   969: getfield 455	com/tencent/mm/protocal/protobuf/bmt:xBc	Ljava/lang/String;
-    //   972: invokestatic 413	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   975: ifne +12 -> 987
-    //   978: aload_0
-    //   979: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   982: aload 9
-    //   984: putfield 473	com/tencent/mm/protocal/protobuf/cym:yfE	Lcom/tencent/mm/protocal/protobuf/bmt;
-    //   987: aload_1
-    //   988: getfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   991: ifnull +96 -> 1087
-    //   994: aload_1
-    //   995: getfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   998: ldc_w 475
-    //   1001: invokestatic 481	com/tencent/mm/kernel/g:E	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-    //   1004: checkcast 475	com/tencent/mm/plugin/appbrand/service/e
-    //   1007: invokeinterface 485 1 0
-    //   1012: putfield 488	com/tencent/mm/protocal/protobuf/cyi:yfu	I
-    //   1015: aload_0
-    //   1016: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   1019: new 490	com/tencent/mm/bv/b
-    //   1022: dup
-    //   1023: aload_1
-    //   1024: getfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   1027: invokevirtual 494	com/tencent/mm/protocal/protobuf/cyi:toByteArray	()[B
-    //   1030: invokespecial 497	com/tencent/mm/bv/b:<init>	([B)V
-    //   1033: putfield 501	com/tencent/mm/protocal/protobuf/cym:xpK	Lcom/tencent/mm/bv/b;
-    //   1036: ldc 86
-    //   1038: ldc_w 503
-    //   1041: iconst_3
-    //   1042: anewarray 90	java/lang/Object
-    //   1045: dup
-    //   1046: iconst_0
-    //   1047: aload_1
-    //   1048: getfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   1051: getfield 506	com/tencent/mm/protocal/protobuf/cyi:yfs	J
-    //   1054: invokestatic 511	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   1057: aastore
-    //   1058: dup
-    //   1059: iconst_1
-    //   1060: aload_1
-    //   1061: getfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   1064: getfield 328	com/tencent/mm/protocal/protobuf/cyi:yft	Lcom/tencent/mm/protocal/protobuf/mc;
-    //   1067: getfield 514	com/tencent/mm/protocal/protobuf/mc:cwc	Ljava/lang/String;
-    //   1070: aastore
-    //   1071: dup
-    //   1072: iconst_2
-    //   1073: aload_1
-    //   1074: getfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   1077: getfield 328	com/tencent/mm/protocal/protobuf/cyi:yft	Lcom/tencent/mm/protocal/protobuf/mc;
-    //   1080: getfield 517	com/tencent/mm/protocal/protobuf/mc:kXm	Ljava/lang/String;
-    //   1083: aastore
-    //   1084: invokestatic 382	com/tencent/mm/sdk/platformtools/ab:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1087: aload_1
-    //   1088: getfield 521	com/tencent/mm/plugin/websearch/api/s:uIR	Lcom/tencent/mm/protocal/protobuf/dbf;
-    //   1091: ifnull +24 -> 1115
-    //   1094: aload_0
-    //   1095: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   1098: new 490	com/tencent/mm/bv/b
-    //   1101: dup
-    //   1102: aload_1
-    //   1103: getfield 521	com/tencent/mm/plugin/websearch/api/s:uIR	Lcom/tencent/mm/protocal/protobuf/dbf;
-    //   1106: invokevirtual 524	com/tencent/mm/protocal/protobuf/dbf:toByteArray	()[B
-    //   1109: invokespecial 497	com/tencent/mm/bv/b:<init>	([B)V
-    //   1112: putfield 527	com/tencent/mm/protocal/protobuf/cym:xpL	Lcom/tencent/mm/bv/b;
-    //   1115: aload_0
-    //   1116: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   1119: getfield 171	com/tencent/mm/protocal/protobuf/cym:xqU	Lcom/tencent/mm/protocal/protobuf/azu;
-    //   1122: ifnull +280 -> 1402
-    //   1125: iconst_1
-    //   1126: istore 6
-    //   1128: ldc 86
-    //   1130: ldc_w 529
-    //   1133: bipush 7
-    //   1135: anewarray 90	java/lang/Object
-    //   1138: dup
-    //   1139: iconst_0
-    //   1140: iload 6
-    //   1142: invokestatic 534	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   1145: aastore
-    //   1146: dup
-    //   1147: iconst_1
-    //   1148: aload_1
-    //   1149: getfield 185	com/tencent/mm/plugin/websearch/api/s:uIF	Ljava/util/LinkedList;
-    //   1152: invokevirtual 537	java/util/LinkedList:size	()I
-    //   1155: invokestatic 370	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1158: aastore
-    //   1159: dup
-    //   1160: iconst_2
-    //   1161: aload_1
-    //   1162: getfield 59	com/tencent/mm/plugin/websearch/api/s:scene	I
-    //   1165: invokestatic 370	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1168: aastore
-    //   1169: dup
-    //   1170: iconst_3
-    //   1171: aload_1
-    //   1172: getfield 157	com/tencent/mm/plugin/websearch/api/s:businessType	I
-    //   1175: invokestatic 370	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1178: aastore
+    //   638: getfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   641: new 334	com/tencent/mm/protocal/protobuf/of
+    //   644: dup
+    //   645: invokespecial 335	com/tencent/mm/protocal/protobuf/of:<init>	()V
+    //   648: putfield 332	com/tencent/mm/protocal/protobuf/dsu:EHt	Lcom/tencent/mm/protocal/protobuf/of;
+    //   651: aload_1
+    //   652: getfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   655: getfield 332	com/tencent/mm/protocal/protobuf/dsu:EHt	Lcom/tencent/mm/protocal/protobuf/of;
+    //   658: astore 8
+    //   660: invokestatic 341	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   663: invokevirtual 347	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   666: invokevirtual 353	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   669: getfield 358	android/util/DisplayMetrics:widthPixels	I
+    //   672: istore 4
+    //   674: invokestatic 363	org/xwalk/core/XWalkEnvironment:getUsingCustomContext	()Z
+    //   677: ifeq +766 -> 1443
+    //   680: iload 4
+    //   682: i2f
+    //   683: invokestatic 341	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   686: invokestatic 369	com/tencent/mm/cd/a:getDensity	(Landroid/content/Context;)F
+    //   689: fdiv
+    //   690: invokestatic 375	java/lang/Math:round	(F)I
+    //   693: istore 4
+    //   695: aload 8
+    //   697: iload 4
+    //   699: putfield 378	com/tencent/mm/protocal/protobuf/of:wsZ	I
+    //   702: ldc 87
+    //   704: ldc_w 380
+    //   707: iconst_3
+    //   708: anewarray 91	java/lang/Object
+    //   711: dup
+    //   712: iconst_0
+    //   713: invokestatic 341	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   716: invokevirtual 347	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   719: invokevirtual 353	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   722: getfield 358	android/util/DisplayMetrics:widthPixels	I
+    //   725: invokestatic 386	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   728: aastore
+    //   729: dup
+    //   730: iconst_1
+    //   731: aload_1
+    //   732: getfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   735: getfield 332	com/tencent/mm/protocal/protobuf/dsu:EHt	Lcom/tencent/mm/protocal/protobuf/of;
+    //   738: getfield 378	com/tencent/mm/protocal/protobuf/of:wsZ	I
+    //   741: invokestatic 386	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   744: aastore
+    //   745: dup
+    //   746: iconst_2
+    //   747: invokestatic 341	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   750: invokevirtual 347	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   753: invokevirtual 353	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
+    //   756: getfield 390	android/util/DisplayMetrics:density	F
+    //   759: invokestatic 395	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   762: aastore
+    //   763: invokestatic 398	com/tencent/mm/sdk/platformtools/ad:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   766: fconst_0
+    //   767: fstore_3
+    //   768: fconst_0
+    //   769: fstore_2
+    //   770: aload_0
+    //   771: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   774: getfield 166	com/tencent/mm/protocal/protobuf/dsy:DLE	Lcom/tencent/mm/protocal/protobuf/ble;
+    //   777: ifnull +693 -> 1470
+    //   780: aload_1
+    //   781: getfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   784: getfield 332	com/tencent/mm/protocal/protobuf/dsu:EHt	Lcom/tencent/mm/protocal/protobuf/of;
+    //   787: astore 8
+    //   789: invokestatic 404	com/tencent/mm/modelgeo/d:axT	()Lcom/tencent/mm/modelgeo/d;
+    //   792: astore 9
+    //   794: aload 9
+    //   796: getfield 407	com/tencent/mm/modelgeo/d:hep	J
+    //   799: lconst_0
+    //   800: lcmp
+    //   801: ifle +657 -> 1458
+    //   804: aload 9
+    //   806: getfield 411	com/tencent/mm/modelgeo/d:her	Z
+    //   809: ifeq +649 -> 1458
+    //   812: invokestatic 417	java/lang/System:currentTimeMillis	()J
+    //   815: aload 9
+    //   817: getfield 407	com/tencent/mm/modelgeo/d:hep	J
+    //   820: lsub
+    //   821: ldc2_w 418
+    //   824: lcmp
+    //   825: ifge +633 -> 1458
+    //   828: iconst_1
+    //   829: istore 4
+    //   831: iload 4
+    //   833: ifeq +631 -> 1464
+    //   836: iconst_0
+    //   837: istore 4
+    //   839: aload 8
+    //   841: iload 4
+    //   843: putfield 422	com/tencent/mm/protocal/protobuf/of:CLQ	I
+    //   846: aload_0
+    //   847: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   850: getfield 166	com/tencent/mm/protocal/protobuf/dsy:DLE	Lcom/tencent/mm/protocal/protobuf/ble;
+    //   853: getfield 427	com/tencent/mm/protocal/protobuf/ble:COI	F
+    //   856: fstore_3
+    //   857: aload_0
+    //   858: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   861: getfield 166	com/tencent/mm/protocal/protobuf/dsy:DLE	Lcom/tencent/mm/protocal/protobuf/ble;
+    //   864: getfield 430	com/tencent/mm/protocal/protobuf/ble:COJ	F
+    //   867: fstore_2
+    //   868: ldc 87
+    //   870: ldc_w 432
+    //   873: iconst_3
+    //   874: anewarray 91	java/lang/Object
+    //   877: dup
+    //   878: iconst_0
+    //   879: fload_3
+    //   880: invokestatic 395	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   883: aastore
+    //   884: dup
+    //   885: iconst_1
+    //   886: fload_2
+    //   887: invokestatic 395	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   890: aastore
+    //   891: dup
+    //   892: iconst_2
+    //   893: aload_1
+    //   894: getfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   897: getfield 332	com/tencent/mm/protocal/protobuf/dsu:EHt	Lcom/tencent/mm/protocal/protobuf/of;
+    //   900: getfield 422	com/tencent/mm/protocal/protobuf/of:CLQ	I
+    //   903: invokestatic 386	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   906: aastore
+    //   907: invokestatic 96	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   910: aload_1
+    //   911: getfield 435	com/tencent/mm/plugin/websearch/api/q:AGc	Ljava/lang/String;
+    //   914: invokestatic 441	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   917: ifne +148 -> 1065
+    //   920: aload_1
+    //   921: getfield 435	com/tencent/mm/plugin/websearch/api/q:AGc	Ljava/lang/String;
+    //   924: invokestatic 447	java/net/URLDecoder:decode	(Ljava/lang/String;)Ljava/lang/String;
+    //   927: astore 8
+    //   929: new 449	org/json/JSONObject
+    //   932: dup
+    //   933: aload 8
+    //   935: invokespecial 452	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   938: astore 8
+    //   940: new 454	com/tencent/mm/protocal/protobuf/cax
+    //   943: dup
+    //   944: invokespecial 455	com/tencent/mm/protocal/protobuf/cax:<init>	()V
+    //   947: astore 9
+    //   949: aload 9
+    //   951: aload 8
+    //   953: ldc_w 457
+    //   956: invokevirtual 460	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   959: putfield 463	com/tencent/mm/protocal/protobuf/cax:ijO	Ljava/lang/String;
+    //   962: aload 9
+    //   964: aload 8
+    //   966: ldc_w 465
+    //   969: invokevirtual 460	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   972: putfield 468	com/tencent/mm/protocal/protobuf/cax:ijV	Ljava/lang/String;
+    //   975: aload 9
+    //   977: aload 8
+    //   979: ldc_w 470
+    //   982: invokevirtual 474	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
+    //   985: d2f
+    //   986: putfield 475	com/tencent/mm/protocal/protobuf/cax:COJ	F
+    //   989: aload 9
+    //   991: aload 8
+    //   993: ldc_w 477
+    //   996: invokevirtual 474	org/json/JSONObject:optDouble	(Ljava/lang/String;)D
+    //   999: d2f
+    //   1000: putfield 478	com/tencent/mm/protocal/protobuf/cax:COI	F
+    //   1003: aload 9
+    //   1005: aload 8
+    //   1007: ldc_w 480
+    //   1010: invokevirtual 460	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1013: putfield 483	com/tencent/mm/protocal/protobuf/cax:DXk	Ljava/lang/String;
+    //   1016: aload 9
+    //   1018: aload 8
+    //   1020: ldc_w 485
+    //   1023: invokevirtual 460	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1026: putfield 488	com/tencent/mm/protocal/protobuf/cax:DEN	Ljava/lang/String;
+    //   1029: aload 9
+    //   1031: aload 8
+    //   1033: ldc_w 490
+    //   1036: invokevirtual 460	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   1039: invokestatic 494	com/tencent/mm/plugin/websearch/api/aa:avb	(Ljava/lang/String;)J
+    //   1042: putfield 497	com/tencent/mm/protocal/protobuf/cax:DXm	J
+    //   1045: aload 9
+    //   1047: getfield 483	com/tencent/mm/protocal/protobuf/cax:DXk	Ljava/lang/String;
+    //   1050: invokestatic 441	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1053: ifne +12 -> 1065
+    //   1056: aload_0
+    //   1057: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   1060: aload 9
+    //   1062: putfield 501	com/tencent/mm/protocal/protobuf/dsy:EHH	Lcom/tencent/mm/protocal/protobuf/cax;
+    //   1065: aload_1
+    //   1066: getfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   1069: ifnull +96 -> 1165
+    //   1072: aload_1
+    //   1073: getfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   1076: ldc_w 503
+    //   1079: invokestatic 509	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   1082: checkcast 503	com/tencent/mm/plugin/appbrand/service/i
+    //   1085: invokeinterface 513 1 0
+    //   1090: putfield 516	com/tencent/mm/protocal/protobuf/dsu:EHu	I
+    //   1093: aload_0
+    //   1094: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   1097: new 518	com/tencent/mm/bx/b
+    //   1100: dup
+    //   1101: aload_1
+    //   1102: getfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   1105: invokevirtual 522	com/tencent/mm/protocal/protobuf/dsu:toByteArray	()[B
+    //   1108: invokespecial 525	com/tencent/mm/bx/b:<init>	([B)V
+    //   1111: putfield 529	com/tencent/mm/protocal/protobuf/dsy:EHE	Lcom/tencent/mm/bx/b;
+    //   1114: ldc 87
+    //   1116: ldc_w 531
+    //   1119: iconst_3
+    //   1120: anewarray 91	java/lang/Object
+    //   1123: dup
+    //   1124: iconst_0
+    //   1125: aload_1
+    //   1126: getfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   1129: getfield 534	com/tencent/mm/protocal/protobuf/dsu:EHs	J
+    //   1132: invokestatic 539	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   1135: aastore
+    //   1136: dup
+    //   1137: iconst_1
+    //   1138: aload_1
+    //   1139: getfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   1142: getfield 332	com/tencent/mm/protocal/protobuf/dsu:EHt	Lcom/tencent/mm/protocal/protobuf/of;
+    //   1145: getfield 542	com/tencent/mm/protocal/protobuf/of:dlB	Ljava/lang/String;
+    //   1148: aastore
+    //   1149: dup
+    //   1150: iconst_2
+    //   1151: aload_1
+    //   1152: getfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   1155: getfield 332	com/tencent/mm/protocal/protobuf/dsu:EHt	Lcom/tencent/mm/protocal/protobuf/of;
+    //   1158: getfield 545	com/tencent/mm/protocal/protobuf/of:oec	Ljava/lang/String;
+    //   1161: aastore
+    //   1162: invokestatic 398	com/tencent/mm/sdk/platformtools/ad:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1165: aload_1
+    //   1166: getfield 549	com/tencent/mm/plugin/websearch/api/q:AGa	Lcom/tencent/mm/protocal/protobuf/dwe;
+    //   1169: ifnull +24 -> 1193
+    //   1172: aload_0
+    //   1173: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   1176: new 518	com/tencent/mm/bx/b
     //   1179: dup
-    //   1180: iconst_4
-    //   1181: aload_0
-    //   1182: getfield 71	com/tencent/mm/plugin/webview/fts/e:uIE	I
-    //   1185: invokestatic 370	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1188: aastore
-    //   1189: dup
-    //   1190: iconst_5
-    //   1191: aload_1
-    //   1192: getfield 200	com/tencent/mm/plugin/websearch/api/s:cDa	I
-    //   1195: invokestatic 370	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1198: aastore
-    //   1199: dup
-    //   1200: bipush 6
-    //   1202: aload_1
-    //   1203: getfield 65	com/tencent/mm/plugin/websearch/api/s:cCT	I
-    //   1206: invokestatic 370	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1209: aastore
-    //   1210: invokestatic 95	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1213: aload_0
-    //   1214: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   1217: getfield 171	com/tencent/mm/protocal/protobuf/cym:xqU	Lcom/tencent/mm/protocal/protobuf/azu;
-    //   1220: ifnull +39 -> 1259
-    //   1223: sipush 2005
-    //   1226: aload_0
-    //   1227: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   1230: getfield 171	com/tencent/mm/protocal/protobuf/cym:xqU	Lcom/tencent/mm/protocal/protobuf/azu;
-    //   1233: getfield 399	com/tencent/mm/protocal/protobuf/azu:wDh	F
-    //   1236: aload_0
-    //   1237: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   1240: getfield 171	com/tencent/mm/protocal/protobuf/cym:xqU	Lcom/tencent/mm/protocal/protobuf/azu;
-    //   1243: getfield 402	com/tencent/mm/protocal/protobuf/azu:wDi	F
-    //   1246: aload_0
-    //   1247: getfield 148	com/tencent/mm/plugin/webview/fts/e:uPd	Lcom/tencent/mm/protocal/protobuf/cym;
-    //   1250: getfield 171	com/tencent/mm/protocal/protobuf/cym:xqU	Lcom/tencent/mm/protocal/protobuf/azu;
-    //   1253: getfield 540	com/tencent/mm/protocal/protobuf/azu:wSk	I
-    //   1256: invokestatic 546	com/tencent/mm/modelstat/o:a	(IFFI)V
-    //   1259: aload_1
-    //   1260: getfield 59	com/tencent/mm/plugin/websearch/api/s:scene	I
-    //   1263: istore 4
-    //   1265: aload_1
-    //   1266: getfield 314	com/tencent/mm/plugin/websearch/api/s:cpW	Ljava/lang/String;
-    //   1269: astore 8
-    //   1271: aload_1
-    //   1272: getfield 549	com/tencent/mm/plugin/websearch/api/s:cCW	Ljava/lang/String;
-    //   1275: astore 9
-    //   1277: aload_1
-    //   1278: getfield 194	com/tencent/mm/plugin/websearch/api/s:low	Ljava/lang/String;
-    //   1281: astore 10
-    //   1283: aload_1
-    //   1284: getfield 54	com/tencent/mm/plugin/websearch/api/s:offset	I
-    //   1287: istore 5
-    //   1289: iload 7
-    //   1291: istore 6
-    //   1293: aload_1
-    //   1294: getfield 70	com/tencent/mm/plugin/websearch/api/s:uIE	I
-    //   1297: iconst_1
-    //   1298: if_icmpne +6 -> 1304
-    //   1301: iconst_1
-    //   1302: istore 6
-    //   1304: iload 4
-    //   1306: aload 8
-    //   1308: aload 9
-    //   1310: aload 10
-    //   1312: iload 5
-    //   1314: iload 6
-    //   1316: aload_1
-    //   1317: getfield 48	com/tencent/mm/plugin/websearch/api/s:ohe	Ljava/lang/String;
-    //   1320: aload_1
-    //   1321: getfield 42	com/tencent/mm/plugin/websearch/api/s:cnv	Ljava/lang/String;
-    //   1324: aload_1
-    //   1325: getfield 157	com/tencent/mm/plugin/websearch/api/s:businessType	I
-    //   1328: invokestatic 554	com/tencent/mm/plugin/websearch/api/z:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;IZLjava/lang/String;Ljava/lang/String;I)V
-    //   1331: sipush 5714
-    //   1334: invokestatic 557	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1337: return
-    //   1338: iconst_0
-    //   1339: istore 4
-    //   1341: goto -1196 -> 145
-    //   1344: aload 8
-    //   1346: sipush 719
-    //   1349: putfield 111	com/tencent/mm/ai/b$a:funcId	I
-    //   1352: aload 8
-    //   1354: ldc_w 559
-    //   1357: putfield 116	com/tencent/mm/ai/b$a:uri	Ljava/lang/String;
-    //   1360: goto -1189 -> 171
-    //   1363: iconst_1
-    //   1364: istore 4
-    //   1366: goto -605 -> 761
-    //   1369: aload_1
-    //   1370: getfield 321	com/tencent/mm/plugin/websearch/api/s:uIS	Lcom/tencent/mm/protocal/protobuf/cyi;
-    //   1373: getfield 328	com/tencent/mm/protocal/protobuf/cyi:yft	Lcom/tencent/mm/protocal/protobuf/mc;
-    //   1376: iconst_1
-    //   1377: putfield 394	com/tencent/mm/protocal/protobuf/mc:wAD	I
-    //   1380: goto -590 -> 790
-    //   1383: astore 8
-    //   1385: ldc 86
-    //   1387: aload 8
-    //   1389: ldc_w 284
-    //   1392: iconst_0
-    //   1393: anewarray 90	java/lang/Object
-    //   1396: invokestatic 563	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1399: goto -412 -> 987
-    //   1402: iconst_0
-    //   1403: istore 6
-    //   1405: goto -277 -> 1128
-    //   1408: ldc 86
-    //   1410: ldc_w 565
-    //   1413: invokestatic 569	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1416: sipush 5714
-    //   1419: invokestatic 557	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1422: return
-    //   1423: astore 8
-    //   1425: goto -310 -> 1115
-    //   1428: astore 8
-    //   1430: goto -343 -> 1087
-    //   1433: aconst_null
-    //   1434: astore 8
-    //   1436: goto -978 -> 458
+    //   1180: aload_1
+    //   1181: getfield 549	com/tencent/mm/plugin/websearch/api/q:AGa	Lcom/tencent/mm/protocal/protobuf/dwe;
+    //   1184: invokevirtual 552	com/tencent/mm/protocal/protobuf/dwe:toByteArray	()[B
+    //   1187: invokespecial 525	com/tencent/mm/bx/b:<init>	([B)V
+    //   1190: putfield 555	com/tencent/mm/protocal/protobuf/dsy:EHD	Lcom/tencent/mm/bx/b;
+    //   1193: aload_0
+    //   1194: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   1197: getfield 166	com/tencent/mm/protocal/protobuf/dsy:DLE	Lcom/tencent/mm/protocal/protobuf/ble;
+    //   1200: ifnull +303 -> 1503
+    //   1203: iconst_1
+    //   1204: istore 6
+    //   1206: ldc 87
+    //   1208: ldc_w 557
+    //   1211: bipush 7
+    //   1213: anewarray 91	java/lang/Object
+    //   1216: dup
+    //   1217: iconst_0
+    //   1218: iload 6
+    //   1220: invokestatic 562	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   1223: aastore
+    //   1224: dup
+    //   1225: iconst_1
+    //   1226: aload_1
+    //   1227: getfield 180	com/tencent/mm/plugin/websearch/api/q:AFO	Ljava/util/LinkedList;
+    //   1230: invokevirtual 565	java/util/LinkedList:size	()I
+    //   1233: invokestatic 386	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1236: aastore
+    //   1237: dup
+    //   1238: iconst_2
+    //   1239: aload_1
+    //   1240: getfield 60	com/tencent/mm/plugin/websearch/api/q:scene	I
+    //   1243: invokestatic 386	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1246: aastore
+    //   1247: dup
+    //   1248: iconst_3
+    //   1249: aload_1
+    //   1250: getfield 152	com/tencent/mm/plugin/websearch/api/q:businessType	I
+    //   1253: invokestatic 386	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1256: aastore
+    //   1257: dup
+    //   1258: iconst_4
+    //   1259: aload_0
+    //   1260: getfield 72	com/tencent/mm/plugin/webview/fts/e:AFN	I
+    //   1263: invokestatic 386	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1266: aastore
+    //   1267: dup
+    //   1268: iconst_5
+    //   1269: aload_1
+    //   1270: getfield 195	com/tencent/mm/plugin/websearch/api/q:dtA	I
+    //   1273: invokestatic 386	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1276: aastore
+    //   1277: dup
+    //   1278: bipush 6
+    //   1280: aload_1
+    //   1281: getfield 66	com/tencent/mm/plugin/websearch/api/q:dtt	I
+    //   1284: invokestatic 386	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1287: aastore
+    //   1288: invokestatic 96	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1291: aload_0
+    //   1292: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   1295: getfield 166	com/tencent/mm/protocal/protobuf/dsy:DLE	Lcom/tencent/mm/protocal/protobuf/ble;
+    //   1298: ifnull +39 -> 1337
+    //   1301: sipush 2005
+    //   1304: aload_0
+    //   1305: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   1308: getfield 166	com/tencent/mm/protocal/protobuf/dsy:DLE	Lcom/tencent/mm/protocal/protobuf/ble;
+    //   1311: getfield 427	com/tencent/mm/protocal/protobuf/ble:COI	F
+    //   1314: aload_0
+    //   1315: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   1318: getfield 166	com/tencent/mm/protocal/protobuf/dsy:DLE	Lcom/tencent/mm/protocal/protobuf/ble;
+    //   1321: getfield 430	com/tencent/mm/protocal/protobuf/ble:COJ	F
+    //   1324: aload_0
+    //   1325: getfield 143	com/tencent/mm/plugin/webview/fts/e:AOV	Lcom/tencent/mm/protocal/protobuf/dsy;
+    //   1328: getfield 166	com/tencent/mm/protocal/protobuf/dsy:DLE	Lcom/tencent/mm/protocal/protobuf/ble;
+    //   1331: getfield 568	com/tencent/mm/protocal/protobuf/ble:DfE	I
+    //   1334: invokestatic 574	com/tencent/mm/modelstat/o:a	(IFFI)V
+    //   1337: aload_1
+    //   1338: getfield 60	com/tencent/mm/plugin/websearch/api/q:scene	I
+    //   1341: istore 4
+    //   1343: aload_1
+    //   1344: getfield 310	com/tencent/mm/plugin/websearch/api/q:sessionId	Ljava/lang/String;
+    //   1347: astore 8
+    //   1349: aload_1
+    //   1350: getfield 577	com/tencent/mm/plugin/websearch/api/q:dtw	Ljava/lang/String;
+    //   1353: astore 9
+    //   1355: aload_1
+    //   1356: getfield 189	com/tencent/mm/plugin/websearch/api/q:oEK	Ljava/lang/String;
+    //   1359: astore 10
+    //   1361: aload_1
+    //   1362: getfield 55	com/tencent/mm/plugin/websearch/api/q:offset	I
+    //   1365: istore 5
+    //   1367: aload_1
+    //   1368: getfield 71	com/tencent/mm/plugin/websearch/api/q:AFN	I
+    //   1371: iconst_1
+    //   1372: if_icmpne +137 -> 1509
+    //   1375: iload 7
+    //   1377: istore 6
+    //   1379: iload 4
+    //   1381: aload 8
+    //   1383: aload 9
+    //   1385: aload 10
+    //   1387: iload 5
+    //   1389: iload 6
+    //   1391: aload_1
+    //   1392: getfield 49	com/tencent/mm/plugin/websearch/api/q:dnB	Ljava/lang/String;
+    //   1395: aload_1
+    //   1396: getfield 43	com/tencent/mm/plugin/websearch/api/q:dcm	Ljava/lang/String;
+    //   1399: aload_1
+    //   1400: getfield 152	com/tencent/mm/plugin/websearch/api/q:businessType	I
+    //   1403: invokestatic 582	com/tencent/mm/plugin/websearch/api/z:a	(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;IZLjava/lang/String;Ljava/lang/String;I)V
+    //   1406: ldc 29
+    //   1408: invokestatic 585	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1411: return
+    //   1412: iconst_0
+    //   1413: istore 4
+    //   1415: goto -1271 -> 144
+    //   1418: aload 8
+    //   1420: sipush 719
+    //   1423: putfield 106	com/tencent/mm/al/b$a:funcId	I
+    //   1426: aload 8
+    //   1428: ldc_w 587
+    //   1431: putfield 111	com/tencent/mm/al/b$a:uri	Ljava/lang/String;
+    //   1434: goto -1270 -> 164
+    //   1437: iconst_0
+    //   1438: istore 4
+    //   1440: goto -838 -> 602
+    //   1443: iload 4
+    //   1445: i2f
+    //   1446: invokestatic 593	com/tencent/mm/ce/a:eCY	()F
+    //   1449: fdiv
+    //   1450: invokestatic 375	java/lang/Math:round	(F)I
+    //   1453: istore 4
+    //   1455: goto -760 -> 695
+    //   1458: iconst_0
+    //   1459: istore 4
+    //   1461: goto -630 -> 831
+    //   1464: iconst_1
+    //   1465: istore 4
+    //   1467: goto -628 -> 839
+    //   1470: aload_1
+    //   1471: getfield 325	com/tencent/mm/plugin/websearch/api/q:AGb	Lcom/tencent/mm/protocal/protobuf/dsu;
+    //   1474: getfield 332	com/tencent/mm/protocal/protobuf/dsu:EHt	Lcom/tencent/mm/protocal/protobuf/of;
+    //   1477: iconst_1
+    //   1478: putfield 422	com/tencent/mm/protocal/protobuf/of:CLQ	I
+    //   1481: goto -613 -> 868
+    //   1484: astore 8
+    //   1486: ldc 87
+    //   1488: aload 8
+    //   1490: ldc_w 280
+    //   1493: iconst_0
+    //   1494: anewarray 91	java/lang/Object
+    //   1497: invokestatic 597	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1500: goto -435 -> 1065
+    //   1503: iconst_0
+    //   1504: istore 6
+    //   1506: goto -300 -> 1206
+    //   1509: iconst_0
+    //   1510: istore 6
+    //   1512: goto -133 -> 1379
+    //   1515: ldc 87
+    //   1517: ldc_w 599
+    //   1520: invokestatic 603	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1523: ldc 29
+    //   1525: invokestatic 585	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1528: return
+    //   1529: astore 8
+    //   1531: goto -338 -> 1193
+    //   1534: astore 8
+    //   1536: goto -371 -> 1165
+    //   1539: aconst_null
+    //   1540: astore 8
+    //   1542: goto -1092 -> 450
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1439	0	this	e
-    //   0	1439	1	params	s
-    //   729	80	2	f1	float
-    //   727	75	3	f2	float
-    //   143	1222	4	i	int
-    //   1287	26	5	j	int
-    //   1126	278	6	bool1	boolean
-    //   1	1289	7	bool2	boolean
-    //   122	1231	8	localObject1	Object
-    //   1383	5	8	localJSONException	org.json.JSONException
-    //   1423	1	8	localException1	java.lang.Exception
-    //   1428	1	8	localException2	java.lang.Exception
-    //   1434	1	8	localObject2	Object
-    //   393	916	9	localObject3	Object
-    //   430	881	10	localObject4	Object
+    //   0	1545	0	this	e
+    //   0	1545	1	paramq	com.tencent.mm.plugin.websearch.api.q
+    //   769	118	2	f1	float
+    //   767	113	3	f2	float
+    //   142	1324	4	i	int
+    //   1365	23	5	j	int
+    //   1204	307	6	bool1	boolean
+    //   1	1375	7	bool2	boolean
+    //   121	1306	8	localObject1	Object
+    //   1484	5	8	localJSONException	org.json.JSONException
+    //   1529	1	8	localException1	java.lang.Exception
+    //   1534	1	8	localException2	java.lang.Exception
+    //   1540	1	8	localObject2	Object
+    //   386	998	9	localObject3	Object
+    //   423	963	10	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   851	987	1383	org/json/JSONException
-    //   1094	1115	1423	java/lang/Exception
-    //   994	1087	1428	java/lang/Exception
+    //   929	1065	1484	org/json/JSONException
+    //   1172	1193	1529	java/lang/Exception
+    //   1072	1165	1534	java/lang/Exception
   }
   
-  public final void aB(LinkedList<cpj> paramLinkedList)
+  public final void aT(LinkedList<dis> paramLinkedList)
   {
-    AppMethodBeat.i(5717);
-    this.uPd.xKn = paramLinkedList;
-    cdv localcdv = new cdv();
-    localcdv.xOs = paramLinkedList.size();
-    this.uPd.yfC = localcdv;
-    AppMethodBeat.o(5717);
+    AppMethodBeat.i(77933);
+    this.AOV.EhY = paramLinkedList;
+    cur localcur = new cur();
+    localcur.Emv = paramLinkedList.size();
+    this.AOV.EHF = localcur;
+    AppMethodBeat.o(77933);
   }
   
-  public final String act()
+  public final int doScene(com.tencent.mm.network.e parame, g paramg)
   {
-    if (this.uPc != null) {
-      return this.uPc.wAa;
+    AppMethodBeat.i(77931);
+    ak.iq(this.scene, 2);
+    this.callback = paramg;
+    int i = dispatch(parame, this.hdD, this);
+    AppMethodBeat.o(77931);
+    return i;
+  }
+  
+  public final String ehF()
+  {
+    if (this.AOU != null) {
+      return this.AOU.DLy;
     }
     return "";
   }
   
-  public final int acu()
+  public final int ehG()
   {
-    if (this.uPc != null) {
-      return this.uPc.xpM;
+    if (this.AOU != null) {
+      return this.AOU.EHo;
     }
     return 0;
-  }
-  
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
-  {
-    AppMethodBeat.i(5715);
-    an.gF(this.scene, 2);
-    this.callback = paramf;
-    int i = dispatch(parame, this.fBd, this);
-    AppMethodBeat.o(5715);
-    return i;
   }
   
   public final int getType()
@@ -745,10 +795,10 @@ public final class e
     return 719;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(5716);
-    ab.i("MicroMsg.WebSearch.NetSceneWebSearch", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(77932);
+    ad.i("MicroMsg.WebSearch.NetSceneWebSearch", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     boolean bool1;
     int i;
     if ((paramInt2 == 0) && (paramInt3 == 0))
@@ -758,54 +808,54 @@ public final class e
         break label200;
       }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      paramInt1 = this.fpY.scene;
-      paramString = this.fpY.cpW;
-      paramq = this.fpY.cCW;
-      paramArrayOfByte = this.fpY.low;
-      i = this.fpY.offset;
-      if (this.fpY.uIE != 1) {
+      paramInt1 = this.AGj.scene;
+      paramString = this.AGj.sessionId;
+      paramq = this.AGj.dtw;
+      paramArrayOfByte = this.AGj.oEK;
+      i = this.AGj.offset;
+      if (this.AGj.AFN != 1) {
         break label194;
       }
     }
     label194:
     for (boolean bool2 = true;; bool2 = false)
     {
-      z.a(paramInt1, paramString, paramq, paramArrayOfByte, i, bool2, this.fpY.ohe, bool1, this.fpY.cnv, this.fpY.businessType);
-      an.am(this.scene, paramInt2, paramInt3);
-      AppMethodBeat.o(5716);
+      z.a(paramInt1, paramString, paramq, paramArrayOfByte, i, bool2, this.AGj.dnB, bool1, this.AGj.dcm, this.AGj.businessType);
+      ak.ay(this.scene, paramInt2, paramInt3);
+      AppMethodBeat.o(77932);
       return;
       bool1 = false;
       break;
     }
     label200:
-    this.uPc = ((cyn)this.fBd.fsW.fta);
+    this.AOU = ((dsz)this.hdD.gUT.gUX);
     String str;
-    if (this.uPc != null)
+    if (this.AOU != null)
     {
-      paramInt1 = this.fpY.scene;
-      paramq = this.fpY.cpW;
-      paramArrayOfByte = this.fpY.cCW;
-      str = this.fpY.low;
-      i = this.fpY.offset;
-      if (this.fpY.uIE != 1) {
+      paramInt1 = this.AGj.scene;
+      paramq = this.AGj.sessionId;
+      paramArrayOfByte = this.AGj.dtw;
+      str = this.AGj.oEK;
+      i = this.AGj.offset;
+      if (this.AGj.AFN != 1) {
         break label371;
       }
     }
     label371:
     for (bool2 = true;; bool2 = false)
     {
-      z.a(paramInt1, paramq, paramArrayOfByte, str, i, bool2, this.fpY.ohe, bool1, this.fpY.cnv, this.fpY.businessType);
-      ab.v("MicroMsg.WebSearch.NetSceneWebSearch", "return data\n%s", new Object[] { this.uPc.wAa });
+      z.a(paramInt1, paramq, paramArrayOfByte, str, i, bool2, this.AGj.dnB, bool1, this.AGj.dcm, this.AGj.businessType);
+      ad.v("MicroMsg.WebSearch.NetSceneWebSearch", "return data\n%s", new Object[] { this.AOU.DLy });
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      an.am(this.scene, paramInt2, paramInt3);
-      AppMethodBeat.o(5716);
+      ak.ay(this.scene, paramInt2, paramInt3);
+      AppMethodBeat.o(77932);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.e
  * JD-Core Version:    0.7.0.1
  */

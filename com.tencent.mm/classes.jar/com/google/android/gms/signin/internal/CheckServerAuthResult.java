@@ -29,9 +29,9 @@ public class CheckServerAuthResult
   
   static
   {
-    AppMethodBeat.i(61660);
+    AppMethodBeat.i(12152);
     CREATOR = new CheckServerAuthResultCreator();
-    AppMethodBeat.o(61660);
+    AppMethodBeat.o(12152);
   }
   
   @SafeParcelable.Constructor
@@ -46,9 +46,9 @@ public class CheckServerAuthResult
   
   public Set<Scope> getAdditionalScopes()
   {
-    AppMethodBeat.i(61658);
+    AppMethodBeat.i(12150);
     HashSet localHashSet = new HashSet(this.zzadq);
-    AppMethodBeat.o(61658);
+    AppMethodBeat.o(12150);
     return localHashSet;
   }
   
@@ -59,13 +59,13 @@ public class CheckServerAuthResult
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(61659);
+    AppMethodBeat.i(12151);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     SafeParcelWriter.writeBoolean(paramParcel, 2, this.zzadp);
     SafeParcelWriter.writeTypedList(paramParcel, 3, this.zzadq, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(61659);
+    AppMethodBeat.o(12151);
   }
 }
 

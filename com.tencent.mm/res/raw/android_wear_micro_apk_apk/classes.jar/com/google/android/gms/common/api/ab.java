@@ -3,12 +3,12 @@ package com.google.android.gms.common.api;
 public final class ab
   extends Exception
 {
-  protected final Status HS;
+  protected final Status JH;
   
   public ab(Status paramStatus)
   {
-    super(paramStatus.gG());
-    this.HS = paramStatus;
+    super(paramStatus.gQ());
+    this.JH = paramStatus;
   }
 }
 

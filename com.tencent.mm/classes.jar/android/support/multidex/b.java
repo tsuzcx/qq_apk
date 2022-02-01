@@ -8,6 +8,7 @@ import android.os.Build.VERSION;
 import java.io.BufferedOutputStream;
 import java.io.Closeable;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,22 +23,22 @@ import java.util.zip.ZipOutputStream;
 
 final class b
 {
-  private static Method qe;
+  private static Method wI;
   
   static
   {
     try
     {
-      qe = SharedPreferences.Editor.class.getMethod("apply", new Class[0]);
+      wI = SharedPreferences.Editor.class.getMethod("apply", new Class[0]);
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      qe = null;
+      wI = null;
     }
   }
   
-  private static SharedPreferences J(Context paramContext)
+  private static SharedPreferences L(Context paramContext)
   {
     if (Build.VERSION.SDK_INT < 11) {}
     for (int i = 0;; i = 4) {
@@ -50,15 +51,15 @@ final class b
     int i = 0;
     new StringBuilder("MultiDexExtractor.load(").append(paramApplicationInfo.sourceDir).append(", ").append(paramBoolean).append(")");
     File localFile = new File(paramApplicationInfo.sourceDir);
-    long l2 = c.g(localFile);
+    long l2 = c.m(localFile);
     long l1 = l2;
     if (l2 == -1L) {
       l1 = l2 - 1L;
     }
     if (!paramBoolean)
     {
-      paramApplicationInfo = J(paramContext);
-      if ((paramApplicationInfo.getLong("timestamp", -1L) != e(localFile)) || (paramApplicationInfo.getLong("crc", -1L) != l1)) {
+      paramApplicationInfo = L(paramContext);
+      if ((paramApplicationInfo.getLong("timestamp", -1L) != k(localFile)) || (paramApplicationInfo.getLong("crc", -1L) != l1)) {
         i = 1;
       }
       if (i != 0) {}
@@ -73,17 +74,17 @@ final class b
         return paramContext;
       }
       catch (IOException paramApplicationInfo) {}
-      paramApplicationInfo = c(localFile, paramFile);
-      l2 = e(localFile);
+      paramApplicationInfo = d(localFile, paramFile);
+      l2 = k(localFile);
       i = paramApplicationInfo.size();
-      paramContext = J(paramContext).edit();
+      paramContext = L(paramContext).edit();
       paramContext.putLong("timestamp", l2);
       paramContext.putLong("crc", l1);
       paramContext.putInt("dex.number", i + 1);
-      if (qe != null) {}
+      if (wI != null) {}
       try
       {
-        qe.invoke(paramContext, new Object[0]);
+        wI.invoke(paramContext, new Object[0]);
         paramContext = paramApplicationInfo;
       }
       catch (InvocationTargetException paramFile)
@@ -102,7 +103,7 @@ final class b
   private static List<File> a(Context paramContext, File paramFile1, File paramFile2)
   {
     paramFile1 = paramFile1.getName() + ".classes";
-    int j = J(paramContext).getInt("dex.number", 1);
+    int j = L(paramContext).getInt("dex.number", 1);
     paramContext = new ArrayList(j);
     int i = 2;
     while (i <= j)
@@ -111,7 +112,7 @@ final class b
       if (localFile.isFile())
       {
         paramContext.add(localFile);
-        if (!f(localFile))
+        if (!l(localFile))
         {
           new StringBuilder("Invalid zip file: ").append(localFile);
           throw new IOException("Invalid ZIP file.");
@@ -169,44 +170,20 @@ final class b
     paramString.delete();
   }
   
-  private static void b(File paramFile, String paramString)
+  private static void closeQuietly(Closeable paramCloseable)
   {
-    paramFile.mkdirs();
-    if (!paramFile.isDirectory()) {
-      throw new IOException("Failed to create dex directory " + paramFile.getPath());
-    }
-    paramString = paramFile.listFiles(new b.1(paramString));
-    if (paramString == null)
+    try
     {
-      new StringBuilder("Failed to list secondary dex dir content (").append(paramFile.getPath()).append(").");
+      paramCloseable.close();
       return;
     }
-    int j = paramString.length;
-    int i = 0;
-    label87:
-    if (i < j)
-    {
-      paramFile = paramString[i];
-      new StringBuilder("Trying to delete old file ").append(paramFile.getPath()).append(" of size ").append(paramFile.length());
-      if (paramFile.delete()) {
-        break label159;
-      }
-      new StringBuilder("Failed to delete old file ").append(paramFile.getPath());
-    }
-    for (;;)
-    {
-      i += 1;
-      break label87;
-      break;
-      label159:
-      new StringBuilder("Deleted old file ").append(paramFile.getPath());
-    }
+    catch (IOException paramCloseable) {}
   }
   
-  private static List<File> c(File paramFile1, File paramFile2)
+  private static List<File> d(File paramFile1, File paramFile2)
   {
     String str2 = paramFile1.getName() + ".classes";
-    b(paramFile2, str2);
+    f(paramFile2, str2);
     localArrayList = new ArrayList();
     localZipFile = new ZipFile(paramFile1);
     try
@@ -258,7 +235,7 @@ final class b
       {
         j += 1;
         a(localZipFile, paramFile1, localFile, str2);
-        bool = f(localFile);
+        bool = l(localFile);
         StringBuilder localStringBuilder = new StringBuilder("Extraction ");
         if (!bool) {
           break label376;
@@ -280,17 +257,47 @@ final class b
     }
   }
   
-  private static void closeQuietly(Closeable paramCloseable)
+  private static void f(File paramFile, String paramString)
   {
-    try
+    paramFile.mkdirs();
+    if (!paramFile.isDirectory()) {
+      throw new IOException("Failed to create dex directory " + paramFile.getPath());
+    }
+    paramString = paramFile.listFiles(new FileFilter()
     {
-      paramCloseable.close();
+      public final boolean accept(File paramAnonymousFile)
+      {
+        return !paramAnonymousFile.getName().startsWith(this.wJ);
+      }
+    });
+    if (paramString == null)
+    {
+      new StringBuilder("Failed to list secondary dex dir content (").append(paramFile.getPath()).append(").");
       return;
     }
-    catch (IOException paramCloseable) {}
+    int j = paramString.length;
+    int i = 0;
+    label87:
+    if (i < j)
+    {
+      paramFile = paramString[i];
+      new StringBuilder("Trying to delete old file ").append(paramFile.getPath()).append(" of size ").append(paramFile.length());
+      if (paramFile.delete()) {
+        break label159;
+      }
+      new StringBuilder("Failed to delete old file ").append(paramFile.getPath());
+    }
+    for (;;)
+    {
+      i += 1;
+      break label87;
+      break;
+      label159:
+      new StringBuilder("Deleted old file ").append(paramFile.getPath());
+    }
   }
   
-  private static long e(File paramFile)
+  private static long k(File paramFile)
   {
     long l2 = paramFile.lastModified();
     long l1 = l2;
@@ -300,7 +307,7 @@ final class b
     return l1;
   }
   
-  static boolean f(File paramFile)
+  static boolean l(File paramFile)
   {
     try
     {
@@ -334,7 +341,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.multidex.b
  * JD-Core Version:    0.7.0.1
  */

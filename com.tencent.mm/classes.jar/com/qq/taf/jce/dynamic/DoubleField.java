@@ -20,9 +20,9 @@ public class DoubleField
   
   public Number getNumber()
   {
-    AppMethodBeat.i(117016);
+    AppMethodBeat.i(109570);
     double d = this.data;
-    AppMethodBeat.o(117016);
+    AppMethodBeat.o(109570);
     return Double.valueOf(d);
   }
   

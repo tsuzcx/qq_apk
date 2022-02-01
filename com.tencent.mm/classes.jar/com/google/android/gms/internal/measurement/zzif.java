@@ -24,14 +24,14 @@ public final class zzif
   public zzif(zzgl paramzzgl)
   {
     super(paramzzgl);
-    AppMethodBeat.i(69240);
+    AppMethodBeat.i(1763);
     this.zzaop = new a();
-    AppMethodBeat.o(69240);
+    AppMethodBeat.o(1763);
   }
   
   private final void zza(Activity paramActivity, zzie paramzzie, boolean paramBoolean)
   {
-    AppMethodBeat.i(69243);
+    AppMethodBeat.i(1766);
     if (this.zzaom == null) {}
     for (zzie localzzie1 = this.zzaon;; localzzie1 = this.zzaom)
     {
@@ -43,24 +43,24 @@ public final class zzif
       this.zzaoo = zzbt().elapsedRealtime();
       this.zzaom = localzzie2;
       zzgd().zzc(new zzig(this, paramBoolean, localzzie1, localzzie2));
-      AppMethodBeat.o(69243);
+      AppMethodBeat.o(1766);
       return;
     }
   }
   
   private final void zza(zzie paramzzie)
   {
-    AppMethodBeat.i(69244);
+    AppMethodBeat.i(1767);
     zzft().zzk(zzbt().elapsedRealtime());
     if (zzgc().zzl(paramzzie.zzaok)) {
       paramzzie.zzaok = false;
     }
-    AppMethodBeat.o(69244);
+    AppMethodBeat.o(1767);
   }
   
   public static void zza(zzie paramzzie, Bundle paramBundle, boolean paramBoolean)
   {
-    AppMethodBeat.i(69245);
+    AppMethodBeat.i(1768);
     if ((paramBundle != null) && (paramzzie != null) && ((!paramBundle.containsKey("_sc")) || (paramBoolean)))
     {
       if (paramzzie.zzul != null) {
@@ -70,7 +70,7 @@ public final class zzif
       {
         paramBundle.putString("_sc", paramzzie.zzaoi);
         paramBundle.putLong("_si", paramzzie.zzaoj);
-        AppMethodBeat.o(69245);
+        AppMethodBeat.o(1768);
         return;
         paramBundle.remove("_sn");
       }
@@ -81,28 +81,28 @@ public final class zzif
       paramBundle.remove("_sc");
       paramBundle.remove("_si");
     }
-    AppMethodBeat.o(69245);
+    AppMethodBeat.o(1768);
   }
   
   @VisibleForTesting
   private static String zzca(String paramString)
   {
-    AppMethodBeat.i(69247);
+    AppMethodBeat.i(1770);
     paramString = paramString.split("\\.");
     if (paramString.length > 0) {}
     for (paramString = paramString[(paramString.length - 1)]; paramString.length() > 100; paramString = "")
     {
       paramString = paramString.substring(0, 100);
-      AppMethodBeat.o(69247);
+      AppMethodBeat.o(1770);
       return paramString;
     }
-    AppMethodBeat.o(69247);
+    AppMethodBeat.o(1770);
     return paramString;
   }
   
   private final zzie zze(Activity paramActivity)
   {
-    AppMethodBeat.i(69248);
+    AppMethodBeat.i(1771);
     Preconditions.checkNotNull(paramActivity);
     zzie localzzie2 = (zzie)this.zzaop.get(paramActivity);
     zzie localzzie1 = localzzie2;
@@ -111,69 +111,69 @@ public final class zzif
       localzzie1 = new zzie(null, zzca(paramActivity.getClass().getCanonicalName()), zzgb().zzlb());
       this.zzaop.put(paramActivity, localzzie1);
     }
-    AppMethodBeat.o(69248);
+    AppMethodBeat.o(1771);
     return localzzie1;
   }
   
   public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(69249);
+    AppMethodBeat.i(1772);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(69249);
+      AppMethodBeat.o(1772);
       return;
     }
     paramBundle = paramBundle.getBundle("com.google.firebase.analytics.screen_service");
     if (paramBundle == null)
     {
-      AppMethodBeat.o(69249);
+      AppMethodBeat.o(1772);
       return;
     }
     paramBundle = new zzie(paramBundle.getString("name"), paramBundle.getString("referrer_name"), paramBundle.getLong("id"));
     this.zzaop.put(paramActivity, paramBundle);
-    AppMethodBeat.o(69249);
+    AppMethodBeat.o(1772);
   }
   
   public final void onActivityDestroyed(Activity paramActivity)
   {
-    AppMethodBeat.i(69253);
+    AppMethodBeat.i(1776);
     this.zzaop.remove(paramActivity);
-    AppMethodBeat.o(69253);
+    AppMethodBeat.o(1776);
   }
   
   public final void onActivityPaused(Activity paramActivity)
   {
-    AppMethodBeat.i(69251);
+    AppMethodBeat.i(1774);
     paramActivity = zze(paramActivity);
     this.zzaon = this.zzaom;
     this.zzaoo = zzbt().elapsedRealtime();
     this.zzaom = null;
     zzgd().zzc(new zzih(this, paramActivity));
-    AppMethodBeat.o(69251);
+    AppMethodBeat.o(1774);
   }
   
   public final void onActivityResumed(Activity paramActivity)
   {
-    AppMethodBeat.i(69250);
+    AppMethodBeat.i(1773);
     zza(paramActivity, zze(paramActivity), false);
     paramActivity = zzft();
     long l = paramActivity.zzbt().elapsedRealtime();
     paramActivity.zzgd().zzc(new zzdx(paramActivity, l));
-    AppMethodBeat.o(69250);
+    AppMethodBeat.o(1773);
   }
   
   public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle)
   {
-    AppMethodBeat.i(69252);
+    AppMethodBeat.i(1775);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(69252);
+      AppMethodBeat.o(1775);
       return;
     }
     paramActivity = (zzie)this.zzaop.get(paramActivity);
     if (paramActivity == null)
     {
-      AppMethodBeat.o(69252);
+      AppMethodBeat.o(1775);
       return;
     }
     Bundle localBundle = new Bundle();
@@ -181,29 +181,29 @@ public final class zzif
     localBundle.putString("name", paramActivity.zzul);
     localBundle.putString("referrer_name", paramActivity.zzaoi);
     paramBundle.putBundle("com.google.firebase.analytics.screen_service", localBundle);
-    AppMethodBeat.o(69252);
+    AppMethodBeat.o(1775);
   }
   
   public final void setCurrentScreen(Activity paramActivity, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(69242);
+    AppMethodBeat.i(1765);
     zzgd();
     if (!zzgg.isMainThread())
     {
       zzge().zzip().log("setCurrentScreen must be called from the main thread");
-      AppMethodBeat.o(69242);
+      AppMethodBeat.o(1765);
       return;
     }
     if (this.zzaom == null)
     {
       zzge().zzip().log("setCurrentScreen cannot be called while no activity active");
-      AppMethodBeat.o(69242);
+      AppMethodBeat.o(1765);
       return;
     }
     if (this.zzaop.get(paramActivity) == null)
     {
       zzge().zzip().log("setCurrentScreen must be called with an activity in the activity lifecycle");
-      AppMethodBeat.o(69242);
+      AppMethodBeat.o(1765);
       return;
     }
     String str = paramString2;
@@ -215,19 +215,19 @@ public final class zzif
     if ((bool1) && (bool2))
     {
       zzge().zziq().log("setCurrentScreen cannot be called with the same class and name");
-      AppMethodBeat.o(69242);
+      AppMethodBeat.o(1765);
       return;
     }
     if ((paramString1 != null) && ((paramString1.length() <= 0) || (paramString1.length() > 100)))
     {
       zzge().zzip().zzg("Invalid screen name length in setCurrentScreen. Length", Integer.valueOf(paramString1.length()));
-      AppMethodBeat.o(69242);
+      AppMethodBeat.o(1765);
       return;
     }
     if ((str != null) && ((str.length() <= 0) || (str.length() > 100)))
     {
       zzge().zzip().zzg("Invalid class name length in setCurrentScreen. Length", Integer.valueOf(str.length()));
-      AppMethodBeat.o(69242);
+      AppMethodBeat.o(1765);
       return;
     }
     zzfi localzzfi = zzge().zzit();
@@ -238,14 +238,14 @@ public final class zzif
       paramString1 = new zzie(paramString1, str, zzgb().zzlb());
       this.zzaop.put(paramActivity, paramString1);
       zza(paramActivity, paramString1, true);
-      AppMethodBeat.o(69242);
+      AppMethodBeat.o(1765);
       return;
     }
   }
   
   public final void zza(String paramString, zzie paramzzie)
   {
-    AppMethodBeat.i(69246);
+    AppMethodBeat.i(1769);
     zzab();
     try
     {
@@ -258,7 +258,7 @@ public final class zzif
     }
     finally
     {
-      AppMethodBeat.o(69246);
+      AppMethodBeat.o(1769);
     }
   }
   
@@ -269,11 +269,11 @@ public final class zzif
   
   public final zzie zzkc()
   {
-    AppMethodBeat.i(69241);
+    AppMethodBeat.i(1764);
     zzch();
     zzab();
     zzie localzzie = this.zzaol;
-    AppMethodBeat.o(69241);
+    AppMethodBeat.o(1764);
     return localzzie;
   }
   
@@ -284,7 +284,7 @@ public final class zzif
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzif
  * JD-Core Version:    0.7.0.1
  */

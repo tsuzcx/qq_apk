@@ -1,37 +1,28 @@
 package com.tencent.mm.plugin.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
+import com.tencent.mm.plugin.appbrand.menu.WxaMenuHelper.GetCopyPathMenuExpireTimeTask;
 
 final class o$3
-  implements x.a
+  implements Runnable
 {
-  o$3(o paramo, boolean paramBoolean, long paramLong, i.c paramc) {}
+  o$3(o paramo) {}
   
-  private void atY()
+  public final void run()
   {
-    AppMethodBeat.i(128978);
-    this.gRv.atV().runOnUiThread(new o.3.1(this));
-    AppMethodBeat.o(128978);
-  }
-  
-  public final void atZ()
-  {
-    AppMethodBeat.i(128979);
-    atY();
-    AppMethodBeat.o(128979);
-  }
-  
-  public final void aua()
-  {
-    AppMethodBeat.i(128980);
-    atY();
-    AppMethodBeat.o(128980);
+    AppMethodBeat.i(43865);
+    AppBrandSysConfigWC localAppBrandSysConfigWC = this.iGA.aNb();
+    WxaMenuHelper.GetCopyPathMenuExpireTimeTask localGetCopyPathMenuExpireTimeTask = new WxaMenuHelper.GetCopyPathMenuExpireTimeTask(this.iGA.mAppId);
+    AppBrandMainProcessService.b(localGetCopyPathMenuExpireTimeTask);
+    localAppBrandSysConfigWC.cfQ = WxaMenuHelper.GetCopyPathMenuExpireTimeTask.a(localGetCopyPathMenuExpireTimeTask);
+    AppMethodBeat.o(43865);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.o.3
  * JD-Core Version:    0.7.0.1
  */

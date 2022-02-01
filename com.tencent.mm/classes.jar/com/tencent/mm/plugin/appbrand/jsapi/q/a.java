@@ -1,21 +1,28 @@
 package com.tencent.mm.plugin.appbrand.jsapi.q;
 
 import com.tencent.luggage.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.ai;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
+import d.l;
+import org.json.JSONObject;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/IReferrerHelper;", "Lcom/tencent/luggage/base/ICustomize;", "defaultReferrerPolicy", "Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "getDefaultReferrerPolicy", "()Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "parseReferrerPolicy", "referrerPolicyStr", "", "parseReferrerPolicyFallback", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "parseReferrerPolicyOrFallback", "data", "Lorg/json/JSONObject;", "parseReferrerPolicyStr", "provideReferrer", "luggage-commons_release"})
 public abstract interface a
   extends b
 {
-  public abstract boolean a(c paramc, ai paramai);
+  public abstract c IU(String paramString);
   
-  public abstract int aEB();
+  public abstract String U(JSONObject paramJSONObject);
   
-  public abstract int aEC();
+  public abstract c a(JSONObject paramJSONObject, com.tencent.mm.plugin.appbrand.jsapi.c paramc);
+  
+  public abstract c bbJ();
+  
+  public abstract c x(com.tencent.mm.plugin.appbrand.jsapi.c paramc);
+  
+  public abstract String y(com.tencent.mm.plugin.appbrand.jsapi.c paramc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.q.a
  * JD-Core Version:    0.7.0.1
  */

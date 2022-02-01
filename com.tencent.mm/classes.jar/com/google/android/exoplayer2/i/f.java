@@ -4,23 +4,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  private boolean LB;
+  private boolean SE;
   
   public final void block()
   {
     try
     {
-      AppMethodBeat.i(95874);
-      while (!this.LB) {
+      AppMethodBeat.i(93134);
+      while (!this.SE) {
         wait();
       }
-      AppMethodBeat.o(95874);
+      AppMethodBeat.o(93134);
     }
     finally {}
   }
   
   /* Error */
-  public final boolean open()
+  public final boolean vD()
   {
     // Byte code:
     //   0: iconst_1
@@ -30,7 +30,7 @@ public final class f
     //   4: ldc 30
     //   6: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
-    //   10: getfield 21	com/google/android/exoplayer2/i/f:LB	Z
+    //   10: getfield 21	com/google/android/exoplayer2/i/f:SE	Z
     //   13: ifeq +14 -> 27
     //   16: iconst_0
     //   17: istore_1
@@ -42,7 +42,7 @@ public final class f
     //   26: ireturn
     //   27: aload_0
     //   28: iconst_1
-    //   29: putfield 21	com/google/android/exoplayer2/i/f:LB	Z
+    //   29: putfield 21	com/google/android/exoplayer2/i/f:SE	Z
     //   32: aload_0
     //   33: invokevirtual 33	java/lang/Object:notifyAll	()V
     //   36: ldc 30
@@ -65,12 +65,12 @@ public final class f
     //   27	41	44	finally
   }
   
-  public final boolean qH()
+  public final boolean vE()
   {
     try
     {
-      boolean bool = this.LB;
-      this.LB = false;
+      boolean bool = this.SE;
+      this.SE = false;
       return bool;
     }
     finally
@@ -82,7 +82,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.i.f
  * JD-Core Version:    0.7.0.1
  */

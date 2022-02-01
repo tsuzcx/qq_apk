@@ -4,40 +4,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TencentLocationManagerOptions
 {
-  private static boolean a = true;
-  private static String b = "";
+  public static String mKey = "";
+  public static boolean sLoadLibrary = true;
   
   public static String getKey()
   {
-    return b;
+    return mKey;
   }
   
   public static boolean isLoadLibraryEnabled()
   {
-    return a;
+    return sLoadLibrary;
   }
   
   public static boolean setKey(String paramString)
   {
-    AppMethodBeat.i(136468);
-    if ((paramString == null) || (paramString.equals("")))
+    AppMethodBeat.i(40030);
+    if ((paramString != null) && (!paramString.equals("")))
     {
-      AppMethodBeat.o(136468);
-      return false;
+      mKey = paramString;
+      AppMethodBeat.o(40030);
+      return true;
     }
-    b = paramString;
-    AppMethodBeat.o(136468);
-    return true;
+    AppMethodBeat.o(40030);
+    return false;
   }
   
   public static void setLoadLibraryEnabled(boolean paramBoolean)
   {
-    a = paramBoolean;
+    sLoadLibrary = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.map.geolocation.TencentLocationManagerOptions
  * JD-Core Version:    0.7.0.1
  */

@@ -13,42 +13,42 @@ import java.util.Set;
 public final class ac
   extends Exception
 {
-  private final a<ef<?>, ConnectionResult> HT;
+  private final a<ef<?>, ConnectionResult> JI;
   
   public ac(a<ef<?>, ConnectionResult> parama)
   {
-    this.HT = parama;
+    this.JI = parama;
   }
   
   public final ConnectionResult a(ad<? extends b> paramad)
   {
-    paramad = paramad.gJ();
-    if (this.HT.get(paramad) != null) {}
+    paramad = paramad.gT();
+    if (this.JI.get(paramad) != null) {}
     for (boolean bool = true;; bool = false)
     {
       d.b(bool, "The given API was not part of the availability request.");
-      return (ConnectionResult)this.HT.get(paramad);
+      return (ConnectionResult)this.JI.get(paramad);
     }
   }
   
-  public final a<ef<?>, ConnectionResult> gH()
+  public final a<ef<?>, ConnectionResult> gR()
   {
-    return this.HT;
+    return this.JI;
   }
   
   public final String getMessage()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = this.HT.keySet().iterator();
+    Object localObject1 = this.JI.keySet().iterator();
     int i = 1;
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject3 = (ef)((Iterator)localObject1).next();
-      Object localObject2 = (ConnectionResult)this.HT.get(localObject3);
-      if (((ConnectionResult)localObject2).gm()) {
+      Object localObject2 = (ConnectionResult)this.JI.get(localObject3);
+      if (((ConnectionResult)localObject2).gw()) {
         i = 0;
       }
-      localObject3 = String.valueOf(((ef)localObject3).kk());
+      localObject3 = String.valueOf(((ef)localObject3).kt());
       localObject2 = String.valueOf(localObject2);
       localArrayList.add(String.valueOf(localObject3).length() + 2 + String.valueOf(localObject2).length() + (String)localObject3 + ": " + (String)localObject2);
     }

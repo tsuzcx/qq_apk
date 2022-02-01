@@ -2,145 +2,264 @@ package com.tencent.mm.plugin.exdevice.model;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.exdevice.h.a;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.dl;
+import com.tencent.mm.g.a.dl.a;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.exdevice.service.f;
 import com.tencent.mm.plugin.exdevice.service.f.a;
 import com.tencent.mm.plugin.exdevice.service.j;
+import com.tencent.mm.plugin.exdevice.service.k;
 import com.tencent.mm.plugin.exdevice.service.m;
 import com.tencent.mm.plugin.exdevice.service.u;
 import com.tencent.mm.plugin.exdevice.service.w;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 
 public final class d
 {
-  private static int lDa = 0;
-  com.tencent.mm.plugin.exdevice.service.c lCV;
-  private w lCW;
-  HashMap<Long, ap> lCX;
-  HashMap<Long, ap> lCY;
-  HashMap<Long, Integer> lCZ;
-  private j lDb;
-  private Object lDc;
+  private static int oTM = 0;
+  com.tencent.mm.plugin.exdevice.service.c oTH;
+  private w oTI;
+  HashMap<Long, av> oTJ;
+  HashMap<Long, av> oTK;
+  HashMap<Long, Integer> oTL;
+  private j oTN;
+  private Object oTO;
   
   public d()
   {
-    AppMethodBeat.i(19111);
-    this.lDb = null;
-    this.lDc = new Object();
-    u.bqA().lCR = new d.1(this);
-    if (this.lCW == null) {
-      this.lCW = new d.10(this);
+    AppMethodBeat.i(23219);
+    this.oTN = null;
+    this.oTO = new Object();
+    u.cai().oTD = new c.a()
+    {
+      public final void bZn()
+      {
+        AppMethodBeat.i(23205);
+        if (d.a(d.this) == null)
+        {
+          d.a(d.this, new com.tencent.mm.plugin.exdevice.service.c());
+          d.a(d.this).oZg = null;
+        }
+        d.a(d.this).ew(aj.getContext());
+        AppMethodBeat.o(23205);
+      }
+    };
+    if (this.oTI == null) {
+      this.oTI = new w()
+      {
+        public final void b(long paramAnonymousLong1, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, long paramAnonymousLong2)
+        {
+          AppMethodBeat.i(23216);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "onStateChange, deviceId = %s, oldSate = %d, newState = %d, errCode = %d", new Object[] { com.tencent.mm.plugin.exdevice.k.b.pe(paramAnonymousLong1), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3) });
+          if (aj.getContext() == null)
+          {
+            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "MMApplicationContext is null");
+            AppMethodBeat.o(23216);
+            return;
+          }
+          Object localObject;
+          if (4 == paramAnonymousInt2)
+          {
+            u.cah().oW(paramAnonymousLong1);
+            localObject = com.tencent.mm.plugin.exdevice.i.a.UP("shut_down_device");
+            if ((localObject != null) && (localObject.length != 0))
+            {
+              int i = localObject.length;
+              paramAnonymousInt3 = 0;
+              while (paramAnonymousInt3 < i)
+              {
+                paramAnonymousLong2 = localObject[paramAnonymousInt3];
+                if (paramAnonymousLong2 == paramAnonymousLong1)
+                {
+                  com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "Stop channel in the shut down device list, deviceId = %d", new Object[] { Long.valueOf(paramAnonymousLong2) });
+                  d.oH(paramAnonymousLong2);
+                  if (!com.tencent.mm.plugin.exdevice.i.a.X("shut_down_device", paramAnonymousLong2)) {
+                    com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "removeFromSharedPreferences failed!!!");
+                  }
+                }
+                paramAnonymousInt3 += 1;
+              }
+            }
+            if (d.d(d.this).get(Long.valueOf(paramAnonymousLong1)) == null) {
+              break label341;
+            }
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "Device connect strategy(%d)", new Object[] { d.d(d.this).get(Long.valueOf(paramAnonymousLong1)) });
+            localObject = new dl();
+            com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
+            if ((!((dl)localObject).dfC.cOi) || ((((Integer)d.d(d.this).get(Long.valueOf(paramAnonymousLong1))).intValue() & 0x1) != 1)) {
+              d.oH(paramAnonymousLong1);
+            }
+          }
+          while (paramAnonymousInt1 != paramAnonymousInt2)
+          {
+            localObject = ad.bZG().UQ(String.valueOf(paramAnonymousLong1));
+            if ((localObject == null) || (bt.isNullOrNil(((com.tencent.mm.plugin.exdevice.i.b)localObject).field_brandName)))
+            {
+              com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "get hdinfo by mac failed : %d", new Object[] { Long.valueOf(paramAnonymousLong1) });
+              AppMethodBeat.o(23216);
+              return;
+              label341:
+              d.oH(paramAnonymousLong1);
+            }
+            else
+            {
+              f.a locala = u.cah().oT(paramAnonymousLong1);
+              if (locala != null) {
+                locala.dgF = paramAnonymousInt2;
+              }
+              while (paramAnonymousInt2 == 2)
+              {
+                com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.exdevice.ExdeviceConnectManager", "newState = EMMACCS_connected");
+                AppMethodBeat.o(23216);
+                return;
+                com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "get connect state faild : %d", new Object[] { Long.valueOf(paramAnonymousLong1) });
+              }
+              ad.bZR();
+              e.d(((com.tencent.mm.plugin.exdevice.i.b)localObject).field_brandName, ((com.tencent.mm.plugin.exdevice.i.b)localObject).field_url, paramAnonymousInt2, ((com.tencent.mm.plugin.exdevice.i.b)localObject).field_deviceID);
+            }
+          }
+          AppMethodBeat.o(23216);
+        }
+      };
     }
-    this.lCX = new HashMap();
-    this.lCY = new HashMap();
-    this.lCZ = new HashMap();
-    AppMethodBeat.o(19111);
+    this.oTJ = new HashMap();
+    this.oTK = new HashMap();
+    this.oTL = new HashMap();
+    AppMethodBeat.o(23219);
   }
   
-  public static int bpH()
+  public static int bZo()
   {
-    return lDa;
+    return oTM;
   }
   
-  private boolean d(String paramString, long paramLong, int paramInt)
+  private boolean c(String paramString, final long paramLong, final int paramInt)
   {
     for (;;)
     {
       try
       {
-        AppMethodBeat.i(19119);
-        int i = aw.Rc().adt();
+        AppMethodBeat.i(23227);
+        int i = az.aeS().auR();
         if ((i != 4) && (i != 6))
         {
-          ab.e("MicroMsg.exdevice.ExdeviceConnectManager", "now network is not avaiable, notify directly");
-          AppMethodBeat.o(19119);
+          com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "now network is not avaiable, notify directly");
+          AppMethodBeat.o(23227);
           bool = false;
           return bool;
         }
-        if (this.lCY.containsKey(Long.valueOf(paramLong)))
+        if (this.oTK.containsKey(Long.valueOf(paramLong)))
         {
-          ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "now the device is syncing data : %s, %d, Just leave!!!", new Object[] { paramString, Long.valueOf(paramLong) });
-          AppMethodBeat.o(19119);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "now the device is syncing data : %s, %d, Just leave!!!", new Object[] { paramString, Long.valueOf(paramLong) });
+          AppMethodBeat.o(23227);
           bool = false;
           continue;
         }
-        ap localap = new ap(Looper.getMainLooper(), new d.8(this, paramLong, paramString, paramInt), false);
-        long l = com.tencent.mm.plugin.exdevice.j.b.brl();
-        ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "now sync time out is : %d", new Object[] { Long.valueOf(l) });
-        localap.ag(l, l);
-        this.lCY.put(Long.valueOf(paramLong), localap);
-        if (u.bqA().lCQ != null)
+        av localav = new av(Looper.getMainLooper(), new av.a()
         {
-          ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "start channel now : %s, %d", new Object[] { paramString, Long.valueOf(paramLong) });
-          bool = u.bqA().lCQ.a(paramLong, paramInt, this.lCW);
-          AppMethodBeat.o(19119);
+          public final boolean onTimerExpired()
+          {
+            AppMethodBeat.i(23214);
+            int i = u.cah().oS(paramLong);
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "now it is time to check the sync connect state, brand name = %s, deviceid = %d, bluetooth version = %d, connect state = %d", new Object[] { paramInt, Long.valueOf(paramLong), Integer.valueOf(this.oTY), Integer.valueOf(i) });
+            d.oH(paramLong);
+            d.b(d.this).remove(Long.valueOf(paramLong));
+            AppMethodBeat.o(23214);
+            return false;
+          }
+        }, false);
+        long l = com.tencent.mm.plugin.exdevice.k.b.caU();
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "now sync time out is : %d", new Object[] { Long.valueOf(l) });
+        localav.av(l, l);
+        this.oTK.put(Long.valueOf(paramLong), localav);
+        if (u.cai().oTC != null)
+        {
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "start channel now : %s, %d", new Object[] { paramString, Long.valueOf(paramLong) });
+          bool = u.cai().oTC.a(paramLong, paramInt, this.oTI);
+          AppMethodBeat.o(23227);
           continue;
         }
-        ab.e("MicroMsg.exdevice.ExdeviceConnectManager", "MMExDeviceCore.getTaskQueue().getDispatcher() == null");
+        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "MMExDeviceCore.getTaskQueue().getDispatcher() == null");
       }
       finally {}
-      AppMethodBeat.o(19119);
+      AppMethodBeat.o(23227);
       boolean bool = false;
     }
   }
   
-  private boolean e(String paramString, long paramLong, int paramInt)
+  private boolean d(String paramString, final long paramLong, final int paramInt)
   {
-    AppMethodBeat.i(19120);
-    if (aw.Rc().adt() != 4)
+    AppMethodBeat.i(23228);
+    if (az.aeS().auR() != 4)
     {
-      ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "now network is not avaiable, notify directly");
-      AppMethodBeat.o(19120);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "now network is not avaiable, notify directly");
+      AppMethodBeat.o(23228);
       return false;
     }
-    ap localap;
-    if (this.lCX.containsKey(Long.valueOf(paramLong)))
+    av localav;
+    if (this.oTJ.containsKey(Long.valueOf(paramLong)))
     {
-      ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "now the device is connecting, reset timer : brand name = %s, deviceid = %d, bluetooth version = %d", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-      localap = (ap)this.lCX.get(Long.valueOf(paramLong));
-      localap.stopTimer();
-      localap.ag(30000L, 30000L);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "now the device is connecting, reset timer : brand name = %s, deviceid = %d, bluetooth version = %d", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+      localav = (av)this.oTJ.get(Long.valueOf(paramLong));
+      localav.stopTimer();
+      localav.av(30000L, 30000L);
     }
-    while (u.bqA().lCQ == null)
+    while (u.cai().oTC == null)
     {
-      ab.w("MicroMsg.exdevice.ExdeviceConnectManager", "MMExDeviceCore.getTaskQueue().getDispatcher() == null, Just leave, brand name is %s, device id is %d, bluetooth version is %d", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(19120);
+      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.exdevice.ExdeviceConnectManager", "MMExDeviceCore.getTaskQueue().getDispatcher() == null, Just leave, brand name is %s, device id is %d, bluetooth version is %d", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(23228);
       return false;
-      ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "the device is not connecting, brand name = %s, deviceid = %d, bluetooth version = %d", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-      localap = new ap(Looper.getMainLooper(), new d.9(this, paramLong, paramString, paramInt), false);
-      localap.ag(30000L, 30000L);
-      this.lCX.put(Long.valueOf(paramLong), localap);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "the device is not connecting, brand name = %s, deviceid = %d, bluetooth version = %d", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+      localav = new av(Looper.getMainLooper(), new av.a()
+      {
+        public final boolean onTimerExpired()
+        {
+          AppMethodBeat.i(23215);
+          int i = u.cah().oS(paramLong);
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "now it is time to notify ui show the connect time out tips, brand name = %s, deviceid = %d, bluetooth version = %d, connect state = %d", new Object[] { paramInt, Long.valueOf(paramLong), Integer.valueOf(this.oTY), Integer.valueOf(i) });
+          if (i != 2)
+          {
+            ad.bZR();
+            e.cP(paramInt, 2);
+          }
+          d.c(d.this).remove(Long.valueOf(paramLong));
+          AppMethodBeat.o(23215);
+          return false;
+        }
+      }, false);
+      localav.av(30000L, 30000L);
+      this.oTJ.put(Long.valueOf(paramLong), localav);
     }
-    paramString = u.bqz().jl(paramLong);
+    paramString = u.cah().oT(paramLong);
     if (paramString == null)
     {
-      ab.w("MicroMsg.exdevice.ExdeviceConnectManager", "Device unbond: %s", new Object[] { Long.valueOf(paramLong) });
-      AppMethodBeat.o(19120);
+      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.exdevice.ExdeviceConnectManager", "Device unbond: %s", new Object[] { Long.valueOf(paramLong) });
+      AppMethodBeat.o(23228);
       return false;
     }
-    ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "onStateChange, connectState = %d ", new Object[] { Integer.valueOf(paramString.crJ) });
-    if ((paramString.crJ != 2) && (paramString.crJ != 1)) {
-      u.bqA().lCQ.a(paramLong, paramInt, this.lCW);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "onStateChange, connectState = %d ", new Object[] { Integer.valueOf(paramString.dgF) });
+    if ((paramString.dgF != 2) && (paramString.dgF != 1)) {
+      u.cai().oTC.a(paramLong, paramInt, this.oTI);
     }
-    AppMethodBeat.o(19120);
+    AppMethodBeat.o(23228);
     return true;
   }
   
-  public static boolean hc(boolean paramBoolean)
+  public static boolean jX(boolean paramBoolean)
   {
-    AppMethodBeat.i(19121);
-    if (u.bqA().lCQ != null)
+    AppMethodBeat.i(23229);
+    if (u.cai().oTC != null)
     {
-      long[] arrayOfLong = u.bqA().lCQ.bqn();
+      long[] arrayOfLong = u.cai().oTC.bZV();
       if ((arrayOfLong == null) || (arrayOfLong.length <= 0))
       {
-        ab.w("MicroMsg.exdevice.ExdeviceConnectManager", "connectedDevices = null or connectedDevices.length = 0");
-        AppMethodBeat.o(19121);
+        com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.exdevice.ExdeviceConnectManager", "connectedDevices = null or connectedDevices.length = 0");
+        AppMethodBeat.o(23229);
         return false;
       }
       int j = arrayOfLong.length;
@@ -148,10 +267,10 @@ public final class d
       if (i < j)
       {
         long l = arrayOfLong[i];
-        ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "deviceId = %s", new Object[] { Long.valueOf(l) });
-        com.tencent.mm.plugin.exdevice.h.b localb = ad.bpY().jv(l);
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "deviceId = %s", new Object[] { Long.valueOf(l) });
+        com.tencent.mm.plugin.exdevice.i.b localb = ad.bZG().pd(l);
         if (localb == null) {
-          ab.w("MicroMsg.exdevice.ExdeviceConnectManager", "Get device info failed, deviceId = %s", new Object[] { Long.valueOf(l) });
+          com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.exdevice.ExdeviceConnectManager", "Get device info failed, deviceId = %s", new Object[] { Long.valueOf(l) });
         }
         for (;;)
         {
@@ -159,167 +278,43 @@ public final class d
           break;
           if ((paramBoolean) && ((localb.field_closeStrategy & 0x1) == 0))
           {
-            ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "Device is not close after exit chatting, deviceId = %s", new Object[] { Long.valueOf(l) });
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "Device is not close after exit chatting, deviceId = %s", new Object[] { Long.valueOf(l) });
           }
           else
           {
-            ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "Stop channel, deviceId = %s", new Object[] { Long.valueOf(l) });
-            u.bqA().lCQ.jr(l);
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "Stop channel, deviceId = %s", new Object[] { Long.valueOf(l) });
+            u.cai().oTC.oZ(l);
           }
         }
       }
     }
     else
     {
-      ab.w("MicroMsg.exdevice.ExdeviceConnectManager", "MMExDeviceCore.getTaskQueue().getDispatcher is null!");
-      AppMethodBeat.o(19121);
+      com.tencent.mm.sdk.platformtools.ad.w("MicroMsg.exdevice.ExdeviceConnectManager", "MMExDeviceCore.getTaskQueue().getDispatcher is null!");
+      AppMethodBeat.o(23229);
       return false;
     }
-    AppMethodBeat.o(19121);
+    AppMethodBeat.o(23229);
     return true;
   }
   
-  public static void iZ(long paramLong)
+  public static void oH(long paramLong)
   {
-    AppMethodBeat.i(19117);
-    if (u.bqA().lCQ != null) {
-      ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "now stop the devide channel : %d, result : %b", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(u.bqA().lCQ.jr(paramLong)) });
+    AppMethodBeat.i(23225);
+    if (u.cai().oTC != null) {
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "now stop the devide channel : %d, result : %b", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(u.cai().oTC.oZ(paramLong)) });
     }
-    AppMethodBeat.o(19117);
+    AppMethodBeat.o(23225);
   }
   
-  public final void Q(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(19124);
-    ab.d("MicroMsg.exdevice.ExdeviceConnectManager", "doTaskAfterServiceStarted");
-    if (this.lCV == null)
-    {
-      this.lCV = new com.tencent.mm.plugin.exdevice.service.c();
-      this.lCV.lIv = new d.4(this, paramRunnable);
-      this.lCV.dM(ah.getContext());
-      AppMethodBeat.o(19124);
-      return;
-    }
-    this.lCV.R(paramRunnable);
-    AppMethodBeat.o(19124);
-  }
-  
-  public final void a(int paramInt, j paramj)
-  {
-    AppMethodBeat.i(19122);
-    ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "scanLogic, bluetooth version = %d", new Object[] { Integer.valueOf(paramInt) });
-    if (paramj == null)
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceConnectManager", "null == aCallback");
-      AppMethodBeat.o(19122);
-      return;
-    }
-    this.lDb = paramj;
-    if (this.lCV == null)
-    {
-      this.lCV = new com.tencent.mm.plugin.exdevice.service.c();
-      this.lCV.lIv = new d.12(this, paramInt, paramInt);
-      this.lCV.dM(ah.getContext());
-      AppMethodBeat.o(19122);
-      return;
-    }
-    ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "try start scan");
-    if (u.bqA().lCQ == null)
-    {
-      ab.e("MicroMsg.exdevice.ExdeviceConnectManager", "dispatcher is null.");
-      AppMethodBeat.o(19122);
-      return;
-    }
-    if (!u.bqA().lCQ.b(paramInt, this.lDb)) {
-      ab.e("MicroMsg.exdevice.ExdeviceConnectManager", "scan failed!!!");
-    }
-    AppMethodBeat.o(19122);
-  }
-  
-  public final void a(Long paramLong, int paramInt)
+  public final void AY(int paramInt)
   {
     try
     {
-      AppMethodBeat.i(19113);
-      this.lCZ.put(paramLong, Integer.valueOf(paramInt));
-      AppMethodBeat.o(19113);
-      return;
-    }
-    finally
-    {
-      paramLong = finally;
-      throw paramLong;
-    }
-  }
-  
-  public final void b(String paramString, long paramLong, int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(19115);
-    a.M("shut_down_device", paramLong);
-    if (this.lCV == null)
-    {
-      ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "Bind exdeviceService");
-      this.lCV = new com.tencent.mm.plugin.exdevice.service.c();
-      this.lCV.lIv = new d.6(this, paramInt, paramString, paramLong, paramBoolean);
-      this.lCV.dM(ah.getContext());
-      AppMethodBeat.o(19115);
-      return;
-    }
-    if ((this.lCV != null) && (!this.lCV.lIw))
-    {
-      ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "ExdeviceService setConnected");
-      this.lCV.lIv = new d.7(this, paramInt, paramString, paramLong, paramBoolean);
-      this.lCV.dM(ah.getContext());
-      AppMethodBeat.o(19115);
-      return;
-    }
-    c(paramString, paramLong, paramInt, paramBoolean);
-    AppMethodBeat.o(19115);
-  }
-  
-  public final void bpI()
-  {
-    AppMethodBeat.i(19118);
-    if ((this.lCV != null) && (this.lCV.lIw)) {
-      try
-      {
-        com.tencent.mm.bq.d.a(this.lCV, "exdevice");
-        AppMethodBeat.o(19118);
-        return;
-      }
-      catch (Exception localException) {}
-    }
-    AppMethodBeat.o(19118);
-  }
-  
-  public final void c(String paramString, long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(19114);
-    b(paramString, paramLong, paramInt, false);
-    AppMethodBeat.o(19114);
-  }
-  
-  public final void c(String paramString, long paramLong, int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(19116);
-    ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "doConnect");
-    if (paramBoolean) {}
-    for (paramBoolean = d(paramString, paramLong, paramInt);; paramBoolean = e(paramString, paramLong, paramInt))
-    {
-      ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "startChannel Ret = %s", new Object[] { Boolean.valueOf(paramBoolean) });
-      AppMethodBeat.o(19116);
-      return;
-    }
-  }
-  
-  public final void uU(int paramInt)
-  {
-    try
-    {
-      AppMethodBeat.i(19112);
-      ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "setConnectMode, mode = %d", new Object[] { Integer.valueOf(paramInt) });
-      lDa = paramInt;
-      AppMethodBeat.o(19112);
+      AppMethodBeat.i(23220);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "setConnectMode, mode = %d", new Object[] { Integer.valueOf(paramInt) });
+      oTM = paramInt;
+      AppMethodBeat.o(23220);
       return;
     }
     finally
@@ -329,31 +324,191 @@ public final class d
     }
   }
   
-  public final void uV(int paramInt)
+  public final void AZ(int paramInt)
   {
-    AppMethodBeat.i(19123);
-    ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "stopScanLogic, bluetooth version = %d", new Object[] { Integer.valueOf(paramInt) });
-    if (this.lCV == null)
+    AppMethodBeat.i(23231);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "stopScanLogic, bluetooth version = %d", new Object[] { Integer.valueOf(paramInt) });
+    if (this.oTH == null)
     {
-      ab.i("MicroMsg.exdevice.ExdeviceConnectManager", "exdevice process is dead, just leave");
-      AppMethodBeat.o(19123);
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "exdevice process is dead, just leave");
+      AppMethodBeat.o(23231);
       return;
     }
-    if (u.bqA().lCQ == null)
+    if (u.cai().oTC == null)
     {
-      ab.e("MicroMsg.exdevice.ExdeviceConnectManager", "dispatcher is null.");
-      AppMethodBeat.o(19123);
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "dispatcher is null.");
+      AppMethodBeat.o(23231);
       return;
     }
-    if (!u.bqA().lCQ.c(paramInt, this.lDb)) {
-      ab.e("MicroMsg.exdevice.ExdeviceConnectManager", "stopScan failed!!!");
+    if (!u.cai().oTC.c(paramInt, this.oTN)) {
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "stopScan failed!!!");
     }
-    AppMethodBeat.o(19123);
+    AppMethodBeat.o(23231);
+  }
+  
+  public final void a(final int paramInt, j paramj)
+  {
+    AppMethodBeat.i(23230);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "scanLogic, bluetooth version = %d", new Object[] { Integer.valueOf(paramInt) });
+    if (paramj == null)
+    {
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "null == aCallback");
+      AppMethodBeat.o(23230);
+      return;
+    }
+    this.oTN = paramj;
+    if (this.oTH == null)
+    {
+      this.oTH = new com.tencent.mm.plugin.exdevice.service.c();
+      this.oTH.oZg = new com.tencent.mm.plugin.exdevice.service.c.a(paramInt)
+      {
+        public final void onServiceConnected()
+        {
+          AppMethodBeat.i(23218);
+          if (!u.cai().oTC.b(paramInt, d.e(d.this))) {
+            com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "scan failed!!!");
+          }
+          AppMethodBeat.o(23218);
+        }
+      };
+      this.oTH.ew(aj.getContext());
+      AppMethodBeat.o(23230);
+      return;
+    }
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "try start scan");
+    if (u.cai().oTC == null)
+    {
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "dispatcher is null.");
+      AppMethodBeat.o(23230);
+      return;
+    }
+    if (!u.cai().oTC.b(paramInt, this.oTN)) {
+      com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.exdevice.ExdeviceConnectManager", "scan failed!!!");
+    }
+    AppMethodBeat.o(23230);
+  }
+  
+  public final void a(Long paramLong, int paramInt)
+  {
+    try
+    {
+      AppMethodBeat.i(23221);
+      this.oTL.put(paramLong, Integer.valueOf(paramInt));
+      AppMethodBeat.o(23221);
+      return;
+    }
+    finally
+    {
+      paramLong = finally;
+      throw paramLong;
+    }
+  }
+  
+  public final void a(final String paramString, final long paramLong, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(23223);
+    com.tencent.mm.plugin.exdevice.i.a.X("shut_down_device", paramLong);
+    if (this.oTH == null)
+    {
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "Bind exdeviceService");
+      this.oTH = new com.tencent.mm.plugin.exdevice.service.c();
+      this.oTH.oZg = new com.tencent.mm.plugin.exdevice.service.c.a(paramInt)
+      {
+        public final void onServiceConnected()
+        {
+          AppMethodBeat.i(23212);
+          d.a(d.this).oZg = null;
+          d.this.b(paramString, paramLong, this.dgV, this.oTX);
+          AppMethodBeat.o(23212);
+        }
+      };
+      this.oTH.ew(aj.getContext());
+      AppMethodBeat.o(23223);
+      return;
+    }
+    if ((this.oTH != null) && (!this.oTH.oZh))
+    {
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "ExdeviceService setConnected");
+      this.oTH.oZg = new com.tencent.mm.plugin.exdevice.service.c.a(paramInt)
+      {
+        public final void onServiceConnected()
+        {
+          AppMethodBeat.i(23213);
+          d.a(d.this).oZg = null;
+          d.this.b(paramString, paramLong, this.dgV, this.oTX);
+          AppMethodBeat.o(23213);
+        }
+      };
+      this.oTH.ew(aj.getContext());
+      AppMethodBeat.o(23223);
+      return;
+    }
+    b(paramString, paramLong, paramInt, paramBoolean);
+    AppMethodBeat.o(23223);
+  }
+  
+  public final void ah(final Runnable paramRunnable)
+  {
+    AppMethodBeat.i(23232);
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.exdevice.ExdeviceConnectManager", "doTaskAfterServiceStarted");
+    if (this.oTH == null)
+    {
+      this.oTH = new com.tencent.mm.plugin.exdevice.service.c();
+      this.oTH.oZg = new com.tencent.mm.plugin.exdevice.service.c.a(paramRunnable)
+      {
+        public final void onServiceConnected()
+        {
+          AppMethodBeat.i(23208);
+          paramRunnable.run();
+          AppMethodBeat.o(23208);
+        }
+      };
+      this.oTH.ew(aj.getContext());
+      AppMethodBeat.o(23232);
+      return;
+    }
+    this.oTH.ai(paramRunnable);
+    AppMethodBeat.o(23232);
+  }
+  
+  public final void b(String paramString, long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(23222);
+    a(paramString, paramLong, paramInt, false);
+    AppMethodBeat.o(23222);
+  }
+  
+  public final void b(String paramString, long paramLong, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(23224);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "doConnect");
+    if (paramBoolean) {}
+    for (paramBoolean = c(paramString, paramLong, paramInt);; paramBoolean = d(paramString, paramLong, paramInt))
+    {
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.exdevice.ExdeviceConnectManager", "startChannel Ret = %s", new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(23224);
+      return;
+    }
+  }
+  
+  public final void bZp()
+  {
+    AppMethodBeat.i(23226);
+    if ((this.oTH != null) && (this.oTH.oZh)) {
+      try
+      {
+        com.tencent.mm.bs.d.a(this.oTH, "exdevice");
+        AppMethodBeat.o(23226);
+        return;
+      }
+      catch (Exception localException) {}
+    }
+    AppMethodBeat.o(23226);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.d
  * JD-Core Version:    0.7.0.1
  */

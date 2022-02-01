@@ -1,10 +1,18 @@
 package com.tencent.mm.pluginsdk.location;
 
+import com.tencent.mm.protocal.protobuf.blc;
+import com.tencent.mm.protocal.protobuf.bld;
+import java.util.List;
+
 public abstract interface a
+  extends com.tencent.mm.kernel.c.a
 {
-  public abstract void a(b paramb);
+  public abstract void a(bld parambld, a parama);
   
-  public abstract void a(String paramString, b paramb);
+  public static abstract interface a
+  {
+    public abstract void r(String paramString, List<blc> paramList);
+  }
 }
 
 

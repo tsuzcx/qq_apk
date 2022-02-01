@@ -12,9 +12,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class IconWidgetPreference
   extends Preference
 {
-  private ImageView pAP;
-  private int pAQ;
-  private Bitmap pAR;
+  private ImageView uCx;
+  private int uCy;
+  private Bitmap uCz;
   
   public IconWidgetPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,63 +24,63 @@ public class IconWidgetPreference
   public IconWidgetPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(23643);
-    this.pAP = null;
-    this.pAQ = -1;
-    this.pAR = null;
-    setLayoutResource(2130970179);
+    AppMethodBeat.i(27256);
+    this.uCx = null;
+    this.uCy = -1;
+    this.uCz = null;
+    setLayoutResource(2131494804);
     setWidgetLayoutResource(0);
-    AppMethodBeat.o(23643);
+    AppMethodBeat.o(27256);
   }
   
-  public final void M(Bitmap paramBitmap)
+  public final void Z(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(23645);
-    this.pAR = paramBitmap;
-    if (this.pAP != null) {
-      this.pAP.setImageBitmap(paramBitmap);
+    AppMethodBeat.i(27258);
+    this.uCz = paramBitmap;
+    if (this.uCx != null) {
+      this.uCx.setImageBitmap(paramBitmap);
     }
-    AppMethodBeat.o(23645);
+    AppMethodBeat.o(27258);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(23646);
+    AppMethodBeat.i(27259);
     super.onBindView(paramView);
-    this.pAP = ((ImageView)paramView.findViewById(2131826262));
-    if (this.pAP != null)
+    this.uCx = ((ImageView)paramView.findViewById(2131303377));
+    if (this.uCx != null)
     {
-      this.pAP.setVisibility(8);
-      if (this.pAQ != -1)
+      this.uCx.setVisibility(8);
+      if (this.uCy != -1)
       {
-        this.pAP.setImageResource(this.pAQ);
-        this.pAP.setVisibility(0);
-        AppMethodBeat.o(23646);
+        this.uCx.setImageResource(this.uCy);
+        this.uCx.setVisibility(0);
+        AppMethodBeat.o(27259);
         return;
       }
-      if (this.pAR != null)
+      if (this.uCz != null)
       {
-        this.pAP.setImageBitmap(this.pAR);
-        this.pAP.setVisibility(0);
+        this.uCx.setImageBitmap(this.uCz);
+        this.uCx.setVisibility(0);
       }
     }
-    AppMethodBeat.o(23646);
+    AppMethodBeat.o(27259);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(23644);
+    AppMethodBeat.i(27257);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2130970264, localViewGroup);
-    AppMethodBeat.o(23644);
+    View.inflate(this.mContext, 2131494894, localViewGroup);
+    AppMethodBeat.o(27257);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.IconWidgetPreference
  * JD-Core Version:    0.7.0.1
  */

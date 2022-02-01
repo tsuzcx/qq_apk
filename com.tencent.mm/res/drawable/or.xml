@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="2.0dip" />
-    <solid android:color="#ffd9d9d9" />
-    <stroke android:width="2.0px" android:color="#ffd9d9d9" />
-</shape>
+    <item android:state_enabled="false" android:drawable="@drawable/oq" />
+    <item android:state_focused="true" android:drawable="@drawable/os" />
+    <item android:drawable="@drawable/ot" />
+</selector>

@@ -4,90 +4,93 @@ import android.os.Environment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.mix.h.a;
 import com.tencent.mm.audio.mix.h.b;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.q;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 public final class g
 {
-  private static Object ceY;
-  private static g cgW;
-  private boolean bRB;
-  private String ceV;
-  private boolean cgX;
-  private FileOutputStream outputStream;
+  private static Object cTX;
+  private static g cVT;
+  private String cTU;
+  private boolean cVU;
+  private boolean csX;
+  private OutputStream outputStream;
   
   static
   {
-    AppMethodBeat.i(137127);
-    ceY = new Object();
-    AppMethodBeat.o(137127);
+    AppMethodBeat.i(136876);
+    cTX = new Object();
+    AppMethodBeat.o(136876);
   }
   
   private g()
   {
-    AppMethodBeat.i(137126);
-    this.bRB = false;
-    this.cgX = true;
-    if (!this.bRB)
+    AppMethodBeat.i(136875);
+    this.csX = false;
+    this.cVU = true;
+    if (!this.csX)
     {
-      this.bRB = true;
-      this.ceV = DX();
-      b.i("MicroMsg.Mix.ExportMixAudioPcmFile", "outFile:%s", new Object[] { this.ceV });
-      new File(this.ceV).delete();
+      this.csX = true;
+      this.cTU = NG();
+      b.i("MicroMsg.Mix.ExportMixAudioPcmFile", "outFile:%s", new Object[] { this.cTU });
+      i.deleteFile(this.cTU);
       try
       {
-        this.outputStream = new FileOutputStream(a.eE(this.ceV));
-        AppMethodBeat.o(137126);
+        this.outputStream = i.cM(q.B(a.fL(this.cTU).mUri), false);
+        AppMethodBeat.o(136875);
         return;
       }
       catch (FileNotFoundException localFileNotFoundException)
       {
-        b.printErrStackTrace("MicroMsg.Mix.ExportMixAudioPcmFile", localFileNotFoundException, "new FileOutputStream", new Object[0]);
-        AppMethodBeat.o(137126);
+        b.printErrStackTrace("MicroMsg.Mix.ExportMixAudioPcmFile", localFileNotFoundException, "VFSFileOp.openWrite", new Object[0]);
+        AppMethodBeat.o(136875);
         return;
       }
       catch (Exception localException)
       {
-        b.printErrStackTrace("MicroMsg.Mix.ExportMixAudioPcmFile", localException, "new FileOutputStream", new Object[0]);
+        b.printErrStackTrace("MicroMsg.Mix.ExportMixAudioPcmFile", localException, "VFSFileOp.openWrite", new Object[0]);
       }
     }
-    AppMethodBeat.o(137126);
+    AppMethodBeat.o(136875);
   }
   
-  private static g DW()
+  private static g NF()
   {
-    AppMethodBeat.i(137123);
-    if (cgW == null) {}
-    synchronized (ceY)
+    AppMethodBeat.i(136872);
+    if (cVT == null) {}
+    synchronized (cTX)
     {
-      if (cgW == null) {
-        cgW = new g();
+      if (cVT == null) {
+        cVT = new g();
       }
-      ??? = cgW;
-      AppMethodBeat.o(137123);
+      ??? = cVT;
+      AppMethodBeat.o(136872);
       return ???;
     }
   }
   
-  private static String DX()
+  private static String NG()
   {
-    AppMethodBeat.i(137124);
-    Object localObject = new File(Environment.getExternalStorageDirectory().getAbsolutePath());
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
+    AppMethodBeat.i(136873);
+    Object localObject = new e(Environment.getExternalStorageDirectory().getAbsolutePath());
+    if (!((e)localObject).exists()) {
+      ((e)localObject).mkdirs();
     }
-    localObject = localObject + File.separator + "mix_audio_pcm.pcm";
-    AppMethodBeat.o(137124);
+    localObject = localObject + "/mix_audio_pcm.pcm";
+    AppMethodBeat.o(136873);
     return localObject;
   }
   
-  public static void DY()
+  public static void NH()
   {
-    AppMethodBeat.i(137125);
-    new File(DX()).delete();
-    g localg = DW();
-    if (localg.bRB) {
+    AppMethodBeat.i(136874);
+    new e(NG()).delete();
+    g localg = NF();
+    if (localg.csX) {
       b.i("MicroMsg.Mix.ExportMixAudioPcmFile", "finishProcess");
     }
     try
@@ -98,8 +101,8 @@ public final class g
         localg.outputStream.close();
         localg.outputStream = null;
       }
-      localg.bRB = false;
-      AppMethodBeat.o(137125);
+      localg.csX = false;
+      AppMethodBeat.o(136874);
       return;
     }
     catch (Exception localException)
@@ -113,7 +116,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.mix.e.g
  * JD-Core Version:    0.7.0.1
  */

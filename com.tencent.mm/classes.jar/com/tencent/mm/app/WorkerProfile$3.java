@@ -7,14 +7,14 @@ final class WorkerProfile$3
 {
   WorkerProfile$3(WorkerProfile paramWorkerProfile)
   {
-    AppMethodBeat.i(15467);
+    AppMethodBeat.i(161233);
     this.__eventId = com.tencent.mm.g.a.c.class.getName().hashCode();
-    AppMethodBeat.o(15467);
+    AppMethodBeat.o(161233);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.app.WorkerProfile.3
  * JD-Core Version:    0.7.0.1
  */

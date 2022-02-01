@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.buo;
-import com.tencent.mm.protocal.protobuf.bup;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.ckd;
+import com.tencent.mm.protocal.protobuf.cke;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class w
-  extends m
+  extends n
   implements k
 {
-  private f callback;
-  public b fBd;
+  private String AGi;
+  private g callback;
+  public b hdD;
   private int scene;
-  private String uJd;
   
-  public w(buo parambuo)
+  public w(ckd paramckd)
   {
-    AppMethodBeat.i(124072);
+    AppMethodBeat.i(117641);
     b.a locala = new b.a();
     locala.funcId = 1134;
     locala.uri = "/cgi-bin/mmsearch-bin/searchreport";
-    locala.fsX = parambuo;
-    locala.fsY = new bup();
-    this.fBd = locala.ado();
-    this.scene = parambuo.Scene;
-    this.uJd = parambuo.xHP;
-    AppMethodBeat.o(124072);
+    locala.gUU = paramckd;
+    locala.gUV = new cke();
+    this.hdD = locala.atI();
+    this.scene = paramckd.Scene;
+    this.AGi = paramckd.Eff;
+    AppMethodBeat.o(117641);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(124074);
-    ab.i("MicroMsg.FTS.NetSceneWebSearchReport", "doScene %d", new Object[] { Integer.valueOf(this.scene) });
-    an.Jw(5);
-    an.B(this.scene, 4, this.uJd);
-    this.callback = paramf;
-    int i = dispatch(parame, this.fBd, this);
-    AppMethodBeat.o(124074);
+    AppMethodBeat.i(117643);
+    ad.i("MicroMsg.FTS.NetSceneWebSearchReport", "doScene %d", new Object[] { Integer.valueOf(this.scene) });
+    ak.Sk(5);
+    ak.L(this.scene, 4, this.AGi);
+    this.callback = paramg;
+    int i = dispatch(parame, this.hdD, this);
+    AppMethodBeat.o(117643);
     return i;
   }
   
@@ -54,24 +54,24 @@ public final class w
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(124073);
-    ab.i("MicroMsg.FTS.NetSceneWebSearchReport", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(117642);
+    ad.i("MicroMsg.FTS.NetSceneWebSearchReport", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      an.Jw(7);
-      AppMethodBeat.o(124073);
+      ak.Sk(7);
+      AppMethodBeat.o(117642);
       return;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    an.Jw(6);
-    an.a(this.scene, 5, paramInt2, paramInt3, this.uJd);
-    AppMethodBeat.o(124073);
+    ak.Sk(6);
+    ak.a(this.scene, 5, paramInt2, paramInt3, this.AGi);
+    AppMethodBeat.o(117642);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.w
  * JD-Core Version:    0.7.0.1
  */

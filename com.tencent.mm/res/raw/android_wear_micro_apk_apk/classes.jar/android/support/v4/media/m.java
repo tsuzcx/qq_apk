@@ -5,17 +5,17 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
-import android.support.v4.app.h;
+import android.support.v4.app.i;
 
 final class m
 {
-  private Messenger gK;
-  private Bundle gv;
+  private Messenger iI;
+  private Bundle is;
   
   public m(IBinder paramIBinder, Bundle paramBundle)
   {
-    this.gK = new Messenger(paramIBinder);
-    this.gv = paramBundle;
+    this.iI = new Messenger(paramIBinder);
+    this.is = paramBundle;
   }
   
   private void a(int paramInt, Bundle paramBundle, Messenger paramMessenger)
@@ -25,14 +25,14 @@ final class m
     localMessage.arg1 = 1;
     localMessage.setData(paramBundle);
     localMessage.replyTo = paramMessenger;
-    this.gK.send(localMessage);
+    this.iI.send(localMessage);
   }
   
   final void a(Context paramContext, Messenger paramMessenger)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("data_package_name", paramContext.getPackageName());
-    localBundle.putBundle("data_root_hints", this.gv);
+    localBundle.putBundle("data_root_hints", this.is);
     a(1, localBundle, paramMessenger);
   }
   
@@ -40,7 +40,7 @@ final class m
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("data_media_item_id", paramString);
-    h.a(localBundle, "data_callback_token", paramIBinder);
+    i.a(localBundle, "data_callback_token", paramIBinder);
     localBundle.putBundle("data_options", paramBundle);
     a(3, localBundle, paramMessenger);
   }
@@ -53,7 +53,7 @@ final class m
   final void d(Messenger paramMessenger)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putBundle("data_root_hints", this.gv);
+    localBundle.putBundle("data_root_hints", this.is);
     a(6, localBundle, paramMessenger);
   }
   

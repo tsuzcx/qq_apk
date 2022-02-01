@@ -12,7 +12,7 @@ public final class cb
     int i = c.b(paramParcel);
     c.c(paramParcel, 1, paramzza.versionCode);
     c.a(paramParcel, 2, paramzza.className);
-    c.a(paramParcel, 3, paramzza.PV);
+    c.a(paramParcel, 3, paramzza.RK);
     c.v(paramParcel, i);
   }
 }

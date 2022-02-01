@@ -9,184 +9,206 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class VoiceTipInfoView
   extends LinearLayout
 {
-  public ProgressBar gJE;
-  TextView iJG;
-  TextView pBu;
-  boolean tsO;
-  private boolean tsP;
-  private TextView tsQ;
-  private boolean tsR;
-  private float tsS;
+  public ProgressBar ixl;
+  TextView kEu;
+  TextView uDc;
+  boolean zeY;
+  private boolean zeZ;
+  private TextView zfa;
+  private boolean zfb;
+  private float zfc;
   
   public VoiceTipInfoView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(26227);
-    this.tsO = false;
-    this.tsP = false;
-    this.tsR = false;
-    this.tsS = 0.0F;
-    paramContext = LayoutInflater.from(paramContext).inflate(2130971104, this, true);
-    this.gJE = ((ProgressBar)paramContext.findViewById(2131824014));
-    bRO();
-    this.iJG = ((TextView)paramContext.findViewById(2131828763));
-    this.pBu = ((TextView)paramContext.findViewById(2131823889));
-    this.tsQ = ((TextView)paramContext.findViewById(2131828806));
+    AppMethodBeat.i(29910);
+    this.zeY = false;
+    this.zeZ = false;
+    this.zfb = false;
+    this.zfc = 0.0F;
+    paramContext = LayoutInflater.from(paramContext).inflate(2131495874, this, true);
+    this.ixl = ((ProgressBar)paramContext.findViewById(2131301489));
+    cQI();
+    this.kEu = ((TextView)paramContext.findViewById(2131306514));
+    this.uDc = ((TextView)paramContext.findViewById(2131306516));
+    this.zfa = ((TextView)paramContext.findViewById(2131306515));
     reset();
-    AppMethodBeat.o(26227);
+    AppMethodBeat.o(29910);
   }
   
-  public final void bRN()
+  public final void cQH()
   {
-    AppMethodBeat.i(26229);
-    ab.d("MicroMsg.VoiceTipInfoView", "mProgressBar show");
-    this.gJE.setVisibility(0);
-    AppMethodBeat.o(26229);
+    AppMethodBeat.i(29912);
+    ad.d("MicroMsg.VoiceTipInfoView", "mProgressBar show");
+    this.ixl.setVisibility(0);
+    AppMethodBeat.o(29912);
   }
   
-  public final void bRO()
+  public final void cQI()
   {
-    AppMethodBeat.i(26230);
-    ab.d("MicroMsg.VoiceTipInfoView", "mProgressBar hide");
-    this.gJE.setVisibility(8);
-    AppMethodBeat.o(26230);
+    AppMethodBeat.i(29913);
+    ad.d("MicroMsg.VoiceTipInfoView", "mProgressBar hide");
+    this.ixl.setVisibility(8);
+    AppMethodBeat.o(29913);
   }
   
-  public final void cLA()
+  public final void dRF()
   {
-    AppMethodBeat.i(26238);
-    if ((this.tsQ.getVisibility() == 0) && (!this.tsR))
+    AppMethodBeat.i(29918);
+    ad.d("MicroMsg.VoiceTipInfoView", "showTitle, titleTv.getVisibility:%d, mAnimingTitle:%b", new Object[] { Integer.valueOf(this.kEu.getVisibility()), Boolean.valueOf(this.zeY) });
+    if (((this.kEu.getVisibility() == 4) || (this.kEu.getVisibility() == 8)) && (!this.zeY))
     {
-      this.tsQ.clearAnimation();
-      this.tsR = true;
-      a.a(this.tsQ, getContext(), new a.a()
+      this.kEu.clearAnimation();
+      this.zeY = true;
+      a.b(this.kEu, getContext(), new a.a()
       {
-        public final void cLo() {}
+        public final void dRw() {}
         
-        public final void cLp()
+        public final void dRx()
         {
-          AppMethodBeat.i(26226);
-          VoiceTipInfoView.c(VoiceTipInfoView.this).setVisibility(4);
-          VoiceTipInfoView.d(VoiceTipInfoView.this);
-          AppMethodBeat.o(26226);
+          AppMethodBeat.i(29906);
+          VoiceTipInfoView.a(VoiceTipInfoView.this).setVisibility(0);
+          VoiceTipInfoView.b(VoiceTipInfoView.this);
+          AppMethodBeat.o(29906);
         }
       });
-      AppMethodBeat.o(26238);
+      AppMethodBeat.o(29918);
       return;
     }
-    this.tsQ.clearAnimation();
-    this.tsQ.setVisibility(4);
-    AppMethodBeat.o(26238);
+    ad.d("MicroMsg.VoiceTipInfoView", "showTitle, directly set to VISIBLE");
+    this.kEu.clearAnimation();
+    this.kEu.setVisibility(0);
+    this.kEu.invalidate();
+    AppMethodBeat.o(29918);
   }
   
-  public final void cLx()
+  public final void dRG()
   {
-    AppMethodBeat.i(26235);
-    ab.d("MicroMsg.VoiceTipInfoView", "showTitle, titleTv.getVisibility:%d, mAnimingTitle:%b", new Object[] { Integer.valueOf(this.iJG.getVisibility()), Boolean.valueOf(this.tsO) });
-    if (((this.iJG.getVisibility() == 4) || (this.iJG.getVisibility() == 8)) && (!this.tsO))
+    AppMethodBeat.i(29919);
+    this.uDc.setVisibility(8);
+    AppMethodBeat.o(29919);
+  }
+  
+  public final void dRH()
+  {
+    AppMethodBeat.i(29920);
+    if ((this.zfa.getVisibility() == 4) && (!this.zfb))
     {
-      this.iJG.clearAnimation();
-      this.tsO = true;
-      a.b(this.iJG, getContext(), new VoiceTipInfoView.2(this));
-      AppMethodBeat.o(26235);
-      return;
-    }
-    ab.d("MicroMsg.VoiceTipInfoView", "showTitle, directly set to VISIBLE");
-    this.iJG.clearAnimation();
-    this.iJG.setVisibility(0);
-    this.iJG.invalidate();
-    AppMethodBeat.o(26235);
-  }
-  
-  public final void cLy()
-  {
-    AppMethodBeat.i(26236);
-    this.pBu.setVisibility(8);
-    AppMethodBeat.o(26236);
-  }
-  
-  public final void cLz()
-  {
-    AppMethodBeat.i(26237);
-    if ((this.tsQ.getVisibility() == 4) && (!this.tsR))
-    {
-      this.tsQ.clearAnimation();
-      this.tsR = true;
-      TextView localTextView = this.tsQ;
+      this.zfa.clearAnimation();
+      this.zfb = true;
+      TextView localTextView = this.zfa;
       getContext();
-      a.b(localTextView, new VoiceTipInfoView.4(this));
-      AppMethodBeat.o(26237);
+      a.b(localTextView, new a.a()
+      {
+        public final void dRw() {}
+        
+        public final void dRx()
+        {
+          AppMethodBeat.i(29908);
+          VoiceTipInfoView.c(VoiceTipInfoView.this).setVisibility(0);
+          VoiceTipInfoView.d(VoiceTipInfoView.this);
+          AppMethodBeat.o(29908);
+        }
+      });
+      AppMethodBeat.o(29920);
       return;
     }
-    this.tsQ.clearAnimation();
-    this.tsQ.setVisibility(0);
-    AppMethodBeat.o(26237);
+    this.zfa.clearAnimation();
+    this.zfa.setVisibility(0);
+    AppMethodBeat.o(29920);
+  }
+  
+  public final void dRI()
+  {
+    AppMethodBeat.i(29921);
+    if ((this.zfa.getVisibility() == 0) && (!this.zfb))
+    {
+      this.zfa.clearAnimation();
+      this.zfb = true;
+      a.a(this.zfa, getContext(), new a.a()
+      {
+        public final void dRw() {}
+        
+        public final void dRx()
+        {
+          AppMethodBeat.i(29909);
+          VoiceTipInfoView.c(VoiceTipInfoView.this).setVisibility(4);
+          VoiceTipInfoView.d(VoiceTipInfoView.this);
+          AppMethodBeat.o(29909);
+        }
+      });
+      AppMethodBeat.o(29921);
+      return;
+    }
+    this.zfa.clearAnimation();
+    this.zfa.setVisibility(4);
+    AppMethodBeat.o(29921);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(26228);
-    this.pBu.setTextSize(0, getContext().getResources().getDimension(2131428816));
-    this.tsS = this.pBu.getTextSize();
-    this.pBu.clearAnimation();
-    ab.d("MicroMsg.VoiceTipInfoView", "mTipSize %f", new Object[] { Float.valueOf(this.tsS) });
-    AppMethodBeat.o(26228);
+    AppMethodBeat.i(29911);
+    this.uDc.setTextSize(0, getContext().getResources().getDimension(2131166993));
+    this.zfc = this.uDc.getTextSize();
+    this.uDc.clearAnimation();
+    ad.d("MicroMsg.VoiceTipInfoView", "mTipSize %f", new Object[] { Float.valueOf(this.zfc) });
+    AppMethodBeat.o(29911);
   }
   
   public void setErr(int paramInt)
   {
-    AppMethodBeat.i(26240);
-    this.tsQ.setText(paramInt);
-    AppMethodBeat.o(26240);
+    AppMethodBeat.i(29923);
+    this.zfa.setText(paramInt);
+    AppMethodBeat.o(29923);
   }
   
   public void setErr(String paramString)
   {
-    AppMethodBeat.i(26239);
-    this.tsQ.setText(paramString);
-    AppMethodBeat.o(26239);
+    AppMethodBeat.i(29922);
+    this.zfa.setText(paramString);
+    AppMethodBeat.o(29922);
   }
   
   public void setTipText(int paramInt)
   {
-    AppMethodBeat.i(26232);
-    this.pBu.setText(paramInt);
-    this.pBu.setVisibility(0);
-    AppMethodBeat.o(26232);
+    AppMethodBeat.i(29915);
+    this.uDc.setText(paramInt);
+    this.uDc.setVisibility(0);
+    AppMethodBeat.o(29915);
   }
   
   public void setTipText(String paramString)
   {
-    AppMethodBeat.i(26231);
-    this.pBu.setText(paramString);
-    this.pBu.setVisibility(0);
-    AppMethodBeat.o(26231);
+    AppMethodBeat.i(29914);
+    this.uDc.setText(paramString);
+    this.uDc.setVisibility(0);
+    AppMethodBeat.o(29914);
   }
   
   public void setTitleText(int paramInt)
   {
-    AppMethodBeat.i(26234);
-    this.iJG.setText(paramInt);
-    this.iJG.setVisibility(0);
-    AppMethodBeat.o(26234);
+    AppMethodBeat.i(29917);
+    this.kEu.setText(paramInt);
+    this.kEu.setVisibility(0);
+    AppMethodBeat.o(29917);
   }
   
   public void setTitleText(String paramString)
   {
-    AppMethodBeat.i(26233);
-    this.iJG.setText(paramString);
-    this.iJG.setVisibility(0);
-    AppMethodBeat.o(26233);
+    AppMethodBeat.i(29916);
+    this.kEu.setText(paramString);
+    this.kEu.setVisibility(0);
+    AppMethodBeat.o(29916);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.VoiceTipInfoView
  * JD-Core Version:    0.7.0.1
  */

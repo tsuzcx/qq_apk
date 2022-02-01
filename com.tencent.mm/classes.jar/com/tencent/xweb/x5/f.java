@@ -3,33 +3,33 @@ package com.tencent.xweb.x5;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.sdk.X5JsCore;
-import com.tencent.xweb.c.g;
+import com.tencent.xweb.internal.IJsRuntime;
 import org.xwalk.core.Log;
 
 public final class f
-  implements g
+  implements IJsRuntime
 {
-  private X5JsCore BHV;
+  private X5JsCore IRU;
   private Context mContext;
   
   public f(Context paramContext)
   {
-    AppMethodBeat.i(84808);
+    AppMethodBeat.i(153843);
     this.mContext = paramContext;
     Log.i("MicroMsg.X5JsRuntime", "create X5V8JsRuntime");
-    AppMethodBeat.o(84808);
+    AppMethodBeat.o(153843);
   }
   
   public final void init(int paramInt)
   {
-    AppMethodBeat.i(84809);
-    this.BHV = new X5JsCore(this.mContext);
-    AppMethodBeat.o(84809);
+    AppMethodBeat.i(153844);
+    this.IRU = new X5JsCore(this.mContext);
+    AppMethodBeat.o(153844);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.f
  * JD-Core Version:    0.7.0.1
  */

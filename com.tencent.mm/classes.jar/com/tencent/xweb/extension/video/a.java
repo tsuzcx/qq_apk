@@ -6,15 +6,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private int BEQ;
-  private ContentResolver aYt;
+  private int IOi;
+  private ContentResolver bwu;
   
   public a(Context paramContext)
   {
-    AppMethodBeat.i(84557);
-    this.BEQ = 255;
-    this.aYt = paramContext.getContentResolver();
-    AppMethodBeat.o(84557);
+    AppMethodBeat.i(153551);
+    this.IOi = 255;
+    this.bwu = paramContext.getContentResolver();
+    AppMethodBeat.o(153551);
   }
 }
 

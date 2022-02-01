@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class hl
   extends b
 {
-  public a cwx;
+  public a dlc;
   
   public hl()
   {
@@ -15,25 +15,22 @@ public final class hl
   
   private hl(byte paramByte)
   {
-    AppMethodBeat.i(15777);
-    this.cwx = new a();
-    this.ymq = false;
+    AppMethodBeat.i(91205);
+    this.dlc = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15777);
+    AppMethodBeat.o(91205);
   }
   
   public static final class a
   {
-    public long cwA;
-    public long cwB;
-    public long cwy;
-    public long cwz;
-    public String username;
+    public String dld;
+    public int type = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.hl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.performance;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ci.a;
-import com.tencent.mm.model.r;
-import com.tencent.mm.platformtools.ad;
+import com.tencent.mm.ck.a;
+import com.tencent.mm.model.u;
+import com.tencent.mm.platformtools.aa;
 
 final class b$1
   implements a
 {
-  public final boolean WP(String paramString)
+  public final boolean aac(String paramString)
   {
-    AppMethodBeat.i(111039);
-    boolean bool = ad.a(paramString, r.Zn(), true, false);
-    AppMethodBeat.o(111039);
+    AppMethodBeat.i(124908);
+    boolean bool = aa.a(paramString, u.aqG(), true, false);
+    AppMethodBeat.o(124908);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.b.1
  * JD-Core Version:    0.7.0.1
  */

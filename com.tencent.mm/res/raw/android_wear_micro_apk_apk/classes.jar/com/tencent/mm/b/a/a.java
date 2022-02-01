@@ -12,8 +12,8 @@ public final class a
   
   private a(byte paramByte)
   {
-    this.WQ = false;
-    this.WP = null;
+    this.YS = false;
+    this.YK = null;
   }
 }
 

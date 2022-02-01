@@ -23,33 +23,33 @@ public final class zzp
   
   private final void zzy()
   {
-    AppMethodBeat.i(60945);
+    AppMethodBeat.i(11437);
     Preconditions.checkNotNull(this.zzfp, "Callbacks must be attached to a ClientConnectionHelper instance before connecting the client.");
-    AppMethodBeat.o(60945);
+    AppMethodBeat.o(11437);
   }
   
   public final void onConnected(Bundle paramBundle)
   {
-    AppMethodBeat.i(60942);
+    AppMethodBeat.i(11434);
     zzy();
     this.zzfp.onConnected(paramBundle);
-    AppMethodBeat.o(60942);
+    AppMethodBeat.o(11434);
   }
   
   public final void onConnectionFailed(ConnectionResult paramConnectionResult)
   {
-    AppMethodBeat.i(60944);
+    AppMethodBeat.i(11436);
     zzy();
     this.zzfp.zza(paramConnectionResult, this.mApi, this.zzfo);
-    AppMethodBeat.o(60944);
+    AppMethodBeat.o(11436);
   }
   
   public final void onConnectionSuspended(int paramInt)
   {
-    AppMethodBeat.i(60943);
+    AppMethodBeat.i(11435);
     zzy();
     this.zzfp.onConnectionSuspended(paramInt);
-    AppMethodBeat.o(60943);
+    AppMethodBeat.o(11435);
   }
   
   public final void zza(zzq paramzzq)

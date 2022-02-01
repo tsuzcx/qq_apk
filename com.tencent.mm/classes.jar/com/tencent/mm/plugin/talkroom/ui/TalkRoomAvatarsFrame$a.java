@@ -15,30 +15,30 @@ final class TalkRoomAvatarsFrame$a
   extends BaseAdapter
 {
   private Context mContext;
-  String odp;
-  List<String> tdC;
+  String sSb;
+  List<String> yJX;
   
   public TalkRoomAvatarsFrame$a(Context paramContext)
   {
-    AppMethodBeat.i(25895);
-    this.tdC = new LinkedList();
+    AppMethodBeat.i(29577);
+    this.yJX = new LinkedList();
     this.mContext = paramContext;
-    AppMethodBeat.o(25895);
+    AppMethodBeat.o(29577);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(25897);
-    int i = this.tdC.size();
-    AppMethodBeat.o(25897);
+    AppMethodBeat.i(29579);
+    int i = this.yJX.size();
+    AppMethodBeat.o(29579);
     return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(25898);
-    Object localObject = this.tdC.get(paramInt);
-    AppMethodBeat.o(25898);
+    AppMethodBeat.i(29580);
+    Object localObject = this.yJX.get(paramInt);
+    AppMethodBeat.o(29580);
     return localObject;
   }
   
@@ -49,45 +49,53 @@ final class TalkRoomAvatarsFrame$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(25899);
-    String str = (String)this.tdC.get(paramInt);
+    AppMethodBeat.i(29581);
+    String str = (String)this.yJX.get(paramInt);
     ImageView localImageView;
     if (paramView == null)
     {
-      paramView = View.inflate(this.mContext, 2130970986, null);
-      paramViewGroup = new TalkRoomAvatarsFrame.a.a(this);
-      paramViewGroup.egq = ((ImageView)paramView.findViewById(2131828477));
-      paramViewGroup.egr = ((TextView)paramView.findViewById(2131828478));
+      paramView = View.inflate(this.mContext, 2131495742, null);
+      paramViewGroup = new a();
+      paramViewGroup.frr = ((ImageView)paramView.findViewById(2131301204));
+      paramViewGroup.frs = ((TextView)paramView.findViewById(2131306142));
       paramView.setTag(paramViewGroup);
-      localImageView = paramViewGroup.egq;
-      if (!str.equals(this.odp)) {
+      localImageView = paramViewGroup.frr;
+      if (!str.equals(this.sSb)) {
         break label140;
       }
     }
     label140:
-    for (paramInt = 2130840512;; paramInt = 0)
+    for (paramInt = 2131234301;; paramInt = 0)
     {
       localImageView.setBackgroundResource(paramInt);
-      paramViewGroup.egr.setVisibility(8);
-      a.b.u(paramViewGroup.egq, str);
-      AppMethodBeat.o(25899);
+      paramViewGroup.frs.setVisibility(8);
+      a.b.w(paramViewGroup.frr, str);
+      AppMethodBeat.o(29581);
       return paramView;
-      paramViewGroup = (TalkRoomAvatarsFrame.a.a)paramView.getTag();
+      paramViewGroup = (a)paramView.getTag();
       break;
     }
   }
   
   public final int indexOf(String paramString)
   {
-    AppMethodBeat.i(25896);
-    int i = this.tdC.indexOf(paramString);
-    AppMethodBeat.o(25896);
+    AppMethodBeat.i(29578);
+    int i = this.yJX.indexOf(paramString);
+    AppMethodBeat.o(29578);
     return i;
+  }
+  
+  final class a
+  {
+    public ImageView frr;
+    public TextView frs;
+    
+    a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomAvatarsFrame.a
  * JD-Core Version:    0.7.0.1
  */

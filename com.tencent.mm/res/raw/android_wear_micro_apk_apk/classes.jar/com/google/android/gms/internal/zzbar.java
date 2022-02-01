@@ -10,32 +10,32 @@ public class zzbar
   extends zza
 {
   public static final Parcelable.Creator<zzbar> CREATOR = new dd();
-  private final Account GJ;
-  private final String GN;
-  final int Hc;
-  private final Scope[] QI;
+  private final String IC;
+  final int IR;
+  private final Account Iy;
+  private final Scope[] Sx;
   
   zzbar(int paramInt, Account paramAccount, Scope[] paramArrayOfScope, String paramString)
   {
-    this.Hc = paramInt;
-    this.GJ = paramAccount;
-    this.QI = paramArrayOfScope;
-    this.GN = paramString;
+    this.IR = paramInt;
+    this.Iy = paramAccount;
+    this.Sx = paramArrayOfScope;
+    this.IC = paramString;
   }
   
-  public final Account fX()
+  public final Account gi()
   {
-    return this.GJ;
+    return this.Iy;
   }
   
-  public final String gb()
+  public final String gm()
   {
-    return this.GN;
+    return this.IC;
   }
   
-  public final Scope[] jL()
+  public final Scope[] jU()
   {
-    return this.QI;
+    return this.Sx;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

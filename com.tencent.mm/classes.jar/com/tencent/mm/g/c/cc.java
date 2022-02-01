@@ -3,69 +3,113 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class cc
   extends c
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int dAN = "expireTime".hashCode();
-  private static final int dBe = "randomTime".hashCode();
-  private static final int dBf = "isFirst".hashCode();
-  private static final int dBg = "nextCheckTime".hashCode();
-  private static final int dBh = "isRunning".hashCode();
-  private static final int dBi = "noWifi".hashCode();
-  private static final int dBj = "noSdcard".hashCode();
-  private static final int dBk = "noEnoughSpace".hashCode();
-  private static final int dBl = "lowBattery".hashCode();
-  private static final int dBm = "continueDelay".hashCode();
-  private static final int dBn = "SecondaryUrl".hashCode();
-  private static final int dBo = "downloadInWidget".hashCode();
-  private static final int dhB = "appId".hashCode();
-  private static final int dij;
-  private static final int djq;
-  private static final int doI = "downloadUrl".hashCode();
-  private static final int dtX;
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS Finder_MediaCache_media_id ON FinderMediaCacheInfo(mediaId)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_state ON FinderMediaCacheInfo(state)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_origin_media_id ON FinderMediaCacheInfo(originMediaId)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_fileFormat ON FinderMediaCacheInfo(fileFormat)", "CREATE INDEX IF NOT EXISTS Finder_MediaCache_updateTime ON FinderMediaCacheInfo(updateTime)" };
+  private static final int eDq;
+  private static final int eEG;
+  private static final int eEH;
+  private static final int eEI;
+  private static final int elM = "mediaId".hashCode();
+  private static final int emf = "updateTime".hashCode();
+  private static final int eoZ = "url".hashCode();
+  private static final int etB = "filePath".hashCode();
+  private static final int ezb;
+  private static final int qnD;
+  private static final int qnO;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dAF = true;
-  private boolean dAT = true;
-  private boolean dAU = true;
-  private boolean dAV = true;
-  private boolean dAW = true;
-  private boolean dAX = true;
-  private boolean dAY = true;
-  private boolean dAZ = true;
-  private boolean dBa = true;
-  private boolean dBb = true;
-  private boolean dBc = true;
-  private boolean dBd = true;
-  private boolean dhk = true;
-  private boolean diT = true;
-  private boolean dih = true;
-  private boolean doA = true;
-  private boolean dtk = true;
-  public String field_SecondaryUrl;
-  public String field_appId;
-  public boolean field_continueDelay;
-  public boolean field_downloadInWidget;
-  public String field_downloadUrl;
-  public long field_expireTime;
-  public boolean field_isFirst;
-  public boolean field_isRunning;
-  public boolean field_lowBattery;
-  public String field_md5;
-  public long field_nextCheckTime;
-  public boolean field_noEnoughSpace;
-  public boolean field_noSdcard;
-  public boolean field_noWifi;
-  public String field_packageName;
-  public long field_randomTime;
-  public long field_size;
+  private boolean eCN = true;
+  private boolean eED = true;
+  private boolean eEE = true;
+  private boolean eEF = true;
+  private boolean elv = true;
+  private boolean emc = true;
+  private boolean eoV = true;
+  private boolean ett = true;
+  private boolean eyp = true;
+  public long field_cacheSize;
+  public String field_fileFormat;
+  public String field_filePath;
+  public boolean field_hasPlayed;
+  public String field_mediaId;
+  public String field_originMediaId;
+  public int field_reqFormat;
+  public int field_state;
+  public long field_totalSize;
+  public long field_updateTime;
+  public String field_url;
+  private boolean qnB = true;
+  private boolean qnC = true;
   
   static
   {
-    dij = "size".hashCode();
-    dtX = "md5".hashCode();
-    djq = "packageName".hashCode();
+    eDq = "totalSize".hashCode();
+    eEG = "cacheSize".hashCode();
+    ezb = "state".hashCode();
+    eEH = "hasPlayed".hashCode();
+    eEI = "reqFormat".hashCode();
+    qnD = "originMediaId".hashCode();
+    qnO = "fileFormat".hashCode();
+  }
+  
+  public static c.a So()
+  {
+    c.a locala = new c.a();
+    locala.EYt = new Field[11];
+    locala.columns = new String[12];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "mediaId";
+    locala.EYv.put("mediaId", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" mediaId TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.EYu = "mediaId";
+    locala.columns[1] = "url";
+    locala.EYv.put("url", "TEXT");
+    localStringBuilder.append(" url TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "filePath";
+    locala.EYv.put("filePath", "TEXT");
+    localStringBuilder.append(" filePath TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "totalSize";
+    locala.EYv.put("totalSize", "LONG");
+    localStringBuilder.append(" totalSize LONG");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "cacheSize";
+    locala.EYv.put("cacheSize", "LONG");
+    localStringBuilder.append(" cacheSize LONG");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "state";
+    locala.EYv.put("state", "INTEGER");
+    localStringBuilder.append(" state INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "hasPlayed";
+    locala.EYv.put("hasPlayed", "INTEGER");
+    localStringBuilder.append(" hasPlayed INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[7] = "reqFormat";
+    locala.EYv.put("reqFormat", "INTEGER default '-1' ");
+    localStringBuilder.append(" reqFormat INTEGER default '-1' ");
+    localStringBuilder.append(", ");
+    locala.columns[8] = "originMediaId";
+    locala.EYv.put("originMediaId", "TEXT");
+    localStringBuilder.append(" originMediaId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[9] = "fileFormat";
+    locala.EYv.put("fileFormat", "TEXT");
+    localStringBuilder.append(" fileFormat TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[10] = "updateTime";
+    locala.EYv.put("updateTime", "LONG");
+    localStringBuilder.append(" updateTime LONG");
+    locala.columns[11] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -81,11 +125,11 @@ public abstract class cc
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dhB != k) {
+      if (elM != k) {
         break label65;
       }
-      this.field_appId = paramCursor.getString(i);
-      this.dhk = true;
+      this.field_mediaId = paramCursor.getString(i);
+      this.elv = true;
     }
     for (;;)
     {
@@ -93,121 +137,47 @@ public abstract class cc
       break label20;
       break;
       label65:
-      if (doI == k)
+      if (eoZ == k)
       {
-        this.field_downloadUrl = paramCursor.getString(i);
+        this.field_url = paramCursor.getString(i);
       }
-      else if (dij == k)
+      else if (etB == k)
       {
-        this.field_size = paramCursor.getLong(i);
+        this.field_filePath = paramCursor.getString(i);
       }
-      else if (dtX == k)
+      else if (eDq == k)
       {
-        this.field_md5 = paramCursor.getString(i);
+        this.field_totalSize = paramCursor.getLong(i);
       }
-      else if (djq == k)
+      else if (eEG == k)
       {
-        this.field_packageName = paramCursor.getString(i);
+        this.field_cacheSize = paramCursor.getLong(i);
       }
-      else if (dAN == k)
+      else if (ezb == k)
       {
-        this.field_expireTime = paramCursor.getLong(i);
-      }
-      else if (dBe == k)
-      {
-        this.field_randomTime = paramCursor.getLong(i);
+        this.field_state = paramCursor.getInt(i);
       }
       else
       {
-        boolean bool;
-        if (dBf == k)
+        if (eEH == k)
         {
           if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
+          for (boolean bool = true;; bool = false)
           {
-            this.field_isFirst = bool;
+            this.field_hasPlayed = bool;
             break;
           }
         }
-        if (dBg == k)
-        {
-          this.field_nextCheckTime = paramCursor.getLong(i);
-        }
-        else
-        {
-          if (dBh == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_isRunning = bool;
-              break;
-            }
-          }
-          if (dBi == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_noWifi = bool;
-              break;
-            }
-          }
-          if (dBj == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_noSdcard = bool;
-              break;
-            }
-          }
-          if (dBk == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_noEnoughSpace = bool;
-              break;
-            }
-          }
-          if (dBl == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_lowBattery = bool;
-              break;
-            }
-          }
-          if (dBm == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_continueDelay = bool;
-              break;
-            }
-          }
-          if (dBn == k)
-          {
-            this.field_SecondaryUrl = paramCursor.getString(i);
-          }
-          else
-          {
-            if (dBo == k)
-            {
-              if (paramCursor.getInt(i) != 0) {}
-              for (bool = true;; bool = false)
-              {
-                this.field_downloadInWidget = bool;
-                break;
-              }
-            }
-            if (rowid_HASHCODE == k) {
-              this.systemRowid = paramCursor.getLong(i);
-            }
-          }
+        if (eEI == k) {
+          this.field_reqFormat = paramCursor.getInt(i);
+        } else if (qnD == k) {
+          this.field_originMediaId = paramCursor.getString(i);
+        } else if (qnO == k) {
+          this.field_fileFormat = paramCursor.getString(i);
+        } else if (emf == k) {
+          this.field_updateTime = paramCursor.getLong(i);
+        } else if (rowid_HASHCODE == k) {
+          this.systemRowid = paramCursor.getLong(i);
         }
       }
     }
@@ -216,66 +186,50 @@ public abstract class cc
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dhk) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.elv) {
+      localContentValues.put("mediaId", this.field_mediaId);
     }
-    if (this.doA) {
-      localContentValues.put("downloadUrl", this.field_downloadUrl);
+    if (this.eoV) {
+      localContentValues.put("url", this.field_url);
     }
-    if (this.dih) {
-      localContentValues.put("size", Long.valueOf(this.field_size));
+    if (this.ett) {
+      localContentValues.put("filePath", this.field_filePath);
     }
-    if (this.dtk) {
-      localContentValues.put("md5", this.field_md5);
+    if (this.eCN) {
+      localContentValues.put("totalSize", Long.valueOf(this.field_totalSize));
     }
-    if (this.diT) {
-      localContentValues.put("packageName", this.field_packageName);
+    if (this.eED) {
+      localContentValues.put("cacheSize", Long.valueOf(this.field_cacheSize));
     }
-    if (this.dAF) {
-      localContentValues.put("expireTime", Long.valueOf(this.field_expireTime));
+    if (this.eyp) {
+      localContentValues.put("state", Integer.valueOf(this.field_state));
     }
-    if (this.dAT) {
-      localContentValues.put("randomTime", Long.valueOf(this.field_randomTime));
+    if (this.eEE) {
+      localContentValues.put("hasPlayed", Boolean.valueOf(this.field_hasPlayed));
     }
-    if (this.dAU) {
-      localContentValues.put("isFirst", Boolean.valueOf(this.field_isFirst));
+    if (this.eEF) {
+      localContentValues.put("reqFormat", Integer.valueOf(this.field_reqFormat));
     }
-    if (this.dAV) {
-      localContentValues.put("nextCheckTime", Long.valueOf(this.field_nextCheckTime));
+    if (this.qnB) {
+      localContentValues.put("originMediaId", this.field_originMediaId);
     }
-    if (this.dAW) {
-      localContentValues.put("isRunning", Boolean.valueOf(this.field_isRunning));
+    if (this.qnC) {
+      localContentValues.put("fileFormat", this.field_fileFormat);
     }
-    if (this.dAX) {
-      localContentValues.put("noWifi", Boolean.valueOf(this.field_noWifi));
-    }
-    if (this.dAY) {
-      localContentValues.put("noSdcard", Boolean.valueOf(this.field_noSdcard));
-    }
-    if (this.dAZ) {
-      localContentValues.put("noEnoughSpace", Boolean.valueOf(this.field_noEnoughSpace));
-    }
-    if (this.dBa) {
-      localContentValues.put("lowBattery", Boolean.valueOf(this.field_lowBattery));
-    }
-    if (this.dBb) {
-      localContentValues.put("continueDelay", Boolean.valueOf(this.field_continueDelay));
-    }
-    if (this.dBc) {
-      localContentValues.put("SecondaryUrl", this.field_SecondaryUrl);
-    }
-    if (this.dBd) {
-      localContentValues.put("downloadInWidget", Boolean.valueOf(this.field_downloadInWidget));
+    if (this.emc) {
+      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
     }
     return localContentValues;
   }
+  
+  public void reset() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.cc
  * JD-Core Version:    0.7.0.1
  */

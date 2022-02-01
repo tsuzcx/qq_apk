@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/ak2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="24.0dip" android:text="@string/ad4" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+        <CheckBox android:id="@id/a6k" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" style="@style/lj" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/rx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/cel" />
+    </LinearLayout>
+    <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="32.0dip" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/tq" android:gravity="center_horizontal" android:id="@id/a6l" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/acz" />
+    <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/tq" android:gravity="center_horizontal" android:id="@id/a6m" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ad3" />
+    <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/fj" android:gravity="center_horizontal" android:id="@id/a6j" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/acx" />
+</LinearLayout>

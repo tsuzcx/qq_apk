@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <tech-list>
-        <tech>android.nfc.tech.IsoDep</tech>
-    </tech-list>
-    <tech-list>
-        <tech>android.nfc.tech.NfcA</tech>
-    </tech-list>
-</resources>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceTitleCategory android:title="@string/e_n" />
+    <com.tencent.mm.plugin.label.ui.widget.InputClearablePreference android:key="contact_label_name" android:layout="@layout/aqi" />
+    <PreferenceTitleCategory android:title="@string/e_m" />
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="contact_label_contact_list" />
+    <PreferenceTitleCategory android:key="contact_label_empty_category" android:title=" " />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_label_delete" android:layout="@layout/ajc" android:title="@string/d_2" />
+    <PreferenceSmallCategory />
+</PreferenceScreen>

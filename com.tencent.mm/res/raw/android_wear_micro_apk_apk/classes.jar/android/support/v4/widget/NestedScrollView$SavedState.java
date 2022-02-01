@@ -9,12 +9,12 @@ class NestedScrollView$SavedState
   extends View.BaseSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator() {};
-  public int pr;
+  public int rh;
   
   NestedScrollView$SavedState(Parcel paramParcel)
   {
     super(paramParcel);
-    this.pr = paramParcel.readInt();
+    this.rh = paramParcel.readInt();
   }
   
   NestedScrollView$SavedState(Parcelable paramParcelable)
@@ -24,13 +24,13 @@ class NestedScrollView$SavedState
   
   public String toString()
   {
-    return "HorizontalScrollView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " scrollPosition=" + this.pr + "}";
+    return "HorizontalScrollView.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " scrollPosition=" + this.rh + "}";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeInt(this.pr);
+    paramParcel.writeInt(this.rh);
   }
 }
 

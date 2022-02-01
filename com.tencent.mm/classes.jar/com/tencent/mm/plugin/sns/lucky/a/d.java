@@ -1,70 +1,73 @@
 package com.tencent.mm.plugin.sns.lucky.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e.a;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.al.f.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bz.a;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.model.cc.a;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import java.util.Map;
 
 public final class d
-  implements bz.a
+  implements cc.a
 {
-  public final void a(e.a parama)
+  public final void a(f.a parama)
   {
-    AppMethodBeat.i(35880);
-    ab.i("MicroMsg.NewYearSNSAmountLevelCtrl2016NotifyLsn", "receivemsg NewYearSNSAmountLevelCtrl2016NotifyLsn");
-    b.kS(67);
-    if ((parama == null) || (parama.eyJ == null))
+    AppMethodBeat.i(95177);
+    ad.i("MicroMsg.NewYearSNSAmountLevelCtrl2016NotifyLsn", "receivemsg NewYearSNSAmountLevelCtrl2016NotifyLsn");
+    b.lI(67);
+    if ((parama == null) || (parama.fTo == null))
     {
-      ab.e("MicroMsg.NewYearSNSAmountLevelCtrl2016NotifyLsn", "onPreAddMessage cmdAM is null");
-      AppMethodBeat.o(35880);
+      ad.e("MicroMsg.NewYearSNSAmountLevelCtrl2016NotifyLsn", "onPreAddMessage cmdAM is null");
+      AppMethodBeat.o(95177);
       return;
     }
     e locale = new e();
-    parama = aa.a(parama.eyJ.woR);
-    locale.jDt = new StringBuffer();
-    Map localMap = br.F(parama, "sysmsg");
+    parama = z.a(parama.fTo.Cxz);
+    locale.muN = new StringBuffer();
+    Map localMap = bw.K(parama, "sysmsg");
     locale.level = 0;
     if (localMap == null)
     {
-      ab.i("MicroMsg.NewYearSnsAmountLevel", "errr for paser %s", new Object[] { parama });
-      b.kS(68);
+      ad.i("MicroMsg.NewYearSnsAmountLevel", "errr for paser %s", new Object[] { parama });
+      b.lI(68);
     }
     for (;;)
     {
-      ab.i("MicroMsg.NewYearSnsAmountLevel", "dump NewYearSnsAmountLevel " + locale.jDt.toString());
-      g.RM();
-      g.RL().Ru().set(ac.a.yBP, parama);
-      g.RM();
-      g.RL().Ru().dww();
-      AppMethodBeat.o(35880);
+      ad.i("MicroMsg.NewYearSnsAmountLevel", "dump NewYearSnsAmountLevel " + locale.muN.toString());
+      g.afC();
+      g.afB().afk().set(ae.a.Fkl, parama);
+      g.afC();
+      g.afB().afk().eKy();
+      AppMethodBeat.o(95177);
       return;
-      locale.level = bo.apV((String)localMap.get(".sysmsg.NewYearSNSAmountLevelCtrl2016.Level"));
-      ab.i("MicroMsg.NewYearSnsAmountLevel", "get level %d", new Object[] { Integer.valueOf(locale.level) });
+      locale.level = bt.aGh((String)localMap.get(".sysmsg.NewYearSNSAmountLevelCtrl2016.Level"));
+      ad.i("MicroMsg.NewYearSnsAmountLevel", "get level %d", new Object[] { Integer.valueOf(locale.level) });
       if (locale.level == 0) {
-        b.kS(69);
+        b.lI(69);
       } else if (locale.level == 1) {
-        b.kS(70);
+        b.lI(70);
       } else if (locale.level == 2) {
-        b.kS(71);
+        b.lI(71);
       } else if (locale.level == 3) {
-        b.kS(72);
+        b.lI(72);
       } else if (locale.level == 4) {
-        b.kS(73);
+        b.lI(73);
       }
     }
   }
+  
+  public final void a(f.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.a.d
  * JD-Core Version:    0.7.0.1
  */

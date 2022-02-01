@@ -2,9 +2,12 @@ package com.tencent.mm.plugin.wxcredit.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.n;
+import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.e;
 
@@ -13,28 +16,37 @@ public class WalletWXCreditChangeAmountResultUI
 {
   public int getLayoutId()
   {
-    return 2130971266;
+    return 2131496043;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(48687);
-    ((TextView)findViewById(2131829418)).setText(e.F(getInput().getDouble("key_credit_amount")));
+    AppMethodBeat.i(72331);
+    ((TextView)findViewById(2131306845)).setText(e.E(getInput().getDouble("key_credit_amount")));
     showHomeBtn(false);
     enableBackMenu(false);
-    addTextOptionMenu(0, getString(2131296964), new WalletWXCreditChangeAmountResultUI.1(this));
-    AppMethodBeat.o(48687);
+    addTextOptionMenu(0, getString(2131755779), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(72329);
+        WalletWXCreditChangeAmountResultUI.this.getProcess().a(WalletWXCreditChangeAmountResultUI.this.getContext(), 0, WalletWXCreditChangeAmountResultUI.this.getInput());
+        AppMethodBeat.o(72329);
+        return true;
+      }
+    });
+    AppMethodBeat.o(72331);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(48686);
+    AppMethodBeat.i(72330);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(48686);
+    AppMethodBeat.o(72330);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
     return false;
   }
@@ -47,7 +59,7 @@ public class WalletWXCreditChangeAmountResultUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditChangeAmountResultUI
  * JD-Core Version:    0.7.0.1
  */

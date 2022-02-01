@@ -12,7 +12,7 @@ public class ConverterWrapperCreator
   
   public ConverterWrapper createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61445);
+    AppMethodBeat.i(11937);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     int i = 0;
     StringToIntConverter localStringToIntConverter = null;
@@ -33,7 +33,7 @@ public class ConverterWrapperCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new ConverterWrapper(i, localStringToIntConverter);
-    AppMethodBeat.o(61445);
+    AppMethodBeat.o(11937);
     return paramParcel;
   }
   
@@ -44,7 +44,7 @@ public class ConverterWrapperCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.server.converter.ConverterWrapperCreator
  * JD-Core Version:    0.7.0.1
  */

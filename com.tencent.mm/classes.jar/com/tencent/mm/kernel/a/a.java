@@ -10,89 +10,89 @@ import junit.framework.Assert;
 
 public final class a
 {
-  public static long eIT;
-  public static long eIU;
-  public static long eIV;
-  public com.tencent.mm.kernel.a.a.b eIR;
-  public b eIS;
+  public static long gec;
+  public static long ged;
+  public static long gee;
+  public com.tencent.mm.kernel.a.a.b gea;
+  public b geb;
   private volatile boolean mConfigured = false;
   
-  public static final void g(String paramString, Object... paramVarArgs)
+  public static final void h(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123279);
+    AppMethodBeat.i(158332);
     if (paramVarArgs.length == 0)
     {
       j.i("MMSkeleton.Boot", paramString, new Object[0]);
-      AppMethodBeat.o(123279);
+      AppMethodBeat.o(158332);
       return;
     }
     j.i("MMSkeleton.Boot", paramString, paramVarArgs);
-    AppMethodBeat.o(123279);
+    AppMethodBeat.o(158332);
   }
   
-  public static String gi(long paramLong)
+  public static String lx(long paramLong)
   {
-    AppMethodBeat.i(123280);
+    AppMethodBeat.i(158333);
     String str = System.currentTimeMillis() - paramLong + "ms";
-    AppMethodBeat.o(123280);
+    AppMethodBeat.o(158333);
     return str;
   }
   
-  public final void Bc()
+  public final void Kv()
   {
-    AppMethodBeat.i(123275);
-    eIV = SystemClock.elapsedRealtime();
-    g("hello WeChat.", new Object[0]);
-    this.eIS.Bc();
-    AppMethodBeat.o(123275);
+    AppMethodBeat.i(158328);
+    gee = SystemClock.elapsedRealtime();
+    h("hello WeChat.", new Object[0]);
+    this.geb.Kv();
+    AppMethodBeat.o(158328);
   }
   
-  public final void Bd()
+  public final void Kw()
   {
-    AppMethodBeat.i(123276);
+    AppMethodBeat.i(158329);
     long l = System.currentTimeMillis();
-    g("boot install plugins...", new Object[0]);
-    this.eIS.Bd();
+    h("boot install plugins...", new Object[0]);
+    this.geb.Kw();
     this.mConfigured = true;
-    g("boot all installed plugins : %s...", new Object[] { h.RP().RH().Ri() });
-    g("boot install plugins done in [%s].", new Object[] { gi(l) });
-    AppMethodBeat.o(123276);
-  }
-  
-  public final void RU()
-  {
-    AppMethodBeat.i(123274);
-    Assert.assertNotNull("You must call whichBootStep(BootStep defaultOne, BootStep ... bootSteps) to specify your BootStep instance first!", this.eIS);
-    AppMethodBeat.o(123274);
-  }
-  
-  public final void RV()
-  {
-    AppMethodBeat.i(123277);
-    long l = System.currentTimeMillis();
-    g("boot make dependency of plugins...", new Object[0]);
-    this.eIS.RV();
-    g("boot make dependency of done in [%s].", new Object[] { gi(l) });
-    AppMethodBeat.o(123277);
+    h("boot all installed plugins : %s...", new Object[] { h.afF().afx().aeY() });
+    h("boot install plugins done in [%s].", new Object[] { lx(l) });
+    AppMethodBeat.o(158329);
   }
   
   public final void a(b paramVarArgs)
   {
-    AppMethodBeat.i(123273);
+    AppMethodBeat.i(158326);
     Assert.assertNotNull(paramVarArgs);
-    h.RP().RI();
-    this.eIS = paramVarArgs;
-    AppMethodBeat.o(123273);
+    h.afF().afy();
+    this.geb = paramVarArgs;
+    AppMethodBeat.o(158326);
   }
   
   public final void a(g paramg)
   {
-    AppMethodBeat.i(123278);
+    AppMethodBeat.i(158331);
     long l = System.currentTimeMillis();
-    g("boot configure plugins...", new Object[0]);
-    this.eIS.a(paramg);
-    g("boot configure plugins done in [%s].", new Object[] { gi(l) });
-    AppMethodBeat.o(123278);
+    h("boot configure plugins...", new Object[0]);
+    this.geb.a(paramg);
+    h("boot configure plugins done in [%s].", new Object[] { lx(l) });
+    AppMethodBeat.o(158331);
+  }
+  
+  public final void afL()
+  {
+    AppMethodBeat.i(158327);
+    Assert.assertNotNull("You must call whichBootStep(BootStep defaultOne, BootStep ... bootSteps) to specify your BootStep instance first!", this.geb);
+    AppMethodBeat.o(158327);
+  }
+  
+  public final void afM()
+  {
+    AppMethodBeat.i(158330);
+    long l = System.currentTimeMillis();
+    h("boot make dependency of plugins...", new Object[0]);
+    this.geb.afM();
+    h("boot make dependency of done in [%s].", new Object[] { lx(l) });
+    AppMethodBeat.o(158330);
   }
 }
 

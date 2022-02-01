@@ -1,30 +1,38 @@
 package android.support.v4.b;
 
-public final class p<T>
+public class p<T>
   implements o<T>
 {
-  private final Object[] ju = new Object[30];
-  private int jv;
+  private final Object[] lr;
+  private int ls;
   
-  public final T bl()
+  public p(int paramInt)
   {
-    if (this.jv > 0)
+    if (paramInt <= 0) {
+      throw new IllegalArgumentException("The max pool size must be > 0");
+    }
+    this.lr = new Object[paramInt];
+  }
+  
+  public T bC()
+  {
+    if (this.ls > 0)
     {
-      int i = this.jv - 1;
-      Object localObject = this.ju[i];
-      this.ju[i] = null;
-      this.jv -= 1;
+      int i = this.ls - 1;
+      Object localObject = this.lr[i];
+      this.lr[i] = null;
+      this.ls -= 1;
       return localObject;
     }
     return null;
   }
   
-  public final boolean m(T paramT)
+  public boolean t(T paramT)
   {
     boolean bool = false;
     int i = 0;
-    if (i < this.jv) {
-      if (this.ju[i] != paramT) {}
+    if (i < this.ls) {
+      if (this.lr[i] != paramT) {}
     }
     for (i = 1;; i = 0)
     {
@@ -36,10 +44,10 @@ public final class p<T>
       break;
     }
     label50:
-    if (this.jv < this.ju.length)
+    if (this.ls < this.lr.length)
     {
-      this.ju[this.jv] = paramT;
-      this.jv += 1;
+      this.lr[this.ls] = paramT;
+      this.ls += 1;
       bool = true;
     }
     return bool;

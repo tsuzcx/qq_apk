@@ -16,13 +16,11 @@ public abstract interface a
   
   public abstract void a(String paramString, Bundle paramBundle);
   
-  public abstract void e(boolean paramBoolean);
+  public abstract void bf();
   
-  public abstract void f(boolean paramBoolean);
+  public abstract void h(boolean paramBoolean);
   
-  public abstract void l(int paramInt);
-  
-  public abstract void m(int paramInt);
+  public abstract void i(boolean paramBoolean);
   
   public abstract void onExtrasChanged(Bundle paramBundle);
   
@@ -31,6 +29,10 @@ public abstract interface a
   public abstract void onQueueTitleChanged(CharSequence paramCharSequence);
   
   public abstract void onSessionDestroyed();
+  
+  public abstract void v(int paramInt);
+  
+  public abstract void w(int paramInt);
 }
 
 

@@ -13,16 +13,16 @@ final class ReadMailUI$13
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(68437);
-    paramMenuItem = this.pOX.getResources().getStringArray(2131755025);
-    h.a(this.pOX, null, paramMenuItem, this.pOX.getResources().getString(2131302310), false, new ReadMailUI.13.1(this));
-    AppMethodBeat.o(68437);
+    AppMethodBeat.i(123165);
+    paramMenuItem = this.uRh.getResources().getStringArray(2130903057);
+    h.b(this.uRh, null, paramMenuItem, this.uRh.getResources().getString(2131762191), new ReadMailUI.13.1(this));
+    AppMethodBeat.o(123165);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.ReadMailUI.13
  * JD-Core Version:    0.7.0.1
  */

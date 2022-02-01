@@ -1,32 +1,89 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import com.tencent.mm.plugin.appbrand.appcache.a.a.a;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.g.c.eq;
+import com.tencent.mm.plugin.appbrand.z.b;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Locale;
+import java.util.Map;
 
-@SuppressLint({"DefaultLocale"})
-class ak
-  extends a
+public final class ak
+  extends eq
+  implements b
 {
-  ak(String paramString1, String paramString2, int paramInt)
+  static final c.a gLr;
+  static final String[] iLd;
+  
+  static
   {
-    super(str1, str2 + String.format("debug_%d_%d_%d.wxapkg", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt), Integer.valueOf(paramString2.hashCode()) }), paramString2, paramString1, String.format("%d-%s", new Object[] { Integer.valueOf(paramInt), paramString2 }).hashCode(), paramInt);
-    AppMethodBeat.i(59475);
-    AppMethodBeat.o(59475);
+    int i = 0;
+    AppMethodBeat.i(90559);
+    iLd = new String[] { "appId", "type", "version" };
+    Object localObject1 = new c.a();
+    ((c.a)localObject1).EYt = new Field[5];
+    ((c.a)localObject1).columns = new String[6];
+    Object localObject2 = new StringBuilder();
+    ((c.a)localObject1).columns[0] = "appId";
+    ((c.a)localObject1).EYv.put("appId", "TEXT");
+    ((StringBuilder)localObject2).append(" appId TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[1] = "version";
+    ((c.a)localObject1).EYv.put("version", "INTEGER");
+    ((StringBuilder)localObject2).append(" version INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[2] = "type";
+    ((c.a)localObject1).EYv.put("type", "INTEGER");
+    ((StringBuilder)localObject2).append(" type INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[3] = "pkgMd5";
+    ((c.a)localObject1).EYv.put("pkgMd5", "TEXT");
+    ((StringBuilder)localObject2).append(" pkgMd5 TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[4] = "pkgPath";
+    ((c.a)localObject1).EYv.put("pkgPath", "TEXT");
+    ((StringBuilder)localObject2).append(" pkgPath TEXT");
+    ((c.a)localObject1).columns[5] = "rowid";
+    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
+    gLr = (c.a)localObject1;
+    localObject1 = " PRIMARY KEY ( ";
+    localObject2 = iLd;
+    int j = localObject2.length;
+    while (i < j)
+    {
+      localObject3 = localObject2[i];
+      localObject1 = (String)localObject1 + ", " + (String)localObject3;
+      i += 1;
+    }
+    localObject1 = ((String)localObject1).replaceFirst(",", "");
+    localObject1 = (String)localObject1 + " )";
+    localObject2 = new StringBuilder();
+    Object localObject3 = gLr;
+    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
+    AppMethodBeat.o(90559);
   }
   
-  ak(String paramString1, String paramString2, int paramInt, a.a parama)
+  public final c.a getDBInfo()
   {
-    super(str1, str2 + String.format("debug_%d_%d_%d", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt), Integer.valueOf(bo.nullAsNil(parama.avB()).hashCode()) }), paramString2, paramString1, String.format("%s_%d_%s", new Object[] { paramString1, Integer.valueOf(paramInt), bo.nullAsNil(parama.avB()) }).hashCode(), paramInt);
-    AppMethodBeat.i(59476);
-    AppMethodBeat.o(59476);
+    return gLr;
+  }
+  
+  public final String[] getKeys()
+  {
+    return iLd;
+  }
+  
+  public final String toShortString()
+  {
+    AppMethodBeat.i(90558);
+    String str = String.format(Locale.US, "EncryptPkgInfo[%s %d %d]", new Object[] { this.field_appId, Integer.valueOf(this.field_type), Integer.valueOf(this.field_version) });
+    AppMethodBeat.o(90558);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ak
  * JD-Core Version:    0.7.0.1
  */

@@ -21,13 +21,13 @@ final class c
   
   public final void getOutline(Outline paramOutline)
   {
-    cR();
-    paramOutline.setRoundRect(this.Bc, this.kq);
+    dW();
+    paramOutline.setRoundRect(this.Hy, this.Hx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v4.graphics.drawable.c
  * JD-Core Version:    0.7.0.1
  */

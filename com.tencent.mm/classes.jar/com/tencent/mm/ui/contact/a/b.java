@@ -2,15 +2,15 @@ package com.tencent.mm.ui.contact.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.storage.bg;
 
 public final class b
   extends f
 {
-  private boolean AfU;
-  public String blZ;
+  private boolean GZn;
+  public String bNK;
   public int resId = 0;
   
   public b(int paramInt)
@@ -20,36 +20,36 @@ public final class b
   
   public final void a(Context paramContext, a.a parama)
   {
-    AppMethodBeat.i(105269);
-    if ((this.resId != 0) && (this.blZ != null))
+    AppMethodBeat.i(102933);
+    if ((this.resId != 0) && (this.bNK != null))
     {
-      this.Agj = this.resId;
-      this.Agi = this.blZ;
-      AppMethodBeat.o(105269);
+      this.GZG = this.resId;
+      this.GZF = this.bNK;
+      AppMethodBeat.o(102933);
       return;
     }
     parama = this.contact;
-    if (!this.AfU)
+    if (!this.GZn)
     {
-      g.RM();
-      parama = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(this.username);
+      g.afC();
+      parama = ((com.tencent.mm.plugin.messenger.foundation.a.k)g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(this.username);
       this.contact = parama;
-      this.AfU = true;
+      this.GZn = true;
     }
     if (parama == null)
     {
-      this.gpH = "";
-      AppMethodBeat.o(105269);
+      this.ibW = "";
+      AppMethodBeat.o(102933);
       return;
     }
-    this.gpH = com.tencent.mm.pluginsdk.ui.d.j.b(paramContext, ((com.tencent.mm.plugin.messenger.a.b)g.E(com.tencent.mm.plugin.messenger.a.b.class)).c(parama), com.tencent.mm.cb.a.ao(paramContext, 2131427809));
+    this.ibW = com.tencent.mm.pluginsdk.ui.span.k.b(paramContext, ((com.tencent.mm.plugin.messenger.a.b)g.ab(com.tencent.mm.plugin.messenger.a.b.class)).b(parama), com.tencent.mm.cd.a.ao(paramContext, 2131165517));
     this.username = parama.field_username;
-    AppMethodBeat.o(105269);
+    AppMethodBeat.o(102933);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.b
  * JD-Core Version:    0.7.0.1
  */

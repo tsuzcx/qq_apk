@@ -1,74 +1,154 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
+import java.util.LinkedList;
 
 public final class ym
-  extends com.tencent.mm.bv.a
+  extends ckq
 {
-  public String Title;
-  public int wCm;
+  public String DaJ;
+  public String DaK;
+  public String DaL;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(56769);
+    AppMethodBeat.i(124479);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.Title != null) {
-        paramVarArgs.e(1, this.Title);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.DaJ == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: corp_id");
+        AppMethodBeat.o(124479);
+        throw paramVarArgs;
       }
-      paramVarArgs.aO(2, this.wCm);
-      AppMethodBeat.o(56769);
+      if (this.DaK == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: qychat_type");
+        AppMethodBeat.o(124479);
+        throw paramVarArgs;
+      }
+      if (this.DaL == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: qychat_id");
+        AppMethodBeat.o(124479);
+        throw paramVarArgs;
+      }
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.kX(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      if (this.DaJ != null) {
+        paramVarArgs.d(2, this.DaJ);
+      }
+      if (this.DaK != null) {
+        paramVarArgs.d(3, this.DaK);
+      }
+      if (this.DaL != null) {
+        paramVarArgs.d(4, this.DaL);
+      }
+      AppMethodBeat.o(124479);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Title == null) {
-        break label258;
+      if (this.BaseRequest == null) {
+        break label634;
       }
     }
-    label258:
-    for (paramInt = e.a.a.b.b.a.f(1, this.Title) + 0;; paramInt = 0)
+    label634:
+    for (int i = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
-      int i = e.a.a.b.b.a.bl(2, this.wCm);
-      AppMethodBeat.o(56769);
-      return paramInt + i;
+      paramInt = i;
+      if (this.DaJ != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.DaJ);
+      }
+      i = paramInt;
+      if (this.DaK != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.DaK);
+      }
+      paramInt = i;
+      if (this.DaL != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.DaL);
+      }
+      AppMethodBeat.o(124479);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(56769);
+        if (this.DaJ == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: corp_id");
+          AppMethodBeat.o(124479);
+          throw paramVarArgs;
+        }
+        if (this.DaK == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: qychat_type");
+          AppMethodBeat.o(124479);
+          throw paramVarArgs;
+        }
+        if (this.DaL == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: qychat_id");
+          AppMethodBeat.o(124479);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(124479);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         ym localym = (ym)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(56769);
+          AppMethodBeat.o(124479);
           return -1;
         case 1: 
-          localym.Title = locala.CLY.readString();
-          AppMethodBeat.o(56769);
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new ip();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localym.BaseRequest = ((ip)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(124479);
+          return 0;
+        case 2: 
+          localym.DaJ = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(124479);
+          return 0;
+        case 3: 
+          localym.DaK = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(124479);
           return 0;
         }
-        localym.wCm = locala.CLY.sl();
-        AppMethodBeat.o(56769);
+        localym.DaL = ((f.a.a.a.a)localObject1).KhF.readString();
+        AppMethodBeat.o(124479);
         return 0;
       }
-      AppMethodBeat.o(56769);
+      AppMethodBeat.o(124479);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ym
  * JD-Core Version:    0.7.0.1
  */

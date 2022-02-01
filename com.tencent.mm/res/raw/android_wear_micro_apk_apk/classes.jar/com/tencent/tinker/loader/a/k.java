@@ -3,6 +3,8 @@ package com.tencent.tinker.loader.a;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -22,11 +24,11 @@ import java.util.regex.Pattern;
 
 public class k
 {
-  private static String amA = null;
-  private static String amB = null;
-  private static final boolean amx = ak(System.getProperty("java.vm.version"));
-  private static final boolean amy = oq();
-  private static Boolean amz = null;
+  private static final boolean apZ = ao(System.getProperty("java.vm.version"));
+  private static final boolean aqa = pd();
+  private static Boolean aqb = null;
+  private static String aqc = null;
+  private static String aqd = null;
   private static String processName = null;
   
   public static boolean D(String paramString)
@@ -34,17 +36,17 @@ public class k
     return (paramString == null) || (paramString.length() <= 0);
   }
   
-  private static String P(Context paramContext)
+  private static String Q(Context paramContext)
   {
-    if (amA != null) {
-      return amA;
+    if (aqc != null) {
+      return aqc;
     }
     try
     {
       paramContext = paramContext.getPackageManager().getApplicationInfo(paramContext.getPackageName(), 128).metaData.get("TINKER_ID");
       if (paramContext != null) {}
-      for (amA = String.valueOf(paramContext);; amA = null) {
-        return amA;
+      for (aqc = String.valueOf(paramContext);; aqc = null) {
+        return aqc;
       }
       return null;
     }
@@ -54,7 +56,15 @@ public class k
     }
   }
   
-  public static boolean Q(Context paramContext)
+  public static int R(Context paramContext)
+  {
+    String str = "tinker_own_config_".concat(String.valueOf(V(paramContext)));
+    int i = paramContext.getSharedPreferences(str, 0).getInt("safe_mode_count_1.9.13.1", 0);
+    Log.w("Tinker.TinkerInternals", "getSafeModeCount: preferName:" + str + " count:" + i);
+    return i;
+  }
+  
+  public static boolean S(Context paramContext)
   {
     String str = null;
     Object localObject = paramContext.getApplicationInfo();
@@ -65,7 +75,7 @@ public class k
     if (D(str)) {
       localObject = paramContext.getPackageName();
     }
-    str = T(paramContext);
+    str = V(paramContext);
     if (str != null)
     {
       paramContext = str;
@@ -78,17 +88,17 @@ public class k
     return ((String)localObject).equals(paramContext);
   }
   
-  public static boolean R(Context paramContext)
+  public static boolean T(Context paramContext)
   {
-    if (amz != null) {
-      return amz.booleanValue();
+    if (aqb != null) {
+      return aqb.booleanValue();
     }
-    paramContext = Boolean.valueOf(T(paramContext).endsWith(":patch"));
-    amz = paramContext;
+    paramContext = Boolean.valueOf(V(paramContext).endsWith(":patch"));
+    aqb = paramContext;
     return paramContext.booleanValue();
   }
   
-  public static void S(Context paramContext)
+  public static void U(Context paramContext)
   {
     Object localObject = (ActivityManager)paramContext.getSystemService("activity");
     if (localObject == null) {}
@@ -110,58 +120,58 @@ public class k
     }
   }
   
-  public static String T(Context paramContext)
+  public static String V(Context paramContext)
   {
     if (processName != null) {
       return processName;
     }
-    paramContext = U(paramContext);
+    paramContext = W(paramContext);
     processName = paramContext;
     return paramContext;
   }
   
   /* Error */
-  private static String U(Context paramContext)
+  private static String W(Context paramContext)
   {
     // Byte code:
-    //   0: invokestatic 199	android/os/Process:myPid	()I
+    //   0: invokestatic 228	android/os/Process:myPid	()I
     //   3: istore_1
     //   4: aload_0
     //   5: ifnull +7 -> 12
     //   8: iload_1
     //   9: ifgt +6 -> 15
-    //   12: ldc 128
+    //   12: ldc 157
     //   14: areturn
     //   15: aload_0
-    //   16: ldc 150
-    //   18: invokevirtual 153	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   21: checkcast 155	android/app/ActivityManager
+    //   16: ldc 179
+    //   18: invokevirtual 182	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   21: checkcast 184	android/app/ActivityManager
     //   24: astore_0
     //   25: aload_0
     //   26: ifnull +86 -> 112
     //   29: aload_0
-    //   30: invokevirtual 159	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
+    //   30: invokevirtual 188	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
     //   33: astore_0
     //   34: aload_0
     //   35: ifnull +77 -> 112
     //   38: aload_0
-    //   39: invokeinterface 165 1 0
+    //   39: invokeinterface 194 1 0
     //   44: astore 4
     //   46: aload 4
-    //   48: invokeinterface 170 1 0
+    //   48: invokeinterface 199 1 0
     //   53: ifeq +243 -> 296
     //   56: aload 4
-    //   58: invokeinterface 174 1 0
-    //   63: checkcast 176	android/app/ActivityManager$RunningAppProcessInfo
+    //   58: invokeinterface 203 1 0
+    //   63: checkcast 205	android/app/ActivityManager$RunningAppProcessInfo
     //   66: astore_0
     //   67: aload_0
-    //   68: getfield 189	android/app/ActivityManager$RunningAppProcessInfo:pid	I
+    //   68: getfield 218	android/app/ActivityManager$RunningAppProcessInfo:pid	I
     //   71: iload_1
     //   72: if_icmpne -26 -> 46
     //   75: aload_0
     //   76: ifnull +36 -> 112
     //   79: aload_0
-    //   80: getfield 186	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
+    //   80: getfield 215	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
     //   83: astore_0
     //   84: aload_0
     //   85: areturn
@@ -169,7 +179,7 @@ public class k
     //   87: ldc 91
     //   89: new 93	java/lang/StringBuilder
     //   92: dup
-    //   93: ldc 201
+    //   93: ldc 230
     //   95: invokespecial 99	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   98: aload_0
     //   99: invokevirtual 102	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -180,24 +190,24 @@ public class k
     //   112: sipush 128
     //   115: newarray byte
     //   117: astore 5
-    //   119: new 203	java/io/FileInputStream
+    //   119: new 232	java/io/FileInputStream
     //   122: dup
     //   123: new 93	java/lang/StringBuilder
     //   126: dup
-    //   127: ldc 205
+    //   127: ldc 234
     //   129: invokespecial 99	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   132: iload_1
-    //   133: invokevirtual 208	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   136: ldc 210
+    //   133: invokevirtual 144	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   136: ldc 236
     //   138: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: invokevirtual 109	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   144: invokespecial 211	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   144: invokespecial 237	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   147: astore 4
     //   149: aload 4
     //   151: astore_0
     //   152: aload 4
     //   154: aload 5
-    //   156: invokevirtual 215	java/io/FileInputStream:read	([B)I
+    //   156: invokevirtual 241	java/io/FileInputStream:read	([B)I
     //   159: istore_3
     //   160: iload_3
     //   161: ifle +43 -> 204
@@ -211,10 +221,10 @@ public class k
     //   176: aload 5
     //   178: iconst_0
     //   179: iload_2
-    //   180: invokespecial 218	java/lang/String:<init>	([BII)V
+    //   180: invokespecial 244	java/lang/String:<init>	([BII)V
     //   183: astore 5
     //   185: aload 4
-    //   187: invokevirtual 221	java/io/FileInputStream:close	()V
+    //   187: invokevirtual 247	java/io/FileInputStream:close	()V
     //   190: aload 5
     //   192: areturn
     //   193: astore_0
@@ -226,8 +236,8 @@ public class k
     //   200: istore_1
     //   201: goto +100 -> 301
     //   204: aload 4
-    //   206: invokevirtual 221	java/io/FileInputStream:close	()V
-    //   209: ldc 128
+    //   206: invokevirtual 247	java/io/FileInputStream:close	()V
+    //   209: ldc 157
     //   211: areturn
     //   212: astore 5
     //   214: aconst_null
@@ -237,7 +247,7 @@ public class k
     //   220: ldc 91
     //   222: new 93	java/lang/StringBuilder
     //   225: dup
-    //   226: ldc 201
+    //   226: ldc 230
     //   228: invokespecial 99	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   231: aload 5
     //   233: invokevirtual 102	java/lang/Exception:getMessage	()Ljava/lang/String;
@@ -248,7 +258,7 @@ public class k
     //   246: aload 4
     //   248: ifnull -39 -> 209
     //   251: aload 4
-    //   253: invokevirtual 221	java/io/FileInputStream:close	()V
+    //   253: invokevirtual 247	java/io/FileInputStream:close	()V
     //   256: goto -47 -> 209
     //   259: astore_0
     //   260: goto -51 -> 209
@@ -258,7 +268,7 @@ public class k
     //   267: aload_0
     //   268: ifnull +7 -> 275
     //   271: aload_0
-    //   272: invokevirtual 221	java/io/FileInputStream:close	()V
+    //   272: invokevirtual 247	java/io/FileInputStream:close	()V
     //   275: aload 4
     //   277: athrow
     //   278: astore_0
@@ -333,7 +343,7 @@ public class k
       if (i == 0)
       {
         if (paramInt != 7) {
-          break label168;
+          break label170;
         }
         i = 1;
       }
@@ -342,18 +352,18 @@ public class k
     {
       if (i == 0)
       {
-        paramContext = paramj.ol();
-        if ((!ce(paramInt)) && (paramContext.containsKey("assets/dex_meta.txt")))
+        paramContext = paramj.oY();
+        if ((!cA(paramInt)) && (paramContext.containsKey("assets/dex_meta.txt")))
         {
           j = -9;
           return j;
-          paramContext = P(paramContext);
+          paramContext = Q(paramContext);
           if (paramContext == null)
           {
             i = -5;
             break;
           }
-          paramFile = paramj.om();
+          paramFile = paramj.oZ();
           if (paramFile == null)
           {
             i = -2;
@@ -373,14 +383,14 @@ public class k
           }
           i = 0;
           break;
-          label168:
+          label170:
           i = 0;
           continue;
         }
-        if ((!cf(paramInt)) && (paramContext.containsKey("assets/so_meta.txt"))) {
+        if ((!cB(paramInt)) && (paramContext.containsKey("assets/so_meta.txt"))) {
           return -9;
         }
-        if ((!cg(paramInt)) && (paramContext.containsKey("assets/res_meta.txt"))) {
+        if ((!cC(paramInt)) && (paramContext.containsKey("assets/res_meta.txt"))) {
           return -9;
         }
       }
@@ -390,11 +400,11 @@ public class k
   
   public static c a(c paramc, int paramInt)
   {
-    if (paramc.alV.startsWith("test.dex"))
+    if (paramc.apv.startsWith("test.dex"))
     {
       if (paramInt != 1) {}
       for (String str = "classes" + paramInt + ".dex";; str = "classes.dex") {
-        return new c(str, paramc.aat, paramc.alW, paramc.alX, paramc.ama, paramc.alY, paramc.alZ, paramc.amb);
+        return new c(str, paramc.adU, paramc.apw, paramc.apx, paramc.apA, paramc.apy, paramc.apz, paramc.apB);
       }
     }
     return null;
@@ -418,16 +428,16 @@ public class k
         paramThrowable = localThrowable;
       }
       paramThrowable.printStackTrace(localPrintStream);
-      paramThrowable = al(localByteArrayOutputStream.toString());
+      paramThrowable = ap(localByteArrayOutputStream.toString());
       return paramThrowable;
     }
     finally
     {
-      f.R(localPrintStream);
+      f.aa(localPrintStream);
     }
   }
   
-  public static boolean aj(String paramString)
+  public static boolean an(String paramString)
   {
     String str = Build.FINGERPRINT;
     if ((paramString == null) || (paramString.equals("")) || (str == null) || (str.equals("")))
@@ -437,14 +447,14 @@ public class k
     }
     if (paramString.equals(str))
     {
-      Log.d("Tinker.TinkerInternals", "same fingerprint:" + str);
+      Log.d("Tinker.TinkerInternals", "same fingerprint:".concat(String.valueOf(str)));
       return false;
     }
     Log.d("Tinker.TinkerInternals", "system OTA,fingerprint not equal:" + paramString + "," + str);
     return true;
   }
   
-  private static boolean ak(String paramString)
+  private static boolean ao(String paramString)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -477,7 +487,7 @@ public class k
     return false;
   }
   
-  private static String al(String paramString)
+  private static String ap(String paramString)
   {
     if (paramString == null) {
       paramString = null;
@@ -508,32 +518,39 @@ public class k
     }
   }
   
-  public static boolean ce(int paramInt)
+  public static boolean cA(int paramInt)
   {
     return (paramInt & 0x1) != 0;
   }
   
-  public static boolean cf(int paramInt)
+  public static boolean cB(int paramInt)
   {
     return (paramInt & 0x2) != 0;
   }
   
-  public static boolean cg(int paramInt)
+  public static boolean cC(int paramInt)
   {
     return (paramInt & 0x4) != 0;
   }
   
-  public static boolean ch(int paramInt)
+  public static boolean cD(int paramInt)
   {
     return paramInt != 0;
   }
   
-  public static String k(Context paramContext, String paramString)
+  public static void j(Context paramContext, int paramInt)
+  {
+    String str = "tinker_own_config_".concat(String.valueOf(V(paramContext)));
+    paramContext.getSharedPreferences(str, 0).edit().putInt("safe_mode_count_1.9.13.1", paramInt).commit();
+    Log.w("Tinker.TinkerInternals", "setSafeModeCount: preferName:" + str + " count:" + paramInt);
+  }
+  
+  public static String l(Context paramContext, String paramString)
   {
     String str = paramString;
     if (paramString.equals("changing"))
     {
-      if (Q(paramContext)) {
+      if (S(paramContext)) {
         str = "odex";
       }
     }
@@ -543,27 +560,27 @@ public class k
     return "interpet";
   }
   
-  public static boolean on()
+  public static boolean pa()
   {
-    return (amx) || (Build.VERSION.SDK_INT >= 21);
+    return (apZ) || (Build.VERSION.SDK_INT >= 21);
   }
   
-  public static boolean oo()
+  public static boolean pb()
   {
     return Build.VERSION.SDK_INT > 25;
   }
   
-  public static String op()
+  public static String pc()
   {
-    if (amB != null) {
-      return amB;
+    if (aqd != null) {
+      return aqd;
     }
-    amB = (String)Class.forName("dalvik.system.VMRuntime").getDeclaredMethod("getCurrentInstructionSet", new Class[0]).invoke(null, new Object[0]);
-    Log.d("Tinker.TinkerInternals", "getCurrentInstructionSet:" + amB);
-    return amB;
+    aqd = (String)Class.forName("dalvik.system.VMRuntime").getDeclaredMethod("getCurrentInstructionSet", new Class[0]).invoke(null, new Object[0]);
+    Log.d("Tinker.TinkerInternals", "getCurrentInstructionSet:" + aqd);
+    return aqd;
   }
   
-  private static boolean oq()
+  private static boolean pd()
   {
     try
     {
@@ -580,7 +597,7 @@ public class k
     }
     catch (Throwable localThrowable)
     {
-      Log.e("Tinker.TinkerInternals", "isVmJitInternal ex:" + localThrowable);
+      Log.e("Tinker.TinkerInternals", "isVmJitInternal ex:".concat(String.valueOf(localThrowable)));
     }
     return false;
   }

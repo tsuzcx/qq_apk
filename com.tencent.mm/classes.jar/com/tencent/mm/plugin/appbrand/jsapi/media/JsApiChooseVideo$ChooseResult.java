@@ -10,23 +10,23 @@ final class JsApiChooseVideo$ChooseResult
   extends AppBrandProxyUIProcessTask.ProcessResult
 {
   public static final Parcelable.Creator<ChooseResult> CREATOR;
-  int bpE;
-  AppBrandLocalVideoObject hRH;
+  int bRZ;
+  AppBrandLocalVideoObject jXD;
   
   static
   {
-    AppMethodBeat.i(131281);
-    CREATOR = new JsApiChooseVideo.ChooseResult.1();
-    AppMethodBeat.o(131281);
+    AppMethodBeat.i(46556);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(46556);
   }
   
   JsApiChooseVideo$ChooseResult() {}
   
   JsApiChooseVideo$ChooseResult(Parcel paramParcel)
   {
-    AppMethodBeat.i(131280);
+    AppMethodBeat.i(46555);
     j(paramParcel);
-    AppMethodBeat.o(131280);
+    AppMethodBeat.o(46555);
   }
   
   public final int describeContents()
@@ -36,23 +36,23 @@ final class JsApiChooseVideo$ChooseResult
   
   public final void j(Parcel paramParcel)
   {
-    AppMethodBeat.i(131278);
-    this.bpE = paramParcel.readInt();
-    this.hRH = ((AppBrandLocalVideoObject)paramParcel.readParcelable(AppBrandLocalVideoObject.class.getClassLoader()));
-    AppMethodBeat.o(131278);
+    AppMethodBeat.i(46553);
+    this.bRZ = paramParcel.readInt();
+    this.jXD = ((AppBrandLocalVideoObject)paramParcel.readParcelable(AppBrandLocalVideoObject.class.getClassLoader()));
+    AppMethodBeat.o(46553);
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(131279);
-    paramParcel.writeInt(this.bpE);
-    paramParcel.writeParcelable(this.hRH, paramInt);
-    AppMethodBeat.o(131279);
+    AppMethodBeat.i(46554);
+    paramParcel.writeInt(this.bRZ);
+    paramParcel.writeParcelable(this.jXD, paramInt);
+    AppMethodBeat.o(46554);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.JsApiChooseVideo.ChooseResult
  * JD-Core Version:    0.7.0.1
  */

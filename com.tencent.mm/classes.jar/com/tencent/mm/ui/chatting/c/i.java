@@ -1,165 +1,176 @@
 package com.tencent.mm.ui.chatting.c;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.ViewStub;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.m;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.t;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.chatting.c.b.d;
-import com.tencent.mm.ui.chatting.d.a;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.chatting.c.b.h;
+import com.tencent.mm.ui.l;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public final class i
+  implements h, l
 {
-  public static ViewStub a(MMFragment paramMMFragment, int paramInt)
+  private HashSet<l> Gtq;
+  
+  public i()
   {
-    AppMethodBeat.i(31303);
-    paramMMFragment = (ViewStub)paramMMFragment.findViewById(paramInt);
-    if (paramMMFragment != null) {
-      paramMMFragment.inflate();
-    }
-    AppMethodBeat.o(31303);
-    return paramMMFragment;
+    AppMethodBeat.i(35179);
+    this.Gtq = new HashSet();
+    AppMethodBeat.o(35179);
   }
   
-  public static void a(a parama, bi parambi, Intent paramIntent)
+  public final void a(l paraml)
   {
-    AppMethodBeat.i(31299);
-    if ((parama == null) || (parambi == null))
-    {
-      AppMethodBeat.o(31299);
-      return;
+    AppMethodBeat.i(35180);
+    if (!this.Gtq.contains(paraml)) {
+      this.Gtq.add(paraml);
     }
-    String str1 = parama.getTalkerUserName();
-    String str2 = b(parama, parambi);
-    Bundle localBundle = new Bundle();
-    int i;
-    if (parama.dJF()) {
-      i = 2;
-    }
-    for (;;)
-    {
-      localBundle.putInt("stat_scene", i);
-      localBundle.putString("stat_msg_id", "msg_" + Long.toString(parambi.field_msgSvrId));
-      localBundle.putString("stat_chat_talker_username", str1);
-      localBundle.putString("stat_send_msg_user", str2);
-      paramIntent.putExtra("_stat_obj", localBundle);
-      AppMethodBeat.o(31299);
-      return;
-      if (t.nU(str1)) {
-        i = 7;
-      } else {
-        i = 1;
-      }
-    }
+    AppMethodBeat.o(35180);
   }
   
-  public static boolean ac(ad paramad)
+  public final void b(l paraml)
   {
-    AppMethodBeat.i(31302);
-    if ((paramad.field_username.equals("medianote")) && ((r.Zr() & 0x4000) == 0))
-    {
-      AppMethodBeat.o(31302);
-      return true;
-    }
-    AppMethodBeat.o(31302);
-    return false;
+    AppMethodBeat.i(35181);
+    this.Gtq.remove(paraml);
+    AppMethodBeat.o(35181);
   }
   
-  public static boolean atT(String paramString)
+  public final void eQA()
   {
-    AppMethodBeat.i(31305);
-    int j;
-    int i;
-    if ((!t.nT(paramString)) && (m.ni(paramString)) && (!r.nB(paramString)))
+    AppMethodBeat.i(35182);
+    long l1 = System.currentTimeMillis();
+    Iterator localIterator = new HashSet(this.Gtq).iterator();
+    while (localIterator.hasNext())
     {
-      aw.aaz();
-      ad localad = c.YA().arw(paramString);
-      if (localad == null) {
-        break label126;
+      l locall = (l)localIterator.next();
+      long l2 = System.currentTimeMillis();
+      locall.eQA();
+      long l3 = System.currentTimeMillis();
+      if (ad.getLogLevel() == 0) {
+        ad.v("MicroMsg.ChattingLifecycleObserver", "[onChattingInit] listener:%s cost:%sms", new Object[] { locall.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
       }
-      j = localad.field_type;
-      aw.aaz();
-      localad = c.YA().arw(localad.field_encryptUsername);
-      if (localad == null) {
-        break label121;
-      }
-      i = localad.field_type;
     }
-    for (;;)
-    {
-      ab.i("MicroMsg.ChattingUI.ChattingLogic", "isStranger:%s type:%d etype:%d", new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(i) });
-      AppMethodBeat.o(31305);
-      return true;
-      AppMethodBeat.o(31305);
-      return false;
-      label121:
-      i = -1;
-      continue;
-      label126:
-      i = -1;
-      j = -1;
-    }
+    ad.i("MicroMsg.ChattingLifecycleObserver", "[onChattingInit]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    AppMethodBeat.o(35182);
   }
   
-  private static String b(a parama, bi parambi)
+  public final void eQB()
   {
-    AppMethodBeat.i(31300);
-    String str = parama.txj.field_username;
-    boolean bool = ((d)parama.ay(d.class)).dHv();
-    if ((!parama.dJF()) && (!bool))
+    AppMethodBeat.i(35183);
+    long l1 = System.currentTimeMillis();
+    Iterator localIterator = new HashSet(this.Gtq).iterator();
+    while (localIterator.hasNext())
     {
-      AppMethodBeat.o(31300);
-      return str;
-    }
-    if (parama.dJF())
-    {
-      parama = bf.pu(parambi.field_content);
-      if ((str == null) || (parama == null) || (parama.length() <= 0)) {
-        break label98;
+      l locall = (l)localIterator.next();
+      long l2 = System.currentTimeMillis();
+      locall.eQB();
+      long l3 = System.currentTimeMillis();
+      if (ad.getLogLevel() == 0) {
+        ad.v("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimStart] listener:%s cost:%sms", new Object[] { locall.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
       }
     }
-    for (;;)
-    {
-      AppMethodBeat.o(31300);
-      return parama;
-      if (parambi != null) {
-        parama = parambi.field_bizChatUserId;
-      } else {
-        label98:
-        parama = str;
-      }
-    }
+    ad.i("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimStart]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    AppMethodBeat.o(35183);
   }
   
-  public static boolean e(bi parambi, String paramString)
+  public final void eQC()
   {
-    AppMethodBeat.i(31301);
-    if ((System.currentTimeMillis() - parambi.field_createTime > 259200000L) && ((bo.isNullOrNil(paramString)) || (!e.cN(paramString))))
+    AppMethodBeat.i(35184);
+    long l1 = System.currentTimeMillis();
+    Iterator localIterator = new HashSet(this.Gtq).iterator();
+    while (localIterator.hasNext())
     {
-      AppMethodBeat.o(31301);
-      return true;
+      l locall = (l)localIterator.next();
+      long l2 = System.currentTimeMillis();
+      locall.eQC();
+      long l3 = System.currentTimeMillis();
+      if (ad.getLogLevel() == 0) {
+        ad.v("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimEnd] listener:%s cost:%sms", new Object[] { locall.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
+      }
     }
-    AppMethodBeat.o(31301);
-    return false;
+    ad.i("MicroMsg.ChattingLifecycleObserver", "[onChattingEnterAnimEnd]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    AppMethodBeat.o(35184);
+  }
+  
+  public final void eQD()
+  {
+    AppMethodBeat.i(35185);
+    long l1 = System.currentTimeMillis();
+    Iterator localIterator = new HashSet(this.Gtq).iterator();
+    while (localIterator.hasNext())
+    {
+      l locall = (l)localIterator.next();
+      long l2 = System.currentTimeMillis();
+      locall.eQD();
+      long l3 = System.currentTimeMillis();
+      if (ad.getLogLevel() == 0) {
+        ad.v("MicroMsg.ChattingLifecycleObserver", "[onChattingResume] listener:%s cost:%sms", new Object[] { locall.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
+      }
+    }
+    ad.i("MicroMsg.ChattingLifecycleObserver", "[onChattingResume]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    AppMethodBeat.o(35185);
+  }
+  
+  public final void eQE()
+  {
+    AppMethodBeat.i(35186);
+    long l1 = System.currentTimeMillis();
+    Iterator localIterator = new HashSet(this.Gtq).iterator();
+    while (localIterator.hasNext())
+    {
+      l locall = (l)localIterator.next();
+      long l2 = System.currentTimeMillis();
+      locall.eQE();
+      long l3 = System.currentTimeMillis();
+      if (ad.getLogLevel() == 0) {
+        ad.v("MicroMsg.ChattingLifecycleObserver", "[onChattingPause] listener:%s cost:%sms", new Object[] { locall.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
+      }
+    }
+    ad.i("MicroMsg.ChattingLifecycleObserver", "[onChattingPause]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    AppMethodBeat.o(35186);
+  }
+  
+  public final void eQF()
+  {
+    AppMethodBeat.i(35187);
+    long l1 = System.currentTimeMillis();
+    Iterator localIterator = new HashSet(this.Gtq).iterator();
+    while (localIterator.hasNext())
+    {
+      l locall = (l)localIterator.next();
+      long l2 = System.currentTimeMillis();
+      locall.eQF();
+      long l3 = System.currentTimeMillis();
+      if (ad.getLogLevel() == 0) {
+        ad.v("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimStart] listener:%s cost:%sms", new Object[] { locall.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
+      }
+    }
+    ad.i("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimStart]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    AppMethodBeat.o(35187);
+  }
+  
+  public final void eQG()
+  {
+    AppMethodBeat.i(35188);
+    long l1 = System.currentTimeMillis();
+    Iterator localIterator = new HashSet(this.Gtq).iterator();
+    while (localIterator.hasNext())
+    {
+      l locall = (l)localIterator.next();
+      long l2 = System.currentTimeMillis();
+      locall.eQG();
+      long l3 = System.currentTimeMillis();
+      if (ad.getLogLevel() == 0) {
+        ad.v("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimEnd] listener:%s cost:%sms", new Object[] { locall.getClass().getSimpleName(), Long.valueOf(l3 - l2) });
+      }
+    }
+    ad.i("MicroMsg.ChattingLifecycleObserver", "[onChattingExitAnimEnd]cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    AppMethodBeat.o(35188);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c.i
  * JD-Core Version:    0.7.0.1
  */

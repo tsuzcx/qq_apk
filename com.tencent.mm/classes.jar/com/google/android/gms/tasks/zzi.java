@@ -14,11 +14,11 @@ final class zzi<TResult>
   
   public zzi(Executor paramExecutor, OnCompleteListener<TResult> paramOnCompleteListener)
   {
-    AppMethodBeat.i(57393);
+    AppMethodBeat.i(13392);
     this.mLock = new Object();
     this.zzafk = paramExecutor;
     this.zzafs = paramOnCompleteListener;
-    AppMethodBeat.o(57393);
+    AppMethodBeat.o(13392);
   }
   
   public final void cancel()
@@ -32,16 +32,16 @@ final class zzi<TResult>
   
   public final void onComplete(Task<TResult> paramTask)
   {
-    AppMethodBeat.i(57394);
+    AppMethodBeat.i(13393);
     synchronized (this.mLock)
     {
       if (this.zzafs == null)
       {
-        AppMethodBeat.o(57394);
+        AppMethodBeat.o(13393);
         return;
       }
       this.zzafk.execute(new zzj(this, paramTask));
-      AppMethodBeat.o(57394);
+      AppMethodBeat.o(13393);
       return;
     }
   }

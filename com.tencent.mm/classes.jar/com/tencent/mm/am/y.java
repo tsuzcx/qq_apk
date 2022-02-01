@@ -1,0 +1,105 @@
+package com.tencent.mm.am;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.n;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.protocal.protobuf.aqt;
+import com.tencent.mm.protocal.protobuf.aqu;
+import com.tencent.mm.sdk.platformtools.ad;
+import org.json.JSONObject;
+
+public final class y
+  extends n
+  implements k
+{
+  private com.tencent.mm.al.g callback;
+  private Object data;
+  public com.tencent.mm.al.b rr;
+  
+  private y(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(124132);
+    Object localObject = new b.a();
+    ((b.a)localObject).gUU = new aqt();
+    ((b.a)localObject).gUV = new aqu();
+    ((b.a)localObject).uri = "/cgi-bin/mmocbiz-bin/getbizjsapiresult";
+    ((b.a)localObject).funcId = 1285;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).atI();
+    localObject = (aqt)this.rr.gUS.gUX;
+    ((aqt)localObject).DaJ = paramString1;
+    ((aqt)localObject).BX = 1;
+    ((aqt)localObject).data = paramString2;
+    this.data = null;
+    AppMethodBeat.o(124132);
+  }
+  
+  public static void a(com.tencent.mm.al.g paramg)
+  {
+    AppMethodBeat.i(124129);
+    com.tencent.mm.kernel.g.afA().gcy.a(1285, paramg);
+    AppMethodBeat.o(124129);
+  }
+  
+  public static void b(com.tencent.mm.al.g paramg)
+  {
+    AppMethodBeat.i(124130);
+    com.tencent.mm.kernel.g.afA().gcy.b(1285, paramg);
+    AppMethodBeat.o(124130);
+  }
+  
+  public static boolean n(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(124131);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("brand_user_name", paramString2);
+      localJSONObject.put("bizchat_id", paramString3);
+      paramString1 = new y(paramString1, localJSONObject.toString());
+      boolean bool = com.tencent.mm.kernel.g.afA().gcy.a(paramString1, 0);
+      AppMethodBeat.o(124131);
+      return bool;
+    }
+    catch (Exception paramString1)
+    {
+      AppMethodBeat.o(124131);
+    }
+    return false;
+  }
+  
+  public final int doScene(e parame, com.tencent.mm.al.g paramg)
+  {
+    AppMethodBeat.i(124134);
+    this.callback = paramg;
+    ad.i("MicroMsg.NetSceneGetBizJsApiResult", "do scene");
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(124134);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 1285;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(124133);
+    ad.d("MicroMsg.NetSceneGetBizJsApiResult", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(124133);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+ * Qualified Name:     com.tencent.mm.am.y
+ * JD-Core Version:    0.7.0.1
+ */

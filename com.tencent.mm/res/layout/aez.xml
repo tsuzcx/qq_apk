@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/xm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="79.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.constraint.Placeholder android:id="@id/dcu" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="dn" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toTopOf="dn" />
-    <android.support.constraint.Placeholder android:id="@id/dcv" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintTop_toTopOf="dn" />
-    <android.support.constraint.Placeholder android:id="@id/dcw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintTop_toBottomOf="@id/dcv" />
-    <android.support.constraint.Placeholder android:id="@id/dcx" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="@id/dcv" app:layout_constraintRight_toRightOf="dn" />
-    <android.support.constraint.Placeholder android:id="@id/dcy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.5dip" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toBottomOf="@id/dcv" />
-    <com.tencent.mm.ui.widget.MMNeat7extView android:ellipsize="end" android:id="@id/b2z" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toTopOf="dn" />
-    <TextView android:ellipsize="end" android:id="@id/dcz" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintRight_toRightOf="dn" app:layout_constraintTop_toTopOf="dn" />
-    <TextView android:id="@id/ct9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bkn" android:includeFontPadding="false" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintTop_toBottomOf="@id/b2z" />
-    <ImageView android:id="@id/dd0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" app:layout_constraintLeft_toLeftOf="dn" app:layout_constraintTop_toBottomOf="@id/b2z" />
-</merge>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="20.0dip" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/ckq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="20.0dip" android:textColor="@color/y4" android:id="@id/cko" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="" />
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginRight="20.0dip" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/FG_1" />
+    </LinearLayout>
+    <View android:layout_gravity="bottom" android:id="@id/ckp" android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="20.0dip" />
+</LinearLayout>

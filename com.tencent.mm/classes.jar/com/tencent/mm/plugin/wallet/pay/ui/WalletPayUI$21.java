@@ -12,20 +12,20 @@ final class WalletPayUI$21
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(46059);
-    paramView = this.tXt;
-    if (!this.tXt.isChecked()) {}
+    AppMethodBeat.i(69410);
+    paramView = this.zRG;
+    if (!this.zRG.isChecked()) {}
     for (boolean bool = true;; bool = false)
     {
       paramView.setChecked(bool);
-      AppMethodBeat.o(46059);
+      AppMethodBeat.o(69410);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletPayUI.21
  * JD-Core Version:    0.7.0.1
  */

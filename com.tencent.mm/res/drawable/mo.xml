@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <corners android:bottomRightRadius="@dimen/gc" />
-            <solid android:color="@color/a34" />
-        </shape>
-    </item>
-    <item>
-        <shape android:shape="rectangle">
-            <corners android:bottomRightRadius="@dimen/gc" />
-            <solid android:color="@color/a3x" />
-        </shape>
-    </item>
+    <item android:state_focused="true" android:state_pressed="true" android:drawable="@raw/icons_outlined_emoji" />
+    <item android:state_focused="false" android:state_pressed="true" android:drawable="@raw/icons_outlined_emoji" />
+    <item android:drawable="@raw/icons_outlined_emoji" />
 </selector>

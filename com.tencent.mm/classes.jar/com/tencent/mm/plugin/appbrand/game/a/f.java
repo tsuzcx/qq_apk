@@ -1,62 +1,35 @@
 package com.tencent.mm.plugin.appbrand.game.a;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.expt.a.b.a;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigWxbct;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "TAG", "", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "enableKv", "getActuallyConfig", "getConfig", "()Ljava/lang/Boolean;", "getConfigDefaultValue", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigNativeBufferType;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableKv", "getConfigDefaultValue", "onProcessConfig", "input", "plugin-appbrand-integration_release"})
 public final class f
-  extends g<Boolean>
+  extends n<String>
 {
-  public static final f hst;
+  public static final f jqf;
   
   static
   {
-    AppMethodBeat.i(134628);
-    hst = new f();
-    AppMethodBeat.o(134628);
+    AppMethodBeat.i(50373);
+    jqf = new f();
+    AppMethodBeat.o(50373);
   }
   
-  public static final boolean aAy()
+  protected final b.a aWA()
   {
-    AppMethodBeat.i(134627);
-    if (!((Boolean)hst.Uw()).booleanValue())
-    {
-      ab.i("WAGameConfigWxbct", "getActuallyConfig self == false");
-      AppMethodBeat.o(134627);
-      return false;
-    }
-    int i = ((Number)a.a(a.a.lUW, Integer.valueOf(0))).intValue();
-    if (i == 0)
-    {
-      ab.i("WAGameConfigWxbct", "getActuallyConfig gcfactor == 0");
-      AppMethodBeat.o(134627);
-      return false;
-    }
-    ab.i("WAGameConfigWxbct", "getActuallyConfig gcfactor != 0 [" + i + "], enable wxbct");
-    AppMethodBeat.o(134627);
-    return true;
+    return b.a.pvx;
   }
   
-  protected final String aAs()
+  protected final String aWz()
   {
-    return "wxbct";
-  }
-  
-  protected final a.a aAt()
-  {
-    return a.a.lVa;
-  }
-  
-  protected final boolean aAu()
-  {
-    return true;
+    return "nativebuffertype";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a.f
  * JD-Core Version:    0.7.0.1
  */

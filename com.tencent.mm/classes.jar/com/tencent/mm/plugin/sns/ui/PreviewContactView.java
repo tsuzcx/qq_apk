@@ -22,48 +22,48 @@ public class PreviewContactView
 {
   private final Context context;
   private List<String> list;
-  private TableLayout rKk;
-  private final Map<Integer, View> rKl;
+  private TableLayout xqO;
+  private final Map<Integer, View> xqP;
   @SuppressLint({"UseSparseArrays"})
-  private final Map<Integer, TableRow> rKm;
-  private int rKn;
+  private final Map<Integer, TableRow> xqQ;
+  private int xqR;
   
   public PreviewContactView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(38509);
+    AppMethodBeat.i(98190);
     this.list = new ArrayList();
-    this.rKl = new HashMap();
-    this.rKm = new HashMap();
-    this.rKn = 5;
+    this.xqP = new HashMap();
+    this.xqQ = new HashMap();
+    this.xqR = 5;
     this.context = paramContext;
-    this.rKk = ((TableLayout)LayoutInflater.from(this.context).inflate(2130970856, this, true).findViewById(2131820946));
-    AppMethodBeat.o(38509);
+    this.xqO = ((TableLayout)LayoutInflater.from(this.context).inflate(2131495580, this, true).findViewById(2131298739));
+    AppMethodBeat.o(98190);
   }
   
   public void setImageClick(a parama) {}
   
   public void setLineNum(int paramInt)
   {
-    AppMethodBeat.i(38510);
-    this.rKn = paramInt;
+    AppMethodBeat.i(98191);
+    this.xqR = paramInt;
     setList(this.list);
-    AppMethodBeat.o(38510);
+    AppMethodBeat.o(98191);
   }
   
   public void setList(List<String> paramList)
   {
-    AppMethodBeat.i(38511);
+    AppMethodBeat.i(98192);
     if (paramList == null)
     {
-      AppMethodBeat.o(38511);
+      AppMethodBeat.o(98192);
       return;
     }
     this.list = paramList;
-    this.rKk.removeAllViews();
+    this.xqO.removeAllViews();
     if (paramList.size() == 0)
     {
-      AppMethodBeat.o(38511);
+      AppMethodBeat.o(98192);
       return;
     }
     int m = paramList.size();
@@ -72,29 +72,29 @@ public class PreviewContactView
     TableRow localTableRow;
     if (i < m)
     {
-      localTableRow = (TableRow)this.rKm.get(Integer.valueOf(j));
+      localTableRow = (TableRow)this.xqQ.get(Integer.valueOf(j));
       if (localTableRow != null) {
         break label284;
       }
       localTableRow = new TableRow(this.context);
-      this.rKm.put(Integer.valueOf(j), localTableRow);
+      this.xqQ.put(Integer.valueOf(j), localTableRow);
     }
     label284:
     for (;;)
     {
       localTableRow.removeAllViews();
       int k = 0;
-      while ((k < this.rKn) && (i < m))
+      while ((k < this.xqR) && (i < m))
       {
-        Object localObject2 = (View)this.rKl.get(Integer.valueOf(i));
+        Object localObject2 = (View)this.xqP.get(Integer.valueOf(i));
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
-          localObject1 = View.inflate(this.context, 2130970855, null);
-          this.rKl.put(Integer.valueOf(i), localObject1);
+          localObject1 = View.inflate(this.context, 2131495579, null);
+          this.xqP.put(Integer.valueOf(i), localObject1);
         }
         localObject2 = (String)paramList.get(i);
-        ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131822812);
+        ImageView localImageView = (ImageView)((View)localObject1).findViewById(2131301202);
         localImageView.setBackgroundDrawable(null);
         a.b.c(localImageView, (String)localObject2);
         ((View)localObject1).setTag(Integer.valueOf(0));
@@ -103,10 +103,10 @@ public class PreviewContactView
         k += 1;
         i += 1;
       }
-      this.rKk.addView(localTableRow);
+      this.xqO.addView(localTableRow);
       j += 1;
       break;
-      AppMethodBeat.o(38511);
+      AppMethodBeat.o(98192);
       return;
     }
   }
@@ -115,7 +115,7 @@ public class PreviewContactView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.PreviewContactView
  * JD-Core Version:    0.7.0.1
  */

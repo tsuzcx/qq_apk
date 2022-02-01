@@ -13,19 +13,19 @@ public class TextMessageConfirmUI
   extends MMAvatarActivity
   implements g
 {
-  private String abU;
-  private TextView agW;
-  private DelayedConfirmationView agX;
+  private String afv;
+  private TextView aky;
+  private DelayedConfirmationView akz;
   
-  public final void eU()
+  public final void fk()
   {
-    this.agX.a(null);
-    h.mc().a(new f(this, (byte)0));
+    this.akz.a(null);
+    h.mP().a(new f(this, (byte)0));
   }
   
-  public final void eV()
+  public final void fl()
   {
-    this.agX.a(null);
+    this.akz.a(null);
     finish();
   }
   
@@ -37,24 +37,24 @@ public class TextMessageConfirmUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.abU = getIntent().getStringExtra("key_text");
-    this.agW = ((TextView)findViewById(2131558522));
-    this.agX = ((DelayedConfirmationView)findViewById(2131558523));
-    this.agW.setText(this.abU);
-    this.agX.eP();
-    this.agX.eM();
-    this.agX.eO();
-    this.agX.eQ();
-    this.agX.eT();
-    this.agX.start();
-    this.agX.a(this);
-    N(getUsername());
+    this.afv = getIntent().getStringExtra("key_text");
+    this.aky = ((TextView)findViewById(2131558523));
+    this.akz = ((DelayedConfirmationView)findViewById(2131558524));
+    this.aky.setText(this.afv);
+    this.akz.ff();
+    this.akz.fc();
+    this.akz.fe();
+    this.akz.fg();
+    this.akz.fj();
+    this.akz.start();
+    this.akz.a(this);
+    U(getUsername());
   }
   
   protected void onStop()
   {
     super.onStop();
-    this.agX.a(null);
+    this.akz.a(null);
   }
 }
 

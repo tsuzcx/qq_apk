@@ -6,10 +6,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.c;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class a
-  extends h
+  extends k
 {
   public a(Context paramContext, c paramc, ViewGroup paramViewGroup)
   {
@@ -18,13 +18,13 @@ public abstract class a
   
   protected final void a(LinearLayout paramLinearLayout)
   {
-    Object localObject = (c)this.rve;
+    Object localObject = (c)this.xab;
     if (paramLinearLayout == null) {
       return;
     }
-    int i = Double.compare(((c)localObject).rrR, ((c)localObject).rrS);
-    int m = (int)((c)localObject).rrR;
-    int n = (int)((c)localObject).rrS;
+    int i = Double.compare(((c)localObject).wVz, ((c)localObject).wVA);
+    int m = (int)((c)localObject).wVz;
+    int n = (int)((c)localObject).wVA;
     int k;
     if (i == 0)
     {
@@ -38,7 +38,7 @@ public abstract class a
     }
     for (;;)
     {
-      ab.i("AdLandingBorderedComp", "border width top %d,bottom %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
+      ad.i("AdLandingBorderedComp", "border width top %d,bottom %d", new Object[] { Integer.valueOf(i), Integer.valueOf(k) });
       if (i > 0)
       {
         localLinearLayout = new LinearLayout(paramLinearLayout.getContext());
@@ -60,7 +60,7 @@ public abstract class a
       if (m == 0)
       {
         j = m;
-        if (((c)localObject).rrR != 0.0D) {
+        if (((c)localObject).wVz != 0.0D) {
           j = 1;
         }
       }
@@ -70,7 +70,7 @@ public abstract class a
       {
         k = n;
         i = j;
-        if (((c)localObject).rrS != 0.0D)
+        if (((c)localObject).wVA != 0.0D)
         {
           k = 1;
           i = j;

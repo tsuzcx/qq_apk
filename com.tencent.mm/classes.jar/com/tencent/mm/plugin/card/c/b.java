@@ -5,19 +5,19 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface b
   extends a
 {
-  public abstract boolean bcu();
+  public abstract boolean bJs();
   
-  public abstract boolean bcv();
+  public abstract boolean bJt();
   
-  public abstract String bcw();
+  public abstract String bJu();
   
-  public abstract int bcx();
+  public abstract int bJv();
   
-  public abstract boolean sX(int paramInt);
+  public abstract boolean yQ(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.c.b
  * JD-Core Version:    0.7.0.1
  */

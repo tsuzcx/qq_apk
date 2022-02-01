@@ -1,55 +1,59 @@
 package com.tencent.mm.plugin.webview.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fp;
+import com.tencent.mm.g.c.gn;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends fp
+  extends gn
 {
   protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(5623);
+    AppMethodBeat.i(77827);
     c.a locala = new c.a();
-    locala.yrK = new Field[7];
-    locala.columns = new String[8];
+    locala.EYt = new Field[8];
+    locala.columns = new String[9];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "appId";
-    locala.yrM.put("appId", "TEXT");
+    locala.EYv.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "appIdKey";
-    locala.yrM.put("appIdKey", "TEXT PRIMARY KEY ");
+    locala.EYv.put("appIdKey", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" appIdKey TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.yrL = "appIdKey";
+    locala.EYu = "appIdKey";
     locala.columns[2] = "value";
-    locala.yrM.put("value", "TEXT");
+    locala.EYv.put("value", "TEXT");
     localStringBuilder.append(" value TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "weight";
-    locala.yrM.put("weight", "TEXT");
+    locala.EYv.put("weight", "TEXT");
     localStringBuilder.append(" weight TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "expireTime";
-    locala.yrM.put("expireTime", "LONG");
+    locala.EYv.put("expireTime", "LONG");
     localStringBuilder.append(" expireTime LONG");
     localStringBuilder.append(", ");
     locala.columns[5] = "timeStamp";
-    locala.yrM.put("timeStamp", "LONG");
+    locala.EYv.put("timeStamp", "LONG");
     localStringBuilder.append(" timeStamp LONG");
     localStringBuilder.append(", ");
     locala.columns[6] = "size";
-    locala.yrM.put("size", "LONG");
+    locala.EYv.put("size", "LONG");
     localStringBuilder.append(" size LONG");
-    locala.columns[7] = "rowid";
+    localStringBuilder.append(", ");
+    locala.columns[7] = "localFile";
+    locala.EYv.put("localFile", "TEXT");
+    localStringBuilder.append(" localFile TEXT");
+    locala.columns[8] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    AppMethodBeat.o(5623);
+    AppMethodBeat.o(77827);
   }
   
   public final c.a getDBInfo()
@@ -59,7 +63,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.b.a
  * JD-Core Version:    0.7.0.1
  */

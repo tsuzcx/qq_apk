@@ -1,20 +1,21 @@
 package com.tencent.mm.plugin.story.proxy;
 
-import a.l;
-import com.tencent.mm.plugin.story.h.d;
-import com.tencent.mm.protocal.protobuf.chj;
-import com.tencent.mm.protocal.protobuf.chk;
+import com.tencent.mm.protocal.protobuf.chx;
+import com.tencent.mm.protocal.protobuf.cyl;
+import d.l;
+import java.util.List;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/proxy/IProxyAction;", "", "commitStory", "", "storyEditorData", "Lcom/tencent/mm/plugin/story/storage/StoryEditorData;", "thumbPath", "", "location", "Lcom/tencent/mm/protocal/protobuf/StoryLocation;", "isCaptureVideo", "", "editorInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaEditorInfo;", "isImageVideo", "scope", "favorite", "videoPath", "mediaDes", "get", "key", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "defva", "getAccPath", "getRecommendMusic", "", "imageData", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protobuf/ByteString;", "latitude", "", "longitude", "requestId", "", "callback", "Lkotlin/Function4;", "Lcom/tencent/mm/protocal/protobuf/GetRecommendedMusicResponse;", "getRecommendMusicCallback", "errType", "errCode", "errMsg", "respBytes", "", "getVideoPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "set", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/proxy/IProxyAction;", "", "commitStory", "", "taskId", "", "thumbPath", "location", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "captureInfo", "Lcom/tencent/mm/protocal/protobuf/CommonCaptureParams;", "editorInfo", "Lcom/tencent/mm/protocal/protobuf/StoryMediaEditorInfo;", "scope", "groupList", "", "blackList", "videoPath", "mediaDes", "isCaptureVideo", "", "favorite", "get", "key", "Lcom/tencent/mm/storage/ConstantsStorage$BusinessInfoKey;", "defva", "getAccPath", "getVideoPara", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "set", "", "plugin-story_release"})
 public abstract interface a
 {
-  public abstract int commitStory(d paramd, String paramString, chj paramchj, boolean paramBoolean1, chk paramchk, boolean paramBoolean2, int paramInt1, int paramInt2);
+  public abstract int commitStory(String paramString1, String paramString2, String paramString3, chx paramchx, boolean paramBoolean, cyl paramcyl, int paramInt1, int paramInt2, List<String> paramList1, List<String> paramList2);
   
-  public abstract int commitStory(String paramString1, String paramString2, String paramString3, chj paramchj, boolean paramBoolean, chk paramchk, int paramInt1, int paramInt2);
+  @l(fvt={1, 1, 16})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.proxy.a
  * JD-Core Version:    0.7.0.1
  */

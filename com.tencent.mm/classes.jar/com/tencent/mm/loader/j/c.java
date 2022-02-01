@@ -2,29 +2,29 @@ package com.tencent.mm.loader.j;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class c
 {
-  public static c eQB = new c(null);
+  public static c gmh = new c(null);
   protected final SharedPreferences sp;
   
   protected c(SharedPreferences paramSharedPreferences)
   {
     if (paramSharedPreferences == null)
     {
-      this.sp = ah.getContext().getSharedPreferences(ah.dsP(), 0);
+      this.sp = aj.getContext().getSharedPreferences(aj.eFD(), 0);
       return;
     }
     this.sp = paramSharedPreferences;
   }
   
-  public final SharedPreferences Ul()
+  public final SharedPreferences ajf()
   {
     return this.sp;
   }
   
-  public final String Y(String paramString1, String paramString2)
+  public final String ao(String paramString1, String paramString2)
   {
     return this.sp.getString(paramString1, paramString2);
   }

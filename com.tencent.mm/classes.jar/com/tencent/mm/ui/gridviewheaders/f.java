@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.gridviewheaders;
 
+import android.database.DataSetObserver;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -13,104 +14,138 @@ public final class f
   extends BaseAdapter
   implements b
 {
-  private e Apl;
-  private List<f.b> Apm;
+  private e HjH;
+  private List<b> HjI;
   
   public f(e parame)
   {
-    AppMethodBeat.i(107414);
-    this.Apl = parame;
-    parame.registerDataSetObserver(new f.a(this, (byte)0));
-    this.Apm = a(parame);
-    AppMethodBeat.o(107414);
+    AppMethodBeat.i(142848);
+    this.HjH = parame;
+    parame.registerDataSetObserver(new a((byte)0));
+    this.HjI = a(parame);
+    AppMethodBeat.o(142848);
   }
   
-  public final int QG(int paramInt)
+  public final int ZX(int paramInt)
   {
-    AppMethodBeat.i(107416);
+    AppMethodBeat.i(142850);
     try
     {
-      paramInt = ((f.b)this.Apm.get(paramInt)).mCount;
-      AppMethodBeat.o(107416);
+      paramInt = ((b)this.HjI.get(paramInt)).mCount;
+      AppMethodBeat.o(142850);
       return paramInt;
     }
     catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
     {
-      AppMethodBeat.o(107416);
+      AppMethodBeat.o(142850);
     }
     return 0;
   }
   
   public final View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107417);
-    paramView = this.Apl.a(((f.b)this.Apm.get(paramInt)).Apo, paramView, paramViewGroup);
-    AppMethodBeat.o(107417);
+    AppMethodBeat.i(142851);
+    paramView = this.HjH.a(((b)this.HjI.get(paramInt)).HjK, paramView, paramViewGroup);
+    AppMethodBeat.o(142851);
     return paramView;
   }
   
-  protected final List<f.b> a(e parame)
+  protected final List<b> a(e parame)
   {
-    AppMethodBeat.i(107422);
+    AppMethodBeat.i(142856);
     HashMap localHashMap = new HashMap();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < parame.getCount())
     {
-      long l = parame.tC(i);
-      f.b localb2 = (f.b)localHashMap.get(Long.valueOf(l));
-      f.b localb1 = localb2;
+      long l = parame.zw(i);
+      b localb2 = (b)localHashMap.get(Long.valueOf(l));
+      b localb1 = localb2;
       if (localb2 == null)
       {
-        localb1 = new f.b(this, i);
+        localb1 = new b(i);
         localArrayList.add(localb1);
       }
       localb1.mCount += 1;
       localHashMap.put(Long.valueOf(l), localb1);
       i += 1;
     }
-    AppMethodBeat.o(107422);
+    AppMethodBeat.o(142856);
     return localArrayList;
   }
   
-  public final int dNk()
+  public final int fcY()
   {
-    AppMethodBeat.i(107420);
-    int i = this.Apm.size();
-    AppMethodBeat.o(107420);
+    AppMethodBeat.i(142854);
+    int i = this.HjI.size();
+    AppMethodBeat.o(142854);
     return i;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(107415);
-    int i = this.Apl.getCount();
-    AppMethodBeat.o(107415);
+    AppMethodBeat.i(142849);
+    int i = this.HjH.getCount();
+    AppMethodBeat.o(142849);
     return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(107418);
-    Object localObject = this.Apl.getItem(paramInt);
-    AppMethodBeat.o(107418);
+    AppMethodBeat.i(142852);
+    Object localObject = this.HjH.getItem(paramInt);
+    AppMethodBeat.o(142852);
     return localObject;
   }
   
   public final long getItemId(int paramInt)
   {
-    AppMethodBeat.i(107419);
-    long l = this.Apl.getItemId(paramInt);
-    AppMethodBeat.o(107419);
+    AppMethodBeat.i(142853);
+    long l = this.HjH.getItemId(paramInt);
+    AppMethodBeat.o(142853);
     return l;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107421);
-    paramView = this.Apl.getView(paramInt, paramView, paramViewGroup);
-    AppMethodBeat.o(107421);
+    AppMethodBeat.i(142855);
+    paramView = this.HjH.getView(paramInt, paramView, paramViewGroup);
+    AppMethodBeat.o(142855);
     return paramView;
+  }
+  
+  final class a
+    extends DataSetObserver
+  {
+    private a() {}
+    
+    public final void onChanged()
+    {
+      AppMethodBeat.i(142846);
+      f.a(f.this, f.this.a(f.a(f.this)));
+      f.this.notifyDataSetChanged();
+      AppMethodBeat.o(142846);
+    }
+    
+    public final void onInvalidated()
+    {
+      AppMethodBeat.i(142847);
+      f.a(f.this, f.this.a(f.a(f.this)));
+      f.this.notifyDataSetInvalidated();
+      AppMethodBeat.o(142847);
+    }
+  }
+  
+  final class b
+  {
+    int HjK;
+    int mCount;
+    
+    public b(int paramInt)
+    {
+      this.HjK = paramInt;
+      this.mCount = 0;
+    }
   }
 }
 

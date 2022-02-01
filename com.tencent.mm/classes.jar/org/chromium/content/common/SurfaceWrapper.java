@@ -14,9 +14,23 @@ public class SurfaceWrapper
   
   static
   {
-    AppMethodBeat.i(139547);
-    CREATOR = new SurfaceWrapper.1();
-    AppMethodBeat.o(139547);
+    AppMethodBeat.i(53751);
+    CREATOR = new Parcelable.Creator()
+    {
+      public final SurfaceWrapper createFromParcel(Parcel paramAnonymousParcel)
+      {
+        AppMethodBeat.i(53755);
+        paramAnonymousParcel = new SurfaceWrapper((Surface)Surface.CREATOR.createFromParcel(paramAnonymousParcel));
+        AppMethodBeat.o(53755);
+        return paramAnonymousParcel;
+      }
+      
+      public final SurfaceWrapper[] newArray(int paramAnonymousInt)
+      {
+        return new SurfaceWrapper[paramAnonymousInt];
+      }
+    };
+    AppMethodBeat.o(53751);
   }
   
   public SurfaceWrapper(Surface paramSurface)
@@ -36,14 +50,14 @@ public class SurfaceWrapper
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(139546);
+    AppMethodBeat.i(53750);
     this.mSurface.writeToParcel(paramParcel, 0);
-    AppMethodBeat.o(139546);
+    AppMethodBeat.o(53750);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.chromium.content.common.SurfaceWrapper
  * JD-Core Version:    0.7.0.1
  */

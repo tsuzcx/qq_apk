@@ -6,107 +6,107 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class ObservableSurfaceView
   extends SurfaceView
   implements SurfaceHolder.Callback
 {
-  protected SurfaceHolder hgd;
-  private a tqN;
-  protected boolean tqO;
-  protected boolean tqP;
-  protected boolean tqQ;
+  protected SurfaceHolder jao;
+  private a yYP;
+  protected boolean yYQ;
+  protected boolean yYR;
+  protected boolean yYS;
   
   public ObservableSurfaceView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(50956);
-    this.tqN = null;
-    this.tqO = false;
-    this.tqP = false;
-    this.tqQ = false;
+    AppMethodBeat.i(127126);
+    this.yYP = null;
+    this.yYQ = false;
+    this.yYR = false;
+    this.yYS = false;
     init();
-    AppMethodBeat.o(50956);
+    AppMethodBeat.o(127126);
   }
   
   public ObservableSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(50957);
-    this.tqN = null;
-    this.tqO = false;
-    this.tqP = false;
-    this.tqQ = false;
+    AppMethodBeat.i(127127);
+    this.yYP = null;
+    this.yYQ = false;
+    this.yYR = false;
+    this.yYS = false;
     init();
-    AppMethodBeat.o(50957);
+    AppMethodBeat.o(127127);
   }
   
   public ObservableSurfaceView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(50958);
-    this.tqN = null;
-    this.tqO = false;
-    this.tqP = false;
-    this.tqQ = false;
+    AppMethodBeat.i(127128);
+    this.yYP = null;
+    this.yYQ = false;
+    this.yYR = false;
+    this.yYS = false;
     init();
-    AppMethodBeat.o(50958);
+    AppMethodBeat.o(127128);
   }
   
   private void init()
   {
-    AppMethodBeat.i(50959);
-    this.hgd = getHolder();
-    this.hgd.addCallback(this);
-    AppMethodBeat.o(50959);
+    AppMethodBeat.i(127129);
+    this.jao = getHolder();
+    this.jao.addCallback(this);
+    AppMethodBeat.o(127129);
   }
   
-  public final boolean cLd()
+  public final boolean dQT()
   {
-    return this.tqO;
+    return this.yYQ;
   }
   
   public SurfaceHolder getSurfaceHolder()
   {
-    return this.hgd;
+    return this.jao;
   }
   
   public void setNeedSetType(boolean paramBoolean)
   {
-    AppMethodBeat.i(50960);
-    this.tqQ = paramBoolean;
-    if (this.tqQ) {
-      this.hgd.setType(3);
+    AppMethodBeat.i(127130);
+    this.yYS = paramBoolean;
+    if (this.yYS) {
+      this.jao.setType(3);
     }
-    AppMethodBeat.o(50960);
+    AppMethodBeat.o(127130);
   }
   
   public void setSurfaceChangeCallback(a parama)
   {
-    AppMethodBeat.i(50961);
-    this.tqN = parama;
-    if (this.tqQ) {
-      this.hgd.setType(3);
+    AppMethodBeat.i(127131);
+    this.yYP = parama;
+    if (this.yYS) {
+      this.jao.setType(3);
     }
-    AppMethodBeat.o(50961);
+    AppMethodBeat.o(127131);
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(50962);
-    ab.d("MicroMsg.ObservableSurfaceView", "surfaceChanged");
-    this.tqP = true;
+    AppMethodBeat.i(127132);
+    ad.d("MicroMsg.ObservableSurfaceView", "surfaceChanged");
+    this.yYR = true;
     try
     {
-      this.hgd.removeCallback(this);
+      this.jao.removeCallback(this);
       label27:
-      this.hgd = paramSurfaceHolder;
-      this.hgd.addCallback(this);
-      if (this.tqN != null) {
-        this.tqN.a(this.hgd);
+      this.jao = paramSurfaceHolder;
+      this.jao.addCallback(this);
+      if (this.yYP != null) {
+        this.yYP.a(this.jao);
       }
-      AppMethodBeat.o(50962);
+      AppMethodBeat.o(127132);
       return;
     }
     catch (Exception localException)
@@ -117,18 +117,18 @@ public class ObservableSurfaceView
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.tqO = true;
+    this.yYQ = true;
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    this.tqO = false;
-    this.tqP = false;
+    this.yYQ = false;
+    this.yYR = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.video.ObservableSurfaceView
  * JD-Core Version:    0.7.0.1
  */

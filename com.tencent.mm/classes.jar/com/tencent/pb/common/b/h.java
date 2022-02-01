@@ -3,25 +3,25 @@ package com.tencent.pb.common.b;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import com.tencent.pb.common.c.b;
 import com.tencent.pb.common.c.c;
-import com.tencent.pb.common.c.d;
 
 public final class h
 {
-  public static boolean Bdv = true;
-  private static long Bdw = -1L;
-  public static h.a Bdx = h.a.Bdz;
-  private static h.a Bdy = h.a.Bdz;
+  public static boolean Ikq = true;
+  private static long Ikr = -1L;
+  public static h.a Iks = h.a.Iku;
+  private static h.a Ikt = h.a.Iku;
   
-  private static NetworkInfo dTI()
+  private static NetworkInfo flp()
   {
     NetworkInfo localNetworkInfo;
     try
     {
-      ConnectivityManager localConnectivityManager = (ConnectivityManager)d.tFk.getSystemService("connectivity");
+      ConnectivityManager localConnectivityManager = (ConnectivityManager)c.ztG.getSystemService("connectivity");
       if (localConnectivityManager == null)
       {
-        c.w("getSystemService(Context.CONNECTIVITY_SERVICE) null", new Object[0]);
+        b.w("getSystemService(Context.CONNECTIVITY_SERVICE) null", new Object[0]);
         return null;
       }
     }
@@ -41,7 +41,7 @@ public final class h
     {
       for (;;)
       {
-        c.w("getActiveNetworkInfo exception:", new Object[] { localThrowable });
+        b.w("getActiveNetworkInfo exception:", new Object[] { localThrowable });
         Object localObject = null;
       }
     }
@@ -51,7 +51,7 @@ public final class h
   {
     try
     {
-      NetworkInfo localNetworkInfo = dTI();
+      NetworkInfo localNetworkInfo = flp();
       if (localNetworkInfo == null) {
         return false;
       }
@@ -64,7 +64,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.pb.common.b.h
  * JD-Core Version:    0.7.0.1
  */

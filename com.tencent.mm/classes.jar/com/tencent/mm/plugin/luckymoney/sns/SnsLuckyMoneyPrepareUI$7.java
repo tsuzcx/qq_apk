@@ -12,19 +12,19 @@ final class SnsLuckyMoneyPrepareUI$7
   
   public final void run()
   {
-    AppMethodBeat.i(42513);
-    SnsLuckyMoneyPrepareUI.l(this.oqN).setVisibility(0);
+    AppMethodBeat.i(65368);
+    SnsLuckyMoneyPrepareUI.l(this.tgR).setVisibility(0);
     ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
     localScaleAnimation.setDuration(800L);
     localScaleAnimation.setStartOffset(200L);
     localScaleAnimation.setInterpolator(new BounceInterpolator());
-    this.oqN.findViewById(2131825802).startAnimation(localScaleAnimation);
-    AppMethodBeat.o(42513);
+    this.tgR.findViewById(2131301906).startAnimation(localScaleAnimation);
+    AppMethodBeat.o(65368);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.sns.SnsLuckyMoneyPrepareUI.7
  * JD-Core Version:    0.7.0.1
  */

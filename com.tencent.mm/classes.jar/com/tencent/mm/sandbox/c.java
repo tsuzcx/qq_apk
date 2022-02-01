@@ -2,45 +2,45 @@ package com.tencent.mm.sandbox;
 
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class c
 {
-  private static c yjU;
-  private static Map<Integer, Boolean> yjV;
+  private static c ENv;
+  private static Map<Integer, Boolean> ENw;
   
   static
   {
-    AppMethodBeat.i(28778);
-    yjU = null;
-    yjV = new HashMap();
-    AppMethodBeat.o(28778);
+    AppMethodBeat.i(32577);
+    ENv = null;
+    ENw = new HashMap();
+    AppMethodBeat.o(32577);
   }
   
-  public static void m(int paramInt, Object paramObject)
+  public static void o(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(28776);
-    ab.i("MicroMsg.SandBoxCore", "regLifeCycle, id=" + paramInt + ", class=%s", new Object[] { paramObject.getClass().getName() });
-    yjV.put(Integer.valueOf(paramInt), Boolean.TRUE);
-    ab.i("MicroMsg.SandBoxCore", "regLifeCycle, map size=" + yjV.size());
-    AppMethodBeat.o(28776);
+    AppMethodBeat.i(32575);
+    ad.i("MicroMsg.SandBoxCore", "regLifeCycle, id=" + paramInt + ", class=%s", new Object[] { paramObject.getClass().getName() });
+    ENw.put(Integer.valueOf(paramInt), Boolean.TRUE);
+    ad.i("MicroMsg.SandBoxCore", "regLifeCycle, map size=" + ENw.size());
+    AppMethodBeat.o(32575);
   }
   
-  public static void n(int paramInt, Object paramObject)
+  public static void p(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(28777);
-    ab.i("MicroMsg.SandBoxCore", "unregLifeCycle, id=" + paramInt + ", class=%s", new Object[] { paramObject.getClass().getName() });
-    yjV.remove(Integer.valueOf(paramInt));
-    ab.i("MicroMsg.SandBoxCore", "unregLifeCycle, map size=" + yjV.size());
-    if (yjV.size() == 0)
+    AppMethodBeat.i(32576);
+    ad.i("MicroMsg.SandBoxCore", "unregLifeCycle, id=" + paramInt + ", class=%s", new Object[] { paramObject.getClass().getName() });
+    ENw.remove(Integer.valueOf(paramInt));
+    ad.i("MicroMsg.SandBoxCore", "unregLifeCycle, map size=" + ENw.size());
+    if (ENw.size() == 0)
     {
       Process.killProcess(Process.myPid());
-      ab.w("MicroMsg.SandBoxCore", "Sandbox exit Now.");
-      ab.dsJ();
+      ad.w("MicroMsg.SandBoxCore", "Sandbox exit Now.");
+      ad.eFx();
     }
-    AppMethodBeat.o(28777);
+    AppMethodBeat.o(32576);
   }
 }
 

@@ -3,80 +3,81 @@ package com.tencent.mm.plugin.choosemsgfile.b.c;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.v;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.choosemsgfile.ui.c;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.List;
 
 public abstract class a
   extends RecyclerView.a
   implements g
 {
-  static g.b kFu;
-  protected List<com.tencent.mm.plugin.choosemsgfile.b.b.a> jfV;
-  private com.tencent.mm.plugin.choosemsgfile.ui.a kFr;
-  private boolean kFs;
-  g.a kFt;
+  static g.b nMv;
+  protected List<com.tencent.mm.plugin.choosemsgfile.b.b.a> lWb;
+  private c nMs;
+  private boolean nMt;
+  g.a nMu;
   
-  public a(com.tencent.mm.plugin.choosemsgfile.ui.a parama, List<com.tencent.mm.plugin.choosemsgfile.b.b.a> paramList)
+  public a(c paramc, List<com.tencent.mm.plugin.choosemsgfile.b.b.a> paramList)
   {
-    this.kFr = parama;
-    this.jfV = paramList;
-    this.kFs = com.tencent.mm.kernel.g.RL().isSDCardAvailable();
+    this.nMs = paramc;
+    this.lWb = paramList;
+    this.nMt = com.tencent.mm.kernel.g.afB().isSDCardAvailable();
   }
   
   public final void a(RecyclerView.v paramv, int paramInt)
   {
-    if (!this.kFs)
+    if (!this.nMt)
     {
-      ab.e("MicroMsg.BaseChooseFileAdapter", "[onBindViewHolder] isSDCardAvailable:%b", new Object[] { Boolean.valueOf(this.kFs) });
+      ad.e("MicroMsg.BaseChooseFileAdapter", "[onBindViewHolder] isSDCardAvailable:%b", new Object[] { Boolean.valueOf(this.nMt) });
       return;
     }
-    ty(paramInt).a(paramv, paramInt);
+    zs(paramInt).a(paramv, paramInt, zs(paramInt + 1));
   }
   
   public final void a(RecyclerView.v paramv, int paramInt, List paramList)
   {
-    ty(paramInt);
+    zs(paramInt);
     super.a(paramv, paramInt, paramList);
   }
   
   public final void a(boolean paramBoolean, com.tencent.mm.plugin.choosemsgfile.b.b.a parama, RecyclerView.v paramv)
   {
-    if (this.kFt != null) {
-      this.kFt.a(paramBoolean, parama, paramv);
+    if (this.nMu != null) {
+      this.nMu.a(paramBoolean, parama, paramv);
     }
   }
   
-  public final com.tencent.mm.plugin.choosemsgfile.ui.a bgw()
+  public final c bNH()
   {
-    return this.kFr;
+    return this.nMs;
   }
   
-  public boolean bgx()
+  public boolean bNI()
   {
     return false;
   }
   
   public final int getItemCount()
   {
-    return this.jfV.size();
+    return this.lWb.size();
   }
   
   public final int getItemViewType(int paramInt)
   {
-    return ty(paramInt).getType();
+    return zs(paramInt).getType();
   }
   
-  public final com.tencent.mm.plugin.choosemsgfile.b.b.a ty(int paramInt)
+  public final com.tencent.mm.plugin.choosemsgfile.b.b.a zs(int paramInt)
   {
-    if ((this.jfV == null) || (this.jfV.size() <= paramInt)) {
+    if ((this.lWb == null) || (this.lWb.size() <= paramInt)) {
       return null;
     }
-    return (com.tencent.mm.plugin.choosemsgfile.b.b.a)this.jfV.get(paramInt);
+    return (com.tencent.mm.plugin.choosemsgfile.b.b.a)this.lWb.get(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.c.a
  * JD-Core Version:    0.7.0.1
  */

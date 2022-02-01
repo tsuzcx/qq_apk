@@ -1,23 +1,13 @@
 package com.tencent.mm.api;
 
-import com.tencent.mm.pluginsdk.ui.chat.f;
+import com.tencent.mm.kernel.c.a;
 
-public class t
-  implements f
+public abstract interface t
+  extends a
 {
-  public a bWo;
+  public abstract void recordImage(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4);
   
-  public final void a(a parama)
-  {
-    this.bWo = parama;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void a(k paramk);
-    
-    public abstract void onHide();
-  }
+  public abstract void recordVideo(String paramString1, String paramString2, String paramString3, String paramString4);
 }
 
 

@@ -13,7 +13,7 @@ final class bs
   
   public final void a(zzbr paramzzbr)
   {
-    B(new ba(bj.bF(paramzzbr.statusCode), paramzzbr.Ty));
+    K(new ba(bj.ca(paramzzbr.statusCode), paramzzbr.Vn));
   }
 }
 

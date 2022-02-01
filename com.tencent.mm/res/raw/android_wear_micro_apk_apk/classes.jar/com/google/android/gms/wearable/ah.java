@@ -11,8 +11,8 @@ public final class ah
   {
     int i = c.b(paramParcel);
     c.a(paramParcel, 2, paramAsset.getData());
-    c.a(paramParcel, 3, paramAsset.kp());
-    c.a(paramParcel, 4, paramAsset.Sj, paramInt);
+    c.a(paramParcel, 3, paramAsset.ky());
+    c.a(paramParcel, 4, paramAsset.TY, paramInt);
     c.a(paramParcel, 5, paramAsset.uri, paramInt);
     c.v(paramParcel, i);
   }

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.masssend.ui.MassSendLayout android:id="@id/dln" style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dua" android:background="@null" android:layout_width="85.0dip" android:layout_height="85.0dip" android:layout_marginBottom="10.0dip" android:scaleType="fitXY" />
-    <TextView android:textSize="@dimen/dq" android:textColor="#ff353535" android:gravity="center" android:id="@id/dub" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:background="@color/in" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:background="@color/kh" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:id="@id/dli" android:paddingLeft="@dimen/jd" android:paddingTop="@dimen/jd" android:paddingRight="@dimen/jd" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/dlj" android:paddingLeft="@dimen/jd" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/jd" android:paddingBottom="@dimen/jd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:lineSpacingMultiplier="1.2" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <com.tencent.mm.pluginsdk.ui.chat.ChatFooter android:orientation="vertical" android:id="@id/dyn" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</com.tencent.mm.plugin.masssend.ui.MassSendLayout>

@@ -38,75 +38,75 @@ public final class DeviceProperties
   
   public static boolean isAuto(Context paramContext)
   {
-    AppMethodBeat.i(90174);
+    AppMethodBeat.i(5196);
     if (zzzt == null) {
       if ((!PlatformVersion.isAtLeastO()) || (!paramContext.getPackageManager().hasSystemFeature("android.hardware.type.automotive"))) {
-        break label52;
+        break label54;
       }
     }
-    label52:
+    label54:
     for (boolean bool = true;; bool = false)
     {
       zzzt = Boolean.valueOf(bool);
       bool = zzzt.booleanValue();
-      AppMethodBeat.o(90174);
+      AppMethodBeat.o(5196);
       return bool;
     }
   }
   
   public static boolean isChromeOsDevice(Context paramContext)
   {
-    AppMethodBeat.i(90178);
+    AppMethodBeat.i(5200);
     if (zzzs == null) {
       zzzs = Boolean.valueOf(paramContext.getPackageManager().hasSystemFeature("org.chromium.arc"));
     }
     boolean bool = zzzs.booleanValue();
-    AppMethodBeat.o(90178);
+    AppMethodBeat.o(5200);
     return bool;
   }
   
   public static boolean isIoT(Context paramContext)
   {
-    AppMethodBeat.i(90173);
+    AppMethodBeat.i(5195);
     if (zzzr == null) {
       if ((!paramContext.getPackageManager().hasSystemFeature("android.hardware.type.iot")) && (!paramContext.getPackageManager().hasSystemFeature("android.hardware.type.embedded"))) {
-        break label58;
+        break label60;
       }
     }
-    label58:
+    label60:
     for (boolean bool = true;; bool = false)
     {
       zzzr = Boolean.valueOf(bool);
       bool = zzzr.booleanValue();
-      AppMethodBeat.o(90173);
+      AppMethodBeat.o(5195);
       return bool;
     }
   }
   
   public static boolean isLatchsky(Context paramContext)
   {
-    AppMethodBeat.i(90172);
+    AppMethodBeat.i(5194);
     if (zzzp == null) {
       if ((!PlatformVersion.isAtLeastM()) || (!paramContext.getPackageManager().hasSystemFeature("cn.google.services"))) {
-        break label52;
+        break label54;
       }
     }
-    label52:
+    label54:
     for (boolean bool = true;; bool = false)
     {
       zzzp = Boolean.valueOf(bool);
       bool = zzzp.booleanValue();
-      AppMethodBeat.o(90172);
+      AppMethodBeat.o(5194);
       return bool;
     }
   }
   
   public static boolean isLowRamOrPreKitKat(Context paramContext)
   {
-    AppMethodBeat.i(90177);
+    AppMethodBeat.i(5199);
     if (Build.VERSION.SDK_INT < 19)
     {
-      AppMethodBeat.o(90177);
+      AppMethodBeat.o(5199);
       return true;
     }
     if (zzzq == null)
@@ -117,36 +117,36 @@ public final class DeviceProperties
       }
     }
     boolean bool = Objects.equal(zzzq, Boolean.TRUE);
-    AppMethodBeat.o(90177);
+    AppMethodBeat.o(5199);
     return bool;
   }
   
   public static boolean isPixelDevice(Context paramContext)
   {
-    AppMethodBeat.i(90179);
+    AppMethodBeat.i(5201);
     if (zzzv == null) {
       zzzv = Boolean.valueOf(paramContext.getPackageManager().hasSystemFeature("com.google.android.feature.PIXEL_EXPERIENCE"));
     }
     boolean bool = zzzv.booleanValue();
-    AppMethodBeat.o(90179);
+    AppMethodBeat.o(5201);
     return bool;
   }
   
   @TargetApi(21)
   public static boolean isSidewinder(Context paramContext)
   {
-    AppMethodBeat.i(90171);
+    AppMethodBeat.i(5193);
     if (zzzo == null) {
       if ((!PlatformVersion.isAtLeastLollipop()) || (!paramContext.getPackageManager().hasSystemFeature("cn.google"))) {
-        break label52;
+        break label54;
       }
     }
-    label52:
+    label54:
     for (boolean bool = true;; bool = false)
     {
       zzzo = Boolean.valueOf(bool);
       bool = zzzo.booleanValue();
-      AppMethodBeat.o(90171);
+      AppMethodBeat.o(5193);
       return bool;
     }
   }
@@ -154,17 +154,17 @@ public final class DeviceProperties
   public static boolean isTablet(Resources paramResources)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(90168);
+    AppMethodBeat.i(5190);
     if (paramResources == null)
     {
-      AppMethodBeat.o(90168);
+      AppMethodBeat.o(5190);
       return false;
     }
     int i;
     if (zzzl == null)
     {
       if ((paramResources.getConfiguration().screenLayout & 0xF) <= 3) {
-        break label119;
+        break label122;
       }
       i = 1;
       if (i == 0) {
@@ -172,13 +172,13 @@ public final class DeviceProperties
         {
           paramResources = paramResources.getConfiguration();
           if (((paramResources.screenLayout & 0xF) > 3) || (paramResources.smallestScreenWidthDp < 600)) {
-            break label124;
+            break label127;
           }
         }
       }
     }
-    label119:
-    label124:
+    label122:
+    label127:
     for (boolean bool1 = true;; bool1 = false)
     {
       zzzm = Boolean.valueOf(bool1);
@@ -188,7 +188,7 @@ public final class DeviceProperties
       }
       zzzl = Boolean.valueOf(bool1);
       bool1 = zzzl.booleanValue();
-      AppMethodBeat.o(90168);
+      AppMethodBeat.o(5190);
       return bool1;
       i = 0;
       break;
@@ -197,53 +197,53 @@ public final class DeviceProperties
   
   public static boolean isTv(Context paramContext)
   {
-    AppMethodBeat.i(90175);
+    AppMethodBeat.i(5197);
     if (zzzu == null)
     {
       paramContext = paramContext.getPackageManager();
       if ((!paramContext.hasSystemFeature("com.google.android.tv")) && (!paramContext.hasSystemFeature("android.hardware.type.television")) && (!paramContext.hasSystemFeature("android.software.leanback"))) {
-        break label66;
+        break label68;
       }
     }
-    label66:
+    label68:
     for (boolean bool = true;; bool = false)
     {
       zzzu = Boolean.valueOf(bool);
       bool = zzzu.booleanValue();
-      AppMethodBeat.o(90175);
+      AppMethodBeat.o(5197);
       return bool;
     }
   }
   
   public static boolean isUserBuild()
   {
-    AppMethodBeat.i(90176);
+    AppMethodBeat.i(5198);
     if (GooglePlayServicesUtilLight.sIsTestMode)
     {
       bool = GooglePlayServicesUtilLight.sTestIsUserBuild;
-      AppMethodBeat.o(90176);
+      AppMethodBeat.o(5198);
       return bool;
     }
     boolean bool = "user".equals(Build.TYPE);
-    AppMethodBeat.o(90176);
+    AppMethodBeat.o(5198);
     return bool;
   }
   
   @TargetApi(20)
   public static boolean isWearable(Context paramContext)
   {
-    AppMethodBeat.i(90169);
+    AppMethodBeat.i(5191);
     if (zzzn == null) {
       if ((!PlatformVersion.isAtLeastKitKatWatch()) || (!paramContext.getPackageManager().hasSystemFeature("android.hardware.type.watch"))) {
-        break label52;
+        break label54;
       }
     }
-    label52:
+    label54:
     for (boolean bool = true;; bool = false)
     {
       zzzn = Boolean.valueOf(bool);
       bool = zzzn.booleanValue();
-      AppMethodBeat.o(90169);
+      AppMethodBeat.o(5191);
       return bool;
     }
   }
@@ -251,13 +251,13 @@ public final class DeviceProperties
   @TargetApi(24)
   public static boolean isWearableWithoutPlayStore(Context paramContext)
   {
-    AppMethodBeat.i(90170);
+    AppMethodBeat.i(5192);
     if (((!PlatformVersion.isAtLeastN()) || (isSidewinder(paramContext))) && (isWearable(paramContext)))
     {
-      AppMethodBeat.o(90170);
+      AppMethodBeat.o(5192);
       return true;
     }
-    AppMethodBeat.o(90170);
+    AppMethodBeat.o(5192);
     return false;
   }
   
@@ -280,65 +280,65 @@ public final class DeviceProperties
   @VisibleForTesting
   public static void setIsAutoForTest(boolean paramBoolean)
   {
-    AppMethodBeat.i(90184);
+    AppMethodBeat.i(5206);
     zzzt = Boolean.valueOf(paramBoolean);
-    AppMethodBeat.o(90184);
+    AppMethodBeat.o(5206);
   }
   
   @VisibleForTesting
   public static void setIsIoTForTest(boolean paramBoolean)
   {
-    AppMethodBeat.i(90183);
+    AppMethodBeat.i(5205);
     zzzr = Boolean.valueOf(paramBoolean);
-    AppMethodBeat.o(90183);
+    AppMethodBeat.o(5205);
   }
   
   @VisibleForTesting
   public static void setIsLatchskyForTest(boolean paramBoolean)
   {
-    AppMethodBeat.i(90182);
+    AppMethodBeat.i(5204);
     zzzp = Boolean.valueOf(paramBoolean);
-    AppMethodBeat.o(90182);
+    AppMethodBeat.o(5204);
   }
   
   @VisibleForTesting
   public static void setIsLowRamForTest(boolean paramBoolean)
   {
-    AppMethodBeat.i(90186);
+    AppMethodBeat.i(5208);
     zzzq = Boolean.valueOf(paramBoolean);
-    AppMethodBeat.o(90186);
+    AppMethodBeat.o(5208);
   }
   
   @VisibleForTesting
   public static void setIsPixelForTest(boolean paramBoolean)
   {
-    AppMethodBeat.i(90187);
+    AppMethodBeat.i(5209);
     zzzv = Boolean.valueOf(paramBoolean);
-    AppMethodBeat.o(90187);
+    AppMethodBeat.o(5209);
   }
   
   @VisibleForTesting
   public static void setIsSideWinderForTest(boolean paramBoolean)
   {
-    AppMethodBeat.i(90181);
+    AppMethodBeat.i(5203);
     zzzo = Boolean.valueOf(paramBoolean);
-    AppMethodBeat.o(90181);
+    AppMethodBeat.o(5203);
   }
   
   @VisibleForTesting
   public static void setIsTvForTest(boolean paramBoolean)
   {
-    AppMethodBeat.i(90185);
+    AppMethodBeat.i(5207);
     zzzu = Boolean.valueOf(paramBoolean);
-    AppMethodBeat.o(90185);
+    AppMethodBeat.o(5207);
   }
   
   @VisibleForTesting
   public static void setIsWearableForTest(boolean paramBoolean)
   {
-    AppMethodBeat.i(90180);
+    AppMethodBeat.i(5202);
     zzzn = Boolean.valueOf(paramBoolean);
-    AppMethodBeat.o(90180);
+    AppMethodBeat.o(5202);
   }
 }
 

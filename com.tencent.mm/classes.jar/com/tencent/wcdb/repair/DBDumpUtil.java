@@ -11,10 +11,10 @@ public class DBDumpUtil
   
   public static String buildColumnsString(ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(12650);
+    AppMethodBeat.i(3336);
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
-      AppMethodBeat.o(12650);
+      AppMethodBeat.o(3336);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -31,15 +31,15 @@ public class DBDumpUtil
     localStringBuilder.append(")");
     paramArrayList = localStringBuilder.toString();
     System.out.println(paramArrayList);
-    AppMethodBeat.o(12650);
+    AppMethodBeat.o(3336);
     return paramArrayList;
   }
   
   public static boolean doRecoveryDb(SQLiteDatabase paramSQLiteDatabase, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(12648);
+    AppMethodBeat.i(3334);
     boolean bool = doRecoveryDb(paramSQLiteDatabase, paramString1, paramString2, paramString3, null, null, null, true);
-    AppMethodBeat.o(12648);
+    AppMethodBeat.o(3334);
     return bool;
   }
   
@@ -47,7 +47,7 @@ public class DBDumpUtil
   public static boolean doRecoveryDb(SQLiteDatabase paramSQLiteDatabase, String paramString1, String paramString2, String paramString3, java.util.List<String> paramList1, java.util.List<String> paramList2, ExecuteSqlCallback paramExecuteSqlCallback, boolean paramBoolean)
   {
     // Byte code:
-    //   0: sipush 12649
+    //   0: sipush 3335
     //   3: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: ifnull +10 -> 17
@@ -57,7 +57,7 @@ public class DBDumpUtil
     //   17: ldc 11
     //   19: ldc 91
     //   21: invokestatic 97	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   24: sipush 12649
+    //   24: sipush 3335
     //   27: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   30: iconst_0
     //   31: ireturn
@@ -66,7 +66,7 @@ public class DBDumpUtil
     //   34: aload_3
     //   35: invokestatic 101	com/tencent/wcdb/repair/DBDumpUtil:nativeDumpDB	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
     //   38: ifne +11 -> 49
-    //   41: sipush 12649
+    //   41: sipush 3335
     //   44: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   47: iconst_0
     //   48: ireturn
@@ -139,7 +139,7 @@ public class DBDumpUtil
     //   184: aload_3
     //   185: aastore
     //   186: invokestatic 140	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   189: sipush 12649
+    //   189: sipush 3335
     //   192: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   195: iconst_0
     //   196: ireturn
@@ -443,7 +443,7 @@ public class DBDumpUtil
     //   838: invokestatic 237	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   841: aastore
     //   842: invokestatic 181	com/tencent/wcdb/support/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   845: sipush 12649
+    //   845: sipush 3335
     //   848: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   851: iconst_1
     //   852: ireturn
@@ -453,18 +453,18 @@ public class DBDumpUtil
     //   858: invokestatic 97	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   861: aload 17
     //   863: invokevirtual 217	java/io/BufferedReader:close	()V
-    //   866: sipush 12649
+    //   866: sipush 3335
     //   869: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   872: iconst_0
     //   873: ireturn
     //   874: astore_0
     //   875: aload 17
     //   877: invokevirtual 217	java/io/BufferedReader:close	()V
-    //   880: sipush 12649
+    //   880: sipush 3335
     //   883: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   886: aload_0
     //   887: athrow
-    //   888: sipush 12649
+    //   888: sipush 3335
     //   891: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   894: iconst_0
     //   895: ireturn
@@ -600,7 +600,7 @@ public class DBDumpUtil
   
   public static ArrayList<String> getColumnNamesFromSql(String paramString)
   {
-    AppMethodBeat.i(12653);
+    AppMethodBeat.i(3339);
     ArrayList localArrayList = new ArrayList();
     paramString = paramString.substring(paramString.indexOf("(") + 1, paramString.lastIndexOf(")")).trim().split(",");
     int i = 0;
@@ -611,13 +611,13 @@ public class DBDumpUtil
       localArrayList.add(paramString[i].substring(0, j));
       i += 1;
     }
-    AppMethodBeat.o(12653);
+    AppMethodBeat.o(3339);
     return localArrayList;
   }
   
   public static String getTableNameFromSql(String paramString)
   {
-    AppMethodBeat.i(12651);
+    AppMethodBeat.i(3337);
     String str = paramString;
     if (paramString.length() > 100) {
       str = paramString.substring(0, 100);
@@ -626,10 +626,10 @@ public class DBDumpUtil
     if ((paramString != null) && (paramString.length > 1))
     {
       paramString = paramString[2].replaceAll("\"", "");
-      AppMethodBeat.o(12651);
+      AppMethodBeat.o(3337);
       return paramString;
     }
-    AppMethodBeat.o(12651);
+    AppMethodBeat.o(3337);
     return null;
   }
   
@@ -641,7 +641,7 @@ public class DBDumpUtil
   public static byte[] readFromFile(String paramString)
   {
     // Byte code:
-    //   0: sipush 12652
+    //   0: sipush 3338
     //   3: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: new 222	java/io/File
     //   9: dup
@@ -660,7 +660,7 @@ public class DBDumpUtil
     //   33: aload_0
     //   34: aastore
     //   35: invokestatic 140	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   38: sipush 12652
+    //   38: sipush 3338
     //   41: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   44: aconst_null
     //   45: areturn
@@ -704,13 +704,13 @@ public class DBDumpUtil
     //   105: invokestatic 140	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   108: aload_3
     //   109: invokevirtual 293	java/io/FileInputStream:close	()V
-    //   112: sipush 12652
+    //   112: sipush 3338
     //   115: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   118: aconst_null
     //   119: areturn
     //   120: aload_3
     //   121: invokevirtual 293	java/io/FileInputStream:close	()V
-    //   124: sipush 12652
+    //   124: sipush 3338
     //   127: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   130: aload 4
     //   132: areturn
@@ -724,7 +724,7 @@ public class DBDumpUtil
     //   144: ldc 11
     //   146: ldc_w 295
     //   149: invokestatic 298	com/tencent/wcdb/support/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   152: sipush 12652
+    //   152: sipush 3338
     //   155: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   158: aconst_null
     //   159: areturn
@@ -735,7 +735,7 @@ public class DBDumpUtil
     //   164: ifnull +7 -> 171
     //   167: aload_3
     //   168: invokevirtual 293	java/io/FileInputStream:close	()V
-    //   171: sipush 12652
+    //   171: sipush 3338
     //   174: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   177: aload_0
     //   178: athrow

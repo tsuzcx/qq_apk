@@ -10,10 +10,10 @@ public final class g
   static void a(zzah paramzzah, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramzzah.Hc);
-    c.c(paramParcel, 2, paramzzah.gZ());
-    c.c(paramParcel, 3, paramzzah.ha());
-    c.a(paramParcel, 4, paramzzah.hb(), paramInt);
+    c.c(paramParcel, 1, paramzzah.IR);
+    c.c(paramParcel, 2, paramzzah.hj());
+    c.c(paramParcel, 3, paramzzah.hk());
+    c.a(paramParcel, 4, paramzzah.hl(), paramInt);
     c.v(paramParcel, i);
   }
 }

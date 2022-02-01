@@ -1,612 +1,383 @@
 package android.support.v4.e;
 
-import java.lang.reflect.Array;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.NoSuchElementException;
-import java.util.Set;
 
-public abstract class h<K, V>
+public class h<K, V>
 {
-  h<K, V>.b EY;
-  h<K, V>.c EZ;
-  h<K, V>.e Fa;
+  private int createCount;
+  private int evictionCount;
+  private int hitCount;
+  private final LinkedHashMap<K, V> map;
+  private int maxSize;
+  private int missCount;
+  private int putCount;
+  private int size;
   
-  public static <K, V> boolean a(Map<K, V> paramMap, Collection<?> paramCollection)
+  public h(int paramInt)
   {
-    int i = paramMap.size();
-    Iterator localIterator = paramMap.keySet().iterator();
-    while (localIterator.hasNext()) {
-      if (!paramCollection.contains(localIterator.next())) {
-        localIterator.remove();
-      }
+    if (paramInt <= 0) {
+      throw new IllegalArgumentException("maxSize <= 0");
     }
-    return i != paramMap.size();
+    this.maxSize = paramInt;
+    this.map = new LinkedHashMap(0, 0.75F, true);
   }
   
-  public static <T> boolean a(Set<T> paramSet, Object paramObject)
+  private int safeSizeOf(K paramK, V paramV)
   {
-    if (paramSet == paramObject) {}
-    for (;;)
-    {
-      return true;
-      if ((paramObject instanceof Set))
-      {
-        paramObject = (Set)paramObject;
-        try
-        {
-          if (paramSet.size() == paramObject.size())
-          {
-            boolean bool = paramSet.containsAll(paramObject);
-            if (bool) {}
-          }
-          else
-          {
-            return false;
-          }
-        }
-        catch (NullPointerException paramSet)
-        {
-          return false;
-        }
-        catch (ClassCastException paramSet)
-        {
-          return false;
-        }
-      }
+    int i = sizeOf(paramK, paramV);
+    if (i < 0) {
+      throw new IllegalStateException("Negative size: " + paramK + "=" + paramV);
     }
-    return false;
+    return i;
   }
   
-  protected abstract int C(Object paramObject);
-  
-  protected abstract int D(Object paramObject);
-  
-  protected abstract void ao(int paramInt);
-  
-  public final Object[] as(int paramInt)
+  protected V create(K paramK)
   {
-    int j = dw();
-    Object[] arrayOfObject = new Object[j];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfObject[i] = q(i, paramInt);
-      i += 1;
-    }
-    return arrayOfObject;
+    return null;
   }
   
-  protected abstract V b(int paramInt, V paramV);
-  
-  public final <T> T[] b(T[] paramArrayOfT, int paramInt)
+  public final int createCount()
   {
-    int j = dw();
-    if (paramArrayOfT.length < j) {
-      paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), j);
-    }
-    for (;;)
+    try
     {
-      int i = 0;
-      while (i < j)
-      {
-        paramArrayOfT[i] = q(i, paramInt);
-        i += 1;
-      }
-      if (paramArrayOfT.length > j) {
-        paramArrayOfT[j] = null;
-      }
-      return paramArrayOfT;
-    }
-  }
-  
-  protected abstract void c(K paramK, V paramV);
-  
-  protected abstract int dw();
-  
-  protected abstract Map<K, V> dx();
-  
-  protected abstract void dy();
-  
-  public final Set<K> getKeySet()
-  {
-    if (this.EZ == null) {
-      this.EZ = new c();
-    }
-    return this.EZ;
-  }
-  
-  protected abstract Object q(int paramInt1, int paramInt2);
-  
-  final class a<T>
-    implements Iterator<T>
-  {
-    final int Fb;
-    boolean Fc = false;
-    int mIndex;
-    int mSize;
-    
-    a(int paramInt)
-    {
-      this.Fb = paramInt;
-      this.mSize = h.this.dw();
-    }
-    
-    public final boolean hasNext()
-    {
-      return this.mIndex < this.mSize;
-    }
-    
-    public final T next()
-    {
-      if (!hasNext()) {
-        throw new NoSuchElementException();
-      }
-      Object localObject = h.this.q(this.mIndex, this.Fb);
-      this.mIndex += 1;
-      this.Fc = true;
-      return localObject;
-    }
-    
-    public final void remove()
-    {
-      if (!this.Fc) {
-        throw new IllegalStateException();
-      }
-      this.mIndex -= 1;
-      this.mSize -= 1;
-      this.Fc = false;
-      h.this.ao(this.mIndex);
-    }
-  }
-  
-  final class b
-    implements Set<Map.Entry<K, V>>
-  {
-    b() {}
-    
-    public final boolean addAll(Collection<? extends Map.Entry<K, V>> paramCollection)
-    {
-      int i = h.this.dw();
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)paramCollection.next();
-        h.this.c(localEntry.getKey(), localEntry.getValue());
-      }
-      return i != h.this.dw();
-    }
-    
-    public final void clear()
-    {
-      h.this.dy();
-    }
-    
-    public final boolean contains(Object paramObject)
-    {
-      if (!(paramObject instanceof Map.Entry)) {}
-      int i;
-      do
-      {
-        return false;
-        paramObject = (Map.Entry)paramObject;
-        i = h.this.C(paramObject.getKey());
-      } while (i < 0);
-      return c.equal(h.this.q(i, 1), paramObject.getValue());
-    }
-    
-    public final boolean containsAll(Collection<?> paramCollection)
-    {
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext()) {
-        if (!contains(paramCollection.next())) {
-          return false;
-        }
-      }
-      return true;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      return h.a(this, paramObject);
-    }
-    
-    public final int hashCode()
-    {
-      int j = h.this.dw() - 1;
-      int i = 0;
-      if (j >= 0)
-      {
-        Object localObject1 = h.this.q(j, 0);
-        Object localObject2 = h.this.q(j, 1);
-        int k;
-        if (localObject1 == null)
-        {
-          k = 0;
-          label45:
-          if (localObject2 != null) {
-            break label76;
-          }
-        }
-        label76:
-        for (int m = 0;; m = localObject2.hashCode())
-        {
-          j -= 1;
-          i += (m ^ k);
-          break;
-          k = localObject1.hashCode();
-          break label45;
-        }
-      }
+      int i = this.createCount;
       return i;
     }
-    
-    public final boolean isEmpty()
+    finally
     {
-      return h.this.dw() == 0;
-    }
-    
-    public final Iterator<Map.Entry<K, V>> iterator()
-    {
-      return new h.d(h.this);
-    }
-    
-    public final boolean remove(Object paramObject)
-    {
-      throw new UnsupportedOperationException();
-    }
-    
-    public final boolean removeAll(Collection<?> paramCollection)
-    {
-      throw new UnsupportedOperationException();
-    }
-    
-    public final boolean retainAll(Collection<?> paramCollection)
-    {
-      throw new UnsupportedOperationException();
-    }
-    
-    public final int size()
-    {
-      return h.this.dw();
-    }
-    
-    public final Object[] toArray()
-    {
-      throw new UnsupportedOperationException();
-    }
-    
-    public final <T> T[] toArray(T[] paramArrayOfT)
-    {
-      throw new UnsupportedOperationException();
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  final class c
-    implements Set<K>
+  protected void entryRemoved(boolean paramBoolean, K paramK, V paramV1, V paramV2) {}
+  
+  public final void evictAll()
   {
-    c() {}
-    
-    public final boolean add(K paramK)
+    trimToSize(-1);
+  }
+  
+  public final int evictionCount()
+  {
+    try
     {
-      throw new UnsupportedOperationException();
+      int i = this.evictionCount;
+      return i;
     }
-    
-    public final boolean addAll(Collection<? extends K> paramCollection)
+    finally
     {
-      throw new UnsupportedOperationException();
-    }
-    
-    public final void clear()
-    {
-      h.this.dy();
-    }
-    
-    public final boolean contains(Object paramObject)
-    {
-      return h.this.C(paramObject) >= 0;
-    }
-    
-    public final boolean containsAll(Collection<?> paramCollection)
-    {
-      Map localMap = h.this.dx();
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext()) {
-        if (!localMap.containsKey(paramCollection.next())) {
-          return false;
-        }
-      }
-      return true;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      return h.a(this, paramObject);
-    }
-    
-    public final int hashCode()
-    {
-      int i = h.this.dw() - 1;
-      int j = 0;
-      if (i >= 0)
-      {
-        Object localObject = h.this.q(i, 0);
-        if (localObject == null) {}
-        for (int k = 0;; k = localObject.hashCode())
-        {
-          j += k;
-          i -= 1;
-          break;
-        }
-      }
-      return j;
-    }
-    
-    public final boolean isEmpty()
-    {
-      return h.this.dw() == 0;
-    }
-    
-    public final Iterator<K> iterator()
-    {
-      return new h.a(h.this, 0);
-    }
-    
-    public final boolean remove(Object paramObject)
-    {
-      int i = h.this.C(paramObject);
-      if (i >= 0)
-      {
-        h.this.ao(i);
-        return true;
-      }
-      return false;
-    }
-    
-    public final boolean removeAll(Collection<?> paramCollection)
-    {
-      Map localMap = h.this.dx();
-      int i = localMap.size();
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext()) {
-        localMap.remove(paramCollection.next());
-      }
-      return i != localMap.size();
-    }
-    
-    public final boolean retainAll(Collection<?> paramCollection)
-    {
-      return h.a(h.this.dx(), paramCollection);
-    }
-    
-    public final int size()
-    {
-      return h.this.dw();
-    }
-    
-    public final Object[] toArray()
-    {
-      return h.this.as(0);
-    }
-    
-    public final <T> T[] toArray(T[] paramArrayOfT)
-    {
-      return h.this.b(paramArrayOfT, 0);
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  final class d
-    implements Iterator<Map.Entry<K, V>>, Map.Entry<K, V>
+  public final V get(K paramK)
   {
-    int Fe = h.this.dw() - 1;
-    boolean Ff = false;
-    int mIndex = -1;
-    
-    d() {}
-    
-    public final boolean equals(Object paramObject)
+    if (paramK == null) {
+      throw new NullPointerException("key == null");
+    }
+    Object localObject1;
+    try
     {
-      if (!this.Ff) {
-        throw new IllegalStateException("This container does not support retaining Map.Entry objects");
-      }
-      if (!(paramObject instanceof Map.Entry)) {}
-      do
+      localObject1 = this.map.get(paramK);
+      if (localObject1 != null)
       {
-        return false;
-        paramObject = (Map.Entry)paramObject;
-      } while ((!c.equal(paramObject.getKey(), h.this.q(this.mIndex, 0))) || (!c.equal(paramObject.getValue(), h.this.q(this.mIndex, 1))));
-      return true;
-    }
-    
-    public final K getKey()
-    {
-      if (!this.Ff) {
-        throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+        this.hitCount += 1;
+        return localObject1;
       }
-      return h.this.q(this.mIndex, 0);
-    }
-    
-    public final V getValue()
-    {
-      if (!this.Ff) {
-        throw new IllegalStateException("This container does not support retaining Map.Entry objects");
+      this.missCount += 1;
+      localObject1 = create(paramK);
+      if (localObject1 == null) {
+        return null;
       }
-      return h.this.q(this.mIndex, 1);
     }
-    
-    public final boolean hasNext()
+    finally {}
+    try
     {
-      return this.mIndex < this.Fe;
-    }
-    
-    public final int hashCode()
-    {
-      int j = 0;
-      if (!this.Ff) {
-        throw new IllegalStateException("This container does not support retaining Map.Entry objects");
-      }
-      Object localObject1 = h.this.q(this.mIndex, 0);
-      Object localObject2 = h.this.q(this.mIndex, 1);
-      int i;
-      if (localObject1 == null)
-      {
-        i = 0;
-        if (localObject2 != null) {
-          break label69;
-        }
+      this.createCount += 1;
+      Object localObject2 = this.map.put(paramK, localObject1);
+      if (localObject2 != null) {
+        this.map.put(paramK, localObject2);
       }
       for (;;)
       {
-        return j ^ i;
-        i = localObject1.hashCode();
-        break;
-        label69:
-        j = localObject2.hashCode();
+        if (localObject2 == null) {
+          break;
+        }
+        entryRemoved(false, paramK, localObject1, localObject2);
+        return localObject2;
+        this.size += safeSizeOf(paramK, localObject1);
       }
+      trimToSize(this.maxSize);
     }
-    
-    public final void remove()
+    finally {}
+    return localObject1;
+  }
+  
+  public final int hitCount()
+  {
+    try
     {
-      if (!this.Ff) {
-        throw new IllegalStateException();
-      }
-      h.this.ao(this.mIndex);
-      this.mIndex -= 1;
-      this.Fe -= 1;
-      this.Ff = false;
+      int i = this.hitCount;
+      return i;
     }
-    
-    public final V setValue(V paramV)
+    finally
     {
-      if (!this.Ff) {
-        throw new IllegalStateException("This container does not support retaining Map.Entry objects");
-      }
-      return h.this.b(this.mIndex, paramV);
-    }
-    
-    public final String toString()
-    {
-      return getKey() + "=" + getValue();
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  final class e
-    implements Collection<V>
+  public final int maxSize()
   {
-    e() {}
-    
-    public final boolean add(V paramV)
+    try
     {
-      throw new UnsupportedOperationException();
+      int i = this.maxSize;
+      return i;
     }
-    
-    public final boolean addAll(Collection<? extends V> paramCollection)
+    finally
     {
-      throw new UnsupportedOperationException();
+      localObject = finally;
+      throw localObject;
     }
-    
-    public final void clear()
+  }
+  
+  public final int missCount()
+  {
+    try
     {
-      h.this.dy();
+      int i = this.missCount;
+      return i;
     }
-    
-    public final boolean contains(Object paramObject)
+    finally
     {
-      return h.this.D(paramObject) >= 0;
+      localObject = finally;
+      throw localObject;
     }
-    
-    public final boolean containsAll(Collection<?> paramCollection)
+  }
+  
+  public final V put(K paramK, V paramV)
+  {
+    if ((paramK == null) || (paramV == null)) {
+      throw new NullPointerException("key == null || value == null");
+    }
+    try
     {
-      paramCollection = paramCollection.iterator();
-      while (paramCollection.hasNext()) {
-        if (!contains(paramCollection.next())) {
-          return false;
-        }
+      this.putCount += 1;
+      this.size += safeSizeOf(paramK, paramV);
+      Object localObject = this.map.put(paramK, paramV);
+      if (localObject != null) {
+        this.size -= safeSizeOf(paramK, localObject);
       }
-      return true;
-    }
-    
-    public final boolean isEmpty()
-    {
-      return h.this.dw() == 0;
-    }
-    
-    public final Iterator<V> iterator()
-    {
-      return new h.a(h.this, 1);
-    }
-    
-    public final boolean remove(Object paramObject)
-    {
-      int i = h.this.D(paramObject);
-      if (i >= 0)
-      {
-        h.this.ao(i);
-        return true;
+      if (localObject != null) {
+        entryRemoved(false, paramK, localObject, paramV);
       }
-      return false;
+      trimToSize(this.maxSize);
+      return localObject;
     }
-    
-    public final boolean removeAll(Collection<?> paramCollection)
+    finally {}
+  }
+  
+  public final int putCount()
+  {
+    try
     {
-      int j = h.this.dw();
-      int i = 0;
-      boolean bool = false;
-      while (i < j)
-      {
-        int m = i;
-        int k = j;
-        if (paramCollection.contains(h.this.q(i, 1)))
-        {
-          h.this.ao(i);
-          m = i - 1;
-          k = j - 1;
-          bool = true;
-        }
-        i = m + 1;
-        j = k;
+      int i = this.putCount;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final V remove(K paramK)
+  {
+    if (paramK == null) {
+      throw new NullPointerException("key == null");
+    }
+    try
+    {
+      Object localObject = this.map.remove(paramK);
+      if (localObject != null) {
+        this.size -= safeSizeOf(paramK, localObject);
       }
-      return bool;
-    }
-    
-    public final boolean retainAll(Collection<?> paramCollection)
-    {
-      int j = h.this.dw();
-      int i = 0;
-      boolean bool = false;
-      while (i < j)
-      {
-        int m = i;
-        int k = j;
-        if (!paramCollection.contains(h.this.q(i, 1)))
-        {
-          h.this.ao(i);
-          m = i - 1;
-          k = j - 1;
-          bool = true;
-        }
-        i = m + 1;
-        j = k;
+      if (localObject != null) {
+        entryRemoved(false, paramK, localObject, null);
       }
-      return bool;
+      return localObject;
     }
-    
-    public final int size()
+    finally {}
+  }
+  
+  public void resize(int paramInt)
+  {
+    if (paramInt <= 0) {
+      throw new IllegalArgumentException("maxSize <= 0");
+    }
+    try
     {
-      return h.this.dw();
+      this.maxSize = paramInt;
+      trimToSize(paramInt);
+      return;
     }
-    
-    public final Object[] toArray()
+    finally {}
+  }
+  
+  public final int size()
+  {
+    try
     {
-      return h.this.as(1);
+      int i = this.size;
+      return i;
     }
-    
-    public final <T> T[] toArray(T[] paramArrayOfT)
+    finally
     {
-      return h.this.b(paramArrayOfT, 1);
+      localObject = finally;
+      throw localObject;
     }
+  }
+  
+  protected int sizeOf(K paramK, V paramV)
+  {
+    return 1;
+  }
+  
+  public final Map<K, V> snapshot()
+  {
+    try
+    {
+      LinkedHashMap localLinkedHashMap = new LinkedHashMap(this.map);
+      return localLinkedHashMap;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final String toString()
+  {
+    int i = 0;
+    try
+    {
+      int j = this.hitCount + this.missCount;
+      if (j != 0) {
+        i = this.hitCount * 100 / j;
+      }
+      String str = String.format(Locale.US, "LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.maxSize), Integer.valueOf(this.hitCount), Integer.valueOf(this.missCount), Integer.valueOf(i) });
+      return str;
+    }
+    finally {}
+  }
+  
+  /* Error */
+  public void trimToSize(int paramInt)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 104	android/support/v4/e/h:size	I
+    //   6: iflt +20 -> 26
+    //   9: aload_0
+    //   10: getfield 38	android/support/v4/e/h:map	Ljava/util/LinkedHashMap;
+    //   13: invokevirtual 145	java/util/LinkedHashMap:isEmpty	()Z
+    //   16: ifeq +48 -> 64
+    //   19: aload_0
+    //   20: getfield 104	android/support/v4/e/h:size	I
+    //   23: ifeq +41 -> 64
+    //   26: new 46	java/lang/IllegalStateException
+    //   29: dup
+    //   30: new 48	java/lang/StringBuilder
+    //   33: dup
+    //   34: invokespecial 146	java/lang/StringBuilder:<init>	()V
+    //   37: aload_0
+    //   38: invokevirtual 150	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   41: invokevirtual 155	java/lang/Class:getName	()Ljava/lang/String;
+    //   44: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: ldc 157
+    //   49: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   55: invokespecial 65	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   58: athrow
+    //   59: astore_2
+    //   60: aload_0
+    //   61: monitorexit
+    //   62: aload_2
+    //   63: athrow
+    //   64: aload_0
+    //   65: getfield 104	android/support/v4/e/h:size	I
+    //   68: iload_1
+    //   69: if_icmple +13 -> 82
+    //   72: aload_0
+    //   73: getfield 38	android/support/v4/e/h:map	Ljava/util/LinkedHashMap;
+    //   76: invokevirtual 145	java/util/LinkedHashMap:isEmpty	()Z
+    //   79: ifeq +6 -> 85
+    //   82: aload_0
+    //   83: monitorexit
+    //   84: return
+    //   85: aload_0
+    //   86: getfield 38	android/support/v4/e/h:map	Ljava/util/LinkedHashMap;
+    //   89: invokevirtual 161	java/util/LinkedHashMap:entrySet	()Ljava/util/Set;
+    //   92: invokeinterface 167 1 0
+    //   97: invokeinterface 173 1 0
+    //   102: checkcast 175	java/util/Map$Entry
+    //   105: astore_3
+    //   106: aload_3
+    //   107: invokeinterface 178 1 0
+    //   112: astore_2
+    //   113: aload_3
+    //   114: invokeinterface 181 1 0
+    //   119: astore_3
+    //   120: aload_0
+    //   121: getfield 38	android/support/v4/e/h:map	Ljava/util/LinkedHashMap;
+    //   124: aload_2
+    //   125: invokevirtual 114	java/util/LinkedHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   128: pop
+    //   129: aload_0
+    //   130: aload_0
+    //   131: getfield 104	android/support/v4/e/h:size	I
+    //   134: aload_0
+    //   135: aload_2
+    //   136: aload_3
+    //   137: invokespecial 106	android/support/v4/e/h:safeSizeOf	(Ljava/lang/Object;Ljava/lang/Object;)I
+    //   140: isub
+    //   141: putfield 104	android/support/v4/e/h:size	I
+    //   144: aload_0
+    //   145: aload_0
+    //   146: getfield 82	android/support/v4/e/h:evictionCount	I
+    //   149: iconst_1
+    //   150: iadd
+    //   151: putfield 82	android/support/v4/e/h:evictionCount	I
+    //   154: aload_0
+    //   155: monitorexit
+    //   156: aload_0
+    //   157: iconst_1
+    //   158: aload_2
+    //   159: aload_3
+    //   160: aconst_null
+    //   161: invokevirtual 102	android/support/v4/e/h:entryRemoved	(ZLjava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+    //   164: goto -164 -> 0
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	167	0	this	h
+    //   0	167	1	paramInt	int
+    //   59	4	2	localObject1	Object
+    //   112	47	2	localObject2	Object
+    //   105	55	3	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	26	59	finally
+    //   26	59	59	finally
+    //   60	62	59	finally
+    //   64	82	59	finally
+    //   82	84	59	finally
+    //   85	156	59	finally
   }
 }
 

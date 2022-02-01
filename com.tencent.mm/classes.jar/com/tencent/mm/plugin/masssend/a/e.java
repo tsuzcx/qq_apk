@@ -4,87 +4,87 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class e
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
   public int count;
-  public LinkedList<d> oBl;
+  public LinkedList<d> tvQ;
   
   public e()
   {
-    AppMethodBeat.i(22736);
-    this.oBl = new LinkedList();
-    AppMethodBeat.o(22736);
+    AppMethodBeat.i(26358);
+    this.tvQ = new LinkedList();
+    AppMethodBeat.o(26358);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(22737);
+    AppMethodBeat.i(26359);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.count);
-      paramVarArgs.e(2, 8, this.oBl);
-      AppMethodBeat.o(22737);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.count);
+      paramVarArgs.e(2, 8, this.tvQ);
+      AppMethodBeat.o(26359);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.bl(1, this.count);
-      i = e.a.a.a.c(2, 8, this.oBl);
-      AppMethodBeat.o(22737);
+      paramInt = f.a.a.b.b.a.bA(1, this.count);
+      i = f.a.a.a.c(2, 8, this.tvQ);
+      AppMethodBeat.o(26359);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.oBl.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      this.tvQ.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      AppMethodBeat.o(22737);
+      AppMethodBeat.o(26359);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
       e locale = (e)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(22737);
+        AppMethodBeat.o(26359);
         return -1;
       case 1: 
-        locale.count = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(22737);
+        locale.count = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(26359);
         return 0;
       }
-      paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+      paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
       i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
       {
         Object localObject2 = (byte[])paramVarArgs.get(paramInt);
         localObject1 = new d();
-        localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((d)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-        locale.oBl.add(localObject1);
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((d)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        locale.tvQ.add(localObject1);
         paramInt += 1;
       }
-      AppMethodBeat.o(22737);
+      AppMethodBeat.o(26359);
       return 0;
     }
-    AppMethodBeat.o(22737);
+    AppMethodBeat.o(26359);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.a.e
  * JD-Core Version:    0.7.0.1
  */

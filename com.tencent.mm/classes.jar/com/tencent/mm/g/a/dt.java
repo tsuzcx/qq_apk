@@ -1,13 +1,15 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import org.json.JSONArray;
 
 public final class dt
   extends b
 {
-  public dt.a crx;
-  public dt.b cry;
+  public a dfZ;
+  public b dga;
   
   public dt()
   {
@@ -16,17 +18,29 @@ public final class dt
   
   private dt(byte paramByte)
   {
-    AppMethodBeat.i(70155);
-    this.crx = new dt.a();
-    this.cry = new dt.b();
-    this.ymq = false;
+    AppMethodBeat.i(115985);
+    this.dfZ = new a();
+    this.dga = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70155);
+    AppMethodBeat.o(115985);
+  }
+  
+  public static final class a
+  {
+    public Context context;
+    public String dfM;
+  }
+  
+  public static final class b
+  {
+    public boolean dfO;
+    public JSONArray dgb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.dt
  * JD-Core Version:    0.7.0.1
  */

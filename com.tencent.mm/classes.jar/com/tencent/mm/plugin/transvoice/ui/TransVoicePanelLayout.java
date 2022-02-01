@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.transvoice.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.widget.InputPanelFrameLayout;
 
 public class TransVoicePanelLayout
   extends InputPanelFrameLayout
 {
-  TransVoicePanelLayout.a tqM;
+  a yYI;
   
   public TransVoicePanelLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,25 +21,30 @@ public class TransVoicePanelLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void p(boolean paramBoolean, int paramInt)
+  public final void g(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(155205);
-    super.p(paramBoolean, paramInt);
-    ab.d("TransVoicePanelLayout", "isKeyboardShow: %s, keyboardHeight: %d.", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
-    if (this.tqM != null) {
-      this.tqM.p(paramBoolean, paramInt);
+    AppMethodBeat.i(102632);
+    super.g(paramBoolean, paramInt);
+    ad.d("TransVoicePanelLayout", "isKeyboardShow: %s, keyboardHeight: %d.", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    if (this.yYI != null) {
+      this.yYI.g(paramBoolean, paramInt);
     }
-    AppMethodBeat.o(155205);
+    AppMethodBeat.o(102632);
   }
   
-  void setOnInputPanelChange(TransVoicePanelLayout.a parama)
+  void setOnInputPanelChange(a parama)
   {
-    this.tqM = parama;
+    this.yYI = parama;
+  }
+  
+  static abstract interface a
+  {
+    public abstract void g(boolean paramBoolean, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.transvoice.ui.TransVoicePanelLayout
  * JD-Core Version:    0.7.0.1
  */

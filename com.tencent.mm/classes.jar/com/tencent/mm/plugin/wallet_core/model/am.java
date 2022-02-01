@@ -3,13 +3,12 @@ package com.tencent.mm.plugin.wallet_core.model;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.platformtools.ae;
-import com.tencent.mm.plugin.wallet_core.d.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.wallet_core.d.k;
+import com.tencent.mm.protocal.protobuf.buc;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ae.a;
 import com.tencent.mm.wallet_core.ui.e.c;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,142 +19,143 @@ import org.json.JSONObject;
 
 public final class am
 {
+  public ArrayList<Bankcard> Aif;
+  private ArrayList<Bankcard> Aig;
+  public al Aih;
+  public Bankcard Aii;
+  public ak Aij;
+  public n Aik;
+  public b Ail;
+  private List<c> Aim;
+  public Bankcard Ain;
+  public buc Aio;
+  public long Aip;
+  long Aiq;
+  public long Air;
+  private String Ais;
+  public int Ait;
+  public String Aiu;
+  public String Aiv;
   public int mRetryCount;
-  public Bankcard tOD;
-  int tOb;
-  int tOc;
-  private ArrayList<Bankcard> tSX;
-  private ArrayList<Bankcard> tSY;
-  private ArrayList<Bankcard> ulL;
-  private ArrayList<Bankcard> ulM;
-  public al ulN;
-  public Bankcard ulO;
-  public ak ulP;
-  public p ulQ;
-  public c ulR;
-  private List<e> ulS;
-  public Bankcard ulT;
-  public long ulU;
-  long ulV;
-  public long ulW;
-  private String ulX;
-  public int ulY;
-  public String ulZ;
-  public String uma;
+  int zGB;
+  int zGC;
+  public Bankcard zHd;
+  private ArrayList<Bankcard> zNg;
+  private ArrayList<Bankcard> zNh;
   
   public am()
   {
-    AppMethodBeat.i(46964);
-    this.ulL = new ArrayList();
-    this.ulM = new ArrayList();
-    this.tSX = new ArrayList();
-    this.tSY = new ArrayList();
-    this.ulN = null;
-    this.ulO = null;
-    this.tOD = null;
-    this.ulP = null;
-    this.ulQ = null;
-    this.ulR = null;
-    this.ulS = new LinkedList();
-    this.ulT = null;
-    this.tOb = 0;
-    this.tOc = 0;
-    this.ulU = bo.aox();
-    this.ulV = 0L;
-    this.ulW = -1L;
-    this.ulX = "";
-    this.ulY = 10000;
+    AppMethodBeat.i(70494);
+    this.Aif = new ArrayList();
+    this.Aig = new ArrayList();
+    this.zNg = new ArrayList();
+    this.zNh = new ArrayList();
+    this.Aih = null;
+    this.Aii = null;
+    this.zHd = null;
+    this.Aij = null;
+    this.Aik = null;
+    this.Ail = null;
+    this.Aim = new LinkedList();
+    this.Ain = null;
+    this.zGB = 0;
+    this.zGC = 0;
+    this.Aip = bt.aGK();
+    this.Aiq = 0L;
+    this.Air = -1L;
+    this.Ais = "";
+    this.Ait = 10000;
     this.mRetryCount = 0;
-    this.ulZ = "";
-    this.uma = "";
-    cUz();
-    AppMethodBeat.o(46964);
+    this.Aiu = "";
+    this.Aiv = "";
+    ecT();
+    AppMethodBeat.o(70494);
   }
   
-  public static void afm(String paramString)
+  public static void atV(String paramString)
   {
-    AppMethodBeat.i(46992);
-    if (!bo.isNullOrNil(paramString))
+    AppMethodBeat.i(70523);
+    if (!bt.isNullOrNil(paramString))
     {
-      g.RM();
-      g.RL().Ru().set(196612, paramString);
+      g.afC();
+      g.afB().afk().set(196612, paramString);
     }
-    AppMethodBeat.o(46992);
+    AppMethodBeat.o(70523);
   }
   
-  private static void afn(String paramString)
+  private static void atW(String paramString)
   {
-    AppMethodBeat.i(46997);
+    AppMethodBeat.i(70528);
     if (paramString != null)
     {
-      g.RM();
-      g.RL().Ru().set(196633, paramString);
+      g.afC();
+      g.afB().afk().set(196633, paramString);
     }
-    AppMethodBeat.o(46997);
+    AppMethodBeat.o(70528);
   }
   
-  public static void afo(String paramString)
+  public static void atX(String paramString)
   {
-    AppMethodBeat.i(47000);
-    ab.i("MicroMsg.WalletUserInfoManger", "setSelectBindSerial %s %s", new Object[] { paramString, bo.dtY().toString() });
-    afn(paramString);
-    AppMethodBeat.o(47000);
+    AppMethodBeat.i(70532);
+    ad.i("MicroMsg.WalletUserInfoManger", "setSelectBindSerial %s %s", new Object[] { paramString, bt.eGN().toString() });
+    atW(paramString);
+    AppMethodBeat.o(70532);
   }
   
   @Deprecated
   private Bankcard b(ArrayList<Bankcard> paramArrayList, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AppMethodBeat.i(46995);
+    AppMethodBeat.i(70526);
     Object localObject1 = paramArrayList;
     if (paramArrayList == null) {
-      localObject1 = this.tSX;
+      localObject1 = this.zNg;
     }
     paramArrayList = paramString;
-    if (bo.isNullOrNil(paramString)) {
-      paramArrayList = cUO();
+    if (bt.isNullOrNil(paramString)) {
+      paramArrayList = edi();
     }
-    if ((paramBoolean1) && (this.tOD != null))
+    if ((paramBoolean1) && (this.zHd != null))
     {
-      if (cUm())
+      if (ecG())
       {
-        paramArrayList = this.tOD;
-        AppMethodBeat.o(46995);
+        paramArrayList = this.zHd;
+        AppMethodBeat.o(70526);
         return paramArrayList;
       }
-      if ((paramArrayList != null) && (paramArrayList.equals(this.tOD.field_bindSerial)))
+      if ((paramArrayList != null) && (paramArrayList.equals(this.zHd.field_bindSerial)))
       {
-        paramArrayList = this.tOD;
-        AppMethodBeat.o(46995);
+        paramArrayList = this.zHd;
+        AppMethodBeat.o(70526);
         return paramArrayList;
       }
-      if ((this.ulT != null) && (this.ulN != null) && (this.ulN.field_lqt_state == 1) && (paramArrayList != null) && (paramArrayList.equals(this.ulT.field_bindSerial)))
+      if ((this.Ain != null) && (this.Aih != null) && (this.Aih.field_lqt_state == 1) && (paramArrayList != null) && (paramArrayList.equals(this.Ain.field_bindSerial)))
       {
-        paramArrayList = this.ulT;
-        AppMethodBeat.o(46995);
+        paramArrayList = this.Ain;
+        AppMethodBeat.o(70526);
         return paramArrayList;
       }
-      if ((!cUn()) && ((localObject1 == null) || (((ArrayList)localObject1).size() == 0)))
+      if ((!ecH()) && ((localObject1 == null) || (((ArrayList)localObject1).size() == 0)))
       {
-        paramArrayList = this.tOD;
-        AppMethodBeat.o(46995);
+        paramArrayList = this.zHd;
+        AppMethodBeat.o(70526);
         return paramArrayList;
       }
     }
     if ((localObject1 == null) || (((ArrayList)localObject1).size() <= 0))
     {
-      ab.e("MicroMsg.WalletUserInfoManger", "not found bankcard!");
-      AppMethodBeat.o(46995);
+      ad.e("MicroMsg.WalletUserInfoManger", "not found bankcard!");
+      AppMethodBeat.o(70526);
       return null;
     }
     if ((((ArrayList)localObject1).size() == 1) && (paramBoolean2))
     {
-      ab.e("MicroMsg.WalletUserInfoManger", "only one bankcard!");
+      ad.e("MicroMsg.WalletUserInfoManger", "only one bankcard!");
       paramArrayList = (Bankcard)((ArrayList)localObject1).get(0);
-      AppMethodBeat.o(46995);
+      AppMethodBeat.o(70526);
       return paramArrayList;
     }
-    ab.i("MicroMsg.WalletUserInfoManger", "have multiple bankcards!");
-    if (!bo.isNullOrNil(paramArrayList))
+    ad.i("MicroMsg.WalletUserInfoManger", "have multiple bankcards!");
+    if (!bt.isNullOrNil(paramArrayList))
     {
       Object localObject2;
       Bankcard localBankcard;
@@ -171,145 +171,154 @@ public final class am
             }
             localObject2 = (Bankcard)paramString.next();
           } while ((localObject2 == null) || (!paramArrayList.equals(((Bankcard)localObject2).field_bindSerial)));
-          if ((!paramBoolean3) || (!((Bankcard)localObject2).cTj())) {
+          if ((!paramBoolean3) || (!((Bankcard)localObject2).ebz())) {
             break;
           }
-          ab.i("MicroMsg.WalletUserInfoManger", "default card is honeypay");
-          if ((paramBoolean1) && (this.tOD != null))
+          ad.i("MicroMsg.WalletUserInfoManger", "default card is honeypay");
+          if ((paramBoolean1) && (this.zHd != null))
           {
-            paramArrayList = this.tOD;
-            AppMethodBeat.o(46995);
+            paramArrayList = this.zHd;
+            AppMethodBeat.o(70526);
             return paramArrayList;
           }
           localObject2 = ((ArrayList)localObject1).iterator();
         }
         localBankcard = (Bankcard)((Iterator)localObject2).next();
-      } while (localBankcard.cTj());
-      AppMethodBeat.o(46995);
+      } while (localBankcard.ebz());
+      AppMethodBeat.o(70526);
       return localBankcard;
-      AppMethodBeat.o(46995);
+      AppMethodBeat.o(70526);
       return localObject2;
     }
     if (paramBoolean2)
     {
       paramArrayList = (Bankcard)((ArrayList)localObject1).get(0);
-      AppMethodBeat.o(46995);
+      AppMethodBeat.o(70526);
       return paramArrayList;
     }
-    AppMethodBeat.o(46995);
+    AppMethodBeat.o(70526);
     return null;
   }
   
-  private boolean cUL()
+  private boolean edf()
   {
-    AppMethodBeat.i(46985);
-    if (((this.ulP != null) && (this.ulP.cUb())) || ((this.tSY != null) && (this.tSY.size() > 0)))
+    AppMethodBeat.i(70515);
+    if (((this.Aij != null) && (this.Aij.ecs())) || ((this.zNh != null) && (this.zNh.size() > 0)))
     {
-      AppMethodBeat.o(46985);
+      AppMethodBeat.o(70515);
       return true;
     }
-    AppMethodBeat.o(46985);
+    AppMethodBeat.o(70515);
     return false;
   }
   
-  private static String cUO()
+  private static String edi()
   {
-    AppMethodBeat.i(46991);
-    g.RM();
-    String str = (String)g.RL().Ru().get(196612, null);
-    AppMethodBeat.o(46991);
+    AppMethodBeat.i(70522);
+    g.afC();
+    String str = (String)g.afB().afk().get(196612, null);
+    AppMethodBeat.o(70522);
     return str;
   }
   
-  private void cUU()
+  public static String edk()
   {
-    AppMethodBeat.i(46999);
-    ab.i("MicroMsg.WalletUserInfoManger", "recordDataState()");
-    if (this.ulN == null) {
-      ab.i("MicroMsg.WalletUserInfoManger", "userInfo == null");
+    AppMethodBeat.i(70529);
+    g.afC();
+    String str = (String)g.afB().afk().get(196633, null);
+    AppMethodBeat.o(70529);
+    return str;
+  }
+  
+  private void edp()
+  {
+    AppMethodBeat.i(70531);
+    ad.i("MicroMsg.WalletUserInfoManger", "recordDataState()");
+    if (this.Aih == null) {
+      ad.i("MicroMsg.WalletUserInfoManger", "userInfo == null");
     }
-    if (this.tSX == null)
+    if (this.zNg == null)
     {
-      ab.i("MicroMsg.WalletUserInfoManger", "bankcards == null");
-      if (this.tSY != null) {
+      ad.i("MicroMsg.WalletUserInfoManger", "bankcards == null");
+      if (this.zNh != null) {
         break label163;
       }
-      ab.i("MicroMsg.WalletUserInfoManger", "virtualBankcards == null");
+      ad.i("MicroMsg.WalletUserInfoManger", "virtualBankcards == null");
       label59:
-      if (this.tOD != null) {
+      if (this.zHd != null) {
         break label215;
       }
-      ab.i("MicroMsg.WalletUserInfoManger", "balance == null");
+      ad.i("MicroMsg.WalletUserInfoManger", "balance == null");
       label74:
-      if (this.ulO != null) {
+      if (this.Aii != null) {
         break label226;
       }
-      ab.i("MicroMsg.WalletUserInfoManger", "historyBankcard == null");
+      ad.i("MicroMsg.WalletUserInfoManger", "historyBankcard == null");
     }
     for (;;)
     {
-      if (this.ulQ != null) {
+      if (this.Aik != null) {
         break label237;
       }
-      ab.i("MicroMsg.WalletUserInfoManger", "mLoanEntryInfo == null");
-      AppMethodBeat.o(46999);
+      ad.i("MicroMsg.WalletUserInfoManger", "mLoanEntryInfo == null");
+      AppMethodBeat.o(70531);
       return;
-      if (this.tSX.size() == 0)
+      if (this.zNg.size() == 0)
       {
-        ab.i("MicroMsg.WalletUserInfoManger", "bankcards.size() == 0");
+        ad.i("MicroMsg.WalletUserInfoManger", "bankcards.size() == 0");
         break;
       }
-      ab.i("MicroMsg.WalletUserInfoManger", "bankcards.size() == " + this.tSX.size());
+      ad.i("MicroMsg.WalletUserInfoManger", "bankcards.size() == " + this.zNg.size());
       break;
       label163:
-      if (this.tSY.size() == 0)
+      if (this.zNh.size() == 0)
       {
-        ab.i("MicroMsg.WalletUserInfoManger", "virtualBankcards.size() == 0");
+        ad.i("MicroMsg.WalletUserInfoManger", "virtualBankcards.size() == 0");
         break label59;
       }
-      ab.i("MicroMsg.WalletUserInfoManger", "virtualBankcards.size() == " + this.tSY.size());
+      ad.i("MicroMsg.WalletUserInfoManger", "virtualBankcards.size() == " + this.zNh.size());
       break label59;
       label215:
-      ab.i("MicroMsg.WalletUserInfoManger", "balance != null");
+      ad.i("MicroMsg.WalletUserInfoManger", "balance != null");
       break label74;
       label226:
-      ab.i("MicroMsg.WalletUserInfoManger", "historyBankcard != null");
+      ad.i("MicroMsg.WalletUserInfoManger", "historyBankcard != null");
     }
     label237:
-    ab.i("MicroMsg.WalletUserInfoManger", "mLoanEntryInfo != null");
-    AppMethodBeat.o(46999);
+    ad.i("MicroMsg.WalletUserInfoManger", "mLoanEntryInfo != null");
+    AppMethodBeat.o(70531);
   }
   
-  public static Bankcard cUV()
+  public static Bankcard edq()
   {
-    AppMethodBeat.i(47001);
-    Bankcard localBankcard = t.cTN().a(null, null, true, true);
+    AppMethodBeat.i(70533);
+    Bankcard localBankcard = s.ecc().a(null, null, true, true);
     if (localBankcard == null) {
-      ab.e("MicroMsg.WalletUserInfoManger", "defaultBankcards == null");
+      ad.e("MicroMsg.WalletUserInfoManger", "defaultBankcards == null");
     }
-    AppMethodBeat.o(47001);
+    AppMethodBeat.o(70533);
     return localBankcard;
   }
   
-  private static boolean dV(List<Bankcard> paramList)
+  private static boolean gl(List<Bankcard> paramList)
   {
-    AppMethodBeat.i(46987);
+    AppMethodBeat.i(70517);
     if (paramList.size() == 0)
     {
-      AppMethodBeat.o(46987);
+      AppMethodBeat.o(70517);
       return false;
     }
-    g.RM();
-    Object localObject = (String)g.RL().Ru().get(196659, null);
+    g.afC();
+    Object localObject = (String)g.afB().afk().get(196659, null);
     if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      AppMethodBeat.o(46987);
+      AppMethodBeat.o(70517);
       return true;
     }
     localObject = ((String)localObject).split("&");
     if ((localObject == null) || (localObject.length == 0))
     {
-      AppMethodBeat.o(46987);
+      AppMethodBeat.o(70517);
       return true;
     }
     int i = 0;
@@ -343,634 +352,668 @@ public final class am
     }
     if (j < paramList.size())
     {
-      AppMethodBeat.o(46987);
+      AppMethodBeat.o(70517);
       return true;
     }
-    AppMethodBeat.o(46987);
+    AppMethodBeat.o(70517);
     return false;
   }
   
-  public final void Kg()
+  public final void VP()
   {
-    AppMethodBeat.i(46975);
-    if (this.ulN != null)
+    AppMethodBeat.i(70505);
+    if (this.Aih != null)
     {
-      this.ulN.field_is_reg = -1;
-      this.ulN = null;
+      this.Aih.field_is_reg = -1;
+      this.Aih = null;
     }
-    if (this.ulP != null) {
-      this.ulP = null;
+    if (this.Aij != null) {
+      this.Aij = null;
     }
-    if (this.tOD != null) {
-      this.tOD = null;
+    if (this.zHd != null) {
+      this.zHd = null;
     }
-    if (this.tSX != null)
+    if (this.zNg != null)
     {
-      this.tSX.clear();
-      this.tSX = null;
+      this.zNg.clear();
+      this.zNg = null;
     }
-    if (this.tSY != null)
+    if (this.zNh != null)
     {
-      this.tSY.clear();
-      this.tSY = null;
+      this.zNh.clear();
+      this.zNh = null;
     }
-    this.ulV = 0L;
+    if (this.Aio != null) {
+      this.Aio = null;
+    }
+    this.Aiq = 0L;
     com.tencent.mm.wallet_core.ui.e.a(new e.c[] { new e.c("wallet_balance_version", Integer.valueOf(-1)), new e.c("wallet_balance_last_update_time", Integer.valueOf(-1)), new e.c("wallet_balance", Integer.valueOf(-1)) });
-    this.ulU = bo.aox();
-    AppMethodBeat.o(46975);
+    this.Aip = bt.aGK();
+    AppMethodBeat.o(70505);
   }
   
   @Deprecated
   public final Bankcard a(ArrayList<Bankcard> paramArrayList, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(46993);
+    AppMethodBeat.i(70524);
     paramArrayList = a(paramArrayList, paramString, paramBoolean1, paramBoolean2, false);
-    AppMethodBeat.o(46993);
+    AppMethodBeat.o(70524);
     return paramArrayList;
   }
   
   public final Bankcard a(ArrayList<Bankcard> paramArrayList, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AppMethodBeat.i(46994);
+    AppMethodBeat.i(70525);
     paramArrayList = b(paramArrayList, paramString, paramBoolean1, paramBoolean2, paramBoolean3);
-    AppMethodBeat.o(46994);
+    AppMethodBeat.o(70525);
     return paramArrayList;
   }
   
   public final void a(al paramal)
   {
-    AppMethodBeat.i(46990);
-    this.ulN = paramal;
-    t.cTJ().aql();
-    t.cTJ().b(paramal);
-    AppMethodBeat.o(46990);
+    AppMethodBeat.i(70521);
+    this.Aih = paramal;
+    s.ebX().aIG();
+    s.ebX().b(paramal);
+    AppMethodBeat.o(70521);
   }
   
-  public final void a(al paramal, ArrayList<Bankcard> paramArrayList1, ArrayList<Bankcard> paramArrayList2, Bankcard paramBankcard1, Bankcard paramBankcard2, p paramp, c paramc, Bankcard paramBankcard3, int paramInt1, int paramInt2, List<e> paramList)
+  public final void a(al paramal, ArrayList<Bankcard> paramArrayList1, ArrayList<Bankcard> paramArrayList2, Bankcard paramBankcard1, Bankcard paramBankcard2, n paramn, b paramb, Bankcard paramBankcard3, int paramInt1, int paramInt2, List<c> paramList)
   {
-    AppMethodBeat.i(46989);
-    ab.i("MicroMsg.WalletUserInfoManger", "setBankcards scene %d", new Object[] { Integer.valueOf(paramInt2) });
-    if (paramInt2 == 8) {
-      this.ulL = paramArrayList1;
+    AppMethodBeat.i(70520);
+    ad.i("MicroMsg.WalletUserInfoManger", "setBankcards scene %d", new Object[] { Integer.valueOf(paramInt2) });
+    if (paramInt2 == 8)
+    {
+      this.Aif = paramArrayList1;
+      this.Aim = paramList;
     }
     if ((paramInt2 == 24) || (paramInt2 == 25)) {
-      this.ulM = paramArrayList1;
+      this.Aig = paramArrayList1;
     }
-    this.ulS = paramList;
-    this.tSX = paramArrayList1;
-    this.tSY = paramArrayList2;
-    this.tOD = paramBankcard1;
-    this.ulP = new ak(paramal.field_switchConfig, paramal.field_wallet_entrance_balance_switch_state);
-    this.ulO = paramBankcard2;
-    this.ulQ = paramp;
-    this.ulR = paramc;
-    this.ulT = paramBankcard3;
-    ab.i("MicroMsg.WalletUserInfoManger", "setBankcards()! " + paramal.field_switchConfig);
-    cUU();
+    this.zNg = paramArrayList1;
+    this.zNh = paramArrayList2;
+    this.zHd = paramBankcard1;
+    this.Aij = new ak(paramal.field_switchConfig, paramal.field_wallet_entrance_balance_switch_state);
+    this.Aii = paramBankcard2;
+    this.Aik = paramn;
+    this.Ail = paramb;
+    this.Ain = paramBankcard3;
+    ad.i("MicroMsg.WalletUserInfoManger", "setBankcards()! " + paramal.field_switchConfig);
+    edp();
     int i = paramInt1;
     if (paramInt1 < 0) {
       i = 600;
     }
-    this.ulU = (bo.aox() + i);
-    this.ulV = (bo.aox() + 600L);
-    ab.i("MicroMsg.WalletUserInfoManger", "hy: cache time: %d, dead time: %d, cacheDeadTime: %s", new Object[] { Integer.valueOf(i), Long.valueOf(this.ulU), Long.valueOf(this.ulV) });
-    t.cTL().aql();
+    this.Aip = (bt.aGK() + i);
+    this.Aiq = (bt.aGK() + 600L);
+    ad.i("MicroMsg.WalletUserInfoManger", "hy: cache time: %d, dead time: %d, cacheDeadTime: %s", new Object[] { Integer.valueOf(i), Long.valueOf(this.Aip), Long.valueOf(this.Aiq) });
+    com.tencent.mm.plugin.wallet_core.utils.d.RJ(paramInt2);
     if ((paramInt2 != 24) && (paramInt2 != 25) && (paramArrayList1 != null)) {
-      t.cTL().dY(paramArrayList1);
+      com.tencent.mm.plugin.wallet_core.utils.d.v(paramArrayList1, paramInt2);
     }
     if (paramArrayList2 != null) {
-      t.cTL().dY(paramArrayList2);
+      com.tencent.mm.plugin.wallet_core.utils.d.v(paramArrayList2, paramInt2);
     }
     if (paramBankcard1 != null) {
-      t.cTL().f(paramBankcard1);
+      com.tencent.mm.plugin.wallet_core.utils.d.a(paramBankcard1, paramInt2);
     }
     if (paramBankcard2 != null) {
-      t.cTL().f(paramBankcard2);
+      com.tencent.mm.plugin.wallet_core.utils.d.a(paramBankcard2, paramInt2);
     }
     if (paramBankcard3 != null) {
-      t.cTL().f(paramBankcard3);
+      com.tencent.mm.plugin.wallet_core.utils.d.a(paramBankcard3, paramInt2);
     }
     a(paramal);
-    t.cTP().aql();
-    if (paramp != null) {
-      t.cTP().insert(paramp);
+    s.ece().aIG();
+    if (paramn != null) {
+      s.ece().insert(paramn);
     }
-    AppMethodBeat.o(46989);
+    AppMethodBeat.o(70520);
   }
   
-  public final boolean afl(String paramString)
+  public final Bankcard atT(String paramString)
   {
-    AppMethodBeat.i(46988);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(187165);
+    if ((this.zNg != null) && (!this.zNg.isEmpty()))
     {
-      AppMethodBeat.o(46988);
+      Iterator localIterator = this.zNg.iterator();
+      while (localIterator.hasNext())
+      {
+        Bankcard localBankcard = (Bankcard)localIterator.next();
+        if (localBankcard.field_bindSerial.equals(paramString))
+        {
+          AppMethodBeat.o(187165);
+          return localBankcard;
+        }
+      }
+    }
+    AppMethodBeat.o(187165);
+    return null;
+  }
+  
+  public final boolean atU(String paramString)
+  {
+    AppMethodBeat.i(70518);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(70518);
       return false;
     }
     Iterator localIterator;
     Bankcard localBankcard;
-    if (this.tSX != null)
+    if (this.zNg != null)
     {
-      localIterator = this.tSX.iterator();
+      localIterator = this.zNg.iterator();
       while (localIterator.hasNext())
       {
         localBankcard = (Bankcard)localIterator.next();
-        if ((paramString.equals(localBankcard.field_bankcardType)) && (localBankcard.cTe()))
+        if ((paramString.equals(localBankcard.field_bankcardType)) && (localBankcard.ebu()))
         {
-          AppMethodBeat.o(46988);
+          AppMethodBeat.o(70518);
           return false;
         }
       }
     }
-    if (this.tSY != null)
+    if (this.zNh != null)
     {
-      localIterator = this.tSY.iterator();
+      localIterator = this.zNh.iterator();
       while (localIterator.hasNext())
       {
         localBankcard = (Bankcard)localIterator.next();
         if ((paramString.equals(localBankcard.field_bankcardType)) && (localBankcard.field_bankcardState == 0))
         {
-          AppMethodBeat.o(46988);
+          AppMethodBeat.o(70518);
           return false;
         }
       }
     }
-    AppMethodBeat.o(46988);
+    AppMethodBeat.o(70518);
     return true;
   }
   
-  public final boolean cUA()
+  public final void c(buc parambuc)
   {
-    AppMethodBeat.i(46974);
-    if (ae.glG)
+    AppMethodBeat.i(70519);
+    this.Aio = parambuc;
+    ah.a(parambuc);
+    AppMethodBeat.o(70519);
+  }
+  
+  public final boolean ecF()
+  {
+    AppMethodBeat.i(70496);
+    if ((this.Aih != null) && (this.Aih.ecF()))
     {
-      AppMethodBeat.o(46974);
+      AppMethodBeat.o(70496);
       return true;
     }
-    g.RM();
-    int i = ((Integer)g.RL().Ru().get(ac.a.yHT, Integer.valueOf(-1))).intValue();
-    if (i != -1)
-    {
-      if (i == 1)
-      {
-        AppMethodBeat.o(46974);
-        return true;
-      }
-      AppMethodBeat.o(46974);
-      return false;
-    }
-    if (this.ulN != null)
-    {
-      if (this.ulN.field_lqt_state == 1)
-      {
-        AppMethodBeat.o(46974);
-        return true;
-      }
-      AppMethodBeat.o(46974);
-      return false;
-    }
-    AppMethodBeat.o(46974);
+    AppMethodBeat.o(70496);
     return false;
   }
   
-  public final int cUB()
+  public final boolean ecG()
   {
-    if (this.ulN != null) {
-      return this.ulN.field_is_show_lqb;
+    AppMethodBeat.i(70498);
+    if ((this.Aih != null) && (this.Aih.ecG()))
+    {
+      AppMethodBeat.o(70498);
+      return true;
+    }
+    AppMethodBeat.o(70498);
+    return false;
+  }
+  
+  public final boolean ecH()
+  {
+    AppMethodBeat.i(70497);
+    if ((this.Aih != null) && (this.Aih.ecH()))
+    {
+      AppMethodBeat.o(70497);
+      return true;
+    }
+    AppMethodBeat.o(70497);
+    return false;
+  }
+  
+  public final boolean ecJ()
+  {
+    AppMethodBeat.i(70499);
+    if ((this.Aih != null) && (this.Aih.ecJ()))
+    {
+      AppMethodBeat.o(70499);
+      return true;
+    }
+    AppMethodBeat.o(70499);
+    return false;
+  }
+  
+  public final boolean ecK()
+  {
+    AppMethodBeat.i(70495);
+    if ((this.Aih == null) || ((this.Aih != null) && (this.Aih.ecI())))
+    {
+      AppMethodBeat.o(70495);
+      return true;
+    }
+    AppMethodBeat.o(70495);
+    return false;
+  }
+  
+  public final int ecL()
+  {
+    if (this.Aih != null) {
+      return this.Aih.field_soter_pay_open_type;
     }
     return 0;
   }
   
-  public final boolean cUC()
+  public final String ecM()
   {
-    if (this.ulN != null) {
-      return this.ulN.field_is_open_lqb == 1;
-    }
-    return false;
-  }
-  
-  public final String cUD()
-  {
-    if (this.ulN != null) {
-      return this.ulN.field_lqb_open_url;
+    if (this.Aih != null) {
+      return this.Aih.field_ftf_pay_url;
     }
     return null;
   }
   
-  public final boolean cUE()
+  public final ak ecN()
   {
-    if (this.ulN != null) {
-      return this.ulN.field_paymenu_use_new == 1;
-    }
-    return false;
-  }
-  
-  public final ArrayList<Bankcard> cUF()
-  {
-    AppMethodBeat.i(46976);
-    if ((this.tSX == null) || (this.tSX.size() <= 0)) {
-      this.tSX = t.cTL().cUF();
-    }
-    if ((this.tSX == null) || (this.tSX.size() <= 0))
-    {
-      AppMethodBeat.o(46976);
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.tSX.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add((Bankcard)localIterator.next());
-    }
-    AppMethodBeat.o(46976);
-    return localArrayList;
-  }
-  
-  public final List<e> cUG()
-  {
-    AppMethodBeat.i(46977);
-    if ((this.ulS == null) || (this.ulS.size() <= 0))
-    {
-      AppMethodBeat.o(46977);
-      return null;
-    }
-    List localList = this.ulS;
-    AppMethodBeat.o(46977);
-    return localList;
-  }
-  
-  public final ArrayList<Bankcard> cUH()
-  {
-    AppMethodBeat.i(46978);
-    if ((this.tSX == null) || (this.tSX.size() <= 0))
-    {
-      AppMethodBeat.o(46978);
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.tSX.iterator();
-    while (localIterator.hasNext())
-    {
-      Bankcard localBankcard = (Bankcard)localIterator.next();
-      if ((!localBankcard.cTh()) && (!localBankcard.cTj())) {
-        localArrayList.add(localBankcard);
-      }
-    }
-    AppMethodBeat.o(46978);
-    return localArrayList;
-  }
-  
-  public final ArrayList<Bankcard> cUI()
-  {
-    AppMethodBeat.i(46981);
-    ArrayList localArrayList = new ArrayList();
-    if ((this.tOD != null) && (!cUn())) {
-      localArrayList.add(this.tOD);
-    }
-    if ((this.ulT != null) && (!cUn())) {
-      localArrayList.add(this.ulT);
-    }
-    Iterator localIterator;
-    if ((this.ulL != null) && (this.tSX != null) && (this.ulL.size() == this.tSX.size()) && (this.ulL.size() > 0)) {
-      localIterator = this.ulL.iterator();
-    }
-    while (localIterator.hasNext())
-    {
-      localArrayList.add((Bankcard)localIterator.next());
-      continue;
-      if ((this.tSX != null) && (this.tSX.size() > 0))
-      {
-        localIterator = this.tSX.iterator();
-        while (localIterator.hasNext()) {
-          localArrayList.add((Bankcard)localIterator.next());
-        }
-      }
-    }
-    AppMethodBeat.o(46981);
-    return localArrayList;
-  }
-  
-  public final ArrayList<Bankcard> cUJ()
-  {
-    AppMethodBeat.i(46982);
-    ArrayList localArrayList = new ArrayList();
-    if ((this.tOD != null) && (!cUn())) {
-      localArrayList.add(this.tOD);
-    }
-    if ((this.ulM != null) && (this.tSX != null) && (this.ulM.size() > 0))
-    {
-      Iterator localIterator = this.ulM.iterator();
-      while (localIterator.hasNext())
-      {
-        Bankcard localBankcard = (Bankcard)localIterator.next();
-        if (!localBankcard.cTj()) {
-          localArrayList.add(localBankcard);
-        }
-      }
-    }
-    AppMethodBeat.o(46982);
-    return localArrayList;
-  }
-  
-  public final boolean cUK()
-  {
-    AppMethodBeat.i(46984);
-    if (cUL())
-    {
-      AppMethodBeat.o(46984);
-      return false;
-    }
-    if ((this.tSX != null) && (this.tSX.size() > 0))
-    {
-      AppMethodBeat.o(46984);
-      return false;
-    }
-    AppMethodBeat.o(46984);
-    return true;
-  }
-  
-  public final boolean cUM()
-  {
-    AppMethodBeat.i(46986);
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    f(localArrayList1, localArrayList2);
-    if (dV(localArrayList2))
-    {
-      AppMethodBeat.o(46986);
-      return true;
-    }
-    AppMethodBeat.o(46986);
-    return false;
-  }
-  
-  public final int cUN()
-  {
-    if (this.ulY > 0) {
-      return this.ulY;
-    }
-    return 10000;
-  }
-  
-  public final String cUP()
-  {
-    AppMethodBeat.i(46996);
-    if ((this.tSX == null) || (this.tSX.size() <= 0))
-    {
-      ab.e("MicroMsg.WalletUserInfoManger", "not found bankcard!");
-      AppMethodBeat.o(46996);
-      return null;
-    }
-    Object localObject = this.tSX.iterator();
-    if (((Iterator)localObject).hasNext())
-    {
-      localObject = ((Bankcard)((Iterator)localObject).next()).field_bindSerial;
-      AppMethodBeat.o(46996);
-      return localObject;
-    }
-    AppMethodBeat.o(46996);
-    return null;
-  }
-  
-  public final boolean cUQ()
-  {
-    AppMethodBeat.i(46998);
-    long l = bo.gz(this.ulW);
-    ab.d("MicroMsg.WalletUserInfoManger", "pass time ".concat(String.valueOf(l)));
-    if (l > 300L)
-    {
-      AppMethodBeat.o(46998);
-      return true;
-    }
-    AppMethodBeat.o(46998);
-    return false;
-  }
-  
-  public final int cUR()
-  {
-    if (this.ulN != null) {
-      return this.ulN.field_lqt_cell_is_show;
-    }
-    return 0;
-  }
-  
-  public final String cUS()
-  {
-    if (this.ulN != null) {
-      return this.ulN.field_lqt_cell_lqt_title;
-    }
-    return null;
-  }
-  
-  public final String cUT()
-  {
-    if (this.ulN != null) {
-      return this.ulN.field_lqt_cell_lqt_wording;
-    }
-    return null;
-  }
-  
-  public final boolean cUl()
-  {
-    AppMethodBeat.i(46966);
-    if ((this.ulN != null) && (this.ulN.cUl()))
-    {
-      AppMethodBeat.o(46966);
-      return true;
-    }
-    AppMethodBeat.o(46966);
-    return false;
-  }
-  
-  public final boolean cUm()
-  {
-    AppMethodBeat.i(46968);
-    if ((this.ulN != null) && (this.ulN.cUm()))
-    {
-      AppMethodBeat.o(46968);
-      return true;
-    }
-    AppMethodBeat.o(46968);
-    return false;
-  }
-  
-  public final boolean cUn()
-  {
-    AppMethodBeat.i(46967);
-    if ((this.ulN != null) && (this.ulN.cUn()))
-    {
-      AppMethodBeat.o(46967);
-      return true;
-    }
-    AppMethodBeat.o(46967);
-    return false;
-  }
-  
-  public final boolean cUp()
-  {
-    AppMethodBeat.i(46969);
-    if ((this.ulN != null) && (this.ulN.cUp()))
-    {
-      AppMethodBeat.o(46969);
-      return true;
-    }
-    AppMethodBeat.o(46969);
-    return false;
-  }
-  
-  public final boolean cUq()
-  {
-    AppMethodBeat.i(46965);
-    if ((this.ulN == null) || ((this.ulN != null) && (this.ulN.cUo())))
-    {
-      AppMethodBeat.o(46965);
-      return true;
-    }
-    AppMethodBeat.o(46965);
-    return false;
-  }
-  
-  public final int cUr()
-  {
-    if (this.ulN != null) {
-      return this.ulN.field_soter_pay_open_type;
-    }
-    return 0;
-  }
-  
-  public final String cUs()
-  {
-    if (this.ulN != null) {
-      return this.ulN.field_ftf_pay_url;
-    }
-    return null;
-  }
-  
-  public final ak cUt()
-  {
-    AppMethodBeat.i(46971);
-    if (this.ulP == null)
+    AppMethodBeat.i(70501);
+    if (this.Aij == null)
     {
       localak = new ak();
-      AppMethodBeat.o(46971);
+      AppMethodBeat.o(70501);
       return localak;
     }
-    ak localak = this.ulP;
-    AppMethodBeat.o(46971);
+    ak localak = this.Aij;
+    AppMethodBeat.o(70501);
     return localak;
   }
   
-  public final boolean cUu()
+  public final boolean ecO()
   {
-    return (this.ulN != null) && (this.ulN.field_isDomesticUser);
+    return (this.Aih != null) && (this.Aih.field_isDomesticUser);
   }
   
-  public final int cUv()
+  public final int ecP()
   {
-    if (this.ulN != null) {
-      return this.ulN.field_cre_type;
+    if (this.Aih != null) {
+      return this.Aih.field_cre_type;
     }
     return 1;
   }
   
-  public final String cUw()
+  public final String ecQ()
   {
-    AppMethodBeat.i(46972);
-    g.RM();
-    String str = (String)g.RL().Ru().get(ac.a.yHU, null);
-    if (!bo.isNullOrNil(str))
+    AppMethodBeat.i(70502);
+    g.afC();
+    String str = (String)g.afB().afk().get(ae.a.FqQ, null);
+    if (!bt.isNullOrNil(str))
     {
-      AppMethodBeat.o(46972);
+      AppMethodBeat.o(70502);
       return str;
     }
-    if (this.ulN != null)
+    if (this.Aih != null)
     {
-      str = this.ulN.field_lct_wording;
-      AppMethodBeat.o(46972);
+      str = this.Aih.field_lct_wording;
+      AppMethodBeat.o(70502);
       return str;
     }
-    AppMethodBeat.o(46972);
+    AppMethodBeat.o(70502);
     return null;
   }
   
-  public final String cUx()
+  public final String ecR()
   {
-    if (this.ulN != null) {
-      return this.ulN.field_lct_url;
+    if (this.Aih != null) {
+      return this.Aih.field_lct_url;
     }
     return null;
   }
   
-  public final String cUy()
+  public final String ecS()
   {
-    if (this.ulN != null) {
-      return this.ulN.field_forget_passwd_url;
+    if (this.Aih != null) {
+      return this.Aih.field_forget_passwd_url;
     }
     return "";
   }
   
-  public final void cUz()
+  public final void ecT()
   {
-    AppMethodBeat.i(46973);
-    if (!g.RJ().QU())
+    AppMethodBeat.i(70503);
+    if (!g.afz().aeI())
     {
-      ab.w("MicroMsg.WalletUserInfoManger", "Account Not Ready!");
-      AppMethodBeat.o(46973);
+      ad.w("MicroMsg.WalletUserInfoManger", "Account Not Ready!");
+      AppMethodBeat.o(70503);
       return;
     }
-    this.ulN = t.cTJ().cVl();
-    if (this.ulN != null) {
-      this.ulP = new ak(this.ulN.field_switchConfig, this.ulN.field_wallet_entrance_balance_switch_state);
+    this.Aih = s.ebX().edF();
+    if (this.Aih != null) {
+      this.Aij = new ak(this.Aih.field_switchConfig, this.Aih.field_wallet_entrance_balance_switch_state);
     }
     for (;;)
     {
-      if (!bo.isNullOrNil(this.ulN.field_bank_priority)) {}
+      if (!bt.isNullOrNil(this.Aih.field_bank_priority)) {}
       try
       {
-        this.ulS = ah.aJ(new JSONObject(this.ulN.field_bank_priority));
-        this.tOD = t.cTL().cVg();
-        this.ulT = t.cTL().cVh();
+        this.Aim = ah.bg(new JSONObject(this.Aih.field_bank_priority));
+        this.zHd = s.ebZ().edA();
+        this.Ain = s.ebZ().edB();
         com.tencent.mm.wallet_core.ui.e.a("wallet_balance", new am.1(this));
-        this.tSX = t.cTL().cUF();
-        this.tSY = t.cTL().cVi();
-        this.ulO = t.cTL().cVj();
-        this.ulQ = t.cTP().cVd();
-        ab.i("MicroMsg.WalletUserInfoManger", "loadDbData!");
-        cUU();
-        AppMethodBeat.o(46973);
+        this.zNg = s.ebZ().ecZ();
+        this.Aif = com.tencent.mm.plugin.wallet_core.utils.d.efs();
+        this.zNh = s.ebZ().edC();
+        this.Aii = s.ebZ().edD();
+        this.Aik = s.ece().edy();
+        ad.i("MicroMsg.WalletUserInfoManger", "loadDbData!");
+        edp();
+        this.Aio = ah.ecp();
+        AppMethodBeat.o(70503);
         return;
-        this.ulP = new ak();
+        this.Aij = new ak();
       }
       catch (JSONException localJSONException)
       {
         for (;;)
         {
-          ab.printErrStackTrace("MicroMsg.WalletUserInfoManger", localJSONException, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.WalletUserInfoManger", localJSONException, "", new Object[0]);
         }
       }
     }
   }
   
+  public final boolean ecU()
+  {
+    AppMethodBeat.i(70504);
+    if (com.tencent.mm.platformtools.ab.hWD)
+    {
+      AppMethodBeat.o(70504);
+      return true;
+    }
+    g.afC();
+    int i = ((Integer)g.afB().afk().get(ae.a.FqP, Integer.valueOf(-1))).intValue();
+    if (i != -1)
+    {
+      if (i == 1)
+      {
+        AppMethodBeat.o(70504);
+        return true;
+      }
+      AppMethodBeat.o(70504);
+      return false;
+    }
+    if (this.Aih != null)
+    {
+      if (this.Aih.field_lqt_state == 1)
+      {
+        AppMethodBeat.o(70504);
+        return true;
+      }
+      AppMethodBeat.o(70504);
+      return false;
+    }
+    AppMethodBeat.o(70504);
+    return false;
+  }
+  
+  public final int ecV()
+  {
+    if (this.Aih != null) {
+      return this.Aih.field_is_show_lqb;
+    }
+    return 0;
+  }
+  
+  public final boolean ecW()
+  {
+    if (this.Aih != null) {
+      return this.Aih.field_is_open_lqb == 1;
+    }
+    return false;
+  }
+  
+  public final String ecX()
+  {
+    if (this.Aih != null) {
+      return this.Aih.field_lqb_open_url;
+    }
+    return null;
+  }
+  
+  public final boolean ecY()
+  {
+    if (this.Aih != null) {
+      return this.Aih.field_paymenu_use_new == 1;
+    }
+    return false;
+  }
+  
+  public final ArrayList<Bankcard> ecZ()
+  {
+    AppMethodBeat.i(70506);
+    if ((this.zNg == null) || (this.zNg.size() <= 0)) {
+      this.zNg = s.ebZ().ecZ();
+    }
+    if ((this.zNg == null) || (this.zNg.size() <= 0))
+    {
+      AppMethodBeat.o(70506);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.zNg.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add((Bankcard)localIterator.next());
+    }
+    AppMethodBeat.o(70506);
+    return localArrayList;
+  }
+  
+  public final List<c> eda()
+  {
+    AppMethodBeat.i(70507);
+    if ((this.Aim == null) || (this.Aim.size() <= 0))
+    {
+      AppMethodBeat.o(70507);
+      return null;
+    }
+    List localList = this.Aim;
+    AppMethodBeat.o(70507);
+    return localList;
+  }
+  
+  public final ArrayList<Bankcard> edb()
+  {
+    AppMethodBeat.i(70508);
+    if ((this.zNg == null) || (this.zNg.size() <= 0))
+    {
+      AppMethodBeat.o(70508);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.zNg.iterator();
+    while (localIterator.hasNext())
+    {
+      Bankcard localBankcard = (Bankcard)localIterator.next();
+      if ((!localBankcard.ebx()) && (!localBankcard.ebz())) {
+        localArrayList.add(localBankcard);
+      }
+    }
+    AppMethodBeat.o(70508);
+    return localArrayList;
+  }
+  
+  public final ArrayList<Bankcard> edc()
+  {
+    AppMethodBeat.i(70511);
+    ArrayList localArrayList = new ArrayList();
+    if ((this.zHd != null) && (!ecH())) {
+      localArrayList.add(this.zHd);
+    }
+    if ((this.Ain != null) && (!ecH())) {
+      localArrayList.add(this.Ain);
+    }
+    Iterator localIterator;
+    if ((this.Aif != null) && (this.zNg != null) && (this.Aif.size() > 0)) {
+      localIterator = this.Aif.iterator();
+    }
+    while (localIterator.hasNext())
+    {
+      localArrayList.add((Bankcard)localIterator.next());
+      continue;
+      if ((this.zNg != null) && (this.zNg.size() > 0))
+      {
+        localIterator = this.zNg.iterator();
+        while (localIterator.hasNext()) {
+          localArrayList.add((Bankcard)localIterator.next());
+        }
+      }
+    }
+    AppMethodBeat.o(70511);
+    return localArrayList;
+  }
+  
+  public final ArrayList<Bankcard> edd()
+  {
+    AppMethodBeat.i(70512);
+    ArrayList localArrayList = new ArrayList();
+    if ((this.zHd != null) && (!ecH())) {
+      localArrayList.add(this.zHd);
+    }
+    if ((this.Aig != null) && (this.zNg != null) && (this.Aig.size() > 0))
+    {
+      Iterator localIterator = this.Aig.iterator();
+      while (localIterator.hasNext())
+      {
+        Bankcard localBankcard = (Bankcard)localIterator.next();
+        if (!localBankcard.ebz()) {
+          localArrayList.add(localBankcard);
+        }
+      }
+    }
+    AppMethodBeat.o(70512);
+    return localArrayList;
+  }
+  
+  public final boolean ede()
+  {
+    AppMethodBeat.i(70514);
+    if (edf())
+    {
+      AppMethodBeat.o(70514);
+      return false;
+    }
+    if ((this.zNg != null) && (this.zNg.size() > 0))
+    {
+      AppMethodBeat.o(70514);
+      return false;
+    }
+    AppMethodBeat.o(70514);
+    return true;
+  }
+  
+  public final boolean edg()
+  {
+    AppMethodBeat.i(70516);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    f(localArrayList1, localArrayList2);
+    if (gl(localArrayList2))
+    {
+      AppMethodBeat.o(70516);
+      return true;
+    }
+    AppMethodBeat.o(70516);
+    return false;
+  }
+  
+  public final int edh()
+  {
+    if (this.Ait > 0) {
+      return this.Ait;
+    }
+    return 10000;
+  }
+  
+  public final String edj()
+  {
+    AppMethodBeat.i(70527);
+    if ((this.zNg == null) || (this.zNg.size() <= 0))
+    {
+      ad.e("MicroMsg.WalletUserInfoManger", "not found bankcard!");
+      AppMethodBeat.o(70527);
+      return null;
+    }
+    Object localObject = this.zNg.iterator();
+    if (((Iterator)localObject).hasNext())
+    {
+      localObject = ((Bankcard)((Iterator)localObject).next()).field_bindSerial;
+      AppMethodBeat.o(70527);
+      return localObject;
+    }
+    AppMethodBeat.o(70527);
+    return null;
+  }
+  
+  public final boolean edl()
+  {
+    AppMethodBeat.i(70530);
+    long l = bt.lZ(this.Air);
+    ad.d("MicroMsg.WalletUserInfoManger", "pass time ".concat(String.valueOf(l)));
+    if (l > 300L)
+    {
+      AppMethodBeat.o(70530);
+      return true;
+    }
+    AppMethodBeat.o(70530);
+    return false;
+  }
+  
+  public final int edm()
+  {
+    if (this.Aih != null) {
+      return this.Aih.field_lqt_cell_is_show;
+    }
+    return 0;
+  }
+  
+  public final String edn()
+  {
+    if (this.Aih != null) {
+      return this.Aih.field_lqt_cell_lqt_title;
+    }
+    return null;
+  }
+  
+  public final String edo()
+  {
+    if (this.Aih != null) {
+      return this.Aih.field_lqt_cell_lqt_wording;
+    }
+    return null;
+  }
+  
   public final void f(ArrayList<Bankcard> paramArrayList1, ArrayList<Bankcard> paramArrayList2)
   {
-    AppMethodBeat.i(46983);
-    if ((this.tSX == null) || (paramArrayList1 == null) || (paramArrayList2 == null))
+    AppMethodBeat.i(70513);
+    if ((this.zNg == null) || (paramArrayList1 == null) || (paramArrayList2 == null))
     {
-      ab.e("MicroMsg.WalletUserInfoManger", "error list, bankcards == null || bankcardsClone == null || virtualBankcardsClone == null");
-      AppMethodBeat.o(46983);
+      ad.e("MicroMsg.WalletUserInfoManger", "error list, bankcards == null || bankcardsClone == null || virtualBankcardsClone == null");
+      AppMethodBeat.o(70513);
       return;
     }
     paramArrayList1.clear();
     paramArrayList2.clear();
     Iterator localIterator;
-    if (this.tSX != null)
+    if (this.zNg != null)
     {
-      localIterator = this.tSX.iterator();
+      localIterator = this.zNg.iterator();
       while (localIterator.hasNext()) {
         paramArrayList1.add((Bankcard)localIterator.next());
       }
     }
-    if (this.tSY != null)
+    if (this.zNh != null)
     {
-      localIterator = this.tSY.iterator();
+      localIterator = this.zNh.iterator();
       while (localIterator.hasNext())
       {
         Bankcard localBankcard = (Bankcard)localIterator.next();
@@ -981,85 +1024,53 @@ public final class am
         }
       }
     }
-    AppMethodBeat.o(46983);
+    AppMethodBeat.o(70513);
   }
   
   public final String getTrueName()
   {
-    if (this.ulN != null) {
-      return this.ulN.field_true_name;
+    if (this.Aih != null) {
+      return this.Aih.field_true_name;
     }
     return null;
   }
   
-  public final Bankcard i(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public final ArrayList<Bankcard> sC(boolean paramBoolean)
   {
-    AppMethodBeat.i(46970);
-    if ((paramBoolean1) && (this.tOD != null) && (this.tOD.field_bindSerial.equals(paramString)))
-    {
-      paramString = this.tOD;
-      AppMethodBeat.o(46970);
-      return paramString;
-    }
-    if ((paramBoolean2) && (this.ulT != null) && (this.ulT.field_bindSerial.equals(paramString)))
-    {
-      paramString = this.ulT;
-      AppMethodBeat.o(46970);
-      return paramString;
-    }
-    if ((this.tSX != null) && (!this.tSX.isEmpty()))
-    {
-      Iterator localIterator = this.tSX.iterator();
-      while (localIterator.hasNext())
-      {
-        Bankcard localBankcard = (Bankcard)localIterator.next();
-        if (localBankcard.field_bindSerial.equals(paramString))
-        {
-          AppMethodBeat.o(46970);
-          return localBankcard;
-        }
-      }
-    }
-    AppMethodBeat.o(46970);
-    return null;
-  }
-  
-  public final ArrayList<Bankcard> nH(boolean paramBoolean)
-  {
-    AppMethodBeat.i(46979);
+    AppMethodBeat.i(70509);
     ArrayList localArrayList = new ArrayList();
     if (paramBoolean)
     {
-      if ((this.tOD != null) && (!cUn())) {
-        localArrayList.add(this.tOD);
+      if ((this.zHd != null) && (!ecH())) {
+        localArrayList.add(this.zHd);
       }
-      if ((this.ulT != null) && (!cUn())) {
-        localArrayList.add(this.ulT);
+      if ((this.Ain != null) && (!ecH())) {
+        localArrayList.add(this.Ain);
       }
     }
-    if ((this.tSX != null) && (this.tSX.size() > 0))
+    if ((this.zNg != null) && (this.zNg.size() > 0))
     {
-      Iterator localIterator = this.tSX.iterator();
+      Iterator localIterator = this.zNg.iterator();
       while (localIterator.hasNext()) {
         localArrayList.add((Bankcard)localIterator.next());
       }
     }
-    AppMethodBeat.o(46979);
+    AppMethodBeat.o(70509);
     return localArrayList;
   }
   
   @Deprecated
-  public final ArrayList<Bankcard> nI(boolean paramBoolean)
+  public final ArrayList<Bankcard> sD(boolean paramBoolean)
   {
-    AppMethodBeat.i(156740);
-    ArrayList localArrayList = nH(paramBoolean);
-    AppMethodBeat.o(156740);
+    AppMethodBeat.i(201271);
+    ArrayList localArrayList = sC(paramBoolean);
+    AppMethodBeat.o(201271);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.am
  * JD-Core Version:    0.7.0.1
  */

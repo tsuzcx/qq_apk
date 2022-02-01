@@ -8,7 +8,7 @@ import com.tencent.mm.wear.a.c.d;
 public abstract class BaseWearService
   extends Service
 {
-  protected abstract void c(Intent paramIntent);
+  protected abstract void e(Intent paramIntent);
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -30,7 +30,7 @@ public abstract class BaseWearService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     d.c("MicroMsg.BaseWearService", "onStartCommand", new Object[0]);
-    c(paramIntent);
+    e(paramIntent);
     stopSelf();
     return super.onStartCommand(paramIntent, paramInt1, paramInt2);
   }

@@ -1,12 +1,14 @@
 package com.tencent.mm.emoji.loader.e;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.loader.c.g;
+import com.tencent.mm.emoji.loader.c.h;
+import com.tencent.mm.emoji.loader.e;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.storage.emotion.EmojiInfo;
+import d.g.b.k;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/loader/task/EmojiLoadTask;", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "checkCache", "", "getTaskKey", "run", "", "plugin-emojisdk_release"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/task/EmojiLoadTask;", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "checkCache", "", "getTaskKey", "run", "", "plugin-emojisdk_release"})
 public final class b
   extends c
 {
@@ -15,38 +17,57 @@ public final class b
   public b(EmojiInfo paramEmojiInfo)
   {
     super(paramEmojiInfo);
-    AppMethodBeat.i(63224);
+    AppMethodBeat.i(105480);
     this.TAG = "MicroMsg.EmojiLoadTask";
-    AppMethodBeat.o(63224);
+    AppMethodBeat.o(105480);
   }
   
-  public final String Ox()
+  public final String abh()
   {
-    AppMethodBeat.i(63222);
-    String str = this.evH.Al();
-    j.p(str, "emojiInfo.md5");
-    AppMethodBeat.o(63222);
+    AppMethodBeat.i(105478);
+    String str = this.fLP.JS();
+    k.g(str, "emojiInfo.md5");
+    AppMethodBeat.o(105478);
     return str;
   }
   
   public final void run()
   {
-    AppMethodBeat.i(63223);
+    AppMethodBeat.i(105479);
     super.run();
-    if (this.evH.dzn())
+    if (this.fLP.fZM())
     {
-      cd(true);
-      AppMethodBeat.o(63223);
+      df(true);
+      AppMethodBeat.o(105479);
       return;
     }
-    g localg = g.evO;
-    g.a(this.evH, (a.f.a.b)new b.a(this));
-    AppMethodBeat.o(63223);
+    Object localObject = e.fLn;
+    if (e.aaY())
+    {
+      ad.w(this.TAG, this.fLP.JS() + ": mock download fail");
+      df(false);
+      AppMethodBeat.o(105479);
+      return;
+    }
+    localObject = h.fLW;
+    h.d(this.fLP, (d.g.a.b)new a(this));
+    AppMethodBeat.o(105479);
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "invoke"})
+  static final class a
+    extends d.g.b.l
+    implements d.g.a.b<Boolean, y>
+  {
+    a(b paramb)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.e.b
  * JD-Core Version:    0.7.0.1
  */

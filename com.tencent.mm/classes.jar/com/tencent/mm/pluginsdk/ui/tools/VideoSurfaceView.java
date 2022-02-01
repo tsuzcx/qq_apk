@@ -13,27 +13,27 @@ import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.b.k;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class VideoSurfaceView
   extends SurfaceView
-  implements e
+  implements h
 {
-  private boolean bHF;
-  private MediaPlayer bIo;
-  MediaPlayer.OnPreparedListener bIp;
-  MediaPlayer.OnVideoSizeChangedListener bIq;
-  private MediaPlayer.OnCompletionListener bIr;
-  private MediaPlayer.OnErrorListener bIu;
-  private boolean efg;
-  private e.a lxA;
-  private int mDuration;
+  SurfaceHolder.Callback CnK;
+  private int ark;
+  private boolean cnf;
+  private boolean fqj;
+  private SurfaceHolder jrQ;
+  private MediaPlayer ksn;
+  MediaPlayer.OnPreparedListener kso;
+  MediaPlayer.OnVideoSizeChangedListener ksp;
+  private MediaPlayer.OnCompletionListener ksq;
+  private MediaPlayer.OnErrorListener kst;
+  private String kul;
+  private boolean kum;
   private int mVideoHeight;
   private int mVideoWidth;
-  private SurfaceHolder taW;
-  private String wfP;
-  private boolean wfQ;
-  SurfaceHolder.Callback wfR;
+  private h.a oNM;
   
   public VideoSurfaceView(Context paramContext)
   {
@@ -48,121 +48,183 @@ public class VideoSurfaceView
   public VideoSurfaceView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(70447);
-    this.taW = null;
-    this.bIo = null;
-    this.bIq = new VideoSurfaceView.1(this);
-    this.bIp = new VideoSurfaceView.2(this);
-    this.bIr = new VideoSurfaceView.3(this);
-    this.bIu = new VideoSurfaceView.4(this);
-    this.wfR = new VideoSurfaceView.5(this);
-    this.efg = false;
+    AppMethodBeat.i(116301);
+    this.jrQ = null;
+    this.ksn = null;
+    this.ksp = new MediaPlayer.OnVideoSizeChangedListener()
+    {
+      public final void onVideoSizeChanged(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(116294);
+        VideoSurfaceView.a(VideoSurfaceView.this, paramAnonymousMediaPlayer.getVideoWidth());
+        VideoSurfaceView.b(VideoSurfaceView.this, paramAnonymousMediaPlayer.getVideoHeight());
+        ad.v("MicroMsg.VideoSurfaceView", "on size change size:( " + VideoSurfaceView.a(VideoSurfaceView.this) + " , " + VideoSurfaceView.b(VideoSurfaceView.this) + " )");
+        VideoSurfaceView.c(VideoSurfaceView.this);
+        AppMethodBeat.o(116294);
+      }
+    };
+    this.kso = new MediaPlayer.OnPreparedListener()
+    {
+      public final void onPrepared(MediaPlayer paramAnonymousMediaPlayer)
+      {
+        AppMethodBeat.i(116295);
+        VideoSurfaceView.d(VideoSurfaceView.this);
+        if (VideoSurfaceView.e(VideoSurfaceView.this) != null) {
+          VideoSurfaceView.e(VideoSurfaceView.this).rq();
+        }
+        VideoSurfaceView.a(VideoSurfaceView.this, paramAnonymousMediaPlayer.getVideoWidth());
+        VideoSurfaceView.b(VideoSurfaceView.this, paramAnonymousMediaPlayer.getVideoHeight());
+        VideoSurfaceView.c(VideoSurfaceView.this);
+        if ((VideoSurfaceView.a(VideoSurfaceView.this) != 0) && (VideoSurfaceView.b(VideoSurfaceView.this) != 0))
+        {
+          if (VideoSurfaceView.f(VideoSurfaceView.this))
+          {
+            VideoSurfaceView.g(VideoSurfaceView.this).start();
+            VideoSurfaceView.h(VideoSurfaceView.this);
+            AppMethodBeat.o(116295);
+          }
+        }
+        else if (VideoSurfaceView.f(VideoSurfaceView.this))
+        {
+          VideoSurfaceView.g(VideoSurfaceView.this).start();
+          VideoSurfaceView.h(VideoSurfaceView.this);
+        }
+        AppMethodBeat.o(116295);
+      }
+    };
+    this.ksq = new VideoSurfaceView.3(this);
+    this.kst = new VideoSurfaceView.4(this);
+    this.CnK = new SurfaceHolder.Callback()
+    {
+      public final void surfaceChanged(SurfaceHolder paramAnonymousSurfaceHolder, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      {
+        AppMethodBeat.i(116298);
+        ad.i("MicroMsg.VideoSurfaceView", "on surface changed %d*%d", new Object[] { Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3) });
+        if ((VideoSurfaceView.g(VideoSurfaceView.this) != null) && (VideoSurfaceView.i(VideoSurfaceView.this)) && (VideoSurfaceView.a(VideoSurfaceView.this) == paramAnonymousInt2) && (VideoSurfaceView.b(VideoSurfaceView.this) == paramAnonymousInt3)) {
+          VideoSurfaceView.g(VideoSurfaceView.this).start();
+        }
+        AppMethodBeat.o(116298);
+      }
+      
+      public final void surfaceCreated(SurfaceHolder paramAnonymousSurfaceHolder)
+      {
+        AppMethodBeat.i(116299);
+        ad.i("MicroMsg.VideoSurfaceView", "on surface created");
+        VideoSurfaceView.a(VideoSurfaceView.this, paramAnonymousSurfaceHolder);
+        VideoSurfaceView.j(VideoSurfaceView.this);
+        AppMethodBeat.o(116299);
+      }
+      
+      public final void surfaceDestroyed(SurfaceHolder paramAnonymousSurfaceHolder)
+      {
+        AppMethodBeat.i(116300);
+        ad.i("MicroMsg.VideoSurfaceView", "on surface destroyed");
+        VideoSurfaceView.a(VideoSurfaceView.this, null);
+        if (VideoSurfaceView.g(VideoSurfaceView.this) != null)
+        {
+          VideoSurfaceView.e(VideoSurfaceView.this).eM(VideoSurfaceView.g(VideoSurfaceView.this).getCurrentPosition(), VideoSurfaceView.g(VideoSurfaceView.this).getDuration());
+          VideoSurfaceView.g(VideoSurfaceView.this).reset();
+          VideoSurfaceView.g(VideoSurfaceView.this).release();
+          VideoSurfaceView.k(VideoSurfaceView.this);
+        }
+        AppMethodBeat.o(116300);
+      }
+    };
+    this.fqj = false;
     this.mVideoWidth = 0;
     this.mVideoHeight = 0;
-    getHolder().addCallback(this.wfR);
+    getHolder().addCallback(this.CnK);
     getHolder().setType(3);
     setFocusable(true);
     setFocusableInTouchMode(true);
     requestFocus();
-    AppMethodBeat.o(70447);
+    AppMethodBeat.o(116301);
   }
   
-  private void boV()
+  private void bei()
   {
-    AppMethodBeat.i(70450);
-    if ((this.wfP == null) || (this.taW == null))
+    AppMethodBeat.i(116304);
+    if ((this.kul == null) || (this.jrQ == null))
     {
-      AppMethodBeat.o(70450);
+      AppMethodBeat.o(116304);
       return;
     }
-    if (this.bIo != null)
+    if (this.ksn != null)
     {
-      this.bIo.stop();
-      this.bIo.release();
-      this.bIo = null;
+      this.ksn.stop();
+      this.ksn.release();
+      this.ksn = null;
     }
     try
     {
-      this.bIo = new k();
-      this.bIo.setOnPreparedListener(this.bIp);
-      this.bIo.setOnVideoSizeChangedListener(this.bIq);
-      this.wfQ = false;
-      ab.v("MicroMsg.VideoSurfaceView", "reset duration to -1 in openVideo");
-      this.mDuration = -1;
-      this.bIo.setOnCompletionListener(this.bIr);
-      this.bIo.setOnErrorListener(this.bIu);
-      this.bIo.setDataSource(this.wfP);
-      this.bIo.setDisplay(this.taW);
-      this.bIo.setAudioStreamType(3);
-      this.bIo.setScreenOnWhilePlaying(true);
-      this.bIo.prepareAsync();
-      this.mVideoHeight = this.bIo.getVideoHeight();
-      this.mVideoWidth = this.bIo.getVideoWidth();
-      setMute(this.efg);
-      AppMethodBeat.o(70450);
+      this.ksn = new k();
+      this.ksn.setOnPreparedListener(this.kso);
+      this.ksn.setOnVideoSizeChangedListener(this.ksp);
+      this.kum = false;
+      ad.v("MicroMsg.VideoSurfaceView", "reset duration to -1 in openVideo");
+      this.ark = -1;
+      this.ksn.setOnCompletionListener(this.ksq);
+      this.ksn.setOnErrorListener(this.kst);
+      this.ksn.setDataSource(this.kul);
+      this.ksn.setDisplay(this.jrQ);
+      this.ksn.setAudioStreamType(3);
+      this.ksn.setScreenOnWhilePlaying(true);
+      this.ksn.prepareAsync();
+      this.mVideoHeight = this.ksn.getVideoHeight();
+      this.mVideoWidth = this.ksn.getVideoWidth();
+      setMute(this.fqj);
+      AppMethodBeat.o(116304);
       return;
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace("MicroMsg.VideoSurfaceView", localException, "prepare async error %s", new Object[] { localException.getMessage() });
-      if (this.lxA != null) {
-        this.lxA.onError(-1, -1);
+      ad.printErrStackTrace("MicroMsg.VideoSurfaceView", localException, "prepare async error %s", new Object[] { localException.getMessage() });
+      if (this.oNM != null) {
+        this.oNM.onError(-1, -1);
       }
-      AppMethodBeat.o(70450);
+      AppMethodBeat.o(116304);
     }
   }
   
-  public final void A(double paramDouble)
+  public final void d(double paramDouble, boolean paramBoolean)
   {
-    AppMethodBeat.i(70458);
-    if (this.bIo != null)
-    {
-      ab.d("MicroMsg.VideoSurfaceView", "seek to time: ".concat(String.valueOf(paramDouble)));
-      this.bIo.seekTo((int)paramDouble);
-      start();
-    }
-    AppMethodBeat.o(70458);
-  }
-  
-  public final void e(double paramDouble, boolean paramBoolean)
-  {
-    AppMethodBeat.i(70460);
-    A(paramDouble);
-    AppMethodBeat.o(70460);
+    AppMethodBeat.i(116314);
+    q(paramDouble);
+    AppMethodBeat.o(116314);
   }
   
   public int getCurrentPosition()
   {
-    AppMethodBeat.i(70453);
-    if ((this.bIo != null) && (this.wfQ))
+    AppMethodBeat.i(116307);
+    if ((this.ksn != null) && (this.kum))
     {
-      int i = this.bIo.getCurrentPosition();
-      AppMethodBeat.o(70453);
+      int i = this.ksn.getCurrentPosition();
+      AppMethodBeat.o(116307);
       return i;
     }
-    AppMethodBeat.o(70453);
+    AppMethodBeat.o(116307);
     return 0;
   }
   
   public int getDuration()
   {
-    AppMethodBeat.i(70452);
-    if ((this.bIo != null) && (this.wfQ))
+    AppMethodBeat.i(116306);
+    if ((this.ksn != null) && (this.kum))
     {
-      if (this.mDuration > 0)
+      if (this.ark > 0)
       {
-        i = this.mDuration;
-        AppMethodBeat.o(70452);
+        i = this.ark;
+        AppMethodBeat.o(116306);
         return i;
       }
-      this.mDuration = this.bIo.getDuration();
-      i = this.mDuration;
-      AppMethodBeat.o(70452);
+      this.ark = this.ksn.getDuration();
+      i = this.ark;
+      AppMethodBeat.o(116306);
       return i;
     }
-    this.mDuration = -1;
-    int i = this.mDuration;
-    AppMethodBeat.o(70452);
+    this.ark = -1;
+    int i = this.ark;
+    AppMethodBeat.o(116306);
     return i;
   }
   
@@ -178,19 +240,19 @@ public class VideoSurfaceView
   
   public String getVideoPath()
   {
-    return this.wfP;
+    return this.kul;
   }
   
   public final boolean isPlaying()
   {
-    AppMethodBeat.i(70454);
-    if ((this.bIo != null) && (this.wfQ))
+    AppMethodBeat.i(116308);
+    if ((this.ksn != null) && (this.kum))
     {
-      boolean bool = this.bIo.isPlaying();
-      AppMethodBeat.o(70454);
+      boolean bool = this.ksn.isPlaying();
+      AppMethodBeat.o(116308);
       return bool;
     }
-    AppMethodBeat.o(70454);
+    AppMethodBeat.o(116308);
     return false;
   }
   
@@ -198,105 +260,117 @@ public class VideoSurfaceView
   
   public final void pause()
   {
-    AppMethodBeat.i(70451);
-    if ((this.bIo != null) && (this.wfQ) && (this.bIo.isPlaying())) {
-      this.bIo.pause();
+    AppMethodBeat.i(116305);
+    if ((this.ksn != null) && (this.kum) && (this.ksn.isPlaying())) {
+      this.ksn.pause();
     }
-    this.bHF = false;
-    AppMethodBeat.o(70451);
+    this.cnf = false;
+    AppMethodBeat.o(116305);
+  }
+  
+  public final void q(double paramDouble)
+  {
+    AppMethodBeat.i(116312);
+    if (this.ksn != null)
+    {
+      ad.d("MicroMsg.VideoSurfaceView", "seek to time: ".concat(String.valueOf(paramDouble)));
+      this.ksn.seekTo((int)paramDouble);
+      start();
+    }
+    AppMethodBeat.o(116312);
   }
   
   public void setForceScaleFullScreen(boolean paramBoolean) {}
   
   public void setLoop(boolean paramBoolean)
   {
-    AppMethodBeat.i(70455);
-    if (this.bIo != null) {
-      this.bIo.setLooping(paramBoolean);
+    AppMethodBeat.i(116309);
+    if (this.ksn != null) {
+      this.ksn.setLooping(paramBoolean);
     }
-    AppMethodBeat.o(70455);
+    AppMethodBeat.o(116309);
   }
   
   public void setMute(boolean paramBoolean)
   {
-    AppMethodBeat.i(70459);
-    this.efg = paramBoolean;
-    if (this.bIo != null)
+    AppMethodBeat.i(116313);
+    this.fqj = paramBoolean;
+    if (this.ksn != null)
     {
-      if (this.efg)
+      if (this.fqj)
       {
-        this.bIo.setVolume(0.0F, 0.0F);
-        AppMethodBeat.o(70459);
+        this.ksn.setVolume(0.0F, 0.0F);
+        AppMethodBeat.o(116313);
         return;
       }
-      this.bIo.setVolume(0.5F, 0.5F);
+      this.ksn.setVolume(0.5F, 0.5F);
     }
-    AppMethodBeat.o(70459);
+    AppMethodBeat.o(116313);
   }
   
-  public void setOnInfoCallback(e.b paramb) {}
+  public void setOnInfoCallback(h.b paramb) {}
   
-  public void setOnSeekCompleteCallback(e.c paramc) {}
+  public void setOnSeekCompleteCallback(h.c paramc) {}
   
-  public void setOnSurfaceCallback(e.d paramd) {}
+  public void setOnSurfaceCallback(h.d paramd) {}
   
-  public void setOneTimeVideoTextureUpdateCallback(e.e parame) {}
+  public void setOneTimeVideoTextureUpdateCallback(h.e parame) {}
   
   public void setPlayProgressCallback(boolean paramBoolean) {}
   
   public void setThumb(Bitmap paramBitmap) {}
   
-  public void setVideoCallback(e.a parama)
+  public void setVideoCallback(h.a parama)
   {
-    this.lxA = parama;
+    this.oNM = parama;
   }
   
   public void setVideoPath(String paramString)
   {
-    AppMethodBeat.i(70448);
-    this.wfP = paramString;
-    this.bHF = false;
-    boV();
+    AppMethodBeat.i(116302);
+    this.kul = paramString;
+    this.cnf = false;
+    bei();
     requestLayout();
-    AppMethodBeat.o(70448);
+    AppMethodBeat.o(116302);
   }
   
   public final boolean start()
   {
-    AppMethodBeat.i(70456);
-    if ((this.bIo != null) && (this.wfQ)) {
-      this.bIo.start();
+    AppMethodBeat.i(116310);
+    if ((this.ksn != null) && (this.kum)) {
+      this.ksn.start();
     }
-    for (this.bHF = false;; this.bHF = true)
+    for (this.cnf = false;; this.cnf = true)
     {
-      AppMethodBeat.o(70456);
+      AppMethodBeat.o(116310);
       return true;
     }
   }
   
   public final void stop()
   {
-    AppMethodBeat.i(70449);
-    if (this.bIo != null)
+    AppMethodBeat.i(116303);
+    if (this.ksn != null)
     {
-      this.bIo.stop();
-      this.bIo.release();
-      this.bIo = null;
+      this.ksn.stop();
+      this.ksn.release();
+      this.ksn = null;
     }
-    AppMethodBeat.o(70449);
+    AppMethodBeat.o(116303);
   }
   
-  public final boolean w(Context paramContext, boolean paramBoolean)
+  public final boolean y(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(70457);
+    AppMethodBeat.i(116311);
     paramBoolean = start();
-    AppMethodBeat.o(70457);
+    AppMethodBeat.o(116311);
     return paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.VideoSurfaceView
  * JD-Core Version:    0.7.0.1
  */

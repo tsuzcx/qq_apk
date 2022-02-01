@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.ext.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.storage.bl;
 
 public final class b
 {
-  public static int V(bi parambi)
+  public static int ai(bl parambl)
   {
-    AppMethodBeat.i(20297);
-    if (parambi.getType() == 34)
+    AppMethodBeat.i(24370);
+    if (parambl.getType() == 34)
     {
-      AppMethodBeat.o(20297);
+      AppMethodBeat.o(24370);
       return 2;
     }
-    if (parambi.getType() == 1)
+    if (parambl.getType() == 1)
     {
-      AppMethodBeat.o(20297);
+      AppMethodBeat.o(24370);
       return 1;
     }
-    AppMethodBeat.o(20297);
+    AppMethodBeat.o(24370);
     return 3;
   }
 }

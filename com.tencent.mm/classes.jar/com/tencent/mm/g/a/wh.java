@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bxo;
 import com.tencent.mm.sdk.b.b;
+import java.util.List;
 
 public final class wh
   extends b
 {
-  public wh.a cNM;
+  public a dBN;
   
   public wh()
   {
@@ -15,11 +17,17 @@ public final class wh
   
   private wh(byte paramByte)
   {
-    AppMethodBeat.i(70223);
-    this.cNM = new wh.a();
-    this.ymq = false;
+    AppMethodBeat.i(149893);
+    this.dBN = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70223);
+    AppMethodBeat.o(149893);
+  }
+  
+  public static final class a
+  {
+    public List<bxo> dBO;
+    public int deP = -1;
   }
 }
 

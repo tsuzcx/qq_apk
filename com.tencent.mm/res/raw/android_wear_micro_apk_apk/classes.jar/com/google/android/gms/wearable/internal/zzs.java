@@ -10,17 +10,17 @@ public final class zzs
   extends zza
 {
   public static final Parcelable.Creator<zzs> CREATOR = new co();
-  final zzu TP;
-  final int UT;
-  final int UU;
+  final zzu VE;
+  final int WI;
+  final int WJ;
   final int type;
   
   public zzs(zzu paramzzu, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.TP = paramzzu;
+    this.VE = paramzzu;
     this.type = paramInt1;
-    this.UT = paramInt2;
-    this.UU = paramInt3;
+    this.WI = paramInt2;
+    this.WJ = paramInt3;
   }
   
   public final void a(c paramc)
@@ -35,12 +35,12 @@ public final class zzs
     case 3: 
       return;
     }
-    paramc.a(this.TP, this.UT, this.UU);
+    paramc.a(this.VE, this.WI, this.WJ);
   }
   
   public final String toString()
   {
-    String str2 = String.valueOf(this.TP);
+    String str2 = String.valueOf(this.VE);
     int i = this.type;
     String str1;
     String str3;
@@ -49,7 +49,7 @@ public final class zzs
     default: 
       str1 = Integer.toString(i);
       str3 = String.valueOf(str1);
-      i = this.UT;
+      i = this.WI;
       switch (i)
       {
       default: 
@@ -60,7 +60,7 @@ public final class zzs
     for (;;)
     {
       str1 = String.valueOf(str1);
-      i = this.UU;
+      i = this.WJ;
       return String.valueOf(str2).length() + 81 + String.valueOf(str3).length() + String.valueOf(str1).length() + "ChannelEventParcelable[, channel=" + str2 + ", type=" + str3 + ", closeReason=" + str1 + ", appErrorCode=" + i + "]";
       str1 = "CHANNEL_OPENED";
       break;

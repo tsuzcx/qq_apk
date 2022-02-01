@@ -8,8 +8,8 @@ public class CursorIndexOutOfBoundsException
   public CursorIndexOutOfBoundsException(int paramInt1, int paramInt2)
   {
     super("Index " + paramInt1 + " requested, with a size of " + paramInt2);
-    AppMethodBeat.i(11989);
-    AppMethodBeat.o(11989);
+    AppMethodBeat.i(2670);
+    AppMethodBeat.o(2670);
   }
   
   public CursorIndexOutOfBoundsException(String paramString)

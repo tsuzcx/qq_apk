@@ -10,10 +10,10 @@ public enum CameraEffectFeature
   
   static
   {
-    AppMethodBeat.i(96943);
+    AppMethodBeat.i(7967);
     SHARE_CAMERA_EFFECT = new CameraEffectFeature("SHARE_CAMERA_EFFECT", 0, 20170417);
     $VALUES = new CameraEffectFeature[] { SHARE_CAMERA_EFFECT };
-    AppMethodBeat.o(96943);
+    AppMethodBeat.o(7967);
   }
   
   private CameraEffectFeature(int paramInt)
@@ -33,7 +33,7 @@ public enum CameraEffectFeature
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.facebook.share.internal.CameraEffectFeature
  * JD-Core Version:    0.7.0.1
  */

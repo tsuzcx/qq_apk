@@ -1,14 +1,20 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LuckyMoneyNotHookReceiveUI$4
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   LuckyMoneyNotHookReceiveUI$4(LuckyMoneyNotHookReceiveUI paramLuckyMoneyNotHookReceiveUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(65735);
+    this.toe.finish();
+    AppMethodBeat.o(65735);
+  }
 }
 
 

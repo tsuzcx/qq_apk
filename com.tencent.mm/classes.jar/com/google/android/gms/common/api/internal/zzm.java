@@ -20,34 +20,34 @@ final class zzm
   
   public final void run()
   {
-    AppMethodBeat.i(60940);
+    AppMethodBeat.i(11432);
     if (!this.zzew.mStarted)
     {
-      AppMethodBeat.o(60940);
+      AppMethodBeat.o(11432);
       return;
     }
     Object localObject = this.zzev.getConnectionResult();
     if (((ConnectionResult)localObject).hasResolution())
     {
       this.zzew.mLifecycleFragment.startActivityForResult(GoogleApiActivity.zza(this.zzew.getActivity(), ((ConnectionResult)localObject).getResolution(), this.zzev.zzu(), false), 1);
-      AppMethodBeat.o(60940);
+      AppMethodBeat.o(11432);
       return;
     }
     if (this.zzew.zzdg.isUserResolvableError(((ConnectionResult)localObject).getErrorCode()))
     {
       this.zzew.zzdg.showErrorDialogFragment(this.zzew.getActivity(), this.zzew.mLifecycleFragment, ((ConnectionResult)localObject).getErrorCode(), 2, this.zzew);
-      AppMethodBeat.o(60940);
+      AppMethodBeat.o(11432);
       return;
     }
     if (((ConnectionResult)localObject).getErrorCode() == 18)
     {
       localObject = this.zzew.zzdg.showUpdatingDialog(this.zzew.getActivity(), this.zzew);
       this.zzew.zzdg.registerCallbackOnUpdate(this.zzew.getActivity().getApplicationContext(), new zzn(this, (Dialog)localObject));
-      AppMethodBeat.o(60940);
+      AppMethodBeat.o(11432);
       return;
     }
     this.zzew.zza((ConnectionResult)localObject, this.zzev.zzu());
-    AppMethodBeat.o(60940);
+    AppMethodBeat.o(11432);
   }
 }
 

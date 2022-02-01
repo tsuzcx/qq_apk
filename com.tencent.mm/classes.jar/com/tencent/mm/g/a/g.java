@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class g
   extends b
 {
-  public g.a cmi;
+  public a daU;
   
   public g()
   {
@@ -15,16 +16,23 @@ public final class g
   
   private g(byte paramByte)
   {
-    AppMethodBeat.i(15751);
-    this.cmi = new g.a();
-    this.ymq = false;
+    AppMethodBeat.i(19786);
+    this.daU = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15751);
+    AppMethodBeat.o(19786);
+  }
+  
+  public static final class a
+  {
+    public Context context;
+    public String[] daV;
+    public String[] selectionArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.g
  * JD-Core Version:    0.7.0.1
  */

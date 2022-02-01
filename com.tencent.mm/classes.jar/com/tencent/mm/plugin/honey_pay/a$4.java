@@ -1,49 +1,72 @@
 package com.tencent.mm.plugin.honey_pay;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e.a;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bi;
 import com.tencent.mm.plugin.honey_pay.model.c;
-import com.tencent.mm.plugin.messenger.foundation.a.o;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.plugin.messenger.foundation.a.p;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
 import java.net.URLDecoder;
 import java.util.Map;
 
 final class a$4
-  implements o
+  implements p
 {
   a$4(a parama) {}
   
-  public final void onNewXmlReceived(String paramString, Map<String, String> paramMap, e.a parama)
+  public final void onNewXmlReceived(String paramString, Map<String, String> paramMap, f.a parama)
   {
-    AppMethodBeat.i(41710);
-    if (bo.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), 0) == 35)
+    AppMethodBeat.i(64605);
+    if (bt.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), 0) == 35)
     {
-      ab.i("MicroMsg.SubCoreHoneyPay", "receive honey pay newxml");
+      ad.i("MicroMsg.SubCoreHoneyPay", "receive honey pay newxml");
       String str2 = (String)paramMap.get(".sysmsg.paymsg.appmsgcontent");
-      paramString = (String)paramMap.get(".sysmsg.paymsg.fromusername");
-      parama = (String)paramMap.get(".sysmsg.paymsg.tousername");
+      parama = (String)paramMap.get(".sysmsg.paymsg.fromusername");
+      paramString = (String)paramMap.get(".sysmsg.paymsg.tousername");
       String str1 = (String)paramMap.get(".sysmsg.paymsg.paymsgid");
       paramMap = (String)paramMap.get(".sysmsg.paymsg.systip");
-      if (!bo.isNullOrNil(str2))
+      if (!bt.isNullOrNil(str2))
       {
         str2 = URLDecoder.decode(str2);
-        ab.d("MicroMsg.SubCoreHoneyPay", "appmsg: %s", new Object[] { str2 });
-        c.o(str1, str2, parama, paramString);
+        ad.d("MicroMsg.SubCoreHoneyPay", "appmsg: %s", new Object[] { str2 });
+        c.n(str1, str2, paramString, parama);
       }
-      if (!bo.isNullOrNil(paramMap))
+      if (!bt.isNullOrNil(paramMap))
       {
         paramMap = URLDecoder.decode(paramMap);
-        ab.d("MicroMsg.SubCoreHoneyPay", "systip: %s", new Object[] { paramMap });
-        c.X(parama, paramMap, paramString);
+        ad.d("MicroMsg.SubCoreHoneyPay", "systip: %s", new Object[] { paramMap });
+        ad.i("MicroMsg.HoneyPayUtil", "insert sys msg: %s, %s", new Object[] { paramString, Boolean.valueOf(bt.isNullOrNil(paramMap)) });
+        if ((!bt.isNullOrNil(paramMap)) && (!bt.isNullOrNil(paramString)))
+        {
+          paramMap = c.Q(c.Q(paramMap, paramString, -1), parama, -1);
+          parama = new bl();
+          parama.jV(0);
+          parama.nY(paramString);
+          parama.setStatus(3);
+          parama.setContent(paramMap);
+          parama.kY(bi.y(paramString, System.currentTimeMillis() / 1000L));
+          parama.setType(10000);
+          parama.setFlag(parama.field_flag | 0x8);
+          long l = ((k)g.ab(k.class)).cOI().an(parama);
+          ad.i("MicroMsg.HoneyPayUtil", "insert msgId: %s", new Object[] { Long.valueOf(l) });
+          if (l <= 0L) {
+            ad.w("MicroMsg.HoneyPayUtil", "insert sys msg fail!");
+          }
+        }
       }
     }
-    AppMethodBeat.o(41710);
+    AppMethodBeat.o(64605);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.a.4
  * JD-Core Version:    0.7.0.1
  */

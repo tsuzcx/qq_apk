@@ -8,16 +8,16 @@ import java.util.List;
 class k
   extends b
 {
-  private final WeakReference<h> hZ;
+  private final WeakReference<h> jY;
   
   k(h paramh)
   {
-    this.hZ = new WeakReference(paramh);
+    this.jY = new WeakReference(paramh);
   }
   
   public void a(MediaMetadataCompat paramMediaMetadataCompat)
   {
-    h localh = (h)this.hZ.get();
+    h localh = (h)this.jY.get();
     if (localh != null) {
       localh.a(3, paramMediaMetadataCompat, null);
     }
@@ -25,14 +25,14 @@ class k
   
   public void a(ParcelableVolumeInfo paramParcelableVolumeInfo)
   {
-    h localh = (h)this.hZ.get();
+    h localh = (h)this.jY.get();
     if (localh != null) {
       if (paramParcelableVolumeInfo == null) {
         break label55;
       }
     }
     label55:
-    for (paramParcelableVolumeInfo = new q(paramParcelableVolumeInfo.ir, paramParcelableVolumeInfo.is, paramParcelableVolumeInfo.it, paramParcelableVolumeInfo.iu, paramParcelableVolumeInfo.iv);; paramParcelableVolumeInfo = null)
+    for (paramParcelableVolumeInfo = new q(paramParcelableVolumeInfo.kp, paramParcelableVolumeInfo.kq, paramParcelableVolumeInfo.kr, paramParcelableVolumeInfo.ks, paramParcelableVolumeInfo.kt);; paramParcelableVolumeInfo = null)
     {
       localh.a(4, paramParcelableVolumeInfo, null);
       return;
@@ -41,7 +41,7 @@ class k
   
   public final void a(PlaybackStateCompat paramPlaybackStateCompat)
   {
-    h localh = (h)this.hZ.get();
+    h localh = (h)this.jY.get();
     if (localh != null) {
       localh.a(2, paramPlaybackStateCompat, null);
     }
@@ -49,47 +49,33 @@ class k
   
   public final void a(String paramString, Bundle paramBundle)
   {
-    h localh = (h)this.hZ.get();
+    h localh = (h)this.jY.get();
     if (localh != null) {
       localh.a(1, paramString, paramBundle);
     }
   }
   
-  public final void e(boolean paramBoolean)
+  public final void bf()
   {
-    h localh = (h)this.hZ.get();
+    h localh = (h)this.jY.get();
     if (localh != null) {
-      localh.a(10, Boolean.valueOf(paramBoolean), null);
+      localh.a(13, null, null);
     }
   }
   
-  public final void f(boolean paramBoolean)
+  public final void h(boolean paramBoolean) {}
+  
+  public final void i(boolean paramBoolean)
   {
-    h localh = (h)this.hZ.get();
+    h localh = (h)this.jY.get();
     if (localh != null) {
       localh.a(11, Boolean.valueOf(paramBoolean), null);
     }
   }
   
-  public final void l(int paramInt)
-  {
-    h localh = (h)this.hZ.get();
-    if (localh != null) {
-      localh.a(9, Integer.valueOf(paramInt), null);
-    }
-  }
-  
-  public final void m(int paramInt)
-  {
-    h localh = (h)this.hZ.get();
-    if (localh != null) {
-      localh.a(12, Integer.valueOf(paramInt), null);
-    }
-  }
-  
   public void onExtrasChanged(Bundle paramBundle)
   {
-    h localh = (h)this.hZ.get();
+    h localh = (h)this.jY.get();
     if (localh != null) {
       localh.a(7, paramBundle, null);
     }
@@ -97,7 +83,7 @@ class k
   
   public void onQueueChanged(List<MediaSessionCompat.QueueItem> paramList)
   {
-    h localh = (h)this.hZ.get();
+    h localh = (h)this.jY.get();
     if (localh != null) {
       localh.a(5, paramList, null);
     }
@@ -105,7 +91,7 @@ class k
   
   public void onQueueTitleChanged(CharSequence paramCharSequence)
   {
-    h localh = (h)this.hZ.get();
+    h localh = (h)this.jY.get();
     if (localh != null) {
       localh.a(6, paramCharSequence, null);
     }
@@ -113,9 +99,25 @@ class k
   
   public void onSessionDestroyed()
   {
-    h localh = (h)this.hZ.get();
+    h localh = (h)this.jY.get();
     if (localh != null) {
       localh.a(8, null, null);
+    }
+  }
+  
+  public final void v(int paramInt)
+  {
+    h localh = (h)this.jY.get();
+    if (localh != null) {
+      localh.a(9, Integer.valueOf(paramInt), null);
+    }
+  }
+  
+  public final void w(int paramInt)
+  {
+    h localh = (h)this.jY.get();
+    if (localh != null) {
+      localh.a(12, Integer.valueOf(paramInt), null);
     }
   }
 }

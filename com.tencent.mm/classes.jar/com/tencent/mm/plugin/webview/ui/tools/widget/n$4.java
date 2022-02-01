@@ -1,26 +1,32 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import d.l;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class n$4
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  n$4(n paramn, n.a parama) {}
+  public static final 4 Bvp;
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  static
   {
-    AppMethodBeat.i(79177);
-    ab.d("MicroMsg.AppBrandAuthorizeDialog", "stev dialog onCancel");
-    this.vte.h(3, null);
-    AppMethodBeat.o(79177);
+    AppMethodBeat.i(82695);
+    Bvp = new 4();
+    AppMethodBeat.o(82695);
+  }
+  
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(82694);
+    AppMethodBeat.o(82694);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.n.4
  * JD-Core Version:    0.7.0.1
  */

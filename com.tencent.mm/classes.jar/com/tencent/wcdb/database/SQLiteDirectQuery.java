@@ -31,47 +31,47 @@ public class SQLiteDirectQuery
   
   public byte[] getBlob(int paramInt)
   {
-    AppMethodBeat.i(12576);
+    AppMethodBeat.i(3262);
     byte[] arrayOfByte = nativeGetBlob(this.mPreparedStatement.getPtr(), paramInt);
-    AppMethodBeat.o(12576);
+    AppMethodBeat.o(3262);
     return arrayOfByte;
   }
   
   public double getDouble(int paramInt)
   {
-    AppMethodBeat.i(12574);
+    AppMethodBeat.i(3260);
     double d = nativeGetDouble(this.mPreparedStatement.getPtr(), paramInt);
-    AppMethodBeat.o(12574);
+    AppMethodBeat.o(3260);
     return d;
   }
   
   public long getLong(int paramInt)
   {
-    AppMethodBeat.i(12573);
+    AppMethodBeat.i(3259);
     long l = nativeGetLong(this.mPreparedStatement.getPtr(), paramInt);
-    AppMethodBeat.o(12573);
+    AppMethodBeat.o(3259);
     return l;
   }
   
   public String getString(int paramInt)
   {
-    AppMethodBeat.i(12575);
+    AppMethodBeat.i(3261);
     String str = nativeGetString(this.mPreparedStatement.getPtr(), paramInt);
-    AppMethodBeat.o(12575);
+    AppMethodBeat.o(3261);
     return str;
   }
   
   public int getType(int paramInt)
   {
-    AppMethodBeat.i(12577);
+    AppMethodBeat.i(3263);
     paramInt = SQLITE_TYPE_MAPPING[nativeGetType(this.mPreparedStatement.getPtr(), paramInt)];
-    AppMethodBeat.o(12577);
+    AppMethodBeat.o(3263);
     return paramInt;
   }
   
   protected void onAllReferencesReleased()
   {
-    AppMethodBeat.i(12580);
+    AppMethodBeat.i(3266);
     try
     {
       if (this.mPreparedStatement != null)
@@ -80,12 +80,12 @@ public class SQLiteDirectQuery
         this.mPreparedStatement.endOperation(null);
       }
       super.onAllReferencesReleased();
-      AppMethodBeat.o(12580);
+      AppMethodBeat.o(3266);
       return;
     }
     finally
     {
-      AppMethodBeat.o(12580);
+      AppMethodBeat.o(3266);
     }
   }
   
@@ -93,7 +93,7 @@ public class SQLiteDirectQuery
   {
     try
     {
-      AppMethodBeat.i(12579);
+      AppMethodBeat.i(3265);
       if (this.mPreparedStatement != null)
       {
         this.mPreparedStatement.reset(false);
@@ -104,7 +104,7 @@ public class SQLiteDirectQuery
           releasePreparedStatement();
         }
       }
-      AppMethodBeat.o(12579);
+      AppMethodBeat.o(3265);
       return;
     }
     finally {}
@@ -112,7 +112,7 @@ public class SQLiteDirectQuery
   
   public int step(int paramInt)
   {
-    AppMethodBeat.i(12578);
+    AppMethodBeat.i(3264);
     try
     {
       if (acquirePreparedStatement(false))
@@ -121,7 +121,7 @@ public class SQLiteDirectQuery
         this.mPreparedStatement.attachCancellationSignal(this.mCancellationSignal);
       }
       paramInt = nativeStep(this.mPreparedStatement.getPtr(), paramInt);
-      AppMethodBeat.o(12578);
+      AppMethodBeat.o(3264);
       return paramInt;
     }
     catch (RuntimeException localRuntimeException)
@@ -137,7 +137,7 @@ public class SQLiteDirectQuery
         this.mPreparedStatement.failOperation(localRuntimeException);
       }
       releasePreparedStatement();
-      AppMethodBeat.o(12578);
+      AppMethodBeat.o(3264);
       throw localRuntimeException;
     }
   }

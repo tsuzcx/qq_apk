@@ -1,856 +1,762 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Pair;
-import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.ImageView;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.rd;
-import com.tencent.mm.g.a.rd.b;
-import com.tencent.mm.g.b.a.am;
-import com.tencent.mm.model.t;
+import com.tencent.mm.aw.o;
+import com.tencent.mm.model.w;
+import com.tencent.mm.model.y.b;
+import com.tencent.mm.modelsns.b;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
+import com.tencent.mm.opensdk.modelmsg.WXImageObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ay;
-import com.tencent.mm.plugin.sns.storage.s;
+import com.tencent.mm.opensdk.modelmsg.WXVideoObject;
+import com.tencent.mm.plugin.sns.d.a;
+import com.tencent.mm.plugin.sns.k.h;
+import com.tencent.mm.plugin.sns.k.j;
+import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.az;
+import com.tencent.mm.plugin.sns.model.ba;
+import com.tencent.mm.plugin.sns.storage.p;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
+import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.bap;
-import com.tencent.mm.protocal.protobuf.bby;
-import com.tencent.mm.protocal.protobuf.cfm;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.g.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.alc;
+import com.tencent.mm.protocal.protobuf.ald;
+import com.tencent.mm.protocal.protobuf.ale;
+import com.tencent.mm.protocal.protobuf.bmn;
+import com.tencent.mm.protocal.protobuf.bpk;
+import com.tencent.mm.protocal.protobuf.cwk;
+import com.tencent.mm.protocal.protobuf.czi;
+import com.tencent.mm.protocal.protobuf.dqn;
+import com.tencent.mm.protocal.protobuf.dsx;
+import com.tencent.mm.protocal.protobuf.yk;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.sdk.platformtools.f;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.widget.QImageView.a;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.LinkedList<Ljava.lang.Long;>;
 import java.util.List;
 
 public final class ac
-  implements y
+  implements ab
 {
   private String appId;
   private String appName;
-  MMActivity cmc;
-  private boolean cqS;
-  String cqq;
-  String desc;
-  ProgressDialog eeN;
-  String fgM;
-  private View jIo;
-  private String mSessionId;
-  String nKP;
-  private int rGd;
-  private com.tencent.mm.modelsns.b rGj;
-  private boolean rHD;
-  private boolean rHE;
-  private WXMediaMessage rHF;
-  private String rIA;
-  private boolean rIB;
-  boolean rIC;
-  private int rID;
-  private MediaMetadataRetriever rIE;
-  private int rIF;
-  private int rIG;
-  private int rIH;
-  private Pair<Integer, Integer> rII;
-  private Bitmap rIJ;
-  boolean rIK;
-  private c rIL;
-  ay rIM;
-  private int rIN;
-  Runnable rIO;
-  Runnable rIP;
-  SightPlayImageView rIv;
-  private ImageView rIw;
-  boolean rIx;
-  private Bitmap rIy;
-  private bby rIz;
-  String thumbPath;
-  String videoPath;
+  private String dxE;
+  private String dxF;
+  private String dxz;
+  public String gJB = "";
+  public String gJC = "";
+  private Bitmap gTB = null;
+  private int h = -1;
+  final MMActivity imP;
+  String link = "";
+  String mSessionId;
+  private boolean osM = false;
+  private View pf = null;
+  private String qpB = "";
+  private String title = "";
+  private TextView titleTv = null;
+  private String videoUrl = "";
+  private int w = -1;
+  private dsx wLn = null;
+  private int wLo = 1;
+  private byte[] xlX = null;
+  private String xlY;
+  private int xlZ;
+  private CdnImageView xma = null;
+  private TextView xmb = null;
+  private com.tencent.mm.modelsns.d xmf = null;
+  private String xmg = "";
+  private String xnA;
+  private String xnB;
+  private int xnC = 0;
+  private com.tencent.mm.modelsns.d xnD = null;
+  private int xnE = 0;
+  private String xnF = "";
+  private String xnG = "";
+  private int xnH;
+  private int xnI;
+  private String xnJ;
+  private boolean xnK;
+  private String xnL;
+  private int xnM;
+  private int xnN = 0;
+  private String xnO = "";
+  private String xnP = "";
+  String xnQ = "";
+  private b xnR;
+  private com.tencent.mm.modelsns.c xnS;
+  private boolean xnq = false;
+  private String xnr;
+  private String xns;
+  private boolean xnt = false;
+  boolean xnu = false;
+  private boolean xnv = false;
+  private boolean xnw = false;
+  private WXMediaMessage xnx = null;
+  private String xny = "";
+  private String xnz = "";
   
   public ac(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(38347);
-    this.jIo = null;
-    this.rIw = null;
-    this.thumbPath = "";
-    this.videoPath = "";
-    this.cqq = "";
-    this.cqS = false;
-    this.rIx = false;
-    this.rIy = null;
-    this.rGj = null;
-    this.rIz = new bby();
-    this.rHD = false;
-    this.rHE = false;
-    this.rHF = null;
-    this.rIB = false;
-    this.rIC = false;
-    this.rID = 0;
-    this.rIE = new MediaMetadataRetriever();
-    this.rIF = 0;
-    this.rIG = 0;
-    this.rIH = 90;
-    this.rII = null;
-    this.rIJ = null;
-    this.rIK = false;
-    this.rIL = new ac.1(this);
-    this.rIM = null;
-    this.rIN = 0;
-    this.desc = "";
-    this.eeN = null;
-    this.rIO = new ac.5(this);
-    this.rIP = new ac.6(this);
-    this.cmc = paramMMActivity;
-    AppMethodBeat.o(38347);
+    this.imP = paramMMActivity;
   }
   
-  private void lv(boolean paramBoolean)
+  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bmn parambmn, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(38351);
-    this.videoPath = "";
-    this.thumbPath = "";
-    this.rIC = paramBoolean;
-    this.rIH = 90;
-    if (com.tencent.mm.plugin.sns.data.i.A(this.rIJ))
-    {
-      this.rIJ.recycle();
-      this.rIJ = null;
+    AppMethodBeat.i(97928);
+    if (this.xnt) {
+      paramLinkedList = new ba(4);
     }
-    AppMethodBeat.o(38351);
-  }
-  
-  final void EG(int paramInt)
-  {
-    AppMethodBeat.i(38354);
-    am localam = new am().Fn();
-    localam.cUF = paramInt;
-    localam.fR(this.rIA).ake();
-    AppMethodBeat.o(38354);
-  }
-  
-  public final void V(Bundle paramBundle)
-  {
-    AppMethodBeat.i(38348);
-    this.rGj = com.tencent.mm.modelsns.b.w(this.cmc.getIntent());
-    this.nKP = bo.bf(this.cmc.getIntent().getStringExtra("KSightCdnUrl"), "");
-    this.fgM = bo.bf(this.cmc.getIntent().getStringExtra("KSightCdnThumbUrl"), "");
-    this.appId = bo.bf(this.cmc.getIntent().getStringExtra("Ksnsupload_appid"), "");
-    this.appName = bo.bf(this.cmc.getIntent().getStringExtra("Ksnsupload_appname"), "");
-    this.rHD = this.cmc.getIntent().getBooleanExtra("KThrid_app", false);
-    this.rHE = this.cmc.getIntent().getBooleanExtra("KSnsAction", false);
-    this.rIB = this.cmc.getIntent().getBooleanExtra("Kis_take_photo", false);
-    this.rIK = this.cmc.getIntent().getBooleanExtra("KBlockAdd", false);
-    this.rGd = this.cmc.getIntent().getIntExtra("Ksnsupload_source", 0);
-    this.mSessionId = bo.bf(this.cmc.getIntent().getStringExtra("reportSessionId"), "");
-    this.rIA = this.cmc.getIntent().getStringExtra("KSessionID");
-    paramBundle = this.cmc.getIntent().getBundleExtra("Ksnsupload_timeline");
-    if (paramBundle != null) {
-      this.rHF = new SendMessageToWX.Req(paramBundle).message;
-    }
-    this.thumbPath = this.cmc.getIntent().getStringExtra("KSightThumbPath");
-    this.videoPath = this.cmc.getIntent().getStringExtra("KSightPath");
-    this.cqq = this.cmc.getIntent().getStringExtra("sight_md5");
-    paramBundle = this.cmc.getIntent().getByteArrayExtra("KMMSightExtInfo");
-    if (paramBundle != null) {}
-    try
+    label363:
+    Object localObject1;
+    Object localObject2;
+    for (;;)
     {
-      this.rIz.parseFrom(paramBundle);
-      if (this.rIz == null)
-      {
-        this.rIz = new bby();
-        this.rIz.xra = this.rIB;
+      paramPInt.value = paramLinkedList.aTB;
+      if (paramInt3 > a.wzN) {
+        paramLinkedList.Ms(4);
       }
-      this.rIz.cwc = this.mSessionId;
-      paramBundle = new rd();
-      paramBundle.cHE.type = 2;
-      com.tencent.mm.sdk.b.a.ymk.l(paramBundle);
-      if (bo.isNullOrNil(this.videoPath))
+      if (this.xlX == null)
       {
-        this.videoPath = bo.bf(paramBundle.cHF.cHJ, "");
-        ab.e("MicroMsg.SightWidget", "videoPath is null %s", new Object[] { this.videoPath });
-      }
-      if (bo.isNullOrNil(this.cqq))
-      {
-        paramBundle = bo.bf(paramBundle.cHF.cHH, "");
-        this.cqq = paramBundle;
-        ab.i("MicroMsg.SightWidget", "oncreate thumb path %s videopath %s md5 %s", new Object[] { this.thumbPath, this.videoPath, this.cqq });
-        com.tencent.mm.sdk.b.a.ymk.c(this.rIL);
-        if (this.rID != 0) {
-          break label625;
+        o.ayE();
+        paramPInt = com.tencent.mm.aw.c.pT(this.qpB);
+        if ((paramPInt != null) && (!paramPInt.isRecycled()))
+        {
+          paramPInt = f.a(paramPInt, 150, 150, false, false);
+          ad.i("MicroMsg.LinkWidget", "create bitmap %d %d", new Object[] { Integer.valueOf(paramPInt.getHeight()), Integer.valueOf(paramPInt.getWidth()) });
+          this.xlX = f.Bitmap2Bytes(paramPInt);
         }
-        ag.coU();
-        i = s.getScreenWidth();
-        if (i != 0) {
-          break label586;
-        }
-        AppMethodBeat.o(38348);
       }
-    }
-    catch (Exception paramBundle)
-    {
-      int i;
-      for (;;)
-      {
-        ab.i("MicroMsg.SightWidget", "error %s", new Object[] { paramBundle.getMessage() });
-        continue;
-        paramBundle = this.cqq;
+      paramLinkedList.aoX(this.title).aoV(this.link).aoW(this.link).aoS(paramString1);
+      paramLinkedList.aoV(bt.by(this.imP.getIntent().getStringExtra("ksnsupload_link_desc"), ""));
+      if (this.xnE == 15) {
+        paramLinkedList.aoV(bt.by(this.imP.getIntent().getStringExtra("fav_note_link_description"), ""));
       }
-      label586:
-      this.rID = ((i - this.cmc.getResources().getDimensionPixelSize(2131428718) * 4 - this.cmc.getResources().getDimensionPixelSize(2131427775) * 2) / 3);
-      label625:
-      AppMethodBeat.o(38348);
-    }
-  }
-  
-  public final void W(Bundle paramBundle) {}
-  
-  public final boolean a(int paramInt1, int paramInt2, org.b.d.i parami, String paramString1, List<String> paramList1, bap parambap, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
-  {
-    AppMethodBeat.i(38350);
-    if (!com.tencent.mm.vfs.e.cN(this.videoPath))
-    {
-      al.d(new ac.3(this));
-      AppMethodBeat.o(38350);
-      return false;
-    }
-    if (this.rIM != null)
-    {
-      AppMethodBeat.o(38350);
-      return false;
-    }
-    if (this.rIx)
-    {
-      AppMethodBeat.o(38350);
-      return true;
-    }
-    this.rIx = true;
-    this.desc = paramString1;
-    parami = new LinkedList();
-    if (paramList1 != null)
-    {
+      if (!this.xnt) {
+        break;
+      }
+      if (!paramLinkedList.a(this.xlX, this.link, this.link, this.link, 3, "", "", "", "")) {}
+      paramLinkedList.bR(this.wLo, this.xmg);
+      paramLinkedList.Mw(this.xlZ);
+      paramLinkedList.apa(this.dxz);
+      paramLinkedList.apb(this.xlY);
+      paramString1 = this.xns;
+      paramLinkedList.wLh.xns = bt.nullAsNil(paramString1);
+      ad.i("MicroMsg.UploadPackHelper", "setStatExtStr:%s", new Object[] { paramString1 });
+      paramLinkedList.Mu(paramInt1);
+      if (!paramBoolean) {
+        break label1496;
+      }
+      paramLinkedList.Mx(1);
+      paramLinkedList.fq(paramList2);
+      paramString1 = new LinkedList();
+      if (paramList1 == null) {
+        break label1506;
+      }
       new LinkedList();
-      paramString2 = t.aac();
+      paramList2 = w.arx();
       paramList1 = paramList1.iterator();
       while (paramList1.hasNext())
       {
-        String str = (String)paramList1.next();
-        if (!paramString2.contains(str))
+        paramPInt = (String)paramList1.next();
+        if (!paramList2.contains(paramPInt))
         {
-          cfm localcfm = new cfm();
-          localcfm.jJA = str;
-          parami.add(localcfm);
+          localObject1 = new cwk();
+          ((cwk)localObject1).mAQ = paramPInt;
+          paramString1.add(localObject1);
+        }
+      }
+      if (this.osM)
+      {
+        paramLinkedList = new ba(5);
+      }
+      else
+      {
+        if (this.xnu)
+        {
+          paramLinkedList = new ba(30);
+          localObject1 = this.xnF;
+          paramLinkedList.wLh.Ets.username = ((String)localObject1);
+          localObject1 = this.xnG;
+          paramLinkedList.wLh.Ets.path = ((String)localObject1);
+          paramInt2 = this.xnH;
+          paramLinkedList.wLh.Ets.version = paramInt2;
+          paramInt2 = this.xnI;
+          paramLinkedList.wLh.Ets.AHI = paramInt2;
+          localObject1 = this.xnJ;
+          paramLinkedList.wLh.Ets.EGj = ((String)localObject1);
+          boolean bool = this.xnK;
+          localObject1 = paramLinkedList.wLh.Ets;
+          if (bool) {}
+          for (paramInt2 = 1;; paramInt2 = 0)
+          {
+            ((dqn)localObject1).isGame = paramInt2;
+            localObject1 = this.xnL;
+            paramLinkedList.wLh.Ets.dzY = ((String)localObject1);
+            paramInt2 = this.xnM;
+            paramLinkedList.wLh.Ets.subType = paramInt2;
+            break;
+          }
+        }
+        if (this.xnE == 11)
+        {
+          paramLinkedList = new ba(18);
+          localObject1 = new czi();
+          ((czi)localObject1).gJy = this.xnO;
+          ((czi)localObject1).gJx = this.title;
+          ((czi)localObject1).gJv = this.link;
+          ((czi)localObject1).gJz = this.xnP;
+          ((czi)localObject1).gJw = this.xnN;
+          ((czi)localObject1).gJA = this.qpB;
+          ((czi)localObject1).gJB = this.gJB;
+          ((czi)localObject1).gJC = this.gJC;
+          paramLinkedList.wLm = ((czi)localObject1);
+          paramLinkedList.wLh.Etr = ((czi)localObject1);
+        }
+        else if (this.xnE == 15)
+        {
+          paramLinkedList = new ba(26);
+          localObject1 = this.xnQ;
+          paramLinkedList.wLh.Etm.DaE = ((String)localObject1);
+        }
+        else if ((this.xnE == 16) && (this.wLn != null))
+        {
+          localObject1 = new ba(3);
+          localObject2 = this.wLn;
+          paramLinkedList = (LinkedList<Long>)localObject1;
+          if (localObject2 != null)
+          {
+            ((ba)localObject1).wLn = ((dsx)localObject2);
+            paramLinkedList = (LinkedList<Long>)localObject1;
+          }
+        }
+        else if (this.xnE == 17)
+        {
+          localObject1 = new ba(28);
+          paramLinkedList = (LinkedList<Long>)localObject1;
+          if (this.xnR != null)
+          {
+            localObject2 = this.xnR;
+            paramLinkedList = (LinkedList<Long>)localObject1;
+            if (localObject2 != null)
+            {
+              ((ba)localObject1).wLh.Etm.DaG = ((b)localObject2).htg;
+              paramLinkedList = (LinkedList<Long>)localObject1;
+            }
+          }
+        }
+        else if (this.xnE == 18)
+        {
+          localObject1 = new ba(29);
+          paramLinkedList = (LinkedList<Long>)localObject1;
+          if (this.xnS != null)
+          {
+            localObject2 = this.xnS;
+            paramLinkedList = (LinkedList<Long>)localObject1;
+            if (localObject2 != null)
+            {
+              ((ba)localObject1).wLh.Etm.DaH = ((com.tencent.mm.modelsns.c)localObject2).hth;
+              paramLinkedList = (LinkedList<Long>)localObject1;
+            }
+          }
+        }
+        else
+        {
+          paramLinkedList = new ba(3);
         }
       }
     }
-    this.rIM = new ay(15);
-    paramPInt.value = this.rIM.ayi;
-    if (paramInt3 > com.tencent.mm.plugin.sns.c.a.raX) {
-      this.rIM.DS(3);
+    if (this.osM) {
+      if (this.xnx == null) {
+        break label1804;
+      }
     }
-    paramString1 = this.rIM.aaL(paramString1);
-    new LinkedList();
-    paramString1.a(parambap).av(parami).DU(paramInt1).DV(paramInt2).dc(paramList2);
-    if (paramBoolean) {
-      this.rIM.DX(1);
-    }
-    for (;;)
+    label1156:
+    label1804:
+    for (paramPInt = (WXVideoObject)this.xnx.mediaObject;; paramPInt = null)
     {
-      this.rIM.dc(paramList2);
-      this.rIM.DW(this.rGd);
-      this.rIM.cIu = this.rIz;
-      this.rIM.g(null, null, null, paramInt4, paramInt5);
-      this.rIM.setSessionId(this.mSessionId);
-      if (!bo.isNullOrNil(this.appId)) {
-        this.rIM.aaR(this.appId);
-      }
-      if (!bo.isNullOrNil(this.appName)) {
-        this.rIM.aaS(bo.bf(this.appName, ""));
-      }
-      if (this.rHD) {
-        this.rIM.DW(5);
-      }
-      if ((this.rHE) && (this.rHF != null))
+      localObject1 = this.xlX;
+      localObject2 = this.link;
+      if (paramPInt == null)
       {
-        this.rIM.aaM(this.rHF.mediaTagName);
-        this.rIM.aj(this.appId, this.rHF.messageExt, this.rHF.messageAction);
+        paramString1 = this.link;
+        label1088:
+        if (paramPInt != null) {
+          break label1156;
+        }
       }
-      al.p(this.rIP, 700L);
-      d.post(new ac.4(this), "sight_send_ready");
-      AppMethodBeat.o(38350);
-      return true;
-      this.rIM.DX(0);
+      for (paramPInt = this.link;; paramPInt = bt.by(paramPInt.videoUrl, this.link))
+      {
+        paramLinkedList.a((byte[])localObject1, (String)localObject2, paramString1, paramPInt, 4, bt.by(this.title, ""), bt.by(this.xnz, ""), "", "");
+        break;
+        paramString1 = bt.by(paramPInt.videoLowBandUrl, this.link);
+        break label1088;
+      }
+      if (!bt.isNullOrNil(this.xnr))
+      {
+        paramString1 = this.xnr;
+        paramInt2 = this.w;
+        paramInt3 = this.h;
+        paramString1 = ba.av("", paramString1, paramString1);
+        if (paramString1 == null)
+        {
+          ad.e("MicroMsg.UploadPackHelper", "share img o.url is null!");
+          break;
+        }
+        paramString1.Desc = "";
+        if ((paramInt2 > 0) && (paramInt3 > 0))
+        {
+          paramPInt = new bpk();
+          paramPInt.DNI = paramInt3;
+          paramPInt.DNH = paramInt2;
+          paramString1.DMT = paramPInt;
+        }
+        if (!bt.isNullOrNil("")) {
+          paramString1.Title = "";
+        }
+        if (!bt.isNullOrNil("")) {
+          paramString1.Desc = "";
+        }
+        paramLinkedList.wLh.Etm.DaC.add(paramString1);
+        break;
+      }
+      if (this.xlX == null) {
+        break;
+      }
+      if (this.xnu)
+      {
+        paramString1 = this.xlX;
+        if (paramString1 != null) {
+          break label1420;
+        }
+      }
+      for (paramInt3 = 0;; paramInt3 = 0)
+      {
+        if (paramInt3 != 0)
+        {
+          ad.i("MicroMsg.LinkWidget", "isPngThumbData");
+          paramString1 = e.bD(this.xlX);
+          if ((paramString1 != null) && (paramString1.length > 0))
+          {
+            ad.i("MicroMsg.LinkWidget", "use covert data");
+            this.xlX = e.bD(paramString1);
+          }
+        }
+        paramLinkedList.b(this.xlX, "", "");
+        break;
+        label1420:
+        if (paramString1.length >= 4) {
+          break label1433;
+        }
+      }
+      label1433:
+      paramInt2 = 1;
+      int i = 0;
+      for (;;)
+      {
+        paramInt3 = paramInt2;
+        if (i >= 4) {
+          break;
+        }
+        if (paramString1[i] != new byte[] { -119, 80, 78, 71 }[i]) {
+          paramInt2 = 0;
+        }
+        i += 1;
+      }
+      label1496:
+      paramLinkedList.Mx(0);
+      break label363;
+      label1506:
+      if (parami != null) {
+        paramLinkedList.iI(parami.token, parami.DNx);
+      }
+      paramLinkedList.aM(paramString1);
+      if (!bt.isNullOrNil(this.appId)) {
+        paramLinkedList.aoY(this.appId);
+      }
+      if (!bt.isNullOrNil(this.appName)) {
+        paramLinkedList.aoZ(bt.by(this.appName, ""));
+      }
+      if (this.xnv) {
+        paramLinkedList.Mw(5);
+      }
+      paramLinkedList.a(parambmn);
+      if ((this.xnw) && (this.xnx != null))
+      {
+        paramLinkedList.aoT(this.xnx.mediaTagName);
+        paramLinkedList.au(this.appId, this.xnx.messageExt, this.xnx.messageAction);
+      }
+      paramLinkedList.aoU(paramString2);
+      paramLinkedList.g(this.xnA, this.xnB, this.dxE, paramInt4, paramInt5);
+      parami = this.dxF;
+      paramLinkedList.wLi.dxF = parami;
+      paramLinkedList.setSessionId(this.mSessionId);
+      paramInt1 = this.xnC;
+      paramLinkedList.wLh.gHj = paramInt1;
+      paramInt1 = paramLinkedList.commit();
+      if (this.xmf != null)
+      {
+        this.xmf.oG(paramInt1);
+        h.wRM.c(this.xmf);
+      }
+      if (this.xnD != null)
+      {
+        this.xnD.oG(paramInt1);
+        com.tencent.mm.plugin.sns.k.i.wRM.c(this.xnD);
+        this.xnD.aBj();
+      }
+      af.dtq().drS();
+      this.imP.finish();
+      AppMethodBeat.o(97928);
+      return false;
     }
   }
   
-  final void ctN()
+  public final void af(Bundle paramBundle)
   {
-    AppMethodBeat.i(38355);
-    if ((this.rIJ != null) && (!this.rIJ.isRecycled()))
+    AppMethodBeat.i(97926);
+    this.xmf = com.tencent.mm.modelsns.d.w(this.imP.getIntent());
+    this.xnE = this.imP.getIntent().getIntExtra("Ksnsupload_type", 0);
+    this.xnN = this.imP.getIntent().getIntExtra("KSnsStreamVideoTotalTime", 0);
+    this.xnO = bt.by(this.imP.getIntent().getStringExtra("KSnsStreamVideoWroding"), "");
+    this.xnP = bt.by(this.imP.getIntent().getStringExtra("KSnsStreamVideoWebUrl"), "");
+    this.gJB = bt.by(this.imP.getIntent().getStringExtra("KSnsStreamVideoAduxInfo"), "");
+    this.gJC = bt.by(this.imP.getIntent().getStringExtra("KSnsStreamVideoPublishId"), "");
+    this.w = this.imP.getIntent().getIntExtra("Ksnsupload_width", -1);
+    this.h = this.imP.getIntent().getIntExtra("Ksnsupload_height", -1);
+    this.xlZ = this.imP.getIntent().getIntExtra("Ksnsupload_source", 0);
+    this.xns = bt.by(this.imP.getIntent().getStringExtra("key_snsad_statextstr"), "");
+    this.link = bt.by(this.imP.getIntent().getStringExtra("Ksnsupload_link"), "");
+    this.title = bt.by(this.imP.getIntent().getStringExtra("Ksnsupload_title"), "");
+    this.qpB = bt.by(this.imP.getIntent().getStringExtra("Ksnsupload_imgurl"), "");
+    this.xlX = this.imP.getIntent().getByteArrayExtra("Ksnsupload_imgbuf");
+    if ((this.xlX == null) && (this.xnx != null) && (this.xnx.mediaObject != null) && ((this.xnx.mediaObject instanceof WXImageObject))) {
+      this.xlX = ((WXImageObject)this.xnx.mediaObject).imageData;
+    }
+    this.osM = this.imP.getIntent().getBooleanExtra("ksnsis_video", false);
+    this.xnt = this.imP.getIntent().getBooleanExtra("ksnsis_music", false);
+    this.xnu = this.imP.getIntent().getBooleanExtra("ksnsis_appbrand", false);
+    this.dxz = bt.by(this.imP.getIntent().getStringExtra("src_username"), "");
+    this.xlY = bt.by(this.imP.getIntent().getStringExtra("src_displayname"), "");
+    this.appId = bt.by(this.imP.getIntent().getStringExtra("Ksnsupload_appid"), "");
+    this.appName = bt.by(this.imP.getIntent().getStringExtra("Ksnsupload_appname"), "");
+    this.xnv = this.imP.getIntent().getBooleanExtra("KThrid_app", false);
+    this.xnw = this.imP.getIntent().getBooleanExtra("KSnsAction", false);
+    this.xnA = bt.by(this.imP.getIntent().getStringExtra("ShareUrlOriginal"), "");
+    this.xnB = bt.by(this.imP.getIntent().getStringExtra("ShareUrlOpen"), "");
+    this.dxE = bt.by(this.imP.getIntent().getStringExtra("JsAppId"), "");
+    this.dxF = bt.by(this.imP.getIntent().getStringExtra("KPublisherId"), "");
+    this.mSessionId = bt.by(this.imP.getIntent().getStringExtra("reportSessionId"), "");
+    this.xnC = this.imP.getIntent().getIntExtra("Ksnsupload_contentattribute", 0);
+    this.xnQ = this.imP.getIntent().getStringExtra("fav_note_xml");
+    this.xnF = bt.by(this.imP.getIntent().getStringExtra("KsnsUpload_BrandUsername"), "");
+    this.xnG = bt.by(this.imP.getIntent().getStringExtra("KsnsUpload_BrandPath"), "");
+    this.xnH = this.imP.getIntent().getIntExtra("KsnsUpload_BrandVersion", 0);
+    this.xnI = this.imP.getIntent().getIntExtra("KsnsUpload_BrandVersionType", 0);
+    this.xnJ = bt.by(this.imP.getIntent().getStringExtra("KsnsUpload_BrandShareActionId"), "");
+    this.xnK = this.imP.getIntent().getBooleanExtra("KsnsUpload_isGame", false);
+    this.xnL = bt.by(this.imP.getIntent().getStringExtra("KsnsUpload_MessageExtraData"), "");
+    this.xnM = this.imP.getIntent().getIntExtra("KsnsUpload_SubType", 0);
+    this.xnr = bt.by(this.imP.getIntent().getStringExtra("KlinkThumb_url"), "");
+    if ((this.xnr.startsWith("http://mmsns.qpic.cn")) || (this.xnr.startsWith("https://mmsns.qpic.cn")))
     {
-      this.rIv.setImageBitmap(this.rIJ);
-      this.rIv.ft(((Integer)this.rII.first).intValue(), ((Integer)this.rII.second).intValue());
+      this.qpB = this.xnr;
+      this.xlX = null;
+      ad.i("MicroMsg.LinkWidget", "get thumb url %s", new Object[] { this.xnr });
     }
-    AppMethodBeat.o(38355);
-  }
-  
-  final void ctO()
-  {
-    AppMethodBeat.i(38356);
-    this.rIw.setVisibility(8);
-    this.rIv.qTR.clear();
-    this.rIv.ft(com.tencent.mm.cb.a.fromDPToPix(this.cmc, 100), com.tencent.mm.cb.a.fromDPToPix(this.cmc, 100));
-    this.rIv.setBackgroundResource(2131690511);
-    this.rIv.setImageResource(2131230781);
-    this.rIv.setContentDescription(this.rIv.getContext().getString(2131303771));
-    int i = com.tencent.mm.cb.a.fromDPToPix(this.cmc, 100) * 35 / 100;
-    this.rIv.setPadding(i, i, i, i);
-    AppMethodBeat.o(38356);
-  }
-  
-  public final boolean ctu()
-  {
-    return !this.rIC;
-  }
-  
-  public final View ctv()
-  {
-    AppMethodBeat.i(38349);
-    this.jIo = View.inflate(this.cmc, 2130971053, null);
-    this.rIv = ((SightPlayImageView)this.jIo.findViewById(2131821549));
-    this.rIw = ((ImageView)this.jIo.findViewById(2131820996));
-    Object localObject = new DisplayMetrics();
-    this.cmc.getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-    this.rIG = com.tencent.mm.cb.a.fromDPToPix(this.cmc, 100);
-    this.rIF = com.tencent.mm.cb.a.fromDPToPix(this.cmc, 100);
+    paramBundle = this.imP.getIntent().getBundleExtra("Ksnsupload_timeline");
+    if (paramBundle != null)
+    {
+      this.xnx = new SendMessageToWX.Req(paramBundle).message;
+      if (bt.isNullOrNil(this.title)) {
+        this.title = this.xnx.title;
+      }
+      if (bt.isNullOrNil(this.xnz)) {
+        this.xnz = this.xnx.description;
+      }
+      if (bt.cw(this.xlX)) {
+        this.xlX = this.xnx.thumbData;
+      }
+    }
+    paramBundle = this.imP.getIntent().getByteArrayExtra("KWebSearchInfo");
+    if (paramBundle != null) {
+      this.wLn = new dsx();
+    }
     try
     {
-      this.rIE.setDataSource(this.videoPath);
-      this.rIH = bo.getInt(this.rIE.extractMetadata(24), 0);
-      this.rIJ = this.rIE.getFrameAtTime();
-      if (this.rIH == 0) {
-        break label544;
+      this.wLn.parseFrom(paramBundle);
+      paramBundle = this.imP.getIntent().getStringExtra("KSnsStrId");
+      Object localObject = bt.by(this.imP.getIntent().getStringExtra("KSnsLocalId"), "");
+      localObject = af.dtu().apK((String)localObject);
+      if (!bt.isNullOrNil(paramBundle))
+      {
+        this.xnD = com.tencent.mm.modelsns.d.oE(706);
+        this.xnD.oI(this.xnD.htj).zj(System.currentTimeMillis()).oI(this.xnD.htk).oI(1).zj(paramBundle);
+        if (localObject != null)
+        {
+          this.xnD.oH(((p)localObject).field_type);
+          this.xnD.ew(((p)localObject).Nb(32)).zi(((p)localObject).dyg()).zi(this.link);
+        }
+        com.tencent.mm.plugin.sns.k.i.wRM.b(this.xnD);
       }
-      if (this.rIH != 180) {
-        break label456;
+      if (this.imP.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true))
+      {
+        this.wLo = 1;
+        this.xmg = bt.by(this.imP.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
+        paramBundle = this.imP.getIntent().getStringExtra("ksnsupload_finder_object_xml");
+        if (!bt.isNullOrNil(paramBundle))
+        {
+          paramBundle = bw.K(paramBundle, "finderFeed");
+          if (paramBundle != null)
+          {
+            this.xnR = new b();
+            this.xnR.h("", paramBundle);
+          }
+        }
+        paramBundle = this.imP.getIntent().getStringExtra("ksnsupload_finder_topic_xml");
+        if (!bt.isNullOrNil(paramBundle))
+        {
+          paramBundle = bw.K(paramBundle, "finderTopic");
+          if (paramBundle != null)
+          {
+            this.xnS = new com.tencent.mm.modelsns.c();
+            this.xnS.h("", paramBundle);
+          }
+        }
+        AppMethodBeat.o(97926);
+        return;
       }
     }
-    catch (Exception localException)
+    catch (IOException paramBundle)
     {
       for (;;)
       {
-        label456:
-        ab.w("MicroMsg.SightWidget", "MetadataRetriever init fail! path:%s  exception:%s", new Object[] { this.videoPath, localException.getMessage() });
+        ad.printErrStackTrace("MicroMsg.LinkWidget", paramBundle, "parse web search info failed", new Object[0]);
+        this.wLn = null;
         continue;
-        int i = 1;
+        this.wLo = 0;
       }
     }
-    if (i != 0) {
-      this.rIG = bo.getInt(this.rIE.extractMetadata(19), com.tencent.mm.cb.a.fromDPToPix(this.cmc, 100));
+  }
+  
+  public final void ag(Bundle paramBundle) {}
+  
+  public final boolean dyU()
+  {
+    return true;
+  }
+  
+  public final View dyV()
+  {
+    AppMethodBeat.i(97927);
+    this.pf = com.tencent.mm.ui.y.js(this.imP).inflate(2131495816, null);
+    if (!bt.isNullOrNil(this.link)) {
+      this.pf.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(97925);
+          if ((!bt.isNullOrNil(ac.this.xnQ)) || (ac.this.xnu))
+          {
+            AppMethodBeat.o(97925);
+            return;
+          }
+          Object localObject = com.tencent.mm.model.y.arz().E(ac.this.mSessionId, true);
+          if (((y.b)localObject).containsKey("_DATA_CENTER_ITEM_SHOW_TYPE"))
+          {
+            int i = ((y.b)localObject).getInt("_DATA_CENTER_ITEM_SHOW_TYPE", -1);
+            int j = ((y.b)localObject).getInt("_DATA_SHOW_NATIVE_PAGE", -1);
+            if ((i == 5) && (j == 1))
+            {
+              ad.i("MicroMsg.LinkWidget", "goto native video");
+              localObject = new Intent();
+              ((Intent)localObject).putExtras(ac.this.imP.getIntent().getBundleExtra("BizVideoDetailUIExtras"));
+              paramAnonymousView = paramAnonymousView.findViewById(2131300948);
+              if (paramAnonymousView != null)
+              {
+                i = paramAnonymousView.getWidth();
+                j = paramAnonymousView.getHeight();
+                int[] arrayOfInt = new int[2];
+                paramAnonymousView.getLocationInWindow(arrayOfInt);
+                ((Intent)localObject).putExtra("img_gallery_width", i).putExtra("img_gallery_height", j).putExtra("img_gallery_left", arrayOfInt[0]).putExtra("img_gallery_top", arrayOfInt[1]);
+              }
+              ((Intent)localObject).addFlags(268435456);
+              com.tencent.mm.bs.d.b(aj.getContext(), "brandservice", ".ui.timeline.video.BizVideoDetailUI", (Intent)localObject);
+              AppMethodBeat.o(97925);
+              return;
+            }
+          }
+          ad.i("MicroMsg.LinkWidget", "adlink url " + ac.this.link);
+          paramAnonymousView = new Intent();
+          paramAnonymousView.putExtra("rawUrl", ac.this.link);
+          a.hYt.i(paramAnonymousView, ac.this.imP);
+          AppMethodBeat.o(97925);
+        }
+      });
     }
-    for (this.rIF = bo.getInt(this.rIE.extractMetadata(18), com.tencent.mm.cb.a.fromDPToPix(this.cmc, 100));; this.rIF = bo.getInt(this.rIE.extractMetadata(19), com.tencent.mm.cb.a.fromDPToPix(this.cmc, 100)))
+    this.xma = ((CdnImageView)this.pf.findViewById(2131300948));
+    this.titleTv = ((TextView)this.pf.findViewById(2131305950));
+    this.xmb = ((TextView)this.pf.findViewById(2131304202));
+    int i;
+    label162:
+    Object localObject;
+    if ((!this.osM) && (!this.xnt))
     {
-      this.rII = com.tencent.mm.modelsns.e.a(this.rIF, this.rIG, this.cmc, false);
-      ab.d("MicroMsg.SightWidget", "rawWidth=%s rawHeight=%s fixWidth=%s fixHeight=%s rotation=%s", new Object[] { Integer.valueOf(this.rIF), Integer.valueOf(this.rIG), this.rII.first, this.rII.second, Integer.valueOf(this.rIH) });
-      ctN();
-      this.rIv.setScaleType(QImageView.a.AED);
-      this.rIv.qTZ = true;
-      this.rIv.setOnClickListener(new ac.2(this));
-      ab.i("MicroMsg.SightWidget", "videoPath " + this.videoPath + " thumbPath " + this.thumbPath + " " + com.tencent.mm.vfs.e.avI(this.videoPath) + " " + com.tencent.mm.vfs.e.avI(this.thumbPath));
-      if (com.tencent.mm.vfs.e.cN(this.videoPath)) {
-        ab.i("MicroMsg.SightWidget", "videopath exist videopath %s md5 %s", new Object[] { this.videoPath, this.cqq });
+      if ((this.wLn != null) && (!bt.isNullOrNil(this.wLn.AGs)))
+      {
+        i = 1;
+        if ((i == 0) && (this.xnM != 1)) {
+          break label313;
+        }
       }
-      localObject = this.jIo;
-      AppMethodBeat.o(38349);
+    }
+    else
+    {
+      this.pf.findViewById(2131305185).setVisibility(0);
+      localObject = com.tencent.mm.model.y.arz().E(this.mSessionId, true);
+      if ((localObject == null) || (1 != ((y.b)localObject).getInt("_DATA_CENTER_IS_PAY_SUBSCRIBE", -1))) {
+        break label331;
+      }
+      localObject = aj.getContext().getString(2131761345);
+      this.xmb.setText((CharSequence)localObject);
+      this.xmb.setVisibility(0);
+      label216:
+      if (bt.isNullOrNil(this.title)) {
+        break label354;
+      }
+      this.titleTv.setText(this.title);
+      if (this.xmb.getVisibility() != 0) {
+        break label343;
+      }
+      this.titleTv.setMaxLines(1);
+      label255:
+      if (bt.isNullOrNil(this.qpB)) {
+        break label700;
+      }
+      this.xma.setVisibility(0);
+      this.xma.setUrl(this.qpB);
+    }
+    for (;;)
+    {
+      com.tencent.mm.plugin.sns.data.q.b(this.xma, this.imP);
+      localObject = this.pf;
+      AppMethodBeat.o(97927);
       return localObject;
       i = 0;
       break;
-      this.rIG = bo.getInt(this.rIE.extractMetadata(18), com.tencent.mm.cb.a.fromDPToPix(this.cmc, 100));
+      label313:
+      this.pf.findViewById(2131305185).setVisibility(8);
+      break label162;
+      label331:
+      this.xmb.setVisibility(8);
+      break label216;
+      label343:
+      this.titleTv.setMaxLines(2);
+      break label255;
+      label354:
+      if ((this.xnE == 17) && (this.xnR != null))
+      {
+        if ((bt.isNullOrNil(this.xnR.htg.nickname)) && (!bt.isNullOrNil(this.xnR.htg.desc)))
+        {
+          this.titleTv.setText(k.c(this.imP, this.xnR.htg.desc));
+          break label255;
+        }
+        if (!bt.isNullOrNil(this.xnR.htg.desc))
+        {
+          this.titleTv.setText(k.c(this.imP, this.xnR.htg.nickname + ": " + this.xnR.htg.desc));
+          break label255;
+        }
+        this.titleTv.setText(k.c(this.imP, this.imP.getString(2131763973, new Object[] { this.xnR.htg.nickname })));
+        break label255;
+      }
+      if ((this.xnE == 18) && (this.xnS != null))
+      {
+        localObject = this.imP.getString(2131755778);
+        if (this.xnS.hth != null) {
+          if (this.xnS.hth.qSS != 1) {
+            break label669;
+          }
+        }
+        label669:
+        for (localObject = aj.getContext().getString(2131763974, new Object[] { this.xnS.hth.dqA });; localObject = this.xnS.hth.dqA)
+        {
+          this.xmb.setVisibility(0);
+          this.xmb.setText(this.xnS.hth.desc);
+          this.titleTv.setText(k.c(this.imP, (CharSequence)localObject));
+          break;
+        }
+      }
+      this.titleTv.setText(be.aqC(this.link));
+      break label255;
+      label700:
+      if (!bt.cw(this.xlX))
+      {
+        this.xma.setVisibility(0);
+        this.gTB = f.cl(this.xlX);
+        this.xma.setImageBitmap(this.gTB);
+        this.xnq = true;
+      }
+      else if (!bt.isNullOrNil(this.xnQ))
+      {
+        this.xma.setImageResource(2131690949);
+        this.xma.setVisibility(0);
+      }
+      else if (this.xnE == 17)
+      {
+        if ((this.xnR != null) && (!this.xnR.htg.mediaList.isEmpty()) && (!bt.isNullOrNil(((alc)this.xnR.htg.mediaList.get(0)).thumbUrl))) {
+          this.xma.setUrl(((alc)this.xnR.htg.mediaList.get(0)).thumbUrl);
+        }
+        this.xma.setVisibility(0);
+      }
+      else if (this.xnE == 18)
+      {
+        if ((this.xnS != null) && (this.xnS.hth != null)) {
+          this.xma.setUrl(this.xnS.hth.iconUrl);
+        }
+        this.xma.setVisibility(0);
+      }
+      else
+      {
+        this.xma.setImageResource(2131689584);
+        this.xma.setVisibility(0);
+      }
     }
   }
   
-  public final boolean ctw()
+  public final boolean dyW()
   {
-    AppMethodBeat.i(38353);
-    if (this.eeN != null) {
-      this.eeN.dismiss();
+    AppMethodBeat.i(97929);
+    if ((this.gTB != null) && (!this.gTB.isRecycled()) && (this.xnq)) {
+      this.gTB.recycle();
     }
-    com.tencent.mm.sdk.b.a.ymk.d(this.rIL);
-    if (com.tencent.mm.plugin.sns.data.i.A(this.rIy)) {
-      this.rIy.recycle();
-    }
-    lv(false);
-    AppMethodBeat.o(38353);
+    AppMethodBeat.o(97929);
     return false;
   }
   
-  /* Error */
   public final boolean j(int paramInt, Intent paramIntent)
   {
-    // Byte code:
-    //   0: ldc_w 835
-    //   3: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: iload_1
-    //   7: tableswitch	default:+29 -> 36, 9:+279->286, 10:+29->36, 11:+77->84, 12:+37->44
-    //   37: iconst_0
-    //   38: fstore_0
-    //   39: invokestatic 159	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   42: iconst_0
-    //   43: ireturn
-    //   44: aload_2
-    //   45: ifnull -9 -> 36
-    //   48: aload_0
-    //   49: aload_2
-    //   50: ldc_w 837
-    //   53: iconst_0
-    //   54: invokevirtual 251	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   57: putfield 110	com/tencent/mm/plugin/sns/ui/ac:rIC	Z
-    //   60: aload_0
-    //   61: getfield 110	com/tencent/mm/plugin/sns/ui/ac:rIC	Z
-    //   64: ifeq +12 -> 76
-    //   67: aload_0
-    //   68: invokevirtual 839	com/tencent/mm/plugin/sns/ui/ac:ctO	()V
-    //   71: aload_0
-    //   72: iconst_1
-    //   73: invokespecial 832	com/tencent/mm/plugin/sns/ui/ac:lv	(Z)V
-    //   76: ldc_w 835
-    //   79: invokestatic 159	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   82: iconst_1
-    //   83: ireturn
-    //   84: aload_2
-    //   85: ldc_w 841
-    //   88: invokevirtual 845	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   91: checkcast 847	com/tencent/mm/plugin/mmsight/SightCaptureResult
-    //   94: astore 4
-    //   96: aload 4
-    //   98: ifnull -62 -> 36
-    //   101: aload 4
-    //   103: getfield 850	com/tencent/mm/plugin/mmsight/SightCaptureResult:oFG	Z
-    //   106: ifne +113 -> 219
-    //   109: aload_0
-    //   110: iconst_0
-    //   111: putfield 110	com/tencent/mm/plugin/sns/ui/ac:rIC	Z
-    //   114: aload_0
-    //   115: aload 4
-    //   117: getfield 853	com/tencent/mm/plugin/mmsight/SightCaptureResult:oFI	Ljava/lang/String;
-    //   120: putfield 85	com/tencent/mm/plugin/sns/ui/ac:videoPath	Ljava/lang/String;
-    //   123: aload_0
-    //   124: aload 4
-    //   126: getfield 856	com/tencent/mm/plugin/mmsight/SightCaptureResult:oFJ	Ljava/lang/String;
-    //   129: putfield 83	com/tencent/mm/plugin/sns/ui/ac:thumbPath	Ljava/lang/String;
-    //   132: aload 4
-    //   134: getfield 859	com/tencent/mm/plugin/mmsight/SightCaptureResult:oFL	Ljava/lang/String;
-    //   137: invokestatic 422	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
-    //   140: ifne +64 -> 204
-    //   143: aload_0
-    //   144: aload 4
-    //   146: getfield 859	com/tencent/mm/plugin/mmsight/SightCaptureResult:oFL	Ljava/lang/String;
-    //   149: putfield 87	com/tencent/mm/plugin/sns/ui/ac:cqq	Ljava/lang/String;
-    //   152: aload_0
-    //   153: getfield 156	com/tencent/mm/plugin/sns/ui/ac:cmc	Lcom/tencent/mm/ui/MMActivity;
-    //   156: instanceof 861
-    //   159: ifeq +37 -> 196
-    //   162: aload_0
-    //   163: getfield 156	com/tencent/mm/plugin/sns/ui/ac:cmc	Lcom/tencent/mm/ui/MMActivity;
-    //   166: checkcast 861	com/tencent/mm/plugin/sns/ui/SnsUploadUI
-    //   169: aload_0
-    //   170: getfield 85	com/tencent/mm/plugin/sns/ui/ac:videoPath	Ljava/lang/String;
-    //   173: aload_0
-    //   174: getfield 83	com/tencent/mm/plugin/sns/ui/ac:thumbPath	Ljava/lang/String;
-    //   177: aload_0
-    //   178: getfield 87	com/tencent/mm/plugin/sns/ui/ac:cqq	Ljava/lang/String;
-    //   181: aconst_null
-    //   182: iconst_1
-    //   183: invokevirtual 864	com/tencent/mm/plugin/sns/ui/SnsUploadUI:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BZ)V
-    //   186: aload_0
-    //   187: getfield 156	com/tencent/mm/plugin/sns/ui/ac:cmc	Lcom/tencent/mm/ui/MMActivity;
-    //   190: checkcast 861	com/tencent/mm/plugin/sns/ui/SnsUploadUI
-    //   193: invokevirtual 867	com/tencent/mm/plugin/sns/ui/SnsUploadUI:cwE	()V
-    //   196: ldc_w 835
-    //   199: invokestatic 159	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   202: iconst_1
-    //   203: ireturn
-    //   204: aload_0
-    //   205: aload 4
-    //   207: getfield 853	com/tencent/mm/plugin/mmsight/SightCaptureResult:oFI	Ljava/lang/String;
-    //   210: invokestatic 870	com/tencent/mm/vfs/e:avP	(Ljava/lang/String;)Ljava/lang/String;
-    //   213: putfield 87	com/tencent/mm/plugin/sns/ui/ac:cqq	Ljava/lang/String;
-    //   216: goto -64 -> 152
-    //   219: aload_0
-    //   220: iconst_1
-    //   221: putfield 110	com/tencent/mm/plugin/sns/ui/ac:rIC	Z
-    //   224: aload_2
-    //   225: ldc_w 872
-    //   228: iconst_0
-    //   229: invokevirtual 375	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   232: istore_1
-    //   233: aload 4
-    //   235: getfield 875	com/tencent/mm/plugin/mmsight/SightCaptureResult:oFO	Ljava/lang/String;
-    //   238: astore_2
-    //   239: aload_0
-    //   240: getfield 156	com/tencent/mm/plugin/sns/ui/ac:cmc	Lcom/tencent/mm/ui/MMActivity;
-    //   243: instanceof 861
-    //   246: ifeq +32 -> 278
-    //   249: aload_0
-    //   250: getfield 156	com/tencent/mm/plugin/sns/ui/ac:cmc	Lcom/tencent/mm/ui/MMActivity;
-    //   253: checkcast 861	com/tencent/mm/plugin/sns/ui/SnsUploadUI
-    //   256: aload_2
-    //   257: iconst_1
-    //   258: iload_1
-    //   259: aconst_null
-    //   260: aconst_null
-    //   261: aload_0
-    //   262: getfield 377	com/tencent/mm/plugin/sns/ui/ac:rGd	I
-    //   265: invokevirtual 878	com/tencent/mm/plugin/sns/ui/SnsUploadUI:a	(Ljava/lang/String;ZILjava/util/ArrayList;Ljava/util/ArrayList;I)V
-    //   268: aload_0
-    //   269: getfield 156	com/tencent/mm/plugin/sns/ui/ac:cmc	Lcom/tencent/mm/ui/MMActivity;
-    //   272: checkcast 861	com/tencent/mm/plugin/sns/ui/SnsUploadUI
-    //   275: invokevirtual 867	com/tencent/mm/plugin/sns/ui/SnsUploadUI:cwE	()V
-    //   278: ldc_w 835
-    //   281: invokestatic 159	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   284: iconst_1
-    //   285: ireturn
-    //   286: aload_2
-    //   287: ldc_w 880
-    //   290: invokevirtual 884	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   293: astore 4
-    //   295: aload 4
-    //   297: ifnull +11 -> 308
-    //   300: aload 4
-    //   302: invokevirtual 889	java/util/ArrayList:size	()I
-    //   305: ifgt +16 -> 321
-    //   308: aload_2
-    //   309: ldc_w 891
-    //   312: invokevirtual 341	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   315: invokestatic 422	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
-    //   318: ifne +384 -> 702
-    //   321: aload_0
-    //   322: iconst_0
-    //   323: putfield 110	com/tencent/mm/plugin/sns/ui/ac:rIC	Z
-    //   326: aload 4
-    //   328: ifnull +124 -> 452
-    //   331: aload 4
-    //   333: invokevirtual 889	java/util/ArrayList:size	()I
-    //   336: ifle +116 -> 452
-    //   339: aload 4
-    //   341: iconst_0
-    //   342: invokevirtual 895	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   345: checkcast 517	java/lang/String
-    //   348: astore 4
-    //   350: aload_2
-    //   351: ldc_w 897
-    //   354: invokevirtual 341	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   357: astore 5
-    //   359: aload 5
-    //   361: invokestatic 422	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
-    //   364: ifne +14 -> 378
-    //   367: aload 5
-    //   369: astore_2
-    //   370: aload 5
-    //   372: invokestatic 482	com/tencent/mm/vfs/e:cN	(Ljava/lang/String;)Z
-    //   375: ifne +180 -> 555
-    //   378: new 798	java/lang/StringBuilder
-    //   381: dup
-    //   382: invokespecial 898	java/lang/StringBuilder:<init>	()V
-    //   385: invokestatic 901	com/tencent/mm/plugin/sns/model/ag:getAccSnsTmpPath	()Ljava/lang/String;
-    //   388: invokevirtual 806	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   391: aload 4
-    //   393: invokestatic 870	com/tencent/mm/vfs/e:avP	(Ljava/lang/String;)Ljava/lang/String;
-    //   396: invokevirtual 806	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   399: invokevirtual 820	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   402: astore_2
-    //   403: new 114	android/media/MediaMetadataRetriever
-    //   406: dup
-    //   407: invokespecial 115	android/media/MediaMetadataRetriever:<init>	()V
-    //   410: astore 5
-    //   412: aload 5
-    //   414: aload 4
-    //   416: invokevirtual 751	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
-    //   419: aload 5
-    //   421: lconst_0
-    //   422: invokevirtual 904	android/media/MediaMetadataRetriever:getFrameAtTime	(J)Landroid/graphics/Bitmap;
-    //   425: astore 6
-    //   427: aload 6
-    //   429: ifnonnull +35 -> 464
-    //   432: ldc 169
-    //   434: ldc_w 906
-    //   437: invokestatic 908	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   440: aload 5
-    //   442: invokevirtual 911	android/media/MediaMetadataRetriever:release	()V
-    //   445: goto -409 -> 36
-    //   448: astore_2
-    //   449: goto -413 -> 36
-    //   452: aload_2
-    //   453: ldc_w 891
-    //   456: invokevirtual 341	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
-    //   459: astore 4
-    //   461: goto -111 -> 350
-    //   464: ldc 169
-    //   466: ldc_w 913
-    //   469: iconst_2
-    //   470: anewarray 4	java/lang/Object
-    //   473: dup
-    //   474: iconst_0
-    //   475: aload 6
-    //   477: invokevirtual 916	android/graphics/Bitmap:getWidth	()I
-    //   480: invokestatic 772	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   483: aastore
-    //   484: dup
-    //   485: iconst_1
-    //   486: aload 6
-    //   488: invokevirtual 919	android/graphics/Bitmap:getHeight	()I
-    //   491: invokestatic 772	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   494: aastore
-    //   495: invokestatic 444	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   498: aload 6
-    //   500: bipush 80
-    //   502: getstatic 925	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   505: aload_2
-    //   506: iconst_1
-    //   507: invokestatic 930	com/tencent/mm/sdk/platformtools/d:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)V
-    //   510: aload_2
-    //   511: invokestatic 934	com/tencent/mm/sdk/platformtools/d:aoT	(Ljava/lang/String;)Landroid/graphics/BitmapFactory$Options;
-    //   514: astore 6
-    //   516: ldc 169
-    //   518: ldc_w 936
-    //   521: iconst_2
-    //   522: anewarray 4	java/lang/Object
-    //   525: dup
-    //   526: iconst_0
-    //   527: aload 6
-    //   529: getfield 941	android/graphics/BitmapFactory$Options:outWidth	I
-    //   532: invokestatic 772	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   535: aastore
-    //   536: dup
-    //   537: iconst_1
-    //   538: aload 6
-    //   540: getfield 944	android/graphics/BitmapFactory$Options:outHeight	I
-    //   543: invokestatic 772	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   546: aastore
-    //   547: invokestatic 444	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   550: aload 5
-    //   552: invokevirtual 911	android/media/MediaMetadataRetriever:release	()V
-    //   555: aload_0
-    //   556: aload 4
-    //   558: invokestatic 870	com/tencent/mm/vfs/e:avP	(Ljava/lang/String;)Ljava/lang/String;
-    //   561: putfield 87	com/tencent/mm/plugin/sns/ui/ac:cqq	Ljava/lang/String;
-    //   564: ldc 169
-    //   566: ldc_w 946
-    //   569: iconst_4
-    //   570: anewarray 4	java/lang/Object
-    //   573: dup
-    //   574: iconst_0
-    //   575: aload 4
-    //   577: aastore
-    //   578: dup
-    //   579: iconst_1
-    //   580: aload_2
-    //   581: aastore
-    //   582: dup
-    //   583: iconst_2
-    //   584: aload 4
-    //   586: invokestatic 814	com/tencent/mm/vfs/e:avI	(Ljava/lang/String;)J
-    //   589: invokestatic 951	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   592: aastore
-    //   593: dup
-    //   594: iconst_3
-    //   595: aload_2
-    //   596: invokestatic 814	com/tencent/mm/vfs/e:avI	(Ljava/lang/String;)J
-    //   599: invokestatic 951	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   602: aastore
-    //   603: invokestatic 444	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   606: aload_0
-    //   607: getfield 156	com/tencent/mm/plugin/sns/ui/ac:cmc	Lcom/tencent/mm/ui/MMActivity;
-    //   610: instanceof 861
-    //   613: ifeq +32 -> 645
-    //   616: aload_0
-    //   617: getfield 156	com/tencent/mm/plugin/sns/ui/ac:cmc	Lcom/tencent/mm/ui/MMActivity;
-    //   620: checkcast 861	com/tencent/mm/plugin/sns/ui/SnsUploadUI
-    //   623: aload 4
-    //   625: aload_2
-    //   626: aload_0
-    //   627: getfield 87	com/tencent/mm/plugin/sns/ui/ac:cqq	Ljava/lang/String;
-    //   630: aconst_null
-    //   631: iconst_0
-    //   632: invokevirtual 864	com/tencent/mm/plugin/sns/ui/SnsUploadUI:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;[BZ)V
-    //   635: aload_0
-    //   636: getfield 156	com/tencent/mm/plugin/sns/ui/ac:cmc	Lcom/tencent/mm/ui/MMActivity;
-    //   639: checkcast 861	com/tencent/mm/plugin/sns/ui/SnsUploadUI
-    //   642: invokevirtual 867	com/tencent/mm/plugin/sns/ui/SnsUploadUI:cwE	()V
-    //   645: ldc_w 835
-    //   648: invokestatic 159	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   651: iconst_1
-    //   652: ireturn
-    //   653: astore 6
-    //   655: ldc 169
-    //   657: ldc_w 953
-    //   660: iconst_1
-    //   661: anewarray 4	java/lang/Object
-    //   664: dup
-    //   665: iconst_0
-    //   666: aload 6
-    //   668: invokevirtual 462	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   671: aastore
-    //   672: invokestatic 437	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   675: aload 5
-    //   677: invokevirtual 911	android/media/MediaMetadataRetriever:release	()V
-    //   680: goto -125 -> 555
-    //   683: astore 5
-    //   685: goto -130 -> 555
-    //   688: astore_2
-    //   689: aload 5
-    //   691: invokevirtual 911	android/media/MediaMetadataRetriever:release	()V
-    //   694: ldc_w 835
-    //   697: invokestatic 159	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   700: aload_2
-    //   701: athrow
-    //   702: aload_0
-    //   703: iconst_1
-    //   704: putfield 110	com/tencent/mm/plugin/sns/ui/ac:rIC	Z
-    //   707: aload_2
-    //   708: ldc_w 955
-    //   711: invokevirtual 884	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   714: astore 4
-    //   716: aload 4
-    //   718: ifnull +11 -> 729
-    //   721: aload 4
-    //   723: invokevirtual 889	java/util/ArrayList:size	()I
-    //   726: ifne +19 -> 745
-    //   729: ldc 169
-    //   731: ldc_w 957
-    //   734: invokestatic 176	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   737: ldc_w 835
-    //   740: invokestatic 159	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   743: iconst_0
-    //   744: ireturn
-    //   745: new 886	java/util/ArrayList
-    //   748: dup
-    //   749: invokespecial 958	java/util/ArrayList:<init>	()V
-    //   752: astore 5
-    //   754: aload 4
-    //   756: invokevirtual 959	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   759: astore 6
-    //   761: aload 6
-    //   763: invokeinterface 511 1 0
-    //   768: ifeq +76 -> 844
-    //   771: aload 6
-    //   773: invokeinterface 515 1 0
-    //   778: checkcast 517	java/lang/String
-    //   781: astore 7
-    //   783: aload 7
-    //   785: invokestatic 965	com/tencent/mm/compatible/util/Exif:fromFile	(Ljava/lang/String;)Lcom/tencent/mm/compatible/util/Exif;
-    //   788: invokevirtual 969	com/tencent/mm/compatible/util/Exif:getLocation	()Lcom/tencent/mm/compatible/util/Exif$a;
-    //   791: astore 8
-    //   793: aload 8
-    //   795: ifnull -34 -> 761
-    //   798: aload 5
-    //   800: ldc_w 971
-    //   803: iconst_3
-    //   804: anewarray 4	java/lang/Object
-    //   807: dup
-    //   808: iconst_0
-    //   809: aload 7
-    //   811: aastore
-    //   812: dup
-    //   813: iconst_1
-    //   814: aload 8
-    //   816: getfield 977	com/tencent/mm/compatible/util/Exif$a:latitude	D
-    //   819: invokestatic 982	java/lang/Double:valueOf	(D)Ljava/lang/Double;
-    //   822: aastore
-    //   823: dup
-    //   824: iconst_2
-    //   825: aload 8
-    //   827: getfield 985	com/tencent/mm/compatible/util/Exif$a:longitude	D
-    //   830: invokestatic 982	java/lang/Double:valueOf	(D)Ljava/lang/Double;
-    //   833: aastore
-    //   834: invokestatic 989	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   837: invokevirtual 990	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   840: pop
-    //   841: goto -80 -> 761
-    //   844: aload_2
-    //   845: ldc_w 992
-    //   848: iconst_0
-    //   849: invokevirtual 251	android/content/Intent:getBooleanExtra	(Ljava/lang/String;Z)Z
-    //   852: istore_3
-    //   853: aload_2
-    //   854: ldc_w 872
-    //   857: iconst_0
-    //   858: invokevirtual 375	android/content/Intent:getIntExtra	(Ljava/lang/String;I)I
-    //   861: istore_1
-    //   862: aload_0
-    //   863: getfield 156	com/tencent/mm/plugin/sns/ui/ac:cmc	Lcom/tencent/mm/ui/MMActivity;
-    //   866: instanceof 861
-    //   869: ifeq -833 -> 36
-    //   872: aload_0
-    //   873: getfield 156	com/tencent/mm/plugin/sns/ui/ac:cmc	Lcom/tencent/mm/ui/MMActivity;
-    //   876: checkcast 861	com/tencent/mm/plugin/sns/ui/SnsUploadUI
-    //   879: aconst_null
-    //   880: iload_3
-    //   881: iload_1
-    //   882: aload 4
-    //   884: aload 5
-    //   886: aload_0
-    //   887: getfield 377	com/tencent/mm/plugin/sns/ui/ac:rGd	I
-    //   890: invokevirtual 878	com/tencent/mm/plugin/sns/ui/SnsUploadUI:a	(Ljava/lang/String;ZILjava/util/ArrayList;Ljava/util/ArrayList;I)V
-    //   893: aload_0
-    //   894: getfield 156	com/tencent/mm/plugin/sns/ui/ac:cmc	Lcom/tencent/mm/ui/MMActivity;
-    //   897: checkcast 861	com/tencent/mm/plugin/sns/ui/SnsUploadUI
-    //   900: invokevirtual 867	com/tencent/mm/plugin/sns/ui/SnsUploadUI:cwE	()V
-    //   903: goto -867 -> 36
-    //   906: astore 5
-    //   908: goto -353 -> 555
-    //   911: astore 4
-    //   913: goto -219 -> 694
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	916	0	this	ac
-    //   0	916	1	paramInt	int
-    //   0	916	2	paramIntent	Intent
-    //   852	29	3	bool	boolean
-    //   94	789	4	localObject1	Object
-    //   911	1	4	localException1	Exception
-    //   357	319	5	localObject2	Object
-    //   683	7	5	localException2	Exception
-    //   752	133	5	localArrayList	java.util.ArrayList
-    //   906	1	5	localException3	Exception
-    //   425	114	6	localObject3	Object
-    //   653	14	6	localException4	Exception
-    //   759	13	6	localIterator	Iterator
-    //   781	29	7	str	String
-    //   791	35	8	locala	com.tencent.mm.compatible.util.Exif.a
-    // Exception table:
-    //   from	to	target	type
-    //   440	445	448	java/lang/Exception
-    //   412	427	653	java/lang/Exception
-    //   432	440	653	java/lang/Exception
-    //   464	550	653	java/lang/Exception
-    //   675	680	683	java/lang/Exception
-    //   412	427	688	finally
-    //   432	440	688	finally
-    //   464	550	688	finally
-    //   655	675	688	finally
-    //   550	555	906	java/lang/Exception
-    //   689	694	911	java/lang/Exception
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ac
  * JD-Core Version:    0.7.0.1
  */

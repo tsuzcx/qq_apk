@@ -1,61 +1,560 @@
 package com.tencent.mm.ar;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.q;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import org.json.JSONObject;
 
 public final class a
 {
-  int bsY;
-  long fCI;
-  int fCJ;
-  int fCK;
-  int fns;
-  String fnu;
-  String fnv;
-  int type;
-  String username;
+  public static int hdq = 1;
+  private static String hdr = "";
   
-  public a()
+  private static String axm()
   {
-    AppMethodBeat.i(16467);
-    this.bsY = -1;
-    this.username = "";
-    this.fCI = 0L;
-    this.type = 0;
-    this.fCJ = 0;
-    this.fns = 0;
-    this.fCK = 0;
-    this.fnu = "";
-    this.fnv = "";
-    AppMethodBeat.o(16467);
+    AppMethodBeat.i(104501);
+    if (bt.isNullOrNil(hdr)) {
+      hdr = b.aia().replace("/data/user/0", "/data/data");
+    }
+    String str = hdr;
+    AppMethodBeat.o(104501);
+    return str;
   }
   
-  public final String agY()
+  public static String axn()
   {
-    if (this.fnu == null) {
-      return "";
+    AppMethodBeat.i(104502);
+    Object localObject = new e(axm(), "emoji/res");
+    if (!((e)localObject).exists()) {
+      ((e)localObject).mkdirs();
     }
-    return this.fnu;
+    localObject = q.B(((e)localObject).fhU());
+    AppMethodBeat.o(104502);
+    return localObject;
   }
   
-  public final String agZ()
+  public static String axo()
   {
-    if (this.fnv == null) {
-      return "";
-    }
-    return this.fnv;
+    AppMethodBeat.i(104503);
+    String str = axm() + "emoji/newemoji/";
+    AppMethodBeat.o(104503);
+    return str;
   }
   
-  public final String getUsername()
+  public static int axp()
   {
-    if (this.username == null) {
-      return "";
+    AppMethodBeat.i(104504);
+    Object localObject3 = null;
+    Object localObject1 = null;
+    try
+    {
+      InputStream localInputStream = i.ah(new e(axn(), "config.conf"));
+      localObject1 = localInputStream;
+      localObject3 = localInputStream;
+      BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(localInputStream));
+      String str2;
+      for (String str1 = "";; str1 = str1 + str2)
+      {
+        localObject1 = localInputStream;
+        localObject3 = localInputStream;
+        str2 = localBufferedReader.readLine();
+        if (str2 == null) {
+          break;
+        }
+        localObject1 = localInputStream;
+        localObject3 = localInputStream;
+      }
+      localObject1 = localInputStream;
+      localObject3 = localInputStream;
+      int i = new JSONObject(str1).getInt("version");
+      localObject1 = localInputStream;
+      localObject3 = localInputStream;
+      ad.d("MicroMsg.emoji.EmojiStoreExportLogic", "config file content:%s version:%d", new Object[] { str1, Integer.valueOf(i) });
+      return i;
     }
-    return this.username;
+    catch (Exception localException)
+    {
+      localObject3 = localObject1;
+      ad.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localException, localException.getMessage(), new Object[0]);
+      return 1;
+    }
+    finally
+    {
+      bt.d(localObject3);
+      AppMethodBeat.o(104504);
+    }
+  }
+  
+  /* Error */
+  private static int axq()
+  {
+    // Byte code:
+    //   0: ldc 161
+    //   2: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 167	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   8: invokevirtual 173	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   11: astore_1
+    //   12: aload_1
+    //   13: ldc 175
+    //   15: invokevirtual 181	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   18: astore_2
+    //   19: new 113	java/io/InputStreamReader
+    //   22: dup
+    //   23: aload_2
+    //   24: invokespecial 116	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   27: astore 4
+    //   29: new 111	java/io/BufferedReader
+    //   32: dup
+    //   33: aload 4
+    //   35: invokespecial 119	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   38: astore_1
+    //   39: ldc 14
+    //   41: astore_3
+    //   42: aload_1
+    //   43: astore 7
+    //   45: aload 4
+    //   47: astore 6
+    //   49: aload_2
+    //   50: astore 5
+    //   52: aload_1
+    //   53: invokevirtual 122	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   56: astore 8
+    //   58: aload 8
+    //   60: ifnull +36 -> 96
+    //   63: aload_1
+    //   64: astore 7
+    //   66: aload 4
+    //   68: astore 6
+    //   70: aload_2
+    //   71: astore 5
+    //   73: new 83	java/lang/StringBuilder
+    //   76: dup
+    //   77: invokespecial 85	java/lang/StringBuilder:<init>	()V
+    //   80: aload_3
+    //   81: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: aload 8
+    //   86: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   89: invokevirtual 94	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   92: astore_3
+    //   93: goto -51 -> 42
+    //   96: aload_1
+    //   97: astore 7
+    //   99: aload 4
+    //   101: astore 6
+    //   103: aload_2
+    //   104: astore 5
+    //   106: new 124	org/json/JSONObject
+    //   109: dup
+    //   110: aload_3
+    //   111: invokespecial 127	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   114: ldc 129
+    //   116: invokevirtual 133	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   119: istore_0
+    //   120: aload_1
+    //   121: astore 7
+    //   123: aload 4
+    //   125: astore 6
+    //   127: aload_2
+    //   128: astore 5
+    //   130: ldc 135
+    //   132: ldc 137
+    //   134: iconst_2
+    //   135: anewarray 4	java/lang/Object
+    //   138: dup
+    //   139: iconst_0
+    //   140: aload_3
+    //   141: aastore
+    //   142: dup
+    //   143: iconst_1
+    //   144: iload_0
+    //   145: invokestatic 143	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   148: aastore
+    //   149: invokestatic 149	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   152: aload_2
+    //   153: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   156: aload 4
+    //   158: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   161: aload_1
+    //   162: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   165: ldc 161
+    //   167: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   170: iload_0
+    //   171: ireturn
+    //   172: astore_3
+    //   173: aconst_null
+    //   174: astore_1
+    //   175: aconst_null
+    //   176: astore 4
+    //   178: aconst_null
+    //   179: astore_2
+    //   180: aload_1
+    //   181: astore 7
+    //   183: aload 4
+    //   185: astore 6
+    //   187: aload_2
+    //   188: astore 5
+    //   190: ldc 135
+    //   192: aload_3
+    //   193: aload_3
+    //   194: invokevirtual 155	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   197: iconst_0
+    //   198: anewarray 4	java/lang/Object
+    //   201: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   204: aload_2
+    //   205: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   208: aload 4
+    //   210: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   213: aload_1
+    //   214: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   217: ldc 161
+    //   219: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   222: iconst_1
+    //   223: ireturn
+    //   224: astore_1
+    //   225: aconst_null
+    //   226: astore_3
+    //   227: aconst_null
+    //   228: astore 4
+    //   230: aconst_null
+    //   231: astore_2
+    //   232: aload_2
+    //   233: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   236: aload 4
+    //   238: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   241: aload_3
+    //   242: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   245: ldc 161
+    //   247: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   250: aload_1
+    //   251: athrow
+    //   252: astore_1
+    //   253: aconst_null
+    //   254: astore_3
+    //   255: aconst_null
+    //   256: astore 4
+    //   258: goto -26 -> 232
+    //   261: astore_1
+    //   262: aconst_null
+    //   263: astore_3
+    //   264: goto -32 -> 232
+    //   267: astore_1
+    //   268: aload 7
+    //   270: astore_3
+    //   271: aload 6
+    //   273: astore 4
+    //   275: aload 5
+    //   277: astore_2
+    //   278: goto -46 -> 232
+    //   281: astore_3
+    //   282: aconst_null
+    //   283: astore_1
+    //   284: aconst_null
+    //   285: astore 4
+    //   287: goto -107 -> 180
+    //   290: astore_3
+    //   291: aconst_null
+    //   292: astore_1
+    //   293: goto -113 -> 180
+    //   296: astore_3
+    //   297: goto -117 -> 180
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   119	52	0	i	int
+    //   11	203	1	localObject1	Object
+    //   224	27	1	localObject2	Object
+    //   252	1	1	localObject3	Object
+    //   261	1	1	localObject4	Object
+    //   267	1	1	localObject5	Object
+    //   283	10	1	localObject6	Object
+    //   18	260	2	localObject7	Object
+    //   41	100	3	str1	String
+    //   172	22	3	localException1	Exception
+    //   226	45	3	localObject8	Object
+    //   281	1	3	localException2	Exception
+    //   290	1	3	localException3	Exception
+    //   296	1	3	localException4	Exception
+    //   27	259	4	localObject9	Object
+    //   50	226	5	localObject10	Object
+    //   47	225	6	localObject11	Object
+    //   43	226	7	localObject12	Object
+    //   56	29	8	str2	String
+    // Exception table:
+    //   from	to	target	type
+    //   12	19	172	java/lang/Exception
+    //   12	19	224	finally
+    //   19	29	252	finally
+    //   29	39	261	finally
+    //   52	58	267	finally
+    //   73	93	267	finally
+    //   106	120	267	finally
+    //   130	152	267	finally
+    //   190	204	267	finally
+    //   19	29	281	java/lang/Exception
+    //   29	39	290	java/lang/Exception
+    //   52	58	296	java/lang/Exception
+    //   73	93	296	java/lang/Exception
+    //   106	120	296	java/lang/Exception
+    //   130	152	296	java/lang/Exception
+  }
+  
+  public static void eq(boolean paramBoolean)
+  {
+    AppMethodBeat.i(104507);
+    e locale = new e(axn());
+    ad.i("MicroMsg.emoji.EmojiStoreExportLogic", "copy search template file to path: %s", new Object[] { locale.fhV() });
+    if (d.CpN)
+    {
+      ad.i("MicroMsg.emoji.EmojiStoreExportLogic", "need to init search template folder %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      i.cO(q.B(locale.mUri), true);
+      k(locale);
+    }
+    for (;;)
+    {
+      i.cO(b.aih() + "emoji", true);
+      AppMethodBeat.o(104507);
+      return;
+      hdq = axp();
+      if (paramBoolean)
+      {
+        int i = axq();
+        ad.i("MicroMsg.emoji.EmojiStoreExportLogic", "need update assetVersion=%d currentVersion=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(hdq) });
+        if (hdq < i)
+        {
+          i.cO(q.B(locale.mUri), true);
+          k(locale);
+        }
+      }
+      else if (hdq == 1)
+      {
+        ad.i("MicroMsg.emoji.EmojiStoreExportLogic", "no need update currentVersion=%d", new Object[] { Integer.valueOf(hdq) });
+        i.cO(q.B(locale.mUri), true);
+        k(locale);
+      }
+    }
+  }
+  
+  private static void k(e parame)
+  {
+    AppMethodBeat.i(104508);
+    if (!parame.exists()) {
+      parame.mkdirs();
+    }
+    e locale = new e(parame, ".nomedia");
+    if (!locale.exists()) {}
+    try
+    {
+      locale.createNewFile();
+      parame = new e(parame, "emoji_template.zip");
+      if (xS(q.B(parame.fhU())))
+      {
+        int i = i.fc(q.B(parame.fhU()), parame.getParent());
+        if (i < 0)
+        {
+          ad.e("MicroMsg.emoji.EmojiStoreExportLogic", "unzip fail, ret = " + i + ", zipFilePath = " + q.B(parame.fhU()) + ", unzipPath = " + parame.getParent());
+          AppMethodBeat.o(104508);
+          return;
+        }
+      }
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localIOException, "create nomedia file error", new Object[0]);
+      }
+      hdq = axp();
+      ad.i("MicroMsg.emoji.EmojiStoreExportLogic", "Unzip Path%s version=%d", new Object[] { parame.getParent(), Integer.valueOf(hdq) });
+      AppMethodBeat.o(104508);
+      return;
+    }
+    ad.i("MicroMsg.emoji.EmojiStoreExportLogic", "copy template file from asset fail %s", new Object[] { q.B(parame.fhU()) });
+    AppMethodBeat.o(104508);
+  }
+  
+  public static void l(e parame)
+  {
+    AppMethodBeat.i(104509);
+    e locale1 = new e(axn());
+    i.cO(q.B(locale1.mUri), true);
+    locale1.mkdirs();
+    e locale2 = new e(locale1, ".nomedia");
+    if (!locale2.exists()) {}
+    try
+    {
+      locale2.createNewFile();
+      locale1 = new e(locale1, "emoji_template.zip");
+      i.lC(q.B(parame.mUri), q.B(locale1.mUri));
+      int i = bt.kT(q.B(locale1.mUri), locale1.getParent());
+      if (i < 0)
+      {
+        ad.e("MicroMsg.emoji.EmojiStoreExportLogic", "unzip fail, ret = " + i + ", zipFilePath = " + q.B(locale1.fhU()) + ", unzipPath = " + locale1.getParent());
+        AppMethodBeat.o(104509);
+        return;
+      }
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localIOException, "create nomedia file error", new Object[0]);
+      }
+      hdq = axp();
+      ad.i("MicroMsg.emoji.EmojiStoreExportLogic", "Unzip Path%s version=%d", new Object[] { locale1.getParent(), Integer.valueOf(hdq) });
+      AppMethodBeat.o(104509);
+    }
+  }
+  
+  /* Error */
+  private static boolean xS(String paramString)
+  {
+    // Byte code:
+    //   0: ldc_w 285
+    //   3: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: invokestatic 167	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   9: invokevirtual 173	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   12: astore_2
+    //   13: aload_2
+    //   14: ldc 244
+    //   16: invokevirtual 181	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   19: astore_2
+    //   20: aload_2
+    //   21: ifnonnull +37 -> 58
+    //   24: ldc 135
+    //   26: ldc_w 287
+    //   29: invokestatic 267	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   32: ldc_w 285
+    //   35: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   38: iconst_0
+    //   39: ireturn
+    //   40: astore_2
+    //   41: ldc 135
+    //   43: aload_2
+    //   44: ldc 14
+    //   46: iconst_0
+    //   47: anewarray 4	java/lang/Object
+    //   50: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   53: aconst_null
+    //   54: astore_2
+    //   55: goto -35 -> 20
+    //   58: new 54	com/tencent/mm/vfs/e
+    //   61: dup
+    //   62: aload_0
+    //   63: invokespecial 185	com/tencent/mm/vfs/e:<init>	(Ljava/lang/String;)V
+    //   66: astore_0
+    //   67: aload_0
+    //   68: invokevirtual 66	com/tencent/mm/vfs/e:exists	()Z
+    //   71: ifeq +8 -> 79
+    //   74: aload_0
+    //   75: invokevirtual 290	com/tencent/mm/vfs/e:delete	()Z
+    //   78: pop
+    //   79: aload_0
+    //   80: invokevirtual 293	com/tencent/mm/vfs/e:fhT	()Lcom/tencent/mm/vfs/e;
+    //   83: invokevirtual 69	com/tencent/mm/vfs/e:mkdirs	()Z
+    //   86: pop
+    //   87: aload_0
+    //   88: invokestatic 297	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   91: astore_0
+    //   92: aload_0
+    //   93: ifnull +110 -> 203
+    //   96: sipush 1024
+    //   99: newarray byte
+    //   101: astore_3
+    //   102: aload_2
+    //   103: aload_3
+    //   104: invokevirtual 303	java/io/InputStream:read	([B)I
+    //   107: istore_1
+    //   108: iload_1
+    //   109: iconst_m1
+    //   110: if_icmpeq +60 -> 170
+    //   113: aload_0
+    //   114: aload_3
+    //   115: iconst_0
+    //   116: iload_1
+    //   117: invokevirtual 309	java/io/OutputStream:write	([BII)V
+    //   120: goto -18 -> 102
+    //   123: astore_3
+    //   124: ldc 135
+    //   126: aload_3
+    //   127: ldc 14
+    //   129: iconst_0
+    //   130: anewarray 4	java/lang/Object
+    //   133: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   136: aload_2
+    //   137: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   140: aload_0
+    //   141: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   144: ldc_w 285
+    //   147: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   150: iconst_0
+    //   151: ireturn
+    //   152: astore_0
+    //   153: ldc 135
+    //   155: aload_0
+    //   156: ldc 14
+    //   158: iconst_0
+    //   159: anewarray 4	java/lang/Object
+    //   162: invokestatic 159	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   165: aconst_null
+    //   166: astore_0
+    //   167: goto -75 -> 92
+    //   170: aload_2
+    //   171: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   174: aload_0
+    //   175: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   178: ldc_w 285
+    //   181: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   184: iconst_1
+    //   185: ireturn
+    //   186: astore_3
+    //   187: aload_2
+    //   188: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   191: aload_0
+    //   192: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   195: ldc_w 285
+    //   198: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   201: aload_3
+    //   202: athrow
+    //   203: aload_2
+    //   204: invokestatic 152	com/tencent/mm/sdk/platformtools/bt:d	(Ljava/io/Closeable;)V
+    //   207: ldc_w 285
+    //   210: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   213: iconst_0
+    //   214: ireturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	215	0	paramString	String
+    //   107	10	1	i	int
+    //   12	9	2	localObject1	Object
+    //   40	4	2	localIOException1	IOException
+    //   54	150	2	localCloseable	java.io.Closeable
+    //   101	14	3	arrayOfByte	byte[]
+    //   123	4	3	localIOException2	IOException
+    //   186	16	3	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   13	20	40	java/io/IOException
+    //   96	102	123	java/io/IOException
+    //   102	108	123	java/io/IOException
+    //   113	120	123	java/io/IOException
+    //   87	92	152	java/io/FileNotFoundException
+    //   96	102	186	finally
+    //   102	108	186	finally
+    //   113	120	186	finally
+    //   124	136	186	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ar.a
  * JD-Core Version:    0.7.0.1
  */

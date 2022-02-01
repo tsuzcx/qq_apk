@@ -1,93 +1,93 @@
 package com.tencent.mm.kernel.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.reflect.Modifier;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class d
 {
-  private static final d eKM;
-  private ConcurrentHashMap<Class<? extends a>, c> eKK;
-  private a eKL;
+  private static final d gfU;
+  private ConcurrentHashMap<Class<? extends a>, c> gfS;
+  private a gfT;
   
   static
   {
-    AppMethodBeat.i(51936);
-    eKM = new d();
-    AppMethodBeat.o(51936);
+    AppMethodBeat.i(157489);
+    gfU = new d();
+    AppMethodBeat.o(157489);
   }
   
   public d()
   {
-    AppMethodBeat.i(51931);
-    this.eKK = new ConcurrentHashMap();
-    this.eKL = null;
-    AppMethodBeat.o(51931);
+    AppMethodBeat.i(157484);
+    this.gfS = new ConcurrentHashMap();
+    this.gfT = null;
+    AppMethodBeat.o(157484);
   }
   
-  public final void F(Class<? extends a> paramClass)
+  public void a(a parama)
   {
-    AppMethodBeat.i(51935);
-    c localc = (c)this.eKK.remove(paramClass);
+    this.gfT = parama;
+  }
+  
+  public final void ac(Class<? extends a> paramClass)
+  {
+    AppMethodBeat.i(157488);
+    c localc = (c)this.gfS.remove(paramClass);
     if ((localc instanceof b)) {
-      ((b)localc).xN();
+      ((b)localc).agw();
     }
-    if (this.eKL != null) {
-      this.eKL.b(paramClass, localc);
+    if (this.gfT != null) {
+      this.gfT.b(paramClass, localc);
     }
-    AppMethodBeat.o(51935);
+    AppMethodBeat.o(157488);
   }
   
-  public final <T extends a> T O(Class<T> paramClass)
+  public final <T extends a> T al(Class<T> paramClass)
   {
-    AppMethodBeat.i(51932);
-    Object localObject = (c)this.eKK.get(paramClass);
+    AppMethodBeat.i(157485);
+    Object localObject = (c)this.gfS.get(paramClass);
     if ((!paramClass.isInterface()) && (Modifier.isAbstract(paramClass.getModifiers()))) {
-      ab.w("MicroMsg.ServiceHub", "Did you call service by using the service implementation class ?? Use interface class instead!! Carl is warning u!");
+      ad.w("MicroMsg.ServiceHub", "Did you call service by using the service implementation class ?? Use interface class instead!! Carl is warning u!");
     }
     for (int i = 1;; i = 0)
     {
       if (localObject != null) {}
-      for (localObject = ((c)localObject).SE();; localObject = null)
+      for (localObject = ((c)localObject).agx();; localObject = null)
       {
-        if (this.eKL != null) {
-          this.eKL.a(paramClass, (a)localObject);
+        if (this.gfT != null) {
+          this.gfT.a(paramClass, (a)localObject);
         }
-        AppMethodBeat.o(51932);
+        AppMethodBeat.o(157485);
         return localObject;
-        ab.e("MicroMsg.ServiceHub", "Service(%s) not found!!! ", new Object[] { paramClass });
+        ad.e("MicroMsg.ServiceHub", "Service(%s) not found!!! ", new Object[] { paramClass });
         if (i != 0) {
-          ab.e("MicroMsg.ServiceHub", "This error must cause by using implementation class to call service! Use interface instead! Understand?");
+          ad.e("MicroMsg.ServiceHub", "This error must cause by using implementation class to call service! Use interface instead! Understand?");
         }
       }
     }
   }
   
-  public void a(a parama)
-  {
-    this.eKL = parama;
-  }
-  
   public final <T extends a, N extends T> void b(Class<T> paramClass, N paramN)
   {
-    AppMethodBeat.i(51933);
+    AppMethodBeat.i(157486);
     c(paramClass, new e(paramN));
-    AppMethodBeat.o(51933);
+    AppMethodBeat.o(157486);
   }
   
   public final <T extends a, N extends T> void c(Class<T> paramClass, c<N> paramc)
   {
-    AppMethodBeat.i(51934);
-    this.eKK.put(paramClass, paramc);
+    AppMethodBeat.i(157487);
+    this.gfS.put(paramClass, paramc);
     if ((paramc instanceof b)) {
-      ((b)paramc).xM();
+      ((b)paramc).agv();
     }
-    if (this.eKL != null) {
-      this.eKL.a(paramClass, paramc);
+    if (this.gfT != null) {
+      this.gfT.a(paramClass, paramc);
     }
-    ab.i("MicroMsg.ServiceHub", "register service %s %s", new Object[] { paramClass, paramc });
-    AppMethodBeat.o(51934);
+    ad.i("MicroMsg.ServiceHub", "register service %s %s", new Object[] { paramClass, paramc });
+    AppMethodBeat.o(157487);
   }
   
   public static abstract interface a

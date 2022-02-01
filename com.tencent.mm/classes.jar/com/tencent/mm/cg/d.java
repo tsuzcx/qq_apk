@@ -1,261 +1,67 @@
 package com.tencent.mm.cg;
 
-import android.content.ContentResolver;
-import android.database.CharArrayBuffer;
-import android.database.ContentObserver;
-import android.database.Cursor;
-import android.database.DataSetObserver;
-import android.net.Uri;
-import android.os.Bundle;
-import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.a.a;
-import com.tencent.mm.cg.a.f.a;
-import java.util.HashMap;
 
 public final class d
-  implements Cursor, com.tencent.mm.cg.a.d
+  extends com.tencent.mm.bx.a
 {
-  private static Cursor yQs;
+  public int max;
+  public int min;
   
-  public static Cursor dzJ()
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(59037);
-    if (yQs == null) {
-      yQs = new d();
+    AppMethodBeat.i(104919);
+    if (paramInt == 0)
+    {
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.min);
+      paramVarArgs.aR(2, this.max);
+      AppMethodBeat.o(104919);
+      return 0;
     }
-    Cursor localCursor = yQs;
-    AppMethodBeat.o(59037);
-    return localCursor;
+    if (paramInt == 1)
+    {
+      paramInt = f.a.a.b.b.a.bA(1, this.min);
+      int i = f.a.a.b.b.a.bA(2, this.max);
+      AppMethodBeat.o(104919);
+      return paramInt + 0 + i;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.fMq();
+        }
+      }
+      AppMethodBeat.o(104919);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      d locald = (d)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(104919);
+        return -1;
+      case 1: 
+        locald.min = locala.KhF.xS();
+        AppMethodBeat.o(104919);
+        return 0;
+      }
+      locald.max = locala.KhF.xS();
+      AppMethodBeat.o(104919);
+      return 0;
+    }
+    AppMethodBeat.o(104919);
+    return -1;
   }
-  
-  public final boolean NL(int paramInt)
-  {
-    return false;
-  }
-  
-  public final a NM(int paramInt)
-  {
-    return null;
-  }
-  
-  public final void NN(int paramInt) {}
-  
-  public final void a(f.a parama) {}
-  
-  public final boolean a(Object paramObject, a parama)
-  {
-    return false;
-  }
-  
-  public final boolean cD(Object paramObject)
-  {
-    return false;
-  }
-  
-  public final a cE(Object paramObject)
-  {
-    return null;
-  }
-  
-  public final void close() {}
-  
-  public final void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer) {}
-  
-  public final void deactivate() {}
-  
-  public final SparseArray[] dzK()
-  {
-    return null;
-  }
-  
-  public final HashMap dzL()
-  {
-    return null;
-  }
-  
-  public final boolean dzM()
-  {
-    return false;
-  }
-  
-  public final byte[] getBlob(int paramInt)
-  {
-    return null;
-  }
-  
-  public final int getColumnCount()
-  {
-    return 0;
-  }
-  
-  public final int getColumnIndex(String paramString)
-  {
-    return 0;
-  }
-  
-  public final int getColumnIndexOrThrow(String paramString)
-  {
-    return 0;
-  }
-  
-  public final String getColumnName(int paramInt)
-  {
-    return null;
-  }
-  
-  public final String[] getColumnNames()
-  {
-    return null;
-  }
-  
-  public final int getCount()
-  {
-    return 0;
-  }
-  
-  public final double getDouble(int paramInt)
-  {
-    return 0.0D;
-  }
-  
-  public final Bundle getExtras()
-  {
-    return null;
-  }
-  
-  public final float getFloat(int paramInt)
-  {
-    return 0.0F;
-  }
-  
-  public final int getInt(int paramInt)
-  {
-    return 0;
-  }
-  
-  public final long getLong(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public final Uri getNotificationUri()
-  {
-    return null;
-  }
-  
-  public final int getPosition()
-  {
-    return 0;
-  }
-  
-  public final short getShort(int paramInt)
-  {
-    return 0;
-  }
-  
-  public final String getString(int paramInt)
-  {
-    return null;
-  }
-  
-  public final int getType(int paramInt)
-  {
-    return 0;
-  }
-  
-  public final boolean getWantsAllOnMoveCalls()
-  {
-    return false;
-  }
-  
-  public final boolean isAfterLast()
-  {
-    return true;
-  }
-  
-  public final boolean isBeforeFirst()
-  {
-    return false;
-  }
-  
-  public final boolean isClosed()
-  {
-    return false;
-  }
-  
-  public final boolean isFirst()
-  {
-    return false;
-  }
-  
-  public final boolean isLast()
-  {
-    return false;
-  }
-  
-  public final boolean isNull(int paramInt)
-  {
-    return false;
-  }
-  
-  public final boolean move(int paramInt)
-  {
-    return false;
-  }
-  
-  public final boolean moveToFirst()
-  {
-    return false;
-  }
-  
-  public final boolean moveToLast()
-  {
-    return false;
-  }
-  
-  public final boolean moveToNext()
-  {
-    return false;
-  }
-  
-  public final boolean moveToPosition(int paramInt)
-  {
-    return false;
-  }
-  
-  public final boolean moveToPrevious()
-  {
-    return false;
-  }
-  
-  public final void pV(boolean paramBoolean) {}
-  
-  public final void registerContentObserver(ContentObserver paramContentObserver) {}
-  
-  public final void registerDataSetObserver(DataSetObserver paramDataSetObserver) {}
-  
-  public final boolean requery()
-  {
-    return false;
-  }
-  
-  public final Bundle respond(Bundle paramBundle)
-  {
-    return null;
-  }
-  
-  public final void setExtras(Bundle paramBundle) {}
-  
-  public final void setNotificationUri(ContentResolver paramContentResolver, Uri paramUri) {}
-  
-  public final void unregisterContentObserver(ContentObserver paramContentObserver) {}
-  
-  public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.cg.d
  * JD-Core Version:    0.7.0.1
  */

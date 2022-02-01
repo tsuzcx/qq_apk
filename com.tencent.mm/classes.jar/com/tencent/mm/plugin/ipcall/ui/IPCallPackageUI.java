@@ -2,22 +2,37 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.plugin.ipcall.a.d.e;
-import com.tencent.mm.plugin.ipcall.a.d.j;
-import com.tencent.mm.protocal.protobuf.asd;
-import com.tencent.mm.protocal.protobuf.cva;
-import com.tencent.mm.protocal.protobuf.cvc;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.az;
+import com.tencent.mm.plugin.ipcall.model.e.e;
+import com.tencent.mm.plugin.ipcall.model.e.j;
+import com.tencent.mm.plugin.ipcall.model.f.f;
+import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
+import com.tencent.mm.protocal.protobuf.bcw;
+import com.tencent.mm.protocal.protobuf.dpb;
+import com.tencent.mm.protocal.protobuf.dpd;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import java.util.Iterator;
@@ -26,65 +41,85 @@ import java.util.List;
 
 public class IPCallPackageUI
   extends MMActivity
-  implements com.tencent.mm.ai.f
+  implements g
 {
-  private ListView nUk;
-  private TextView nUl;
-  private ProgressDialog nUm;
-  private ProgressDialog nUn;
-  private IPCallPackageUI.a nUo;
-  private e nUp;
-  private j nUq;
-  private com.tencent.mm.plugin.ipcall.a.e.f nUr;
+  private ListView sIe;
+  private TextView sIf;
+  private ProgressDialog sIg;
+  private ProgressDialog sIh;
+  private a sIi;
+  private e sIj;
+  private j sIk;
+  private f sIl;
   
   public IPCallPackageUI()
   {
-    AppMethodBeat.i(22230);
-    this.nUk = null;
-    this.nUl = null;
-    this.nUm = null;
-    this.nUn = null;
-    this.nUo = null;
-    this.nUp = null;
-    this.nUq = null;
-    this.nUr = new com.tencent.mm.plugin.ipcall.a.e.f();
-    AppMethodBeat.o(22230);
+    AppMethodBeat.i(25849);
+    this.sIe = null;
+    this.sIf = null;
+    this.sIg = null;
+    this.sIh = null;
+    this.sIi = null;
+    this.sIj = null;
+    this.sIk = null;
+    this.sIl = new f();
+    AppMethodBeat.o(25849);
   }
   
-  private void bKm()
+  private void cIi()
   {
-    AppMethodBeat.i(22233);
-    ab.i("MicroMsg.IPCallPackageUI", "startGetPackageProductList");
-    if (this.nUo != null)
+    AppMethodBeat.i(25852);
+    ad.i("MicroMsg.IPCallPackageUI", "startGetPackageProductList");
+    if (this.sIi != null)
     {
-      this.nUo.nxh = null;
-      this.nUo.notifyDataSetChanged();
+      this.sIi.cbP = null;
+      this.sIi.notifyDataSetChanged();
     }
-    if (this.nUk != null) {
-      this.nUk.setVisibility(8);
+    if (this.sIe != null) {
+      this.sIe.setVisibility(8);
     }
-    if (this.nUl != null) {
-      this.nUl.setVisibility(8);
+    if (this.sIf != null) {
+      this.sIf.setVisibility(8);
     }
-    bKn();
-    this.nUp = new e();
-    aw.Rc().a(this.nUp, 0);
-    AppMethodBeat.o(22233);
+    cIj();
+    this.sIj = new e();
+    az.aeS().a(this.sIj, 0);
+    AppMethodBeat.o(25852);
   }
   
-  private void bKn()
+  private void cIj()
   {
-    AppMethodBeat.i(22234);
-    if (this.nUm == null)
+    AppMethodBeat.i(25853);
+    if (this.sIg == null)
     {
       AppCompatActivity localAppCompatActivity = getContext();
-      getString(2131297087);
-      this.nUm = h.b(localAppCompatActivity, getString(2131300856), true, new IPCallPackageUI.2(this));
-      AppMethodBeat.o(22234);
+      getString(2131755906);
+      this.sIg = h.b(localAppCompatActivity, getString(2131760457), true, new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(25840);
+          try
+          {
+            if (IPCallPackageUI.a(IPCallPackageUI.this) != null) {
+              az.aeS().a(IPCallPackageUI.a(IPCallPackageUI.this));
+            }
+            IPCallPackageUI.this.finish();
+            AppMethodBeat.o(25840);
+            return;
+          }
+          catch (Exception paramAnonymousDialogInterface)
+          {
+            ad.e("MicroMsg.IPCallPackageUI", "cancel getPackageProductListNetScene error: %s", new Object[] { paramAnonymousDialogInterface.getMessage() });
+            AppMethodBeat.o(25840);
+          }
+        }
+      });
+      AppMethodBeat.o(25853);
       return;
     }
-    this.nUm.show();
-    AppMethodBeat.o(22234);
+    this.sIg.show();
+    AppMethodBeat.o(25853);
   }
   
   public int getForceOrientation()
@@ -94,130 +129,167 @@ public class IPCallPackageUI
   
   public int getLayoutId()
   {
-    return 2130969943;
+    return 2131494521;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(22231);
+    AppMethodBeat.i(25850);
     super.onCreate(paramBundle);
-    aw.Rc().a(831, this);
-    aw.Rc().a(277, this);
-    this.nUr.start();
-    paramBundle = this.nUr;
-    paramBundle.nPw += 1;
-    this.nUr.finish();
-    setMMTitle(2131300940);
-    setBackBtn(new IPCallPackageUI.1(this));
-    this.nUk = ((ListView)findViewById(2131825311));
-    this.nUo = new IPCallPackageUI.a(this);
-    this.nUk.setAdapter(this.nUo);
-    this.nUl = ((TextView)findViewById(2131825312));
-    bKm();
-    AppMethodBeat.o(22231);
+    az.aeS().a(831, this);
+    az.aeS().a(277, this);
+    this.sIl.start();
+    paramBundle = this.sIl;
+    paramBundle.sDr += 1;
+    this.sIl.finish();
+    setMMTitle(2131760541);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(25839);
+        IPCallPackageUI.this.finish();
+        AppMethodBeat.o(25839);
+        return true;
+      }
+    });
+    this.sIe = ((ListView)findViewById(2131303125));
+    this.sIi = new a(this);
+    this.sIe.setAdapter(this.sIi);
+    this.sIf = ((TextView)findViewById(2131302879));
+    cIi();
+    AppMethodBeat.o(25850);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(22232);
+    AppMethodBeat.i(25851);
     super.onDestroy();
-    aw.Rc().b(831, this);
-    aw.Rc().b(277, this);
-    AppMethodBeat.o(22232);
+    az.aeS().b(831, this);
+    az.aeS().b(277, this);
+    AppMethodBeat.o(25851);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(22235);
-    if ((this.nUm != null) && (this.nUm.isShowing())) {
-      this.nUm.dismiss();
+    AppMethodBeat.i(25854);
+    if ((this.sIg != null) && (this.sIg.isShowing())) {
+      this.sIg.dismiss();
     }
-    if ((this.nUn != null) && (this.nUn.isShowing())) {
-      this.nUn.dismiss();
+    if ((this.sIh != null) && (this.sIh.isShowing())) {
+      this.sIh.dismiss();
     }
-    if ((paramm instanceof e))
+    if ((paramn instanceof e))
     {
-      ab.i("MicroMsg.IPCallPackageUI", "onSceneEnd NetSceneIPCallGetPackageProductList errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), paramString });
+      ad.i("MicroMsg.IPCallPackageUI", "onSceneEnd NetSceneIPCallGetPackageProductList errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), paramString });
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = ((e)paramm).nOT;
-        if ((paramString != null) && (paramString.xhd != null) && (paramString.xhd.size() > 0))
+        paramString = ((e)paramn).sCO;
+        if ((paramString != null) && (paramString.DAf != null) && (paramString.DAf.size() > 0))
         {
-          this.nUo.nxh = paramString.xhd;
-          this.nUo.notifyDataSetChanged();
-          this.nUk.setVisibility(0);
-          AppMethodBeat.o(22235);
+          this.sIi.cbP = paramString.DAf;
+          this.sIi.notifyDataSetChanged();
+          this.sIe.setVisibility(0);
+          AppMethodBeat.o(25854);
           return;
         }
-        this.nUo.nxh = null;
-        this.nUo.notifyDataSetChanged();
-        this.nUl.setVisibility(0);
-        AppMethodBeat.o(22235);
+        this.sIi.cbP = null;
+        this.sIi.notifyDataSetChanged();
+        this.sIf.setVisibility(0);
+        AppMethodBeat.o(25854);
         return;
       }
-      Toast.makeText(getContext(), getString(2131300853), 0).show();
+      Toast.makeText(getContext(), getString(2131760454), 0).show();
       finish();
-      AppMethodBeat.o(22235);
+      AppMethodBeat.o(25854);
       return;
     }
-    if ((paramm instanceof j))
+    if ((paramn instanceof j))
     {
-      ab.i("MicroMsg.IPCallPackageUI", "onSceneEnd NetSceneIPCallPurchasePackage errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), paramString });
-      this.nUr.nPA = paramInt2;
+      ad.i("MicroMsg.IPCallPackageUI", "onSceneEnd NetSceneIPCallPurchasePackage errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), paramString });
+      this.sIl.sDv = paramInt2;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.nUr.finish();
-        Toast.makeText(getContext(), getString(2131300942), 0).show();
-        bKm();
-        AppMethodBeat.o(22235);
+        this.sIl.finish();
+        Toast.makeText(getContext(), getString(2131760543), 0).show();
+        cIi();
+        AppMethodBeat.o(25854);
         return;
       }
       if (paramInt2 == 101)
       {
-        Object localObject = this.nUo;
-        paramString = (j)paramm;
-        if (paramString.nPd != null)
+        Object localObject = this.sIi;
+        paramString = (j)paramn;
+        if (paramString.sCY != null)
         {
-          paramString = paramString.nPd.ProductID;
-          if ((bo.isNullOrNil(paramString)) || (((IPCallPackageUI.a)localObject).nxh == null)) {
+          paramString = paramString.sCY.ProductID;
+          if ((bt.isNullOrNil(paramString)) || (((a)localObject).cbP == null)) {
             break label447;
           }
-          localObject = ((IPCallPackageUI.a)localObject).nxh.iterator();
+          localObject = ((a)localObject).cbP.iterator();
           do
           {
             if (!((Iterator)localObject).hasNext()) {
               break;
             }
-            paramm = (cva)((Iterator)localObject).next();
-          } while ((paramm == null) || (!paramm.ProductID.equals(paramString)));
+            paramn = (dpb)((Iterator)localObject).next();
+          } while ((paramn == null) || (!paramn.ProductID.equals(paramString)));
         }
         label447:
-        for (paramString = paramm;; paramString = null)
+        for (paramString = paramn;; paramString = null)
         {
           if (paramString != null) {
             break label452;
           }
-          ab.e("MicroMsg.IPCallPackageUI", "onSceneEnd: proToBuy is null");
-          this.nUr.finish();
-          Toast.makeText(getContext(), getString(2131300936), 0).show();
-          AppMethodBeat.o(22235);
+          ad.e("MicroMsg.IPCallPackageUI", "onSceneEnd: proToBuy is null");
+          this.sIl.finish();
+          Toast.makeText(getContext(), getString(2131760537), 0).show();
+          AppMethodBeat.o(25854);
           return;
           paramString = "";
           break;
         }
         label452:
-        h.a(getContext(), getContext().getString(2131300938, new Object[] { paramString.xBK, paramString.Title }), getContext().getString(2131300939), getContext().getString(2131300874), getContext().getString(2131300933), false, new IPCallPackageUI.4(this), new IPCallPackageUI.5(this));
-        AppMethodBeat.o(22235);
+        h.a(getContext(), getContext().getString(2131760539, new Object[] { paramString.DYr, paramString.Title }), getContext().getString(2131760540), getContext().getString(2131760475), getContext().getString(2131760534), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(25841);
+            paramAnonymousDialogInterface = IPCallPackageUI.b(IPCallPackageUI.this);
+            paramAnonymousDialogInterface.sDx += 1;
+            IPCallPackageUI.b(IPCallPackageUI.this).finish();
+            Object localObject = new Intent();
+            ((Intent)localObject).setClass(IPCallPackageUI.this.getContext(), IPCallRechargeUI.class);
+            paramAnonymousDialogInterface = IPCallPackageUI.this;
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/ipcall/ui/IPCallPackageUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/ipcall/ui/IPCallPackageUI$4", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            IPCallPackageUI.this.finish();
+            AppMethodBeat.o(25841);
+          }
+        }, new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(25842);
+            paramAnonymousDialogInterface = IPCallPackageUI.b(IPCallPackageUI.this);
+            paramAnonymousDialogInterface.sDy += 1;
+            IPCallPackageUI.b(IPCallPackageUI.this).finish();
+            AppMethodBeat.o(25842);
+          }
+        });
+        AppMethodBeat.o(25854);
         return;
       }
-      this.nUr.finish();
-      Toast.makeText(getContext(), getString(2131300936), 0).show();
-      bKm();
-      AppMethodBeat.o(22235);
+      this.sIl.finish();
+      Toast.makeText(getContext(), getString(2131760537), 0).show();
+      cIi();
+      AppMethodBeat.o(25854);
       return;
     }
-    ab.i("MicroMsg.IPCallPackageUI", "onSceneEnd errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), paramString });
-    AppMethodBeat.o(22235);
+    ad.i("MicroMsg.IPCallPackageUI", "onSceneEnd errCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.o(25854);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -225,10 +297,149 @@ public class IPCallPackageUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  static final class a
+    extends BaseAdapter
+  {
+    List<dpb> cbP = null;
+    private IPCallPackageUI sIn = null;
+    
+    public a(IPCallPackageUI paramIPCallPackageUI)
+    {
+      this.sIn = paramIPCallPackageUI;
+    }
+    
+    public final int getCount()
+    {
+      AppMethodBeat.i(25846);
+      if (this.cbP == null)
+      {
+        AppMethodBeat.o(25846);
+        return 0;
+      }
+      int i = this.cbP.size();
+      AppMethodBeat.o(25846);
+      return i;
+    }
+    
+    public final Object getItem(int paramInt)
+    {
+      AppMethodBeat.i(25847);
+      if (this.cbP != null)
+      {
+        Object localObject = this.cbP.get(paramInt);
+        AppMethodBeat.o(25847);
+        return localObject;
+      }
+      AppMethodBeat.o(25847);
+      return null;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(25848);
+      if (paramView == null)
+      {
+        paramView = ((LayoutInflater)this.sIn.getSystemService("layout_inflater")).inflate(2131494520, paramViewGroup, false);
+        paramViewGroup = new a((byte)0);
+        paramViewGroup.sIr = ((CdnImageView)paramView.findViewById(2131303122));
+        paramViewGroup.ftj = ((TextView)paramView.findViewById(2131303126));
+        paramViewGroup.sIs = ((TextView)paramView.findViewById(2131303127));
+        paramViewGroup.sIt = ((TextView)paramView.findViewById(2131303117));
+        paramViewGroup.lEA = ((TextView)paramView.findViewById(2131303118));
+        paramViewGroup.sIu = ((Button)paramView.findViewById(2131303116));
+        paramView.setTag(paramViewGroup);
+      }
+      dpb localdpb;
+      for (;;)
+      {
+        localdpb = (dpb)getItem(paramInt);
+        if (localdpb != null) {
+          break;
+        }
+        AppMethodBeat.o(25848);
+        return paramView;
+        paramViewGroup = (a)paramView.getTag();
+      }
+      paramViewGroup.ftj.setText(localdpb.Title);
+      paramViewGroup.sIs.setText(localdpb.DYr);
+      paramViewGroup.lEA.setText(localdpb.Desc);
+      paramViewGroup.sIt.setText(localdpb.sDZ);
+      paramViewGroup.sIr.setVisibility(0);
+      paramViewGroup.sIr.setUrl(localdpb.EFq);
+      if (localdpb.Cxm == 0) {
+        paramViewGroup.sIu.setEnabled(true);
+      }
+      for (;;)
+      {
+        paramViewGroup.sIu.setTag(Integer.valueOf(paramInt));
+        paramViewGroup.sIu.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(final View paramAnonymousView)
+          {
+            AppMethodBeat.i(25845);
+            paramAnonymousView = (dpb)IPCallPackageUI.a.this.getItem(((Integer)paramAnonymousView.getTag()).intValue());
+            if ((paramAnonymousView == null) || (bt.isNullOrNil(paramAnonymousView.ProductID)))
+            {
+              ad.e("MicroMsg.IPCallPackageUI", "buyBtnClick: proToBuy is null");
+              AppMethodBeat.o(25845);
+              return;
+            }
+            IPCallPackageUI.b(IPCallPackageUI.this).start();
+            f localf = IPCallPackageUI.b(IPCallPackageUI.this);
+            localf.sDs += 1;
+            IPCallPackageUI.b(IPCallPackageUI.this).sDw = paramAnonymousView.ProductID;
+            h.a(IPCallPackageUI.this, IPCallPackageUI.this.getString(2131760535, new Object[] { paramAnonymousView.DYr, paramAnonymousView.Title }), IPCallPackageUI.this.getString(2131760536), IPCallPackageUI.this.getString(2131760533), IPCallPackageUI.this.getString(2131760534), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            {
+              public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+              {
+                AppMethodBeat.i(25843);
+                paramAnonymous2DialogInterface = IPCallPackageUI.b(IPCallPackageUI.a.a(IPCallPackageUI.a.this));
+                paramAnonymous2DialogInterface.sDt += 1;
+                IPCallPackageUI.a(IPCallPackageUI.a.a(IPCallPackageUI.a.this), paramAnonymousView.ProductID);
+                AppMethodBeat.o(25843);
+              }
+            }, new DialogInterface.OnClickListener()
+            {
+              public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+              {
+                AppMethodBeat.i(25844);
+                paramAnonymous2DialogInterface = IPCallPackageUI.b(IPCallPackageUI.a.a(IPCallPackageUI.a.this));
+                paramAnonymous2DialogInterface.sDu += 1;
+                IPCallPackageUI.b(IPCallPackageUI.a.a(IPCallPackageUI.a.this)).finish();
+                AppMethodBeat.o(25844);
+              }
+            });
+            AppMethodBeat.o(25845);
+          }
+        });
+        AppMethodBeat.o(25848);
+        return paramView;
+        paramViewGroup.sIu.setEnabled(false);
+      }
+    }
+    
+    final class a
+    {
+      TextView ftj;
+      TextView lEA;
+      CdnImageView sIr;
+      TextView sIs;
+      TextView sIt;
+      Button sIu;
+      
+      private a() {}
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallPackageUI
  * JD-Core Version:    0.7.0.1
  */

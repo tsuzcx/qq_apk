@@ -1,27 +1,12 @@
 package kotlinx.coroutines;
 
-import a.l;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.d.f;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/CoroutineStart;", "", "(Ljava/lang/String;I)V", "isLazy", "", "isLazy$annotations", "()V", "()Z", "invoke", "", "T", "block", "Lkotlin/Function1;", "Lkotlin/coroutines/Continuation;", "", "completion", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V", "R", "Lkotlin/Function2;", "Lkotlin/ExtensionFunctionType;", "receiver", "(Lkotlin/jvm/functions/Function2;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)V", "DEFAULT", "LAZY", "ATOMIC", "UNDISPATCHED", "kotlinx-coroutines-core"})
-public enum ad
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/CoroutineScope;", "", "coroutineContext", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "kotlinx-coroutines-core"})
+public abstract interface ad
 {
-  static
-  {
-    AppMethodBeat.i(118491);
-    ad localad1 = new ad("DEFAULT", 0);
-    CHB = localad1;
-    ad localad2 = new ad("LAZY", 1);
-    CHC = localad2;
-    ad localad3 = new ad("ATOMIC", 2);
-    CHD = localad3;
-    ad localad4 = new ad("UNDISPATCHED", 3);
-    CHE = localad4;
-    CHF = new ad[] { localad1, localad2, localad3, localad4 };
-    AppMethodBeat.o(118491);
-  }
-  
-  private ad() {}
+  public abstract f fKB();
 }
 
 

@@ -1,99 +1,239 @@
 package com.tencent.mm.ui.chatting.l.a;
 
-import android.os.Bundle;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.text.Spannable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.c.b.h;
-import com.tencent.mm.ui.chatting.f.b.a;
-import com.tencent.mm.ui.chatting.f.d;
-import com.tencent.mm.ui.chatting.f.d.a;
-import com.tencent.mm.ui.chatting.f.d.d;
-import com.tencent.mm.ui.chatting.l.e;
-import com.tencent.mm.ui.chatting.view.MMChattingListView;
-import org.xwalk.core.Log;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.b.b.b;
+import com.tencent.mm.model.c;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.pluginsdk.ui.span.o;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.ui.widget.MMTextView.a;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class a
-  implements b.a
+public class a
 {
-  com.tencent.mm.ui.chatting.d.a caz;
-  long zPU;
-  long zPV;
-  public d zQi;
-  int zQj;
-  int zQk;
-  long zQl;
-  long zQm;
-  int zQn = 3;
+  private static volatile a GGo;
+  private static final ap GGp;
   
-  public a(com.tencent.mm.ui.chatting.d.a parama, d paramd)
+  static
   {
-    this.caz = parama;
-    this.zQi = paramd;
+    AppMethodBeat.i(36623);
+    GGo = null;
+    GGp = new ap("AAChattingHelper");
+    AppMethodBeat.o(36623);
   }
   
-  protected final void Qp(final int paramInt)
+  private a()
   {
-    this.zQn = 3;
-    this.caz.Pu(paramInt);
-    this.caz.getListView().postDelayed(new Runnable()
-    {
-      public final void run()
+    AppMethodBeat.i(185017);
+    GGp.setLogging(false);
+    AppMethodBeat.o(185017);
+  }
+  
+  public static void a(CharSequence paramCharSequence, bl parambl)
+  {
+    AppMethodBeat.i(36621);
+    a(paramCharSequence, parambl, 1);
+    AppMethodBeat.o(36621);
+  }
+  
+  private static void a(CharSequence paramCharSequence, bl parambl, int paramInt)
+  {
+    AppMethodBeat.i(36620);
+    if ((paramCharSequence instanceof Spannable)) {
+      GGp.postToWorker(new b(paramCharSequence, parambl, paramInt));
+    }
+    AppMethodBeat.o(36620);
+  }
+  
+  public static a fat()
+  {
+    AppMethodBeat.i(36619);
+    if (GGo == null) {
+      try
       {
-        AppMethodBeat.i(32715);
-        if ((a.this.caz.getFirstVisiblePosition() > paramInt) || (paramInt > a.this.caz.getLastVisiblePosition()))
+        if (GGo == null) {
+          GGo = new a();
+        }
+        a locala1 = GGo;
+        return locala1;
+      }
+      finally
+      {
+        AppMethodBeat.o(36619);
+      }
+    }
+    a locala2 = GGo;
+    AppMethodBeat.o(36619);
+    return locala2;
+  }
+  
+  public static MMTextView.a fau()
+  {
+    return a.GGq;
+  }
+  
+  static enum a
+    implements MMTextView.a
+  {
+    static
+    {
+      AppMethodBeat.i(36616);
+      GGq = new a("TEXT_CALLBACK");
+      GGr = new a[] { GGq };
+      AppMethodBeat.o(36616);
+    }
+    
+    private a() {}
+    
+    public final void a(CharSequence paramCharSequence, long paramLong)
+    {
+      AppMethodBeat.i(36615);
+      bl localbl = ((k)g.ab(k.class)).cOI().rm(paramLong);
+      if (bt.isNullOrNil(localbl.field_talker))
+      {
+        ad.w("MicroMsg.AAChattingHelper", "hy: not retrieving correct msg from db. try use old one. msg id: %d", new Object[] { Long.valueOf(paramLong) });
+        AppMethodBeat.o(36615);
+        return;
+      }
+      if ((localbl.field_flag & 0x10) == 0)
+      {
+        a.b(paramCharSequence, localbl);
+        AppMethodBeat.o(36615);
+        return;
+      }
+      ad.v("MicroMsg.AAChattingHelper", "hy: show already checked. msg id is: %d", new Object[] { Long.valueOf(paramLong) });
+      AppMethodBeat.o(36615);
+    }
+  }
+  
+  static final class b
+    implements Runnable
+  {
+    private bl dbD;
+    private int scene;
+    private CharSequence text;
+    
+    b(CharSequence paramCharSequence, bl parambl, int paramInt)
+    {
+      this.text = paramCharSequence;
+      this.dbD = parambl;
+      this.scene = paramInt;
+    }
+    
+    public final void run()
+    {
+      int i = 0;
+      AppMethodBeat.i(36618);
+      if ((this.text instanceof Spannable)) {}
+      for (;;)
+      {
+        try
         {
-          Log.i("MicroMsg.ChattingLoader.AbstractDataPresenter", "[protectSetSelection] pos:" + paramInt + " reTryCount:" + a.this.zQn);
-          a.this.caz.hF(paramInt, 0);
-          a locala = a.this;
-          locala.zQn -= 1;
-          if (a.this.zQn >= 0)
+          Spannable localSpannable = (Spannable)this.text;
+          System.nanoTime();
+          Object[] arrayOfObject = localSpannable.getSpans(0, localSpannable.length(), Object.class);
+          Object localObject3 = new ArrayList(1);
+          if ((arrayOfObject == null) || (arrayOfObject.length == 0)) {
+            break label398;
+          }
+          int j = arrayOfObject.length;
+          Object localObject1 = localObject3;
+          if (i < j)
           {
-            a.this.caz.getListView().postDelayed(this, 20L);
-            AppMethodBeat.o(32715);
+            localObject1 = arrayOfObject[i];
+            if ((localObject1 == null) || (!com.tencent.mm.plugin.normsg.a.b.ufs.e(localObject1, o.class))) {
+              break label391;
+            }
+            ((ArrayList)localObject3).add(new a.a((byte)0).a(localObject1, localSpannable));
+            break label391;
+          }
+          if ((localObject1 == null) || (((ArrayList)localObject1).size() == 0)) {
+            break label385;
+          }
+          this.dbD = ((k)g.ab(k.class)).cOI().rm(this.dbD.field_msgId);
+          if ((this.dbD != null) && (!bt.isNullOrNil(this.dbD.field_talker)))
+          {
+            this.dbD.setFlag(this.dbD.field_flag | 0x10);
+            ((k)g.ab(k.class)).cOI().a(this.dbD.field_msgId, this.dbD);
+          }
+          az.arV().aqm().atj();
+          az.arV().aqm().b(b.b.gPX);
+          localObject1 = ((ArrayList)localObject1).iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            break label385;
+          }
+          localObject3 = ((c)((Iterator)localObject1).next()).extInfo;
+          com.tencent.mm.plugin.report.service.h.vKh.f(14237, new Object[] { "msg", Long.valueOf(this.dbD.field_msgId), Build.MANUFACTURER, Build.MODEL, Build.VERSION.RELEASE, Build.VERSION.INCREMENTAL, Build.DISPLAY, Integer.valueOf(this.scene), localObject3 });
+          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(587L, 0L, 1L, false);
+          continue;
+          AppMethodBeat.o(36618);
+        }
+        catch (Exception localException) {}
+        return;
+        label385:
+        AppMethodBeat.o(36618);
+        return;
+        label391:
+        i += 1;
+        continue;
+        label398:
+        Object localObject2 = null;
+      }
+    }
+    
+    static final class a$a
+      implements a.b.b
+    {
+      public final a.b.c a(Object paramObject, Spannable paramSpannable)
+      {
+        AppMethodBeat.i(36617);
+        String str = paramSpannable.toString().substring(paramSpannable.getSpanStart(paramObject), paramSpannable.getSpanEnd(paramObject));
+        try
+        {
+          paramSpannable = bt.by(new JSONObject(paramObject.toString()).optString("type"), paramObject.getClass().getName());
+          paramObject = paramSpannable;
+        }
+        catch (JSONException paramSpannable)
+        {
+          for (;;)
+          {
+            paramObject = paramObject.getClass().getName();
           }
         }
-        else
-        {
-          Log.i("MicroMsg.ChattingLoader.AbstractDataPresenter", "[protectSetSelection] successfully! pos:" + paramInt);
-        }
-        AppMethodBeat.o(32715);
+        paramObject = new a.b.c(str, paramObject);
+        AppMethodBeat.o(36617);
+        return paramObject;
       }
-    }, 200L);
-  }
-  
-  protected abstract e a(d.a parama, Bundle paramBundle, d.d paramd);
-  
-  public void a(d.a parama, boolean paramBoolean, Bundle paramBundle)
-  {
-    Log.i("MicroMsg.ChattingLoader.AbstractDataPresenter", "[onLoad] action:" + parama + " isBlock:" + paramBoolean + " username:" + this.caz.getTalkerUserName());
-    if (bo.isNullOrNil(this.caz.getTalkerUserName()))
+    }
+    
+    static abstract interface b
     {
-      Log.w("MicroMsg.ChattingLoader.AbstractDataPresenter", "[onLoad] username is null!");
-      return;
+      public abstract a.b.c a(Object paramObject, Spannable paramSpannable);
     }
-    g.Cx(13);
-    ((h)this.caz.ay(h.class)).dHd();
-    this.zQi.a(parama, paramBoolean, new a.1(this, paramBundle, parama));
-  }
-  
-  public void a(MMChattingListView paramMMChattingListView, d.d<bi> paramd)
-  {
-    g.Cy(13);
-    paramMMChattingListView.getBaseAdapter().notifyDataSetChanged();
-    ((h)this.caz.ay(h.class)).dHe();
-    if (paramd.zOE == d.a.zOy) {
-      this.caz.zJz.cdy();
+    
+    static final class c
+    {
+      String extInfo;
+      String text;
+      
+      c(String paramString1, String paramString2)
+      {
+        this.text = paramString1;
+        this.extInfo = paramString2;
+      }
     }
-  }
-  
-  public String toString()
-  {
-    return getClass().getName();
   }
 }
 

@@ -1,12 +1,15 @@
 package kotlinx.coroutines;
 
-import a.l;
+import d.g.a.b;
+import d.l;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlinx/coroutines/CancelHandler;", "Lkotlinx/coroutines/CancelHandlerBase;", "Lkotlinx/coroutines/NotCompleted;", "()V", "kotlinx-coroutines-core"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lkotlinx/coroutines/CancelHandlerBase;", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "()V", "invoke", "kotlinx-coroutines-core"})
 public abstract class g
-  extends h
-  implements bm
-{}
+  implements b<Throwable, y>
+{
+  public abstract void u(Throwable paramThrowable);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar

@@ -10,43 +10,43 @@ final class a$1
 {
   a$1(a parama) {}
   
-  public final void bS(int paramInt1, int paramInt2)
+  public final void ch(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(284);
-    if (a.i(this.mjm) != null)
+    AppMethodBeat.i(103803);
+    if (a.i(this.pPX) != null)
     {
-      Iterator localIterator = a.i(this.mjm).iterator();
+      Iterator localIterator = a.i(this.pPX).iterator();
       while (localIterator.hasNext())
       {
         c.a locala = (c.a)localIterator.next();
         if (locala != null) {
-          locala.bS(paramInt1, paramInt2);
+          locala.ch(paramInt1, paramInt2);
         }
       }
     }
-    AppMethodBeat.o(284);
+    AppMethodBeat.o(103803);
   }
   
-  public final void s(byte[] paramArrayOfByte, int paramInt)
+  public final void w(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(283);
-    if (a.i(this.mjm) != null)
+    AppMethodBeat.i(103802);
+    if (a.i(this.pPX) != null)
     {
-      Iterator localIterator = a.i(this.mjm).iterator();
+      Iterator localIterator = a.i(this.pPX).iterator();
       while (localIterator.hasNext())
       {
         c.a locala = (c.a)localIterator.next();
         if (locala != null) {
-          locala.s(paramArrayOfByte, paramInt);
+          locala.w(paramArrayOfByte, paramInt);
         }
       }
     }
-    AppMethodBeat.o(283);
+    AppMethodBeat.o(103802);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.d.a.1
  * JD-Core Version:    0.7.0.1
  */

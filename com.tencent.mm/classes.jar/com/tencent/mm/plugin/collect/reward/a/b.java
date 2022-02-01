@@ -1,19 +1,17 @@
 package com.tencent.mm.plugin.collect.reward.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.qb;
-import com.tencent.mm.protocal.protobuf.qc;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.protocal.protobuf.sm;
+import com.tencent.mm.protocal.protobuf.sn;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,81 +21,81 @@ public final class b
   extends a
 {
   private final String TAG;
-  private f callback;
-  public qc kOF;
-  public boolean kOG;
-  private com.tencent.mm.ai.b rr;
+  private com.tencent.mm.al.g callback;
+  public sn nUT;
+  public boolean nUU;
+  private com.tencent.mm.al.b rr;
   
   public b(boolean paramBoolean)
   {
-    AppMethodBeat.i(41034);
+    AppMethodBeat.i(63894);
     this.TAG = "MicroMsg.NetSceneQrRewardGetCode";
     b.a locala = new b.a();
-    locala.fsX = new qb();
-    locala.fsY = new qc();
+    locala.gUU = new sm();
+    locala.gUV = new sn();
     locala.funcId = 1323;
     locala.uri = "/cgi-bin/mmpay-bin/getrewardqrcode";
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    ((qb)this.rr.fsV.fta).wIu = paramBoolean;
-    this.kOG = paramBoolean;
-    AppMethodBeat.o(41034);
+    this.rr = locala.atI();
+    ((sm)this.rr.gUS.gUX).CUn = paramBoolean;
+    this.nUU = paramBoolean;
+    AppMethodBeat.o(63894);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    AppMethodBeat.i(41036);
-    ab.i("MicroMsg.NetSceneQrRewardGetCode", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.kOF = ((qc)((com.tencent.mm.ai.b)paramq).fsW.fta);
-    ab.i("MicroMsg.NetSceneQrRewardGetCode", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.kOF.cnK), this.kOF.kNv });
-    if ((!this.kOC) && (this.kOF.cnK != 0)) {
-      this.kOD = true;
+    AppMethodBeat.i(63896);
+    ad.i("MicroMsg.NetSceneQrRewardGetCode", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.nUT = ((sn)((com.tencent.mm.al.b)paramq).gUT.gUX);
+    ad.i("MicroMsg.NetSceneQrRewardGetCode", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.nUT.dcG), this.nUT.nTK });
+    if ((!this.nUQ) && (this.nUT.dcG != 0)) {
+      this.nUR = true;
     }
-    if ((!this.kOC) && (!this.kOD))
+    if ((!this.nUQ) && (!this.nUR))
     {
-      g.RL().Ru().set(ac.a.yIl, Integer.valueOf(this.kOF.wIB));
-      g.RL().Ru().set(ac.a.yIm, Integer.valueOf(this.kOF.wIx));
-      g.RL().Ru().set(ac.a.yIo, this.kOF.desc);
-      g.RL().Ru().set(ac.a.yIn, this.kOF.jVh);
-      g.RL().Ru().set(ac.a.yIq, Integer.valueOf(this.kOF.wIA));
-      g.RL().Ru().set(ac.a.yIs, this.kOF.knU);
-      g.RL().Ru().set(ac.a.yIt, this.kOF.wIz);
-      g.RL().Ru().set(ac.a.yIu, this.kOF.qiN);
+      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Frh, Integer.valueOf(this.nUT.CUu));
+      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fri, Integer.valueOf(this.nUT.CUq));
+      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Frk, this.nUT.desc);
+      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Frj, this.nUT.mVR);
+      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Frm, Integer.valueOf(this.nUT.CUt));
+      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Fro, this.nUT.nti);
+      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Frp, this.nUT.CUs);
+      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Frq, this.nUT.vzM);
       paramq = new ArrayList();
-      Iterator localIterator = this.kOF.wIy.iterator();
+      Iterator localIterator = this.nUT.CUr.iterator();
       while (localIterator.hasNext()) {
         paramq.add(String.valueOf(((Integer)localIterator.next()).intValue()));
       }
-      g.RL().Ru().set(ac.a.yIr, bo.d(paramq, ","));
-      h.qsU.idkeyStat(724L, 2L, 1L, false);
+      com.tencent.mm.kernel.g.afB().afk().set(ae.a.Frn, bt.n(paramq, ","));
+      h.vKh.idkeyStat(724L, 2L, 1L, false);
     }
     for (;;)
     {
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
       }
-      AppMethodBeat.o(41036);
+      AppMethodBeat.o(63896);
       return;
-      if (this.kOC) {
-        h.qsU.idkeyStat(724L, 4L, 1L, false);
+      if (this.nUQ) {
+        h.vKh.idkeyStat(724L, 4L, 1L, false);
       } else {
-        h.qsU.idkeyStat(724L, 3L, 1L, false);
+        h.vKh.idkeyStat(724L, 3L, 1L, false);
       }
     }
   }
   
-  protected final boolean bhR()
+  protected final boolean bON()
   {
     return false;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(41035);
-    this.callback = paramf;
+    AppMethodBeat.i(63895);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(41035);
+    AppMethodBeat.o(63895);
     return i;
   }
   
@@ -108,7 +106,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.reward.a.b
  * JD-Core Version:    0.7.0.1
  */

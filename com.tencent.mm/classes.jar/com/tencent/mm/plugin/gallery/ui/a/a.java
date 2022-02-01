@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.gallery.ui.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.e;
 import com.tencent.mm.plugin.a.c;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.vfs.i;
 
 public final class a
   extends com.tencent.mm.ui.tools.b.a
 {
-  private String bHM;
+  private String cnm;
   public int mSize = 104857600;
-  private a.a nhq;
+  private a rMf;
   
   private a(String paramString)
   {
-    this.bHM = paramString;
+    this.cnm = paramString;
   }
   
-  public static a PK(String paramString)
+  public static a abP(String paramString)
   {
-    AppMethodBeat.i(150913);
+    AppMethodBeat.i(111734);
     paramString = new a(paramString);
-    AppMethodBeat.o(150913);
+    AppMethodBeat.o(111734);
     return paramString;
   }
   
-  public final int azZ()
+  public final int aVG()
   {
     int i = 10485760;
-    AppMethodBeat.i(150914);
-    if (bo.isNullOrNil(this.bHM)) {
-      ab.w("MicroMsg.VideoBoundaryCheck", "dz[check video but path is null or nil]");
+    AppMethodBeat.i(111735);
+    if (bt.isNullOrNil(this.cnm)) {
+      ad.w("MicroMsg.VideoBoundaryCheck", "dz[check video but path is null or nil]");
     }
-    boolean bool1 = at.is2G(ah.getContext());
-    boolean bool2 = c.wE(this.bHM);
+    boolean bool1 = ay.is2G(aj.getContext());
+    boolean bool2 = c.BH(this.cnm);
     label58:
     double d;
     if (bool2)
     {
-      String str = this.bHM;
+      String str = this.cnm;
       if (bool1)
       {
         if (!bool1) {
@@ -50,61 +50,63 @@ public final class a
         }
         d = 60000.0D;
         label67:
-        i = SightVideoJNI.shouldRemuxing(str, 660, 500, i, d, 1000000);
+        i = SightVideoJNI.shouldRemuxingVFS(str, 660, 500, i, d, 1000000);
       }
     }
     for (;;)
     {
-      ab.i("MicroMsg.VideoBoundaryCheck", "check should remuxing, ret %d, isMp4 %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2) });
+      ad.i("MicroMsg.VideoBoundaryCheck", "check should remuxing, ret %d, isMp4 %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool2) });
       switch (i)
       {
       default: 
-        ab.e("MicroMsg.VideoBoundaryCheck", "unknown check type %d", new Object[] { Integer.valueOf(i) });
-        AppMethodBeat.o(150914);
+        ad.e("MicroMsg.VideoBoundaryCheck", "unknown check type %d", new Object[] { Integer.valueOf(i) });
+        AppMethodBeat.o(111735);
         return 1;
         i = this.mSize;
         break label58;
         label205:
         d = this.mSize;
         break label67;
-        int j = e.cM(this.bHM);
+        int j = (int)i.aMN(this.cnm);
         if (bool1) {}
         for (i = 10485760;; i = 26214400)
         {
           if (j <= i) {
-            break label248;
+            break label249;
           }
           i = -1;
           break;
         }
-        label248:
+        label249:
         i = 1;
       }
     }
-    AppMethodBeat.o(150914);
+    AppMethodBeat.o(111735);
     return 0;
-    AppMethodBeat.o(150914);
+    AppMethodBeat.o(111735);
     return 2;
-    AppMethodBeat.o(150914);
+    AppMethodBeat.o(111735);
     return 1;
   }
   
-  public final void bEI()
+  public final void cAQ()
   {
-    AppMethodBeat.i(150915);
-    if (this.nhq == null)
+    AppMethodBeat.i(111736);
+    if (this.rMf == null)
     {
-      ab.w("MicroMsg.VideoBoundaryCheck", "dz[callback is null]");
-      AppMethodBeat.o(150915);
+      ad.w("MicroMsg.VideoBoundaryCheck", "dz[callback is null]");
+      AppMethodBeat.o(111736);
       return;
     }
-    azZ();
-    AppMethodBeat.o(150915);
+    aVG();
+    AppMethodBeat.o(111736);
   }
+  
+  public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

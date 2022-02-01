@@ -11,40 +11,40 @@ public final class ParcelableMMKV
   implements Parcelable
 {
   public static final Parcelable.Creator<ParcelableMMKV> CREATOR;
-  String AZZ;
-  int Baa;
-  int Bab;
-  String Bac;
+  String IgT;
+  int IgU;
+  int IgV;
+  String IgW;
   
   static
   {
-    AppMethodBeat.i(124055);
+    AppMethodBeat.i(13546);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(124055);
+    AppMethodBeat.o(13546);
   }
   
   public ParcelableMMKV(MMKV paramMMKV)
   {
-    AppMethodBeat.i(124053);
-    this.Baa = -1;
-    this.Bab = -1;
-    this.Bac = null;
-    this.AZZ = paramMMKV.mmapID();
-    this.Baa = paramMMKV.ashmemFD();
-    this.Bab = paramMMKV.ashmemMetaFD();
-    this.Bac = paramMMKV.cryptKey();
-    AppMethodBeat.o(124053);
+    AppMethodBeat.i(13544);
+    this.IgU = -1;
+    this.IgV = -1;
+    this.IgW = null;
+    this.IgT = paramMMKV.mmapID();
+    this.IgU = paramMMKV.ashmemFD();
+    this.IgV = paramMMKV.ashmemMetaFD();
+    this.IgW = paramMMKV.cryptKey();
+    AppMethodBeat.o(13544);
   }
   
   private ParcelableMMKV(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.Baa = -1;
-    this.Bab = -1;
-    this.Bac = null;
-    this.AZZ = paramString1;
-    this.Baa = paramInt1;
-    this.Bab = paramInt2;
-    this.Bac = paramString2;
+    this.IgU = -1;
+    this.IgV = -1;
+    this.IgW = null;
+    this.IgT = paramString1;
+    this.IgU = paramInt1;
+    this.IgV = paramInt2;
+    this.IgW = paramString2;
   }
   
   public final int describeContents()
@@ -54,24 +54,24 @@ public final class ParcelableMMKV
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(124054);
+    AppMethodBeat.i(13545);
     try
     {
-      paramParcel.writeString(this.AZZ);
-      ParcelFileDescriptor localParcelFileDescriptor1 = ParcelFileDescriptor.fromFd(this.Baa);
-      ParcelFileDescriptor localParcelFileDescriptor2 = ParcelFileDescriptor.fromFd(this.Bab);
+      paramParcel.writeString(this.IgT);
+      ParcelFileDescriptor localParcelFileDescriptor1 = ParcelFileDescriptor.fromFd(this.IgU);
+      ParcelFileDescriptor localParcelFileDescriptor2 = ParcelFileDescriptor.fromFd(this.IgV);
       paramInt |= 0x1;
       localParcelFileDescriptor1.writeToParcel(paramParcel, paramInt);
       localParcelFileDescriptor2.writeToParcel(paramParcel, paramInt);
-      if (this.Bac != null) {
-        paramParcel.writeString(this.Bac);
+      if (this.IgW != null) {
+        paramParcel.writeString(this.IgW);
       }
-      AppMethodBeat.o(124054);
+      AppMethodBeat.o(13545);
       return;
     }
     catch (IOException paramParcel)
     {
-      AppMethodBeat.o(124054);
+      AppMethodBeat.o(13545);
     }
   }
 }

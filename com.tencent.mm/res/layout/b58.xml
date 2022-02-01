@@ -1,3 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/fes" wallet:layoutRes="@layout/b59" wallet:infoIvVisibility="dl" wallet:titleTvVisibility="dl" style="@style/gy"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" />
+<LinearLayout android:gravity="center_vertical" android:background="@drawable/oc" android:paddingLeft="@dimen/bp" android:layout_width="fill_parent" android:layout_height="@dimen/i9" android:minHeight="@dimen/i9"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/dz2" android:layout_width="@dimen/i2" android:layout_height="@dimen/i2" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/amv" android:paddingRight="@dimen/bp" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:minHeight="@dimen/i9" android:layout_weight="1.0">
+        <TextView android:textColor="#ff05295a" android:gravity="center_vertical" android:id="@id/fg1" android:padding="3.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="{title}" android:singleLine="true" android:drawablePadding="3.0dip" style="@style/m3" />
+        <TextView android:textColor="#ff05295a" android:id="@id/fez" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:maxLines="2" android:singleLine="false" android:layout_centerVertical="true" style="@style/m3" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/fey" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/Link" android:id="@id/dz8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/m3" />
+                <TextView android:textColor="@color/rj" android:id="@id/dz5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dx9" style="@style/m2" />
+                <ImageView android:id="@id/dz_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <ImageView android:id="@id/dzc" android:paddingLeft="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textColor="#ff555555" android:id="@id/dz3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" style="@style/m2" />
+                <ImageView android:id="@id/dzb" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="3.0dip" android:layout_marginTop="8.0dip" android:src="@raw/find_more_friend_photograph_icon" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/f2s" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <TextView android:layout_gravity="center_vertical" android:id="@id/dza" android:maxWidth="100.0dip" android:text="{signature}" style="@style/hj" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

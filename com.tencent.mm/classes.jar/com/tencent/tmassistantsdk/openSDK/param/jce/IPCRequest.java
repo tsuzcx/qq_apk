@@ -23,7 +23,7 @@ public final class IPCRequest
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(75999);
+    AppMethodBeat.i(102245);
     if (cache_head == null) {
       cache_head = new IPCHead();
     }
@@ -35,17 +35,17 @@ public final class IPCRequest
       ((byte[])arrayOfByte)[0] = 0;
     }
     this.body = ((byte[])paramJceInputStream.read(cache_body, 1, false));
-    AppMethodBeat.o(75999);
+    AppMethodBeat.o(102245);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(75998);
+    AppMethodBeat.i(102244);
     paramJceOutputStream.write(this.head, 0);
     if (this.body != null) {
       paramJceOutputStream.write(this.body, 1);
     }
-    AppMethodBeat.o(75998);
+    AppMethodBeat.o(102244);
   }
 }
 

@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/k6" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lx">
-        <TextView android:id="@id/nj" android:layout_width="fill_parent" android:layout_height="@dimen/f1" android:text="@string/e5a" style="@style/ln" />
-    </LinearLayout>
-</LinearLayout>
+<com.tencent.mm.ui.widget.InputPanelFrameLayout android:id="@id/f42" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:id="@id/f7p" android:background="@color/a_r" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_alignParentTop="true" android:overScrollMode="never">
+        <RelativeLayout android:id="@id/dr4" android:background="@color/a_r" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/dr3" android:background="@drawable/a3m" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentTop="true">
+                <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/yf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:lineSpacingExtra="2.0dip" />
+            </LinearLayout>
+            <TextView android:textSize="22.0dip" android:textStyle="bold" android:textColor="@color/y4" android:id="@id/dr5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="56.0dip" android:text="@string/dr7" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/i" android:textColor="@color/y4" android:gravity="center_horizontal" android:id="@id/dqz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="32.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="32.0dip" android:text="@string/dr6" android:layout_below="@id/dr5" android:layout_centerHorizontal="true" />
+            <View android:id="@id/dr1" android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="32.0dip" android:layout_marginTop="48.0dip" android:layout_marginRight="32.0dip" android:layout_below="@id/dqz" android:layout_centerHorizontal="true" />
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="center|right" android:id="@id/dr6" android:background="@null" android:padding="0.0dip" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:minHeight="58.0dip" android:layout_below="@id/dr1" android:inputType="phone" wallet:contentTextColor="@color/y4" wallet:infoIvColorRes="@color/Brand" wallet:infoIvRes="@raw/icons_outlined_time" wallet:infoIvVisibility="gpo" wallet:layoutRes="@layout/bis" wallet:titleText="@string/dr9" style="@style/f_" />
+            <View android:id="@id/dr2" android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:layout_below="@id/dr6" android:layout_centerHorizontal="true" />
+            <LinearLayout android:gravity="bottom|center" android:layout_gravity="center_horizontal" android:id="@id/a5i" android:paddingBottom="96.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+                <Button android:textSize="17.0dip" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/dr0" android:visibility="visible" android:layout_width="184.0dip" android:layout_height="40.0dip" android:text="@string/dr8" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/o6" />
+            </LinearLayout>
+            <com.tencent.mm.ui.widget.InputPanelFrameLayout android:id="@id/cr9" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+        </RelativeLayout>
+    </ScrollView>
+</com.tencent.mm.ui.widget.InputPanelFrameLayout>

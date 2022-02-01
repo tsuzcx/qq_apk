@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class fm
   extends b
 {
-  public fm.a ctC;
-  public b ctD;
+  public a dhT;
+  public b dhU;
   
   public fm()
   {
@@ -16,23 +17,27 @@ public final class fm
   
   private fm(byte paramByte)
   {
-    AppMethodBeat.i(70184);
-    this.ctC = new fm.a();
-    this.ctD = new b();
-    this.ymq = false;
+    AppMethodBeat.i(116016);
+    this.dhT = new a();
+    this.dhU = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70184);
+    AppMethodBeat.o(116016);
+  }
+  
+  public static final class a
+  {
+    public String dhV;
   }
   
   public static final class b
   {
-    public boolean cpz = false;
-    public String fileName;
+    public Cursor dhM;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.fm
  * JD-Core Version:    0.7.0.1
  */

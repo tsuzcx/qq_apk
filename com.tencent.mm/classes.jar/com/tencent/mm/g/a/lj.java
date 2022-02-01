@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class lj
   extends b
 {
-  public lj.a cBB;
-  public lj.b cBC;
+  public a dpV;
   
   public lj()
   {
@@ -16,17 +15,23 @@ public final class lj
   
   private lj(byte paramByte)
   {
-    AppMethodBeat.i(51341);
-    this.cBB = new lj.a();
-    this.cBC = new lj.b();
-    this.ymq = false;
+    AppMethodBeat.i(19821);
+    this.dpV = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(51341);
+    AppMethodBeat.o(19821);
+  }
+  
+  public static final class a
+  {
+    public byte[] dpW;
+    public int dpX;
+    public boolean dpY;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.lj
  * JD-Core Version:    0.7.0.1
  */

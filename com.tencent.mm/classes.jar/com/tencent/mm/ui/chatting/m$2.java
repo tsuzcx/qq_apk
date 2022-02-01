@@ -4,12 +4,12 @@ import android.content.Context;
 import android.view.MenuItem;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.n.a;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.n.b;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.base.n.b;
 
 final class m$2
@@ -19,25 +19,25 @@ final class m$2
   
   public final void a(TextView paramTextView, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(30598);
+    AppMethodBeat.i(34462);
     if (paramTextView != null)
     {
-      aw.aaz();
-      ad localad = c.YA().arw(paramMenuItem.getTitle());
-      if ((localad == null) || ((int)localad.euF <= 0))
+      az.arV();
+      af localaf = c.apM().aHY(paramMenuItem.getTitle());
+      if ((localaf == null) || ((int)localaf.fId <= 0))
       {
         paramTextView.setText(paramMenuItem.getTitle());
-        AppMethodBeat.o(30598);
+        AppMethodBeat.o(34462);
         return;
       }
-      paramTextView.setText(j.b(this.val$context, localad.Oe()));
+      paramTextView.setText(k.c(this.val$context, localaf.ZW()));
     }
-    AppMethodBeat.o(30598);
+    AppMethodBeat.o(34462);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.m.2
  * JD-Core Version:    0.7.0.1
  */

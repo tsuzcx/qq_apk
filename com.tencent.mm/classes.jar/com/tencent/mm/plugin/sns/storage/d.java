@@ -12,9 +12,9 @@ public final class d
   
   static
   {
-    AppMethodBeat.i(36919);
+    AppMethodBeat.i(96282);
     SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "CanvasInfo") };
-    AppMethodBeat.o(36919);
+    AppMethodBeat.o(96282);
   }
   
   public d(e parame)
@@ -29,22 +29,22 @@ public final class d
   
   public final void a(c paramc)
   {
-    AppMethodBeat.i(36918);
+    AppMethodBeat.i(96281);
     if (paramc == null)
     {
-      AppMethodBeat.o(36918);
+      AppMethodBeat.o(96281);
       return;
     }
     paramc.field_createTime = System.currentTimeMillis();
     if (!insert(paramc)) {
       update(paramc, new String[0]);
     }
-    AppMethodBeat.o(36918);
+    AppMethodBeat.o(96281);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.d
  * JD-Core Version:    0.7.0.1
  */

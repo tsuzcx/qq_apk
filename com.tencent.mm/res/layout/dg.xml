@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/vo" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.CommonVideoView android:id="@id/vp" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="360.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/ecg" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="25.0dip">
+            <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/y4" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ecj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/kj" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ech" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:src="@raw/actionbar_icon_dark_back" android:layout_centerVertical="true" android:layout_alignParentStart="true" app:iconColor="@color/ee" />
+        </RelativeLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_9" android:layout_gravity="center_horizontal" android:id="@id/eci" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="27.0dip" android:layout_marginRight="24.0dip" android:text="@string/kg" />
+    </LinearLayout>
+</LinearLayout>

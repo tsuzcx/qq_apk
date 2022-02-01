@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class iv
   extends b
 {
-  public iv.a cyl;
+  public a dmO;
+  public b dmP;
   
   public iv()
   {
@@ -15,16 +17,27 @@ public final class iv
   
   private iv(byte paramByte)
   {
-    AppMethodBeat.i(105669);
-    this.cyl = new iv.a();
-    this.ymq = false;
+    AppMethodBeat.i(155370);
+    this.dmO = new a();
+    this.dmP = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(105669);
+    AppMethodBeat.o(155370);
+  }
+  
+  public static final class a
+  {
+    public Context context;
+  }
+  
+  public static final class b
+  {
+    public String dmQ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.iv
  * JD-Core Version:    0.7.0.1
  */

@@ -10,73 +10,73 @@ public class u
   extends h
   implements SubMenu
 {
-  public h Xl;
-  private j Xm;
+  public h aeq;
+  private j aer;
   
   public u(Context paramContext, h paramh, j paramj)
   {
     super(paramContext);
-    this.Xl = paramh;
-    this.Xm = paramj;
+    this.aeq = paramh;
+    this.aer = paramj;
   }
   
   public final void a(h.a parama)
   {
-    this.Xl.a(parama);
+    this.aeq.a(parama);
   }
   
   final boolean d(h paramh, MenuItem paramMenuItem)
   {
-    return (super.d(paramh, paramMenuItem)) || (this.Xl.d(paramh, paramMenuItem));
-  }
-  
-  public final String fT()
-  {
-    if (this.Xm != null) {}
-    for (int i = this.Xm.getItemId(); i == 0; i = 0) {
-      return null;
-    }
-    return super.fT() + ":" + i;
-  }
-  
-  public final boolean fU()
-  {
-    return this.Xl.fU();
-  }
-  
-  public final boolean fV()
-  {
-    return this.Xl.fV();
-  }
-  
-  public final boolean fW()
-  {
-    return this.Xl.fW();
+    return (super.d(paramh, paramMenuItem)) || (this.aeq.d(paramh, paramMenuItem));
   }
   
   public final boolean g(j paramj)
   {
-    return this.Xl.g(paramj);
+    return this.aeq.g(paramj);
   }
   
   public MenuItem getItem()
   {
-    return this.Xm;
-  }
-  
-  public final h gf()
-  {
-    return this.Xl.gf();
+    return this.aer;
   }
   
   public final boolean h(j paramj)
   {
-    return this.Xl.h(paramj);
+    return this.aeq.h(paramj);
+  }
+  
+  public final h hA()
+  {
+    return this.aeq.hA();
+  }
+  
+  public final String hp()
+  {
+    if (this.aer != null) {}
+    for (int i = this.aer.getItemId(); i == 0; i = 0) {
+      return null;
+    }
+    return super.hp() + ":" + i;
+  }
+  
+  public final boolean hq()
+  {
+    return this.aeq.hq();
+  }
+  
+  public final boolean hr()
+  {
+    return this.aeq.hr();
+  }
+  
+  public final boolean hs()
+  {
+    return this.aeq.hs();
   }
   
   public void setGroupDividerEnabled(boolean paramBoolean)
   {
-    this.Xl.setGroupDividerEnabled(paramBoolean);
+    this.aeq.setGroupDividerEnabled(paramBoolean);
   }
   
   public SubMenu setHeaderIcon(int paramInt)
@@ -111,19 +111,19 @@ public class u
   
   public SubMenu setIcon(int paramInt)
   {
-    this.Xm.setIcon(paramInt);
+    this.aer.setIcon(paramInt);
     return this;
   }
   
   public SubMenu setIcon(Drawable paramDrawable)
   {
-    this.Xm.setIcon(paramDrawable);
+    this.aer.setIcon(paramDrawable);
     return this;
   }
   
   public void setQwertyMode(boolean paramBoolean)
   {
-    this.Xl.setQwertyMode(paramBoolean);
+    this.aeq.setQwertyMode(paramBoolean);
   }
 }
 

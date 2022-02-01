@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
-import com.tencent.mm.protocal.protobuf.cke;
+import com.tencent.mm.protocal.protobuf.dby;
 
-public final class b
-  extends cke
+public class b
+  extends dby
 {
-  public boolean jZt;
-  public long jzc;
+  public long mqz;
+  public boolean nbP;
   public int position;
   public int type;
   
@@ -15,14 +15,14 @@ public final class b
     this.type = 1;
   }
   
-  public b(byte paramByte)
+  public b(int paramInt)
   {
-    this.type = 2;
+    this.type = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.offenread.b
  * JD-Core Version:    0.7.0.1
  */

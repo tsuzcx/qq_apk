@@ -10,18 +10,18 @@ import java.util.Locale;
 final class PagerTitleStrip$b
   extends SingleLineTransformationMethod
 {
-  private Locale GH;
+  private Locale NG;
   
   PagerTitleStrip$b(Context paramContext)
   {
-    this.GH = paramContext.getResources().getConfiguration().locale;
+    this.NG = paramContext.getResources().getConfiguration().locale;
   }
   
   public final CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
   {
     paramCharSequence = super.getTransformation(paramCharSequence, paramView);
     if (paramCharSequence != null) {
-      return paramCharSequence.toString().toUpperCase(this.GH);
+      return paramCharSequence.toString().toUpperCase(this.NG);
     }
     return null;
   }

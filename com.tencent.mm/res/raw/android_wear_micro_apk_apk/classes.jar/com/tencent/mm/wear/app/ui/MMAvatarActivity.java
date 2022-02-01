@@ -10,19 +10,19 @@ import com.tencent.mm.wear.app.c.b;
 public abstract class MMAvatarActivity
   extends MMActivity
 {
-  private ImageView aeA;
+  private ImageView aic;
   
-  protected final void N(String paramString)
+  protected final void U(String paramString)
   {
     d.c("MicroMsg.MMAvatarActivity", "set bg avatar: %s", new Object[] { paramString });
     a locala = new a();
-    locala.acL = this.aeA;
+    locala.agm = this.aic;
     locala.width = 320;
     locala.height = 320;
     locala.type = 3;
-    locala.acH = paramString;
-    locala.acN = 10;
-    h.me().a(locala);
+    locala.agi = paramString;
+    locala.ago = 10;
+    h.mR().a(locala);
   }
   
   public abstract int getLayoutId();
@@ -31,9 +31,9 @@ public abstract class MMAvatarActivity
   {
     super.onCreate(paramBundle);
     setContentView(getLayoutId());
-    this.aeA = ((ImageView)findViewById(2131558442));
-    this.aeA.setScaleX(1.2F);
-    this.aeA.setScaleY(1.2F);
+    this.aic = ((ImageView)findViewById(2131558443));
+    this.aic.setScaleX(1.2F);
+    this.aic.setScaleY(1.2F);
   }
 }
 

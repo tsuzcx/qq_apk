@@ -1,38 +1,64 @@
 package com.tencent.mm.plugin.appbrand.widget.picker;
 
-import android.widget.EditText;
-import android.widget.NumberPicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.loader.c;
+import com.tencent.mm.sdk.platformtools.bt;
 
-final class e
+public final class e
 {
-  static void a(NumberPicker paramNumberPicker)
+  public static int[] NS(String paramString)
   {
-    AppMethodBeat.i(126754);
-    if (paramNumberPicker == null)
+    AppMethodBeat.i(138087);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(126754);
-      return;
+      AppMethodBeat.o(138087);
+      return null;
     }
+    paramString = paramString.split(":");
+    if ((paramString == null) || (paramString.length != 2))
+    {
+      AppMethodBeat.o(138087);
+      return null;
+    }
+    int i = NT(paramString[0]);
+    int j = NT(paramString[1]);
+    if ((!vo(i)) || (!vn(j)))
+    {
+      AppMethodBeat.o(138087);
+      return null;
+    }
+    AppMethodBeat.o(138087);
+    return new int[] { i, j };
+  }
+  
+  private static int NT(String paramString)
+  {
+    AppMethodBeat.i(138088);
     try
     {
-      paramNumberPicker = (EditText)new c(paramNumberPicker, "mInputText", null).get();
-      if (paramNumberPicker != null) {
-        paramNumberPicker.setEditableFactory(new e.1());
-      }
-      AppMethodBeat.o(126754);
-      return;
+      int i = Integer.parseInt(paramString, 10);
+      AppMethodBeat.o(138088);
+      return i;
     }
-    catch (Exception paramNumberPicker)
+    catch (Exception paramString)
     {
-      AppMethodBeat.o(126754);
+      AppMethodBeat.o(138088);
     }
+    return -1;
+  }
+  
+  public static boolean vn(int paramInt)
+  {
+    return (paramInt >= 0) && (paramInt <= 59);
+  }
+  
+  public static boolean vo(int paramInt)
+  {
+    return (paramInt >= 0) && (paramInt <= 23);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.e
  * JD-Core Version:    0.7.0.1
  */

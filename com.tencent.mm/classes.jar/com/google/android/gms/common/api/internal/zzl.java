@@ -11,11 +11,11 @@ final class zzl
   
   zzl(ConnectionResult paramConnectionResult, int paramInt)
   {
-    AppMethodBeat.i(60939);
+    AppMethodBeat.i(11431);
     Preconditions.checkNotNull(paramConnectionResult);
     this.zzeu = paramConnectionResult;
     this.zzet = paramInt;
-    AppMethodBeat.o(60939);
+    AppMethodBeat.o(11431);
   }
   
   final ConnectionResult getConnectionResult()

@@ -1,123 +1,49 @@
 package com.tencent.mm.sdk.platformtools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class an
 {
-  public static String dtg()
+  private static Set<String> EUF;
+  
+  static
   {
-    AppMethodBeat.i(52153);
-    try
-    {
-      Object localObject = new Throwable().getStackTrace();
-      if ((localObject == null) || (localObject.length < 3))
-      {
-        AppMethodBeat.o(52153);
-        return "";
-      }
-      String str = localObject[2].getClassName().substring(15);
-      str = str + ":" + localObject[2].getMethodName();
-      localObject = str + "(" + localObject[2].getLineNumber() + ")";
-      AppMethodBeat.o(52153);
-      return localObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      ab.e("MicroMsg.Util.MMStack", "getCaller e:%s", new Object[] { l(localThrowable) });
-      AppMethodBeat.o(52153);
-    }
-    return "";
+    AppMethodBeat.i(157622);
+    EUF = new HashSet();
+    AppMethodBeat.o(157622);
   }
   
-  public static String dth()
+  public static boolean aFx(String paramString)
   {
-    AppMethodBeat.i(52154);
-    Object localObject = new Throwable().getStackTrace();
-    if ((localObject == null) || (localObject.length < 4))
+    AppMethodBeat.i(157619);
+    if (aFz(paramString))
     {
-      AppMethodBeat.o(52154);
-      return "";
+      ad.d("MicroMsg.MMEntryLock", "locked-".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(157619);
+      return false;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 3;
-    while (i < localObject.length)
-    {
-      if ((localObject[i].getClassName().contains("com.tencent.mm")) && (!localObject[i].getClassName().contains("sdk.platformtools.Log")))
-      {
-        localStringBuilder.append("[");
-        localStringBuilder.append(localObject[i].getClassName().substring(15));
-        localStringBuilder.append(":");
-        localStringBuilder.append(localObject[i].getMethodName());
-        localStringBuilder.append("(" + localObject[i].getLineNumber() + ")]");
-      }
-      i += 1;
-    }
-    localObject = localStringBuilder.toString();
-    AppMethodBeat.o(52154);
-    return localObject;
+    ad.d("MicroMsg.MMEntryLock", "lock-".concat(String.valueOf(paramString)));
+    boolean bool = EUF.add(paramString);
+    AppMethodBeat.o(157619);
+    return bool;
   }
   
-  public static String l(Throwable paramThrowable)
+  public static void aFy(String paramString)
   {
-    AppMethodBeat.i(52155);
-    if (paramThrowable == null)
-    {
-      AppMethodBeat.o(52155);
-      return "";
-    }
-    try
-    {
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      PrintStream localPrintStream = new PrintStream(localByteArrayOutputStream);
-      paramThrowable.printStackTrace(localPrintStream);
-      paramThrowable = localByteArrayOutputStream.toString();
-      localPrintStream.close();
-      localByteArrayOutputStream.close();
-      AppMethodBeat.o(52155);
-      return paramThrowable;
-    }
-    catch (Exception paramThrowable)
-    {
-      AppMethodBeat.o(52155);
-    }
-    return "";
+    AppMethodBeat.i(157620);
+    EUF.remove(paramString);
+    ad.d("MicroMsg.MMEntryLock", "unlock-".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(157620);
   }
   
-  public static String stackTraceToString(StackTraceElement[] paramArrayOfStackTraceElement)
+  public static boolean aFz(String paramString)
   {
-    AppMethodBeat.i(52156);
-    if ((paramArrayOfStackTraceElement == null) || (paramArrayOfStackTraceElement.length < 4))
-    {
-      AppMethodBeat.o(52156);
-      return "";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 3;
-    while (i < paramArrayOfStackTraceElement.length)
-    {
-      if ((paramArrayOfStackTraceElement[i].getClassName().contains("com.tencent.mm")) && (!paramArrayOfStackTraceElement[i].getClassName().contains("sdk.platformtools.Log")))
-      {
-        localStringBuilder.append("[");
-        localStringBuilder.append(paramArrayOfStackTraceElement[i].getClassName().substring(15));
-        localStringBuilder.append(":");
-        localStringBuilder.append(paramArrayOfStackTraceElement[i].getMethodName());
-        localStringBuilder.append("(" + paramArrayOfStackTraceElement[i].getLineNumber() + ")]");
-      }
-      i += 1;
-    }
-    paramArrayOfStackTraceElement = localStringBuilder.toString();
-    AppMethodBeat.o(52156);
-    return paramArrayOfStackTraceElement;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(52152);
-    String str = dth();
-    AppMethodBeat.o(52152);
-    return str;
+    AppMethodBeat.i(157621);
+    boolean bool = EUF.contains(paramString);
+    AppMethodBeat.o(157621);
+    return bool;
   }
 }
 

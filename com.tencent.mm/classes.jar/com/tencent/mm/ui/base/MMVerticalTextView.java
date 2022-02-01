@@ -11,64 +11,64 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ad.a.a;
+import com.tencent.mm.af.a.a;
 
 public class MMVerticalTextView
   extends View
 {
+  Rect GaJ;
+  private TextPaint avD;
   private int direction;
-  private TextPaint hB;
   private String mText;
-  Rect znf;
   
   public MMVerticalTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(106889);
-    this.znf = new Rect();
-    this.hB = new TextPaint();
-    this.hB.setAntiAlias(true);
-    this.hB.setTextSize(15.0F);
-    this.hB.setColor(-16777216);
-    this.hB.setTextAlign(Paint.Align.CENTER);
+    AppMethodBeat.i(142251);
+    this.GaJ = new Rect();
+    this.avD = new TextPaint();
+    this.avD.setAntiAlias(true);
+    this.avD.setTextSize(15.0F);
+    this.avD.setColor(-16777216);
+    this.avD.setTextAlign(Paint.Align.CENTER);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.verticaltextview);
-    int i = paramAttributeSet.getResourceId(0, 0);
+    int i = paramAttributeSet.getResourceId(1, 0);
     if (i != 0) {
       this.mText = paramContext.getString(i);
     }
-    i = paramAttributeSet.getDimensionPixelOffset(2, 15);
+    i = paramAttributeSet.getDimensionPixelOffset(4, 15);
     if (i > 0) {
-      this.hB.setTextSize(i);
+      this.avD.setTextSize(i);
     }
-    this.hB.setColor(paramAttributeSet.getColor(1, -16777216));
-    this.direction = paramAttributeSet.getInt(3, 0);
-    boolean bool = paramAttributeSet.getBoolean(4, false);
-    this.hB.setFakeBoldText(bool);
+    this.avD.setColor(paramAttributeSet.getColor(3, -16777216));
+    this.direction = paramAttributeSet.getInt(0, 0);
+    boolean bool = paramAttributeSet.getBoolean(2, false);
+    this.avD.setFakeBoldText(bool);
     paramAttributeSet.recycle();
     requestLayout();
     invalidate();
-    AppMethodBeat.o(106889);
+    AppMethodBeat.o(142251);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(106894);
+    AppMethodBeat.i(142256);
     super.onDraw(paramCanvas);
     int i = getHeight();
     Path localPath = new Path();
     int j;
     if (this.direction == 0)
     {
-      j = (getWidth() >> 1) - (this.znf.height() >> 1);
+      j = (getWidth() >> 1) - (this.GaJ.height() >> 1);
       localPath.moveTo(j, 0.0F);
       localPath.lineTo(j, i);
     }
     for (;;)
     {
-      paramCanvas.drawTextOnPath(this.mText, localPath, 0.0F, 0.0F, this.hB);
-      AppMethodBeat.o(106894);
+      paramCanvas.drawTextOnPath(this.mText, localPath, 0.0F, 0.0F, this.avD);
+      AppMethodBeat.o(142256);
       return;
-      j = (getWidth() >> 1) + (this.znf.height() >> 1);
+      j = (getWidth() >> 1) + (this.GaJ.height() >> 1);
       localPath.moveTo(j, i);
       localPath.lineTo(j, 0.0F);
     }
@@ -76,8 +76,8 @@ public class MMVerticalTextView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(106893);
-    this.hB.getTextBounds(this.mText, 0, this.mText.length(), this.znf);
+    AppMethodBeat.i(142255);
+    this.avD.getTextBounds(this.mText, 0, this.mText.length(), this.GaJ);
     int j = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     if (j == 1073741824) {}
@@ -90,15 +90,15 @@ public class MMVerticalTextView
       for (;;)
       {
         setMeasuredDimension(paramInt1, paramInt2);
-        AppMethodBeat.o(106893);
+        AppMethodBeat.o(142255);
         return;
-        i = this.znf.height();
+        i = this.GaJ.height();
         if (j != -2147483648) {
           break label138;
         }
         paramInt1 = Math.min(i, paramInt1);
         break;
-        i = (int)Math.ceil(this.hB.measureText(this.mText));
+        i = (int)Math.ceil(this.avD.measureText(this.mText));
         if (j == -2147483648) {
           paramInt2 = Math.min(i, paramInt2);
         } else {
@@ -112,33 +112,33 @@ public class MMVerticalTextView
   
   public void setText(String paramString)
   {
-    AppMethodBeat.i(106890);
+    AppMethodBeat.i(142252);
     this.mText = paramString;
     requestLayout();
     invalidate();
-    AppMethodBeat.o(106890);
+    AppMethodBeat.o(142252);
   }
   
   public void setTextColor(int paramInt)
   {
-    AppMethodBeat.i(106892);
-    this.hB.setColor(paramInt);
+    AppMethodBeat.i(142254);
+    this.avD.setColor(paramInt);
     invalidate();
-    AppMethodBeat.o(106892);
+    AppMethodBeat.o(142254);
   }
   
   public void setTextSize(int paramInt)
   {
-    AppMethodBeat.i(106891);
-    this.hB.setTextSize(paramInt);
+    AppMethodBeat.i(142253);
+    this.avD.setTextSize(paramInt);
     requestLayout();
     invalidate();
-    AppMethodBeat.o(106891);
+    AppMethodBeat.o(142253);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMVerticalTextView
  * JD-Core Version:    0.7.0.1
  */

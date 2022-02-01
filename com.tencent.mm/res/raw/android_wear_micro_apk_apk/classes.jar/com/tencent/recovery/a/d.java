@@ -2,39 +2,39 @@ package com.tencent.recovery.a;
 
 public final class d
 {
-  private static e ajq = new a();
+  private static e amS = new a();
   
   public static void a(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (ajq != null) {
-      ajq.a(paramString1, paramString2, paramVarArgs);
+    if (amS != null) {
+      amS.a(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void a(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    if (ajq != null) {
-      ajq.a(paramString1, paramThrowable, paramString2, paramVarArgs);
+    if (amS != null) {
+      amS.a(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
   }
   
   public static void c(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (ajq != null) {
-      ajq.c(paramString1, paramString2, paramVarArgs);
+    if (amS != null) {
+      amS.c(paramString1, paramString2, paramVarArgs);
     }
   }
   
-  public static void nK()
+  public static e oB()
   {
-    if ((ajq instanceof c)) {
-      ((c)ajq).b("", true);
-    }
+    return amS;
   }
   
-  public static e nN()
+  public static void oy()
   {
-    return ajq;
+    if ((amS instanceof c)) {
+      ((c)amS).a("", true);
+    }
   }
 }
 

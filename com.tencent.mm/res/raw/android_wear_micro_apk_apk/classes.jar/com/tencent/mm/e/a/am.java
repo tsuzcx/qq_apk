@@ -5,57 +5,57 @@ import a.a.a.b;
 public final class am
   extends com.tencent.mm.d.a
 {
-  public String VN;
-  public boolean WD;
-  public int WE;
-  public String Wt;
+  public String XI;
+  public String Yo;
+  public boolean Yy;
+  public int Yz;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.VN == null) {
+      if (this.XI == null) {
         throw new b("Not all required fields were included: Talker");
       }
-      if (this.Wt == null) {
+      if (this.Yo == null) {
         throw new b("Not all required fields were included: Text");
       }
-      if (this.VN != null) {
-        paramVarArgs.d(1, this.VN);
+      if (this.XI != null) {
+        paramVarArgs.d(1, this.XI);
       }
-      if (this.Wt != null) {
-        paramVarArgs.d(2, this.Wt);
+      if (this.Yo != null) {
+        paramVarArgs.d(2, this.Yo);
       }
-      paramVarArgs.g(3, this.WD);
-      paramVarArgs.aq(4, this.WE);
+      paramVarArgs.h(3, this.Yy);
+      paramVarArgs.at(4, this.Yz);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.VN == null) {
+      if (this.XI == null) {
         break label356;
       }
     }
     label356:
-    for (paramInt = a.a.a.b.b.a.e(1, this.VN) + 0;; paramInt = 0)
+    for (paramInt = a.a.a.b.b.a.e(1, this.XI) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.Wt != null) {
-        i = paramInt + a.a.a.b.b.a.e(2, this.Wt);
+      if (this.Yo != null) {
+        i = paramInt + a.a.a.b.b.a.e(2, this.Yo);
       }
-      return i + (a.a.a.b.b.a.cp(3) + 1) + a.a.a.a.ak(4, this.WE);
+      return i + (a.a.a.b.b.a.cK(3) + 1) + a.a.a.a.an(4, this.Yz);
       if (paramInt == 2)
       {
-        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-        for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+        for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
           if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.oz();
+            paramVarArgs.pm();
           }
         }
-        if (this.VN == null) {
+        if (this.XI == null) {
           throw new b("Not all required fields were included: Talker");
         }
-        if (this.Wt != null) {
+        if (this.Yo != null) {
           break;
         }
         throw new b("Not all required fields were included: Text");
@@ -69,16 +69,16 @@ public final class am
         default: 
           return -1;
         case 1: 
-          localam.VN = locala.ou();
+          localam.XI = locala.ph();
           return 0;
         case 2: 
-          localam.Wt = locala.ou();
+          localam.Yo = locala.ph();
           return 0;
         case 3: 
-          localam.WD = locala.ov();
+          localam.Yy = locala.pi();
           return 0;
         }
-        localam.WE = locala.ot();
+        localam.Yz = locala.pg();
         return 0;
       }
       return -1;

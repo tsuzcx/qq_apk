@@ -1,18 +1,18 @@
 package com.tencent.mm.loader.g.a;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.mm.loader.h.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg;", "Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;", "()V", "retryCount", "", "(I)V", "retryTime", "(II)V", "MAX_URL_SIZE", "mRetryMap", "Lcom/tencent/mm/loader/model/MMLRUMap;", "", "Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg$RecentDownInfo;", "canRetry", "", "task", "Lcom/tencent/mm/loader/loader/IWorkTask;", "RecentDownInfo", "libimageloader_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg;", "Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;", "()V", "retryCount", "", "(I)V", "retryTime", "(II)V", "MAX_URL_SIZE", "mRetryMap", "Lcom/tencent/mm/loader/model/MMLRUMap;", "", "Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg$RecentDownInfo;", "canRetry", "", "task", "Lcom/tencent/mm/loader/loader/IWorkTask;", "RecentDownInfo", "libimageloader_release"})
 public final class a
   implements c
 {
-  private final d<String, a.a> eOy;
-  private final int ePD;
-  private final int ePE;
+  private final d<String, a> gkb;
+  private final int gli;
+  private final int glj;
   private final int retryCount;
   
   public a()
@@ -20,46 +20,65 @@ public final class a
     this(5);
   }
   
+  public a(byte paramByte)
+  {
+    this(2147483647);
+  }
+  
   public a(int paramInt)
   {
     this.retryCount = paramInt;
-    this.ePE = 2147483647;
-    this.ePD = 100;
-    this.eOy = new d(this.ePD);
+    this.glj = 2147483647;
+    this.gli = 100;
+    this.gkb = new d(this.gli);
   }
   
   public final boolean a(com.tencent.mm.loader.g.c paramc)
   {
-    j.q(paramc, "task");
-    if (this.eOy.Z(paramc.Oy()))
+    k.h(paramc, "task");
+    if (this.gkb.aN(paramc.abi()))
     {
-      long l = bo.aox();
-      a.a locala2 = (a.a)this.eOy.Y(paramc.Oy());
-      if ((locala2.ePG >= this.retryCount) && (l - locala2.ePF < this.ePE))
+      long l = bt.aGK();
+      a locala2 = (a)this.gkb.aM(paramc.abi());
+      if ((locala2.gll >= this.retryCount) && (l - locala2.glk < this.glj))
       {
-        ab.w("DefaultRetrySg", "check block by recentdown: " + paramc.Oy() + " count " + locala2.ePG + "  time: " + (l - locala2.ePF));
+        ad.w("DefaultRetrySg", "check block by recentdown: " + paramc.abi() + " count " + locala2.gll + "  time: " + (l - locala2.glk));
         return false;
       }
-      a.a locala1 = locala2;
-      if (l - locala2.ePF > this.ePE)
+      a locala1 = locala2;
+      if (l - locala2.glk > this.glj)
       {
-        ab.v("DefaultRetrySg", "reset: " + paramc.Oy());
-        locala1 = new a.a(this, l, 0);
+        ad.v("DefaultRetrySg", "reset: " + paramc.abi());
+        locala1 = new a(l, 0);
       }
-      locala1.ePG += 1;
-      locala1.ePF = l;
-      this.eOy.put(paramc.Oy(), locala1);
+      locala1.gll += 1;
+      locala1.glk = l;
+      this.gkb.put(paramc.abi(), locala1);
     }
     for (;;)
     {
       return true;
-      this.eOy.put(paramc.Oy(), new a.a(this, bo.aox(), 1));
+      this.gkb.put(paramc.abi(), new a(bt.aGK(), 1));
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg$RecentDownInfo;", "", "lastTime", "", "tryCount", "", "(Lcom/tencent/mm/loader/loader/cfg/DefaultRetrySg;JI)V", "getLastTime", "()J", "setLastTime", "(J)V", "getTryCount", "()I", "setTryCount", "(I)V", "libimageloader_release"})
+  public final class a
+  {
+    long glk;
+    int gll;
+    
+    public a(int paramInt)
+    {
+      this.glk = ???;
+      int i;
+      this.gll = i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.g.a.a
  * JD-Core Version:    0.7.0.1
  */

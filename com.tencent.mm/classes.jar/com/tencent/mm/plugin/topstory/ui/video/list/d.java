@@ -10,48 +10,46 @@ import com.tencent.mm.plugin.topstory.ui.video.f;
 import com.tencent.mm.plugin.topstory.ui.video.l;
 import com.tencent.mm.plugin.topstory.ui.video.o;
 import com.tencent.mm.plugin.topstory.ui.video.r;
-import com.tencent.mm.sdk.platformtools.ab;
 
 public final class d
   extends com.tencent.mm.plugin.topstory.ui.video.d
 {
   private static View e(b paramb)
   {
-    AppMethodBeat.i(2026);
+    AppMethodBeat.i(126420);
     int i = 0;
     while (i < paramb.getRecyclerView().getChildCount())
     {
       View localView = paramb.getRecyclerView().getChildAt(i);
-      RecyclerView.v localv = paramb.getRecyclerView().bb(localView);
-      if ((localView.getTag() != null) && (localView.getTag().equals("video")) && (localView.getTop() > 0) && (localv.jN() >= 0))
+      RecyclerView.v localv = paramb.getRecyclerView().bh(localView);
+      if ((localView.getTag() != null) && (localView.getTag().equals("video")) && (localView.getTop() > 0) && (localv.ln() >= 0))
       {
-        AppMethodBeat.o(2026);
+        AppMethodBeat.o(126420);
         return localView;
       }
-      ab.i("MicroMsg.TopStory.TopStoryHItemViewController", "findTargetPlayView index:%s, top:%s, pos:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(localView.getTop()), Integer.valueOf(localv.jN()) });
       i += 1;
     }
-    AppMethodBeat.o(2026);
+    AppMethodBeat.o(126420);
     return null;
   }
   
   public static RecyclerView.v f(b paramb)
   {
-    AppMethodBeat.i(2027);
+    AppMethodBeat.i(126421);
     View localView = e(paramb);
     if (localView != null)
     {
-      paramb = paramb.getRecyclerView().bb(localView);
-      AppMethodBeat.o(2027);
+      paramb = paramb.getRecyclerView().bh(localView);
+      AppMethodBeat.o(126421);
       return paramb;
     }
-    AppMethodBeat.o(2027);
+    AppMethodBeat.o(126421);
     return null;
   }
   
   public final void a(b paramb)
   {
-    AppMethodBeat.i(2023);
+    AppMethodBeat.i(126417);
     RecyclerView localRecyclerView = paramb.getRecyclerView();
     Object localObject = f(paramb);
     int i;
@@ -60,52 +58,52 @@ public final class d
     {
       localObject = (h)localObject;
       if (localObject == null) {
-        break label179;
+        break label177;
       }
-      i = ((h)localObject).cJb();
-      if ((i != paramb.cJk()) && (paramb.cJh().tjS)) {
-        paramb.cJh().stopPlay();
+      i = ((h)localObject).dOD();
+      if ((i != paramb.dOM()) && (paramb.dOJ().yQs)) {
+        paramb.dOJ().stopPlay();
       }
-      paramb.cJa();
+      paramb.dOC();
       j = 0;
-      label85:
+      label84:
       if (j >= localRecyclerView.getChildCount()) {
-        break label200;
+        break label198;
       }
       localObject = localRecyclerView.getChildAt(j);
       if (((View)localObject).getTag() != null)
       {
-        localObject = (h)paramb.getRecyclerView().bb((View)localObject);
-        if (((h)localObject).cJb() != i) {
-          break label184;
+        localObject = (h)paramb.getRecyclerView().bh((View)localObject);
+        if (((h)localObject).dOD() != i) {
+          break label182;
         }
-        ((h)localObject).cKu();
-        ((h)localObject).cIZ();
-        if (!paramb.cJh().tjS) {
-          ((h)localObject).tlw.cJz();
+        ((h)localObject).dQa();
+        ((h)localObject).dOB();
+        if (!paramb.dOJ().yQs) {
+          ((h)localObject).ySj.dPa();
         }
       }
     }
     for (;;)
     {
       j += 1;
-      break label85;
-      AppMethodBeat.o(2023);
+      break label84;
+      AppMethodBeat.o(126417);
       return;
-      label179:
+      label177:
       i = -1;
       break;
-      label184:
-      ((h)localObject).cKt();
-      ((h)localObject).tlw.cJA();
+      label182:
+      ((h)localObject).dPZ();
+      ((h)localObject).ySj.dPb();
     }
-    label200:
-    AppMethodBeat.o(2023);
+    label198:
+    AppMethodBeat.o(126417);
   }
   
   public final void a(b paramb, int paramInt)
   {
-    AppMethodBeat.i(2025);
+    AppMethodBeat.i(126419);
     int i = 0;
     View localView1 = null;
     View localView2;
@@ -117,47 +115,47 @@ public final class d
       }
       localView1 = paramb.getRecyclerView().getChildAt(i);
       localView2 = localView1;
-      if (RecyclerView.bq(localView1) == paramInt) {
+      if (RecyclerView.bw(localView1) == paramInt) {
         break;
       }
       i += 1;
     }
     if (localView2 != null)
     {
-      paramInt = paramb.cJj().bh(localView2);
-      i = paramb.cJp();
+      paramInt = paramb.dOL().bn(localView2);
+      i = paramb.dOS();
       paramb.getRecyclerView().a(0, paramInt - i, null);
     }
-    AppMethodBeat.o(2025);
+    AppMethodBeat.o(126419);
   }
   
   public final void b(b paramb)
   {
-    AppMethodBeat.i(2024);
+    AppMethodBeat.i(126418);
     Object localObject = f(paramb);
     if ((localObject instanceof h))
     {
       localObject = (h)localObject;
-      if (!paramb.cJh().tjS)
+      if (!paramb.dOJ().yQs)
       {
-        if (!paramb.cJc().isConnected()) {
-          break label89;
+        if (!paramb.dOE().isConnected()) {
+          break label86;
         }
-        ((h)localObject).mA(true);
+        ((h)localObject).rf(true);
       }
     }
     for (;;)
     {
-      ((h)localObject).cIZ();
-      paramb.GA(((h)localObject).cJb());
-      paramb.cJd().cKd();
-      AppMethodBeat.o(2024);
+      ((h)localObject).dOB();
+      paramb.Pi(((h)localObject).dOD());
+      paramb.dOF().dPI();
+      AppMethodBeat.o(126418);
       return;
-      AppMethodBeat.o(2024);
+      AppMethodBeat.o(126418);
       return;
-      label89:
-      ((h)localObject).tlw.cJD();
-      paramb.cJh().stopPlay();
+      label86:
+      ((h)localObject).ySj.dPe();
+      paramb.dOJ().stopPlay();
     }
   }
 }

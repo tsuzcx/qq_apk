@@ -6,19 +6,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 {
   static
   {
-    AppMethodBeat.i(145747);
-    smb = new a("AVAILABLE", 0);
-    smc = new a("ATTACHING", 1);
-    smd = new a("PLAYING", 2);
-    sme = new a[] { smb, smc, smd };
-    AppMethodBeat.o(145747);
+    AppMethodBeat.i(100387);
+    xWk = new a("AVAILABLE", 0);
+    xWl = new a("ATTACHING", 1);
+    xWm = new a("PLAYING", 2);
+    xWn = new a[] { xWk, xWl, xWm };
+    AppMethodBeat.o(100387);
   }
   
   private SnsTimelineVideoView$a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.video.SnsTimelineVideoView.a
  * JD-Core Version:    0.7.0.1
  */

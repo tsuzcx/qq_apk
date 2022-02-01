@@ -1,58 +1,60 @@
 package com.tencent.mm.plugin.topstory.a;
 
-import com.tencent.mm.protocal.protobuf.cku;
+import com.tencent.mm.protocal.protobuf.dcv;
 
 public abstract interface e
 {
-  public abstract void Gv(int paramInt);
+  public abstract void Pc(int paramInt);
   
   public abstract void a(e.a parama);
   
   public abstract void b(e.a parama);
   
-  public abstract boolean cHX();
+  public abstract int dNA();
   
-  public abstract boolean cHY();
+  public abstract dcv dNC();
   
-  public abstract cku cHZ();
+  public abstract dcv dND();
   
-  public abstract void cIa();
+  public abstract boolean dNE();
   
-  public abstract boolean cId();
+  public abstract boolean dNH();
   
-  public abstract int cIe();
+  public abstract String dNI();
   
-  public abstract cku cIg();
+  public abstract void dNJ();
   
-  public abstract cku cIh();
+  public abstract String dNK();
   
-  public abstract boolean cIi();
+  public abstract long dNL();
   
-  public abstract boolean cIl();
+  public abstract String dNM();
   
-  public abstract String cIm();
+  public abstract void dNN();
   
-  public abstract void cIn();
+  public abstract boolean dNO();
   
-  public abstract String cIo();
+  public abstract boolean dNP();
   
-  public abstract long cIp();
+  public abstract boolean dNr();
   
-  public abstract String cIq();
+  public abstract boolean dNs();
   
-  public abstract void cIr();
+  public abstract dcv dNt();
   
-  public abstract boolean cIs();
+  public abstract void dNu();
   
-  public abstract boolean cIt();
+  public abstract dcv dNx();
+  
+  public abstract boolean dNz();
   
   public abstract void h(long paramLong, int paramInt, boolean paramBoolean);
   
-  public abstract void na(long paramLong);
+  public abstract void ub(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.e
  * JD-Core Version:    0.7.0.1
  */

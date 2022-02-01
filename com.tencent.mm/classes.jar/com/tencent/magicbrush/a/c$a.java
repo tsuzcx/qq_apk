@@ -7,61 +7,61 @@ final class c$a
 {
   public final void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115860);
+    AppMethodBeat.i(139961);
     if (paramVarArgs != null) {}
     try
     {
       if (paramVarArgs.length > 0) {
         String.format(paramString2, paramVarArgs);
       }
-      AppMethodBeat.o(115860);
+      AppMethodBeat.o(139961);
       return;
     }
     catch (Exception paramString1)
     {
-      AppMethodBeat.o(115860);
+      AppMethodBeat.o(139961);
     }
   }
   
   public final void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115863);
+    AppMethodBeat.i(139964);
     if (paramVarArgs != null) {}
     try
     {
       if (paramVarArgs.length > 0) {
         String.format(paramString2, paramVarArgs);
       }
-      AppMethodBeat.o(115863);
+      AppMethodBeat.o(139964);
       return;
     }
     catch (Exception paramString1)
     {
-      AppMethodBeat.o(115863);
+      AppMethodBeat.o(139964);
     }
   }
   
   public final void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115861);
+    AppMethodBeat.i(139962);
     if (paramVarArgs != null) {}
     try
     {
       if (paramVarArgs.length > 0) {
         String.format(paramString2, paramVarArgs);
       }
-      AppMethodBeat.o(115861);
+      AppMethodBeat.o(139962);
       return;
     }
     catch (Exception paramString1)
     {
-      AppMethodBeat.o(115861);
+      AppMethodBeat.o(139962);
     }
   }
   
   public final void printStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115864);
+    AppMethodBeat.i(139965);
     if (paramThrowable != null)
     {
       if (paramVarArgs != null) {}
@@ -70,53 +70,35 @@ final class c$a
         if (paramVarArgs.length > 0) {
           String.format(paramString2, paramVarArgs);
         }
-        AppMethodBeat.o(115864);
+        AppMethodBeat.o(139965);
         return;
       }
       catch (Exception paramString1) {}
     }
-    AppMethodBeat.o(115864);
-  }
-  
-  public final void v(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(115859);
-    if (paramVarArgs != null) {}
-    try
-    {
-      if (paramVarArgs.length > 0) {
-        String.format(paramString2, paramVarArgs);
-      }
-      AppMethodBeat.o(115859);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      AppMethodBeat.o(115859);
-    }
+    AppMethodBeat.o(139965);
   }
   
   public final void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115862);
+    AppMethodBeat.i(139963);
     if (paramVarArgs != null) {}
     try
     {
       if (paramVarArgs.length > 0) {
         String.format(paramString2, paramVarArgs);
       }
-      AppMethodBeat.o(115862);
+      AppMethodBeat.o(139963);
       return;
     }
     catch (Exception paramString1)
     {
-      AppMethodBeat.o(115862);
+      AppMethodBeat.o(139963);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.magicbrush.a.c.a
  * JD-Core Version:    0.7.0.1
  */

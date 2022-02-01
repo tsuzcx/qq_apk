@@ -2,20 +2,20 @@ package android.support.v7.app;
 
 final class h
 {
-  private static h Qh;
-  public long Qi;
-  public long Qj;
+  private static h Xg;
+  public long Xh;
+  public long Xi;
   public int state;
   
-  static h eT()
+  static h gm()
   {
-    if (Qh == null) {
-      Qh = new h();
+    if (Xg == null) {
+      Xg = new h();
     }
-    return Qh;
+    return Xg;
   }
   
-  public final void a(long paramLong, double paramDouble1, double paramDouble2)
+  public final void b(long paramLong, double paramDouble1, double paramDouble2)
   {
     float f1 = (float)(paramLong - 946728000000L) / 86400000.0F;
     float f2 = 6.24006F + 0.01720197F * f1;
@@ -33,21 +33,21 @@ final class h
     if (paramDouble1 >= 1.0D)
     {
       this.state = 1;
-      this.Qi = -1L;
-      this.Qj = -1L;
+      this.Xh = -1L;
+      this.Xi = -1L;
       return;
     }
     if (paramDouble1 <= -1.0D)
     {
       this.state = 0;
-      this.Qi = -1L;
-      this.Qj = -1L;
+      this.Xh = -1L;
+      this.Xi = -1L;
       return;
     }
     f1 = (float)(Math.acos(paramDouble1) / 6.283185307179586D);
-    this.Qi = (Math.round((f1 + paramDouble2) * 86400000.0D) + 946728000000L);
-    this.Qj = (Math.round((paramDouble2 - f1) * 86400000.0D) + 946728000000L);
-    if ((this.Qj < paramLong) && (this.Qi > paramLong))
+    this.Xh = (Math.round((f1 + paramDouble2) * 86400000.0D) + 946728000000L);
+    this.Xi = (Math.round((paramDouble2 - f1) * 86400000.0D) + 946728000000L);
+    if ((this.Xi < paramLong) && (this.Xh > paramLong))
     {
       this.state = 0;
       return;

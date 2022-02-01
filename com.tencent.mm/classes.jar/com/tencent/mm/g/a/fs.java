@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class fs
   extends b
 {
-  public fs.a ctY;
-  public b ctZ;
+  public a dix;
+  public b diy;
   
   public fs()
   {
@@ -16,22 +16,29 @@ public final class fs
   
   private fs(byte paramByte)
   {
-    AppMethodBeat.i(70188);
-    this.ctY = new fs.a();
-    this.ctZ = new b();
-    this.ymq = false;
+    AppMethodBeat.i(116020);
+    this.dix = new a();
+    this.diy = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70188);
+    AppMethodBeat.o(116020);
+  }
+  
+  public static final class a
+  {
+    public int op;
+    public String username;
   }
   
   public static final class b
   {
-    public long cpO = 0L;
+    public boolean dew = false;
+    public String fileName;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.fs
  * JD-Core Version:    0.7.0.1
  */

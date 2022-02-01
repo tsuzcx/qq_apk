@@ -1,30 +1,14 @@
 package com.tencent.mm.vending.h;
 
-import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.Looper;
 
-public final class a
+public abstract interface a
 {
-  private static a aan = new a();
-  private HandlerThread aal = new HandlerThread("Vending-HeavyWorkThread", 10);
-  private Handler aam;
+  public abstract void b(Runnable paramRunnable, long paramLong);
   
-  private a()
-  {
-    this.aal.start();
-    this.aam = new Handler(this.aal.getLooper());
-  }
+  public abstract Looper getLooper();
   
-  public static a lI()
-  {
-    return aan;
-  }
-  
-  public final Looper getLooper()
-  {
-    return this.aal.getLooper();
-  }
+  public abstract void n(Runnable paramRunnable);
 }
 
 

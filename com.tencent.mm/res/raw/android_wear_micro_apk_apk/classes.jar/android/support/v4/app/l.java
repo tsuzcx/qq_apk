@@ -1,12 +1,29 @@
 package android.support.v4.app;
 
-public final class l
-  extends RuntimeException
+import android.animation.Animator;
+import android.view.View;
+
+final class l
 {
-  public l(String paramString, Exception paramException)
-  {
-    super(paramString, paramException);
-  }
+  bb dA = null;
+  bb dB = null;
+  boolean dC;
+  n dD;
+  boolean dE;
+  View dm;
+  Animator dn;
+  int jdField_do;
+  int dp;
+  int dq;
+  int dr;
+  private Object ds = null;
+  private Object dt = Fragment.cr;
+  private Object du = null;
+  private Object dv = Fragment.cr;
+  private Object dw = null;
+  private Object dx = Fragment.cr;
+  private Boolean dy;
+  private Boolean dz;
 }
 
 

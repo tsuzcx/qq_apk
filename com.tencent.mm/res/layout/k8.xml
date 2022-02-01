@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b7q" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/h">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/rs" android:background="@null" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/gh" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/bdj" android:background="@color/bn" android:layout_width="@dimen/bk" android:layout_height="@dimen/hd" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:ellipsize="middle" android:gravity="center_vertical" android:id="@id/gas" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/uo" android:singleLine="true" style="@style/l6" />
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/km" android:ellipsize="end" android:id="@id/g1b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/uo" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/au" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/h">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/dn0" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:contentDescription="@string/uh" app:iconColor="@color/BW_70" />
+    </LinearLayout>
+</LinearLayout>

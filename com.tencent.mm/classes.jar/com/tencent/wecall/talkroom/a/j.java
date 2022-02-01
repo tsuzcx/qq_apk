@@ -1,31 +1,31 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.b.a.a.ai;
+import com.tencent.pb.common.b.a.a.a.ak;
 import com.tencent.pb.common.b.d;
-import com.tencent.pb.common.c.c;
+import com.tencent.pb.common.c.b;
 
 public final class j
   extends d
 {
-  public String nuW;
+  public String seB;
   
-  public final Object ck(byte[] paramArrayOfByte)
+  public final Object cC(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(128025);
+    AppMethodBeat.i(62530);
     if (paramArrayOfByte != null) {}
     for (;;)
     {
       try
       {
-        paramArrayOfByte = (a.ai)e.a(new a.ai(), paramArrayOfByte, paramArrayOfByte.length);
-        AppMethodBeat.o(128025);
+        paramArrayOfByte = (a.ak)e.a(new a.ak(), paramArrayOfByte, paramArrayOfByte.length);
+        AppMethodBeat.o(62530);
         return paramArrayOfByte;
       }
       catch (Exception paramArrayOfByte)
       {
-        c.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte });
+        b.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte });
         paramArrayOfByte = null;
         continue;
       }
@@ -33,7 +33,7 @@ public final class j
     }
   }
   
-  public final String dTD()
+  public final String flk()
   {
     return "CsCmd.Cmd_V_CSVoiceMemberWhisperReq";
   }
@@ -45,7 +45,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.j
  * JD-Core Version:    0.7.0.1
  */

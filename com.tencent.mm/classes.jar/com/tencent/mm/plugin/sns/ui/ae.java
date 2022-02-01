@@ -1,689 +1,273 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ap;
-import com.tencent.mm.m.g;
-import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.plugin.a.f;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.plugin.sns.model.ar;
-import com.tencent.mm.plugin.sns.model.as;
+import com.tencent.mm.g.a.ln;
+import com.tencent.mm.model.w;
+import com.tencent.mm.modelsns.d;
+import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.opensdk.modelmsg.WXMusicObject;
+import com.tencent.mm.plugin.sns.data.q;
+import com.tencent.mm.plugin.sns.k.h;
+import com.tencent.mm.plugin.sns.k.j;
+import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.az;
+import com.tencent.mm.plugin.sns.model.ba;
+import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.HashMap;
+import com.tencent.mm.protocal.protobuf.bmn;
+import com.tencent.mm.protocal.protobuf.cwk;
+import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.y;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import org.b.d.i;
 
 public final class ae
+  implements ab
 {
-  private bcs cIc;
-  private boolean clear;
-  private String crk;
-  long edG;
-  private int fDT;
-  String fVf;
-  String fVg;
-  int fVi;
-  int fVj;
-  f fVk;
-  int fVl;
-  int fVm;
-  boolean fVo;
-  int fVp;
-  private int fVq;
-  boolean fVr;
-  boolean fVs;
-  int progress;
-  HashMap<String, Integer> rJI;
-  ae.a rJJ;
-  int rJK;
-  private int rJL;
-  long rJM;
-  private long rJN;
-  private long rJO;
-  private int rJP;
-  private ae.b rJQ;
-  private final Object rJR;
-  int total;
+  private String appName;
+  String dlB;
+  MMActivity imP;
+  private c jBI;
+  boolean kQm;
+  String mediaId;
+  private View pf;
+  private TextView titleTv;
+  private int wLo;
+  private int xlZ;
+  private CdnImageView xma;
+  private TextView xmb;
+  private d xmf;
+  private String xmg;
+  private boolean xnv;
+  private boolean xnw;
+  WXMediaMessage xnx;
+  ImageView xoG;
+  private Bitmap xoH;
   
-  public ae(ae.a parama)
+  public ae(MMActivity paramMMActivity)
   {
-    AppMethodBeat.i(38451);
-    this.fVi = 0;
-    this.fVj = 0;
-    this.rJI = null;
-    this.fVp = 0;
-    this.fVr = false;
-    this.fVs = false;
-    this.rJL = 0;
-    this.clear = false;
-    this.rJR = new Object();
-    this.rJJ = parama;
-    this.fVk = new f();
-    this.rJI = new HashMap();
-    this.rJQ = new ae.b((byte)0);
-    this.rJQ.fVz = g.Nq().getInt("SnsVideoPreloadSec", 5);
-    this.rJQ.fVA = g.Nq().getInt("SnsVideoDownloadSec", 1);
-    this.rJQ.rJT = g.Nq().getInt("SnsVideoFullDownloadPercent", 101);
-    ab.i("MicroMsg.OnlineVideoViewHelper", "parseConfig preload[%d] downloadSec[%d], needFinish[%d]", new Object[] { Integer.valueOf(this.rJQ.fVz), Integer.valueOf(this.rJQ.fVA), Integer.valueOf(this.rJQ.rJT) });
-    reset();
-    this.clear = false;
-    AppMethodBeat.o(38451);
+    AppMethodBeat.i(97981);
+    this.xnx = null;
+    this.xma = null;
+    this.titleTv = null;
+    this.xmb = null;
+    this.dlB = "";
+    this.appName = "";
+    this.xnv = false;
+    this.xnw = false;
+    this.kQm = false;
+    this.xmf = null;
+    this.wLo = 1;
+    this.xmg = "";
+    this.jBI = new c() {};
+    this.imP = paramMMActivity;
+    com.tencent.mm.sdk.b.a.ESL.c(this.jBI);
+    AppMethodBeat.o(97981);
   }
   
-  private void EI(int paramInt)
+  public final boolean a(int paramInt1, int paramInt2, i parami, String paramString1, List<String> paramList1, bmn parambmn, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(155726);
-    synchronized (this.rJR)
+    AppMethodBeat.i(97985);
+    af.dtq();
+    paramString1 = az.b(this.xnx, paramString1, this.dlB, this.appName);
+    if (paramString1 == null)
     {
-      if (this.rJJ != null) {
-        this.rJJ.zi(paramInt);
-      }
-      AppMethodBeat.o(155726);
-      return;
-    }
-  }
-  
-  private boolean a(int paramInt, PInt paramPInt1, PInt paramPInt2)
-  {
-    AppMethodBeat.i(38458);
-    paramPInt1.value = Math.max(paramInt, this.fVp);
-    if (this.fVj == 1)
-    {
-      paramPInt1.value = paramInt;
-      paramPInt1.value += this.fVq;
-    }
-    if (this.fVj == 2)
-    {
-      paramPInt1.value = (paramInt - 8);
-      if (paramPInt1.value < 0) {
-        paramPInt1.value = 0;
-      }
-      paramPInt2.value = (paramPInt1.value + this.fVq + 8);
-    }
-    if ((this.fVj == 3) || (this.fVj == 4))
-    {
-      paramPInt1.value = this.fVp;
-      paramPInt2.value = (this.fVq + paramInt + 1 + this.rJQ.fVA);
-    }
-    if (paramPInt2.value >= this.fVl + 1) {
-      paramPInt2.value = (this.fVl + 1);
-    }
-    if (paramPInt2.value < paramPInt1.value)
-    {
-      paramPInt1.value += this.rJQ.fVA;
-      AppMethodBeat.o(38458);
+      ad.e("MicroMsg.MusicWidget", "packHelper == null, %s, %s", new Object[] { this.dlB, this.appName });
+      AppMethodBeat.o(97985);
       return false;
     }
-    ab.i("MicroMsg.OnlineVideoViewHelper", "calcDownloadRange range[%d, %d] playTime[%d] playStatus[%d] cache[%d, %d]", new Object[] { Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value), Integer.valueOf(paramInt), Integer.valueOf(this.fVj), Integer.valueOf(this.fVp), Integer.valueOf(this.fVq) });
-    AppMethodBeat.o(38458);
-    return true;
-  }
-  
-  private boolean cug()
-  {
-    AppMethodBeat.i(155725);
-    synchronized (this.rJR)
-    {
-      if (this.rJJ != null)
-      {
-        boolean bool = this.rJJ.ctX();
-        AppMethodBeat.o(155725);
-        return bool;
-      }
-      AppMethodBeat.o(155725);
-      return true;
+    paramPInt.value = paramString1.aTB;
+    if (paramInt3 > com.tencent.mm.plugin.sns.d.a.wzN) {
+      paramString1.Ms(4);
     }
-  }
-  
-  private void cui()
-  {
-    AppMethodBeat.i(38462);
-    this.fVo = true;
-    if (this.fVp <= 0)
-    {
-      if (this.fVm == -1)
-      {
-        this.fVj = 1;
-        AppMethodBeat.o(38462);
-        return;
-      }
-      this.fVj = 2;
-      AppMethodBeat.o(38462);
-      return;
+    paramString1.Mw(this.xlZ);
+    if (this.xnv) {
+      paramString1.Mw(5);
     }
-    ab.i("MicroMsg.OnlineVideoViewHelper", "pause by load data cdnMediaId %s, pauseByLoadDataCount %d, playStatus %d", new Object[] { this.fVf, Integer.valueOf(this.rJL), Integer.valueOf(this.fVj) });
-    this.rJO = bo.aoy();
-    if ((this.fVj != 2) && (this.fVj != 4))
+    paramLinkedList = new LinkedList();
+    if (paramList1 != null)
     {
-      this.fVq += this.rJQ.fVz;
-      this.fVq = Math.min(this.fVq, 60);
-      this.rJL += 1;
-      this.fVj = 4;
-    }
-    this.rJJ.alq();
-    AppMethodBeat.o(38462);
-  }
-  
-  private void cuj()
-  {
-    boolean bool = false;
-    AppMethodBeat.i(38463);
-    if (this.fVo)
-    {
-      if ((this.rJL == 0) && (this.rJN == 0L)) {
-        cuk();
-      }
-      for (;;)
+      new LinkedList();
+      paramPInt = w.arx();
+      paramList1 = paramList1.iterator();
+      while (paramList1.hasNext())
       {
-        ab.i("MicroMsg.OnlineVideoViewHelper", "resume by data gain.pauseByLoadDataCount %d pauseAllTime %d cdnMediaId %s", new Object[] { Integer.valueOf(this.rJL), Integer.valueOf(this.rJP), this.fVf });
-        this.fVj = 3;
-        if (this.fVm == -1) {
-          break;
-        }
-        EI(this.fVm);
-        this.fVm = -1;
-        this.fVo = false;
-        AppMethodBeat.o(38463);
-        return;
-        if (this.rJO > 0L) {
-          this.rJP = ((int)(this.rJP + bo.hl(this.rJO)));
+        paramString2 = (String)paramList1.next();
+        if (!paramPInt.contains(paramString2))
+        {
+          cwk localcwk = new cwk();
+          localcwk.mAQ = paramString2;
+          paramLinkedList.add(localcwk);
         }
       }
-      if (cug()) {}
-      for (;;)
-      {
-        this.fVo = bool;
-        AppMethodBeat.o(38463);
-        return;
-        bool = true;
-      }
     }
-    if (this.fVj != 3)
-    {
-      ab.i("MicroMsg.OnlineVideoViewHelper", "start to play video playStatus[%d]", new Object[] { Integer.valueOf(this.fVj) });
-      if (!cug()) {
-        break label211;
-      }
+    paramString1.aM(paramLinkedList);
+    if (parami != null) {
+      paramString1.iI(parami.token, parami.DNx);
     }
-    label211:
-    for (int i = 3;; i = this.fVj)
-    {
-      this.fVj = i;
-      AppMethodBeat.o(38463);
-      return;
-    }
-  }
-  
-  private Object[] cul()
-  {
-    AppMethodBeat.i(38465);
-    Object[] arrayOfObject = new Object[14];
-    int n = 0;
-    int m = 0;
-    int k = 0;
-    int j = 0;
-    String str4 = "";
-    long l = 0L;
-    String str3 = "";
-    String str2 = "";
-    String str1 = "";
-    int i = 0;
-    if (this.rJJ != null)
-    {
-      n = this.rJJ.getPlayVideoDuration();
-      m = this.rJJ.getUiStayTime();
-      k = this.rJJ.getPlayErrorCode();
-      j = this.rJJ.getRptStruct().scene;
-      str4 = this.rJJ.getRptStruct().cpW;
-      l = this.rJJ.getRptStruct().rJq;
-      str3 = this.rJJ.getRptStruct().czw;
-      str2 = this.rJJ.getRptStruct().czt;
-      str1 = this.rJJ.getRptStruct().filePath;
-      i = this.rJJ.getPlayVideoDurationByResume();
-    }
-    arrayOfObject[0] = Integer.valueOf(n);
-    if (this.rJN <= 0L) {
-      this.rJN = bo.aoy();
-    }
-    int i1 = (int)(this.rJN - this.edG);
-    n = i1;
-    if (i1 <= 0) {
-      n = 0;
-    }
-    arrayOfObject[1] = Integer.valueOf(n);
-    if (this.rJM <= 0L) {
-      this.rJM = bo.aoy();
-    }
-    i1 = (int)(this.rJM - this.edG);
-    n = i1;
-    if (i1 <= 0) {
-      n = 0;
-    }
-    arrayOfObject[2] = Integer.valueOf(n);
-    arrayOfObject[3] = Integer.valueOf(this.rJL);
-    if (this.rJL > 0)
-    {
-      if (this.rJP == 0) {
-        this.rJP = ((int)(this.rJP + bo.hl(this.rJO)));
-      }
-      arrayOfObject[4] = Integer.valueOf(this.rJP / this.rJL);
+    paramString1.a(parambmn);
+    if (paramBoolean) {
+      paramString1.Mx(1);
     }
     for (;;)
     {
-      arrayOfObject[5] = Integer.valueOf(m);
-      arrayOfObject[6] = Integer.valueOf(k);
-      arrayOfObject[7] = Integer.valueOf(j);
-      arrayOfObject[8] = str4;
-      arrayOfObject[9] = Long.valueOf(l);
-      arrayOfObject[10] = str3;
-      arrayOfObject[11] = str2;
-      arrayOfObject[12] = str1;
-      arrayOfObject[13] = Integer.valueOf(i);
-      AppMethodBeat.o(38465);
-      return arrayOfObject;
-      arrayOfObject[4] = Integer.valueOf(0);
-    }
-  }
-  
-  private static void cum()
-  {
-    AppMethodBeat.i(38467);
-    h.qsU.idkeyStat(354L, 203L, 1L, false);
-    AppMethodBeat.o(38467);
-  }
-  
-  private boolean fG(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(38460);
-    PInt localPInt1 = new PInt();
-    PInt localPInt2 = new PInt();
-    try
-    {
-      if (this.fVk.a(paramInt1, paramInt2, localPInt1, localPInt2))
+      paramString1.fq(paramList2).Mu(paramInt1);
+      paramString1.g(null, null, null, paramInt4, paramInt5);
+      paramString1.bR(this.wLo, this.xmg);
+      if ((this.xnw) && (this.xnx != null))
       {
-        localPInt2.value += 81920;
-        bool = o.alF().isVideoDataAvailable(this.fVf, localPInt1.value, localPInt2.value);
-        if (bool) {
-          break label327;
-        }
-        if (!this.rJI.containsKey(this.fVf + 0 + "_-1"))
-        {
-          String str = this.fVf + localPInt1.value + "_" + localPInt2.value;
-          ab.i("MicroMsg.OnlineVideoViewHelper", "request video data [%d, %d] isRequestNow[%b] isSeek[%b]", new Object[] { Integer.valueOf(localPInt1.value), Integer.valueOf(localPInt2.value), Boolean.valueOf(this.fVs), Boolean.FALSE });
-          if ((this.rJI.containsKey(str)) || (this.fVs)) {
-            break label308;
-          }
-          this.fVs = true;
-          o.alF();
-          com.tencent.mm.al.e.r(this.fVf, localPInt1.value, localPInt2.value);
-          this.rJI.put(str, Integer.valueOf(paramInt2));
-        }
-        AppMethodBeat.o(38460);
-        return bool;
+        paramString1.aoT(this.xnx.mediaTagName);
+        paramString1.au(this.dlB, this.xnx.messageExt, this.xnx.messageAction);
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      paramInt1 = paramString1.commit();
+      if (this.xmf != null)
       {
-        ab.e("MicroMsg.OnlineVideoViewHelper", "check video data error: " + localException.toString());
-        boolean bool = false;
-        continue;
-        label308:
-        ab.i("MicroMsg.OnlineVideoViewHelper", "already request video : ".concat(String.valueOf(localException)));
-        continue;
-        label327:
-        ab.i("MicroMsg.OnlineVideoViewHelper", "already had video data.");
+        this.xmf.oG(paramInt1);
+        h.wRM.c(this.xmf);
       }
+      af.dtq().drS();
+      this.imP.finish();
+      AppMethodBeat.o(97985);
+      return false;
+      paramString1.Mx(0);
     }
   }
   
-  private static void lx(boolean paramBoolean)
+  public final void af(Bundle paramBundle)
   {
-    AppMethodBeat.i(38466);
-    if (paramBoolean)
+    AppMethodBeat.i(97982);
+    this.xnx = new SendMessageToWX.Req(this.imP.getIntent().getBundleExtra("Ksnsupload_timeline")).message;
+    this.mediaId = this.imP.getIntent().getStringExtra("Ksnsupload_musicid");
+    this.xmf = d.w(this.imP.getIntent());
+    this.dlB = bt.by(this.imP.getIntent().getStringExtra("Ksnsupload_appid"), "");
+    this.appName = bt.by(this.imP.getIntent().getStringExtra("Ksnsupload_appname"), "");
+    this.xnv = this.imP.getIntent().getBooleanExtra("KThrid_app", false);
+    this.xnw = this.imP.getIntent().getBooleanExtra("KSnsAction", false);
+    this.xlZ = this.imP.getIntent().getIntExtra("Ksnsupload_source", 0);
+    if (this.imP.getIntent().getBooleanExtra("SendAppMessageWrapper_TokenValid", true)) {}
+    for (this.wLo = 1;; this.wLo = 0)
     {
-      h.qsU.idkeyStat(354L, 201L, 1L, false);
-      AppMethodBeat.o(38466);
+      this.xmg = bt.by(this.imP.getIntent().getStringExtra("SendAppMessageWrapper_PkgName"), "");
+      AppMethodBeat.o(97982);
       return;
     }
-    h.qsU.idkeyStat(354L, 202L, 1L, false);
-    AppMethodBeat.o(38466);
   }
   
-  private boolean mk(int paramInt)
-  {
-    boolean bool3 = false;
-    bool1 = false;
-    AppMethodBeat.i(38459);
-    if (this.fVi == 3)
-    {
-      AppMethodBeat.o(38459);
-      return true;
-    }
-    if ((this.fVp - paramInt <= 1) && (this.fVp < this.fVl))
-    {
-      AppMethodBeat.o(38459);
-      return false;
-    }
-    PInt localPInt1 = new PInt();
-    PInt localPInt2 = new PInt();
-    bool2 = bool3;
-    try
-    {
-      if (this.fVk.a(paramInt, paramInt + 1, localPInt1, localPInt2))
-      {
-        bool2 = bool3;
-        bool3 = o.alF().isVideoDataAvailable(this.fVf, localPInt1.value, localPInt2.value);
-        bool1 = bool3;
-        if (!bool3)
-        {
-          bool2 = bool3;
-          this.fVp = paramInt;
-          bool1 = bool3;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.OnlineVideoViewHelper", "check video data error: " + localException.toString());
-        bool1 = bool2;
-      }
-    }
-    AppMethodBeat.o(38459);
-    return bool1;
-  }
+  public final void ag(Bundle paramBundle) {}
   
-  private void reset()
+  public final boolean dyU()
   {
-    AppMethodBeat.i(38453);
-    this.fVf = "";
-    this.fVm = -1;
-    this.fVp = 0;
-    this.fVl = 0;
-    this.rJL = 0;
-    this.fVj = 0;
-    this.fVi = 0;
-    this.fVo = false;
-    this.fVr = false;
-    this.fVs = false;
-    this.rJI.clear();
-    this.cIc = null;
-    this.fDT = 0;
-    this.crk = null;
-    if (this.rJQ != null) {
-      this.fVq = this.rJQ.fVz;
-    }
-    this.rJM = 0L;
-    this.edG = 0L;
-    this.rJP = 0;
-    this.rJO = 0L;
-    this.rJN = 0L;
-    AppMethodBeat.o(38453);
-  }
-  
-  public final boolean a(bcs parambcs, int paramInt1, String paramString, boolean paramBoolean, int paramInt2)
-  {
-    AppMethodBeat.i(38454);
-    if (this.clear)
-    {
-      AppMethodBeat.o(38454);
-      return false;
-    }
-    this.cIc = parambcs;
-    this.fDT = paramInt1;
-    this.crk = paramString;
-    this.fVg = ar.D(parambcs);
-    this.fVf = ar.be(paramInt1, parambcs.Url);
-    if ((bo.isNullOrNil(this.fVg)) || (bo.isNullOrNil(this.fVf)))
-    {
-      AppMethodBeat.o(38454);
-      return false;
-    }
-    ab.i("MicroMsg.OnlineVideoViewHelper", "start online download video %s isPlayMode %b", new Object[] { this.fVf, Boolean.valueOf(paramBoolean) });
-    ag.cpd().a(parambcs, paramInt1, paramString, paramBoolean, true, paramInt2);
-    this.fVi = 1;
-    this.edG = bo.aoy();
-    lx(paramBoolean);
-    AppMethodBeat.o(38454);
     return true;
   }
   
-  public final boolean acc(String paramString)
+  public final View dyV()
   {
-    AppMethodBeat.i(38456);
-    boolean bool = bo.isEqual(this.fVf, paramString);
-    AppMethodBeat.o(38456);
+    AppMethodBeat.i(97984);
+    this.pf = y.js(this.imP).inflate(2131495817, null);
+    this.xma = ((CdnImageView)this.pf.findViewById(2131300948));
+    this.titleTv = ((TextView)this.pf.findViewById(2131305950));
+    this.xmb = ((TextView)this.pf.findViewById(2131304202));
+    this.pf.findViewById(2131305185).setVisibility(8);
+    this.titleTv.setText(this.xnx.title);
+    if (this.xnx.thumbData != null) {
+      this.xoH = com.tencent.mm.sdk.platformtools.f.cl(this.xnx.thumbData);
+    }
+    this.xma.setImageBitmap(this.xoH);
+    if (!bt.isNullOrNil(this.xnx.description))
+    {
+      this.xmb.setText(this.xnx.description);
+      this.xmb.setVisibility(0);
+      this.xoG = ((ImageView)this.pf.findViewById(2131305185));
+      this.xoG.setVisibility(0);
+      if ((!com.tencent.mm.az.a.azF()) || (!this.kQm)) {
+        break label273;
+      }
+      this.xoG.setImageResource(2131233393);
+    }
+    for (;;)
+    {
+      this.xoG.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(97980);
+          if (com.tencent.mm.az.a.azF())
+          {
+            ae.this.dzq();
+            AppMethodBeat.o(97980);
+            return;
+          }
+          paramAnonymousView = ae.this;
+          if (paramAnonymousView.xnx == null)
+          {
+            ad.w("MicroMsg.MusicWidget", "doBeingPlayMusic: but item is null");
+            AppMethodBeat.o(97980);
+            return;
+          }
+          new ap(paramAnonymousView.imP.getMainLooper()).post(new ae.3(paramAnonymousView));
+          AppMethodBeat.o(97980);
+        }
+      });
+      q.b(this.xma, this.imP);
+      View localView = this.pf;
+      AppMethodBeat.o(97984);
+      return localView;
+      this.xmb.setVisibility(8);
+      break;
+      label273:
+      this.xoG.setImageResource(2131233395);
+    }
+  }
+  
+  public final boolean dyW()
+  {
+    AppMethodBeat.i(97986);
+    if ((this.xoH != null) && (!this.xoH.isRecycled())) {
+      this.xoH.recycle();
+    }
+    com.tencent.mm.sdk.b.a.ESL.d(this.jBI);
+    if ((com.tencent.mm.az.a.azF()) && (this.kQm)) {
+      dzq();
+    }
+    boolean bool = com.tencent.mm.az.a.azF();
+    AppMethodBeat.o(97986);
     return bool;
   }
   
-  public final void clear()
+  final void dzq()
   {
-    AppMethodBeat.i(38452);
-    ab.i("MicroMsg.OnlineVideoViewHelper", "clear");
-    this.clear = true;
-    reset();
-    synchronized (this.rJR)
+    AppMethodBeat.i(97983);
+    new ap(this.imP.getMainLooper()).post(new Runnable()
     {
-      this.rJJ = null;
-      this.fVk = null;
-      AppMethodBeat.o(38452);
-      return;
-    }
-  }
-  
-  public final boolean cuf()
-  {
-    AppMethodBeat.i(38455);
-    boolean bool;
-    if (!bo.isNullOrNil(this.fVf)) {
-      if (this.fVi == 3)
+      public final void run()
       {
-        bool = true;
-        ab.i("MicroMsg.OnlineVideoViewHelper", "stop online download video %s isFinish %b percent %d", new Object[] { this.fVf, Boolean.valueOf(bool), Integer.valueOf(this.rJK) });
-        ag.cpd().o(this.fVf, cul());
-        if ((this.rJK >= this.rJQ.rJT) && (!bool)) {
-          ag.cpd().a(this.cIc, this.fDT, this.crk, false, false, 36);
-        }
-        cum();
+        AppMethodBeat.i(97978);
+        com.tencent.mm.az.a.azD();
+        ae.this.kQm = false;
+        AppMethodBeat.o(97978);
       }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(38455);
-      return true;
-      bool = false;
-      break;
-      cun();
-    }
+    });
+    AppMethodBeat.o(97983);
   }
   
-  final void cuh()
+  public final boolean j(int paramInt, Intent paramIntent)
   {
-    AppMethodBeat.i(38461);
-    ab.i("MicroMsg.OnlineVideoViewHelper", "play offline video %s ", new Object[] { this.fVf });
-    cuk();
-    al.d(new ae.2(this));
-    AppMethodBeat.o(38461);
-  }
-  
-  final void cuk()
-  {
-    AppMethodBeat.i(38464);
-    if (this.rJN == 0L) {
-      this.rJN = bo.aoy();
-    }
-    AppMethodBeat.o(38464);
-  }
-  
-  public final void cun()
-  {
-    AppMethodBeat.i(145490);
-    Object localObject1 = cul();
-    Object localObject2 = new PInt();
-    new PInt().value = 0;
-    ((PInt)localObject2).value = 0;
-    int i = at.gV(ah.getContext());
-    int j = ((Integer)localObject1[1]).intValue();
-    int k = ((Integer)localObject1[2]).intValue();
-    int m = ((Integer)localObject1[3]).intValue();
-    int n = ((Integer)localObject1[4]).intValue();
-    int i1 = ((Integer)localObject1[5]).intValue();
-    int i2 = ((Integer)localObject1[6]).intValue();
-    int i3 = ((Integer)localObject1[7]).intValue();
-    localObject2 = (String)localObject1[8];
-    int i4 = ((Long)localObject1[9]).intValue();
-    String str1 = (String)localObject1[10];
-    String str2 = (String)localObject1[11];
-    String str3 = (String)localObject1[12];
-    long l1 = ((Integer)localObject1[13]).intValue() * 1000;
-    long l2 = com.tencent.mm.vfs.e.avI(str3);
-    localObject1 = new ap();
-    ((ap)localObject1).cTb = i;
-    ((ap)localObject1).cQH = 0L;
-    ((ap)localObject1).cQI = 0L;
-    ((ap)localObject1).cSU = l2;
-    ((ap)localObject1).fV(str1);
-    ((ap)localObject1).fU(str2);
-    ((ap)localObject1).cSW = l1;
-    ((ap)localObject1).cSX = j;
-    ((ap)localObject1).cSY = k;
-    ((ap)localObject1).cSZ = m;
-    ((ap)localObject1).cTa = n;
-    ((ap)localObject1).cTu = i1;
-    ((ap)localObject1).cTv = i2;
-    ((ap)localObject1).cUW = i3;
-    ((ap)localObject1).fW((String)localObject2);
-    ((ap)localObject1).cUY = i4;
-    ((ap)localObject1).ake();
-    AppMethodBeat.o(145490);
-  }
-  
-  final void lw(boolean paramBoolean)
-  {
-    AppMethodBeat.i(155727);
-    synchronized (this.rJR)
-    {
-      if (this.rJJ != null) {
-        this.rJJ.bw(this.fVg, paramBoolean);
-      }
-      AppMethodBeat.o(155727);
-      return;
-    }
-  }
-  
-  public final boolean mj(int paramInt)
-  {
-    AppMethodBeat.i(38457);
-    if (this.clear)
-    {
-      AppMethodBeat.o(38457);
-      return false;
-    }
-    if (this.fVm != -1) {}
-    for (int i = this.fVm;; i = paramInt)
-    {
-      boolean bool1 = true;
-      boolean bool2 = true;
-      ab.i("MicroMsg.OnlineVideoViewHelper", "check timer playCurrPos %d playTime %d cachePlayTime %d timeDuration %d playStatus %d downloadStatus %d cdnMediaId %s firPlayWait{%d} isPrepareVideo[%b]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(this.fVp), Integer.valueOf(this.fVl), Integer.valueOf(this.fVj), Integer.valueOf(this.fVi), this.fVf, Long.valueOf(this.rJN - this.edG), Boolean.valueOf(this.fVr) });
-      if (this.rJJ == null)
-      {
-        ab.i("MicroMsg.OnlineVideoViewHelper", "ui is null, checkTimer false");
-        AppMethodBeat.o(38457);
-        return false;
-      }
-      switch (this.fVi)
-      {
-      default: 
-        ab.w("MicroMsg.OnlineVideoViewHelper", "check time default.");
-        bool1 = bool2;
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(38457);
-        return bool1;
-        if (!mk(i))
-        {
-          cui();
-          bool1 = false;
-        }
-        for (;;)
-        {
-          PInt localPInt1 = new PInt();
-          PInt localPInt2 = new PInt();
-          if (!a(i, localPInt1, localPInt2)) {
-            break label360;
-          }
-          if (!fG(localPInt1.value, localPInt2.value)) {
-            break;
-          }
-          this.fVp = Math.max(this.fVp, localPInt2.value);
-          bool1 = true;
-          break;
-          cuk();
-          if (this.fVr)
-          {
-            cuj();
-          }
-          else
-          {
-            ab.i("MicroMsg.OnlineVideoViewHelper", "prepare cdnMediaId [%s]", new Object[] { this.fVf });
-            if (this.fVj == 5) {
-              this.fVj = 1;
-            }
-            lw(true);
-            this.fVr = true;
-          }
-        }
-        label360:
-        ab.d("MicroMsg.OnlineVideoViewHelper", "can not calc download.");
-        o.alF();
-        com.tencent.mm.al.e.r(this.fVf, 0, -1);
-        continue;
-        cuk();
-        if (this.fVr)
-        {
-          if (this.fVo)
-          {
-            if (this.fVm == -1) {
-              break label442;
-            }
-            EI(this.fVm);
-            this.fVm = -1;
-            bool1 = false;
-          }
-          for (;;)
-          {
-            this.fVo = bool1;
-            this.fVj = 3;
-            bool1 = bool2;
-            break;
-            label442:
-            if (cug()) {
-              bool1 = false;
-            } else {
-              bool1 = true;
-            }
-          }
-        }
-        if (this.fVj == 5) {
-          this.fVj = 1;
-        }
-        lw(false);
-        this.fVr = true;
-        bool1 = bool2;
-        continue;
-        ab.w("MicroMsg.OnlineVideoViewHelper", "download error.");
-        bool1 = bool2;
-      }
-    }
+    return false;
   }
 }
 

@@ -11,41 +11,41 @@ import java.util.List;
 
 public final class a
 {
-  public final int aCh;
-  public final List<byte[]> awM;
-  public final float baX;
+  public final List<byte[]> aSf;
+  public final int aXz;
+  public final float byY;
   public final int height;
   public final int width;
   
   private a(List<byte[]> paramList, int paramInt1, int paramInt2, int paramInt3, float paramFloat)
   {
-    this.awM = paramList;
-    this.aCh = paramInt1;
+    this.aSf = paramList;
+    this.aXz = paramInt1;
     this.width = paramInt2;
     this.height = paramInt3;
-    this.baX = paramFloat;
+    this.byY = paramFloat;
   }
   
   public static a K(m paramm)
   {
     int j = 0;
-    AppMethodBeat.i(95979);
+    AppMethodBeat.i(93250);
     int k;
     try
     {
-      paramm.en(4);
+      paramm.fl(4);
       k = (paramm.readUnsignedByte() & 0x3) + 1;
       if (k == 3)
       {
         paramm = new IllegalStateException();
-        AppMethodBeat.o(95979);
+        AppMethodBeat.o(93250);
         throw paramm;
       }
     }
     catch (ArrayIndexOutOfBoundsException paramm)
     {
       paramm = new o("Error parsing AVC config", paramm);
-      AppMethodBeat.o(95979);
+      AppMethodBeat.o(93250);
       throw paramm;
     }
     ArrayList localArrayList = new ArrayList();
@@ -67,15 +67,15 @@ public final class a
     if (m > 0)
     {
       paramm = (byte[])localArrayList.get(0);
-      paramm = k.k((byte[])localArrayList.get(0), k, paramm.length);
+      paramm = k.l((byte[])localArrayList.get(0), k, paramm.length);
       i = paramm.width;
       j = paramm.height;
-      f = paramm.baX;
+      f = paramm.byY;
     }
     for (;;)
     {
       paramm = new a(localArrayList, k, i, j, f);
-      AppMethodBeat.o(95979);
+      AppMethodBeat.o(93250);
       return paramm;
       i = -1;
       j = -1;
@@ -84,18 +84,18 @@ public final class a
   
   private static byte[] L(m paramm)
   {
-    AppMethodBeat.i(95980);
+    AppMethodBeat.i(93251);
     int i = paramm.readUnsignedShort();
     int j = paramm.position;
-    paramm.en(i);
-    paramm = d.j(paramm.data, j, i);
-    AppMethodBeat.o(95980);
+    paramm.fl(i);
+    paramm = d.k(paramm.data, j, i);
+    AppMethodBeat.o(93251);
     return paramm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.video.a
  * JD-Core Version:    0.7.0.1
  */

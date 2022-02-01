@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class nc
   extends b
 {
-  public nc.a cDm;
-  public nc.b cDn;
+  public a dsg;
   
   public nc()
   {
@@ -16,17 +15,27 @@ public final class nc
   
   private nc(byte paramByte)
   {
-    AppMethodBeat.i(77559);
-    this.cDm = new nc.a();
-    this.cDn = new nc.b();
-    this.ymq = false;
+    AppMethodBeat.i(117613);
+    this.dsg = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77559);
+    AppMethodBeat.o(117613);
+  }
+  
+  public static final class a
+  {
+    public String appId;
+    public String dsh;
+    public String dsi;
+    public int scene;
+    public int type;
+    public String url;
+    public int version;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.nc
  * JD-Core Version:    0.7.0.1
  */

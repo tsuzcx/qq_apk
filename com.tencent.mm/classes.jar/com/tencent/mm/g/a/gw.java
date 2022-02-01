@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class gw
   extends b
 {
-  public gw.a cvP;
+  public a dkx;
   
   public gw()
   {
@@ -15,16 +15,22 @@ public final class gw
   
   private gw(byte paramByte)
   {
-    AppMethodBeat.i(54939);
-    this.cvP = new gw.a();
-    this.ymq = false;
+    AppMethodBeat.i(168878);
+    this.dkx = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(54939);
+    AppMethodBeat.o(168878);
+  }
+  
+  public static final class a
+  {
+    public long deI;
+    public long id;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.gw
  * JD-Core Version:    0.7.0.1
  */

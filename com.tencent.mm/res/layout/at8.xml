@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/eek" android:layout_width="fill_parent" android:layout_height="@dimen/g3"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="@dimen/dm" android:layout_height="@dimen/dm" android:layout_marginTop="@dimen/g8" android:src="@drawable/icon" />
-    <TextView android:id="@id/eel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g6" android:text="@string/e80" style="@style/kc" />
-    <TextView android:gravity="center" android:id="@id/eem" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sg" style="@style/v0" />
+<LinearLayout android:layout_gravity="bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:MultitalkControlIconStyle="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.multitalk.ui.widget.MultiTalkControlIconLayout android:layout_gravity="start" android:id="@id/dw9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="47.0dip" MultitalkControlIconStyle:iconDrawable="@raw/icon_filled_mike_off" MultitalkControlIconStyle:iconText="@string/dv6" />
+    <com.tencent.mm.plugin.multitalk.ui.widget.MultiTalkControlIconLayout android:layout_gravity="center" android:id="@id/dw5" android:layout_width="wrap_content" android:layout_height="wrap_content" MultitalkControlIconStyle:iconDrawable="@raw/icons_filled_volume_up" MultitalkControlIconStyle:iconText="@string/duo" />
+    <com.tencent.mm.plugin.multitalk.ui.widget.MultiTalkControlIconLayout android:layout_gravity="end" android:id="@id/dwj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="47.0dip" MultitalkControlIconStyle:iconDrawable="@raw/icons_filled_video_call" MultitalkControlIconStyle:iconText="@string/dvy" />
 </LinearLayout>

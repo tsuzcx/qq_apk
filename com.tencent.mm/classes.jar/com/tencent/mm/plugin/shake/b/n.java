@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.shake.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.tj;
+import com.tencent.mm.g.a.vg;
 import com.tencent.mm.sdk.b.c;
 
 public final class n
-  extends c<tj>
+  extends c<vg>
 {
   public n()
   {
-    AppMethodBeat.i(24506);
-    this.__eventId = tj.class.getName().hashCode();
-    AppMethodBeat.o(24506);
+    AppMethodBeat.i(161434);
+    this.__eventId = vg.class.getName().hashCode();
+    AppMethodBeat.o(161434);
   }
 }
 

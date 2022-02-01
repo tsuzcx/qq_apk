@@ -1,201 +1,213 @@
 package com.tencent.mm.plugin.voiceprint.ui;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.os.HandlerThread;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.ui.ap;
 
 public class VoicePrintVolumeMeter
   extends View
 {
-  static int oeV;
-  private static int tsA;
-  private static float tsH;
-  private static float tsI;
-  private static float tsJ;
-  private static float tsK;
-  private static int tsy;
-  private static int tsz;
+  static int sTI;
+  private static int zeI;
+  private static int zeJ;
+  private static int zeK;
+  private static float zeR;
+  private static float zeS;
+  private static float zeT;
+  private static float zeU;
   private Context mContext;
   boolean mIsPlaying;
   private Paint mPaint;
   private float mVolume;
-  private View oeJ;
-  private float tsB;
-  private float tsC;
-  private float tsD;
-  private float tsE;
-  private float tsF;
-  private float tsG;
-  private boolean tsL;
-  private int tsu;
-  private int tsv;
-  al tsw;
-  ap tsx;
+  private View sTw;
+  private int zeE;
+  private int zeF;
+  private aq zeG;
+  av zeH;
+  private float zeL;
+  private float zeM;
+  private float zeN;
+  private float zeO;
+  private float zeP;
+  private float zeQ;
+  private boolean zeV;
   
   static
   {
-    AppMethodBeat.i(26218);
-    tsy = Color.rgb(240, 250, 235);
-    tsz = Color.rgb(210, 240, 200);
-    tsA = 100;
-    oeV = 20;
-    tsH = 1.5F;
-    tsI = 2.0F;
-    tsJ = 0.1F;
-    tsK = 0.05F;
-    AppMethodBeat.o(26218);
+    AppMethodBeat.i(29900);
+    zeI = Color.rgb(240, 250, 235);
+    zeJ = Color.rgb(210, 240, 200);
+    zeK = 100;
+    sTI = 20;
+    zeR = 1.5F;
+    zeS = 2.0F;
+    zeT = 0.1F;
+    zeU = 0.05F;
+    AppMethodBeat.o(29900);
   }
   
   public VoicePrintVolumeMeter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(26210);
-    this.tsu = -1;
-    this.tsv = -1;
-    this.tsw = null;
-    this.tsx = null;
-    this.tsB = 0.0F;
-    this.tsC = 0.0F;
-    this.tsD = 0.0F;
-    this.tsE = 0.0F;
-    this.tsF = 0.0F;
-    this.tsG = 0.0F;
+    AppMethodBeat.i(29892);
+    this.zeE = -1;
+    this.zeF = -1;
+    this.zeG = null;
+    this.zeH = null;
+    this.zeL = 0.0F;
+    this.zeM = 0.0F;
+    this.zeN = 0.0F;
+    this.zeO = 0.0F;
+    this.zeP = 0.0F;
+    this.zeQ = 0.0F;
     this.mVolume = -1.0F;
-    this.tsL = true;
+    this.zeV = true;
     this.mIsPlaying = false;
     init(paramContext);
-    AppMethodBeat.o(26210);
+    AppMethodBeat.o(29892);
   }
   
   public VoicePrintVolumeMeter(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(26211);
-    this.tsu = -1;
-    this.tsv = -1;
-    this.tsw = null;
-    this.tsx = null;
-    this.tsB = 0.0F;
-    this.tsC = 0.0F;
-    this.tsD = 0.0F;
-    this.tsE = 0.0F;
-    this.tsF = 0.0F;
-    this.tsG = 0.0F;
+    AppMethodBeat.i(29893);
+    this.zeE = -1;
+    this.zeF = -1;
+    this.zeG = null;
+    this.zeH = null;
+    this.zeL = 0.0F;
+    this.zeM = 0.0F;
+    this.zeN = 0.0F;
+    this.zeO = 0.0F;
+    this.zeP = 0.0F;
+    this.zeQ = 0.0F;
     this.mVolume = -1.0F;
-    this.tsL = true;
+    this.zeV = true;
     this.mIsPlaying = false;
     init(paramContext);
-    AppMethodBeat.o(26211);
+    AppMethodBeat.o(29893);
   }
   
   private void init(Context paramContext)
   {
-    AppMethodBeat.i(26212);
+    AppMethodBeat.i(29894);
     this.mContext = paramContext;
     this.mPaint = new Paint();
-    this.tsw = new al("VoicePrintVolumeMeter");
-    this.tsx = new ap(this.tsw.oNc.getLooper(), new VoicePrintVolumeMeter.1(this), true);
-    AppMethodBeat.o(26212);
+    zeI = paramContext.getResources().getColor(2131099704);
+    zeJ = paramContext.getResources().getColor(2131099706);
+    this.zeH = new av("VoicePrintVolumeMeter", new av.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(29891);
+        VoicePrintVolumeMeter.a(VoicePrintVolumeMeter.this);
+        boolean bool = VoicePrintVolumeMeter.b(VoicePrintVolumeMeter.this);
+        AppMethodBeat.o(29891);
+        return bool;
+      }
+    }, true);
+    AppMethodBeat.o(29894);
   }
   
-  final void cLv()
+  final void dRD()
   {
-    AppMethodBeat.i(26213);
-    if ((this.oeJ == null) || (this.oeJ.getVisibility() == 8))
+    AppMethodBeat.i(29895);
+    if ((this.sTw == null) || (this.sTw.getVisibility() == 8))
     {
-      AppMethodBeat.o(26213);
+      AppMethodBeat.o(29895);
       return;
     }
     int[] arrayOfInt = new int[2];
-    this.oeJ.getLocationOnScreen(arrayOfInt);
+    this.sTw.getLocationOnScreen(arrayOfInt);
     if ((arrayOfInt[0] == 0) || (arrayOfInt[1] == 0))
     {
-      ab.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, cannot get archView location");
-      AppMethodBeat.o(26213);
+      ad.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, cannot get archView location");
+      AppMethodBeat.o(29895);
       return;
     }
-    int i = this.oeJ.getWidth();
-    int j = this.oeJ.getHeight();
+    int i = this.sTw.getWidth();
+    int j = this.sTw.getHeight();
     if ((j == 0) || (i == 0))
     {
-      ab.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, cannot get archView size");
-      AppMethodBeat.o(26213);
+      ad.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, cannot get archView size");
+      AppMethodBeat.o(29895);
       return;
     }
-    this.tsu = (arrayOfInt[0] + i / 2);
-    this.tsv = (arrayOfInt[1] + j / 2 - a.fromDPToPix(this.mContext, 25));
-    ab.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, mCenterX:%d, mCenterY:%d", new Object[] { Integer.valueOf(this.tsu), Integer.valueOf(this.tsv) });
-    this.tsB = (i / 2.0F);
-    this.tsC = (this.tsB * tsH);
-    this.tsD = (this.tsB * tsI);
-    this.tsE = (this.tsC * tsI);
-    this.tsG = this.tsC;
-    this.tsF = this.tsB;
-    AppMethodBeat.o(26213);
+    this.zeE = (arrayOfInt[0] + i / 2);
+    this.zeF = (arrayOfInt[1] + j / 2 - ap.iX(this.mContext));
+    ad.d("MicroMsg.VoicePrintVolumeMeter", "setCenterLocation, mCenterX:%d, mCenterY:%d", new Object[] { Integer.valueOf(this.zeE), Integer.valueOf(this.zeF) });
+    this.zeL = (i / 2.0F);
+    this.zeM = (this.zeL * zeR);
+    this.zeN = (this.zeL * zeS);
+    this.zeO = (this.zeM * zeS);
+    this.zeQ = this.zeM;
+    this.zeP = this.zeL;
+    AppMethodBeat.o(29895);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(26214);
+    AppMethodBeat.i(29896);
     super.onDraw(paramCanvas);
     if (!this.mIsPlaying)
     {
-      AppMethodBeat.o(26214);
+      AppMethodBeat.o(29896);
       return;
     }
-    if ((this.tsu == -1) || (this.tsv == -1)) {
-      cLv();
+    if ((this.zeE == -1) || (this.zeF == -1)) {
+      dRD();
     }
-    this.mPaint.setAlpha(tsA);
-    if (this.tsG > this.tsE) {
-      this.tsG = this.tsE;
+    this.mPaint.setAlpha(zeK);
+    if (this.zeQ > this.zeO) {
+      this.zeQ = this.zeO;
     }
-    if (this.tsG < this.tsC) {
-      this.tsG = this.tsC;
+    if (this.zeQ < this.zeM) {
+      this.zeQ = this.zeM;
     }
-    this.mPaint.setColor(tsy);
-    paramCanvas.drawCircle(this.tsu, this.tsv, this.tsG, this.mPaint);
-    if (this.tsF > this.tsD) {
-      this.tsF = this.tsD;
+    this.mPaint.setColor(zeI);
+    paramCanvas.drawCircle(this.zeE, this.zeF, this.zeQ, this.mPaint);
+    if (this.zeP > this.zeN) {
+      this.zeP = this.zeN;
     }
-    if (this.tsF < this.tsB) {
-      this.tsF = this.tsB;
+    if (this.zeP < this.zeL) {
+      this.zeP = this.zeL;
     }
-    this.mPaint.setColor(tsz);
-    paramCanvas.drawCircle(this.tsu, this.tsv, this.tsF, this.mPaint);
-    AppMethodBeat.o(26214);
+    this.mPaint.setColor(zeJ);
+    paramCanvas.drawCircle(this.zeE, this.zeF, this.zeP, this.mPaint);
+    AppMethodBeat.o(29896);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(26216);
-    this.tsL = false;
+    AppMethodBeat.i(29898);
+    this.zeV = false;
     this.mVolume = -1.0F;
     this.mIsPlaying = false;
-    this.tsF = 0.0F;
-    this.tsG = 0.0F;
+    this.zeP = 0.0F;
+    this.zeQ = 0.0F;
     postInvalidate();
-    AppMethodBeat.o(26216);
+    AppMethodBeat.o(29898);
   }
   
   public void setArchView(View paramView)
   {
-    this.oeJ = paramView;
+    this.sTw = paramView;
   }
   
   public void setVolume(float paramFloat)
   {
     if (paramFloat > this.mVolume) {}
-    for (this.tsL = true;; this.tsL = false)
+    for (this.zeV = true;; this.zeV = false)
     {
       this.mVolume = paramFloat;
       return;
@@ -204,17 +216,17 @@ public class VoicePrintVolumeMeter
   
   public final void stop()
   {
-    AppMethodBeat.i(26215);
+    AppMethodBeat.i(29897);
     reset();
     this.mIsPlaying = false;
-    this.tsx.stopTimer();
+    this.zeH.stopTimer();
     postInvalidate();
-    AppMethodBeat.o(26215);
+    AppMethodBeat.o(29897);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.VoicePrintVolumeMeter
  * JD-Core Version:    0.7.0.1
  */

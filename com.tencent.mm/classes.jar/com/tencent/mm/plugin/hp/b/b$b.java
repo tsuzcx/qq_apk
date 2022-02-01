@@ -8,12 +8,12 @@ public enum b$b
   
   static
   {
-    AppMethodBeat.i(90554);
-    nKa = new b("SCENE_PATCH", 0, 0);
-    nKb = new b("SCENE_LOAD", 1, 1);
-    nKc = new b("SCENE_CHECK", 2, 2);
-    nKd = new b[] { nKa, nKb, nKc };
-    AppMethodBeat.o(90554);
+    AppMethodBeat.i(117386);
+    sxG = new b("SCENE_PATCH", 0, 0);
+    sxH = new b("SCENE_LOAD", 1, 1);
+    sxI = new b("SCENE_CHECK", 2, 2);
+    sxJ = new b[] { sxG, sxH, sxI };
+    AppMethodBeat.o(117386);
   }
   
   private b$b(int paramInt)

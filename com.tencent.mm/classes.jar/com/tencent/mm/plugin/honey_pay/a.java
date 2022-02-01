@@ -1,89 +1,94 @@
 package com.tencent.mm.plugin.honey_pay;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.cm.h;
-import com.tencent.mm.g.a.nq;
+import com.tencent.mm.co.h;
+import com.tencent.mm.g.a.pd;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.bz;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.cc;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.honey_pay.model.b;
-import com.tencent.mm.plugin.messenger.foundation.a.o;
 import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.plugin.messenger.foundation.a.q;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class a
-  implements at
+  implements aw
 {
-  private static HashMap<Integer, h.d> baseDBFactories;
-  private h<b> nGX;
-  private c<nq> nGY;
-  private o nGZ;
+  private static HashMap<Integer, h.b> baseDBFactories;
+  private h<b> suE;
+  private com.tencent.mm.sdk.b.c<pd> suF;
+  private p suG;
   
   static
   {
-    AppMethodBeat.i(41716);
+    AppMethodBeat.i(64611);
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("HoneyPayMsgRecord".hashCode()), new a.1());
-    AppMethodBeat.o(41716);
+    localHashMap.put(Integer.valueOf("HoneyPayMsgRecord".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return b.SQL_CREATE;
+      }
+    });
+    AppMethodBeat.o(64611);
   }
   
   public a()
   {
-    AppMethodBeat.i(41712);
-    this.nGX = new h(new a.2(this));
-    this.nGY = new a.3(this);
-    this.nGZ = new a.4(this);
-    AppMethodBeat.o(41712);
+    AppMethodBeat.i(64607);
+    this.suE = new h(new com.tencent.mm.co.c() {});
+    this.suF = new com.tencent.mm.sdk.b.c() {};
+    this.suG = new a.4(this);
+    AppMethodBeat.o(64607);
   }
   
-  public static a bHS()
+  public static a cFJ()
   {
-    AppMethodBeat.i(41711);
-    a locala = (a)q.S(a.class);
-    AppMethodBeat.o(41711);
+    AppMethodBeat.i(64606);
+    a locala = (a)t.ap(a.class);
+    AppMethodBeat.o(64606);
     return locala;
   }
   
-  public final b bHT()
+  public final b cFK()
   {
-    AppMethodBeat.i(41715);
-    b localb = (b)this.nGX.get();
-    AppMethodBeat.o(41715);
+    AppMethodBeat.i(64610);
+    b localb = (b)this.suE.get();
+    AppMethodBeat.o(64610);
     return localb;
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public HashMap<Integer, h.d> getBaseDBFactories()
+  public HashMap<Integer, h.b> getBaseDBFactories()
   {
     return baseDBFactories;
   }
   
   public void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(41713);
-    this.nGY.alive();
-    ((p)g.G(p.class)).getSysCmdMsgExtension().a("paymsg", this.nGZ);
-    AppMethodBeat.o(41713);
+    AppMethodBeat.i(64608);
+    this.suF.alive();
+    ((q)g.ad(q.class)).getSysCmdMsgExtension().a("paymsg", this.suG);
+    AppMethodBeat.o(64608);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(41714);
-    this.nGY.dead();
-    ((p)g.G(p.class)).getSysCmdMsgExtension().b("paymsg", this.nGZ);
-    AppMethodBeat.o(41714);
+    AppMethodBeat.i(64609);
+    this.suF.dead();
+    ((q)g.ad(q.class)).getSysCmdMsgExtension().b("paymsg", this.suG);
+    AppMethodBeat.o(64609);
   }
   
   public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.a
  * JD-Core Version:    0.7.0.1
  */

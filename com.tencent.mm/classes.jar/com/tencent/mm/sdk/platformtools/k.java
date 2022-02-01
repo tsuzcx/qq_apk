@@ -1,82 +1,75 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v4.content.FileProvider;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public final class k
 {
-  public static void a(Context paramContext, Intent paramIntent, Uri paramUri, String paramString)
+  public static String muL = "]]>";
+  public String ETA;
+  public StringBuffer muN;
+  
+  public k()
   {
-    AppMethodBeat.i(93388);
-    if (paramUri.getScheme().equals("file"))
+    AppMethodBeat.i(157525);
+    this.ETA = "";
+    this.muN = new StringBuffer();
+    AppMethodBeat.o(157525);
+  }
+  
+  public k(String paramString)
+  {
+    AppMethodBeat.i(157526);
+    this.ETA = "";
+    this.muN = new StringBuffer();
+    this.ETA = paramString;
+    Oq(this.ETA);
+    AppMethodBeat.o(157526);
+  }
+  
+  private void Oq(String paramString)
+  {
+    AppMethodBeat.i(157527);
+    this.muN.append("<" + paramString + ">");
+    AppMethodBeat.o(157527);
+  }
+  
+  private void setText(String paramString)
+  {
+    AppMethodBeat.i(157529);
+    if (bt.isNullOrNil(paramString))
     {
-      a(paramContext, paramIntent, new File(paramUri.getPath()), paramString);
-      AppMethodBeat.o(93388);
+      AppMethodBeat.o(157529);
       return;
     }
-    if (d.fv(24))
+    if (paramString.contains(muL))
     {
-      paramIntent.setDataAndType(paramUri, paramString);
-      paramIntent.addFlags(1);
-    }
-    AppMethodBeat.o(93388);
-  }
-  
-  public static void a(Context paramContext, Intent paramIntent, File paramFile, String paramString)
-  {
-    AppMethodBeat.i(93389);
-    if (d.fv(24))
-    {
-      paramIntent.setDataAndType(d(paramContext, paramFile), paramString);
-      paramIntent.addFlags(1);
-      AppMethodBeat.o(93389);
+      this.muN.append("<![CDATA[" + bt.aGf(paramString) + "]]>");
+      AppMethodBeat.o(157529);
       return;
     }
-    paramIntent.setDataAndType(Uri.fromFile(paramFile), paramString);
-    AppMethodBeat.o(93389);
+    this.muN.append("<![CDATA[" + paramString + "]]>");
+    AppMethodBeat.o(157529);
   }
   
-  public static Uri d(Context paramContext, File paramFile)
+  public final void Or(String paramString)
   {
-    AppMethodBeat.i(93391);
-    if (d.fv(24)) {}
-    for (paramContext = e(paramContext, paramFile);; paramContext = Uri.fromFile(paramFile))
-    {
-      AppMethodBeat.o(93391);
-      return paramContext;
-    }
+    AppMethodBeat.i(157528);
+    this.muN.append("</" + paramString + ">");
+    AppMethodBeat.o(157528);
   }
   
-  private static Uri e(Context paramContext, File paramFile)
+  public final void eb(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(93392);
-    paramContext = FileProvider.getUriForFile(paramContext, paramContext.getPackageName() + ".external.fileprovider", paramFile);
-    AppMethodBeat.o(93392);
-    return paramContext;
-  }
-  
-  public static ArrayList<Uri> e(Context paramContext, ArrayList<Uri> paramArrayList)
-  {
-    AppMethodBeat.i(93390);
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      localArrayList.add(d(paramContext, new File(((Uri)paramArrayList.next()).getPath())));
-    }
-    AppMethodBeat.o(93390);
-    return localArrayList;
+    AppMethodBeat.i(157530);
+    Oq(paramString1);
+    setText(paramString2);
+    Or(paramString1);
+    AppMethodBeat.o(157530);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.k
  * JD-Core Version:    0.7.0.1
  */

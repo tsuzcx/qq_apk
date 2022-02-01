@@ -7,37 +7,37 @@ import java.util.ArrayList;
 final class k
   implements c
 {
-  private int bKA;
-  private c.c bKB;
-  private c.a bKz;
+  private c.a crk;
+  private int crl;
+  private c.c crm;
   private int mHeight;
   private ArrayList<c.b> mNodes;
   private int mWidth;
   
   k()
   {
-    AppMethodBeat.i(115956);
+    AppMethodBeat.i(140057);
     this.mNodes = new ArrayList();
-    this.bKz = new c.a();
-    this.bKB = new c.c();
-    AppMethodBeat.o(115956);
+    this.crk = new c.a();
+    this.crm = new c.c();
+    AppMethodBeat.o(140057);
   }
   
   public final void a(int paramInt1, int paramInt2, Rect paramRect)
   {
-    AppMethodBeat.i(115958);
+    AppMethodBeat.i(140059);
     if (paramRect == null)
     {
-      AppMethodBeat.o(115958);
+      AppMethodBeat.o(140059);
       return;
     }
     if ((paramInt1 <= 0) || (paramInt2 <= 0))
     {
       paramRect.setEmpty();
-      AppMethodBeat.o(115958);
+      AppMethodBeat.o(140059);
       return;
     }
-    c.c localc = this.bKB;
+    c.c localc = this.crm;
     localc.x = 0;
     localc.y = 0;
     localc.width = paramInt1;
@@ -108,9 +108,9 @@ final class k
       while ((localc.x < 0) || (localc.y < 0))
       {
         paramRect.setEmpty();
-        AppMethodBeat.o(115958);
+        AppMethodBeat.o(140059);
         return;
-        localb1 = this.bKz.yt();
+        localb1 = this.crk.Gu();
         localb1.x = localc.x;
         localb1.y = (localc.y + paramInt2);
         localb1.z = paramInt1;
@@ -131,7 +131,7 @@ final class k
             break;
           }
           localb1 = (c.b)this.mNodes.remove(i);
-          this.bKz.a(localb1);
+          this.crk.a(localb1);
         }
         for (i = 0; i < this.mNodes.size() - 1; i = j + 1)
         {
@@ -143,41 +143,41 @@ final class k
             j = localb1.z;
             localb2.z += j;
             localb1 = (c.b)this.mNodes.remove(i + 1);
-            this.bKz.a(localb1);
+            this.crk.a(localb1);
             j = i - 1;
           }
         }
-        this.bKA += paramInt1 * paramInt2;
+        this.crl += paramInt1 * paramInt2;
       }
       paramRect.set(localc.x, localc.y, localc.x + paramInt1 - 1, localc.y + paramInt2 - 1);
-      AppMethodBeat.o(115958);
+      AppMethodBeat.o(140059);
       return;
     }
   }
   
   public final void init(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(115957);
+    AppMethodBeat.i(140058);
     this.mWidth = paramInt1;
     this.mHeight = paramInt2;
     reset();
-    AppMethodBeat.o(115957);
+    AppMethodBeat.o(140058);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(115959);
-    this.bKA = 0;
-    this.bKz.c(this.mNodes);
-    c.b localb = this.bKz.yt();
-    localb.fK(this.mWidth - 2);
+    AppMethodBeat.i(140060);
+    this.crl = 0;
+    this.crk.c(this.mNodes);
+    c.b localb = this.crk.Gu();
+    localb.hg(this.mWidth - 2);
     this.mNodes.add(localb);
-    AppMethodBeat.o(115959);
+    AppMethodBeat.o(140060);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.magicbrush.handler.glfont.k
  * JD-Core Version:    0.7.0.1
  */

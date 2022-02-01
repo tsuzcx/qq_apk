@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.remittance.ui.RemittanceResendMsgUI;
 import com.tencent.mm.plugin.wallet_payu.remittance.a.f;
 import com.tencent.mm.ui.base.a;
@@ -16,36 +16,36 @@ public class PayURemittanceResendMsgUI
 {
   public final void f(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(48563);
+    AppMethodBeat.i(72204);
     doSceneProgress(new f(paramString1, getIntent().getIntExtra("total_fee", 0), getIntent().getStringExtra("fee_type"), paramString3, paramInt1));
-    AppMethodBeat.o(48563);
+    AppMethodBeat.o(72204);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(48562);
+    AppMethodBeat.i(72203);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(48562);
+    AppMethodBeat.o(72203);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(48564);
-    if ((paramm instanceof f))
+    AppMethodBeat.i(72205);
+    if ((paramn instanceof f))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        h.bO(this, getString(2131302615));
+        h.cf(this, getString(2131762521));
         finish();
-        AppMethodBeat.o(48564);
+        AppMethodBeat.o(72205);
         return true;
       }
-      h.bO(this, paramString);
+      h.cf(this, paramString);
       finish();
-      AppMethodBeat.o(48564);
+      AppMethodBeat.o(72205);
       return true;
     }
-    AppMethodBeat.o(48564);
+    AppMethodBeat.o(72205);
     return false;
   }
   
@@ -57,7 +57,7 @@ public class PayURemittanceResendMsgUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.remittance.ui.PayURemittanceResendMsgUI
  * JD-Core Version:    0.7.0.1
  */

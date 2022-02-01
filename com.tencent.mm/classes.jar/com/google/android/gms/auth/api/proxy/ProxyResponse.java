@@ -42,9 +42,9 @@ public class ProxyResponse
   
   static
   {
-    AppMethodBeat.i(77049);
+    AppMethodBeat.i(10708);
     CREATOR = new zze();
-    AppMethodBeat.o(77049);
+    AppMethodBeat.o(10708);
   }
   
   @SafeParcelable.Constructor
@@ -71,25 +71,25 @@ public class ProxyResponse
   public ProxyResponse(int paramInt, Map<String, String> paramMap, byte[] paramArrayOfByte)
   {
     this(paramInt, zzd(paramMap), paramArrayOfByte);
-    AppMethodBeat.i(77046);
-    AppMethodBeat.o(77046);
+    AppMethodBeat.i(10705);
+    AppMethodBeat.o(10705);
   }
   
   public static ProxyResponse createErrorProxyResponse(int paramInt1, PendingIntent paramPendingIntent, int paramInt2, Map<String, String> paramMap, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(77044);
+    AppMethodBeat.i(10703);
     paramPendingIntent = new ProxyResponse(1, paramInt1, paramPendingIntent, paramInt2, zzd(paramMap), paramArrayOfByte);
-    AppMethodBeat.o(77044);
+    AppMethodBeat.o(10703);
     return paramPendingIntent;
   }
   
   private static Bundle zzd(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(77045);
+    AppMethodBeat.i(10704);
     Bundle localBundle = new Bundle();
     if (paramMap == null)
     {
-      AppMethodBeat.o(77045);
+      AppMethodBeat.o(10704);
       return localBundle;
     }
     paramMap = paramMap.entrySet().iterator();
@@ -98,17 +98,17 @@ public class ProxyResponse
       Map.Entry localEntry = (Map.Entry)paramMap.next();
       localBundle.putString((String)localEntry.getKey(), (String)localEntry.getValue());
     }
-    AppMethodBeat.o(77045);
+    AppMethodBeat.o(10704);
     return localBundle;
   }
   
   public Map<String, String> getHeaders()
   {
-    AppMethodBeat.i(77047);
+    AppMethodBeat.i(10706);
     if (this.zzdw == null)
     {
       localObject = Collections.emptyMap();
-      AppMethodBeat.o(77047);
+      AppMethodBeat.o(10706);
       return localObject;
     }
     Object localObject = new HashMap();
@@ -118,13 +118,13 @@ public class ProxyResponse
       String str = (String)localIterator.next();
       ((Map)localObject).put(str, this.zzdw.getString(str));
     }
-    AppMethodBeat.o(77047);
+    AppMethodBeat.o(10706);
     return localObject;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(77048);
+    AppMethodBeat.i(10707);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.googlePlayServicesStatusCode);
     SafeParcelWriter.writeParcelable(paramParcel, 2, this.recoveryAction, paramInt, false);
@@ -133,12 +133,12 @@ public class ProxyResponse
     SafeParcelWriter.writeByteArray(paramParcel, 5, this.body, false);
     SafeParcelWriter.writeInt(paramParcel, 1000, this.versionCode);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(77048);
+    AppMethodBeat.o(10707);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.auth.api.proxy.ProxyResponse
  * JD-Core Version:    0.7.0.1
  */

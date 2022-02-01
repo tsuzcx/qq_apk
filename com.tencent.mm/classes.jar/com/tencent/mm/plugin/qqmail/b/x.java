@@ -1,81 +1,80 @@
 package com.tencent.mm.plugin.qqmail.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import f.a.a.b;
 
 public final class x
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public LinkedList<w> oBk;
-  
-  public x()
-  {
-    AppMethodBeat.i(68025);
-    this.oBk = new LinkedList();
-    AppMethodBeat.o(68025);
-  }
+  public String uLh;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(68026);
+    AppMethodBeat.i(122757);
     if (paramInt == 0)
     {
-      ((e.a.a.c.a)paramVarArgs[0]).e(1, 8, this.oBk);
-      AppMethodBeat.o(68026);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.uLh == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: subject");
+        AppMethodBeat.o(122757);
+        throw paramVarArgs;
+      }
+      if (this.uLh != null) {
+        paramVarArgs.d(1, this.uLh);
+      }
+      AppMethodBeat.o(122757);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      paramInt = e.a.a.a.c(1, 8, this.oBk);
-      AppMethodBeat.o(68026);
-      return paramInt + 0;
+    if (paramInt == 1) {
+      if (this.uLh == null) {
+        break label261;
+      }
     }
-    if (paramInt == 2)
+    label261:
+    for (paramInt = f.a.a.b.b.a.e(1, this.uLh) + 0;; paramInt = 0)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.oBk.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+      AppMethodBeat.o(122757);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.fMq();
+          }
         }
+        if (this.uLh == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: subject");
+          AppMethodBeat.o(122757);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(122757);
+        return 0;
       }
-      AppMethodBeat.o(68026);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-      x localx = (x)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      if (paramInt == 3)
       {
-      default: 
-        AppMethodBeat.o(68026);
-        return -1;
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        x localx = (x)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(122757);
+          return -1;
+        }
+        localx.uLh = locala.KhF.readString();
+        AppMethodBeat.o(122757);
+        return 0;
       }
-      paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new w();
-        localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((w)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-        localx.oBk.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(68026);
-      return 0;
+      AppMethodBeat.o(122757);
+      return -1;
     }
-    AppMethodBeat.o(68026);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.x
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public abstract interface e
   
   public abstract int delete(String paramString1, String paramString2, String[] paramArrayOfString);
   
-  public abstract boolean dun();
+  public abstract boolean eHe();
   
   public abstract boolean execSQL(String paramString1, String paramString2);
   

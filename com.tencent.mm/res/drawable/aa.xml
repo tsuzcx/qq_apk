@@ -1,25 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background" android:drawable="@drawable/aal" />
-    <item android:id="@android:id/secondaryProgress">
-        <scale android:scaleWidth="100%">
-            <selector>
-                <item android:state_enabled="false">
-                    <color android:color="@android:color/transparent" />
-                </item>
-                <item android:drawable="@drawable/aak" />
-            </selector>
-        </scale>
-    </item>
-    <item android:id="@android:id/progress">
-        <scale android:scaleWidth="100%">
-            <selector>
-                <item android:state_enabled="false">
-                    <color android:color="@android:color/transparent" />
-                </item>
-                <item android:drawable="@drawable/aak" />
-            </selector>
-        </scale>
-    </item>
-</layer-list>
+    <item android:state_window_focused="false" android:drawable="@android:color/transparent" />
+    <item android:state_focused="true" android:state_enabled="false" android:state_pressed="true" android:drawable="@drawable/al5" />
+    <item android:state_focused="true" android:state_enabled="false" android:drawable="@drawable/al5" />
+    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/a9" />
+    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/a9" />
+    <item android:state_focused="true" android:drawable="@drawable/al0" />
+</selector>

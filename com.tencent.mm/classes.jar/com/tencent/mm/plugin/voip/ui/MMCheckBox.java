@@ -13,8 +13,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMCheckBox
   extends CheckBox
 {
-  private Drawable tBU;
-  private int tBV;
+  private Drawable zpA;
+  private int zpB;
   
   public MMCheckBox(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,34 +28,34 @@ public class MMCheckBox
   
   protected void drawableStateChanged()
   {
-    AppMethodBeat.i(4776);
+    AppMethodBeat.i(115298);
     super.drawableStateChanged();
-    if (this.tBU != null)
+    if (this.zpA != null)
     {
       int[] arrayOfInt = getDrawableState();
-      this.tBU.setState(arrayOfInt);
+      this.zpA.setState(arrayOfInt);
       invalidate();
     }
-    AppMethodBeat.o(4776);
+    AppMethodBeat.o(115298);
   }
   
   @TargetApi(11)
   public void jumpDrawablesToCurrentState()
   {
-    AppMethodBeat.i(4778);
+    AppMethodBeat.i(115300);
     super.jumpDrawablesToCurrentState();
-    if ((Build.VERSION.SDK_INT >= 11) && (this.tBU != null)) {
-      this.tBU.jumpToCurrentState();
+    if ((Build.VERSION.SDK_INT >= 11) && (this.zpA != null)) {
+      this.zpA.jumpToCurrentState();
     }
-    AppMethodBeat.o(4778);
+    AppMethodBeat.o(115300);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     int j = 0;
-    AppMethodBeat.i(4779);
+    AppMethodBeat.i(115301);
     super.onDraw(paramCanvas);
-    Drawable localDrawable = this.tBU;
+    Drawable localDrawable = this.zpA;
     int i;
     int k;
     int m;
@@ -79,7 +79,7 @@ public class MMCheckBox
     {
       localDrawable.setBounds(j, i, j + m, k + i);
       localDrawable.draw(paramCanvas);
-      AppMethodBeat.o(4779);
+      AppMethodBeat.o(115301);
       return;
       i = getHeight() - k;
       break;
@@ -93,41 +93,41 @@ public class MMCheckBox
   
   public void setButtonDrawable(int paramInt)
   {
-    AppMethodBeat.i(4775);
-    if ((paramInt != 0) && (paramInt == this.tBV))
+    AppMethodBeat.i(115297);
+    if ((paramInt != 0) && (paramInt == this.zpB))
     {
-      AppMethodBeat.o(4775);
+      AppMethodBeat.o(115297);
       return;
     }
-    this.tBV = paramInt;
+    this.zpB = paramInt;
     Drawable localDrawable = null;
-    if (this.tBV != 0) {
-      localDrawable = getResources().getDrawable(this.tBV);
+    if (this.zpB != 0) {
+      localDrawable = getResources().getDrawable(this.zpB);
     }
     setButtonDrawable(localDrawable);
-    AppMethodBeat.o(4775);
+    AppMethodBeat.o(115297);
   }
   
   public void setButtonDrawable(Drawable paramDrawable)
   {
-    this.tBU = paramDrawable;
+    this.zpA = paramDrawable;
   }
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    AppMethodBeat.i(4777);
-    if ((super.verifyDrawable(paramDrawable)) || (paramDrawable == this.tBU))
+    AppMethodBeat.i(115299);
+    if ((super.verifyDrawable(paramDrawable)) || (paramDrawable == this.zpA))
     {
-      AppMethodBeat.o(4777);
+      AppMethodBeat.o(115299);
       return true;
     }
-    AppMethodBeat.o(4777);
+    AppMethodBeat.o(115299);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.MMCheckBox
  * JD-Core Version:    0.7.0.1
  */

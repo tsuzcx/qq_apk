@@ -6,18 +6,18 @@ import com.google.android.gms.wearable.r;
 public final class aw
   implements r
 {
-  private final Status HS;
-  private final int TF;
+  private final Status JH;
+  private final int Vu;
   
   public aw(Status paramStatus, int paramInt)
   {
-    this.HS = paramStatus;
-    this.TF = paramInt;
+    this.JH = paramStatus;
+    this.Vu = paramInt;
   }
   
-  public final Status gC()
+  public final Status gM()
   {
-    return this.HS;
+    return this.JH;
   }
 }
 

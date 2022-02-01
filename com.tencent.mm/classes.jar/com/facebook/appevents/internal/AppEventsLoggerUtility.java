@@ -12,18 +12,18 @@ import org.json.JSONObject;
 
 public class AppEventsLoggerUtility
 {
-  private static final Map<GraphAPIActivityType, String> API_ACTIVITY_TYPE_TO_STRING;
+  private static final Map<AppEventsLoggerUtility.GraphAPIActivityType, String> API_ACTIVITY_TYPE_TO_STRING;
   
   static
   {
-    AppMethodBeat.i(72170);
+    AppMethodBeat.i(17606);
     API_ACTIVITY_TYPE_TO_STRING = new AppEventsLoggerUtility.1();
-    AppMethodBeat.o(72170);
+    AppMethodBeat.o(17606);
   }
   
-  public static JSONObject getJSONObjectForGraphAPICall(GraphAPIActivityType paramGraphAPIActivityType, AttributionIdentifiers paramAttributionIdentifiers, String paramString, boolean paramBoolean, Context paramContext)
+  public static JSONObject getJSONObjectForGraphAPICall(AppEventsLoggerUtility.GraphAPIActivityType paramGraphAPIActivityType, AttributionIdentifiers paramAttributionIdentifiers, String paramString, boolean paramBoolean, Context paramContext)
   {
-    AppMethodBeat.i(72169);
+    AppMethodBeat.i(17605);
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.put("event", API_ACTIVITY_TYPE_TO_STRING.get(paramGraphAPIActivityType));
     paramGraphAPIActivityType = AppEventsLogger.getUserID();
@@ -39,7 +39,7 @@ public class AppEventsLoggerUtility
     {
       Utility.setAppEventExtendedDeviceInfoParameters(localJSONObject, paramContext);
       localJSONObject.put("application_package_name", paramContext.getPackageName());
-      AppMethodBeat.o(72169);
+      AppMethodBeat.o(17605);
       return localJSONObject;
     }
     catch (Exception paramGraphAPIActivityType)
@@ -50,24 +50,10 @@ public class AppEventsLoggerUtility
       }
     }
   }
-  
-  public static enum GraphAPIActivityType
-  {
-    static
-    {
-      AppMethodBeat.i(72168);
-      MOBILE_INSTALL_EVENT = new GraphAPIActivityType("MOBILE_INSTALL_EVENT", 0);
-      CUSTOM_APP_EVENTS = new GraphAPIActivityType("CUSTOM_APP_EVENTS", 1);
-      $VALUES = new GraphAPIActivityType[] { MOBILE_INSTALL_EVENT, CUSTOM_APP_EVENTS };
-      AppMethodBeat.o(72168);
-    }
-    
-    private GraphAPIActivityType() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.internal.AppEventsLoggerUtility
  * JD-Core Version:    0.7.0.1
  */

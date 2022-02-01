@@ -2,6 +2,9 @@ package com.tencent.liteav;
 
 import android.content.Context;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.module.Monitor;
+import com.tencent.liteav.basic.structs.b;
+import com.tencent.liteav.basic.util.d;
 import com.tencent.liteav.screencapture.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
@@ -25,19 +28,19 @@ public class h
   
   static
   {
-    AppMethodBeat.i(146811);
+    AppMethodBeat.i(15550);
     a = h.class.getSimpleName();
-    AppMethodBeat.o(146811);
+    AppMethodBeat.o(15550);
   }
   
   public h(Context paramContext, f paramf)
   {
-    AppMethodBeat.i(146801);
+    AppMethodBeat.i(15538);
     this.c = null;
     this.d = null;
     this.j = "";
     this.k = new LinkedList();
-    this.c = new com.tencent.liteav.screencapture.a(paramContext, paramf.O);
+    this.c = new com.tencent.liteav.screencapture.a(paramContext, paramf.V);
     this.c.a(this);
     boolean bool = paramf.a();
     this.e = paramf.h;
@@ -48,16 +51,16 @@ public class h
         m = Math.max(paramf.a, paramf.b);
         this.f = m;
         if (!bool) {
-          break label180;
+          break label182;
         }
       }
-      label180:
+      label182:
       for (m = Math.min(paramf.a, paramf.b);; m = Math.max(paramf.a, paramf.b))
       {
         this.g = m;
         this.h = paramf.a;
         this.i = paramf.b;
-        AppMethodBeat.o(146801);
+        AppMethodBeat.o(15538);
         return;
         m = Math.min(paramf.a, paramf.b);
         break;
@@ -66,25 +69,25 @@ public class h
     if (bool)
     {
       m = 1280;
-      label204:
+      label206:
       this.f = m;
       if (!bool) {
-        break label232;
+        break label234;
       }
     }
-    label232:
+    label234:
     for (int m = n;; m = 1280)
     {
       this.g = m;
       break;
       m = 720;
-      break label204;
+      break label206;
     }
   }
   
   private boolean a(Queue<Runnable> paramQueue)
   {
-    AppMethodBeat.i(146806);
+    AppMethodBeat.i(15545);
     try
     {
       if (paramQueue.isEmpty()) {
@@ -93,59 +96,54 @@ public class h
       Runnable localRunnable = (Runnable)paramQueue.poll();
       if (localRunnable == null)
       {
-        AppMethodBeat.o(146806);
+        AppMethodBeat.o(15545);
         return false;
       }
     }
     finally
     {
-      AppMethodBeat.o(146806);
+      AppMethodBeat.o(15545);
     }
     localObject.run();
-    AppMethodBeat.o(146806);
+    AppMethodBeat.o(15545);
     return true;
   }
   
-  private void f(boolean paramBoolean)
+  private void e(boolean paramBoolean)
   {
-    AppMethodBeat.i(146810);
+    AppMethodBeat.i(15549);
     if (paramBoolean)
     {
       if (this.h > this.i)
       {
-        a(this.i, this.h);
-        AppMethodBeat.o(146810);
+        b(this.i, this.h);
+        AppMethodBeat.o(15549);
       }
     }
     else if (this.h < this.i) {
-      a(this.i, this.h);
+      b(this.i, this.h);
     }
-    AppMethodBeat.o(146810);
+    AppMethodBeat.o(15549);
   }
   
   public void a()
   {
-    AppMethodBeat.i(67726);
+    AppMethodBeat.i(15539);
+    Monitor.a(2, String.format("VideoCapture[%d]: start screen", new Object[] { Integer.valueOf(hashCode()) }), "", 0);
     this.c.a(this.f, this.g, this.e);
     this.c.a(true);
-    AppMethodBeat.o(67726);
+    AppMethodBeat.o(15539);
   }
   
   public void a(float paramFloat) {}
   
   public void a(float paramFloat1, float paramFloat2) {}
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(67762);
-    this.h = paramInt1;
-    this.i = paramInt2;
-    AppMethodBeat.o(67762);
-  }
+  public void a(int paramInt1, int paramInt2) {}
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong)
   {
-    AppMethodBeat.i(146808);
+    AppMethodBeat.i(15547);
     while (a(this.k)) {}
     if (paramInt1 == 0)
     {
@@ -154,8 +152,8 @@ public class h
         if (paramInt3 < paramInt4) {}
         for (boolean bool = true;; bool = false)
         {
-          f(bool);
-          com.tencent.liteav.basic.structs.b localb = new com.tencent.liteav.basic.structs.b();
+          e(bool);
+          b localb = new b();
           localb.e = paramInt3;
           localb.f = paramInt4;
           localb.g = this.h;
@@ -163,9 +161,9 @@ public class h
           localb.a = paramInt2;
           localb.b = 0;
           localb.j = 0;
-          localb.l = com.tencent.liteav.basic.util.b.a(localb.e, localb.f, this.h, this.i);
+          localb.l = d.a(localb.e, localb.f, this.h, this.i);
           this.b.b(localb);
-          AppMethodBeat.o(146808);
+          AppMethodBeat.o(15547);
           return;
         }
       }
@@ -173,33 +171,33 @@ public class h
     else {
       TXCLog.e(a, "onScreenCaptureFrame failed");
     }
-    AppMethodBeat.o(146808);
+    AppMethodBeat.o(15547);
   }
   
   public void a(int paramInt, EGLContext paramEGLContext)
   {
-    AppMethodBeat.i(146807);
+    AppMethodBeat.i(15546);
     if (paramInt == 0)
     {
       this.d = paramEGLContext;
-      AppMethodBeat.o(146807);
+      AppMethodBeat.o(15546);
       return;
     }
     this.d = null;
     TXCLog.e(a, "Start screen capture failed");
-    AppMethodBeat.o(146807);
+    AppMethodBeat.o(15546);
   }
   
   public void a(com.tencent.liteav.basic.c.a parama)
   {
-    AppMethodBeat.i(146805);
+    AppMethodBeat.i(15544);
     if (this.c != null) {
       this.c.a(parama);
     }
-    AppMethodBeat.o(146805);
+    AppMethodBeat.o(15544);
   }
   
-  public void a(com.tencent.liteav.basic.structs.b paramb) {}
+  public void a(b paramb) {}
   
   public void a(k paramk)
   {
@@ -208,21 +206,21 @@ public class h
   
   public void a(Object paramObject)
   {
-    AppMethodBeat.i(146809);
+    AppMethodBeat.i(15548);
     while (a(this.k)) {}
     if (this.b != null) {
-      this.b.u();
+      this.b.t();
     }
-    AppMethodBeat.o(146809);
+    AppMethodBeat.o(15548);
   }
   
   public void a(Runnable paramRunnable)
   {
-    AppMethodBeat.i(146804);
+    AppMethodBeat.i(15543);
     if (this.c != null) {
       this.c.a(paramRunnable);
     }
-    AppMethodBeat.o(146804);
+    AppMethodBeat.o(15543);
   }
   
   public void a(String paramString)
@@ -232,10 +230,11 @@ public class h
   
   public void a(boolean paramBoolean)
   {
-    AppMethodBeat.i(67725);
+    AppMethodBeat.i(15540);
+    Monitor.a(2, String.format("VideoCapture[%d]: stop screen", new Object[] { Integer.valueOf(hashCode()) }), "", 0);
     this.c.a(null);
     this.c.a(false);
-    AppMethodBeat.o(67725);
+    AppMethodBeat.o(15540);
   }
   
   public boolean a(int paramInt)
@@ -245,41 +244,31 @@ public class h
   
   public void b()
   {
-    AppMethodBeat.i(146803);
+    AppMethodBeat.i(15542);
     this.c.a(true);
-    AppMethodBeat.o(146803);
+    AppMethodBeat.o(15542);
   }
   
-  public void b(int paramInt)
+  public void b(int paramInt) {}
+  
+  public void b(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(67730);
-    AppMethodBeat.o(67730);
+    this.h = paramInt1;
+    this.i = paramInt2;
   }
   
-  public void b(boolean paramBoolean)
-  {
-    AppMethodBeat.i(67731);
-    AppMethodBeat.o(67731);
-  }
+  public void b(boolean paramBoolean) {}
   
   public void c()
   {
-    AppMethodBeat.i(146802);
+    AppMethodBeat.i(15541);
     this.c.a(false);
-    AppMethodBeat.o(146802);
+    AppMethodBeat.o(15541);
   }
   
-  public void c(int paramInt)
-  {
-    AppMethodBeat.i(67732);
-    AppMethodBeat.o(67732);
-  }
+  public void c(int paramInt) {}
   
-  public void c(boolean paramBoolean)
-  {
-    AppMethodBeat.i(67748);
-    AppMethodBeat.o(67748);
-  }
+  public void c(boolean paramBoolean) {}
   
   public void d(int paramInt) {}
   
@@ -295,14 +284,10 @@ public class h
   
   public int e()
   {
-    AppMethodBeat.i(67737);
-    AppMethodBeat.o(67737);
     return 0;
   }
   
   public void e(int paramInt) {}
-  
-  public void e(boolean paramBoolean) {}
   
   public EGLContext f()
   {
@@ -311,14 +296,39 @@ public class h
   
   public void f(int paramInt) {}
   
-  public boolean g()
+  public int g()
+  {
+    return 0;
+  }
+  
+  public boolean h()
+  {
+    return false;
+  }
+  
+  public boolean i()
+  {
+    return false;
+  }
+  
+  public boolean j()
+  {
+    return false;
+  }
+  
+  public boolean k()
+  {
+    return false;
+  }
+  
+  public boolean l()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.h
  * JD-Core Version:    0.7.0.1
  */

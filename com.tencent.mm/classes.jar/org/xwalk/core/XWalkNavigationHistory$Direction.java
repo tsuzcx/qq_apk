@@ -6,11 +6,11 @@ public enum XWalkNavigationHistory$Direction
 {
   static
   {
-    AppMethodBeat.i(85716);
+    AppMethodBeat.i(154811);
     BACKWARD = new Direction("BACKWARD", 0);
     FORWARD = new Direction("FORWARD", 1);
     $VALUES = new Direction[] { BACKWARD, FORWARD };
-    AppMethodBeat.o(85716);
+    AppMethodBeat.o(154811);
   }
   
   private XWalkNavigationHistory$Direction() {}

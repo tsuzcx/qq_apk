@@ -4,10 +4,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ahz;
-import com.tencent.mm.protocal.protobuf.ao;
-import com.tencent.mm.protocal.protobuf.ap;
 import com.tencent.mm.protocal.protobuf.aq;
+import com.tencent.mm.protocal.protobuf.ar;
+import com.tencent.mm.protocal.protobuf.arg;
+import com.tencent.mm.protocal.protobuf.as;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -15,219 +15,256 @@ public class CardGiftInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<CardGiftInfo> CREATOR;
-  public String cFh;
-  public String color;
-  public String kmB;
-  public String kmC;
-  public String kmD;
-  public String kmE;
-  public String kmF;
-  public String kmG;
-  public String kmH;
-  public String kmI;
-  public String kmJ;
-  public String kmK;
-  public String kmL;
-  public String kmM;
-  public String kmN;
-  public boolean kmO;
-  public int kmP;
-  public int kmQ;
-  public int kmR;
-  public String kmS;
-  public String kmT;
-  public int kmU;
-  public String kmV;
-  public String kmW;
-  public String kmX;
-  public String kmY;
-  public String kmZ;
-  public String kna;
-  public String knb;
-  public String knc;
-  public String knd;
-  public LinkedList<CardGiftInfo.AcceptedCardItem> kne;
-  public LinkedList<CardGiftInfo.AccepterItem> knf;
-  public String kng;
-  public int knh;
-  public String kni;
-  public String knj;
-  public String toUserName;
+  public String dio;
+  public String dvQ;
+  public String footerWording;
+  public String gHT;
+  public String nrH;
+  public String nrI;
+  public String nrJ;
+  public String nrK;
+  public String nrL;
+  public String nrM;
+  public String nrN;
+  public String nrO;
+  public String nrP;
+  public String nrQ;
+  public String nrR;
+  public String nrS;
+  public boolean nrT;
+  public int nrU;
+  public int nrV;
+  public int nrW;
+  public String nrX;
+  public String nrY;
+  public int nrZ;
+  public String nsa;
+  public String nsb;
+  public String nsc;
+  public String nsd;
+  public String nse;
+  public String nsf;
+  public String nsg;
+  public String nsh;
+  public String nsi;
+  public LinkedList<AcceptedCardItem> nsj;
+  public LinkedList<AccepterItem> nsk;
+  public String nsl;
+  public int nsm;
+  public String nsn;
+  public String nso;
+  public String nsp;
+  public String nsq;
+  public String nsr;
+  public String nss;
+  public int nst;
+  public String nsu;
+  public String nsv;
+  public String nsw;
+  public String nsx;
   
   static
   {
-    AppMethodBeat.i(87790);
-    CREATOR = new CardGiftInfo.1();
-    AppMethodBeat.o(87790);
+    AppMethodBeat.i(112732);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(112732);
   }
   
   public CardGiftInfo()
   {
-    AppMethodBeat.i(87784);
-    this.kne = new LinkedList();
-    this.knf = new LinkedList();
-    AppMethodBeat.o(87784);
+    AppMethodBeat.i(112726);
+    this.nsj = new LinkedList();
+    this.nsk = new LinkedList();
+    AppMethodBeat.o(112726);
   }
   
   protected CardGiftInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(87785);
-    this.kne = new LinkedList();
-    this.knf = new LinkedList();
-    this.toUserName = paramParcel.readString();
-    this.cFh = paramParcel.readString();
-    this.kmB = paramParcel.readString();
-    this.kmC = paramParcel.readString();
-    this.kmD = paramParcel.readString();
-    this.kmE = paramParcel.readString();
-    this.kmF = paramParcel.readString();
-    this.kmG = paramParcel.readString();
-    this.kmH = paramParcel.readString();
-    this.kmI = paramParcel.readString();
-    this.kmJ = paramParcel.readString();
-    this.kmK = paramParcel.readString();
-    this.kmL = paramParcel.readString();
-    this.kmM = paramParcel.readString();
-    this.kmN = paramParcel.readString();
-    this.color = paramParcel.readString();
+    AppMethodBeat.i(112727);
+    this.nsj = new LinkedList();
+    this.nsk = new LinkedList();
+    this.dio = paramParcel.readString();
+    this.dvQ = paramParcel.readString();
+    this.nrH = paramParcel.readString();
+    this.nrI = paramParcel.readString();
+    this.nrJ = paramParcel.readString();
+    this.nrK = paramParcel.readString();
+    this.nrL = paramParcel.readString();
+    this.nrM = paramParcel.readString();
+    this.nrN = paramParcel.readString();
+    this.nrO = paramParcel.readString();
+    this.nrP = paramParcel.readString();
+    this.nrQ = paramParcel.readString();
+    this.nrR = paramParcel.readString();
+    this.nrS = paramParcel.readString();
+    this.footerWording = paramParcel.readString();
+    this.gHT = paramParcel.readString();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.kmO = bool;
-      this.kmP = paramParcel.readInt();
-      this.kmQ = paramParcel.readInt();
-      this.kmR = paramParcel.readInt();
-      this.kmS = paramParcel.readString();
-      this.kmT = paramParcel.readString();
-      this.kmU = paramParcel.readInt();
-      this.kmV = paramParcel.readString();
-      this.kmW = paramParcel.readString();
-      this.kmX = paramParcel.readString();
-      this.kmY = paramParcel.readString();
-      this.kmZ = paramParcel.readString();
-      this.kna = paramParcel.readString();
-      this.knb = paramParcel.readString();
-      this.knc = paramParcel.readString();
-      this.knd = paramParcel.readString();
-      paramParcel.readTypedList(this.kne, CardGiftInfo.AcceptedCardItem.CREATOR);
-      paramParcel.readTypedList(this.knf, CardGiftInfo.AccepterItem.CREATOR);
-      this.kng = paramParcel.readString();
-      this.knh = paramParcel.readInt();
-      this.kni = paramParcel.readString();
-      this.knj = paramParcel.readString();
-      AppMethodBeat.o(87785);
+      this.nrT = bool;
+      this.nrU = paramParcel.readInt();
+      this.nrV = paramParcel.readInt();
+      this.nrW = paramParcel.readInt();
+      this.nrX = paramParcel.readString();
+      this.nrY = paramParcel.readString();
+      this.nrZ = paramParcel.readInt();
+      this.nsa = paramParcel.readString();
+      this.nsb = paramParcel.readString();
+      this.nsc = paramParcel.readString();
+      this.nsd = paramParcel.readString();
+      this.nse = paramParcel.readString();
+      this.nsf = paramParcel.readString();
+      this.nsg = paramParcel.readString();
+      this.nsh = paramParcel.readString();
+      this.nsi = paramParcel.readString();
+      paramParcel.readTypedList(this.nsj, AcceptedCardItem.CREATOR);
+      paramParcel.readTypedList(this.nsk, AccepterItem.CREATOR);
+      this.nsl = paramParcel.readString();
+      this.nsm = paramParcel.readInt();
+      this.nsn = paramParcel.readString();
+      this.nso = paramParcel.readString();
+      this.nso = paramParcel.readString();
+      this.nsp = paramParcel.readString();
+      this.nsq = paramParcel.readString();
+      this.nsr = paramParcel.readString();
+      this.nss = paramParcel.readString();
+      this.nst = paramParcel.readInt();
+      this.nsu = paramParcel.readString();
+      this.nsv = paramParcel.readString();
+      this.nsw = paramParcel.readString();
+      this.nsx = paramParcel.readString();
+      AppMethodBeat.o(112727);
       return;
     }
   }
   
-  public static CardGiftInfo a(ahz paramahz)
+  public static CardGiftInfo a(aq paramaq)
   {
-    AppMethodBeat.i(87789);
+    AppMethodBeat.i(112730);
     CardGiftInfo localCardGiftInfo = new CardGiftInfo();
-    localCardGiftInfo.toUserName = paramahz.wlP;
-    localCardGiftInfo.cFh = paramahz.wlQ;
-    localCardGiftInfo.kmB = paramahz.wlR;
-    localCardGiftInfo.kmC = paramahz.content;
-    localCardGiftInfo.kmD = paramahz.wlS;
-    localCardGiftInfo.kmE = paramahz.wlT;
-    localCardGiftInfo.kmF = paramahz.wlU;
-    localCardGiftInfo.kmG = paramahz.wlV;
-    localCardGiftInfo.kmI = paramahz.wlX;
-    localCardGiftInfo.kmH = paramahz.wlW;
-    localCardGiftInfo.kmJ = paramahz.wlY;
-    localCardGiftInfo.kmK = paramahz.wlZ;
-    localCardGiftInfo.kmL = paramahz.knk;
-    localCardGiftInfo.kmM = paramahz.knl;
-    localCardGiftInfo.kmN = paramahz.wma;
-    localCardGiftInfo.color = paramahz.color;
-    localCardGiftInfo.kmO = paramahz.wmb;
-    localCardGiftInfo.kmP = paramahz.wmc;
-    localCardGiftInfo.kmQ = paramahz.wmd;
-    localCardGiftInfo.kmR = paramahz.wme;
-    localCardGiftInfo.kmS = paramahz.wmf;
-    localCardGiftInfo.kmT = paramahz.wmg;
-    localCardGiftInfo.kmU = paramahz.wZX;
-    localCardGiftInfo.kmV = paramahz.wmi;
-    localCardGiftInfo.kmW = paramahz.wmj;
-    localCardGiftInfo.kmX = paramahz.wmk;
-    localCardGiftInfo.kmY = paramahz.wml;
-    localCardGiftInfo.kmZ = paramahz.wmm;
-    localCardGiftInfo.kna = paramahz.wmn;
-    localCardGiftInfo.knb = paramahz.wmo;
-    localCardGiftInfo.knc = paramahz.kml;
-    localCardGiftInfo.knd = paramahz.wmp;
-    localCardGiftInfo.kni = paramahz.kni;
-    localCardGiftInfo.knj = paramahz.knj;
-    AppMethodBeat.o(87789);
-    return localCardGiftInfo;
-  }
-  
-  public static CardGiftInfo a(ao paramao)
-  {
-    AppMethodBeat.i(87788);
-    CardGiftInfo localCardGiftInfo = new CardGiftInfo();
-    localCardGiftInfo.toUserName = paramao.wlP;
-    localCardGiftInfo.cFh = paramao.wlQ;
-    localCardGiftInfo.kmB = paramao.wlR;
-    localCardGiftInfo.kmC = paramao.content;
-    localCardGiftInfo.kmD = paramao.wlS;
-    localCardGiftInfo.kmE = paramao.wlT;
-    localCardGiftInfo.kmF = paramao.wlU;
-    localCardGiftInfo.kmG = paramao.wlV;
-    localCardGiftInfo.kmI = paramao.wlX;
-    localCardGiftInfo.kmH = paramao.wlW;
-    localCardGiftInfo.kmJ = paramao.wlY;
-    localCardGiftInfo.kmK = paramao.wlZ;
-    localCardGiftInfo.kmL = paramao.knk;
-    localCardGiftInfo.kmM = paramao.knl;
-    localCardGiftInfo.kmN = paramao.wma;
-    localCardGiftInfo.color = paramao.color;
-    localCardGiftInfo.kmO = paramao.wmb;
-    localCardGiftInfo.kmP = paramao.wmc;
-    localCardGiftInfo.kmQ = paramao.wmd;
-    localCardGiftInfo.kmR = paramao.wme;
-    localCardGiftInfo.kmS = paramao.wmf;
-    localCardGiftInfo.kmT = paramao.wmg;
-    localCardGiftInfo.kmU = paramao.wmh;
-    localCardGiftInfo.kmV = paramao.wmi;
-    localCardGiftInfo.kmW = paramao.wmj;
-    localCardGiftInfo.kmX = paramao.wmk;
-    localCardGiftInfo.kmY = paramao.wml;
-    localCardGiftInfo.kmZ = paramao.wmm;
-    localCardGiftInfo.kna = paramao.wmn;
-    localCardGiftInfo.knb = paramao.wmo;
-    localCardGiftInfo.knc = paramao.kml;
-    localCardGiftInfo.knd = paramao.wmp;
-    Iterator localIterator = paramao.kne.iterator();
+    localCardGiftInfo.dio = paramaq.Cud;
+    localCardGiftInfo.dvQ = paramaq.Cue;
+    localCardGiftInfo.nrH = paramaq.Cuf;
+    localCardGiftInfo.nrI = paramaq.content;
+    localCardGiftInfo.nrJ = paramaq.Cug;
+    localCardGiftInfo.nrK = paramaq.Cuh;
+    localCardGiftInfo.nrL = paramaq.Cui;
+    localCardGiftInfo.nrM = paramaq.Cuj;
+    localCardGiftInfo.nrO = paramaq.Cul;
+    localCardGiftInfo.nrN = paramaq.Cuk;
+    localCardGiftInfo.nrP = paramaq.Cum;
+    localCardGiftInfo.nrQ = paramaq.Cun;
+    localCardGiftInfo.nrR = paramaq.nsy;
+    localCardGiftInfo.nrS = paramaq.nsz;
+    localCardGiftInfo.footerWording = paramaq.Cuo;
+    localCardGiftInfo.gHT = paramaq.gHT;
+    localCardGiftInfo.nrT = paramaq.Cup;
+    localCardGiftInfo.nrU = paramaq.Cuq;
+    localCardGiftInfo.nrV = paramaq.Cur;
+    localCardGiftInfo.nrW = paramaq.Cus;
+    localCardGiftInfo.nrX = paramaq.Cut;
+    localCardGiftInfo.nrY = paramaq.Cuu;
+    localCardGiftInfo.nrZ = paramaq.Cuv;
+    localCardGiftInfo.nsa = paramaq.Cuw;
+    localCardGiftInfo.nsb = paramaq.Cux;
+    localCardGiftInfo.nsc = paramaq.Cuy;
+    localCardGiftInfo.nsd = paramaq.Cuz;
+    localCardGiftInfo.nse = paramaq.CuA;
+    localCardGiftInfo.nsf = paramaq.CuB;
+    localCardGiftInfo.nsg = paramaq.CuC;
+    localCardGiftInfo.nsh = paramaq.nrr;
+    localCardGiftInfo.nsi = paramaq.CuD;
+    Iterator localIterator = paramaq.nsj.iterator();
     Object localObject1;
     LinkedList localLinkedList;
     Object localObject2;
     while (localIterator.hasNext())
     {
-      localObject1 = (ap)localIterator.next();
-      localLinkedList = localCardGiftInfo.kne;
-      localObject2 = new CardGiftInfo.AcceptedCardItem();
-      ((CardGiftInfo.AcceptedCardItem)localObject2).knl = ((ap)localObject1).knl;
-      ((CardGiftInfo.AcceptedCardItem)localObject2).knk = ((ap)localObject1).knk;
+      localObject1 = (ar)localIterator.next();
+      localLinkedList = localCardGiftInfo.nsj;
+      localObject2 = new AcceptedCardItem();
+      ((AcceptedCardItem)localObject2).nsz = ((ar)localObject1).nsz;
+      ((AcceptedCardItem)localObject2).nsy = ((ar)localObject1).nsy;
       localLinkedList.add(localObject2);
     }
-    localIterator = paramao.knf.iterator();
+    localIterator = paramaq.nsk.iterator();
     while (localIterator.hasNext())
     {
-      localObject1 = (aq)localIterator.next();
-      localLinkedList = localCardGiftInfo.knf;
-      localObject2 = new CardGiftInfo.AccepterItem();
-      ((CardGiftInfo.AccepterItem)localObject2).knl = ((aq)localObject1).knl;
-      ((CardGiftInfo.AccepterItem)localObject2).knk = ((aq)localObject1).knk;
-      ((CardGiftInfo.AccepterItem)localObject2).knn = ((aq)localObject1).knn;
-      ((CardGiftInfo.AccepterItem)localObject2).knm = ((aq)localObject1).knm;
+      localObject1 = (as)localIterator.next();
+      localLinkedList = localCardGiftInfo.nsk;
+      localObject2 = new AccepterItem();
+      ((AccepterItem)localObject2).nsz = ((as)localObject1).nsz;
+      ((AccepterItem)localObject2).nsy = ((as)localObject1).nsy;
+      ((AccepterItem)localObject2).nsB = ((as)localObject1).nsB;
+      ((AccepterItem)localObject2).nsA = ((as)localObject1).nsA;
       localLinkedList.add(localObject2);
     }
-    localCardGiftInfo.kng = paramao.kng;
-    localCardGiftInfo.knh = paramao.knh;
-    localCardGiftInfo.kni = paramao.kni;
-    localCardGiftInfo.knj = paramao.knj;
-    AppMethodBeat.o(87788);
+    localCardGiftInfo.nsl = paramaq.nsl;
+    localCardGiftInfo.nsm = paramaq.nsm;
+    localCardGiftInfo.nsn = paramaq.nsn;
+    localCardGiftInfo.nso = paramaq.nso;
+    localCardGiftInfo.nsp = paramaq.nsp;
+    localCardGiftInfo.nsq = paramaq.nsq;
+    localCardGiftInfo.nsr = paramaq.nsr;
+    localCardGiftInfo.nss = paramaq.nss;
+    localCardGiftInfo.nst = paramaq.nst;
+    localCardGiftInfo.nsu = paramaq.nsu;
+    localCardGiftInfo.nsw = paramaq.nsw;
+    localCardGiftInfo.nsv = paramaq.nsv;
+    localCardGiftInfo.nsx = paramaq.nsx;
+    AppMethodBeat.o(112730);
+    return localCardGiftInfo;
+  }
+  
+  public static CardGiftInfo a(arg paramarg)
+  {
+    AppMethodBeat.i(112731);
+    CardGiftInfo localCardGiftInfo = new CardGiftInfo();
+    localCardGiftInfo.dio = paramarg.Cud;
+    localCardGiftInfo.dvQ = paramarg.Cue;
+    localCardGiftInfo.nrH = paramarg.Cuf;
+    localCardGiftInfo.nrI = paramarg.content;
+    localCardGiftInfo.nrJ = paramarg.Cug;
+    localCardGiftInfo.nrK = paramarg.Cuh;
+    localCardGiftInfo.nrL = paramarg.Cui;
+    localCardGiftInfo.nrM = paramarg.Cuj;
+    localCardGiftInfo.nrO = paramarg.Cul;
+    localCardGiftInfo.nrN = paramarg.Cuk;
+    localCardGiftInfo.nrP = paramarg.Cum;
+    localCardGiftInfo.nrQ = paramarg.Cun;
+    localCardGiftInfo.nrR = paramarg.nsy;
+    localCardGiftInfo.nrS = paramarg.nsz;
+    localCardGiftInfo.footerWording = paramarg.Cuo;
+    localCardGiftInfo.gHT = paramarg.gHT;
+    localCardGiftInfo.nrT = paramarg.Cup;
+    localCardGiftInfo.nrU = paramarg.Cuq;
+    localCardGiftInfo.nrV = paramarg.Cur;
+    localCardGiftInfo.nrW = paramarg.Cus;
+    localCardGiftInfo.nrX = paramarg.Cut;
+    localCardGiftInfo.nrY = paramarg.Cuu;
+    localCardGiftInfo.nrZ = paramarg.DrN;
+    localCardGiftInfo.nsa = paramarg.Cuw;
+    localCardGiftInfo.nsb = paramarg.Cux;
+    localCardGiftInfo.nsc = paramarg.Cuy;
+    localCardGiftInfo.nsd = paramarg.Cuz;
+    localCardGiftInfo.nse = paramarg.CuA;
+    localCardGiftInfo.nsf = paramarg.CuB;
+    localCardGiftInfo.nsg = paramarg.CuC;
+    localCardGiftInfo.nsh = paramarg.nrr;
+    localCardGiftInfo.nsi = paramarg.CuD;
+    localCardGiftInfo.nsn = paramarg.nsn;
+    localCardGiftInfo.nso = paramarg.nso;
+    localCardGiftInfo.nsp = paramarg.nsp;
+    localCardGiftInfo.nsq = paramarg.nsq;
+    localCardGiftInfo.nsr = paramarg.nsr;
+    localCardGiftInfo.nss = paramarg.nss;
+    localCardGiftInfo.nst = paramarg.nst;
+    localCardGiftInfo.nsu = paramarg.nsu;
+    localCardGiftInfo.nsw = paramarg.nsw;
+    localCardGiftInfo.nsv = paramarg.nsv;
+    localCardGiftInfo.nsx = paramarg.nsx;
+    AppMethodBeat.o(112731);
     return localCardGiftInfo;
   }
   
@@ -238,64 +275,156 @@ public class CardGiftInfo
   
   public String toString()
   {
-    AppMethodBeat.i(87787);
-    String str = "CardGiftInfo{toUserName='" + this.toUserName + '\'' + ", fromUserName='" + this.cFh + '\'' + ", fromUserImgUrl='" + this.kmB + '\'' + ", fromUserContent='" + this.kmC + '\'' + ", fromUserContentPicUrl='" + this.kmD + '\'' + ", fromUserContentVideoUrl='" + this.kmE + '\'' + ", fromUserContentThumbPicUrl='" + this.kmF + '\'' + ", picAESKey='" + this.kmG + '\'' + ", videoAESKey='" + this.kmH + '\'' + ", thumbVideoAESKey='" + this.kmI + '\'' + ", cardBackgroundPicUrl='" + this.kmJ + '\'' + ", cardLogoLUrl='" + this.kmK + '\'' + ", cardTitle='" + this.kmL + '\'' + ", cardPrice='" + this.kmM + '\'' + ", footerWording='" + this.kmN + '\'' + ", color='" + this.color + '\'' + ", needJump=" + this.kmO + ", picDataLength=" + this.kmP + ", videoDataLength=" + this.kmQ + ", thumbDataLength=" + this.kmR + ", descTitle='" + this.kmS + '\'' + ", descIconUrl='" + this.kmT + '\'' + ", descLayoutMode=" + this.kmU + ", giftingMediaTitle='" + this.kmV + '\'' + ", descriptionTitleColor='" + this.kmW + '\'' + ", cardTitleColor='" + this.kmX + '\'' + ", cardPriceTitleColor='" + this.kmY + '\'' + ", userCardId='" + this.kmZ + '\'' + ", operationTitle='" + this.kna + '\'' + ", operationUrl='" + this.knb + '\'' + ", cardTpId='" + this.knc + '\'' + ", cardCode='" + this.knd + '\'' + ", accepted_card_list_size='" + this.kne.size() + '\'' + ", accepter_list_size='" + this.knf.size() + '\'' + ", accepter_list_title='" + this.kng + '\'' + ", out_of_card='" + this.knh + '\'' + ", operation_wxa_username='" + this.kni + '\'' + ", operation_wxa_path='" + this.knj + '\'' + '}';
-    AppMethodBeat.o(87787);
+    AppMethodBeat.i(112729);
+    String str = "CardGiftInfo{toUserName='" + this.dio + '\'' + ", fromUserName='" + this.dvQ + '\'' + ", fromUserImgUrl='" + this.nrH + '\'' + ", fromUserContent='" + this.nrI + '\'' + ", fromUserContentPicUrl='" + this.nrJ + '\'' + ", fromUserContentVideoUrl='" + this.nrK + '\'' + ", fromUserContentThumbPicUrl='" + this.nrL + '\'' + ", picAESKey='" + this.nrM + '\'' + ", videoAESKey='" + this.nrN + '\'' + ", thumbVideoAESKey='" + this.nrO + '\'' + ", cardBackgroundPicUrl='" + this.nrP + '\'' + ", cardLogoLUrl='" + this.nrQ + '\'' + ", cardTitle='" + this.nrR + '\'' + ", cardPrice='" + this.nrS + '\'' + ", footerWording='" + this.footerWording + '\'' + ", color='" + this.gHT + '\'' + ", needJump=" + this.nrT + ", picDataLength=" + this.nrU + ", videoDataLength=" + this.nrV + ", thumbDataLength=" + this.nrW + ", descTitle='" + this.nrX + '\'' + ", descIconUrl='" + this.nrY + '\'' + ", descLayoutMode=" + this.nrZ + ", giftingMediaTitle='" + this.nsa + '\'' + ", descriptionTitleColor='" + this.nsb + '\'' + ", cardTitleColor='" + this.nsc + '\'' + ", cardPriceTitleColor='" + this.nsd + '\'' + ", userCardId='" + this.nse + '\'' + ", operationTitle='" + this.nsf + '\'' + ", operationUrl='" + this.nsg + '\'' + ", cardTpId='" + this.nsh + '\'' + ", cardCode='" + this.nsi + '\'' + ", accepted_card_list_size='" + this.nsj.size() + '\'' + ", accepter_list_size='" + this.nsk.size() + '\'' + ", accepter_list_title='" + this.nsl + '\'' + ", out_of_card='" + this.nsm + '\'' + ", operation_wxa_username='" + this.nsn + '\'' + ", operation_wxa_path='" + this.nso + '\'' + '}';
+    AppMethodBeat.o(112729);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(87786);
-    paramParcel.writeString(this.toUserName);
-    paramParcel.writeString(this.cFh);
-    paramParcel.writeString(this.kmB);
-    paramParcel.writeString(this.kmC);
-    paramParcel.writeString(this.kmD);
-    paramParcel.writeString(this.kmE);
-    paramParcel.writeString(this.kmF);
-    paramParcel.writeString(this.kmG);
-    paramParcel.writeString(this.kmH);
-    paramParcel.writeString(this.kmI);
-    paramParcel.writeString(this.kmJ);
-    paramParcel.writeString(this.kmK);
-    paramParcel.writeString(this.kmL);
-    paramParcel.writeString(this.kmM);
-    paramParcel.writeString(this.kmN);
-    paramParcel.writeString(this.color);
-    if (this.kmO) {}
+    AppMethodBeat.i(112728);
+    paramParcel.writeString(this.dio);
+    paramParcel.writeString(this.dvQ);
+    paramParcel.writeString(this.nrH);
+    paramParcel.writeString(this.nrI);
+    paramParcel.writeString(this.nrJ);
+    paramParcel.writeString(this.nrK);
+    paramParcel.writeString(this.nrL);
+    paramParcel.writeString(this.nrM);
+    paramParcel.writeString(this.nrN);
+    paramParcel.writeString(this.nrO);
+    paramParcel.writeString(this.nrP);
+    paramParcel.writeString(this.nrQ);
+    paramParcel.writeString(this.nrR);
+    paramParcel.writeString(this.nrS);
+    paramParcel.writeString(this.footerWording);
+    paramParcel.writeString(this.gHT);
+    if (this.nrT) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
-      paramParcel.writeInt(this.kmP);
-      paramParcel.writeInt(this.kmQ);
-      paramParcel.writeInt(this.kmR);
-      paramParcel.writeString(this.kmS);
-      paramParcel.writeString(this.kmT);
-      paramParcel.writeInt(this.kmU);
-      paramParcel.writeString(this.kmV);
-      paramParcel.writeString(this.kmW);
-      paramParcel.writeString(this.kmX);
-      paramParcel.writeString(this.kmY);
-      paramParcel.writeString(this.kmZ);
-      paramParcel.writeString(this.kna);
-      paramParcel.writeString(this.knb);
-      paramParcel.writeString(this.knc);
-      paramParcel.writeString(this.knd);
-      paramParcel.writeTypedList(this.kne);
-      paramParcel.writeTypedList(this.knf);
-      paramParcel.writeString(this.kng);
-      paramParcel.writeInt(this.knh);
-      paramParcel.writeString(this.kni);
-      paramParcel.writeString(this.knj);
-      AppMethodBeat.o(87786);
+      paramParcel.writeInt(this.nrU);
+      paramParcel.writeInt(this.nrV);
+      paramParcel.writeInt(this.nrW);
+      paramParcel.writeString(this.nrX);
+      paramParcel.writeString(this.nrY);
+      paramParcel.writeInt(this.nrZ);
+      paramParcel.writeString(this.nsa);
+      paramParcel.writeString(this.nsb);
+      paramParcel.writeString(this.nsc);
+      paramParcel.writeString(this.nsd);
+      paramParcel.writeString(this.nse);
+      paramParcel.writeString(this.nsf);
+      paramParcel.writeString(this.nsg);
+      paramParcel.writeString(this.nsh);
+      paramParcel.writeString(this.nsi);
+      paramParcel.writeTypedList(this.nsj);
+      paramParcel.writeTypedList(this.nsk);
+      paramParcel.writeString(this.nsl);
+      paramParcel.writeInt(this.nsm);
+      paramParcel.writeString(this.nsn);
+      paramParcel.writeString(this.nso);
+      paramParcel.writeString(this.nso);
+      paramParcel.writeString(this.nsp);
+      paramParcel.writeString(this.nsq);
+      paramParcel.writeString(this.nsr);
+      paramParcel.writeString(this.nss);
+      paramParcel.writeInt(this.nst);
+      paramParcel.writeString(this.nsu);
+      paramParcel.writeString(this.nsv);
+      paramParcel.writeString(this.nsw);
+      paramParcel.writeString(this.nsx);
+      AppMethodBeat.o(112728);
       return;
+    }
+  }
+  
+  public static class AcceptedCardItem
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<AcceptedCardItem> CREATOR;
+    public String nsy;
+    public String nsz;
+    
+    static
+    {
+      AppMethodBeat.i(112721);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(112721);
+    }
+    
+    public AcceptedCardItem() {}
+    
+    private AcceptedCardItem(Parcel paramParcel)
+    {
+      AppMethodBeat.i(112719);
+      this.nsy = paramParcel.readString();
+      this.nsz = paramParcel.readString();
+      AppMethodBeat.o(112719);
+    }
+    
+    public int describeContents()
+    {
+      return 0;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(112720);
+      paramParcel.writeString(this.nsy);
+      paramParcel.writeString(this.nsz);
+      AppMethodBeat.o(112720);
+    }
+  }
+  
+  public static class AccepterItem
+    implements Parcelable
+  {
+    public static final Parcelable.Creator<AccepterItem> CREATOR;
+    public String nsA;
+    public String nsB;
+    public String nsy;
+    public String nsz;
+    
+    static
+    {
+      AppMethodBeat.i(112725);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(112725);
+    }
+    
+    public AccepterItem() {}
+    
+    private AccepterItem(Parcel paramParcel)
+    {
+      AppMethodBeat.i(112723);
+      this.nsy = paramParcel.readString();
+      this.nsz = paramParcel.readString();
+      this.nsA = paramParcel.readString();
+      this.nsB = paramParcel.readString();
+      AppMethodBeat.o(112723);
+    }
+    
+    public int describeContents()
+    {
+      return 0;
+    }
+    
+    public void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(112724);
+      paramParcel.writeString(this.nsy);
+      paramParcel.writeString(this.nsz);
+      paramParcel.writeString(this.nsA);
+      paramParcel.writeString(this.nsB);
+      AppMethodBeat.o(112724);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.CardGiftInfo
  * JD-Core Version:    0.7.0.1
  */

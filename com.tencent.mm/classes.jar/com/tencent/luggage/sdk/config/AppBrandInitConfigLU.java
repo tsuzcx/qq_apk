@@ -2,14 +2,17 @@ package com.tencent.luggage.sdk.config;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import android.text.TextUtils;
 import com.tencent.luggage.sdk.launching.OnWXAppResultXPCWrapper;
-import com.tencent.luggage.sdk.launching.b;
+import com.tencent.luggage.sdk.launching.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
+import com.tencent.mm.plugin.appbrand.config.AppBrandWeishiParams;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.launching.params.AppBrandWeishiParams;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,20 +20,20 @@ public class AppBrandInitConfigLU
   extends AppBrandInitConfig
 {
   public static final Parcelable.Creator<AppBrandInitConfigLU> CREATOR;
-  protected String bCU;
-  public int bCV;
-  public boolean bCW;
-  public boolean bCX;
-  public String bCY;
-  public String bCZ;
-  public final AppBrandWeishiParams bDa;
-  public String bDb;
-  public int bDc;
-  public int bDd;
-  public WxaAttributes.WxaVersionInfo bDe;
-  public b<?> bDf;
-  public boolean bDg;
-  public transient AppBrandStatObject bDh;
+  public int aAS;
+  protected String cfb;
+  public String cfc;
+  public int cfd;
+  public boolean cfe;
+  public String cff;
+  public String cfh;
+  public final AppBrandLaunchReferrer cfi;
+  public final AppBrandWeishiParams cfj;
+  public int cfk;
+  public WxaAttributes.WxaVersionInfo cfl;
+  public a<?> cfm;
+  public boolean cfn;
+  public transient AppBrandStatObject cfo;
   public String extInfo;
   public long startTime;
   public int uin;
@@ -38,196 +41,225 @@ public class AppBrandInitConfigLU
   
   static
   {
-    AppMethodBeat.i(101620);
-    CREATOR = new AppBrandInitConfigLU.1();
-    AppMethodBeat.o(101620);
+    AppMethodBeat.i(146703);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(146703);
   }
   
   public AppBrandInitConfigLU()
   {
-    AppMethodBeat.i(101613);
-    this.bDg = false;
-    this.bDa = new AppBrandWeishiParams();
-    AppMethodBeat.o(101613);
+    AppMethodBeat.i(169428);
+    this.cfn = false;
+    this.cfi = new AppBrandLaunchReferrer();
+    this.cfj = new AppBrandWeishiParams();
+    AppMethodBeat.o(169428);
   }
   
   protected AppBrandInitConfigLU(Parcel paramParcel)
   {
     super(paramParcel);
-    AppMethodBeat.i(101614);
-    this.bDg = false;
-    this.bCU = paramParcel.readString();
+    AppMethodBeat.i(146697);
+    this.cfn = false;
+    this.cfb = paramParcel.readString();
+    this.cfc = paramParcel.readString();
     this.username = paramParcel.readString();
-    this.bCY = paramParcel.readString();
-    this.bCZ = paramParcel.readString();
-    this.bDa = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
-    this.bCV = paramParcel.readInt();
+    this.cff = paramParcel.readString();
+    this.cfh = paramParcel.readString();
+    this.cfi = ((AppBrandLaunchReferrer)paramParcel.readParcelable(AppBrandLaunchReferrer.class.getClassLoader()));
+    this.cfj = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
+    this.cfd = paramParcel.readInt();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.bCW = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label198;
-      }
-      bool1 = true;
-      label96:
-      this.bCX = bool1;
+      this.cfe = bool1;
       this.extInfo = paramParcel.readString();
-      this.bDb = paramParcel.readString();
       this.startTime = paramParcel.readLong();
-      this.bDc = paramParcel.readInt();
-      this.bDd = paramParcel.readInt();
-      this.bDe = ((WxaAttributes.WxaVersionInfo)paramParcel.readParcelable(WxaAttributes.WxaVersionInfo.class.getClassLoader()));
+      this.aAS = paramParcel.readInt();
+      this.cfk = paramParcel.readInt();
+      this.cfl = ((WxaAttributes.WxaVersionInfo)paramParcel.readParcelable(WxaAttributes.WxaVersionInfo.class.getClassLoader()));
       this.uin = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
-        break label203;
+        break label200;
       }
     }
-    label198:
-    label203:
+    label200:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.bDg = bool1;
-      this.bDf = OnWXAppResultXPCWrapper.b(paramParcel);
-      AppMethodBeat.o(101614);
+      this.cfn = bool1;
+      this.cfm = OnWXAppResultXPCWrapper.a(paramParcel);
+      AppMethodBeat.o(146697);
       return;
       bool1 = false;
       break;
-      bool1 = false;
-      break label96;
     }
   }
   
-  public final void resetSession()
+  public final boolean CW()
   {
-    AppMethodBeat.i(101610);
-    this.bCU = ("SessionId@" + hashCode() + "#" + bo.aoy());
-    AppMethodBeat.o(101610);
+    AppMethodBeat.i(186868);
+    if (bt.isNullOrNil(this.cfl.jfF))
+    {
+      AppMethodBeat.o(186868);
+      return false;
+    }
+    try
+    {
+      JSONArray localJSONArray = new JSONObject(this.cfl.jfF).optJSONArray("call_plugin_info");
+      if ((localJSONArray != null) && (localJSONArray.length() > 0))
+      {
+        AppMethodBeat.o(186868);
+        return true;
+      }
+      AppMethodBeat.o(186868);
+      return false;
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(186868);
+    }
+    return false;
   }
   
-  public String toString()
+  public final boolean CX()
   {
-    AppMethodBeat.i(101615);
-    String str = "AppBrandInitConfigLU {visitingSessionId='" + this.bCU + '\'' + ", username='" + this.username + '\'' + ", appId='" + this.appId + '\'' + ", brandName='" + this.cqQ + '\'' + ", debugType=" + this.gXd + ", orientation='" + this.hha + '\'' + ", enterPath='" + this.hiw + '\'' + ", shareName='" + this.bCY + '\'' + ", shareKey='" + this.bCZ + '\'' + ", weishiParams=" + this.bDa + ", startTime=" + this.startTime + ", referrer=" + this.hiz + ", extInfo=" + this.extInfo + ", appVersion=" + this.bDc + '}';
-    AppMethodBeat.o(101615);
-    return str;
+    return this.cfn;
   }
   
-  public final AppBrandStatObject vX()
+  public final AppBrandStatObject CY()
   {
-    return this.bDh;
+    return this.cfo;
   }
   
-  public boolean vY()
+  public boolean CZ()
   {
-    return this.bCV == 4;
+    return this.cfd == 4;
   }
   
-  public final String vZ()
+  public final String Da()
   {
-    return this.bCU;
+    return this.cfb;
   }
   
-  public final JSONObject wa()
+  public final JSONObject Db()
   {
-    AppMethodBeat.i(101611);
+    AppMethodBeat.i(146694);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("shareKey", this.bCZ);
-      localJSONObject.put("shareName", this.bCY);
+      localJSONObject.put("shareKey", this.cfh);
+      localJSONObject.put("shareName", this.cff);
       if (localJSONObject.length() == 0)
       {
-        AppMethodBeat.o(101611);
+        AppMethodBeat.o(146694);
         return null;
       }
     }
     catch (JSONException localJSONException)
     {
-      AppMethodBeat.o(101611);
+      AppMethodBeat.o(146694);
       return null;
     }
-    AppMethodBeat.o(101611);
+    AppMethodBeat.o(146694);
     return localJSONException;
   }
   
-  public final JSONObject wb()
+  public final JSONObject Dc()
   {
-    AppMethodBeat.i(101612);
+    AppMethodBeat.i(146695);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("appId", this.appId);
-      localJSONObject.put("nickname", this.cqQ);
+      localJSONObject.put("nickname", this.dfM);
       localJSONObject.put("icon", this.iconUrl);
       if (localJSONObject.length() == 0)
       {
-        AppMethodBeat.o(101612);
+        AppMethodBeat.o(146695);
         return null;
       }
     }
     catch (JSONException localJSONException)
     {
-      AppMethodBeat.o(101612);
+      AppMethodBeat.o(146695);
       return null;
     }
-    AppMethodBeat.o(101612);
+    AppMethodBeat.o(146695);
     return localJSONException;
   }
   
-  public AppBrandInitConfigLU wc()
+  public final JSONObject Dd()
   {
-    AppMethodBeat.i(101616);
-    AppBrandInitConfigLU localAppBrandInitConfigLU = (AppBrandInitConfigLU)super.wd();
-    AppMethodBeat.o(101616);
+    AppMethodBeat.i(146696);
+    if ((this.cfi != null) && (2 == this.cfi.jdC) && (TextUtils.isEmpty(this.cfi.appId)))
+    {
+      AppMethodBeat.o(146696);
+      return null;
+    }
+    JSONObject localJSONObject = this.cfi.aTA();
+    AppMethodBeat.o(146696);
+    return localJSONObject;
+  }
+  
+  public AppBrandInitConfigLU De()
+  {
+    AppMethodBeat.i(146699);
+    AppBrandInitConfigLU localAppBrandInitConfigLU = (AppBrandInitConfigLU)super.Df();
+    AppMethodBeat.o(146699);
     return localAppBrandInitConfigLU;
+  }
+  
+  public final void resetSession()
+  {
+    AppMethodBeat.i(146693);
+    this.cfb = ("SessionId@" + hashCode() + "#" + bt.eGO());
+    AppMethodBeat.o(146693);
+  }
+  
+  public String toString()
+  {
+    AppMethodBeat.i(146698);
+    String str = "AppBrandInitConfigLU {visitingSessionId='" + this.cfb + '\'' + ", username='" + this.username + '\'' + ", appId='" + this.appId + '\'' + ", brandName='" + this.dfM + '\'' + ", debugType=" + this.iOP + ", orientation='" + this.jbC + '\'' + ", enterPath='" + this.iJb + '\'' + ", shareName='" + this.cff + '\'' + ", shareKey='" + this.cfh + '\'' + ", startTime=" + this.startTime + ", referrer=" + this.cfi + ", extInfo=" + this.extInfo + ", appVersion=" + this.aAS + '}';
+    AppMethodBeat.o(146698);
+    return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(101618);
+    AppMethodBeat.i(146700);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.bCU);
+    paramParcel.writeString(this.cfb);
+    paramParcel.writeString(this.cfc);
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.bCY);
-    paramParcel.writeString(this.bCZ);
-    paramParcel.writeParcelable(this.bDa, paramInt);
-    paramParcel.writeInt(this.bCV);
+    paramParcel.writeString(this.cff);
+    paramParcel.writeString(this.cfh);
+    paramParcel.writeParcelable(this.cfi, paramInt);
+    paramParcel.writeParcelable(this.cfj, paramInt);
+    paramParcel.writeInt(this.cfd);
     byte b;
-    if (this.bCW)
+    if (this.cfe)
     {
       b = 1;
       paramParcel.writeByte(b);
-      if (!this.bCX) {
-        break label185;
-      }
-      b = 1;
-      label87:
-      paramParcel.writeByte(b);
       paramParcel.writeString(this.extInfo);
-      paramParcel.writeString(this.bDb);
       paramParcel.writeLong(this.startTime);
-      paramParcel.writeInt(this.bDc);
-      paramParcel.writeInt(this.bDd);
-      paramParcel.writeParcelable(this.bDe, paramInt);
+      paramParcel.writeInt(this.aAS);
+      paramParcel.writeInt(this.cfk);
+      paramParcel.writeParcelable(this.cfl, paramInt);
       paramParcel.writeInt(this.uin);
-      if (!this.bDg) {
-        break label190;
+      if (!this.cfn) {
+        break label180;
       }
     }
-    label185:
-    label190:
+    label180:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      OnWXAppResultXPCWrapper.a(this.bDf, paramParcel);
-      AppMethodBeat.o(101618);
+      OnWXAppResultXPCWrapper.a(this.cfm, paramParcel);
+      AppMethodBeat.o(146700);
       return;
       b = 0;
       break;
-      b = 0;
-      break label87;
     }
   }
 }

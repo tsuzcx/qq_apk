@@ -5,128 +5,98 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 
 public class FaceDetectReporter
   implements Parcelable
 {
   public static final Parcelable.Creator<FaceDetectReporter> CREATOR;
-  public static FaceDetectReporter miM;
+  public static FaceDetectReporter pPz;
   public String appId;
-  public boolean miH;
-  private FaceDetectReportInfo miI;
-  public int miJ;
-  public int miK;
-  public int miL;
-  private long miN;
-  public long miO;
-  public long miP;
-  public int miQ;
-  public boolean miR;
+  private long pPA;
+  public long pPB;
+  public long pPC;
+  public int pPD;
+  public boolean pPE;
+  public boolean pPu;
+  private FaceDetectReportInfo pPv;
+  public int pPw;
+  public int pPx;
+  public int pPy;
   public long sessionId;
   
   static
   {
-    AppMethodBeat.i(242);
-    miM = new FaceDetectReporter();
-    CREATOR = new FaceDetectReporter.1();
-    AppMethodBeat.o(242);
+    AppMethodBeat.i(103767);
+    pPz = new FaceDetectReporter();
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(103767);
   }
   
   private FaceDetectReporter()
   {
     this.sessionId = 0L;
-    this.miH = false;
-    this.miI = null;
+    this.pPu = false;
+    this.pPv = null;
     this.appId = "";
-    this.miJ = -1;
-    this.miK = 0;
-    this.miL = 0;
-    this.miN = 0L;
-    this.miO = -1L;
-    this.miP = -1L;
-    this.miQ = 0;
-    this.miR = false;
+    this.pPw = -1;
+    this.pPx = 0;
+    this.pPy = 0;
+    this.pPA = 0L;
+    this.pPB = -1L;
+    this.pPC = -1L;
+    this.pPD = 0;
+    this.pPE = false;
   }
   
   protected FaceDetectReporter(Parcel paramParcel)
   {
-    AppMethodBeat.i(228);
+    AppMethodBeat.i(103753);
     this.sessionId = 0L;
-    this.miH = false;
-    this.miI = null;
+    this.pPu = false;
+    this.pPv = null;
     this.appId = "";
-    this.miJ = -1;
-    this.miK = 0;
-    this.miL = 0;
-    this.miN = 0L;
-    this.miO = -1L;
-    this.miP = -1L;
-    this.miQ = 0;
-    this.miR = false;
+    this.pPw = -1;
+    this.pPx = 0;
+    this.pPy = 0;
+    this.pPA = 0L;
+    this.pPB = -1L;
+    this.pPC = -1L;
+    this.pPD = 0;
+    this.pPE = false;
     this.sessionId = paramParcel.readLong();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.miH = bool1;
-      this.miI = ((FaceDetectReportInfo)paramParcel.readParcelable(FaceDetectReportInfo.class.getClassLoader()));
+      this.pPu = bool1;
+      this.pPv = ((FaceDetectReportInfo)paramParcel.readParcelable(FaceDetectReportInfo.class.getClassLoader()));
       this.appId = paramParcel.readString();
-      this.miJ = paramParcel.readInt();
-      this.miK = paramParcel.readInt();
-      this.miL = paramParcel.readInt();
-      this.miN = paramParcel.readLong();
-      this.miO = paramParcel.readLong();
-      this.miP = paramParcel.readLong();
-      this.miQ = paramParcel.readInt();
+      this.pPw = paramParcel.readInt();
+      this.pPx = paramParcel.readInt();
+      this.pPy = paramParcel.readInt();
+      this.pPA = paramParcel.readLong();
+      this.pPB = paramParcel.readLong();
+      this.pPC = paramParcel.readLong();
+      this.pPD = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
-        break label205;
+        break label203;
       }
     }
-    label205:
+    label203:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.miR = bool1;
-      AppMethodBeat.o(228);
+      this.pPE = bool1;
+      AppMethodBeat.o(103753);
       return;
       bool1 = false;
       break;
     }
   }
   
-  public static FaceDetectReporter buB()
-  {
-    AppMethodBeat.i(230);
-    if (miM == null) {
-      try
-      {
-        if (miM == null) {
-          miM = new FaceDetectReporter();
-        }
-        FaceDetectReporter localFaceDetectReporter1 = miM;
-        return localFaceDetectReporter1;
-      }
-      finally
-      {
-        AppMethodBeat.o(230);
-      }
-    }
-    FaceDetectReporter localFaceDetectReporter2 = miM;
-    AppMethodBeat.o(230);
-    return localFaceDetectReporter2;
-  }
-  
-  public static void h(long paramLong, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(231);
-    ab.i("MicroMsg.FaceDetectReporter", "hy: report video: bioId: %d, errType: %d, errCode: %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    h.qsU.e(14121, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(231);
-  }
-  
-  public static int vG(int paramInt)
+  public static int BY(int paramInt)
   {
     switch (paramInt)
     {
@@ -144,201 +114,231 @@ public class FaceDetectReporter
     return 1;
   }
   
-  public final void L(int paramInt, long paramLong)
+  public static FaceDetectReporter cfV()
   {
-    AppMethodBeat.i(239);
-    if (this.miI != null)
-    {
-      FaceDetectReportInfo localFaceDetectReportInfo = this.miI;
-      localFaceDetectReportInfo.ciX += 1;
-      localFaceDetectReportInfo = this.miI;
-      localFaceDetectReportInfo.miD = ((int)(localFaceDetectReportInfo.miD + paramLong));
-      this.miI.vF(paramInt);
+    AppMethodBeat.i(103755);
+    if (pPz == null) {
+      try
+      {
+        if (pPz == null) {
+          pPz = new FaceDetectReporter();
+        }
+        FaceDetectReporter localFaceDetectReporter1 = pPz;
+        return localFaceDetectReporter1;
+      }
+      finally
+      {
+        AppMethodBeat.o(103755);
+      }
     }
-    AppMethodBeat.o(239);
+    FaceDetectReporter localFaceDetectReporter2 = pPz;
+    AppMethodBeat.o(103755);
+    return localFaceDetectReporter2;
   }
   
-  public final void M(int paramInt, long paramLong)
+  public static void h(long paramLong, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(240);
-    if (this.miI != null)
-    {
-      ab.i("MicroMsg.FaceDetectReporter", "hashCode :" + hashCode() + " startTime" + paramLong);
-      this.miI.miF.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
-    }
-    AppMethodBeat.o(240);
+    AppMethodBeat.i(103756);
+    ad.i("MicroMsg.FaceDetectReporter", "hy: report video: bioId: %d, errType: %d, errCode: %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    h.vKh.f(14121, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(103756);
   }
   
-  public final void N(int paramInt, long paramLong)
+  public final void Y(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(241);
-    if (this.miI != null)
+    AppMethodBeat.i(103764);
+    if (this.pPv != null)
     {
-      ab.i("MicroMsg.FaceDetectReporter", "hashCode :" + hashCode() + " endTime:" + paramLong);
-      this.miI.miG.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
+      FaceDetectReportInfo localFaceDetectReportInfo = this.pPv;
+      localFaceDetectReportInfo.cXP += 1;
+      localFaceDetectReportInfo = this.pPv;
+      localFaceDetectReportInfo.pPq = ((int)(localFaceDetectReportInfo.pPq + paramLong));
+      this.pPv.BX(paramInt);
     }
-    AppMethodBeat.o(241);
+    AppMethodBeat.o(103764);
   }
   
-  public final void T(int paramInt, boolean paramBoolean)
+  public final void Z(int paramInt, long paramLong)
   {
-    int i = 1;
-    AppMethodBeat.i(235);
-    ab.v("MicroMsg.FaceDetectReporter", "reportStartFaceDetect businessType: %d, isRetry: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    h localh = h.qsU;
-    long l = this.sessionId;
-    if (paramBoolean) {}
-    for (;;)
+    AppMethodBeat.i(103765);
+    if (this.pPv != null)
     {
-      localh.e(14005, new Object[] { Integer.valueOf(paramInt), Long.valueOf(l), Integer.valueOf(i) });
-      AppMethodBeat.o(235);
-      return;
-      i = 0;
+      ad.i("MicroMsg.FaceDetectReporter", "hashCode :" + hashCode() + " startTime" + paramLong);
+      this.pPv.pPs.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
     }
+    AppMethodBeat.o(103765);
+  }
+  
+  public final void a(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(103761);
+    a(paramInt1, paramBoolean, paramInt2, paramInt3, paramInt4, 0);
+    AppMethodBeat.o(103761);
   }
   
   public final void a(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(237);
-    ab.v("MicroMsg.FaceDetectReporter", "reportFaceDetectVerifyResult sessionId: %d, hasReported: %b, businessType: %d, isRetry: %b, result: %d, errType: %d, errCode: %d", new Object[] { Long.valueOf(this.sessionId), Boolean.valueOf(this.miH), Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    AppMethodBeat.i(103762);
+    ad.v("MicroMsg.FaceDetectReporter", "reportFaceDetectVerifyResult sessionId: %d, hasReported: %b, businessType: %d, isRetry: %b, result: %d, errType: %d, errCode: %d", new Object[] { Long.valueOf(this.sessionId), Boolean.valueOf(this.pPu), Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
     int i;
-    if ((this.miI != null) && (!this.miH))
+    if ((this.pPv != null) && (!this.pPu))
     {
-      ab.v("MicroMsg.FaceDetectReporter", "info: %s", new Object[] { this.miI.toString() });
-      this.miH = true;
-      this.miI.mgC = paramInt5;
-      if (this.miI.ciX != 0) {
-        this.miI.miE = (this.miI.miD / this.miI.ciX);
+      ad.v("MicroMsg.FaceDetectReporter", "info: %s", new Object[] { this.pPv.toString() });
+      this.pPu = true;
+      this.pPv.pNr = paramInt5;
+      if (this.pPv.cXP != 0) {
+        this.pPv.pPr = (this.pPv.pPq / this.pPv.cXP);
       }
       paramInt5 = 0;
       i = paramInt5;
-      if (this.miI.miF.containsKey(Integer.valueOf(0)))
+      if (this.pPv.pPs.containsKey(Integer.valueOf(0)))
       {
         i = paramInt5;
-        if (this.miI.miG.containsKey(Integer.valueOf(0)))
+        if (this.pPv.pPt.containsKey(Integer.valueOf(0)))
         {
-          i = (int)(((Long)this.miI.miG.get(Integer.valueOf(0))).longValue() - ((Long)this.miI.miF.get(Integer.valueOf(0))).longValue());
-          ab.i("MicroMsg.FaceDetectReporter", "normalMotionTime : " + i + "  hashCode :" + hashCode());
+          i = (int)(((Long)this.pPv.pPt.get(Integer.valueOf(0))).longValue() - ((Long)this.pPv.pPs.get(Integer.valueOf(0))).longValue());
+          ad.i("MicroMsg.FaceDetectReporter", "normalMotionTime : " + i + "  hashCode :" + hashCode());
         }
       }
-      if ((!this.miI.miF.containsKey(Integer.valueOf(4))) || (!this.miI.miG.containsKey(Integer.valueOf(4)))) {
-        break label940;
+      if ((!this.pPv.pPs.containsKey(Integer.valueOf(4))) || (!this.pPv.pPt.containsKey(Integer.valueOf(4)))) {
+        break label938;
       }
-      paramInt5 = (int)(((Long)this.miI.miG.get(Integer.valueOf(4))).longValue() - ((Long)this.miI.miF.get(Integer.valueOf(4))).longValue());
-      ab.i("MicroMsg.FaceDetectReporter", "readNumberMotionTime : " + paramInt5 + "  hashCode :" + hashCode());
+      paramInt5 = (int)(((Long)this.pPv.pPt.get(Integer.valueOf(4))).longValue() - ((Long)this.pPv.pPs.get(Integer.valueOf(4))).longValue());
+      ad.i("MicroMsg.FaceDetectReporter", "readNumberMotionTime : " + paramInt5 + "  hashCode :" + hashCode());
     }
     for (;;)
     {
       int j = paramInt5;
-      if (this.miI.miF.containsKey(Integer.valueOf(6)))
+      if (this.pPv.pPs.containsKey(Integer.valueOf(6)))
       {
         j = paramInt5;
-        if (this.miI.miG.containsKey(Integer.valueOf(6)))
+        if (this.pPv.pPt.containsKey(Integer.valueOf(6)))
         {
-          j = (int)(((Long)this.miI.miG.get(Integer.valueOf(6))).longValue() - ((Long)this.miI.miF.get(Integer.valueOf(6))).longValue());
-          ab.i("MicroMsg.FaceDetectReporter", "MOTION_REFLECTION : " + j + "  hashCode :" + hashCode());
+          j = (int)(((Long)this.pPv.pPt.get(Integer.valueOf(6))).longValue() - ((Long)this.pPv.pPs.get(Integer.valueOf(6))).longValue());
+          ad.i("MicroMsg.FaceDetectReporter", "MOTION_REFLECTION : " + j + "  hashCode :" + hashCode());
         }
       }
-      ab.v("MicroMsg.FaceDetectReporter", "alvinluo normal motion time: %d ms, read number motion time: %d ms ,hashcode %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(hashCode()) });
-      h localh = h.qsU;
+      ad.v("MicroMsg.FaceDetectReporter", "alvinluo normal motion time: %d ms, read number motion time: %d ms ,hashcode %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(hashCode()) });
+      h localh = h.vKh;
       long l = this.sessionId;
       if (paramBoolean) {}
       for (paramInt5 = 1;; paramInt5 = 0)
       {
-        localh.e(14006, new Object[] { Long.valueOf(l), Integer.valueOf(paramInt1), Integer.valueOf(paramInt5), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(this.miI.mip), Integer.valueOf(this.miI.miq), Integer.valueOf(this.miI.mir), Integer.valueOf(this.miI.mio), Integer.valueOf(this.miI.mis), Integer.valueOf(this.miI.mit), Integer.valueOf(this.miI.miu), Integer.valueOf(this.miI.miv), Integer.valueOf(this.miI.miw), Integer.valueOf(this.miI.mix), Integer.valueOf(this.miI.miy), Integer.valueOf(this.miI.miz), Integer.valueOf(this.miI.miA), Integer.valueOf(this.miI.mgC), Integer.valueOf(this.miI.miB), Integer.valueOf(this.miI.miC), Integer.valueOf(this.miI.miE), Integer.valueOf(i), Integer.valueOf(j), this.appId, Integer.valueOf(this.miJ), Integer.valueOf(this.miK), Integer.valueOf(this.miL) });
-        AppMethodBeat.o(237);
+        localh.f(14006, new Object[] { Long.valueOf(l), Integer.valueOf(paramInt1), Integer.valueOf(paramInt5), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(this.pPv.pPc), Integer.valueOf(this.pPv.pPd), Integer.valueOf(this.pPv.pPe), Integer.valueOf(this.pPv.pPb), Integer.valueOf(this.pPv.pPf), Integer.valueOf(this.pPv.pPg), Integer.valueOf(this.pPv.pPh), Integer.valueOf(this.pPv.pPi), Integer.valueOf(this.pPv.pPj), Integer.valueOf(this.pPv.pPk), Integer.valueOf(this.pPv.pPl), Integer.valueOf(this.pPv.pPm), Integer.valueOf(this.pPv.pPn), Integer.valueOf(this.pPv.pNr), Integer.valueOf(this.pPv.pPo), Integer.valueOf(this.pPv.pPp), Integer.valueOf(this.pPv.pPr), Integer.valueOf(i), Integer.valueOf(j), this.appId, Integer.valueOf(this.pPw), Integer.valueOf(this.pPx), Integer.valueOf(this.pPy) });
+        AppMethodBeat.o(103762);
         return;
       }
-      label940:
+      label938:
       paramInt5 = 0;
     }
   }
   
   public final void a(FaceDetectReporter paramFaceDetectReporter)
   {
-    AppMethodBeat.i(234);
-    ab.v("MicroMsg.FaceDetectReporter", "alvinluo setReporter, stack: %s", new Object[] { bo.dtY().toString() });
-    this.miI = paramFaceDetectReporter.miI;
-    this.miH = paramFaceDetectReporter.miH;
+    AppMethodBeat.i(103759);
+    ad.v("MicroMsg.FaceDetectReporter", "alvinluo setReporter, stack: %s", new Object[] { bt.eGN().toString() });
+    this.pPv = paramFaceDetectReporter.pPv;
+    this.pPu = paramFaceDetectReporter.pPu;
     this.sessionId = paramFaceDetectReporter.sessionId;
-    this.miK = paramFaceDetectReporter.miK;
-    this.miL = paramFaceDetectReporter.miL;
+    this.pPx = paramFaceDetectReporter.pPx;
+    this.pPy = paramFaceDetectReporter.pPy;
     long l = this.sessionId;
-    if (this.miI != null) {}
-    for (paramFaceDetectReporter = this.miI.toString();; paramFaceDetectReporter = "null")
+    if (this.pPv != null) {}
+    for (paramFaceDetectReporter = this.pPv.toString();; paramFaceDetectReporter = "null")
     {
-      ab.v("MicroMsg.FaceDetectReporter", "alvinluo sessionId: %d, info: %s", new Object[] { Long.valueOf(l), paramFaceDetectReporter });
-      AppMethodBeat.o(234);
+      ad.v("MicroMsg.FaceDetectReporter", "alvinluo sessionId: %d, info: %s", new Object[] { Long.valueOf(l), paramFaceDetectReporter });
+      AppMethodBeat.o(103759);
       return;
     }
   }
   
-  public final void b(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4)
+  public final void aa(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(236);
-    a(paramInt1, paramBoolean, paramInt2, paramInt3, paramInt4, 0);
-    AppMethodBeat.o(236);
-  }
-  
-  public final long buC()
-  {
-    AppMethodBeat.i(232);
-    ab.v("MicroMsg.FaceDetectReporter", "create report session");
-    if (this.miI == null) {
-      this.miI = new FaceDetectReportInfo();
+    AppMethodBeat.i(103766);
+    if (this.pPv != null)
+    {
+      ad.i("MicroMsg.FaceDetectReporter", "hashCode :" + hashCode() + " endTime:" + paramLong);
+      this.pPv.pPt.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
     }
-    this.miI.reset();
-    this.miH = false;
-    this.sessionId = System.currentTimeMillis();
-    this.miI.sessionId = this.sessionId;
-    long l = this.sessionId;
-    AppMethodBeat.o(232);
-    return l;
+    AppMethodBeat.o(103766);
   }
   
-  public final long buD()
+  public final void ab(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(233);
-    ab.v("MicroMsg.FaceDetectReporter", "create interface called session");
-    this.miN = System.currentTimeMillis();
-    this.miQ = 0;
-    this.miR = false;
-    this.miO = -1L;
-    this.miP = -1L;
-    long l = this.miN;
-    AppMethodBeat.o(233);
-    return l;
+    int i = 1;
+    AppMethodBeat.i(103760);
+    ad.v("MicroMsg.FaceDetectReporter", "reportStartFaceDetect businessType: %d, isRetry: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    h localh = h.vKh;
+    long l = this.sessionId;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      localh.f(14005, new Object[] { Integer.valueOf(paramInt), Long.valueOf(l), Integer.valueOf(i) });
+      AppMethodBeat.o(103760);
+      return;
+      i = 0;
+    }
   }
   
-  public final void ci(String paramString, int paramInt)
+  public final void cS(String paramString, int paramInt)
   {
     long l1 = -1L;
     int i = 1;
-    AppMethodBeat.i(238);
+    AppMethodBeat.i(103763);
     h localh;
     long l2;
     String str;
-    if ((this.miO == -1L) || (this.miP == -1L) || (this.miP < this.miO))
+    if ((this.pPB == -1L) || (this.pPC == -1L) || (this.pPC < this.pPB))
     {
-      ab.e("MicroMsg.FaceDetectReporter", "alvinluo not set calledStartTime:%d or calledEndTime: %d, total time is not valid", new Object[] { Long.valueOf(this.miO), Long.valueOf(this.miP) });
-      ab.i("MicroMsg.FaceDetectReporter", "alvinluo report face detect interface called result, sessionId: %d, functionName: %s, interfaceType: %d, businessType: %d, totalTime: %d, isSuccess: %b, appId: %s, faceDetectCount: %d", new Object[] { Long.valueOf(this.miN), paramString, Integer.valueOf(-1), Integer.valueOf(paramInt), Long.valueOf(l1), Boolean.valueOf(this.miR), this.appId, Integer.valueOf(this.miQ) });
-      localh = h.qsU;
-      l2 = this.miN;
+      ad.e("MicroMsg.FaceDetectReporter", "alvinluo not set calledStartTime:%d or calledEndTime: %d, total time is not valid", new Object[] { Long.valueOf(this.pPB), Long.valueOf(this.pPC) });
+      ad.i("MicroMsg.FaceDetectReporter", "alvinluo report face detect interface called result, sessionId: %d, functionName: %s, interfaceType: %d, businessType: %d, totalTime: %d, isSuccess: %b, appId: %s, faceDetectCount: %d", new Object[] { Long.valueOf(this.pPA), paramString, Integer.valueOf(-1), Integer.valueOf(paramInt), Long.valueOf(l1), Boolean.valueOf(this.pPE), this.appId, Integer.valueOf(this.pPD) });
+      localh = h.vKh;
+      l2 = this.pPA;
       str = this.appId;
-      if (!this.miR) {
+      if (!this.pPE) {
         break label273;
       }
     }
     for (;;)
     {
-      localh.e(14560, new Object[] { Long.valueOf(l2), paramString, Integer.valueOf(-1), Integer.valueOf(paramInt), str, Integer.valueOf(i), Long.valueOf(l1), Integer.valueOf(this.miQ) });
-      AppMethodBeat.o(238);
+      localh.f(14560, new Object[] { Long.valueOf(l2), paramString, Integer.valueOf(-1), Integer.valueOf(paramInt), str, Integer.valueOf(i), Long.valueOf(l1), Integer.valueOf(this.pPD) });
+      AppMethodBeat.o(103763);
       return;
-      l1 = this.miP - this.miO;
+      l1 = this.pPC - this.pPB;
       break;
       label273:
       i = 0;
     }
+  }
+  
+  public final long cfW()
+  {
+    AppMethodBeat.i(103757);
+    ad.v("MicroMsg.FaceDetectReporter", "create report session");
+    if (this.pPv == null) {
+      this.pPv = new FaceDetectReportInfo();
+    }
+    this.pPv.reset();
+    this.pPu = false;
+    this.sessionId = System.currentTimeMillis();
+    this.pPv.sessionId = this.sessionId;
+    long l = this.sessionId;
+    AppMethodBeat.o(103757);
+    return l;
+  }
+  
+  public final long cfX()
+  {
+    AppMethodBeat.i(103758);
+    ad.v("MicroMsg.FaceDetectReporter", "create interface called session");
+    this.pPA = System.currentTimeMillis();
+    this.pPD = 0;
+    this.pPE = false;
+    this.pPB = -1L;
+    this.pPC = -1L;
+    long l = this.pPA;
+    AppMethodBeat.o(103758);
+    return l;
   }
   
   public int describeContents()
@@ -349,23 +349,23 @@ public class FaceDetectReporter
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int j = 1;
-    AppMethodBeat.i(229);
+    AppMethodBeat.i(103754);
     paramParcel.writeLong(this.sessionId);
     int i;
-    if (this.miH)
+    if (this.pPu)
     {
       i = 1;
       paramParcel.writeByte((byte)i);
-      paramParcel.writeParcelable(this.miI, paramInt);
+      paramParcel.writeParcelable(this.pPv, paramInt);
       paramParcel.writeString(this.appId);
-      paramParcel.writeInt(this.miJ);
-      paramParcel.writeInt(this.miK);
-      paramParcel.writeInt(this.miL);
-      paramParcel.writeLong(this.miN);
-      paramParcel.writeLong(this.miO);
-      paramParcel.writeLong(this.miP);
-      paramParcel.writeInt(this.miQ);
-      if (!this.miR) {
+      paramParcel.writeInt(this.pPw);
+      paramParcel.writeInt(this.pPx);
+      paramParcel.writeInt(this.pPy);
+      paramParcel.writeLong(this.pPA);
+      paramParcel.writeLong(this.pPB);
+      paramParcel.writeLong(this.pPC);
+      paramParcel.writeInt(this.pPD);
+      if (!this.pPE) {
         break label133;
       }
     }
@@ -373,7 +373,7 @@ public class FaceDetectReporter
     for (paramInt = j;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      AppMethodBeat.o(229);
+      AppMethodBeat.o(103754);
       return;
       i = 0;
       break;
@@ -382,7 +382,7 @@ public class FaceDetectReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.FaceDetectReporter
  * JD-Core Version:    0.7.0.1
  */

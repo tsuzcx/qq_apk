@@ -10,7 +10,9 @@ import com.google.android.gms.common.internal.zzd;
 public abstract interface da
   extends IInterface
 {
-  public abstract void A(boolean paramBoolean);
+  public abstract void C(boolean paramBoolean);
+  
+  public abstract void D(boolean paramBoolean);
   
   public abstract void a(int paramInt, Account paramAccount, cx paramcx);
   
@@ -28,9 +30,7 @@ public abstract interface da
   
   public abstract void b(cx paramcx);
   
-  public abstract void bo(int paramInt);
-  
-  public abstract void z(boolean paramBoolean);
+  public abstract void bI(int paramInt);
 }
 
 

@@ -6,8 +6,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.cache.c;
 import com.tencent.mm.plugin.music.cache.e;
 import com.tencent.mm.plugin.music.f.c.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class h$1$2
   implements Runnable
@@ -16,22 +16,22 @@ final class h$1$2
   
   public final void run()
   {
-    AppMethodBeat.i(137348);
-    if (e.bVi()) {}
-    for (boolean bool = ((c)b.am(c.class)).bVb();; bool = false)
+    AppMethodBeat.i(137098);
+    if (e.cUJ()) {}
+    for (boolean bool = ((c)b.aP(c.class)).cUC();; bool = false)
     {
       if (bool) {
-        Toast.makeText(ah.getContext(), ah.getContext().getString(2131301726), 0).show();
+        Toast.makeText(aj.getContext(), aj.getContext().getString(2131761469), 0).show();
       }
-      AppMethodBeat.o(137348);
+      AppMethodBeat.o(137098);
       return;
-      ab.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
+      ad.e("MicroMsg.Music.MusicDataStorageImpl", "IMusicDataStorage service not exist");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.h.1.2
  * JD-Core Version:    0.7.0.1
  */

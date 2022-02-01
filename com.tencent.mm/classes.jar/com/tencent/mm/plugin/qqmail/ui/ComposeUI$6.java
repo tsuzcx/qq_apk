@@ -12,13 +12,13 @@ final class ComposeUI$6
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(68172);
+    AppMethodBeat.i(122897);
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(68172);
+      AppMethodBeat.o(122897);
       return false;
       if (!paramView.hasFocus()) {
         paramView.requestFocus();
@@ -28,7 +28,7 @@ final class ComposeUI$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.ComposeUI.6
  * JD-Core Version:    0.7.0.1
  */

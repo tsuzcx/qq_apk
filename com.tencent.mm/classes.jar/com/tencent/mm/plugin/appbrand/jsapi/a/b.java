@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.a;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.protocal.protobuf.abk;
 
 public final class b
-  extends a<v>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<aa>
 {
   public static final int CTRL_INDEX = 206;
   public static final String NAME = "deleteUserAutoFillData";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.a.b
  * JD-Core Version:    0.7.0.1
  */

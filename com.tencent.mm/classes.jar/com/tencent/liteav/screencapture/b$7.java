@@ -12,16 +12,16 @@ class b$7
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(66764);
+    AppMethodBeat.i(16521);
     if ((paramIntent != null) && (paramIntent.getAction().equalsIgnoreCase("TXScreenCapture.OnAssistantActivityResult"))) {
       b.a(this.a, paramIntent.getIntExtra("TXScreenCapture.RequestCode", 0), paramIntent.getIntExtra("TXScreenCapture.ResultCode", 0), (Intent)paramIntent.getParcelableExtra("TXScreenCapture.ResultData"));
     }
-    AppMethodBeat.o(66764);
+    AppMethodBeat.o(16521);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.liteav.screencapture.b.7
  * JD-Core Version:    0.7.0.1
  */

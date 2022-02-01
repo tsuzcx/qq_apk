@@ -1,22 +1,36 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.support.v4.view.t;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
-import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.ae;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import java.lang.ref.WeakReference;
 
-final class d
-  extends a<z>
+public final class d
+  extends a<ae>
 {
-  d()
+  public d()
   {
-    super(r.ire.ordinal());
-    AppMethodBeat.i(132205);
-    AppMethodBeat.o(132205);
+    super(q.kRZ.ordinal());
+    AppMethodBeat.i(47623);
+    AppMethodBeat.o(47623);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.d
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class EmojiDetailScrollView
   extends ScrollView
 {
-  private boolean llY;
+  private boolean oCo;
   
   public EmojiDetailScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -20,31 +20,31 @@ public class EmojiDetailScrollView
   public EmojiDetailScrollView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(53369);
-    this.llY = true;
+    AppMethodBeat.i(108929);
+    this.oCo = true;
     setFadingEdgeLength(0);
-    AppMethodBeat.o(53369);
+    AppMethodBeat.o(108929);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(53372);
-    if (!this.llY)
+    AppMethodBeat.i(108932);
+    if (!this.oCo)
     {
-      AppMethodBeat.o(53372);
+      AppMethodBeat.o(108932);
       return false;
     }
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(53372);
+    AppMethodBeat.o(108932);
     return bool;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(53371);
-    this.llY = false;
+    AppMethodBeat.i(108931);
+    this.oCo = false;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(53371);
+    AppMethodBeat.o(108931);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
@@ -53,22 +53,22 @@ public class EmojiDetailScrollView
   
   public void requestLayout()
   {
-    AppMethodBeat.i(53370);
-    this.llY = false;
+    AppMethodBeat.i(108930);
+    this.oCo = false;
     super.requestLayout();
-    AppMethodBeat.o(53370);
+    AppMethodBeat.o(108930);
   }
   
   public void scrollBy(int paramInt1, int paramInt2) {}
   
   public void scrollTo(int paramInt1, int paramInt2)
   {
-    this.llY = true;
+    this.oCo = true;
   }
   
   public void setScrollEnable(boolean paramBoolean)
   {
-    this.llY = paramBoolean;
+    this.oCo = paramBoolean;
   }
 }
 

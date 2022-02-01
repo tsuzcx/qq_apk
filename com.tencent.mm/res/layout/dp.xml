@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/wi" android:background="@drawable/ch" android:layout_width="120.0dip" android:layout_height="wrap_content" android:minHeight="120.0dip"
+<RelativeLayout android:background="@drawable/cn" android:paddingTop="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/ha"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:id="@id/wj" android:padding="7.5dip" android:layout_width="41.0dip" android:layout_height="41.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/ci" />
-    <ImageView android:id="@id/wk" android:layout_width="41.0dip" android:layout_height="41.0dip" />
-    <TextView android:textSize="13.0dip" android:textColor="@color/a6q" android:gravity="center" android:id="@id/cz" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp" android:layout_marginTop="@dimen/dv" android:layout_marginRight="@dimen/dp" android:layout_marginBottom="18.0dip" android:maxLines="1" />
-</LinearLayout>
+    <ImageView android:id="@id/cn1" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+    <TextView android:ellipsize="end" android:id="@id/ehg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxLines="1" android:layout_toRightOf="@id/cn1" android:layout_alignTop="@id/cn1" android:layout_marginEnd="@dimen/ha" style="@style/u3" />
+    <TextView android:ellipsize="end" android:id="@id/f_7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="@dimen/ha" android:maxLines="2" android:layout_toRightOf="@id/cn1" android:layout_below="@id/ehg" android:lineSpacingMultiplier="1.2" android:layout_marginEnd="@dimen/ha" style="@style/u2" />
+    <View android:id="@id/bdj" android:layout_alignParentBottom="true" android:layout_alignStart="@id/ehg" style="@style/a0d" />
+</RelativeLayout>

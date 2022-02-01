@@ -12,36 +12,40 @@ public class VoiceReCreatePromptUI
   extends MMActivity
   implements View.OnClickListener
 {
-  private View tsN = null;
+  private View zeX = null;
   
   public int getLayoutId()
   {
-    return 2130971096;
+    return 2131495866;
   }
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(26221);
-    startActivity(new Intent(this, VoiceCreateUI.class));
+    AppMethodBeat.i(29904);
+    paramView = new Intent(this, VoiceCreateUI.class);
+    paramView = new com.tencent.mm.hellhoundlib.b.a().bd(paramView);
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramView.adn(), "com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramView.lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voiceprint/ui/VoiceReCreatePromptUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
-    AppMethodBeat.o(26221);
+    AppMethodBeat.o(29904);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(26219);
+    AppMethodBeat.i(29902);
     super.onCreate(paramBundle);
     hideTitleView();
-    this.tsN = findViewById(2131828773);
-    this.tsN.setOnClickListener(this);
-    AppMethodBeat.o(26219);
+    this.zeX = findViewById(2131303910);
+    this.zeX.setOnClickListener(this);
+    AppMethodBeat.o(29902);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(26220);
+    AppMethodBeat.i(29903);
     super.onDestroy();
-    AppMethodBeat.o(26220);
+    AppMethodBeat.o(29903);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -52,7 +56,7 @@ public class VoiceReCreatePromptUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.VoiceReCreatePromptUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,99 +1,81 @@
 package com.tencent.mm.wallet_core.c;
 
-import android.os.Bundle;
-import com.tencent.mm.ai.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.g;
 import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.protocal.protobuf.cca;
+import com.tencent.mm.protocal.protobuf.ccb;
+import com.tencent.mm.sdk.platformtools.ad;
 
-public abstract class u
-  extends m
-  implements k
+public final class u
+  extends w
 {
-  private Bundle mBundle;
-  private int mCmdId = 0;
-  private String mProcessName = "";
-  private long mRequestTime;
-  private int mScene = 0;
-  public long sessionId = 0L;
+  public String Axc;
+  public String Axd;
+  private g callback;
+  public String oyw;
+  public final b rr;
   
-  private long reportCostTime(int paramInt1, int paramInt2)
+  public u(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4)
   {
-    long l1 = System.currentTimeMillis() - this.mRequestTime;
-    Object localObject2 = "";
-    Object localObject1 = "";
-    this.mCmdId = getCgicmdForKV();
-    long l2 = System.currentTimeMillis();
-    if (this.mBundle != null)
+    AppMethodBeat.i(72797);
+    Object localObject = new b.a();
+    ((b.a)localObject).gUU = new cca();
+    ((b.a)localObject).gUV = new ccb();
+    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/preparepurchase";
+    ((b.a)localObject).funcId = 422;
+    ((b.a)localObject).reqCmdId = 214;
+    ((b.a)localObject).respCmdId = 1000000214;
+    this.rr = ((b.a)localObject).atI();
+    localObject = (cca)this.rr.gUS.gUX;
+    this.oyw = paramString1;
+    ((cca)localObject).ProductID = paramString1;
+    this.Axd = paramString2;
+    ((cca)localObject).DYr = paramString2;
+    this.Axc = paramString3;
+    ((cca)localObject).DYs = paramString3;
+    ((cca)localObject).upf = paramInt2;
+    ((cca)localObject).DYt = paramInt1;
+    ((cca)localObject).sed = paramString4;
+    ad.d("MicroMsg.NetScenePreparePurchase", "productId:" + paramString1 + ",price:" + paramString2 + ",currencyType:" + paramString3 + ",payType:" + paramInt2);
+    AppMethodBeat.o(72797);
+  }
+  
+  public final int doScene(e parame, g paramg)
+  {
+    AppMethodBeat.i(72799);
+    this.callback = paramg;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(72799);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 422;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  {
+    AppMethodBeat.i(72798);
+    ad.e("MicroMsg.NetScenePreparePurchase", "ErrType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg:" + paramString);
+    if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      String str1 = this.mBundle.getString("key_TransId");
-      String str2 = this.mBundle.getString("key_reqKey");
-      if (this.sessionId == 0L) {
-        this.sessionId = this.mBundle.getLong("key_SessionId", 0L);
-      }
-      localObject1 = str2;
-      localObject2 = str1;
-      if (this.mScene == 0)
-      {
-        this.mScene = this.mBundle.getInt("key_scene");
-        localObject2 = str1;
-        localObject1 = str2;
-      }
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(72798);
+      return;
     }
-    h.qsU.e(11170, new Object[] { Integer.valueOf(getType()), Integer.valueOf(this.mCmdId), Long.valueOf(l1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(at.getNetType(ah.getContext())), this.mProcessName, localObject2, localObject1, Long.valueOf(this.sessionId), Long.valueOf(l2) });
-    z.a(getType(), getCgicmdForKV(), paramInt1, paramInt2, l1, this.mScene, this.mProcessName);
-    return l1;
-  }
-  
-  public int dispatch(e parame, q paramq, k paramk)
-  {
-    this.mRequestTime = System.currentTimeMillis();
-    return super.dispatch(parame, paramq, paramk);
-  }
-  
-  public int getCgicmdForKV()
-  {
-    return -1;
-  }
-  
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte, reportCostTime(paramInt2, paramInt3));
-  }
-  
-  public abstract void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong);
-  
-  public void setCmdId(int paramInt)
-  {
-    this.mCmdId = paramInt;
-  }
-  
-  public void setProcessBundle(Bundle paramBundle)
-  {
-    this.mBundle = paramBundle;
-  }
-  
-  public void setProcessName(String paramString)
-  {
-    this.mProcessName = paramString;
-  }
-  
-  public void setProcessSessionId(long paramLong)
-  {
-    this.sessionId = paramLong;
-  }
-  
-  public void setScene(int paramInt)
-  {
-    this.mScene = paramInt;
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(72798);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.u
  * JD-Core Version:    0.7.0.1
  */

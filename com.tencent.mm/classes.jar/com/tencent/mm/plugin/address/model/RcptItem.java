@@ -10,47 +10,47 @@ public class RcptItem
 {
   public static final Parcelable.Creator<RcptItem> CREATOR;
   public String code;
-  public String gKS;
-  public boolean gKT;
+  public String iyB;
+  public boolean iyC;
   public String name;
   
   static
   {
-    AppMethodBeat.i(16759);
-    CREATOR = new RcptItem.1();
-    AppMethodBeat.o(16759);
+    AppMethodBeat.i(20800);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(20800);
   }
   
   public RcptItem()
   {
     this.name = "";
     this.code = "";
-    this.gKS = "";
-    this.gKT = false;
+    this.iyB = "";
+    this.iyC = false;
   }
   
   public RcptItem(Parcel paramParcel)
   {
-    AppMethodBeat.i(16757);
+    AppMethodBeat.i(20798);
     this.name = "";
     this.code = "";
-    this.gKS = "";
-    this.gKT = false;
+    this.iyB = "";
+    this.iyC = false;
     this.name = paramParcel.readString();
     this.code = paramParcel.readString();
-    this.gKS = paramParcel.readString();
-    AppMethodBeat.o(16757);
+    this.iyB = paramParcel.readString();
+    AppMethodBeat.o(20798);
   }
   
   public RcptItem(String paramString1, String paramString2, String paramString3)
   {
     this.name = "";
     this.code = "";
-    this.gKS = "";
-    this.gKT = false;
+    this.iyB = "";
+    this.iyC = false;
     this.name = paramString1;
     this.code = paramString2;
-    this.gKS = paramString3;
+    this.iyB = paramString3;
   }
   
   public int describeContents()
@@ -60,16 +60,16 @@ public class RcptItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(16758);
+    AppMethodBeat.i(20799);
     paramParcel.writeString(this.name);
     paramParcel.writeString(this.code);
-    paramParcel.writeString(this.gKS);
-    AppMethodBeat.o(16758);
+    paramParcel.writeString(this.iyB);
+    AppMethodBeat.o(20799);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.address.model.RcptItem
  * JD-Core Version:    0.7.0.1
  */

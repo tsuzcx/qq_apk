@@ -10,25 +10,25 @@ public final class g
 {
   public g(i parami)
   {
-    this.CMD = 2064;
-    this.CME = 2;
-    this.CMG = parami;
+    this.Kik = 2064;
+    this.Kil = 2;
+    this.Kin = parami;
   }
   
-  public final byte[] cJ(byte[] paramArrayOfByte)
+  public final byte[] db(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(96426);
-    int k = this.CMG.CMQ;
-    byte[] arrayOfByte1 = this.CMG.CML.erd();
-    Object localObject = this.CMG.CMM;
-    byte[] arrayOfByte2 = new byte[((oicq.wlogin_sdk.a.g)localObject).CNy];
+    AppMethodBeat.i(88065);
+    int k = this.Kin.Kix;
+    byte[] arrayOfByte1 = this.Kin.Kis.fMG();
+    Object localObject = this.Kin.Kit;
+    byte[] arrayOfByte2 = new byte[((oicq.wlogin_sdk.a.g)localObject).Kjf];
     int i;
-    if (((oicq.wlogin_sdk.a.g)localObject).CNy <= 0)
+    if (((oicq.wlogin_sdk.a.g)localObject).Kjf <= 0)
     {
       localObject = new f();
       ao localao = new ao();
-      localObject = ((f)localObject).cK(arrayOfByte1);
-      paramArrayOfByte = localao.q(paramArrayOfByte, arrayOfByte2);
+      localObject = ((f)localObject).dc(arrayOfByte1);
+      paramArrayOfByte = localao.r(paramArrayOfByte, arrayOfByte2);
       arrayOfByte2 = new byte[localObject.length + paramArrayOfByte.length];
       if (arrayOfByte1.length <= 0) {
         break label218;
@@ -39,12 +39,12 @@ public final class g
     for (int j = 1;; j = 0)
     {
       System.arraycopy(paramArrayOfByte, 0, arrayOfByte2, i, paramArrayOfByte.length);
-      paramArrayOfByte = super.H(arrayOfByte2, this.CME, j + 1);
-      a(this.CMy, this.CMD, this.CMG._uin, this.CMA, this.CMB, k, this.CMC, paramArrayOfByte);
-      paramArrayOfByte = super.era();
-      AppMethodBeat.o(96426);
+      paramArrayOfByte = super.P(arrayOfByte2, this.Kil, j + 1);
+      a(this.Kif, this.Kik, this.Kin._uin, this.Kih, this.Kii, k, this.Kij, paramArrayOfByte);
+      paramArrayOfByte = super.fMD();
+      AppMethodBeat.o(88065);
       return paramArrayOfByte;
-      System.arraycopy(((oicq.wlogin_sdk.a.g)localObject).CMx, ((oicq.wlogin_sdk.a.g)localObject).CNA, arrayOfByte2, 0, ((oicq.wlogin_sdk.a.g)localObject).CNy);
+      System.arraycopy(((oicq.wlogin_sdk.a.g)localObject).Kie, ((oicq.wlogin_sdk.a.g)localObject).Kjh, arrayOfByte2, 0, ((oicq.wlogin_sdk.a.g)localObject).Kjf);
       break;
       label218:
       i = 0;

@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <ListView android:id="@id/bde" android:background="#f7ffffff" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/mn" />
-    <ListView android:id="@id/cbm" android:background="#f7ffffff" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/mn" />
-    <RelativeLayout android:id="@id/amp" android:background="#f7ffffff" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/bdf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a00" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:gravity="center_horizontal" android:id="@id/aa_" android:background="#f7ffffff" android:paddingTop="@dimen/l8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/c_b" />
-</FrameLayout>
+<RelativeLayout android:id="@id/ek7" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/c_" android:layout_marginBottom="@dimen/c5"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/ek5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.tencent.mm.plugin.finder.view.FinderPostProgressView android:id="@id/ek6" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/a3a" android:textColor="@color/y4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c_" android:text="@string/ccb" android:layout_centerVertical="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ek2" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@raw/icons_outlined_delete" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hpm" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginRight="@dimen/c5" android:src="@raw/icons_outlined_like" android:layout_toLeftOf="@id/ek2" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/ej4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@raw/icons_filled_error" android:layout_centerVertical="true" app:iconColor="@color/Red" />
+        <TextView android:textSize="@dimen/a3a" android:textColor="@color/y4" android:id="@id/ej5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c_" android:layout_marginRight="@dimen/bt" android:text="@string/cc0" android:maxLines="2" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ek3" android:background="@drawable/ur" android:padding="@dimen/bq" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@raw/icons_outlined_delete" android:layout_centerVertical="true" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ek4" android:background="@drawable/ur" android:padding="@dimen/bq" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginLeft="@dimen/c8" android:src="@raw/icons_outlined_refresh" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

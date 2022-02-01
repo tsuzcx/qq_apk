@@ -5,8 +5,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.record.a.d;
 import com.tencent.mm.plugin.record.a.i;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
@@ -16,27 +17,38 @@ public final class j
   implements com.tencent.mm.plugin.record.a.e
 {
   private com.tencent.mm.sdk.e.e db;
-  private Vector<d> pYG;
+  private Vector<d> vaz;
   
   public j(com.tencent.mm.sdk.e.e parame)
   {
     super(parame, i.info, "RecordCDNInfo", null);
-    AppMethodBeat.i(135678);
-    this.pYG = new Vector();
+    AppMethodBeat.i(9500);
+    this.vaz = new Vector();
     this.db = parame;
-    AppMethodBeat.o(135678);
+    AppMethodBeat.o(9500);
   }
   
-  private void b(int paramInt, i parami)
+  private void b(final int paramInt, final i parami)
   {
-    AppMethodBeat.i(135681);
-    g.RO().ac(new j.3(this, paramInt, parami));
-    AppMethodBeat.o(135681);
+    AppMethodBeat.i(9503);
+    g.afE().ax(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(9499);
+        Iterator localIterator = j.a(j.this).iterator();
+        while (localIterator.hasNext()) {
+          ((d)localIterator.next()).a(paramInt, parami);
+        }
+        AppMethodBeat.o(9499);
+      }
+    });
+    AppMethodBeat.o(9503);
   }
   
-  public final List<i> Ck(int paramInt)
+  public final List<i> Ka(int paramInt)
   {
-    AppMethodBeat.i(135683);
+    AppMethodBeat.i(9505);
     LinkedList localLinkedList = new LinkedList();
     Object localObject = "SELECT * FROM RecordCDNInfo WHERE recordLocalId = ".concat(String.valueOf(paramInt));
     localObject = this.db.a((String)localObject, null, 2);
@@ -50,15 +62,58 @@ public final class j
       }
       ((Cursor)localObject).close();
     }
-    ab.d("MicroMsg.RecordMsgCDNStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
-    AppMethodBeat.o(135683);
+    ad.d("MicroMsg.RecordMsgCDNStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+    AppMethodBeat.o(9505);
     return localLinkedList;
   }
   
-  public final i XR(String paramString)
+  public final void a(final d paramd)
+  {
+    AppMethodBeat.i(9501);
+    g.afE().ax(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(9497);
+        if (!j.a(j.this).contains(paramd)) {
+          j.a(j.this).add(paramd);
+        }
+        AppMethodBeat.o(9497);
+      }
+    });
+    AppMethodBeat.o(9501);
+  }
+  
+  public final boolean a(i parami)
+  {
+    AppMethodBeat.i(9509);
+    if (super.replace(parami))
+    {
+      b(1, parami);
+      AppMethodBeat.o(9509);
+      return true;
+    }
+    AppMethodBeat.o(9509);
+    return false;
+  }
+  
+  public final boolean a(i parami, String... paramVarArgs)
+  {
+    AppMethodBeat.i(9507);
+    if (super.delete(parami, paramVarArgs))
+    {
+      b(0, parami);
+      AppMethodBeat.o(9507);
+      return true;
+    }
+    AppMethodBeat.o(9507);
+    return false;
+  }
+  
+  public final i als(String paramString)
   {
     Object localObject = null;
-    AppMethodBeat.i(135684);
+    AppMethodBeat.i(9506);
     paramString = "SELECT * FROM RecordCDNInfo WHERE mediaId='" + paramString + "'";
     Cursor localCursor = this.db.a(paramString, null, 2);
     paramString = localObject;
@@ -74,89 +129,64 @@ public final class j
     if (localCursor != null) {
       localCursor.close();
     }
-    AppMethodBeat.o(135684);
+    AppMethodBeat.o(9506);
     return paramString;
   }
   
-  public final void a(d paramd)
+  public final void b(final d paramd)
   {
-    AppMethodBeat.i(135679);
-    g.RO().ac(new j.1(this, paramd));
-    AppMethodBeat.o(135679);
-  }
-  
-  public final boolean a(i parami)
-  {
-    AppMethodBeat.i(135687);
-    if (super.replace(parami))
+    AppMethodBeat.i(9502);
+    g.afE().ax(new Runnable()
     {
-      b(1, parami);
-      AppMethodBeat.o(135687);
-      return true;
-    }
-    AppMethodBeat.o(135687);
-    return false;
-  }
-  
-  public final boolean a(i parami, String... paramVarArgs)
-  {
-    AppMethodBeat.i(135685);
-    if (super.delete(parami, paramVarArgs))
-    {
-      b(0, parami);
-      AppMethodBeat.o(135685);
-      return true;
-    }
-    AppMethodBeat.o(135685);
-    return false;
-  }
-  
-  public final void b(d paramd)
-  {
-    AppMethodBeat.i(135680);
-    g.RO().ac(new j.2(this, paramd));
-    AppMethodBeat.o(135680);
+      public final void run()
+      {
+        AppMethodBeat.i(9498);
+        j.a(j.this).remove(paramd);
+        AppMethodBeat.o(9498);
+      }
+    });
+    AppMethodBeat.o(9502);
   }
   
   public final boolean b(i parami)
   {
-    AppMethodBeat.i(135688);
+    AppMethodBeat.i(9510);
     if (parami != null)
     {
-      ab.v("MicroMsg.RecordMsgCDNStorage", "insert record cdn info %s", new Object[] { parami });
+      ad.v("MicroMsg.RecordMsgCDNStorage", "insert record cdn info %s", new Object[] { parami });
       if (super.insert(parami))
       {
         b(2, parami);
-        AppMethodBeat.o(135688);
+        AppMethodBeat.o(9510);
         return true;
       }
     }
     else
     {
-      ab.e("MicroMsg.RecordMsgCDNStorage", "insert null record cdn info");
-      AppMethodBeat.o(135688);
+      ad.e("MicroMsg.RecordMsgCDNStorage", "insert null record cdn info");
+      AppMethodBeat.o(9510);
       return false;
     }
-    AppMethodBeat.o(135688);
+    AppMethodBeat.o(9510);
     return false;
   }
   
   public final boolean b(i parami, String... paramVarArgs)
   {
-    AppMethodBeat.i(135686);
+    AppMethodBeat.i(9508);
     if (super.update(parami, paramVarArgs))
     {
       b(1, parami);
-      AppMethodBeat.o(135686);
+      AppMethodBeat.o(9508);
       return true;
     }
-    AppMethodBeat.o(135686);
+    AppMethodBeat.o(9508);
     return false;
   }
   
-  public final List<i> cfM()
+  public final List<i> dgc()
   {
-    AppMethodBeat.i(135682);
+    AppMethodBeat.i(9504);
     LinkedList localLinkedList = new LinkedList();
     Cursor localCursor = this.db.a("SELECT * FROM RecordCDNInfo WHERE status != 3 AND status != 4 AND status != 2 AND status != -1", null, 2);
     if (localCursor != null)
@@ -169,14 +199,14 @@ public final class j
       }
       localCursor.close();
     }
-    ab.d("MicroMsg.RecordMsgCDNStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
-    AppMethodBeat.o(135682);
+    ad.d("MicroMsg.RecordMsgCDNStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+    AppMethodBeat.o(9504);
     return localLinkedList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.j
  * JD-Core Version:    0.7.0.1
  */

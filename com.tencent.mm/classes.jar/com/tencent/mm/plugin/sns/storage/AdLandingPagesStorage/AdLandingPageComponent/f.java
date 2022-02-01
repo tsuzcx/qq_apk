@@ -1,18 +1,14 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
 public final class f
-  extends l
+  extends p
 {
-  public f.a rrU;
-  
-  public f(f.a parama)
-  {
-    this.rrU = parama;
-  }
+  public String nsh;
+  public String ntf;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.f
  * JD-Core Version:    0.7.0.1
  */

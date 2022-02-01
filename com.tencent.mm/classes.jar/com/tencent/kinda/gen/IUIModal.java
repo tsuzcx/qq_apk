@@ -5,6 +5,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class IUIModal
 {
+  public abstract boolean IsShowAndroidCenterPadding();
+  
   public abstract void keyboadWillHide();
   
   public abstract void keyboadWillShow(float paramFloat);
@@ -19,6 +21,10 @@ public abstract class IUIModal
   
   public abstract void setPlatformDelegate(IUIPagePlatformDelegate paramIUIPagePlatformDelegate);
   
+  public abstract DynamicColor statusbarColor();
+  
+  public abstract void viewDidTransitionToNewSize();
+  
   static final class CppProxy
     extends IUIModal
   {
@@ -27,31 +33,33 @@ public abstract class IUIModal
     
     static
     {
-      AppMethodBeat.i(141244);
+      AppMethodBeat.i(135748);
       if (!IUIModal.class.desiredAssertionStatus()) {}
       for (boolean bool = true;; bool = false)
       {
         $assertionsDisabled = bool;
-        AppMethodBeat.o(141244);
+        AppMethodBeat.o(135748);
         return;
       }
     }
     
     private CppProxy(long paramLong)
     {
-      AppMethodBeat.i(141234);
+      AppMethodBeat.i(135736);
       this.destroyed = new AtomicBoolean(false);
       if (paramLong == 0L)
       {
         RuntimeException localRuntimeException = new RuntimeException("nativeRef is zero");
-        AppMethodBeat.o(141234);
+        AppMethodBeat.o(135736);
         throw localRuntimeException;
       }
       this.nativeRef = paramLong;
-      AppMethodBeat.o(141234);
+      AppMethodBeat.o(135736);
     }
     
     private native void nativeDestroy(long paramLong);
+    
+    private native boolean native_IsShowAndroidCenterPadding(long paramLong);
     
     private native void native_keyboadWillHide(long paramLong);
     
@@ -67,118 +75,163 @@ public abstract class IUIModal
     
     private native void native_setPlatformDelegate(long paramLong, IUIPagePlatformDelegate paramIUIPagePlatformDelegate);
     
+    private native DynamicColor native_statusbarColor(long paramLong);
+    
+    private native void native_viewDidTransitionToNewSize(long paramLong);
+    
+    public final boolean IsShowAndroidCenterPadding()
+    {
+      AppMethodBeat.i(135747);
+      if ((!$assertionsDisabled) && (this.destroyed.get()))
+      {
+        AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
+        AppMethodBeat.o(135747);
+        throw localAssertionError;
+      }
+      boolean bool = native_IsShowAndroidCenterPadding(this.nativeRef);
+      AppMethodBeat.o(135747);
+      return bool;
+    }
+    
     public final void destroy()
     {
-      AppMethodBeat.i(141235);
+      AppMethodBeat.i(135737);
       if (!this.destroyed.getAndSet(true)) {
         nativeDestroy(this.nativeRef);
       }
-      AppMethodBeat.o(141235);
+      AppMethodBeat.o(135737);
     }
     
     protected final void finalize()
     {
-      AppMethodBeat.i(141236);
+      AppMethodBeat.i(135738);
       destroy();
       super.finalize();
-      AppMethodBeat.o(141236);
+      AppMethodBeat.o(135738);
     }
     
     public final void keyboadWillHide()
     {
-      AppMethodBeat.i(141240);
+      AppMethodBeat.i(135742);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(141240);
+        AppMethodBeat.o(135742);
         throw localAssertionError;
       }
       native_keyboadWillHide(this.nativeRef);
-      AppMethodBeat.o(141240);
+      AppMethodBeat.o(135742);
     }
     
     public final void keyboadWillShow(float paramFloat)
     {
-      AppMethodBeat.i(141239);
+      AppMethodBeat.i(135741);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(141239);
+        AppMethodBeat.o(135741);
         throw localAssertionError;
       }
       native_keyboadWillShow(this.nativeRef, paramFloat);
-      AppMethodBeat.o(141239);
+      AppMethodBeat.o(135741);
     }
     
     public final void onClickAndroidBack()
     {
-      AppMethodBeat.i(141243);
+      AppMethodBeat.i(135746);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(141243);
+        AppMethodBeat.o(135746);
         throw localAssertionError;
       }
       native_onClickAndroidBack(this.nativeRef);
-      AppMethodBeat.o(141243);
+      AppMethodBeat.o(135746);
     }
     
     public final void onCreateLayout(KViewLayout paramKViewLayout)
     {
-      AppMethodBeat.i(141237);
+      AppMethodBeat.i(135739);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         paramKViewLayout = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(141237);
+        AppMethodBeat.o(135739);
         throw paramKViewLayout;
       }
       native_onCreateLayout(this.nativeRef, paramKViewLayout);
-      AppMethodBeat.o(141237);
+      AppMethodBeat.o(135739);
     }
     
     public final void onModalEnterBackground()
     {
-      AppMethodBeat.i(141241);
+      AppMethodBeat.i(135744);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(141241);
+        AppMethodBeat.o(135744);
         throw localAssertionError;
       }
       native_onModalEnterBackground(this.nativeRef);
-      AppMethodBeat.o(141241);
+      AppMethodBeat.o(135744);
     }
     
     public final void onModalEnterForeground()
     {
-      AppMethodBeat.i(141242);
+      AppMethodBeat.i(135745);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(141242);
+        AppMethodBeat.o(135745);
         throw localAssertionError;
       }
       native_onModalEnterForeground(this.nativeRef);
-      AppMethodBeat.o(141242);
+      AppMethodBeat.o(135745);
     }
     
     public final void setPlatformDelegate(IUIPagePlatformDelegate paramIUIPagePlatformDelegate)
     {
-      AppMethodBeat.i(141238);
+      AppMethodBeat.i(135740);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         paramIUIPagePlatformDelegate = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(141238);
+        AppMethodBeat.o(135740);
         throw paramIUIPagePlatformDelegate;
       }
       native_setPlatformDelegate(this.nativeRef, paramIUIPagePlatformDelegate);
-      AppMethodBeat.o(141238);
+      AppMethodBeat.o(135740);
+    }
+    
+    public final DynamicColor statusbarColor()
+    {
+      AppMethodBeat.i(190578);
+      if ((!$assertionsDisabled) && (this.destroyed.get()))
+      {
+        localObject = new AssertionError("trying to use a destroyed object");
+        AppMethodBeat.o(190578);
+        throw ((Throwable)localObject);
+      }
+      Object localObject = native_statusbarColor(this.nativeRef);
+      AppMethodBeat.o(190578);
+      return localObject;
+    }
+    
+    public final void viewDidTransitionToNewSize()
+    {
+      AppMethodBeat.i(135743);
+      if ((!$assertionsDisabled) && (this.destroyed.get()))
+      {
+        AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
+        AppMethodBeat.o(135743);
+        throw localAssertionError;
+      }
+      native_viewDidTransitionToNewSize(this.nativeRef);
+      AppMethodBeat.o(135743);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.gen.IUIModal
  * JD-Core Version:    0.7.0.1
  */

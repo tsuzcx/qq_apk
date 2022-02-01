@@ -8,25 +8,25 @@ import org.json.JSONObject;
 public final class a
   extends com.tencent.mm.wallet_core.e.a.a
 {
-  public String cLS;
+  public String AiX;
+  public String AyH;
+  public String AyR;
+  public String AyS;
+  public String AyT;
+  public String dCQ;
   public String description;
   public String pin;
-  public String uBB;
-  public String uBL;
-  public String uBM;
-  public String uBN;
-  public String umC;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    AppMethodBeat.i(48333);
-    this.uBL = paramString1;
-    this.umC = paramString2;
-    this.cLS = paramString3;
-    this.uBM = paramString4;
-    this.uBN = paramString5;
+    AppMethodBeat.i(71973);
+    this.AyR = paramString1;
+    this.AiX = paramString2;
+    this.dCQ = paramString3;
+    this.AyS = paramString4;
+    this.AyT = paramString5;
     this.description = paramString6;
-    this.uBB = paramString7;
+    this.AyH = paramString7;
     this.pin = paramString8;
     HashMap localHashMap = new HashMap();
     localHashMap.put("bank_type", paramString1);
@@ -38,10 +38,10 @@ public final class a
     localHashMap.put("cvv", paramString7);
     localHashMap.put("pin", paramString8);
     setRequestData(localHashMap);
-    AppMethodBeat.o(48333);
+    AppMethodBeat.o(71973);
   }
   
-  public final int cTa()
+  public final int ebo()
   {
     return 0;
   }
@@ -50,7 +50,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.bind.model.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,50 @@
 package com.tencent.mm.plugin.masssend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mv;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.g.a.oh;
+import com.tencent.mm.model.az;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 
 public final class g
-  extends com.tencent.mm.sdk.b.c<mv>
+  extends com.tencent.mm.sdk.b.c<oh>
 {
   public g()
   {
-    AppMethodBeat.i(22741);
-    this.__eventId = mv.class.getName().hashCode();
-    AppMethodBeat.o(22741);
+    AppMethodBeat.i(161392);
+    this.__eventId = oh.class.getName().hashCode();
+    AppMethodBeat.o(161392);
   }
   
-  private static boolean aiN()
+  private static boolean azW()
   {
-    AppMethodBeat.i(22742);
-    if (!aw.RG())
+    AppMethodBeat.i(26363);
+    if (!az.afw())
     {
-      ab.e("MicroMsg.PostTaskMassSendListener", "has not set uin");
-      AppMethodBeat.o(22742);
+      ad.e("MicroMsg.PostTaskMassSendListener", "has not set uin");
+      AppMethodBeat.o(26363);
       return false;
     }
-    h.bPd();
-    aw.aaz();
-    if (bo.hl(bo.a((Long)com.tencent.mm.model.c.Ru().get(102409, null), 0L)) > 900000L) {}
+    h.cNT();
+    az.arV();
+    if (bt.vM(bt.a((Long)com.tencent.mm.model.c.afk().get(102409, null), 0L)) > 900000L) {}
     for (int i = 1; i == 0; i = 0)
     {
-      ab.d("MicroMsg.PostTaskMassSendListener", "time limit");
-      AppMethodBeat.o(22742);
+      ad.d("MicroMsg.PostTaskMassSendListener", "time limit");
+      AppMethodBeat.o(26363);
       return false;
     }
-    h.bPd().bOY();
-    h.bPd();
-    c.kA(bo.aoy());
-    AppMethodBeat.o(22742);
+    h.cNT().cNO();
+    h.cNT();
+    c.rk(bt.eGO());
+    AppMethodBeat.o(26363);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.a.g
  * JD-Core Version:    0.7.0.1
  */

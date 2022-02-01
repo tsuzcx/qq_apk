@@ -8,7 +8,7 @@ final class zzf
 {
   public final DynamiteModule.VersionPolicy.SelectionResult selectModule(Context paramContext, String paramString, DynamiteModule.VersionPolicy.IVersions paramIVersions)
   {
-    AppMethodBeat.i(90454);
+    AppMethodBeat.i(5475);
     DynamiteModule.VersionPolicy.SelectionResult localSelectionResult = new DynamiteModule.VersionPolicy.SelectionResult();
     localSelectionResult.localVersion = paramIVersions.getLocalVersion(paramContext, paramString);
     localSelectionResult.remoteVersion = paramIVersions.getRemoteVersion(paramContext, paramString, true);
@@ -17,7 +17,7 @@ final class zzf
     }
     for (;;)
     {
-      AppMethodBeat.o(90454);
+      AppMethodBeat.o(5475);
       return localSelectionResult;
       if (localSelectionResult.remoteVersion >= localSelectionResult.localVersion) {
         localSelectionResult.selection = 1;

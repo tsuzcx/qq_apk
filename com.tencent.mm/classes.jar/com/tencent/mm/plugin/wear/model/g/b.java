@@ -1,66 +1,66 @@
 package com.tencent.mm.plugin.wear.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e;
-import com.tencent.mm.ai.e.a;
-import com.tencent.mm.ai.e.b;
-import com.tencent.mm.ai.e.c;
-import com.tencent.mm.g.a.vz;
-import com.tencent.mm.g.a.vz.b;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.f;
+import com.tencent.mm.al.f.a;
+import com.tencent.mm.al.f.b;
+import com.tencent.mm.al.f.c;
+import com.tencent.mm.g.a.xz;
+import com.tencent.mm.g.a.xz.b;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.protobuf.cm;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.cs;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import java.util.LinkedHashMap;
 
 public final class b
-  implements e
+  implements f
 {
-  public final void a(e.c paramc) {}
-  
-  public final e.b b(e.a parama)
+  public final f.b b(f.a parama)
   {
-    AppMethodBeat.i(26456);
-    ??? = parama.eyJ;
-    aw.aaz();
-    if (bo.isNullOrNil((String)c.Ru().get(2, "")))
+    AppMethodBeat.i(30138);
+    ??? = parama.fTo;
+    az.arV();
+    if (bt.isNullOrNil((String)c.afk().get(2, "")))
     {
-      AppMethodBeat.o(26456);
+      AppMethodBeat.o(30138);
       return null;
     }
-    parama = aa.a(((cm)???).woP);
-    Object localObject2 = aa.a(((cm)???).woQ);
-    if ((bo.isNullOrNil(parama)) || (bo.isNullOrNil((String)localObject2)))
+    parama = z.a(((cs)???).Cxx);
+    Object localObject2 = z.a(((cs)???).Cxy);
+    if ((bt.isNullOrNil(parama)) || (bt.isNullOrNil((String)localObject2)))
     {
-      ab.e("MicroMsg.YoExtension", "neither from-user nor to-user can be empty");
-      AppMethodBeat.o(26456);
+      ad.e("MicroMsg.YoExtension", "neither from-user nor to-user can be empty");
+      AppMethodBeat.o(30138);
       return null;
     }
-    Object localObject3 = aa.a(((cm)???).woR);
-    ab.i("MicroMsg.YoExtension", "from  " + parama + "content " + (String)localObject3);
-    localObject2 = com.tencent.mm.plugin.wear.model.a.cYy().uGJ;
-    synchronized (((a)localObject2).uHW)
+    Object localObject3 = z.a(((cs)???).Cxz);
+    ad.i("MicroMsg.YoExtension", "from  " + parama + "content " + (String)localObject3);
+    localObject2 = com.tencent.mm.plugin.wear.model.a.egX();
+    synchronized (((a)localObject2).AFb)
     {
-      vz localvz = a.agi(parama);
-      if ((!((a)localObject2).uHW.containsKey(parama)) && (localvz.cNp.cNq != 1))
+      xz localxz = a.auT(parama);
+      if ((!((a)localObject2).AFb.containsKey(parama)) && (localxz.dEn.dEo != 1))
       {
-        ab.i("MicroMsg.wear.WearYoLogic", "Can add Yo Message %s", new Object[] { parama });
+        ad.i("MicroMsg.wear.WearYoLogic", "Can add Yo Message %s", new Object[] { parama });
         localObject3 = new a.a((a)localObject2, parama, (String)localObject3);
-        ((a)localObject2).uHW.put(parama, localObject3);
-        com.tencent.mm.plugin.wear.model.a.cYy().uGJ.cYO();
-        AppMethodBeat.o(26456);
+        ((a)localObject2).AFb.put(parama, localObject3);
+        com.tencent.mm.plugin.wear.model.a.egX().ehq();
+        AppMethodBeat.o(30138);
         return null;
       }
-      ab.i("MicroMsg.wear.WearYoLogic", "Can not add Yo Message %s", new Object[] { parama });
-      localObject2 = new vz();
-      ((vz)localObject2).cNo.coO = 2;
-      ((vz)localObject2).cNo.username = parama;
-      com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject2);
+      ad.i("MicroMsg.wear.WearYoLogic", "Can not add Yo Message %s", new Object[] { parama });
+      localObject2 = new xz();
+      ((xz)localObject2).dEm.dbV = 2;
+      ((xz)localObject2).dEm.username = parama;
+      com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject2);
     }
   }
+  
+  public final void b(f.c paramc) {}
 }
 
 

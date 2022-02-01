@@ -1,55 +1,78 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.telephony.TelephonyManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.TimeZone;
+import com.tencent.mm.b.d;
 
 public final class bq
 {
-  public static boolean duf()
+  private final d EXg;
+  private ag<String, String> EXh;
+  
+  public bq(String paramString)
   {
-    AppMethodBeat.i(115249);
-    Object localObject1 = ah.getContext().getSharedPreferences(ah.dsP(), 0);
-    ah.getContext();
-    localObject1 = aa.g((SharedPreferences)localObject1);
-    Object localObject2 = aa.dsG();
-    if (((String)localObject1).equals("language_default")) {
-      localObject1 = localObject2;
-    }
-    for (;;)
+    AppMethodBeat.i(157841);
+    this.EXh = new ag(256);
+    this.EXg = new d(paramString);
+    AppMethodBeat.o(157841);
+  }
+  
+  public final String decryptTag(String paramString)
+  {
+    AppMethodBeat.i(157842);
+    String str1 = paramString;
+    try
     {
-      if (!((String)localObject1).equals("zh_CN"))
-      {
-        AppMethodBeat.o(115249);
-        return true;
+      if (!paramString.startsWith("!")) {
+        break label192;
       }
-      localObject1 = TimeZone.getDefault();
-      localObject2 = TimeZone.getTimeZone("GMT+08:00");
-      if (((TimeZone)localObject1).getRawOffset() != ((TimeZone)localObject2).getRawOffset())
+      if (this.EXh.aN(paramString))
       {
-        AppMethodBeat.o(115249);
-        return true;
+        str1 = (String)this.EXh.get(paramString);
+        AppMethodBeat.o(157842);
+        return str1;
       }
-      localObject1 = (TelephonyManager)ah.getContext().getSystemService("phone");
-      if (localObject1 != null)
+      str1 = paramString.substring(1);
+      Object localObject2;
+      String str2;
+      int i;
+      ad.printErrStackTrace("MicroMsg.TagDecrypter", localException1, "", new Object[0]);
+    }
+    catch (Exception localException1)
+    {
+      try
       {
-        localObject1 = ((TelephonyManager)localObject1).getNetworkCountryIso();
-        if ((!bo.isNullOrNil((String)localObject1)) && (!((String)localObject1).contains("cn")) && (!((String)localObject1).contains("CN")))
+        localObject2 = str1.split("@");
+        if (localObject2.length <= 1) {
+          break label209;
+        }
+        str2 = localObject2[0];
+        i = Integer.valueOf(localObject2[0]).intValue();
+        localObject2 = str1.substring(str2.length() + 1, str2.length() + 1 + i);
+        str2 = str1.substring(i + (str2.length() + 1));
+        str2 = this.EXg.dD((String)localObject2) + str2;
+        this.EXh.put(paramString, str2);
+        AppMethodBeat.o(157842);
+        return str2;
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
         {
-          AppMethodBeat.o(115249);
-          return true;
+          paramString = (String)localObject1;
+          Object localObject1 = localException2;
         }
       }
-      AppMethodBeat.o(115249);
-      return false;
+      localException1 = localException1;
     }
+    localObject1 = "[td]".concat(String.valueOf(paramString));
+    label192:
+    AppMethodBeat.o(157842);
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.bq
  * JD-Core Version:    0.7.0.1
  */

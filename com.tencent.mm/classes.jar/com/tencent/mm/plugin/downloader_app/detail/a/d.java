@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.downloader_app.detail.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.jsapi.al;
-import com.tencent.mm.plugin.webview.luggage.jsapi.q;
-import com.tencent.mm.plugin.webview.luggage.jsapi.y;
+import com.tencent.mm.plugin.webview.luggage.jsapi.ab;
+import com.tencent.mm.plugin.webview.luggage.jsapi.ao;
+import com.tencent.mm.plugin.webview.luggage.jsapi.t;
 import java.util.LinkedList;
 
 public final class d
 {
-  private static LinkedList<Class<? extends com.tencent.luggage.d.a>> laz;
+  private static LinkedList<Class<? extends com.tencent.luggage.d.a>> oho;
   
-  private static void ai(Class<? extends com.tencent.luggage.d.a> paramClass)
+  private static void aM(Class<? extends com.tencent.luggage.d.a> paramClass)
   {
-    AppMethodBeat.i(136073);
-    laz.add(paramClass);
-    AppMethodBeat.o(136073);
+    AppMethodBeat.i(8828);
+    oho.add(paramClass);
+    AppMethodBeat.o(8828);
   }
   
-  public static LinkedList<Class<? extends com.tencent.luggage.d.a>> bjM()
+  public static LinkedList<Class<? extends com.tencent.luggage.d.a>> bQW()
   {
     try
     {
-      AppMethodBeat.i(136072);
-      laz = new LinkedList();
-      ai(a.class);
-      ai(e.class);
-      ai(g.class);
-      ai(al.class);
-      ai(y.class);
-      ai(q.class);
-      ai(c.class);
-      ai(b.class);
-      ai(f.class);
-      LinkedList localLinkedList = laz;
-      AppMethodBeat.o(136072);
+      AppMethodBeat.i(8827);
+      oho = new LinkedList();
+      aM(a.class);
+      aM(e.class);
+      aM(g.class);
+      aM(ao.class);
+      aM(ab.class);
+      aM(t.class);
+      aM(c.class);
+      aM(b.class);
+      aM(f.class);
+      LinkedList localLinkedList = oho;
+      AppMethodBeat.o(8827);
       return localLinkedList;
     }
     finally
@@ -45,7 +45,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.detail.a.d
  * JD-Core Version:    0.7.0.1
  */

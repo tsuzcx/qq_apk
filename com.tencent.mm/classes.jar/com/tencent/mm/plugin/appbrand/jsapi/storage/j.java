@@ -8,14 +8,14 @@ public final class j
   public static final int CTRL_INDEX = 499;
   public static final String NAME = "removeGlobalStorage";
   
-  protected final String w(c paramc)
+  protected final String B(c paramc)
   {
     return "wxGlobal";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.j
  * JD-Core Version:    0.7.0.1
  */

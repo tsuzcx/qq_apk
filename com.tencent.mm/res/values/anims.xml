@@ -1,75 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="anim" name="i">false</item>
-    <item type="anim" name="t">false</item>
-    <item type="anim" name="d4">false</item>
-    <item type="anim" name="x">false</item>
-    <item type="anim" name="a9">false</item>
-    <item type="anim" name="b1">false</item>
-    <item type="anim" name="aq">false</item>
-    <item type="anim" name="ct">false</item>
-    <item type="anim" name="bg">false</item>
-    <item type="anim" name="de">false</item>
-    <item type="anim" name="h">false</item>
-    <item type="anim" name="e5">false</item>
-    <item type="anim" name="a2">false</item>
     <item type="anim" name="g">false</item>
-    <item type="anim" name="e2">false</item>
-    <item type="anim" name="df">false</item>
-    <item type="anim" name="d7">false</item>
-    <item type="anim" name="d8">false</item>
-    <item type="anim" name="c0">false</item>
-    <item type="anim" name="aa">false</item>
-    <item type="anim" name="bp">false</item>
-    <item type="anim" name="bk">false</item>
-    <item type="anim" name="d6">false</item>
-    <item type="anim" name="b2">false</item>
-    <item type="anim" name="ds">false</item>
-    <item type="anim" name="bq">false</item>
-    <item type="anim" name="dl">false</item>
-    <item type="anim" name="a8">false</item>
-    <item type="anim" name="dt">false</item>
-    <item type="anim" name="cv">false</item>
-    <item type="anim" name="dk">false</item>
-    <item type="anim" name="ar">false</item>
-    <item type="anim" name="w">false</item>
-    <item type="anim" name="dr">false</item>
-    <item type="anim" name="bd">false</item>
+    <item type="anim" name="h">false</item>
+    <item type="anim" name="i">false</item>
     <item type="anim" name="j">false</item>
-    <item type="anim" name="APKTOOL_DUMMY_6" />
-    <item type="anim" name="APKTOOL_DUMMY_7" />
-    <item type="anim" name="APKTOOL_DUMMY_8" />
-    <item type="anim" name="APKTOOL_DUMMY_9" />
-    <item type="anim" name="APKTOOL_DUMMY_13" />
-    <item type="anim" name="APKTOOL_DUMMY_16" />
-    <item type="anim" name="APKTOOL_DUMMY_17" />
-    <item type="anim" name="APKTOOL_DUMMY_1c" />
-    <item type="anim" name="APKTOOL_DUMMY_22" />
-    <item type="anim" name="APKTOOL_DUMMY_23" />
-    <item type="anim" name="APKTOOL_DUMMY_25" />
-    <item type="anim" name="APKTOOL_DUMMY_35" />
-    <item type="anim" name="APKTOOL_DUMMY_36" />
-    <item type="anim" name="APKTOOL_DUMMY_40" />
-    <item type="anim" name="APKTOOL_DUMMY_41" />
-    <item type="anim" name="APKTOOL_DUMMY_4d" />
-    <item type="anim" name="APKTOOL_DUMMY_50" />
-    <item type="anim" name="APKTOOL_DUMMY_54" />
-    <item type="anim" name="APKTOOL_DUMMY_59" />
-    <item type="anim" name="APKTOOL_DUMMY_5a" />
-    <item type="anim" name="APKTOOL_DUMMY_64" />
-    <item type="anim" name="APKTOOL_DUMMY_82" />
-    <item type="anim" name="APKTOOL_DUMMY_84" />
-    <item type="anim" name="APKTOOL_DUMMY_8d" />
-    <item type="anim" name="APKTOOL_DUMMY_8f" />
-    <item type="anim" name="APKTOOL_DUMMY_90" />
-    <item type="anim" name="APKTOOL_DUMMY_91" />
-    <item type="anim" name="APKTOOL_DUMMY_98" />
-    <item type="anim" name="APKTOOL_DUMMY_99" />
-    <item type="anim" name="APKTOOL_DUMMY_9e" />
-    <item type="anim" name="APKTOOL_DUMMY_9f" />
-    <item type="anim" name="APKTOOL_DUMMY_a5" />
-    <item type="anim" name="APKTOOL_DUMMY_a6" />
-    <item type="anim" name="APKTOOL_DUMMY_a7" />
-    <item type="anim" name="APKTOOL_DUMMY_b0" />
-    <item type="anim" name="APKTOOL_DUMMY_b3" />
+    <item type="anim" name="x">false</item>
+    <item type="anim" name="a1">false</item>
+    <item type="anim" name="a6">false</item>
+    <item type="anim" name="ab">false</item>
+    <item type="anim" name="ac">false</item>
+    <item type="anim" name="ae">false</item>
+    <item type="anim" name="an">false</item>
+    <item type="anim" name="ao">false</item>
+    <item type="anim" name="az">false</item>
+    <item type="anim" name="b0">false</item>
+    <item type="anim" name="ba">false</item>
+    <item type="anim" name="bb">false</item>
+    <item type="anim" name="bv">false</item>
+    <item type="anim" name="by">false</item>
+    <item type="anim" name="c2">false</item>
+    <item type="anim" name="c7">false</item>
+    <item type="anim" name="c8">false</item>
+    <item type="anim" name="ch">false</item>
+    <item type="anim" name="de">false</item>
+    <item type="anim" name="dg">false</item>
+    <item type="anim" name="dp">false</item>
+    <item type="anim" name="dr">false</item>
+    <item type="anim" name="ds">false</item>
+    <item type="anim" name="dt">false</item>
+    <item type="anim" name="e0">false</item>
+    <item type="anim" name="e1">false</item>
+    <item type="anim" name="e6">false</item>
+    <item type="anim" name="e7">false</item>
+    <item type="anim" name="ec">false</item>
+    <item type="anim" name="ed">false</item>
+    <item type="anim" name="ee">false</item>
+    <item type="anim" name="eo">false</item>
 </resources>

@@ -11,41 +11,41 @@ public final class c
     super(paramMMActivity);
   }
   
-  public final boolean beQ()
+  public final boolean bLM()
   {
-    return this.kyA;
+    return this.nDT;
   }
   
-  public final boolean beT()
+  public final boolean bLP()
   {
     return false;
   }
   
-  public final boolean beU()
+  public final boolean bLQ()
   {
-    AppMethodBeat.i(88712);
-    if ((this.kyA) && (super.beU()))
+    AppMethodBeat.i(113639);
+    if ((this.nDT) && (super.bLQ()))
     {
-      AppMethodBeat.o(88712);
+      AppMethodBeat.o(113639);
       return true;
     }
-    AppMethodBeat.o(88712);
+    AppMethodBeat.o(113639);
     return false;
   }
   
-  public final boolean beY()
+  public final boolean bLU()
   {
     return false;
   }
   
-  public final boolean beZ()
+  public final boolean bLV()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.c
  * JD-Core Version:    0.7.0.1
  */

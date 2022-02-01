@@ -13,7 +13,7 @@ public class GoogleSignInOptionsExtensionCreator
   
   public GoogleSignInOptionsExtensionParcelable createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(60383);
+    AppMethodBeat.i(10875);
     int k = SafeParcelReader.validateObjectHeader(paramParcel);
     Bundle localBundle = null;
     int j = 0;
@@ -38,7 +38,7 @@ public class GoogleSignInOptionsExtensionCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, k);
     paramParcel = new GoogleSignInOptionsExtensionParcelable(i, j, localBundle);
-    AppMethodBeat.o(60383);
+    AppMethodBeat.o(10875);
     return paramParcel;
   }
   

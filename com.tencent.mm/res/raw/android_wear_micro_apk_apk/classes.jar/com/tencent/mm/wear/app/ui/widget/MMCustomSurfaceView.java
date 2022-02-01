@@ -12,51 +12,51 @@ public abstract class MMCustomSurfaceView
   extends SurfaceView
   implements SurfaceHolder.Callback
 {
-  private c ahX;
+  private c alz;
   
   public MMCustomSurfaceView(Context paramContext)
   {
     super(paramContext);
-    nB();
+    op();
   }
   
   public MMCustomSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    nB();
+    op();
   }
   
   public MMCustomSurfaceView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    nB();
+    op();
   }
   
-  private void nB()
+  private void op()
   {
     SurfaceHolder localSurfaceHolder = getHolder();
     localSurfaceHolder.addCallback(this);
     setZOrderOnTop(true);
     localSurfaceHolder.setFormat(-3);
-    this.ahX = new c(this, localSurfaceHolder);
+    this.alz = new c(this, localSurfaceHolder);
   }
   
   protected abstract void a(Canvas paramCanvas);
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    d.e("MicroMsg.MMCustomSurfaceView", "surfaceChanged: format=%d, width=%d, height=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    d.d("MicroMsg.MMCustomSurfaceView", "surfaceChanged: format=%d, width=%d, height=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
   }
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    this.ahX.start();
+    this.alz.start();
     d.c("MicroMsg.MMCustomSurfaceView", "surfaceCreated", new Object[0]);
   }
   
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
-    this.ahX.nC();
+    this.alz.oq();
     d.c("MicroMsg.MMCustomSurfaceView", "surfaceDestroyed", new Object[0]);
   }
 }

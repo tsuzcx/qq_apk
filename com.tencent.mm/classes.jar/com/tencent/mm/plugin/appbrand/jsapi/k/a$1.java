@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.k;
 
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.c.b;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b;
 
 final class a$1
   implements b<String>
@@ -10,7 +10,7 @@ final class a$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.k.a.1
  * JD-Core Version:    0.7.0.1
  */

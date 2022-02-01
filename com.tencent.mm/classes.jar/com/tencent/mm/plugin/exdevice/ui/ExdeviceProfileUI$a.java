@@ -11,13 +11,13 @@ final class ExdeviceProfileUI$a
   
   public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(20060);
+    AppMethodBeat.i(24131);
     if (Math.abs(paramFloat2) < Math.abs(paramFloat1))
     {
-      AppMethodBeat.o(20060);
+      AppMethodBeat.o(24131);
       return true;
     }
-    AppMethodBeat.o(20060);
+    AppMethodBeat.o(24131);
     return false;
   }
   
@@ -28,7 +28,7 @@ final class ExdeviceProfileUI$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceProfileUI.a
  * JD-Core Version:    0.7.0.1
  */

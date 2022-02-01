@@ -11,15 +11,15 @@ final class MatrixSettingUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(156161);
-    this.Apu.finish();
-    AppMethodBeat.o(156161);
+    AppMethodBeat.i(38886);
+    this.Hki.finish();
+    AppMethodBeat.o(38886);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.matrix.MatrixSettingUI.1
  * JD-Core Version:    0.7.0.1
  */

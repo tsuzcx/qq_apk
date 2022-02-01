@@ -1,52 +1,62 @@
 package com.tencent.mm.plugin.emojicapture.ui.b;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.h.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.media.i.b.c;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureCropTopRenderProc;", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProcExternalTexture;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "TAG", "", "emojiFilterRender", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiFilterRenderer;", "firstRender", "", "changeSticker", "", "stickerInfo", "Lcom/tencent/mm/plugin/emojicapture/model/capture/EmojiStickerInfo;", "getEmojiProcessOutputTexture", "release", "releaseFilterProcess", "renderImpl", "plugin-emojicapture_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureCropTopRenderProc;", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiPreviewRenderProc;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "TAG", "", "externalRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "getInputRenderProc", "release", "", "setInputTexture", "texture", "plugin-emojicapture_release"})
 public final class a
-  extends c
+  extends j
 {
   private final String TAG;
-  public final h lAF;
-  private boolean lAG;
+  private com.tencent.mm.media.i.b.a oRx;
   
   public a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     super(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
-    AppMethodBeat.i(3143);
+    AppMethodBeat.i(830);
     this.TAG = "MicroMsg.EmojiCaptureCropTopRenderProc";
-    this.lAF = new h();
-    this.lAG = true;
-    this.lAF.bpl();
-    AppMethodBeat.o(3143);
+    this.oRx = ((com.tencent.mm.media.i.b.a)new c(paramInt1, paramInt2, this.gtF, this.gtG, 2, 2));
+    com.tencent.mm.media.i.b.a locala = this.oRx;
+    if (locala != null)
+    {
+      locala.guY = true;
+      AppMethodBeat.o(830);
+      return;
+    }
+    AppMethodBeat.o(830);
   }
   
-  public final void Vj()
+  public final com.tencent.mm.media.i.b.a bYM()
   {
-    AppMethodBeat.i(3141);
-    if (this.lAG) {
-      ab.i(this.TAG, "first frame start render");
-    }
-    this.lAF.bpl();
-    this.lAF.updateSize(this.eYl, this.eYm);
-    this.lAF.a(this.eYa, this.eYf, this.eYj, this.eYk, this.eYe);
-    if (this.lAG)
+    return this.oRx;
+  }
+  
+  public final void mA(int paramInt)
+  {
+    AppMethodBeat.i(828);
+    com.tencent.mm.media.i.b.a locala = this.oRx;
+    if (locala != null)
     {
-      ab.i(this.TAG, "first frame render");
-      this.lAG = false;
+      locala.mA(paramInt);
+      AppMethodBeat.o(828);
+      return;
     }
-    AppMethodBeat.o(3141);
+    AppMethodBeat.o(828);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(3142);
+    AppMethodBeat.i(829);
     super.release();
-    this.lAF.destroy();
-    AppMethodBeat.o(3142);
+    com.tencent.mm.media.i.b.a locala = this.oRx;
+    if (locala != null)
+    {
+      locala.release();
+      AppMethodBeat.o(829);
+      return;
+    }
+    AppMethodBeat.o(829);
   }
 }
 

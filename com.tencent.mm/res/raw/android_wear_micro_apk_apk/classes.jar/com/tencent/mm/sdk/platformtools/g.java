@@ -4,6 +4,8 @@ public abstract interface g
 {
   public abstract void g(String paramString1, String paramString2);
   
+  public abstract int getLogLevel();
+  
   public abstract void h(String paramString1, String paramString2);
   
   public abstract void i(String paramString1, String paramString2);
@@ -11,8 +13,6 @@ public abstract interface g
   public abstract void j(String paramString1, String paramString2);
   
   public abstract void k(String paramString1, String paramString2);
-  
-  public abstract int lo();
 }
 
 

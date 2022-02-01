@@ -8,23 +8,27 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.x;
-import com.tencent.mm.platformtools.x.a;
-import com.tencent.mm.plugin.product.b.b;
+import com.tencent.mm.al.q;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.platformtools.u;
+import com.tencent.mm.platformtools.u.a;
+import com.tencent.mm.plugin.product.b.k;
+import com.tencent.mm.plugin.product.b.l;
 import com.tencent.mm.plugin.product.b.m;
-import com.tencent.mm.protocal.protobuf.aan;
-import com.tencent.mm.protocal.protobuf.bse;
-import com.tencent.mm.protocal.protobuf.cx;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.aec;
+import com.tencent.mm.protocal.protobuf.chi;
+import com.tencent.mm.protocal.protobuf.df;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.ListViewInScrollView;
-import com.tencent.mm.ui.widget.b.c.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -32,164 +36,236 @@ import java.util.List;
 
 public class MallProductSubmitUI
   extends MallBaseUI
-  implements x.a
+  implements u.a
 {
-  private Button gJr;
-  private TextView iJG;
-  private com.tencent.mm.plugin.product.b.e pul;
-  private com.tencent.mm.plugin.product.b.c pvR;
-  private f pwA;
-  private RelativeLayout pwQ;
-  private TextView pwR;
-  private TextView pwS;
-  private MallProductItemView pwT;
-  private MallProductItemView pwU;
-  private TextView pwV;
-  private TextView pwW;
-  private TextView pwX;
-  private TextView pwY;
-  private ListView pwZ;
-  private ImageView pwt;
-  private TextView pwu;
-  private a pxa;
+  private Button iwY;
+  private TextView kEu;
+  private com.tencent.mm.plugin.product.b.e uvX;
+  private com.tencent.mm.plugin.product.b.c uxz;
+  private TextView uyA;
+  private MallProductItemView uyB;
+  private MallProductItemView uyC;
+  private TextView uyD;
+  private TextView uyE;
+  private TextView uyF;
+  private TextView uyG;
+  private ListView uyH;
+  private a uyI;
+  private ImageView uyb;
+  private TextView uyc;
+  private f uyi;
+  private RelativeLayout uyy;
+  private TextView uyz;
   
-  private void bJ()
+  private void cE()
   {
-    AppMethodBeat.i(44151);
-    m localm = this.pvR.ptU;
+    AppMethodBeat.i(67058);
+    m localm = this.uxz.uvI;
     Object localObject1;
     label187:
     String str;
-    if (this.pul != null)
+    if (this.uvX != null)
     {
-      this.pwu.setText(b.v(this.pul.pup, this.pul.pup, localm.puA.ppp) + " x " + this.pvR.mCount);
-      if (!bo.isNullOrNil(this.pvR.caX()))
+      this.uyc.setText(com.tencent.mm.plugin.product.b.b.D(this.uvX.uwb, this.uvX.uwb, localm.uwm.uop) + " x " + this.uxz.mCount);
+      if (!bt.isNullOrNil(this.uxz.dbm()))
       {
-        localObject1 = x.a(new c(this.pvR.caX()));
-        this.pwt.setImageBitmap((Bitmap)localObject1);
-        x.a(this);
+        localObject1 = u.a(new c(this.uxz.dbm()));
+        this.uyb.setImageBitmap((Bitmap)localObject1);
+        u.a(this);
       }
-      this.iJG.setText(localm.puA.name);
-      this.pwV.setText(this.pvR.caY());
-      localObject1 = this.pvR.cbb();
-      if ((localObject1 == null) || (bo.isNullOrNil(((bse)localObject1).nqY))) {
+      this.kEu.setText(localm.uwm.name);
+      this.uyD.setText(this.uxz.dbn());
+      localObject1 = this.uxz.dbq();
+      if ((localObject1 == null) || (bt.isNullOrNil(((chi)localObject1).saB))) {
         break label593;
       }
-      this.pwU.setSummary(((bse)localObject1).nqY);
+      this.uyC.setSummary(((chi)localObject1).saB);
       str = "";
       localObject1 = str;
-      if (!this.pvR.caW().cbs())
+      if (!this.uxz.dbl().dbH())
       {
-        localObject1 = this.pvR.pub;
+        localObject1 = this.uxz.uvN;
         if (localObject1 == null) {
           break label605;
         }
-        this.pwT.setEnabled(true);
-        this.pwT.setClickable(true);
-        this.pwT.setSummary(b.a(this, (aan)localObject1));
-        localObject1 = getString(2131301498, new Object[] { b.d(((aan)localObject1).wCm, ((aan)localObject1).PriceType) });
-        this.pwS.setVisibility(8);
+        this.uyB.setEnabled(true);
+        this.uyB.setClickable(true);
+        this.uyB.setSummary(com.tencent.mm.plugin.product.b.b.a(this, (aec)localObject1));
+        localObject1 = getString(2131761145, new Object[] { com.tencent.mm.plugin.product.b.b.c(((aec)localObject1).CNG, ((aec)localObject1).PriceType) });
+        this.uyA.setVisibility(8);
       }
       label280:
       str = "";
-      int i = this.pvR.cba();
+      int i = this.uxz.dbp();
       if (i > 0)
       {
-        bo.isNullOrNil((String)localObject1);
-        str = getString(2131301497, new Object[] { b.d(i, localm.puA.ppp) });
+        bt.isNullOrNil((String)localObject1);
+        str = getString(2131761144, new Object[] { com.tencent.mm.plugin.product.b.b.c(i, localm.uwm.uop) });
       }
-      Object localObject2 = this.pvR.ad(this);
+      Object localObject2 = this.uxz.av(this);
       if (((LinkedList)localObject2).size() <= 0) {
         break label648;
       }
-      this.pwZ.setVisibility(0);
-      this.pxa.cx((List)localObject2);
-      this.pxa.notifyDataSetChanged();
+      this.uyH.setVisibility(0);
+      this.uyI.eu((List)localObject2);
+      this.uyI.notifyDataSetChanged();
       label369:
-      localObject2 = this.pvR.puc;
+      localObject2 = this.uxz.uvO;
       if (localObject2 != null) {
-        this.pwR.setText(Html.fromHtml(String.format("%s %s<br><br>%s %s %s", new Object[] { ((cx)localObject2).jJA, ((cx)localObject2).wpj, ((cx)localObject2).gwQ, ((cx)localObject2).gwR, ((cx)localObject2).nqY })));
+        this.uyz.setText(Html.fromHtml(String.format("%s %s<br><br>%s %s %s", new Object[] { ((df)localObject2).mAQ, ((df)localObject2).CxQ, ((df)localObject2).ijN, ((df)localObject2).ijO, ((df)localObject2).saB })));
       }
       localObject1 = (String)localObject1 + str;
-      if (bo.isNullOrNil((String)localObject1)) {
+      if (bt.isNullOrNil((String)localObject1)) {
         break label660;
       }
-      localObject1 = getString(2131301496, new Object[] { localObject1 });
-      this.pwW.setText((CharSequence)localObject1);
-      this.pwX.setVisibility(8);
-      this.pwW.setVisibility(0);
+      localObject1 = getString(2131761143, new Object[] { localObject1 });
+      this.uyE.setText((CharSequence)localObject1);
+      this.uyF.setVisibility(8);
+      this.uyE.setVisibility(0);
     }
     for (;;)
     {
-      this.pwY.setText(b.d(this.pvR.caZ(), localm.puA.ppp));
-      this.gJr.setEnabled(this.pvR.cbi());
-      AppMethodBeat.o(44151);
+      this.uyG.setText(com.tencent.mm.plugin.product.b.b.c(this.uxz.dbo(), localm.uwm.uop));
+      this.iwY.setEnabled(this.uxz.dbx());
+      AppMethodBeat.o(67058);
       return;
-      this.pwu.setText(b.v(localm.puA.puM, localm.puA.puN, localm.puA.ppp));
+      this.uyc.setText(com.tencent.mm.plugin.product.b.b.D(localm.uwm.uwx, localm.uwm.uwy, localm.uwm.uop));
       break;
       label593:
-      this.pwU.setSummary("");
+      this.uyC.setSummary("");
       break label187;
       label605:
-      this.pwT.setEnabled(false);
-      this.pwT.setClickable(false);
-      this.pwT.setSummary(getString(2131301499));
-      this.pwS.setVisibility(0);
+      this.uyB.setEnabled(false);
+      this.uyB.setClickable(false);
+      this.uyB.setSummary(getString(2131761146));
+      this.uyA.setVisibility(0);
       localObject1 = str;
       break label280;
       label648:
-      this.pwZ.setVisibility(8);
+      this.uyH.setVisibility(8);
       break label369;
       label660:
-      this.pwX.setVisibility(0);
-      this.pwW.setVisibility(8);
+      this.uyF.setVisibility(0);
+      this.uyE.setVisibility(8);
     }
   }
   
   public int getLayoutId()
   {
-    return 2130970458;
+    return 2131495131;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(44150);
-    setMMTitle(2131301502);
-    this.pwQ = ((RelativeLayout)findViewById(2131826815));
-    this.pwR = ((TextView)findViewById(2131826817));
-    this.pwS = ((TextView)findViewById(2131826818));
-    this.pwT = ((MallProductItemView)findViewById(2131826819));
-    this.pwU = ((MallProductItemView)findViewById(2131826820));
-    this.pwt = ((ImageView)findViewById(2131826821));
-    this.iJG = ((TextView)findViewById(2131826822));
-    this.pwV = ((TextView)findViewById(2131826823));
-    this.pwu = ((TextView)findViewById(2131826824));
-    this.pwW = ((TextView)findViewById(2131826828));
-    this.pwX = ((TextView)findViewById(2131826827));
-    this.pwY = ((TextView)findViewById(2131826826));
-    this.pwZ = ((ListView)findViewById(2131826825));
-    this.pxa = new a(this);
-    this.pwZ.setAdapter(this.pxa);
-    this.pwZ.setOnItemClickListener(new MallProductSubmitUI.2(this));
-    this.gJr = ((Button)findViewById(2131826829));
-    this.gJr.setOnClickListener(new MallProductSubmitUI.3(this));
-    this.pwQ.setOnClickListener(new MallProductSubmitUI.4(this));
-    this.pwT.setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(67057);
+    setMMTitle(2131761149);
+    this.uyy = ((RelativeLayout)findViewById(2131302115));
+    this.uyz = ((TextView)findViewById(2131302117));
+    this.uyA = ((TextView)findViewById(2131302116));
+    this.uyB = ((MallProductItemView)findViewById(2131302119));
+    this.uyC = ((MallProductItemView)findViewById(2131302121));
+    this.uyb = ((ImageView)findViewById(2131302120));
+    this.kEu = ((TextView)findViewById(2131302128));
+    this.uyD = ((TextView)findViewById(2131302122));
+    this.uyc = ((TextView)findViewById(2131302126));
+    this.uyE = ((TextView)findViewById(2131302125));
+    this.uyF = ((TextView)findViewById(2131302124));
+    this.uyG = ((TextView)findViewById(2131302129));
+    this.uyH = ((ListView)findViewById(2131302123));
+    this.uyI = new a(this);
+    this.uyH.setAdapter(this.uyI);
+    this.uyH.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(67047);
+        paramAnonymousAdapterView = (b)paramAnonymousView.getTag();
+        switch (paramAnonymousAdapterView.type)
+        {
+        }
+        for (;;)
+        {
+          MallProductSubmitUI.c(MallProductSubmitUI.this).a(MallProductSubmitUI.this, paramAnonymousView, paramAnonymousInt);
+          AppMethodBeat.o(67047);
+          return;
+          Object localObject = MallProductSubmitUI.b(MallProductSubmitUI.this).uvI;
+          if ((((m)localObject).uwm.uwz != null) && (((m)localObject).uwm.uwz.size() > 0))
+          {
+            ArrayList localArrayList = new ArrayList();
+            localObject = ((m)localObject).uwm.uwz.iterator();
+            while (((Iterator)localObject).hasNext()) {
+              localArrayList.add((String)((Iterator)localObject).next());
+            }
+            paramAnonymousAdapterView.uxi = localArrayList;
+            continue;
+            if ((paramAnonymousAdapterView.uxi instanceof String)) {
+              MallProductSubmitUI.b(MallProductSubmitUI.this).uvR = ((String)paramAnonymousAdapterView.uxi);
+            }
+          }
+        }
+      }
+    });
+    this.iwY = ((Button)findViewById(2131302127));
+    this.iwY.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(44143);
-        MallProductSubmitUI.this.showDialog(1);
-        AppMethodBeat.o(44143);
+        AppMethodBeat.i(67048);
+        paramAnonymousView = MallProductSubmitUI.d(MallProductSubmitUI.this);
+        if (paramAnonymousView.uxz.dbx())
+        {
+          if (paramAnonymousView.uxz.dbo() == 0) {}
+          for (int i = 1; i != 0; i = 0)
+          {
+            g.afC();
+            g.afA().gcy.a(new k(paramAnonymousView.uxz.dbz()), 0);
+            AppMethodBeat.o(67048);
+            return;
+          }
+          g.afC();
+          g.afA().gcy.a(new l(paramAnonymousView.uxz.dbz(), paramAnonymousView.uxz.getAppId()), 0);
+        }
+        AppMethodBeat.o(67048);
       }
     });
-    this.pwU.setOnClickListener(new MallProductSubmitUI.6(this));
-    MallProductItemView localMallProductItemView = this.pwU;
+    this.uyy.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(67049);
+        paramAnonymousView = MallProductSubmitUI.d(MallProductSubmitUI.this);
+        Intent localIntent = new Intent();
+        localIntent.putExtra("launch_from_webview", true);
+        com.tencent.mm.bs.d.a(paramAnonymousView.jgS, "address", ".ui.WalletSelectAddrUI", localIntent, 1, false);
+        AppMethodBeat.o(67049);
+      }
+    });
+    this.uyB.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(67050);
+        MallProductSubmitUI.this.showDialog(1);
+        AppMethodBeat.o(67050);
+      }
+    });
+    this.uyC.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(67051);
+        paramAnonymousView = MallProductSubmitUI.d(MallProductSubmitUI.this);
+        Intent localIntent = new Intent(paramAnonymousView.jgS, MallProductReceiptUI.class);
+        paramAnonymousView.jgS.startActivityForResult(localIntent, 4);
+        AppMethodBeat.o(67051);
+      }
+    });
+    MallProductItemView localMallProductItemView = this.uyC;
     boolean bool;
-    if ((this.pvR.caW().pvO & 0x2) > 0)
+    if ((this.uxz.dbl().uxw & 0x2) > 0)
     {
       bool = true;
-      ab.d("MicroMsg.MallProductConfig", "hasReceipt, ret = ".concat(String.valueOf(bool)));
+      ad.d("MicroMsg.MallProductConfig", "hasReceipt, ret = ".concat(String.valueOf(bool)));
       if (!bool) {
         break label411;
       }
@@ -198,108 +274,140 @@ public class MallProductSubmitUI
     for (int i = 0;; i = 8)
     {
       localMallProductItemView.setVisibility(i);
-      if (this.pvR.caW().cbs())
+      if (this.uxz.dbl().dbH())
       {
-        this.pwT.setEnabled(false);
-        this.pwT.setClickable(false);
-        this.pwT.setSummary(getString(2131301500));
+        this.uyB.setEnabled(false);
+        this.uyB.setClickable(false);
+        this.uyB.setSummary(getString(2131761147));
       }
-      AppMethodBeat.o(44150);
+      AppMethodBeat.o(67057);
       return;
       bool = false;
       break;
     }
   }
   
-  public final void m(String paramString, Bitmap paramBitmap)
+  public final void l(String paramString, final Bitmap paramBitmap)
   {
-    AppMethodBeat.i(44153);
+    AppMethodBeat.i(67060);
     paramString = new StringBuilder().append(paramString).append(", bitmap = ");
     if (paramBitmap == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ab.d("MicroMsg.MallProductSubmitUI", bool);
-      if (!bo.isNullOrNil(this.pvR.caX())) {
+      ad.d("MicroMsg.MallProductSubmitUI", bool);
+      if (!bt.isNullOrNil(this.uxz.dbm())) {
         break;
       }
-      AppMethodBeat.o(44153);
+      AppMethodBeat.o(67060);
       return;
     }
-    this.pwt.post(new MallProductSubmitUI.7(this, paramBitmap));
-    AppMethodBeat.o(44153);
+    this.uyb.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(67052);
+        MallProductSubmitUI.e(MallProductSubmitUI.this).setImageBitmap(paramBitmap);
+        AppMethodBeat.o(67052);
+      }
+    });
+    AppMethodBeat.o(67060);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(44152);
+    AppMethodBeat.i(67059);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.pwA.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(44152);
+    this.uyi.onActivityResult(paramInt1, paramInt2, paramIntent);
+    AppMethodBeat.o(67059);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(44147);
+    AppMethodBeat.i(67054);
     super.onCreate(paramBundle);
-    this.pwA = new f(getContext(), new MallProductSubmitUI.1(this));
-    com.tencent.mm.plugin.product.a.a.caT();
-    this.pvR = com.tencent.mm.plugin.product.a.a.caU();
-    this.pul = this.pvR.pul;
+    this.uyi = new f(getContext(), new f.a()
+    {
+      public final void E(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
+      {
+        AppMethodBeat.i(67046);
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+        {
+          MallProductSubmitUI.a(MallProductSubmitUI.this);
+          AppMethodBeat.o(67046);
+          return;
+        }
+        MallProductSubmitUI.this.akw(paramAnonymousString);
+        AppMethodBeat.o(67046);
+      }
+    });
+    com.tencent.mm.plugin.product.a.a.dbi();
+    this.uxz = com.tencent.mm.plugin.product.a.a.dbj();
+    this.uvX = this.uxz.uvX;
     initView();
-    bJ();
-    AppMethodBeat.o(44147);
+    cE();
+    AppMethodBeat.o(67054);
   }
   
   protected Dialog onCreateDialog(int paramInt)
   {
-    AppMethodBeat.i(44154);
+    AppMethodBeat.i(67061);
     switch (paramInt)
     {
     }
     do
     {
       localObject1 = super.onCreateDialog(paramInt);
-      AppMethodBeat.o(44154);
+      AppMethodBeat.o(67061);
       return localObject1;
-      localObject2 = this.pvR.puj;
+      localObject2 = this.uxz.uvV;
     } while (localObject2 == null);
     Object localObject1 = new ArrayList();
     Object localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
-      ((List)localObject1).add(b.a(this, (aan)((Iterator)localObject2).next()));
+      ((List)localObject1).add(com.tencent.mm.plugin.product.b.b.a(this, (aec)((Iterator)localObject2).next()));
     }
-    localObject2 = getString(2131301491);
-    MallProductSubmitUI.8 local8 = new MallProductSubmitUI.8(this);
+    localObject2 = getString(2131761138);
+    AdapterView.OnItemClickListener local8 = new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(67053);
+        MallProductSubmitUI.this.dismissDialog(1);
+        MallProductSubmitUI.b(MallProductSubmitUI.this).IY(paramAnonymousInt);
+        MallProductSubmitUI.a(MallProductSubmitUI.this);
+        AppMethodBeat.o(67053);
+      }
+    };
     d.a locala = new d.a(this);
-    ListViewInScrollView localListViewInScrollView = (ListViewInScrollView)View.inflate(this, 2130970172, null);
+    ListViewInScrollView localListViewInScrollView = (ListViewInScrollView)View.inflate(this, 2131494797, null);
     localListViewInScrollView.setOnItemClickListener(new d.1(local8, locala));
-    locala.pvI = ((List)localObject1);
-    locala.pvJ = 0;
+    locala.aHT = ((List)localObject1);
+    locala.uxs = 0;
     localListViewInScrollView.setAdapter(locala);
-    localObject1 = new c.a(this);
-    ((c.a)localObject1).avm((String)localObject2);
-    ((c.a)localObject1).fu(localListViewInScrollView);
-    ((c.a)localObject1).e(null);
-    localObject1 = ((c.a)localObject1).aLZ();
-    ((com.tencent.mm.ui.widget.b.c)localObject1).show();
-    AppMethodBeat.o(44154);
+    localObject1 = new com.tencent.mm.ui.widget.a.d.a(this);
+    ((com.tencent.mm.ui.widget.a.d.a)localObject1).aMf((String)localObject2);
+    ((com.tencent.mm.ui.widget.a.d.a)localObject1).gs(localListViewInScrollView);
+    ((com.tencent.mm.ui.widget.a.d.a)localObject1).e(null);
+    localObject1 = ((com.tencent.mm.ui.widget.a.d.a)localObject1).fft();
+    ((com.tencent.mm.ui.widget.a.d)localObject1).show();
+    AppMethodBeat.o(67061);
     return localObject1;
   }
   
   public void onStart()
   {
-    AppMethodBeat.i(44148);
-    this.pwA.onStart();
+    AppMethodBeat.i(67055);
+    this.uyi.onStart();
     super.onStart();
-    AppMethodBeat.o(44148);
+    AppMethodBeat.o(67055);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(44149);
-    this.pwA.onStop();
+    AppMethodBeat.i(67056);
+    this.uyi.onStop();
     super.onStop();
-    AppMethodBeat.o(44149);
+    AppMethodBeat.o(67056);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -310,7 +418,7 @@ public class MallProductSubmitUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.MallProductSubmitUI
  * JD-Core Version:    0.7.0.1
  */

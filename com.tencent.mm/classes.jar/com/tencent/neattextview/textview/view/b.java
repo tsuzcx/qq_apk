@@ -15,43 +15,43 @@ import java.util.List;
 public class b
   implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener, NeatTextView.c
 {
-  private a Bcx;
-  private com.tencent.neattextview.textview.layout.a Bcy;
-  protected c Bcz;
-  private GestureDetector idY;
+  private a Ijt;
+  private com.tencent.neattextview.textview.layout.a Iju;
+  protected c Ijv;
+  private GestureDetector ktZ;
   protected View mView;
   
   public b(Context paramContext, a parama)
   {
-    AppMethodBeat.i(3320);
-    this.Bcx = parama;
-    this.idY = new GestureDetector(paramContext, this);
-    this.idY.setOnDoubleTapListener(this);
-    AppMethodBeat.o(3320);
+    AppMethodBeat.i(39830);
+    this.Ijt = parama;
+    this.ktZ = new GestureDetector(paramContext, this);
+    this.ktZ.setOnDoubleTapListener(this);
+    AppMethodBeat.o(39830);
   }
   
   protected void cancel(int paramInt)
   {
-    AppMethodBeat.i(3326);
-    if (this.Bcz != null)
+    AppMethodBeat.i(39836);
+    if (this.Ijv != null)
     {
-      this.Bcz.isPressed = false;
+      this.Ijv.isPressed = false;
       this.mView.invalidate();
-      this.Bcz = null;
+      this.Ijv = null;
     }
-    AppMethodBeat.o(3326);
+    AppMethodBeat.o(39836);
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(3327);
-    if (this.Bcx.getOnDoubleClickListener() != null)
+    AppMethodBeat.i(39837);
+    if (this.Ijt.getOnDoubleClickListener() != null)
     {
-      this.Bcx.getOnDoubleClickListener().fp(this.mView);
-      AppMethodBeat.o(3327);
+      this.Ijt.getOnDoubleClickListener().fT(this.mView);
+      AppMethodBeat.o(39837);
       return true;
     }
-    AppMethodBeat.o(3327);
+    AppMethodBeat.o(39837);
     return false;
   }
   
@@ -62,42 +62,47 @@ public class b
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(3322);
-    if (this.Bcx.dTA())
+    AppMethodBeat.i(39832);
+    if (this.Ijt.flh())
     {
-      AppMethodBeat.o(3322);
+      AppMethodBeat.o(39832);
       return false;
     }
-    Iterator localIterator = this.Bcy.dTp().iterator();
+    if (this.Iju.fkW() == null)
+    {
+      AppMethodBeat.o(39832);
+      return false;
+    }
+    Iterator localIterator = this.Iju.fkW().iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      if (localc.aq(paramMotionEvent.getX() - this.Bcx.getHorizontalOffset(), paramMotionEvent.getY() - this.Bcx.getVerticalOffset()))
+      if (localc.al(paramMotionEvent.getX() - this.Ijt.getHorizontalOffset(), paramMotionEvent.getY() - this.Ijt.getVerticalOffset()))
       {
-        this.Bcz = localc;
+        this.Ijv = localc;
         localc.isPressed = true;
         this.mView.postInvalidate();
-        AppMethodBeat.o(3322);
+        AppMethodBeat.o(39832);
         return true;
       }
     }
-    AppMethodBeat.o(3322);
+    AppMethodBeat.o(39832);
     return false;
   }
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(3325);
+    AppMethodBeat.i(39835);
     cancel(3);
-    AppMethodBeat.o(3325);
+    AppMethodBeat.o(39835);
     return false;
   }
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(3324);
+    AppMethodBeat.i(39834);
     cancel(1);
-    AppMethodBeat.o(3324);
+    AppMethodBeat.o(39834);
   }
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
@@ -114,39 +119,39 @@ public class b
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(3323);
-    if (this.Bcx.dTA())
+    AppMethodBeat.i(39833);
+    if (this.Ijt.flh())
     {
-      AppMethodBeat.o(3323);
+      AppMethodBeat.o(39833);
       return false;
     }
-    if (this.Bcz != null)
+    if (this.Ijv != null)
     {
-      paramMotionEvent = this.Bcz;
+      paramMotionEvent = this.Ijv;
       View localView = this.mView;
-      if (paramMotionEvent.Bbj != null) {
-        ((ClickableSpan)paramMotionEvent.Bbj).onClick(localView);
+      if (paramMotionEvent.IhY != null) {
+        ((ClickableSpan)paramMotionEvent.IhY).onClick(localView);
       }
     }
-    AppMethodBeat.o(3323);
+    AppMethodBeat.o(39833);
     return false;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(3321);
-    if (this.Bcx.getLayout() == null)
+    AppMethodBeat.i(39831);
+    if (this.Ijt.getLayout() == null)
     {
-      AppMethodBeat.o(3321);
+      AppMethodBeat.o(39831);
       return false;
     }
-    this.Bcy = this.Bcx.getLayout();
+    this.Iju = this.Ijt.getLayout();
     this.mView = paramView;
-    boolean bool = this.idY.onTouchEvent(paramMotionEvent);
+    boolean bool = this.ktZ.onTouchEvent(paramMotionEvent);
     if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
       cancel(2);
     }
-    AppMethodBeat.o(3321);
+    AppMethodBeat.o(39831);
     return bool;
   }
 }

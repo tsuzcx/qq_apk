@@ -13,23 +13,23 @@ final class k
 {
   k(j paramj) {}
   
-  private void a(Runnable paramRunnable)
+  private void c(Runnable paramRunnable)
   {
-    if (Thread.currentThread() == this.gF.gw.getLooper().getThread())
+    if (Thread.currentThread() == this.iD.it.getLooper().getThread())
     {
       paramRunnable.run();
       return;
     }
-    this.gF.gw.post(paramRunnable);
+    this.iD.it.post(paramRunnable);
   }
   
   final boolean d(String paramString)
   {
     boolean bool = true;
-    if ((this.gF.gD != this) || (this.gF.aJ == 0) || (this.gF.aJ == 1))
+    if ((this.iD.iB != this) || (this.iD.cs == 0) || (this.iD.cs == 1))
     {
-      if ((this.gF.aJ != 0) && (this.gF.aJ != 1)) {
-        Log.i("MediaBrowserCompat", paramString + " for " + this.gF.gB + " with mServiceConnection=" + this.gF.gD + " this=" + this);
+      if ((this.iD.cs != 0) && (this.iD.cs != 1)) {
+        Log.i("MediaBrowserCompat", paramString + " for " + this.iD.iz + " with mServiceConnection=" + this.iD.iB + " this=" + this);
       }
       bool = false;
     }
@@ -38,63 +38,63 @@ final class k
   
   public final void onServiceConnected(final ComponentName paramComponentName, final IBinder paramIBinder)
   {
-    a(new Runnable()
+    c(new Runnable()
     {
       public final void run()
       {
         if (MediaBrowserCompat.DEBUG)
         {
           Log.d("MediaBrowserCompat", "MediaServiceConnection.onServiceConnected name=" + paramComponentName + " binder=" + paramIBinder);
-          k.this.gF.dump();
+          k.this.iD.dump();
         }
         if (!k.this.d("onServiceConnected")) {}
         do
         {
           return;
-          k.this.gF.gy = new m(paramIBinder, k.this.gF.gv);
-          k.this.gF.gz = new Messenger(k.this.gF.gw);
-          k.this.gF.gw.a(k.this.gF.gz);
-          k.this.gF.aJ = 2;
+          k.this.iD.iw = new m(paramIBinder, k.this.iD.is);
+          k.this.iD.ix = new Messenger(k.this.iD.it);
+          k.this.iD.it.a(k.this.iD.ix);
+          k.this.iD.cs = 2;
           try
           {
             if (MediaBrowserCompat.DEBUG)
             {
               Log.d("MediaBrowserCompat", "ServiceCallbacks.onConnect...");
-              k.this.gF.dump();
+              k.this.iD.dump();
             }
-            k.this.gF.gy.a(k.this.gF.mContext, k.this.gF.gz);
+            k.this.iD.iw.a(k.this.iD.mContext, k.this.iD.ix);
             return;
           }
           catch (RemoteException localRemoteException)
           {
-            Log.w("MediaBrowserCompat", "RemoteException during connect for " + k.this.gF.gB);
+            Log.w("MediaBrowserCompat", "RemoteException during connect for " + k.this.iD.iz);
           }
         } while (!MediaBrowserCompat.DEBUG);
         Log.d("MediaBrowserCompat", "ServiceCallbacks.onConnect...");
-        k.this.gF.dump();
+        k.this.iD.dump();
       }
     });
   }
   
   public final void onServiceDisconnected(final ComponentName paramComponentName)
   {
-    a(new Runnable()
+    c(new Runnable()
     {
       public final void run()
       {
         if (MediaBrowserCompat.DEBUG)
         {
-          Log.d("MediaBrowserCompat", "MediaServiceConnection.onServiceDisconnected name=" + paramComponentName + " this=" + this + " mServiceConnection=" + k.this.gF.gD);
-          k.this.gF.dump();
+          Log.d("MediaBrowserCompat", "MediaServiceConnection.onServiceDisconnected name=" + paramComponentName + " this=" + this + " mServiceConnection=" + k.this.iD.iB);
+          k.this.iD.dump();
         }
         if (!k.this.d("onServiceDisconnected")) {
           return;
         }
-        k.this.gF.gy = null;
-        k.this.gF.gz = null;
-        k.this.gF.gw.a(null);
-        k.this.gF.aJ = 4;
-        k.this.gF.gC.onConnectionSuspended();
+        k.this.iD.iw = null;
+        k.this.iD.ix = null;
+        k.this.iD.it.a(null);
+        k.this.iD.cs = 4;
+        k.this.iD.iA.onConnectionSuspended();
       }
     });
   }

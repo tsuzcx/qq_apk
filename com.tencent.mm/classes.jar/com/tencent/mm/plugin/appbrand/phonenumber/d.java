@@ -1,54 +1,42 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
-import a.f;
-import a.f.a.a;
-import a.f.a.r;
-import a.f.b.j;
-import a.f.b.t;
-import a.f.b.v;
-import a.g;
-import a.j.k;
-import a.l;
-import a.y;
+import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.wx_extension.b.a;
-import com.tencent.mm.protocal.protobuf.bwv;
+import com.tencent.mm.bx.b;
+import com.tencent.mm.plugin.appbrand.jsapi.a.c.b;
+import com.tencent.mm.protocal.protobuf.bje;
+import com.tencent.mm.protocal.protobuf.bjf;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vending.g.c;
+import d.g.a.r;
+import d.g.b.k;
+import d.l;
+import d.v;
+import d.y;
+import java.nio.charset.Charset;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONStringer;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/phonenumber/CgiGetAllPhone;", "", "appId", "", "apiName", "withCredentials", "", "(Ljava/lang/String;Ljava/lang/String;Z)V", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "getRr", "()Lcom/tencent/mm/modelbase/CommReqResp;", "rr$delegate", "Lkotlin/Lazy;", "jsonStringer", "run", "", "callback", "Lkotlin/Function4;", "Lkotlin/ParameterName;", "name", "isSucces", "errMsg", "", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "phoneItems", "Lcom/tencent/mm/protocal/protobuf/ScopeInfo;", "scope", "Companion", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/phonenumber/CgiGetAllPhone;", "", "appId", "", "apiName", "withCredentials", "", "(Ljava/lang/String;Ljava/lang/String;Z)V", "getApiName", "()Ljava/lang/String;", "getAppId", "getWithCredentials", "()Z", "jsonStringer", "run", "", "callback", "Lkotlin/Function4;", "Lkotlin/ParameterName;", "name", "isSucces", "errMsg", "", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "phoneItems", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetCustomPhoneNumber$Info;", "info", "luggage-wechat-full-sdk_release"})
 public final class d
 {
-  public static final d.a iCI;
-  private final f iCD;
-  
-  static
-  {
-    AppMethodBeat.i(143924);
-    eOJ = new k[] { (k)v.a(new t(v.aG(d.class), "rr", "getRr()Lcom/tencent/mm/modelbase/CommReqResp;")) };
-    iCI = new d.a((byte)0);
-    AppMethodBeat.o(143924);
-  }
+  private final String appId;
+  private final String lju;
+  private final boolean ljv;
   
   public d(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(134780);
-    this.iCD = g.j((a)new d.b(this, paramString2, paramBoolean, paramString1));
-    AppMethodBeat.o(134780);
+    AppMethodBeat.i(148028);
+    this.appId = paramString1;
+    this.lju = paramString2;
+    this.ljv = paramBoolean;
+    AppMethodBeat.o(148028);
   }
   
-  private com.tencent.mm.ai.b aKG()
+  private static String aw(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(143925);
-    com.tencent.mm.ai.b localb = (com.tencent.mm.ai.b)this.iCD.getValue();
-    AppMethodBeat.o(143925);
-    return localb;
-  }
-  
-  private static String ar(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(134779);
+    AppMethodBeat.i(148026);
     JSONStringer localJSONStringer = new JSONStringer();
     try
     {
@@ -59,29 +47,66 @@ public final class d
       localJSONStringer.value(paramBoolean);
       localJSONStringer.endObject();
       paramString = localJSONStringer.toString();
-      j.p(paramString, "jsonStringer.toString()");
-      AppMethodBeat.o(134779);
+      k.g(paramString, "jsonStringer.toString()");
+      AppMethodBeat.o(148026);
       return paramString;
     }
     catch (JSONException paramString)
     {
       for (;;)
       {
-        com.tencent.luggage.g.d.printErrStackTrace("MicroMsg.JsApiGetPhoneNumberNew", (Throwable)paramString, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.JsApiGetPhoneNumberNew", (Throwable)paramString, "", new Object[0]);
       }
     }
   }
   
-  public final void a(r<? super Boolean, ? super String, ? super List<PhoneItem>, ? super bwv, y> paramr)
+  public final void a(r<? super Boolean, ? super String, ? super List<PhoneItem>, ? super c.b, y> paramr)
   {
-    AppMethodBeat.i(143926);
-    com.tencent.mm.ipcinvoker.wx_extension.b.a(aKG(), (b.a)new d.c(paramr));
-    AppMethodBeat.o(143926);
+    AppMethodBeat.i(148027);
+    Object localObject = aw(this.lju, this.ljv);
+    bje localbje = new bje();
+    localbje.hnC = this.appId;
+    Charset localCharset = d.n.d.UTF_8;
+    if (localObject == null)
+    {
+      paramr = new v("null cannot be cast to non-null type java.lang.String");
+      AppMethodBeat.o(148027);
+      throw paramr;
+    }
+    localObject = ((String)localObject).getBytes(localCharset);
+    k.g(localObject, "(this as java.lang.String).getBytes(charset)");
+    localbje.mAx = new b((byte[])localObject);
+    ((com.tencent.mm.plugin.appbrand.networking.a)e.K(com.tencent.mm.plugin.appbrand.networking.a.class)).a("/cgi-bin/mmbiz-bin/wxaapp/customphone/getallphone", (com.tencent.mm.bx.a)localbje, bjf.class).c((com.tencent.mm.vending.c.a)new d.a(paramr)).a((com.tencent.mm.vending.g.d.a)new b(paramr));
+    AppMethodBeat.o(148027);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onInterrupt"})
+  static final class b<T>
+    implements com.tencent.mm.vending.g.d.a<Object>
+  {
+    b(r paramr) {}
+    
+    public final void ce(Object paramObject)
+    {
+      AppMethodBeat.i(148025);
+      ad.e("Luggage.FULL.CgiPhoneNumber", "getPhoneNumber fail");
+      if ((paramObject instanceof Exception)) {
+        ad.e("Luggage.FULL.CgiPhoneNumber", "CgiGetAllPhone " + ((Exception)paramObject).getMessage());
+      }
+      paramObject = this.ljw;
+      if (paramObject != null)
+      {
+        paramObject.a(Boolean.FALSE, "cgi fail", null, null);
+        AppMethodBeat.o(148025);
+        return;
+      }
+      AppMethodBeat.o(148025);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.d
  * JD-Core Version:    0.7.0.1
  */

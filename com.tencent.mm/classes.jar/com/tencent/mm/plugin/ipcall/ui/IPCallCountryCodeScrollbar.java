@@ -8,55 +8,56 @@ import android.graphics.Paint.Align;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
 import com.tencent.mm.ui.base.o;
 
 public class IPCallCountryCodeScrollbar
   extends View
 {
-  public static final String[] nSu = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-  private int aRn;
-  private float fad;
-  private TextView nSA;
-  private int nSB;
-  private IPCallCountryCodeScrollbar.a nSC;
-  protected float nSv;
-  protected int nSw;
-  protected String[] nSx;
-  private float nSy;
-  private o nSz;
+  public static final String[] sGo = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+  private int boX;
+  private float fPm;
   private Paint paint;
+  protected float sGp;
+  protected int sGq;
+  protected String[] sGr;
+  private float sGs;
+  private o sGt;
+  private TextView sGu;
+  private int sGv;
+  private a sGw;
   private float textSize;
   
   public IPCallCountryCodeScrollbar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(22108);
-    this.nSy = 0.0F;
-    this.nSx = new String[] { "↑" };
-    this.nSv = 1.3F;
-    this.nSw = 79;
+    AppMethodBeat.i(25725);
+    this.sGs = 0.0F;
+    this.sGr = new String[] { "↑" };
+    this.sGp = 1.3F;
+    this.sGq = 79;
     setFocusable(true);
     setFocusableInTouchMode(true);
-    this.nSB = BackwardSupportUtil.b.b(paramContext, 3.0F);
+    this.sGv = BackwardSupportUtil.b.g(paramContext, 3.0F);
     paramAttributeSet = inflate(paramContext, getToastLayoutId(), null);
-    int i = BackwardSupportUtil.b.b(paramContext, this.nSw);
-    this.nSz = new o(paramAttributeSet, i, i);
-    this.nSA = ((TextView)paramAttributeSet.findViewById(2131827784));
+    int i = BackwardSupportUtil.b.g(paramContext, this.sGq);
+    this.sGt = new o(paramAttributeSet, i, i);
+    this.sGu = ((TextView)paramAttributeSet.findViewById(2131304779));
     this.paint = new Paint();
     this.paint.setAntiAlias(true);
     this.paint.setColor(-11119018);
     this.paint.setTextAlign(Paint.Align.CENTER);
-    AppMethodBeat.o(22108);
+    AppMethodBeat.o(25725);
   }
   
-  public final void Rp(String paramString)
+  public final void aej(String paramString)
   {
-    AppMethodBeat.i(22107);
-    String[] arrayOfString1 = nSu;
+    AppMethodBeat.i(25724);
+    String[] arrayOfString1 = sGo;
     int k = arrayOfString1.length;
     int i = 0;
     int j = 0;
@@ -70,9 +71,9 @@ public class IPCallCountryCodeScrollbar
     if (j == 0) {
       paramString = "#";
     }
-    k = this.nSx.length + 1;
+    k = this.sGr.length + 1;
     arrayOfString1 = new String[k];
-    String[] arrayOfString2 = this.nSx;
+    String[] arrayOfString2 = this.sGr;
     int m = arrayOfString2.length;
     j = 0;
     i = 0;
@@ -81,7 +82,7 @@ public class IPCallCountryCodeScrollbar
       String str = arrayOfString2[j];
       if (str.equals(paramString))
       {
-        AppMethodBeat.o(22107);
+        AppMethodBeat.o(25724);
         return;
       }
       arrayOfString1[i] = str;
@@ -89,90 +90,110 @@ public class IPCallCountryCodeScrollbar
       i += 1;
     }
     arrayOfString1[(k - 1)] = paramString;
-    this.nSx = arrayOfString1;
-    AppMethodBeat.o(22107);
+    this.sGr = arrayOfString1;
+    AppMethodBeat.o(25724);
   }
   
   protected int getToastLayoutId()
   {
-    return 2130970734;
+    return 2131495439;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     int i = 0;
     int j = 0;
-    AppMethodBeat.i(22109);
+    AppMethodBeat.i(25726);
     super.onDraw(paramCanvas);
-    int m = getMeasuredHeight();
-    int k = getMeasuredWidth();
-    this.textSize = (m / (this.nSx.length * this.nSv));
-    int n = getResources().getDimensionPixelSize(2131427809);
+    final int m = getMeasuredHeight();
+    final int k = getMeasuredWidth();
+    this.textSize = (m / (this.sGr.length * this.sGp));
+    int n = getResources().getDimensionPixelSize(2131165517);
     if (this.textSize > n) {
       this.textSize = n;
     }
     this.paint.setTextSize(this.textSize);
-    if (this.nSy != this.textSize)
+    if (this.sGs != this.textSize)
     {
-      this.nSy = this.textSize;
-      post(new IPCallCountryCodeScrollbar.1(this, k, m));
+      this.sGs = this.textSize;
+      post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(25723);
+          if (IPCallCountryCodeScrollbar.this.sGr.length <= 0)
+          {
+            AppMethodBeat.o(25723);
+            return;
+          }
+          int i = (int)IPCallCountryCodeScrollbar.a(IPCallCountryCodeScrollbar.this).measureText(IPCallCountryCodeScrollbar.this.sGr[(IPCallCountryCodeScrollbar.this.sGr.length - 1)]) + a.fromDPToPix(IPCallCountryCodeScrollbar.this.getContext(), 8);
+          if (i > k)
+          {
+            ViewGroup.LayoutParams localLayoutParams = IPCallCountryCodeScrollbar.this.getLayoutParams();
+            localLayoutParams.width = i;
+            localLayoutParams.height = m;
+            IPCallCountryCodeScrollbar.this.setLayoutParams(localLayoutParams);
+          }
+          AppMethodBeat.o(25723);
+        }
+      });
     }
     if (this.textSize == n)
     {
-      float f = (m - this.nSx.length * this.textSize * this.nSv) / 2.0F;
+      float f = (m - this.sGr.length * this.textSize * this.sGp) / 2.0F;
       i = j;
-      while (i < this.nSx.length)
+      while (i < this.sGr.length)
       {
-        paramCanvas.drawText(this.nSx[i], k / 2.0F, this.textSize + f + i * this.textSize * this.nSv, this.paint);
+        paramCanvas.drawText(this.sGr[i], k / 2.0F, this.textSize + f + i * this.textSize * this.sGp, this.paint);
         i += 1;
       }
-      AppMethodBeat.o(22109);
+      AppMethodBeat.o(25726);
       return;
     }
-    while (i < this.nSx.length)
+    while (i < this.sGr.length)
     {
-      paramCanvas.drawText(this.nSx[i], k / 2.0F, this.textSize + i * this.textSize * this.nSv, this.paint);
+      paramCanvas.drawText(this.sGr[i], k / 2.0F, this.textSize + i * this.textSize * this.sGp, this.paint);
       i += 1;
     }
-    AppMethodBeat.o(22109);
+    AppMethodBeat.o(25726);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(22110);
+    AppMethodBeat.i(25727);
     if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2))
     {
-      this.fad = paramMotionEvent.getY();
-      if (this.fad < 0.0F) {
-        this.fad = 0.0F;
+      this.fPm = paramMotionEvent.getY();
+      if (this.fPm < 0.0F) {
+        this.fPm = 0.0F;
       }
-      if (this.fad > getMeasuredHeight()) {
-        this.fad = getMeasuredHeight();
+      if (this.fPm > getMeasuredHeight()) {
+        this.fPm = getMeasuredHeight();
       }
-      setBackgroundDrawable(a.k(getContext(), 2130840212));
-      float f1 = this.fad;
-      float f2 = this.textSize * this.nSv;
-      int j = (int)((f1 - (getMeasuredHeight() - this.nSx.length * f2) / 2.0F) / f2);
+      setBackgroundDrawable(a.l(getContext(), 2131233914));
+      float f1 = this.fPm;
+      float f2 = this.textSize * this.sGp;
+      int j = (int)((f1 - (getMeasuredHeight() - this.sGr.length * f2) / 2.0F) / f2);
       int i = j;
       if (j < 0) {
         i = 0;
       }
       j = i;
-      if (i >= this.nSx.length) {
-        j = this.nSx.length - 1;
+      if (i >= this.sGr.length) {
+        j = this.sGr.length - 1;
       }
-      this.aRn = j;
-      if (this.aRn != -1) {
+      this.boX = j;
+      if (this.boX != -1) {
         break label259;
       }
-      this.nSA.setText(2131302955);
-      this.nSz.showAtLocation(this, 17, 0, 0);
-      if (this.nSC != null)
+      this.sGu.setText(2131762893);
+      this.sGt.showAtLocation(this, 17, 0, 0);
+      if (this.sGw != null)
       {
-        if (this.aRn != -1) {
+        if (this.boX != -1) {
           break label278;
         }
-        this.nSC.lf(a.aq(getContext(), 2131302955));
+        this.sGw.pb(a.aq(getContext(), 2131762893));
       }
     }
     for (;;)
@@ -181,26 +202,31 @@ public class IPCallCountryCodeScrollbar
       if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
       {
         setBackgroundResource(0);
-        this.nSz.dismiss();
+        this.sGt.dismiss();
       }
-      AppMethodBeat.o(22110);
+      AppMethodBeat.o(25727);
       return true;
       label259:
-      this.nSA.setText(this.nSx[this.aRn]);
+      this.sGu.setText(this.sGr[this.boX]);
       break;
       label278:
-      this.nSC.lf(this.nSx[this.aRn]);
+      this.sGw.pb(this.sGr[this.boX]);
     }
   }
   
-  public void setOnScrollBarTouchListener(IPCallCountryCodeScrollbar.a parama)
+  public void setOnScrollBarTouchListener(a parama)
   {
-    this.nSC = parama;
+    this.sGw = parama;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void pb(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallCountryCodeScrollbar
  * JD-Core Version:    0.7.0.1
  */

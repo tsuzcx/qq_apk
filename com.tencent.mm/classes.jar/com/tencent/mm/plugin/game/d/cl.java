@@ -1,98 +1,98 @@
 package com.tencent.mm.plugin.game.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import f.a.a.b;
 
 public final class cl
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int niE;
-  public String ntH;
-  public String ntI;
-  public boolean ntJ;
+  public int rNT;
+  public String sdi;
+  public String sdj;
+  public boolean sdk;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(111649);
+    AppMethodBeat.i(41814);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.ntI == null)
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.sdj == null)
       {
         paramVarArgs = new b("Not all required fields were included: MediaURL");
-        AppMethodBeat.o(111649);
+        AppMethodBeat.o(41814);
         throw paramVarArgs;
       }
-      paramVarArgs.aO(1, this.niE);
-      if (this.ntH != null) {
-        paramVarArgs.e(2, this.ntH);
+      paramVarArgs.aR(1, this.rNT);
+      if (this.sdi != null) {
+        paramVarArgs.d(2, this.sdi);
       }
-      if (this.ntI != null) {
-        paramVarArgs.e(3, this.ntI);
+      if (this.sdj != null) {
+        paramVarArgs.d(3, this.sdj);
       }
-      paramVarArgs.aS(4, this.ntJ);
-      AppMethodBeat.o(111649);
+      paramVarArgs.bg(4, this.sdk);
+      AppMethodBeat.o(41814);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = e.a.a.b.b.a.bl(1, this.niE) + 0;
+      int i = f.a.a.b.b.a.bA(1, this.rNT) + 0;
       paramInt = i;
-      if (this.ntH != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.ntH);
+      if (this.sdi != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.sdi);
       }
       i = paramInt;
-      if (this.ntI != null) {
-        i = paramInt + e.a.a.b.b.a.f(3, this.ntI);
+      if (this.sdj != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.sdj);
       }
-      paramInt = e.a.a.b.b.a.eW(4);
-      AppMethodBeat.o(111649);
+      paramInt = f.a.a.b.b.a.fY(4);
+      AppMethodBeat.o(41814);
       return i + (paramInt + 1);
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      if (this.ntI == null)
+      if (this.sdj == null)
       {
         paramVarArgs = new b("Not all required fields were included: MediaURL");
-        AppMethodBeat.o(111649);
+        AppMethodBeat.o(41814);
         throw paramVarArgs;
       }
-      AppMethodBeat.o(111649);
+      AppMethodBeat.o(41814);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       cl localcl = (cl)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(111649);
+        AppMethodBeat.o(41814);
         return -1;
       case 1: 
-        localcl.niE = locala.CLY.sl();
-        AppMethodBeat.o(111649);
+        localcl.rNT = locala.KhF.xS();
+        AppMethodBeat.o(41814);
         return 0;
       case 2: 
-        localcl.ntH = locala.CLY.readString();
-        AppMethodBeat.o(111649);
+        localcl.sdi = locala.KhF.readString();
+        AppMethodBeat.o(41814);
         return 0;
       case 3: 
-        localcl.ntI = locala.CLY.readString();
-        AppMethodBeat.o(111649);
+        localcl.sdj = locala.KhF.readString();
+        AppMethodBeat.o(41814);
         return 0;
       }
-      localcl.ntJ = locala.CLY.emu();
-      AppMethodBeat.o(111649);
+      localcl.sdk = locala.KhF.fHu();
+      AppMethodBeat.o(41814);
       return 0;
     }
-    AppMethodBeat.o(111649);
+    AppMethodBeat.o(41814);
     return -1;
   }
 }

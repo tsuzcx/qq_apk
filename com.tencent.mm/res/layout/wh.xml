@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<RelativeLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:id="@id/nw" android:background="@color/vy" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/bl6" android:background="@color/vy" android:layout_above="@id/bl8" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/mn" />
-        <TextView android:id="@id/a8b" android:layout_above="@id/bl8" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/lf" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/bl8" android:background="@drawable/b03" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="49.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-</LinearLayout>
+    <com.tencent.mm.plugin.downloader_app.ui.TaskManagerHeaderView android:id="@id/cj_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.downloader_app.ui.DeleteTaskFooterView android:id="@id/b_3" android:background="@color/a_r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <com.tencent.mm.plugin.downloader_app.ui.TaskListView android:id="@id/d2f" android:background="@color/ly" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/b_3" android:layout_below="@id/cj_" />
+    <ViewStub android:id="@id/e4h" android:layout="@layout/aun" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/d4c" android:layout="@layout/we" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

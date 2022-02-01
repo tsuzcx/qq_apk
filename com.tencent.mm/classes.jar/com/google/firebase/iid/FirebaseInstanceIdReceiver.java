@@ -14,18 +14,18 @@ import javax.annotation.concurrent.GuardedBy;
 public final class FirebaseInstanceIdReceiver
   extends WakefulBroadcastReceiver
 {
-  private static boolean bfc = false;
+  private static boolean bDc = false;
   @GuardedBy("FirebaseInstanceIdReceiver.class")
-  private static y bfd;
+  private static y bDd;
   @GuardedBy("FirebaseInstanceIdReceiver.class")
-  private static y bfe;
+  private static y bDe;
   
   private final void a(Context paramContext, Intent paramIntent, String paramString)
   {
     String str1 = null;
     int k = 0;
     int j = -1;
-    AppMethodBeat.i(108708);
+    AppMethodBeat.i(4144);
     paramIntent.setComponent(null);
     paramIntent.setPackage(paramContext.getPackageName());
     if (Build.VERSION.SDK_INT <= 18) {
@@ -52,7 +52,7 @@ public final class FirebaseInstanceIdReceiver
           }
         }
         if (i == 0) {
-          break label221;
+          break label223;
         }
         if (isOrderedBroadcast()) {
           setResultCode(-1);
@@ -60,13 +60,13 @@ public final class FirebaseInstanceIdReceiver
         j(paramContext, str1).a(paramIntent, goAsync());
       }
     }
-    label221:
-    for (int i = j;; i = o.sa().a(paramContext, str1, paramIntent))
+    label223:
+    for (int i = j;; i = o.wZ().a(paramContext, str1, paramIntent))
     {
       if (isOrderedBroadcast()) {
         setResultCode(i);
       }
-      AppMethodBeat.o(108708);
+      AppMethodBeat.o(4144);
       return;
       if ((!"com.google.android.c2dm.intent.RECEIVE".equals(paramString)) && (!"com.google.firebase.MESSAGING_EVENT".equals(paramString))) {
         break;
@@ -82,80 +82,80 @@ public final class FirebaseInstanceIdReceiver
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 139
-    //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: ldc 129
-    //   10: aload_1
-    //   11: invokevirtual 86	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   14: ifeq +35 -> 49
-    //   17: getstatic 141	com/google/firebase/iid/FirebaseInstanceIdReceiver:bfe	Lcom/google/firebase/iid/y;
-    //   20: ifnonnull +15 -> 35
-    //   23: new 119	com/google/firebase/iid/y
-    //   26: dup
-    //   27: aload_0
-    //   28: aload_1
-    //   29: invokespecial 144	com/google/firebase/iid/y:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   32: putstatic 141	com/google/firebase/iid/FirebaseInstanceIdReceiver:bfe	Lcom/google/firebase/iid/y;
-    //   35: getstatic 141	com/google/firebase/iid/FirebaseInstanceIdReceiver:bfe	Lcom/google/firebase/iid/y;
-    //   38: astore_0
-    //   39: ldc 139
-    //   41: invokestatic 125	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   44: ldc 2
-    //   46: monitorexit
-    //   47: aload_0
-    //   48: areturn
-    //   49: getstatic 146	com/google/firebase/iid/FirebaseInstanceIdReceiver:bfd	Lcom/google/firebase/iid/y;
-    //   52: ifnonnull +15 -> 67
-    //   55: new 119	com/google/firebase/iid/y
-    //   58: dup
-    //   59: aload_0
-    //   60: aload_1
-    //   61: invokespecial 144	com/google/firebase/iid/y:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   64: putstatic 146	com/google/firebase/iid/FirebaseInstanceIdReceiver:bfd	Lcom/google/firebase/iid/y;
-    //   67: getstatic 146	com/google/firebase/iid/FirebaseInstanceIdReceiver:bfd	Lcom/google/firebase/iid/y;
-    //   70: astore_0
-    //   71: ldc 139
-    //   73: invokestatic 125	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   76: goto -32 -> 44
-    //   79: astore_0
-    //   80: ldc 2
-    //   82: monitorexit
-    //   83: aload_0
-    //   84: athrow
+    //   3: sipush 4145
+    //   6: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: ldc 128
+    //   11: aload_1
+    //   12: invokevirtual 85	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   15: ifeq +36 -> 51
+    //   18: getstatic 139	com/google/firebase/iid/FirebaseInstanceIdReceiver:bDe	Lcom/google/firebase/iid/y;
+    //   21: ifnonnull +15 -> 36
+    //   24: new 118	com/google/firebase/iid/y
+    //   27: dup
+    //   28: aload_0
+    //   29: aload_1
+    //   30: invokespecial 142	com/google/firebase/iid/y:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   33: putstatic 139	com/google/firebase/iid/FirebaseInstanceIdReceiver:bDe	Lcom/google/firebase/iid/y;
+    //   36: getstatic 139	com/google/firebase/iid/FirebaseInstanceIdReceiver:bDe	Lcom/google/firebase/iid/y;
+    //   39: astore_0
+    //   40: sipush 4145
+    //   43: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: ldc 2
+    //   48: monitorexit
+    //   49: aload_0
+    //   50: areturn
+    //   51: getstatic 144	com/google/firebase/iid/FirebaseInstanceIdReceiver:bDd	Lcom/google/firebase/iid/y;
+    //   54: ifnonnull +15 -> 69
+    //   57: new 118	com/google/firebase/iid/y
+    //   60: dup
+    //   61: aload_0
+    //   62: aload_1
+    //   63: invokespecial 142	com/google/firebase/iid/y:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   66: putstatic 144	com/google/firebase/iid/FirebaseInstanceIdReceiver:bDd	Lcom/google/firebase/iid/y;
+    //   69: getstatic 144	com/google/firebase/iid/FirebaseInstanceIdReceiver:bDd	Lcom/google/firebase/iid/y;
+    //   72: astore_0
+    //   73: sipush 4145
+    //   76: invokestatic 124	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   79: goto -33 -> 46
+    //   82: astore_0
+    //   83: ldc 2
+    //   85: monitorexit
+    //   86: aload_0
+    //   87: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	85	0	paramContext	Context
-    //   0	85	1	paramString	String
+    //   0	88	0	paramContext	Context
+    //   0	88	1	paramString	String
     // Exception table:
     //   from	to	target	type
-    //   3	35	79	finally
-    //   35	44	79	finally
-    //   49	67	79	finally
-    //   67	76	79	finally
+    //   3	36	82	finally
+    //   36	46	82	finally
+    //   51	69	82	finally
+    //   69	79	82	finally
   }
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(108707);
+    AppMethodBeat.i(4143);
     if (paramIntent == null)
     {
-      AppMethodBeat.o(108707);
+      AppMethodBeat.o(4143);
       return;
     }
     Parcelable localParcelable = paramIntent.getParcelableExtra("wrapped_intent");
     if ((localParcelable instanceof Intent))
     {
       a(paramContext, (Intent)localParcelable, paramIntent.getAction());
-      AppMethodBeat.o(108707);
+      AppMethodBeat.o(4143);
       return;
     }
     a(paramContext, paramIntent, paramIntent.getAction());
-    AppMethodBeat.o(108707);
+    AppMethodBeat.o(4143);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.FirebaseInstanceIdReceiver
  * JD-Core Version:    0.7.0.1
  */

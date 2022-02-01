@@ -9,18 +9,18 @@ import java.util.List;
 final class dt
   implements Cloneable
 {
-  private dr<?, ?> Ry;
-  private List<dy> Rz = new ArrayList();
+  private dr<?, ?> Tn;
+  private List<dy> To = new ArrayList();
   private Object value;
   
-  private dt ka()
+  private dt kj()
   {
     dt localdt = new dt();
     try
     {
-      localdt.Ry = this.Ry;
-      if (this.Rz == null) {
-        localdt.Rz = null;
+      localdt.Tn = this.Tn;
+      if (this.To == null) {
+        localdt.To = null;
       }
       for (;;)
       {
@@ -32,7 +32,7 @@ final class dt
         }
         localdt.value = ((dw)((dw)this.value).clone());
         return localdt;
-        localdt.Rz.addAll(this.Rz);
+        localdt.To.addAll(this.To);
       }
       if (!(this.value instanceof byte[])) {
         break label117;
@@ -102,7 +102,7 @@ final class dt
   
   private byte[] toByteArray()
   {
-    byte[] arrayOfByte = new byte[jN()];
+    byte[] arrayOfByte = new byte[jW()];
     a(do.c(arrayOfByte));
     return arrayOfByte;
   }
@@ -110,24 +110,24 @@ final class dt
   final void a(do paramdo)
   {
     if (this.value != null) {
-      this.Ry.a(this.value, paramdo);
+      this.Tn.a(this.value, paramdo);
     }
     for (;;)
     {
       return;
-      Iterator localIterator = this.Rz.iterator();
+      Iterator localIterator = this.To.iterator();
       while (localIterator.hasNext())
       {
         dy localdy = (dy)localIterator.next();
-        paramdo.bx(localdy.tag);
-        paramdo.d(localdy.RC);
+        paramdo.bR(localdy.tag);
+        paramdo.d(localdy.Tr);
       }
     }
   }
   
   final void a(dy paramdy)
   {
-    this.Rz.add(paramdy);
+    this.To.add(paramdy);
   }
   
   public final boolean equals(Object paramObject)
@@ -149,8 +149,8 @@ final class dt
         break;
       }
       bool1 = bool2;
-    } while (this.Ry != paramObject.Ry);
-    if (!this.Ry.Rs.isArray()) {
+    } while (this.Tn != paramObject.Tn);
+    if (!this.Tn.Th.isArray()) {
       return this.value.equals(paramObject.value);
     }
     if ((this.value instanceof byte[])) {
@@ -172,8 +172,8 @@ final class dt
       return Arrays.equals((boolean[])this.value, (boolean[])paramObject.value);
     }
     return Arrays.deepEquals((Object[])this.value, (Object[])paramObject.value);
-    if ((this.Rz != null) && (paramObject.Rz != null)) {
-      return this.Rz.equals(paramObject.Rz);
+    if ((this.To != null) && (paramObject.To != null)) {
+      return this.To.equals(paramObject.To);
     }
     try
     {
@@ -199,24 +199,24 @@ final class dt
     }
   }
   
-  final int jN()
+  final int jW()
   {
     int j;
     if (this.value != null)
     {
-      j = this.Ry.z(this.value);
+      j = this.Tn.I(this.value);
       return j;
     }
-    Iterator localIterator = this.Rz.iterator();
+    Iterator localIterator = this.To.iterator();
     dy localdy;
-    for (int i = 0;; i = localdy.RC.length + (j + 0) + i)
+    for (int i = 0;; i = localdy.Tr.length + (j + 0) + i)
     {
       j = i;
       if (!localIterator.hasNext()) {
         break;
       }
       localdy = (dy)localIterator.next();
-      j = do.by(localdy.tag);
+      j = do.bS(localdy.tag);
     }
   }
 }

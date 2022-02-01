@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.account.security.a;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h;
 import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.storagebase.h;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,37 +11,37 @@ public final class e
   extends j<d>
 {
   public static final String[] SQL_CREATE;
-  h gBj;
+  h ioD;
   
   static
   {
-    AppMethodBeat.i(69841);
+    AppMethodBeat.i(125526);
     SQL_CREATE = new String[] { j.getCreateSQLs(d.info, "SafeDeviceInfo") };
-    AppMethodBeat.o(69841);
+    AppMethodBeat.o(125526);
   }
   
   public e(com.tencent.mm.sdk.e.e parame)
   {
     super(parame, d.info, "SafeDeviceInfo", null);
-    AppMethodBeat.i(69836);
-    this.gBj = null;
+    AppMethodBeat.i(125521);
+    this.ioD = null;
     if ((parame instanceof h)) {
-      this.gBj = ((h)parame);
+      this.ioD = ((h)parame);
     }
-    AppMethodBeat.o(69836);
+    AppMethodBeat.o(125521);
   }
   
   public final boolean a(d paramd)
   {
-    AppMethodBeat.i(69837);
+    AppMethodBeat.i(125522);
     boolean bool = super.insert(paramd);
-    AppMethodBeat.o(69837);
+    AppMethodBeat.o(125522);
     return bool;
   }
   
-  public final List<d> ara()
+  public final List<d> aJA()
   {
-    AppMethodBeat.i(69838);
+    AppMethodBeat.i(125523);
     LinkedList localLinkedList = new LinkedList();
     if (getCount() > 0)
     {
@@ -54,13 +54,13 @@ public final class e
       }
       localCursor.close();
     }
-    AppMethodBeat.o(69838);
+    AppMethodBeat.o(125523);
     return localLinkedList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.a.e
  * JD-Core Version:    0.7.0.1
  */

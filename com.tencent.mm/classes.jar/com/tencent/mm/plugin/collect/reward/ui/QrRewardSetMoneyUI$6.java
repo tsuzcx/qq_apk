@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.collect.reward.ui;
 import android.text.Editable;
 import android.text.TextWatcher;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.aq;
 
 final class QrRewardSetMoneyUI$6
   implements TextWatcher
@@ -12,7 +12,7 @@ final class QrRewardSetMoneyUI$6
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    AppMethodBeat.i(41154);
+    AppMethodBeat.i(64015);
     if (paramEditable.toString().startsWith(".")) {
       paramEditable.insert(0, "0");
     }
@@ -24,9 +24,9 @@ final class QrRewardSetMoneyUI$6
     }
     for (;;)
     {
-      al.ae(QrRewardSetMoneyUI.d(this.kQu));
-      al.p(QrRewardSetMoneyUI.d(this.kQu), 50L);
-      AppMethodBeat.o(41154);
+      aq.az(QrRewardSetMoneyUI.d(this.nWJ));
+      aq.n(QrRewardSetMoneyUI.d(this.nWJ), 50L);
+      AppMethodBeat.o(64015);
       return;
       if (i > 6) {
         paramEditable.delete(6, i);
@@ -42,7 +42,7 @@ final class QrRewardSetMoneyUI$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.reward.ui.QrRewardSetMoneyUI.6
  * JD-Core Version:    0.7.0.1
  */

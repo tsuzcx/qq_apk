@@ -1,81 +1,96 @@
 package com.tencent.mm.ui.chatting;
 
+import android.content.Context;
 import android.view.View;
+import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.plugin.newtips.a.a;
+import com.tencent.mm.plugin.newtips.a.k;
+import com.tencent.mm.protocal.protobuf.dcb;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class an
+  implements a
 {
-  private static LinkedList<View> zCN;
-  private static LinkedList<View> zCO;
-  private static LinkedList<View> zCP;
+  private String GqO;
+  private LinearLayout GqP;
+  private a GqQ;
+  private Context mContext;
   
-  static
+  public an(Context paramContext, String paramString, a parama)
   {
-    AppMethodBeat.i(70052);
-    zCN = new LinkedList();
-    zCO = new LinkedList();
-    zCP = new LinkedList();
-    AppMethodBeat.o(70052);
+    AppMethodBeat.i(191485);
+    this.GqO = paramString;
+    this.mContext = paramContext;
+    this.GqQ = parama;
+    this.GqP = new LinearLayout(this.mContext);
+    AppMethodBeat.o(191485);
   }
   
-  public static View Py(int paramInt)
+  public final void a(k paramk, boolean paramBoolean) {}
+  
+  public final boolean a(boolean paramBoolean, dcb paramdcb)
   {
-    AppMethodBeat.i(70049);
-    Object localObject;
-    if (paramInt == 1) {
-      localObject = zCN;
-    }
-    while (((LinkedList)localObject).size() != 0)
-    {
-      localObject = (View)((LinkedList)localObject).removeFirst();
-      AppMethodBeat.o(70049);
-      return localObject;
-      if (paramInt == 2) {
-        localObject = zCO;
-      } else {
-        localObject = zCP;
-      }
-    }
-    AppMethodBeat.o(70049);
-    return null;
+    return false;
   }
   
-  public static void an(View paramView, int paramInt)
+  public final boolean b(boolean paramBoolean, dcb paramdcb)
   {
-    AppMethodBeat.i(70050);
-    LinkedList localLinkedList;
-    if (paramInt == 1) {
-      localLinkedList = zCN;
-    }
-    for (;;)
-    {
-      if (localLinkedList.size() >= 35) {
-        localLinkedList.removeFirst();
-      }
-      localLinkedList.addLast(paramView);
-      AppMethodBeat.o(70050);
-      return;
-      if (paramInt == 2) {
-        localLinkedList = zCO;
-      } else {
-        localLinkedList = zCP;
-      }
-    }
+    return false;
   }
   
-  public static void clear()
+  public final boolean c(boolean paramBoolean, dcb paramdcb)
   {
-    AppMethodBeat.i(70051);
-    zCN.clear();
-    zCO.clear();
-    zCP.clear();
-    AppMethodBeat.o(70051);
+    return false;
+  }
+  
+  public final boolean cND()
+  {
+    return true;
+  }
+  
+  public final boolean d(boolean paramBoolean, dcb paramdcb)
+  {
+    return false;
+  }
+  
+  public final String getPath()
+  {
+    return this.GqO;
+  }
+  
+  public final View getRoot()
+  {
+    return this.GqP;
+  }
+  
+  public final boolean mY(boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public final boolean mZ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(191486);
+    ad.i("MicroMsg.ShowRedDotCompoent", "menuKey:%s，show：%s", new Object[] { this.GqO, Boolean.valueOf(paramBoolean) });
+    this.GqQ.F(paramBoolean, this.GqO);
+    AppMethodBeat.o(191486);
+    return true;
+  }
+  
+  public final boolean na(boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void F(boolean paramBoolean, String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.an
  * JD-Core Version:    0.7.0.1
  */

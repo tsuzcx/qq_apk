@@ -1,23 +1,25 @@
 package com.tencent.mm.plugin.remittance.ui;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.wallet_core.c.f;
+import com.tencent.mm.ui.base.h;
 
 final class RemittanceDetailUI$16
-  implements f
+  implements DialogInterface.OnClickListener
 {
   RemittanceDetailUI$16(RemittanceDetailUI paramRemittanceDetailUI) {}
   
-  public final void bOi()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(45014);
-    RemittanceDetailUI.a(this.qpY, RemittanceDetailUI.x(this.qpY));
-    AppMethodBeat.o(45014);
+    AppMethodBeat.i(68141);
+    h.cf(this.vHk.getContext(), this.vHk.getString(2131762455));
+    AppMethodBeat.o(68141);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceDetailUI.16
  * JD-Core Version:    0.7.0.1
  */

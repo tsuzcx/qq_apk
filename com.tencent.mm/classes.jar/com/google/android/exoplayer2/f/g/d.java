@@ -7,69 +7,69 @@ import java.util.List;
 
 final class d
 {
-  int aWA;
-  boolean aWB;
-  boolean aWC;
-  int aWD;
-  int aWE;
-  int aWF;
-  int aWG;
-  int aWH;
-  Layout.Alignment aWJ;
-  String aWz;
-  String aXf;
-  String aXg;
-  List<String> aXh;
-  String aXi;
   int backgroundColor;
-  float fontSize;
+  int buC;
+  boolean buD;
+  boolean buE;
+  int buF;
+  int buG;
+  int buH;
+  int buI;
+  int buJ;
+  float buK;
+  Layout.Alignment buM;
+  String bvi;
+  String bvj;
+  List<String> bvk;
+  String bvl;
+  String iE;
   
   public d()
   {
-    AppMethodBeat.i(95723);
-    this.aXf = "";
-    this.aXg = "";
-    this.aXh = Collections.emptyList();
-    this.aXi = "";
-    this.aWz = null;
-    this.aWB = false;
-    this.aWC = false;
-    this.aWD = -1;
-    this.aWE = -1;
-    this.aWF = -1;
-    this.aWG = -1;
-    this.aWH = -1;
-    this.aWJ = null;
-    AppMethodBeat.o(95723);
+    AppMethodBeat.i(92891);
+    this.bvi = "";
+    this.bvj = "";
+    this.bvk = Collections.emptyList();
+    this.bvl = "";
+    this.iE = null;
+    this.buD = false;
+    this.buE = false;
+    this.buF = -1;
+    this.buG = -1;
+    this.buH = -1;
+    this.buI = -1;
+    this.buJ = -1;
+    this.buM = null;
+    AppMethodBeat.o(92891);
   }
   
-  static int a(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  static int b(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    AppMethodBeat.i(95724);
+    AppMethodBeat.i(92892);
     if ((paramString1.isEmpty()) || (paramInt1 == -1))
     {
-      AppMethodBeat.o(95724);
+      AppMethodBeat.o(92892);
       return paramInt1;
     }
     if (paramString1.equals(paramString2))
     {
-      AppMethodBeat.o(95724);
+      AppMethodBeat.o(92892);
       return paramInt1 + paramInt2;
     }
-    AppMethodBeat.o(95724);
+    AppMethodBeat.o(92892);
     return -1;
   }
   
   public final int getStyle()
   {
     int j = 0;
-    if ((this.aWF == -1) && (this.aWG == -1)) {
+    if ((this.buH == -1) && (this.buI == -1)) {
       return -1;
     }
-    if (this.aWF == 1) {}
+    if (this.buH == 1) {}
     for (int i = 1;; i = 0)
     {
-      if (this.aWG == 1) {
+      if (this.buI == 1) {
         j = 2;
       }
       return i | j;

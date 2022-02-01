@@ -2,106 +2,106 @@ package com.tencent.mm.plugin.freewifi.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
 import java.util.Map;
 
 public final class a
 {
   public String bssid;
-  public String mJT;
-  public String mJU;
-  public long mJV;
-  public String mJW;
-  public long mJX;
+  public String rgZ;
+  public String rha;
+  public long rhb;
+  public String rhc;
+  public long rhd;
   public String ssid;
   public String type;
   public long uin;
   
-  public static a OA(String paramString)
+  public static a aay(String paramString)
   {
-    AppMethodBeat.i(20682);
-    ab.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "It starts to parse msgContent for FreeWifiSchemaMsg. msgContent=%s", new Object[] { paramString });
-    if (m.isEmpty(paramString))
+    AppMethodBeat.i(24759);
+    ad.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "It starts to parse msgContent for FreeWifiSchemaMsg. msgContent=%s", new Object[] { paramString });
+    if (m.dq(paramString))
     {
-      ab.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "msgCoentent is empty. return.");
-      AppMethodBeat.o(20682);
+      ad.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "msgCoentent is empty. return.");
+      AppMethodBeat.o(24759);
       return null;
     }
-    ab.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "Shorten msgContent into one line. msgContent=%s", new Object[] { paramString });
-    paramString = br.F(paramString, "sysmsg");
+    ad.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "Shorten msgContent into one line. msgContent=%s", new Object[] { paramString });
+    paramString = bw.K(paramString, "sysmsg");
     if ((paramString == null) || (paramString.size() == 0))
     {
-      ab.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "Parsing xml failed");
-      AppMethodBeat.o(20682);
+      ad.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "Parsing xml failed");
+      AppMethodBeat.o(24759);
       return null;
     }
-    ab.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "Parsed values = " + paramString.toString());
+    ad.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "Parsed values = " + paramString.toString());
     if (!"freewifi".equalsIgnoreCase((String)paramString.get(".sysmsg.$type")))
     {
-      ab.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "sysmsg type is not freewifi. return.");
-      AppMethodBeat.o(20682);
+      ad.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "sysmsg type is not freewifi. return.");
+      AppMethodBeat.o(24759);
       return null;
     }
     a locala = new a();
     locala.type = ((String)paramString.get(".sysmsg.type"));
-    ab.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.type=" + locala.type);
+    ad.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.type=" + locala.type);
     if (!"schemamsg".equals(locala.type))
     {
-      ab.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.type is not schemamsg. return.");
-      AppMethodBeat.o(20682);
+      ad.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.type is not schemamsg. return.");
+      AppMethodBeat.o(24759);
       return null;
     }
-    boolean bool = m.k(paramString, "MicroMsg.FreeWifi.FreeWifiSchemaMsg");
-    ab.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "checkMsgPushedVersion=".concat(String.valueOf(bool)));
+    boolean bool = m.j(paramString, "MicroMsg.FreeWifi.FreeWifiSchemaMsg");
+    ad.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "checkMsgPushedVersion=".concat(String.valueOf(bool)));
     if (!bool)
     {
-      ab.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "version not matched. return.");
-      AppMethodBeat.o(20682);
+      ad.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "version not matched. return.");
+      AppMethodBeat.o(24759);
       return null;
     }
-    locala.uin = bo.getLong((String)paramString.get(".sysmsg.uin"), 0L);
-    ab.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.uin=" + locala.uin);
+    locala.uin = bt.getLong((String)paramString.get(".sysmsg.uin"), 0L);
+    ad.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.uin=" + locala.uin);
     locala.ssid = ((String)paramString.get(".sysmsg.schemamsg.ssid"));
-    ab.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.ssid=" + locala.ssid);
-    if (m.isEmpty(locala.ssid))
+    ad.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.ssid=" + locala.ssid);
+    if (m.dq(locala.ssid))
     {
-      ab.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "scemaMsg.ssid is empty. return.");
-      AppMethodBeat.o(20682);
+      ad.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "scemaMsg.ssid is empty. return.");
+      AppMethodBeat.o(24759);
       return null;
     }
-    locala.bssid = m.Ov((String)paramString.get(".sysmsg.schemamsg.bssid"));
-    ab.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.bssid=" + locala.bssid);
-    locala.mJT = ((String)paramString.get(".sysmsg.schemamsg.mobilemac"));
-    ab.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.mobilemac=" + locala.mJT);
-    if (m.isEmpty(locala.mJT))
+    locala.bssid = m.aat((String)paramString.get(".sysmsg.schemamsg.bssid"));
+    ad.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.bssid=" + locala.bssid);
+    locala.rgZ = ((String)paramString.get(".sysmsg.schemamsg.mobilemac"));
+    ad.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.mobilemac=" + locala.rgZ);
+    if (m.dq(locala.rgZ))
     {
-      ab.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "scemaMsg.mobilemac is empty. return.");
-      AppMethodBeat.o(20682);
+      ad.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "scemaMsg.mobilemac is empty. return.");
+      AppMethodBeat.o(24759);
       return null;
     }
-    locala.mJU = ((String)paramString.get(".sysmsg.schemamsg.mpappid"));
-    ab.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.mpappid=" + locala.mJU);
-    locala.mJV = bo.getLong((String)paramString.get(".sysmsg.schemamsg.mpshopid"), 0L);
-    ab.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.mpshopid=" + locala.mJV);
-    locala.mJW = ((String)paramString.get(".sysmsg.schemamsg.schemaurl"));
-    ab.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.schemaurl=" + locala.mJW);
-    if (m.isEmpty(locala.mJW))
+    locala.rha = ((String)paramString.get(".sysmsg.schemamsg.mpappid"));
+    ad.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.mpappid=" + locala.rha);
+    locala.rhb = bt.getLong((String)paramString.get(".sysmsg.schemamsg.mpshopid"), 0L);
+    ad.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.mpshopid=" + locala.rhb);
+    locala.rhc = ((String)paramString.get(".sysmsg.schemamsg.schemaurl"));
+    ad.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schemaMsg.schemaurl=" + locala.rhc);
+    if (m.dq(locala.rhc))
     {
-      ab.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "scemaMsg.schemaurl is empty. return.");
-      AppMethodBeat.o(20682);
+      ad.e("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "scemaMsg.schemaurl is empty. return.");
+      AppMethodBeat.o(24759);
       return null;
     }
-    locala.mJX = bo.getLong((String)paramString.get(".sysmsg.schemamsg.expiredseconds"), 0L);
-    ab.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schema.expiredseconds=" + locala.mJX);
-    AppMethodBeat.o(20682);
+    locala.rhd = bt.getLong((String)paramString.get(".sysmsg.schemamsg.expiredseconds"), 0L);
+    ad.i("MicroMsg.FreeWifi.FreeWifiSchemaMsg", "schema.expiredseconds=" + locala.rhd);
+    AppMethodBeat.o(24759);
     return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.c.a
  * JD-Core Version:    0.7.0.1
  */

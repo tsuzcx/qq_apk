@@ -16,7 +16,7 @@ public final class ResponseHeadErrorCode
   
   static
   {
-    AppMethodBeat.i(76117);
+    AppMethodBeat.i(102363);
     if (!ResponseHeadErrorCode.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
@@ -24,24 +24,24 @@ public final class ResponseHeadErrorCode
       __values = new ResponseHeadErrorCode[2];
       EC_SERVER_INTERNAL_ERROR = new ResponseHeadErrorCode(0, -10, "EC_SERVER_INTERNAL_ERROR");
       EC_BUSINESS_ERROR = new ResponseHeadErrorCode(1, -11, "EC_BUSINESS_ERROR");
-      AppMethodBeat.o(76117);
+      AppMethodBeat.o(102363);
       return;
     }
   }
   
   private ResponseHeadErrorCode(int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(76116);
+    AppMethodBeat.i(102362);
     this.__T = new String();
     this.__T = paramString;
     this.__value = paramInt2;
     __values[paramInt1] = this;
-    AppMethodBeat.o(76116);
+    AppMethodBeat.o(102362);
   }
   
   public static ResponseHeadErrorCode convert(int paramInt)
   {
-    AppMethodBeat.i(76114);
+    AppMethodBeat.i(102360);
     int i = 0;
     Object localObject;
     while (i < __values.length)
@@ -49,7 +49,7 @@ public final class ResponseHeadErrorCode
       if (__values[i].value() == paramInt)
       {
         localObject = __values[i];
-        AppMethodBeat.o(76114);
+        AppMethodBeat.o(102360);
         return localObject;
       }
       i += 1;
@@ -57,23 +57,23 @@ public final class ResponseHeadErrorCode
     if (!$assertionsDisabled)
     {
       localObject = new AssertionError();
-      AppMethodBeat.o(76114);
+      AppMethodBeat.o(102360);
       throw ((Throwable)localObject);
     }
-    AppMethodBeat.o(76114);
+    AppMethodBeat.o(102360);
     return null;
   }
   
   public static ResponseHeadErrorCode convert(String paramString)
   {
-    AppMethodBeat.i(76115);
+    AppMethodBeat.i(102361);
     int i = 0;
     while (i < __values.length)
     {
       if (__values[i].toString().equals(paramString))
       {
         paramString = __values[i];
-        AppMethodBeat.o(76115);
+        AppMethodBeat.o(102361);
         return paramString;
       }
       i += 1;
@@ -81,10 +81,10 @@ public final class ResponseHeadErrorCode
     if (!$assertionsDisabled)
     {
       paramString = new AssertionError();
-      AppMethodBeat.o(76115);
+      AppMethodBeat.o(102361);
       throw paramString;
     }
-    AppMethodBeat.o(76115);
+    AppMethodBeat.o(102361);
     return null;
   }
   
@@ -100,7 +100,7 @@ public final class ResponseHeadErrorCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.ResponseHeadErrorCode
  * JD-Core Version:    0.7.0.1
  */

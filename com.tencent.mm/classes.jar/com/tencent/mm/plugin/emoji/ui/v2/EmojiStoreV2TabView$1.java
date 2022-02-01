@@ -11,12 +11,12 @@ final class EmojiStoreV2TabView$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(53798);
+    AppMethodBeat.i(109371);
     int i = ((Integer)paramView.getTag()).intValue();
-    if (EmojiStoreV2TabView.a(this.lrU) != null) {
-      EmojiStoreV2TabView.a(this.lrU).onTabClick(i);
+    if (EmojiStoreV2TabView.a(this.oIo) != null) {
+      EmojiStoreV2TabView.a(this.oIo).onTabClick(i);
     }
-    AppMethodBeat.o(53798);
+    AppMethodBeat.o(109371);
   }
 }
 

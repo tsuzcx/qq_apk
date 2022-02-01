@@ -3,79 +3,106 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ado
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int jJS;
-  public String wJF;
-  public int wJL;
+  public int Def;
+  public int Deg;
+  public String Deh;
+  public String doh;
+  public String odo;
+  public int rXs;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(51425);
+    AppMethodBeat.i(179487);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wJF != null) {
-        paramVarArgs.e(1, this.wJF);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.Def);
+      paramVarArgs.aR(2, this.Deg);
+      paramVarArgs.aR(3, this.rXs);
+      if (this.doh != null) {
+        paramVarArgs.d(4, this.doh);
       }
-      paramVarArgs.aO(2, this.wJL);
-      paramVarArgs.aO(3, this.jJS);
-      AppMethodBeat.o(51425);
+      if (this.odo != null) {
+        paramVarArgs.d(5, this.odo);
+      }
+      if (this.Deh != null) {
+        paramVarArgs.d(6, this.Deh);
+      }
+      AppMethodBeat.o(179487);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.wJF == null) {
-        break label306;
-      }
-    }
-    label306:
-    for (paramInt = e.a.a.b.b.a.f(1, this.wJF) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = e.a.a.b.b.a.bl(2, this.wJL);
-      int j = e.a.a.b.b.a.bl(3, this.jJS);
-      AppMethodBeat.o(51425);
-      return paramInt + i + j;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
-          }
-        }
-        AppMethodBeat.o(51425);
-        return 0;
+      int i = f.a.a.b.b.a.bA(1, this.Def) + 0 + f.a.a.b.b.a.bA(2, this.Deg) + f.a.a.b.b.a.bA(3, this.rXs);
+      paramInt = i;
+      if (this.doh != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.doh);
       }
-      if (paramInt == 3)
-      {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-        ado localado = (ado)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(51425);
-          return -1;
-        case 1: 
-          localado.wJF = locala.CLY.readString();
-          AppMethodBeat.o(51425);
-          return 0;
-        case 2: 
-          localado.wJL = locala.CLY.sl();
-          AppMethodBeat.o(51425);
-          return 0;
-        }
-        localado.jJS = locala.CLY.sl();
-        AppMethodBeat.o(51425);
-        return 0;
+      i = paramInt;
+      if (this.odo != null) {
+        i = paramInt + f.a.a.b.b.a.e(5, this.odo);
       }
-      AppMethodBeat.o(51425);
-      return -1;
+      paramInt = i;
+      if (this.Deh != null) {
+        paramInt = i + f.a.a.b.b.a.e(6, this.Deh);
+      }
+      AppMethodBeat.o(179487);
+      return paramInt;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.fMq();
+        }
+      }
+      AppMethodBeat.o(179487);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      ado localado = (ado)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(179487);
+        return -1;
+      case 1: 
+        localado.Def = locala.KhF.xS();
+        AppMethodBeat.o(179487);
+        return 0;
+      case 2: 
+        localado.Deg = locala.KhF.xS();
+        AppMethodBeat.o(179487);
+        return 0;
+      case 3: 
+        localado.rXs = locala.KhF.xS();
+        AppMethodBeat.o(179487);
+        return 0;
+      case 4: 
+        localado.doh = locala.KhF.readString();
+        AppMethodBeat.o(179487);
+        return 0;
+      case 5: 
+        localado.odo = locala.KhF.readString();
+        AppMethodBeat.o(179487);
+        return 0;
+      }
+      localado.Deh = locala.KhF.readString();
+      AppMethodBeat.o(179487);
+      return 0;
+    }
+    AppMethodBeat.o(179487);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ado
  * JD-Core Version:    0.7.0.1
  */

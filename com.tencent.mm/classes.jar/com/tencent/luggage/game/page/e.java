@@ -4,48 +4,85 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.o;
-import com.tencent.mm.plugin.appbrand.page.r;
-import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.plugin.appbrand.page.t;
+import com.tencent.mm.sdk.platformtools.ad;
 
 @SuppressLint({"ViewConstructor"})
 public final class e
-  extends o
+  extends q
 {
-  private v bBK;
+  private aa cdz;
   private String mURL;
   
-  public e(Context paramContext, r paramr)
+  public e(Context paramContext, t paramt)
   {
-    super(paramContext, paramr);
-    AppMethodBeat.i(140486);
-    com.tencent.luggage.g.d.i("MicroMsg.WAGamePage", "hy: WAGamePage on create");
-    AppMethodBeat.o(140486);
+    super(paramContext, paramt);
+    AppMethodBeat.i(130628);
+    ad.i("MicroMsg.WAGamePage", "hy: WAGamePage on create");
+    AppMethodBeat.o(130628);
+  }
+  
+  public final View Cq()
+  {
+    AppMethodBeat.i(130629);
+    Object localObject = getContainer().bjq();
+    this.cdz = ((aa)localObject);
+    localObject = ((aa)localObject).jhz;
+    AppMethodBeat.o(130629);
+    return localObject;
+  }
+  
+  public final void Cr()
+  {
+    AppMethodBeat.i(130633);
+    super.Cr();
+    this.cdz.onDestroy();
+    AppMethodBeat.o(130633);
+  }
+  
+  public final void Cs()
+  {
+    AppMethodBeat.i(130634);
+    super.Cs();
+    setEnableGesture(false);
+    this.cdz.onForeground();
+    AppMethodBeat.o(130634);
+  }
+  
+  public final void Ct()
+  {
+    AppMethodBeat.i(130635);
+    super.Ct();
+    this.cdz.onBackground();
+    AppMethodBeat.o(130635);
   }
   
   public final void a(String paramString1, String paramString2, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(140489);
-    this.bBK.c(paramString1, paramString2, 0);
-    AppMethodBeat.o(140489);
+    AppMethodBeat.i(130631);
+    this.cdz.c(paramString1, paramString2, 0);
+    AppMethodBeat.o(130631);
   }
   
-  public final boolean bV(String paramString)
+  public final boolean cl(String paramString)
   {
     return true;
   }
   
   public final void cleanup()
   {
-    AppMethodBeat.i(140490);
+    AppMethodBeat.i(130632);
     super.cleanup();
-    this.bBK.cleanup();
-    AppMethodBeat.o(140490);
+    this.cdz.cleanup();
+    AppMethodBeat.o(130632);
   }
   
-  public final v getCurrentPageView()
+  public final aa getCurrentPageView()
   {
-    return this.bBK;
+    return this.cdz;
   }
   
   public final String getCurrentUrl()
@@ -55,50 +92,20 @@ public final class e
   
   public final void loadUrl(String paramString)
   {
-    AppMethodBeat.i(140488);
+    AppMethodBeat.i(130630);
     this.mURL = paramString;
-    this.bBK.Em(paramString);
-    AppMethodBeat.o(140488);
+    this.cdz.ct(paramString);
+    AppMethodBeat.o(130630);
   }
   
-  public final View vs()
+  public final void setCurrentUrl(String paramString)
   {
-    AppMethodBeat.i(140487);
-    Object localObject = getContainer().aJb();
-    this.bBK = ((v)localObject);
-    localObject = ((v)localObject).hmw;
-    AppMethodBeat.o(140487);
-    return localObject;
-  }
-  
-  public final void vt()
-  {
-    AppMethodBeat.i(140491);
-    super.vt();
-    this.bBK.onDestroy();
-    AppMethodBeat.o(140491);
-  }
-  
-  public final void vu()
-  {
-    AppMethodBeat.i(140492);
-    super.vu();
-    setEnableGesture(false);
-    this.bBK.onForeground();
-    AppMethodBeat.o(140492);
-  }
-  
-  public final void vv()
-  {
-    AppMethodBeat.i(140493);
-    super.vv();
-    this.bBK.onBackground();
-    AppMethodBeat.o(140493);
+    this.mURL = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.game.page.e
  * JD-Core Version:    0.7.0.1
  */

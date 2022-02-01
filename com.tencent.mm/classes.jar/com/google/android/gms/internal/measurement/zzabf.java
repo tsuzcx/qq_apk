@@ -12,53 +12,53 @@ final class zzabf
   
   public final void clear()
   {
-    AppMethodBeat.i(3408);
+    AppMethodBeat.i(40198);
     this.zzbuf.clear();
-    AppMethodBeat.o(3408);
+    AppMethodBeat.o(40198);
   }
   
   public final boolean contains(Object paramObject)
   {
-    AppMethodBeat.i(3406);
+    AppMethodBeat.i(40196);
     Object localObject = (Map.Entry)paramObject;
     paramObject = this.zzbuf.get(((Map.Entry)localObject).getKey());
     localObject = ((Map.Entry)localObject).getValue();
     if ((paramObject == localObject) || ((paramObject != null) && (paramObject.equals(localObject))))
     {
-      AppMethodBeat.o(3406);
+      AppMethodBeat.o(40196);
       return true;
     }
-    AppMethodBeat.o(3406);
+    AppMethodBeat.o(40196);
     return false;
   }
   
   public final Iterator<Map.Entry<K, V>> iterator()
   {
-    AppMethodBeat.i(3404);
+    AppMethodBeat.i(40194);
     zzabe localzzabe = new zzabe(this.zzbuf, null);
-    AppMethodBeat.o(3404);
+    AppMethodBeat.o(40194);
     return localzzabe;
   }
   
   public final boolean remove(Object paramObject)
   {
-    AppMethodBeat.i(3407);
+    AppMethodBeat.i(40197);
     paramObject = (Map.Entry)paramObject;
     if (contains(paramObject))
     {
       this.zzbuf.remove(paramObject.getKey());
-      AppMethodBeat.o(3407);
+      AppMethodBeat.o(40197);
       return true;
     }
-    AppMethodBeat.o(3407);
+    AppMethodBeat.o(40197);
     return false;
   }
   
   public final int size()
   {
-    AppMethodBeat.i(3405);
+    AppMethodBeat.i(40195);
     int i = this.zzbuf.size();
-    AppMethodBeat.o(3405);
+    AppMethodBeat.o(40195);
     return i;
   }
 }

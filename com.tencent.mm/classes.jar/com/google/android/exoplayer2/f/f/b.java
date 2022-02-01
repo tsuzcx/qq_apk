@@ -8,31 +8,31 @@ import java.util.List;
 final class b
   implements d
 {
-  public static final b aWX;
-  private final List<com.google.android.exoplayer2.f.a> aUg;
+  public static final b bva;
+  private final List<com.google.android.exoplayer2.f.a> bsj;
   
   static
   {
-    AppMethodBeat.i(95707);
-    aWX = new b();
-    AppMethodBeat.o(95707);
+    AppMethodBeat.i(92875);
+    bva = new b();
+    AppMethodBeat.o(92875);
   }
   
   private b()
   {
-    AppMethodBeat.i(95704);
-    this.aUg = Collections.emptyList();
-    AppMethodBeat.o(95704);
+    AppMethodBeat.i(92872);
+    this.bsj = Collections.emptyList();
+    AppMethodBeat.o(92872);
   }
   
   public b(com.google.android.exoplayer2.f.a parama)
   {
-    AppMethodBeat.i(95703);
-    this.aUg = Collections.singletonList(parama);
-    AppMethodBeat.o(95703);
+    AppMethodBeat.i(92871);
+    this.bsj = Collections.singletonList(parama);
+    AppMethodBeat.o(92871);
   }
   
-  public final int ab(long paramLong)
+  public final int am(long paramLong)
   {
     if (paramLong < 0L) {
       return 0;
@@ -40,40 +40,40 @@ final class b
     return -1;
   }
   
-  public final List<com.google.android.exoplayer2.f.a> ac(long paramLong)
+  public final List<com.google.android.exoplayer2.f.a> an(long paramLong)
   {
-    AppMethodBeat.i(95706);
+    AppMethodBeat.i(92874);
     if (paramLong >= 0L)
     {
-      localList = this.aUg;
-      AppMethodBeat.o(95706);
+      localList = this.bsj;
+      AppMethodBeat.o(92874);
       return localList;
     }
     List localList = Collections.emptyList();
-    AppMethodBeat.o(95706);
+    AppMethodBeat.o(92874);
     return localList;
   }
   
-  public final long dT(int paramInt)
+  public final long eR(int paramInt)
   {
-    AppMethodBeat.i(95705);
+    AppMethodBeat.i(92873);
     if (paramInt == 0) {}
     for (boolean bool = true;; bool = false)
     {
       com.google.android.exoplayer2.i.a.checkArgument(bool);
-      AppMethodBeat.o(95705);
+      AppMethodBeat.o(92873);
       return 0L;
     }
   }
   
-  public final int pH()
+  public final int uB()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.f.f.b
  * JD-Core Version:    0.7.0.1
  */

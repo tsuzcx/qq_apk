@@ -1,32 +1,53 @@
 package com.tencent.mm.plugin.story.f;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.story.api.o;
+import com.tencent.mm.plugin.story.i.g;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/presenter/GalleryUserState;", "", "username", "", "(Ljava/lang/String;)V", "dataState", "", "getDataState", "()I", "setDataState", "(I)V", "getUsername", "()Ljava/lang/String;", "setUsername", "Companion", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/StoryAvatarLogic;", "", "()V", "Companion", "plugin-story_release"})
 public final class f
 {
-  public static final f.a sBH;
-  int sBG;
-  private String username;
+  public static final a yeF;
   
   static
   {
-    AppMethodBeat.i(109579);
-    sBH = new f.a((byte)0);
-    AppMethodBeat.o(109579);
+    AppMethodBeat.i(118653);
+    yeF = new a((byte)0);
+    AppMethodBeat.o(118653);
   }
   
-  public f(String paramString)
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/model/StoryAvatarLogic$Companion;", "", "()V", "AVATAR_FLAG_DEFAULT", "", "AVATAR_FLAG_READ", "AVATAR_FLAG_UNREAD", "isStoryUnread", "", "userName", "", "plugin-story_release"})
+  public static final class a
   {
-    AppMethodBeat.i(109578);
-    this.username = paramString;
-    AppMethodBeat.o(109578);
+    public static boolean isStoryUnread(String paramString)
+    {
+      AppMethodBeat.i(118652);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(118652);
+        return false;
+      }
+      if (!o.isShowStoryCheck())
+      {
+        AppMethodBeat.o(118652);
+        return false;
+      }
+      j.b localb = j.yfh;
+      paramString = j.b.dHe().arp(paramString);
+      if ((paramString.isValid()) && (paramString.dKB()))
+      {
+        AppMethodBeat.o(118652);
+        return true;
+      }
+      AppMethodBeat.o(118652);
+      return false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.f
  * JD-Core Version:    0.7.0.1
  */

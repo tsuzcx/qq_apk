@@ -3,27 +3,27 @@ package com.tencent.mm.e.a;
 public final class q
   extends com.tencent.mm.d.a
 {
-  public long VO;
-  public boolean VS;
+  public long XJ;
+  public boolean XN;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.g(1, this.VO);
-      paramVarArgs.g(2, this.VS);
+      paramVarArgs.g(1, this.XJ);
+      paramVarArgs.h(2, this.XN);
       return 0;
     }
     if (paramInt == 1) {
-      return a.a.a.a.e(1, this.VO) + 0 + (a.a.a.b.b.a.cp(2) + 1);
+      return a.a.a.b.b.a.f(1, this.XJ) + 0 + (a.a.a.b.b.a.cK(2) + 1);
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
       return 0;
@@ -37,10 +37,10 @@ public final class q
       default: 
         return -1;
       case 1: 
-        localq.VO = locala.ow();
+        localq.XJ = locala.pj();
         return 0;
       }
-      localq.VS = locala.ov();
+      localq.XN = locala.pi();
       return 0;
     }
     return -1;

@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class Net
   extends JceStruct
@@ -20,12 +20,12 @@ public final class Net
   
   static
   {
-    AppMethodBeat.i(76073);
+    AppMethodBeat.i(102319);
     if (!Net.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(76073);
+      AppMethodBeat.o(102319);
       return;
     }
   }
@@ -47,7 +47,7 @@ public final class Net
   
   public final Object clone()
   {
-    AppMethodBeat.i(76068);
+    AppMethodBeat.i(102314);
     localObject1 = null;
     try
     {
@@ -58,50 +58,50 @@ public final class Net
     {
       while ($assertionsDisabled) {}
       localObject1 = new AssertionError();
-      AppMethodBeat.o(76068);
+      AppMethodBeat.o(102314);
       throw ((Throwable)localObject1);
     }
-    AppMethodBeat.o(76068);
+    AppMethodBeat.o(102314);
     return localObject1;
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
   {
-    AppMethodBeat.i(76071);
+    AppMethodBeat.i(102317);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.display(this.netType, "netType");
     paramStringBuilder.display(this.extNetworkOperator, "extNetworkOperator");
     paramStringBuilder.display(this.extNetworkType, "extNetworkType");
     paramStringBuilder.display(this.isWap, "isWap");
-    AppMethodBeat.o(76071);
+    AppMethodBeat.o(102317);
   }
   
   public final void displaySimple(StringBuilder paramStringBuilder, int paramInt)
   {
-    AppMethodBeat.i(76072);
+    AppMethodBeat.i(102318);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.displaySimple(this.netType, true);
     paramStringBuilder.displaySimple(this.extNetworkOperator, true);
     paramStringBuilder.displaySimple(this.extNetworkType, true);
     paramStringBuilder.displaySimple(this.isWap, false);
-    AppMethodBeat.o(76072);
+    AppMethodBeat.o(102318);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(76066);
+    AppMethodBeat.i(102312);
     if (paramObject == null)
     {
-      AppMethodBeat.o(76066);
+      AppMethodBeat.o(102312);
       return false;
     }
     paramObject = (Net)paramObject;
     if ((JceUtil.equals(this.netType, paramObject.netType)) && (JceUtil.equals(this.extNetworkOperator, paramObject.extNetworkOperator)) && (JceUtil.equals(this.extNetworkType, paramObject.extNetworkType)) && (JceUtil.equals(this.isWap, paramObject.isWap)))
     {
-      AppMethodBeat.o(76066);
+      AppMethodBeat.o(102312);
       return true;
     }
-    AppMethodBeat.o(76066);
+    AppMethodBeat.o(102312);
     return false;
   }
   
@@ -132,29 +132,29 @@ public final class Net
   
   public final int hashCode()
   {
-    AppMethodBeat.i(76067);
+    AppMethodBeat.i(102313);
     try
     {
       Exception localException1 = new Exception("Need define key first!");
-      AppMethodBeat.o(76067);
+      AppMethodBeat.o(102313);
       throw localException1;
     }
     catch (Exception localException2)
     {
-      ab.printErrStackTrace("Net", localException2, "", new Object[0]);
-      AppMethodBeat.o(76067);
+      ad.printErrStackTrace("Net", localException2, "", new Object[0]);
+      AppMethodBeat.o(102313);
     }
     return 0;
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76070);
+    AppMethodBeat.i(102316);
     this.netType = paramJceInputStream.read(this.netType, 0, true);
     this.extNetworkOperator = paramJceInputStream.readString(1, false);
     this.extNetworkType = paramJceInputStream.read(this.extNetworkType, 2, false);
     this.isWap = paramJceInputStream.read(this.isWap, 3, false);
-    AppMethodBeat.o(76070);
+    AppMethodBeat.o(102316);
   }
   
   public final void setExtNetworkOperator(String paramString)
@@ -179,19 +179,19 @@ public final class Net
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76069);
+    AppMethodBeat.i(102315);
     paramJceOutputStream.write(this.netType, 0);
     if (this.extNetworkOperator != null) {
       paramJceOutputStream.write(this.extNetworkOperator, 1);
     }
     paramJceOutputStream.write(this.extNetworkType, 2);
     paramJceOutputStream.write(this.isWap, 3);
-    AppMethodBeat.o(76069);
+    AppMethodBeat.o(102315);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.Net
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/ckx" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:layout_width="fill_parent" style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/cky" android:background="@drawable/vh" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="2.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/ld">
+        <ImageView android:src="@drawable/ars" style="@style/jj" />
+        <TextView android:id="@id/c7d" android:text="@string/cla" style="@style/jk" />
+        <TextView android:id="@id/c7i" android:text="@string/ckw" style="@style/jl" />
+        <LinearLayout android:gravity="left" android:orientation="horizontal" android:layout_marginTop="@dimen/ha" style="@style/mz">
+            <CheckBox android:id="@id/gc" android:text="@string/ck1" style="@style/jg" />
+            <Button android:id="@id/gjj" android:text="@string/clc" style="@style/k8" />
+        </LinearLayout>
+        <Button android:id="@id/b4h" android:text="@string/ckv" style="@style/k9" />
+    </LinearLayout>
+    <Button android:id="@id/cjb" android:text="@string/cks" style="@style/jn" />
+</LinearLayout>

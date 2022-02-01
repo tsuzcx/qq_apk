@@ -1,57 +1,57 @@
 package com.tencent.mm.media.d;
 
-import a.f.a.m;
-import a.f.b.j;
-import a.l;
-import a.y;
-import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
 import android.media.MediaFormat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.compatible.deviceinfo.z;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import d.g.a.q;
+import d.g.b.k;
+import d.l;
+import d.y;
 import java.nio.ByteBuffer;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/media/encoder/IAudioEncoder;", "", "mediaFormat", "Landroid/media/MediaFormat;", "frameEncodeCallback", "Lkotlin/Function2;", "Ljava/nio/ByteBuffer;", "Lkotlin/ParameterName;", "name", "data", "Landroid/media/MediaCodec$BufferInfo;", "bufferInfo", "", "frameEncodeEndCallback", "Lkotlin/Function0;", "(Landroid/media/MediaFormat;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function0;)V", "dstMediaFormat", "getDstMediaFormat", "()Landroid/media/MediaFormat;", "setDstMediaFormat", "(Landroid/media/MediaFormat;)V", "encodeStartTick", "", "getEncodeStartTick", "()J", "setEncodeStartTick", "(J)V", "encoder", "Landroid/media/MediaCodec;", "getEncoder", "()Landroid/media/MediaCodec;", "setEncoder", "(Landroid/media/MediaCodec;)V", "getFrameEncodeCallback", "()Lkotlin/jvm/functions/Function2;", "setFrameEncodeCallback", "(Lkotlin/jvm/functions/Function2;)V", "getFrameEncodeEndCallback", "()Lkotlin/jvm/functions/Function0;", "setFrameEncodeEndCallback", "(Lkotlin/jvm/functions/Function0;)V", "isEnd", "", "()Z", "setEnd", "(Z)V", "mMimeType", "", "getMMimeType", "()Ljava/lang/String;", "setMMimeType", "(Ljava/lang/String;)V", "stopLock", "Ljava/lang/Object;", "getStopLock", "()Ljava/lang/Object;", "totalEncodeTime", "getTotalEncodeTime", "setTotalEncodeTime", "finishEncode", "isIgnoreCodecConfig", "processEncodeBuffer", "buffer", "releaseEncoder", "startEncoder", "", "pts", "isLast", "stopEncoder", "Companion", "plugin-mediaeditor_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/media/encoder/IAudioEncoder;", "", "mediaFormat", "Landroid/media/MediaFormat;", "frameEncodeCallback", "Lkotlin/Function3;", "Ljava/nio/ByteBuffer;", "Lkotlin/ParameterName;", "name", "data", "Landroid/media/MediaCodec$BufferInfo;", "bufferInfo", "format", "", "frameEncodeEndCallback", "Lkotlin/Function0;", "(Landroid/media/MediaFormat;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function0;)V", "dstMediaFormat", "getDstMediaFormat", "()Landroid/media/MediaFormat;", "setDstMediaFormat", "(Landroid/media/MediaFormat;)V", "encodeStartTick", "", "getEncodeStartTick", "()J", "setEncodeStartTick", "(J)V", "encoder", "Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "getEncoder", "()Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "setEncoder", "(Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;)V", "getFrameEncodeCallback", "()Lkotlin/jvm/functions/Function3;", "setFrameEncodeCallback", "(Lkotlin/jvm/functions/Function3;)V", "getFrameEncodeEndCallback", "()Lkotlin/jvm/functions/Function0;", "setFrameEncodeEndCallback", "(Lkotlin/jvm/functions/Function0;)V", "isEnd", "", "()Z", "setEnd", "(Z)V", "mMimeType", "", "getMMimeType", "()Ljava/lang/String;", "setMMimeType", "(Ljava/lang/String;)V", "stopLock", "Ljava/lang/Object;", "getStopLock", "()Ljava/lang/Object;", "totalEncodeTime", "getTotalEncodeTime", "setTotalEncodeTime", "finishEncode", "isIgnoreCodecConfig", "processEncodeBuffer", "buffer", "releaseEncoder", "startEncoder", "", "pts", "isLast", "stopEncoder", "Companion", "plugin-mediaeditor_release"})
 public abstract class a
 {
-  public static final a.a eUm = new a.a((byte)0);
-  final Object eRH;
-  volatile boolean eRq;
-  MediaCodec eUg;
-  MediaFormat eUh;
-  long eUi;
-  private long eUj;
-  private m<? super ByteBuffer, ? super MediaCodec.BufferInfo, y> eUk;
-  private a.f.a.a<y> eUl;
+  public static final a.a gqp = new a.a((byte)0);
+  volatile boolean gna;
+  z gqj;
+  MediaFormat gqk;
+  long gql;
+  private long gqm;
+  private q<? super ByteBuffer, ? super MediaCodec.BufferInfo, ? super MediaFormat, y> gqn;
+  private d.g.a.a<y> gqo;
   private String mMimeType;
+  final Object stopLock;
   
-  public a(MediaFormat paramMediaFormat, m<? super ByteBuffer, ? super MediaCodec.BufferInfo, y> paramm, a.f.a.a<y> parama)
+  public a(MediaFormat paramMediaFormat, q<? super ByteBuffer, ? super MediaCodec.BufferInfo, ? super MediaFormat, y> paramq, d.g.a.a<y> parama)
   {
-    this.eUk = paramm;
-    this.eUl = parama;
-    this.eRH = new Object();
-    ab.i("MicroMsg.IAudioEncoder", "init audio encoder");
+    this.gqn = paramq;
+    this.gqo = parama;
+    this.stopLock = new Object();
+    ad.i("MicroMsg.IAudioEncoder", "init audio encoder");
     this.mMimeType = paramMediaFormat.getString("mime");
     for (;;)
     {
       try
       {
-        this.eUh = new MediaFormat();
-        this.eUh.setString("mime", "audio/mp4a-latm");
-        this.eUh.setInteger("aac-profile", 2);
-        this.eUh.setInteger("sample-rate", 44100);
+        this.gqk = new MediaFormat();
+        this.gqk.setString("mime", "audio/mp4a-latm");
+        this.gqk.setInteger("aac-profile", 2);
+        this.gqk.setInteger("sample-rate", 44100);
         if (paramMediaFormat.containsKey("channel-count"))
         {
           i = paramMediaFormat.getInteger("channel-count");
-          break label246;
-          this.eUh.setInteger("channel-count", i);
-          this.eUh.setInteger("bitrate", paramMediaFormat.getInteger("bitrate"));
-          this.eUh.setInteger("max-input-size", i * 2048);
-          paramMediaFormat = MediaCodec.createEncoderByType("audio/mp4a-latm");
-          j.p(paramMediaFormat, "MediaCodec.createEncoderByType(AAC_MIME_TYPE)");
-          this.eUg = paramMediaFormat;
-          this.eUg.configure(this.eUh, null, null, 1);
-          ab.i("MicroMsg.IAudioEncoder", "finish init audio encoder, dstMediaFormat:" + this.eUh);
+          break label245;
+          this.gqk.setInteger("channel-count", i);
+          this.gqk.setInteger("bitrate", paramMediaFormat.getInteger("bitrate"));
+          this.gqk.setInteger("max-input-size", i * 2048);
+          paramMediaFormat = z.pm("audio/mp4a-latm");
+          k.g(paramMediaFormat, "MediaCodecProxy.createEncoderByType(AAC_MIME_TYPE)");
+          this.gqj = paramMediaFormat;
+          this.gqj.a(this.gqk, null, 1);
+          ad.i("MicroMsg.IAudioEncoder", "finish init audio encoder, dstMediaFormat:" + this.gqk);
         }
         else
         {
@@ -62,7 +62,7 @@ public abstract class a
       {
         throw ((Throwable)new IllegalStateException("init encoder error"));
       }
-      label246:
+      label245:
       while (i > 0) {
         break;
       }
@@ -70,134 +70,134 @@ public abstract class a
     }
   }
   
-  public final void UN()
+  public final void ajE()
   {
-    releaseEncoder();
+    ajG();
+  }
+  
+  public final void ajF()
+  {
+    ajG();
+  }
+  
+  /* Error */
+  protected final void ajG()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 126	com/tencent/mm/media/d/a:stopLock	Ljava/lang/Object;
+    //   6: astore_1
+    //   7: aload_1
+    //   8: monitorenter
+    //   9: aload_0
+    //   10: getfield 223	com/tencent/mm/media/d/a:gna	Z
+    //   13: ifne +39 -> 52
+    //   16: aload_0
+    //   17: iconst_1
+    //   18: putfield 223	com/tencent/mm/media/d/a:gna	Z
+    //   21: ldc 128
+    //   23: ldc 224
+    //   25: invokestatic 136	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   28: aload_0
+    //   29: getfield 190	com/tencent/mm/media/d/a:gqj	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   32: invokevirtual 227	com/tencent/mm/compatible/deviceinfo/z:stop	()V
+    //   35: aload_0
+    //   36: getfield 190	com/tencent/mm/media/d/a:gqj	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   39: invokevirtual 230	com/tencent/mm/compatible/deviceinfo/z:release	()V
+    //   42: aload_0
+    //   43: getfield 124	com/tencent/mm/media/d/a:gqo	Ld/g/a/a;
+    //   46: invokeinterface 235 1 0
+    //   51: pop
+    //   52: ldc 128
+    //   54: new 196	java/lang/StringBuilder
+    //   57: dup
+    //   58: ldc 237
+    //   60: invokespecial 200	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   63: aload_0
+    //   64: getfield 239	com/tencent/mm/media/d/a:gqm	J
+    //   67: invokevirtual 242	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   70: invokevirtual 207	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   73: invokestatic 136	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   76: getstatic 248	d/y:JfV	Ld/y;
+    //   79: astore_2
+    //   80: aload_1
+    //   81: monitorexit
+    //   82: aload_0
+    //   83: monitorexit
+    //   84: return
+    //   85: astore_2
+    //   86: aload_1
+    //   87: monitorexit
+    //   88: aload_2
+    //   89: athrow
+    //   90: astore_1
+    //   91: ldc 128
+    //   93: ldc 250
+    //   95: iconst_1
+    //   96: anewarray 4	java/lang/Object
+    //   99: dup
+    //   100: iconst_0
+    //   101: aload_1
+    //   102: invokevirtual 253	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   105: aastore
+    //   106: invokestatic 257	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   109: goto -27 -> 82
+    //   112: astore_1
+    //   113: aload_0
+    //   114: monitorexit
+    //   115: aload_1
+    //   116: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	117	0	this	a
+    //   90	12	1	localException	Exception
+    //   112	4	1	localObject2	Object
+    //   79	1	2	localy	y
+    //   85	4	2	localObject3	Object
+    // Exception table:
+    //   from	to	target	type
+    //   9	52	85	finally
+    //   52	80	85	finally
+    //   2	9	90	java/lang/Exception
+    //   80	82	90	java/lang/Exception
+    //   86	90	90	java/lang/Exception
+    //   2	9	112	finally
+    //   80	82	112	finally
+    //   86	90	112	finally
+    //   91	109	112	finally
   }
   
   public abstract void b(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean);
   
   protected final void d(MediaFormat paramMediaFormat)
   {
-    j.q(paramMediaFormat, "<set-?>");
-    this.eUh = paramMediaFormat;
+    k.h(paramMediaFormat, "<set-?>");
+    this.gqk = paramMediaFormat;
   }
   
   public final void f(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
-    j.q(paramBufferInfo, "bufferInfo");
+    k.h(paramBufferInfo, "bufferInfo");
     if (paramByteBuffer == null) {
-      ab.e("MicroMsg.IAudioEncoder", "ERROR, retrieve encoderOutputBuffer is null!!");
+      ad.e("MicroMsg.IAudioEncoder", "ERROR, retrieve encoderOutputBuffer is null!!");
     }
     while (paramBufferInfo.size <= 0) {
       return;
     }
-    ab.i("MicroMsg.IAudioEncoder", "encoder output buffer:" + paramBufferInfo.size + ", pts:" + paramBufferInfo.presentationTimeUs);
+    ad.i("MicroMsg.IAudioEncoder", "encoder output buffer:" + paramBufferInfo.size + ", pts:" + paramBufferInfo.presentationTimeUs);
     paramByteBuffer.position(paramBufferInfo.offset);
     paramByteBuffer.limit(paramBufferInfo.offset + paramBufferInfo.size);
-    long l = bo.av(this.eUi);
-    this.eUj += l;
-    ab.i("MicroMsg.IAudioEncoder", hashCode() + " encode frame used " + l);
-    this.eUk.h(paramByteBuffer, paramBufferInfo);
-  }
-  
-  /* Error */
-  protected final void releaseEncoder()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 125	com/tencent/mm/media/d/a:eRH	Ljava/lang/Object;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: monitorenter
-    //   9: aload_0
-    //   10: getfield 290	com/tencent/mm/media/d/a:eRq	Z
-    //   13: ifne +40 -> 53
-    //   16: aload_0
-    //   17: iconst_1
-    //   18: putfield 290	com/tencent/mm/media/d/a:eRq	Z
-    //   21: ldc 127
-    //   23: ldc_w 291
-    //   26: invokestatic 135	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   29: aload_0
-    //   30: getfield 189	com/tencent/mm/media/d/a:eUg	Landroid/media/MediaCodec;
-    //   33: invokevirtual 294	android/media/MediaCodec:stop	()V
-    //   36: aload_0
-    //   37: getfield 189	com/tencent/mm/media/d/a:eUg	Landroid/media/MediaCodec;
-    //   40: invokevirtual 297	android/media/MediaCodec:release	()V
-    //   43: aload_0
-    //   44: getfield 123	com/tencent/mm/media/d/a:eUl	La/f/a/a;
-    //   47: invokeinterface 302 1 0
-    //   52: pop
-    //   53: ldc 127
-    //   55: new 195	java/lang/StringBuilder
-    //   58: dup
-    //   59: ldc_w 304
-    //   62: invokespecial 199	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   65: aload_0
-    //   66: getfield 275	com/tencent/mm/media/d/a:eUj	J
-    //   69: invokevirtual 253	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   72: invokevirtual 206	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   75: invokestatic 135	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   78: getstatic 310	a/y:BMg	La/y;
-    //   81: astore_2
-    //   82: aload_1
-    //   83: monitorexit
-    //   84: aload_0
-    //   85: monitorexit
-    //   86: return
-    //   87: astore_2
-    //   88: aload_1
-    //   89: monitorexit
-    //   90: aload_2
-    //   91: athrow
-    //   92: astore_1
-    //   93: ldc 127
-    //   95: ldc_w 312
-    //   98: iconst_1
-    //   99: anewarray 4	java/lang/Object
-    //   102: dup
-    //   103: iconst_0
-    //   104: aload_1
-    //   105: invokevirtual 315	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   108: aastore
-    //   109: invokestatic 318	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   112: goto -28 -> 84
-    //   115: astore_1
-    //   116: aload_0
-    //   117: monitorexit
-    //   118: aload_1
-    //   119: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	120	0	this	a
-    //   92	13	1	localException	Exception
-    //   115	4	1	localObject2	Object
-    //   81	1	2	localy	y
-    //   87	4	2	localObject3	Object
-    // Exception table:
-    //   from	to	target	type
-    //   9	53	87	finally
-    //   53	82	87	finally
-    //   2	9	92	java/lang/Exception
-    //   82	84	92	java/lang/Exception
-    //   88	92	92	java/lang/Exception
-    //   2	9	115	finally
-    //   82	84	115	finally
-    //   88	92	115	finally
-    //   93	112	115	finally
-  }
-  
-  public final void stopEncoder()
-  {
-    releaseEncoder();
+    long l = bt.aS(this.gql);
+    this.gqm += l;
+    ad.i("MicroMsg.IAudioEncoder", hashCode() + " encode frame used " + l);
+    this.gqn.d(paramByteBuffer, paramBufferInfo, this.gqk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.media.d.a
  * JD-Core Version:    0.7.0.1
  */

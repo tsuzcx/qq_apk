@@ -3,16 +3,17 @@ package com.tencent.mm.app;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.os.ParcelFileDescriptor;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.c;
+import com.tencent.mm.ae.c;
 import com.tencent.mm.boot.a.a;
-import com.tencent.mm.compatible.util.k;
+import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.splash.m;
-import com.tencent.mm.vfs.FileSystemManager;
+import com.tencent.smtt.sandbox.SandboxListener;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.tinker.entry.ApplicationLifeCycle;
 import com.tencent.tinker.entry.ApplicationLike;
@@ -29,83 +30,93 @@ public class MMIsolatedApplicationWrapper
   
   public MMIsolatedApplicationWrapper(ApplicationLike paramApplicationLike, String paramString)
   {
-    AppMethodBeat.i(154191);
+    AppMethodBeat.i(160050);
     this.profile = null;
     this.processInitTimestamp = System.currentTimeMillis();
-    com.tencent.mm.blink.a.s(paramApplicationLike.getApplicationStartMillisTime(), paramApplicationLike.getApplicationStartElapsedTime());
+    com.tencent.mm.blink.a.u(paramApplicationLike.getApplicationStartMillisTime(), paramApplicationLike.getApplicationStartElapsedTime());
     this.app = paramApplicationLike.getApplication();
     this.lifeCycle = paramApplicationLike;
     this.thisProcess = paramString;
-    AppMethodBeat.o(154191);
+    AppMethodBeat.o(160050);
   }
   
   public void onBaseContextAttached(Context paramContext)
   {
-    AppMethodBeat.i(154192);
-    com.tencent.mm.kernel.a.a.eIU = SystemClock.elapsedRealtime();
-    com.tencent.mm.kernel.a.a.eIT = System.currentTimeMillis();
+    AppMethodBeat.i(160051);
+    com.tencent.mm.kernel.a.a.ged = SystemClock.elapsedRealtime();
+    com.tencent.mm.kernel.a.a.gec = System.currentTimeMillis();
     this.profile = new h(this.thisProcess, this.app, this.lifeCycle);
-    this.profile.eKw.eKx = this.processInitTimestamp;
-    FileSystemManager.setContext(this.profile.bX);
-    k.a("stlport_shared", paramContext.getClassLoader());
-    k.a("c++_shared", paramContext.getClassLoader());
-    QbSdk.setSandboxListener(new MMIsolatedApplicationWrapper.1(this));
-    com.tencent.mm.splash.a.i(this.app);
-    com.tencent.mm.bt.a.a.dqi();
-    ab.i("MicroMsg.MMIsolatedApplicationWrapper", "is plain process. load nothing");
-    z.a(this.profile, null);
-    s.A(a.a.class);
-    s.dC("com.tencent.mm.boot");
-    AppMethodBeat.o(154192);
+    this.profile.gfE.gfF = this.processInitTimestamp;
+    com.tencent.mm.vfs.a.setContext(this.profile.ca);
+    paramContext.getClassLoader();
+    j.pq("stlport_shared");
+    paramContext.getClassLoader();
+    j.pq("c++_shared");
+    QbSdk.setSandboxListener(new SandboxListener()
+    {
+      public final void setCrashRecordFileDescriptor(ParcelFileDescriptor paramAnonymousParcelFileDescriptor1, ParcelFileDescriptor paramAnonymousParcelFileDescriptor2)
+      {
+        AppMethodBeat.i(160134);
+        t.a(paramAnonymousParcelFileDescriptor1, paramAnonymousParcelFileDescriptor2, MMIsolatedApplicationWrapper.this.thisProcess);
+        AppMethodBeat.o(160134);
+      }
+    });
+    com.tencent.mm.splash.a.l(this.app);
+    com.tencent.mm.bv.a.a.eBz();
+    ad.i("MicroMsg.MMIsolatedApplicationWrapper", "is plain process. load nothing");
+    ah.a(this.profile, null);
+    aa.Y(a.a.class);
+    aa.eI("com.tencent.mm.boot");
+    AppMethodBeat.o(160051);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(154195);
+    AppMethodBeat.i(160054);
     if (this.profile != null) {
       this.profile.onConfigurationChanged(paramConfiguration);
     }
-    AppMethodBeat.o(154195);
+    AppMethodBeat.o(160054);
   }
   
   public void onCreate()
   {
-    AppMethodBeat.i(154193);
-    c.c(this.app);
-    m.dvK();
-    AppMethodBeat.o(154193);
+    AppMethodBeat.i(160052);
+    c.e(this.app);
+    m.eIA();
+    AppMethodBeat.o(160052);
   }
   
   public void onLowMemory()
   {
-    AppMethodBeat.i(154196);
+    AppMethodBeat.i(160055);
     if (this.profile != null) {
       this.profile.onLowMemory();
     }
-    AppMethodBeat.o(154196);
+    AppMethodBeat.o(160055);
   }
   
   public void onTerminate()
   {
-    AppMethodBeat.i(154194);
+    AppMethodBeat.i(160053);
     if (this.profile != null) {
       this.profile.onTerminate();
     }
-    AppMethodBeat.o(154194);
+    AppMethodBeat.o(160053);
   }
   
   public void onTrimMemory(int paramInt)
   {
-    AppMethodBeat.i(154197);
+    AppMethodBeat.i(160056);
     if (this.profile != null) {
       this.profile.onTrimMemory(paramInt);
     }
-    AppMethodBeat.o(154197);
+    AppMethodBeat.o(160056);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.app.MMIsolatedApplicationWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,67 +1,99 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class atg
-  extends com.tencent.mm.bv.a
+  extends ckq
 {
-  public int wlL;
-  public String wlM;
+  public LinkedList<String> Dtq;
+  public int scene;
+  
+  public atg()
+  {
+    AppMethodBeat.i(114025);
+    this.Dtq = new LinkedList();
+    AppMethodBeat.o(114025);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(89110);
+    AppMethodBeat.i(114026);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.wlL);
-      if (this.wlM != null) {
-        paramVarArgs.e(2, this.wlM);
-      }
-      AppMethodBeat.o(89110);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = e.a.a.b.b.a.bl(1, this.wlL) + 0;
-      paramInt = i;
-      if (this.wlM != null) {
-        paramInt = i + e.a.a.b.b.a.f(2, this.wlM);
-      }
-      AppMethodBeat.o(89110);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
-      }
-      AppMethodBeat.o(89110);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      atg localatg = (atg)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(89110);
-        return -1;
-      case 1: 
-        localatg.wlL = locala.CLY.sl();
-        AppMethodBeat.o(89110);
+        paramVarArgs.kX(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      paramVarArgs.e(2, 1, this.Dtq);
+      paramVarArgs.aR(3, this.scene);
+      AppMethodBeat.o(114026);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label414;
+      }
+    }
+    label414:
+    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = f.a.a.a.c(2, 1, this.Dtq);
+      int j = f.a.a.b.b.a.bA(3, this.scene);
+      AppMethodBeat.o(114026);
+      return paramInt + i + j;
+      if (paramInt == 2)
+      {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.Dtq.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.fMq();
+          }
+        }
+        AppMethodBeat.o(114026);
         return 0;
       }
-      localatg.wlM = locala.CLY.readString();
-      AppMethodBeat.o(89110);
-      return 0;
+      if (paramInt == 3)
+      {
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        atg localatg = (atg)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(114026);
+          return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new ip();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localatg.BaseRequest = ((ip)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(114026);
+          return 0;
+        case 2: 
+          localatg.Dtq.add(((f.a.a.a.a)localObject1).KhF.readString());
+          AppMethodBeat.o(114026);
+          return 0;
+        }
+        localatg.scene = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(114026);
+        return 0;
+      }
+      AppMethodBeat.o(114026);
+      return -1;
     }
-    AppMethodBeat.o(89110);
-    return -1;
   }
 }
 

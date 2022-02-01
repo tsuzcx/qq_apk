@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.logreport;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.TMOpenSDKAuthorizedInfo;
 import com.tencent.tmassistantsdk.protocol.jce.TipsInfoLog;
 import com.tencent.tmassistantsdk.storage.table.BaseLogTable;
@@ -18,12 +18,12 @@ public class TipsInfoReportManager
   {
     try
     {
-      AppMethodBeat.i(75823);
+      AppMethodBeat.i(102069);
       if (mInstance == null) {
         mInstance = new TipsInfoReportManager();
       }
       TipsInfoReportManager localTipsInfoReportManager = mInstance;
-      AppMethodBeat.o(75823);
+      AppMethodBeat.o(102069);
       return localTipsInfoReportManager;
     }
     finally {}
@@ -31,28 +31,28 @@ public class TipsInfoReportManager
   
   public TipsInfoLog createTipsInfoLog(TMOpenSDKAuthorizedInfo paramTMOpenSDKAuthorizedInfo)
   {
-    AppMethodBeat.i(75824);
+    AppMethodBeat.i(102070);
     TMLog.i("TipsInfoReportManager", "createTipsInfoLog");
     if (paramTMOpenSDKAuthorizedInfo == null)
     {
-      AppMethodBeat.o(75824);
+      AppMethodBeat.o(102070);
       return null;
     }
     TipsInfoLog localTipsInfoLog = new TipsInfoLog();
     localTipsInfoLog.userId = paramTMOpenSDKAuthorizedInfo.userId;
     localTipsInfoLog.userIdType = paramTMOpenSDKAuthorizedInfo.userIdType;
     localTipsInfoLog.gamePackageName = paramTMOpenSDKAuthorizedInfo.gamePackageName;
-    localTipsInfoLog.gameVersionCode = bo.getInt(paramTMOpenSDKAuthorizedInfo.gameVersionCode, 0);
+    localTipsInfoLog.gameVersionCode = bt.getInt(paramTMOpenSDKAuthorizedInfo.gameVersionCode, 0);
     localTipsInfoLog.gameChannelId = paramTMOpenSDKAuthorizedInfo.gameChannelId;
-    AppMethodBeat.o(75824);
+    AppMethodBeat.o(102070);
     return localTipsInfoLog;
   }
   
   protected BaseLogTable getLogTable()
   {
-    AppMethodBeat.i(75825);
+    AppMethodBeat.i(102071);
     TipsInfoLogTable localTipsInfoLogTable = TipsInfoLogTable.getInstance();
-    AppMethodBeat.o(75825);
+    AppMethodBeat.o(102071);
     return localTipsInfoLogTable;
   }
   
@@ -63,7 +63,7 @@ public class TipsInfoReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.logreport.TipsInfoReportManager
  * JD-Core Version:    0.7.0.1
  */

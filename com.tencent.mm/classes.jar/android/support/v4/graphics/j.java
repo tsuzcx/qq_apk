@@ -10,7 +10,7 @@ import java.nio.ByteBuffer;
 
 public final class j
 {
-  public static File S(Context paramContext)
+  public static File U(Context paramContext)
   {
     String str = ".font" + Process.myPid() + "-" + Process.myTid() + "-";
     int i = 0;
@@ -34,7 +34,7 @@ public final class j
   
   public static ByteBuffer a(Context paramContext, Resources paramResources, int paramInt)
   {
-    paramContext = S(paramContext);
+    paramContext = U(paramContext);
     if (paramContext == null) {
       return null;
     }
@@ -44,7 +44,7 @@ public final class j
       if (!bool) {
         return null;
       }
-      paramResources = j(paramContext);
+      paramResources = p(paramContext);
       return paramResources;
     }
     finally
@@ -316,7 +316,7 @@ public final class j
   }
   
   /* Error */
-  private static ByteBuffer j(File paramFile)
+  private static ByteBuffer p(File paramFile)
   {
     // Byte code:
     //   0: new 137	java/io/FileInputStream

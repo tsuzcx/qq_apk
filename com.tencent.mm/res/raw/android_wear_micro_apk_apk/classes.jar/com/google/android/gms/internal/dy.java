@@ -4,13 +4,13 @@ import java.util.Arrays;
 
 final class dy
 {
-  final byte[] RC;
+  final byte[] Tr;
   final int tag;
   
   dy(int paramInt, byte[] paramArrayOfByte)
   {
     this.tag = paramInt;
-    this.RC = paramArrayOfByte;
+    this.Tr = paramArrayOfByte;
   }
   
   public final boolean equals(Object paramObject)
@@ -23,13 +23,13 @@ final class dy
         return false;
       }
       paramObject = (dy)paramObject;
-    } while ((this.tag == paramObject.tag) && (Arrays.equals(this.RC, paramObject.RC)));
+    } while ((this.tag == paramObject.tag) && (Arrays.equals(this.Tr, paramObject.Tr)));
     return false;
   }
   
   public final int hashCode()
   {
-    return (this.tag + 527) * 31 + Arrays.hashCode(this.RC);
+    return (this.tag + 527) * 31 + Arrays.hashCode(this.Tr);
   }
 }
 

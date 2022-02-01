@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference android:title="@string/eas" android:key="settings_landscape_mode" android:defaultValue="false" />
-    <CheckBoxPreference android:title="@string/eck" android:key="settings_nfc_switch" android:defaultValue="false" />
-    <Preference android:title="@string/eeo" android:key="settings_silence_update_mode" android:layout="@layout/afi" />
-    <Preference android:title="@string/eat" android:key="settings_language" android:layout="@layout/afi" />
-    <Preference android:title="@string/efw" android:key="settings_text_size" android:layout="@layout/afi" />
-    <Preference android:title="@string/ed0" android:key="settings_take_photo" android:layout="@layout/afi" />
-    <Preference android:title="@string/eb7" android:key="settings_manage_findmoreui" android:layout="@layout/afi" />
-    <IconPreference android:title="@string/ed7" android:key="settings_plugins" />
-    <Preference android:title="@string/eg2" android:key="settings_traffic_statistic" android:layout="@layout/afi" />
-    <Preference android:title="@string/ecd" android:key="settngs_clean" android:layout="@layout/afi" />
-    <Preference android:title="@string/gek" android:key="settngs_matrix_trace" android:layout="@layout/afi" />
-    <PreferenceCategory />
+    <PreferenceTitleCategory android:title="@string/f50" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_auto_mul_terminal_sync" android:title="@string/f4z" />
+    <PreferenceTitleCategory android:title="@string/fb_" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_take_photo_auto_save_photo" android:title="@string/fb9" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_take_photo_auto_save_video" android:title="@string/fba" />
+    <PreferenceTitleCategory android:key="settings_sns_auto_play_tip" android:title="@string/fa9" />
+    <CheckBoxPreference android:defaultValue="true" android:key="settings_sns_auto_play_switch" android:title="@string/fa8" />
 </PreferenceScreen>

@@ -1,107 +1,74 @@
 package com.tencent.mm.modelappbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.g.a.ih;
-import com.tencent.mm.g.a.ih.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cvz;
-import com.tencent.mm.protocal.protobuf.cwa;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.protocal.protobuf.bae;
+import com.tencent.mm.protocal.protobuf.baf;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class r
-  extends com.tencent.mm.plugin.websearch.api.b
+  extends n
   implements k
 {
-  private f eGj;
-  private com.tencent.mm.ai.b fpW;
-  private cwa fpZ;
+  public final b gRE;
+  private g gbr;
   
-  public r(String paramString, int paramInt1, int paramInt2)
+  public r(int paramInt)
   {
-    AppMethodBeat.i(93740);
-    this.DK = paramString;
-    this.mScene = paramInt1;
-    this.uIB = paramInt2;
-    if (!bo.isNullOrNil(paramString))
-    {
-      ab.i("MicroMsg.NetSceneWeAppSuggest", "Constructors: query = %s", new Object[] { paramString });
-      Object localObject = new b.a();
-      ((b.a)localObject).funcId = getType();
-      ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/weappsearchsuggestion";
-      ((b.a)localObject).fsX = new cvz();
-      ((b.a)localObject).fsY = new cwa();
-      this.fpW = ((b.a)localObject).ado();
-      localObject = (cvz)this.fpW.fsV.fta;
-      ((cvz)localObject).query = paramString;
-      paramString = new ih();
-      a.ymk.l(paramString);
-      ((cvz)localObject).xpF = paramString.cxG.cxH;
-      paramString = g.RL().Ru().get(ac.a.yEW, null);
-      if ((paramString != null) && ((paramString instanceof String))) {
-        ((cvz)localObject).yer = ((String)paramString);
-      }
-      ((cvz)localObject).xpJ = b.fpQ;
-      ((cvz)localObject).yem = b.fpR;
-      AppMethodBeat.o(93740);
-      return;
-    }
-    ab.e("MicroMsg.NetSceneWeAppSuggest", "keyword is unavailable");
-    AppMethodBeat.o(93740);
+    AppMethodBeat.i(121056);
+    b.a locala = new b.a();
+    locala.gUU = new bae();
+    locala.gUV = new baf();
+    locala.uri = "/cgi-bin/mmbiz-bin/wxausrevent/getservicenotifyoptions";
+    locala.funcId = getType();
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.gRE = locala.atI();
+    ((bae)this.gRE.gUS.gUX).Dym = paramInt;
+    AppMethodBeat.o(121056);
   }
   
-  public final String act()
+  public final baf atT()
   {
-    if (this.fpZ != null) {
-      return this.fpZ.wAa;
-    }
-    return "";
+    return (baf)this.gRE.gUT.gUX;
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(93742);
-    this.eGj = paramf;
-    int i = dispatch(parame, this.fpW, this);
-    AppMethodBeat.o(93742);
+    AppMethodBeat.i(121058);
+    ad.i("MicroMsg.NetSceneGetServiceNotifyOptions", "doScene");
+    this.gbr = paramg;
+    int i = dispatch(parame, this.gRE, this);
+    AppMethodBeat.o(121058);
     return i;
   }
   
   public final int getType()
   {
-    return 1173;
+    return 1145;
   }
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(93741);
-    ab.i("MicroMsg.NetSceneWeAppSuggest", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(93741);
-      return;
+    AppMethodBeat.i(121057);
+    ad.i("MicroMsg.NetSceneGetServiceNotifyOptions", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.gbr != null) {
+      this.gbr.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    this.fpZ = ((cwa)this.fpW.fsW.fta);
-    if (this.fpZ != null) {
-      ab.v("MicroMsg.NetSceneWeAppSuggest", "return data\n%s", new Object[] { this.fpZ.wAa });
-    }
-    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(93741);
+    AppMethodBeat.o(121057);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.r
  * JD-Core Version:    0.7.0.1
  */

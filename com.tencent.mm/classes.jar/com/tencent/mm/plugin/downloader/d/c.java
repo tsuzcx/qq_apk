@@ -1,103 +1,101 @@
 package com.tencent.mm.plugin.downloader.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.io.File;
+import com.tencent.mm.d.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Map;
 import java.util.Properties;
 
 public final class c
 {
-  public static boolean JB(String paramString)
+  private static final l oem;
+  Properties oen;
+  byte[] oeo;
+  
+  static
   {
-    AppMethodBeat.i(2312);
-    try
-    {
-      boolean bool = b.JA(paramString);
-      AppMethodBeat.o(2312);
-      return bool;
-    }
-    catch (Exception paramString)
-    {
-      ab.e("MicroMsg.Channel.ChannelReader", "isV2ChannelApk error: %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(2312);
-    }
-    return false;
+    AppMethodBeat.i(88868);
+    oem = new l(38650);
+    AppMethodBeat.o(88868);
   }
   
-  public static String K(File paramFile)
+  public c()
   {
-    AppMethodBeat.i(2310);
-    try
-    {
-      ab.i("MicroMsg.Channel.ChannelReader", "get channel by v1");
-      Object localObject = j.JC(paramFile.getAbsolutePath());
-      if (localObject == null)
-      {
-        AppMethodBeat.o(2310);
-        return null;
-      }
-      f localf = new f();
-      localf.D((byte[])localObject);
-      localObject = localf.kXE.getProperty("channelId");
-      AppMethodBeat.o(2310);
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      ab.e("MicroMsg.Channel.ChannelReader", "APK : %s not have channel info from zip comment", new Object[] { paramFile.getAbsolutePath() });
-      AppMethodBeat.o(2310);
-    }
-    return null;
+    AppMethodBeat.i(88863);
+    this.oen = new Properties();
+    AppMethodBeat.o(88863);
   }
   
-  public static String L(File paramFile)
+  public final void K(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(2311);
-    ab.i("MicroMsg.Channel.ChannelReader", "get channel by v2");
-    if ((!paramFile.exists()) || (!paramFile.isFile())) {
-      paramFile = null;
-    }
-    while (paramFile == null)
+    AppMethodBeat.i(88865);
+    if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(2311);
-      return null;
-      if ((!paramFile.exists()) || (!paramFile.isFile())) {
-        paramFile = null;
-      }
-      for (;;)
-      {
-        if (paramFile == null) {
-          break label132;
-        }
-        localObject = paramFile.array();
-        int i = paramFile.arrayOffset();
-        int j = paramFile.position();
-        int k = paramFile.arrayOffset();
-        paramFile = Arrays.copyOfRange((byte[])localObject, i + j, paramFile.limit() + k);
-        break;
-        paramFile = g.M(paramFile);
-        if (paramFile != null) {
-          paramFile = (ByteBuffer)paramFile.get(Integer.valueOf(1903261812));
-        } else {
-          paramFile = null;
-        }
-      }
-      label132:
-      paramFile = null;
+      ad.w("MicroMsg.Channel.GameComment", "decode, data is null");
+      AppMethodBeat.o(88865);
+      return;
     }
-    Object localObject = new f();
-    ((f)localObject).D(paramFile);
-    paramFile = ((f)localObject).kXE.getProperty("channelId");
-    AppMethodBeat.o(2311);
-    return paramFile;
+    ByteBuffer localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
+    byte[] arrayOfByte = new byte[2];
+    localByteBuffer.get(arrayOfByte);
+    if (!oem.equals(new l(arrayOfByte))) {
+      ad.e("MicroMsg.Channel.GameComment", "decode, unknow protocol");
+    }
+    if (paramArrayOfByte.length - 2 <= 2)
+    {
+      ad.e("MicroMsg.Channel.GameComment", "decode, data.length - headLength <= 2");
+      AppMethodBeat.o(88865);
+      return;
+    }
+    arrayOfByte = new byte[2];
+    localByteBuffer.get(arrayOfByte);
+    int i = new l(arrayOfByte).value;
+    if (paramArrayOfByte.length - 2 - 2 < i)
+    {
+      ad.e("MicroMsg.Channel.GameComment", "decode, cooment content is empty");
+      AppMethodBeat.o(88865);
+      return;
+    }
+    arrayOfByte = new byte[i];
+    localByteBuffer.get(arrayOfByte);
+    try
+    {
+      this.oen.load(new InputStreamReader(new ByteArrayInputStream(arrayOfByte), "UTF-8"));
+      label170:
+      i = paramArrayOfByte.length - 2 - i - 2;
+      if (i > 0)
+      {
+        this.oeo = new byte[i];
+        localByteBuffer.get(this.oeo);
+      }
+      AppMethodBeat.o(88865);
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      break label170;
+    }
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(88867);
+    StringBuilder localStringBuilder = new StringBuilder("GameComment [p=").append(this.oen).append(", otherData=");
+    if (this.oeo == null) {}
+    for (String str = "";; str = new String(this.oeo))
+    {
+      str = str + "]";
+      AppMethodBeat.o(88867);
+      return str;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.d.c
  * JD-Core Version:    0.7.0.1
  */

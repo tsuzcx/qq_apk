@@ -1,17 +1,35 @@
 package com.tencent.mm.plugin.appbrand.jsapi.share;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.service.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import org.json.JSONObject;
 
 public final class g
-  extends a<r>
+  extends e
 {
-  public static final int CTRL_INDEX = 146;
-  public static final String NAME = "showShareMenu";
+  public static final int CTRL_INDEX = 552;
+  public static final String NAME = "shareAppMessageToSpecificContactDirectly";
+  
+  protected final JsApiShareAppMessageBase.d a(c paramc, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(174916);
+    paramc = super.a(paramc, paramJSONObject);
+    if ((bt.isNullOrNil(paramc.kka)) && (bt.isNullOrNil(paramc.kkb)))
+    {
+      ad.i("MicroMsg.JsApiShareAppMessageToSpecificContactDirectly", "openid and chatroom is null");
+      paramc = new JsApiShareAppMessageBase.c("openid and chatroom is null");
+      AppMethodBeat.o(174916);
+      throw paramc;
+    }
+    AppMethodBeat.o(174916);
+    return paramc;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.g
  * JD-Core Version:    0.7.0.1
  */

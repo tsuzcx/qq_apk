@@ -21,9 +21,9 @@ public class ValidateAccountRequest
   
   static
   {
-    AppMethodBeat.i(89724);
+    AppMethodBeat.i(4746);
     CREATOR = new ValidateAccountRequestCreator();
-    AppMethodBeat.o(89724);
+    AppMethodBeat.o(4746);
   }
   
   @SafeParcelable.Constructor
@@ -34,11 +34,11 @@ public class ValidateAccountRequest
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(89723);
+    AppMethodBeat.i(4745);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(89723);
+    AppMethodBeat.o(4745);
   }
 }
 

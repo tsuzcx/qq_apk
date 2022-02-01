@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.remittance.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -9,30 +9,30 @@ import org.json.JSONObject;
 public final class a
   extends com.tencent.mm.wallet_core.e.a.a
 {
-  public String cGY;
-  public String cnI;
-  public double cnL;
-  public String cpp;
+  public int AAK;
+  public double AAL;
+  public String AAM;
+  public int AyL;
+  public String dcE;
+  public double dcH;
+  public String dem;
+  public String dol;
+  public String dxK;
   public String pin;
-  public String tSr;
-  public int uBF;
-  public int uDE;
-  public double uDF;
-  public String uDG;
   
   public a(String paramString1, String paramString2, double paramDouble, String paramString3, int paramInt, String paramString4, String paramString5, String paramString6)
   {
-    AppMethodBeat.i(48525);
-    this.cnI = paramString1;
+    AppMethodBeat.i(72166);
+    this.dcE = paramString1;
     this.pin = paramString2;
-    this.cnL = paramDouble;
-    this.cpp = paramString3;
+    this.dcH = paramDouble;
+    this.dem = paramString3;
     if (paramInt == 2) {}
     for (int i = 0;; i = paramInt)
     {
-      this.uDE = i;
-      this.cGY = paramString4;
-      this.tSr = paramString5;
+      this.AAK = i;
+      this.dxK = paramString4;
+      this.dol = paramString5;
       HashMap localHashMap = new HashMap();
       localHashMap.put("pin", paramString2);
       localHashMap.put("req_key", paramString1);
@@ -43,28 +43,28 @@ public final class a
       localHashMap.put("bind_serial", paramString5);
       localHashMap.put("transfer_qrcode_id", paramString6);
       setRequestData(localHashMap);
-      AppMethodBeat.o(48525);
+      AppMethodBeat.o(72166);
       return;
     }
   }
   
-  public final int cTa()
+  public final int ebo()
   {
     return 14;
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(48526);
-    this.uBF = paramJSONObject.optInt("response_result");
-    this.uDF = bo.getDouble(paramJSONObject.optString("total_fee"), 0.0D);
-    this.uDG = paramJSONObject.optString("fee_type");
-    AppMethodBeat.o(48526);
+    AppMethodBeat.i(72167);
+    this.AyL = paramJSONObject.optInt("response_result");
+    this.AAL = bt.getDouble(paramJSONObject.optString("total_fee"), 0.0D);
+    this.AAM = paramJSONObject.optString("fee_type");
+    AppMethodBeat.o(72167);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.remittance.a.a
  * JD-Core Version:    0.7.0.1
  */

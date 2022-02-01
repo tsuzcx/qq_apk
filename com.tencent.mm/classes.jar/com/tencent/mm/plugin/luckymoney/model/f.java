@@ -1,79 +1,84 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.aqa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.io.IOException;
 
 public final class f
-  extends com.tencent.mm.wallet_core.c.a<aqa, c>
+  extends com.tencent.mm.bx.a
 {
-  private static f onc;
+  public int fBI;
+  public String tcR;
+  public String tcS;
   
-  public static f bNf()
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(42274);
-    if (onc == null) {
-      onc = new f();
-    }
-    f localf = onc;
-    AppMethodBeat.o(42274);
-    return localf;
-  }
-  
-  private static aqa bNg()
-  {
-    AppMethodBeat.i(42276);
-    Object localObject = (String)g.RL().Ru().get(ac.a.yJg, "");
-    if (bo.isNullOrNil((String)localObject))
+    AppMethodBeat.i(91251);
+    if (paramInt == 0)
     {
-      AppMethodBeat.o(42276);
-      return null;
-    }
-    localObject = ((String)localObject).getBytes(org.apache.commons.a.a.ISO_8859_1);
-    try
-    {
-      localObject = (aqa)new aqa().parseFrom((byte[])localObject);
-      AppMethodBeat.o(42276);
-      return localObject;
-    }
-    catch (IOException localIOException)
-    {
-      ab.printErrStackTrace("MicroMsg.GetShowSourceAsyncLoader", localIOException, "", new Object[0]);
-      AppMethodBeat.o(42276);
-    }
-    return null;
-  }
-  
-  public final void e(a.a<aqa> parama)
-  {
-    AppMethodBeat.i(42275);
-    ab.i("MicroMsg.GetShowSourceAsyncLoader", "errType: %s, errCode: %s", new Object[] { Integer.valueOf(parama.errCode), Integer.valueOf(parama.errType) });
-    if ((parama.errType == 0) && (parama.errCode == 0) && (((aqa)parama.fsN).cnK == 0)) {
-      try
-      {
-        parama = new String(((aqa)parama.fsN).toByteArray(), org.apache.commons.a.a.ISO_8859_1);
-        g.RL().Ru().set(ac.a.yJg, parama);
-        AppMethodBeat.o(42275);
-        return;
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.fBI);
+      if (this.tcR != null) {
+        paramVarArgs.d(2, this.tcR);
       }
-      catch (IOException parama)
-      {
-        ab.printErrStackTrace("MicroMsg.GetShowSourceAsyncLoader", parama, "", new Object[0]);
+      if (this.tcS != null) {
+        paramVarArgs.d(3, this.tcS);
       }
+      AppMethodBeat.o(91251);
+      return 0;
     }
-    AppMethodBeat.o(42275);
+    if (paramInt == 1)
+    {
+      int i = f.a.a.b.b.a.bA(1, this.fBI) + 0;
+      paramInt = i;
+      if (this.tcR != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.tcR);
+      }
+      i = paramInt;
+      if (this.tcS != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.tcS);
+      }
+      AppMethodBeat.o(91251);
+      return i;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.fMq();
+        }
+      }
+      AppMethodBeat.o(91251);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      f localf = (f)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(91251);
+        return -1;
+      case 1: 
+        localf.fBI = locala.KhF.xS();
+        AppMethodBeat.o(91251);
+        return 0;
+      case 2: 
+        localf.tcR = locala.KhF.readString();
+        AppMethodBeat.o(91251);
+        return 0;
+      }
+      localf.tcS = locala.KhF.readString();
+      AppMethodBeat.o(91251);
+      return 0;
+    }
+    AppMethodBeat.o(91251);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.f
  * JD-Core Version:    0.7.0.1
  */

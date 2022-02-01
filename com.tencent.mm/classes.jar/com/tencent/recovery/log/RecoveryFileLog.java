@@ -1,29 +1,53 @@
 package com.tencent.recovery.log;
 
+import android.content.Context;
 import android.os.Process;
 import android.util.Log;
 import com.tencent.recovery.storage.MMappedFileStorage;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class RecoveryFileLog
   implements RecoveryLog.RecoveryLogImpl
 {
-  private MMappedFileStorage Bis;
-  private SimpleDateFormat Bit;
-  private boolean kEj;
+  public static final String LINE_SPLITTER = "​​";
+  private static final int MAX_LOG_LENGTH = 5242880;
+  public static final String SPLITTER = "​";
+  private SimpleDateFormat formatter;
+  private boolean isDebugMode;
+  private MMappedFileStorage mmappedFileStorage;
   
-  private String aJ(String paramString1, String paramString2, String paramString3)
+  public RecoveryFileLog(Context paramContext)
   {
-    String str = this.Bit.format(new Date());
+    paramContext = new File(paramContext.getFilesDir(), "recovery");
+    if (!paramContext.exists()) {
+      paramContext.mkdirs();
+    }
+    paramContext = new File(paramContext, "recovery.log");
+    if (paramContext.length() > 5242880L) {
+      paramContext.delete();
+    }
+    this.mmappedFileStorage = new MMappedFileStorage(paramContext.getAbsolutePath());
+    this.formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss:SSS");
+  }
+  
+  private String generateLog(String paramString1, String paramString2, String paramString3)
+  {
+    String str = this.formatter.format(new Date());
     return String.format("%s​%s​[%d][%d][%s]: %s​​", new Object[] { paramString1, paramString2, Integer.valueOf(Process.myPid()), Long.valueOf(Thread.currentThread().getId()), str, paramString3 });
   }
   
-  public final void ct(String paramString, boolean paramBoolean)
+  protected void appendToBuffer(String paramString)
+  {
+    appendToBuffer(paramString, false);
+  }
+  
+  public void appendToBuffer(String paramString, boolean paramBoolean)
   {
     try
     {
-      this.Bis.f(paramString.getBytes(), paramBoolean);
+      this.mmappedFileStorage.appendToBuffer(paramString.getBytes(), paramBoolean);
       return;
     }
     finally
@@ -33,51 +57,56 @@ public class RecoveryFileLog
     }
   }
   
-  public final void d(String paramString1, String paramString2, Object... paramVarArgs)
+  public void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    ct(aJ("D", paramString1, String.format(paramString2, paramVarArgs)), false);
-    if (this.kEj) {
+    appendToBuffer(generateLog("D", paramString1, String.format(paramString2, paramVarArgs)));
+    if (this.isDebugMode) {
       String.format(paramString2, paramVarArgs);
     }
   }
   
-  public final void e(String paramString1, String paramString2, Object... paramVarArgs)
+  public void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    ct(aJ("E", paramString1, String.format(paramString2, paramVarArgs)), false);
-    if (this.kEj) {
+    appendToBuffer(generateLog("E", paramString1, String.format(paramString2, paramVarArgs)));
+    if (this.isDebugMode) {
       String.format(paramString2, paramVarArgs);
     }
   }
   
-  public final void i(String paramString1, String paramString2, Object... paramVarArgs)
+  public void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    ct(aJ("I", paramString1, String.format(paramString2, paramVarArgs)), false);
-    if (this.kEj) {
+    appendToBuffer(generateLog("I", paramString1, String.format(paramString2, paramVarArgs)));
+    if (this.isDebugMode) {
       String.format(paramString2, paramVarArgs);
     }
   }
   
-  public final void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
+  public void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     String str = String.format(paramString2, paramVarArgs);
-    ct(aJ("E", paramString1, str + "  " + Log.getStackTraceString(paramThrowable)), false);
-    if (this.kEj) {
+    appendToBuffer(generateLog("E", paramString1, str + "  " + Log.getStackTraceString(paramThrowable)));
+    if (this.isDebugMode) {
       String.format(paramString2, paramVarArgs);
     }
   }
   
-  public final void v(String paramString1, String paramString2, Object... paramVarArgs)
+  public void setDebugMode()
   {
-    ct(aJ("V", paramString1, String.format(paramString2, paramVarArgs)), false);
-    if (this.kEj) {
+    this.isDebugMode = true;
+  }
+  
+  public void v(String paramString1, String paramString2, Object... paramVarArgs)
+  {
+    appendToBuffer(generateLog("V", paramString1, String.format(paramString2, paramVarArgs)));
+    if (this.isDebugMode) {
       String.format(paramString2, paramVarArgs);
     }
   }
   
-  public final void w(String paramString1, String paramString2, Object... paramVarArgs)
+  public void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    ct(aJ("W", paramString1, String.format(paramString2, paramVarArgs)), false);
-    if (this.kEj) {
+    appendToBuffer(generateLog("W", paramString1, String.format(paramString2, paramVarArgs)));
+    if (this.isDebugMode) {
       String.format(paramString2, paramVarArgs);
     }
   }

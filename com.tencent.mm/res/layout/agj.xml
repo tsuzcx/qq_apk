@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/cz" android:layout_width="@dimen/i5" android:layout_height="wrap_content" android:layout_marginRight="@dimen/lb" android:singleLine="true" style="@style/lg" />
-    <ImageView android:id="@id/ahw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ne" android:src="@raw/card_photoicon" />
-    <TextView android:textColor="@color/tc" android:ellipsize="end" android:id="@id/a9c" android:singleLine="true" style="@style/lj" />
+    <TextView android:id="@id/b2x" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/nw" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/n4" />
+    <FrameLayout android:orientation="horizontal" android:background="@drawable/a_c" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b31" android:background="@drawable/amv" android:paddingLeft="@dimen/i_" android:layout_width="fill_parent" android:layout_height="@dimen/jm">
+            <TextView android:id="@id/b32" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/m3" />
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/tk" android:id="@id/b37" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </FrameLayout>
 </LinearLayout>

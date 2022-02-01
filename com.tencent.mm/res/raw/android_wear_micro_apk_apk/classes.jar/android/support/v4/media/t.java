@@ -5,26 +5,26 @@ import android.media.browse.MediaBrowser.ConnectionCallback;
 final class t<T extends s>
   extends MediaBrowser.ConnectionCallback
 {
-  protected final T gR;
+  protected final T iP;
   
   public t(T paramT)
   {
-    this.gR = paramT;
+    this.iP = paramT;
   }
   
   public final void onConnected()
   {
-    this.gR.onConnected();
+    this.iP.onConnected();
   }
   
   public final void onConnectionFailed()
   {
-    this.gR.onConnectionFailed();
+    this.iP.onConnectionFailed();
   }
   
   public final void onConnectionSuspended()
   {
-    this.gR.onConnectionSuspended();
+    this.iP.onConnectionSuspended();
   }
 }
 

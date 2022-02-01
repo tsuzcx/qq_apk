@@ -3,54 +3,52 @@ package com.tencent.mm.plugin.report.b;
 import com.tencent.mars.smc.SmcLogic;
 import com.tencent.mars.smc.SmcProtoBufUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
 import com.tencent.mm.protocal.a.a.c;
-import com.tencent.mm.protocal.aa;
-import com.tencent.mm.protocal.protobuf.aix;
-import com.tencent.mm.protocal.protobuf.aiy;
-import com.tencent.mm.protocal.protobuf.auv;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.a.a.f;
+import com.tencent.mm.protocal.ac;
+import com.tencent.mm.protocal.protobuf.ase;
+import com.tencent.mm.protocal.protobuf.asf;
+import com.tencent.mm.protocal.protobuf.bfx;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class h
-  extends m
+  extends n
   implements k
 {
   private static boolean isRunning;
   private static Object lock;
-  private com.tencent.mm.ai.f callback;
-  private a qrZ;
-  private aix qsd;
-  private com.tencent.mm.ai.b rr;
+  private com.tencent.mm.al.g callback;
+  private com.tencent.mm.al.b rr;
+  private a vJp;
+  private ase vJs;
   
   static
   {
-    AppMethodBeat.i(72688);
+    AppMethodBeat.i(143804);
     isRunning = false;
     lock = new Object();
-    AppMethodBeat.o(72688);
+    AppMethodBeat.o(143804);
   }
   
   public h()
   {
-    AppMethodBeat.i(72684);
-    this.qsd = null;
-    this.qrZ = new a();
+    AppMethodBeat.i(143800);
+    this.vJs = null;
+    this.vJp = new a();
     setIsRunning(true);
-    this.qsd = SmcProtoBufUtil.toMMGetStrategyReq();
-    if (this.qsd != null)
+    this.vJs = SmcProtoBufUtil.toMMGetStrategyReq();
+    if (this.vJs != null)
     {
-      this.qsd.wLU = new auv();
-      this.qsd.wLU.xkc = a.Cw(0);
+      this.vJs.CYo = new bfx();
+      this.vJs.CYo.DDD = a.KG(0);
     }
-    AppMethodBeat.o(72684);
+    AppMethodBeat.o(143800);
   }
   
   public static boolean isRunning()
@@ -71,50 +69,50 @@ public final class h
     }
   }
   
-  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
+  public final int doScene(e parame, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(72687);
-    this.callback = paramf;
-    g.RJ();
-    boolean bool = com.tencent.mm.kernel.a.QT();
+    AppMethodBeat.i(143803);
+    this.callback = paramg;
+    com.tencent.mm.kernel.g.afz();
+    boolean bool = com.tencent.mm.kernel.a.aeH();
     if (!bool) {
-      this.qsd.wLT = com.tencent.mm.bv.b.bL(bo.dtR());
+      this.vJs.CYn = com.tencent.mm.bx.b.cd(bt.eGG());
     }
     b.a locala = new b.a();
-    locala.fsZ = false;
-    locala.fsX = this.qsd;
-    locala.fsY = new aiy();
+    locala.gUW = false;
+    locala.gUU = this.vJs;
+    locala.gUV = new asf();
     if (bool) {
-      paramf = "/cgi-bin/micromsg-bin/getkvidkeystrategy";
+      paramg = "/cgi-bin/micromsg-bin/getkvidkeystrategy";
     }
     for (;;)
     {
-      locala.uri = paramf;
+      locala.uri = paramg;
       locala.funcId = getType();
-      this.rr = locala.ado();
+      this.rr = locala.atI();
       if (!bool)
       {
-        this.rr.setRsaInfo(aa.dqF());
+        this.rr.setRsaInfo(ac.eBZ());
         this.rr.option = 1;
       }
       int i = dispatch(parame, this.rr, this);
       if (i < 0) {
-        ab.i("MicroMsg.NetSceneGetCliKVStrategy", "mark all failed. do scene %d", new Object[] { Integer.valueOf(i) });
+        ad.i("MicroMsg.NetSceneGetCliKVStrategy", "mark all failed. do scene %d", new Object[] { Integer.valueOf(i) });
       }
       try
       {
         SmcLogic.OnStrategyResp(3, -1, null, 1);
         SmcLogic.OnStrategyResp(3, -1, null, 2);
         setIsRunning(false);
-        AppMethodBeat.o(72687);
+        AppMethodBeat.o(143803);
         return i;
-        paramf = "/cgi-bin/micromsg-bin/getkvidkeystrategyrsa";
+        paramg = "/cgi-bin/micromsg-bin/getkvidkeystrategyrsa";
       }
       catch (Exception parame)
       {
         for (;;)
         {
-          ab.e("MicroMsg.NetSceneGetCliKVStrategy", "onReportStrategyResp failed  hash:%d  , ex:%s", new Object[] { Integer.valueOf(hashCode()), bo.l(parame) });
+          ad.e("MicroMsg.NetSceneGetCliKVStrategy", "onReportStrategyResp failed  hash:%d  , ex:%s", new Object[] { Integer.valueOf(hashCode()), bt.m(parame) });
         }
       }
     }
@@ -122,40 +120,40 @@ public final class h
   
   public final int getType()
   {
-    AppMethodBeat.i(72686);
-    g.RJ();
-    if (com.tencent.mm.kernel.a.QT())
+    AppMethodBeat.i(143802);
+    com.tencent.mm.kernel.g.afz();
+    if (com.tencent.mm.kernel.a.aeH())
     {
-      AppMethodBeat.o(72686);
+      AppMethodBeat.o(143802);
       return 988;
     }
-    AppMethodBeat.o(72686);
+    AppMethodBeat.o(143802);
     return 989;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(72685);
-    if ((g.RK().eHt == null) || (g.RK().eHt.ftA == null))
+    AppMethodBeat.i(143801);
+    if ((com.tencent.mm.kernel.g.afA().gcy == null) || (com.tencent.mm.kernel.g.afA().gcy.gVH == null))
     {
-      ab.f("MicroMsg.NetSceneGetCliKVStrategy", "null == network().getNetSceneQueue().getDispatcher(), can't give response to kvcomm.");
+      ad.f("MicroMsg.NetSceneGetCliKVStrategy", "null == network().getNetSceneQueue().getDispatcher(), can't give response to kvcomm.");
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(72685);
+      AppMethodBeat.o(143801);
       return;
     }
     if (paramInt2 != 0)
     {
-      ab.e("MicroMsg.NetSceneGetCliKVStrategy", "get report strategy err, errType:" + paramInt2 + ", errCode:" + paramInt3);
+      ad.e("MicroMsg.NetSceneGetCliKVStrategy", "get report strategy err, errType:" + paramInt2 + ", errCode:" + paramInt3);
       SmcLogic.OnStrategyResp(paramInt2, paramInt3, null, 1);
       SmcLogic.OnStrategyResp(paramInt2, paramInt3, null, 2);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       setIsRunning(false);
-      AppMethodBeat.o(72685);
+      AppMethodBeat.o(143801);
       return;
     }
-    ab.d("MicroMsg.NetSceneGetCliKVStrategy", "get report strategy ok");
-    paramArrayOfByte = (aiy)this.rr.fsW.fta;
-    this.qrZ.a(paramArrayOfByte.wMe, 0);
+    ad.d("MicroMsg.NetSceneGetCliKVStrategy", "get report strategy ok");
+    paramArrayOfByte = (asf)this.rr.gUT.gUX;
+    this.vJp.a(paramArrayOfByte.CYy, 0);
     try
     {
       paramq = SmcProtoBufUtil.toSmcKVStrategyResp(paramArrayOfByte);
@@ -164,14 +162,14 @@ public final class h
       SmcLogic.OnStrategyResp(0, 0, paramArrayOfByte.toByteArray(), 2);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       setIsRunning(false);
-      AppMethodBeat.o(72685);
+      AppMethodBeat.o(143801);
       return;
     }
     catch (Exception paramq)
     {
       for (;;)
       {
-        ab.e("MicroMsg.NetSceneGetCliKVStrategy", "onReportStrategyResp failed  hash:%d  , ex:%s", new Object[] { Integer.valueOf(hashCode()), bo.l(paramq) });
+        ad.e("MicroMsg.NetSceneGetCliKVStrategy", "onReportStrategyResp failed  hash:%d  , ex:%s", new Object[] { Integer.valueOf(hashCode()), bt.m(paramq) });
       }
     }
   }

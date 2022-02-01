@@ -13,21 +13,25 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
+import com.tencent.luggage.d.e;
 import com.tencent.luggage.d.f;
+import com.tencent.luggage.d.j;
+import com.tencent.luggage.d.k;
+import com.tencent.luggage.h.e.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.ai;
 import com.tencent.mm.ui.statusbar.b;
-import com.tencent.mm.ui.statusbar.d;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
 import java.lang.reflect.Field;
 
 public class DownloadDetailUI
   extends MMActivity
+  implements e.d
 {
-  private a lae;
+  private a ogU;
   
   public int getLayoutId()
   {
@@ -36,11 +40,11 @@ public class DownloadDetailUI
   
   public void initSwipeBack()
   {
-    AppMethodBeat.i(136038);
+    AppMethodBeat.i(8793);
     super.initSwipeBack();
     if (getSwipeBackLayout() == null)
     {
-      AppMethodBeat.o(136038);
+      AppMethodBeat.o(8793);
       return;
     }
     View localView1 = getSwipeBackLayout().getChildAt(0);
@@ -57,7 +61,7 @@ public class DownloadDetailUI
     {
       getSwipeBackLayout().addView(localb);
       getSwipeBackLayout().setContentView(localb);
-      AppMethodBeat.o(136038);
+      AppMethodBeat.o(8793);
       return;
       localb.addView(localView1);
     }
@@ -65,93 +69,113 @@ public class DownloadDetailUI
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(136040);
+    AppMethodBeat.i(8795);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.lae.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(136040);
+    this.ogU.onActivityResult(paramInt1, paramInt2, paramIntent);
+    AppMethodBeat.o(8795);
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(136037);
-    if (!this.lae.onBackPressed()) {
+    AppMethodBeat.i(8792);
+    if (!this.ogU.onBackPressed()) {
       finish();
     }
-    AppMethodBeat.o(136037);
+    AppMethodBeat.o(8792);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(136033);
+    AppMethodBeat.i(8788);
     super.onCreate(paramBundle);
-    ab.i("MicroMsg.DownloadDetailUI", "onCreate");
+    ad.i("MicroMsg.DownloadDetailUI", "onCreate");
     paramBundle = getIntent().getStringExtra("rawUrl");
-    if (bo.isNullOrNil(paramBundle))
+    if (bt.isNullOrNil(paramBundle))
     {
-      ab.e("MicroMsg.DownloadDetailUI", "url is null");
-      AppMethodBeat.o(136033);
+      ad.e("MicroMsg.DownloadDetailUI", "url is null");
+      AppMethodBeat.o(8788);
       return;
     }
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
     getWindow().setFormat(-3);
-    setMMTitle(getResources().getString(2131302101));
-    setActionbarColor(getResources().getColor(2131689974));
+    setMMTitle(getResources().getString(2131761940));
+    setActionbarColor(getResources().getColor(2131100260));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(136031);
+        AppMethodBeat.i(8786);
         DownloadDetailUI.this.finish();
-        AppMethodBeat.o(136031);
+        AppMethodBeat.o(8786);
         return false;
       }
     });
-    int i = getResources().getColor(2131689974);
+    int i = getResources().getColor(2131100260);
     Window localWindow;
     if ((Build.VERSION.SDK_INT >= 21) && (getSwipeBackLayout() == null) && (Build.VERSION.SDK_INT >= 21))
     {
       localWindow = ((Activity)this).getWindow();
-      if ((Build.VERSION.SDK_INT >= 23) && (d.a(localWindow, true))) {
-        break label248;
+      if ((Build.VERSION.SDK_INT >= 23) && (com.tencent.mm.ui.statusbar.d.c(localWindow, true))) {
+        break label251;
       }
       if (Build.VERSION.SDK_INT >= 21) {
-        i = af.Kq(i);
+        i = ai.Ts(i);
       }
     }
-    label248:
+    label251:
     for (;;)
     {
       localWindow.setStatusBarColor(i);
-      this.lae = new a(this);
-      setContentView(this.lae.byO);
-      this.lae.a(new DownloadDetailUI.2(this));
-      this.lae.h(paramBundle, getIntent().getExtras());
-      AppMethodBeat.o(136033);
+      this.ogU = new a(this);
+      setContentView(this.ogU.cae);
+      this.ogU.a(new j()
+      {
+        public final e k(String paramAnonymousString, Bundle paramAnonymousBundle)
+        {
+          boolean bool = true;
+          AppMethodBeat.i(8787);
+          k localk = d.ep(DownloadDetailUI.this);
+          if (localk == null) {}
+          for (;;)
+          {
+            ad.i("MicroMsg.DownloadDetailUI", "preloadDetail is null ? %b", new Object[] { Boolean.valueOf(bool) });
+            if (localk == null) {
+              d.SA(paramAnonymousString);
+            }
+            paramAnonymousString = new c(DownloadDetailUI.a(DownloadDetailUI.this).cal, localk, paramAnonymousBundle);
+            AppMethodBeat.o(8787);
+            return paramAnonymousString;
+            bool = false;
+          }
+        }
+      });
+      this.ogU.h(paramBundle, getIntent().getExtras());
+      AppMethodBeat.o(8788);
       return;
     }
   }
   
   public void onCreateBeforeSetContentView()
   {
-    AppMethodBeat.i(136039);
+    AppMethodBeat.i(8794);
     super.onCreateBeforeSetContentView();
-    AppMethodBeat.o(136039);
+    AppMethodBeat.o(8794);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(136036);
+    AppMethodBeat.i(8791);
     super.onDestroy();
-    ab.i("MicroMsg.DownloadDetailUI", "onDestroy");
-    this.lae.destroy();
-    ab.i("MicroMsg.DownloadDetailUI", "fixInputMethodManagerLeak");
+    ad.i("MicroMsg.DownloadDetailUI", "onDestroy");
+    this.ogU.destroy();
+    ad.i("MicroMsg.DownloadDetailUI", "fixInputMethodManagerLeak");
     InputMethodManager localInputMethodManager = (InputMethodManager)getSystemService("input_method");
     int i;
     if (localInputMethodManager != null)
     {
-      ab.i("MicroMsg.DownloadDetailUI", "fixInputMethodManagerLeak, imm");
+      ad.i("MicroMsg.DownloadDetailUI", "fixInputMethodManagerLeak, imm");
       i = 0;
     }
     for (;;)
@@ -167,7 +191,7 @@ public class DownloadDetailUI
           }
           Object localObject2 = ((Field)localObject1).get(localInputMethodManager);
           if ((localObject2 == null) || (!(localObject2 instanceof View))) {
-            break label207;
+            break label209;
           }
           localObject2 = (View)localObject2;
           if ((((View)localObject2).getContext() instanceof ContextWrapper))
@@ -182,33 +206,33 @@ public class DownloadDetailUI
         }
         catch (Throwable localThrowable)
         {
-          ab.printErrStackTrace("MicroMsg.DownloadDetailUI", localThrowable, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.DownloadDetailUI", localThrowable, "", new Object[0]);
         }
       }
       System.gc();
-      AppMethodBeat.o(136036);
+      AppMethodBeat.o(8791);
       return;
-      label207:
+      label209:
       i += 1;
     }
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(136035);
+    AppMethodBeat.i(8790);
     super.onPause();
-    ab.i("MicroMsg.DownloadDetailUI", "onPause");
-    this.lae.onPause();
-    AppMethodBeat.o(136035);
+    ad.i("MicroMsg.DownloadDetailUI", "onPause");
+    this.ogU.onPause();
+    AppMethodBeat.o(8790);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(136034);
+    AppMethodBeat.i(8789);
     super.onResume();
-    ab.i("MicroMsg.DownloadDetailUI", "onResume");
-    this.lae.onResume();
-    AppMethodBeat.o(136034);
+    ad.i("MicroMsg.DownloadDetailUI", "onResume");
+    this.ogU.onResume();
+    AppMethodBeat.o(8789);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -219,7 +243,7 @@ public class DownloadDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.detail.DownloadDetailUI
  * JD-Core Version:    0.7.0.1
  */

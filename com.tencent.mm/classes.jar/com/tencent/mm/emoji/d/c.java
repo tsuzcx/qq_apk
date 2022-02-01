@@ -1,52 +1,43 @@
 package com.tencent.mm.emoji.d;
 
-import a.l;
+import android.content.Context;
+import android.content.res.Resources.Theme;
+import android.util.TypedValue;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.g;
-import com.tencent.mm.emoji.a.g.b;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import java.util.List;
+import com.tencent.mm.ui.am;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/upload/EmojiCaptureUploadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "TAG", "", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "isWxam", "", "()Z", "timeEnter", "", "getTimeEnter", "()J", "uploadCost", "getUploadCost", "setUploadCost", "(J)V", "call", "", "handleFail", "errorCode", "", "handleSuccess", "gifMd5", "uniqueId", "plugin-emojisdk_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"getAttrResId", "", "context", "Landroid/content/Context;", "attributeId", "Landroid/view/View;", "setSvgDrawable", "", "Landroid/widget/ImageView;", "resId", "color", "plugin-emojisdk_release"})
 public final class c
-  extends com.tencent.mm.loader.g.c
 {
-  final String TAG;
-  final EmojiInfo evH;
-  final long eyh;
-  long eyi;
-  final boolean eyj;
-  
-  public c(EmojiInfo paramEmojiInfo)
+  public static final void a(ImageView paramImageView, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(63299);
-    this.evH = paramEmojiInfo;
-    this.TAG = "MicroMsg.EmojiCaptureUploadTask";
-    this.eyh = this.evH.field_captureEnterTime;
-    this.eyj = this.evH.dzt();
-    AppMethodBeat.o(63299);
+    AppMethodBeat.i(105783);
+    k.h(paramImageView, "$this$setSvgDrawable");
+    paramImageView.setImageDrawable(am.i(paramImageView.getContext(), paramInt1, paramInt2));
+    AppMethodBeat.o(105783);
   }
   
-  public final String Oy()
+  public static final int ch(Context paramContext)
   {
-    AppMethodBeat.i(63298);
-    long l = this.eyh;
-    AppMethodBeat.o(63298);
-    return String.valueOf(l);
-  }
-  
-  public final void call()
-  {
-    AppMethodBeat.i(63297);
-    long l = bo.aoy();
-    new g(this.evH, (List)this.evH.dzB(), this.evH.field_imitateMd5, (g.b)new c.a(this, l));
-    AppMethodBeat.o(63297);
+    AppMethodBeat.i(105784);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(105784);
+      return 0;
+    }
+    TypedValue localTypedValue = new TypedValue();
+    paramContext.getTheme().resolveAttribute(2130968965, localTypedValue, true);
+    int i = localTypedValue.resourceId;
+    AppMethodBeat.o(105784);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.d.c
  * JD-Core Version:    0.7.0.1
  */

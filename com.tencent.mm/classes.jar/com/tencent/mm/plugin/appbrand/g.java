@@ -1,192 +1,306 @@
 package com.tencent.mm.plugin.appbrand;
 
-import a.f.b.j;
-import a.v;
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build.VERSION;
+import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
-import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.kernel.d;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.page.z;
-import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.plugin.appbrand.aa.h;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/AppBrandProcessSharedPersistentRuntimeStore;", "", "()V", "TAG", "", "runtimeMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "contains", "", "runtime", "isAllEquals", "array", "", "objectToMatch", "([Ljava/lang/Object;Ljava/lang/Object;)Z", "isEmpty", "pollOrCreate", "activity", "Landroid/app/Activity;", "cfg", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "remotePop", "", "remove", "stash", "resetBaseContext", "base", "Landroid/content/Context;", "plugin-appbrand-integration_release"})
 public final class g
 {
-  private static final ConcurrentHashMap<String, o> gPr;
-  public static final g gPs;
+  private static final Iterator<g.c> iCQ;
+  private static final Map<String, b> iCR;
+  private static final Map<String, d> iCS;
+  private static final h<String, g.c> iCT;
+  private static final h<String, g.a> iCU;
   
   static
   {
-    AppMethodBeat.i(143724);
-    gPs = new g();
-    gPr = new ConcurrentHashMap();
-    AppMethodBeat.o(143724);
+    AppMethodBeat.i(140582);
+    iCQ = new g.1();
+    iCR = new HashMap();
+    iCS = new HashMap();
+    iCT = new h();
+    iCU = new h();
+    AppMethodBeat.o(140582);
   }
   
-  public static final o a(Activity paramActivity, AppBrandInitConfigWC paramAppBrandInitConfigWC, l paraml)
+  private static Iterator<g.c> CU(String paramString)
   {
-    boolean bool2 = true;
-    AppMethodBeat.i(143719);
-    j.q(paramActivity, "activity");
-    j.q(paramAppBrandInitConfigWC, "cfg");
-    j.q(paraml, "container");
-    paramAppBrandInitConfigWC = (o)gPr.remove(paramAppBrandInitConfigWC.appId);
-    if (paramAppBrandInitConfigWC != null)
+    AppMethodBeat.i(140568);
+    paramString = iCT.cD(paramString);
+    if (paramString != null)
     {
-      f(paramAppBrandInitConfigWC);
-      Boolean[] arrayOfBoolean = new Boolean[3];
-      arrayOfBoolean[0] = Boolean.valueOf(paramAppBrandInitConfigWC.atp());
-      if (!paramAppBrandInitConfigWC.isFinishing())
-      {
-        bool1 = true;
-        arrayOfBoolean[1] = Boolean.valueOf(bool1);
-        if (paramAppBrandInitConfigWC.finished()) {
-          break label181;
+      paramString = paramString.iterator();
+      AppMethodBeat.o(140568);
+      return paramString;
+    }
+    paramString = iCQ;
+    AppMethodBeat.o(140568);
+    return paramString;
+  }
+  
+  public static void CV(String paramString)
+  {
+    AppMethodBeat.i(140569);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140569);
+      return;
+    }
+    paramString = CU(paramString);
+    while (paramString.hasNext()) {
+      ((g.c)paramString.next()).onCreate();
+    }
+    AppMethodBeat.o(140569);
+  }
+  
+  public static void CW(String paramString)
+  {
+    AppMethodBeat.i(140570);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140570);
+      return;
+    }
+    paramString = CU(paramString);
+    while (paramString.hasNext()) {
+      ((g.c)paramString.next()).onDestroy();
+    }
+    AppMethodBeat.o(140570);
+  }
+  
+  public static void CX(String paramString)
+  {
+    AppMethodBeat.i(194794);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(194794);
+      return;
+    }
+    paramString = CU(paramString);
+    while (paramString.hasNext()) {
+      ((g.c)paramString.next()).aLD();
+    }
+    AppMethodBeat.o(194794);
+  }
+  
+  public static void CY(String paramString)
+  {
+    AppMethodBeat.i(140571);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140571);
+      return;
+    }
+    Iterator localIterator = CU(paramString);
+    while (localIterator.hasNext()) {
+      ((g.c)localIterator.next()).a(Dd(paramString));
+    }
+    AppMethodBeat.o(140571);
+  }
+  
+  public static void CZ(String paramString)
+  {
+    AppMethodBeat.i(140572);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140572);
+      return;
+    }
+    paramString = CU(paramString);
+    while (paramString.hasNext()) {
+      ((g.c)paramString.next()).onResume();
+    }
+    AppMethodBeat.o(140572);
+  }
+  
+  public static void Da(String paramString)
+  {
+    AppMethodBeat.i(140573);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140573);
+      return;
+    }
+    paramString = CU(paramString);
+    while (paramString.hasNext()) {
+      paramString.next();
+    }
+    AppMethodBeat.o(140573);
+  }
+  
+  public static void Db(String paramString)
+  {
+    AppMethodBeat.i(140576);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140576);
+      return;
+    }
+    iCT.cE(paramString);
+    iCU.cE(paramString);
+    AppMethodBeat.o(140576);
+  }
+  
+  public static void Dc(String paramString)
+  {
+    AppMethodBeat.i(140577);
+    a(paramString, d.iDe);
+    AppMethodBeat.o(140577);
+  }
+  
+  public static d Dd(String paramString)
+  {
+    AppMethodBeat.i(140578);
+    paramString = (d)iCS.get(paramString);
+    if (paramString == null)
+    {
+      paramString = d.iDe;
+      AppMethodBeat.o(140578);
+      return paramString;
+    }
+    AppMethodBeat.o(140578);
+    return paramString;
+  }
+  
+  public static b De(String paramString)
+  {
+    AppMethodBeat.i(140581);
+    b localb = (b)iCR.get(paramString);
+    paramString = localb;
+    if (localb == null) {
+      paramString = b.iCV;
+    }
+    AppMethodBeat.o(140581);
+    return paramString;
+  }
+  
+  public static void a(String paramString, g.a parama)
+  {
+    AppMethodBeat.i(182832);
+    iCU.h(paramString, parama);
+    AppMethodBeat.o(182832);
+  }
+  
+  public static void a(String paramString, b paramb)
+  {
+    AppMethodBeat.i(140580);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140580);
+      return;
+    }
+    iCR.put(paramString, paramb);
+    AppMethodBeat.o(140580);
+  }
+  
+  public static void a(String paramString, g.c paramc)
+  {
+    AppMethodBeat.i(140567);
+    if ((TextUtils.isEmpty(paramString)) || (paramc == null))
+    {
+      AppMethodBeat.o(140567);
+      return;
+    }
+    iCT.h(paramString, paramc);
+    AppMethodBeat.o(140567);
+  }
+  
+  public static void a(String paramString, d paramd)
+  {
+    AppMethodBeat.i(140579);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(140579);
+      return;
+    }
+    iCS.put(paramString, paramd);
+    AppMethodBeat.o(140579);
+  }
+  
+  public static void b(String paramString, g.a parama)
+  {
+    AppMethodBeat.i(182833);
+    iCU.B(paramString, parama);
+    AppMethodBeat.o(182833);
+  }
+  
+  public static void b(String paramString, g.c paramc)
+  {
+    AppMethodBeat.i(140574);
+    if ((paramc == null) || (TextUtils.isEmpty(paramString)))
+    {
+      AppMethodBeat.o(140574);
+      return;
+    }
+    iCT.B(paramString, paramc);
+    AppMethodBeat.o(140574);
+  }
+  
+  public static boolean b(String paramString, Intent paramIntent)
+  {
+    AppMethodBeat.i(182834);
+    paramString = iCU.cD(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.iterator();
+      while (paramString.hasNext()) {
+        if (((g.a)paramString.next()).onNewIntent(paramIntent))
+        {
+          AppMethodBeat.o(182834);
+          return true;
         }
       }
-      label181:
-      for (boolean bool1 = bool2;; bool1 = false)
-      {
-        arrayOfBoolean[2] = Boolean.valueOf(bool1);
-        ab.i("MicroMsg.AppBrandProcessSharedPersistentRuntimeStore", "pollOrCreate, existed runtime[" + paramAppBrandInitConfigWC.getAppId() + "], conditions[" + org.apache.commons.b.a.toString(arrayOfBoolean) + ']');
-        if (!b(arrayOfBoolean, Boolean.TRUE)) {
-          break label186;
-        }
-        a(paramAppBrandInitConfigWC, (Context)paramActivity);
-        paramAppBrandInitConfigWC.a((ad)paraml);
-        AppMethodBeat.o(143719);
-        return paramAppBrandInitConfigWC;
-        bool1 = false;
-        break;
-      }
     }
-    label186:
-    paramActivity = new o((Context)com.tencent.mm.plugin.appbrand.ui.g.dc((Context)paramActivity), (ad)paraml);
-    AppMethodBeat.o(143719);
-    return paramActivity;
+    AppMethodBeat.o(182834);
+    return false;
   }
   
-  private static void a(o paramo, Context paramContext)
+  public static enum b
   {
-    AppMethodBeat.i(143722);
-    if (paramo == null)
+    static
     {
-      paramo = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.AppBrandRuntime");
-      AppMethodBeat.o(143722);
-      throw paramo;
+      AppMethodBeat.i(140563);
+      iCV = new b("INIT", 0);
+      iCW = new b("ON_CREATE", 1);
+      iCX = new b("ON_RESUME", 2);
+      iCY = new b("ON_PAUSE", 3);
+      iCZ = new b("ON_STOP", 4);
+      iDa = new b("ON_DESTROY", 5);
+      iDb = new b[] { iCV, iCW, iCX, iCY, iCZ, iDa };
+      AppMethodBeat.o(140563);
     }
-    Context localContext = ((i)paramo).mContext;
-    if (localContext == null)
+    
+    private b() {}
+  }
+  
+  public static enum d
+  {
+    static
     {
-      paramo = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.ui.AppBrandRuntimePersistentContextWrapper");
-      AppMethodBeat.o(143722);
-      throw paramo;
+      AppMethodBeat.i(140566);
+      iDc = new d("CLOSE", 0);
+      iDd = new d("BACK", 1);
+      iDe = new d("HIDE", 2);
+      iDf = new d("HANG", 3);
+      iDg = new d("HOME_PRESSED", 4);
+      iDh = new d("RECENT_APPS_PRESSED", 5);
+      iDi = new d("LAUNCH_NATIVE_PAGE", 6);
+      iDj = new d("LAUNCH_MINI_PROGRAM", 7);
+      iDk = new d[] { iDc, iDd, iDe, iDf, iDg, iDh, iDi, iDj };
+      AppMethodBeat.o(140566);
     }
-    ((com.tencent.mm.plugin.appbrand.ui.g)localContext).setBaseContext(paramContext);
-    paramo = paramo.atU();
-    if (paramo != null)
-    {
-      paramo = paramo.aLy();
-      if (paramo != null)
-      {
-        paramo.ap(paramContext);
-        AppMethodBeat.o(143722);
-        return;
-      }
-    }
-    AppMethodBeat.o(143722);
-  }
-  
-  private static boolean b(Object[] paramArrayOfObject, Object paramObject)
-  {
-    AppMethodBeat.i(143717);
-    int i = 0;
-    while (i < 3)
-    {
-      if ((j.e(paramArrayOfObject[i], paramObject) ^ true))
-      {
-        AppMethodBeat.o(143717);
-        return false;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(143717);
-    return true;
-  }
-  
-  public static final void d(o paramo)
-  {
-    AppMethodBeat.i(143720);
-    j.q(paramo, "runtime");
-    Object localObject1 = ah.getContext();
-    j.p(localObject1, "MMApplicationContext.getContext()");
-    a(paramo, (Context)localObject1);
-    paramo.a(null);
-    localObject1 = (Map)gPr;
-    Object localObject2 = paramo.getAppId();
-    j.p(localObject2, "runtime.appId");
-    ((Map)localObject1).put(localObject2, paramo);
-    localObject1 = paramo.getAppId();
-    localObject2 = com.tencent.mm.kernel.g.RI().Rj();
-    j.p(localObject2, "MMKernel.process().current()");
-    XIPCInvoker.a("com.tencent.mm", new IPC_PARAM_stashPersistentApp((String)localObject1, ((h)localObject2).getProcessName(), paramo.gRl), ac.class);
-    AppMethodBeat.o(143720);
-  }
-  
-  public static final boolean e(o paramo)
-  {
-    AppMethodBeat.i(143721);
-    j.q(paramo, "runtime");
-    boolean bool;
-    if (Build.VERSION.SDK_INT >= 24) {
-      bool = gPr.remove(paramo.getAppId(), paramo);
-    }
-    for (;;)
-    {
-      if (bool) {
-        f(paramo);
-      }
-      AppMethodBeat.o(143721);
-      return bool;
-      j.q(paramo, "runtime");
-      if (gPr.containsValue(paramo))
-      {
-        gPr.remove(paramo.getAppId());
-        bool = true;
-      }
-      else
-      {
-        bool = false;
-      }
-    }
-  }
-  
-  private static void f(o paramo)
-  {
-    AppMethodBeat.i(143723);
-    ((a.f.a.a)new g.a(paramo)).invoke();
-    AppMethodBeat.o(143723);
-  }
-  
-  public static final boolean isEmpty()
-  {
-    AppMethodBeat.i(143718);
-    boolean bool = gPr.isEmpty();
-    AppMethodBeat.o(143718);
-    return bool;
+    
+    private d() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g
  * JD-Core Version:    0.7.0.1
  */

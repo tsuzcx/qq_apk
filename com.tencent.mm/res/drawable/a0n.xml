@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<inset android:insetLeft="@dimen/a8o" android:insetRight="@dimen/a8o"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle">
-            <gradient android:startColor="#33000000" android:endColor="#00000000" android:angle="270.0" />
-        </shape>
-    </item>
-</selector>
+    <shape>
+        <solid android:color="@color/a2u" />
+        <corners android:radius="2.0dip" />
+    </shape>
+</inset>

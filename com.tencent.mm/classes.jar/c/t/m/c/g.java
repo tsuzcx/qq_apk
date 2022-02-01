@@ -3,81 +3,176 @@ package c.t.m.c;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class g
 {
-  private static g a = null;
-  private Context b;
-  
-  private g(Context paramContext)
+  public static void a(Context paramContext)
   {
-    this.b = paramContext;
-  }
-  
-  public static g a(Context paramContext)
-  {
-    AppMethodBeat.i(136358);
-    if (a == null) {}
-    try
+    AppMethodBeat.i(39918);
+    b(paramContext);
+    Object localObject1 = c(paramContext);
+    Object localObject2 = q.e(q.a(paramContext, "__SP_Tencent_Loc_COMP_INFO__", ""));
+    Object localObject3;
+    int i;
+    if ((localObject1 != null) && (((List)localObject1).size() != 0) && (((List)localObject2).size() != 0))
     {
-      if (a == null) {
-        a = new g(paramContext);
-      }
-      paramContext = a;
-      AppMethodBeat.o(136358);
-      return paramContext;
+      localObject3 = ((List)localObject2).iterator();
+      i = 1;
     }
-    finally
+    label754:
+    for (;;)
     {
-      AppMethodBeat.o(136358);
-    }
-  }
-  
-  public int a()
-  {
-    AppMethodBeat.i(136359);
-    Object localObject = q.b(this.b, "__bad_dex_info__", "preference_default");
-    List localList = q.b((String)localObject);
-    if ((((String)localObject).equals("preference_default")) || (localList.isEmpty()))
-    {
-      AppMethodBeat.o(136359);
-      return 0;
-    }
-    e.a(this.b).a("DGB", "badDex:".concat(String.valueOf(localObject)));
-    localObject = q.b(q.b(this.b, "__SP_Tencent_Loc_COMP_INFO__", ""));
-    ((List)localObject).isEmpty();
-    if ((((List)localObject).isEmpty()) || (l.a((List)localObject, localList)))
-    {
-      localObject = q.b(q.b(this.b, "TencentLocationComp" + File.separator + "comp_list"));
-      ((List)localObject).isEmpty();
-      if (l.a((List)localObject, localList))
+      int j = i;
+      Object localObject4;
+      Object localObject5;
+      Object localObject6;
+      if (((Iterator)localObject3).hasNext())
       {
-        if (q.b(this.b, "__loc_sdk_run_duration__", Long.valueOf(0L)).longValue() < 300000L)
+        localObject4 = (a)((Iterator)localObject3).next();
+        localObject5 = ((List)localObject1).iterator();
+        do
         {
-          e.a(this.b).a("DGB", "brun<5min");
-          new Thread(new j(this.b, localList, true)).start();
-          AppMethodBeat.o(136359);
-          return 1;
-        }
-        e.a(this.b).a("DGB", "brun>5min");
-        new Thread(new j(this.b, localList, true)).start();
-        AppMethodBeat.o(136359);
-        return 4;
+          if (!((Iterator)localObject5).hasNext()) {
+            break;
+          }
+          localObject6 = ((String)((Iterator)localObject5).next()).split(",");
+        } while ((localObject6.length != 3) || (!((a)localObject4).c.equals(localObject6[0])) || (!String.valueOf(((a)localObject4).d).equals(localObject6[1])) || (!((a)localObject4).e.equals(localObject6[2])));
       }
-      e.a(this.b).a("DGB", "brun<5min");
-      l.c(this.b);
-      AppMethodBeat.o(136359);
-      return 2;
+      for (j = 1;; j = 0)
+      {
+        if (j != 0) {
+          break label754;
+        }
+        i = 0;
+        break;
+        j = 0;
+        if (j != 0)
+        {
+          localObject4 = new byte[2048];
+          localObject5 = paramContext.getFilesDir().getAbsolutePath() + File.separator + q.b;
+          localObject1 = paramContext.getFilesDir().getAbsolutePath() + File.separator + "TencentLocation/lastComp";
+          localObject3 = new ArrayList();
+          localObject6 = ((List)localObject2).iterator();
+          i = 0;
+        }
+        for (;;)
+        {
+          if (((Iterator)localObject6).hasNext())
+          {
+            Object localObject7 = (a)((Iterator)localObject6).next();
+            Object localObject8 = new File((String)localObject1, ((a)localObject7).c);
+            if (((File)localObject8).exists())
+            {
+              localObject8 = q.a((File)localObject8);
+              if (((a)localObject7).e.equals(localObject8)) {
+                continue;
+              }
+            }
+            if (q.b(paramContext, (String)localObject5 + File.separator + ((a)localObject7).c, (String)localObject1, "tmp_" + ((a)localObject7).c, ((a)localObject7).d, (byte[])localObject4))
+            {
+              ((List)localObject3).add(localObject7);
+              continue;
+            }
+            localObject7 = new File((String)localObject1 + File.separator + "tmp_" + ((a)localObject7).c);
+            if ((((File)localObject7).exists()) && (((File)localObject7).isFile()))
+            {
+              ((File)localObject7).delete();
+              i = 1;
+            }
+          }
+          else
+          {
+            if (i != 0)
+            {
+              paramContext = ((List)localObject3).iterator();
+              while (paramContext.hasNext())
+              {
+                localObject2 = (a)paramContext.next();
+                localObject2 = new File((String)localObject1 + File.separator + "tmp_" + ((a)localObject2).c);
+                if ((((File)localObject2).exists()) && (((File)localObject2).isFile())) {
+                  ((File)localObject2).delete();
+                }
+              }
+            }
+            if (((List)localObject2).size() == ((List)localObject3).size())
+            {
+              localObject2 = ((List)localObject3).iterator();
+              while (((Iterator)localObject2).hasNext())
+              {
+                localObject4 = (a)((Iterator)localObject2).next();
+                localObject5 = new File((String)localObject1, ((a)localObject4).c);
+                if ((((File)localObject5).exists()) && (((File)localObject5).isFile())) {
+                  ((File)localObject5).delete();
+                }
+                new File((String)localObject1, "tmp_" + ((a)localObject4).c).renameTo((File)localObject5);
+              }
+              q.b(paramContext, "__SP_LAST_TencentLoc_COMP_INFO__", q.a((List)localObject3));
+              q.b(paramContext, "__SP_LAST_TencentLoc_COMP_SDK_VER__", h.a);
+            }
+            AppMethodBeat.o(39918);
+            return;
+          }
+          i = 1;
+        }
+      }
     }
-    e.a(this.b).a("DGB", "local is ok");
-    AppMethodBeat.o(136359);
-    return 0;
+  }
+  
+  public static void b(Context paramContext)
+  {
+    AppMethodBeat.i(39919);
+    paramContext = new File(paramContext.getFilesDir(), "TencentLocation/lastComp");
+    if (!paramContext.exists()) {
+      paramContext.mkdirs();
+    }
+    AppMethodBeat.o(39919);
+  }
+  
+  public static List<String> c(Context paramContext)
+  {
+    AppMethodBeat.i(39920);
+    Object localObject = new File(paramContext.getFilesDir(), q.b);
+    ArrayList localArrayList = null;
+    paramContext = localArrayList;
+    if (((File)localObject).exists())
+    {
+      paramContext = localArrayList;
+      if (((File)localObject).isDirectory())
+      {
+        localObject = ((File)localObject).listFiles();
+        paramContext = localArrayList;
+        if (localObject != null)
+        {
+          paramContext = localArrayList;
+          if (localObject.length > 0)
+          {
+            localArrayList = new ArrayList();
+            int j = localObject.length;
+            int i = 0;
+            for (;;)
+            {
+              paramContext = localArrayList;
+              if (i >= j) {
+                break;
+              }
+              paramContext = localObject[i];
+              localArrayList.add(paramContext.getName() + "," + paramContext.length() + "," + q.a(paramContext));
+              i += 1;
+            }
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(39920);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     c.t.m.c.g
  * JD-Core Version:    0.7.0.1
  */

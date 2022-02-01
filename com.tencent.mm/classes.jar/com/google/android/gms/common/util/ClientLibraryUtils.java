@@ -15,43 +15,43 @@ public class ClientLibraryUtils
   
   public static int getClientVersion(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(90042);
+    AppMethodBeat.i(5064);
     int i = getClientVersion(getPackageInfo(paramContext, paramString));
-    AppMethodBeat.o(90042);
+    AppMethodBeat.o(5064);
     return i;
   }
   
   public static int getClientVersion(PackageInfo paramPackageInfo)
   {
-    AppMethodBeat.i(90043);
+    AppMethodBeat.i(5065);
     if ((paramPackageInfo == null) || (paramPackageInfo.applicationInfo == null))
     {
-      AppMethodBeat.o(90043);
+      AppMethodBeat.o(5065);
       return -1;
     }
     paramPackageInfo = paramPackageInfo.applicationInfo.metaData;
     if (paramPackageInfo == null)
     {
-      AppMethodBeat.o(90043);
+      AppMethodBeat.o(5065);
       return -1;
     }
     int i = paramPackageInfo.getInt("com.google.android.gms.version", -1);
-    AppMethodBeat.o(90043);
+    AppMethodBeat.o(5065);
     return i;
   }
   
   public static PackageInfo getPackageInfo(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(90044);
+    AppMethodBeat.i(5066);
     try
     {
       paramContext = Wrappers.packageManager(paramContext).getPackageInfo(paramString, 128);
-      AppMethodBeat.o(90044);
+      AppMethodBeat.o(5066);
       return paramContext;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      AppMethodBeat.o(90044);
+      AppMethodBeat.o(5066);
     }
     return null;
   }
@@ -63,21 +63,21 @@ public class ClientLibraryUtils
   
   public static boolean isPackageStopped(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(90045);
+    AppMethodBeat.i(5067);
     "com.google.android.gms".equals(paramString);
     try
     {
       if ((Wrappers.packageManager(paramContext).getApplicationInfo(paramString, 0).flags & 0x200000) != 0)
       {
-        AppMethodBeat.o(90045);
+        AppMethodBeat.o(5067);
         return true;
       }
-      AppMethodBeat.o(90045);
+      AppMethodBeat.o(5067);
       return false;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      AppMethodBeat.o(90045);
+      AppMethodBeat.o(5067);
     }
     return false;
   }

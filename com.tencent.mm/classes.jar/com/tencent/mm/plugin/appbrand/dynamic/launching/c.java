@@ -1,31 +1,30 @@
 package com.tencent.mm.plugin.appbrand.dynamic.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a.a;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.x;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.y;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.a.d;
-import com.tencent.mm.plugin.appbrand.appcache.ay;
-import com.tencent.mm.protocal.protobuf.czj;
-import com.tencent.mm.protocal.protobuf.rt;
-import com.tencent.mm.protocal.protobuf.ru;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.a.e;
+import com.tencent.mm.plugin.appbrand.appcache.bf;
+import com.tencent.mm.protocal.protobuf.dtz;
+import com.tencent.mm.protocal.protobuf.ul;
+import com.tencent.mm.protocal.protobuf.um;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class c
 {
   private final String appId;
-  private final String cqq;
-  private final String hqh;
-  private final boolean hqi;
+  private final String jnq;
+  private final boolean jnr;
+  private final String md5;
   
   private c(String paramString1, String paramString2, String paramString3)
   {
     this.appId = paramString1;
-    this.cqq = paramString2;
-    this.hqh = paramString3;
-    this.hqi = false;
+    this.md5 = paramString2;
+    this.jnq = paramString3;
+    this.jnr = false;
   }
   
   public c(String paramString1, String paramString2, String paramString3, byte paramByte)
@@ -33,76 +32,94 @@ public final class c
     this(paramString1, paramString2, paramString3);
   }
   
-  private void o(int paramInt, String paramString1, String paramString2)
+  private void p(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(10927);
-    ((d)g.E(d.class)).we().a(this.appId, paramInt, paramString1, paramString2, 0L, 0L);
-    AppMethodBeat.o(10927);
+    AppMethodBeat.i(121408);
+    ((e)g.ab(e.class)).aOk().a(this.appId, paramInt, paramString1, paramString2, 0L, 0L);
+    AppMethodBeat.o(121408);
   }
   
-  public final int azZ()
+  public final int aVG()
   {
-    AppMethodBeat.i(10928);
+    AppMethodBeat.i(121409);
     Object localObject = this.appId;
-    String str1 = this.cqq;
-    String str2 = this.hqh;
+    String str1 = this.md5;
+    String str2 = this.jnq;
     b.a locala = new b.a();
-    rt localrt = new rt();
-    localrt.cwc = ((String)localObject);
-    localrt.wJV = str1;
-    localrt.wJW = str2;
-    locala.fsX = localrt;
-    locala.fsY = new ru();
+    ul localul = new ul();
+    localul.dlB = ((String)localObject);
+    localul.CWh = str1;
+    localul.CWi = str2;
+    locala.gUU = localul;
+    locala.gUV = new um();
     locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/checkdemoinfo";
     locala.funcId = 1124;
-    localObject = x.c(locala.ado());
+    localObject = y.e(locala.atI());
     int i;
-    if ((((a.a)localObject).errType != 0) || (((a.a)localObject).errCode != 0))
+    if ((((com.tencent.mm.al.c.a)localObject).errType != 0) || (((com.tencent.mm.al.c.a)localObject).errCode != 0))
     {
-      ab.e("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, errType %d, errCode %d, errMsg %s", new Object[] { this.appId, Integer.valueOf(((a.a)localObject).errType), Integer.valueOf(((a.a)localObject).errCode), ((a.a)localObject).errMsg });
-      i = c.a.hqm.ordinal();
-      AppMethodBeat.o(10928);
+      ad.e("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, errType %d, errCode %d, errMsg %s", new Object[] { this.appId, Integer.valueOf(((com.tencent.mm.al.c.a)localObject).errType), Integer.valueOf(((com.tencent.mm.al.c.a)localObject).errCode), ((com.tencent.mm.al.c.a)localObject).errMsg });
+      i = a.jnv.ordinal();
+      AppMethodBeat.o(121409);
       return i;
     }
     try
     {
-      localObject = (ru)((a.a)localObject).fsN;
-      if (((ru)localObject).wJX == null)
+      localObject = (um)((com.tencent.mm.al.c.a)localObject).gUK;
+      if (((um)localObject).CWj == null)
       {
-        ab.e("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, null wxaapp resp", new Object[] { this.appId });
-        i = c.a.hqn.ordinal();
-        AppMethodBeat.o(10928);
+        ad.e("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, null wxaapp resp", new Object[] { this.appId });
+        i = a.jnw.ordinal();
+        AppMethodBeat.o(121409);
         return i;
       }
-      ab.i("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, wxa.ErrCode %d, has_new_demo %b, url %s, md5 %s", new Object[] { this.appId, Integer.valueOf(((ru)localObject).wJX.lGK), Boolean.valueOf(((ru)localObject).wJY), ((ru)localObject).wJZ, ((ru)localObject).wKa });
-      if (((ru)localObject).wJX.lGK != 0)
+      ad.i("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, wxa.ErrCode %d, has_new_demo %b, url %s, md5 %s", new Object[] { this.appId, Integer.valueOf(((um)localObject).CWj.oXv), Boolean.valueOf(((um)localObject).CWk), ((um)localObject).CWl, ((um)localObject).CWm });
+      if (((um)localObject).CWj.oXv != 0)
       {
-        i = ((ru)localObject).wJX.lGK;
-        AppMethodBeat.o(10928);
+        i = ((um)localObject).CWj.oXv;
+        AppMethodBeat.o(121409);
         return i;
       }
-      if ((((ru)localObject).wJY) && (!bo.isNullOrNil(((ru)localObject).wKa)) && (!bo.isNullOrNil(((ru)localObject).wJZ))) {
-        o(2, ((ru)localObject).wJZ, ((ru)localObject).wKa);
+      if ((((um)localObject).CWk) && (!bt.isNullOrNil(((um)localObject).CWm)) && (!bt.isNullOrNil(((um)localObject).CWl))) {
+        p(2, ((um)localObject).CWl, ((um)localObject).CWm);
       }
-      if ((((ru)localObject).wKb) && (!bo.isNullOrNil(((ru)localObject).wKd)) && (!bo.isNullOrNil(((ru)localObject).wKc))) {
-        o(10001, ((ru)localObject).wKc, ((ru)localObject).wKd);
+      if ((((um)localObject).CWn) && (!bt.isNullOrNil(((um)localObject).CWp)) && (!bt.isNullOrNil(((um)localObject).CWo))) {
+        p(10001, ((um)localObject).CWo, ((um)localObject).CWp);
       }
-      i = c.a.hqj.ordinal();
-      AppMethodBeat.o(10928);
+      i = a.jns.ordinal();
+      AppMethodBeat.o(121409);
       return i;
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", localException, "CgiCheckDemoInfo, appId %s, cast response failed", new Object[] { this.appId });
-      i = c.a.hqn.ordinal();
-      AppMethodBeat.o(10928);
+      ad.printErrStackTrace("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", localException, "CgiCheckDemoInfo, appId %s, cast response failed", new Object[] { this.appId });
+      i = a.jnw.ordinal();
+      AppMethodBeat.o(121409);
     }
     return i;
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(121407);
+      jns = new a("Ok", 0);
+      jnt = new a("Fail", 1);
+      jnu = new a("Timeout", 2);
+      jnv = new a("CgiFail", 3);
+      jnw = new a("ResponseInvalid", 4);
+      jnx = new a("AwaitFail", 5);
+      jny = new a[] { jns, jnt, jnu, jnv, jnw, jnx };
+      AppMethodBeat.o(121407);
+    }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.launching.c
  * JD-Core Version:    0.7.0.1
  */

@@ -5,144 +5,233 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.b.a.u;
 import com.tencent.mm.plugin.emoji.a.a.a;
+import com.tencent.mm.plugin.emoji.a.a.f;
 import com.tencent.mm.plugin.emoji.a.g;
+import com.tencent.mm.plugin.emoji.model.d;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.EmotionSummary;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class EmojiStoreV2MainFragment
   extends EmojiStoreV2BaseFragment
 {
-  private boolean lpQ = false;
+  private boolean oGg = false;
+  private g oGh;
   
-  public final a blU()
+  public final a bVF()
   {
-    AppMethodBeat.i(53651);
-    g localg = new g(getContext());
-    AppMethodBeat.o(53651);
+    AppMethodBeat.i(109218);
+    this.oGh = new g(getContext());
+    g localg = this.oGh;
+    AppMethodBeat.o(109218);
     return localg;
   }
   
-  public final int bmb()
+  public final int bVM()
   {
     return 5;
   }
   
-  public final boolean bnh()
+  protected final void bWN()
+  {
+    int k = 1;
+    AppMethodBeat.i(109210);
+    for (;;)
+    {
+      int j;
+      int m;
+      try
+      {
+        j = this.mListView.getFirstVisiblePosition();
+        int n = this.mListView.getLastVisiblePosition();
+        if (n - j <= 0)
+        {
+          AppMethodBeat.o(109210);
+          return;
+        }
+        if (!d.bUR().owT) {
+          break label289;
+        }
+        i = 1;
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        StringBuilder localStringBuilder3 = new StringBuilder();
+        if (j < n)
+        {
+          Object localObject = this.oGh.As(j);
+          m = k;
+          if (localObject != null)
+          {
+            localObject = ((f)localObject).ouL;
+            m = k;
+            if (localObject != null)
+            {
+              if (k == 0)
+              {
+                localStringBuilder1.append("#");
+                localStringBuilder2.append("#");
+                localStringBuilder3.append("#");
+              }
+              localStringBuilder1.append(((EmotionSummary)localObject).ProductID);
+              if (i != 0)
+              {
+                localObject = ((EmotionSummary)localObject).ExptDesc;
+                localStringBuilder2.append((String)localObject);
+                localStringBuilder3.append(j + 1);
+                m = 0;
+              }
+              else
+              {
+                localObject = ((EmotionSummary)localObject).Introduce;
+                continue;
+              }
+            }
+          }
+        }
+        else
+        {
+          this.oxH.dJy = 1;
+          this.oxH.gb(localStringBuilder1.toString());
+          this.oxH.gc(localStringBuilder2.toString());
+          this.oxH.gd(localStringBuilder3.toString());
+          this.oxH.aBj();
+          AppMethodBeat.o(109210);
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        ad.printErrStackTrace("MicroMsg.emoji.EmojiStoreV2MainFragment", localException, "", new Object[0]);
+        AppMethodBeat.o(109210);
+        return;
+      }
+      j += 1;
+      k = m;
+      continue;
+      label289:
+      int i = 0;
+    }
+  }
+  
+  public final boolean bWS()
   {
     return true;
   }
   
   public int getLayoutId()
   {
-    return 2130969399;
+    return 2131493811;
   }
   
   public void onActivityCreated(Bundle paramBundle)
   {
-    AppMethodBeat.i(53643);
-    ab.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onActivityCreated");
+    AppMethodBeat.i(109209);
+    ad.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onActivityCreated");
     super.onActivityCreated(paramBundle);
-    AppMethodBeat.o(53643);
+    AppMethodBeat.o(109209);
   }
   
   public void onAttach(Activity paramActivity)
   {
-    AppMethodBeat.i(53640);
+    AppMethodBeat.i(109206);
     super.onAttach(paramActivity);
-    ab.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onAttach");
-    AppMethodBeat.o(53640);
+    ad.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onAttach");
+    AppMethodBeat.o(109206);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(53641);
+    AppMethodBeat.i(109207);
     super.onCreate(paramBundle);
-    ab.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onCreate");
-    AppMethodBeat.o(53641);
+    ad.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onCreate");
+    this.oxH.dJx = 1;
+    AppMethodBeat.o(109207);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    AppMethodBeat.i(53642);
-    ab.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onCreateView");
+    AppMethodBeat.i(109208);
+    ad.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onCreateView");
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    AppMethodBeat.o(53642);
+    AppMethodBeat.o(109208);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(53649);
+    AppMethodBeat.i(109216);
     super.onDestroy();
-    ab.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onDestroy");
-    AppMethodBeat.o(53649);
+    ad.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onDestroy");
+    AppMethodBeat.o(109216);
   }
   
   public void onDestroyView()
   {
-    AppMethodBeat.i(53648);
+    AppMethodBeat.i(109215);
     super.onDestroyView();
-    ab.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onResume");
-    AppMethodBeat.o(53648);
+    ad.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onResume");
+    AppMethodBeat.o(109215);
   }
   
   public void onDetach()
   {
-    AppMethodBeat.i(53650);
+    AppMethodBeat.i(109217);
     super.onDetach();
-    ab.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onDestroy");
-    AppMethodBeat.o(53650);
+    ad.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onDestroy");
+    AppMethodBeat.o(109217);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(53646);
+    AppMethodBeat.i(109213);
     super.onPause();
-    ab.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onPause");
-    AppMethodBeat.o(53646);
+    ad.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onPause");
+    AppMethodBeat.o(109213);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(53645);
+    AppMethodBeat.i(109212);
     super.onResume();
-    ab.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onResume");
-    AppMethodBeat.o(53645);
+    ad.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onResume");
+    AppMethodBeat.o(109212);
   }
   
   public void onStart()
   {
-    AppMethodBeat.i(53644);
+    AppMethodBeat.i(109211);
     super.onStart();
-    ab.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onStart");
-    AppMethodBeat.o(53644);
+    ad.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onStart");
+    AppMethodBeat.o(109211);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(53647);
+    AppMethodBeat.i(109214);
     super.onStop();
-    ab.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onStop");
-    AppMethodBeat.o(53647);
+    ad.d("MicroMsg.emoji.EmojiStoreV2MainFragment", "onStop");
+    AppMethodBeat.o(109214);
   }
   
   public void setUserVisibleHint(boolean paramBoolean)
   {
-    AppMethodBeat.i(53652);
+    AppMethodBeat.i(109219);
     super.setUserVisibleHint(paramBoolean);
-    if ((!this.lpQ) && (paramBoolean))
+    if ((!this.oGg) && (paramBoolean))
     {
-      this.lpQ = true;
-      h.qsU.e(12740, new Object[] { Integer.valueOf(4), "", "", "", Integer.valueOf(1), Integer.valueOf(1) });
+      this.oGg = true;
+      h.vKh.f(12740, new Object[] { Integer.valueOf(4), "", "", "", Integer.valueOf(1), Integer.valueOf(1) });
     }
-    AppMethodBeat.o(53652);
+    AppMethodBeat.o(109219);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2MainFragment
  * JD-Core Version:    0.7.0.1
  */

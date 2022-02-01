@@ -1,42 +1,34 @@
 package android.support.v4.a.a;
 
-import android.content.res.ColorStateList;
-import android.graphics.PorterDuff.Mode;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 
 class f
+  extends c
 {
-  public void a(Drawable paramDrawable, ColorStateList paramColorStateList)
+  f(Drawable paramDrawable)
   {
-    if ((paramDrawable instanceof n)) {
-      ((n)paramDrawable).setTintList(paramColorStateList);
-    }
+    super(paramDrawable);
   }
   
-  public void a(Drawable paramDrawable, PorterDuff.Mode paramMode)
+  f(d paramd, Resources paramResources)
   {
-    if ((paramDrawable instanceof n)) {
-      ((n)paramDrawable).setTintMode(paramMode);
-    }
+    super(paramd, paramResources);
   }
   
-  public boolean a(Drawable paramDrawable)
+  d aT()
   {
-    return false;
+    return new g(this.ib);
   }
   
-  public boolean a(Drawable paramDrawable, int paramInt)
+  public boolean isAutoMirrored()
   {
-    return false;
+    return this.ie.isAutoMirrored();
   }
   
-  public Drawable b(Drawable paramDrawable)
+  public void setAutoMirrored(boolean paramBoolean)
   {
-    Object localObject = paramDrawable;
-    if (!(paramDrawable instanceof n)) {
-      localObject = new g(paramDrawable);
-    }
-    return localObject;
+    this.ie.setAutoMirrored(paramBoolean);
   }
 }
 

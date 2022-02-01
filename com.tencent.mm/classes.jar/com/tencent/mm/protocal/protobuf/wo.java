@@ -1,93 +1,131 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
-import java.util.LinkedList;
 
 public final class wo
-  extends bvk
+  extends com.tencent.mm.bx.a
 {
+  public com.tencent.mm.bx.b CYH;
+  public com.tencent.mm.bx.b CYI;
+  public int dataType;
+  public int status;
+  public long timestamp;
+  public int type;
+  
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(118270);
+    AppMethodBeat.i(145667);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.CYH == null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(118270);
+        paramVarArgs = new f.a.a.b("Not all required fields were included: version");
+        AppMethodBeat.o(145667);
         throw paramVarArgs;
       }
-      if (this.BaseResponse != null)
+      if (this.CYI == null)
       {
-        paramVarArgs.iQ(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs = new f.a.a.b("Not all required fields were included: clientcheckdata");
+        AppMethodBeat.o(145667);
+        throw paramVarArgs;
       }
-      AppMethodBeat.o(118270);
+      if (this.CYH != null) {
+        paramVarArgs.c(1, this.CYH);
+      }
+      paramVarArgs.aR(2, this.type);
+      if (this.CYI != null) {
+        paramVarArgs.c(3, this.CYI);
+      }
+      paramVarArgs.aG(4, this.timestamp);
+      paramVarArgs.aR(5, this.dataType);
+      paramVarArgs.aR(6, this.status);
+      AppMethodBeat.o(145667);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label358;
+      if (this.CYH == null) {
+        break label554;
       }
     }
-    label358:
-    for (paramInt = e.a.a.a.iP(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label554:
+    for (paramInt = f.a.a.b.b.a.b(1, this.CYH) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(118270);
-      return paramInt;
+      int i = paramInt + f.a.a.b.b.a.bA(2, this.type);
+      paramInt = i;
+      if (this.CYI != null) {
+        paramInt = i + f.a.a.b.b.a.b(3, this.CYI);
+      }
+      i = f.a.a.b.b.a.q(4, this.timestamp);
+      int j = f.a.a.b.b.a.bA(5, this.dataType);
+      int k = f.a.a.b.b.a.bA(6, this.status);
+      AppMethodBeat.o(145667);
+      return paramInt + i + j + k;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = bvk.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = bvk.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.CYH == null)
         {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(118270);
+          paramVarArgs = new f.a.a.b("Not all required fields were included: version");
+          AppMethodBeat.o(145667);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(118270);
+        if (this.CYI == null)
+        {
+          paramVarArgs = new f.a.a.b("Not all required fields were included: clientcheckdata");
+          AppMethodBeat.o(145667);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(145667);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         wo localwo = (wo)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(118270);
+          AppMethodBeat.o(145667);
           return -1;
+        case 1: 
+          localwo.CYH = locala.KhF.fMu();
+          AppMethodBeat.o(145667);
+          return 0;
+        case 2: 
+          localwo.type = locala.KhF.xS();
+          AppMethodBeat.o(145667);
+          return 0;
+        case 3: 
+          localwo.CYI = locala.KhF.fMu();
+          AppMethodBeat.o(145667);
+          return 0;
+        case 4: 
+          localwo.timestamp = locala.KhF.xT();
+          AppMethodBeat.o(145667);
+          return 0;
+        case 5: 
+          localwo.dataType = locala.KhF.xS();
+          AppMethodBeat.o(145667);
+          return 0;
         }
-        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-        int i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new BaseResponse();
-          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, bvk.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-          localwo.BaseResponse = ((BaseResponse)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(118270);
+        localwo.status = locala.KhF.xS();
+        AppMethodBeat.o(145667);
         return 0;
       }
-      AppMethodBeat.o(118270);
+      AppMethodBeat.o(145667);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.wo
  * JD-Core Version:    0.7.0.1
  */

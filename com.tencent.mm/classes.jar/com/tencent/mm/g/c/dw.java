@@ -7,26 +7,44 @@ import com.tencent.mm.sdk.e.c;
 public abstract class dw
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS PushDuplicateLaunchWxaAppRespTableStartTimeIndex ON PredownloadIssueLaunchWxaAppResponse(startTime)", "CREATE INDEX IF NOT EXISTS PushDuplicateLaunchWxaAppRespTableEndTimeIndex ON PredownloadIssueLaunchWxaAppResponse(endTime)" };
-  private static final int dKo = "launchProtoBlob".hashCode();
-  private static final int dfV = "startTime".hashCode();
-  private static final int dfW = "endTime".hashCode();
-  private static final int dhB = "appId".hashCode();
-  private static final int dhi = "scene".hashCode();
-  private static final int diM = "reportId".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int ePr = "wxGroupId".hashCode();
+  private static final int ePs;
+  private static final int ePt;
+  private static final int ePu;
+  private static final int ePv;
+  private static final int ekU = "createTime".hashCode();
+  private static final int eus;
+  private static final int ezb = "state".hashCode();
+  private static final int ezi = "groupId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dKn = true;
-  private boolean dfO = true;
-  private boolean dfP = true;
-  private boolean dhg = true;
-  private boolean dhk = true;
-  private boolean diJ = true;
-  public String field_appId;
-  public long field_endTime;
-  public byte[] field_launchProtoBlob;
-  public long field_reportId;
-  public int field_scene;
-  public long field_startTime;
+  private boolean ePm = true;
+  private boolean ePn = true;
+  private boolean ePo = true;
+  private boolean ePp = true;
+  private boolean ePq = true;
+  private boolean ekx = true;
+  private boolean etY = true;
+  private boolean eyp = true;
+  private boolean eyw = true;
+  public long field_createTime;
+  public String field_groupId;
+  public String field_inviteUserName;
+  public int field_memberCount;
+  public int field_roomId;
+  public long field_roomKey;
+  public int field_routeId;
+  public int field_state;
+  public String field_wxGroupId;
+  
+  static
+  {
+    ePs = "roomId".hashCode();
+    ePt = "roomKey".hashCode();
+    ePu = "routeId".hashCode();
+    ePv = "inviteUserName".hashCode();
+    eus = "memberCount".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -41,27 +59,34 @@ public abstract class dw
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dhB != k) {
-        break label60;
+      if (ePr != k) {
+        break label65;
       }
-      this.field_appId = paramCursor.getString(i);
+      this.field_wxGroupId = paramCursor.getString(i);
+      this.ePm = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (dhi == k) {
-        this.field_scene = paramCursor.getInt(i);
-      } else if (dKo == k) {
-        this.field_launchProtoBlob = paramCursor.getBlob(i);
-      } else if (dfV == k) {
-        this.field_startTime = paramCursor.getLong(i);
-      } else if (dfW == k) {
-        this.field_endTime = paramCursor.getLong(i);
-      } else if (diM == k) {
-        this.field_reportId = paramCursor.getLong(i);
+      label65:
+      if (ezi == k) {
+        this.field_groupId = paramCursor.getString(i);
+      } else if (ePs == k) {
+        this.field_roomId = paramCursor.getInt(i);
+      } else if (ePt == k) {
+        this.field_roomKey = paramCursor.getLong(i);
+      } else if (ePu == k) {
+        this.field_routeId = paramCursor.getInt(i);
+      } else if (ePv == k) {
+        this.field_inviteUserName = paramCursor.getString(i);
+      } else if (eus == k) {
+        this.field_memberCount = paramCursor.getInt(i);
+      } else if (ekU == k) {
+        this.field_createTime = paramCursor.getLong(i);
+      } else if (ezb == k) {
+        this.field_state = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -71,23 +96,32 @@ public abstract class dw
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dhk) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.ePm) {
+      localContentValues.put("wxGroupId", this.field_wxGroupId);
     }
-    if (this.dhg) {
-      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    if (this.eyw) {
+      localContentValues.put("groupId", this.field_groupId);
     }
-    if (this.dKn) {
-      localContentValues.put("launchProtoBlob", this.field_launchProtoBlob);
+    if (this.ePn) {
+      localContentValues.put("roomId", Integer.valueOf(this.field_roomId));
     }
-    if (this.dfO) {
-      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
+    if (this.ePo) {
+      localContentValues.put("roomKey", Long.valueOf(this.field_roomKey));
     }
-    if (this.dfP) {
-      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
+    if (this.ePp) {
+      localContentValues.put("routeId", Integer.valueOf(this.field_routeId));
     }
-    if (this.diJ) {
-      localContentValues.put("reportId", Long.valueOf(this.field_reportId));
+    if (this.ePq) {
+      localContentValues.put("inviteUserName", this.field_inviteUserName);
+    }
+    if (this.etY) {
+      localContentValues.put("memberCount", Integer.valueOf(this.field_memberCount));
+    }
+    if (this.ekx) {
+      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    }
+    if (this.eyp) {
+      localContentValues.put("state", Integer.valueOf(this.field_state));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -97,7 +131,7 @@ public abstract class dw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.dw
  * JD-Core Version:    0.7.0.1
  */

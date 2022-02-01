@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="a2">48.0dip</dimen>
-    <dimen name="a3">12.0dip</dimen>
-    <dimen name="a4">14.0dip</dimen>
-    <item type="dimen" name="a5">@dimen/f_</item>
+    <dimen name="lf">48.0dip</dimen>
+    <dimen name="nb">12.0dip</dimen>
+    <dimen name="nd">14.0dip</dimen>
+    <dimen name="o9">52.0dip</dimen>
+    <item type="dimen" name="oa">@dimen/od</item>
+    <dimen name="od">24.0dip</dimen>
+    <item type="dimen" name="aln">@dimen/b4</item>
+    <dimen name="am5">24.0dip</dimen>
+    <item type="dimen" name="amd">@dimen/c_</item>
 </resources>

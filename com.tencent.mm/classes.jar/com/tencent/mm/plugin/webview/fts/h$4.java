@@ -1,61 +1,47 @@
 package com.tencent.mm.plugin.webview.fts;
 
-import android.os.Bundle;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.websearch.api.s;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.concurrent.CountDownLatch;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.HashMap;
+import java.util.Map;
 
-final class h$4
+public final class h$4
   implements Runnable
 {
-  h$4(h paramh, int paramInt, String paramString1, String paramString2, boolean paramBoolean, Bundle paramBundle) {}
+  public h$4(h paramh, int paramInt, String paramString) {}
   
   public final void run()
   {
-    AppMethodBeat.i(5741);
-    if (h.b(this.uPD) != null) {
-      ab.i("MicroMsg.WebSearch.WebSearchLogic", "waiting for countdown, %d", new Object[] { Long.valueOf(h.b(this.uPD).getCount()) });
-    }
-    int i;
-    for (;;)
+    AppMethodBeat.i(77954);
+    b.g localg = com.tencent.mm.plugin.webview.modeltools.g.emC().Sw(this.fpl);
+    if ((localg == null) || (localg.isExpired()))
     {
-      try
+      com.tencent.e.h.Iye.aN(new Runnable()
       {
-        h.b(this.uPD).await();
-        i = this.uPp;
-        if (h.c(this.uPD) == null) {
-          break;
+        public final void run()
+        {
+          AppMethodBeat.i(187855);
+          Object localObject = new HashMap();
+          ((Map)localObject).put("scene", Integer.valueOf(h.4.this.fpl));
+          ((Map)localObject).put("statSessionId", h.4.this.jmq);
+          localObject = new d((Map)localObject, h.4.this.fpl, 1);
+          com.tencent.mm.kernel.g.aeS().a((n)localObject, 0);
+          AppMethodBeat.o(187855);
         }
-        int j = h.c(this.uPD).cCT;
-        i = j;
-        if (!h.c(this.uPD).uIW) {
-          break;
-        }
-        i = j;
-        if (!h.d(this.uPD)) {
-          break;
-        }
-        ab.w("MicroMsg.WebSearch.WebSearchLogic", "ingore pre get data");
-        AppMethodBeat.o(5741);
-        return;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        ab.printErrStackTrace("MicroMsg.WebSearch.WebSearchLogic", localInterruptedException, "", new Object[0]);
-        continue;
-      }
-      ab.i("MicroMsg.WebSearch.WebSearchLogic", "count down latch null");
+      });
+      AppMethodBeat.o(77954);
+      return;
     }
-    ab.i("MicroMsg.WebSearch.WebSearchLogic", "calling back to webview, id %d, reqId %s,  %s", new Object[] { Integer.valueOf(i), this.uPq, h.c(this.uPD) });
-    com.tencent.mm.plugin.webview.ui.tools.jsapi.h.KW(i).a(this.val$data, this.uPr, this.uPq, this.hmS);
-    AppMethodBeat.o(5741);
+    ad.i("MicroMsg.WebSearch.WebSearchLogic", "guide data not expired %d %s", new Object[] { Integer.valueOf(this.fpl), this.jmq });
+    AppMethodBeat.o(77954);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.h.4
  * JD-Core Version:    0.7.0.1
  */

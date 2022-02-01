@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.protocal.protobuf.adw;
-import com.tencent.mm.protocal.protobuf.adx;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.c;
+import com.tencent.mm.protocal.protobuf.amh;
+import com.tencent.mm.protocal.protobuf.ami;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
-  extends a<adx>
+  extends c<ami>
 {
   public b(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(142391);
+    AppMethodBeat.i(69888);
     b.a locala = new b.a();
-    adw localadw = new adw();
-    localadw.wKD = paramString;
-    localadw.wWO = paramInt1;
-    localadw.wWP = paramInt2;
-    locala.fsX = localadw;
-    locala.fsY = new adx();
+    amh localamh = new amh();
+    localamh.CWQ = paramString;
+    localamh.Dns = paramInt1;
+    localamh.Dnt = paramInt2;
+    locala.gUU = localamh;
+    locala.gUV = new ami();
     locala.uri = "/cgi-bin/mmpay-bin/mktfollowcardbdmch";
     locala.funcId = 2720;
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    ab.i("MicroMsg.CgiFollowCardBDMch", "CgiFollowCardBDMch: %s, %s, %s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(142391);
+    this.rr = locala.atI();
+    ad.i("MicroMsg.CgiFollowCardBDMch", "CgiFollowCardBDMch: %s, %s, %s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(69888);
   }
 }
 

@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/he" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/h7" />
-    <LinearLayout android:id="@id/a8w" android:background="@drawable/jp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" layout="@layout/hd" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/a8x" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:id="@id/a8y" android:background="@color/k_" android:layout_width="fill_parent" android:layout_height="@dimen/x3" android:scaleType="centerCrop" />
-            <ImageView android:id="@id/a8z" android:background="@drawable/f7" android:layout_width="fill_parent" android:layout_height="@dimen/x3" />
-        </FrameLayout>
-    </LinearLayout>
-</LinearLayout>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceTitleCategory android:key="brsa_title" android:title="发起转账申请后，资金将按如下时间存入对方账户" />
+</PreferenceScreen>

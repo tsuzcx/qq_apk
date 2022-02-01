@@ -22,51 +22,60 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public final class q
 {
-  private Account GJ;
-  private final Map<a<?>, b> HA = new android.support.v4.b.a();
-  private ax HB;
-  private int HC = -1;
-  private s HD;
-  private Looper HE;
-  private com.google.android.gms.common.b HF = com.google.android.gms.common.b.gp();
-  private f<? extends cr, cs> HG = cp.Qu;
-  private final ArrayList<r> HH = new ArrayList();
-  private final ArrayList<s> HI = new ArrayList();
-  private boolean HJ = false;
-  private final Set<Scope> Ht = new HashSet();
-  private final Set<Scope> Hu = new HashSet();
-  private int Hv;
-  private View Hw;
-  private String Hx;
-  private String Hy;
-  private final Map<a<?>, y> Hz = new android.support.v4.b.a();
+  private Account Iy;
+  private final Set<Scope> Ji = new HashSet();
+  private final Set<Scope> Jj = new HashSet();
+  private int Jk;
+  private View Jl;
+  private String Jm;
+  private String Jn;
+  private final Map<a<?>, y> Jo = new android.support.v4.b.a();
+  private final Map<a<?>, b> Jp = new android.support.v4.b.a();
+  private ax Jq;
+  private int Jr = -1;
+  private s Js;
+  private Looper Jt;
+  private com.google.android.gms.common.b Ju = com.google.android.gms.common.b.gz();
+  private f<? extends cr, cs> Jv = cp.Sj;
+  private final ArrayList<r> Jw = new ArrayList();
+  private final ArrayList<s> Jx = new ArrayList();
+  private boolean Jy = false;
   private final Context mContext;
   
   public q(Context paramContext)
   {
     this.mContext = paramContext;
-    this.HE = paramContext.getMainLooper();
-    this.Hx = paramContext.getPackageName();
-    this.Hy = paramContext.getClass().getName();
+    this.Jt = paramContext.getMainLooper();
+    this.Jm = paramContext.getPackageName();
+    this.Jn = paramContext.getClass().getName();
   }
   
   public final q a(Account paramAccount)
   {
-    this.GJ = paramAccount;
+    this.Iy = paramAccount;
     return this;
   }
   
   public final q a(a<? extends d> parama)
   {
-    com.google.android.gms.common.internal.d.e(parama, "Api must not be null");
-    this.HA.put(parama, null);
+    com.google.android.gms.common.internal.d.g(parama, "Api must not be null");
+    this.Jp.put(parama, null);
     parama = Collections.emptyList();
-    this.Hu.addAll(parama);
-    this.Ht.addAll(parama);
+    this.Jj.addAll(parama);
+    this.Ji.addAll(parama);
     return this;
   }
   
-  public final p gA()
+  public final x gJ()
+  {
+    cs localcs = cs.So;
+    if (this.Jp.containsKey(cp.Sl)) {
+      localcs = (cs)this.Jp.get(cp.Sl);
+    }
+    return new x(this.Iy, this.Ji, this.Jo, this.Jk, this.Jl, this.Jm, this.Jn, localcs);
+  }
+  
+  public final p gK()
   {
     android.support.v4.b.a locala1;
     android.support.v4.b.a locala2;
@@ -74,21 +83,21 @@ public final class q
     label74:
     a locala;
     Object localObject4;
-    if (!this.HA.isEmpty())
+    if (!this.Jp.isEmpty())
     {
       bool = true;
       com.google.android.gms.common.internal.d.b(bool, "must call addApi() to add at least one API");
-      ??? = gz();
-      localObject2 = ((x)???).hp();
+      ??? = gJ();
+      localObject2 = ((x)???).hz();
       locala1 = new android.support.v4.b.a();
       locala2 = new android.support.v4.b.a();
       localArrayList = new ArrayList();
-      Iterator localIterator = this.HA.keySet().iterator();
+      Iterator localIterator = this.Jp.keySet().iterator();
       if (!localIterator.hasNext()) {
         break label210;
       }
       locala = (a)localIterator.next();
-      localObject4 = this.HA.get(locala);
+      localObject4 = this.Jp.get(locala);
       if (((Map)localObject2).get(locala) == null) {
         break label205;
       }
@@ -99,32 +108,23 @@ public final class q
       locala1.put(locala, Boolean.valueOf(bool));
       n localn = new n(locala, bool);
       localArrayList.add(localn);
-      localObject4 = locala.gq().a(this.mContext, this.HE, (x)???, localObject4, localn, localn);
-      locala2.put(locala.gr(), localObject4);
+      localObject4 = locala.gA().a(this.mContext, this.Jt, (x)???, localObject4, localn, localn);
+      locala2.put(locala.gB(), localObject4);
       break label74;
       bool = false;
       break;
     }
     label210:
     int i = ai.a(locala2.values());
-    Object localObject2 = new ai(this.mContext, new ReentrantLock(), this.HE, (x)???, this.HF, this.HG, locala1, this.HH, this.HI, locala2, this.HC, i, localArrayList);
-    synchronized (p.gy())
+    Object localObject2 = new ai(this.mContext, new ReentrantLock(), this.Jt, (x)???, this.Ju, this.Jv, locala1, this.Jw, this.Jx, locala2, this.Jr, i, localArrayList);
+    synchronized (p.gI())
     {
-      p.gy().add(localObject2);
-      if (this.HC >= 0) {
-        com.google.android.gms.internal.a.a(this.HB).a(this.HC, (p)localObject2, this.HD);
+      p.gI().add(localObject2);
+      if (this.Jr >= 0) {
+        com.google.android.gms.internal.a.a(this.Jq).a(this.Jr, (p)localObject2, this.Js);
       }
       return localObject2;
     }
-  }
-  
-  public final x gz()
-  {
-    cs localcs = cs.Qz;
-    if (this.HA.containsKey(cp.Qw)) {
-      localcs = (cs)this.HA.get(cp.Qw);
-    }
-    return new x(this.GJ, this.Ht, this.Hz, this.Hv, this.Hw, this.Hx, this.Hy, localcs);
   }
 }
 

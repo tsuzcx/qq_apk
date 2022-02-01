@@ -1,183 +1,165 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelgeo.Addr;
-import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.modelgeo.c;
-import com.tencent.mm.modelgeo.c.a;
-import com.tencent.mm.modelgeo.d;
-import com.tencent.mm.pluginsdk.model.a.a;
-import com.tencent.mm.pluginsdk.ui.tools.AppChooserUI;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import com.tencent.mm.compatible.util.p;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.webview.c.l;
+import com.tencent.mm.plugin.webview.stub.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Map;
 
 public final class j
-  implements MMActivity.a
 {
-  WeakReference<Context> aqU;
-  d fwu;
-  c ofr;
-  int vrR;
-  boolean vrS;
-  int vrT;
-  j.e vrU;
-  j.e vrV;
-  String vrW;
-  j.d vrX;
-  c.a vrY;
-  c.a vrZ;
-  b.a vsa;
-  final Runnable vsb;
-  
-  j()
+  private static String Mw(String paramString)
   {
-    AppMethodBeat.i(9837);
-    this.vrS = false;
-    this.ofr = null;
-    this.vrY = null;
-    this.vrZ = null;
-    this.fwu = null;
-    this.vsa = null;
-    this.vsb = new j.1(this);
-    AppMethodBeat.o(9837);
+    AppMethodBeat.i(82064);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(82064);
+      return "";
+    }
+    try
+    {
+      paramString = bt.nullAsNil(p.encode(paramString));
+      AppMethodBeat.o(82064);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(82064);
+    }
+    return "";
   }
   
-  public final void c(int paramInt1, int paramInt2, Intent paramIntent)
+  private static String a(l paraml, String paramString)
   {
-    AppMethodBeat.i(9836);
-    Context localContext = (Context)this.aqU.get();
-    if ((this.vrX == null) || (localContext == null)) {}
+    AppMethodBeat.i(188681);
+    if ((paraml.ASj == null) || (!paraml.ASj.containsKey(paramString)))
+    {
+      AppMethodBeat.o(188681);
+      return "";
+    }
+    paraml = String.valueOf(paraml.ASj.get(paramString));
+    AppMethodBeat.o(188681);
+    return paraml;
+  }
+  
+  public static void a(f paramf, String paramString, l paraml)
+  {
+    AppMethodBeat.i(188679);
+    if (paramf == null)
+    {
+      AppMethodBeat.o(188679);
+      return;
+    }
+    try
+    {
+      paramf = paramf.j(145, null);
+      if (paramf == null)
+      {
+        AppMethodBeat.o(188679);
+        return;
+      }
+    }
+    catch (Exception paramf)
+    {
+      ad.e("kv_14993", String.valueOf(paramf));
+      AppMethodBeat.o(188679);
+      return;
+    }
+    String[] arrayOfString = paramf.getStringArray("key_webview_apbrand_jsapi_report_args");
+    if ((arrayOfString == null) || (arrayOfString.length != 19))
+    {
+      AppMethodBeat.o(188679);
+      return;
+    }
+    arrayOfString[10] = paramString;
+    arrayOfString[11] = b(paramString, paraml);
+    if ("true".equals(a(paraml, "isSuccess"))) {}
+    for (paramf = "1";; paramf = "2")
+    {
+      arrayOfString[12] = paramf;
+      arrayOfString[13] = a(paraml, "permissionValue");
+      arrayOfString[14] = a(paraml, "jsapiErrorCode");
+      h.vKh.f(14993, k(arrayOfString));
+      AppMethodBeat.o(188679);
+      return;
+    }
+  }
+  
+  private static String b(String paramString, l paraml)
+  {
+    AppMethodBeat.i(188680);
+    int i = -1;
+    switch (paramString.hashCode())
+    {
+    }
     for (;;)
     {
-      if ((this.vrS) && (this.vrX != null)) {
-        this.vrX.KV(this.vrR);
-      }
-      this.vrS = false;
-      this.vrT = a.a.vKa.code;
-      this.vrU = null;
-      this.vrV = null;
-      this.aqU = null;
-      this.vrX = null;
-      this.vrW = null;
-      this.vrY = null;
-      this.vrZ = null;
-      if ((this.fwu != null) && (this.vsa != null)) {
-        this.fwu.c(this.vsa);
-      }
-      this.fwu = null;
-      this.vsa = null;
-      if (this.ofr != null)
+      switch (i)
       {
-        if (this.vrY != null) {
-          this.ofr.a(this.vrY);
+      default: 
+        AppMethodBeat.o(188680);
+        return "";
+        if (paramString.equals("getBrandWCPayRequest")) {
+          i = 0;
         }
-        if (this.vrZ != null) {
-          this.ofr.a(this.vrZ);
-        }
-      }
-      this.ofr = null;
-      this.vrY = null;
-      this.vrZ = null;
-      AppMethodBeat.o(9836);
-      return;
-      if (!this.vrS)
-      {
-        ab.e("MicroMsg.OpenMapNavigator", "onActivityResult called without msgId attached...");
-      }
-      else if (paramInt1 != 33)
-      {
-        ab.e("MicroMsg.OpenMapNavigator", "onActivityResult, mismatched request_code = %d", new Object[] { Integer.valueOf(paramInt1) });
-        this.vrX.onFail(this.vrR);
-      }
-      else if ((paramInt2 == 4097) || (paramInt2 == 0))
-      {
-        this.vrX.Cp(this.vrR);
-      }
-      else if (paramInt2 == -1)
-      {
-        paramIntent = paramIntent.getStringExtra("selectpkg");
-        if (bo.isNullOrNil(paramIntent))
-        {
-          ab.e("MicroMsg.OpenMapNavigator", "onActivityResult, get null packageName");
-          this.vrX.onFail(this.vrR);
-        }
-        else
-        {
-          if (a.a.vKb.getPackage().equals(paramIntent)) {
-            paramIntent = new j.c((byte)0);
-          }
-          for (;;)
-          {
-            paramIntent.a(localContext, this.vrU, this.vrV, this.vrW);
-            this.vrX.onSuccess(this.vrR);
-            break;
-            if (a.a.vKd.getPackage().equals(paramIntent)) {
-              paramIntent = new j.a((byte)0);
-            } else if (a.a.vKc.getPackage().equals(paramIntent)) {
-              paramIntent = new j.g((byte)0);
-            } else if (a.a.vKe.getPackage().equals(paramIntent)) {
-              paramIntent = new j.b((byte)0);
-            } else {
-              paramIntent = new j.h((byte)0);
-            }
-          }
-        }
-      }
-      else
-      {
-        ab.e("MicroMsg.OpenMapNavigator", "onActivityResult, not support result_code = %d", new Object[] { Integer.valueOf(paramInt2) });
-        this.vrX.onFail(this.vrR);
+        break;
       }
     }
+    paramString = paraml.uLu.get("package").toString();
+    AppMethodBeat.o(188680);
+    return paramString;
   }
   
-  final void dgR()
+  private static Object[] k(Object[] paramArrayOfObject)
   {
-    Context localContext = null;
-    AppMethodBeat.i(9838);
-    this.vsa = null;
-    this.vrY = null;
-    this.vrZ = null;
-    if (this.aqU == null) {}
-    while (localContext == null)
+    AppMethodBeat.i(82065);
+    if ((paramArrayOfObject == null) || (paramArrayOfObject.length <= 0))
     {
-      AppMethodBeat.o(9838);
-      return;
-      localContext = (Context)this.aqU.get();
+      AppMethodBeat.o(82065);
+      return new Object[0];
     }
-    Intent localIntent = new Intent(localContext, AppChooserUI.class);
-    Object localObject = new ArrayList(5);
-    ((ArrayList)localObject).add(a.a.vKa.getPackage());
-    ((ArrayList)localObject).add(a.a.vKb.getPackage());
-    ((ArrayList)localObject).add(a.a.vKc.getPackage());
-    ((ArrayList)localObject).add(a.a.vKd.getPackage());
-    ((ArrayList)localObject).add(a.a.vKe.getPackage());
-    localIntent.putStringArrayListExtra("targetwhitelist", (ArrayList)localObject);
-    localObject = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%f,%f", new Object[] { Double.valueOf(this.vrV.latitude), Double.valueOf(this.vrV.longitude) })));
-    localIntent.putExtra("targetintent", (Parcelable)localObject);
-    Bundle localBundle = new Bundle(2);
-    localBundle.putInt("key_map_app", this.vrT);
-    localBundle.putParcelable("key_target_intent", (Parcelable)localObject);
-    localIntent.putExtra("key_recommend_params", localBundle);
-    localIntent.putExtra("type", 2);
-    localIntent.putExtra("title", localContext.getString(2131306028));
-    ((MMActivity)localContext).mmStartActivityForResult(this, localIntent, 33);
-    AppMethodBeat.o(9838);
+    Object[] arrayOfObject = new Object[paramArrayOfObject.length];
+    int k = paramArrayOfObject.length;
+    int j = 0;
+    int i = 0;
+    if (j < k)
+    {
+      Object localObject2 = paramArrayOfObject[j];
+      Object localObject1;
+      if (localObject2 == null) {
+        localObject1 = "";
+      }
+      for (;;)
+      {
+        arrayOfObject[i] = String.valueOf(localObject1);
+        j += 1;
+        i += 1;
+        break;
+        localObject1 = localObject2;
+        if ((localObject2 instanceof String)) {
+          if (!((String)localObject2).contains(","))
+          {
+            localObject1 = localObject2;
+            if (!((String)localObject2).contains("/")) {}
+          }
+          else
+          {
+            localObject1 = Mw((String)localObject2);
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(82065);
+    return arrayOfObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.j
  * JD-Core Version:    0.7.0.1
  */

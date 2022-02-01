@@ -30,51 +30,45 @@ public class o
     this.B = paramInt;
   }
   
-  public o(int paramInt, boolean paramBoolean)
-  {
-    super("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n \nvarying vec2 textureCoordinate;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = inputTextureCoordinate.xy;\n}", "varying lowp vec2 textureCoordinate;\n \nuniform sampler2D inputImageTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}", paramBoolean);
-    this.B = paramInt;
-  }
-  
   public void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(66920);
+    AppMethodBeat.i(15061);
     if ((paramInt1 <= 0) || (paramInt2 <= 0))
     {
       TXCLog.e(this.A, "width or height is error!");
-      AppMethodBeat.o(66920);
+      AppMethodBeat.o(15061);
       return;
     }
     if ((this.f == paramInt2) && (this.e == paramInt1))
     {
-      AppMethodBeat.o(66920);
+      AppMethodBeat.o(15061);
       return;
     }
     super.a(paramInt1, paramInt2);
     TXCLog.i(this.A, "RGBA2I420Filter width " + paramInt1 + " height " + paramInt2);
     a(this.r, paramInt1);
     a(this.s, paramInt2);
-    AppMethodBeat.o(66920);
+    AppMethodBeat.o(15061);
   }
   
   public boolean a()
   {
-    AppMethodBeat.i(146393);
+    AppMethodBeat.i(15059);
     if (1 == this.B)
     {
       NativeLoad.getInstance();
       this.a = NativeLoad.nativeLoadGLProgram(8);
       TXCLog.i(this.A, "RGB-->I420 init!");
       if ((this.a == 0) || (!b())) {
-        break label179;
+        break label182;
       }
     }
-    label179:
+    label182:
     for (this.g = true;; this.g = false)
     {
       c();
       boolean bool = this.g;
-      AppMethodBeat.o(146393);
+      AppMethodBeat.o(15059);
       return bool;
       if (3 == this.B)
       {
@@ -87,7 +81,7 @@ public class o
       {
         TXCLog.i(this.A, "RGBA Format init!");
         bool = super.a();
-        AppMethodBeat.o(146393);
+        AppMethodBeat.o(15059);
         return bool;
       }
       TXCLog.i(this.A, "don't support format " + this.B + " use default I420");
@@ -99,24 +93,24 @@ public class o
   
   public boolean b()
   {
-    AppMethodBeat.i(66919);
+    AppMethodBeat.i(15060);
     super.b();
     this.r = GLES20.glGetUniformLocation(this.a, "width");
     this.s = GLES20.glGetUniformLocation(this.a, "height");
-    AppMethodBeat.o(66919);
+    AppMethodBeat.o(15060);
     return true;
   }
   
   public void c()
   {
-    AppMethodBeat.i(146394);
+    AppMethodBeat.i(15062);
     super.c();
-    AppMethodBeat.o(146394);
+    AppMethodBeat.o(15062);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.o
  * JD-Core Version:    0.7.0.1
  */

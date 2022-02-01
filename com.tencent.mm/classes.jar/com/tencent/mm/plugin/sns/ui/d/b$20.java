@@ -4,7 +4,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class b$20
   implements View.OnTouchListener
@@ -13,10 +13,10 @@ final class b$20
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(40269);
-    ab.d("MicroMsg.TimelineClickListener", "v " + paramView.getId() + "  ");
-    this.skd.dL(paramView);
-    AppMethodBeat.o(40269);
+    AppMethodBeat.i(100230);
+    ad.d("MicroMsg.TimelineClickListener", "v " + paramView.getId() + "  ");
+    this.xUj.eA(paramView);
+    AppMethodBeat.o(100230);
     return false;
   }
 }

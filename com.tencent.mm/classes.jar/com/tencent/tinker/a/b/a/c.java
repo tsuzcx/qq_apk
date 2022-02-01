@@ -7,89 +7,66 @@ import com.tencent.tinker.a.c.b;
 public final class c
   extends e
 {
-  private final b Bqk = new b();
-  private int Bql = 0;
+  private final b ICf = new b();
+  private int ICg = 0;
   
   public c()
   {
     super(null);
   }
   
-  private void SH(int paramInt)
+  private void acs(int paramInt)
   {
-    b localb;
-    int i;
-    if (paramInt != this.Bql)
-    {
-      localb = this.Bqk;
-      i = this.Bql;
-      if ((localb.mSize != 0) && (paramInt <= localb.Fk[(localb.mSize - 1)])) {
-        localb.put(paramInt, i);
-      }
+    if (paramInt != this.ICg) {
+      this.ICf.append(paramInt, this.ICg);
     }
-    else
-    {
-      return;
-    }
-    localb.Fk = b.h(localb.Fk, localb.mSize, paramInt);
-    localb.Bqu = b.h(localb.Bqu, localb.mSize, i);
-    localb.mSize += 1;
-  }
-  
-  public final int SI(int paramInt)
-  {
-    int i = this.Bqk.indexOfKey(paramInt);
-    if (i < 0) {
-      return paramInt;
-    }
-    return this.Bqk.Bqu[i];
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong)
   {
-    SH(paramInt1);
+    acs(paramInt1);
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + a.SL(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + a.acw(paramInt2));
     case -1: 
     case 0: 
     case 14: 
-      this.Bql += 1;
+      this.ICg += 1;
       return;
     case 40: 
-      paramInt1 = paramInt5 - this.Bql;
+      paramInt1 = paramInt5 - this.ICg;
       if (paramInt1 != (byte)paramInt1)
       {
         if (paramInt1 != (short)paramInt1)
         {
-          this.Bql += 3;
+          this.ICg += 3;
           return;
         }
-        this.Bql += 2;
+        this.ICg += 2;
         return;
       }
-      this.Bql += 1;
+      this.ICg += 1;
       return;
     case 41: 
-      paramInt1 = paramInt5 - this.Bql;
+      paramInt1 = paramInt5 - this.ICg;
       if (paramInt1 != (short)paramInt1)
       {
-        this.Bql += 3;
+        this.ICg += 3;
         return;
       }
-      this.Bql += 2;
+      this.ICg += 2;
       return;
     case 42: 
-      this.Bql += 3;
+      this.ICg += 3;
       return;
     }
-    this.Bql += 3;
+    this.ICg += 3;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6)
   {
-    SH(paramInt1);
+    acs(paramInt1);
     switch (paramInt2)
     {
     case 14: 
@@ -146,17 +123,17 @@ public final class c
     case 94: 
     case 95: 
     default: 
-      throw new IllegalStateException("unexpected opcode: " + a.SL(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + a.acw(paramInt2));
     case 26: 
       if (paramInt3 > 65535)
       {
-        this.Bql += 3;
+        this.ICg += 3;
         return;
       }
-      this.Bql += 2;
+      this.ICg += 2;
       return;
     case 27: 
-      this.Bql += 3;
+      this.ICg += 3;
       return;
     case 10: 
     case 11: 
@@ -169,7 +146,7 @@ public final class c
     case 29: 
     case 30: 
     case 39: 
-      this.Bql += 1;
+      this.ICg += 1;
       return;
     case 19: 
     case 21: 
@@ -198,7 +175,7 @@ public final class c
     case 107: 
     case 108: 
     case 109: 
-      this.Bql += 2;
+      this.ICg += 2;
       return;
     case 20: 
     case 23: 
@@ -211,15 +188,15 @@ public final class c
     case 112: 
     case 113: 
     case 114: 
-      this.Bql += 3;
+      this.ICg += 3;
       return;
     }
-    this.Bql += 5;
+    this.ICg += 5;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7)
   {
-    SH(paramInt1);
+    acs(paramInt1);
     switch (paramInt2)
     {
     case 10: 
@@ -339,7 +316,7 @@ public final class c
     case 174: 
     case 175: 
     default: 
-      throw new IllegalStateException("unexpected opcode: " + a.SL(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + a.acw(paramInt2));
     case 1: 
     case 4: 
     case 7: 
@@ -397,12 +374,12 @@ public final class c
     case 205: 
     case 206: 
     case 207: 
-      this.Bql += 1;
+      this.ICg += 1;
       return;
     case 2: 
     case 5: 
     case 8: 
-      this.Bql += 2;
+      this.ICg += 2;
       return;
     case 32: 
     case 35: 
@@ -445,15 +422,15 @@ public final class c
     case 224: 
     case 225: 
     case 226: 
-      this.Bql += 2;
+      this.ICg += 2;
       return;
     }
-    this.Bql += 3;
+    this.ICg += 3;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8)
   {
-    SH(paramInt1);
+    acs(paramInt1);
     switch (paramInt2)
     {
     case 37: 
@@ -540,7 +517,7 @@ public final class c
     case 142: 
     case 143: 
     default: 
-      throw new IllegalStateException("unexpected opcode: " + a.SL(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + a.acw(paramInt2));
     case 45: 
     case 46: 
     case 47: 
@@ -592,45 +569,45 @@ public final class c
     case 173: 
     case 174: 
     case 175: 
-      this.Bql += 2;
+      this.ICg += 2;
       return;
     }
-    this.Bql += 3;
+    this.ICg += 3;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
   {
-    SH(paramInt1);
+    acs(paramInt1);
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + a.SL(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + a.acw(paramInt2));
     }
-    this.Bql += 3;
+    this.ICg += 3;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
   {
-    SH(paramInt1);
+    acs(paramInt1);
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + a.SL(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + a.acw(paramInt2));
     }
-    this.Bql += 3;
+    this.ICg += 3;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, int[] paramArrayOfInt)
   {
-    SH(paramInt1);
-    this.Bql += 4;
-    this.Bql += paramArrayOfInt.length * 2;
+    acs(paramInt1);
+    this.ICg += 4;
+    this.ICg += paramArrayOfInt.length * 2;
   }
   
   public final void a(int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4)
   {
-    SH(paramInt1);
-    this.Bql += 4;
+    acs(paramInt1);
+    this.ICg += 4;
     switch (paramInt4)
     {
     case 3: 
@@ -638,43 +615,52 @@ public final class c
     case 6: 
     case 7: 
     default: 
-      throw new j("bogus element_width: " + a.SK(paramInt4));
+      throw new j("bogus element_width: " + a.acv(paramInt4));
     case 1: 
       paramInt1 = ((byte[])paramObject).length;
-      this.Bql = ((paramInt1 & 0x1) + (paramInt1 >> 1) + this.Bql);
+      this.ICg = ((paramInt1 & 0x1) + (paramInt1 >> 1) + this.ICg);
       return;
     case 2: 
-      this.Bql += ((short[])paramObject).length * 1;
+      this.ICg += ((short[])paramObject).length * 1;
       return;
     case 4: 
-      this.Bql += ((int[])paramObject).length * 2;
+      this.ICg += ((int[])paramObject).length * 2;
       return;
     }
-    this.Bql += ((long[])paramObject).length * 4;
+    this.ICg += ((long[])paramObject).length * 4;
   }
   
   public final void a(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    SH(paramInt1);
-    this.Bql += 2;
-    this.Bql += paramArrayOfInt1.length * 2;
-    this.Bql += paramArrayOfInt2.length * 2;
+    acs(paramInt1);
+    this.ICg += 2;
+    this.ICg += paramArrayOfInt1.length * 2;
+    this.ICg += paramArrayOfInt2.length * 2;
+  }
+  
+  public final int act(int paramInt)
+  {
+    int i = this.ICf.indexOfKey(paramInt);
+    if (i < 0) {
+      return paramInt;
+    }
+    return this.ICf.ICp[i];
   }
   
   public final void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, int paramInt6, int paramInt7)
   {
-    SH(paramInt1);
+    acs(paramInt1);
     switch (paramInt2)
     {
     default: 
-      throw new IllegalStateException("unexpected opcode: " + a.SL(paramInt2));
+      throw new IllegalStateException("unexpected opcode: " + a.acw(paramInt2));
     }
-    this.Bql += 3;
+    this.ICg += 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.a.b.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.f.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.pluginsdk.g.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class WalletOrderInfoOldUI$11
   implements View.OnLongClickListener
@@ -14,29 +14,29 @@ final class WalletOrderInfoOldUI$11
   
   public final boolean onLongClick(View paramView)
   {
-    AppMethodBeat.i(47484);
-    if ((paramView.getId() == 2131829265) || (paramView.getId() == 2131829275)) {}
+    AppMethodBeat.i(71053);
+    if ((paramView.getId() == 2131306777) || (paramView.getId() == 2131306805)) {}
     try
     {
       paramView = (String)paramView.getTag();
-      Toast.makeText(this.urV, 2131305326, 0).show();
-      this.urV.getContext();
+      Toast.makeText(this.AoQ, 2131765540, 0).show();
+      this.AoQ.getContext();
       a.b(paramView, paramView);
-      AppMethodBeat.o(47484);
+      AppMethodBeat.o(71053);
       return true;
     }
     catch (Exception paramView)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.WalletOrderInfoOldUI", paramView, "", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.WalletOrderInfoOldUI", paramView, "", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletOrderInfoOldUI.11
  * JD-Core Version:    0.7.0.1
  */

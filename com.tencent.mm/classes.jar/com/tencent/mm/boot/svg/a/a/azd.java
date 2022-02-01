@@ -14,8 +14,8 @@ import com.tencent.mm.svg.c;
 public final class azd
   extends c
 {
-  private final int height = 96;
-  private final int width = 96;
+  private final int height = 38;
+  private final int width = 38;
   
   public final int a(int paramInt, Object... paramVarArgs)
   {
@@ -25,67 +25,78 @@ public final class azd
     for (;;)
     {
       return 0;
-      return 96;
-      return 96;
+      return 38;
+      return 38;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      Object localObject1 = c.h(paramVarArgs);
-      Object localObject2 = c.g(paramVarArgs);
-      Paint localPaint = c.k(paramVarArgs);
-      localPaint.setFlags(385);
-      localPaint.setStyle(Paint.Style.FILL);
-      Object localObject3 = c.k(paramVarArgs);
-      ((Paint)localObject3).setFlags(385);
-      ((Paint)localObject3).setStyle(Paint.Style.STROKE);
-      localPaint.setColor(-16777216);
-      ((Paint)localObject3).setStrokeWidth(1.0F);
-      ((Paint)localObject3).setStrokeCap(Paint.Cap.BUTT);
-      ((Paint)localObject3).setStrokeJoin(Paint.Join.MITER);
-      ((Paint)localObject3).setStrokeMiter(4.0F);
-      ((Paint)localObject3).setPathEffect(null);
-      c.a((Paint)localObject3, paramVarArgs).setStrokeWidth(1.0F);
-      localObject3 = c.l(paramVarArgs);
-      ((Path)localObject3).moveTo(0.0F, 0.0F);
-      ((Path)localObject3).lineTo(96.0F, 0.0F);
-      ((Path)localObject3).lineTo(96.0F, 96.0F);
-      ((Path)localObject3).lineTo(0.0F, 96.0F);
-      ((Path)localObject3).lineTo(0.0F, 0.0F);
-      ((Path)localObject3).close();
+      Object localObject = c.j(paramVarArgs);
+      float[] arrayOfFloat = c.i(paramVarArgs);
+      Paint localPaint1 = c.m(paramVarArgs);
+      localPaint1.setFlags(385);
+      localPaint1.setStyle(Paint.Style.FILL);
+      Paint localPaint2 = c.m(paramVarArgs);
+      localPaint2.setFlags(385);
+      localPaint2.setStyle(Paint.Style.STROKE);
+      localPaint1.setColor(-16777216);
+      localPaint2.setStrokeWidth(1.0F);
+      localPaint2.setStrokeCap(Paint.Cap.BUTT);
+      localPaint2.setStrokeJoin(Paint.Join.MITER);
+      localPaint2.setStrokeMiter(4.0F);
+      localPaint2.setPathEffect(null);
+      c.a(localPaint2, paramVarArgs).setStrokeWidth(1.0F);
+      localCanvas.saveLayerAlpha(null, 76, 31);
       localCanvas.save();
-      localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-16777216);
-      localObject2 = c.a((float[])localObject2, 0.7071068F, 0.7071068F, -19.882248F, -0.7071068F, 0.7071068F, 48.0F);
-      ((Matrix)localObject1).reset();
-      ((Matrix)localObject1).setValues((float[])localObject2);
-      localCanvas.concat((Matrix)localObject1);
-      localObject1 = c.l(paramVarArgs);
-      ((Path)localObject1).moveTo(50.0F, 24.0F);
-      ((Path)localObject1).lineTo(46.0F, 24.0F);
-      ((Path)localObject1).lineTo(46.0F, 46.0F);
-      ((Path)localObject1).lineTo(24.0F, 46.0F);
-      ((Path)localObject1).lineTo(24.0F, 50.0F);
-      ((Path)localObject1).lineTo(46.0F, 50.0F);
-      ((Path)localObject1).lineTo(46.0F, 72.0F);
-      ((Path)localObject1).lineTo(50.0F, 72.0F);
-      ((Path)localObject1).lineTo(50.0F, 50.0F);
-      ((Path)localObject1).lineTo(72.0F, 50.0F);
-      ((Path)localObject1).lineTo(72.0F, 46.0F);
-      ((Path)localObject1).lineTo(50.0F, 46.0F);
-      ((Path)localObject1).close();
-      WeChatSVGRenderC2Java.setFillType((Path)localObject1, 1);
-      localCanvas.saveLayerAlpha(null, 76, 4);
-      localObject2 = c.a(localPaint, paramVarArgs);
-      WeChatSVGRenderC2Java.setFillType((Path)localObject1, 2);
-      localCanvas.drawPath((Path)localObject1, (Paint)localObject2);
+      localPaint1 = c.a(localPaint1, paramVarArgs);
+      localPaint1.setColor(-16777216);
+      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, -1025.0F, 0.0F, 1.0F, -106.0F);
+      ((Matrix)localObject).reset();
+      ((Matrix)localObject).setValues(arrayOfFloat);
+      localCanvas.concat((Matrix)localObject);
+      localCanvas.save();
+      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 36.0F, 0.0F, 1.0F, 53.0F);
+      ((Matrix)localObject).reset();
+      ((Matrix)localObject).setValues(arrayOfFloat);
+      localCanvas.concat((Matrix)localObject);
+      localCanvas.save();
+      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 960.0F, 0.0F, 1.0F, 24.0F);
+      ((Matrix)localObject).reset();
+      ((Matrix)localObject).setValues(arrayOfFloat);
+      localCanvas.concat((Matrix)localObject);
+      localCanvas.save();
+      localPaint1 = c.a(localPaint1, paramVarArgs);
+      arrayOfFloat = c.a(arrayOfFloat, 0.7071068F, 0.7071068F, -19.882248F, -0.7071068F, 0.7071068F, 48.0F);
+      ((Matrix)localObject).reset();
+      ((Matrix)localObject).setValues(arrayOfFloat);
+      localCanvas.concat((Matrix)localObject);
+      localObject = c.n(paramVarArgs);
+      ((Path)localObject).moveTo(50.0F, 24.0F);
+      ((Path)localObject).lineTo(46.0F, 24.0F);
+      ((Path)localObject).lineTo(46.0F, 46.0F);
+      ((Path)localObject).lineTo(24.0F, 46.0F);
+      ((Path)localObject).lineTo(24.0F, 50.0F);
+      ((Path)localObject).lineTo(46.0F, 50.0F);
+      ((Path)localObject).lineTo(46.0F, 72.0F);
+      ((Path)localObject).lineTo(50.0F, 72.0F);
+      ((Path)localObject).lineTo(50.0F, 50.0F);
+      ((Path)localObject).lineTo(72.0F, 50.0F);
+      ((Path)localObject).lineTo(72.0F, 46.0F);
+      ((Path)localObject).lineTo(50.0F, 46.0F);
+      ((Path)localObject).close();
+      WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
+      WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
+      localCanvas.drawPath((Path)localObject, localPaint1);
       localCanvas.restore();
       localCanvas.restore();
-      c.j(paramVarArgs);
+      localCanvas.restore();
+      localCanvas.restore();
+      localCanvas.restore();
+      c.l(paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.azd
  * JD-Core Version:    0.7.0.1
  */

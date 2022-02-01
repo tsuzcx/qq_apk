@@ -15,20 +15,20 @@ class MPGdprPolicyUtil$1$1
   
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(1488);
-    paramBundle = this.foG.foE;
+    AppMethodBeat.i(40082);
+    paramBundle = this.gQh.gQf;
     if (paramInt > 0) {}
     for (paramInt = 0;; paramInt = 1)
     {
-      paramBundle.kK(paramInt);
-      AppMethodBeat.o(1488);
+      paramBundle.ns(paramInt);
+      AppMethodBeat.o(40082);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.gdpr.MPGdprPolicyUtil.1.1
  * JD-Core Version:    0.7.0.1
  */

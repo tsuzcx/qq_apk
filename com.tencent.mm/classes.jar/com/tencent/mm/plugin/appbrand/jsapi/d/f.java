@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi.d;
 
-import com.tencent.mm.plugin.appbrand.jsapi.u;
-import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.jsapi.y;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class f
-  extends u<v>
+  extends y<aa>
 {
   private static final int CTRL_INDEX = -2;
   private static final String NAME = "restoreWebviewFocus";

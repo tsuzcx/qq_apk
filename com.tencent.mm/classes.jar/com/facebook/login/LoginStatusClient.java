@@ -23,11 +23,11 @@ final class LoginStatusClient
   
   public final void populateRequestBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(96929);
+    AppMethodBeat.i(7953);
     paramBundle.putString("com.facebook.platform.extra.LOGGER_REF", this.loggerRef);
     paramBundle.putString("com.facebook.platform.extra.GRAPH_API_VERSION", this.graphApiVersion);
     paramBundle.putLong("com.facebook.platform.extra.EXTRA_TOAST_DURATION_MS", this.toastDurationMs);
-    AppMethodBeat.o(96929);
+    AppMethodBeat.o(7953);
   }
 }
 

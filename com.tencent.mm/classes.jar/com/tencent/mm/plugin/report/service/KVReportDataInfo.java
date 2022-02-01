@@ -9,42 +9,42 @@ class KVReportDataInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<KVReportDataInfo> CREATOR;
-  public long cnw;
-  public long qsF;
-  public boolean qsG;
-  public boolean qsH;
-  public boolean qsi;
+  public long dcn;
+  public long doC;
+  public boolean vJT;
+  public boolean vJU;
+  public boolean vJx;
   public String value;
   
   static
   {
-    AppMethodBeat.i(72732);
+    AppMethodBeat.i(143845);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(72732);
+    AppMethodBeat.o(143845);
   }
   
   public KVReportDataInfo()
   {
-    this.cnw = 0L;
+    this.dcn = 0L;
   }
   
   protected KVReportDataInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(72731);
-    this.cnw = 0L;
-    this.qsF = paramParcel.readLong();
-    this.cnw = paramParcel.readLong();
+    AppMethodBeat.i(143844);
+    this.dcn = 0L;
+    this.doC = paramParcel.readLong();
+    this.dcn = paramParcel.readLong();
     this.value = paramParcel.readString();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.qsG = bool1;
+      this.vJT = bool1;
       if (paramParcel.readInt() != 1) {
         break label96;
       }
       bool1 = true;
       label65:
-      this.qsi = bool1;
+      this.vJx = bool1;
       if (paramParcel.readInt() != 1) {
         break label101;
       }
@@ -53,8 +53,8 @@ class KVReportDataInfo
     label101:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.qsH = bool1;
-      AppMethodBeat.o(72731);
+      this.vJU = bool1;
+      AppMethodBeat.o(143844);
       return;
       bool1 = false;
       break;
@@ -71,21 +71,21 @@ class KVReportDataInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(72730);
-    paramParcel.writeLong(this.qsF);
-    paramParcel.writeLong(this.cnw);
+    AppMethodBeat.i(143843);
+    paramParcel.writeLong(this.doC);
+    paramParcel.writeLong(this.dcn);
     paramParcel.writeString(this.value);
-    if (this.qsG)
+    if (this.vJT)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.qsi) {
+      if (!this.vJx) {
         break label84;
       }
       paramInt = 1;
       label54:
       paramParcel.writeInt(paramInt);
-      if (!this.qsH) {
+      if (!this.vJU) {
         break label89;
       }
     }
@@ -94,7 +94,7 @@ class KVReportDataInfo
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      AppMethodBeat.o(72730);
+      AppMethodBeat.o(143843);
       return;
       paramInt = 0;
       break;

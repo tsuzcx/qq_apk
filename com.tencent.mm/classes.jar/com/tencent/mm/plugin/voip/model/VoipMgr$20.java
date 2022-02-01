@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.voip.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.voip.b;
+import com.tencent.mm.plugin.voip.video.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class VoipMgr$20
   implements Runnable
@@ -10,16 +11,14 @@ final class VoipMgr$20
   
   public final void run()
   {
-    AppMethodBeat.i(4481);
-    b.cLC().tyR.stopRing();
-    if (VoipMgr.e(this.tyo))
+    AppMethodBeat.i(192030);
+    ad.d("MicroMsg.Voip.VoipMgr", "mCaptureRender == " + VoipMgr.e(this.zlq));
+    if (VoipMgr.e(this.zlq) != null)
     {
-      b.cLC().HA(0);
-      AppMethodBeat.o(4481);
-      return;
+      VoipMgr.e(this.zlq).dWU();
+      VoipMgr.p(this.zlq);
     }
-    b.cLC().HA(1);
-    AppMethodBeat.o(4481);
+    AppMethodBeat.o(192030);
   }
 }
 

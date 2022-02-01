@@ -7,19 +7,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.xweb.w;
+import com.tencent.xweb.WebView;
+import com.tencent.xweb.ab;
 
 public class WebViewTestUI
   extends MMActivity
 {
-  private w iyq;
-  MMWebViewWithJsApi vea;
+  MMWebViewWithJsApi BgA;
+  private ab lef;
   
   public WebViewTestUI()
   {
-    AppMethodBeat.i(7805);
-    this.iyq = new WebViewTestUI.1(this);
-    AppMethodBeat.o(7805);
+    AppMethodBeat.i(80040);
+    this.lef = new ab()
+    {
+      public final void b(WebView paramAnonymousWebView, String paramAnonymousString)
+      {
+        AppMethodBeat.i(80039);
+        super.b(paramAnonymousWebView, paramAnonymousString);
+        AppMethodBeat.o(80039);
+      }
+    };
+    AppMethodBeat.o(80040);
   }
   
   public int getLayoutId()
@@ -29,14 +38,14 @@ public class WebViewTestUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(7806);
+    AppMethodBeat.i(80041);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("rawUrl");
-    this.vea = MMWebViewWithJsApi.a.fD(this);
-    this.vea.setWebViewClient(this.iyq);
-    setContentView(this.vea);
-    this.vea.loadUrl(paramBundle);
-    AppMethodBeat.o(7806);
+    this.BgA = MMWebViewWithJsApi.a.gJ(this);
+    this.BgA.setWebViewClient(this.lef);
+    setContentView(this.BgA);
+    this.BgA.loadUrl(paramBundle);
+    AppMethodBeat.o(80041);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

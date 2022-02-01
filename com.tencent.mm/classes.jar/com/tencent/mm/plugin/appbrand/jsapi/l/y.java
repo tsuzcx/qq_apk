@@ -1,29 +1,27 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.jsapi.u;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.j;
+import com.tencent.mm.plugin.appbrand.page.t;
+import com.tencent.mm.pointers.PBool;
+import com.tencent.mm.ui.tools.b.c.a;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiShowNavigationBar;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandSyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "Companion", "luggage-wxa-app-jsapi_release"})
 public final class y
-  extends u<d>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.q>
 {
-  public static final int CTRL_INDEX = 577;
-  public static final String NAME = "showNavigationBar";
-  @Deprecated
-  public static final y.a hWf;
+  public static final int CTRL_INDEX = 389;
+  public static final String NAME = "setTabBarBadge";
   
-  static
+  public final boolean aXA()
   {
-    AppMethodBeat.i(74821);
-    hWf = new y.a((byte)0);
-    AppMethodBeat.o(74821);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.l.y
  * JD-Core Version:    0.7.0.1
  */

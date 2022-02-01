@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="@string/e57" />
-    <CheckPreference android:title="@string/eaf" android:key="settings_half_year_not_chat" android:layout="@layout/afi" />
-    <CheckPreference android:title="@string/eai" android:key="settings_has_not_same_chatroom" android:layout="@layout/afi" />
-    <CheckPreference android:title="@string/eag" android:key="settings_half_year_not_response" android:layout="@layout/afi" />
-    <PreferenceCategory />
-    <PreferenceCategory />
-    <TextButtonPreference android:title="@string/egn" android:key="settings_next_step" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceTitleCategory android:title="@string/f7b" />
+    <CheckBoxPreference android1:contentDescription="@string/fku" android:defaultValue="false" android:icon="@raw/icons_outlined_colorful_moment" android:key="settings_sns_switch" android:title="@string/fku" />
+    <CheckBoxPreference android1:contentDescription="@string/c73" android:defaultValue="true" android:icon="@raw/icons_outlined_finder_icon" android:iconColor="@color/Orange" android:key="settings_finder_switch" android:title="@string/c73" />
+    <CheckBoxPreference android1:contentDescription="@string/c7c" android:defaultValue="false" android:icon="@raw/icons_outlined_scan" android:iconColor="@color/Indigo_100" android:key="settings_scan_switch" android:title="@string/c7c" />
+    <CheckBoxPreference android1:contentDescription="@string/ffd" android:defaultValue="false" android:icon="@raw/icons_outlined_shake" android:iconColor="@color/Indigo_100" android:key="settings_shake_switch" android:title="@string/ffd" />
+    <CheckBoxPreference android1:contentDescription="@string/c7j" android:defaultValue="false" android:icon="@raw/icons_outlined_news" android:iconColor="@color/Yellow_100" android:key="settings_look_switch" android:title="@string/c7j" />
+    <CheckBoxPreference android1:contentDescription="@string/c7n" android:defaultValue="false" android:icon="@raw/icons_outlined_searchlogo" android:iconColor="@color/Red" android:key="settings_search_switch" android:title="@string/c7n" />
+    <CheckBoxPreference android1:contentDescription="@string/dxl" android:defaultValue="false" android:icon="@raw/icons_outlined_nearby" android:iconColor="@color/Indigo_100" android:key="settings_nearby_switch" android:title="@string/dxl" />
+    <CheckBoxPreference android1:contentDescription="@string/c7o" android:defaultValue="false" android:icon="@raw/icons_outlined_shop" android:iconColor="@color/Red" android:key="settings_shopping_switch" android:title="@string/c7o" />
+    <CheckBoxPreference android1:contentDescription="@string/ctm" android:defaultValue="false" android:icon="@raw/icons_outlined_colorful_game" android:key="settings_game_switch" android:title="@string/ctm" />
+    <CheckBoxPreference android1:contentDescription="@string/jo" android:defaultValue="false" android:icon="@raw/icons_outlined_miniprogram" android:iconColor="@color/Purple" android:key="settings_miniprogram_switch" android:title="@string/jo" />
+    <CheckBoxPreference android1:contentDescription="@string/d5u" android:defaultValue="false" android:icon="@raw/icons_outlined_wechatout" android:iconColor="@color/a_j" android:key="settings_wechatout_switch" android:title="@string/d5u" />
+    <Preference android:key="settings_switch_bottom_tip" android:layout="@layout/aqa" android:title="@string/f7f" />
 </PreferenceScreen>

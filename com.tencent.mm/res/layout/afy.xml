@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:id="@id/f42" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/ft" android:paddingTop="@dimen/m1" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:textColorHint="@color/s3" android:layout_gravity="center_vertical" android:id="@id/lh" android:paddingLeft="0.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/n7" android:singleLine="true" android:drawableLeft="@raw/searchbar_icon" android:imeOptions="actionSearch" />
-            <TextView android:textColor="@color/s3" android:gravity="center_vertical" android:id="@id/ddt" android:paddingLeft="46.0dip" android:paddingTop="@dimen/dl" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <Button android:layout_gravity="center_vertical" android:id="@id/i9" android:visibility="gone" android:layout_marginLeft="@dimen/n_" android:text="@string/u3" style="@style/ns" />
-    </LinearLayout>
-</LinearLayout>
+    <ImageView android:id="@id/c9h" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.view.AnimationLayout android:id="@id/kl" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/gfe" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.view.AnimationLayout>
+    <RelativeLayout android:id="@id/f56" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/c_">
+        <View android:id="@id/f5b" android:background="@drawable/a2m" android:clickable="true" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="@dimen/c5" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</FrameLayout>

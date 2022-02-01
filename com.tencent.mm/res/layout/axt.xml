@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/jm"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TableLayout android:id="@id/k6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <Button android:textSize="@dimen/b_" android:textColor="@color/fm" android:id="@id/a_f" android:background="@drawable/oe" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:id="@id/a_g" android:background="@color/tt" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/c5" />
+    <Button android:textSize="@dimen/b_" android:textColor="@color/fm" android:id="@id/a_h" android:background="@drawable/oe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" />
+    <View android:id="@id/a_i" android:background="@color/tt" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/c5" />
+    <Button android:textSize="@dimen/b_" android:textColor="@color/fm" android:id="@id/a_j" android:background="@drawable/oe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" />
 </LinearLayout>

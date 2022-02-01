@@ -3,130 +3,275 @@ package com.tencent.mm.plugin.wallet_core.ui.view;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h.b;
-import com.tencent.mm.ui.widget.b.c.a;
-import com.tencent.mm.ui.widget.b.e.a;
-import com.tencent.mm.ui.widget.b.e.c;
+import com.tencent.mm.ui.tools.b.c;
+import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.ui.widget.a.f.a;
+import com.tencent.mm.ui.widget.a.f.c;
 
 public final class a
 {
-  public static com.tencent.mm.ui.widget.b.c a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, h.b paramb, DialogInterface.OnClickListener paramOnClickListener)
+  public static com.tencent.mm.ui.widget.a.d a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, h.b paramb, DialogInterface.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(47862);
+    AppMethodBeat.i(71462);
+    paramContext = a(paramContext, paramString1, paramString2, paramString3, false, paramInt, paramb, paramOnClickListener);
+    AppMethodBeat.o(71462);
+    return paramContext;
+  }
+  
+  public static com.tencent.mm.ui.widget.a.d a(final Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt, h.b paramb, final DialogInterface.OnClickListener paramOnClickListener)
+  {
+    AppMethodBeat.i(71463);
     if (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()))
     {
-      AppMethodBeat.o(47862);
+      AppMethodBeat.o(71463);
       return null;
     }
-    c.a locala = new c.a(paramContext);
-    locala.rG(false);
-    locala.rH(true);
-    locala.Rj(2131296888).b(paramOnClickListener);
-    locala.avm(paramString1);
-    paramString1 = View.inflate(paramContext, 2130971123, null);
-    paramOnClickListener = (EditText)paramString1.findViewById(2131820995);
-    if (!bo.isNullOrNil(paramString2)) {
-      paramOnClickListener.append(j.b(paramContext, paramString2, paramOnClickListener.getTextSize()));
+    d.a locala = new d.a(paramContext);
+    locala.wX(false);
+    locala.wY(true);
+    locala.aaC(2131755691).c(paramOnClickListener);
+    locala.aMf(paramString1);
+    paramString1 = View.inflate(paramContext, 2131495895, null);
+    paramOnClickListener = (EditText)paramString1.findViewById(2131299306);
+    if (!bt.isNullOrNil(paramString2)) {
+      paramOnClickListener.append(k.b(paramContext, paramString2, paramOnClickListener.getTextSize()));
     }
-    ((TextView)paramString1.findViewById(2131823916)).setVisibility(8);
-    if (!bo.isNullOrNil(paramString3)) {
+    ((TextView)paramString1.findViewById(2131305896)).setVisibility(8);
+    if (!bt.isNullOrNil(paramString3)) {
       paramOnClickListener.setHint(paramString3);
     }
-    locala.Ri(2131297018).a(false, new a.1(paramb, paramOnClickListener, paramContext));
+    locala.aaB(2131755835).a(false, new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(71453);
+        boolean bool = true;
+        if (this.AsW != null) {
+          bool = this.AsW.onFinish(paramOnClickListener.getText().toString().trim());
+        }
+        if (bool)
+        {
+          paramAnonymousDialogInterface.dismiss();
+          if ((paramContext instanceof MMActivity)) {
+            aq.f(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(71452);
+                ((MMActivity)a.1.this.val$context).hideVKB();
+                AppMethodBeat.o(71452);
+              }
+            });
+          }
+        }
+        AppMethodBeat.o(71453);
+      }
+    });
     if (paramInt > 0) {
-      com.tencent.mm.ui.tools.b.c.d(paramOnClickListener).QS(paramInt).a(null);
+      c.d(paramOnClickListener).aaj(paramInt).a(null);
     }
-    locala.fu(paramString1);
-    paramString2 = locala.aLZ();
+    locala.gs(paramString1);
+    paramString2 = locala.fft();
     paramString2.show();
     a(paramContext, paramString2);
     if ((paramContext instanceof MMActivity)) {
-      paramString1.post(new a.2(paramContext));
+      paramString1.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(71454);
+          if ((this.AsZ) && (paramOnClickListener != null) && (com.tencent.mm.compatible.util.d.lf(28))) {
+            paramOnClickListener.requestFocus();
+          }
+          ((MMActivity)paramContext).showVKB();
+          AppMethodBeat.o(71454);
+        }
+      });
     }
-    AppMethodBeat.o(47862);
+    AppMethodBeat.o(71463);
     return paramString2;
   }
   
-  public static com.tencent.mm.ui.widget.b.c a(Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, String paramString5, String paramString6, a.a parama, e.c paramc)
+  public static com.tencent.mm.ui.widget.a.d a(Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, String paramString5, String paramString6, a parama, f.c paramc)
   {
-    AppMethodBeat.i(47863);
+    AppMethodBeat.i(71464);
+    paramContext = a(paramContext, paramString1, paramString2, paramString3, paramBoolean, paramString4, paramString5, paramString6, false, parama, paramc);
+    AppMethodBeat.o(71464);
+    return paramContext;
+  }
+  
+  public static com.tencent.mm.ui.widget.a.d a(final Context paramContext, String paramString1, String paramString2, final String paramString3, boolean paramBoolean1, final String paramString4, final String paramString5, String paramString6, boolean paramBoolean2, final a parama, final f.c paramc)
+  {
+    AppMethodBeat.i(71465);
     if (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()))
     {
-      AppMethodBeat.o(47863);
+      AppMethodBeat.o(71465);
       return null;
     }
-    e.a locala = new e.a(paramContext);
-    locala.rI(true);
+    final f.a locala = new f.a(paramContext);
+    locala.wZ(true);
     locala.a(paramc);
-    locala.aj(paramString1);
-    paramString1 = View.inflate(paramContext, 2130971124, null);
-    paramc = (EditText)paramString1.findViewById(2131820995);
-    if (!bo.isNullOrNil(paramString2)) {
-      paramc.append(j.b(paramContext, paramString2, paramc.getTextSize()));
+    locala.au(paramString1);
+    paramString1 = View.inflate(paramContext, 2131495896, null);
+    paramc = (EditText)paramString1.findViewById(2131299306);
+    if (!bt.isNullOrNil(paramString2)) {
+      paramc.append(k.b(paramContext, paramString2, paramc.getTextSize()));
     }
-    if (!bo.isNullOrNil(paramString3)) {
+    if (!bt.isNullOrNil(paramString3)) {
       paramc.setHint(paramString3);
     }
-    paramString2 = (LinearLayout)paramString1.findViewById(2131828922);
-    paramString3 = (LinearLayout)paramString1.findViewById(2131825265);
-    TextView localTextView1 = (TextView)paramString1.findViewById(2131827258);
-    TextView localTextView2 = (TextView)paramString1.findViewById(2131827259);
-    TextView localTextView3 = (TextView)paramString1.findViewById(2131828924);
-    ((ImageView)paramString1.findViewById(2131828923)).getDrawable().setColorFilter(-15970418, PorterDuff.Mode.SRC_ATOP);
-    localTextView3.setText(ah.getContext().getString(2131302513));
-    paramString2.setOnClickListener(new a.3(parama, paramc, paramContext, locala));
-    if (paramBoolean)
+    paramString2 = (LinearLayout)paramString1.findViewById(2131296452);
+    paramString3 = (LinearLayout)paramString1.findViewById(2131296480);
+    final TextView localTextView1 = (TextView)paramString1.findViewById(2131302665);
+    final TextView localTextView2 = (TextView)paramString1.findViewById(2131296478);
+    TextView localTextView3 = (TextView)paramString1.findViewById(2131296481);
+    ((ImageView)paramString1.findViewById(2131296451)).getDrawable().setColorFilter(-15970418, PorterDuff.Mode.SRC_ATOP);
+    localTextView3.setText(aj.getContext().getString(2131762416));
+    paramString2.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(71455);
+        if (this.Ata != null) {
+          this.Ata.a(true, paramc.getText().toString().trim(), null, null, null);
+        }
+        a.a(paramContext, locala.ijc);
+        AppMethodBeat.o(71455);
+      }
+    });
+    if (paramBoolean1)
     {
       paramString2.setVisibility(0);
       paramString3.setVisibility(8);
     }
     for (;;)
     {
-      locala.Rm(2131297018).b(new a.6(paramContext, parama, localTextView1, paramc, paramString4, paramString5, localTextView2));
-      com.tencent.mm.ui.tools.b.c.d(paramc).QS(20).a(null);
-      locala.fv(paramString1);
+      locala.aaF(2131755835).b(new f.c()
+      {
+        public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
+        {
+          AppMethodBeat.i(71459);
+          if ((this.val$context instanceof MMActivity)) {
+            if (parama != null) {
+              if (!bt.isNullOrNil(localTextView1.getText().toString().trim())) {
+                break label119;
+              }
+            }
+          }
+          label119:
+          for (paramAnonymousBoolean = true;; paramAnonymousBoolean = false)
+          {
+            parama.a(paramAnonymousBoolean, paramc.getText().toString().trim(), paramString4, paramString5, localTextView2.getText().toString().trim());
+            if ((this.val$context instanceof MMActivity)) {
+              aq.f(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(71458);
+                  ((MMActivity)a.6.this.val$context).hideVKB();
+                  AppMethodBeat.o(71458);
+                }
+              });
+            }
+            AppMethodBeat.o(71459);
+            return;
+          }
+        }
+      });
+      c.d(paramc).aaj(20).a(null);
+      locala.gu(paramString1);
       locala.show();
       if ((paramContext instanceof MMActivity)) {
-        locala.gwf.getContentView().post(new a.7(paramContext));
+        locala.ijc.getContentView().post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(71460);
+            if ((this.AsZ) && (localTextView2 != null) && (com.tencent.mm.compatible.util.d.lf(28))) {
+              localTextView2.requestFocus();
+            }
+            ((MMActivity)paramContext).showVKB();
+            AppMethodBeat.o(71460);
+          }
+        });
       }
-      al.d(new a.8(paramContext, paramc));
-      AppMethodBeat.o(47863);
+      aq.f(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(71461);
+          ((InputMethodManager)this.val$context.getSystemService("input_method")).showSoftInput(paramc, 2);
+          AppMethodBeat.o(71461);
+        }
+      });
+      AppMethodBeat.o(71465);
       return null;
       paramString2.setVisibility(8);
       paramString3.setVisibility(0);
       localTextView1.setText(paramString4 + "  " + paramString5);
       localTextView2.setText(paramString6);
-      paramString1.findViewById(2131828925).setOnClickListener(new a.4(parama, paramc, paramString4, paramString5, localTextView2, paramContext, locala));
-      paramString1.findViewById(2131828926).setOnClickListener(new a.5(paramString2, paramString3, localTextView1, localTextView2));
+      paramString1.findViewById(2131299540).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(71456);
+          if (this.Ata != null) {
+            this.Ata.a(false, paramc.getText().toString().trim(), paramString4, paramString5, localTextView2.getText().toString().trim());
+          }
+          a.a(paramContext, locala.ijc);
+          AppMethodBeat.o(71456);
+        }
+      });
+      paramString1.findViewById(2131298985).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(71457);
+          this.Ate.setVisibility(0);
+          paramString3.setVisibility(8);
+          localTextView1.setText("");
+          localTextView2.setText("");
+          AppMethodBeat.o(71457);
+        }
+      });
     }
   }
   
   private static void a(Context paramContext, Dialog paramDialog)
   {
-    AppMethodBeat.i(47864);
+    AppMethodBeat.i(71466);
     if ((paramContext instanceof MMActivity)) {
       ((MMActivity)paramContext).addDialog(paramDialog);
     }
-    AppMethodBeat.o(47864);
+    AppMethodBeat.o(71466);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract boolean a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.a
  * JD-Core Version:    0.7.0.1
  */

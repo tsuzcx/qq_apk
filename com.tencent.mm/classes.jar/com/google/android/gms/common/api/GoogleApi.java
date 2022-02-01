@@ -48,7 +48,7 @@ public class GoogleApi<O extends Api.ApiOptions>
   @KeepForSdk
   public GoogleApi(Activity paramActivity, Api<O> paramApi, O paramO, Settings paramSettings)
   {
-    AppMethodBeat.i(60509);
+    AppMethodBeat.i(11001);
     Preconditions.checkNotNull(paramActivity, "Null activity is not permitted.");
     Preconditions.checkNotNull(paramApi, "Api must not be null.");
     Preconditions.checkNotNull(paramSettings, "Settings must not be null; use Settings.DEFAULT_SETTINGS instead.");
@@ -63,7 +63,7 @@ public class GoogleApi<O extends Api.ApiOptions>
     this.zzcp = paramSettings.zzcr;
     zzad.zza(paramActivity, this.zzcq, this.zzcm);
     this.zzcq.zza(this);
-    AppMethodBeat.o(60509);
+    AppMethodBeat.o(11001);
   }
   
   @Deprecated
@@ -71,14 +71,14 @@ public class GoogleApi<O extends Api.ApiOptions>
   public GoogleApi(Activity paramActivity, Api<O> paramApi, O paramO, StatusExceptionMapper paramStatusExceptionMapper)
   {
     this(paramActivity, paramApi, paramO, new GoogleApi.Settings.Builder().setMapper(paramStatusExceptionMapper).setLooper(paramActivity.getMainLooper()).build());
-    AppMethodBeat.i(60511);
-    AppMethodBeat.o(60511);
+    AppMethodBeat.i(11003);
+    AppMethodBeat.o(11003);
   }
   
   @KeepForSdk
   protected GoogleApi(Context paramContext, Api<O> paramApi, Looper paramLooper)
   {
-    AppMethodBeat.i(60507);
+    AppMethodBeat.i(10999);
     Preconditions.checkNotNull(paramContext, "Null context is not permitted.");
     Preconditions.checkNotNull(paramApi, "Api must not be null.");
     Preconditions.checkNotNull(paramLooper, "Looper must not be null.");
@@ -91,7 +91,7 @@ public class GoogleApi<O extends Api.ApiOptions>
     this.zzcq = GoogleApiManager.zzb(this.mContext);
     this.mId = this.zzcq.zzbg();
     this.zzcp = new ApiExceptionMapper();
-    AppMethodBeat.o(60507);
+    AppMethodBeat.o(10999);
   }
   
   @Deprecated
@@ -99,14 +99,14 @@ public class GoogleApi<O extends Api.ApiOptions>
   public GoogleApi(Context paramContext, Api<O> paramApi, O paramO, Looper paramLooper, StatusExceptionMapper paramStatusExceptionMapper)
   {
     this(paramContext, paramApi, paramO, new GoogleApi.Settings.Builder().setLooper(paramLooper).setMapper(paramStatusExceptionMapper).build());
-    AppMethodBeat.i(60508);
-    AppMethodBeat.o(60508);
+    AppMethodBeat.i(11000);
+    AppMethodBeat.o(11000);
   }
   
   @KeepForSdk
   public GoogleApi(Context paramContext, Api<O> paramApi, O paramO, Settings paramSettings)
   {
-    AppMethodBeat.i(60510);
+    AppMethodBeat.i(11002);
     Preconditions.checkNotNull(paramContext, "Null context is not permitted.");
     Preconditions.checkNotNull(paramApi, "Api must not be null.");
     Preconditions.checkNotNull(paramSettings, "Settings must not be null; use Settings.DEFAULT_SETTINGS instead.");
@@ -120,7 +120,7 @@ public class GoogleApi<O extends Api.ApiOptions>
     this.mId = this.zzcq.zzbg();
     this.zzcp = paramSettings.zzcr;
     this.zzcq.zza(this);
-    AppMethodBeat.o(60510);
+    AppMethodBeat.o(11002);
   }
   
   @Deprecated
@@ -128,26 +128,26 @@ public class GoogleApi<O extends Api.ApiOptions>
   public GoogleApi(Context paramContext, Api<O> paramApi, O paramO, StatusExceptionMapper paramStatusExceptionMapper)
   {
     this(paramContext, paramApi, paramO, new GoogleApi.Settings.Builder().setMapper(paramStatusExceptionMapper).build());
-    AppMethodBeat.i(60512);
-    AppMethodBeat.o(60512);
+    AppMethodBeat.i(11004);
+    AppMethodBeat.o(11004);
   }
   
   private final <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T zza(int paramInt, T paramT)
   {
-    AppMethodBeat.i(60513);
+    AppMethodBeat.i(11005);
     paramT.zzx();
     this.zzcq.zza(this, paramInt, paramT);
-    AppMethodBeat.o(60513);
+    AppMethodBeat.o(11005);
     return paramT;
   }
   
   private final <TResult, A extends Api.AnyClient> Task<TResult> zza(int paramInt, TaskApiCall<A, TResult> paramTaskApiCall)
   {
-    AppMethodBeat.i(60514);
+    AppMethodBeat.i(11006);
     TaskCompletionSource localTaskCompletionSource = new TaskCompletionSource();
     this.zzcq.zza(this, paramInt, paramTaskApiCall, localTaskCompletionSource, this.zzcp);
     paramTaskApiCall = localTaskCompletionSource.getTask();
-    AppMethodBeat.o(60514);
+    AppMethodBeat.o(11006);
     return paramTaskApiCall;
   }
   
@@ -160,7 +160,7 @@ public class GoogleApi<O extends Api.ApiOptions>
   @KeepForSdk
   protected ClientSettings.Builder createClientSettingsBuilder()
   {
-    AppMethodBeat.i(60526);
+    AppMethodBeat.i(11018);
     ClientSettings.Builder localBuilder = new ClientSettings.Builder();
     if ((this.zzcl instanceof Api.ApiOptions.HasGoogleSignInAccountOptions))
     {
@@ -170,19 +170,19 @@ public class GoogleApi<O extends Api.ApiOptions>
         localObject = ((GoogleSignInAccount)localObject).getAccount();
         localBuilder = localBuilder.setAccount((Account)localObject);
         if (!(this.zzcl instanceof Api.ApiOptions.HasGoogleSignInAccountOptions)) {
-          break label150;
+          break label152;
         }
         localObject = ((Api.ApiOptions.HasGoogleSignInAccountOptions)this.zzcl).getGoogleSignInAccount();
         if (localObject == null) {
-          break label150;
+          break label152;
         }
       }
     }
-    label150:
+    label152:
     for (Object localObject = ((GoogleSignInAccount)localObject).getRequestedScopes();; localObject = Collections.emptySet())
     {
       localObject = localBuilder.addAllRequiredScopes((Collection)localObject).setRealClientClassName(this.mContext.getClass().getName()).setRealClientPackageName(this.mContext.getPackageName());
-      AppMethodBeat.o(60526);
+      AppMethodBeat.o(11018);
       return localObject;
       if ((this.zzcl instanceof Api.ApiOptions.HasAccountOptions))
       {
@@ -197,87 +197,87 @@ public class GoogleApi<O extends Api.ApiOptions>
   @KeepForSdk
   protected Task<Boolean> disconnectService()
   {
-    AppMethodBeat.i(60524);
+    AppMethodBeat.i(11016);
     Task localTask = this.zzcq.zzc(this);
-    AppMethodBeat.o(60524);
+    AppMethodBeat.o(11016);
     return localTask;
   }
   
   @KeepForSdk
   public <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T doBestEffortWrite(T paramT)
   {
-    AppMethodBeat.i(60519);
+    AppMethodBeat.i(11011);
     paramT = zza(2, paramT);
-    AppMethodBeat.o(60519);
+    AppMethodBeat.o(11011);
     return paramT;
   }
   
   @KeepForSdk
   public <TResult, A extends Api.AnyClient> Task<TResult> doBestEffortWrite(TaskApiCall<A, TResult> paramTaskApiCall)
   {
-    AppMethodBeat.i(60520);
+    AppMethodBeat.i(11012);
     paramTaskApiCall = zza(2, paramTaskApiCall);
-    AppMethodBeat.o(60520);
+    AppMethodBeat.o(11012);
     return paramTaskApiCall;
   }
   
   @KeepForSdk
   public <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T doRead(T paramT)
   {
-    AppMethodBeat.i(60515);
+    AppMethodBeat.i(11007);
     paramT = zza(0, paramT);
-    AppMethodBeat.o(60515);
+    AppMethodBeat.o(11007);
     return paramT;
   }
   
   @KeepForSdk
   public <TResult, A extends Api.AnyClient> Task<TResult> doRead(TaskApiCall<A, TResult> paramTaskApiCall)
   {
-    AppMethodBeat.i(60516);
+    AppMethodBeat.i(11008);
     paramTaskApiCall = zza(0, paramTaskApiCall);
-    AppMethodBeat.o(60516);
+    AppMethodBeat.o(11008);
     return paramTaskApiCall;
   }
   
   @KeepForSdk
   public <A extends Api.AnyClient, T extends RegisterListenerMethod<A, ?>, U extends UnregisterListenerMethod<A, ?>> Task<Void> doRegisterEventListener(T paramT, U paramU)
   {
-    AppMethodBeat.i(60521);
+    AppMethodBeat.i(11013);
     Preconditions.checkNotNull(paramT);
     Preconditions.checkNotNull(paramU);
     Preconditions.checkNotNull(paramT.getListenerKey(), "Listener has already been released.");
     Preconditions.checkNotNull(paramU.getListenerKey(), "Listener has already been released.");
     Preconditions.checkArgument(paramT.getListenerKey().equals(paramU.getListenerKey()), "Listener registration and unregistration methods must be constructed with the same ListenerHolder.");
     paramT = this.zzcq.zza(this, paramT, paramU);
-    AppMethodBeat.o(60521);
+    AppMethodBeat.o(11013);
     return paramT;
   }
   
   @KeepForSdk
   public Task<Boolean> doUnregisterEventListener(ListenerHolder.ListenerKey<?> paramListenerKey)
   {
-    AppMethodBeat.i(60522);
+    AppMethodBeat.i(11014);
     Preconditions.checkNotNull(paramListenerKey, "Listener key cannot be null.");
     paramListenerKey = this.zzcq.zza(this, paramListenerKey);
-    AppMethodBeat.o(60522);
+    AppMethodBeat.o(11014);
     return paramListenerKey;
   }
   
   @KeepForSdk
   public <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T doWrite(T paramT)
   {
-    AppMethodBeat.i(60517);
+    AppMethodBeat.i(11009);
     paramT = zza(1, paramT);
-    AppMethodBeat.o(60517);
+    AppMethodBeat.o(11009);
     return paramT;
   }
   
   @KeepForSdk
   public <TResult, A extends Api.AnyClient> Task<TResult> doWrite(TaskApiCall<A, TResult> paramTaskApiCall)
   {
-    AppMethodBeat.i(60518);
+    AppMethodBeat.i(11010);
     paramTaskApiCall = zza(1, paramTaskApiCall);
-    AppMethodBeat.o(60518);
+    AppMethodBeat.o(11010);
     return paramTaskApiCall;
   }
   
@@ -312,26 +312,26 @@ public class GoogleApi<O extends Api.ApiOptions>
   @KeepForSdk
   public <L> ListenerHolder<L> registerListener(L paramL, String paramString)
   {
-    AppMethodBeat.i(60523);
+    AppMethodBeat.i(11015);
     paramL = ListenerHolders.createListenerHolder(paramL, this.zzcn, paramString);
-    AppMethodBeat.o(60523);
+    AppMethodBeat.o(11015);
     return paramL;
   }
   
   public Api.Client zza(Looper paramLooper, GoogleApiManager.zza<O> paramzza)
   {
-    AppMethodBeat.i(60525);
+    AppMethodBeat.i(11017);
     ClientSettings localClientSettings = createClientSettingsBuilder().build();
     paramLooper = this.mApi.zzk().buildClient(this.mContext, paramLooper, localClientSettings, this.zzcl, paramzza, paramzza);
-    AppMethodBeat.o(60525);
+    AppMethodBeat.o(11017);
     return paramLooper;
   }
   
   public zzby zza(Context paramContext, Handler paramHandler)
   {
-    AppMethodBeat.i(60527);
+    AppMethodBeat.i(11019);
     paramContext = new zzby(paramContext, paramHandler, createClientSettingsBuilder().build());
-    AppMethodBeat.o(60527);
+    AppMethodBeat.o(11019);
     return paramContext;
   }
   
@@ -350,9 +350,9 @@ public class GoogleApi<O extends Api.ApiOptions>
     
     static
     {
-      AppMethodBeat.i(60506);
+      AppMethodBeat.i(10998);
       DEFAULT_SETTINGS = new Builder().build();
-      AppMethodBeat.o(60506);
+      AppMethodBeat.o(10998);
     }
     
     @KeepForSdk
@@ -371,7 +371,7 @@ public class GoogleApi<O extends Api.ApiOptions>
       @KeepForSdk
       public GoogleApi.Settings build()
       {
-        AppMethodBeat.i(60505);
+        AppMethodBeat.i(10997);
         if (this.zzcp == null) {
           this.zzcp = new ApiExceptionMapper();
         }
@@ -379,27 +379,27 @@ public class GoogleApi<O extends Api.ApiOptions>
           this.zzcn = Looper.getMainLooper();
         }
         GoogleApi.Settings localSettings = new GoogleApi.Settings(this.zzcp, null, this.zzcn, null);
-        AppMethodBeat.o(60505);
+        AppMethodBeat.o(10997);
         return localSettings;
       }
       
       @KeepForSdk
       public Builder setLooper(Looper paramLooper)
       {
-        AppMethodBeat.i(60504);
+        AppMethodBeat.i(10996);
         Preconditions.checkNotNull(paramLooper, "Looper must not be null.");
         this.zzcn = paramLooper;
-        AppMethodBeat.o(60504);
+        AppMethodBeat.o(10996);
         return this;
       }
       
       @KeepForSdk
       public Builder setMapper(StatusExceptionMapper paramStatusExceptionMapper)
       {
-        AppMethodBeat.i(60503);
+        AppMethodBeat.i(10995);
         Preconditions.checkNotNull(paramStatusExceptionMapper, "StatusExceptionMapper must not be null.");
         this.zzcp = paramStatusExceptionMapper;
-        AppMethodBeat.o(60503);
+        AppMethodBeat.o(10995);
         return this;
       }
     }

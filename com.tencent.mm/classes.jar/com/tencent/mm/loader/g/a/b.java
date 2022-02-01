@@ -2,70 +2,67 @@ package com.tencent.mm.loader.g.a;
 
 import com.tencent.mm.loader.g.a;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 public final class b
-  extends ThreadPoolExecutor
+  extends com.tencent.e.b
   implements a
 {
-  private ReentrantLock ePI = new ReentrantLock();
-  private Condition ePJ = this.ePI.newCondition();
-  private BlockingQueue<Runnable> ePK;
+  private ReentrantLock gln = new ReentrantLock();
+  private Condition glo = this.gln.newCondition();
+  private BlockingQueue<Runnable> glp;
   private boolean isPaused;
   
-  public b(int paramInt1, int paramInt2, TimeUnit paramTimeUnit, BlockingQueue<Runnable> paramBlockingQueue, ThreadFactory paramThreadFactory)
+  public b(String paramString, int paramInt1, int paramInt2, BlockingQueue<Runnable> paramBlockingQueue)
   {
-    super(paramInt1, paramInt2, 0L, paramTimeUnit, paramBlockingQueue, paramThreadFactory);
-    this.ePK = paramBlockingQueue;
+    super(paramString, paramInt1, paramInt2, paramBlockingQueue);
+    this.glp = paramBlockingQueue;
   }
   
   /* Error */
-  protected final void beforeExecute(java.lang.Thread paramThread, Runnable paramRunnable)
+  public final void beforeExecute(java.lang.Thread paramThread, Runnable paramRunnable)
   {
     // Byte code:
     //   0: aload_0
     //   1: aload_1
     //   2: aload_2
-    //   3: invokespecial 44	java/util/concurrent/ThreadPoolExecutor:beforeExecute	(Ljava/lang/Thread;Ljava/lang/Runnable;)V
+    //   3: invokespecial 43	com/tencent/e/b:beforeExecute	(Ljava/lang/Thread;Ljava/lang/Runnable;)V
     //   6: aload_0
-    //   7: getfield 27	com/tencent/mm/loader/g/a/b:ePI	Ljava/util/concurrent/locks/ReentrantLock;
-    //   10: invokevirtual 47	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   7: getfield 26	com/tencent/mm/loader/g/a/b:gln	Ljava/util/concurrent/locks/ReentrantLock;
+    //   10: invokevirtual 46	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   13: aload_0
-    //   14: getfield 49	com/tencent/mm/loader/g/a/b:isPaused	Z
+    //   14: getfield 48	com/tencent/mm/loader/g/a/b:isPaused	Z
     //   17: ifeq +46 -> 63
     //   20: aload_0
-    //   21: getfield 33	com/tencent/mm/loader/g/a/b:ePJ	Ljava/util/concurrent/locks/Condition;
-    //   24: invokeinterface 54 1 0
+    //   21: getfield 32	com/tencent/mm/loader/g/a/b:glo	Ljava/util/concurrent/locks/Condition;
+    //   24: invokeinterface 53 1 0
     //   29: goto -16 -> 13
     //   32: astore_2
     //   33: aload_1
-    //   34: invokevirtual 59	java/lang/Thread:interrupt	()V
-    //   37: ldc 61
-    //   39: ldc 63
+    //   34: invokevirtual 58	java/lang/Thread:interrupt	()V
+    //   37: ldc 60
+    //   39: ldc 62
     //   41: iconst_1
-    //   42: anewarray 65	java/lang/Object
+    //   42: anewarray 64	java/lang/Object
     //   45: dup
     //   46: iconst_0
     //   47: aload_2
-    //   48: invokevirtual 69	java/lang/Exception:toString	()Ljava/lang/String;
+    //   48: invokevirtual 68	java/lang/Exception:toString	()Ljava/lang/String;
     //   51: aastore
-    //   52: invokestatic 75	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   52: invokestatic 74	com/tencent/mm/sdk/platformtools/ad:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   55: aload_0
-    //   56: getfield 27	com/tencent/mm/loader/g/a/b:ePI	Ljava/util/concurrent/locks/ReentrantLock;
-    //   59: invokevirtual 78	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   56: getfield 26	com/tencent/mm/loader/g/a/b:gln	Ljava/util/concurrent/locks/ReentrantLock;
+    //   59: invokevirtual 77	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   62: return
     //   63: aload_0
-    //   64: getfield 27	com/tencent/mm/loader/g/a/b:ePI	Ljava/util/concurrent/locks/ReentrantLock;
-    //   67: invokevirtual 78	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   64: getfield 26	com/tencent/mm/loader/g/a/b:gln	Ljava/util/concurrent/locks/ReentrantLock;
+    //   67: invokevirtual 77	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   70: return
     //   71: astore_1
     //   72: aload_0
-    //   73: getfield 27	com/tencent/mm/loader/g/a/b:ePI	Ljava/util/concurrent/locks/ReentrantLock;
-    //   76: invokevirtual 78	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   73: getfield 26	com/tencent/mm/loader/g/a/b:gln	Ljava/util/concurrent/locks/ReentrantLock;
+    //   76: invokevirtual 77	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   79: aload_1
     //   80: athrow
     // Local variable table:
@@ -87,7 +84,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.g.a.b
  * JD-Core Version:    0.7.0.1
  */

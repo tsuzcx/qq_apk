@@ -1,73 +1,30 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
-import java.io.File;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface o
-  extends com.tencent.luggage.a.b
 {
-  public abstract j Y(String paramString, boolean paramBoolean);
-  
-  public abstract j Z(String paramString, boolean paramBoolean);
-  
-  public abstract j a(com.tencent.mm.plugin.appbrand.s.j<String> paramj);
-  
-  public abstract j a(File paramFile, String paramString, com.tencent.mm.plugin.appbrand.s.j<String> paramj);
-  
-  public abstract j a(File paramFile, String paramString, boolean paramBoolean, com.tencent.mm.plugin.appbrand.s.j<String> paramj);
-  
-  public abstract j a(String paramString, FileStructStat paramFileStructStat);
-  
-  public abstract j a(String paramString, com.tencent.mm.plugin.appbrand.s.j<List<h>> paramj);
-  
-  public abstract j a(String paramString, File paramFile, boolean paramBoolean);
-  
-  public abstract j a(String paramString, InputStream paramInputStream, boolean paramBoolean);
-  
-  public abstract File aa(String paramString, boolean paramBoolean);
-  
-  public abstract List<? extends a> awJ();
-  
-  public abstract j b(String paramString, com.tencent.mm.plugin.appbrand.s.j<ByteBuffer> paramj);
-  
-  public abstract j b(String paramString, File paramFile);
-  
-  public abstract boolean bL(String paramString);
-  
-  public abstract j h(String paramString, List<u> paramList);
-  
-  public abstract void initialize();
-  
-  public abstract void release();
-  
-  public abstract j zd(String paramString);
-  
-  public abstract j ze(String paramString);
-  
-  public abstract j zf(String paramString);
-  
-  public abstract File zg(String paramString);
-  
-  public abstract com.tencent.mm.vfs.b zh(String paramString);
-  
-  public abstract boolean zi(String paramString);
-  
-  public abstract InputStream zj(String paramString);
-  
-  public static abstract interface a
+  public static enum a
   {
-    public abstract long awE();
+    static
+    {
+      AppMethodBeat.i(146954);
+      iSO = new a("NONE", 0);
+      iSP = new a("UNKNOWN", 1);
+      iSQ = new a("MISSING_PARAMS", 2);
+      iSR = new a("NO_SUCH_KEY", 3);
+      iSS = new a("QUOTA_REACHED", 4);
+      iST = new a("MEMORY_ISSUE", 5);
+      iSU = new a[] { iSO, iSP, iSQ, iSR, iSS, iST };
+      AppMethodBeat.o(146954);
+    }
     
-    public abstract String getFileName();
-    
-    public abstract long lastModified();
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.o
  * JD-Core Version:    0.7.0.1
  */

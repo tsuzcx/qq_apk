@@ -1,6 +1,5 @@
 package com.github.henryye.nativeiv;
 
-import android.graphics.Bitmap.Config;
 import com.github.henryye.nativeiv.bitmap.BitmapType;
 import com.github.henryye.nativeiv.bitmap.IBitmap;
 import com.github.henryye.nativeiv.bitmap.c;
@@ -11,11 +10,11 @@ import java.io.InputStream;
 final class b$a
   implements IBitmap<Object>
 {
-  public final void decodeInputStream(InputStream paramInputStream, Bitmap.Config paramConfig, c paramc)
+  public final void decodeInputStream(InputStream paramInputStream, ImageDecodeConfig paramImageDecodeConfig, c paramc)
   {
-    AppMethodBeat.i(115745);
+    AppMethodBeat.i(127332);
     paramInputStream = new IOException("Stub");
-    AppMethodBeat.o(115745);
+    AppMethodBeat.o(127332);
     throw paramInputStream;
   }
   
@@ -38,7 +37,7 @@ final class b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.github.henryye.nativeiv.b.a
  * JD-Core Version:    0.7.0.1
  */

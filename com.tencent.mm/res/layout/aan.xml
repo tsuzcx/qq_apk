@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/q1"
+<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/h6" android:gravity="center" android:background="@drawable/w6" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:text="@string/crw" android:singleLine="false" style="@style/ml" />
-    <FrameLayout android:padding="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.ui.base.MMClearEditText android:id="@id/cv9" android:background="@drawable/n3" android:hint="@string/crv" android:imeOptions="actionDone" style="@style/mk" />
-    </FrameLayout>
-    <RelativeLayout android:orientation="horizontal" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_marginTop="15.0dip" style="@style/kz">
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true">
-            <Button android:layout_gravity="bottom|center|left" android:id="@id/cv_" style="@style/qz" />
-        </LinearLayout>
-    </RelativeLayout>
+    <ListView android:id="@id/car" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
 </LinearLayout>

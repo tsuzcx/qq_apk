@@ -7,15 +7,15 @@ import com.tencent.mm.plugin.appbrand.widget.o;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract j auH();
+  public abstract j aOE();
   
-  public abstract o auI();
+  public abstract o aOG();
   
-  public abstract g auN();
+  public abstract g aOL();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.a.a
  * JD-Core Version:    0.7.0.1
  */

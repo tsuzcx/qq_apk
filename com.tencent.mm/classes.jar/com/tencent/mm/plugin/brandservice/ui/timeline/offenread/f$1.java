@@ -1,56 +1,27 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.ae;
-import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.x.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
-final class f$1
-  extends ae
+public final class f$1
+  implements x.a
 {
-  f$1(f paramf, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public f$1(f paramf) {}
   
-  public final PointF bI(int paramInt)
+  public final int a(int paramInt1, int paramInt2, String paramString, b paramb, n paramn)
   {
-    AppMethodBeat.i(14347);
-    PointF localPointF = ((LinearLayoutManager)this.jZB.jZy.getLayoutManager()).bI(paramInt);
-    AppMethodBeat.o(14347);
-    return localPointF;
-  }
-  
-  public final int bM(int paramInt)
-  {
-    AppMethodBeat.i(14346);
-    paramInt = super.bM(paramInt);
-    AppMethodBeat.o(14346);
-    return paramInt;
-  }
-  
-  public final float c(DisplayMetrics paramDisplayMetrics)
-  {
-    return 80.0F / paramDisplayMetrics.densityDpi;
-  }
-  
-  public final int iA()
-  {
-    return -1;
-  }
-  
-  public final void onStop()
-  {
-    AppMethodBeat.i(14348);
-    super.onStop();
-    AppMethodBeat.o(14348);
+    AppMethodBeat.i(6136);
+    ad.i("MicroMsg.BizTimeLineOftenReadReport", "often_read_bar_report CGI return, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(6136);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.offenread.f.1
  * JD-Core Version:    0.7.0.1
  */

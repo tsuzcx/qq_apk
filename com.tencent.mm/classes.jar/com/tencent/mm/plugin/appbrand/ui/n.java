@@ -1,38 +1,50 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.b.c;
-import com.tencent.mm.plugin.appbrand.b.d;
-import com.tencent.mm.plugin.appbrand.b.d.a;
-import com.tencent.mm.plugin.appbrand.b.f;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.k;
+import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import d.l;
 
-class n
-  extends f
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIEnterAnimationCompleteIPCNotify;", "", "()V", "doNotify", "", "processName", "", "appBrandUiName", "IPC_Notify", "plugin-appbrand-integration_release"})
+public final class n
 {
-  private k iPE;
+  public static final n lDa;
   
-  n(Activity paramActivity, k paramk)
+  static
   {
-    super(paramActivity);
-    this.iPE = paramk;
+    AppMethodBeat.i(51152);
+    lDa = new n();
+    AppMethodBeat.o(51152);
   }
   
-  public void awv()
+  public static void dU(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(114422);
-    i locali = this.iPE.atG();
-    if (locali != null) {
-      locali.gPL.gYj.a(d.a.gYD);
+    AppMethodBeat.i(51151);
+    Object localObject = (CharSequence)paramString1;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(51151);
+      return;
     }
-    AppMethodBeat.o(114422);
+    localObject = paramString2;
+    if (paramString2 == null) {
+      localObject = "null";
+    }
+    XIPCInvoker.a(paramString1, new IPCString((String)localObject), a.class, null);
+    AppMethodBeat.o(51151);
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIEnterAnimationCompleteIPCNotify$IPC_Notify;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-appbrand-integration_release"})
+  static final class a
+    implements b<IPCString, IPCVoid>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.n
  * JD-Core Version:    0.7.0.1
  */

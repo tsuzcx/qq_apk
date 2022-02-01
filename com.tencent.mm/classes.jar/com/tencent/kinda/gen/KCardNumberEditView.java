@@ -7,7 +7,11 @@ public abstract interface KCardNumberEditView
   
   public abstract String getHint();
   
-  public abstract long getHintColor();
+  public abstract DynamicColor getHintColor();
+  
+  public abstract int getInputTextLength();
+  
+  public abstract DynamicColor getTextColor();
   
   public abstract String getValue();
   
@@ -17,13 +21,17 @@ public abstract interface KCardNumberEditView
   
   public abstract void setHint(String paramString);
   
-  public abstract void setHintColor(long paramLong);
+  public abstract void setHintColor(DynamicColor paramDynamicColor);
   
   public abstract void setOnTextChangedCallback(KCardNumberEditViewOnTextChangedCallback paramKCardNumberEditViewOnTextChangedCallback);
+  
+  public abstract void setText(String paramString);
+  
+  public abstract void setTextColor(DynamicColor paramDynamicColor);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.gen.KCardNumberEditView
  * JD-Core Version:    0.7.0.1
  */

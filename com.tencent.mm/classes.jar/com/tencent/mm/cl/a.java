@@ -1,82 +1,66 @@
 package com.tencent.mm.cl;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory.Options;
-import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.io.File;
+import d.g.b.k;
+import d.l;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/transvoice/TransVoiceTools;", "", "()V", "Companion", "plugin-audiologic_release"})
 public final class a
 {
-  public static int a(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
+  private static boolean FFt;
+  private static String FFu;
+  private static boolean FFv;
+  public static final a FFw;
+  private static String yYd;
+  
+  static
   {
-    int k = paramOptions.outHeight;
-    int m = paramOptions.outWidth;
-    int i = 1;
-    int j;
-    for (;;)
-    {
-      j = i;
-      if (m / i <= paramInt1) {
-        break;
-      }
-      i += 1;
-    }
-    while (k / j > paramInt2) {
-      j += 1;
-    }
-    return j;
+    AppMethodBeat.i(148679);
+    FFw = new a((byte)0);
+    yYd = "";
+    FFu = "";
+    AppMethodBeat.o(148679);
   }
   
-  public static void avA(String paramString)
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/transvoice/TransVoiceTools$Companion;", "", "()V", "inNewTransVoiceScene", "", "getInNewTransVoiceScene", "()Z", "setInNewTransVoiceScene", "(Z)V", "inTransVoiceScene", "getInTransVoiceScene", "setInTransVoiceScene", "newVoiceFileName", "", "getNewVoiceFileName", "()Ljava/lang/String;", "setNewVoiceFileName", "(Ljava/lang/String;)V", "voiceFileName", "getVoiceFileName", "setVoiceFileName", "isNewTransVoiceScene", "fileName", "isTransVoiceScene", "plugin-audiologic_release"})
+  public static final class a
   {
-    int i = 0;
-    AppMethodBeat.i(116370);
-    ab.i("MicroMsg.MMPhotoEditUtil", "[deleteDirAllFile] dir:%s", new Object[] { paramString });
-    paramString = new File(paramString);
-    if (paramString.exists())
+    public static boolean aJT(String paramString)
     {
-      paramString = paramString.listFiles();
-      if (paramString != null)
+      AppMethodBeat.i(148678);
+      if ((a.eOQ()) && (k.g(a.eOP(), paramString)))
       {
-        int j = paramString.length;
-        while (i < j)
-        {
-          Object localObject = paramString[i];
-          if ((localObject.isFile()) && (!bo.isNullOrNil(localObject.getName())) && (localObject.getName().startsWith("wx_photo_edit_"))) {
-            localObject.delete();
-          }
-          i += 1;
-        }
+        AppMethodBeat.o(148678);
+        return true;
       }
+      AppMethodBeat.o(148678);
+      return false;
     }
-    AppMethodBeat.o(116370);
-  }
-  
-  public static String avz(String paramString)
-  {
-    AppMethodBeat.i(116368);
-    paramString = e.esI + String.format("%s%d.%s", new Object[] { "wx_photo_edit_", Long.valueOf(System.currentTimeMillis()), paramString });
-    AppMethodBeat.o(116368);
-    return paramString;
-  }
-  
-  public static int bC(float paramFloat)
-  {
-    AppMethodBeat.i(116369);
-    int i = (int)(ah.getContext().getResources().getDisplayMetrics().density * paramFloat + 0.5F);
-    AppMethodBeat.o(116369);
-    return i;
+    
+    public static void aJU(String paramString)
+    {
+      AppMethodBeat.i(185491);
+      k.h(paramString, "<set-?>");
+      a.aJS(paramString);
+      AppMethodBeat.o(185491);
+    }
+    
+    public static boolean aJV(String paramString)
+    {
+      AppMethodBeat.i(185492);
+      if ((a.eOS()) && (k.g(a.eOR(), paramString)))
+      {
+        AppMethodBeat.o(185492);
+        return true;
+      }
+      AppMethodBeat.o(185492);
+      return false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.cl.a
  * JD-Core Version:    0.7.0.1
  */

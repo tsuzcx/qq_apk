@@ -14,21 +14,21 @@ public class h
   public h()
   {
     super("attribute vec4 position;\nattribute vec4 inputTextureCoordinate;\n \nuniform mat4 textureTransform;\nvarying vec2 textureCoordinate;\n \nvoid main()\n{\n    gl_Position = position;\n    textureCoordinate = (textureTransform * inputTextureCoordinate).xy;\n}", "#extension GL_OES_EGL_image_external : require\n\nvarying lowp vec2 textureCoordinate;\n \nuniform samplerExternalOES inputImageTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(inputImageTexture, textureCoordinate);\n}");
-    AppMethodBeat.i(146565);
+    AppMethodBeat.i(14502);
     this.s = new float[16];
     this.r = false;
     this.o = true;
-    AppMethodBeat.o(146565);
+    AppMethodBeat.o(14502);
   }
   
   public void a(int paramInt, FloatBuffer paramFloatBuffer1, FloatBuffer paramFloatBuffer2)
   {
-    AppMethodBeat.i(146567);
+    AppMethodBeat.i(14504);
     GLES20.glUseProgram(this.a);
     k();
     if ((!m()) || (this.s == null))
     {
-      AppMethodBeat.o(146567);
+      AppMethodBeat.o(14504);
       return;
     }
     paramFloatBuffer1.position(0);
@@ -48,7 +48,7 @@ public class h
     GLES20.glDisableVertexAttribArray(this.b);
     GLES20.glDisableVertexAttribArray(this.d);
     GLES20.glBindTexture(36197, 0);
-    AppMethodBeat.o(146567);
+    AppMethodBeat.o(14504);
   }
   
   public void a(float[] paramArrayOfFloat)
@@ -58,21 +58,21 @@ public class h
   
   public boolean b()
   {
-    AppMethodBeat.i(146566);
+    AppMethodBeat.i(14503);
     boolean bool = super.b();
     this.t = GLES20.glGetUniformLocation(this.a, "textureTransform");
     if ((bool) && (GLES20.glGetError() == 0))
     {
-      AppMethodBeat.o(146566);
+      AppMethodBeat.o(14503);
       return true;
     }
-    AppMethodBeat.o(146566);
+    AppMethodBeat.o(14503);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.d.h
  * JD-Core Version:    0.7.0.1
  */

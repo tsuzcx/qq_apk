@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/f40" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center" android:id="@id/a4_" android:background="@drawable/a3x" android:paddingLeft="@dimen/ci" android:paddingTop="@dimen/c0" android:paddingRight="@dimen/ci" android:paddingBottom="@dimen/c0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" />
+</RelativeLayout>

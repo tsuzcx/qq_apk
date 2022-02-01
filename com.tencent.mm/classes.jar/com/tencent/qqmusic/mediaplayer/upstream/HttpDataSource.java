@@ -26,40 +26,40 @@ public class HttpDataSource
   
   public void close()
   {
-    AppMethodBeat.i(104553);
+    AppMethodBeat.i(76544);
     if (this.mediaHTTPConnection != null) {
       this.mediaHTTPConnection.disconnect();
     }
-    AppMethodBeat.o(104553);
+    AppMethodBeat.o(76544);
   }
   
   public AudioFormat.AudioType getAudioType()
   {
-    AppMethodBeat.i(104552);
+    AppMethodBeat.i(76543);
     AudioFormat.AudioType localAudioType = FormatDetector.getAudioFormat(this, false);
-    AppMethodBeat.o(104552);
+    AppMethodBeat.o(76543);
     return localAudioType;
   }
   
   public long getSize()
   {
-    AppMethodBeat.i(104551);
+    AppMethodBeat.i(76542);
     long l = this.mediaHTTPConnection.getSize();
-    AppMethodBeat.o(104551);
+    AppMethodBeat.o(76542);
     return l;
   }
   
   public void open()
   {
-    AppMethodBeat.i(104549);
+    AppMethodBeat.i(76540);
     this.mediaHTTPConnection = this.service.makeHTTPConnection();
     this.mediaHTTPConnection.connect(new URL(this.uri.toString()), this.headers);
-    AppMethodBeat.o(104549);
+    AppMethodBeat.o(76540);
   }
   
   public int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(104550);
+    AppMethodBeat.i(76541);
     int i = 0;
     int j;
     do
@@ -68,7 +68,7 @@ public class HttpDataSource
       int k = this.mediaHTTPConnection.readAt(i + paramLong, paramArrayOfByte, j, paramInt2 - j);
       if (k < 0)
       {
-        AppMethodBeat.o(104550);
+        AppMethodBeat.o(76541);
         return k;
       }
       j = i;
@@ -78,13 +78,13 @@ public class HttpDataSource
       j = i + k;
       i = j;
     } while (j < paramInt2);
-    AppMethodBeat.o(104550);
+    AppMethodBeat.o(76541);
     return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.HttpDataSource
  * JD-Core Version:    0.7.0.1
  */

@@ -4,161 +4,237 @@ import android.content.res.Resources;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.a.f;
-import com.tencent.mm.protocal.protobuf.ccl;
-import com.tencent.mm.protocal.protobuf.fz;
-import com.tencent.mm.protocal.protobuf.ga;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.modelappbrand.a.g;
+import com.tencent.mm.protocal.protobuf.ctg;
+import com.tencent.mm.protocal.protobuf.gu;
+import com.tencent.mm.protocal.protobuf.gv;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.ui.y;
 import java.util.LinkedList;
 import java.util.List;
 
 public class AppBrandIDCardShowFrag
   extends MMFragment
 {
-  private LinearLayout elj;
-  private TextView hsI;
-  AppBrandIDCardUI.a iQb;
-  private View iQc;
-  private ImageView iQd;
-  private RecyclerView iQe;
-  private TextView iQf;
-  private Button iQg;
-  private CheckBox iQh;
-  private TextView iQi;
-  private LinearLayout iQj;
-  private View iQk;
-  private TextView iQl;
-  private TextView iQm;
+  private RecyclerView fPw;
+  private ImageView fxT;
+  private LinearLayout fyb;
+  private TextView lEA;
+  private TextView lEB;
+  private Button lEC;
+  private CheckBox lED;
+  private TextView lEE;
+  private LinearLayout lEF;
+  private View lEG;
+  private TextView lEH;
+  private TextView lEI;
+  AppBrandIDCardUI.a lEy;
+  private View lEz;
   private com.tencent.mm.ui.a mActionBarHelper;
   
-  public void dealContentView(View paramView)
+  public void dealContentView(final View paramView)
   {
-    AppMethodBeat.i(133213);
-    if ((this.iQb == null) || (this.iQb.aME() == null))
+    AppMethodBeat.i(48920);
+    if ((this.lEy == null) || (this.lEy.boT() == null))
     {
-      ab.e("MicroMsg.AppBrandIDCardShowFrag", "idCardUILogic or idCardUILogic.getIDCardShowInfo() is null, err");
-      AppMethodBeat.o(133213);
+      ad.e("MicroMsg.AppBrandIDCardShowFrag", "idCardUILogic or idCardUILogic.getIDCardShowInfo() is null, err");
+      AppMethodBeat.o(48920);
       return;
     }
-    this.elj = ((LinearLayout)paramView.findViewById(2131821225));
-    this.iQd = ((ImageView)paramView.findViewById(2131821226));
-    this.hsI = ((TextView)paramView.findViewById(2131821227));
-    this.iQe = ((RecyclerView)paramView.findViewById(2131821229));
-    this.iQf = ((TextView)paramView.findViewById(2131821230));
-    this.iQg = ((Button)paramView.findViewById(2131821233));
-    this.iQh = ((CheckBox)paramView.findViewById(2131821231));
-    this.iQi = ((TextView)paramView.findViewById(2131821232));
-    this.iQj = ((LinearLayout)paramView.findViewById(2131821222));
-    this.iQk = paramView.findViewById(2131821235);
-    this.iQl = ((TextView)paramView.findViewById(2131821234));
-    this.iQm = ((TextView)paramView.findViewById(2131821236));
-    this.iQc = w.hM(getContext()).inflate(2130968613, null);
-    this.iQc.setBackgroundColor(getResources().getColor(2131690316));
-    this.mActionBarHelper = new com.tencent.mm.ui.a(this.iQc);
-    paramView = new LinearLayout.LayoutParams(-1, com.tencent.mm.plugin.appbrand.widget.b.di(getActivity()));
-    this.elj.addView(this.iQc, 0, paramView);
-    paramView = this.iQb.aME();
+    this.fyb = ((LinearLayout)paramView.findViewById(2131296747));
+    this.fxT = ((ImageView)paramView.findViewById(2131296744));
+    this.lEA = ((TextView)paramView.findViewById(2131296743));
+    this.fPw = ((RecyclerView)paramView.findViewById(2131296749));
+    this.lEB = ((TextView)paramView.findViewById(2131296740));
+    this.lEC = ((Button)paramView.findViewById(2131296742));
+    this.lED = ((CheckBox)paramView.findViewById(2131296741));
+    this.lEE = ((TextView)paramView.findViewById(2131296833));
+    this.lEF = ((LinearLayout)paramView.findViewById(2131296739));
+    this.lEG = paramView.findViewById(2131296752);
+    this.lEH = ((TextView)paramView.findViewById(2131296750));
+    this.lEI = ((TextView)paramView.findViewById(2131296751));
+    this.lEz = y.js(getContext()).inflate(2131492921, null);
+    this.lEz.setBackgroundColor(getResources().getColor(2131100705));
+    this.mActionBarHelper = new com.tencent.mm.ui.a(this.lEz);
+    paramView = new LinearLayout.LayoutParams(-1, com.tencent.mm.plugin.appbrand.widget.b.dL(getActivity()));
+    this.fyb.addView(this.lEz, 0, paramView);
+    paramView = this.lEy.boT();
     this.mActionBarHelper.setTitle(paramView.title);
-    this.mActionBarHelper.b(new AppBrandIDCardShowFrag.1(this));
-    com.tencent.mm.modelappbrand.a.b.acD().a(this.iQd, paramView.xvU, com.tencent.mm.modelappbrand.a.a.acC(), f.fqU);
-    this.hsI.setText(paramView.fhP + " " + paramView.xMS);
-    if (paramView.xMT != null)
+    this.mActionBarHelper.e(new View.OnClickListener()
     {
-      this.iQe.setVisibility(0);
-      RecyclerView localRecyclerView = this.iQe;
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(48909);
+        if (AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this) != null) {
+          AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).back();
+        }
+        AppMethodBeat.o(48909);
+      }
+    });
+    com.tencent.mm.modelappbrand.a.b.aub().a(this.fxT, paramView.DRl, com.tencent.mm.modelappbrand.a.a.aua(), g.gSK);
+    this.lEA.setText(paramView.gIw + " " + paramView.EkR);
+    if (paramView.EkS != null)
+    {
+      this.fPw.setVisibility(0);
+      RecyclerView localRecyclerView = this.fPw;
       getContext();
       localRecyclerView.setLayoutManager(new LinearLayoutManager());
-      this.iQe.setAdapter(new a(paramView.xMT));
-      this.iQf.setText(paramView.xMU);
-      if (bo.isNullOrNil(paramView.xMV)) {
+      this.fPw.setAdapter(new a(paramView.EkS));
+      this.lEB.setText(paramView.EkT);
+      if (bt.isNullOrNil(paramView.EkU)) {
         break label655;
       }
-      this.iQg.setText(paramView.xMV);
+      this.lEC.setText(paramView.EkU);
       label446:
-      ab.i("MicroMsg.AppBrandIDCardShowFrag", "idCardShowInfo.auth_checked:%b", new Object[] { Boolean.valueOf(paramView.xMZ) });
-      this.iQh.setChecked(paramView.xMZ);
-      this.iQg.setEnabled(paramView.xMZ);
-      if (bo.isNullOrNil(paramView.xNa)) {
+      ad.i("MicroMsg.AppBrandIDCardShowFrag", "idCardShowInfo.auth_checked:%b", new Object[] { Boolean.valueOf(paramView.EkY) });
+      this.lED.setChecked(paramView.EkY);
+      this.lEC.setEnabled(paramView.EkY);
+      if (bt.isNullOrNil(paramView.EkZ)) {
         break label672;
       }
-      this.iQh.setText(paramView.xNa);
+      this.lED.setText(paramView.EkZ);
     }
     for (;;)
     {
-      this.iQh.setOnCheckedChangeListener(new AppBrandIDCardShowFrag.2(this));
-      this.iQg.setOnClickListener(new AppBrandIDCardShowFrag.3(this));
-      if (paramView.xMW != null)
+      this.lED.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
       {
-        this.iQi.setText(paramView.xMW.name);
-        this.iQi.setOnClickListener(new AppBrandIDCardShowFrag.4(this, paramView));
+        public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+        {
+          AppMethodBeat.i(48910);
+          if (AppBrandIDCardShowFrag.b(AppBrandIDCardShowFrag.this) != null) {
+            AppBrandIDCardShowFrag.b(AppBrandIDCardShowFrag.this).setEnabled(paramAnonymousBoolean);
+          }
+          AppMethodBeat.o(48910);
+        }
+      });
+      this.lEC.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(48911);
+          ad.i("MicroMsg.AppBrandIDCardShowFrag", "verifyPayPassword click");
+          if (AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this) != null) {
+            AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).boR();
+          }
+          AppMethodBeat.o(48911);
+        }
+      });
+      if (paramView.EkV != null)
+      {
+        this.lEE.setText(paramView.EkV.name);
+        this.lEE.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(48912);
+            if (AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this) != null) {
+              AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).MX(paramView.EkV.url);
+            }
+            AppMethodBeat.o(48912);
+          }
+        });
       }
-      if (paramView.xMX == null) {
+      if (paramView.EkW == null) {
         break label900;
       }
-      ab.d("MicroMsg.AppBrandIDCardShowFrag", "idCardShowInfo.jump_list size:%d", new Object[] { Integer.valueOf(paramView.xMX.size()) });
-      if (paramView.xMX.size() != 0) {
+      ad.d("MicroMsg.AppBrandIDCardShowFrag", "idCardShowInfo.jump_list size:%d", new Object[] { Integer.valueOf(paramView.EkW.size()) });
+      if (paramView.EkW.size() != 0) {
         break label689;
       }
-      this.iQj.setVisibility(8);
-      AppMethodBeat.o(133213);
+      this.lEF.setVisibility(8);
+      AppMethodBeat.o(48920);
       return;
-      ab.e("MicroMsg.AppBrandIDCardShowFrag", "idCardShowInfo.user_id_list is null");
-      this.iQe.setVisibility(8);
+      ad.e("MicroMsg.AppBrandIDCardShowFrag", "idCardShowInfo.user_id_list is null");
+      this.fPw.setVisibility(8);
       break;
       label655:
-      this.iQg.setText(getString(2131296679));
+      this.lEC.setText(getString(2131755460));
       break label446;
       label672:
-      this.iQh.setText(getString(2131296680));
+      this.lED.setText(getString(2131755461));
     }
     label689:
-    if (paramView.xMX.size() == 1)
+    if (paramView.EkW.size() == 1)
     {
-      this.iQj.setVisibility(0);
-      this.iQk.setVisibility(8);
-      this.iQm.setVisibility(8);
-      if (paramView.xMX.get(0) != null)
+      this.lEF.setVisibility(0);
+      this.lEG.setVisibility(8);
+      this.lEI.setVisibility(8);
+      if (paramView.EkW.get(0) != null)
       {
-        this.iQl.setText(((ga)paramView.xMX.get(0)).name);
-        this.iQl.setOnClickListener(new AppBrandIDCardShowFrag.5(this, paramView));
-        AppMethodBeat.o(133213);
+        this.lEH.setText(((gv)paramView.EkW.get(0)).name);
+        this.lEH.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(48913);
+            if (AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this) != null) {
+              AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).MY(((gv)paramView.EkW.get(0)).url);
+            }
+            AppMethodBeat.o(48913);
+          }
+        });
+        AppMethodBeat.o(48920);
       }
     }
     else
     {
-      this.iQj.setVisibility(0);
-      this.iQk.setVisibility(0);
-      this.iQm.setVisibility(0);
-      if (paramView.xMX.get(0) != null)
+      this.lEF.setVisibility(0);
+      this.lEG.setVisibility(0);
+      this.lEI.setVisibility(0);
+      if (paramView.EkW.get(0) != null)
       {
-        this.iQl.setText(((ga)paramView.xMX.get(0)).name);
-        this.iQl.setOnClickListener(new AppBrandIDCardShowFrag.6(this, paramView));
+        this.lEH.setText(((gv)paramView.EkW.get(0)).name);
+        this.lEH.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(48914);
+            ad.i("MicroMsg.AppBrandIDCardShowFrag", "urlJump click");
+            if (AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this) != null) {
+              AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).MY(((gv)paramView.EkW.get(0)).url);
+            }
+            AppMethodBeat.o(48914);
+          }
+        });
       }
-      if (paramView.xMX.get(1) != null)
+      if (paramView.EkW.get(1) != null)
       {
-        this.iQm.setText(((ga)paramView.xMX.get(1)).name);
-        this.iQm.setOnClickListener(new AppBrandIDCardShowFrag.7(this, paramView));
+        this.lEI.setText(((gv)paramView.EkW.get(1)).name);
+        this.lEI.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(48915);
+            if (AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this) != null) {
+              AppBrandIDCardShowFrag.a(AppBrandIDCardShowFrag.this).MZ(((gv)paramView.EkW.get(1)).url);
+            }
+            AppMethodBeat.o(48915);
+          }
+        });
       }
     }
     label900:
-    AppMethodBeat.o(133213);
+    AppMethodBeat.o(48920);
   }
   
   public int getLayoutId()
   {
-    return 2130968690;
+    return 2131493003;
   }
   
   public boolean noActionBar()
@@ -168,11 +244,11 @@ public class AppBrandIDCardShowFrag
   
   public void onSwipeBack()
   {
-    AppMethodBeat.i(133214);
-    if (this.iQb != null) {
-      this.iQb.onSwipeBack();
+    AppMethodBeat.i(48921);
+    if (this.lEy != null) {
+      this.lEy.onSwipeBack();
     }
-    AppMethodBeat.o(133214);
+    AppMethodBeat.o(48921);
   }
   
   public boolean supportNavigationSwipeBack()
@@ -181,32 +257,48 @@ public class AppBrandIDCardShowFrag
   }
   
   public static final class a
-    extends RecyclerView.a<AppBrandIDCardShowFrag.a.a>
+    extends RecyclerView.a<a>
   {
-    private List<fz> iQp;
+    private List<gu> lEL;
     
-    public a(List<fz> paramList)
+    public a(List<gu> paramList)
     {
-      this.iQp = paramList;
+      this.lEL = paramList;
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(133210);
-      if (this.iQp == null)
+      AppMethodBeat.i(48917);
+      if (this.lEL == null)
       {
-        AppMethodBeat.o(133210);
+        AppMethodBeat.o(48917);
         return 0;
       }
-      int i = this.iQp.size();
-      AppMethodBeat.o(133210);
+      int i = this.lEL.size();
+      AppMethodBeat.o(48917);
       return i;
+    }
+    
+    public static final class a
+      extends RecyclerView.v
+    {
+      public TextView ftj;
+      public TextView lEM;
+      
+      public a(View paramView)
+      {
+        super();
+        AppMethodBeat.i(48916);
+        this.ftj = ((TextView)paramView.findViewById(2131296745));
+        this.lEM = ((TextView)paramView.findViewById(2131296746));
+        AppMethodBeat.o(48916);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.autofill.AppBrandIDCardShowFrag
  * JD-Core Version:    0.7.0.1
  */

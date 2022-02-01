@@ -10,9 +10,9 @@ final class zzbh
   
   public final void onBackgroundStateChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(60836);
+    AppMethodBeat.i(11328);
     GoogleApiManager.zza(this.zzjy).sendMessage(GoogleApiManager.zza(this.zzjy).obtainMessage(1, Boolean.valueOf(paramBoolean)));
-    AppMethodBeat.o(60836);
+    AppMethodBeat.o(11328);
   }
 }
 

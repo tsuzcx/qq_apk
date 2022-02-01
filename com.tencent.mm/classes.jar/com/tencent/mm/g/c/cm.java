@@ -8,13 +8,13 @@ public abstract class cm
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dfA = "payMsgId".hashCode();
-  private static final int dfD = "msgId".hashCode();
+  private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dfw = true;
-  private boolean dfz = true;
-  public long field_msgId;
-  public String field_payMsgId;
+  private static final int value_HASHCODE = "value".hashCode();
+  private boolean __hadSetkey = true;
+  private boolean __hadSetvalue = true;
+  public String field_key;
+  public byte[] field_value;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,11 +29,11 @@ public abstract class cm
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dfA != k) {
+      if (key_HASHCODE != k) {
         break label65;
       }
-      this.field_payMsgId = paramCursor.getString(i);
-      this.dfw = true;
+      this.field_key = paramCursor.getString(i);
+      this.__hadSetkey = true;
     }
     for (;;)
     {
@@ -41,8 +41,8 @@ public abstract class cm
       break label20;
       break;
       label65:
-      if (dfD == k) {
-        this.field_msgId = paramCursor.getLong(i);
+      if (value_HASHCODE == k) {
+        this.field_value = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +52,11 @@ public abstract class cm
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dfw) {
-      localContentValues.put("payMsgId", this.field_payMsgId);
+    if (this.__hadSetkey) {
+      localContentValues.put("key", this.field_key);
     }
-    if (this.dfz) {
-      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
+    if (this.__hadSetvalue) {
+      localContentValues.put("value", this.field_value);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -66,7 +66,7 @@ public abstract class cm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.cm
  * JD-Core Version:    0.7.0.1
  */

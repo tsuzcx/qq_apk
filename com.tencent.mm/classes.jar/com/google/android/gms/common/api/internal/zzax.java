@@ -13,9 +13,9 @@ final class zzax
   
   public final void onConnected(Bundle paramBundle)
   {
-    AppMethodBeat.i(60810);
+    AppMethodBeat.i(11302);
     zzav.zza(this.zzit, (GoogleApiClient)this.zziu.get(), this.zziv, true);
-    AppMethodBeat.o(60810);
+    AppMethodBeat.o(11302);
   }
   
   public final void onConnectionSuspended(int paramInt) {}

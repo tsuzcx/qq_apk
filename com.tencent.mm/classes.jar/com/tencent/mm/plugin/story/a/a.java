@@ -1,42 +1,45 @@
 package com.tencent.mm.plugin.story.a;
 
-import a.f.b.j;
-import a.l;
 import android.animation.AnimatorSet;
 import android.support.v4.view.t;
 import android.view.View;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/animation/BaseViewAnimator;", "", "()V", "<set-?>", "Landroid/animation/AnimatorSet;", "animatorAgent", "getAnimatorAgent", "()Landroid/animation/AnimatorSet;", "setAnimatorAgent", "(Landroid/animation/AnimatorSet;)V", "isRunning", "", "()Z", "isStarted", "mDuration", "", "mRepeatMode", "", "mRepeatTimes", "startDelay", "getStartDelay", "()J", "addAnimatorListener", "l", "Landroid/animation/Animator$AnimatorListener;", "animate", "", "cancel", "getDuration", "prepare", "target", "Landroid/view/View;", "removeAllListener", "removeAnimatorListener", "reset", "restart", "setDuration", "duration", "setInterpolator", "interpolator", "Landroid/view/animation/Interpolator;", "setRepeatMode", "repeatMode", "setRepeatTimes", "repeatTimes", "setStartDelay", "delay", "setTarget", "start", "Companion", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/animation/BaseViewAnimator;", "", "()V", "<set-?>", "Landroid/animation/AnimatorSet;", "animatorAgent", "getAnimatorAgent", "()Landroid/animation/AnimatorSet;", "isRunning", "", "()Z", "isStarted", "mDuration", "", "mRepeatMode", "", "mRepeatTimes", "startDelay", "getStartDelay", "()J", "addAnimatorListener", "l", "Landroid/animation/Animator$AnimatorListener;", "animate", "", "cancel", "getDuration", "prepare", "target", "Landroid/view/View;", "removeAllListener", "removeAnimatorListener", "reset", "restart", "setDuration", "duration", "setInterpolator", "interpolator", "Landroid/view/animation/Interpolator;", "setRepeatMode", "repeatMode", "setRepeatTimes", "repeatTimes", "setStartDelay", "delay", "setTarget", "start", "Companion", "plugin-story_release"})
 public abstract class a
 {
-  private static final long sqJ = 1000L;
-  public static final a.a sqK = new a.a((byte)0);
-  public long mDuration = sqJ;
-  public AnimatorSet sqG = new AnimatorSet();
-  public int sqH;
-  public int sqI = 1;
+  private static final long jTY = 1000L;
+  public static final a ycX = new a((byte)0);
+  public long mDuration = jTY;
+  public AnimatorSet ycU = new AnimatorSet();
+  public int ycV;
+  public int ycW = 1;
   
-  protected abstract void ee(View paramView);
+  protected abstract void eW(View paramView);
   
-  public final a ef(View paramView)
+  public final a eX(View paramView)
   {
-    j.q(paramView, "target");
-    j.q(paramView, "target");
+    k.h(paramView, "target");
+    k.h(paramView, "target");
     t.f(paramView, 1.0F);
     t.g(paramView, 1.0F);
     t.h(paramView, 1.0F);
-    t.ac(paramView);
+    t.ah(paramView);
     t.e(paramView, 0.0F);
-    t.ad(paramView);
-    t.af(paramView);
-    t.ae(paramView);
-    ee(paramView);
+    t.ai(paramView);
+    t.ak(paramView);
+    t.aj(paramView);
+    eW(paramView);
     return this;
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/animation/BaseViewAnimator$Companion;", "", "()V", "DURATION", "", "getDURATION", "()J", "plugin-story_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.a.a
  * JD-Core Version:    0.7.0.1
  */

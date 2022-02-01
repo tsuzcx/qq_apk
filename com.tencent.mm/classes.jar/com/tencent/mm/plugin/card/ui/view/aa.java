@@ -13,89 +13,89 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.at.a.a.c.a;
-import com.tencent.mm.at.o;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.plugin.card.base.b;
+import com.tencent.mm.aw.a.a.c.a;
+import com.tencent.mm.aw.o;
 import com.tencent.mm.plugin.card.d.j;
 import com.tencent.mm.plugin.card.d.l;
+import com.tencent.mm.plugin.card.d.n;
 import com.tencent.mm.plugin.card.model.CardInfo;
+import com.tencent.mm.plugin.card.model.m;
 import com.tencent.mm.plugin.card.ui.l.a;
 import com.tencent.mm.plugin.card.widget.CardTagTextView;
-import com.tencent.mm.protocal.protobuf.oj;
-import com.tencent.mm.protocal.protobuf.pg;
-import com.tencent.mm.protocal.protobuf.uo;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.qo;
+import com.tencent.mm.protocal.protobuf.ro;
+import com.tencent.mm.protocal.protobuf.xo;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public final class aa
   implements com.tencent.mm.plugin.card.base.c
 {
-  int itemHeight;
-  private BaseAdapter krV;
-  private int krZ;
-  protected LinkedList<CardTagTextView> ksd;
-  private int kyg;
-  int kyh;
+  int hr;
   private Context mContext;
+  int nDA;
+  private int nDz;
+  private BaseAdapter nxo;
+  private int nxs;
+  protected LinkedList<CardTagTextView> nxw;
   
   public aa(Context paramContext, BaseAdapter paramBaseAdapter)
   {
-    AppMethodBeat.i(88794);
-    this.ksd = new LinkedList();
+    AppMethodBeat.i(113721);
+    this.nxw = new LinkedList();
     this.mContext = paramContext;
-    this.krV = paramBaseAdapter;
-    this.kyg = this.mContext.getResources().getDimensionPixelSize(2131427861);
-    this.krZ = this.mContext.getResources().getDimensionPixelSize(2131427792);
-    this.kyh = this.mContext.getResources().getDimensionPixelOffset(2131428171);
-    this.itemHeight = this.mContext.getResources().getDimensionPixelOffset(2131428172);
-    AppMethodBeat.o(88794);
+    this.nxo = paramBaseAdapter;
+    this.nDz = this.mContext.getResources().getDimensionPixelSize(2131165575);
+    this.nxs = this.mContext.getResources().getDimensionPixelSize(2131165500);
+    this.nDA = this.mContext.getResources().getDimensionPixelOffset(2131165970);
+    this.hr = this.mContext.getResources().getDimensionPixelOffset(2131165971);
+    AppMethodBeat.o(113721);
   }
   
-  public final void V(View paramView, int paramInt)
+  public final void X(View paramView, int paramInt)
   {
-    AppMethodBeat.i(88797);
-    ((l.a)paramView.getTag()).kyi.setImageResource(paramInt);
-    AppMethodBeat.o(88797);
+    AppMethodBeat.i(113724);
+    ((l.a)paramView.getTag()).nDB.setImageResource(paramInt);
+    AppMethodBeat.o(113724);
   }
   
-  public final void W(View paramView, int paramInt)
+  public final void Y(View paramView, int paramInt)
   {
-    AppMethodBeat.i(88798);
-    ((l.a)paramView.getTag()).kyi.setVisibility(paramInt);
-    AppMethodBeat.o(88798);
+    AppMethodBeat.i(113725);
+    ((l.a)paramView.getTag()).nDB.setVisibility(paramInt);
+    AppMethodBeat.o(113725);
   }
   
-  public final View a(int paramInt, View paramView, b paramb)
+  public final View a(int paramInt, View paramView, com.tencent.mm.plugin.card.base.b paramb)
   {
-    AppMethodBeat.i(88796);
+    AppMethodBeat.i(113723);
     Object localObject1;
     label107:
     Object localObject2;
     if (paramView == null) {
-      switch (this.krV.getItemViewType(paramInt))
+      switch (this.nxo.getItemViewType(paramInt))
       {
       default: 
-        paramView = View.inflate(this.mContext, 2130968962, null);
-        localObject1 = new aa.a(this);
-        if ((paramb.bbh().equals("PRIVATE_TICKET_TITLE")) || (paramb.bbh().equals("PRIVATE_INVOICE_TITLE")))
+        paramView = View.inflate(this.mContext, 2131493313, null);
+        localObject1 = new a();
+        if ((paramb.bHZ().equals("PRIVATE_TICKET_TITLE")) || (paramb.bHZ().equals("PRIVATE_INVOICE_TITLE")))
         {
-          ((aa.a)localObject1).kBS = ((TextView)paramView.findViewById(2131822271));
+          ((a)localObject1).nIR = ((TextView)paramView.findViewById(2131297843));
           paramView.setTag(localObject1);
           localObject2 = paramView;
           label116:
-          if (((aa.a)localObject1).ksk != null)
+          if (((a)localObject1).nxD != null)
           {
-            float f = this.mContext.getResources().getDimension(2131427505);
-            ((aa.a)localObject1).ksk.setTextSize(0, f);
+            float f = this.mContext.getResources().getDimension(2131165199);
+            ((a)localObject1).nxD.setTextSize(0, f);
           }
-          if (!paramb.baQ()) {
+          if (!paramb.bHH()) {
             break label2016;
           }
-          if (!paramb.bbh().equals("PRIVATE_TICKET_TITLE")) {
+          if (!paramb.bHZ().equals("PRIVATE_TICKET_TITLE")) {
             break label783;
           }
-          ((aa.a)localObject1).kBS.setText(this.mContext.getString(2131298076));
+          ((a)localObject1).nIR.setText(this.mContext.getString(2131757018));
         }
         break;
       }
@@ -106,142 +106,142 @@ public final class aa
     Object localObject4;
     for (;;)
     {
-      if ((!paramb.bbh().equals("PRIVATE_TICKET_TITLE")) && (!paramb.bbh().equals("PRIVATE_INVOICE_TITLE")) && (!paramb.baP()))
+      if ((!paramb.bHZ().equals("PRIVATE_TICKET_TITLE")) && (!paramb.bHZ().equals("PRIVATE_INVOICE_TITLE")) && (!paramb.bHG()))
       {
-        paramb.bbd();
-        if ((paramInt != this.krV.getCount() - 1) || (((aa.a)localObject1).ksh == null)) {
+        paramb.bHV();
+        if ((paramInt != this.nxo.getCount() - 1) || (((a)localObject1).nxA == null)) {
           break label2156;
         }
-        paramView = (LinearLayout.LayoutParams)((aa.a)localObject1).ksh.getLayoutParams();
-        if (paramView.bottomMargin != this.mContext.getResources().getDimensionPixelOffset(2131427782))
+        paramView = (LinearLayout.LayoutParams)((a)localObject1).nxA.getLayoutParams();
+        if (paramView.bottomMargin != this.mContext.getResources().getDimensionPixelOffset(2131165490))
         {
-          paramView.bottomMargin = this.mContext.getResources().getDimensionPixelOffset(2131427782);
-          ((aa.a)localObject1).ksh.setLayoutParams(paramView);
+          paramView.bottomMargin = this.mContext.getResources().getDimensionPixelOffset(2131165490);
+          ((a)localObject1).nxA.setLayoutParams(paramView);
         }
       }
-      AppMethodBeat.o(88796);
+      AppMethodBeat.o(113723);
       return localObject2;
-      localObject1 = View.inflate(this.mContext, 2130968964, null);
-      if (paramb.bbh().equals("PRIVATE_TICKET_TITLE"))
+      localObject1 = View.inflate(this.mContext, 2131493315, null);
+      if (paramb.bHZ().equals("PRIVATE_TICKET_TITLE"))
       {
-        localObject2 = (TextView)((View)localObject1).findViewById(2131822271);
+        localObject2 = (TextView)((View)localObject1).findViewById(2131297843);
         paramView = (View)localObject1;
         if (localObject2 == null) {
           break;
         }
-        ((TextView)localObject2).setText(this.mContext.getString(2131298076));
+        ((TextView)localObject2).setText(this.mContext.getString(2131757018));
         paramView = (View)localObject1;
         break;
       }
       paramView = (View)localObject1;
-      if (!paramb.bbh().equals("PRIVATE_INVOICE_TITLE")) {
+      if (!paramb.bHZ().equals("PRIVATE_INVOICE_TITLE")) {
         break;
       }
-      localObject2 = (TextView)((View)localObject1).findViewById(2131822271);
+      localObject2 = (TextView)((View)localObject1).findViewById(2131297843);
       paramView = (View)localObject1;
       if (localObject2 == null) {
         break;
       }
-      ((TextView)localObject2).setText(this.mContext.getString(2131297961));
+      ((TextView)localObject2).setText(this.mContext.getString(2131756903));
       paramView = (View)localObject1;
       break;
-      paramView = View.inflate(this.mContext, 2130968962, null);
+      paramView = View.inflate(this.mContext, 2131493313, null);
       break;
-      paramView = View.inflate(this.mContext, 2130968967, null);
+      paramView = View.inflate(this.mContext, 2131493318, null);
       break;
-      if (paramb.baP())
+      if (paramb.bHG())
       {
-        ((aa.a)localObject1).kBT = ((TextView)paramView.findViewById(2131822275));
-        ((aa.a)localObject1).kBU = ((TextView)paramView.findViewById(2131822276));
-        ((aa.a)localObject1).kBV = ((TextView)paramView.findViewById(2131822277));
-        ((aa.a)localObject1).kBW = ((TextView)paramView.findViewById(2131822278));
+        ((a)localObject1).nIS = ((TextView)paramView.findViewById(2131297850));
+        ((a)localObject1).nIT = ((TextView)paramView.findViewById(2131297846));
+        ((a)localObject1).nIU = ((TextView)paramView.findViewById(2131297848));
+        ((a)localObject1).nIV = ((TextView)paramView.findViewById(2131297849));
         break label107;
       }
-      ((aa.a)localObject1).ksh = ((RelativeLayout)paramView.findViewById(2131821968));
-      ((aa.a)localObject1).ksi = ((ImageView)paramView.findViewById(2131821970));
-      ((aa.a)localObject1).kxs = paramView.findViewById(2131822267);
-      ((aa.a)localObject1).kxt = ((ImageView)paramView.findViewById(2131822268));
-      ((aa.a)localObject1).ksj = ((TextView)paramView.findViewById(2131821971));
-      ((aa.a)localObject1).ksk = ((TextView)paramView.findViewById(2131821973));
-      ((aa.a)localObject1).ksn = ((TextView)paramView.findViewById(2131821976));
-      ((aa.a)localObject1).kyi = ((ImageView)paramView.findViewById(2131822270));
-      ((aa.a)localObject1).kyk = ((ImageView)paramView.findViewById(2131822264));
-      ((aa.a)localObject1).kyl = ((ImageView)paramView.findViewById(2131822265));
-      ((aa.a)localObject1).kym = ((ImageView)paramView.findViewById(2131822266));
-      ((aa.a)localObject1).kyj = ((LinearLayout)paramView.findViewById(2131822269));
+      ((a)localObject1).nxA = ((RelativeLayout)paramView.findViewById(2131297771));
+      ((a)localObject1).nxB = ((ImageView)paramView.findViewById(2131297828));
+      ((a)localObject1).nCL = paramView.findViewById(2131297917);
+      ((a)localObject1).nCM = ((ImageView)paramView.findViewById(2131297916));
+      ((a)localObject1).nxC = ((TextView)paramView.findViewById(2131297743));
+      ((a)localObject1).nxD = ((TextView)paramView.findViewById(2131297863));
+      ((a)localObject1).nxG = ((TextView)paramView.findViewById(2131297864));
+      ((a)localObject1).nDB = ((ImageView)paramView.findViewById(2131297730));
+      ((a)localObject1).nDD = ((ImageView)paramView.findViewById(2131297737));
+      ((a)localObject1).nDE = ((ImageView)paramView.findViewById(2131297739));
+      ((a)localObject1).nDF = ((ImageView)paramView.findViewById(2131297738));
+      ((a)localObject1).nDC = ((LinearLayout)paramView.findViewById(2131297887));
       break label107;
-      localObject1 = (aa.a)paramView.getTag();
-      if (((aa.a)localObject1).kBS != null)
+      localObject1 = (a)paramView.getTag();
+      if (((a)localObject1).nIR != null)
       {
-        if (paramb.bbh().equals("PRIVATE_TICKET_TITLE"))
+        if (paramb.bHZ().equals("PRIVATE_TICKET_TITLE"))
         {
-          ((aa.a)localObject1).kBS.setText(this.mContext.getString(2131298076));
+          ((a)localObject1).nIR.setText(this.mContext.getString(2131757018));
           localObject2 = paramView;
           break label116;
         }
-        ((aa.a)localObject1).kBS.setText(this.mContext.getString(2131297961));
+        ((a)localObject1).nIR.setText(this.mContext.getString(2131756903));
       }
       localObject2 = paramView;
       break label116;
-      if (paramb.bbh().equals("PRIVATE_INVOICE_TITLE"))
+      if (paramb.bHZ().equals("PRIVATE_INVOICE_TITLE"))
       {
-        ((aa.a)localObject1).kBS.setText(this.mContext.getString(2131297961));
+        ((a)localObject1).nIR.setText(this.mContext.getString(2131756903));
       }
-      else if (paramb.baP())
+      else if (paramb.bHG())
       {
-        paramView = paramb.bbd().wFZ;
-        ((aa.a)localObject1).kBT.setText(((uo)paramView.get(0)).kmn);
-        ((aa.a)localObject1).kBV.setText(((uo)paramView.get(1)).kmn);
-        paramView = paramb.bbe().wDU;
-        localObject3 = String.format(this.mContext.getString(2131297972), new Object[] { ((uo)paramView.get(0)).kmn });
-        ((aa.a)localObject1).kBW.setText((CharSequence)localObject3);
+        paramView = paramb.bHV().CRF;
+        ((a)localObject1).nIS.setText(((xo)paramView.get(0)).nrs);
+        ((a)localObject1).nIU.setText(((xo)paramView.get(1)).nrs);
+        paramView = paramb.bHW().CPv;
+        localObject3 = String.format(this.mContext.getString(2131756914), new Object[] { ((xo)paramView.get(0)).nrs });
+        ((a)localObject1).nIV.setText((CharSequence)localObject3);
         if (paramView.size() >= 2) {
-          ((aa.a)localObject1).kBU.setText(((uo)paramView.get(1)).kmn);
+          ((a)localObject1).nIT.setText(((xo)paramView.get(1)).nrs);
         }
       }
       else
       {
-        if ((this.krV.getItem(paramInt) instanceof CardInfo))
+        if ((this.nxo.getItem(paramInt) instanceof CardInfo))
         {
-          localObject4 = (CardInfo)this.krV.getItem(paramInt);
+          localObject4 = (CardInfo)this.nxo.getItem(paramInt);
           if ((!((CardInfo)localObject4).field_card_id.equals("PRIVATE_TICKET_TITLE")) && (!((CardInfo)localObject4).field_card_id.equals("PRIVATE_INVOICE_TITLE"))) {
             break label1311;
           }
         }
         label1010:
-        ((aa.a)localObject1).ksh.setVisibility(0);
-        ((aa.a)localObject1).ksi.setVisibility(0);
-        ((aa.a)localObject1).ksk.setVisibility(0);
-        ((aa.a)localObject1).ksn.setVisibility(8);
-        ((aa.a)localObject1).ksj.setVisibility(0);
-        ((aa.a)localObject1).ksj.setText(paramb.bbd().knw);
-        ((aa.a)localObject1).ksk.setText(paramb.bbd().title);
-        if (!paramb.baN()) {
+        ((a)localObject1).nxA.setVisibility(0);
+        ((a)localObject1).nxB.setVisibility(0);
+        ((a)localObject1).nxD.setVisibility(0);
+        ((a)localObject1).nxG.setVisibility(8);
+        ((a)localObject1).nxC.setVisibility(0);
+        ((a)localObject1).nxC.setText(paramb.bHV().nsK);
+        ((a)localObject1).nxD.setText(paramb.bHV().title);
+        if (!paramb.bHE()) {
           break label1673;
         }
-        ((aa.a)localObject1).kxs.setVisibility(0);
-        ((aa.a)localObject1).ksi.setVisibility(4);
-        paramView = ((aa.a)localObject1).kxt;
-        if (TextUtils.isEmpty(paramb.bbd().wGh)) {
+        ((a)localObject1).nCL.setVisibility(0);
+        ((a)localObject1).nxB.setVisibility(4);
+        paramView = ((a)localObject1).nCM;
+        if (TextUtils.isEmpty(paramb.bHV().CRM)) {
           break label1651;
         }
-        i = this.mContext.getResources().getDimensionPixelSize(2131428180);
-        com.tencent.mm.plugin.card.d.m.a(this.mContext, paramView, paramb.bbd().wGh, i, l.IB(paramb.bbd().color));
+        i = this.mContext.getResources().getDimensionPixelSize(2131165979);
+        n.a(this.mContext, paramView, paramb.bHV().CRM, i, l.Rm(paramb.bHV().gHT));
         label1184:
-        if (!paramb.baL()) {
+        if (!paramb.bHC()) {
           break label1920;
         }
-        if (!bo.isNullOrNil(paramb.bbe().wEe)) {
+        if (!bt.isNullOrNil(paramb.bHW().CPF)) {
           break label1733;
         }
-        paramView = l.dR(l.IB(paramb.bbd().color), this.kyh);
-        ((aa.a)localObject1).ksh.setBackgroundDrawable(paramView);
-        ((aa.a)localObject1).kyk.setVisibility(8);
-        ((aa.a)localObject1).kyl.setVisibility(8);
-        ((aa.a)localObject1).kym.setVisibility(0);
+        paramView = l.eN(l.Rm(paramb.bHV().gHT), this.nDA);
+        ((a)localObject1).nxA.setBackgroundDrawable(paramView);
+        ((a)localObject1).nDD.setVisibility(8);
+        ((a)localObject1).nDE.setVisibility(8);
+        ((a)localObject1).nDF.setVisibility(0);
         label1266:
-        ((aa.a)localObject1).ksj.setTextColor(this.mContext.getResources().getColor(2131690709));
-        ((aa.a)localObject1).ksk.setTextColor(this.mContext.getResources().getColor(2131690709));
+        ((a)localObject1).nxC.setTextColor(this.mContext.getResources().getColor(2131101182));
+        ((a)localObject1).nxD.setTextColor(this.mContext.getResources().getColor(2131101182));
       }
     }
     label1311:
@@ -261,13 +261,13 @@ public final class aa
         i = 0;
         for (;;)
         {
-          if (i < ((aa.a)localObject1).kyj.getChildCount())
+          if (i < ((a)localObject1).nDC.getChildCount())
           {
-            localObject3 = (CardTagTextView)((aa.a)localObject1).kyj.getChildAt(i);
-            this.ksd.add(localObject3);
+            localObject3 = (CardTagTextView)((a)localObject1).nDC.getChildAt(i);
+            this.nxw.add(localObject3);
             i += 1;
             continue;
-            if (bo.isNullOrNil(((CardInfo)localObject4).field_label_wording)) {
+            if (bt.isNullOrNil(((CardInfo)localObject4).field_label_wording)) {
               break label2192;
             }
             i = 1;
@@ -275,96 +275,96 @@ public final class aa
             break;
           }
         }
-        ((aa.a)localObject1).kyj.removeAllViews();
-        ((aa.a)localObject1).kyj.setVisibility(0);
-        if (this.ksd.size() == 0)
+        ((a)localObject1).nDC.removeAllViews();
+        ((a)localObject1).nDC.setVisibility(0);
+        if (this.nxw.size() == 0)
         {
           localObject3 = new CardTagTextView(this.mContext);
           label1469:
-          ((CardTagTextView)localObject3).setPadding(this.krZ, this.kyg, this.krZ, this.kyg);
+          ((CardTagTextView)localObject3).setPadding(this.nxs, this.nDz, this.nxs, this.nDz);
           ((CardTagTextView)localObject3).setGravity(17);
-          ((CardTagTextView)localObject3).setMinWidth(this.mContext.getResources().getDimensionPixelSize(2131428177));
-          ((CardTagTextView)localObject3).setMinHeight(this.mContext.getResources().getDimensionPixelSize(2131428176));
-          if (!((CardInfo)localObject4).baL()) {
+          ((CardTagTextView)localObject3).setMinWidth(this.mContext.getResources().getDimensionPixelSize(2131165976));
+          ((CardTagTextView)localObject3).setMinHeight(this.mContext.getResources().getDimensionPixelSize(2131165975));
+          if (!((CardInfo)localObject4).bHC()) {
             break label1614;
           }
-          ((CardTagTextView)localObject3).setTextColor(com.tencent.mm.cb.a.m(this.mContext, 2131690709));
-          ((CardTagTextView)localObject3).setFillColor(com.tencent.mm.cb.a.m(this.mContext, 2131689846));
+          ((CardTagTextView)localObject3).setTextColor(com.tencent.mm.cd.a.n(this.mContext, 2131101182));
+          ((CardTagTextView)localObject3).setFillColor(com.tencent.mm.cd.a.n(this.mContext, 2131100107));
         }
         for (;;)
         {
           ((CardTagTextView)localObject3).setText(paramView);
           ((CardTagTextView)localObject3).setTextSize(1, 10.0F);
-          ((aa.a)localObject1).kyj.addView((View)localObject3);
+          ((a)localObject1).nDC.addView((View)localObject3);
           break;
-          localObject3 = (CardTagTextView)this.ksd.removeFirst();
+          localObject3 = (CardTagTextView)this.nxw.removeFirst();
           break label1469;
           label1614:
-          ((CardTagTextView)localObject3).setTextColor(com.tencent.mm.cb.a.m(this.mContext, 2131690214));
+          ((CardTagTextView)localObject3).setTextColor(com.tencent.mm.cd.a.n(this.mContext, 2131100547));
           ((CardTagTextView)localObject3).setFillColor(0);
         }
       }
-      ((aa.a)localObject1).kyj.setVisibility(8);
+      ((a)localObject1).nDC.setVisibility(8);
       break label1010;
       label1651:
-      com.tencent.mm.plugin.card.d.m.a(paramView, 2130838175, l.IB(paramb.bbd().color));
+      n.b(paramView, 2131231506, l.Rm(paramb.bHV().gHT));
       break label1184;
       label1673:
-      ((aa.a)localObject1).kxs.setVisibility(8);
-      ((aa.a)localObject1).ksi.setVisibility(0);
-      i = this.mContext.getResources().getDimensionPixelSize(2131428180);
-      com.tencent.mm.plugin.card.d.m.a(((aa.a)localObject1).ksi, paramb.bbd().kmm, i, 2130839758, true);
+      ((a)localObject1).nCL.setVisibility(8);
+      ((a)localObject1).nxB.setVisibility(0);
+      i = this.mContext.getResources().getDimensionPixelSize(2131165979);
+      n.a(((a)localObject1).nxB, paramb.bHV().gGR, i, 2131233400, true);
       break label1184;
       label1733:
-      ((aa.a)localObject1).ksh.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130838133));
-      ((aa.a)localObject1).kyk.setVisibility(0);
-      ((aa.a)localObject1).kyl.setVisibility(0);
-      paramView = ((aa.a)localObject1).kyk;
-      localObject3 = paramb.bbe().wEe;
+      ((a)localObject1).nxA.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131231461));
+      ((a)localObject1).nDD.setVisibility(0);
+      ((a)localObject1).nDE.setVisibility(0);
+      paramView = ((a)localObject1).nDD;
+      localObject3 = paramb.bHW().CPF;
       localObject4 = new c.a();
-      ((c.a)localObject4).eNP = e.eQz;
-      o.ahH();
-      ((c.a)localObject4).eOd = null;
-      ((c.a)localObject4).eNO = com.tencent.mm.plugin.card.model.m.HO((String)localObject3);
-      ((c.a)localObject4).eNM = true;
-      ((c.a)localObject4).eOf = true;
-      ((c.a)localObject4).eNK = true;
-      ((c.a)localObject4).eNY = 2130838133;
-      ((c.a)localObject4).eNT = com.tencent.mm.cb.a.ao(this.mContext, 2131428172);
-      ((c.a)localObject4).eNS = com.tencent.mm.cb.a.gw(this.mContext);
-      localObject4 = ((c.a)localObject4).ahY();
-      o.ahG().a((String)localObject3, paramView, (com.tencent.mm.at.a.a.c)localObject4);
+      ((c.a)localObject4).prefixPath = com.tencent.mm.loader.j.b.aih();
+      o.ayK();
+      ((c.a)localObject4).hkl = null;
+      ((c.a)localObject4).gjt = m.Qy((String)localObject3);
+      ((c.a)localObject4).hjU = true;
+      ((c.a)localObject4).hkn = true;
+      ((c.a)localObject4).hjS = true;
+      ((c.a)localObject4).hkf = 2131231461;
+      ((c.a)localObject4).gjw = com.tencent.mm.cd.a.ao(this.mContext, 2131165971);
+      ((c.a)localObject4).gjv = com.tencent.mm.cd.a.hV(this.mContext);
+      localObject4 = ((c.a)localObject4).azc();
+      o.ayJ().a((String)localObject3, paramView, (com.tencent.mm.aw.a.a.c)localObject4);
       paramView.setImageMatrix(new Matrix());
-      ((aa.a)localObject1).kym.setVisibility(8);
+      ((a)localObject1).nDF.setVisibility(8);
       break label1266;
       label1920:
-      ((aa.a)localObject1).kym.setVisibility(8);
-      ((aa.a)localObject1).kyk.setVisibility(8);
-      ((aa.a)localObject1).kyl.setVisibility(8);
-      ((aa.a)localObject1).ksh.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130838133));
-      ((aa.a)localObject1).ksk.setTextColor(this.mContext.getResources().getColor(2131689825));
-      ((aa.a)localObject1).ksj.setTextColor(this.mContext.getResources().getColor(2131689825));
+      ((a)localObject1).nDF.setVisibility(8);
+      ((a)localObject1).nDD.setVisibility(8);
+      ((a)localObject1).nDE.setVisibility(8);
+      ((a)localObject1).nxA.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131231461));
+      ((a)localObject1).nxD.setTextColor(this.mContext.getResources().getColor(2131100085));
+      ((a)localObject1).nxC.setTextColor(this.mContext.getResources().getColor(2131100085));
       break;
       label2016:
-      if ((paramb.bbh().equals("PRIVATE_TICKET_TITLE")) || (paramb.bbh().equals("PRIVATE_INVOICE_TITLE")) || (paramb.baP())) {
+      if ((paramb.bHZ().equals("PRIVATE_TICKET_TITLE")) || (paramb.bHZ().equals("PRIVATE_INVOICE_TITLE")) || (paramb.bHG())) {
         break;
       }
-      ((aa.a)localObject1).ksi.setVisibility(8);
-      ((aa.a)localObject1).ksk.setVisibility(8);
-      ((aa.a)localObject1).ksj.setVisibility(8);
-      ((aa.a)localObject1).kyj.setVisibility(8);
-      ((aa.a)localObject1).ksn.setVisibility(0);
-      paramView = l.dR(this.mContext.getResources().getColor(2131689845), this.kyh);
-      ((aa.a)localObject1).ksh.setBackgroundDrawable(paramView);
-      ((aa.a)localObject1).ksn.setText(this.mContext.getResources().getString(2131298005));
+      ((a)localObject1).nxB.setVisibility(8);
+      ((a)localObject1).nxD.setVisibility(8);
+      ((a)localObject1).nxC.setVisibility(8);
+      ((a)localObject1).nDC.setVisibility(8);
+      ((a)localObject1).nxG.setVisibility(0);
+      paramView = l.eN(this.mContext.getResources().getColor(2131100106), this.nDA);
+      ((a)localObject1).nxA.setBackgroundDrawable(paramView);
+      ((a)localObject1).nxG.setText(this.mContext.getResources().getString(2131756947));
       break;
       label2156:
-      paramView = (LinearLayout.LayoutParams)((aa.a)localObject1).ksh.getLayoutParams();
+      paramView = (LinearLayout.LayoutParams)((a)localObject1).nxA.getLayoutParams();
       if (paramView.bottomMargin == 0) {
         break label310;
       }
       paramView.bottomMargin = 0;
-      ((aa.a)localObject1).ksh.setLayoutParams(paramView);
+      ((a)localObject1).nxA.setLayoutParams(paramView);
       break label310;
       label2192:
       paramView = null;
@@ -373,33 +373,56 @@ public final class aa
   
   public final void a(View paramView, int paramInt, View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(88799);
-    CardInfo localCardInfo = (CardInfo)this.krV.getItem(paramInt);
+    AppMethodBeat.i(113726);
+    CardInfo localCardInfo = (CardInfo)this.nxo.getItem(paramInt);
     if ((localCardInfo.field_card_id.equals("PRIVATE_TICKET_TITLE")) || (localCardInfo.field_card_id.equals("PRIVATE_INVOICE_TITLE")))
     {
-      AppMethodBeat.o(88799);
+      AppMethodBeat.o(113726);
       return;
     }
-    paramView = (aa.a)paramView.getTag();
-    paramView.kyi.setTag(Integer.valueOf(paramInt));
-    paramView.kyi.setOnClickListener(paramOnClickListener);
-    AppMethodBeat.o(88799);
+    paramView = (a)paramView.getTag();
+    paramView.nDB.setTag(Integer.valueOf(paramInt));
+    paramView.nDB.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(113726);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(88795);
+    AppMethodBeat.i(113722);
     this.mContext = null;
-    this.krV = null;
-    if (this.ksd != null) {
-      this.ksd.clear();
+    this.nxo = null;
+    if (this.nxw != null) {
+      this.nxw.clear();
     }
-    AppMethodBeat.o(88795);
+    AppMethodBeat.o(113722);
+  }
+  
+  public final class a
+  {
+    public View nCL;
+    public ImageView nCM;
+    public ImageView nDB;
+    public LinearLayout nDC;
+    public ImageView nDD;
+    public ImageView nDE;
+    public ImageView nDF;
+    public TextView nIR;
+    public TextView nIS;
+    public TextView nIT;
+    public TextView nIU;
+    public TextView nIV;
+    public RelativeLayout nxA;
+    public ImageView nxB;
+    public TextView nxC;
+    public TextView nxD;
+    public TextView nxG;
+    
+    public a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.aa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.emoji.StoreBannerEmojiView android:id="@id/bj8" android:background="#ffcacaca" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/bj9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/afg" android:scaleType="centerInside" />
-</RelativeLayout>
+<ScrollView android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:orientation="horizontal" android:id="@id/h2n" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="16.0dip" android:textColor="@color/gb" android:id="@id/h2o" android:background="@drawable/aed" android:padding="16.0dip" android:text="@string/h_8" android:layout_alignParentLeft="true" style="@style/o4" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/h2h" android:padding="12.0dip" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:src="@raw/icons_outlined_help" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ft0" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textColor="@color/fg" android:gravity="center" android:id="@id/ft6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="19.0dip" android:layout_marginRight="@dimen/c5" style="@style/wf" />
+        <RelativeLayout android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c_" android:layout_marginTop="16.0dip" android:layout_marginRight="@dimen/c_">
+            <CheckBox android:id="@id/fsx" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" style="@style/oj" />
+            <TextView android:textSize="@dimen/gx" android:textColor="@color/a0i" android:id="@id/fsw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/fsx" android:lineSpacingMultiplier="1.4" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="24.0dip">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+                <Button android:ellipsize="end" android:id="@id/h2m" android:layout_marginBottom="40.0dip" android:singleLine="true" android:layout_above="@id/h2p" android:layout_alignParentLeft="true" style="@style/q1" />
+                <TextView android:textColor="@color/h1" android:gravity="center" android:id="@id/h2p" android:background="@drawable/aed" android:text="@string/h_g" android:layout_centerHorizontal="true" style="@style/n9" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

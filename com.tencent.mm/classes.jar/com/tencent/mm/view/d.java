@@ -1,45 +1,22 @@
 package com.tencent.mm.view;
 
-import android.content.Context;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.e;
-import com.tencent.mm.api.s.a;
+import d.l;
 
-public final class d
-  extends a
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/IViewActionCallback;", "Lcom/tencent/mm/view/IPreViewDataCallback;", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "libmmui_release"})
+public abstract interface d
+  extends c
 {
-  public d(Context paramContext, s.a parama)
-  {
-    super(paramContext, parama);
-  }
+  public abstract void at(int paramInt1, int paramInt2);
   
-  protected final com.tencent.mm.view.b.a dQM()
-  {
-    AppMethodBeat.i(116393);
-    com.tencent.mm.view.b.c localc = new com.tencent.mm.view.b.c(getContext(), getPresenter());
-    AppMethodBeat.o(116393);
-    return localc;
-  }
+  public abstract void au(int paramInt1, int paramInt2);
   
-  protected final com.tencent.mm.view.footer.a dQN()
-  {
-    AppMethodBeat.i(116394);
-    com.tencent.mm.view.footer.c localc = new com.tencent.mm.view.footer.c(getContext(), getPresenter());
-    AppMethodBeat.o(116394);
-    return localc;
-  }
+  public abstract void f(int paramInt1, int paramInt2, Object paramObject);
   
-  public final e[] getFeatures()
-  {
-    if (this.AQv == null) {
-      this.AQv = new e[] { e.bVW, e.bVY, e.bVX, e.bWb };
-    }
-    return this.AQv;
-  }
+  public abstract void onChanged();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.d
  * JD-Core Version:    0.7.0.1
  */

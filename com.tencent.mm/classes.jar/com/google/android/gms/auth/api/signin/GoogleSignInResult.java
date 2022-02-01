@@ -28,15 +28,15 @@ public class GoogleSignInResult
   
   public boolean isSuccess()
   {
-    AppMethodBeat.i(50396);
+    AppMethodBeat.i(88291);
     boolean bool = this.mStatus.isSuccess();
-    AppMethodBeat.o(50396);
+    AppMethodBeat.o(88291);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.GoogleSignInResult
  * JD-Core Version:    0.7.0.1
  */

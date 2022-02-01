@@ -8,59 +8,69 @@ import com.tencent.mm.sdk.b.b;
 
 public abstract interface a
 {
-  public abstract byte[] AO(int paramInt);
+  public abstract byte[] Iw(int paramInt);
   
-  public abstract String AP(int paramInt);
+  public abstract String Ix(int paramInt);
   
-  public abstract void AQ(int paramInt);
+  public abstract void Iy(int paramInt);
   
-  public abstract void VV(String paramString);
-  
-  public abstract void VW(String paramString);
-  
-  public abstract void VX(String paramString);
-  
-  public abstract boolean VY(String paramString);
-  
-  public abstract byte[] VZ(String paramString);
-  
-  public abstract void Wa(String paramString);
-  
-  public abstract boolean Wb(String paramString);
-  
-  public abstract byte[] Wc(String paramString);
-  
-  public abstract String Wd(String paramString);
+  public abstract byte[] Iz(int paramInt);
   
   public abstract void a(View paramView, Class<? extends b> paramClass);
   
   public abstract void a(String paramString, MotionEvent paramMotionEvent);
   
+  public abstract boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, PByteArray paramPByteArray);
+  
   public abstract boolean a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, PInt paramPInt1, PInt paramPInt2, PByteArray paramPByteArray);
   
-  public abstract void ad(int paramInt1, int paramInt2, int paramInt3);
+  public abstract String ajp(String paramString);
   
-  public abstract boolean bXh();
+  public abstract void ajr(String paramString);
   
-  public abstract boolean bXk();
+  public abstract void ajs(String paramString);
   
-  public abstract boolean bXl();
+  public abstract void ajt(String paramString);
   
-  public abstract boolean bXm();
+  public abstract boolean aju(String paramString);
   
-  public abstract String bXo();
+  public abstract byte[] ajv(String paramString);
   
-  public abstract boolean bXp();
+  public abstract void ajw(String paramString);
   
-  public abstract byte[] bXq();
+  public abstract boolean ajx(String paramString);
   
-  public abstract boolean bY(Object paramObject);
+  public abstract byte[] ajy(String paramString);
   
-  public abstract boolean d(Object paramObject, Class paramClass);
+  public abstract void am(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract void fD(String paramString1, String paramString2);
+  public abstract String cWO();
   
-  public abstract String jU(boolean paramBoolean);
+  public abstract boolean cWP();
+  
+  public abstract boolean cWQ();
+  
+  public abstract byte[] cWU();
+  
+  public abstract byte[] cWV();
+  
+  public abstract boolean cWW();
+  
+  public abstract byte[] cWX();
+  
+  public abstract boolean cWY();
+  
+  public abstract boolean dt(Object paramObject);
+  
+  public abstract boolean e(Object paramObject, Class paramClass);
+  
+  public abstract String getOAID();
+  
+  public abstract void hK(String paramString1, String paramString2);
+  
+  public abstract String nP(boolean paramBoolean);
+  
+  public abstract boolean z(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
-import com.tencent.mm.z.a.c;
-import com.tencent.mm.z.a.c.a;
+import com.tencent.mm.ab.a.c;
+import com.tencent.mm.ab.a.c.a;
 
 final class JsApiLogin$LoginTask$4
   implements c.a<c>
@@ -10,7 +10,7 @@ final class JsApiLogin$LoginTask$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.JsApiLogin.LoginTask.4
  * JD-Core Version:    0.7.0.1
  */

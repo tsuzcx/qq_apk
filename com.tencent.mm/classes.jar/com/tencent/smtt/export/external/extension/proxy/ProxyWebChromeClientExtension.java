@@ -10,6 +10,8 @@ import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebChromeClientExtension;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.export.external.interfaces.CorePermissionRequest;
+import com.tencent.smtt.export.external.interfaces.CorePermissionRequest.CorePermissionRequestCallback;
 import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.HitTestResult;
 import com.tencent.smtt.export.external.interfaces.JsResult;
 import com.tencent.smtt.export.external.interfaces.MediaAccessPermissionsCallback;
@@ -24,54 +26,59 @@ public class ProxyWebChromeClientExtension
   
   public void acquireWakeLock()
   {
-    AppMethodBeat.i(63791);
+    AppMethodBeat.i(53193);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.acquireWakeLock();
     }
-    AppMethodBeat.o(63791);
+    AppMethodBeat.o(53193);
   }
   
   public void addFlashView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(63784);
+    AppMethodBeat.i(53186);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.addFlashView(paramView, paramLayoutParams);
     }
-    AppMethodBeat.o(63784);
+    AppMethodBeat.o(53186);
+  }
+  
+  public int checkPermission(String paramString)
+  {
+    return -1;
   }
   
   public void exitFullScreenFlash()
   {
-    AppMethodBeat.i(63786);
+    AppMethodBeat.i(53188);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.exitFullScreenFlash();
     }
-    AppMethodBeat.o(63786);
+    AppMethodBeat.o(53188);
   }
   
   public Context getApplicationContex()
   {
-    AppMethodBeat.i(63793);
+    AppMethodBeat.i(53195);
     if (this.mWebChromeClient != null)
     {
       Context localContext = this.mWebChromeClient.getApplicationContex();
-      AppMethodBeat.o(63793);
+      AppMethodBeat.o(53195);
       return localContext;
     }
-    AppMethodBeat.o(63793);
+    AppMethodBeat.o(53195);
     return null;
   }
   
   public View getVideoLoadingProgressView()
   {
-    AppMethodBeat.i(63773);
+    AppMethodBeat.i(53175);
     if (this.mWebChromeClient != null)
     {
       View localView = this.mWebChromeClient.getVideoLoadingProgressView();
-      AppMethodBeat.o(63773);
+      AppMethodBeat.o(53175);
       return localView;
     }
-    AppMethodBeat.o(63773);
+    AppMethodBeat.o(53175);
     return null;
   }
   
@@ -87,114 +94,127 @@ public class ProxyWebChromeClientExtension
   
   public void h5videoExitFullScreen(String paramString)
   {
-    AppMethodBeat.i(63790);
+    AppMethodBeat.i(53192);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.h5videoExitFullScreen(paramString);
     }
-    AppMethodBeat.o(63790);
+    AppMethodBeat.o(53192);
   }
   
   public void h5videoRequestFullScreen(String paramString)
   {
-    AppMethodBeat.i(63789);
+    AppMethodBeat.i(53191);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.h5videoRequestFullScreen(paramString);
     }
-    AppMethodBeat.o(63789);
+    AppMethodBeat.o(53191);
   }
   
   public void jsExitFullScreen()
   {
-    AppMethodBeat.i(63788);
+    AppMethodBeat.i(53190);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.jsExitFullScreen();
     }
-    AppMethodBeat.o(63788);
+    AppMethodBeat.o(53190);
   }
   
   public void jsRequestFullScreen()
   {
-    AppMethodBeat.i(63787);
+    AppMethodBeat.i(53189);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.jsRequestFullScreen();
     }
-    AppMethodBeat.o(63787);
+    AppMethodBeat.o(53189);
   }
   
   public boolean onAddFavorite(IX5WebViewExtension paramIX5WebViewExtension, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    AppMethodBeat.i(63777);
+    AppMethodBeat.i(53179);
     if (this.mWebChromeClient != null)
     {
       boolean bool = this.mWebChromeClient.onAddFavorite(paramIX5WebViewExtension, paramString1, paramString2, paramJsResult);
-      AppMethodBeat.o(63777);
+      AppMethodBeat.o(53179);
       return bool;
     }
-    AppMethodBeat.o(63777);
+    AppMethodBeat.o(53179);
     return false;
   }
   
   public void onAllMetaDataFinished(IX5WebViewExtension paramIX5WebViewExtension, HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(63794);
+    AppMethodBeat.i(53196);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.onAllMetaDataFinished(paramIX5WebViewExtension, paramHashMap);
     }
-    AppMethodBeat.o(63794);
+    AppMethodBeat.o(53196);
   }
   
   public void onBackforwardFinished(int paramInt)
   {
-    AppMethodBeat.i(63774);
+    AppMethodBeat.i(53176);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.onBackforwardFinished(paramInt);
     }
-    AppMethodBeat.o(63774);
+    AppMethodBeat.o(53176);
   }
   
   public void onColorModeChanged(long paramLong) {}
   
+  public boolean onGoToEntryOffset(int paramInt)
+  {
+    AppMethodBeat.i(53200);
+    if (this.mWebChromeClient != null)
+    {
+      boolean bool = this.mWebChromeClient.onGoToEntryOffset(paramInt);
+      AppMethodBeat.o(53200);
+      return bool;
+    }
+    AppMethodBeat.o(53200);
+    return true;
+  }
+  
   public void onHitTestResultFinished(IX5WebViewExtension paramIX5WebViewExtension, IX5WebViewBase.HitTestResult paramHitTestResult)
   {
-    AppMethodBeat.i(63776);
+    AppMethodBeat.i(53178);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.onHitTestResultFinished(paramIX5WebViewExtension, paramHitTestResult);
     }
-    AppMethodBeat.o(63776);
+    AppMethodBeat.o(53178);
   }
   
   public void onHitTestResultForPluginFinished(IX5WebViewExtension paramIX5WebViewExtension, IX5WebViewBase.HitTestResult paramHitTestResult, Bundle paramBundle)
   {
-    AppMethodBeat.i(63775);
+    AppMethodBeat.i(53177);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.onHitTestResultForPluginFinished(paramIX5WebViewExtension, paramHitTestResult, paramBundle);
     }
-    AppMethodBeat.o(63775);
+    AppMethodBeat.o(53177);
   }
   
   public Object onMiscCallBack(String paramString, Bundle paramBundle)
   {
-    AppMethodBeat.i(63796);
+    AppMethodBeat.i(53198);
     if (this.mWebChromeClient != null)
     {
       paramString = this.mWebChromeClient.onMiscCallBack(paramString, paramBundle);
-      AppMethodBeat.o(63796);
+      AppMethodBeat.o(53198);
       return paramString;
     }
-    AppMethodBeat.o(63796);
+    AppMethodBeat.o(53198);
     return null;
   }
   
   public boolean onPageNotResponding(Runnable paramRunnable)
   {
-    AppMethodBeat.i(63795);
+    AppMethodBeat.i(53197);
     if (this.mWebChromeClient != null)
     {
       boolean bool = this.mWebChromeClient.onPageNotResponding(paramRunnable);
-      AppMethodBeat.o(63795);
+      AppMethodBeat.o(53197);
       return bool;
     }
-    AppMethodBeat.o(63795);
+    AppMethodBeat.o(53197);
     return false;
   }
   
@@ -205,121 +225,126 @@ public class ProxyWebChromeClientExtension
   
   public void onPrepareX5ReadPageDataFinished(IX5WebViewExtension paramIX5WebViewExtension, HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(63778);
+    AppMethodBeat.i(53180);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.onPrepareX5ReadPageDataFinished(paramIX5WebViewExtension, paramHashMap);
     }
-    AppMethodBeat.o(63778);
+    AppMethodBeat.o(53180);
   }
   
   public void onPrintPage() {}
   
   public void onPromptNotScalable(IX5WebViewExtension paramIX5WebViewExtension)
   {
-    AppMethodBeat.i(63780);
+    AppMethodBeat.i(53182);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.onPromptNotScalable(paramIX5WebViewExtension);
     }
-    AppMethodBeat.o(63780);
+    AppMethodBeat.o(53182);
   }
   
   public void onPromptScaleSaved(IX5WebViewExtension paramIX5WebViewExtension)
   {
-    AppMethodBeat.i(63779);
+    AppMethodBeat.i(53181);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.onPromptScaleSaved(paramIX5WebViewExtension);
     }
-    AppMethodBeat.o(63779);
+    AppMethodBeat.o(53181);
   }
   
   public boolean onSavePassword(ValueCallback<String> paramValueCallback, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
-    AppMethodBeat.i(63782);
+    AppMethodBeat.i(53184);
     if ((this.mWebChromeClient != null) && (sCompatibleNewOnSavePassword)) {
       try
       {
         paramBoolean = this.mWebChromeClient.onSavePassword(paramValueCallback, paramString1, paramString2, paramString3, paramString4, paramString5, paramBoolean);
-        AppMethodBeat.o(63782);
+        AppMethodBeat.o(53184);
         return paramBoolean;
       }
       catch (NoSuchMethodError paramValueCallback)
       {
         if ((paramValueCallback.getMessage() == null) || (!paramValueCallback.getMessage().contains("onSavePassword")))
         {
-          AppMethodBeat.o(63782);
+          AppMethodBeat.o(53184);
           throw paramValueCallback;
         }
         sCompatibleNewOnSavePassword = false;
       }
     }
-    AppMethodBeat.o(63782);
+    AppMethodBeat.o(53184);
     return false;
   }
   
   public boolean onSavePassword(String paramString1, String paramString2, String paramString3, boolean paramBoolean, Message paramMessage)
   {
-    AppMethodBeat.i(63781);
+    AppMethodBeat.i(53183);
     if (this.mWebChromeClient != null) {
       try
       {
         paramBoolean = this.mWebChromeClient.onSavePassword(paramString1, paramString2, paramString3, paramBoolean, paramMessage);
-        AppMethodBeat.o(63781);
+        AppMethodBeat.o(53183);
         return paramBoolean;
       }
       catch (NoSuchMethodError paramString1) {}
     }
-    AppMethodBeat.o(63781);
+    AppMethodBeat.o(53183);
     return false;
   }
   
   public void onX5ReadModeAvailableChecked(HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(63783);
+    AppMethodBeat.i(53185);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.onX5ReadModeAvailableChecked(paramHashMap);
     }
-    AppMethodBeat.o(63783);
+    AppMethodBeat.o(53185);
   }
   
   public void openFileChooser(ValueCallback<Uri[]> paramValueCallback, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(63797);
+    AppMethodBeat.i(53199);
     if ((this.mWebChromeClient != null) && (sCompatibleOpenFileChooser)) {
       try
       {
         this.mWebChromeClient.openFileChooser(paramValueCallback, paramString1, paramString2);
-        AppMethodBeat.o(63797);
+        AppMethodBeat.o(53199);
         return;
       }
       catch (NoSuchMethodError paramValueCallback)
       {
         if ((paramValueCallback.getMessage() == null) || (!paramValueCallback.getMessage().contains("openFileChooser")))
         {
-          AppMethodBeat.o(63797);
+          AppMethodBeat.o(53199);
           throw paramValueCallback;
         }
         sCompatibleOpenFileChooser = false;
       }
     }
-    AppMethodBeat.o(63797);
+    AppMethodBeat.o(53199);
   }
   
   public void releaseWakeLock()
   {
-    AppMethodBeat.i(63792);
+    AppMethodBeat.i(53194);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.releaseWakeLock();
     }
-    AppMethodBeat.o(63792);
+    AppMethodBeat.o(53194);
+  }
+  
+  public boolean requestAPPPermission(CorePermissionRequest paramCorePermissionRequest, CorePermissionRequest.CorePermissionRequestCallback paramCorePermissionRequestCallback)
+  {
+    return false;
   }
   
   public void requestFullScreenFlash()
   {
-    AppMethodBeat.i(63785);
+    AppMethodBeat.i(53187);
     if (this.mWebChromeClient != null) {
       this.mWebChromeClient.requestFullScreenFlash();
     }
-    AppMethodBeat.o(63785);
+    AppMethodBeat.o(53187);
   }
   
   public void setWebChromeClientExtend(IX5WebChromeClientExtension paramIX5WebChromeClientExtension)
@@ -329,7 +354,7 @@ public class ProxyWebChromeClientExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.proxy.ProxyWebChromeClientExtension
  * JD-Core Version:    0.7.0.1
  */

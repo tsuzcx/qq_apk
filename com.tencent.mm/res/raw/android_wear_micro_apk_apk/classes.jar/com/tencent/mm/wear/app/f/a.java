@@ -9,23 +9,23 @@ import com.tencent.mm.wear.app.b.h;
 public final class a
   extends com.tencent.mm.wear.app.g.a
 {
-  private int aaO;
-  private String aas;
+  private String adT;
+  private int aep;
   
   public a(int paramInt, String paramString)
   {
-    this.aas = paramString;
-    this.aaO = paramInt;
+    this.adT = paramString;
+    this.aep = paramInt;
   }
   
   protected final void execute()
   {
-    if (this.aaO == 11003) {
-      d.nK();
+    if (this.aep == 11003) {
+      d.oy();
     }
     MMApplication.getContext();
-    String str = String.format("/wechat/%s/channel/%d/%d", new Object[] { "wear", Integer.valueOf(this.aaO), Long.valueOf(System.currentTimeMillis()) });
-    d.c("MicroMsg.ChannelTask", "%s", new Object[] { h.mb().lS().l(str, this.aas) });
+    String str = String.format("/wechat/%s/channel/%d/%d", new Object[] { "wear", Integer.valueOf(this.aep), Long.valueOf(System.currentTimeMillis()) });
+    d.c("MicroMsg.ChannelTask", "%s", new Object[] { h.mO().mF().m(str, this.adT) });
   }
   
   protected final String getName()

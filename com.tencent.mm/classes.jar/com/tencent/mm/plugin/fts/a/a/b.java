@@ -5,25 +5,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public long mRT;
-  public int mRU;
-  public String mRV;
+  public long roL;
+  public int roM;
+  public String roN;
   public int type;
   
-  public final b f(Cursor paramCursor)
+  public final b g(Cursor paramCursor)
   {
-    AppMethodBeat.i(114235);
-    this.mRT = paramCursor.getLong(0);
+    AppMethodBeat.i(131670);
+    this.roL = paramCursor.getLong(0);
     this.type = paramCursor.getInt(1);
-    this.mRU = paramCursor.getInt(2);
-    this.mRV = paramCursor.getString(3);
-    AppMethodBeat.o(114235);
+    this.roM = paramCursor.getInt(2);
+    this.roN = paramCursor.getString(3);
+    AppMethodBeat.o(131670);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.b
  * JD-Core Version:    0.7.0.1
  */

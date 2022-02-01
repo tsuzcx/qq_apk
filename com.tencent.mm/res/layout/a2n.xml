@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="#fff6f6f8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/b3b" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.KeyboardLinearLayout android:orientation="vertical" android:id="@id/lp" android:background="@color/y" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:gravity="center_horizontal" android:id="@id/jd" android:background="#f7ffffff" android:paddingTop="@dimen/l8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <ListView android:id="@id/c12" android:background="#f7ffffff" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/mn" />
-            <RelativeLayout android:id="@id/c13" android:background="#f7ffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="20.0dip">
-                <com.tencent.mm.plugin.fts.ui.widget.FTSMainUIEducationLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/c28" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <TextView android:textSize="@dimen/ko" android:textColor="#ffb1b1b1" android:id="@id/c29" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="@string/e4b" />
-                </com.tencent.mm.plugin.fts.ui.widget.FTSMainUIEducationLayout>
-                <View android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
-                <com.tencent.mm.plugin.fts.ui.widget.FTSVoiceInputLayoutImpl android:id="@id/c2_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            </LinearLayout>
-            <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/c14" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <ProgressBar android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
-                <TextView android:textSize="14.0dip" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/cpw" />
-            </LinearLayout>
-        </FrameLayout>
-    </com.tencent.mm.ui.KeyboardLinearLayout>
-</FrameLayout>
+    <ProgressBar android:layout_gravity="center" android:id="@id/d3o" android:paddingTop="15.0dip" android:paddingBottom="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
+    <TextView android:textSize="@dimen/gx" android:textColor="@color/bi" android:gravity="center|left" android:id="@id/b8h" android:background="@color/a7c" android:paddingLeft="@dimen/jn" android:paddingTop="@dimen/hk" android:paddingRight="@dimen/jn" android:paddingBottom="@dimen/ju" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

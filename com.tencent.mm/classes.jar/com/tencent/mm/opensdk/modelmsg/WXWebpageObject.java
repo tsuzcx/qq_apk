@@ -22,24 +22,24 @@ public class WXWebpageObject
   
   public boolean checkArgs()
   {
-    AppMethodBeat.i(128323);
+    AppMethodBeat.i(4023);
     if ((this.webpageUrl == null) || (this.webpageUrl.length() == 0) || (this.webpageUrl.length() > 10240))
     {
       Log.e("MicroMsg.SDK.WXWebpageObject", "checkArgs fail, webpageUrl is invalid");
-      AppMethodBeat.o(128323);
+      AppMethodBeat.o(4023);
       return false;
     }
-    AppMethodBeat.o(128323);
+    AppMethodBeat.o(4023);
     return true;
   }
   
   public void serialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128321);
+    AppMethodBeat.i(4021);
     paramBundle.putString("_wxwebpageobject_extInfo", this.extInfo);
     paramBundle.putString("_wxwebpageobject_webpageUrl", this.webpageUrl);
     paramBundle.putString("_wxwebpageobject_canvaspagexml", this.canvasPageXml);
-    AppMethodBeat.o(128321);
+    AppMethodBeat.o(4021);
   }
   
   public int type()
@@ -49,16 +49,16 @@ public class WXWebpageObject
   
   public void unserialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(128322);
+    AppMethodBeat.i(4022);
     this.extInfo = paramBundle.getString("_wxwebpageobject_extInfo");
     this.webpageUrl = paramBundle.getString("_wxwebpageobject_webpageUrl");
     this.canvasPageXml = paramBundle.getString("_wxwebpageobject_canvaspagexml");
-    AppMethodBeat.o(128322);
+    AppMethodBeat.o(4022);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXWebpageObject
  * JD-Core Version:    0.7.0.1
  */

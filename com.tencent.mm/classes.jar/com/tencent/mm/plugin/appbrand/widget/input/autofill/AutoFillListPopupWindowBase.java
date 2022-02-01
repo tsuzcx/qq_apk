@@ -9,10 +9,15 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.FrameLayout;
@@ -21,126 +26,126 @@ import android.widget.ListAdapter;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public class AutoFillListPopupWindowBase
 {
-  int aaV;
-  int agX;
-  int agY;
-  int agZ;
-  boolean ahb;
-  boolean ahe;
-  boolean ahf;
-  int ahg;
-  private View ahh;
-  private int ahi;
-  View ahj;
-  private Drawable ahk;
-  private AdapterView.OnItemClickListener ahl;
-  private AdapterView.OnItemSelectedListener ahm;
-  private Runnable ahr;
-  boolean ahs;
-  PopupWindow aht;
-  AutoFillListPopupWindowBase.a jpo;
-  private final AutoFillListPopupWindowBase.f jpp;
-  private final AutoFillListPopupWindowBase.e jpq;
-  private final AutoFillListPopupWindowBase.d jpr;
-  private final AutoFillListPopupWindowBase.b jps;
-  private boolean jpt;
+  ListAdapter DP;
+  int aib;
+  PopupWindow aoA;
+  int aoe;
+  int aof;
+  int aog;
+  boolean aoi;
+  boolean aol;
+  boolean aom;
+  int aon;
+  private View aoo;
+  private int aop;
+  View aoq;
+  private Drawable aor;
+  private AdapterView.OnItemClickListener aos;
+  private AdapterView.OnItemSelectedListener aot;
+  private Runnable aoy;
+  boolean aoz;
   private Context mContext;
-  private ak mHandler;
+  private ap mHandler;
   DataSetObserver mObserver;
   private Rect mTempRect;
-  ListAdapter xw;
+  AutoFillListPopupWindowBase.a mfg;
+  private final f mfh;
+  private final e mfi;
+  private final d mfj;
+  private final b mfk;
+  private boolean mfl;
   
   public AutoFillListPopupWindowBase(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130772198);
+    this(paramContext, paramAttributeSet, 2130969239);
   }
   
   public AutoFillListPopupWindowBase(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    AppMethodBeat.i(123922);
-    this.agX = -2;
-    this.aaV = -2;
-    this.ahe = false;
-    this.ahf = false;
-    this.ahg = 2147483647;
-    this.ahi = 0;
-    this.jpp = new AutoFillListPopupWindowBase.f(this, (byte)0);
-    this.jpq = new AutoFillListPopupWindowBase.e(this, (byte)0);
-    this.jpr = new AutoFillListPopupWindowBase.d(this, (byte)0);
-    this.jps = new AutoFillListPopupWindowBase.b(this, (byte)0);
-    this.mHandler = new ak();
+    AppMethodBeat.i(136663);
+    this.aoe = -2;
+    this.aib = -2;
+    this.aol = false;
+    this.aom = false;
+    this.aon = 2147483647;
+    this.aop = 0;
+    this.mfh = new f((byte)0);
+    this.mfi = new e((byte)0);
+    this.mfj = new d((byte)0);
+    this.mfk = new b((byte)0);
+    this.mHandler = new ap();
     this.mTempRect = new Rect();
-    this.jpt = false;
+    this.mfl = false;
     this.mContext = paramContext;
-    this.aht = new PopupWindow(paramContext);
-    this.aht.setInputMethodMode(1);
+    this.aoA = new PopupWindow(paramContext);
+    this.aoA.setInputMethodMode(1);
     paramContext = this.mContext.getResources().getConfiguration().locale;
-    AppMethodBeat.o(123922);
+    AppMethodBeat.o(136663);
   }
   
-  private void iC()
+  private void jX()
   {
-    AppMethodBeat.i(123926);
-    if (this.ahh != null)
+    AppMethodBeat.i(136667);
+    if (this.aoo != null)
     {
-      ViewParent localViewParent = this.ahh.getParent();
+      ViewParent localViewParent = this.aoo.getParent();
       if ((localViewParent instanceof ViewGroup)) {
-        ((ViewGroup)localViewParent).removeView(this.ahh);
+        ((ViewGroup)localViewParent).removeView(this.aoo);
       }
     }
-    AppMethodBeat.o(123926);
+    AppMethodBeat.o(136667);
   }
   
   public final void clearListSelection()
   {
-    AppMethodBeat.i(123927);
-    AutoFillListPopupWindowBase.a locala = this.jpo;
+    AppMethodBeat.i(136668);
+    AutoFillListPopupWindowBase.a locala = this.mfg;
     if (locala != null)
     {
       AutoFillListPopupWindowBase.a.a(locala, true);
       locala.requestLayout();
     }
-    AppMethodBeat.o(123927);
+    AppMethodBeat.o(136668);
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(123924);
-    this.aht.dismiss();
-    iC();
-    this.aht.setContentView(null);
-    this.jpo = null;
-    this.mHandler.removeCallbacks(this.jpp);
-    AppMethodBeat.o(123924);
+    AppMethodBeat.i(136665);
+    this.aoA.dismiss();
+    jX();
+    this.aoA.setContentView(null);
+    this.mfg = null;
+    this.mHandler.removeCallbacks(this.mfh);
+    AppMethodBeat.o(136665);
   }
   
   public final boolean isInputMethodNotNeeded()
   {
-    AppMethodBeat.i(123928);
-    if (this.aht.getInputMethodMode() == 2)
+    AppMethodBeat.i(136669);
+    if (this.aoA.getInputMethodMode() == 2)
     {
-      AppMethodBeat.o(123928);
+      AppMethodBeat.o(136669);
       return true;
     }
-    AppMethodBeat.o(123928);
+    AppMethodBeat.o(136669);
     return false;
   }
   
   public final void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    AppMethodBeat.i(123925);
-    this.aht.setOnDismissListener(paramOnDismissListener);
-    AppMethodBeat.o(123925);
+    AppMethodBeat.i(136666);
+    this.aoA.setOnDismissListener(paramOnDismissListener);
+    AppMethodBeat.o(136666);
   }
   
   public final void setVerticalOffset(int paramInt)
   {
-    this.agZ = paramInt;
-    this.ahb = true;
+    this.aog = paramInt;
+    this.aoi = true;
   }
   
   public void show()
@@ -148,50 +153,77 @@ public class AutoFillListPopupWindowBase
     boolean bool3 = true;
     boolean bool2 = true;
     int n = -1;
-    AppMethodBeat.i(123923);
+    AppMethodBeat.i(136664);
     Object localObject2;
     boolean bool1;
     Object localObject1;
     View localView;
     FrameLayout.LayoutParams localLayoutParams1;
     FrameLayout.LayoutParams localLayoutParams2;
-    if (this.jpo == null)
+    if (this.mfg == null)
     {
       localObject2 = this.mContext;
-      this.ahr = new AutoFillListPopupWindowBase.1(this);
-      if (!this.ahs)
+      this.aoy = new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(136647);
+          View localView = AutoFillListPopupWindowBase.this.aoq;
+          if ((localView != null) && (localView.getWindowToken() != null)) {
+            AutoFillListPopupWindowBase.this.show();
+          }
+          AppMethodBeat.o(136647);
+        }
+      };
+      if (!this.aoz)
       {
         bool1 = true;
-        this.jpo = new AutoFillListPopupWindowBase.a((Context)localObject2, bool1);
-        if (this.ahk != null) {
-          this.jpo.setSelector(this.ahk);
+        this.mfg = new AutoFillListPopupWindowBase.a((Context)localObject2, bool1);
+        if (this.aor != null) {
+          this.mfg.setSelector(this.aor);
         }
-        this.jpo.setAdapter(this.xw);
-        this.jpo.setOnItemClickListener(this.ahl);
-        this.jpo.setFocusable(true);
-        this.jpo.setFocusableInTouchMode(true);
-        this.jpo.setDivider(null);
-        this.jpo.setDividerHeight(0);
-        this.jpo.setOnItemSelectedListener(new AutoFillListPopupWindowBase.2(this));
-        this.jpo.setOnScrollListener(this.jpr);
-        if (this.ahm != null) {
-          this.jpo.setOnItemSelectedListener(this.ahm);
+        this.mfg.setAdapter(this.DP);
+        this.mfg.setOnItemClickListener(this.aos);
+        this.mfg.setFocusable(true);
+        this.mfg.setFocusableInTouchMode(true);
+        this.mfg.setDivider(null);
+        this.mfg.setDividerHeight(0);
+        this.mfg.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+          public final void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+          {
+            AppMethodBeat.i(136648);
+            if (paramAnonymousInt != -1)
+            {
+              paramAnonymousAdapterView = AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this);
+              if (paramAnonymousAdapterView != null) {
+                AutoFillListPopupWindowBase.a.a(paramAnonymousAdapterView, false);
+              }
+            }
+            AppMethodBeat.o(136648);
+          }
+          
+          public final void onNothingSelected(AdapterView<?> paramAnonymousAdapterView) {}
+        });
+        this.mfg.setOnScrollListener(this.mfj);
+        if (this.aot != null) {
+          this.mfg.setOnItemSelectedListener(this.aot);
         }
-        localObject1 = this.jpo;
-        localView = this.ahh;
+        localObject1 = this.mfg;
+        localView = this.aoo;
         if (localView == null) {
           break label1343;
         }
-        iC();
+        jX();
         localObject2 = new FrameLayout((Context)localObject2);
         localLayoutParams1 = new FrameLayout.LayoutParams(-1, -1);
         localLayoutParams2 = new FrameLayout.LayoutParams(-1, -2);
-        switch (this.ahi)
+        switch (this.aop)
         {
         default: 
-          new StringBuilder("Invalid hint position ").append(this.ahi);
+          new StringBuilder("Invalid hint position ").append(this.aop);
           label278:
-          localView.measure(View.MeasureSpec.makeMeasureSpec(this.aaV, -2147483648), 0);
+          localView.measure(View.MeasureSpec.makeMeasureSpec(this.aib, -2147483648), 0);
           localObject1 = localObject2;
         }
       }
@@ -201,11 +233,11 @@ public class AutoFillListPopupWindowBase
     label1343:
     for (;;)
     {
-      this.aht.setContentView((View)localObject1);
+      this.aoA.setContentView((View)localObject1);
       int i = 0;
       for (;;)
       {
-        localObject1 = this.aht.getBackground();
+        localObject1 = this.aoA.getBackground();
         int k;
         label372:
         int i1;
@@ -215,17 +247,17 @@ public class AutoFillListPopupWindowBase
           ((Drawable)localObject1).getPadding(this.mTempRect);
           j = this.mTempRect.top + this.mTempRect.bottom;
           k = j;
-          if (!this.ahb)
+          if (!this.aoi)
           {
-            this.agZ = (-this.mTempRect.top);
+            this.aog = (-this.mTempRect.top);
             k = j;
           }
-          if (this.aht.getInputMethodMode() != 2) {
+          if (this.aoA.getInputMethodMode() != 2) {
             break label757;
           }
           j = 1;
-          localObject1 = this.ahj;
-          i1 = this.agZ;
+          localObject1 = this.aoq;
+          i1 = this.aog;
           localObject2 = new Rect();
           ((View)localObject1).getWindowVisibleDisplayFrame((Rect)localObject2);
           ((View)localObject1).getLocationOnScreen(new int[2]);
@@ -238,23 +270,23 @@ public class AutoFillListPopupWindowBase
         {
           j -= i1;
           m = j;
-          if (this.aht.getBackground() != null)
+          if (this.aoA.getBackground() != null)
           {
-            this.aht.getBackground().getPadding(this.mTempRect);
+            this.aoA.getBackground().getPadding(this.mTempRect);
             m = j - (this.mTempRect.top + this.mTempRect.bottom);
           }
-          if ((this.ahe) || (this.agX == -1))
+          if ((this.aol) || (this.aoe == -1))
           {
             i = m + k;
             bool1 = isInputMethodNotNeeded();
-            if (!this.aht.isShowing()) {
+            if (!this.aoA.isShowing()) {
               break label1041;
             }
-            if (this.aaV != -1) {
+            if (this.aib != -1) {
               break label910;
             }
             j = -1;
-            if (this.agX != -1) {
+            if (this.aoe != -1) {
               break label979;
             }
             if (!bool1) {
@@ -263,17 +295,17 @@ public class AutoFillListPopupWindowBase
             if (!bool1) {
               break label948;
             }
-            localObject1 = this.aht;
-            if (this.aaV != -1) {
+            localObject1 = this.aoA;
+            if (this.aib != -1) {
               break label943;
             }
             k = n;
             label580:
             ((PopupWindow)localObject1).setWindowLayoutMode(k, 0);
             label587:
-            this.aht.update(j, i);
-            localObject1 = this.aht;
-            if ((this.ahf) || (this.ahe)) {
+            this.aoA.update(j, i);
+            localObject1 = this.aoA;
+            if ((this.aom) || (this.aol)) {
               break label996;
             }
           }
@@ -282,11 +314,11 @@ public class AutoFillListPopupWindowBase
           for (bool1 = bool2;; bool1 = false)
           {
             ((PopupWindow)localObject1).setOutsideTouchable(bool1);
-            if (!this.jpt) {
+            if (!this.mfl) {
               break label1002;
             }
-            this.aht.showAtLocation(this.ahj, 17, 0, 0);
-            AppMethodBeat.o(123923);
+            this.aoA.showAtLocation(this.aoq, 17, 0, 0);
+            AppMethodBeat.o(136664);
             return;
             bool1 = false;
             break;
@@ -298,8 +330,8 @@ public class AutoFillListPopupWindowBase
             ((FrameLayout)localObject2).addView((View)localObject1, localLayoutParams1);
             ((FrameLayout)localObject2).addView(localView, localLayoutParams2);
             break label278;
-            this.aht.getContentView();
-            localObject1 = this.ahh;
+            this.aoA.getContentView();
+            localObject1 = this.aoo;
             if (localObject1 == null) {
               break label1338;
             }
@@ -311,14 +343,14 @@ public class AutoFillListPopupWindowBase
             label757:
             j = 0;
             break label385;
-            switch (this.aaV)
+            switch (this.aib)
             {
             default: 
-              j = View.MeasureSpec.makeMeasureSpec(this.aaV, 1073741824);
+              j = View.MeasureSpec.makeMeasureSpec(this.aib, 1073741824);
             }
             for (;;)
             {
-              m = this.jpo.dy(j, m - i);
+              m = this.mfg.et(j, m - i);
               j = i;
               if (m > 0) {
                 j = i + k;
@@ -329,83 +361,83 @@ public class AutoFillListPopupWindowBase
               continue;
               j = View.MeasureSpec.makeMeasureSpec(this.mContext.getResources().getDisplayMetrics().widthPixels - (this.mTempRect.left + this.mTempRect.right), 1073741824);
             }
-            if (this.aaV == -2)
+            if (this.aib == -2)
             {
-              j = this.ahj.getWidth();
+              j = this.aoq.getWidth();
               break label545;
             }
-            j = this.aaV;
+            j = this.aib;
             break label545;
             i = -1;
             break label558;
             k = 0;
             break label580;
-            localObject1 = this.aht;
-            if (this.aaV == -1) {}
+            localObject1 = this.aoA;
+            if (this.aib == -1) {}
             for (k = -1;; k = 0)
             {
               ((PopupWindow)localObject1).setWindowLayoutMode(k, -1);
               break;
             }
-            if (this.agX == -2) {
+            if (this.aoe == -2) {
               break label587;
             }
-            i = this.agX;
+            i = this.aoe;
             break label587;
           }
           label1002:
-          this.aht.update(this.ahj, this.agY, this.agZ, this.aht.getWidth(), this.aht.getHeight());
-          AppMethodBeat.o(123923);
+          this.aoA.update(this.aoq, this.aof, this.aog, this.aoA.getWidth(), this.aoA.getHeight());
+          AppMethodBeat.o(136664);
           return;
-          if (this.aaV == -1)
+          if (this.aib == -1)
           {
             j = -1;
-            if (this.agX != -1) {
+            if (this.aoe != -1) {
               break label1232;
             }
             i = -1;
-            this.aht.setWindowLayoutMode(j, i);
-            localObject1 = this.aht;
-            if ((this.ahf) || (this.ahe)) {
+            this.aoA.setWindowLayoutMode(j, i);
+            localObject1 = this.aoA;
+            if ((this.aom) || (this.aol)) {
               break label1270;
             }
             bool1 = bool3;
             label1094:
             ((PopupWindow)localObject1).setOutsideTouchable(bool1);
-            this.aht.setTouchInterceptor(this.jpq);
-            if (!this.jpt) {
+            this.aoA.setTouchInterceptor(this.mfi);
+            if (!this.mfl) {
               break label1276;
             }
-            this.aht.showAtLocation(this.ahj, 17, 0, 0);
+            this.aoA.showAtLocation(this.aoq, 17, 0, 0);
           }
           for (;;)
           {
-            this.jpo.setSelection(-1);
-            if ((!this.ahs) || (this.jpo.isInTouchMode())) {
+            this.mfg.setSelection(-1);
+            if ((!this.aoz) || (this.mfg.isInTouchMode())) {
               clearListSelection();
             }
-            if (!this.ahs) {
-              this.mHandler.post(this.jps);
+            if (!this.aoz) {
+              this.mHandler.post(this.mfk);
             }
-            AppMethodBeat.o(123923);
+            AppMethodBeat.o(136664);
             return;
-            if (this.aaV == -2)
+            if (this.aib == -2)
             {
-              this.aht.setWidth(this.ahj.getWidth());
+              this.aoA.setWidth(this.aoq.getWidth());
               j = 0;
               break;
             }
-            this.aht.setWidth(this.aaV);
+            this.aoA.setWidth(this.aib);
             j = 0;
             break;
             label1232:
-            if (this.agX == -2)
+            if (this.aoe == -2)
             {
-              this.aht.setHeight(i);
+              this.aoA.setHeight(i);
               i = 0;
               break label1061;
             }
-            this.aht.setHeight(this.agX);
+            this.aoA.setHeight(this.aoe);
             i = 0;
             break label1061;
             label1270:
@@ -413,9 +445,9 @@ public class AutoFillListPopupWindowBase
             break label1094;
             label1276:
             if (Build.VERSION.SDK_INT >= 19) {
-              this.aht.showAsDropDown(this.ahj, this.agY, this.agZ, 53);
+              this.aoA.showAsDropDown(this.aoq, this.aof, this.aog, 53);
             } else {
-              this.aht.showAtLocation(this.ahj, 53, this.agY, this.agZ);
+              this.aoA.showAtLocation(this.aoq, 53, this.aof, this.aog);
             }
           }
         }
@@ -423,10 +455,120 @@ public class AutoFillListPopupWindowBase
       }
     }
   }
+  
+  final class b
+    implements Runnable
+  {
+    private b() {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(136656);
+      AutoFillListPopupWindowBase.this.clearListSelection();
+      AppMethodBeat.o(136656);
+    }
+  }
+  
+  final class c
+    extends DataSetObserver
+  {
+    private c() {}
+    
+    public final void onChanged()
+    {
+      AppMethodBeat.i(136657);
+      if (AutoFillListPopupWindowBase.this.aoA.isShowing()) {
+        AutoFillListPopupWindowBase.this.show();
+      }
+      AppMethodBeat.o(136657);
+    }
+    
+    public final void onInvalidated()
+    {
+      AppMethodBeat.i(136658);
+      AutoFillListPopupWindowBase.this.dismiss();
+      AppMethodBeat.o(136658);
+    }
+  }
+  
+  final class d
+    implements AbsListView.OnScrollListener
+  {
+    private d() {}
+    
+    public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+    {
+      AppMethodBeat.i(136659);
+      if ((AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this) != null) && (AutoFillListPopupWindowBase.e(AutoFillListPopupWindowBase.this) != null) && (AutoFillListPopupWindowBase.f(AutoFillListPopupWindowBase.this) != null) && (AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this) != null))
+      {
+        if ((AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getLastVisiblePosition() == AutoFillListPopupWindowBase.f(AutoFillListPopupWindowBase.this).getCount() - 1) && (AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getChildAt(AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getChildCount() - 1) != null) && (AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getChildAt(AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getChildCount() - 1).getBottom() <= AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getHeight()))
+        {
+          AutoFillListPopupWindowBase.e(AutoFillListPopupWindowBase.this).setVisibility(8);
+          AppMethodBeat.o(136659);
+          return;
+        }
+        AutoFillListPopupWindowBase.e(AutoFillListPopupWindowBase.this).setVisibility(0);
+      }
+      AppMethodBeat.o(136659);
+    }
+    
+    public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+    {
+      AppMethodBeat.i(136660);
+      if ((paramInt == 1) && (!AutoFillListPopupWindowBase.this.isInputMethodNotNeeded()) && (AutoFillListPopupWindowBase.b(AutoFillListPopupWindowBase.this).getContentView() != null))
+      {
+        AutoFillListPopupWindowBase.d(AutoFillListPopupWindowBase.this).removeCallbacks(AutoFillListPopupWindowBase.c(AutoFillListPopupWindowBase.this));
+        AutoFillListPopupWindowBase.c(AutoFillListPopupWindowBase.this).run();
+      }
+      AppMethodBeat.o(136660);
+    }
+  }
+  
+  final class e
+    implements View.OnTouchListener
+  {
+    private e() {}
+    
+    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+    {
+      AppMethodBeat.i(136661);
+      int i = paramMotionEvent.getAction();
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      if ((i == 0) && (AutoFillListPopupWindowBase.b(AutoFillListPopupWindowBase.this) != null) && (AutoFillListPopupWindowBase.b(AutoFillListPopupWindowBase.this).isShowing()) && (j >= 0) && (j < AutoFillListPopupWindowBase.b(AutoFillListPopupWindowBase.this).getWidth()) && (k >= 0) && (k < AutoFillListPopupWindowBase.b(AutoFillListPopupWindowBase.this).getHeight())) {
+        AutoFillListPopupWindowBase.d(AutoFillListPopupWindowBase.this).postDelayed(AutoFillListPopupWindowBase.c(AutoFillListPopupWindowBase.this), 250L);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(136661);
+        return false;
+        if (i == 1) {
+          AutoFillListPopupWindowBase.d(AutoFillListPopupWindowBase.this).removeCallbacks(AutoFillListPopupWindowBase.c(AutoFillListPopupWindowBase.this));
+        }
+      }
+    }
+  }
+  
+  final class f
+    implements Runnable
+  {
+    private f() {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(136662);
+      if ((AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this) != null) && (AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getCount() > AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getChildCount()) && (AutoFillListPopupWindowBase.a(AutoFillListPopupWindowBase.this).getChildCount() <= AutoFillListPopupWindowBase.this.aon))
+      {
+        AutoFillListPopupWindowBase.b(AutoFillListPopupWindowBase.this).setInputMethodMode(2);
+        AutoFillListPopupWindowBase.this.show();
+      }
+      AppMethodBeat.o(136662);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.AutoFillListPopupWindowBase
  * JD-Core Version:    0.7.0.1
  */

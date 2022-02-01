@@ -1,141 +1,292 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.freewifi.g;
-import com.tencent.mm.plugin.freewifi.l;
+import com.tencent.mm.al.n;
+import com.tencent.mm.plugin.freewifi.a.a.a;
+import com.tencent.mm.plugin.freewifi.d.f;
 import com.tencent.mm.plugin.freewifi.model.j;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.protocal.protobuf.hj;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
+import java.net.HttpURLConnection;
 
 @Deprecated
 public class ProtocolThreeThreeUI
   extends MMActivity
 {
   protected String appId;
-  protected int bWu;
   protected String bssid;
-  protected int cpt;
-  protected String cqf;
-  private int crJ;
-  protected String cvr;
-  protected String mLh;
-  private int mLr;
-  protected String mLu;
-  protected String mLv;
-  protected String mLw;
-  private Uri mLx;
-  private String mLy;
-  private k.a mMC;
-  private TextView mNb;
-  private ImageView mNq;
-  private TextView mNr;
-  private TextView mNs;
-  private Button mNt;
-  private Button mNu;
-  protected String mOA;
-  private ap mOV;
-  private p mOt;
-  protected int mOy;
-  protected String mOz;
+  protected int cJR;
+  protected String cMo;
+  protected int dep;
+  private int dgF;
+  protected String dkB;
+  protected String riA;
+  private Uri riB;
+  private String riC;
+  protected String ril;
+  private int riv;
+  protected String riy;
+  protected String riz;
+  private k.a rjG;
+  private TextView rjT;
+  private ImageView rki;
+  private TextView rkj;
+  private TextView rkk;
+  private Button rkl;
+  private Button rkm;
+  private av rlN;
+  private p rll;
+  protected int rlq;
+  protected String rlr;
+  protected String rls;
   protected String sign;
   protected String signature;
   protected String ssid;
   
   public ProtocolThreeThreeUI()
   {
-    AppMethodBeat.i(21160);
-    this.crJ = 1;
-    this.mLr = 0;
-    this.mOV = new ap(new ProtocolThreeThreeUI.1(this), false);
-    AppMethodBeat.o(21160);
+    AppMethodBeat.i(25221);
+    this.dgF = 1;
+    this.riv = 0;
+    this.rlN = new av(new av.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(25208);
+        if (!bt.isNullOrNil(ProtocolThreeThreeUI.this.ssid))
+        {
+          ProtocolThreeThreeUI.a(ProtocolThreeThreeUI.this, ProtocolThreeThreeUI.this.cwA());
+          if (ProtocolThreeThreeUI.a(ProtocolThreeThreeUI.this) != 2)
+          {
+            ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.connectTimeoutHandler, desc=wifi connecttimeout. state=%s", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(ProtocolThreeThreeUI.this.getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(ProtocolThreeThreeUI.this.getIntent())), com.tencent.mm.plugin.freewifi.model.d.Dx(ProtocolThreeThreeUI.a(ProtocolThreeThreeUI.this)) });
+            com.tencent.mm.plugin.freewifi.model.d.a(ProtocolThreeThreeUI.this.ssid, 3, ProtocolThreeThreeUI.this.getIntent());
+          }
+        }
+        AppMethodBeat.o(25208);
+        return false;
+      }
+    }, false);
+    AppMethodBeat.o(25221);
   }
   
   private void goBack()
   {
-    AppMethodBeat.i(21166);
-    l.C(com.tencent.mm.plugin.freewifi.model.d.bAB(), getIntent().getStringExtra("free_wifi_ap_key"), getIntent().getIntExtra("free_wifi_protocol_type", 0));
+    AppMethodBeat.i(25227);
+    com.tencent.mm.plugin.freewifi.l.N(com.tencent.mm.plugin.freewifi.model.d.cvP(), getIntent().getStringExtra("free_wifi_ap_key"), getIntent().getIntExtra("free_wifi_protocol_type", 0));
     Intent localIntent = new Intent();
-    g.gmO.h(localIntent, this);
+    com.tencent.mm.plugin.freewifi.g.hYt.h(localIntent, this);
     finish();
-    AppMethodBeat.o(21166);
+    AppMethodBeat.o(25227);
   }
   
-  protected final int bBm()
+  protected final void Dz(int paramInt)
   {
-    AppMethodBeat.i(21167);
-    if (bo.isNullOrNil(this.ssid))
+    AppMethodBeat.i(25225);
+    ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.onConnectStateChange, desc=it receives notifications whenever the connect state of model changes and then updates the view accordingly. state=%d", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(getIntent())), Integer.valueOf(paramInt) });
+    switch (paramInt)
     {
-      ab.d("MicroMsg.FreeWifi.Protocol33UI", "Illegal SSID");
-      AppMethodBeat.o(21167);
-      return 0;
+    default: 
+      AppMethodBeat.o(25225);
+      return;
+    case 4: 
+      if (this.rll != null) {
+        this.rll.dismiss();
+      }
+      this.rlN.stopTimer();
+      this.rjT.setVisibility(4);
+      this.rkl.setText(2131757574);
+      if (this.dep == 3) {
+        this.rkk.setText(getString(2131761229, new Object[] { this.ssid }));
+      }
+      for (;;)
+      {
+        ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.toConnectStart, desc=it initializes the connect front page.", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(getIntent())) });
+        AppMethodBeat.o(25225);
+        return;
+        this.rkk.setText(getString(2131757572, new Object[] { this.ssid }));
+      }
+    case 1: 
+      this.rjT.setVisibility(4);
+      this.rkl.setText(2131757571);
+      this.rll = h.b(getContext(), getString(2131757571), true, new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(25220);
+          com.tencent.mm.plugin.freewifi.model.d.a(ProtocolThreeThreeUI.this.ssid, 4, ProtocolThreeThreeUI.this.getIntent());
+          ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.toConnecting.ProgressDlg.onCancel, desc=it changes the connect state of the model to CONNECT_STATE_WAIT_START because the user cancles the connect process in progress. state=%d", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(ProtocolThreeThreeUI.this.getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(ProtocolThreeThreeUI.this.getIntent())), Integer.valueOf(4) });
+          AppMethodBeat.o(25220);
+        }
+      });
+      ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.toConnecting, desc=it adds a loading ui on the connect front page.", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(getIntent())) });
+      AppMethodBeat.o(25225);
+      return;
+    case 3: 
+      if (this.rll != null) {
+        this.rll.dismiss();
+      }
+      this.rlN.stopTimer();
+      this.rjT.setVisibility(0);
+      this.rkl.setText(2131759649);
+      ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.toFail, desc=connect failed.", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(getIntent())) });
+      AppMethodBeat.o(25225);
+      return;
     }
-    com.tencent.mm.plugin.freewifi.g.c localc = j.bAK().OK(this.ssid);
-    if ((localc != null) && (localc.field_ssid.equalsIgnoreCase(this.ssid)))
+    if (this.rll != null) {
+      this.rll.dismiss();
+    }
+    this.rlN.stopTimer();
+    this.rkl.setText(2131757568);
+    this.rkl.setClickable(false);
+    Object localObject = getIntent();
+    ((Intent)localObject).putExtra("free_wifi_appid", this.appId);
+    ((Intent)localObject).putExtra("free_wifi_app_nickname", this.ril);
+    ((Intent)localObject).putExtra("free_wifi_app_username", this.dkB);
+    ((Intent)localObject).putExtra("free_wifi_signature", this.signature);
+    ((Intent)localObject).putExtra("free_wifi_finish_actioncode", this.rlq);
+    ((Intent)localObject).putExtra("free_wifi_finish_url", this.rlr);
+    if (bt.isNullOrNil(this.rls)) {
+      ((Intent)localObject).setClass(this, FreeWifiSuccUI.class);
+    }
+    for (;;)
     {
-      int i = localc.field_connectState;
-      AppMethodBeat.o(21167);
-      return i;
+      finish();
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/freewifi/ui/ProtocolThreeThreeUI", "toSuccess", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/freewifi/ui/ProtocolThreeThreeUI", "toSuccess", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      c.report();
+      ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.toSuccess, desc=connect succeeded.", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(getIntent())) });
+      break;
+      ((Intent)localObject).putExtra("free_wifi_qinghuai_url", this.rls);
+      ((Intent)localObject).setClass(this, FreeWifiSuccWebViewUI.class);
     }
-    AppMethodBeat.o(21167);
-    return 0;
   }
   
   protected final void connect()
   {
-    AppMethodBeat.i(21163);
-    if (com.tencent.mm.plugin.freewifi.m.isEmpty(this.ssid))
+    AppMethodBeat.i(25224);
+    if (com.tencent.mm.plugin.freewifi.m.dq(this.ssid))
     {
-      ab.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, desc=it cannot get ssid, so it fails. ", new Object[] { com.tencent.mm.plugin.freewifi.m.U(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.V(getIntent())) });
+      ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, desc=it cannot get ssid, so it fails. ", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(getIntent())) });
       com.tencent.mm.plugin.freewifi.model.d.a(this.ssid, 3, getIntent());
-      AppMethodBeat.o(21163);
+      AppMethodBeat.o(25224);
       return;
     }
-    if (com.tencent.mm.plugin.freewifi.m.isEmpty(this.mLv))
+    if (com.tencent.mm.plugin.freewifi.m.dq(this.riz))
     {
-      ab.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, desc=authurl is empty, so it fails. ", new Object[] { com.tencent.mm.plugin.freewifi.m.U(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.V(getIntent())) });
+      ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, desc=authurl is empty, so it fails. ", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(getIntent())) });
       com.tencent.mm.plugin.freewifi.model.d.a(this.ssid, 3, getIntent());
-      AppMethodBeat.o(21163);
+      AppMethodBeat.o(25224);
       return;
     }
-    this.crJ = bBm();
-    ab.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.connect, desc=it starts connecting wifi by protocol 3.1. current connect state=%s", new Object[] { com.tencent.mm.plugin.freewifi.m.U(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.V(getIntent())), com.tencent.mm.plugin.freewifi.model.d.wl(this.crJ) });
-    if (this.crJ != 2)
+    this.dgF = cwA();
+    ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.connect, desc=it starts connecting wifi by protocol 3.1. current connect state=%s", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(getIntent())), com.tencent.mm.plugin.freewifi.model.d.Dx(this.dgF) });
+    if (this.dgF != 2)
     {
-      this.mOV.ag(30000L, 30000L);
-      ab.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.connect, desc=it starts connectTimeoutHandler. timeout=%d s", new Object[] { com.tencent.mm.plugin.freewifi.m.U(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.V(getIntent())), Integer.valueOf(60) });
-      com.tencent.mm.plugin.freewifi.m.isEmpty(this.mLv);
-      Object localObject = new StringBuilder(this.mLv);
-      if (this.mLv.indexOf("?") == -1) {
-        ((StringBuilder)localObject).append("?extend=").append(this.mLw);
+      this.rlN.av(30000L, 30000L);
+      ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.connect, desc=it starts connectTimeoutHandler. timeout=%d s", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(getIntent())), Integer.valueOf(60) });
+      com.tencent.mm.plugin.freewifi.m.dq(this.riz);
+      Object localObject = new StringBuilder(this.riz);
+      if (this.riz.indexOf("?") == -1) {
+        ((StringBuilder)localObject).append("?extend=").append(this.riA);
       }
       for (;;)
       {
         localObject = ((StringBuilder)localObject).toString();
-        j.bAN().bAw().post(new ProtocolThreeThreeUI.6(this, (String)localObject));
-        AppMethodBeat.o(21163);
+        j.cwb().cvK().post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(25215);
+            ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.httpAuthentication, desc=it sends http request for authentication. http url=%s", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(ProtocolThreeThreeUI.this.getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(ProtocolThreeThreeUI.this.getIntent())), this.val$url });
+            com.tencent.mm.plugin.freewifi.a.a.cvy();
+            com.tencent.mm.plugin.freewifi.a.a.a(this.val$url, new a.a()
+            {
+              public final void d(HttpURLConnection paramAnonymous2HttpURLConnection)
+              {
+                AppMethodBeat.i(25213);
+                int i = paramAnonymous2HttpURLConnection.getResponseCode();
+                ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.HttpAuthentication.onSuccess, desc=it receives http response for authentication. http response status code=%d", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(ProtocolThreeThreeUI.this.getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(ProtocolThreeThreeUI.this.getIntent())), Integer.valueOf(i) });
+                if (i == 200)
+                {
+                  ProtocolThreeThreeUI.c(ProtocolThreeThreeUI.this);
+                  AppMethodBeat.o(25213);
+                  return;
+                }
+                if (i == 302)
+                {
+                  paramAnonymous2HttpURLConnection = paramAnonymous2HttpURLConnection.getHeaderField("Location");
+                  ProtocolThreeThreeUI.a(ProtocolThreeThreeUI.this, paramAnonymous2HttpURLConnection);
+                  AppMethodBeat.o(25213);
+                  return;
+                }
+                ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.httpAuthentication, desc=http response status code is neither 200 nor 302, so it fails to connect wifi. ", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(ProtocolThreeThreeUI.this.getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(ProtocolThreeThreeUI.this.getIntent())) });
+                com.tencent.mm.plugin.freewifi.model.d.a(ProtocolThreeThreeUI.this.ssid, 3, ProtocolThreeThreeUI.this.getIntent());
+                AppMethodBeat.o(25213);
+              }
+              
+              public final void o(Exception paramAnonymous2Exception)
+              {
+                AppMethodBeat.i(25214);
+                ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.httpAuthentication, desc=exception happens during http, so it fails to connect wifi. e.getMessage()=%s", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(ProtocolThreeThreeUI.this.getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(ProtocolThreeThreeUI.this.getIntent())), paramAnonymous2Exception.getMessage() });
+                com.tencent.mm.plugin.freewifi.model.d.a(ProtocolThreeThreeUI.this.ssid, 3, ProtocolThreeThreeUI.this.getIntent());
+                AppMethodBeat.o(25214);
+              }
+            });
+            AppMethodBeat.o(25215);
+          }
+        });
+        AppMethodBeat.o(25224);
         return;
-        ((StringBuilder)localObject).append("&extend=").append(this.mLw);
+        ((StringBuilder)localObject).append("&extend=").append(this.riA);
       }
     }
     com.tencent.mm.plugin.freewifi.model.d.a(this.ssid, 2, getIntent());
-    AppMethodBeat.o(21163);
+    AppMethodBeat.o(25224);
+  }
+  
+  protected final int cwA()
+  {
+    AppMethodBeat.i(25228);
+    if (bt.isNullOrNil(this.ssid))
+    {
+      ad.d("MicroMsg.FreeWifi.Protocol33UI", "Illegal SSID");
+      AppMethodBeat.o(25228);
+      return 0;
+    }
+    com.tencent.mm.plugin.freewifi.g.c localc = j.cvY().aaI(this.ssid);
+    if ((localc != null) && (localc.field_ssid.equalsIgnoreCase(this.ssid)))
+    {
+      int i = localc.field_connectState;
+      AppMethodBeat.o(25228);
+      return i;
+    }
+    AppMethodBeat.o(25228);
+    return 0;
   }
   
   public int getForceOrientation()
@@ -145,61 +296,95 @@ public class ProtocolThreeThreeUI
   
   public int getLayoutId()
   {
-    return 2130969628;
+    return 2131494170;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(21162);
-    this.ssid = com.tencent.mm.plugin.freewifi.m.Ow("MicroMsg.FreeWifi.Protocol33UI");
-    this.bssid = com.tencent.mm.plugin.freewifi.m.Ox("MicroMsg.FreeWifi.Protocol33UI");
-    this.cpt = getIntent().getIntExtra("free_wifi_source", 1);
-    this.bWu = getIntent().getIntExtra("free_wifi_channel_id", 0);
-    setBackBtn(new ProtocolThreeThreeUI.2(this));
-    findViewById(2131824262).setVisibility(0);
-    this.mNq = ((ImageView)findViewById(2131824254));
-    this.mNr = ((TextView)findViewById(2131824255));
-    this.mNs = ((TextView)findViewById(2131824256));
-    this.mNb = ((TextView)findViewById(2131824257));
-    this.mNt = ((Button)findViewById(2131824260));
-    this.mNt.setOnClickListener(new ProtocolThreeThreeUI.3(this));
-    this.mNu = ((Button)findViewById(2131824261));
-    this.mNu.setOnClickListener(new ProtocolThreeThreeUI.4(this));
-    if (bo.isNullOrNil(this.ssid))
+    AppMethodBeat.i(25223);
+    this.ssid = com.tencent.mm.plugin.freewifi.m.aau("MicroMsg.FreeWifi.Protocol33UI");
+    this.bssid = com.tencent.mm.plugin.freewifi.m.aav("MicroMsg.FreeWifi.Protocol33UI");
+    this.dep = getIntent().getIntExtra("free_wifi_source", 1);
+    this.cJR = getIntent().getIntExtra("free_wifi_channel_id", 0);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
-      this.mNs.setText(getString(2131300179));
-      this.mNt.setVisibility(4);
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(25209);
+        ProtocolThreeThreeUI.b(ProtocolThreeThreeUI.this);
+        AppMethodBeat.o(25209);
+        return true;
+      }
+    });
+    findViewById(2131306245).setVisibility(0);
+    this.rki = ((ImageView)findViewById(2131300246));
+    this.rkj = ((TextView)findViewById(2131300289));
+    this.rkk = ((TextView)findViewById(2131300275));
+    this.rjT = ((TextView)findViewById(2131300253));
+    this.rkl = ((Button)findViewById(2131298576));
+    this.rkl.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(25210);
+        com.tencent.mm.plugin.freewifi.l.M(com.tencent.mm.plugin.freewifi.model.d.cvP(), ProtocolThreeThreeUI.this.getIntent().getStringExtra("free_wifi_ap_key"), ProtocolThreeThreeUI.this.getIntent().getIntExtra("free_wifi_protocol_type", 0));
+        int i = ProtocolThreeThreeUI.this.cwA();
+        ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.connectWifiBtn.setOnClickListener, desc=User click the connect button and starts the connect wifi process. state=%s", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(ProtocolThreeThreeUI.this.getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(ProtocolThreeThreeUI.this.getIntent())), com.tencent.mm.plugin.freewifi.model.d.Dx(i) });
+        if (i == 2)
+        {
+          ProtocolThreeThreeUI.this.finish();
+          AppMethodBeat.o(25210);
+          return;
+        }
+        com.tencent.mm.plugin.freewifi.model.d.a(ProtocolThreeThreeUI.this.ssid, 1, ProtocolThreeThreeUI.this.getIntent());
+        ProtocolThreeThreeUI.this.connect();
+        AppMethodBeat.o(25210);
+      }
+    });
+    this.rkm = ((Button)findViewById(2131306246));
+    this.rkm.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(25211);
+        AppMethodBeat.o(25211);
+      }
+    });
+    if (bt.isNullOrNil(this.ssid))
+    {
+      this.rkk.setText(getString(2131759651));
+      this.rkl.setVisibility(4);
     }
-    setMMTitle(getString(2131300181));
-    AppMethodBeat.o(21162);
+    setMMTitle(getString(2131759653));
+    AppMethodBeat.o(25223);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(21161);
+    AppMethodBeat.i(25222);
     super.onCreate(paramBundle);
-    this.mLy = getIntent().getStringExtra("free_wifi_schema_uri");
-    this.mLx = Uri.parse(this.mLy);
-    this.appId = this.mLx.getQueryParameter("appId");
-    this.mLu = this.mLx.getQueryParameter("shopId");
-    this.mLv = this.mLx.getQueryParameter("authUrl");
-    this.mLw = this.mLx.getQueryParameter("extend");
-    this.cqf = this.mLx.getQueryParameter("timestamp");
-    this.sign = this.mLx.getQueryParameter("sign");
-    ab.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.onCreate, desc=it goes into Protocol33 connect frontpage. uri = %s", new Object[] { com.tencent.mm.plugin.freewifi.m.U(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.V(getIntent())), this.mLy });
+    this.riC = getIntent().getStringExtra("free_wifi_schema_uri");
+    this.riB = Uri.parse(this.riC);
+    this.appId = this.riB.getQueryParameter("appId");
+    this.riy = this.riB.getQueryParameter("shopId");
+    this.riz = this.riB.getQueryParameter("authUrl");
+    this.riA = this.riB.getQueryParameter("extend");
+    this.cMo = this.riB.getQueryParameter("timestamp");
+    this.sign = this.riB.getQueryParameter("sign");
+    ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.onCreate, desc=it goes into Protocol33 connect frontpage. uri = %s", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(getIntent())), this.riC });
     initView();
-    if (bo.isNullOrNil(this.ssid))
+    if (bt.isNullOrNil(this.ssid))
     {
-      ab.e("MicroMsg.FreeWifi.Protocol33UI", "ssid is null");
-      l.A(com.tencent.mm.plugin.freewifi.model.d.bAB(), getIntent().getStringExtra("free_wifi_ap_key"), getIntent().getIntExtra("free_wifi_protocol_type", 0));
-      AppMethodBeat.o(21161);
+      ad.e("MicroMsg.FreeWifi.Protocol33UI", "ssid is null");
+      com.tencent.mm.plugin.freewifi.l.L(com.tencent.mm.plugin.freewifi.model.d.cvP(), getIntent().getStringExtra("free_wifi_ap_key"), getIntent().getIntExtra("free_wifi_protocol_type", 0));
+      AppMethodBeat.o(25222);
       return;
     }
-    paramBundle = j.bAK().OK(this.ssid);
+    paramBundle = j.cvY().aaI(this.ssid);
     if (paramBundle == null)
     {
       paramBundle = new com.tencent.mm.plugin.freewifi.g.c();
-      paramBundle.field_ssidmd5 = ag.cE(this.ssid);
+      paramBundle.field_ssidmd5 = ai.du(this.ssid);
       paramBundle.field_ssid = this.ssid;
     }
     for (int i = 1;; i = 0)
@@ -209,60 +394,60 @@ public class ProtocolThreeThreeUI
       paramBundle.field_wifiType = 33;
       paramBundle.field_connectState = 1;
       if (i != 0) {
-        j.bAK().insert(paramBundle);
+        j.cvY().insert(paramBundle);
       }
       for (;;)
       {
-        ab.i("MicroMsg.FreeWifi.Protocol33UI", "ssid : %s, mid : %s, source : %d", new Object[] { this.ssid, "", Integer.valueOf(this.cpt) });
-        this.mMC = new k.a()
+        ad.i("MicroMsg.FreeWifi.Protocol33UI", "ssid : %s, mid : %s, source : %d", new Object[] { this.ssid, "", Integer.valueOf(this.dep) });
+        this.rjG = new k.a()
         {
-          private int mOC = -999999999;
+          private int rlu = -999999999;
           
           public final void a(String paramAnonymousString, com.tencent.mm.sdk.e.m paramAnonymousm)
           {
-            AppMethodBeat.i(21151);
-            ProtocolThreeThreeUI.a(ProtocolThreeThreeUI.this, ProtocolThreeThreeUI.this.bBm());
-            if (this.mOC != ProtocolThreeThreeUI.a(ProtocolThreeThreeUI.this))
+            AppMethodBeat.i(25212);
+            ProtocolThreeThreeUI.a(ProtocolThreeThreeUI.this, ProtocolThreeThreeUI.this.cwA());
+            if (this.rlu != ProtocolThreeThreeUI.a(ProtocolThreeThreeUI.this))
             {
-              this.mOC = ProtocolThreeThreeUI.a(ProtocolThreeThreeUI.this);
-              ProtocolThreeThreeUI.this.wn(ProtocolThreeThreeUI.a(ProtocolThreeThreeUI.this));
+              this.rlu = ProtocolThreeThreeUI.a(ProtocolThreeThreeUI.this);
+              ProtocolThreeThreeUI.this.Dz(ProtocolThreeThreeUI.a(ProtocolThreeThreeUI.this));
             }
-            AppMethodBeat.o(21151);
+            AppMethodBeat.o(25212);
           }
         };
-        j.bAK().add(this.mMC);
-        ab.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.initModel, desc=Initializing the model behind the view, so anything that changes the model will notify the view. model : field_ssidmd5=%s, field_ssid=%s, field_url=%s, field_mid=%s, field_wifiType=%d, field_connectState=%d", new Object[] { com.tencent.mm.plugin.freewifi.m.U(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.V(getIntent())), paramBundle.field_ssidmd5, paramBundle.field_ssid, paramBundle.field_url, paramBundle.field_mid, Integer.valueOf(paramBundle.field_wifiType), Integer.valueOf(paramBundle.field_connectState) });
-        ab.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.initModel, desc=it initializes the front page. ", new Object[] { com.tencent.mm.plugin.freewifi.m.U(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.V(getIntent())) });
+        j.cvY().add(this.rjG);
+        ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.initModel, desc=Initializing the model behind the view, so anything that changes the model will notify the view. model : field_ssidmd5=%s, field_ssid=%s, field_url=%s, field_mid=%s, field_wifiType=%d, field_connectState=%d", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(getIntent())), paramBundle.field_ssidmd5, paramBundle.field_ssid, paramBundle.field_url, paramBundle.field_mid, Integer.valueOf(paramBundle.field_wifiType), Integer.valueOf(paramBundle.field_connectState) });
+        ad.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.initModel, desc=it initializes the front page. ", new Object[] { com.tencent.mm.plugin.freewifi.m.ai(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.aj(getIntent())) });
         com.tencent.mm.plugin.freewifi.model.d.a(this.ssid, 4, getIntent());
         break;
-        j.bAK().update(paramBundle, new String[0]);
+        j.cvY().update(paramBundle, new String[0]);
       }
     }
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(21168);
+    AppMethodBeat.i(25229);
     super.onDestroy();
-    if (this.mMC != null) {
-      j.bAK().remove(this.mMC);
+    if (this.rjG != null) {
+      j.cvY().remove(this.rjG);
     }
-    this.mOV.stopTimer();
-    j.bAN().release();
-    AppMethodBeat.o(21168);
+    this.rlN.stopTimer();
+    j.cwb().release();
+    AppMethodBeat.o(25229);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(21165);
+    AppMethodBeat.i(25226);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
       goBack();
-      AppMethodBeat.o(21165);
+      AppMethodBeat.o(25226);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(21165);
+    AppMethodBeat.o(25226);
     return bool;
   }
   
@@ -271,82 +456,10 @@ public class ProtocolThreeThreeUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  protected final void wn(int paramInt)
-  {
-    AppMethodBeat.i(21164);
-    ab.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.onConnectStateChange, desc=it receives notifications whenever the connect state of model changes and then updates the view accordingly. state=%d", new Object[] { com.tencent.mm.plugin.freewifi.m.U(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.V(getIntent())), Integer.valueOf(paramInt) });
-    switch (paramInt)
-    {
-    default: 
-      AppMethodBeat.o(21164);
-      return;
-    case 4: 
-      if (this.mOt != null) {
-        this.mOt.dismiss();
-      }
-      this.mOV.stopTimer();
-      this.mNb.setVisibility(4);
-      this.mNt.setText(2131298515);
-      if (this.cpt == 3) {
-        this.mNs.setText(getString(2131301558, new Object[] { this.ssid }));
-      }
-      for (;;)
-      {
-        ab.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.toConnectStart, desc=it initializes the connect front page.", new Object[] { com.tencent.mm.plugin.freewifi.m.U(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.V(getIntent())) });
-        AppMethodBeat.o(21164);
-        return;
-        this.mNs.setText(getString(2131298513, new Object[] { this.ssid }));
-      }
-    case 1: 
-      this.mNb.setVisibility(4);
-      this.mNt.setText(2131298512);
-      this.mOt = h.b(getContext(), getString(2131298512), true, new ProtocolThreeThreeUI.9(this));
-      ab.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.toConnecting, desc=it adds a loading ui on the connect front page.", new Object[] { com.tencent.mm.plugin.freewifi.m.U(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.V(getIntent())) });
-      AppMethodBeat.o(21164);
-      return;
-    case 3: 
-      if (this.mOt != null) {
-        this.mOt.dismiss();
-      }
-      this.mOV.stopTimer();
-      this.mNb.setVisibility(0);
-      this.mNt.setText(2131300177);
-      ab.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.toFail, desc=connect failed.", new Object[] { com.tencent.mm.plugin.freewifi.m.U(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.V(getIntent())) });
-      AppMethodBeat.o(21164);
-      return;
-    }
-    if (this.mOt != null) {
-      this.mOt.dismiss();
-    }
-    this.mOV.stopTimer();
-    this.mNt.setText(2131298509);
-    this.mNt.setClickable(false);
-    Intent localIntent = getIntent();
-    localIntent.putExtra("free_wifi_appid", this.appId);
-    localIntent.putExtra("free_wifi_app_nickname", this.mLh);
-    localIntent.putExtra("free_wifi_app_username", this.cvr);
-    localIntent.putExtra("free_wifi_signature", this.signature);
-    localIntent.putExtra("free_wifi_finish_actioncode", this.mOy);
-    localIntent.putExtra("free_wifi_finish_url", this.mOz);
-    if (bo.isNullOrNil(this.mOA)) {
-      localIntent.setClass(this, FreeWifiSuccUI.class);
-    }
-    for (;;)
-    {
-      finish();
-      startActivity(localIntent);
-      d.IE();
-      ab.i("MicroMsg.FreeWifi.Protocol33UI", "sessionKey=%s, step=%d, method=Protocol33UI.toSuccess, desc=connect succeeded.", new Object[] { com.tencent.mm.plugin.freewifi.m.U(getIntent()), Integer.valueOf(com.tencent.mm.plugin.freewifi.m.V(getIntent())) });
-      break;
-      localIntent.putExtra("free_wifi_qinghuai_url", this.mOA);
-      localIntent.setClass(this, FreeWifiSuccWebViewUI.class);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.ProtocolThreeThreeUI
  * JD-Core Version:    0.7.0.1
  */

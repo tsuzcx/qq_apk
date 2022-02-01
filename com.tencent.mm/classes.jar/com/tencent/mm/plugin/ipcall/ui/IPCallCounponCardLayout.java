@@ -21,15 +21,15 @@ public class IPCallCounponCardLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(22097);
+    AppMethodBeat.i(25713);
     setMeasuredDimension(getDefaultSize(0, paramInt1), getDefaultSize(0, paramInt2));
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(getMeasuredWidth() * 3 / 5, 1073741824));
-    AppMethodBeat.o(22097);
+    AppMethodBeat.o(25713);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallCounponCardLayout
  * JD-Core Version:    0.7.0.1
  */

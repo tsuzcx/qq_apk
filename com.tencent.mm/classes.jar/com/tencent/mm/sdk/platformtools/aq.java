@@ -1,154 +1,435 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.os.Debug;
-import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
+@Deprecated
 public final class aq
-  implements Runnable
 {
-  private static final String yot;
-  private static final String you;
-  long cgd;
-  final String eMp;
-  long endTime;
-  long fpw;
-  final Handler handler;
-  int priority;
-  boolean started;
-  final Thread thread;
-  String threadName;
-  long waitTime;
-  final Object yme;
-  public final Runnable yol;
-  long yom;
-  final a yon;
-  long yoo;
-  long yop;
-  long yoq;
-  long yor;
-  float yos;
+  private static ap hbq = null;
+  public HandlerThread EUN;
+  private ap pXi;
+  private String threadName;
   
-  static
+  @Deprecated
+  public aq(HandlerThread paramHandlerThread)
   {
-    AppMethodBeat.i(52169);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("taskName = %s");
-    localStringBuilder.append("|token = %s");
-    localStringBuilder.append("|handler = %s");
-    localStringBuilder.append("|threadName = %s");
-    localStringBuilder.append("|threadId = %d");
-    localStringBuilder.append("|priority = %d");
-    localStringBuilder.append("|addTime = %d");
-    localStringBuilder.append("|delayTime = %d");
-    localStringBuilder.append("|usedTime = %d");
-    localStringBuilder.append("|cpuTime = %d");
-    localStringBuilder.append("|started = %b");
-    yot = localStringBuilder.toString();
-    localStringBuilder = new StringBuilder();
-    localStringBuilder.append("taskName = %s");
-    localStringBuilder.append(" | addTime = %s");
-    localStringBuilder.append(" | endTime = %s");
-    localStringBuilder.append(" | usedTime = %d");
-    localStringBuilder.append(" | cpuTime = %d");
-    localStringBuilder.append(" | threadCpuTime = %d");
-    localStringBuilder.append(" | totalCpuTime = %d");
-    localStringBuilder.append(" | threadCpuRate = %.1f");
-    you = localStringBuilder.toString();
-    AppMethodBeat.o(52169);
+    AppMethodBeat.i(182963);
+    this.EUN = null;
+    this.pXi = null;
+    this.threadName = null;
+    this.pXi = null;
+    this.EUN = paramHandlerThread;
+    this.threadName = paramHandlerThread.getName();
+    AppMethodBeat.o(182963);
   }
   
-  aq(Thread paramThread, Handler paramHandler, Runnable paramRunnable, Object paramObject, a parama)
+  public static void Wk(int paramInt)
   {
-    AppMethodBeat.i(52166);
-    this.started = false;
-    this.yos = -1.0F;
-    this.thread = paramThread;
-    if (paramThread != null)
+    AppMethodBeat.i(157676);
+    try
     {
-      this.threadName = paramThread.getName();
-      this.yom = paramThread.getId();
-      this.priority = paramThread.getPriority();
+      Process.setThreadPriority(paramInt);
+      ad.i("MicroMsg.MMHandlerThread", "setCurrentPriority to %d ok", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(157676);
+      return;
     }
-    this.handler = paramHandler;
-    this.yol = paramRunnable;
-    paramHandler = paramRunnable.getClass().getName();
-    paramRunnable = paramRunnable.toString();
-    paramThread = paramHandler;
-    if (!bo.isNullOrNil(paramRunnable))
+    catch (Exception localException)
     {
-      int i = paramRunnable.indexOf('|');
-      paramThread = paramHandler;
-      if (i > 0) {
-        paramThread = paramHandler + "_" + paramRunnable.substring(i + 1);
+      ad.i("MicroMsg.MMHandlerThread", "setCurrentPriority to %d fail, %s", new Object[] { Integer.valueOf(paramInt), localException.getMessage() });
+      ad.printErrStackTrace("MicroMsg.MMHandlerThread", localException, "", new Object[0]);
+      AppMethodBeat.o(157676);
+    }
+  }
+  
+  public static void az(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(157697);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(157697);
+      return;
+    }
+    eFS().removeCallbacks(paramRunnable);
+    AppMethodBeat.o(157697);
+  }
+  
+  private static ap eFS()
+  {
+    AppMethodBeat.i(157694);
+    if (hbq == null) {
+      hbq = new ap(Looper.getMainLooper());
+    }
+    ap localap = hbq;
+    AppMethodBeat.o(157694);
+    return localap;
+  }
+  
+  public static void f(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(157695);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(157695);
+      return;
+    }
+    eFS().post(paramRunnable);
+    AppMethodBeat.o(157695);
+  }
+  
+  public static boolean isMainThread()
+  {
+    AppMethodBeat.i(157692);
+    if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId())
+    {
+      AppMethodBeat.o(157692);
+      return true;
+    }
+    AppMethodBeat.o(157692);
+    return false;
+  }
+  
+  public static void n(Runnable paramRunnable, long paramLong)
+  {
+    AppMethodBeat.i(157696);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(157696);
+      return;
+    }
+    eFS().postDelayed(paramRunnable, paramLong);
+    AppMethodBeat.o(157696);
+  }
+  
+  public final void KL()
+  {
+    AppMethodBeat.i(157679);
+    if ((this.EUN == null) || (!this.EUN.isAlive()))
+    {
+      ad.e("MicroMsg.MMHandlerThread", "setHighPriority failed thread is dead");
+      AppMethodBeat.o(157679);
+      return;
+    }
+    int i = this.EUN.getThreadId();
+    try
+    {
+      if (-8 == Process.getThreadPriority(i))
+      {
+        ad.w("MicroMsg.MMHandlerThread", "setHighPriority No Need.");
+        AppMethodBeat.o(157679);
+        return;
       }
+      Process.setThreadPriority(i, -8);
+      ad.i("MicroMsg.MMHandlerThread", "thread:%d setHighPriority to %d", new Object[] { Integer.valueOf(i), Integer.valueOf(Process.getThreadPriority(i)) });
+      AppMethodBeat.o(157679);
+      return;
     }
-    this.eMp = paramThread;
-    this.yme = paramObject;
-    this.yon = parama;
-    this.cgd = System.currentTimeMillis();
-    AppMethodBeat.o(52166);
-  }
-  
-  public final String dump(boolean paramBoolean)
-  {
-    AppMethodBeat.i(52168);
-    if (paramBoolean)
+    catch (Exception localException)
     {
-      str = String.format(yot, new Object[] { this.eMp, this.yme, this.handler, this.threadName, Long.valueOf(this.yom), Integer.valueOf(this.priority), Long.valueOf(this.cgd), Long.valueOf(this.yoo), Long.valueOf(this.fpw), Long.valueOf(this.yop), Boolean.valueOf(this.started) });
-      AppMethodBeat.o(52168);
-      return str;
+      ad.w("MicroMsg.MMHandlerThread", "thread:%d setHighPriority failed", new Object[] { Integer.valueOf(i) });
+      ad.printErrStackTrace("MicroMsg.MMHandlerThread", localException, "", new Object[0]);
+      AppMethodBeat.o(157679);
     }
-    String str = String.format(you, new Object[] { this.eMp, new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.cgd)), new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.endTime)), Long.valueOf(this.fpw), Long.valueOf(this.yop), Long.valueOf(this.yoq), Long.valueOf(this.yor), Float.valueOf(this.yos) });
-    AppMethodBeat.o(52168);
-    return str;
   }
   
-  public final void run()
+  public final int a(final a parama)
   {
-    AppMethodBeat.i(52167);
-    int i = Process.myTid();
-    new StringBuilder("/proc/self/task/").append(i).append("/stat");
-    this.fpw = System.currentTimeMillis();
-    this.yop = Debug.threadCpuTimeNanos();
-    this.waitTime = (this.fpw - this.cgd - this.yoo);
-    this.yoq = -1L;
-    this.yor = -1L;
-    this.started = true;
-    this.yol.run();
-    this.yoq = (-1L - this.yoq);
-    this.yor = (-1L - this.yor);
-    this.endTime = System.currentTimeMillis();
-    this.fpw = (this.endTime - this.fpw);
-    this.yop = ((Debug.threadCpuTimeNanos() - this.yop) / 1000000L);
-    if (this.yor != 0L) {
-      this.yos = ((float)(100L * this.yoq) / (float)this.yor);
-    }
-    if (this.yon != null)
+    AppMethodBeat.i(157691);
+    if (new ap(this.EUN.getLooper()).postAtFrontOfQueue(new Runnable()
     {
-      this.yon.a(this.yol, this);
-      this.yon.a(this, this.thread, this.fpw, this.yop, this.waitTime, this.yos);
+      public final void run()
+      {
+        AppMethodBeat.i(157673);
+        parama.aus();
+        aq.ad(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(157672);
+            aq.2.this.EUQ.aut();
+            AppMethodBeat.o(157672);
+          }
+        });
+        AppMethodBeat.o(157673);
+      }
+      
+      public final String toString()
+      {
+        AppMethodBeat.i(157674);
+        String str = super.toString() + "|" + parama.toString();
+        AppMethodBeat.o(157674);
+        return str;
+      }
+    }))
+    {
+      AppMethodBeat.o(157691);
+      return 0;
     }
-    AppMethodBeat.o(52167);
+    AppMethodBeat.o(157691);
+    return -2;
   }
   
-  public final String toString()
+  /* Error */
+  public final int a(final b paramb)
   {
-    AppMethodBeat.i(156532);
-    String str = this.eMp + ", " + this.yol;
-    AppMethodBeat.o(156532);
-    return str;
+    // Byte code:
+    //   0: ldc 207
+    //   2: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: ldc 67
+    //   7: ldc 209
+    //   9: iconst_2
+    //   10: anewarray 4	java/lang/Object
+    //   13: dup
+    //   14: iconst_0
+    //   15: invokestatic 150	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   18: invokevirtual 154	java/lang/Thread:getId	()J
+    //   21: invokestatic 214	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   24: aastore
+    //   25: dup
+    //   26: iconst_1
+    //   27: invokestatic 218	com/tencent/mm/sdk/platformtools/bt:eGN	()Lcom/tencent/mm/sdk/platformtools/at;
+    //   30: aastore
+    //   31: invokestatic 80	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   34: ldc 220
+    //   36: invokestatic 222	com/tencent/mm/sdk/platformtools/aq:isMainThread	()Z
+    //   39: invokestatic 228	junit/framework/Assert:assertTrue	(Ljava/lang/String;Z)V
+    //   42: aload_0
+    //   43: getfield 42	com/tencent/mm/sdk/platformtools/aq:EUN	Landroid/os/HandlerThread;
+    //   46: invokevirtual 229	android/os/HandlerThread:getId	()J
+    //   49: lstore_3
+    //   50: iconst_0
+    //   51: newarray byte
+    //   53: astore 7
+    //   55: new 6	com/tencent/mm/sdk/platformtools/aq$1
+    //   58: dup
+    //   59: aload_0
+    //   60: aload_1
+    //   61: aload_0
+    //   62: getfield 46	com/tencent/mm/sdk/platformtools/aq:threadName	Ljava/lang/String;
+    //   65: aload 7
+    //   67: invokespecial 232	com/tencent/mm/sdk/platformtools/aq$1:<init>	(Lcom/tencent/mm/sdk/platformtools/aq;Lcom/tencent/mm/sdk/platformtools/aq$b;Ljava/lang/String;Ljava/lang/Object;)V
+    //   70: astore_1
+    //   71: aload 7
+    //   73: monitorenter
+    //   74: aload_0
+    //   75: aload_1
+    //   76: invokevirtual 234	com/tencent/mm/sdk/platformtools/aq:a	(Lcom/tencent/mm/sdk/platformtools/aq$a;)I
+    //   79: istore_2
+    //   80: aload_0
+    //   81: getfield 42	com/tencent/mm/sdk/platformtools/aq:EUN	Landroid/os/HandlerThread;
+    //   84: invokevirtual 229	android/os/HandlerThread:getId	()J
+    //   87: lstore 5
+    //   89: ldc 67
+    //   91: ldc 236
+    //   93: iconst_3
+    //   94: anewarray 4	java/lang/Object
+    //   97: dup
+    //   98: iconst_0
+    //   99: iload_2
+    //   100: invokestatic 75	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   103: aastore
+    //   104: dup
+    //   105: iconst_1
+    //   106: lload_3
+    //   107: invokestatic 214	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   110: aastore
+    //   111: dup
+    //   112: iconst_2
+    //   113: lload 5
+    //   115: invokestatic 214	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   118: aastore
+    //   119: invokestatic 80	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   122: iload_2
+    //   123: ifne +15 -> 138
+    //   126: lload_3
+    //   127: lload 5
+    //   129: lcmp
+    //   130: ifne +8 -> 138
+    //   133: aload 7
+    //   135: invokevirtual 239	java/lang/Object:wait	()V
+    //   138: aload 7
+    //   140: monitorexit
+    //   141: ldc 207
+    //   143: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   146: iload_2
+    //   147: ireturn
+    //   148: astore_1
+    //   149: ldc 67
+    //   151: ldc 241
+    //   153: iconst_1
+    //   154: anewarray 4	java/lang/Object
+    //   157: dup
+    //   158: iconst_0
+    //   159: aload_1
+    //   160: invokevirtual 85	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   163: aastore
+    //   164: invokestatic 244	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   167: goto -29 -> 138
+    //   170: astore_1
+    //   171: aload 7
+    //   173: monitorexit
+    //   174: ldc 207
+    //   176: invokestatic 55	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   179: aload_1
+    //   180: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	181	0	this	aq
+    //   0	181	1	paramb	b
+    //   79	68	2	i	int
+    //   49	78	3	l1	long
+    //   87	41	5	l2	long
+    //   53	119	7	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   133	138	148	java/lang/Exception
+    //   74	122	170	finally
+    //   133	138	170	finally
+    //   138	141	170	finally
+    //   149	167	170	finally
+    //   171	174	170	finally
+  }
+  
+  public final int ax(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(157688);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(157688);
+      return -1;
+    }
+    cBt().post(paramRunnable);
+    AppMethodBeat.o(157688);
+    return 0;
+  }
+  
+  public final int ay(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(157689);
+    cBt().postAtFrontOfQueue(paramRunnable);
+    AppMethodBeat.o(157689);
+    return 0;
+  }
+  
+  public final ap cBt()
+  {
+    AppMethodBeat.i(157684);
+    if (this.pXi == null) {
+      this.pXi = new ap(this.EUN.getLooper());
+    }
+    ap localap = this.pXi;
+    AppMethodBeat.o(157684);
+    return localap;
+  }
+  
+  public final void eFP()
+  {
+    AppMethodBeat.i(157677);
+    if ((this.EUN == null) || (!this.EUN.isAlive()))
+    {
+      ad.e("MicroMsg.MMHandlerThread", "setLowestPriority failed thread is dead");
+      AppMethodBeat.o(157677);
+      return;
+    }
+    int i = this.EUN.getThreadId();
+    try
+    {
+      if (19 == Process.getThreadPriority(i))
+      {
+        ad.w("MicroMsg.MMHandlerThread", "setLowestPriority No Need.");
+        AppMethodBeat.o(157677);
+        return;
+      }
+      Process.setThreadPriority(i, 19);
+      ad.i("MicroMsg.MMHandlerThread", "thread:%d setLowestPriority to %d", new Object[] { Integer.valueOf(i), Integer.valueOf(Process.getThreadPriority(i)) });
+      AppMethodBeat.o(157677);
+      return;
+    }
+    catch (Exception localException)
+    {
+      ad.w("MicroMsg.MMHandlerThread", "thread:%d setLowestPriority failed", new Object[] { Integer.valueOf(i) });
+      ad.printErrStackTrace("MicroMsg.MMHandlerThread", localException, "", new Object[0]);
+      AppMethodBeat.o(157677);
+    }
+  }
+  
+  public final int eFQ()
+  {
+    AppMethodBeat.i(157678);
+    if (this.EUN == null)
+    {
+      AppMethodBeat.o(157678);
+      return -1;
+    }
+    int i = this.EUN.getThreadId();
+    AppMethodBeat.o(157678);
+    return i;
+  }
+  
+  public final void eFR()
+  {
+    AppMethodBeat.i(157680);
+    if ((this.EUN == null) || (!this.EUN.isAlive()))
+    {
+      ad.e("MicroMsg.MMHandlerThread", "setLowPriority failed thread is dead");
+      AppMethodBeat.o(157680);
+      return;
+    }
+    int i = this.EUN.getThreadId();
+    try
+    {
+      if (Process.getThreadPriority(i) == 0)
+      {
+        ad.w("MicroMsg.MMHandlerThread", "setLowPriority No Need.");
+        AppMethodBeat.o(157680);
+        return;
+      }
+      Process.setThreadPriority(i, 0);
+      ad.i("MicroMsg.MMHandlerThread", "thread:%d setLowPriority to %d", new Object[] { Integer.valueOf(i), Integer.valueOf(Process.getThreadPriority(i)) });
+      AppMethodBeat.o(157680);
+      return;
+    }
+    catch (Exception localException)
+    {
+      ad.w("MicroMsg.MMHandlerThread", "thread:%d setLowPriority failed", new Object[] { Integer.valueOf(i) });
+      ad.printErrStackTrace("MicroMsg.MMHandlerThread", localException, "", new Object[0]);
+      AppMethodBeat.o(157680);
+    }
+  }
+  
+  public final Looper getLooper()
+  {
+    AppMethodBeat.i(202375);
+    Looper localLooper = this.EUN.getLooper();
+    AppMethodBeat.o(202375);
+    return localLooper;
+  }
+  
+  public final int m(Runnable paramRunnable, long paramLong)
+  {
+    AppMethodBeat.i(157690);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(157690);
+      return -1;
+    }
+    cBt().postDelayed(paramRunnable, paramLong);
+    AppMethodBeat.o(157690);
+    return 0;
   }
   
   public static abstract interface a
   {
-    public abstract void a(Runnable paramRunnable, aq paramaq);
+    public abstract boolean aus();
     
-    public abstract void a(Runnable paramRunnable, Thread paramThread, long paramLong1, long paramLong2, long paramLong3, float paramFloat);
+    public abstract boolean aut();
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void AI();
   }
 }
 

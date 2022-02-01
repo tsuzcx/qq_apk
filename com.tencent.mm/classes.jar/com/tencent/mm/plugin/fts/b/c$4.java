@@ -8,14 +8,14 @@ final class c$4
 {
   c$4(c paramc)
   {
-    AppMethodBeat.i(136740);
+    AppMethodBeat.i(160984);
     this.__eventId = d.class.getName().hashCode();
-    AppMethodBeat.o(136740);
+    AppMethodBeat.o(160984);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.c.4
  * JD-Core Version:    0.7.0.1
  */

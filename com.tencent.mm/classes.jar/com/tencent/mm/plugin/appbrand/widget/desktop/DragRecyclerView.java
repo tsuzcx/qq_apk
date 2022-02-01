@@ -7,15 +7,15 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public abstract class DragRecyclerView
   extends RecyclerView
   implements GestureDetector.OnGestureListener
 {
-  private GestureDetector idY;
-  boolean jfJ = false;
-  DragFeatureView jfQ;
+  private GestureDetector ktZ;
+  boolean lVP = false;
+  DragFeatureView lVW;
   
   public DragRecyclerView(Context paramContext)
   {
@@ -37,17 +37,17 @@ public abstract class DragRecyclerView
   
   private void init(Context paramContext)
   {
-    this.idY = new GestureDetector(paramContext, this);
+    this.ktZ = new GestureDetector(paramContext, this);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = false;
-    this.idY.onTouchEvent(paramMotionEvent);
-    if (this.jfJ)
+    this.ktZ.onTouchEvent(paramMotionEvent);
+    if (this.lVP)
     {
-      if (this.jfQ != null) {
-        this.jfQ.onTouch(this, paramMotionEvent);
+      if (this.lVW != null) {
+        this.lVW.onTouch(this, paramMotionEvent);
       }
       int j = paramMotionEvent.getAction();
       paramMotionEvent.setAction(3);
@@ -62,7 +62,7 @@ public abstract class DragRecyclerView
     if (paramMotionEvent.getAction() != 3) {
       paramMotionEvent.getAction();
     }
-    if ((this.jfJ) || (super.dispatchTouchEvent(paramMotionEvent))) {
+    if ((this.lVP) || (super.dispatchTouchEvent(paramMotionEvent))) {
       bool = true;
     }
     return bool;
@@ -70,12 +70,12 @@ public abstract class DragRecyclerView
   
   public DragFeatureView getDragRubbishView()
   {
-    return this.jfQ;
+    return this.lVW;
   }
   
   public final void l(DragFeatureView paramDragFeatureView)
   {
-    this.jfQ = paramDragFeatureView;
+    this.lVW = paramDragFeatureView;
   }
   
   public boolean onDown(MotionEvent paramMotionEvent)
@@ -90,17 +90,17 @@ public abstract class DragRecyclerView
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if (this.jfJ) {
-      ab.i("DragRecyclerView", "alvinluo onLongPress ignore");
+    if (this.lVP) {
+      ad.i("DragRecyclerView", "alvinluo onLongPress ignore");
     }
-    while (this.jfQ == null) {
+    while (this.lVW == null) {
       return;
     }
-    this.jfQ.onLongPress(paramMotionEvent);
-    if (this.jfQ.getVisibility() == 0) {}
+    this.lVW.onLongPress(paramMotionEvent);
+    if (this.lVW.getVisibility() == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jfJ = bool;
+      this.lVP = bool;
       return;
     }
   }
@@ -119,12 +119,12 @@ public abstract class DragRecyclerView
   
   public void setLongPress(boolean paramBoolean)
   {
-    this.jfJ = paramBoolean;
+    this.lVP = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.DragRecyclerView
  * JD-Core Version:    0.7.0.1
  */

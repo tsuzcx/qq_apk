@@ -29,24 +29,24 @@ public class MMImageView
   @TargetApi(14)
   public void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
   {
-    AppMethodBeat.i(106103);
+    AppMethodBeat.i(141460);
     super.onInitializeAccessibilityEvent(paramAccessibilityEvent);
     paramAccessibilityEvent.setClassName(MMImageView.class.getName());
-    AppMethodBeat.o(106103);
+    AppMethodBeat.o(141460);
   }
   
   @TargetApi(14)
   public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    AppMethodBeat.i(106104);
+    AppMethodBeat.i(141461);
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
     paramAccessibilityNodeInfo.setClassName(MMImageView.class.getName());
-    AppMethodBeat.o(106104);
+    AppMethodBeat.o(141461);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.MMImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,48 @@
 package com.tencent.mm.plugin.clean.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.vfs.e;
-import java.util.Calendar;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import java.util.ArrayList;
 
 public final class a
 {
-  public long cpg;
-  public long fXv;
-  public String filePath;
-  public long size;
-  public String thumbPath;
-  public int type;
-  private String userName;
+  private static final ap nNH;
+  private static ArrayList<Object> nNI;
+  private static long nNJ;
+  private static int nNK;
+  private static long nNw;
+  private static long nNx;
+  private static long nNy;
   
-  public a(String paramString1, String paramString2, int paramInt, String paramString3, long paramLong1, long paramLong2)
+  static
   {
-    AppMethodBeat.i(18663);
-    this.size = e.avI(paramString2);
-    ab.v("MicroMsg.AnalyseItem", "add mst %d %d %s %s %d", new Object[] { Long.valueOf(this.size), Integer.valueOf(paramInt), bo.nV(this.size), paramString3, Long.valueOf(paramLong1) });
-    this.thumbPath = paramString1;
-    this.type = paramInt;
-    this.filePath = paramString2;
-    this.userName = paramString3;
-    this.cpg = paramLong1;
-    this.fXv = paramLong2;
-    AppMethodBeat.o(18663);
+    AppMethodBeat.i(22808);
+    nNH = new ap();
+    nNw = 0L;
+    nNJ = 0L;
+    nNy = 0L;
+    nNx = 0L;
+    nNK = 0;
+    AppMethodBeat.o(22808);
   }
   
-  public final long bgF()
+  public static final void bNQ()
   {
-    AppMethodBeat.i(18665);
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(this.fXv);
-    int i = localCalendar.get(1);
-    long l = localCalendar.get(2) + i * 100;
-    AppMethodBeat.o(18665);
-    return l;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(18664);
-    switch (this.type)
-    {
-    default: 
-      AppMethodBeat.o(18664);
-      return "";
-    case 1: 
-      str = String.format("%-8s    %-10s  %s\r\n", new Object[] { "IMG", bo.nV(this.size), this.filePath });
-      AppMethodBeat.o(18664);
-      return str;
-    case 3: 
-      str = String.format("%-8s    %-10s  %s\r\n", new Object[] { "VIDEO", bo.nV(this.size), this.filePath });
-      AppMethodBeat.o(18664);
-      return str;
-    case 2: 
-      str = String.format("%-8s    %-10s  %s\r\n", new Object[] { "VOICE", bo.nV(this.size), this.filePath });
-      AppMethodBeat.o(18664);
-      return str;
-    }
-    String str = String.format("%-8s    %-10s  %s\r\n", new Object[] { "ATTACH", bo.nV(this.size), this.filePath });
-    AppMethodBeat.o(18664);
-    return str;
+    AppMethodBeat.i(22806);
+    ad.i("MicroMsg.CleanLogic", "startCleanDataNow");
+    nNH.removeCallbacksAndMessages(null);
+    nNw = 0L;
+    nNJ = 0L;
+    ad.i("MicroMsg.CleanLogic", "set analyse data: is null? %b", new Object[] { Boolean.TRUE });
+    nNI = null;
+    nNK = 0;
+    AppMethodBeat.o(22806);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.c.a
  * JD-Core Version:    0.7.0.1
  */

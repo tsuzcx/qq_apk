@@ -13,10 +13,10 @@ public final class zzl
   
   static
   {
-    AppMethodBeat.i(70036);
+    AppMethodBeat.i(3712);
     zzao = new zzl(0, 30, 3600);
     zzap = new zzl(1, 30, 3600);
-    AppMethodBeat.o(70036);
+    AppMethodBeat.o(3712);
   }
   
   private zzl(int paramInt1, int paramInt2, int paramInt3)
@@ -47,22 +47,22 @@ public final class zzl
   
   public final String toString()
   {
-    AppMethodBeat.i(70035);
+    AppMethodBeat.i(3711);
     int i = this.zzaq;
     int j = this.zzar;
     int k = this.zzas;
     String str = 74 + "policy=" + i + " initial_backoff=" + j + " maximum_backoff=" + k;
-    AppMethodBeat.o(70035);
+    AppMethodBeat.o(3711);
     return str;
   }
   
   public final Bundle zzf(Bundle paramBundle)
   {
-    AppMethodBeat.i(70034);
+    AppMethodBeat.i(3710);
     paramBundle.putInt("retry_policy", this.zzaq);
     paramBundle.putInt("initial_backoff_seconds", this.zzar);
     paramBundle.putInt("maximum_backoff_seconds", this.zzas);
-    AppMethodBeat.o(70034);
+    AppMethodBeat.o(3710);
     return paramBundle;
   }
   
@@ -83,7 +83,7 @@ public final class zzl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.gcm.zzl
  * JD-Core Version:    0.7.0.1
  */

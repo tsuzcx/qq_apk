@@ -9,7 +9,7 @@ public class c
 {
   public boolean a()
   {
-    AppMethodBeat.i(66950);
+    AppMethodBeat.i(15001);
     NativeLoad.getInstance();
     this.a = NativeLoad.nativeLoadGLProgram(6);
     if ((this.a != 0) && (b())) {}
@@ -17,14 +17,14 @@ public class c
     {
       c();
       boolean bool = this.g;
-      AppMethodBeat.o(66950);
+      AppMethodBeat.o(15001);
       return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.a.c
  * JD-Core Version:    0.7.0.1
  */

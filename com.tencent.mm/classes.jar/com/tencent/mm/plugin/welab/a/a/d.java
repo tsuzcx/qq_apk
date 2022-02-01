@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.welab.a.a;
 
-import com.tencent.mm.g.c.cv;
+import com.tencent.mm.g.c.dk;
 import com.tencent.mm.kernel.c.a;
 
 public abstract interface d
@@ -10,7 +10,7 @@ public abstract interface d
   
   public abstract void a(String paramString, b paramb);
   
-  public abstract cv ajt(String paramString);
+  public abstract dk ayX(String paramString);
 }
 
 

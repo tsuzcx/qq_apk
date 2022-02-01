@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class vj
   extends b
 {
-  public vj.a cMx;
-  public vj.b cMy;
+  public a dAP;
+  public b dAQ;
   
   public vj()
   {
@@ -16,17 +16,28 @@ public final class vj
   
   private vj(byte paramByte)
   {
-    AppMethodBeat.i(56580);
-    this.cMx = new vj.a();
-    this.cMy = new vj.b();
-    this.ymq = false;
+    AppMethodBeat.i(149891);
+    this.dAP = new a();
+    this.dAQ = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(56580);
+    AppMethodBeat.o(149891);
+  }
+  
+  public static final class a
+  {
+    public boolean dAR = false;
+    public boolean dAS = false;
+  }
+  
+  public static final class b
+  {
+    public String dAT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.vj
  * JD-Core Version:    0.7.0.1
  */

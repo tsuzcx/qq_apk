@@ -1,76 +1,129 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class cfn
-  extends com.tencent.mm.bv.a
+  extends cld
 {
-  public int wPd;
-  public int xPT;
-  public int xPU;
-  public int xoD;
+  public int EbB;
+  public dpp EbC;
+  public int dcG;
+  public String nTK;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94627);
+    AppMethodBeat.i(91652);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.wPd);
-      paramVarArgs.aO(2, this.xoD);
-      paramVarArgs.aO(3, this.xPT);
-      paramVarArgs.aO(4, this.xPU);
-      AppMethodBeat.o(94627);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = e.a.a.b.b.a.bl(1, this.wPd);
-      int i = e.a.a.b.b.a.bl(2, this.xoD);
-      int j = e.a.a.b.b.a.bl(3, this.xPT);
-      int k = e.a.a.b.b.a.bl(4, this.xPU);
-      AppMethodBeat.o(94627);
-      return paramInt + 0 + i + j + k;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
-      }
-      AppMethodBeat.o(94627);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      cfn localcfn = (cfn)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
       {
-      default: 
-        AppMethodBeat.o(94627);
-        return -1;
-      case 1: 
-        localcfn.wPd = locala.CLY.sl();
-        AppMethodBeat.o(94627);
-        return 0;
-      case 2: 
-        localcfn.xoD = locala.CLY.sl();
-        AppMethodBeat.o(94627);
-        return 0;
-      case 3: 
-        localcfn.xPT = locala.CLY.sl();
-        AppMethodBeat.o(94627);
-        return 0;
+        paramVarArgs.kX(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      localcfn.xPU = locala.CLY.sl();
-      AppMethodBeat.o(94627);
+      paramVarArgs.aR(2, this.dcG);
+      if (this.nTK != null) {
+        paramVarArgs.d(3, this.nTK);
+      }
+      paramVarArgs.aR(4, this.EbB);
+      if (this.EbC != null)
+      {
+        paramVarArgs.kX(5, this.EbC.computeSize());
+        this.EbC.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(91652);
       return 0;
     }
-    AppMethodBeat.o(94627);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseResponse == null) {
+        break label614;
+      }
+    }
+    label614:
+    for (paramInt = f.a.a.a.kW(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt + f.a.a.b.b.a.bA(2, this.dcG);
+      paramInt = i;
+      if (this.nTK != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.nTK);
+      }
+      i = paramInt + f.a.a.b.b.a.bA(4, this.EbB);
+      paramInt = i;
+      if (this.EbC != null) {
+        paramInt = i + f.a.a.a.kW(5, this.EbC.computeSize());
+      }
+      AppMethodBeat.o(91652);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = cld.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cld.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.fMq();
+          }
+        }
+        AppMethodBeat.o(91652);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        cfn localcfn = (cfn)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(91652);
+          return -1;
+        case 1: 
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cld.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localcfn.BaseResponse = ((BaseResponse)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(91652);
+          return 0;
+        case 2: 
+          localcfn.dcG = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(91652);
+          return 0;
+        case 3: 
+          localcfn.nTK = ((f.a.a.a.a)localObject1).KhF.readString();
+          AppMethodBeat.o(91652);
+          return 0;
+        case 4: 
+          localcfn.EbB = ((f.a.a.a.a)localObject1).KhF.xS();
+          AppMethodBeat.o(91652);
+          return 0;
+        }
+        paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new dpp();
+          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((dpp)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, cld.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localcfn.EbC = ((dpp)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(91652);
+        return 0;
+      }
+      AppMethodBeat.o(91652);
+      return -1;
+    }
   }
 }
 

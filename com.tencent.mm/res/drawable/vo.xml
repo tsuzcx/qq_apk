@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@drawable/avi" />
-    <item android:drawable="@raw/checkbox_unselected_white" />
-</selector>
+    <corners android:radius="0.0dip" />
+    <padding android:left="2.0dip" android:top="2.0dip" android:right="2.0dip" android:bottom="2.0dip" />
+    <solid android:color="@color/a_r" />
+    <stroke android:width="1.0px" android:color="#ffbfbfbf" android:dashWidth="0.0dip" />
+</shape>

@@ -8,21 +8,21 @@ import android.os.Bundle;
 import android.widget.Toast;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.p;
+import com.tencent.mm.al.q;
 import com.tencent.mm.booter.NotifyReceiver;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bk;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.bn;
+import com.tencent.mm.model.bn.a;
 import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.r;
-import com.tencent.mm.sdk.platformtools.w;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.m;
+import com.tencent.mm.sdk.platformtools.t;
+import com.tencent.mm.sdk.platformtools.y;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.e.j;
-import java.io.File;
 
 @a(3)
 @JgClassChecked(author=12, fComment="checked", lastDate="20141031", reviewer=20, vComment={com.jg.EType.ACTIVITYCHECK})
@@ -32,26 +32,26 @@ public class ShareScreenToTimeLineUI
   String filePath = null;
   Uri uri = null;
   
-  private void dNC()
+  private void fdD()
   {
-    AppMethodBeat.i(34979);
-    Toast.makeText(this, 2131303679, 1).show();
-    AppMethodBeat.o(34979);
+    AppMethodBeat.i(39175);
+    Toast.makeText(this, 2131763661, 1).show();
+    AppMethodBeat.o(39175);
   }
   
-  private void iC(String paramString1, String paramString2)
+  private void lv(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(34978);
+    AppMethodBeat.i(39174);
     Intent localIntent = new Intent();
-    if (!bo.isNullOrNil(paramString1))
+    if (!bt.isNullOrNil(paramString1))
     {
       localIntent.putExtra("sns_kemdia_path", paramString1);
       localIntent.putExtra("KFilterId", -1);
     }
-    if (!bo.isNullOrNil(paramString2)) {
-      localIntent.putExtra(e.j.yVi, paramString2);
+    if (!bt.isNullOrNil(paramString2)) {
+      localIntent.putExtra("Kdescription", paramString2);
     }
-    if ((aw.aaB()) && (!aw.QP()))
+    if ((az.arW()) && (!az.aeC()))
     {
       localIntent.putExtra("K_go_to_SnsTimeLineUI", true);
       d.b(this, "sns", ".ui.SnsUploadUI", localIntent);
@@ -59,12 +59,12 @@ public class ShareScreenToTimeLineUI
     for (;;)
     {
       finish();
-      AppMethodBeat.o(34978);
+      AppMethodBeat.o(39174);
       return;
-      if (!bo.isNullOrNil(paramString1))
+      if (!bt.isNullOrNil(paramString1))
       {
         paramString2 = new Intent(this, ShareToTimeLineUI.class);
-        paramString2.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(paramString1)));
+        paramString2.putExtra("android.intent.extra.STREAM", m.a(getContext(), new com.tencent.mm.vfs.e(paramString1)));
         paramString2.addFlags(32768).addFlags(268435456);
         paramString2.setType("image/*");
         paramString2.setAction("android.intent.action.SEND");
@@ -72,7 +72,7 @@ public class ShareScreenToTimeLineUI
       }
       else
       {
-        dNC();
+        fdD();
       }
     }
   }
@@ -84,115 +84,123 @@ public class ShareScreenToTimeLineUI
   
   public void initView()
   {
-    AppMethodBeat.i(34977);
+    AppMethodBeat.i(39173);
     Intent localIntent = getIntent();
     if (localIntent == null)
     {
-      ab.e("MicroMsg.ShareScreenToTimeLineUI", "launch : fail, intent is null");
-      dNC();
+      ad.e("MicroMsg.ShareScreenToTimeLineUI", "launch : fail, intent is null");
+      fdD();
       finish();
-      AppMethodBeat.o(34977);
+      AppMethodBeat.o(39173);
       return;
     }
-    String str1 = localIntent.getAction();
+    Object localObject = localIntent.getAction();
     this.uri = localIntent.getData();
-    if (bo.isNullOrNil(str1))
+    if (bt.isNullOrNil((String)localObject))
     {
-      ab.e("MicroMsg.ShareScreenToTimeLineUI", "launch : fail, action is null");
-      dNC();
+      ad.e("MicroMsg.ShareScreenToTimeLineUI", "launch : fail, action is null");
+      fdD();
       finish();
-      AppMethodBeat.o(34977);
+      AppMethodBeat.o(39173);
       return;
     }
-    String str2 = w.n(localIntent, e.j.yVi);
-    String str3 = getIntent().resolveType(this);
-    if (bo.isNullOrNil(str3))
+    String str1 = y.getStringExtra(localIntent, "Kdescription");
+    String str2 = getIntent().resolveType(this);
+    if (bt.isNullOrNil(str2))
     {
-      dNC();
+      fdD();
       finish();
-      AppMethodBeat.o(34977);
+      AppMethodBeat.o(39173);
       return;
     }
     if (Build.VERSION.SDK_INT >= 28)
     {
-      if ((!str3.contains("heic")) && (!str3.contains("image")))
+      if ((!str2.contains("heic")) && (!str2.contains("image")))
       {
-        dNC();
+        fdD();
         finish();
-        AppMethodBeat.o(34977);
+        AppMethodBeat.o(39173);
       }
     }
-    else if (!str3.contains("image"))
+    else if (!str2.contains("image"))
     {
-      dNC();
+      fdD();
       finish();
-      AppMethodBeat.o(34977);
+      AppMethodBeat.o(39173);
       return;
     }
-    if (str1.equals("android.intent.action.VIEW"))
+    if (((String)localObject).equals("android.intent.action.VIEW"))
     {
-      ab.i("MicroMsg.ShareScreenToTimeLineUI", "send signal: ".concat(String.valueOf(str1)));
-      if (!bo.o(this.uri))
+      ad.i("MicroMsg.ShareScreenToTimeLineUI", "send signal: ".concat(String.valueOf(localObject)));
+      if (!bt.z(this.uri))
       {
-        ab.e("MicroMsg.ShareScreenToTimeLineUI", "fail, not accepted: %s", new Object[] { this.uri });
-        dNC();
+        ad.e("MicroMsg.ShareScreenToTimeLineUI", "fail, not accepted: %s", new Object[] { this.uri });
+        fdD();
         finish();
-        AppMethodBeat.o(34977);
+        AppMethodBeat.o(39173);
         return;
       }
-      this.filePath = bo.h(this, this.uri);
-      if ((bo.isNullOrNil(this.filePath)) || (!bo.aqi(this.filePath)))
+      localObject = this.uri;
+      this.filePath = bt.j(this, (Uri)localObject);
+      if ((bt.isNullOrNil(this.filePath)) || (!new com.tencent.mm.vfs.e(this.filePath).exists())) {
+        this.filePath = com.tencent.mm.pluginsdk.j.e.a(getContentResolver(), (Uri)localObject, 1);
+      }
+      this.filePath = this.filePath;
+      if ((bt.isNullOrNil(this.filePath)) || (!bt.aGu(this.filePath)))
       {
-        if (w.a(localIntent, "Ksnsupload_empty_img", false))
+        if (y.getBooleanExtra(localIntent, "Ksnsupload_empty_img", false))
         {
-          iC(this.filePath, str2);
-          AppMethodBeat.o(34977);
+          lv(this.filePath, str1);
+          AppMethodBeat.o(39173);
           return;
         }
-        dNC();
+        fdD();
         finish();
-        AppMethodBeat.o(34977);
+        AppMethodBeat.o(39173);
         return;
       }
-      if (r.aoX(this.filePath))
+      if (t.aFl(this.filePath))
       {
-        iC(this.filePath, str2);
-        AppMethodBeat.o(34977);
+        lv(this.filePath, str1);
+        AppMethodBeat.o(39173);
         return;
       }
-      dNC();
+      fdD();
       finish();
-      AppMethodBeat.o(34977);
+      AppMethodBeat.o(39173);
       return;
     }
-    ab.e("MicroMsg.ShareScreenToTimeLineUI", "launch : fail, uri is null");
-    dNC();
+    ad.e("MicroMsg.ShareScreenToTimeLineUI", "launch : fail, uri is null");
+    fdD();
     finish();
-    AppMethodBeat.o(34977);
+    AppMethodBeat.o(39173);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(34976);
+    AppMethodBeat.i(39172);
     super.onCreate(paramBundle);
     setMMTitle("");
-    int i = w.a(getIntent(), "wizard_activity_result_code", 0);
+    int i = y.getIntExtra(getIntent(), "wizard_activity_result_code", 0);
     switch (i)
     {
     default: 
-      ab.e("MicroMsg.ShareScreenToTimeLineUI", "onCreate, should not reach here, resultCode = ".concat(String.valueOf(i)));
+      ad.e("MicroMsg.ShareScreenToTimeLineUI", "onCreate, should not reach here, resultCode = ".concat(String.valueOf(i)));
       finish();
-      AppMethodBeat.o(34976);
+      AppMethodBeat.o(39172);
       return;
     case 1: 
       finish();
-      AppMethodBeat.o(34976);
+      AppMethodBeat.o(39172);
       return;
     }
-    NotifyReceiver.In();
-    aw.Rc().a(new bk(new ShareScreenToTimeLineUI.1(this)), 0);
+    NotifyReceiver.Ty();
+    az.aeS().a(new bn(new bn.a()
+    {
+      public final void a(com.tencent.mm.network.e paramAnonymouse) {}
+    }), 0);
     initView();
-    AppMethodBeat.o(34976);
+    AppMethodBeat.o(39172);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

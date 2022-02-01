@@ -28,10 +28,10 @@ public class SQLiteAsyncCheckpointer
   
   static
   {
-    AppMethodBeat.i(12238);
+    AppMethodBeat.i(2919);
     gDefaultThreadLock = new Object();
     gDefaultThreadRefCount = 0;
-    AppMethodBeat.o(12238);
+    AppMethodBeat.o(2919);
   }
   
   public SQLiteAsyncCheckpointer()
@@ -46,17 +46,17 @@ public class SQLiteAsyncCheckpointer
   
   public SQLiteAsyncCheckpointer(Looper paramLooper, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12231);
+    AppMethodBeat.i(2912);
     this.mLooper = paramLooper;
     this.mThreshold = paramInt1;
     this.mBlockingThreshold = paramInt2;
     this.mPendingCheckpoints = new HashSet();
-    AppMethodBeat.o(12231);
+    AppMethodBeat.o(2912);
   }
   
   private static Looper acquireDefaultLooper()
   {
-    AppMethodBeat.i(12236);
+    AppMethodBeat.i(2917);
     synchronized (gDefaultThreadLock)
     {
       int i = gDefaultThreadRefCount;
@@ -67,7 +67,7 @@ public class SQLiteAsyncCheckpointer
       if (gDefaultThread != null)
       {
         AssertionError localAssertionError = new AssertionError("gDefaultThread == null");
-        AppMethodBeat.o(12236);
+        AppMethodBeat.o(2917);
         throw localAssertionError;
       }
     }
@@ -76,13 +76,13 @@ public class SQLiteAsyncCheckpointer
     ((HandlerThread)localObject3).start();
     label80:
     localObject3 = gDefaultThread.getLooper();
-    AppMethodBeat.o(12236);
+    AppMethodBeat.o(2917);
     return localObject3;
   }
   
   private static void releaseDefaultLooper()
   {
-    AppMethodBeat.i(12237);
+    AppMethodBeat.i(2918);
     synchronized (gDefaultThreadLock)
     {
       int i = gDefaultThreadRefCount - 1;
@@ -93,19 +93,19 @@ public class SQLiteAsyncCheckpointer
       if (gDefaultThreadRefCount < 0)
       {
         AssertionError localAssertionError = new AssertionError("gDefaultThreadRefCount == 0");
-        AppMethodBeat.o(12237);
+        AppMethodBeat.o(2918);
         throw localAssertionError;
       }
     }
     gDefaultThread.quit();
     gDefaultThread = null;
     label72:
-    AppMethodBeat.o(12237);
+    AppMethodBeat.o(2918);
   }
   
   public boolean handleMessage(Message arg1)
   {
-    AppMethodBeat.i(12235);
+    AppMethodBeat.i(2916);
     Object localObject1 = (Pair)???.obj;
     SQLiteDatabase localSQLiteDatabase = (SQLiteDatabase)((Pair)localObject1).first;
     String str = (String)((Pair)localObject1).second;
@@ -124,7 +124,7 @@ public class SQLiteAsyncCheckpointer
         if (!this.mPendingCheckpoints.remove(localObject1))
         {
           localObject1 = new AssertionError("mPendingCheckpoints.remove(p)");
-          AppMethodBeat.o(12235);
+          AppMethodBeat.o(2916);
           throw ((Throwable)localObject1);
         }
       }
@@ -133,13 +133,13 @@ public class SQLiteAsyncCheckpointer
     finally
     {
       localSQLiteDatabase.releaseReference();
-      AppMethodBeat.o(12235);
+      AppMethodBeat.o(2916);
     }
   }
   
   public void onAttach(SQLiteDatabase paramSQLiteDatabase)
   {
-    AppMethodBeat.i(12232);
+    AppMethodBeat.i(2913);
     if (this.mLooper == null)
     {
       this.mLooper = acquireDefaultLooper();
@@ -148,14 +148,14 @@ public class SQLiteAsyncCheckpointer
     this.mHandler = new Handler(this.mLooper, this);
     this.mLastSyncMode = paramSQLiteDatabase.getSynchronousMode();
     paramSQLiteDatabase.setSynchronousMode(1);
-    AppMethodBeat.o(12232);
+    AppMethodBeat.o(2913);
   }
   
   protected void onCheckpointResult(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2, long paramLong) {}
   
   public void onDetach(SQLiteDatabase paramSQLiteDatabase)
   {
-    AppMethodBeat.i(12234);
+    AppMethodBeat.i(2915);
     paramSQLiteDatabase.setSynchronousMode(this.mLastSyncMode);
     this.mHandler = null;
     if (this.mUseDefaultLooper)
@@ -164,16 +164,16 @@ public class SQLiteAsyncCheckpointer
       releaseDefaultLooper();
       this.mUseDefaultLooper = false;
     }
-    AppMethodBeat.o(12234);
+    AppMethodBeat.o(2915);
   }
   
   public void onWALCommit(SQLiteDatabase paramSQLiteDatabase, String paramString, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(12233);
+    AppMethodBeat.i(2914);
     if (paramInt < this.mThreshold)
     {
-      AppMethodBeat.o(12233);
+      AppMethodBeat.o(2914);
       return;
     }
     if (paramInt >= this.mBlockingThreshold) {
@@ -187,7 +187,7 @@ public class SQLiteAsyncCheckpointer
         boolean bool = this.mPendingCheckpoints.add(paramString);
         if (!bool)
         {
-          AppMethodBeat.o(12233);
+          AppMethodBeat.o(2914);
           return;
           paramInt = 0;
         }
@@ -200,7 +200,7 @@ public class SQLiteAsyncCheckpointer
     {
       paramSQLiteDatabase = paramSQLiteDatabase.obtainMessage(0, paramInt, 0, paramString);
       this.mHandler.sendMessage(paramSQLiteDatabase);
-      AppMethodBeat.o(12233);
+      AppMethodBeat.o(2914);
       return;
     }
   }

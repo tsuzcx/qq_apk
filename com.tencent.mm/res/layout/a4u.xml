@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameFeedMatchView android:orientation="vertical" android:padding="@dimen/jr" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.game.ui.GameFeedTitleDescView android:id="@id/c8q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/jw" />
-        <com.tencent.mm.plugin.game.ui.GameRoundImageView android:id="@id/c8w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/ju" />
-        <com.tencent.mm.plugin.game.ui.GameFeedSubscriptView android:id="@id/c8v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jw" />
-    </com.tencent.mm.plugin.game.ui.GameFeedMatchView>
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/btw" android:paddingTop="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mc">
+        <ImageView android:id="@id/tm" android:layout_width="@dimen/as" android:layout_height="@dimen/as" android:src="@drawable/aq8" />
+        <android.support.constraint.ConstraintLayout android:id="@id/cud" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:layout_toRightOf="@id/tm" android:layout_centerVertical="true">
+            <TextView android:ellipsize="end" android:id="@id/e3x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8" style="@style/wf" />
+        </android.support.constraint.ConstraintLayout>
+        <ImageView android:background="@drawable/x8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cf" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <TextView android:textColor="@color/BW_0_Alpha_0_3" android:gravity="center" android:id="@id/yq" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/ce" android:text="@string/c_d" />
+</LinearLayout>

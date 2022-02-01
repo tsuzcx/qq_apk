@@ -1,272 +1,183 @@
 package com.tencent.mm.ui.contact;
 
+import android.content.Context;
 import android.database.Cursor;
-import android.database.MergeCursor;
-import android.util.SparseArray;
-import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.openim.PluginOpenIM;
 import com.tencent.mm.openim.a.b;
-import com.tencent.mm.openim.e.d;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.platformtools.ae;
+import com.tencent.mm.pluginsdk.ui.span.k;
 import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.contact.a.a;
-import com.tencent.mm.ui.contact.a.e;
-import com.tencent.mm.ui.contact.a.h;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storagebase.a.e;
+import com.tencent.mm.storagebase.h;
+import com.tencent.mm.ui.AddressView;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 
 public final class x
-  extends p
-  implements n.b
+  extends a
 {
-  private HashMap<String, Integer> Abd;
-  private SparseArray<String> Abe;
-  private a AeA;
-  private final String cwc;
-  private Cursor gqa;
+  private HashSet<String> GXM;
+  private String GXN;
+  OpenIMAddressUI.OpenIMAddressUIFragment GXO;
   
-  public x(String paramString, MMBaseSelectContactUI paramMMBaseSelectContactUI, List<String> paramList, boolean paramBoolean)
+  public x(Context paramContext, String paramString1, String paramString2)
   {
-    super(paramMMBaseSelectContactUI, paramList, false, paramBoolean, false);
-    AppMethodBeat.i(33814);
-    this.Abd = null;
-    this.Abe = null;
-    this.cwc = paramString;
-    this.AeA = new a();
-    ((j)g.E(j.class)).YA().a(this);
-    Kg();
-    AppMethodBeat.o(33814);
+    super(paramContext, paramString1, null, 2);
+    AppMethodBeat.i(37919);
+    this.GXM = new HashSet();
+    this.GXN = paramString2;
+    AppMethodBeat.o(37919);
   }
   
-  private void Kg()
+  protected final int a(com.tencent.mm.storage.f paramf, int paramInt)
   {
-    AppMethodBeat.i(33816);
-    label33:
-    ArrayList localArrayList;
-    Object localObject1;
-    Object localObject2;
-    int[] arrayOfInt;
-    int i;
-    int j;
-    if (this.Abd != null)
+    AppMethodBeat.i(37921);
+    if (paramf == null)
     {
-      this.Abd.clear();
-      if (this.Abe == null) {
-        break label358;
-      }
-      this.Abe.clear();
-      localArrayList = new ArrayList();
-      localObject1 = ((PluginOpenIM)g.G(PluginOpenIM.class)).getAppIdInfoStg().wo(this.cwc);
-      aw.aaz();
-      localArrayList.add(c.YA().a(this.ejc, aa.gP(ah.getContext()), (List)localObject1));
-      auB("select rcontact.username ,rcontact.nickname ,rcontact.alias,rcontact.conRemark,rcontact.verifyFlag,rcontact.showHead,rcontact.weiboFlag,rcontact.rowid ,rcontact.deleteFlag,rcontact.lvbuff,rcontact.descWordingId, rcontact.openImAppid,  OpenIMWordingInfo.wording, OpenIMWordingInfo.quanpin  from rcontact left join OpenIMWordingInfo on rcontact.descWordingId=OpenIMWordingInfo.wordingId  and OpenIMWordingInfo.language='zh_CN'  where (type & 1!=0) and type & 32=0   and type & 8=0 and username like '%@openim' and username != 'appbrandcustomerservicemsg' and username != 'notifymessage' and username != 'weibo' and username != 'pc_share' and username != 'officialaccounts' and username != 'voicevoipapp' and username != 'cardpackage' and username != 'qqfriend' and username != 'helper_entry' and username != 'medianote' and username != 'shakeapp' and username != 'topstoryapp' and username != 'qmessage' and username != 'voipapp' and username != 'qqsync' and username != 'qqmail' and username != 'blogapp' and username != 'lbsapp' and username != 'readerapp' and username != 'feedsapp' and username != 'newsapp' and username != 'floatbottle' and username != 'fmessage' and username != 'tmessage' and username != 'weixin' and username != 'facebookapp' and username != 'meishiapp' and username != 'masssendapp' and username != 'voiceinputapp' and username != 'filehelper' and username != 'linkedinplugin' group by rcontact.openImAppid");
-      aw.aaz();
-      localObject2 = c.YA().b(this.ejc, aa.gP(ah.getContext()), (List)localObject1);
-      arrayOfInt = new int[((Cursor)localObject2).getCount()];
-      if (((Cursor)localObject2).moveToFirst())
-      {
-        i = 0;
-        do
-        {
-          arrayOfInt[i] = ((Cursor)localObject2).getInt(0);
-          i += 1;
-        } while (((Cursor)localObject2).moveToNext());
-      }
-      ((Cursor)localObject2).close();
-      aw.aaz();
-      localObject1 = c.YA().c(this.ejc, aa.gP(ah.getContext()), (List)localObject1);
-      if (((Cursor)localObject1).moveToFirst())
-      {
-        i = 0;
-        j = 0;
-      }
+      ad.e("OpenIMContactAdapter", "contact is null, position:%d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(37921);
+      return -1;
     }
-    for (;;)
+    if (bt.isNullOrNil(paramf.field_descWording))
     {
-      localObject2 = new ad();
-      ((ad)localObject2).convertFrom((Cursor)localObject1);
-      bL(j, ((b)g.E(b.class)).bd(this.cwc, ((aq)localObject2).field_descWordingId));
-      j = arrayOfInt[i] + (j + 1);
-      if (!((Cursor)localObject1).moveToNext())
-      {
-        ((Cursor)localObject1).close();
-        ab.d("MicroMsg.OpenIMSelectContactAdapter", "headerPosMap=%s", new Object[] { this.Abd.toString() });
-        this.gqa = new MergeCursor((Cursor[])localArrayList.toArray(new Cursor[0]));
-        notifyDataSetChanged();
-        AppMethodBeat.o(33816);
-        return;
-        this.Abd = new HashMap();
-        break;
-        label358:
-        this.Abe = new SparseArray();
-        break label33;
-      }
-      i += 1;
+      AppMethodBeat.o(37921);
+      return -1;
     }
-  }
-  
-  private static ArrayList<ad> auB(String paramString)
-  {
-    AppMethodBeat.i(33815);
-    aw.aaz();
-    paramString = c.YA().art(paramString);
-    ArrayList localArrayList = new ArrayList();
-    if (paramString.moveToFirst()) {
-      do
-      {
-        ad localad = new ad();
-        localad.convertFrom(paramString);
-        localArrayList.add(localad);
-      } while (paramString.moveToNext());
-    }
-    paramString.close();
-    AppMethodBeat.o(33815);
-    return localArrayList;
-  }
-  
-  private void bL(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(33817);
-    this.Abd.put(paramString, Integer.valueOf(paramInt));
-    this.Abe.put(paramInt, paramString);
-    AppMethodBeat.o(33817);
+    paramInt = paramf.field_descWording.hashCode();
+    AppMethodBeat.o(37921);
+    return paramInt;
   }
   
   public final void a(int paramInt, n paramn, Object paramObject)
   {
-    AppMethodBeat.i(33822);
-    Kg();
-    notifyDataSetChanged();
-    AppMethodBeat.o(33822);
-  }
-  
-  public final int aux(String paramString)
-  {
-    AppMethodBeat.i(33818);
-    if (paramString.equals("↑"))
+    AppMethodBeat.i(37925);
+    if ((paramObject == null) || (!(paramObject instanceof String)))
     {
-      AppMethodBeat.o(33818);
-      return 0;
+      ad.d("OpenIMContactAdapter", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      AppMethodBeat.o(37925);
+      return;
     }
-    if (this.Abd != null)
+    az.arV();
+    if (paramn == c.apM())
     {
-      if (this.Abd.containsKey(paramString))
+      if (af.aHH((String)paramObject))
       {
-        int i = ((Integer)this.Abd.get(paramString)).intValue();
-        int j = this.Adk.getContentLV().getHeaderViewsCount();
-        AppMethodBeat.o(33818);
-        return i + j;
+        this.GXO.GSV = true;
+        AppMethodBeat.o(37925);
+        return;
       }
-      AppMethodBeat.o(33818);
-      return -1;
+      ad.d("OpenIMContactAdapter", "newcursor is not openim ，return");
     }
-    AppMethodBeat.o(33818);
-    return -1;
+    AppMethodBeat.o(37925);
   }
   
-  protected final boolean c(a parama)
+  protected final void a(com.tencent.mm.storage.f paramf, a.b paramb)
   {
-    AppMethodBeat.i(33823);
-    int i = parama.position;
-    if (this.Abe.indexOfKey(i + 1) >= 0)
+    AppMethodBeat.i(37924);
+    paramb = paramf.field_descWordingId;
+    if (this.GXM.contains(paramb))
     {
-      AppMethodBeat.o(33823);
-      return true;
+      AppMethodBeat.o(37924);
+      return;
     }
-    AppMethodBeat.o(33823);
-    return false;
+    this.GXM.add(paramb);
+    ((b)g.ab(b.class)).bt(paramf.field_openImAppid, paramb);
+    AppMethodBeat.o(37924);
   }
   
-  public final void finish()
+  protected final String b(com.tencent.mm.storage.f paramf, int paramInt)
   {
-    AppMethodBeat.i(33821);
-    super.finish();
-    ab.i("MicroMsg.OpenIMSelectContactAdapter", "finish!");
-    if (this.gqa != null)
+    AppMethodBeat.i(37922);
+    paramf = paramf.field_descWording;
+    if (bt.isNullOrNil(paramf))
     {
-      this.gqa.close();
-      this.gqa = null;
+      AppMethodBeat.o(37922);
+      return "#";
     }
-    ((j)g.E(j.class)).YA().b(this);
-    AppMethodBeat.o(33821);
+    AppMethodBeat.o(37922);
+    return paramf;
   }
   
-  public final int getCount()
+  protected final void b(com.tencent.mm.storage.f paramf, a.b paramb)
   {
-    AppMethodBeat.i(33819);
-    int i = this.gqa.getCount();
-    int j = this.Abd.size();
-    AppMethodBeat.o(33819);
-    return i + j;
-  }
-  
-  protected final a mM(int paramInt)
-  {
-    AppMethodBeat.i(33820);
-    Object localObject1;
-    Object localObject2;
-    if (this.Abe.indexOfKey(paramInt) >= 0)
+    AppMethodBeat.i(37923);
+    paramb.sMU.updateTextColors();
+    paramb.sMU.setMergeCallback(null);
+    Object localObject1 = paramf.Feg;
+    if (localObject1 == null) {}
+    for (;;)
     {
-      localObject1 = (String)this.Abe.get(paramInt);
-      localObject2 = new h(paramInt);
-      ((h)localObject2).mZq = ((String)localObject1);
-      AppMethodBeat.o(33820);
-      return localObject2;
-    }
-    int i = 0;
-    int k = paramInt;
-    int j;
-    int m;
-    do
-    {
-      j = i;
-      if (i > this.Abe.size()) {
-        break;
+      CharSequence localCharSequence;
+      try
+      {
+        if (af.aHH(paramf.field_username))
+        {
+          localObject1 = ((b)g.ab(b.class)).e(aj.getContext(), paramf.ZX(), com.tencent.mm.cd.a.ao(this.context, 2131165517));
+          Object localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = "";
+          }
+          paramb.sMU.setName((CharSequence)localObject2);
+          paramb.sMU.setDescription(ae.nullAsNil(paramf.field_remarkDesc));
+          AppMethodBeat.o(37923);
+          return;
+        }
+        localObject1 = k.b(this.context, aLl(getDisplayName(paramf.ZX(), paramf.field_username)), com.tencent.mm.cd.a.ao(this.context, 2131165517));
+        continue;
       }
-      j = i;
-      if (this.Abe.indexOfKey(k) >= 0) {
-        j = i + 1;
+      catch (Exception localException)
+      {
+        localCharSequence = null;
+        continue;
       }
-      m = k - 1;
-      i = j;
-      k = m;
-    } while (m >= 0);
-    i = paramInt - j;
-    if (this.gqa.moveToPosition(i))
-    {
-      ab.d("MicroMsg.OpenIMSelectContactAdapter", "create contact item position=%d | index=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-      localObject1 = new ad();
-      ((ad)localObject1).convertFrom(this.gqa);
-      localObject2 = new e(paramInt);
-      ((a)localObject2).contact = ((ad)localObject1);
-      ((a)localObject2).Adl = cni();
-      ((a)localObject2).Adm = this.Adm;
-      ((e)localObject2).Agd = true;
-      AppMethodBeat.o(33820);
-      return localObject2;
+      paramb.sMU.setName(localCharSequence);
     }
-    ab.i("MicroMsg.OpenIMSelectContactAdapter", "create contact item error: position=%d | index=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-    AppMethodBeat.o(33820);
-    return null;
   }
   
-  public static final class a {}
+  protected final Cursor faW()
+  {
+    AppMethodBeat.i(37920);
+    long l = System.currentTimeMillis();
+    g.afC();
+    Object localObject2 = ((PluginOpenIM)g.ad(PluginOpenIM.class)).getAppIdInfoStg();
+    String str = this.GXN;
+    Object localObject1 = new LinkedList();
+    localObject2 = ((com.tencent.mm.openim.e.d)localObject2).gPa.a("select distinct appid from OpenIMAppIdInfo where acctTypeId=? ", new String[] { str }, 2);
+    if (((Cursor)localObject2).moveToFirst()) {
+      do
+      {
+        str = ((Cursor)localObject2).getString(0);
+        if (!bt.isNullOrNil(str)) {
+          ((List)localObject1).add(str);
+        }
+      } while (((Cursor)localObject2).moveToNext());
+    }
+    ((Cursor)localObject2).close();
+    az.arV();
+    localObject2 = c.apM().a(this.fvP, ac.ir(aj.getContext()), (List)localObject1);
+    localObject1 = localObject2;
+    if ((localObject2 instanceof com.tencent.mm.storagebase.a.f)) {
+      localObject1 = new e(new com.tencent.mm.storagebase.a.d[] { (com.tencent.mm.storagebase.a.d)com.tencent.mm.storagebase.d.eNU(), (com.tencent.mm.storagebase.a.f)localObject2 });
+    }
+    ad.d("OpenIMContactAdapter", "createNewCursor : " + (System.currentTimeMillis() - l));
+    AppMethodBeat.o(37920);
+    return localObject1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.contact.x
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.tinker.lib.b;
 
 public abstract class a
 {
-  public abstract boolean nW();
+  public abstract boolean oK();
 }
 
 

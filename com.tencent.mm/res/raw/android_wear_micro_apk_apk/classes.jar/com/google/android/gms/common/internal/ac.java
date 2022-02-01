@@ -18,30 +18,30 @@ public abstract class ac<T extends IInterface>
   extends l<T>
   implements j, ae
 {
-  private final Account GJ;
-  private final Set<Scope> GR;
-  private final x Kf;
+  private final Set<Scope> IG;
+  private final Account Iy;
+  private final x LU;
   
   protected ac(Context paramContext, Looper paramLooper, int paramInt, x paramx, r paramr, s params)
   {
-    this(paramContext, paramLooper, af.h(paramContext), b.gp(), paramInt, paramx, (r)d.u(paramr), (s)d.u(params));
+    this(paramContext, paramLooper, af.i(paramContext), b.gz(), paramInt, paramx, (r)d.D(paramr), (s)d.D(params));
   }
   
   private ac(Context paramContext, Looper paramLooper, af paramaf, b paramb, int paramInt, x paramx, r paramr, s params) {}
   
-  public final Account fX()
+  public final Account gi()
   {
-    return this.GJ;
+    return this.Iy;
   }
   
-  public final zzc[] hf()
+  public final zzc[] hp()
   {
     return new zzc[0];
   }
   
-  protected final Set<Scope> hi()
+  protected final Set<Scope> hs()
   {
-    return this.GR;
+    return this.IG;
   }
 }
 

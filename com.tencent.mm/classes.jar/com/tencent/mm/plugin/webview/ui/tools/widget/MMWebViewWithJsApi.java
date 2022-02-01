@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
-import com.tencent.mm.pluginsdk.ui.tools.u;
+import com.tencent.mm.plugin.webview.c.f;
+import com.tencent.mm.pluginsdk.ui.tools.x;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.t;
-import com.tencent.xweb.w;
+import com.tencent.xweb.ab;
+import com.tencent.xweb.y;
 
 public class MMWebViewWithJsApi
   extends MMWebView
 {
-  private k vsN;
-  private boolean vsO;
+  private k BuK;
+  private boolean BuL;
   
   public MMWebViewWithJsApi(Context paramContext)
   {
@@ -28,101 +28,122 @@ public class MMWebViewWithJsApi
   public MMWebViewWithJsApi(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(10030);
-    this.vsO = true;
-    dOK();
+    AppMethodBeat.i(82238);
+    this.BuL = true;
+    feQ();
     getSettings().setJavaScriptEnabled(true);
-    getSettings().dYz();
+    getSettings().fri();
     setWebChromeClient(new i(this));
     setWebViewClient(new k(this));
     paramContext = getSettings().getUserAgentString();
-    if (!u.amS(paramContext))
+    if (!x.aCK(paramContext))
     {
-      paramContext = u.bD(getContext(), paramContext);
+      paramContext = x.bR(getContext(), paramContext);
       getSettings().setUserAgentString(paramContext);
     }
-    AppMethodBeat.o(10030);
+    AppMethodBeat.o(82238);
   }
   
-  public d getJsapi()
+  public f getJsapi()
   {
-    if (this.vsN != null) {
-      return this.vsN.vmp;
+    if (this.BuK != null) {
+      return this.BuK.BmE;
     }
     return null;
   }
   
   public void loadData(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(10033);
-    if (this.vsN != null)
+    AppMethodBeat.i(82241);
+    if (this.BuK != null)
     {
-      this.vsN.oI(true);
-      this.vsN.aiJ("");
+      this.BuK.tD(true);
+      this.BuK.ayh("");
     }
     super.loadData(paramString1, paramString2, paramString3);
-    AppMethodBeat.o(10033);
+    AppMethodBeat.o(82241);
   }
   
   public void loadDataWithBaseURL(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(10034);
-    if (this.vsN != null)
+    AppMethodBeat.i(82242);
+    if (this.BuK != null)
     {
-      this.vsN.oI(true);
-      this.vsN.aiJ("");
+      this.BuK.tD(true);
+      this.BuK.ayh("");
     }
     super.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
-    AppMethodBeat.o(10034);
+    AppMethodBeat.o(82242);
   }
   
   public void loadUrl(String paramString)
   {
-    AppMethodBeat.i(10035);
-    if (this.vsN != null)
+    AppMethodBeat.i(82243);
+    if (this.BuK != null)
     {
-      this.vsN.oI(false);
-      if (this.vsN.aiJ(paramString)) {}
+      this.BuK.tD(false);
+      if (this.BuK.ayh(paramString)) {}
     }
     else
     {
       super.loadUrl(paramString);
     }
-    AppMethodBeat.o(10035);
+    AppMethodBeat.o(82243);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(10032);
+    AppMethodBeat.i(82240);
     super.onDetachedFromWindow();
-    if ((this.vsN != null) && (this.vsO)) {
-      this.vsN.cleanup();
+    if ((this.BuK != null) && (this.BuL)) {
+      this.BuK.cleanup();
     }
-    AppMethodBeat.o(10032);
+    AppMethodBeat.o(82240);
   }
   
   public void setCleanOnDetached(boolean paramBoolean)
   {
-    this.vsO = paramBoolean;
+    this.BuL = paramBoolean;
   }
   
-  public void setWebViewClient(w paramw)
+  public void setWebViewClient(ab paramab)
   {
-    AppMethodBeat.i(10031);
-    super.setWebViewClient(paramw);
-    if ((paramw instanceof k))
+    AppMethodBeat.i(82239);
+    super.setWebViewClient(paramab);
+    if ((paramab instanceof k))
     {
-      this.vsN = ((k)paramw);
-      AppMethodBeat.o(10031);
+      this.BuK = ((k)paramab);
+      AppMethodBeat.o(82239);
       return;
     }
-    this.vsN = null;
-    AppMethodBeat.o(10031);
+    this.BuK = null;
+    AppMethodBeat.o(82239);
+  }
+  
+  public static final class a
+  {
+    public static MMWebViewWithJsApi gI(Context paramContext)
+    {
+      AppMethodBeat.i(197214);
+      paramContext = gJ(paramContext);
+      AppMethodBeat.o(197214);
+      return paramContext;
+    }
+    
+    public static MMWebViewWithJsApi gJ(Context paramContext)
+    {
+      AppMethodBeat.i(82237);
+      MMWebViewWithJsApi.gH(paramContext);
+      paramContext = new MMWebViewWithJsApi(paramContext);
+      MMWebViewWithJsApi.b(paramContext);
+      AppMethodBeat.o(82237);
+      return paramContext;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi
  * JD-Core Version:    0.7.0.1
  */

@@ -38,69 +38,69 @@ public class TokenData
   
   static
   {
-    AppMethodBeat.i(76960);
+    AppMethodBeat.i(10619);
     CREATOR = new zzn();
-    AppMethodBeat.o(76960);
+    AppMethodBeat.o(10619);
   }
   
   @SafeParcelable.Constructor
   TokenData(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) String paramString, @SafeParcelable.Param(id=3) Long paramLong, @SafeParcelable.Param(id=4) boolean paramBoolean1, @SafeParcelable.Param(id=5) boolean paramBoolean2, @SafeParcelable.Param(id=6) List<String> paramList)
   {
-    AppMethodBeat.i(76956);
+    AppMethodBeat.i(10615);
     this.zzy = paramInt;
     this.zzz = Preconditions.checkNotEmpty(paramString);
     this.zzaa = paramLong;
     this.zzab = paramBoolean1;
     this.zzac = paramBoolean2;
     this.zzad = paramList;
-    AppMethodBeat.o(76956);
+    AppMethodBeat.o(10615);
   }
   
   public static TokenData zzd(Bundle paramBundle, String paramString)
   {
-    AppMethodBeat.i(76955);
+    AppMethodBeat.i(10614);
     paramBundle.setClassLoader(TokenData.class.getClassLoader());
     paramBundle = paramBundle.getBundle(paramString);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(76955);
+      AppMethodBeat.o(10614);
       return null;
     }
     paramBundle.setClassLoader(TokenData.class.getClassLoader());
     paramBundle = (TokenData)paramBundle.getParcelable("TokenData");
-    AppMethodBeat.o(76955);
+    AppMethodBeat.o(10614);
     return paramBundle;
   }
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(76957);
+    AppMethodBeat.i(10616);
     if (!(paramObject instanceof TokenData))
     {
-      AppMethodBeat.o(76957);
+      AppMethodBeat.o(10616);
       return false;
     }
     paramObject = (TokenData)paramObject;
     if ((TextUtils.equals(this.zzz, paramObject.zzz)) && (Objects.equal(this.zzaa, paramObject.zzaa)) && (this.zzab == paramObject.zzab) && (this.zzac == paramObject.zzac) && (Objects.equal(this.zzad, paramObject.zzad)))
     {
-      AppMethodBeat.o(76957);
+      AppMethodBeat.o(10616);
       return true;
     }
-    AppMethodBeat.o(76957);
+    AppMethodBeat.o(10616);
     return false;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(76958);
+    AppMethodBeat.i(10617);
     int i = Objects.hashCode(new Object[] { this.zzz, this.zzaa, Boolean.valueOf(this.zzab), Boolean.valueOf(this.zzac), this.zzad });
-    AppMethodBeat.o(76958);
+    AppMethodBeat.o(10617);
     return i;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(76959);
+    AppMethodBeat.i(10618);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzy);
     SafeParcelWriter.writeString(paramParcel, 2, this.zzz, false);
@@ -109,7 +109,7 @@ public class TokenData
     SafeParcelWriter.writeBoolean(paramParcel, 5, this.zzac);
     SafeParcelWriter.writeStringList(paramParcel, 6, this.zzad, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(76959);
+    AppMethodBeat.o(10618);
   }
   
   public final String zze()

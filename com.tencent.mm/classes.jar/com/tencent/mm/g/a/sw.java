@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class sw
   extends b
 {
-  public sw.a cJw;
+  public a dyt;
+  public b dyu;
   
   public sw()
   {
@@ -15,16 +16,32 @@ public final class sw
   
   private sw(byte paramByte)
   {
-    AppMethodBeat.i(15805);
-    this.cJw = new sw.a();
-    this.ymq = false;
+    AppMethodBeat.i(125631);
+    this.dyt = new a();
+    this.dyu = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15805);
+    AppMethodBeat.o(125631);
+  }
+  
+  public static final class a
+  {
+    public boolean dyv;
+    public String dyw;
+    public boolean dyx = false;
+    public int type;
+    public String videoPath;
+  }
+  
+  public static final class b
+  {
+    public String dyw;
+    public String dyy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.sw
  * JD-Core Version:    0.7.0.1
  */

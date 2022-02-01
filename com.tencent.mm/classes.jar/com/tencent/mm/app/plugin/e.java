@@ -3,38 +3,38 @@ package com.tencent.mm.app.plugin;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.applet.m;
-import com.tencent.mm.pluginsdk.ui.d.b;
-import com.tencent.mm.pluginsdk.ui.d.g;
-import com.tencent.mm.pluginsdk.v;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.t;
+import com.tencent.mm.pluginsdk.ui.applet.u;
+import com.tencent.mm.pluginsdk.ui.span.c;
+import com.tencent.mm.pluginsdk.ui.span.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class e
-  implements b
+  implements c
 {
-  private static e cah = null;
-  private URISpanHandlerSet cai;
-  private ArrayList<URISpanHandlerSet.BaseUriSpanHandler> caj;
-  private ArrayList<URISpanHandlerSet.BaseUriSpanHandler> cak;
-  private ArrayList<URISpanHandlerSet.BaseUriSpanHandler> cal;
+  private static e cNL = null;
+  private URISpanHandlerSet cNM;
+  private ArrayList<URISpanHandlerSet.BaseUriSpanHandler> cNN;
+  private ArrayList<URISpanHandlerSet.BaseUriSpanHandler> cNO;
+  private ArrayList<URISpanHandlerSet.BaseUriSpanHandler> cNP;
   private Context mContext;
   
   private e()
   {
-    AppMethodBeat.i(15624);
+    AppMethodBeat.i(19669);
     this.mContext = null;
-    this.caj = new ArrayList();
-    this.cak = new ArrayList();
-    this.cal = new ArrayList();
-    long l = bo.aoy();
-    ab.d("MicroMsg.URISpanHandler", "init URISpanHandler");
-    this.mContext = ah.getContext();
-    this.cai = new URISpanHandlerSet(this.mContext);
+    this.cNN = new ArrayList();
+    this.cNO = new ArrayList();
+    this.cNP = new ArrayList();
+    long l = bt.eGO();
+    ad.d("MicroMsg.URISpanHandler", "init URISpanHandler");
+    this.mContext = aj.getContext();
+    this.cNM = new URISpanHandlerSet(this.mContext);
     Class[] arrayOfClass = URISpanHandlerSet.class.getDeclaredClasses();
     int j = arrayOfClass.length;
     int i = 0;
@@ -54,46 +54,46 @@ public final class e
               if (localObject2 == null) {
                 break label409;
               }
-              localObject2 = (URISpanHandlerSet.BaseUriSpanHandler)URISpanHandlerSet.BaseUriSpanHandler.class.cast(((Constructor)localObject2).newInstance(new Object[] { this.cai }));
-              localObject1 = ((URISpanHandlerSet.a)localObject1).Cg();
+              localObject2 = (URISpanHandlerSet.BaseUriSpanHandler)URISpanHandlerSet.BaseUriSpanHandler.class.cast(((Constructor)localObject2).newInstance(new Object[] { this.cNM }));
+              localObject1 = ((URISpanHandlerSet.a)localObject1).LD();
               if (localObject1 != URISpanHandlerSet.PRIORITY.LOW) {
                 continue;
               }
-              this.cal.add(localObject2);
+              this.cNP.add(localObject2);
             }
             catch (Exception localException)
             {
               Object localObject1;
               Object localObject2;
-              ab.printErrStackTrace("MicroMsg.URISpanHandler", localException, "", new Object[0]);
-              ab.d("MicroMsg.URISpanHandler", "add %s error: %s, errorType:%s", new Object[] { localClass.getName(), localException.getMessage(), localException.getClass().getName() });
+              ad.printErrStackTrace("MicroMsg.URISpanHandler", localException, "", new Object[0]);
+              ad.d("MicroMsg.URISpanHandler", "add %s error: %s, errorType:%s", new Object[] { localClass.getName(), localException.getMessage(), localException.getClass().getName() });
               break label460;
               if (localException != URISpanHandlerSet.PRIORITY.HIGH) {
                 continue;
               }
-              this.caj.add(localObject2);
+              this.cNN.add(localObject2);
               continue;
             }
             catch (Error localError)
             {
-              ab.printErrStackTrace("MicroMsg.URISpanHandler", localError, "", new Object[0]);
-              ab.d("MicroMsg.URISpanHandler", "add %s error: %s, errorType:%s", new Object[] { localClass.getName(), localError.getMessage(), localError.getClass().getName() });
+              ad.printErrStackTrace("MicroMsg.URISpanHandler", localError, "", new Object[0]);
+              ad.d("MicroMsg.URISpanHandler", "add %s error: %s, errorType:%s", new Object[] { localClass.getName(), localError.getMessage(), localError.getClass().getName() });
             }
-            ab.d("MicroMsg.URISpanHandler", "successfully add: %s", new Object[] { localClass.getName() });
+            ad.d("MicroMsg.URISpanHandler", "successfully add: %s", new Object[] { localClass.getName() });
             break label460;
             if (localObject1 != URISpanHandlerSet.PRIORITY.NORMAL) {
               continue;
             }
-            this.cak.add(localObject2);
+            this.cNO.add(localObject2);
           }
           label409:
-          ab.d("MicroMsg.URISpanHandler", "failed to add %s, constructor is null!!", new Object[] { localClass.getName() });
+          ad.d("MicroMsg.URISpanHandler", "failed to add %s, constructor is null!!", new Object[] { localClass.getName() });
         }
       }
       else
       {
-        ab.d("MicroMsg.URISpanHandler", "init URISpanHandler used :%d ms", new Object[] { Long.valueOf(bo.aoy() - l) });
-        AppMethodBeat.o(15624);
+        ad.d("MicroMsg.URISpanHandler", "init URISpanHandler used :%d ms", new Object[] { Long.valueOf(bt.eGO() - l) });
+        AppMethodBeat.o(19669);
         return;
       }
       label460:
@@ -101,14 +101,14 @@ public final class e
     }
   }
   
-  public static e Ce()
+  public static e LB()
   {
-    AppMethodBeat.i(15623);
-    if (cah == null) {
-      cah = new e();
+    AppMethodBeat.i(19668);
+    if (cNL == null) {
+      cNL = new e();
     }
-    e locale = cah;
-    AppMethodBeat.o(15623);
+    e locale = cNL;
+    AppMethodBeat.o(19668);
     return locale;
   }
   
@@ -133,220 +133,220 @@ public final class e
     }
   }
   
-  public final boolean a(Context paramContext, m paramm, g paramg)
+  public final boolean a(Context paramContext, u paramu, h paramh)
   {
-    AppMethodBeat.i(15626);
-    if (paramm == null)
+    AppMethodBeat.i(19671);
+    if (paramu == null)
     {
-      ab.d("MicroMsg.URISpanHandler", "handleSpanClick, hrefInfo is null");
-      AppMethodBeat.o(15626);
+      ad.d("MicroMsg.URISpanHandler", "handleSpanClick, hrefInfo is null");
+      AppMethodBeat.o(19671);
       return false;
     }
-    int i = paramm.type;
-    if (paramg == null) {}
+    int i = paramu.type;
+    if (paramh == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ab.d("MicroMsg.URISpanHandler", "handleSpanClick, hrefInfo.getType:%d, callback==null:%b, mHighPriorityHandlerList.size:%d, mNormalPriorityHandlerList.size:%d, mLowPriorityHandlerList.size:%d", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(this.caj.size()), Integer.valueOf(this.cak.size()), Integer.valueOf(this.cal.size()) });
+      ad.d("MicroMsg.URISpanHandler", "handleSpanClick, hrefInfo.getType:%d, callback==null:%b, mHighPriorityHandlerList.size:%d, mNormalPriorityHandlerList.size:%d, mLowPriorityHandlerList.size:%d", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(this.cNN.size()), Integer.valueOf(this.cNO.size()), Integer.valueOf(this.cNP.size()) });
       if (paramContext != null) {
         break;
       }
-      ab.e("MicroMsg.URISpanHandler", "handleSpanClick, context is null!");
-      this.cai.mContext = null;
-      AppMethodBeat.o(15626);
+      ad.e("MicroMsg.URISpanHandler", "handleSpanClick, context is null!");
+      this.cNM.mContext = null;
+      AppMethodBeat.o(19671);
       return false;
     }
     this.mContext = paramContext;
-    this.cai.mContext = this.mContext;
-    paramContext = this.caj.iterator();
+    this.cNM.mContext = this.mContext;
+    paramContext = this.cNN.iterator();
     URISpanHandlerSet.BaseUriSpanHandler localBaseUriSpanHandler;
     while (paramContext.hasNext())
     {
       localBaseUriSpanHandler = (URISpanHandlerSet.BaseUriSpanHandler)paramContext.next();
-      if ((contains(localBaseUriSpanHandler.Cf(), paramm.type)) && (localBaseUriSpanHandler.a(paramm, paramg)))
+      if ((contains(localBaseUriSpanHandler.LC(), paramu.type)) && (localBaseUriSpanHandler.a(paramu, paramh)))
       {
-        ab.d("MicroMsg.URISpanHandler", "handleSpanClick, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
+        ad.d("MicroMsg.URISpanHandler", "handleSpanClick, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
         this.mContext = null;
-        this.cai.mContext = null;
-        AppMethodBeat.o(15626);
+        this.cNM.mContext = null;
+        AppMethodBeat.o(19671);
         return true;
       }
     }
-    paramContext = this.cak.iterator();
+    paramContext = this.cNO.iterator();
     while (paramContext.hasNext())
     {
       localBaseUriSpanHandler = (URISpanHandlerSet.BaseUriSpanHandler)paramContext.next();
-      if ((contains(localBaseUriSpanHandler.Cf(), paramm.type)) && (localBaseUriSpanHandler.a(paramm, paramg)))
+      if ((contains(localBaseUriSpanHandler.LC(), paramu.type)) && (localBaseUriSpanHandler.a(paramu, paramh)))
       {
-        ab.d("MicroMsg.URISpanHandler", "handleSpanClick, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
+        ad.d("MicroMsg.URISpanHandler", "handleSpanClick, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
         this.mContext = null;
-        this.cai.mContext = null;
-        AppMethodBeat.o(15626);
+        this.cNM.mContext = null;
+        AppMethodBeat.o(19671);
         return true;
       }
     }
-    paramContext = this.cal.iterator();
+    paramContext = this.cNP.iterator();
     while (paramContext.hasNext())
     {
       localBaseUriSpanHandler = (URISpanHandlerSet.BaseUriSpanHandler)paramContext.next();
-      if ((contains(localBaseUriSpanHandler.Cf(), paramm.type)) && (localBaseUriSpanHandler.a(paramm, paramg)))
+      if ((contains(localBaseUriSpanHandler.LC(), paramu.type)) && (localBaseUriSpanHandler.a(paramu, paramh)))
       {
-        ab.d("MicroMsg.URISpanHandler", "handleSpanClick, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
+        ad.d("MicroMsg.URISpanHandler", "handleSpanClick, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
         this.mContext = null;
-        this.cai.mContext = null;
-        AppMethodBeat.o(15626);
+        this.cNM.mContext = null;
+        AppMethodBeat.o(19671);
         return true;
       }
     }
     this.mContext = null;
-    this.cai.mContext = null;
-    ab.d("MicroMsg.URISpanHandler", "handleSpanClick, nothing handle");
-    AppMethodBeat.o(15626);
+    this.cNM.mContext = null;
+    ad.d("MicroMsg.URISpanHandler", "handleSpanClick, nothing handle");
+    AppMethodBeat.o(19671);
     return false;
   }
   
-  public final boolean b(Context paramContext, String paramString, boolean paramBoolean, v paramv, Bundle paramBundle)
+  public final boolean b(Context paramContext, String paramString, boolean paramBoolean, t paramt, Bundle paramBundle)
   {
-    AppMethodBeat.i(15627);
-    if (paramv == null) {}
+    AppMethodBeat.i(19672);
+    if (paramt == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ab.d("MicroMsg.URISpanHandler", "handleUriJump, url:%s, isAllowScanQrCode:%b, callback==null:%b, mHighPriorityHandlerList.size:%d, mNormalPriorityHandlerList.size: %d, mLowPriorityHandlerList.size: %d", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool), Integer.valueOf(this.caj.size()), Integer.valueOf(this.cak.size()), Integer.valueOf(this.cal.size()) });
+      ad.d("MicroMsg.URISpanHandler", "handleUriJump, url:%s, isAllowScanQrCode:%b, callback==null:%b, mHighPriorityHandlerList.size:%d, mNormalPriorityHandlerList.size: %d, mLowPriorityHandlerList.size: %d", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.valueOf(bool), Integer.valueOf(this.cNN.size()), Integer.valueOf(this.cNO.size()), Integer.valueOf(this.cNP.size()) });
       if (paramContext != null) {
         break;
       }
-      ab.e("MicroMsg.URISpanHandler", "handleUriJump, context is null!");
-      this.cai.mContext = null;
-      AppMethodBeat.o(15627);
+      ad.e("MicroMsg.URISpanHandler", "handleUriJump, context is null!");
+      this.cNM.mContext = null;
+      AppMethodBeat.o(19672);
       return false;
     }
     this.mContext = paramContext;
-    this.cai.mContext = this.mContext;
-    if (bo.isNullOrNil(paramString))
+    this.cNM.mContext = this.mContext;
+    if (bt.isNullOrNil(paramString))
     {
-      ab.d("MicroMsg.URISpanHandler", "handleUriJump, url is null");
+      ad.d("MicroMsg.URISpanHandler", "handleUriJump, url is null");
       this.mContext = null;
-      this.cai.mContext = null;
-      AppMethodBeat.o(15627);
+      this.cNM.mContext = null;
+      AppMethodBeat.o(19672);
       return false;
     }
-    paramContext = this.caj.iterator();
+    paramContext = this.cNN.iterator();
     URISpanHandlerSet.BaseUriSpanHandler localBaseUriSpanHandler;
     while (paramContext.hasNext())
     {
       localBaseUriSpanHandler = (URISpanHandlerSet.BaseUriSpanHandler)paramContext.next();
-      if (localBaseUriSpanHandler.a(paramString, paramBoolean, paramv, paramBundle))
+      if (localBaseUriSpanHandler.a(paramString, paramBoolean, paramt, paramBundle))
       {
-        ab.d("MicroMsg.URISpanHandler", "handleUriJump, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
+        ad.d("MicroMsg.URISpanHandler", "handleUriJump, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
         this.mContext = null;
-        this.cai.mContext = null;
-        AppMethodBeat.o(15627);
+        this.cNM.mContext = null;
+        AppMethodBeat.o(19672);
         return true;
       }
     }
-    paramContext = this.cak.iterator();
+    paramContext = this.cNO.iterator();
     while (paramContext.hasNext())
     {
       localBaseUriSpanHandler = (URISpanHandlerSet.BaseUriSpanHandler)paramContext.next();
-      if (localBaseUriSpanHandler.a(paramString, paramBoolean, paramv, paramBundle))
+      if (localBaseUriSpanHandler.a(paramString, paramBoolean, paramt, paramBundle))
       {
-        ab.d("MicroMsg.URISpanHandler", "handleUriJump, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
+        ad.d("MicroMsg.URISpanHandler", "handleUriJump, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
         this.mContext = null;
-        this.cai.mContext = null;
-        AppMethodBeat.o(15627);
+        this.cNM.mContext = null;
+        AppMethodBeat.o(19672);
         return true;
       }
     }
-    paramContext = this.cal.iterator();
+    paramContext = this.cNP.iterator();
     while (paramContext.hasNext())
     {
       localBaseUriSpanHandler = (URISpanHandlerSet.BaseUriSpanHandler)paramContext.next();
-      if (localBaseUriSpanHandler.a(paramString, paramBoolean, paramv, paramBundle))
+      if (localBaseUriSpanHandler.a(paramString, paramBoolean, paramt, paramBundle))
       {
-        ab.d("MicroMsg.URISpanHandler", "handleUriJump, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
+        ad.d("MicroMsg.URISpanHandler", "handleUriJump, %s handle", new Object[] { localBaseUriSpanHandler.getClass().getName() });
         this.mContext = null;
-        this.cai.mContext = null;
-        AppMethodBeat.o(15627);
+        this.cNM.mContext = null;
+        AppMethodBeat.o(19672);
         return true;
       }
     }
     this.mContext = null;
-    this.cai.mContext = null;
-    ab.d("MicroMsg.URISpanHandler", "handleUriJump, nothing handle");
-    AppMethodBeat.o(15627);
+    this.cNM.mContext = null;
+    ad.d("MicroMsg.URISpanHandler", "handleUriJump, nothing handle");
+    AppMethodBeat.o(19672);
     return false;
   }
   
-  public final m y(Context paramContext, String paramString)
+  public final u x(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(15625);
-    ab.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, url:%s, mHighPriorityHandlerList.size:%d, mNormalPriorityHandlerList.size:%d, mLowPriorityHandlerList.size：%d", new Object[] { paramString, Integer.valueOf(this.caj.size()), Integer.valueOf(this.cak.size()), Integer.valueOf(this.cal.size()) });
+    AppMethodBeat.i(19670);
+    ad.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, url:%s, mHighPriorityHandlerList.size:%d, mNormalPriorityHandlerList.size:%d, mLowPriorityHandlerList.size：%d", new Object[] { paramString, Integer.valueOf(this.cNN.size()), Integer.valueOf(this.cNO.size()), Integer.valueOf(this.cNP.size()) });
     if (paramContext == null)
     {
-      ab.e("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl error, context is null!");
-      this.cai.mContext = null;
-      AppMethodBeat.o(15625);
+      ad.e("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl error, context is null!");
+      this.cNM.mContext = null;
+      AppMethodBeat.o(19670);
       return null;
     }
     this.mContext = paramContext;
-    this.cai.mContext = this.mContext;
-    if (bo.isNullOrNil(paramString))
+    this.cNM.mContext = this.mContext;
+    if (bt.isNullOrNil(paramString))
     {
-      ab.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, url is null");
+      ad.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, url is null");
       this.mContext = null;
-      this.cai.mContext = null;
-      AppMethodBeat.o(15625);
+      this.cNM.mContext = null;
+      AppMethodBeat.o(19670);
       return null;
     }
-    paramContext = this.caj.iterator();
-    m localm;
+    paramContext = this.cNN.iterator();
+    u localu;
     while (paramContext.hasNext())
     {
-      localm = ((URISpanHandlerSet.BaseUriSpanHandler)paramContext.next()).dN(paramString);
-      if (localm != null)
+      localu = ((URISpanHandlerSet.BaseUriSpanHandler)paramContext.next()).eU(paramString);
+      if (localu != null)
       {
-        ab.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, result.type:%d", new Object[] { Integer.valueOf(localm.type) });
+        ad.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, result.type:%d", new Object[] { Integer.valueOf(localu.type) });
         this.mContext = null;
-        this.cai.mContext = null;
-        AppMethodBeat.o(15625);
-        return localm;
+        this.cNM.mContext = null;
+        AppMethodBeat.o(19670);
+        return localu;
       }
     }
-    paramContext = this.cak.iterator();
+    paramContext = this.cNO.iterator();
     while (paramContext.hasNext())
     {
-      localm = ((URISpanHandlerSet.BaseUriSpanHandler)paramContext.next()).dN(paramString);
-      if (localm != null)
+      localu = ((URISpanHandlerSet.BaseUriSpanHandler)paramContext.next()).eU(paramString);
+      if (localu != null)
       {
-        ab.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, result.type:%d", new Object[] { Integer.valueOf(localm.type) });
+        ad.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, result.type:%d", new Object[] { Integer.valueOf(localu.type) });
         this.mContext = null;
-        this.cai.mContext = null;
-        AppMethodBeat.o(15625);
-        return localm;
+        this.cNM.mContext = null;
+        AppMethodBeat.o(19670);
+        return localu;
       }
     }
-    paramContext = this.cal.iterator();
+    paramContext = this.cNP.iterator();
     while (paramContext.hasNext())
     {
-      localm = ((URISpanHandlerSet.BaseUriSpanHandler)paramContext.next()).dN(paramString);
-      if (localm != null)
+      localu = ((URISpanHandlerSet.BaseUriSpanHandler)paramContext.next()).eU(paramString);
+      if (localu != null)
       {
-        ab.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, result.type:%d", new Object[] { Integer.valueOf(localm.type) });
+        ad.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, result.type:%d", new Object[] { Integer.valueOf(localu.type) });
         this.mContext = null;
-        this.cai.mContext = null;
-        AppMethodBeat.o(15625);
-        return localm;
+        this.cNM.mContext = null;
+        AppMethodBeat.o(19670);
+        return localu;
       }
     }
     this.mContext = null;
-    this.cai.mContext = null;
-    ab.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, nothing match");
-    AppMethodBeat.o(15625);
+    this.cNM.mContext = null;
+    ad.d("MicroMsg.URISpanHandler", "matchHrefInfoFromUrl, nothing match");
+    AppMethodBeat.o(19670);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.app.plugin.e
  * JD-Core Version:    0.7.0.1
  */

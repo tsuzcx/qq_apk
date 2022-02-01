@@ -7,25 +7,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.i.h;
-import com.tencent.mm.plugin.appbrand.i.j;
-import com.tencent.mm.plugin.appbrand.m.k.b;
-import com.tencent.mm.plugin.appbrand.s.d;
-import com.tencent.mm.protocal.protobuf.api;
-import com.tencent.mm.protocal.protobuf.apj;
-import com.tencent.mm.protocal.protobuf.ctv;
-import com.tencent.mm.protocal.protobuf.cua;
-import com.tencent.mm.protocal.protobuf.cuc;
-import com.tencent.mm.protocal.protobuf.cui;
-import com.tencent.mm.protocal.protobuf.cuk;
-import com.tencent.mm.protocal.protobuf.cun;
-import com.tencent.mm.protocal.protobuf.cuo;
-import com.tencent.mm.protocal.protobuf.cup;
-import com.tencent.mm.protocal.protobuf.cur;
-import com.tencent.mm.protocal.protobuf.cuu;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.g.a.m.a;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.aa.d;
+import com.tencent.mm.plugin.appbrand.aa.l.a;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.g.d;
+import com.tencent.mm.plugin.appbrand.jsruntime.h;
+import com.tencent.mm.plugin.appbrand.jsruntime.i;
+import com.tencent.mm.plugin.appbrand.jsruntime.j;
+import com.tencent.mm.plugin.appbrand.q.k.b;
+import com.tencent.mm.protocal.protobuf.azx;
+import com.tencent.mm.protocal.protobuf.azy;
+import com.tencent.mm.protocal.protobuf.dnw;
+import com.tencent.mm.protocal.protobuf.dob;
+import com.tencent.mm.protocal.protobuf.dod;
+import com.tencent.mm.protocal.protobuf.dof;
+import com.tencent.mm.protocal.protobuf.doj;
+import com.tencent.mm.protocal.protobuf.dol;
+import com.tencent.mm.protocal.protobuf.doo;
+import com.tencent.mm.protocal.protobuf.dop;
+import com.tencent.mm.protocal.protobuf.doq;
+import com.tencent.mm.protocal.protobuf.dos;
+import com.tencent.mm.protocal.protobuf.dov;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.net.URL;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
@@ -34,204 +41,213 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.Timer;
 import java.util.concurrent.atomic.AtomicInteger;
+import org.json.JSONObject;
 
 public final class n
-  implements com.tencent.mm.plugin.appbrand.i.i
+  implements i
 {
-  l bER;
-  private Activity gQx;
-  public String hlN;
-  s hlO;
-  public p hlP;
-  com.tencent.luggage.sdk.b.a.c.c hlQ;
-  public u hlR;
-  k.b hlS;
+  l chM;
+  public String jgR;
+  private Activity jgS;
+  t jgT;
+  p jgU;
+  com.tencent.luggage.sdk.b.a.c.c jgV;
+  public v jgW;
+  k.b jgX;
   
   public n()
   {
-    AppMethodBeat.i(101840);
-    this.hlP = new p();
-    this.hlS = new k.b()
+    AppMethodBeat.i(147025);
+    this.jgU = new p();
+    this.jgX = new k.b()
     {
-      public final void AM(String paramAnonymousString)
+      public final void GD(String paramAnonymousString)
       {
-        AppMethodBeat.i(101831);
-        ab.i("MicroMsg.RemoteDebugJsEngine", "onSocketError message:%s ", new Object[] { paramAnonymousString });
-        n.this.hlR.AT(paramAnonymousString);
-        AppMethodBeat.o(101831);
+        AppMethodBeat.i(147017);
+        ad.i("MicroMsg.RemoteDebugJsEngine", "onSocketError message:%s ", new Object[] { paramAnonymousString });
+        n.this.jgW.GK(paramAnonymousString);
+        AppMethodBeat.o(147017);
       }
       
-      public final void AN(String paramAnonymousString)
+      public final void GE(String paramAnonymousString)
       {
-        AppMethodBeat.i(101835);
-        ab.i("MicroMsg.RemoteDebugJsEngine", "onSocketConnectFail reason:%s ", new Object[] { paramAnonymousString });
-        AppMethodBeat.o(101835);
+        AppMethodBeat.i(147021);
+        ad.i("MicroMsg.RemoteDebugJsEngine", "onSocketConnectFail reason:%s ", new Object[] { paramAnonymousString });
+        AppMethodBeat.o(147021);
       }
       
-      public final void N(int paramAnonymousInt, String paramAnonymousString)
+      public final void X(int paramAnonymousInt, String paramAnonymousString)
       {
         int i = 1;
-        AppMethodBeat.i(101834);
-        ab.i("MicroMsg.RemoteDebugJsEngine", "onSocketClose code:%d reason:%s ", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
-        l locall = n.this.bER;
-        if ((!locall.ayY()) && (locall.hlF < 10L)) {}
+        AppMethodBeat.i(147020);
+        ad.i("MicroMsg.RemoteDebugJsEngine", "onSocketClose code:%d reason:%s ", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+        l locall = n.this.chM;
+        if ((!locall.isQuit()) && (locall.jgJ < 10L)) {}
         for (paramAnonymousInt = i;; paramAnonymousInt = 0)
         {
           if (paramAnonymousInt != 0)
           {
-            com.tencent.mm.plugin.appbrand.s.m.aNS().o(new n.2.1(this), 1000L);
-            locall = n.this.bER;
-            locall.hlF += 1;
+            com.tencent.mm.plugin.appbrand.aa.l.bqm().j(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(147015);
+                n.this.connect();
+                AppMethodBeat.o(147015);
+              }
+            }, 1000L);
+            locall = n.this.chM;
+            locall.jgJ += 1;
           }
-          n.this.hlP.azl();
-          n.this.bER.hlt = System.currentTimeMillis();
-          n.this.hlR.azv();
-          n.this.bER.setStatus(5);
-          n.this.hlR.AT(paramAnonymousString);
-          AppMethodBeat.o(101834);
+          n.this.jgU.aUs();
+          n.this.chM.jgx = System.currentTimeMillis();
+          n.this.jgW.aUC();
+          n.this.chM.setStatus(5);
+          n.this.jgW.GK(paramAnonymousString);
+          AppMethodBeat.o(147020);
           return;
         }
       }
       
-      public final void azd()
+      public final void aUk()
       {
-        AppMethodBeat.i(101830);
-        ab.i("MicroMsg.RemoteDebugJsEngine", "onSocketOpen");
-        n.this.bER.hlt = System.currentTimeMillis();
-        n.this.bER.hlF = 0;
-        if (!bo.isNullOrNil(n.this.bER.ayU())) {
+        AppMethodBeat.i(147016);
+        ad.i("MicroMsg.RemoteDebugJsEngine", "onSocketOpen");
+        n.this.chM.jgx = System.currentTimeMillis();
+        n.this.chM.jgJ = 0;
+        if (!bt.isNullOrNil(n.this.chM.aUc())) {
           n.a(n.this);
         }
-        p localp = n.this.hlP;
-        localp.azl();
+        p localp = n.this.jgU;
+        localp.aUs();
         localp.mTimer = new Timer();
         p.4 local4 = new p.4(localp);
         localp.mTimer.schedule(local4, 100L, 1000L);
-        AppMethodBeat.o(101830);
+        AppMethodBeat.o(147016);
       }
       
-      public final void aze()
+      public final void aUl()
       {
-        AppMethodBeat.i(101832);
-        n.this.bER.hlt = System.currentTimeMillis();
-        AppMethodBeat.o(101832);
+        AppMethodBeat.i(147018);
+        n.this.chM.jgx = System.currentTimeMillis();
+        AppMethodBeat.o(147018);
       }
       
-      public final void h(ByteBuffer paramAnonymousByteBuffer)
+      public final void l(ByteBuffer paramAnonymousByteBuffer)
       {
-        AppMethodBeat.i(101833);
-        n.this.bER.hlt = System.currentTimeMillis();
+        AppMethodBeat.i(147019);
+        n.this.chM.jgx = System.currentTimeMillis();
         for (;;)
         {
           try
           {
-            paramAnonymousByteBuffer = d.m(paramAnonymousByteBuffer);
-            paramAnonymousByteBuffer = (ctv)new ctv().parseFrom(paramAnonymousByteBuffer);
-            if (paramAnonymousByteBuffer.wPX == null)
+            paramAnonymousByteBuffer = d.q(paramAnonymousByteBuffer);
+            paramAnonymousByteBuffer = (dnw)new dnw().parseFrom(paramAnonymousByteBuffer);
+            if (paramAnonymousByteBuffer.DcU == null)
             {
-              ab.w("MicroMsg.RemoteDebugJsEngine", "dataFormat.data is null");
-              AppMethodBeat.o(101833);
+              ad.w("MicroMsg.RemoteDebugJsEngine", "dataFormat.data is null");
+              AppMethodBeat.o(147019);
               return;
             }
-            localObject1 = paramAnonymousByteBuffer.wPX.pW;
-            switch (paramAnonymousByteBuffer.vA)
+            localObject1 = paramAnonymousByteBuffer.DcU.wA;
+            switch (paramAnonymousByteBuffer.BX)
             {
             case 1006: 
-              ab.i("MicroMsg.RemoteDebugJsEngine", "onSocketMessage cmd: %d", new Object[] { Integer.valueOf(paramAnonymousByteBuffer.vA) });
-              AppMethodBeat.o(101833);
+              ad.i("MicroMsg.RemoteDebugJsEngine", "onSocketMessage cmd: %d", new Object[] { Integer.valueOf(paramAnonymousByteBuffer.BX) });
+              AppMethodBeat.o(147019);
               return;
             }
           }
           catch (Throwable paramAnonymousByteBuffer)
           {
-            ab.e("MicroMsg.RemoteDebugJsEngine", "onSocketMessage %s", new Object[] { Log.getStackTraceString(paramAnonymousByteBuffer) });
-            AppMethodBeat.o(101833);
+            ad.e("MicroMsg.RemoteDebugJsEngine", "onSocketMessage %s", new Object[] { Log.getStackTraceString(paramAnonymousByteBuffer) });
+            AppMethodBeat.o(147019);
             return;
           }
-          Object localObject1 = (cuk)new cuk().parseFrom((byte[])localObject1);
-          Object localObject2 = n.this.hlP;
-          if (t.a(((p)localObject2).bER, paramAnonymousByteBuffer, ((cuk)localObject1).ydi, ((p)localObject2).hlR, (p)localObject2))
+          Object localObject1 = (dol)new dol().parseFrom((byte[])localObject1);
+          Object localObject2 = n.this.jgU;
+          if (u.a(((p)localObject2).chM, paramAnonymousByteBuffer, ((dol)localObject1).EEM, ((p)localObject2).jgW, (p)localObject2))
           {
-            ab.d("MicroMsg.RemoteDebugMsgMrg", "onSendMsgResult %d/%d", new Object[] { Integer.valueOf(((cuk)localObject1).ydj), Integer.valueOf(((cuk)localObject1).ydk) });
-            ((p)localObject2).bER.cZ(((cuk)localObject1).ydj, ((cuk)localObject1).ydk);
-            ((p)localObject2).db(((cuk)localObject1).ydj, ((cuk)localObject1).ydk);
+            ad.d("MicroMsg.RemoteDebugMsgMrg", "onSendMsgResult %d/%d", new Object[] { Integer.valueOf(((dol)localObject1).EEN), Integer.valueOf(((dol)localObject1).EEO) });
+            ((p)localObject2).chM.dF(((dol)localObject1).EEN, ((dol)localObject1).EEO);
+            ((p)localObject2).dH(((dol)localObject1).EEN, ((dol)localObject1).EEO);
           }
-          q.a(paramAnonymousByteBuffer, (k)n.this.bER.hlC.get(paramAnonymousByteBuffer.eAx));
+          q.a(paramAnonymousByteBuffer, (k)n.this.chM.jgG.get(paramAnonymousByteBuffer.uuid));
           continue;
-          localObject1 = (cun)new cun().parseFrom((byte[])localObject1);
-          t.a(n.this.bER, paramAnonymousByteBuffer, ((cun)localObject1).ydi, n.this.hlR, n.this.hlP);
-          n.this.bER.hlt = System.currentTimeMillis();
+          localObject1 = (doo)new doo().parseFrom((byte[])localObject1);
+          u.a(n.this.chM, paramAnonymousByteBuffer, ((doo)localObject1).EEM, n.this.jgW, n.this.jgU);
+          n.this.chM.jgx = System.currentTimeMillis();
           continue;
-          localObject2 = (cur)new cur().parseFrom((byte[])localObject1);
+          localObject2 = (dos)new dos().parseFrom((byte[])localObject1);
           localObject1 = n.this;
-          if (t.a(((n)localObject1).bER, paramAnonymousByteBuffer, ((cur)localObject2).ydi, ((n)localObject1).hlR, ((n)localObject1).hlP))
+          if (u.a(((n)localObject1).chM, paramAnonymousByteBuffer, ((dos)localObject2).EEM, ((n)localObject1).jgW, ((n)localObject1).jgU))
           {
-            ab.i("MicroMsg.RemoteDebugJsEngine", "onLogin");
-            if (((cur)localObject2).yds == null)
+            ad.i("MicroMsg.RemoteDebugJsEngine", "onLogin");
+            if (((dos)localObject2).EEW == null)
             {
-              ab.e("MicroMsg.RemoteDebugJsEngine", "onLogin room info is null");
+              ad.e("MicroMsg.RemoteDebugJsEngine", "onLogin room info is null");
             }
-            else if (((cur)localObject2).yds.yda)
+            else if (((dos)localObject2).EEW.EEE)
             {
-              ((n)localObject1).bER.hlo = ((cur)localObject2).yds;
+              ((n)localObject1).chM.jgs = ((dos)localObject2).EEW;
               ((n)localObject1).onReady();
             }
             else
             {
-              ab.i("MicroMsg.RemoteDebugJsEngine", "joinRoom");
-              ((n)localObject1).bER.setStatus(2);
-              localObject2 = new cuo();
-              ((cuo)localObject2).ydg = ((n)localObject1).bER.hlk;
-              ((cuo)localObject2).ydb = ((n)localObject1).bER.hlp.eeu;
-              ((cuo)localObject2).username = "";
-              ((cuo)localObject2).ydr = ((n)localObject1).bER.hlp.hlI;
-              localObject2 = t.a(1003, (com.tencent.mm.bv.a)localObject2);
-              ((n)localObject1).hlO.a((ctv)localObject2);
+              ad.i("MicroMsg.RemoteDebugJsEngine", "joinRoom");
+              ((n)localObject1).chM.setStatus(2);
+              localObject2 = new dop();
+              ((dop)localObject2).EEK = ((n)localObject1).chM.jgo;
+              ((dop)localObject2).EEF = ((n)localObject1).chM.jgt.roomId;
+              ((dop)localObject2).username = "";
+              ((dop)localObject2).EEV = ((n)localObject1).chM.jgt.jgM;
+              localObject2 = u.a(1003, (com.tencent.mm.bx.a)localObject2);
+              ((n)localObject1).jgT.a((dnw)localObject2);
               continue;
-              localObject1 = (cup)new cup().parseFrom((byte[])localObject1);
-              if (t.a(n.this.bER, paramAnonymousByteBuffer, ((cup)localObject1).ydi, n.this.hlR, n.this.hlP))
+              localObject1 = (doq)new doq().parseFrom((byte[])localObject1);
+              if (u.a(n.this.chM, paramAnonymousByteBuffer, ((doq)localObject1).EEM, n.this.jgW, n.this.jgU))
               {
                 n.b(n.this);
                 continue;
-                if (n.this.hlQ.isRunning())
+                if (n.this.jgV.isRunning())
                 {
-                  localObject1 = n.this.hlP;
-                  ab.i("MicroMsg.RemoteDebugMsgMrg", "onQuit");
-                  ((p)localObject1).azj();
-                  localObject1 = ((p)localObject1).hlR;
-                  ((u)localObject1).azv();
-                  al.d(new u.6((u)localObject1));
+                  localObject1 = n.this.jgU;
+                  ad.i("MicroMsg.RemoteDebugMsgMrg", "onQuit");
+                  ((p)localObject1).aUq();
+                  localObject1 = ((p)localObject1).jgW;
+                  ((v)localObject1).aUC();
+                  aq.f(new v.6((v)localObject1));
                 }
                 else
                 {
-                  localObject1 = n.this.hlP;
-                  ab.i("MicroMsg.RemoteDebugMsgMrg", "onQuitSilent");
-                  ((p)localObject1).azj();
-                  localObject1 = ((p)localObject1).hlR;
-                  ((u)localObject1).setVisibility(8);
-                  if ((((u)localObject1).getParent() instanceof ViewGroup))
+                  localObject1 = n.this.jgU;
+                  ad.i("MicroMsg.RemoteDebugMsgMrg", "onQuitSilent");
+                  ((p)localObject1).aUq();
+                  localObject1 = ((p)localObject1).jgW;
+                  ((v)localObject1).setVisibility(8);
+                  if ((((v)localObject1).getParent() instanceof ViewGroup))
                   {
-                    ((ViewGroup)((u)localObject1).getParent()).removeView((View)localObject1);
-                    ((u)localObject1).removeAllViews();
+                    ((ViewGroup)((v)localObject1).getParent()).removeView((View)localObject1);
+                    ((v)localObject1).removeAllViews();
                   }
-                  ((u)localObject1).hmw = null;
+                  ((v)localObject1).jhz = null;
                   continue;
-                  localObject1 = (cuu)new cuu().parseFrom((byte[])localObject1);
-                  localObject2 = n.this.hlP;
-                  ab.d("MicroMsg.RemoteDebugMsgMrg", "onSync");
-                  if (t.a(((p)localObject2).bER, paramAnonymousByteBuffer, ((cuu)localObject1).ydi, ((p)localObject2).hlR, (p)localObject2))
+                  localObject1 = (dov)new dov().parseFrom((byte[])localObject1);
+                  localObject2 = n.this.jgU;
+                  ad.d("MicroMsg.RemoteDebugMsgMrg", "onSync");
+                  if (u.a(((p)localObject2).chM, paramAnonymousByteBuffer, ((dov)localObject1).EEM, ((p)localObject2).jgW, (p)localObject2))
                   {
-                    ((p)localObject2).u(((cuu)localObject1).ycV);
-                    ((p)localObject2).bER.nB(((cuu)localObject1).ydv);
-                    ((p)localObject2).azk();
+                    ((p)localObject2).v(((dov)localObject1).EEA);
+                    ((p)localObject2).chM.qV(((dov)localObject1).EEZ);
+                    ((p)localObject2).aUr();
                     continue;
-                    localObject1 = (cuc)new cuc().parseFrom((byte[])localObject1);
-                    n.this.hlP.u(((cuc)localObject1).ycV);
+                    localObject1 = (dod)new dod().parseFrom((byte[])localObject1);
+                    n.this.jgU.v(((dod)localObject1).EEA);
                     continue;
                     n.this.onReady();
                     continue;
-                    n.this.bER.setStatus(4);
-                    n.this.hlP.quit();
+                    n.this.chM.setStatus(4);
+                    n.this.jgU.quit();
                   }
                 }
               }
@@ -240,158 +256,197 @@ public final class n
         }
       }
     };
-    com.tencent.mm.sdk.b.a.ymk.b(new n.4(this));
-    AppMethodBeat.o(101840);
+    com.tencent.mm.sdk.b.a.ESL.b(new com.tencent.mm.sdk.b.c()
+    {
+      private boolean a(com.tencent.mm.g.a.m paramAnonymousm)
+      {
+        AppMethodBeat.i(147023);
+        if ((paramAnonymousm == null) || (paramAnonymousm.dbl == null) || (paramAnonymousm.dbl.dbo == null))
+        {
+          AppMethodBeat.o(147023);
+          return true;
+        }
+        dof localdof = new dof();
+        localdof.dbm = paramAnonymousm.dbl.dbm;
+        localdof.dbn = paramAnonymousm.dbl.dbn;
+        localdof.EEB = paramAnonymousm.dbl.dbo.toString();
+        localdof.timestamp = System.currentTimeMillis();
+        paramAnonymousm = u.a(localdof, n.this.chM, "networkDebugAPI");
+        n.this.a(paramAnonymousm);
+        AppMethodBeat.o(147023);
+        return true;
+      }
+    });
+    AppMethodBeat.o(147025);
   }
   
-  private void azb()
+  private void aUi()
   {
-    AppMethodBeat.i(140825);
-    ab.i("MicroMsg.RemoteDebugJsEngine", "getRemoteDebugTicket");
-    api localapi = new api();
-    ((com.tencent.mm.plugin.appbrand.networking.a)this.hlQ.q(com.tencent.mm.plugin.appbrand.networking.a.class)).a("/cgi-bin/mmbiz-bin/wxabusiness/getremotedebugticket", localapi, apj.class).c(new n.3(this));
-    AppMethodBeat.o(140825);
+    AppMethodBeat.i(147035);
+    ad.i("MicroMsg.RemoteDebugJsEngine", "getRemoteDebugTicket");
+    azx localazx = new azx();
+    ((com.tencent.mm.plugin.appbrand.networking.a)this.jgV.K(com.tencent.mm.plugin.appbrand.networking.a.class)).a("/cgi-bin/mmbiz-bin/wxabusiness/getremotedebugticket", localazx, azy.class).c(new com.tencent.mm.vending.c.a() {});
+    AppMethodBeat.o(147035);
+  }
+  
+  public final <T extends j> T P(Class<T> paramClass)
+  {
+    return null;
+  }
+  
+  public final void W(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(147033);
+    this.jgU.W(paramInt, paramString);
+    AppMethodBeat.o(147033);
   }
   
   public final void a(l paraml)
   {
-    AppMethodBeat.i(101841);
-    this.bER = paraml;
-    this.hlQ = this.bER.hlj;
-    this.gQx = ((Activity)this.hlQ.getContext());
-    this.hlR = new u(this.gQx, this.bER, new n.1(this));
-    this.hlR.g(this.hlQ.wj().gPC);
+    AppMethodBeat.i(147026);
+    this.chM = paraml;
+    this.jgV = this.chM.jgn;
+    this.jgS = ((Activity)this.jgV.getContext());
+    this.jgW = new v(this.jgS, this.chM, new v.a()
+    {
+      public final void aUj()
+      {
+        AppMethodBeat.i(147014);
+        n.this.destroy();
+        g.a(n.this.jgV.getAppId(), g.d.iDc);
+        if (n.this.jgV.Dl() != null) {
+          n.this.jgV.Dl().finish();
+        }
+        AppMethodBeat.o(147014);
+      }
+    });
+    this.jgW.h(this.jgV.Dl().iDA);
     connect();
-    if (bo.isNullOrNil(this.bER.ayU())) {
-      azb();
+    if (bt.isNullOrNil(this.chM.aUc())) {
+      aUi();
     }
-    AppMethodBeat.o(101841);
+    AppMethodBeat.o(147026);
   }
   
   public final void a(o paramo)
   {
-    AppMethodBeat.i(101848);
-    this.hlP.a(paramo);
-    AppMethodBeat.o(101848);
+    AppMethodBeat.i(147034);
+    this.jgU.a(paramo);
+    AppMethodBeat.o(147034);
   }
   
   public final void a(URL paramURL, String paramString, ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(101843);
+    AppMethodBeat.i(147028);
     evaluateJavascript(paramString, paramValueCallback);
-    AppMethodBeat.o(101843);
+    AppMethodBeat.o(147028);
   }
   
-  public final void a(URL paramURL, String paramString1, String paramString2, String paramString3, ValueCallback<String> paramValueCallback)
+  public final void a(URL paramURL, String paramString1, String paramString2, int paramInt, String paramString3, ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(101844);
+    AppMethodBeat.i(147029);
     evaluateJavascript(paramString3, paramValueCallback);
-    AppMethodBeat.o(101844);
+    AppMethodBeat.o(147029);
   }
   
   public final void addJavascriptInterface(Object paramObject, String paramString) {}
   
   final void connect()
   {
-    AppMethodBeat.i(101846);
-    if (this.hlO == null)
+    AppMethodBeat.i(147031);
+    if (this.jgT == null)
     {
-      this.hlO = new s((com.tencent.mm.plugin.appbrand.m.a)this.hlQ.U(com.tencent.mm.plugin.appbrand.m.a.class));
-      this.hlP.a(this.hlO, this.bER, this.hlR);
+      this.jgT = new t((com.tencent.mm.plugin.appbrand.q.a)this.jgV.ar(com.tencent.mm.plugin.appbrand.q.a.class));
+      this.jgU.a(this.jgT, this.chM, this.jgW);
     }
-    if (this.bER.aza())
+    if (this.chM.aUh())
     {
-      this.hlO.a("ws://localhost:" + this.bER.hlp.hlL, this.hlS);
-      AppMethodBeat.o(101846);
+      this.jgT.a("ws://localhost:" + this.chM.jgt.jgP, this.jgX);
+      AppMethodBeat.o(147031);
       return;
     }
-    this.hlO.a("wss://wxagame.weixin.qq.com/remote/", this.hlS);
-    AppMethodBeat.o(101846);
+    this.jgT.a("wss://wxagame.weixin.qq.com/remote/", this.jgX);
+    AppMethodBeat.o(147031);
   }
   
   public final void destroy()
   {
-    AppMethodBeat.i(101845);
-    this.hlP.quit();
-    this.hlP.azl();
-    AppMethodBeat.o(101845);
+    AppMethodBeat.i(147030);
+    this.jgU.quit();
+    this.jgU.aUs();
+    AppMethodBeat.o(147030);
   }
   
   public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(101842);
-    if (this.bER == null)
+    AppMethodBeat.i(147027);
+    if (this.chM == null)
     {
       if (paramValueCallback != null) {
         paramValueCallback.onReceiveValue("FATAL");
       }
-      AppMethodBeat.o(101842);
+      AppMethodBeat.o(147027);
       return;
     }
-    if (this.bER.ayX())
+    if (this.chM.aUf())
     {
-      AppMethodBeat.o(101842);
+      AppMethodBeat.o(147027);
       return;
     }
-    if (!this.bER.isReady())
+    if (!this.chM.isReady())
     {
-      this.bER.hlA.add(new Pair(paramString, paramValueCallback));
-      this.hlN = null;
-      AppMethodBeat.o(101842);
+      this.chM.jgE.add(new Pair(paramString, paramValueCallback));
+      this.jgR = null;
+      AppMethodBeat.o(147027);
       return;
     }
-    Object localObject = new cua();
-    ((cua)localObject).ycU = this.bER.hlv.incrementAndGet();
-    ((cua)localObject).script = paramString;
-    o localo = t.a((com.tencent.mm.bv.a)localObject, this.bER, "evaluateJavascript");
-    this.hlP.a(localo);
-    int i = ((cua)localObject).ycU;
+    Object localObject = new dob();
+    ((dob)localObject).EEz = this.chM.jgz.incrementAndGet();
+    ((dob)localObject).script = paramString;
+    o localo = u.a((com.tencent.mm.bx.a)localObject, this.chM, "evaluateJavascript");
+    this.jgU.a(localo);
+    int i = ((dob)localObject).EEz;
     localObject = new b();
-    if (!bo.isNullOrNil(this.hlN))
+    if (!bt.isNullOrNil(this.jgR))
     {
-      ((b)localObject).cnC = this.hlN;
-      this.hlN = null;
+      ((b)localObject).dcx = this.jgR;
+      this.jgR = null;
     }
     for (;;)
     {
-      ((b)localObject).hlb = System.currentTimeMillis();
+      ((b)localObject).jgi = System.currentTimeMillis();
       ((b)localObject).size = paramString.length();
-      ((b)localObject).hla = paramValueCallback;
-      this.bER.hlE.put(Integer.valueOf(i), localObject);
-      AppMethodBeat.o(101842);
+      ((b)localObject).jgh = paramValueCallback;
+      this.chM.jgI.put(Integer.valueOf(i), localObject);
+      AppMethodBeat.o(147027);
       return;
-      ((b)localObject).cnC = q.AP(paramString);
+      ((b)localObject).dcx = q.GG(paramString);
     }
   }
   
   final void onReady()
   {
-    AppMethodBeat.i(101847);
-    ab.i("MicroMsg.RemoteDebugJsEngine", "onReady");
-    this.bER.setStatus(3);
-    ab.i("MicroMsg.RemoteDebugJsEngine", "clearPendingScript");
-    Iterator localIterator = this.bER.hlA.iterator();
+    AppMethodBeat.i(147032);
+    ad.i("MicroMsg.RemoteDebugJsEngine", "onReady");
+    this.chM.setStatus(3);
+    ad.i("MicroMsg.RemoteDebugJsEngine", "clearPendingScript");
+    Iterator localIterator = this.chM.jgE.iterator();
     while (localIterator.hasNext())
     {
       Pair localPair = (Pair)localIterator.next();
       evaluateJavascript((String)localPair.first, (ValueCallback)localPair.second);
     }
-    this.bER.hlA.clear();
-    this.hlP.da(this.bER.ayV(), 2147483647);
-    this.hlR.azv();
-    AppMethodBeat.o(101847);
+    this.chM.jgE.clear();
+    this.jgU.dG(this.chM.aUd(), 2147483647);
+    this.jgW.aUC();
+    AppMethodBeat.o(147032);
   }
   
   public final void setJsExceptionHandler(h paramh) {}
-  
-  public final <T extends j> T v(Class<T> paramClass)
-  {
-    return null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.n
  * JD-Core Version:    0.7.0.1
  */

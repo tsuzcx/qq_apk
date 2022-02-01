@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_gravity="start" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hd" android:layout_marginTop="38.0dip" android:layout_marginRight="@dimen/hd">
+                <ImageView android:id="@id/dzt" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:src="@raw/login_app_default_avatar" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/dh" android:layout_gravity="center" android:id="@id/dzw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:maxLines="2" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/dh" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dyt" />
+            </LinearLayout>
+            <TextView android:textSize="22.0dip" android:textColor="@color/y4" android:layout_gravity="start" android:id="@id/sq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hd" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/hd" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/sm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hd" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/hd" android:text="用于在QQ浏览器中使用王者荣耀云游戏" />
+            <com.tencent.mm.ui.base.MaxListView android:id="@id/sp" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hd" android:layout_marginTop="4.0dip" android:listSelector="@color/a7c" android:cacheColorHint="#00000000" android:divider="@null" />
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hd" android:layout_marginTop="60.0dip" android:layout_marginRight="@dimen/hd" android:layout_marginBottom="@dimen/i_">
+                <Button android:id="@id/d5q" android:text="同意" style="@style/o7" />
+                <Button android:id="@id/d5t" android:layout_marginTop="@dimen/c5" android:text="拒绝" style="@style/od" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

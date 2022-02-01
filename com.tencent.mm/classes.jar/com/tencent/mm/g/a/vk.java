@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class vk
   extends b
 {
-  public vk.a cMA;
+  public a dAU;
   
   public vk()
   {
@@ -15,16 +15,22 @@ public final class vk
   
   private vk(byte paramByte)
   {
-    AppMethodBeat.i(56581);
-    this.cMA = new vk.a();
-    this.ymq = false;
+    AppMethodBeat.i(149892);
+    this.dAU = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(56581);
+    AppMethodBeat.o(149892);
+  }
+  
+  public static final class a
+  {
+    public boolean dAV = false;
+    public boolean dAW = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.vk
  * JD-Core Version:    0.7.0.1
  */

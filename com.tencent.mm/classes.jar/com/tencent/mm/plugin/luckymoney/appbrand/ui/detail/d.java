@@ -1,10 +1,13 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.ui.detail;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.c.a;
 import com.tencent.mm.plugin.luckymoney.appbrand.a.c;
-import com.tencent.mm.protocal.protobuf.aty;
-import com.tencent.mm.protocal.protobuf.bji;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.luckymoney.appbrand.a.f;
+import com.tencent.mm.protocal.protobuf.bez;
+import com.tencent.mm.protocal.protobuf.bwu;
+import com.tencent.mm.protocal.protobuf.cfr;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
@@ -14,91 +17,91 @@ public final class d
 {
   private String appId;
   boolean isLoading;
-  private String ojA;
-  int ojB;
-  final List<aty> ojC;
-  b ojz;
+  b sZm;
+  private String sZn;
+  int sZo;
+  final List<bez> sZp;
   
   public d()
   {
-    AppMethodBeat.i(42042);
-    this.ojB = 0;
+    AppMethodBeat.i(64933);
+    this.sZo = 0;
     this.isLoading = false;
-    this.ojC = new LinkedList();
-    AppMethodBeat.o(42042);
+    this.sZp = new LinkedList();
+    AppMethodBeat.o(64933);
   }
   
-  private static bji aZ(byte[] paramArrayOfByte)
+  private void FL(final int paramInt)
   {
-    AppMethodBeat.i(42043);
+    AppMethodBeat.i(64937);
+    new c(this.appId, this.sZn, paramInt).b(new f() {});
+    AppMethodBeat.o(64937);
+  }
+  
+  private static bwu bp(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(64934);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      ab.e("MicroMsg.WxaLuckyMoneyLogicDetail", "parseFrom failed. No data found.");
-      AppMethodBeat.o(42043);
+      ad.e("MicroMsg.WxaLuckyMoneyLogicDetail", "parseFrom failed. No data found.");
+      AppMethodBeat.o(64934);
       return null;
     }
-    bji localbji = new bji();
+    bwu localbwu = new bwu();
     try
     {
-      localbji.parseFrom(paramArrayOfByte);
-      ab.i("MicroMsg.WxaLuckyMoneyLogicDetail", "parseFrom succeed.");
-      AppMethodBeat.o(42043);
-      return localbji;
+      localbwu.parseFrom(paramArrayOfByte);
+      ad.i("MicroMsg.WxaLuckyMoneyLogicDetail", "parseFrom succeed.");
+      AppMethodBeat.o(64934);
+      return localbwu;
     }
     catch (IOException paramArrayOfByte)
     {
-      ab.e("MicroMsg.WxaLuckyMoneyLogicDetail", "parseFrom failed. IOException: %s", new Object[] { paramArrayOfByte });
-      AppMethodBeat.o(42043);
+      ad.e("MicroMsg.WxaLuckyMoneyLogicDetail", "parseFrom failed. IOException: %s", new Object[] { paramArrayOfByte });
+      AppMethodBeat.o(64934);
     }
     return null;
   }
   
-  private void yi(int paramInt)
+  public final void FJ(int paramInt)
   {
-    AppMethodBeat.i(42046);
-    new c(this.appId, this.ojA, paramInt).b(new d.1(this, paramInt));
-    AppMethodBeat.o(42046);
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(42044);
-    ab.i("MicroMsg.WxaLuckyMoneyLogicDetail", "onDestroy() called");
-    this.ojz = null;
-    AppMethodBeat.o(42044);
-  }
-  
-  public final void yg(int paramInt)
-  {
-    AppMethodBeat.i(42045);
-    if (this.ojz == null)
+    AppMethodBeat.i(64936);
+    if (this.sZm == null)
     {
-      ab.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage ui == null");
-      AppMethodBeat.o(42045);
+      ad.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage ui == null");
+      AppMethodBeat.o(64936);
       return;
     }
-    if (paramInt < this.ojC.size())
+    if (paramInt < this.sZp.size())
     {
-      ab.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage. offset = [%d], list.size() = [%d], skip load", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.ojC.size()) });
-      AppMethodBeat.o(42045);
+      ad.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage. offset = [%d], list.size() = [%d], skip load", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.sZp.size()) });
+      AppMethodBeat.o(64936);
       return;
     }
     if (this.isLoading)
     {
-      ab.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage failed. is loading now...");
-      AppMethodBeat.o(42045);
+      ad.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage failed. is loading now...");
+      AppMethodBeat.o(64936);
       return;
     }
-    if (this.ojB == 0)
+    if (this.sZo == 0)
     {
-      ab.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage failed. do not has more...");
-      AppMethodBeat.o(42045);
+      ad.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage failed. do not has more...");
+      AppMethodBeat.o(64936);
       return;
     }
-    ab.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage load");
+    ad.i("MicroMsg.WxaLuckyMoneyLogicDetail", "loadNextPage load");
     this.isLoading = true;
-    yi(paramInt);
-    AppMethodBeat.o(42045);
+    FL(paramInt);
+    AppMethodBeat.o(64936);
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(64935);
+    ad.i("MicroMsg.WxaLuckyMoneyLogicDetail", "onDestroy() called");
+    this.sZm = null;
+    AppMethodBeat.o(64935);
   }
 }
 

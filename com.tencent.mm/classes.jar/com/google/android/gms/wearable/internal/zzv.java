@@ -18,47 +18,47 @@ final class zzv
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(71474);
+    AppMethodBeat.i(101457);
     if (this == paramObject)
     {
-      AppMethodBeat.o(71474);
+      AppMethodBeat.o(101457);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(71474);
+      AppMethodBeat.o(101457);
       return false;
     }
     paramObject = (zzv)paramObject;
     if (!this.zzbs.equals(paramObject.zzbs))
     {
-      AppMethodBeat.o(71474);
+      AppMethodBeat.o(101457);
       return false;
     }
     boolean bool = this.zzbc.equals(paramObject.zzbc);
-    AppMethodBeat.o(71474);
+    AppMethodBeat.o(101457);
     return bool;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(71475);
+    AppMethodBeat.i(101458);
     int i = this.zzbs.hashCode();
     int j = this.zzbc.hashCode();
-    AppMethodBeat.o(71475);
+    AppMethodBeat.o(101458);
     return i * 31 + j;
   }
   
   public final void onCapabilityChanged(CapabilityInfo paramCapabilityInfo)
   {
-    AppMethodBeat.i(71473);
+    AppMethodBeat.i(101456);
     this.zzbs.onCapabilityChanged(paramCapabilityInfo);
-    AppMethodBeat.o(71473);
+    AppMethodBeat.o(101456);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzv
  * JD-Core Version:    0.7.0.1
  */

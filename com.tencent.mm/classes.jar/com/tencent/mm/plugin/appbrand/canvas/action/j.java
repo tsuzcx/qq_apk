@@ -15,33 +15,33 @@ public final class j
 {
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, Path paramPath)
   {
-    AppMethodBeat.i(103206);
-    paramCanvas.drawPath(paramPath, paramd.heC);
-    AppMethodBeat.o(103206);
+    AppMethodBeat.i(144889);
+    paramCanvas.drawPath(paramPath, paramd.iYM);
+    AppMethodBeat.o(144889);
     return true;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    AppMethodBeat.i(103207);
-    boolean bool = a(paramd, paramCanvas, e.a.hfO.a((PathActionArgWrapper)paramDrawActionArg));
-    AppMethodBeat.o(103207);
+    AppMethodBeat.i(144890);
+    boolean bool = a(paramd, paramCanvas, e.a.iZZ.a((PathActionArgWrapper)paramDrawActionArg));
+    AppMethodBeat.o(144890);
     return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103205);
-    boolean bool = a(paramd, paramCanvas, e.a.hfO.g(paramJSONArray));
-    AppMethodBeat.o(103205);
+    AppMethodBeat.i(144888);
+    boolean bool = a(paramd, paramCanvas, e.a.iZZ.g(paramJSONArray));
+    AppMethodBeat.o(144888);
     return bool;
   }
   
-  public final BaseDrawActionArg axW()
+  public final BaseDrawActionArg aSP()
   {
-    AppMethodBeat.i(103204);
+    AppMethodBeat.i(144887);
     PathActionArgWrapper localPathActionArgWrapper = new PathActionArgWrapper();
-    AppMethodBeat.o(103204);
+    AppMethodBeat.o(144887);
     return localPathActionArgWrapper;
   }
   
@@ -52,7 +52,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.j
  * JD-Core Version:    0.7.0.1
  */

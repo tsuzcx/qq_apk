@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/tipsbar_icon_close_dark_pressed" />
-    <item android:drawable="@raw/tipsbar_icon_close_dark" />
+    <item android:state_activated="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/c5" />
+            <solid android:color="@color/Red" />
+        </shape>
+    </item>
+    <item android:state_activated="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/c5" />
+            <solid android:color="@color/LightGreen" />
+        </shape>
+    </item>
 </selector>

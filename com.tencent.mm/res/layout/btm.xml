@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/c79" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textColor="@color/aj" android:id="@id/hsc" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="@dimen/c_" android:layout_marginTop="12.0dip" android:text="@string/r5" android:layout_alignParentTop="true" android:layout_marginStart="@dimen/c5" android:layout_alignParentStart="true" />
+    <Button android:id="@id/hsd" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="@dimen/c_" android:layout_marginTop="12.0dip" android:text="@string/v1" android:layout_alignParentTop="true" android:layout_marginEnd="@dimen/c5" android:layout_alignParentEnd="true" style="@style/o8" />
+    <TextView android:textSize="15.0sp" android:textColor="@color/a_r" android:id="@id/hse" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hqv" android:layout_below="@id/hsc" android:layout_marginStart="16.0dip" />
+    <com.tencent.mm.plugin.vlog.ui.thumb.TrackCropView android:id="@id/hro" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_marginTop="@dimen/br" android:layout_marginBottom="@dimen/bt" />
+</RelativeLayout>

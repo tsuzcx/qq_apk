@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/pz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/glu" android:background="@color/o8" android:paddingLeft="@dimen/dw" android:paddingRight="@dimen/dw" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.tab.GameTabWidget android:id="@id/c3y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <com.tencent.mm.plugin.game.ui.GameIndexListView android:id="@id/c4n" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/c3y" />
+    <ImageView android:id="@id/goh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+    <com.tencent.mm.ui.MMImageView android:id="@id/cnh" android:layout_width="@dimen/hc" android:layout_height="@dimen/hc" android:layout_marginTop="@dimen/h3" android:src="@drawable/ar1" android:scaleType="centerCrop" android:layout_centerHorizontal="true" android:contentDescription="@string/ge" />
+    <TextView android:ellipsize="end" android:gravity="center" android:id="@id/dyh" android:background="@drawable/se" android:layout_width="fill_parent" android:layout_marginLeft="@dimen/d" android:layout_marginTop="@dimen/hd" android:layout_marginRight="@dimen/d" android:text="{name}" android:maxLines="2" android:layout_below="@id/cnh" android:layout_centerHorizontal="true" style="@style/ok" />
+    <ImageView android:id="@id/buq" android:visibility="gone" android:layout_width="@dimen/h9" android:layout_height="@dimen/h9" android:layout_marginTop="@dimen/h3" android:src="@drawable/ac7" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+    <TextView android:ellipsize="end" android:gravity="center" android:id="@id/bur" android:visibility="gone" android:layout_width="fill_parent" android:layout_marginLeft="@dimen/d" android:layout_marginTop="@dimen/hd" android:layout_marginRight="@dimen/d" android:text="{name}" android:maxLines="2" android:layout_below="@id/buq" android:layout_centerHorizontal="true" style="@style/ok" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/bf8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/dyh">
+        <TextView android:id="@id/bf9" android:layout_width="wrap_content" android:layout_marginTop="@dimen/hk" style="@style/le" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/he">
+            <ProgressBar android:id="@id/bf6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" style="?android:progressBarStyleHorizontal" />
+            <ImageView android:id="@id/bfc" android:background="@drawable/a7a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/adv" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button android:id="@id/eh3" android:layout_width="fill_parent" android:layout_marginTop="@dimen/he" android:text="@string/c2m" android:layout_below="@id/dyh" android:layout_centerHorizontal="true" style="@style/o6" />
+    <Button android:id="@id/e82" android:layout_width="fill_parent" android:layout_marginTop="@dimen/h" android:text="@string/c2l" android:layout_below="@id/eh3" android:layout_centerHorizontal="true" style="@style/o6" />
+    <TextView android:id="@id/gag" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginTop="@dimen/h" android:text="@string/c2j" android:layout_below="@id/e82" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/le" />
+    <Button android:id="@id/ben" android:layout_width="fill_parent" android:layout_marginTop="@dimen/he" android:text="@string/c2k" android:layout_below="@id/dyh" android:layout_centerHorizontal="true" style="@style/o6" />
+    <include layout="@layout/b6d" />
 </RelativeLayout>

@@ -1,28 +1,15 @@
 package com.tencent.mm.plugin.websearch.api;
 
+import com.tencent.mm.kernel.c.a;
+
 public abstract interface f
+  extends a
 {
-  public abstract void a(WidgetData paramWidgetData, String paramString);
+  public abstract void a(int paramInt, m paramm);
   
-  public abstract void a(WidgetData paramWidgetData, String paramString, int paramInt1, int paramInt2);
+  public abstract void ehK();
   
-  public abstract void agn(String paramString);
-  
-  public abstract void ago(String paramString);
-  
-  public abstract void cZe();
-  
-  public abstract void f(int paramInt1, int paramInt2, String paramString1, String paramString2);
-  
-  public abstract void hg(String paramString1, String paramString2);
-  
-  public abstract void n(String paramString1, String paramString2, int paramInt1, int paramInt2);
-  
-  public abstract void onDestroy();
-  
-  public abstract void onPause();
-  
-  public abstract void onResume();
+  public abstract void ehL();
 }
 
 

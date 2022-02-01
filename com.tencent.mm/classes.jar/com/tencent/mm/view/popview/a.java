@@ -1,44 +1,33 @@
 package com.tencent.mm.view.popview;
 
-import android.content.Context;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.i;
-import com.tencent.mm.storage.emotion.EmojiInfo;
+import d.g.b.k;
+import d.l;
 
-public final class a
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/view/popview/BasePopupHelper;", "", "()V", "onLongPress", "", "anchor", "Landroid/view/View;", "item", "onMove", "", "onOutsideTouched", "onTouchEnd", "plugin-emojisdk_release"})
+public class a
 {
-  public static void a(AbstractPopView paramAbstractPopView, Object paramObject)
+  public boolean c(View paramView, Object paramObject)
   {
-    AppMethodBeat.i(63069);
-    if ((paramAbstractPopView instanceof EmojiPopView))
-    {
-      ((EmojiPopView)paramAbstractPopView).setEmojiInfo((EmojiInfo)paramObject);
-      AppMethodBeat.o(63069);
-      return;
-    }
-    if ((paramAbstractPopView instanceof SmileyPopView)) {
-      ((SmileyPopView)paramAbstractPopView).setSmileyItem((i)paramObject);
-    }
-    AppMethodBeat.o(63069);
+    AppMethodBeat.i(183994);
+    k.h(paramView, "anchor");
+    AppMethodBeat.o(183994);
+    return false;
   }
   
-  public static AbstractPopView b(Context paramContext, Object paramObject)
+  public void d(View paramView, Object paramObject)
   {
-    AppMethodBeat.i(63068);
-    if ((paramObject instanceof i))
-    {
-      paramContext = new SmileyPopView(paramContext);
-      AppMethodBeat.o(63068);
-      return paramContext;
-    }
-    paramContext = new EmojiPopView(paramContext);
-    AppMethodBeat.o(63068);
-    return paramContext;
+    AppMethodBeat.i(183995);
+    k.h(paramView, "anchor");
+    AppMethodBeat.o(183995);
   }
+  
+  public void dwD() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.popview.a
  * JD-Core Version:    0.7.0.1
  */

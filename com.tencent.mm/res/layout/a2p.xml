@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_gravity="center" android:id="@id/c2c" android:background="#ffdadada" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/hk" android:gravity="center" android:layout_gravity="center" android:id="@id/c2g" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/e4s" android:lineSpacingExtra="@dimen/mp" />
+    <RelativeLayout android:id="@id/com" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.base.MultiTouchImageView android:gravity="center" android:id="@id/co4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="center" />
+        <include layout="@layout/a2f" />
+    </RelativeLayout>
+    <ImageView android:gravity="center" android:id="@id/g8t" android:layout_width="150.0dip" android:layout_height="150.0dip" />
+    <ProgressBar android:id="@id/bfk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="50.0dip" android:layout_marginRight="20.0dip" style="?android:progressBarStyleHorizontal" />
+    <TextView android:textSize="@dimen/i" android:textColor="@color/a_u" android:gravity="center" android:id="@id/bfl" android:background="@color/fc" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

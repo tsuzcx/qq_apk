@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:persistent="false" android:title="@string/bk0" android:key="join_rank" android:defaultValue="true" />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:persistent="false" android:title="@string/bk2" android:key="notify_rank" android:defaultValue="true" android:layout="@layout/afi" />
-    <CheckBoxPreference android:persistent="false" android:title="@string/bk1" android:key="notify_like" android:defaultValue="true" />
-    <PreferenceSmallCategory />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/bj6" android:key="black_contact_list" android:layout="@layout/afi" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_mobile" android:layout="@layout/aop" android:title="@string/b_g" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_qq" android:layout="@layout/aop" android:title="@string/b_h" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_linkedin" android:layout="@layout/aop" android:title="@string/b_f" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_facebook" android:layout="@layout/aop" android:title="@string/b_c" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_googlecontacts" android:layout="@layout/aop" android:title="@string/b_e" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_social_weishop" android:layout="@layout/aop" android:title="@string/b_j" />
 </PreferenceScreen>

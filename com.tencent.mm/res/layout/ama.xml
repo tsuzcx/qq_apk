@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/ddj" android:background="@drawable/a13" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:id="@id/e98" android:background="@drawable/a29" android:padding="@dimen/jn" android:visibility="visible" android:layout_height="100.0dip" android:layout_margin="0.0dip" style="@style/qj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/fd">
-        <ImageView android:id="@id/jp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/gc" />
-        <TextView android:textSize="@dimen/dw" android:textColor="@color/h9" android:id="@id/cv" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/e9i" android:background="@raw/mall_order_detail_frame" android:layout_width="53.299988dip" android:layout_height="53.299988dip" android:src="@raw/mall_order_trade_state_icon" />
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/ve" android:ellipsize="end" android:id="@id/e9_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" />
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/vc" android:ellipsize="end" android:id="@id/e99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:maxLines="1" />
     </LinearLayout>
+    <Button android:textSize="@dimen/gx" android:textColor="@color/a_u" android:id="@id/e94" android:background="@drawable/ik" android:visibility="gone" android:layout_width="69.0dip" android:layout_height="33.299988dip" android:layout_marginLeft="10.0dip" android:text="@string/dm8" />
 </LinearLayout>

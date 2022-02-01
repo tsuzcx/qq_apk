@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<animation-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <size android:height="26.0dip" android:width="26.0dip" />
-    <solid android:color="#ffddbc84" />
-</shape>
+    <item android:duration="90" android:drawable="@drawable/bki" />
+    <item android:duration="90" android:drawable="@drawable/bkj" />
+    <item android:duration="90" android:drawable="@drawable/bkk" />
+    <item android:duration="90" android:drawable="@drawable/bkl" />
+    <item android:duration="90" android:drawable="@drawable/bkm" />
+    <item android:duration="90" android:drawable="@drawable/bkn" />
+</animation-list>

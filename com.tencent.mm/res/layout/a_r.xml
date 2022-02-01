@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="40.0dip"
+<RelativeLayout android:id="@id/dgl" android:padding="@dimen/fy" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:layout_marginBottom="9.0dip">
-        <TextView android:textSize="@dimen/ob" android:textColor="@color/dh" android:ellipsize="end" android:id="@id/a1c" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="{username}" android:maxLength="15" android:layout_weight="0.8" />
-        <TextView android:textSize="@dimen/ob" android:textColor="@color/dh" android:gravity="right" android:id="@id/csf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{amount}" />
-        <TextView android:textSize="@dimen/ob" android:textColor="@color/dh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/lb" android:text="@string/c_" />
-    </LinearLayout>
-    <View android:id="@id/pm" android:background="@drawable/sb" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-</LinearLayout>
+    <ImageView android:id="@id/cbw" android:layout_width="@dimen/g_" android:layout_height="@dimen/g_" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <com.tencent.mm.plugin.game.ui.GameDownloadView android:id="@id/cb6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/i" android:textColor="@color/qn" android:ellipsize="end" android:id="@id/cdk" android:paddingLeft="@dimen/g3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/cbw" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/jo" android:textColor="@color/ql" android:ellipsize="end" android:id="@id/c_g" android:paddingLeft="@dimen/g3" android:paddingRight="@dimen/g3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" android:layout_toLeftOf="@id/cb6" android:layout_toRightOf="@id/cdk" android:layout_centerVertical="true" />
+</RelativeLayout>

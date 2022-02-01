@@ -8,25 +8,33 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Toast;
+import com.facebook.AccessToken;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.az.h.a;
-import com.tencent.mm.g.a.jn;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bb.h.a;
+import com.tencent.mm.model.u;
 import com.tencent.mm.modelsimple.s;
-import com.tencent.mm.plugin.account.friend.a.v;
+import com.tencent.mm.platformtools.y;
+import com.tencent.mm.plugin.account.friend.a.aa;
+import com.tencent.mm.plugin.account.friend.a.w;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
+import com.tencent.mm.pluginsdk.model.app.r;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.bh;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.g.a.b;
+import com.tencent.mm.ui.g.a.c.a;
 import com.tencent.mm.ui.g.a.d;
+import com.tencent.mm.ui.g.a.d.b;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,188 +42,210 @@ import java.util.Map;
 
 public class FacebookAuthUI
   extends MMPreference
-  implements com.tencent.mm.ai.f
+  implements com.tencent.mm.al.g
 {
-  private static final String[] gCv = { "public_profile", "email", "user_location" };
-  private com.tencent.mm.ui.g.a.c gAP;
-  private d gCU;
-  private boolean gCV;
-  private boolean gCW;
-  private String gCX;
-  private final Map<String, Preference> gCY;
-  private com.tencent.mm.sdk.b.c gCZ;
-  private ProgressDialog gCs;
-  private DialogInterface.OnCancelListener gCt;
-  private v gCu;
-  private com.tencent.mm.ui.base.preference.f screen;
+  private static final String[] ipP = { "public_profile", "email", "user_location" };
+  private com.tencent.mm.ui.g.a.c ioj;
+  private ProgressDialog ipM;
+  private DialogInterface.OnCancelListener ipN;
+  private w ipO;
+  private d iqo;
+  private boolean iqp;
+  private boolean iqq;
+  private String iqr;
+  private final Map<String, Preference> iqs;
+  private com.tencent.mm.sdk.b.c iqt;
+  private f screen;
   
   public FacebookAuthUI()
   {
-    AppMethodBeat.i(124787);
-    this.gCV = false;
-    this.gCW = false;
-    this.gCX = "";
-    this.gCY = new HashMap();
-    this.gCZ = new com.tencent.mm.sdk.b.c() {};
-    AppMethodBeat.o(124787);
+    AppMethodBeat.i(127938);
+    this.iqp = false;
+    this.iqq = false;
+    this.iqr = "";
+    this.iqs = new HashMap();
+    this.iqt = new FacebookAuthUI.1(this);
+    AppMethodBeat.o(127938);
   }
   
-  private void ari()
+  private void aJI()
   {
-    AppMethodBeat.i(124793);
-    this.gCs = ProgressDialog.show(this, getString(2131297087), getString(2131299619), true);
-    this.gCs.setOnCancelListener(this.gCt);
-    this.gCu = new v(1, this.gCX);
-    g.Rc().a(this.gCu, 0);
-    dB(true);
-    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(582L, 1L, 1L, false);
-    AppMethodBeat.o(124793);
+    AppMethodBeat.i(127944);
+    this.ipM = ProgressDialog.show(this, getString(2131755906), getString(2131758777), true);
+    this.ipM.setOnCancelListener(this.ipN);
+    this.ipO = new w(1, this.iqr);
+    com.tencent.mm.kernel.g.aeS().a(this.ipO, 0);
+    eX(true);
+    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(582L, 1L, 1L, false);
+    AppMethodBeat.o(127944);
   }
   
-  private void arj()
+  private void aJJ()
   {
-    AppMethodBeat.i(124794);
+    AppMethodBeat.i(127945);
     this.screen.removeAll();
     boolean bool;
     Preference localPreference;
-    if (this.gCV)
+    if (this.iqp)
     {
       bool = false;
-      if (this.gCY.containsKey("facebook_auth_tip"))
+      if (this.iqs.containsKey("facebook_auth_tip"))
       {
-        localPreference = (Preference)this.gCY.get("facebook_auth_tip");
+        localPreference = (Preference)this.iqs.get("facebook_auth_tip");
         if (!bool) {
           break label169;
         }
       }
     }
     label169:
-    for (int i = 2131299628;; i = 2131299618)
+    for (int i = 2131758786;; i = 2131758776)
     {
       localPreference.setTitle(i);
       this.screen.b(localPreference);
-      if (this.gCY.containsKey("facebook_auth_cat"))
+      if (this.iqs.containsKey("facebook_auth_cat"))
       {
-        localPreference = (Preference)this.gCY.get("facebook_auth_cat");
+        localPreference = (Preference)this.iqs.get("facebook_auth_cat");
         this.screen.b(localPreference);
       }
       if (bool) {
         break label175;
       }
-      if (!this.gCY.containsKey("facebook_auth_bind_btn")) {
+      if (!this.iqs.containsKey("facebook_auth_bind_btn")) {
         break label330;
       }
-      localPreference = (Preference)this.gCY.get("facebook_auth_bind_btn");
+      localPreference = (Preference)this.iqs.get("facebook_auth_bind_btn");
       this.screen.b(localPreference);
-      AppMethodBeat.o(124794);
+      AppMethodBeat.o(127945);
       return;
-      bool = r.ZP();
+      bool = u.arj();
       break;
     }
     label175:
-    if (this.gCY.containsKey("facebook_auth_account"))
+    if (this.iqs.containsKey("facebook_auth_account"))
     {
-      localPreference = (Preference)this.gCY.get("facebook_auth_account");
-      localPreference.setTitle(getString(2131299620) + g.RL().Ru().get(65826, null));
+      localPreference = (Preference)this.iqs.get("facebook_auth_account");
+      localPreference.setTitle(getString(2131758778) + com.tencent.mm.kernel.g.afB().afk().get(65826, null));
       this.screen.b(localPreference);
     }
-    if (this.gCY.containsKey("facebook_auth_cat2"))
+    if (this.iqs.containsKey("facebook_auth_cat2"))
     {
-      localPreference = (Preference)this.gCY.get("facebook_auth_cat2");
+      localPreference = (Preference)this.iqs.get("facebook_auth_cat2");
       this.screen.b(localPreference);
     }
-    if (this.gCY.containsKey("facebook_auth_unbind_btn"))
+    if (this.iqs.containsKey("facebook_auth_unbind_btn"))
     {
-      localPreference = (Preference)this.gCY.get("facebook_auth_unbind_btn");
+      localPreference = (Preference)this.iqs.get("facebook_auth_unbind_btn");
       this.screen.b(localPreference);
     }
     label330:
-    AppMethodBeat.o(124794);
+    AppMethodBeat.o(127945);
   }
   
-  private static void dB(boolean paramBoolean)
+  private static void eX(boolean paramBoolean)
   {
-    AppMethodBeat.i(124796);
+    AppMethodBeat.i(127947);
     ArrayList localArrayList = new ArrayList();
     if (paramBoolean) {}
     for (String str = "0";; str = "1")
     {
       localArrayList.add(new h.a(32, str));
-      ((j)g.E(j.class)).Yz().c(new com.tencent.mm.az.h(localArrayList));
-      AppMethodBeat.o(124796);
+      ((k)com.tencent.mm.kernel.g.ab(k.class)).apL().c(new com.tencent.mm.bb.h(localArrayList));
+      AppMethodBeat.o(127947);
       return;
     }
   }
   
   public int getResourceId()
   {
-    return 2131165237;
+    return 2131951673;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(124791);
-    this.gCV = getIntent().getBooleanExtra("is_force_unbind", false);
-    this.gCt = new FacebookAuthUI.4(this);
-    setMMTitle(2131297546);
-    this.screen.addPreferencesFromResource(2131165237);
-    Preference localPreference = this.screen.atx("facebook_auth_tip");
+    AppMethodBeat.i(127942);
+    this.iqp = getIntent().getBooleanExtra("is_force_unbind", false);
+    this.ipN = new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(127928);
+        if (FacebookAuthUI.a(FacebookAuthUI.this) != null) {
+          com.tencent.mm.kernel.g.aeS().a(FacebookAuthUI.a(FacebookAuthUI.this));
+        }
+        AppMethodBeat.o(127928);
+      }
+    };
+    setMMTitle(2131756438);
+    this.screen.addPreferencesFromResource(2131951673);
+    Preference localPreference = this.screen.aKk("facebook_auth_tip");
     if (localPreference != null) {
-      this.gCY.put("facebook_auth_tip", localPreference);
+      this.iqs.put("facebook_auth_tip", localPreference);
     }
-    localPreference = this.screen.atx("facebook_auth_cat");
+    localPreference = this.screen.aKk("facebook_auth_cat");
     if (localPreference != null) {
-      this.gCY.put("facebook_auth_cat", localPreference);
+      this.iqs.put("facebook_auth_cat", localPreference);
     }
-    localPreference = this.screen.atx("facebook_auth_bind_btn");
+    localPreference = this.screen.aKk("facebook_auth_bind_btn");
     if (localPreference != null) {
-      this.gCY.put("facebook_auth_bind_btn", localPreference);
+      this.iqs.put("facebook_auth_bind_btn", localPreference);
     }
-    localPreference = this.screen.atx("facebook_auth_account");
+    localPreference = this.screen.aKk("facebook_auth_account");
     if (localPreference != null) {
-      this.gCY.put("facebook_auth_account", localPreference);
+      this.iqs.put("facebook_auth_account", localPreference);
     }
-    localPreference = this.screen.atx("facebook_auth_cat2");
+    localPreference = this.screen.aKk("facebook_auth_cat2");
     if (localPreference != null) {
-      this.gCY.put("facebook_auth_cat2", localPreference);
+      this.iqs.put("facebook_auth_cat2", localPreference);
     }
-    localPreference = this.screen.atx("facebook_auth_unbind_btn");
+    localPreference = this.screen.aKk("facebook_auth_unbind_btn");
     if (localPreference != null) {
-      this.gCY.put("facebook_auth_unbind_btn", localPreference);
+      this.iqs.put("facebook_auth_unbind_btn", localPreference);
     }
-    setBackBtn(new FacebookAuthUI.5(this));
-    AppMethodBeat.o(124791);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(127929);
+        paramAnonymousMenuItem = FacebookAuthUI.this.getIntent();
+        paramAnonymousMenuItem.putExtra("bind_facebook_succ", FacebookAuthUI.b(FacebookAuthUI.this));
+        FacebookAuthUI.this.setResult(-1, paramAnonymousMenuItem);
+        FacebookAuthUI.this.finish();
+        AppMethodBeat.o(127929);
+        return true;
+      }
+    });
+    AppMethodBeat.o(127942);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     int i = 0;
-    AppMethodBeat.i(124795);
+    AppMethodBeat.i(127946);
     boolean bool;
     String str;
     int j;
     if (paramIntent == null)
     {
       bool = true;
-      ab.i("MicroMsg.FacebookAuthUI", "onActivityResult, requestCode:%d, resultCode:%d, data==null:%b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
+      ad.i("MicroMsg.FacebookAuthUI", "onActivityResult, requestCode:%d, resultCode:%d, data==null:%b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
       if ((paramInt2 != -1) || (paramInt1 != 1024) || (paramIntent == null)) {
         break label173;
       }
       str = paramIntent.getStringExtra("VoiceLoginAuthPwd");
       j = paramIntent.getIntExtra("KVoiceHelpCode", 0);
-      bool = bo.isNullOrNil(str);
-      if (!bo.isNullOrNil(str)) {
+      bool = bt.isNullOrNil(str);
+      if (!bt.isNullOrNil(str)) {
         break label163;
       }
     }
     for (;;)
     {
-      ab.i("MicroMsg.FacebookAuthUI", "onActivityResult, do voiceprint auth, authPwd is null:%b, authPwd.len:%d, lastErrCode:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j) });
+      ad.i("MicroMsg.FacebookAuthUI", "onActivityResult, do voiceprint auth, authPwd is null:%b, authPwd.len:%d, lastErrCode:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j) });
       if (j != -217) {
         break label173;
       }
-      ari();
-      AppMethodBeat.o(124795);
+      aJI();
+      AppMethodBeat.o(127946);
       return;
       bool = false;
       break;
@@ -223,250 +253,300 @@ public class FacebookAuthUI
       i = str.length();
     }
     label173:
-    if (this.gAP != null) {
-      this.gAP.h(paramInt1, paramInt2, paramIntent);
+    if (this.ioj != null) {
+      this.ioj.i(paramInt1, paramInt2, paramIntent);
     }
-    if (this.gCU != null) {
-      this.gCU.h(paramInt1, paramInt2, paramIntent);
+    if (this.iqo != null) {
+      this.iqo.i(paramInt1, paramInt2, paramIntent);
     }
-    AppMethodBeat.o(124795);
+    AppMethodBeat.o(127946);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(124788);
+    AppMethodBeat.i(127939);
     super.onCreate(paramBundle);
     this.screen = getPreferenceScreen();
     initView();
-    AppMethodBeat.o(124788);
+    AppMethodBeat.o(127939);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(124798);
+    AppMethodBeat.i(127949);
     if (paramInt == 4)
     {
       Intent localIntent = getIntent();
-      localIntent.putExtra("bind_facebook_succ", this.gCW);
+      localIntent.putExtra("bind_facebook_succ", this.iqq);
       setResult(-1, localIntent);
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(124798);
+    AppMethodBeat.o(127949);
     return bool;
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(124790);
+    AppMethodBeat.i(127941);
     super.onPause();
-    com.tencent.mm.sdk.b.a.ymk.d(this.gCZ);
-    g.Rc().b(183, this);
-    g.Rc().b(254, this);
-    AppMethodBeat.o(124790);
+    com.tencent.mm.sdk.b.a.ESL.d(this.iqt);
+    com.tencent.mm.kernel.g.aeS().b(183, this);
+    com.tencent.mm.kernel.g.aeS().b(254, this);
+    AppMethodBeat.o(127941);
   }
   
-  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(124792);
+    AppMethodBeat.i(127943);
     paramf = paramPreference.mKey;
     if (paramf == null)
     {
-      ab.e("MicroMsg.FacebookAuthUI", "onPreferenceTreeClick, key is null");
-      AppMethodBeat.o(124792);
+      ad.e("MicroMsg.FacebookAuthUI", "onPreferenceTreeClick, key is null");
+      AppMethodBeat.o(127943);
       return true;
     }
     if (paramf.equals("facebook_auth_bind_btn"))
     {
-      if (q.u(this, "com.facebook.katana"))
+      if (r.t(this, "com.facebook.katana"))
       {
-        if (this.gCU == null)
+        if (this.iqo == null)
         {
-          this.gCU = new d(getString(2131306163));
-          this.gCU.dNg();
+          this.iqo = new d(getString(2131758773));
+          this.iqo.fcV();
         }
-        if (!this.gCU.dNf())
+        if (!this.iqo.fcU())
         {
-          this.gCU.logout();
-          this.gCU.a(this, new FacebookAuthUI.6(this), gCv);
+          this.iqo.logout();
+          this.iqo.a(this, new d.b()
+          {
+            public final void onCancel()
+            {
+              AppMethodBeat.i(127931);
+              ad.i("MicroMsg.FacebookAuthUI", "facebook-android login cancel!");
+              AppMethodBeat.o(127931);
+            }
+            
+            public final void onError(String paramAnonymousString)
+            {
+              AppMethodBeat.i(127932);
+              ad.i("MicroMsg.FacebookAuthUI", "facebook-android login error! %s", new Object[] { paramAnonymousString });
+              com.tencent.mm.ui.base.h.c(FacebookAuthUI.this, FacebookAuthUI.this.getString(2131758779), "", true);
+              AppMethodBeat.o(127932);
+            }
+            
+            public final void onSuccess()
+            {
+              AppMethodBeat.i(127930);
+              ad.i("MicroMsg.FacebookAuthUI", "facebook-android login success!");
+              FacebookAuthUI.a(FacebookAuthUI.this, FacebookAuthUI.c(FacebookAuthUI.this).HiC.getToken());
+              FacebookAuthUI.d(FacebookAuthUI.this);
+              AppMethodBeat.o(127930);
+            }
+          }, ipP);
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(124792);
+        AppMethodBeat.o(127943);
         return true;
-        ari();
+        aJI();
         continue;
         try
         {
-          this.gAP.ix(this);
-          this.gAP = new com.tencent.mm.ui.g.a.c(getString(2131306163));
-          this.gAP.a(this, gCv, new FacebookAuthUI.a(this, (byte)0));
+          this.ioj.jZ(this);
+          this.ioj = new com.tencent.mm.ui.g.a.c(getString(2131758773));
+          this.ioj.a(this, ipP, new a((byte)0));
         }
         catch (Exception paramf)
         {
           for (;;)
           {
-            ab.printErrStackTrace("MicroMsg.FacebookAuthUI", paramf, "", new Object[0]);
+            ad.printErrStackTrace("MicroMsg.FacebookAuthUI", paramf, "", new Object[0]);
           }
         }
       }
     }
     if (paramf.equals("facebook_auth_unbind_btn"))
     {
-      com.tencent.mm.ui.base.h.a(this, 2131299626, 2131297087, new FacebookAuthUI.7(this), new FacebookAuthUI.8(this));
-      AppMethodBeat.o(124792);
+      com.tencent.mm.ui.base.h.a(this, 2131758784, 2131755906, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(127933);
+          paramAnonymousDialogInterface = FacebookAuthUI.this.getString(2131755906);
+          String str = FacebookAuthUI.this.getString(2131758787);
+          FacebookAuthUI.a(FacebookAuthUI.this, ProgressDialog.show(FacebookAuthUI.this, paramAnonymousDialogInterface, str, true));
+          FacebookAuthUI.f(FacebookAuthUI.this).setOnCancelListener(FacebookAuthUI.e(FacebookAuthUI.this));
+          paramAnonymousDialogInterface = new aa(aa.ikW);
+          com.tencent.mm.kernel.g.aeS().a(paramAnonymousDialogInterface, 0);
+          AppMethodBeat.o(127933);
+        }
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
+      });
+      AppMethodBeat.o(127943);
       return true;
     }
-    AppMethodBeat.o(124792);
+    AppMethodBeat.o(127943);
     return false;
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(124789);
-    com.tencent.mm.sdk.b.a.ymk.c(this.gCZ);
+    AppMethodBeat.i(127940);
+    com.tencent.mm.sdk.b.a.ESL.c(this.iqt);
     super.onResume();
-    g.Rc().a(183, this);
-    g.Rc().a(254, this);
-    arj();
-    AppMethodBeat.o(124789);
+    com.tencent.mm.kernel.g.aeS().a(183, this);
+    com.tencent.mm.kernel.g.aeS().a(254, this);
+    aJJ();
+    AppMethodBeat.o(127940);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(124797);
-    if (paramm.getType() == 254)
+    AppMethodBeat.i(127948);
+    if (paramn.getType() == 254)
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        this.gCu = new v(0, "");
-        g.Rc().a(this.gCu, 0);
-        AppMethodBeat.o(124797);
+        this.ipO = new w(0, "");
+        com.tencent.mm.kernel.g.aeS().a(this.ipO, 0);
+        AppMethodBeat.o(127948);
         return;
       }
-      if (this.gCs != null) {
-        this.gCs.dismiss();
+      if (this.ipM != null) {
+        this.ipM.dismiss();
       }
       if (paramInt2 == -82)
       {
-        com.tencent.mm.ui.base.h.a(this, 2131303172, 2131297087, new FacebookAuthUI.9(this));
-        AppMethodBeat.o(124797);
+        com.tencent.mm.ui.base.h.a(this, 2131763138, 2131755906, new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
+        });
+        AppMethodBeat.o(127948);
         return;
       }
       if (paramInt2 == -83)
       {
-        com.tencent.mm.ui.base.h.a(this, 2131303169, 2131297087, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(this, 2131763135, 2131755906, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
         });
-        AppMethodBeat.o(124797);
+        AppMethodBeat.o(127948);
         return;
       }
       if (paramInt2 == -84)
       {
-        com.tencent.mm.ui.base.h.a(this, 2131303170, 2131297087, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(this, 2131763136, 2131755906, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
         });
-        AppMethodBeat.o(124797);
+        AppMethodBeat.o(127948);
         return;
       }
       if (paramInt2 == -85)
       {
-        com.tencent.mm.ui.base.h.a(this, 2131303168, 2131297087, new FacebookAuthUI.2(this));
-        AppMethodBeat.o(124797);
+        com.tencent.mm.ui.base.h.a(this, 2131763134, 2131755906, new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
+        });
+        AppMethodBeat.o(127948);
         return;
       }
       if (paramInt2 == -86)
       {
-        com.tencent.mm.ui.base.h.a(this, 2131303174, 2131297087, new FacebookAuthUI.3(this));
-        AppMethodBeat.o(124797);
+        com.tencent.mm.ui.base.h.a(this, 2131763140, 2131755906, new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
+        });
+        AppMethodBeat.o(127948);
         return;
       }
       if (paramInt2 == -106)
       {
-        com.tencent.mm.platformtools.z.f(this, paramString, 0);
-        AppMethodBeat.o(124797);
+        y.g(this, paramString, 0);
+        AppMethodBeat.o(127948);
         return;
       }
       if (paramInt2 == -217)
       {
-        com.tencent.mm.platformtools.z.a(this, com.tencent.mm.platformtools.e.a((s)paramm), paramInt2);
-        AppMethodBeat.o(124797);
+        y.a(this, com.tencent.mm.platformtools.e.a((s)paramn), paramInt2);
+        AppMethodBeat.o(127948);
         return;
       }
-      paramString = com.tencent.mm.h.a.kO(paramString);
+      paramString = com.tencent.mm.h.a.oG(paramString);
       if (paramString != null)
       {
         paramString.a(this, null, null);
-        AppMethodBeat.o(124797);
+        AppMethodBeat.o(127948);
         return;
       }
-      AppMethodBeat.o(124797);
+      AppMethodBeat.o(127948);
       return;
     }
-    if (paramm.getType() == 183)
+    if (paramn.getType() == 183)
     {
-      if (this.gCs != null) {
-        this.gCs.dismiss();
+      if (this.ipM != null) {
+        this.ipM.dismiss();
       }
-      int i = ((v)paramm).opType;
+      int i = ((w)paramn).opType;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         if (i == 0) {}
-        for (paramInt1 = 2131298603;; paramInt1 = 2131298598)
+        for (paramInt1 = 2131757663;; paramInt1 = 2131757658)
         {
           Toast.makeText(this, paramInt1, 1).show();
-          this.gCV = false;
-          arj();
+          this.iqp = false;
+          aJJ();
           if (i == 1)
           {
-            ((j)g.E(j.class)).YF().arF("facebookapp");
-            ((j)g.E(j.class)).bPQ().Ts("facebookapp");
-            this.gCW = true;
+            ((k)com.tencent.mm.kernel.g.ab(k.class)).apR().aIl("facebookapp");
+            ((k)com.tencent.mm.kernel.g.ab(k.class)).cOI().agw("facebookapp");
+            this.iqq = true;
           }
-          AppMethodBeat.o(124797);
+          AppMethodBeat.o(127948);
           return;
         }
       }
       if ((paramInt1 == 4) && (paramInt2 == -67))
       {
-        Toast.makeText(this, 2131299622, 1).show();
-        AppMethodBeat.o(124797);
+        Toast.makeText(this, 2131758780, 1).show();
+        AppMethodBeat.o(127948);
         return;
       }
       if ((paramInt1 == 4) && (paramInt2 == -5))
       {
         if (i == 1) {}
-        for (paramInt1 = 2131299616;; paramInt1 = 2131299625)
+        for (paramInt1 = 2131758774;; paramInt1 = 2131758783)
         {
           Toast.makeText(this, paramInt1, 1).show();
-          AppMethodBeat.o(124797);
+          AppMethodBeat.o(127948);
           return;
         }
       }
       if (paramInt2 == -106)
       {
-        com.tencent.mm.platformtools.z.f(this, paramString, 0);
-        AppMethodBeat.o(124797);
+        y.g(this, paramString, 0);
+        AppMethodBeat.o(127948);
         return;
       }
-      paramString = com.tencent.mm.h.a.kO(paramString);
+      paramString = com.tencent.mm.h.a.oG(paramString);
       if (paramString != null)
       {
         paramString.a(this, null, null);
-        AppMethodBeat.o(124797);
+        AppMethodBeat.o(127948);
         return;
       }
       if (i != 0) {
-        break label583;
+        break label585;
       }
     }
-    label583:
-    for (paramInt1 = 2131298602;; paramInt1 = 2131298597)
+    label585:
+    for (paramInt1 = 2131757662;; paramInt1 = 2131757657)
     {
       Toast.makeText(this, paramInt1, 1).show();
-      AppMethodBeat.o(124797);
+      AppMethodBeat.o(127948);
       return;
     }
   }
@@ -476,10 +556,57 @@ public class FacebookAuthUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  final class a
+    implements c.a
+  {
+    private a() {}
+    
+    public final void a(b paramb)
+    {
+      AppMethodBeat.i(127936);
+      ad.d("MicroMsg.FacebookAuthUI", "onError:" + paramb.getMessage());
+      com.tencent.mm.ui.base.h.c(FacebookAuthUI.this, paramb.getMessage(), FacebookAuthUI.this.getString(2131757657), true);
+      FacebookAuthUI.aJK();
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(582L, 3L, 1L, false);
+      AppMethodBeat.o(127936);
+    }
+    
+    public final void a(com.tencent.mm.ui.g.a.e parame)
+    {
+      AppMethodBeat.i(127935);
+      ad.d("MicroMsg.FacebookAuthUI", "onFacebookError:" + parame.HiI);
+      com.tencent.mm.ui.base.h.c(FacebookAuthUI.this, parame.getMessage(), FacebookAuthUI.this.getString(2131757657), true);
+      FacebookAuthUI.aJK();
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(582L, 2L, 1L, false);
+      AppMethodBeat.o(127935);
+    }
+    
+    public final void onCancel()
+    {
+      AppMethodBeat.i(127937);
+      ad.d("MicroMsg.FacebookAuthUI", "onCancel");
+      FacebookAuthUI.aJK();
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(582L, 4L, 1L, false);
+      AppMethodBeat.o(127937);
+    }
+    
+    public final void w(Bundle paramBundle)
+    {
+      AppMethodBeat.i(127934);
+      FacebookAuthUI.a(FacebookAuthUI.this, FacebookAuthUI.g(FacebookAuthUI.this).ifJ);
+      com.tencent.mm.kernel.g.afB().afk().set(65830, FacebookAuthUI.h(FacebookAuthUI.this));
+      if (FacebookAuthUI.g(FacebookAuthUI.this).Hiv != 0L) {
+        com.tencent.mm.kernel.g.afB().afk().set(65832, Long.valueOf(FacebookAuthUI.g(FacebookAuthUI.this).Hiv));
+      }
+      FacebookAuthUI.d(FacebookAuthUI.this);
+      AppMethodBeat.o(127934);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.FacebookAuthUI
  * JD-Core Version:    0.7.0.1
  */

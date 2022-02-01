@@ -11,9 +11,9 @@ public final class CancellationSignal
   
   public static ICancellationSignal createTransport()
   {
-    AppMethodBeat.i(12696);
+    AppMethodBeat.i(3382);
     Transport localTransport = new Transport(null);
-    AppMethodBeat.o(12696);
+    AppMethodBeat.o(3382);
     return localTransport;
   }
   
@@ -27,7 +27,7 @@ public final class CancellationSignal
   
   private void waitForCancelFinishedLocked()
   {
-    AppMethodBeat.i(12695);
+    AppMethodBeat.i(3381);
     while (this.mCancelInProgress) {
       try
       {
@@ -35,14 +35,14 @@ public final class CancellationSignal
       }
       catch (InterruptedException localInterruptedException) {}
     }
-    AppMethodBeat.o(12695);
+    AppMethodBeat.o(3381);
   }
   
   /* Error */
   public final void cancel()
   {
     // Byte code:
-    //   0: sipush 12692
+    //   0: sipush 3378
     //   3: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: monitorenter
@@ -51,7 +51,7 @@ public final class CancellationSignal
     //   12: ifeq +12 -> 24
     //   15: aload_0
     //   16: monitorexit
-    //   17: sipush 12692
+    //   17: sipush 3378
     //   20: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   23: return
     //   24: aload_0
@@ -85,20 +85,20 @@ public final class CancellationSignal
     //   74: invokevirtual 71	java/lang/Object:notifyAll	()V
     //   77: aload_0
     //   78: monitorexit
-    //   79: sipush 12692
+    //   79: sipush 3378
     //   82: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   85: return
     //   86: astore_1
     //   87: aload_0
     //   88: monitorexit
-    //   89: sipush 12692
+    //   89: sipush 3378
     //   92: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   95: aload_1
     //   96: athrow
     //   97: astore_1
     //   98: aload_0
     //   99: monitorexit
-    //   100: sipush 12692
+    //   100: sipush 3378
     //   103: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   106: aload_1
     //   107: athrow
@@ -112,14 +112,14 @@ public final class CancellationSignal
     //   117: invokevirtual 71	java/lang/Object:notifyAll	()V
     //   120: aload_0
     //   121: monitorexit
-    //   122: sipush 12692
+    //   122: sipush 3378
     //   125: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   128: aload_1
     //   129: athrow
     //   130: astore_1
     //   131: aload_0
     //   132: monitorexit
-    //   133: sipush 12692
+    //   133: sipush 3378
     //   136: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   139: aload_1
     //   140: athrow
@@ -161,7 +161,7 @@ public final class CancellationSignal
   
   public final void setOnCancelListener(OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(12693);
+    AppMethodBeat.i(3379);
     try
     {
       waitForCancelFinishedLocked();
@@ -173,12 +173,12 @@ public final class CancellationSignal
         return;
       }
       paramOnCancelListener.onCancel();
-      AppMethodBeat.o(12693);
+      AppMethodBeat.o(3379);
       return;
     }
     finally
     {
-      AppMethodBeat.o(12693);
+      AppMethodBeat.o(3379);
     }
   }
   
@@ -186,7 +186,7 @@ public final class CancellationSignal
   public final void setRemote(ICancellationSignal paramICancellationSignal)
   {
     // Byte code:
-    //   0: sipush 12694
+    //   0: sipush 3380
     //   3: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: monitorenter
@@ -198,7 +198,7 @@ public final class CancellationSignal
     //   17: if_acmpne +12 -> 29
     //   20: aload_0
     //   21: monitorexit
-    //   22: sipush 12694
+    //   22: sipush 3380
     //   25: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: return
     //   29: aload_0
@@ -211,25 +211,25 @@ public final class CancellationSignal
     //   42: ifnonnull +12 -> 54
     //   45: aload_0
     //   46: monitorexit
-    //   47: sipush 12694
+    //   47: sipush 3380
     //   50: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   53: return
     //   54: aload_0
     //   55: monitorexit
     //   56: aload_1
     //   57: invokeinterface 68 1 0
-    //   62: sipush 12694
+    //   62: sipush 3380
     //   65: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   68: return
     //   69: astore_1
     //   70: aload_0
     //   71: monitorexit
-    //   72: sipush 12694
+    //   72: sipush 3380
     //   75: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   78: aload_1
     //   79: athrow
     //   80: astore_1
-    //   81: sipush 12694
+    //   81: sipush 3380
     //   84: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   87: return
     // Local variable table:
@@ -248,14 +248,14 @@ public final class CancellationSignal
   
   public final void throwIfCanceled()
   {
-    AppMethodBeat.i(12691);
+    AppMethodBeat.i(3377);
     if (isCanceled())
     {
       OperationCanceledException localOperationCanceledException = new OperationCanceledException();
-      AppMethodBeat.o(12691);
+      AppMethodBeat.o(3377);
       throw localOperationCanceledException;
     }
-    AppMethodBeat.o(12691);
+    AppMethodBeat.o(3377);
   }
   
   public static abstract interface OnCancelListener
@@ -270,16 +270,16 @@ public final class CancellationSignal
     
     private Transport()
     {
-      AppMethodBeat.i(12689);
+      AppMethodBeat.i(3375);
       this.mCancellationSignal = new CancellationSignal();
-      AppMethodBeat.o(12689);
+      AppMethodBeat.o(3375);
     }
     
     public final void cancel()
     {
-      AppMethodBeat.i(12690);
+      AppMethodBeat.i(3376);
       this.mCancellationSignal.cancel();
-      AppMethodBeat.o(12690);
+      AppMethodBeat.o(3376);
     }
   }
 }

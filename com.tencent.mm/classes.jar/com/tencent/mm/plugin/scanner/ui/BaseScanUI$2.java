@@ -1,27 +1,26 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
 
 final class BaseScanUI$2
-  implements DialogInterface.OnClickListener
+  implements n.c
 {
   BaseScanUI$2(BaseScanUI paramBaseScanUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onCreateMMMenu(l paraml)
   {
-    AppMethodBeat.i(80912);
-    this.qwI.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
-    BaseScanUI.b(this.qwI, true);
-    this.qwI.finish();
-    AppMethodBeat.o(80912);
+    AppMethodBeat.i(169960);
+    if (paraml.eSQ()) {
+      paraml.jj(102, 2131755150);
+    }
+    AppMethodBeat.o(169960);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.BaseScanUI.2
  * JD-Core Version:    0.7.0.1
  */

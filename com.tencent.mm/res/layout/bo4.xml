@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j5"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/e4" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ix">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/buu" android:contentDescription="@string/ge" style="@style/iv" />
+                    <ImageView android:layout_gravity="center" android:id="@id/bv0" android:background="@null" android:visibility="gone" android:src="@drawable/ar4" android:scaleType="centerInside" style="@style/iv" />
+                </FrameLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dz">
+                    <TextView android:ellipsize="end" android:id="@id/bwa" android:text="{title}" android:maxLines="2" style="@style/j2" />
+                </LinearLayout>
+            </LinearLayout>
+            <include layout="@layout/a2x" />
+            <include layout="@layout/a2w" />
+        </LinearLayout>
+        <include layout="@layout/a2u" />
+    </LinearLayout>
+</FrameLayout>

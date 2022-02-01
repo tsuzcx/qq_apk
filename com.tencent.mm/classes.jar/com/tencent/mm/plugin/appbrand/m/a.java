@@ -1,71 +1,69 @@
 package com.tencent.mm.plugin.appbrand.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.j;
-import java.util.ArrayList;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.LinkedList;
+import java.util.List;
 
-public class a
-  implements j
+final class a
 {
-  public boolean bCW;
-  public ArrayList<String> bDA;
-  public ArrayList<String> bDB;
-  public ArrayList<String> bDC;
-  public ArrayList<String> bDD;
-  public int bDq;
-  public int bDr;
-  public int bDs;
-  public boolean bDv;
-  public boolean bDw;
-  public ArrayList<String> bDz;
-  public int hhD;
-  public boolean isl;
-  public boolean ism;
-  public int isn;
-  public int iso;
-  public int isp;
-  public int isq;
-  public int isr;
-  public ArrayList<String> iss;
-  public ArrayList<String> ist;
-  public ArrayList<byte[]> isu;
-  public String isv;
-  public int isw;
-  public int mode;
-  public String referer;
+  static final String[] jtV;
   
-  public a()
+  static
   {
-    AppMethodBeat.i(108126);
-    this.isl = false;
-    this.ism = false;
-    this.isn = 60000;
-    this.iso = 60000;
-    this.isp = 60000;
-    this.isq = 60000;
-    this.bDq = 2;
-    this.isr = 2;
-    this.bDr = 2;
-    this.bDs = 2;
-    this.bDz = new ArrayList();
-    this.bDA = new ArrayList();
-    this.bDB = new ArrayList();
-    this.bDC = new ArrayList();
-    this.bDD = new ArrayList();
-    this.iss = new ArrayList();
-    this.ist = new ArrayList();
-    this.isu = new ArrayList();
-    this.hhD = 10;
-    this.bDv = false;
-    this.isv = "Luggage Network Extension";
-    this.referer = "";
-    this.bDw = false;
-    AppMethodBeat.o(108126);
+    AppMethodBeat.i(138799);
+    LinkedList localLinkedList = new LinkedList();
+    Field[] arrayOfField = android.support.d.a.class.getDeclaredFields();
+    int j = arrayOfField.length;
+    int i = 0;
+    for (;;)
+    {
+      Field localField;
+      if (i < j) {
+        localField = arrayOfField[i];
+      }
+      try
+      {
+        if ((Modifier.isFinal(localField.getModifiers())) && (Modifier.isStatic(localField.getModifiers())) && (localField.getName().startsWith("TAG_"))) {
+          localLinkedList.add((String)localField.get(null));
+        }
+        label85:
+        i += 1;
+        continue;
+        jtV = (String[])localLinkedList.toArray(new String[localLinkedList.size()]);
+        AppMethodBeat.o(138799);
+        return;
+      }
+      catch (Exception localException)
+      {
+        break label85;
+      }
+    }
+  }
+  
+  static void a(android.support.d.a parama1, android.support.d.a parama2)
+  {
+    AppMethodBeat.i(138798);
+    String[] arrayOfString = jtV;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str1 = arrayOfString[i];
+      String str2 = parama1.getAttribute(str1);
+      if (str2 != null) {
+        parama2.setAttribute(str1, str2);
+      }
+      i += 1;
+    }
+    parama2.saveAttributes();
+    AppMethodBeat.o(138798);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m.a
  * JD-Core Version:    0.7.0.1
  */

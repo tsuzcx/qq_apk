@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.widget.SnsComment2LinePreloadTextView android:id="@id/enh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <com.tencent.mm.plugin.sns.ui.widget.SnsCommentPreloadTextView android:id="@id/eni" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/tc" android:id="@id/enj" android:background="@drawable/a2c" android:paddingLeft="@dimen/dl" android:paddingRight="@dimen/dl" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eom" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true" />
-</merge>
+<RelativeLayout android:background="@drawable/oc" android:layout_width="fill_parent" android:layout_height="@dimen/i9" android:minHeight="@dimen/i9" android:paddingStart="@dimen/jn" android:paddingEnd="@dimen/jn"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/efh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_alignParentEnd="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/efi" android:padding="3.0dip" android:visibility="invisible" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@raw/big_select_tick" android:layout_marginStart="@dimen/jn" app:iconColor="@color/a_j" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/efe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="5.0dip" android:layout_toStartOf="@id/efh">
+        <TextView android:textColor="@color/y4" android:id="@id/efg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dbw" style="@style/m3" />
+        <TextView android:textColor="@color/s5" android:id="@id/eff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" style="@style/m2" />
+    </LinearLayout>
+</RelativeLayout>

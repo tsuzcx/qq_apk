@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/z1" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:background="#cc000000" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="14.0dip" />
-    <LinearLayout android:gravity="bottom" style="@style/rf">
-        <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:id="@id/a53" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{header}" />
+    <ImageView android:id="@id/bdj" android:background="@color/bn" android:layout_width="fill_parent" android:layout_height="@dimen/id" android:layout_alignParentTop="true" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/e6p" android:paddingLeft="14.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/bdj">
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/e6o" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="48.0dip" android:maxLines="2" android:layout_weight="1.0" />
+        <ImageButton android:gravity="center|right" android:id="@id/e6j" android:background="@color/a7c" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@raw/delete_white_icon" android:scaleType="center" />
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

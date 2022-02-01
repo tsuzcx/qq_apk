@@ -6,40 +6,41 @@ import com.tencent.mm.plugin.backup.b.f.b;
 import com.tencent.mm.plugin.backup.b.g;
 import com.tencent.mm.plugin.backup.c.b.a;
 import com.tencent.mm.plugin.backup.c.c;
+import com.tencent.mm.plugin.backup.h.d;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
   implements b.a
 {
-  public long jAP;
-  private LinkedList<f.b> jAQ;
-  private LinkedList<f.b> jAR;
-  private LinkedList<f.b> jAS;
-  public boolean jAT;
-  com.tencent.mm.plugin.backup.c.b jBP;
-  public boolean jDR;
-  public b.a jDS;
   private Object lock;
+  public long msm;
+  private LinkedList<f.b> msn;
+  private LinkedList<f.b> mso;
+  private LinkedList<f.b> msp;
+  public boolean msq;
+  com.tencent.mm.plugin.backup.c.b mtk;
+  public boolean mvl;
+  public b.a mvm;
   
   public a()
   {
-    AppMethodBeat.i(17478);
-    this.jDR = false;
+    AppMethodBeat.i(21537);
+    this.mvl = false;
     this.lock = new Object();
-    this.jAQ = null;
-    this.jAR = null;
-    this.jAS = null;
-    this.jAT = false;
-    AppMethodBeat.o(17478);
+    this.msn = null;
+    this.mso = null;
+    this.msp = null;
+    this.msq = false;
+    AppMethodBeat.o(21537);
   }
   
-  private static long E(LinkedList<f.b> paramLinkedList)
+  private static long F(LinkedList<f.b> paramLinkedList)
   {
-    AppMethodBeat.i(17479);
+    AppMethodBeat.i(21538);
     long l1 = 0L;
     long l2 = l1;
     if (paramLinkedList != null)
@@ -47,16 +48,16 @@ public final class a
       l2 = l1;
       if (paramLinkedList.size() > 0)
       {
-        l1 = ((f.b)paramLinkedList.get(0)).jzb;
+        l1 = ((f.b)paramLinkedList.get(0)).mqy;
         paramLinkedList = paramLinkedList.iterator();
         l2 = l1;
         if (paramLinkedList.hasNext())
         {
           f.b localb = (f.b)paramLinkedList.next();
-          if (l1 <= localb.jzb) {
+          if (l1 <= localb.mqy) {
             break label89;
           }
-          l1 = localb.jzb;
+          l1 = localb.mqy;
         }
       }
     }
@@ -64,91 +65,91 @@ public final class a
     for (;;)
     {
       break;
-      AppMethodBeat.o(17479);
+      AppMethodBeat.o(21538);
       return l2;
     }
   }
   
-  private LinkedList<f.b> aTo()
+  private LinkedList<f.b> bwz()
   {
-    AppMethodBeat.i(17484);
-    if (this.jAS == null) {
-      this.jAS = new LinkedList();
+    AppMethodBeat.i(21543);
+    if (this.msp == null) {
+      this.msp = new LinkedList();
     }
-    LinkedList localLinkedList = this.jAS;
-    AppMethodBeat.o(17484);
+    LinkedList localLinkedList = this.msp;
+    AppMethodBeat.o(21543);
     return localLinkedList;
   }
   
-  public final void B(LinkedList<f.b> paramLinkedList)
+  public final void C(LinkedList<f.b> paramLinkedList)
   {
-    AppMethodBeat.i(17486);
+    AppMethodBeat.i(21545);
     if (paramLinkedList == null) {}
     for (int i = -1;; i = paramLinkedList.size())
     {
-      ab.i("MicroMsg.BackupPcChooseServer", "onCalcuConvFinish, conv size[%d]", new Object[] { Integer.valueOf(i) });
-      this.jAT = true;
+      ad.i("MicroMsg.BackupPcChooseServer", "onCalcuConvFinish, conv size[%d]", new Object[] { Integer.valueOf(i) });
+      this.msq = true;
       if ((paramLinkedList != null) && (paramLinkedList.size() != 0)) {
         break;
       }
-      if (this.jDS != null) {
-        this.jDS.B(paramLinkedList);
+      if (this.mvm != null) {
+        this.mvm.C(paramLinkedList);
       }
-      if (this.jDR)
+      if (this.mvl)
       {
-        paramLinkedList = b.aTX().aTZ();
-        e.jEu = true;
-        paramLinkedList.jBQ.aTa();
-        b.aTX().aTs().stop();
-        b.aTX().aSL().jyN = -23;
-        b.aTX().aTZ().rl(-23);
+        paramLinkedList = b.bxe().bxg();
+        e.mvO = true;
+        paramLinkedList.mtl.bwm();
+        b.bxe().bwD().stop();
+        b.bxe().bvT().mqj = -23;
+        b.bxe().bxg().sm(-23);
       }
-      AppMethodBeat.o(17486);
+      AppMethodBeat.o(21545);
       return;
     }
-    this.jAQ = new LinkedList(paramLinkedList);
-    this.jAP = E(this.jAQ);
-    b.aTX();
-    SharedPreferences localSharedPreferences = b.aSQ();
-    a(localSharedPreferences.getInt("BACKUP_PC_CHOOSE_SELECT_TIME_MODE", 0), localSharedPreferences.getLong("BACKUP_PC_CHOOSE_SELECT_START_TIME", 0L), localSharedPreferences.getLong("BACKUP_PC_CHOOSE_SELECT_END_TIME", 0L), aTm());
-    ab.i("MicroMsg.BackupPcChooseServer", "onCalcuConvFinish, calAllConvNames size[%d], showConvNames size[%d]", new Object[] { Integer.valueOf(paramLinkedList.size()), Integer.valueOf(aTn().size()) });
-    if (this.jDR)
+    this.msn = new LinkedList(paramLinkedList);
+    this.msm = F(this.msn);
+    b.bxe();
+    SharedPreferences localSharedPreferences = b.bvY();
+    a(localSharedPreferences.getInt("BACKUP_PC_CHOOSE_SELECT_TIME_MODE", 0), localSharedPreferences.getLong("BACKUP_PC_CHOOSE_SELECT_START_TIME", 0L), localSharedPreferences.getLong("BACKUP_PC_CHOOSE_SELECT_END_TIME", 0L), bwx());
+    ad.i("MicroMsg.BackupPcChooseServer", "onCalcuConvFinish, calAllConvNames size[%d], showConvNames size[%d]", new Object[] { Integer.valueOf(paramLinkedList.size()), Integer.valueOf(bwy().size()) });
+    if (this.mvl)
     {
-      F(aTn());
-      b.aTX().aTZ().G(g.A(aTo()));
-      b.aTX().aTZ().hJ(aTo().size());
+      G(bwy());
+      b.bxe().bxg().H(g.B(bwz()));
+      b.bxe().bxg().nq(bwz().size());
     }
-    if (this.jDS != null) {
-      this.jDS.B(aTn());
+    if (this.mvm != null) {
+      this.mvm.C(bwy());
     }
-    AppMethodBeat.o(17486);
+    AppMethodBeat.o(21545);
   }
   
-  public final void F(LinkedList<f.b> paramLinkedList)
+  public final void G(LinkedList<f.b> paramLinkedList)
   {
-    AppMethodBeat.i(17483);
+    AppMethodBeat.i(21542);
     if ((paramLinkedList == null) || (paramLinkedList.size() == 0))
     {
-      this.jAS = new LinkedList();
-      AppMethodBeat.o(17483);
+      this.msp = new LinkedList();
+      AppMethodBeat.o(21542);
       return;
     }
-    this.jAS = new LinkedList(paramLinkedList.subList(paramLinkedList.size() * 3 / 4, paramLinkedList.size()));
-    this.jAS.addAll(paramLinkedList.subList(0, paramLinkedList.size() * 3 / 4));
-    AppMethodBeat.o(17483);
+    this.msp = new LinkedList(paramLinkedList.subList(paramLinkedList.size() * 3 / 4, paramLinkedList.size()));
+    this.msp.addAll(paramLinkedList.subList(0, paramLinkedList.size() * 3 / 4));
+    AppMethodBeat.o(21542);
   }
   
   public final void a(int paramInt, long paramLong1, long paramLong2, LinkedList<f.b> paramLinkedList)
   {
-    AppMethodBeat.i(17482);
+    AppMethodBeat.i(21541);
     if (paramInt == 0)
     {
-      this.jAR = new LinkedList(paramLinkedList);
-      AppMethodBeat.o(17482);
+      this.mso = new LinkedList(paramLinkedList);
+      AppMethodBeat.o(21541);
       return;
     }
-    if (this.jAR == null) {
-      this.jAR = new LinkedList();
+    if (this.mso == null) {
+      this.mso = new LinkedList();
     }
     for (;;)
     {
@@ -156,75 +157,87 @@ public final class a
       while (paramLinkedList.hasNext())
       {
         f.b localb = (f.b)paramLinkedList.next();
-        if (com.tencent.mm.plugin.backup.h.d.aUK().aUL().YC().C(localb.jza, paramLong1, paramLong2) > 0) {
-          this.jAR.add(localb);
+        if (d.bxT().bxU().apO().H(localb.mqx, paramLong1, paramLong2) > 0) {
+          this.mso.add(localb);
         }
       }
-      this.jAR.clear();
+      this.mso.clear();
     }
-    AppMethodBeat.o(17482);
+    AppMethodBeat.o(21541);
   }
   
-  public final void aTW()
+  public final LinkedList<f.b> bwx()
   {
-    this.jAQ = null;
-    this.jAS = null;
-    this.jAR = null;
-    this.jAT = false;
-  }
-  
-  public final LinkedList<f.b> aTm()
-  {
-    AppMethodBeat.i(17480);
-    if (this.jAQ == null) {
-      this.jAQ = new LinkedList();
+    AppMethodBeat.i(21539);
+    if (this.msn == null) {
+      this.msn = new LinkedList();
     }
-    LinkedList localLinkedList = this.jAQ;
-    AppMethodBeat.o(17480);
+    LinkedList localLinkedList = this.msn;
+    AppMethodBeat.o(21539);
     return localLinkedList;
   }
   
-  public final LinkedList<f.b> aTn()
+  public final LinkedList<f.b> bwy()
   {
-    AppMethodBeat.i(17481);
-    if (this.jAR == null) {
-      this.jAR = new LinkedList();
+    AppMethodBeat.i(21540);
+    if (this.mso == null) {
+      this.mso = new LinkedList();
     }
-    LinkedList localLinkedList = this.jAR;
-    AppMethodBeat.o(17481);
+    LinkedList localLinkedList = this.mso;
+    AppMethodBeat.o(21540);
     return localLinkedList;
+  }
+  
+  public final void bxd()
+  {
+    this.msn = null;
+    this.msp = null;
+    this.mso = null;
+    this.msq = false;
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(17487);
-    ab.i("MicroMsg.BackupPcChooseServer", "cancel, stack:%s", new Object[] { bo.dtY() });
+    AppMethodBeat.i(21546);
+    ad.i("MicroMsg.BackupPcChooseServer", "cancel, stack:%s", new Object[] { bt.eGN() });
     synchronized (this.lock)
     {
-      if (this.jBP != null)
+      if (this.mtk != null)
       {
-        this.jBP.cancel();
-        this.jBP = null;
+        this.mtk.cancel();
+        this.mtk = null;
       }
-      this.jAT = false;
-      AppMethodBeat.o(17487);
+      this.msq = false;
+      AppMethodBeat.o(21546);
       return;
     }
   }
   
-  public final void fB(boolean paramBoolean)
+  public final void hV(boolean paramBoolean)
   {
-    AppMethodBeat.i(17485);
-    ab.i("MicroMsg.BackupPcChooseServer", "calculateToChoose, isChooseAllRecords[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.jDR = paramBoolean;
-    com.tencent.mm.plugin.backup.h.d.aUK().aUN();
-    com.tencent.mm.sdk.g.d.post(new a.1(this), "BackupPcChooseServer.calculateToChoose");
-    AppMethodBeat.o(17485);
+    AppMethodBeat.i(21544);
+    ad.i("MicroMsg.BackupPcChooseServer", "calculateToChoose, isChooseAllRecords[%b]", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.mvl = paramBoolean;
+    d.bxT().bxW();
+    com.tencent.mm.sdk.g.b.c(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(21536);
+        if (a.this.mtk != null) {
+          a.this.mtk.cancel();
+        }
+        a.this.mtk = new com.tencent.mm.plugin.backup.c.b();
+        a.this.mtk.a(a.this);
+        AppMethodBeat.o(21536);
+      }
+    }, "BackupPcChooseServer.calculateToChoose");
+    AppMethodBeat.o(21544);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backuppcmodel.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,94 +6,62 @@ import com.tencent.mm.plugin.report.a;
 public final class at
   extends a
 {
-  private long cOA = 0L;
-  private String cVF = "";
-  public long cVG = 0L;
-  private long cVH = 0L;
-  private long cVa = 0L;
-  private long cVb = 0L;
+  public long dMJ;
+  public long dMK = 0L;
+  public long dML = 0L;
+  public long dMM = 0L;
+  public String dMN = "";
+  public String dMO = "";
   
-  public final String Ff()
+  public final String PV()
   {
-    AppMethodBeat.i(108850);
+    AppMethodBeat.i(192592);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.cOA);
+    ((StringBuffer)localObject).append(this.dMJ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVa);
+    ((StringBuffer)localObject).append(this.dMK);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVF);
+    ((StringBuffer)localObject).append(this.dML);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVG);
+    ((StringBuffer)localObject).append(this.dMM);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVb);
+    ((StringBuffer)localObject).append(this.dMN);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.cVH);
+    ((StringBuffer)localObject).append(this.dMO);
     localObject = ((StringBuffer)localObject).toString();
-    Yp((String)localObject);
-    AppMethodBeat.o(108850);
+    ams((String)localObject);
+    AppMethodBeat.o(192592);
     return localObject;
   }
   
-  public final String Fg()
+  public final String PW()
   {
-    AppMethodBeat.i(108851);
+    AppMethodBeat.i(192593);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("NetType:").append(this.cOA);
+    ((StringBuffer)localObject).append("RecomdSuccess:").append(this.dMJ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.cVa);
+    ((StringBuffer)localObject).append("RecomdFail:").append(this.dMK);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SourceUserName:").append(this.cVF);
+    ((StringBuffer)localObject).append("otherSuccess:").append(this.dML);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SourceContactType:").append(this.cVG);
+    ((StringBuffer)localObject).append("otherFail:").append(this.dMM);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasUnreadStoryTips:").append(this.cVb);
+    ((StringBuffer)localObject).append("sucRoomList:").append(this.dMN);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HasEnterPreview:").append(this.cVH);
+    ((StringBuffer)localObject).append("ticketId:").append(this.dMO);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(108851);
+    AppMethodBeat.o(192593);
     return localObject;
-  }
-  
-  public final at Fv()
-  {
-    this.cVb = 1L;
-    return this;
-  }
-  
-  public final at Fw()
-  {
-    this.cVH = 1L;
-    return this;
-  }
-  
-  public final at bW(long paramLong)
-  {
-    this.cOA = paramLong;
-    return this;
-  }
-  
-  public final at bX(long paramLong)
-  {
-    this.cVa = paramLong;
-    return this;
   }
   
   public final int getId()
   {
-    return 16659;
-  }
-  
-  public final at gf(String paramString)
-  {
-    AppMethodBeat.i(108849);
-    this.cVF = t("SourceUserName", paramString, true);
-    AppMethodBeat.o(108849);
-    return this;
+    return 19451;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.at
  * JD-Core Version:    0.7.0.1
  */

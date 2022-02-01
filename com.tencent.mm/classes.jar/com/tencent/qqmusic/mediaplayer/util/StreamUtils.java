@@ -7,10 +7,10 @@ public class StreamUtils
 {
   public static long skipForBufferStream(InputStream paramInputStream, long paramLong)
   {
-    AppMethodBeat.i(128377);
+    AppMethodBeat.i(114157);
     if ((paramInputStream == null) || (paramLong <= 0L))
     {
-      AppMethodBeat.o(128377);
+      AppMethodBeat.o(114157);
       return 0L;
     }
     long l2 = paramLong;
@@ -29,16 +29,16 @@ public class StreamUtils
     } while (l4 < l3);
     if (l4 > 0L)
     {
-      AppMethodBeat.o(128377);
+      AppMethodBeat.o(114157);
       return paramLong;
     }
-    AppMethodBeat.o(128377);
+    AppMethodBeat.o(114157);
     return paramLong - l3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.util.StreamUtils
  * JD-Core Version:    0.7.0.1
  */

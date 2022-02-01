@@ -2,25 +2,25 @@ package com.tencent.xweb.a;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.r;
+import com.tencent.xweb.WebResourceRequest;
 import java.util.Map;
 
 public final class a
 {
-  r BEN;
+  WebResourceRequest IOf;
   
-  public a(r paramr)
+  public a(WebResourceRequest paramWebResourceRequest)
   {
-    this.BEN = paramr;
+    this.IOf = paramWebResourceRequest;
   }
   
   public final Bundle getBundle()
   {
-    AppMethodBeat.i(84556);
+    AppMethodBeat.i(153550);
     Object localObject;
-    if ((this.BEN != null) && (this.BEN.getRequestHeaders() != null) && (!this.BEN.isForMainFrame()) && (this.BEN.getRequestHeaders().containsKey("Accept")))
+    if ((this.IOf != null) && (this.IOf.getRequestHeaders() != null) && (!this.IOf.isForMainFrame()) && (this.IOf.getRequestHeaders().containsKey("Accept")))
     {
-      localObject = (String)this.BEN.getRequestHeaders().get("Accept");
+      localObject = (String)this.IOf.getRequestHeaders().get("Accept");
       if ((localObject == null) || (!((String)localObject).startsWith("text/html"))) {}
     }
     for (int i = 1;; i = 0)
@@ -29,17 +29,17 @@ public final class a
       {
         localObject = new Bundle();
         ((Bundle)localObject).putInt("resourceType", 1);
-        AppMethodBeat.o(84556);
+        AppMethodBeat.o(153550);
         return localObject;
       }
-      AppMethodBeat.o(84556);
+      AppMethodBeat.o(153550);
       return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.a.a
  * JD-Core Version:    0.7.0.1
  */

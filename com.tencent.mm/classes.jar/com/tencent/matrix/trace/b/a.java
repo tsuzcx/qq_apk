@@ -1,12 +1,6 @@
 package com.tencent.matrix.trace.b;
 
-public final class a
-{
-  public static enum a
-  {
-    private a() {}
-  }
-}
+public final class a {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

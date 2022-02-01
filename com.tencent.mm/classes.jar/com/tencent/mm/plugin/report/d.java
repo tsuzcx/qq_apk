@@ -10,15 +10,17 @@ public abstract interface d
   
   public abstract void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2);
   
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object... paramVarArgs);
+  
   public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, Object... paramVarArgs);
   
   public abstract void b(ArrayList<IDKey> paramArrayList, boolean paramBoolean);
   
-  public abstract void d(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean);
+  public abstract void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean);
   
-  public abstract void e(int paramInt, Object... paramVarArgs);
+  public abstract void e(String paramString1, String paramString2, Map<String, Object> paramMap);
   
-  public abstract void g(String paramString1, String paramString2, Map<String, Object> paramMap);
+  public abstract void f(int paramInt, Object... paramVarArgs);
   
   public abstract void idkeyStat(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean);
   

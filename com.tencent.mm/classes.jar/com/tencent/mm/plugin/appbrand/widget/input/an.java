@@ -12,76 +12,93 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class an
   implements View.OnTouchListener
 {
-  private static final int Fx;
-  private final Handler joH;
-  private float joI;
-  private float joJ;
-  private boolean joK;
+  private static final int Mv;
+  private float meA;
+  private float meB;
+  private boolean meC;
+  private final Handler mez;
   
   static
   {
-    AppMethodBeat.i(123871);
-    Fx = ViewConfiguration.getLongPressTimeout();
-    AppMethodBeat.o(123871);
+    AppMethodBeat.i(136611);
+    Mv = ViewConfiguration.getLongPressTimeout();
+    AppMethodBeat.o(136611);
   }
   
   public an()
   {
-    AppMethodBeat.i(123867);
-    this.joH = new an.1(this, Looper.getMainLooper());
-    this.joK = false;
-    AppMethodBeat.o(123867);
+    AppMethodBeat.i(136607);
+    this.mez = new Handler(Looper.getMainLooper())
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(136606);
+        switch (paramAnonymousMessage.what)
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(136606);
+          return;
+          if (an.a(an.this)) {
+            sendMessageDelayed(Message.obtain(an.b(an.this), 2), 50L);
+          }
+        }
+      }
+    };
+    this.meC = false;
+    AppMethodBeat.o(136607);
   }
   
-  private void cX(View paramView)
+  private void dn(View paramView)
   {
-    AppMethodBeat.i(123869);
+    AppMethodBeat.i(136609);
     paramView.setPressed(false);
-    this.joK = false;
-    this.joH.removeMessages(1);
-    this.joH.removeMessages(2);
-    AppMethodBeat.o(123869);
+    this.meC = false;
+    this.mez.removeMessages(1);
+    this.mez.removeMessages(2);
+    AppMethodBeat.o(136609);
   }
   
-  protected void aEX() {}
+  protected void bcn() {}
   
-  protected void aRf() {}
+  protected void btw() {}
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(123868);
+    AppMethodBeat.i(136608);
     switch (paramMotionEvent.getActionMasked())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(123868);
+      AppMethodBeat.o(136608);
       return true;
-      cX(paramView);
+      dn(paramView);
       continue;
-      if ((!this.joK) && (this.joH.hasMessages(1))) {
-        aEX();
+      if ((!this.meC) && (this.mez.hasMessages(1))) {
+        bcn();
       }
-      cX(paramView);
+      dn(paramView);
       continue;
       int i = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
       if ((-i > f1) || (f1 > paramView.getWidth() + i) || (-i > f2) || (f2 > i + paramView.getHeight()))
       {
-        this.joK = true;
+        this.meC = true;
         continue;
         paramView.setPressed(true);
-        this.joH.sendMessageDelayed(Message.obtain(this.joH, 1), Fx);
-        this.joI = paramMotionEvent.getX();
-        this.joJ = paramMotionEvent.getY();
+        this.mez.sendMessageDelayed(Message.obtain(this.mez, 1), Mv);
+        this.meA = paramMotionEvent.getX();
+        this.meB = paramMotionEvent.getY();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.an
  * JD-Core Version:    0.7.0.1
  */

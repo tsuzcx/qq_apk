@@ -25,20 +25,20 @@ public final class zzau
   
   public final void begin()
   {
-    AppMethodBeat.i(60761);
+    AppMethodBeat.i(11253);
     Iterator localIterator = this.zzhf.zzil.values().iterator();
     while (localIterator.hasNext()) {
       ((Api.Client)localIterator.next()).disconnect();
     }
     this.zzhf.zzfq.zzim = Collections.emptySet();
-    AppMethodBeat.o(60761);
+    AppMethodBeat.o(11253);
   }
   
   public final void connect()
   {
-    AppMethodBeat.i(60764);
+    AppMethodBeat.i(11256);
     this.zzhf.zzbc();
-    AppMethodBeat.o(60764);
+    AppMethodBeat.o(11256);
   }
   
   public final boolean disconnect()
@@ -48,17 +48,17 @@ public final class zzau
   
   public final <A extends Api.AnyClient, R extends Result, T extends BaseImplementation.ApiMethodImpl<R, A>> T enqueue(T paramT)
   {
-    AppMethodBeat.i(60762);
+    AppMethodBeat.i(11254);
     this.zzhf.zzfq.zzgo.add(paramT);
-    AppMethodBeat.o(60762);
+    AppMethodBeat.o(11254);
     return paramT;
   }
   
   public final <A extends Api.AnyClient, T extends BaseImplementation.ApiMethodImpl<? extends Result, A>> T execute(T paramT)
   {
-    AppMethodBeat.i(60763);
+    AppMethodBeat.i(11255);
     paramT = new IllegalStateException("GoogleApiClient is not connected yet.");
-    AppMethodBeat.o(60763);
+    AppMethodBeat.o(11255);
     throw paramT;
   }
   

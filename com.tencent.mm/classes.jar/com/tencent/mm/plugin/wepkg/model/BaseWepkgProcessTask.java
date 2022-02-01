@@ -1,23 +1,35 @@
 package com.tencent.mm.plugin.wepkg.model;
 
 import android.os.Parcel;
-import com.tencent.mm.plugin.wepkg.ipc.WepkgMainProcessTask;
+import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 
 public abstract class BaseWepkgProcessTask
-  extends WepkgMainProcessTask
+  extends MainProcessTask
 {
-  public boolean cmX = false;
+  public boolean BIv = false;
+  public boolean result = false;
   
   public abstract void a(Parcel paramParcel, int paramInt);
   
-  public final void f(Parcel paramParcel)
+  public final void e(Parcel paramParcel)
   {
-    if (paramParcel.readByte() != 0) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool2 = true;
+    if (paramParcel.readByte() != 0)
     {
-      this.cmX = bool;
+      bool1 = true;
+      this.result = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label41;
+      }
+    }
+    label41:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.BIv = bool1;
       m(paramParcel);
       return;
+      bool1 = false;
+      break;
     }
   }
   
@@ -25,18 +37,29 @@ public abstract class BaseWepkgProcessTask
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.cmX) {}
-    for (int i = 1;; i = 0)
+    int j = 1;
+    if (this.result)
+    {
+      i = 1;
+      paramParcel.writeByte((byte)i);
+      if (!this.BIv) {
+        break label46;
+      }
+    }
+    label46:
+    for (int i = j;; i = 0)
     {
       paramParcel.writeByte((byte)i);
       a(paramParcel, paramInt);
       return;
+      i = 0;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.model.BaseWepkgProcessTask
  * JD-Core Version:    0.7.0.1
  */

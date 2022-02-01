@@ -9,35 +9,35 @@ import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.e;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.aj.m;
-import com.tencent.mm.bx.a.a.a;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ak.e;
+import com.tencent.mm.ak.f.c;
+import com.tencent.mm.ak.p;
+import com.tencent.mm.am.n;
+import com.tencent.mm.by.a.a.a;
+import com.tencent.mm.model.az;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.tools.MMGestureGallery.f;
 
 @com.tencent.mm.ui.base.a(3)
 public class ProfileHdHeadImg
   extends MMActivity
 {
-  private String hkq = null;
-  private GetHdHeadImageGalleryView qGl;
-  private e qGm;
+  private String BWg = null;
+  private String dkD = null;
   private String username = null;
-  private String vRz = null;
+  private GetHdHeadImageGalleryView weE;
+  private com.tencent.mm.ak.f weF;
   
   private void d(Bitmap paramBitmap, String paramString)
   {
-    AppMethodBeat.i(27528);
+    AppMethodBeat.i(31230);
     try
     {
-      Object localObject = com.tencent.mm.sdk.platformtools.d.a(paramBitmap, false, 0.1F);
-      a.a.yio.p(this.username, (Bitmap)localObject);
+      Object localObject = com.tencent.mm.sdk.platformtools.f.a(paramBitmap, false, 0.1F);
+      a.a.EKY.q(this.username, (Bitmap)localObject);
       if (paramBitmap.getWidth() < 480)
       {
         float f = 480 / paramBitmap.getWidth();
@@ -45,89 +45,127 @@ public class ProfileHdHeadImg
         ((Matrix)localObject).postScale(f, f);
         localObject = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, true);
       }
-      ab.d("MicroMsg.ProfileHdHeadImg", "dkhdbm old[%d %d] new[%d %d]", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Integer.valueOf(((Bitmap)localObject).getWidth()), Integer.valueOf(((Bitmap)localObject).getHeight()) });
-      this.qGl.setHdHeadImage((Bitmap)localObject);
-      this.qGl.setHdHeadImagePath(paramString);
-      AppMethodBeat.o(27528);
+      ad.d("MicroMsg.ProfileHdHeadImg", "dkhdbm old[%d %d] new[%d %d]", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Integer.valueOf(((Bitmap)localObject).getWidth()), Integer.valueOf(((Bitmap)localObject).getHeight()) });
+      this.weE.setHdHeadImage((Bitmap)localObject);
+      this.weE.setHdHeadImagePath(paramString);
+      AppMethodBeat.o(31230);
       return;
     }
     catch (Exception paramBitmap)
     {
-      ab.printErrStackTrace("MicroMsg.ProfileHdHeadImg", paramBitmap, "", new Object[0]);
-      AppMethodBeat.o(27528);
+      ad.printErrStackTrace("MicroMsg.ProfileHdHeadImg", paramBitmap, "", new Object[0]);
+      AppMethodBeat.o(31230);
     }
   }
   
   public int getLayoutId()
   {
-    return 2130969838;
+    return 2131494409;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(27526);
+    AppMethodBeat.i(31228);
     super.onCreate(paramBundle);
-    getSupportActionBar().hide();
+    if (getSupportActionBar() != null) {
+      getSupportActionBar().hide();
+    }
     this.username = getIntent().getStringExtra("username");
-    this.hkq = getIntent().getStringExtra("brand_icon_url");
-    setActionbarColor(getResources().getColor(2131689481));
-    setNavigationbarColor(getResources().getColor(2131689481));
-    this.qGl = ((GetHdHeadImageGalleryView)findViewById(2131822137));
-    this.qGl.setUsername(this.username);
-    this.qGl.setSingleClickOverListener(new ProfileHdHeadImg.1(this));
-    aw.aaz();
-    if (!c.isSDCardAvailable())
+    this.dkD = getIntent().getStringExtra("brand_icon_url");
+    setActionbarColor(getResources().getColor(2131099654));
+    setNavigationbarColor(getResources().getColor(2131099654));
+    this.weE = ((GetHdHeadImageGalleryView)findViewById(2131300335));
+    this.weE.setUsername(this.username);
+    this.weE.setSingleClickOverListener(new MMGestureGallery.f()
     {
-      t.ii(this);
-      d(o.acQ().bZ(this), null);
-      AppMethodBeat.o(27526);
+      public final void aHo()
+      {
+        AppMethodBeat.i(31226);
+        ProfileHdHeadImg.this.finish();
+        AppMethodBeat.o(31226);
+      }
+    });
+    az.arV();
+    if (!com.tencent.mm.model.c.isSDCardAvailable())
+    {
+      t.g(this, null);
+      d(p.auq().cs(this), null);
+      AppMethodBeat.o(31228);
       return;
     }
     Object localObject;
-    if (!bo.isNullOrNil(this.hkq))
+    if (!bt.isNullOrNil(this.dkD))
     {
-      paramBundle = m.aE(this.username, this.hkq);
+      paramBundle = n.aT(this.username, this.dkD);
       localObject = paramBundle;
       if (paramBundle == null) {
-        localObject = BitmapFactory.decodeResource(getResources(), 2130838493);
+        localObject = BitmapFactory.decodeResource(getResources(), 2131231875);
       }
       if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
-        break label313;
+        break label322;
       }
-      ab.i("MicroMsg.ProfileHdHeadImg", "The avatar of %s is in the cache", new Object[] { this.username });
-      this.qGl.setThumbImage((Bitmap)localObject);
+      ad.i("MicroMsg.ProfileHdHeadImg", "The avatar of %s is in the cache", new Object[] { this.username });
+      this.weE.setThumbImage((Bitmap)localObject);
     }
     for (;;)
     {
-      if (!bo.isNullOrNil(this.vRz)) {
-        this.username = this.vRz;
+      if (!bt.isNullOrNil(this.BWg)) {
+        this.username = this.BWg;
       }
-      o.acQ();
-      paramBundle = com.tencent.mm.ah.d.rb(this.username);
+      p.auq();
+      paramBundle = e.vW(this.username);
       if ((paramBundle == null) || (paramBundle.isRecycled())) {
-        break label335;
+        break label344;
       }
-      ab.i("MicroMsg.ProfileHdHeadImg", "The HDAvatar of %s is already exists", new Object[] { this.username });
-      o.acQ();
-      d(paramBundle, com.tencent.mm.ah.d.D(this.username, true));
-      AppMethodBeat.o(27526);
+      ad.i("MicroMsg.ProfileHdHeadImg", "The HDAvatar of %s is already exists", new Object[] { this.username });
+      p.auq();
+      d(paramBundle, e.I(this.username, true));
+      AppMethodBeat.o(31228);
       return;
-      paramBundle = b.b(this.username, true, -1);
+      paramBundle = com.tencent.mm.ak.c.a(this.username, true, -1, null);
       break;
-      label313:
-      ab.i("MicroMsg.ProfileHdHeadImg", "The avatar of %s is not in the cache, use default avatar", new Object[] { this.username });
+      label322:
+      ad.i("MicroMsg.ProfileHdHeadImg", "The avatar of %s is not in the cache, use default avatar", new Object[] { this.username });
     }
-    label335:
-    this.qGm = new e();
-    this.qGm.a(this.username, new ProfileHdHeadImg.2(this, (Bitmap)localObject));
-    AppMethodBeat.o(27526);
+    label344:
+    this.weF = new com.tencent.mm.ak.f();
+    this.weF.a(this.username, new f.c()
+    {
+      public final int dd(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(31227);
+        ProfileHdHeadImg.a(ProfileHdHeadImg.this).auu();
+        ad.i("MicroMsg.ProfileHdHeadImg", "onSceneEnd: errType=%d, errCode=%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+        {
+          p.auq();
+          Bitmap localBitmap = e.vW(ProfileHdHeadImg.b(ProfileHdHeadImg.this));
+          if (localBitmap != null)
+          {
+            ProfileHdHeadImg localProfileHdHeadImg = ProfileHdHeadImg.this;
+            p.auq();
+            ProfileHdHeadImg.a(localProfileHdHeadImg, localBitmap, e.I(ProfileHdHeadImg.b(ProfileHdHeadImg.this), true));
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(31227);
+            return 0;
+            ProfileHdHeadImg.a(ProfileHdHeadImg.this, this.weJ, null);
+          }
+        }
+        ProfileHdHeadImg.a(ProfileHdHeadImg.this, this.weJ, null);
+        AppMethodBeat.o(31227);
+        return 0;
+      }
+    });
+    AppMethodBeat.o(31228);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(27527);
+    AppMethodBeat.i(31229);
     super.onDestroy();
-    AppMethodBeat.o(27527);
+    AppMethodBeat.o(31229);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -138,7 +176,7 @@ public class ProfileHdHeadImg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.ProfileHdHeadImg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,136 +1,123 @@
 package com.tencent.mm.model;
 
-import android.database.Cursor;
-import android.database.MergeCursor;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.bd;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONObject;
 
 public final class bq
 {
-  private e db;
-  private bd fnD;
+  public static bq gPb;
+  private SharedPreferences gPc;
   
-  public bq(e parame, bd parambd)
+  static
   {
-    this.db = parame;
-    this.fnD = parambd;
+    AppMethodBeat.i(132261);
+    gPb = new bq();
+    AppMethodBeat.o(132261);
   }
   
-  private static String a(String paramString, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
+  private bq()
   {
-    AppMethodBeat.i(16344);
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(" and (username in (");
-    localStringBuffer.append("select chatroomname from chatroom where ");
-    if ((paramArrayList2 != null) && (paramArrayList2.size() != 0))
+    AppMethodBeat.i(132258);
+    this.gPc = aj.getContext().getSharedPreferences(aj.eFD() + "_register_history", 0);
+    AppMethodBeat.o(132258);
+  }
+  
+  public final void f(String paramString, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(132259);
+    Object localObject;
+    for (;;)
     {
-      paramArrayList2 = paramArrayList2.iterator();
-      while (paramArrayList2.hasNext())
+      try
       {
-        String str = (String)paramArrayList2.next();
-        localStringBuffer.append("chatroomname != '" + str + "' and ");
+        if (paramMap.isEmpty())
+        {
+          ad.i("MicroMsg.RegisterAccountInfo", "kv map is null or empty!");
+          AppMethodBeat.o(132259);
+          return;
+        }
+        if (!this.gPc.contains(paramString)) {
+          break label173;
+        }
+        localObject = this.gPc.getString(paramString, "");
+        if (!bt.isNullOrNil((String)localObject))
+        {
+          localObject = new JSONObject(new String(Base64.decode((String)localObject, 0)));
+          Iterator localIterator = paramMap.keySet().iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          String str = (String)localIterator.next();
+          ((JSONObject)localObject).put(str, paramMap.get(str));
+          continue;
+        }
+        localObject = new JSONObject();
       }
-    }
-    localStringBuffer.append("(memberlist like '%" + paramString + "%'");
-    paramString = paramArrayList1.iterator();
-    while (paramString.hasNext())
-    {
-      paramArrayList1 = (String)paramString.next();
-      localStringBuffer.append(" or memberlist like '%" + paramArrayList1 + "%'");
-    }
-    if ((paramArrayList3 != null) && (paramArrayList3.size() != 0))
-    {
-      paramString = paramArrayList3.iterator();
-      while (paramString.hasNext())
+      catch (Exception paramMap)
       {
-        paramArrayList1 = (String)paramString.next();
-        localStringBuffer.append(" or chatroomname = '" + paramArrayList1 + "'");
+        ad.e("MicroMsg.RegisterAccountInfo", "save account info about %s failed, error: %s", new Object[] { paramString, paramMap.getMessage() });
+        AppMethodBeat.o(132259);
+        return;
       }
+      continue;
+      label173:
+      localObject = new JSONObject();
     }
-    localStringBuffer.append(")))");
-    paramString = localStringBuffer.toString();
-    AppMethodBeat.o(16344);
-    return paramString;
+    ad.i("MicroMsg.RegisterAccountInfo", "put json str %s", new Object[] { ((JSONObject)localObject).toString() });
+    this.gPc.edit().putString(paramString, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
+    AppMethodBeat.o(132259);
   }
   
-  public final Cursor a(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2)
+  public final String getString(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(16340);
-    paramString1 = a(paramString1, paramString2, paramList1, true, 2, paramList2);
-    AppMethodBeat.o(16340);
-    return paramString1;
-  }
-  
-  public final Cursor a(String paramString1, String paramString2, List<String> paramList, boolean paramBoolean)
-  {
-    AppMethodBeat.i(16339);
-    paramString1 = a(paramString1, paramString2, paramList, paramBoolean, 1, null);
-    AppMethodBeat.o(16339);
-    return paramString1;
-  }
-  
-  public final Cursor a(String paramString1, String paramString2, List<String> paramList1, boolean paramBoolean, int paramInt, List<String> paramList2)
-  {
-    AppMethodBeat.i(16342);
-    Object localObject = "select * ,rowid from rcontact ";
-    if (paramInt == 2) {
-      localObject = "select 2, *,rowid from rcontact ";
-    }
-    paramString2 = (String)localObject + this.fnD.f(paramString2, null, paramList1) + this.fnD.arD(paramString1) + this.fnD.aeK();
-    ab.v("Micro.SimpleSearchConversationModel", paramString2);
-    paramString2 = this.db.rawQuery(paramString2, null);
-    ArrayList localArrayList;
-    if (paramBoolean)
+    AppMethodBeat.i(132260);
+    try
     {
-      localObject = new ArrayList();
-      localArrayList = new ArrayList();
-      while (paramString2.moveToNext())
+      ad.i("MicroMsg.RegisterAccountInfo", "get %s, %s", new Object[] { paramString1, paramString2 });
+      if (this.gPc.contains(paramString1))
       {
-        String str = paramString2.getString(paramString2.getColumnIndex("username"));
-        if (!t.lA(str)) {
-          ((ArrayList)localObject).add(str);
-        } else {
-          localArrayList.add(str);
+        Object localObject = new String(Base64.decode(this.gPc.getString(paramString1, ""), 0));
+        if (!bt.isNullOrNil((String)localObject))
+        {
+          ad.i("MicroMsg.RegisterAccountInfo", "get json str %s", new Object[] { localObject });
+          localObject = new JSONObject((String)localObject);
+          if (((JSONObject)localObject).has(paramString2))
+          {
+            localObject = ((JSONObject)localObject).getString(paramString2);
+            AppMethodBeat.o(132260);
+            return localObject;
+          }
         }
       }
-      if ((paramList2 != null) && (paramList2.size() != 0)) {
-        ((ArrayList)localObject).addAll(paramList2);
+      else
+      {
+        ad.w("MicroMsg.RegisterAccountInfo", "register info about %s is not found!", new Object[] { paramString1 });
       }
-      if (((ArrayList)localObject).size() == 0) {}
     }
-    for (paramString1 = new MergeCursor(new Cursor[] { paramString2, a(paramString1, (ArrayList)localObject, localArrayList, null, paramList1) });; paramString1 = paramString2)
+    catch (Exception localException)
     {
-      AppMethodBeat.o(16342);
-      return paramString1;
+      for (;;)
+      {
+        ad.e("MicroMsg.RegisterAccountInfo", "get register info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, localException.getMessage() });
+      }
     }
-  }
-  
-  public final Cursor a(String paramString, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3, List<String> paramList)
-  {
-    AppMethodBeat.i(16343);
-    paramString = "select * ,rowid from rcontact " + this.fnD.f("@all.contact.android", "", paramList) + a(paramString, paramArrayList1, paramArrayList2, paramArrayList3) + this.fnD.aeK();
-    ab.v("Micro.SimpleSearchConversationModel", "roomsSql ".concat(String.valueOf(paramString)));
-    paramString = this.db.rawQuery(paramString, null);
-    AppMethodBeat.o(16343);
-    return paramString;
-  }
-  
-  public final Cursor b(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2)
-  {
-    AppMethodBeat.i(16341);
-    paramString1 = a(paramString1, paramString2, paramList1, true, 2, paramList2);
-    AppMethodBeat.o(16341);
-    return paramString1;
+    AppMethodBeat.o(132260);
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.bq
  * JD-Core Version:    0.7.0.1
  */

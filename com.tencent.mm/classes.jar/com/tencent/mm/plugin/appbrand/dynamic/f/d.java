@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.dynamic.f;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.z.b.c;
+import com.tencent.mm.ab.b.c;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -24,10 +24,10 @@ public final class d
   
   public final JSONObject toJSONObject()
   {
-    AppMethodBeat.i(10913);
+    AppMethodBeat.i(121394);
     Object localObject = new HashMap();
-    Context localContext = ah.getContext();
-    boolean bool = at.isConnected(localContext);
+    Context localContext = aj.getContext();
+    boolean bool = ay.isConnected(localContext);
     ((HashMap)localObject).put("isConnected", Boolean.valueOf(bool));
     if (!bool) {
       ((HashMap)localObject).put("networkType", "none");
@@ -35,15 +35,15 @@ public final class d
     for (;;)
     {
       localObject = new JSONObject((Map)localObject);
-      AppMethodBeat.o(10913);
+      AppMethodBeat.o(121394);
       return localObject;
-      if (at.is2G(localContext)) {
+      if (ay.is2G(localContext)) {
         ((HashMap)localObject).put("networkType", "2g");
-      } else if (at.is3G(localContext)) {
+      } else if (ay.is3G(localContext)) {
         ((HashMap)localObject).put("networkType", "3g");
-      } else if (at.is4G(localContext)) {
+      } else if (ay.is4G(localContext)) {
         ((HashMap)localObject).put("networkType", "4g");
-      } else if (at.isWifi(localContext)) {
+      } else if (ay.isWifi(localContext)) {
         ((HashMap)localObject).put("networkType", "wifi");
       } else {
         ((HashMap)localObject).put("networkType", "unknown");
@@ -53,7 +53,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.d
  * JD-Core Version:    0.7.0.1
  */

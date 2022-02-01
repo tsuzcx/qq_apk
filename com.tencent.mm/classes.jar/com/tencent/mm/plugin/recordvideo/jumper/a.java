@@ -5,141 +5,162 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.permission.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
 {
-  public static final a qbG;
+  public static final a vih;
   
   static
   {
-    AppMethodBeat.i(141881);
-    qbG = new a();
-    AppMethodBeat.o(141881);
+    AppMethodBeat.i(101522);
+    vih = new a();
+    AppMethodBeat.o(101522);
   }
   
-  public static void U(Context paramContext, int paramInt)
+  private static Intent a(Activity paramActivity, String paramString, int paramInt)
   {
-    AppMethodBeat.i(141880);
-    if (paramInt != -1) {
-      ((Activity)paramContext).overridePendingTransition(2131034259, -1);
-    }
-    AppMethodBeat.o(141880);
-  }
-  
-  public static Intent a(Activity paramActivity, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(141879);
+    AppMethodBeat.i(101520);
     if (paramInt == 0)
     {
       Boolean localBoolean;
-      if ((com.tencent.mm.r.a.bN(paramActivity)) || (com.tencent.mm.r.a.bO(paramActivity)) || (com.tencent.mm.r.a.bM(paramActivity)))
+      if ((com.tencent.mm.r.a.cd(paramActivity)) || (com.tencent.mm.r.a.ce(paramActivity)) || (com.tencent.mm.r.a.cc(paramActivity)))
       {
-        ab.i("MicroMsg.VideoCaptureJumper", "startStoryCapture, voip or multitalk running");
+        ad.i("MicroMsg.VideoCaptureJumper", "startStoryCapture, voip or multitalk running");
         localBoolean = Boolean.FALSE;
       }
       while (!localBoolean.booleanValue())
       {
-        ab.i("MicroMsg.VideoCaptureJumper", "not get enough permission");
-        AppMethodBeat.o(141879);
+        ad.i("MicroMsg.VideoCaptureJumper", "not get enough permission");
+        AppMethodBeat.o(101520);
         return null;
         if ((paramActivity instanceof Activity))
         {
-          if (!b.a(paramActivity, "android.permission.CAMERA", 24, "", ""))
+          if (!b.a(paramActivity, "android.permission.CAMERA", 16, "", ""))
           {
-            ab.i("MicroMsg.VideoCaptureJumper", "not get enough permission checkCamera");
+            ad.i("MicroMsg.VideoCaptureJumper", "not get enough permission checkCamera");
             localBoolean = Boolean.FALSE;
             continue;
           }
-          if (!b.a(paramActivity, "android.permission.RECORD_AUDIO", 24, "", ""))
+          if (!b.a(paramActivity, "android.permission.RECORD_AUDIO", 80, "", ""))
           {
-            ab.i("MicroMsg.VideoCaptureJumper", "not get enough permission checkMicroPhone");
+            ad.i("MicroMsg.VideoCaptureJumper", "not get enough permission checkMicroPhone");
             localBoolean = Boolean.FALSE;
             continue;
           }
         }
-        ab.i("MicroMsg.VideoCaptureJumper", "startStoryCapture %s", new Object[] { bo.dtY().toString() });
+        ad.i("MicroMsg.VideoCaptureJumper", "startStoryCapture %s", new Object[] { bt.eGN().toString() });
         localBoolean = Boolean.TRUE;
       }
     }
     try
     {
       paramActivity = new Intent(paramActivity, Class.forName(paramString));
-      AppMethodBeat.o(141879);
+      AppMethodBeat.o(101520);
       return paramActivity;
     }
     catch (ClassNotFoundException paramActivity)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.VideoCaptureJumper", paramActivity, "buildIntent failed!", new Object[0]);
+        ad.printErrStackTrace("MicroMsg.VideoCaptureJumper", paramActivity, "buildIntent failed!", new Object[0]);
         paramActivity = null;
       }
     }
   }
   
+  public static boolean a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, RecordConfigProvider paramRecordConfigProvider)
+  {
+    AppMethodBeat.i(101518);
+    Intent localIntent = a((Activity)paramContext, "com.tencent.mm.plugin.recordvideo.activity.MMRecordUI", 0);
+    if (localIntent == null)
+    {
+      AppMethodBeat.o(101518);
+      return false;
+    }
+    localIntent.putExtra("KEY_PARAMS_CONFIG", paramRecordConfigProvider);
+    localIntent.putExtra("KEY_PARAMS_TO_WHERE", 0);
+    localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", paramInt3);
+    ad.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
+    ((Activity)paramContext).startActivityForResult(localIntent, paramInt1);
+    e(paramContext, paramInt2, paramInt3);
+    AppMethodBeat.o(101518);
+    return true;
+  }
+  
+  public static boolean a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, RecordConfigProvider paramRecordConfigProvider, int paramInt4, int paramInt5)
+  {
+    AppMethodBeat.i(168713);
+    Intent localIntent = a((Activity)paramContext, "com.tencent.mm.plugin.recordvideo.activity.MMRecordUI", paramInt4);
+    if (localIntent == null)
+    {
+      AppMethodBeat.o(168713);
+      return false;
+    }
+    localIntent.putExtra("KEY_PARAMS_CONFIG", paramRecordConfigProvider);
+    localIntent.putExtra("KEY_PARAMS_TO_WHERE", paramInt4);
+    localIntent.putExtra("KEY_PARAMS_SELECTED_BIZ_INT", paramInt5);
+    localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", paramInt3);
+    ad.i("MicroMsg.VideoCaptureJumper", "configProvider : $provider");
+    ((Activity)paramContext).startActivityForResult(localIntent, paramInt1);
+    e(paramContext, paramInt2, paramInt3);
+    AppMethodBeat.o(168713);
+    return true;
+  }
+  
   public static boolean a(Context paramContext, int paramInt, RecordConfigProvider paramRecordConfigProvider)
   {
-    AppMethodBeat.i(141877);
+    AppMethodBeat.i(101519);
     Intent localIntent = a((Activity)paramContext, "com.tencent.mm.plugin.recordvideo.activity.MMRecordUI", 0);
     if (localIntent == null)
     {
-      AppMethodBeat.o(141877);
+      AppMethodBeat.o(101519);
       return false;
     }
     localIntent.putExtra("KEY_PARAMS_CONFIG", paramRecordConfigProvider);
-    localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", 2131034260);
-    ab.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
-    ((Activity)paramContext).startActivityForResult(localIntent, paramInt);
-    U(paramContext, 2131034260);
-    AppMethodBeat.o(141877);
-    return true;
-  }
-  
-  public static boolean a(Context paramContext, int paramInt1, RecordConfigProvider paramRecordConfigProvider, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(141876);
-    Intent localIntent = a((Activity)paramContext, "com.tencent.mm.plugin.recordvideo.activity.MMRecordUI", paramInt2);
-    if (localIntent == null)
-    {
-      AppMethodBeat.o(141876);
-      return false;
-    }
-    localIntent.putExtra("KEY_PARAMS_CONFIG", paramRecordConfigProvider);
-    localIntent.putExtra("KEY_PARAMS_TO_WHERE", paramInt2);
-    localIntent.putExtra("KEY_PARAMS_SELECTED_BIZ_INT", paramInt3);
-    localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", -1);
-    ab.i("MicroMsg.VideoCaptureJumper", "configProvider : $provider");
-    ((Activity)paramContext).startActivityForResult(localIntent, paramInt1);
-    U(paramContext, -1);
-    AppMethodBeat.o(141876);
-    return true;
-  }
-  
-  public static boolean b(Context paramContext, int paramInt, RecordConfigProvider paramRecordConfigProvider)
-  {
-    AppMethodBeat.i(141878);
-    Intent localIntent = a((Activity)paramContext, "com.tencent.mm.plugin.recordvideo.activity.MMRecordUI", 0);
-    if (localIntent == null)
-    {
-      AppMethodBeat.o(141878);
-      return false;
-    }
-    localIntent.putExtra("KEY_PARAMS_CONFIG", paramRecordConfigProvider);
-    localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", 2131034260);
+    localIntent.putExtra("KEY_PARAMS_TO_WHERE", 0);
+    localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", 2130772138);
     localIntent.putExtra("KEY_PARAMS_SELECTED_BIZ_INT", 0);
-    ab.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
+    ad.i("MicroMsg.VideoCaptureJumper", "configProvider: %s", new Object[] { paramRecordConfigProvider });
     ((Activity)paramContext).startActivityForResult(localIntent, paramInt);
-    U(paramContext, 2131034260);
-    AppMethodBeat.o(141878);
+    e(paramContext, 2130772137, 2130772138);
+    AppMethodBeat.o(101519);
     return true;
+  }
+  
+  public static boolean a(Context paramContext, RecordConfigProvider paramRecordConfigProvider)
+  {
+    AppMethodBeat.i(101517);
+    Intent localIntent = a((Activity)paramContext, "com.tencent.mm.plugin.recordvideo.activity.MMRecordUI", 2);
+    if (localIntent == null)
+    {
+      AppMethodBeat.o(101517);
+      return false;
+    }
+    localIntent.putExtra("KEY_PARAMS_CONFIG", paramRecordConfigProvider);
+    localIntent.putExtra("KEY_PARAMS_TO_WHERE", 2);
+    localIntent.putExtra("KEY_PARAMS_EXIT_ANIM", -1);
+    ad.i("MicroMsg.VideoCaptureJumper", "configProvider : $provider");
+    ((Activity)paramContext).startActivityForResult(localIntent, 121);
+    e(paramContext, 2130772137, -1);
+    AppMethodBeat.o(101517);
+    return true;
+  }
+  
+  private static void e(Context paramContext, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(101521);
+    if ((paramInt1 != -1) && (paramInt2 != -1)) {
+      ((Activity)paramContext).overridePendingTransition(paramInt1, -1);
+    }
+    AppMethodBeat.o(101521);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.jumper.a
  * JD-Core Version:    0.7.0.1
  */

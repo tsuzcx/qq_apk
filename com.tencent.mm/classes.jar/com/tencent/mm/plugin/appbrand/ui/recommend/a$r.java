@@ -1,24 +1,22 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
-import a.f.a.a;
-import a.f.b.k;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bsi;
+import com.tencent.mm.protocal.protobuf.chm;
+import d.g.a.a;
 import java.util.LinkedList;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "invoke"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "invoke"})
 final class a$r
-  extends k
-  implements a<LinkedList<bsi>>
+  extends d.g.b.l
+  implements a<LinkedList<chm>>
 {
-  public static final r iWl;
+  public static final r lKx;
   
   static
   {
-    AppMethodBeat.i(135171);
-    iWl = new r();
-    AppMethodBeat.o(135171);
+    AppMethodBeat.i(51337);
+    lKx = new r();
+    AppMethodBeat.o(51337);
   }
   
   a$r()
@@ -28,7 +26,7 @@ final class a$r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.a.r
  * JD-Core Version:    0.7.0.1
  */

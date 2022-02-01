@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#ffda4a4a" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@raw/product_music_stop_icon_pressed" />
+    <item android:drawable="@raw/product_music_stop_icon_normal" />
+</selector>

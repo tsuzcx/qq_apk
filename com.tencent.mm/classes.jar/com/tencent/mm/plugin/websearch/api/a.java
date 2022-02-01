@@ -1,59 +1,59 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import android.os.Bundle;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.protocal.protobuf.cpj;
+import com.tencent.mm.al.n;
+import com.tencent.mm.protocal.protobuf.dis;
 import java.util.LinkedList;
 
 public abstract class a
-  extends m
+  extends n
 {
-  protected int Fb;
-  protected String cCX;
+  protected int AFI;
+  protected Bundle AFJ;
+  protected int LZ;
+  protected String dtx;
   protected int mScene;
-  protected int uIB;
-  protected String uIC;
-  protected Bundle uID;
+  protected String rLL;
   
-  public final void IX(int paramInt)
+  public final void RW(int paramInt)
   {
-    this.uIB = paramInt;
+    this.AFI = paramInt;
   }
   
-  public void aB(LinkedList<cpj> paramLinkedList) {}
+  public void aT(LinkedList<dis> paramLinkedList) {}
   
-  public abstract String act();
-  
-  public abstract int acu();
-  
-  public final String bBW()
+  public final String cxj()
   {
-    return this.uIC;
+    return this.rLL;
   }
   
-  public final int cZa()
+  public final int ehC()
   {
-    return this.uIB;
+    return this.AFI;
   }
   
-  public final boolean cZb()
+  public final boolean ehD()
   {
-    return this.Fb == 0;
+    return this.LZ == 0;
   }
   
-  public final Bundle cZc()
+  public final Bundle ehE()
   {
-    return this.uID;
+    return this.AFJ;
   }
   
-  public final String cZd()
+  public abstract String ehF();
+  
+  public abstract int ehG();
+  
+  public final String ehH()
   {
-    return this.cCX;
+    return this.dtx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.a
  * JD-Core Version:    0.7.0.1
  */

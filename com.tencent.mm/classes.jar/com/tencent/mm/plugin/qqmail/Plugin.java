@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.qqmail;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.qqmail.b.ac;
-import com.tencent.mm.pluginsdk.b.b;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.plugin.qqmail.b.ad;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
 
 public final class Plugin
-  implements c
+  implements d
 {
-  private a pIo;
+  private a uKE;
   
   public Plugin()
   {
-    AppMethodBeat.i(67898);
-    this.pIo = new a();
-    AppMethodBeat.o(67898);
+    AppMethodBeat.i(122626);
+    this.uKE = new a();
+    AppMethodBeat.o(122626);
   }
   
-  public final o createApplication()
+  public final m createApplication()
   {
-    AppMethodBeat.i(67899);
+    AppMethodBeat.i(122627);
     com.tencent.mm.plugin.qqmail.a.a locala = new com.tencent.mm.plugin.qqmail.a.a();
-    AppMethodBeat.o(67899);
+    AppMethodBeat.o(122627);
     return locala;
   }
   
-  public final at createSubCore()
+  public final aw createSubCore()
   {
-    AppMethodBeat.i(67900);
-    ac localac = new ac();
-    AppMethodBeat.o(67900);
-    return localac;
+    AppMethodBeat.i(122628);
+    ad localad = new ad();
+    AppMethodBeat.o(122628);
+    return localad;
   }
   
-  public final b getContactWidgetFactory()
+  public final c getContactWidgetFactory()
   {
-    return this.pIo;
+    return this.uKE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.Plugin
  * JD-Core Version:    0.7.0.1
  */

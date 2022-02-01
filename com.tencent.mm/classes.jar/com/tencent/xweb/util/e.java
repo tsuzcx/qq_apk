@@ -1,126 +1,110 @@
 package com.tencent.xweb.util;
 
-import android.os.Build.VERSION;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.lang.reflect.Method;
+import java.util.Calendar;
 import org.xwalk.core.Log;
 
 public final class e
 {
-  public static Object ayg(String paramString)
+  public static a aPs(String paramString)
   {
-    AppMethodBeat.i(4020);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(4020);
-      return null;
-    }
+    AppMethodBeat.i(195178);
+    a locala = new a();
     try
     {
-      paramString = Class.forName(paramString).newInstance();
-      AppMethodBeat.o(4020);
-      return paramString;
+      locala.IRC = Double.valueOf(Double.parseDouble(paramString));
+      locala.IRB = true;
+      AppMethodBeat.o(195178);
+      return locala;
     }
-    catch (Throwable paramString)
+    catch (Exception paramString)
     {
-      AppMethodBeat.o(4020);
-    }
-    return null;
-  }
-  
-  public static Object b(String paramString1, String paramString2, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(4019);
-    try
-    {
-      paramString1 = Class.forName(paramString1).getMethod(paramString2, paramArrayOfClass);
-      paramString1.setAccessible(true);
-      paramString1 = paramString1.invoke(null, paramVarArgs);
-      AppMethodBeat.o(4019);
-      return paramString1;
-    }
-    catch (Throwable paramString1)
-    {
-      AppMethodBeat.o(4019);
-    }
-    return null;
-  }
-  
-  public static Object c(Object paramObject, String paramString, Class<?>[] paramArrayOfClass, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(4022);
-    if (paramObject == null)
-    {
-      AppMethodBeat.o(4022);
-      return null;
-    }
-    try
-    {
-      Object localObject = paramObject.getClass();
-      if (Build.VERSION.SDK_INT > 10) {}
-      for (paramArrayOfClass = ((Class)localObject).getMethod(paramString, paramArrayOfClass);; paramArrayOfClass = ((Class)localObject).getDeclaredMethod(paramString, paramArrayOfClass))
+      for (;;)
       {
-        paramArrayOfClass.setAccessible(true);
-        localObject = paramVarArgs;
-        if (paramVarArgs.length == 0) {
-          localObject = null;
-        }
-        paramObject = paramArrayOfClass.invoke(paramObject, (Object[])localObject);
-        AppMethodBeat.o(4022);
-        return paramObject;
+        Log.e("NumberUtil", "safeGetDouble failed : " + paramString.getMessage());
       }
-      return null;
-    }
-    catch (Throwable paramObject)
-    {
-      if ((paramObject.getCause() != null) && (paramObject.getCause().toString().contains("AuthenticationFail")))
-      {
-        paramObject = new String("AuthenticationFail");
-        AppMethodBeat.o(4022);
-        return paramObject;
-      }
-      if ((paramString == null) || ((!paramString.equalsIgnoreCase("canLoadX5Core")) && (!paramString.equalsIgnoreCase("initTesRuntimeEnvironment"))))
-      {
-        paramString = new StringWriter();
-        paramObject.printStackTrace(new PrintWriter(paramString));
-        Log.e("ReflectionUtils", "invokeInstance -- exceptions:" + paramString.toString());
-        AppMethodBeat.o(4022);
-        return null;
-      }
-      AppMethodBeat.o(4022);
     }
   }
   
-  public static Object je(String paramString1, String paramString2)
+  public static a aPt(String paramString)
   {
-    AppMethodBeat.i(4018);
+    AppMethodBeat.i(195179);
+    a locala = new a();
     try
     {
-      paramString1 = Class.forName(paramString1).getMethod(paramString2, new Class[0]).invoke(null, new Object[0]);
-      AppMethodBeat.o(4018);
-      return paramString1;
+      locala.IRC = Integer.valueOf(Integer.parseInt(paramString));
+      locala.IRB = true;
+      AppMethodBeat.o(195179);
+      return locala;
     }
-    catch (Throwable paramString1)
+    catch (Exception paramString)
     {
-      AppMethodBeat.o(4018);
+      for (;;)
+      {
+        Log.e("NumberUtil", "safeParseInt failed : " + paramString.getMessage());
+      }
     }
-    return null;
   }
   
-  public static Object o(Object paramObject, String paramString)
+  public static long frZ()
   {
-    AppMethodBeat.i(4021);
-    paramObject = c(paramObject, paramString, null, new Object[0]);
-    AppMethodBeat.o(4021);
-    return paramObject;
+    AppMethodBeat.i(195180);
+    Calendar localCalendar = Calendar.getInstance();
+    int i = localCalendar.get(11);
+    int j = localCalendar.get(12);
+    long l1 = 24 - i;
+    long l2 = j;
+    AppMethodBeat.o(195180);
+    return l1 * 3600000L - l2 * 60000L;
+  }
+  
+  public static double fsa()
+  {
+    AppMethodBeat.i(195181);
+    Calendar localCalendar = Calendar.getInstance();
+    int i = localCalendar.get(11);
+    double d2 = localCalendar.get(12);
+    double d1 = i;
+    d2 /= 60.0D;
+    AppMethodBeat.o(195181);
+    return d1 + d2;
+  }
+  
+  public static final class a
+  {
+    public boolean IRB = false;
+    public Object IRC;
+    
+    public final double doubleValue()
+    {
+      AppMethodBeat.i(195176);
+      if (this.IRC == null)
+      {
+        AppMethodBeat.o(195176);
+        return 0.0D;
+      }
+      double d = ((Double)this.IRC).doubleValue();
+      AppMethodBeat.o(195176);
+      return d;
+    }
+    
+    public final int intValue()
+    {
+      AppMethodBeat.i(195177);
+      if (this.IRC == null)
+      {
+        AppMethodBeat.o(195177);
+        return 0;
+      }
+      int i = ((Integer)this.IRC).intValue();
+      AppMethodBeat.o(195177);
+      return i;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.util.e
  * JD-Core Version:    0.7.0.1
  */

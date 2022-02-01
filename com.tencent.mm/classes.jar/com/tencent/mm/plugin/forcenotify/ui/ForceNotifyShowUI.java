@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.forcenotify.ui;
 
-import a.l;
-import a.v;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -22,106 +20,124 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.AppForegroundDelegate;
+import com.tencent.mm.aw.o;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.cb;
+import com.tencent.mm.model.ce;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
+import com.tencent.mm.plugin.appbrand.service.m;
+import com.tencent.mm.plugin.appbrand.service.m.a;
+import com.tencent.mm.plugin.forcenotify.b.c;
 import com.tencent.mm.plugin.forcenotify.c.d;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.bd;
+import com.tencent.mm.sdk.platformtools.bd.b;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.util.b;
+import d.l;
+import d.v;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyShowUI;", "Lcom/tencent/mm/plugin/forcenotify/ui/BaseForceNotifyShowUI;", "Lcom/tencent/mm/app/IAppForegroundListener;", "()V", "UIHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "audioFocusChangeListener", "Landroid/media/AudioManager$OnAudioFocusChangeListener;", "info", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "mAudioManager", "Landroid/media/AudioManager;", "mSoundPlay", "Landroid/media/MediaPlayer;", "mVibrator", "Landroid/os/Vibrator;", "stopSoundRunnable", "Ljava/lang/Runnable;", "getLayoutId", "", "onAppBackground", "", "activity", "", "onAppForeground", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onKeyDown", "", "keyCode", "event", "Landroid/view/KeyEvent;", "onPause", "onResume", "onStart", "onStop", "reset", "setBlurBg", "view", "Landroid/view/View;", "plugin-force-notify_release"})
 @com.tencent.mm.ui.base.a(3)
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyShowUI;", "Lcom/tencent/mm/plugin/forcenotify/ui/BaseForceNotifyShowUI;", "Lcom/tencent/mm/app/IAppForegroundListener;", "()V", "UIHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "audioFocusChangeListener", "Landroid/media/AudioManager$OnAudioFocusChangeListener;", "info", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "mAudioManager", "Landroid/media/AudioManager;", "mSoundPlay", "Landroid/media/MediaPlayer;", "mVibrator", "Landroid/os/Vibrator;", "stopSoundRunnable", "Ljava/lang/Runnable;", "getLayoutId", "", "onAppBackground", "", "activity", "", "onAppForeground", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onKeyDown", "", "keyCode", "event", "Landroid/view/KeyEvent;", "onPause", "onResume", "onStart", "onStop", "reset", "setBlurBg", "view", "Landroid/view/View;", "plugin-force-notify_release"})
 public final class ForceNotifyShowUI
   extends BaseForceNotifyShowUI
-  implements com.tencent.mm.app.j
+  implements com.tencent.mm.app.n
 {
-  private Vibrator jbU;
+  private AudioManager.OnAudioFocusChangeListener audioFocusChangeListener;
+  private Vibrator lRO;
   private AudioManager mAudioManager;
-  private MediaPlayer mHS;
-  private Runnable mHT;
-  private AudioManager.OnAudioFocusChangeListener mHU;
-  private final ak mHV;
-  private d mHW;
+  private MediaPlayer reZ;
+  private Runnable rfa;
+  private final ap rfb;
+  private d rfc;
   
   public ForceNotifyShowUI()
   {
-    AppMethodBeat.i(51095);
-    this.mHV = new ak(Looper.getMainLooper());
-    this.mHW = new d();
-    AppMethodBeat.o(51095);
+    AppMethodBeat.i(149247);
+    this.rfb = new ap(Looper.getMainLooper());
+    this.rfc = new d();
+    AppMethodBeat.o(149247);
   }
   
   private final void reset()
   {
-    AppMethodBeat.i(51094);
+    AppMethodBeat.i(149246);
     Object localObject = getWindow();
-    a.f.b.j.p(localObject, "window");
+    d.g.b.k.g(localObject, "window");
     localObject = ((Window)localObject).getDecorView();
-    a.f.b.j.p(localObject, "window.decorView");
+    d.g.b.k.g(localObject, "window.decorView");
     ((View)localObject).setKeepScreenOn(false);
-    this.mHV.removeCallbacksAndMessages(null);
+    this.rfb.removeCallbacksAndMessages(null);
     localObject = this.mAudioManager;
     if (localObject != null) {
-      ((AudioManager)localObject).abandonAudioFocus(this.mHU);
+      ((AudioManager)localObject).abandonAudioFocus(this.audioFocusChangeListener);
     }
     try
     {
       localObject = getWindow();
-      a.f.b.j.p(localObject, "window");
-      ((Window)localObject).getDecorView().removeCallbacks(this.mHT);
-      localObject = this.mHT;
+      d.g.b.k.g(localObject, "window");
+      ((Window)localObject).getDecorView().removeCallbacks(this.rfa);
+      localObject = this.rfa;
       if (localObject != null) {
         ((Runnable)localObject).run();
       }
-      this.mHT = null;
-      AppMethodBeat.o(51094);
+      this.rfa = null;
+      AppMethodBeat.o(149246);
       return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      ab.printErrStackTrace(this.TAG, (Throwable)localIllegalStateException, "", new Object[0]);
-      AppMethodBeat.o(51094);
+      ad.printErrStackTrace(this.TAG, (Throwable)localIllegalStateException, "", new Object[0]);
+      AppMethodBeat.o(149246);
     }
   }
   
   public final int getLayoutId()
   {
-    return 2130969625;
+    return 2131494166;
   }
   
   public final void onAppBackground(String paramString)
   {
-    AppMethodBeat.i(140614);
-    runOnUiThread((Runnable)new ForceNotifyShowUI.a(this));
-    AppMethodBeat.o(140614);
+    AppMethodBeat.i(149239);
+    runOnUiThread((Runnable)new a(this));
+    AppMethodBeat.o(149239);
   }
   
   public final void onAppForeground(String paramString) {}
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(51089);
+    AppMethodBeat.i(149238);
     super.onBackPressed();
-    ab.i(this.TAG, "[onBackPressed]");
-    String str = String.valueOf(this.mHW.field_CreateTime / 1000L) + this.mHW.field_UserName;
-    ((com.tencent.mm.plugin.forcenotify.a.a)g.E(com.tencent.mm.plugin.forcenotify.a.a.class)).b(this.mHW.field_ForcePushId, str, 8, cb.abq() / 1000L);
-    AppMethodBeat.o(51089);
+    ad.i(this.TAG, "[onBackPressed]");
+    String str = String.valueOf(this.rfc.field_CreateTime / 1000L) + this.rfc.field_UserName;
+    ((com.tencent.mm.plugin.forcenotify.a.a)g.ab(com.tencent.mm.plugin.forcenotify.a.a.class)).b(this.rfc.field_ForcePushId, str, 8, ce.asR() / 1000L);
+    AppMethodBeat.o(149238);
   }
   
-  public final void onCreate(Bundle paramBundle)
+  public final void onCreate(final Bundle paramBundle)
   {
-    AppMethodBeat.i(51088);
+    AppMethodBeat.i(149237);
     super.onCreate(paramBundle);
-    this.mHW.field_UserName = this.username;
-    com.tencent.mm.plugin.forcenotify.d.a.mHw.get((com.tencent.mm.sdk.e.c)this.mHW, new String[0]);
-    AppForegroundDelegate.bXk.a((com.tencent.mm.app.j)this);
+    b.fgU();
+    ad.i(this.TAG, "[onCreate] username=" + this.username);
+    paramBundle = this.username;
+    Object localObject1;
+    if (paramBundle != null)
+    {
+      localObject1 = com.tencent.mm.plugin.forcenotify.d.a.rez;
+      this.rfc = com.tencent.mm.plugin.forcenotify.d.a.aan(paramBundle);
+    }
+    AppForegroundDelegate.cKE.a((com.tencent.mm.app.n)this);
     paramBundle = getSystemService("audio");
     if (paramBundle == null)
     {
       paramBundle = new v("null cannot be cast to non-null type android.media.AudioManager");
-      AppMethodBeat.o(51088);
+      AppMethodBeat.o(149237);
       throw paramBundle;
     }
     this.mAudioManager = ((AudioManager)paramBundle);
@@ -129,117 +145,132 @@ public final class ForceNotifyShowUI
     if (paramBundle == null)
     {
       paramBundle = new v("null cannot be cast to non-null type android.os.Vibrator");
-      AppMethodBeat.o(51088);
+      AppMethodBeat.o(149237);
       throw paramBundle;
     }
-    this.jbU = ((Vibrator)paramBundle);
+    this.lRO = ((Vibrator)paramBundle);
     paramBundle = this.mAudioManager;
-    Object localObject1;
-    label164:
+    label189:
     Object localObject2;
-    label185:
-    label245:
+    label210:
     int i;
     if (paramBundle != null)
     {
       paramBundle = Integer.valueOf(paramBundle.getVibrateSetting(1));
       localObject1 = this.mAudioManager;
       if (localObject1 == null) {
-        break label677;
+        break label681;
       }
       localObject1 = Integer.valueOf(((AudioManager)localObject1).getVibrateSetting(0));
       localObject2 = this.mAudioManager;
       if (localObject2 == null) {
-        break label682;
+        break label686;
       }
       localObject2 = Integer.valueOf(((AudioManager)localObject2).getRingerMode());
-      ab.i(this.TAG, "V:%s V1:%s  R:%s", new Object[] { paramBundle, localObject1, localObject2 });
-      this.mHU = ((AudioManager.OnAudioFocusChangeListener)ForceNotifyShowUI.b.mHY);
+      ad.i(this.TAG, "V:%s V1:%s  R:%s", new Object[] { paramBundle, localObject1, localObject2 });
+      this.audioFocusChangeListener = ((AudioManager.OnAudioFocusChangeListener)ForceNotifyShowUI.b.rfe);
       paramBundle = this.mAudioManager;
       if (paramBundle == null) {
-        break label688;
+        break label692;
       }
-      paramBundle = Integer.valueOf(paramBundle.requestAudioFocus(this.mHU, 3, 2));
-      this.mHV.postDelayed((Runnable)new ForceNotifyShowUI.c(this), 1000L);
+      paramBundle = Integer.valueOf(paramBundle.requestAudioFocus(this.audioFocusChangeListener, 3, 2));
+      label270:
+      this.rfb.postDelayed((Runnable)new c(this), 1000L);
       localObject1 = getWindow();
-      a.f.b.j.p(localObject1, "window");
+      d.g.b.k.g(localObject1, "window");
       localObject1 = ((Window)localObject1).getDecorView();
-      a.f.b.j.p(localObject1, "window.decorView");
+      d.g.b.k.g(localObject1, "window.decorView");
       ((View)localObject1).setKeepScreenOn(true);
-      a.f.b.j.p(findViewById(2131820946), "findViewById(R.id.content)");
-      getWindow().setBackgroundDrawable((Drawable)new ColorDrawable(getResources().getColor(2131690069)));
-      ab.i(this.TAG, "[onCreate] username:%s requestAudioFocus:%s", new Object[] { this.username, paramBundle });
-      localObject1 = (TextView)findViewById(2131823254);
-      paramBundle = (ImageView)findViewById(2131821210);
-      findViewById(2131824244).setOnClickListener((View.OnClickListener)new ForceNotifyShowUI.d(this));
-      this.mHT = ((Runnable)new ForceNotifyShowUI.e(this));
-      this.mHV.postDelayed(this.mHT, 60000L);
-      localObject2 = this.mHW;
-      com.tencent.mm.kernel.c.a locala = g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class);
-      a.f.b.j.p(locala, "MMKernel.service(IMessengerStorage::class.java)");
-      ((d)localObject2).contact = ((com.tencent.mm.plugin.messenger.foundation.a.j)locala).YA().arw(this.username);
-      a.b.b(paramBundle, this.mHW.field_UserName, 0.1F);
-      a.f.b.j.p(localObject1, "titleView");
-      localObject2 = getBaseContext();
-      paramBundle = this.mHW.contact;
-      if (paramBundle == null) {
-        break label693;
+      d.g.b.k.g(findViewById(2131298739), "findViewById(R.id.content)");
+      getWindow().setBackgroundDrawable((Drawable)new ColorDrawable(getResources().getColor(2131100384)));
+      ad.i(this.TAG, "[onCreate] username:%s requestAudioFocus:%s", new Object[] { this.username, paramBundle });
+      localObject1 = (TextView)findViewById(2131302867);
+      paramBundle = (ImageView)findViewById(2131297008);
+      findViewById(2131300872).setOnClickListener((View.OnClickListener)new d(this));
+      this.rfa = ((Runnable)new e(this));
+      this.rfb.postDelayed(this.rfa, 60000L);
+      localObject2 = (CharSequence)this.rfc.field_ForcePushId;
+      if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
+        break label697;
       }
-      paramBundle = paramBundle.Of();
-      label522:
-      ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.d.j.a((Context)localObject2, (CharSequence)paramBundle, (int)((TextView)localObject1).getTextSize(), 0, null, null));
-      paramBundle = (com.tencent.mm.plugin.forcenotify.a.a)g.E(com.tencent.mm.plugin.forcenotify.a.a.class);
+      i = 1;
+      label486:
+      if (i != 0) {
+        break label702;
+      }
+      localObject2 = this.rfc.field_ForcePushId;
+      d.g.b.k.g(localObject2, "info.field_ForcePushId");
+      if (!d.n.n.mB((String)localObject2, "@miniapp")) {
+        break label702;
+      }
+      ((m)g.ab(m.class)).a(this.username, (m.a)new f(this, paramBundle, (TextView)localObject1));
+      paramBundle = (com.tencent.mm.plugin.forcenotify.a.a)g.ab(com.tencent.mm.plugin.forcenotify.a.a.class);
       localObject1 = this.username;
-      localObject2 = com.tencent.mm.plugin.forcenotify.b.c.mHu;
+      localObject2 = c.rex;
       localObject2 = getContext();
-      a.f.b.j.p(localObject2, "context");
-      if (!com.tencent.mm.plugin.forcenotify.b.c.isSilentMode((Context)localObject2)) {
-        break label703;
+      d.g.b.k.g(localObject2, "context");
+      if (!c.eR((Context)localObject2)) {
+        break label826;
       }
-      localObject2 = com.tencent.mm.plugin.forcenotify.b.c.mHu;
+      localObject2 = c.rex;
       localObject2 = getContext();
-      a.f.b.j.p(localObject2, "context");
-      if (!com.tencent.mm.plugin.forcenotify.b.c.dX((Context)localObject2)) {
-        break label698;
+      d.g.b.k.g(localObject2, "context");
+      if (!c.eS((Context)localObject2)) {
+        break label821;
       }
       i = 1;
     }
     for (;;)
     {
-      paramBundle.f((String)localObject1, i, cb.abq() / 1000L);
+      paramBundle.g((String)localObject1, i, ce.asR() / 1000L);
       if (this.username != null)
       {
-        paramBundle = com.tencent.mm.plugin.forcenotify.d.a.mHw;
+        paramBundle = com.tencent.mm.plugin.forcenotify.d.a.rez;
         localObject1 = this.username;
         if (localObject1 == null) {
-          a.f.b.j.ebi();
+          d.g.b.k.fvU();
         }
-        paramBundle.qD((String)localObject1);
+        paramBundle.vv((String)localObject1);
       }
-      AppMethodBeat.o(51088);
+      AppMethodBeat.o(149237);
       return;
       paramBundle = null;
       break;
-      label677:
+      label681:
       localObject1 = null;
-      break label164;
-      label682:
+      break label189;
+      label686:
       localObject2 = null;
-      break label185;
-      label688:
+      break label210;
+      label692:
       paramBundle = null;
-      break label245;
-      label693:
-      paramBundle = null;
-      break label522;
-      label698:
+      break label270;
+      label697:
+      i = 0;
+      break label486;
+      label702:
+      localObject2 = this.rfc;
+      com.tencent.mm.kernel.c.a locala = g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class);
+      d.g.b.k.g(locala, "MMKernel.service(IMessengerStorage::class.java)");
+      ((d)localObject2).contact = ((com.tencent.mm.plugin.messenger.foundation.a.k)locala).apM().aHY(this.username);
+      a.b.d(paramBundle, this.username, 0.1F);
+      d.g.b.k.g(localObject1, "titleView");
+      localObject2 = getBaseContext();
+      paramBundle = this.rfc.contact;
+      if (paramBundle != null) {}
+      for (paramBundle = paramBundle.ZX();; paramBundle = null)
+      {
+        ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.a((Context)localObject2, (CharSequence)paramBundle, (int)((TextView)localObject1).getTextSize(), 0, null, null));
+        break;
+      }
+      label821:
       i = 4;
       continue;
-      label703:
-      localObject2 = com.tencent.mm.plugin.forcenotify.b.c.mHu;
+      label826:
+      localObject2 = c.rex;
       localObject2 = getContext();
-      a.f.b.j.p(localObject2, "context");
-      if (com.tencent.mm.plugin.forcenotify.b.c.dX((Context)localObject2)) {
+      d.g.b.k.g(localObject2, "context");
+      if (c.eS((Context)localObject2)) {
         i = 3;
       } else {
         i = 2;
@@ -249,54 +280,59 @@ public final class ForceNotifyShowUI
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(51092);
+    AppMethodBeat.i(149245);
     super.onDestroy();
     reset();
-    AppForegroundDelegate.bXk.b((com.tencent.mm.app.j)this);
-    AppMethodBeat.o(51092);
+    String str = this.rfc.field_ForcePushId;
+    if (str != null) {
+      com.tencent.mm.plugin.forcenotify.d.a.rez.vv(str);
+    }
+    AppForegroundDelegate.cKE.b((com.tencent.mm.app.n)this);
+    AppMethodBeat.o(149245);
   }
   
   public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(51090);
-    a.f.b.j.q(paramKeyEvent, "event");
-    ab.i(this.TAG, "[onKeyDown] keyCode:".concat(String.valueOf(paramInt)));
+    AppMethodBeat.i(149240);
+    d.g.b.k.h(paramKeyEvent, "event");
+    ad.i(this.TAG, "[onKeyDown] keyCode:".concat(String.valueOf(paramInt)));
     reset();
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(51090);
+    AppMethodBeat.o(149240);
     return bool;
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(140617);
+    AppMethodBeat.i(149243);
     super.onPause();
-    ab.i(this.TAG, "onPause");
-    AppMethodBeat.o(140617);
+    ad.i(this.TAG, "onPause");
+    AppMethodBeat.o(149243);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(140616);
+    AppMethodBeat.i(149242);
     super.onResume();
-    ab.i(this.TAG, "onResume");
-    AppMethodBeat.o(140616);
+    ad.i(this.TAG, "onResume");
+    AppMethodBeat.o(149242);
   }
   
   public final void onStart()
   {
-    AppMethodBeat.i(140615);
+    AppMethodBeat.i(149241);
     super.onStart();
-    ab.i(this.TAG, "onStart");
-    AppMethodBeat.o(140615);
+    ad.i(this.TAG, "onStart");
+    AppMethodBeat.o(149241);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(51091);
+    AppMethodBeat.i(149244);
     super.onStop();
-    ab.i(this.TAG, "onStop");
-    AppMethodBeat.o(51091);
+    ad.i(this.TAG, "onStop");
+    reset();
+    AppMethodBeat.o(149244);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -304,10 +340,147 @@ public final class ForceNotifyShowUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  static final class a
+    implements Runnable
+  {
+    a(ForceNotifyShowUI paramForceNotifyShowUI) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(149230);
+      ForceNotifyShowUI.d(this.rfd);
+      AppMethodBeat.o(149230);
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  static final class c
+    implements Runnable
+  {
+    c(ForceNotifyShowUI paramForceNotifyShowUI) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(149232);
+      Object localObject = c.rex;
+      localObject = this.rfd.getContext();
+      d.g.b.k.g(localObject, "context");
+      if (!c.eR((Context)localObject)) {
+        ForceNotifyShowUI.a(this.rfd, bd.a((Context)this.rfd.getContext(), 2131759601, bd.b.EWm, 2, true, null));
+      }
+      localObject = c.rex;
+      localObject = this.rfd.getContext();
+      d.g.b.k.g(localObject, "context");
+      if (c.eS((Context)localObject))
+      {
+        localObject = ForceNotifyShowUI.b(this.rfd);
+        if (localObject == null) {
+          d.g.b.k.fvU();
+        }
+        ((Vibrator)localObject).vibrate(new long[] { 1000L, 1000L, 1000L, 1000L }, 0);
+      }
+      AppMethodBeat.o(149232);
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class d
+    implements View.OnClickListener
+  {
+    d(ForceNotifyShowUI paramForceNotifyShowUI) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(149233);
+      if (ForceNotifyShowUI.c(this.rfd).field_CreateTime > 0L)
+      {
+        paramView = String.valueOf(ForceNotifyShowUI.c(this.rfd).field_CreateTime / 1000L) + ForceNotifyShowUI.c(this.rfd).field_UserName;
+        ((com.tencent.mm.plugin.forcenotify.a.a)g.ab(com.tencent.mm.plugin.forcenotify.a.a.class)).b(ForceNotifyShowUI.c(this.rfd).field_ForcePushId, paramView, 2, ce.asR() / 1000L);
+      }
+      this.rfd.finish();
+      this.rfd.overridePendingTransition(0, 2130772106);
+      AppMethodBeat.o(149233);
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "run"})
+  static final class e
+    implements Runnable
+  {
+    e(ForceNotifyShowUI paramForceNotifyShowUI) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(149234);
+      try
+      {
+        Object localObject = ForceNotifyShowUI.b(this.rfd);
+        if (localObject != null) {
+          ((Vibrator)localObject).cancel();
+        }
+        localObject = ForceNotifyShowUI.a(this.rfd);
+        if (localObject != null) {
+          ((MediaPlayer)localObject).stop();
+        }
+        localObject = ForceNotifyShowUI.a(this.rfd);
+        if (localObject != null) {
+          ((MediaPlayer)localObject).release();
+        }
+        localObject = this.rfd.getWindow();
+        d.g.b.k.g(localObject, "window");
+        localObject = ((Window)localObject).getDecorView();
+        d.g.b.k.g(localObject, "window.decorView");
+        ((View)localObject).setKeepScreenOn(false);
+        AppMethodBeat.o(149234);
+        return;
+      }
+      catch (Exception localException)
+      {
+        AppMethodBeat.o(149234);
+      }
+    }
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "kotlin.jvm.PlatformType", "onGetWeAppInfo"})
+  static final class f
+    implements m.a
+  {
+    f(ForceNotifyShowUI paramForceNotifyShowUI, ImageView paramImageView, TextView paramTextView) {}
+    
+    public final void b(final WxaAttributes paramWxaAttributes)
+    {
+      AppMethodBeat.i(149236);
+      ad.i(this.rfd.TAG, "getOrSync result=".concat(String.valueOf(paramWxaAttributes)));
+      if (paramWxaAttributes == null)
+      {
+        AppMethodBeat.o(149236);
+        return;
+      }
+      aq.f((Runnable)new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(149235);
+          o.ayJ().loadImage(this.reP, this.rfh.rff);
+          TextView localTextView1 = this.rfh.rfg;
+          d.g.b.k.g(localTextView1, "titleView");
+          Context localContext = this.rfh.rfd.getBaseContext();
+          CharSequence localCharSequence = (CharSequence)paramWxaAttributes.field_nickname;
+          TextView localTextView2 = this.rfh.rfg;
+          d.g.b.k.g(localTextView2, "titleView");
+          localTextView1.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.k.a(localContext, localCharSequence, (int)localTextView2.getTextSize(), 0, null, null));
+          AppMethodBeat.o(149235);
+        }
+      });
+      AppMethodBeat.o(149236);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.ui.ForceNotifyShowUI
  * JD-Core Version:    0.7.0.1
  */

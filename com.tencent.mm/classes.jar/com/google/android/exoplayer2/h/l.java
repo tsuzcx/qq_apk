@@ -10,17 +10,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public final class l
-  implements d, w<Object>
+  implements d, x<Object>
 {
-  private final d.a aYG;
-  private final r aYH;
-  private final c aYI;
-  private int aYJ;
-  private long aYK;
-  private long aYL;
-  private long aYM;
-  private long aYN;
-  private long aYO;
+  private final d.a bwH;
+  private final r bwI;
+  private final c bwJ;
+  private int bwK;
+  private long bwL;
+  private long bwM;
+  private long bwN;
+  private long bwO;
+  private long bwP;
   private final Handler eventHandler;
   
   public l()
@@ -35,25 +35,25 @@ public final class l
   
   private l(Handler paramHandler, d.a parama, byte paramByte)
   {
-    this(paramHandler, parama, c.baE);
+    this(paramHandler, parama, c.byF);
   }
   
   private l(Handler paramHandler, d.a parama, c paramc)
   {
-    AppMethodBeat.i(95813);
+    AppMethodBeat.i(93056);
     this.eventHandler = paramHandler;
-    this.aYG = parama;
-    this.aYH = new r();
-    this.aYI = paramc;
-    this.aYO = -1L;
-    AppMethodBeat.o(95813);
+    this.bwH = parama;
+    this.bwI = new r();
+    this.bwJ = paramc;
+    this.bwP = -1L;
+    AppMethodBeat.o(93056);
   }
   
-  public final void el(int paramInt)
+  public final void fj(int paramInt)
   {
     try
     {
-      this.aYL += paramInt;
+      this.bwM += paramInt;
       return;
     }
     finally
@@ -63,11 +63,11 @@ public final class l
     }
   }
   
-  public final long qm()
+  public final long vg()
   {
     try
     {
-      long l = this.aYO;
+      long l = this.bwP;
       return l;
     }
     finally
@@ -77,25 +77,25 @@ public final class l
     }
   }
   
-  public final void qq()
+  public final void vl()
   {
     try
     {
-      AppMethodBeat.i(95814);
-      if (this.aYJ == 0) {
-        this.aYK = this.aYI.elapsedRealtime();
+      AppMethodBeat.i(93057);
+      if (this.bwK == 0) {
+        this.bwL = this.bwJ.elapsedRealtime();
       }
-      this.aYJ += 1;
-      AppMethodBeat.o(95814);
+      this.bwK += 1;
+      AppMethodBeat.o(93057);
       return;
     }
     finally {}
   }
   
-  public final void qr()
+  public final void vm()
   {
     long l2;
-    int k;
+    final int k;
     float f;
     Object localObject4;
     int i;
@@ -106,56 +106,56 @@ public final class l
     {
       try
       {
-        AppMethodBeat.i(95815);
-        if (this.aYJ > 0)
+        AppMethodBeat.i(93058);
+        if (this.bwK > 0)
         {
           bool = true;
           a.checkState(bool);
-          l2 = this.aYI.elapsedRealtime();
-          k = (int)(l2 - this.aYK);
-          this.aYM += k;
-          this.aYN += this.aYL;
+          l2 = this.bwJ.elapsedRealtime();
+          k = (int)(l2 - this.bwL);
+          this.bwN += k;
+          this.bwO += this.bwM;
           if (k <= 0) {
             break label517;
           }
-          f = (float)(this.aYL * 8000L / k);
-          localObject4 = this.aYH;
-          i = (int)Math.sqrt(this.aYL);
-          if (((r)localObject4).bbl != 1)
+          f = (float)(this.bwM * 8000L / k);
+          localObject4 = this.bwI;
+          i = (int)Math.sqrt(this.bwM);
+          if (((r)localObject4).bzm != 1)
           {
-            Collections.sort(((r)localObject4).bbj, r.bbg);
-            ((r)localObject4).bbl = 1;
+            Collections.sort(((r)localObject4).bzk, r.bzh);
+            ((r)localObject4).bzm = 1;
           }
-          if (((r)localObject4).bbo <= 0) {
+          if (((r)localObject4).bzp <= 0) {
             break label345;
           }
-          Object localObject1 = ((r)localObject4).bbk;
-          j = ((r)localObject4).bbo - 1;
-          ((r)localObject4).bbo = j;
+          Object localObject1 = ((r)localObject4).bzl;
+          j = ((r)localObject4).bzp - 1;
+          ((r)localObject4).bzp = j;
           localObject1 = localObject1[j];
-          j = ((r)localObject4).bbm;
-          ((r)localObject4).bbm = (j + 1);
+          j = ((r)localObject4).bzn;
+          ((r)localObject4).bzn = (j + 1);
           ((r.a)localObject1).index = j;
           ((r.a)localObject1).weight = i;
           ((r.a)localObject1).value = f;
-          ((r)localObject4).bbj.add(localObject1);
-          ((r)localObject4).bbn += i;
-          if (((r)localObject4).bbn <= ((r)localObject4).bbi) {
+          ((r)localObject4).bzk.add(localObject1);
+          ((r)localObject4).bzo += i;
+          if (((r)localObject4).bzo <= ((r)localObject4).bzj) {
             break;
           }
-          i = ((r)localObject4).bbn - ((r)localObject4).bbi;
-          localObject1 = (r.a)((r)localObject4).bbj.get(0);
+          i = ((r)localObject4).bzo - ((r)localObject4).bzj;
+          localObject1 = (r.a)((r)localObject4).bzk.get(0);
           if (((r.a)localObject1).weight > i) {
             break label358;
           }
-          ((r)localObject4).bbn -= ((r.a)localObject1).weight;
-          ((r)localObject4).bbj.remove(0);
-          if (((r)localObject4).bbo >= 5) {
+          ((r)localObject4).bzo -= ((r.a)localObject1).weight;
+          ((r)localObject4).bzk.remove(0);
+          if (((r)localObject4).bzp >= 5) {
             continue;
           }
-          r.a[] arrayOfa = ((r)localObject4).bbk;
-          i = ((r)localObject4).bbo;
-          ((r)localObject4).bbo = (i + 1);
+          r.a[] arrayOfa = ((r)localObject4).bzl;
+          i = ((r)localObject4).bzp;
+          ((r)localObject4).bzp = (i + 1);
           arrayOfa[i] = localObject1;
           continue;
         }
@@ -167,23 +167,23 @@ public final class l
       continue;
       label358:
       ((r.a)localObject3).weight -= i;
-      ((r)localObject4).bbn -= i;
+      ((r)localObject4).bzo -= i;
     }
-    if ((this.aYM >= 2000L) || (this.aYN >= 524288L))
+    if ((this.bwN >= 2000L) || (this.bwO >= 524288L))
     {
-      localObject3 = this.aYH;
-      if (((r)localObject3).bbl != 0)
+      localObject3 = this.bwI;
+      if (((r)localObject3).bzm != 0)
       {
-        Collections.sort(((r)localObject3).bbj, r.bbh);
-        ((r)localObject3).bbl = 0;
+        Collections.sort(((r)localObject3).bzk, r.bzi);
+        ((r)localObject3).bzm = 0;
       }
-      f = ((r)localObject3).bbn;
+      f = ((r)localObject3).bzo;
       i = 0;
       j = 0;
-      if (i >= ((r)localObject3).bbj.size()) {
+      if (i >= ((r)localObject3).bzk.size()) {
         break label607;
       }
-      localObject4 = (r.a)((r)localObject3).bbj.get(i);
+      localObject4 = (r.a)((r)localObject3).bzk.get(i);
       j = ((r.a)localObject4).weight + j;
       if (j < 0.5F * f) {
         break label600;
@@ -196,39 +196,42 @@ public final class l
     }
     label517:
     label652:
-    for (long l1 = -1L;; l1 = f)
+    for (final long l1 = -1L;; l1 = f)
     {
-      this.aYO = l1;
-      l1 = this.aYL;
-      long l3 = this.aYO;
-      if ((this.eventHandler != null) && (this.aYG != null)) {
-        this.eventHandler.post(new l.1(this, k, l1, l3));
+      this.bwP = l1;
+      l1 = this.bwM;
+      long l3 = this.bwP;
+      if ((this.eventHandler != null) && (this.bwH != null)) {
+        this.eventHandler.post(new Runnable()
+        {
+          public final void run() {}
+        });
       }
-      i = this.aYJ - 1;
-      this.aYJ = i;
+      i = this.bwK - 1;
+      this.bwK = i;
       if (i > 0) {
-        this.aYK = l2;
+        this.bwL = l2;
       }
-      this.aYL = 0L;
-      AppMethodBeat.o(95815);
+      this.bwM = 0L;
+      AppMethodBeat.o(93058);
       return;
       label600:
       i += 1;
       break;
       label607:
-      if (((r)localObject3).bbj.isEmpty())
+      if (((r)localObject3).bzk.isEmpty())
       {
         f = (0.0F / 0.0F);
         break label499;
       }
-      f = ((r.a)((r)localObject3).bbj.get(((r)localObject3).bbj.size() - 1)).value;
+      f = ((r.a)((r)localObject3).bzk.get(((r)localObject3).bzk.size() - 1)).value;
       break label499;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.h.l
  * JD-Core Version:    0.7.0.1
  */

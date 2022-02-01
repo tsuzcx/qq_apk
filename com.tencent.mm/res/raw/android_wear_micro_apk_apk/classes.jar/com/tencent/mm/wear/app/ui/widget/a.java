@@ -15,16 +15,16 @@ import com.tencent.mm.wear.app.ui.MMActivity;
 
 public final class a
 {
-  private ImageView aeA;
-  private TextView afL;
-  private TextView agg;
-  private TextView ahQ;
-  private TextView ahR;
-  private View ahS;
-  private TextView ahT;
-  private ImageButton ahU;
-  private View.OnClickListener ahV;
-  private TextView ahm;
+  private ImageView aic;
+  private TextView ajI;
+  private TextView ajn;
+  private TextView akO;
+  private TextView als;
+  private TextView alt;
+  private View alu;
+  private TextView alv;
+  private ImageButton alw;
+  private View.OnClickListener alx;
   private View view;
   
   public a(MMActivity paramMMActivity)
@@ -32,18 +32,18 @@ public final class a
     if (MMActivity.isRect()) {}
     for (this.view = paramMMActivity.getLayoutInflater().inflate(2130903057, null, false);; this.view = paramMMActivity.getLayoutInflater().inflate(2130903058, null, false))
     {
-      this.view.setLayoutParams(new AbsListView.LayoutParams(MMActivity.nc(), MMActivity.nc()));
+      this.view.setLayoutParams(new AbsListView.LayoutParams(MMActivity.nP(), MMActivity.nP()));
       this.view.setBackgroundResource(2130837587);
-      this.ahS = this.view.findViewById(2131558459);
-      this.aeA = ((ImageView)this.view.findViewById(2131558442));
-      this.afL = ((TextView)this.view.findViewById(2131558460));
-      this.ahm = ((TextView)this.view.findViewById(2131558461));
-      this.agg = ((TextView)this.view.findViewById(2131558465));
-      this.ahR = ((TextView)this.view.findViewById(2131558466));
-      this.ahT = ((TextView)this.view.findViewById(2131558464));
-      this.ahQ = ((TextView)this.view.findViewById(2131558462));
-      this.ahU = ((ImageButton)this.view.findViewById(2131558463));
-      this.ahU.setOnClickListener(new View.OnClickListener()
+      this.alu = this.view.findViewById(2131558460);
+      this.aic = ((ImageView)this.view.findViewById(2131558443));
+      this.ajn = ((TextView)this.view.findViewById(2131558461));
+      this.akO = ((TextView)this.view.findViewById(2131558462));
+      this.ajI = ((TextView)this.view.findViewById(2131558466));
+      this.alt = ((TextView)this.view.findViewById(2131558467));
+      this.alv = ((TextView)this.view.findViewById(2131558465));
+      this.als = ((TextView)this.view.findViewById(2131558463));
+      this.alw = ((ImageButton)this.view.findViewById(2131558464));
+      this.alw.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -58,82 +58,82 @@ public final class a
   
   public final void a(long paramLong, String paramString)
   {
-    this.ahU.setVisibility(8);
+    this.alw.setVisibility(8);
     if (paramLong > 0L)
     {
-      this.ahS.setBackgroundResource(2130837597);
-      this.agg.setText(String.format("%.2f", new Object[] { Float.valueOf((float)paramLong / 100.0F) }));
-      this.ahR.setVisibility(0);
-      this.ahT.setText(paramString);
+      this.alu.setBackgroundResource(2130837597);
+      this.ajI.setText(String.format("%.2f", new Object[] { Float.valueOf((float)paramLong / 100.0F) }));
+      this.alt.setVisibility(0);
+      this.alv.setText(paramString);
     }
     for (;;)
     {
       if (MMActivity.isRect()) {
-        this.ahm.setVisibility(8);
+        this.akO.setVisibility(8);
       }
       return;
-      this.ahS.setBackgroundResource(2130837597);
-      this.ahQ.setVisibility(0);
-      this.ahT.setText(paramString);
+      this.alu.setBackgroundResource(2130837597);
+      this.als.setVisibility(0);
+      this.alv.setText(paramString);
     }
   }
   
   public final void a(View.OnClickListener paramOnClickListener)
   {
-    this.ahV = paramOnClickListener;
+    this.alx = paramOnClickListener;
   }
   
   public final void a(n paramn)
   {
     Object localObject;
-    if (paramn.VN.endsWith("@chatroom"))
+    if (paramn.XI.endsWith("@chatroom"))
     {
-      localObject = paramn.Vx.split("​");
-      this.afL.setText(localObject[0]);
-      this.ahm.setText(localObject[1]);
+      localObject = paramn.Xs.split("​");
+      this.ajn.setText(localObject[0]);
+      this.akO.setText(localObject[1]);
     }
     for (;;)
     {
       localObject = new com.tencent.mm.wear.app.c.a();
-      ((com.tencent.mm.wear.app.c.a)localObject).acL = this.aeA;
-      ((com.tencent.mm.wear.app.c.a)localObject).acM = 2130837531;
+      ((com.tencent.mm.wear.app.c.a)localObject).agm = this.aic;
+      ((com.tencent.mm.wear.app.c.a)localObject).agn = 2130837531;
       ((com.tencent.mm.wear.app.c.a)localObject).width = 30;
       ((com.tencent.mm.wear.app.c.a)localObject).height = 30;
       ((com.tencent.mm.wear.app.c.a)localObject).type = 3;
-      ((com.tencent.mm.wear.app.c.a)localObject).acH = paramn.VN;
-      ((com.tencent.mm.wear.app.c.a)localObject).acO = 3;
-      h.me().a((com.tencent.mm.wear.app.c.a)localObject);
+      ((com.tencent.mm.wear.app.c.a)localObject).agi = paramn.XI;
+      ((com.tencent.mm.wear.app.c.a)localObject).agp = 3;
+      h.mR().a((com.tencent.mm.wear.app.c.a)localObject);
       return;
-      this.afL.setText(paramn.Vw);
-      this.ahm.setText(paramn.Vx);
+      this.ajn.setText(paramn.Xr);
+      this.akO.setText(paramn.Xs);
     }
   }
   
-  public final void nA()
-  {
-    if (this.ahU == null) {}
-    while (!(this.ahU.getBackground() instanceof AnimationDrawable)) {
-      return;
-    }
-    AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.ahU.getBackground();
-    if (localAnimationDrawable != null) {
-      localAnimationDrawable.stop();
-    }
-    this.ahU.setVisibility(8);
-  }
-  
-  public final View ny()
+  public final View om()
   {
     return this.view;
   }
   
-  public final void nz()
+  public final void on()
   {
-    this.ahU.setBackgroundResource(2130837544);
-    AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.ahU.getBackground();
+    this.alw.setBackgroundResource(2130837544);
+    AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.alw.getBackground();
     if (localAnimationDrawable != null) {
       localAnimationDrawable.start();
     }
+  }
+  
+  public final void oo()
+  {
+    if (this.alw == null) {}
+    while (!(this.alw.getBackground() instanceof AnimationDrawable)) {
+      return;
+    }
+    AnimationDrawable localAnimationDrawable = (AnimationDrawable)this.alw.getBackground();
+    if (localAnimationDrawable != null) {
+      localAnimationDrawable.stop();
+    }
+    this.alw.setVisibility(8);
   }
 }
 

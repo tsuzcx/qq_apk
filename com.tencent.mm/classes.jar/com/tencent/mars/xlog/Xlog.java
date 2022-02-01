@@ -1,14 +1,15 @@
 package com.tencent.mars.xlog;
 
-import com.tencent.mm.a.e;
-import com.tencent.mm.sdk.platformtools.ab.a;
-import com.tencent.mm.sdk.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.bl;
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.mm.sdk.platformtools.ad.a;
+import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.bq;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.g;
+import com.tencent.mm.vfs.i;
+import com.tencent.mm.vfs.q;
 
 public class Xlog
-  implements ab.a
+  implements ad.a
 {
   public static final int AppednerModeAsync = 0;
   public static final int AppednerModeSync = 1;
@@ -20,7 +21,7 @@ public class Xlog
   public static final int LEVEL_NONE = 6;
   public static final int LEVEL_VERBOSE = 0;
   public static final int LEVEL_WARNING = 3;
-  public static ac logDecryptor;
+  public static ae logDecryptor;
   private static String mCacheDir = null;
   private static String mLogDir = null;
   
@@ -35,10 +36,10 @@ public class Xlog
   
   private static String decryptTag(String paramString)
   {
-    ac localac;
+    ae localae;
     if (logDecryptor != null)
     {
-      localac = logDecryptor;
+      localae = logDecryptor;
       if ((paramString != null) && (paramString.length() != 0)) {}
     }
     else
@@ -50,9 +51,9 @@ public class Xlog
     default: 
       return paramString;
     case '⍆': 
-      return localac.et(paramString, paramString.length());
+      return localae.fE(paramString, paramString.length());
     }
-    return localac.ynA.decryptTag(paramString);
+    return localae.EUq.decryptTag(paramString);
   }
   
   public static native void logWrite(XLoggerInfo paramXLoggerInfo, String paramString);
@@ -117,27 +118,27 @@ public class Xlog
     for (;;)
     {
       return;
-      Object localObject = new File(mCacheDir);
-      if (((File)localObject).exists())
+      Object localObject1 = new e(mCacheDir);
+      if (((e)localObject1).exists())
       {
-        localObject = ((File)localObject).listFiles(new FileFilter()
+        localObject1 = ((e)localObject1).a(new g()
         {
-          public boolean accept(File paramAnonymousFile)
+          public boolean accept(e paramAnonymouse)
           {
-            if (paramAnonymousFile.isDirectory()) {
+            if (paramAnonymouse.isDirectory()) {
               return false;
             }
-            return paramAnonymousFile.getName().toLowerCase().endsWith(".xlog");
+            return paramAnonymouse.getName().toLowerCase().endsWith(".xlog");
           }
         });
-        if (localObject.length != 0)
+        if (localObject1.length != 0)
         {
-          int j = localObject.length;
+          int j = localObject1.length;
           int i = 0;
           while (i < j)
           {
-            File localFile = localObject[i];
-            e.d(localFile, new File(mLogDir + "/" + localFile.getName()));
+            Object localObject2 = localObject1[i];
+            i.lD(q.B(localObject2.mUri), mLogDir + "/" + localObject2.getName());
             i += 1;
           }
         }

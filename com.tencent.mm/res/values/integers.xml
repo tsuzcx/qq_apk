@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="a">2</integer>
-    <integer name="b">220</integer>
-    <integer name="c">150</integer>
+    <integer name="a">220</integer>
+    <integer name="b">150</integer>
+    <integer name="c">300</integer>
     <integer name="d">150</integer>
     <integer name="e">150</integer>
-    <integer name="g">150</integer>
-    <integer name="h">12451000</integer>
-    <integer name="i">320</integer>
-    <integer name="j">250</integer>
-    <integer name="k">200</integer>
     <integer name="f">127</integer>
-    <integer name="l">999</integer>
-    <item type="integer" name="APKTOOL_DUMMY_5" />
+    <integer name="g">150</integer>
+    <integer name="h">2</integer>
+    <integer name="i">300</integer>
+    <integer name="j">12451000</integer>
+    <integer name="k">320</integer>
+    <integer name="l">100</integer>
+    <integer name="m">100</integer>
+    <integer name="n">100</integer>
+    <integer name="o">250</integer>
+    <integer name="p">250</integer>
+    <integer name="q">200</integer>
+    <integer name="r">999</integer>
 </resources>

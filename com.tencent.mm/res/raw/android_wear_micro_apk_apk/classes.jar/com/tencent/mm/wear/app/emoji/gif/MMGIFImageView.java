@@ -13,12 +13,12 @@ import java.io.InputStream;
 public class MMGIFImageView
   extends ImageView
 {
-  private int acB = 2130837533;
-  private int acC = 2130837567;
-  private boolean acD = true;
-  private boolean acE = false;
-  private String acF;
-  private float acj = 0.0F;
+  private float afK = 0.0F;
+  private int agc = 2130837533;
+  private int agd = 2130837567;
+  private boolean age = true;
+  private boolean agf = false;
+  private String agg;
   
   public MMGIFImageView(Context paramContext)
   {
@@ -52,9 +52,9 @@ public class MMGIFImageView
     try
     {
       if (!q.D(null)) {
-        this.acF = null;
+        this.agg = null;
       }
-      for (paramResources = c.mD().a(null, paramResources, paramInt); paramBoolean; paramResources = new b(paramResources, paramInt))
+      for (paramResources = c.np().a(null, paramResources, paramInt); paramBoolean; paramResources = new b(paramResources, paramInt))
       {
         setImageDrawable(paramResources);
         return;
@@ -75,23 +75,23 @@ public class MMGIFImageView
     }
   }
   
-  private void mC()
+  private void no()
   {
     d.c("MicroMsg.GIF.MMGIFImageView", "init", new Object[0]);
-    this.acD = true;
-    if (this.acD) {
-      if (this.acB > 0) {
-        super.setImageResource(this.acB);
+    this.age = true;
+    if (this.age) {
+      if (this.agc > 0) {
+        super.setImageResource(this.agc);
       }
     }
-    while (this.acC <= 0) {
+    while (this.agd <= 0) {
       return;
     }
-    super.setImageResource(this.acC);
+    super.setImageResource(this.agd);
   }
   
   /* Error */
-  public final void G(String paramString)
+  public final void L(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -99,12 +99,12 @@ public class MMGIFImageView
     //   4: ifne +26 -> 30
     //   7: aload_0
     //   8: aconst_null
-    //   9: putfield 80	com/tencent/mm/wear/app/emoji/gif/MMGIFImageView:acF	Ljava/lang/String;
-    //   12: invokestatic 86	com/tencent/mm/wear/app/emoji/gif/c:mD	()Lcom/tencent/mm/wear/app/emoji/gif/c;
+    //   9: putfield 80	com/tencent/mm/wear/app/emoji/gif/MMGIFImageView:agg	Ljava/lang/String;
+    //   12: invokestatic 86	com/tencent/mm/wear/app/emoji/gif/c:np	()Lcom/tencent/mm/wear/app/emoji/gif/c;
     //   15: aload_0
-    //   16: getfield 80	com/tencent/mm/wear/app/emoji/gif/MMGIFImageView:acF	Ljava/lang/String;
+    //   16: getfield 80	com/tencent/mm/wear/app/emoji/gif/MMGIFImageView:agg	Ljava/lang/String;
     //   19: aload_1
-    //   20: invokevirtual 142	com/tencent/mm/wear/app/emoji/gif/c:m	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/wear/app/emoji/gif/b;
+    //   20: invokevirtual 142	com/tencent/mm/wear/app/emoji/gif/c:n	(Ljava/lang/String;Ljava/lang/String;)Lcom/tencent/mm/wear/app/emoji/gif/b;
     //   23: astore_2
     //   24: aload_0
     //   25: aload_2
@@ -174,7 +174,7 @@ public class MMGIFImageView
     //   138: aastore
     //   139: invokestatic 113	com/tencent/mm/wear/a/c/d:a	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   142: aload_0
-    //   143: invokespecial 178	com/tencent/mm/wear/app/emoji/gif/MMGIFImageView:mC	()V
+    //   143: invokespecial 178	com/tencent/mm/wear/app/emoji/gif/MMGIFImageView:no	()V
     //   146: return
     //   147: astore_2
     //   148: aconst_null
@@ -236,9 +236,9 @@ public class MMGIFImageView
     try
     {
       if (!q.D(paramString)) {
-        this.acF = paramString;
+        this.agg = paramString;
       }
-      for (paramString = c.mD().a(this.acF, paramInputStream);; paramString = new b(paramInputStream))
+      for (paramString = c.np().a(this.agg, paramInputStream);; paramString = new b(paramInputStream))
       {
         setImageDrawable(paramString);
         return;
@@ -259,7 +259,7 @@ public class MMGIFImageView
       else
       {
         d.a("MicroMsg.GIF.MMGIFImageView", "setMMGIFFileInputStream failed. %s", new Object[] { paramString.toString() });
-        mC();
+        no();
         return;
       }
     }
@@ -278,9 +278,9 @@ public class MMGIFImageView
     try
     {
       if (!q.D(paramString)) {
-        this.acF = paramString;
+        this.agg = paramString;
       }
-      for (paramString = c.mD().c(this.acF, paramArrayOfByte);; paramString = new b(paramArrayOfByte))
+      for (paramString = c.np().c(this.agg, paramArrayOfByte);; paramString = new b(paramArrayOfByte))
       {
         setImageDrawable(paramString);
         return;
@@ -301,7 +301,7 @@ public class MMGIFImageView
       else
       {
         d.a("MicroMsg.GIF.MMGIFImageView", "setMMGIFFileByteArray failed. %s", new Object[] { paramString.toString() });
-        mC();
+        no();
         return;
       }
     }

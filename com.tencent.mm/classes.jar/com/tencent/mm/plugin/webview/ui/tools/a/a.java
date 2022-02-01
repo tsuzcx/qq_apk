@@ -2,68 +2,66 @@ package com.tencent.mm.plugin.webview.ui.tools.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.dw;
-import com.tencent.mm.g.a.ef;
-import com.tencent.mm.g.a.ew;
-import com.tencent.mm.pluginsdk.ui.tools.t.a;
+import com.tencent.mm.g.a.el;
+import com.tencent.mm.g.a.fc;
+import com.tencent.mm.pluginsdk.ui.tools.w.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
-  implements t.a
+  implements w.a
 {
-  private static String eQs = "lan";
-  private static a vjg;
-  public String cqQ;
+  private static a BjV;
+  private static String glX = "lan";
+  public byte[] ASs = null;
+  public boolean ASu = false;
+  public a.a BjU;
+  private int BjW = -1;
+  public String dfM;
   public boolean hasInit = false;
-  public a.a vjf;
-  public byte[] vjh = null;
-  private int vji = -1;
-  public boolean vjj = false;
   
-  public static a dfq()
+  public static a ept()
   {
-    AppMethodBeat.i(8315);
-    if (vjg == null) {
-      vjg = new a();
+    AppMethodBeat.i(80486);
+    if (BjV == null) {
+      BjV = new a();
     }
-    a locala = vjg;
-    AppMethodBeat.o(8315);
+    a locala = BjV;
+    AppMethodBeat.o(80486);
     return locala;
   }
   
-  public final void dfr()
+  public final void ekM()
   {
-    AppMethodBeat.i(8316);
-    ab.i("MicroMsg.webview.WebViewExDeviceLanMgr", "stopPlugin, isScaning = %s", new Object[] { Boolean.valueOf(this.vjj) });
-    if (this.vjj)
+    AppMethodBeat.i(80487);
+    ad.i("MicroMsg.webview.WebViewExDeviceLanMgr", "stopPlugin, isScaning = %s", new Object[] { Boolean.valueOf(this.ASu) });
+    if (this.ASu)
     {
-      localObject = new ew();
-      ((ew)localObject).csG.cqR = false;
-      com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
-      this.vjj = false;
+      localObject = new fc();
+      ((fc)localObject).dhC.dfN = false;
+      com.tencent.mm.sdk.b.a.ESL.l((b)localObject);
+      this.ASu = false;
     }
     this.hasInit = false;
-    if (this.vjf != null)
+    if (this.BjU != null)
     {
-      com.tencent.mm.sdk.b.a.ymk.d(this.vjf.vjk);
-      com.tencent.mm.sdk.b.a.ymk.d(this.vjf.vjl);
-      com.tencent.mm.sdk.b.a.ymk.d(this.vjf.vjn);
-      com.tencent.mm.sdk.b.a.ymk.d(this.vjf.vjm);
-      com.tencent.mm.sdk.b.a.ymk.d(this.vjf.vjo);
-      this.vjf = null;
+      com.tencent.mm.sdk.b.a.ESL.d(this.BjU.ASz);
+      com.tencent.mm.sdk.b.a.ESL.d(this.BjU.BjX);
+      com.tencent.mm.sdk.b.a.ESL.d(this.BjU.BjZ);
+      com.tencent.mm.sdk.b.a.ESL.d(this.BjU.BjY);
+      com.tencent.mm.sdk.b.a.ESL.d(this.BjU.Bka);
+      this.BjU = null;
     }
-    this.vjh = null;
-    Object localObject = new ef();
-    ((ef)localObject).crW.cqR = false;
-    com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
-    AppMethodBeat.o(8316);
+    this.ASs = null;
+    Object localObject = new el();
+    ((el)localObject).dgS.dfN = false;
+    com.tencent.mm.sdk.b.a.ESL.l((b)localObject);
+    AppMethodBeat.o(80487);
   }
   
-  public final void dfs() {}
+  public final void ekN() {}
   
-  public final void fz(Context paramContext) {}
+  public final void gD(Context paramContext) {}
   
   public final String getName()
   {
@@ -72,7 +70,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -25,21 +25,21 @@ public class SnsCommentShowAbLayout
   
   public void buildDrawingCache(boolean paramBoolean)
   {
-    AppMethodBeat.i(38913);
+    AppMethodBeat.i(98674);
     super.buildDrawingCache(paramBoolean);
-    AppMethodBeat.o(38913);
+    AppMethodBeat.o(98674);
   }
   
   public void destroyDrawingCache()
   {
-    AppMethodBeat.i(38914);
+    AppMethodBeat.i(98675);
     super.destroyDrawingCache();
-    AppMethodBeat.o(38914);
+    AppMethodBeat.o(98675);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentShowAbLayout
  * JD-Core Version:    0.7.0.1
  */

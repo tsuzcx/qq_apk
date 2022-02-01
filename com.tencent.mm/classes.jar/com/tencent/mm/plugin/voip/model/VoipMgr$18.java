@@ -1,36 +1,28 @@
 package com.tencent.mm.plugin.voip.model;
 
-import android.telephony.PhoneStateListener;
-import android.telephony.SignalStrength;
-import android.telephony.TelephonyManager;
+import android.graphics.SurfaceTexture;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.media.f.d;
+import com.tencent.mm.plugin.voip.ui.b;
+import com.tencent.mm.plugin.voip.video.b.e.a;
 
 final class VoipMgr$18
-  extends PhoneStateListener
+  implements e.a
 {
   VoipMgr$18(VoipMgr paramVoipMgr) {}
   
-  public final void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
+  public final void Ca()
   {
-    AppMethodBeat.i(140156);
-    super.onSignalStrengthsChanged(paramSignalStrength);
-    super.onSignalStrengthsChanged(paramSignalStrength);
-    paramSignalStrength = paramSignalStrength.toString().split(" ");
-    try
+    AppMethodBeat.i(192028);
+    VoipMgr localVoipMgr = this.zlq;
+    SurfaceTexture localSurfaceTexture = v2protocal.mSurfaceTexture;
+    d locald = v2protocal.zpx;
+    if ((localVoipMgr.zgR != null) && (localSurfaceTexture != null))
     {
-      if ((VoipMgr.j(this.tyo).getNetworkType() == 13) && (paramSignalStrength.length > 9)) {
-        VoipMgr.cNo()[0] = bo.apV(paramSignalStrength[9]);
-      }
-      AppMethodBeat.o(140156);
-      return;
+      localSurfaceTexture.setOnFrameAvailableListener(localVoipMgr);
+      localVoipMgr.zgR.a(localSurfaceTexture, locald);
     }
-    catch (Exception paramSignalStrength)
-    {
-      ab.printErrStackTrace("MicroMsg.Voip.VoipMgr", paramSignalStrength, "", new Object[0]);
-      AppMethodBeat.o(140156);
-    }
+    AppMethodBeat.o(192028);
   }
 }
 

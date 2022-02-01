@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:layout_gravity="center" android:id="@id/his" android:background="@drawable/c64" android:padding="1.0dip" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerVertical="true" android:layout_marginStart="@dimen/c0">
+        <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/hip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" app:roundHeight="@dimen/ame" app:roundWidth="@dimen/ame" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_gravity="center" android:id="@id/hit" android:background="@drawable/c64" android:padding="1.0dip" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerVertical="true" android:layout_marginStart="-11.199982dip" android:layout_toEndOf="@id/his">
+        <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/hiq" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" app:roundHeight="@dimen/ame" app:roundWidth="@dimen/ame" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_gravity="center" android:id="@id/hiu" android:background="@drawable/c64" android:padding="1.0dip" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerVertical="true" android:layout_marginStart="-11.199982dip" android:layout_toEndOf="@id/hit">
+        <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/hir" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" app:roundHeight="@dimen/ame" app:roundWidth="@dimen/ame" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/a_r" android:id="@id/hiv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ci" android:layout_marginEnd="@dimen/c0" android:layout_toEndOf="@id/hiu" />
+</merge>

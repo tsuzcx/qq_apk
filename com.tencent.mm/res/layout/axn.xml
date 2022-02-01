@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/eqo" android:background="#44000000" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/jm"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/amq" />
+    <LinearLayout android:gravity="center|left" android:id="@id/b3b" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/jm" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center_vertical" android:id="@id/b39" android:paddingTop="@dimen/jn" android:paddingBottom="@dimen/jn" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hk">
+                <TextView android:gravity="left" android:id="@id/azu" android:layout_width="@dimen/eb" android:layout_height="0.0dip" android:text="@string/b5g" android:singleLine="true" android:layout_weight="1.0" style="@style/lw" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/g2f" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:textSize="@dimen/ia" android:textColor="@color/km" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/azt" android:maxLines="2" android:singleLine="false" android:lineSpacingExtra="@dimen/bq" style="@style/lz" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

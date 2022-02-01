@@ -12,23 +12,23 @@ public final class zzabw
   
   private zzabw(ByteBuffer paramByteBuffer)
   {
-    AppMethodBeat.i(3453);
+    AppMethodBeat.i(40243);
     this.zzbwv = paramByteBuffer;
     this.zzbwv.order(ByteOrder.LITTLE_ENDIAN);
-    AppMethodBeat.o(3453);
+    AppMethodBeat.o(40243);
   }
   
   private zzabw(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     this(ByteBuffer.wrap(paramArrayOfByte, paramInt1, paramInt2));
-    AppMethodBeat.i(3452);
-    AppMethodBeat.o(3452);
+    AppMethodBeat.i(40242);
+    AppMethodBeat.o(40242);
   }
   
   private static int zza(CharSequence paramCharSequence)
   {
     int k = 0;
-    AppMethodBeat.i(3464);
+    AppMethodBeat.i(40254);
     int n = paramCharSequence.length();
     int j = 0;
     while ((j < n) && (paramCharSequence.charAt(j) < '')) {
@@ -72,7 +72,7 @@ public final class zzabw
                   if (Character.codePointAt(paramCharSequence, j) < 65536)
                   {
                     paramCharSequence = new IllegalArgumentException(39 + "Unpaired surrogate at index " + j);
-                    AppMethodBeat.o(3464);
+                    AppMethodBeat.o(40254);
                     throw paramCharSequence;
                   }
                   m = j + 1;
@@ -92,10 +92,10 @@ public final class zzabw
           {
             long l = i;
             paramCharSequence = new IllegalArgumentException(54 + "UTF-8 length does not fit in int: " + (l + 4294967296L));
-            AppMethodBeat.o(3464);
+            AppMethodBeat.o(40254);
             throw paramCharSequence;
           }
-          AppMethodBeat.o(3464);
+          AppMethodBeat.o(40254);
           return i;
         }
         i = n;
@@ -106,11 +106,11 @@ public final class zzabw
   private static void zza(CharSequence paramCharSequence, ByteBuffer paramByteBuffer)
   {
     int m = 0;
-    AppMethodBeat.i(3465);
+    AppMethodBeat.i(40255);
     if (paramByteBuffer.isReadOnly())
     {
       paramCharSequence = new ReadOnlyBufferException();
-      AppMethodBeat.o(3465);
+      AppMethodBeat.o(40255);
       throw paramCharSequence;
     }
     byte[] arrayOfByte;
@@ -139,15 +139,15 @@ public final class zzabw
           n += 1;
         }
         paramByteBuffer.position(m - paramByteBuffer.arrayOffset());
-        AppMethodBeat.o(3465);
+        AppMethodBeat.o(40255);
         return;
       }
       catch (ArrayIndexOutOfBoundsException paramCharSequence)
       {
-        label158:
+        label155:
         paramByteBuffer = new BufferOverflowException();
         paramByteBuffer.initCause(paramCharSequence);
-        AppMethodBeat.o(3465);
+        AppMethodBeat.o(40255);
         throw paramByteBuffer;
       }
       m += n;
@@ -198,7 +198,7 @@ public final class zzabw
             else
             {
               paramCharSequence = new IllegalArgumentException(39 + "Unpaired surrogate at index " + (i1 - 1));
-              AppMethodBeat.o(3465);
+              AppMethodBeat.o(40255);
               throw paramCharSequence;
             }
             i1 = Character.toCodePoint(j, c);
@@ -214,7 +214,7 @@ public final class zzabw
           else
           {
             paramCharSequence = new ArrayIndexOutOfBoundsException(37 + "Failed writing " + j + " at index " + m);
-            AppMethodBeat.o(3465);
+            AppMethodBeat.o(40255);
             throw paramCharSequence;
           }
         }
@@ -258,7 +258,7 @@ public final class zzabw
               else
               {
                 paramCharSequence = new IllegalArgumentException(39 + "Unpaired surrogate at index " + (n - 1));
-                AppMethodBeat.o(3465);
+                AppMethodBeat.o(40255);
                 throw paramCharSequence;
               }
               n = Character.toCodePoint(k, c);
@@ -269,10 +269,10 @@ public final class zzabw
             }
           }
         }
-        AppMethodBeat.o(3465);
+        AppMethodBeat.o(40255);
         return;
         if (n != i2) {
-          break label158;
+          break label155;
         }
         m += i2;
         break;
@@ -283,13 +283,13 @@ public final class zzabw
   
   private final void zzan(long paramLong)
   {
-    AppMethodBeat.i(3479);
+    AppMethodBeat.i(40269);
     for (;;)
     {
       if ((0xFFFFFF80 & paramLong) == 0L)
       {
         zzap((int)paramLong);
-        AppMethodBeat.o(3479);
+        AppMethodBeat.o(40269);
         return;
       }
       zzap((int)paramLong & 0x7F | 0x80);
@@ -299,14 +299,14 @@ public final class zzabw
   
   public static int zzao(int paramInt)
   {
-    AppMethodBeat.i(3471);
+    AppMethodBeat.i(40261);
     if (paramInt >= 0)
     {
       paramInt = zzas(paramInt);
-      AppMethodBeat.o(3471);
+      AppMethodBeat.o(40261);
       return paramInt;
     }
-    AppMethodBeat.o(3471);
+    AppMethodBeat.o(40261);
     return 10;
   }
   
@@ -344,23 +344,23 @@ public final class zzabw
   
   private final void zzap(int paramInt)
   {
-    AppMethodBeat.i(3474);
+    AppMethodBeat.i(40264);
     byte b = (byte)paramInt;
     if (!this.zzbwv.hasRemaining())
     {
       zzabx localzzabx = new zzabx(this.zzbwv.position(), this.zzbwv.limit());
-      AppMethodBeat.o(3474);
+      AppMethodBeat.o(40264);
       throw localzzabx;
     }
     this.zzbwv.put(b);
-    AppMethodBeat.o(3474);
+    AppMethodBeat.o(40264);
   }
   
   public static int zzaq(int paramInt)
   {
-    AppMethodBeat.i(3477);
+    AppMethodBeat.i(40267);
     paramInt = zzas(paramInt << 3);
-    AppMethodBeat.o(3477);
+    AppMethodBeat.o(40267);
     return paramInt;
   }
   
@@ -383,116 +383,116 @@ public final class zzabw
   
   public static int zzb(int paramInt, zzace paramzzace)
   {
-    AppMethodBeat.i(3470);
+    AppMethodBeat.i(40260);
     paramInt = zzaq(paramInt);
     int i = paramzzace.zzvm();
     int j = zzas(i);
-    AppMethodBeat.o(3470);
+    AppMethodBeat.o(40260);
     return paramInt + (i + j);
   }
   
   public static zzabw zzb(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(3455);
+    AppMethodBeat.i(40245);
     paramArrayOfByte = new zzabw(paramArrayOfByte, 0, paramInt2);
-    AppMethodBeat.o(3455);
+    AppMethodBeat.o(40245);
     return paramArrayOfByte;
   }
   
   public static int zzc(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(3467);
+    AppMethodBeat.i(40257);
     paramInt = zzaq(paramInt);
     int i = zzao(paramLong);
-    AppMethodBeat.o(3467);
+    AppMethodBeat.o(40257);
     return paramInt + i;
   }
   
   public static int zzc(int paramInt, String paramString)
   {
-    AppMethodBeat.i(3469);
+    AppMethodBeat.i(40259);
     paramInt = zzaq(paramInt);
     int i = zzfm(paramString);
-    AppMethodBeat.o(3469);
+    AppMethodBeat.o(40259);
     return paramInt + i;
   }
   
   public static int zzf(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(3468);
+    AppMethodBeat.i(40258);
     paramInt1 = zzaq(paramInt1);
     paramInt2 = zzao(paramInt2);
-    AppMethodBeat.o(3468);
+    AppMethodBeat.o(40258);
     return paramInt1 + paramInt2;
   }
   
   public static int zzfm(String paramString)
   {
-    AppMethodBeat.i(3472);
+    AppMethodBeat.i(40262);
     int i = zza(paramString);
     int j = zzas(i);
-    AppMethodBeat.o(3472);
+    AppMethodBeat.o(40262);
     return i + j;
   }
   
   public static zzabw zzj(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(3454);
+    AppMethodBeat.i(40244);
     paramArrayOfByte = zzb(paramArrayOfByte, 0, paramArrayOfByte.length);
-    AppMethodBeat.o(3454);
+    AppMethodBeat.o(40244);
     return paramArrayOfByte;
   }
   
   public final void zza(int paramInt, double paramDouble)
   {
-    AppMethodBeat.i(3456);
+    AppMethodBeat.i(40246);
     zzg(paramInt, 1);
     long l = Double.doubleToLongBits(paramDouble);
     if (this.zzbwv.remaining() < 8)
     {
       zzabx localzzabx = new zzabx(this.zzbwv.position(), this.zzbwv.limit());
-      AppMethodBeat.o(3456);
+      AppMethodBeat.o(40246);
       throw localzzabx;
     }
     this.zzbwv.putLong(l);
-    AppMethodBeat.o(3456);
+    AppMethodBeat.o(40246);
   }
   
   public final void zza(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(3457);
+    AppMethodBeat.i(40247);
     zzg(paramInt, 5);
     paramInt = Float.floatToIntBits(paramFloat);
     if (this.zzbwv.remaining() < 4)
     {
       zzabx localzzabx = new zzabx(this.zzbwv.position(), this.zzbwv.limit());
-      AppMethodBeat.o(3457);
+      AppMethodBeat.o(40247);
       throw localzzabx;
     }
     this.zzbwv.putInt(paramInt);
-    AppMethodBeat.o(3457);
+    AppMethodBeat.o(40247);
   }
   
   public final void zza(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(3458);
+    AppMethodBeat.i(40248);
     zzg(paramInt, 0);
     zzan(paramLong);
-    AppMethodBeat.o(3458);
+    AppMethodBeat.o(40248);
   }
   
   public final void zza(int paramInt, zzace paramzzace)
   {
-    AppMethodBeat.i(3463);
+    AppMethodBeat.i(40253);
     zzg(paramInt, 2);
     zzb(paramzzace);
-    AppMethodBeat.o(3463);
+    AppMethodBeat.o(40253);
   }
   
   public final void zza(int paramInt, boolean paramBoolean)
   {
     int i = 0;
-    AppMethodBeat.i(3461);
+    AppMethodBeat.i(40251);
     zzg(paramInt, 0);
     paramInt = i;
     if (paramBoolean) {
@@ -502,22 +502,22 @@ public final class zzabw
     if (!this.zzbwv.hasRemaining())
     {
       zzabx localzzabx = new zzabx(this.zzbwv.position(), this.zzbwv.limit());
-      AppMethodBeat.o(3461);
+      AppMethodBeat.o(40251);
       throw localzzabx;
     }
     this.zzbwv.put(b);
-    AppMethodBeat.o(3461);
+    AppMethodBeat.o(40251);
   }
   
   public final void zzar(int paramInt)
   {
-    AppMethodBeat.i(3478);
+    AppMethodBeat.i(40268);
     for (;;)
     {
       if ((paramInt & 0xFFFFFF80) == 0)
       {
         zzap(paramInt);
-        AppMethodBeat.o(3478);
+        AppMethodBeat.o(40268);
         return;
       }
       zzap(paramInt & 0x7F | 0x80);
@@ -527,15 +527,15 @@ public final class zzabw
   
   public final void zzb(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(3459);
+    AppMethodBeat.i(40249);
     zzg(paramInt, 0);
     zzan(paramLong);
-    AppMethodBeat.o(3459);
+    AppMethodBeat.o(40249);
   }
   
   public final void zzb(int paramInt, String paramString)
   {
-    AppMethodBeat.i(3462);
+    AppMethodBeat.i(40252);
     zzg(paramInt, 2);
     int i;
     try
@@ -548,7 +548,7 @@ public final class zzabw
       if (this.zzbwv.remaining() < paramInt)
       {
         paramString = new zzabx(paramInt + i, this.zzbwv.limit());
-        AppMethodBeat.o(3462);
+        AppMethodBeat.o(40252);
         throw paramString;
       }
     }
@@ -556,7 +556,7 @@ public final class zzabw
     {
       zzabx localzzabx = new zzabx(this.zzbwv.position(), this.zzbwv.limit());
       localzzabx.initCause(paramString);
-      AppMethodBeat.o(3462);
+      AppMethodBeat.o(40252);
       throw localzzabx;
     }
     this.zzbwv.position(i + paramInt);
@@ -565,73 +565,73 @@ public final class zzabw
     this.zzbwv.position(i);
     zzar(j - i - paramInt);
     this.zzbwv.position(j);
-    AppMethodBeat.o(3462);
+    AppMethodBeat.o(40252);
     return;
     label182:
     zzar(zza(paramString));
     zza(paramString, this.zzbwv);
-    AppMethodBeat.o(3462);
+    AppMethodBeat.o(40252);
   }
   
   public final void zzb(zzace paramzzace)
   {
-    AppMethodBeat.i(3466);
+    AppMethodBeat.i(40256);
     zzar(paramzzace.zzvl());
     paramzzace.zza(this);
-    AppMethodBeat.o(3466);
+    AppMethodBeat.o(40256);
   }
   
   public final void zze(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(3460);
+    AppMethodBeat.i(40250);
     zzg(paramInt1, 0);
     if (paramInt2 >= 0)
     {
       zzar(paramInt2);
-      AppMethodBeat.o(3460);
+      AppMethodBeat.o(40250);
       return;
     }
     zzan(paramInt2);
-    AppMethodBeat.o(3460);
+    AppMethodBeat.o(40250);
   }
   
   public final void zzg(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(3476);
+    AppMethodBeat.i(40266);
     zzar(paramInt1 << 3 | paramInt2);
-    AppMethodBeat.o(3476);
+    AppMethodBeat.o(40266);
   }
   
   public final void zzk(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(3475);
+    AppMethodBeat.i(40265);
     int i = paramArrayOfByte.length;
     if (this.zzbwv.remaining() >= i)
     {
       this.zzbwv.put(paramArrayOfByte, 0, i);
-      AppMethodBeat.o(3475);
+      AppMethodBeat.o(40265);
       return;
     }
     paramArrayOfByte = new zzabx(this.zzbwv.position(), this.zzbwv.limit());
-    AppMethodBeat.o(3475);
+    AppMethodBeat.o(40265);
     throw paramArrayOfByte;
   }
   
   public final void zzve()
   {
-    AppMethodBeat.i(3473);
+    AppMethodBeat.i(40263);
     if (this.zzbwv.remaining() != 0)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException(String.format("Did not write as much data as expected, %s bytes remaining.", new Object[] { Integer.valueOf(this.zzbwv.remaining()) }));
-      AppMethodBeat.o(3473);
+      AppMethodBeat.o(40263);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(3473);
+    AppMethodBeat.o(40263);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzabw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,82 +1,45 @@
 package com.tencent.mm.plugin.appbrand.jsapi.j;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ai;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.m.p.c;
+import com.tencent.mm.plugin.appbrand.jsruntime.o;
 import java.util.HashMap;
 
 public final class a
-  extends ai
 {
-  private static final int CTRL_INDEX = 530;
-  private static final String NAME = "onLocalServiceEvent";
-  private static a hTI;
+  private HashMap<String, o> kah;
   
-  static
+  public a()
   {
-    AppMethodBeat.i(108018);
-    hTI = new a();
-    AppMethodBeat.o(108018);
+    AppMethodBeat.i(190819);
+    this.kah = new HashMap(5);
+    AppMethodBeat.o(190819);
   }
   
-  public static void a(c paramc, p.c paramc1)
+  public final o II(String paramString)
   {
-    AppMethodBeat.i(108013);
-    a(paramc, paramc1, "found");
-    AppMethodBeat.o(108013);
+    AppMethodBeat.i(190821);
+    paramString = (o)this.kah.get(paramString);
+    AppMethodBeat.o(190821);
+    return paramString;
   }
   
-  private static void a(c paramc, p.c paramc1, String paramString)
+  public final void a(String paramString, o paramo)
   {
-    try
-    {
-      AppMethodBeat.i(108017);
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("event", paramString);
-      if ((TextUtils.equals(paramString, "found")) || (TextUtils.equals(paramString, "lost")) || (TextUtils.equals(paramString, "resolveFail")))
-      {
-        localHashMap.put("serviceType", paramc1.itH);
-        localHashMap.put("serviceName", paramc1.itG);
-        if (!TextUtils.equals(paramString, "resolveFail"))
-        {
-          localHashMap.put("ip", paramc1.ip);
-          localHashMap.put("port", Integer.valueOf(paramc1.port));
-          localHashMap.put("attributes", paramc1.itF);
-        }
-      }
-      hTI.x(localHashMap).j(paramc).aBz();
-      AppMethodBeat.o(108017);
-      return;
-    }
-    finally {}
+    AppMethodBeat.i(190820);
+    this.kah.put(paramString, paramo);
+    AppMethodBeat.o(190820);
   }
   
-  public static void b(c paramc, p.c paramc1)
+  public final void remove(String paramString)
   {
-    AppMethodBeat.i(108014);
-    a(paramc, paramc1, "lost");
-    AppMethodBeat.o(108014);
-  }
-  
-  public static void c(c paramc, p.c paramc1)
-  {
-    AppMethodBeat.i(108015);
-    a(paramc, paramc1, "resolveFail");
-    AppMethodBeat.o(108015);
-  }
-  
-  public static void t(c paramc)
-  {
-    AppMethodBeat.i(108016);
-    a(paramc, null, "stopScan");
-    AppMethodBeat.o(108016);
+    AppMethodBeat.i(190822);
+    this.kah.remove(paramString);
+    AppMethodBeat.o(190822);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.j.a
  * JD-Core Version:    0.7.0.1
  */

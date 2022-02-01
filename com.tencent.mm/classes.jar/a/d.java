@@ -1,35 +1,44 @@
 package a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.Serializable;
+import java.io.Closeable;
+import java.util.List;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlin/InitializedLazyImpl;", "T", "Lkotlin/Lazy;", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "value", "(Ljava/lang/Object;)V", "getValue", "()Ljava/lang/Object;", "Ljava/lang/Object;", "isInitialized", "", "toString", "", "kotlin-stdlib"})
-public final class d<T>
-  implements f<T>, Serializable
+public final class d
+  implements Closeable
 {
-  private final T value;
+  private e ayY;
+  private Runnable ayZ;
+  private boolean closed;
+  private final Object lock;
   
-  public d(T paramT)
+  public final void close()
   {
-    this.value = paramT;
-  }
-  
-  public final T getValue()
-  {
-    return this.value;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(56015);
-    String str = String.valueOf(getValue());
-    AppMethodBeat.o(56015);
-    return str;
+    AppMethodBeat.i(52983);
+    synchronized (this.lock)
+    {
+      if (this.closed)
+      {
+        AppMethodBeat.o(52983);
+        return;
+      }
+      this.closed = true;
+      e locale = this.ayY;
+      synchronized (locale.lock)
+      {
+        locale.nb();
+        locale.aza.remove(this);
+        this.ayY = null;
+        this.ayZ = null;
+        AppMethodBeat.o(52983);
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     a.d
  * JD-Core Version:    0.7.0.1
  */

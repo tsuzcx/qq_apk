@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class f
   extends b
 {
-  public f.a cmg;
+  public a daS;
   
   public f()
   {
@@ -15,16 +15,21 @@ public final class f
   
   private f(byte paramByte)
   {
-    AppMethodBeat.i(70132);
-    this.cmg = new f.a();
-    this.ymq = false;
+    AppMethodBeat.i(115968);
+    this.daS = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70132);
+    AppMethodBeat.o(115968);
+  }
+  
+  public static final class a
+  {
+    public String daT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.f
  * JD-Core Version:    0.7.0.1
  */

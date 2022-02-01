@@ -1,61 +1,61 @@
 package com.tencent.mm.plugin.sport.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.sport.a.c;
-import com.tencent.mm.protocal.protobuf.aqd;
-import com.tencent.mm.protocal.protobuf.aqe;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.protocal.protobuf.bas;
+import com.tencent.mm.protocal.protobuf.bat;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.Calendar;
 
 public final class d
-  extends m
+  extends n
   implements k
 {
-  private f callback;
-  private b fBd;
-  aqd spC;
-  aqe spD;
-  private WeakReference<c> spE;
+  private g callback;
+  private b hdD;
+  private bas ybX;
+  public bat ybY;
   
-  public d(long paramLong1, long paramLong2, c paramc)
+  public d()
   {
-    AppMethodBeat.i(93657);
-    this.spE = new WeakReference(paramc);
-    paramc = new b.a();
-    paramc.funcId = 1734;
-    paramc.uri = "/cgi-bin/mmoc-bin/hardware/getsteplist";
-    paramc.fsX = new aqd();
-    paramc.fsY = new aqe();
-    this.fBd = paramc.ado();
-    this.spC = ((aqd)this.fBd.fsV.fta);
-    this.spC.wPH = ((int)(paramLong1 / 1000L));
-    this.spC.wPI = ((int)(paramLong2 / 1000L));
-    AppMethodBeat.o(93657);
+    AppMethodBeat.i(161592);
+    Object localObject = new b.a();
+    ((b.a)localObject).funcId = 1734;
+    ((b.a)localObject).uri = "/cgi-bin/mmoc-bin/hardware/getsteplist";
+    ((b.a)localObject).gUU = new bas();
+    ((b.a)localObject).gUV = new bat();
+    this.hdD = ((b.a)localObject).atI();
+    this.ybX = ((bas)this.hdD.gUS.gUX);
+    localObject = Calendar.getInstance();
+    ((Calendar)localObject).add(5, -1);
+    ((Calendar)localObject).set(10, 23);
+    ((Calendar)localObject).set(12, 59);
+    ((Calendar)localObject).set(13, 59);
+    long l1 = ((Calendar)localObject).getTimeInMillis();
+    ((Calendar)localObject).add(5, -120);
+    ((Calendar)localObject).set(10, 0);
+    ((Calendar)localObject).set(12, 0);
+    ((Calendar)localObject).set(13, 0);
+    long l2 = ((Calendar)localObject).getTimeInMillis();
+    this.ybX.Dcy = ((int)(l2 / 1000L));
+    this.ybX.Dcz = ((int)(l1 / 1000L));
+    AppMethodBeat.o(161592);
   }
   
-  public final c cyI()
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(138291);
-    c localc = (c)this.spE.get();
-    AppMethodBeat.o(138291);
-    return localc;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(93658);
-    this.callback = paramf;
-    int i = dispatch(parame, this.fBd, this);
-    AppMethodBeat.o(93658);
+    AppMethodBeat.i(149299);
+    this.callback = paramg;
+    int i = dispatch(parame, this.hdD, this);
+    AppMethodBeat.o(149299);
     return i;
   }
   
@@ -66,16 +66,16 @@ public final class d
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(93659);
-    ab.i("MicroMsg.Sport.NetSceneGetStepList", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.spD = ((aqe)this.fBd.fsW.fta);
+    AppMethodBeat.i(149300);
+    ad.i("MicroMsg.Sport.NetSceneGetStepList", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.ybY = ((bat)this.hdD.gUT.gUX);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(93659);
+    AppMethodBeat.o(149300);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.d
  * JD-Core Version:    0.7.0.1
  */

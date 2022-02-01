@@ -5,7 +5,7 @@ import java.io.IOException;
 public final class h
   extends IOException
 {
-  public final int aXG = 0;
+  public final int bvJ = 0;
 }
 
 

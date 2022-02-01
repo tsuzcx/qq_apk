@@ -11,16 +11,16 @@ final class zzf
   
   public final void onConnected(Bundle paramBundle)
   {
-    AppMethodBeat.i(61404);
+    AppMethodBeat.i(11896);
     this.zztd.onConnected(paramBundle);
-    AppMethodBeat.o(61404);
+    AppMethodBeat.o(11896);
   }
   
   public final void onConnectionSuspended(int paramInt)
   {
-    AppMethodBeat.i(61405);
+    AppMethodBeat.i(11897);
     this.zztd.onConnectionSuspended(paramInt);
-    AppMethodBeat.o(61405);
+    AppMethodBeat.o(11897);
   }
 }
 

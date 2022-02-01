@@ -1,5 +1,8 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.vfs.i;
+
 public class ZipJNI
 {
   public static final int ERR_ILLEGAL_PATH = 1;
@@ -14,10 +17,18 @@ public class ZipJNI
   public static final int UNZ_PARAMERROR = -102;
   
   public static native int unzip(String paramString1, String paramString2, String paramString3);
+  
+  public static int vfsUnzip(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(175611);
+    int i = unzip(i.k(paramString1, false), i.k(paramString2, true), paramString3);
+    AppMethodBeat.o(175611);
+    return i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.ZipJNI
  * JD-Core Version:    0.7.0.1
  */

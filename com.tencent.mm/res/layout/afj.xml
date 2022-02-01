@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/n9" style="@style/lx"
+<RelativeLayout android:id="@id/coj" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:id="@id/k6" android:paddingLeft="@dimen/lr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9">
-        <TextView android:textColor="@color/i_" android:gravity="center" android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" style="@style/lg" />
+    <Button android:textSize="@dimen/jv" android:textColor="@color/a_u" android:gravity="center" android:id="@id/b71" android:background="@drawable/y4" android:paddingLeft="@dimen/ci" android:paddingRight="@dimen/ci" android:paddingBottom="0.5dip" android:visibility="invisible" android:layout_width="@dimen/a6r" android:layout_height="@dimen/a6q" android:minHeight="@dimen/a6q" android:text="@string/bdb" android:layout_centerInParent="true" android:onClick="onClick" />
+    <Button android:textSize="@dimen/jv" android:textColor="@color/a_u" android:id="@id/b72" android:background="@drawable/y4" android:paddingRight="8.0dip" android:visibility="gone" android:layout_width="@dimen/a6r" android:layout_height="@dimen/a6q" android:drawableRight="@raw/image_gallery_load_hd_cancel_icon" android:layout_centerInParent="true" android:onClick="onClick" />
+    <LinearLayout android:gravity="center" android:id="@id/b73" android:background="@drawable/y4" android:layout_width="@dimen/a6r" android:layout_height="@dimen/a6q" android:layout_centerInParent="true">
+        <ImageView android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@raw/image_gallery_image_download_done_icon" />
+        <TextView android:textSize="@dimen/jv" android:textColor="@color/a_u" android:id="@id/b6x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bdd" />
     </LinearLayout>
-    <LinearLayout android:gravity="center|right" android:orientation="vertical" android:id="@android:id/widget_frame" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-</LinearLayout>
+</RelativeLayout>

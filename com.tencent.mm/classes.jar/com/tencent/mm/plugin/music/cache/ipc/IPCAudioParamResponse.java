@@ -4,56 +4,56 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aw.h;
+import com.tencent.mm.az.i;
 
 public class IPCAudioParamResponse
   implements Parcelable
 {
   public static final Parcelable.Creator<IPCAudioParamResponse> CREATOR;
-  public String cAd;
-  public byte[] fKK;
-  public int fKL;
-  public String fKM;
-  public int fKN;
+  public String dqm;
   public String fileName;
+  public byte[] hnR;
+  public int hnS;
+  public String hnT;
+  public int hnU;
   public String musicUrl;
   
   static
   {
-    AppMethodBeat.i(137464);
-    CREATOR = new IPCAudioParamResponse.1();
-    AppMethodBeat.o(137464);
+    AppMethodBeat.i(137214);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(137214);
   }
   
   public IPCAudioParamResponse() {}
   
   public IPCAudioParamResponse(Parcel paramParcel)
   {
-    AppMethodBeat.i(137462);
-    this.cAd = paramParcel.readString();
+    AppMethodBeat.i(137212);
+    this.dqm = paramParcel.readString();
     this.musicUrl = paramParcel.readString();
     this.fileName = paramParcel.readString();
-    this.fKM = paramParcel.readString();
-    this.fKL = paramParcel.readInt();
-    this.fKN = paramParcel.readInt();
+    this.hnT = paramParcel.readString();
+    this.hnS = paramParcel.readInt();
+    this.hnU = paramParcel.readInt();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.fKK = new byte[i];
-      paramParcel.readByteArray(this.fKK);
+      this.hnR = new byte[i];
+      paramParcel.readByteArray(this.hnR);
     }
-    AppMethodBeat.o(137462);
+    AppMethodBeat.o(137212);
   }
   
-  public IPCAudioParamResponse(h paramh)
+  public IPCAudioParamResponse(i parami)
   {
-    this.cAd = paramh.cAd;
-    this.musicUrl = paramh.musicUrl;
-    this.fileName = paramh.fileName;
-    this.fKL = paramh.fKL;
-    this.fKM = paramh.fKM;
-    this.fKK = paramh.fKK;
-    this.fKN = paramh.fKN;
+    this.dqm = parami.dqm;
+    this.musicUrl = parami.musicUrl;
+    this.fileName = parami.fileName;
+    this.hnS = parami.hnS;
+    this.hnT = parami.hnT;
+    this.hnR = parami.hnR;
+    this.hnU = parami.hnU;
   }
   
   public int describeContents()
@@ -63,22 +63,22 @@ public class IPCAudioParamResponse
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(137463);
-    paramParcel.writeString(this.cAd);
+    AppMethodBeat.i(137213);
+    paramParcel.writeString(this.dqm);
     paramParcel.writeString(this.musicUrl);
     paramParcel.writeString(this.fileName);
-    paramParcel.writeString(this.fKM);
-    paramParcel.writeInt(this.fKL);
-    paramParcel.writeInt(this.fKN);
-    if (this.fKK != null)
+    paramParcel.writeString(this.hnT);
+    paramParcel.writeInt(this.hnS);
+    paramParcel.writeInt(this.hnU);
+    if (this.hnR != null)
     {
-      paramParcel.writeInt(this.fKK.length);
-      paramParcel.writeByteArray(this.fKK);
-      AppMethodBeat.o(137463);
+      paramParcel.writeInt(this.hnR.length);
+      paramParcel.writeByteArray(this.hnR);
+      AppMethodBeat.o(137213);
       return;
     }
     paramParcel.writeInt(0);
-    AppMethodBeat.o(137463);
+    AppMethodBeat.o(137213);
   }
 }
 

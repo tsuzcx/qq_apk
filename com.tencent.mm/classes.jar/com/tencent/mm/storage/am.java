@@ -1,118 +1,181 @@
 package com.tencent.mm.storage;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.ay;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.protocal.protobuf.byl;
+import com.tencent.mm.protocal.protobuf.bym;
+import com.tencent.mm.util.d;
 import java.util.LinkedList;
 
 public final class am
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.o.a
+  implements com.tencent.mm.storagebase.a.a<String>
 {
-  public int yMB;
-  public LinkedList<Integer> yMC;
-  public LinkedList<Integer> yMD;
-  public LinkedList<Integer> yME;
-  public LinkedList<Long> yMF;
-  public LinkedList<Long> yMG;
-  public LinkedList<Long> yMH;
+  public bl FxX;
   
-  public am()
+  public am() {}
+  
+  public am(String paramString)
   {
-    AppMethodBeat.i(60134);
-    this.yMC = new LinkedList();
-    this.yMD = new LinkedList();
-    this.yME = new LinkedList();
-    this.yMF = new LinkedList();
-    this.yMG = new LinkedList();
-    this.yMH = new LinkedList();
-    AppMethodBeat.o(60134);
+    super(paramString);
   }
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public final void aE(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(60135);
-    if (paramInt == 0)
+    AppMethodBeat.i(43193);
+    switch (paramInt)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.yMB);
-      paramVarArgs.e(2, 2, this.yMC);
-      paramVarArgs.e(3, 2, this.yMD);
-      paramVarArgs.e(4, 2, this.yME);
-      paramVarArgs.e(5, 3, this.yMF);
-      paramVarArgs.e(6, 3, this.yMG);
-      paramVarArgs.e(7, 3, this.yMH);
-      AppMethodBeat.o(60135);
-      return 0;
     }
-    if (paramInt == 1)
+    for (;;)
     {
-      paramInt = e.a.a.b.b.a.bl(1, this.yMB);
-      int i = e.a.a.a.c(2, 2, this.yMC);
-      int j = e.a.a.a.c(3, 2, this.yMD);
-      int k = e.a.a.a.c(4, 2, this.yME);
-      int m = e.a.a.a.c(5, 3, this.yMF);
-      int n = e.a.a.a.c(6, 3, this.yMG);
-      int i1 = e.a.a.a.c(7, 3, this.yMH);
-      AppMethodBeat.o(60135);
-      return paramInt + 0 + i + j + k + m + n + i1;
+      AppMethodBeat.o(43193);
+      return;
+      jT((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      setStatus((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      jV((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      kS(paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      super.kT(paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      jX((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      jY((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      jZ((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      kb((int)paramLong);
     }
-    if (paramInt == 2)
+  }
+  
+  public final void aG(bl parambl)
+  {
+    AppMethodBeat.i(43191);
+    setStatus(parambl.field_status);
+    jV(parambl.field_isSend);
+    if (parambl.cjO()) {}
+    label132:
+    label146:
+    for (;;)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.yMC.clear();
-      this.yMD.clear();
-      this.yME.clear();
-      this.yMF.clear();
-      this.yMG.clear();
-      this.yMH.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
-      }
-      AppMethodBeat.o(60135);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
-      am localam = (am)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      long l = parambl.field_createTime;
+      Object localObject = this;
+      for (;;)
       {
-      default: 
-        AppMethodBeat.o(60135);
-        return -1;
-      case 1: 
-        localam.yMB = locala.CLY.sl();
-        AppMethodBeat.o(60135);
-        return 0;
-      case 2: 
-        localam.yMC.add(Integer.valueOf(locala.CLY.sl()));
-        AppMethodBeat.o(60135);
-        return 0;
-      case 3: 
-        localam.yMD.add(Integer.valueOf(locala.CLY.sl()));
-        AppMethodBeat.o(60135);
-        return 0;
-      case 4: 
-        localam.yME.add(Integer.valueOf(locala.CLY.sl()));
-        AppMethodBeat.o(60135);
-        return 0;
-      case 5: 
-        localam.yMF.add(Long.valueOf(locala.CLY.sm()));
-        AppMethodBeat.o(60135);
-        return 0;
-      case 6: 
-        localam.yMG.add(Long.valueOf(locala.CLY.sm()));
-        AppMethodBeat.o(60135);
-        return 0;
+        ((am)localObject).kS(l);
+        if (!parambl.eLW()) {
+          break label132;
+        }
+        setContent(parambl.eMD());
+        AppMethodBeat.o(43191);
+        return;
+        if (parambl.eMg())
+        {
+          localObject = d.aMu(this.field_content);
+          if (!((byl)localObject).tdC.isEmpty())
+          {
+            l = ((bym)((byl)localObject).tdC.getLast()).createTime;
+            localObject = this;
+            continue;
+          }
+          break;
+        }
+        if (parambl.field_status != 1) {
+          break label146;
+        }
+        l = 9223372036854775807L;
+        localObject = this;
       }
-      localam.yMH.add(Long.valueOf(locala.CLY.sm()));
-      AppMethodBeat.o(60135);
-      return 0;
+      setContent(parambl.field_content);
+      AppMethodBeat.o(43191);
+      return;
     }
-    AppMethodBeat.o(60135);
-    return -1;
   }
+  
+  public final void cD(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(43194);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(43194);
+      return;
+      setUsername(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      setContent(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      nK(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      nL(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      nM(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      nO(paramString);
+    }
+  }
+  
+  public final void convertFrom(Cursor paramCursor)
+  {
+    AppMethodBeat.i(160773);
+    super.convertFrom(paramCursor);
+    AppMethodBeat.o(160773);
+  }
+  
+  public final ContentValues convertTo()
+  {
+    AppMethodBeat.i(160772);
+    ContentValues localContentValues = super.convertTo();
+    AppMethodBeat.o(160772);
+    return localContentValues;
+  }
+  
+  public final void eJA() {}
+  
+  public final void eLf()
+  {
+    AppMethodBeat.i(43192);
+    setStatus(0);
+    jV(0);
+    setContent("");
+    nK("0");
+    jT(0);
+    kb(0);
+    kU(0L);
+    ka(0);
+    ka(0);
+    super.nL("");
+    super.nM("");
+    AppMethodBeat.o(43192);
+  }
+  
+  public final void kT(long paramLong)
+  {
+    AppMethodBeat.i(160771);
+    super.kT(paramLong);
+    AppMethodBeat.o(160771);
+  }
+  
+  public final void t(int paramInt, byte[] paramArrayOfByte) {}
 }
 
 

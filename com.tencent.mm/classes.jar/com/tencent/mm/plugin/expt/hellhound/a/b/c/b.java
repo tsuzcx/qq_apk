@@ -1,174 +1,69 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.c;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aux;
-import com.tencent.mm.protocal.protobuf.auy;
-import com.tencent.mm.protocal.protobuf.bki;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.vending.j.c;
-import java.util.LinkedList;
+import d.g.b.k;
+import d.l;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/report/StayTimeStatistics;", "", "sessionId", "", "pageName", "stayTimeMs", "", "enterTimeMs", "exitTimeMs", "clickTabContextId", "sid", "reportType", "", "isPoi", "", "(Ljava/lang/String;Ljava/lang/String;JJJLjava/lang/String;Ljava/lang/String;IZ)V", "getClickTabContextId", "()Ljava/lang/String;", "setClickTabContextId", "(Ljava/lang/String;)V", "getEnterTimeMs", "()J", "setEnterTimeMs", "(J)V", "getExitTimeMs", "setExitTimeMs", "()Z", "setPoi", "(Z)V", "getPageName", "setPageName", "getReportType", "()I", "setReportType", "(I)V", "getSessionId", "setSessionId", "getSid", "setSid", "getStayTimeMs", "setStayTimeMs", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "plugin-expt_release"})
 public final class b
 {
-  public static void T(String paramString, long paramLong)
+  public String DDP = null;
+  public long KHU = -1L;
+  public long KHV = -1L;
+  public String KHW = null;
+  public boolean KHX;
+  public int dvJ;
+  public String pZX = null;
+  public String sessionId = null;
+  public long xBr = -1L;
+  
+  public b(byte paramByte)
   {
-    AppMethodBeat.i(152395);
-    aux localaux = a.bsu();
-    if (localaux.fjy.isEmpty())
-    {
-      ab.e("HellPageFlowManager", "HABBYGE-MALI, setEndTimeOfPageWhenEvent8, pageFlow.items == NULL");
-      AppMethodBeat.o(152395);
-      return;
-    }
-    paramString = com.tencent.mm.plugin.expt.hellhound.core.b.Mb(paramString);
-    if ((paramString == null) || (paramString.isEmpty()))
-    {
-      AppMethodBeat.o(152395);
-      return;
-    }
-    paramString = (auy)localaux.fjy.getLast();
-    if (paramString == null)
-    {
-      AppMethodBeat.o(152395);
-      return;
-    }
-    paramLong -= paramString.startTime;
-    if (paramLong > 0L) {}
-    for (;;)
-    {
-      paramString.duration = paramLong;
-      a.a(localaux);
-      AppMethodBeat.o(152395);
-      return;
-      paramLong = 0L;
-    }
+    this();
   }
   
-  public static void U(String paramString, long paramLong)
+  private b(int paramInt)
   {
-    AppMethodBeat.i(152396);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(152396);
-      return;
-    }
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.Mb(paramString);
-    paramString = new auy();
-    paramString.xkf = ((String)localObject);
-    paramString.startTime = paramLong;
-    bki localbki = com.tencent.mm.plugin.expt.hellhound.a.b.b.a.bsj();
-    if (localbki == null)
-    {
-      ab.i("HellPageFlowManager", "HABBYGE-MALI, setPageStartTimeOfCurSession, addPageFlow, Unknown Page: ".concat(String.valueOf(localObject)));
-      paramString.czq = null;
-    }
-    for (;;)
-    {
-      localObject = a.bsu();
-      ((aux)localObject).fjy.addLast(paramString);
-      a.a((aux)localObject);
-      AppMethodBeat.o(152396);
-      return;
-      paramString.czq = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.c(localbki);
-      ab.i("HellPageFlowManager", "HABBYGE-MALI, setPageStartTimeOfCurSession, addPageFlow, session: " + (String)localObject + " | " + paramString.czq);
-    }
+    this.dvJ = paramInt;
+    this.KHX = false;
   }
   
-  public static void a(auy paramauy, int paramInt)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(156442);
-    if (paramauy == null)
+    AppMethodBeat.i(205262);
+    if (this != paramObject)
     {
-      AppMethodBeat.o(156442);
-      return;
-    }
-    aux localaux = a.bsu();
-    try
-    {
-      localaux.fjy.set(paramInt, paramauy);
-      a.a(localaux);
-      AppMethodBeat.o(156442);
-      return;
-    }
-    catch (Exception paramauy)
-    {
-      ab.printErrStackTrace("HellPageFlowManager", paramauy, "HABBYGE-MALI, updatePageFlowItemOfCurSession crash", new Object[0]);
-      AppMethodBeat.o(156442);
-    }
-  }
-  
-  public static void a(bki parambki, String paramString, long paramLong)
-  {
-    AppMethodBeat.i(152393);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(152393);
-      return;
-    }
-    if ((parambki != null) && (com.tencent.mm.plugin.expt.hellhound.a.b.f.a.MT(parambki.czq)))
-    {
-      ab.w("HellPageFlowManager", "HABBYGE-MALI, addpageFlow scan-session, need filter !!");
-      AppMethodBeat.o(152393);
-      return;
-    }
-    b(parambki, paramString, paramLong);
-    AppMethodBeat.o(152393);
-  }
-  
-  public static c<auy, Integer> b(bki parambki, String paramString)
-  {
-    AppMethodBeat.i(156441);
-    if ((parambki == null) || (paramString == null) || (paramString.isEmpty()))
-    {
-      AppMethodBeat.o(156441);
-      return null;
-    }
-    ab.d("HellPageFlowManager", "habbyge-mali, getPageFlowItemOfCurSession: " + paramString + " | " + parambki.xyK + " | " + parambki.czq);
-    aux localaux = a.bsu();
-    int i = localaux.fjy.size() - 1;
-    while (i >= 0)
-    {
-      auy localauy = (auy)localaux.fjy.get(i);
-      if ((localauy.czq.equals(parambki.czq)) && (localauy.xkf.equals(paramString)))
+      if ((paramObject instanceof b))
       {
-        parambki = com.tencent.mm.vending.j.a.C(localauy, Integer.valueOf(i));
-        AppMethodBeat.o(156441);
-        return parambki;
+        paramObject = (b)paramObject;
+        if ((!k.g(this.sessionId, paramObject.sessionId)) || (!k.g(this.DDP, paramObject.DDP)) || (this.xBr != paramObject.xBr) || (this.KHU != paramObject.KHU) || (this.KHV != paramObject.KHV) || (!k.g(this.KHW, paramObject.KHW)) || (!k.g(this.pZX, paramObject.pZX)) || (this.dvJ != paramObject.dvJ) || (this.KHX != paramObject.KHX)) {}
       }
-      i -= 1;
     }
-    AppMethodBeat.o(156441);
-    return null;
+    else
+    {
+      AppMethodBeat.o(205262);
+      return true;
+    }
+    AppMethodBeat.o(205262);
+    return false;
   }
   
-  public static void b(bki parambki, String paramString, long paramLong)
+  public final int hashCode()
   {
-    AppMethodBeat.i(152394);
-    String str = com.tencent.mm.plugin.expt.hellhound.core.b.Mb(paramString);
-    paramString = new auy();
-    paramString.xkf = str;
-    paramString.startTime = paramLong;
-    if (parambki == null)
-    {
-      ab.i("HellPageFlowManager", "HABBYGE-MALI, addPageFlow, Unknown Page: ".concat(String.valueOf(str)));
-      paramString.czq = null;
-    }
-    for (;;)
-    {
-      parambki = a.bsu();
-      parambki.fjy.addLast(paramString);
-      a.a(parambki);
-      AppMethodBeat.o(152394);
-      return;
-      paramString.czq = com.tencent.mm.plugin.expt.hellhound.a.b.a.b.c(parambki);
-      ab.i("HellPageFlowManager", "HABBYGE-MALI, addPageFlow, session: " + str + " | " + paramString.czq);
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(205260);
+    String str = "StayTimeStatistics(sessionId=" + this.sessionId + ", pageName=" + this.DDP + ", stayTimeMs=" + this.xBr + ", enterTimeMs=" + this.KHU + ", exitTimeMs=" + this.KHV + ", clickTabContextId=" + this.KHW + ", sid=" + this.pZX + ", reportType=" + this.dvJ + ", isPoi=" + this.KHX + ")";
+    AppMethodBeat.o(205260);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.b.c.b
  * JD-Core Version:    0.7.0.1
  */

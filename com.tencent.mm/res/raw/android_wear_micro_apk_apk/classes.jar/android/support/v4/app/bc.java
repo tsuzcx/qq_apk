@@ -1,23 +1,13 @@
 package android.support.v4.app;
 
-public abstract class bc
+import android.util.AndroidRuntimeException;
+
+final class bc
+  extends AndroidRuntimeException
 {
-  protected ar fo;
-  CharSequence fp;
-  CharSequence fq;
-  boolean fr = false;
-  
-  public void a(an paraman) {}
-  
-  public final void c(ar paramar)
+  public bc(String paramString)
   {
-    if (this.fo != paramar)
-    {
-      this.fo = paramar;
-      if (this.fo != null) {
-        this.fo.a(this);
-      }
-    }
+    super(paramString);
   }
 }
 

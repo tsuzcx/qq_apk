@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/lp" android:background="@drawable/b9e" android:padding="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/n_"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView android:id="@id/dkx" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+<RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/ch"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/q" android:textColor="@color/y4" android:id="@id/b8j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_marginStart="32.0dip" />
+    <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/q" android:textColor="@color/y4" android:id="@id/dsk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="" android:layout_marginEnd="32.0dip" android:layout_alignParentEnd="true" wallet:walletTypeFace="ftc" />
+</RelativeLayout>

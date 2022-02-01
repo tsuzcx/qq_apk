@@ -29,9 +29,9 @@ public final class zzaw
   
   static
   {
-    AppMethodBeat.i(71041);
+    AppMethodBeat.i(101024);
     CREATOR = new zzax();
-    AppMethodBeat.o(71041);
+    AppMethodBeat.o(101024);
   }
   
   @SafeParcelable.Constructor
@@ -45,7 +45,7 @@ public final class zzaw
   
   public final String toString()
   {
-    AppMethodBeat.i(71040);
+    AppMethodBeat.i(101023);
     String str3 = String.valueOf(this.zzck);
     int i = this.type;
     String str1;
@@ -66,7 +66,7 @@ public final class zzaw
     {
       i = this.zzcj;
       str1 = String.valueOf(str3).length() + 81 + String.valueOf(str1).length() + String.valueOf(str2).length() + "ChannelEventParcelable[, channel=" + str3 + ", type=" + str1 + ", closeReason=" + str2 + ", appErrorCode=" + i + "]";
-      AppMethodBeat.o(71040);
+      AppMethodBeat.o(101023);
       return str1;
       str1 = "CHANNEL_OPENED";
       break;
@@ -88,46 +88,46 @@ public final class zzaw
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(71039);
+    AppMethodBeat.i(101022);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeParcelable(paramParcel, 2, this.zzck, paramInt, false);
     SafeParcelWriter.writeInt(paramParcel, 3, this.type);
     SafeParcelWriter.writeInt(paramParcel, 4, this.zzg);
     SafeParcelWriter.writeInt(paramParcel, 5, this.zzcj);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(71039);
+    AppMethodBeat.o(101022);
   }
   
   public final void zza(ChannelApi.ChannelListener paramChannelListener)
   {
-    AppMethodBeat.i(71038);
+    AppMethodBeat.i(101021);
     switch (this.type)
     {
     default: 
       int i = this.type;
       new StringBuilder(25).append("Unknown type: ").append(i);
-      AppMethodBeat.o(71038);
+      AppMethodBeat.o(101021);
       return;
     case 1: 
       paramChannelListener.onChannelOpened(this.zzck);
-      AppMethodBeat.o(71038);
+      AppMethodBeat.o(101021);
       return;
     case 2: 
       paramChannelListener.onChannelClosed(this.zzck, this.zzg, this.zzcj);
-      AppMethodBeat.o(71038);
+      AppMethodBeat.o(101021);
       return;
     case 3: 
       paramChannelListener.onInputClosed(this.zzck, this.zzg, this.zzcj);
-      AppMethodBeat.o(71038);
+      AppMethodBeat.o(101021);
       return;
     }
     paramChannelListener.onOutputClosed(this.zzck, this.zzg, this.zzcj);
-    AppMethodBeat.o(71038);
+    AppMethodBeat.o(101021);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzaw
  * JD-Core Version:    0.7.0.1
  */

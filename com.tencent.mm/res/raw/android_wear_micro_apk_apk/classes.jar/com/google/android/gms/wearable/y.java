@@ -8,13 +8,13 @@ import java.util.List;
 
 public final class y
 {
-  private final n Ss;
-  private final PutDataRequest St;
+  private final n Uh;
+  private final PutDataRequest Ui;
   
   private y(PutDataRequest paramPutDataRequest)
   {
-    this.St = paramPutDataRequest;
-    this.Ss = new n();
+    this.Ui = paramPutDataRequest;
+    this.Uh = new n();
   }
   
   public static y v(String paramString)
@@ -22,16 +22,21 @@ public final class y
     return new y(PutDataRequest.w(paramString));
   }
   
-  public final PutDataRequest kC()
+  public final n kG()
   {
-    Object localObject = dh.a(this.Ss);
-    this.St.f(dw.c(((di)localObject).QM));
-    int j = ((di)localObject).QN.size();
+    return this.Uh;
+  }
+  
+  public final PutDataRequest kL()
+  {
+    Object localObject = dh.a(this.Uh);
+    this.Ui.f(dw.c(((di)localObject).SB));
+    int j = ((di)localObject).SC.size();
     int i = 0;
     while (i < j)
     {
       String str1 = Integer.toString(i);
-      Asset localAsset = (Asset)((di)localObject).QN.get(i);
+      Asset localAsset = (Asset)((di)localObject).SC.get(i);
       if (str1 == null)
       {
         localObject = String.valueOf(localAsset);
@@ -50,15 +55,10 @@ public final class y
         String str2 = String.valueOf(localAsset);
         Log.d("DataMap", String.valueOf(str1).length() + 33 + String.valueOf(str2).length() + "asPutDataRequest: adding asset: " + str1 + " " + str2);
       }
-      this.St.b(str1, localAsset);
+      this.Ui.b(str1, localAsset);
       i += 1;
     }
-    return this.St;
-  }
-  
-  public final n kx()
-  {
-    return this.Ss;
+    return this.Ui;
   }
 }
 

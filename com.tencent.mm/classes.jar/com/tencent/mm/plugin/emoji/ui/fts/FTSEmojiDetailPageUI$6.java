@@ -11,14 +11,14 @@ final class FTSEmojiDetailPageUI$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(53540);
-    FTSEmojiDetailPageUI.b(this.loH);
-    AppMethodBeat.o(53540);
+    AppMethodBeat.i(109104);
+    FTSEmojiDetailPageUI.b(this.oEV);
+    AppMethodBeat.o(109104);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.fts.FTSEmojiDetailPageUI.6
  * JD-Core Version:    0.7.0.1
  */

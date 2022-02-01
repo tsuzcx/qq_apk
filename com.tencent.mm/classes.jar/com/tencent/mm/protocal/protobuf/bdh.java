@@ -1,79 +1,95 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bdh
-  extends com.tencent.mm.bv.a
+  extends ckq
 {
-  public String iFJ;
-  public String username;
+  public double latitude;
+  public double longitude;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(56855);
+    AppMethodBeat.i(56252);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.username != null) {
-        paramVarArgs.e(1, this.username);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.kX(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.iFJ != null) {
-        paramVarArgs.e(2, this.iFJ);
-      }
-      AppMethodBeat.o(56855);
+      paramVarArgs.e(2, this.longitude);
+      paramVarArgs.e(3, this.latitude);
+      AppMethodBeat.o(56252);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.username == null) {
-        break label274;
+      if (this.BaseRequest == null) {
+        break label404;
       }
     }
-    label274:
-    for (paramInt = e.a.a.b.b.a.f(1, this.username) + 0;; paramInt = 0)
+    label404:
+    for (paramInt = f.a.a.a.kW(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.iFJ != null) {
-        i = paramInt + e.a.a.b.b.a.f(2, this.iFJ);
-      }
-      AppMethodBeat.o(56855);
-      return i;
+      int i = f.a.a.b.b.a.fY(2);
+      int j = f.a.a.b.b.a.fY(3);
+      AppMethodBeat.o(56252);
+      return paramInt + (i + 8) + (j + 8);
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = ckq.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = ckq.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(56855);
+        AppMethodBeat.o(56252);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
         bdh localbdh = (bdh)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(56855);
+          AppMethodBeat.o(56252);
           return -1;
         case 1: 
-          localbdh.username = locala.CLY.readString();
-          AppMethodBeat.o(56855);
+          paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new ip();
+            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((ip)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, ckq.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localbdh.BaseRequest = ((ip)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(56252);
+          return 0;
+        case 2: 
+          localbdh.longitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).KhF.fHy());
+          AppMethodBeat.o(56252);
           return 0;
         }
-        localbdh.iFJ = locala.CLY.readString();
-        AppMethodBeat.o(56855);
+        localbdh.latitude = Double.longBitsToDouble(((f.a.a.a.a)localObject1).KhF.fHy());
+        AppMethodBeat.o(56252);
         return 0;
       }
-      AppMethodBeat.o(56855);
+      AppMethodBeat.o(56252);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bdh
  * JD-Core Version:    0.7.0.1
  */

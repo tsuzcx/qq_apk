@@ -8,13 +8,28 @@ public abstract class do
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int key_HASHCODE = "key".hashCode();
+  private static final int eNJ = "loan_jump_url".hashCode();
+  private static final int eNK = "red_dot_index".hashCode();
+  private static final int eNL = "is_show_entry".hashCode();
+  private static final int eNM = "tips".hashCode();
+  private static final int eNN = "is_overdue".hashCode();
+  private static final int eNO = "available_otb".hashCode();
+  private static final int eoG = "title".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int value_HASHCODE = "value".hashCode();
-  private boolean __hadSetkey = true;
-  private boolean __hadSetvalue = true;
-  public String field_key;
-  public byte[] field_value;
+  private boolean eND = true;
+  private boolean eNE = true;
+  private boolean eNF = true;
+  private boolean eNG = true;
+  private boolean eNH = true;
+  private boolean eNI = true;
+  private boolean eoD = true;
+  public String field_available_otb;
+  public int field_is_overdue;
+  public int field_is_show_entry;
+  public String field_loan_jump_url;
+  public int field_red_dot_index;
+  public String field_tips;
+  public String field_title;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,11 +44,11 @@ public abstract class do
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (key_HASHCODE != k) {
+      if (eoG != k) {
         break label65;
       }
-      this.field_key = paramCursor.getString(i);
-      this.__hadSetkey = true;
+      this.field_title = paramCursor.getString(i);
+      this.eoD = true;
     }
     for (;;)
     {
@@ -41,8 +56,18 @@ public abstract class do
       break label20;
       break;
       label65:
-      if (value_HASHCODE == k) {
-        this.field_value = paramCursor.getBlob(i);
+      if (eNJ == k) {
+        this.field_loan_jump_url = paramCursor.getString(i);
+      } else if (eNK == k) {
+        this.field_red_dot_index = paramCursor.getInt(i);
+      } else if (eNL == k) {
+        this.field_is_show_entry = paramCursor.getInt(i);
+      } else if (eNM == k) {
+        this.field_tips = paramCursor.getString(i);
+      } else if (eNN == k) {
+        this.field_is_overdue = paramCursor.getInt(i);
+      } else if (eNO == k) {
+        this.field_available_otb = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +77,26 @@ public abstract class do
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.eoD) {
+      localContentValues.put("title", this.field_title);
     }
-    if (this.__hadSetvalue) {
-      localContentValues.put("value", this.field_value);
+    if (this.eND) {
+      localContentValues.put("loan_jump_url", this.field_loan_jump_url);
+    }
+    if (this.eNE) {
+      localContentValues.put("red_dot_index", Integer.valueOf(this.field_red_dot_index));
+    }
+    if (this.eNF) {
+      localContentValues.put("is_show_entry", Integer.valueOf(this.field_is_show_entry));
+    }
+    if (this.eNG) {
+      localContentValues.put("tips", this.field_tips);
+    }
+    if (this.eNH) {
+      localContentValues.put("is_overdue", Integer.valueOf(this.field_is_overdue));
+    }
+    if (this.eNI) {
+      localContentValues.put("available_otb", this.field_available_otb);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

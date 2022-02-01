@@ -4,58 +4,49 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private static a eCo = null;
-  
-  public static void a(a parama)
-  {
-    eCo = parama;
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(93920);
-    if ((HardCoderJNI.isHcDebug()) && (eCo != null)) {
-      eCo.d(paramString1, paramString2);
-    }
-    AppMethodBeat.o(93920);
-  }
-  
-  public static void e(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(93921);
-    if (eCo != null) {
-      eCo.e(paramString1, paramString2);
-    }
-    AppMethodBeat.o(93921);
-  }
-  
-  public static void i(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(93919);
-    if (eCo != null) {
-      eCo.i(paramString1, paramString2);
-    }
-    AppMethodBeat.o(93919);
-  }
-  
-  public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(93922);
-    if (eCo != null) {
-      eCo.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
-    }
-    AppMethodBeat.o(93922);
-  }
-  
   public static abstract interface a
   {
-    public abstract void d(String paramString1, String paramString2);
+    public abstract void dt(boolean paramBoolean);
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void onFuncRet(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte);
+  }
+  
+  public static final class c
+  {
+    public int fXK;
+    public int fXL;
+    public int fXM;
+    public int[] fXN;
+    public long fXu;
+    public int scene;
     
-    public abstract void e(String paramString1, String paramString2);
+    public c(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
+    {
+      AppMethodBeat.i(62457);
+      this.scene = paramInt1;
+      this.fXu = paramLong;
+      this.fXK = paramInt2;
+      this.fXL = paramInt3;
+      this.fXM = paramInt4;
+      this.fXN = ((int[])paramArrayOfInt.clone());
+      AppMethodBeat.o(62457);
+    }
     
-    public abstract void i(String paramString1, String paramString2);
-    
-    public abstract void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs);
+    public final String toString()
+    {
+      AppMethodBeat.i(62458);
+      String str = "[RequestStatus, scene:" + this.scene + ", action:" + this.fXu + ", cpulevel:" + this.fXK + ", gpulevel:" + this.fXL + ", iolevel:" + this.fXM + ", bindtids size:" + this.fXN.length + "]";
+      AppMethodBeat.o(62458);
+      return str;
+    }
+  }
+  
+  public static abstract interface d
+  {
+    public abstract void sceneReport(int paramInt, long paramLong);
   }
 }
 

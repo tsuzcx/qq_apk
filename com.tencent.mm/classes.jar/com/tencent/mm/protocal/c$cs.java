@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-public final class c$cs
+final class c$cs
   extends c.g
 {
-  public c$cs()
+  c$cs()
   {
-    super("getSearchDisplayNameList", "getSearchDisplayNameList", 10000, false);
+    super("getPasteboardContent", "getPasteboardContent", 364, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.cs
  * JD-Core Version:    0.7.0.1
  */

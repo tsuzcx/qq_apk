@@ -5,7 +5,11 @@ import com.tencent.mm.protocal.l.e;
 
 public abstract interface q
 {
+  public abstract boolean getIsLongPolling();
+  
   public abstract boolean getIsUserCmd();
+  
+  public abstract int getLongPollingTimeout();
   
   public abstract int getOptions();
   

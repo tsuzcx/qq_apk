@@ -10,16 +10,16 @@ public class WidgetRuntimeConfig
 {
   public static final Parcelable.Creator<WidgetRuntimeConfig> CREATOR;
   public String appId;
-  public int hpZ;
-  public int hqq = 32;
-  public boolean hqr = false;
-  public boolean hqs = true;
+  public boolean jnA = false;
+  public boolean jnB = true;
+  public int jnh;
+  public int jnz = 32;
   
   static
   {
-    AppMethodBeat.i(10931);
-    CREATOR = new WidgetRuntimeConfig.1();
-    AppMethodBeat.o(10931);
+    AppMethodBeat.i(121412);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(121412);
   }
   
   public int describeContents()
@@ -30,23 +30,23 @@ public class WidgetRuntimeConfig
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    AppMethodBeat.i(10930);
+    AppMethodBeat.i(121411);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.hpZ);
-    paramParcel.writeInt(this.hqq);
-    if (this.hqr)
+    paramParcel.writeInt(this.jnh);
+    paramParcel.writeInt(this.jnz);
+    if (this.jnA)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.hqs) {
-        break label72;
+      if (!this.jnB) {
+        break label70;
       }
     }
-    label72:
+    label70:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      AppMethodBeat.o(10930);
+      AppMethodBeat.o(121411);
       return;
       paramInt = 0;
       break;
@@ -55,7 +55,7 @@ public class WidgetRuntimeConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetRuntimeConfig
  * JD-Core Version:    0.7.0.1
  */

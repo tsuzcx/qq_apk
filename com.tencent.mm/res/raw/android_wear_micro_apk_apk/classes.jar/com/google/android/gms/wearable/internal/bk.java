@@ -11,8 +11,8 @@ public final class bk
   {
     int i = c.b(paramParcel);
     c.c(paramParcel, 2, paramzzcs.statusCode);
-    c.a(paramParcel, 3, paramzzcs.TQ);
-    c.a(paramParcel, 4, paramzzcs.TU);
+    c.a(paramParcel, 3, paramzzcs.VF);
+    c.a(paramParcel, 4, paramzzcs.VJ);
     c.v(paramParcel, i);
   }
 }

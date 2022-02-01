@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/ca1" android:background="@color/a6q" android:paddingLeft="@dimen/a3_" android:paddingRight="@dimen/a3_" android:layout_width="wrap_content" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:layout_gravity="center_horizontal" android:scrollbars="none" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:overScrollMode="never">
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ca2" android:paddingTop="@dimen/a3_" android:paddingBottom="@dimen/a3_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </ScrollView>
-    <ScrollView android:layout_gravity="center_horizontal" android:scrollbars="none" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:overScrollMode="never">
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/ca3" android:paddingTop="@dimen/a3_" android:paddingBottom="@dimen/a3_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </ScrollView>
-</LinearLayout>
+<com.tencent.mm.view.TouchableLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/f31" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView android:id="@id/ejr" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</com.tencent.mm.view.TouchableLayout>

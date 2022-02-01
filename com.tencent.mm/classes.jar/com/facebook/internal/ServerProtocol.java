@@ -51,11 +51,11 @@ public final class ServerProtocol
   
   static
   {
-    AppMethodBeat.i(72480);
+    AppMethodBeat.i(17916);
     TAG = ServerProtocol.class.getName();
     errorsProxyAuthDisabled = Utility.unmodifiableCollection(new String[] { "service_disabled", "AndroidAuthKillSwitchException" });
     errorsUserCanceled = Utility.unmodifiableCollection(new String[] { "access_denied", "OAuthAccessDeniedException" });
-    AppMethodBeat.o(72480);
+    AppMethodBeat.o(17916);
   }
   
   public static final String getDefaultAPIVersion()
@@ -65,35 +65,35 @@ public final class ServerProtocol
   
   public static final String getDialogAuthority()
   {
-    AppMethodBeat.i(72476);
+    AppMethodBeat.i(17912);
     String str = String.format("m.%s", new Object[] { FacebookSdk.getFacebookDomain() });
-    AppMethodBeat.o(72476);
+    AppMethodBeat.o(17912);
     return str;
   }
   
   public static final String getGraphUrlBase()
   {
-    AppMethodBeat.i(72477);
+    AppMethodBeat.i(17913);
     String str = String.format("https://graph.%s", new Object[] { FacebookSdk.getFacebookDomain() });
-    AppMethodBeat.o(72477);
+    AppMethodBeat.o(17913);
     return str;
   }
   
   public static final String getGraphVideoUrlBase()
   {
-    AppMethodBeat.i(72478);
+    AppMethodBeat.i(17914);
     String str = String.format("https://graph-video.%s", new Object[] { FacebookSdk.getFacebookDomain() });
-    AppMethodBeat.o(72478);
+    AppMethodBeat.o(17914);
     return str;
   }
   
   public static Bundle getQueryParamsForPlatformActivityIntentWebFallback(String paramString, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(72479);
+    AppMethodBeat.i(17915);
     Object localObject = FacebookSdk.getApplicationSignature(FacebookSdk.getApplicationContext());
     if (Utility.isNullOrEmpty((String)localObject))
     {
-      AppMethodBeat.o(72479);
+      AppMethodBeat.o(17915);
       return null;
     }
     Bundle localBundle = new Bundle();
@@ -113,7 +113,7 @@ public final class ServerProtocol
       paramString = BundleJSONConverter.convertToJSON(paramString);
       if ((paramBundle == null) || (paramString == null))
       {
-        AppMethodBeat.o(72479);
+        AppMethodBeat.o(17915);
         return null;
       }
       localBundle.putString("bridge_args", paramBundle.toString());
@@ -128,13 +128,13 @@ public final class ServerProtocol
         paramString = null;
       }
     }
-    AppMethodBeat.o(72479);
+    AppMethodBeat.o(17915);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.ServerProtocol
  * JD-Core Version:    0.7.0.1
  */

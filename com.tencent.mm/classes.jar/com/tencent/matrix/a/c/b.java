@@ -1,150 +1,118 @@
 package com.tencent.matrix.a.c;
 
-import android.os.IBinder;
-import android.os.IInterface;
+import android.os.HandlerThread;
+import android.os.Process;
+import android.util.LongSparseArray;
+import com.tencent.matrix.a.c.a.b.a;
+import com.tencent.matrix.a.c.a.b.d;
+import com.tencent.matrix.a.c.a.b.e;
+import com.tencent.matrix.a.c.a.c.b;
+import com.tencent.matrix.a.c.a.d;
+import com.tencent.matrix.a.c.a.d.b;
 import com.tencent.matrix.g.c;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.util.Map;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public final class b
+public class b
+  implements a.c
 {
-  private final String bNw;
-  private final String bNx;
-  private final b bNy;
-  private IBinder bNz;
+  private final LongSparseArray<List<c.b>> cvd = new LongSparseArray();
+  private d.b cve = null;
+  private int cvf = 0;
+  private long cvg = 0L;
   
-  public b(String paramString1, String paramString2, b paramb)
+  public void GZ()
   {
-    this.bNw = paramString1;
-    this.bNx = paramString2;
-    this.bNy = paramb;
+    Object localObject = (a)com.tencent.matrix.b.GF().V(a.class);
+    if (localObject != null)
+    {
+      localObject = (d)((a)localObject).W(d.class);
+      if (localObject != null) {
+        this.cve = ((d)localObject).Hg();
+      }
+    }
   }
   
-  private Object yT()
+  public void Ha()
   {
-    try
+    Object localObject = (a)com.tencent.matrix.b.GF().V(a.class);
+    if (localObject != null)
     {
-      Object localObject1 = Class.forName(this.bNx);
-      Object localObject3 = Class.forName(String.format("%s$Stub", new Object[] { this.bNx }));
-      Object localObject2 = ((Class)localObject3).getDeclaredMethod("asInterface", new Class[] { IBinder.class }).invoke(null, new Object[] { this.bNz });
-      localObject3 = ((Class)localObject3).getClassLoader();
-      if (localObject3 == null)
+      localObject = (d)((a)localObject).W(d.class);
+      if ((localObject != null) && (this.cve != null))
       {
-        c.e("Matrix.SystemServiceBinderHooker", "doHook exp classLoader null ", new Object[0]);
-        return Boolean.FALSE;
+        localObject = ((d)localObject).Hg();
+        this.cvf = (((d.b)localObject).cvH - this.cve.cvH);
+        this.cvg = (((d.b)localObject).cvF - this.cve.cvF);
       }
-      localObject2 = new c(localObject2, this.bNy);
-      localObject1 = Proxy.newProxyInstance((ClassLoader)localObject3, new Class[] { IBinder.class, IInterface.class, localObject1 }, (InvocationHandler)localObject2);
-      return localObject1;
     }
-    catch (Throwable localThrowable)
-    {
-      c.w("Matrix.SystemServiceBinderHooker", "createPowerManagerServiceProxy exp:%s", new Object[] { localThrowable.getLocalizedMessage() });
-    }
-    return null;
   }
   
-  public final boolean doHook()
+  public StringBuilder Hb()
   {
-    c.i("Matrix.SystemServiceBinderHooker", "doHook: serviceName:%s, serviceClsName:%s", new Object[] { this.bNw, this.bNx });
-    try
+    return new StringBuilder();
+  }
+  
+  public void a(b.a arg1)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("\t\n");
+    localStringBuilder.append("****************************************** PowerTest *****************************************\n");
+    localStringBuilder.append("| pid=").append(Process.myPid()).append("\t\tisForeground=").append(???.ctF).append("\t\tduring(min)=").append(???.cvo / 60000L).append("<").append(???.cvn / 60000L).append("\t\tdiff(jiffies)=").append(???.cvm).append("\t\taverage(jiffies/min)=").append(???.cvm / Math.max(1L, ???.cvo / 60000L)).append("\n");
+    localStringBuilder.append("==============================================================================================\n");
+    ??? = ???.cvp.subList(0, Math.min(???.cvp.size(), 8)).iterator();
+    for (;;)
     {
-      Object localObject1 = Class.forName("android.os.ServiceManager");
-      this.bNz = ((IBinder)((Class)localObject1).getDeclaredMethod("getService", new Class[] { String.class }).invoke(null, new Object[] { this.bNw }));
-      Object localObject2 = ((Class)localObject1).getClassLoader();
-      if (localObject2 == null)
+      Object localObject2;
+      if (???.hasNext())
       {
-        c.e("Matrix.SystemServiceBinderHooker", "doHook exp classLoader null ", new Object[0]);
-        return false;
+        localObject2 = (b.e)???.next();
+        if (((b.e)localObject2).cvw <= 0L) {
+          localStringBuilder.append("|\t\t......\n");
+        }
       }
-      a locala = new a(this.bNz, yT());
-      localObject2 = (IBinder)Proxy.newProxyInstance((ClassLoader)localObject2, new Class[] { IBinder.class }, locala);
-      localObject1 = ((Class)localObject1).getDeclaredField("sCache");
-      ((Field)localObject1).setAccessible(true);
-      ((Map)((Field)localObject1).get(null)).put(this.bNw, localObject2);
-      return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      c.e("Matrix.SystemServiceBinderHooker", "doHook exp : " + localThrowable.getLocalizedMessage(), new Object[0]);
-    }
-    return false;
-  }
-  
-  public final boolean doUnHook()
-  {
-    if (this.bNz == null)
-    {
-      c.i("Matrix.SystemServiceBinderHooker", "doUnHook sOriginPowerManagerService null", new Object[0]);
-      return false;
-    }
-    try
-    {
-      Field localField = Class.forName("android.os.ServiceManager").getDeclaredField("sCache");
-      localField.setAccessible(true);
-      ((Map)localField.get(null)).put(this.bNw, this.bNz);
-      return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      c.e("Matrix.SystemServiceBinderHooker", "doUnHook exp : " + localThrowable.getLocalizedMessage(), new Object[0]);
-    }
-    return false;
-  }
-  
-  static final class a
-    implements InvocationHandler
-  {
-    private final IBinder bNA;
-    private final Object bNB;
-    
-    a(IBinder paramIBinder, Object paramObject)
-    {
-      this.bNA = paramIBinder;
-      this.bNB = paramObject;
-    }
-    
-    public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
-    {
-      if (("queryLocalInterface".equals(paramMethod.getName())) && (this.bNB != null)) {
-        return this.bNB;
+      else
+      {
+        localStringBuilder.append("| -> incrementWakeCount=").append(this.cvf).append(" sumWakeTime=").append(this.cvg).append("ms\n");
+        localStringBuilder.append(Hb());
+        localStringBuilder.append("**********************************************************************************************");
+        c.i("Matrix.BatteryPrinter", "%s", new Object[] { localStringBuilder.toString() });
       }
-      return paramMethod.invoke(this.bNA, paramArrayOfObject);
-    }
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void b(Method paramMethod, Object[] paramArrayOfObject);
-  }
-  
-  static final class c
-    implements InvocationHandler
-  {
-    final Object bNC;
-    final b.b bND;
-    
-    c(Object paramObject, b.b paramb)
-    {
-      this.bNC = paramObject;
-      this.bND = paramb;
-    }
-    
-    public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
-    {
-      if (this.bND != null) {
-        this.bND.b(paramMethod, paramArrayOfObject);
+      synchronized (this.cvd)
+      {
+        this.cvd.clear();
+        return;
+        localStringBuilder.append("| -> ").append(localObject2).append("\n");
+        localObject2 = (List)this.cvd.get(((b.e)localObject2).cvv.tid);
+        if ((localObject2 == null) || (((List)localObject2).isEmpty())) {
+          continue;
+        }
+        localObject2 = ((List)localObject2).subList(0, Math.min(3, ((List)localObject2).size())).iterator();
+        if (!((Iterator)localObject2).hasNext()) {
+          continue;
+        }
+        c.b localb = (c.b)((Iterator)localObject2).next();
+        localStringBuilder.append("|\t\t").append(localb).append("\n");
       }
-      return paramMethod.invoke(this.bNC, paramArrayOfObject);
     }
   }
+  
+  public final void a(Thread paramThread, List<c.b> paramList)
+  {
+    if ((paramThread instanceof HandlerThread)) {
+      synchronized (this.cvd)
+      {
+        this.cvd.put(((HandlerThread)paramThread).getThreadId(), paramList);
+        return;
+      }
+    }
+  }
+  
+  public void e(String paramString1, String paramString2, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.a.c.b
  * JD-Core Version:    0.7.0.1
  */

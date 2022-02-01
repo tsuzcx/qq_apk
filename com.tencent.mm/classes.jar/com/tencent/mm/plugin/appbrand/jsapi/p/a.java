@@ -1,73 +1,25 @@
 package com.tencent.mm.plugin.appbrand.jsapi.p;
 
-import a.f.b.j;
-import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.permission.e;
-import com.tencent.mm.plugin.appbrand.report.model.i;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.t;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.widget.e.b;
+import com.tencent.mm.plugin.appbrand.widget.e.b.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.LinkedList;
 
 public final class a
-  extends b
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<q>
 {
-  public final SparseArray<c> hXR;
-  
-  public a()
-  {
-    AppMethodBeat.i(131429);
-    this.hXR = new SparseArray();
-    AppMethodBeat.o(131429);
-  }
-  
-  public final void X(int paramInt, String paramString)
-  {
-    Object localObject1 = null;
-    AppMethodBeat.i(131430);
-    for (;;)
-    {
-      synchronized (this.hXR)
-      {
-        c localc = (c)this.hXR.get(paramInt, null);
-        if (localc == null)
-        {
-          AppMethodBeat.o(131430);
-          return;
-        }
-        this.hXR.remove(paramInt);
-        j.q(localc, "info");
-        ??? = localc.hXS;
-        j.p(???, "info.component");
-        ??? = ((h)???).getRuntime();
-        if ((??? instanceof o)) {
-          break label213;
-        }
-        localObject1 = (o)localObject1;
-        if (localObject1 != null)
-        {
-          localObject1 = ((o)localObject1).wO();
-          if (localObject1 != null)
-          {
-            paramInt = ((e)localObject1).a((com.tencent.mm.plugin.appbrand.jsapi.c)localc.hXS, localc.hXT, localc.data, false);
-            long l1 = bo.yB();
-            long l2 = localc.startTime;
-            i.a(localc.hXS.getAppId(), localc.path, localc.hXT.getName(), localc.data, paramInt, l1 - l2, paramString);
-            AppMethodBeat.o(131430);
-            return;
-          }
-        }
-      }
-      paramInt = -1;
-      continue;
-      label213:
-      localObject1 = ???;
-    }
-  }
+  private static final int CTRL_INDEX = 106;
+  private static final String NAME = "hideToast";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p.a
  * JD-Core Version:    0.7.0.1
  */

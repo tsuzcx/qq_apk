@@ -1,23 +1,22 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ap;
+import com.tencent.mm.sdk.b.c;
 
 final class RemittanceBusiUI$22
-  implements DialogInterface.OnClickListener
+  extends c<ap>
 {
   RemittanceBusiUI$22(RemittanceBusiUI paramRemittanceBusiUI)
   {
-    AppMethodBeat.i(44915);
-    AppMethodBeat.o(44915);
+    AppMethodBeat.i(163822);
+    this.__eventId = ap.class.getName().hashCode();
+    AppMethodBeat.o(163822);
   }
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceBusiUI.22
  * JD-Core Version:    0.7.0.1
  */

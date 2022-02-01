@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static Object[] erL = new Object[0];
-  private static Object[] erM = new Object[73];
+  private static Object[] fFN = new Object[0];
+  private static Object[] fFO = new Object[73];
   
   public static boolean contains(int[] paramArrayOfInt, int paramInt)
   {
@@ -30,7 +30,7 @@ public final class a
   
   public static <T> boolean contains(T[] paramArrayOfT, T paramT)
   {
-    AppMethodBeat.i(51923);
+    AppMethodBeat.i(157476);
     int j = paramArrayOfT.length;
     int i = 0;
     while (i < j)
@@ -40,18 +40,18 @@ public final class a
       {
         if (paramT == null)
         {
-          AppMethodBeat.o(51923);
+          AppMethodBeat.o(157476);
           return true;
         }
       }
       else if ((paramT != null) && (?.equals(paramT)))
       {
-        AppMethodBeat.o(51923);
+        AppMethodBeat.o(157476);
         return true;
       }
       i += 1;
     }
-    AppMethodBeat.o(51923);
+    AppMethodBeat.o(157476);
     return false;
   }
   
@@ -77,7 +77,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.compatible.loader.a
  * JD-Core Version:    0.7.0.1
  */

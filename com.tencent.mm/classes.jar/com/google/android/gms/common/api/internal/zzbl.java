@@ -11,9 +11,9 @@ final class zzbl
   
   public final void onSignOutComplete()
   {
-    AppMethodBeat.i(60840);
+    AppMethodBeat.i(11332);
     GoogleApiManager.zza(this.zzkk.zzjy).post(new zzbm(this));
-    AppMethodBeat.o(60840);
+    AppMethodBeat.o(11332);
   }
 }
 

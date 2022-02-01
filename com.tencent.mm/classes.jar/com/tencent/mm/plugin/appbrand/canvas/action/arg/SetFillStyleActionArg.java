@@ -14,13 +14,13 @@ public class SetFillStyleActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetFillStyleActionArg> CREATOR;
-  public RealSetFillStyleActionArg hfb;
+  public RealSetFillStyleActionArg iZk;
   
   static
   {
-    AppMethodBeat.i(103456);
-    CREATOR = new SetFillStyleActionArg.1();
-    AppMethodBeat.o(103456);
+    AppMethodBeat.i(145139);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145139);
   }
   
   public SetFillStyleActionArg() {}
@@ -32,14 +32,14 @@ public class SetFillStyleActionArg
   
   public final boolean a(d paramd, Canvas paramCanvas)
   {
-    AppMethodBeat.i(103450);
-    if (this.hfb == null)
+    AppMethodBeat.i(145133);
+    if (this.iZk == null)
     {
-      AppMethodBeat.o(103450);
+      AppMethodBeat.o(145133);
       return false;
     }
-    boolean bool = this.hfb.a(paramd, paramCanvas);
-    AppMethodBeat.o(103450);
+    boolean bool = this.iZk.a(paramd, paramCanvas);
+    AppMethodBeat.o(145133);
     return bool;
   }
   
@@ -50,80 +50,80 @@ public class SetFillStyleActionArg
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(103454);
+    AppMethodBeat.i(145137);
     if (this == paramObject)
     {
-      AppMethodBeat.o(103454);
+      AppMethodBeat.o(145137);
       return true;
     }
     if (!(paramObject instanceof SetFillStyleActionArg))
     {
-      AppMethodBeat.o(103454);
+      AppMethodBeat.o(145137);
       return false;
     }
     if (!super.equals(paramObject))
     {
-      AppMethodBeat.o(103454);
+      AppMethodBeat.o(145137);
       return false;
     }
     paramObject = (SetFillStyleActionArg)paramObject;
-    boolean bool = Objects.equals(this.hfb, paramObject.hfb);
-    AppMethodBeat.o(103454);
+    boolean bool = Objects.equals(this.iZk, paramObject.iZk);
+    AppMethodBeat.o(145137);
     return bool;
   }
   
   public final void h(Parcel paramParcel)
   {
-    AppMethodBeat.i(103451);
+    AppMethodBeat.i(145134);
     super.h(paramParcel);
-    this.hfb = ((RealSetFillStyleActionArg)paramParcel.readParcelable(SetFillStyleActionArg.class.getClassLoader()));
-    AppMethodBeat.o(103451);
+    this.iZk = ((RealSetFillStyleActionArg)paramParcel.readParcelable(SetFillStyleActionArg.class.getClassLoader()));
+    AppMethodBeat.o(145134);
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(103455);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.hfb });
-    AppMethodBeat.o(103455);
+    AppMethodBeat.i(145138);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.iZk });
+    AppMethodBeat.o(145138);
     return i;
   }
   
-  public final void p(JSONObject paramJSONObject)
+  public final void parse(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(103453);
-    super.p(paramJSONObject);
+    AppMethodBeat.i(145136);
+    super.parse(paramJSONObject);
     paramJSONObject = paramJSONObject.optJSONArray("data");
     if (paramJSONObject.length() < 2)
     {
-      AppMethodBeat.o(103453);
+      AppMethodBeat.o(145136);
       return;
     }
     String str = paramJSONObject.optString(0);
-    this.hfb = ((RealSetFillStyleActionArg)g.aye().zA(str));
-    this.hfb.f(paramJSONObject);
-    AppMethodBeat.o(103453);
+    this.iZk = ((RealSetFillStyleActionArg)g.aSX().Fq(str));
+    this.iZk.f(paramJSONObject);
+    AppMethodBeat.o(145136);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(103449);
+    AppMethodBeat.i(145132);
     super.reset();
-    g.aye().a(this.hfb);
-    this.hfb = null;
-    AppMethodBeat.o(103449);
+    g.aSX().a(this.iZk);
+    this.iZk = null;
+    AppMethodBeat.o(145132);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(103452);
+    AppMethodBeat.i(145135);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeParcelable(this.hfb, paramInt);
-    AppMethodBeat.o(103452);
+    paramParcel.writeParcelable(this.iZk, paramInt);
+    AppMethodBeat.o(145135);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFillStyleActionArg
  * JD-Core Version:    0.7.0.1
  */

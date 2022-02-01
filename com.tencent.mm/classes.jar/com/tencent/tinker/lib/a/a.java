@@ -30,8 +30,8 @@ public class a
     {
       try
       {
-        Object localObject4 = ShareReflectUtil.b(paramClassLoader, "pathList").get(paramClassLoader);
-        Object localObject1 = (List)ShareReflectUtil.b(localObject4, "nativeLibraryDirectories").get(localObject4);
+        Object localObject4 = ShareReflectUtil.findField(paramClassLoader, "pathList").get(paramClassLoader);
+        Object localObject1 = (List)ShareReflectUtil.findField(localObject4, "nativeLibraryDirectories").get(localObject4);
         if (localObject1 != null) {
           break label365;
         }
@@ -45,7 +45,7 @@ public class a
           ((Iterator)localObject2).remove();
         }
         ((List)localObject1).add(0, paramFile);
-        Object localObject3 = (List)ShareReflectUtil.b(localObject4, "systemNativeLibraryDirectories").get(localObject4);
+        Object localObject3 = (List)ShareReflectUtil.findField(localObject4, "systemNativeLibraryDirectories").get(localObject4);
         localObject2 = localObject3;
         if (localObject3 == null) {
           localObject2 = new ArrayList(2);
@@ -53,8 +53,8 @@ public class a
         localObject3 = new ArrayList(((List)localObject1).size() + ((List)localObject2).size() + 1);
         ((List)localObject3).addAll((Collection)localObject1);
         ((List)localObject3).addAll((Collection)localObject2);
-        localObject1 = (Object[])ShareReflectUtil.b(localObject4, "makePathElements", new Class[] { List.class }).invoke(localObject4, new Object[] { localObject3 });
-        ShareReflectUtil.b(localObject4, "nativeLibraryPathElements").set(localObject4, localObject1);
+        localObject1 = (Object[])ShareReflectUtil.findMethod(localObject4, "makePathElements", new Class[] { List.class }).invoke(localObject4, new Object[] { localObject3 });
+        ShareReflectUtil.findField(localObject4, "nativeLibraryPathElements").set(localObject4, localObject1);
         return;
       }
       catch (Throwable localThrowable1)
@@ -94,13 +94,13 @@ public class a
       com.tencent.tinker.lib.f.a.e("Tinker.LoadLibrary", "failed to get current patch version.", new Object[0]);
       return false;
     }
-    File localFile = SharePatchFileUtil.jy(paramApplicationLike.getApplication());
+    File localFile = SharePatchFileUtil.getPatchDirectory(paramApplicationLike.getApplication());
     if (localFile == null)
     {
       com.tencent.tinker.lib.f.a.e("Tinker.LoadLibrary", "failed to get current patch directory.", new Object[0]);
       return false;
     }
-    localObject = new File(localFile.getAbsolutePath() + "/" + SharePatchFileUtil.axb((String)localObject));
+    localObject = new File(localFile.getAbsolutePath() + "/" + SharePatchFileUtil.getPatchVersionDirectory((String)localObject));
     paramString = new File(((File)localObject).getAbsolutePath() + "/lib/lib/" + paramString);
     if (!paramString.exists())
     {
@@ -136,8 +136,8 @@ public class a
   {
     private static void b(ClassLoader paramClassLoader, File paramFile)
     {
-      paramClassLoader = ShareReflectUtil.b(paramClassLoader, "pathList").get(paramClassLoader);
-      Field localField = ShareReflectUtil.b(paramClassLoader, "nativeLibraryDirectories");
+      paramClassLoader = ShareReflectUtil.findField(paramClassLoader, "pathList").get(paramClassLoader);
+      Field localField = ShareReflectUtil.findField(paramClassLoader, "nativeLibraryDirectories");
       File[] arrayOfFile = (File[])localField.get(paramClassLoader);
       ArrayList localArrayList = new ArrayList(arrayOfFile.length + 1);
       localArrayList.add(paramFile);
@@ -159,8 +159,8 @@ public class a
   {
     private static void b(ClassLoader paramClassLoader, File paramFile)
     {
-      Object localObject2 = ShareReflectUtil.b(paramClassLoader, "pathList").get(paramClassLoader);
-      paramClassLoader = (List)ShareReflectUtil.b(localObject2, "nativeLibraryDirectories").get(localObject2);
+      Object localObject2 = ShareReflectUtil.findField(paramClassLoader, "pathList").get(paramClassLoader);
+      paramClassLoader = (List)ShareReflectUtil.findField(localObject2, "nativeLibraryDirectories").get(localObject2);
       if (paramClassLoader == null) {
         paramClassLoader = new ArrayList(2);
       }
@@ -173,7 +173,7 @@ public class a
           }
         }
         paramClassLoader.add(0, paramFile);
-        localObject1 = (List)ShareReflectUtil.b(localObject2, "systemNativeLibraryDirectories").get(localObject2);
+        localObject1 = (List)ShareReflectUtil.findField(localObject2, "systemNativeLibraryDirectories").get(localObject2);
         paramFile = (File)localObject1;
         if (localObject1 == null) {
           paramFile = new ArrayList(2);
@@ -181,8 +181,8 @@ public class a
         localObject1 = new ArrayList(paramClassLoader.size() + paramFile.size() + 1);
         ((List)localObject1).addAll(paramClassLoader);
         ((List)localObject1).addAll(paramFile);
-        paramClassLoader = (Object[])ShareReflectUtil.b(localObject2, "makePathElements", new Class[] { List.class, File.class, List.class }).invoke(localObject2, new Object[] { localObject1, null, new ArrayList() });
-        ShareReflectUtil.b(localObject2, "nativeLibraryPathElements").set(localObject2, paramClassLoader);
+        paramClassLoader = (Object[])ShareReflectUtil.findMethod(localObject2, "makePathElements", new Class[] { List.class, File.class, List.class }).invoke(localObject2, new Object[] { localObject1, null, new ArrayList() });
+        ShareReflectUtil.findField(localObject2, "nativeLibraryPathElements").set(localObject2, paramClassLoader);
         return;
       }
     }
@@ -193,7 +193,7 @@ public class a
     static void b(ClassLoader paramClassLoader, File paramFile)
     {
       paramFile = paramFile.getPath();
-      Field localField = ShareReflectUtil.b(paramClassLoader, "libPath");
+      Field localField = ShareReflectUtil.findField(paramClassLoader, "libPath");
       Object localObject1 = ((String)localField.get(paramClassLoader)).split(":");
       Object localObject2 = new StringBuilder(paramFile);
       int j = localObject1.length;
@@ -207,7 +207,7 @@ public class a
         i += 1;
       }
       localField.set(paramClassLoader, ((StringBuilder)localObject2).toString());
-      localField = ShareReflectUtil.b(paramClassLoader, "libraryPathElements");
+      localField = ShareReflectUtil.findField(paramClassLoader, "libraryPathElements");
       localObject1 = (List)localField.get(paramClassLoader);
       localObject2 = ((List)localObject1).iterator();
       while (((Iterator)localObject2).hasNext()) {

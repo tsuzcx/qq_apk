@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class TipsInfoLog
   extends JceStruct
@@ -29,12 +29,12 @@ public final class TipsInfoLog
   
   static
   {
-    AppMethodBeat.i(76157);
+    AppMethodBeat.i(102403);
     if (!TipsInfoLog.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(76157);
+      AppMethodBeat.o(102403);
       return;
     }
   }
@@ -65,7 +65,7 @@ public final class TipsInfoLog
   
   public final Object clone()
   {
-    AppMethodBeat.i(76152);
+    AppMethodBeat.i(102398);
     localObject1 = null;
     try
     {
@@ -76,16 +76,16 @@ public final class TipsInfoLog
     {
       while ($assertionsDisabled) {}
       localObject1 = new AssertionError();
-      AppMethodBeat.o(76152);
+      AppMethodBeat.o(102398);
       throw ((Throwable)localObject1);
     }
-    AppMethodBeat.o(76152);
+    AppMethodBeat.o(102398);
     return localObject1;
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
   {
-    AppMethodBeat.i(76155);
+    AppMethodBeat.i(102401);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.display(this.userId, "userId");
     paramStringBuilder.display(this.userIdType, "userIdType");
@@ -100,12 +100,12 @@ public final class TipsInfoLog
     paramStringBuilder.display(this.downloadBtnClickCount, "downloadBtnClickCount");
     paramStringBuilder.display(this.installBtnClickCount, "installBtnClickCount");
     paramStringBuilder.display(this.authorizedBtnClickCount, "authorizedBtnClickCount");
-    AppMethodBeat.o(76155);
+    AppMethodBeat.o(102401);
   }
   
   public final void displaySimple(StringBuilder paramStringBuilder, int paramInt)
   {
-    AppMethodBeat.i(76156);
+    AppMethodBeat.i(102402);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.displaySimple(this.userId, true);
     paramStringBuilder.displaySimple(this.userIdType, true);
@@ -120,24 +120,24 @@ public final class TipsInfoLog
     paramStringBuilder.displaySimple(this.downloadBtnClickCount, true);
     paramStringBuilder.displaySimple(this.installBtnClickCount, true);
     paramStringBuilder.displaySimple(this.authorizedBtnClickCount, false);
-    AppMethodBeat.o(76156);
+    AppMethodBeat.o(102402);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(76150);
+    AppMethodBeat.i(102396);
     if (paramObject == null)
     {
-      AppMethodBeat.o(76150);
+      AppMethodBeat.o(102396);
       return false;
     }
     paramObject = (TipsInfoLog)paramObject;
     if ((JceUtil.equals(this.userId, paramObject.userId)) && (JceUtil.equals(this.userIdType, paramObject.userIdType)) && (JceUtil.equals(this.gamePackageName, paramObject.gamePackageName)) && (JceUtil.equals(this.gameVersionCode, paramObject.gameVersionCode)) && (JceUtil.equals(this.gameChannelId, paramObject.gameChannelId)) && (JceUtil.equals(this.authorizedTipsCount, paramObject.authorizedTipsCount)) && (JceUtil.equals(this.downloadTipsCount, paramObject.downloadTipsCount)) && (JceUtil.equals(this.installTipsCount, paramObject.installTipsCount)) && (JceUtil.equals(this.networkErrorTipsCount, paramObject.networkErrorTipsCount)) && (JceUtil.equals(this.cancelBtnClickCount, paramObject.cancelBtnClickCount)) && (JceUtil.equals(this.downloadBtnClickCount, paramObject.downloadBtnClickCount)) && (JceUtil.equals(this.installBtnClickCount, paramObject.installBtnClickCount)) && (JceUtil.equals(this.authorizedBtnClickCount, paramObject.authorizedBtnClickCount)))
     {
-      AppMethodBeat.o(76150);
+      AppMethodBeat.o(102396);
       return true;
     }
-    AppMethodBeat.o(76150);
+    AppMethodBeat.o(102396);
     return false;
   }
   
@@ -213,24 +213,24 @@ public final class TipsInfoLog
   
   public final int hashCode()
   {
-    AppMethodBeat.i(76151);
+    AppMethodBeat.i(102397);
     try
     {
       Exception localException1 = new Exception("Need define key first!");
-      AppMethodBeat.o(76151);
+      AppMethodBeat.o(102397);
       throw localException1;
     }
     catch (Exception localException2)
     {
-      ab.printErrStackTrace("TipsInfoLog", localException2, "", new Object[0]);
-      AppMethodBeat.o(76151);
+      ad.printErrStackTrace("TipsInfoLog", localException2, "", new Object[0]);
+      AppMethodBeat.o(102397);
     }
     return 0;
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76154);
+    AppMethodBeat.i(102400);
     this.userId = paramJceInputStream.readString(0, false);
     this.userIdType = paramJceInputStream.readString(1, false);
     this.gamePackageName = paramJceInputStream.readString(2, false);
@@ -244,7 +244,7 @@ public final class TipsInfoLog
     this.downloadBtnClickCount = paramJceInputStream.read(this.downloadBtnClickCount, 10, false);
     this.installBtnClickCount = paramJceInputStream.read(this.installBtnClickCount, 11, false);
     this.authorizedBtnClickCount = paramJceInputStream.read(this.authorizedBtnClickCount, 12, false);
-    AppMethodBeat.o(76154);
+    AppMethodBeat.o(102400);
   }
   
   public final void setAuthorizedBtnClickCount(int paramInt)
@@ -314,7 +314,7 @@ public final class TipsInfoLog
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76153);
+    AppMethodBeat.i(102399);
     if (this.userId != null) {
       paramJceOutputStream.write(this.userId, 0);
     }
@@ -336,12 +336,12 @@ public final class TipsInfoLog
     paramJceOutputStream.write(this.downloadBtnClickCount, 10);
     paramJceOutputStream.write(this.installBtnClickCount, 11);
     paramJceOutputStream.write(this.authorizedBtnClickCount, 12);
-    AppMethodBeat.o(76153);
+    AppMethodBeat.o(102399);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.TipsInfoLog
  * JD-Core Version:    0.7.0.1
  */

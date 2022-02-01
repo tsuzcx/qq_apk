@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.voip.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.jj;
+import com.tencent.mm.sdk.b.c;
 
 final class VideoActivity$9
-  implements Runnable
+  extends c<jj>
 {
-  VideoActivity$9(VideoActivity paramVideoActivity) {}
-  
-  public final void run()
+  VideoActivity$9(VideoActivity paramVideoActivity)
   {
-    AppMethodBeat.i(4795);
-    VideoActivity.e(this.tCq);
-    AppMethodBeat.o(4795);
+    AppMethodBeat.i(161659);
+    this.__eventId = jj.class.getName().hashCode();
+    AppMethodBeat.o(161659);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VideoActivity.9
  * JD-Core Version:    0.7.0.1
  */

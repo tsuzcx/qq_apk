@@ -1,83 +1,94 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.g.i;
+import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gv;
-import com.tencent.mm.g.a.gv.b;
-import com.tencent.mm.plugin.game.luggage.d.f;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bh;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bh.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.downloader_app.api.DownloadWidgetTaskInfo;
+import com.tencent.mm.plugin.downloader_app.api.c;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class h
-  extends bh<f>
+  extends bn
 {
-  public final void a(Context paramContext, String paramString, bh.a parama)
+  public final void a(Context paramContext, String paramString, bn.a parama)
   {
-    AppMethodBeat.i(135871);
-    ab.i("MicroMsg.JsApiGetGameCommInfo", "invoke");
-    paramString = i.ci(paramString);
-    if (paramString == null)
+    AppMethodBeat.i(83064);
+    Object localObject = ((c)g.ab(c.class)).bQM();
+    if (bt.gL((List)localObject))
     {
-      ab.e("MicroMsg.JsApiGetGameCommInfo", "data is null");
-      parama.c("invalid_data", null);
-      AppMethodBeat.o(135871);
+      parama.f(null, null);
+      AppMethodBeat.o(83064);
       return;
     }
-    int i = paramString.optInt("cmd", 0);
-    paramString = paramString.optString("param");
-    if (i == 10002) {
-      paramContext = new JSONObject();
-    }
-    try
+    paramContext = new JSONObject();
+    paramString = new JSONArray();
+    localObject = ((LinkedList)localObject).iterator();
+    for (;;)
     {
-      paramContext.put("webpageCount", 1);
-      label81:
-      parama.c(null, paramContext);
-      AppMethodBeat.o(135871);
-      return;
-      gv localgv = new gv();
-      localgv.cvM.vA = i;
-      localgv.cvM.cvO = paramString;
-      localgv.cvM.context = paramContext;
-      com.tencent.mm.sdk.b.a.ymk.l(localgv);
+      DownloadWidgetTaskInfo localDownloadWidgetTaskInfo;
+      JSONObject localJSONObject;
+      if (((Iterator)localObject).hasNext())
+      {
+        localDownloadWidgetTaskInfo = (DownloadWidgetTaskInfo)((Iterator)localObject).next();
+        localJSONObject = new JSONObject();
+      }
       try
       {
-        parama.c(null, new JSONObject(localgv.cvN.result));
-        AppMethodBeat.o(135871);
-        return;
+        localJSONObject.put("appid", localDownloadWidgetTaskInfo.appId);
+        localJSONObject.put("status", localDownloadWidgetTaskInfo.ogT);
+        localJSONObject.put("download_id", localDownloadWidgetTaskInfo.daY);
+        localJSONObject.put("progress", localDownloadWidgetTaskInfo.progress);
+        localJSONObject.put("progress_float", localDownloadWidgetTaskInfo.jAt);
+        if (localDownloadWidgetTaskInfo.ofO) {
+          localJSONObject.put("reserve_for_wifi", 1);
+        }
+        label177:
+        paramString.put(localJSONObject);
+        continue;
+        try
+        {
+          paramContext.put("result", paramString.toString());
+          label198:
+          parama.f(null, paramContext);
+          AppMethodBeat.o(83064);
+          return;
+        }
+        catch (JSONException paramString)
+        {
+          break label198;
+        }
       }
-      catch (JSONException paramContext)
+      catch (JSONException localJSONException)
       {
-        parama.c(null, null);
-        AppMethodBeat.o(135871);
-        return;
+        break label177;
       }
-    }
-    catch (JSONException paramString)
-    {
-      break label81;
     }
   }
   
-  public final void b(com.tencent.luggage.d.a<f>.a parama) {}
+  public final void b(a.a parama) {}
   
-  public final int bjL()
+  public final int bQV()
   {
     return 1;
   }
   
   public final String name()
   {
-    return "getGameCommInfo";
+    return "getDownloadWidgetTaskInfos";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.b.h
  * JD-Core Version:    0.7.0.1
  */

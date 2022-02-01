@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class db
   extends b
 {
-  public db.a cqw;
+  public a dfk;
   
   public db()
   {
@@ -15,16 +15,21 @@ public final class db
   
   private db(byte paramByte)
   {
-    AppMethodBeat.i(62222);
-    this.cqw = new db.a();
-    this.ymq = false;
+    AppMethodBeat.i(104412);
+    this.dfk = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(62222);
+    AppMethodBeat.o(104412);
+  }
+  
+  public static final class a
+  {
+    public int state = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.db
  * JD-Core Version:    0.7.0.1
  */

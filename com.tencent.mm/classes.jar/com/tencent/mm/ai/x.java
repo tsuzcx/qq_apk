@@ -1,118 +1,136 @@
 package com.tencent.mm.ai;
 
-import android.os.HandlerThread;
-import android.os.Looper;
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.protocal.protobuf.bvk;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.ap;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.atomic.AtomicReference;
+import com.tencent.mm.api.b;
+import com.tencent.mm.kernel.b.h;
+import com.tencent.mm.kernel.d;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.pluginsdk.model.r;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.io.IOException;
+import java.util.LinkedList;
 
 public final class x
+  extends s
 {
-  public static <T extends bvk> a.a<T> a(a<T> parama)
+  public x()
   {
-    AppMethodBeat.i(58317);
-    if (w.fuq == null) {}
-    for (Object localObject = null; localObject == null; localObject = w.fuq.Rd())
-    {
-      ab.e("MicroMsg.SynchronousCgiCall", "NetSceneQueue not ready, just return NULL");
-      AppMethodBeat.o(58317);
-      return null;
-    }
-    if (al.isMainThread())
-    {
-      parama = new IllegalAccessError("Cant call this function in main thread");
-      AppMethodBeat.o(58317);
-      throw parama;
-    }
-    if (((p)localObject).ftB.oNc.getLooper().getThread().getId() == Thread.currentThread().getId())
-    {
-      parama = new IllegalAccessError("Cant call this function in NetSceneQueue's worker thread!!!");
-      AppMethodBeat.o(58317);
-      throw parama;
-    }
-    localObject = new AtomicReference();
-    CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    parama.adl().b(new x.3((AtomicReference)localObject, localCountDownLatch));
-    try
-    {
-      localCountDownLatch.await();
-      parama = (a.a)((AtomicReference)localObject).get();
-      AppMethodBeat.o(58317);
-      return parama;
-    }
-    catch (Exception parama)
-    {
-      ab.printErrStackTrace("MicroMsg.SynchronousCgiCall", parama, "semaphore await exp ", new Object[0]);
-      AppMethodBeat.o(58317);
-    }
-    return null;
+    AppMethodBeat.i(116419);
+    this.gKx = new v();
+    AppMethodBeat.o(116419);
   }
   
-  public static <T extends bvk> a.a<T> c(b paramb)
+  private String apC()
   {
-    AppMethodBeat.i(58316);
-    if (paramb == null)
-    {
-      paramb = new IllegalArgumentException("Cant use NULL rr");
-      AppMethodBeat.o(58316);
-      throw paramb;
+    AppMethodBeat.i(116422);
+    String str = r.aAK(b.q(this.gKx.gKD, 4));
+    AppMethodBeat.o(116422);
+    return str;
+  }
+  
+  public static boolean mW(int paramInt)
+  {
+    return (paramInt & 0x1) != 0;
+  }
+  
+  public final String SI()
+  {
+    if (this.type == 285212721) {}
+    for (int i = 1; i != 0; i = 0) {
+      return this.userName;
     }
-    if (w.fuq == null) {}
-    for (Object localObject = null; localObject == null; localObject = w.fuq.Rd())
-    {
-      ab.e("MicroMsg.SynchronousCgiCall", "NetSceneQueue not ready, just return NULL");
-      AppMethodBeat.o(58316);
-      return null;
-    }
-    if (al.isMainThread())
-    {
-      paramb = new IllegalAccessError("Cant call this function in main thread");
-      AppMethodBeat.o(58316);
-      throw paramb;
-    }
-    if (((p)localObject).ftB.oNc.getLooper().getThread().getId() == Thread.currentThread().getId())
-    {
-      paramb = new IllegalAccessError("Cant call this function in NetSceneQueue's worker thread!!!");
-      AppMethodBeat.o(58316);
-      throw paramb;
-    }
-    localObject = new AtomicReference();
-    final CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    w.a(paramb, new w.a()
-    {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb, m paramAnonymousm)
-      {
-        AppMethodBeat.i(58313);
-        this.fuB.set(a.a.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, (bvk)paramAnonymousb.fsW.fta, paramAnonymousm, null));
-        localCountDownLatch.countDown();
-        AppMethodBeat.o(58313);
-        return 0;
-      }
-    });
-    new ap(Looper.getMainLooper(), new x.2((AtomicReference)localObject, localCountDownLatch), false).ag(20000L, 20000L);
+    return this.dfT;
+  }
+  
+  public final void s(Bundle paramBundle)
+  {
+    AppMethodBeat.i(116421);
     try
     {
-      localCountDownLatch.await();
-      paramb = (a.a)((AtomicReference)localObject).get();
-      AppMethodBeat.o(58316);
-      return paramb;
+      if ((((h)g.afy().aeZ()).agu()) && ((this.gKx.type == 5) || (this.gKx.type == 8)) && (this.gKy.size() == 0)) {
+        this.gKy.add(apC());
+      }
+      paramBundle.putByteArray("biz_mp_msg_info", toByteArray());
+      paramBundle.putString("rawUrl", this.gKx.url);
+      AppMethodBeat.o(116421);
+      return;
     }
-    catch (InterruptedException paramb)
+    catch (IOException paramBundle)
     {
-      ab.printErrStackTrace("MicroMsg.SynchronousCgiCall", paramb, "latch await exp ", new Object[0]);
-      AppMethodBeat.o(58316);
+      ad.e("MicroMsg.MPMsgInfo", "writeToIntent %s", new Object[] { paramBundle.getMessage() });
+      AppMethodBeat.o(116421);
     }
-    return null;
+  }
+  
+  public final void t(Intent paramIntent)
+  {
+    AppMethodBeat.i(116420);
+    try
+    {
+      if ((((h)g.afy().aeZ()).agu()) && ((this.gKx.type == 5) || (this.gKx.type == 8)) && (this.gKy.size() == 0)) {
+        this.gKy.add(apC());
+      }
+      paramIntent.putExtra("biz_mp_msg_info", toByteArray());
+      paramIntent.putExtra("rawUrl", this.gKx.url);
+      AppMethodBeat.o(116420);
+      return;
+    }
+    catch (IOException paramIntent)
+    {
+      ad.e("MicroMsg.MPMsgInfo", "writeToIntent %s", new Object[] { paramIntent.getMessage() });
+      AppMethodBeat.o(116420);
+    }
+  }
+  
+  public final void t(Bundle paramBundle)
+  {
+    AppMethodBeat.i(116424);
+    try
+    {
+      parseFrom(paramBundle.getByteArray("biz_mp_msg_info"));
+      AppMethodBeat.o(116424);
+      return;
+    }
+    catch (IOException paramBundle)
+    {
+      ad.e("MicroMsg.MPMsgInfo", "parseFromBundle %s", new Object[] { paramBundle.getMessage() });
+      AppMethodBeat.o(116424);
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      ad.e("MicroMsg.MPMsgInfo", "parseFromBundle %s", new Object[] { paramBundle.getMessage() });
+      AppMethodBeat.o(116424);
+    }
+  }
+  
+  public final void u(Intent paramIntent)
+  {
+    AppMethodBeat.i(116423);
+    try
+    {
+      parseFrom(paramIntent.getByteArrayExtra("biz_mp_msg_info"));
+      AppMethodBeat.o(116423);
+      return;
+    }
+    catch (IOException paramIntent)
+    {
+      ad.e("MicroMsg.MPMsgInfo", "parseFromIntent %s", new Object[] { paramIntent.getMessage() });
+      AppMethodBeat.o(116423);
+      return;
+    }
+    catch (Exception paramIntent)
+    {
+      ad.e("MicroMsg.MPMsgInfo", "parseFromIntent %s", new Object[] { paramIntent.getMessage() });
+      AppMethodBeat.o(116423);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ai.x
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/mf" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.bizchat.BizChatSearchListView android:id="@id/bl7" android:background="#f7ffffff" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/mn" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/s4" android:gravity="center_horizontal" android:id="@id/je" android:background="@color/vy" android:paddingTop="@dimen/l8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/bfy" />
-    </FrameLayout>
+    <com.tencent.mm.plugin.downloader_app.ui.TaskHeaderView android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/bdi" android:background="@color/ly" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/ajq" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginStart="16.0dip" android:layout_marginEnd="16.0dip">
+            <TextView android:textSize="@dimen/a7h" android:textStyle="bold" android:textColor="@color/FG_0" android:id="@id/d12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="下载更新" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/a7h" android:textColor="@color/Link" android:id="@id/f2y" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </com.tencent.mm.plugin.downloader_app.ui.TaskHeaderView>
 </LinearLayout>

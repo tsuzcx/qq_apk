@@ -8,13 +8,13 @@ public abstract class ac
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dkU = "brandUserName".hashCode();
-  private static final int dlG = "userId".hashCode();
+  private static final int eoQ = "sessionName".hashCode();
+  private static final int eoT = "msgListDataId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dkG = true;
-  private boolean dlF = true;
-  public String field_brandUserName;
-  public String field_userId;
+  private boolean eoN = true;
+  private boolean eoS = true;
+  public String field_msgListDataId;
+  public String field_sessionName;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,11 +29,11 @@ public abstract class ac
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dkU != k) {
+      if (eoT != k) {
         break label65;
       }
-      this.field_brandUserName = paramCursor.getString(i);
-      this.dkG = true;
+      this.field_msgListDataId = paramCursor.getString(i);
+      this.eoS = true;
     }
     for (;;)
     {
@@ -41,8 +41,8 @@ public abstract class ac
       break label20;
       break;
       label65:
-      if (dlG == k) {
-        this.field_userId = paramCursor.getString(i);
+      if (eoQ == k) {
+        this.field_sessionName = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +52,14 @@ public abstract class ac
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dkG) {
-      localContentValues.put("brandUserName", this.field_brandUserName);
+    if (this.eoS) {
+      localContentValues.put("msgListDataId", this.field_msgListDataId);
     }
-    if (this.dlF) {
-      localContentValues.put("userId", this.field_userId);
+    if (this.field_sessionName == null) {
+      this.field_sessionName = "";
+    }
+    if (this.eoN) {
+      localContentValues.put("sessionName", this.field_sessionName);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

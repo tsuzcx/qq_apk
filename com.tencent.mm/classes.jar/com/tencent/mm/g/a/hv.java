@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class hv
   extends b
 {
-  public hv.a cxd;
+  public a dlA;
   
   public hv()
   {
@@ -15,11 +15,16 @@ public final class hv
   
   private hv(byte paramByte)
   {
-    AppMethodBeat.i(59284);
-    this.cxd = new hv.a();
-    this.ymq = false;
+    AppMethodBeat.i(123476);
+    this.dlA = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(59284);
+    AppMethodBeat.o(123476);
+  }
+  
+  public static final class a
+  {
+    public String dlB;
   }
 }
 

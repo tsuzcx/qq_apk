@@ -8,9 +8,10 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.pluginsdk.p.c.a;
-import com.tencent.mm.pluginsdk.p.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.pluginsdk.n.c.a;
+import com.tencent.mm.pluginsdk.n.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.h;
 
 public final class m
@@ -18,9 +19,9 @@ public final class m
 {
   static
   {
-    AppMethodBeat.i(16149);
+    AppMethodBeat.i(20194);
     b.a(new m(), new String[] { "//wear" });
-    AppMethodBeat.o(16149);
+    AppMethodBeat.o(20194);
   }
   
   public static void init() {}
@@ -28,15 +29,15 @@ public final class m
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     int i = 0;
-    AppMethodBeat.i(16148);
-    if (ab.getLogLevel() > 1)
+    AppMethodBeat.i(20193);
+    if (ad.getLogLevel() > 1)
     {
-      AppMethodBeat.o(16148);
+      AppMethodBeat.o(20193);
       return false;
     }
     if (paramArrayOfString.length < 2)
     {
-      AppMethodBeat.o(16148);
+      AppMethodBeat.o(20193);
       return true;
     }
     paramArrayOfString = paramArrayOfString[1];
@@ -52,7 +53,7 @@ public final class m
     }
     for (;;)
     {
-      AppMethodBeat.o(16148);
+      AppMethodBeat.o(20193);
       return true;
       if (!paramArrayOfString.equals("log")) {
         break;
@@ -68,16 +69,16 @@ public final class m
       }
       i = 2;
       break label83;
-      p.e.vJC.cYB();
+      n.e.BNv.ehd();
       continue;
       paramArrayOfString = new TextView(paramContext);
-      paramArrayOfString.setText(p.e.vJC.cYA());
+      paramArrayOfString.setText(n.e.BNv.ehc());
       paramArrayOfString.setGravity(19);
       paramArrayOfString.setTextSize(1, 10.0F);
       paramArrayOfString.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-      paramArrayOfString.setTextColor(-16711936);
+      paramArrayOfString.setTextColor(ao.aD(paramContext, 2130968584));
       paramArrayOfString.setTypeface(Typeface.MONOSPACE);
-      i = paramContext.getResources().getDimensionPixelSize(2131427772);
+      i = paramContext.getResources().getDimensionPixelSize(2131165480);
       paramArrayOfString.setPadding(i, i, i, i);
       h.a(paramContext, null, paramArrayOfString, null);
     }
@@ -85,7 +86,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.console.a.m
  * JD-Core Version:    0.7.0.1
  */

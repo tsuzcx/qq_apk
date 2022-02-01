@@ -12,87 +12,87 @@ public class g
   extends h
   implements a
 {
-  public e tkK;
-  public FrameLayout tkL;
+  public e yRs;
+  public FrameLayout yRt;
   
   public g(View paramView, b paramb)
   {
     super(paramView, paramb);
   }
   
-  public final void GL(int paramInt)
+  public final void Ps(int paramInt)
   {
-    AppMethodBeat.i(1950);
-    a(this.tim, this.tim.bMN(), this.tkK, paramInt);
-    AppMethodBeat.o(1950);
+    AppMethodBeat.i(126328);
+    a(this.yOL, this.yOL.cKW(), this.yRs, paramInt);
+    AppMethodBeat.o(126328);
   }
   
-  public void cJL()
+  public final int dOD()
   {
-    AppMethodBeat.i(1947);
-    if (this.tkK == null)
+    AppMethodBeat.i(202284);
+    int i = ln();
+    AppMethodBeat.o(202284);
+    return i;
+  }
+  
+  public void dPo()
+  {
+    AppMethodBeat.i(126325);
+    if (this.yRs == null)
     {
-      if (!this.tim.cJn()) {
-        break label135;
+      if (!this.yOL.dOQ()) {
+        break label133;
       }
-      this.tkK = new k(this.tim.bMN(), this.tim, this);
-      this.tkL.removeAllViews();
-      if (!this.tim.cJn()) {
-        break label163;
+      this.yRs = new k(this.yOL.cKW(), this.yOL, this);
+      this.yRt.removeAllViews();
+      if (!this.yOL.dOQ()) {
+        break label161;
       }
     }
-    label135:
-    label163:
-    for (FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.tim.cJi().x, this.tim.cJi().y);; localLayoutParams = new FrameLayout.LayoutParams(this.tim.cJi().y, this.tim.cJi().x))
+    label133:
+    label161:
+    for (FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.yOL.dOK().x, this.yOL.dOK().y);; localLayoutParams = new FrameLayout.LayoutParams(this.yOL.dOK().y, this.yOL.dOK().x))
     {
-      this.tkL.addView(this.tkK, localLayoutParams);
-      this.tkK.a(this.tfm, cJb());
-      AppMethodBeat.o(1947);
+      this.yRt.addView(this.yRs, localLayoutParams);
+      this.yRs.a(this.yLU, dOD());
+      AppMethodBeat.o(126325);
       return;
-      this.tkK = new e(this.tim.bMN(), this.tim, this);
+      this.yRs = new e(this.yOL.cKW(), this.yOL, this);
       break;
     }
   }
   
-  public final com.tencent.mm.plugin.topstory.ui.video.f cJM()
+  public final com.tencent.mm.plugin.topstory.ui.video.f dPp()
   {
-    return this.tkK;
+    return this.yRs;
   }
   
-  public final int cJb()
+  public final void fd(View paramView)
   {
-    AppMethodBeat.i(156796);
-    int i = jN();
-    AppMethodBeat.o(156796);
-    return i;
-  }
-  
-  public final void ep(View paramView)
-  {
-    AppMethodBeat.i(1945);
-    this.tkL = ((FrameLayout)paramView.findViewById(2131828187));
-    AppMethodBeat.o(1945);
+    AppMethodBeat.i(126323);
+    this.yRt = ((FrameLayout)paramView.findViewById(2131306411));
+    AppMethodBeat.o(126323);
   }
   
   public final View getWowView()
   {
-    AppMethodBeat.i(1949);
-    View localView = this.tkK.getControlBar().getWowView();
-    AppMethodBeat.o(1949);
+    AppMethodBeat.i(126327);
+    View localView = this.yRs.getControlBar().getWowView();
+    AppMethodBeat.o(126327);
     return localView;
   }
   
-  public final void mA(boolean paramBoolean)
+  public final void rf(boolean paramBoolean)
   {
-    AppMethodBeat.i(1946);
-    super.mA(paramBoolean);
-    this.tim.GA(jN());
-    if (this.tkK.Q(paramBoolean, false))
+    AppMethodBeat.i(126324);
+    super.rf(paramBoolean);
+    this.yOL.Pi(ln());
+    if (this.yRs.aj(paramBoolean, false))
     {
-      cJa();
-      cIZ();
+      dOC();
+      dOB();
     }
-    AppMethodBeat.o(1946);
+    AppMethodBeat.o(126324);
   }
 }
 

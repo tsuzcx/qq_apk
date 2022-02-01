@@ -2,12 +2,12 @@ package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public final class da
   extends b
 {
-  public da.a cqt;
-  public da.b cqu;
+  public a dfi;
   
   public da()
   {
@@ -16,17 +16,22 @@ public final class da
   
   private da(byte paramByte)
   {
-    AppMethodBeat.i(62221);
-    this.cqt = new da.a();
-    this.cqu = new da.b();
-    this.ymq = false;
+    AppMethodBeat.i(104411);
+    this.dfi = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(62221);
+    AppMethodBeat.o(104411);
+  }
+  
+  public static final class a
+  {
+    public EmojiInfo dfj;
+    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.da
  * JD-Core Version:    0.7.0.1
  */

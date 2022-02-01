@@ -27,18 +27,18 @@ public class Stts
   
   public void parse(Parsable paramParsable, Box paramBox)
   {
-    AppMethodBeat.i(128484);
+    AppMethodBeat.i(114267);
     super.parse(paramParsable, paramBox);
     this.entryCount = paramParsable.readInt();
     this.sampleCount = new int[this.entryCount];
     this.sampleDelta = new int[this.entryCount];
     paramParsable.readIntArrayInterleaved(this.entryCount, new int[][] { this.sampleCount, this.sampleDelta });
-    AppMethodBeat.o(128484);
+    AppMethodBeat.o(114267);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.mpeg4.boxes.Stts
  * JD-Core Version:    0.7.0.1
  */

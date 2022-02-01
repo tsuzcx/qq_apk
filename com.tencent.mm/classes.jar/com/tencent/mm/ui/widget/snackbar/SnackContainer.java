@@ -2,11 +2,14 @@ package com.tencent.mm.ui.widget.snackbar;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
@@ -20,164 +23,235 @@ import java.util.Queue;
 public class SnackContainer
   extends FrameLayout
 {
-  Queue<a> AKB;
-  private AnimationSet AKC;
+  private AnimationSet GuK;
+  Queue<a> HLr;
+  private AnimationSet HLs;
   private final Runnable mHideRunnable;
-  private AnimationSet zFQ;
   
   public SnackContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(112996);
-    this.AKB = new LinkedList();
-    this.mHideRunnable = new SnackContainer.1(this);
+    AppMethodBeat.i(159724);
+    this.HLr = new LinkedList();
+    this.mHideRunnable = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(159719);
+        if (SnackContainer.this.getVisibility() == 0) {
+          SnackContainer.this.startAnimation(SnackContainer.a(SnackContainer.this));
+        }
+        AppMethodBeat.o(159719);
+      }
+    };
     init();
-    AppMethodBeat.o(112996);
+    AppMethodBeat.o(159724);
   }
   
   SnackContainer(ViewGroup paramViewGroup)
   {
     super(paramViewGroup.getContext());
-    AppMethodBeat.i(112997);
-    this.AKB = new LinkedList();
-    this.mHideRunnable = new SnackContainer.1(this);
+    AppMethodBeat.i(159725);
+    this.HLr = new LinkedList();
+    this.mHideRunnable = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(159719);
+        if (SnackContainer.this.getVisibility() == 0) {
+          SnackContainer.this.startAnimation(SnackContainer.a(SnackContainer.this));
+        }
+        AppMethodBeat.o(159719);
+      }
+    };
     paramViewGroup.addView(this, new ViewGroup.LayoutParams(-1, -1));
     setVisibility(8);
-    setId(2131827819);
+    setId(2131304882);
     init();
-    AppMethodBeat.o(112997);
+    AppMethodBeat.o(159725);
   }
   
   private static void b(a parama)
   {
-    AppMethodBeat.i(113004);
-    if (parama.AKJ != null)
+    AppMethodBeat.i(159732);
+    if (parama.HLy != null)
     {
-      b.rJ(false);
-      parama.AKJ.onHide();
+      b.xb(false);
+      parama.HLy.onHide();
     }
-    AppMethodBeat.o(113004);
+    AppMethodBeat.o(159732);
   }
   
   private static void c(a parama)
   {
-    AppMethodBeat.i(113005);
-    if (parama.AKJ != null)
+    AppMethodBeat.i(159733);
+    if (parama.HLy != null)
     {
-      b.rJ(true);
-      parama.AKJ.onShow();
+      b.xb(true);
+      parama.HLy.onShow();
     }
-    AppMethodBeat.o(113005);
+    AppMethodBeat.o(159733);
   }
   
   private void init()
   {
-    AppMethodBeat.i(112998);
-    this.zFQ = new AnimationSet(false);
+    AppMethodBeat.i(159726);
+    this.GuK = new AnimationSet(false);
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 1, 1.0F, 1, 0.0F);
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    this.zFQ.setInterpolator(new DecelerateInterpolator(1.5F));
-    this.zFQ.addAnimation(localTranslateAnimation);
-    this.zFQ.addAnimation(localAlphaAnimation);
-    this.AKC = new AnimationSet(false);
+    this.GuK.setInterpolator(new DecelerateInterpolator(1.5F));
+    this.GuK.addAnimation(localTranslateAnimation);
+    this.GuK.addAnimation(localAlphaAnimation);
+    this.HLs = new AnimationSet(false);
     localTranslateAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 1, 0.0F, 1, 1.0F);
     localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    this.AKC.addAnimation(localTranslateAnimation);
-    this.AKC.addAnimation(localAlphaAnimation);
-    this.AKC.setDuration(300L);
-    this.AKC.setAnimationListener(new SnackContainer.2(this));
-    AppMethodBeat.o(112998);
+    this.HLs.addAnimation(localTranslateAnimation);
+    this.HLs.addAnimation(localAlphaAnimation);
+    this.HLs.setDuration(300L);
+    this.HLs.setAnimationListener(new Animation.AnimationListener()
+    {
+      public final void onAnimationEnd(Animation paramAnonymousAnimation)
+      {
+        AppMethodBeat.i(159721);
+        SnackContainer.this.removeAllViews();
+        if (!SnackContainer.b(SnackContainer.this).isEmpty()) {
+          SnackContainer.d((SnackContainer.a)SnackContainer.b(SnackContainer.this).poll());
+        }
+        if (!SnackContainer.this.isEmpty())
+        {
+          SnackContainer.a(SnackContainer.this, (SnackContainer.a)SnackContainer.b(SnackContainer.this).peek());
+          AppMethodBeat.o(159721);
+          return;
+        }
+        SnackContainer.this.setVisibility(8);
+        AppMethodBeat.o(159721);
+      }
+      
+      public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+      
+      public final void onAnimationStart(Animation paramAnonymousAnimation)
+      {
+        AppMethodBeat.i(159720);
+        if ((!SnackContainer.this.isEmpty()) && (SnackContainer.b(SnackContainer.this).peek() != null) && (((SnackContainer.a)SnackContainer.b(SnackContainer.this).peek()).HLy != null))
+        {
+          b.xb(false);
+          ((SnackContainer.a)SnackContainer.b(SnackContainer.this).peek()).HLy.aXN();
+        }
+        AppMethodBeat.o(159720);
+      }
+    });
+    AppMethodBeat.o(159726);
   }
   
-  final void a(a parama)
+  final void a(final a parama)
   {
-    AppMethodBeat.i(113003);
+    AppMethodBeat.i(159731);
     setVisibility(0);
     c(parama);
-    addView(parama.AKF);
-    parama.AKG.setText(parama.AKI.nGF);
-    if (parama.AKI.AKn != null)
+    addView(parama.HLv);
+    parama.qE.setText(parama.HLx.ste);
+    if (parama.HLx.HLd != null)
     {
-      parama.AKH.setVisibility(0);
-      parama.AKH.setText(parama.AKI.AKn);
+      parama.HLw.setVisibility(0);
+      parama.HLw.setText(parama.HLx.HLd);
     }
     for (;;)
     {
-      this.zFQ.setDuration(500L);
-      Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2131034181);
+      this.GuK.setDuration(500L);
+      Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772047);
       localAnimation.setDuration(500L);
-      startAnimation(this.zFQ);
+      startAnimation(this.GuK);
       localAnimation.setStartOffset(200L);
-      parama.AKH.startAnimation(localAnimation);
-      parama.AKG.startAnimation(localAnimation);
-      if (parama.AKI.AKq > 0) {
-        postDelayed(this.mHideRunnable, parama.AKI.AKq);
+      parama.HLw.startAnimation(localAnimation);
+      parama.qE.startAnimation(localAnimation);
+      if (parama.HLx.HLg > 0) {
+        postDelayed(this.mHideRunnable, parama.HLx.HLg);
       }
-      parama.AKF.setOnTouchListener(new SnackContainer.3(this, parama));
-      AppMethodBeat.o(113003);
+      parama.HLv.setOnTouchListener(new View.OnTouchListener()
+      {
+        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+        {
+          AppMethodBeat.i(159722);
+          switch (paramAnonymousMotionEvent.getAction())
+          {
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(159722);
+            return true;
+            SnackContainer.this.removeCallbacks(SnackContainer.c(SnackContainer.this));
+            SnackContainer.d(parama);
+            SnackContainer.this.startAnimation(SnackContainer.a(SnackContainer.this));
+            if (!SnackContainer.b(SnackContainer.this).isEmpty()) {
+              SnackContainer.b(SnackContainer.this).clear();
+            }
+          }
+        }
+      });
+      AppMethodBeat.o(159731);
       return;
-      parama.AKH.setVisibility(8);
+      parama.HLw.setVisibility(8);
     }
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(113002);
+    AppMethodBeat.i(159730);
     removeCallbacks(this.mHideRunnable);
     this.mHideRunnable.run();
-    AppMethodBeat.o(113002);
+    AppMethodBeat.o(159730);
   }
   
   public final boolean isEmpty()
   {
-    AppMethodBeat.i(113000);
-    boolean bool = this.AKB.isEmpty();
-    AppMethodBeat.o(113000);
+    AppMethodBeat.i(159728);
+    boolean bool = this.HLr.isEmpty();
+    AppMethodBeat.o(159728);
     return bool;
   }
   
   public final boolean isShowing()
   {
-    AppMethodBeat.i(113001);
-    if (!this.AKB.isEmpty())
+    AppMethodBeat.i(159729);
+    if (!this.HLr.isEmpty())
     {
-      AppMethodBeat.o(113001);
+      AppMethodBeat.o(159729);
       return true;
     }
-    AppMethodBeat.o(113001);
+    AppMethodBeat.o(159729);
     return false;
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(112999);
+    AppMethodBeat.i(159727);
     super.onDetachedFromWindow();
-    this.zFQ.cancel();
-    this.AKC.cancel();
+    this.GuK.cancel();
+    this.HLs.cancel();
     removeCallbacks(this.mHideRunnable);
-    this.AKB.clear();
-    AppMethodBeat.o(112999);
+    this.HLr.clear();
+    AppMethodBeat.o(159727);
   }
   
   protected void onVisibilityChanged(View paramView, int paramInt)
   {
-    AppMethodBeat.i(113006);
+    AppMethodBeat.i(159734);
     super.onVisibilityChanged(paramView, paramInt);
     if (8 == paramInt)
     {
       removeAllViews();
-      if (!this.AKB.isEmpty()) {
-        b((a)this.AKB.poll());
+      if (!this.HLr.isEmpty()) {
+        b((a)this.HLr.poll());
       }
       if (isEmpty()) {
         break label83;
       }
-      a((a)this.AKB.peek());
+      a((a)this.HLr.peek());
     }
     for (;;)
     {
-      b.rJ(false);
-      AppMethodBeat.o(113006);
+      b.xb(false);
+      AppMethodBeat.o(159734);
       return;
       label83:
       setVisibility(8);
@@ -186,27 +260,27 @@ public class SnackContainer
   
   static final class a
   {
-    final View AKF;
-    final TextView AKG;
-    final TextView AKH;
-    final Snack AKI;
-    final a.c AKJ;
+    final View HLv;
+    final TextView HLw;
+    final Snack HLx;
+    final a.c HLy;
+    final TextView qE;
     
     private a(Snack paramSnack, View paramView, a.c paramc)
     {
-      AppMethodBeat.i(112995);
-      this.AKF = paramView;
-      this.AKH = ((TextView)paramView.findViewById(2131827822));
-      this.AKG = ((TextView)paramView.findViewById(2131827821));
-      this.AKI = paramSnack;
-      this.AKJ = paramc;
-      AppMethodBeat.o(112995);
+      AppMethodBeat.i(159723);
+      this.HLv = paramView;
+      this.HLw = ((TextView)paramView.findViewById(2131304881));
+      this.qE = ((TextView)paramView.findViewById(2131304883));
+      this.HLx = paramSnack;
+      this.HLy = paramc;
+      AppMethodBeat.o(159723);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.snackbar.SnackContainer
  * JD-Core Version:    0.7.0.1
  */

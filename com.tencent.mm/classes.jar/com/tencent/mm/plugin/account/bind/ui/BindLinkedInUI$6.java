@@ -4,12 +4,12 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
+import com.tencent.mm.bs.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.model.u;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 
 final class BindLinkedInUI$6
   implements View.OnClickListener
@@ -18,16 +18,16 @@ final class BindLinkedInUI$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(13390);
-    paramView = (String)g.RL().Ru().get(286723, null);
-    if (!bo.isNullOrNil(paramView))
+    AppMethodBeat.i(109818);
+    paramView = (String)g.afB().afk().get(286723, null);
+    if (!bt.isNullOrNil(paramView))
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("rawUrl", paramView);
-      localIntent.putExtra("geta8key_username", r.Zn());
-      d.b(this.gtf, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
+      localIntent.putExtra("geta8key_username", u.aqG());
+      d.b(this.igh, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", localIntent);
     }
-    AppMethodBeat.o(13390);
+    AppMethodBeat.o(109818);
   }
 }
 

@@ -3,37 +3,67 @@ package com.tencent.mm.g.c;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class fq
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dPO = "timeStamp".hashCode();
-  private static final int dVB;
-  private static final int dVC;
-  private static final int diK;
-  private static final int din = "recordId".hashCode();
-  private static final int dkj;
+  private static final int eYs = "storyId".hashCode();
+  private static final int eYt = "readCommentId".hashCode();
+  private static final int eYu = "syncCommentId".hashCode();
+  private static final int eYv = "readCommentTime".hashCode();
+  private static final int eYw = "syncCommentTime".hashCode();
+  private static final int eYx = "commentFlag".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dPI = true;
-  private boolean dVA = true;
-  private boolean dVz = true;
-  private boolean diH = true;
-  private boolean dik = true;
-  private boolean dkg = true;
-  public String field_imgUrl;
-  public String field_link;
-  public String field_recordId;
-  public String field_source;
-  public long field_timeStamp;
-  public String field_title;
+  private boolean eYm = true;
+  private boolean eYn = true;
+  private boolean eYo = true;
+  private boolean eYp = true;
+  private boolean eYq = true;
+  private boolean eYr = true;
+  public int field_commentFlag;
+  public int field_readCommentId;
+  public int field_readCommentTime;
+  public long field_storyId;
+  public int field_syncCommentId;
+  public int field_syncCommentTime;
   
-  static
+  public static c.a So()
   {
-    dVB = "link".hashCode();
-    dkj = "title".hashCode();
-    diK = "source".hashCode();
-    dVC = "imgUrl".hashCode();
+    c.a locala = new c.a();
+    locala.EYt = new Field[6];
+    locala.columns = new String[7];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "storyId";
+    locala.EYv.put("storyId", "LONG PRIMARY KEY ");
+    localStringBuilder.append(" storyId LONG PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.EYu = "storyId";
+    locala.columns[1] = "readCommentId";
+    locala.EYv.put("readCommentId", "INTEGER");
+    localStringBuilder.append(" readCommentId INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "syncCommentId";
+    locala.EYv.put("syncCommentId", "INTEGER");
+    localStringBuilder.append(" syncCommentId INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "readCommentTime";
+    locala.EYv.put("readCommentTime", "INTEGER");
+    localStringBuilder.append(" readCommentTime INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "syncCommentTime";
+    locala.EYv.put("syncCommentTime", "INTEGER");
+    localStringBuilder.append(" syncCommentTime INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "commentFlag";
+    locala.EYv.put("commentFlag", "INTEGER");
+    localStringBuilder.append(" commentFlag INTEGER");
+    locala.columns[6] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    return locala;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -49,11 +79,11 @@ public abstract class fq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (din != k) {
+      if (eYs != k) {
         break label65;
       }
-      this.field_recordId = paramCursor.getString(i);
-      this.dik = true;
+      this.field_storyId = paramCursor.getLong(i);
+      this.eYm = true;
     }
     for (;;)
     {
@@ -61,16 +91,16 @@ public abstract class fq
       break label20;
       break;
       label65:
-      if (dVB == k) {
-        this.field_link = paramCursor.getString(i);
-      } else if (dkj == k) {
-        this.field_title = paramCursor.getString(i);
-      } else if (diK == k) {
-        this.field_source = paramCursor.getString(i);
-      } else if (dVC == k) {
-        this.field_imgUrl = paramCursor.getString(i);
-      } else if (dPO == k) {
-        this.field_timeStamp = paramCursor.getLong(i);
+      if (eYt == k) {
+        this.field_readCommentId = paramCursor.getInt(i);
+      } else if (eYu == k) {
+        this.field_syncCommentId = paramCursor.getInt(i);
+      } else if (eYv == k) {
+        this.field_readCommentTime = paramCursor.getInt(i);
+      } else if (eYw == k) {
+        this.field_syncCommentTime = paramCursor.getInt(i);
+      } else if (eYx == k) {
+        this.field_commentFlag = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -80,23 +110,23 @@ public abstract class fq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dik) {
-      localContentValues.put("recordId", this.field_recordId);
+    if (this.eYm) {
+      localContentValues.put("storyId", Long.valueOf(this.field_storyId));
     }
-    if (this.dVz) {
-      localContentValues.put("link", this.field_link);
+    if (this.eYn) {
+      localContentValues.put("readCommentId", Integer.valueOf(this.field_readCommentId));
     }
-    if (this.dkg) {
-      localContentValues.put("title", this.field_title);
+    if (this.eYo) {
+      localContentValues.put("syncCommentId", Integer.valueOf(this.field_syncCommentId));
     }
-    if (this.diH) {
-      localContentValues.put("source", this.field_source);
+    if (this.eYp) {
+      localContentValues.put("readCommentTime", Integer.valueOf(this.field_readCommentTime));
     }
-    if (this.dVA) {
-      localContentValues.put("imgUrl", this.field_imgUrl);
+    if (this.eYq) {
+      localContentValues.put("syncCommentTime", Integer.valueOf(this.field_syncCommentTime));
     }
-    if (this.dPI) {
-      localContentValues.put("timeStamp", Long.valueOf(this.field_timeStamp));
+    if (this.eYr) {
+      localContentValues.put("commentFlag", Integer.valueOf(this.field_commentFlag));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -106,7 +136,7 @@ public abstract class fq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.fq
  * JD-Core Version:    0.7.0.1
  */

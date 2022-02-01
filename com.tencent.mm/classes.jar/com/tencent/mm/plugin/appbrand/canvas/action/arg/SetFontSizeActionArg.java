@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.g;
+import com.tencent.mm.plugin.appbrand.aa.g;
 import java.util.Objects;
 import org.json.JSONObject;
 
@@ -15,9 +15,9 @@ public class SetFontSizeActionArg
   
   static
   {
-    AppMethodBeat.i(103477);
-    CREATOR = new SetFontSizeActionArg.1();
-    AppMethodBeat.o(103477);
+    AppMethodBeat.i(145160);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145160);
   }
   
   public SetFontSizeActionArg() {}
@@ -34,67 +34,67 @@ public class SetFontSizeActionArg
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(103475);
+    AppMethodBeat.i(145158);
     if (this == paramObject)
     {
-      AppMethodBeat.o(103475);
+      AppMethodBeat.o(145158);
       return true;
     }
     if (!(paramObject instanceof SetFontSizeActionArg))
     {
-      AppMethodBeat.o(103475);
+      AppMethodBeat.o(145158);
       return false;
     }
     if (!super.equals(paramObject))
     {
-      AppMethodBeat.o(103475);
+      AppMethodBeat.o(145158);
       return false;
     }
     paramObject = (SetFontSizeActionArg)paramObject;
     if (this.size == paramObject.size)
     {
-      AppMethodBeat.o(103475);
+      AppMethodBeat.o(145158);
       return true;
     }
-    AppMethodBeat.o(103475);
+    AppMethodBeat.o(145158);
     return false;
   }
   
   public final void h(Parcel paramParcel)
   {
-    AppMethodBeat.i(103472);
+    AppMethodBeat.i(145155);
     super.h(paramParcel);
     this.size = paramParcel.readInt();
-    AppMethodBeat.o(103472);
+    AppMethodBeat.o(145155);
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(103476);
+    AppMethodBeat.i(145159);
     int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Integer.valueOf(this.size) });
-    AppMethodBeat.o(103476);
+    AppMethodBeat.o(145159);
     return i;
   }
   
-  public final void p(JSONObject paramJSONObject)
+  public final void parse(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(103473);
-    super.p(paramJSONObject);
-    this.size = g.a(paramJSONObject.optJSONArray("data"), 0);
-    AppMethodBeat.o(103473);
+    AppMethodBeat.i(145156);
+    super.parse(paramJSONObject);
+    this.size = g.c(paramJSONObject.optJSONArray("data"), 0);
+    AppMethodBeat.o(145156);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(103474);
+    AppMethodBeat.i(145157);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeInt(this.size);
-    AppMethodBeat.o(103474);
+    AppMethodBeat.o(145157);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFontSizeActionArg
  * JD-Core Version:    0.7.0.1
  */

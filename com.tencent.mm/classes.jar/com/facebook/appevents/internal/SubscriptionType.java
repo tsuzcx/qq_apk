@@ -6,7 +6,7 @@ public enum SubscriptionType
 {
   static
   {
-    AppMethodBeat.i(72231);
+    AppMethodBeat.i(17667);
     NEW = new SubscriptionType("NEW", 0);
     HEARTBEAT = new SubscriptionType("HEARTBEAT", 1);
     EXPIRE = new SubscriptionType("EXPIRE", 2);
@@ -15,14 +15,14 @@ public enum SubscriptionType
     DUPLICATED = new SubscriptionType("DUPLICATED", 5);
     UNKNOWN = new SubscriptionType("UNKNOWN", 6);
     $VALUES = new SubscriptionType[] { NEW, HEARTBEAT, EXPIRE, CANCEL, RESTORE, DUPLICATED, UNKNOWN };
-    AppMethodBeat.o(72231);
+    AppMethodBeat.o(17667);
   }
   
   private SubscriptionType() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.internal.SubscriptionType
  * JD-Core Version:    0.7.0.1
  */

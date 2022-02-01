@@ -4,7 +4,7 @@ import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.u;
 
 public final class a
-  extends f
+  extends g
 {
   public a(u paramu, Orders paramOrders)
   {

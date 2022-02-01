@@ -1,56 +1,49 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import android.annotation.SuppressLint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import com.tencent.mm.pluginsdk.g.a.c.l;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.ad.c;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import d.g.a.a;
+import d.g.b.k;
+import d.y;
 
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/appcache/WxaCommLibCodeCacheHelper;", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaCommLibPreloadSessionInMM$ICommLibSessionDelegate;", "()V", "LAST_DEV_LIB_VERSION_CODE_KEY", "", "LAST_DEV_LIB_VERSION_NAME_KEY", "SP", "Landroid/content/SharedPreferences;", "kotlin.jvm.PlatformType", "getSP", "()Landroid/content/SharedPreferences;", "TAG", "onUpdateUsingVersion", "", "reader", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "plugin-appbrand-integration_release"})
 public final class ap
+  implements ar.a
 {
-  final ap.b gVX;
+  public static final ap iMW;
   
-  ap()
+  static
   {
-    AppMethodBeat.i(59507);
-    this.gVX = new ap.b(this);
-    AppMethodBeat.o(59507);
+    AppMethodBeat.i(50179);
+    iMW = new ap();
+    AppMethodBeat.o(50179);
   }
   
-  public static String avQ()
+  @SuppressLint({"ApplySharedPref"})
+  public final void b(ICommLibReader paramICommLibReader)
   {
-    AppMethodBeat.i(59508);
-    String str2 = g.RL().cachePath;
-    String str1 = str2;
-    if (!str2.endsWith("/")) {
-      str1 = str2 + "/";
-    }
-    str1 = str1 + "appbrand/pkg/";
-    j.akQ(str1);
-    AppMethodBeat.o(59508);
-    return str1;
+    AppMethodBeat.i(50178);
+    k.h(paramICommLibReader, "reader");
+    c.b(null, (a)new a(paramICommLibReader));
+    AppMethodBeat.o(50178);
   }
   
-  public final int b(a parama)
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  static final class a
+    extends d.g.b.l
+    implements a<y>
   {
-    AppMethodBeat.i(59509);
-    if (this.gVX.alN(parama.vMK))
+    a(ICommLibReader paramICommLibReader)
     {
-      ab.i("MicroMsg.AppBrandWxaPkgDownloadPerformer", "addRequestIfNotRunning, urlKey %s already in queue", new Object[] { parama.vMK });
-      AppMethodBeat.o(59509);
-      return 0;
+      super();
     }
-    int i = this.gVX.b(parama);
-    ab.i("MicroMsg.AppBrandWxaPkgDownloadPerformer", "addRequestIfNotRunning, urlKey %s, addResult %d", new Object[] { parama.vMK, Integer.valueOf(i) });
-    AppMethodBeat.o(59509);
-    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ap
  * JD-Core Version:    0.7.0.1
  */

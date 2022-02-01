@@ -12,43 +12,43 @@ public final class AppBrandTaskUsageRecorder$LaunchCheckParams
   implements Parcelable
 {
   public static final Parcelable.Creator<LaunchCheckParams> CREATOR;
-  final String bCU;
-  final int gXf;
-  final int hEZ;
-  final QualitySession hiI;
-  final boolean hqi;
-  final AppBrandStatObject ikA;
-  final AppBrandInitConfigWC ikz;
+  final String cfb;
+  final int jHb;
+  final QualitySession jdu;
+  final boolean jnr;
+  final AppBrandInitConfigWC kHa;
+  final AppBrandStatObject kHb;
+  final int pkgVersion;
   
   static
   {
-    AppMethodBeat.i(131763);
-    CREATOR = new AppBrandTaskUsageRecorder.LaunchCheckParams.1();
-    AppMethodBeat.o(131763);
+    AppMethodBeat.i(47111);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(47111);
   }
   
   AppBrandTaskUsageRecorder$LaunchCheckParams(Parcel paramParcel)
   {
-    AppMethodBeat.i(131762);
-    this.hqi = true;
-    this.ikz = ((AppBrandInitConfigWC)paramParcel.readParcelable(AppBrandInitConfigWC.class.getClassLoader()));
-    this.ikA = ((AppBrandStatObject)paramParcel.readParcelable(AppBrandStatObject.class.getClassLoader()));
-    this.gXf = paramParcel.readInt();
-    this.hEZ = paramParcel.readInt();
-    this.bCU = paramParcel.readString();
-    this.hiI = ((QualitySession)paramParcel.readParcelable(QualitySession.class.getClassLoader()));
-    AppMethodBeat.o(131762);
+    AppMethodBeat.i(47110);
+    this.jnr = true;
+    this.kHa = ((AppBrandInitConfigWC)paramParcel.readParcelable(AppBrandInitConfigWC.class.getClassLoader()));
+    this.kHb = ((AppBrandStatObject)paramParcel.readParcelable(AppBrandStatObject.class.getClassLoader()));
+    this.pkgVersion = paramParcel.readInt();
+    this.jHb = paramParcel.readInt();
+    this.cfb = paramParcel.readString();
+    this.jdu = ((QualitySession)paramParcel.readParcelable(QualitySession.class.getClassLoader()));
+    AppMethodBeat.o(47110);
   }
   
   public AppBrandTaskUsageRecorder$LaunchCheckParams(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject, int paramInt1, int paramInt2, String paramString, QualitySession paramQualitySession)
   {
-    this.hqi = true;
-    this.ikz = paramAppBrandInitConfigWC;
-    this.ikA = paramAppBrandStatObject;
-    this.gXf = paramInt1;
-    this.hEZ = paramInt2;
-    this.bCU = paramString;
-    this.hiI = paramQualitySession;
+    this.jnr = true;
+    this.kHa = paramAppBrandInitConfigWC;
+    this.kHb = paramAppBrandStatObject;
+    this.pkgVersion = paramInt1;
+    this.jHb = paramInt2;
+    this.cfb = paramString;
+    this.jdu = paramQualitySession;
   }
   
   public final int describeContents()
@@ -58,19 +58,19 @@ public final class AppBrandTaskUsageRecorder$LaunchCheckParams
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(131761);
-    paramParcel.writeParcelable(this.ikz, paramInt);
-    paramParcel.writeParcelable(this.ikA, paramInt);
-    paramParcel.writeInt(this.gXf);
-    paramParcel.writeInt(this.hEZ);
-    paramParcel.writeString(this.bCU);
-    paramParcel.writeParcelable(this.hiI, paramInt);
-    AppMethodBeat.o(131761);
+    AppMethodBeat.i(47109);
+    paramParcel.writeParcelable(this.kHa, paramInt);
+    paramParcel.writeParcelable(this.kHb, paramInt);
+    paramParcel.writeInt(this.pkgVersion);
+    paramParcel.writeInt(this.jHb);
+    paramParcel.writeString(this.cfb);
+    paramParcel.writeParcelable(this.jdu, paramInt);
+    AppMethodBeat.o(47109);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandTaskUsageRecorder.LaunchCheckParams
  * JD-Core Version:    0.7.0.1
  */

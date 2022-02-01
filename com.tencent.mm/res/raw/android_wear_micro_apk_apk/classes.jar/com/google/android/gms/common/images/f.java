@@ -21,7 +21,7 @@ final class f
     if (this == paramObject) {
       return true;
     }
-    return b.b(((f)paramObject).uri, this.uri);
+    return b.c(((f)paramObject).uri, this.uri);
   }
   
   public final int hashCode()

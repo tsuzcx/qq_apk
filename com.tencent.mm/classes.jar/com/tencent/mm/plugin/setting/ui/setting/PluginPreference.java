@@ -9,33 +9,35 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.d;
-import com.tencent.mm.ah.d.a;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.g.c.aq;
+import com.tencent.mm.ak.e;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.p;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.n.b;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class PluginPreference
   extends Preference
-  implements d.a
+  implements e.a
 {
-  private MMActivity cmc;
-  private ImageView gxs;
-  int mml;
-  private String pAS;
-  String qGc;
-  String qGd;
-  private int qGe;
-  private int qGf;
-  boolean qGg;
+  private ImageView ikp;
+  private MMActivity imP;
+  int pSW;
+  private String uCA;
+  boolean weA;
+  String wew;
+  String wex;
+  private int wey;
+  private int wez;
   
   public PluginPreference(Context paramContext)
   {
@@ -50,63 +52,73 @@ public final class PluginPreference
   public PluginPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(126980);
-    this.pAS = "";
-    this.qGe = -1;
-    this.qGf = 8;
-    this.qGg = false;
-    this.gxs = null;
-    this.mml = 255;
-    this.cmc = ((MMActivity)paramContext);
-    setLayoutResource(2130970179);
-    o.acQ().a(this);
-    AppMethodBeat.o(126980);
+    AppMethodBeat.i(73911);
+    this.uCA = "";
+    this.wey = -1;
+    this.wez = 8;
+    this.weA = false;
+    this.ikp = null;
+    this.pSW = 255;
+    this.imP = ((MMActivity)paramContext);
+    setLayoutResource(2131494804);
+    p.auq().a(this);
+    AppMethodBeat.o(73911);
   }
   
-  private void chm()
+  private void dkd()
   {
-    AppMethodBeat.i(126982);
-    if (this.gxs != null) {
-      a.b.c(this.gxs, this.qGc);
+    AppMethodBeat.i(73914);
+    if (this.ikp != null) {
+      a.b.c(this.ikp, this.wew);
     }
-    AppMethodBeat.o(126982);
+    AppMethodBeat.o(73914);
   }
   
-  public final boolean YT(String paramString)
+  public final boolean amT(String paramString)
   {
-    AppMethodBeat.i(126981);
-    paramString = ((j)g.E(j.class)).YA().arw(paramString);
-    if ((paramString == null) || ((int)paramString.euF == 0))
+    AppMethodBeat.i(73912);
+    paramString = ((k)g.ab(k.class)).apM().aHY(paramString);
+    if ((paramString == null) || ((int)paramString.fId == 0))
     {
-      ab.e("MicroMsg.PluginPreference", "plugin do not exist");
-      AppMethodBeat.o(126981);
+      ad.e("MicroMsg.PluginPreference", "plugin do not exist");
+      AppMethodBeat.o(73912);
       return false;
     }
-    this.qGc = paramString.field_username;
-    this.qGd = paramString.Oe();
-    setKey("settings_plugins_list_#" + this.qGc);
-    AppMethodBeat.o(126981);
+    this.wew = paramString.field_username;
+    this.wex = paramString.ZW();
+    setKey("settings_plugins_list_#" + this.wew);
+    AppMethodBeat.o(73912);
+    return true;
+  }
+  
+  public final boolean iu(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(73913);
+    this.wew = paramString1;
+    this.wex = paramString2;
+    setKey("settings_plugins_list_#" + this.wew);
+    AppMethodBeat.o(73913);
     return true;
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(126984);
+    AppMethodBeat.i(73916);
     super.onBindView(paramView);
-    this.gxs = ((ImageView)paramView.findViewById(2131822243));
-    this.gxs.setAlpha(this.mml);
-    TextView localTextView = (TextView)paramView.findViewById(2131822409);
+    this.ikp = ((ImageView)paramView.findViewById(2131300943));
+    this.ikp.setAlpha(this.pSW);
+    TextView localTextView = (TextView)paramView.findViewById(2131305745);
     if (localTextView != null)
     {
-      localTextView.setVisibility(this.qGf);
-      localTextView.setText(this.pAS);
-      if (this.qGe != -1) {
-        localTextView.setBackgroundDrawable(com.tencent.mm.cb.a.k(this.cmc, this.qGe));
+      localTextView.setVisibility(this.wez);
+      localTextView.setText(this.uCA);
+      if (this.wey != -1) {
+        localTextView.setBackgroundDrawable(a.l(this.imP, this.wey));
       }
     }
-    paramView = (TextView)paramView.findViewById(2131825202);
+    paramView = (TextView)paramView.findViewById(2131302741);
     if (paramView != null) {
-      if (!this.qGg) {
+      if (!this.weA) {
         break label125;
       }
     }
@@ -114,44 +126,44 @@ public final class PluginPreference
     for (int i = 0;; i = 8)
     {
       paramView.setVisibility(i);
-      chm();
-      AppMethodBeat.o(126984);
+      dkd();
+      AppMethodBeat.o(73916);
       return;
     }
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(126983);
+    AppMethodBeat.i(73915);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130970212, localViewGroup);
-    AppMethodBeat.o(126983);
+    localLayoutInflater.inflate(2131494839, localViewGroup);
+    AppMethodBeat.o(73915);
     return paramViewGroup;
   }
   
-  public final void re(String paramString)
+  public final void vZ(String paramString)
   {
-    AppMethodBeat.i(126985);
-    if ((this.qGc != null) && (this.qGc.equals(paramString))) {
-      new ak(Looper.getMainLooper()).post(new Runnable()
+    AppMethodBeat.i(73917);
+    if ((this.wew != null) && (this.wew.equals(paramString))) {
+      new ap(Looper.getMainLooper()).post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(126979);
+          AppMethodBeat.i(73910);
           PluginPreference.a(PluginPreference.this);
-          AppMethodBeat.o(126979);
+          AppMethodBeat.o(73910);
         }
       });
     }
-    AppMethodBeat.o(126985);
+    AppMethodBeat.o(73917);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.PluginPreference
  * JD-Core Version:    0.7.0.1
  */

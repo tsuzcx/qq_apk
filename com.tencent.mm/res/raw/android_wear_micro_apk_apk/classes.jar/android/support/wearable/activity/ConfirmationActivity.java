@@ -19,8 +19,8 @@ import android.widget.TextView;
 public class ConfirmationActivity
   extends Activity
 {
-  private final Handler mHandler = new Handler();
-  private ActionPage yy;
+  private ActionPage An;
+  private final Handler dG = new Handler();
   
   public void onCreate(Bundle paramBundle)
   {
@@ -28,15 +28,15 @@ public class ConfirmationActivity
     paramBundle = getIntent();
     int i = paramBundle.getIntExtra("animation_type", 1);
     paramBundle = paramBundle.getStringExtra("message");
-    this.yy = new ActionPage(this);
+    this.An = new ActionPage(this);
     final long l;
     if (i == 3)
     {
-      setContentView(i.wI);
+      setContentView(i.yx);
       ((TextView)findViewById(g.message)).setText(paramBundle);
       l = 2000L;
-      this.yy.setKeepScreenOn(true);
-      this.mHandler.postDelayed(new Runnable()
+      this.An.setKeepScreenOn(true);
+      this.dG.postDelayed(new Runnable()
       {
         public final void run()
         {
@@ -46,22 +46,22 @@ public class ConfirmationActivity
       }, l);
       return;
     }
-    this.yy.eH();
-    this.yy.setStateListAnimator(new StateListAnimator());
-    this.yy.aP(ActionPage.zB);
-    setContentView(this.yy);
+    this.An.eX();
+    this.An.setStateListAnimator(new StateListAnimator());
+    this.An.bj(ActionPage.Bq);
+    setContentView(this.An);
     if (paramBundle != null) {
-      this.yy.setText(paramBundle);
+      this.An.setText(paramBundle);
     }
     switch (i)
     {
     default: 
-      throw new IllegalArgumentException("Unknown type of animation: " + i);
+      throw new IllegalArgumentException("Unknown type of animation: ".concat(String.valueOf(i)));
     }
-    for (paramBundle = getDrawable(f.wv);; paramBundle = getDrawable(f.wu))
+    for (paramBundle = getDrawable(f.yk);; paramBundle = getDrawable(f.yj))
     {
-      this.yy.setImageDrawable(paramBundle);
-      final ActionLabel localActionLabel = this.yy.eG();
+      this.An.setImageDrawable(paramBundle);
+      final ActionLabel localActionLabel = this.An.eW();
       l = Math.max(0L, 1666L - (localActionLabel.animate().getDuration() + 50L) * 2L);
       ((Animatable)paramBundle).start();
       localActionLabel.setAlpha(0.0F);

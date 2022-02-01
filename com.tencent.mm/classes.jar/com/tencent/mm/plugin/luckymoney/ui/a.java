@@ -12,40 +12,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends e
 {
-  a.a oqT;
+  a tjq;
   
   public a(Context paramContext)
   {
-    super(paramContext, 2131493185);
-    AppMethodBeat.i(42555);
-    eS();
-    AppMethodBeat.o(42555);
+    super(paramContext, 2131820861);
+    AppMethodBeat.i(65412);
+    gl();
+    AppMethodBeat.o(65412);
   }
   
   public final void onBackPressed()
   {
-    AppMethodBeat.i(42557);
-    if (this.oqT != null) {
-      this.oqT.bNL();
+    AppMethodBeat.i(65414);
+    if (this.tjq != null) {
+      this.tjq.cMh();
     }
-    AppMethodBeat.o(42557);
+    AppMethodBeat.o(65414);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(42556);
+    AppMethodBeat.i(65413);
     super.onCreate(paramBundle);
     getWindow().setGravity(80);
     paramBundle = getWindow().getWindowManager().getDefaultDisplay();
     WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
     localLayoutParams.width = paramBundle.getWidth();
     getWindow().setAttributes(localLayoutParams);
-    AppMethodBeat.o(42556);
+    AppMethodBeat.o(65413);
+  }
+  
+  static abstract interface a
+  {
+    public abstract void cMh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.a
  * JD-Core Version:    0.7.0.1
  */

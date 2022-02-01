@@ -1,82 +1,82 @@
 package com.tencent.mm.plugin.wallet_index.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.plugin.wallet_index.c.k;
-import com.tencent.mm.protocal.protobuf.awd;
-import com.tencent.mm.protocal.protobuf.awe;
-import com.tencent.mm.wallet_core.c.t;
+import com.tencent.mm.al.n;
+import com.tencent.mm.plugin.wallet_index.c.m;
+import com.tencent.mm.protocal.protobuf.bhi;
+import com.tencent.mm.protocal.protobuf.bhj;
+import com.tencent.mm.wallet_core.c.v;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class c
 {
-  String liu;
+  public String AxB;
+  public ArrayList<String> AxE;
+  public ArrayList<String> AxF;
+  public String AxG;
+  public int AxH;
+  List<String> AxI;
+  boolean AxJ;
+  public String AxK;
+  public String AxL;
+  public String Axc;
+  public String Axd;
+  public bhi Axj;
+  public bhj Axk;
   public int mCount;
-  int prr;
-  public ArrayList<String> uAB;
-  public ArrayList<String> uAC;
-  public String uAD;
-  public int uAE;
-  List<String> uAF;
-  boolean uAG;
-  public String uAH;
-  public String uAI;
-  public String uAa;
-  public String uAb;
-  public awd uAh;
-  public awe uAi;
-  public String uAy;
+  String oyw;
+  int uqr;
   
   public c()
   {
-    AppMethodBeat.i(48227);
-    this.uAB = new ArrayList();
-    this.uAC = new ArrayList();
+    AppMethodBeat.i(71861);
+    this.AxE = new ArrayList();
+    this.AxF = new ArrayList();
     this.mCount = 1;
-    this.uAD = null;
-    this.uAE = 0;
-    this.uAb = null;
-    this.uAa = null;
-    this.uAy = null;
-    this.uAF = new ArrayList();
-    this.liu = null;
-    this.uAG = false;
-    AppMethodBeat.o(48227);
+    this.AxG = null;
+    this.AxH = 0;
+    this.Axd = null;
+    this.Axc = null;
+    this.AxB = null;
+    this.AxI = new ArrayList();
+    this.oyw = null;
+    this.AxJ = false;
+    AppMethodBeat.o(71861);
   }
   
-  public final m a(com.tencent.mm.plugin.wallet_index.b.a.c paramc, boolean paramBoolean)
+  public final n a(com.tencent.mm.plugin.wallet_index.b.a.c paramc, boolean paramBoolean)
   {
-    AppMethodBeat.i(48228);
+    AppMethodBeat.i(71862);
     if (paramBoolean) {}
-    for (int i = 2; this.uAG; i = 1)
+    for (int i = 2; this.AxJ; i = 1)
     {
-      if (!cXg())
+      if (!efB())
       {
-        this.uAh.xlA = paramc.mSignature;
-        this.uAh.xlx = paramc.uzY;
-        this.uAh.pqC = paramc.uAb;
-        this.uAh.wYP = paramc.uAa;
-        this.uAh.puw = paramc.liu;
-        this.uAh.xlz = paramc.uzZ;
+        this.Axj.DFn = paramc.bXk;
+        this.Axj.DFk = paramc.Axa;
+        this.Axj.upC = paramc.Axd;
+        this.Axj.DqC = paramc.Axc;
+        this.Axj.uwi = paramc.oyw;
+        this.Axj.DFm = paramc.Axb;
       }
-      paramc = new k(this.prr, i, paramc.liu, this.uAi, this.uAh);
-      AppMethodBeat.o(48228);
+      paramc = new m(this.uqr, i, paramc.oyw, this.Axk, this.Axj);
+      AppMethodBeat.o(71862);
       return paramc;
     }
-    paramc = new t(paramc.liu, i, this.prr, this.mCount, paramc.uzY, paramc.uzZ, paramc.mSignature, paramc.uAa, paramc.uAb);
-    AppMethodBeat.o(48228);
+    paramc = new v(paramc.oyw, i, this.uqr, this.mCount, paramc.Axa, paramc.Axb, paramc.bXk, paramc.Axc, paramc.Axd);
+    AppMethodBeat.o(71862);
     return paramc;
   }
   
-  public final boolean cXg()
+  public final boolean efB()
   {
-    return this.prr == 2;
+    return this.uqr == 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.ui.c
  * JD-Core Version:    0.7.0.1
  */

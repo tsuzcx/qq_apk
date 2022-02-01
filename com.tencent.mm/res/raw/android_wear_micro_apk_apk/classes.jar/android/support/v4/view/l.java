@@ -1,9 +1,19 @@
 package android.support.v4.view;
 
+import android.view.View;
+
 public abstract interface l
   extends k
 {
-  public abstract boolean bn();
+  public abstract void a(int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3);
+  
+  public abstract boolean a(View paramView1, View paramView2, int paramInt1, int paramInt2);
+  
+  public abstract void c(View paramView, int paramInt);
+  
+  public abstract void f(int paramInt);
+  
+  public abstract void g(int paramInt);
 }
 
 

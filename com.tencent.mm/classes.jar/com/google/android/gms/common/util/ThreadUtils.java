@@ -7,13 +7,13 @@ public class ThreadUtils
 {
   public static boolean isMainThread()
   {
-    AppMethodBeat.i(90275);
+    AppMethodBeat.i(5296);
     if (Looper.getMainLooper() == Looper.myLooper())
     {
-      AppMethodBeat.o(90275);
+      AppMethodBeat.o(5296);
       return true;
     }
-    AppMethodBeat.o(90275);
+    AppMethodBeat.o(5296);
     return false;
   }
 }

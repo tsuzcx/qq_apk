@@ -1,116 +1,57 @@
 package com.tencent.mm.emoji.sync;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.decode.MMGIFJNIFactory;
-import com.tencent.mm.emoji.decode.MMGIFJNIFactory.Companion;
-import com.tencent.mm.emoji.loader.c.g;
-import com.tencent.mm.loader.g.c;
-import com.tencent.mm.loader.g.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.at;
-import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.c;
+import com.tencent.mm.protocal.protobuf.hm;
+import com.tencent.mm.protocal.protobuf.hn;
+import d.l;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/sync/EmojiDownLoadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "call", "", "checkUpdate", "uniqueId", "", "Companion", "plugin-emojisdk_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/sync/CgiBackupEmojiOperate;", "Lcom/tencent/mm/modelbase/DeprecatedCgi;", "Lcom/tencent/mm/protocal/protobuf/BackupEmojiOperateResponse;", "customType", "", "opcode", "md5List", "", "", "(IILjava/util/List;)V", "Companion", "plugin-emojisdk_release"})
 public final class a
-  extends c
+  extends c<hn>
 {
-  private static final String TAG = "MicroMsg.EmojiDownLoadTask";
-  public static final a.a exu;
-  final EmojiInfo evH;
+  private static final int fRo = 1;
+  private static final int fRp = 2;
+  private static final int fRq = 3;
+  public static final a fRr;
   
   static
   {
-    AppMethodBeat.i(63257);
-    exu = new a.a((byte)0);
-    TAG = "MicroMsg.EmojiDownLoadTask";
-    AppMethodBeat.o(63257);
+    AppMethodBeat.i(105729);
+    fRr = new a((byte)0);
+    fRo = 1;
+    fRp = 2;
+    fRq = 3;
+    AppMethodBeat.o(105729);
   }
   
-  public a(EmojiInfo paramEmojiInfo)
+  public a(int paramInt, List<String> paramList)
   {
-    AppMethodBeat.i(63256);
-    this.evH = paramEmojiInfo;
-    AppMethodBeat.o(63256);
+    AppMethodBeat.i(105728);
+    hm localhm = new hm();
+    hn localhn = new hn();
+    localhm.CCB = 4;
+    localhm.CCA.addAll((Collection)paramList);
+    localhm.CCC = paramInt;
+    paramList = new b.a();
+    paramList.c((com.tencent.mm.bx.a)localhm);
+    paramList.d((com.tencent.mm.bx.a)localhn);
+    paramList.wg("/cgi-bin/micromsg-bin/mmbackupemojioperate");
+    paramList.nB(698);
+    c(paramList.atI());
+    AppMethodBeat.o(105728);
   }
   
-  private final void Pc()
-  {
-    AppMethodBeat.i(63254);
-    int i = 0;
-    Object localObject1 = at.dxt();
-    j.p(localObject1, "EmojiStorageMgr.getInstance()");
-    localObject1 = ((at)localObject1).aUI().asP(this.evH.Al());
-    if (localObject1 == null)
-    {
-      AppMethodBeat.o(63254);
-      return;
-    }
-    if (((EmojiInfo)localObject1).getState() != EmojiInfo.yPu)
-    {
-      ((EmojiInfo)localObject1).setState(EmojiInfo.yPu);
-      i = 1;
-    }
-    int j;
-    Object localObject2;
-    if (((EmojiInfo)localObject1).field_width > 0)
-    {
-      j = i;
-      if (((EmojiInfo)localObject1).field_width > 0) {}
-    }
-    else
-    {
-      localObject2 = MMGIFJNIFactory.Companion.getDecoder((EmojiInfo)localObject1);
-      if (MMGIFJNIFactory.Companion.isValid((com.tencent.mm.emoji.decode.b)localObject2))
-      {
-        ((EmojiInfo)localObject1).field_width = ((com.tencent.mm.emoji.decode.b)localObject2).Oq();
-        ((EmojiInfo)localObject1).field_height = ((com.tencent.mm.emoji.decode.b)localObject2).Or();
-        i = 1;
-      }
-      ((com.tencent.mm.emoji.decode.b)localObject2).destroy();
-      j = i;
-    }
-    if (j != 0)
-    {
-      localObject2 = at.dxt();
-      j.p(localObject2, "EmojiStorageMgr.getInstance()");
-      ((at)localObject2).aUI().J((EmojiInfo)localObject1);
-      if (j.e(this.evH.avS(), "capture")) {
-        com.tencent.mm.emoji.a.d.Oz().cm(true);
-      }
-    }
-    AppMethodBeat.o(63254);
-  }
-  
-  public final String Oy()
-  {
-    AppMethodBeat.i(63255);
-    String str = this.evH.Al();
-    j.p(str, "emojiInfo.md5");
-    AppMethodBeat.o(63255);
-    return str;
-  }
-  
-  public final void call()
-  {
-    AppMethodBeat.i(63253);
-    if (this.evH.dzn())
-    {
-      ab.i(TAG, this + ' ' + this.evH.Al() + ": already load");
-      Pc();
-      a(h.ePv);
-      AppMethodBeat.o(63253);
-      return;
-    }
-    g localg = g.evO;
-    g.a(this.evH, (a.f.a.b)new a.b(this));
-    AppMethodBeat.o(63253);
-  }
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/sync/CgiBackupEmojiOperate$Companion;", "", "()V", "MM_EMOJI_BACKUP_ADD", "", "getMM_EMOJI_BACKUP_ADD", "()I", "MM_EMOJI_BACKUP_ADD_TO_TOP", "MM_EMOJI_BACKUP_DEL", "getMM_EMOJI_BACKUP_DEL", "MM_EMOJI_BACKUP_TOP", "getMM_EMOJI_BACKUP_TOP", "plugin-emojisdk_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.sync.a
  * JD-Core Version:    0.7.0.1
  */

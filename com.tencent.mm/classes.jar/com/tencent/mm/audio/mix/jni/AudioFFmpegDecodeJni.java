@@ -5,14 +5,14 @@ import com.tencent.mm.audio.mix.d.l;
 
 public class AudioFFmpegDecodeJni
 {
-  protected long cge = 0L;
-  protected long cgf = 0L;
+  protected long cVc = 0L;
+  protected long cVd = 0L;
   
   static
   {
-    AppMethodBeat.i(137083);
+    AppMethodBeat.i(136832);
     System.loadLibrary("FFmpeg");
-    AppMethodBeat.o(137083);
+    AppMethodBeat.o(136832);
   }
   
   public static native int decode(int paramInt1, int paramInt2, int paramInt3, String paramString, l paraml);
@@ -25,7 +25,7 @@ public class AudioFFmpegDecodeJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.mix.jni.AudioFFmpegDecodeJni
  * JD-Core Version:    0.7.0.1
  */

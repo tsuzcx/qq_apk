@@ -8,16 +8,29 @@ public abstract class ff
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dRC = "cmsgId".hashCode();
-  private static final int dfD = "msgId".hashCode();
-  private static final int dgT = "content".hashCode();
+  private static final int eGD = "retryCount".hashCode();
+  private static final int eOe;
+  private static final int eRT;
+  private static final int eWD;
+  private static final int esK = "card_id".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dRB = true;
-  private boolean dfz = true;
-  private boolean dgw = true;
-  public String field_cmsgId;
-  public String field_content;
-  public long field_msgId;
+  private boolean eGl = true;
+  private boolean eNW = true;
+  private boolean eRP = true;
+  private boolean eWC = true;
+  private boolean esr = true;
+  public String field_card_id;
+  public int field_retryCount;
+  public long field_seq;
+  public int field_state_flag;
+  public long field_update_time;
+  
+  static
+  {
+    eWD = "state_flag".hashCode();
+    eOe = "update_time".hashCode();
+    eRT = "seq".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,11 +45,11 @@ public abstract class ff
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dfD != k) {
+      if (esK != k) {
         break label65;
       }
-      this.field_msgId = paramCursor.getLong(i);
-      this.dfz = true;
+      this.field_card_id = paramCursor.getString(i);
+      this.esr = true;
     }
     for (;;)
     {
@@ -44,10 +57,14 @@ public abstract class ff
       break label20;
       break;
       label65:
-      if (dRC == k) {
-        this.field_cmsgId = paramCursor.getString(i);
-      } else if (dgT == k) {
-        this.field_content = paramCursor.getString(i);
+      if (eWD == k) {
+        this.field_state_flag = paramCursor.getInt(i);
+      } else if (eOe == k) {
+        this.field_update_time = paramCursor.getLong(i);
+      } else if (eRT == k) {
+        this.field_seq = paramCursor.getLong(i);
+      } else if (eGD == k) {
+        this.field_retryCount = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -57,17 +74,20 @@ public abstract class ff
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dfz) {
-      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
+    if (this.esr) {
+      localContentValues.put("card_id", this.field_card_id);
     }
-    if (this.dRB) {
-      localContentValues.put("cmsgId", this.field_cmsgId);
+    if (this.eWC) {
+      localContentValues.put("state_flag", Integer.valueOf(this.field_state_flag));
     }
-    if (this.field_content == null) {
-      this.field_content = "";
+    if (this.eNW) {
+      localContentValues.put("update_time", Long.valueOf(this.field_update_time));
     }
-    if (this.dgw) {
-      localContentValues.put("content", this.field_content);
+    if (this.eRP) {
+      localContentValues.put("seq", Long.valueOf(this.field_seq));
+    }
+    if (this.eGl) {
+      localContentValues.put("retryCount", Integer.valueOf(this.field_retryCount));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -77,7 +97,7 @@ public abstract class ff
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.c.ff
  * JD-Core Version:    0.7.0.1
  */

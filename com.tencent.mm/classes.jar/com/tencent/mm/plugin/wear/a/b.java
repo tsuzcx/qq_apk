@@ -4,41 +4,41 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static final boolean agj(String paramString)
+  public static final boolean auU(String paramString)
   {
-    AppMethodBeat.i(26460);
+    AppMethodBeat.i(131330);
     try
     {
       boolean bool = paramString.split("/")[2].equals("wear");
-      AppMethodBeat.o(26460);
+      AppMethodBeat.o(131330);
       return bool;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(26460);
+      AppMethodBeat.o(131330);
     }
     return false;
   }
   
-  public static final int agk(String paramString)
+  public static final int auV(String paramString)
   {
-    AppMethodBeat.i(26461);
+    AppMethodBeat.i(131331);
     try
     {
       int i = Integer.valueOf(paramString.split("/")[4]).intValue();
-      AppMethodBeat.o(26461);
+      AppMethodBeat.o(131331);
       return i;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(26461);
+      AppMethodBeat.o(131331);
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,14 @@ final class JsApiNavigateToDevMiniProgram$1
 {
   JsApiNavigateToDevMiniProgram$1(JsApiNavigateToDevMiniProgram paramJsApiNavigateToDevMiniProgram, d paramd, int paramInt) {}
   
-  public final void i(boolean paramBoolean, String paramString)
+  public final void k(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(143419);
+    AppMethodBeat.i(46622);
     if (paramBoolean)
     {
       paramString = "ok";
-      this.hLy.h(this.bAX, this.hTh.j(paramString, null));
-      AppMethodBeat.o(143419);
+      this.jyp.h(this.ccB, this.jZd.e(paramString, null));
+      AppMethodBeat.o(46622);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder("fail");

@@ -10,18 +10,18 @@ import java.util.Locale;
 final class q
   extends SingleLineTransformationMethod
 {
-  private Locale kF;
+  private Locale mB;
   
   q(Context paramContext)
   {
-    this.kF = paramContext.getResources().getConfiguration().locale;
+    this.mB = paramContext.getResources().getConfiguration().locale;
   }
   
   public final CharSequence getTransformation(CharSequence paramCharSequence, View paramView)
   {
     paramCharSequence = super.getTransformation(paramCharSequence, paramView);
     if (paramCharSequence != null) {
-      return paramCharSequence.toString().toUpperCase(this.kF);
+      return paramCharSequence.toString().toUpperCase(this.mB);
     }
     return null;
   }

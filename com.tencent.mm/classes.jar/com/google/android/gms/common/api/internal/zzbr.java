@@ -31,29 +31,29 @@ public final class zzbr
   
   static
   {
-    AppMethodBeat.i(89498);
+    AppMethodBeat.i(4520);
     zzla = new WeakHashMap();
-    AppMethodBeat.o(89498);
+    AppMethodBeat.o(4520);
   }
   
   public zzbr()
   {
-    AppMethodBeat.i(89485);
+    AppMethodBeat.i(4507);
     this.zzlb = new a();
     this.zzlc = 0;
-    AppMethodBeat.o(89485);
+    AppMethodBeat.o(4507);
   }
   
   public static zzbr zzc(Activity paramActivity)
   {
-    AppMethodBeat.i(89486);
+    AppMethodBeat.i(4508);
     Object localObject = (WeakReference)zzla.get(paramActivity);
     if (localObject != null)
     {
       localObject = (zzbr)((WeakReference)localObject).get();
       if (localObject != null)
       {
-        AppMethodBeat.o(89486);
+        AppMethodBeat.o(4508);
         return localObject;
       }
     }
@@ -71,58 +71,58 @@ public final class zzbr
         paramActivity.getFragmentManager().beginTransaction().add((Fragment)localObject, "LifecycleFragmentImpl").commitAllowingStateLoss();
       }
       zzla.put(paramActivity, new WeakReference(localObject));
-      AppMethodBeat.o(89486);
+      AppMethodBeat.o(4508);
       return localObject;
     }
     catch (ClassCastException paramActivity)
     {
       paramActivity = new IllegalStateException("Fragment with tag LifecycleFragmentImpl is not a LifecycleFragmentImpl", paramActivity);
-      AppMethodBeat.o(89486);
+      AppMethodBeat.o(4508);
       throw paramActivity;
     }
   }
   
   public final void addCallback(String paramString, LifecycleCallback paramLifecycleCallback)
   {
-    AppMethodBeat.i(89488);
+    AppMethodBeat.i(4510);
     if (!this.zzlb.containsKey(paramString))
     {
       this.zzlb.put(paramString, paramLifecycleCallback);
       if (this.zzlc > 0) {
         new Handler(Looper.getMainLooper()).post(new zzbs(this, paramLifecycleCallback, paramString));
       }
-      AppMethodBeat.o(89488);
+      AppMethodBeat.o(4510);
       return;
     }
     paramString = new IllegalArgumentException(String.valueOf(paramString).length() + 59 + "LifecycleCallback with tag " + paramString + " already added to this fragment.");
-    AppMethodBeat.o(89488);
+    AppMethodBeat.o(4510);
     throw paramString;
   }
   
   public final void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(89497);
+    AppMethodBeat.i(4519);
     super.dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
     Iterator localIterator = this.zzlb.values().iterator();
     while (localIterator.hasNext()) {
       ((LifecycleCallback)localIterator.next()).dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
     }
-    AppMethodBeat.o(89497);
+    AppMethodBeat.o(4519);
   }
   
   public final <T extends LifecycleCallback> T getCallbackOrNull(String paramString, Class<T> paramClass)
   {
-    AppMethodBeat.i(89487);
+    AppMethodBeat.i(4509);
     paramString = (LifecycleCallback)paramClass.cast(this.zzlb.get(paramString));
-    AppMethodBeat.o(89487);
+    AppMethodBeat.o(4509);
     return paramString;
   }
   
   public final Activity getLifecycleActivity()
   {
-    AppMethodBeat.i(89489);
+    AppMethodBeat.i(4511);
     Activity localActivity = getActivity();
-    AppMethodBeat.o(89489);
+    AppMethodBeat.o(4511);
     return localActivity;
   }
   
@@ -138,18 +138,18 @@ public final class zzbr
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(89493);
+    AppMethodBeat.i(4515);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     Iterator localIterator = this.zzlb.values().iterator();
     while (localIterator.hasNext()) {
       ((LifecycleCallback)localIterator.next()).onActivityResult(paramInt1, paramInt2, paramIntent);
     }
-    AppMethodBeat.o(89493);
+    AppMethodBeat.o(4515);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(89490);
+    AppMethodBeat.i(4512);
     super.onCreate(paramBundle);
     this.zzlc = 1;
     this.zzld = paramBundle;
@@ -165,40 +165,40 @@ public final class zzbr
         break;
       }
     }
-    AppMethodBeat.o(89490);
+    AppMethodBeat.o(4512);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(89496);
+    AppMethodBeat.i(4518);
     super.onDestroy();
     this.zzlc = 5;
     Iterator localIterator = this.zzlb.values().iterator();
     while (localIterator.hasNext()) {
       ((LifecycleCallback)localIterator.next()).onDestroy();
     }
-    AppMethodBeat.o(89496);
+    AppMethodBeat.o(4518);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(89492);
+    AppMethodBeat.i(4514);
     super.onResume();
     this.zzlc = 3;
     Iterator localIterator = this.zzlb.values().iterator();
     while (localIterator.hasNext()) {
       ((LifecycleCallback)localIterator.next()).onResume();
     }
-    AppMethodBeat.o(89492);
+    AppMethodBeat.o(4514);
   }
   
   public final void onSaveInstanceState(Bundle paramBundle)
   {
-    AppMethodBeat.i(89494);
+    AppMethodBeat.i(4516);
     super.onSaveInstanceState(paramBundle);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(89494);
+      AppMethodBeat.o(4516);
       return;
     }
     Iterator localIterator = this.zzlb.entrySet().iterator();
@@ -209,31 +209,31 @@ public final class zzbr
       ((LifecycleCallback)localEntry.getValue()).onSaveInstanceState(localBundle);
       paramBundle.putBundle((String)localEntry.getKey(), localBundle);
     }
-    AppMethodBeat.o(89494);
+    AppMethodBeat.o(4516);
   }
   
   public final void onStart()
   {
-    AppMethodBeat.i(89491);
+    AppMethodBeat.i(4513);
     super.onStart();
     this.zzlc = 2;
     Iterator localIterator = this.zzlb.values().iterator();
     while (localIterator.hasNext()) {
       ((LifecycleCallback)localIterator.next()).onStart();
     }
-    AppMethodBeat.o(89491);
+    AppMethodBeat.o(4513);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(89495);
+    AppMethodBeat.i(4517);
     super.onStop();
     this.zzlc = 4;
     Iterator localIterator = this.zzlb.values().iterator();
     while (localIterator.hasNext()) {
       ((LifecycleCallback)localIterator.next()).onStop();
     }
-    AppMethodBeat.o(89495);
+    AppMethodBeat.o(4517);
   }
 }
 

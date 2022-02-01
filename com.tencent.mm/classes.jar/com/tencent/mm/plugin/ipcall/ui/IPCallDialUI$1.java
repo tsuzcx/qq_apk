@@ -11,15 +11,15 @@ final class IPCallDialUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(22124);
-    this.nSW.finish();
-    AppMethodBeat.o(22124);
+    AppMethodBeat.i(25742);
+    this.sGR.finish();
+    AppMethodBeat.o(25742);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallDialUI.1
  * JD-Core Version:    0.7.0.1
  */

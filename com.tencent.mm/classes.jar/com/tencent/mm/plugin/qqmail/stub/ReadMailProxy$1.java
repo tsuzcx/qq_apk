@@ -8,50 +8,50 @@ final class ReadMailProxy$1
 {
   ReadMailProxy$1(ReadMailProxy paramReadMailProxy) {}
   
-  public final void b(long paramLong, int paramInt, boolean paramBoolean)
+  public final void a(long paramLong, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(68082);
-    this.pKO.CLIENT_CALL("onTaskFailed", new Object[] { Long.valueOf(paramLong) });
-    AppMethodBeat.o(68082);
+    AppMethodBeat.i(122808);
+    this.uNc.CLIENT_CALL("onTaskFailed", new Object[] { Long.valueOf(paramLong) });
+    AppMethodBeat.o(122808);
   }
   
   public final void b(long paramLong, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(68081);
-    this.pKO.CLIENT_CALL("onTaskFinished", new Object[] { Long.valueOf(paramLong) });
-    AppMethodBeat.o(68081);
+    AppMethodBeat.i(122807);
+    this.uNc.CLIENT_CALL("onTaskFinished", new Object[] { Long.valueOf(paramLong) });
+    AppMethodBeat.o(122807);
   }
   
-  public final void hx(long paramLong) {}
+  public final void j(long paramLong, String paramString) {}
   
-  public final void hy(long paramLong) {}
+  public final void mZ(long paramLong) {}
   
-  public final void i(long paramLong, String paramString) {}
+  public final void na(long paramLong) {}
   
   public final void onTaskPaused(long paramLong)
   {
-    AppMethodBeat.i(68083);
-    this.pKO.CLIENT_CALL("onTaskPaused", new Object[] { Long.valueOf(paramLong) });
-    AppMethodBeat.o(68083);
+    AppMethodBeat.i(122809);
+    this.uNc.CLIENT_CALL("onTaskPaused", new Object[] { Long.valueOf(paramLong) });
+    AppMethodBeat.o(122809);
   }
   
   public final void onTaskRemoved(long paramLong)
   {
-    AppMethodBeat.i(68080);
-    this.pKO.CLIENT_CALL("onTaskRemoved", new Object[] { Long.valueOf(paramLong) });
-    AppMethodBeat.o(68080);
+    AppMethodBeat.i(122806);
+    this.uNc.CLIENT_CALL("onTaskRemoved", new Object[] { Long.valueOf(paramLong) });
+    AppMethodBeat.o(122806);
   }
   
   public final void onTaskStarted(long paramLong, String paramString)
   {
-    AppMethodBeat.i(68079);
-    this.pKO.CLIENT_CALL("onTaskStarted", new Object[] { Long.valueOf(paramLong), paramString });
-    AppMethodBeat.o(68079);
+    AppMethodBeat.i(122805);
+    this.uNc.CLIENT_CALL("onTaskStarted", new Object[] { Long.valueOf(paramLong), paramString });
+    AppMethodBeat.o(122805);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.stub.ReadMailProxy.1
  * JD-Core Version:    0.7.0.1
  */

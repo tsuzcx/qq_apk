@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.g;
+import com.tencent.mm.plugin.appbrand.aa.l.a;
+import com.tencent.mm.plugin.appbrand.app.j;
 import com.tencent.mm.plugin.appbrand.appusage.a.f.1;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.config.r;
-import com.tencent.mm.plugin.appbrand.t.e;
-import com.tencent.mm.protocal.protobuf.aam;
-import com.tencent.mm.protocal.protobuf.bsi;
-import com.tencent.mm.protocal.protobuf.tr;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.config.v;
+import com.tencent.mm.plugin.appbrand.utils.e;
+import com.tencent.mm.protocal.protobuf.aeb;
+import com.tencent.mm.protocal.protobuf.chm;
+import com.tencent.mm.protocal.protobuf.wn;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -19,51 +19,51 @@ import java.util.Set;
 
 public final class h
 {
-  private long iWs;
-  private long iWt;
-  private long iWu;
-  private boolean iWv;
-  private HashMap<String, aam> iWw;
-  private LinkedList<tr> iWx;
-  private HashMap<String, tr> iWy;
+  private long lKE;
+  private long lKF;
+  private long lKG;
+  private boolean lKH;
+  private HashMap<String, aeb> lKI;
+  private LinkedList<wn> lKJ;
+  private HashMap<String, wn> lKK;
   
   public h()
   {
-    AppMethodBeat.i(133566);
-    this.iWs = 0L;
-    this.iWt = 0L;
-    this.iWu = 0L;
-    this.iWv = false;
-    this.iWw = new HashMap();
-    this.iWx = new LinkedList();
-    this.iWy = new HashMap();
-    AppMethodBeat.o(133566);
+    AppMethodBeat.i(49300);
+    this.lKE = 0L;
+    this.lKF = 0L;
+    this.lKG = 0L;
+    this.lKH = false;
+    this.lKI = new HashMap();
+    this.lKJ = new LinkedList();
+    this.lKK = new HashMap();
+    AppMethodBeat.o(49300);
   }
   
-  private static void a(LinkedList<tr> paramLinkedList, LinkedList<aam> paramLinkedList1)
+  private static void a(LinkedList<wn> paramLinkedList, LinkedList<aeb> paramLinkedList1)
   {
-    AppMethodBeat.i(133571);
+    AppMethodBeat.i(49307);
     Object localObject;
     if (paramLinkedList.size() > 0)
     {
       paramLinkedList = paramLinkedList.iterator();
       while (paramLinkedList.hasNext())
       {
-        localObject = (tr)paramLinkedList.next();
+        localObject = (wn)paramLinkedList.next();
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append("{");
-        localStringBuilder.append("username:").append(((tr)localObject).username).append(",");
-        localStringBuilder.append("recommend_id:").append(((tr)localObject).iFH).append(",");
-        localStringBuilder.append("item_count:").append(((tr)localObject).wMm).append(",");
-        localStringBuilder.append("footnote_count:").append(((tr)localObject).wMn).append(",");
-        localStringBuilder.append("strategy_info:").append(((tr)localObject).iFI).append(",");
-        localStringBuilder.append("appid:").append(((tr)localObject).cwc).append(",");
-        localStringBuilder.append("page_path:").append(((tr)localObject).iFJ).append(",");
-        localStringBuilder.append("page_param:").append(((tr)localObject).iFK).append(",");
-        localStringBuilder.append("card_type:").append(((tr)localObject).iFL).append(",");
-        localStringBuilder.append("pass_str:").append(((tr)localObject).iFM).append(",");
+        localStringBuilder.append("username:").append(((wn)localObject).username).append(",");
+        localStringBuilder.append("recommend_id:").append(((wn)localObject).lpv).append(",");
+        localStringBuilder.append("item_count:").append(((wn)localObject).CYF).append(",");
+        localStringBuilder.append("footnote_count:").append(((wn)localObject).CYG).append(",");
+        localStringBuilder.append("strategy_info:").append(((wn)localObject).lpw).append(",");
+        localStringBuilder.append("appid:").append(((wn)localObject).dlB).append(",");
+        localStringBuilder.append("page_path:").append(((wn)localObject).lpx).append(",");
+        localStringBuilder.append("page_param:").append(((wn)localObject).lpy).append(",");
+        localStringBuilder.append("card_type:").append(((wn)localObject).lpz).append(",");
+        localStringBuilder.append("pass_str:").append(((wn)localObject).lpA).append(",");
         localStringBuilder.append("},");
-        ab.i("MicroMsg.Recommend.AppBrandRecommendReport", "doReportData clickData:%s", new Object[] { localStringBuilder.toString() });
+        ad.i("MicroMsg.Recommend.AppBrandRecommendReport", "doReportData clickData:%s", new Object[] { localStringBuilder.toString() });
       }
     }
     if (paramLinkedList1.size() > 0)
@@ -71,238 +71,238 @@ public final class h
       paramLinkedList = paramLinkedList1.iterator();
       while (paramLinkedList.hasNext())
       {
-        paramLinkedList1 = (aam)paramLinkedList.next();
+        paramLinkedList1 = (aeb)paramLinkedList.next();
         localObject = new StringBuilder();
         ((StringBuilder)localObject).append("{");
         ((StringBuilder)localObject).append("username:").append(paramLinkedList1.username).append(",");
-        ((StringBuilder)localObject).append("recommend_id:").append(paramLinkedList1.iFH).append(",");
+        ((StringBuilder)localObject).append("recommend_id:").append(paramLinkedList1.lpv).append(",");
         ((StringBuilder)localObject).append("count:").append(paramLinkedList1.count).append(",");
-        ((StringBuilder)localObject).append("strategy_info:").append(paramLinkedList1.iFI).append(",");
-        ((StringBuilder)localObject).append("expose_millisecond:").append(paramLinkedList1.wRc).append(",");
-        ((StringBuilder)localObject).append("appid:").append(paramLinkedList1.cwc).append(",");
-        ((StringBuilder)localObject).append("page_path:").append(paramLinkedList1.iFJ).append(",");
-        ((StringBuilder)localObject).append("page_param:").append(paramLinkedList1.iFK).append(",");
-        ((StringBuilder)localObject).append("card_type:").append(paramLinkedList1.iFL).append(",");
-        ((StringBuilder)localObject).append("pass_str:").append(paramLinkedList1.iFM).append(",");
+        ((StringBuilder)localObject).append("strategy_info:").append(paramLinkedList1.lpw).append(",");
+        ((StringBuilder)localObject).append("expose_millisecond:").append(paramLinkedList1.Dep).append(",");
+        ((StringBuilder)localObject).append("appid:").append(paramLinkedList1.dlB).append(",");
+        ((StringBuilder)localObject).append("page_path:").append(paramLinkedList1.lpx).append(",");
+        ((StringBuilder)localObject).append("page_param:").append(paramLinkedList1.lpy).append(",");
+        ((StringBuilder)localObject).append("card_type:").append(paramLinkedList1.lpz).append(",");
+        ((StringBuilder)localObject).append("pass_str:").append(paramLinkedList1.lpA).append(",");
         ((StringBuilder)localObject).append("},");
-        ab.d("MicroMsg.Recommend.AppBrandRecommendReport", "doReportData exposureData:%s", new Object[] { ((StringBuilder)localObject).toString() });
+        ad.d("MicroMsg.Recommend.AppBrandRecommendReport", "doReportData exposureData:%s", new Object[] { ((StringBuilder)localObject).toString() });
       }
     }
-    AppMethodBeat.o(133571);
+    AppMethodBeat.o(49307);
   }
   
-  private void aNG()
+  private void bpY()
   {
-    AppMethodBeat.i(133568);
-    this.iWt = bo.aox();
-    this.iWs = this.iWt;
-    this.iWv = false;
-    this.iWw.clear();
-    this.iWx.clear();
-    this.iWy.clear();
-    this.iWu = 0L;
-    AppMethodBeat.o(133568);
+    AppMethodBeat.i(49302);
+    this.lKF = bt.aGK();
+    this.lKE = this.lKF;
+    this.lKH = false;
+    this.lKI.clear();
+    this.lKJ.clear();
+    this.lKK.clear();
+    this.lKG = 0L;
+    AppMethodBeat.o(49302);
   }
   
-  private LinkedList<aam> aNJ()
+  private LinkedList<aeb> bqb()
   {
-    AppMethodBeat.i(133569);
+    AppMethodBeat.i(49305);
     LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.iWw.keySet().iterator();
+    Iterator localIterator = this.lKI.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localLinkedList.add(this.iWw.get(str));
+      localLinkedList.add(this.lKI.get(str));
     }
-    ab.d("MicroMsg.Recommend.AppBrandRecommendReport", "exposureNodeMap size:%d", new Object[] { Integer.valueOf(this.iWw.size()) });
-    AppMethodBeat.o(133569);
+    ad.d("MicroMsg.Recommend.AppBrandRecommendReport", "exposureNodeMap size:%d", new Object[] { Integer.valueOf(this.lKI.size()) });
+    AppMethodBeat.o(49305);
     return localLinkedList;
   }
   
-  private static tr c(int paramInt, bsi parambsi)
+  private static wn c(int paramInt, chm paramchm)
   {
-    AppMethodBeat.i(133574);
-    tr localtr = new tr();
-    localtr.username = parambsi.xFL;
-    localtr.iFH = parambsi.iFH;
-    localtr.iFI = parambsi.iFI;
-    localtr.iFJ = parambsi.iFJ;
-    localtr.iFK = parambsi.iFK;
-    localtr.iFL = parambsi.iFL;
-    localtr.iFM = parambsi.iFM;
-    localtr.position = (paramInt + 1);
-    parambsi = g.auF().d(parambsi.xFL, new String[0]);
-    if (parambsi != null) {
-      localtr.cwc = parambsi.field_appId;
+    AppMethodBeat.i(49310);
+    wn localwn = new wn();
+    localwn.username = paramchm.DHP;
+    localwn.lpv = paramchm.lpv;
+    localwn.lpw = paramchm.lpw;
+    localwn.lpx = paramchm.lpx;
+    localwn.lpy = paramchm.lpy;
+    localwn.lpz = paramchm.lpz;
+    localwn.lpA = paramchm.lpA;
+    localwn.position = (paramInt + 1);
+    paramchm = j.aOC().d(paramchm.DHP, new String[0]);
+    if (paramchm != null) {
+      localwn.dlB = paramchm.field_appId;
     }
-    AppMethodBeat.o(133574);
-    return localtr;
+    AppMethodBeat.o(49310);
+    return localwn;
   }
   
-  public final void F(String paramString, long paramLong)
+  public final void O(String paramString, long paramLong)
   {
-    AppMethodBeat.i(133576);
-    if (this.iWw.containsKey(paramString))
+    AppMethodBeat.i(49312);
+    if (this.lKI.containsKey(paramString))
     {
-      aam localaam = (aam)this.iWw.get(paramString);
-      localaam.wRc = ((int)(localaam.wRc + paramLong));
-      this.iWw.put(paramString, localaam);
+      aeb localaeb = (aeb)this.lKI.get(paramString);
+      localaeb.Dep = ((int)(localaeb.Dep + paramLong));
+      this.lKI.put(paramString, localaeb);
     }
-    AppMethodBeat.o(133576);
+    AppMethodBeat.o(49312);
   }
   
-  public final void a(int paramInt, bsi parambsi)
+  public final void a(int paramInt, chm paramchm)
   {
-    AppMethodBeat.i(133572);
-    if (parambsi == null)
+    AppMethodBeat.i(49308);
+    if (paramchm == null)
     {
-      AppMethodBeat.o(133572);
+      AppMethodBeat.o(49308);
       return;
     }
-    ab.i("MicroMsg.Recommend.AppBrandRecommendReport", "reportContentClick position:%d, app_user_name:%s, app_nick_name:%s, card_type:%d, recommend_id:%s", new Object[] { Integer.valueOf(paramInt), parambsi.xFL, parambsi.xFR, Integer.valueOf(parambsi.iFL), parambsi.iFH });
-    if (this.iWy.containsKey(parambsi.iFH))
+    ad.i("MicroMsg.Recommend.AppBrandRecommendReport", "reportContentClick position:%d, app_user_name:%s, app_nick_name:%s, card_type:%d, recommend_id:%s", new Object[] { Integer.valueOf(paramInt), paramchm.DHP, paramchm.Eda, Integer.valueOf(paramchm.lpz), paramchm.lpv });
+    if (this.lKK.containsKey(paramchm.lpv))
     {
-      parambsi = (tr)this.iWy.get(parambsi.iFH);
-      parambsi.wMm += 1;
-      AppMethodBeat.o(133572);
+      paramchm = (wn)this.lKK.get(paramchm.lpv);
+      paramchm.CYF += 1;
+      AppMethodBeat.o(49308);
       return;
     }
-    tr localtr = c(paramInt, parambsi);
-    localtr.wMm = 1;
-    localtr.wMn = 0;
-    this.iWy.put(parambsi.iFH, localtr);
-    this.iWx.add(localtr);
-    AppMethodBeat.o(133572);
+    wn localwn = c(paramInt, paramchm);
+    localwn.CYF = 1;
+    localwn.CYG = 0;
+    this.lKK.put(paramchm.lpv, localwn);
+    this.lKJ.add(localwn);
+    AppMethodBeat.o(49308);
   }
   
-  public final void aNF()
+  public final void b(int paramInt, chm paramchm)
   {
-    AppMethodBeat.i(133567);
-    aNG();
-    AppMethodBeat.o(133567);
-  }
-  
-  public final void aNH()
-  {
-    AppMethodBeat.i(138700);
-    this.iWt = bo.aox();
-    AppMethodBeat.o(138700);
-  }
-  
-  public final void aNI()
-  {
-    AppMethodBeat.i(138701);
-    this.iWu = (bo.aox() - this.iWt + this.iWu);
-    this.iWt = bo.aox();
-    AppMethodBeat.o(138701);
-  }
-  
-  public final void b(int paramInt, bsi parambsi)
-  {
-    AppMethodBeat.i(133573);
-    if (parambsi == null)
+    AppMethodBeat.i(49309);
+    if (paramchm == null)
     {
-      AppMethodBeat.o(133573);
+      AppMethodBeat.o(49309);
       return;
     }
-    ab.i("MicroMsg.Recommend.AppBrandRecommendReport", "reportFooterClick position:%d, app_user_name:%s, app_nick_name:%s, card_type:%d, recommendId:%s", new Object[] { Integer.valueOf(paramInt), parambsi.xFL, parambsi.xFR, Integer.valueOf(parambsi.iFL), parambsi.iFH });
-    if (this.iWy.containsKey(parambsi.iFH))
+    ad.i("MicroMsg.Recommend.AppBrandRecommendReport", "reportFooterClick position:%d, app_user_name:%s, app_nick_name:%s, card_type:%d, recommendId:%s", new Object[] { Integer.valueOf(paramInt), paramchm.DHP, paramchm.Eda, Integer.valueOf(paramchm.lpz), paramchm.lpv });
+    if (this.lKK.containsKey(paramchm.lpv))
     {
-      parambsi = (tr)this.iWy.get(parambsi.iFH);
-      parambsi.wMn += 1;
-      AppMethodBeat.o(133573);
+      paramchm = (wn)this.lKK.get(paramchm.lpv);
+      paramchm.CYG += 1;
+      AppMethodBeat.o(49309);
       return;
     }
-    tr localtr = c(paramInt, parambsi);
-    localtr.wMm = 0;
-    localtr.wMn = 1;
-    this.iWy.put(parambsi.iFH, localtr);
-    this.iWx.add(localtr);
-    AppMethodBeat.o(133573);
+    wn localwn = c(paramInt, paramchm);
+    localwn.CYF = 0;
+    localwn.CYG = 1;
+    this.lKK.put(paramchm.lpv, localwn);
+    this.lKJ.add(localwn);
+    AppMethodBeat.o(49309);
   }
   
-  public final void d(int paramInt, bsi parambsi)
+  public final void bpX()
   {
-    AppMethodBeat.i(133575);
-    if (this.iWw.containsKey(parambsi.iFH))
+    AppMethodBeat.i(49301);
+    bpY();
+    AppMethodBeat.o(49301);
+  }
+  
+  public final void bpZ()
+  {
+    AppMethodBeat.i(49303);
+    this.lKF = bt.aGK();
+    AppMethodBeat.o(49303);
+  }
+  
+  public final void bqa()
+  {
+    AppMethodBeat.i(49304);
+    this.lKG = (bt.aGK() - this.lKF + this.lKG);
+    this.lKF = bt.aGK();
+    AppMethodBeat.o(49304);
+  }
+  
+  public final void d(int paramInt, chm paramchm)
+  {
+    AppMethodBeat.i(49311);
+    if (this.lKI.containsKey(paramchm.lpv))
     {
-      localaam = (aam)this.iWw.get(parambsi.iFH);
-      localaam.count += 1;
-      this.iWw.put(parambsi.iFH, localaam);
-      AppMethodBeat.o(133575);
+      localaeb = (aeb)this.lKI.get(paramchm.lpv);
+      localaeb.count += 1;
+      this.lKI.put(paramchm.lpv, localaeb);
+      AppMethodBeat.o(49311);
       return;
     }
-    aam localaam = new aam();
-    localaam.username = parambsi.xFL;
-    localaam.count = 1;
-    localaam.iFH = parambsi.iFH;
-    localaam.iFI = parambsi.iFI;
-    localaam.wRc = 0;
-    localaam.iFJ = parambsi.iFJ;
-    localaam.iFK = parambsi.iFK;
-    localaam.iFL = parambsi.iFL;
-    localaam.iFM = parambsi.iFM;
-    localaam.position = (paramInt + 1);
-    WxaAttributes localWxaAttributes = g.auF().d(parambsi.xFL, new String[0]);
+    aeb localaeb = new aeb();
+    localaeb.username = paramchm.DHP;
+    localaeb.count = 1;
+    localaeb.lpv = paramchm.lpv;
+    localaeb.lpw = paramchm.lpw;
+    localaeb.Dep = 0;
+    localaeb.lpx = paramchm.lpx;
+    localaeb.lpy = paramchm.lpy;
+    localaeb.lpz = paramchm.lpz;
+    localaeb.lpA = paramchm.lpA;
+    localaeb.position = (paramInt + 1);
+    WxaAttributes localWxaAttributes = j.aOC().d(paramchm.DHP, new String[0]);
     if (localWxaAttributes != null) {
-      localaam.cwc = localWxaAttributes.field_appId;
+      localaeb.dlB = localWxaAttributes.field_appId;
     }
-    this.iWw.put(parambsi.iFH, localaam);
-    AppMethodBeat.o(133575);
+    this.lKI.put(paramchm.lpv, localaeb);
+    AppMethodBeat.o(49311);
   }
   
-  public final void eV(boolean paramBoolean)
+  public final void hi(boolean paramBoolean)
   {
-    this.iWv = paramBoolean;
+    this.lKH = paramBoolean;
   }
   
-  public final void hG(long paramLong)
+  public final void nn(long paramLong)
   {
     long l1 = 86400L;
-    AppMethodBeat.i(133570);
-    if (this.iWx.size() == 0)
+    AppMethodBeat.i(49306);
+    if (this.lKJ.size() == 0)
     {
-      if (this.iWw.size() > 0) {}
+      if (this.lKI.size() > 0) {}
       for (i = 1; i == 0; i = 0)
       {
-        ab.e("MicroMsg.Recommend.AppBrandRecommendReport", "none data report");
-        AppMethodBeat.o(133570);
+        ad.e("MicroMsg.Recommend.AppBrandRecommendReport", "none data report");
+        AppMethodBeat.o(49306);
         return;
       }
     }
-    ab.i("MicroMsg.Recommend.AppBrandRecommendReport", "doReportData");
-    long l2 = bo.aox() - this.iWt;
+    ad.i("MicroMsg.Recommend.AppBrandRecommendReport", "doReportData");
+    long l2 = bt.aGK() - this.lKF;
     LinkedList localLinkedList1;
     LinkedList localLinkedList2;
     if (l2 >= 86400L)
     {
       localLinkedList1 = new LinkedList();
-      localLinkedList1.addAll(this.iWx);
-      localLinkedList2 = aNJ();
-      if (!this.iWv) {
+      localLinkedList1.addAll(this.lKJ);
+      localLinkedList2 = bqb();
+      if (!this.lKH) {
         break label264;
       }
     }
     label264:
     for (int i = 1;; i = 0)
     {
-      ab.i("MicroMsg.Recommend.AppBrandRecommendReport", "doReportData sessionId:%d, click_node_list size :%d, exposureNodeList size:%d, exposureSceneType:%d, stayTime:%d, startRecordTime:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(this.iWx.size()), Integer.valueOf(localLinkedList2.size()), Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(this.iWs) });
-      a(this.iWx, localLinkedList2);
+      ad.i("MicroMsg.Recommend.AppBrandRecommendReport", "doReportData sessionId:%d, click_node_list size :%d, exposureNodeList size:%d, exposureSceneType:%d, stayTime:%d, startRecordTime:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(this.lKJ.size()), Integer.valueOf(localLinkedList2.size()), Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(this.lKE) });
+      a(this.lKJ, localLinkedList2);
       int j = (int)l1;
-      int k = (int)this.iWs;
-      ab.d("MicroMsg.Recommend.AppBrandReportRecommendLogic", "reportReportRecommendWxa");
-      e.aNS().ac(new f.1(paramLong, localLinkedList2, localLinkedList1, i, j, k));
-      aNG();
-      AppMethodBeat.o(133570);
+      int k = (int)this.lKE;
+      ad.d("MicroMsg.Recommend.AppBrandReportRecommendLogic", "reportReportRecommendWxa");
+      e.bqm().postToWorker(new f.1(paramLong, localLinkedList2, localLinkedList1, i, j, k));
+      bpY();
+      AppMethodBeat.o(49306);
       return;
-      l1 = this.iWu + l2;
+      l1 = this.lKG + l2;
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.h
  * JD-Core Version:    0.7.0.1
  */

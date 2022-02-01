@@ -11,13 +11,13 @@ public class SeMiterLimitActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SeMiterLimitActionArg> CREATOR;
-  public float hfa;
+  public float iZj;
   
   static
   {
-    AppMethodBeat.i(103447);
-    CREATOR = new SeMiterLimitActionArg.1();
-    AppMethodBeat.o(103447);
+    AppMethodBeat.i(145130);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(145130);
   }
   
   public SeMiterLimitActionArg() {}
@@ -34,66 +34,66 @@ public class SeMiterLimitActionArg
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(103445);
+    AppMethodBeat.i(145128);
     if (this == paramObject)
     {
-      AppMethodBeat.o(103445);
+      AppMethodBeat.o(145128);
       return true;
     }
     if (!(paramObject instanceof SeMiterLimitActionArg))
     {
-      AppMethodBeat.o(103445);
+      AppMethodBeat.o(145128);
       return false;
     }
     if (!super.equals(paramObject))
     {
-      AppMethodBeat.o(103445);
+      AppMethodBeat.o(145128);
       return false;
     }
-    if (Float.compare(((SeMiterLimitActionArg)paramObject).hfa, this.hfa) == 0)
+    if (Float.compare(((SeMiterLimitActionArg)paramObject).iZj, this.iZj) == 0)
     {
-      AppMethodBeat.o(103445);
+      AppMethodBeat.o(145128);
       return true;
     }
-    AppMethodBeat.o(103445);
+    AppMethodBeat.o(145128);
     return false;
   }
   
   public final void h(Parcel paramParcel)
   {
-    AppMethodBeat.i(103442);
+    AppMethodBeat.i(145125);
     super.h(paramParcel);
-    this.hfa = paramParcel.readFloat();
-    AppMethodBeat.o(103442);
+    this.iZj = paramParcel.readFloat();
+    AppMethodBeat.o(145125);
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(103446);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.hfa) });
-    AppMethodBeat.o(103446);
+    AppMethodBeat.i(145129);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.iZj) });
+    AppMethodBeat.o(145129);
     return i;
   }
   
-  public final void p(JSONObject paramJSONObject)
+  public final void parse(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(103443);
-    super.p(paramJSONObject);
-    this.hfa = ((float)paramJSONObject.optJSONArray("data").optDouble(0));
-    AppMethodBeat.o(103443);
+    AppMethodBeat.i(145126);
+    super.parse(paramJSONObject);
+    this.iZj = ((float)paramJSONObject.optJSONArray("data").optDouble(0));
+    AppMethodBeat.o(145126);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(103444);
+    AppMethodBeat.i(145127);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.hfa);
-    AppMethodBeat.o(103444);
+    paramParcel.writeFloat(this.iZj);
+    AppMethodBeat.o(145127);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SeMiterLimitActionArg
  * JD-Core Version:    0.7.0.1
  */

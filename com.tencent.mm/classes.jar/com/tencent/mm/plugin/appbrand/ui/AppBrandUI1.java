@@ -9,16 +9,16 @@ public class AppBrandUI1
 {
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(133152);
+    AppMethodBeat.i(48859);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(133152);
+    AppMethodBeat.o(48859);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(133153);
+    AppMethodBeat.i(48860);
     super.onResume();
-    AppMethodBeat.o(133153);
+    AppMethodBeat.o(48860);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -29,7 +29,7 @@ public class AppBrandUI1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandUI1
  * JD-Core Version:    0.7.0.1
  */

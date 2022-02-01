@@ -1,78 +1,78 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.a.a.e;
+import com.google.b.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.b.a.a.ag;
-import com.tencent.pb.common.b.a.a.al;
-import com.tencent.pb.common.b.a.a.ba;
-import com.tencent.pb.common.b.a.a.j;
+import com.tencent.pb.common.b.a.a.a.ai;
+import com.tencent.pb.common.b.a.a.a.an;
+import com.tencent.pb.common.b.a.a.a.bd;
+import com.tencent.pb.common.b.a.a.a.k;
 import com.tencent.pb.common.b.d;
-import com.tencent.pb.common.c.c;
+import com.tencent.pb.common.c.b;
 
 public final class a
   extends d
 {
-  public int BCu;
-  public int Bda;
-  public int nTj;
-  public String nuW;
-  public long tFh;
+  public int ILI;
+  public int IjW;
+  public int sHe;
+  public String seB;
+  public long ztl;
   
   public a(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(128007);
-    this.nuW = null;
-    this.nTj = 0;
-    this.tFh = 0L;
-    c.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneAckVoiceGroup" });
-    a.j localj = new a.j();
+    AppMethodBeat.i(62531);
+    this.seB = null;
+    this.sHe = 0;
+    this.ztl = 0L;
+    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneAckVoiceGroup" });
+    a.k localk = new a.k();
     try
     {
-      localj.groupId = paramString;
-      this.nuW = paramString;
-      localj.twP = paramInt1;
-      this.nTj = paramInt1;
-      localj.twQ = paramLong;
-      this.tFh = paramLong;
-      this.BCu = paramInt3;
-      this.Bda = paramInt2;
-      paramString = new a.al();
+      localk.groupId = paramString;
+      this.seB = paramString;
+      localk.zkT = paramInt1;
+      this.sHe = paramInt1;
+      localk.zkU = paramLong;
+      this.ztl = paramLong;
+      this.ILI = paramInt3;
+      this.IjW = paramInt2;
+      paramString = new a.an();
       paramString.iLen = 0;
-      a.ba localba = new a.ba();
-      localba.type = 3;
-      localba.BgW = paramString;
-      localj.BdK = localba;
+      a.bd localbd = new a.bd();
+      localbd.type = 3;
+      localbd.InR = paramString;
+      localk.IkF = localbd;
       this.mNetType = 3;
-      this.Bda = paramInt2;
-      c(189, localj);
-      AppMethodBeat.o(128007);
+      this.IjW = paramInt2;
+      c(189, localk);
+      AppMethodBeat.o(62531);
       return;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        c.w(this.TAG2, new Object[] { "NetSceneAckVoiceGroup constructor", paramString });
+        b.w(this.TAG2, new Object[] { "NetSceneAckVoiceGroup constructor", paramString });
       }
     }
   }
   
-  public final Object ck(byte[] paramArrayOfByte)
+  public final Object cC(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(128008);
-    c.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
+    AppMethodBeat.i(62532);
+    b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
     if (paramArrayOfByte != null) {}
     for (;;)
     {
       try
       {
-        paramArrayOfByte = (a.ag)e.a(new a.ag(), paramArrayOfByte, paramArrayOfByte.length);
-        AppMethodBeat.o(128008);
+        paramArrayOfByte = (a.ai)e.a(new a.ai(), paramArrayOfByte, paramArrayOfByte.length);
+        AppMethodBeat.o(62532);
         return paramArrayOfByte;
       }
       catch (Exception paramArrayOfByte)
       {
-        c.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte.getMessage() });
+        b.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte.getMessage() });
         paramArrayOfByte = null;
         continue;
       }
@@ -80,7 +80,7 @@ public final class a
     }
   }
   
-  public final String dTD()
+  public final String flk()
   {
     return "CsCmd.Cmd_V_CSVoiceAckReq";
   }
@@ -92,7 +92,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.a
  * JD-Core Version:    0.7.0.1
  */

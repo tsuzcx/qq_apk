@@ -1,137 +1,94 @@
 package com.tencent.mm.plugin.appbrand.p;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.e;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.io.File;
-import java.io.IOException;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.bx.a;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.bdz;
+import com.tencent.mm.protocal.protobuf.bea;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.l;
+import java.lang.ref.WeakReference;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "onNetSceneGetWxaOrderInfoCallback", "Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo$IOnNetSceneGetWxaOrderInfoCallback;", "", "(Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo$IOnNetSceneGetWxaOrderInfoCallback;)V", "TAG", "", "mCallback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "resp", "Lcom/tencent/mm/modelbase/CommReqResp;", "getResp", "()Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "callback", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "IOnNetSceneGetWxaOrderInfoCallback", "plugin-appbrand-integration_release"})
 public final class c
+  extends n
+  implements com.tencent.mm.network.k
 {
-  b iJf;
-  public com.tencent.mm.sdk.b.c iJg;
-  public com.tencent.mm.sdk.b.c iJh;
-  public com.tencent.mm.sdk.b.c iJi;
+  private final String TAG;
+  private g gbr;
+  public final b kUi;
+  private final a<c, ? extends Object> kUj;
   
-  private c()
+  public c(a<c, ? extends Object> parama)
   {
-    AppMethodBeat.i(132719);
-    this.iJi = new c.3(this);
-    this.iJf = new b();
-    this.iJg = new c.1(this);
-    this.iJh = new c.2(this);
-    AppMethodBeat.o(132719);
+    AppMethodBeat.i(50892);
+    this.kUj = parama;
+    this.TAG = "MicroMsg.webview.NetSceneGetWxaOrderInfo";
+    parama = new b.a();
+    parama.c((a)new bdz());
+    parama.d((a)new bea());
+    parama.wg("/cgi-bin/mmbiz-bin/wxaboss/getwxaorderinfo");
+    parama.nB(1893);
+    parama.nD(0);
+    parama.nE(0);
+    parama = parama.atI();
+    d.g.b.k.g(parama, "builder.buildInstance()");
+    this.kUi = parama;
+    AppMethodBeat.o(50892);
   }
   
-  private static boolean e(File paramFile, String paramString)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(132722);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(132722);
-      return false;
-    }
-    if (!paramFile.exists()) {
-      paramFile.mkdirs();
-    }
-    Object localObject = new File(paramFile, ".nomedia");
-    if (!((File)localObject).exists()) {}
-    boolean bool;
-    try
-    {
-      ((File)localObject).createNewFile();
-      paramFile = new File(paramFile, paramString);
-      localObject = paramFile.getAbsolutePath();
-      d locald = d.iJl;
-      bool = d.cR((String)localObject, paramString);
-      if (bool)
-      {
-        paramString = paramFile.getParent();
-        int i = bo.ii((String)localObject, paramString);
-        if (i < 0)
-        {
-          ab.e("MicroMsg.WxaFTSSearchCore", "unzip fail, ret = %s, zipFilePath = %s, unzipPath = %s", new Object[] { Integer.valueOf(i), localObject, paramString });
-          AppMethodBeat.o(132722);
-          return false;
-        }
-      }
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.WxaFTSSearchCore", localIOException, "create nomedia file error", new Object[0]);
-      }
-      ab.i("MicroMsg.WxaFTSSearchCore", "unzip template files into dir(%s) successfully.", new Object[] { paramFile.getAbsolutePath() });
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(132722);
-      return bool;
-      ab.i("MicroMsg.WxaFTSSearchCore", "copy template file from asset fail %s", new Object[] { paramFile.getAbsolutePath() });
-    }
+    AppMethodBeat.i(50890);
+    this.gbr = paramg;
+    int i = dispatch(parame, (q)this.kUi, (com.tencent.mm.network.k)this);
+    AppMethodBeat.o(50890);
+    return i;
   }
   
-  static boolean f(File paramFile1, File paramFile2)
+  public final int getType()
   {
-    AppMethodBeat.i(132723);
-    e.o(paramFile2);
-    paramFile2.mkdirs();
-    File localFile = new File(paramFile2, ".nomedia");
-    if (!localFile.exists()) {}
-    try
-    {
-      localFile.createNewFile();
-      paramFile1 = paramFile1.getAbsolutePath();
-      paramFile2 = paramFile2.getAbsolutePath();
-      int i = bo.ii(paramFile1, paramFile2);
-      if (i < 0)
-      {
-        ab.e("MicroMsg.WxaFTSSearchCore", "unzip fail, ret = %s, zipFilePath = %s, unzipPath = ", new Object[] { Integer.valueOf(i), paramFile1, paramFile2 });
-        AppMethodBeat.o(132723);
-        return false;
-      }
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        ab.printErrStackTrace("MicroMsg.WxaFTSSearchCore", localIOException, "create nomedia file error", new Object[0]);
-      }
-      ab.i("MicroMsg.WxaFTSSearchCore", "Unzip Path : %s.", new Object[] { paramFile2 });
-      AppMethodBeat.o(132723);
-    }
-    return true;
+    return 1893;
   }
   
-  public final void prepare()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(132720);
-    a.ymk.c(this.iJg);
-    a.ymk.c(this.iJh);
-    this.iJi.alive();
-    refresh();
-    File localFile = new File(this.iJf.gZQ);
-    ab.d("MicroMsg.WxaFTSSearchCore", "prepare(cv : %s, bv : %s)", new Object[] { Integer.valueOf(this.iJf.cO), Integer.valueOf(65900182) });
-    if ((this.iJf.cO < 65900182) && (e(localFile, "wxa_fts_template.zip"))) {
-      refresh();
+    AppMethodBeat.i(50891);
+    ad.i(this.TAG, "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramq = this.gbr;
+    if (paramq != null) {
+      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
     }
-    AppMethodBeat.o(132720);
+    paramArrayOfByte = this.kUj;
+    if (paramArrayOfByte != null)
+    {
+      paramq = paramString;
+      if (paramString == null) {
+        paramq = "";
+      }
+      paramArrayOfByte.a(paramInt2, paramInt3, paramq, (n)this);
+      AppMethodBeat.o(50891);
+      return;
+    }
+    AppMethodBeat.o(50891);
   }
   
-  final void refresh()
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/netscene/NetSceneGetWxaOrderInfo$IOnNetSceneGetWxaOrderInfoCallback;", "T", "Lcom/tencent/mm/modelbase/NetSceneBase;", "U", "", "ui", "Ljava/lang/ref/WeakReference;", "(Ljava/lang/ref/WeakReference;)V", "getUi", "()Ljava/lang/ref/WeakReference;", "onNetSceneEndCallback", "", "errType", "", "errCode", "errMsg", "", "scene", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "plugin-appbrand-integration_release"})
+  public static abstract class a<T extends n, U>
   {
-    AppMethodBeat.i(132721);
-    b localb = this.iJf;
-    d locald = d.iJl;
-    localb.cO = d.aLx();
-    localb = this.iJf;
-    locald = d.iJl;
-    localb.gZQ = d.aLw();
-    AppMethodBeat.o(132721);
+    public final WeakReference<U> kUk;
+    
+    public a(WeakReference<U> paramWeakReference)
+    {
+      this.kUk = paramWeakReference;
+    }
+    
+    public abstract void a(int paramInt1, int paramInt2, String paramString, T paramT);
   }
 }
 

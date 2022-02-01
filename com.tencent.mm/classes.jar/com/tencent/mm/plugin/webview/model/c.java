@@ -1,87 +1,116 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cm;
-import com.tencent.mm.model.r;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.aci;
-import com.tencent.mm.protocal.protobuf.acq;
-import com.tencent.mm.protocal.protobuf.acw;
-import com.tencent.mm.protocal.protobuf.adf;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ai.y;
+import com.tencent.mm.g.a.cs;
+import com.tencent.mm.model.u;
+import com.tencent.mm.protocal.protobuf.afy;
+import com.tencent.mm.protocal.protobuf.afz;
+import com.tencent.mm.protocal.protobuf.agg;
+import com.tencent.mm.protocal.protobuf.ago;
+import com.tencent.mm.protocal.protobuf.agu;
+import com.tencent.mm.protocal.protobuf.ahd;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.LinkedList;
 
 public final class c
 {
-  public static boolean a(cm paramcm, a parama)
+  public static boolean a(cs paramcs, y paramy)
   {
-    AppMethodBeat.i(6572);
-    if (!parama.valid())
+    AppMethodBeat.i(78838);
+    if (paramy == null)
     {
-      ab.w("MicroMsg.GetFavDataSource", "fill favorite event fail, event is null or wrapper is invalid");
-      paramcm.cpR.cpX = 2131299713;
-      AppMethodBeat.o(6572);
+      ad.w("MicroMsg.GetFavDataSource", "fillMpVideoEventInfo mpMsgItem is null");
+      AppMethodBeat.o(78838);
       return false;
     }
-    acq localacq = new acq();
-    acw localacw = new acw();
-    aca localaca = new aca();
-    localaca.anw(parama.url);
-    localaca.anq(parama.title);
-    localaca.anr(parama.desc);
-    localaca.anz(parama.thumbUrl);
-    localaca.anO(parama.cGU);
-    localaca.py(true);
-    localaca.pz(true);
-    localaca.MI(5);
-    adf localadf = new adf();
-    localadf.aoD(parama.thumbUrl);
-    localadf.aoA(parama.title);
-    localadf.aoB(parama.desc);
-    localacq.b(localadf);
-    localacq.c(parama.uVl);
-    localacw.aon(r.Zn());
-    localacw.aoo(r.Zn());
-    localacw.MR(3);
-    localacw.nI(bo.aoy());
-    localacw.aot(parama.cwc);
-    localacw.aou(parama.url);
-    paramcm.cpR.title = localaca.title;
-    paramcm.cpR.cpT = localacq;
-    paramcm.cpR.type = 5;
-    localacq.a(localacw);
-    localacq.wVc.add(localaca);
-    AppMethodBeat.o(6572);
+    ago localago = new ago();
+    Object localObject = new agu();
+    ((agu)localObject).aEl(u.aqG());
+    ((agu)localObject).aEm(u.aqG());
+    ((agu)localObject).VM(4);
+    ((agu)localObject).vv(bt.eGO());
+    ((agu)localObject).aEs(paramy.url);
+    localago.a((agu)localObject);
+    localObject = new afy();
+    ((afy)localObject).aDz("");
+    ((afy)localObject).aDu(paramy.gKD);
+    ((afy)localObject).aDD(ai.du(paramy.CEg + paramy.CEf));
+    ((afy)localObject).VC(paramy.videoDuration);
+    ((afy)localObject).aDl(paramy.title);
+    ((afy)localObject).aDr(paramy.url);
+    ((afy)localObject).uw(true);
+    ((afy)localObject).ux(true);
+    agg localagg = new agg();
+    localagg.gGC = paramy.CEg;
+    localagg.videoUrl = paramy.videoUrl;
+    localagg.CEf = paramy.CEf;
+    localagg.dfT = paramy.dfT;
+    localagg.gKv = paramy.gKv;
+    localagg.gKD = paramy.gKD;
+    localagg.videoWidth = paramy.width;
+    localagg.videoHeight = paramy.height;
+    localagg.duration = paramy.videoDuration;
+    paramy = new afz();
+    paramy.e(localagg);
+    ((afy)localObject).a(paramy);
+    paramy = new LinkedList();
+    paramy.add(localObject);
+    localago.bd(paramy);
+    paramcs.deQ.deS = localago;
+    paramcs.deQ.type = 4;
+    ((afy)localObject).VD(4);
+    AppMethodBeat.o(78838);
     return true;
   }
   
-  public static final class a
+  public static boolean a(cs paramcs, c.a parama)
   {
-    public String cGU;
-    public String cwc;
-    public String desc;
-    public String thumbUrl;
-    public String title;
-    public aci uVl;
-    public String url;
-    
-    public final boolean valid()
+    AppMethodBeat.i(78837);
+    if (!parama.valid())
     {
-      AppMethodBeat.i(6571);
-      if (!bo.isNullOrNil(this.url))
-      {
-        AppMethodBeat.o(6571);
-        return true;
-      }
-      AppMethodBeat.o(6571);
+      ad.w("MicroMsg.GetFavDataSource", "fill favorite event fail, event is null or wrapper is invalid");
+      paramcs.deQ.deV = 2131758885;
+      AppMethodBeat.o(78837);
       return false;
     }
+    ago localago = new ago();
+    agu localagu = new agu();
+    afy localafy = new afy();
+    localafy.aDr(parama.url);
+    localafy.aDl(parama.title);
+    localafy.aDm(parama.desc);
+    localafy.aDu(parama.thumbUrl);
+    localafy.aDJ(parama.dxG);
+    localafy.uw(true);
+    localafy.ux(true);
+    localafy.VD(5);
+    ahd localahd = new ahd();
+    localahd.aEB(parama.thumbUrl);
+    localahd.aEy(parama.title);
+    localahd.aEz(parama.desc);
+    localago.b(localahd);
+    localago.f(parama.AWL);
+    localagu.aEl(u.aqG());
+    localagu.aEm(u.aqG());
+    localagu.VM(3);
+    localagu.vv(bt.eGO());
+    localagu.aEr(parama.dlB);
+    localagu.aEs(parama.url);
+    paramcs.deQ.title = localafy.title;
+    paramcs.deQ.deS = localago;
+    paramcs.deQ.type = 5;
+    localago.a(localagu);
+    localago.mVb.add(localafy);
+    AppMethodBeat.o(78837);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.c
  * JD-Core Version:    0.7.0.1
  */

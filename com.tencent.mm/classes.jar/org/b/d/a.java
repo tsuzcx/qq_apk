@@ -5,53 +5,53 @@ import java.io.OutputStream;
 
 public final class a
 {
-  public final String CRA;
-  public final String CRB;
-  public final h CRD;
-  private final OutputStream CRE;
-  public final String CRz;
+  public final String Kno;
+  public final String Knp;
+  public final String Knq;
+  public final h Kns;
+  private final OutputStream Knt;
   public final String scope;
   
   public a(String paramString1, String paramString2, String paramString3, h paramh, String paramString4, OutputStream paramOutputStream)
   {
-    this.CRz = paramString1;
-    this.CRA = paramString2;
-    this.CRB = paramString3;
-    this.CRD = paramh;
+    this.Kno = paramString1;
+    this.Knp = paramString2;
+    this.Knq = paramString3;
+    this.Kns = paramh;
     this.scope = paramString4;
-    this.CRE = paramOutputStream;
+    this.Knt = paramOutputStream;
   }
   
-  public final boolean ery()
+  public final boolean fNa()
   {
     return this.scope != null;
   }
   
   public final void log(String paramString)
   {
-    AppMethodBeat.i(77275);
-    if (this.CRE != null)
+    AppMethodBeat.i(40544);
+    if (this.Knt != null)
     {
       paramString = paramString + "\n";
       try
       {
-        this.CRE.write(paramString.getBytes("UTF8"));
-        AppMethodBeat.o(77275);
+        this.Knt.write(paramString.getBytes("UTF8"));
+        AppMethodBeat.o(40544);
         return;
       }
       catch (Exception paramString)
       {
         paramString = new RuntimeException("there were problems while writting to the debug stream", paramString);
-        AppMethodBeat.o(77275);
+        AppMethodBeat.o(40544);
         throw paramString;
       }
     }
-    AppMethodBeat.o(77275);
+    AppMethodBeat.o(40544);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.b.d.a
  * JD-Core Version:    0.7.0.1
  */

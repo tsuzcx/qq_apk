@@ -1,19 +1,20 @@
 package com.tencent.mm.audio.mix.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.mix.a.e;
 import com.tencent.mm.audio.mix.h.b;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public final class d
   extends c
 {
-  private com.tencent.mm.audio.mix.a.c cfb;
-  private FileInputStream cfc;
-  private FileOutputStream outputStream;
+  private com.tencent.mm.audio.mix.a.d cUa;
+  private InputStream inputStream;
+  private OutputStream outputStream;
   
   /* Error */
-  public d(com.tencent.mm.audio.mix.a.c paramc, int paramInt1, int paramInt2, int paramInt3, java.lang.String paramString)
+  public d(com.tencent.mm.audio.mix.a.d paramd, int paramInt1, int paramInt2, int paramInt3, java.lang.String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -44,14 +45,14 @@ public final class d
     //   40: invokestatic 38	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   43: aastore
     //   44: invokestatic 43	com/tencent/mm/audio/mix/h/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   47: invokestatic 48	com/tencent/mm/audio/mix/c/b:Di	()V
+    //   47: invokestatic 48	com/tencent/mm/audio/mix/c/b:MR	()V
     //   50: aload_0
     //   51: aload_1
-    //   52: putfield 50	com/tencent/mm/audio/mix/c/d:cfb	Lcom/tencent/mm/audio/mix/a/c;
+    //   52: putfield 50	com/tencent/mm/audio/mix/c/d:cUa	Lcom/tencent/mm/audio/mix/a/d;
     //   55: aload_0
     //   56: aload 5
-    //   58: invokestatic 56	com/tencent/mm/audio/mix/h/a:eD	(Ljava/lang/String;)Ljava/lang/String;
-    //   61: putfield 60	com/tencent/mm/audio/mix/c/d:ceV	Ljava/lang/String;
+    //   58: invokestatic 56	com/tencent/mm/audio/mix/h/a:fK	(Ljava/lang/String;)Ljava/lang/String;
+    //   61: putfield 60	com/tencent/mm/audio/mix/c/d:cTU	Ljava/lang/String;
     //   64: ldc 28
     //   66: ldc 62
     //   68: iconst_1
@@ -59,184 +60,112 @@ public final class d
     //   72: dup
     //   73: iconst_0
     //   74: aload_0
-    //   75: getfield 60	com/tencent/mm/audio/mix/c/d:ceV	Ljava/lang/String;
+    //   75: getfield 60	com/tencent/mm/audio/mix/c/d:cTU	Ljava/lang/String;
     //   78: aastore
     //   79: invokestatic 43	com/tencent/mm/audio/mix/h/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   82: new 64	java/io/File
-    //   85: dup
-    //   86: aload_0
-    //   87: getfield 60	com/tencent/mm/audio/mix/c/d:ceV	Ljava/lang/String;
-    //   90: invokespecial 67	java/io/File:<init>	(Ljava/lang/String;)V
-    //   93: invokevirtual 71	java/io/File:delete	()Z
-    //   96: pop
-    //   97: aload_0
-    //   98: new 73	java/io/FileOutputStream
-    //   101: dup
-    //   102: aload_0
-    //   103: getfield 60	com/tencent/mm/audio/mix/c/d:ceV	Ljava/lang/String;
-    //   106: invokestatic 77	com/tencent/mm/audio/mix/h/a:eE	(Ljava/lang/String;)Ljava/io/File;
-    //   109: invokespecial 80	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   112: putfield 82	com/tencent/mm/audio/mix/c/d:outputStream	Ljava/io/FileOutputStream;
-    //   115: aload_0
-    //   116: new 84	java/io/FileInputStream
-    //   119: dup
-    //   120: aload_0
-    //   121: getfield 60	com/tencent/mm/audio/mix/c/d:ceV	Ljava/lang/String;
-    //   124: invokestatic 77	com/tencent/mm/audio/mix/h/a:eE	(Ljava/lang/String;)Ljava/io/File;
-    //   127: invokespecial 85	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   130: putfield 87	com/tencent/mm/audio/mix/c/d:cfc	Ljava/io/FileInputStream;
-    //   133: aload_0
-    //   134: aload 5
-    //   136: putfield 90	com/tencent/mm/audio/mix/c/d:ceU	Ljava/lang/String;
-    //   139: aload_0
-    //   140: ldc 91
-    //   142: putfield 95	com/tencent/mm/audio/mix/c/d:ceO	I
-    //   145: aload_0
-    //   146: iconst_2
-    //   147: putfield 98	com/tencent/mm/audio/mix/c/d:ceP	I
-    //   150: aload_0
-    //   151: iconst_2
-    //   152: putfield 101	com/tencent/mm/audio/mix/c/d:ceQ	I
-    //   155: aload_0
-    //   156: iload_2
-    //   157: iload_3
-    //   158: iload 4
-    //   160: invokevirtual 105	com/tencent/mm/audio/mix/c/d:C	(III)V
-    //   163: ldc 20
-    //   165: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   168: return
-    //   169: astore_1
-    //   170: ldc 28
-    //   172: aload_1
-    //   173: ldc 110
-    //   175: iconst_0
-    //   176: anewarray 32	java/lang/Object
-    //   179: invokestatic 114	com/tencent/mm/audio/mix/h/b:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   182: goto -67 -> 115
-    //   185: astore_1
-    //   186: ldc 28
-    //   188: aload_1
-    //   189: ldc 110
-    //   191: iconst_0
-    //   192: anewarray 32	java/lang/Object
-    //   195: invokestatic 114	com/tencent/mm/audio/mix/h/b:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   198: goto -83 -> 115
-    //   201: astore_1
-    //   202: ldc 28
-    //   204: aload_1
-    //   205: ldc 116
-    //   207: iconst_0
-    //   208: anewarray 32	java/lang/Object
-    //   211: invokestatic 114	com/tencent/mm/audio/mix/h/b:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   214: goto -81 -> 133
-    //   217: astore_1
-    //   218: ldc 28
-    //   220: aload_1
-    //   221: ldc 116
-    //   223: iconst_0
-    //   224: anewarray 32	java/lang/Object
-    //   227: invokestatic 114	com/tencent/mm/audio/mix/h/b:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   230: goto -97 -> 133
+    //   82: aload_0
+    //   83: getfield 60	com/tencent/mm/audio/mix/c/d:cTU	Ljava/lang/String;
+    //   86: invokestatic 68	com/tencent/mm/vfs/i:deleteFile	(Ljava/lang/String;)Z
+    //   89: pop
+    //   90: aload_0
+    //   91: aload_0
+    //   92: getfield 60	com/tencent/mm/audio/mix/c/d:cTU	Ljava/lang/String;
+    //   95: invokestatic 72	com/tencent/mm/audio/mix/h/a:fL	(Ljava/lang/String;)Lcom/tencent/mm/vfs/e;
+    //   98: invokestatic 76	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   101: putfield 78	com/tencent/mm/audio/mix/c/d:outputStream	Ljava/io/OutputStream;
+    //   104: aload_0
+    //   105: aload_0
+    //   106: getfield 60	com/tencent/mm/audio/mix/c/d:cTU	Ljava/lang/String;
+    //   109: invokestatic 72	com/tencent/mm/audio/mix/h/a:fL	(Ljava/lang/String;)Lcom/tencent/mm/vfs/e;
+    //   112: invokestatic 82	com/tencent/mm/vfs/i:ah	(Lcom/tencent/mm/vfs/e;)Ljava/io/InputStream;
+    //   115: putfield 84	com/tencent/mm/audio/mix/c/d:inputStream	Ljava/io/InputStream;
+    //   118: aload_0
+    //   119: aload 5
+    //   121: putfield 87	com/tencent/mm/audio/mix/c/d:cTT	Ljava/lang/String;
+    //   124: aload_0
+    //   125: ldc 88
+    //   127: putfield 92	com/tencent/mm/audio/mix/c/d:cTN	I
+    //   130: aload_0
+    //   131: iconst_2
+    //   132: putfield 95	com/tencent/mm/audio/mix/c/d:cTO	I
+    //   135: aload_0
+    //   136: iconst_2
+    //   137: putfield 98	com/tencent/mm/audio/mix/c/d:cTP	I
+    //   140: aload_0
+    //   141: iload_2
+    //   142: iload_3
+    //   143: iload 4
+    //   145: invokevirtual 102	com/tencent/mm/audio/mix/c/d:F	(III)V
+    //   148: ldc 20
+    //   150: invokestatic 105	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   153: return
+    //   154: astore_1
+    //   155: ldc 28
+    //   157: aload_1
+    //   158: ldc 107
+    //   160: iconst_0
+    //   161: anewarray 32	java/lang/Object
+    //   164: invokestatic 111	com/tencent/mm/audio/mix/h/b:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   167: goto -63 -> 104
+    //   170: astore_1
+    //   171: ldc 28
+    //   173: aload_1
+    //   174: ldc 107
+    //   176: iconst_0
+    //   177: anewarray 32	java/lang/Object
+    //   180: invokestatic 111	com/tencent/mm/audio/mix/h/b:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   183: goto -79 -> 104
+    //   186: astore_1
+    //   187: ldc 28
+    //   189: aload_1
+    //   190: ldc 113
+    //   192: iconst_0
+    //   193: anewarray 32	java/lang/Object
+    //   196: invokestatic 111	com/tencent/mm/audio/mix/h/b:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   199: goto -81 -> 118
+    //   202: astore_1
+    //   203: ldc 28
+    //   205: aload_1
+    //   206: ldc 113
+    //   208: iconst_0
+    //   209: anewarray 32	java/lang/Object
+    //   212: invokestatic 111	com/tencent/mm/audio/mix/h/b:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   215: goto -97 -> 118
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	233	0	this	d
-    //   0	233	1	paramc	com.tencent.mm.audio.mix.a.c
-    //   0	233	2	paramInt1	int
-    //   0	233	3	paramInt2	int
-    //   0	233	4	paramInt3	int
-    //   0	233	5	paramString	java.lang.String
+    //   0	218	0	this	d
+    //   0	218	1	paramd	com.tencent.mm.audio.mix.a.d
+    //   0	218	2	paramInt1	int
+    //   0	218	3	paramInt2	int
+    //   0	218	4	paramInt3	int
+    //   0	218	5	paramString	java.lang.String
     // Exception table:
     //   from	to	target	type
-    //   97	115	169	java/io/FileNotFoundException
-    //   97	115	185	java/lang/Exception
-    //   115	133	201	java/io/FileNotFoundException
-    //   115	133	217	java/lang/Exception
+    //   90	104	154	java/io/FileNotFoundException
+    //   90	104	170	java/lang/Exception
+    //   104	118	186	java/io/FileNotFoundException
+    //   104	118	202	java/lang/Exception
   }
   
-  public final h Dj()
+  public final byte[] L(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(137025);
-    i locali = new i();
-    AppMethodBeat.o(137025);
-    return locali;
-  }
-  
-  public final void Dk()
-  {
-    AppMethodBeat.i(137021);
-    b.i("MicroMsg.Mix.AudioFixedConvertProcess", "finishProcess");
-    try
-    {
-      if (this.outputStream != null)
-      {
-        this.outputStream.flush();
-        this.outputStream.close();
-        this.outputStream = null;
-      }
-      Runtime.getRuntime().gc();
-      AppMethodBeat.o(137021);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        b.printErrStackTrace("MicroMsg.Mix.AudioFixedConvertProcess", localException, "finishProcess", new Object[0]);
-      }
-    }
-  }
-  
-  public final com.tencent.mm.audio.mix.a.d Dl()
-  {
-    AppMethodBeat.i(137022);
-    if (this.cfc == null)
-    {
-      b.e("MicroMsg.Mix.AudioFixedConvertProcess", "readPcmDataTrack, inputStream is null");
-      AppMethodBeat.o(137022);
-      return null;
-    }
-    byte[] arrayOfByte = new byte[3536];
-    try
-    {
-      int i = this.cfc.read(arrayOfByte, 0, 3536);
-      if (i > 0)
-      {
-        com.tencent.mm.audio.mix.a.d locald = com.tencent.mm.audio.mix.b.c.Dc().Db();
-        locald.cem = arrayOfByte;
-        AppMethodBeat.o(137022);
-        return locald;
-      }
-    }
-    catch (Exception localException)
-    {
-      b.printErrStackTrace("MicroMsg.Mix.AudioFixedConvertProcess", localException, "readPcmDataTrack", new Object[0]);
-      AppMethodBeat.o(137022);
-      return null;
-    }
-    b.e("MicroMsg.Mix.AudioFixedConvertProcess", "readPcmDataTrack readSize is 0");
-    AppMethodBeat.o(137022);
-    return null;
-  }
-  
-  public final byte[] E(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(137020);
+    AppMethodBeat.i(136768);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(137020);
+      AppMethodBeat.o(136768);
       return paramArrayOfByte;
     }
-    paramArrayOfByte = super.E(paramArrayOfByte);
+    paramArrayOfByte = super.L(paramArrayOfByte);
     if (this.outputStream == null)
     {
-      AppMethodBeat.o(137020);
+      AppMethodBeat.o(136768);
       return paramArrayOfByte;
     }
     if (paramArrayOfByte != null) {
       try
       {
         this.outputStream.write(paramArrayOfByte, 0, paramArrayOfByte.length);
-        AppMethodBeat.o(137020);
+        AppMethodBeat.o(136768);
         return paramArrayOfByte;
       }
       catch (Exception localException)
@@ -248,24 +177,89 @@ public final class d
       }
     }
     b.e("MicroMsg.Mix.AudioFixedConvertProcess", "desdata is null");
-    AppMethodBeat.o(137020);
+    AppMethodBeat.o(136768);
+    return null;
+  }
+  
+  public final h MS()
+  {
+    AppMethodBeat.i(136773);
+    i locali = new i();
+    AppMethodBeat.o(136773);
+    return locali;
+  }
+  
+  public final void MT()
+  {
+    AppMethodBeat.i(136769);
+    b.i("MicroMsg.Mix.AudioFixedConvertProcess", "finishProcess");
+    try
+    {
+      if (this.outputStream != null)
+      {
+        this.outputStream.flush();
+        this.outputStream.close();
+        this.outputStream = null;
+      }
+      Runtime.getRuntime().gc();
+      AppMethodBeat.o(136769);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        b.printErrStackTrace("MicroMsg.Mix.AudioFixedConvertProcess", localException, "finishProcess", new Object[0]);
+      }
+    }
+  }
+  
+  public final e MU()
+  {
+    AppMethodBeat.i(136770);
+    if (this.inputStream == null)
+    {
+      b.e("MicroMsg.Mix.AudioFixedConvertProcess", "readPcmDataTrack, inputStream is null");
+      AppMethodBeat.o(136770);
+      return null;
+    }
+    byte[] arrayOfByte = new byte[3536];
+    try
+    {
+      int i = this.inputStream.read(arrayOfByte, 0, 3536);
+      if (i > 0)
+      {
+        e locale = com.tencent.mm.audio.mix.b.d.ML().MK();
+        locale.cTk = arrayOfByte;
+        AppMethodBeat.o(136770);
+        return locale;
+      }
+    }
+    catch (Exception localException)
+    {
+      b.printErrStackTrace("MicroMsg.Mix.AudioFixedConvertProcess", localException, "readPcmDataTrack", new Object[0]);
+      AppMethodBeat.o(136770);
+      return null;
+    }
+    b.e("MicroMsg.Mix.AudioFixedConvertProcess", "readPcmDataTrack readSize is 0");
+    AppMethodBeat.o(136770);
     return null;
   }
   
   public final void flushCache()
   {
-    AppMethodBeat.i(137023);
+    AppMethodBeat.i(136771);
     b.i("MicroMsg.Mix.AudioFixedConvertProcess", "flushCache");
-    if (this.cfc == null)
+    if (this.inputStream == null)
     {
       b.e("MicroMsg.Mix.AudioFixedConvertProcess", "flushCache, inputStream is null");
-      AppMethodBeat.o(137023);
+      AppMethodBeat.o(136771);
       return;
     }
-    if (this.cfb.cep)
+    if (this.cUa.azh)
     {
       b.e("MicroMsg.Mix.AudioFixedConvertProcess", "flushCache, cache is complete");
-      AppMethodBeat.o(137023);
+      AppMethodBeat.o(136771);
       return;
     }
     int i = 0;
@@ -277,32 +271,32 @@ public final class d
       byte[] arrayOfByte = new byte[3536];
       try
       {
-        int j = this.cfc.read(arrayOfByte, 0, 3536);
+        int j = this.inputStream.read(arrayOfByte, 0, 3536);
         i = j;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          com.tencent.mm.audio.mix.a.d locald;
+          e locale;
           b.printErrStackTrace("MicroMsg.Mix.AudioFixedConvertProcess", localException, "readPcmDataTrack", new Object[0]);
         }
       }
       if (i > 0)
       {
-        locald = com.tencent.mm.audio.mix.b.c.Dc().Db();
-        locald.cem = arrayOfByte;
-        this.cfb.a(locald);
+        locale = com.tencent.mm.audio.mix.b.d.ML().MK();
+        locale.cTk = arrayOfByte;
+        this.cUa.a(locale);
       }
     }
     label131:
-    this.cfb.complete();
-    AppMethodBeat.o(137023);
+    this.cUa.complete();
+    AppMethodBeat.o(136771);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(137024);
+    AppMethodBeat.i(136772);
     b.i("MicroMsg.Mix.AudioFixedConvertProcess", "release");
     super.release();
     try
@@ -320,18 +314,18 @@ public final class d
       {
         try
         {
-          if (this.cfc != null)
+          if (this.inputStream != null)
           {
-            this.cfc.close();
-            this.cfc = null;
+            this.inputStream.close();
+            this.inputStream = null;
           }
-          AppMethodBeat.o(137024);
+          AppMethodBeat.o(136772);
           return;
         }
         catch (Exception localException2)
         {
           b.printErrStackTrace("MicroMsg.Mix.AudioFixedConvertProcess", localException2, "inputStream close", new Object[0]);
-          AppMethodBeat.o(137024);
+          AppMethodBeat.o(136772);
         }
         localException1 = localException1;
         b.printErrStackTrace("MicroMsg.Mix.AudioFixedConvertProcess", localException1, "outputStream close", new Object[0]);

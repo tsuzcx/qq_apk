@@ -11,130 +11,132 @@ import java.util.PriorityQueue;
 public final class c
   implements m
 {
-  private final k avi;
-  private final long avj;
-  private final long avk;
-  private final long avl;
-  private final long avm;
-  private final p avn;
-  private int avo;
-  private boolean avp;
+  private final k aQA;
+  private final long aQB;
+  private final long aQC;
+  private final long aQD;
+  private final long aQE;
+  private final p aQF;
+  private int aQG;
+  private boolean aQH;
   
   public c()
   {
     this(new k());
-    AppMethodBeat.i(94746);
-    AppMethodBeat.o(94746);
+    AppMethodBeat.i(91857);
+    AppMethodBeat.o(91857);
   }
   
-  private c(k paramk)
+  public c(k paramk)
   {
-    this(paramk, (byte)0);
+    this(paramk, 15000, 30000, 2500L, 5000L);
   }
   
-  private c(k paramk, byte paramByte)
+  public c(k paramk, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    this(paramk, '\000');
+    this(paramk, paramInt1, paramInt2, paramLong1, paramLong2, (byte)0);
   }
   
-  private c(k paramk, char paramChar)
+  private c(k paramk, int paramInt1, int paramInt2, long paramLong1, long paramLong2, byte paramByte)
   {
-    this.avi = paramk;
-    this.avj = 15000000L;
-    this.avk = 30000000L;
-    this.avl = 2500000L;
-    this.avm = 5000000L;
-    this.avn = null;
+    AppMethodBeat.i(91858);
+    this.aQA = paramk;
+    this.aQB = (paramInt1 * 1000L);
+    this.aQC = (paramInt2 * 1000L);
+    this.aQD = (paramLong1 * 1000L);
+    this.aQE = (paramLong2 * 1000L);
+    this.aQF = null;
+    AppMethodBeat.o(91858);
   }
   
   private void reset(boolean paramBoolean)
   {
-    AppMethodBeat.i(94752);
-    this.avo = 0;
-    if ((this.avn != null) && (this.avp)) {
-      this.avn.ra();
+    AppMethodBeat.i(91864);
+    this.aQG = 0;
+    if ((this.aQF != null) && (this.aQH)) {
+      this.aQF.vX();
     }
-    this.avp = false;
+    this.aQH = false;
     if (paramBoolean) {
-      this.avi.reset();
+      this.aQA.reset();
     }
-    AppMethodBeat.o(94752);
+    AppMethodBeat.o(91864);
   }
   
   public final void a(r[] paramArrayOfr, g paramg)
   {
     int i = 0;
-    AppMethodBeat.i(94748);
-    this.avo = 0;
+    AppMethodBeat.i(91860);
+    this.aQG = 0;
     while (i < paramArrayOfr.length)
     {
-      if (paramg.aYk[i] != null) {
-        this.avo += x.eu(paramArrayOfr[i].getTrackType());
+      if (paramg.bwn[i] != null) {
+        this.aQG += x.fs(paramArrayOfr[i].getTrackType());
       }
       i += 1;
     }
-    this.avi.ek(this.avo);
-    AppMethodBeat.o(94748);
+    this.aQA.fi(this.aQG);
+    AppMethodBeat.o(91860);
   }
   
-  public final boolean c(long paramLong, boolean paramBoolean)
+  public final boolean b(long paramLong, boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (long l = this.avm; (l <= 0L) || (paramLong >= l); l = this.avl) {
+    for (long l = this.aQE; (l <= 0L) || (paramLong >= l); l = this.aQD) {
       return true;
     }
     return false;
   }
   
-  public final void mG()
-  {
-    AppMethodBeat.i(94747);
-    reset(false);
-    AppMethodBeat.o(94747);
-  }
-  
-  public final void mH()
-  {
-    AppMethodBeat.i(94750);
-    reset(true);
-    AppMethodBeat.o(94750);
-  }
-  
-  public final b mI()
-  {
-    return this.avi;
-  }
-  
   public final void onStopped()
   {
-    AppMethodBeat.i(94749);
+    AppMethodBeat.i(91861);
     reset(true);
-    AppMethodBeat.o(94749);
+    AppMethodBeat.o(91861);
   }
   
-  public final boolean q(long paramLong)
+  public final void rq()
+  {
+    AppMethodBeat.i(91859);
+    reset(false);
+    AppMethodBeat.o(91859);
+  }
+  
+  public final void rr()
+  {
+    AppMethodBeat.i(91862);
+    reset(true);
+    AppMethodBeat.o(91862);
+  }
+  
+  public final b rs()
+  {
+    return this.aQA;
+  }
+  
+  public final boolean v(long paramLong)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(94751);
+    AppMethodBeat.i(91863);
     int i;
     int j;
     boolean bool1;
     p localp;
-    if (paramLong > this.avk)
+    if (paramLong > this.aQC)
     {
       i = 0;
-      if (this.avi.qp() < this.avo) {
+      if (this.aQA.vk() < this.aQG) {
         break label187;
       }
       j = 1;
-      boolean bool3 = this.avp;
+      boolean bool3 = this.aQH;
       if (i != 2)
       {
         bool1 = bool2;
         if (i == 1)
         {
           bool1 = bool2;
-          if (this.avp)
+          if (this.aQH)
           {
             bool1 = bool2;
             if (j != 0) {}
@@ -145,25 +147,25 @@ public final class c
       {
         bool1 = true;
       }
-      this.avp = bool1;
-      if ((this.avn != null) && (this.avp != bool3))
+      this.aQH = bool1;
+      if ((this.aQF != null) && (this.aQH != bool3))
       {
-        if (!this.avp) {
+        if (!this.aQH) {
           break label206;
         }
-        localp = this.avn;
+        localp = this.aQF;
       }
     }
     for (;;)
     {
       synchronized (localp.lock)
       {
-        localp.bbe.add(Integer.valueOf(0));
-        localp.bbf = Math.max(localp.bbf, 0);
-        bool1 = this.avp;
-        AppMethodBeat.o(94751);
+        localp.bzf.add(Integer.valueOf(0));
+        localp.bzg = Math.max(localp.bzg, 0);
+        bool1 = this.aQH;
+        AppMethodBeat.o(91863);
         return bool1;
-        if (paramLong < this.avj)
+        if (paramLong < this.aQB)
         {
           i = 2;
           break;
@@ -174,13 +176,13 @@ public final class c
         j = 0;
       }
       label206:
-      this.avn.ra();
+      this.aQF.vX();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.c
  * JD-Core Version:    0.7.0.1
  */

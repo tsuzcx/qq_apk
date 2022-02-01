@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Build.VERSION;
+import dalvik.system.DexFile;
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -12,63 +14,21 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.ZipFile;
 
 public final class a
 {
-  private static final String qb = "code_cache" + File.separator + "secondary-dexes";
-  private static final Set<String> qc = new HashSet();
-  private static final boolean qd = D(System.getProperty("java.vm.version"));
+  private static final String wF = "code_cache" + File.separator + "secondary-dexes";
+  private static final Set<String> wG = new HashSet();
+  private static final boolean wH = o(System.getProperty("java.vm.version"));
   
-  private static boolean D(String paramString)
+  public static void J(Context paramContext)
   {
-    bool2 = false;
-    bool1 = bool2;
-    if (paramString != null)
-    {
-      localObject = Pattern.compile("(\\d+)\\.(\\d+)(\\.\\d+)?").matcher(paramString);
-      bool1 = bool2;
-      if (!((Matcher)localObject).matches()) {}
-    }
-    try
-    {
-      int i = Integer.parseInt(((Matcher)localObject).group(1));
-      int j = Integer.parseInt(((Matcher)localObject).group(2));
-      if (i <= 2)
-      {
-        bool1 = bool2;
-        if (i == 2)
-        {
-          bool1 = bool2;
-          if (j <= 0) {}
-        }
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        bool1 = bool2;
-      }
-    }
-    Object localObject = new StringBuilder("VM with version ").append(paramString);
-    if (bool1) {}
-    for (paramString = " has multidex support";; paramString = " does not have multidex support")
-    {
-      ((StringBuilder)localObject).append(paramString);
-      return bool1;
-    }
-  }
-  
-  public static void G(Context paramContext)
-  {
-    if (qd) {}
+    if (wH) {}
     ApplicationInfo localApplicationInfo;
     Object localObject;
     for (;;)
@@ -79,17 +39,17 @@ public final class a
       }
       try
       {
-        localApplicationInfo = H(paramContext);
+        localApplicationInfo = getApplicationInfo(paramContext);
         if (localApplicationInfo != null)
         {
-          synchronized (qc)
+          synchronized (wG)
           {
             localObject = localApplicationInfo.sourceDir;
-            if (qc.contains(localObject)) {
+            if (wG.contains(localObject)) {
               return;
             }
           }
-          qc.add(localObject);
+          wG.add(localObject);
         }
       }
       catch (Exception paramContext)
@@ -113,9 +73,9 @@ public final class a
     }
     try
     {
-      I(paramContext);
+      K(paramContext);
       label190:
-      File localFile = new File(localApplicationInfo.dataDir, qb);
+      File localFile = new File(localApplicationInfo.dataDir, wF);
       List localList = b.a(paramContext, localApplicationInfo, localFile, false);
       if (g(localList)) {
         a((ClassLoader)localObject, localFile, localList);
@@ -137,22 +97,7 @@ public final class a
     }
   }
   
-  private static ApplicationInfo H(Context paramContext)
-  {
-    try
-    {
-      PackageManager localPackageManager = paramContext.getPackageManager();
-      paramContext = paramContext.getPackageName();
-      if ((localPackageManager == null) || (paramContext == null)) {
-        return null;
-      }
-      return localPackageManager.getApplicationInfo(paramContext, 128);
-    }
-    catch (RuntimeException paramContext) {}
-    return null;
-  }
-  
-  private static void I(Context paramContext)
+  private static void K(Context paramContext)
   {
     paramContext = new File(paramContext.getFilesDir(), "secondary-dexes");
     File[] arrayOfFile;
@@ -197,7 +142,7 @@ public final class a
     if (!paramList.isEmpty())
     {
       if (Build.VERSION.SDK_INT >= 19) {
-        a.b.a(paramClassLoader, paramList, paramFile);
+        b.install(paramClassLoader, paramList, paramFile);
       }
     }
     else {
@@ -205,13 +150,13 @@ public final class a
     }
     if (Build.VERSION.SDK_INT >= 14)
     {
-      a.a(paramClassLoader, paramList, paramFile);
+      a.install(paramClassLoader, paramList, paramFile);
       return;
     }
-    a.c.a(paramClassLoader, paramList);
+    c.install(paramClassLoader, paramList);
   }
   
-  private static Field b(Object paramObject, String paramString)
+  private static Field findField(Object paramObject, String paramString)
   {
     Class localClass = paramObject.getClass();
     while (localClass != null) {
@@ -231,7 +176,7 @@ public final class a
     throw new NoSuchFieldException("Field " + paramString + " not found in " + paramObject.getClass());
   }
   
-  private static Method b(Object paramObject, String paramString, Class<?>... paramVarArgs)
+  private static Method findMethod(Object paramObject, String paramString, Class<?>... paramVarArgs)
   {
     Class localClass = paramObject.getClass();
     while (localClass != null) {
@@ -255,26 +200,149 @@ public final class a
   {
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      if (!b.f((File)paramList.next())) {
+      if (!b.l((File)paramList.next())) {
         return false;
       }
     }
     return true;
   }
   
+  private static ApplicationInfo getApplicationInfo(Context paramContext)
+  {
+    try
+    {
+      PackageManager localPackageManager = paramContext.getPackageManager();
+      paramContext = paramContext.getPackageName();
+      if ((localPackageManager == null) || (paramContext == null)) {
+        return null;
+      }
+      return localPackageManager.getApplicationInfo(paramContext, 128);
+    }
+    catch (RuntimeException paramContext) {}
+    return null;
+  }
+  
+  private static boolean o(String paramString)
+  {
+    bool2 = false;
+    bool1 = bool2;
+    if (paramString != null)
+    {
+      localObject = Pattern.compile("(\\d+)\\.(\\d+)(\\.\\d+)?").matcher(paramString);
+      bool1 = bool2;
+      if (!((Matcher)localObject).matches()) {}
+    }
+    try
+    {
+      int i = Integer.parseInt(((Matcher)localObject).group(1));
+      int j = Integer.parseInt(((Matcher)localObject).group(2));
+      if (i <= 2)
+      {
+        bool1 = bool2;
+        if (i == 2)
+        {
+          bool1 = bool2;
+          if (j <= 0) {}
+        }
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        bool1 = bool2;
+      }
+    }
+    Object localObject = new StringBuilder("VM with version ").append(paramString);
+    if (bool1) {}
+    for (paramString = " has multidex support";; paramString = " does not have multidex support")
+    {
+      ((StringBuilder)localObject).append(paramString);
+      return bool1;
+    }
+  }
+  
   static final class a
   {
-    static void a(ClassLoader paramClassLoader, List<File> paramList, File paramFile)
+    static void install(ClassLoader paramClassLoader, List<File> paramList, File paramFile)
     {
-      paramClassLoader = a.c(paramClassLoader, "pathList").get(paramClassLoader);
+      paramClassLoader = a.b(paramClassLoader, "pathList").get(paramClassLoader);
       paramList = new ArrayList(paramList);
-      a.a(paramClassLoader, "dexElements", (Object[])a.c(paramClassLoader, "makeDexElements", new Class[] { ArrayList.class, File.class }).invoke(paramClassLoader, new Object[] { paramList, paramFile }));
+      a.a(paramClassLoader, "dexElements", (Object[])a.b(paramClassLoader, "makeDexElements", new Class[] { ArrayList.class, File.class }).invoke(paramClassLoader, new Object[] { paramList, paramFile }));
+    }
+  }
+  
+  static final class b
+  {
+    static void install(ClassLoader paramClassLoader, List<File> paramList, File paramFile)
+    {
+      Object localObject = a.b(paramClassLoader, "pathList").get(paramClassLoader);
+      ArrayList localArrayList = new ArrayList();
+      paramList = new ArrayList(paramList);
+      a.a(localObject, "dexElements", (Object[])a.b(localObject, "makeDexElements", new Class[] { ArrayList.class, File.class, ArrayList.class }).invoke(localObject, new Object[] { paramList, paramFile, localArrayList }));
+      if (localArrayList.size() > 0)
+      {
+        paramList = localArrayList.iterator();
+        while (paramList.hasNext()) {
+          paramList.next();
+        }
+        paramFile = a.b(paramClassLoader, "dexElementsSuppressedExceptions");
+        localObject = (IOException[])paramFile.get(paramClassLoader);
+        if (localObject != null) {
+          break label167;
+        }
+        paramList = (IOException[])localArrayList.toArray(new IOException[localArrayList.size()]);
+      }
+      for (;;)
+      {
+        paramFile.set(paramClassLoader, paramList);
+        return;
+        label167:
+        paramList = new IOException[localArrayList.size() + localObject.length];
+        localArrayList.toArray(paramList);
+        System.arraycopy(localObject, 0, paramList, localArrayList.size(), localObject.length);
+      }
+    }
+  }
+  
+  static final class c
+  {
+    static void install(ClassLoader paramClassLoader, List<File> paramList)
+    {
+      int i = paramList.size();
+      Field localField = a.b(paramClassLoader, "path");
+      StringBuilder localStringBuilder = new StringBuilder((String)localField.get(paramClassLoader));
+      String[] arrayOfString = new String[i];
+      File[] arrayOfFile = new File[i];
+      ZipFile[] arrayOfZipFile = new ZipFile[i];
+      DexFile[] arrayOfDexFile = new DexFile[i];
+      paramList = paramList.listIterator();
+      while (paramList.hasNext())
+      {
+        File localFile = (File)paramList.next();
+        String str = localFile.getAbsolutePath();
+        localStringBuilder.append(':').append(str);
+        i = paramList.previousIndex();
+        arrayOfString[i] = str;
+        arrayOfFile[i] = localFile;
+        arrayOfZipFile[i] = new ZipFile(localFile);
+        arrayOfDexFile[i] = DexFile.loadDex(str, str + ".dex", 0);
+      }
+      localField.set(paramClassLoader, localStringBuilder.toString());
+      a.a(paramClassLoader, "mPaths", arrayOfString);
+      a.a(paramClassLoader, "mFiles", arrayOfFile);
+      a.a(paramClassLoader, "mZips", arrayOfZipFile);
+      a.a(paramClassLoader, "mDexs", arrayOfDexFile);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.multidex.a
  * JD-Core Version:    0.7.0.1
  */

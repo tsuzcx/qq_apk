@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.brandservice.ui.b;
 
-import a.l;
 import android.graphics.Paint.Style;
 import android.text.TextPaint;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMNeat7extView;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/brandservice/ui/util/BizTimeLineViewUtil;", "", "()V", "setTextViewBold", "", "textView", "Landroid/widget/TextView;", "width", "", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "plugin-brandservice_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/util/BizTimeLineViewUtil;", "", "()V", "setTextViewBold", "", "textView", "Landroid/widget/TextView;", "width", "", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "plugin-brandservice_release"})
 public final class d
 {
-  public static final d kiX;
+  public static final d nmK;
   
   static
   {
-    AppMethodBeat.i(152987);
-    kiX = new d();
-    AppMethodBeat.o(152987);
+    AppMethodBeat.i(7364);
+    nmK = new d();
+    AppMethodBeat.o(7364);
   }
   
   public static void a(MMNeat7extView paramMMNeat7extView)
   {
-    AppMethodBeat.i(152985);
+    AppMethodBeat.i(7362);
     if (paramMMNeat7extView != null)
     {
       TextPaint localTextPaint = paramMMNeat7extView.getPaint();
@@ -35,16 +35,16 @@ public final class d
       if (paramMMNeat7extView != null)
       {
         paramMMNeat7extView.setStrokeWidth(0.8F);
-        AppMethodBeat.o(152985);
+        AppMethodBeat.o(7362);
         return;
       }
     }
-    AppMethodBeat.o(152985);
+    AppMethodBeat.o(7362);
   }
   
-  public static void g(TextView paramTextView)
+  public static void i(TextView paramTextView)
   {
-    AppMethodBeat.i(152986);
+    AppMethodBeat.i(7363);
     if (paramTextView != null)
     {
       TextPaint localTextPaint = paramTextView.getPaint();
@@ -58,11 +58,11 @@ public final class d
       if (paramTextView != null)
       {
         paramTextView.setStrokeWidth(0.8F);
-        AppMethodBeat.o(152986);
+        AppMethodBeat.o(7363);
         return;
       }
     }
-    AppMethodBeat.o(152986);
+    AppMethodBeat.o(7363);
   }
 }
 

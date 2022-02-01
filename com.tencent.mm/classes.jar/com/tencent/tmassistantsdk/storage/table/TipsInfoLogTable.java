@@ -14,12 +14,12 @@ public class TipsInfoLogTable
   {
     try
     {
-      AppMethodBeat.i(76209);
+      AppMethodBeat.i(102455);
       if (mInstance == null) {
         mInstance = new TipsInfoLogTable();
       }
       TipsInfoLogTable localTipsInfoLogTable = mInstance;
-      AppMethodBeat.o(76209);
+      AppMethodBeat.o(102455);
       return localTipsInfoLogTable;
     }
     finally {}
@@ -27,14 +27,14 @@ public class TipsInfoLogTable
   
   protected String[] getAlterSQL(int paramInt)
   {
-    AppMethodBeat.i(76210);
+    AppMethodBeat.i(102456);
     if (paramInt > 1)
     {
       String str = getCreateTableSQL();
-      AppMethodBeat.o(76210);
+      AppMethodBeat.o(102456);
       return new String[] { str };
     }
-    AppMethodBeat.o(76210);
+    AppMethodBeat.o(102456);
     return null;
   }
   
@@ -55,7 +55,7 @@ public class TipsInfoLogTable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.table.TipsInfoLogTable
  * JD-Core Version:    0.7.0.1
  */

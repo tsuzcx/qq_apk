@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:color="@color/td" />
-    <item android:state_enabled="false" android:color="@color/s4" />
-    <item android:color="@color/tc" />
-</selector>
+    <item android:drawable="@color/a_r" />
+    <item android:drawable="@drawable/amv" android:left="@dimen/ad4" />
+</layer-list>

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="right" android:layout_gravity="right" style="@style/gf"
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ar0" android:background="@drawable/k6" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gh">
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:id="@id/au6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/fu" android:includeFontPadding="false" />
-        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/au5" android:background="@raw/voip_voicecall" style="@style/gu" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/glm" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:layout_width="@dimen/hz" android:layout_height="@dimen/hz" android:src="@raw/chatting_fast_entrance_video" android:contentDescription="@string/uo" />
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ju" android:text="@string/t2" />
     </LinearLayout>
-    <include layout="@layout/m2" style="@style/gc" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/si" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ju">
+        <ImageView android:layout_width="@dimen/hz" android:layout_height="@dimen/hz" android:src="@raw/chatting_fast_entrance_voice" android:contentDescription="@string/uo" />
+        <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ju" android:text="@string/t4" />
+    </LinearLayout>
 </LinearLayout>

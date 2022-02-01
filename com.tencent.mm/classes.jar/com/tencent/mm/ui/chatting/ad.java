@@ -4,32 +4,33 @@ import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.view.View;
 import android.widget.ListView;
+import com.tencent.mm.ui.chatting.g.d.a;
 
 public abstract interface ad
 {
-  public abstract void Pu(int paramInt);
+  public abstract void YA(int paramInt);
   
-  public abstract void Pv(int paramInt);
+  public abstract void Yz(int paramInt);
   
-  public abstract void aWN();
+  public abstract void a(d.a parama);
   
   public abstract void addHeaderView(View paramView);
   
-  public abstract void ak(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void b(Context paramContext, String paramString, DialogInterface.OnCancelListener paramOnCancelListener);
   
-  public abstract void bJ(int paramInt);
+  public abstract void bCM();
   
-  public abstract void c(Context paramContext, String paramString, DialogInterface.OnCancelListener paramOnCancelListener);
-  
-  public abstract void dGI();
-  
-  public abstract void dGJ();
-  
-  public abstract void dGN();
-  
-  public abstract void dGO();
+  public abstract void ca(int paramInt);
   
   public abstract void dismissDialog();
+  
+  public abstract void eVO();
+  
+  public abstract void eVP();
+  
+  public abstract void eVT();
+  
+  public abstract void eVU();
   
   public abstract View getChildAt(int paramInt);
   
@@ -41,11 +42,9 @@ public abstract interface ad
   
   public abstract ListView getListView();
   
-  public abstract void hF(int paramInt1, int paramInt2);
-  
   public abstract boolean hideVKB();
   
-  public abstract void qT(boolean paramBoolean);
+  public abstract void jt(int paramInt1, int paramInt2);
   
   public abstract boolean removeOptionMenu(int paramInt);
   
@@ -55,13 +54,13 @@ public abstract interface ad
   
   public abstract void showOptionMenu(boolean paramBoolean);
   
-  public abstract void showVKB();
-  
   public abstract void updateOptionMenuIcon(int paramInt1, int paramInt2);
+  
+  public abstract void wc(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ad
  * JD-Core Version:    0.7.0.1
  */

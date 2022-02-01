@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
-import com.tencent.mm.plugin.appbrand.jsapi.u;
+import com.tencent.mm.plugin.appbrand.jsapi.y;
 
 public final class h
-  extends u<com.tencent.mm.plugin.appbrand.jsapi.h>
+  extends y<com.tencent.mm.plugin.appbrand.jsapi.h>
 {
   public static final int CTRL_INDEX = 113;
   public static final String NAME = "getStorageInfoSync";

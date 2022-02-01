@@ -1,72 +1,164 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import a.f.b.j;
-import a.l;
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.os.RemoteException;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
+import com.tencent.mm.plugin.appbrand.g.d;
+import com.tencent.mm.plugin.appbrand.widget.actionbar.f;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.ai;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIAccountReleaseHandler;", "", "()V", "TAG", "", "processForegroundImportance", "", "", "[Ljava/lang/Integer;", "handleAccountRelease", "", "activity", "Landroid/app/Activity;", "finishHandler", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandTaskUIController$FinishAllHandler;", "plugin-appbrand-integration_release"})
-public final class i
+@SuppressLint({"ViewConstructor"})
+class i
+  extends com.tencent.mm.ui.statusbar.b
+  implements v, w
 {
-  private static final Integer[] iPj;
-  public static final i iPk;
+  private AppBrandRuntime iGV;
+  private WxaAttributes.WxaVersionInfo jfa;
+  private f lAl;
+  private d.g.a.a<y> lAm;
   
-  static
+  public i(Context paramContext, AppBrandRuntime paramAppBrandRuntime, WxaAttributes.WxaVersionInfo paramWxaVersionInfo)
   {
-    AppMethodBeat.i(135001);
-    iPk = new i();
-    iPj = new Integer[] { Integer.valueOf(100), Integer.valueOf(200) };
-    AppMethodBeat.o(135001);
+    super(paramContext);
+    AppMethodBeat.i(147671);
+    this.iGV = paramAppBrandRuntime;
+    this.jfa = paramWxaVersionInfo;
+    setBackgroundColor(getResources().getColor(2131099650));
+    this.lAl = new ab(paramContext);
+    this.lAl.setBackgroundColor(com.tencent.mm.cd.a.n(paramContext, 2131101053));
+    addView(this.lAl.getActionView());
+    bob();
+    AppMethodBeat.o(147671);
   }
   
-  public static void a(Activity paramActivity, com.tencent.mm.plugin.appbrand.task.i.a parama)
+  protected final void a(String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
-    AppMethodBeat.i(135000);
-    j.q(paramActivity, "activity");
-    j.q(parama, "finishHandler");
-    try
+    AppMethodBeat.i(196187);
+    this.lAl.setMainTitle(paramString1);
+    this.lAl.setForegroundStyle(paramString2);
+    this.lAl.setLoadingIconVisibility(true);
+    this.lAl.setForegroundColor(paramInt2);
+    L(paramInt1, "black".equals(paramString2));
+    AppMethodBeat.o(196187);
+  }
+  
+  public final void bhu()
+  {
+    AppMethodBeat.i(147673);
+    post(new Runnable()
     {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = new ActivityManager.RunningAppProcessInfo();
-      ActivityManager.getMyMemoryState(localRunningAppProcessInfo);
-      parama = new i.a(parama, paramActivity);
-      if ((localRunningAppProcessInfo == null) || (!org.apache.commons.b.a.contains(iPj, Integer.valueOf(localRunningAppProcessInfo.importance))))
+      public final void run()
       {
-        paramActivity = new StringBuilder("finish directly importance[");
-        if (localRunningAppProcessInfo != null)
+        AppMethodBeat.i(147670);
+        i.this.setVisibility(8);
+        if (i.this.getParent() != null) {
+          ((ViewGroup)i.this.getParent()).removeView(i.this);
+        }
+        i.c(i.this).destroy();
+        AppMethodBeat.o(147670);
+      }
+    });
+    AppMethodBeat.o(147673);
+  }
+  
+  protected void bob()
+  {
+    AppMethodBeat.i(196186);
+    this.lAl.hd(false);
+    Object localObject = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(147669);
+        if (i.a(i.this) != null)
         {
-          i = localRunningAppProcessInfo.importance;
-          ab.i("MicroMsg.AppBrandUIAccountReleaseHandler", i + ']');
-          parama.ate();
-          AppMethodBeat.o(135000);
+          com.tencent.mm.plugin.appbrand.g.a(i.a(i.this).mAppId, g.d.iDc);
+          i.a(i.this).finish();
+          AppMethodBeat.o(147669);
           return;
         }
+        if (i.b(i.this) != null) {
+          i.b(i.this).invoke();
+        }
+        AppMethodBeat.o(147669);
       }
-    }
-    catch (RemoteException localRemoteException)
+    };
+    this.lAl.setCloseButtonClickListener((View.OnClickListener)localObject);
+    this.lAl.setBackButtonClickListener((View.OnClickListener)localObject);
+    int m = getContext().getResources().getColor(2131099650);
+    int i = getContext().getResources().getColor(2131100711);
+    localObject = "white";
+    int j = m;
+    int k = i;
+    if (this.jfa != null)
     {
-      for (;;)
-      {
-        Object localObject = null;
-        continue;
-        int i = -1;
+      if (!ai.Eq()) {
+        break label205;
       }
-      parama = (AppBrandProxyUIProcessTask.b)new i.b(parama);
-      com.tencent.mm.plugin.appbrand.ipc.a.a((Context)paramActivity, (AppBrandProxyUIProcessTask.ProcessRequest)new AccountReleaseProxyUILaunchRequest(), parama, new Intent().addFlags(67108864));
-      AppMethodBeat.o(135000);
+      j = m;
+      if (!bt.isNullOrNil(this.jfa.jfL)) {
+        j = com.tencent.mm.plugin.appbrand.aa.g.bY(this.jfa.jfL, getContext().getResources().getColor(2131099650));
+      }
+      if (!bt.isNullOrNil(this.jfa.jfK)) {
+        i = com.tencent.mm.plugin.appbrand.aa.g.bY(this.jfa.jfK, getContext().getResources().getColor(2131100711));
+      }
+      localObject = "white";
     }
+    for (k = i;; k = i)
+    {
+      a(getContext().getString(2131755293), j, (String)localObject, k);
+      tc(j);
+      AppMethodBeat.o(196186);
+      return;
+      label205:
+      j = m;
+      if (!bt.isNullOrNil(this.jfa.jfJ)) {
+        j = com.tencent.mm.plugin.appbrand.aa.g.bY(this.jfa.jfJ, getContext().getResources().getColor(2131099650));
+      }
+      if (!bt.isNullOrNil(this.jfa.jfI)) {
+        i = com.tencent.mm.plugin.appbrand.aa.g.bY(this.jfa.jfI, getContext().getResources().getColor(2131100711));
+      }
+      localObject = "black";
+    }
+  }
+  
+  public final void dB(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(147672);
+    this.lAl.setMainTitle(getContext().getString(2131755293));
+    AppMethodBeat.o(147672);
+  }
+  
+  public View getView()
+  {
+    return this;
+  }
+  
+  public final void q(d.g.a.a<y> parama)
+  {
+    this.lAm = parama;
+  }
+  
+  public void setProgress(int paramInt) {}
+  
+  public final void tc(int paramInt)
+  {
+    AppMethodBeat.i(147674);
+    setBackgroundColor(android.support.v4.graphics.b.o(paramInt, getContext().getResources().getColor(2131099650)));
+    AppMethodBeat.o(147674);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.i
  * JD-Core Version:    0.7.0.1
  */

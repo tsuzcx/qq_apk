@@ -1,36 +1,101 @@
 package com.tencent.mm.plugin.luckymoney.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.j.b;
-import com.tencent.mm.g.c.bb;
+import com.tencent.mm.plugin.luckymoney.model.l;
+import com.tencent.mm.protocal.protobuf.cib;
+import com.tencent.mm.protocal.protobuf.cic;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class b
 {
-  public static void a(StringBuilder paramStringBuilder, bb parambb, int paramInt)
+  private static Map<String, l> sXH;
+  private static Map<String, cic> sXI;
+  private static Map<Long, cib> sXJ;
+  
+  static
   {
-    AppMethodBeat.i(146040);
-    if (parambb == null)
+    AppMethodBeat.i(168789);
+    sXH = new HashMap();
+    sXI = new HashMap();
+    sXJ = new HashMap();
+    AppMethodBeat.o(168789);
+  }
+  
+  public static void a(Long paramLong, cib paramcib)
+  {
+    AppMethodBeat.i(168785);
+    sXJ.put(paramLong, paramcib);
+    AppMethodBeat.o(168785);
+  }
+  
+  public static void a(String paramString, l paraml)
+  {
+    AppMethodBeat.i(168781);
+    sXH.put(paramString, paraml);
+    AppMethodBeat.o(168781);
+  }
+  
+  public static void a(String paramString, cic paramcic)
+  {
+    AppMethodBeat.i(168783);
+    sXI.put(paramString, paramcic);
+    AppMethodBeat.o(168783);
+  }
+  
+  public static l afi(String paramString)
+  {
+    AppMethodBeat.i(168782);
+    if (bt.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(146040);
-      return;
+      AppMethodBeat.o(168782);
+      return null;
     }
-    paramStringBuilder.append("<emoji>");
-    paramStringBuilder.append("<localreceivestatus>").append(paramInt).append("</localreceivestatus>");
-    paramStringBuilder.append("<md5>").append(j.b.mZ(parambb.field_md5)).append("</md5>");
-    paramStringBuilder.append("<type>").append(parambb.field_type).append("</type>");
-    paramStringBuilder.append("<width>").append(parambb.field_width).append("</width>");
-    paramStringBuilder.append("<height>").append(parambb.field_height).append("</height>");
-    paramStringBuilder.append("<len>").append(parambb.field_size).append("</len>");
-    paramStringBuilder.append("<aeskey>").append(j.b.mZ(parambb.field_aeskey)).append("</aeskey>");
-    paramStringBuilder.append("<cdnurl>").append(j.b.mZ(parambb.field_cdnUrl)).append("</cdnurl>");
-    paramStringBuilder.append("<encrypturl>").append(j.b.mZ(parambb.field_encrypturl)).append("</encrypturl>");
-    paramStringBuilder.append("<externurl>").append(j.b.mZ(parambb.field_externUrl)).append("</externurl>");
-    paramStringBuilder.append("<externmd5>").append(j.b.mZ(parambb.field_externMd5)).append("</externmd5>");
-    paramStringBuilder.append("<productid>").append(j.b.mZ(parambb.field_groupId)).append("</productid>");
-    paramStringBuilder.append("<designerid>").append(j.b.mZ(parambb.field_designerID)).append("</designerid>");
-    paramStringBuilder.append("<attachedtext>").append(j.b.mZ(parambb.field_attachedText)).append("</attachedtext>");
-    paramStringBuilder.append("</emoji>");
-    AppMethodBeat.o(146040);
+    paramString = (l)sXH.get(paramString);
+    AppMethodBeat.o(168782);
+    return paramString;
+  }
+  
+  public static cic afj(String paramString)
+  {
+    AppMethodBeat.i(168784);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(168784);
+      return null;
+    }
+    paramString = (cic)sXI.get(paramString);
+    AppMethodBeat.o(168784);
+    return paramString;
+  }
+  
+  public static void cKL()
+  {
+    AppMethodBeat.i(168788);
+    sXJ.clear();
+    AppMethodBeat.o(168788);
+  }
+  
+  public static void clear()
+  {
+    AppMethodBeat.i(168787);
+    sXH.clear();
+    sXI.clear();
+    AppMethodBeat.o(168787);
+  }
+  
+  public static cib d(Long paramLong)
+  {
+    AppMethodBeat.i(168786);
+    if (paramLong == null)
+    {
+      AppMethodBeat.o(168786);
+      return null;
+    }
+    paramLong = (cib)sXJ.get(paramLong);
+    AppMethodBeat.o(168786);
+    return paramLong;
   }
 }
 

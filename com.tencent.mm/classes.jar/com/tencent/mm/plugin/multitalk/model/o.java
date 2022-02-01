@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.multitalk.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.aa;
+import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bfn;
-import com.tencent.mm.protocal.protobuf.bfo;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.bsk;
+import com.tencent.mm.protocal.protobuf.bsl;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class o
-  extends m
+  extends n
   implements k
 {
-  byte[] cLl;
-  private f callback;
-  int lCr;
+  private g callback;
+  byte[] dCi;
   int mCmdId;
+  int oTd;
   private final b rr;
   
   public o(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(54085);
-    this.lCr = paramInt1;
+    AppMethodBeat.i(114616);
+    this.oTd = paramInt1;
     this.mCmdId = paramInt2;
     b.a locala = new b.a();
-    locala.fsX = new bfn();
-    locala.fsY = new bfo();
+    locala.gUU = new bsk();
+    locala.gUV = new bsl();
     String str;
     switch (paramInt2)
     {
@@ -52,14 +52,14 @@ public final class o
     }
     for (;;)
     {
-      ab.i("MicroMsg.MT.NetSceneMultiTalk", "netSceneMultiTalk cmdid %d cgiName %s", new Object[] { Integer.valueOf(paramInt2), str });
+      ad.i("MicroMsg.MT.NetSceneMultiTalk", "netSceneMultiTalk cmdid %d cgiName %s", new Object[] { Integer.valueOf(paramInt2), str });
       locala.uri = str;
       locala.funcId = this.mCmdId;
       locala.reqCmdId = 0;
       locala.respCmdId = 0;
-      this.rr = locala.ado();
-      ((bfn)this.rr.fsV.fta).wtq = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
-      AppMethodBeat.o(54085);
+      this.rr = locala.atI();
+      ((bsk)this.rr.gUS.gUX).CCV = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
+      AppMethodBeat.o(114616);
       return;
       str = "/cgi-bin/qcwxmultitalk-bin/createtalkroom";
       continue;
@@ -87,12 +87,12 @@ public final class o
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(54086);
-    this.callback = paramf;
+    AppMethodBeat.i(114617);
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(54086);
+    AppMethodBeat.o(114617);
     return i;
   }
   
@@ -103,11 +103,11 @@ public final class o
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(54087);
-    ab.d("MicroMsg.MT.NetSceneMultiTalk", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " " + this.mCmdId);
-    this.cLl = aa.a(((bfo)((b)paramq).fsW.fta).wtq);
+    AppMethodBeat.i(114618);
+    ad.d("MicroMsg.MT.NetSceneMultiTalk", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3 + " " + this.mCmdId);
+    this.dCi = z.a(((bsl)((b)paramq).gUT.gUX).CCV);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(54087);
+    AppMethodBeat.o(114618);
   }
 }
 

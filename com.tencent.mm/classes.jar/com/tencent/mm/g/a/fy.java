@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class fy
   extends b
 {
-  public a cuq;
+  public a diT;
+  public b diU;
   
   public fy()
   {
@@ -15,25 +16,27 @@ public final class fy
   
   private fy(byte paramByte)
   {
-    AppMethodBeat.i(56559);
-    this.cuq = new a();
-    this.ymq = false;
+    AppMethodBeat.i(116024);
+    this.diT = new a();
+    this.diU = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(56559);
+    AppMethodBeat.o(116024);
   }
   
   public static final class a
   {
-    public String cnI;
-    public String cnJ;
-    public int cnK;
-    public boolean isKinda = false;
-    public int type;
+    public String fileName;
+  }
+  
+  public static final class b
+  {
+    public long msgId = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.fy
  * JD-Core Version:    0.7.0.1
  */

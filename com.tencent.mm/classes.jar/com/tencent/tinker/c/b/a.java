@@ -1,41 +1,54 @@
 package com.tencent.tinker.c.b;
 
-import java.io.Closeable;
-import java.util.zip.ZipFile;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.zip.CRC32;
 
 public final class a
 {
-  public static void V(Object paramObject)
+  private static long T(InputStream paramInputStream)
   {
-    if (paramObject == null) {}
+    CRC32 localCRC32 = new CRC32();
+    byte[] arrayOfByte = new byte[4096];
     for (;;)
     {
-      return;
+      int i = paramInputStream.read(arrayOfByte);
+      if (i <= 0) {
+        break;
+      }
+      localCRC32.update(arrayOfByte, 0, i);
+    }
+    return localCRC32.getValue();
+  }
+  
+  public static long V(File paramFile)
+  {
+    try
+    {
+      BufferedInputStream localBufferedInputStream = new BufferedInputStream(new FileInputStream(paramFile));
+      long l;
+      b.closeQuietly(localBufferedInputStream);
+    }
+    finally
+    {
       try
       {
-        if ((paramObject instanceof Closeable))
-        {
-          ((Closeable)paramObject).close();
-          return;
-        }
-        if ((paramObject instanceof AutoCloseable))
-        {
-          ((AutoCloseable)paramObject).close();
-          return;
-        }
-        if ((paramObject instanceof ZipFile))
-        {
-          ((ZipFile)paramObject).close();
-          return;
-        }
+        l = T(localBufferedInputStream);
+        b.closeQuietly(localBufferedInputStream);
+        return l;
       }
-      catch (Throwable paramObject) {}
+      finally {}
+      paramFile = finally;
+      localBufferedInputStream = null;
     }
+    throw paramFile;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.c.b.a
  * JD-Core Version:    0.7.0.1
  */

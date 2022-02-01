@@ -13,28 +13,28 @@ public class c$a
   
   public c$a(c paramc)
   {
-    AppMethodBeat.i(66831);
+    AppMethodBeat.i(15269);
     this.b = new HashMap();
     this.a = new WeakReference(paramc);
-    AppMethodBeat.o(66831);
+    AppMethodBeat.o(15269);
   }
   
   public String a()
   {
-    AppMethodBeat.i(66833);
+    AppMethodBeat.i(15271);
     Iterator localIterator = this.b.keySet().iterator();
     String str2;
     for (String str1 = ""; localIterator.hasNext(); str1 = str1 + str2 + ":" + (String)this.b.get(str2) + " ") {
       str2 = (String)localIterator.next();
     }
     str1 = "{" + str1 + "}";
-    AppMethodBeat.o(66833);
+    AppMethodBeat.o(15271);
     return str1;
   }
   
   public void a(String paramString, int paramInt)
   {
-    AppMethodBeat.i(66832);
+    AppMethodBeat.i(15270);
     this.b.put(paramString, String.valueOf(paramInt));
     paramString = (c)this.a.get();
     if (paramString != null)
@@ -44,12 +44,12 @@ public class c$a
         paramString.setStatusValue(3001, a());
       }
     }
-    AppMethodBeat.o(66832);
+    AppMethodBeat.o(15270);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.beauty.c.a
  * JD-Core Version:    0.7.0.1
  */

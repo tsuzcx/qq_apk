@@ -14,72 +14,72 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RemarkInfoPreference
   extends Preference
 {
-  private MMActivity cmc;
-  private ImageView iQd;
-  private TextView pAD;
-  private boolean pCB;
+  private ImageView fxT;
+  private MMActivity imP;
   private String summary;
   private String title;
   private TextView titleTv;
+  private TextView uCm;
+  private boolean uEt;
   
   public RemarkInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(23761);
-    this.pCB = false;
-    this.cmc = ((MMActivity)paramContext);
-    AppMethodBeat.o(23761);
+    AppMethodBeat.i(27387);
+    this.uEt = false;
+    this.imP = ((MMActivity)paramContext);
+    AppMethodBeat.o(27387);
   }
   
   public RemarkInfoPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(23762);
-    this.pCB = false;
-    setLayoutResource(2130970179);
-    setWidgetLayoutResource(2130970254);
-    AppMethodBeat.o(23762);
+    AppMethodBeat.i(27388);
+    this.uEt = false;
+    setLayoutResource(2131494804);
+    setWidgetLayoutResource(2131494884);
+    AppMethodBeat.o(27388);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(23764);
-    this.titleTv = ((TextView)paramView.findViewById(2131820680));
-    this.pAD = ((TextView)paramView.findViewById(2131821890));
-    this.iQd = ((ImageView)paramView.findViewById(2131822243));
-    if (!this.pCB) {
-      this.iQd.setVisibility(8);
+    AppMethodBeat.i(27390);
+    this.titleTv = ((TextView)paramView.findViewById(2131305902));
+    this.uCm = ((TextView)paramView.findViewById(2131305546));
+    this.fxT = ((ImageView)paramView.findViewById(2131300943));
+    if (!this.uEt) {
+      this.fxT.setVisibility(8);
     }
     for (;;)
     {
       if (this.titleTv != null) {
         this.titleTv.setText(this.title);
       }
-      if (this.pAD != null) {
-        this.pAD.setText(this.summary);
+      if (this.uCm != null) {
+        this.uCm.setText(this.summary);
       }
       super.onBindView(paramView);
-      AppMethodBeat.o(23764);
+      AppMethodBeat.o(27390);
       return;
-      this.iQd.setVisibility(0);
+      this.fxT.setVisibility(0);
     }
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(23763);
+    AppMethodBeat.i(27389);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130970217, localViewGroup);
-    AppMethodBeat.o(23763);
+    localLayoutInflater.inflate(2131494844, localViewGroup);
+    AppMethodBeat.o(27389);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.RemarkInfoPreference
  * JD-Core Version:    0.7.0.1
  */

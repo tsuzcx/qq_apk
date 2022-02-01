@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.kinda.gen.KListViewCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class MMListViewAdapter
   extends BaseAdapter
@@ -23,9 +23,9 @@ public class MMListViewAdapter
   
   public int getCount()
   {
-    AppMethodBeat.i(145118);
+    AppMethodBeat.i(19282);
     int i = this.mListViewCallback.getCount();
-    AppMethodBeat.o(145118);
+    AppMethodBeat.o(19282);
     return i;
   }
   
@@ -41,17 +41,17 @@ public class MMListViewAdapter
   
   public int getItemViewType(int paramInt)
   {
-    AppMethodBeat.i(145119);
+    AppMethodBeat.i(19283);
     paramInt = this.mListViewCallback.getViewType(paramInt);
-    AppMethodBeat.o(145119);
+    AppMethodBeat.o(19283);
     return paramInt;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     paramViewGroup = null;
-    AppMethodBeat.i(145121);
-    ab.i("MicroMsg.MMListViewAdapter", "getView %s %s", new Object[] { Integer.valueOf(paramInt), paramView });
+    AppMethodBeat.i(19285);
+    ad.i("MicroMsg.MMListViewAdapter", "getView %s %s", new Object[] { Integer.valueOf(paramInt), paramView });
     if (paramView != null) {}
     for (paramView = (MMKViewLayout)paramView.getTag();; paramView = null)
     {
@@ -65,7 +65,7 @@ public class MMListViewAdapter
         paramViewGroup = (MMKView)paramView;
         paramViewGroup.getView().setTag(paramView);
         paramView = paramViewGroup.getView();
-        AppMethodBeat.o(145121);
+        AppMethodBeat.o(19285);
         return paramView;
       }
     }
@@ -73,9 +73,9 @@ public class MMListViewAdapter
   
   public int getViewTypeCount()
   {
-    AppMethodBeat.i(145120);
+    AppMethodBeat.i(19284);
     int i = this.mListViewCallback.getViewTypeCount();
-    AppMethodBeat.o(145120);
+    AppMethodBeat.o(19284);
     return i;
   }
 }

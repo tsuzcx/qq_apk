@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.os.Binder;
 import android.util.Log;
 import com.google.android.gms.common.data.DataHolder;
+import com.google.android.gms.common.util.l;
 import com.google.android.gms.wearable.internal.an;
 import com.google.android.gms.wearable.internal.ca;
 import com.google.android.gms.wearable.internal.zzbz;
@@ -17,30 +18,30 @@ import java.util.List;
 final class ae
   extends an
 {
-  private volatile int SQ = -1;
+  private volatile int UF = -1;
   
   private ae(WearableListenerService paramWearableListenerService) {}
   
   private boolean a(Runnable paramRunnable, String arg2, Object paramObject)
   {
     if (Log.isLoggable("WearableLS", 3)) {
-      Log.d("WearableLS", String.format("%s: %s %s", new Object[] { ???, WearableListenerService.a(this.SP).toString(), paramObject }));
+      Log.d("WearableLS", String.format("%s: %s %s", new Object[] { ???, WearableListenerService.a(this.UE).toString(), paramObject }));
     }
     int i = Binder.getCallingUid();
-    if (i == this.SQ) {
+    if (i == this.UF) {
       i = 1;
     }
     while (i == 0)
     {
       return false;
-      if ((ca.v(this.SP).y("com.google.android.wearable.app.cn")) && (com.google.android.gms.common.util.k.b(this.SP, i, "com.google.android.wearable.app.cn")))
+      if ((ca.w(this.UE).y("com.google.android.wearable.app.cn")) && (l.b(this.UE, i, "com.google.android.wearable.app.cn")))
       {
-        this.SQ = i;
+        this.UF = i;
         i = 1;
       }
-      else if (com.google.android.gms.common.util.k.h(this.SP, i))
+      else if (l.h(this.UE, i))
       {
-        this.SQ = i;
+        this.UF = i;
         i = 1;
       }
       else
@@ -49,13 +50,13 @@ final class ae
         i = 0;
       }
     }
-    synchronized (WearableListenerService.c(this.SP))
+    synchronized (WearableListenerService.c(this.UE))
     {
-      if (WearableListenerService.d(this.SP)) {
+      if (WearableListenerService.d(this.UE)) {
         return false;
       }
     }
-    WearableListenerService.e(this.SP).post(paramRunnable);
+    WearableListenerService.e(this.UE).post(paramRunnable);
     return true;
   }
   
@@ -68,7 +69,7 @@ final class ae
         k localk = new k(paramDataHolder);
         try
         {
-          ae.this.SP.a(localk);
+          ae.this.UE.a(localk);
           return;
         }
         finally
@@ -97,7 +98,7 @@ final class ae
     {
       public final void run()
       {
-        ae.this.SP.a(paramzzbz);
+        ae.this.UE.a(paramzzbz);
       }
     }, "onMessageReceived", paramzzbz);
   }
@@ -108,7 +109,7 @@ final class ae
     {
       public final void run()
       {
-        ae.this.SP.kA();
+        ae.this.UE.kJ();
       }
     }, "onPeerConnected", paramzzcc);
   }
@@ -143,7 +144,7 @@ final class ae
     {
       public final void run()
       {
-        paramzzs.a(ae.this.SP);
+        paramzzs.a(ae.this.UE);
       }
     }, "onChannelEvent", paramzzs);
   }
@@ -154,7 +155,7 @@ final class ae
     {
       public final void run()
       {
-        ae.this.SP.kB();
+        ae.this.UE.kK();
       }
     }, "onPeerDisconnected", paramzzcc);
   }

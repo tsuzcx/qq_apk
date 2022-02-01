@@ -6,7 +6,7 @@ import android.os.Message;
 final class ak
   implements Handler.Callback
 {
-  private final aj bgC;
+  private final aj bEB;
   
   ak(aj arg1) {}
   

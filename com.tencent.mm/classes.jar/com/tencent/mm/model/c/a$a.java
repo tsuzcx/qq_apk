@@ -8,20 +8,20 @@ import java.util.List;
 
 public final class a$a
 {
-  public List<a> foQ;
-  public List<c> items;
+  public List<c> gQr;
+  public List<a> gQs;
   
   public a$a()
   {
-    AppMethodBeat.i(118155);
-    this.items = new LinkedList();
-    this.foQ = new LinkedList();
-    AppMethodBeat.o(118155);
+    AppMethodBeat.i(153104);
+    this.gQr = new LinkedList();
+    this.gQs = new LinkedList();
+    AppMethodBeat.o(153104);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.c.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.downloader_app.ui.TaskManagerHeaderView android:id="@id/adc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.plugin.downloader_app.ui.DeleteTaskFooterView android:id="@id/bcw" android:background="@color/a6q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <com.tencent.mm.plugin.downloader_app.ui.TaskListView android:id="@id/lo" android:background="@color/mw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/bcw" android:layout_below="@id/adc" />
-    <ViewStub android:id="@id/bcx" android:layout="@layout/akh" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/uz" android:layout="@layout/tm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>
+<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/a1u" app:layout_constraintDimensionRatio="366:205" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" style="@style/ff" />
+    <android.support.constraint.Barrier android:id="@id/a1q" android:layout_width="wrap_content" android:layout_height="wrap_content" app:barrierDirection="gcy" app:constraint_referenced_ids="biz_slot_show_desc_tv,biz_slot_title_neat_tv" />
+    <include layout="@layout/tm" />
+    <ImageView android:id="@id/a24" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/gx" app:layout_constraintBottom_toTopOf="@id/biz_slot_title_neat_tv" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="@id/a1u" />
+    <TextView android:textSize="@dimen/jv" android:textColor="@color/a_u" android:id="@id/a23" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hk" android:shadowColor="@color/BW_0_Alpha_0_5" android:shadowRadius="10.0" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/a24" />
+</android.support.constraint.ConstraintLayout>

@@ -13,14 +13,18 @@ import java.util.Set;
 
 public class TinkerSoLoader
 {
-  public static boolean a(String paramString, ShareSecurityCheck paramShareSecurityCheck, Intent paramIntent)
+  protected static final String SO_MEAT_FILE = "assets/so_meta.txt";
+  protected static final String SO_PATH = "lib";
+  private static final String TAG = "Tinker.TinkerSoLoader";
+  
+  public static boolean checkComplete(String paramString, ShareSecurityCheck paramShareSecurityCheck, Intent paramIntent)
   {
-    paramShareSecurityCheck = (String)paramShareSecurityCheck.Bwk.get("assets/so_meta.txt");
+    paramShareSecurityCheck = (String)paramShareSecurityCheck.getMetaContentMap().get("assets/so_meta.txt");
     if (paramShareSecurityCheck == null) {
       return true;
     }
     Object localObject1 = new ArrayList();
-    ShareBsDiffPatchInfo.n(paramShareSecurityCheck, (ArrayList)localObject1);
+    ShareBsDiffPatchInfo.parseDiffPatchInfo(paramShareSecurityCheck, (ArrayList)localObject1);
     if (((ArrayList)localObject1).isEmpty()) {
       return true;
     }
@@ -31,18 +35,18 @@ public class TinkerSoLoader
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (ShareBsDiffPatchInfo)((Iterator)localObject1).next();
-      if (!ShareBsDiffPatchInfo.a((ShareBsDiffPatchInfo)localObject2))
+      if (!ShareBsDiffPatchInfo.checkDiffPatchInfo((ShareBsDiffPatchInfo)localObject2))
       {
         paramIntent.putExtra("intent_patch_package_patch_check", -4);
-        ShareIntentUtil.b(paramIntent, -8);
+        ShareIntentUtil.setIntentReturnCode(paramIntent, -8);
         return false;
       }
-      paramShareSecurityCheck.put(((ShareBsDiffPatchInfo)localObject2).path + "/" + ((ShareBsDiffPatchInfo)localObject2).name, ((ShareBsDiffPatchInfo)localObject2).cqq);
+      paramShareSecurityCheck.put(((ShareBsDiffPatchInfo)localObject2).path + "/" + ((ShareBsDiffPatchInfo)localObject2).name, ((ShareBsDiffPatchInfo)localObject2).md5);
     }
     localObject1 = new File(paramString);
     if ((!((File)localObject1).exists()) || (!((File)localObject1).isDirectory()))
     {
-      ShareIntentUtil.b(paramIntent, -17);
+      ShareIntentUtil.setIntentReturnCode(paramIntent, -17);
       return false;
     }
     localObject1 = paramShareSecurityCheck.keySet().iterator();
@@ -50,9 +54,9 @@ public class TinkerSoLoader
     {
       localObject2 = (String)((Iterator)localObject1).next();
       localObject2 = new File(paramString + (String)localObject2);
-      if (!SharePatchFileUtil.an((File)localObject2))
+      if (!SharePatchFileUtil.isLegalFile((File)localObject2))
       {
-        ShareIntentUtil.b(paramIntent, -18);
+        ShareIntentUtil.setIntentReturnCode(paramIntent, -18);
         paramIntent.putExtra("intent_patch_missing_lib_path", ((File)localObject2).getAbsolutePath());
         return false;
       }

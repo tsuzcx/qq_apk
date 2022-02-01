@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/evh" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2" android:layout_weight="1.0"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/a31" android:layout_width="fill_parent" android:layout_height="50.0dip" android:minHeight="50.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/su" android:gravity="bottom|center" android:id="@id/e2f" android:paddingTop="@dimen/l2" android:paddingBottom="@dimen/l2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <TextView android:id="@id/erm" android:paddingLeft="20.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/m3" />
+    <CheckBox android:id="@id/erl" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" />
+</LinearLayout>

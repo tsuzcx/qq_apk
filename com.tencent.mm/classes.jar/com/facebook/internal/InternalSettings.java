@@ -14,13 +14,13 @@ public class InternalSettings
   
   public static boolean isUnityApp()
   {
-    AppMethodBeat.i(72399);
+    AppMethodBeat.i(17835);
     if ((mCustomUserAgent != null) && (mCustomUserAgent.startsWith("Unity.")))
     {
-      AppMethodBeat.o(72399);
+      AppMethodBeat.o(17835);
       return true;
     }
-    AppMethodBeat.o(72399);
+    AppMethodBeat.o(17835);
     return false;
   }
   

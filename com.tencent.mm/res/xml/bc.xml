@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.matrix.MatrixSettingHeaderPreference android:key="matrix_header_pref" android:layout="@layout/an5" android:persistent="false" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="anr_preference" android:persistent="false" android:title="@string/dov" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="startup_preference" android:persistent="false" android:title="@string/dp5" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="jank_preference" android:persistent="false" android:title="@string/doz" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="fps_preference" android:persistent="false" android:title="@string/dox" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="false" android:key="fps_decorator_preference" android:persistent="false" android:title="@string/doy" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="battery_preference" android:persistent="false" android:title="@string/dow" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="thread_preference" android:persistent="false" android:title="@string/dp6" />
+    <com.tencent.mm.ui.matrix.MatrixSettingSeekBarPreference android:key="matrix_jank_seek_bar" android:layout="@layout/an6" android:persistent="false" />
+    <Preference android:key="dump_hprof" android:layout="@layout/aop" android:persistent="false" android:title="@string/dos" />
+    <PreferenceTitleCategory android:key="matrix_dev_wording" android:persistent="false" android:title="@string/dor" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="make_leak_preference" android:persistent="false" android:title="@string/dp2" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="true" android:key="methodBeat_preference" android:persistent="false" android:summary="@string/dp4" android:title="@string/dp3" />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:defaultValue="false" android:key="trace_dev_log_preference" android:persistent="false" android:summary="@string/dp8" android:title="@string/dp7" />
+    <PreferenceCategory />
+</PreferenceScreen>

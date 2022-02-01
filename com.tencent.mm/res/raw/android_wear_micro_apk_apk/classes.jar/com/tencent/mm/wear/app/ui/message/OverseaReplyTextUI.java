@@ -17,7 +17,7 @@ public class OverseaReplyTextUI
     for (paramBundle = paramBundle.getCharSequence("oversea_voice_reply");; paramBundle = null)
     {
       if (paramBundle != null) {
-        h.mc().a(new a(this, paramBundle.toString()));
+        h.mP().a(new a(this, paramBundle.toString()));
       }
       return;
     }

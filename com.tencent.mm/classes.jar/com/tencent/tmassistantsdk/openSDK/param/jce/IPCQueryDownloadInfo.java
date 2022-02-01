@@ -31,7 +31,7 @@ public final class IPCQueryDownloadInfo
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(75997);
+    AppMethodBeat.i(102243);
     this.url = paramJceInputStream.readString(0, true);
     this.savePath = paramJceInputStream.readString(1, false);
     this.state = paramJceInputStream.read(this.state, 2, false);
@@ -39,12 +39,12 @@ public final class IPCQueryDownloadInfo
     this.totalLen = paramJceInputStream.read(this.totalLen, 4, false);
     this.allTaskTotalProgress = paramJceInputStream.read(this.allTaskTotalProgress, 5, false);
     this.allTaskTotalLength = paramJceInputStream.read(this.allTaskTotalLength, 6, false);
-    AppMethodBeat.o(75997);
+    AppMethodBeat.o(102243);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(75996);
+    AppMethodBeat.i(102242);
     paramJceOutputStream.write(this.url, 0);
     if (this.savePath != null) {
       paramJceOutputStream.write(this.savePath, 1);
@@ -54,12 +54,12 @@ public final class IPCQueryDownloadInfo
     paramJceOutputStream.write(this.totalLen, 4);
     paramJceOutputStream.write(this.allTaskTotalProgress, 5);
     paramJceOutputStream.write(this.allTaskTotalLength, 6);
-    AppMethodBeat.o(75996);
+    AppMethodBeat.o(102242);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.IPCQueryDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

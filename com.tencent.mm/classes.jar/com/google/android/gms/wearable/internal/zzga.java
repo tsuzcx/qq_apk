@@ -24,9 +24,9 @@ public final class zzga
   
   static
   {
-    AppMethodBeat.i(71352);
+    AppMethodBeat.i(101335);
     CREATOR = new zzgb();
-    AppMethodBeat.o(71352);
+    AppMethodBeat.o(101335);
   }
   
   @SafeParcelable.Constructor
@@ -38,17 +38,17 @@ public final class zzga
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(71351);
+    AppMethodBeat.i(101334);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 2, this.statusCode);
     SafeParcelWriter.writeInt(paramParcel, 3, this.zzeh);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(71351);
+    AppMethodBeat.o(101334);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzga
  * JD-Core Version:    0.7.0.1
  */

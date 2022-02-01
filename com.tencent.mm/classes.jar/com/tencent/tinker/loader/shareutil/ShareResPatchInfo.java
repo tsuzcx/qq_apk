@@ -12,170 +12,17 @@ import java.util.regex.Pattern;
 
 public class ShareResPatchInfo
 {
-  public String BvZ = null;
-  public String Bwa = null;
-  public ArrayList<String> Bwb = new ArrayList();
-  public ArrayList<String> Bwc = new ArrayList();
-  public ArrayList<String> Bwd = new ArrayList();
-  public HashMap<String, File> Bwe = new HashMap();
-  public ArrayList<String> Bwf = new ArrayList();
-  public HashMap<String, LargeModeInfo> Bwg = new HashMap();
-  public HashSet<Pattern> Bwh = new HashSet();
+  public ArrayList<String> addRes = new ArrayList();
+  public String arscBaseCrc = null;
+  public ArrayList<String> deleteRes = new ArrayList();
+  public HashMap<String, LargeModeInfo> largeModMap = new HashMap();
+  public ArrayList<String> largeModRes = new ArrayList();
+  public ArrayList<String> modRes = new ArrayList();
+  public HashSet<Pattern> patterns = new HashSet();
+  public String resArscMd5 = null;
+  public HashMap<String, File> storeRes = new HashMap();
   
-  public static void a(String paramString, ShareResPatchInfo paramShareResPatchInfo)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return;
-    }
-    String[] arrayOfString = paramString.split("\n");
-    int i = 0;
-    label22:
-    int j;
-    if (i < arrayOfString.length)
-    {
-      paramString = arrayOfString[i];
-      j = i;
-      if (paramString != null)
-      {
-        j = i;
-        if (paramString.length() > 0)
-        {
-          if (!paramString.startsWith("resources_out.zip")) {
-            break label89;
-          }
-          paramString = paramString.split(",", 3);
-          paramShareResPatchInfo.BvZ = paramString[1];
-          paramShareResPatchInfo.Bwa = paramString[2];
-          j = i;
-        }
-      }
-    }
-    label89:
-    label223:
-    do
-    {
-      Object localObject;
-      String str;
-      for (;;)
-      {
-        i = j + 1;
-        break label22;
-        break;
-        if (!paramString.startsWith("pattern:")) {
-          break label223;
-        }
-        j = Integer.parseInt(paramString.split(":", 2)[1]);
-        while (j > 0)
-        {
-          localObject = paramShareResPatchInfo.Bwh;
-          str = arrayOfString[(i + 1)];
-          paramString = str;
-          if (str.contains(".")) {
-            paramString = str.replaceAll("\\.", "\\\\.");
-          }
-          str = paramString;
-          if (paramString.contains("?")) {
-            str = paramString.replaceAll("\\?", "\\.");
-          }
-          paramString = str;
-          if (str.contains("*")) {
-            paramString = str.replace("*", ".*");
-          }
-          ((HashSet)localObject).add(Pattern.compile(paramString));
-          i += 1;
-          j -= 1;
-        }
-        j = i;
-      }
-      if (paramString.startsWith("add:"))
-      {
-        k = Integer.parseInt(paramString.split(":", 2)[1]);
-        for (;;)
-        {
-          j = i;
-          if (k <= 0) {
-            break;
-          }
-          paramShareResPatchInfo.Bwb.add(arrayOfString[(i + 1)]);
-          i += 1;
-          k -= 1;
-        }
-      }
-      if (paramString.startsWith("modify:"))
-      {
-        k = Integer.parseInt(paramString.split(":", 2)[1]);
-        for (;;)
-        {
-          j = i;
-          if (k <= 0) {
-            break;
-          }
-          paramShareResPatchInfo.Bwd.add(arrayOfString[(i + 1)]);
-          i += 1;
-          k -= 1;
-        }
-      }
-      if (paramString.startsWith("large modify:"))
-      {
-        k = Integer.parseInt(paramString.split(":", 2)[1]);
-        for (;;)
-        {
-          j = i;
-          if (k <= 0) {
-            break;
-          }
-          paramString = arrayOfString[(i + 1)].split(",", 3);
-          str = paramString[0];
-          localObject = new LargeModeInfo();
-          ((LargeModeInfo)localObject).cqq = paramString[1];
-          ((LargeModeInfo)localObject).Bwi = Long.parseLong(paramString[2]);
-          paramShareResPatchInfo.Bwf.add(str);
-          paramShareResPatchInfo.Bwg.put(str, localObject);
-          i += 1;
-          k -= 1;
-        }
-      }
-      if (paramString.startsWith("delete:"))
-      {
-        k = Integer.parseInt(paramString.split(":", 2)[1]);
-        for (;;)
-        {
-          j = i;
-          if (k <= 0) {
-            break;
-          }
-          paramShareResPatchInfo.Bwc.add(arrayOfString[(i + 1)]);
-          i += 1;
-          k -= 1;
-        }
-      }
-      j = i;
-    } while (!paramString.startsWith("store:"));
-    int k = Integer.parseInt(paramString.split(":", 2)[1]);
-    for (;;)
-    {
-      j = i;
-      if (k <= 0) {
-        break;
-      }
-      paramShareResPatchInfo.Bwe.put(arrayOfString[(i + 1)], null);
-      i += 1;
-      k -= 1;
-    }
-  }
-  
-  public static boolean a(ShareResPatchInfo paramShareResPatchInfo)
-  {
-    if (paramShareResPatchInfo == null) {}
-    do
-    {
-      return false;
-      paramShareResPatchInfo = paramShareResPatchInfo.Bwa;
-    } while ((paramShareResPatchInfo == null) || (paramShareResPatchInfo.length() != 32));
-    return true;
-  }
-  
-  public static boolean a(HashSet<Pattern> paramHashSet, String paramString)
+  public static boolean checkFileInPattern(HashSet<Pattern> paramHashSet, String paramString)
   {
     if (!paramHashSet.isEmpty())
     {
@@ -189,7 +36,161 @@ public class ShareResPatchInfo
     return false;
   }
   
-  public static void b(String paramString, ShareResPatchInfo paramShareResPatchInfo)
+  public static boolean checkResPatchInfo(ShareResPatchInfo paramShareResPatchInfo)
+  {
+    if (paramShareResPatchInfo == null) {}
+    do
+    {
+      return false;
+      paramShareResPatchInfo = paramShareResPatchInfo.resArscMd5;
+    } while ((paramShareResPatchInfo == null) || (paramShareResPatchInfo.length() != 32));
+    return true;
+  }
+  
+  private static Pattern convertToPatternString(String paramString)
+  {
+    String str = paramString;
+    if (paramString.contains(".")) {
+      str = paramString.replaceAll("\\.", "\\\\.");
+    }
+    paramString = str;
+    if (str.contains("?")) {
+      paramString = str.replaceAll("\\?", "\\.");
+    }
+    str = paramString;
+    if (paramString.contains("*")) {
+      str = paramString.replace("*", ".*");
+    }
+    return Pattern.compile(str);
+  }
+  
+  public static void parseAllResPatchInfo(String paramString, ShareResPatchInfo paramShareResPatchInfo)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return;
+    }
+    paramString = paramString.split("\n");
+    int i = 0;
+    label21:
+    String[] arrayOfString;
+    int j;
+    if (i < paramString.length)
+    {
+      arrayOfString = paramString[i];
+      j = i;
+      if (arrayOfString != null)
+      {
+        j = i;
+        if (arrayOfString.length() > 0)
+        {
+          if (!arrayOfString.startsWith("resources_out.zip")) {
+            break label94;
+          }
+          arrayOfString = arrayOfString.split(",", 3);
+          paramShareResPatchInfo.arscBaseCrc = arrayOfString[1];
+          paramShareResPatchInfo.resArscMd5 = arrayOfString[2];
+          j = i;
+        }
+      }
+    }
+    label94:
+    do
+    {
+      i = j + 1;
+      break label21;
+      break;
+      if (arrayOfString.startsWith("pattern:"))
+      {
+        k = Integer.parseInt(arrayOfString.split(":", 2)[1]);
+        for (;;)
+        {
+          j = i;
+          if (k <= 0) {
+            break;
+          }
+          paramShareResPatchInfo.patterns.add(convertToPatternString(paramString[(i + 1)]));
+          i += 1;
+          k -= 1;
+        }
+      }
+      if (arrayOfString.startsWith("add:"))
+      {
+        k = Integer.parseInt(arrayOfString.split(":", 2)[1]);
+        for (;;)
+        {
+          j = i;
+          if (k <= 0) {
+            break;
+          }
+          paramShareResPatchInfo.addRes.add(paramString[(i + 1)]);
+          i += 1;
+          k -= 1;
+        }
+      }
+      if (arrayOfString.startsWith("modify:"))
+      {
+        k = Integer.parseInt(arrayOfString.split(":", 2)[1]);
+        for (;;)
+        {
+          j = i;
+          if (k <= 0) {
+            break;
+          }
+          paramShareResPatchInfo.modRes.add(paramString[(i + 1)]);
+          i += 1;
+          k -= 1;
+        }
+      }
+      if (arrayOfString.startsWith("large modify:"))
+      {
+        k = Integer.parseInt(arrayOfString.split(":", 2)[1]);
+        for (;;)
+        {
+          j = i;
+          if (k <= 0) {
+            break;
+          }
+          arrayOfString = paramString[(i + 1)].split(",", 3);
+          String str = arrayOfString[0];
+          LargeModeInfo localLargeModeInfo = new LargeModeInfo();
+          localLargeModeInfo.md5 = arrayOfString[1];
+          localLargeModeInfo.crc = Long.parseLong(arrayOfString[2]);
+          paramShareResPatchInfo.largeModRes.add(str);
+          paramShareResPatchInfo.largeModMap.put(str, localLargeModeInfo);
+          i += 1;
+          k -= 1;
+        }
+      }
+      if (arrayOfString.startsWith("delete:"))
+      {
+        k = Integer.parseInt(arrayOfString.split(":", 2)[1]);
+        for (;;)
+        {
+          j = i;
+          if (k <= 0) {
+            break;
+          }
+          paramShareResPatchInfo.deleteRes.add(paramString[(i + 1)]);
+          i += 1;
+          k -= 1;
+        }
+      }
+      j = i;
+    } while (!arrayOfString.startsWith("store:"));
+    int k = Integer.parseInt(arrayOfString.split(":", 2)[1]);
+    for (;;)
+    {
+      j = i;
+      if (k <= 0) {
+        break;
+      }
+      paramShareResPatchInfo.storeRes.put(paramString[(i + 1)], null);
+      i += 1;
+      k -= 1;
+    }
+  }
+  
+  public static void parseResPatchInfoFirstLine(String paramString, ShareResPatchInfo paramShareResPatchInfo)
   {
     if ((paramString == null) || (paramString.length() == 0)) {
       return;
@@ -199,47 +200,47 @@ public class ShareResPatchInfo
       throw new TinkerRuntimeException("res meta Corrupted:".concat(String.valueOf(paramString)));
     }
     paramString = str.split(",", 3);
-    paramShareResPatchInfo.BvZ = paramString[1];
-    paramShareResPatchInfo.Bwa = paramString[2];
+    paramShareResPatchInfo.arscBaseCrc = paramString[1];
+    paramShareResPatchInfo.resArscMd5 = paramString[2];
   }
   
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("resArscMd5:" + this.Bwa + "\n");
-    localStringBuffer.append("arscBaseCrc:" + this.BvZ + "\n");
-    Iterator localIterator = this.Bwh.iterator();
+    localStringBuffer.append("resArscMd5:" + this.resArscMd5 + "\n");
+    localStringBuffer.append("arscBaseCrc:" + this.arscBaseCrc + "\n");
+    Iterator localIterator = this.patterns.iterator();
     Object localObject;
     while (localIterator.hasNext())
     {
       localObject = (Pattern)localIterator.next();
       localStringBuffer.append("pattern:" + localObject + "\n");
     }
-    localIterator = this.Bwb.iterator();
+    localIterator = this.addRes.iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
       localStringBuffer.append("addedSet:" + (String)localObject + "\n");
     }
-    localIterator = this.Bwd.iterator();
+    localIterator = this.modRes.iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
       localStringBuffer.append("modifiedSet:" + (String)localObject + "\n");
     }
-    localIterator = this.Bwf.iterator();
+    localIterator = this.largeModRes.iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
       localStringBuffer.append("largeModifiedSet:" + (String)localObject + "\n");
     }
-    localIterator = this.Bwc.iterator();
+    localIterator = this.deleteRes.iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
       localStringBuffer.append("deletedSet:" + (String)localObject + "\n");
     }
-    localIterator = this.Bwe.keySet().iterator();
+    localIterator = this.storeRes.keySet().iterator();
     while (localIterator.hasNext())
     {
       localObject = (String)localIterator.next();
@@ -250,9 +251,9 @@ public class ShareResPatchInfo
   
   public static class LargeModeInfo
   {
-    public long Bwi;
-    public String cqq = null;
+    public long crc;
     public File file = null;
+    public String md5 = null;
   }
 }
 

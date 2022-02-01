@@ -20,18 +20,18 @@ public class TextViewWithBorder
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(112417);
+    AppMethodBeat.i(42630);
     Paint localPaint = new Paint();
     localPaint.setStyle(Paint.Style.STROKE);
-    localPaint.setColor(getResources().getColor(2131690109));
+    localPaint.setColor(getResources().getColor(2131100433));
     paramCanvas.drawRoundRect(new RectF(2.0F, 2.0F, getWidth() - 2, getHeight() - 2), 5.0F, 5.0F, localPaint);
     super.onDraw(paramCanvas);
-    AppMethodBeat.o(112417);
+    AppMethodBeat.o(42630);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.TextViewWithBorder
  * JD-Core Version:    0.7.0.1
  */

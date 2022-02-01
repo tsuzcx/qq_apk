@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/nw" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<CheckBox android:background="@null" android:layout_width="@dimen/ap" android:layout_height="@dimen/an" android:button="@drawable/a2r"
   xmlns:android="http://schemas.android.com/apk/res/android" />

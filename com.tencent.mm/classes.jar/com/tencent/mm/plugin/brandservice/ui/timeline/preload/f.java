@@ -1,269 +1,477 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
-import a.a.e;
-import a.f.b.j;
-import a.f.b.t;
-import a.f.b.v;
-import a.f.b.x;
-import a.g;
-import a.j.k;
-import a.l;
-import a.l.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.webview.preload.TmplParams;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.compatible.util.p;
+import com.tencent.mm.protocal.protobuf.dch;
+import com.tencent.mm.sdk.platformtools.ad;
+import d.a.e;
+import d.a.j;
+import d.g.a.b;
+import d.g.a.m;
+import d.g.a.q;
+import d.g.b.w;
+import d.n.n;
+import d.o;
+import d.v;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/Kv15862;", "", "()V", "MAX_LIMIT", "", "MM_WEBIVEW_PRELOAD_LOAD_TIME", "", "TAG", "", "a8KeyFinishTime", "bindWebViewCostTime", "cacheItemShowType", "", "getCacheItemShowType", "()Z", "setCacheItemShowType", "(Z)V", "clientCachedTime", "getClientCachedTime", "()I", "setClientCachedTime", "(I)V", "clientFirstFinishTime", "contentId", "getContentId", "()Ljava/lang/String;", "contentId$delegate", "Lkotlin/Lazy;", "createWebViewCostTime", "ctWebCompile", "getCtWebCompile", "()J", "setCtWebCompile", "(J)V", "ctWebFirstScreen", "getCtWebFirstScreen", "setCtWebFirstScreen", "dataCachedTime", "getDataCachedTime", "dataCachedTime$delegate", "dataVersion", "getDataVersion", "dataVersion$delegate", "etWebFirstScreen", "getEtWebFirstScreen", "setEtWebFirstScreen", "evalCostTime", "getEvalCostTime", "setEvalCostTime", "evalPageDataCostTime", "getA8KeyCostTime", "getPageDataCostTime", "hasAuth", "getHasAuth", "setHasAuth", "hasInject", "getHasInject", "setHasInject", "injectCostTime", "invalidId", "getInvalidId", "invalidId$delegate", "isInjectSuccess", "setInjectSuccess", "isMounted", "setMounted", "isOnlineWebView", "setOnlineWebView", "isPrefixMP", "setPrefixMP", "isSyncGetPageData", "setSyncGetPageData", "isTimeoutRedirect", "setTimeoutRedirect", "isTmplReady", "setTmplReady", "isWebViewCreated", "setWebViewCreated", "isWebViewPreUpdated", "setWebViewPreUpdated", "isWebViewProcessCreated", "setWebViewProcessCreated", "isZip", "setZip", "key", "getKey", "setKey", "(Ljava/lang/String;)V", "openScene", "getOpenScene", "setOpenScene", "pageDataSize", "getPageDataSize", "pageDataSize$delegate", "pageFinishTime", "pageFinishTimeType", "pageFinishTimestamp", "relaunchState", "getRelaunchState", "setRelaunchState", "speedMatrix", "", "getSpeedMatrix", "()[Ljava/lang/Long;", "speedMatrix$delegate", "tmplParams", "Lcom/tencent/mm/plugin/webview/preload/TmplParams;", "getTmplParams", "()Lcom/tencent/mm/plugin/webview/preload/TmplParams;", "setTmplParams", "(Lcom/tencent/mm/plugin/webview/preload/TmplParams;)V", "tsEndAcGetData", "getTsEndAcGetData", "setTsEndAcGetData", "tsEndGetA8Key", "getTsEndGetA8Key", "setTsEndGetA8Key", "tsEndGetData", "getTsEndGetData", "setTsEndGetData", "tsEndInject", "getTsEndInject", "setTsEndInject", "tsEndNotifyPage", "getTsEndNotifyPage", "setTsEndNotifyPage", "tsEndPostBind", "getTsEndPostBind", "setTsEndPostBind", "tsEndProcessInit", "getTsEndProcessInit", "setTsEndProcessInit", "tsEndTmplLoad", "getTsEndTmplLoad", "setTsEndTmplLoad", "tsEndUIInit", "getTsEndUIInit", "setTsEndUIInit", "tsEndWebGetData", "getTsEndWebGetData", "setTsEndWebGetData", "tsEndWebInject", "getTsEndWebInject", "setTsEndWebInject", "tsEndWebViewCreate", "getTsEndWebViewCreate", "setTsEndWebViewCreate", "tsStartAcGetData", "getTsStartAcGetData", "setTsStartAcGetData", "tsStartEndBind", "getTsStartEndBind", "setTsStartEndBind", "tsStartGetA8Key", "getTsStartGetA8Key", "setTsStartGetA8Key", "tsStartGetData", "getTsStartGetData", "setTsStartGetData", "tsStartInject", "getTsStartInject", "setTsStartInject", "tsStartPage", "getTsStartPage", "setTsStartPage", "tsStartPostBind", "getTsStartPostBind", "setTsStartPostBind", "tsStartProcessConfiguration", "getTsStartProcessConfiguration", "setTsStartProcessConfiguration", "tsStartProcessDependency", "getTsStartProcessDependency", "setTsStartProcessDependency", "tsStartProcessExecution", "getTsStartProcessExecution", "setTsStartProcessExecution", "tsStartProcessExtensions", "getTsStartProcessExtensions", "setTsStartProcessExtensions", "tsStartProcessHello", "getTsStartProcessHello", "setTsStartProcessHello", "tsStartProcessInit", "getTsStartProcessInit", "setTsStartProcessInit", "tsStartProcessInstall", "getTsStartProcessInstall", "setTsStartProcessInstall", "tsStartProcessTerminate", "getTsStartProcessTerminate", "setTsStartProcessTerminate", "tsStartTmplLoad", "getTsStartTmplLoad", "setTsStartTmplLoad", "tsStartTryBind", "getTsStartTryBind", "setTsStartTryBind", "tsStartUICreate", "getTsStartUICreate", "setTsStartUICreate", "tsStartUIInit", "getTsStartUIInit", "setTsStartUIInit", "tsStartWebViewCreate", "getTsStartWebViewCreate", "setTsStartWebViewCreate", "tsWebFirstScreen", "getTsWebFirstScreen", "setTsWebFirstScreen", "url", "getUrl", "setUrl", "useLocalJs", "getUseLocalJs", "setUseLocalJs", "webReceivePageDataTime", "webviewKind", "getWebviewKind", "setWebviewKind", "webviewProcess", "getWebviewProcess", "webviewProcess$delegate", "report", "", "toString", "limit", "valid", "verify", "vals", "", "([Ljava/lang/Long;[J)[Ljava/lang/Long;", "Companion", "plugin-brandservice_release"})
+@d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/Kv15862;", "", "()V", "MAX_LIMIT", "", "MM_WEBIVEW_PRELOAD_LOAD_TIME", "", "TAG", "", "a8KeyFinishTime", "bindWebViewCostTime", "cacheItemShowType", "", "getCacheItemShowType", "()Z", "setCacheItemShowType", "(Z)V", "clientCachedTime", "getClientCachedTime", "()I", "setClientCachedTime", "(I)V", "clientFirstFinishTime", "contentId", "getContentId", "()Ljava/lang/String;", "contentId$delegate", "Lkotlin/Lazy;", "createWebViewCostTime", "ctWebCompile", "getCtWebCompile", "()J", "setCtWebCompile", "(J)V", "ctWebFirstScreen", "getCtWebFirstScreen", "setCtWebFirstScreen", "dataCachedTime", "getDataCachedTime", "dataCachedTime$delegate", "dataVersion", "getDataVersion", "dataVersion$delegate", "etWebFirstScreen", "getEtWebFirstScreen", "setEtWebFirstScreen", "evalCostTime", "getEvalCostTime", "setEvalCostTime", "evalPageDataCostTime", "getA8KeyCostTime", "getPageDataCostTime", "hasAuth", "getHasAuth", "setHasAuth", "hasInject", "getHasInject", "setHasInject", "injectCostTime", "isInjectSuccess", "setInjectSuccess", "isMounted", "setMounted", "isOnlineWebView", "setOnlineWebView", "isPrefixMP", "setPrefixMP", "isSyncGetPageData", "setSyncGetPageData", "isTimeoutRedirect", "setTimeoutRedirect", "isTmplReady", "setTmplReady", "isWebViewCreated", "setWebViewCreated", "isWebViewPreUpdated", "setWebViewPreUpdated", "isWebViewProcessCreated", "setWebViewProcessCreated", "isZip", "setZip", "key", "getKey", "setKey", "(Ljava/lang/String;)V", "openScene", "getOpenScene", "setOpenScene", "pageDataSize", "getPageDataSize", "pageDataSize$delegate", "pageFinishTime", "pageFinishTimeType", "pageFinishTimestamp", "relaunchState", "getRelaunchState", "setRelaunchState", "speedMatrix", "", "getSpeedMatrix", "()[Ljava/lang/Long;", "speedMatrix$delegate", "tmplParams", "Lcom/tencent/mm/protocal/protobuf/TmplParams;", "getTmplParams", "()Lcom/tencent/mm/protocal/protobuf/TmplParams;", "setTmplParams", "(Lcom/tencent/mm/protocal/protobuf/TmplParams;)V", "tsEndAcGetData", "getTsEndAcGetData", "setTsEndAcGetData", "tsEndGetA8Key", "getTsEndGetA8Key", "setTsEndGetA8Key", "tsEndGetData", "getTsEndGetData", "setTsEndGetData", "tsEndInject", "getTsEndInject", "setTsEndInject", "tsEndNotifyPage", "getTsEndNotifyPage", "setTsEndNotifyPage", "tsEndPostBind", "getTsEndPostBind", "setTsEndPostBind", "tsEndProcessInit", "getTsEndProcessInit", "setTsEndProcessInit", "tsEndTmplLoad", "getTsEndTmplLoad", "setTsEndTmplLoad", "tsEndUIInit", "getTsEndUIInit", "setTsEndUIInit", "tsEndWebGetData", "getTsEndWebGetData", "setTsEndWebGetData", "tsEndWebInject", "getTsEndWebInject", "setTsEndWebInject", "tsEndWebViewCreate", "getTsEndWebViewCreate", "setTsEndWebViewCreate", "tsStartAcGetData", "getTsStartAcGetData", "setTsStartAcGetData", "tsStartEndBind", "getTsStartEndBind", "setTsStartEndBind", "tsStartGetA8Key", "getTsStartGetA8Key", "setTsStartGetA8Key", "tsStartGetData", "getTsStartGetData", "setTsStartGetData", "tsStartInject", "getTsStartInject", "setTsStartInject", "tsStartPage", "getTsStartPage", "setTsStartPage", "tsStartPostBind", "getTsStartPostBind", "setTsStartPostBind", "tsStartProcessConfiguration", "getTsStartProcessConfiguration", "setTsStartProcessConfiguration", "tsStartProcessDependency", "getTsStartProcessDependency", "setTsStartProcessDependency", "tsStartProcessExecution", "getTsStartProcessExecution", "setTsStartProcessExecution", "tsStartProcessExtensions", "getTsStartProcessExtensions", "setTsStartProcessExtensions", "tsStartProcessHello", "getTsStartProcessHello", "setTsStartProcessHello", "tsStartProcessInit", "getTsStartProcessInit", "setTsStartProcessInit", "tsStartProcessInstall", "getTsStartProcessInstall", "setTsStartProcessInstall", "tsStartProcessTerminate", "getTsStartProcessTerminate", "setTsStartProcessTerminate", "tsStartTmplLoad", "getTsStartTmplLoad", "setTsStartTmplLoad", "tsStartTryBind", "getTsStartTryBind", "setTsStartTryBind", "tsStartUICreate", "getTsStartUICreate", "setTsStartUICreate", "tsStartUIInit", "getTsStartUIInit", "setTsStartUIInit", "tsStartWebViewCreate", "getTsStartWebViewCreate", "setTsStartWebViewCreate", "tsWebFirstScreen", "getTsWebFirstScreen", "setTsWebFirstScreen", "url", "getUrl", "setUrl", "useLocalJs", "getUseLocalJs", "setUseLocalJs", "webReceivePageDataTime", "webviewKind", "getWebviewKind", "setWebviewKind", "webviewProcess", "getWebviewProcess", "webviewProcess$delegate", "printDataState", "printDebugger", "prefix", "", "printProcessState", "printTmplState", "printWebViewState", "report", "", "data", "Lkotlin/Function3;", "", "Lkotlin/Pair;", "toString", "format", "kotlin.jvm.PlatformType", "", "digits", "limit", "toDate", "valid", "verify", "vals", "", "([Ljava/lang/Long;[J)[Ljava/lang/Long;", "Companion", "plugin-brandservice_release"})
 public final class f
 {
-  public static final f.a kbt;
+  public static final a ndO;
   private final String TAG;
-  private final int jZU;
-  public TmplParams jZV;
-  public int jZW;
-  private final a.f jZX;
-  private final a.f jZY;
-  private final a.f jZZ;
-  public long kaA;
-  public long kaB;
-  public long kaC;
-  public long kaD;
-  public long kaE;
-  public long kaF;
-  public long kaG;
-  public long kaH;
-  public long kaI;
-  public long kaJ;
-  public long kaK;
-  public long kaL;
-  public boolean kaM;
-  public boolean kaN;
-  public boolean kaO;
-  public boolean kaP;
-  public boolean kaQ;
-  public boolean kaR;
-  public boolean kaS;
-  public boolean kaT;
-  public boolean kaU;
-  public boolean kaV;
-  public boolean kaW;
-  public int kaX;
-  public boolean kaY;
-  public boolean kaZ;
-  private final a.f kaa;
-  private final a.f kab;
-  private long kac;
-  public long kad;
-  public long kae;
-  long kaf;
-  public long kag;
-  public long kah;
-  public long kai;
-  public long kaj;
-  public long kak;
-  public long kal;
-  public long kam;
-  public long kan;
-  public long kao;
-  public long kap;
-  public long kaq;
-  public long kar;
-  public long kas;
-  public long kat;
-  public long kau;
-  public long kav;
-  public long kaw;
-  public long kax;
-  public long kay;
-  public long kaz;
-  private long kba;
-  private int kbb;
-  private long kbc;
-  private long kbd;
-  private long kbe;
-  private long kbf;
-  private long kbg;
-  private long kbh;
-  private long kbi;
-  private long kbj;
-  private long kbk;
-  private long kbl;
-  public String kbm;
-  private final a.f kbn;
-  public boolean kbo;
-  public boolean kbp;
-  public int kbq;
-  private final a.f kbr;
-  private long kbs;
-  public String key;
+  private String key;
+  public int mSu;
+  private long ncA;
+  public long ncB;
+  public long ncC;
+  long ncD;
+  public long ncE;
+  public long ncF;
+  public long ncG;
+  public long ncH;
+  public long ncI;
+  public long ncJ;
+  public long ncK;
+  long ncL;
+  public long ncM;
+  public long ncN;
+  public long ncO;
+  public long ncP;
+  public long ncQ;
+  public long ncR;
+  public long ncS;
+  public long ncT;
+  public long ncU;
+  long ncV;
+  long ncW;
+  long ncX;
+  long ncY;
+  long ncZ;
+  private final int nct;
+  public dch ncu;
+  public int ncv;
+  private final d.f ncw;
+  private final d.f ncx;
+  private final d.f ncy;
+  private final d.f ncz;
+  private long ndA;
+  private long ndB;
+  private long ndC;
+  private long ndD;
+  private long ndE;
+  private long ndF;
+  private long ndG;
+  private long ndH;
+  public String ndI;
+  private final d.f ndJ;
+  public boolean ndK;
+  public boolean ndL;
+  private final d.f ndM;
+  private long ndN;
+  public long nda;
+  public long ndb;
+  public long ndc;
+  public long ndd;
+  public long nde;
+  public long ndf;
+  public long ndg;
+  public long ndh;
+  public long ndi;
+  public boolean ndj;
+  public boolean ndk;
+  public boolean ndl;
+  public boolean ndm;
+  public boolean ndn;
+  public boolean ndo;
+  public boolean ndp;
+  public boolean ndq;
+  public boolean ndr;
+  public boolean nds;
+  public int ndt;
+  public boolean ndu;
+  public boolean ndv;
+  private long ndw;
+  private int ndx;
+  private long ndy;
+  private long ndz;
   public String url;
   
   static
   {
-    AppMethodBeat.i(14833);
-    eOJ = new k[] { (k)v.a(new t(v.aG(f.class), "contentId", "getContentId()Ljava/lang/String;")), (k)v.a(new t(v.aG(f.class), "pageDataSize", "getPageDataSize()I")), (k)v.a(new t(v.aG(f.class), "invalidId", "getInvalidId()Ljava/lang/String;")), (k)v.a(new t(v.aG(f.class), "dataCachedTime", "getDataCachedTime()J")), (k)v.a(new t(v.aG(f.class), "dataVersion", "getDataVersion()I")), (k)v.a(new t(v.aG(f.class), "webviewProcess", "getWebviewProcess()Ljava/lang/String;")), (k)v.a(new t(v.aG(f.class), "speedMatrix", "getSpeedMatrix()[Ljava/lang/Long;")) };
-    kbt = new f.a((byte)0);
-    AppMethodBeat.o(14833);
+    AppMethodBeat.i(6601);
+    $$delegatedProperties = new d.l.k[] { (d.l.k)w.a(new d.g.b.u(w.bk(f.class), "contentId", "getContentId()Ljava/lang/String;")), (d.l.k)w.a(new d.g.b.u(w.bk(f.class), "pageDataSize", "getPageDataSize()I")), (d.l.k)w.a(new d.g.b.u(w.bk(f.class), "dataCachedTime", "getDataCachedTime()J")), (d.l.k)w.a(new d.g.b.u(w.bk(f.class), "dataVersion", "getDataVersion()I")), (d.l.k)w.a(new d.g.b.u(w.bk(f.class), "webviewProcess", "getWebviewProcess()Ljava/lang/String;")), (d.l.k)w.a(new d.g.b.u(w.bk(f.class), "speedMatrix", "getSpeedMatrix()[Ljava/lang/Long;")) };
+    ndO = new a((byte)0);
+    AppMethodBeat.o(6601);
   }
   
   public f()
   {
-    AppMethodBeat.i(14842);
+    AppMethodBeat.i(6618);
     this.TAG = "MicroMsg.Preload.Kv15862";
-    this.jZU = 15862;
+    this.nct = 15862;
     this.key = "";
     this.url = "";
-    this.jZX = g.j((a.f.a.a)new f.b(this));
-    this.jZY = g.j((a.f.a.a)new f.f(this));
-    this.jZZ = g.j((a.f.a.a)new f.e(this));
-    this.kaa = g.j((a.f.a.a)new f.c(this));
-    this.kab = g.j((a.f.a.a)new f.d(this));
-    this.kac = -1L;
-    this.kap = -1L;
-    this.kaq = -1L;
-    this.kar = -1L;
-    this.kas = -1L;
-    this.kat = -1L;
-    this.kau = -1L;
-    this.kav = -1L;
-    this.kaw = -1L;
-    this.kbn = g.j((a.f.a.a)f.p.kby);
-    this.kbq = 10000;
-    this.kbr = g.j((a.f.a.a)new f.g(this));
-    this.kbs = 3600000L;
-    AppMethodBeat.o(14842);
+    this.ncw = d.g.E((d.g.a.a)new b(this));
+    this.ncx = d.g.E((d.g.a.a)new e(this));
+    this.ncy = d.g.E((d.g.a.a)new c(this));
+    this.ncz = d.g.E((d.g.a.a)new d(this));
+    this.ncA = -1L;
+    this.ncN = -1L;
+    this.ncO = -1L;
+    this.ncP = -1L;
+    this.ncQ = -1L;
+    this.ncR = -1L;
+    this.ncS = -1L;
+    this.ncT = -1L;
+    this.ncU = -1L;
+    this.ndI = "";
+    this.ndJ = d.g.E((d.g.a.a)h.ndR);
+    this.mSu = 10000;
+    this.ndM = d.g.E((d.g.a.a)new f(this));
+    this.ndN = 3600000L;
+    AppMethodBeat.o(6618);
   }
   
-  private final String aXo()
+  private final String I(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(14835);
-    String str = (String)this.jZX.getValue();
-    AppMethodBeat.o(14835);
+    AppMethodBeat.i(6610);
+    StringBuilder localStringBuilder = new StringBuilder();
+    g.a locala = g.ndS;
+    if (g.a.bDG()) {
+      localStringBuilder.append(paramCharSequence + "no re-direct;");
+    }
+    locala = g.ndS;
+    if (!g.a.bDB()) {
+      localStringBuilder.append(paramCharSequence + "no preload data;");
+    }
+    locala = g.ndS;
+    if (g.a.bDH()) {
+      localStringBuilder.append(paramCharSequence + "no preload webview;");
+    }
+    locala = g.ndS;
+    if (g.a.bDD()) {
+      localStringBuilder.append(paramCharSequence + "data no expire;");
+    }
+    locala = g.ndS;
+    if (g.a.bDI()) {
+      localStringBuilder.append(paramCharSequence + "no red;");
+    }
+    paramCharSequence = this.ncu;
+    if (paramCharSequence == null) {
+      d.g.b.k.aPZ("tmplParams");
+    }
+    paramCharSequence = paramCharSequence.EtN;
+    d.g.b.k.g(paramCharSequence, "tmplParams.headers");
+    if (!n.aC((CharSequence)paramCharSequence)) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        paramCharSequence = this.ncu;
+        if (paramCharSequence == null) {
+          d.g.b.k.aPZ("tmplParams");
+        }
+        localStringBuilder.append(paramCharSequence.EtN);
+      }
+      if (n.aC((CharSequence)localStringBuilder)) {
+        localStringBuilder.append("none;");
+      }
+      paramCharSequence = localStringBuilder.toString();
+      d.g.b.k.g(paramCharSequence, "sb.toString()");
+      AppMethodBeat.o(6610);
+      return paramCharSequence;
+    }
+  }
+  
+  private static String aM(float paramFloat)
+  {
+    AppMethodBeat.i(6615);
+    String str = String.format("%.2f", new Object[] { Float.valueOf(paramFloat) });
+    AppMethodBeat.o(6615);
     return str;
   }
   
-  private final int aXp()
+  private final String bDq()
   {
-    AppMethodBeat.i(14836);
-    int i = ((Number)this.jZY.getValue()).intValue();
-    AppMethodBeat.o(14836);
+    AppMethodBeat.i(6602);
+    String str = (String)this.ncw.getValue();
+    AppMethodBeat.o(6602);
+    return str;
+  }
+  
+  private final int bDr()
+  {
+    AppMethodBeat.i(6603);
+    int i = ((Number)this.ncx.getValue()).intValue();
+    AppMethodBeat.o(6603);
     return i;
   }
   
-  private final String aXq()
+  private final long bDs()
   {
-    AppMethodBeat.i(14837);
-    String str = (String)this.kbn.getValue();
-    AppMethodBeat.o(14837);
+    AppMethodBeat.i(6604);
+    long l = ((Number)this.ncy.getValue()).longValue();
+    AppMethodBeat.o(6604);
+    return l;
+  }
+  
+  private final int bDt()
+  {
+    AppMethodBeat.i(6605);
+    int i = ((Number)this.ncz.getValue()).intValue();
+    AppMethodBeat.o(6605);
+    return i;
+  }
+  
+  private final String bDu()
+  {
+    AppMethodBeat.i(6606);
+    String str = (String)this.ndJ.getValue();
+    AppMethodBeat.o(6606);
     return str;
   }
   
-  private final Long[] aXr()
+  private final Long[] bDv()
   {
-    AppMethodBeat.i(14838);
-    Long[] arrayOfLong = (Long[])this.kbr.getValue();
-    AppMethodBeat.o(14838);
+    AppMethodBeat.i(6607);
+    Long[] arrayOfLong = (Long[])this.ndM.getValue();
+    AppMethodBeat.o(6607);
     return arrayOfLong;
   }
   
-  private final long hY(long paramLong)
+  private final String bDw()
   {
-    AppMethodBeat.i(14840);
-    paramLong = Math.min(Math.max(-this.kbs, paramLong), this.kbs);
-    AppMethodBeat.o(14840);
+    AppMethodBeat.i(6611);
+    Object localObject = new StringBuilder();
+    if (this.ndt == 1) {
+      ((StringBuilder)localObject).append("relanuch;");
+    }
+    if (!this.nds) {
+      ((StringBuilder)localObject).append("cold;");
+    }
+    if (n.aC((CharSequence)localObject)) {
+      ((StringBuilder)localObject).append("ok;");
+    }
+    localObject = ((StringBuilder)localObject).toString();
+    d.g.b.k.g(localObject, "sb.toString()");
+    AppMethodBeat.o(6611);
+    return localObject;
+  }
+  
+  private final String bDx()
+  {
+    AppMethodBeat.i(6612);
+    Object localObject = new StringBuilder();
+    if (this.ndt == 2) {
+      ((StringBuilder)localObject).append("relanuch;");
+    }
+    if (!this.ndk) {
+      ((StringBuilder)localObject).append("cold;");
+    }
+    if (!this.ndm)
+    {
+      ((StringBuilder)localObject).append("tmpl fail;");
+      if (!this.ndL) {
+        break label146;
+      }
+      ((StringBuilder)localObject).append("timeout;");
+    }
+    for (;;)
+    {
+      if (this.ndq) {
+        ((StringBuilder)localObject).append("xweb_cc;");
+      }
+      if (n.aC((CharSequence)localObject)) {
+        ((StringBuilder)localObject).append("ok;");
+      }
+      localObject = ((StringBuilder)localObject).toString();
+      d.g.b.k.g(localObject, "sb.toString()");
+      AppMethodBeat.o(6612);
+      return localObject;
+      if (this.ndl) {
+        break;
+      }
+      ((StringBuilder)localObject).append("inject fail;");
+      break;
+      label146:
+      if (this.ndK) {
+        ((StringBuilder)localObject).append("h5;");
+      }
+    }
+  }
+  
+  private final String bDy()
+  {
+    AppMethodBeat.i(6613);
+    Object localObject = new StringBuilder();
+    if (this.ndo) {
+      ((StringBuilder)localObject).append("zip;");
+    }
+    if (this.ndp) {
+      ((StringBuilder)localObject).append("prefixMP;");
+    }
+    if (n.aC((CharSequence)localObject)) {
+      ((StringBuilder)localObject).append("none;");
+    }
+    localObject = ((StringBuilder)localObject).toString();
+    d.g.b.k.g(localObject, "sb.toString()");
+    AppMethodBeat.o(6613);
+    return localObject;
+  }
+  
+  private final String bDz()
+  {
+    AppMethodBeat.i(6614);
+    Object localObject = new StringBuilder();
+    if (!this.ndj) {
+      ((StringBuilder)localObject).append("async;");
+    }
+    if (this.ndn) {
+      ((StringBuilder)localObject).append("mounted;");
+    }
+    if (this.ndr) {
+      ((StringBuilder)localObject).append("cache_tmpl;");
+    }
+    if (n.aC((CharSequence)localObject)) {
+      ((StringBuilder)localObject).append("ok;");
+    }
+    localObject = ((StringBuilder)localObject).toString();
+    d.g.b.k.g(localObject, "sb.toString()");
+    AppMethodBeat.o(6614);
+    return localObject;
+  }
+  
+  private final long nE(long paramLong)
+  {
+    AppMethodBeat.i(6609);
+    paramLong = Math.min(Math.max(-this.ndN, paramLong), this.ndN);
+    AppMethodBeat.o(6609);
     return paramLong;
   }
   
-  public final void IE()
+  private static String nF(long paramLong)
   {
-    AppMethodBeat.i(14839);
-    if ((!this.kaY) || (!this.kaZ))
+    AppMethodBeat.i(6616);
+    String str = new SimpleDateFormat("MM/dd HH:mm:ss").format(new Date(paramLong));
+    d.g.b.k.g(str, "SimpleDateFormat(\"MM/dd …m:ss\").format(Date(this))");
+    AppMethodBeat.o(6616);
+    return str;
+  }
+  
+  public final void a(dch paramdch)
+  {
+    AppMethodBeat.i(193082);
+    d.g.b.k.h(paramdch, "<set-?>");
+    this.ncu = paramdch;
+    AppMethodBeat.o(193082);
+  }
+  
+  public final void a(q<? super String, ? super String, ? super List<o<String, String>>, d.y> paramq)
+  {
+    AppMethodBeat.i(6608);
+    d.g.b.k.h(paramq, "data");
+    if ((!this.ndu) || (!this.ndv))
     {
-      AppMethodBeat.o(14839);
+      AppMethodBeat.o(6608);
       return;
     }
-    Object localObject1 = this.jZV;
+    Object localObject1 = this.ncu;
     if (localObject1 == null) {
-      j.ays("tmplParams");
+      d.g.b.k.aPZ("tmplParams");
     }
-    com.tencent.mm.plugin.webview.preload.a.gK(((TmplParams)localObject1).uYL, 132);
-    String str1 = d.aXm();
-    this.kba = Math.max(this.kae, this.kao);
-    if (this.kae < this.kao) {}
-    for (i = 1;; i = 2)
+    com.tencent.mm.plugin.webview.g.a.fL(((dch)localObject1).reportId, 132);
+    Object localObject3 = d.bDp();
+    this.ndw = Math.max(this.ncC, this.ncM);
+    if (this.ncC < this.ncM) {}
+    int j;
+    long l1;
+    int k;
+    for (int i = 1;; i = 2)
     {
-      this.kbb = i;
-      this.kbc = (this.kba - this.kad);
-      this.kbi = (this.kai - this.kad);
-      this.kbh = (this.kas - this.kat);
-      this.kbj = (this.kao - this.kad);
-      this.kbk = (this.kao - this.kan);
-      this.kaf = (this.kae - this.kad);
-      this.kbd = (this.kap - this.kad);
-      this.kbe = (this.kaq - this.kap);
-      this.kbg = (this.kak - this.kaj);
-      this.kbf = (this.kas - this.kar);
-      this.kac = (this.kas - this.kat);
-      this.kbl = (this.kbd + this.kbe + this.kbg + this.kbf + this.kah + this.kag);
+      this.ndx = i;
+      this.ndy = (this.ndw - this.ncB);
+      this.ndE = (this.ncG - this.ncB);
+      this.ndD = (this.ncQ - this.ncR);
+      this.ndF = (this.ncM - this.ncB);
+      this.ndG = (this.ncM - this.ncL);
+      this.ncD = (this.ncC - this.ncB);
+      this.ndz = (this.ncN - this.ncB);
+      this.ndA = (this.ncO - this.ncN);
+      this.ndC = (this.ncI - this.ncH);
+      this.ndB = (this.ncQ - this.ncP);
+      this.ncA = (this.ncQ - this.ncR);
+      this.ndH = (this.ndz + this.ndA + this.ndC + this.ndB + this.ncF + this.ncE);
       localObject1 = this.TAG;
-      Object localObject3 = this.jZV;
-      if (localObject3 == null) {
-        j.ays("tmplParams");
-      }
-      i = ((TmplParams)localObject3).version;
-      localObject3 = this.url;
-      j = aXp();
-      l1 = this.kbc;
-      k = this.kbb;
-      long l2 = this.kag;
-      long l3 = this.kbj;
-      boolean bool1 = this.kaN;
-      long l4 = this.kav;
-      long l5 = this.kau;
-      boolean bool2 = this.kaM;
-      long l6 = this.kbg;
-      long l7 = this.kbk;
-      long l8 = this.kbi;
-      long l9 = this.kah;
-      long l10 = this.kag;
-      Object localObject4 = this.jZV;
+      Object localObject4 = this.ncu;
       if (localObject4 == null) {
-        j.ays("tmplParams");
+        d.g.b.k.aPZ("tmplParams");
       }
-      int m = ((TmplParams)localObject4).kbM;
-      localObject4 = this.jZV;
-      if (localObject4 == null) {
-        j.ays("tmplParams");
+      i = ((dch)localObject4).version;
+      localObject4 = this.url;
+      j = bDr();
+      l1 = this.ndy;
+      k = this.ndx;
+      long l2 = this.ncE;
+      long l3 = this.ndF;
+      boolean bool1 = this.ndk;
+      long l4 = this.ncT;
+      long l5 = this.ncS;
+      boolean bool2 = this.ndj;
+      long l6 = this.ndC;
+      long l7 = this.ndG;
+      long l8 = this.ndE;
+      long l9 = this.ncF;
+      long l10 = this.ncE;
+      Object localObject5 = this.ncu;
+      if (localObject5 == null) {
+        d.g.b.k.aPZ("tmplParams");
       }
-      ab.d((String)localObject1, "templateVersion:%d, url:%s, size:%d, networkType:%s, pageFinishTime:%d, pageFinishTimeType:%d, ctWebFirstScreen:%d, a8KeyFinishTime:%d, isWebViewCreated:%b, ctTmplLoad:%d, isSyncGetPageData:%b, getPageDataCostTime:%d, getA8KeyCostTime:%d, webReceivePageDataTime:%d, ctWebCompile:%d, ctWebFirstScreen:%d, tmplType:%d tmplUid:%s webviewKind:%s webviewProcess:%s scene:%d evalPageDataCostTime:%d isWebViewProcessCreated:%b", new Object[] { Integer.valueOf(i), localObject3, Integer.valueOf(j), str1, Long.valueOf(l1), Integer.valueOf(k), Long.valueOf(l2), Long.valueOf(l3), Boolean.valueOf(bool1), Long.valueOf(l4 - l5), Boolean.valueOf(bool2), Long.valueOf(l6), Long.valueOf(l7), Long.valueOf(l8), Long.valueOf(l9), Long.valueOf(l10), Integer.valueOf(m), ((TmplParams)localObject4).kbP, this.kbm, aXq(), Integer.valueOf(this.kbq), Long.valueOf(this.kbh), Boolean.valueOf(this.kaW) });
-      if (!com.tencent.mm.sdk.platformtools.f.IS_FLAVOR_RED) {
-        bool1 = com.tencent.mm.sdk.platformtools.f.DEBUG;
+      int m = ((dch)localObject5).nee;
+      localObject5 = this.ncu;
+      if (localObject5 == null) {
+        d.g.b.k.aPZ("tmplParams");
+      }
+      ad.d((String)localObject1, "templateVersion:%d, url:%s, size:%d, networkType:%s, pageFinishTime:%d, pageFinishTimeType:%d, ctWebFirstScreen:%d, a8KeyFinishTime:%d, isWebViewCreated:%b, ctTmplLoad:%d, isSyncGetPageData:%b, getPageDataCostTime:%d, getA8KeyCostTime:%d, webReceivePageDataTime:%d, ctWebCompile:%d, ctWebFirstScreen:%d, tmplType:%d tmplUid:%s webviewKind:%s webviewProcess:%s scene:%d evalPageDataCostTime:%d isWebViewProcessCreated:%b", new Object[] { Integer.valueOf(i), localObject4, Integer.valueOf(j), localObject3, Long.valueOf(l1), Integer.valueOf(k), Long.valueOf(l2), Long.valueOf(l3), Boolean.valueOf(bool1), Long.valueOf(l4 - l5), Boolean.valueOf(bool2), Long.valueOf(l6), Long.valueOf(l7), Long.valueOf(l8), Long.valueOf(l9), Long.valueOf(l10), Integer.valueOf(m), ((dch)localObject5).yaG, this.ndI, bDu(), Integer.valueOf(this.mSu), Long.valueOf(this.ndD), Boolean.valueOf(this.nds) });
+      if (!com.tencent.mm.sdk.platformtools.h.IS_FLAVOR_RED) {
+        bool1 = com.tencent.mm.sdk.platformtools.h.DEBUG;
       }
       try
       {
         localObject1 = this.url;
         if (localObject1 == null) {
-          j.ebi();
+          d.g.b.k.fvU();
         }
-        localObject1 = q.encode((String)localObject1, "UTF-8");
+        localObject1 = p.encode((String)localObject1, "UTF-8");
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
+        Object localObject2;
         for (;;)
         {
           int n;
           int i1;
           int i2;
           int i3;
-          String str2;
-          String str3;
+          Object localObject6;
+          Object localObject7;
           int i4;
-          ab.printErrStackTrace(this.TAG, (Throwable)localUnsupportedEncodingException, "url:%d", new Object[] { this.url });
-          Object localObject2 = null;
+          o localo1;
+          o localo2;
+          o localo3;
+          o localo4;
+          o localo5;
+          Object localObject8;
+          Object localObject9;
+          Object localObject10;
+          Object localObject11;
+          dch localdch;
+          ad.printErrStackTrace(this.TAG, (Throwable)localUnsupportedEncodingException, "url:%d", new Object[] { this.url });
+          localObject2 = null;
           continue;
           i = 0;
           continue;
@@ -289,213 +497,357 @@ public final class f
           continue;
           i = 0;
           continue;
-          com.tencent.mm.plugin.webview.preload.a.ai(20, this.kbc);
-          com.tencent.mm.plugin.webview.preload.a.ai(21, this.kaf);
-          com.tencent.mm.plugin.webview.preload.a.ai(22, l1);
-          com.tencent.mm.plugin.webview.preload.a.ai(23, this.kaz - this.kax);
-          if (!this.kaM)
+          com.tencent.mm.plugin.webview.g.a.aA(20, this.ndy);
+          com.tencent.mm.plugin.webview.g.a.aA(21, this.ncD);
+          com.tencent.mm.plugin.webview.g.a.aA(22, l1);
+          com.tencent.mm.plugin.webview.g.a.aA(23, this.ncW - this.ncV);
+          if (!this.ndj)
           {
-            com.tencent.mm.plugin.webview.preload.a.ai(24, this.kam - this.kal);
-            com.tencent.mm.plugin.webview.preload.a.JZ(107);
+            com.tencent.mm.plugin.webview.g.a.aA(24, this.ncK - this.ncJ);
+            com.tencent.mm.plugin.webview.g.a.SW(107);
           }
         }
+        paramq.d("['FirstScreen', 'BindMP', 'WebView', 'WebViewUI', null, 'BindMM', 'JsAPI', 'GetA8Key', 'GetData', 'InjectData']", localObject2, localObject3);
+        ad.i(this.TAG, "terry performance report:" + this.ncB + '\n' + e.a(bDv(), null, null, null, 0, null, null, 63));
+        AppMethodBeat.o(6608);
       }
-      localObject3 = h.qsU;
-      m = this.jZU;
-      localObject4 = this.jZV;
-      if (localObject4 == null) {
-        j.ays("tmplParams");
+      localObject4 = com.tencent.mm.plugin.report.service.h.vKh;
+      m = this.nct;
+      localObject5 = this.ncu;
+      if (localObject5 == null) {
+        d.g.b.k.aPZ("tmplParams");
       }
-      n = ((TmplParams)localObject4).version;
-      i1 = aXp();
-      l1 = hY(this.kbc);
-      i2 = this.kbb;
-      l2 = hY(this.kaf);
-      l3 = hY(this.kbj);
-      if (!this.kaN) {
+      n = ((dch)localObject5).version;
+      i1 = bDr();
+      l1 = nE(this.ndy);
+      i2 = this.ndx;
+      l2 = nE(this.ncD);
+      l3 = nE(this.ndF);
+      if (!this.ndk) {
         break;
       }
       i = 1;
-      l4 = hY(this.kav - this.kau);
-      if (!this.kaM) {
-        break label1733;
+      l4 = nE(this.ncT - this.ncS);
+      if (!this.ndj) {
+        break label2308;
       }
       j = 1;
-      l5 = hY(this.kbg);
-      l6 = hY(this.kbk);
-      l7 = hY(this.kbi);
-      l8 = hY(this.kah);
-      l9 = hY(this.kag);
-      localObject4 = this.jZV;
-      if (localObject4 == null) {
-        j.ays("tmplParams");
+      l5 = nE(this.ndC);
+      l6 = nE(this.ndG);
+      l7 = nE(this.ndE);
+      l8 = nE(this.ncF);
+      l9 = nE(this.ncE);
+      localObject5 = this.ncu;
+      if (localObject5 == null) {
+        d.g.b.k.aPZ("tmplParams");
       }
-      i3 = ((TmplParams)localObject4).kbM;
-      localObject4 = this.jZV;
-      if (localObject4 == null) {
-        j.ays("tmplParams");
+      i3 = ((dch)localObject5).nee;
+      localObject5 = this.ncu;
+      if (localObject5 == null) {
+        d.g.b.k.aPZ("tmplParams");
       }
-      localObject4 = ((TmplParams)localObject4).kbP;
-      str2 = this.kbm;
-      str3 = aXq();
-      i4 = this.kbq;
-      l10 = hY(this.kbh);
-      if (!this.kaW) {
-        break label1738;
+      localObject5 = ((dch)localObject5).yaG;
+      localObject6 = this.ndI;
+      localObject7 = bDu();
+      i4 = this.mSu;
+      l10 = nE(this.ndD);
+      if (!this.nds) {
+        break label2313;
       }
       k = 1;
-      ((h)localObject3).e(m, new Object[] { Integer.valueOf(n), localObject1, Integer.valueOf(i1), str1, Long.valueOf(l1), Integer.valueOf(i2), Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(i), Long.valueOf(l4), Integer.valueOf(j), Long.valueOf(l5), Long.valueOf(l6), Long.valueOf(l7), Long.valueOf(l8), Long.valueOf(l9), Integer.valueOf(i3), localObject4, str2, str3, Integer.valueOf(i4), Long.valueOf(l10), Integer.valueOf(k), Long.valueOf(hY(this.kbd)), Long.valueOf(hY(this.kbe)), Long.valueOf(hY(this.kbf)) });
-      localObject3 = h.qsU;
-      localObject4 = new x(19);
-      ((x)localObject4).add(localObject1);
-      ((x)localObject4).add(Integer.valueOf(this.kbq));
-      ((x)localObject4).add(str1);
-      ((x)localObject4).add(Integer.valueOf(aXp()));
-      localObject1 = this.jZV;
+      ((com.tencent.mm.plugin.report.service.h)localObject4).f(m, new Object[] { Integer.valueOf(n), localObject1, Integer.valueOf(i1), localObject3, Long.valueOf(l1), Integer.valueOf(i2), Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(i), Long.valueOf(l4), Integer.valueOf(j), Long.valueOf(l5), Long.valueOf(l6), Long.valueOf(l7), Long.valueOf(l8), Long.valueOf(l9), Integer.valueOf(i3), localObject5, localObject6, localObject7, Integer.valueOf(i4), Long.valueOf(l10), Integer.valueOf(k), Long.valueOf(nE(this.ndz)), Long.valueOf(nE(this.ndA)), Long.valueOf(nE(this.ndB)) });
+      localObject4 = com.tencent.mm.plugin.report.service.h.vKh;
+      localObject5 = new d.g.b.y(19);
+      ((d.g.b.y)localObject5).add(localObject1);
+      ((d.g.b.y)localObject5).add(Integer.valueOf(this.mSu));
+      ((d.g.b.y)localObject5).add(localObject3);
+      ((d.g.b.y)localObject5).add(Integer.valueOf(bDr()));
+      localObject1 = this.ncu;
       if (localObject1 == null) {
-        j.ays("tmplParams");
+        d.g.b.k.aPZ("tmplParams");
       }
-      ((x)localObject4).add(((TmplParams)localObject1).kbP);
-      ((x)localObject4).add(aXq());
-      ((x)localObject4).add(this.kbm);
-      if (!this.kaM) {
-        break label1743;
-      }
-      i = 1;
-      ((x)localObject4).add(Integer.valueOf(i));
-      if (this.kaW) {
-        break label1748;
+      ((d.g.b.y)localObject5).add(((dch)localObject1).yaG);
+      ((d.g.b.y)localObject5).add(bDu());
+      ((d.g.b.y)localObject5).add(this.ndI);
+      if (!this.ndj) {
+        break label2319;
       }
       i = 1;
-      if (i == 0) {
-        break label1753;
-      }
-      i = 1;
-      ((x)localObject4).add(Integer.valueOf(i));
-      if (this.kaN) {
-        break label1758;
+      ((d.g.b.y)localObject5).add(Integer.valueOf(i));
+      if (this.nds) {
+        break label2324;
       }
       i = 1;
       if (i == 0) {
-        break label1763;
+        break label2329;
       }
       i = 1;
-      ((x)localObject4).add(Integer.valueOf(i));
-      ((x)localObject4).add(Integer.valueOf(this.kaX));
-      if (!this.kaR) {
-        break label1768;
+      ((d.g.b.y)localObject5).add(Integer.valueOf(i));
+      if (this.ndk) {
+        break label2334;
       }
       i = 1;
-      ((x)localObject4).add(Integer.valueOf(i));
-      if (!this.kaP) {
-        break label1773;
+      if (i == 0) {
+        break label2339;
       }
       i = 1;
-      ((x)localObject4).add(Integer.valueOf(i));
-      ((x)localObject4).add(Long.valueOf(this.kbc));
-      ((x)localObject4).dh(aXr());
-      ((x)localObject4).add(this.key);
-      if (!this.kaS) {
-        break label1778;
+      ((d.g.b.y)localObject5).add(Integer.valueOf(i));
+      ((d.g.b.y)localObject5).add(Integer.valueOf(this.ndt));
+      if (!this.ndn) {
+        break label2344;
       }
       i = 1;
-      ((x)localObject4).add(Integer.valueOf(i));
-      if (!this.kaU) {
-        break label1783;
+      ((d.g.b.y)localObject5).add(Integer.valueOf(i));
+      if (!this.ndl) {
+        break label2349;
       }
       i = 1;
-      ((x)localObject4).add(Integer.valueOf(i));
-      ((x)localObject4).add(Long.valueOf(this.kaw));
-      ((h)localObject3).e(16874, ((x)localObject4).toArray(new Object[((x)localObject4).ceo.size()]));
-      com.tencent.mm.plugin.webview.preload.a.JZ(0);
-      if (this.kaS)
+      ((d.g.b.y)localObject5).add(Integer.valueOf(i));
+      ((d.g.b.y)localObject5).add(Long.valueOf(this.ndy));
+      ((d.g.b.y)localObject5).eI(bDv());
+      ((d.g.b.y)localObject5).add(this.key);
+      if (!this.ndo) {
+        break label2354;
+      }
+      i = 1;
+      ((d.g.b.y)localObject5).add(Integer.valueOf(i));
+      if (!this.ndq) {
+        break label2359;
+      }
+      i = 1;
+      ((d.g.b.y)localObject5).add(Integer.valueOf(i));
+      ((d.g.b.y)localObject5).add(Long.valueOf(this.ncU));
+      ((com.tencent.mm.plugin.report.service.h)localObject4).f(16874, ((d.g.b.y)localObject5).toArray(new Object[((d.g.b.y)localObject5).cTm.size()]));
+      com.tencent.mm.plugin.webview.g.a.SW(0);
+      if (this.ndo)
       {
-        com.tencent.mm.plugin.webview.preload.a.JZ(111);
-        localObject1 = this.jZV;
+        com.tencent.mm.plugin.webview.g.a.SW(111);
+        localObject1 = this.ncu;
         if (localObject1 == null) {
-          j.ays("tmplParams");
+          d.g.b.k.aPZ("tmplParams");
         }
-        com.tencent.mm.plugin.webview.preload.a.gK(((TmplParams)localObject1).uYL, 232);
+        com.tencent.mm.plugin.webview.g.a.fL(((dch)localObject1).reportId, 232);
       }
-      if (this.kaU) {
-        com.tencent.mm.plugin.webview.preload.a.JZ(113);
+      if (this.ndq) {
+        com.tencent.mm.plugin.webview.g.a.SW(113);
       }
-      com.tencent.mm.plugin.webview.preload.a.ai(1, this.kbc);
-      com.tencent.mm.plugin.webview.preload.a.ai(2, this.kaf);
-      l1 = this.kap - this.kad;
-      if (!this.kaW) {
-        break label1788;
+      com.tencent.mm.plugin.webview.g.a.aA(1, this.ndy);
+      com.tencent.mm.plugin.webview.g.a.aA(2, this.ncD);
+      l1 = this.ncN - this.ncB;
+      if (!this.nds) {
+        break label2364;
       }
-      com.tencent.mm.plugin.webview.preload.a.ai(10, this.kbc);
-      com.tencent.mm.plugin.webview.preload.a.ai(11, this.kaf);
-      com.tencent.mm.plugin.webview.preload.a.ai(12, l1);
-      com.tencent.mm.plugin.webview.preload.a.ai(13, this.kaz - this.kax);
-      com.tencent.mm.plugin.webview.preload.a.ai(14, this.kav - this.kau);
-      com.tencent.mm.plugin.webview.preload.a.ai(15, this.kas - this.kar);
-      ab.i(this.TAG, "terry performance report:" + this.kad + '\n' + e.a(aXr(), null, null, null, 0, null, null, 63));
-      AppMethodBeat.o(14839);
-      return;
+      com.tencent.mm.plugin.webview.g.a.aA(10, this.ndy);
+      com.tencent.mm.plugin.webview.g.a.aA(11, this.ncD);
+      com.tencent.mm.plugin.webview.g.a.aA(12, l1);
+      com.tencent.mm.plugin.webview.g.a.aA(13, this.ncW - this.ncV);
+      com.tencent.mm.plugin.webview.g.a.aA(14, this.ncT - this.ncS);
+      com.tencent.mm.plugin.webview.g.a.aA(15, this.ncQ - this.ncP);
+      localObject1 = "[" + j.a((Iterable)e.R(bDv()), null, null, null, 0, null, null, 63) + ']';
+      localObject3 = d.u.P("section", "[debug]");
+      localObject4 = d.u.P("info", bDq());
+      localObject5 = d.u.P("settings", I((CharSequence)""));
+      localObject6 = d.u.P("section", "[process]");
+      localObject7 = d.u.P("process", bDu());
+      localo1 = d.u.P("state", bDw());
+      localo2 = d.u.P("section", "[webview]");
+      localo3 = d.u.P("kind", this.ndI);
+      localo4 = d.u.P("state", bDx());
+      localo5 = d.u.P("section", "[tmpl]");
+      localObject8 = this.ncu;
+      if (localObject8 == null) {
+        d.g.b.k.aPZ("tmplParams");
+      }
+      localObject8 = d.u.P("uid", ((dch)localObject8).yaG);
+      localObject9 = this.ncu;
+      if (localObject9 == null) {
+        d.g.b.k.aPZ("tmplParams");
+      }
+      localObject9 = d.u.P("tmplType", String.valueOf(((dch)localObject9).nee));
+      localObject10 = this.ncu;
+      if (localObject10 == null) {
+        d.g.b.k.aPZ("tmplParams");
+      }
+      localObject10 = d.u.P("version", String.valueOf(((dch)localObject10).version));
+      localObject11 = this.ncu;
+      if (localObject11 == null) {
+        d.g.b.k.aPZ("tmplParams");
+      }
+      localObject11 = d.u.P("md5", ((dch)localObject11).md5);
+      localdch = this.ncu;
+      if (localdch == null) {
+        d.g.b.k.aPZ("tmplParams");
+      }
+      localObject3 = j.listOf(new o[] { localObject3, localObject4, localObject5, localObject6, localObject7, localo1, localo2, localo3, localo4, localo5, localObject8, localObject9, localObject10, localObject11, d.u.P("time", nF(localdch.wLF)), d.u.P("state", bDy()), d.u.P("section", "[data]"), d.u.P("dataSize", aM(bDr() / 1024.0F) + "Kb"), d.u.P("dataTime", String.valueOf(this.ndC)), d.u.P("cached", nF(bDs())), d.u.P("version", String.valueOf(bDt())), d.u.P("expire in", this.ncv + 's'), d.u.P("scene", String.valueOf(this.mSu)), d.u.P("state", bDz()) });
+      if (localObject3 != null) {
+        break label2432;
+      }
+      paramq = new v("null cannot be cast to non-null type kotlin.collections.List<kotlin.Pair<kotlin.String, kotlin.String>>");
+      AppMethodBeat.o(6608);
+      throw paramq;
     }
+    label2308:
+    label2313:
+    label2319:
+    label2324:
+    label2329:
+    label2334:
+    label2339:
+    label2344:
+    label2349:
+    label2354:
+    label2359:
+    label2364:
+    return;
   }
   
-  public final TmplParams aXn()
+  public final void setKey(String paramString)
   {
-    AppMethodBeat.i(14834);
-    TmplParams localTmplParams = this.jZV;
-    if (localTmplParams == null) {
-      j.ays("tmplParams");
-    }
-    AppMethodBeat.o(14834);
-    return localTmplParams;
+    AppMethodBeat.i(193083);
+    d.g.b.k.h(paramString, "<set-?>");
+    this.key = paramString;
+    AppMethodBeat.o(193083);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(14841);
-    Object localObject1 = f.h.kbw;
-    f.i locali = new f.i(this);
-    localObject1 = f.j.kbx;
-    ab.v(this.TAG, "terry performance log:\n" + this.kbd + ',' + this.kbe + ',' + (this.kaz - this.kaq) + ',' + (Math.max(this.kaz, this.kav) - this.kaz) + ',' + (this.kar - Math.max(this.kaz, this.kav)) + ',' + this.kbf);
-    ab.v(this.TAG, "terry performance timestamp:\n " + e.a(aXr(), null, null, null, 0, null, null, 63));
-    Object localObject3 = new f.k(this);
-    localObject1 = new f.l(this);
-    Object localObject4 = new f.m(this);
-    f.n localn = new f.n(this);
-    Object localObject2 = new f.o(this);
-    localObject3 = new StringBuilder("\n            [debug]\n            info: ").append(aXo()).append("\n            settings: ").append(((f.k)localObject3).aXs()).append("\n\n            [process]\n            process: ").append(aXq()).append("\n            state: ").append(localn.aXs()).append("\n\n            [webview]\n            kind: ").append(this.kbm).append("\n            state: ").append(((f.m)localObject4).aXs()).append("\n\n            [tmpl]\n            uid: ");
-    localObject4 = this.jZV;
-    if (localObject4 == null) {
-      j.ays("tmplParams");
+    AppMethodBeat.i(6617);
+    g localg = new g(this);
+    ad.v(this.TAG, "terry performance log:\n" + this.ndz + ',' + this.ndA + ',' + (this.ncW - this.ncO) + ',' + (Math.max(this.ncW, this.ncT) - this.ncW) + ',' + (this.ncP - Math.max(this.ncW, this.ncT)) + ',' + this.ndB);
+    ad.v(this.TAG, "terry performance timestamp:\n " + e.a(bDv(), null, null, null, 0, null, null, 63));
+    Object localObject1 = new StringBuilder("\n            [debug]\n            info: ").append(bDq()).append("\n            settings: ").append(I((CharSequence)"\n")).append("\n\n            [process]\n            process: ").append(bDu()).append("\n            state: ").append(bDw()).append("\n\n            [webview]\n            kind: ").append(this.ndI).append("\n            state: ").append(bDx()).append("\n\n            [tmpl]\n            uid: ");
+    Object localObject2 = this.ncu;
+    if (localObject2 == null) {
+      d.g.b.k.aPZ("tmplParams");
     }
-    localObject3 = ((StringBuilder)localObject3).append(((TmplParams)localObject4).kbP).append("\n            tmplType: ");
-    localObject4 = this.jZV;
-    if (localObject4 == null) {
-      j.ays("tmplParams");
+    localObject1 = ((StringBuilder)localObject1).append(((dch)localObject2).yaG).append("\n            tmplType: ");
+    localObject2 = this.ncu;
+    if (localObject2 == null) {
+      d.g.b.k.aPZ("tmplParams");
     }
-    localObject3 = ((StringBuilder)localObject3).append(((TmplParams)localObject4).kbM).append("\n            version: ");
-    localObject4 = this.jZV;
-    if (localObject4 == null) {
-      j.ays("tmplParams");
+    localObject1 = ((StringBuilder)localObject1).append(((dch)localObject2).nee).append("\n            version: ");
+    localObject2 = this.ncu;
+    if (localObject2 == null) {
+      d.g.b.k.aPZ("tmplParams");
     }
-    localObject3 = ((StringBuilder)localObject3).append(((TmplParams)localObject4).version).append("\n            md5: ");
-    localObject4 = this.jZV;
-    if (localObject4 == null) {
-      j.ays("tmplParams");
+    localObject1 = ((StringBuilder)localObject1).append(((dch)localObject2).version).append("\n            md5: ");
+    localObject2 = this.ncu;
+    if (localObject2 == null) {
+      d.g.b.k.aPZ("tmplParams");
     }
-    localObject3 = ((StringBuilder)localObject3).append(((TmplParams)localObject4).cqq).append("\n            time: ");
-    localObject4 = this.jZV;
-    if (localObject4 == null) {
-      j.ays("tmplParams");
+    localObject1 = ((StringBuilder)localObject1).append(((dch)localObject2).md5).append("\n            time: ");
+    localObject2 = this.ncu;
+    if (localObject2 == null) {
+      d.g.b.k.aPZ("tmplParams");
     }
-    localObject2 = ((StringBuilder)localObject3).append(f.j.hZ(((TmplParams)localObject4).rjN)).append("\n            state: ").append(((f.o)localObject2).aXs()).append("\n\n            [data]\n            dataSize: ").append(f.h.d(aXp() / 1024.0F, 2)).append("Kb\n            dataTime: ").append(this.kbg).append("\n            cached: ").append(f.j.hZ(((Number)this.kaa.getValue()).longValue())).append("\n            version: ").append(((Number)this.kab.getValue()).intValue()).append("\n            expire in: ").append(this.jZW).append("s\n            scene: ").append(this.kbq).append("\n            state: ").append(((f.l)localObject1).aXs()).append("\n\n            [performance](ms)\n            finishType: ").append(this.kbb).append("\n            finishTime: ").append(this.kbc);
-    if (this.kbc != Math.max(this.kbj, this.kbl)) {}
-    for (localObject1 = "/" + locali.hZ(this.kbl);; localObject1 = "")
+    localObject2 = ((StringBuilder)localObject1).append(nF(((dch)localObject2).wLF)).append("\n            state: ").append(bDy()).append("\n\n            [data]\n            dataSize: ").append(aM(bDr() / 1024.0F)).append("Kb\n            dataTime: ").append(this.ndC).append("\n            cached: ").append(nF(bDs())).append("\n            version: ").append(bDt()).append("\n            expire in: ").append(this.ncv).append("s\n            scene: ").append(this.mSu).append("\n            state: ").append(bDz()).append("\n\n            [performance](ms)\n            finishType: ").append(this.ndx).append("\n            finishTime: ").append(this.ndy);
+    if (this.ndy != Math.max(this.ndF, this.ndH)) {}
+    for (localObject1 = "/" + localg.nG(this.ndH);; localObject1 = "")
     {
-      localObject1 = (String)localObject1 + "\n            firstScreenFinish: " + locali.hZ(this.kaf) + '/' + locali.hZ(this.kbl) + "\n            a8keyFinish: " + this.kbj + "\n\n            client:\n            TmplCostTime: " + (this.kav - this.kau) + "\n            WebViewUICostTime: " + (this.kaz - this.kax) + "\n            NotifyPageCostTime: " + (this.kaw - this.kas) + "\n\n            1.bindWebViewCostTime: " + this.kbd + "\n            2.createWebViewCostTime: " + this.kbe + "\n            3.getPageDataCostTime: " + this.kbg + "\n            4.injectCostTime: " + locali.hZ(this.kbf) + "\n            eval cost: " + this.kac + "\n\n            js:\n            4.1.onReceivePageData: " + (this.kat - this.kai) + "\n            5.ctWebCompile: " + this.kah + "\n            6.renderTime: " + this.kag + "\n\n            [js]webReceivePageDataTime: " + this.kbi + "\n            a8KeyFinishTime: " + this.kbj + "\n            getA8KeyCostTime: " + this.kbk + "\n        ";
-      j.q(localObject1, "receiver$0");
-      localObject1 = m.jv((String)localObject1, "");
-      AppMethodBeat.o(14841);
+      localObject1 = n.aRa((String)localObject1 + "\n            firstScreenFinish: " + localg.nG(this.ncD) + '/' + localg.nG(this.ndH) + "\n            a8keyFinish: " + this.ndF + "\n\n            client:\n            TmplCostTime: " + (this.ncT - this.ncS) + "\n            WebViewUICostTime: " + (this.ncW - this.ncV) + "\n            NotifyPageCostTime: " + (this.ncU - this.ncQ) + "\n\n            1.bindWebViewCostTime: " + this.ndz + "\n            2.createWebViewCostTime: " + this.ndA + "\n            3.getPageDataCostTime: " + this.ndC + "\n            4.injectCostTime: " + localg.nG(this.ndB) + "\n            eval cost: " + this.ncA + "\n\n            js:\n            4.1.onReceivePageData: " + (this.ncR - this.ncG) + "\n            5.ctWebCompile: " + this.ncF + "\n            6.renderTime: " + this.ncE + "\n\n            [js]webReceivePageDataTime: " + this.ndE + "\n            a8KeyFinishTime: " + this.ndF + "\n            getA8KeyCostTime: " + this.ndG + "\n        ");
+      AppMethodBeat.o(6617);
       return localObject1;
+    }
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/preload/Kv15862$Companion;", "", "()V", "RELAUNCH_STATE_DEFAULT", "", "RELAUNCH_STATE_PROCESS", "RELAUNCH_STATE_WEBVIEW", "plugin-brandservice_release"})
+  public static final class a {}
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  static final class b
+    extends d.g.b.l
+    implements d.g.a.a<String>
+  {
+    b(f paramf)
+    {
+      super();
+    }
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  static final class c
+    extends d.g.b.l
+    implements d.g.a.a<Long>
+  {
+    c(f paramf)
+    {
+      super();
+    }
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  static final class d
+    extends d.g.b.l
+    implements d.g.a.a<Integer>
+  {
+    d(f paramf)
+    {
+      super();
+    }
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  static final class e
+    extends d.g.b.l
+    implements d.g.a.a<Integer>
+  {
+    e(f paramf)
+    {
+      super();
+    }
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "", "invoke", "()[Ljava/lang/Long;"})
+  static final class f
+    extends d.g.b.l
+    implements d.g.a.a<Long[]>
+  {
+    f(f paramf)
+    {
+      super();
+    }
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"verify", "", "", "invoke"})
+  static final class g
+    extends d.g.b.l
+    implements b<Long, String>
+  {
+    g(f paramf)
+    {
+      super();
+    }
+    
+    public final String nG(long paramLong)
+    {
+      AppMethodBeat.i(6598);
+      if (f.a(this.ndP, paramLong))
+      {
+        AppMethodBeat.o(6598);
+        return String.valueOf(paramLong);
+      }
+      AppMethodBeat.o(6598);
+      return "NaN";
+    }
+  }
+  
+  @d.l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "invoke"})
+  static final class h
+    extends d.g.b.l
+    implements d.g.a.a<String>
+  {
+    public static final h ndR;
+    
+    static
+    {
+      AppMethodBeat.i(6600);
+      ndR = new h();
+      AppMethodBeat.o(6600);
+    }
+    
+    h()
+    {
+      super();
     }
   }
 }

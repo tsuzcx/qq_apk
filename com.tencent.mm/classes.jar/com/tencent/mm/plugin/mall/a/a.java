@@ -1,42 +1,43 @@
 package com.tencent.mm.plugin.mall.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.protocal.protobuf.bkw;
-import com.tencent.mm.protocal.protobuf.ib;
-import com.tencent.mm.protocal.protobuf.ic;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.c;
+import com.tencent.mm.protocal.protobuf.byw;
+import com.tencent.mm.protocal.protobuf.iy;
+import com.tencent.mm.protocal.protobuf.iz;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class a
-  extends com.tencent.mm.ai.a<ic>
+  extends c<iz>
 {
-  public List<bkw> oxE;
+  public List<byw> tse;
   
-  public a(LinkedList<bkw> paramLinkedList, int paramInt)
+  public a(LinkedList<byw> paramLinkedList, int paramInt)
   {
-    AppMethodBeat.i(43092);
-    ib localib = new ib();
-    localib.wuA = paramLinkedList;
-    localib.wuB = paramInt;
-    localib.wuC = 0;
+    AppMethodBeat.i(65987);
+    iy localiy = new iy();
+    localiy.CEr = paramLinkedList;
+    localiy.CEs = paramInt;
+    localiy.CEt = 0;
     b.a locala = new b.a();
-    locala.fsX = localib;
-    locala.fsY = new ic();
+    locala.gUU = localiy;
+    locala.gUV = new iz();
     locala.funcId = 2938;
     locala.uri = "/cgi-bin/micromsg-bin/batchfunctionoperate";
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    this.oxE = paramLinkedList;
-    ab.i("MicroMsg.CgiBatchFunctionOperate", "TpaCountry: %s", new Object[] { Integer.valueOf(paramInt) });
-    AppMethodBeat.o(43092);
+    this.rr = locala.atI();
+    this.tse = paramLinkedList;
+    ad.i("MicroMsg.CgiBatchFunctionOperate", "TpaCountry: %s", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.o(65987);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.a.a
  * JD-Core Version:    0.7.0.1
  */

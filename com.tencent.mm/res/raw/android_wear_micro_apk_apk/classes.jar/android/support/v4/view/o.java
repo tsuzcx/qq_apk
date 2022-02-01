@@ -5,25 +5,25 @@ import android.database.DataSetObserver;
 
 public abstract class o
 {
-  private final DataSetObservable jV = new DataSetObservable();
+  private final DataSetObservable lS = new DataSetObservable();
   
-  public static void bp()
+  public static void bG()
   {
     throw new UnsupportedOperationException("Required method destroyItem was not overridden");
   }
   
-  public abstract boolean bq();
+  public abstract boolean bH();
   
   public abstract int getCount();
   
   public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
-    this.jV.registerObserver(paramDataSetObserver);
+    this.lS.registerObserver(paramDataSetObserver);
   }
   
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
-    this.jV.unregisterObserver(paramDataSetObserver);
+    this.lS.unregisterObserver(paramDataSetObserver);
   }
 }
 

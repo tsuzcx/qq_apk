@@ -5,22 +5,22 @@ import java.lang.ref.WeakReference;
 final class ae
   extends cv
 {
-  private final WeakReference<aa> NI;
+  private final WeakReference<aa> Px;
   
   ae(aa paramaa)
   {
-    this.NI = new WeakReference(paramaa);
+    this.Px = new WeakReference(paramaa);
   }
   
   public final void a(final zzbaw paramzzbaw)
   {
-    final aa localaa = (aa)this.NI.get();
+    final aa localaa = (aa)this.Px.get();
     if (localaa == null) {
       return;
     }
     aa.d(localaa).a(new an(localaa)
     {
-      public final void iu()
+      public final void iC()
       {
         aa.a(localaa, paramzzbaw);
       }

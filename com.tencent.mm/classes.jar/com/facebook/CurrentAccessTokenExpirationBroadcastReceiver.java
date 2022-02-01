@@ -10,16 +10,16 @@ public final class CurrentAccessTokenExpirationBroadcastReceiver
 {
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(71573);
+    AppMethodBeat.i(17009);
     if ("com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED".equals(paramIntent.getAction())) {
       AccessTokenManager.getInstance().currentAccessTokenChanged();
     }
-    AppMethodBeat.o(71573);
+    AppMethodBeat.o(17009);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.CurrentAccessTokenExpirationBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

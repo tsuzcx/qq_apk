@@ -8,17 +8,17 @@ import java.util.Set;
 
 public final class b
 {
-  public static <K, V> String y(Map<K, V> paramMap)
+  public static <K, V> String D(Map<K, V> paramMap)
   {
-    AppMethodBeat.i(77305);
+    AppMethodBeat.i(40574);
     if (paramMap == null)
     {
-      AppMethodBeat.o(77305);
+      AppMethodBeat.o(40574);
       return "";
     }
     if (paramMap.isEmpty())
     {
-      AppMethodBeat.o(77305);
+      AppMethodBeat.o(40574);
       return "{}";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -28,7 +28,7 @@ public final class b
       if (!paramMap.hasNext())
       {
         paramMap = "{" + localStringBuilder.substring(1) + "}";
-        AppMethodBeat.o(77305);
+        AppMethodBeat.o(40574);
         return paramMap;
       }
       Map.Entry localEntry = (Map.Entry)paramMap.next();
@@ -38,7 +38,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     org.b.g.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,61 @@
 package com.tencent.mm.plugin.avatar;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.o;
+import com.tencent.mm.ak.p;
 import com.tencent.mm.kernel.api.bucket.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.t;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class c
-  extends q
+  extends t
   implements b
 {
-  private static c jyt;
+  private static c mpP;
   
   private c()
   {
-    super(o.class);
+    super(p.class);
   }
   
-  public static c aSD()
+  public static c bvL()
   {
     try
     {
-      AppMethodBeat.i(79053);
-      if (jyt == null) {
-        jyt = new c();
+      AppMethodBeat.i(151426);
+      if (mpP == null) {
+        mpP = new c();
       }
-      c localc = jyt;
-      AppMethodBeat.o(79053);
+      c localc = mpP;
+      AppMethodBeat.o(151426);
       return localc;
     }
     finally {}
   }
   
-  public static String aSE()
+  public static String bvM()
   {
-    AppMethodBeat.i(79055);
-    String str = g.RL().cachePath + "avatar/";
-    AppMethodBeat.o(79055);
+    AppMethodBeat.i(151428);
+    String str = g.afB().cachePath + "avatar/";
+    AppMethodBeat.o(151428);
     return str;
   }
   
-  public final List<String> RR()
+  public final List<String> afI()
   {
-    AppMethodBeat.i(79054);
+    AppMethodBeat.i(151427);
     LinkedList localLinkedList = new LinkedList();
     Collections.addAll(localLinkedList, new String[] { "avatar/" });
-    AppMethodBeat.o(79054);
+    AppMethodBeat.o(151427);
     return localLinkedList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.avatar.c
  * JD-Core Version:    0.7.0.1
  */

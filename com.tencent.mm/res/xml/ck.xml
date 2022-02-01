@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceSmallCategory android:key="settings_tag_name_category" />
-    <Preference android:title="@string/eto" android:key="settings_tag_name" android:layout="@layout/afi" />
-    <PreferenceTitleCategory android:title="@string/etq" android:key="outside" />
-    <PreferenceTitleCategory android:title="@string/etp" android:key="black" />
-    <PreferenceTitleCategory android:title="@string/etl" android:key="group" />
-    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
-    <PreferenceSmallCategory android:key="delete_tag_name_category" />
-    <Preference android:title="@string/e7y" android:key="delete_tag_name" android:layout="@layout/aap" />
-    <PreferenceSmallCategory />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <Preference android:key="settings_dark" android:layout="@layout/aop" android:title="@string/f5n" />
+    <PreferenceSmallCategory android:key="small_divider" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_landscape_mode" android:title="@string/f6w" />
+    <CheckBoxPreference android:defaultValue="false" android:key="settings_nfc_switch" android:title="@string/f91" />
+    <Preference android:key="settings_silence_update_mode" android:layout="@layout/aop" android:title="@string/fa5" />
+    <Preference android:key="settings_language" android:layout="@layout/aop" android:title="@string/f6x" />
+    <Preference android:key="settings_text_size" android:layout="@layout/aop" android:title="@string/fbc" />
+    <Preference android:key="settings_take_photo" android:layout="@layout/aop" android:title="@string/f9g" />
+    <Preference android:key="settings_manage_findmoreui" android:layout="@layout/aop" android:title="@string/f7a" />
+    <IconPreference android:key="settings_plugins" android:title="@string/f9n" />
+    <Preference android:key="settings_traffic_statistic" android:layout="@layout/aop" android:title="@string/fbi" />
+    <Preference android:key="settngs_clean" android:layout="@layout/aop" android:title="@string/f8u" />
+    <Preference android:key="settngs_matrix_trace" android:layout="@layout/aop" android:title="@string/f7g" />
+    <PreferenceCategory />
 </PreferenceScreen>

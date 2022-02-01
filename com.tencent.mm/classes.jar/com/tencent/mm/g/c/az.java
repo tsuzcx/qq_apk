@@ -8,32 +8,13 @@ public abstract class az
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dhB;
-  private static final int dhV = "updateTime".hashCode();
-  private static final int did;
-  private static final int dsg = "id".hashCode();
-  private static final int dsh = "cacheKey".hashCode();
-  private static final int dsi;
+  private static final int ejL = "msgId".hashCode();
+  private static final int ewR = "transferId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dhT = true;
-  private boolean dhZ = true;
-  private boolean dhk = true;
-  private boolean dsd = true;
-  private boolean dse = true;
-  private boolean dsf = true;
-  public String field_appId;
-  public String field_cacheKey;
-  public String field_data;
-  public String field_id;
-  public int field_interval;
-  public long field_updateTime;
-  
-  static
-  {
-    dhB = "appId".hashCode();
-    did = "data".hashCode();
-    dsi = "interval".hashCode();
-  }
+  private boolean ejH = true;
+  private boolean ewQ = true;
+  public long field_msgId;
+  public String field_transferId;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -48,27 +29,20 @@ public abstract class az
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dsg != k) {
-        break label60;
+      if (ejL != k) {
+        break label65;
       }
-      this.field_id = paramCursor.getString(i);
+      this.field_msgId = paramCursor.getLong(i);
+      this.ejH = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (dsh == k) {
-        this.field_cacheKey = paramCursor.getString(i);
-      } else if (dhB == k) {
-        this.field_appId = paramCursor.getString(i);
-      } else if (did == k) {
-        this.field_data = paramCursor.getString(i);
-      } else if (dsi == k) {
-        this.field_interval = paramCursor.getInt(i);
-      } else if (dhV == k) {
-        this.field_updateTime = paramCursor.getLong(i);
+      label65:
+      if (ewR == k) {
+        this.field_transferId = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -78,23 +52,11 @@ public abstract class az
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dsd) {
-      localContentValues.put("id", this.field_id);
+    if (this.ejH) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.dse) {
-      localContentValues.put("cacheKey", this.field_cacheKey);
-    }
-    if (this.dhk) {
-      localContentValues.put("appId", this.field_appId);
-    }
-    if (this.dhZ) {
-      localContentValues.put("data", this.field_data);
-    }
-    if (this.dsf) {
-      localContentValues.put("interval", Integer.valueOf(this.field_interval));
-    }
-    if (this.dhT) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    if (this.ewQ) {
+      localContentValues.put("transferId", this.field_transferId);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -104,7 +66,7 @@ public abstract class az
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.az
  * JD-Core Version:    0.7.0.1
  */

@@ -2,63 +2,62 @@ package com.tencent.mm.plugin.recharge.ui;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.cd.a;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet.a.q;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.w;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import com.tencent.mm.ui.y;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class b
   extends BaseAdapter
 {
-  ArrayList<q> pVI;
-  b.a pVJ;
-  private List<String> pVK;
+  ArrayList<q> uXC;
+  a uXD;
+  private List<String> uXE;
   
   public b()
   {
-    AppMethodBeat.i(44248);
-    this.pVI = null;
-    this.pVJ = null;
-    this.pVK = new ArrayList(bo.ih((String)g.RL().Ru().get(ac.a.yKI, ""), ","));
-    AppMethodBeat.o(44248);
+    AppMethodBeat.i(67157);
+    this.uXC = null;
+    this.uXD = null;
+    this.uXE = new ArrayList(bt.kS((String)com.tencent.mm.kernel.g.afB().afk().get(ae.a.FtU, ""), ","));
+    AppMethodBeat.o(67157);
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(44249);
-    if (this.pVI == null)
+    AppMethodBeat.i(67158);
+    if (this.uXC == null)
     {
-      AppMethodBeat.o(44249);
+      AppMethodBeat.o(67158);
       return 0;
     }
-    int i = this.pVI.size();
-    AppMethodBeat.o(44249);
+    int i = this.uXC.size();
+    AppMethodBeat.o(67158);
     return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    AppMethodBeat.i(44250);
-    Object localObject = this.pVI.get(paramInt);
-    AppMethodBeat.o(44250);
+    AppMethodBeat.i(67159);
+    Object localObject = this.uXC.get(paramInt);
+    AppMethodBeat.o(67159);
     return localObject;
   }
   
@@ -69,107 +68,136 @@ public final class b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(44251);
-    q localq = (q)getItem(paramInt);
-    b localb;
+    AppMethodBeat.i(67160);
+    final q localq = (q)getItem(paramInt);
+    final b localb;
     if (paramView == null)
     {
-      paramView = w.hM(paramViewGroup.getContext()).inflate(2130970535, paramViewGroup, false);
+      paramView = y.js(paramViewGroup.getContext()).inflate(2131495210, paramViewGroup, false);
       localb = new b((byte)0);
-      localb.hsI = ((TextView)paramView.findViewById(2131821115));
-      localb.gve = ((TextView)paramView.findViewById(2131820737));
-      localb.pVO = ((TextView)paramView.findViewById(2131827095));
-      localb.pVP = ((ImageView)paramView.findViewById(2131827094));
+      localb.lEA = ((TextView)paramView.findViewById(2131298996));
+      localb.ftj = ((TextView)paramView.findViewById(2131302654));
+      localb.uXI = ((TextView)paramView.findViewById(2131303421));
+      localb.uXJ = ((ImageView)paramView.findViewById(2131303861));
       paramView.setTag(localb);
-      localb.gve.setText(localq.name);
-      if (bo.isNullOrNil(localq.desc)) {
-        break label647;
+      localb.ftj.setText(localq.name);
+      if (bt.isNullOrNil(localq.desc)) {
+        break label645;
       }
-      localb.hsI.setVisibility(0);
-      localb.hsI.setText(localq.desc);
+      localb.lEA.setVisibility(0);
+      localb.lEA.setText(localq.desc);
       label153:
-      if (bo.isNullOrNil(localq.tUF)) {
-        break label660;
+      if (bt.isNullOrNil(localq.zOQ)) {
+        break label658;
       }
-      localb.pVO.setVisibility(0);
-      localb.pVO.setText(localq.tUF);
+      localb.uXI.setVisibility(0);
+      localb.uXI.setText(localq.zOQ);
       label186:
       if (localq.status != 1) {
-        break label673;
+        break label671;
       }
       paramView.setEnabled(true);
-      localb.hsI.setEnabled(true);
-      localb.gve.setEnabled(true);
+      localb.lEA.setEnabled(true);
+      localb.ftj.setEnabled(true);
+      label218:
+      if ((localq.zOU != 1) || (this.uXE.contains(localq.zOV))) {
+        break label697;
+      }
+      ad.d("MicroMsg.PhoneRechargeAdapter", "show recommendid: %s", new Object[] { localq.zOV });
+      localb.uXJ.setVisibility(0);
     }
     for (;;)
     {
-      if ((localq.tUJ == 1) && (!this.pVK.contains(localq.tUK)))
+      if ((localq.type == 1) && (localq.zOR.equals("1")) && (!localq.zOS.equals("0")))
       {
-        ab.d("MicroMsg.PhoneRechargeAdapter", "show recommendid: %s", new Object[] { localq.tUK });
-        localb.pVP.setVisibility(0);
-      }
-      if ((localq.type == 1) && (localq.tUG.equals("1")) && (!localq.tUH.equals("0")))
-      {
-        Object localObject1 = paramViewGroup.getContext();
-        paramInt = Color.parseColor(localq.tUH);
-        Object localObject2 = new GradientDrawable();
-        ((GradientDrawable)localObject2).setShape(0);
-        ((GradientDrawable)localObject2).setCornerRadius(a.fromDPToPix((Context)localObject1, 2));
-        ((GradientDrawable)localObject2).setColor(paramInt);
+        Object localObject = paramViewGroup.getContext();
+        paramInt = com.tencent.mm.plugin.wallet_core.utils.g.bW(localq.zOS, false);
         GradientDrawable localGradientDrawable1 = new GradientDrawable();
         localGradientDrawable1.setShape(0);
-        localGradientDrawable1.setCornerRadius(a.fromDPToPix((Context)localObject1, 2));
-        localGradientDrawable1.setStroke(2, a.m((Context)localObject1, 2131690383));
+        localGradientDrawable1.setCornerRadius(a.fromDPToPix((Context)localObject, 2));
+        localGradientDrawable1.setColor(paramInt);
         GradientDrawable localGradientDrawable2 = new GradientDrawable();
         localGradientDrawable2.setShape(0);
-        localGradientDrawable2.setCornerRadius(a.fromDPToPix((Context)localObject1, 2));
-        localGradientDrawable2.setColor(a.m((Context)localObject1, 2131690381));
-        localGradientDrawable2.setStroke(2, paramInt);
-        localObject1 = new StateListDrawable();
-        ((StateListDrawable)localObject1).addState(new int[] { 16842919 }, (Drawable)localObject2);
-        ((StateListDrawable)localObject1).addState(new int[] { -16842910 }, localGradientDrawable1);
-        ((StateListDrawable)localObject1).addState(new int[0], localGradientDrawable2);
+        localGradientDrawable2.setCornerRadius(a.fromDPToPix((Context)localObject, 2));
+        localGradientDrawable2.setStroke(2, a.n((Context)localObject, 2131099658));
+        GradientDrawable localGradientDrawable3 = new GradientDrawable();
+        localGradientDrawable3.setShape(0);
+        localGradientDrawable3.setCornerRadius(a.fromDPToPix((Context)localObject, 2));
+        localGradientDrawable3.setColor(a.n((Context)localObject, 2131100788));
+        localGradientDrawable3.setStroke(2, paramInt);
+        localObject = new StateListDrawable();
+        ((StateListDrawable)localObject).addState(new int[] { 16842919 }, localGradientDrawable1);
+        ((StateListDrawable)localObject).addState(new int[] { -16842910 }, localGradientDrawable2);
+        ((StateListDrawable)localObject).addState(new int[0], localGradientDrawable3);
         paramViewGroup = paramViewGroup.getContext();
-        paramInt = Color.parseColor(localq.tUH);
-        localObject2 = new int[] { 16842919 };
-        int i = a.m(paramViewGroup, 2131690709);
-        int j = a.m(paramViewGroup, 2131690379);
-        paramViewGroup = new ColorStateList(new int[][] { localObject2, { -16842910 }, new int[0] }, new int[] { i, j, paramInt });
-        localb.hsI.setTextColor(paramViewGroup);
-        localb.gve.setTextColor(paramViewGroup);
-        paramView.setBackground((Drawable)localObject1);
+        paramInt = com.tencent.mm.plugin.wallet_core.utils.g.bW(localq.zOS, false);
+        int i = a.n(paramViewGroup, 2131101179);
+        int j = a.n(paramViewGroup, 2131100786);
+        paramViewGroup = new ColorStateList(new int[][] { { 16842919 }, { -16842910 }, new int[0] }, new int[] { i, j, paramInt });
+        localb.lEA.setTextColor(paramViewGroup);
+        localb.ftj.setTextColor(paramViewGroup);
+        paramView.setBackground((Drawable)localObject);
       }
-      paramView.setOnClickListener(new b.1(this, localq, localb));
-      AppMethodBeat.o(44251);
+      paramView.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(67156);
+          if (b.a(b.this) != null)
+          {
+            if (!b.b(b.this).contains(localq.zOV))
+            {
+              ad.i("MicroMsg.PhoneRechargeAdapter", "mark recommendid: %s", new Object[] { localq.zOV });
+              if (localq.zOV != null)
+              {
+                b.b(b.this).add(localq.zOV);
+                com.tencent.mm.kernel.g.afB().afk().set(ae.a.FtU, bt.n(b.b(b.this), ","));
+                localb.uXJ.setVisibility(8);
+              }
+            }
+            b.a(b.this).a(localq);
+          }
+          AppMethodBeat.o(67156);
+        }
+      });
+      AppMethodBeat.o(67160);
       return paramView;
       localb = (b)paramView.getTag();
       break;
-      label647:
-      localb.hsI.setVisibility(8);
+      label645:
+      localb.lEA.setVisibility(8);
       break label153;
-      label660:
-      localb.pVO.setVisibility(8);
+      label658:
+      localb.uXI.setVisibility(8);
       break label186;
-      label673:
+      label671:
       paramView.setEnabled(false);
-      localb.hsI.setEnabled(false);
-      localb.gve.setEnabled(false);
+      localb.lEA.setEnabled(false);
+      localb.ftj.setEnabled(false);
+      break label218;
+      label697:
+      localb.uXJ.setVisibility(8);
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(q paramq);
   }
   
   final class b
   {
-    TextView gve;
-    TextView hsI;
-    TextView pVO;
-    ImageView pVP;
+    TextView ftj;
+    TextView lEA;
+    TextView uXI;
+    ImageView uXJ;
     
     private b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.b
  * JD-Core Version:    0.7.0.1
  */

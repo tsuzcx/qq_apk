@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelsns.SnsAdClick;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bi;
 
 public final class qk
   extends b
 {
-  public a cGZ;
+  public a dvZ;
   
   public qk()
   {
@@ -16,16 +16,18 @@ public final class qk
   
   private qk(byte paramByte)
   {
-    AppMethodBeat.i(59611);
-    this.cGZ = new a();
-    this.ymq = false;
+    AppMethodBeat.i(125628);
+    this.dvZ = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(59611);
+    AppMethodBeat.o(125628);
   }
   
   public static final class a
   {
-    public bi cmQ;
+    public SnsAdClick dvH;
+    public String dvK;
+    public int dwa;
   }
 }
 

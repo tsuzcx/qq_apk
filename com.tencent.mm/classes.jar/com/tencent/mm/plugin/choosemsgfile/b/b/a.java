@@ -3,60 +3,117 @@ package com.tencent.mm.plugin.choosemsgfile.b.b;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.plugin.choosemsgfile.ui.c;
+import com.tencent.mm.storage.bl;
 
 public abstract class a<T extends RecyclerView.v>
 {
-  protected int Fb;
-  protected int agc;
-  g kEI;
-  protected int kEJ = 0;
-  public bi kEz;
+  protected int LZ;
+  protected int anj;
+  g nLI;
+  protected int nLJ = 0;
+  public bl nLz;
   
   public a(g paramg)
   {
-    this.kEI = paramg;
+    this.nLI = paramg;
   }
   
-  public a(g paramg, bi parambi)
+  public a(g paramg, bl parambl)
   {
-    this.kEI = paramg;
-    this.kEz = parambi;
+    this.nLI = paramg;
+    this.nLz = parambl;
   }
   
   public void T(T paramT) {}
   
-  public void a(T paramT, int paramInt) {}
+  public void a(T paramT, int paramInt, a parama) {}
   
   public void a(View paramView, a parama) {}
   
   public final void a(boolean paramBoolean, a parama, T paramT)
   {
-    this.kEI.a(paramBoolean, parama, paramT);
+    this.nLI.a(paramBoolean, parama, paramT);
   }
   
-  protected final com.tencent.mm.plugin.choosemsgfile.b.d.a bgl()
+  public final void bNA()
   {
-    return this.kEI.bgw().bgl();
+    try
+    {
+      this.nLJ = 3;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public String bgm()
+  public final void bNB()
+  {
+    try
+    {
+      this.nLJ = 4;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void bNC()
+  {
+    try
+    {
+      this.nLJ = 5;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void bND()
+  {
+    try
+    {
+      this.nLJ = 0;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  protected final com.tencent.mm.plugin.choosemsgfile.b.d.a bNw()
+  {
+    return this.nLI.bNH().bNw();
+  }
+  
+  public String bNx()
   {
     return "";
   }
   
-  public int bgn()
+  public int bNy()
   {
     return 0;
   }
   
-  public final void bgo()
+  public final void bNz()
   {
     try
     {
-      this.kEJ = 1;
+      this.nLJ = 1;
       return;
     }
     finally
@@ -66,69 +123,18 @@ public abstract class a<T extends RecyclerView.v>
     }
   }
   
-  public final void bgp()
+  public final boolean bc()
   {
-    try
-    {
-      this.kEJ = 3;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return (this.nLJ == 4) || (this.nLJ == 5);
   }
   
-  public final void bgq()
+  public final void eR(int paramInt1, int paramInt2)
   {
     try
     {
-      this.kEJ = 4;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void bgr()
-  {
-    try
-    {
-      this.kEJ = 5;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void bgs()
-  {
-    try
-    {
-      this.kEJ = 0;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void dV(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      this.kEJ = 2;
-      this.Fb = paramInt1;
-      this.agc = paramInt2;
+      this.nLJ = 2;
+      this.LZ = paramInt1;
+      this.anj = paramInt2;
       return;
     }
     finally
@@ -140,15 +146,15 @@ public abstract class a<T extends RecyclerView.v>
   
   public boolean equals(Object paramObject)
   {
-    if ((this.kEz != null) && ((paramObject instanceof bi)) && (paramObject != null)) {
-      return this.kEz.field_msgId == ((bi)paramObject).field_msgId;
+    if ((this.nLz != null) && ((paramObject instanceof bl)) && (paramObject != null)) {
+      return this.nLz.field_msgId == ((bl)paramObject).field_msgId;
     }
     return super.equals(paramObject);
   }
   
   protected final Context getContext()
   {
-    return this.kEI.bgw().getContext();
+    return this.nLI.bNH().getContext();
   }
   
   public String getFileName()
@@ -158,29 +164,24 @@ public abstract class a<T extends RecyclerView.v>
   
   public long getTimeStamp()
   {
-    return this.kEz.field_createTime;
+    return this.nLz.field_createTime;
   }
   
   public abstract int getType();
   
   public final boolean isEnable()
   {
-    return (!this.kEI.bgw().bgl().jU()) || (this.kEI.bgw().bgl().ij(this.kEz.field_msgId));
-  }
-  
-  public final boolean jU()
-  {
-    return (this.kEJ == 4) || (this.kEJ == 5);
+    return (!this.nLI.bNH().bNw().bc()) || (this.nLI.bNH().bNw().nR(this.nLz.field_msgId));
   }
   
   public String toString()
   {
-    return "MsgItem{msgInfo=" + this.kEz.field_msgId + '}';
+    return "MsgItem{msgInfo=" + this.nLz.field_msgId + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.a
  * JD-Core Version:    0.7.0.1
  */

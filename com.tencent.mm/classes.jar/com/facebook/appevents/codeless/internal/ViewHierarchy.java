@@ -79,14 +79,14 @@ public class ViewHierarchy
   
   static
   {
-    AppMethodBeat.i(72132);
+    AppMethodBeat.i(17568);
     TAG = ViewHierarchy.class.getCanonicalName();
-    AppMethodBeat.o(72132);
+    AppMethodBeat.o(17568);
   }
   
   public static List<View> getChildrenOfView(View paramView)
   {
-    AppMethodBeat.i(72118);
+    AppMethodBeat.i(17554);
     ArrayList localArrayList = new ArrayList();
     if ((paramView != null) && ((paramView instanceof ViewGroup)))
     {
@@ -99,13 +99,13 @@ public class ViewHierarchy
         i += 1;
       }
     }
-    AppMethodBeat.o(72118);
+    AppMethodBeat.o(17554);
     return localArrayList;
   }
   
   private static int getClassTypeBitmask(View paramView)
   {
-    AppMethodBeat.i(72122);
+    AppMethodBeat.i(17558);
     int j = 0;
     if ((paramView instanceof ImageView)) {
       j = 2;
@@ -139,7 +139,7 @@ public class ViewHierarchy
     }
     for (;;)
     {
-      AppMethodBeat.o(72122);
+      AppMethodBeat.o(17558);
       return i;
       j = i;
       if (!(paramView instanceof CheckBox)) {
@@ -175,7 +175,7 @@ public class ViewHierarchy
   
   public static JSONObject getDictionaryOfView(View paramView)
   {
-    AppMethodBeat.i(72121);
+    AppMethodBeat.i(17557);
     localObject = new JSONObject();
     try
     {
@@ -186,8 +186,8 @@ public class ViewHierarchy
       for (;;)
       {
         int i;
-        label34:
-        label79:
+        label35:
+        label80:
         paramView = (View)localObject;
       }
     }
@@ -200,7 +200,7 @@ public class ViewHierarchy
       {
         ((JSONArray)localObject).put(getDictionaryOfView((View)paramView.get(i)));
         i += 1;
-        break label34;
+        break label35;
       }
       localJSONObject.put("childviews", localObject);
       paramView = localJSONObject;
@@ -208,15 +208,15 @@ public class ViewHierarchy
     catch (JSONException paramView)
     {
       paramView = localJSONObject;
-      break label79;
+      break label80;
     }
-    AppMethodBeat.o(72121);
+    AppMethodBeat.o(17557);
     return paramView;
   }
   
   private static JSONObject getDimensionOfView(View paramView)
   {
-    AppMethodBeat.i(72127);
+    AppMethodBeat.i(17563);
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -227,55 +227,55 @@ public class ViewHierarchy
       localJSONObject.put("scrollx", paramView.getScrollX());
       localJSONObject.put("scrolly", paramView.getScrollY());
       localJSONObject.put("visibility", paramView.getVisibility());
-      label90:
-      AppMethodBeat.o(72127);
+      label91:
+      AppMethodBeat.o(17563);
       return localJSONObject;
     }
     catch (JSONException paramView)
     {
-      break label90;
+      break label91;
     }
   }
   
   public static View.AccessibilityDelegate getExistingDelegate(View paramView)
   {
-    AppMethodBeat.i(72128);
+    AppMethodBeat.i(17564);
     try
     {
       paramView = (View.AccessibilityDelegate)paramView.getClass().getMethod("getAccessibilityDelegate", new Class[0]).invoke(paramView, new Object[0]);
-      AppMethodBeat.o(72128);
+      AppMethodBeat.o(17564);
       return paramView;
     }
     catch (NoSuchMethodException paramView)
     {
-      AppMethodBeat.o(72128);
+      AppMethodBeat.o(17564);
       return null;
     }
     catch (NullPointerException paramView)
     {
-      AppMethodBeat.o(72128);
+      AppMethodBeat.o(17564);
       return null;
     }
     catch (SecurityException paramView)
     {
-      AppMethodBeat.o(72128);
+      AppMethodBeat.o(17564);
       return null;
     }
     catch (IllegalAccessException paramView)
     {
-      AppMethodBeat.o(72128);
+      AppMethodBeat.o(17564);
       return null;
     }
     catch (InvocationTargetException paramView)
     {
-      AppMethodBeat.o(72128);
+      AppMethodBeat.o(17564);
     }
     return null;
   }
   
   public static View.OnTouchListener getExistingOnTouchListener(View paramView)
   {
-    AppMethodBeat.i(72129);
+    AppMethodBeat.i(17565);
     try
     {
       Field localField = Class.forName("android.view.View").getDeclaredField("mListenerInfo");
@@ -285,7 +285,7 @@ public class ViewHierarchy
       paramView = localField.get(paramView);
       if (paramView == null)
       {
-        AppMethodBeat.o(72129);
+        AppMethodBeat.o(17565);
         return null;
       }
       localField = Class.forName("android.view.View$ListenerInfo").getDeclaredField("mOnTouchListener");
@@ -298,7 +298,7 @@ public class ViewHierarchy
     catch (NoSuchFieldException paramView)
     {
       Utility.logd(TAG, paramView);
-      AppMethodBeat.o(72129);
+      AppMethodBeat.o(17565);
       return null;
     }
     catch (ClassNotFoundException paramView)
@@ -317,52 +317,52 @@ public class ViewHierarchy
         paramView = null;
       }
     }
-    AppMethodBeat.o(72129);
+    AppMethodBeat.o(17565);
     return paramView;
   }
   
   public static String getHintOfView(View paramView)
   {
-    AppMethodBeat.i(72126);
+    AppMethodBeat.i(17562);
     CharSequence localCharSequence = null;
     if ((paramView instanceof TextView)) {
       localCharSequence = ((TextView)paramView).getHint();
     }
     while (localCharSequence == null)
     {
-      AppMethodBeat.o(72126);
+      AppMethodBeat.o(17562);
       return "";
       if ((paramView instanceof EditText)) {
         localCharSequence = ((EditText)paramView).getHint();
       }
     }
     paramView = localCharSequence.toString();
-    AppMethodBeat.o(72126);
+    AppMethodBeat.o(17562);
     return paramView;
   }
   
   public static ViewGroup getParentOfView(View paramView)
   {
-    AppMethodBeat.i(72117);
+    AppMethodBeat.i(17553);
     if (paramView == null)
     {
-      AppMethodBeat.o(72117);
+      AppMethodBeat.o(17553);
       return null;
     }
     paramView = paramView.getParent();
     if ((paramView != null) && ((paramView instanceof ViewGroup)))
     {
       paramView = (ViewGroup)paramView;
-      AppMethodBeat.o(72117);
+      AppMethodBeat.o(17553);
       return paramView;
     }
-    AppMethodBeat.o(72117);
+    AppMethodBeat.o(17553);
     return null;
   }
   
   public static String getTextOfView(View paramView)
   {
-    AppMethodBeat.i(72125);
+    AppMethodBeat.i(17561);
     Object localObject;
     if ((paramView instanceof TextView))
     {
@@ -379,7 +379,7 @@ public class ViewHierarchy
     {
       if (localObject == null)
       {
-        AppMethodBeat.o(72125);
+        AppMethodBeat.o(17561);
         return "";
         label59:
         localObject = "0";
@@ -435,7 +435,7 @@ public class ViewHierarchy
       else
       {
         paramView = localObject.toString();
-        AppMethodBeat.o(72125);
+        AppMethodBeat.o(17561);
         return paramView;
       }
       localObject = null;
@@ -447,20 +447,20 @@ public class ViewHierarchy
   
   private static boolean isAdapterViewItem(View paramView)
   {
-    AppMethodBeat.i(72124);
+    AppMethodBeat.i(17560);
     paramView = paramView.getParent();
     if ((paramView != null) && (((paramView instanceof AdapterView)) || ((paramView instanceof j))))
     {
-      AppMethodBeat.o(72124);
+      AppMethodBeat.o(17560);
       return true;
     }
-    AppMethodBeat.o(72124);
+    AppMethodBeat.o(17560);
     return false;
   }
   
   public static boolean isClickableView(View paramView)
   {
-    AppMethodBeat.i(72123);
+    AppMethodBeat.i(17559);
     try
     {
       Object localObject = Class.forName("android.view.View").getDeclaredField("mListenerInfo");
@@ -470,7 +470,7 @@ public class ViewHierarchy
       localObject = ((Field)localObject).get(paramView);
       if (localObject == null)
       {
-        AppMethodBeat.o(72123);
+        AppMethodBeat.o(17559);
         return false;
       }
       paramView = null;
@@ -480,42 +480,42 @@ public class ViewHierarchy
       }
       if (paramView != null)
       {
-        AppMethodBeat.o(72123);
+        AppMethodBeat.o(17559);
         return true;
       }
-      AppMethodBeat.o(72123);
+      AppMethodBeat.o(17559);
       return false;
     }
     catch (Exception paramView)
     {
-      AppMethodBeat.o(72123);
+      AppMethodBeat.o(17559);
     }
     return false;
   }
   
   public static boolean isRCTButton(View paramView)
   {
-    AppMethodBeat.i(72130);
+    AppMethodBeat.i(17566);
     if ((paramView.getClass().getName().equals("com.facebook.react.views.view.ReactViewGroup")) && (getExistingDelegate(paramView) != null) && (((ViewGroup)paramView).getChildCount() > 0))
     {
-      AppMethodBeat.o(72130);
+      AppMethodBeat.o(17566);
       return true;
     }
-    AppMethodBeat.o(72130);
+    AppMethodBeat.o(17566);
     return false;
   }
   
   public static boolean isRCTTextView(View paramView)
   {
-    AppMethodBeat.i(72131);
+    AppMethodBeat.i(17567);
     boolean bool = paramView.getClass().getName().equals("com.facebook.react.views.view.ReactTextView");
-    AppMethodBeat.o(72131);
+    AppMethodBeat.o(17567);
     return bool;
   }
   
   public static JSONObject setAppearanceOfView(View paramView, JSONObject paramJSONObject, float paramFloat)
   {
-    AppMethodBeat.i(72120);
+    AppMethodBeat.i(17556);
     try
     {
       Object localObject = new JSONObject();
@@ -550,13 +550,13 @@ public class ViewHierarchy
         Utility.logd(TAG, paramView);
       }
     }
-    AppMethodBeat.o(72120);
+    AppMethodBeat.o(17556);
     return paramJSONObject;
   }
   
   public static JSONObject setBasicInfoOfView(View paramView, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(72119);
+    AppMethodBeat.i(17555);
     for (;;)
     {
       try
@@ -586,7 +586,7 @@ public class ViewHierarchy
         Utility.logd(TAG, paramView);
         continue;
       }
-      AppMethodBeat.o(72119);
+      AppMethodBeat.o(17555);
       return paramJSONObject;
       paramJSONObject.put("text", "");
     }
@@ -594,7 +594,7 @@ public class ViewHierarchy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.codeless.internal.ViewHierarchy
  * JD-Core Version:    0.7.0.1
  */

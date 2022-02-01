@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import junit.framework.Assert;
 
 public class AsyncMaskImageView
@@ -20,28 +20,37 @@ public class AsyncMaskImageView
   private boolean enable;
   private int g;
   private int r;
-  ak rER;
-  Runnable rES;
+  ap xkC;
+  Runnable xkD;
   
   public AsyncMaskImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(38131);
+    AppMethodBeat.i(97755);
     this.a = 90;
     this.r = 0;
     this.g = 0;
     this.b = 0;
     this.enable = true;
-    this.rER = new ak();
-    this.rES = new AsyncMaskImageView.1(this);
+    this.xkC = new ap();
+    this.xkD = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(97753);
+        AsyncMaskImageView.this.setPressed(false);
+        AsyncMaskImageView.this.invalidate();
+        AppMethodBeat.o(97753);
+      }
+    };
     super.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(38130);
+        AppMethodBeat.i(97754);
         if (!AsyncMaskImageView.a(AsyncMaskImageView.this))
         {
-          AppMethodBeat.o(38130);
+          AppMethodBeat.o(97754);
           return false;
         }
         AsyncMaskImageView localAsyncMaskImageView = AsyncMaskImageView.this;
@@ -50,53 +59,53 @@ public class AsyncMaskImageView
         }
         while ((!localAsyncMaskImageView.isClickable()) && (!localAsyncMaskImageView.isLongClickable()))
         {
-          AppMethodBeat.o(38130);
+          AppMethodBeat.o(97754);
           return true;
           paramAnonymousView.setPressed(true);
           paramAnonymousView.invalidate();
-          localAsyncMaskImageView.rER.removeCallbacks(localAsyncMaskImageView.rES);
+          localAsyncMaskImageView.xkC.removeCallbacks(localAsyncMaskImageView.xkD);
           continue;
-          localAsyncMaskImageView.rER.post(localAsyncMaskImageView.rES);
+          localAsyncMaskImageView.xkC.post(localAsyncMaskImageView.xkD);
         }
-        AppMethodBeat.o(38130);
+        AppMethodBeat.o(97754);
         return false;
       }
     });
-    AppMethodBeat.o(38131);
+    AppMethodBeat.o(97755);
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(38134);
+    AppMethodBeat.i(97758);
     super.onAttachedToWindow();
-    ab.d("MicroMsg.MaskImageView", "onAttachedToWindow");
-    AppMethodBeat.o(38134);
+    ad.d("MicroMsg.MaskImageView", "onAttachedToWindow");
+    AppMethodBeat.o(97758);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(38135);
+    AppMethodBeat.i(97759);
     super.onDetachedFromWindow();
-    ab.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
-    AppMethodBeat.o(38135);
+    ad.d("MicroMsg.MaskImageView", "onDetachedFromWindow");
+    AppMethodBeat.o(97759);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(38132);
+    AppMethodBeat.i(97756);
     super.onDraw(paramCanvas);
     if (isPressed()) {
       paramCanvas.drawARGB(this.a, this.r, this.g, this.b);
     }
-    AppMethodBeat.o(38132);
+    AppMethodBeat.o(97756);
   }
   
   @Deprecated
   public void setOnTouchListener(View.OnTouchListener paramOnTouchListener)
   {
-    AppMethodBeat.i(38133);
+    AppMethodBeat.i(97757);
     Assert.assertTrue(false);
-    AppMethodBeat.o(38133);
+    AppMethodBeat.o(97757);
   }
   
   public void settouchEnable(boolean paramBoolean)

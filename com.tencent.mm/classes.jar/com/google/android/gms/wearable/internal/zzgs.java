@@ -15,14 +15,14 @@ final class zzgs
   public zzgs(BaseImplementation.ResultHolder<Channel.GetInputStreamResult> paramResultHolder, zzbr paramzzbr)
   {
     super(paramResultHolder);
-    AppMethodBeat.i(71380);
+    AppMethodBeat.i(101363);
     this.zzeu = ((zzbr)Preconditions.checkNotNull(paramzzbr));
-    AppMethodBeat.o(71380);
+    AppMethodBeat.o(101363);
   }
   
   public final void zza(zzdm paramzzdm)
   {
-    AppMethodBeat.i(71381);
+    AppMethodBeat.i(101364);
     zzbj localzzbj = null;
     if (paramzzdm.zzdr != null)
     {
@@ -30,12 +30,12 @@ final class zzgs
       this.zzeu.zza(new zzbk(localzzbj));
     }
     zza(new zzbg(new Status(paramzzdm.statusCode), localzzbj));
-    AppMethodBeat.o(71381);
+    AppMethodBeat.o(101364);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzgs
  * JD-Core Version:    0.7.0.1
  */

@@ -6,62 +6,62 @@ import java.io.OutputStream;
 
 final class j
 {
-  private int tuA;
-  private int tuB;
-  private final OutputStream tuC;
-  private int[] tuD;
-  int tuE;
-  protected f tux;
-  int tuy;
-  private InputStream tuz;
+  private InputStream aIr;
+  protected f zin;
+  int zio;
+  private int zip;
+  private int ziq;
+  private final OutputStream zir;
+  private int[] zis;
+  int zit;
   
   public j(InputStream paramInputStream)
   {
-    AppMethodBeat.i(4369);
-    this.tux = new f();
-    this.tuD = new int[8];
-    this.tuz = paramInputStream;
-    this.tuC = null;
-    this.tuA = paramInputStream.read();
-    this.tuB = paramInputStream.read();
-    AppMethodBeat.o(4369);
+    AppMethodBeat.i(114864);
+    this.zin = new f();
+    this.zis = new int[8];
+    this.aIr = paramInputStream;
+    this.zir = null;
+    this.zip = paramInputStream.read();
+    this.ziq = paramInputStream.read();
+    AppMethodBeat.o(114864);
   }
   
   public j(InputStream paramInputStream, OutputStream paramOutputStream)
   {
-    AppMethodBeat.i(4370);
-    this.tux = new f();
-    this.tuD = new int[8];
-    this.tuz = paramInputStream;
-    this.tuC = paramOutputStream;
-    this.tuA = paramInputStream.read();
-    this.tuB = paramInputStream.read();
-    AppMethodBeat.o(4370);
+    AppMethodBeat.i(114865);
+    this.zin = new f();
+    this.zis = new int[8];
+    this.aIr = paramInputStream;
+    this.zir = paramOutputStream;
+    this.zip = paramInputStream.read();
+    this.ziq = paramInputStream.read();
+    AppMethodBeat.o(114865);
   }
   
-  private long GZ(int paramInt)
+  private long PS(int paramInt)
   {
-    AppMethodBeat.i(4373);
+    AppMethodBeat.i(114868);
     if (paramInt > 64)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Can not readByte more then 64 bit");
-      AppMethodBeat.o(4373);
+      AppMethodBeat.o(114868);
       throw localIllegalArgumentException;
     }
     long l = 0L;
     int i = 0;
     while (i < paramInt)
     {
-      l = l << 1 | mM(true);
+      l = l << 1 | rx(true);
       i += 1;
     }
-    AppMethodBeat.o(4373);
+    AppMethodBeat.o(114868);
     return l;
   }
   
-  private void He(int paramInt)
+  private void PX(int paramInt)
   {
-    AppMethodBeat.i(4388);
+    AppMethodBeat.i(114883);
     int i = 0;
     int j = 0;
     if (i < 15) {
@@ -69,10 +69,10 @@ final class j
     }
     for (;;)
     {
-      I(0L, i);
-      Hd(1);
-      I(paramInt - j, i);
-      AppMethodBeat.o(4388);
+      X(0L, i);
+      PW(1);
+      X(paramInt - j, i);
+      AppMethodBeat.o(114883);
       return;
       j += (1 << i);
       i += 1;
@@ -83,103 +83,103 @@ final class j
   
   private void advance()
   {
-    AppMethodBeat.i(4375);
-    this.tuA = this.tuB;
-    this.tuB = this.tuz.read();
-    this.tuy = 0;
-    AppMethodBeat.o(4375);
+    AppMethodBeat.i(114870);
+    this.zip = this.ziq;
+    this.ziq = this.aIr.read();
+    this.zio = 0;
+    AppMethodBeat.o(114870);
   }
   
-  private int cLP()
+  private int dSN()
   {
     int j = 0;
-    AppMethodBeat.i(4378);
+    AppMethodBeat.i(114873);
     int i = 0;
-    while (mM(true) == 0) {
+    while (rx(true) == 0) {
       i += 1;
     }
     if (i > 0)
     {
-      long l = GZ(i);
+      long l = PS(i);
       j = (int)((1 << i) - 1 + l);
     }
-    AppMethodBeat.o(4378);
+    AppMethodBeat.o(114873);
     return j;
   }
   
-  private int cLT()
+  private int dSR()
   {
-    AppMethodBeat.i(4382);
-    int i = cLP();
+    AppMethodBeat.i(114877);
+    int i = dSN();
     i = ((i & 0x1) + (i >> 1)) * (((i & 0x1) << 1) - 1);
-    AppMethodBeat.o(4382);
+    AppMethodBeat.o(114877);
     return i;
   }
   
-  private void cLU()
+  private void dSS()
   {
-    AppMethodBeat.i(4385);
-    int i = this.tuD[0];
-    int j = this.tuD[1];
-    int k = this.tuD[2];
-    int m = this.tuD[3];
-    int n = this.tuD[4];
-    int i1 = this.tuD[5];
-    int i2 = this.tuD[6];
-    int i3 = this.tuD[7];
-    this.tuC.write(i << 7 | j << 6 | k << 5 | m << 4 | n << 3 | i1 << 2 | i2 << 1 | i3);
-    AppMethodBeat.o(4385);
+    AppMethodBeat.i(114880);
+    int i = this.zis[0];
+    int j = this.zis[1];
+    int k = this.zis[2];
+    int m = this.zis[3];
+    int n = this.zis[4];
+    int i1 = this.zis[5];
+    int i2 = this.zis[6];
+    int i3 = this.zis[7];
+    this.zir.write(i << 7 | j << 6 | k << 5 | m << 4 | n << 3 | i1 << 2 | i2 << 1 | i3);
+    AppMethodBeat.o(114880);
   }
   
-  private int mM(boolean paramBoolean)
+  private int rx(boolean paramBoolean)
   {
-    AppMethodBeat.i(4372);
-    if (this.tuy == 8)
+    AppMethodBeat.i(114867);
+    if (this.zio == 8)
     {
       advance();
-      if (this.tuA == -1)
+      if (this.zip == -1)
       {
-        AppMethodBeat.o(4372);
+        AppMethodBeat.o(114867);
         return -1;
       }
     }
-    int i = this.tuA >> 7 - this.tuy & 0x1;
-    this.tuy += 1;
-    if ((paramBoolean) && (this.tuC != null)) {
-      Hd(i);
+    int i = this.zip >> 7 - this.zio & 0x1;
+    this.zio += 1;
+    if ((paramBoolean) && (this.zir != null)) {
+      PW(i);
     }
-    AppMethodBeat.o(4372);
+    AppMethodBeat.o(114867);
     return i;
   }
   
-  public final void Ha(int paramInt)
+  public final void PT(int paramInt)
   {
-    AppMethodBeat.i(4374);
+    AppMethodBeat.i(114869);
     if (paramInt > 64)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Can not skip more then 64 bit");
-      AppMethodBeat.o(4374);
+      AppMethodBeat.o(114869);
       throw localIllegalArgumentException;
     }
     int i = 0;
     while (i < paramInt)
     {
-      mM(true);
+      rx(true);
       i += 1;
     }
-    AppMethodBeat.o(4374);
+    AppMethodBeat.o(114869);
   }
   
-  public final void Hb(int paramInt)
+  public final void PU(int paramInt)
   {
-    AppMethodBeat.i(4377);
-    Ha(paramInt);
-    AppMethodBeat.o(4377);
+    AppMethodBeat.i(114872);
+    PT(paramInt);
+    AppMethodBeat.o(114872);
   }
   
-  public final void Hc(int paramInt)
+  public final void PV(int paramInt)
   {
-    AppMethodBeat.i(4383);
+    AppMethodBeat.i(114878);
     int[] arrayOfInt = new int[paramInt];
     int k = 0;
     int m = 8;
@@ -188,7 +188,7 @@ final class j
     {
       int i = m;
       if (m != 0) {
-        i = (cLT() + j + 256) % 256;
+        i = (dSR() + j + 256) % 256;
       }
       if (i == 0) {}
       for (;;)
@@ -201,120 +201,120 @@ final class j
         j = i;
       }
     }
-    AppMethodBeat.o(4383);
+    AppMethodBeat.o(114878);
   }
   
-  public final void Hd(int paramInt)
+  public final void PW(int paramInt)
   {
-    AppMethodBeat.i(4386);
-    if (this.tuE == 8)
+    AppMethodBeat.i(114881);
+    if (this.zit == 8)
     {
-      this.tuE = 0;
-      cLU();
+      this.zit = 0;
+      dSS();
     }
-    int[] arrayOfInt = this.tuD;
-    int i = this.tuE;
-    this.tuE = (i + 1);
+    int[] arrayOfInt = this.zis;
+    int i = this.zit;
+    this.zit = (i + 1);
     arrayOfInt[i] = paramInt;
-    AppMethodBeat.o(4386);
+    AppMethodBeat.o(114881);
   }
   
-  public final void Hf(int paramInt)
+  public final void PY(int paramInt)
   {
-    AppMethodBeat.i(4389);
-    He(paramInt);
-    AppMethodBeat.o(4389);
+    AppMethodBeat.i(114884);
+    PX(paramInt);
+    AppMethodBeat.o(114884);
   }
   
-  public final void I(long paramLong, int paramInt)
+  public final void X(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(4387);
+    AppMethodBeat.i(114882);
     int i = 0;
     while (i < paramInt)
     {
-      Hd((int)(paramLong >> paramInt - i - 1) & 0x1);
+      PW((int)(paramLong >> paramInt - i - 1) & 0x1);
       i += 1;
     }
-    AppMethodBeat.o(4387);
+    AppMethodBeat.o(114882);
   }
   
-  public final long cLO()
+  public final long dSM()
   {
-    AppMethodBeat.i(4376);
-    long l = GZ(8);
-    AppMethodBeat.o(4376);
+    AppMethodBeat.i(114871);
+    long l = PS(8);
+    AppMethodBeat.o(114871);
     return l;
   }
   
-  final void cLQ()
+  final void dSO()
   {
-    AppMethodBeat.i(4379);
+    AppMethodBeat.i(114874);
     int i = 0;
-    while (mM(true) == 0) {
+    while (rx(true) == 0) {
       i += 1;
     }
     if (i > 0) {
-      Ha(i);
+      PT(i);
     }
-    AppMethodBeat.o(4379);
+    AppMethodBeat.o(114874);
   }
   
-  public final int cLR()
+  public final int dSP()
   {
-    AppMethodBeat.i(4380);
-    int i = cLP();
-    AppMethodBeat.o(4380);
+    AppMethodBeat.i(114875);
+    int i = dSN();
+    AppMethodBeat.o(114875);
     return i;
   }
   
-  public final void cLS()
+  public final void dSQ()
   {
-    AppMethodBeat.i(4381);
-    cLQ();
-    AppMethodBeat.o(4381);
+    AppMethodBeat.i(114876);
+    dSO();
+    AppMethodBeat.o(114876);
   }
   
   public final void flush()
   {
-    AppMethodBeat.i(4384);
-    int i = this.tuE;
+    AppMethodBeat.i(114879);
+    int i = this.zit;
     while (i < 8)
     {
-      this.tuD[i] = 0;
+      this.zis[i] = 0;
       i += 1;
     }
-    this.tuE = 0;
-    cLU();
-    AppMethodBeat.o(4384);
+    this.zit = 0;
+    dSS();
+    AppMethodBeat.o(114879);
   }
   
-  public final boolean mL(boolean paramBoolean)
+  public final boolean rw(boolean paramBoolean)
   {
-    AppMethodBeat.i(4371);
-    if (mM(paramBoolean) == 1)
+    AppMethodBeat.i(114866);
+    if (rx(paramBoolean) == 1)
     {
-      AppMethodBeat.o(4371);
+      AppMethodBeat.o(114866);
       return true;
     }
-    AppMethodBeat.o(4371);
+    AppMethodBeat.o(114866);
     return false;
   }
   
-  public final void mN(boolean paramBoolean)
+  public final void ry(boolean paramBoolean)
   {
-    AppMethodBeat.i(4390);
+    AppMethodBeat.i(114885);
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      Hd(i);
-      AppMethodBeat.o(4390);
+      PW(i);
+      AppMethodBeat.o(114885);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.j
  * JD-Core Version:    0.7.0.1
  */

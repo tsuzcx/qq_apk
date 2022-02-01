@@ -6,19 +6,19 @@ public enum BaseToyUI$a
 {
   static
   {
-    AppMethodBeat.i(113247);
-    Byu = new a("CHANGE", 0);
-    Byv = new a("INSERT", 1);
-    Byw = new a("REMOVE", 2);
-    Byx = new a[] { Byu, Byv, Byw };
-    AppMethodBeat.o(113247);
+    AppMethodBeat.i(159984);
+    IHx = new a("CHANGE", 0);
+    IHy = new a("INSERT", 1);
+    IHz = new a("REMOVE", 2);
+    IHA = new a[] { IHx, IHy, IHz };
+    AppMethodBeat.o(159984);
   }
   
   private BaseToyUI$a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.toybrick.ui.BaseToyUI.a
  * JD-Core Version:    0.7.0.1
  */

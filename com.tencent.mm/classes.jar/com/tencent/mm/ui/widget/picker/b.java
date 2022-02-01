@@ -1,165 +1,215 @@
 package com.tencent.mm.ui.widget.picker;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnDismissListener;
 import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.c;
+import android.support.design.widget.a;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.Button;
-import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.al;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.ui.ao;
+import java.util.Calendar;
+import java.util.Locale;
 
 public final class b
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private String[] AIS;
-  private ArrayList<List<String>> AIT;
-  private OptionPicker AIU;
-  private OptionPicker AIV;
-  public a AIW;
-  private BottomSheetBehavior gE;
-  private Button gtF;
-  private View iDS;
-  private Button jIG;
+  private LinearLayout GSX;
+  private Button HIN;
+  private LinearLayout HIO;
+  private CustomDatePickerNew HIP;
+  public a HIQ;
+  private Button hJg;
+  private Button hJh;
+  private View jGG;
+  private int kBk;
+  private BottomSheetBehavior kBl;
   private Context mContext;
-  private int vWH;
-  private c zRa;
-  private int zRb;
+  private a sri;
   
-  public b(Context paramContext, ArrayList<String> paramArrayList)
+  public b(Context paramContext)
   {
-    AppMethodBeat.i(112825);
-    this.AIT = null;
+    AppMethodBeat.i(159526);
     this.mContext = paramContext;
-    if (paramArrayList != null) {
-      this.AIS = ((String[])paramArrayList.toArray(new String[paramArrayList.size()]));
-    }
-    initView();
-    AppMethodBeat.o(112825);
-  }
-  
-  public b(Context paramContext, String[] paramArrayOfString)
-  {
-    AppMethodBeat.i(112824);
-    this.AIT = null;
-    this.mContext = paramContext;
-    this.AIS = paramArrayOfString;
-    initView();
-    AppMethodBeat.o(112824);
-  }
-  
-  private String[] Rx(int paramInt)
-  {
-    AppMethodBeat.i(112832);
-    if (this.AIT != null)
+    this.sri = new a(this.mContext);
+    this.jGG = View.inflate(this.mContext, 2131493683, null);
+    this.HIO = ((LinearLayout)this.jGG.findViewById(2131298931));
+    this.GSX = ((LinearLayout)this.jGG.findViewById(2131307182));
+    this.HIP = new CustomDatePickerNew(this.mContext);
+    this.HIO.removeAllViews();
+    this.HIO.setGravity(17);
+    this.HIO.addView(this.HIP.getView(), new LinearLayout.LayoutParams(-1, -1));
+    this.hJh = ((Button)this.jGG.findViewById(2131302999));
+    this.hJh.setOnClickListener(new View.OnClickListener()
     {
-      Object localObject = (ArrayList)this.AIT.get(paramInt);
-      if (localObject != null)
+      public final void onClick(View paramAnonymousView)
       {
-        localObject = (String[])((ArrayList)localObject).toArray(new String[((ArrayList)localObject).size()]);
-        AppMethodBeat.o(112832);
-        return localObject;
+        AppMethodBeat.i(159522);
+        b.a(b.this, true, b.a(b.this).getYear(), b.a(b.this).getMonth(), b.a(b.this).getDayOfMonth());
+        b.this.hide();
+        AppMethodBeat.o(159522);
       }
+    });
+    this.hJg = ((Button)this.jGG.findViewById(2131297690));
+    this.hJg.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(159523);
+        b.a(b.this, false, 0, 0, 0);
+        b.this.hide();
+        AppMethodBeat.o(159523);
+      }
+    });
+    this.HIN = ((Button)this.jGG.findViewById(2131297600));
+    this.HIN.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(195288);
+        b.a(b.this, true, b.a(b.this).getYear(), b.a(b.this).getMonth(), b.a(b.this).getDayOfMonth());
+        b.this.hide();
+        AppMethodBeat.o(195288);
+      }
+    });
+    this.sri.setContentView(this.jGG);
+    this.sri.setOnCancelListener(new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(195289);
+        b.a(b.this, false, 0, 0, 0);
+        b.this.hide();
+        AppMethodBeat.o(195289);
+      }
+    });
+    this.kBk = ao.fromDPToPix(this.mContext, 420);
+    this.kBl = BottomSheetBehavior.l((View)this.jGG.getParent());
+    if (this.kBl != null)
+    {
+      this.kBl.J(this.kBk);
+      this.kBl.lh = false;
     }
-    AppMethodBeat.o(112832);
-    return null;
+    this.sri.setOnDismissListener(new DialogInterface.OnDismissListener()
+    {
+      public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(195290);
+        b.b(b.this);
+        AppMethodBeat.o(195290);
+      }
+    });
+    AppMethodBeat.o(159526);
   }
   
-  private void initView()
+  public final void aL(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(112826);
-    this.zRa = new c(this.mContext);
-    this.iDS = View.inflate(this.mContext, 2130970395, null);
-    this.AIU = ((OptionPicker)this.iDS.findViewById(2131826643));
-    this.AIU.setOptionsArray(this.AIS);
-    this.AIV = ((OptionPicker)this.iDS.findViewById(2131826644));
-    if (this.AIT != null)
-    {
-      this.AIV.setVisibility(0);
-      this.AIV.setOptionsArray(Rx(this.AIU.getValue()));
-      this.AIU.setOnValueChangedListener(new b.1(this));
+    AppMethodBeat.i(159528);
+    if (this.HIP != null) {
+      this.HIP.aL(paramBoolean1, paramBoolean2);
     }
-    for (;;)
+    AppMethodBeat.o(159528);
+  }
+  
+  public final void aM(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(159527);
+    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0))
     {
-      this.vWH = al.fromDPToPix(this.mContext, 288);
-      this.gtF = ((Button)this.iDS.findViewById(2131823301));
-      this.gtF.setOnClickListener(new b.2(this));
-      this.jIG = ((Button)this.iDS.findViewById(2131822887));
-      this.jIG.setOnClickListener(new b.3(this));
-      this.zRa.setContentView(this.iDS);
-      this.zRb = al.fromDPToPix(this.mContext, 350);
-      this.gE = BottomSheetBehavior.i((View)this.iDS.getParent());
-      if (this.gE != null)
-      {
-        this.gE.t(this.zRb);
-        this.gE.go = false;
-      }
-      this.zRa.setOnDismissListener(new b.4(this));
-      AppMethodBeat.o(112826);
+      AppMethodBeat.o(159527);
       return;
-      this.AIV.setVisibility(8);
     }
+    if (this.HIP != null) {
+      this.HIP.aL(paramInt1, paramInt2, paramInt3);
+    }
+    AppMethodBeat.o(159527);
   }
   
-  public final void Rv(int paramInt)
+  public final void aN(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(112827);
-    if (paramInt != 0) {
-      this.vWH = paramInt;
+    AppMethodBeat.i(159529);
+    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0))
+    {
+      AppMethodBeat.o(159529);
+      return;
     }
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.iDS.getLayoutParams();
-    localLayoutParams.height = this.vWH;
-    this.iDS.setLayoutParams(localLayoutParams);
-    this.iDS.invalidate();
-    AppMethodBeat.o(112827);
+    Calendar localCalendar = Calendar.getInstance(Locale.US);
+    localCalendar.set(paramInt1, paramInt2 - 1, paramInt3);
+    if (this.HIP != null) {
+      this.HIP.setMinDate(Long.valueOf(localCalendar.getTimeInMillis()));
+    }
+    AppMethodBeat.o(159529);
   }
   
-  public final void Rw(int paramInt)
+  public final void aO(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(112831);
-    if (this.AIU != null) {
-      this.AIU.setValue(paramInt);
+    AppMethodBeat.i(159530);
+    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0))
+    {
+      AppMethodBeat.o(159530);
+      return;
     }
-    AppMethodBeat.o(112831);
+    Calendar localCalendar = Calendar.getInstance(Locale.US);
+    localCalendar.set(paramInt1, paramInt2 - 1, paramInt3);
+    if (this.HIP != null) {
+      this.HIP.setMaxDate(Long.valueOf(localCalendar.getTimeInMillis()));
+    }
+    AppMethodBeat.o(159530);
   }
   
-  public final int dPp()
+  public final String ffY()
   {
-    AppMethodBeat.i(112830);
-    int i = 0;
-    if (this.AIU != null) {
-      i = this.AIU.getValue();
+    AppMethodBeat.i(159533);
+    String str = null;
+    if (this.HIP != null) {
+      str = this.HIP.currentValue();
     }
-    AppMethodBeat.o(112830);
-    return i;
+    AppMethodBeat.o(159533);
+    return str;
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(112829);
-    if (this.zRa != null) {
-      this.zRa.dismiss();
+    AppMethodBeat.i(159532);
+    if (this.sri != null) {
+      this.sri.dismiss();
     }
-    AppMethodBeat.o(112829);
+    AppMethodBeat.o(159532);
   }
   
   public final void onGlobalLayout() {}
   
+  public final void setLongTermYear(boolean paramBoolean)
+  {
+    AppMethodBeat.i(195291);
+    if (this.HIP != null) {
+      this.HIP.setLongTermYear(paramBoolean);
+    }
+    AppMethodBeat.o(195291);
+  }
+  
   public final void show()
   {
-    AppMethodBeat.i(112828);
-    if (this.zRa != null) {
-      this.zRa.show();
+    AppMethodBeat.i(159531);
+    if (this.sri != null)
+    {
+      if (this.HIP != null) {
+        this.HIP.onShow();
+      }
+      this.sri.show();
     }
-    AppMethodBeat.o(112828);
+    AppMethodBeat.o(159531);
   }
   
   public static abstract interface a<T>
   {
-    public abstract void onResult(boolean paramBoolean, T paramT1, T paramT2);
+    public abstract void onResult(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3);
   }
 }
 

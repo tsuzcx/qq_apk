@@ -1,88 +1,120 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.e.d;
-import com.tencent.mm.app.j.a;
+import com.tencent.mm.al.f.d;
+import com.tencent.mm.app.n.a;
 import com.tencent.mm.audio.b.i;
-import com.tencent.mm.cg.h.d;
+import com.tencent.mm.g.a.qx;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.storage.cd;
+import com.tencent.mm.storage.ce;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 import junit.framework.Assert;
 
 public class o
-  implements at
+  implements aw
 {
-  private static HashMap<Integer, h.d> baseDBFactories;
-  private j.a appForegroundListener;
-  private c gaA;
-  private w gaw;
-  private cd gax;
-  private i gay;
-  private t gaz;
+  private static HashMap<Integer, h.b> baseDBFactories;
+  private n.a appForegroundListener;
+  private w hDi;
+  private ce hDj;
+  private i hDk;
+  private t hDl;
+  private c hDm;
   
   static
   {
-    AppMethodBeat.i(116604);
+    AppMethodBeat.i(148445);
     HashMap localHashMap = new HashMap();
     baseDBFactories = localHashMap;
-    localHashMap.put(Integer.valueOf("VOICE_TABLE".hashCode()), new o.3());
-    baseDBFactories.put(Integer.valueOf("VOICETRANSTEXT_TABLE".hashCode()), new o.4());
-    AppMethodBeat.o(116604);
+    localHashMap.put(Integer.valueOf("VOICE_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return w.SQL_CREATE;
+      }
+    });
+    baseDBFactories.put(Integer.valueOf("VOICETRANSTEXT_TABLE".hashCode()), new h.b()
+    {
+      public final String[] getSQLs()
+      {
+        return ce.SQL_CREATE;
+      }
+    });
+    AppMethodBeat.o(148445);
   }
   
   public o()
   {
-    AppMethodBeat.i(116597);
-    this.gaz = new t();
-    this.gaA = new o.1(this);
-    this.appForegroundListener = new j.a()
+    AppMethodBeat.i(148438);
+    this.hDl = new t();
+    this.hDm = new c() {};
+    this.appForegroundListener = new n.a()
     {
       public final void onAppBackground(String paramAnonymousString)
       {
-        AppMethodBeat.i(145812);
-        if ((g.RG()) && (g.RJ().eHg))
+        AppMethodBeat.i(148436);
+        if ((g.afw()) && (g.afz().gcn))
         {
-          g.RJ();
-          com.tencent.mm.kernel.a.QP();
+          g.afz();
+          com.tencent.mm.kernel.a.aeC();
         }
-        AppMethodBeat.o(145812);
+        AppMethodBeat.o(148436);
       }
       
       public final void onAppForeground(String paramAnonymousString)
       {
-        AppMethodBeat.i(145811);
-        if ((g.RG()) && (g.RJ().eHg))
+        AppMethodBeat.i(148435);
+        if ((g.afw()) && (g.afz().gcn))
         {
-          g.RJ();
-          if (!com.tencent.mm.kernel.a.QP()) {
-            com.tencent.mm.blink.b.HP().o(new o.2.1(this));
+          g.afz();
+          if (!com.tencent.mm.kernel.a.aeC()) {
+            com.tencent.mm.blink.b.SX().v(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(148434);
+                o.aDA().run();
+                AppMethodBeat.o(148434);
+              }
+            });
           }
         }
-        AppMethodBeat.o(145811);
+        AppMethodBeat.o(148435);
       }
     };
-    AppMethodBeat.o(116597);
+    AppMethodBeat.o(148438);
   }
   
-  private static o amr()
+  public static i aDA()
   {
-    AppMethodBeat.i(116598);
-    o localo = (o)q.S(o.class);
-    AppMethodBeat.o(116598);
+    AppMethodBeat.i(148442);
+    g.afz().aeD();
+    if (aDx().hDk == null) {
+      aDx().hDk = new i();
+    }
+    i locali = aDx().hDk;
+    AppMethodBeat.o(148442);
+    return locali;
+  }
+  
+  private static o aDx()
+  {
+    AppMethodBeat.i(148439);
+    o localo = (o)com.tencent.mm.model.t.ap(o.class);
+    AppMethodBeat.o(148439);
     return localo;
   }
   
-  public static w ams()
+  public static w aDy()
   {
-    AppMethodBeat.i(116599);
-    g.RJ().QQ();
-    if (amr().gaw == null) {
-      if (g.RL().eHS == null) {
+    AppMethodBeat.i(148440);
+    g.afz().aeD();
+    if (aDx().hDi == null) {
+      if (g.afB().gda == null) {
         break label70;
       }
     }
@@ -90,19 +122,19 @@ public class o
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("dataDB is null ", bool);
-      amr().gaw = new w(g.RL().eHS);
-      w localw = amr().gaw;
-      AppMethodBeat.o(116599);
+      aDx().hDi = new w(g.afB().gda);
+      w localw = aDx().hDi;
+      AppMethodBeat.o(148440);
       return localw;
     }
   }
   
-  public static cd amt()
+  public static ce aDz()
   {
-    AppMethodBeat.i(116600);
-    g.RJ().QQ();
-    if (amr().gax == null) {
-      if (g.RL().eHS == null) {
+    AppMethodBeat.i(148441);
+    g.afz().aeD();
+    if (aDx().hDj == null) {
+      if (g.afB().gda == null) {
         break label70;
       }
     }
@@ -110,60 +142,48 @@ public class o
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("dataDB is null ", bool);
-      amr().gax = new cd(g.RL().eHS);
-      cd localcd = amr().gax;
-      AppMethodBeat.o(116600);
-      return localcd;
+      aDx().hDj = new ce(g.afB().gda);
+      ce localce = aDx().hDj;
+      AppMethodBeat.o(148441);
+      return localce;
     }
-  }
-  
-  public static i amu()
-  {
-    AppMethodBeat.i(116601);
-    g.RJ().QQ();
-    if (amr().gay == null) {
-      amr().gay = new i();
-    }
-    i locali = amr().gay;
-    AppMethodBeat.o(116601);
-    return locali;
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public HashMap<Integer, h.d> getBaseDBFactories()
+  public HashMap<Integer, h.b> getBaseDBFactories()
   {
     return baseDBFactories;
   }
   
   public void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(116603);
-    e.d.a(Integer.valueOf(34), this.gaz);
-    com.tencent.mm.sdk.b.a.ymk.c(this.gaA);
+    AppMethodBeat.i(148444);
+    f.d.a(Integer.valueOf(34), this.hDl);
+    com.tencent.mm.sdk.b.a.ESL.c(this.hDm);
     this.appForegroundListener.alive();
     com.tencent.mm.pluginsdk.cmd.b.a(new o.a(), new String[] { "//voicetrymore" });
-    AppMethodBeat.o(116603);
+    AppMethodBeat.o(148444);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(116602);
-    if (amr().gay != null) {
-      amr().gay.ckM = 0;
+    AppMethodBeat.i(148443);
+    if (aDx().hDk != null) {
+      aDx().hDk.cZF = 0;
     }
     this.appForegroundListener.dead();
-    e.d.b(Integer.valueOf(34), this.gaz);
-    com.tencent.mm.sdk.b.a.ymk.d(this.gaA);
-    com.tencent.mm.pluginsdk.cmd.b.N(new String[] { "//voicetrymore" });
-    AppMethodBeat.o(116602);
+    f.d.b(Integer.valueOf(34), this.hDl);
+    com.tencent.mm.sdk.b.a.ESL.d(this.hDm);
+    com.tencent.mm.pluginsdk.cmd.b.Q(new String[] { "//voicetrymore" });
+    AppMethodBeat.o(148443);
   }
   
   public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelvoice.o
  * JD-Core Version:    0.7.0.1
  */

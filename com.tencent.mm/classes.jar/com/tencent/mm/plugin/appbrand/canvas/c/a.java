@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.appbrand.canvas.c;
 
 public abstract interface a
 {
-  public abstract void ap(float paramFloat);
+  public abstract void aTc();
   
   public abstract void aq(float paramFloat);
   
-  public abstract void ayj();
+  public abstract void ar(float paramFloat);
   
-  public abstract void b(long paramLong1, long paramLong2, int paramInt);
+  public abstract void d(long paramLong1, long paramLong2, int paramInt);
   
-  public abstract void hu(long paramLong);
+  public abstract void mV(long paramLong);
   
-  public abstract void hv(long paramLong);
+  public abstract void mW(long paramLong);
 }
 
 

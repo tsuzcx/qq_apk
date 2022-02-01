@@ -6,16 +6,16 @@ public enum h
 {
   static
   {
-    AppMethodBeat.i(77276);
-    CRS = new h("Header", 0);
-    CRT = new h("QueryString", 1);
-    CRU = new h[] { CRS, CRT };
-    AppMethodBeat.o(77276);
+    AppMethodBeat.i(40545);
+    KnH = new h("Header", 0);
+    KnI = new h("QueryString", 1);
+    KnJ = new h[] { KnH, KnI };
+    AppMethodBeat.o(40545);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.b.d.h
  * JD-Core Version:    0.7.0.1
  */

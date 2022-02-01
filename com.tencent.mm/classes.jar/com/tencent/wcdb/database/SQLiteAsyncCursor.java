@@ -26,35 +26,35 @@ public class SQLiteAsyncCursor
   
   static
   {
-    AppMethodBeat.i(12263);
+    AppMethodBeat.i(2944);
     FACTORY = new SQLiteDatabase.CursorFactory()
     {
       public final Cursor newCursor(SQLiteDatabase paramAnonymousSQLiteDatabase, SQLiteCursorDriver paramAnonymousSQLiteCursorDriver, String paramAnonymousString, SQLiteProgram paramAnonymousSQLiteProgram)
       {
-        AppMethodBeat.i(12239);
+        AppMethodBeat.i(2920);
         paramAnonymousSQLiteDatabase = new SQLiteAsyncCursor(paramAnonymousSQLiteCursorDriver, paramAnonymousString, (SQLiteAsyncQuery)paramAnonymousSQLiteProgram);
-        AppMethodBeat.o(12239);
+        AppMethodBeat.o(2920);
         return paramAnonymousSQLiteDatabase;
       }
       
       public final SQLiteProgram newQuery(SQLiteDatabase paramAnonymousSQLiteDatabase, String paramAnonymousString, Object[] paramAnonymousArrayOfObject, CancellationSignal paramAnonymousCancellationSignal)
       {
-        AppMethodBeat.i(12240);
+        AppMethodBeat.i(2921);
         paramAnonymousSQLiteDatabase = new SQLiteAsyncQuery(paramAnonymousSQLiteDatabase, paramAnonymousString, paramAnonymousArrayOfObject, paramAnonymousCancellationSignal);
-        AppMethodBeat.o(12240);
+        AppMethodBeat.o(2921);
         return paramAnonymousSQLiteDatabase;
       }
     };
-    AppMethodBeat.o(12263);
+    AppMethodBeat.o(2944);
   }
   
   public SQLiteAsyncCursor(SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteAsyncQuery paramSQLiteAsyncQuery)
   {
-    AppMethodBeat.i(12244);
+    AppMethodBeat.i(2925);
     if (paramSQLiteAsyncQuery == null)
     {
       paramSQLiteCursorDriver = new IllegalArgumentException("query object cannot be null");
-      AppMethodBeat.o(12244);
+      AppMethodBeat.o(2925);
       throw paramSQLiteCursorDriver;
     }
     this.mQuery = paramSQLiteAsyncQuery;
@@ -65,51 +65,51 @@ public class SQLiteAsyncCursor
     this.mWindow = new ChunkedCursorWindow(16777216);
     this.mQueryThread = new QueryThread();
     this.mQueryThread.start();
-    AppMethodBeat.o(12244);
+    AppMethodBeat.o(2925);
   }
   
   private void checkValidRow()
   {
-    AppMethodBeat.i(12252);
+    AppMethodBeat.i(2933);
     if (this.mCurrentRow != 0L)
     {
-      AppMethodBeat.o(12252);
+      AppMethodBeat.o(2933);
       return;
     }
     if (!isValidPosition(this.mPos))
     {
       localObject = new CursorIndexOutOfBoundsException(this.mPos, this.mCount);
-      AppMethodBeat.o(12252);
+      AppMethodBeat.o(2933);
       throw ((Throwable)localObject);
     }
     Object localObject = new StaleDataException("Cannot get valid Row object");
-    AppMethodBeat.o(12252);
+    AppMethodBeat.o(2933);
     throw ((Throwable)localObject);
   }
   
   private boolean isValidPosition(int paramInt)
   {
-    AppMethodBeat.i(12249);
+    AppMethodBeat.i(2930);
     if ((paramInt >= 0) && (paramInt < getCount()))
     {
-      AppMethodBeat.o(12249);
+      AppMethodBeat.o(2930);
       return true;
     }
-    AppMethodBeat.o(12249);
+    AppMethodBeat.o(2930);
     return false;
   }
   
   private boolean requestRow()
   {
-    AppMethodBeat.i(12251);
+    AppMethodBeat.i(2932);
     if (this.mWindow == null)
     {
-      AppMethodBeat.o(12251);
+      AppMethodBeat.o(2932);
       return false;
     }
     if (!isValidPosition(this.mPos))
     {
-      AppMethodBeat.o(12251);
+      AppMethodBeat.o(2932);
       return false;
     }
     this.mQueryThread.requestPos(this.mPos);
@@ -119,16 +119,16 @@ public class SQLiteAsyncCursor
     }
     if (this.mCurrentRow != 0L)
     {
-      AppMethodBeat.o(12251);
+      AppMethodBeat.o(2932);
       return true;
     }
-    AppMethodBeat.o(12251);
+    AppMethodBeat.o(2932);
     return false;
   }
   
   private long waitForRow(int paramInt)
   {
-    AppMethodBeat.i(12250);
+    AppMethodBeat.i(2931);
     long l;
     for (;;)
     {
@@ -143,7 +143,7 @@ public class SQLiteAsyncCursor
           if (!isValidPosition(paramInt))
           {
             CursorIndexOutOfBoundsException localCursorIndexOutOfBoundsException = new CursorIndexOutOfBoundsException(this.mPos, this.mCount);
-            AppMethodBeat.o(12250);
+            AppMethodBeat.o(2931);
             throw localCursorIndexOutOfBoundsException;
           }
         }
@@ -151,37 +151,37 @@ public class SQLiteAsyncCursor
       }
       catch (InterruptedException localInterruptedException)
       {
-        AppMethodBeat.o(12250);
+        AppMethodBeat.o(2931);
         return 0L;
       }
     }
-    AppMethodBeat.o(12250);
+    AppMethodBeat.o(2931);
     return l;
   }
   
   public void close()
   {
-    AppMethodBeat.i(12245);
+    AppMethodBeat.i(2926);
     super.close();
     this.mQuery.close();
     this.mDriver.cursorClosed();
-    AppMethodBeat.o(12245);
+    AppMethodBeat.o(2926);
   }
   
   public void deactivate()
   {
-    AppMethodBeat.i(12246);
+    AppMethodBeat.i(2927);
     super.deactivate();
     this.mDriver.cursorDeactivated();
-    AppMethodBeat.o(12246);
+    AppMethodBeat.o(2927);
   }
   
   public byte[] getBlob(int paramInt)
   {
-    AppMethodBeat.i(12255);
+    AppMethodBeat.i(2936);
     checkValidRow();
     byte[] arrayOfByte = this.mWindow.getBlobUnsafe(this.mCurrentRow, paramInt);
-    AppMethodBeat.o(12255);
+    AppMethodBeat.o(2936);
     return arrayOfByte;
   }
   
@@ -192,17 +192,17 @@ public class SQLiteAsyncCursor
   
   public int getCount()
   {
-    AppMethodBeat.i(12248);
+    AppMethodBeat.i(2929);
     int i;
     if (this.mCount >= 0)
     {
       i = this.mCount;
-      AppMethodBeat.o(12248);
+      AppMethodBeat.o(2929);
       return i;
     }
     if (this.mWindow == null)
     {
-      AppMethodBeat.o(12248);
+      AppMethodBeat.o(2929);
       return -1;
     }
     try
@@ -220,86 +220,86 @@ public class SQLiteAsyncCursor
     label90:
     for (;;)
     {
-      AppMethodBeat.o(12248);
+      AppMethodBeat.o(2929);
       return i;
     }
   }
   
   public double getDouble(int paramInt)
   {
-    AppMethodBeat.i(12261);
+    AppMethodBeat.i(2942);
     checkValidRow();
     double d = this.mWindow.getDoubleUnsafe(this.mCurrentRow, paramInt);
-    AppMethodBeat.o(12261);
+    AppMethodBeat.o(2942);
     return d;
   }
   
   public float getFloat(int paramInt)
   {
-    AppMethodBeat.i(12260);
+    AppMethodBeat.i(2941);
     float f = (float)getDouble(paramInt);
-    AppMethodBeat.o(12260);
+    AppMethodBeat.o(2941);
     return f;
   }
   
   public int getInt(int paramInt)
   {
-    AppMethodBeat.i(12258);
+    AppMethodBeat.i(2939);
     paramInt = (int)getLong(paramInt);
-    AppMethodBeat.o(12258);
+    AppMethodBeat.o(2939);
     return paramInt;
   }
   
   public long getLong(int paramInt)
   {
-    AppMethodBeat.i(12259);
+    AppMethodBeat.i(2940);
     checkValidRow();
     long l = this.mWindow.getLongUnsafe(this.mCurrentRow, paramInt);
-    AppMethodBeat.o(12259);
+    AppMethodBeat.o(2940);
     return l;
   }
   
   public short getShort(int paramInt)
   {
-    AppMethodBeat.i(12257);
+    AppMethodBeat.i(2938);
     short s = (short)(int)getLong(paramInt);
-    AppMethodBeat.o(12257);
+    AppMethodBeat.o(2938);
     return s;
   }
   
   public String getString(int paramInt)
   {
-    AppMethodBeat.i(12256);
+    AppMethodBeat.i(2937);
     checkValidRow();
     String str = this.mWindow.getStringUnsafe(this.mCurrentRow, paramInt);
-    AppMethodBeat.o(12256);
+    AppMethodBeat.o(2937);
     return str;
   }
   
   public int getType(int paramInt)
   {
-    AppMethodBeat.i(12254);
+    AppMethodBeat.i(2935);
     checkValidRow();
     paramInt = this.mWindow.getTypeUnsafe(this.mCurrentRow, paramInt);
-    AppMethodBeat.o(12254);
+    AppMethodBeat.o(2935);
     return paramInt;
   }
   
   public boolean isNull(int paramInt)
   {
-    AppMethodBeat.i(12262);
+    AppMethodBeat.i(2943);
     if (getType(paramInt) == 0)
     {
-      AppMethodBeat.o(12262);
+      AppMethodBeat.o(2943);
       return true;
     }
-    AppMethodBeat.o(12262);
+    AppMethodBeat.o(2943);
     return false;
   }
   
   public boolean moveToPosition(int paramInt)
   {
-    AppMethodBeat.i(12253);
+    AppMethodBeat.i(2934);
     int i = paramInt;
     if (paramInt < -1) {
       i = -1;
@@ -313,22 +313,22 @@ public class SQLiteAsyncCursor
     if (i >= paramInt)
     {
       this.mPos = paramInt;
-      AppMethodBeat.o(12253);
+      AppMethodBeat.o(2934);
       return false;
     }
     this.mPos = i;
     if ((i >= 0) && (requestRow()))
     {
-      AppMethodBeat.o(12253);
+      AppMethodBeat.o(2934);
       return true;
     }
-    AppMethodBeat.o(12253);
+    AppMethodBeat.o(2934);
     return false;
   }
   
   public void onDeactivateOrClose()
   {
-    AppMethodBeat.i(12247);
+    AppMethodBeat.i(2928);
     if (this.mCurrentRow != 0L)
     {
       this.mWindow.endRowUnsafe(this.mCurrentRow);
@@ -350,7 +350,7 @@ public class SQLiteAsyncCursor
       this.mCount = -1;
       this.mPos = -1;
       super.onDeactivateOrClose();
-      AppMethodBeat.o(12247);
+      AppMethodBeat.o(2928);
       return;
     }
     catch (InterruptedException localInterruptedException)
@@ -373,14 +373,14 @@ public class SQLiteAsyncCursor
     
     void quit()
     {
-      AppMethodBeat.i(12243);
+      AppMethodBeat.i(2924);
       interrupt();
-      AppMethodBeat.o(12243);
+      AppMethodBeat.o(2924);
     }
     
     void requestPos(int paramInt)
     {
-      AppMethodBeat.i(12242);
+      AppMethodBeat.i(2923);
       try
       {
         this.mRequestPos = paramInt;
@@ -389,13 +389,13 @@ public class SQLiteAsyncCursor
       }
       finally
       {
-        AppMethodBeat.o(12242);
+        AppMethodBeat.o(2923);
       }
     }
     
     public void run()
     {
-      AppMethodBeat.i(12241);
+      AppMethodBeat.i(2922);
       for (;;)
       {
         int i;
@@ -407,7 +407,7 @@ public class SQLiteAsyncCursor
         catch (InterruptedException localInterruptedException) {}finally
         {
           SQLiteAsyncCursor.this.mQuery.release();
-          AppMethodBeat.o(12241);
+          AppMethodBeat.o(2922);
         }
         if (i < this.mMinPos)
         {
@@ -436,13 +436,13 @@ public class SQLiteAsyncCursor
         }
       }
       SQLiteAsyncCursor.this.mQuery.release();
-      AppMethodBeat.o(12241);
+      AppMethodBeat.o(2922);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.database.SQLiteAsyncCursor
  * JD-Core Version:    0.7.0.1
  */

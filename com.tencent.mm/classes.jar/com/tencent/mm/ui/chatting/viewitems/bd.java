@@ -1,81 +1,99 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.a.a;
+import com.tencent.mm.bc.b;
+import com.tencent.mm.bc.t;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.c;
+import com.tencent.mm.model.w;
+import com.tencent.mm.modelappbrand.l;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.bl;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.chatting.AppBrandServiceChattingUI.AppBrandServiceChattingFmUI;
+import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
+import com.tencent.neattextview.textview.view.NeatTextView;
+import java.lang.ref.WeakReference;
 
 final class bd
-  extends LinkMovementMethod
+  implements as.a
 {
-  private a zYW;
-  
-  private static a a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  public final void b(c.a parama, int paramInt, com.tencent.mm.ui.chatting.d.a parama1, bl parambl)
   {
-    AppMethodBeat.i(33453);
-    int i = (int)paramMotionEvent.getX();
-    int j = (int)paramMotionEvent.getY();
-    int k = paramTextView.getTotalPaddingLeft();
-    int m = paramTextView.getTotalPaddingTop();
-    int n = paramTextView.getScrollX();
-    int i1 = paramTextView.getScrollY();
-    paramTextView = paramTextView.getLayout();
-    i = paramTextView.getOffsetForHorizontal(paramTextView.getLineForVertical(j - m + i1), i - k + n);
-    paramTextView = (a[])paramSpannable.getSpans(i, i, a.class);
-    if (paramTextView.length > 0) {}
-    for (paramTextView = paramTextView[0];; paramTextView = null)
+    AppMethodBeat.i(37550);
+    String str = parama1.getTalkerUserName();
+    parama = (as.b)parama;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("conv_talker_username", str);
+    if ((parama1.GzJ instanceof AppBrandServiceChattingUI.AppBrandServiceChattingFmUI))
     {
-      AppMethodBeat.o(33453);
-      return paramTextView;
-    }
-  }
-  
-  public final boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(33452);
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.zYW = a(paramTextView, paramSpannable, paramMotionEvent);
-      if (this.zYW != null)
-      {
-        this.zYW.setIsPressed(true);
-        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.zYW), paramSpannable.getSpanEnd(this.zYW));
+      paramInt = 10;
+      localBundle.putInt("scene", paramInt);
+      localBundle.putLong("msg_id", parambl.field_msgId);
+      localBundle.putLong("msg_sever_id", parambl.field_msgSvrId);
+      localBundle.putString("send_msg_username", parambl.field_talker);
+      parambl = ((l)g.ab(l.class)).a(parambl.field_content, localBundle, new WeakReference(parama1.GzJ.getContext()), new WeakReference(parama.GPj));
+      if ((parambl != null) && (parambl.length() != 0)) {
+        break label326;
       }
+      parama.rLd.setVisibility(8);
+      label162:
+      parambl = t.azZ().yR(str);
+      az.arV();
+      paramInt = ((Integer)c.afk().get(12311, Integer.valueOf(-2))).intValue();
+      if (((parambl == null) || (parambl.hoW == -2)) && ((parambl != null) || (paramInt == -2))) {
+        break label346;
+      }
+      parama.GPj.setTextColor(parama1.GzJ.getContext().getResources().getColor(2131100151));
+      parama.GPj.setBackground(parama1.GzJ.getContext().getResources().getDrawable(2131231583));
     }
     for (;;)
     {
-      AppMethodBeat.o(33452);
-      return true;
-      if (paramMotionEvent.getAction() == 2)
+      parama.GPj.setOnClickListener(new View.OnClickListener()
       {
-        paramTextView = a(paramTextView, paramSpannable, paramMotionEvent);
-        if ((this.zYW != null) && (paramTextView != this.zYW))
+        public final void onClick(View paramAnonymousView)
         {
-          this.zYW.setIsPressed(false);
-          this.zYW = null;
-          Selection.removeSelection(paramSpannable);
+          AppMethodBeat.i(37549);
+          ad.d("MicroMsg.ChattingItemWxaSubscribeSysImpl", "hy: textview clicked");
+          AppMethodBeat.o(37549);
         }
-      }
-      else
+      });
+      parama.GPj.invalidate();
+      AppMethodBeat.o(37550);
+      return;
+      if (parama1.eZb())
       {
-        if (this.zYW != null)
-        {
-          this.zYW.setIsPressed(false);
-          super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
-        }
-        this.zYW = null;
-        Selection.removeSelection(paramSpannable);
+        paramInt = 2;
+        break;
       }
+      if (w.sE(str))
+      {
+        paramInt = 7;
+        break;
+      }
+      paramInt = 1;
+      break;
+      label326:
+      parama.rLd.setVisibility(0);
+      parama.GPj.aq(parambl);
+      break label162;
+      label346:
+      parama.GPj.setTextColor(ao.aD(parama1.GzJ.getContext(), 2130968586));
+      parama.GPj.setBackground(parama1.GzJ.getContext().getResources().getDrawable(2131231582));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.bd
  * JD-Core Version:    0.7.0.1
  */

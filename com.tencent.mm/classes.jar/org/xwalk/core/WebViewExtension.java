@@ -3,6 +3,7 @@ package org.xwalk.core;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class WebViewExtension
@@ -21,88 +22,115 @@ public class WebViewExtension
   
   static
   {
-    AppMethodBeat.i(85534);
+    AppMethodBeat.i(154624);
     if (!WebViewExtension.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(85534);
+      AppMethodBeat.o(154624);
       return;
     }
   }
   
   public WebViewExtension()
   {
-    AppMethodBeat.i(85528);
+    AppMethodBeat.i(154618);
     this.SetExtensionMethod = new ReflectMethod(null, "SetExtension", new Class[0]);
     this.constructorTypes = new ArrayList();
     this.constructorParams = new ArrayList();
     reflectionInit();
-    AppMethodBeat.o(85528);
+    AppMethodBeat.o(154618);
   }
   
   public static void SetExtension(WebViewExtensionListener paramWebViewExtensionListener)
   {
-    AppMethodBeat.i(85529);
+    AppMethodBeat.i(154619);
     Log.i("XWalkLib.WebViewExtension", "SetExtension WebViewExtensionInterface");
     mWebViewExtensionListener = paramWebViewExtensionListener;
     try
     {
       updateExtension(true);
-      AppMethodBeat.o(85529);
+      AppMethodBeat.o(154619);
       return;
     }
     catch (Exception paramWebViewExtensionListener)
     {
       Log.i("XWalkLib.WebViewExtension", "SetExtension refelction not ready, updateExtension when available:" + paramWebViewExtensionListener.getMessage());
-      AppMethodBeat.o(85529);
+      AppMethodBeat.o(154619);
     }
   }
   
   public static boolean addFilterResources(Resources paramResources, Map<Long, Integer> paramMap)
   {
-    AppMethodBeat.i(85531);
+    AppMethodBeat.i(154621);
     boolean bool = invokeExtensionMethod("AddFilterResources", new Object[] { paramResources, paramMap });
-    AppMethodBeat.o(85531);
+    AppMethodBeat.o(154621);
     return bool;
   }
   
   private static WebViewExtension getInstance()
   {
-    AppMethodBeat.i(85527);
+    AppMethodBeat.i(154617);
     if (sInstance == null) {
       sInstance = new WebViewExtension();
     }
     WebViewExtension localWebViewExtension = sInstance;
-    AppMethodBeat.o(85527);
+    AppMethodBeat.o(154617);
     return localWebViewExtension;
   }
   
   public static boolean invokeExtensionMethod(String paramString, Object... paramVarArgs)
   {
-    AppMethodBeat.i(85532);
+    AppMethodBeat.i(154622);
     if (mWebViewExtensionListener != null)
     {
       mWebViewExtensionListener.onMiscCallBack(paramString, paramVarArgs);
-      AppMethodBeat.o(85532);
+      AppMethodBeat.o(154622);
       return true;
     }
     Log.e("XWalkLib.WebViewExtension", "InvokeExtensionMethod interface is null,method:".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(85532);
+    AppMethodBeat.o(154622);
     return false;
   }
   
   public static void updateExtension(boolean paramBoolean)
   {
-    AppMethodBeat.i(85530);
+    AppMethodBeat.i(154620);
     if ((mWebViewExtensionListener != null) && ((paramBoolean == true) || (mWebViewExtensionInterface == null)))
     {
       getInstance();
       Log.i("XWalkLib.WebViewExtension", "updateExtension");
-      mWebViewExtensionInterface = new WebViewExtension.1();
+      mWebViewExtensionInterface = new WebViewExtensionInterface()
+      {
+        public final int getHostByName(String paramAnonymousString, List<String> paramAnonymousList)
+        {
+          AppMethodBeat.i(154616);
+          if (WebViewExtension.mWebViewExtensionListener != null)
+          {
+            int i = WebViewExtension.mWebViewExtensionListener.getHostByName(paramAnonymousString, paramAnonymousList);
+            AppMethodBeat.o(154616);
+            return i;
+          }
+          AppMethodBeat.o(154616);
+          return 0;
+        }
+        
+        public final Object onMiscCallBack(String paramAnonymousString, Object... paramAnonymousVarArgs)
+        {
+          AppMethodBeat.i(154615);
+          if (WebViewExtension.mWebViewExtensionListener != null)
+          {
+            paramAnonymousString = WebViewExtension.mWebViewExtensionListener.onMiscCallBack(paramAnonymousString, paramAnonymousVarArgs);
+            AppMethodBeat.o(154615);
+            return paramAnonymousString;
+          }
+          AppMethodBeat.o(154615);
+          return null;
+        }
+      };
       getInstance().SetExtensionMethod.invoke(new Object[] { mWebViewExtensionInterface.getBridge() });
     }
-    AppMethodBeat.o(85530);
+    AppMethodBeat.o(154620);
   }
   
   protected Object getBridge()
@@ -112,13 +140,13 @@ public class WebViewExtension
   
   void reflectionInit()
   {
-    AppMethodBeat.i(85533);
+    AppMethodBeat.i(154623);
     XWalkCoreWrapper.initEmbeddedMode();
     this.coreWrapper = XWalkCoreWrapper.getInstance();
     if (this.coreWrapper == null)
     {
       XWalkCoreWrapper.reserveReflectObject(this);
-      AppMethodBeat.o(85533);
+      AppMethodBeat.o(154623);
       return;
     }
     int j = this.constructorTypes.size();
@@ -146,7 +174,7 @@ public class WebViewExtension
         }
       } while ($assertionsDisabled);
       localObject1 = new AssertionError();
-      AppMethodBeat.o(85533);
+      AppMethodBeat.o(154623);
       throw ((Throwable)localObject1);
     }
     localObject1[j] = Object.class;
@@ -159,18 +187,18 @@ public class WebViewExtension
         this.postWrapperMethod.invoke(new Object[0]);
       }
       this.SetExtensionMethod.init(this.bridge, null, "SetExtensionSuper", new Class[] { this.coreWrapper.getBridgeClass("WebViewExtensionInterfaceBridge") });
-      AppMethodBeat.o(85533);
+      AppMethodBeat.o(154623);
       return;
     }
     catch (UnsupportedOperationException localUnsupportedOperationException)
     {
-      AppMethodBeat.o(85533);
+      AppMethodBeat.o(154623);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.WebViewExtension
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class ge
   extends b
 {
-  public ge.a cuI;
+  public a djk;
   
   public ge()
   {
@@ -15,16 +16,23 @@ public final class ge
   
   private ge(byte paramByte)
   {
-    AppMethodBeat.i(15773);
-    this.cuI = new ge.a();
-    this.ymq = false;
+    AppMethodBeat.i(163527);
+    this.djk = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(15773);
+    AppMethodBeat.o(163527);
+  }
+  
+  public static final class a
+  {
+    public Activity djj;
+    public String djl;
+    public int djm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.ge
  * JD-Core Version:    0.7.0.1
  */

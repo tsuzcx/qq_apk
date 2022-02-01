@@ -18,15 +18,15 @@ public class BooleanMirror
   
   public String toString()
   {
-    AppMethodBeat.i(74857);
+    AppMethodBeat.i(61480);
     String str = this.v8Object.executeStringFunction("toText", null);
-    AppMethodBeat.o(74857);
+    AppMethodBeat.o(61480);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.debug.mirror.BooleanMirror
  * JD-Core Version:    0.7.0.1
  */

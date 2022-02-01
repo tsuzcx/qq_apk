@@ -6,276 +6,290 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.s;
-import com.tencent.mm.plugin.ipcall.a.e.e;
-import com.tencent.mm.plugin.ipcall.a.g.k;
-import com.tencent.mm.plugin.ipcall.a.g.l;
-import com.tencent.mm.plugin.ipcall.a.g.m;
-import com.tencent.mm.plugin.ipcall.a.i;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.u;
+import com.tencent.mm.model.v;
+import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.ipcall.model.f.e;
+import com.tencent.mm.plugin.ipcall.model.h.m;
+import com.tencent.mm.plugin.ipcall.model.i;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.pluginsdk.ui.applet.a.a;
+import com.tencent.mm.pluginsdk.ui.applet.a.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.e.c;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class IPCallUserProfileUI
   extends MMActivity
 {
-  private String cHB;
-  private String cJk;
-  private ImageView ehv;
-  private boolean nRV;
-  private TextView nWA;
-  private TextView nWB;
-  private LinearLayout nWC;
-  private LinearLayout nWD;
-  private TextView nWE;
-  private TextView nWF;
-  private TextView nWG;
-  private TextView nWH;
-  private TextView nWI;
-  private Button nWJ;
-  private String nWK;
-  private String nWL;
-  private Bitmap nWM;
-  private boolean nWN;
-  private Cursor nWO;
-  private boolean nWP;
-  private e nWQ;
+  private String dAc;
+  private String dyq;
+  private ImageView fuj;
+  private boolean sFQ;
+  private TextView sKA;
+  private TextView sKB;
+  private TextView sKC;
+  private Button sKD;
+  private String sKE;
+  private String sKF;
+  private Bitmap sKG;
+  private boolean sKH;
+  private Cursor sKI;
+  private boolean sKJ;
+  private e sKK;
+  private TextView sKu;
+  private TextView sKv;
+  private LinearLayout sKw;
+  private LinearLayout sKx;
+  private TextView sKy;
+  private TextView sKz;
   
   public IPCallUserProfileUI()
   {
-    AppMethodBeat.i(22384);
-    this.nRV = false;
-    this.nWO = null;
-    this.nWP = false;
-    this.nWQ = new e();
-    AppMethodBeat.o(22384);
+    AppMethodBeat.i(26007);
+    this.sFQ = false;
+    this.sKI = null;
+    this.sKJ = false;
+    this.sKK = new e();
+    AppMethodBeat.o(26007);
   }
   
-  /* Error */
-  private static String Ru(String paramString)
+  private void a(com.tencent.mm.plugin.ipcall.model.h.k paramk, boolean paramBoolean, int paramInt)
   {
-    // Byte code:
-    //   0: sipush 22388
-    //   3: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 69	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
-    //   9: ldc 71
-    //   11: invokestatic 76	com/tencent/mm/pluginsdk/permission/b:o	(Landroid/content/Context;Ljava/lang/String;)Z
-    //   14: ifne +18 -> 32
-    //   17: ldc 78
-    //   19: ldc 80
-    //   21: invokestatic 86	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   24: sipush 22388
-    //   27: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   30: aconst_null
-    //   31: areturn
-    //   32: invokestatic 69	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
-    //   35: invokevirtual 92	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   38: getstatic 98	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
-    //   41: aconst_null
-    //   42: ldc 100
-    //   44: iconst_1
-    //   45: anewarray 102	java/lang/String
-    //   48: dup
-    //   49: iconst_0
-    //   50: aload_0
-    //   51: aastore
-    //   52: aconst_null
-    //   53: invokevirtual 108	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   56: astore 4
-    //   58: aload 4
-    //   60: ifnonnull +11 -> 71
-    //   63: sipush 22388
-    //   66: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   69: aconst_null
-    //   70: areturn
-    //   71: aload 4
-    //   73: invokeinterface 114 1 0
-    //   78: istore_1
-    //   79: iload_1
-    //   80: ifeq +145 -> 225
-    //   83: ldc 116
-    //   85: astore_0
-    //   86: aload_0
-    //   87: astore_2
-    //   88: aload_0
-    //   89: astore_3
-    //   90: aload 4
-    //   92: invokeinterface 119 1 0
-    //   97: ifne +131 -> 228
-    //   100: aload_0
-    //   101: astore_2
-    //   102: aload 4
-    //   104: aload 4
-    //   106: ldc 121
-    //   108: invokeinterface 125 2 0
-    //   113: invokeinterface 129 2 0
-    //   118: astore_3
-    //   119: aload_0
-    //   120: astore_2
-    //   121: new 131	java/lang/StringBuilder
-    //   124: dup
-    //   125: invokespecial 132	java/lang/StringBuilder:<init>	()V
-    //   128: aload_0
-    //   129: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: aload_3
-    //   133: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   136: ldc 138
-    //   138: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   141: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   144: astore_0
-    //   145: aload_0
-    //   146: astore_2
-    //   147: aload 4
-    //   149: invokeinterface 145 1 0
-    //   154: pop
-    //   155: goto -69 -> 86
-    //   158: astore_0
-    //   159: ldc 78
-    //   161: ldc 147
-    //   163: iconst_2
-    //   164: anewarray 149	java/lang/Object
-    //   167: dup
-    //   168: iconst_0
-    //   169: aload_0
-    //   170: invokevirtual 152	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   173: aastore
-    //   174: dup
-    //   175: iconst_1
-    //   176: aload_0
-    //   177: invokevirtual 156	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   180: invokevirtual 161	java/lang/Class:getSimpleName	()Ljava/lang/String;
-    //   183: aastore
-    //   184: invokestatic 164	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   187: aload 4
-    //   189: invokeinterface 167 1 0
-    //   194: aload_2
-    //   195: astore_0
-    //   196: aload_2
-    //   197: ldc 138
-    //   199: invokevirtual 170	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
-    //   202: iflt +15 -> 217
-    //   205: aload_2
-    //   206: iconst_0
-    //   207: aload_2
-    //   208: ldc 138
-    //   210: invokevirtual 170	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
-    //   213: invokevirtual 174	java/lang/String:substring	(II)Ljava/lang/String;
-    //   216: astore_0
-    //   217: sipush 22388
-    //   220: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   223: aload_0
-    //   224: areturn
-    //   225: ldc 116
-    //   227: astore_3
-    //   228: aload 4
-    //   230: invokeinterface 167 1 0
-    //   235: aload_3
-    //   236: astore_2
-    //   237: goto -43 -> 194
-    //   240: astore_0
-    //   241: aload 4
-    //   243: invokeinterface 167 1 0
-    //   248: sipush 22388
-    //   251: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   254: aload_0
-    //   255: athrow
-    //   256: astore_0
-    //   257: ldc 116
-    //   259: astore_2
-    //   260: goto -101 -> 159
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	263	0	paramString	String
-    //   78	2	1	bool	boolean
-    //   87	173	2	localObject	Object
-    //   89	147	3	str	String
-    //   56	186	4	localCursor	Cursor
-    // Exception table:
-    //   from	to	target	type
-    //   90	100	158	java/lang/Exception
-    //   102	119	158	java/lang/Exception
-    //   121	145	158	java/lang/Exception
-    //   147	155	158	java/lang/Exception
-    //   71	79	240	finally
-    //   90	100	240	finally
-    //   102	119	240	finally
-    //   121	145	240	finally
-    //   147	155	240	finally
-    //   159	187	240	finally
-    //   71	79	256	java/lang/Exception
-  }
-  
-  private void a(k paramk, boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(22391);
-    View localView = LayoutInflater.from(this).inflate(2130970472, this.nWD, false);
-    TextView localTextView1 = (TextView)localView.findViewById(2131825273);
-    TextView localTextView2 = (TextView)localView.findViewById(2131825274);
-    TextView localTextView3 = (TextView)localView.findViewById(2131825275);
-    localTextView2.setText(com.tencent.mm.plugin.ipcall.b.a.RG(paramk.field_phonenumber));
+    AppMethodBeat.i(26014);
+    View localView = LayoutInflater.from(this).inflate(2131495145, this.sKx, false);
+    TextView localTextView1 = (TextView)localView.findViewById(2131303486);
+    TextView localTextView2 = (TextView)localView.findViewById(2131303488);
+    TextView localTextView3 = (TextView)localView.findViewById(2131303489);
+    localTextView2.setText(com.tencent.mm.plugin.ipcall.a.a.aeA(paramk.field_phonenumber));
     if (paramk.field_duration > 0L) {
-      localTextView3.setText(com.tencent.mm.plugin.ipcall.b.c.ky(paramk.field_duration));
+      localTextView3.setText(com.tencent.mm.plugin.ipcall.a.c.ri(paramk.field_duration));
     }
     for (;;)
     {
-      localTextView1.setText(com.tencent.mm.plugin.ipcall.b.c.ku(paramk.field_calltime));
+      localTextView1.setText(com.tencent.mm.plugin.ipcall.a.c.re(paramk.field_calltime));
       if (paramBoolean)
       {
-        localView.setBackgroundDrawable(getResources().getDrawable(2130839998));
-        int i = getResources().getDimensionPixelSize(2131427445);
+        localView.setBackgroundDrawable(getResources().getDrawable(2131233672));
+        int i = getResources().getDimensionPixelSize(2131166702);
         localView.setPadding(i, 0, i, 0);
       }
       if (1 == paramInt)
       {
         paramk = (LinearLayout.LayoutParams)localView.getLayoutParams();
-        paramk.height = com.tencent.mm.cb.a.ao(getContext(), 2131428617);
+        paramk.height = com.tencent.mm.cd.a.ao(getContext(), 2131166673);
         localView.setLayoutParams(paramk);
       }
-      this.nWD.addView(localView);
-      AppMethodBeat.o(22391);
+      this.sKx.addView(localView);
+      AppMethodBeat.o(26014);
       return;
-      localTextView3.setText(com.tencent.mm.plugin.ipcall.b.c.xX(paramk.field_status));
+      localTextView3.setText(com.tencent.mm.plugin.ipcall.a.c.Fz(paramk.field_status));
     }
   }
   
-  private void bKq()
+  /* Error */
+  private static String aeo(String paramString)
+  {
+    // Byte code:
+    //   0: sipush 26011
+    //   3: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: invokestatic 300	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   9: ldc_w 302
+    //   12: invokestatic 307	com/tencent/mm/pluginsdk/permission/b:o	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   15: ifne +20 -> 35
+    //   18: ldc_w 309
+    //   21: ldc_w 311
+    //   24: invokestatic 317	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: sipush 26011
+    //   30: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   33: aconst_null
+    //   34: areturn
+    //   35: invokestatic 300	com/tencent/mm/sdk/platformtools/aj:getContext	()Landroid/content/Context;
+    //   38: invokevirtual 323	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   41: getstatic 329	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
+    //   44: aconst_null
+    //   45: ldc_w 331
+    //   48: iconst_1
+    //   49: anewarray 333	java/lang/String
+    //   52: dup
+    //   53: iconst_0
+    //   54: aload_0
+    //   55: aastore
+    //   56: aconst_null
+    //   57: invokevirtual 339	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   60: astore 4
+    //   62: aload 4
+    //   64: ifnonnull +11 -> 75
+    //   67: sipush 26011
+    //   70: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: aconst_null
+    //   74: areturn
+    //   75: aload 4
+    //   77: invokeinterface 345 1 0
+    //   82: istore_1
+    //   83: iload_1
+    //   84: ifeq +152 -> 236
+    //   87: ldc_w 347
+    //   90: astore_0
+    //   91: aload_0
+    //   92: astore_2
+    //   93: aload_0
+    //   94: astore_3
+    //   95: aload 4
+    //   97: invokeinterface 350 1 0
+    //   102: ifne +138 -> 240
+    //   105: aload_0
+    //   106: astore_2
+    //   107: aload 4
+    //   109: aload 4
+    //   111: ldc_w 352
+    //   114: invokeinterface 356 2 0
+    //   119: invokeinterface 359 2 0
+    //   124: astore_3
+    //   125: aload_0
+    //   126: astore_2
+    //   127: new 361	java/lang/StringBuilder
+    //   130: dup
+    //   131: invokespecial 362	java/lang/StringBuilder:<init>	()V
+    //   134: aload_0
+    //   135: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: aload_3
+    //   139: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: ldc_w 368
+    //   145: invokevirtual 366	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: invokevirtual 372	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   151: astore_0
+    //   152: aload_0
+    //   153: astore_2
+    //   154: aload 4
+    //   156: invokeinterface 375 1 0
+    //   161: pop
+    //   162: goto -71 -> 91
+    //   165: astore_0
+    //   166: ldc_w 309
+    //   169: ldc_w 377
+    //   172: iconst_2
+    //   173: anewarray 256	java/lang/Object
+    //   176: dup
+    //   177: iconst_0
+    //   178: aload_0
+    //   179: invokevirtual 380	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   182: aastore
+    //   183: dup
+    //   184: iconst_1
+    //   185: aload_0
+    //   186: invokevirtual 384	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   189: invokevirtual 389	java/lang/Class:getSimpleName	()Ljava/lang/String;
+    //   192: aastore
+    //   193: invokestatic 392	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   196: aload 4
+    //   198: invokeinterface 395 1 0
+    //   203: aload_2
+    //   204: astore_0
+    //   205: aload_2
+    //   206: ldc_w 368
+    //   209: invokevirtual 398	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   212: iflt +16 -> 228
+    //   215: aload_2
+    //   216: iconst_0
+    //   217: aload_2
+    //   218: ldc_w 368
+    //   221: invokevirtual 398	java/lang/String:lastIndexOf	(Ljava/lang/String;)I
+    //   224: invokevirtual 402	java/lang/String:substring	(II)Ljava/lang/String;
+    //   227: astore_0
+    //   228: sipush 26011
+    //   231: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   234: aload_0
+    //   235: areturn
+    //   236: ldc_w 347
+    //   239: astore_3
+    //   240: aload 4
+    //   242: invokeinterface 395 1 0
+    //   247: aload_3
+    //   248: astore_2
+    //   249: goto -46 -> 203
+    //   252: astore_0
+    //   253: aload 4
+    //   255: invokeinterface 395 1 0
+    //   260: sipush 26011
+    //   263: invokestatic 84	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   266: aload_0
+    //   267: athrow
+    //   268: astore_0
+    //   269: ldc_w 347
+    //   272: astore_2
+    //   273: goto -107 -> 166
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	276	0	paramString	String
+    //   82	2	1	bool	boolean
+    //   92	181	2	localObject	Object
+    //   94	154	3	str	String
+    //   60	194	4	localCursor	Cursor
+    // Exception table:
+    //   from	to	target	type
+    //   95	105	165	java/lang/Exception
+    //   107	125	165	java/lang/Exception
+    //   127	152	165	java/lang/Exception
+    //   154	162	165	java/lang/Exception
+    //   75	83	252	finally
+    //   95	105	252	finally
+    //   107	125	252	finally
+    //   127	152	252	finally
+    //   154	162	252	finally
+    //   166	196	252	finally
+    //   75	83	268	java/lang/Exception
+  }
+  
+  private void cIn()
   {
     int i = 0;
-    AppMethodBeat.i(22386);
+    AppMethodBeat.i(26009);
     ArrayList localArrayList = new ArrayList();
-    if ((this.nWO != null) && (this.nWO.getCount() > 0))
+    if ((this.sKI != null) && (this.sKI.getCount() > 0))
     {
       for (;;)
       {
         try
         {
-          if ((!this.nWO.moveToFirst()) || (this.nWO.isAfterLast())) {
-            break label222;
+          if ((!this.sKI.moveToFirst()) || (this.sKI.isAfterLast())) {
+            break label224;
           }
           i += 1;
-          str = this.nWO.getString(this.nWO.getColumnIndex("data1"));
-          j = this.nWO.getInt(this.nWO.getColumnIndex("data2"));
+          str = this.sKI.getString(this.sKI.getColumnIndex("data1"));
+          j = this.sKI.getInt(this.sKI.getColumnIndex("data2"));
           if (!localArrayList.contains(str))
           {
             localArrayList.add(str);
-            if (i != this.nWO.getCount()) {
+            if (i != this.sKI.getCount()) {
               continue;
             }
             o(str, j, false);
@@ -285,48 +299,83 @@ public class IPCallUserProfileUI
         {
           String str;
           int j;
-          ab.e("MicroMsg.IPCallUserProfileUI", "initPhoneNumberList error: %s", new Object[] { localException.getMessage() });
+          ad.e("MicroMsg.IPCallUserProfileUI", "initPhoneNumberList error: %s", new Object[] { localException.getMessage() });
           return;
           o(str, j, true);
           continue;
         }
         finally
         {
-          this.nWO.close();
-          AppMethodBeat.o(22386);
+          this.sKI.close();
+          AppMethodBeat.o(26009);
         }
-        this.nWO.moveToNext();
+        this.sKI.moveToNext();
       }
-      label222:
-      this.nWO.close();
-      AppMethodBeat.o(22386);
+      label224:
+      this.sKI.close();
+      AppMethodBeat.o(26009);
       return;
     }
-    this.nWC.setVisibility(8);
-    AppMethodBeat.o(22386);
+    this.sKw.setVisibility(8);
+    AppMethodBeat.o(26009);
   }
   
-  private void bKr()
+  private void cIo()
   {
-    AppMethodBeat.i(22389);
-    this.nWJ.setOnClickListener(new IPCallUserProfileUI.9(this));
-    AppMethodBeat.o(22389);
-  }
-  
-  private void bKs()
-  {
-    AppMethodBeat.i(22390);
-    if (!this.nWP)
+    AppMethodBeat.i(26012);
+    this.sKD.setOnClickListener(new View.OnClickListener()
     {
-      this.nWD.setVisibility(8);
-      this.nWH.setVisibility(8);
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(26004);
+        IPCallUserProfileUI.d(IPCallUserProfileUI.this).start();
+        IPCallUserProfileUI.d(IPCallUserProfileUI.this).sDp = 1L;
+        IPCallUserProfileUI.d(IPCallUserProfileUI.this).sDq = 5L;
+        IPCallUserProfileUI.d(IPCallUserProfileUI.this).finish();
+        h.vKh.f(12766, new Object[] { Integer.valueOf(3) });
+        Object localObject;
+        if (!bt.isNullOrNil(IPCallUserProfileUI.e(IPCallUserProfileUI.this)))
+        {
+          localObject = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:" + IPCallUserProfileUI.aep(IPCallUserProfileUI.e(IPCallUserProfileUI.this))));
+          ((Intent)localObject).putExtra("sms_body", IPCallUserProfileUI.this.getString(2131760453, new Object[] { u.arm().ZW() }));
+          paramAnonymousView = IPCallUserProfileUI.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/ipcall/ui/IPCallUserProfileUI$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/ipcall/ui/IPCallUserProfileUI$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          AppMethodBeat.o(26004);
+          return;
+        }
+        if (!bt.isNullOrNil(IPCallUserProfileUI.f(IPCallUserProfileUI.this)))
+        {
+          localObject = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:" + IPCallUserProfileUI.f(IPCallUserProfileUI.this)));
+          ((Intent)localObject).putExtra("sms_body", IPCallUserProfileUI.this.getString(2131760453, new Object[] { u.arm().ZW() }));
+          paramAnonymousView = IPCallUserProfileUI.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/ipcall/ui/IPCallUserProfileUI$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/ipcall/ui/IPCallUserProfileUI$7", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        }
+        AppMethodBeat.o(26004);
+      }
+    });
+    AppMethodBeat.o(26012);
+  }
+  
+  private void cIp()
+  {
+    AppMethodBeat.i(26013);
+    if (!this.sKJ)
+    {
+      this.sKx.setVisibility(8);
+      this.sKB.setVisibility(8);
     }
     Cursor localCursor;
-    if (!bo.isNullOrNil(this.cJk))
+    if (!bt.isNullOrNil(this.dAc))
     {
-      localCursor = m.Rg(this.cJk);
+      localCursor = m.aea(this.dAc);
       if ((localCursor == null) || (localCursor.getCount() <= 0)) {
-        break label261;
+        break label262;
       }
     }
     for (;;)
@@ -339,11 +388,11 @@ public class IPCallUserProfileUI
           j = i;
           if (!localCursor.isAfterLast())
           {
-            k localk = new k();
+            com.tencent.mm.plugin.ipcall.model.h.k localk = new com.tencent.mm.plugin.ipcall.model.h.k();
             localk.convertFrom(localCursor);
             i += 1;
             if (i < 3) {
-              break label286;
+              break label287;
             }
             bool = true;
             a(localk, bool, localCursor.getCount());
@@ -359,66 +408,107 @@ public class IPCallUserProfileUI
       catch (Exception localException)
       {
         int j;
-        ab.e("MicroMsg.IPCallUserProfileUI", "initRecordList, error: %s", new Object[] { localException.getMessage() });
+        ad.e("MicroMsg.IPCallUserProfileUI", "initRecordList, error: %s", new Object[] { localException.getMessage() });
         return;
-        localCursor = i.bJu().Re(this.cHB);
+        localCursor = i.cHr().adY(this.dyq);
         break;
         if (j <= 0)
         {
-          this.nWD.setVisibility(8);
+          this.sKx.setVisibility(8);
           return;
         }
         if (localCursor.getCount() < 4) {
           continue;
         }
-        bKt();
+        cIq();
         continue;
       }
       finally
       {
         localCursor.close();
-        AppMethodBeat.o(22390);
+        AppMethodBeat.o(26013);
       }
-      label261:
-      this.nWD.setVisibility(8);
-      this.nWH.setVisibility(8);
-      AppMethodBeat.o(22390);
+      label262:
+      this.sKx.setVisibility(8);
+      this.sKB.setVisibility(8);
+      AppMethodBeat.o(26013);
       return;
-      label286:
+      label287:
       boolean bool = false;
     }
   }
   
-  private void bKt()
+  private void cIq()
   {
-    AppMethodBeat.i(22392);
-    View localView = LayoutInflater.from(this).inflate(2130970473, this.nWD, false);
-    this.nWD.addView(localView);
-    localView.setOnClickListener(new IPCallUserProfileUI.3(this));
-    AppMethodBeat.o(22392);
+    AppMethodBeat.i(26015);
+    View localView = LayoutInflater.from(this).inflate(2131495146, this.sKx, false);
+    this.sKx.addView(localView);
+    localView.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(25996);
+        Object localObject = new Intent(IPCallUserProfileUI.this, IPCallAllRecordUI.class);
+        if (!bt.isNullOrNil(IPCallUserProfileUI.e(IPCallUserProfileUI.this))) {
+          ((Intent)localObject).putExtra("IPCallAllRecordUI_contactId", IPCallUserProfileUI.e(IPCallUserProfileUI.this));
+        }
+        for (;;)
+        {
+          ((Intent)localObject).putExtra("IPCallAllRecordUI_isSinglePhoneNumber", IPCallUserProfileUI.g(IPCallUserProfileUI.this));
+          paramAnonymousView = IPCallUserProfileUI.this;
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/ipcall/ui/IPCallUserProfileUI$11", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/ipcall/ui/IPCallUserProfileUI$11", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          AppMethodBeat.o(25996);
+          return;
+          if (!bt.isNullOrNil(IPCallUserProfileUI.f(IPCallUserProfileUI.this))) {
+            ((Intent)localObject).putExtra("IPCallAllRecordUI_phoneNumber", IPCallUserProfileUI.f(IPCallUserProfileUI.this));
+          }
+        }
+      }
+    });
+    AppMethodBeat.o(26015);
   }
   
-  private void o(String paramString, int paramInt, boolean paramBoolean)
+  private void o(final String paramString, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(22387);
-    View localView = LayoutInflater.from(this).inflate(2130970470, this.nWC, false);
-    Object localObject = (LinearLayout)localView.findViewById(2131826861);
+    AppMethodBeat.i(26010);
+    View localView = LayoutInflater.from(this).inflate(2131495143, this.sKw, false);
+    Object localObject = (LinearLayout)localView.findViewById(2131301448);
     if (!paramBoolean) {
       ((LinearLayout)localObject).setBackgroundDrawable(null);
     }
     for (;;)
     {
-      localObject = (TextView)localView.findViewById(2131826862);
-      TextView localTextView = (TextView)localView.findViewById(2131825211);
-      localTextView.setText(com.tencent.mm.plugin.ipcall.b.a.RG(com.tencent.mm.plugin.ipcall.b.c.RK(paramString)));
-      ((TextView)localObject).setText(com.tencent.mm.plugin.ipcall.b.a.xW(paramInt));
+      localObject = (TextView)localView.findViewById(2131303239);
+      final TextView localTextView = (TextView)localView.findViewById(2131303238);
+      localTextView.setText(com.tencent.mm.plugin.ipcall.a.a.aeA(com.tencent.mm.plugin.ipcall.a.c.aeE(paramString)));
+      ((TextView)localObject).setText(com.tencent.mm.plugin.ipcall.a.a.Fy(paramInt));
       localView.setClickable(true);
-      localView.setOnClickListener(new IPCallUserProfileUI.4(this, paramString));
-      localView.setOnLongClickListener(new IPCallUserProfileUI.5(this, localTextView));
-      this.nWC.addView(localView);
-      AppMethodBeat.o(22387);
+      localView.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(25997);
+          IPCallUserProfileUI.a(IPCallUserProfileUI.this, paramString);
+          AppMethodBeat.o(25997);
+        }
+      });
+      localView.setOnLongClickListener(new View.OnLongClickListener()
+      {
+        public final boolean onLongClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(25998);
+          IPCallUserProfileUI.a(IPCallUserProfileUI.this, localTextView);
+          AppMethodBeat.o(25998);
+          return true;
+        }
+      });
+      this.sKw.addView(localView);
+      AppMethodBeat.o(26010);
       return;
-      ((LinearLayout)localObject).setBackgroundDrawable(getResources().getDrawable(2130839276));
+      ((LinearLayout)localObject).setBackgroundDrawable(getResources().getDrawable(2131232867));
     }
   }
   
@@ -429,150 +519,253 @@ public class IPCallUserProfileUI
   
   public int getLayoutId()
   {
-    return 2130969931;
+    return 2131494509;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(22394);
+    AppMethodBeat.i(26017);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(22394);
+    AppMethodBeat.o(26017);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(22385);
+    AppMethodBeat.i(26008);
     super.onCreate(paramBundle);
-    h.qsU.e(12061, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-    setBackBtn(new IPCallUserProfileUI.1(this));
-    setMMTitle(2131300871);
-    this.ehv = ((ImageView)findViewById(2131821210));
-    this.nWA = ((TextView)findViewById(2131825235));
-    this.nWB = ((TextView)findViewById(2131825236));
-    this.nWC = ((LinearLayout)findViewById(2131825239));
-    this.nWE = ((TextView)findViewById(2131825242));
-    this.nWG = ((TextView)findViewById(2131825241));
-    this.nWF = ((TextView)findViewById(2131825240));
-    this.nWD = ((LinearLayout)findViewById(2131825238));
-    this.nWH = ((TextView)findViewById(2131825237));
-    this.nWI = ((TextView)findViewById(2131825244));
-    this.nWJ = ((Button)findViewById(2131825243));
-    this.cJk = getIntent().getStringExtra("IPCallProfileUI_contactid");
-    this.nWK = getIntent().getStringExtra("IPCallProfileUI_systemUsername");
-    this.nWL = getIntent().getStringExtra("IPCallProfileUI_wechatUsername");
-    this.cHB = getIntent().getStringExtra("IPCallProfileUI_phonenumber");
-    this.nWP = getIntent().getBooleanExtra("IPCallProfileUI_isNeedShowRecord", false);
-    if (!bo.isNullOrNil(this.cJk))
+    h.vKh.f(12061, new Object[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
-      this.nWM = com.tencent.mm.plugin.ipcall.b.a.aH(this, this.cJk);
-      if (this.nWM != null) {
-        this.ehv.setImageBitmap(this.nWM);
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(25994);
+        IPCallUserProfileUI.this.finish();
+        AppMethodBeat.o(25994);
+        return true;
+      }
+    });
+    setMMTitle(2131760472);
+    this.fuj = ((ImageView)findViewById(2131297008));
+    this.sKu = ((TextView)findViewById(2131305595));
+    this.sKv = ((TextView)findViewById(2131306958));
+    this.sKw = ((LinearLayout)findViewById(2131303484));
+    this.sKy = ((TextView)findViewById(2131303482));
+    this.sKA = ((TextView)findViewById(2131303481));
+    this.sKz = ((TextView)findViewById(2131303480));
+    this.sKx = ((LinearLayout)findViewById(2131303487));
+    this.sKB = ((TextView)findViewById(2131303904));
+    this.sKC = ((TextView)findViewById(2131301063));
+    this.sKD = ((Button)findViewById(2131303464));
+    this.dAc = getIntent().getStringExtra("IPCallProfileUI_contactid");
+    this.sKE = getIntent().getStringExtra("IPCallProfileUI_systemUsername");
+    this.sKF = getIntent().getStringExtra("IPCallProfileUI_wechatUsername");
+    this.dyq = getIntent().getStringExtra("IPCallProfileUI_phonenumber");
+    this.sKJ = getIntent().getBooleanExtra("IPCallProfileUI_isNeedShowRecord", false);
+    if (!bt.isNullOrNil(this.dAc))
+    {
+      this.sKG = com.tencent.mm.plugin.ipcall.a.a.aK(this, this.dAc);
+      if (this.sKG != null) {
+        this.fuj.setImageBitmap(this.sKG);
       }
     }
-    if ((this.nWM == null) && (!bo.isNullOrNil(this.nWL)))
+    if ((this.sKG == null) && (!bt.isNullOrNil(this.sKF)))
     {
-      this.nWM = com.tencent.mm.ah.b.b(this.nWL, false, -1);
-      if (this.nWM != null) {
-        this.ehv.setImageBitmap(this.nWM);
+      this.sKG = com.tencent.mm.ak.c.a(this.sKF, false, -1, null);
+      if (this.sKG != null) {
+        this.fuj.setImageBitmap(this.sKG);
       }
     }
-    if (!bo.isNullOrNil(this.nWK))
+    if (!bt.isNullOrNil(this.sKE))
     {
-      this.nWA.setText(this.nWK);
-      if ((bo.isNullOrNil(this.nWL)) || (this.nWL.endsWith("@stranger"))) {
-        break label537;
+      this.sKu.setText(this.sKE);
+      if ((bt.isNullOrNil(this.sKF)) || (this.sKF.endsWith("@stranger"))) {
+        break label541;
       }
-      paramBundle = getString(2131300872, new Object[] { s.nE(this.nWL) });
-      this.nWB.setText(j.b(this, paramBundle));
+      paramBundle = getString(2131760473, new Object[] { v.sh(this.sKF) });
+      this.sKv.setText(com.tencent.mm.pluginsdk.ui.span.k.c(this, paramBundle));
     }
-    label537:
+    label541:
     boolean bool;
     for (;;)
     {
-      if (!bo.isNullOrNil(this.cJk))
+      if (!bt.isNullOrNil(this.dAc))
       {
         if (!com.tencent.mm.pluginsdk.permission.b.o(this, "android.permission.READ_CONTACTS"))
         {
-          ab.e("MicroMsg.IPCallUserProfileUI", "no contact permission");
-          AppMethodBeat.o(22385);
+          ad.e("MicroMsg.IPCallUserProfileUI", "no contact permission");
+          AppMethodBeat.o(26008);
           return;
-          if (bo.isNullOrNil(this.cHB)) {
+          if (bt.isNullOrNil(this.dyq)) {
             break;
           }
-          this.nWA.setText(com.tencent.mm.plugin.ipcall.b.a.RG(this.cHB));
+          this.sKu.setText(com.tencent.mm.plugin.ipcall.a.a.aeA(this.dyq));
           break;
-          this.nWB.setVisibility(8);
+          this.sKv.setVisibility(8);
           continue;
         }
-        this.nWO = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, "contact_id=?", new String[] { this.cJk }, null);
-        if (this.nWO.getCount() > 1) {
-          break label742;
+        this.sKI = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, "contact_id=?", new String[] { this.dAc }, null);
+        if (this.sKI.getCount() > 1) {
+          break label747;
         }
         bool = true;
-        this.nRV = bool;
+        this.sFQ = bool;
       }
     }
-    bKs();
-    this.nWG.setVisibility(8);
-    this.nWF.setVisibility(8);
-    this.nWE.setVisibility(8);
-    this.nWJ.setVisibility(8);
-    this.nWI.setVisibility(8);
-    if ((!bo.isNullOrNil(this.nWL)) && (!bo.isNullOrNil(this.nWK)))
+    cIp();
+    this.sKA.setVisibility(8);
+    this.sKz.setVisibility(8);
+    this.sKy.setVisibility(8);
+    this.sKD.setVisibility(8);
+    this.sKC.setVisibility(8);
+    if ((!bt.isNullOrNil(this.sKF)) && (!bt.isNullOrNil(this.sKE)))
     {
-      aw.aaz();
-      paramBundle = com.tencent.mm.model.c.YA().arw(this.nWL);
-      if ((paramBundle != null) && (!com.tencent.mm.n.a.je(paramBundle.field_type)))
+      az.arV();
+      paramBundle = com.tencent.mm.model.c.apM().aHY(this.sKF);
+      if ((paramBundle != null) && (!com.tencent.mm.n.b.ls(paramBundle.field_type)))
       {
-        this.nWJ.setOnClickListener(new IPCallUserProfileUI.8(this));
-        this.nWJ.setText(2131300864);
-        this.nWJ.setVisibility(0);
+        this.sKD.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(26003);
+            h.vKh.f(12766, new Object[] { Integer.valueOf(3) });
+            paramAnonymousView = new com.tencent.mm.pluginsdk.ui.applet.a(IPCallUserProfileUI.this, new a.a()
+            {
+              public final void a(boolean paramAnonymous2Boolean1, boolean paramAnonymous2Boolean2, String paramAnonymous2String1, String paramAnonymous2String2)
+              {
+                AppMethodBeat.i(26001);
+                ad.d("MicroMsg.IPCallUserProfileUI", "canAddContact, ok: %b, hasSentVerify: %b, respUsername: %s, itemID: %s", new Object[] { Boolean.valueOf(paramAnonymous2Boolean1), Boolean.valueOf(paramAnonymous2Boolean2), paramAnonymous2String1, paramAnonymous2String2 });
+                if (paramAnonymous2Boolean1)
+                {
+                  IPCallUserProfileUI.a(IPCallUserProfileUI.this).setVisibility(8);
+                  IPCallUserProfileUI.b(IPCallUserProfileUI.this).setVisibility(8);
+                  IPCallUserProfileUI.b(IPCallUserProfileUI.this, paramAnonymous2String1);
+                }
+                AppMethodBeat.o(26001);
+              }
+            });
+            LinkedList localLinkedList = new LinkedList();
+            localLinkedList.add(Integer.valueOf(86));
+            paramAnonymousView.BXs = new a.b()
+            {
+              public final boolean at(String paramAnonymous2String, int paramAnonymous2Int)
+              {
+                AppMethodBeat.i(26002);
+                Intent localIntent = new Intent();
+                localIntent.putExtra("Contact_User", IPCallUserProfileUI.c(IPCallUserProfileUI.this));
+                localIntent.putExtra("Contact_Scene", 13);
+                localIntent.putExtra(e.c.FHR, paramAnonymous2String);
+                paramAnonymous2Int = ((com.tencent.mm.plugin.expt.a.b)g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.pxj, 0);
+                paramAnonymous2String = ".ui.SayHiWithSnsPermissionUI";
+                if (paramAnonymous2Int == 1) {
+                  paramAnonymous2String = ".ui.SayHiWithSnsPermissionUI2";
+                }
+                for (;;)
+                {
+                  d.b(IPCallUserProfileUI.this, "profile", paramAnonymous2String, localIntent);
+                  AppMethodBeat.o(26002);
+                  return true;
+                  if (paramAnonymous2Int == 2) {
+                    paramAnonymous2String = ".ui.SayHiWithSnsPermissionUI3";
+                  }
+                }
+              }
+            };
+            paramAnonymousView.b(IPCallUserProfileUI.c(IPCallUserProfileUI.this), localLinkedList, true);
+            AppMethodBeat.o(26003);
+          }
+        });
+        this.sKD.setText(2131760465);
+        this.sKD.setVisibility(0);
       }
     }
     for (;;)
     {
-      bKq();
-      AppMethodBeat.o(22385);
+      cIn();
+      AppMethodBeat.o(26008);
       return;
-      label742:
+      label747:
       bool = false;
       break;
-      if ((!bo.isNullOrNil(this.cJk)) && (!bo.isNullOrNil(this.nWK)))
+      if ((!bt.isNullOrNil(this.dAc)) && (!bt.isNullOrNil(this.sKE)))
       {
-        bKr();
-        this.nWJ.setText(2131300869);
+        cIo();
+        this.sKD.setText(2131760470);
       }
-      else if (!bo.isNullOrNil(this.cHB))
+      else if (!bt.isNullOrNil(this.dyq))
       {
-        this.nWF.setVisibility(0);
-        this.nWG.setVisibility(0);
-        paramBundle = ah.getContext();
+        this.sKz.setVisibility(0);
+        this.sKA.setVisibility(0);
+        paramBundle = aj.getContext();
         Intent localIntent = new Intent("android.intent.action.INSERT");
         localIntent.setType("vnd.android.cursor.dir/contact");
         localIntent.putExtra("phone", "10086");
-        if (bo.k(paramBundle, localIntent)) {
-          this.nWE.setVisibility(0);
+        if (bt.T(paramBundle, localIntent)) {
+          this.sKy.setVisibility(0);
         }
-        this.nWE.setOnClickListener(new IPCallUserProfileUI.10(this));
-        this.nWF.setOnClickListener(new IPCallUserProfileUI.11(this));
-        this.nWG.setOnClickListener(new IPCallUserProfileUI.2(this));
-        bKr();
-        this.nWJ.setText(2131300869);
+        this.sKy.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(26005);
+            try
+            {
+              h.vKh.f(12061, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
+              Object localObject = new Intent("android.intent.action.INSERT");
+              ((Intent)localObject).setType("vnd.android.cursor.dir/contact");
+              ((Intent)localObject).putExtra("phone", IPCallUserProfileUI.f(IPCallUserProfileUI.this));
+              paramAnonymousView = IPCallUserProfileUI.this;
+              localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/ipcall/ui/IPCallUserProfileUI$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+              com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/ipcall/ui/IPCallUserProfileUI$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              AppMethodBeat.o(26005);
+              return;
+            }
+            catch (Exception paramAnonymousView)
+            {
+              ad.e("MicroMsg.IPCallUserProfileUI", paramAnonymousView.getMessage());
+              AppMethodBeat.o(26005);
+            }
+          }
+        });
+        this.sKz.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(26006);
+            IPCallUserProfileUI.a(IPCallUserProfileUI.this, IPCallUserProfileUI.f(IPCallUserProfileUI.this));
+            AppMethodBeat.o(26006);
+          }
+        });
+        this.sKA.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(25995);
+            h.vKh.f(12766, new Object[] { Integer.valueOf(4) });
+            com.tencent.mm.plugin.ipcall.a.c.aeF(IPCallUserProfileUI.f(IPCallUserProfileUI.this));
+            Toast.makeText(IPCallUserProfileUI.this, 2131760464, 0).show();
+            AppMethodBeat.o(25995);
+          }
+        });
+        cIo();
+        this.sKD.setText(2131760470);
       }
     }
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(22393);
+    AppMethodBeat.i(26016);
     super.onResume();
-    if (this.nWN)
+    if (this.sKH)
     {
-      this.nWN = false;
-      this.nWD.removeAllViews();
-      bKs();
+      this.sKH = false;
+      this.sKx.removeAllViews();
+      cIp();
     }
-    AppMethodBeat.o(22393);
+    AppMethodBeat.o(26016);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -583,7 +776,7 @@ public class IPCallUserProfileUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallUserProfileUI
  * JD-Core Version:    0.7.0.1
  */

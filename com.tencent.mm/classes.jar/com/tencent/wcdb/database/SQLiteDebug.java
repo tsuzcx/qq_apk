@@ -1,6 +1,5 @@
 package com.tencent.wcdb.database;
 
-import android.annotation.SuppressLint;
 import android.util.Printer;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.wcdb.support.Log;
@@ -10,18 +9,18 @@ public final class SQLiteDebug
 {
   private static final String TAG = "WCDB.SQLiteDebug";
   private static volatile int sLastErrorLine;
-  private static volatile ArrayList<IOTraceStats> sLastIOTraceStats;
+  private static volatile ArrayList<SQLiteDebug.IOTraceStats> sLastIOTraceStats;
   
   static
   {
-    AppMethodBeat.i(12551);
+    AppMethodBeat.i(3237);
     SQLiteGlobal.loadLib();
-    AppMethodBeat.o(12551);
+    AppMethodBeat.o(3237);
   }
   
   static void collectLastIOTraceStats(SQLiteConnection paramSQLiteConnection)
   {
-    AppMethodBeat.i(12548);
+    AppMethodBeat.i(3234);
     try
     {
       sLastErrorLine = nativeGetLastErrorLine();
@@ -33,19 +32,19 @@ public final class SQLiteDebug
         paramSQLiteConnection.endNativeHandle(null);
       }
       sLastIOTraceStats = localArrayList;
-      AppMethodBeat.o(12548);
+      AppMethodBeat.o(3234);
       return;
     }
     catch (RuntimeException paramSQLiteConnection)
     {
       Log.e("WCDB.SQLiteDebug", "Cannot collect I/O trace statistics: " + paramSQLiteConnection.getMessage());
-      AppMethodBeat.o(12548);
+      AppMethodBeat.o(3234);
     }
   }
   
   static void collectLastIOTraceStats(SQLiteDatabase paramSQLiteDatabase)
   {
-    AppMethodBeat.i(12549);
+    AppMethodBeat.i(3235);
     try
     {
       sLastErrorLine = nativeGetLastErrorLine();
@@ -56,19 +55,19 @@ public final class SQLiteDebug
       }
       paramSQLiteDatabase.releaseNativeConnection(l, null);
       sLastIOTraceStats = localArrayList;
-      AppMethodBeat.o(12549);
+      AppMethodBeat.o(3235);
       return;
     }
     catch (RuntimeException paramSQLiteDatabase)
     {
       Log.e("WCDB.SQLiteDebug", "Cannot collect I/O trace statistics: " + paramSQLiteDatabase.getMessage());
-      AppMethodBeat.o(12549);
+      AppMethodBeat.o(3235);
     }
   }
   
   public static void dump(Printer paramPrinter, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(12550);
+    AppMethodBeat.i(3236);
     int j = paramArrayOfString.length;
     int i = 0;
     boolean bool = false;
@@ -80,16 +79,16 @@ public final class SQLiteDebug
       i += 1;
     }
     SQLiteDatabase.dumpAll(paramPrinter, bool);
-    AppMethodBeat.o(12550);
+    AppMethodBeat.o(3236);
   }
   
   public static PagerStats getDatabaseInfo()
   {
-    AppMethodBeat.i(12546);
+    AppMethodBeat.i(3232);
     PagerStats localPagerStats = new PagerStats();
     nativeGetPagerStats(localPagerStats);
     localPagerStats.dbStats = SQLiteDatabase.getDbStats();
-    AppMethodBeat.o(12546);
+    AppMethodBeat.o(3232);
     return localPagerStats;
   }
   
@@ -98,12 +97,12 @@ public final class SQLiteDebug
     return sLastErrorLine;
   }
   
-  public static ArrayList<IOTraceStats> getLastIOTraceStats()
+  public static ArrayList<SQLiteDebug.IOTraceStats> getLastIOTraceStats()
   {
     return sLastIOTraceStats;
   }
   
-  private static native void nativeGetIOTraceStats(long paramLong, ArrayList<IOTraceStats> paramArrayList);
+  private static native void nativeGetIOTraceStats(long paramLong, ArrayList<SQLiteDebug.IOTraceStats> paramArrayList);
   
   private static native int nativeGetLastErrorLine();
   
@@ -113,9 +112,9 @@ public final class SQLiteDebug
   
   public static void setIOTraceFlags(int paramInt)
   {
-    AppMethodBeat.i(12547);
+    AppMethodBeat.i(3233);
     nativeSetIOTraceFlags(paramInt);
-    AppMethodBeat.o(12547);
+    AppMethodBeat.o(3233);
   }
   
   public static final boolean shouldLogSlowQuery(long paramLong)
@@ -133,39 +132,13 @@ public final class SQLiteDebug
     
     public DbStats(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
-      AppMethodBeat.i(12544);
+      AppMethodBeat.i(3230);
       this.dbName = paramString;
       this.pageSize = (paramLong2 / 1024L);
       this.dbSize = (paramLong1 * paramLong2 / 1024L);
       this.lookaside = paramInt1;
       this.cache = (paramInt2 + "/" + paramInt3 + "/" + paramInt4);
-      AppMethodBeat.o(12544);
-    }
-  }
-  
-  public static class IOTraceStats
-  {
-    public String dbName;
-    public String journalMode;
-    public long lastJournalReadOffset;
-    public byte[] lastJournalReadPage;
-    public long lastJournalWriteOffset;
-    public byte[] lastJournalWritePage;
-    public long lastReadOffset;
-    public byte[] lastReadPage;
-    public long lastWriteOffset;
-    public byte[] lastWritePage;
-    public long pageCount;
-    public long pageSize;
-    public String path;
-    
-    @SuppressLint({"DefaultLocale"})
-    public String toString()
-    {
-      AppMethodBeat.i(12545);
-      String str = String.format("[%s | %s] pageSize: %d, pageCount: %d, journal: %s, lastRead: %d, lastWrite: %d, lastJournalRead: %d, lastJournalWrite: %d", new Object[] { this.dbName, this.path, Long.valueOf(this.pageSize), Long.valueOf(this.pageCount), this.journalMode, Long.valueOf(this.lastReadOffset), Long.valueOf(this.lastWriteOffset), Long.valueOf(this.lastJournalReadOffset), Long.valueOf(this.lastJournalWriteOffset) });
-      AppMethodBeat.o(12545);
-      return str;
+      AppMethodBeat.o(3230);
     }
   }
   

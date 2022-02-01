@@ -2,28 +2,18 @@ package com.tencent.xweb.xwalk;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$10
   implements View.OnClickListener
 {
-  c$10(c paramc, LinearLayout paramLinearLayout) {}
+  c$10(c paramc) {}
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(85131);
-    if (this.BIS.getVisibility() == 8)
-    {
-      this.BIS.setVisibility(0);
-      ((Button)paramView).setText("隐藏插件设置");
-      AppMethodBeat.o(85131);
-      return;
-    }
-    this.BIS.setVisibility(8);
-    ((Button)paramView).setText("插件设置");
-    AppMethodBeat.o(85131);
+    AppMethodBeat.i(154161);
+    this.IST.fsV();
+    AppMethodBeat.o(154161);
   }
 }
 

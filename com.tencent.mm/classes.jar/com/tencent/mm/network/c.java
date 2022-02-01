@@ -2,55 +2,55 @@ package com.tencent.mm.network;
 
 public abstract interface c
 {
-  public abstract int R(byte[] paramArrayOfByte);
+  public abstract int Z(byte[] paramArrayOfByte);
   
   public abstract void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt);
   
-  public abstract byte[] adB();
+  public abstract byte[] auZ();
   
-  public abstract boolean adC();
+  public abstract boolean ava();
   
-  public abstract byte[] adD();
+  public abstract byte[] avb();
   
-  public abstract String adE();
+  public abstract String avc();
   
-  public abstract byte[] adF();
+  public abstract byte[] avd();
   
-  public abstract void adG();
+  public abstract void ave();
   
-  public abstract void adH();
+  public abstract void avf();
   
   public abstract void b(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
-  public abstract void cP(boolean paramBoolean);
-  
-  public abstract void g(int paramInt, byte[] paramArrayOfByte);
+  public abstract void eh(boolean paramBoolean);
   
   public abstract int getUin();
   
   public abstract String getUsername();
   
+  public abstract void h(int paramInt, byte[] paramArrayOfByte);
+  
+  public abstract void i(String paramString, byte[] paramArrayOfByte);
+  
   public abstract boolean isForeground();
   
-  public abstract byte[] jN(int paramInt);
-  
-  public abstract void o(String paramString, byte[] paramArrayOfByte);
+  public abstract byte[] mq(int paramInt);
   
   public abstract void reset();
-  
-  public abstract byte[] rm(String paramString);
-  
-  public abstract byte[] rn(String paramString);
-  
-  public abstract byte[] ro(String paramString);
-  
-  public abstract byte[] rp(String paramString);
-  
-  public abstract boolean rq(String paramString);
   
   public abstract void setUin(int paramInt);
   
   public abstract void setUsername(String paramString);
+  
+  public abstract byte[] wh(String paramString);
+  
+  public abstract byte[] wi(String paramString);
+  
+  public abstract byte[] wj(String paramString);
+  
+  public abstract byte[] wk(String paramString);
+  
+  public abstract boolean wl(String paramString);
 }
 
 

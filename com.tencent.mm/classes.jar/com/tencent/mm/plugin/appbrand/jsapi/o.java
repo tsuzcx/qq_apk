@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.v;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.q;
 import java.util.Map;
 import org.json.JSONObject;
 
 public abstract class o
 {
-  private int hry;
-  private m hrz;
-  protected r hxb;
-  protected v hxc;
-  protected JSONObject hxd;
+  protected q iIL;
+  private int joH;
+  private m joI;
+  protected aa jvZ;
+  protected JSONObject jwa;
   
-  public o(m paramm, r paramr, v paramv, JSONObject paramJSONObject, int paramInt)
+  public o(m paramm, q paramq, aa paramaa, JSONObject paramJSONObject, int paramInt)
   {
-    if ((paramm == null) || (paramr == null) || (paramJSONObject == null)) {
+    if ((paramm == null) || (paramq == null) || (paramJSONObject == null)) {
       throw new IllegalArgumentException("JsApiAsyncRequest");
     }
-    this.hrz = paramm;
-    this.hxb = paramr;
-    this.hxc = paramv;
-    this.hry = paramInt;
-    this.hxd = paramJSONObject;
+    this.joI = paramm;
+    this.iIL = paramq;
+    this.jvZ = paramaa;
+    this.joH = paramInt;
+    this.jwa = paramJSONObject;
   }
   
-  public final JSONObject aBw()
+  protected final void A(Map<String, ? extends Object> paramMap)
   {
-    return this.hxd;
+    this.iIL.h(this.joH, this.joI.k("ok", paramMap));
   }
   
-  protected final void k(String paramString, Map<String, ? extends Object> paramMap)
+  public final q Du()
   {
-    this.hxb.h(this.hry, this.hrz.j(paramString, paramMap));
+    return this.iIL;
   }
   
-  protected final void v(Map<String, ? extends Object> paramMap)
+  public final JSONObject aXJ()
   {
-    this.hxb.h(this.hry, this.hrz.j("ok", paramMap));
+    return this.jwa;
   }
   
-  public final r ws()
+  protected final void l(String paramString, Map<String, ? extends Object> paramMap)
   {
-    return this.hxb;
+    this.iIL.h(this.joH, this.joI.k(paramString, paramMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.o
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,7 @@ package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bpw;
-import com.tencent.mm.protocal.protobuf.yp;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.mm.plugin.report.service.h;
 
 final class WalletLqtDetailUI$3
   implements View.OnClickListener
@@ -14,9 +12,10 @@ final class WalletLqtDetailUI$3
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(45524);
-    e.m(this.tPQ, WalletLqtDetailUI.e(this.tPQ).xDU.wPJ, false);
-    AppMethodBeat.o(45524);
+    AppMethodBeat.i(68789);
+    WalletLqtDetailUI.e(this.zIT);
+    h.vKh.f(17084, new Object[] { Integer.valueOf(3) });
+    AppMethodBeat.o(68789);
   }
 }
 

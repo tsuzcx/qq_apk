@@ -1,38 +1,36 @@
 package com.tencent.xweb.x5;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.xweb.j;
 
 public final class g$f
-  extends j
+  extends com.tencent.xweb.JsResult
 {
-  public JsResult BIb;
+  public com.tencent.smtt.export.external.interfaces.JsResult ISa;
   
-  public g$f(JsResult paramJsResult)
+  public g$f(com.tencent.smtt.export.external.interfaces.JsResult paramJsResult)
   {
-    this.BIb = paramJsResult;
+    this.ISa = paramJsResult;
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(84831);
-    this.BIb.cancel();
-    AppMethodBeat.o(84831);
+    AppMethodBeat.i(153855);
+    this.ISa.cancel();
+    AppMethodBeat.o(153855);
   }
   
   public final void confirm()
   {
-    AppMethodBeat.i(84830);
-    this.BIb.confirm();
-    AppMethodBeat.o(84830);
+    AppMethodBeat.i(153854);
+    this.ISa.confirm();
+    AppMethodBeat.o(153854);
   }
   
   public final void confirmWithResult(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.g.f
  * JD-Core Version:    0.7.0.1
  */

@@ -18,15 +18,15 @@ public class ChattingUILayout
   
   public List<View> getPanelView()
   {
-    AppMethodBeat.i(27947);
+    AppMethodBeat.i(31742);
     ArrayList localArrayList = new ArrayList();
-    AppMethodBeat.o(27947);
+    AppMethodBeat.o(31742);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.ChattingUILayout
  * JD-Core Version:    0.7.0.1
  */

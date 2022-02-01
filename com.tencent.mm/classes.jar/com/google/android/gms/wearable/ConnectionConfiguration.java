@@ -41,9 +41,9 @@ public class ConnectionConfiguration
   
   static
   {
-    AppMethodBeat.i(70798);
+    AppMethodBeat.i(100781);
     CREATOR = new zzg();
-    AppMethodBeat.o(70798);
+    AppMethodBeat.o(100781);
   }
   
   @SafeParcelable.Constructor
@@ -62,33 +62,33 @@ public class ConnectionConfiguration
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(70796);
+    AppMethodBeat.i(100779);
     if (!(paramObject instanceof ConnectionConfiguration))
     {
-      AppMethodBeat.o(70796);
+      AppMethodBeat.o(100779);
       return false;
     }
     paramObject = (ConnectionConfiguration)paramObject;
     if ((Objects.equal(this.name, paramObject.name)) && (Objects.equal(this.zzi, paramObject.zzi)) && (Objects.equal(Integer.valueOf(this.type), Integer.valueOf(paramObject.type))) && (Objects.equal(Integer.valueOf(this.zzj), Integer.valueOf(paramObject.zzj))) && (Objects.equal(Boolean.valueOf(this.zzk), Boolean.valueOf(paramObject.zzk))) && (Objects.equal(Boolean.valueOf(this.zzn), Boolean.valueOf(paramObject.zzn))))
     {
-      AppMethodBeat.o(70796);
+      AppMethodBeat.o(100779);
       return true;
     }
-    AppMethodBeat.o(70796);
+    AppMethodBeat.o(100779);
     return false;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(70797);
+    AppMethodBeat.i(100780);
     int i = Objects.hashCode(new Object[] { this.name, this.zzi, Integer.valueOf(this.type), Integer.valueOf(this.zzj), Boolean.valueOf(this.zzk), Boolean.valueOf(this.zzn) });
-    AppMethodBeat.o(70797);
+    AppMethodBeat.o(100780);
     return i;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(70795);
+    AppMethodBeat.i(100778);
     StringBuilder localStringBuilder = new StringBuilder("ConnectionConfiguration[ ");
     String str = String.valueOf(this.name);
     if (str.length() != 0)
@@ -132,7 +132,7 @@ public class ConnectionConfiguration
       localStringBuilder.append(str);
       localStringBuilder.append("]");
       str = localStringBuilder.toString();
-      AppMethodBeat.o(70795);
+      AppMethodBeat.o(100778);
       return str;
       str = new String("mName=");
       break;
@@ -145,7 +145,7 @@ public class ConnectionConfiguration
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(70794);
+    AppMethodBeat.i(100777);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeString(paramParcel, 2, this.name, false);
     SafeParcelWriter.writeString(paramParcel, 3, this.zzi, false);
@@ -157,12 +157,12 @@ public class ConnectionConfiguration
     SafeParcelWriter.writeBoolean(paramParcel, 9, this.zzn);
     SafeParcelWriter.writeString(paramParcel, 10, this.zzo, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(70794);
+    AppMethodBeat.o(100777);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.wearable.ConnectionConfiguration
  * JD-Core Version:    0.7.0.1
  */

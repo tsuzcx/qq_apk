@@ -3,6 +3,7 @@ package com.tencent.liteav.network;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
@@ -13,12 +14,13 @@ public abstract class TXIStreamDownloader
   public int connectRetryTimes = 0;
   protected Context mApplicationContext = null;
   protected boolean mEnableMessage = false;
+  protected boolean mEnableMetaData = false;
   protected Map<String, String> mHeaders;
   protected boolean mIsRunning = false;
   protected f mListener = null;
   protected com.tencent.liteav.basic.c.a mNotifyListener = null;
   protected String mOriginUrl = "";
-  protected TXIStreamDownloader.a mRestartListener = null;
+  protected a mRestartListener = null;
   protected String mUserID = "";
   
   public TXIStreamDownloader(Context paramContext)
@@ -100,6 +102,16 @@ public abstract class TXIStreamDownloader
     }
   }
   
+  public void onRecvMetaData(HashMap<String, String> paramHashMap)
+  {
+    if ((paramHashMap != null) && (paramHashMap.size() > 0) && (this.mNotifyListener != null))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putSerializable("EVT_GET_METADATA", paramHashMap);
+      this.mNotifyListener.onNotifyEvent(2028, localBundle);
+    }
+  }
+  
   public void onRecvSEIData(byte[] paramArrayOfByte)
   {
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0) && (this.mNotifyListener != null))
@@ -123,6 +135,8 @@ public abstract class TXIStreamDownloader
       this.mListener.onPullNAL(localTXSNALPacket);
     }
   }
+  
+  public void requestKeyFrame(String paramString) {}
   
   public void sendNotifyEvent(int paramInt)
   {
@@ -161,7 +175,7 @@ public abstract class TXIStreamDownloader
     this.mOriginUrl = paramString;
   }
   
-  public void setRestartListener(TXIStreamDownloader.a parama)
+  public void setRestartListener(a parama)
   {
     this.mRestartListener = parama;
   }
@@ -171,13 +185,20 @@ public abstract class TXIStreamDownloader
     this.mUserID = paramString;
   }
   
-  public abstract void startDownload(Vector<e> paramVector, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3);
+  public abstract void startDownload(Vector<e> paramVector, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
   
   public abstract void stopDownload();
+  
+  public static abstract interface a
+  {
+    public abstract void onOldStreamStop();
+    
+    public abstract void onRestartDownloader();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.network.TXIStreamDownloader
  * JD-Core Version:    0.7.0.1
  */

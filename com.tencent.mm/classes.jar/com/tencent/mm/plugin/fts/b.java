@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.plugin.fts.a.a.g;
-import com.tencent.mm.plugin.fts.a.a.i;
+import com.tencent.mm.plugin.fts.a.a.h;
 import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.l;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 
@@ -15,44 +15,55 @@ public final class b
   implements Runnable
 {
   private int errorCode;
-  private i mPi;
-  private WeakReference<l> mPj;
+  private j rma;
+  private WeakReference<l> rmb;
   
-  public b(int paramInt, i parami)
+  public b(int paramInt, j paramj)
   {
-    AppMethodBeat.i(136518);
+    AppMethodBeat.i(52500);
     this.errorCode = paramInt;
-    this.mPi = parami;
-    this.mPj = new WeakReference(parami.mSU);
-    this.mPi.mSU = null;
-    AppMethodBeat.o(136518);
+    this.rma = paramj;
+    this.rmb = new WeakReference(paramj.rpO);
+    this.rma.rpO = null;
+    AppMethodBeat.o(52500);
   }
   
   public final boolean execute()
   {
-    AppMethodBeat.i(136519);
-    j localj;
+    AppMethodBeat.i(52501);
+    final k localk;
     if ((this.errorCode == -2) || (this.errorCode == -3))
     {
-      localj = new j(this.mPi);
-      localj.mSV = this;
-      localj.bpE = this.errorCode;
-      localj.mSW = new LinkedList();
-      localj.mRX = g.aU(this.mPi.query, false);
-      if (this.mPi.handler != null) {
+      localk = new k(this.rma);
+      localk.rpP = this;
+      localk.bRZ = this.errorCode;
+      localk.rpQ = new LinkedList();
+      localk.roS = h.bc(this.rma.query, false);
+      if (this.rma.handler != null) {
         break label113;
       }
-      l locall = (l)this.mPj.get();
+      l locall = (l)this.rmb.get();
       if (locall != null) {
-        locall.b(localj);
+        locall.b(localk);
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(136519);
+      AppMethodBeat.o(52501);
       return true;
       label113:
-      this.mPi.handler.post(new b.1(this, localj));
+      this.rma.handler.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(52499);
+          l locall = (l)b.a(b.this).get();
+          if (locall != null) {
+            locall.b(localk);
+          }
+          AppMethodBeat.o(52499);
+        }
+      });
     }
   }
   
@@ -73,16 +84,16 @@ public final class b
   
   public final void run()
   {
-    AppMethodBeat.i(136520);
+    AppMethodBeat.i(52502);
     try
     {
       execute();
-      AppMethodBeat.o(136520);
+      AppMethodBeat.o(52502);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(136520);
+      AppMethodBeat.o(52502);
     }
   }
 }

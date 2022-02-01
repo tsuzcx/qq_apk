@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/l7" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="56.0dip">
+        <LinearLayout android:orientation="vertical" android:id="@id/li" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/q" android:textColor="#e6ffffff" android:gravity="center|left" android:id="@id/lk" android:layout_width="fill_parent" android:layout_height="@dimen/b5" android:layout_marginLeft="@dimen/o" android:text="@string/jc" />
+            <View android:background="#1a000000" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <LinearLayout android:orientation="vertical" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopView android:id="@id/ll" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <include android:id="@id/l_" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_alignParentBottom="true" layout="@layout/ci" />
+    <com.tencent.mm.plugin.appbrand.widget.header.GyroView android:id="@id/chl" android:layout_width="@dimen/a6e" android:layout_height="@dimen/a6d" android:layout_marginBottom="@dimen/b5" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

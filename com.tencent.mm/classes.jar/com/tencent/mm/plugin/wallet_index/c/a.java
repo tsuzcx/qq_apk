@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.wallet_index.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
 {
-  public static boolean hd(String paramString1, String paramString2)
+  public static boolean jG(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(48174);
-    if (bo.isNullOrNil(paramString1))
+    AppMethodBeat.i(71809);
+    if (bt.isNullOrNil(paramString1))
     {
-      AppMethodBeat.o(48174);
+      AppMethodBeat.o(71809);
       return false;
     }
     Object localObject = null;
@@ -29,10 +29,10 @@ public final class a
       }
       else
       {
-        if (!bo.isNullOrNil(paramString1)) {
+        if (!bt.isNullOrNil(paramString1)) {
           break;
         }
-        AppMethodBeat.o(48174);
+        AppMethodBeat.o(71809);
         return false;
       }
       i += 1;
@@ -40,14 +40,14 @@ public final class a
     if (paramString1.startsWith(paramString2)) {}
     for (boolean bool = true;; bool = false)
     {
-      AppMethodBeat.o(48174);
+      AppMethodBeat.o(71809);
       return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_index.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class fz
   extends b
 {
-  public fz.a cur;
-  public fz.b cus;
+  public a diV;
+  public b diW;
   
   public fz()
   {
@@ -16,17 +16,27 @@ public final class fz
   
   private fz(byte paramByte)
   {
-    AppMethodBeat.i(102509);
-    this.cur = new fz.a();
-    this.cus = new fz.b();
-    this.ymq = false;
+    AppMethodBeat.i(116025);
+    this.diV = new a();
+    this.diW = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(102509);
+    AppMethodBeat.o(116025);
+  }
+  
+  public static final class a
+  {
+    public long msgId;
+  }
+  
+  public static final class b
+  {
+    public String fileName;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.fz
  * JD-Core Version:    0.7.0.1
  */

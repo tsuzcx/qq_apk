@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/a13" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/ph" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/hk" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="@dimen/m0" android:text="@string/cgv" />
-</LinearLayout>
+    <LinearLayout android:id="@id/f94" style="@style/o0">
+        <ImageView android:layout_gravity="center_vertical" android:background="@raw/mm_select_create_chatroom" android:layout_width="@dimen/dq" android:layout_height="@dimen/dq" android:layout_marginRight="@dimen/c5" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:background="@drawable/amv" android:paddingLeft="@dimen/js" android:paddingRight="@dimen/c5" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ezs" style="@style/m3" />
+            <TextView android:textColor="@color/km" android:id="@id/b_l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="{desc}" android:singleLine="true" style="@style/m2" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

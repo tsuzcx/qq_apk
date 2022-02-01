@@ -2,17 +2,22 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import android.os.Bundle;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.w;
+import com.tencent.xweb.ab;
 
 public abstract interface c
 {
-  public abstract w a(MMWebView paramMMWebView, d paramd, Bundle paramBundle);
+  public abstract ab a(MMWebView paramMMWebView, d paramd, Bundle paramBundle);
   
-  public abstract w a(MMWebView paramMMWebView, boolean paramBoolean, d paramd);
+  public abstract ab a(MMWebView paramMMWebView, boolean paramBoolean, d paramd);
+  
+  public static final class a
+  {
+    public static c Buc;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.c
  * JD-Core Version:    0.7.0.1
  */

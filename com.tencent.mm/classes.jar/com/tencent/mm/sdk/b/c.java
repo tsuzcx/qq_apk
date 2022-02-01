@@ -1,7 +1,7 @@
 package com.tencent.mm.sdk.b;
 
 import com.tencent.mm.sdk.platformtools.ListenerInstanceMonitor;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
@@ -33,7 +33,7 @@ public abstract class c<T extends b>
       }
       localType1 = ((ParameterizedType)localType1).getActualTypeArguments()[0];
       this.__eventId = ((Class)localType1).getName().hashCode();
-      ab.v("IListener", "genEventID, %s<%s>, useTime:%d", new Object[] { getClass().getName(), localType1, Long.valueOf(System.currentTimeMillis() - l) });
+      ad.v("IListener", "genEventID, %s<%s>, useTime:%d", new Object[] { getClass().getName(), localType1, Long.valueOf(System.currentTimeMillis() - l) });
     }
     return this.__eventId;
   }
@@ -44,8 +44,8 @@ public abstract class c<T extends b>
     {
       if (this.mCallbackProperty == null)
       {
-        ListenerInstanceMonitor.ct(this);
-        this.mCallbackProperty = a.ymk.b(this);
+        ListenerInstanceMonitor.dN(this);
+        this.mCallbackProperty = a.ESL.b(this);
       }
       com.tencent.mm.vending.b.b localb = this.mCallbackProperty;
       return localb;
@@ -61,7 +61,7 @@ public abstract class c<T extends b>
     {
       if (this.mCallbackProperty != null)
       {
-        ListenerInstanceMonitor.cu((c)this.mCallbackProperty.d);
+        ListenerInstanceMonitor.dO((c)this.mCallbackProperty.HPL);
         this.mCallbackProperty.dead();
         this.mCallbackProperty = null;
       }

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="bottom" android:orientation="vertical" android:layout_width="40.0dip" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/de2" android:paddingLeft="4.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <TextView android:gravity="center|left" android:id="@id/fx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" style="@style/li" />
-</LinearLayout>
+<com.tencent.mm.plugin.luckymoney.story.TouchCoordinatorLayout android:id="@id/daa" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.luckymoney.story.EnvelopeAppBarLayout android:orientation="vertical" android:id="@id/db8" android:layout_width="fill_parent" android:layout_height="wrap_content" app:elevation="0.0dip" app:expanded="false" app:layout_behavior="com.tencent.mm.plugin.luckymoney.story.EnvelopeStoryBehavior" />
+    <LinearLayout android:orientation="vertical" android:id="@id/d_n" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_behavior="@string/xz">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <android.support.v7.widget.RecyclerView android:id="@id/da_" android:focusable="true" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:transcriptMode="disabled" android:divider="@null" android:headerDividersEnabled="false" android:footerDividersEnabled="false" android:overScrollMode="never" />
+            <ImageView android:layout_gravity="top" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/bo9" android:scaleType="fitXY" />
+            <View android:id="@id/d_v" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.0" />
+        </FrameLayout>
+    </LinearLayout>
+    <FrameLayout android:id="@id/dbf" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mm.plugin.luckymoney.story.TouchCoordinatorLayout>

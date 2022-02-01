@@ -1,37 +1,57 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.g.c.gq;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class ao
-  extends j<an>
+  extends gq
 {
-  public static final String[] SQL_CREATE;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(6738);
-    SQL_CREATE = new String[] { j.getCreateSQLs(an.info, "WebviewLocalData") };
-    AppMethodBeat.o(6738);
+    AppMethodBeat.i(79029);
+    c.a locala = new c.a();
+    locala.EYt = new Field[5];
+    locala.columns = new String[6];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "recordId";
+    locala.EYv.put("recordId", "INTEGER PRIMARY KEY ");
+    localStringBuilder.append(" recordId INTEGER PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.EYu = "recordId";
+    locala.columns[1] = "appId";
+    locala.EYv.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "domin";
+    locala.EYv.put("domin", "TEXT");
+    localStringBuilder.append(" domin TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "key";
+    locala.EYv.put("key", "TEXT");
+    localStringBuilder.append(" key TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "value";
+    locala.EYv.put("value", "TEXT");
+    localStringBuilder.append(" value TEXT");
+    locala.columns[5] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(79029);
   }
   
-  public ao(e parame)
+  public final c.a getDBInfo()
   {
-    super(parame, an.info, "WebviewLocalData", null);
-  }
-  
-  public static int aw(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(6737);
-    int i = (paramString1 + paramString2 + paramString3).hashCode();
-    AppMethodBeat.o(6737);
-    return i;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.ao
  * JD-Core Version:    0.7.0.1
  */

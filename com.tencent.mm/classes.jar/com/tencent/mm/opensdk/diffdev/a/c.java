@@ -13,19 +13,19 @@ final class c
   
   public final void run()
   {
-    AppMethodBeat.i(128044);
+    AppMethodBeat.i(3729);
     Object localObject = new ArrayList();
     ((List)localObject).addAll(a.a(this.g.f));
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
       ((OAuthListener)((Iterator)localObject).next()).onQrcodeScanned();
     }
-    AppMethodBeat.o(128044);
+    AppMethodBeat.o(3729);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.a.c
  * JD-Core Version:    0.7.0.1
  */

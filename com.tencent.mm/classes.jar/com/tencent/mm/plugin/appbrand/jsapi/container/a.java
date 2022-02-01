@@ -1,9 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.container;
 
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.aa.g;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.s.g;
+import com.tencent.mm.plugin.appbrand.jsapi.x.d;
 import org.json.JSONObject;
 
 public final class a
@@ -12,10 +16,18 @@ public final class a
   public static final int CTRL_INDEX = 509;
   public static final String NAME = "insertPositioningContainer";
   
+  public final int A(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(137506);
+    int i = paramJSONObject.getInt("containerId");
+    AppMethodBeat.o(137506);
+    return i;
+  }
+  
   public final View a(e parame, JSONObject paramJSONObject)
   {
     int i = 0;
-    AppMethodBeat.i(126277);
+    AppMethodBeat.i(137505);
     AppBrandNativeContainerView localAppBrandNativeContainerView = new AppBrandNativeContainerView(parame.getContext());
     localAppBrandNativeContainerView.setBackgroundColor(0);
     boolean bool1 = paramJSONObject.optBoolean("visible", true);
@@ -32,7 +44,7 @@ public final class a
       parame.setDuplicateParentStateEnabled(true);
       localAppBrandNativeContainerView.setDuplicateParentStateEnabled(true);
       localAppBrandNativeContainerView.setFullscreenWithChild(bool2);
-      AppMethodBeat.o(126277);
+      AppMethodBeat.o(137505);
       return parame;
       i = 4;
     }
@@ -40,17 +52,20 @@ public final class a
   
   public final void a(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(126279);
-    paramView.setOnTouchListener(new a.1(this));
-    AppMethodBeat.o(126279);
-  }
-  
-  public final int w(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(126278);
-    int i = paramJSONObject.getInt("containerId");
-    AppMethodBeat.o(126278);
-    return i;
+    AppMethodBeat.i(137507);
+    paramView.setOnTouchListener(new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(137504);
+        if (paramAnonymousMotionEvent.getAction() != 0) {
+          d.a((ViewGroup)paramAnonymousView, paramAnonymousMotionEvent);
+        }
+        AppMethodBeat.o(137504);
+        return false;
+      }
+    });
+    AppMethodBeat.o(137507);
   }
 }
 

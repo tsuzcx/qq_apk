@@ -14,10 +14,10 @@ import java.util.ArrayList;
 public class ContactLabelPreference
   extends Preference
 {
-  private MMSingelLinePanel pyK;
-  private ArrayList<String> pyL;
   private String title;
   private TextView titleTv;
+  private MMSingelLinePanel uAt;
+  private ArrayList<String> uAu;
   
   public ContactLabelPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,45 +27,45 @@ public class ContactLabelPreference
   public ContactLabelPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(23392);
-    this.pyL = new ArrayList();
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(23392);
+    AppMethodBeat.i(27012);
+    this.uAu = new ArrayList();
+    setLayoutResource(2131494804);
+    AppMethodBeat.o(27012);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(23394);
-    this.titleTv = ((TextView)paramView.findViewById(2131820680));
-    this.pyK = ((MMSingelLinePanel)paramView.findViewById(2131820916));
-    this.pyK.setSingleLine(true);
-    this.pyK.zmn = false;
-    this.pyK.qF(false);
+    AppMethodBeat.i(27014);
+    this.titleTv = ((TextView)paramView.findViewById(2131305902));
+    this.uAt = ((MMSingelLinePanel)paramView.findViewById(2131298672));
+    this.uAt.setSingleLine(true);
+    this.uAt.FZQ = false;
+    this.uAt.vN(false);
     if (this.titleTv != null) {
       this.titleTv.setText(this.title);
     }
-    if ((this.pyK != null) && (this.pyL != null) && (this.pyL.size() > 0)) {
-      this.pyK.a(this.pyL, this.pyL);
+    if ((this.uAt != null) && (this.uAu != null) && (this.uAu.size() > 0)) {
+      this.uAt.a(this.uAu, this.uAu);
     }
     super.onBindView(paramView);
-    AppMethodBeat.o(23394);
+    AppMethodBeat.o(27014);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(23393);
+    AppMethodBeat.i(27013);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2130970206, localViewGroup);
-    AppMethodBeat.o(23393);
+    localLayoutInflater.inflate(2131494833, localViewGroup);
+    AppMethodBeat.o(27013);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.ContactLabelPreference
  * JD-Core Version:    0.7.0.1
  */

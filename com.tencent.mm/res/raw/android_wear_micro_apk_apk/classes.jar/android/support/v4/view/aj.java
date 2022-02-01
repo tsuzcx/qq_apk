@@ -1,7 +1,7 @@
 package android.support.v4.view;
 
 import android.os.Bundle;
-import android.support.v4.view.a.e;
+import android.support.v4.view.a.b;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 
@@ -10,21 +10,21 @@ final class aj
 {
   aj(ViewPager paramViewPager) {}
   
-  private boolean bE()
+  private boolean bW()
   {
-    return (this.lW.lb != null) && (this.lW.lb.getCount() > 1);
+    return (this.nS.mX != null) && (this.nS.mX.getCount() > 1);
   }
   
-  public final void a(View paramView, e parame)
+  public final void a(View paramView, b paramb)
   {
-    super.a(paramView, parame);
-    parame.setClassName(ViewPager.class.getName());
-    parame.setScrollable(bE());
-    if (this.lW.canScrollHorizontally(1)) {
-      parame.addAction(4096);
+    super.a(paramView, paramb);
+    paramb.setClassName(ViewPager.class.getName());
+    paramb.setScrollable(bW());
+    if (this.nS.canScrollHorizontally(1)) {
+      paramb.addAction(4096);
     }
-    if (this.lW.canScrollHorizontally(-1)) {
-      parame.addAction(8192);
+    if (this.nS.canScrollHorizontally(-1)) {
+      paramb.addAction(8192);
     }
   }
   
@@ -32,12 +32,12 @@ final class aj
   {
     super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
     paramAccessibilityEvent.setClassName(ViewPager.class.getName());
-    paramAccessibilityEvent.setScrollable(bE());
-    if ((paramAccessibilityEvent.getEventType() == 4096) && (this.lW.lb != null))
+    paramAccessibilityEvent.setScrollable(bW());
+    if ((paramAccessibilityEvent.getEventType() == 4096) && (this.nS.mX != null))
     {
-      paramAccessibilityEvent.setItemCount(this.lW.lb.getCount());
-      paramAccessibilityEvent.setFromIndex(this.lW.lc);
-      paramAccessibilityEvent.setToIndex(this.lW.lc);
+      paramAccessibilityEvent.setItemCount(this.nS.mX.getCount());
+      paramAccessibilityEvent.setFromIndex(this.nS.mY);
+      paramAccessibilityEvent.setToIndex(this.nS.mY);
     }
   }
   
@@ -51,16 +51,16 @@ final class aj
     default: 
       return false;
     case 4096: 
-      if (this.lW.canScrollHorizontally(1))
+      if (this.nS.canScrollHorizontally(1))
       {
-        this.lW.A(this.lW.lc + 1);
+        this.nS.L(this.nS.mY + 1);
         return true;
       }
       return false;
     }
-    if (this.lW.canScrollHorizontally(-1))
+    if (this.nS.canScrollHorizontally(-1))
     {
-      this.lW.A(this.lW.lc - 1);
+      this.nS.L(this.nS.mY - 1);
       return true;
     }
     return false;

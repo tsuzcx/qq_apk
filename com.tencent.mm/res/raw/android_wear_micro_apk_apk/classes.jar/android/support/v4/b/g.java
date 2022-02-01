@@ -8,9 +8,9 @@ import java.util.Set;
 
 abstract class g<K, V>
 {
-  g<K, V>.i jm;
-  g<K, V>.j jn;
-  g<K, V>.l jo;
+  g<K, V>.i lj;
+  g<K, V>.j lk;
+  g<K, V>.l ll;
   
   public static <K, V> boolean a(Map<K, V> paramMap, Collection<?> paramCollection)
   {
@@ -58,13 +58,24 @@ abstract class g<K, V>
     return false;
   }
   
-  protected abstract V a(int paramInt, V paramV);
+  public final Object[] C(int paramInt)
+  {
+    int j = bw();
+    Object[] arrayOfObject = new Object[j];
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfObject[i] = b(i, paramInt);
+      i += 1;
+    }
+    return arrayOfObject;
+  }
   
-  protected abstract void a(K paramK, V paramV);
+  protected abstract V a(int paramInt, V paramV);
   
   public final <T> T[] a(T[] paramArrayOfT, int paramInt)
   {
-    int j = bf();
+    int j = bw();
     if (paramArrayOfT.length < j) {
       paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), j);
     }
@@ -85,38 +96,27 @@ abstract class g<K, V>
   
   protected abstract Object b(int paramInt1, int paramInt2);
   
-  protected abstract int bf();
+  protected abstract void b(K paramK, V paramV);
   
-  protected abstract Map<K, V> bg();
-  
-  protected abstract void bh();
-  
-  public final Set<K> bk()
+  public final Set<K> bB()
   {
-    if (this.jn == null) {
-      this.jn = new j(this);
+    if (this.lk == null) {
+      this.lk = new j(this);
     }
-    return this.jn;
+    return this.lk;
   }
   
-  protected abstract int j(Object paramObject);
+  protected abstract int bw();
   
-  protected abstract int k(Object paramObject);
+  protected abstract Map<K, V> bx();
   
-  protected abstract void p(int paramInt);
+  protected abstract void by();
   
-  public final Object[] s(int paramInt)
-  {
-    int j = bf();
-    Object[] arrayOfObject = new Object[j];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfObject[i] = b(i, paramInt);
-      i += 1;
-    }
-    return arrayOfObject;
-  }
+  protected abstract int q(Object paramObject);
+  
+  protected abstract int r(Object paramObject);
+  
+  protected abstract void z(int paramInt);
 }
 
 

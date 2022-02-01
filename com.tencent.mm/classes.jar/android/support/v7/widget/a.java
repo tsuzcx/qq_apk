@@ -18,25 +18,25 @@ import android.view.ViewGroup;
 abstract class a
   extends ViewGroup
 {
-  protected final a Xn = new a();
-  protected final Context Xo;
-  protected ActionMenuView Xp;
-  protected ActionMenuPresenter Xq;
-  protected int Xr;
-  protected x Xs;
-  private boolean Xt;
-  private boolean Xu;
+  protected final a aes = new a();
+  protected final Context aet;
+  protected ActionMenuView aeu;
+  protected ActionMenuPresenter aev;
+  protected int aew;
+  protected x aex;
+  private boolean aey;
+  private boolean aez;
   
   a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramAttributeSet = new TypedValue();
-    if ((paramContext.getTheme().resolveAttribute(2130772138, paramAttributeSet, true)) && (paramAttributeSet.resourceId != 0))
+    if ((paramContext.getTheme().resolveAttribute(2130968599, paramAttributeSet, true)) && (paramAttributeSet.resourceId != 0))
     {
-      this.Xo = new ContextThemeWrapper(paramContext, paramAttributeSet.resourceId);
+      this.aet = new ContextThemeWrapper(paramContext, paramAttributeSet.resourceId);
       return;
     }
-    this.Xo = paramContext;
+    this.aet = paramContext;
   }
   
   protected static int a(View paramView, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
@@ -66,7 +66,7 @@ abstract class a
     return paramInt1 + paramInt2;
   }
   
-  protected static int k(View paramView, int paramInt1, int paramInt2)
+  protected static int j(View paramView, int paramInt1, int paramInt2)
   {
     paramView.measure(View.MeasureSpec.makeMeasureSpec(paramInt1, -2147483648), paramInt2);
     return Math.max(0, paramInt1 - paramView.getMeasuredWidth() + 0);
@@ -74,46 +74,46 @@ abstract class a
   
   public x c(int paramInt, long paramLong)
   {
-    if (this.Xs != null) {
-      this.Xs.cancel();
+    if (this.aex != null) {
+      this.aex.cancel();
     }
     if (paramInt == 0)
     {
       if (getVisibility() != 0) {
         setAlpha(0.0F);
       }
-      localx = t.ab(this).s(1.0F);
+      localx = t.ag(this).w(1.0F);
       localx.h(paramLong);
-      localx.a(this.Xn.a(localx, paramInt));
+      localx.a(this.aes.a(localx, paramInt));
       return localx;
     }
-    x localx = t.ab(this).s(0.0F);
+    x localx = t.ag(this).w(0.0F);
     localx.h(paramLong);
-    localx.a(this.Xn.a(localx, paramInt));
+    localx.a(this.aes.a(localx, paramInt));
     return localx;
   }
   
   public int getAnimatedVisibility()
   {
-    if (this.Xs != null) {
-      return this.Xn.uQ;
+    if (this.aex != null) {
+      return this.aes.Be;
     }
     return getVisibility();
   }
   
   public int getContentHeight()
   {
-    return this.Xr;
+    return this.aew;
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    paramConfiguration = getContext().obtainStyledAttributes(null, android.support.v7.a.a.a.ActionBar, 2130772139, 0);
-    setContentHeight(paramConfiguration.getLayoutDimension(0, 0));
+    paramConfiguration = getContext().obtainStyledAttributes(null, android.support.v7.a.a.a.ActionBar, 2130968602, 0);
+    setContentHeight(paramConfiguration.getLayoutDimension(13, 0));
     paramConfiguration.recycle();
-    if (this.Xq != null) {
-      this.Xq.gA();
+    if (this.aev != null) {
+      this.aev.hV();
     }
   }
   
@@ -121,17 +121,17 @@ abstract class a
   {
     int i = paramMotionEvent.getActionMasked();
     if (i == 9) {
-      this.Xu = false;
+      this.aez = false;
     }
-    if (!this.Xu)
+    if (!this.aez)
     {
       boolean bool = super.onHoverEvent(paramMotionEvent);
       if ((i == 9) && (!bool)) {
-        this.Xu = true;
+        this.aez = true;
       }
     }
     if ((i == 10) || (i == 3)) {
-      this.Xu = false;
+      this.aez = false;
     }
     return true;
   }
@@ -140,24 +140,24 @@ abstract class a
   {
     int i = paramMotionEvent.getActionMasked();
     if (i == 0) {
-      this.Xt = false;
+      this.aey = false;
     }
-    if (!this.Xt)
+    if (!this.aey)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
       if ((i == 0) && (!bool)) {
-        this.Xt = true;
+        this.aey = true;
       }
     }
     if ((i == 1) || (i == 3)) {
-      this.Xt = false;
+      this.aey = false;
     }
     return true;
   }
   
   public void setContentHeight(int paramInt)
   {
-    this.Xr = paramInt;
+    this.aew = paramInt;
     requestLayout();
   }
   
@@ -165,8 +165,8 @@ abstract class a
   {
     if (paramInt != getVisibility())
     {
-      if (this.Xs != null) {
-        this.Xs.cancel();
+      if (this.aex != null) {
+        this.aex.cancel();
       }
       super.setVisibility(paramInt);
     }
@@ -174,8 +174,8 @@ abstract class a
   
   public boolean showOverflowMenu()
   {
-    if (this.Xq != null) {
-      return this.Xq.showOverflowMenu();
+    if (this.aev != null) {
+      return this.aev.showOverflowMenu();
     }
     return false;
   }
@@ -183,36 +183,36 @@ abstract class a
   protected final class a
     implements y
   {
-    private boolean qM = false;
-    int uQ;
+    int Be;
+    private boolean mCanceled = false;
     
     protected a() {}
     
     public final a a(x paramx, int paramInt)
     {
-      a.this.Xs = paramx;
-      this.uQ = paramInt;
+      a.this.aex = paramx;
+      this.Be = paramInt;
       return this;
     }
     
-    public final void aB(View paramView)
+    public final void aH(View paramView)
     {
       a.a(a.this);
-      this.qM = false;
+      this.mCanceled = false;
     }
     
-    public final void aC(View paramView)
+    public final void aI(View paramView)
     {
-      if (this.qM) {
+      if (this.mCanceled) {
         return;
       }
-      a.this.Xs = null;
-      a.a(a.this, this.uQ);
+      a.this.aex = null;
+      a.a(a.this, this.Be);
     }
     
-    public final void aD(View paramView)
+    public final void aJ(View paramView)
     {
-      this.qM = true;
+      this.mCanceled = true;
     }
   }
 }

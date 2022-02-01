@@ -1,5 +1,6 @@
 package com.tencent.mm.sdk.platformtools;
 
+import android.os.Bundle;
 import android.os.Debug;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -8,68 +9,87 @@ import android.os.Message;
 import android.os.SystemClock;
 import junit.framework.Assert;
 
-final class k
+public class k
   extends Handler
   implements o
 {
-  private String Xw = null;
-  private Looper Xx = getLooper();
-  private Handler.Callback Xy;
-  l Xz;
+  private Handler.Callback ZA;
+  public l ZB;
+  private String Zy = null;
+  private Looper Zz = getLooper();
   
-  k(Looper paramLooper, l paraml)
+  public k(Looper paramLooper, Handler.Callback paramCallback, l paraml)
   {
-    super(paramLooper);
-    this.Xz = paraml;
+    super(paramLooper, null);
+    this.ZA = null;
+    this.ZB = paraml;
   }
   
-  k(l paraml)
+  public k(Looper paramLooper, l paraml)
   {
-    this.Xz = paraml;
+    super(paramLooper);
+    this.ZB = paraml;
+  }
+  
+  public k(l paraml)
+  {
+    this.ZB = paraml;
   }
   
   public final void c(Runnable paramRunnable, n paramn)
   {
-    if (this.Xz != null) {
-      this.Xz.b(paramRunnable, paramn);
+    if (this.ZB != null) {
+      this.ZB.b(paramRunnable, paramn);
     }
   }
   
-  public final void dispatchMessage(Message paramMessage)
+  public void dispatchMessage(Message paramMessage)
   {
-    if ((paramMessage.getCallback() != null) || (this.Xy != null)) {
+    if ((paramMessage.getCallback() != null) || (this.ZA != null)) {
       super.dispatchMessage(paramMessage);
     }
     do
     {
       return;
       System.currentTimeMillis();
+      Bundle localBundle = paramMessage.getData();
+      localBundle.getLong("addTime");
+      localBundle.getLong("delay");
+      localBundle = localBundle.getBundle("tmp");
       Debug.threadCpuTimeNanos();
+      paramMessage.setData(localBundle);
       handleMessage(paramMessage);
-    } while (this.Xz == null);
-    this.Xx.getThread();
+    } while (this.ZB == null);
+    this.Zz.getThread();
     System.currentTimeMillis();
     Debug.threadCpuTimeNanos();
   }
   
-  public final void handleMessage(Message paramMessage) {}
+  public void handleMessage(Message paramMessage) {}
   
-  public final boolean sendMessageAtTime(Message paramMessage, long paramLong)
+  public boolean sendMessageAtTime(Message paramMessage, long paramLong)
   {
     boolean bool1;
     Runnable localRunnable;
+    long l;
+    Object localObject;
     if (paramMessage != null)
     {
       bool1 = true;
       Assert.assertTrue("msg is null", bool1);
       localRunnable = paramMessage.getCallback();
+      l = paramLong - SystemClock.uptimeMillis();
       if (localRunnable != null) {
-        break label42;
+        break label94;
       }
+      localObject = new Bundle();
+      ((Bundle)localObject).putBundle("tmp", paramMessage.getData());
+      ((Bundle)localObject).putLong("delay", l);
+      ((Bundle)localObject).putLong("addTime", System.currentTimeMillis());
+      paramMessage.setData((Bundle)localObject);
       bool1 = super.sendMessageAtTime(paramMessage, paramLong);
     }
-    label42:
-    Object localObject;
+    label94:
     boolean bool2;
     do
     {
@@ -78,14 +98,13 @@ final class k
         return bool1;
         bool1 = false;
         break;
-        long l = paramLong - SystemClock.uptimeMillis();
         if (paramMessage.getTarget() == null) {}
         Message localMessage;
         for (localObject = this;; localObject = paramMessage.getTarget())
         {
-          localObject = new n(this.Xx.getThread(), (Handler)localObject, localRunnable, paramMessage.obj, this);
+          localObject = new n(this.Zz.getThread(), (Handler)localObject, localRunnable, paramMessage.obj, this);
           if (l > 0L) {
-            ((n)localObject).XI = l;
+            ((n)localObject).ZJ = l;
           }
           localMessage = Message.obtain(paramMessage.getTarget(), (Runnable)localObject);
           localMessage.what = paramMessage.what;
@@ -101,24 +120,24 @@ final class k
           f.b("MicroMsg.MMInnerHandler", "sendMessageAtTime but thread[%d, %s] is dead so return false!", new Object[] { Long.valueOf(getLooper().getThread().getId()), getLooper().getThread().getName() });
           return false;
         }
-        if (this.Xz != null) {
-          this.Xz.a(localRunnable, (n)localObject);
+        if (this.ZB != null) {
+          this.ZB.a(localRunnable, (n)localObject);
         }
         bool2 = super.sendMessageAtTime(localMessage, paramLong);
         bool1 = bool2;
       } while (bool2);
       bool1 = bool2;
-    } while (this.Xz == null);
-    this.Xz.b(localRunnable, (n)localObject);
+    } while (this.ZB == null);
+    this.ZB.b(localRunnable, (n)localObject);
     return bool2;
   }
   
-  public final String toString()
+  public String toString()
   {
-    if (this.Xw == null) {
-      this.Xw = ("MMInnerHandler{listener = " + this.Xz + "}");
+    if (this.Zy == null) {
+      this.Zy = ("MMInnerHandler{listener = " + this.ZB + "}");
     }
-    return this.Xw;
+    return this.Zy;
   }
 }
 

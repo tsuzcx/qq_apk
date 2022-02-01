@@ -1,138 +1,146 @@
 package com.tencent.mm.o;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.ay;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class a
-  extends au
+  extends ay
 {
-  public static final String euH;
+  public static final String fIf;
   public static c.a info;
   
   static
   {
-    AppMethodBeat.i(59712);
+    AppMethodBeat.i(42762);
     c.a locala = new c.a();
-    locala.yrK = new Field[25];
-    locala.columns = new String[26];
+    locala.EYt = new Field[27];
+    locala.columns = new String[28];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "msgCount";
-    locala.yrM.put("msgCount", "INTEGER default '0' ");
+    locala.EYv.put("msgCount", "INTEGER default '0' ");
     localStringBuilder.append(" msgCount INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[1] = "username";
-    locala.yrM.put("username", "TEXT default ''  PRIMARY KEY ");
+    locala.EYv.put("username", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" username TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.yrL = "username";
+    locala.EYu = "username";
     locala.columns[2] = "unReadCount";
-    locala.yrM.put("unReadCount", "INTEGER default '0' ");
+    locala.EYv.put("unReadCount", "INTEGER default '0' ");
     localStringBuilder.append(" unReadCount INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "chatmode";
-    locala.yrM.put("chatmode", "INTEGER default '0' ");
+    locala.EYv.put("chatmode", "INTEGER default '0' ");
     localStringBuilder.append(" chatmode INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "status";
-    locala.yrM.put("status", "INTEGER default '0' ");
+    locala.EYv.put("status", "INTEGER default '0' ");
     localStringBuilder.append(" status INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[5] = "isSend";
-    locala.yrM.put("isSend", "INTEGER default '0' ");
+    locala.EYv.put("isSend", "INTEGER default '0' ");
     localStringBuilder.append(" isSend INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[6] = "conversationTime";
-    locala.yrM.put("conversationTime", "LONG default '0' ");
+    locala.EYv.put("conversationTime", "LONG default '0' ");
     localStringBuilder.append(" conversationTime LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[7] = "content";
-    locala.yrM.put("content", "TEXT default '' ");
+    locala.EYv.put("content", "TEXT default '' ");
     localStringBuilder.append(" content TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "msgType";
-    locala.yrM.put("msgType", "TEXT default '' ");
+    locala.EYv.put("msgType", "TEXT default '' ");
     localStringBuilder.append(" msgType TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[9] = "customNotify";
-    locala.yrM.put("customNotify", "TEXT default '' ");
+    locala.EYv.put("customNotify", "TEXT default '' ");
     localStringBuilder.append(" customNotify TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[10] = "showTips";
-    locala.yrM.put("showTips", "INTEGER default '0' ");
+    locala.EYv.put("showTips", "INTEGER default '0' ");
     localStringBuilder.append(" showTips INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[11] = "flag";
-    locala.yrM.put("flag", "LONG default '0' ");
+    locala.EYv.put("flag", "LONG default '0' ");
     localStringBuilder.append(" flag LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[12] = "digest";
-    locala.yrM.put("digest", "TEXT default '' ");
+    locala.EYv.put("digest", "TEXT default '' ");
     localStringBuilder.append(" digest TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[13] = "digestUser";
-    locala.yrM.put("digestUser", "TEXT default '' ");
+    locala.EYv.put("digestUser", "TEXT default '' ");
     localStringBuilder.append(" digestUser TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[14] = "hasTrunc";
-    locala.yrM.put("hasTrunc", "INTEGER default '0' ");
+    locala.EYv.put("hasTrunc", "INTEGER default '0' ");
     localStringBuilder.append(" hasTrunc INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[15] = "parentRef";
-    locala.yrM.put("parentRef", "TEXT");
+    locala.EYv.put("parentRef", "TEXT");
     localStringBuilder.append(" parentRef TEXT");
     localStringBuilder.append(", ");
     locala.columns[16] = "attrflag";
-    locala.yrM.put("attrflag", "INTEGER default '0' ");
+    locala.EYv.put("attrflag", "INTEGER default '0' ");
     localStringBuilder.append(" attrflag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[17] = "editingMsg";
-    locala.yrM.put("editingMsg", "TEXT default '' ");
+    locala.EYv.put("editingMsg", "TEXT default '' ");
     localStringBuilder.append(" editingMsg TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[18] = "atCount";
-    locala.yrM.put("atCount", "INTEGER default '0' ");
+    locala.EYv.put("atCount", "INTEGER default '0' ");
     localStringBuilder.append(" atCount INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[19] = "sightTime";
-    locala.yrM.put("sightTime", "LONG default '0' ");
+    locala.EYv.put("sightTime", "LONG default '0' ");
     localStringBuilder.append(" sightTime LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[20] = "unReadMuteCount";
-    locala.yrM.put("unReadMuteCount", "INTEGER default '0' ");
+    locala.EYv.put("unReadMuteCount", "INTEGER default '0' ");
     localStringBuilder.append(" unReadMuteCount INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[21] = "lastSeq";
-    locala.yrM.put("lastSeq", "LONG");
+    locala.EYv.put("lastSeq", "LONG");
     localStringBuilder.append(" lastSeq LONG");
     localStringBuilder.append(", ");
     locala.columns[22] = "UnDeliverCount";
-    locala.yrM.put("UnDeliverCount", "INTEGER");
+    locala.EYv.put("UnDeliverCount", "INTEGER");
     localStringBuilder.append(" UnDeliverCount INTEGER");
     localStringBuilder.append(", ");
     locala.columns[23] = "UnReadInvite";
-    locala.yrM.put("UnReadInvite", "INTEGER");
+    locala.EYv.put("UnReadInvite", "INTEGER");
     localStringBuilder.append(" UnReadInvite INTEGER");
     localStringBuilder.append(", ");
     locala.columns[24] = "firstUnDeliverSeq";
-    locala.yrM.put("firstUnDeliverSeq", "LONG");
+    locala.EYv.put("firstUnDeliverSeq", "LONG");
     localStringBuilder.append(" firstUnDeliverSeq LONG");
-    locala.columns[25] = "rowid";
+    localStringBuilder.append(", ");
+    locala.columns[25] = "editingQuoteMsgId";
+    locala.EYv.put("editingQuoteMsgId", "LONG default '0' ");
+    localStringBuilder.append(" editingQuoteMsgId LONG default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[26] = "hasTodo";
+    locala.EYv.put("hasTodo", "INTEGER default '0' ");
+    localStringBuilder.append(" hasTodo INTEGER default '0' ");
+    locala.columns[27] = "rowid";
     locala.sql = localStringBuilder.toString();
     info = locala;
-    euH = null;
-    AppMethodBeat.o(59712);
+    fIf = null;
+    AppMethodBeat.o(42762);
   }
   
   public a() {}
   
   public a(String paramString)
   {
-    AppMethodBeat.i(59709);
+    AppMethodBeat.i(42759);
     setUsername(paramString);
-    AppMethodBeat.o(59709);
+    AppMethodBeat.o(42759);
   }
   
   public c.a getDBInfo()
@@ -140,21 +148,21 @@ public class a
     return info;
   }
   
-  public final void jg(int paramInt)
+  public final void lu(int paramInt)
   {
-    AppMethodBeat.i(59710);
-    hN(this.field_attrflag | paramInt);
-    AppMethodBeat.o(59710);
+    AppMethodBeat.i(42760);
+    jX(this.field_attrflag | paramInt);
+    AppMethodBeat.o(42760);
   }
   
-  public final void jh(int paramInt)
+  public final void lv(int paramInt)
   {
-    AppMethodBeat.i(59711);
-    hN(this.field_attrflag & (paramInt ^ 0xFFFFFFFF));
-    AppMethodBeat.o(59711);
+    AppMethodBeat.i(42761);
+    jX(this.field_attrflag & (paramInt ^ 0xFFFFFFFF));
+    AppMethodBeat.o(42761);
   }
   
-  public final boolean ji(int paramInt)
+  public final boolean lw(int paramInt)
   {
     return (this.field_attrflag & paramInt) != 0;
   }

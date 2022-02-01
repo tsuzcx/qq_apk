@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector android:constantSize="true"
+<transition
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:state_pressed="true">
-        <bitmap android:gravity="center" android:src="@drawable/aah" />
-    </item>
-    <item android:state_enabled="false">
-        <bitmap android:gravity="center" android:src="@drawable/aah" />
-    </item>
-    <item android:state_pressed="true">
-        <bitmap android:gravity="center" android:src="@drawable/aaj" />
-    </item>
-    <item>
-        <bitmap android:gravity="center" android:src="@drawable/aai" />
-    </item>
-</selector>
+    <item android:drawable="@drawable/al3" />
+    <item android:drawable="@drawable/al1" />
+</transition>

@@ -1,51 +1,33 @@
 package com.tencent.mm.plugin.appbrand.jsapi.fakenative;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kl;
-import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.a;
-import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c.a;
-import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.ui.base.p;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.f;
+import com.tencent.mm.plugin.appbrand.n;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONObject;
 
 public final class c
-  extends a
+  extends f
 {
-  public static final int CTRL_INDEX = 592;
-  public static final String NAME = "openBusinessView";
-  private p efs;
-  boolean hLw = false;
-  private com.tencent.mm.sdk.b.c<kl> hLx;
-  
-  private void a(com.tencent.mm.plugin.appbrand.d paramd, int paramInt1, int paramInt2, String paramString)
+  public final void a(h paramh, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(131036);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errCode", Integer.valueOf(paramInt2));
-    paramd.h(paramInt1, j(paramString, localHashMap));
-    AppMethodBeat.o(131036);
-  }
-  
-  public final com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.c aCU()
-  {
-    return e.hLL;
-  }
-  
-  final void aCV()
-  {
-    AppMethodBeat.i(131037);
-    if (this.efs != null)
+    AppMethodBeat.i(46283);
+    String str1 = n.Do(paramh.getRuntime().mAppId).iFU;
+    ad.i("MicroMsg.JsApiNavigateBackMiniProgramWC", "navigate back miniprogram, businessType:%s", new Object[] { str1 });
+    if (!bt.isNullOrNil(str1))
     {
-      this.efs.dismiss();
-      this.efs = null;
+      String str2 = paramJSONObject.optString("extraData");
+      ad.i("MicroMsg.JsApiNavigateBackMiniProgramWC", "navigate back MiniProgram, businessType:%s", new Object[] { str1 });
+      OpenBusinessViewUtil.p(str1, g.jQa.errCode, str2);
+      n.Dp(paramh.getAppId()).iFX = true;
     }
-    AppMethodBeat.o(131037);
+    OpenBusinessViewUtil.E((o)paramh.getRuntime());
+    super.a(paramh, paramJSONObject, paramInt);
+    AppMethodBeat.o(46283);
   }
 }
 

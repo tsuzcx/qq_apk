@@ -1,173 +1,53 @@
 package com.tencent.mm.plugin.webview;
 
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.s.m;
-import com.tencent.mm.plugin.webview.model.h;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.base.p;
-import com.tencent.xweb.WebView;
-import java.util.LinkedList;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import com.tencent.mm.api.x;
+import com.tencent.mm.plugin.webview.core.BaseWebViewController;
+import com.tencent.mm.plugin.webview.core.BaseWebViewController.c;
+import com.tencent.mm.plugin.webview.core.h;
+import com.tencent.mm.plugin.webview.model.ax;
+import com.tencent.mm.ui.widget.MMWebView;
+import java.util.HashSet;
 
 public final class b
+  implements x
 {
-  public p tipDialog;
-  private final int uNE;
-  private final int uNF;
-  private final int uNG;
-  public WebView uNH;
-  public LinkedList<String> uNI;
-  public String uNJ;
-  public String uNK;
-  public int uNL;
-  public int uNM;
-  public CountDownLatch uNN;
-  public c uNO;
+  private static final HashSet<String> AKn;
   
-  public b()
+  static
   {
-    AppMethodBeat.i(153068);
-    this.uNE = 0;
-    this.uNF = 1;
-    this.uNG = 2;
-    this.uNH = null;
-    this.uNI = null;
-    this.uNJ = null;
-    this.uNK = null;
-    this.uNL = 0;
-    this.uNM = 0;
-    this.uNN = new CountDownLatch(1);
-    this.uNO = new b.4(this);
-    AppMethodBeat.o(153068);
+    AppMethodBeat.i(187848);
+    HashSet localHashSet = new HashSet();
+    AKn = localHashSet;
+    localHashSet.add("preVerifyJSAPI");
+    AKn.add("openUrlWithExtraWebview");
+    AKn.add("getInstallState");
+    AKn.add("launchApplication");
+    AKn.add("getBrandWCPayRequest");
+    AKn.add("geoLocation");
+    AKn.add("profile");
+    AKn.add("installDownloadTask");
+    AKn.add("pauseDownloadTask");
+    AKn.add("addDownloadTask");
+    AKn.add("addDownloadTaskStraight");
+    AKn.add("resumeDownloadTask");
+    AKn.add("queryDownloadTask");
+    AKn.add("addContact");
+    AKn.add("quicklyAddBrandContact");
+    AppMethodBeat.o(187848);
   }
   
-  public static boolean b(WebView paramWebView)
+  public final BaseWebViewController a(MMWebView paramMMWebView)
   {
-    AppMethodBeat.i(5619);
-    if ((paramWebView == null) || (paramWebView.isSysKernel()))
-    {
-      AppMethodBeat.o(5619);
-      return false;
-    }
-    try
-    {
-      paramWebView = paramWebView.invokeMiscMethod("supportTranslateWebSite", null);
-      if (paramWebView == null) {
-        break label89;
-      }
-      bool = paramWebView.getBoolean("result");
-    }
-    catch (Exception paramWebView)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.WebViewTranslateHelper", "supportTranslateWebSite error %s", new Object[] { paramWebView.getMessage() });
-        boolean bool = false;
-      }
-    }
-    ab.i("MicroMsg.WebViewTranslateHelper", "supportTranslate %b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(5619);
-    return bool;
-  }
-  
-  private int i(WebView paramWebView, String paramString)
-  {
-    AppMethodBeat.i(153070);
-    ab.i("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate in");
-    this.uNH = paramWebView;
-    try
-    {
-      paramWebView = new int[1];
-      paramWebView[0] = 2;
-      this.uNN = new CountDownLatch(1);
-      try
-      {
-        m.runOnUiThread(new b.3(this));
-        ab.i("MicroMsg.WebViewTranslateHelper", "invokeMiscMethod getTranslateSampleString begin");
-        this.uNN.await(500L, TimeUnit.MILLISECONDS);
-        ab.i("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate end");
-        paramWebView[0] = new h().f(this.uNI, paramString);
-        ab.i("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate doScene end ret[0] = " + paramWebView[0]);
-        int i = paramWebView[0];
-        AppMethodBeat.o(153070);
-        return i;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          ab.w("MicroMsg.WebViewTranslateHelper", localInterruptedException.getMessage());
-          ab.printErrStackTrace("MicroMsg.WebViewTranslateHelper", localInterruptedException, "", new Object[0]);
-        }
-      }
-      return 2;
-    }
-    catch (Exception paramWebView)
-    {
-      ab.e("MicroMsg.WebViewTranslateHelper", "xWalkNeedTranslate failed");
-      AppMethodBeat.o(153070);
-    }
-  }
-  
-  public final int a(WebView paramWebView, boolean paramBoolean)
-  {
-    AppMethodBeat.i(5620);
-    if ((paramWebView == null) || (paramWebView.isSysKernel()))
-    {
-      AppMethodBeat.o(5620);
-      return 2;
-    }
-    Bundle localBundle = new Bundle();
-    String str = aa.dsG();
-    localBundle.putString("destLanguage", str);
-    if (paramBoolean) {
-      localBundle.putBoolean("isFastOpen", true);
-    }
-    try
-    {
-      if (paramWebView.isXWalkKernel()) {}
-      for (i = i(paramWebView, str);; i = paramWebView.getInt("errorCode", 2))
-      {
-        ab.i("MicroMsg.WebViewTranslateHelper", "needTranslate errCode %d,languageCode %s", new Object[] { Integer.valueOf(i), str });
-        AppMethodBeat.o(5620);
-        return i;
-        localBundle.putBoolean("isFastOpen", false);
-        break;
-        paramWebView = paramWebView.invokeMiscMethod("detectTranslateWebSiteIsNeeded", localBundle);
-        if (paramWebView == null) {
-          break label163;
-        }
-      }
-    }
-    catch (Exception paramWebView)
-    {
-      for (;;)
-      {
-        ab.e("MicroMsg.WebViewTranslateHelper", "detectTranslateWebSiteIsNeeded error %s", new Object[] { paramWebView.getMessage() });
-        label163:
-        int i = 2;
-      }
-    }
-  }
-  
-  public final void dau()
-  {
-    AppMethodBeat.i(153069);
-    if ((this.tipDialog != null) && (this.tipDialog.isShowing()))
-    {
-      this.tipDialog.dismiss();
-      this.tipDialog = null;
-    }
-    AppMethodBeat.o(153069);
+    AppMethodBeat.i(187847);
+    paramMMWebView = new h(paramMMWebView, new ax(), new BaseWebViewController.c((byte)0), AKn);
+    AppMethodBeat.o(187847);
+    return paramMMWebView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.b
  * JD-Core Version:    0.7.0.1
  */

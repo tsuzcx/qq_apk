@@ -1,48 +1,46 @@
 package com.tencent.mm.plugin.wepkg.downloader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.g.a.c.u;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 public final class b
 {
+  private static volatile b BHB;
   public static Object lock;
-  private static volatile b vEP;
-  h vEQ;
+  h BHC;
   
   static
   {
-    AppMethodBeat.i(63420);
+    AppMethodBeat.i(110591);
     lock = new Object();
-    AppMethodBeat.o(63420);
+    AppMethodBeat.o(110591);
   }
   
   private b()
   {
-    AppMethodBeat.i(63419);
-    this.vEQ = new h(TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new u("WepkgDownloaderPool", "WepkgDownloaderThread"));
-    AppMethodBeat.o(63419);
+    AppMethodBeat.i(110590);
+    this.BHC = new h("WePkgDownloadExcutor", new LinkedBlockingQueue(24));
+    AppMethodBeat.o(110590);
   }
   
-  public static b dkv()
+  public static b etE()
   {
-    AppMethodBeat.i(63418);
-    if (vEP == null) {}
+    AppMethodBeat.i(110589);
+    if (BHB == null) {}
     synchronized (lock)
     {
-      if (vEP == null) {
-        vEP = new b();
+      if (BHB == null) {
+        BHB = new b();
       }
-      ??? = vEP;
-      AppMethodBeat.o(63418);
+      ??? = BHB;
+      AppMethodBeat.o(110589);
       return ???;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.downloader.b
  * JD-Core Version:    0.7.0.1
  */

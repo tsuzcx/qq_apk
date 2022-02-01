@@ -15,29 +15,29 @@ public class DefaultFileDataSourceFactory
   
   public IDataSource createDataSource()
   {
-    AppMethodBeat.i(128353);
+    AppMethodBeat.i(114296);
     if (TextUtils.isEmpty(this.filePath))
     {
       localObject = new DataSourceException(-5, "filePath is empty!", null);
-      AppMethodBeat.o(128353);
+      AppMethodBeat.o(114296);
       throw ((Throwable)localObject);
     }
     Object localObject = new FileDataSource(this.filePath);
-    AppMethodBeat.o(128353);
+    AppMethodBeat.o(114296);
     return localObject;
   }
   
   public INativeDataSource createNativeDataSource()
   {
-    AppMethodBeat.i(128354);
+    AppMethodBeat.i(114297);
     INativeDataSource localINativeDataSource = NativeDataSourceFactory.fileDataSource(this.filePath, 0);
-    AppMethodBeat.o(128354);
+    AppMethodBeat.o(114297);
     return localINativeDataSource;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.DefaultFileDataSourceFactory
  * JD-Core Version:    0.7.0.1
  */

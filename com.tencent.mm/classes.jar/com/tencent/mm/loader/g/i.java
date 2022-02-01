@@ -1,31 +1,36 @@
 package com.tencent.mm.loader.g;
 
-import a.f.b.j;
+import d.g.b.k;
 
 public final class i
   implements Runnable
 {
-  private c ePB;
-  private i.a ePC;
-  private b ePd;
+  private b gkI;
+  private c glg;
+  private a glh;
   
-  public i(c paramc, b paramb, i.a parama)
+  public i(c paramc, b paramb, a parama)
   {
-    this.ePB = paramc;
-    this.ePd = paramb;
-    this.ePC = parama;
+    this.glg = paramc;
+    this.gkI = paramb;
+    this.glh = parama;
   }
   
   public final void run()
   {
-    c localc = this.ePB;
-    b localb = this.ePd;
-    i.a locala = this.ePC;
-    j.q(localb, "loader");
-    j.q(locala, "watch");
-    localc.ePd = localb;
-    localc.ePe = locala;
+    c localc = this.glg;
+    b localb = this.gkI;
+    a locala = this.glh;
+    k.h(localb, "loader");
+    k.h(locala, "watch");
+    localc.gkI = localb;
+    localc.gkJ = locala;
     localc.call();
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void b(c paramc, h paramh);
   }
 }
 

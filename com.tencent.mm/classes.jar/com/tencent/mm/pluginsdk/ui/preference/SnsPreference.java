@@ -1,6 +1,7 @@
 package com.tencent.mm.pluginsdk.ui.preference;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,108 +10,107 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.nv;
-import com.tencent.mm.g.a.nv.b;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.compatible.util.e;
+import com.tencent.mm.g.a.pi;
+import com.tencent.mm.g.a.pi.b;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.sns.b.n;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.az;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.sns.c.o;
+import com.tencent.mm.protocal.protobuf.bpi;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bc;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.g;
 import com.tencent.mm.ui.widget.QDisFadeImageView;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class SnsPreference
   extends Preference
-  implements g
+  implements com.tencent.mm.ui.base.preference.g
 {
-  private MMActivity cmc;
-  private List<bcs> list;
+  private QDisFadeImageView Cjl;
+  private QDisFadeImageView Cjm;
+  private QDisFadeImageView Cjn;
+  private QDisFadeImageView Cjo;
+  private ImageView Cjp;
+  private ImageView Cjq;
+  private ImageView Cjr;
+  private ImageView Cjs;
+  private a Cjt;
+  private MMActivity imP;
+  private List<bpi> list;
   private String mTitle;
-  private int mml;
-  private View ozm;
-  private az rbm;
-  private QDisFadeImageView wbF;
-  private QDisFadeImageView wbG;
-  private QDisFadeImageView wbH;
-  private QDisFadeImageView wbI;
-  private ImageView wbJ;
-  private ImageView wbK;
-  private ImageView wbL;
-  private ImageView wbM;
-  private SnsPreference.a wbN;
+  private int pSW;
+  private View ttN;
+  private bc wBg;
   
   public SnsPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(28117);
-    this.cmc = ((MMActivity)paramContext);
-    AppMethodBeat.o(28117);
+    AppMethodBeat.i(31906);
+    this.imP = ((MMActivity)paramContext);
+    AppMethodBeat.o(31906);
   }
   
   public SnsPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(28118);
+    AppMethodBeat.i(31907);
     this.mTitle = "";
-    this.wbF = null;
-    this.wbG = null;
-    this.wbH = null;
-    this.wbI = null;
-    this.wbJ = null;
-    this.wbK = null;
-    this.wbL = null;
-    this.wbM = null;
-    this.mml = 255;
+    this.Cjl = null;
+    this.Cjm = null;
+    this.Cjn = null;
+    this.Cjo = null;
+    this.Cjp = null;
+    this.Cjq = null;
+    this.Cjr = null;
+    this.Cjs = null;
+    this.pSW = 255;
     this.list = new LinkedList();
-    this.wbN = new SnsPreference.a();
-    this.cmc = ((MMActivity)paramContext);
-    this.mTitle = paramContext.getString(2131298760);
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(28118);
+    this.Cjt = new a();
+    this.imP = ((MMActivity)paramContext);
+    this.mTitle = paramContext.getString(2131757823);
+    setLayoutResource(2131494804);
+    AppMethodBeat.o(31907);
   }
   
-  private void dpm()
+  private void eAt()
   {
     int j = 0;
-    AppMethodBeat.i(28119);
-    if (this.wbF != null)
+    AppMethodBeat.i(31908);
+    if (this.Cjl != null)
     {
-      this.wbF.setImageResource(2131690709);
-      this.wbF.setVisibility(4);
+      this.Cjl.setImageResource(2131101179);
+      this.Cjl.setVisibility(4);
     }
-    if (this.wbG != null)
+    if (this.Cjm != null)
     {
-      this.wbG.setImageResource(2131690709);
-      this.wbG.setVisibility(4);
+      this.Cjm.setImageResource(2131101179);
+      this.Cjm.setVisibility(4);
     }
-    if (this.wbH != null)
+    if (this.Cjn != null)
     {
-      this.wbH.setImageResource(2131690709);
-      this.wbH.setVisibility(4);
+      this.Cjn.setImageResource(2131101179);
+      this.Cjn.setVisibility(4);
     }
-    if (this.wbI != null)
+    if (this.Cjo != null)
     {
-      this.wbI.setImageResource(2131690709);
-      this.wbI.setVisibility(4);
+      this.Cjo.setImageResource(2131101179);
+      this.Cjo.setVisibility(4);
     }
     ImageView localImageView;
-    if ((this.wbF != null) && (this.list.size() > 0))
+    if ((this.Cjl != null) && (this.list.size() > 0))
     {
-      this.wbF.setVisibility(0);
-      if (com.tencent.mm.compatible.util.f.Mi()) {
+      this.Cjl.setVisibility(0);
+      if (e.XG()) {
         break label295;
       }
-      this.wbF.setImageResource(2130839820);
-      localImageView = this.wbJ;
+      this.Cjl.setImageResource(2131233475);
+      localImageView = this.Cjp;
     }
     label295:
     label440:
@@ -121,170 +121,190 @@ public final class SnsPreference
       for (int i = 8;; i = 0)
       {
         localImageView.setVisibility(i);
-        if ((this.wbG != null) && (this.list.size() >= 2))
+        if ((this.Cjm != null) && (this.list.size() >= 2))
         {
-          this.wbG.setVisibility(0);
-          if (com.tencent.mm.compatible.util.f.Mi()) {
+          this.Cjm.setVisibility(0);
+          if (e.XG()) {
             break;
           }
-          this.wbG.setImageResource(2130839820);
+          this.Cjm.setImageResource(2131233475);
         }
-        if ((this.wbH != null) && (this.list.size() >= 3))
+        if ((this.Cjn != null) && (this.list.size() >= 3))
         {
-          this.wbH.setVisibility(0);
-          if (com.tencent.mm.compatible.util.f.Mi()) {
+          this.Cjn.setVisibility(0);
+          if (e.XG()) {
             break label440;
           }
-          this.wbH.setImageResource(2130839820);
+          this.Cjn.setImageResource(2131233475);
         }
-        if ((this.wbI == null) || (this.list.size() < 4)) {
+        if ((this.Cjo == null) || (this.list.size() < 4)) {
           break label587;
         }
-        this.wbI.setVisibility(0);
-        if (com.tencent.mm.compatible.util.f.Mi()) {
+        this.Cjo.setVisibility(0);
+        if (e.XG()) {
           break label518;
         }
-        this.wbI.setImageResource(2130839820);
-        AppMethodBeat.o(28119);
+        this.Cjo.setImageResource(2131233475);
+        AppMethodBeat.o(31908);
         return;
-        n.raQ.b((bcs)this.list.get(0), this.wbF, this.cmc.hashCode(), this.rbm);
-        localImageView = this.wbJ;
-        if (((bcs)this.list.get(0)).jKs != 6) {
+        o.wzG.b((bpi)this.list.get(0), this.Cjl, this.imP.hashCode(), this.wBg);
+        localImageView = this.Cjp;
+        if (((bpi)this.list.get(0)).mBH != 6) {
           break label600;
         }
       }
-      n.raQ.b((bcs)this.list.get(1), this.wbG, this.cmc.hashCode(), this.rbm);
-      localImageView = this.wbK;
-      if (((bcs)this.list.get(1)).jKs == 6) {}
+      o.wzG.b((bpi)this.list.get(1), this.Cjm, this.imP.hashCode(), this.wBg);
+      localImageView = this.Cjq;
+      if (((bpi)this.list.get(1)).mBH == 6) {}
       for (i = 0;; i = 8)
       {
         localImageView.setVisibility(i);
         break;
       }
-      n.raQ.b((bcs)this.list.get(2), this.wbH, this.cmc.hashCode(), this.rbm);
-      localImageView = this.wbL;
-      if (((bcs)this.list.get(2)).jKs == 6) {}
+      o.wzG.b((bpi)this.list.get(2), this.Cjn, this.imP.hashCode(), this.wBg);
+      localImageView = this.Cjr;
+      if (((bpi)this.list.get(2)).mBH == 6) {}
       for (i = 0;; i = 8)
       {
         localImageView.setVisibility(i);
         break;
       }
-      n.raQ.b((bcs)this.list.get(3), this.wbI, this.cmc.hashCode(), this.rbm);
-      localImageView = this.wbM;
-      if (((bcs)this.list.get(3)).jKs == 6) {}
+      o.wzG.b((bpi)this.list.get(3), this.Cjo, this.imP.hashCode(), this.wBg);
+      localImageView = this.Cjs;
+      if (((bpi)this.list.get(3)).mBH == 6) {}
       for (i = j;; i = 8)
       {
         localImageView.setVisibility(i);
-        AppMethodBeat.o(28119);
+        AppMethodBeat.o(31908);
         return;
       }
     }
   }
   
-  public final void amx(String paramString)
+  public final void aCk(String paramString)
   {
-    AppMethodBeat.i(28122);
+    AppMethodBeat.i(31911);
     if (paramString == null)
     {
-      AppMethodBeat.o(28122);
+      AppMethodBeat.o(31911);
       return;
     }
     this.list.clear();
-    aw.aaz();
-    Object localObject = c.YA().arw(paramString);
-    if ((localObject != null) && ((int)((com.tencent.mm.n.a)localObject).euF > 0) && (com.tencent.mm.n.a.je(((aq)localObject).field_type))) {
-      this.rbm = az.yNQ;
+    az.arV();
+    Object localObject = c.apM().aHY(paramString);
+    if ((localObject != null) && ((int)((com.tencent.mm.n.b)localObject).fId > 0) && (com.tencent.mm.n.b.ls(((au)localObject).field_type))) {
+      this.wBg = bc.FzB;
     }
     for (;;)
     {
-      localObject = new nv();
-      ((nv)localObject).cEp.username = paramString;
-      com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
-      if (((nv)localObject).cEq.cEr != null) {
-        this.list.add(((nv)localObject).cEq.cEr);
+      localObject = new pi();
+      ((pi)localObject).duR.username = paramString;
+      com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
+      if (((pi)localObject).duS.duT != null) {
+        this.list.add(((pi)localObject).duS.duT);
       }
-      if (((nv)localObject).cEq.cEs != null) {
-        this.list.add(((nv)localObject).cEq.cEs);
+      if (((pi)localObject).duS.duU != null) {
+        this.list.add(((pi)localObject).duS.duU);
       }
-      if (((nv)localObject).cEq.cEt != null) {
-        this.list.add(((nv)localObject).cEq.cEt);
+      if (((pi)localObject).duS.duV != null) {
+        this.list.add(((pi)localObject).duS.duV);
       }
-      if (((nv)localObject).cEq.cEu != null) {
-        this.list.add(((nv)localObject).cEq.cEu);
+      if (((pi)localObject).duS.duW != null) {
+        this.list.add(((pi)localObject).duS.duW);
       }
-      dpm();
-      AppMethodBeat.o(28122);
+      eAt();
+      AppMethodBeat.o(31911);
       return;
-      if (paramString.equals(r.Zn())) {
-        this.rbm = az.yNQ;
+      if (paramString.equals(u.aqG())) {
+        this.wBg = bc.FzB;
       } else {
-        this.rbm = az.yNR;
+        this.wBg = bc.FzC;
       }
     }
+  }
+  
+  public final int eAu()
+  {
+    AppMethodBeat.i(31912);
+    int i = 0;
+    if (this.list != null) {
+      i = this.list.size();
+    }
+    AppMethodBeat.o(31912);
+    return i;
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(28121);
+    AppMethodBeat.i(31910);
     super.onBindView(paramView);
-    this.wbF = ((QDisFadeImageView)paramView.findViewById(2131826202));
-    this.wbF.setAlpha(this.mml);
-    this.wbF.setImageDrawable(this.wbN);
-    this.wbG = ((QDisFadeImageView)paramView.findViewById(2131826204));
-    this.wbG.setAlpha(this.mml);
-    this.wbG.setImageDrawable(this.wbN);
-    this.wbH = ((QDisFadeImageView)paramView.findViewById(2131826206));
-    this.wbH.setAlpha(this.mml);
-    this.wbH.setImageDrawable(this.wbN);
-    this.wbI = ((QDisFadeImageView)paramView.findViewById(2131826208));
-    this.wbI.setAlpha(this.mml);
-    this.wbI.setImageDrawable(this.wbN);
-    TextView localTextView = (TextView)paramView.findViewById(2131826192);
-    if (!bo.isNullOrNil(this.mTitle))
+    this.Cjl = ((QDisFadeImageView)paramView.findViewById(2131300944));
+    this.Cjl.setAlpha(this.pSW);
+    this.Cjl.setImageDrawable(this.Cjt);
+    this.Cjm = ((QDisFadeImageView)paramView.findViewById(2131300945));
+    this.Cjm.setAlpha(this.pSW);
+    this.Cjm.setImageDrawable(this.Cjt);
+    this.Cjn = ((QDisFadeImageView)paramView.findViewById(2131300946));
+    this.Cjn.setAlpha(this.pSW);
+    this.Cjn.setImageDrawable(this.Cjt);
+    this.Cjo = ((QDisFadeImageView)paramView.findViewById(2131300947));
+    this.Cjo.setAlpha(this.pSW);
+    this.Cjo.setImageDrawable(this.Cjt);
+    TextView localTextView = (TextView)paramView.findViewById(2131296626);
+    if (!bt.isNullOrNil(this.mTitle))
     {
       localTextView.setText(this.mTitle);
       ViewGroup.LayoutParams localLayoutParams = localTextView.getLayoutParams();
-      localLayoutParams.width = com.tencent.mm.cb.a.ao(this.mContext, 2131427664);
+      localLayoutParams.width = com.tencent.mm.cd.a.ao(this.mContext, 2131165370);
       localTextView.setLayoutParams(localLayoutParams);
     }
-    this.wbJ = ((ImageView)paramView.findViewById(2131826203));
-    this.wbK = ((ImageView)paramView.findViewById(2131826205));
-    this.wbL = ((ImageView)paramView.findViewById(2131826207));
-    this.wbM = ((ImageView)paramView.findViewById(2131826209));
-    this.wbJ.setVisibility(8);
-    this.wbK.setVisibility(8);
-    this.wbL.setVisibility(8);
-    this.wbM.setVisibility(8);
-    dpm();
+    this.Cjp = ((ImageView)paramView.findViewById(2131305050));
+    this.Cjq = ((ImageView)paramView.findViewById(2131305051));
+    this.Cjr = ((ImageView)paramView.findViewById(2131305052));
+    this.Cjs = ((ImageView)paramView.findViewById(2131305053));
+    this.Cjp.setVisibility(8);
+    this.Cjq.setVisibility(8);
+    this.Cjr.setVisibility(8);
+    this.Cjs.setVisibility(8);
+    eAt();
     if ((paramView == null) || (this.list == null))
     {
-      AppMethodBeat.o(28121);
+      AppMethodBeat.o(31910);
       return;
     }
-    paramView.setContentDescription(this.mContext.getString(2131302181, new Object[] { Integer.valueOf(this.list.size()) }));
-    AppMethodBeat.o(28121);
+    paramView.setContentDescription(this.mContext.getString(2131762049, new Object[] { Integer.valueOf(this.list.size()) }));
+    AppMethodBeat.o(31910);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(28120);
-    if (this.ozm == null)
+    AppMethodBeat.i(31909);
+    if (this.ttN == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
       LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
       localViewGroup.removeAllViews();
-      localLayoutInflater.inflate(2130970196, localViewGroup);
-      this.ozm = paramViewGroup;
+      localLayoutInflater.inflate(2131494821, localViewGroup);
+      this.ttN = paramViewGroup;
     }
-    paramViewGroup = this.ozm;
-    AppMethodBeat.o(28120);
+    paramViewGroup = this.ttN;
+    AppMethodBeat.o(31909);
     return paramViewGroup;
+  }
+  
+  static final class a
+    extends ColorDrawable
+  {
+    public a()
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.SnsPreference
  * JD-Core Version:    0.7.0.1
  */

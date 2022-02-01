@@ -4,32 +4,32 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class m
 {
-  public String cnC;
-  public int htj;
+  public k EYF;
+  public String dcx;
+  public int jqR;
   public Object obj;
-  public k yrX;
   
   public m()
   {
-    this.cnC = null;
-    this.yrX = null;
-    this.htj = -1;
+    this.dcx = null;
+    this.EYF = null;
+    this.jqR = -1;
     this.obj = null;
   }
   
   public m(String paramString)
   {
-    this.cnC = paramString;
-    this.yrX = null;
-    this.htj = -1;
+    this.dcx = paramString;
+    this.EYF = null;
+    this.jqR = -1;
     this.obj = null;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(52518);
-    String str = "MStorageEventData [event=" + this.cnC + ", eventId=" + this.htj + ", stg=" + this.yrX + ", obj=" + this.obj + "]";
-    AppMethodBeat.o(52518);
+    AppMethodBeat.i(158086);
+    String str = "MStorageEventData [event=" + this.dcx + ", eventId=" + this.jqR + ", stg=" + this.EYF + ", obj=" + this.obj + "]";
+    AppMethodBeat.o(158086);
     return str;
   }
 }

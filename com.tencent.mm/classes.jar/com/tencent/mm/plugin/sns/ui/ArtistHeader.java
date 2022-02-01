@@ -12,167 +12,203 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.data.q;
+import com.tencent.mm.plugin.sns.model.af;
 import com.tencent.mm.plugin.sns.model.b.b;
-import com.tencent.mm.plugin.sns.model.g;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.protocal.protobuf.fo;
-import com.tencent.mm.protocal.protobuf.fp;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.az;
+import com.tencent.mm.plugin.sns.model.f;
+import com.tencent.mm.plugin.sns.model.f.e;
+import com.tencent.mm.protocal.protobuf.bpi;
+import com.tencent.mm.protocal.protobuf.gg;
+import com.tencent.mm.protocal.protobuf.gh;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.bc;
+import com.tencent.mm.ui.base.i;
 
 public class ArtistHeader
   extends LinearLayout
   implements b.b
 {
   private Context context;
-  private View jbK;
-  private com.tencent.mm.ui.base.i mGI;
-  private ArtistHeader.b rEC;
-  private ImageView rED;
-  private ProgressBar rEE;
-  private fo rEx;
+  private View lRB;
+  private i rcR;
+  private gg xkh;
+  private b xkm;
+  private ImageView xkn;
+  private ProgressBar xko;
   
   public ArtistHeader(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(38108);
-    this.rEx = null;
-    this.mGI = null;
+    AppMethodBeat.i(97731);
+    this.xkh = null;
+    this.rcR = null;
     this.context = null;
     init(paramContext);
-    AppMethodBeat.o(38108);
+    AppMethodBeat.o(97731);
   }
   
   public ArtistHeader(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(38109);
-    this.rEx = null;
-    this.mGI = null;
+    AppMethodBeat.i(97732);
+    this.xkh = null;
+    this.rcR = null;
     this.context = null;
     init(paramContext);
-    AppMethodBeat.o(38109);
+    AppMethodBeat.o(97732);
   }
   
   private void init(final Context paramContext)
   {
-    AppMethodBeat.i(38110);
-    View localView = LayoutInflater.from(paramContext).inflate(2130970807, this, true);
+    AppMethodBeat.i(97733);
+    View localView = LayoutInflater.from(paramContext).inflate(2131495527, this, true);
     this.context = paramContext;
-    this.rEC = new ArtistHeader.b(this);
-    this.rEC.ehv = ((ImageView)localView.findViewById(2131827904));
-    this.rEC.hsI = ((TextView)localView.findViewById(2131827907));
-    this.rEC.rEH = ((TextView)localView.findViewById(2131827905));
-    this.rEC.rEI = ((TextView)localView.findViewById(2131827908));
-    this.rEC.titleTv = ((TextView)localView.findViewById(2131827906));
-    this.rEC.ehv.setOnClickListener(new View.OnClickListener()
+    this.xkm = new b();
+    this.xkm.fuj = ((ImageView)localView.findViewById(2131296947));
+    this.xkm.lEA = ((TextView)localView.findViewById(2131296284));
+    this.xkm.xks = ((TextView)localView.findViewById(2131296287));
+    this.xkm.xkt = ((TextView)localView.findViewById(2131296285));
+    this.xkm.titleTv = ((TextView)localView.findViewById(2131296286));
+    this.xkm.fuj.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(38106);
+        AppMethodBeat.i(97728);
         if ((ArtistHeader.a(ArtistHeader.this) != null) && (ArtistHeader.a(ArtistHeader.this).isShowing()))
         {
-          AppMethodBeat.o(38106);
+          AppMethodBeat.o(97728);
           return;
         }
         if (ArtistHeader.b(ArtistHeader.this) == null)
         {
-          AppMethodBeat.o(38106);
+          AppMethodBeat.o(97728);
           return;
         }
-        paramAnonymousView = LayoutInflater.from(ArtistHeader.this.getContext()).inflate(2130971080, null);
-        ArtistHeader.a(ArtistHeader.this, new com.tencent.mm.ui.base.i(ArtistHeader.this.getContext(), 2131493880));
-        paramAnonymousView.setOnClickListener(new ArtistHeader.1.1(this));
+        paramAnonymousView = LayoutInflater.from(ArtistHeader.this.getContext()).inflate(2131495846, null);
+        ArtistHeader.a(ArtistHeader.this, new i(ArtistHeader.this.getContext(), 2131821722));
+        paramAnonymousView.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymous2View)
+          {
+            AppMethodBeat.i(97726);
+            ArtistHeader.a(ArtistHeader.this).dismiss();
+            AppMethodBeat.o(97726);
+          }
+        });
         ArtistHeader.a(ArtistHeader.this).setCanceledOnTouchOutside(true);
         ArtistHeader.a(ArtistHeader.this).setContentView(paramAnonymousView);
         ArtistHeader.a(ArtistHeader.this).show();
-        ArtistHeader.a(ArtistHeader.this, (ImageView)paramAnonymousView.findViewById(2131828738));
-        ArtistHeader.a(ArtistHeader.this, (ProgressBar)paramAnonymousView.findViewById(2131828740));
-        ArtistHeader.a(ArtistHeader.this, paramAnonymousView.findViewById(2131828739));
-        paramAnonymousView = ag.cpc().a(ArtistHeader.b(ArtistHeader.this).wrE.wrF, ArtistHeader.c(ArtistHeader.this), paramContext.hashCode(), true, az.yNU, false);
-        if (com.tencent.mm.plugin.sns.data.i.A(paramAnonymousView))
+        ArtistHeader.a(ArtistHeader.this, (ImageView)paramAnonymousView.findViewById(2131300688));
+        ArtistHeader.a(ArtistHeader.this, (ProgressBar)paramAnonymousView.findViewById(2131300689));
+        ArtistHeader.a(ArtistHeader.this, paramAnonymousView.findViewById(2131300690));
+        af.dtr().a(ArtistHeader.b(ArtistHeader.this).CAS.CAT, ArtistHeader.c(ArtistHeader.this), paramContext.hashCode(), true, bc.FzF, false, new f.e()
         {
-          ArtistHeader.a(ArtistHeader.this, paramAnonymousView);
-          ArtistHeader.d(ArtistHeader.this).setVisibility(4);
-          ArtistHeader.e(ArtistHeader.this).setVisibility(4);
-          AppMethodBeat.o(38106);
-          return;
-        }
-        ag.cpc().b(ArtistHeader.b(ArtistHeader.this).wrE.wrF, ArtistHeader.c(ArtistHeader.this), paramContext.hashCode(), az.yNU);
-        AppMethodBeat.o(38106);
+          public final void ai(Bitmap paramAnonymous2Bitmap)
+          {
+            AppMethodBeat.i(97727);
+            if (q.I(paramAnonymous2Bitmap))
+            {
+              ArtistHeader.a(ArtistHeader.this, paramAnonymous2Bitmap);
+              ArtistHeader.d(ArtistHeader.this).setVisibility(4);
+              ArtistHeader.e(ArtistHeader.this).setVisibility(4);
+              AppMethodBeat.o(97727);
+              return;
+            }
+            af.dtr().b(ArtistHeader.b(ArtistHeader.this).CAS.CAT, ArtistHeader.c(ArtistHeader.this), ArtistHeader.1.this.val$context.hashCode(), bc.FzF);
+            AppMethodBeat.o(97727);
+          }
+        });
+        AppMethodBeat.o(97728);
       }
     });
-    AppMethodBeat.o(38110);
+    AppMethodBeat.o(97733);
   }
   
-  public final void ZU(String paramString) {}
+  public final void aob(String paramString) {}
   
-  public final void bp(String paramString, boolean paramBoolean)
+  public final void by(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(38112);
-    if (this.rEx == null)
+    AppMethodBeat.i(97735);
+    if (this.xkh == null)
     {
-      AppMethodBeat.o(38112);
+      AppMethodBeat.o(97735);
       return;
     }
-    if ((this.mGI != null) && (this.mGI.isShowing()))
+    if ((this.rcR != null) && (this.rcR.isShowing()))
     {
       if (!paramBoolean)
       {
-        bcs localbcs = this.rEx.wrE.wrF;
-        if ((localbcs.Id != null) && (localbcs.Id.equals(paramString)))
+        bpi localbpi = this.xkh.CAS.CAT;
+        if ((localbpi.Id != null) && (localbpi.Id.equals(paramString)))
         {
-          Toast.makeText(this.context, this.context.getString(2131303799), 0).show();
-          AppMethodBeat.o(38112);
+          Toast.makeText(this.context, this.context.getString(2131763806), 0).show();
+          AppMethodBeat.o(97735);
           return;
         }
       }
-      if (this.rED != null) {
-        this.rED.post(new Runnable()
+      if (this.xkn != null) {
+        this.xkn.post(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(38107);
-            Bitmap localBitmap = ag.cpc().a(ArtistHeader.b(ArtistHeader.this).wrE.wrF, ArtistHeader.c(ArtistHeader.this), ArtistHeader.f(ArtistHeader.this).hashCode(), true, az.yNU, false);
-            if (com.tencent.mm.plugin.sns.data.i.A(localBitmap))
+            AppMethodBeat.i(97730);
+            af.dtr().a(ArtistHeader.b(ArtistHeader.this).CAS.CAT, ArtistHeader.c(ArtistHeader.this), ArtistHeader.f(ArtistHeader.this).hashCode(), true, bc.FzF, false, new f.e()
             {
-              ArtistHeader.a(ArtistHeader.this, localBitmap);
-              ArtistHeader.d(ArtistHeader.this).setVisibility(4);
-              ArtistHeader.e(ArtistHeader.this).setVisibility(4);
-              AppMethodBeat.o(38107);
-              return;
-            }
-            AppMethodBeat.o(38107);
+              public final void ai(Bitmap paramAnonymous2Bitmap)
+              {
+                AppMethodBeat.i(97729);
+                if (q.I(paramAnonymous2Bitmap))
+                {
+                  ArtistHeader.a(ArtistHeader.this, paramAnonymous2Bitmap);
+                  ArtistHeader.d(ArtistHeader.this).setVisibility(4);
+                  ArtistHeader.e(ArtistHeader.this).setVisibility(4);
+                }
+                AppMethodBeat.o(97729);
+              }
+            });
+            AppMethodBeat.o(97730);
           }
         });
       }
     }
-    AppMethodBeat.o(38112);
+    AppMethodBeat.o(97735);
   }
   
-  public final void bq(String paramString, boolean paramBoolean) {}
+  public final void bz(String paramString, boolean paramBoolean) {}
   
-  public final void cnV() {}
+  public final void dsp() {}
   
-  public void setBackClickListener(ArtistHeader.a parama) {}
+  public void setBackClickListener(a parama) {}
   
-  public void setUserName(fo paramfo)
+  public void setUserName(gg paramgg)
   {
-    AppMethodBeat.i(38111);
-    if (paramfo == null)
+    AppMethodBeat.i(97734);
+    if (paramgg == null)
     {
-      ab.e("MicroMsg.ArtistHeader", "userName or selfName is null ");
-      AppMethodBeat.o(38111);
+      ad.e("MicroMsg.ArtistHeader", "userName or selfName is null ");
+      AppMethodBeat.o(97734);
       return;
     }
-    this.rEx = paramfo;
-    ag.cpc().b(paramfo.wrE.wrF, this.rEC.ehv, this.context.hashCode(), az.yNU);
-    this.rEC.rEH.setText(paramfo.Name);
-    this.rEC.hsI.setText(paramfo.woO);
-    this.rEC.titleTv.setText(paramfo.Title);
-    this.rEC.rEI.setText(paramfo.wrD);
-    AppMethodBeat.o(38111);
+    this.xkh = paramgg;
+    af.dtr().b(paramgg.CAS.CAT, this.xkm.fuj, this.context.hashCode(), bc.FzF);
+    this.xkm.xks.setText(paramgg.Name);
+    this.xkm.lEA.setText(paramgg.Cxw);
+    this.xkm.titleTv.setText(paramgg.Title);
+    this.xkm.xkt.setText(paramgg.CAR);
+    AppMethodBeat.o(97734);
+  }
+  
+  public static abstract interface a {}
+  
+  final class b
+  {
+    ImageView fuj;
+    TextView lEA;
+    TextView titleTv;
+    TextView xks;
+    TextView xkt;
+    
+    b() {}
   }
 }
 

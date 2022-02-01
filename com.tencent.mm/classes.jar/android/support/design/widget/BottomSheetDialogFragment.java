@@ -9,12 +9,12 @@ public class BottomSheetDialogFragment
 {
   public Dialog onCreateDialog(Bundle paramBundle)
   {
-    return new c(getContext(), getTheme());
+    return new a(getContext(), getTheme());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.design.widget.BottomSheetDialogFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,11 @@ package com.tencent.liteav.videodecoder;
 
 import android.view.Surface;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
-import com.tencent.liteav.basic.util.b;
+import com.tencent.liteav.basic.util.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
+import org.json.JSONArray;
 
 public class TXCVideoFfmpegDecoder
   implements a
@@ -22,10 +23,10 @@ public class TXCVideoFfmpegDecoder
   
   static
   {
-    AppMethodBeat.i(67802);
-    b.f();
+    AppMethodBeat.i(16646);
+    d.f();
     nativeClassInit();
-    AppMethodBeat.o(67802);
+    AppMethodBeat.o(16646);
   }
   
   private static native void nativeClassInit();
@@ -40,14 +41,21 @@ public class TXCVideoFfmpegDecoder
   
   private static void postEventFromNative(WeakReference<TXCVideoFfmpegDecoder> paramWeakReference, long paramLong1, int paramInt1, int paramInt2, long paramLong2, long paramLong3, int paramInt3) {}
   
+  public int GetDecodeCost()
+  {
+    return 0;
+  }
+  
   public int config(Surface paramSurface)
   {
     return 0;
   }
   
+  public void config(JSONArray paramJSONArray) {}
+  
   public void decode(TXSNALPacket paramTXSNALPacket)
   {
-    AppMethodBeat.i(146279);
+    AppMethodBeat.i(16642);
     if (this.mFirstDec)
     {
       if ((this.mSps != null) && (this.mPps != null))
@@ -62,7 +70,7 @@ public class TXCVideoFfmpegDecoder
       this.mFirstDec = false;
     }
     nativeDecode(paramTXSNALPacket.nalData, paramTXSNALPacket.pts, paramTXSNALPacket.dts, paramTXSNALPacket.rotation);
-    AppMethodBeat.o(146279);
+    AppMethodBeat.o(16642);
   }
   
   public boolean isHevc()
@@ -72,9 +80,9 @@ public class TXCVideoFfmpegDecoder
   
   public void loadNativeData(byte[] paramArrayOfByte, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(67801);
+    AppMethodBeat.i(16645);
     nativeLoadRawData(paramArrayOfByte, paramLong, paramInt);
-    AppMethodBeat.o(67801);
+    AppMethodBeat.o(16645);
   }
   
   public void setListener(c paramc)
@@ -86,27 +94,27 @@ public class TXCVideoFfmpegDecoder
   
   public int start(ByteBuffer paramByteBuffer1, ByteBuffer paramByteBuffer2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(67798);
+    AppMethodBeat.i(16643);
     this.mSps = paramByteBuffer1;
     this.mPps = paramByteBuffer2;
     this.mFirstDec = true;
     this.mVideoWidth = 0;
     this.mVideoHeight = 0;
     nativeInit(new WeakReference(this), paramBoolean1);
-    AppMethodBeat.o(67798);
+    AppMethodBeat.o(16643);
     return 0;
   }
   
   public void stop()
   {
-    AppMethodBeat.i(67799);
+    AppMethodBeat.i(16644);
     nativeRelease();
-    AppMethodBeat.o(67799);
+    AppMethodBeat.o(16644);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.videodecoder.TXCVideoFfmpegDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -12,17 +12,19 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.nfc.a.c;
 import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.plugin.webview.stub.f;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity.a;
-import com.tencent.mm.protocal.protobuf.bgk;
-import com.tencent.mm.protocal.protobuf.oi;
-import com.tencent.mm.protocal.protobuf.ub;
-import com.tencent.mm.protocal.protobuf.vp;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.g;
-import com.tencent.mm.sdk.platformtools.w;
+import com.tencent.mm.protocal.protobuf.btl;
+import com.tencent.mm.protocal.protobuf.qn;
+import com.tencent.mm.protocal.protobuf.xb;
+import com.tencent.mm.protocal.protobuf.yt;
+import com.tencent.mm.sdk.g.b;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.i;
+import com.tencent.mm.sdk.platformtools.y;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
@@ -32,35 +34,35 @@ import java.util.regex.Pattern;
 public class NfcWebViewUI
   extends WebViewUI
 {
-  private boolean pgA;
-  private com.tencent.mm.plugin.nfc_open.a.a pgB;
-  private String pgz;
+  private String ufc;
+  private boolean ufd;
+  private com.tencent.mm.plugin.nfc_open.a.a ufe;
   
   public NfcWebViewUI()
   {
-    AppMethodBeat.i(23072);
-    this.pgz = null;
-    this.pgA = false;
-    this.pgB = new com.tencent.mm.plugin.nfc_open.a.a();
-    AppMethodBeat.o(23072);
+    AppMethodBeat.i(26698);
+    this.ufc = null;
+    this.ufd = false;
+    this.ufe = new com.tencent.mm.plugin.nfc_open.a.a();
+    AppMethodBeat.o(26698);
   }
   
-  private static String AJ(int paramInt)
+  private static String Iv(int paramInt)
   {
-    AppMethodBeat.i(23081);
+    AppMethodBeat.i(26707);
     StringBuilder localStringBuilder = new StringBuilder("https://support.weixin.qq.com/security/readtemplate?t=bus_recharge/index_error");
     localStringBuilder.append("&type=").append(paramInt);
     String str;
-    if ((!g.ymO) && (aa.dsG().equals("zh_CN"))) {
+    if ((!i.ETz) && (ac.eFu().equals("zh_CN"))) {
       str = "zh_CN";
     }
     for (;;)
     {
       localStringBuilder.append("&lang=").append(str);
       str = localStringBuilder.toString();
-      AppMethodBeat.o(23081);
+      AppMethodBeat.o(26707);
       return str;
-      if (aa.dsE()) {
+      if (ac.eFs()) {
         str = "zh_TW";
       } else {
         str = "en";
@@ -68,11 +70,60 @@ public class NfcWebViewUI
     }
   }
   
-  private String VT(String paramString)
+  private void a(AutoLoginActivity.a parama, Intent paramIntent)
   {
-    AppMethodBeat.i(23083);
-    ab.i("MicroMsg.NfcWebViewUI", "nfc-getDebugNfcCardGuideUrl start");
-    this.pgz = "";
+    AppMethodBeat.i(26704);
+    switch (3.mKE[parama.ordinal()])
+    {
+    default: 
+      finish();
+      AppMethodBeat.o(26704);
+      return;
+    }
+    parama = y.r(paramIntent, "android.nfc.extra.TAG");
+    if ((parama != null) && ((parama instanceof Tag))) {}
+    for (parama = (Tag)parama;; parama = null)
+    {
+      if (parama == null)
+      {
+        ad.e("MicroMsg.NfcWebViewUI", "[NFC]tag is null");
+        AppMethodBeat.o(26704);
+        return;
+      }
+      try
+      {
+        com.tencent.mm.plugin.nfc.b.a.a.cWE().a(parama);
+        ad.i("MicroMsg.NfcWebViewUI", "[NFC] connect status : ".concat(String.valueOf(com.tencent.mm.plugin.nfc.b.a.a.cWE().fE(getContext()))));
+        AppMethodBeat.o(26704);
+        return;
+      }
+      catch (Exception parama)
+      {
+        ad.e("MicroMsg.NfcWebViewUI", "exp protect");
+        AppMethodBeat.o(26704);
+        return;
+      }
+    }
+  }
+  
+  private static boolean a(com.tencent.mm.plugin.nfc.a.a parama, String paramString)
+  {
+    AppMethodBeat.i(26711);
+    ad.i("MicroMsg.NfcWebViewUI", "nfc-doCmd start");
+    if (hJ(paramString, com.tencent.mm.plugin.nfc.b.a.a.cWE().a(parama).toString()))
+    {
+      AppMethodBeat.o(26711);
+      return true;
+    }
+    AppMethodBeat.o(26711);
+    return false;
+  }
+  
+  private String ajm(String paramString)
+  {
+    AppMethodBeat.i(26709);
+    ad.i("MicroMsg.NfcWebViewUI", "nfc-getDebugNfcCardGuideUrl start");
+    this.ufc = "";
     try
     {
       paramString = paramString.split(" ");
@@ -89,7 +140,7 @@ public class NfcWebViewUI
           }
           String str1 = paramString[i];
           String str2 = paramString[(i + 1)];
-          ab.d("MicroMsg.NfcWebViewUI", "nfc-getDebugNfcCardGuideUrl cmd = " + str1 + " anwser = " + str2);
+          ad.d("MicroMsg.NfcWebViewUI", "nfc-getDebugNfcCardGuideUrl cmd = " + str1 + " anwser = " + str2);
           bool1 = a(new com.tencent.mm.plugin.nfc.a.a(com.tencent.mm.plugin.nfc.c.a.hexStringToByteArray(str1)), str2);
           bool2 = bool1;
           if (!bool1) {
@@ -99,92 +150,101 @@ public class NfcWebViewUI
         }
         if (bool2)
         {
-          this.pgz = paramString[(paramString.length - 1)];
-          ab.d("MicroMsg.NfcWebViewUI", "nfc-getDebugNfcCardGuideUrl tempurl = " + this.pgz);
-          paramString = this.pgz;
-          AppMethodBeat.o(23083);
+          this.ufc = paramString[(paramString.length - 1)];
+          ad.d("MicroMsg.NfcWebViewUI", "nfc-getDebugNfcCardGuideUrl tempurl = " + this.ufc);
+          paramString = this.ufc;
+          AppMethodBeat.o(26709);
           return paramString;
         }
       }
     }
     catch (Exception paramString)
     {
-      ab.printErrStackTrace("MicroMsg.NfcWebViewUI", paramString, "", new Object[0]);
-      ab.e("MicroMsg.NfcWebViewUI", "[NFC] Debug get nfc card type exception!" + paramString.toString());
-      ab.e("MicroMsg.NfcWebViewUI", "isConnect:".concat(String.valueOf(com.tencent.mm.plugin.nfc.b.a.a.bWY().eI(getContext()))));
-      this.pgz = AJ(1);
-      paramString = this.pgz;
-      AppMethodBeat.o(23083);
+      ad.printErrStackTrace("MicroMsg.NfcWebViewUI", paramString, "", new Object[0]);
+      ad.e("MicroMsg.NfcWebViewUI", "[NFC] Debug get nfc card type exception!" + paramString.toString());
+      ad.e("MicroMsg.NfcWebViewUI", "isConnect:".concat(String.valueOf(com.tencent.mm.plugin.nfc.b.a.a.cWE().fD(getContext()))));
+      this.ufc = Iv(1);
+      paramString = this.ufc;
+      AppMethodBeat.o(26709);
       return paramString;
     }
-    paramString = this.pgz;
-    AppMethodBeat.o(23083);
+    paramString = this.ufc;
+    AppMethodBeat.o(26709);
     return paramString;
   }
   
-  private String VU(String paramString)
+  private String ajn(String paramString)
   {
-    AppMethodBeat.i(23084);
-    ab.i("MicroMsg.NfcWebViewUI", "nfc-getCommonNfcCardGuideUrl start");
-    this.pgz = "";
-    Object localObject1 = new bgk();
-    if (!bo.isNullOrNil(paramString)) {}
+    AppMethodBeat.i(26710);
+    ad.i("MicroMsg.NfcWebViewUI", "nfc-getCommonNfcCardGuideUrl start");
+    this.ufc = "";
+    Object localObject1 = new btl();
+    if (!bt.isNullOrNil(paramString)) {}
     for (;;)
     {
       int k;
       try
       {
-        ((bgk)localObject1).parseFrom(paramString.getBytes("ISO-8859-1"));
-        if (((bgk)localObject1).wOn != null)
+        ((btl)localObject1).parseFrom(paramString.getBytes("ISO-8859-1"));
+        if (((btl)localObject1).DaU != null)
         {
           i = 0;
           int m = 0;
-          if (m < ((bgk)localObject1).wOn.size())
+          if (m < ((btl)localObject1).DaU.size())
           {
-            paramString = (oi)((bgk)localObject1).wOn.get(m);
-            Object localObject2 = com.tencent.mm.plugin.nfc.b.a.a.bWY();
-            if (((com.tencent.mm.plugin.nfc.b.a.a)localObject2).pgs != null) {
-              ((com.tencent.mm.plugin.nfc.b.a.a)localObject2).pgs.bWZ();
+            paramString = (qn)((btl)localObject1).DaU.get(m);
+            Object localObject2 = com.tencent.mm.plugin.nfc.b.a.a.cWE();
+            if (((com.tencent.mm.plugin.nfc.b.a.a)localObject2).ueW != null) {
+              ((com.tencent.mm.plugin.nfc.b.a.a)localObject2).ueW.cWF();
             }
             k = i;
             if (paramString != null)
             {
               k = i;
-              if (!bo.isNullOrNil(paramString.wki))
+              if (!bt.isNullOrNil(paramString.Csy))
               {
                 k = i;
-                if (!bo.es(paramString.wDJ))
+                if (!bt.gL(paramString.CPk))
                 {
                   k = 0;
-                  if (k >= paramString.wDJ.size()) {
-                    break label592;
+                  if (k >= paramString.CPk.size()) {
+                    break label594;
                   }
-                  if (bo.es(((vp)paramString.wDJ.get(k)).wOq)) {
-                    break label565;
+                  if (bt.gL(((yt)paramString.CPk.get(k)).DaX)) {
+                    break label567;
                   }
                   j = 0;
-                  if (j >= ((vp)paramString.wDJ.get(k)).wOq.size()) {
-                    break label562;
+                  if (j >= ((yt)paramString.CPk.get(k)).DaX.size()) {
+                    break label564;
                   }
-                  if ((((vp)paramString.wDJ.get(k)).wOq.get(j) == null) || (bo.isNullOrNil(((ub)((vp)paramString.wDJ.get(k)).wOq.get(j)).wMy)) || (bo.isNullOrNil(((ub)((vp)paramString.wDJ.get(k)).wOq.get(j)).ooD))) {
-                    break label559;
+                  if ((((yt)paramString.CPk.get(k)).DaX.get(j) == null) || (bt.isNullOrNil(((xb)((yt)paramString.CPk.get(k)).DaX.get(j)).CYV)) || (bt.isNullOrNil(((xb)((yt)paramString.CPk.get(k)).DaX.get(j)).teH))) {
+                    break label561;
                   }
-                  localObject2 = ((ub)((vp)paramString.wDJ.get(k)).wOq.get(j)).wMy;
-                  String str = ((ub)((vp)paramString.wDJ.get(k)).wOq.get(j)).ooD;
-                  ab.d("MicroMsg.NfcWebViewUI", "nfc-getCommonNfcCardGuideUrl cmd = " + (String)localObject2 + " anwser = " + str);
+                  localObject2 = ((xb)((yt)paramString.CPk.get(k)).DaX.get(j)).CYV;
+                  String str = ((xb)((yt)paramString.CPk.get(k)).DaX.get(j)).teH;
+                  ad.d("MicroMsg.NfcWebViewUI", "nfc-getCommonNfcCardGuideUrl cmd = " + (String)localObject2 + " anwser = " + str);
                   if (!a(new com.tencent.mm.plugin.nfc.a.a(com.tencent.mm.plugin.nfc.c.a.hexStringToByteArray((String)localObject2)), str)) {
-                    break label575;
+                    break label577;
                   }
                   i = 1;
-                  break label568;
+                  break label570;
                   k = j;
                   if (j != 0)
                   {
-                    localObject1 = paramString.wki;
-                    ab.i("MicroMsg.NfcWebViewUI", "doCardTypeReport start");
-                    com.tencent.mm.sdk.g.d.post(new NfcWebViewUI.2(this, (String)localObject1), getClass().getName());
-                    paramString = paramString.wki;
-                    AppMethodBeat.o(23084);
+                    localObject1 = paramString.Csy;
+                    ad.i("MicroMsg.NfcWebViewUI", "doCardTypeReport start");
+                    b.c(new Runnable()
+                    {
+                      public final void run()
+                      {
+                        AppMethodBeat.i(26696);
+                        com.tencent.mm.plugin.report.service.h.vKh.f(12794, new Object[] { this.ufg, Integer.valueOf(0) });
+                        ad.d("MicroMsg.NfcWebViewUI", "doCardTypeReport url = " + this.ufg);
+                        AppMethodBeat.o(26696);
+                      }
+                    }, getClass().getName());
+                    paramString = paramString.Csy;
+                    AppMethodBeat.o(26710);
                     return paramString;
                   }
                 }
@@ -195,100 +255,51 @@ public class NfcWebViewUI
             continue;
           }
         }
-        paramString = this.pgz;
+        paramString = this.ufc;
       }
       catch (Exception paramString)
       {
-        ab.printErrStackTrace("MicroMsg.NfcWebViewUI", paramString, "", new Object[0]);
-        ab.e("MicroMsg.NfcWebViewUI", "[NFC] Common get nfc card type exception!" + paramString.toString());
-        ab.e("MicroMsg.NfcWebViewUI", "isConnect:".concat(String.valueOf(com.tencent.mm.plugin.nfc.b.a.a.bWY().eI(getContext()))));
-        this.pgz = AJ(1);
-        paramString = this.pgz;
-        AppMethodBeat.o(23084);
+        ad.printErrStackTrace("MicroMsg.NfcWebViewUI", paramString, "", new Object[0]);
+        ad.e("MicroMsg.NfcWebViewUI", "[NFC] Common get nfc card type exception!" + paramString.toString());
+        ad.e("MicroMsg.NfcWebViewUI", "isConnect:".concat(String.valueOf(com.tencent.mm.plugin.nfc.b.a.a.cWE().fD(getContext()))));
+        this.ufc = Iv(1);
+        paramString = this.ufc;
+        AppMethodBeat.o(26710);
         return paramString;
       }
-      AppMethodBeat.o(23084);
+      AppMethodBeat.o(26710);
       return paramString;
-      label559:
-      break label568;
-      label562:
-      break label577;
-      label565:
-      break label583;
-      label568:
+      label561:
+      break label570;
+      label564:
+      break label579;
+      label567:
+      break label585;
+      label570:
       j += 1;
       continue;
-      label575:
-      int i = 0;
       label577:
+      int i = 0;
+      label579:
       int j = i;
       if (i == 0)
       {
-        label583:
+        label585:
         k += 1;
         continue;
-        label592:
+        label594:
         j = i;
       }
     }
   }
   
-  private void a(AutoLoginActivity.a parama, Intent paramIntent)
+  private static boolean ay(Intent paramIntent)
   {
-    AppMethodBeat.i(23078);
-    switch (3.jLR[parama.ordinal()])
-    {
-    default: 
-      finish();
-      AppMethodBeat.o(23078);
-      return;
-    }
-    parama = w.p(paramIntent, "android.nfc.extra.TAG");
-    if ((parama != null) && ((parama instanceof Tag))) {}
-    for (parama = (Tag)parama;; parama = null)
-    {
-      if (parama == null)
-      {
-        ab.e("MicroMsg.NfcWebViewUI", "[NFC]tag is null");
-        AppMethodBeat.o(23078);
-        return;
-      }
-      try
-      {
-        com.tencent.mm.plugin.nfc.b.a.a.bWY().a(parama);
-        ab.i("MicroMsg.NfcWebViewUI", "[NFC] connect status : ".concat(String.valueOf(com.tencent.mm.plugin.nfc.b.a.a.bWY().eJ(getContext()))));
-        AppMethodBeat.o(23078);
-        return;
-      }
-      catch (Exception parama)
-      {
-        ab.e("MicroMsg.NfcWebViewUI", "exp protect");
-        AppMethodBeat.o(23078);
-        return;
-      }
-    }
-  }
-  
-  private static boolean a(com.tencent.mm.plugin.nfc.a.a parama, String paramString)
-  {
-    AppMethodBeat.i(23085);
-    ab.i("MicroMsg.NfcWebViewUI", "nfc-doCmd start");
-    if (fC(paramString, com.tencent.mm.plugin.nfc.b.a.a.bWY().a(parama).toString()))
-    {
-      AppMethodBeat.o(23085);
-      return true;
-    }
-    AppMethodBeat.o(23085);
-    return false;
-  }
-  
-  private static boolean aj(Intent paramIntent)
-  {
-    AppMethodBeat.i(23089);
+    AppMethodBeat.i(26715);
     if (paramIntent == null)
     {
-      ab.e("MicroMsg.NfcWebViewUI", "intent is null");
-      AppMethodBeat.o(23089);
+      ad.e("MicroMsg.NfcWebViewUI", "intent is null");
+      AppMethodBeat.o(26715);
       return true;
     }
     Object localObject = paramIntent.getExtras();
@@ -300,16 +311,16 @@ public class NfcWebViewUI
         String str = (String)((Iterator)localObject).next();
         if ((str != null) && (!str.startsWith("android.nfc")))
         {
-          ab.e("MicroMsg.NfcWebViewUI", "extra wrong key = ".concat(String.valueOf(str)));
+          ad.e("MicroMsg.NfcWebViewUI", "extra wrong key = ".concat(String.valueOf(str)));
           ((Iterator)localObject).remove();
         }
       }
-      paramIntent = w.p(paramIntent, "android.nfc.extra.TAG");
+      paramIntent = y.r(paramIntent, "android.nfc.extra.TAG");
     }
     catch (Exception paramIntent)
     {
-      ab.e("MicroMsg.NfcWebViewUI", "judgeIllegalCall e:%s", new Object[] { paramIntent });
-      AppMethodBeat.o(23089);
+      ad.e("MicroMsg.NfcWebViewUI", "judgeIllegalCall e:%s", new Object[] { paramIntent });
+      AppMethodBeat.o(26715);
       return true;
     }
     if ((paramIntent != null) && ((paramIntent instanceof Tag))) {}
@@ -317,63 +328,63 @@ public class NfcWebViewUI
     {
       if (paramIntent == null)
       {
-        ab.e("MicroMsg.NfcWebViewUI", "tag is null");
-        AppMethodBeat.o(23089);
+        ad.e("MicroMsg.NfcWebViewUI", "tag is null");
+        AppMethodBeat.o(26715);
         return true;
       }
-      AppMethodBeat.o(23089);
+      AppMethodBeat.o(26715);
       return false;
     }
   }
   
-  private boolean bXc()
+  private boolean cWI()
   {
-    AppMethodBeat.i(23077);
+    AppMethodBeat.i(26703);
     try
     {
-      if (this.igU.ddn())
+      if (this.kxf.env())
       {
-        ab.w("MicroMsg.NfcWebViewUI", "not login");
+        ad.w("MicroMsg.NfcWebViewUI", "not login");
         Intent localIntent = new Intent(this, getClass());
         localIntent.putExtras(getIntent());
         localIntent.addFlags(67108864);
-        this.igU.aA(localIntent);
-        AppMethodBeat.o(23077);
+        this.kxf.aT(localIntent);
+        AppMethodBeat.o(26703);
         return true;
       }
     }
-    catch (RemoteException localRemoteException)
+    catch (Exception localException)
     {
-      ab.printErrStackTrace("MicroMsg.NfcWebViewUI", localRemoteException, "", new Object[0]);
-      AppMethodBeat.o(23077);
+      ad.printErrStackTrace("MicroMsg.NfcWebViewUI", localException, "", new Object[0]);
+      AppMethodBeat.o(26703);
       return true;
     }
-    AppMethodBeat.o(23077);
+    AppMethodBeat.o(26703);
     return false;
   }
   
-  private boolean bXd()
+  private boolean cWJ()
   {
-    AppMethodBeat.i(23080);
-    boolean bool = this.cJr.startsWith("https://support.weixin.qq.com/security/readtemplate?t=bus_recharge/index_error");
-    AppMethodBeat.o(23080);
+    AppMethodBeat.i(26706);
+    boolean bool = bEx().startsWith("https://support.weixin.qq.com/security/readtemplate?t=bus_recharge/index_error");
+    AppMethodBeat.o(26706);
     return bool;
   }
   
-  private String bXe()
+  private String cWK()
   {
     Object localObject1 = null;
-    AppMethodBeat.i(23082);
-    ab.i("MicroMsg.NfcWebViewUI", "nfc-getNfcCpuCardGuideUrl start");
+    AppMethodBeat.i(26708);
+    ad.i("MicroMsg.NfcWebViewUI", "nfc-getNfcCpuCardGuideUrl start");
     for (;;)
     {
       try
       {
-        localObject2 = this.igU.i(4006, null);
+        localObject2 = this.kxf.j(4006, null);
         if (localObject2 == null)
         {
-          ab.i("MicroMsg.NfcWebViewUI", "nfc-getNfcCpuCardGuideUrl data is null");
-          AppMethodBeat.o(23082);
+          ad.i("MicroMsg.NfcWebViewUI", "nfc-getNfcCpuCardGuideUrl data is null");
+          AppMethodBeat.o(26708);
           return null;
         }
         ((Bundle)localObject2).setClassLoader(getClass().getClassLoader());
@@ -382,109 +393,109 @@ public class NfcWebViewUI
         if (str == null) {
           continue;
         }
-        str = VT(str);
+        str = ajm(str);
         localObject1 = str;
       }
       catch (RemoteException localRemoteException)
       {
         Object localObject2;
         String str;
-        ab.e("MicroMsg.NfcWebViewUI", localRemoteException.toString());
-        ab.printErrStackTrace("MicroMsg.NfcWebViewUI", localRemoteException, "", new Object[0]);
+        ad.e("MicroMsg.NfcWebViewUI", localRemoteException.toString());
+        ad.printErrStackTrace("MicroMsg.NfcWebViewUI", localRemoteException, "", new Object[0]);
         continue;
       }
-      ab.i("MicroMsg.NfcWebViewUI", "nfc-getNfcCpuCardGuideUrl targetUrl=" + bo.nullAsNil(localObject1));
-      AppMethodBeat.o(23082);
+      ad.i("MicroMsg.NfcWebViewUI", "nfc-getNfcCpuCardGuideUrl targetUrl=" + bt.nullAsNil(localObject1));
+      AppMethodBeat.o(26708);
       return localObject1;
-      str = VU((String)localObject2);
+      str = ajn((String)localObject2);
       localObject1 = str;
     }
   }
   
-  private void bXf()
+  private void cWL()
   {
-    AppMethodBeat.i(23088);
+    AppMethodBeat.i(26714);
     Intent localIntent = new Intent();
     localIntent.addFlags(67108864);
-    com.tencent.mm.bq.d.f(this, "com.tencent.mm.ui.LauncherUI", localIntent);
+    com.tencent.mm.bs.d.e(this, "com.tencent.mm.ui.LauncherUI", localIntent);
     finish();
-    overridePendingTransition(2131034130, 2131034222);
-    ab.i("MicroMsg.NfcWebViewUI", "lo-nfc-setBackBtn:back click after login");
-    AppMethodBeat.o(23088);
+    overridePendingTransition(2130771986, 2130772100);
+    ad.i("MicroMsg.NfcWebViewUI", "lo-nfc-setBackBtn:back click after login");
+    AppMethodBeat.o(26714);
   }
   
-  private static boolean fC(String paramString1, String paramString2)
+  private static boolean hJ(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(23086);
-    if (bo.isNullOrNil(paramString2))
+    AppMethodBeat.i(26712);
+    if (bt.isNullOrNil(paramString2))
     {
-      AppMethodBeat.o(23086);
+      AppMethodBeat.o(26712);
       return false;
     }
-    ab.d("MicroMsg.NfcWebViewUI", "nfc-judge mAnwser = " + bo.nullAsNil(paramString1) + " resp = " + bo.nullAsNil(paramString2));
+    ad.d("MicroMsg.NfcWebViewUI", "nfc-judge mAnwser = " + bt.nullAsNil(paramString1) + " resp = " + bt.nullAsNil(paramString2));
     if (Pattern.compile(paramString1, 2).matcher(paramString2).find())
     {
-      AppMethodBeat.o(23086);
+      AppMethodBeat.o(26712);
       return true;
     }
-    AppMethodBeat.o(23086);
+    AppMethodBeat.o(26712);
     return false;
   }
   
-  public final void aMf()
+  public final void bol()
   {
-    AppMethodBeat.i(23075);
-    if (bXc())
+    AppMethodBeat.i(26701);
+    super.bol();
+    if (cWI())
     {
       finish();
-      ab.w("MicroMsg.NfcWebViewUI", "not login, go to SimpleLogin");
-      AppMethodBeat.o(23075);
+      ad.w("MicroMsg.NfcWebViewUI", "not login, go to SimpleLogin");
+      AppMethodBeat.o(26701);
       return;
     }
-    super.aMf();
-    a(AutoLoginActivity.a.vPN, getIntent());
-    AppMethodBeat.o(23075);
+    a(AutoLoginActivity.a.BUu, getIntent());
+    nO(false);
+    AppMethodBeat.o(26701);
   }
   
-  public final void jT(boolean paramBoolean)
+  public final void nO(boolean paramBoolean)
   {
     int i = 1;
-    AppMethodBeat.i(23079);
-    if (this.igU == null)
+    AppMethodBeat.i(26705);
+    if (this.kxf == null)
     {
-      ab.e("MicroMsg.NfcWebViewUI", "[NFC] invoker is null");
-      AppMethodBeat.o(23079);
+      ad.e("MicroMsg.NfcWebViewUI", "[NFC] invoker is null");
+      AppMethodBeat.o(26705);
       return;
     }
-    a(AutoLoginActivity.a.vPN, getIntent());
-    Object localObject1 = bXe();
-    if ((paramBoolean) && (!bo.isNullOrNil(this.cJr))) {
-      if (bXd()) {
-        if (bo.isNullOrNil((String)localObject1)) {
-          ab.e("MicroMsg.NfcWebViewUI", "[NFC] carGuideUrl not found! not support this card ?");
+    a(AutoLoginActivity.a.BUu, getIntent());
+    Object localObject1 = cWK();
+    if ((paramBoolean) && (!bt.isNullOrNil(bEx()))) {
+      if (cWJ()) {
+        if (bt.isNullOrNil((String)localObject1)) {
+          ad.e("MicroMsg.NfcWebViewUI", "[NFC] carGuideUrl not found! not support this card ?");
         }
       }
     }
     for (;;)
     {
-      if (bo.isNullOrNil(this.cJr))
+      if (bt.isNullOrNil(bEx()))
       {
-        this.cJr = AJ(0);
-        ab.e("MicroMsg.NfcWebViewUI", "[NFC] url not found! not support this card ?");
+        getIntent().putExtra("rawUrl", Iv(0));
+        ad.e("MicroMsg.NfcWebViewUI", "[NFC] url not found! not support this card ?");
       }
-      getIntent().putExtra("rawUrl", this.cJr);
-      AppMethodBeat.o(23079);
+      this.AMZ.an(getIntent());
+      AppMethodBeat.o(26705);
       return;
-      ab.i("MicroMsg.NfcWebViewUI", "alvinluo [NFC] cardGuideUrl: %s", new Object[] { localObject1 });
-      this.cJr = ((String)localObject1);
-      getIntent().putExtra("rawUrl", this.cJr);
-      ax(this.cJr, false);
+      ad.i("MicroMsg.NfcWebViewUI", "alvinluo [NFC] cardGuideUrl: %s", new Object[] { localObject1 });
+      getIntent().putExtra("rawUrl", (String)localObject1);
+      this.AMZ.k((String)localObject1, false, -1);
       continue;
       for (;;)
       {
         try
         {
-          paramBoolean = bo.isNullOrNil((String)localObject1);
+          paramBoolean = bt.isNullOrNil((String)localObject1);
           if (paramBoolean) {
             continue;
           }
@@ -492,53 +503,53 @@ public class NfcWebViewUI
         catch (RemoteException localRemoteException)
         {
           Object localObject2;
-          ab.printErrStackTrace("MicroMsg.NfcWebViewUI", localRemoteException, "", new Object[0]);
+          ad.printErrStackTrace("MicroMsg.NfcWebViewUI", localRemoteException, "", new Object[0]);
           continue;
         }
         try
         {
           localObject2 = Uri.parse((String)localObject1);
-          localObject1 = Uri.parse(this.cJr);
+          localObject1 = Uri.parse(bEx());
           localObject2 = ((Uri)localObject2).getHost();
           localObject1 = ((Uri)localObject1).getHost();
-          ab.i("MicroMsg.NfcWebViewUI", "targetHost=" + (String)localObject2 + ", curHost=" + (String)localObject1);
+          ad.i("MicroMsg.NfcWebViewUI", "targetHost=" + (String)localObject2 + ", curHost=" + (String)localObject1);
           paramBoolean = ((String)localObject2).equals(localObject1);
           if (paramBoolean)
           {
             if (i != 0) {
-              this.uWu.e(4007, new Bundle());
+              this.ASw.f(4007, new Bundle());
             }
-            ab.i("MicroMsg.NfcWebViewUI", "[NFC]new intent not guide the page");
-            AppMethodBeat.o(23079);
+            ad.i("MicroMsg.NfcWebViewUI", "[NFC]new intent not guide the page");
+            AppMethodBeat.o(26705);
             return;
           }
         }
         catch (Exception localException) {}
         i = 0;
       }
-      this.cJr = localRemoteException;
+      getIntent().putExtra("rawUrl", localRemoteException);
     }
   }
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(23087);
-    if (this.pgA)
+    AppMethodBeat.i(26713);
+    if (this.ufd)
     {
-      bXf();
-      AppMethodBeat.o(23087);
+      cWL();
+      AppMethodBeat.o(26713);
       return;
     }
     super.onBackPressed();
-    AppMethodBeat.o(23087);
+    AppMethodBeat.o(26713);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(23073);
+    AppMethodBeat.i(26699);
     Intent localIntent = getIntent();
-    if (aj(localIntent)) {
-      ab.e("MicroMsg.NfcWebViewUI", "onCreate judgeIllegalCall finish");
+    if (ay(localIntent)) {
+      ad.e("MicroMsg.NfcWebViewUI", "onCreate judgeIllegalCall finish");
     }
     try
     {
@@ -546,32 +557,32 @@ public class NfcWebViewUI
       label35:
       super.onCreate(paramBundle);
       finish();
-      AppMethodBeat.o(23073);
+      AppMethodBeat.o(26699);
       return;
       localIntent.putExtra("key_trust_url", false);
       super.onCreate(paramBundle);
-      com.tencent.mm.sdk.b.a.ymk.c(this.pgB);
-      com.tencent.mm.bq.d.dpU();
-      ab.i("MicroMsg.NfcWebViewUI", "onCreate, intent action = " + localIntent.getAction());
+      com.tencent.mm.sdk.b.a.ESL.c(this.ufe);
+      com.tencent.mm.bs.d.eBj();
+      ad.i("MicroMsg.NfcWebViewUI", "onCreate, intent action = " + localIntent.getAction());
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
-          AppMethodBeat.i(23069);
+          AppMethodBeat.i(26695);
           if (NfcWebViewUI.a(NfcWebViewUI.this)) {
             NfcWebViewUI.b(NfcWebViewUI.this);
           }
           for (;;)
           {
-            AppMethodBeat.o(23069);
+            AppMethodBeat.o(26695);
             return true;
             NfcWebViewUI.this.finish();
           }
         }
       });
       getIntent().putExtra("showShare", false);
-      or(false);
-      AppMethodBeat.o(23073);
+      tt(false);
+      AppMethodBeat.o(26699);
       return;
     }
     catch (Exception localException)
@@ -583,28 +594,32 @@ public class NfcWebViewUI
   @TargetApi(11)
   public void onDestroy()
   {
-    AppMethodBeat.i(23074);
+    AppMethodBeat.i(26700);
     super.onDestroy();
-    com.tencent.mm.sdk.b.a.ymk.d(this.pgB);
-    AppMethodBeat.o(23074);
+    com.tencent.mm.sdk.b.a.ESL.d(this.ufe);
+    AppMethodBeat.o(26700);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(23076);
-    if (aj(paramIntent))
+    AppMethodBeat.i(26702);
+    if (ay(paramIntent))
     {
-      ab.e("MicroMsg.NfcWebViewUI", "onNewIntent judgeIllegalCall finish");
-      AppMethodBeat.o(23076);
+      ad.e("MicroMsg.NfcWebViewUI", "onNewIntent judgeIllegalCall finish");
+      AppMethodBeat.o(26702);
       return;
     }
     paramIntent.putExtra("key_trust_url", false);
     super.onNewIntent(paramIntent);
+    String str = bEx();
     setIntent(paramIntent);
-    int i = w.a(paramIntent, "wizard_activity_result_code", 2147483647);
-    ab.i("MicroMsg.NfcWebViewUI", "onNewIntent, resultCode = ".concat(String.valueOf(i)));
+    if ((!bt.isNullOrNil(str)) && (bt.isNullOrNil(bEx()))) {
+      paramIntent.putExtra("rawUrl", str);
+    }
+    int i = y.getIntExtra(paramIntent, "wizard_activity_result_code", 2147483647);
+    ad.i("MicroMsg.NfcWebViewUI", "onNewIntent, resultCode = ".concat(String.valueOf(i)));
     if (i != 2147483647) {
-      this.pgA = true;
+      this.ufd = true;
     }
     switch (i)
     {
@@ -613,17 +628,17 @@ public class NfcWebViewUI
     case 1: 
       for (;;)
       {
-        jT(true);
-        ab.i("Foreground dispatch", "Discovered tag with intent: ".concat(String.valueOf(paramIntent)));
-        AppMethodBeat.o(23076);
+        nO(true);
+        ad.i("Foreground dispatch", "Discovered tag with intent: ".concat(String.valueOf(paramIntent)));
+        AppMethodBeat.o(26702);
         return;
-        a(AutoLoginActivity.a.vPN, paramIntent);
+        a(AutoLoginActivity.a.BUu, paramIntent);
         continue;
-        a(AutoLoginActivity.a.vPP, paramIntent);
+        a(AutoLoginActivity.a.BUw, paramIntent);
       }
     }
-    bXc();
-    AppMethodBeat.o(23076);
+    cWI();
+    AppMethodBeat.o(26702);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -634,7 +649,7 @@ public class NfcWebViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.nfc_open.ui.NfcWebViewUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.KeyboardLinearLayout android:orientation="vertical" android:background="#ffede6d3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <View android:background="@drawable/tf" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="@dimen/a4z" android:layout_marginRight="@dimen/a4z" android:layout_alignParentBottom="true" />
-        <RelativeLayout android:background="@color/tt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a4x" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/a4x">
-            <ImageView android:id="@id/cy0" android:paddingLeft="15.0dip" android:paddingTop="15.0dip" android:paddingRight="20.0dip" android:paddingBottom="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b_z" />
-            <ListView android:id="@id/cy1" android:background="@color/tt" android:paddingLeft="@dimen/a4y" android:paddingRight="@dimen/a4y" android:paddingBottom="30.0dip" android:focusable="true" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="46.0dip" android:listSelector="@android:color/transparent" android:scrollingCache="false" android:transcriptMode="disabled" android:divider="@color/a0a" android:dividerHeight="@dimen/fs" android:footerDividersEnabled="false" />
-        </RelativeLayout>
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/cy2" android:background="@drawable/t4" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/a4v" android:layout_marginLeft="@dimen/a4z" android:layout_marginRight="@dimen/a4z" android:layout_alignParentBottom="true">
-            <ImageView android:background="@drawable/b_v" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </RelativeLayout>
-    <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyWishFooter android:id="@id/cy3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</com.tencent.mm.ui.KeyboardLinearLayout>
+    <com.tencent.mm.plugin.game.ui.GameFeedMoreGameEntranceView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="45.0dip">
+        <TextView android:textSize="@dimen/fi" android:textColor="@color/qn" android:id="@id/dt8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/fy" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:layout_width="8.0dip" android:layout_height="12.0dip" android:layout_marginRight="@dimen/fy" android:src="@drawable/at5" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <View android:background="@color/pv" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </com.tencent.mm.plugin.game.ui.GameFeedMoreGameEntranceView>
+</FrameLayout>

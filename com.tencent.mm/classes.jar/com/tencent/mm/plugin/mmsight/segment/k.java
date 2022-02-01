@@ -7,44 +7,44 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.media.MediaMetadataRetriever;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.compatible.util.f;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.Locale;
 
 public final class k
   implements d
 {
-  private Canvas aVn;
-  private Matrix asO;
-  private MediaMetadataRetriever oLc;
-  private int oLd;
-  private int oLe;
+  private Canvas btq;
+  private Matrix dY;
   private Paint paint;
   private Bitmap reuse;
+  private MediaMetadataRetriever tGn;
+  private int tGo;
+  private int tGp;
   
   public k()
   {
-    AppMethodBeat.i(3678);
+    AppMethodBeat.i(107680);
     this.reuse = null;
     this.paint = new Paint(1);
-    this.aVn = new Canvas();
-    AppMethodBeat.o(3678);
+    this.btq = new Canvas();
+    AppMethodBeat.o(107680);
   }
   
-  private static Bitmap eG(int paramInt1, int paramInt2)
+  private static Bitmap gc(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(3684);
+    AppMethodBeat.i(107686);
     try
     {
       Bitmap localBitmap1 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      AppMethodBeat.o(3684);
+      AppMethodBeat.o(107686);
       return localBitmap1;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
       for (;;)
       {
-        ab.e("MediaCodecThumbFetcher", "%s OutOfMemory %s", new Object[] { g.Ml(), localOutOfMemoryError.getMessage() });
+        ad.e("MediaCodecThumbFetcher", "%s OutOfMemory %s", new Object[] { f.XJ(), localOutOfMemoryError.getMessage() });
         System.gc();
         try
         {
@@ -52,7 +52,7 @@ public final class k
         }
         catch (Exception localException)
         {
-          ab.e("MediaCodecThumbFetcher", "%s try again Exception %s", new Object[] { g.Ml(), localException.getMessage() });
+          ad.e("MediaCodecThumbFetcher", "%s try again Exception %s", new Object[] { f.XJ(), localException.getMessage() });
           Object localObject = null;
         }
       }
@@ -61,57 +61,57 @@ public final class k
   
   private int getDuration()
   {
-    AppMethodBeat.i(3682);
-    String str = this.oLc.extractMetadata(9);
+    AppMethodBeat.i(107684);
+    String str = this.tGn.extractMetadata(9);
     if (str == null)
     {
-      AppMethodBeat.o(3682);
+      AppMethodBeat.o(107684);
       return 0;
     }
     try
     {
       int i = Integer.valueOf(str).intValue();
-      AppMethodBeat.o(3682);
+      AppMethodBeat.o(107684);
       return i;
     }
     catch (Exception localException)
     {
-      ab.e("MediaCodecThumbFetcher", "getDuration error %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(3682);
+      ad.e("MediaCodecThumbFetcher", "getDuration error %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(107684);
     }
     return 0;
   }
   
   public final int getDurationMs()
   {
-    AppMethodBeat.i(3681);
+    AppMethodBeat.i(107683);
     int i = getDuration();
-    AppMethodBeat.o(3681);
+    AppMethodBeat.o(107683);
     return i;
   }
   
   public final Bitmap getFrameAtTime(long paramLong)
   {
-    AppMethodBeat.i(3680);
+    AppMethodBeat.i(107682);
     long l = System.currentTimeMillis();
-    Bitmap localBitmap2 = this.oLc.getFrameAtTime(1000L * paramLong);
+    Bitmap localBitmap2 = this.tGn.getFrameAtTime(1000L * paramLong);
     if (localBitmap2 == null)
     {
-      ab.w("MediaCodecThumbFetcher", "get frame fail at time:%s, rawBitmap is null", new Object[] { Long.valueOf(1000L * paramLong) });
-      AppMethodBeat.o(3680);
+      ad.w("MediaCodecThumbFetcher", "get frame fail at time:%s, rawBitmap is null", new Object[] { Long.valueOf(1000L * paramLong) });
+      AppMethodBeat.o(107682);
       return null;
     }
-    int i = this.oLd;
-    int j = this.oLe;
+    int i = this.tGo;
+    int j = this.tGp;
     if ((localBitmap2 == null) || (localBitmap2.isRecycled()) || (i <= 0) || (j <= 0)) {}
     for (Bitmap localBitmap1 = null;; localBitmap1 = null)
     {
       localBitmap2.recycle();
-      ab.d("MediaCodecThumbFetcher", "time flee : get video thumb bitmap cost time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-      AppMethodBeat.o(3680);
+      ad.d("MediaCodecThumbFetcher", "time flee : get video thumb bitmap cost time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      AppMethodBeat.o(107682);
       return localBitmap1;
-      ab.d("MediaCodecThumbFetcher", "scaleBitmap(60) largeBitmap(width : %d, height : %d)", new Object[] { Integer.valueOf(localBitmap2.getWidth()), Integer.valueOf(localBitmap2.getHeight()) });
-      localBitmap1 = eG(i, j);
+      ad.d("MediaCodecThumbFetcher", "scaleBitmap(60) largeBitmap(width : %d, height : %d)", new Object[] { Integer.valueOf(localBitmap2.getWidth()), Integer.valueOf(localBitmap2.getHeight()) });
+      localBitmap1 = gc(i, j);
       if (localBitmap1 != null) {
         break;
       }
@@ -119,7 +119,7 @@ public final class k
     int k;
     int m;
     Matrix localMatrix;
-    if (this.asO == null)
+    if (this.dY == null)
     {
       k = localBitmap2.getWidth();
       m = localBitmap2.getHeight();
@@ -127,67 +127,67 @@ public final class k
       localMatrix.reset();
       localMatrix.setTranslate((i - k) / 2.0F, (j - m) / 2.0F);
       if (m / k <= j / i) {
-        break label323;
+        break label320;
       }
     }
-    label323:
+    label320:
     for (float f = i / k;; f = j / m)
     {
       localMatrix.postScale(f, f, i / 2.0F, j / 2.0F);
-      this.asO = localMatrix;
-      this.aVn.setBitmap(localBitmap1);
-      this.aVn.drawBitmap(localBitmap2, this.asO, this.paint);
+      this.dY = localMatrix;
+      this.btq.setBitmap(localBitmap1);
+      this.btq.drawBitmap(localBitmap2, this.dY, this.paint);
       break;
     }
   }
   
   public final int getScaledHeight()
   {
-    return this.oLe;
+    return this.tGp;
   }
   
   public final int getScaledWidth()
   {
-    return this.oLd;
+    return this.tGo;
   }
   
   public final void init(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(3679);
+    AppMethodBeat.i(107681);
     if ((paramInt2 <= 0) || (paramInt3 <= 0))
     {
       paramString = new IllegalArgumentException(String.format(Locale.CHINA, "destination width and height error, width %d, height %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
-      AppMethodBeat.o(3679);
+      AppMethodBeat.o(107681);
       throw paramString;
     }
     try
     {
-      this.oLc = new MediaMetadataRetriever();
-      this.oLc.setDataSource(paramString);
-      this.oLd = paramInt2;
-      this.oLe = paramInt3;
-      AppMethodBeat.o(3679);
+      this.tGn = new com.tencent.mm.compatible.h.d();
+      this.tGn.setDataSource(paramString);
+      this.tGo = paramInt2;
+      this.tGp = paramInt3;
+      AppMethodBeat.o(107681);
       return;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MediaCodecThumbFetcher", paramString, "init error:%s", new Object[] { paramString.getMessage() });
+        ad.printErrStackTrace("MediaCodecThumbFetcher", paramString, "init error:%s", new Object[] { paramString.getMessage() });
       }
     }
   }
   
   public final void release()
   {
-    AppMethodBeat.i(3683);
-    if (this.oLc != null) {
-      this.oLc.release();
+    AppMethodBeat.i(107685);
+    if (this.tGn != null) {
+      this.tGn.release();
     }
-    this.asO = null;
+    this.dY = null;
     this.paint = null;
-    this.aVn = null;
-    AppMethodBeat.o(3683);
+    this.btq = null;
+    AppMethodBeat.o(107685);
   }
   
   public final void reuseBitmap(Bitmap paramBitmap)
@@ -197,7 +197,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.k
  * JD-Core Version:    0.7.0.1
  */

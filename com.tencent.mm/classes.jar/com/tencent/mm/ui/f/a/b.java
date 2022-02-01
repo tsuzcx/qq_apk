@@ -5,6 +5,8 @@ import android.widget.ImageView;
 public abstract interface b
 {
   public abstract void c(ImageView paramImageView, String paramString);
+  
+  public abstract void d(ImageView paramImageView, String paramString);
 }
 
 

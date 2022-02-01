@@ -1,22 +1,21 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-import com.tencent.mm.ai.b;
-import com.tencent.mm.network.k;
-
-public abstract class x
-  implements k
+final class x
 {
-  protected b lFp;
+  public String appId;
+  public byte[] data;
+  public int hrU;
   
-  public abstract void bJ(byte[] paramArrayOfByte);
-  
-  public abstract byte[] dli();
-  
-  public abstract int getType();
+  public x(String paramString, int paramInt, byte[] paramArrayOfByte)
+  {
+    this.appId = paramString;
+    this.hrU = paramInt;
+    this.data = paramArrayOfByte;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.x
  * JD-Core Version:    0.7.0.1
  */

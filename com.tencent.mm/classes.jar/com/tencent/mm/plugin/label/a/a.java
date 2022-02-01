@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static b nXW;
+  public static b sLU;
   
-  public static b bKV()
+  public static b cIS()
   {
-    AppMethodBeat.i(70224);
-    if (nXW == null) {
-      nXW = new com.tencent.mm.pluginsdk.a.a();
+    AppMethodBeat.i(116062);
+    if (sLU == null) {
+      sLU = new com.tencent.mm.pluginsdk.a.a();
     }
-    b localb = nXW;
-    AppMethodBeat.o(70224);
+    b localb = sLU;
+    AppMethodBeat.o(116062);
     return localb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.label.a.a
  * JD-Core Version:    0.7.0.1
  */

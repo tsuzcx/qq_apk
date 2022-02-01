@@ -13,8 +13,8 @@ public abstract class e<V, C extends g<V>>
   {
     int k = paramSpannable.getSpanStart(paramObject);
     int i = paramSpannable.getSpanEnd(paramObject);
-    int j = parame.akX;
-    int m = parame.Fe;
+    int j = parame.asw;
+    int m = parame.Mc;
     int n = Math.max(k, j);
     int i1 = Math.min(i, m);
     if (n > i1) {}
@@ -27,24 +27,24 @@ public abstract class e<V, C extends g<V>>
       if (((k > j) && (i < m)) || ((j > k) && (m < i))) {
         return true;
       }
-    } while (params == s.vBz);
+    } while (params == s.BER);
     k = paramSpannable.getSpanFlags(paramObject) & 0x33;
     if (i == j) {
-      return f(k, new int[] { 34, 18 });
+      return e(k, new int[] { 34, 18 });
     }
-    return f(k, new int[] { 17, 18 });
+    return e(k, new int[] { 17, 18 });
   }
   
   protected final ArrayList<Object> a(Spannable paramSpannable, com.tencent.mm.plugin.wenote.model.nativenote.manager.e parame, s params)
   {
     int i = 0;
     ArrayList localArrayList = new ArrayList();
-    Object[] arrayOfObject = paramSpannable.getSpans(Math.max(0, parame.akX - 1), Math.min(paramSpannable.length(), parame.Fe + 1), CharacterStyle.class);
+    Object[] arrayOfObject = paramSpannable.getSpans(Math.max(0, parame.asw - 1), Math.min(paramSpannable.length(), parame.Mc + 1), CharacterStyle.class);
     int j = arrayOfObject.length;
     while (i < j)
     {
       Object localObject = arrayOfObject[i];
-      if ((cl(localObject)) && (a(paramSpannable, parame, localObject, params))) {
+      if ((cT(localObject)) && (a(paramSpannable, parame, localObject, params))) {
         localArrayList.add(localObject);
       }
       i += 1;
@@ -64,31 +64,31 @@ public abstract class e<V, C extends g<V>>
     {
       i = 18;
       paramWXRTEditText = paramWXRTEditText.getText();
-      Iterator localIterator = a(paramWXRTEditText, locale, s.vBA).iterator();
+      Iterator localIterator = a(paramWXRTEditText, locale, s.BES).iterator();
       j = i;
       if (!localIterator.hasNext()) {
         break label233;
       }
       localObject = localIterator.next();
-      boolean bool = djB().equals(paramV);
+      boolean bool = bTw().equals(paramV);
       k = paramWXRTEditText.getSpanStart(localObject);
       i = j;
-      if (k < locale.akX)
+      if (k < locale.asw)
       {
         if (!bool) {
           break label176;
         }
-        locale.gX(locale.akX - k, 0);
+        locale.iH(locale.asw - k, 0);
         i = 34;
       }
       label116:
       j = paramWXRTEditText.getSpanEnd(localObject);
-      if (j > locale.Fe)
+      if (j > locale.Mc)
       {
         if (!bool) {
           break label206;
         }
-        locale.gX(0, j - locale.Fe);
+        locale.iH(0, j - locale.Mc);
       }
     }
     for (;;)
@@ -99,25 +99,25 @@ public abstract class e<V, C extends g<V>>
       i = 34;
       break;
       label176:
-      djB();
-      paramWXRTEditText.setSpan(djA(), k, locale.akX, 33);
+      bTw();
+      paramWXRTEditText.setSpan(esV(), k, locale.asw, 33);
       i = j;
       break label116;
       label206:
-      djB();
-      paramWXRTEditText.setSpan(djA(), locale.Fe, j, 34);
+      bTw();
+      paramWXRTEditText.setSpan(esV(), locale.Mc, j, 34);
     }
     label233:
     if (paramV != null) {
-      paramWXRTEditText.setSpan(djA(), locale.akX, locale.Fe, j);
+      paramWXRTEditText.setSpan(esV(), locale.asw, locale.Mc, j);
     }
   }
   
-  public abstract boolean cl(Object paramObject);
+  protected abstract V bTw();
   
-  protected abstract g<V> djA();
+  public abstract boolean cT(Object paramObject);
   
-  protected abstract V djB();
+  protected abstract g<V> esV();
   
   protected final com.tencent.mm.plugin.wenote.model.nativenote.manager.e r(WXRTEditText paramWXRTEditText)
   {
@@ -126,7 +126,7 @@ public abstract class e<V, C extends g<V>>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.spans.e
  * JD-Core Version:    0.7.0.1
  */

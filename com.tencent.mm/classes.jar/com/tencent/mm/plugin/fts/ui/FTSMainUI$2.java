@@ -1,30 +1,27 @@
 package com.tencent.mm.plugin.fts.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Dialog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FTSMainUI$2
-  implements View.OnClickListener
+  implements Runnable
 {
   FTSMainUI$2(FTSMainUI paramFTSMainUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    AppMethodBeat.i(61867);
-    FTSMainUI.d(this.mYi).mXk = true;
-    if (!FTSMainUI.d(this.mYi).mXb)
+    AppMethodBeat.i(111963);
+    if (FTSMainUI.h(this.ruJ) != null)
     {
-      FTSMainUI.d(this.mYi).mXb = true;
-      k.a(this.mYi.query, true, FTSMainUI.d(this.mYi).getCount(), 0, FTSMainUI.k(this.mYi));
+      FTSMainUI.h(this.ruJ).dismiss();
+      FTSMainUI.g(this.ruJ);
     }
-    FTSMainUI.l(this.mYi);
-    AppMethodBeat.o(61867);
+    AppMethodBeat.o(111963);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSMainUI.2
  * JD-Core Version:    0.7.0.1
  */

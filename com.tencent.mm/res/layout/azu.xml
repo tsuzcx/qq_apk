@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="true"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/rn"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/bfn" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.media.widget.camerarecordview.preview.CameraPreviewGLSurfaceView android:id="@id/a5e" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/bfq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </FrameLayout>
-    <com.tencent.mm.emoji.view.InsectRelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView android:id="@id/bfr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <ImageView android:id="@id/exb" android:padding="5.0dip" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginTop="35.0dip" android:layout_marginEnd="19.0dip" android:layout_alignParentEnd="true" />
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/a6w" android:layout_marginBottom="44.0dip" android:layout_alignParentBottom="true">
-            <ImageView android:id="@id/exc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:contentDescription="@string/ast" android:layout_marginStart="54.0dip" />
-            <ImageView android:id="@id/e2t" android:layout_width="@dimen/aab" android:layout_height="@dimen/aab" android:layout_centerVertical="true" android:layout_marginEnd="54.0dip" android:layout_alignParentEnd="true" />
-        </RelativeLayout>
-        <com.tencent.mm.plugin.mmsight.ui.MMSightRecordButton android:id="@id/exd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="44.0dip" android:minWidth="@dimen/a6w" android:minHeight="@dimen/a6w" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="center" android:id="@id/exe" android:background="@drawable/dk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_above="@id/exd" android:layout_centerHorizontal="true" android:alpha="0.0" android:paddingStart="16.0dip" android:paddingEnd="16.0dip" />
-    </com.tencent.mm.emoji.view.InsectRelativeLayout>
-</merge>
+    <ImageView style="@style/ro" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/azt" />
+        <ImageView android:id="@id/eun" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/fav_list_img_default" android:scaleType="centerInside" android:adjustViewBounds="true" android:maxWidth="260.0dip" style="@style/j6" />
+        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/rr" />
+    </LinearLayout>
+    <ProgressBar android:id="@id/ekg" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?android:progressBarStyleHorizontal" />
+</LinearLayout>

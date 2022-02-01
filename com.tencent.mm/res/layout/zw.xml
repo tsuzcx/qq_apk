@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textColor="#ff888888" android:gravity="center" android:paddingLeft="@dimen/i1" android:paddingTop="8.0dip" android:paddingRight="@dimen/i1" android:paddingBottom="30.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/bu9"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout style="@style/qp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:id="@id/b39" android:background="@color/xo" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:id="@id/gby" android:background="@color/xo" android:layout_above="@id/a4z" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/n3" />
+        <TextView android:id="@id/bm1" android:layout_above="@id/a4z" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/lv" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/a4z" android:background="@drawable/ajz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="49.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</LinearLayout>

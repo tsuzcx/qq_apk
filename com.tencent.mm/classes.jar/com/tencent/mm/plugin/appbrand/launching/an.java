@@ -1,108 +1,160 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a.a;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.x;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.plugin.appbrand.appcache.ay;
-import com.tencent.mm.plugin.appbrand.task.h;
-import com.tencent.mm.protocal.protobuf.czj;
-import com.tencent.mm.protocal.protobuf.rt;
-import com.tencent.mm.protocal.protobuf.ru;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.app.j;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.appcache.a.b.b;
+import com.tencent.mm.plugin.appbrand.appcache.a.b.c;
+import com.tencent.mm.plugin.appbrand.appcache.ab;
+import com.tencent.mm.plugin.appbrand.appcache.bf;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
+import com.tencent.mm.plugin.appbrand.appcache.bh.a;
+import com.tencent.mm.plugin.appbrand.appcache.bp;
+import com.tencent.mm.plugin.appbrand.appcache.s;
+import com.tencent.mm.protocal.protobuf.ckp;
+import com.tencent.mm.protocal.protobuf.duo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.Locale;
 
 public final class an
+  extends am
 {
-  private final String appId;
-  private final String cqq;
-  private final String hqh;
-  private final boolean hqi;
+  int deB;
+  int dkC;
+  ckp kII;
+  int kIK;
+  String kIL;
+  ab kKV;
+  int kKX;
+  String kKY;
+  String kKZ;
+  String kLa;
   
-  public an(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  an(u paramu)
   {
-    this.appId = paramString1;
-    this.cqq = paramString2;
-    this.hqh = paramString3;
-    this.hqi = paramBoolean;
+    super(new ab(paramu.kII.dlB, paramu.kII.DyR, paramu.kII.DyU));
+    AppMethodBeat.i(174976);
+    this.kII = paramu.kII;
+    this.kIK = paramu.kIK;
+    this.deB = this.kII.CLK;
+    this.kKX = paramu.kIJ;
+    this.kKY = paramu.md5;
+    this.kIL = paramu.kIL;
+    this.kKZ = paramu.kIN;
+    this.kLa = paramu.kIM;
+    this.kKV = new ab(paramu.kII.dlB, paramu.kII.DyR, paramu.kII.DyU);
+    AppMethodBeat.o(174976);
   }
   
-  private void o(int paramInt, String paramString1, String paramString2)
+  public final String aMu()
   {
-    AppMethodBeat.i(131998);
-    if ((g.auM().a(this.appId, paramInt, paramString1, paramString2, 0L, 0L)) && (this.hqi)) {
-      h.bt(this.appId, 2);
-    }
-    AppMethodBeat.o(131998);
+    AppMethodBeat.i(174978);
+    String str = String.format(Locale.US, "pkgQueryKey %s, targetVersion %d, codeType %d, pkgType %d", new Object[] { this.kKV.toString(), Integer.valueOf(this.kIK), Integer.valueOf(this.deB), Integer.valueOf(this.dkC) });
+    AppMethodBeat.o(174978);
+    return str;
   }
   
-  public final int azZ()
+  public final void prepare()
   {
-    AppMethodBeat.i(131999);
-    Object localObject = this.appId;
-    String str1 = this.cqq;
-    String str2 = this.hqh;
-    b.a locala = new b.a();
-    rt localrt = new rt();
-    localrt.cwc = ((String)localObject);
-    localrt.wJV = str1;
-    localrt.wJW = str2;
-    locala.fsX = localrt;
-    locala.fsY = new ru();
-    locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/checkdemoinfo";
-    locala.funcId = 1124;
-    localObject = x.c(locala.ado());
-    int i;
-    if ((((a.a)localObject).errType != 0) || (((a.a)localObject).errCode != 0))
+    AppMethodBeat.i(174977);
+    Object localObject = this.kKY;
+    final String str1 = this.kIL;
+    String str2 = this.kKZ;
+    String str3 = this.kLa;
+    localObject = new a(this.deB, str1)
     {
-      ab.e("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, errType %d, errCode %d, errMsg %s", new Object[] { this.appId, Integer.valueOf(((a.a)localObject).errType), Integer.valueOf(((a.a)localObject).errCode), ((a.a)localObject).errMsg });
-      i = an.a.imU.ordinal();
-      AppMethodBeat.o(131999);
-      return i;
-    }
-    try
-    {
-      localObject = (ru)((a.a)localObject).fsN;
-      if (((ru)localObject).wJX == null)
+      private void Kk(String paramAnonymousString)
       {
-        ab.e("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, null wxaapp resp", new Object[] { this.appId });
-        i = an.a.imV.ordinal();
-        AppMethodBeat.o(131999);
-        return i;
+        AppMethodBeat.i(174973);
+        long l = bt.GC();
+        duo localduo = new duo();
+        localduo.EIX = str1;
+        localduo.CHC = an.this.kIK;
+        localduo.EIW = this.kLc;
+        j.aOK().a(an.this.kKV.toString(), localduo, 0);
+        ad.i("MicroMsg.LaunchPkgPrepareJobMultiPkgNewReleaseCode", "downloadPkg, %s flush release url key[%s] cost[%d]", new Object[] { paramAnonymousString, an.this.kKV.toString(), Long.valueOf(bt.aS(l)) });
+        AppMethodBeat.o(174973);
       }
-      ab.i("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", "CgiCheckDemoInfo, appId %s, wxa.ErrCode %d, has_new_demo %b, url %s, md5 %s", new Object[] { this.appId, Integer.valueOf(((ru)localObject).wJX.lGK), Boolean.valueOf(((ru)localObject).wJY), ((ru)localObject).wJZ, ((ru)localObject).wKa });
-      if (((ru)localObject).wJX.lGK != 0)
+      
+      public final void aQB()
       {
-        i = ((ru)localObject).wJX.lGK;
-        AppMethodBeat.o(131999);
-        return i;
+        AppMethodBeat.i(174974);
+        Kk("onPkgIncrementalUpdateFailed");
+        AppMethodBeat.o(174974);
       }
-      if ((((ru)localObject).wJY) && (!bo.isNullOrNil(((ru)localObject).wKa)) && (!bo.isNullOrNil(((ru)localObject).wJZ))) {
-        o(2, ((ru)localObject).wJZ, ((ru)localObject).wKa);
+      
+      public final void aQC()
+      {
+        AppMethodBeat.i(174975);
+        Kk("onPkgZstdDownloadFailed");
+        AppMethodBeat.o(174975);
       }
-      if ((((ru)localObject).wKb) && (!bo.isNullOrNil(((ru)localObject).wKd)) && (!bo.isNullOrNil(((ru)localObject).wKc))) {
-        o(10001, ((ru)localObject).wKc, ((ru)localObject).wKd);
+      
+      final String bgJ()
+      {
+        AppMethodBeat.i(174970);
+        String str = an.this.aMu();
+        AppMethodBeat.o(174970);
+        return str;
       }
-      if (!bo.isNullOrNil(((ru)localObject).wKe)) {
-        ((m)g.w(m.class)).n(this.appId, 2, ((ru)localObject).wKe);
+      
+      protected final void c(WxaPkgLoadProgress paramAnonymousWxaPkgLoadProgress)
+      {
+        AppMethodBeat.i(174972);
+        an.this.d(paramAnonymousWxaPkgLoadProgress);
+        AppMethodBeat.o(174972);
       }
-      i = an.a.imR.ordinal();
-      AppMethodBeat.o(131999);
-      return i;
-    }
-    catch (Exception localException)
+      
+      final void e(WxaPkgWrappingInfo paramAnonymousWxaPkgWrappingInfo)
+      {
+        AppMethodBeat.i(174971);
+        an.this.f(paramAnonymousWxaPkgWrappingInfo);
+        an.this.g(paramAnonymousWxaPkgWrappingInfo);
+        AppMethodBeat.o(174971);
+      }
+    };
+    ad.i("MicroMsg.LaunchPkgPrepareJobMultiPkgNewReleaseCode", "%s downloadPkg, patch_url(%s), full_url(%s)", new Object[] { aMu(), str2, str1 });
+    boolean bool;
+    if (!bt.isNullOrNil(str2))
     {
-      ab.printErrStackTrace("MicroMsg.AppBrand.PrepareStepOpBanCheckDemoInfo", localException, "CgiCheckDemoInfo, appId %s, cast response failed", new Object[] { this.appId });
-      i = an.a.imV.ordinal();
-      AppMethodBeat.o(131999);
+      bool = s.a(this.kKV.toString(), this.kKX, this.kIK, str2, (bh.a)localObject);
+      bgL();
     }
-    return i;
+    for (;;)
+    {
+      if (!bool) {
+        ad.e("MicroMsg.LaunchPkgPrepareJobMultiPkgNewReleaseCode", "%s start downloadPkg failed", new Object[] { aMu() });
+      }
+      AppMethodBeat.o(174977);
+      return;
+      if (!bt.isNullOrNil(str3))
+      {
+        bool = bp.a(str3, this.kKV.toString(), this.kIK, this.deB, (bh.a)localObject);
+        bgM();
+      }
+      else
+      {
+        bool = bh.b(this.kKV.toString(), this.deB, this.kIK, str1, (bh.a)localObject);
+        bgM();
+      }
+    }
+  }
+  
+  abstract class a
+    extends al
+    implements b.b, b.c
+  {
+    a(int paramInt)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.an
  * JD-Core Version:    0.7.0.1
  */

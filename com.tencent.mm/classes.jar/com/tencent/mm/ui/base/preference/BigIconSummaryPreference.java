@@ -22,16 +22,16 @@ public class BigIconSummaryPreference
   
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107130);
+    AppMethodBeat.i(142501);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    paramViewGroup.setMinimumHeight(paramViewGroup.getResources().getDimensionPixelSize(2131427786));
-    AppMethodBeat.o(107130);
+    paramViewGroup.setMinimumHeight(paramViewGroup.getResources().getDimensionPixelSize(2131165494));
+    AppMethodBeat.o(142501);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.BigIconSummaryPreference
  * JD-Core Version:    0.7.0.1
  */

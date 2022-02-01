@@ -1,65 +1,141 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cz;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
+import com.tencent.mm.plugin.wallet_core.ui.d;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
-public final class p
-  extends cz
+public abstract class p<K>
 {
-  public static c.a info;
+  Map<String, Integer> AeB = new HashMap();
+  List<K> AeC = new LinkedList();
+  public Vector<p<K>.b> AeD = new Vector();
+  List<String> AeE = new LinkedList();
   
-  static
+  private void ebV()
   {
-    AppMethodBeat.i(46784);
-    c.a locala = new c.a();
-    locala.yrK = new Field[7];
-    locala.columns = new String[8];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "title";
-    locala.yrM.put("title", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" title TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.yrL = "title";
-    locala.columns[1] = "loan_jump_url";
-    locala.yrM.put("loan_jump_url", "TEXT");
-    localStringBuilder.append(" loan_jump_url TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "red_dot_index";
-    locala.yrM.put("red_dot_index", "INTEGER");
-    localStringBuilder.append(" red_dot_index INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "is_show_entry";
-    locala.yrM.put("is_show_entry", "INTEGER");
-    localStringBuilder.append(" is_show_entry INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "tips";
-    locala.yrM.put("tips", "TEXT");
-    localStringBuilder.append(" tips TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "is_overdue";
-    locala.yrM.put("is_overdue", "INTEGER");
-    localStringBuilder.append(" is_overdue INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "available_otb";
-    locala.yrM.put("available_otb", "TEXT");
-    localStringBuilder.append(" available_otb TEXT");
-    locala.columns[7] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(46784);
+    int i = 0;
+    int j;
+    if (i < this.AeD.size()) {
+      if (((b)this.AeD.get(i)).AeL != a.AeH)
+      {
+        Object localObject = a(this.AeD, i);
+        if (this.AeB.containsKey(localObject)) {
+          break label158;
+        }
+        localObject = d.aun((String)localObject);
+        j = 0;
+        label67:
+        if (j >= this.AeE.size()) {
+          break label153;
+        }
+        k = 0;
+        label82:
+        if (k >= localObject.length) {
+          break label170;
+        }
+        if (((String)this.AeE.get(j)).contains(localObject[k])) {
+          break label139;
+        }
+      }
+    }
+    label139:
+    label153:
+    label158:
+    label170:
+    for (int k = 0;; k = 1)
+    {
+      if (k != 0)
+      {
+        j = 1;
+        label120:
+        if (j != 0) {
+          break label158;
+        }
+        a(i, a.AeG);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        k += 1;
+        break label82;
+        j += 1;
+        break label67;
+        j = 0;
+        break label120;
+        a(i, a.AeI);
+      }
+      return;
+    }
   }
   
-  public final c.a getDBInfo()
+  public abstract String a(Vector<p<K>.b> paramVector, int paramInt);
+  
+  public final void a(int paramInt, a parama)
   {
-    return info;
+    ((b)this.AeD.get(paramInt)).AeL = parama;
+  }
+  
+  public final void d(List<K> paramList1, List<K> paramList2, List<String> paramList)
+  {
+    this.AeE = paramList;
+    this.AeC = paramList2;
+    this.AeD.clear();
+    this.AeD = new Vector(paramList1.size());
+    int i = 0;
+    if (i < paramList1.size())
+    {
+      paramList2 = new b();
+      Object localObject = paramList1.get(i);
+      paramList2.AeK = localObject;
+      if (this.AeC.contains(localObject)) {}
+      for (paramList2.AeL = a.AeH;; paramList2.AeL = a.AeG)
+      {
+        this.AeD.add(paramList2);
+        i += 1;
+        break;
+      }
+    }
+    this.AeB.clear();
+    i = 0;
+    while (i < paramList.size())
+    {
+      this.AeB.put(paramList.get(i), Integer.valueOf(0));
+      i += 1;
+    }
+    ebV();
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(70308);
+      AeG = new a("DISABLED", 0);
+      AeH = new a("CHECKED", 1);
+      AeI = new a("UNCHECKED", 2);
+      AeJ = new a[] { AeG, AeH, AeI };
+      AppMethodBeat.o(70308);
+    }
+    
+    private a() {}
+  }
+  
+  public final class b
+  {
+    public K AeK;
+    public p.a AeL;
+    
+    public b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.p
  * JD-Core Version:    0.7.0.1
  */

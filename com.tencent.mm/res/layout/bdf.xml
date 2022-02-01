@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:padding="@dimen/ci" android:layout_width="fill_parent" android:layout_height="1200.0dip" android:minHeight="1200.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:gravity="center_horizontal" android:layout_gravity="bottom|center" android:id="@id/evj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/c8" android:layout_marginBottom="@dimen/ci" android:text="@string/egm" />
+    <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="bottom|center" android:id="@id/f32" android:background="@raw/icons_outlined_refresh" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginBottom="@dimen/c5" />
+</FrameLayout>

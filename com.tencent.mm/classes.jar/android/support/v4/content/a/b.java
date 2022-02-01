@@ -17,18 +17,18 @@ import org.xmlpull.v1.XmlPullParserException;
 
 public final class b
 {
-  public final Shader Af;
-  private final ColorStateList Ag;
+  public final Shader GB;
+  private final ColorStateList GC;
   public int mColor;
   
   private b(Shader paramShader, ColorStateList paramColorStateList, int paramInt)
   {
-    this.Af = paramShader;
-    this.Ag = paramColorStateList;
+    this.GB = paramShader;
+    this.GC = paramColorStateList;
     this.mColor = paramInt;
   }
   
-  static b ab(int paramInt)
+  static b at(int paramInt)
   {
     return new b(null, null, paramInt);
   }
@@ -110,7 +110,7 @@ public final class b
     }
     for (;;)
     {
-      paramResources = new LinearGradient(f1, f2, f3, f4, paramResources.Aq, paramResources.Ar, d.ac(m));
+      paramResources = new LinearGradient(f1, f2, f3, f4, paramResources.mColors, paramResources.GM, d.au(m));
       for (;;)
       {
         return new b(paramResources, null, 0);
@@ -124,9 +124,9 @@ public final class b
         if (f7 <= 0.0F) {
           throw new XmlPullParserException("<gradient> tag requires 'gradientRadius' attribute with radial type");
         }
-        paramResources = new RadialGradient(f5, f6, f7, paramResources.Aq, paramResources.Ar, d.ac(m));
+        paramResources = new RadialGradient(f5, f6, f7, paramResources.mColors, paramResources.GM, d.au(m));
         continue;
-        paramResources = new SweepGradient(f5, f6, paramResources.Aq, paramResources.Ar);
+        paramResources = new SweepGradient(f5, f6, paramResources.mColors, paramResources.GM);
       }
       label586:
       switch (paramInt)
@@ -140,14 +140,14 @@ public final class b
     }
   }
   
-  public final boolean cM()
+  public final boolean dR()
   {
-    return this.Af != null;
+    return this.GB != null;
   }
   
-  public final boolean cN()
+  public final boolean dS()
   {
-    return (cM()) || (this.mColor != 0);
+    return (dR()) || (this.mColor != 0);
   }
   
   public final boolean e(int[] paramArrayOfInt)
@@ -156,7 +156,7 @@ public final class b
     boolean bool1 = bool2;
     if (isStateful())
     {
-      int i = this.Ag.getColorForState(paramArrayOfInt, this.Ag.getDefaultColor());
+      int i = this.GC.getColorForState(paramArrayOfInt, this.GC.getDefaultColor());
       bool1 = bool2;
       if (i != this.mColor)
       {
@@ -169,7 +169,7 @@ public final class b
   
   public final boolean isStateful()
   {
-    return (this.Af == null) && (this.Ag != null) && (this.Ag.isStateful());
+    return (this.GB == null) && (this.GC != null) && (this.GC.isStateful());
   }
 }
 

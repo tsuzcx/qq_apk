@@ -6,8 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class ov
   extends b
 {
-  public ov.a cFu;
-  public ov.b cFv;
+  public a dui;
+  public b duj;
   
   public ov()
   {
@@ -16,17 +16,28 @@ public final class ov
   
   private ov(byte paramByte)
   {
-    AppMethodBeat.i(77562);
-    this.cFu = new ov.a();
-    this.cFv = new ov.b();
-    this.ymq = false;
+    AppMethodBeat.i(127289);
+    this.dui = new a();
+    this.duj = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(77562);
+    AppMethodBeat.o(127289);
+  }
+  
+  public static final class a
+  {
+    public String duk;
+    public String talker;
+  }
+  
+  public static final class b
+  {
+    public boolean dew = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.ov
  * JD-Core Version:    0.7.0.1
  */

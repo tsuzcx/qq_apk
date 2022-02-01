@@ -1,98 +1,79 @@
 package com.tencent.mm.plugin.appbrand;
 
-import a.f.b.j;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
-import com.tencent.mm.plugin.appbrand.weishi.AppBrandWeishiUI;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.xweb.WebView;
-import org.xwalk.core.XWalkCoreWrapper;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.expt.a.b;
+import com.tencent.mm.plugin.expt.a.b.a;
+import d.a.j;
+import d.g.b.k;
+import d.l;
+import d.n.n;
+import d.v;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/AppBrandPersistentRuntimeConfig;", "", "()V", "KEY_XWEB_INSTALLED", "", "PERSISTENT_UI_CLASS", "", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPluginUI;", "[Ljava/lang/Class;", "TAG", "canKeepPersistent", "", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "isPersistentConfigOpen", "isPersistentXWebConfigOpen", "watchApp", "", "app", "Landroid/app/Application;", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/AppBrandFakeNativeCheckXWebConfig;", "", "()V", "DEFAULT_CONFIG", "", "kotlin.jvm.PlatformType", "checkIfXWebRequired", "", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "plugin-appbrand-integration_release"})
 public final class f
 {
-  private static final Class<? extends AppBrandPluginUI>[] gPo;
-  public static final f gPp;
+  private static final String iCO;
+  public static final f iCP;
   
   static
   {
-    AppMethodBeat.i(143714);
-    gPp = new f();
-    gPo = new Class[] { AppBrandPluginUI.class, AppBrandWeishiUI.class };
-    AppMethodBeat.o(143714);
+    AppMethodBeat.i(175098);
+    iCP = new f();
+    iCO = org.apache.commons.b.g.a(new String[] { "wxfe02ecfe70800f46", "wx1d9b0b103d81d15d", "wx162102d2ff543cb2" }, ',', 3);
+    AppMethodBeat.o(175098);
   }
   
-  public static final boolean a(l paraml)
+  public static final boolean a(AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
-    AppMethodBeat.i(143710);
-    j.q(paraml, "container");
-    if (!atd())
+    AppMethodBeat.i(175097);
+    k.h(paramAppBrandInitConfigWC, "config");
+    Object localObject1 = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.pne, iCO);
+    k.g(localObject1, "MMKernel.service(IExptSe…required, DEFAULT_CONFIG)");
+    Object localObject2 = (Iterable)n.a((CharSequence)localObject1, new String[] { "," });
+    localObject1 = (Collection)new ArrayList();
+    localObject2 = ((Iterable)localObject2).iterator();
+    Object localObject3;
+    label134:
+    while (((Iterator)localObject2).hasNext())
     {
-      ab.i("MicroMsg.AppBrandPersistentRuntimeConfig", "canKeepPersistent, close by ExptService");
-      AppMethodBeat.o(143710);
-      return false;
-    }
-    Boolean[] arrayOfBoolean = new Boolean[2];
-    arrayOfBoolean[0] = Boolean.valueOf(WebView.isX5());
-    if ((WebView.isXWalk()) && (XWalkCoreWrapper.getInstance().hasFeature(2003))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      arrayOfBoolean[1] = Boolean.valueOf(bool);
-      ab.i("MicroMsg.AppBrandPersistentRuntimeConfig", "canKeepPersistent, containerUI[" + paraml.getContext().getClass().getSimpleName() + "], kernelConditions[" + org.apache.commons.b.a.toString(arrayOfBoolean) + ']');
-      if ((!org.apache.commons.b.a.contains(gPo, paraml.getContext().getClass())) || (!org.apache.commons.b.a.contains(arrayOfBoolean, Boolean.TRUE))) {
+      localObject3 = ((Iterator)localObject2).next();
+      if (((CharSequence)localObject3).length() == 0) {}
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label134;
+        }
+        ((Collection)localObject1).add(localObject3);
         break;
       }
-      AppMethodBeat.o(143710);
-      return true;
     }
-    AppMethodBeat.o(143710);
-    return false;
-  }
-  
-  public static final boolean atc()
-  {
-    AppMethodBeat.i(143712);
-    if (!atd())
+    localObject2 = (Iterable)localObject1;
+    localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      ab.i("MicroMsg.AppBrandPersistentRuntimeConfig", "isPersistentXWebConfigOpen, close by ExptService");
-      AppMethodBeat.o(143712);
-      return false;
+      localObject3 = (String)((Iterator)localObject2).next();
+      if (localObject3 == null)
+      {
+        paramAppBrandInitConfigWC = new v("null cannot be cast to non-null type kotlin.CharSequence");
+        AppMethodBeat.o(175097);
+        throw paramAppBrandInitConfigWC;
+      }
+      ((Collection)localObject1).add(n.trim((CharSequence)localObject3).toString());
     }
-    boolean bool = as.eu("MicroMsg.AppBrandPersistentRuntimeConfig", 2).getBoolean("KEY_XWEB_INSTALLED", false);
-    AppMethodBeat.o(143712);
+    boolean bool = ((List)localObject1).contains(paramAppBrandInitConfigWC.appId);
+    AppMethodBeat.o(175097);
     return bool;
-  }
-  
-  private static boolean atd()
-  {
-    AppMethodBeat.i(143713);
-    if (((com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lVt, 1) > 0)
-    {
-      AppMethodBeat.o(143713);
-      return true;
-    }
-    AppMethodBeat.o(143713);
-    return false;
-  }
-  
-  public static final void e(Application paramApplication)
-  {
-    AppMethodBeat.i(143711);
-    j.q(paramApplication, "app");
-    f.a locala = f.a.gPq;
-    paramApplication.registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)new f.b());
-    new f.c().alive();
-    AppMethodBeat.o(143711);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.f
  * JD-Core Version:    0.7.0.1
  */

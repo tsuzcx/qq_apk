@@ -11,20 +11,20 @@ final class FreeWifiSuccUI$3
   
   public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AppMethodBeat.i(21087);
+    AppMethodBeat.i(25147);
     if (paramBoolean)
     {
-      FreeWifiSuccUI.a(this.mOM, true);
-      AppMethodBeat.o(21087);
+      FreeWifiSuccUI.a(this.rlE, true);
+      AppMethodBeat.o(25147);
       return;
     }
-    FreeWifiSuccUI.a(this.mOM, false);
-    AppMethodBeat.o(21087);
+    FreeWifiSuccUI.a(this.rlE, false);
+    AppMethodBeat.o(25147);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiSuccUI.3
  * JD-Core Version:    0.7.0.1
  */

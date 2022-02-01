@@ -39,9 +39,9 @@ public class AuthAccountRequest
   
   static
   {
-    AppMethodBeat.i(61305);
+    AppMethodBeat.i(11797);
     CREATOR = new AuthAccountRequestCreator();
-    AppMethodBeat.o(61305);
+    AppMethodBeat.o(11797);
   }
   
   @SafeParcelable.Constructor
@@ -58,28 +58,28 @@ public class AuthAccountRequest
   public AuthAccountRequest(Account paramAccount, Set<Scope> paramSet)
   {
     this(3, null, (Scope[])paramSet.toArray(new Scope[paramSet.size()]), null, null, (Account)Preconditions.checkNotNull(paramAccount));
-    AppMethodBeat.i(61301);
-    AppMethodBeat.o(61301);
+    AppMethodBeat.i(11793);
+    AppMethodBeat.o(11793);
   }
   
   @Deprecated
   public AuthAccountRequest(IAccountAccessor paramIAccountAccessor, Set<Scope> paramSet)
   {
     this(3, paramIAccountAccessor.asBinder(), (Scope[])paramSet.toArray(new Scope[paramSet.size()]), null, null, null);
-    AppMethodBeat.i(61300);
-    AppMethodBeat.o(61300);
+    AppMethodBeat.i(11792);
+    AppMethodBeat.o(11792);
   }
   
   public Account getAccount()
   {
-    AppMethodBeat.i(61302);
+    AppMethodBeat.i(11794);
     Account localAccount = null;
     if (this.zzs != null) {
       localAccount = this.zzs;
     }
     for (;;)
     {
-      AppMethodBeat.o(61302);
+      AppMethodBeat.o(11794);
       return localAccount;
       if (this.zzqv != null) {
         localAccount = AccountAccessor.getAccountBinderSafe(IAccountAccessor.Stub.asInterface(this.zzqv));
@@ -101,9 +101,9 @@ public class AuthAccountRequest
   
   public Set<Scope> getScopes()
   {
-    AppMethodBeat.i(61303);
+    AppMethodBeat.i(11795);
     HashSet localHashSet = new HashSet(Arrays.asList(this.zzqw));
-    AppMethodBeat.o(61303);
+    AppMethodBeat.o(11795);
     return localHashSet;
   }
   
@@ -121,7 +121,7 @@ public class AuthAccountRequest
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(61304);
+    AppMethodBeat.i(11796);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     SafeParcelWriter.writeIBinder(paramParcel, 2, this.zzqv, false);
@@ -130,7 +130,7 @@ public class AuthAccountRequest
     SafeParcelWriter.writeIntegerObject(paramParcel, 5, this.zzqy, false);
     SafeParcelWriter.writeParcelable(paramParcel, 6, this.zzs, paramInt, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(61304);
+    AppMethodBeat.o(11796);
   }
 }
 

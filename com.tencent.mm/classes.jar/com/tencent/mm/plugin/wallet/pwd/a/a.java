@@ -1,32 +1,33 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.protocal.protobuf.tz;
-import com.tencent.mm.protocal.protobuf.ua;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.c;
+import com.tencent.mm.protocal.protobuf.wz;
+import com.tencent.mm.protocal.protobuf.xa;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class a
-  extends com.tencent.mm.ai.a<ua>
+  extends c<xa>
 {
   public a()
   {
-    AppMethodBeat.i(46166);
+    AppMethodBeat.i(69522);
     b.a locala = new b.a();
-    locala.fsX = new tz();
-    locala.fsY = new ua();
+    locala.gUU = new wz();
+    locala.gUV = new xa();
     locala.funcId = 2913;
     locala.uri = "/cgi-bin/mmpay-bin/closeunipayorder";
     locala.reqCmdId = 0;
     locala.respCmdId = 0;
-    this.rr = locala.ado();
-    ab.i("MicroMsg.CgiCloseUniPayOrder", "close uni pay order");
-    AppMethodBeat.o(46166);
+    this.rr = locala.atI();
+    ad.i("MicroMsg.CgiCloseUniPayOrder", "close uni pay order");
+    AppMethodBeat.o(69522);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:id="@id/r_" style="@style/ia">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/sg" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="@dimen/hm" />
-        <TextView android:textColor="#ff7a93af" android:layout_gravity="center_vertical" android:id="@id/nj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hh" android:text="{tip}" style="@style/ln" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/jm">
+        <TextView android:id="@id/gzv" style="@style/z3" />
+        <TextView android:id="@id/gzd" style="@style/z1" />
+        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:layout_gravity="center_vertical" android:id="@id/gxh" android:background="@color/a7c" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.tenpay.android.wechat.TenpaySecureEditText android:id="@id/gwo" style="@style/yy" />
+        <com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView android:id="@id/gxf" android:src="@drawable/axy" style="@style/yz" />
     </LinearLayout>
-</RelativeLayout>
+</merge>

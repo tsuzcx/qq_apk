@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/bsa" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"
+<LinearLayout android:orientation="vertical" android:background="@color/a_r" style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/avo" />
-    <TextView android:textSize="@dimen/ua" android:textColor="@color/a6s" android:id="@id/bsb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bpx" />
+    <com.tencent.mm.ui.base.MMPullDownView android:id="@id/d3m" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:gravity="center" android:id="@android:id/list" android:background="@color/a7c" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/afj" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:choiceMode="none" />
+    </com.tencent.mm.ui.base.MMPullDownView>
+    <include android:visibility="gone" layout="@layout/yi" />
 </LinearLayout>

@@ -15,9 +15,9 @@ public class KindaCacheStg
   
   static
   {
-    AppMethodBeat.i(144317);
+    AppMethodBeat.i(18389);
     SQL_CREATE = new String[] { j.getCreateSQLs(KindaCacheItem.info, "KindaCacheTable") };
-    AppMethodBeat.o(144317);
+    AppMethodBeat.o(18389);
   }
   
   public KindaCacheStg(e parame)
@@ -28,37 +28,37 @@ public class KindaCacheStg
   
   public KindaCacheItem get(String paramString)
   {
-    AppMethodBeat.i(144316);
+    AppMethodBeat.i(18388);
     paramString = this.db.rawQuery("select * from KindaCacheTable where key=?", new String[] { paramString });
     if (paramString == null)
     {
-      AppMethodBeat.o(144316);
+      AppMethodBeat.o(18388);
       return null;
     }
     if (paramString.getCount() == 0)
     {
       paramString.close();
-      AppMethodBeat.o(144316);
+      AppMethodBeat.o(18388);
       return null;
     }
     paramString.moveToFirst();
     KindaCacheItem localKindaCacheItem = new KindaCacheItem();
     localKindaCacheItem.convertFrom(paramString);
     paramString.close();
-    AppMethodBeat.o(144316);
+    AppMethodBeat.o(18388);
     return localKindaCacheItem;
   }
   
   public void save(KindaCacheItem paramKindaCacheItem)
   {
-    AppMethodBeat.i(144315);
+    AppMethodBeat.i(18387);
     super.replace(paramKindaCacheItem);
-    AppMethodBeat.o(144315);
+    AppMethodBeat.o(18387);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaCacheStg
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import java.util.List;
 
 final class n
 {
-  private final List<o> gL = new ArrayList();
-  private final List<Bundle> gM = new ArrayList();
+  private final List<o> iJ = new ArrayList();
+  private final List<Bundle> iK = new ArrayList();
   
   public final o a(Context paramContext, Bundle paramBundle)
   {
@@ -16,24 +16,24 @@ final class n
       paramBundle.setClassLoader(paramContext.getClassLoader());
     }
     int i = 0;
-    while (i < this.gM.size())
+    while (i < this.iK.size())
     {
-      if (z.a((Bundle)this.gM.get(i), paramBundle)) {
-        return (o)this.gL.get(i);
+      if (z.a((Bundle)this.iK.get(i), paramBundle)) {
+        return (o)this.iJ.get(i);
       }
       i += 1;
     }
     return null;
   }
   
-  public final List<Bundle> aI()
+  public final List<Bundle> aY()
   {
-    return this.gM;
+    return this.iK;
   }
   
-  public final List<o> aJ()
+  public final List<o> aZ()
   {
-    return this.gL;
+    return this.iJ;
   }
 }
 

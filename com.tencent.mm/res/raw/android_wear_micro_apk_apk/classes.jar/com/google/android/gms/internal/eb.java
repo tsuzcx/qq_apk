@@ -9,12 +9,12 @@ import com.google.android.gms.common.api.ab;
 abstract class eb
   extends ea
 {
-  protected final c<Void> RP;
+  protected final c<Void> TE;
   
   public eb(c<Void> paramc)
   {
     super(4);
-    this.RP = paramc;
+    this.TE = paramc;
   }
   
   public void a(w paramw, boolean paramBoolean) {}
@@ -41,7 +41,7 @@ abstract class eb
   
   public void i(Status paramStatus)
   {
-    this.RP.b(new ab(paramStatus));
+    this.TE.b(new ab(paramStatus));
   }
 }
 

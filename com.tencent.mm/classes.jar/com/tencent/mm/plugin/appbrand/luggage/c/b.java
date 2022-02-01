@@ -1,28 +1,62 @@
 package com.tencent.mm.plugin.appbrand.luggage.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntimeContainerWC;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.p;
 
 public final class b
-  implements com.tencent.mm.plugin.appbrand.o.b
+  implements p
 {
-  public final void e(int paramInt, Object... paramVarArgs)
+  public static final b kPK;
+  
+  static
   {
-    AppMethodBeat.i(132155);
-    h.qsU.e(paramInt, paramVarArgs);
-    AppMethodBeat.o(132155);
+    AppMethodBeat.i(47551);
+    kPK = new b();
+    AppMethodBeat.o(47551);
   }
   
-  public final void kvStat(int paramInt, String paramString)
+  public final o c(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandRuntimeContainerWC paramAppBrandRuntimeContainerWC)
   {
-    AppMethodBeat.i(132156);
-    h.qsU.kvStat(paramInt, paramString);
-    AppMethodBeat.o(132156);
+    AppMethodBeat.i(47550);
+    int i;
+    if (!paramAppBrandInitConfigWC.jdi)
+    {
+      String str = paramAppBrandInitConfigWC.username;
+      if (str != null) {
+        str.length();
+      }
+      i = 0;
+    }
+    while (i != 0)
+    {
+      paramAppBrandInitConfigWC = i.a(paramAppBrandInitConfigWC, paramAppBrandRuntimeContainerWC);
+      if ((paramAppBrandInitConfigWC instanceof f))
+      {
+        AppMethodBeat.o(47550);
+        return paramAppBrandInitConfigWC;
+        i = 1;
+      }
+      else
+      {
+        if (paramAppBrandInitConfigWC != null) {
+          paramAppBrandInitConfigWC.aNg();
+        }
+        paramAppBrandInitConfigWC = new f(paramAppBrandRuntimeContainerWC);
+        AppMethodBeat.o(47550);
+        return paramAppBrandInitConfigWC;
+      }
+    }
+    AppMethodBeat.o(47550);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.c.b
  * JD-Core Version:    0.7.0.1
  */

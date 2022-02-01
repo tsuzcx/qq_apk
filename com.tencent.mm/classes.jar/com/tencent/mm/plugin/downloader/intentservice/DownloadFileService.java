@@ -7,22 +7,23 @@ import android.os.Environment;
 import android.os.ResultReceiver;
 import android.support.v4.app.s.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bp.a;
+import com.tencent.mm.br.a;
+import com.tencent.mm.vfs.e;
 import java.io.File;
 
 public class DownloadFileService
   extends IntentService
 {
   private static final String TAG;
-  private ResultReceiver kXG;
-  private int kXH;
-  private int kXI;
+  private ResultReceiver oep;
+  private int oeq;
+  private int oer;
   
   static
   {
-    AppMethodBeat.i(2337);
+    AppMethodBeat.i(88885);
     TAG = DownloadFileService.class.getSimpleName();
-    AppMethodBeat.o(2337);
+    AppMethodBeat.o(88885);
   }
   
   public DownloadFileService()
@@ -31,452 +32,422 @@ public class DownloadFileService
   }
   
   /* Error */
-  private void e(String paramString, File paramFile)
+  private void d(String paramString, e parame)
   {
     // Byte code:
-    //   0: sipush 2336
-    //   3: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 51	java/io/FileOutputStream
-    //   9: dup
-    //   10: aload_2
-    //   11: invokespecial 54	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   14: astore 8
-    //   16: new 56	java/net/URL
-    //   19: dup
-    //   20: aload_1
-    //   21: invokespecial 57	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   24: invokevirtual 61	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   27: checkcast 63	java/net/HttpURLConnection
-    //   30: astore_1
-    //   31: aload_1
-    //   32: ldc 65
-    //   34: invokevirtual 68	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   37: aload_1
-    //   38: sipush 10000
-    //   41: invokevirtual 71	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   44: aload_1
-    //   45: sipush 3000
-    //   48: invokevirtual 74	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   51: aload_1
-    //   52: ldc 76
-    //   54: invokevirtual 80	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   57: invokestatic 86	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   60: invokevirtual 90	java/lang/Integer:intValue	()I
-    //   63: istore_3
-    //   64: aload_1
-    //   65: invokevirtual 94	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   68: astore_2
-    //   69: aload_1
-    //   70: invokevirtual 97	java/net/HttpURLConnection:getResponseCode	()I
-    //   73: istore 4
-    //   75: iload 4
-    //   77: sipush 200
-    //   80: if_icmpne +200 -> 280
-    //   83: sipush 8192
-    //   86: newarray byte
-    //   88: astore 5
-    //   90: aload_2
-    //   91: aload 5
-    //   93: invokevirtual 103	java/io/InputStream:read	([B)I
-    //   96: istore 4
-    //   98: iload 4
-    //   100: iconst_m1
-    //   101: if_icmpeq +195 -> 296
-    //   104: aload 8
-    //   106: aload 5
-    //   108: iconst_0
-    //   109: iload 4
-    //   111: invokevirtual 107	java/io/FileOutputStream:write	([BII)V
-    //   114: aload_0
-    //   115: iload 4
-    //   117: aload_0
-    //   118: getfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:kXH	I
-    //   121: iadd
-    //   122: putfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:kXH	I
-    //   125: new 111	android/os/Bundle
-    //   128: dup
-    //   129: invokespecial 113	android/os/Bundle:<init>	()V
-    //   132: astore 6
-    //   134: aload_0
-    //   135: getfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:kXH	I
-    //   138: i2l
-    //   139: ldc2_w 114
-    //   142: lmul
-    //   143: iload_3
-    //   144: i2l
-    //   145: ldiv
-    //   146: l2i
-    //   147: istore 4
-    //   149: iload 4
-    //   151: aload_0
-    //   152: getfield 117	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:kXI	I
-    //   155: if_icmple -65 -> 90
-    //   158: aload 6
-    //   160: ldc 119
-    //   162: iload 4
-    //   164: invokevirtual 123	android/os/Bundle:putInt	(Ljava/lang/String;I)V
-    //   167: aload_0
-    //   168: getfield 125	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:kXG	Landroid/os/ResultReceiver;
-    //   171: sipush 4657
-    //   174: aload 6
-    //   176: invokevirtual 131	android/os/ResultReceiver:send	(ILandroid/os/Bundle;)V
-    //   179: aload_0
-    //   180: iload 4
-    //   182: putfield 117	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:kXI	I
-    //   185: goto -95 -> 90
-    //   188: astore 7
-    //   190: aload_2
-    //   191: astore 6
-    //   193: aload_1
-    //   194: astore 5
-    //   196: aload 5
-    //   198: astore_2
-    //   199: aload 6
-    //   201: astore_1
-    //   202: getstatic 27	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
-    //   205: aload 7
-    //   207: ldc 133
-    //   209: iconst_0
-    //   210: anewarray 135	java/lang/Object
-    //   213: invokestatic 141	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   216: aload 8
-    //   218: invokevirtual 145	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
-    //   221: invokevirtual 150	java/io/FileDescriptor:sync	()V
-    //   224: aload 8
-    //   226: invokevirtual 153	java/io/FileOutputStream:close	()V
-    //   229: aload 6
-    //   231: ifnull +8 -> 239
-    //   234: aload 6
-    //   236: invokevirtual 154	java/io/InputStream:close	()V
-    //   239: aload 5
-    //   241: invokevirtual 157	java/net/HttpURLConnection:disconnect	()V
-    //   244: sipush 2336
-    //   247: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   250: return
-    //   251: astore_1
-    //   252: getstatic 27	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
-    //   255: ldc 159
-    //   257: invokestatic 162	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   260: getstatic 27	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
-    //   263: aload_1
-    //   264: ldc 133
-    //   266: iconst_0
-    //   267: anewarray 135	java/lang/Object
-    //   270: invokestatic 141	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   273: sipush 2336
-    //   276: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   279: return
-    //   280: getstatic 27	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
-    //   283: ldc 164
-    //   285: iload 4
-    //   287: invokestatic 169	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   290: invokevirtual 172	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   293: invokestatic 162	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   296: aload 8
-    //   298: invokevirtual 145	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
-    //   301: invokevirtual 150	java/io/FileDescriptor:sync	()V
-    //   304: aload 8
-    //   306: invokevirtual 153	java/io/FileOutputStream:close	()V
-    //   309: aload_2
-    //   310: ifnull +7 -> 317
-    //   313: aload_2
-    //   314: invokevirtual 154	java/io/InputStream:close	()V
-    //   317: aload_1
-    //   318: invokevirtual 157	java/net/HttpURLConnection:disconnect	()V
-    //   321: sipush 2336
-    //   324: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   327: return
-    //   328: astore_2
-    //   329: getstatic 27	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
-    //   332: aload_2
-    //   333: ldc 133
-    //   335: iconst_0
-    //   336: anewarray 135	java/lang/Object
-    //   339: invokestatic 141	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   342: goto -25 -> 317
-    //   345: astore_1
-    //   346: getstatic 27	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
-    //   349: aload_1
-    //   350: ldc 133
-    //   352: iconst_0
-    //   353: anewarray 135	java/lang/Object
-    //   356: invokestatic 141	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   359: goto -120 -> 239
-    //   362: astore 7
-    //   364: aconst_null
-    //   365: astore 5
-    //   367: aconst_null
-    //   368: astore 6
-    //   370: aload 5
-    //   372: astore_2
-    //   373: aload 6
-    //   375: astore_1
-    //   376: getstatic 27	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
-    //   379: aload 7
-    //   381: ldc 133
-    //   383: iconst_0
-    //   384: anewarray 135	java/lang/Object
-    //   387: invokestatic 141	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   390: aload 8
-    //   392: invokevirtual 145	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
-    //   395: invokevirtual 150	java/io/FileDescriptor:sync	()V
-    //   398: aload 8
-    //   400: invokevirtual 153	java/io/FileOutputStream:close	()V
-    //   403: aload 6
-    //   405: ifnull +8 -> 413
-    //   408: aload 6
-    //   410: invokevirtual 154	java/io/InputStream:close	()V
-    //   413: aload 5
-    //   415: invokevirtual 157	java/net/HttpURLConnection:disconnect	()V
-    //   418: sipush 2336
-    //   421: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   424: return
-    //   425: astore_1
-    //   426: getstatic 27	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
-    //   429: aload_1
-    //   430: ldc 133
-    //   432: iconst_0
-    //   433: anewarray 135	java/lang/Object
-    //   436: invokestatic 141	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   439: goto -26 -> 413
-    //   442: astore 7
-    //   444: aconst_null
-    //   445: astore 5
-    //   447: aconst_null
-    //   448: astore 6
-    //   450: aload 5
-    //   452: astore_2
-    //   453: aload 6
-    //   455: astore_1
-    //   456: getstatic 27	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
-    //   459: aload 7
-    //   461: ldc 133
-    //   463: iconst_0
-    //   464: anewarray 135	java/lang/Object
-    //   467: invokestatic 141	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   470: aload 8
-    //   472: invokevirtual 145	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
-    //   475: invokevirtual 150	java/io/FileDescriptor:sync	()V
-    //   478: aload 8
-    //   480: invokevirtual 153	java/io/FileOutputStream:close	()V
-    //   483: aload 6
-    //   485: ifnull +8 -> 493
-    //   488: aload 6
-    //   490: invokevirtual 154	java/io/InputStream:close	()V
-    //   493: aload 5
-    //   495: invokevirtual 157	java/net/HttpURLConnection:disconnect	()V
-    //   498: sipush 2336
-    //   501: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   504: return
-    //   505: astore_1
-    //   506: getstatic 27	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
-    //   509: aload_1
-    //   510: ldc 133
-    //   512: iconst_0
-    //   513: anewarray 135	java/lang/Object
-    //   516: invokestatic 141	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   519: goto -26 -> 493
-    //   522: astore 5
-    //   524: aconst_null
-    //   525: astore_2
-    //   526: aconst_null
-    //   527: astore_1
-    //   528: aload 8
-    //   530: invokevirtual 145	java/io/FileOutputStream:getFD	()Ljava/io/FileDescriptor;
-    //   533: invokevirtual 150	java/io/FileDescriptor:sync	()V
-    //   536: aload 8
-    //   538: invokevirtual 153	java/io/FileOutputStream:close	()V
-    //   541: aload_1
-    //   542: ifnull +7 -> 549
-    //   545: aload_1
-    //   546: invokevirtual 154	java/io/InputStream:close	()V
-    //   549: aload_2
-    //   550: invokevirtual 157	java/net/HttpURLConnection:disconnect	()V
-    //   553: sipush 2336
-    //   556: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   559: aload 5
-    //   561: athrow
-    //   562: astore_1
-    //   563: getstatic 27	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
-    //   566: aload_1
-    //   567: ldc 133
-    //   569: iconst_0
-    //   570: anewarray 135	java/lang/Object
-    //   573: invokestatic 141	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   576: goto -27 -> 549
-    //   579: astore 6
-    //   581: goto -45 -> 536
-    //   584: astore 5
-    //   586: aconst_null
-    //   587: astore 6
-    //   589: aload_1
-    //   590: astore_2
-    //   591: aload 6
-    //   593: astore_1
-    //   594: goto -66 -> 528
-    //   597: astore 5
-    //   599: aload_2
-    //   600: astore 6
-    //   602: aload_1
-    //   603: astore_2
-    //   604: aload 6
-    //   606: astore_1
-    //   607: goto -79 -> 528
+    //   0: ldc 49
+    //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_2
+    //   6: invokestatic 55	com/tencent/mm/vfs/i:ai	(Lcom/tencent/mm/vfs/e;)Ljava/io/OutputStream;
+    //   9: astore 8
+    //   11: new 57	java/net/URL
+    //   14: dup
+    //   15: aload_1
+    //   16: invokespecial 58	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   19: invokevirtual 62	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   22: checkcast 64	java/net/HttpURLConnection
+    //   25: astore_1
+    //   26: aload_1
+    //   27: ldc 66
+    //   29: invokevirtual 69	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   32: aload_1
+    //   33: sipush 10000
+    //   36: invokevirtual 72	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   39: aload_1
+    //   40: sipush 3000
+    //   43: invokevirtual 75	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   46: aload_1
+    //   47: ldc 77
+    //   49: invokevirtual 81	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
+    //   52: iconst_0
+    //   53: invokestatic 87	com/tencent/mm/sdk/platformtools/bt:getInt	(Ljava/lang/String;I)I
+    //   56: istore_3
+    //   57: aload_1
+    //   58: invokevirtual 91	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   61: astore_2
+    //   62: aload_1
+    //   63: invokevirtual 95	java/net/HttpURLConnection:getResponseCode	()I
+    //   66: istore 4
+    //   68: iload 4
+    //   70: sipush 200
+    //   73: if_icmpne +195 -> 268
+    //   76: sipush 8192
+    //   79: newarray byte
+    //   81: astore 5
+    //   83: aload_2
+    //   84: aload 5
+    //   86: invokevirtual 101	java/io/InputStream:read	([B)I
+    //   89: istore 4
+    //   91: iload 4
+    //   93: iconst_m1
+    //   94: if_icmpeq +190 -> 284
+    //   97: aload 8
+    //   99: aload 5
+    //   101: iconst_0
+    //   102: iload 4
+    //   104: invokevirtual 107	java/io/OutputStream:write	([BII)V
+    //   107: aload_0
+    //   108: iload 4
+    //   110: aload_0
+    //   111: getfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:oeq	I
+    //   114: iadd
+    //   115: putfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:oeq	I
+    //   118: new 111	android/os/Bundle
+    //   121: dup
+    //   122: invokespecial 113	android/os/Bundle:<init>	()V
+    //   125: astore 6
+    //   127: aload_0
+    //   128: getfield 109	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:oeq	I
+    //   131: i2l
+    //   132: ldc2_w 114
+    //   135: lmul
+    //   136: iload_3
+    //   137: i2l
+    //   138: ldiv
+    //   139: l2i
+    //   140: istore 4
+    //   142: iload 4
+    //   144: aload_0
+    //   145: getfield 117	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:oer	I
+    //   148: if_icmple -65 -> 83
+    //   151: aload 6
+    //   153: ldc 119
+    //   155: iload 4
+    //   157: invokevirtual 123	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   160: aload_0
+    //   161: getfield 125	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:oep	Landroid/os/ResultReceiver;
+    //   164: sipush 4657
+    //   167: aload 6
+    //   169: invokevirtual 131	android/os/ResultReceiver:send	(ILandroid/os/Bundle;)V
+    //   172: aload_0
+    //   173: iload 4
+    //   175: putfield 117	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:oer	I
+    //   178: goto -95 -> 83
+    //   181: astore 7
+    //   183: aload_2
+    //   184: astore 6
+    //   186: aload_1
+    //   187: astore 5
+    //   189: aload 5
+    //   191: astore_2
+    //   192: aload 6
+    //   194: astore_1
+    //   195: getstatic 28	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
+    //   198: aload 7
+    //   200: ldc 133
+    //   202: iconst_0
+    //   203: anewarray 135	java/lang/Object
+    //   206: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   209: aload 8
+    //   211: ifnull +8 -> 219
+    //   214: aload 8
+    //   216: invokevirtual 144	java/io/OutputStream:close	()V
+    //   219: aload 6
+    //   221: ifnull +8 -> 229
+    //   224: aload 6
+    //   226: invokevirtual 145	java/io/InputStream:close	()V
+    //   229: aload 5
+    //   231: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
+    //   234: ldc 49
+    //   236: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   239: return
+    //   240: astore_1
+    //   241: getstatic 28	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
+    //   244: ldc 150
+    //   246: invokestatic 154	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   249: getstatic 28	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
+    //   252: aload_1
+    //   253: ldc 133
+    //   255: iconst_0
+    //   256: anewarray 135	java/lang/Object
+    //   259: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   262: ldc 49
+    //   264: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   267: return
+    //   268: getstatic 28	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
+    //   271: ldc 156
+    //   273: iload 4
+    //   275: invokestatic 162	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   278: invokevirtual 165	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   281: invokestatic 154	com/tencent/mm/sdk/platformtools/ad:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   284: aload 8
+    //   286: ifnull +8 -> 294
+    //   289: aload 8
+    //   291: invokevirtual 144	java/io/OutputStream:close	()V
+    //   294: aload_2
+    //   295: ifnull +7 -> 302
+    //   298: aload_2
+    //   299: invokevirtual 145	java/io/InputStream:close	()V
+    //   302: aload_1
+    //   303: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
+    //   306: ldc 49
+    //   308: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   311: return
+    //   312: astore_2
+    //   313: getstatic 28	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
+    //   316: aload_2
+    //   317: ldc 133
+    //   319: iconst_0
+    //   320: anewarray 135	java/lang/Object
+    //   323: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   326: goto -24 -> 302
+    //   329: astore_1
+    //   330: getstatic 28	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
+    //   333: aload_1
+    //   334: ldc 133
+    //   336: iconst_0
+    //   337: anewarray 135	java/lang/Object
+    //   340: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   343: goto -114 -> 229
+    //   346: astore 7
+    //   348: aconst_null
+    //   349: astore 5
+    //   351: aconst_null
+    //   352: astore 6
+    //   354: aload 5
+    //   356: astore_2
+    //   357: aload 6
+    //   359: astore_1
+    //   360: getstatic 28	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
+    //   363: aload 7
+    //   365: ldc 133
+    //   367: iconst_0
+    //   368: anewarray 135	java/lang/Object
+    //   371: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   374: aload 8
+    //   376: ifnull +8 -> 384
+    //   379: aload 8
+    //   381: invokevirtual 144	java/io/OutputStream:close	()V
+    //   384: aload 6
+    //   386: ifnull +8 -> 394
+    //   389: aload 6
+    //   391: invokevirtual 145	java/io/InputStream:close	()V
+    //   394: aload 5
+    //   396: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
+    //   399: ldc 49
+    //   401: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   404: return
+    //   405: astore_1
+    //   406: getstatic 28	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
+    //   409: aload_1
+    //   410: ldc 133
+    //   412: iconst_0
+    //   413: anewarray 135	java/lang/Object
+    //   416: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   419: goto -25 -> 394
+    //   422: astore 7
+    //   424: aconst_null
+    //   425: astore 5
+    //   427: aconst_null
+    //   428: astore 6
+    //   430: aload 5
+    //   432: astore_2
+    //   433: aload 6
+    //   435: astore_1
+    //   436: getstatic 28	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
+    //   439: aload 7
+    //   441: ldc 133
+    //   443: iconst_0
+    //   444: anewarray 135	java/lang/Object
+    //   447: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   450: aload 8
+    //   452: ifnull +8 -> 460
+    //   455: aload 8
+    //   457: invokevirtual 144	java/io/OutputStream:close	()V
+    //   460: aload 6
+    //   462: ifnull +8 -> 470
+    //   465: aload 6
+    //   467: invokevirtual 145	java/io/InputStream:close	()V
+    //   470: aload 5
+    //   472: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
+    //   475: ldc 49
+    //   477: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   480: return
+    //   481: astore_1
+    //   482: getstatic 28	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
+    //   485: aload_1
+    //   486: ldc 133
+    //   488: iconst_0
+    //   489: anewarray 135	java/lang/Object
+    //   492: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   495: goto -25 -> 470
+    //   498: astore 5
+    //   500: aconst_null
+    //   501: astore_2
+    //   502: aconst_null
+    //   503: astore_1
+    //   504: aload 8
+    //   506: ifnull +8 -> 514
+    //   509: aload 8
+    //   511: invokevirtual 144	java/io/OutputStream:close	()V
+    //   514: aload_1
+    //   515: ifnull +7 -> 522
+    //   518: aload_1
+    //   519: invokevirtual 145	java/io/InputStream:close	()V
+    //   522: aload_2
+    //   523: invokevirtual 148	java/net/HttpURLConnection:disconnect	()V
+    //   526: ldc 49
+    //   528: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   531: aload 5
+    //   533: athrow
+    //   534: astore_1
+    //   535: getstatic 28	com/tencent/mm/plugin/downloader/intentservice/DownloadFileService:TAG	Ljava/lang/String;
+    //   538: aload_1
+    //   539: ldc 133
+    //   541: iconst_0
+    //   542: anewarray 135	java/lang/Object
+    //   545: invokestatic 141	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   548: goto -26 -> 522
+    //   551: astore 5
+    //   553: aconst_null
+    //   554: astore 6
+    //   556: aload_1
+    //   557: astore_2
+    //   558: aload 6
+    //   560: astore_1
+    //   561: goto -57 -> 504
+    //   564: astore 5
+    //   566: aload_2
+    //   567: astore 6
+    //   569: aload_1
+    //   570: astore_2
+    //   571: aload 6
+    //   573: astore_1
+    //   574: goto -70 -> 504
+    //   577: astore 5
+    //   579: goto -75 -> 504
+    //   582: astore 7
+    //   584: aconst_null
+    //   585: astore 6
+    //   587: aload_1
+    //   588: astore 5
+    //   590: goto -160 -> 430
+    //   593: astore 7
+    //   595: aload_1
+    //   596: astore 5
+    //   598: aload_2
+    //   599: astore 6
+    //   601: goto -171 -> 430
+    //   604: astore 7
+    //   606: aconst_null
+    //   607: astore 6
+    //   609: aload_1
     //   610: astore 5
-    //   612: goto -84 -> 528
-    //   615: astore_1
-    //   616: goto -138 -> 478
-    //   619: astore 7
-    //   621: aconst_null
-    //   622: astore 6
-    //   624: aload_1
-    //   625: astore 5
-    //   627: goto -177 -> 450
-    //   630: astore 7
-    //   632: aload_1
-    //   633: astore 5
-    //   635: aload_2
-    //   636: astore 6
-    //   638: goto -188 -> 450
-    //   641: astore_1
-    //   642: goto -244 -> 398
-    //   645: astore 7
-    //   647: aconst_null
-    //   648: astore 6
-    //   650: aload_1
-    //   651: astore 5
-    //   653: goto -283 -> 370
-    //   656: astore 7
-    //   658: aload_1
-    //   659: astore 5
-    //   661: aload_2
-    //   662: astore 6
-    //   664: goto -294 -> 370
-    //   667: astore_1
-    //   668: goto -444 -> 224
-    //   671: astore 7
-    //   673: aconst_null
-    //   674: astore 5
-    //   676: aconst_null
-    //   677: astore 6
-    //   679: goto -483 -> 196
-    //   682: astore 7
-    //   684: aconst_null
-    //   685: astore 6
-    //   687: aload_1
-    //   688: astore 5
-    //   690: goto -494 -> 196
-    //   693: astore 5
-    //   695: goto -391 -> 304
+    //   612: goto -258 -> 354
+    //   615: astore 7
+    //   617: aload_1
+    //   618: astore 5
+    //   620: aload_2
+    //   621: astore 6
+    //   623: goto -269 -> 354
+    //   626: astore 7
+    //   628: aconst_null
+    //   629: astore 5
+    //   631: aconst_null
+    //   632: astore 6
+    //   634: goto -445 -> 189
+    //   637: astore 7
+    //   639: aconst_null
+    //   640: astore 6
+    //   642: aload_1
+    //   643: astore 5
+    //   645: goto -456 -> 189
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	698	0	this	DownloadFileService
-    //   0	698	1	paramString	String
-    //   0	698	2	paramFile	File
-    //   63	81	3	i	int
-    //   73	213	4	j	int
-    //   88	406	5	localObject1	java.lang.Object
-    //   522	38	5	localObject2	java.lang.Object
-    //   584	1	5	localObject3	java.lang.Object
-    //   597	1	5	localObject4	java.lang.Object
-    //   610	1	5	localObject5	java.lang.Object
-    //   625	64	5	str	String
-    //   693	1	5	localException1	java.lang.Exception
-    //   132	357	6	localObject6	java.lang.Object
-    //   579	1	6	localException2	java.lang.Exception
-    //   587	99	6	localFile	File
-    //   188	18	7	localProtocolException1	java.net.ProtocolException
-    //   362	18	7	localMalformedURLException1	java.net.MalformedURLException
-    //   442	18	7	localIOException1	java.io.IOException
-    //   619	1	7	localIOException2	java.io.IOException
-    //   630	1	7	localIOException3	java.io.IOException
-    //   645	1	7	localMalformedURLException2	java.net.MalformedURLException
-    //   656	1	7	localMalformedURLException3	java.net.MalformedURLException
-    //   671	1	7	localProtocolException2	java.net.ProtocolException
-    //   682	1	7	localProtocolException3	java.net.ProtocolException
-    //   14	523	8	localFileOutputStream	java.io.FileOutputStream
+    //   0	648	0	this	DownloadFileService
+    //   0	648	1	paramString	String
+    //   0	648	2	parame	e
+    //   56	81	3	i	int
+    //   66	208	4	j	int
+    //   81	390	5	localObject1	java.lang.Object
+    //   498	34	5	localObject2	java.lang.Object
+    //   551	1	5	localObject3	java.lang.Object
+    //   564	1	5	localObject4	java.lang.Object
+    //   577	1	5	localObject5	java.lang.Object
+    //   588	56	5	str	String
+    //   125	516	6	localObject6	java.lang.Object
+    //   181	18	7	localProtocolException1	java.net.ProtocolException
+    //   346	18	7	localMalformedURLException1	java.net.MalformedURLException
+    //   422	18	7	localIOException1	java.io.IOException
+    //   582	1	7	localIOException2	java.io.IOException
+    //   593	1	7	localIOException3	java.io.IOException
+    //   604	1	7	localMalformedURLException2	java.net.MalformedURLException
+    //   615	1	7	localMalformedURLException3	java.net.MalformedURLException
+    //   626	1	7	localProtocolException2	java.net.ProtocolException
+    //   637	1	7	localProtocolException3	java.net.ProtocolException
+    //   9	501	8	localOutputStream	java.io.OutputStream
     // Exception table:
     //   from	to	target	type
-    //   69	75	188	java/net/ProtocolException
-    //   83	90	188	java/net/ProtocolException
-    //   90	98	188	java/net/ProtocolException
-    //   104	185	188	java/net/ProtocolException
-    //   280	296	188	java/net/ProtocolException
-    //   6	16	251	java/io/FileNotFoundException
-    //   296	304	328	java/io/IOException
-    //   304	309	328	java/io/IOException
-    //   313	317	328	java/io/IOException
-    //   216	224	345	java/io/IOException
-    //   224	229	345	java/io/IOException
-    //   234	239	345	java/io/IOException
-    //   16	31	362	java/net/MalformedURLException
-    //   390	398	425	java/io/IOException
-    //   398	403	425	java/io/IOException
-    //   408	413	425	java/io/IOException
-    //   16	31	442	java/io/IOException
-    //   470	478	505	java/io/IOException
-    //   478	483	505	java/io/IOException
-    //   488	493	505	java/io/IOException
-    //   16	31	522	finally
-    //   528	536	562	java/io/IOException
-    //   536	541	562	java/io/IOException
-    //   545	549	562	java/io/IOException
-    //   528	536	579	java/lang/Exception
-    //   31	69	584	finally
-    //   69	75	597	finally
-    //   83	90	597	finally
-    //   90	98	597	finally
-    //   104	185	597	finally
-    //   280	296	597	finally
-    //   202	216	610	finally
-    //   376	390	610	finally
-    //   456	470	610	finally
-    //   470	478	615	java/lang/Exception
-    //   31	69	619	java/io/IOException
-    //   69	75	630	java/io/IOException
-    //   83	90	630	java/io/IOException
-    //   90	98	630	java/io/IOException
-    //   104	185	630	java/io/IOException
-    //   280	296	630	java/io/IOException
-    //   390	398	641	java/lang/Exception
-    //   31	69	645	java/net/MalformedURLException
-    //   69	75	656	java/net/MalformedURLException
-    //   83	90	656	java/net/MalformedURLException
-    //   90	98	656	java/net/MalformedURLException
-    //   104	185	656	java/net/MalformedURLException
-    //   280	296	656	java/net/MalformedURLException
-    //   216	224	667	java/lang/Exception
-    //   16	31	671	java/net/ProtocolException
-    //   31	69	682	java/net/ProtocolException
-    //   296	304	693	java/lang/Exception
+    //   62	68	181	java/net/ProtocolException
+    //   76	83	181	java/net/ProtocolException
+    //   83	91	181	java/net/ProtocolException
+    //   97	178	181	java/net/ProtocolException
+    //   268	284	181	java/net/ProtocolException
+    //   5	11	240	java/io/FileNotFoundException
+    //   289	294	312	java/io/IOException
+    //   298	302	312	java/io/IOException
+    //   214	219	329	java/io/IOException
+    //   224	229	329	java/io/IOException
+    //   11	26	346	java/net/MalformedURLException
+    //   379	384	405	java/io/IOException
+    //   389	394	405	java/io/IOException
+    //   11	26	422	java/io/IOException
+    //   455	460	481	java/io/IOException
+    //   465	470	481	java/io/IOException
+    //   11	26	498	finally
+    //   509	514	534	java/io/IOException
+    //   518	522	534	java/io/IOException
+    //   26	62	551	finally
+    //   62	68	564	finally
+    //   76	83	564	finally
+    //   83	91	564	finally
+    //   97	178	564	finally
+    //   268	284	564	finally
+    //   195	209	577	finally
+    //   360	374	577	finally
+    //   436	450	577	finally
+    //   26	62	582	java/io/IOException
+    //   62	68	593	java/io/IOException
+    //   76	83	593	java/io/IOException
+    //   83	91	593	java/io/IOException
+    //   97	178	593	java/io/IOException
+    //   268	284	593	java/io/IOException
+    //   26	62	604	java/net/MalformedURLException
+    //   62	68	615	java/net/MalformedURLException
+    //   76	83	615	java/net/MalformedURLException
+    //   83	91	615	java/net/MalformedURLException
+    //   97	178	615	java/net/MalformedURLException
+    //   268	284	615	java/net/MalformedURLException
+    //   11	26	626	java/net/ProtocolException
+    //   26	62	637	java/net/ProtocolException
   }
   
   public void onCreate()
   {
-    AppMethodBeat.i(2334);
+    AppMethodBeat.i(88882);
     super.onCreate();
-    s.c localc = a.br(this, "reminder_channel_id");
-    localc.e("Something Download").f("Download in progress").Y(2130839103);
+    s.c localc = a.bD(this, "reminder_channel_id");
+    localc.f("Something Download").g("Download in progress").as(2131232660);
     startForeground(4657, localc.build());
-    AppMethodBeat.o(2334);
+    AppMethodBeat.o(88882);
   }
   
   protected void onHandleIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(2335);
+    AppMethodBeat.i(88883);
     String str = paramIntent.getExtras().getString("url");
-    this.kXG = ((ResultReceiver)paramIntent.getParcelableExtra("receiver"));
-    paramIntent = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download");
+    this.oep = ((ResultReceiver)paramIntent.getParcelableExtra("receiver"));
+    paramIntent = new e(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download");
     if (!paramIntent.exists()) {
       paramIntent.mkdirs();
     }
-    e(str, new File(paramIntent, "file11.apk"));
-    AppMethodBeat.o(2335);
+    d(str, new e(paramIntent, "file11.apk"));
+    AppMethodBeat.o(88883);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.intentservice.DownloadFileService
  * JD-Core Version:    0.7.0.1
  */

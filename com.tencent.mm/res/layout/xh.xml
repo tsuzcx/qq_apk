@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bni" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="@dimen/a0s" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/a7l" android:gravity="center" android:id="@id/bnj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="25.0dip" android:text="@string/ayj" android:layout_centerInParent="true" />
+    <View android:id="@id/biu" android:background="@drawable/emoji_capture_sticker_item_more_bg" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:layout_marginTop="@dimen/bq" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/biv" android:layout_width="@dimen/c9" android:layout_height="@dimen/c9" android:layout_marginTop="22.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/jo" android:textColor="?zw" android:gravity="center_horizontal" android:id="@id/biw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c0" android:text="@string/bk6" android:maxLines="2" android:layout_below="@id/biu" android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -1,197 +1,271 @@
 package com.tencent.mm.chatroom.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.g.c.aq;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.aw.o;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ag;
-import com.tencent.mm.model.t;
 import com.tencent.mm.openim.PluginOpenIM;
 import com.tencent.mm.openim.b.i;
 import com.tencent.mm.openim.e.e;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.u;
+import com.tencent.mm.protocal.protobuf.gd;
+import com.tencent.mm.protocal.protobuf.gf;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.p;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class SeeAccessVerifyInfoUI
   extends MMActivity
-  implements com.tencent.mm.ai.f
+  implements com.tencent.mm.al.g
 {
-  private u efi;
-  private TextView eiA;
-  private GridView eiB;
-  private boolean eiC = false;
-  private boolean eiD = false;
-  private boolean eiE = false;
-  private SeeAccessVerifyInfoUI.b eig;
-  private String eih;
-  private String eii;
-  private String eij;
-  private String eik;
-  private String eil;
-  private String eim;
-  private String ein;
-  private String eio;
-  private String eip;
-  private long eiq;
-  private long eir;
-  private String eis;
-  private String eit;
-  private String eiu;
-  private TextView eiv;
-  private TextView eiw;
-  private ImageView eix;
-  private TextView eiy;
-  private TextView eiz;
-  private com.tencent.mm.ui.base.p tipDialog;
+  private com.tencent.mm.storage.w fql;
+  private String fsw;
+  private b fuU;
+  private String fuV;
+  private String fuW;
+  private String fuX;
+  private String fuY;
+  private String fuZ;
+  private String fva;
+  private String fvb;
+  private String fvc;
+  private String fvd;
+  private long fve;
+  private long fvf;
+  private String fvg;
+  private String fvh;
+  private TextView fvi;
+  private TextView fvj;
+  private ImageView fvk;
+  private TextView fvl;
+  private TextView fvm;
+  private TextView fvn;
+  private GridView fvo;
+  private boolean fvp = false;
+  private boolean fvq = false;
+  private boolean fvr = false;
+  private p tipDialog;
   
-  protected final SeeAccessVerifyInfoUI.c ci(View paramView)
+  protected final c ct(View paramView)
   {
-    AppMethodBeat.i(104279);
-    SeeAccessVerifyInfoUI.c localc = new SeeAccessVerifyInfoUI.c(this);
-    localc.egq = ((ImageView)paramView.findViewById(2131827385));
-    localc.eiM = ((TextView)paramView.findViewById(2131827390));
-    localc.eiN = ((TextView)paramView.findViewById(2131827391));
-    AppMethodBeat.o(104279);
+    AppMethodBeat.i(12821);
+    c localc = new c();
+    localc.frr = ((ImageView)paramView.findViewById(2131304237));
+    localc.fvz = ((TextView)paramView.findViewById(2131304234));
+    localc.fvA = ((TextView)paramView.findViewById(2131304236));
+    AppMethodBeat.o(12821);
     return localc;
   }
   
   public int getLayoutId()
   {
-    return 2130970639;
+    return 2131495334;
   }
   
   public void initView()
   {
     Object localObject1 = null;
-    AppMethodBeat.i(104276);
-    this.eiv = ((TextView)findViewById(2131827521));
-    this.eiw = ((TextView)findViewById(2131827522));
-    this.eiy = ((TextView)findViewById(2131827390));
-    this.eiz = ((TextView)findViewById(2131827391));
-    this.eix = ((ImageView)findViewById(2131827385));
-    this.eiA = ((TextView)findViewById(2131827524));
-    this.eiB = ((GridView)findViewById(2131827523));
-    this.eiB.setAdapter(this.eig);
-    if (this.eix != null) {
-      this.eix.setOnClickListener(new SeeAccessVerifyInfoUI.2(this));
+    AppMethodBeat.i(12819);
+    this.fvi = ((TextView)findViewById(2131301072));
+    this.fvj = ((TextView)findViewById(2131301071));
+    this.fvl = ((TextView)findViewById(2131304234));
+    this.fvm = ((TextView)findViewById(2131304236));
+    this.fvk = ((ImageView)findViewById(2131304237));
+    this.fvn = ((TextView)findViewById(2131296325));
+    this.fvo = ((GridView)findViewById(2131297195));
+    this.fvo.setAdapter(this.fuU);
+    if (this.fvk != null) {
+      this.fvk.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(12805);
+          af localaf = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(bt.nullAsNil(SeeAccessVerifyInfoUI.a(SeeAccessVerifyInfoUI.this)));
+          String str = localaf.field_nickname;
+          paramAnonymousView = null;
+          if (SeeAccessVerifyInfoUI.b(SeeAccessVerifyInfoUI.this) != null) {
+            paramAnonymousView = SeeAccessVerifyInfoUI.b(SeeAccessVerifyInfoUI.this).sh(SeeAccessVerifyInfoUI.a(SeeAccessVerifyInfoUI.this));
+          }
+          Object localObject = paramAnonymousView;
+          if (bt.isNullOrNil(paramAnonymousView)) {
+            localObject = localaf.ZX();
+          }
+          SeeAccessVerifyInfoUI.a(SeeAccessVerifyInfoUI.this, SeeAccessVerifyInfoUI.a(SeeAccessVerifyInfoUI.this), (String)localObject, str, false);
+          AppMethodBeat.o(12805);
+        }
+      });
     }
-    this.eiB.setOnTouchListener(new SeeAccessVerifyInfoUI.3(this));
-    this.eiB.postDelayed(new SeeAccessVerifyInfoUI.4(this), 100L);
-    if (this.eix != null) {
-      a.b.c(this.eix, bo.nullAsNil(this.ein));
+    this.fvo.setOnTouchListener(new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        return true;
+      }
+    });
+    this.fvo.postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(12806);
+        int i = 0;
+        if (SeeAccessVerifyInfoUI.c(SeeAccessVerifyInfoUI.this) != null) {
+          if (!SeeAccessVerifyInfoUI.d(SeeAccessVerifyInfoUI.this)) {
+            break label138;
+          }
+        }
+        label138:
+        for (i = (int)(SeeAccessVerifyInfoUI.c(SeeAccessVerifyInfoUI.this).getHeight() * 2 + SeeAccessVerifyInfoUI.this.getResources().getDimension(2131165191) + SeeAccessVerifyInfoUI.this.getResources().getDimension(2131165508));; i = (int)(SeeAccessVerifyInfoUI.c(SeeAccessVerifyInfoUI.this).getHeight() + SeeAccessVerifyInfoUI.this.getResources().getDimension(2131165191) + SeeAccessVerifyInfoUI.this.getResources().getDimension(2131165508)))
+        {
+          int j = i;
+          if (SeeAccessVerifyInfoUI.e(SeeAccessVerifyInfoUI.this).getCount() / 4 > 0) {
+            j = i * (SeeAccessVerifyInfoUI.e(SeeAccessVerifyInfoUI.this).getCount() / 4 + 1);
+          }
+          SeeAccessVerifyInfoUI.f(SeeAccessVerifyInfoUI.this).setLayoutParams(new LinearLayout.LayoutParams(SeeAccessVerifyInfoUI.f(SeeAccessVerifyInfoUI.this).getWidth(), j));
+          AppMethodBeat.o(12806);
+          return;
+        }
+      }
+    }, 100L);
+    if (this.fvk != null) {
+      a.b.c(this.fvk, bt.nullAsNil(this.fvb));
     }
     TextView localTextView1;
     Object localObject2;
     TextView localTextView2;
-    if (this.eiy != null)
+    if (this.fvl != null)
     {
-      localTextView1 = this.eiy;
-      localObject2 = bo.nullAsNil(this.ein);
-      localTextView2 = this.eiy;
+      localTextView1 = this.fvl;
+      localObject2 = bt.nullAsNil(this.fvb);
+      localTextView2 = this.fvl;
       if (localTextView2 != null) {
         break label574;
       }
     }
     label379:
-    ad localad;
+    af localaf;
     for (;;)
     {
       localTextView1.setText((CharSequence)localObject1);
-      if (this.eiz != null)
+      if (this.fvm != null)
       {
-        if ((!t.nK(this.eis)) || (!ad.arf(this.ein))) {
+        if ((!com.tencent.mm.model.w.sn(this.fvg)) || (!af.aHH(this.fvb))) {
           break label777;
         }
         localObject1 = new e();
-        ((e)localObject1).field_appid = this.eio;
-        ((e)localObject1).field_wordingId = this.eip;
-        ((e)localObject1).field_language = aa.gP(ah.getContext());
-        g.RM();
-        ((PluginOpenIM)g.G(PluginOpenIM.class)).getWordingInfoStg().get((com.tencent.mm.sdk.e.c)localObject1, new String[] { "appid", "wordingId", "language" });
+        ((e)localObject1).field_appid = this.fvc;
+        ((e)localObject1).field_wordingId = this.fvd;
+        ((e)localObject1).field_language = ac.ir(com.tencent.mm.sdk.platformtools.aj.getContext());
+        com.tencent.mm.kernel.g.afC();
+        ((PluginOpenIM)com.tencent.mm.kernel.g.ad(PluginOpenIM.class)).getWordingInfoStg().get((com.tencent.mm.sdk.e.c)localObject1, new String[] { "appid", "wordingId", "language" });
         if (TextUtils.isEmpty(((e)localObject1).field_wording)) {
           break label697;
         }
-        this.eiz.setVisibility(0);
-        this.eiz.setText("＠" + ((e)localObject1).field_wording);
+        this.fvm.setVisibility(0);
+        this.fvm.setText("＠" + ((e)localObject1).field_wording);
       }
-      if (this.eiv != null) {
-        this.eiv.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this, bo.nullAsNil(this.eim)));
+      if (this.fvi != null) {
+        this.fvi.setText(com.tencent.mm.pluginsdk.ui.span.k.c(this, bt.nullAsNil(this.fva)));
       }
-      if ((this.eiw != null) && (!bo.isNullOrNil(this.eit))) {
-        this.eiw.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this, "\"" + bo.nullAsNil(this.eit) + "\""));
+      if ((this.fvj != null) && (!bt.isNullOrNil(this.fvh))) {
+        this.fvj.setText(com.tencent.mm.pluginsdk.ui.span.k.c(this, "\"" + bt.nullAsNil(this.fvh) + "\""));
       }
-      if (this.eiA != null) {
-        this.eiA.setOnClickListener(new SeeAccessVerifyInfoUI.5(this));
+      if (this.fvn != null) {
+        this.fvn.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(12809);
+            paramAnonymousView = SeeAccessVerifyInfoUI.this;
+            AppCompatActivity localAppCompatActivity = SeeAccessVerifyInfoUI.this.getContext();
+            SeeAccessVerifyInfoUI.this.getString(2131755906);
+            SeeAccessVerifyInfoUI.a(paramAnonymousView, com.tencent.mm.ui.base.h.b(localAppCompatActivity, SeeAccessVerifyInfoUI.this.getString(2131755122), false, null));
+            if (com.tencent.mm.model.w.sn(SeeAccessVerifyInfoUI.g(SeeAccessVerifyInfoUI.this)))
+            {
+              new com.tencent.mm.openim.c.a.a(SeeAccessVerifyInfoUI.a(SeeAccessVerifyInfoUI.this), SeeAccessVerifyInfoUI.g(SeeAccessVerifyInfoUI.this), SeeAccessVerifyInfoUI.k(SeeAccessVerifyInfoUI.this), new LinkedList(bt.kS(SeeAccessVerifyInfoUI.l(SeeAccessVerifyInfoUI.this), ","))).auK().a(SeeAccessVerifyInfoUI.this).b(new com.tencent.mm.vending.c.a() {});
+              AppMethodBeat.o(12809);
+              return;
+            }
+            new com.tencent.mm.chatroom.d.c(SeeAccessVerifyInfoUI.m(SeeAccessVerifyInfoUI.this), SeeAccessVerifyInfoUI.a(SeeAccessVerifyInfoUI.this), SeeAccessVerifyInfoUI.g(SeeAccessVerifyInfoUI.this), SeeAccessVerifyInfoUI.k(SeeAccessVerifyInfoUI.this), new LinkedList(bt.S(SeeAccessVerifyInfoUI.l(SeeAccessVerifyInfoUI.this).split(",")))).auK().a(SeeAccessVerifyInfoUI.this).b(new com.tencent.mm.vending.c.a() {});
+            AppMethodBeat.o(12809);
+          }
+        });
       }
-      if ((this.eiA != null) && (((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().kB(this.eiq).dyn()))
+      if ((this.fvn != null) && (((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).cOI().rm(this.fve).eMz()))
       {
-        this.eiA.setBackgroundResource(2130838047);
-        this.eiA.setTextColor(getResources().getColor(2131690153));
-        this.eiA.setText(getString(2131300634));
-        this.eiA.setEnabled(false);
+        this.fvn.setBackgroundResource(2131231367);
+        this.fvn.setTextColor(getResources().getColor(2131100476));
+        this.fvn.setText(getString(2131760229));
+        this.fvn.setEnabled(false);
       }
-      AppMethodBeat.o(104276);
+      AppMethodBeat.o(12819);
       return;
       label574:
-      localad = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(bo.nullAsNil((String)localObject2));
-      if (localad != null) {
+      localaf = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(bt.nullAsNil((String)localObject2));
+      if (localaf != null) {
         break;
       }
-      ab.w("MicroMsg.SeeAccessVerifyInfoUI", "ct == null");
+      ad.w("MicroMsg.SeeAccessVerifyInfoUI", "ct == null");
     }
-    if (!bo.isNullOrNil(localad.field_conRemark)) {
-      localObject1 = localad.field_conRemark;
+    if (!bt.isNullOrNil(localaf.field_conRemark)) {
+      localObject1 = localaf.field_conRemark;
     }
     for (;;)
     {
       localObject2 = localObject1;
-      if (bo.isNullOrNil((String)localObject1)) {
-        localObject2 = localad.field_conRemark;
+      if (bt.isNullOrNil((String)localObject1)) {
+        localObject2 = localaf.field_conRemark;
       }
       localObject1 = localObject2;
-      if (bo.isNullOrNil((String)localObject2)) {
-        localObject1 = localad.Oe();
+      if (bt.isNullOrNil((String)localObject2)) {
+        localObject1 = localaf.ZW();
       }
-      localObject1 = com.tencent.mm.pluginsdk.ui.d.j.b(this, bo.nullAsNil((String)localObject1), localTextView2.getTextSize());
+      localObject1 = com.tencent.mm.pluginsdk.ui.span.k.b(this, bt.nullAsNil((String)localObject1), localTextView2.getTextSize());
       break;
-      if (this.efi != null)
+      if (this.fql != null)
       {
-        localObject1 = this.efi.nE((String)localObject2);
+        localObject1 = this.fql.sh((String)localObject2);
         continue;
         label697:
-        if ((!bo.isNullOrNil(this.eip)) && (!bo.isNullOrNil(this.eio)))
+        if ((!bt.isNullOrNil(this.fvd)) && (!bt.isNullOrNil(this.fvc)))
         {
-          this.eiE = true;
+          this.fvr = true;
           localObject2 = new LinkedList();
-          ((LinkedList)localObject2).add(this.eip);
-          g.RK().eHt.a(new i(this.eio, ((e)localObject1).field_language, (LinkedList)localObject2), 0);
+          ((LinkedList)localObject2).add(this.fvd);
+          com.tencent.mm.kernel.g.afA().gcy.a(new i(this.fvc, ((e)localObject1).field_language, (LinkedList)localObject2), 0);
         }
-        this.eiz.setVisibility(4);
+        this.fvm.setVisibility(4);
         break label379;
         label777:
-        this.eiz.setVisibility(8);
+        this.fvm.setVisibility(8);
         break label379;
       }
       localObject1 = null;
@@ -200,98 +274,107 @@ public class SeeAccessVerifyInfoUI
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(104273);
+    AppMethodBeat.i(12816);
     super.onCreate(paramBundle);
-    ab.i("MicroMsg.SeeAccessVerifyInfoUI", "[onCreate]");
-    setMMTitle(getString(2131296395));
-    this.eiq = getIntent().getLongExtra("msgLocalId", 0L);
-    this.eir = getIntent().getLongExtra("msgSvrId", 0L);
-    this.eim = getIntent().getStringExtra("invitertitle");
-    this.ein = getIntent().getStringExtra("inviterusername");
-    this.eio = getIntent().getStringExtra("inviterappid");
-    this.eip = getIntent().getStringExtra("inviterdescid");
-    this.eis = getIntent().getStringExtra("chatroom");
-    this.eit = getIntent().getStringExtra("invitationreason");
-    this.eiu = getIntent().getStringExtra("ticket");
-    this.eii = getIntent().getStringExtra("username");
-    this.eih = getIntent().getStringExtra("nickname");
-    this.eij = getIntent().getStringExtra("descid");
-    this.eik = getIntent().getStringExtra("appid");
-    this.eil = getIntent().getStringExtra("headimgurl");
-    this.efi = ((com.tencent.mm.plugin.chatroom.a.c)g.E(com.tencent.mm.plugin.chatroom.a.c.class)).YJ().oV(bo.nullAsNil(this.eis));
-    this.eig = new SeeAccessVerifyInfoUI.b(this, this);
-    paramBundle = this.eii.split(",");
+    ad.i("MicroMsg.SeeAccessVerifyInfoUI", "[onCreate]");
+    setMMTitle(getString(2131755121));
+    this.fve = getIntent().getLongExtra("msgLocalId", 0L);
+    this.fvf = getIntent().getLongExtra("msgSvrId", 0L);
+    this.fva = getIntent().getStringExtra("invitertitle");
+    this.fvb = getIntent().getStringExtra("inviterusername");
+    this.fvc = getIntent().getStringExtra("inviterappid");
+    this.fvd = getIntent().getStringExtra("inviterdescid");
+    this.fvg = getIntent().getStringExtra("chatroom");
+    this.fvh = getIntent().getStringExtra("invitationreason");
+    this.fsw = getIntent().getStringExtra("ticket");
+    this.fuW = getIntent().getStringExtra("username");
+    this.fuV = getIntent().getStringExtra("nickname");
+    this.fuX = getIntent().getStringExtra("descid");
+    this.fuY = getIntent().getStringExtra("appid");
+    this.fuZ = getIntent().getStringExtra("headimgurl");
+    this.fql = ((com.tencent.mm.plugin.chatroom.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.chatroom.a.c.class)).apV().tI(bt.nullAsNil(this.fvg));
+    this.fuU = new b(this);
+    paramBundle = this.fuW.split(",");
     if ((paramBundle != null) && (paramBundle.length > 0))
     {
       paramBundle = paramBundle[0];
-      ab.i("MicroMsg.SeeAccessVerifyInfoUI", "[%s] has been in chatroom![%s]", new Object[] { paramBundle, this.eis });
-      if ((this.efi.afx() != null) && (this.efi.afx().contains(paramBundle)))
+      ad.i("MicroMsg.SeeAccessVerifyInfoUI", "[%s] has been in chatroom![%s]", new Object[] { paramBundle, this.fvg });
+      if ((this.fql.awt() != null) && (this.fql.awt().contains(paramBundle)))
       {
-        paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().kB(this.eiq);
-        if (!paramBundle.dyn())
+        paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).cOI().rm(this.fve);
+        if (!paramBundle.eMz())
         {
-          paramBundle.dyl();
-          ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPQ().a(this.eiq, paramBundle);
+          paramBundle.eMx();
+          ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).cOI().a(this.fve, paramBundle);
         }
       }
     }
     initView();
-    setBackBtn(new SeeAccessVerifyInfoUI.1(this));
-    AppMethodBeat.o(104273);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(12804);
+        SeeAccessVerifyInfoUI.this.finish();
+        AppMethodBeat.o(12804);
+        return true;
+      }
+    });
+    AppMethodBeat.o(12816);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(104275);
+    AppMethodBeat.i(12818);
     super.onDestroy();
-    g.RK().eHt.b(453, this);
-    AppMethodBeat.o(104275);
+    com.tencent.mm.kernel.g.afA().gcy.b(453, this);
+    AppMethodBeat.o(12818);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(104274);
-    ab.i("MicroMsg.SeeAccessVerifyInfoUI", "[onResume]");
-    g.RK().eHt.a(453, this);
+    AppMethodBeat.i(12817);
+    ad.i("MicroMsg.SeeAccessVerifyInfoUI", "[onResume]");
+    com.tencent.mm.kernel.g.afA().gcy.a(453, this);
     super.onResume();
-    AppMethodBeat.o(104274);
+    AppMethodBeat.o(12817);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(104277);
-    if (((paramm instanceof i)) && (paramInt1 == 0) && (paramInt2 == 0)) {
-      if ((this.eiE) && (bo.aa(this.eiz.getText())))
+    AppMethodBeat.i(12820);
+    if (((paramn instanceof i)) && (paramInt1 == 0) && (paramInt2 == 0)) {
+      if ((this.fvr) && (bt.ai(this.fvm.getText())))
       {
-        this.eiE = false;
+        this.fvr = false;
         paramString = new e();
-        paramString.field_appid = this.eio;
-        paramString.field_wordingId = this.eip;
-        paramString.field_language = aa.gP(ah.getContext());
-        g.RM();
-        ((PluginOpenIM)g.G(PluginOpenIM.class)).getWordingInfoStg().get(paramString, new String[] { "appid", "wordingId", "language" });
+        paramString.field_appid = this.fvc;
+        paramString.field_wordingId = this.fvd;
+        paramString.field_language = ac.ir(com.tencent.mm.sdk.platformtools.aj.getContext());
+        com.tencent.mm.kernel.g.afC();
+        ((PluginOpenIM)com.tencent.mm.kernel.g.ad(PluginOpenIM.class)).getWordingInfoStg().get(paramString, new String[] { "appid", "wordingId", "language" });
         if (TextUtils.isEmpty(paramString.field_wording)) {
           break label190;
         }
-        this.eiz.setVisibility(0);
-        this.eiz.setText("＠" + paramString.field_wording);
+        this.fvm.setVisibility(0);
+        this.fvm.setText("＠" + paramString.field_wording);
       }
     }
     for (;;)
     {
-      if (this.eiD) {
-        this.eig.notifyDataSetChanged();
+      if (this.fvq) {
+        this.fuU.notifyDataSetChanged();
       }
-      AppMethodBeat.o(104277);
+      AppMethodBeat.o(12820);
       return;
       label190:
-      if ((!bo.isNullOrNil(this.eip)) && (!bo.isNullOrNil(this.eio)))
+      if ((!bt.isNullOrNil(this.fvd)) && (!bt.isNullOrNil(this.fvc)))
       {
-        paramm = new LinkedList();
-        paramm.add(this.eip);
-        g.RK().eHt.a(new i(this.eio, paramString.field_language, paramm), 0);
+        paramn = new LinkedList();
+        paramn.add(this.fvd);
+        com.tencent.mm.kernel.g.afA().gcy.a(new i(this.fvc, paramString.field_language, paramn), 0);
       }
-      this.eiz.setVisibility(4);
+      this.fvm.setVisibility(4);
     }
   }
   
@@ -299,6 +382,259 @@ public class SeeAccessVerifyInfoUI
   {
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public final class a
+  {
+    String dlB;
+    String fvu;
+    String fvv;
+    String nickname;
+    String username;
+    
+    a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+    {
+      this.username = paramString1;
+      this.nickname = paramString2;
+      this.dlB = paramString3;
+      this.fvu = paramString4;
+      this.fvv = paramString5;
+    }
+  }
+  
+  public final class b
+    extends BaseAdapter
+  {
+    List<SeeAccessVerifyInfoUI.a> fvw;
+    private com.tencent.mm.aw.a.a.c fvx;
+    Context mContext;
+    
+    public b(Context paramContext)
+    {
+      AppMethodBeat.i(12811);
+      this.fvw = new ArrayList();
+      this.fvx = null;
+      this.mContext = paramContext;
+      VN();
+      this$1 = new com.tencent.mm.aw.a.a.c.a();
+      SeeAccessVerifyInfoUI.this.hjU = true;
+      SeeAccessVerifyInfoUI.this.gjA = true;
+      SeeAccessVerifyInfoUI.this.hkf = 2131690013;
+      this.fvx = SeeAccessVerifyInfoUI.this.azc();
+      AppMethodBeat.o(12811);
+    }
+    
+    private void VN()
+    {
+      AppMethodBeat.i(12812);
+      String[] arrayOfString5;
+      String[] arrayOfString1;
+      String[] arrayOfString2;
+      label112:
+      String[] arrayOfString3;
+      label139:
+      int i;
+      label150:
+      List localList;
+      SeeAccessVerifyInfoUI localSeeAccessVerifyInfoUI;
+      String str5;
+      String str1;
+      label198:
+      String str2;
+      label221:
+      String str3;
+      if (!bt.isNullOrNil(SeeAccessVerifyInfoUI.l(SeeAccessVerifyInfoUI.this)))
+      {
+        String[] arrayOfString4 = SeeAccessVerifyInfoUI.l(SeeAccessVerifyInfoUI.this).split(",");
+        if (bt.isNullOrNil(SeeAccessVerifyInfoUI.n(SeeAccessVerifyInfoUI.this))) {
+          break label318;
+        }
+        arrayOfString5 = SeeAccessVerifyInfoUI.n(SeeAccessVerifyInfoUI.this).split(",");
+        if (bt.isNullOrNil(SeeAccessVerifyInfoUI.o(SeeAccessVerifyInfoUI.this))) {
+          break label332;
+        }
+        arrayOfString1 = SeeAccessVerifyInfoUI.o(SeeAccessVerifyInfoUI.this).split(",");
+        if (bt.isNullOrNil(SeeAccessVerifyInfoUI.p(SeeAccessVerifyInfoUI.this))) {
+          break label344;
+        }
+        arrayOfString2 = SeeAccessVerifyInfoUI.p(SeeAccessVerifyInfoUI.this).split(",");
+        if (bt.isNullOrNil(SeeAccessVerifyInfoUI.q(SeeAccessVerifyInfoUI.this))) {
+          break label356;
+        }
+        arrayOfString3 = SeeAccessVerifyInfoUI.q(SeeAccessVerifyInfoUI.this).split(",");
+        this.fvw.clear();
+        i = 0;
+        if (i >= arrayOfString4.length) {
+          break label403;
+        }
+        localList = this.fvw;
+        localSeeAccessVerifyInfoUI = SeeAccessVerifyInfoUI.this;
+        str5 = arrayOfString4[i];
+        if ((arrayOfString5.length > i) && (!bt.isNullOrNil(arrayOfString5[i]))) {
+          break label369;
+        }
+        str1 = arrayOfString4[i];
+        if ((arrayOfString1 != null) && (arrayOfString1.length > i) && (!bt.isNullOrNil(arrayOfString1[i]))) {
+          break label378;
+        }
+        str2 = "";
+        if ((arrayOfString2 != null) && (arrayOfString2.length > i) && (!bt.isNullOrNil(arrayOfString2[i]))) {
+          break label386;
+        }
+        str3 = "";
+        label244:
+        if ((arrayOfString3 != null) && (arrayOfString3.length > i) && (!bt.isNullOrNil(arrayOfString3[i]))) {
+          break label394;
+        }
+      }
+      label386:
+      label394:
+      for (String str4 = "";; str4 = arrayOfString3[i])
+      {
+        localList.add(new SeeAccessVerifyInfoUI.a(localSeeAccessVerifyInfoUI, str5, str1, str2, str3, str4));
+        i += 1;
+        break label150;
+        ad.w("MicroMsg.SeeAccessVerifyInfoUI", "mInviteesUsernames null");
+        AppMethodBeat.o(12812);
+        return;
+        label318:
+        ad.w("MicroMsg.SeeAccessVerifyInfoUI", "mInviteesNicknames null");
+        AppMethodBeat.o(12812);
+        return;
+        label332:
+        ad.w("MicroMsg.SeeAccessVerifyInfoUI", "mInviteesAppids null");
+        arrayOfString1 = null;
+        break;
+        label344:
+        ad.w("MicroMsg.SeeAccessVerifyInfoUI", "mInviteesDescids null");
+        arrayOfString2 = null;
+        break label112;
+        label356:
+        ad.w("MicroMsg.SeeAccessVerifyInfoUI", "mInviteesHeadimgurls null");
+        arrayOfString3 = null;
+        break label139;
+        label369:
+        str1 = arrayOfString5[i];
+        break label198;
+        label378:
+        str2 = arrayOfString1[i];
+        break label221;
+        str3 = arrayOfString2[i];
+        break label244;
+      }
+      label403:
+      AppMethodBeat.o(12812);
+    }
+    
+    public final int getCount()
+    {
+      AppMethodBeat.i(12813);
+      int i = this.fvw.size();
+      AppMethodBeat.o(12813);
+      return i;
+    }
+    
+    public final Object getItem(int paramInt)
+    {
+      AppMethodBeat.i(12814);
+      Object localObject = this.fvw.get(paramInt);
+      AppMethodBeat.o(12814);
+      return localObject;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public final View getView(final int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(12815);
+      if (paramView == null)
+      {
+        paramView = View.inflate(this.mContext, 2131495276, null);
+        paramViewGroup = SeeAccessVerifyInfoUI.this.ct(paramView);
+      }
+      label479:
+      for (;;)
+      {
+        paramViewGroup.frr.setVisibility(0);
+        paramViewGroup.fvz.setVisibility(0);
+        o.ayJ().a(((SeeAccessVerifyInfoUI.a)this.fvw.get(paramInt)).fvv, paramViewGroup.frr, this.fvx);
+        paramViewGroup.fvz.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.mContext, bt.nullAsNil(((SeeAccessVerifyInfoUI.a)this.fvw.get(paramInt)).nickname), paramViewGroup.fvz.getTextSize()));
+        e locale;
+        if (af.aHH(((SeeAccessVerifyInfoUI.a)this.fvw.get(paramInt)).username))
+        {
+          SeeAccessVerifyInfoUI.r(SeeAccessVerifyInfoUI.this);
+          locale = new e();
+          locale.field_appid = bt.nullAsNil(((SeeAccessVerifyInfoUI.a)this.fvw.get(paramInt)).dlB);
+          locale.field_wordingId = bt.nullAsNil(((SeeAccessVerifyInfoUI.a)this.fvw.get(paramInt)).fvu);
+          locale.field_language = ac.ir(com.tencent.mm.sdk.platformtools.aj.getContext());
+          com.tencent.mm.kernel.g.afC();
+          ((PluginOpenIM)com.tencent.mm.kernel.g.ad(PluginOpenIM.class)).getWordingInfoStg().get(locale, new String[] { "appid", "wordingId", "language" });
+          if (!TextUtils.isEmpty(locale.field_wording))
+          {
+            paramViewGroup.fvA.setVisibility(0);
+            paramViewGroup.fvA.setText("＠" + locale.field_wording);
+          }
+        }
+        for (;;)
+        {
+          paramView.setOnClickListener(new View.OnClickListener()
+          {
+            public final void onClick(View paramAnonymousView)
+            {
+              AppMethodBeat.i(12810);
+              String str = ((SeeAccessVerifyInfoUI.a)SeeAccessVerifyInfoUI.b.this.fvw.get(paramInt)).nickname;
+              paramAnonymousView = null;
+              if (SeeAccessVerifyInfoUI.b(SeeAccessVerifyInfoUI.this) != null) {
+                paramAnonymousView = SeeAccessVerifyInfoUI.b(SeeAccessVerifyInfoUI.this).sh(((SeeAccessVerifyInfoUI.a)SeeAccessVerifyInfoUI.b.this.fvw.get(paramInt)).username);
+              }
+              if (bt.isNullOrNil(paramAnonymousView)) {
+                paramAnonymousView = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).apM().aHY(bt.nullAsNil(((SeeAccessVerifyInfoUI.a)SeeAccessVerifyInfoUI.b.this.fvw.get(paramInt)).username)).ZX();
+              }
+              for (;;)
+              {
+                SeeAccessVerifyInfoUI.a(SeeAccessVerifyInfoUI.this, ((SeeAccessVerifyInfoUI.a)SeeAccessVerifyInfoUI.b.this.fvw.get(paramInt)).username, paramAnonymousView, str, true);
+                AppMethodBeat.o(12810);
+                return;
+              }
+            }
+          });
+          AppMethodBeat.o(12815);
+          return paramView;
+          paramViewGroup = (SeeAccessVerifyInfoUI.c)paramView.getTag();
+          if (paramViewGroup != null) {
+            break label479;
+          }
+          paramViewGroup = SeeAccessVerifyInfoUI.this.ct(paramView);
+          break;
+          if ((!bt.isNullOrNil(locale.field_appid)) && (!bt.isNullOrNil(locale.field_wordingId)))
+          {
+            LinkedList localLinkedList = new LinkedList();
+            localLinkedList.add(locale.field_wordingId);
+            if (!bt.I(paramViewGroup.fvA.getTag(), "first"))
+            {
+              SeeAccessVerifyInfoUI.s(SeeAccessVerifyInfoUI.this);
+              com.tencent.mm.kernel.g.afA().gcy.a(new i(locale.field_appid, locale.field_language, localLinkedList), 0);
+            }
+          }
+          paramViewGroup.fvA.setVisibility(4);
+          paramViewGroup.fvA.setTag("first");
+          continue;
+          paramViewGroup.fvA.setVisibility(8);
+        }
+      }
+    }
+  }
+  
+  final class c
+  {
+    public ImageView frr;
+    public TextView fvA;
+    public TextView fvz;
+    
+    c() {}
   }
 }
 

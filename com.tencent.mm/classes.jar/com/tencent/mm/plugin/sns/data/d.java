@@ -1,30 +1,36 @@
 package com.tencent.mm.plugin.sns.data;
 
+import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cds;
-import java.util.concurrent.ConcurrentHashMap;
 
 public final class d
 {
-  public ConcurrentHashMap<String, CharSequence> rbi;
+  public int requestType;
+  public m wAv;
+  public SparseArray<m> wAw;
   
   public d()
   {
-    AppMethodBeat.i(35794);
-    this.rbi = new ConcurrentHashMap();
-    AppMethodBeat.o(35794);
+    AppMethodBeat.i(95067);
+    this.wAw = new SparseArray();
+    AppMethodBeat.o(95067);
   }
   
-  public final void a(cds paramcds, CharSequence paramCharSequence)
+  public d(SparseArray<m> paramSparseArray)
   {
-    AppMethodBeat.i(35795);
-    this.rbi.put(paramcds.xNY + "-" + paramcds.xOa + "-" + paramcds.ntu, paramCharSequence);
-    AppMethodBeat.o(35795);
+    this.wAw = paramSparseArray;
+    this.requestType = 9;
+  }
+  
+  public d(m paramm, int paramInt)
+  {
+    this.wAv = paramm;
+    this.requestType = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.d
  * JD-Core Version:    0.7.0.1
  */

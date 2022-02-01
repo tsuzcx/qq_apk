@@ -1,91 +1,40 @@
 package com.tencent.mm.emoji.loader.d;
 
-import a.l;
-import android.graphics.drawable.Drawable;
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.b;
-import com.tencent.mm.emoji.view.BaseEmojiView;
-import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import java.lang.ref.WeakReference;
+import d.l;
+import d.y;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/loader/request/EmojiViewRequest;", "Lcom/tencent/mm/emoji/loader/request/ViewRequest;", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "view", "callback", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Lcom/tencent/mm/emoji/view/BaseEmojiView;Lcom/tencent/mm/emoji/loader/request/Request$Callback;)V", "getCallback", "()Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "setCallback", "(Lcom/tencent/mm/emoji/loader/request/Request$Callback;)V", "cancel", "", "onLoad", "success", "", "start", "async", "plugin-emojisdk_release"})
-public class e
-  extends i<BaseEmojiView>
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/request/EmojiFileRequest;", "Lcom/tencent/mm/emoji/loader/request/Request;", "", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "callback", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Lcom/tencent/mm/emoji/loader/request/Request$Callback;)V", "onLoad", "success", "", "plugin-emojisdk_release"})
+public final class e
+  extends i<y>
 {
-  h.a evW;
+  private final i.a fMf;
   
-  public e(EmojiInfo paramEmojiInfo, BaseEmojiView paramBaseEmojiView, h.a parama)
+  public e(EmojiInfo paramEmojiInfo, i.a parama)
   {
-    super(paramEmojiInfo, (View)paramBaseEmojiView);
-    AppMethodBeat.i(63214);
-    this.evW = parama;
-    AppMethodBeat.o(63214);
+    super(paramEmojiInfo);
+    AppMethodBeat.i(105464);
+    this.fMf = parama;
+    AppMethodBeat.o(105464);
   }
   
-  public final void cancel()
+  public final void dg(boolean paramBoolean)
   {
-    AppMethodBeat.i(63213);
-    super.cancel();
-    this.evW = null;
-    AppMethodBeat.o(63213);
-  }
-  
-  public void cf(boolean paramBoolean)
-  {
-    Drawable localDrawable = null;
-    AppMethodBeat.i(63212);
-    String str = f.Ot();
-    StringBuilder localStringBuilder = new StringBuilder("onLoad ").append(this).append(' ');
-    Object localObject = this.evZ;
-    if (localObject != null)
+    AppMethodBeat.i(105463);
+    i.a locala = this.fMf;
+    if (locala != null)
     {
-      localObject = (BaseEmojiView)((WeakReference)localObject).get();
-      ab.d(str, localObject + ' ' + paramBoolean);
-      localObject = this.evZ;
-      if (localObject == null) {
-        break label137;
-      }
-    }
-    label137:
-    for (localObject = (BaseEmojiView)((WeakReference)localObject).get();; localObject = null)
-    {
-      if (paramBoolean) {
-        localDrawable = new com.tencent.mm.emoji.loader.b.a().a(this.evH, null);
-      }
-      b.b((a.f.a.a)new e.a(this, paramBoolean, localDrawable, (BaseEmojiView)localObject));
-      AppMethodBeat.o(63212);
-      return;
-      localObject = null;
-      break;
-    }
-  }
-  
-  public void start(boolean paramBoolean)
-  {
-    AppMethodBeat.i(151759);
-    if (this.evH.dzn())
-    {
-      cf(true);
-      AppMethodBeat.o(151759);
+      locala.df(paramBoolean);
+      AppMethodBeat.o(105463);
       return;
     }
-    Object localObject = this.evZ;
-    if (localObject != null)
-    {
-      localObject = (BaseEmojiView)((WeakReference)localObject).get();
-      if (localObject != null) {
-        ((BaseEmojiView)localObject).init();
-      }
-    }
-    h.a(this);
-    AppMethodBeat.o(151759);
+    AppMethodBeat.o(105463);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.d.e
  * JD-Core Version:    0.7.0.1
  */

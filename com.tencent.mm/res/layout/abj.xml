@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|right" android:orientation="horizontal" android:background="@drawable/bb9" android:paddingLeft="@dimen/a5d" android:paddingRight="@dimen/a5d" android:layout_width="fill_parent" android:layout_height="@dimen/a5f"
+<RelativeLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:textColor="@color/a6s" android:id="@id/d18" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:src="@drawable/bb1" />
-    <TextView android:textSize="@dimen/dw" android:textColor="@color/h6" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/d19" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cwi" android:singleLine="true" />
-    <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="@dimen/dw" android:textColorHint="@color/h7" android:gravity="center|right" android:id="@id/d1_" android:background="@null" android:paddingTop="2.0dip" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:singleLine="true" android:layout_weight="1.0" />
-    <TextView android:textSize="@dimen/dw" android:textColor="@color/h6" android:gravity="center_vertical" android:id="@id/d1a" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/cst" android:singleLine="true" />
-</LinearLayout>
+    <RelativeLayout android:id="@id/cbq" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_alignParentTop="true">
+        <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="31.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+            <com.tencent.mm.plugin.game.media.TextViewWithBottomLine android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/fc" android:id="@id/cdj" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/ctb" />
+            <com.tencent.mm.plugin.game.media.TextViewWithBottomLine android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/fc" android:id="@id/cd2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" android:text="@string/cse" />
+        </LinearLayout>
+        <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:id="@id/cbm" android:layout_width="wrap_content" android:layout_height="31.0dip" android:layout_marginRight="16.0dip" android:text="@string/crf" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        <View android:background="#0d000000" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <android.support.v4.view.ViewPager android:id="@id/cep" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/cbq" />
+</RelativeLayout>

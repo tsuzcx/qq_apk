@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ip
   extends b
 {
-  public ip.a cxY;
+  public a dmB;
   
   public ip()
   {
@@ -15,16 +15,24 @@ public final class ip
   
   private ip(byte paramByte)
   {
-    AppMethodBeat.i(114898);
-    this.cxY = new ip.a();
-    this.ymq = false;
+    AppMethodBeat.i(149863);
+    this.dmB = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(114898);
+    AppMethodBeat.o(149863);
+  }
+  
+  public static final class a
+  {
+    public boolean dmC;
+    public int dmD;
+    public String dmE;
+    public int dmF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ip
  * JD-Core Version:    0.7.0.1
  */

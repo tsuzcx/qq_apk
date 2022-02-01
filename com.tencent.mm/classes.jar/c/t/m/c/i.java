@@ -4,141 +4,222 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class i
+  implements Runnable
 {
-  public static String a = "6.5.1";
-  private static i c = null;
-  private Context b;
-  private List<a> d;
+  public Context a;
+  public List<a> b;
+  public boolean c;
+  public List<a> d;
+  public c e;
+  public boolean f;
   
-  private i(Context paramContext)
+  public i(Context paramContext, List<a> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(136363);
-    this.d = new ArrayList();
-    this.b = paramContext;
-    AppMethodBeat.o(136363);
+    AppMethodBeat.i(39929);
+    this.b = null;
+    this.c = false;
+    this.d = null;
+    this.e = null;
+    this.f = false;
+    this.a = paramContext;
+    this.f = paramBoolean;
+    this.b = new ArrayList();
+    this.b.addAll(paramList);
+    this.e = new c(this.a);
+    AppMethodBeat.o(39929);
   }
   
-  public static i a(Context paramContext)
+  public final String a()
   {
-    AppMethodBeat.i(136364);
-    if (c == null) {}
+    AppMethodBeat.i(39934);
+    JSONObject localJSONObject1 = new JSONObject();
+    Object localObject1 = this.a.getFilesDir().getAbsolutePath() + File.separator + q.b;
     try
     {
-      if (c == null) {
-        c = new i(paramContext);
-      }
-      paramContext = c;
-      AppMethodBeat.o(136364);
-      return paramContext;
-    }
-    finally
-    {
-      AppMethodBeat.o(136364);
-    }
-  }
-  
-  private void b()
-  {
-    AppMethodBeat.i(136366);
-    File localFile = new File(this.b.getFilesDir(), "TencentLocation/comp");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    localFile = new File(this.b.getFilesDir(), "TencentLocation/odex");
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    l.a(this.b);
-    AppMethodBeat.o(136366);
-  }
-  
-  public boolean a()
-  {
-    AppMethodBeat.i(136365);
-    b();
-    String str = a;
-    Object localObject = q.b(this.b, "__Tencent_Cover_SDK_Version__", "");
-    e.a(this.b).a("DCV", (String)localObject + "_" + str);
-    if (!str.equals(localObject))
-    {
-      System.currentTimeMillis();
-      if (!l.c(this.b))
+      localObject2 = q.k(this.a);
+      localJSONObject1.put("appkey", localObject2);
+      localJSONObject1.put("appversion", q.c(this.a));
+      localJSONObject1.put("imei", q.g(this.a));
+      localJSONObject1.put("coverSDKver", h.a);
+      localObject2 = new StringBuilder().append(q.d());
+      localJSONObject1.put("model", "_" + q.e());
+      localJSONObject1.put("APILevel", q.b());
+      localObject2 = new JSONArray();
+      if (this.b != null)
       {
-        AppMethodBeat.o(136365);
-        return false;
-      }
-      q.a(this.b, "__Tencent_Cover_SDK_Version__", str);
-    }
-    localObject = q.b(this.b, "__SP_Tencent_Loc_COMP_INFO__", "");
-    e.a(this.b).a("DLC", (String)localObject);
-    this.d = q.b((String)localObject);
-    if (this.d.size() == 0) {
-      e.a(this.b).a("DLC", "localComp parse error");
-    }
-    localObject = q.c(this.b);
-    if ((localObject == null) || (((List)localObject).size() == 0) || (this.d.size() == 0))
-    {
-      e.a(this.b).a("DLC", "localComp file error");
-      j = 0;
-    }
-    int i;
-    for (;;)
-    {
-      if (j == 0)
-      {
-        e.a(this.b).a("DCR", "goback");
-        System.currentTimeMillis();
-        if (!l.b(this.b))
+        Iterator localIterator = this.b.iterator();
+        while (localIterator.hasNext())
         {
-          e.a(this.b).a("DCR", "copy from asset");
-          if (!l.c(this.b))
+          Object localObject3 = (a)localIterator.next();
+          if (localObject3 != null)
           {
-            e.a(this.b).a("DCR", "copy from asset failed");
-            AppMethodBeat.o(136365);
-            return false;
-            System.currentTimeMillis();
-            Iterator localIterator1 = this.d.iterator();
-            i = 1;
-            j = i;
-            if (!localIterator1.hasNext()) {
-              continue;
-            }
-            a locala = (a)localIterator1.next();
-            Iterator localIterator2 = ((List)localObject).iterator();
-            String[] arrayOfString;
-            do
-            {
-              if (!localIterator2.hasNext()) {
-                break;
-              }
-              arrayOfString = ((String)localIterator2.next()).split(",");
-            } while ((arrayOfString.length != 2) || (!locala.c.equals(arrayOfString[0])) || (!String.valueOf(locala.d).equals(arrayOfString[1])));
+            JSONObject localJSONObject2 = new JSONObject();
+            localJSONObject2.put("compId", ((a)localObject3).a);
+            localJSONObject2.put("compVer", ((a)localObject3).b);
+            localJSONObject2.put("size", ((a)localObject3).d);
+            localObject3 = q.a(new File((String)localObject1, ((a)localObject3).c));
+            localJSONObject2.put("md5", localObject3);
+            ((JSONArray)localObject2).put(localJSONObject2);
           }
         }
       }
+      localException.put("compList", localObject2);
     }
-    for (int j = 1;; j = 0)
+    catch (Exception localException)
     {
-      if (j == 0) {
-        i = 0;
-      }
-      for (;;)
+      e.a(this.a).a("DRG", "reqDerror:" + localException.toString());
+      AppMethodBeat.o(39934);
+      return null;
+    }
+    String str = localException.toString();
+    localObject1 = e.a(this.a);
+    Object localObject2 = new StringBuilder();
+    ((e)localObject1).a("DRG", "req:" + str);
+    str = m.b(str, "sE0zy%DVqLnXA$hmNZ8NBwcg7FDrvi!q");
+    AppMethodBeat.o(39934);
+    return str;
+  }
+  
+  public final boolean a(String paramString)
+  {
+    AppMethodBeat.i(39931);
+    paramString = q.d(m.a(paramString, "sE0zy%DVqLnXA$hmNZ8NBwcg7FDrvi!q"));
+    if (paramString == null)
+    {
+      AppMethodBeat.o(39931);
+      return false;
+    }
+    this.d = q.e(paramString);
+    List localList = q.e(q.a(this.a, "__bad_dex_info__", "preference_default"));
+    if (!localList.isEmpty()) {}
+    for (boolean bool1 = l.a(localList, this.d);; bool1 = false)
+    {
+      boolean bool3 = a(this.b, this.d);
+      localList = q.e(q.a(this.a, "__SP_UPDATE_TencentLoc_COMP_INFO__", "preference_default"));
+      if (!localList.isEmpty()) {}
+      for (boolean bool2 = l.a(localList, this.d);; bool2 = false)
       {
-        break;
-        q.a(this.b, "__Tencent_Cover_SDK_Version__", str);
-        AppMethodBeat.o(136365);
-        return true;
+        e.a(this.a).a("DRG", "need and samebad:" + bool3 + "," + bool1);
+        if ((!bool3) && (!bool1) && (!bool2))
+        {
+          e.a(this.a).a("DRG", "to download:".concat(String.valueOf(paramString)));
+          this.e.b(this.d);
+          AppMethodBeat.o(39931);
+          return true;
+        }
+        AppMethodBeat.o(39931);
+        return false;
       }
     }
+  }
+  
+  public final boolean a(List<a> paramList1, List<a> paramList2)
+  {
+    AppMethodBeat.i(39932);
+    paramList1 = paramList1.iterator();
+    boolean bool = true;
+    label178:
+    for (;;)
+    {
+      if (paramList1.hasNext())
+      {
+        a locala1 = (a)paramList1.next();
+        Iterator localIterator = paramList2.iterator();
+        a locala2;
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          locala2 = (a)localIterator.next();
+          if (!locala2.c.contains(".dex")) {
+            locala2.c += ".dex";
+          }
+        } while ((!locala1.c.equals(locala2.c)) || (locala1.d != locala2.d) || (!locala1.e.equals(locala2.e)));
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label178;
+        }
+        bool = false;
+        break;
+        AppMethodBeat.o(39932);
+        return bool;
+      }
+    }
+  }
+  
+  public final boolean b()
+  {
+    AppMethodBeat.i(39935);
+    long l = q.a(this.a, "__last_check_update_time__", Long.valueOf(0L)).longValue();
+    if (System.currentTimeMillis() - l > 3600000L)
+    {
+      AppMethodBeat.o(39935);
+      return true;
+    }
+    AppMethodBeat.o(39935);
+    return false;
+  }
+  
+  public final boolean c()
+  {
+    AppMethodBeat.i(39933);
+    Object localObject = a();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(39933);
+      return false;
+    }
+    localObject = ((String)localObject).getBytes();
+    if (localObject != null)
+    {
+      new HashMap();
+      int j;
+      for (int i = 0;; i = j)
+      {
+        j = i + 1;
+        if (i >= 3) {
+          break;
+        }
+        byte[] arrayOfByte = p.a("https://cc.map.qq.com?desc_c", (byte[])localObject);
+        if (arrayOfByte != null)
+        {
+          localObject = new String(arrayOfByte);
+          e.a(this.a).a("DRG", "response suc,try:".concat(String.valueOf(j)));
+          boolean bool = a((String)localObject);
+          AppMethodBeat.o(39933);
+          return bool;
+        }
+        q.a(10000L);
+      }
+    }
+    AppMethodBeat.o(39933);
+    return false;
+  }
+  
+  public void run()
+  {
+    AppMethodBeat.i(39930);
+    boolean bool = b();
+    e.a(this.a).a("DRG", "t:" + bool + ",i:" + this.f);
+    c();
+    q.b(this.a, "__last_check_update_time__", Long.valueOf(System.currentTimeMillis()));
+    e.a(this.a).d();
+    AppMethodBeat.o(39930);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     c.t.m.c.i
  * JD-Core Version:    0.7.0.1
  */

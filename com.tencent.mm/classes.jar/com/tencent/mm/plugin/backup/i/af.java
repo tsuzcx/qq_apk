@@ -1,105 +1,105 @@
 package com.tencent.mm.plugin.backup.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import f.a.a.b;
 import java.util.LinkedList;
 
 public final class af
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String jJs;
-  public LinkedList<Long> jKO;
-  public LinkedList<String> jKP;
-  public LinkedList<String> jKQ;
+  public String mAI;
+  public LinkedList<Long> mCd;
+  public LinkedList<String> mCe;
+  public LinkedList<String> mCf;
   
   public af()
   {
-    AppMethodBeat.i(18081);
-    this.jKO = new LinkedList();
-    this.jKP = new LinkedList();
-    this.jKQ = new LinkedList();
-    AppMethodBeat.o(18081);
+    AppMethodBeat.i(22138);
+    this.mCd = new LinkedList();
+    this.mCe = new LinkedList();
+    this.mCf = new LinkedList();
+    AppMethodBeat.o(22138);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(18082);
+    AppMethodBeat.i(22139);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.jJs == null)
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.mAI == null)
       {
         paramVarArgs = new b("Not all required fields were included: BakChatName");
-        AppMethodBeat.o(18082);
+        AppMethodBeat.o(22139);
         throw paramVarArgs;
       }
-      paramVarArgs.e(1, 3, this.jKO);
-      paramVarArgs.e(2, 1, this.jKP);
-      paramVarArgs.e(3, 1, this.jKQ);
-      if (this.jJs != null) {
-        paramVarArgs.e(4, this.jJs);
+      paramVarArgs.e(1, 3, this.mCd);
+      paramVarArgs.e(2, 1, this.mCe);
+      paramVarArgs.e(3, 1, this.mCf);
+      if (this.mAI != null) {
+        paramVarArgs.d(4, this.mAI);
       }
-      AppMethodBeat.o(18082);
+      AppMethodBeat.o(22139);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = e.a.a.a.c(1, 3, this.jKO) + 0 + e.a.a.a.c(2, 1, this.jKP) + e.a.a.a.c(3, 1, this.jKQ);
+      int i = f.a.a.a.c(1, 3, this.mCd) + 0 + f.a.a.a.c(2, 1, this.mCe) + f.a.a.a.c(3, 1, this.mCf);
       paramInt = i;
-      if (this.jJs != null) {
-        paramInt = i + e.a.a.b.b.a.f(4, this.jJs);
+      if (this.mAI != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.mAI);
       }
-      AppMethodBeat.o(18082);
+      AppMethodBeat.o(22139);
       return paramInt;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.jKO.clear();
-      this.jKP.clear();
-      this.jKQ.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      this.mCd.clear();
+      this.mCe.clear();
+      this.mCf.clear();
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      if (this.jJs == null)
+      if (this.mAI == null)
       {
         paramVarArgs = new b("Not all required fields were included: BakChatName");
-        AppMethodBeat.o(18082);
+        AppMethodBeat.o(22139);
         throw paramVarArgs;
       }
-      AppMethodBeat.o(18082);
+      AppMethodBeat.o(22139);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       af localaf = (af)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(18082);
+        AppMethodBeat.o(22139);
         return -1;
       case 1: 
-        localaf.jKO.add(Long.valueOf(locala.CLY.sm()));
-        AppMethodBeat.o(18082);
+        localaf.mCd.add(Long.valueOf(locala.KhF.xT()));
+        AppMethodBeat.o(22139);
         return 0;
       case 2: 
-        localaf.jKP.add(locala.CLY.readString());
-        AppMethodBeat.o(18082);
+        localaf.mCe.add(locala.KhF.readString());
+        AppMethodBeat.o(22139);
         return 0;
       case 3: 
-        localaf.jKQ.add(locala.CLY.readString());
-        AppMethodBeat.o(18082);
+        localaf.mCf.add(locala.KhF.readString());
+        AppMethodBeat.o(22139);
         return 0;
       }
-      localaf.jJs = locala.CLY.readString();
-      AppMethodBeat.o(18082);
+      localaf.mAI = locala.KhF.readString();
+      AppMethodBeat.o(22139);
       return 0;
     }
-    AppMethodBeat.o(18082);
+    AppMethodBeat.o(22139);
     return -1;
   }
 }

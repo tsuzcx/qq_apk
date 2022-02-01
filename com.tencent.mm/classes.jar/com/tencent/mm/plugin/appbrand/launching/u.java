@@ -1,28 +1,20 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.ba.a;
+import com.tencent.mm.protocal.protobuf.ckp;
 
-abstract class u
-  implements ba.a
+public final class u
 {
-  final int hcr;
-  
-  u(int paramInt)
-  {
-    this.hcr = paramInt;
-  }
-  
-  abstract String aGZ();
-  
-  protected void b(WxaPkgLoadProgress paramWxaPkgLoadProgress) {}
-  
-  abstract void c(WxaPkgWrappingInfo paramWxaPkgWrappingInfo);
+  ckp kII;
+  int kIJ;
+  int kIK;
+  String kIL;
+  String kIM;
+  String kIN;
+  String md5;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.u
  * JD-Core Version:    0.7.0.1
  */

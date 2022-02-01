@@ -7,56 +7,35 @@ import com.tencent.mm.sdk.e.c;
 public abstract class eo
   extends c
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS SnsComment_snsID_index ON SnsComment(snsID)", "CREATE INDEX IF NOT EXISTS SnsComment_parentID_index ON SnsComment(parentID)", "CREATE INDEX IF NOT EXISTS SnsComment_isRead_index ON SnsComment(isRead)", "CREATE INDEX IF NOT EXISTS SnsComment_isSend_index ON SnsComment(isSend)" };
-  private static final int dOA;
-  private static final int dOB = "curActionBuf".hashCode();
-  private static final int dOC = "refActionBuf".hashCode();
-  private static final int dOD = "commentSvrID".hashCode();
-  private static final int dOE = "clientId".hashCode();
-  private static final int dOF = "commentflag".hashCode();
-  private static final int dOG = "isSilence".hashCode();
-  private static final int dOz = "snsID".hashCode();
-  private static final int dgM;
-  private static final int dle;
-  private static final int dnh;
-  private static final int dnq;
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestAppIDIndex ON PredownloadBlockCgiRequest(appId)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestStartTimeIndex ON PredownloadBlockCgiRequest(startTime)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestEndTimeIndex ON PredownloadBlockCgiRequest(endTime)" };
+  private static final int eSM = "sceneList".hashCode();
+  private static final int eSN = "cgiList".hashCode();
+  private static final int ekd;
+  private static final int eke;
+  private static final int elJ;
+  private static final int eme = "username".hashCode();
+  private static final int enk = "reportId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE;
-  private boolean __hadSettype = true;
-  private boolean dOr = true;
-  private boolean dOs = true;
-  private boolean dOt = true;
-  private boolean dOu = true;
-  private boolean dOv = true;
-  private boolean dOw = true;
-  private boolean dOx = true;
-  private boolean dOy = true;
-  private boolean dgp = true;
-  private boolean dkQ = true;
-  private boolean dmW = true;
-  private boolean dnf = true;
-  public String field_clientId;
-  public long field_commentSvrID;
-  public int field_commentflag;
-  public int field_createTime;
-  public byte[] field_curActionBuf;
-  public short field_isRead;
-  public boolean field_isSend;
-  public int field_isSilence;
-  public long field_parentID;
-  public byte[] field_refActionBuf;
-  public long field_snsID;
-  public String field_talker;
-  public int field_type;
+  private boolean eSK = true;
+  private boolean eSL = true;
+  private boolean ejW = true;
+  private boolean ejX = true;
+  private boolean els = true;
+  private boolean emb = true;
+  private boolean enf = true;
+  public String field_appId;
+  public String field_cgiList;
+  public long field_endTime;
+  public int field_reportId;
+  public String field_sceneList;
+  public long field_startTime;
+  public String field_username;
   
   static
   {
-    dOA = "parentID".hashCode();
-    dnq = "isRead".hashCode();
-    dgM = "createTime".hashCode();
-    dnh = "talker".hashCode();
-    type_HASHCODE = "type".hashCode();
-    dle = "isSend".hashCode();
+    elJ = "appId".hashCode();
+    ekd = "startTime".hashCode();
+    eke = "endTime".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -65,70 +44,39 @@ public abstract class eo
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dOz != k) {
-        break label60;
+      if (eme != k) {
+        break label65;
       }
-      this.field_snsID = paramCursor.getLong(i);
+      this.field_username = paramCursor.getString(i);
+      this.emb = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (dOA == k)
-      {
-        this.field_parentID = paramCursor.getLong(i);
-      }
-      else if (dnq == k)
-      {
-        this.field_isRead = paramCursor.getShort(i);
-      }
-      else if (dgM == k)
-      {
-        this.field_createTime = paramCursor.getInt(i);
-      }
-      else if (dnh == k)
-      {
-        this.field_talker = paramCursor.getString(i);
-      }
-      else if (type_HASHCODE == k)
-      {
-        this.field_type = paramCursor.getInt(i);
-      }
-      else
-      {
-        if (dle == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_isSend = bool;
-            break;
-          }
-        }
-        if (dOB == k) {
-          this.field_curActionBuf = paramCursor.getBlob(i);
-        } else if (dOC == k) {
-          this.field_refActionBuf = paramCursor.getBlob(i);
-        } else if (dOD == k) {
-          this.field_commentSvrID = paramCursor.getLong(i);
-        } else if (dOE == k) {
-          this.field_clientId = paramCursor.getString(i);
-        } else if (dOF == k) {
-          this.field_commentflag = paramCursor.getInt(i);
-        } else if (dOG == k) {
-          this.field_isSilence = paramCursor.getInt(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      label65:
+      if (elJ == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (ekd == k) {
+        this.field_startTime = paramCursor.getLong(i);
+      } else if (eke == k) {
+        this.field_endTime = paramCursor.getLong(i);
+      } else if (eSM == k) {
+        this.field_sceneList = paramCursor.getString(i);
+      } else if (eSN == k) {
+        this.field_cgiList = paramCursor.getString(i);
+      } else if (enk == k) {
+        this.field_reportId = paramCursor.getInt(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -136,44 +84,26 @@ public abstract class eo
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dOr) {
-      localContentValues.put("snsID", Long.valueOf(this.field_snsID));
+    if (this.emb) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.dOs) {
-      localContentValues.put("parentID", Long.valueOf(this.field_parentID));
+    if (this.els) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.dnf) {
-      localContentValues.put("isRead", Short.valueOf(this.field_isRead));
+    if (this.ejW) {
+      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
     }
-    if (this.dgp) {
-      localContentValues.put("createTime", Integer.valueOf(this.field_createTime));
+    if (this.ejX) {
+      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
     }
-    if (this.dmW) {
-      localContentValues.put("talker", this.field_talker);
+    if (this.eSK) {
+      localContentValues.put("sceneList", this.field_sceneList);
     }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
+    if (this.eSL) {
+      localContentValues.put("cgiList", this.field_cgiList);
     }
-    if (this.dkQ) {
-      localContentValues.put("isSend", Boolean.valueOf(this.field_isSend));
-    }
-    if (this.dOt) {
-      localContentValues.put("curActionBuf", this.field_curActionBuf);
-    }
-    if (this.dOu) {
-      localContentValues.put("refActionBuf", this.field_refActionBuf);
-    }
-    if (this.dOv) {
-      localContentValues.put("commentSvrID", Long.valueOf(this.field_commentSvrID));
-    }
-    if (this.dOw) {
-      localContentValues.put("clientId", this.field_clientId);
-    }
-    if (this.dOx) {
-      localContentValues.put("commentflag", Integer.valueOf(this.field_commentflag));
-    }
-    if (this.dOy) {
-      localContentValues.put("isSilence", Integer.valueOf(this.field_isSilence));
+    if (this.enf) {
+      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -183,7 +113,7 @@ public abstract class eo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.eo
  * JD-Core Version:    0.7.0.1
  */

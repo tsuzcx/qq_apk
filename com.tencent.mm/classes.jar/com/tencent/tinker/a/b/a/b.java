@@ -5,7 +5,7 @@ import com.tencent.tinker.a.b.b.a;
 
 public final class b
 {
-  public static short P(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static short V(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     if ((paramInt1 & 0xFFFFFFF0) != 0) {
       throw new IllegalArgumentException("bogus nibble0");
@@ -22,7 +22,7 @@ public final class b
     return (short)(paramInt2 << 4 | paramInt1 | paramInt3 << 8 | paramInt4 << 12);
   }
   
-  public static short SC(int paramInt)
+  public static short acn(int paramInt)
   {
     if ((0xFFFF0000 & paramInt) != 0) {
       throw new IllegalArgumentException("bogus unsigned code unit");
@@ -30,28 +30,28 @@ public final class b
     return (short)paramInt;
   }
   
-  public static int SD(int paramInt)
+  public static int aco(int paramInt)
   {
     return paramInt >> 8 & 0xFF;
   }
   
-  public static short SE(int paramInt)
+  public static short acp(int paramInt)
   {
     if ((0xFFFF0000 & paramInt) != 0) {
-      throw new j("Register A out of range: " + a.pc(paramInt));
+      throw new j("Register A out of range: " + a.xo(paramInt));
     }
     return (short)paramInt;
   }
   
-  public static short SF(int paramInt)
+  public static short acq(int paramInt)
   {
     if ((0xFFFF0000 & paramInt) != 0) {
-      throw new j("Register B out of range: " + a.pc(paramInt));
+      throw new j("Register B out of range: " + a.xo(paramInt));
     }
     return (short)paramInt;
   }
   
-  public static int SG(int paramInt)
+  public static int acr(int paramInt)
   {
     switch (paramInt)
     {
@@ -112,7 +112,7 @@ public final class b
     return 1;
   }
   
-  public static short is(int paramInt1, int paramInt2)
+  public static short kv(int paramInt1, int paramInt2)
   {
     if ((paramInt1 & 0xFFFFFF00) != 0) {
       throw new IllegalArgumentException("bogus lowByte");
@@ -123,7 +123,7 @@ public final class b
     return (short)(paramInt2 << 8 | paramInt1);
   }
   
-  public static int it(int paramInt1, int paramInt2)
+  public static int kw(int paramInt1, int paramInt2)
   {
     if ((paramInt1 & 0xFFFFFFF0) != 0) {
       throw new IllegalArgumentException("bogus lowNibble");
@@ -134,26 +134,26 @@ public final class b
     return paramInt2 << 4 | paramInt1;
   }
   
-  public static short iu(int paramInt1, int paramInt2)
+  public static short kx(int paramInt1, int paramInt2)
   {
     paramInt1 -= paramInt2;
     if (paramInt1 != (short)paramInt1) {
-      throw new j("Target out of range: " + a.SM(paramInt1) + ", perhaps you need to enable force jumbo mode.");
+      throw new j("Target out of range: " + a.acx(paramInt1) + ", perhaps you need to enable force jumbo mode.");
     }
     return (short)paramInt1;
   }
   
-  public static short pb(long paramLong)
+  public static short xn(long paramLong)
   {
     if (paramLong != (short)(int)paramLong) {
-      throw new j("Literal out of range: " + a.pc(paramLong));
+      throw new j("Literal out of range: " + a.xo(paramLong));
     }
     return (short)(int)paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.a.b.a.b
  * JD-Core Version:    0.7.0.1
  */

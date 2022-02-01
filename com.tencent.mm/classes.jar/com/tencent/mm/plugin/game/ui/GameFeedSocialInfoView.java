@@ -5,18 +5,18 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.d.y;
+import com.tencent.mm.plugin.game.d.aa;
 import com.tencent.mm.plugin.game.widget.GameSmallAvatarList;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class GameFeedSocialInfoView
   extends LinearLayout
 {
-  private TextView kPB;
-  private LinearLayout nzq;
-  private GameSmallAvatarList nzr;
-  private TextView nzs;
-  private LinearLayout nzt;
+  private TextView kFd;
+  private LinearLayout siQ;
+  private GameSmallAvatarList siR;
+  private TextView siS;
+  private LinearLayout siT;
   
   public GameFeedSocialInfoView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,46 +25,46 @@ public class GameFeedSocialInfoView
   
   protected void onFinishInflate()
   {
-    AppMethodBeat.i(111948);
+    AppMethodBeat.i(42128);
     super.onFinishInflate();
-    this.nzq = ((LinearLayout)findViewById(2131824771));
-    this.nzr = ((GameSmallAvatarList)findViewById(2131824772));
-    this.nzs = ((TextView)findViewById(2131824773));
-    this.nzt = ((LinearLayout)findViewById(2131821115));
-    this.kPB = ((TextView)findViewById(2131824774));
-    AppMethodBeat.o(111948);
+    this.siQ = ((LinearLayout)findViewById(2131297011));
+    this.siR = ((GameSmallAvatarList)findViewById(2131297012));
+    this.siS = ((TextView)findViewById(2131297003));
+    this.siT = ((LinearLayout)findViewById(2131298996));
+    this.kFd = ((TextView)findViewById(2131299007));
+    AppMethodBeat.o(42128);
   }
   
-  public void setData(y paramy)
+  public void setData(aa paramaa)
   {
-    AppMethodBeat.i(111949);
-    if ((!bo.es(paramy.nqZ)) || (paramy.nra != null))
+    AppMethodBeat.i(42129);
+    if ((!bt.gL(paramaa.saC)) || (paramaa.saD != null))
     {
-      this.nzq.setVisibility(0);
-      this.nzr.setData(paramy.nqZ);
-      if (paramy.nra != null)
+      this.siQ.setVisibility(0);
+      this.siR.setData(paramaa.saC);
+      if (paramaa.saD != null)
       {
-        this.nzs.setText(paramy.nra);
-        this.nzs.setVisibility(0);
+        this.siS.setText(paramaa.saD);
+        this.siS.setVisibility(0);
       }
     }
-    while (paramy.Desc != null)
+    while (paramaa.Desc != null)
     {
-      this.nzt.setVisibility(0);
-      this.kPB.setText(paramy.Desc);
-      AppMethodBeat.o(111949);
+      this.siT.setVisibility(0);
+      this.kFd.setText(paramaa.Desc);
+      AppMethodBeat.o(42129);
       return;
-      this.nzs.setVisibility(8);
+      this.siS.setVisibility(8);
       continue;
-      this.nzq.setVisibility(8);
+      this.siQ.setVisibility(8);
     }
-    this.nzt.setVisibility(8);
-    AppMethodBeat.o(111949);
+    this.siT.setVisibility(8);
+    AppMethodBeat.o(42129);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameFeedSocialInfoView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class as
   extends b
 {
-  public as.a cod;
+  public a dcP;
   
   public as()
   {
@@ -15,16 +15,22 @@ public final class as
   
   private as(byte paramByte)
   {
-    AppMethodBeat.i(70135);
-    this.cod = new as.a();
-    this.ymq = false;
+    AppMethodBeat.i(115970);
+    this.dcP = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70135);
+    AppMethodBeat.o(115970);
+  }
+  
+  public static final class a
+  {
+    public long dcQ;
+    public String filePath;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.as
  * JD-Core Version:    0.7.0.1
  */

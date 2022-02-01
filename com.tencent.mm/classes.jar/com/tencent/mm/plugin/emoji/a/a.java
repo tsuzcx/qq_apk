@@ -4,97 +4,101 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.a.a.e;
 import com.tencent.mm.plugin.emoji.a.a.f;
-import com.tencent.mm.plugin.emoji.model.h.a;
+import com.tencent.mm.plugin.emoji.model.j.a;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public abstract class a
 {
   private final String TAG = "MicroMsg.emoji.BaseEmojiItemHolder";
-  protected TextView iJG;
-  protected View ldA;
-  protected ImageView ldB;
-  protected ImageView ldC;
-  protected TextView ldD;
-  protected TextView ldE;
-  protected ProgressBar ldF;
-  protected ViewGroup ldG;
-  protected View ldH;
-  protected TextView ldI;
-  protected ImageView ldJ;
-  protected View ldK;
-  protected ProgressBar ldL;
-  protected TextView ldM;
-  protected TextView ldN;
-  protected FrameLayout ldO;
-  protected View ldP;
-  private View ldt;
-  private final int ldu = 2130969370;
-  private final int ldv = 2130969396;
-  private final int ldw = 2130969397;
-  private int[] ldx = { -1, -1 };
-  private int ldy = -1;
-  public f ldz;
+  protected View iIW;
+  protected TextView kEu;
   Context mContext;
   private LayoutInflater mLayoutInflater;
   public int mPosition;
+  private View otd;
+  private final int ote = 2131493771;
+  private final int otf = 2131493808;
+  private final int otg = 2131493809;
+  private int[] oth = { -1, -1 };
+  private int oti = -1;
+  public f otj;
+  protected View otk;
+  protected ImageView otl;
+  protected ImageView otm;
+  protected View otn;
+  protected TextView oto;
+  protected TextView otp;
+  protected ProgressBar otq;
+  protected ViewGroup otr;
+  protected View ots;
+  protected TextView ott;
+  protected ImageView otu;
+  protected View otv;
+  protected ProgressBar otw;
+  protected TextView otx;
+  protected TextView oty;
+  protected FrameLayout otz;
   
   public a(Context paramContext, View paramView)
   {
-    this(paramContext, paramView, a.a.ldT);
+    this(paramContext, paramView, a.otD);
   }
   
-  private a(Context paramContext, View paramView, a.a parama)
+  private a(Context paramContext, View paramView, a parama)
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(this.mContext);
     paramContext = paramView;
     if (paramView == null) {}
-    label433:
+    label446:
     int i;
-    switch (a.2.ldS[parama.ordinal()])
+    switch (2.otC[parama.ordinal()])
     {
     default: 
-      paramContext = ud(this.ldu);
-      this.ldP = paramContext;
+      paramContext = Am(this.ote);
+      this.iIW = paramContext;
       if (paramContext != null)
       {
-        this.ldt = paramContext;
-        this.ldA = this.ldt.findViewById(2131823588);
-        this.ldC = ((ImageView)this.ldt.findViewById(2131823600));
-        this.ldB = ((ImageView)this.ldt.findViewById(2131823589));
-        this.iJG = ((TextView)this.ldt.findViewById(2131823433));
-        this.ldD = ((TextView)this.ldt.findViewById(2131823593));
-        this.ldE = ((TextView)this.ldt.findViewById(2131823592));
-        this.ldF = ((ProgressBar)this.ldt.findViewById(2131823597));
-        this.ldH = this.ldt.findViewById(2131823591);
-        this.ldG = ((ViewGroup)this.ldt.findViewById(2131823594));
-        this.ldI = ((TextView)this.ldt.findViewById(2131823595));
-        this.ldJ = ((ImageView)this.ldt.findViewById(2131823596));
-        this.ldK = this.ldt.findViewById(2131823598);
-        this.ldL = ((ProgressBar)this.ldt.findViewById(2131823599));
-        this.ldM = ((TextView)this.ldt.findViewById(2131823586));
-        this.ldN = ((TextView)this.ldt.findViewById(2131823673));
-        this.ldO = ((FrameLayout)this.ldt.findViewById(2131823587));
+        this.otd = paramContext;
+        this.otk = this.otd.findViewById(2131301144);
+        this.otm = ((ImageView)this.otd.findViewById(2131301197));
+        this.otl = ((ImageView)this.otd.findViewById(2131301154));
+        this.kEu = ((TextView)this.otd.findViewById(2131301169));
+        this.otn = this.otd.findViewById(2131301171);
+        this.oto = ((TextView)this.otd.findViewById(2131301146));
+        this.otp = ((TextView)this.otd.findViewById(2131301157));
+        this.otq = ((ProgressBar)this.otd.findViewById(2131303403));
+        this.ots = this.otd.findViewById(2131301174);
+        this.otr = ((ViewGroup)this.otd.findViewById(2131301185));
+        this.ott = ((TextView)this.otd.findViewById(2131301192));
+        this.otu = ((ImageView)this.otd.findViewById(2131301194));
+        this.otv = this.otd.findViewById(2131301183);
+        this.otw = ((ProgressBar)this.otd.findViewById(2131301151));
+        this.otx = ((TextView)this.otd.findViewById(2131301142));
+        this.oty = ((TextView)this.otd.findViewById(2131301172));
+        this.otz = ((FrameLayout)this.otd.findViewById(2131301166));
       }
-      bkk();
-      if (parama == a.a.ldT)
+      bTZ();
+      if (parama == a.otD)
       {
-        paramView = bkl();
-        if ((this.ldB != null) && (paramView[0] >= 0) && (paramView[1] >= 0) && ((paramView[0] != this.ldx[0]) || (paramView[1] != this.ldx[1]))) {
-          break label502;
+        paramView = bUa();
+        if ((this.otl != null) && (paramView[0] >= 0) && (paramView[1] >= 0) && ((paramView[0] != this.oth[0]) || (paramView[1] != this.oth[1]))) {
+          break label515;
         }
-        i = bkm();
-        if ((this.ldt != null) && (i >= 0) && (this.ldy != i)) {
-          break label540;
+        i = bUb();
+        if ((this.otd != null) && (i >= 0) && (this.oti != i)) {
+          break label553;
         }
       }
       break;
@@ -103,49 +107,28 @@ public abstract class a
     {
       paramContext.setTag(this);
       return;
-      paramContext = ud(this.ldu);
+      paramContext = Am(this.ote);
       break;
-      paramContext = ud(this.ldw);
+      paramContext = Am(this.otg);
       break;
-      paramContext = ud(this.ldv);
+      paramContext = Am(this.otf);
       break;
-      label502:
-      parama = this.ldB.getLayoutParams();
+      label515:
+      parama = this.otl.getLayoutParams();
       parama.width = paramView[0];
       parama.height = paramView[1];
-      this.ldB.setLayoutParams(parama);
-      this.ldx = paramView;
-      break label433;
-      label540:
-      this.ldt.setMinimumHeight(i);
-      if (this.ldA != null) {
-        this.ldA.setMinimumHeight(i);
+      this.otl.setLayoutParams(parama);
+      this.oth = paramView;
+      break label446;
+      label553:
+      this.otd.setMinimumHeight(i);
+      if (this.otk != null) {
+        this.otk.setMinimumHeight(i);
       }
     }
   }
   
-  private void bkx()
-  {
-    this.ldF.setVisibility(8);
-    this.ldG.setBackgroundResource(2130838045);
-    this.ldG.setVisibility(0);
-    this.ldH.setEnabled(true);
-    this.ldI.setText("");
-    if (this.ldK == null) {
-      this.ldL.setVisibility(4);
-    }
-    for (;;)
-    {
-      this.ldI.setVisibility(0);
-      this.ldI.setText(2131299193);
-      this.ldI.setTextColor(this.mContext.getResources().getColorStateList(2131690799));
-      this.ldJ.setVisibility(8);
-      return;
-      this.ldK.setVisibility(4);
-    }
-  }
-  
-  private View ud(int paramInt)
+  private View Am(int paramInt)
   {
     if ((this.mLayoutInflater == null) || (paramInt <= 0)) {
       return null;
@@ -153,298 +136,344 @@ public abstract class a
     return this.mLayoutInflater.inflate(paramInt, null);
   }
   
-  public final void Kg(String paramString)
+  private void bUm()
   {
-    this.ldD.setText(paramString);
+    this.otq.setVisibility(8);
+    this.otr.setBackgroundResource(2131231365);
+    this.otr.setVisibility(0);
+    this.ots.setEnabled(true);
+    this.ott.setText("");
+    if (this.otv == null) {
+      this.otw.setVisibility(4);
+    }
+    for (;;)
+    {
+      this.ott.setVisibility(0);
+      this.ott.setText(2131758319);
+      this.ott.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
+      this.otu.setVisibility(8);
+      return;
+      this.otv.setVisibility(4);
+    }
   }
   
-  public final void Kh(String paramString)
+  public final void An(int paramInt)
   {
-    if (bo.isNullOrNil(paramString))
+    this.otm.setVisibility(paramInt);
+  }
+  
+  public final void Ao(int paramInt)
+  {
+    this.ots.setVisibility(paramInt);
+  }
+  
+  public final void Tm(String paramString)
+  {
+    this.oto.setText(paramString);
+  }
+  
+  public final void Tn(String paramString)
+  {
+    if (bt.isNullOrNil(paramString))
     {
-      this.ldE.setVisibility(8);
+      this.otp.setVisibility(8);
       return;
     }
-    this.ldE.setVisibility(0);
-    this.ldE.setText(paramString);
+    this.otp.setVisibility(0);
+    this.otp.setText(paramString);
   }
   
-  public final void a(h.a parama)
+  public final void a(final j.a parama)
   {
-    if (this.ldH != null) {
-      this.ldH.setOnClickListener(new a.1(this, parama));
+    if (this.ots != null) {
+      this.ots.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(108290);
+          if (a.this.a(parama, paramAnonymousView)) {
+            a.this.b(parama, paramAnonymousView);
+          }
+          AppMethodBeat.o(108290);
+        }
+      });
     }
   }
   
-  protected boolean a(h.a parama, View paramView)
+  protected boolean a(j.a parama, View paramView)
   {
     return true;
   }
   
-  protected void b(h.a parama, View paramView)
+  protected void b(j.a parama, View paramView)
   {
     if (parama != null) {
       parama.a(this);
     }
   }
   
-  protected abstract void bkk();
+  protected abstract void bTZ();
   
-  protected abstract int[] bkl();
+  protected abstract int[] bUa();
   
-  protected abstract int bkm();
+  protected abstract int bUb();
   
-  public final void bkn()
+  public final void bUc()
   {
-    this.iJG.setText(2131299259);
+    this.kEu.setText(2131758385);
   }
   
-  public final ImageView bko()
+  public final ImageView bUd()
   {
-    return this.ldB;
+    return this.otl;
   }
   
-  public final void bkp()
+  public final void bUe()
   {
-    this.ldB.setImageResource(2130839105);
+    this.otl.setImageResource(2131232662);
   }
   
-  public final ImageView bkq()
+  public final ImageView bUf()
   {
-    return this.ldC;
+    return this.otm;
   }
   
-  public final void bkr()
+  public final void bUg()
   {
-    this.ldC.setImageResource(2130838655);
+    this.otm.setImageResource(2131232094);
   }
   
-  public final void bks()
+  public final void bUh()
   {
-    this.ldD.setVisibility(8);
-    this.ldE.setVisibility(8);
+    this.oto.setVisibility(8);
+    this.otp.setVisibility(8);
   }
   
-  public final int bkt()
+  public final int bUi()
   {
-    if (this.ldz == null) {}
-    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.ldz.mStatus)) {
+    if (this.otj == null) {}
+    for (Integer localInteger = null;; localInteger = Integer.valueOf(this.otj.mStatus)) {
       return localInteger.intValue();
     }
   }
   
-  public final String bku()
+  public final String bUj()
   {
-    if (this.ldz == null) {}
-    while (this.ldz.lfa == null) {
+    if (this.otj == null) {}
+    while (this.otj.ouL == null) {
       return null;
     }
-    return this.ldz.lfa.PackPrice;
+    return this.otj.ouL.PackPrice;
   }
   
-  protected abstract boolean bkv();
+  protected abstract boolean bUk();
   
-  protected final void bkw()
+  protected final void bUl()
   {
-    this.ldF.setVisibility(8);
-    this.ldG.setVisibility(8);
-    this.ldH.setEnabled(false);
-    this.ldJ.setVisibility(8);
-    this.ldL.setVisibility(0);
-    this.ldL.setProgress(getProgress());
-    if (this.ldK == null)
+    this.otq.setVisibility(8);
+    this.otr.setVisibility(8);
+    this.ots.setEnabled(false);
+    this.otu.setVisibility(8);
+    this.otw.setVisibility(0);
+    this.otw.setProgress(getProgress());
+    if (this.otv == null)
     {
-      this.ldL.setVisibility(0);
+      this.otw.setVisibility(0);
       return;
     }
-    this.ldK.setVisibility(0);
+    this.otv.setVisibility(0);
   }
   
-  public void bky()
+  public void bUn()
   {
-    if (this.ldz == null) {}
-    while (!bkv()) {
+    if (this.otj == null) {}
+    while (!bUk()) {
       return;
     }
-    this.ldI.setVisibility(8);
-    this.ldI.setTextColor(this.mContext.getResources().getColorStateList(2131690741));
-    switch (bkt())
+    this.ott.setVisibility(8);
+    this.ott.setTextColor(this.mContext.getResources().getColorStateList(2131100024));
+    switch (bUi())
     {
     case 1: 
     case 2: 
     case 5: 
     case 9: 
     default: 
-      ab.w("MicroMsg.emoji.BaseEmojiItemHolder", "unknow product status:%d", new Object[] { Integer.valueOf(bkt()) });
+      ad.w("MicroMsg.emoji.BaseEmojiItemHolder", "unknow product status:%d", new Object[] { Integer.valueOf(bUi()) });
       return;
     case 8: 
-      this.ldF.setVisibility(8);
-      this.ldG.setBackgroundDrawable(null);
-      this.ldG.setVisibility(0);
-      this.ldH.setEnabled(false);
-      this.ldI.setVisibility(0);
-      this.ldI.setText(2131299196);
-      this.ldJ.setVisibility(4);
-      if (this.ldK == null)
+      this.otq.setVisibility(8);
+      this.otr.setBackgroundDrawable(null);
+      this.otr.setVisibility(0);
+      this.ots.setEnabled(false);
+      this.ott.setVisibility(0);
+      this.ott.setText(2131758322);
+      this.otu.setVisibility(4);
+      if (this.otv == null)
       {
-        this.ldL.setVisibility(4);
+        this.otw.setVisibility(4);
         return;
       }
-      this.ldK.setVisibility(4);
+      this.otv.setVisibility(4);
       return;
     case 0: 
-      bkx();
+      bUm();
       return;
     case 6: 
-      bkw();
+      bUl();
       return;
     case 7: 
-      if (this.ldz.lfe)
+      if (this.otj.ouP)
       {
-        ab.d("MicroMsg.emoji.BaseEmojiItemHolder", "jacks use emoji");
-        this.ldF.setVisibility(8);
-        this.ldG.setBackgroundResource(2130838045);
-        this.ldG.setVisibility(0);
-        this.ldG.setTag(getProductId());
-        this.ldH.setEnabled(true);
-        this.ldI.setVisibility(0);
-        this.ldI.setText(2131299261);
-        this.ldI.setTextColor(this.mContext.getResources().getColorStateList(2131690799));
-        this.ldJ.setVisibility(4);
-        if (this.ldK == null)
+        ad.d("MicroMsg.emoji.BaseEmojiItemHolder", "jacks use emoji");
+        this.otq.setVisibility(8);
+        this.otr.setBackgroundResource(2131231365);
+        this.otr.setVisibility(0);
+        this.otr.setTag(getProductId());
+        this.ots.setEnabled(true);
+        this.ott.setVisibility(0);
+        this.ott.setText(2131758387);
+        this.ott.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
+        this.otu.setVisibility(4);
+        if (this.otv == null)
         {
-          this.ldL.setVisibility(4);
+          this.otw.setVisibility(4);
           return;
         }
-        this.ldK.setVisibility(4);
+        this.otv.setVisibility(4);
         return;
       }
-      if ((this.ldz.lfg) && (e.ea(this.ldz.lfa.PackFlag, 64)))
+      if ((this.otj.ouR) && (e.fd(this.otj.ouL.PackFlag, 64)))
       {
-        this.ldG.setVisibility(0);
-        this.ldG.setBackgroundResource(2130838048);
-        this.ldI.setVisibility(0);
-        this.ldI.setText(2131299226);
-        this.ldI.setTextColor(this.mContext.getResources().getColorStateList(2131690799));
-        this.ldJ.setVisibility(4);
-        this.ldH.setEnabled(true);
-        if (this.ldK == null)
+        this.otr.setVisibility(0);
+        this.otr.setBackgroundResource(2131231370);
+        this.ott.setVisibility(0);
+        this.ott.setText(2131758352);
+        this.ott.setTextColor(this.mContext.getResources().getColorStateList(2131101185));
+        this.otu.setVisibility(4);
+        this.ots.setEnabled(true);
+        if (this.otv == null)
         {
-          this.ldL.setVisibility(4);
+          this.otw.setVisibility(4);
           return;
         }
-        this.ldK.setVisibility(4);
+        this.otv.setVisibility(4);
         return;
       }
-      this.ldF.setVisibility(8);
-      this.ldG.setVisibility(0);
-      this.ldG.setBackgroundResource(2130838050);
-      this.ldI.setVisibility(0);
-      this.ldI.setText(2131299195);
-      this.ldI.setTextColor(this.mContext.getResources().getColorStateList(2131689767));
-      this.ldJ.setVisibility(4);
-      this.ldH.setEnabled(false);
-      if (this.ldK == null)
+      this.otq.setVisibility(8);
+      this.otr.setVisibility(0);
+      this.otr.setBackgroundResource(2131231372);
+      this.ott.setVisibility(0);
+      this.ott.setText(2131758321);
+      this.ott.setTextColor(this.mContext.getResources().getColorStateList(2131100022));
+      this.otu.setVisibility(4);
+      this.ots.setEnabled(false);
+      if (this.otv == null)
       {
-        this.ldL.setVisibility(4);
+        this.otw.setVisibility(4);
         return;
       }
-      this.ldK.setVisibility(4);
+      this.otv.setVisibility(4);
       return;
     case 3: 
-      bkx();
+      bUm();
       return;
     case 4: 
     case 12: 
-      this.ldF.setVisibility(8);
-      this.ldG.setBackgroundResource(2130838050);
-      this.ldG.setVisibility(0);
-      if (this.ldK == null) {
-        this.ldL.setVisibility(4);
+      this.otq.setVisibility(8);
+      this.otr.setBackgroundResource(2131231372);
+      this.otr.setVisibility(0);
+      if (this.otv == null) {
+        this.otw.setVisibility(4);
       }
       for (;;)
       {
-        this.ldH.setEnabled(true);
-        this.ldJ.setVisibility(4);
-        this.ldI.setVisibility(0);
-        if (this.ldz.lfa == null) {
+        this.ots.setEnabled(true);
+        this.otu.setVisibility(4);
+        this.ott.setVisibility(0);
+        if (this.otj.ouL == null) {
           break;
         }
-        this.ldI.setText(this.ldz.lfa.PackPrice);
+        this.ott.setText(this.otj.ouL.PackPrice);
         return;
-        this.ldK.setVisibility(4);
+        this.otv.setVisibility(4);
       }
     case 10: 
-      this.ldF.setVisibility(8);
-      this.ldG.setBackgroundResource(2130838050);
-      this.ldG.setVisibility(0);
-      this.ldI.setVisibility(0);
-      this.ldI.setText(2131299217);
-      this.ldJ.setVisibility(4);
-      this.ldH.setEnabled(true);
-      if (this.ldK == null)
+      this.otq.setVisibility(8);
+      this.otr.setBackgroundResource(2131231372);
+      this.otr.setVisibility(0);
+      this.ott.setVisibility(0);
+      this.ott.setText(2131758343);
+      this.otu.setVisibility(4);
+      this.ots.setEnabled(true);
+      if (this.otv == null)
       {
-        this.ldL.setVisibility(4);
+        this.otw.setVisibility(4);
         return;
       }
-      this.ldK.setVisibility(4);
+      this.otv.setVisibility(4);
       return;
     }
-    this.ldF.setVisibility(0);
-    this.ldG.setBackgroundResource(2130838050);
-    this.ldG.setVisibility(0);
-    this.ldI.setVisibility(0);
-    this.ldI.setText("");
-    this.ldH.setEnabled(false);
-    this.ldJ.setVisibility(4);
-    if (this.ldK == null)
+    this.otq.setVisibility(0);
+    this.otr.setBackgroundResource(2131231372);
+    this.otr.setVisibility(0);
+    this.ott.setVisibility(0);
+    this.ott.setText("");
+    this.ots.setEnabled(false);
+    this.otu.setVisibility(4);
+    if (this.otv == null)
     {
-      this.ldL.setVisibility(4);
+      this.otw.setVisibility(4);
       return;
     }
-    this.ldK.setVisibility(4);
-  }
-  
-  public final View bkz()
-  {
-    return this.ldP;
+    this.otv.setVisibility(4);
   }
   
   public final String getProductId()
   {
-    if (this.ldz == null) {}
-    while (this.ldz.lfa == null) {
+    if (this.otj == null) {}
+    while (this.otj.ouL == null) {
       return null;
     }
-    return this.ldz.lfa.ProductID;
+    return this.otj.ouL.ProductID;
   }
   
   public final int getProgress()
   {
-    if (this.ldz == null) {
+    if (this.otj == null) {
       return 0;
     }
-    return this.ldz.ym;
+    return this.otj.EI;
+  }
+  
+  public final View getRoot()
+  {
+    return this.iIW;
   }
   
   public final void setTitle(String paramString)
   {
-    this.iJG.setText(paramString);
+    this.kEu.setText(paramString);
   }
   
-  public final void ue(int paramInt)
+  public static enum a
   {
-    this.ldC.setVisibility(paramInt);
-  }
-  
-  public final void uf(int paramInt)
-  {
-    this.ldH.setVisibility(paramInt);
+    static
+    {
+      AppMethodBeat.i(108294);
+      otD = new a("LIST", 0);
+      otE = new a("GRID_MAIN", 1);
+      otF = new a("GRID_RECOMMEND", 2);
+      otG = new a[] { otD, otE, otF };
+      AppMethodBeat.o(108294);
+    }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
+import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.appstorage.o.a;
+import com.tencent.mm.plugin.appbrand.appstorage.s;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public class f
-  extends a<h>
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.jsapi.h>
 {
   public static final int CTRL_INDEX = 17;
   public static final String NAME = "getStorage";
   
-  protected String w(c paramc)
+  protected String B(c paramc)
   {
-    AppMethodBeat.i(102036);
+    AppMethodBeat.i(147242);
     paramc = paramc.getAppId();
-    AppMethodBeat.o(102036);
+    AppMethodBeat.o(147242);
     return paramc;
   }
 }

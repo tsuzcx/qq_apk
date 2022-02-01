@@ -10,39 +10,39 @@ import java.io.IOException;
 final class a
   extends com.tencent.mm.wear.app.g.a
 {
-  private String abU;
+  private String afv;
   
   public a(OverseaReplyTextUI paramOverseaReplyTextUI, String paramString)
   {
-    this.abU = paramString;
+    this.afv = paramString;
   }
   
   protected final void execute()
   {
-    if (this.agc.nd() > 0) {}
+    if (this.ajE.nQ() > 0) {}
     for (int i = 2;; i = 1) {
       try
       {
         Object localObject = new ah();
-        ((ah)localObject).VN = this.agc.getUsername();
-        ((ah)localObject).Ws = i;
-        ((ah)localObject).Wt = this.abU;
-        localObject = new e(this.agc.nd(), 11023, ((ah)localObject).toByteArray());
-        ((e)localObject).mU();
+        ((ah)localObject).XI = this.ajE.getUsername();
+        ((ah)localObject).Yn = i;
+        ((ah)localObject).Yo = this.afv;
+        localObject = new e(this.ajE.nQ(), 11023, ((ah)localObject).toByteArray());
+        ((e)localObject).nG();
         ((e)localObject).a(new g()
         {
-          public final void mV()
+          public final void nH()
           {
-            com.tencent.mm.wear.a.b.a.aiT.postDelayed(new Runnable()
+            com.tencent.mm.wear.a.b.a.amv.postDelayed(new Runnable()
             {
               public final void run()
               {
-                a.this.agc.finish();
+                a.this.ajE.finish();
               }
             }, 1000L);
           }
         });
-        h.mc().a((com.tencent.mm.wear.app.g.a)localObject);
+        h.mP().a((com.tencent.mm.wear.app.g.a)localObject);
         return;
       }
       catch (IOException localIOException) {}

@@ -12,22 +12,22 @@ import java.util.Set;
 
 final class u
 {
-  private static final Object yU = new Object();
-  private static Field yV;
-  private static boolean yW;
-  private static final Object yX = new Object();
+  private static final Object Fp = new Object();
+  private static Field Fq;
+  private static boolean Fr;
+  private static final Object Fs = new Object();
   
   public static Bundle a(Notification.Builder paramBuilder, s.a parama)
   {
     paramBuilder.addAction(parama.icon, parama.title, parama.actionIntent);
     paramBuilder = new Bundle(parama.mExtras);
-    if (parama.xQ != null) {
-      paramBuilder.putParcelableArray("android.support.remoteInputs", a(parama.xQ));
+    if (parama.Ei != null) {
+      paramBuilder.putParcelableArray("android.support.remoteInputs", a(parama.Ei));
     }
-    if (parama.xR != null) {
-      paramBuilder.putParcelableArray("android.support.dataRemoteInputs", a(parama.xR));
+    if (parama.Ej != null) {
+      paramBuilder.putParcelableArray("android.support.dataRemoteInputs", a(parama.Ej));
     }
-    paramBuilder.putBoolean("android.support.allowGeneratedReplies", parama.xS);
+    paramBuilder.putBoolean("android.support.allowGeneratedReplies", parama.Ek);
     return paramBuilder;
   }
   
@@ -35,9 +35,9 @@ final class u
   {
     Object localObject1;
     Bundle localBundle;
-    synchronized (yU)
+    synchronized (Fp)
     {
-      if (yW) {
+      if (Fr) {
         return null;
       }
     }
@@ -54,12 +54,12 @@ final class u
     {
       Object localObject1 = paramArrayOfx[i];
       Bundle localBundle = new Bundle();
-      localBundle.putString("resultKey", ((x)localObject1).zn);
-      localBundle.putCharSequence("label", ((x)localObject1).zo);
-      localBundle.putCharSequenceArray("choices", ((x)localObject1).zp);
-      localBundle.putBoolean("allowFreeFormInput", ((x)localObject1).zq);
+      localBundle.putString("resultKey", ((x)localObject1).FH);
+      localBundle.putCharSequence("label", ((x)localObject1).FI);
+      localBundle.putCharSequenceArray("choices", ((x)localObject1).FJ);
+      localBundle.putBoolean("allowFreeFormInput", ((x)localObject1).FK);
       localBundle.putBundle("extras", ((x)localObject1).mExtras);
-      Object localObject2 = ((x)localObject1).zr;
+      Object localObject2 = ((x)localObject1).FL;
       if ((localObject2 != null) && (!((Set)localObject2).isEmpty()))
       {
         localObject1 = new ArrayList(((Set)localObject2).size());
@@ -75,7 +75,7 @@ final class u
     return arrayOfBundle;
   }
   
-  static Bundle b(s.a parama)
+  static Bundle c(s.a parama)
   {
     Bundle localBundle2 = new Bundle();
     localBundle2.putInt("icon", parama.icon);
@@ -84,11 +84,11 @@ final class u
     if (parama.mExtras != null) {}
     for (Bundle localBundle1 = new Bundle(parama.mExtras);; localBundle1 = new Bundle())
     {
-      localBundle1.putBoolean("android.support.allowGeneratedReplies", parama.xS);
+      localBundle1.putBoolean("android.support.allowGeneratedReplies", parama.Ek);
       localBundle2.putBundle("extras", localBundle1);
-      localBundle2.putParcelableArray("remoteInputs", a(parama.xQ));
-      localBundle2.putBoolean("showsUserInterface", parama.xT);
-      localBundle2.putInt("semanticAction", parama.xU);
+      localBundle2.putParcelableArray("remoteInputs", a(parama.Ei));
+      localBundle2.putBoolean("showsUserInterface", parama.El);
+      localBundle2.putInt("semanticAction", parama.Em);
       return localBundle2;
     }
   }

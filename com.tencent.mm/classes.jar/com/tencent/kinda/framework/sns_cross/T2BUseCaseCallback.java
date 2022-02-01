@@ -18,7 +18,7 @@ public class T2BUseCaseCallback
   
   public void call(ITransmitKvData paramITransmitKvData)
   {
-    AppMethodBeat.i(144609);
+    AppMethodBeat.i(18721);
     Object localObject = this.mBean.getContext();
     if ((localObject instanceof BankRemitMoneyInputUI))
     {
@@ -26,12 +26,12 @@ public class T2BUseCaseCallback
       if (paramITransmitKvData.getString("closeLoading").equals("1"))
       {
         ((BankRemitMoneyInputUI)localActivity).hideLoading();
-        AppMethodBeat.o(144609);
+        AppMethodBeat.o(18721);
         return;
       }
       if ((paramITransmitKvData.getInt("retcode") == 1) && (this.mBean != null) && (this.mBean.getPayInfo() != null))
       {
-        paramITransmitKvData = this.mBean.getPayInfo().wgv;
+        paramITransmitKvData = this.mBean.getPayInfo().Cos;
         if (paramITransmitKvData != null)
         {
           paramITransmitKvData = paramITransmitKvData.getString("key_transfer_bill_id");
@@ -42,19 +42,19 @@ public class T2BUseCaseCallback
         }
       }
     }
-    AppMethodBeat.o(144609);
+    AppMethodBeat.o(18721);
   }
   
   public void setData(Context paramContext, PayInfo paramPayInfo)
   {
-    AppMethodBeat.i(144608);
+    AppMethodBeat.i(18720);
     this.mBean = new SnsServiceBean(paramContext, paramPayInfo);
-    AppMethodBeat.o(144608);
+    AppMethodBeat.o(18720);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.T2BUseCaseCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.ListViewInScrollView android:layout_gravity="center" android:id="@id/yb" android:background="@null" android:layout_width="fill_parent" android:layout_height="0.0dip" android:listSelector="@drawable/ba" android:cacheColorHint="@null" android:dividerHeight="@dimen/fs" android:minWidth="@dimen/lo" android:layout_weight="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/ct" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/qy" android:layout_marginTop="@dimen/qx" android:layout_marginRight="@dimen/qy"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/e6" />
+    <View android:background="@color/dv" android:layout_width="fill_parent" android:layout_height="@dimen/r6" android:layout_marginTop="2.0dip" android:layout_marginBottom="18.0dip" android:layout_marginStart="@dimen/qw" android:layout_marginEnd="@dimen/qw" />
+    <LinearLayout android:id="@id/o6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/qw" android:layout_marginEnd="@dimen/qw">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.plugin.appbrand.ui.recommend.AppBrandCombinationLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center" android:id="@id/of" android:padding="1.0dip" android:layout_width="40.0dip" android:layout_height="40.0dip" />
+                <ImageView android:id="@id/o8" android:layout_width="fill_parent" android:layout_height="146.0dip" android:scaleType="centerCrop" />
+            </com.tencent.mm.plugin.appbrand.ui.recommend.AppBrandCombinationLayout>
+            <TextView android:textSize="@dimen/i" android:textColor="#e6000000" android:id="@id/o7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/qv" android:layout_marginBottom="@dimen/qv" />
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/e4" />
+</LinearLayout>

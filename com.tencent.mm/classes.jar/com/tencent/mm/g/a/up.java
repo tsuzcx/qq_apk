@@ -1,10 +1,16 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class up
   extends b
 {
+  public a dAh;
+  public b dAi;
+  
   public up()
   {
     this((byte)0);
@@ -12,13 +18,29 @@ public final class up
   
   private up(byte paramByte)
   {
-    this.ymq = false;
+    AppMethodBeat.i(153018);
+    this.dAh = new a();
+    this.dAi = new b();
+    this.ESR = false;
     this.callback = null;
+    AppMethodBeat.o(153018);
+  }
+  
+  public static final class a
+  {
+    public Intent dAj;
+    public Activity djj;
+    public int requestCode;
+  }
+  
+  public static final class b
+  {
+    public boolean dhg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.up
  * JD-Core Version:    0.7.0.1
  */

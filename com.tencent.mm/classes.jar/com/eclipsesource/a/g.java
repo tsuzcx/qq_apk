@@ -9,53 +9,53 @@ final class g
   
   g(String paramString)
   {
-    AppMethodBeat.i(70580);
+    AppMethodBeat.i(74767);
     if (paramString == null)
     {
       paramString = new NullPointerException("string is null");
-      AppMethodBeat.o(70580);
+      AppMethodBeat.o(74767);
       throw paramString;
     }
     this.string = paramString;
-    AppMethodBeat.o(70580);
+    AppMethodBeat.o(74767);
   }
   
   final void a(i parami)
   {
-    AppMethodBeat.i(70581);
+    AppMethodBeat.i(74768);
     parami.writeString(this.string);
-    AppMethodBeat.o(70581);
+    AppMethodBeat.o(74768);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(70583);
+    AppMethodBeat.i(74770);
     if (this == paramObject)
     {
-      AppMethodBeat.o(70583);
+      AppMethodBeat.o(74770);
       return true;
     }
     if (paramObject == null)
     {
-      AppMethodBeat.o(70583);
+      AppMethodBeat.o(74770);
       return false;
     }
     if (getClass() != paramObject.getClass())
     {
-      AppMethodBeat.o(70583);
+      AppMethodBeat.o(74770);
       return false;
     }
     paramObject = (g)paramObject;
     boolean bool = this.string.equals(paramObject.string);
-    AppMethodBeat.o(70583);
+    AppMethodBeat.o(74770);
     return bool;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(70582);
+    AppMethodBeat.i(74769);
     int i = this.string.hashCode();
-    AppMethodBeat.o(70582);
+    AppMethodBeat.o(74769);
     return i;
   }
   
@@ -64,14 +64,14 @@ final class g
     return true;
   }
   
-  public final String mk()
+  public final String qV()
   {
     return this.string;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.eclipsesource.a.g
  * JD-Core Version:    0.7.0.1
  */

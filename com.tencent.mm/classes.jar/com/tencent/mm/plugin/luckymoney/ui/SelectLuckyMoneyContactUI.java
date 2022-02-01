@@ -8,17 +8,20 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.g.c.aq;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.w;
 import com.tencent.mm.pluginsdk.i;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.ui.applet.y.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
 import com.tencent.mm.ui.contact.a.a;
-import com.tencent.mm.ui.contact.p;
-import com.tencent.mm.ui.contact.r;
-import com.tencent.mm.ui.contact.y;
+import com.tencent.mm.ui.contact.ab;
+import com.tencent.mm.ui.contact.o;
+import com.tencent.mm.ui.contact.s;
+import com.tencent.mm.ui.contact.u;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -26,162 +29,118 @@ import java.util.List;
 public class SelectLuckyMoneyContactUI
   extends MMBaseSelectContactUI
 {
-  private List<String> ejc;
-  private View oxB;
+  private List<String> fvP;
+  private View tqJ;
   
-  public final void Kc()
+  public final void VL()
   {
-    AppMethodBeat.i(43077);
-    super.Kc();
+    AppMethodBeat.i(65973);
+    super.VL();
     HashSet localHashSet = new HashSet();
-    localHashSet.addAll(com.tencent.mm.ui.contact.t.dMg());
-    localHashSet.addAll(com.tencent.mm.ui.contact.t.dMh());
+    localHashSet.addAll(u.fbL());
+    localHashSet.addAll(u.fbM());
     String str = getIntent().getStringExtra("Select_block_List");
-    if (!bo.isNullOrNil(str)) {
-      localHashSet.addAll(bo.P(str.split(",")));
+    if (!bt.isNullOrNil(str)) {
+      localHashSet.addAll(bt.S(str.split(",")));
     }
-    this.ejc = new ArrayList();
-    this.ejc.addAll(localHashSet);
-    AppMethodBeat.o(43077);
+    this.fvP = new ArrayList();
+    this.fvP.addAll(localHashSet);
+    AppMethodBeat.o(65973);
   }
   
   public final void a(ListView paramListView, int paramInt)
   {
-    AppMethodBeat.i(43082);
+    AppMethodBeat.i(65978);
     super.a(paramListView, paramInt);
-    if (this.oxB == null)
+    if (this.tqJ == null)
     {
-      View localView = View.inflate(this, 2130970646, null);
-      this.oxB = localView.findViewById(2131820946);
-      ((TextView)localView.findViewById(2131821071)).setText(2131301236);
+      View localView = View.inflate(this, 2131495341, null);
+      this.tqJ = localView.findViewById(2131298739);
+      ((TextView)localView.findViewById(2131305880)).setText(2131760878);
       paramListView.addHeaderView(localView);
     }
-    this.oxB.setVisibility(paramInt);
-    AppMethodBeat.o(43082);
+    this.tqJ.setVisibility(paramInt);
+    AppMethodBeat.o(65978);
   }
   
-  public final boolean apa()
+  public final boolean aHt()
   {
     return false;
   }
   
-  public final boolean apb()
+  public final boolean aHu()
   {
     return false;
   }
   
-  public final String apc()
+  public final String aHv()
   {
-    AppMethodBeat.i(43079);
-    String str = getString(2131301306);
-    AppMethodBeat.o(43079);
+    AppMethodBeat.i(65975);
+    String str = getString(2131760951);
+    AppMethodBeat.o(65975);
     return str;
   }
   
-  public final p apd()
+  public final com.tencent.mm.ui.contact.q aHw()
   {
-    AppMethodBeat.i(43080);
-    y localy = new y(this, this.ejc);
-    AppMethodBeat.o(43080);
-    return localy;
+    AppMethodBeat.i(65976);
+    ab localab = new ab(this, this.fvP);
+    AppMethodBeat.o(65976);
+    return localab;
   }
   
-  public final com.tencent.mm.ui.contact.n ape()
+  public final o aHx()
   {
-    AppMethodBeat.i(43081);
-    r localr = new r(this, this.ejc, false, this.scene);
-    AppMethodBeat.o(43081);
-    return localr;
+    AppMethodBeat.i(65977);
+    s locals = new s(this, this.fvP, false, this.scene);
+    AppMethodBeat.o(65977);
+    return locals;
   }
   
-  public final int[] bOp()
+  public final int[] cMQ()
   {
     return new int[] { 131072 };
   }
   
-  public final void bOq()
+  public final void cMR()
   {
-    AppMethodBeat.i(43083);
-    super.bOq();
+    AppMethodBeat.i(65979);
+    super.cMR();
     hideVKB();
-    AppMethodBeat.o(43083);
-  }
-  
-  public final void mL(int paramInt)
-  {
-    AppMethodBeat.i(43078);
-    if (paramInt < getContentLV().getHeaderViewsCount())
-    {
-      ab.i("MicroMsg.SelectRemittanceContactUI", "Click HeaderView position=%d", new Object[] { Integer.valueOf(paramInt) });
-      ab.i("MicroMsg.SelectRemittanceContactUI", "doCallSelectContactUI");
-      paramInt = getIntent().getIntExtra("key_friends_num", 0);
-      localObject = new Intent();
-      int i = com.tencent.mm.ui.contact.t.F(new int[] { 16, 1, 2, 4, 16384, 64, 65536, 131072 });
-      ((Intent)localObject).putExtra("list_type", 0);
-      ((Intent)localObject).putExtra("list_attr", i);
-      ((Intent)localObject).putExtra("max_limit_num", paramInt);
-      ((Intent)localObject).putExtra("titile", getString(2131301305, new Object[] { Integer.valueOf(paramInt) }));
-      ((Intent)localObject).putExtra("sub_title", getString(2131305949));
-      d.b(this, ".ui.contact.SelectContactUI", (Intent)localObject, 1);
-      overridePendingTransition(2131034230, 2131034182);
-      AppMethodBeat.o(43078);
-      return;
-    }
-    Object localObject = (a)getContentLV().getAdapter().getItem(paramInt);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(43078);
-      return;
-    }
-    localObject = ((a)localObject).contact;
-    if (localObject == null)
-    {
-      AppMethodBeat.o(43078);
-      return;
-    }
-    String str = ((aq)localObject).field_username;
-    ab.i("MicroMsg.SelectRemittanceContactUI", "doClickUser=%s", new Object[] { str });
-    Intent localIntent = new Intent();
-    localIntent.putExtra("Select_Conv_User", str);
-    localObject = null;
-    if (com.tencent.mm.model.t.lA(str)) {
-      localObject = getString(2131305634, new Object[] { Integer.valueOf(com.tencent.mm.model.n.nv(str)) });
-    }
-    ((i)g.E(i.class)).a(this.mController, str, getString(2131302656), str, (String)localObject, getString(2131297067), new SelectLuckyMoneyContactUI.1(this, localIntent));
-    AppMethodBeat.o(43078);
+    AppMethodBeat.o(65979);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(43085);
+    AppMethodBeat.i(65981);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramIntent != null) {
-      ab.i("MicroMsg.SelectRemittanceContactUI", "onActivityResult, requestCode = " + paramInt1 + ", resultCode = " + paramInt2 + ", data = " + paramIntent.toString());
+      ad.i("MicroMsg.SelectRemittanceContactUI", "onActivityResult, requestCode = " + paramInt1 + ", resultCode = " + paramInt2 + ", data = " + paramIntent.toString());
     }
     while (paramInt1 == 1)
     {
       if (paramInt2 == -1)
       {
-        ab.i("MicroMsg.SelectRemittanceContactUI", "getIntent = " + getIntent());
+        ad.i("MicroMsg.SelectRemittanceContactUI", "getIntent = " + getIntent());
         setResult(-1, paramIntent);
         finish();
       }
-      AppMethodBeat.o(43085);
+      AppMethodBeat.o(65981);
       return;
-      ab.i("MicroMsg.SelectRemittanceContactUI", "onActivityResult, requestCode = " + paramInt1 + ", resultCode = " + paramInt2 + ", data = null");
+      ad.i("MicroMsg.SelectRemittanceContactUI", "onActivityResult, requestCode = " + paramInt1 + ", resultCode = " + paramInt2 + ", data = null");
     }
-    ab.e("MicroMsg.SelectRemittanceContactUI", "onActivityResult, unknown requestCode = ".concat(String.valueOf(paramInt1)));
-    AppMethodBeat.o(43085);
+    ad.e("MicroMsg.SelectRemittanceContactUI", "onActivityResult, unknown requestCode = ".concat(String.valueOf(paramInt1)));
+    AppMethodBeat.o(65981);
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(43084);
+    AppMethodBeat.i(65980);
     if (paramInt == 4) {
-      bOq();
+      cMR();
     }
     boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
-    AppMethodBeat.o(43084);
+    AppMethodBeat.o(65980);
     return bool;
   }
   
@@ -190,10 +149,66 @@ public class SelectLuckyMoneyContactUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  public final void pT(int paramInt)
+  {
+    AppMethodBeat.i(65974);
+    if (paramInt < getContentLV().getHeaderViewsCount())
+    {
+      ad.i("MicroMsg.SelectRemittanceContactUI", "Click HeaderView position=%d", new Object[] { Integer.valueOf(paramInt) });
+      ad.i("MicroMsg.SelectRemittanceContactUI", "doCallSelectContactUI");
+      paramInt = getIntent().getIntExtra("key_friends_num", 0);
+      localObject = new Intent();
+      int i = u.I(new int[] { 16, 1, 2, 4, 16384, 64, 65536, 131072 });
+      ((Intent)localObject).putExtra("list_type", 0);
+      ((Intent)localObject).putExtra("list_attr", i);
+      ((Intent)localObject).putExtra("max_limit_num", paramInt);
+      ((Intent)localObject).putExtra("titile", getString(2131760950, new Object[] { Integer.valueOf(paramInt) }));
+      ((Intent)localObject).putExtra("sub_title", getString(2131766196));
+      d.c(this, ".ui.contact.SelectContactUI", (Intent)localObject, 1);
+      overridePendingTransition(2130772108, 2130772048);
+      AppMethodBeat.o(65974);
+      return;
+    }
+    Object localObject = (a)getContentLV().getAdapter().getItem(paramInt);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(65974);
+      return;
+    }
+    localObject = ((a)localObject).contact;
+    if (localObject == null)
+    {
+      AppMethodBeat.o(65974);
+      return;
+    }
+    String str = ((au)localObject).field_username;
+    ad.i("MicroMsg.SelectRemittanceContactUI", "doClickUser=%s", new Object[] { str });
+    final Intent localIntent = new Intent();
+    localIntent.putExtra("Select_Conv_User", str);
+    localObject = null;
+    if (w.pF(str)) {
+      localObject = getString(2131765850, new Object[] { Integer.valueOf(com.tencent.mm.model.q.rY(str)) });
+    }
+    ((i)g.ab(i.class)).a(this.mController, str, getString(2131762565), str, (String)localObject, getString(2131755884), new y.a()
+    {
+      public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(65972);
+        if (paramAnonymousBoolean)
+        {
+          SelectLuckyMoneyContactUI.this.setResult(-1, localIntent);
+          SelectLuckyMoneyContactUI.this.finish();
+        }
+        AppMethodBeat.o(65972);
+      }
+    });
+    AppMethodBeat.o(65974);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.SelectLuckyMoneyContactUI
  * JD-Core Version:    0.7.0.1
  */

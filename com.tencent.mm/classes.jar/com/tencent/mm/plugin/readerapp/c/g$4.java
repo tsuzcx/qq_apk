@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.readerapp.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.i.c;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.image.d;
+import com.tencent.mm.sdk.platformtools.bt;
 
 final class g$4
   implements Runnable
@@ -11,27 +11,27 @@ final class g$4
   
   public final void run()
   {
-    AppMethodBeat.i(76767);
-    if (!com.tencent.mm.kernel.g.RG())
+    AppMethodBeat.i(102671);
+    if (!com.tencent.mm.kernel.g.afw())
     {
-      AppMethodBeat.o(76767);
+      AppMethodBeat.o(102671);
       return;
     }
-    bo.q(c.YK(), "ReaderApp_", 604800000L);
-    AppMethodBeat.o(76767);
+    bt.z(d.apW(), "ReaderApp_", 604800000L);
+    AppMethodBeat.o(102671);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(76768);
+    AppMethodBeat.i(102672);
     String str = super.toString() + "|onAccountPostReset";
-    AppMethodBeat.o(76768);
+    AppMethodBeat.o(102672);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.readerapp.c.g.4
  * JD-Core Version:    0.7.0.1
  */

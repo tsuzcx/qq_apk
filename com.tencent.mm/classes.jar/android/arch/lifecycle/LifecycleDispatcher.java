@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 class LifecycleDispatcher
 {
-  private static AtomicBoolean cv = new AtomicBoolean(false);
+  private static AtomicBoolean cy = new AtomicBoolean(false);
   
   private static void a(g paramg, Lifecycle.State paramState)
   {
@@ -48,7 +48,7 @@ class LifecycleDispatcher
   
   static void init(Context paramContext)
   {
-    if (cv.getAndSet(true)) {
+    if (cy.getAndSet(true)) {
       return;
     }
     ((Application)paramContext.getApplicationContext()).registerActivityLifecycleCallbacks(new DispatcherActivityCallback());
@@ -84,12 +84,12 @@ class LifecycleDispatcher
   static class DispatcherActivityCallback
     extends EmptyActivityLifecycleCallbacks
   {
-    private final LifecycleDispatcher.FragmentCallback cw = new LifecycleDispatcher.FragmentCallback();
+    private final LifecycleDispatcher.FragmentCallback cz = new LifecycleDispatcher.FragmentCallback();
     
     public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
     {
       if ((paramActivity instanceof FragmentActivity)) {
-        ((FragmentActivity)paramActivity).getSupportFragmentManager().registerFragmentLifecycleCallbacks(this.cw, true);
+        ((FragmentActivity)paramActivity).getSupportFragmentManager().registerFragmentLifecycleCallbacks(this.cz, true);
       }
       ReportFragment.injectIfNeededIn(paramActivity);
     }

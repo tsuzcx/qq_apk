@@ -8,15 +8,15 @@ import com.google.android.gms.common.api.s;
 final class b
   implements s
 {
-  public final int LY;
-  public final p LZ;
-  public final s Ma;
+  public final int NN;
+  public final p NO;
+  public final s NP;
   
   public b(a parama, int paramInt, p paramp, s params)
   {
-    this.LY = paramInt;
-    this.LZ = paramp;
-    this.Ma = params;
+    this.NN = paramInt;
+    this.NO = paramp;
+    this.NP = params;
     paramp.a(this);
   }
   
@@ -24,7 +24,7 @@ final class b
   {
     String str = String.valueOf(paramConnectionResult);
     Log.d("AutoManageHelper", String.valueOf(str).length() + 27 + "beginFailureResolution for " + str);
-    this.Mb.b(paramConnectionResult, this.LY);
+    this.NQ.b(paramConnectionResult, this.NN);
   }
 }
 

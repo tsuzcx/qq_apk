@@ -1,27 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/feu" android:background="@drawable/bn2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="0.0dip" android:minHeight="106.0dip"
+<com.tencent.mm.plugin.shake.ui.ShakeEggAnimFrame android:id="@id/aio" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="106.0dip" android:minHeight="106.0dip">
-        <ImageView android:id="@id/fev" android:layout_width="217.0dip" android:layout_height="106.0dip" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        <ImageView android:id="@id/few" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginLeft="13.0dip" android:layout_marginTop="13.0dip" android:layout_marginRight="7.0dip" android:scaleType="centerCrop" android:adjustViewBounds="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <TextView android:textColor="@color/a6q" android:id="@id/fex" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/few" android:layout_alignTop="@id/few" />
-        <TextView android:textSize="12.0dip" android:textColor="@color/a6q" android:id="@id/fey" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="@string/fkm" android:layout_toRightOf="@id/few" android:layout_below="@id/fex" android:alpha="0.5" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="54.0dip" android:layout_below="@id/few" android:layout_alignParentLeft="true" android:layout_alignWithParentIfMissing="true">
-            <ImageView android:id="@id/fez" android:layout_width="43.0dip" android:layout_height="wrap_content" android:src="@drawable/dg" />
-            <ImageView android:id="@id/ff0" android:layout_width="43.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/dg" />
-            <ImageView android:id="@id/ff1" android:layout_width="43.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/dg" />
-            <TextView android:textSize="26.0dip" android:textColor="@color/a6q" android:gravity="left" android:id="@id/ff2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
-        </LinearLayout>
-        <TextView android:textColor="@color/a6q" android:id="@id/ff4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="@string/fmx" android:layout_alignTop="@id/few" android:layout_alignParentRight="true" />
-        <ImageView android:id="@id/ff3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.5dip" android:layout_marginRight="0.5dip" android:src="@raw/bankcard_new" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        <TextView android:textColor="#4c000000" android:id="@id/ff5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="@string/fmt" android:layout_alignTop="@id/few" android:layout_alignParentRight="true" />
-        <TextView android:textColor="@color/h6" android:id="@id/ff6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="26.0dip" android:text="" android:layout_alignTop="@id/few" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/ff7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_marginLeft="54.0dip" android:layout_alignParentBottom="true">
-        <View android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="1.0dip" android:alpha="0.1" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <TextView android:textColor="#ffe2e2e2" android:id="@id/ff8" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:alpha="0.6" />
-            <ImageView android:layout_width="7.0dip" android:layout_height="12.0dip" android:layout_marginRight="12.0dip" android:src="@raw/aa_right_arrow" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <View android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mm.plugin.shake.ui.ShakeEggAnimFrame>

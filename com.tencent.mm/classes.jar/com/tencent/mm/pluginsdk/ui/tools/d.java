@@ -1,118 +1,124 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-import android.content.Context;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class d
-  implements t.a
 {
-  public static d weC = null;
-  public boolean hasInit;
-  private SensorEventListener vpT;
-  int weA;
-  private SensorManager weB;
-  private float[] wey;
-  int wez;
-  
-  public d()
+  public static boolean aCt(String paramString)
   {
-    AppMethodBeat.i(79918);
-    this.hasInit = false;
-    this.wey = new float[3];
-    this.wez = -10000;
-    this.weA = -10000;
-    AppMethodBeat.o(79918);
-  }
-  
-  private void dpx()
-  {
-    AppMethodBeat.i(79922);
-    ab.d("MicroMsg.HeadingPitchSensorMgr", "releaseSensor");
-    if ((this.weB != null) && (this.vpT != null))
+    AppMethodBeat.i(152380);
+    if ((paramString == null) || (paramString.length() == 0))
     {
-      ab.d("MicroMsg.HeadingPitchSensorMgr", "releaseSensor");
-      this.weB.unregisterListener(this.vpT);
-      this.weB = null;
-      this.vpT = null;
+      ad.e("MicroMsg.AppNewIconUtil", "markNew fail, appId is empty");
+      AppMethodBeat.o(152380);
+      return false;
     }
-    this.hasInit = false;
-    AppMethodBeat.o(79922);
-  }
-  
-  public final void dfr()
-  {
-    AppMethodBeat.i(79923);
-    weC = null;
-    dpx();
-    AppMethodBeat.o(79923);
-  }
-  
-  public final void dfs()
-  {
-    AppMethodBeat.i(79925);
-    dpx();
-    AppMethodBeat.o(79925);
-  }
-  
-  public final int dpw()
-  {
-    AppMethodBeat.i(79919);
-    ab.d("MicroMsg.HeadingPitchSensorMgr", "getHeading() " + this.wez);
-    int i = this.wez;
-    AppMethodBeat.o(79919);
-    return i;
-  }
-  
-  public final void fX(Context paramContext)
-  {
-    AppMethodBeat.i(79921);
-    ab.d("MicroMsg.HeadingPitchSensorMgr", "initSensor() ");
-    if (paramContext == null)
+    ab localab = g.afB().afk();
+    if (localab == null)
     {
-      ab.e("MicroMsg.HeadingPitchSensorMgr", "initSensor() context == null");
-      AppMethodBeat.o(79921);
-      return;
+      ad.e("MicroMsg.AppNewIconUtil", "markNew fail, cfgStg is null");
+      AppMethodBeat.o(152380);
+      return false;
     }
-    if (this.weB == null) {
-      this.weB = ((SensorManager)ah.getContext().getSystemService("sensor"));
+    a locala = new a((byte)0);
+    locala.amB((String)localab.get(69121, null));
+    if (!locala.whn.contains(paramString)) {
+      locala.whn.add(paramString);
     }
-    if (this.vpT == null) {
-      this.vpT = new d.1(this);
-    }
-    boolean bool = this.weB.registerListener(this.vpT, this.weB.getDefaultSensor(3), 3);
-    this.hasInit = true;
-    ab.d("MicroMsg.HeadingPitchSensorMgr", "initSensor() finish, %s", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(79921);
+    localab.set(69121, locala.eAD());
+    AppMethodBeat.o(152380);
+    return true;
   }
   
-  public final void fz(Context paramContext)
+  public static boolean aCu(String paramString)
   {
-    AppMethodBeat.i(79924);
-    fX(paramContext);
-    AppMethodBeat.o(79924);
+    AppMethodBeat.i(152381);
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      ad.e("MicroMsg.AppNewIconUtil", "unmarkNew fail, appId is empty");
+      AppMethodBeat.o(152381);
+      return false;
+    }
+    ab localab = g.afB().afk();
+    if (localab == null)
+    {
+      ad.e("MicroMsg.AppNewIconUtil", "unmarkNew fail, cfgStg is null");
+      AppMethodBeat.o(152381);
+      return false;
+    }
+    a locala = new a((byte)0);
+    locala.amB((String)localab.get(69121, null));
+    if (locala.whn.contains(paramString)) {
+      locala.whn.remove(paramString);
+    }
+    localab.set(69121, locala.eAD());
+    AppMethodBeat.o(152381);
+    return true;
   }
   
-  public final String getName()
+  static final class a
   {
-    return "HeadingPitchSensorMgr";
-  }
-  
-  public final int getPitch()
-  {
-    AppMethodBeat.i(79920);
-    ab.d("MicroMsg.HeadingPitchSensorMgr", "getPitch() " + this.weA);
-    int i = this.weA;
-    AppMethodBeat.o(79920);
-    return i;
+    List<String> whn;
+    
+    private a()
+    {
+      AppMethodBeat.i(152377);
+      this.whn = new ArrayList();
+      AppMethodBeat.o(152377);
+    }
+    
+    final void amB(String paramString)
+    {
+      AppMethodBeat.i(152379);
+      this.whn = new ArrayList();
+      if ((paramString == null) || (paramString.length() == 0))
+      {
+        AppMethodBeat.o(152379);
+        return;
+      }
+      paramString = paramString.split(";");
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = paramString[i];
+        this.whn.add(localObject);
+        i += 1;
+      }
+      AppMethodBeat.o(152379);
+    }
+    
+    final String eAD()
+    {
+      AppMethodBeat.i(152378);
+      if ((this.whn == null) || (this.whn.size() == 0))
+      {
+        AppMethodBeat.o(152378);
+        return "";
+      }
+      Object localObject = new StringBuffer();
+      Iterator localIterator = this.whn.iterator();
+      while (localIterator.hasNext())
+      {
+        ((StringBuffer)localObject).append((String)localIterator.next());
+        ((StringBuffer)localObject).append(";");
+      }
+      localObject = ((StringBuffer)localObject).toString();
+      AppMethodBeat.o(152378);
+      return localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.d
  * JD-Core Version:    0.7.0.1
  */

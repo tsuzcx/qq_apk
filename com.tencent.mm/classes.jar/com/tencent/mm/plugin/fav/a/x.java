@@ -12,9 +12,17 @@ public abstract interface x
 {
   public static final String[] SQL_CREATE = { j.getCreateSQLs(g.info, "FavItemInfo") };
   
-  public abstract g NQ(String paramString);
+  public abstract long A(long paramLong, int paramInt);
   
-  public abstract void O(int paramInt, long paramLong);
+  public abstract void A(g paramg);
+  
+  public abstract LinkedList<Integer> B(long paramLong, int paramInt);
+  
+  public abstract long C(long paramLong, int paramInt);
+  
+  public abstract int Cm(int paramInt);
+  
+  public abstract g Yl(String paramString);
   
   public abstract ArrayList<g> a(List<Long> paramList, List<g> paramList1, Set<Integer> paramSet, w paramw);
   
@@ -22,55 +30,47 @@ public abstract interface x
   
   public abstract boolean a(g paramg, String... paramVarArgs);
   
+  public abstract void ab(int paramInt, long paramLong);
+  
   public abstract List<g> b(long paramLong, int paramInt, Set<Integer> paramSet, w paramw);
   
   public abstract boolean b(g paramg, String... paramVarArgs);
   
-  public abstract e bwI();
+  public abstract e chY();
   
-  public abstract int bwJ();
+  public abstract int chZ();
   
-  public abstract List<g> bwK();
+  public abstract List<g> cia();
   
-  public abstract List<g> bwL();
+  public abstract List<g> cib();
   
-  public abstract List<g> bwM();
+  public abstract List<g> cic();
   
-  public abstract List<g> bwN();
+  public abstract List<g> cid();
   
-  public abstract List<g> bwO();
+  public abstract List<g> cie();
   
-  public abstract List<g> bwP();
+  public abstract List<g> cif();
   
-  public abstract List<Long> bwQ();
+  public abstract List<Long> cig();
   
-  public abstract void bwR();
+  public abstract void cih();
   
-  public abstract List<Long> bwS();
+  public abstract List<Long> cii();
   
   public abstract int getCount();
   
-  public abstract g kb(long paramLong);
+  public abstract g pS(long paramLong);
   
-  public abstract g kc(long paramLong);
+  public abstract g pT(long paramLong);
   
-  public abstract boolean v(long paramLong, int paramInt);
+  public abstract boolean z(long paramLong, int paramInt);
   
-  public abstract int vU(int paramInt);
-  
-  public abstract long w(long paramLong, int paramInt);
-  
-  public abstract LinkedList<Integer> x(long paramLong, int paramInt);
-  
-  public abstract long y(long paramLong, int paramInt);
-  
-  public abstract boolean y(g paramg);
-  
-  public abstract void z(g paramg);
+  public abstract boolean z(g paramg);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.x
  * JD-Core Version:    0.7.0.1
  */

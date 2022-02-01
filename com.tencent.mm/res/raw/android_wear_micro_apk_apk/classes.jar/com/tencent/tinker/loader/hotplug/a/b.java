@@ -18,7 +18,7 @@ import java.lang.reflect.Modifier;
 public final class b
   implements com.tencent.tinker.loader.hotplug.b.c
 {
-  private static final int aly;
+  private static final int aoY;
   private final Context mContext;
   
   static
@@ -29,7 +29,7 @@ public final class b
     try
     {
       i = h.a(Class.forName("android.app.ActivityThread$H"), "LAUNCH_ACTIVITY").getInt(null);
-      aly = i;
+      aoY = i;
       return;
     }
     catch (Throwable localThrowable)
@@ -54,7 +54,7 @@ public final class b
     this.mContext = paramContext;
   }
   
-  private static <T> void f(T paramT1, T paramT2)
+  private static <T> void h(T paramT1, T paramT2)
   {
     if ((paramT1 == null) || (paramT2 == null)) {
       return;
@@ -94,7 +94,7 @@ public final class b
   public final boolean handleMessage(Message paramMessage)
   {
     int i = 2;
-    if (paramMessage.what == aly)
+    if (paramMessage.what == aoY)
     {
       Object localObject1;
       try
@@ -105,7 +105,7 @@ public final class b
           Log.w("Tinker.MHMsgHndlr", "msg: [" + paramMessage.what + "] has no 'obj' value.");
           return false;
         }
-        paramMessage = (Intent)h.a(localObject1, "intent").get(localObject1);
+        paramMessage = (Intent)h.d(localObject1, "intent").get(localObject1);
         if (paramMessage == null)
         {
           Log.w("Tinker.MHMsgHndlr", "cannot fetch intent from message received by mH.");
@@ -124,10 +124,10 @@ public final class b
         Log.w("Tinker.MHMsgHndlr", "oldComponent was null, start " + paramMessage.getComponent() + " next.");
         return false;
       }
-      ActivityInfo localActivityInfo1 = (ActivityInfo)h.a(localObject1, "activityInfo").get(localObject1);
+      ActivityInfo localActivityInfo1 = (ActivityInfo)h.d(localObject1, "activityInfo").get(localObject1);
       if (localActivityInfo1 != null)
       {
-        ActivityInfo localActivityInfo2 = com.tencent.tinker.loader.hotplug.c.ab(localComponentName.getClassName());
+        ActivityInfo localActivityInfo2 = com.tencent.tinker.loader.hotplug.c.af(localComponentName.getClassName());
         if (localActivityInfo2 == null)
         {
           Log.e("Tinker.MHMsgHndlr", "Failed to query target activity's info, perhaps the target is not hotpluged component. Target: " + localComponentName.getClassName());
@@ -139,10 +139,10 @@ public final class b
         {
           try
           {
-            localObject1 = h.a(localObject1, "token").get(localObject1);
+            localObject1 = h.d(localObject1, "token").get(localObject1);
             Object localObject2 = h.a(Class.forName("android.app.ActivityManagerNative"), "getDefault", new Class[0]).invoke(null, new Object[0]);
             h.a(localObject2, "setRequestedOrientation", new Class[] { IBinder.class, Integer.TYPE }).invoke(localObject2, new Object[] { localObject1, Integer.valueOf(i) });
-            f(localActivityInfo2, localActivityInfo1);
+            h(localActivityInfo2, localActivityInfo1);
             paramMessage.setComponent(localComponentName);
             paramMessage.removeExtra("tinker_iek_old_component");
             return false;

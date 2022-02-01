@@ -4,17 +4,17 @@ import android.os.Build.VERSION;
 
 public final class d
 {
-  public static boolean fv(int paramInt)
+  public static boolean lf(int paramInt)
   {
     return Build.VERSION.SDK_INT >= paramInt;
   }
   
-  public static boolean fw(int paramInt)
+  public static boolean lg(int paramInt)
   {
     return Build.VERSION.SDK_INT < paramInt;
   }
   
-  public static boolean iU(int paramInt)
+  public static boolean lh(int paramInt)
   {
     return Build.VERSION.SDK_INT > paramInt;
   }

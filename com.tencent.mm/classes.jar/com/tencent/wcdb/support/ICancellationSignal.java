@@ -72,7 +72,7 @@ public abstract interface ICancellationSignal
       
       public void cancel()
       {
-        AppMethodBeat.i(12708);
+        AppMethodBeat.i(3394);
         Parcel localParcel = Parcel.obtain();
         try
         {
@@ -83,7 +83,7 @@ public abstract interface ICancellationSignal
         finally
         {
           localParcel.recycle();
-          AppMethodBeat.o(12708);
+          AppMethodBeat.o(3394);
         }
       }
       

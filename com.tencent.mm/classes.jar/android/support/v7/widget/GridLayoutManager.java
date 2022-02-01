@@ -2,8 +2,8 @@ package android.support.v7.widget;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.support.v4.view.a.b;
-import android.support.v4.view.a.b.c;
+import android.support.v4.view.a.c;
+import android.support.v4.view.a.c.c;
 import android.support.v4.view.t;
 import android.util.AttributeSet;
 import android.util.SparseIntArray;
@@ -16,44 +16,50 @@ import java.util.Arrays;
 public class GridLayoutManager
   extends LinearLayoutManager
 {
-  boolean afF = false;
-  int afG = -1;
-  int[] afH;
-  View[] afI;
-  final SparseIntArray afJ = new SparseIntArray();
-  final SparseIntArray afK = new SparseIntArray();
-  public GridLayoutManager.b afL = new GridLayoutManager.a();
-  final Rect afM = new Rect();
+  boolean amM = false;
+  public int amN = -1;
+  int[] amO;
+  View[] amP;
+  final SparseIntArray amQ = new SparseIntArray();
+  final SparseIntArray amR = new SparseIntArray();
+  public GridLayoutManager.b amS = new a();
+  final Rect amT = new Rect();
   
   public GridLayoutManager(int paramInt)
   {
-    bE(paramInt);
+    bV(paramInt);
   }
   
-  public GridLayoutManager(int paramInt, byte paramByte)
+  public GridLayoutManager(int paramInt1, int paramInt2)
   {
-    super(1);
-    bE(paramInt);
+    super(paramInt2);
+    bV(paramInt1);
   }
   
-  private int V(int paramInt1, int paramInt2)
+  public GridLayoutManager(Context paramContext, AttributeSet paramAttributeSet, int paramInt1, int paramInt2)
   {
-    if ((this.mOrientation == 1) && (hE())) {
-      return this.afH[(this.afG - paramInt1)] - this.afH[(this.afG - paramInt1 - paramInt2)];
+    super(paramContext, paramAttributeSet, paramInt1, paramInt2);
+    bV(c(paramContext, paramAttributeSet, paramInt1, paramInt2).aqI);
+  }
+  
+  private int X(int paramInt1, int paramInt2)
+  {
+    if ((this.mOrientation == 1) && (ja())) {
+      return this.amO[(this.amN - paramInt1)] - this.amO[(this.amN - paramInt1 - paramInt2)];
     }
-    return this.afH[(paramInt1 + paramInt2)] - this.afH[paramInt1];
+    return this.amO[(paramInt1 + paramInt2)] - this.amO[paramInt1];
   }
   
   private int a(RecyclerView.o paramo, RecyclerView.s params, int paramInt)
   {
-    if (!params.akg) {
-      return this.afL.Y(paramInt, this.afG);
+    if (!params.aru) {
+      return this.amS.aa(paramInt, this.amN);
     }
-    paramInt = paramo.ca(paramInt);
+    paramInt = paramo.cu(paramInt);
     if (paramInt == -1) {
       return 0;
     }
-    return this.afL.Y(paramInt, this.afG);
+    return this.amS.aa(paramInt, this.amN);
   }
   
   private void a(RecyclerView.o paramo, RecyclerView.s params, int paramInt, boolean paramBoolean)
@@ -70,11 +76,11 @@ public class GridLayoutManager
     }
     while (paramInt != j)
     {
-      View localView = this.afI[paramInt];
-      GridLayoutManager.LayoutParams localLayoutParams = (GridLayoutManager.LayoutParams)localView.getLayoutParams();
-      localLayoutParams.afO = c(paramo, params, bv(localView));
-      localLayoutParams.afN = k;
-      k += localLayoutParams.afO;
+      View localView = this.amP[paramInt];
+      LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
+      localLayoutParams.amV = c(paramo, params, bB(localView));
+      localLayoutParams.amU = k;
+      k += localLayoutParams.amV;
       paramInt += i;
       continue;
       paramInt -= 1;
@@ -99,70 +105,70 @@ public class GridLayoutManager
   private int b(RecyclerView.o paramo, RecyclerView.s params, int paramInt)
   {
     int i;
-    if (!params.akg) {
-      i = this.afL.X(paramInt, this.afG);
+    if (!params.aru) {
+      i = this.amS.Z(paramInt, this.amN);
     }
     int j;
     do
     {
       return i;
-      j = this.afK.get(paramInt, -1);
+      j = this.amR.get(paramInt, -1);
       i = j;
     } while (j != -1);
-    paramInt = paramo.ca(paramInt);
+    paramInt = paramo.cu(paramInt);
     if (paramInt == -1) {
       return 0;
     }
-    return this.afL.X(paramInt, this.afG);
+    return this.amS.Z(paramInt, this.amN);
   }
   
   private void b(View paramView, int paramInt, boolean paramBoolean)
   {
-    GridLayoutManager.LayoutParams localLayoutParams = (GridLayoutManager.LayoutParams)paramView.getLayoutParams();
-    Rect localRect = localLayoutParams.afM;
+    LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
+    Rect localRect = localLayoutParams.amT;
     int j = localRect.top + localRect.bottom + localLayoutParams.topMargin + localLayoutParams.bottomMargin;
     int i = localRect.left;
     int k = localRect.right;
     int m = localLayoutParams.leftMargin;
     i = localLayoutParams.rightMargin + (k + i + m);
-    k = V(localLayoutParams.afN, localLayoutParams.afO);
+    k = X(localLayoutParams.amU, localLayoutParams.amV);
     if (this.mOrientation == 1)
     {
-      i = c(k, paramInt, i, localLayoutParams.width, false);
-      paramInt = c(this.agm.iK(), this.ajw, j, localLayoutParams.height, true);
+      i = b(k, paramInt, i, localLayoutParams.width, false);
+      paramInt = b(this.ant.kf(), this.aqG, j, localLayoutParams.height, true);
     }
     for (;;)
     {
       a(paramView, i, paramInt, paramBoolean);
       return;
-      paramInt = c(k, paramInt, j, localLayoutParams.height, false);
-      i = c(this.agm.iK(), this.ajv, i, localLayoutParams.width, true);
+      paramInt = b(k, paramInt, j, localLayoutParams.height, false);
+      i = b(this.ant.kf(), this.aqF, i, localLayoutParams.width, true);
     }
   }
   
-  private void bD(int paramInt)
+  private void bU(int paramInt)
   {
-    this.afH = d(this.afH, this.afG, paramInt);
+    this.amO = d(this.amO, this.amN, paramInt);
   }
   
   private int c(RecyclerView.o paramo, RecyclerView.s params, int paramInt)
   {
     int i;
-    if (!params.akg) {
-      i = this.afL.bF(paramInt);
+    if (!params.aru) {
+      i = this.amS.bW(paramInt);
     }
     int j;
     do
     {
       return i;
-      j = this.afJ.get(paramInt, -1);
+      j = this.amQ.get(paramInt, -1);
       i = j;
     } while (j != -1);
-    paramInt = paramo.ca(paramInt);
+    paramInt = paramo.cu(paramInt);
     if (paramInt == -1) {
       return 1;
     }
-    return this.afL.bF(paramInt);
+    return this.amS.bW(paramInt);
   }
   
   private static int[] d(int[] paramArrayOfInt, int paramInt1, int paramInt2)
@@ -205,34 +211,34 @@ public class GridLayoutManager
     }
   }
   
-  private void ie()
+  private void jA()
+  {
+    if ((this.amP == null) || (this.amP.length != this.amN)) {
+      this.amP = new View[this.amN];
+    }
+  }
+  
+  private void jz()
   {
     if (getOrientation() == 1) {}
     for (int i = this.mWidth - getPaddingRight() - getPaddingLeft();; i = this.mHeight - getPaddingBottom() - getPaddingTop())
     {
-      bD(i);
+      bU(i);
       return;
     }
   }
   
-  private void jdMethod_if()
+  public int a(int paramInt, RecyclerView.o paramo, RecyclerView.s params)
   {
-    if ((this.afI == null) || (this.afI.length != this.afG)) {
-      this.afI = new View[this.afG];
-    }
-  }
-  
-  public final int a(int paramInt, RecyclerView.o paramo, RecyclerView.s params)
-  {
-    ie();
-    jdMethod_if();
+    jz();
+    jA();
     return super.a(paramInt, paramo, params);
   }
   
   public final int a(RecyclerView.o paramo, RecyclerView.s params)
   {
     if (this.mOrientation == 0) {
-      return this.afG;
+      return this.amN;
     }
     if (params.getItemCount() <= 0) {
       return 0;
@@ -242,14 +248,14 @@ public class GridLayoutManager
   
   public final RecyclerView.LayoutParams a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    return new GridLayoutManager.LayoutParams(paramContext, paramAttributeSet);
+    return new LayoutParams(paramContext, paramAttributeSet);
   }
   
   final View a(RecyclerView.o paramo, RecyclerView.s params, int paramInt1, int paramInt2, int paramInt3)
   {
-    im();
-    int j = this.agm.iI();
-    int k = this.agm.iJ();
+    jH();
+    int j = this.ant.kd();
+    int k = this.ant.ke();
     int i;
     Object localObject1;
     Object localObject2;
@@ -264,11 +270,11 @@ public class GridLayoutManager
         break label164;
       }
       localView = getChildAt(paramInt1);
-      int m = bv(localView);
+      int m = bB(localView);
       if ((m < 0) || (m >= paramInt3) || (b(paramo, params, m) != 0)) {
         break label179;
       }
-      if (!((RecyclerView.LayoutParams)localView.getLayoutParams()).ajy.isRemoved()) {
+      if (!((RecyclerView.LayoutParams)localView.getLayoutParams()).aqL.isRemoved()) {
         break label120;
       }
       if (localObject2 != null) {
@@ -287,10 +293,10 @@ public class GridLayoutManager
       break;
       label120:
       Object localObject3;
-      if (this.agm.bh(localView) < k)
+      if (this.ant.bn(localView) < k)
       {
         localObject3 = localView;
-        if (this.agm.bi(localView) >= j) {}
+        if (this.ant.bo(localView) >= j) {}
       }
       else
       {
@@ -311,7 +317,7 @@ public class GridLayoutManager
   
   public final View a(View paramView, int paramInt, RecyclerView.o paramo, RecyclerView.s params)
   {
-    View localView3 = bn(paramView);
+    View localView3 = bt(paramView);
     View localView2;
     if (localView3 == null) {
       localView2 = null;
@@ -333,24 +339,24 @@ public class GridLayoutManager
     label218:
     label232:
     label238:
-    GridLayoutManager.LayoutParams localLayoutParams;
+    LayoutParams localLayoutParams;
     int i9;
     int i10;
     do
     {
       return localView2;
-      localObject = (GridLayoutManager.LayoutParams)localView3.getLayoutParams();
-      i6 = ((GridLayoutManager.LayoutParams)localObject).afN;
-      i7 = ((GridLayoutManager.LayoutParams)localObject).afN + ((GridLayoutManager.LayoutParams)localObject).afO;
+      localObject = (LayoutParams)localView3.getLayoutParams();
+      i6 = ((LayoutParams)localObject).amU;
+      i7 = ((LayoutParams)localObject).amU + ((LayoutParams)localObject).amV;
       if (super.a(paramView, paramInt, paramo, params) == null) {
         return null;
       }
       int i12;
       int k;
-      if (bK(paramInt) == 1)
+      if (cc(paramInt) == 1)
       {
         i12 = 1;
-        if (i12 == this.agp) {
+        if (i12 == this.anw) {
           break label213;
         }
         paramInt = 1;
@@ -360,7 +366,7 @@ public class GridLayoutManager
         paramInt = getChildCount() - 1;
         m = -1;
         k = -1;
-        if ((this.mOrientation != 1) || (!hE())) {
+        if ((this.mOrientation != 1) || (!ja())) {
           break label232;
         }
       }
@@ -401,9 +407,9 @@ public class GridLayoutManager
         k = getChildCount();
         break label102;
       }
-      localLayoutParams = (GridLayoutManager.LayoutParams)paramView.getLayoutParams();
-      i9 = localLayoutParams.afN;
-      i10 = localLayoutParams.afN + localLayoutParams.afO;
+      localLayoutParams = (LayoutParams)paramView.getLayoutParams();
+      i9 = localLayoutParams.amU;
+      i10 = localLayoutParams.amU + localLayoutParams.amV;
       if ((!paramView.hasFocusable()) || (i9 != i6)) {
         break;
       }
@@ -420,7 +426,7 @@ public class GridLayoutManager
       if (!paramView.hasFocusable()) {
         break label564;
       }
-      i2 = localLayoutParams.afN;
+      i2 = localLayoutParams.amU;
       i3 = Math.min(i10, i7) - Math.max(i9, i6);
       paramInt = j;
       localObject = paramView;
@@ -458,7 +464,7 @@ public class GridLayoutManager
       if (localObject != null) {
         break label320;
       }
-      if ((this.ajm.bX(paramView)) && (this.ajn.bX(paramView)))
+      if ((this.aqw.cf(paramView)) && (this.aqx.cf(paramView)))
       {
         paramInt = 1;
         label485:
@@ -497,7 +503,7 @@ public class GridLayoutManager
         break;
       }
       label564:
-      i = localLayoutParams.afN;
+      i = localLayoutParams.amU;
       paramInt = Math.min(i10, i7) - Math.max(i9, i6);
       localView1 = paramView;
       continue;
@@ -510,7 +516,7 @@ public class GridLayoutManager
   
   public final void a(Rect paramRect, int paramInt1, int paramInt2)
   {
-    if (this.afH == null) {
+    if (this.amO == null) {
       super.a(paramRect, paramInt1, paramInt2);
     }
     int i = getPaddingLeft();
@@ -518,31 +524,31 @@ public class GridLayoutManager
     int k = getPaddingTop() + getPaddingBottom();
     if (this.mOrientation == 1)
     {
-      i = k(paramInt2, k + paramRect.height(), t.aa(this.adt));
-      paramInt2 = k(paramInt1, j + this.afH[(this.afH.length - 1)], t.Z(this.adt));
+      i = m(paramInt2, k + paramRect.height(), t.af(this.akA));
+      paramInt2 = m(paramInt1, j + this.amO[(this.amO.length - 1)], t.ae(this.akA));
       paramInt1 = i;
     }
     for (;;)
     {
       setMeasuredDimension(paramInt2, paramInt1);
       return;
-      i = k(paramInt1, j + paramRect.width(), t.Z(this.adt));
-      paramInt1 = k(paramInt2, k + this.afH[(this.afH.length - 1)], t.aa(this.adt));
+      i = m(paramInt1, j + paramRect.width(), t.ae(this.akA));
+      paramInt1 = m(paramInt2, k + this.amO[(this.amO.length - 1)], t.af(this.akA));
       paramInt2 = i;
     }
   }
   
   public final void a(GridLayoutManager.b paramb)
   {
-    this.afL = paramb;
+    this.amS = paramb;
   }
   
   final void a(RecyclerView.o paramo, RecyclerView.s params, LinearLayoutManager.a parama, int paramInt)
   {
     int i = 1;
     super.a(paramo, params, parama, paramInt);
-    ie();
-    if ((params.getItemCount() > 0) && (!params.akg))
+    jz();
+    if ((params.getItemCount() > 0) && (!params.aru))
     {
       if (paramInt == 1) {}
       for (paramInt = i;; paramInt = 0)
@@ -570,12 +576,12 @@ public class GridLayoutManager
       }
       parama.mPosition = paramInt;
     }
-    jdMethod_if();
+    jA();
   }
   
   final void a(RecyclerView.o paramo, RecyclerView.s params, LinearLayoutManager.c paramc, LinearLayoutManager.b paramb)
   {
-    int i3 = this.agm.iL();
+    int i3 = this.ant.kg();
     int j;
     int k;
     label38:
@@ -588,20 +594,20 @@ public class GridLayoutManager
       if (getChildCount() <= 0) {
         break label212;
       }
-      k = this.afH[this.afG];
+      k = this.amO[this.amN];
       if (j != 0) {
-        ie();
+        jz();
       }
-      if (paramc.afU != 1) {
+      if (paramc.anb != 1) {
         break label218;
       }
       bool = true;
       m = 0;
-      i = this.afG;
+      i = this.amN;
       n = m;
       if (!bool)
       {
-        i = b(paramo, params, paramc.afT) + c(paramo, params, paramc.afT);
+        i = b(paramo, params, paramc.ana) + c(paramo, params, paramc.ana);
         n = m;
       }
     }
@@ -611,14 +617,14 @@ public class GridLayoutManager
     Object localObject;
     for (;;)
     {
-      if ((n >= this.afG) || (!paramc.b(params)) || (i <= 0)) {
+      if ((n >= this.amN) || (!paramc.b(params)) || (i <= 0)) {
         break label266;
       }
-      m = paramc.afT;
+      m = paramc.ana;
       i1 = c(paramo, params, m);
-      if (i1 > this.afG)
+      if (i1 > this.amN)
       {
-        throw new IllegalArgumentException("Item at position " + m + " requires " + i1 + " spans but GridLayoutManager has only " + this.afG + " spans.");
+        throw new IllegalArgumentException("Item at position " + m + " requires " + i1 + " spans but GridLayoutManager has only " + this.amN + " spans.");
         j = 0;
         break;
         k = 0;
@@ -634,7 +640,7 @@ public class GridLayoutManager
       if (localObject == null) {
         break label266;
       }
-      this.afI[n] = localObject;
+      this.amP[n] = localObject;
       n += 1;
     }
     label266:
@@ -651,20 +657,20 @@ public class GridLayoutManager
     int i2;
     if (m < n)
     {
-      paramo = this.afI[m];
-      if (paramc.agI == null) {
+      paramo = this.amP[m];
+      if (paramc.anP == null) {
         if (bool)
         {
           addView(paramo, -1);
-          g(paramo, this.afM);
+          f(paramo, this.amT);
           b(paramo, i3, false);
-          i2 = this.agm.bl(paramo);
+          i2 = this.ant.br(paramo);
           i1 = i;
           if (i2 > i) {
             i1 = i2;
           }
-          params = (GridLayoutManager.LayoutParams)paramo.getLayoutParams();
-          float f2 = this.agm.bm(paramo) * 1.0F / params.afO;
+          params = (LayoutParams)paramo.getLayoutParams();
+          float f2 = this.ant.bs(paramo) * 1.0F / params.amV;
           if (f2 <= f1) {
             break label1152;
           }
@@ -683,23 +689,23 @@ public class GridLayoutManager
       break label330;
       if (bool)
       {
-        C(paramo, -1);
+        G(paramo, -1);
         break label330;
       }
-      C(paramo, 0);
+      G(paramo, 0);
       break label330;
       if (j != 0)
       {
-        bD(Math.max(Math.round(this.afG * f1), k));
+        bU(Math.max(Math.round(this.amN * f1), k));
         i = 0;
         k = 0;
         j = i;
         if (k >= n) {
           break label549;
         }
-        paramo = this.afI[k];
+        paramo = this.amP[k];
         b(paramo, 1073741824, true);
-        j = this.agm.bl(paramo);
+        j = this.ant.br(paramo);
         if (j <= i) {
           break label1149;
         }
@@ -717,21 +723,21 @@ public class GridLayoutManager
         i = 0;
         if (i < n)
         {
-          paramo = this.afI[i];
-          if (this.agm.bl(paramo) != j)
+          paramo = this.amP[i];
+          if (this.ant.br(paramo) != j)
           {
-            params = (GridLayoutManager.LayoutParams)paramo.getLayoutParams();
-            localObject = params.afM;
+            params = (LayoutParams)paramo.getLayoutParams();
+            localObject = params.amT;
             m = ((Rect)localObject).top + ((Rect)localObject).bottom + params.topMargin + params.bottomMargin;
             k = ((Rect)localObject).left;
             k = ((Rect)localObject).right + k + params.leftMargin + params.rightMargin;
-            i1 = V(params.afN, params.afO);
+            i1 = X(params.amU, params.amV);
             if (this.mOrientation != 1) {
               break label715;
             }
-            k = c(i1, 1073741824, k, params.width, false);
+            k = b(i1, 1073741824, k, params.width, false);
           }
-          for (m = View.MeasureSpec.makeMeasureSpec(j - m, 1073741824);; m = c(i1, 1073741824, m, params.height, false))
+          for (m = View.MeasureSpec.makeMeasureSpec(j - m, 1073741824);; m = b(i1, 1073741824, m, params.height, false))
           {
             a(paramo, k, m, true);
             i += 1;
@@ -739,14 +745,14 @@ public class GridLayoutManager
             k = View.MeasureSpec.makeMeasureSpec(j - k, 1073741824);
           }
         }
-        paramb.agC = j;
+        paramb.anJ = j;
         i1 = 0;
         m = 0;
         k = 0;
         if (this.mOrientation == 1) {
           if (paramc.mLayoutDirection == -1)
           {
-            i = paramc.Fb;
+            i = paramc.LZ;
             k = i - j;
             j = i1;
             i1 = 0;
@@ -757,17 +763,17 @@ public class GridLayoutManager
             if (i1 >= n) {
               break label1140;
             }
-            paramo = this.afI[i1];
-            params = (GridLayoutManager.LayoutParams)paramo.getLayoutParams();
+            paramo = this.amP[i1];
+            params = (LayoutParams)paramo.getLayoutParams();
             if (this.mOrientation != 1) {
               break label1100;
             }
-            if (!hE()) {
+            if (!ja()) {
               break label1052;
             }
             k = getPaddingLeft();
-            m = this.afH[(this.afG - params.afN)] + k;
-            i2 = m - this.agm.bm(paramo);
+            m = this.amO[(this.amN - params.amU)] + k;
+            i2 = m - this.ant.bs(paramo);
             k = i;
             i = i2;
           }
@@ -775,137 +781,145 @@ public class GridLayoutManager
         for (;;)
         {
           k(paramo, i, k, m, j);
-          if ((params.ajy.isRemoved()) || (params.ajy.kb())) {
-            paramb.agD = true;
+          if ((params.aqL.isRemoved()) || (params.aqL.lC())) {
+            paramb.anK = true;
           }
-          paramb.TF |= paramo.hasFocusable();
+          paramb.aaI |= paramo.hasFocusable();
           i2 = i1 + 1;
           i1 = k;
           k = i;
           i = i1;
           i1 = i2;
           break label816;
-          k = paramc.Fb;
+          k = paramc.LZ;
           i = j + k;
           j = i1;
           break;
           if (paramc.mLayoutDirection == -1)
           {
-            m = paramc.Fb;
+            m = paramc.LZ;
             j = m - j;
             i = 0;
             break;
           }
-          i = paramc.Fb;
+          i = paramc.LZ;
           m = i + j;
           i1 = 0;
           j = i;
           i = i1;
           break;
-          m = getPaddingLeft() + this.afH[params.afN];
-          i2 = this.agm.bm(paramo);
+          m = getPaddingLeft() + this.amO[params.amU];
+          i2 = this.ant.bs(paramo);
           k = i;
           i2 += m;
           i = m;
           m = i2;
           continue;
-          i2 = getPaddingTop() + this.afH[params.afN];
-          j = i2 + this.agm.bm(paramo);
+          i2 = getPaddingTop() + this.amO[params.amU];
+          j = i2 + this.ant.bs(paramo);
           i = k;
           k = i2;
         }
-        Arrays.fill(this.afI, null);
+        Arrays.fill(this.amP, null);
         return;
       }
     }
   }
   
-  public final void a(RecyclerView.o paramo, RecyclerView.s params, View paramView, b paramb)
+  public final void a(RecyclerView.o paramo, RecyclerView.s params, View paramView, c paramc)
   {
     boolean bool2 = false;
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    if (!(localLayoutParams instanceof GridLayoutManager.LayoutParams))
+    if (!(localLayoutParams instanceof LayoutParams))
     {
-      super.a(paramView, paramb);
+      super.a(paramView, paramc);
       return;
     }
-    paramView = (GridLayoutManager.LayoutParams)localLayoutParams;
-    int i = a(paramo, params, paramView.ajy.jM());
+    paramView = (LayoutParams)localLayoutParams;
+    int i = a(paramo, params, paramView.aqL.lm());
     if (this.mOrientation == 0)
     {
-      j = paramView.afN;
-      k = paramView.afO;
-      if ((this.afG > 1) && (paramView.afO == this.afG)) {}
+      j = paramView.amU;
+      k = paramView.amV;
+      if ((this.amN > 1) && (paramView.amV == this.amN)) {}
       for (bool1 = true;; bool1 = false)
       {
-        paramb.F(b.c.b(j, k, i, 1, bool1));
+        paramc.E(c.c.a(j, k, i, 1, bool1));
         return;
       }
     }
-    int j = paramView.afN;
-    int k = paramView.afO;
+    int j = paramView.amU;
+    int k = paramView.amV;
     boolean bool1 = bool2;
-    if (this.afG > 1)
+    if (this.amN > 1)
     {
       bool1 = bool2;
-      if (paramView.afO == this.afG) {
+      if (paramView.amV == this.amN) {
         bool1 = true;
       }
     }
-    paramb.F(b.c.b(i, 1, j, k, bool1));
+    paramc.E(c.c.a(i, 1, j, k, bool1));
   }
   
   public final void a(RecyclerView.s params)
   {
     super.a(params);
-    this.afF = false;
+    this.amM = false;
   }
   
   final void a(RecyclerView.s params, LinearLayoutManager.c paramc, RecyclerView.i.a parama)
   {
-    int j = this.afG;
+    int j = this.amN;
     int i = 0;
-    while ((i < this.afG) && (paramc.b(params)) && (j > 0))
+    while ((i < this.amN) && (paramc.b(params)) && (j > 0))
     {
-      int k = paramc.afT;
-      parama.P(k, Math.max(0, paramc.agE));
-      j -= this.afL.bF(k);
-      paramc.afT += paramc.afU;
+      int k = paramc.ana;
+      parama.R(k, Math.max(0, paramc.anL));
+      j -= this.amS.bW(k);
+      paramc.ana += paramc.anb;
       i += 1;
     }
   }
   
   public final void a(RecyclerView paramRecyclerView)
   {
-    this.afL.afP.clear();
+    this.amS.amW.clear();
   }
   
   public final void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.afL.afP.clear();
+    this.amS.amW.clear();
   }
   
   public final void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2, Object paramObject)
   {
-    this.afL.afP.clear();
+    this.amS.amW.clear();
   }
   
   public final boolean a(RecyclerView.LayoutParams paramLayoutParams)
   {
-    return paramLayoutParams instanceof GridLayoutManager.LayoutParams;
+    return paramLayoutParams instanceof LayoutParams;
   }
   
-  public final int b(int paramInt, RecyclerView.o paramo, RecyclerView.s params)
+  public final void ao(boolean paramBoolean)
   {
-    ie();
-    jdMethod_if();
+    if (paramBoolean) {
+      throw new UnsupportedOperationException("GridLayoutManager does not support stack from end. Consider using reverse layout");
+    }
+    super.ao(false);
+  }
+  
+  public int b(int paramInt, RecyclerView.o paramo, RecyclerView.s params)
+  {
+    jz();
+    jA();
     return super.b(paramInt, paramo, params);
   }
   
   public final int b(RecyclerView.o paramo, RecyclerView.s params)
   {
     if (this.mOrientation == 1) {
-      return this.afG;
+      return this.amN;
     }
     if (params.getItemCount() <= 0) {
       return 0;
@@ -913,74 +927,115 @@ public class GridLayoutManager
     return a(paramo, params, params.getItemCount() - 1) + 1;
   }
   
-  public final void bE(int paramInt)
+  public final void bV(int paramInt)
   {
-    if (paramInt == this.afG) {
+    if (paramInt == this.amN) {
       return;
     }
-    this.afF = true;
+    this.amM = true;
     if (paramInt <= 0) {
       throw new IllegalArgumentException("Span count should be at least 1. Provided ".concat(String.valueOf(paramInt)));
     }
-    this.afG = paramInt;
-    this.afL.afP.clear();
+    this.amN = paramInt;
+    this.amS.amW.clear();
     requestLayout();
   }
   
   public void c(RecyclerView.o paramo, RecyclerView.s params)
   {
-    if (params.akg)
+    if (params.aru)
     {
       int j = getChildCount();
       int i = 0;
       while (i < j)
       {
-        GridLayoutManager.LayoutParams localLayoutParams = (GridLayoutManager.LayoutParams)getChildAt(i).getLayoutParams();
-        int k = localLayoutParams.ajy.jM();
-        this.afJ.put(k, localLayoutParams.afO);
-        this.afK.put(k, localLayoutParams.afN);
+        LayoutParams localLayoutParams = (LayoutParams)getChildAt(i).getLayoutParams();
+        int k = localLayoutParams.aqL.lm();
+        this.amQ.put(k, localLayoutParams.amV);
+        this.amR.put(k, localLayoutParams.amU);
         i += 1;
       }
     }
     super.c(paramo, params);
-    this.afJ.clear();
-    this.afK.clear();
+    this.amQ.clear();
+    this.amR.clear();
   }
   
   public final void c(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    this.afL.afP.clear();
+    this.amS.amW.clear();
   }
   
   public final RecyclerView.LayoutParams d(ViewGroup.LayoutParams paramLayoutParams)
   {
     if ((paramLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
-      return new GridLayoutManager.LayoutParams((ViewGroup.MarginLayoutParams)paramLayoutParams);
+      return new LayoutParams((ViewGroup.MarginLayoutParams)paramLayoutParams);
     }
-    return new GridLayoutManager.LayoutParams(paramLayoutParams);
+    return new LayoutParams(paramLayoutParams);
   }
   
   public final void d(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    this.afL.afP.clear();
+    this.amS.amW.clear();
   }
   
-  public final RecyclerView.LayoutParams ic()
+  public final int jB()
+  {
+    return this.amN;
+  }
+  
+  public boolean jC()
+  {
+    return (this.anC == null) && (!this.amM);
+  }
+  
+  public final RecyclerView.LayoutParams jy()
   {
     if (this.mOrientation == 0) {
-      return new GridLayoutManager.LayoutParams(-2, -1);
+      return new LayoutParams(-2, -1);
     }
-    return new GridLayoutManager.LayoutParams(-1, -2);
+    return new LayoutParams(-1, -2);
   }
   
-  public final int ig()
+  public static class LayoutParams
+    extends RecyclerView.LayoutParams
   {
-    return this.afG;
+    public int amU = -1;
+    public int amV = 0;
+    
+    public LayoutParams(int paramInt1, int paramInt2)
+    {
+      super(paramInt2);
+    }
+    
+    public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
+    {
+      super(paramAttributeSet);
+    }
+    
+    public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+    {
+      super();
+    }
+    
+    public LayoutParams(ViewGroup.MarginLayoutParams paramMarginLayoutParams)
+    {
+      super();
+    }
   }
   
-  public boolean ih()
+  public static final class a
+    extends GridLayoutManager.b
   {
-    return (this.agv == null) && (!this.afF);
+    public final int Y(int paramInt1, int paramInt2)
+    {
+      return paramInt1 % paramInt2;
+    }
+    
+    public final int bW(int paramInt)
+    {
+      return 1;
+    }
   }
 }
 

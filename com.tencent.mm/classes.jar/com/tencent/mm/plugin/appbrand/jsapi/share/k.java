@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.share;
 
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.q;
 
 public final class k
-  extends a<r>
+  extends a<q>
 {
-  public static final int CTRL_INDEX = 464;
-  public static final String NAME = "updateShareMenuUpdatable";
+  public static final int CTRL_INDEX = 146;
+  public static final String NAME = "showShareMenu";
 }
 
 

@@ -1,39 +1,31 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.plugin.sns.ui.widget.SnsAvatarImageView;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
 
 final class SnsCommentDetailUI$20
-  implements f.a
+  implements View.OnClickListener
 {
-  SnsCommentDetailUI$20(SnsCommentDetailUI paramSnsCommentDetailUI, SnsAvatarImageView paramSnsAvatarImageView) {}
+  SnsCommentDetailUI$20(SnsCommentDetailUI paramSnsCommentDetailUI) {}
   
-  public final void abi(String paramString)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(38800);
-    ab.i("MicroMsg.SnsCommentDetailUI", "download img %s", new Object[] { paramString });
-    if ((!bo.Q(new String[] { (String)this.rPw.getTag(2131820667), paramString })) && (paramString.equals(h.gy("adId", (String)this.rPw.getTag(2131820667)))))
-    {
-      paramString = d.decodeFile(paramString, null);
-      if (paramString != null) {
-        this.rPw.setImageBitmap(paramString);
-      }
-    }
-    AppMethodBeat.o(38800);
+    AppMethodBeat.i(187674);
+    paramView = SnsCommentDetailUI.a(this.xxA);
+    paramView = new com.tencent.mm.hellhoundlib.b.a().bd(paramView);
+    Object localObject = new Object();
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, paramView.adn(), "com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$27", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+    BackwardSupportUtil.c.b((ListView)paramView.lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$27", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+    AppMethodBeat.o(187674);
   }
-  
-  public final void coe() {}
-  
-  public final void cqU() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI.20
  * JD-Core Version:    0.7.0.1
  */

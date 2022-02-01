@@ -12,7 +12,7 @@ public final class oe
   
   private oe(byte paramByte)
   {
-    this.ymq = false;
+    this.ESR = false;
     this.callback = null;
   }
 }

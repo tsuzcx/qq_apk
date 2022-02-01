@@ -5,19 +5,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
  enum f
 {
-  public static boolean aQD()
+  public static boolean bsU()
   {
     return true;
   }
   
-  public static boolean aQE()
+  public static boolean bsV()
   {
     return Build.VERSION.SDK_INT >= 19;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,53 @@
 package com.tencent.mm.ui.tools;
 
-import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ScrollView;
+import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class o
 {
-  public static void a(Context paramContext, ScrollView paramScrollView, View paramView1, View paramView2, View paramView3)
+  public static void go(View paramView)
   {
-    AppMethodBeat.i(107752);
-    a(paramContext, paramScrollView, paramView1, paramView2, paramView3, 72, 0.0F);
-    AppMethodBeat.o(107752);
+    AppMethodBeat.i(204021);
+    gp(paramView);
+    AppMethodBeat.o(204021);
   }
   
-  public static void a(Context paramContext, ScrollView paramScrollView, View paramView1, View paramView2, View paramView3, int paramInt, float paramFloat)
+  public static void gp(View paramView)
   {
-    AppMethodBeat.i(142773);
-    if (paramView3 == null)
+    AppMethodBeat.i(143210);
+    if (paramView == null)
     {
-      AppMethodBeat.o(142773);
+      AppMethodBeat.o(143210);
       return;
     }
-    paramScrollView.post(new o.1(paramView3, paramContext, paramInt, paramView1, paramFloat, paramView2, paramScrollView));
-    AppMethodBeat.o(142773);
+    paramView.setOnTouchListener(new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(143208);
+        switch (paramAnonymousMotionEvent.getAction())
+        {
+        }
+        while ((!paramAnonymousView.isClickable()) && (!paramAnonymousView.isLongClickable()))
+        {
+          AppMethodBeat.o(143208);
+          return true;
+          paramAnonymousView.setAlpha(this.HsU);
+          continue;
+          paramAnonymousView.setAlpha(1.0F);
+        }
+        AppMethodBeat.o(143208);
+        return false;
+      }
+    });
+    AppMethodBeat.o(143210);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.tools.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,126 +1,181 @@
 package com.tencent.mm.plugin.topstory.ui.widget;
 
 import android.content.Context;
-import android.graphics.Point;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.adl;
-import com.tencent.mm.ui.af;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.protocal.protobuf.ahk;
+import com.tencent.mm.protocal.protobuf.dcz;
+import com.tencent.mm.protocal.protobuf.ddb;
 import com.tencent.mm.ui.base.FlowLayout;
 import com.tencent.mm.ui.base.i;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedList;
 import java.util.Set;
 
 public final class b
   extends i
 {
   private View contentView;
-  private Set<adl> tmq;
-  private View tmr;
-  private View tms;
-  private TextView tmt;
-  private FlowLayout tmu;
-  private final adl tmv;
+  private TextView wgK;
+  private Set<ahk> yTb;
+  private View yTc;
+  private View yTd;
+  private TextView yTe;
+  private FlowLayout yTf;
+  private final ahk yTg;
   
-  public b(Context paramContext, List<adl> paramList, b.a parama)
+  public b(final Context paramContext, final ddb paramddb, final a parama)
   {
-    super(paramContext, 2131493694);
-    AppMethodBeat.i(2230);
-    this.tmq = new HashSet();
-    this.tmv = new adl();
-    this.tmv.id = "101";
-    this.tmv.cyA = paramContext.getString(2131304331);
-    Object localObject1 = paramList.iterator();
-    Object localObject2;
-    while (((Iterator)localObject1).hasNext())
+    super(paramContext, 2131821484);
+    AppMethodBeat.i(126636);
+    this.yTb = new HashSet();
+    this.yTg = new ahk();
+    this.yTg.id = "101";
+    this.yTg.doh = paramContext.getString(2131764467);
+    final ahk localahk;
+    if (paramddb.Evd != null)
     {
-      localObject2 = (adl)((Iterator)localObject1).next();
-      if (((adl)localObject2).wWx)
+      localIterator = paramddb.Evd.EuK.iterator();
+      while (localIterator.hasNext())
       {
-        this.tmv.id = ((adl)localObject2).id;
-        this.tmv.cyA = ((adl)localObject2).cyA;
-        paramList.remove(localObject2);
+        localahk = (ahk)localIterator.next();
+        if (localahk.Dkb)
+        {
+          this.yTg.id = localahk.id;
+          this.yTg.doh = localahk.doh;
+          paramddb.Evd.EuK.remove(localahk);
+        }
       }
     }
-    this.contentView = LayoutInflater.from(paramContext).inflate(2130971008, null, false);
-    this.tmr = this.contentView.findViewById(2131828515);
-    this.tms = this.contentView.findViewById(2131828520);
-    this.tmt = ((TextView)this.contentView.findViewById(2131828517));
-    this.tmt.setOnClickListener(new b.1(this, parama));
-    this.tmu = ((FlowLayout)this.contentView.findViewById(2131828518));
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    this.contentView = LayoutInflater.from(paramContext).inflate(2131495772, null, false);
+    this.yTc = this.contentView.findViewById(2131299892);
+    this.yTd = this.contentView.findViewById(2131299899);
+    this.wgK = ((TextView)this.contentView.findViewById(2131299889));
+    this.yTe = ((TextView)this.contentView.findViewById(2131306191));
+    this.yTe.setOnClickListener(new View.OnClickListener()
     {
-      localObject1 = (adl)paramList.next();
-      localObject2 = LayoutInflater.from(paramContext).inflate(2130971009, this.tmu, false);
-      TextView localTextView = (TextView)((View)localObject2).findViewById(2131828521);
-      localTextView.setText(((adl)localObject1).cyA);
-      localTextView.setOnClickListener(new b.2(this, (adl)localObject1, localTextView, paramContext));
-      this.tmu.addView((View)localObject2);
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(126632);
+        if (b.a(b.this).isEmpty()) {
+          b.a(b.this).add(b.b(b.this));
+        }
+        parama.h(b.a(b.this));
+        b.this.dismiss();
+        AppMethodBeat.o(126632);
+      }
+    });
+    this.yTf = ((FlowLayout)this.contentView.findViewById(2131299894));
+    Iterator localIterator = paramddb.Evd.EuK.iterator();
+    while (localIterator.hasNext())
+    {
+      localahk = (ahk)localIterator.next();
+      View localView = LayoutInflater.from(paramContext).inflate(2131495773, this.yTf, false);
+      final TextView localTextView = (TextView)localView.findViewById(2131299896);
+      localTextView.setText(localahk.doh);
+      localTextView.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(126633);
+          if (b.a(b.this).contains(localahk))
+          {
+            b.a(b.this).remove(localahk);
+            localTextView.setTextColor(paramContext.getResources().getColor(2131101045));
+            localTextView.setBackgroundResource(2131234409);
+          }
+          while (b.a(b.this).isEmpty())
+          {
+            b.c(b.this).setText(b.b(b.this).doh);
+            AppMethodBeat.o(126633);
+            return;
+            b.a(b.this).add(localahk);
+            localTextView.setTextColor(paramContext.getResources().getColor(2131101044));
+            localTextView.setBackgroundResource(2131234408);
+          }
+          b.c(b.this).setText(paramContext.getString(2131764468));
+          AppMethodBeat.o(126633);
+        }
+      });
+      this.yTf.addView(localView);
     }
+    this.wgK.setText(paramddb.Evd.EuI);
+    this.wgK.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(126634);
+        paramAnonymousView = new Intent();
+        paramAnonymousView.putExtra("rawUrl", paramddb.Evd.EuJ);
+        d.b(b.this.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymousView);
+        AppMethodBeat.o(126634);
+      }
+    });
     setContentView(this.contentView);
     setCanceledOnTouchOutside(true);
-    setOnDismissListener(new b.3(this, parama));
-    AppMethodBeat.o(2230);
+    setOnDismissListener(new DialogInterface.OnDismissListener()
+    {
+      public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(126635);
+        parama.onDismiss();
+        AppMethodBeat.o(126635);
+      }
+    });
+    AppMethodBeat.o(126636);
   }
   
   public final void a(View paramView, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(2231);
+    AppMethodBeat.i(126637);
     super.show();
-    Object localObject = paramView.getContext();
-    View localView = this.contentView;
-    int[] arrayOfInt1 = new int[2];
-    int[] arrayOfInt2 = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt2);
-    int i = paramView.getHeight();
-    int j = af.hQ((Context)localObject).x;
-    localView.measure(0, 0);
-    int k = localView.getMeasuredHeight();
-    int m = localView.getMeasuredWidth();
+    paramView = e.a(paramView.getContext(), paramView, this.contentView, paramBoolean);
     if (paramBoolean)
     {
-      arrayOfInt1[0] = (j - m);
-      arrayOfInt2[1] -= k;
-      if (!paramBoolean) {
-        break label235;
-      }
-      this.tms.setVisibility(0);
-      this.tmr.setVisibility(8);
+      this.yTd.setVisibility(0);
+      this.yTc.setVisibility(8);
     }
     for (;;)
     {
-      arrayOfInt1[0] += paramInt1;
-      arrayOfInt1[1] += paramInt2;
-      paramView = getWindow();
-      paramView.setLayout(-2, -2);
-      localObject = paramView.getAttributes();
-      ((WindowManager.LayoutParams)localObject).width = -2;
-      ((WindowManager.LayoutParams)localObject).height = -2;
-      ((WindowManager.LayoutParams)localObject).x = arrayOfInt1[0];
-      ((WindowManager.LayoutParams)localObject).y = arrayOfInt1[1];
-      ((WindowManager.LayoutParams)localObject).gravity = 8388659;
-      paramView.setAttributes((WindowManager.LayoutParams)localObject);
-      AppMethodBeat.o(2231);
+      paramView[0] += paramInt1;
+      paramView[1] += paramInt2;
+      Window localWindow = getWindow();
+      localWindow.setLayout(-2, -2);
+      WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
+      localLayoutParams.width = -2;
+      localLayoutParams.height = -2;
+      localLayoutParams.x = paramView[0];
+      localLayoutParams.y = paramView[1];
+      localLayoutParams.gravity = 8388659;
+      localWindow.setAttributes(localLayoutParams);
+      AppMethodBeat.o(126637);
       return;
-      arrayOfInt1[0] = (j - m);
-      arrayOfInt2[1] += i;
-      break;
-      label235:
-      this.tms.setVisibility(8);
-      this.tmr.setVisibility(0);
+      this.yTd.setVisibility(8);
+      this.yTc.setVisibility(0);
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void h(Set<ahk> paramSet);
+    
+    public abstract void onDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.widget.b
  * JD-Core Version:    0.7.0.1
  */

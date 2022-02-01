@@ -45,31 +45,31 @@ public abstract class c
     return paramc.a(1, new Object[0]);
   }
   
-  protected static float[] g(Looper paramLooper)
+  protected static float[] i(Looper paramLooper)
   {
-    return b.g(paramLooper);
+    return b.i(paramLooper);
   }
   
-  protected static Matrix h(Looper paramLooper)
+  protected static Matrix j(Looper paramLooper)
   {
-    return b.h(paramLooper);
+    return b.j(paramLooper);
   }
   
-  protected static void j(Looper paramLooper)
+  protected static void l(Looper paramLooper)
   {
     if (paramLooper != null) {
-      b.f(paramLooper);
+      b.h(paramLooper);
     }
   }
   
-  protected static Paint k(Looper paramLooper)
+  protected static Paint m(Looper paramLooper)
   {
     return b.a(paramLooper, null);
   }
   
-  protected static Path l(Looper paramLooper)
+  protected static Path n(Looper paramLooper)
   {
-    return b.i(paramLooper);
+    return b.k(paramLooper);
   }
   
   protected abstract int a(int paramInt, Object... paramVarArgs);

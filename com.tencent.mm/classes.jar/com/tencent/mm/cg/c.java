@@ -1,96 +1,102 @@
 package com.tencent.mm.cg;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.g.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
 
-final class c
+public final class c
+  extends com.tencent.mm.bx.a
 {
-  private static int index = 0;
-  private static boolean on = false;
-  private static g.a yQp = null;
-  private static long yQq = 0L;
-  private static int yQr = 0;
+  public int FaC = -1;
+  public int FaD;
+  public int cWU;
+  public int mfv;
+  public int mfw;
+  public int mfx;
+  public int size;
   
-  static void a(String paramString, Cursor paramCursor, long paramLong)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(59036);
-    if (!on)
+    AppMethodBeat.i(104918);
+    if (paramInt == 0)
     {
-      AppMethodBeat.o(59036);
-      return;
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aR(1, this.mfv);
+      paramVarArgs.aR(2, this.mfw);
+      paramVarArgs.aR(3, this.mfx);
+      paramVarArgs.aR(41, this.FaC);
+      paramVarArgs.aR(5, this.FaD);
+      paramVarArgs.aR(6, this.cWU);
+      paramVarArgs.aR(7, this.size);
+      AppMethodBeat.o(104918);
+      return 0;
     }
-    long l = yQp.Mm();
-    Object localObject1 = "Thread:[" + Thread.currentThread().getId() + "," + Thread.currentThread().getName() + "]";
-    Object localObject2 = (String)localObject1 + "[" + index + "][" + l + "]";
-    localObject1 = localObject2;
-    if (paramLong != 0L) {
-      localObject1 = (String)localObject2 + "[INTRANS]";
-    }
-    localObject2 = localObject1;
-    if (paramCursor != null)
+    if (paramInt == 1)
     {
-      q(paramCursor);
-      localObject2 = (String)localObject1 + "[cuCnt:" + yQr + ",cuTime:" + yQq + "]";
+      paramInt = f.a.a.b.b.a.bA(1, this.mfv);
+      int i = f.a.a.b.b.a.bA(2, this.mfw);
+      int j = f.a.a.b.b.a.bA(3, this.mfx);
+      int k = f.a.a.b.b.a.bA(41, this.FaC);
+      int m = f.a.a.b.b.a.bA(5, this.FaD);
+      int n = f.a.a.b.b.a.bA(6, this.cWU);
+      int i1 = f.a.a.b.b.a.bA(7, this.size);
+      AppMethodBeat.o(104918);
+      return paramInt + 0 + i + j + k + m + n + i1;
     }
-    paramString = (String)localObject2 + "[" + paramString + "]--";
-    ab.v("MicroMsg.dbtest", paramString + bo.dtY());
-    AppMethodBeat.o(59036);
-  }
-  
-  static void begin()
-  {
-    AppMethodBeat.i(59034);
-    if (!on)
+    if (paramInt == 2)
     {
-      AppMethodBeat.o(59034);
-      return;
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.fMq();
+        }
+      }
+      AppMethodBeat.o(104918);
+      return 0;
     }
-    yQp = new g.a();
-    index += 1;
-    AppMethodBeat.o(59034);
-  }
-  
-  public static void i(Exception paramException)
-  {
-    AppMethodBeat.i(59033);
-    if (on) {
-      ab.e("MicroMsg.DKTest", "exception:%s", new Object[] { bo.l(paramException) });
-    }
-    AppMethodBeat.o(59033);
-  }
-  
-  private static void q(Cursor paramCursor)
-  {
-    AppMethodBeat.i(59035);
-    if (!on)
+    if (paramInt == 3)
     {
-      AppMethodBeat.o(59035);
-      return;
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      c localc = (c)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(104918);
+        return -1;
+      case 1: 
+        localc.mfv = locala.KhF.xS();
+        AppMethodBeat.o(104918);
+        return 0;
+      case 2: 
+        localc.mfw = locala.KhF.xS();
+        AppMethodBeat.o(104918);
+        return 0;
+      case 3: 
+        localc.mfx = locala.KhF.xS();
+        AppMethodBeat.o(104918);
+        return 0;
+      case 41: 
+        localc.FaC = locala.KhF.xS();
+        AppMethodBeat.o(104918);
+        return 0;
+      case 5: 
+        localc.FaD = locala.KhF.xS();
+        AppMethodBeat.o(104918);
+        return 0;
+      case 6: 
+        localc.cWU = locala.KhF.xS();
+        AppMethodBeat.o(104918);
+        return 0;
+      }
+      localc.size = locala.KhF.xS();
+      AppMethodBeat.o(104918);
+      return 0;
     }
-    if (paramCursor == null)
-    {
-      AppMethodBeat.o(59035);
-      return;
-    }
-    yQr = paramCursor.getCount();
-    g.a locala = new g.a();
-    int i = 0;
-    while (i < yQr)
-    {
-      paramCursor.moveToPosition(i);
-      i += 1;
-    }
-    paramCursor.moveToPosition(-1);
-    yQq = locala.Mm();
-    AppMethodBeat.o(59035);
+    AppMethodBeat.o(104918);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.cg.c
  * JD-Core Version:    0.7.0.1
  */

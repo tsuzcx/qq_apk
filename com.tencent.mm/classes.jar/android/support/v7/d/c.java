@@ -2,86 +2,86 @@ package android.support.v7.d;
 
 public final class c
 {
-  public static final c RJ;
-  public static final c RK;
-  public static final c RL;
-  public static final c RM;
-  public static final c RN;
-  public static final c RO;
-  public final float[] RP = new float[3];
-  public final float[] RQ = new float[3];
-  public final float[] RR = new float[3];
-  public boolean RS = true;
+  public static final c YM;
+  public static final c YN;
+  public static final c YO;
+  public static final c YP;
+  public static final c YQ;
+  public static final c YR;
+  final float[] YS = new float[3];
+  final float[] YT = new float[3];
+  final float[] YU = new float[3];
+  boolean YV = true;
   
   static
   {
     c localc = new c();
-    RJ = localc;
+    YM = localc;
     c(localc);
-    d(RJ);
+    d(YM);
     localc = new c();
-    RK = localc;
+    YN = localc;
     b(localc);
-    d(RK);
+    d(YN);
     localc = new c();
-    RL = localc;
+    YO = localc;
     a(localc);
-    d(RL);
+    d(YO);
     localc = new c();
-    RM = localc;
+    YP = localc;
     c(localc);
-    e(RM);
+    e(YP);
     localc = new c();
-    RN = localc;
+    YQ = localc;
     b(localc);
-    e(RN);
+    e(YQ);
     localc = new c();
-    RO = localc;
+    YR = localc;
     a(localc);
-    e(RO);
+    e(YR);
   }
   
   c()
   {
-    e(this.RP);
-    e(this.RQ);
-    this.RR[0] = 0.24F;
-    this.RR[1] = 0.52F;
-    this.RR[2] = 0.24F;
+    f(this.YS);
+    f(this.YT);
+    this.YU[0] = 0.24F;
+    this.YU[1] = 0.52F;
+    this.YU[2] = 0.24F;
   }
   
   private static void a(c paramc)
   {
-    paramc.RQ[1] = 0.26F;
-    paramc.RQ[2] = 0.45F;
+    paramc.YT[1] = 0.26F;
+    paramc.YT[2] = 0.45F;
   }
   
   private static void b(c paramc)
   {
-    paramc.RQ[0] = 0.3F;
-    paramc.RQ[1] = 0.5F;
-    paramc.RQ[2] = 0.7F;
+    paramc.YT[0] = 0.3F;
+    paramc.YT[1] = 0.5F;
+    paramc.YT[2] = 0.7F;
   }
   
   private static void c(c paramc)
   {
-    paramc.RQ[0] = 0.55F;
-    paramc.RQ[1] = 0.74F;
+    paramc.YT[0] = 0.55F;
+    paramc.YT[1] = 0.74F;
   }
   
   private static void d(c paramc)
   {
-    paramc.RP[0] = 0.35F;
-    paramc.RP[1] = 1.0F;
+    paramc.YS[0] = 0.35F;
+    paramc.YS[1] = 1.0F;
   }
   
   private static void e(c paramc)
   {
-    paramc.RP[1] = 0.3F;
-    paramc.RP[2] = 0.4F;
+    paramc.YS[1] = 0.3F;
+    paramc.YS[2] = 0.4F;
   }
   
-  private static void e(float[] paramArrayOfFloat)
+  private static void f(float[] paramArrayOfFloat)
   {
     paramArrayOfFloat[0] = 0.0F;
     paramArrayOfFloat[1] = 0.5F;
@@ -90,7 +90,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v7.d.c
  * JD-Core Version:    0.7.0.1
  */

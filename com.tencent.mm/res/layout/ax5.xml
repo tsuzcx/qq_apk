@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/epr" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.listview.AnimatedExpandableListView android:id="@id/eps" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a3x" android:cacheColorHint="@color/a3x" android:groupIndicator="@null" android:divider="@null" />
-</LinearLayout>
+<RelativeLayout android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v4.view.ViewPager android:id="@id/dgs" android:clickable="true" android:layout_width="fill_parent" android:layout_height="300.0dip" android:layout_centerVertical="true" />
+</RelativeLayout>

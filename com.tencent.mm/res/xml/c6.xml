@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.setting.ui.widget.HeadImgNewPreference mm:title="@string/e9y" mm:key="settings_change_avatar" mm:layout="@layout/afi" />
-    <Preference mm:title="@string/ec4" mm:key="settings_name" mm:layout="@layout/afi" />
-    <Preference mm:title="@string/egt" mm:key="settings_username" mm:layout="@layout/afi" />
-    <Preference mm:title="@string/edq" mm:key="settings_qrcode" mm:widgetLayout="@layout/agy" mm:layout="@layout/afi" />
-    <Preference mm:title="@string/s_" mm:key="settings_more_info" mm:layout="@layout/afi" />
-    <PreferenceSmallCategory />
-    <Preference mm:title="@string/e9p" mm:key="settings_address" mm:layout="@layout/afi" />
-    <Preference mm:title="@string/eap" mm:key="settings_invoice" mm:layout="@layout/afi" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.setting.ui.setting.SettingsAboutMMHeaderPreference android:key="settings_about_mm_header" android:layout="@layout/b4c" />
+    <IconPreference android:key="funtion_about_wechat" android:title="@string/fdb" />
+    <IconPreference android:key="settings_update" android:title="@string/fc5" />
+    <Preference android:key="settings_report" android:layout="@layout/aop" android:title="@string/f_e" />
+    <IconSummaryPreference android:key="funtion_update" android:title="@string/cnt" />
+    <IconPreference android:key="funtion_check_update" android:title="@string/cnr" />
+    <IconPreference android:key="funtion_crowdtest_update" android:title="@string/cns" />
+    <PreferenceCategory />
 </PreferenceScreen>

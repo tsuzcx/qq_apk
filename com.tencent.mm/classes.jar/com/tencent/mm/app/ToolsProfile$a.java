@@ -8,8 +8,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.BaseIPCService;
 import com.tencent.mm.kernel.b.h;
 import com.tencent.mm.kernel.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Iterator;
@@ -18,37 +18,37 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class ToolsProfile$a
 {
-  private static final AtomicInteger bZl;
-  private static Object bZm;
+  private static final AtomicInteger cMO;
+  private static Object cMP;
   
   static
   {
-    AppMethodBeat.i(15419);
-    bZl = new AtomicInteger(0);
-    AppMethodBeat.o(15419);
+    AppMethodBeat.i(19497);
+    cMO = new AtomicInteger(0);
+    AppMethodBeat.o(19497);
   }
   
-  private static boolean BH()
+  private static boolean Ld()
   {
-    AppMethodBeat.i(15415);
+    AppMethodBeat.i(19493);
     try
     {
-      if (bZm == null)
+      if (cMP == null)
       {
-        Object localObject2 = ah.getContext();
+        Object localObject2 = aj.getContext();
         Object localObject1 = Class.forName("android.app.ActivityThread").getMethod("currentActivityThread", new Class[0]);
         ((Method)localObject1).setAccessible(true);
         localObject1 = ((Method)localObject1).invoke(null, new Object[0]);
         if (localObject1 != null) {}
         for (;;)
         {
-          bZm = localObject1;
-          localObject1 = (ArrayMap)org.a.a.ep(localObject1).azQ("mServices").object;
+          cMP = localObject1;
+          localObject1 = (ArrayMap)org.a.a.fU(localObject1).aRB("mServices").object;
           int i = ((ArrayMap)localObject1).size();
           if (i > 0) {
             break;
           }
-          AppMethodBeat.o(15415);
+          AppMethodBeat.o(19493);
           return true;
           localObject1 = localObject2.getClass().getField("mLoadedApk");
           ((Field)localObject1).setAccessible(true);
@@ -62,29 +62,29 @@ public final class ToolsProfile$a
           boolean bool = localObject1.values().toArray()[0] instanceof BaseIPCService;
           if (bool)
           {
-            AppMethodBeat.o(15415);
+            AppMethodBeat.o(19493);
             return true;
           }
         }
-        AppMethodBeat.o(15415);
+        AppMethodBeat.o(19493);
         return false;
       }
     }
     catch (Throwable localThrowable)
     {
-      ab.e("MicroMsg.ToolsProcessLocker", "skipServiceConditionIfOnlyIPCServiceAlive, hack ActivityThread_mServices e=%s", new Object[] { localThrowable });
-      AppMethodBeat.o(15415);
+      ad.e("MicroMsg.ToolsProcessLocker", "skipServiceConditionIfOnlyIPCServiceAlive, hack ActivityThread_mServices e=%s", new Object[] { localThrowable });
+      AppMethodBeat.o(19493);
     }
     return false;
   }
   
   public static boolean isLocked()
   {
-    AppMethodBeat.i(15414);
+    AppMethodBeat.i(19492);
     boolean bool;
-    if (bZl.get() <= 0)
+    if (cMO.get() <= 0)
     {
-      Object localObject = (ActivityManager)ah.getContext().getSystemService("activity");
+      Object localObject = (ActivityManager)aj.getContext().getSystemService("activity");
       if (localObject == null) {
         break label226;
       }
@@ -98,13 +98,13 @@ public final class ToolsProfile$a
         if (((Iterator)localObject).hasNext())
         {
           ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-          if (((h)com.tencent.mm.kernel.g.RI().Rj()).mProcessName.equals(localRunningAppProcessInfo.processName))
+          if (((h)com.tencent.mm.kernel.g.afy().aeZ()).mProcessName.equals(localRunningAppProcessInfo.processName))
           {
             i = localRunningAppProcessInfo.importance;
             if (!com.tencent.mm.compatible.loader.a.contains(new int[] { 100 }, i))
             {
               i = localRunningAppProcessInfo.importance;
-              if ((!com.tencent.mm.compatible.loader.a.contains(new int[] { 300, 125 }, i)) || (BH()))
+              if ((!com.tencent.mm.compatible.loader.a.contains(new int[] { 300, 125 }, i)) || (Ld()))
               {
                 i = localRunningAppProcessInfo.importanceReasonCode;
                 if (!com.tencent.mm.compatible.loader.a.contains(new int[] { 1, 2 }, i)) {
@@ -113,7 +113,7 @@ public final class ToolsProfile$a
               }
             }
             bool = true;
-            ab.i("MicroMsg.ToolsProcessLocker", "hasRunningServicesOrProviders:%b %d %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(localRunningAppProcessInfo.importance), Integer.valueOf(localRunningAppProcessInfo.importanceReasonCode) });
+            ad.i("MicroMsg.ToolsProcessLocker", "hasRunningServicesOrProviders:%b %d %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(localRunningAppProcessInfo.importance), Integer.valueOf(localRunningAppProcessInfo.importanceReasonCode) });
             if (!bool) {}
           }
         }
@@ -125,19 +125,19 @@ public final class ToolsProfile$a
       if (i == 0) {
         break label231;
       }
-      AppMethodBeat.o(15414);
+      AppMethodBeat.o(19492);
       return true;
       bool = false;
       break;
     }
     label231:
-    AppMethodBeat.o(15414);
+    AppMethodBeat.o(19492);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.app.ToolsProfile.a
  * JD-Core Version:    0.7.0.1
  */

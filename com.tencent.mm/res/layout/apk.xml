@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:paddingLeft="@dimen/l2" android:paddingTop="@dimen/l6" android:paddingRight="@dimen/l2" style="@style/q1"
+<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/e2v" android:background="@drawable/n3" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.ui.base.MMAutoCompleteTextView android:id="@id/e2w" android:background="@null" android:paddingLeft="85.0dip" android:hint="@string/dnq" android:dropDownSelector="#00000000" android:popupBackground="@null" android:inputType="textEmailAddress" style="@style/ml" />
-        <TextView android:textSize="16.0dip" android:textColor="@color/h6" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:background="@drawable/w6" android:paddingLeft="@dimen/m1" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:text="@string/dnp" android:singleLine="false" style="@style/ml" />
-    </FrameLayout>
-    <FrameLayout android:background="@drawable/n3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l5">
-        <com.tencent.mm.ui.base.MMClearEditText android:id="@id/e2x" android:background="@null" android:paddingLeft="85.0dip" android:hint="@string/do2" style="@style/mk" />
-        <TextView android:textSize="16.0dip" android:textColor="@color/h6" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:background="@drawable/w6" android:paddingLeft="10.0dip" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:text="@string/do1" android:singleLine="false" android:imeOptions="actionNext" style="@style/ml" />
-    </FrameLayout>
-    <LinearLayout android:gravity="left" android:orientation="horizontal" android:layout_marginTop="@dimen/l5" style="@style/mj">
-        <CheckBox android:textSize="13.0dip" android:textColor="@color/h6" android:id="@id/dez" android:paddingLeft="25.0dip" android:checked="true" android:text="@string/cp6" style="@style/qy" />
-        <Button android:textSize="13.0dip" android:id="@id/df0" android:paddingLeft="5.0dip" android:paddingRight="0.0dip" android:paddingBottom="5.0dip" android:text="@string/cp8" style="@style/qz" />
-    </LinearLayout>
+    <TextView android:id="@id/gam" android:layout_width="@dimen/eb" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hk" android:text="@string/b7y" android:singleLine="false" style="@style/lw" />
+    <ImageView android:id="@id/cp7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hk" android:src="@raw/profile_social_mobile" android:contentDescription="@null" />
+    <ImageView android:id="@id/cpb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hk" android:src="@raw/profile_social_qq" android:contentDescription="@null" />
+    <ImageView android:id="@id/cp3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hk" android:src="@raw/profile_social_linkedin" android:contentDescription="@null" />
+    <ImageView android:id="@id/cog" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hk" android:src="@raw/profile_social_facebook" android:contentDescription="@null" />
+    <ImageView android:id="@id/cor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hk" android:src="@raw/profile_social_google_contacts" android:contentDescription="@null" />
+    <ImageView android:id="@id/cpk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hk" android:src="@raw/profile_social_weishop" android:contentDescription="@null" />
 </LinearLayout>

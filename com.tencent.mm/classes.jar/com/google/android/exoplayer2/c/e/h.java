@@ -3,95 +3,98 @@ package com.google.android.exoplayer2.c.e;
 import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.c.g;
 import com.google.android.exoplayer2.c.k;
+import com.google.android.exoplayer2.c.l;
+import com.google.android.exoplayer2.c.l.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 
 abstract class h
 {
-  private g aBV;
-  private com.google.android.exoplayer2.c.m aEe;
-  private long aIC;
-  private final d aJe = new d();
-  private f aJf;
-  long aJg;
-  private long aJh;
-  private h.a aJi;
-  private long aJj;
-  private boolean aJk;
-  private boolean aJl;
+  private g aXn;
+  private com.google.android.exoplayer2.c.m aZw;
+  private long bdU;
+  private long beA;
+  private a beB;
+  private long beC;
+  private boolean beD;
+  private boolean beE;
+  private final d bex = new d();
+  private f bey;
+  long bez;
   private int sampleRate;
   int state;
   
-  protected final long L(long paramLong)
+  protected final long R(long paramLong)
   {
     return 1000000L * paramLong / this.sampleRate;
   }
   
-  protected final long M(long paramLong)
+  protected final long S(long paramLong)
   {
     return this.sampleRate * paramLong / 1000000L;
   }
   
-  protected void N(long paramLong)
+  protected void T(long paramLong)
   {
-    this.aJh = paramLong;
+    this.beA = paramLong;
   }
   
   final void a(g paramg, com.google.android.exoplayer2.c.m paramm)
   {
-    this.aBV = paramg;
-    this.aEe = paramm;
+    this.aXn = paramg;
+    this.aZw = paramm;
     reset(true);
   }
   
-  protected abstract boolean a(com.google.android.exoplayer2.i.m paramm, long paramLong, h.a parama);
+  protected abstract boolean a(com.google.android.exoplayer2.i.m paramm, long paramLong, a parama);
   
   final int b(com.google.android.exoplayer2.c.f paramf, k paramk)
   {
-    long l1 = this.aJf.i(paramf);
+    long l1 = this.bey.i(paramf);
     if (l1 >= 0L)
     {
       paramk.position = l1;
       return 1;
     }
     if (l1 < -1L) {
-      N(-(l1 + 2L));
+      T(-(l1 + 2L));
     }
-    if (!this.aJk)
+    if (!this.beD)
     {
-      paramk = this.aJf.oi();
-      this.aBV.a(paramk);
-      this.aJk = true;
+      paramk = this.bey.sU();
+      this.aXn.a(paramk);
+      this.beD = true;
     }
-    if ((this.aJj > 0L) || (this.aJe.k(paramf)))
+    if ((this.beC > 0L) || (this.bex.k(paramf)))
     {
-      this.aJj = 0L;
-      paramf = this.aJe.aIP;
+      this.beC = 0L;
+      paramf = this.bex.beh;
       l1 = s(paramf);
-      if ((l1 >= 0L) && (this.aJh + l1 >= this.aIC))
+      if ((l1 >= 0L) && (this.beA + l1 >= this.bdU))
       {
-        long l2 = L(this.aJh);
-        this.aEe.a(paramf, paramf.limit);
-        this.aEe.a(l2, 1, paramf.limit, 0, null);
-        this.aIC = -1L;
+        long l2 = R(this.beA);
+        this.aZw.a(paramf, paramf.limit);
+        this.aZw.a(l2, 1, paramf.limit, 0, null);
+        this.bdU = -1L;
       }
-      this.aJh += l1;
+      this.beA += l1;
       return 0;
     }
     this.state = 3;
     return -1;
   }
   
-  final void g(long paramLong1, long paramLong2)
+  final void f(long paramLong1, long paramLong2)
   {
     boolean bool = false;
-    d locald = this.aJe;
-    locald.aIx.reset();
-    locald.aIP.reset();
-    locald.aIQ = -1;
-    locald.aIR = false;
+    d locald = this.bex;
+    locald.bdP.reset();
+    locald.beh.reset();
+    locald.bei = -1;
+    locald.bek = false;
     if (paramLong1 == 0L)
     {
-      if (!this.aJk) {
+      if (!this.beD) {
         bool = true;
       }
       reset(bool);
@@ -99,7 +102,7 @@ abstract class h
     while (this.state == 0) {
       return;
     }
-    this.aIC = this.aJf.K(paramLong2);
+    this.bdU = this.bey.Q(paramLong2);
     this.state = 2;
   }
   
@@ -109,48 +112,48 @@ abstract class h
     int j = 1;
     while (j != 0)
     {
-      if (!this.aJe.k(paramf))
+      if (!this.bex.k(paramf))
       {
         this.state = 3;
         i = -1;
         return i;
       }
-      this.aJj = (paramf.getPosition() - this.aJg);
-      boolean bool = a(this.aJe.aIP, this.aJg, this.aJi);
+      this.beC = (paramf.getPosition() - this.bez);
+      boolean bool = a(this.bex.beh, this.bez, this.beB);
       j = bool;
       if (bool)
       {
-        this.aJg = paramf.getPosition();
+        this.bez = paramf.getPosition();
         j = bool;
       }
     }
-    this.sampleRate = this.aJi.axd.sampleRate;
-    if (!this.aJl)
+    this.sampleRate = this.beB.aSv.sampleRate;
+    if (!this.beE)
     {
-      this.aEe.f(this.aJi.axd);
-      this.aJl = true;
+      this.aZw.f(this.beB.aSv);
+      this.beE = true;
     }
-    if (this.aJi.aJf != null) {
-      this.aJf = this.aJi.aJf;
+    if (this.beB.bey != null) {
+      this.bey = this.beB.bey;
     }
     for (;;)
     {
-      this.aJi = null;
+      this.beB = null;
       this.state = 2;
-      paramf = this.aJe;
-      if (paramf.aIP.data.length == 65025) {
+      paramf = this.bex;
+      if (paramf.beh.data.length == 65025) {
         break;
       }
-      paramf.aIP.data = Arrays.copyOf(paramf.aIP.data, Math.max(65025, paramf.aIP.limit));
+      paramf.beh.data = Arrays.copyOf(paramf.beh.data, Math.max(65025, paramf.beh.limit));
       return 0;
       if (paramf.getLength() == -1L)
       {
-        this.aJf = new h.b((byte)0);
+        this.bey = new b((byte)0);
       }
       else
       {
-        e locale = this.aJe.aIx;
-        this.aJf = new a(this.aJg, paramf.getLength(), this, locale.aEo + locale.aIZ, locale.aIU);
+        e locale = this.bex.bdP;
+        this.bey = new a(this.bez, paramf.getLength(), this, locale.aZG + locale.bes, locale.ben);
       }
     }
   }
@@ -159,18 +162,46 @@ abstract class h
   {
     if (paramBoolean)
     {
-      this.aJi = new h.a();
-      this.aJg = 0L;
+      this.beB = new a();
+      this.bez = 0L;
     }
     for (this.state = 0;; this.state = 1)
     {
-      this.aIC = -1L;
-      this.aJh = 0L;
+      this.bdU = -1L;
+      this.beA = 0L;
       return;
     }
   }
   
   protected abstract long s(com.google.android.exoplayer2.i.m paramm);
+  
+  static final class a
+  {
+    Format aSv;
+    f bey;
+  }
+  
+  static final class b
+    implements f
+  {
+    public final long Q(long paramLong)
+    {
+      return 0L;
+    }
+    
+    public final long i(com.google.android.exoplayer2.c.f paramf)
+    {
+      return -1L;
+    }
+    
+    public final l sU()
+    {
+      AppMethodBeat.i(92166);
+      l.a locala = new l.a(-9223372036854775807L);
+      AppMethodBeat.o(92166);
+      return locala;
+    }
+  }
 }
 
 

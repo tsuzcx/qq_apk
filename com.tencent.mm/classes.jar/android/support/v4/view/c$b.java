@@ -2,6 +2,7 @@ package android.support.v4.view;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Message;
 import android.view.GestureDetector.OnDoubleTapListener;
 import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
@@ -11,51 +12,51 @@ import android.view.ViewConfiguration;
 final class c$b
   implements c.a
 {
-  private static final int Fx = ;
-  private static final int Fy = ViewConfiguration.getTapTimeout();
-  private static final int Fz = ViewConfiguration.getDoubleTapTimeout();
-  final GestureDetector.OnGestureListener FA;
-  GestureDetector.OnDoubleTapListener FB;
-  boolean FC;
-  boolean FD;
-  boolean FE;
-  private boolean FF;
-  private boolean FG;
-  MotionEvent FH;
-  private MotionEvent FI;
-  private boolean FJ;
-  private float FK;
-  private float FL;
-  private float FM;
-  private float FN;
-  private boolean FO;
-  private int Ft;
-  private int Fu;
-  private int Fv;
-  private int Fw;
-  final Handler mHandler = new c.b.a(this);
+  private static final int Mv = ;
+  private static final int Mw = ViewConfiguration.getTapTimeout();
+  private static final int Mx = ViewConfiguration.getDoubleTapTimeout();
+  boolean MA;
+  boolean MC;
+  boolean MD;
+  private boolean MF;
+  private boolean MG;
+  MotionEvent MH;
+  private MotionEvent MI;
+  private boolean MJ;
+  private float MK;
+  private float ML;
+  private float MM;
+  private float MN;
+  private boolean MO;
+  private int Mr;
+  private int Ms;
+  private int Mt;
+  private int Mu;
+  final GestureDetector.OnGestureListener My;
+  GestureDetector.OnDoubleTapListener Mz;
+  final Handler mHandler = new a();
   private VelocityTracker mVelocityTracker;
   
   c$b(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
-    this.FA = paramOnGestureListener;
+    this.My = paramOnGestureListener;
     if ((paramOnGestureListener instanceof GestureDetector.OnDoubleTapListener)) {
-      this.FB = ((GestureDetector.OnDoubleTapListener)paramOnGestureListener);
+      this.Mz = ((GestureDetector.OnDoubleTapListener)paramOnGestureListener);
     }
     if (paramContext == null) {
       throw new IllegalArgumentException("Context must not be null");
     }
-    if (this.FA == null) {
+    if (this.My == null) {
       throw new IllegalArgumentException("OnGestureListener must not be null");
     }
-    this.FO = true;
+    this.MO = true;
     paramContext = ViewConfiguration.get(paramContext);
     int i = paramContext.getScaledTouchSlop();
     int j = paramContext.getScaledDoubleTapSlop();
-    this.Fv = paramContext.getScaledMinimumFlingVelocity();
-    this.Fw = paramContext.getScaledMaximumFlingVelocity();
-    this.Ft = (i * i);
-    this.Fu = (j * j);
+    this.Mt = paramContext.getScaledMinimumFlingVelocity();
+    this.Mu = paramContext.getScaledMaximumFlingVelocity();
+    this.Mr = (i * i);
+    this.Ms = (j * j);
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -126,25 +127,25 @@ final class c$b
           return false;
           i = n;
           break;
-          this.FK = f2;
-          this.FM = f2;
-          this.FL = f1;
-          this.FN = f1;
+          this.MK = f2;
+          this.MM = f2;
+          this.ML = f1;
+          this.MN = f1;
           this.mHandler.removeMessages(1);
           this.mHandler.removeMessages(2);
           this.mHandler.removeMessages(3);
-          this.FJ = false;
-          this.FF = false;
-          this.FG = false;
-          this.FD = false;
-        } while (!this.FE);
-        this.FE = false;
+          this.MJ = false;
+          this.MF = false;
+          this.MG = false;
+          this.MC = false;
+        } while (!this.MD);
+        this.MD = false;
         return false;
-        this.FK = f2;
-        this.FM = f2;
-        this.FL = f1;
-        this.FN = f1;
-        this.mVelocityTracker.computeCurrentVelocity(1000, this.Fw);
+        this.MK = f2;
+        this.MM = f2;
+        this.ML = f1;
+        this.MN = f1;
+        this.mVelocityTracker.computeCurrentVelocity(1000, this.Mu);
         k = paramMotionEvent.getActionIndex();
         i = paramMotionEvent.getPointerId(k);
         f1 = this.mVelocityTracker.getXVelocity(i);
@@ -164,75 +165,75 @@ final class c$b
           }
           i += 1;
         }
-        if (this.FB != null)
+        if (this.Mz != null)
         {
           bool2 = this.mHandler.hasMessages(3);
           if (bool2) {
             this.mHandler.removeMessages(3);
           }
-          if ((this.FH != null) && (this.FI != null) && (bool2))
+          if ((this.MH != null) && (this.MI != null) && (bool2))
           {
-            localMotionEvent = this.FH;
-            localObject = this.FI;
-            if ((this.FG) && (paramMotionEvent.getEventTime() - ((MotionEvent)localObject).getEventTime() <= Fz))
+            localMotionEvent = this.MH;
+            localObject = this.MI;
+            if ((this.MG) && (paramMotionEvent.getEventTime() - ((MotionEvent)localObject).getEventTime() <= Mx))
             {
               i = (int)localMotionEvent.getX() - (int)paramMotionEvent.getX();
               k = (int)localMotionEvent.getY() - (int)paramMotionEvent.getY();
-              if (k * k + i * i < this.Fu)
+              if (k * k + i * i < this.Ms)
               {
                 i = 1;
                 if (i == 0) {
                   break label757;
                 }
-                this.FJ = true;
+                this.MJ = true;
               }
             }
           }
         }
-        for (boolean bool1 = this.FB.onDoubleTap(this.FH) | false | this.FB.onDoubleTapEvent(paramMotionEvent);; bool1 = false)
+        for (boolean bool1 = this.Mz.onDoubleTap(this.MH) | false | this.Mz.onDoubleTapEvent(paramMotionEvent);; bool1 = false)
         {
-          this.FK = f2;
-          this.FM = f2;
-          this.FL = f1;
-          this.FN = f1;
-          if (this.FH != null) {
-            this.FH.recycle();
+          this.MK = f2;
+          this.MM = f2;
+          this.ML = f1;
+          this.MN = f1;
+          if (this.MH != null) {
+            this.MH.recycle();
           }
-          this.FH = MotionEvent.obtain(paramMotionEvent);
-          this.FF = true;
-          this.FG = true;
-          this.FC = true;
-          this.FE = false;
-          this.FD = false;
-          if (this.FO)
+          this.MH = MotionEvent.obtain(paramMotionEvent);
+          this.MF = true;
+          this.MG = true;
+          this.MA = true;
+          this.MD = false;
+          this.MC = false;
+          if (this.MO)
           {
             this.mHandler.removeMessages(2);
-            this.mHandler.sendEmptyMessageAtTime(2, this.FH.getDownTime() + Fy + Fx);
+            this.mHandler.sendEmptyMessageAtTime(2, this.MH.getDownTime() + Mw + Mv);
           }
-          this.mHandler.sendEmptyMessageAtTime(1, this.FH.getDownTime() + Fy);
-          return bool1 | this.FA.onDown(paramMotionEvent);
+          this.mHandler.sendEmptyMessageAtTime(1, this.MH.getDownTime() + Mw);
+          return bool1 | this.My.onDown(paramMotionEvent);
           bool1 = false;
           break;
-          this.mHandler.sendEmptyMessageDelayed(3, Fz);
+          this.mHandler.sendEmptyMessageDelayed(3, Mx);
         }
-      } while (this.FE);
-      f3 = this.FK - f2;
-      f4 = this.FL - f1;
-      if (this.FJ) {
-        return this.FB.onDoubleTapEvent(paramMotionEvent) | false;
+      } while (this.MD);
+      f3 = this.MK - f2;
+      f4 = this.ML - f1;
+      if (this.MJ) {
+        return this.Mz.onDoubleTapEvent(paramMotionEvent) | false;
       }
-      if (this.FF)
+      if (this.MF)
       {
-        j = (int)(f2 - this.FM);
-        k = (int)(f1 - this.FN);
+        j = (int)(f2 - this.MM);
+        k = (int)(f1 - this.MN);
         j = j * j + k * k;
-        if (j <= this.Ft) {
+        if (j <= this.Mr) {
           break label1350;
         }
-        bool2 = this.FA.onScroll(this.FH, paramMotionEvent, f3, f4);
-        this.FK = f2;
-        this.FL = f1;
-        this.FF = false;
+        bool2 = this.My.onScroll(this.MH, paramMotionEvent, f3, f4);
+        this.MK = f2;
+        this.ML = f1;
+        this.MF = false;
         this.mHandler.removeMessages(3);
         this.mHandler.removeMessages(1);
         this.mHandler.removeMessages(2);
@@ -241,54 +242,54 @@ final class c$b
     }
     for (;;)
     {
-      if (j > this.Ft) {
-        this.FG = false;
+      if (j > this.Mr) {
+        this.MG = false;
       }
       return bool2;
       if ((Math.abs(f3) < 1.0F) && (Math.abs(f4) < 1.0F)) {
         break;
       }
-      bool2 = this.FA.onScroll(this.FH, paramMotionEvent, f3, f4);
-      this.FK = f2;
-      this.FL = f1;
+      bool2 = this.My.onScroll(this.MH, paramMotionEvent, f3, f4);
+      this.MK = f2;
+      this.ML = f1;
       return bool2;
-      this.FC = false;
+      this.MA = false;
       localMotionEvent = MotionEvent.obtain(paramMotionEvent);
-      if (this.FJ) {
-        bool2 = this.FB.onDoubleTapEvent(paramMotionEvent) | false;
+      if (this.MJ) {
+        bool2 = this.Mz.onDoubleTapEvent(paramMotionEvent) | false;
       }
       for (;;)
       {
-        if (this.FI != null) {
-          this.FI.recycle();
+        if (this.MI != null) {
+          this.MI.recycle();
         }
-        this.FI = localMotionEvent;
+        this.MI = localMotionEvent;
         if (this.mVelocityTracker != null)
         {
           this.mVelocityTracker.recycle();
           this.mVelocityTracker = null;
         }
-        this.FJ = false;
-        this.FD = false;
+        this.MJ = false;
+        this.MC = false;
         this.mHandler.removeMessages(1);
         this.mHandler.removeMessages(2);
         return bool2;
-        if (this.FE)
+        if (this.MD)
         {
           this.mHandler.removeMessages(3);
-          this.FE = false;
+          this.MD = false;
           bool2 = false;
         }
-        else if (this.FF)
+        else if (this.MF)
         {
-          boolean bool3 = this.FA.onSingleTapUp(paramMotionEvent);
+          boolean bool3 = this.My.onSingleTapUp(paramMotionEvent);
           bool2 = bool3;
-          if (this.FD)
+          if (this.MC)
           {
             bool2 = bool3;
-            if (this.FB != null)
+            if (this.Mz != null)
             {
-              this.FB.onSingleTapConfirmed(paramMotionEvent);
+              this.Mz.onSingleTapConfirmed(paramMotionEvent);
               bool2 = bool3;
             }
           }
@@ -297,27 +298,27 @@ final class c$b
         {
           localObject = this.mVelocityTracker;
           j = paramMotionEvent.getPointerId(0);
-          ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.Fw);
+          ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.Mu);
           f1 = ((VelocityTracker)localObject).getYVelocity(j);
           f2 = ((VelocityTracker)localObject).getXVelocity(j);
-          if ((Math.abs(f1) > this.Fv) || (Math.abs(f2) > this.Fv))
+          if ((Math.abs(f1) > this.Mt) || (Math.abs(f2) > this.Mt))
           {
-            bool2 = this.FA.onFling(this.FH, paramMotionEvent, f2, f1);
+            bool2 = this.My.onFling(this.MH, paramMotionEvent, f2, f1);
             continue;
             this.mHandler.removeMessages(1);
             this.mHandler.removeMessages(2);
             this.mHandler.removeMessages(3);
             this.mVelocityTracker.recycle();
             this.mVelocityTracker = null;
-            this.FJ = false;
-            this.FC = false;
-            this.FF = false;
-            this.FG = false;
-            this.FD = false;
-            if (!this.FE) {
+            this.MJ = false;
+            this.MA = false;
+            this.MF = false;
+            this.MG = false;
+            this.MC = false;
+            if (!this.MD) {
               break;
             }
-            this.FE = false;
+            this.MD = false;
             return false;
           }
           bool2 = false;
@@ -325,6 +326,39 @@ final class c$b
       }
       label1350:
       bool2 = false;
+    }
+  }
+  
+  final class a
+    extends Handler
+  {
+    a() {}
+    
+    public final void handleMessage(Message paramMessage)
+    {
+      switch (paramMessage.what)
+      {
+      default: 
+        throw new RuntimeException("Unknown message ".concat(String.valueOf(paramMessage)));
+      case 1: 
+        c.b.this.My.onShowPress(c.b.this.MH);
+      }
+      do
+      {
+        return;
+        paramMessage = c.b.this;
+        paramMessage.mHandler.removeMessages(3);
+        paramMessage.MC = false;
+        paramMessage.MD = true;
+        paramMessage.My.onLongPress(paramMessage.MH);
+        return;
+      } while (c.b.this.Mz == null);
+      if (!c.b.this.MA)
+      {
+        c.b.this.Mz.onSingleTapConfirmed(c.b.this.MH);
+        return;
+      }
+      c.b.this.MC = true;
     }
   }
 }

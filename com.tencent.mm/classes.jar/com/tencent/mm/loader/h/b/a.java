@@ -2,8 +2,9 @@ package com.tencent.mm.loader.h.b;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.vfs.i;
+import java.io.ByteArrayInputStream;
 import java.io.Closeable;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -11,22 +12,22 @@ import java.io.InputStream;
 public final class a
   implements Closeable
 {
-  InputStream aYr = null;
-  byte[] eQn = null;
-  d eQo;
-  c eQp;
-  Object eQq;
+  byte[] glQ = null;
+  d glR;
+  c glS;
+  Object glT;
+  InputStream inputStream = null;
   
   private a(d paramd, c paramc, Object paramObject)
   {
-    this.eQo = paramd;
-    this.eQp = paramc;
-    this.eQq = paramObject;
+    this.glR = paramd;
+    this.glS = paramc;
+    this.glT = paramObject;
   }
   
-  public static a K(byte[] paramArrayOfByte)
+  public static a S(byte[] paramArrayOfByte)
   {
-    return new a(new a.d(paramArrayOfByte), new b(paramArrayOfByte), null);
+    return new a(new d(paramArrayOfByte), new b(paramArrayOfByte), null);
   }
   
   private static <T extends d,  extends c> a a(T paramT, Object paramObject)
@@ -36,53 +37,58 @@ public final class a
   
   public static a a(InputStream paramInputStream1, InputStream paramInputStream2)
   {
-    return new a(new a.e(paramInputStream1), new c(paramInputStream2), null);
+    return new a(new e(paramInputStream1), new c(paramInputStream2), null);
   }
   
-  public static a h(String paramString, Object paramObject)
+  public static a l(String paramString, Object paramObject)
   {
     return a(new a(paramString), paramObject);
   }
   
-  public static a mM(String paramString)
+  public static a ri(String paramString)
   {
-    return h(paramString, null);
+    return l(paramString, null);
   }
   
-  public static a mN(String paramString)
+  public static a rj(String paramString)
   {
-    return a(ah.getContext().getAssets().open(paramString), ah.getContext().getAssets().open(paramString));
+    return a(aj.getContext().getAssets().open(paramString), aj.getContext().getAssets().open(paramString));
   }
   
-  public final InputStream Uh()
+  public final InputStream ahS()
   {
-    if (this.aYr != null) {
-      return this.aYr;
+    if (this.inputStream != null) {
+      return this.inputStream;
     }
-    if (this.eQo != null)
+    if (this.glR != null)
     {
-      this.aYr = this.eQo.Uh();
-      return this.aYr;
+      this.inputStream = this.glR.ahS();
+      return this.inputStream;
     }
     return null;
   }
   
   public final void close()
   {
-    if (this.eQo != null)
+    if (this.glR != null)
     {
-      this.eQo.close();
-      this.eQo = null;
+      this.glR.close();
+      this.glR = null;
     }
-    if (this.eQp != null) {
-      this.eQp.close();
+    if (this.glS != null) {
+      this.glS.close();
     }
+  }
+  
+  public final Object getTag()
+  {
+    return this.glT;
   }
   
   static final class a
     implements c, d
   {
-    InputStream bAO = null;
+    InputStream aCO = null;
     String mFilePath;
     
     public a(String paramString)
@@ -90,12 +96,12 @@ public final class a
       this.mFilePath = paramString;
     }
     
-    public final InputStream Uh()
+    public final InputStream ahS()
     {
       try
       {
-        this.bAO = e.openRead(this.mFilePath);
-        InputStream localInputStream = this.bAO;
+        this.aCO = i.openRead(this.mFilePath);
+        InputStream localInputStream = this.aCO;
         return localInputStream;
       }
       catch (FileNotFoundException localFileNotFoundException) {}
@@ -104,18 +110,18 @@ public final class a
     
     public final void close()
     {
-      a.o(this.bAO);
+      a.r(this.aCO);
     }
   }
   
   static final class b
     implements c
   {
-    byte[] mBuf;
+    byte[] glU;
     
     public b(byte[] paramArrayOfByte)
     {
-      this.mBuf = paramArrayOfByte;
+      this.glU = paramArrayOfByte;
     }
     
     public final void close() {}
@@ -124,16 +130,62 @@ public final class a
   static final class c
     implements c
   {
-    InputStream eQr;
+    InputStream glV;
     
     public c(InputStream paramInputStream)
     {
-      this.eQr = paramInputStream;
+      this.glV = paramInputStream;
     }
     
     public final void close()
     {
-      a.o(this.eQr);
+      a.r(this.glV);
+    }
+  }
+  
+  static final class d
+    implements d
+  {
+    InputStream aCO = null;
+    byte[] glU;
+    
+    public d(byte[] paramArrayOfByte)
+    {
+      this.glU = paramArrayOfByte;
+    }
+    
+    public final InputStream ahS()
+    {
+      if (this.aCO == null) {
+        this.aCO = new ByteArrayInputStream(this.glU);
+      }
+      return this.aCO;
+    }
+    
+    public final void close()
+    {
+      a.r(this.aCO);
+    }
+  }
+  
+  static final class e
+    implements d
+  {
+    InputStream glV;
+    
+    public e(InputStream paramInputStream)
+    {
+      this.glV = paramInputStream;
+    }
+    
+    public final InputStream ahS()
+    {
+      return this.glV;
+    }
+    
+    public final void close()
+    {
+      a.r(this.glV);
     }
   }
 }

@@ -12,15 +12,15 @@ public class c
   public c(a parama, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     super(parama);
-    AppMethodBeat.i(66844);
+    AppMethodBeat.i(15280);
     a(paramInt1, paramInt2);
     this.c = paramBoolean;
-    AppMethodBeat.o(66844);
+    AppMethodBeat.o(15280);
   }
   
   public void c()
   {
-    AppMethodBeat.i(66845);
+    AppMethodBeat.i(15281);
     a();
     if (this.b != null)
     {
@@ -29,12 +29,12 @@ public class c
       }
       this.b = null;
     }
-    AppMethodBeat.o(66845);
+    AppMethodBeat.o(15281);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.beauty.a.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -13,45 +13,45 @@ public final class ac
 {
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, float paramFloat)
   {
-    AppMethodBeat.i(103277);
-    paramd.heC.setStrokeMiter(paramFloat);
-    paramd.heB.setStrokeMiter(paramFloat);
-    AppMethodBeat.o(103277);
+    AppMethodBeat.i(144960);
+    paramd.iYM.setStrokeMiter(paramFloat);
+    paramd.iYL.setStrokeMiter(paramFloat);
+    AppMethodBeat.o(144960);
     return true;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    AppMethodBeat.i(103278);
+    AppMethodBeat.i(144961);
     paramCanvas = (SeMiterLimitActionArg)paramDrawActionArg;
     if (paramCanvas == null)
     {
-      AppMethodBeat.o(103278);
+      AppMethodBeat.o(144961);
       return false;
     }
-    boolean bool = a(paramd, paramCanvas.hfa);
-    AppMethodBeat.o(103278);
+    boolean bool = a(paramd, paramCanvas.iZj);
+    AppMethodBeat.o(144961);
     return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(103276);
+    AppMethodBeat.i(144959);
     if (paramJSONArray.length() <= 0)
     {
-      AppMethodBeat.o(103276);
+      AppMethodBeat.o(144959);
       return false;
     }
     boolean bool = a(paramd, (float)paramJSONArray.optDouble(0));
-    AppMethodBeat.o(103276);
+    AppMethodBeat.o(144959);
     return bool;
   }
   
-  public final BaseDrawActionArg axW()
+  public final BaseDrawActionArg aSP()
   {
-    AppMethodBeat.i(103275);
+    AppMethodBeat.i(144958);
     SeMiterLimitActionArg localSeMiterLimitActionArg = new SeMiterLimitActionArg();
-    AppMethodBeat.o(103275);
+    AppMethodBeat.o(144958);
     return localSeMiterLimitActionArg;
   }
   
@@ -62,7 +62,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.ac
  * JD-Core Version:    0.7.0.1
  */

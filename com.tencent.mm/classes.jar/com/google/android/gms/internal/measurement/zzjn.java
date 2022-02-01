@@ -24,67 +24,67 @@ public final class zzjn
   protected zzjn(zzjr paramzzjr)
   {
     super(paramzzjr);
-    AppMethodBeat.i(69399);
+    AppMethodBeat.i(1922);
     this.zzyi = ((AlarmManager)getContext().getSystemService("alarm"));
     this.zzapy = new zzjo(this, paramzzjr.zzla(), paramzzjr);
-    AppMethodBeat.o(69399);
+    AppMethodBeat.o(1922);
   }
   
   private final int getJobId()
   {
-    AppMethodBeat.i(69403);
+    AppMethodBeat.i(1926);
     if (this.zzyj == null)
     {
       str = String.valueOf(getContext().getPackageName());
       if (str.length() == 0) {
-        break label63;
+        break label65;
       }
     }
-    label63:
+    label65:
     for (String str = "measurement".concat(str);; str = new String("measurement"))
     {
       this.zzyj = Integer.valueOf(str.hashCode());
       int i = this.zzyj.intValue();
-      AppMethodBeat.o(69403);
+      AppMethodBeat.o(1926);
       return i;
     }
   }
   
   private final PendingIntent zzek()
   {
-    AppMethodBeat.i(69405);
+    AppMethodBeat.i(1928);
     Object localObject = new Intent().setClassName(getContext(), "com.google.android.gms.measurement.AppMeasurementReceiver");
     ((Intent)localObject).setAction("com.google.android.gms.measurement.UPLOAD");
     localObject = PendingIntent.getBroadcast(getContext(), 0, (Intent)localObject, 0);
-    AppMethodBeat.o(69405);
+    AppMethodBeat.o(1928);
     return localObject;
   }
   
   @TargetApi(24)
   private final void zzkl()
   {
-    AppMethodBeat.i(69401);
+    AppMethodBeat.i(1924);
     JobScheduler localJobScheduler = (JobScheduler)getContext().getSystemService("jobscheduler");
     zzge().zzit().zzg("Cancelling job. JobID", Integer.valueOf(getJobId()));
     localJobScheduler.cancel(getJobId());
-    AppMethodBeat.o(69401);
+    AppMethodBeat.o(1924);
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(69404);
+    AppMethodBeat.i(1927);
     zzch();
     this.zzyi.cancel(zzek());
     this.zzapy.cancel();
     if (Build.VERSION.SDK_INT >= 24) {
       zzkl();
     }
-    AppMethodBeat.o(69404);
+    AppMethodBeat.o(1927);
   }
   
   public final void zzh(long paramLong)
   {
-    AppMethodBeat.i(69402);
+    AppMethodBeat.i(1925);
     zzch();
     if (!zzgb.zza(getContext())) {
       zzge().zzis().log("Receiver not registered/enabled");
@@ -113,28 +113,28 @@ public final class zzjn
       localObject = ((JobInfo.Builder)localObject).build();
       zzge().zzit().zzg("Scheduling job. JobID", Integer.valueOf(getJobId()));
       localJobScheduler.schedule((JobInfo)localObject);
-      AppMethodBeat.o(69402);
+      AppMethodBeat.o(1925);
       return;
     }
     zzge().zzit().log("Scheduling upload with AlarmManager");
     this.zzyi.setInexactRepeating(2, l + paramLong, Math.max(((Long)zzew.zzaha.get()).longValue(), paramLong), zzek());
-    AppMethodBeat.o(69402);
+    AppMethodBeat.o(1925);
   }
   
   protected final boolean zzhf()
   {
-    AppMethodBeat.i(69400);
+    AppMethodBeat.i(1923);
     this.zzyi.cancel(zzek());
     if (Build.VERSION.SDK_INT >= 24) {
       zzkl();
     }
-    AppMethodBeat.o(69400);
+    AppMethodBeat.o(1923);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzjn
  * JD-Core Version:    0.7.0.1
  */

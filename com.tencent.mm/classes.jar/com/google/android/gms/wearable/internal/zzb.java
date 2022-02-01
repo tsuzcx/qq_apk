@@ -17,18 +17,18 @@ final class zzb<T>
   private zzb(GoogleApiClient paramGoogleApiClient, T paramT, ListenerHolder<T> paramListenerHolder, zzc<T> paramzzc)
   {
     super(paramGoogleApiClient);
-    AppMethodBeat.i(71060);
+    AppMethodBeat.i(101043);
     this.zzaw = Preconditions.checkNotNull(paramT);
     this.zzax = ((ListenerHolder)Preconditions.checkNotNull(paramListenerHolder));
     this.zzay = ((zzc)Preconditions.checkNotNull(paramzzc));
-    AppMethodBeat.o(71060);
+    AppMethodBeat.o(101043);
   }
   
   static <T> PendingResult<Status> zza(GoogleApiClient paramGoogleApiClient, zzc<T> paramzzc, T paramT)
   {
-    AppMethodBeat.i(71059);
+    AppMethodBeat.i(101042);
     paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzb(paramGoogleApiClient, paramT, paramGoogleApiClient.registerListener(paramT), paramzzc));
-    AppMethodBeat.o(71059);
+    AppMethodBeat.o(101042);
     return paramGoogleApiClient;
   }
 }

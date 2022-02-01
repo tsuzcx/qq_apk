@@ -1,70 +1,70 @@
 package com.tencent.mm.game.report;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.api.b;
-import com.tencent.mm.sdk.platformtools.bo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.game.report.c.d;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class c
+  extends n
+  implements k
 {
-  public static String S(String paramString1, String paramString2)
+  private g callback;
+  private final b fUF;
+  
+  public c(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(140316);
-    if (paramString2 == null)
-    {
-      AppMethodBeat.o(140316);
-      return null;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("function_type", paramString1);
-      localJSONObject.put("function_value", paramString2);
-      label40:
-      paramString1 = com.tencent.mm.game.report.c.a.lR(localJSONObject.toString());
-      AppMethodBeat.o(140316);
-      return paramString1;
-    }
-    catch (JSONException paramString1)
-    {
-      break label40;
-    }
+    AppMethodBeat.i(175995);
+    Object localObject = new b.a();
+    ((b.a)localObject).gUU = new com.tencent.mm.game.report.c.c();
+    ((b.a)localObject).gUV = new d();
+    ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/gamereport";
+    ((b.a)localObject).funcId = getType();
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.fUF = ((b.a)localObject).atI();
+    localObject = (com.tencent.mm.game.report.c.c)this.fUF.gUS.gUX;
+    ((com.tencent.mm.game.report.c.c)localObject).fVC = paramString1;
+    ((com.tencent.mm.game.report.c.c)localObject).fVE = paramInt1;
+    ((com.tencent.mm.game.report.c.c)localObject).fVF = paramInt2;
+    ((com.tencent.mm.game.report.c.c)localObject).fVG = paramString2;
+    ((com.tencent.mm.game.report.c.c)localObject).fVH = paramString3;
+    ((com.tencent.mm.game.report.c.c)localObject).fVD = ((int)(System.currentTimeMillis() / 1000L));
+    AppMethodBeat.o(175995);
   }
   
-  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(140312);
-    a(paramContext, paramInt1, paramInt2, paramInt3, paramInt4, 0, null, paramInt5, 0, null, null, paramString);
-    AppMethodBeat.o(140312);
+    AppMethodBeat.i(175996);
+    this.callback = paramg;
+    int i = dispatch(parame, this.fUF, this);
+    AppMethodBeat.o(175996);
+    return i;
   }
   
-  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, int paramInt6, int paramInt7, String paramString2, String paramString3, String paramString4)
+  public final int getType()
   {
-    AppMethodBeat.i(140315);
-    paramContext = b.b(12909, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), paramString1, Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), paramString2, Integer.valueOf(bo.getInt(paramString3, 0)), Integer.valueOf(com.tencent.mm.game.report.c.a.getNetworkType(paramContext)), paramString4 });
-    com.tencent.mm.game.report.api.a.ezM.a(paramContext);
-    AppMethodBeat.o(140315);
+    return 1223;
   }
   
-  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(140313);
-    a(paramContext, paramInt1, paramInt2, paramInt3, paramInt4, 0, paramString1, paramInt5, 0, null, null, paramString2);
-    AppMethodBeat.o(140313);
-  }
-  
-  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(140314);
-    a(paramContext, paramInt1, paramInt2, paramInt3, paramInt4, 0, paramString1, paramInt5, 0, null, paramString2, paramString3);
-    AppMethodBeat.o(140314);
+    AppMethodBeat.i(175997);
+    ad.i("MicroMsg.NetSceneGetGameIndex", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(175997);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.game.report.c
  * JD-Core Version:    0.7.0.1
  */

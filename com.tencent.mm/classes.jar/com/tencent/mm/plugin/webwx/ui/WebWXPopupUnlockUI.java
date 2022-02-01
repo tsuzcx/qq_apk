@@ -2,42 +2,69 @@ package com.tencent.mm.plugin.webwx.ui;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.crashfix.b.a;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.az;
+import com.tencent.mm.plugin.webwx.a.b;
+import com.tencent.mm.pluginsdk.k;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.MMBaseActivity;
 
 public class WebWXPopupUnlockUI
   extends MMBaseActivity
 {
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(26570);
+    AppMethodBeat.i(30243);
     super.onCreate(paramBundle);
     if (getIntent() != null)
     {
       paramBundle = getIntent().getStringExtra("deviceName");
       if (paramBundle != null)
       {
-        a locala = new a(this);
+        final com.tencent.mm.plugin.crashfix.b.a locala = new com.tencent.mm.plugin.crashfix.b.a(this);
         locala.requestWindowFeature(1);
-        View localView = View.inflate(this, 2130969485, null);
-        TextView localTextView = (TextView)localView.findViewById(2131823852);
-        ((TextView)localView.findViewById(2131823853)).setOnClickListener(new WebWXPopupUnlockUI.1(this, locala));
-        locala.setOnDismissListener(new WebWXPopupUnlockUI.2(this));
+        View localView = View.inflate(this, 2131493898, null);
+        TextView localTextView = (TextView)localView.findViewById(2131299070);
+        ((TextView)localView.findViewById(2131306193)).setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(30241);
+            paramAnonymousView = new b(2);
+            az.aeS().a(paramAnonymousView, 0);
+            ad.d("MicroMsg.WebWxPopUnlockUI", "doScene netSceneExtDeviceControl : UNLOCK");
+            com.tencent.mm.plugin.webwx.a.hYu.hD(1);
+            ad.d("MicroMsg.WebWxPopUnlockUI", "trigger netSceneSync notify");
+            locala.dismiss();
+            AppMethodBeat.o(30241);
+          }
+        });
+        locala.setOnDismissListener(new DialogInterface.OnDismissListener()
+        {
+          public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
+          {
+            AppMethodBeat.i(30242);
+            WebWXPopupUnlockUI.this.finish();
+            AppMethodBeat.o(30242);
+          }
+        });
         localTextView.setText(paramBundle);
         locala.setContentView(localView);
         locala.show();
-        AppMethodBeat.o(26570);
+        AppMethodBeat.o(30243);
         return;
       }
-      ab.w("MicroMsg.WebWxPopUnlockUI", "Mac WeChat request to unlock,the deviceName is null");
+      ad.w("MicroMsg.WebWxPopUnlockUI", "Mac WeChat request to unlock,the deviceName is null");
     }
-    AppMethodBeat.o(26570);
+    AppMethodBeat.o(30243);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -48,7 +75,7 @@ public class WebWXPopupUnlockUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.ui.WebWXPopupUnlockUI
  * JD-Core Version:    0.7.0.1
  */

@@ -2,29 +2,17 @@ package com.tencent.mars.xlog;
 
 import android.os.Debug;
 import android.os.Process;
-import com.tencent.mm.protocal.d;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class LogLogic
 {
-  static long printVMSizeTime;
-  
   public static String appendMemLog(String paramString)
   {
-    if (d.whI) {
-      return paramString;
-    }
-    long l = System.currentTimeMillis();
-    if (l - printVMSizeTime > 120000L)
-    {
-      printVMSizeTime = l;
-      return String.format("[%s] %s", new Object[] { getVmStatus(), paramString });
-    }
-    return String.format("[%sK] %s", new Object[] { Long.valueOf(getDalvikHeap()), paramString });
+    return paramString;
   }
   
   public static String convertStreamToString(InputStream paramInputStream)
@@ -82,30 +70,24 @@ public class LogLogic
   
   public static String getStringFromFile(String paramString)
   {
-    paramString = new File(paramString);
-    FileInputStream localFileInputStream;
+    Object localObject1 = new e(paramString);
+    paramString = null;
     try
     {
-      localFileInputStream = new FileInputStream(paramString);
-      if (localFileInputStream == null) {
-        break label40;
+      localObject1 = i.ah((e)localObject1);
+      paramString = (String)localObject1;
+      String str = convertStreamToString((InputStream)localObject1);
+      if (localObject1 != null) {
+        ((InputStream)localObject1).close();
       }
+      return str;
     }
     finally
     {
-      try
-      {
-        paramString = convertStreamToString(localFileInputStream);
-        localFileInputStream.close();
-        return paramString;
+      if (paramString != null) {
+        paramString.close();
       }
-      finally {}
-      paramString = finally;
-      localFileInputStream = null;
     }
-    localFileInputStream.close();
-    label40:
-    throw paramString;
   }
   
   public static String getVmSize()

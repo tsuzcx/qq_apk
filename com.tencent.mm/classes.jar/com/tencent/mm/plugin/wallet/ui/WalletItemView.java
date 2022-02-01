@@ -14,13 +14,13 @@ import com.tencent.mm.plugin.wxpay.a.a;
 public class WalletItemView
   extends LinearLayout
 {
-  private TextView iJG;
+  private TextView kEu;
   private Object mData;
   private String mTitle;
   private int mType;
-  private String prJ;
-  private TextView pvv;
-  private int pwd;
+  private String uqJ;
+  private int uxL;
+  private TextView uxf;
   
   public WalletItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,33 +30,33 @@ public class WalletItemView
   public WalletItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(46452);
-    this.pwd = 1;
+    AppMethodBeat.i(69847);
+    this.uxL = 1;
     this.mType = 0;
     this.mData = null;
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.WalletItemView, paramInt, 0);
-    paramInt = paramAttributeSet.getResourceId(2, 0);
+    paramInt = paramAttributeSet.getResourceId(3, 0);
     if (paramInt != 0) {
       this.mTitle = paramContext.getString(paramInt);
     }
-    paramInt = paramAttributeSet.getResourceId(3, 0);
+    paramInt = paramAttributeSet.getResourceId(2, 0);
     if (paramInt != 0) {
-      this.prJ = paramContext.getString(paramInt);
+      this.uqJ = paramContext.getString(paramInt);
     }
-    this.pwd = paramAttributeSet.getInt(0, 1);
+    this.uxL = paramAttributeSet.getInt(0, 1);
     paramAttributeSet.recycle();
-    paramContext = LayoutInflater.from(paramContext).inflate(2130971193, this, true);
-    this.iJG = ((TextView)paramContext.findViewById(2131821212));
-    this.pvv = ((TextView)paramContext.findViewById(2131826794));
-    if (this.iJG != null) {
-      this.iJG.setText(this.mTitle);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131495969, this, true);
+    this.kEu = ((TextView)paramContext.findViewById(2131305948));
+    this.uxf = ((TextView)paramContext.findViewById(2131305553));
+    if (this.kEu != null) {
+      this.kEu.setText(this.mTitle);
     }
-    if (this.pvv != null)
+    if (this.uxf != null)
     {
-      this.pvv.setText(this.prJ);
-      this.pvv.setLines(this.pwd);
+      this.uxf.setText(this.uqJ);
+      this.uxf.setLines(this.uxL);
     }
-    AppMethodBeat.o(46452);
+    AppMethodBeat.o(69847);
   }
   
   public Object getData()
@@ -71,31 +71,31 @@ public class WalletItemView
   
   public void setSummary(Spanned paramSpanned)
   {
-    AppMethodBeat.i(46455);
-    this.prJ = paramSpanned.toString();
-    this.pvv.setText(this.prJ);
-    AppMethodBeat.o(46455);
+    AppMethodBeat.i(69850);
+    this.uqJ = paramSpanned.toString();
+    this.uxf.setText(this.uqJ);
+    AppMethodBeat.o(69850);
   }
   
   public void setSummary(String paramString)
   {
-    AppMethodBeat.i(46454);
-    this.prJ = paramString;
-    this.pvv.setText(this.prJ);
-    AppMethodBeat.o(46454);
+    AppMethodBeat.i(69849);
+    this.uqJ = paramString;
+    this.uxf.setText(this.uqJ);
+    AppMethodBeat.o(69849);
   }
   
   public void setTitle(String paramString)
   {
-    AppMethodBeat.i(46453);
+    AppMethodBeat.i(69848);
     this.mTitle = paramString;
-    this.iJG.setText(this.mTitle);
-    AppMethodBeat.o(46453);
+    this.kEu.setText(this.mTitle);
+    AppMethodBeat.o(69848);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.ui.WalletItemView
  * JD-Core Version:    0.7.0.1
  */

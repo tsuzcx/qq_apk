@@ -1,26 +1,45 @@
 package com.tencent.mm.plugin.fav.ui;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMBaseActivity;
-import com.tencent.mm.ui.widget.b.c;
-import com.tencent.mm.ui.widget.b.c.a;
+import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.widget.a.d.a;
 
 public class FavTipsUI
   extends MMBaseActivity
 {
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(74167);
+    AppMethodBeat.i(106939);
     super.onCreate(paramBundle);
-    paramBundle = new c.a(this);
-    paramBundle.avm(getString(2131299744));
-    paramBundle.avn(getString(2131299742) + "\n\n" + getString(2131299743));
-    paramBundle.Ri(2131299741).a(new FavTipsUI.1(this));
-    paramBundle.e(new FavTipsUI.2(this));
-    paramBundle.aLZ().show();
-    AppMethodBeat.o(74167);
+    paramBundle = new d.a(this);
+    paramBundle.aMf(getString(2131758916));
+    paramBundle.aMg(getString(2131758914) + "\n\n" + getString(2131758915));
+    paramBundle.aaB(2131758913).b(new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(106937);
+        FavTipsUI.this.finish();
+        AppMethodBeat.o(106937);
+      }
+    });
+    paramBundle.e(new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(106938);
+        FavTipsUI.this.finish();
+        AppMethodBeat.o(106938);
+      }
+    });
+    paramBundle.fft().show();
+    AppMethodBeat.o(106939);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -31,7 +50,7 @@ public class FavTipsUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavTipsUI
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class a
   extends ImageSpan
 {
-  public int ACa = 0;
+  public int HyD = 0;
   
   public a(Drawable paramDrawable)
   {
@@ -20,7 +20,7 @@ public class a
   
   public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
-    AppMethodBeat.i(107847);
+    AppMethodBeat.i(143319);
     paramCharSequence = getDrawable();
     paramCanvas.save();
     paramPaint = paramPaint.getFontMetricsInt();
@@ -29,12 +29,12 @@ public class a
     paramCanvas.translate(paramFloat, paramPaint.descent + paramInt4 - (paramInt1 - paramInt2) / 2 - (paramCharSequence.getBounds().bottom - paramCharSequence.getBounds().top) / 2);
     paramCharSequence.draw(paramCanvas);
     paramCanvas.restore();
-    AppMethodBeat.o(107847);
+    AppMethodBeat.o(143319);
   }
   
   public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
-    AppMethodBeat.i(107846);
+    AppMethodBeat.i(143318);
     paramCharSequence = getDrawable().getBounds();
     if (paramFontMetricsInt != null)
     {
@@ -49,7 +49,7 @@ public class a
       paramFontMetricsInt.descent = paramFontMetricsInt.bottom;
     }
     paramInt1 = paramCharSequence.right;
-    AppMethodBeat.o(107846);
+    AppMethodBeat.o(143318);
     return paramInt1;
   }
 }

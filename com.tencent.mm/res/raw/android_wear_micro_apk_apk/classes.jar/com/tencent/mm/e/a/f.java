@@ -5,39 +5,39 @@ import a.a.a.b;
 public final class f
   extends com.tencent.mm.d.a
 {
-  public String Vt;
+  public String Xo;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.Vt == null) {
+      if (this.Xo == null) {
         throw new b("Not all required fields were included: ProductId");
       }
-      if (this.Vt != null) {
-        paramVarArgs.d(1, this.Vt);
+      if (this.Xo != null) {
+        paramVarArgs.d(1, this.Xo);
       }
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Vt == null) {
+      if (this.Xo == null) {
         break label203;
       }
     }
     label203:
-    for (paramInt = a.a.a.b.b.a.e(1, this.Vt) + 0;; paramInt = 0)
+    for (paramInt = a.a.a.b.b.a.e(1, this.Xo) + 0;; paramInt = 0)
     {
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-        for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+        paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+        for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
           if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.oz();
+            paramVarArgs.pm();
           }
         }
-        if (this.Vt != null) {
+        if (this.Xo != null) {
           break;
         }
         throw new b("Not all required fields were included: ProductId");
@@ -51,7 +51,7 @@ public final class f
         default: 
           return -1;
         }
-        localf.Vt = locala.ou();
+        localf.Xo = locala.ph();
         return 0;
       }
       return -1;

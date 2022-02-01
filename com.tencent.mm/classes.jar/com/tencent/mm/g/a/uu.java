@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class uu
   extends b
 {
-  public uu.a cLk;
+  public a dAs;
   
   public uu()
   {
@@ -15,16 +15,22 @@ public final class uu
   
   private uu(byte paramByte)
   {
-    AppMethodBeat.i(135280);
-    this.cLk = new uu.a();
-    this.ymq = false;
+    AppMethodBeat.i(118479);
+    this.dAs = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(135280);
+    AppMethodBeat.o(118479);
+  }
+  
+  public static final class a
+  {
+    public boolean dAt = false;
+    public long dAu = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.uu
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ final class WalletLqtPlanHomeUI$1
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(45604);
-    WalletLqtPlanHomeUI.a(this.tQV);
-    AppMethodBeat.o(45604);
+    AppMethodBeat.i(68926);
+    WalletLqtPlanHomeUI.a(this.zKT);
+    AppMethodBeat.o(68926);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtPlanHomeUI.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,49 +6,49 @@ import oicq.wlogin_sdk.tools.util;
 public final class ad
   extends a
 {
-  public int CNP = 0;
+  public int Kjw = 0;
   
   public ad()
   {
-    this.CMD = 312;
+    this.Kik = 312;
   }
   
-  public final Boolean erf()
+  public final Boolean fMI()
   {
-    AppMethodBeat.i(96477);
-    if (this.CNn < 4)
+    AppMethodBeat.i(88116);
+    if (this.KiU < 4)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96477);
+      AppMethodBeat.o(88116);
       return localBoolean;
     }
-    this.CNP = util.af(this.CMx, this.CNm);
-    if (this.CNn < this.CNP * 10 + 4)
+    this.Kjw = util.aj(this.Kie, this.KiT);
+    if (this.KiU < this.Kjw * 10 + 4)
     {
       localBoolean = Boolean.FALSE;
-      AppMethodBeat.o(96477);
+      AppMethodBeat.o(88116);
       return localBoolean;
     }
     Boolean localBoolean = Boolean.TRUE;
-    AppMethodBeat.o(96477);
+    AppMethodBeat.o(88116);
     return localBoolean;
   }
   
-  public final int erh()
+  public final int fMK()
   {
-    AppMethodBeat.i(96478);
+    AppMethodBeat.i(88117);
     int i = 0;
     for (;;)
     {
-      if (i >= this.CNP)
+      if (i >= this.Kjw)
       {
-        AppMethodBeat.o(96478);
+        AppMethodBeat.o(88117);
         return 0;
       }
-      if (util.ae(this.CMx, this.CNm + 4 + i * 10) == 266)
+      if (util.ai(this.Kie, this.KiT + 4 + i * 10) == 266)
       {
-        i = util.af(this.CMx, i * 10 + (this.CNm + 4) + 2);
-        AppMethodBeat.o(96478);
+        i = util.aj(this.Kie, i * 10 + (this.KiT + 4) + 2);
+        AppMethodBeat.o(88117);
         return i;
       }
       i += 1;

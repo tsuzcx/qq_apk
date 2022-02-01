@@ -11,121 +11,121 @@ public class zzacs$zza<I, O>
   extends zza
 {
   public static final by CREATOR = new by();
-  private final int Hc;
-  protected final int PI;
-  protected final boolean PJ;
-  protected final int PK;
-  protected final boolean PL;
-  protected final String PM;
-  protected final int PN;
-  protected final Class<? extends zzacs> PO;
-  protected final String PP;
-  private zzacw PQ;
-  private bx<I, O> PR;
+  private final int IR;
+  protected final boolean RA;
+  protected final String RB;
+  protected final int RC;
+  protected final Class<? extends zzacs> RD;
+  protected final String RE;
+  private zzacw RF;
+  private bx<I, O> RG;
+  protected final int Rx;
+  protected final boolean Ry;
+  protected final int Rz;
   
   zzacs$zza(int paramInt1, int paramInt2, boolean paramBoolean1, int paramInt3, boolean paramBoolean2, String paramString1, int paramInt4, String paramString2, zzacn paramzzacn)
   {
-    this.Hc = paramInt1;
-    this.PI = paramInt2;
-    this.PJ = paramBoolean1;
-    this.PK = paramInt3;
-    this.PL = paramBoolean2;
-    this.PM = paramString1;
-    this.PN = paramInt4;
+    this.IR = paramInt1;
+    this.Rx = paramInt2;
+    this.Ry = paramBoolean1;
+    this.Rz = paramInt3;
+    this.RA = paramBoolean2;
+    this.RB = paramString1;
+    this.RC = paramInt4;
     if (paramString2 == null) {
-      this.PO = null;
+      this.RD = null;
     }
-    for (this.PP = null; paramzzacn == null; this.PP = paramString2)
+    for (this.RE = null; paramzzacn == null; this.RE = paramString2)
     {
-      this.PR = null;
+      this.RG = null;
       return;
-      this.PO = zzacz.class;
+      this.RD = zzacz.class;
     }
-    this.PR = paramzzacn.jj();
+    this.RG = paramzzacn.js();
   }
   
   public final void a(zzacw paramzzacw)
   {
-    this.PQ = paramzzacw;
+    this.RF = paramzzacw;
   }
   
   public final I convertBack(O paramO)
   {
-    return this.PR.convertBack(paramO);
+    return this.RG.convertBack(paramO);
   }
   
   public final int getVersionCode()
   {
-    return this.Hc;
+    return this.IR;
   }
   
-  public final int jn()
+  public final String jA()
   {
-    return this.PI;
+    return this.RB;
   }
   
-  public final boolean jo()
+  public final int jB()
   {
-    return this.PJ;
+    return this.RC;
   }
   
-  public final int jp()
+  final String jC()
   {
-    return this.PK;
-  }
-  
-  public final boolean jq()
-  {
-    return this.PL;
-  }
-  
-  public final String jr()
-  {
-    return this.PM;
-  }
-  
-  public final int js()
-  {
-    return this.PN;
-  }
-  
-  final String jt()
-  {
-    if (this.PP == null) {
+    if (this.RE == null) {
       return null;
     }
-    return this.PP;
+    return this.RE;
   }
   
-  public final boolean ju()
+  public final boolean jD()
   {
-    return this.PR != null;
+    return this.RG != null;
   }
   
-  final zzacn jv()
+  final zzacn jE()
   {
-    if (this.PR == null) {
+    if (this.RG == null) {
       return null;
     }
-    return zzacn.a(this.PR);
+    return zzacn.a(this.RG);
   }
   
-  public final Map<String, zza<?, ?>> jw()
+  public final Map<String, zza<?, ?>> jF()
   {
-    d.u(this.PP);
-    d.u(this.PQ);
-    return this.PQ.p(this.PP);
+    d.D(this.RE);
+    d.D(this.RF);
+    return this.RF.p(this.RE);
+  }
+  
+  public final int jw()
+  {
+    return this.Rx;
+  }
+  
+  public final boolean jx()
+  {
+    return this.Ry;
+  }
+  
+  public final int jy()
+  {
+    return this.Rz;
+  }
+  
+  public final boolean jz()
+  {
+    return this.RA;
   }
   
   public String toString()
   {
-    c localc = b.t(this).a("versionCode", Integer.valueOf(this.Hc)).a("typeIn", Integer.valueOf(this.PI)).a("typeInArray", Boolean.valueOf(this.PJ)).a("typeOut", Integer.valueOf(this.PK)).a("typeOutArray", Boolean.valueOf(this.PL)).a("outputFieldName", this.PM).a("safeParcelFieldId", Integer.valueOf(this.PN)).a("concreteTypeName", jt());
-    Class localClass = this.PO;
+    c localc = b.C(this).a("versionCode", Integer.valueOf(this.IR)).a("typeIn", Integer.valueOf(this.Rx)).a("typeInArray", Boolean.valueOf(this.Ry)).a("typeOut", Integer.valueOf(this.Rz)).a("typeOutArray", Boolean.valueOf(this.RA)).a("outputFieldName", this.RB).a("safeParcelFieldId", Integer.valueOf(this.RC)).a("concreteTypeName", jC());
+    Class localClass = this.RD;
     if (localClass != null) {
       localc.a("concreteType.class", localClass.getCanonicalName());
     }
-    if (this.PR != null) {
-      localc.a("converterName", this.PR.getClass().getCanonicalName());
+    if (this.RG != null) {
+      localc.a("converterName", this.RG.getClass().getCanonicalName());
     }
     return localc.toString();
   }

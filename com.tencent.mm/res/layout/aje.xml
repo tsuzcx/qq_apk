@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/lk" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:id="@id/duy" android:background="@drawable/av1" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/j7" android:background="@color/lk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:id="@id/dk_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <ListView android:id="@id/j8" android:background="@color/lk" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a3x" android:dividerHeight="0.0px" android:layout_below="@id/j7" />
-    <com.tencent.mm.pluginsdk.ui.MultiSelectContactView android:id="@id/j9" android:paddingLeft="@dimen/n_" android:paddingRight="@dimen/n_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/j7" />
-    <ImageView android:id="@id/j_" android:background="@drawable/b4r" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/j9" />
-    <LinearLayout android:gravity="center_horizontal" android:id="@id/jd" android:background="@color/lk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/j9">
-        <TextView android:textColor="@color/a6q" android:id="@id/je" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/cz0" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/w6" android:gravity="center_vertical" android:id="@id/jf" android:background="#f2ebebeb" android:padding="@dimen/m1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:drawableRight="@drawable/a0p" android:drawablePadding="@dimen/m1" android:layout_below="@id/j9" />
+    <Button android:gravity="center" android:id="@id/cxt" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:layout_width="120.0dip" android:layout_marginBottom="40.0dip" android:text="@string/hah" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/o6" />
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a_u" android:gravity="center" android:id="@id/dvf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="40.0dip" android:text="@string/fn0" android:layout_above="@id/cxt" android:layout_centerHorizontal="true" />
 </RelativeLayout>

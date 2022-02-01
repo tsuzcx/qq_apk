@@ -13,7 +13,7 @@ public class BitmapTeleporterCreator
   
   public BitmapTeleporter createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61017);
+    AppMethodBeat.i(11509);
     int k = SafeParcelReader.validateObjectHeader(paramParcel);
     ParcelFileDescriptor localParcelFileDescriptor = null;
     int j = 0;
@@ -38,7 +38,7 @@ public class BitmapTeleporterCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, k);
     paramParcel = new BitmapTeleporter(i, localParcelFileDescriptor, j);
-    AppMethodBeat.o(61017);
+    AppMethodBeat.o(11509);
     return paramParcel;
   }
   

@@ -12,8 +12,9 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.io.File;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.q;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -42,7 +43,7 @@ public class GlobalUtil
   
   protected GlobalUtil()
   {
-    AppMethodBeat.i(76235);
+    AppMethodBeat.i(102481);
     this.mQUA = "";
     this.JCE_CMDID_Empty = 0;
     this.JCE_CMDID_ReportLog = 1;
@@ -57,12 +58,12 @@ public class GlobalUtil
     this.mJCECmdIdMap.put(Integer.valueOf(3), "GetAppUpdate");
     this.mJCECmdIdMap.put(Integer.valueOf(4), "GetAuthorized");
     this.mJCECmdIdMap.put(Integer.valueOf(5), "GetAppSimpleDetail");
-    AppMethodBeat.o(76235);
+    AppMethodBeat.o(102481);
   }
   
   public static ArrayList<String> String2List(String paramString)
   {
-    AppMethodBeat.i(76250);
+    AppMethodBeat.i(102493);
     ArrayList localArrayList = new ArrayList();
     if (!TextUtils.isEmpty(paramString))
     {
@@ -77,7 +78,7 @@ public class GlobalUtil
         i += 1;
       }
     }
-    AppMethodBeat.o(76250);
+    AppMethodBeat.o(102493);
     return localArrayList;
   }
   
@@ -143,7 +144,7 @@ public class GlobalUtil
   
   public static String calcMD5AsString(String paramString)
   {
-    AppMethodBeat.i(76249);
+    AppMethodBeat.i(102492);
     str = "";
     localObject = str;
     if (!TextUtils.isEmpty(paramString)) {
@@ -168,26 +169,26 @@ public class GlobalUtil
     {
       for (;;)
       {
-        ab.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
+        ad.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
         localObject = str;
       }
     }
-    AppMethodBeat.o(76249);
+    AppMethodBeat.o(102492);
     return localObject;
   }
   
   public static void deleteOldDB(String paramString)
   {
-    AppMethodBeat.i(76256);
+    AppMethodBeat.i(102499);
     if (getInstance().getContext() != null)
     {
-      paramString = getInstance().getContext().getDatabasePath(paramString);
+      paramString = e.R(getInstance().getContext().getDatabasePath(paramString));
       if (paramString.exists() == true) {
         try
         {
           paramString.delete();
           TMLog.i("GlobalUtil", "deleteDB");
-          AppMethodBeat.o(76256);
+          AppMethodBeat.o(102499);
           return;
         }
         catch (Exception paramString)
@@ -196,42 +197,42 @@ public class GlobalUtil
         }
       }
     }
-    AppMethodBeat.o(76256);
+    AppMethodBeat.o(102499);
   }
   
   public static String getAppPackageName(Context paramContext)
   {
-    AppMethodBeat.i(76241);
+    AppMethodBeat.i(102487);
     if (paramContext != null)
     {
       paramContext = paramContext.getPackageName();
-      AppMethodBeat.o(76241);
+      AppMethodBeat.o(102487);
       return paramContext;
     }
-    AppMethodBeat.o(76241);
+    AppMethodBeat.o(102487);
     return "";
   }
   
   public static int getAppVersionCode(Context paramContext)
   {
-    AppMethodBeat.i(76242);
+    AppMethodBeat.i(102488);
     if (paramContext != null)
     {
       PackageManager localPackageManager = paramContext.getPackageManager();
       try
       {
         int i = localPackageManager.getPackageInfo(paramContext.getPackageName(), 0).versionCode;
-        AppMethodBeat.o(76242);
+        AppMethodBeat.o(102488);
         return i;
       }
       catch (PackageManager.NameNotFoundException paramContext)
       {
-        ab.printErrStackTrace("GlobalUtil", paramContext, "", new Object[0]);
-        AppMethodBeat.o(76242);
+        ad.printErrStackTrace("GlobalUtil", paramContext, "", new Object[0]);
+        AppMethodBeat.o(102488);
         return 0;
       }
     }
-    AppMethodBeat.o(76242);
+    AppMethodBeat.o(102488);
     return 0;
   }
   
@@ -239,12 +240,12 @@ public class GlobalUtil
   {
     try
     {
-      AppMethodBeat.i(76236);
+      AppMethodBeat.i(102482);
       if (mInstance == null) {
         mInstance = new GlobalUtil();
       }
       GlobalUtil localGlobalUtil = mInstance;
-      AppMethodBeat.o(76236);
+      AppMethodBeat.o(102482);
       return localGlobalUtil;
     }
     finally {}
@@ -267,26 +268,26 @@ public class GlobalUtil
   
   public static boolean isDBExist(String paramString)
   {
-    AppMethodBeat.i(76255);
-    if ((getInstance().getContext() != null) && (getInstance().getContext().getDatabasePath(paramString).exists()))
+    AppMethodBeat.i(102498);
+    if ((getInstance().getContext() != null) && (e.R(getInstance().getContext().getDatabasePath(paramString)).exists()))
     {
-      AppMethodBeat.o(76255);
+      AppMethodBeat.o(102498);
       return true;
     }
-    AppMethodBeat.o(76255);
+    AppMethodBeat.o(102498);
     return false;
   }
   
   public static void updateFilePathAuthorized(String paramString)
   {
-    AppMethodBeat.i(76254);
-    Object localObject = new File(paramString);
-    String str2 = ((File)localObject).getParent();
-    String str1 = new File(str2).getParent();
-    paramString = new File(str1).getParent();
+    AppMethodBeat.i(102497);
+    Object localObject = new e(paramString);
+    String str2 = ((e)localObject).getParent();
+    String str1 = new e(str2).getParent();
+    paramString = new e(str1).getParent();
     try
     {
-      localObject = "chmod 777 " + ((File)localObject).getAbsolutePath();
+      localObject = "chmod 777 " + q.B(((e)localObject).fhU());
       Runtime.getRuntime().exec((String)localObject);
       str2 = "chmod 777 ".concat(String.valueOf(str2));
       Runtime.getRuntime().exec(str2);
@@ -294,13 +295,13 @@ public class GlobalUtil
       Runtime.getRuntime().exec(str1);
       paramString = "chmod 777".concat(String.valueOf(paramString));
       Runtime.getRuntime().exec(paramString);
-      AppMethodBeat.o(76254);
+      AppMethodBeat.o(102497);
       return;
     }
     catch (IOException paramString)
     {
-      ab.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
-      AppMethodBeat.o(76254);
+      ad.printErrStackTrace("GlobalUtil", paramString, "", new Object[0]);
+      AppMethodBeat.o(102497);
     }
   }
   
@@ -317,14 +318,14 @@ public class GlobalUtil
   
   public String getAndroidIdInPhone()
   {
-    AppMethodBeat.i(76243);
+    AppMethodBeat.i(102489);
     if (this.mContext == null)
     {
-      AppMethodBeat.o(76243);
+      AppMethodBeat.o(102489);
       return null;
     }
     String str = Settings.Secure.getString(getContext().getContentResolver(), "android_id");
-    AppMethodBeat.o(76243);
+    AppMethodBeat.o(102489);
     return str;
   }
   
@@ -335,10 +336,10 @@ public class GlobalUtil
   
   public int getJceCmdIdByClassName(String paramString)
   {
-    AppMethodBeat.i(76238);
+    AppMethodBeat.i(102484);
     if (paramString == null)
     {
-      AppMethodBeat.o(76238);
+      AppMethodBeat.o(102484);
       return 0;
     }
     if (this.mJCECmdIdMap != null)
@@ -354,67 +355,67 @@ public class GlobalUtil
           if ((localObject != null) && (((String)localObject).equals(paramString)))
           {
             int i = localInteger.intValue();
-            AppMethodBeat.o(76238);
+            AppMethodBeat.o(102484);
             return i;
           }
         }
       }
     }
-    AppMethodBeat.o(76238);
+    AppMethodBeat.o(102484);
     return 0;
   }
   
   public String getNetworkOperator()
   {
-    AppMethodBeat.i(76239);
+    AppMethodBeat.i(102485);
     if (this.mContext == null)
     {
-      AppMethodBeat.o(76239);
+      AppMethodBeat.o(102485);
       return "";
     }
     String str = ((TelephonyManager)this.mContext.getSystemService("phone")).getNetworkOperator();
-    AppMethodBeat.o(76239);
+    AppMethodBeat.o(102485);
     return str;
   }
   
   public int getNetworkType()
   {
-    AppMethodBeat.i(76240);
+    AppMethodBeat.i(102486);
     if (this.mContext == null)
     {
-      AppMethodBeat.o(76240);
+      AppMethodBeat.o(102486);
       return 0;
     }
     int i = ((TelephonyManager)this.mContext.getSystemService("phone")).getNetworkType();
-    AppMethodBeat.o(76240);
+    AppMethodBeat.o(102486);
     return i;
   }
   
   public String getPhoneGuid()
   {
-    AppMethodBeat.i(76244);
+    AppMethodBeat.i(102490);
     if (this.mContext == null)
     {
-      AppMethodBeat.o(76244);
+      AppMethodBeat.o(102490);
       return "";
     }
     Object localObject = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 0);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).getString("TMAssistantSDKPhoneGUID", "");
-      AppMethodBeat.o(76244);
+      AppMethodBeat.o(102490);
       return localObject;
     }
-    AppMethodBeat.o(76244);
+    AppMethodBeat.o(102490);
     return "";
   }
   
   public int getQQDownloaderAPILevel()
   {
-    AppMethodBeat.i(76252);
+    AppMethodBeat.i(102495);
     if (this.mContext == null)
     {
-      AppMethodBeat.o(76252);
+      AppMethodBeat.o(102495);
       return 0;
     }
     try
@@ -423,26 +424,26 @@ public class GlobalUtil
       if ((localApplicationInfo != null) && (localApplicationInfo.metaData != null))
       {
         int i = localApplicationInfo.metaData.getInt("com.tencent.android.qqdownloader.sdk.apilevel");
-        AppMethodBeat.o(76252);
+        AppMethodBeat.o(102495);
         return i;
       }
-      AppMethodBeat.o(76252);
+      AppMethodBeat.o(102495);
       return 0;
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace("GlobalUtil", localException, "", new Object[0]);
-      AppMethodBeat.o(76252);
+      ad.printErrStackTrace("GlobalUtil", localException, "", new Object[0]);
+      AppMethodBeat.o(102495);
     }
     return 0;
   }
   
   public int getQQDownloaderVersionCode()
   {
-    AppMethodBeat.i(76253);
+    AppMethodBeat.i(102496);
     if (this.mContext == null)
     {
-      AppMethodBeat.o(76253);
+      AppMethodBeat.o(102496);
       return 0;
     }
     Object localObject = this.mContext.getPackageManager();
@@ -452,53 +453,53 @@ public class GlobalUtil
         localObject = ((PackageManager)localObject).getPackageInfo("com.tencent.android.qqdownloader", 0);
         if (localObject == null)
         {
-          AppMethodBeat.o(76253);
+          AppMethodBeat.o(102496);
           return 0;
         }
         int i = ((PackageInfo)localObject).versionCode;
-        AppMethodBeat.o(76253);
+        AppMethodBeat.o(102496);
         return i;
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        ab.printErrStackTrace("GlobalUtil", localNameNotFoundException, "", new Object[0]);
-        AppMethodBeat.o(76253);
+        ad.printErrStackTrace("GlobalUtil", localNameNotFoundException, "", new Object[0]);
+        AppMethodBeat.o(102496);
         return 0;
       }
     }
-    AppMethodBeat.o(76253);
+    AppMethodBeat.o(102496);
     return 0;
   }
   
   public void setContext(Context paramContext)
   {
-    AppMethodBeat.i(76237);
+    AppMethodBeat.i(102483);
     this.mContext = paramContext;
     this.mQUA = new QUASetting(paramContext).buildQUA();
-    AppMethodBeat.o(76237);
+    AppMethodBeat.o(102483);
   }
   
   public void setNetTypeValue(byte paramByte)
   {
-    AppMethodBeat.i(76251);
+    AppMethodBeat.i(102494);
     if (this.mContext == null)
     {
-      AppMethodBeat.o(76251);
+      AppMethodBeat.o(102494);
       return;
     }
     SharedPreferences localSharedPreferences = this.mContext.getSharedPreferences("TMAssistantSDKSharedPreference", 0);
     if ((localSharedPreferences != null) && (Byte.parseByte(localSharedPreferences.getString("TMAssistantSDKNetType", "0")) != paramByte)) {
       localSharedPreferences.edit().putString("TMAssistantSDKNetType", String.valueOf(paramByte)).commit();
     }
-    AppMethodBeat.o(76251);
+    AppMethodBeat.o(102494);
   }
   
   public void setPhoneGuid(String paramString)
   {
-    AppMethodBeat.i(76245);
+    AppMethodBeat.i(102491);
     if (this.mContext == null)
     {
-      AppMethodBeat.o(76245);
+      AppMethodBeat.o(102491);
       return;
     }
     if (paramString != null)
@@ -508,12 +509,12 @@ public class GlobalUtil
         localSharedPreferences.edit().putString("TMAssistantSDKPhoneGUID", paramString).commit();
       }
     }
-    AppMethodBeat.o(76245);
+    AppMethodBeat.o(102491);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.util.GlobalUtil
  * JD-Core Version:    0.7.0.1
  */

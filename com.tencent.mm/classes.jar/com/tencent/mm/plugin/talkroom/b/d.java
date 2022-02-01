@@ -1,68 +1,69 @@
 package com.tencent.mm.plugin.talkroom.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cji;
-import com.tencent.mm.protocal.protobuf.cjj;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.dba;
+import com.tencent.mm.protocal.protobuf.dbb;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class d
   extends f
 {
   public int actionType;
-  private com.tencent.mm.ai.f callback;
-  private final String odS;
+  private g callback;
   private final b rr;
+  private final String sSF;
   private int sceneType;
-  public int tcT;
+  public int yJp;
   
   public d(int paramInt1, long paramLong, int paramInt2, String paramString, int paramInt3)
   {
-    AppMethodBeat.i(25879);
+    AppMethodBeat.i(29561);
     this.sceneType = 0;
     this.sceneType = paramInt3;
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new cji();
-    ((b.a)localObject).fsY = new cjj();
+    ((b.a)localObject).gUU = new dba();
+    ((b.a)localObject).gUV = new dbb();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/talkmicaction";
     ((b.a)localObject).funcId = 334;
     ((b.a)localObject).reqCmdId = 146;
     ((b.a)localObject).respCmdId = 1000000146;
-    this.rr = ((b.a)localObject).ado();
-    localObject = (cji)this.rr.fsV.fta;
-    ((cji)localObject).wQP = paramInt1;
-    ((cji)localObject).wQQ = paramLong;
-    ((cji)localObject).wzE = paramInt2;
-    ((cji)localObject).woF = ((int)bo.aox());
+    this.rr = ((b.a)localObject).atI();
+    localObject = (dba)this.rr.gUS.gUX;
+    ((dba)localObject).DdZ = paramInt1;
+    ((dba)localObject).Dea = paramLong;
+    ((dba)localObject).CKO = paramInt2;
+    ((dba)localObject).Cxn = ((int)bt.aGK());
     this.actionType = paramInt2;
-    this.odS = paramString;
-    ((cji)localObject).Scene = paramInt3;
-    AppMethodBeat.o(25879);
+    this.sSF = paramString;
+    ((dba)localObject).Scene = paramInt3;
+    AppMethodBeat.o(29561);
   }
   
-  public final String cHO()
+  public final String dNh()
   {
-    return this.odS;
+    return this.sSF;
   }
   
-  public final int cHP()
+  public final int dNi()
   {
     return this.sceneType;
   }
   
-  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
+  public final int doScene(e parame, g paramg)
   {
-    AppMethodBeat.i(25880);
-    ab.d("MicroMsg.NetSceneTalkMicAction", "doScene");
-    this.callback = paramf;
+    AppMethodBeat.i(29562);
+    ad.d("MicroMsg.NetSceneTalkMicAction", "doScene");
+    this.callback = paramg;
     int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(25880);
+    AppMethodBeat.o(29562);
     return i;
   }
   
@@ -73,22 +74,22 @@ public final class d
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(25881);
-    ab.d("MicroMsg.NetSceneTalkMicAction", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    AppMethodBeat.i(29563);
+    ad.d("MicroMsg.NetSceneTalkMicAction", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(25881);
+      AppMethodBeat.o(29563);
       return;
     }
-    this.tcT = ((cjj)this.rr.fsW.fta).wQR;
+    this.yJp = ((dbb)this.rr.gUT.gUX).Deb;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(25881);
+    AppMethodBeat.o(29563);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.b.d
  * JD-Core Version:    0.7.0.1
  */

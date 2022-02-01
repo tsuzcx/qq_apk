@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class el
   extends b
 {
-  public el.a csl;
-  public el.b csm;
+  public a dgS;
   
   public el()
   {
@@ -16,17 +15,21 @@ public final class el
   
   private el(byte paramByte)
   {
-    AppMethodBeat.i(70173);
-    this.csl = new el.a();
-    this.csm = new el.b();
-    this.ymq = false;
+    AppMethodBeat.i(116003);
+    this.dgS = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70173);
+    AppMethodBeat.o(116003);
+  }
+  
+  public static final class a
+  {
+    public boolean dfN = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.el
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,31 @@
 package com.tencent.mm.plugin.appbrand.luggage.b;
 
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import com.tencent.luggage.bridge.impl.a.c;
+import android.content.Context;
+import com.tencent.luggage.c.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.a.b;
-import com.tencent.mm.modelappbrand.a.b.3;
-import com.tencent.mm.modelappbrand.a.b.h;
-import com.tencent.mm.plugin.appbrand.e.a.a;
-import com.tencent.mm.plugin.appbrand.e.a.c;
-import com.tencent.mm.plugin.appbrand.luggage.a.a;
+import com.tencent.mm.plugin.appbrand.widget.dialog.b;
+import com.tencent.mm.plugin.appbrand.widget.dialog.d;
+import com.tencent.mm.plugin.appbrand.widget.dialog.k;
 
 public final class g
-  extends c
+  implements a
 {
-  public final void a(String paramString, a.a parama)
+  public final void a(k paramk)
   {
-    AppMethodBeat.i(86987);
-    if (!match(paramString))
-    {
-      AppMethodBeat.o(86987);
-      return;
+    AppMethodBeat.i(47485);
+    if ((paramk instanceof b)) {
+      ((b)paramk).dismiss();
     }
-    b localb = b.acD();
-    parama = new g.2(this, parama);
-    byte[] arrayOfByte = localb.qy(paramString);
-    if ((arrayOfByte != null) && (arrayOfByte.length != 0))
-    {
-      parama.P(arrayOfByte);
-      AppMethodBeat.o(86987);
-      return;
-    }
-    localb.a(new b.3(localb, paramString, parama), paramString, null);
-    AppMethodBeat.o(86987);
+    AppMethodBeat.o(47485);
   }
   
-  public final Bitmap b(String paramString, Rect paramRect, a.c paramc)
+  public final k at(Context paramContext)
   {
-    AppMethodBeat.i(86986);
-    if (!match(paramString))
-    {
-      AppMethodBeat.o(86986);
-      return null;
-    }
-    if (paramRect != null) {}
-    for (paramRect = new a(paramRect.left, paramRect.top, paramRect.width(), paramRect.height());; paramRect = null)
-    {
-      Bitmap localBitmap = b.acD().a(paramString, paramRect);
-      if (localBitmap == null) {
-        b.acD().a(new g.1(this, paramc), paramString, null, paramRect);
-      }
-      AppMethodBeat.o(86986);
-      return localBitmap;
-    }
-  }
-  
-  public final boolean match(String paramString)
-  {
-    AppMethodBeat.i(86985);
-    if ((paramString == null) || (paramString.length() == 0))
-    {
-      AppMethodBeat.o(86985);
-      return false;
-    }
-    paramString = paramString.toLowerCase();
-    if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-    {
-      AppMethodBeat.o(86985);
-      return true;
-    }
-    AppMethodBeat.o(86985);
-    return false;
+    AppMethodBeat.i(47484);
+    paramContext = new d(paramContext);
+    paramContext.setCancelable(false);
+    AppMethodBeat.o(47484);
+    return paramContext;
   }
 }
 

@@ -13,7 +13,7 @@ public class SignInRequestCreator
   
   public SignInRequest createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61699);
+    AppMethodBeat.i(12191);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     int i = 0;
     ResolveAccountRequest localResolveAccountRequest = null;
@@ -34,7 +34,7 @@ public class SignInRequestCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new SignInRequest(i, localResolveAccountRequest);
-    AppMethodBeat.o(61699);
+    AppMethodBeat.o(12191);
     return paramParcel;
   }
   

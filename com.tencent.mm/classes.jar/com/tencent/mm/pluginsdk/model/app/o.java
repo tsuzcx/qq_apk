@@ -1,74 +1,48 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.v;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.g.c.aa;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class o
-  extends j<v>
+  extends aa
 {
-  public static final String[] SQL_CREATE;
-  public e db;
+  protected static c.a info;
   
   static
   {
-    AppMethodBeat.i(27354);
-    SQL_CREATE = new String[] { j.getCreateSQLs(n.info, "AppSort") };
-    AppMethodBeat.o(27354);
+    AppMethodBeat.i(31043);
+    c.a locala = new c.a();
+    locala.EYt = new Field[3];
+    locala.columns = new String[4];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "flag";
+    locala.EYv.put("flag", "LONG default '0' ");
+    localStringBuilder.append(" flag LONG default '0' ");
+    localStringBuilder.append(", ");
+    locala.columns[1] = "appId";
+    locala.EYv.put("appId", "TEXT default '' ");
+    localStringBuilder.append(" appId TEXT default '' ");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "sortId";
+    locala.EYv.put("sortId", "INTEGER default '0' ");
+    localStringBuilder.append(" sortId INTEGER default '0' ");
+    locala.columns[3] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(31043);
   }
   
-  public o(e parame)
+  public final c.a getDBInfo()
   {
-    super(parame, n.info, "AppSort", null);
-    AppMethodBeat.i(27351);
-    this.db = parame;
-    parame.execSQL("AppSort", "CREATE INDEX IF NOT EXISTS flagIdIndex ON AppSort ( flag )");
-    parame.execSQL("AppSort", "CREATE INDEX IF NOT EXISTS flagIdIndex ON AppSort ( sortId )");
-    AppMethodBeat.o(27351);
-  }
-  
-  public final boolean a(n paramn)
-  {
-    AppMethodBeat.i(27353);
-    boolean bool = super.insert(paramn);
-    AppMethodBeat.o(27353);
-    return bool;
-  }
-  
-  public final List<String> ny(long paramLong)
-  {
-    AppMethodBeat.i(27352);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new StringBuilder(256);
-    ((StringBuilder)localObject).append("select * from AppSort");
-    ((StringBuilder)localObject).append(" where ");
-    ((StringBuilder)localObject).append("flag = ").append(paramLong);
-    ((StringBuilder)localObject).append(" order by sortId desc ");
-    localObject = rawQuery(((StringBuilder)localObject).toString(), new String[0]);
-    if (localObject == null)
-    {
-      ab.e("MicroMsg.AppSortStorage", "getAppListByFlag : cursor is null");
-      AppMethodBeat.o(27352);
-      return null;
-    }
-    ab.d("MicroMsg.AppSortStorage", "getAppListByFlag count = %d", new Object[] { Integer.valueOf(((Cursor)localObject).getCount()) });
-    int i = ((Cursor)localObject).getColumnIndex("appId");
-    while (((Cursor)localObject).moveToNext()) {
-      localArrayList.add(((Cursor)localObject).getString(i));
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(27352);
-    return localArrayList;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.o
  * JD-Core Version:    0.7.0.1
  */

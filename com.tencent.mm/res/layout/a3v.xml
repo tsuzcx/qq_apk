@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/qp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/c5m" android:background="@drawable/q4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="45.0dip">
-        <TextView android:textSize="@dimen/jb" android:textColor="@color/q6" android:id="@id/c5n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ja" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <ImageView android:layout_width="8.0dip" android:layout_height="14.0dip" android:layout_marginRight="@dimen/ja" android:src="@drawable/agr" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <ImageView android:background="@color/ql" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:background="@color/r6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ListView android:id="@id/dq0" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a7c" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" />
+            <TextView android:id="@id/bm1" android:background="@color/a_r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/lv" />
+            <TextView android:id="@id/blw" android:paddingTop="40.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="49.0dip" style="@style/lv" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center_vertical" android:id="@id/dq1" android:background="@drawable/a31" android:visibility="gone" style="@style/n5">
+            <TextView android:id="@id/dq2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="3.0dip" android:text="@string/dqe" android:singleLine="false" android:layout_weight="1.0" style="@style/lw" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

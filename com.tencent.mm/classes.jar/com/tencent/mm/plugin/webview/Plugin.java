@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.webview.a.a;
-import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.pluginsdk.b.d;
+import com.tencent.mm.pluginsdk.m;
 
 public class Plugin
-  implements c
+  implements d
 {
-  public o createApplication()
+  public m createApplication()
   {
-    AppMethodBeat.i(5611);
+    AppMethodBeat.i(77806);
     a locala = new a();
-    AppMethodBeat.o(5611);
+    AppMethodBeat.o(77806);
     return locala;
   }
   
-  public at createSubCore()
+  public aw createSubCore()
   {
     return null;
   }
   
-  public b getContactWidgetFactory()
+  public c getContactWidgetFactory()
   {
     return null;
   }

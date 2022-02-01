@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@drawable/au7" />
-    <item android:state_pressed="true" android:drawable="@drawable/au9" />
-    <item android:state_focused="true" android:state_pressed="false" android:drawable="@drawable/au8" />
-    <item android:drawable="@drawable/au6" />
-</selector>
+    <item android:id="@android:id/background" android:drawable="@drawable/aku" />
+    <item android:id="@android:id/secondaryProgress" android:drawable="@drawable/akx" />
+    <item android:id="@android:id/progress">
+        <bitmap android:src="@drawable/aku" android:tileModeX="repeat" />
+    </item>
+</layer-list>

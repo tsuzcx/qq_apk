@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.choosemsgfile.b.c;
 import android.support.v7.widget.RecyclerView.v;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.plugin.choosemsgfile.b.b.l;
 import com.tencent.mm.plugin.choosemsgfile.b.b.m;
 import java.util.Iterator;
@@ -13,60 +13,60 @@ public final class c
   extends a
   implements g
 {
-  boolean kFv;
+  boolean nMw;
   
-  public c(com.tencent.mm.plugin.choosemsgfile.ui.a parama, List<com.tencent.mm.plugin.choosemsgfile.b.b.a> paramList)
+  public c(com.tencent.mm.plugin.choosemsgfile.ui.c paramc, List<com.tencent.mm.plugin.choosemsgfile.b.b.a> paramList)
   {
-    super(parama, paramList);
+    super(paramc, paramList);
   }
   
   public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
   {
-    AppMethodBeat.i(54335);
+    AppMethodBeat.i(123307);
     switch (paramInt)
     {
     default: 
-      paramViewGroup = m.m(paramViewGroup);
-      AppMethodBeat.o(54335);
+      paramViewGroup = m.o(paramViewGroup);
+      AppMethodBeat.o(123307);
       return paramViewGroup;
     }
-    paramViewGroup = l.m(paramViewGroup);
-    AppMethodBeat.o(54335);
+    paramViewGroup = l.o(paramViewGroup);
+    AppMethodBeat.o(123307);
     return paramViewGroup;
   }
   
-  public final boolean bgx()
+  public final boolean bNI()
   {
-    return this.kFv;
+    return this.nMw;
   }
   
-  public final int ih(long paramLong)
+  public final int nP(long paramLong)
   {
-    AppMethodBeat.i(54336);
-    Iterator localIterator = this.jfV.iterator();
+    AppMethodBeat.i(123308);
+    Iterator localIterator = this.lWb.iterator();
     int i = -1;
     while (localIterator.hasNext())
     {
       com.tencent.mm.plugin.choosemsgfile.b.b.a locala = (com.tencent.mm.plugin.choosemsgfile.b.b.a)localIterator.next();
       int j = i + 1;
       i = j;
-      if (locala.kEz != null)
+      if (locala.nLz != null)
       {
         i = j;
-        if (locala.kEz.field_msgId == paramLong)
+        if (locala.nLz.field_msgId == paramLong)
         {
-          AppMethodBeat.o(54336);
+          AppMethodBeat.o(123308);
           return j;
         }
       }
     }
-    AppMethodBeat.o(54336);
+    AppMethodBeat.o(123308);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -8,11 +8,11 @@ public enum c
   
   static
   {
-    AppMethodBeat.i(77452);
-    jqy = new c("NORMAL", 0, 0);
-    jqz = new c("BOLD", 1, 1);
-    jqA = new c[] { jqy, jqz };
-    AppMethodBeat.o(77452);
+    AppMethodBeat.i(131528);
+    mgq = new c("NORMAL", 0, 0);
+    mgs = new c("BOLD", 1, 1);
+    mgt = new c[] { mgq, mgs };
+    AppMethodBeat.o(131528);
   }
   
   private c(int paramInt)
@@ -20,18 +20,18 @@ public enum c
     this.style = paramInt;
   }
   
-  public static c FQ(String paramString)
+  public static c NN(String paramString)
   {
-    AppMethodBeat.i(77451);
-    paramString = d.g(paramString, c.class);
-    c localc = jqy;
+    AppMethodBeat.i(131527);
+    paramString = d.h(paramString, c.class);
+    c localc = mgq;
     if (paramString == null) {
       paramString = localc;
     }
     for (;;)
     {
       paramString = (c)paramString;
-      AppMethodBeat.o(77451);
+      AppMethodBeat.o(131527);
       return paramString;
     }
   }

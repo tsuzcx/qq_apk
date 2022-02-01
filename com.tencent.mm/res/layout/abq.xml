@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|right" android:orientation="horizontal" android:background="@drawable/bb9" android:paddingLeft="@dimen/a5d" android:paddingRight="@dimen/a5d" android:layout_width="fill_parent" android:layout_height="@dimen/a5f"
+<RelativeLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="@dimen/fu"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/h6" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/d2x" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/cux" android:singleLine="true" />
-    <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="@dimen/dq" android:textColor="@color/h6" android:textColorHint="@color/h7" android:gravity="center|right" android:id="@id/d1_" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:singleLine="true" android:layout_weight="1.0" />
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/h6" android:gravity="center_vertical" android:id="@id/d2y" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/cuy" android:singleLine="true" />
-</LinearLayout>
+    <LinearLayout android:gravity="center" android:background="@drawable/wa" android:layout_width="fill_parent" android:layout_height="@dimen/fv" android:layout_marginLeft="@dimen/fy" android:layout_marginRight="@dimen/fy" android:layout_centerInParent="true">
+        <ImageView android:id="@id/f8y" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="10.0dip" android:scaleType="fitXY" />
+        <TextView android:textSize="@dimen/g9" android:textColor="@color/qk" android:id="@id/f9p" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <include android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" layout="@layout/aaw" />
+</RelativeLayout>

@@ -7,10 +7,12 @@ import com.tencent.liteav.basic.module.a;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
+import org.json.JSONArray;
 
 public class c
   extends a
 {
+  protected JSONArray mEncFmt = null;
   protected g mEncodeFilter;
   private boolean mEncodeFirstGOP = false;
   protected Object mGLContextExternal = null;
@@ -23,36 +25,36 @@ public class c
   protected int mOutputHeight = 0;
   protected int mOutputWidth = 0;
   protected int mRotation = 0;
-  private int mStreamType = 2;
+  protected int mStreamType = 2;
   private long mVideoGOPEncode = 0L;
   
   protected void callDelegate(int paramInt)
   {
-    AppMethodBeat.i(67442);
+    AppMethodBeat.i(14852);
     callDelegate(null, 0, 0L, 0L, 0L, 0L, 0L, 0L, paramInt, null, null);
-    AppMethodBeat.o(67442);
+    AppMethodBeat.o(14852);
   }
   
   protected void callDelegate(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(67444);
+    AppMethodBeat.i(14854);
     if (this.mListener != null) {
       this.mListener.a(paramMediaFormat);
     }
-    AppMethodBeat.o(67444);
+    AppMethodBeat.o(14854);
   }
   
   protected void callDelegate(byte[] paramArrayOfByte, int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, int paramInt2, ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
-    AppMethodBeat.i(67443);
+    AppMethodBeat.i(14853);
     if (paramByteBuffer == null)
     {
       paramByteBuffer = null;
       if (paramBufferInfo != null) {
-        break label251;
+        break label219;
       }
     }
-    label251:
+    label219:
     for (MediaCodec.BufferInfo localBufferInfo = null;; localBufferInfo = new MediaCodec.BufferInfo())
     {
       if (localBufferInfo != null) {
@@ -60,7 +62,7 @@ public class c
       }
       paramBufferInfo = this.mListener;
       if (paramBufferInfo == null) {
-        break label295;
+        break label263;
       }
       TXSNALPacket localTXSNALPacket = new TXSNALPacket();
       localTXSNALPacket.nalData = paramArrayOfByte;
@@ -77,10 +79,8 @@ public class c
         localTXSNALPacket.info = localBufferInfo;
       }
       paramBufferInfo.a(localTXSNALPacket, paramInt2);
-      setStatusValue(4002, Long.valueOf(getRealBitrate()));
-      setStatusValue(4001, this.mStreamType, Double.valueOf(getRealFPS()));
       if (paramInt1 != 0) {
-        break label263;
+        break label231;
       }
       if (this.mVideoGOPEncode != 0L)
       {
@@ -88,21 +88,26 @@ public class c
         setStatusValue(4006, Long.valueOf(this.mVideoGOPEncode));
       }
       this.mVideoGOPEncode = 1L;
-      AppMethodBeat.o(67443);
+      AppMethodBeat.o(14853);
       return;
       paramByteBuffer = paramByteBuffer.asReadOnlyBuffer();
       break;
     }
-    label263:
+    label231:
     this.mVideoGOPEncode += 1L;
     if (!this.mEncodeFirstGOP) {
       setStatusValue(4006, Long.valueOf(this.mVideoGOPEncode));
     }
-    label295:
-    AppMethodBeat.o(67443);
+    label263:
+    AppMethodBeat.o(14853);
   }
   
   public void enableNearestRPS(int paramInt) {}
+  
+  public int getEncodeCost()
+  {
+    return 0;
+  }
   
   public long getRealBitrate()
   {
@@ -126,14 +131,19 @@ public class c
   
   protected void onEncodeFinished(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(146307);
+    AppMethodBeat.i(14855);
     if (this.mListener != null) {
       this.mListener.a(paramLong1, paramLong2, paramLong3);
     }
-    AppMethodBeat.o(146307);
+    AppMethodBeat.o(14855);
   }
   
   public long pushVideoFrame(int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  {
+    return 10000002L;
+  }
+  
+  public long pushVideoFrameAsync(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     return 10000002L;
   }
@@ -177,6 +187,7 @@ public class c
       this.mInputHeight = paramTXSVideoEncoderParam.height;
       this.mGLContextExternal = paramTXSVideoEncoderParam.glContext;
       this.mStreamType = paramTXSVideoEncoderParam.streamType;
+      this.mEncFmt = paramTXSVideoEncoderParam.encFmt;
     }
     this.mVideoGOPEncode = 0L;
     this.mEncodeFirstGOP = false;
@@ -187,7 +198,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.videoencoder.c
  * JD-Core Version:    0.7.0.1
  */

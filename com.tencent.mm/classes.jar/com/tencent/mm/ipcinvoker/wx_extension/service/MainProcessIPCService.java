@@ -12,7 +12,7 @@ public class MainProcessIPCService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService
  * JD-Core Version:    0.7.0.1
  */

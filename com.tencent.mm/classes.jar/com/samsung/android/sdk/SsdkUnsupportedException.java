@@ -23,7 +23,7 @@ public class SsdkUnsupportedException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.samsung.android.sdk.SsdkUnsupportedException
  * JD-Core Version:    0.7.0.1
  */

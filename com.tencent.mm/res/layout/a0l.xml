@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bwe" android:background="#fff3f3f3" style="@style/q1"
+<RelativeLayout android:background="@color/mt" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/w_" android:gravity="left" android:id="@id/bwc" android:paddingLeft="@dimen/l2" android:paddingTop="@dimen/l5" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/bww" android:layout_alignParentTop="true" />
-    <TextView android:textSize="@dimen/nh" android:gravity="left" android:paddingLeft="@dimen/l2" android:paddingTop="20.0dip" android:paddingRight="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/bwx" android:layout_below="@id/bwc" style="@style/l1" />
-    <TextView android:textSize="@dimen/nh" android:textColor="@color/a8_" android:gravity="center" android:id="@id/azb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1" android:layout_marginBottom="@dimen/l6" android:text="@string/bwv" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <Button android:id="@id/b_e" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/m1" android:layout_marginBottom="@dimen/l6" android:text="@string/bwy" android:layout_above="@id/azb" style="@style/nq" />
+    <View android:id="@id/boo" android:background="@color/mx" android:layout_width="fill_parent" android:layout_height="@dimen/d8" />
+    <View android:id="@id/boq" android:background="@color/mx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_below="@id/boo" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="@dimen/d8" android:layout_alignParentLeft="true" android:layout_centerInParent="true">
+        <View android:id="@id/bop" android:layout_width="@dimen/d6" android:layout_height="fill_parent" />
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0dip" android:textColor="@color/mv" android:id="@id/bor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
+        </RelativeLayout>
+    </LinearLayout>
 </RelativeLayout>

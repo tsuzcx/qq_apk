@@ -2,204 +2,300 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.d.a;
-import com.tencent.mm.ah.o;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.r;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.p;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.u;
+import com.tencent.mm.plugin.account.model.j;
+import com.tencent.mm.plugin.account.model.k;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.g.a.c;
-import com.tencent.mm.ui.tools.q;
-import com.tencent.mm.ui.tools.q.b;
+import com.tencent.mm.ui.q.a;
+import com.tencent.mm.ui.tools.r;
+import com.tencent.mm.ui.tools.r.b;
 
 @Deprecated
 public class FacebookFriendUI
   extends MMActivity
-  implements d.a, f
+  implements e.a, com.tencent.mm.al.g
 {
-  private ProgressDialog eeN = null;
-  d gDf;
-  private ListView gvV;
-  private View gvX;
-  String gvZ;
-  private TextView gwa = null;
-  private boolean gzX = false;
+  private ProgressDialog fpP = null;
+  private ListView iiS;
+  private View iiU;
+  String iiW;
+  private TextView iiX = null;
+  private boolean inh = false;
+  d iqz;
   
-  private void bm(String paramString1, String paramString2)
+  private void bI(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(124826);
-    com.tencent.mm.ui.base.h.a(this, paramString2, paramString1, new FacebookFriendUI.4(this), null);
-    AppMethodBeat.o(124826);
+    AppMethodBeat.i(127977);
+    h.a(this, paramString2, paramString1, new FacebookFriendUI.4(this), null);
+    AppMethodBeat.o(127977);
   }
   
   public int getLayoutId()
   {
-    return 2130969578;
+    return 2131493996;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(124824);
-    this.gvV = ((ListView)findViewById(2131824128));
-    this.gwa = ((TextView)findViewById(2131824129));
-    this.gwa.setText(2131299632);
-    Object localObject1 = (TextView)findViewById(2131821852);
-    ((TextView)localObject1).setText(2131299630);
-    Object localObject2 = new q((byte)0);
-    ((q)localObject2).Axg = new q.b()
+    AppMethodBeat.i(127975);
+    this.iiS = ((ListView)findViewById(2131302352));
+    this.iiX = ((TextView)findViewById(2131299463));
+    this.iiX.setText(2131758791);
+    Object localObject1 = (TextView)findViewById(2131299468);
+    ((TextView)localObject1).setText(2131758789);
+    Object localObject2 = new r((byte)0);
+    ((r)localObject2).Htp = new r.b()
     {
-      public final void apN() {}
-      
-      public final void apO() {}
-      
-      public final void apP() {}
-      
-      public final void apQ() {}
-      
-      public final boolean wR(String paramAnonymousString)
+      public final boolean BX(String paramAnonymousString)
       {
         return false;
       }
       
-      public final void wS(String paramAnonymousString)
+      public final void BY(String paramAnonymousString)
       {
-        AppMethodBeat.i(124807);
-        FacebookFriendUI.a(FacebookFriendUI.this, bo.wC(paramAnonymousString));
+        AppMethodBeat.i(127958);
+        FacebookFriendUI.a(FacebookFriendUI.this, bt.aFQ(paramAnonymousString));
         paramAnonymousString = FacebookFriendUI.this;
-        if (paramAnonymousString.gDf != null) {
-          paramAnonymousString.gDf.wQ(paramAnonymousString.gvZ);
+        if (paramAnonymousString.iqz != null) {
+          paramAnonymousString.iqz.BW(paramAnonymousString.iiW);
         }
-        AppMethodBeat.o(124807);
+        AppMethodBeat.o(127958);
+      }
+      
+      public final void aIj() {}
+      
+      public final void aIk() {}
+      
+      public final void aIl() {}
+      
+      public final void aIm() {}
+    };
+    addSearchMenu(true, (r)localObject2);
+    this.iqz = new d(this, new q.a()
+    {
+      public final void aIp()
+      {
+        AppMethodBeat.i(127962);
+        if ((u.arj()) && (FacebookFriendUI.a(FacebookFriendUI.this)))
+        {
+          if (FacebookFriendUI.b(FacebookFriendUI.this).getCount() != 0) {
+            break label56;
+          }
+          this.iqB.setVisibility(0);
+        }
+        for (;;)
+        {
+          FacebookFriendUI.c(FacebookFriendUI.this);
+          AppMethodBeat.o(127962);
+          return;
+          label56:
+          this.iqB.setVisibility(8);
+        }
+      }
+    });
+    this.iqz.iqv = new d.a()
+    {
+      public final void pY(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(127963);
+        if (paramAnonymousInt > 0)
+        {
+          FacebookFriendUI.d(FacebookFriendUI.this).setVisibility(8);
+          AppMethodBeat.o(127963);
+          return;
+        }
+        FacebookFriendUI.d(FacebookFriendUI.this).setVisibility(0);
+        AppMethodBeat.o(127963);
       }
     };
-    addSearchMenu(true, (q)localObject2);
-    this.gDf = new d(this, new FacebookFriendUI.5(this, (TextView)localObject1));
-    this.gDf.gDb = new FacebookFriendUI.6(this);
-    this.gvV.setAdapter(this.gDf);
-    this.gvX = findViewById(2131824130);
-    this.gvV.setOnItemClickListener(new FacebookFriendUI.7(this));
-    com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.FacebookFriendUI", "isBindForFacebookApp:" + r.ZP());
-    if (r.ZP())
+    this.iiS.setAdapter(this.iqz);
+    this.iiU = findViewById(2131302353);
+    this.iiS.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
-      this.gvV.setVisibility(0);
-      this.gvX.setVisibility(8);
-      long l = bo.c((Long)g.RL().Ru().get(65831, null));
-      localObject1 = bo.nullAsNil((String)g.RL().Ru().get(65830, null));
-      if ((bo.hl(l) > 86400000L) && (((String)localObject1).length() > 0))
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        localObject2 = new c(getString(2131306163));
-        ((c)localObject2).auI((String)localObject1);
-        new com.tencent.mm.plugin.account.model.h((c)localObject2, new FacebookFriendUI.8(this)).apL();
+        AppMethodBeat.i(127964);
+        paramAnonymousAdapterView = (com.tencent.mm.plugin.account.friend.a.g)FacebookFriendUI.b(FacebookFriendUI.this).getItem(paramAnonymousInt - FacebookFriendUI.e(FacebookFriendUI.this).getHeaderViewsCount());
+        if ((paramAnonymousAdapterView.status == 100) || (paramAnonymousAdapterView.status == 101))
+        {
+          paramAnonymousView = new Intent();
+          paramAnonymousView.putExtra("Contact_User", paramAnonymousAdapterView.getUsername());
+          paramAnonymousView.putExtra("Contact_Nick", paramAnonymousAdapterView.getNickName());
+          paramAnonymousView.putExtra("Contact_KFacebookId", paramAnonymousAdapterView.evr);
+          paramAnonymousView.putExtra("Contact_KFacebookName", paramAnonymousAdapterView.aIF());
+          paramAnonymousView.putExtra("Contact_Scene", 31);
+          com.tencent.mm.plugin.account.a.a.hYt.c(paramAnonymousView, FacebookFriendUI.this);
+        }
+        if (paramAnonymousAdapterView.status == 102)
+        {
+          AppMethodBeat.o(127964);
+          return;
+        }
+        AppMethodBeat.o(127964);
       }
-      localObject1 = new com.tencent.mm.plugin.account.friend.a.ab();
-      ((com.tencent.mm.plugin.account.friend.a.ab)localObject1).aqE();
-      localObject2 = new ap(new FacebookFriendUI.9(this, (com.tencent.mm.plugin.account.friend.a.ab)localObject1), false);
-      if (bo.g((Integer)g.RL().Ru().get(65829, null)) > 0)
+    });
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.FacebookFriendUI", "isBindForFacebookApp:" + u.arj());
+    if (u.arj())
+    {
+      this.iiS.setVisibility(0);
+      this.iiU.setVisibility(8);
+      long l = bt.f((Long)com.tencent.mm.kernel.g.afB().afk().get(65831, null));
+      localObject1 = bt.nullAsNil((String)com.tencent.mm.kernel.g.afB().afk().get(65830, null));
+      if ((bt.vM(l) > 86400000L) && (((String)localObject1).length() > 0))
       {
-        g.RL().Ru().set(65829, Integer.valueOf(1));
-        g.Rc().a((m)localObject1, 0);
+        localObject2 = new c(getString(2131758773));
+        ((c)localObject2).aLA((String)localObject1);
+        new j((c)localObject2, new k()
+        {
+          public final void onError(int paramAnonymousInt, String paramAnonymousString)
+          {
+            AppMethodBeat.i(127966);
+            super.onError(paramAnonymousInt, paramAnonymousString);
+            if (paramAnonymousInt == 3) {
+              FacebookFriendUI.f(FacebookFriendUI.this);
+            }
+            AppMethodBeat.o(127966);
+          }
+          
+          public final void w(Bundle paramAnonymousBundle)
+          {
+            AppMethodBeat.i(127965);
+            super.w(paramAnonymousBundle);
+            AppMethodBeat.o(127965);
+          }
+        }).aIh();
+      }
+      localObject1 = new com.tencent.mm.plugin.account.friend.a.ad();
+      ((com.tencent.mm.plugin.account.friend.a.ad)localObject1).aIZ();
+      localObject2 = new av(new FacebookFriendUI.9(this, (com.tencent.mm.plugin.account.friend.a.ad)localObject1), false);
+      if (bt.l((Integer)com.tencent.mm.kernel.g.afB().afk().get(65829, null)) > 0)
+      {
+        com.tencent.mm.kernel.g.afB().afk().set(65829, Integer.valueOf(1));
+        com.tencent.mm.kernel.g.aeS().a((n)localObject1, 0);
         AppCompatActivity localAppCompatActivity = getContext();
-        getString(2131297087);
-        this.eeN = com.tencent.mm.ui.base.h.b(localAppCompatActivity, getString(2131302195), true, new FacebookFriendUI.10(this, (ap)localObject2, (com.tencent.mm.plugin.account.friend.a.ab)localObject1));
-        addTextOptionMenu(0, getString(2131299898), new FacebookFriendUI.11(this));
+        getString(2131755906);
+        this.fpP = h.b(localAppCompatActivity, getString(2131762072), true, new FacebookFriendUI.10(this, (av)localObject2, (com.tencent.mm.plugin.account.friend.a.ad)localObject1));
+        addTextOptionMenu(0, getString(2131759084), new FacebookFriendUI.11(this));
       }
     }
     for (;;)
     {
       setBackBtn(new FacebookFriendUI.2(this));
-      setToTop(new FacebookFriendUI.3(this));
-      AppMethodBeat.o(124824);
+      setToTop(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(127960);
+          paramAnonymousView = FacebookFriendUI.e(FacebookFriendUI.this);
+          paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousView);
+          Object localObject = new Object();
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.adn(), "com/tencent/mm/plugin/account/ui/FacebookFriendUI$11", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+          BackwardSupportUtil.c.b((ListView)paramAnonymousView.lS(0));
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/account/ui/FacebookFriendUI$11", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+          AppMethodBeat.o(127960);
+        }
+      });
+      AppMethodBeat.o(127975);
       return;
-      ((ap)localObject2).ag(5000L, 5000L);
+      ((av)localObject2).av(5000L, 5000L);
       break;
-      this.gvV.setVisibility(8);
-      this.gvX.setVisibility(0);
-      ((TextView)findViewById(2131824131)).setText(2131299863);
-      this.gvX.setOnClickListener(new FacebookFriendUI.12(this));
+      this.iiS.setVisibility(8);
+      this.iiU.setVisibility(0);
+      ((TextView)findViewById(2131302354)).setText(2131759040);
+      this.iiU.setOnClickListener(new FacebookFriendUI.12(this));
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(124820);
+    AppMethodBeat.i(127971);
     super.onCreate(paramBundle);
-    setMMTitle(2131299897);
-    g.Rc().a(32, this);
+    setMMTitle(2131759083);
+    com.tencent.mm.kernel.g.aeS().a(32, this);
     initView();
-    AppMethodBeat.o(124820);
+    AppMethodBeat.o(127971);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(124823);
-    g.Rc().b(32, this);
-    this.gDf.bKb();
+    AppMethodBeat.i(127974);
+    com.tencent.mm.kernel.g.aeS().b(32, this);
+    this.iqz.cHX();
     super.onDestroy();
-    AppMethodBeat.o(124823);
+    AppMethodBeat.o(127974);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(124822);
+    AppMethodBeat.i(127973);
     super.onPause();
-    o.acQ().e(this);
-    AppMethodBeat.o(124822);
+    p.auq().e(this);
+    AppMethodBeat.o(127973);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(124821);
+    AppMethodBeat.i(127972);
     super.onResume();
-    o.acQ().d(this);
-    this.gDf.notifyDataSetChanged();
-    AppMethodBeat.o(124821);
+    p.auq().d(this);
+    this.iqz.notifyDataSetChanged();
+    AppMethodBeat.o(127972);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(124825);
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.FacebookFriendUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (paramm.getType() != 32)
+    AppMethodBeat.i(127976);
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.FacebookFriendUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (paramn.getType() != 32)
     {
-      AppMethodBeat.o(124825);
+      AppMethodBeat.o(127976);
       return;
     }
-    if (this.eeN != null)
+    if (this.fpP != null)
     {
-      this.eeN.dismiss();
-      this.eeN = null;
+      this.fpP.dismiss();
+      this.fpP = null;
     }
     if ((paramInt1 == 4) && (paramInt2 == -68))
     {
-      paramm = paramString;
-      if (bo.isNullOrNil(paramString)) {
-        paramm = "error";
+      paramn = paramString;
+      if (bt.isNullOrNil(paramString)) {
+        paramn = "error";
       }
-      bm(getString(2131297087), paramm);
-      AppMethodBeat.o(124825);
+      bI(getString(2131755906), paramn);
+      AppMethodBeat.o(127976);
       return;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.gDf.a(null, null);
-      AppMethodBeat.o(124825);
+      this.iqz.a(null, null);
+      AppMethodBeat.o(127976);
       return;
     }
-    Toast.makeText(this, 2131301578, 0).show();
-    AppMethodBeat.o(124825);
+    Toast.makeText(this, 2131761250, 0).show();
+    AppMethodBeat.o(127976);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -208,11 +304,11 @@ public class FacebookFriendUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void re(String paramString)
+  public final void vZ(String paramString)
   {
-    AppMethodBeat.i(124827);
-    this.gDf.notifyDataSetChanged();
-    AppMethodBeat.o(124827);
+    AppMethodBeat.i(127978);
+    this.iqz.notifyDataSetChanged();
+    AppMethodBeat.o(127978);
   }
 }
 

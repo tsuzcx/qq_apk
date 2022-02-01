@@ -1,21 +1,34 @@
 package com.tencent.mm.cj;
 
-import a.l;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.aq;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/transvoice/TransVoiceTools;", "", "()V", "Companion", "plugin-audiologic_release"})
 public final class a
 {
-  private static String tqh;
-  private static boolean yTa;
-  public static final a.a yTb;
-  
-  static
+  public static boolean post(Runnable paramRunnable)
   {
-    AppMethodBeat.i(156051);
-    yTb = new a.a((byte)0);
-    tqh = "";
-    AppMethodBeat.o(156051);
+    AppMethodBeat.i(156366);
+    h.Iye.aP(paramRunnable);
+    AppMethodBeat.o(156366);
+    return true;
+  }
+  
+  public static boolean x(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(156367);
+    h.Iye.q(paramRunnable, 1000L);
+    AppMethodBeat.o(156367);
+    return true;
+  }
+  
+  public static boolean y(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(182045);
+    aq.f(paramRunnable);
+    AppMethodBeat.o(182045);
+    return true;
   }
 }
 

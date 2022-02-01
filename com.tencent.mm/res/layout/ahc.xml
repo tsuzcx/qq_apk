@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/a0l" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="48.0dip" style="@style/rc"
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:background="@drawable/a0l" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:ellipsize="end" android:gravity="center|left" android:id="@android:id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:singleLine="true" android:layout_weight="1.0" style="@style/lg" />
-        <ImageButton android:id="@id/df8" android:background="@android:color/transparent" android:focusable="false" android:layout_width="50.0dip" android:layout_height="fill_parent" android:src="@drawable/ap_" />
-    </LinearLayout>
+    <ImageView android:id="@id/cox" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textColor="@color/wc" android:ellipsize="none" android:gravity="center_vertical" android:id="@id/g2b" android:layout_marginLeft="3.0dip" android:singleLine="false" android:lineSpacingExtra="@dimen/bq" style="@style/lz" />
 </LinearLayout>

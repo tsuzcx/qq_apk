@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="64.0dip">
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/fqd" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/l2" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/m2" android:textColor="@color/h9" android:id="@id/fqe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" />
-            <TextView android:textSize="@dimen/ko" android:textColor="@color/rf" android:ellipsize="middle" android:id="@id/fqf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:layout_marginRight="@dimen/l5" android:text="" android:maxLines="2" />
-        </LinearLayout>
-        <ImageView android:id="@id/fqg" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="@dimen/l5" android:src="@raw/radio_off" />
-    </LinearLayout>
-    <View android:background="@color/hj" android:layout_width="fill_parent" android:layout_height="1.0px" />
-</LinearLayout>
+    <com.tencent.mm.plugin.sns.ui.widget.SnsComment2LinePreloadTextView android:id="@id/fmd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.sns.ui.widget.SnsCommentPreloadTextView android:id="@id/fmf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/to" android:id="@id/fme" android:background="@drawable/aaw" android:paddingLeft="@dimen/d" android:paddingRight="@dimen/d" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fkn" android:layout_alignParentBottom="true" android:layout_alignParentEnd="true" />
+</merge>

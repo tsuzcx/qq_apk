@@ -26,6 +26,7 @@ import java.util.Set;
 public abstract class BaseQQDownloaderOpenSDK
 {
   protected static final String TAG = "BaseQQDownloaderOpenSDK";
+  private byte _hellAccFlag_;
   protected String hostPackageName = null;
   protected int hostVersionCode = 0;
   protected Context mContext = null;
@@ -161,7 +162,7 @@ public abstract class BaseQQDownloaderOpenSDK
             str1 = (String)((Map.Entry)localObject).getKey();
             String str3 = (String)((Map.Entry)localObject).getValue();
             if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str3))) {
-              break label293;
+              break label294;
             }
             if (paramInt <= 0)
             {
@@ -174,7 +175,7 @@ public abstract class BaseQQDownloaderOpenSDK
       }
       break;
     }
-    label293:
+    label294:
     for (;;)
     {
       paramInt += 1;
@@ -291,11 +292,14 @@ public abstract class BaseQQDownloaderOpenSDK
     if (paramContext == null) {
       throw new Exception("you must input an application or activity context!");
     }
-    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse("tmast://download?hostpname=" + this.hostPackageName + "&hostversion=" + this.hostVersionCode));
+    Object localObject = new Intent("android.intent.action.VIEW", Uri.parse("tmast://download?hostpname=" + this.hostPackageName + "&hostversion=" + this.hostVersionCode));
     if ((paramContext instanceof Application)) {
-      localIntent.addFlags(268435456);
+      ((Intent)localObject).addFlags(268435456);
     }
-    paramContext.startActivity(localIntent);
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/tmassistantsdk/openSDK/BaseQQDownloaderOpenSDK", "startToDownloadTaskList", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/tmassistantsdk/openSDK/BaseQQDownloaderOpenSDK", "startToDownloadTaskList", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
   
   public abstract void startToWebView(Context paramContext, String paramString);

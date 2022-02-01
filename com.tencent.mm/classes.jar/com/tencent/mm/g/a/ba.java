@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class ba
   extends b
 {
-  public a cow;
-  public b cox;
+  public a ddl;
   
   public ba()
   {
@@ -16,26 +15,21 @@ public final class ba
   
   private ba(byte paramByte)
   {
-    AppMethodBeat.i(90509);
-    this.cow = new a();
-    this.cox = new b();
-    this.ymq = false;
+    AppMethodBeat.i(115972);
+    this.ddl = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(90509);
+    AppMethodBeat.o(115972);
   }
   
-  public static final class a {}
-  
-  public static final class b
+  public static final class a
   {
-    public String bjm;
-    public boolean coy;
-    public String title;
+    public boolean ddm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.ba
  * JD-Core Version:    0.7.0.1
  */

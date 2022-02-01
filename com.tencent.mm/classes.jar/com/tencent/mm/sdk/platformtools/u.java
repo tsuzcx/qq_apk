@@ -1,42 +1,79 @@
 package com.tencent.mm.sdk.platformtools;
 
+import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.HashMap;
-import java.util.Map;
 
 public final class u
 {
-  public static Map<String, String> apd(String paramString)
+  public ArrayMap<String, Object> ETM;
+  public boolean ETN;
+  
+  public u()
   {
-    AppMethodBeat.i(52007);
-    if ((paramString == null) || (paramString.length() <= 0))
+    AppMethodBeat.i(125223);
+    this.ETM = null;
+    this.ETN = false;
+    this.ETM = new ArrayMap();
+    AppMethodBeat.o(125223);
+  }
+  
+  private static void a(String paramString1, Object paramObject1, String paramString2, Object paramObject2, ClassCastException paramClassCastException)
+  {
+    AppMethodBeat.i(125224);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Key ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" expected ");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" but value was a ");
+    localStringBuilder.append(paramObject1.getClass().getName());
+    localStringBuilder.append(".  The default value ");
+    localStringBuilder.append(paramObject2);
+    localStringBuilder.append(" was returned.");
+    ad.w("MicroMsg.ImmutableBundle", localStringBuilder.toString());
+    ad.w("MicroMsg.ImmutableBundle", "Attempt to cast generated internal exception:", new Object[] { paramClassCastException });
+    AppMethodBeat.o(125224);
+  }
+  
+  public final boolean aFp(String paramString)
+  {
+    AppMethodBeat.i(125225);
+    Object localObject = this.ETM.get(paramString);
+    if (localObject == null)
     {
-      AppMethodBeat.o(52007);
-      return null;
+      AppMethodBeat.o(125225);
+      return false;
     }
-    HashMap localHashMap = new HashMap();
-    paramString = paramString.split("\n");
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
+    try
     {
-      Object localObject1 = paramString[i];
-      if ((localObject1 != null) && (localObject1.length() > 0))
-      {
-        Object localObject2 = localObject1.trim().split("=", 2);
-        if ((localObject2 != null) && (localObject2.length >= 2))
-        {
-          localObject1 = localObject2[0];
-          localObject2 = localObject2[1];
-          if ((localObject1 != null) && (localObject1.length() > 0) && (localObject1.matches("^[a-zA-Z0-9_.]*"))) {
-            localHashMap.put(localObject1, localObject2);
-          }
-        }
-      }
-      i += 1;
+      boolean bool = ((Boolean)localObject).booleanValue();
+      AppMethodBeat.o(125225);
+      return bool;
     }
-    AppMethodBeat.o(52007);
-    return localHashMap;
+    catch (ClassCastException localClassCastException)
+    {
+      a(paramString, localObject, "Boolean", Boolean.FALSE, localClassCastException);
+      AppMethodBeat.o(125225);
+    }
+    return false;
+  }
+  
+  public final String getString(String paramString)
+  {
+    AppMethodBeat.i(125226);
+    Object localObject = this.ETM.get(paramString);
+    try
+    {
+      String str = (String)localObject;
+      AppMethodBeat.o(125226);
+      return str;
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      a(paramString, localObject, "String", "<null>", localClassCastException);
+      AppMethodBeat.o(125226);
+    }
+    return null;
   }
 }
 

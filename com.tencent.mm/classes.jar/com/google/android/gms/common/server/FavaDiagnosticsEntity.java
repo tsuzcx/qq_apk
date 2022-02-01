@@ -29,9 +29,9 @@ public class FavaDiagnosticsEntity
   
   static
   {
-    AppMethodBeat.i(61437);
+    AppMethodBeat.i(11929);
     CREATOR = new FavaDiagnosticsEntityCreator();
-    AppMethodBeat.o(61437);
+    AppMethodBeat.o(11929);
   }
   
   @SafeParcelable.Constructor
@@ -51,18 +51,18 @@ public class FavaDiagnosticsEntity
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(61436);
+    AppMethodBeat.i(11928);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     SafeParcelWriter.writeString(paramParcel, 2, this.namespace, false);
     SafeParcelWriter.writeInt(paramParcel, 3, this.typeNum);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(61436);
+    AppMethodBeat.o(11928);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.server.FavaDiagnosticsEntity
  * JD-Core Version:    0.7.0.1
  */

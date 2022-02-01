@@ -9,57 +9,57 @@ public class MallNews
   implements Parcelable
 {
   public static final Parcelable.Creator<MallNews> CREATOR;
-  public String crs;
-  public String ftd;
-  public String sWB;
-  public int showType;
+  public int Agu;
+  public String AiI;
+  public String AiJ;
+  public String AiK;
+  public String AiL;
+  public String AiM;
+  public int AiN;
+  public String AiO;
+  public int AiP;
+  public String AiQ;
+  public String AiR;
+  public int dcz;
+  public String dgo;
+  public String gVf;
   public String type;
-  public int uki;
-  public String umn;
-  public String umo;
-  public String ump;
-  public String umq;
-  public String umr;
-  public int ums;
-  public String umt;
-  public int umu;
-  public String umv;
-  public String umw;
+  public String yCo;
   
   static
   {
-    AppMethodBeat.i(47020);
-    CREATOR = new MallNews.1();
-    AppMethodBeat.o(47020);
+    AppMethodBeat.i(70552);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(70552);
   }
   
   public MallNews(Parcel paramParcel)
   {
-    AppMethodBeat.i(47017);
-    this.umn = "0";
-    this.umo = "0";
-    this.ftd = paramParcel.readString();
-    this.sWB = paramParcel.readString();
-    this.crs = paramParcel.readString();
-    this.ump = paramParcel.readString();
-    this.umq = paramParcel.readString();
-    this.umr = paramParcel.readString();
-    this.ums = paramParcel.readInt();
-    this.umt = paramParcel.readString();
-    this.umn = paramParcel.readString();
-    this.umo = paramParcel.readString();
-    this.showType = paramParcel.readInt();
-    this.umv = paramParcel.readString();
-    this.uki = paramParcel.readInt();
-    this.umw = paramParcel.readString();
-    AppMethodBeat.o(47017);
+    AppMethodBeat.i(70549);
+    this.AiI = "0";
+    this.AiJ = "0";
+    this.gVf = paramParcel.readString();
+    this.yCo = paramParcel.readString();
+    this.dgo = paramParcel.readString();
+    this.AiK = paramParcel.readString();
+    this.AiL = paramParcel.readString();
+    this.AiM = paramParcel.readString();
+    this.AiN = paramParcel.readInt();
+    this.AiO = paramParcel.readString();
+    this.AiI = paramParcel.readString();
+    this.AiJ = paramParcel.readString();
+    this.dcz = paramParcel.readInt();
+    this.AiQ = paramParcel.readString();
+    this.Agu = paramParcel.readInt();
+    this.AiR = paramParcel.readString();
+    AppMethodBeat.o(70549);
   }
   
   public MallNews(String paramString)
   {
-    this.umn = "0";
-    this.umo = "0";
-    this.ftd = paramString;
+    this.AiI = "0";
+    this.AiJ = "0";
+    this.gVf = paramString;
   }
   
   public int describeContents()
@@ -69,58 +69,58 @@ public class MallNews
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(47016);
+    AppMethodBeat.i(70548);
     if ((paramObject instanceof MallNews))
     {
       paramObject = (MallNews)paramObject;
-      if ((this.ftd == null) || (!this.ftd.equals(paramObject.ftd)))
+      if ((this.gVf == null) || (!this.gVf.equals(paramObject.gVf)))
       {
-        AppMethodBeat.o(47016);
+        AppMethodBeat.o(70548);
         return false;
       }
-      if ((this.sWB == null) || (!this.sWB.equals(paramObject.sWB)))
+      if ((this.yCo == null) || (!this.yCo.equals(paramObject.yCo)))
       {
-        AppMethodBeat.o(47016);
+        AppMethodBeat.o(70548);
         return false;
       }
-      AppMethodBeat.o(47016);
+      AppMethodBeat.o(70548);
       return true;
     }
-    AppMethodBeat.o(47016);
+    AppMethodBeat.o(70548);
     return false;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(47019);
-    String str = String.format("functionId : %s, activityId : %s, ticket : %s, activityMsg : %s, activityLink : %s, activityIconLink : %s, showFlag : %s, orgStr : %s, activityTips: %s, activityType: %d, activityUrl: %s", new Object[] { this.ftd, this.sWB, this.crs, this.ump, this.umq, this.umr, this.umn, this.umv, this.umt, Integer.valueOf(this.uki), this.umw });
-    AppMethodBeat.o(47019);
+    AppMethodBeat.i(70551);
+    String str = String.format("functionId : %s, activityId : %s, ticket : %s, activityMsg : %s, activityLink : %s, activityIconLink : %s, showFlag : %s, orgStr : %s, activityTips: %s, activityType: %d, activityUrl: %s", new Object[] { this.gVf, this.yCo, this.dgo, this.AiK, this.AiL, this.AiM, this.AiI, this.AiQ, this.AiO, Integer.valueOf(this.Agu), this.AiR });
+    AppMethodBeat.o(70551);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(47018);
-    paramParcel.writeString(this.ftd);
-    paramParcel.writeString(this.sWB);
-    paramParcel.writeString(this.crs);
-    paramParcel.writeString(this.ump);
-    paramParcel.writeString(this.umq);
-    paramParcel.writeString(this.umr);
-    paramParcel.writeInt(this.ums);
-    paramParcel.writeString(this.umt);
-    paramParcel.writeString(this.umn);
-    paramParcel.writeString(this.umo);
-    paramParcel.writeInt(this.showType);
-    paramParcel.writeString(this.umv);
-    paramParcel.writeInt(this.uki);
-    paramParcel.writeString(this.umw);
-    AppMethodBeat.o(47018);
+    AppMethodBeat.i(70550);
+    paramParcel.writeString(this.gVf);
+    paramParcel.writeString(this.yCo);
+    paramParcel.writeString(this.dgo);
+    paramParcel.writeString(this.AiK);
+    paramParcel.writeString(this.AiL);
+    paramParcel.writeString(this.AiM);
+    paramParcel.writeInt(this.AiN);
+    paramParcel.writeString(this.AiO);
+    paramParcel.writeString(this.AiI);
+    paramParcel.writeString(this.AiJ);
+    paramParcel.writeInt(this.dcz);
+    paramParcel.writeString(this.AiQ);
+    paramParcel.writeInt(this.Agu);
+    paramParcel.writeString(this.AiR);
+    AppMethodBeat.o(70550);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.mall.MallNews
  * JD-Core Version:    0.7.0.1
  */

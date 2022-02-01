@@ -8,73 +8,73 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class TraeAudioSessionHost
 {
-  private ArrayList<TraeAudioSessionHost.a> _sessionInfoList;
+  private ArrayList<SessionInfo> _sessionInfoList;
   private ReentrantLock mLock;
   
   public TraeAudioSessionHost()
   {
-    AppMethodBeat.i(65669);
+    AppMethodBeat.i(13785);
     this._sessionInfoList = new ArrayList();
     this.mLock = new ReentrantLock();
-    AppMethodBeat.o(65669);
+    AppMethodBeat.o(13785);
   }
   
   public void add(TraeAudioSession paramTraeAudioSession, long paramLong, Context paramContext)
   {
-    AppMethodBeat.i(146948);
+    AppMethodBeat.i(13787);
     if (find(paramLong) != null)
     {
-      AppMethodBeat.o(146948);
+      AppMethodBeat.o(13787);
       return;
     }
-    paramContext = new TraeAudioSessionHost.a(this);
-    paramContext.a = paramLong;
-    paramContext.b = paramTraeAudioSession;
+    paramContext = new SessionInfo();
+    paramContext.sessionId = paramLong;
+    paramContext._traeAs = paramTraeAudioSession;
     this.mLock.lock();
     this._sessionInfoList.add(paramContext);
     this.mLock.unlock();
-    AppMethodBeat.o(146948);
+    AppMethodBeat.o(13787);
   }
   
-  public TraeAudioSessionHost.a find(long paramLong)
+  public SessionInfo find(long paramLong)
   {
-    AppMethodBeat.i(65670);
+    AppMethodBeat.i(13786);
     this.mLock.lock();
     int i = 0;
-    TraeAudioSessionHost.a locala;
+    SessionInfo localSessionInfo;
     if (i < this._sessionInfoList.size())
     {
-      locala = (TraeAudioSessionHost.a)this._sessionInfoList.get(i);
-      if (locala.a != paramLong) {}
+      localSessionInfo = (SessionInfo)this._sessionInfoList.get(i);
+      if (localSessionInfo.sessionId != paramLong) {}
     }
     for (;;)
     {
       this.mLock.unlock();
-      AppMethodBeat.o(65670);
-      return locala;
+      AppMethodBeat.o(13786);
+      return localSessionInfo;
       i += 1;
       break;
-      locala = null;
+      localSessionInfo = null;
     }
   }
   
   public void remove(long paramLong)
   {
-    AppMethodBeat.i(65672);
+    AppMethodBeat.i(13788);
     this.mLock.lock();
     int i = 0;
     for (;;)
     {
       if (i < this._sessionInfoList.size())
       {
-        if (((TraeAudioSessionHost.a)this._sessionInfoList.get(i)).a == paramLong) {
+        if (((SessionInfo)this._sessionInfoList.get(i)).sessionId == paramLong) {
           this._sessionInfoList.remove(i);
         }
       }
       else
       {
         this.mLock.unlock();
-        AppMethodBeat.o(65672);
+        AppMethodBeat.o(13788);
         return;
       }
       i += 1;
@@ -83,16 +83,24 @@ public class TraeAudioSessionHost
   
   public void sendToAudioSessionMessage(Intent paramIntent)
   {
-    AppMethodBeat.i(146949);
+    AppMethodBeat.i(13789);
     this.mLock.lock();
     int i = 0;
     while (i < this._sessionInfoList.size())
     {
-      ((TraeAudioSessionHost.a)this._sessionInfoList.get(i)).b.onReceiveCallback(paramIntent);
+      ((SessionInfo)this._sessionInfoList.get(i))._traeAs.onReceiveCallback(paramIntent);
       i += 1;
     }
     this.mLock.unlock();
-    AppMethodBeat.o(146949);
+    AppMethodBeat.o(13789);
+  }
+  
+  public class SessionInfo
+  {
+    public TraeAudioSession _traeAs;
+    public long sessionId;
+    
+    public SessionInfo() {}
   }
 }
 

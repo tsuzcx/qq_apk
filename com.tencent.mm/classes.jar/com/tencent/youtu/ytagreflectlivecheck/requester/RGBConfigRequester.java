@@ -2,9 +2,20 @@ package com.tencent.youtu.ytagreflectlivecheck.requester;
 
 public abstract interface RGBConfigRequester
 {
-  public abstract RGBConfigRequester.YTColorSeqReq getColorSeqReq();
+  public abstract void request(RGBConfigRequestCallBack paramRGBConfigRequestCallBack);
   
-  public abstract void request(String paramString, RGBConfigRequester.RGBConfigRequestCallBack paramRGBConfigRequestCallBack);
+  public static abstract interface RGBConfigRequestCallBack
+  {
+    public abstract void onFailed(int paramInt);
+    
+    public abstract void onSuccess(String paramString, int paramInt);
+  }
+  
+  public static class RGBConfigRequestCallBackType
+  {
+    public static int RGB_FullResponse = 0;
+    public static int RGB_OnlyRgbConfig = 1;
+  }
 }
 
 

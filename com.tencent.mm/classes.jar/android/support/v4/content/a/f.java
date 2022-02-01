@@ -19,24 +19,23 @@ public final class f
   public static Typeface a(Context paramContext, int paramInt1, TypedValue paramTypedValue, int paramInt2, a parama)
   {
     if (paramContext.isRestricted()) {
-      paramContext = null;
+      return null;
     }
-    do
-    {
-      do
-      {
-        return paramContext;
-        Resources localResources = paramContext.getResources();
-        localResources.getValue(paramInt1, paramTypedValue, true);
-        paramTypedValue = a(paramContext, localResources, paramTypedValue, paramInt1, paramInt2, parama);
-        paramContext = paramTypedValue;
-      } while (paramTypedValue != null);
-      paramContext = paramTypedValue;
-    } while (parama != null);
-    throw new Resources.NotFoundException("Font resource ID #0x" + Integer.toHexString(paramInt1) + " could not be retrieved.");
+    return a(paramContext, paramInt1, paramTypedValue, paramInt2, parama, true);
   }
   
-  private static Typeface a(Context paramContext, Resources paramResources, TypedValue paramTypedValue, int paramInt1, int paramInt2, a parama)
+  public static Typeface a(Context paramContext, int paramInt1, TypedValue paramTypedValue, int paramInt2, a parama, boolean paramBoolean)
+  {
+    Resources localResources = paramContext.getResources();
+    localResources.getValue(paramInt1, paramTypedValue, true);
+    paramContext = a(paramContext, localResources, paramTypedValue, paramInt1, paramInt2, parama, paramBoolean);
+    if ((paramContext == null) && (parama == null)) {
+      throw new Resources.NotFoundException("Font resource ID #0x" + Integer.toHexString(paramInt1) + " could not be retrieved.");
+    }
+    return paramContext;
+  }
+  
+  private static Typeface a(Context paramContext, Resources paramResources, TypedValue paramTypedValue, int paramInt1, int paramInt2, a parama, boolean paramBoolean)
   {
     if (paramTypedValue.string == null) {
       throw new Resources.NotFoundException("Resource \"" + paramResources.getResourceName(paramInt1) + "\" (" + Integer.toHexString(paramInt1) + ") is not a Font: " + paramTypedValue);
@@ -76,7 +75,7 @@ public final class f
               }
             }
             else {
-              return d.a(paramContext, paramTypedValue, paramResources, paramInt1, paramInt2, parama);
+              return d.a(paramContext, paramTypedValue, paramResources, paramInt1, paramInt2, parama, paramBoolean);
             }
           }
           else
@@ -104,8 +103,8 @@ public final class f
         }
         catch (IOException paramContext)
         {
-          label209:
-          break label209;
+          label211:
+          break label211;
         }
       }
     }
@@ -122,6 +121,8 @@ public final class f
   
   public static abstract class a
   {
+    public abstract void D(int paramInt);
+    
     public final void a(final int paramInt, Handler paramHandler)
     {
       Handler localHandler = paramHandler;
@@ -130,9 +131,14 @@ public final class f
       }
       localHandler.post(new Runnable()
       {
-        public final void run() {}
+        public final void run()
+        {
+          f.a.this.D(paramInt);
+        }
       });
     }
+    
+    public abstract void a(Typeface paramTypeface);
     
     public final void a(final Typeface paramTypeface, Handler paramHandler)
     {
@@ -144,12 +150,10 @@ public final class f
       {
         public final void run()
         {
-          f.a.this.b(paramTypeface);
+          f.a.this.a(paramTypeface);
         }
       });
     }
-    
-    public abstract void b(Typeface paramTypeface);
   }
 }
 

@@ -24,31 +24,31 @@ public final class GooglePlayServicesUtil
   @Deprecated
   public static Dialog getErrorDialog(int paramInt1, Activity paramActivity, int paramInt2)
   {
-    AppMethodBeat.i(60451);
+    AppMethodBeat.i(10943);
     paramActivity = getErrorDialog(paramInt1, paramActivity, paramInt2, null);
-    AppMethodBeat.o(60451);
+    AppMethodBeat.o(10943);
     return paramActivity;
   }
   
   @Deprecated
   public static Dialog getErrorDialog(int paramInt1, Activity paramActivity, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(60452);
+    AppMethodBeat.i(10944);
     int i = paramInt1;
     if (GooglePlayServicesUtilLight.isPlayServicesPossiblyUpdating(paramActivity, paramInt1)) {
       i = 18;
     }
     paramActivity = GoogleApiAvailability.getInstance().getErrorDialog(paramActivity, i, paramInt2, paramOnCancelListener);
-    AppMethodBeat.o(60452);
+    AppMethodBeat.o(10944);
     return paramActivity;
   }
   
   @Deprecated
   public static PendingIntent getErrorPendingIntent(int paramInt1, Context paramContext, int paramInt2)
   {
-    AppMethodBeat.i(60459);
+    AppMethodBeat.i(10951);
     paramContext = GooglePlayServicesUtilLight.getErrorPendingIntent(paramInt1, paramContext, paramInt2);
-    AppMethodBeat.o(60459);
+    AppMethodBeat.o(10951);
     return paramContext;
   }
   
@@ -56,67 +56,67 @@ public final class GooglePlayServicesUtil
   @VisibleForTesting
   public static String getErrorString(int paramInt)
   {
-    AppMethodBeat.i(60457);
+    AppMethodBeat.i(10949);
     String str = GooglePlayServicesUtilLight.getErrorString(paramInt);
-    AppMethodBeat.o(60457);
+    AppMethodBeat.o(10949);
     return str;
   }
   
   public static Context getRemoteContext(Context paramContext)
   {
-    AppMethodBeat.i(60462);
+    AppMethodBeat.i(10954);
     paramContext = GooglePlayServicesUtilLight.getRemoteContext(paramContext);
-    AppMethodBeat.o(60462);
+    AppMethodBeat.o(10954);
     return paramContext;
   }
   
   public static Resources getRemoteResource(Context paramContext)
   {
-    AppMethodBeat.i(60461);
+    AppMethodBeat.i(10953);
     paramContext = GooglePlayServicesUtilLight.getRemoteResource(paramContext);
-    AppMethodBeat.o(60461);
+    AppMethodBeat.o(10953);
     return paramContext;
   }
   
   @Deprecated
   public static int isGooglePlayServicesAvailable(Context paramContext)
   {
-    AppMethodBeat.i(60458);
+    AppMethodBeat.i(10950);
     int i = GooglePlayServicesUtilLight.isGooglePlayServicesAvailable(paramContext);
-    AppMethodBeat.o(60458);
+    AppMethodBeat.o(10950);
     return i;
   }
   
   @Deprecated
   public static boolean isUserRecoverableError(int paramInt)
   {
-    AppMethodBeat.i(60460);
+    AppMethodBeat.i(10952);
     boolean bool = GooglePlayServicesUtilLight.isUserRecoverableError(paramInt);
-    AppMethodBeat.o(60460);
+    AppMethodBeat.o(10952);
     return bool;
   }
   
   @Deprecated
   public static boolean showErrorDialogFragment(int paramInt1, Activity paramActivity, int paramInt2)
   {
-    AppMethodBeat.i(60456);
+    AppMethodBeat.i(10948);
     boolean bool = showErrorDialogFragment(paramInt1, paramActivity, paramInt2, null);
-    AppMethodBeat.o(60456);
+    AppMethodBeat.o(10948);
     return bool;
   }
   
   @Deprecated
   public static boolean showErrorDialogFragment(int paramInt1, Activity paramActivity, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(60453);
+    AppMethodBeat.i(10945);
     boolean bool = showErrorDialogFragment(paramInt1, paramActivity, null, paramInt2, paramOnCancelListener);
-    AppMethodBeat.o(60453);
+    AppMethodBeat.o(10945);
     return bool;
   }
   
   public static boolean showErrorDialogFragment(int paramInt1, Activity paramActivity, Fragment paramFragment, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(60454);
+    AppMethodBeat.i(10946);
     int i = paramInt1;
     if (GooglePlayServicesUtilLight.isPlayServicesPossiblyUpdating(paramActivity, paramInt1)) {
       i = 18;
@@ -125,33 +125,33 @@ public final class GooglePlayServicesUtil
     if (paramFragment == null)
     {
       boolean bool = localGoogleApiAvailability.showErrorDialogFragment(paramActivity, i, paramInt2, paramOnCancelListener);
-      AppMethodBeat.o(60454);
+      AppMethodBeat.o(10946);
       return bool;
     }
     paramFragment = GoogleApiAvailability.zza(paramActivity, i, DialogRedirect.getInstance(paramFragment, GoogleApiAvailability.getInstance().getErrorResolutionIntent(paramActivity, i, "d"), paramInt2), paramOnCancelListener);
     if (paramFragment == null)
     {
-      AppMethodBeat.o(60454);
+      AppMethodBeat.o(10946);
       return false;
     }
     GoogleApiAvailability.zza(paramActivity, paramFragment, "GooglePlayServicesErrorDialog", paramOnCancelListener);
-    AppMethodBeat.o(60454);
+    AppMethodBeat.o(10946);
     return true;
   }
   
   @Deprecated
   public static void showErrorNotification(int paramInt, Context paramContext)
   {
-    AppMethodBeat.i(60455);
+    AppMethodBeat.i(10947);
     GoogleApiAvailability localGoogleApiAvailability = GoogleApiAvailability.getInstance();
     if ((GooglePlayServicesUtilLight.isPlayServicesPossiblyUpdating(paramContext, paramInt)) || (GooglePlayServicesUtilLight.isPlayStorePossiblyUpdating(paramContext, paramInt)))
     {
       localGoogleApiAvailability.zza(paramContext);
-      AppMethodBeat.o(60455);
+      AppMethodBeat.o(10947);
       return;
     }
     localGoogleApiAvailability.showErrorNotification(paramContext, paramInt);
-    AppMethodBeat.o(60455);
+    AppMethodBeat.o(10947);
   }
 }
 

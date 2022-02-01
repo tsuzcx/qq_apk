@@ -1,64 +1,43 @@
 package com.tencent.mm.plugin.voip.ui;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.widget.TextView;
+import android.graphics.Outline;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewOutlineProvider;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.voip.video.CaptureView;
-import com.tencent.mm.plugin.voip.video.OpenGlRender;
-import com.tencent.mm.plugin.voip.widget.BaseSmallView;
+import d.l;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/voip/ui/VoipRectangleViewOutlineProvider;", "Landroid/view/ViewOutlineProvider;", "mRadius", "", "(F)V", "getMRadius", "()F", "setMRadius", "getOutline", "", "view", "Landroid/view/View;", "outline", "Landroid/graphics/Outline;", "plugin-voip_release"})
 public final class e
-  extends BaseSmallView
+  extends ViewOutlineProvider
 {
-  private TextView timeTv;
+  private float asb;
   
-  public e(Context paramContext)
+  public e(float paramFloat)
   {
-    super(paramContext, null);
-    AppMethodBeat.i(4980);
-    LayoutInflater.from(paramContext).inflate(2130971115, this);
-    this.timeTv = ((TextView)findViewById(2131828902));
-    AppMethodBeat.o(4980);
+    this.asb = paramFloat;
   }
   
-  public final void aeI(String paramString)
+  public final void getOutline(View paramView, Outline paramOutline)
   {
-    AppMethodBeat.i(4982);
-    this.timeTv.setTextSize(1, 12.0F);
-    this.timeTv.setText(paramString);
-    AppMethodBeat.o(4982);
+    AppMethodBeat.i(184119);
+    Rect localRect = new Rect();
+    if (paramView != null) {
+      paramView.getDrawingRect(localRect);
+    }
+    paramView = new Rect(0, 0, localRect.right - localRect.left + 0, localRect.bottom - localRect.top + 0);
+    if (paramOutline != null)
+    {
+      paramOutline.setRoundRect(paramView, this.asb);
+      AppMethodBeat.o(184119);
+      return;
+    }
+    AppMethodBeat.o(184119);
   }
-  
-  public final void aeJ(String paramString)
-  {
-    AppMethodBeat.i(4981);
-    this.timeTv.setTextSize(1, 14.0F);
-    this.timeTv.setText(paramString);
-    AppMethodBeat.o(4981);
-  }
-  
-  public final void cPo() {}
-  
-  public final void cPp() {}
-  
-  public final OpenGlRender getBeautyData()
-  {
-    return null;
-  }
-  
-  public final OpenGlRender getFilterData()
-  {
-    return null;
-  }
-  
-  public final void onAnimationEnd() {}
-  
-  public final void setCaptureView(CaptureView paramCaptureView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.e
  * JD-Core Version:    0.7.0.1
  */

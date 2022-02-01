@@ -9,15 +9,15 @@ public class CDNTaskState
   implements Parcelable
 {
   public static final Parcelable.Creator<CDNTaskState> CREATOR;
-  public int kDU = 0;
-  public int kDV = 0;
+  public long completeSize = 0L;
+  public long fileTotalSize = 0L;
   public int taskState = -100;
   
   static
   {
-    AppMethodBeat.i(931);
-    CREATOR = new CDNTaskState.1();
-    AppMethodBeat.o(931);
+    AppMethodBeat.i(120763);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(120763);
   }
   
   public int describeContents()
@@ -27,16 +27,16 @@ public class CDNTaskState
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(930);
+    AppMethodBeat.i(120762);
     paramParcel.writeInt(this.taskState);
-    paramParcel.writeInt(this.kDU);
-    paramParcel.writeInt(this.kDV);
-    AppMethodBeat.o(930);
+    paramParcel.writeLong(this.completeSize);
+    paramParcel.writeLong(this.fileTotalSize);
+    AppMethodBeat.o(120762);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.ipc.CDNTaskState
  * JD-Core Version:    0.7.0.1
  */

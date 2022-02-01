@@ -1,17 +1,17 @@
 package com.tencent.mm.sdk.b;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public final class a
 {
-  private final AtomicInteger Yi = new AtomicInteger(1);
-  private ThreadGroup Yj;
-  private d Yk;
+  static final ThreadLocal<String> aal = new ThreadLocal();
   
-  a(d paramd)
+  protected static void E(String paramString)
   {
-    this.Yk = paramd;
-    this.Yj = new ThreadGroup("MM_FREE_THREAD_GROUP");
+    aal.set(paramString);
+  }
+  
+  public static String getTag()
+  {
+    return (String)aal.get();
   }
 }
 

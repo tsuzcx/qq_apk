@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:background="@drawable/f7" android:layout_width="fill_parent" android:layout_height="@dimen/br" android:layout_centerVertical="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/ezs" android:background="@drawable/abr" android:visibility="gone" android:layout_centerVertical="true" android:layout_marginStart="24.0dip" android:layout_marginEnd="24.0dip" android:layout_alignParentEnd="true" style="@style/yi" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/b3b" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toStartOf="@id/ezs" android:layout_alignParentStart="true">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/tm" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/h" android:layout_marginBottom="@dimen/h" android:src="@raw/default_avatar" android:layout_marginStart="24.0dip" />
+        <TextView android:textSize="@dimen/i" android:textColor="#ffededed" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/gjv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{user}" android:singleLine="true" android:layout_marginStart="@dimen/ha" style="@style/ly" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/fs7" android:visibility="invisible" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/bby" android:layout_marginStart="10.0dip" />
+    </LinearLayout>
+</RelativeLayout>

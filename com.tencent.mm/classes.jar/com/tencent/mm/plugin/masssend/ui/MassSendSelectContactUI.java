@@ -3,187 +3,156 @@ package com.tencent.mm.plugin.masssend.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.HeaderViewListAdapter;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
-import com.tencent.mm.g.c.aq;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.pluginsdk.ui.MultiSelectContactView.c;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
-import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.c;
 import com.tencent.mm.ui.contact.c.a;
-import com.tencent.mm.ui.contact.n;
 import com.tencent.mm.ui.contact.o;
 import com.tencent.mm.ui.contact.p;
-import com.tencent.mm.ui.contact.t;
-import com.tencent.mm.ui.q.b;
-import com.tencent.mm.ui.tools.q;
+import com.tencent.mm.ui.contact.q;
+import com.tencent.mm.ui.contact.s;
+import com.tencent.mm.ui.r.b;
+import com.tencent.mm.ui.tools.r;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 
 public class MassSendSelectContactUI
   extends MMBaseSelectContactUI
 {
-  private List<String> ejc;
-  private HashSet<String> gpQ;
-  private Button oCq;
-  private boolean oCr;
-  private MultiSelectContactView oCs;
+  private List<String> fvP;
+  private Button twT;
+  private List<String> twU;
+  private boolean twV;
+  private MultiSelectContactView twW;
   
-  private void yS(int paramInt)
+  private void Gs(int paramInt)
   {
-    AppMethodBeat.i(22879);
+    AppMethodBeat.i(26503);
     if (paramInt > 0)
     {
-      updateOptionMenuText(1, getString(2131301534) + "(" + this.gpQ.size() + ")");
+      updateOptionMenuText(1, getString(2131761182) + "(" + this.twU.size() + ")");
       enableOptionMenu(1, true);
-      AppMethodBeat.o(22879);
+      AppMethodBeat.o(26503);
       return;
     }
-    updateOptionMenuText(1, getString(2131301534));
+    updateOptionMenuText(1, getString(2131761182));
     enableOptionMenu(1, false);
-    AppMethodBeat.o(22879);
+    AppMethodBeat.o(26503);
   }
   
-  public final void Kc()
+  public final void VL()
   {
-    AppMethodBeat.i(22877);
-    super.Kc();
-    this.ejc = new ArrayList();
-    this.ejc.addAll(t.dMg());
-    this.ejc.addAll(t.dMh());
-    this.ejc.add(com.tencent.mm.model.r.Zn());
-    this.gpQ = new HashSet();
-    AppMethodBeat.o(22877);
+    AppMethodBeat.i(26501);
+    super.VL();
+    this.fvP = new ArrayList();
+    this.fvP.addAll(com.tencent.mm.ui.contact.u.fbL());
+    this.fvP.addAll(com.tencent.mm.ui.contact.u.fbM());
+    this.fvP.add(com.tencent.mm.model.u.aqG());
+    this.twU = new LinkedList();
+    AppMethodBeat.o(26501);
   }
   
-  public final void SL(String paramString)
+  public final boolean a(com.tencent.mm.ui.contact.a.a parama)
   {
-    AppMethodBeat.i(22880);
-    h.qsU.e(11225, new Object[] { Integer.valueOf(1), Integer.valueOf(0) });
-    Intent localIntent = new Intent();
-    localIntent.putExtra("label", paramString);
-    localIntent.putExtra("always_select_contact", bo.d(new ArrayList(this.gpQ), ","));
-    localIntent.putExtra("list_attr", t.F(new int[] { 16384, 64 }));
-    d.b(this, ".ui.contact.SelectLabelContactUI", localIntent, 0);
-    AppMethodBeat.o(22880);
-  }
-  
-  public final boolean a(a parama)
-  {
-    AppMethodBeat.i(22886);
-    if ((parama.Adl) && (parama.contact != null))
+    AppMethodBeat.i(26510);
+    if ((parama.GVT) && (parama.contact != null))
     {
-      boolean bool = this.gpQ.contains(parama.contact.field_username);
-      AppMethodBeat.o(22886);
+      boolean bool = this.twU.contains(parama.contact.field_username);
+      AppMethodBeat.o(26510);
       return bool;
     }
-    AppMethodBeat.o(22886);
+    AppMethodBeat.o(26510);
     return false;
   }
   
-  public final boolean apa()
+  public final boolean aHt()
   {
     return false;
   }
   
-  public final boolean apb()
+  public final boolean aHu()
   {
     return true;
   }
   
-  public final String apc()
+  public final String aHv()
   {
-    AppMethodBeat.i(22883);
-    String str = getString(2131301536);
-    AppMethodBeat.o(22883);
+    AppMethodBeat.i(26507);
+    String str = getString(2131761184);
+    AppMethodBeat.o(26507);
     return str;
   }
   
-  public final p apd()
+  public final q aHw()
   {
-    AppMethodBeat.i(22884);
+    AppMethodBeat.i(26508);
     Object localObject = new c.a();
-    ((c.a)localObject).Abg = true;
-    ((c.a)localObject).zZK = "@all.contact.without.chatroom.without.openim.without.openimfavour";
-    localObject = new c(this, this.ejc, true, (c.a)localObject);
-    AppMethodBeat.o(22884);
+    ((c.a)localObject).GTE = true;
+    ((c.a)localObject).GRX = "@all.contact.without.chatroom.without.openim.without.openimfavour";
+    localObject = new c(this, this.fvP, true, (c.a)localObject, (byte)0);
+    AppMethodBeat.o(26508);
     return localObject;
   }
   
-  public final n ape()
+  public final o aHx()
   {
-    AppMethodBeat.i(22885);
-    com.tencent.mm.ui.contact.r localr = new com.tencent.mm.ui.contact.r(this, this.ejc, true, this.scene);
-    AppMethodBeat.o(22885);
-    return localr;
+    AppMethodBeat.i(26509);
+    s locals = new s(this, this.fvP, true, this.scene);
+    AppMethodBeat.o(26509);
+    return locals;
   }
   
-  public final int[] bOp()
+  public final void afM(String paramString)
+  {
+    AppMethodBeat.i(26504);
+    h.vKh.f(11225, new Object[] { Integer.valueOf(1), Integer.valueOf(0) });
+    Intent localIntent = new Intent();
+    localIntent.putExtra("label", paramString);
+    localIntent.putExtra("always_select_contact", bt.n(new ArrayList(this.twU), ","));
+    localIntent.putExtra("list_attr", com.tencent.mm.ui.contact.u.I(new int[] { 16384, 64 }));
+    d.c(this, ".ui.contact.SelectLabelContactUI", localIntent, 0);
+    AppMethodBeat.o(26504);
+  }
+  
+  public final int[] cMQ()
   {
     return new int[] { 131072 };
   }
   
-  public final boolean bPC()
+  public final boolean cOv()
   {
     return true;
   }
   
   public int getLayoutId()
   {
-    return 2130970126;
-  }
-  
-  public final void mL(int paramInt)
-  {
-    AppMethodBeat.i(22882);
-    o localo = dLW();
-    Object localObject = localo.Qt(paramInt - getContentLV().getHeaderViewsCount());
-    if (localObject == null)
-    {
-      AppMethodBeat.o(22882);
-      return;
-    }
-    if (((a)localObject).contact == null)
-    {
-      AppMethodBeat.o(22882);
-      return;
-    }
-    ab.i("MicroMsg.MassSendSelectContactUI", "ClickUser=%s", new Object[] { ((a)localObject).contact.field_username });
-    localObject = ((a)localObject).contact.field_username;
-    dMc();
-    if (this.gpQ.contains(localObject))
-    {
-      this.gpQ.remove(localObject);
-      this.oCs.ama((String)localObject);
-    }
-    for (;;)
-    {
-      yS(this.gpQ.size());
-      localo.notifyDataSetChanged();
-      dMc();
-      dMd();
-      AppMethodBeat.o(22882);
-      return;
-      this.gpQ.add(localObject);
-      this.oCs.ama((String)localObject);
-    }
+    return 2131494741;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     int i = 0;
-    AppMethodBeat.i(22881);
+    AppMethodBeat.i(26505);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ab.i("MicroMsg.MassSendSelectContactUI", "requestCode=%d | resultCode=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ad.i("MicroMsg.MassSendSelectContactUI", "requestCode=%d | resultCode=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt2 != -1)
     {
-      AppMethodBeat.o(22881);
+      AppMethodBeat.o(26505);
       return;
     }
     switch (paramInt1)
@@ -191,56 +160,133 @@ public class MassSendSelectContactUI
     }
     for (;;)
     {
-      AppMethodBeat.o(22881);
+      AppMethodBeat.o(26505);
       return;
       paramIntent = paramIntent.getStringExtra("Select_Contact");
-      if (bo.isNullOrNil(paramIntent))
+      if (bt.isNullOrNil(paramIntent))
       {
-        ab.i("MicroMsg.MassSendSelectContactUI", "GET_LABEL_USERS return usernames is null or empty");
-        AppMethodBeat.o(22881);
+        ad.i("MicroMsg.MassSendSelectContactUI", "GET_LABEL_USERS return usernames is null or empty");
+        AppMethodBeat.o(26505);
         return;
       }
-      ab.i("MicroMsg.MassSendSelectContactUI", "GET_LABEL_USERS select username=%s", new Object[] { paramIntent });
+      ad.i("MicroMsg.MassSendSelectContactUI", "GET_LABEL_USERS select username=%s", new Object[] { paramIntent });
       paramIntent = paramIntent.split(",");
       paramInt2 = paramIntent.length;
       paramInt1 = i;
       while (paramInt1 < paramInt2)
       {
         Object localObject = paramIntent[paramInt1];
-        if (this.gpQ.add(localObject)) {
-          this.oCs.ama(localObject);
+        if (this.twU.add(localObject)) {
+          this.twW.aBC(localObject);
         }
         paramInt1 += 1;
       }
-      yS(this.gpQ.size());
-      dLW().notifyDataSetChanged();
-      if (this.eiV != null)
+      Gs(this.twU.size());
+      fbz().notifyDataSetChanged();
+      if (this.fvI != null)
       {
-        this.eiV.clearFocus();
-        this.eiV.dNV();
+        this.fvI.clearFocus();
+        this.fvI.fdW();
       }
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(22878);
+    AppMethodBeat.i(26502);
     super.onCreate(paramBundle);
-    ab.i("MicroMsg.MassSendSelectContactUI", "create!");
-    this.oCs = this.oCs;
-    if (this.oCs == null)
+    ad.i("MicroMsg.MassSendSelectContactUI", "create!");
+    this.twW = this.twW;
+    if (this.twW == null)
     {
       finish();
-      AppMethodBeat.o(22878);
+      AppMethodBeat.o(26502);
       return;
     }
-    this.oCs.setBackgroundDrawable(null);
-    addTextOptionMenu(1, getString(2131301534), new MassSendSelectContactUI.1(this), null, q.b.zby);
-    this.oCq = ((Button)findViewById(2131826110));
-    this.oCq.setOnClickListener(new MassSendSelectContactUI.2(this));
-    this.oCs.setOnContactDeselectListener(new MassSendSelectContactUI.3(this));
-    yS(this.gpQ.size());
-    AppMethodBeat.o(22878);
+    this.twW.setBackgroundDrawable(null);
+    addTextOptionMenu(1, getString(2131761182), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(26498);
+        ad.i("MicroMsg.MassSendSelectContactUI", "Click Next Btn");
+        paramAnonymousMenuItem = bt.S((String[])MassSendSelectContactUI.a(MassSendSelectContactUI.this).toArray(new String[0]));
+        if (paramAnonymousMenuItem == null)
+        {
+          ad.e("MicroMsg.MassSendSelectContactUI", "no choosed anyone");
+          AppMethodBeat.o(26498);
+          return false;
+        }
+        paramAnonymousMenuItem.remove(com.tencent.mm.model.u.aqG());
+        Object localObject = bt.n(paramAnonymousMenuItem, ";");
+        paramAnonymousMenuItem = new Intent(MassSendSelectContactUI.this, MassSendMsgUI.class);
+        paramAnonymousMenuItem.putExtra("mass_send_contact_list", (String)localObject);
+        localObject = MassSendSelectContactUI.this;
+        paramAnonymousMenuItem = new com.tencent.mm.hellhoundlib.b.a().bd(paramAnonymousMenuItem);
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousMenuItem.adn(), "com/tencent/mm/plugin/masssend/ui/MassSendSelectContactUI$1", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        ((MassSendSelectContactUI)localObject).startActivity((Intent)paramAnonymousMenuItem.lS(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/masssend/ui/MassSendSelectContactUI$1", "onMenuItemClick", "(Landroid/view/MenuItem;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(26498);
+        return true;
+      }
+    }, null, r.b.FOB);
+    this.twT = ((Button)findViewById(2131304491));
+    this.twT.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        boolean bool = false;
+        AppMethodBeat.i(26499);
+        ad.i("MicroMsg.MassSendSelectContactUI", "Click SelectAll");
+        paramAnonymousView = (p)((HeaderViewListAdapter)MassSendSelectContactUI.this.getContentLV().getAdapter()).getWrappedAdapter();
+        Object localObject;
+        if (!MassSendSelectContactUI.b(MassSendSelectContactUI.this))
+        {
+          MassSendSelectContactUI.c(MassSendSelectContactUI.this).setText(2131761171);
+          int j = paramAnonymousView.getCount();
+          int i = 0;
+          while (i < j)
+          {
+            localObject = paramAnonymousView.ZC(i);
+            if ((localObject != null) && (((com.tencent.mm.ui.contact.a.a)localObject).contact != null)) {
+              MassSendSelectContactUI.a(MassSendSelectContactUI.this).add(((com.tencent.mm.ui.contact.a.a)localObject).contact.field_username);
+            }
+            i += 1;
+          }
+          MassSendSelectContactUI.d(MassSendSelectContactUI.this).gG(MassSendSelectContactUI.a(MassSendSelectContactUI.this));
+        }
+        for (;;)
+        {
+          localObject = MassSendSelectContactUI.this;
+          if (!MassSendSelectContactUI.b(MassSendSelectContactUI.this)) {
+            bool = true;
+          }
+          MassSendSelectContactUI.a((MassSendSelectContactUI)localObject, bool);
+          MassSendSelectContactUI.a(MassSendSelectContactUI.this, MassSendSelectContactUI.a(MassSendSelectContactUI.this).size());
+          paramAnonymousView.notifyDataSetChanged();
+          AppMethodBeat.o(26499);
+          return;
+          MassSendSelectContactUI.c(MassSendSelectContactUI.this).setText(2131761183);
+          MassSendSelectContactUI.d(MassSendSelectContactUI.this).gG(new LinkedList());
+          MassSendSelectContactUI.a(MassSendSelectContactUI.this).clear();
+        }
+      }
+    });
+    this.twW.setOnContactDeselectListener(new MultiSelectContactView.c()
+    {
+      public final void N(int paramAnonymousInt, String paramAnonymousString)
+      {
+        AppMethodBeat.i(26500);
+        if ((paramAnonymousInt == 1) && (paramAnonymousString != null))
+        {
+          MassSendSelectContactUI.a(MassSendSelectContactUI.this).remove(paramAnonymousString);
+          MassSendSelectContactUI.a(MassSendSelectContactUI.this, MassSendSelectContactUI.a(MassSendSelectContactUI.this).size());
+        }
+        AppMethodBeat.o(26500);
+      }
+    });
+    Gs(this.twU.size());
+    AppMethodBeat.o(26502);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -248,10 +294,46 @@ public class MassSendSelectContactUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  public final void pT(int paramInt)
+  {
+    AppMethodBeat.i(26506);
+    p localp = fbz();
+    Object localObject = localp.ZC(paramInt - getContentLV().getHeaderViewsCount());
+    if (localObject == null)
+    {
+      AppMethodBeat.o(26506);
+      return;
+    }
+    if (((com.tencent.mm.ui.contact.a.a)localObject).contact == null)
+    {
+      AppMethodBeat.o(26506);
+      return;
+    }
+    ad.i("MicroMsg.MassSendSelectContactUI", "ClickUser=%s", new Object[] { ((com.tencent.mm.ui.contact.a.a)localObject).contact.field_username });
+    localObject = ((com.tencent.mm.ui.contact.a.a)localObject).contact.field_username;
+    fbG();
+    if (this.twU.contains(localObject))
+    {
+      this.twU.remove(localObject);
+      this.twW.aBC((String)localObject);
+    }
+    for (;;)
+    {
+      Gs(this.twU.size());
+      localp.notifyDataSetChanged();
+      fbG();
+      fbH();
+      AppMethodBeat.o(26506);
+      return;
+      this.twU.add(localObject);
+      this.twW.aBC((String)localObject);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.ui.MassSendSelectContactUI
  * JD-Core Version:    0.7.0.1
  */

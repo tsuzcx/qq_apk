@@ -18,24 +18,24 @@ final class ComposeUI$2
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     paramInt1 = 4;
-    AppMethodBeat.i(68168);
-    if (this.pLX.pLB)
+    AppMethodBeat.i(122893);
+    if (this.uOk.uNO)
     {
-      paramCharSequence = this.pLY;
-      if (ComposeUI.j(this.pLX).getText().length() > 0) {
+      paramCharSequence = this.uOl;
+      if (ComposeUI.j(this.uOk).getText().length() > 0) {
         paramInt1 = 0;
       }
       paramCharSequence.setVisibility(paramInt1);
-      AppMethodBeat.o(68168);
+      AppMethodBeat.o(122893);
       return;
     }
-    this.pLY.setVisibility(4);
-    AppMethodBeat.o(68168);
+    this.uOl.setVisibility(4);
+    AppMethodBeat.o(122893);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.ComposeUI.2
  * JD-Core Version:    0.7.0.1
  */

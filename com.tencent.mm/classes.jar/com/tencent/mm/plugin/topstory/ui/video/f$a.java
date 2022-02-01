@@ -6,12 +6,12 @@ public enum f$a
 {
   static
   {
-    AppMethodBeat.i(1712);
-    tii = new a("UNKNOWN", 0);
-    tij = new a("MOBILE_NET", 1);
-    tik = new a("NO_NET", 2);
-    til = new a[] { tii, tij, tik };
-    AppMethodBeat.o(1712);
+    AppMethodBeat.i(126071);
+    yOH = new a("UNKNOWN", 0);
+    yOI = new a("MOBILE_NET", 1);
+    yOJ = new a("NO_NET", 2);
+    yOK = new a[] { yOH, yOI, yOJ };
+    AppMethodBeat.o(126071);
   }
   
   private f$a() {}

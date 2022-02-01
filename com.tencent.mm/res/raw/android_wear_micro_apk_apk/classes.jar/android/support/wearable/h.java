@@ -2,10 +2,10 @@ package android.support.wearable;
 
 public final class h
 {
-  public static final int wC = 2131623936;
-  public static final int wD = 2131623937;
-  public static final int wE = 2131623938;
-  public static final int wF = 2131623939;
+  public static final int yr = 2131623936;
+  public static final int ys = 2131623937;
+  public static final int yt = 2131623938;
+  public static final int yu = 2131623939;
 }
 
 

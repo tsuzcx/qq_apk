@@ -18,7 +18,7 @@ public final class SQLiteGlobal
   
   static
   {
-    AppMethodBeat.i(12582);
+    AppMethodBeat.i(3268);
     if (!WCDBInitializationProbe.libLoaded) {
       System.loadLibrary("wcdb");
     }
@@ -27,7 +27,7 @@ public final class SQLiteGlobal
       i = new StatFs(Environment.getDataDirectory().getAbsolutePath()).getBlockSize();
       defaultPageSize = i;
       nativeSetDefaultCipherSettings(i);
-      AppMethodBeat.o(12582);
+      AppMethodBeat.o(3268);
       return;
     }
     catch (RuntimeException localRuntimeException)
@@ -47,9 +47,9 @@ public final class SQLiteGlobal
   
   public static int releaseMemory()
   {
-    AppMethodBeat.i(12581);
+    AppMethodBeat.i(3267);
     int i = nativeReleaseMemory();
-    AppMethodBeat.o(12581);
+    AppMethodBeat.o(3267);
     return i;
   }
 }

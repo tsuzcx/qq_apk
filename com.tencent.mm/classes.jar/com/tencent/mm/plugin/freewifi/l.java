@@ -5,56 +5,56 @@ import com.tencent.mm.plugin.report.service.h;
 
 public final class l
 {
-  public static void A(String paramString1, String paramString2, int paramInt)
+  public static void L(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(20617);
-    h.qsU.e(12651, new Object[] { Integer.valueOf(1), paramString1, Integer.valueOf(0), paramString2, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt) });
-    AppMethodBeat.o(20617);
+    AppMethodBeat.i(24694);
+    h.vKh.f(12651, new Object[] { Integer.valueOf(1), paramString1, Integer.valueOf(0), paramString2, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt) });
+    AppMethodBeat.o(24694);
   }
   
-  public static void B(String paramString1, String paramString2, int paramInt)
+  public static void M(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(20618);
-    h.qsU.e(12651, new Object[] { Integer.valueOf(2), paramString1, Integer.valueOf(0), paramString2, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt) });
-    AppMethodBeat.o(20618);
+    AppMethodBeat.i(24695);
+    h.vKh.f(12651, new Object[] { Integer.valueOf(2), paramString1, Integer.valueOf(0), paramString2, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt) });
+    AppMethodBeat.o(24695);
   }
   
-  public static void C(String paramString1, String paramString2, int paramInt)
+  public static void N(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(20619);
-    h.qsU.e(12651, new Object[] { Integer.valueOf(3), paramString1, Integer.valueOf(0), paramString2, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt) });
-    AppMethodBeat.o(20619);
+    AppMethodBeat.i(24696);
+    h.vKh.f(12651, new Object[] { Integer.valueOf(3), paramString1, Integer.valueOf(0), paramString2, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt) });
+    AppMethodBeat.o(24696);
   }
   
-  public static void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  public static void c(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(20620);
+    AppMethodBeat.i(24697);
     if (paramBoolean)
     {
-      h.qsU.e(12651, new Object[] { Integer.valueOf(4), paramString1, Integer.valueOf(1), paramString2, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(20620);
+      h.vKh.f(12651, new Object[] { Integer.valueOf(4), paramString1, Integer.valueOf(1), paramString2, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(24697);
       return;
     }
-    h.qsU.e(12651, new Object[] { Integer.valueOf(4), paramString1, Integer.valueOf(0), paramString2, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt) });
-    AppMethodBeat.o(20620);
+    h.vKh.f(12651, new Object[] { Integer.valueOf(4), paramString1, Integer.valueOf(0), paramString2, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt) });
+    AppMethodBeat.o(24697);
   }
   
-  public static void b(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  public static void d(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(20621);
+    AppMethodBeat.i(24698);
     if (paramBoolean)
     {
-      h.qsU.e(12651, new Object[] { Integer.valueOf(5), paramString1, Integer.valueOf(1), paramString2, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(20621);
+      h.vKh.f(12651, new Object[] { Integer.valueOf(5), paramString1, Integer.valueOf(1), paramString2, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(24698);
       return;
     }
-    h.qsU.e(12651, new Object[] { Integer.valueOf(5), paramString1, Integer.valueOf(0), paramString2, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt) });
-    AppMethodBeat.o(20621);
+    h.vKh.f(12651, new Object[] { Integer.valueOf(5), paramString1, Integer.valueOf(0), paramString2, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt) });
+    AppMethodBeat.o(24698);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.l
  * JD-Core Version:    0.7.0.1
  */

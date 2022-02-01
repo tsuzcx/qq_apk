@@ -1,132 +1,134 @@
 package com.tencent.mm.plugin.webview.fts.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.c.f;
 import com.tencent.mm.plugin.webview.fts.ui.FtsWebVideoView;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class d
   implements b.a
 {
-  public ap idS;
-  public int idT;
-  private b.b uQO;
-  private com.tencent.mm.plugin.webview.ui.tools.jsapi.d uQS;
-  FtsWebVideoView uQZ;
+  private b.b AQL;
+  private f AQP;
+  FtsWebVideoView AQW;
+  public av krS;
+  public int krT;
   
-  public d(FtsWebVideoView paramFtsWebVideoView, b.b paramb, com.tencent.mm.plugin.webview.ui.tools.jsapi.d paramd)
+  public d(FtsWebVideoView paramFtsWebVideoView, b.b paramb, f paramf)
   {
-    AppMethodBeat.i(5952);
-    this.uQZ = paramFtsWebVideoView;
-    this.uQO = paramb;
-    this.uQO.a(this);
-    this.uQS = paramd;
-    AppMethodBeat.o(5952);
+    AppMethodBeat.i(187858);
+    this.AQW = paramFtsWebVideoView;
+    this.AQL = paramb;
+    this.AQL.a(this);
+    this.AQP = paramf;
+    AppMethodBeat.o(187858);
   }
   
-  private JSONObject daQ()
+  private JSONObject A(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(5959);
-    JSONObject localJSONObject = aFD();
-    localJSONObject.put("currentTime", this.uQZ.getCurrPosSec());
-    AppMethodBeat.o(5959);
-    return localJSONObject;
-  }
-  
-  private JSONObject w(boolean paramBoolean, String paramString)
-  {
-    AppMethodBeat.i(5957);
-    JSONObject localJSONObject = aFD();
+    AppMethodBeat.i(78171);
+    JSONObject localJSONObject = bdC();
     localJSONObject.put("fullScreen", paramBoolean);
     localJSONObject.put("direction", paramString);
-    AppMethodBeat.o(5957);
+    AppMethodBeat.o(78171);
     return localJSONObject;
   }
+  
+  private JSONObject ekj()
+  {
+    AppMethodBeat.i(78173);
+    JSONObject localJSONObject = bdC();
+    localJSONObject.put("currentTime", this.AQW.getCurrPosSec());
+    AppMethodBeat.o(78173);
+    return localJSONObject;
+  }
+  
+  public final void Cx() {}
   
   public final JSONObject a(int paramInt, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(5962);
+    AppMethodBeat.i(78176);
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("playerId", this.uQZ.getmVideoPlayerId());
+    localJSONObject.put("playerId", this.AQW.getmVideoPlayerId());
     localJSONObject.put("event", paramInt);
     if (paramJSONObject != null) {
       localJSONObject.put("detail", paramJSONObject);
     }
-    AppMethodBeat.o(5962);
+    AppMethodBeat.o(78176);
     return localJSONObject;
   }
   
-  public final void aDk() {}
-  
-  final JSONObject aFD()
+  final JSONObject bdC()
   {
-    AppMethodBeat.i(5958);
+    AppMethodBeat.i(78172);
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("data", this.uQZ.getCookieData());
-    AppMethodBeat.o(5958);
+    localJSONObject.put("data", this.AQW.getCookieData());
+    AppMethodBeat.o(78172);
     return localJSONObject;
   }
   
-  public final void aFE()
+  public final void bdD()
   {
-    AppMethodBeat.i(5960);
-    if (this.idS != null) {
-      this.idS.stopTimer();
+    AppMethodBeat.i(78174);
+    if (this.krS != null) {
+      this.krS.stopTimer();
     }
-    AppMethodBeat.o(5960);
+    AppMethodBeat.o(78174);
   }
   
-  public final void aR(JSONObject paramJSONObject)
+  public final void bp(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(5954);
-    this.uQS.a("onVideoPlayerCallback", null, paramJSONObject);
-    AppMethodBeat.o(5954);
-  }
-  
-  public final void b(int paramInt, boolean paramBoolean, String paramString)
-  {
-    AppMethodBeat.i(5955);
-    try
-    {
-      ab.i("MicroMsg.JsApiVideoCallback", "onVideoFullScreenChange videoPlayerId=%d isFullScreen=%b direction:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramString });
-      aR(a(5, w(paramBoolean, paramString)));
-      AppMethodBeat.o(5955);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      ab.e("MicroMsg.JsApiVideoCallback", "onVideoFullScreenChange e=%s", new Object[] { paramString });
-      AppMethodBeat.o(5955);
-    }
+    AppMethodBeat.i(78168);
+    this.AQP.b("onVideoPlayerCallback", null, paramJSONObject);
+    AppMethodBeat.o(78168);
   }
   
   public final void clean()
   {
-    AppMethodBeat.i(5953);
-    ab.i("MicroMsg.JsApiVideoCallback", "clean %s", new Object[] { toString() });
-    aFE();
-    AppMethodBeat.o(5953);
+    AppMethodBeat.i(78167);
+    ad.i("MicroMsg.JsApiVideoCallback", "clean %s", new Object[] { toString() });
+    bdD();
+    AppMethodBeat.o(78167);
   }
   
-  public final void daM() {}
-  
-  public final void daN() {}
-  
-  public final void daP()
+  public final void d(int paramInt, boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(5956);
+    AppMethodBeat.i(78169);
     try
     {
-      aR(a(6, daQ()));
-      AppMethodBeat.o(5956);
+      ad.i("MicroMsg.JsApiVideoCallback", "onVideoFullScreenChange videoPlayerId=%d isFullScreen=%b direction:%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramString });
+      bp(a(5, A(paramBoolean, paramString)));
+      AppMethodBeat.o(78169);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      ad.e("MicroMsg.JsApiVideoCallback", "onVideoFullScreenChange e=%s", new Object[] { paramString });
+      AppMethodBeat.o(78169);
+    }
+  }
+  
+  public final void ekf() {}
+  
+  public final void ekg() {}
+  
+  public final void eki()
+  {
+    AppMethodBeat.i(78170);
+    try
+    {
+      bp(a(6, ekj()));
+      AppMethodBeat.o(78170);
       return;
     }
     catch (JSONException localJSONException)
     {
-      ab.printErrStackTrace("MicroMsg.JsApiVideoCallback", localJSONException, null, new Object[0]);
-      AppMethodBeat.o(5956);
+      ad.printErrStackTrace("MicroMsg.JsApiVideoCallback", localJSONException, null, new Object[0]);
+      AppMethodBeat.o(78170);
     }
   }
   
@@ -139,11 +141,11 @@ public final class d
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(5961);
-    ab.d("MicroMsg.JsApiVideoCallback", "onDestroy clean");
+    AppMethodBeat.i(78175);
+    ad.d("MicroMsg.JsApiVideoCallback", "onDestroy clean");
     clean();
-    this.uQZ.setCallback(null);
-    AppMethodBeat.o(5961);
+    this.AQW.setCallback(null);
+    AppMethodBeat.o(78175);
   }
   
   public final void onForeground() {}

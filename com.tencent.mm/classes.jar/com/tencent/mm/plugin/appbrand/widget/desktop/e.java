@@ -10,30 +10,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e
   extends RecyclerView.v
 {
-  public ImageView ivs;
-  public ImageView jfs;
-  public FrameLayout jft;
-  public TextView jfu;
-  public ImageView jfv;
-  public AppBrandDesktopView.c jfw;
+  public ImageView kXS;
+  public TextView lVA;
+  public ImageView lVB;
+  public AppBrandDesktopView.c lVC;
+  public ImageView lVy;
+  public FrameLayout lVz;
   public TextView titleTv;
   
   public e(View paramView)
   {
     super(paramView);
-    AppMethodBeat.i(133896);
-    this.ivs = ((ImageView)paramView.findViewById(2131820929));
-    this.jfs = ((ImageView)paramView.findViewById(2131821522));
-    this.jft = ((FrameLayout)paramView.findViewById(2131821540));
-    this.titleTv = ((TextView)paramView.findViewById(2131820680));
-    this.jfu = ((TextView)paramView.findViewById(2131821523));
-    this.jfv = ((ImageView)paramView.findViewById(2131823387));
-    AppMethodBeat.o(133896);
+    AppMethodBeat.i(49643);
+    this.kXS = ((ImageView)paramView.findViewById(2131300874));
+    this.lVy = ((ImageView)paramView.findViewById(2131300884));
+    this.lVz = ((FrameLayout)paramView.findViewById(2131300892));
+    this.titleTv = ((TextView)paramView.findViewById(2131305902));
+    this.lVA = ((TextView)paramView.findViewById(2131305706));
+    this.lVB = ((ImageView)paramView.findViewById(2131305201));
+    AppMethodBeat.o(49643);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.e
  * JD-Core Version:    0.7.0.1
  */

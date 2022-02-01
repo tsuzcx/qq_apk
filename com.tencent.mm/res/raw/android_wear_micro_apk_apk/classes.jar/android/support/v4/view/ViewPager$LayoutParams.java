@@ -9,10 +9,10 @@ public class ViewPager$LayoutParams
   extends ViewGroup.LayoutParams
 {
   public int gravity;
-  float lY = 0.0F;
-  public boolean ma;
-  boolean mb;
-  int mc;
+  float nU = 0.0F;
+  public boolean nW;
+  boolean nX;
+  int nY;
   int position;
   
   public ViewPager$LayoutParams()
@@ -23,7 +23,7 @@ public class ViewPager$LayoutParams
   public ViewPager$LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, ViewPager.kV);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, ViewPager.mR);
     this.gravity = paramContext.getInteger(0, 48);
     paramContext.recycle();
   }

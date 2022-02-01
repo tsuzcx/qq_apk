@@ -1,60 +1,77 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.fs;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.x.a;
+import com.tencent.mm.g.a.wa;
+import com.tencent.mm.protocal.protobuf.crx;
+import com.tencent.mm.protocal.protobuf.dvt;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
-import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.base.t;
+import java.util.LinkedList;
 
 final class AppBrandAuthorizeUI$7
-  implements Runnable
+  implements x.a
 {
-  AppBrandAuthorizeUI$7(AppBrandAuthorizeUI paramAppBrandAuthorizeUI, boolean paramBoolean1, Preference paramPreference, boolean paramBoolean2, fs paramfs, f paramf) {}
+  AppBrandAuthorizeUI$7(AppBrandAuthorizeUI paramAppBrandAuthorizeUI, CheckBoxPreference paramCheckBoxPreference, LinkedList paramLinkedList, String paramString) {}
   
-  public final void run()
+  public final int a(int paramInt1, int paramInt2, String paramString, b paramb, n paramn)
   {
-    int i = 1;
-    AppMethodBeat.i(132898);
-    if (this.egM)
-    {
-      ((CheckBoxPreference)this.iLK).vxW = this.iLL;
-      localObject = this.iLM;
-      if (this.iLL) {}
-      for (i = 1;; i = 2)
-      {
-        ((fs)localObject).state = i;
-        this.iLN.notifyDataSetChanged();
-        AppMethodBeat.o(132898);
-        return;
-      }
-    }
-    Object localObject = (CheckBoxPreference)this.iLK;
+    AppMethodBeat.i(196143);
+    ad.d("MicroMsg.AppBrandAuthorizeUI", "setReceiveOff errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     boolean bool;
-    if (!this.iLL)
+    if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      bool = true;
-      ((CheckBoxPreference)localObject).vxW = bool;
-      localObject = this.iLM;
-      if (this.iLL) {
-        break label126;
+      AppBrandAuthorizeUI.b(this.lym);
+      t.makeText(this.lym, this.lym.getString(2131756043), 1).show();
+      paramString = this.lyp;
+      if (!this.lyp.isChecked()) {}
+      for (bool = true;; bool = false)
+      {
+        paramString.lG = bool;
+        AppMethodBeat.o(196143);
+        return 0;
       }
     }
-    for (;;)
-    {
-      ((fs)localObject).state = i;
-      this.iLN.notifyDataSetChanged();
-      AppMethodBeat.o(132898);
-      return;
-      bool = false;
-      break;
-      label126:
-      i = 2;
+    if ((crx)paramb.gUT.gUX == null) {
+      ad.e("MicroMsg.AppBrandAuthorizeUI", "setReceiveOff failed, response is null!");
     }
+    paramInt1 = 0;
+    while (paramInt1 < this.fvD.size())
+    {
+      paramString = (dvt)this.fvD.get(paramInt1);
+      if (paramString == null)
+      {
+        ad.w("MicroMsg.AppBrandAuthorizeUI", "scene end, item is null");
+        paramInt1 += 1;
+      }
+      else
+      {
+        paramb = new wa();
+        paramb.dBz.appId = this.val$appId;
+        paramn = paramb.dBz;
+        if (paramString.status == 0) {}
+        for (bool = true;; bool = false)
+        {
+          paramn.dbq = bool;
+          a.ESL.l(paramb);
+          break;
+        }
+      }
+    }
+    AppBrandAuthorizeUI.b(this.lym);
+    AppMethodBeat.o(196143);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandAuthorizeUI.7
  * JD-Core Version:    0.7.0.1
  */

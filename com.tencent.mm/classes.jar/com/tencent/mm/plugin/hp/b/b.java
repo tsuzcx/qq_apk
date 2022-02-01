@@ -7,46 +7,326 @@ import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.a;
 import com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ao;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.au;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.tinker.loader.shareutil.ShareIntentUtil;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
 
 public final class b
 {
-  private static long nJW = 0L;
+  private static long sxC = 0L;
   
-  public static void a(int paramInt, Throwable paramThrowable)
+  public static void E(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(90576);
+    AppMethodBeat.i(117403);
+    ad.i("Tinker.HotPatchReportHelper", "hp_report package check failed, error = %d", new Object[] { Integer.valueOf(paramInt) });
+    if (paramBoolean) {
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 170L, 1L, false);
+    }
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(90576);
+      AppMethodBeat.o(117403);
       return;
-      h.qsU.idkeyStat(338L, 191L, 1L, false);
-      h.qsU.g("Tinker", "Tinker Exception:interpret occur instruction exception " + ao.m(paramThrowable), null);
-      AppMethodBeat.o(90576);
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 169, 171);
+      AppMethodBeat.o(117403);
       return;
-      h.qsU.idkeyStat(338L, 192L, 1L, false);
-      h.qsU.g("Tinker", "Tinker Exception:interpret occur command exception " + ao.m(paramThrowable), null);
-      AppMethodBeat.o(90576);
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 169, 172);
+      AppMethodBeat.o(117403);
       return;
-      h.qsU.idkeyStat(338L, 193L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 169, 173);
+      AppMethodBeat.o(117403);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 169, 175);
+      AppMethodBeat.o(117403);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 169, 174);
+      AppMethodBeat.o(117403);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 169, 176);
+      AppMethodBeat.o(117403);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 107, 182);
+      AppMethodBeat.o(117403);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 169, 186);
+    }
+  }
+  
+  public static void EW(int paramInt)
+  {
+    AppMethodBeat.i(117388);
+    ad.i("Tinker.HotPatchReportHelper", "hp_report new hotpatch requested");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      sxC = bt.GC();
+      AppMethodBeat.o(117388);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 0L, 1L, false);
+      continue;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 20L, 1L, false);
+      continue;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(614L, 0L, 1L, false);
+    }
+  }
+  
+  public static void EX(int paramInt)
+  {
+    AppMethodBeat.i(117389);
+    long l = bt.aS(sxC);
+    ad.i("Tinker.HotPatchReportHelper", "hp_report report download cost = %d", new Object[] { Long.valueOf(l) });
+    switch (paramInt)
+    {
+    }
+    while (l < 0L)
+    {
+      ad.e("Tinker.HotPatchReportHelper", "hp_report report download cost failed, invalid cost");
+      AppMethodBeat.o(117389);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 40L, 1L, false);
+    }
+    if (l <= 5000L)
+    {
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 1, 43);
+      AppMethodBeat.o(117389);
+      return;
+    }
+    if (l <= 60000L)
+    {
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 1, 44);
+      AppMethodBeat.o(117389);
+      return;
+    }
+    if (l <= 180000L)
+    {
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 1, 45);
+      AppMethodBeat.o(117389);
+      return;
+    }
+    com.tencent.mm.plugin.report.service.h.vKh.ao(338, 1, 46);
+    AppMethodBeat.o(117389);
+  }
+  
+  public static void EY(int paramInt)
+  {
+    AppMethodBeat.i(117390);
+    ad.i("Tinker.HotPatchReportHelper", "hp_report download failed");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(117390);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 41L, 1L, false);
+      AppMethodBeat.o(117390);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 42L, 1L, false);
+      AppMethodBeat.o(117390);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(614L, 3L, 1L, false);
+    }
+  }
+  
+  public static void EZ(int paramInt)
+  {
+    AppMethodBeat.i(117392);
+    ad.i("Tinker.HotPatchReportHelper", "hp_report try to apply hotpatch fail");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(117392);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 75L, 1L, false);
+      AppMethodBeat.o(117392);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 72L, 1L, false);
+      AppMethodBeat.o(117392);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 74L, 1L, false);
+      AppMethodBeat.o(117392);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 73L, 1L, false);
+      AppMethodBeat.o(117392);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 85L, 1L, false);
+      AppMethodBeat.o(117392);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 77L, 1L, false);
+      AppMethodBeat.o(117392);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 76L, 1L, false);
+      AppMethodBeat.o(117392);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 78L, 1L, false);
+      AppMethodBeat.o(117392);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 80L, 1L, false);
+      AppMethodBeat.o(117392);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 79L, 1L, false);
+      AppMethodBeat.o(117392);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 81L, 1L, false);
+      AppMethodBeat.o(117392);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 82L, 1L, false);
+      AppMethodBeat.o(117392);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 83L, 1L, false);
+      AppMethodBeat.o(117392);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 84L, 1L, false);
+    }
+  }
+  
+  public static void Fa(int paramInt)
+  {
+    AppMethodBeat.i(117395);
+    ad.i("Tinker.HotPatchReportHelper", "hp_report package check failed, error = %d", new Object[] { Integer.valueOf(paramInt) });
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(117395);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 107, 108);
+      AppMethodBeat.o(117395);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 107, 109);
+      AppMethodBeat.o(117395);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 107, 110);
+      AppMethodBeat.o(117395);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 107, 112);
+      AppMethodBeat.o(117395);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 107, 111);
+      AppMethodBeat.o(117395);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 107, 113);
+      AppMethodBeat.o(117395);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 107, 129);
+      AppMethodBeat.o(117395);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 107, 131);
+    }
+  }
+  
+  public static void Fb(int paramInt)
+  {
+    AppMethodBeat.i(117400);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(117400);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 114L, 1L, false);
+      AppMethodBeat.o(117400);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 115L, 1L, false);
+      AppMethodBeat.o(117400);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 130L, 1L, false);
+      AppMethodBeat.o(117400);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 132L, 1L, false);
+      AppMethodBeat.o(117400);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 136L, 1L, false);
+    }
+  }
+  
+  public static void Fc(int paramInt)
+  {
+    AppMethodBeat.i(117404);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(117404);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 183L, 1L, false);
+      AppMethodBeat.o(117404);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 164L, 1L, false);
+      AppMethodBeat.o(117404);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 165L, 1L, false);
+      AppMethodBeat.o(117404);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 166L, 1L, false);
+      AppMethodBeat.o(117404);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 167L, 1L, false);
+      AppMethodBeat.o(117404);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 187L, 1L, false);
+    }
+  }
+  
+  public static void Fd(int paramInt)
+  {
+    AppMethodBeat.i(117405);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(117405);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 162L, 1L, false);
+      AppMethodBeat.o(117405);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 163L, 1L, false);
+      AppMethodBeat.o(117405);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 185L, 1L, false);
+    }
+  }
+  
+  public static void a(int paramInt, Throwable paramThrowable)
+  {
+    AppMethodBeat.i(117408);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(117408);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 191L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.vKh.e("Tinker", "Tinker Exception:interpret occur instruction exception " + au.getExceptionCauseString(paramThrowable), null);
+      AppMethodBeat.o(117408);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 192L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.vKh.e("Tinker", "Tinker Exception:interpret occur command exception " + au.getExceptionCauseString(paramThrowable), null);
+      AppMethodBeat.o(117408);
+      return;
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 193L, 1L, false);
     }
   }
   
   public static void a(Throwable paramThrowable, int paramInt)
   {
     int i = 0;
-    AppMethodBeat.i(90570);
+    AppMethodBeat.i(117402);
     switch (paramInt)
     {
     }
@@ -54,572 +334,290 @@ public final class b
     {
       if (i == 0)
       {
-        String str1 = ao.m(paramThrowable);
+        String str1 = au.getExceptionCauseString(paramThrowable);
         paramThrowable = str1;
         if (paramInt == -4)
         {
-          Context localContext = ah.getContext();
-          String str2 = SharePatchFileUtil.jB(localContext);
+          Context localContext = aj.getContext();
+          String str2 = SharePatchFileUtil.checkTinkerLastUncaughtCrash(localContext);
           paramThrowable = str1;
           if (!ShareTinkerInternals.isNullOrNil(str2))
           {
             paramThrowable = "tinker checkSafeModeCount fail:\n".concat(String.valueOf(str2));
-            SharePatchFileUtil.aq(SharePatchFileUtil.jA(localContext));
+            SharePatchFileUtil.safeDeleteFile(SharePatchFileUtil.getPatchLastCrashFile(localContext));
           }
         }
-        h.qsU.g("Tinker", "Tinker Exception:load tinker occur exception ".concat(String.valueOf(paramThrowable)), null);
+        com.tencent.mm.plugin.report.service.h.vKh.e("Tinker", "Tinker Exception:load tinker occur exception ".concat(String.valueOf(paramThrowable)), null);
       }
-      AppMethodBeat.o(90570);
+      AppMethodBeat.o(117402);
       return;
       if (paramThrowable.getMessage().contains("checkDexInstall failed"))
       {
-        h.qsU.idkeyStat(338L, 189L, 1L, false);
-        ab.i("Tinker.HotPatchReportHelper", "tinker dex check fail:" + paramThrowable.getMessage());
+        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 189L, 1L, false);
+        ad.i("Tinker.HotPatchReportHelper", "tinker dex check fail:" + paramThrowable.getMessage());
         i = 1;
       }
       else
       {
-        h.qsU.idkeyStat(338L, 161L, 1L, false);
-        ab.e("Tinker.HotPatchReportHelper", "tinker dex reflect fail:" + paramThrowable.getMessage());
+        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 161L, 1L, false);
+        ad.e("Tinker.HotPatchReportHelper", "tinker dex reflect fail:" + paramThrowable.getMessage());
         continue;
         if (paramThrowable.getMessage().contains("checkResInstall failed"))
         {
-          h.qsU.idkeyStat(338L, 190L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 190L, 1L, false);
           i = 1;
         }
         else
         {
-          h.qsU.idkeyStat(338L, 184L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 184L, 1L, false);
           continue;
-          h.qsU.idkeyStat(338L, 188L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 188L, 1L, false);
           continue;
-          h.qsU.idkeyStat(338L, 160L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 160L, 1L, false);
         }
       }
     }
   }
   
-  public static void ab(Intent paramIntent)
+  public static void ap(Intent paramIntent)
   {
-    AppMethodBeat.i(90561);
-    KVCommCrossProcessReceiver.chJ();
-    ab.i("Tinker.HotPatchReportHelper", "hp_report try to apply patch service start");
+    AppMethodBeat.i(117393);
+    KVCommCrossProcessReceiver.dkH();
+    ad.i("Tinker.HotPatchReportHelper", "hp_report try to apply patch service start");
     if (paramIntent == null)
     {
-      h.qsU.af(338, 6, 127);
-      AppMethodBeat.o(90561);
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 6, 127);
+      AppMethodBeat.o(117393);
       return;
     }
-    if (ShareIntentUtil.n(paramIntent, "patch_path_extra") == null)
+    if (ShareIntentUtil.getStringExtra(paramIntent, "patch_path_extra") == null)
     {
-      h.qsU.af(338, 6, 128);
-      AppMethodBeat.o(90561);
+      com.tencent.mm.plugin.report.service.h.vKh.ao(338, 6, 128);
+      AppMethodBeat.o(117393);
       return;
     }
-    h.qsU.idkeyStat(338L, 6L, 1L, true);
-    AppMethodBeat.o(90561);
+    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 6L, 1L, true);
+    AppMethodBeat.o(117393);
   }
   
-  public static void bIb()
+  public static void cFS()
   {
-    AppMethodBeat.i(90555);
-    h.qsU.idkeyStat(338L, 9L, 1L, false);
-    AppMethodBeat.o(90555);
+    AppMethodBeat.i(117387);
+    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 9L, 1L, false);
+    AppMethodBeat.o(117387);
   }
   
-  public static void bIc()
+  public static void cFT()
   {
-    AppMethodBeat.i(90566);
-    h.qsU.idkeyStat(338L, 106L, 1L, false);
-    AppMethodBeat.o(90566);
+    AppMethodBeat.i(117398);
+    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 106L, 1L, false);
+    AppMethodBeat.o(117398);
   }
   
-  public static void bId()
+  public static void cFU()
   {
-    AppMethodBeat.i(90567);
-    h.qsU.idkeyStat(338L, 116L, 1L, false);
-    AppMethodBeat.o(90567);
+    AppMethodBeat.i(117399);
+    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 116L, 1L, false);
+    AppMethodBeat.o(117399);
   }
   
-  public static void bIe()
+  public static void cFV()
   {
-    AppMethodBeat.i(90574);
-    h.qsU.idkeyStat(338L, 168L, 1L, false);
-    AppMethodBeat.o(90574);
+    AppMethodBeat.i(117406);
+    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 168L, 1L, false);
+    AppMethodBeat.o(117406);
   }
   
-  public static void bIf()
+  public static void cFW()
   {
-    AppMethodBeat.i(90575);
-    h.qsU.idkeyStat(338L, 5L, 1L, false);
-    AppMethodBeat.o(90575);
+    AppMethodBeat.i(117407);
+    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 5L, 1L, false);
+    AppMethodBeat.o(117407);
   }
   
   public static void e(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(90577);
-    h.qsU.e(15974, new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.FALSE });
-    ab.i("Tinker.HotPatchReportHelper", "CodeVersion:%s PatchVersion:%s TinkerId:%s Scene:%d Result:%d", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    AppMethodBeat.o(90577);
-  }
-  
-  public static void h(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(90564);
-    h.qsU.idkeyStat(338L, 104L, 1L, false);
-    h.qsU.g("Tinker", "Tinker Exception:apply tinker occur unknown exception " + ao.m(paramThrowable), null);
-    AppMethodBeat.o(90564);
+    AppMethodBeat.i(117409);
+    com.tencent.mm.plugin.report.service.h.vKh.f(15974, new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.FALSE });
+    ad.i("Tinker.HotPatchReportHelper", "CodeVersion:%s PatchVersion:%s TinkerId:%s Scene:%d Result:%d", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(117409);
   }
   
   public static void i(Throwable paramThrowable)
   {
-    AppMethodBeat.i(90565);
+    AppMethodBeat.i(117396);
+    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 104L, 1L, false);
+    com.tencent.mm.plugin.report.service.h.vKh.e("Tinker", "Tinker Exception:apply tinker occur unknown exception " + au.getExceptionCauseString(paramThrowable), null);
+    AppMethodBeat.o(117396);
+  }
+  
+  public static void j(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(117397);
     if (paramThrowable.getMessage().contains("checkDexOptExist failed"))
     {
-      h.qsU.idkeyStat(338L, 134L, 1L, false);
-      AppMethodBeat.o(90565);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 134L, 1L, false);
+      AppMethodBeat.o(117397);
       return;
     }
     if (paramThrowable.getMessage().contains("checkDexOptFormat failed"))
     {
-      h.qsU.idkeyStat(338L, 135L, 1L, false);
-      h.qsU.g("Tinker", "Tinker Exception:apply tinker occur dexOpt format exception " + ao.m(paramThrowable), null);
-      AppMethodBeat.o(90565);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 135L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.vKh.e("Tinker", "Tinker Exception:apply tinker occur dexOpt format exception " + au.getExceptionCauseString(paramThrowable), null);
+      AppMethodBeat.o(117397);
       return;
     }
-    h.qsU.idkeyStat(338L, 105L, 1L, false);
-    h.qsU.g("Tinker", "Tinker Exception:apply tinker occur dexOpt exception " + ao.m(paramThrowable), null);
-    AppMethodBeat.o(90565);
+    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 105L, 1L, false);
+    com.tencent.mm.plugin.report.service.h.vKh.e("Tinker", "Tinker Exception:apply tinker occur dexOpt exception " + au.getExceptionCauseString(paramThrowable), null);
+    AppMethodBeat.o(117397);
   }
   
-  public static void iu(boolean paramBoolean)
+  public static void mj(boolean paramBoolean)
   {
-    AppMethodBeat.i(90559);
-    ab.i("Tinker.HotPatchReportHelper", "hp_report try to apply hotpatch");
-    h.qsU.af(338, 2, 71);
+    AppMethodBeat.i(117391);
+    ad.i("Tinker.HotPatchReportHelper", "hp_report try to apply hotpatch");
+    com.tencent.mm.plugin.report.service.h.vKh.ao(338, 2, 71);
     if (paramBoolean) {
-      h.qsU.idkeyStat(338L, 7L, 1L, true);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 7L, 1L, true);
     }
-    AppMethodBeat.o(90559);
+    AppMethodBeat.o(117391);
   }
   
-  public static void s(long paramLong, boolean paramBoolean)
+  public static void w(long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(90562);
+    AppMethodBeat.i(117394);
     if (paramBoolean) {
-      h.qsU.idkeyStat(338L, 3L, 1L, true);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 3L, 1L, true);
     }
     if (paramBoolean) {
-      h.qsU.idkeyStat(338L, 101L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 101L, 1L, false);
     }
     for (;;)
     {
-      ab.i("Tinker.HotPatchReportHelper", "hp_report report apply cost = %d", new Object[] { Long.valueOf(paramLong) });
+      ad.i("Tinker.HotPatchReportHelper", "hp_report report apply cost = %d", new Object[] { Long.valueOf(paramLong) });
       if (paramLong >= 0L) {
         break;
       }
-      ab.e("Tinker.HotPatchReportHelper", "hp_report report apply cost failed, invalid cost");
-      AppMethodBeat.o(90562);
+      ad.e("Tinker.HotPatchReportHelper", "hp_report report apply cost failed, invalid cost");
+      AppMethodBeat.o(117394);
       return;
-      h.qsU.idkeyStat(338L, 103L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 103L, 1L, false);
     }
     if (paramLong <= 5000L)
     {
       if (paramBoolean)
       {
-        h.qsU.idkeyStat(338L, 117L, 1L, false);
-        AppMethodBeat.o(90562);
+        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 117L, 1L, false);
+        AppMethodBeat.o(117394);
         return;
       }
-      h.qsU.idkeyStat(338L, 122L, 1L, false);
-      AppMethodBeat.o(90562);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 122L, 1L, false);
+      AppMethodBeat.o(117394);
       return;
     }
     if (paramLong <= 10000L)
     {
       if (paramBoolean)
       {
-        h.qsU.idkeyStat(338L, 118L, 1L, false);
-        AppMethodBeat.o(90562);
+        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 118L, 1L, false);
+        AppMethodBeat.o(117394);
         return;
       }
-      h.qsU.idkeyStat(338L, 123L, 1L, false);
-      AppMethodBeat.o(90562);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 123L, 1L, false);
+      AppMethodBeat.o(117394);
       return;
     }
     if (paramLong <= 30000L)
     {
       if (paramBoolean)
       {
-        h.qsU.idkeyStat(338L, 119L, 1L, false);
-        AppMethodBeat.o(90562);
+        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 119L, 1L, false);
+        AppMethodBeat.o(117394);
         return;
       }
-      h.qsU.idkeyStat(338L, 124L, 1L, false);
-      AppMethodBeat.o(90562);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 124L, 1L, false);
+      AppMethodBeat.o(117394);
       return;
     }
     if (paramLong <= 60000L)
     {
       if (paramBoolean)
       {
-        h.qsU.idkeyStat(338L, 120L, 1L, false);
-        AppMethodBeat.o(90562);
+        com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 120L, 1L, false);
+        AppMethodBeat.o(117394);
         return;
       }
-      h.qsU.idkeyStat(338L, 125L, 1L, false);
-      AppMethodBeat.o(90562);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 125L, 1L, false);
+      AppMethodBeat.o(117394);
       return;
     }
     if (paramLong >= 3600000L) {
-      h.qsU.idkeyStat(338L, 133L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 133L, 1L, false);
     }
     if (paramBoolean)
     {
-      h.qsU.idkeyStat(338L, 121L, 1L, false);
-      AppMethodBeat.o(90562);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 121L, 1L, false);
+      AppMethodBeat.o(117394);
       return;
     }
-    h.qsU.idkeyStat(338L, 126L, 1L, false);
-    AppMethodBeat.o(90562);
+    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 126L, 1L, false);
+    AppMethodBeat.o(117394);
   }
   
-  public static void t(long paramLong, boolean paramBoolean)
+  public static void x(long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(90569);
-    h.qsU.idkeyStat(338L, 4L, 1L, false);
+    AppMethodBeat.i(117401);
+    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 4L, 1L, false);
     if (!paramBoolean)
     {
-      h.qsU.idkeyStat(338L, 159L, 1L, false);
-      AppMethodBeat.o(90569);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 159L, 1L, false);
+      AppMethodBeat.o(117401);
       return;
     }
-    ab.i("Tinker.HotPatchReportHelper", "hp_report report load cost = %d", new Object[] { Long.valueOf(paramLong) });
+    ad.i("Tinker.HotPatchReportHelper", "hp_report report load cost = %d", new Object[] { Long.valueOf(paramLong) });
     if (paramLong < 0L)
     {
-      ab.e("Tinker.HotPatchReportHelper", "hp_report report load cost failed, invalid cost");
-      AppMethodBeat.o(90569);
+      ad.e("Tinker.HotPatchReportHelper", "hp_report report load cost failed, invalid cost");
+      AppMethodBeat.o(117401);
       return;
     }
     if (paramBoolean)
     {
-      com.tencent.mm.plugin.hp.tinker.b localb = com.tencent.mm.plugin.hp.tinker.b.eP(a.CLIENT_VERSION, f.CLIENT_VERSION);
-      SharedPreferences localSharedPreferences = com.tencent.mm.plugin.hp.tinker.b.bIl();
-      String str = localb.xC(3);
+      com.tencent.mm.plugin.hp.tinker.b localb = com.tencent.mm.plugin.hp.tinker.b.gQ(a.glW, com.tencent.mm.sdk.platformtools.h.glW);
+      SharedPreferences localSharedPreferences = com.tencent.mm.plugin.hp.tinker.b.cGd();
+      String str = localb.Fe(3);
       if (!localSharedPreferences.contains(str))
       {
-        localb.T(3, paramLong);
+        localb.ai(3, paramLong);
         localSharedPreferences.edit().putLong(str, paramLong).commit();
       }
     }
     if (paramLong <= 500L)
     {
-      h.qsU.idkeyStat(338L, 177L, 1L, false);
-      AppMethodBeat.o(90569);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 177L, 1L, false);
+      AppMethodBeat.o(117401);
       return;
     }
     if (paramLong <= 1000L)
     {
-      h.qsU.idkeyStat(338L, 178L, 1L, false);
-      AppMethodBeat.o(90569);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 178L, 1L, false);
+      AppMethodBeat.o(117401);
       return;
     }
     if (paramLong <= 3000L)
     {
-      h.qsU.idkeyStat(338L, 179L, 1L, false);
-      AppMethodBeat.o(90569);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 179L, 1L, false);
+      AppMethodBeat.o(117401);
       return;
     }
     if (paramLong <= 5000L)
     {
-      h.qsU.idkeyStat(338L, 180L, 1L, false);
-      AppMethodBeat.o(90569);
+      com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 180L, 1L, false);
+      AppMethodBeat.o(117401);
       return;
     }
-    h.qsU.idkeyStat(338L, 181L, 1L, false);
-    AppMethodBeat.o(90569);
-  }
-  
-  public static void w(boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(90571);
-    ab.i("Tinker.HotPatchReportHelper", "hp_report package check failed, error = %d", new Object[] { Integer.valueOf(paramInt) });
-    if (paramBoolean) {
-      h.qsU.idkeyStat(338L, 170L, 1L, false);
-    }
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 169, 171);
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 169, 172);
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 169, 173);
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 169, 175);
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 169, 174);
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 169, 176);
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 107, 182);
-      AppMethodBeat.o(90571);
-      return;
-      h.qsU.af(338, 169, 186);
-    }
-  }
-  
-  public static void xA(int paramInt)
-  {
-    AppMethodBeat.i(90572);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(90572);
-      return;
-      h.qsU.idkeyStat(338L, 183L, 1L, false);
-      AppMethodBeat.o(90572);
-      return;
-      h.qsU.idkeyStat(338L, 164L, 1L, false);
-      AppMethodBeat.o(90572);
-      return;
-      h.qsU.idkeyStat(338L, 165L, 1L, false);
-      AppMethodBeat.o(90572);
-      return;
-      h.qsU.idkeyStat(338L, 166L, 1L, false);
-      AppMethodBeat.o(90572);
-      return;
-      h.qsU.idkeyStat(338L, 167L, 1L, false);
-      AppMethodBeat.o(90572);
-      return;
-      h.qsU.idkeyStat(338L, 187L, 1L, false);
-    }
-  }
-  
-  public static void xB(int paramInt)
-  {
-    AppMethodBeat.i(90573);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(90573);
-      return;
-      h.qsU.idkeyStat(338L, 162L, 1L, false);
-      AppMethodBeat.o(90573);
-      return;
-      h.qsU.idkeyStat(338L, 163L, 1L, false);
-      AppMethodBeat.o(90573);
-      return;
-      h.qsU.idkeyStat(338L, 185L, 1L, false);
-    }
-  }
-  
-  public static void xu(int paramInt)
-  {
-    AppMethodBeat.i(90556);
-    ab.i("Tinker.HotPatchReportHelper", "hp_report new hotpatch requested");
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      nJW = bo.yB();
-      AppMethodBeat.o(90556);
-      return;
-      h.qsU.idkeyStat(338L, 0L, 1L, false);
-      continue;
-      h.qsU.idkeyStat(338L, 20L, 1L, false);
-      continue;
-      h.qsU.idkeyStat(614L, 0L, 1L, false);
-    }
-  }
-  
-  public static void xv(int paramInt)
-  {
-    AppMethodBeat.i(90557);
-    long l = bo.av(nJW);
-    ab.i("Tinker.HotPatchReportHelper", "hp_report report download cost = %d", new Object[] { Long.valueOf(l) });
-    switch (paramInt)
-    {
-    }
-    while (l < 0L)
-    {
-      ab.e("Tinker.HotPatchReportHelper", "hp_report report download cost failed, invalid cost");
-      AppMethodBeat.o(90557);
-      return;
-      h.qsU.idkeyStat(338L, 40L, 1L, false);
-    }
-    if (l <= 5000L)
-    {
-      h.qsU.af(338, 1, 43);
-      AppMethodBeat.o(90557);
-      return;
-    }
-    if (l <= 60000L)
-    {
-      h.qsU.af(338, 1, 44);
-      AppMethodBeat.o(90557);
-      return;
-    }
-    if (l <= 180000L)
-    {
-      h.qsU.af(338, 1, 45);
-      AppMethodBeat.o(90557);
-      return;
-    }
-    h.qsU.af(338, 1, 46);
-    AppMethodBeat.o(90557);
-  }
-  
-  public static void xw(int paramInt)
-  {
-    AppMethodBeat.i(90558);
-    ab.i("Tinker.HotPatchReportHelper", "hp_report download failed");
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(90558);
-      return;
-      h.qsU.idkeyStat(338L, 41L, 1L, false);
-      AppMethodBeat.o(90558);
-      return;
-      h.qsU.idkeyStat(338L, 42L, 1L, false);
-      AppMethodBeat.o(90558);
-      return;
-      h.qsU.idkeyStat(614L, 3L, 1L, false);
-    }
-  }
-  
-  public static void xx(int paramInt)
-  {
-    AppMethodBeat.i(90560);
-    ab.i("Tinker.HotPatchReportHelper", "hp_report try to apply hotpatch fail");
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 75L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 72L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 74L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 73L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 85L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 77L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 76L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 78L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 80L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 79L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 81L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 82L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 83L, 1L, false);
-      AppMethodBeat.o(90560);
-      return;
-      h.qsU.idkeyStat(338L, 84L, 1L, false);
-    }
-  }
-  
-  public static void xy(int paramInt)
-  {
-    AppMethodBeat.i(90563);
-    ab.i("Tinker.HotPatchReportHelper", "hp_report package check failed, error = %d", new Object[] { Integer.valueOf(paramInt) });
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 108);
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 109);
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 110);
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 112);
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 111);
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 113);
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 129);
-      AppMethodBeat.o(90563);
-      return;
-      h.qsU.af(338, 107, 131);
-    }
-  }
-  
-  public static void xz(int paramInt)
-  {
-    AppMethodBeat.i(90568);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(90568);
-      return;
-      h.qsU.idkeyStat(338L, 114L, 1L, false);
-      AppMethodBeat.o(90568);
-      return;
-      h.qsU.idkeyStat(338L, 115L, 1L, false);
-      AppMethodBeat.o(90568);
-      return;
-      h.qsU.idkeyStat(338L, 130L, 1L, false);
-      AppMethodBeat.o(90568);
-      return;
-      h.qsU.idkeyStat(338L, 132L, 1L, false);
-      AppMethodBeat.o(90568);
-      return;
-      h.qsU.idkeyStat(338L, 136L, 1L, false);
-    }
+    com.tencent.mm.plugin.report.service.h.vKh.idkeyStat(338L, 181L, 1L, false);
+    AppMethodBeat.o(117401);
   }
   
   public static enum a
@@ -628,11 +626,11 @@ public final class b
     
     static
     {
-      AppMethodBeat.i(90551);
-      nJX = new a("FAILED", 0, 0);
-      nJY = new a("SUCCESS", 1, 1);
-      nJZ = new a[] { nJX, nJY };
-      AppMethodBeat.o(90551);
+      AppMethodBeat.i(117383);
+      sxD = new a("FAILED", 0, 0);
+      sxE = new a("SUCCESS", 1, 1);
+      sxF = new a[] { sxD, sxE };
+      AppMethodBeat.o(117383);
     }
     
     private a(int paramInt)
@@ -643,7 +641,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.b.b
  * JD-Core Version:    0.7.0.1
  */

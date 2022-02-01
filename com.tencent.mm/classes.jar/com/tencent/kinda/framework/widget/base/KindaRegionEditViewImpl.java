@@ -3,13 +3,14 @@ package com.tencent.kinda.framework.widget.base;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.EditText;
-import com.tencent.kinda.framework.app.UIPageFragmentActivity;
-import com.tencent.kinda.framework.app.UIPageFragmentActivity.IntentHandler;
 import com.tencent.kinda.gen.KRegionEditView;
 import com.tencent.kinda.gen.KRegionEditViewOnRegionSelectedCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.framework.app.UIPageFragmentActivity;
+import com.tencent.mm.framework.app.UIPageFragmentActivity.a;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class KindaRegionEditViewImpl
@@ -17,108 +18,204 @@ public class KindaRegionEditViewImpl
   implements KRegionEditView
 {
   private int REQUEST_CODE;
-  private String city;
-  private String country;
-  private UIPageFragmentActivity.IntentHandler intentHandler;
+  private String cityCode;
+  private String countryCode;
+  private ArrayList<String> excludeAreaList;
+  private UIPageFragmentActivity.a intentHandler;
+  private boolean mAutoLocation;
   private KRegionEditViewOnRegionSelectedCallback mCallback;
   private Context mContext;
   private EditText mEditText;
-  private String province;
+  private boolean mShowDomesticCity;
+  private boolean mShowSelectedLocation;
+  private String provinceCode;
   
   public KindaRegionEditViewImpl()
   {
-    AppMethodBeat.i(144795);
-    this.intentHandler = new UIPageFragmentActivity.IntentHandler()
+    AppMethodBeat.i(18939);
+    this.mShowDomesticCity = false;
+    this.mShowSelectedLocation = true;
+    this.mAutoLocation = false;
+    this.intentHandler = new UIPageFragmentActivity.a()
     {
       public void handle(int paramAnonymousInt, Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(144794);
+        AppMethodBeat.i(18938);
         if (paramAnonymousInt != -1)
         {
-          AppMethodBeat.o(144794);
+          AppMethodBeat.o(18938);
           return;
         }
-        KindaRegionEditViewImpl.access$002(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("CountryName"));
-        KindaRegionEditViewImpl.access$102(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("ProviceName"));
-        KindaRegionEditViewImpl.access$202(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("CityName"));
-        paramAnonymousIntent = new StringBuilder();
-        if (!bo.isNullOrNil(KindaRegionEditViewImpl.this.country)) {
-          paramAnonymousIntent.append(KindaRegionEditViewImpl.this.country);
+        KindaRegionEditViewImpl.access$002(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("Country"));
+        if (!bt.isNullOrNil(paramAnonymousIntent.getStringExtra("Contact_City")))
+        {
+          KindaRegionEditViewImpl.access$102(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("Contact_Province"));
+          KindaRegionEditViewImpl.access$202(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("Contact_City"));
         }
-        if (!bo.isNullOrNil(KindaRegionEditViewImpl.this.province)) {
-          paramAnonymousIntent.append(" ").append(KindaRegionEditViewImpl.this.province);
+        for (;;)
+        {
+          String str1 = paramAnonymousIntent.getStringExtra("CountryName");
+          String str2 = paramAnonymousIntent.getStringExtra("ProviceName");
+          paramAnonymousIntent = paramAnonymousIntent.getStringExtra("CityName");
+          StringBuilder localStringBuilder = new StringBuilder();
+          if (!bt.isNullOrNil(str1)) {
+            localStringBuilder.append(str1);
+          }
+          if (!bt.isNullOrNil(str2)) {
+            localStringBuilder.append(" ").append(str2);
+          }
+          if (!bt.isNullOrNil(paramAnonymousIntent)) {
+            localStringBuilder.append(" ").append(paramAnonymousIntent);
+          }
+          KindaRegionEditViewImpl.this.mEditText.setText(localStringBuilder.toString());
+          if (KindaRegionEditViewImpl.this.mCallback != null) {
+            KindaRegionEditViewImpl.this.mCallback.onRegionSelected();
+          }
+          AppMethodBeat.o(18938);
+          return;
+          if (!bt.isNullOrNil(paramAnonymousIntent.getStringExtra("Contact_Province"))) {
+            KindaRegionEditViewImpl.access$202(KindaRegionEditViewImpl.this, paramAnonymousIntent.getStringExtra("Contact_Province"));
+          } else {
+            KindaRegionEditViewImpl.access$202(KindaRegionEditViewImpl.this, KindaRegionEditViewImpl.this.countryCode);
+          }
         }
-        if (!bo.isNullOrNil(KindaRegionEditViewImpl.this.city)) {
-          paramAnonymousIntent.append(" ").append(KindaRegionEditViewImpl.this.city);
-        }
-        KindaRegionEditViewImpl.this.mEditText.setText(paramAnonymousIntent.toString());
-        if (KindaRegionEditViewImpl.this.mCallback != null) {
-          KindaRegionEditViewImpl.this.mCallback.onRegionSelected();
-        }
-        AppMethodBeat.o(144794);
       }
     };
-    AppMethodBeat.o(144795);
+    AppMethodBeat.o(18939);
   }
   
   public EditText createView(Context paramContext)
   {
-    AppMethodBeat.i(144796);
+    AppMethodBeat.i(18940);
     this.mEditText = new EditText(paramContext);
     this.mEditText.setInputType(0);
     this.mEditText.setFocusable(false);
     this.mEditText.setBackground(null);
-    this.mEditText.setHint(2131304969);
+    this.mEditText.setHint(2131765161);
+    this.mEditText.setTextSize(16.0F);
+    this.mEditText.setPadding(0, 0, 0, 0);
     this.mContext = paramContext;
     if ((this.mContext instanceof UIPageFragmentActivity))
     {
-      this.REQUEST_CODE = ((UIPageFragmentActivity)this.mContext).REQUEST_CODE_COUNTER.getAndIncrement();
-      ((UIPageFragmentActivity)this.mContext).registerIntentHandler(this.REQUEST_CODE, this.intentHandler);
+      this.REQUEST_CODE = ((UIPageFragmentActivity)this.mContext).fTZ.getAndIncrement();
+      UIPageFragmentActivity.a(this.REQUEST_CODE, this.intentHandler);
     }
     paramContext = this.mEditText;
-    AppMethodBeat.o(144796);
+    AppMethodBeat.o(18940);
     return paramContext;
+  }
+  
+  public boolean getAutoLocation()
+  {
+    return this.mAutoLocation;
   }
   
   public String getCity()
   {
-    return this.city;
+    return this.cityCode;
   }
   
   public String getCountry()
   {
-    return this.country;
+    return this.countryCode;
   }
   
   public boolean getFocus()
   {
-    AppMethodBeat.i(144798);
+    AppMethodBeat.i(18944);
     boolean bool = this.mEditText.isFocused();
-    AppMethodBeat.o(144798);
+    AppMethodBeat.o(18944);
     return bool;
   }
   
   public String getProvince()
   {
-    return this.province;
+    return this.provinceCode;
+  }
+  
+  public boolean getShowDomesticCity()
+  {
+    return this.mShowDomesticCity;
+  }
+  
+  public boolean getShowSelectedLocation()
+  {
+    return this.mShowSelectedLocation;
+  }
+  
+  public boolean isUSOrCA()
+  {
+    AppMethodBeat.i(18942);
+    if (bt.isNullOrNil(this.countryCode))
+    {
+      AppMethodBeat.o(18942);
+      return false;
+    }
+    if (("US".equals(this.countryCode)) || ("CA".equals(this.countryCode)))
+    {
+      AppMethodBeat.o(18942);
+      return true;
+    }
+    AppMethodBeat.o(18942);
+    return false;
+  }
+  
+  public void setAreaExcludeArray(ArrayList<String> paramArrayList)
+  {
+    this.excludeAreaList = paramArrayList;
+  }
+  
+  public void setAutoLocation(boolean paramBoolean)
+  {
+    this.mAutoLocation = paramBoolean;
   }
   
   public void setFocus(boolean paramBoolean)
   {
-    AppMethodBeat.i(144797);
+    AppMethodBeat.i(18943);
     if ((paramBoolean) && ((this.mContext instanceof BaseFrActivity)))
     {
       ((BaseFrActivity)this.mContext).hideTenpayKB();
       Intent localIntent = new Intent();
-      localIntent.setClassName(ah.getPackageName(), ah.dsO() + ".ui.tools.MultiStageCitySelectUI");
+      localIntent.setClassName(aj.getPackageName(), aj.eFC() + ".ui.tools.MultiStageCitySelectUI");
+      localIntent.putExtra("GetAddress", true);
+      localIntent.putExtra("IsNeedShowSearchBar", this.mShowDomesticCity);
+      localIntent.putExtra("IsRealNameVerifyScene", this.mShowDomesticCity);
+      localIntent.putExtra("ShowSelectedLocation", this.mShowSelectedLocation);
+      localIntent.putExtra("IsAutoPosition", this.mAutoLocation);
+      if ((this.excludeAreaList != null) && (!this.excludeAreaList.isEmpty())) {
+        localIntent.putStringArrayListExtra("BlockedCountries", this.excludeAreaList);
+      }
       ((BaseFrActivity)this.mContext).startActivityForResult(localIntent, this.REQUEST_CODE);
     }
-    AppMethodBeat.o(144797);
+    AppMethodBeat.o(18943);
   }
   
   public void setOnRegionSelectedCallback(KRegionEditViewOnRegionSelectedCallback paramKRegionEditViewOnRegionSelectedCallback)
   {
     this.mCallback = paramKRegionEditViewOnRegionSelectedCallback;
+  }
+  
+  public void setOriginRegion(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    AppMethodBeat.i(18941);
+    this.countryCode = paramString1;
+    this.provinceCode = paramString2;
+    this.cityCode = paramString3;
+    if (!bt.isNullOrNil(paramString4)) {
+      this.mEditText.setText(paramString4);
+    }
+    AppMethodBeat.o(18941);
+  }
+  
+  public void setShowDomesticCity(boolean paramBoolean)
+  {
+    this.mShowDomesticCity = paramBoolean;
+  }
+  
+  public void setShowSelectedLocation(boolean paramBoolean)
+  {
+    this.mShowSelectedLocation = paramBoolean;
   }
 }
 

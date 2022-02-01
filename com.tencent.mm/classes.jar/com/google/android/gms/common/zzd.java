@@ -10,9 +10,9 @@ final class zzd
   
   static
   {
-    AppMethodBeat.i(90332);
+    AppMethodBeat.i(5353);
     zzbg = new GoogleCertificates.CertData[] { new zze(GoogleCertificates.CertData.zzd("")), new zzf(GoogleCertificates.CertData.zzd("")) };
-    AppMethodBeat.o(90332);
+    AppMethodBeat.o(5353);
   }
 }
 

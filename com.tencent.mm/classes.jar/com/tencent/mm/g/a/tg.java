@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.b;
 
 public final class tg
   extends b
 {
-  public tg.a cJH;
-  
   public tg()
   {
     this((byte)0);
@@ -15,11 +12,8 @@ public final class tg
   
   private tg(byte paramByte)
   {
-    AppMethodBeat.i(56576);
-    this.cJH = new tg.a();
-    this.ymq = false;
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(56576);
   }
 }
 

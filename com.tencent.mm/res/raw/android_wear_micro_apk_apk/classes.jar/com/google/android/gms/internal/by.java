@@ -11,14 +11,14 @@ public final class by
   {
     int i = c.b(paramParcel);
     c.c(paramParcel, 1, paramzza.getVersionCode());
-    c.c(paramParcel, 2, paramzza.jn());
-    c.a(paramParcel, 3, paramzza.jo());
-    c.c(paramParcel, 4, paramzza.jp());
-    c.a(paramParcel, 5, paramzza.jq());
-    c.a(paramParcel, 6, paramzza.jr());
-    c.c(paramParcel, 7, paramzza.js());
-    c.a(paramParcel, 8, paramzza.jt());
-    c.a(paramParcel, 9, paramzza.jv(), paramInt);
+    c.c(paramParcel, 2, paramzza.jw());
+    c.a(paramParcel, 3, paramzza.jx());
+    c.c(paramParcel, 4, paramzza.jy());
+    c.a(paramParcel, 5, paramzza.jz());
+    c.a(paramParcel, 6, paramzza.jA());
+    c.c(paramParcel, 7, paramzza.jB());
+    c.a(paramParcel, 8, paramzza.jC());
+    c.a(paramParcel, 9, paramzza.jE(), paramInt);
     c.v(paramParcel, i);
   }
 }

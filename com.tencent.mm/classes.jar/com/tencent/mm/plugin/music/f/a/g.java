@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.music.f.a;
 
 public final class g
 {
-  public int pbb = 4;
+  public int tYo = 4;
   
   /* Error */
-  public final boolean bWj()
+  public final boolean cVL()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 12	com/tencent/mm/plugin/music/f/a/g:pbb	I
+    //   3: getfield 12	com/tencent/mm/plugin/music/f/a/g:tYo	I
     //   6: istore_1
     //   7: iload_1
     //   8: iconst_2
@@ -48,7 +48,7 @@ public final class g
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 12	com/tencent/mm/plugin/music/f/a/g:pbb	I
+    //   3: getfield 12	com/tencent/mm/plugin/music/f/a/g:tYo	I
     //   6: istore_1
     //   7: iload_1
     //   8: iconst_3
@@ -80,7 +80,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.a.g
  * JD-Core Version:    0.7.0.1
  */

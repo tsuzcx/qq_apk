@@ -6,58 +6,69 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bq.d;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.sdk.platformtools.ad;
+import java.util.Locale;
 
 final class AppBrandLaunchErrorActionStartActivity
   extends AppBrandLaunchErrorAction
 {
-  final String ijD;
-  final String ijE;
-  final Intent ijF;
+  final String kFG;
+  final String kFH;
+  final Intent kFI;
   
   @Keep
   AppBrandLaunchErrorActionStartActivity(Parcel paramParcel)
   {
     super(paramParcel);
-    AppMethodBeat.i(131699);
-    this.ijD = paramParcel.readString();
-    this.ijE = paramParcel.readString();
-    this.ijF = ((Intent)paramParcel.readParcelable(Intent.class.getClassLoader()));
-    AppMethodBeat.o(131699);
+    AppMethodBeat.i(47047);
+    this.kFG = paramParcel.readString();
+    this.kFH = paramParcel.readString();
+    this.kFI = ((Intent)paramParcel.readParcelable(Intent.class.getClassLoader()));
+    AppMethodBeat.o(47047);
   }
   
   AppBrandLaunchErrorActionStartActivity(String paramString1, int paramInt, String paramString2, String paramString3, Intent paramIntent)
   {
     super(paramString1, paramInt);
-    this.ijD = paramString2;
-    this.ijE = paramString3;
-    this.ijF = paramIntent;
+    this.kFG = paramString2;
+    this.kFH = paramString3;
+    this.kFI = paramIntent;
   }
   
-  final void cS(Context paramContext)
+  final void U(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(131701);
-    Intent localIntent = this.ijF;
+    AppMethodBeat.i(195987);
+    ad.i("MicroMsg.AppBrandLaunchErrorAction", "showError(%s) startActivity %s -> %s", new Object[] { paramString, paramContext.getClass().getName(), this.kFH });
+    paramString = this.kFI;
     if (!(paramContext instanceof Activity)) {
-      localIntent.addFlags(268435456);
+      paramString.addFlags(268435456);
     }
     for (;;)
     {
-      d.b(paramContext, this.ijD, this.ijE, localIntent);
-      AppMethodBeat.o(131701);
+      d.b(paramContext, this.kFG, this.kFH, paramString);
+      AppMethodBeat.o(195987);
       return;
-      localIntent.setFlags(localIntent.getFlags() & 0xEFFFFFFF);
+      paramString.setFlags(paramString.getFlags() & 0xEFFFFFFF);
     }
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(174927);
+    String str = String.format(Locale.ENGLISH, "AppBrandLaunchErrorActionStartActivity[%s.%s|%s]", new Object[] { this.kFG, this.kFH, this.kFI });
+    AppMethodBeat.o(174927);
+    return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(131700);
+    AppMethodBeat.i(47048);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.ijD);
-    paramParcel.writeString(this.ijE);
-    paramParcel.writeParcelable(this.ijF, 0);
-    AppMethodBeat.o(131700);
+    paramParcel.writeString(this.kFG);
+    paramParcel.writeString(this.kFH);
+    paramParcel.writeParcelable(this.kFI, 0);
+    AppMethodBeat.o(47048);
   }
 }
 

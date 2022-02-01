@@ -1,50 +1,54 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.b.e;
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.appbrand.a.c;
-import com.tencent.mm.sdk.e.g;
-import java.util.List;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.al;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 
-@e(c.class)
-public abstract interface af
-  extends a, g
+public final class af
+  extends al
 {
-  public abstract List<LocalUsageInfo> a(int paramInt, a parama);
-  
-  public abstract boolean aC(String paramString, int paramInt);
-  
-  public abstract int aD(String paramString, int paramInt);
-  
-  public abstract boolean aE(String paramString, int paramInt);
-  
-  public abstract void awQ();
-  
-  public abstract int awR();
-  
-  public abstract boolean g(List<LocalUsageInfo> paramList, int paramInt);
-  
-  public abstract int getCount();
-  
-  public static enum a
+  public final String getTag()
   {
-    static
+    return "MicroMsg.AppBrand.DuplicateUsageUsernameSetFlagDataTransfer";
+  }
+  
+  public final boolean nb(int paramInt)
+  {
+    int j = 1;
+    int i;
+    if (paramInt != 0)
     {
-      AppMethodBeat.i(114907);
-      hcJ = new a("DESC", 0);
-      hcK = new a("ASC", 1);
-      hcL = new a("UPATE_TIME_DESC", 2);
-      hcM = new a[] { hcJ, hcK, hcL };
-      AppMethodBeat.o(114907);
+      i = 1;
+      if (paramInt >= 637927936) {
+        break label25;
+      }
     }
-    
-    private a() {}
+    label25:
+    for (paramInt = j;; paramInt = 0)
+    {
+      return paramInt & i;
+      i = 0;
+      break;
+    }
+  }
+  
+  public final void transfer(int paramInt)
+  {
+    AppMethodBeat.i(44648);
+    if (nb(paramInt))
+    {
+      ae.a locala = ae.a.FlK;
+      g.afB().afk().set(locala, Boolean.FALSE);
+    }
+    AppMethodBeat.o(44648);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.af
  * JD-Core Version:    0.7.0.1
  */

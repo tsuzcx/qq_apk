@@ -17,16 +17,16 @@ class PlayerStateRunner
   
   PlayerStateRunner(Integer paramInteger)
   {
-    AppMethodBeat.i(104781);
+    AppMethodBeat.i(76670);
     this.mLock = new ReentrantReadWriteLock();
     this.mAudioTrack = new WeakReference(null);
     this.mState = paramInteger;
-    AppMethodBeat.o(104781);
+    AppMethodBeat.o(76670);
   }
   
   Integer get()
   {
-    AppMethodBeat.i(104785);
+    AppMethodBeat.i(76674);
     this.mLock.readLock().lock();
     for (;;)
     {
@@ -52,7 +52,7 @@ class PlayerStateRunner
       finally
       {
         this.mLock.readLock().unlock();
-        AppMethodBeat.o(104785);
+        AppMethodBeat.o(76674);
       }
       int i = 5;
       continue;
@@ -65,7 +65,7 @@ class PlayerStateRunner
   
   boolean isEqual(Integer... paramVarArgs)
   {
-    AppMethodBeat.i(104784);
+    AppMethodBeat.i(76673);
     this.mLock.readLock().lock();
     try
     {
@@ -85,20 +85,20 @@ class PlayerStateRunner
     finally
     {
       this.mLock.readLock().unlock();
-      AppMethodBeat.o(104784);
+      AppMethodBeat.o(76673);
     }
   }
   
   public void setAudioTrack(AudioTrack paramAudioTrack)
   {
-    AppMethodBeat.i(104786);
+    AppMethodBeat.i(76675);
     this.mAudioTrack = new WeakReference(paramAudioTrack);
-    AppMethodBeat.o(104786);
+    AppMethodBeat.o(76675);
   }
   
   Integer transfer(Integer paramInteger)
   {
-    AppMethodBeat.i(104782);
+    AppMethodBeat.i(76671);
     this.mLock.writeLock().lock();
     try
     {
@@ -110,13 +110,13 @@ class PlayerStateRunner
     finally
     {
       this.mLock.writeLock().unlock();
-      AppMethodBeat.o(104782);
+      AppMethodBeat.o(76671);
     }
   }
   
   boolean transfer(Integer paramInteger, Integer... paramVarArgs)
   {
-    AppMethodBeat.i(104783);
+    AppMethodBeat.i(76672);
     this.mLock.writeLock().lock();
     try
     {
@@ -130,13 +130,13 @@ class PlayerStateRunner
     finally
     {
       this.mLock.writeLock().unlock();
-      AppMethodBeat.o(104783);
+      AppMethodBeat.o(76672);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.PlayerStateRunner
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class ReqHead
   extends JceStruct
@@ -27,12 +27,12 @@ public final class ReqHead
   
   static
   {
-    AppMethodBeat.i(76097);
+    AppMethodBeat.i(102343);
     if (!ReqHead.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      AppMethodBeat.o(76097);
+      AppMethodBeat.o(102343);
       return;
     }
   }
@@ -59,7 +59,7 @@ public final class ReqHead
   
   public final Object clone()
   {
-    AppMethodBeat.i(76092);
+    AppMethodBeat.i(102338);
     localObject1 = null;
     try
     {
@@ -70,16 +70,16 @@ public final class ReqHead
     {
       while ($assertionsDisabled) {}
       localObject1 = new AssertionError();
-      AppMethodBeat.o(76092);
+      AppMethodBeat.o(102338);
       throw ((Throwable)localObject1);
     }
-    AppMethodBeat.o(76092);
+    AppMethodBeat.o(102338);
     return localObject1;
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
   {
-    AppMethodBeat.i(76095);
+    AppMethodBeat.i(102341);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.display(this.requestId, "requestId");
     paramStringBuilder.display(this.cmdId, "cmdId");
@@ -90,12 +90,12 @@ public final class ReqHead
     paramStringBuilder.display(this.assistantAPILevel, "assistantAPILevel");
     paramStringBuilder.display(this.assistantVersionCode, "assistantVersionCode");
     paramStringBuilder.display(this.net, "net");
-    AppMethodBeat.o(76095);
+    AppMethodBeat.o(102341);
   }
   
   public final void displaySimple(StringBuilder paramStringBuilder, int paramInt)
   {
-    AppMethodBeat.i(76096);
+    AppMethodBeat.i(102342);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.displaySimple(this.requestId, true);
     paramStringBuilder.displaySimple(this.cmdId, true);
@@ -106,24 +106,24 @@ public final class ReqHead
     paramStringBuilder.displaySimple(this.assistantAPILevel, true);
     paramStringBuilder.displaySimple(this.assistantVersionCode, true);
     paramStringBuilder.displaySimple(this.net, false);
-    AppMethodBeat.o(76096);
+    AppMethodBeat.o(102342);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(76090);
+    AppMethodBeat.i(102336);
     if (paramObject == null)
     {
-      AppMethodBeat.o(76090);
+      AppMethodBeat.o(102336);
       return false;
     }
     paramObject = (ReqHead)paramObject;
     if ((JceUtil.equals(this.requestId, paramObject.requestId)) && (JceUtil.equals(this.cmdId, paramObject.cmdId)) && (JceUtil.equals(this.phoneGuid, paramObject.phoneGuid)) && (JceUtil.equals(this.qua, paramObject.qua)) && (JceUtil.equals(this.encryptWithPack, paramObject.encryptWithPack)) && (JceUtil.equals(this.terminal, paramObject.terminal)) && (JceUtil.equals(this.assistantAPILevel, paramObject.assistantAPILevel)) && (JceUtil.equals(this.assistantVersionCode, paramObject.assistantVersionCode)) && (JceUtil.equals(this.net, paramObject.net)))
     {
-      AppMethodBeat.o(76090);
+      AppMethodBeat.o(102336);
       return true;
     }
-    AppMethodBeat.o(76090);
+    AppMethodBeat.o(102336);
     return false;
   }
   
@@ -179,24 +179,24 @@ public final class ReqHead
   
   public final int hashCode()
   {
-    AppMethodBeat.i(76091);
+    AppMethodBeat.i(102337);
     try
     {
       Exception localException1 = new Exception("Need define key first!");
-      AppMethodBeat.o(76091);
+      AppMethodBeat.o(102337);
       throw localException1;
     }
     catch (Exception localException2)
     {
-      ab.printErrStackTrace("ReqHead", localException2, "", new Object[0]);
-      AppMethodBeat.o(76091);
+      ad.printErrStackTrace("ReqHead", localException2, "", new Object[0]);
+      AppMethodBeat.o(102337);
     }
     return 0;
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
-    AppMethodBeat.i(76094);
+    AppMethodBeat.i(102340);
     this.requestId = paramJceInputStream.read(this.requestId, 0, true);
     this.cmdId = paramJceInputStream.read(this.cmdId, 1, true);
     this.phoneGuid = paramJceInputStream.readString(2, true);
@@ -212,7 +212,7 @@ public final class ReqHead
       cache_net = new Net();
     }
     this.net = ((Net)paramJceInputStream.read(cache_net, 8, false));
-    AppMethodBeat.o(76094);
+    AppMethodBeat.o(102340);
   }
   
   public final void setAssistantAPILevel(int paramInt)
@@ -262,7 +262,7 @@ public final class ReqHead
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
-    AppMethodBeat.i(76093);
+    AppMethodBeat.i(102339);
     paramJceOutputStream.write(this.requestId, 0);
     paramJceOutputStream.write(this.cmdId, 1);
     paramJceOutputStream.write(this.phoneGuid, 2);
@@ -276,12 +276,12 @@ public final class ReqHead
     if (this.net != null) {
       paramJceOutputStream.write(this.net, 8);
     }
-    AppMethodBeat.o(76093);
+    AppMethodBeat.o(102339);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.ReqHead
  * JD-Core Version:    0.7.0.1
  */

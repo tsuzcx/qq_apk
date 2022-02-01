@@ -5,10 +5,84 @@ import java.util.ArrayList;
 
 public final class c
 {
-  public static Path J(String paramString)
+  private static void a(ArrayList<b> paramArrayList, char paramChar, float[] paramArrayOfFloat)
+  {
+    paramArrayList.add(new b(paramChar, paramArrayOfFloat));
+  }
+  
+  public static boolean a(b[] paramArrayOfb1, b[] paramArrayOfb2)
+  {
+    if ((paramArrayOfb1 == null) || (paramArrayOfb2 == null)) {}
+    while (paramArrayOfb1.length != paramArrayOfb2.length) {
+      return false;
+    }
+    int i = 0;
+    for (;;)
+    {
+      if (i >= paramArrayOfb1.length) {
+        break label64;
+      }
+      if ((paramArrayOfb1[i].GT != paramArrayOfb2[i].GT) || (paramArrayOfb1[i].GU.length != paramArrayOfb2[i].GU.length)) {
+        break;
+      }
+      i += 1;
+    }
+    label64:
+    return true;
+  }
+  
+  static float[] a(float[] paramArrayOfFloat, int paramInt)
+  {
+    if (paramInt < 0) {
+      throw new IllegalArgumentException();
+    }
+    int i = paramArrayOfFloat.length;
+    if (i < 0) {
+      throw new ArrayIndexOutOfBoundsException();
+    }
+    paramInt += 0;
+    i = Math.min(paramInt, i + 0);
+    float[] arrayOfFloat = new float[paramInt];
+    System.arraycopy(paramArrayOfFloat, 0, arrayOfFloat, 0, i);
+    return arrayOfFloat;
+  }
+  
+  public static b[] a(b[] paramArrayOfb)
+  {
+    if (paramArrayOfb == null) {
+      return null;
+    }
+    b[] arrayOfb = new b[paramArrayOfb.length];
+    int i = 0;
+    while (i < paramArrayOfb.length)
+    {
+      arrayOfb[i] = new b(paramArrayOfb[i]);
+      i += 1;
+    }
+    return arrayOfb;
+  }
+  
+  private static int e(String paramString, int paramInt)
+  {
+    for (;;)
+    {
+      if (paramInt < paramString.length())
+      {
+        int i = paramString.charAt(paramInt);
+        if ((((i - 65) * (i - 90) > 0) && ((i - 97) * (i - 122) > 0)) || (i == 101) || (i == 69)) {}
+      }
+      else
+      {
+        return paramInt;
+      }
+      paramInt += 1;
+    }
+  }
+  
+  public static Path u(String paramString)
   {
     Path localPath = new Path();
-    b[] arrayOfb = K(paramString);
+    b[] arrayOfb = w(paramString);
     if (arrayOfb != null) {
       try
       {
@@ -23,7 +97,7 @@ public final class c
     return null;
   }
   
-  public static b[] K(String paramString)
+  public static b[] w(String paramString)
   {
     if (paramString == null) {
       return null;
@@ -37,7 +111,7 @@ public final class c
       String str = paramString.substring(i, j).trim();
       if (str.length() > 0)
       {
-        float[] arrayOfFloat = L(str);
+        float[] arrayOfFloat = x(str);
         a(localArrayList, str.charAt(0), arrayOfFloat);
       }
       int k = j + 1;
@@ -50,7 +124,7 @@ public final class c
     return (b[])localArrayList.toArray(new b[localArrayList.size()]);
   }
   
-  private static float[] L(String paramString)
+  private static float[] x(String paramString)
   {
     if ((paramString.charAt(0) == 'z') || (paramString.charAt(0) == 'Z')) {
       return new float[0];
@@ -69,7 +143,7 @@ public final class c
         j = 0;
         if (k < i2)
         {
-          locala.Ax = false;
+          locala.GS = false;
           i = 0;
           i1 = 0;
           m = 0;
@@ -82,28 +156,28 @@ public final class c
           if ((n == k) || (i != 0)) {
             break label289;
           }
-          locala.Ax = true;
+          locala.GS = true;
           i = 0;
           m = 1;
           break label291;
           label172:
-          locala.Ax = true;
+          locala.GS = true;
           i = 0;
           m = 1;
           break label291;
-          locala.Aw = n;
-          m = locala.Aw;
+          locala.GR = n;
+          m = locala.GR;
           if (k < m)
           {
             i = j + 1;
             arrayOfFloat[j] = Float.parseFloat(paramString.substring(k, m));
-            if (!locala.Ax) {
+            if (!locala.GS) {
               break label331;
             }
             k = m;
             j = i;
             continue;
-            arrayOfFloat = b(arrayOfFloat, j);
+            arrayOfFloat = a(arrayOfFloat, j);
             return arrayOfFloat;
           }
           break;
@@ -144,101 +218,27 @@ public final class c
     }
   }
   
-  private static void a(ArrayList<b> paramArrayList, char paramChar, float[] paramArrayOfFloat)
-  {
-    paramArrayList.add(new b(paramChar, paramArrayOfFloat));
-  }
-  
-  public static boolean a(b[] paramArrayOfb1, b[] paramArrayOfb2)
-  {
-    if ((paramArrayOfb1 == null) || (paramArrayOfb2 == null)) {}
-    while (paramArrayOfb1.length != paramArrayOfb2.length) {
-      return false;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramArrayOfb1.length) {
-        break label64;
-      }
-      if ((paramArrayOfb1[i].Ay != paramArrayOfb2[i].Ay) || (paramArrayOfb1[i].Az.length != paramArrayOfb2[i].Az.length)) {
-        break;
-      }
-      i += 1;
-    }
-    label64:
-    return true;
-  }
-  
-  public static b[] a(b[] paramArrayOfb)
-  {
-    if (paramArrayOfb == null) {
-      return null;
-    }
-    b[] arrayOfb = new b[paramArrayOfb.length];
-    int i = 0;
-    while (i < paramArrayOfb.length)
-    {
-      arrayOfb[i] = new b(paramArrayOfb[i]);
-      i += 1;
-    }
-    return arrayOfb;
-  }
-  
-  static float[] b(float[] paramArrayOfFloat, int paramInt)
-  {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException();
-    }
-    int i = paramArrayOfFloat.length;
-    if (i < 0) {
-      throw new ArrayIndexOutOfBoundsException();
-    }
-    paramInt += 0;
-    i = Math.min(paramInt, i + 0);
-    float[] arrayOfFloat = new float[paramInt];
-    System.arraycopy(paramArrayOfFloat, 0, arrayOfFloat, 0, i);
-    return arrayOfFloat;
-  }
-  
-  private static int e(String paramString, int paramInt)
-  {
-    for (;;)
-    {
-      if (paramInt < paramString.length())
-      {
-        int i = paramString.charAt(paramInt);
-        if ((((i - 65) * (i - 90) > 0) && ((i - 97) * (i - 122) > 0)) || (i == 101) || (i == 69)) {}
-      }
-      else
-      {
-        return paramInt;
-      }
-      paramInt += 1;
-    }
-  }
-  
   static final class a
   {
-    int Aw;
-    boolean Ax;
+    int GR;
+    boolean GS;
   }
   
   public static final class b
   {
-    public char Ay;
-    public float[] Az;
+    public char GT;
+    public float[] GU;
     
     b(char paramChar, float[] paramArrayOfFloat)
     {
-      this.Ay = paramChar;
-      this.Az = paramArrayOfFloat;
+      this.GT = paramChar;
+      this.GU = paramArrayOfFloat;
     }
     
     b(b paramb)
     {
-      this.Ay = paramb.Ay;
-      this.Az = c.b(paramb.Az, paramb.Az.length);
+      this.GT = paramb.GT;
+      this.GU = c.a(paramb.GU, paramb.GU.length);
     }
     
     private static void a(Path paramPath, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6, double paramDouble7, double paramDouble8, double paramDouble9)
@@ -782,8 +782,8 @@ public final class c
       int i = 0;
       while (i < paramArrayOfb.length)
       {
-        a(paramPath, arrayOfFloat, c, paramArrayOfb[i].Ay, paramArrayOfb[i].Az);
-        c = paramArrayOfb[i].Ay;
+        a(paramPath, arrayOfFloat, c, paramArrayOfb[i].GT, paramArrayOfb[i].GU);
+        c = paramArrayOfb[i].GT;
         i += 1;
       }
     }
@@ -791,9 +791,9 @@ public final class c
     public final void a(b paramb1, b paramb2, float paramFloat)
     {
       int i = 0;
-      while (i < paramb1.Az.length)
+      while (i < paramb1.GU.length)
       {
-        this.Az[i] = (paramb1.Az[i] * (1.0F - paramFloat) + paramb2.Az[i] * paramFloat);
+        this.GU[i] = (paramb1.GU[i] * (1.0F - paramFloat) + paramb2.GU[i] * paramFloat);
         i += 1;
       }
     }

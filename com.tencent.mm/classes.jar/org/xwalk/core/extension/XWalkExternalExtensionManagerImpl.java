@@ -38,7 +38,7 @@ public class XWalkExternalExtensionManagerImpl
   public XWalkExternalExtensionManagerImpl(XWalkView paramXWalkView)
   {
     super(paramXWalkView);
-    AppMethodBeat.i(86191);
+    AppMethodBeat.i(155305);
     this.mExtensions = new HashMap();
     this.mXWalkView = paramXWalkView;
     if (getBridge() == null)
@@ -47,60 +47,60 @@ public class XWalkExternalExtensionManagerImpl
       this.mContext = null;
       this.mLoadExternalExtensions = false;
       this.mNativeExtensionLoader = null;
-      AppMethodBeat.o(86191);
+      AppMethodBeat.o(155305);
       return;
     }
     this.mContext = getViewContext();
     this.mLoadExternalExtensions = true;
     this.mNativeExtensionLoader = new XWalkNativeExtensionLoader();
     loadNativeExtensions();
-    AppMethodBeat.o(86191);
+    AppMethodBeat.o(155305);
   }
   
   private void createExternalExtension(String paramString1, String paramString2, String paramString3, XWalkExtensionContextClient paramXWalkExtensionContextClient)
   {
-    AppMethodBeat.i(86206);
+    AppMethodBeat.i(155320);
     paramXWalkExtensionContextClient = paramXWalkExtensionContextClient.getContext();
     try
     {
       paramXWalkExtensionContextClient.getClassLoader().loadClass(paramString2).getConstructor(new Class[] { String.class, String.class, XWalkExtensionContextClient.class }).newInstance(new Object[] { paramString1, paramString3, this });
-      AppMethodBeat.o(86206);
+      AppMethodBeat.o(155320);
       return;
     }
     catch (ClassNotFoundException paramString1)
     {
       handleException(paramString1);
-      AppMethodBeat.o(86206);
+      AppMethodBeat.o(155320);
       return;
     }
     catch (IllegalAccessException paramString1)
     {
       handleException(paramString1);
-      AppMethodBeat.o(86206);
+      AppMethodBeat.o(155320);
       return;
     }
     catch (InstantiationException paramString1)
     {
       handleException(paramString1);
-      AppMethodBeat.o(86206);
+      AppMethodBeat.o(155320);
       return;
     }
     catch (InvocationTargetException paramString1)
     {
       handleException(paramString1);
-      AppMethodBeat.o(86206);
+      AppMethodBeat.o(155320);
       return;
     }
     catch (NoSuchMethodException paramString1)
     {
       handleException(paramString1);
-      AppMethodBeat.o(86206);
+      AppMethodBeat.o(155320);
     }
   }
   
   private String getFileContent(Context paramContext, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(86205);
+    AppMethodBeat.i(155319);
     Object localObject4 = null;
     Object localObject3 = null;
     Object localObject1 = localObject3;
@@ -145,7 +145,7 @@ public class XWalkExternalExtensionManagerImpl
       if (localObject3 != null) {
         ((InputStream)localObject3).close();
       }
-      AppMethodBeat.o(86205);
+      AppMethodBeat.o(155319);
       return paramContext;
     }
     finally
@@ -155,20 +155,20 @@ public class XWalkExternalExtensionManagerImpl
       if (localObject2 != null) {
         localObject2.close();
       }
-      AppMethodBeat.o(86205);
+      AppMethodBeat.o(155319);
     }
   }
   
   private static void handleException(Exception paramException)
   {
-    AppMethodBeat.i(86208);
+    AppMethodBeat.i(155322);
     Log.e("XWalkExternalExtensionManagerImpl", "Error in calling methods of external extensions. " + paramException.toString());
-    AppMethodBeat.o(86208);
+    AppMethodBeat.o(155322);
   }
   
   private void loadNativeExtensions()
   {
-    AppMethodBeat.i(86207);
+    AppMethodBeat.i(155321);
     Object localObject = null;
     try
     {
@@ -183,17 +183,17 @@ public class XWalkExternalExtensionManagerImpl
     if ((localObject != null) && (new File(localObject).isDirectory())) {
       this.mNativeExtensionLoader.registerNativeExtensionsInPath(localObject);
     }
-    AppMethodBeat.o(86207);
+    AppMethodBeat.o(155321);
   }
   
   public void broadcastMessage(XWalkExternalExtension paramXWalkExternalExtension, String paramString)
   {
-    AppMethodBeat.i(86198);
+    AppMethodBeat.i(155312);
     paramXWalkExternalExtension = (XWalkExternalExtensionBridge)this.mExtensions.get(paramXWalkExternalExtension.getExtensionName());
     if (paramXWalkExternalExtension != null) {
       paramXWalkExternalExtension.broadcastMessage(paramString);
     }
-    AppMethodBeat.o(86198);
+    AppMethodBeat.o(155312);
   }
   
   public Activity getActivity()
@@ -403,97 +403,97 @@ public class XWalkExternalExtensionManagerImpl
   
   public void onDestroy()
   {
-    AppMethodBeat.i(86203);
+    AppMethodBeat.i(155317);
     Iterator localIterator = this.mExtensions.values().iterator();
     while (localIterator.hasNext()) {
       ((XWalkExternalExtensionBridge)localIterator.next()).onDestroy();
     }
     this.mExtensions.clear();
-    AppMethodBeat.o(86203);
+    AppMethodBeat.o(155317);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(86204);
+    AppMethodBeat.i(155318);
     Iterator localIterator = this.mExtensions.values().iterator();
     while (localIterator.hasNext()) {
       ((XWalkExternalExtensionBridge)localIterator.next()).onNewIntent(paramIntent);
     }
-    AppMethodBeat.o(86204);
+    AppMethodBeat.o(155318);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(86201);
+    AppMethodBeat.i(155315);
     Iterator localIterator = this.mExtensions.values().iterator();
     while (localIterator.hasNext()) {
       ((XWalkExternalExtensionBridge)localIterator.next()).onPause();
     }
-    AppMethodBeat.o(86201);
+    AppMethodBeat.o(155315);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(86200);
+    AppMethodBeat.i(155314);
     Iterator localIterator = this.mExtensions.values().iterator();
     while (localIterator.hasNext()) {
       ((XWalkExternalExtensionBridge)localIterator.next()).onResume();
     }
-    AppMethodBeat.o(86200);
+    AppMethodBeat.o(155314);
   }
   
   public void onStart()
   {
-    AppMethodBeat.i(86199);
+    AppMethodBeat.i(155313);
     Iterator localIterator = this.mExtensions.values().iterator();
     while (localIterator.hasNext()) {
       ((XWalkExternalExtensionBridge)localIterator.next()).onStart();
     }
-    AppMethodBeat.o(86199);
+    AppMethodBeat.o(155313);
   }
   
   public void onStop()
   {
-    AppMethodBeat.i(86202);
+    AppMethodBeat.i(155316);
     Iterator localIterator = this.mExtensions.values().iterator();
     while (localIterator.hasNext()) {
       ((XWalkExternalExtensionBridge)localIterator.next()).onStop();
     }
-    AppMethodBeat.o(86202);
+    AppMethodBeat.o(155316);
   }
   
   public void postBinaryMessage(XWalkExternalExtension paramXWalkExternalExtension, int paramInt, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(86197);
+    AppMethodBeat.i(155311);
     paramXWalkExternalExtension = (XWalkExternalExtensionBridge)this.mExtensions.get(paramXWalkExternalExtension.getExtensionName());
     if (paramXWalkExternalExtension != null) {
       paramXWalkExternalExtension.postBinaryMessage(paramInt, paramArrayOfByte);
     }
-    AppMethodBeat.o(86197);
+    AppMethodBeat.o(155311);
   }
   
   public void postMessage(XWalkExternalExtension paramXWalkExternalExtension, int paramInt, String paramString)
   {
-    AppMethodBeat.i(86196);
+    AppMethodBeat.i(155310);
     paramXWalkExternalExtension = (XWalkExternalExtensionBridge)this.mExtensions.get(paramXWalkExternalExtension.getExtensionName());
     if (paramXWalkExternalExtension != null) {
       paramXWalkExternalExtension.postMessage(paramInt, paramString);
     }
-    AppMethodBeat.o(86196);
+    AppMethodBeat.o(155310);
   }
   
   public void registerExtension(XWalkExternalExtension paramXWalkExternalExtension)
   {
-    AppMethodBeat.i(86192);
+    AppMethodBeat.i(155306);
     if (this.mExtensions.get(paramXWalkExternalExtension.getExtensionName()) != null)
     {
       Log.e("XWalkExternalExtensionManagerImpl", paramXWalkExternalExtension.getExtensionName() + "is already registered!");
-      AppMethodBeat.o(86192);
+      AppMethodBeat.o(155306);
       return;
     }
     XWalkExternalExtensionBridge localXWalkExternalExtensionBridge = XWalkExternalExtensionBridgeFactory.createInstance(paramXWalkExternalExtension);
     this.mExtensions.put(paramXWalkExternalExtension.getExtensionName(), localXWalkExternalExtensionBridge);
-    AppMethodBeat.o(86192);
+    AppMethodBeat.o(155306);
   }
   
   public void setAllowExternalExtensions(boolean paramBoolean)
@@ -503,27 +503,27 @@ public class XWalkExternalExtensionManagerImpl
   
   public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    AppMethodBeat.i(86194);
+    AppMethodBeat.i(155308);
     paramIntent = new ActivityNotFoundException("This method is no longer supported");
-    AppMethodBeat.o(86194);
+    AppMethodBeat.o(155308);
     throw paramIntent;
   }
   
   public void unregisterExtension(String paramString)
   {
-    AppMethodBeat.i(86193);
+    AppMethodBeat.i(155307);
     XWalkExternalExtensionBridge localXWalkExternalExtensionBridge = (XWalkExternalExtensionBridge)this.mExtensions.get(paramString);
     if (localXWalkExternalExtensionBridge != null)
     {
       this.mExtensions.remove(paramString);
       localXWalkExternalExtensionBridge.onDestroy();
     }
-    AppMethodBeat.o(86193);
+    AppMethodBeat.o(155307);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.xwalk.core.extension.XWalkExternalExtensionManagerImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -11,17 +11,17 @@ final class FaceActionUI$3
   
   public final void run()
   {
-    AppMethodBeat.i(720);
-    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)FaceActionUI.k(this.mrl).getLayoutParams();
-    localMarginLayoutParams.topMargin = ((int)(FaceActionUI.l(this.mrl).getHeight() * 0.4D));
-    FaceActionUI.k(this.mrl).setLayoutParams(localMarginLayoutParams);
-    FaceActionUI.k(this.mrl).setVisibility(0);
-    AppMethodBeat.o(720);
+    AppMethodBeat.i(104242);
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)FaceActionUI.j(this.pXP).getLayoutParams();
+    localMarginLayoutParams.topMargin = ((int)(FaceActionUI.k(this.pXP).getHeight() * 0.4D));
+    FaceActionUI.j(this.pXP).setLayoutParams(localMarginLayoutParams);
+    FaceActionUI.j(this.pXP).setVisibility(0);
+    AppMethodBeat.o(104242);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.ui.FaceActionUI.3
  * JD-Core Version:    0.7.0.1
  */

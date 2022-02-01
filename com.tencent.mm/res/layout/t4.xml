@@ -1,3 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.internal.NavigationMenuItemView android:paddingLeft="?ff" android:paddingRight="?fg" android:focusable="true" android:layout_width="fill_parent" android:layout_height="?fd" android:foreground="?ew"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="#fff0eff4" android:paddingTop="@dimen/ha" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/i_" android:paddingBottom="@dimen/i_" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mc">
+        <EditText android:gravity="center|left" android:id="@id/az1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="@string/hd3" android:singleLine="true" android:layout_weight="1.0" />
+        <Button android:textColor="@color/fj" android:id="@id/be2" android:background="@drawable/ir" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/js" android:minWidth="@dimen/jj" android:minHeight="@dimen/hr" android:text="@string/hd2" style="@style/od" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/jn">
+        <Button android:id="@id/asr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hd1" android:layout_weight="1.0" style="@style/od" />
+        <Button android:id="@id/f58" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hd_" android:layout_weight="1.0" style="@style/od" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="5.0">
+        <Button android:id="@id/d5b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hd4" android:layout_weight="1.0" style="@style/a3p" />
+        <Button android:id="@id/d5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hd8" android:layout_weight="1.0" style="@style/a3p" />
+        <Button android:id="@id/d5d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hd7" android:layout_weight="1.0" style="@style/a3p" />
+        <Button android:id="@id/d5h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hd9" android:layout_weight="1.0" style="@style/a3p" />
+        <Button android:id="@id/d5c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hd6" android:layout_weight="1.0" style="@style/a3p" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView android:id="@id/d5g" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

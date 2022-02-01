@@ -14,9 +14,9 @@ final class Logger$1
   
   public final void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(105542);
+    AppMethodBeat.i(87747);
     String.format(paramString2, paramVarArgs);
-    AppMethodBeat.o(105542);
+    AppMethodBeat.o(87747);
   }
   
   public final void e(String paramString, Throwable paramThrowable) {}

@@ -1,139 +1,186 @@
 package com.tencent.mm.sandbox.updater;
 
-import android.content.Context;
-import android.content.Intent;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.d.i;
+import com.tencent.mm.d.i.a;
+import com.tencent.mm.protocal.protobuf.bsi;
+import com.tencent.mm.protocal.protobuf.bxk;
+import com.tencent.mm.protocal.protobuf.bxl;
+import com.tencent.mm.protocal.protobuf.bxm;
+import com.tencent.mm.protocal.protobuf.ckz;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 
-final class f
+public final class f
 {
-  private static long yld = 125829120L;
-  private static long yle = 314572800L;
-  ap caS;
-  private boolean initialized;
-  boolean muY;
-  private long ylf;
-  private long ylg;
-  private String ylh;
-  private j yli;
+  public String clientVersion;
+  public final int fileSize;
+  public final Integer syD;
+  public HashMap<Integer, LinkedList<bsi>> syE;
+  public final Integer syF;
+  public final Integer syG;
+  public final String syH;
+  public final String syI;
+  public final String syJ;
+  public String syK;
+  public String syL;
+  public String syM;
+  public String syN;
+  public String syO;
+  public int versionCode;
   
-  public f(j paramj)
+  public f(bxm parambxm)
   {
-    AppMethodBeat.i(28902);
-    this.caS = new ap(new f.1(this), true);
-    this.ylf = 0L;
-    this.ylg = 0L;
-    this.ylh = null;
-    this.initialized = false;
-    this.muY = false;
-    this.yli = paramj;
-    AppMethodBeat.o(28902);
+    AppMethodBeat.i(32708);
+    this.syE = new HashMap();
+    if (parambxm == null)
+    {
+      this.syD = Integer.valueOf(1);
+      this.syH = "";
+      this.syI = "";
+      this.syF = Integer.valueOf(-1);
+      this.syG = Integer.valueOf(-1);
+      this.syJ = "";
+      this.fileSize = 0;
+      this.syK = "";
+      this.syL = "";
+      this.versionCode = 0;
+      this.clientVersion = "";
+      this.syM = "";
+      this.syN = "";
+      this.syO = "";
+      AppMethodBeat.o(32708);
+      return;
+    }
+    if (parambxm.DTY != null)
+    {
+      this.syI = parambxm.DTY.MD5;
+      this.syH = parambxm.DTY.Url;
+    }
+    Object localObject;
+    for (this.fileSize = parambxm.DTY.FileSize;; this.fileSize = 0)
+    {
+      this.syD = Integer.valueOf(parambxm.state);
+      this.syG = Integer.valueOf(parambxm.DTX);
+      if ((parambxm.DTV == null) || (parambxm.DTV.isEmpty())) {
+        break;
+      }
+      int j = parambxm.DTV.size();
+      int i = 0;
+      while (i < j)
+      {
+        localObject = (bxl)parambxm.DTV.get(i);
+        if ((((bxl)localObject).DTU != null) && (!((bxl)localObject).DTU.isEmpty())) {
+          this.syE.put(Integer.valueOf(((bxl)localObject).type), ((bxl)localObject).DTU);
+        }
+        i += 1;
+      }
+      this.syI = "";
+      this.syH = "";
+    }
+    this.syF = Integer.valueOf(parambxm.DTW);
+    this.syJ = parambxm.upD;
+    if ((parambxm.DUa != null) && (!parambxm.DUa.isEmpty()))
+    {
+      parambxm = parambxm.DUa.iterator();
+      while (parambxm.hasNext())
+      {
+        localObject = (bxk)parambxm.next();
+        if ((localObject != null) && (!bt.isNullOrNil(((bxk)localObject).key))) {
+          if (((bxk)localObject).key.equalsIgnoreCase("newApkMd5")) {
+            this.syK = ((bxk)localObject).value;
+          } else if (((bxk)localObject).key.equalsIgnoreCase("oldApkMd5")) {
+            this.syL = ((bxk)localObject).value;
+          } else if (((bxk)localObject).key.equalsIgnoreCase("versionCode")) {
+            this.versionCode = bt.aGh(((bxk)localObject).value);
+          } else if (((bxk)localObject).key.equalsIgnoreCase("clientVersion")) {
+            this.clientVersion = ((bxk)localObject).value;
+          } else if (((bxk)localObject).key.equalsIgnoreCase("alphaTitle")) {
+            this.syM = adL(((bxk)localObject).value);
+          } else if (((bxk)localObject).key.equalsIgnoreCase("alphaContent")) {
+            this.syN = adL(((bxk)localObject).value);
+          } else if (((bxk)localObject).key.equalsIgnoreCase("alphaUrl")) {
+            this.syO = ((bxk)localObject).value;
+          }
+        }
+      }
+      AppMethodBeat.o(32708);
+      return;
+    }
+    this.syK = "";
+    this.syL = "";
+    this.versionCode = 0;
+    this.clientVersion = "";
+    this.syM = "";
+    this.syN = "";
+    this.syO = "";
+    AppMethodBeat.o(32708);
   }
   
-  public static boolean aoL(String paramString)
+  public static boolean adK(String paramString)
   {
-    AppMethodBeat.i(28907);
-    if (i.aoN(paramString) > yld)
-    {
-      ab.e("MicroMsg.TrafficStatistic", "overTrafficAlertLine reach traffic alert line!");
-      AppMethodBeat.o(28907);
-      return true;
+    AppMethodBeat.i(32711);
+    if ((!bt.isNullOrNil(paramString)) && (paramString.length() == 10)) {
+      try
+      {
+        int i = Integer.decode(paramString).intValue();
+        if (((i & 0xFF) >= 0) && ((i & 0xFF) <= 31))
+        {
+          AppMethodBeat.o(32711);
+          return true;
+        }
+        AppMethodBeat.o(32711);
+        return false;
+      }
+      catch (Exception paramString)
+      {
+        ad.printErrStackTrace("Tinker.TinkerSyncResponse", paramString, "checkAplhVersion failed.", new Object[0]);
+      }
     }
-    AppMethodBeat.o(28907);
+    AppMethodBeat.o(32711);
     return false;
   }
   
-  private void drG()
+  private static String adL(String paramString)
   {
-    AppMethodBeat.i(28905);
-    if (this.ylf + this.ylg > 0L)
+    AppMethodBeat.i(32712);
+    if (!bt.isNullOrNil(paramString))
     {
-      Intent localIntent = new Intent();
-      localIntent.setAction("com.tencent.mm.sandbox.updater.intent.ACTION_UPDATE");
-      localIntent.putExtra("intent_extra_flow_stat_upstream", this.ylf);
-      localIntent.putExtra("intent_extra_flow_stat_downstream", this.ylg);
-      if (this.yli.mContext != null) {
-        this.muY = at.isWifi(this.yli.mContext);
-      }
-      localIntent.putExtra("intent_extra_flow_stat_is_wifi", this.muY);
-      if (this.yli.mContext != null) {
-        this.yli.mContext.sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
-      }
+      paramString = new String(Base64.decode(paramString, 0));
+      AppMethodBeat.o(32712);
+      return paramString;
     }
-    AppMethodBeat.o(28905);
+    AppMethodBeat.o(32712);
+    return "";
   }
   
-  private long drH()
+  public final String eDI()
   {
-    AppMethodBeat.i(28908);
-    drG();
-    if (bo.isNullOrNil(this.ylh))
-    {
-      ab.e("MicroMsg.TrafficStatistic", "traffic is null!");
-      AppMethodBeat.o(28908);
-      return 0L;
-    }
-    long l = i.F(this.ylh, this.ylf, this.ylg);
-    this.ylf = 0L;
-    this.ylg = 0L;
-    AppMethodBeat.o(28908);
-    return l;
+    AppMethodBeat.i(32709);
+    Object localObject = this.syH.substring(0, this.syH.lastIndexOf('/') + 1);
+    String str = this.syH.substring(this.syH.lastIndexOf('/') + 1);
+    localObject = new i((String)localObject, this.versionCode);
+    ((i)localObject).a(new i.a(this.syL, this.syK, this.syI, str, this.fileSize));
+    str = ((i)localObject).Kk();
+    AppMethodBeat.o(32709);
+    return str;
   }
   
-  public final void es(String paramString, int paramInt)
+  public final String toString()
   {
-    AppMethodBeat.i(28903);
-    if (bo.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(28903);
-      return;
-    }
-    if (!paramString.equals(this.ylh)) {
-      stop();
-    }
-    ab.i("MicroMsg.TrafficStatistic", "pack size: ".concat(String.valueOf(paramInt)));
-    ab.i("MicroMsg.TrafficStatistic", "TRAFFIC_ALERT_LINE before : %s", new Object[] { Long.valueOf(yld) });
-    yld = Math.max(paramInt * 4, yld);
-    yld = Math.min(yle, yld);
-    ab.i("MicroMsg.TrafficStatistic", "TRAFFIC_ALERT_LINE after : %s", new Object[] { Long.valueOf(yld) });
-    if (!this.initialized)
-    {
-      if (this.yli.mContext != null) {
-        this.muY = at.isWifi(this.yli.mContext);
-      }
-      this.caS.ag(30000L, 30000L);
-      this.initialized = true;
-      this.ylh = paramString;
-    }
-    AppMethodBeat.o(28903);
-  }
-  
-  final void pE(boolean paramBoolean)
-  {
-    AppMethodBeat.i(28906);
-    if (((paramBoolean) || (this.ylf + this.ylg >= 524288L)) && (drH() >= yld) && (this.yli.rJd == 2))
-    {
-      ab.e("MicroMsg.TrafficStatistic", "checkIfTrafficAlert reach traffic alert line!");
-      this.yli.cancel();
-    }
-    AppMethodBeat.o(28906);
-  }
-  
-  public final void stop()
-  {
-    AppMethodBeat.i(28904);
-    pE(true);
-    this.caS.stopTimer();
-    this.initialized = false;
-    AppMethodBeat.o(28904);
+    AppMethodBeat.i(32710);
+    String str = "responseState:" + this.syD + "\ncdnUrl:" + this.syH + "\nfileMd5:" + this.syI + "\npackageType:" + this.syF + "\nnetworkType:" + this.syG + "\npatchId:" + this.syJ;
+    AppMethodBeat.o(32710);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sandbox.updater.f
  * JD-Core Version:    0.7.0.1
  */

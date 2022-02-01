@@ -2,129 +2,55 @@ package com.tencent.mm.audio.d.a;
 
 import android.media.AudioRecord;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import com.tencent.mm.sdk.platformtools.ad;
 
 public final class b
 {
-  AudioRecord cjC;
-  byte[] cjM;
-  private int cjl;
-  private int clr;
-  int cls;
-  public Runnable clt;
-  public b.a clu;
-  private int mAudioFormat;
-  public final ExecutorService mExecutorService;
-  public boolean mIsRecording;
-  private int mSampleRate;
+  private AudioRecord cYu;
+  private boolean dai;
   
-  public b(int paramInt1, int paramInt2, int paramInt3)
+  public final boolean Ob()
   {
-    AppMethodBeat.i(140649);
-    this.cjl = 1;
-    this.mSampleRate = 44100;
-    this.clr = 12;
-    this.mAudioFormat = 2;
-    this.mExecutorService = Executors.newSingleThreadExecutor();
-    this.clt = new b.1(this);
-    this.mIsRecording = false;
-    this.cjl = paramInt1;
-    this.mSampleRate = paramInt2;
-    if (paramInt3 == 2) {}
-    for (this.clr = 12;; this.clr = 16)
-    {
-      this.mAudioFormat = 2;
-      this.cls = (AudioRecord.getMinBufferSize(this.mSampleRate, this.clr, 2) * 10);
-      this.cjC = new AudioRecord(this.cjl, this.mSampleRate, this.clr, this.mAudioFormat, this.cls);
-      ab.i("MicroMsg.RecorderPcm", "mAudioSource:%d, mSampleRate:%d mAudioChannel:%d mAudioFormat:%d mBufferSize:%d", new Object[] { Integer.valueOf(this.cjl), Integer.valueOf(this.mSampleRate), Integer.valueOf(this.clr), Integer.valueOf(this.mAudioFormat), Integer.valueOf(this.cls) });
-      AppMethodBeat.o(140649);
-      return;
+    AppMethodBeat.i(146312);
+    if (this.cYu == null) {
+      ad.e("MicroMsg.RecorderPcm", "mAudioRecord is null, return");
     }
-  }
-  
-  public final boolean EC()
-  {
-    AppMethodBeat.i(140650);
-    if (checkValid())
+    for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(140650);
+      AppMethodBeat.o(146312);
       return false;
     }
-    this.mIsRecording = true;
+    this.dai = false;
     try
     {
-      this.cjC.startRecording();
-      this.mExecutorService.submit(this.clt);
-      AppMethodBeat.o(140650);
-      return true;
-    }
-    catch (Exception localException)
-    {
-      ab.b("MicroMsg.RecorderPcm", "", new Object[] { localException });
-      AppMethodBeat.o(140650);
-    }
-    return false;
-  }
-  
-  public final boolean Et()
-  {
-    AppMethodBeat.i(140651);
-    if (checkValid())
-    {
-      AppMethodBeat.o(140651);
-      return false;
-    }
-    this.mIsRecording = false;
-    try
-    {
-      this.cjC.stop();
+      this.cYu.stop();
       release();
-      AppMethodBeat.o(140651);
+      AppMethodBeat.o(146312);
       return true;
     }
     catch (Exception localException)
     {
-      ab.b("MicroMsg.RecorderPcm", "", new Object[] { localException });
-      AppMethodBeat.o(140651);
+      ad.m("MicroMsg.RecorderPcm", "", new Object[] { localException });
+      AppMethodBeat.o(146312);
     }
-    return false;
-  }
-  
-  public final boolean checkValid()
-  {
-    AppMethodBeat.i(140652);
-    if (this.cjC == null)
-    {
-      ab.e("MicroMsg.RecorderPcm", "mAudioRecord is null, return");
-      AppMethodBeat.o(140652);
-      return true;
-    }
-    AppMethodBeat.o(140652);
     return false;
   }
   
   public final void release()
   {
-    try
+    AppMethodBeat.i(146313);
+    if (this.cYu != null)
     {
-      AppMethodBeat.i(140653);
-      if (this.cjC != null)
-      {
-        this.cjC.setRecordPositionUpdateListener(null);
-        this.cjC.release();
-        this.cjC = null;
-      }
-      AppMethodBeat.o(140653);
-      return;
+      this.cYu.setRecordPositionUpdateListener(null);
+      this.cYu.release();
+      this.cYu = null;
     }
-    finally {}
+    AppMethodBeat.o(146313);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.d.a.b
  * JD-Core Version:    0.7.0.1
  */

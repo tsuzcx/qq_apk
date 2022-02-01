@@ -1,6 +1,8 @@
 package com.tencent.mm.plugin.wallet_core.id_verify;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,126 +15,228 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.n;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.Profession;
-import com.tencent.mm.plugin.wallet_core.id_verify.model.d;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.g;
+import com.tencent.mm.plugin.wallet_core.id_verify.model.l;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
+import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.plugin.wallet_core.ui.WalletSelectProfessionUI;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.wallet_core.c;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.h.d;
 import com.tencent.mm.wallet_core.d.i;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.mm.wallet_core.ui.e;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView.a;
 import com.tencent.mm.wallet_core.ui.formview.a.a;
 import com.tencent.mm.wallet_core.ui.formview.a.b;
+import java.util.LinkedList;
+import java.util.List;
 
 public class WalletRealNameVerifyUI
   extends WalletBaseUI
   implements View.OnClickListener, WalletFormView.a
 {
+  private String cityCode;
   private String countryCode;
-  private String fnB;
-  private String fnC;
-  private Button gJr;
+  private Button iwY;
   private Profession[] mProfessions;
-  private TextView nVZ;
-  private WalletFormView ucV;
-  private WalletFormView ucW;
-  private WalletFormView ucX;
-  private WalletFormView ucY;
-  private CheckBox ucZ;
-  private TextView uda;
-  private ElementQuery udb;
-  private Profession udc;
-  private boolean udd = false;
-  private boolean ude = false;
+  private String provinceCode;
+  private TextView sJS;
+  private WalletFormView zXM;
+  private WalletFormView zXN;
+  private WalletFormView zXO;
+  private WalletFormView zXP;
+  private CheckBox zXQ;
+  private TextView zXR;
+  private ElementQuery zXS;
+  private Profession zXT;
+  private boolean zXU = false;
+  private boolean zXV = false;
+  
+  private void p(n paramn)
+  {
+    AppMethodBeat.i(70061);
+    com.tencent.mm.wallet_core.d locald = getProcess();
+    Bundle localBundle = null;
+    if (locald != null) {
+      localBundle = locald.dow;
+    }
+    paramn = ((g)paramn).token;
+    ad.i("MicroMsg.WalletRealNameVerifyUI", "NetSceneRealNameVerify response succ");
+    if (locald != null)
+    {
+      localBundle.putString("key_real_name_token", paramn);
+      localBundle.putString("key_country_code", this.countryCode);
+      localBundle.putString("key_province_code", this.provinceCode);
+      localBundle.putString("key_city_code", this.cityCode);
+      localBundle.putParcelable("key_profession", this.zXT);
+      locald.a(this, 0, localBundle);
+    }
+    AppMethodBeat.o(70061);
+  }
   
   public int getLayoutId()
   {
-    return 2130971240;
+    return 2131496017;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(46629);
-    setMMTitle(2131305547);
-    this.gJr = ((Button)findViewById(2131822914));
-    this.ucV = ((WalletFormView)findViewById(2131829013));
-    this.ucW = ((WalletFormView)findViewById(2131826693));
-    this.ucX = ((WalletFormView)findViewById(2131829056));
-    this.ucY = ((WalletFormView)findViewById(2131829057));
-    this.uda = ((TextView)findViewById(2131828908));
-    this.ucV.setOnInputValidChangeListener(this);
-    this.ucW.setOnInputValidChangeListener(this);
-    this.ucX.setOnInputValidChangeListener(this);
-    this.ucY.setOnInputValidChangeListener(this);
-    this.ucV.setFocusable(true);
-    this.ucV.getInfoIv().setVisibility(8);
-    com.tencent.mm.wallet_core.ui.formview.a.d(this.ucW);
-    b localb = this.ucW.getLogicDelegate();
+    AppMethodBeat.i(70059);
+    setMMTitle(2131765762);
+    this.iwY = ((Button)findViewById(2131302852));
+    this.zXM = ((WalletFormView)findViewById(2131302662));
+    this.zXN = ((WalletFormView)findViewById(2131297866));
+    this.zXO = ((WalletFormView)findViewById(2131303415));
+    this.zXP = ((WalletFormView)findViewById(2131303412));
+    this.zXR = ((TextView)findViewById(2131301034));
+    this.zXM.setOnInputValidChangeListener(this);
+    this.zXN.setOnInputValidChangeListener(this);
+    this.zXO.setOnInputValidChangeListener(this);
+    this.zXP.setOnInputValidChangeListener(this);
+    this.zXM.setFocusable(true);
+    this.zXM.getInfoIv().setVisibility(8);
+    com.tencent.mm.wallet_core.ui.formview.a.d(this.zXN);
+    b localb = this.zXN.getLogicDelegate();
     if ((localb instanceof a.a)) {
-      ((a.a)localb).RY(1);
+      ((a.a)localb).abz(1);
     }
-    this.ucX.setOnClickListener(new WalletRealNameVerifyUI.1(this));
-    this.ucY.setOnClickListener(new WalletRealNameVerifyUI.2(this));
-    this.gJr.setOnClickListener(new WalletRealNameVerifyUI.3(this));
-    setEditFocusListener(this.ucW, 1, false);
+    this.zXO.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(70048);
+        paramAnonymousView = new Intent(WalletRealNameVerifyUI.this.getContext(), WalletSelectProfessionUI.class);
+        paramAnonymousView.putExtra("key_profession_list", WalletRealNameVerifyUI.a(WalletRealNameVerifyUI.this));
+        WalletRealNameVerifyUI.this.startActivityForResult(paramAnonymousView, 1);
+        AppMethodBeat.o(70048);
+      }
+    });
+    this.zXP.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(70049);
+        paramAnonymousView = new Intent();
+        paramAnonymousView.putExtra("GetAddress", true);
+        paramAnonymousView.putExtra("ShowSelectedLocation", false);
+        paramAnonymousView.putExtra("IsRealNameVerifyScene", true);
+        paramAnonymousView.putExtra("IsNeedShowSearchBar", true);
+        com.tencent.mm.bs.d.c(WalletRealNameVerifyUI.this.getContext(), ".ui.tools.MultiStageCitySelectUI", paramAnonymousView, 2);
+        AppMethodBeat.o(70049);
+      }
+    });
+    this.iwY.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(70050);
+        paramAnonymousView = WalletRealNameVerifyUI.b(WalletRealNameVerifyUI.this).getText();
+        String str = WalletRealNameVerifyUI.c(WalletRealNameVerifyUI.this).getText();
+        WalletRealNameVerifyUI.a(WalletRealNameVerifyUI.this, paramAnonymousView, str);
+        AppMethodBeat.o(70050);
+      }
+    });
+    setEditFocusListener(this.zXN, 1, false);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(46623);
+        AppMethodBeat.i(70051);
         paramAnonymousMenuItem = (a)WalletRealNameVerifyUI.this.getProcess();
         if (paramAnonymousMenuItem != null) {
-          paramAnonymousMenuItem.e(WalletRealNameVerifyUI.this, 0);
+          paramAnonymousMenuItem.g(WalletRealNameVerifyUI.this, 0);
         }
         WalletRealNameVerifyUI.this.finish();
-        AppMethodBeat.o(46623);
+        AppMethodBeat.o(70051);
         return true;
       }
     });
-    this.ucZ = ((CheckBox)findViewById(2131829071));
-    this.nVZ = ((TextView)findViewById(2131829368));
-    this.ucZ.setChecked(true);
-    this.ucZ.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    this.zXQ = ((CheckBox)findViewById(2131296518));
+    this.sJS = ((TextView)findViewById(2131296516));
+    this.zXQ.setChecked(true);
+    this.zXQ.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(46624);
+        AppMethodBeat.i(70052);
         if (paramAnonymousBoolean)
         {
           WalletRealNameVerifyUI.d(WalletRealNameVerifyUI.this).setEnabled(true);
           WalletRealNameVerifyUI.d(WalletRealNameVerifyUI.this).setClickable(true);
-          AppMethodBeat.o(46624);
+          AppMethodBeat.o(70052);
           return;
         }
         WalletRealNameVerifyUI.d(WalletRealNameVerifyUI.this).setEnabled(false);
         WalletRealNameVerifyUI.d(WalletRealNameVerifyUI.this).setClickable(false);
-        AppMethodBeat.o(46624);
+        AppMethodBeat.o(70052);
       }
     });
-    this.nVZ.setOnClickListener(new WalletRealNameVerifyUI.6(this));
-    AppMethodBeat.o(46629);
+    this.sJS.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(70054);
+        paramAnonymousView = new LinkedList();
+        LinkedList localLinkedList = new LinkedList();
+        paramAnonymousView.add(WalletRealNameVerifyUI.this.getString(2131765084));
+        localLinkedList.add(Integer.valueOf(0));
+        if ((WalletRealNameVerifyUI.e(WalletRealNameVerifyUI.this) != null) && (WalletRealNameVerifyUI.e(WalletRealNameVerifyUI.this).AdW))
+        {
+          paramAnonymousView.add(WalletRealNameVerifyUI.this.getString(2131765082));
+          localLinkedList.add(Integer.valueOf(1));
+        }
+        h.a(WalletRealNameVerifyUI.this, "", paramAnonymousView, localLinkedList, "", new h.d()
+        {
+          public final void cv(int paramAnonymous2Int1, int paramAnonymous2Int2)
+          {
+            AppMethodBeat.i(70053);
+            Intent localIntent = new Intent();
+            switch (paramAnonymous2Int1)
+            {
+            }
+            for (;;)
+            {
+              localIntent.putExtra("showShare", false);
+              localIntent.putExtra("allow_mix_content_mode", false);
+              e.X(WalletRealNameVerifyUI.this.getContext(), localIntent);
+              AppMethodBeat.o(70053);
+              return;
+              localIntent.putExtra("rawUrl", WalletRealNameVerifyUI.this.getString(2131764961, new Object[] { ac.eFu() }));
+              continue;
+              if (WalletRealNameVerifyUI.e(WalletRealNameVerifyUI.this) != null) {
+                localIntent.putExtra("rawUrl", WalletRealNameVerifyUI.this.getString(2131764959, new Object[] { ac.eFu(), WalletRealNameVerifyUI.e(WalletRealNameVerifyUI.this).dca }));
+              }
+            }
+          }
+        });
+        AppMethodBeat.o(70054);
+      }
+    });
+    AppMethodBeat.o(70059);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(46631);
+    AppMethodBeat.i(70063);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt1 == 1)
     {
       if (paramInt2 == -1)
       {
-        this.udc = ((Profession)paramIntent.getParcelableExtra("key_select_profession"));
-        this.ucX.setText(this.udc.ues);
-        AppMethodBeat.o(46631);
+        this.zXT = ((Profession)paramIntent.getParcelableExtra("key_select_profession"));
+        this.zXO.setText(this.zXT.Aap);
+        AppMethodBeat.o(70063);
         return;
       }
-      ab.i("MicroMsg.WalletRealNameVerifyUI", "no choose!");
-      AppMethodBeat.o(46631);
+      ad.i("MicroMsg.WalletRealNameVerifyUI", "no choose!");
+      AppMethodBeat.o(70063);
       return;
     }
     if (paramInt1 == 2)
@@ -143,74 +247,78 @@ public class WalletRealNameVerifyUI
         String str2 = paramIntent.getStringExtra("ProviceName");
         String str3 = paramIntent.getStringExtra("CityName");
         this.countryCode = paramIntent.getStringExtra("Country");
-        this.fnC = paramIntent.getStringExtra("Contact_Province");
-        this.fnB = paramIntent.getStringExtra("Contact_City");
+        this.provinceCode = paramIntent.getStringExtra("Contact_Province");
+        this.cityCode = paramIntent.getStringExtra("Contact_City");
         paramIntent = new StringBuilder();
-        if (!bo.isNullOrNil(str1)) {
+        if (!bt.isNullOrNil(str1)) {
           paramIntent.append(str1);
         }
-        if (!bo.isNullOrNil(str2)) {
+        if (!bt.isNullOrNil(str2)) {
           paramIntent.append(" ").append(str2);
         }
-        if (!bo.isNullOrNil(str3)) {
+        if (!bt.isNullOrNil(str3)) {
           paramIntent.append(" ").append(str3);
         }
-        this.ucY.setText(paramIntent.toString());
-        AppMethodBeat.o(46631);
+        this.zXP.setText(paramIntent.toString());
+        AppMethodBeat.o(70063);
         return;
       }
-      ab.i("MicroMsg.WalletRealNameVerifyUI", "no area choose!");
+      ad.i("MicroMsg.WalletRealNameVerifyUI", "no area choose!");
     }
-    AppMethodBeat.o(46631);
+    AppMethodBeat.o(70063);
   }
   
-  public void onClick(View paramView) {}
+  public void onClick(View paramView)
+  {
+    AppMethodBeat.i(70062);
+    AppMethodBeat.o(70062);
+  }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(46627);
+    AppMethodBeat.i(70057);
     super.onCreate(paramBundle);
     this.mNetSceneMgr.addSceneEndListener(1616);
-    this.udb = ((ElementQuery)getInput().getParcelable("elemt_query"));
+    this.zXS = ((ElementQuery)getInput().getParcelable("elemt_query"));
     initView();
-    doSceneForceProgress(new g());
-    AppMethodBeat.o(46627);
+    doSceneForceProgress(new l());
+    AppMethodBeat.o(70057);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(46628);
+    AppMethodBeat.i(70058);
     this.mNetSceneMgr.removeSceneEndListener(1616);
     super.onDestroy();
-    AppMethodBeat.o(46628);
+    AppMethodBeat.o(70058);
   }
   
   public final void onInputValidChange(boolean paramBoolean)
   {
-    AppMethodBeat.i(46632);
-    ab.d("MicroMsg.WalletRealNameVerifyUI", "check info");
-    String str1 = this.ucV.getText();
-    String str2 = this.ucW.getText();
+    AppMethodBeat.i(70064);
+    ad.d("MicroMsg.WalletRealNameVerifyUI", "check info");
+    String str1 = this.zXM.getText();
+    String str2 = this.zXN.getText();
     int i;
-    if (bo.isNullOrNil(str1)) {
+    if (bt.isNullOrNil(str1)) {
       i = 0;
     }
     for (;;)
     {
       if (i == 0)
       {
-        this.gJr.setEnabled(false);
-        this.gJr.setClickable(false);
-        AppMethodBeat.o(46632);
+        this.iwY.setEnabled(false);
+        this.iwY.setClickable(false);
+        AppMethodBeat.o(70064);
         return;
-        if (bo.isNullOrNil(str2))
+        if (bt.isNullOrNil(str2))
         {
           i = 0;
           continue;
         }
-        if (this.udd)
+        if (this.zXU)
         {
-          if ((!bo.isNullOrNil(this.countryCode)) || (!bo.isNullOrNil(this.fnC)) || (!bo.isNullOrNil(this.fnB))) {}
+          if ((!bt.isNullOrNil(this.countryCode)) || (!bt.isNullOrNil(this.provinceCode)) || (!bt.isNullOrNil(this.cityCode))) {}
           for (i = 1;; i = 0)
           {
             if (i != 0) {
@@ -221,80 +329,92 @@ public class WalletRealNameVerifyUI
           }
         }
         label133:
-        if ((this.ude) && (this.udc == null)) {
+        if ((this.zXV) && (this.zXT == null)) {
           i = 0;
         }
       }
       else
       {
-        this.gJr.setEnabled(true);
-        this.gJr.setClickable(true);
-        AppMethodBeat.o(46632);
+        this.iwY.setEnabled(true);
+        this.iwY.setClickable(true);
+        AppMethodBeat.o(70064);
         return;
       }
       i = 1;
     }
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, final n paramn)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(46630);
+    AppMethodBeat.i(70060);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if ((paramm instanceof d))
+      if ((paramn instanceof g))
       {
-        c localc = getProcess();
-        paramString = null;
-        if (localc != null) {
-          paramString = localc.mEJ;
+        paramString = (g)paramn;
+        if (paramString.zVS == null) {
+          p(paramn);
         }
-        paramm = ((d)paramm).token;
-        ab.i("MicroMsg.WalletRealNameVerifyUI", "NetSceneRealNameVerify response succ");
-        if (localc != null)
+        for (;;)
         {
-          paramString.putString("key_real_name_token", paramm);
-          paramString.putString("key_country_code", this.countryCode);
-          paramString.putString("key_province_code", this.fnC);
-          paramString.putString("key_city_code", this.fnB);
-          paramString.putParcelable("key_profession", this.udc);
-          localc.a(this, 0, paramString);
+          AppMethodBeat.o(70060);
+          return true;
+          ad.i("MicroMsg.WalletRealNameVerifyUI", "NetSceneRealNameVerify show juveniles dialog");
+          h.d(this, paramString.zVS.doh, "", paramString.zVS.Ahr, paramString.zVS.Ahq, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(70055);
+              ad.i("MicroMsg.WalletRealNameVerifyUI", "NetSceneRealNameVerify dialog lOk");
+              WalletRealNameVerifyUI.a(WalletRealNameVerifyUI.this, paramn);
+              t.sw(1);
+              AppMethodBeat.o(70055);
+            }
+          }, new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(70056);
+              ad.i("MicroMsg.WalletRealNameVerifyUI", "NetSceneRealNameVerify dialog lCancel");
+              t.sw(0);
+              AppMethodBeat.o(70056);
+            }
+          });
         }
-        AppMethodBeat.o(46630);
-        return true;
       }
-      if ((paramm instanceof g))
+      if ((paramn instanceof l))
       {
-        paramString = (g)paramm;
-        if (paramString.ubV == 1) {}
+        paramString = (l)paramn;
+        if (paramString.zWB == 1) {}
         for (boolean bool1 = true;; bool1 = false)
         {
-          this.udd = bool1;
+          this.zXU = bool1;
           bool1 = bool2;
-          if (paramString.ubW == 1) {
+          if (paramString.zWC == 1) {
             bool1 = true;
           }
-          this.ude = bool1;
-          if (!this.ude) {
-            this.ucX.setVisibility(8);
+          this.zXV = bool1;
+          if (!this.zXV) {
+            this.zXO.setVisibility(8);
           }
-          if (!this.udd) {
-            this.ucY.setVisibility(8);
+          if (!this.zXU) {
+            this.zXP.setVisibility(8);
           }
-          if ((this.udd) || (this.ude)) {
-            this.uda.setText(2131305542);
+          if ((this.zXU) || (this.zXV)) {
+            this.zXR.setText(2131765757);
           }
-          this.mProfessions = paramString.ueq;
-          AppMethodBeat.o(46630);
+          this.mProfessions = paramString.Aan;
+          AppMethodBeat.o(70060);
           return true;
         }
       }
     }
     else
     {
-      ab.e("MicroMsg.WalletRealNameVerifyUI", "NetSceneRealNameVerify response fail");
+      ad.e("MicroMsg.WalletRealNameVerifyUI", "NetSceneRealNameVerify response fail");
     }
-    AppMethodBeat.o(46630);
+    AppMethodBeat.o(70060);
     return false;
   }
   
@@ -306,7 +426,7 @@ public class WalletRealNameVerifyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.WalletRealNameVerifyUI
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,11 @@ public abstract interface a
   
   public static abstract interface a
   {
-    public abstract void dar();
+    public abstract void eiP();
     
-    public abstract void das();
+    public abstract void eiQ();
     
-    public abstract void dat();
+    public abstract void eiR();
     
     public abstract int getItemCount();
     
@@ -25,7 +25,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.view.footer.a
  * JD-Core Version:    0.7.0.1
  */

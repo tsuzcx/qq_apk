@@ -28,29 +28,29 @@ public final class StringToIntConverter
   private final HashMap<String, Integer> zzwe;
   private final SparseArray<String> zzwf;
   @SafeParcelable.Field(getter="getSerializedMap", id=2)
-  private final ArrayList<StringToIntConverter.Entry> zzwg;
+  private final ArrayList<Entry> zzwg;
   
   static
   {
-    AppMethodBeat.i(61458);
+    AppMethodBeat.i(11950);
     CREATOR = new StringToIntConverterCreator();
-    AppMethodBeat.o(61458);
+    AppMethodBeat.o(11950);
   }
   
   public StringToIntConverter()
   {
-    AppMethodBeat.i(61451);
+    AppMethodBeat.i(11943);
     this.zzal = 1;
     this.zzwe = new HashMap();
     this.zzwf = new SparseArray();
     this.zzwg = null;
-    AppMethodBeat.o(61451);
+    AppMethodBeat.o(11943);
   }
   
   @SafeParcelable.Constructor
-  StringToIntConverter(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) ArrayList<StringToIntConverter.Entry> paramArrayList)
+  StringToIntConverter(@SafeParcelable.Param(id=1) int paramInt, @SafeParcelable.Param(id=2) ArrayList<Entry> paramArrayList)
   {
-    AppMethodBeat.i(61450);
+    AppMethodBeat.i(11942);
     this.zzal = paramInt;
     this.zzwe = new HashMap();
     this.zzwf = new SparseArray();
@@ -62,43 +62,43 @@ public final class StringToIntConverter
     {
       Object localObject = paramArrayList.get(paramInt);
       paramInt += 1;
-      localObject = (StringToIntConverter.Entry)localObject;
-      add(((StringToIntConverter.Entry)localObject).zzwh, ((StringToIntConverter.Entry)localObject).zzwi);
+      localObject = (Entry)localObject;
+      add(((Entry)localObject).zzwh, ((Entry)localObject).zzwi);
     }
-    AppMethodBeat.o(61450);
+    AppMethodBeat.o(11942);
   }
   
   public final StringToIntConverter add(String paramString, int paramInt)
   {
-    AppMethodBeat.i(61452);
+    AppMethodBeat.i(11944);
     this.zzwe.put(paramString, Integer.valueOf(paramInt));
     this.zzwf.put(paramInt, paramString);
-    AppMethodBeat.o(61452);
+    AppMethodBeat.o(11944);
     return this;
   }
   
   public final Integer convert(String paramString)
   {
-    AppMethodBeat.i(61453);
+    AppMethodBeat.i(11945);
     Integer localInteger = (Integer)this.zzwe.get(paramString);
     paramString = localInteger;
     if (localInteger == null) {
       paramString = (Integer)this.zzwe.get("gms_unknown");
     }
-    AppMethodBeat.o(61453);
+    AppMethodBeat.o(11945);
     return paramString;
   }
   
   public final String convertBack(Integer paramInteger)
   {
-    AppMethodBeat.i(61454);
+    AppMethodBeat.i(11946);
     paramInteger = (String)this.zzwf.get(paramInteger.intValue());
     if ((paramInteger == null) && (this.zzwe.containsKey("gms_unknown")))
     {
-      AppMethodBeat.o(61454);
+      AppMethodBeat.o(11946);
       return "gms_unknown";
     }
-    AppMethodBeat.o(61454);
+    AppMethodBeat.o(11946);
     return paramInteger;
   }
   
@@ -114,7 +114,7 @@ public final class StringToIntConverter
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(61455);
+    AppMethodBeat.i(11947);
     paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
     SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
     ArrayList localArrayList = new ArrayList();
@@ -122,11 +122,57 @@ public final class StringToIntConverter
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localArrayList.add(new StringToIntConverter.Entry(str, ((Integer)this.zzwe.get(str)).intValue()));
+      localArrayList.add(new Entry(str, ((Integer)this.zzwe.get(str)).intValue()));
     }
     SafeParcelWriter.writeTypedList(paramParcel, 2, localArrayList, false);
     SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
-    AppMethodBeat.o(61455);
+    AppMethodBeat.o(11947);
+  }
+  
+  @SafeParcelable.Class(creator="StringToIntConverterEntryCreator")
+  public static final class Entry
+    extends AbstractSafeParcelable
+  {
+    public static final Parcelable.Creator<Entry> CREATOR;
+    @SafeParcelable.VersionField(id=1)
+    private final int versionCode;
+    @SafeParcelable.Field(id=2)
+    final String zzwh;
+    @SafeParcelable.Field(id=3)
+    final int zzwi;
+    
+    static
+    {
+      AppMethodBeat.i(11941);
+      CREATOR = new StringToIntConverterEntryCreator();
+      AppMethodBeat.o(11941);
+    }
+    
+    @SafeParcelable.Constructor
+    Entry(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) String paramString, @SafeParcelable.Param(id=3) int paramInt2)
+    {
+      this.versionCode = paramInt1;
+      this.zzwh = paramString;
+      this.zzwi = paramInt2;
+    }
+    
+    Entry(String paramString, int paramInt)
+    {
+      this.versionCode = 1;
+      this.zzwh = paramString;
+      this.zzwi = paramInt;
+    }
+    
+    public final void writeToParcel(Parcel paramParcel, int paramInt)
+    {
+      AppMethodBeat.i(11940);
+      paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
+      SafeParcelWriter.writeInt(paramParcel, 1, this.versionCode);
+      SafeParcelWriter.writeString(paramParcel, 2, this.zzwh, false);
+      SafeParcelWriter.writeInt(paramParcel, 3, this.zzwi);
+      SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
+      AppMethodBeat.o(11940);
+    }
   }
 }
 

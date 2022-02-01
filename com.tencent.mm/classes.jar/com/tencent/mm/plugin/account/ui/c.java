@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
+import android.widget.Filter.FilterResults;
 import android.widget.Filterable;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -16,47 +17,47 @@ public final class c
   extends BaseAdapter
   implements Filterable
 {
-  private List<String> gCn;
-  private ArrayList<String> gCo;
-  private c.a gCp;
-  private String gCq;
+  private List<String> ipH;
+  private ArrayList<String> ipI;
+  private a ipJ;
+  private String ipK;
   private Context mContext;
   private final Object mLock;
   
   public c(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(124719);
+    AppMethodBeat.i(127871);
     this.mLock = new Object();
     this.mContext = paramContext;
-    this.gCn = Arrays.asList(paramArrayOfString);
-    this.gCq = paramString;
-    AppMethodBeat.o(124719);
+    this.ipH = Arrays.asList(paramArrayOfString);
+    this.ipK = paramString;
+    AppMethodBeat.o(127871);
   }
   
   private String getItem(int paramInt)
   {
-    AppMethodBeat.i(124721);
-    String str = (String)this.gCn.get(paramInt);
-    AppMethodBeat.o(124721);
+    AppMethodBeat.i(127873);
+    String str = (String)this.ipH.get(paramInt);
+    AppMethodBeat.o(127873);
     return str;
   }
   
   public final int getCount()
   {
-    AppMethodBeat.i(124720);
-    int i = this.gCn.size();
-    AppMethodBeat.o(124720);
+    AppMethodBeat.i(127872);
+    int i = this.ipH.size();
+    AppMethodBeat.o(127872);
     return i;
   }
   
   public final Filter getFilter()
   {
-    AppMethodBeat.i(124723);
-    if (this.gCp == null) {
-      this.gCp = new c.a(this, (byte)0);
+    AppMethodBeat.i(127875);
+    if (this.ipJ == null) {
+      this.ipJ = new a((byte)0);
     }
-    c.a locala = this.gCp;
-    AppMethodBeat.o(124723);
+    a locala = this.ipJ;
+    AppMethodBeat.o(127875);
     return locala;
   }
   
@@ -67,23 +68,106 @@ public final class c
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(124722);
+    AppMethodBeat.i(127874);
     if (paramView == null)
     {
-      paramView = View.inflate(this.mContext, 2130968794, null);
-      paramViewGroup = new c.b();
-      paramViewGroup.euY = ((TextView)paramView.findViewById(2131821592));
+      paramView = View.inflate(this.mContext, 2131493123, null);
+      paramViewGroup = new b();
+      paramViewGroup.ss = ((TextView)paramView.findViewById(2131305754));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
       String str = getItem(paramInt);
-      paramViewGroup.euY.setText(str);
-      paramView.setBackgroundResource(2130838445);
-      AppMethodBeat.o(124722);
+      paramViewGroup.ss.setText(str);
+      paramView.setBackgroundResource(2131231818);
+      AppMethodBeat.o(127874);
       return paramView;
-      paramViewGroup = (c.b)paramView.getTag();
+      paramViewGroup = (b)paramView.getTag();
     }
+  }
+  
+  final class a
+    extends Filter
+  {
+    private a() {}
+    
+    protected final Filter.FilterResults performFiltering(CharSequence arg1)
+    {
+      int i = 0;
+      AppMethodBeat.i(127869);
+      Filter.FilterResults localFilterResults = new Filter.FilterResults();
+      if (c.a(c.this) == null) {}
+      synchronized (c.b(c.this))
+      {
+        c.a(c.this, new ArrayList(c.c(c.this)));
+        if (??? != null) {
+          if (???.length() != 0) {
+            break label152;
+          }
+        }
+      }
+      synchronized (c.b(c.this))
+      {
+        ??? = new ArrayList(c.a(c.this));
+        localFilterResults.values = ???;
+        localFilterResults.count = ((ArrayList)???).size();
+        AppMethodBeat.o(127869);
+        return localFilterResults;
+        ??? = finally;
+        AppMethodBeat.o(127869);
+        throw ???;
+      }
+      label152:
+      ??? = ???.toString().toLowerCase();
+      String str1 = "";
+      Object localObject3;
+      if ((c.d(c.this) != null) && (c.d(c.this).length() > 0))
+      {
+        localObject3 = ???.split(c.d(c.this));
+        if ((localObject3 != null) && (localObject3.length > 1))
+        {
+          str1 = localObject3[0] + c.d(c.this);
+          ??? = localObject3[1];
+        }
+      }
+      for (;;)
+      {
+        localObject3 = c.a(c.this);
+        int j = ((ArrayList)localObject3).size();
+        ArrayList localArrayList = new ArrayList(j);
+        while (i < j)
+        {
+          String str2 = (String)((ArrayList)localObject3).get(i);
+          if (str2.toString().toLowerCase().startsWith(???)) {
+            localArrayList.add(str1 + str2);
+          }
+          i += 1;
+        }
+        localFilterResults.values = localArrayList;
+        localFilterResults.count = localArrayList.size();
+        break;
+      }
+    }
+    
+    protected final void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
+    {
+      AppMethodBeat.i(127870);
+      c.a(c.this, (List)paramFilterResults.values);
+      if (paramFilterResults.count > 0)
+      {
+        c.this.notifyDataSetChanged();
+        AppMethodBeat.o(127870);
+        return;
+      }
+      c.this.notifyDataSetInvalidated();
+      AppMethodBeat.o(127870);
+    }
+  }
+  
+  static final class b
+  {
+    public TextView ss;
   }
 }
 

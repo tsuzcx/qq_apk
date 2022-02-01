@@ -8,8 +8,8 @@ import java.util.List;
 public final class b<_Target extends a>
   implements a
 {
-  private boolean YJ = true;
-  private List<WeakReference<_Target>> ZX = new ArrayList();
+  private boolean acj = true;
+  private List<WeakReference<_Target>> adx = new ArrayList();
   
   /* Error */
   public final void a(_Target param_Target)
@@ -18,7 +18,7 @@ public final class b<_Target extends a>
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 23	com/tencent/mm/vending/e/b:YJ	Z
+    //   3: getfield 23	com/tencent/mm/vending/e/b:acj	Z
     //   6: ifne +16 -> 22
     //   9: aload_1
     //   10: invokestatic 32	junit/framework/Assert:assertNotNull	(Ljava/lang/Object;)V
@@ -28,7 +28,7 @@ public final class b<_Target extends a>
     //   20: monitorexit
     //   21: return
     //   22: aload_0
-    //   23: getfield 21	com/tencent/mm/vending/e/b:ZX	Ljava/util/List;
+    //   23: getfield 21	com/tencent/mm/vending/e/b:adx	Ljava/util/List;
     //   26: new 37	java/lang/ref/WeakReference
     //   29: dup
     //   30: aload_1
@@ -51,30 +51,30 @@ public final class b<_Target extends a>
     //   22	40	43	finally
   }
   
-  public final void lw()
+  public final void md()
   {
     for (;;)
     {
       try
       {
-        boolean bool = this.YJ;
+        boolean bool = this.acj;
         if (!bool) {
           return;
         }
-        Iterator localIterator = this.ZX.iterator();
+        Iterator localIterator = this.adx.iterator();
         if (localIterator.hasNext())
         {
           a locala = (a)((WeakReference)localIterator.next()).get();
           if (locala == null) {
             continue;
           }
-          locala.lw();
+          locala.md();
           continue;
         }
-        this.ZX.clear();
+        this.adx.clear();
       }
       finally {}
-      this.YJ = false;
+      this.acj = false;
     }
   }
 }

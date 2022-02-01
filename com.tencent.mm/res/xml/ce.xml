@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:title="@string/cts" android:key="open_sns_pay_pref" android:layout="@layout/afi" />
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_specail_scene_sound" android:persistent="false" android:title="@string/fao" />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_specail_scene_shake" android:layout="@layout/aqx" android:persistent="false" android:title="@string/f_w" />
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <Preference android:key="room_openim_about" android:layout="@layout/aqa" android:title="@string/fap" />
 </PreferenceScreen>

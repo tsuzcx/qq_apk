@@ -1,48 +1,59 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sight.decode.ui.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.plugin.sns.ui.previewimageview.c.a;
+import com.tencent.mm.plugin.sns.ui.previewimageview.e;
+import com.tencent.mm.ui.MMActivity;
+import java.util.ArrayList;
 
 final class ak$2
-  implements View.OnClickListener
+  implements c.a
 {
   ak$2(ak paramak) {}
   
-  public final void onClick(View paramView)
+  public final void hn(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(38599);
-    if (!e.cN(this.rLM.videoPath))
+    AppMethodBeat.i(98156);
+    ak.b localb = this.xqH.xqA;
+    String str;
+    if ((paramInt1 != paramInt2) && (localb.xqL.size() > paramInt1))
     {
-      ab.i("MicroMsg.SightWidget", "click videopath is not exist " + this.rLM.videoPath);
-      AppMethodBeat.o(38599);
+      str = (String)localb.xqL.remove(paramInt1);
+      if (paramInt2 >= localb.xqL.size()) {
+        break label95;
+      }
+      localb.xqL.add(paramInt2, str);
+    }
+    for (;;)
+    {
+      this.xqH.imP.getIntent().putExtra("sns_kemdia_path_list", this.xqH.xqA.xqL);
+      AppMethodBeat.o(98156);
       return;
+      label95:
+      localb.xqL.add(str);
     }
-    if (this.rLM.rLL != null)
-    {
-      this.rLM.rLL.dismiss();
-      this.rLM.rLL = null;
+  }
+  
+  public final void removeItem(int paramInt)
+  {
+    AppMethodBeat.i(98157);
+    ak.b localb = this.xqH.xqA;
+    if (localb.xqL.size() > paramInt) {
+      localb.xqL.remove(paramInt);
     }
-    this.rLM.rLL = new c(this.rLM.cmc);
-    paramView = this.rLM.rLL;
-    String str1 = this.rLM.videoPath;
-    String str2 = this.rLM.thumbPath;
-    paramView.eNO = str1;
-    paramView.imagePath = str2;
-    paramView = this.rLM.rLL;
-    paramView.cKC = 0;
-    paramView.qTq = 0;
-    paramView.mwo = 1;
-    this.rLM.rLL.show();
-    AppMethodBeat.o(38599);
+    if ((this.xqH.imP instanceof SnsUploadUI)) {
+      ((SnsUploadUI)this.xqH.imP).dCO();
+    }
+    this.xqH.imP.getIntent().putExtra("sns_kemdia_path_list", this.xqH.xqA.xqL);
+    this.xqH.imP.getIntent().putExtra("sns_kemdia_path", "");
+    ((e)this.xqH.xqB).NR(this.xqH.xqA.xqL.size());
+    AppMethodBeat.o(98157);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ak.2
  * JD-Core Version:    0.7.0.1
  */

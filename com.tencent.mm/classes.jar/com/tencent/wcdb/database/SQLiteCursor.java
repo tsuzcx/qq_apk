@@ -21,52 +21,48 @@ public class SQLiteCursor
   private int mCount;
   private int mCursorWindowCapacity;
   private final SQLiteCursorDriver mDriver;
-  private final String mEditTable;
   private final SQLiteQuery mQuery;
-  private final Throwable mStackTrace;
   
   static
   {
-    AppMethodBeat.i(12419);
+    AppMethodBeat.i(3103);
     FACTORY = new SQLiteDatabase.CursorFactory()
     {
       public final Cursor newCursor(SQLiteDatabase paramAnonymousSQLiteDatabase, SQLiteCursorDriver paramAnonymousSQLiteCursorDriver, String paramAnonymousString, SQLiteProgram paramAnonymousSQLiteProgram)
       {
-        AppMethodBeat.i(12405);
+        AppMethodBeat.i(3089);
         paramAnonymousSQLiteDatabase = new SQLiteCursor(paramAnonymousSQLiteCursorDriver, paramAnonymousString, (SQLiteQuery)paramAnonymousSQLiteProgram);
-        AppMethodBeat.o(12405);
+        AppMethodBeat.o(3089);
         return paramAnonymousSQLiteDatabase;
       }
       
       public final SQLiteProgram newQuery(SQLiteDatabase paramAnonymousSQLiteDatabase, String paramAnonymousString, Object[] paramAnonymousArrayOfObject, CancellationSignal paramAnonymousCancellationSignal)
       {
-        AppMethodBeat.i(12406);
+        AppMethodBeat.i(3090);
         paramAnonymousSQLiteDatabase = new SQLiteQuery(paramAnonymousSQLiteDatabase, paramAnonymousString, paramAnonymousArrayOfObject, paramAnonymousCancellationSignal);
-        AppMethodBeat.o(12406);
+        AppMethodBeat.o(3090);
         return paramAnonymousSQLiteDatabase;
       }
     };
-    AppMethodBeat.o(12419);
+    AppMethodBeat.o(3103);
   }
   
   public SQLiteCursor(SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
   {
-    AppMethodBeat.i(12407);
+    AppMethodBeat.i(3091);
     this.mCount = -1;
     if (paramSQLiteQuery == null)
     {
       paramSQLiteCursorDriver = new IllegalArgumentException("query object cannot be null");
-      AppMethodBeat.o(12407);
+      AppMethodBeat.o(3091);
       throw paramSQLiteCursorDriver;
     }
-    this.mStackTrace = null;
     this.mDriver = paramSQLiteCursorDriver;
-    this.mEditTable = paramString;
     this.mColumnNameMap = null;
     this.mQuery = paramSQLiteQuery;
     this.mColumns = paramSQLiteQuery.getColumnNames();
     this.mRowIdColumnIndex = DatabaseUtils.findRowIdColumnIndex(this.mColumns);
-    AppMethodBeat.o(12407);
+    AppMethodBeat.o(3091);
   }
   
   @Deprecated
@@ -77,7 +73,7 @@ public class SQLiteCursor
   
   private void fillWindow(int paramInt)
   {
-    AppMethodBeat.i(12411);
+    AppMethodBeat.i(3095);
     clearOrCreateWindow(getDatabase().getPath());
     try
     {
@@ -86,25 +82,25 @@ public class SQLiteCursor
         i = DatabaseUtils.cursorPickFillWindowStartPosition(paramInt, 0);
         this.mCount = this.mQuery.fillWindow(this.mWindow, i, paramInt, true);
         this.mCursorWindowCapacity = this.mWindow.getNumRows();
-        AppMethodBeat.o(12411);
+        AppMethodBeat.o(3095);
         return;
       }
       int i = DatabaseUtils.cursorPickFillWindowStartPosition(paramInt, this.mCursorWindowCapacity);
       this.mQuery.fillWindow(this.mWindow, i, paramInt, false);
-      AppMethodBeat.o(12411);
+      AppMethodBeat.o(3095);
       return;
     }
     catch (RuntimeException localRuntimeException)
     {
       closeWindow();
-      AppMethodBeat.o(12411);
+      AppMethodBeat.o(3095);
       throw localRuntimeException;
     }
   }
   
   public void close()
   {
-    AppMethodBeat.i(12414);
+    AppMethodBeat.i(3098);
     super.close();
     try
     {
@@ -114,21 +110,21 @@ public class SQLiteCursor
     }
     finally
     {
-      AppMethodBeat.o(12414);
+      AppMethodBeat.o(3098);
     }
   }
   
   public void deactivate()
   {
-    AppMethodBeat.i(12413);
+    AppMethodBeat.i(3097);
     super.deactivate();
     this.mDriver.cursorDeactivated();
-    AppMethodBeat.o(12413);
+    AppMethodBeat.o(3097);
   }
   
   public void finalize()
   {
-    AppMethodBeat.i(12418);
+    AppMethodBeat.i(3102);
     try
     {
       if (this.mWindow != null) {
@@ -139,13 +135,13 @@ public class SQLiteCursor
     finally
     {
       super.finalize();
-      AppMethodBeat.o(12418);
+      AppMethodBeat.o(3102);
     }
   }
   
   public int getColumnIndex(String paramString)
   {
-    AppMethodBeat.i(12412);
+    AppMethodBeat.i(3096);
     if (this.mColumnNameMap == null)
     {
       localObject = this.mColumns;
@@ -171,10 +167,10 @@ public class SQLiteCursor
     if (paramString != null)
     {
       i = paramString.intValue();
-      AppMethodBeat.o(12412);
+      AppMethodBeat.o(3096);
       return i;
     }
-    AppMethodBeat.o(12412);
+    AppMethodBeat.o(3096);
     return -1;
   }
   
@@ -185,30 +181,38 @@ public class SQLiteCursor
   
   public int getCount()
   {
-    AppMethodBeat.i(12410);
+    AppMethodBeat.i(3094);
     if (this.mCount == -1) {
       fillWindow(0);
     }
     int i = this.mCount;
-    AppMethodBeat.o(12410);
+    AppMethodBeat.o(3094);
     return i;
   }
   
   public SQLiteDatabase getDatabase()
   {
-    AppMethodBeat.i(12408);
+    AppMethodBeat.i(3092);
     SQLiteDatabase localSQLiteDatabase = this.mQuery.getDatabase();
-    AppMethodBeat.o(12408);
+    AppMethodBeat.o(3092);
     return localSQLiteDatabase;
   }
   
   public boolean onMove(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(12409);
-    if ((this.mWindow == null) || (paramInt2 < this.mWindow.getStartPosition()) || (paramInt2 >= this.mWindow.getStartPosition() + this.mWindow.getNumRows())) {
+    AppMethodBeat.i(3093);
+    if ((this.mWindow == null) || (paramInt2 < this.mWindow.getStartPosition()) || (paramInt2 >= this.mWindow.getStartPosition() + this.mWindow.getNumRows()))
+    {
       fillWindow(paramInt2);
+      if ((paramInt2 >= this.mWindow.getStartPosition()) && (paramInt2 < this.mWindow.getStartPosition() + this.mWindow.getNumRows()))
+      {
+        AppMethodBeat.o(3093);
+        return true;
+      }
+      AppMethodBeat.o(3093);
+      return false;
     }
-    AppMethodBeat.o(12409);
+    AppMethodBeat.o(3093);
     return true;
   }
   
@@ -216,79 +220,79 @@ public class SQLiteCursor
   public boolean requery()
   {
     // Byte code:
-    //   0: sipush 12415
-    //   3: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: sipush 3099
+    //   3: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: invokevirtual 218	com/tencent/wcdb/database/SQLiteCursor:isClosed	()Z
+    //   7: invokevirtual 211	com/tencent/wcdb/database/SQLiteCursor:isClosed	()Z
     //   10: ifeq +11 -> 21
-    //   13: sipush 12415
-    //   16: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   13: sipush 3099
+    //   16: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   19: iconst_0
     //   20: ireturn
     //   21: aload_0
     //   22: monitorenter
     //   23: aload_0
-    //   24: getfield 67	com/tencent/wcdb/database/SQLiteCursor:mQuery	Lcom/tencent/wcdb/database/SQLiteQuery;
-    //   27: invokevirtual 206	com/tencent/wcdb/database/SQLiteQuery:getDatabase	()Lcom/tencent/wcdb/database/SQLiteDatabase;
-    //   30: invokevirtual 221	com/tencent/wcdb/database/SQLiteDatabase:isOpen	()Z
+    //   24: getfield 60	com/tencent/wcdb/database/SQLiteCursor:mQuery	Lcom/tencent/wcdb/database/SQLiteQuery;
+    //   27: invokevirtual 199	com/tencent/wcdb/database/SQLiteQuery:getDatabase	()Lcom/tencent/wcdb/database/SQLiteDatabase;
+    //   30: invokevirtual 214	com/tencent/wcdb/database/SQLiteDatabase:isOpen	()Z
     //   33: ifne +13 -> 46
     //   36: aload_0
     //   37: monitorexit
-    //   38: sipush 12415
-    //   41: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   38: sipush 3099
+    //   41: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   44: iconst_0
     //   45: ireturn
     //   46: aload_0
-    //   47: getfield 113	com/tencent/wcdb/database/SQLiteCursor:mWindow	Lcom/tencent/wcdb/CursorWindow;
+    //   47: getfield 106	com/tencent/wcdb/database/SQLiteCursor:mWindow	Lcom/tencent/wcdb/CursorWindow;
     //   50: ifnull +10 -> 60
     //   53: aload_0
-    //   54: getfield 113	com/tencent/wcdb/database/SQLiteCursor:mWindow	Lcom/tencent/wcdb/CursorWindow;
-    //   57: invokevirtual 224	com/tencent/wcdb/CursorWindow:clear	()V
+    //   54: getfield 106	com/tencent/wcdb/database/SQLiteCursor:mWindow	Lcom/tencent/wcdb/CursorWindow;
+    //   57: invokevirtual 217	com/tencent/wcdb/CursorWindow:clear	()V
     //   60: aload_0
     //   61: iconst_m1
-    //   62: putfield 227	com/tencent/wcdb/database/SQLiteCursor:mPos	I
+    //   62: putfield 220	com/tencent/wcdb/database/SQLiteCursor:mPos	I
     //   65: aload_0
     //   66: iconst_m1
-    //   67: putfield 50	com/tencent/wcdb/database/SQLiteCursor:mCount	I
+    //   67: putfield 47	com/tencent/wcdb/database/SQLiteCursor:mCount	I
     //   70: aload_0
-    //   71: getfield 61	com/tencent/wcdb/database/SQLiteCursor:mDriver	Lcom/tencent/wcdb/database/SQLiteCursorDriver;
+    //   71: getfield 56	com/tencent/wcdb/database/SQLiteCursor:mDriver	Lcom/tencent/wcdb/database/SQLiteCursorDriver;
     //   74: aload_0
-    //   75: invokeinterface 231 2 0
+    //   75: invokeinterface 224 2 0
     //   80: aload_0
     //   81: monitorexit
     //   82: aload_0
-    //   83: invokespecial 233	com/tencent/wcdb/AbstractWindowedCursor:requery	()Z
+    //   83: invokespecial 226	com/tencent/wcdb/AbstractWindowedCursor:requery	()Z
     //   86: istore_1
-    //   87: sipush 12415
-    //   90: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   87: sipush 3099
+    //   90: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   93: iload_1
     //   94: ireturn
     //   95: astore_2
     //   96: aload_0
     //   97: monitorexit
-    //   98: sipush 12415
-    //   101: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: sipush 3099
+    //   101: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   104: aload_2
     //   105: athrow
     //   106: astore_2
     //   107: ldc 15
-    //   109: new 235	java/lang/StringBuilder
+    //   109: new 228	java/lang/StringBuilder
     //   112: dup
-    //   113: ldc 237
-    //   115: invokespecial 238	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   113: ldc 230
+    //   115: invokespecial 231	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   118: aload_2
-    //   119: invokevirtual 241	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
-    //   122: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   125: invokevirtual 248	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   119: invokevirtual 234	java/lang/IllegalStateException:getMessage	()Ljava/lang/String;
+    //   122: invokevirtual 238	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   125: invokevirtual 241	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   128: iconst_1
-    //   129: anewarray 183	java/lang/Object
+    //   129: anewarray 176	java/lang/Object
     //   132: dup
     //   133: iconst_0
     //   134: aload_2
     //   135: aastore
-    //   136: invokestatic 251	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   139: sipush 12415
-    //   142: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   136: invokestatic 244	com/tencent/wcdb/support/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   139: sipush 3099
+    //   142: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   145: iconst_0
     //   146: ireturn
     // Local variable table:
@@ -308,17 +312,17 @@ public class SQLiteCursor
   
   public void setSelectionArguments(String[] paramArrayOfString)
   {
-    AppMethodBeat.i(12417);
+    AppMethodBeat.i(3101);
     this.mDriver.setBindArguments(paramArrayOfString);
-    AppMethodBeat.o(12417);
+    AppMethodBeat.o(3101);
   }
   
   public void setWindow(CursorWindow paramCursorWindow)
   {
-    AppMethodBeat.i(12416);
+    AppMethodBeat.i(3100);
     super.setWindow(paramCursorWindow);
     this.mCount = -1;
-    AppMethodBeat.o(12416);
+    AppMethodBeat.o(3100);
   }
 }
 

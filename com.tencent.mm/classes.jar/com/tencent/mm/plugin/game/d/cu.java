@@ -1,73 +1,73 @@
 package com.tencent.mm.plugin.game.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import f.a.a.b;
 
 public final class cu
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String nqD;
+  public String sag;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117001);
+    AppMethodBeat.i(149417);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.nqD == null)
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.sag == null)
       {
         paramVarArgs = new b("Not all required fields were included: PkgId");
-        AppMethodBeat.o(117001);
+        AppMethodBeat.o(149417);
         throw paramVarArgs;
       }
-      if (this.nqD != null) {
-        paramVarArgs.e(1, this.nqD);
+      if (this.sag != null) {
+        paramVarArgs.d(1, this.sag);
       }
-      AppMethodBeat.o(117001);
+      AppMethodBeat.o(149417);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.nqD == null) {
+      if (this.sag == null) {
         break label261;
       }
     }
     label261:
-    for (paramInt = e.a.a.b.b.a.f(1, this.nqD) + 0;; paramInt = 0)
+    for (paramInt = f.a.a.b.b.a.e(1, this.sag) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(117001);
+      AppMethodBeat.o(149417);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        if (this.nqD == null)
+        if (this.sag == null)
         {
           paramVarArgs = new b("Not all required fields were included: PkgId");
-          AppMethodBeat.o(117001);
+          AppMethodBeat.o(149417);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(117001);
+        AppMethodBeat.o(149417);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         cu localcu = (cu)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(117001);
+          AppMethodBeat.o(149417);
           return -1;
         }
-        localcu.nqD = locala.CLY.readString();
-        AppMethodBeat.o(117001);
+        localcu.sag = locala.KhF.readString();
+        AppMethodBeat.o(149417);
         return 0;
       }
-      AppMethodBeat.o(117001);
+      AppMethodBeat.o(149417);
       return -1;
     }
   }

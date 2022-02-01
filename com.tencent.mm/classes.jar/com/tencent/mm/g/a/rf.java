@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class rf
   extends b
 {
-  public rf.a cHL;
+  public a dwO;
   
   public rf()
   {
@@ -15,16 +15,21 @@ public final class rf
   
   private rf(byte paramByte)
   {
-    AppMethodBeat.i(35550);
-    this.cHL = new rf.a();
-    this.ymq = false;
+    AppMethodBeat.i(94800);
+    this.dwO = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(35550);
+    AppMethodBeat.o(94800);
+  }
+  
+  public static final class a
+  {
+    public long msgId = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.rf
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ public final class e
   
   static
   {
-    AppMethodBeat.i(5648);
+    AppMethodBeat.i(77859);
     SQL_CREATE = new String[] { j.getCreateSQLs(d.info, "WebViewHistory") };
-    AppMethodBeat.o(5648);
+    AppMethodBeat.o(77859);
   }
   
   public e(com.tencent.mm.sdk.e.e parame)
@@ -22,7 +22,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.b.e
  * JD-Core Version:    0.7.0.1
  */

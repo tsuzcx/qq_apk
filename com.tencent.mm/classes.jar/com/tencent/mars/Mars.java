@@ -2,27 +2,31 @@ package com.tencent.mars;
 
 import android.content.Context;
 import com.tencent.mars.comm.PlatformComm;
-import com.tencent.mm.app.j.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.app.n.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Mars
 {
-  private static final j.a appForegroundListener = new j.a()
+  private static final n.a appForegroundListener = new n.a()
   {
     public final void onAppBackground(String paramAnonymousString)
     {
-      BaseEvent.onForeground(false);
+      Mars.onForeground(false);
     }
     
     public final void onAppForeground(String paramAnonymousString)
     {
-      BaseEvent.onForeground(true);
+      Mars.onForeground(true);
     }
   };
   private static volatile boolean hasInitialized = false;
+  public static final String libMarsBase = "wechatbase";
+  public static final String libMarsHttp = "wechathttp";
+  public static final String libMarsMM = "wechatmm";
+  public static final String libMarsNetwork = "wechatnetwork";
   private static ArrayList<String[]> libModules = new ArrayList();
   
   public static void checkLoadedModules(ArrayList<String> paramArrayList, String paramString)
@@ -39,7 +43,7 @@ public class Mars
       try
       {
         String[] arrayOfString = new String[0];
-        ab.i(paramString, "loaded modules: " + Arrays.toString(paramArrayList.toArray(arrayOfString)));
+        ad.i(paramString, "loaded modules: " + Arrays.toString(paramArrayList.toArray(arrayOfString)));
         Arrays.sort(arrayOfString);
         libModules.add(arrayOfString);
         j = 0;
@@ -135,9 +139,9 @@ public class Mars
     }
   }
   
-  public static void init(Context paramContext, ak paramak)
+  public static void init(Context paramContext, ap paramap)
   {
-    PlatformComm.init(paramContext, paramak);
+    PlatformComm.init(paramContext, paramap);
     hasInitialized = true;
   }
   
@@ -151,10 +155,12 @@ public class Mars
     catch (Throwable localThrowable) {}
   }
   
+  public static void onCreate() {}
+  
   public static void onCreate(boolean paramBoolean)
   {
     if ((paramBoolean) && (hasInitialized)) {
-      BaseEvent.onCreate();
+      onCreate();
     }
     for (;;)
     {
@@ -163,15 +169,31 @@ public class Mars
       if (paramBoolean) {
         break;
       }
-      BaseEvent.onCreate();
+      onCreate();
     }
     throw new IllegalStateException("function MarsCore.init must be executed before Mars.onCreate when application firststartup.");
   }
   
   public static void onDestroy()
   {
-    BaseEvent.onDestroy();
+    onDestroyImpl();
     appForegroundListener.dead();
+  }
+  
+  private static void onDestroyImpl() {}
+  
+  public static void onExceptionCrash() {}
+  
+  public static void onForeground(boolean paramBoolean)
+  {
+    BaseEvent.onForeground(paramBoolean);
+  }
+  
+  public static void onNetworkChange() {}
+  
+  public static void onSingalCrash(int paramInt)
+  {
+    BaseEvent.onSingalCrash(paramInt);
   }
 }
 

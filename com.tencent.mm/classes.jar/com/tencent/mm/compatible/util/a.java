@@ -10,47 +10,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static int bL(Context paramContext)
+  public static int ca(Context paramContext)
   {
-    AppMethodBeat.i(93058);
+    AppMethodBeat.i(155863);
     TypedValue localTypedValue = new TypedValue();
     int i;
-    if (paramContext.getTheme().resolveAttribute(2130772143, localTypedValue, true))
+    if (paramContext.getTheme().resolveAttribute(2130968600, localTypedValue, true))
     {
       i = TypedValue.complexToDimensionPixelSize(localTypedValue.data, paramContext.getResources().getDisplayMetrics());
-      AppMethodBeat.o(93058);
+      AppMethodBeat.o(155863);
       return i;
     }
     if (paramContext.getTheme().resolveAttribute(16843499, localTypedValue, true))
     {
       i = TypedValue.complexToDimensionPixelSize(localTypedValue.data, paramContext.getResources().getDisplayMetrics());
-      AppMethodBeat.o(93058);
+      AppMethodBeat.o(155863);
       return i;
     }
-    AppMethodBeat.o(93058);
+    AppMethodBeat.o(155863);
     return 0;
   }
   
-  public static int p(Activity paramActivity)
+  public static int u(Activity paramActivity)
   {
-    AppMethodBeat.i(93057);
+    AppMethodBeat.i(155862);
     if ((paramActivity instanceof AppCompatActivity))
     {
       if (((AppCompatActivity)paramActivity).getSupportActionBar() != null)
       {
         i = ((AppCompatActivity)paramActivity).getSupportActionBar().getHeight();
-        AppMethodBeat.o(93057);
+        AppMethodBeat.o(155862);
         return i;
       }
     }
     else if (paramActivity.getActionBar() != null)
     {
       i = paramActivity.getActionBar().getHeight();
-      AppMethodBeat.o(93057);
+      AppMethodBeat.o(155862);
       return i;
     }
-    int i = bL(paramActivity);
-    AppMethodBeat.o(93057);
+    int i = ca(paramActivity);
+    AppMethodBeat.o(155862);
     return i;
   }
 }

@@ -2,58 +2,59 @@ package com.tencent.luggage.game.page;
 
 import com.tencent.luggage.sdk.b.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.bf;
-import com.tencent.mm.plugin.appbrand.page.o;
-import com.tencent.mm.plugin.appbrand.page.r;
-import com.tencent.mm.plugin.appbrand.page.r.a;
-import com.tencent.mm.plugin.appbrand.page.r.b;
-import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.page.aa;
+import com.tencent.mm.plugin.appbrand.page.by;
+import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.plugin.appbrand.page.t;
+import com.tencent.mm.plugin.appbrand.page.t.a;
+import com.tencent.mm.plugin.appbrand.page.t.d;
+import java.util.concurrent.Callable;
 
 public class f
-  implements r.a
+  implements t.a
 {
-  public final o a(r paramr)
+  public final boolean Cu()
   {
-    AppMethodBeat.i(140495);
-    paramr = new e(paramr.getContext(), paramr);
-    AppMethodBeat.o(140495);
-    return paramr;
+    return true;
   }
   
-  public final boolean a(String paramString, bf parambf, r paramr, r.b paramb)
+  public aa a(t paramt)
   {
-    AppMethodBeat.i(140497);
-    switch (f.1.bBL[parambf.ordinal()])
+    AppMethodBeat.i(177440);
+    paramt = new c(h.class);
+    AppMethodBeat.o(177440);
+    return paramt;
+  }
+  
+  public final q a(String paramString, by paramby, t paramt, Callable<q> paramCallable)
+  {
+    AppMethodBeat.i(177439);
+    paramString = new e(paramt.getContext(), paramt);
+    AppMethodBeat.o(177439);
+    return paramString;
+  }
+  
+  public final boolean a(String paramString, by paramby, t paramt, t.d paramd)
+  {
+    AppMethodBeat.i(130639);
+    switch (1.cdA[paramby.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(140497);
+      AppMethodBeat.o(130639);
       return true;
-      paramb.proceed();
+      paramd.proceed();
       continue;
-      paramr.a(null, paramr.getCurrentPage(), bf.izV, paramString);
-      paramr.getCurrentPage().loadUrl(paramString);
-      paramr.a(null, paramr.getCurrentPage(), bf.izV);
+      paramt.a(null, paramt.getCurrentPage(), by.lgu, paramString);
+      paramt.getCurrentPage().loadUrl(paramString);
+      paramt.a(null, paramt.getCurrentPage(), by.lgu);
     }
-  }
-  
-  public v vw()
-  {
-    AppMethodBeat.i(140496);
-    c localc = new c(h.class);
-    AppMethodBeat.o(140496);
-    return localc;
-  }
-  
-  public final boolean vx()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.game.page.f
  * JD-Core Version:    0.7.0.1
  */

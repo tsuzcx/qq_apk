@@ -24,7 +24,7 @@ final class BulkCursorProxy
   
   public final void close()
   {
-    AppMethodBeat.i(11970);
+    AppMethodBeat.i(2651);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -38,13 +38,13 @@ final class BulkCursorProxy
     {
       localParcel1.recycle();
       localParcel2.recycle();
-      AppMethodBeat.o(11970);
+      AppMethodBeat.o(2651);
     }
   }
   
   public final void deactivate()
   {
-    AppMethodBeat.i(11969);
+    AppMethodBeat.i(2650);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -58,13 +58,13 @@ final class BulkCursorProxy
     {
       localParcel1.recycle();
       localParcel2.recycle();
-      AppMethodBeat.o(11969);
+      AppMethodBeat.o(2650);
     }
   }
   
   public final Bundle getExtras()
   {
-    AppMethodBeat.i(11972);
+    AppMethodBeat.i(2653);
     Object localObject1;
     Parcel localParcel;
     if (this.mExtras == null)
@@ -81,20 +81,20 @@ final class BulkCursorProxy
       ((Parcel)localObject1).recycle();
       localParcel.recycle();
       localObject1 = this.mExtras;
-      AppMethodBeat.o(11972);
+      AppMethodBeat.o(2653);
       return localObject1;
     }
     finally
     {
       ((Parcel)localObject1).recycle();
       localParcel.recycle();
-      AppMethodBeat.o(11972);
+      AppMethodBeat.o(2653);
     }
   }
   
   public final CursorWindow getWindow(int paramInt)
   {
-    AppMethodBeat.i(11967);
+    AppMethodBeat.i(2648);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -113,13 +113,13 @@ final class BulkCursorProxy
     {
       localParcel1.recycle();
       localParcel2.recycle();
-      AppMethodBeat.o(11967);
+      AppMethodBeat.o(2648);
     }
   }
   
   public final void onMove(int paramInt)
   {
-    AppMethodBeat.i(11968);
+    AppMethodBeat.i(2649);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -134,7 +134,7 @@ final class BulkCursorProxy
     {
       localParcel1.recycle();
       localParcel2.recycle();
-      AppMethodBeat.o(11968);
+      AppMethodBeat.o(2649);
     }
   }
   
@@ -142,7 +142,7 @@ final class BulkCursorProxy
   public final int requery(IContentObserver paramIContentObserver)
   {
     // Byte code:
-    //   0: sipush 11971
+    //   0: sipush 2652
     //   3: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: invokestatic 35	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   9: astore 4
@@ -172,7 +172,7 @@ final class BulkCursorProxy
     //   58: invokevirtual 56	android/os/Parcel:recycle	()V
     //   61: aload 5
     //   63: invokevirtual 56	android/os/Parcel:recycle	()V
-    //   66: sipush 11971
+    //   66: sipush 2652
     //   69: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   72: iload_2
     //   73: ireturn
@@ -192,7 +192,7 @@ final class BulkCursorProxy
     //   102: invokevirtual 56	android/os/Parcel:recycle	()V
     //   105: aload 5
     //   107: invokevirtual 56	android/os/Parcel:recycle	()V
-    //   110: sipush 11971
+    //   110: sipush 2652
     //   113: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   116: aload_1
     //   117: athrow
@@ -212,7 +212,7 @@ final class BulkCursorProxy
   
   public final Bundle respond(Bundle paramBundle)
   {
-    AppMethodBeat.i(11973);
+    AppMethodBeat.i(2654);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -228,13 +228,13 @@ final class BulkCursorProxy
     {
       localParcel1.recycle();
       localParcel2.recycle();
-      AppMethodBeat.o(11973);
+      AppMethodBeat.o(2654);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.wcdb.BulkCursorProxy
  * JD-Core Version:    0.7.0.1
  */

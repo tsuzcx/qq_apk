@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.facedetect.views.FaceDetectCameraView android:id="@id/ev4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <View android:id="@id/ev5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.facedetect.views.FaceDetectDecorView android:id="@id/ev6" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+<RelativeLayout android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/c9h" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/c9g" android:focusable="false" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
+    <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/q" android:textColor="@color/aj" android:id="@id/ea4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_centerHorizontal="true" />
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/b25" />
+    <RelativeLayout android:id="@id/go_" android:background="@drawable/ag7" android:paddingTop="@dimen/c5" android:paddingBottom="@dimen/c5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <com.tencent.mm.pluginsdk.ui.tools.RedesignVideoPlayerSeekBar android:id="@id/gne" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c8" android:layout_marginRight="@dimen/c8" />
+        <com.tencent.mm.ui.tools.PressAlphaImageView android:id="@id/glt" android:visibility="visible" android:layout_width="@dimen/c9" android:layout_height="@dimen/c9" android:layout_marginLeft="@dimen/c8" android:layout_marginTop="@dimen/c5" android:src="@raw/icons_outlined_close" android:layout_below="@id/gne" android:elevation="@dimen/ajv" app:iconColor="@color/aj" />
+    </RelativeLayout>
+</RelativeLayout>

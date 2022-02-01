@@ -6,15 +6,16 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.t;
-import com.tencent.mm.plugin.sport.a.d;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.w;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference.a;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -25,93 +26,138 @@ import java.util.List;
 public class SportBlackListUI
   extends MMPreference
 {
-  private ContactListExpandPreference eeU;
-  private List<String> sqe;
-  private ContactListExpandPreference.a sqf;
+  private ContactListExpandPreference fpW;
+  private List<String> yct;
+  private ContactListExpandPreference.a ycu;
   
   public SportBlackListUI()
   {
-    AppMethodBeat.i(25141);
-    this.sqf = new SportBlackListUI.2(this);
-    AppMethodBeat.o(25141);
+    AppMethodBeat.i(28816);
+    this.ycu = new ContactListExpandPreference.a()
+    {
+      public final void b(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(204853);
+        paramAnonymousViewGroup = SportBlackListUI.a(SportBlackListUI.this).US(paramAnonymousInt);
+        if (bt.isNullOrNil(paramAnonymousViewGroup))
+        {
+          AppMethodBeat.o(204853);
+          return;
+        }
+        SportBlackListUI.b(SportBlackListUI.this).remove(paramAnonymousViewGroup);
+        SportBlackListUI.a(SportBlackListUI.this).B(null, SportBlackListUI.b(SportBlackListUI.this));
+        SportBlackListUI.a(SportBlackListUI.this).refresh();
+        az.arV();
+        w.l(com.tencent.mm.model.c.apM().aHY(paramAnonymousViewGroup));
+        com.tencent.mm.plugin.sport.a.c.lI(40);
+        AppMethodBeat.o(204853);
+      }
+      
+      public final void c(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(204855);
+        paramAnonymousViewGroup = SportBlackListUI.a(SportBlackListUI.this).US(paramAnonymousInt);
+        paramAnonymousView = new Intent();
+        paramAnonymousView.putExtra("Contact_User", paramAnonymousViewGroup);
+        d.b(SportBlackListUI.this, "profile", ".ui.ContactInfoUI", paramAnonymousView);
+        AppMethodBeat.o(204855);
+      }
+      
+      public final void d(ViewGroup paramAnonymousViewGroup, View paramAnonymousView) {}
+      
+      public final void d(ViewGroup paramAnonymousViewGroup, View paramAnonymousView, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(204854);
+        SportBlackListUI.c(SportBlackListUI.this);
+        AppMethodBeat.o(204854);
+      }
+      
+      public final void e(ViewGroup paramAnonymousViewGroup, View paramAnonymousView)
+      {
+        AppMethodBeat.i(204856);
+        SportBlackListUI.a(SportBlackListUI.this).eyo();
+        AppMethodBeat.o(204856);
+      }
+    };
+    AppMethodBeat.o(28816);
   }
   
   public int getResourceId()
   {
-    return 2131165302;
+    return 2131951746;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(25143);
+    AppMethodBeat.i(28818);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt1 == 0)
     {
       if (paramIntent == null)
       {
-        AppMethodBeat.o(25143);
+        AppMethodBeat.o(28818);
         return;
       }
       paramIntent = paramIntent.getStringExtra("Select_Contact");
-      if (bo.isNullOrNil(paramIntent))
+      if (bt.isNullOrNil(paramIntent))
       {
-        AppMethodBeat.o(25143);
+        AppMethodBeat.o(28818);
         return;
       }
-      paramIntent = bo.P(paramIntent.split(","));
+      paramIntent = bt.S(paramIntent.split(","));
       if (paramIntent == null)
       {
-        AppMethodBeat.o(25143);
+        AppMethodBeat.o(28818);
         return;
       }
-      this.sqe.addAll(paramIntent);
-      this.eeU.v(null, this.sqe);
-      this.eeU.refresh();
+      this.yct.addAll(paramIntent);
+      this.fpW.B(null, this.yct);
+      this.fpW.refresh();
       paramIntent = paramIntent.iterator();
       while (paramIntent.hasNext())
       {
         String str = (String)paramIntent.next();
-        aw.aaz();
-        t.g(c.YA().arw(str));
+        az.arV();
+        w.k(com.tencent.mm.model.c.apM().aHY(str));
       }
     }
-    AppMethodBeat.o(25143);
+    AppMethodBeat.o(28818);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(25142);
+    AppMethodBeat.i(28817);
     super.onCreate(paramBundle);
-    d.kS(39);
-    if (this.sqe == null) {
-      this.sqe = new ArrayList();
+    com.tencent.mm.plugin.sport.a.c.lI(39);
+    if (this.yct == null) {
+      this.yct = new ArrayList();
     }
-    aw.aaz();
-    paramBundle = c.YA().e("@werun.black.android", "", null);
+    az.arV();
+    paramBundle = com.tencent.mm.model.c.apM().e("@werun.black.android", "", null);
     while (paramBundle.moveToNext())
     {
-      String str = paramBundle.getString(0);
-      this.sqe.add(str);
+      String str = paramBundle.getString(paramBundle.getColumnIndex("username"));
+      this.yct.add(str);
     }
     paramBundle.close();
-    this.eeU = ((ContactListExpandPreference)getPreferenceScreen().atx("black_contact_list_pref"));
-    this.eeU.a(getPreferenceScreen(), this.eeU.mKey);
-    this.eeU.pf(true).pg(true);
-    this.eeU.v(null, this.sqe);
-    this.eeU.a(this.sqf);
-    this.eeU.setSummary(2131299489);
-    setMMTitle(getString(2131299440));
+    this.fpW = ((ContactListExpandPreference)getPreferenceScreen().aKk("black_contact_list_pref"));
+    this.fpW.a(getPreferenceScreen(), this.fpW.mKey);
+    this.fpW.ub(true).uc(true);
+    this.fpW.B(null, this.yct);
+    this.fpW.a(this.ycu);
+    this.fpW.setSummary(2131758620);
+    setMMTitle(getString(2131758570));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(25136);
+        AppMethodBeat.i(28811);
         SportBlackListUI.this.finish();
-        AppMethodBeat.o(25136);
+        AppMethodBeat.o(28811);
         return false;
       }
     });
-    AppMethodBeat.o(25142);
+    AppMethodBeat.o(28817);
   }
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
@@ -127,7 +173,7 @@ public class SportBlackListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.ui.SportBlackListUI
  * JD-Core Version:    0.7.0.1
  */

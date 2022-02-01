@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.d.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class g
   extends j
 {
-  private byte jNA = 0;
+  private byte mMD = 0;
   
-  final boolean ar(byte[] paramArrayOfByte)
+  final boolean aG(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(18356);
-    if (bo.ce(paramArrayOfByte))
+    AppMethodBeat.i(22467);
+    if (bt.cw(paramArrayOfByte))
     {
-      ab.e("MicroMsg.exdevice.IBeaconTLVSectionA", "valueByte is null or nil");
-      AppMethodBeat.o(18356);
+      ad.e("MicroMsg.exdevice.IBeaconTLVSectionA", "valueByte is null or nil");
+      AppMethodBeat.o(22467);
       return false;
     }
     if (2 != this.mLength)
     {
-      ab.d("MicroMsg.exdevice.IBeaconTLVSectionA", "IBEACON_TLV_SECTION_A_LENGTH != mLength(%d)", new Object[] { Integer.valueOf(this.mLength) });
-      AppMethodBeat.o(18356);
+      ad.d("MicroMsg.exdevice.IBeaconTLVSectionA", "IBEACON_TLV_SECTION_A_LENGTH != mLength(%d)", new Object[] { Integer.valueOf(this.mLength) });
+      AppMethodBeat.o(22467);
       return false;
     }
-    this.jNA = paramArrayOfByte[0];
-    AppMethodBeat.o(18356);
+    this.mMD = paramArrayOfByte[0];
+    AppMethodBeat.o(22467);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.a.g
  * JD-Core Version:    0.7.0.1
  */

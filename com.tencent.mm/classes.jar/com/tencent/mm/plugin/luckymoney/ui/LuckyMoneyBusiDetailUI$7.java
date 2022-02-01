@@ -11,9 +11,9 @@ final class LuckyMoneyBusiDetailUI$7
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(42589);
-    LuckyMoneyBusiDetailUI.e(this.orQ);
-    AppMethodBeat.o(42589);
+    AppMethodBeat.i(65456);
+    LuckyMoneyBusiDetailUI.e(this.tkt);
+    AppMethodBeat.o(65456);
   }
 }
 

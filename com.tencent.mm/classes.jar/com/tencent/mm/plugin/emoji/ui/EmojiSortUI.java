@@ -2,57 +2,83 @@ package com.tencent.mm.plugin.emoji.ui;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.os.Message;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.a.e;
 import com.tencent.mm.plugin.emoji.f.s;
-import com.tencent.mm.plugin.emoji.model.i;
+import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.at;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.storage.aw;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import com.tencent.mm.storage.emotion.a;
+import com.tencent.mm.storage.emotion.c;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.sortlist.DragSortListView;
 import com.tencent.mm.ui.widget.sortlist.DragSortListView.h;
 import com.tencent.mm.ui.widget.sortlist.DragSortListView.l;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class EmojiSortUI
   extends EmojiBaseActivity
-  implements f, k.a
+  implements com.tencent.mm.al.g, k.a
 {
-  ProgressDialog gsr;
-  private e lmk;
-  private DragSortListView lml;
-  private s lmm;
-  private DragSortListView.h lmn;
-  private DragSortListView.l lmo;
+  ProgressDialog ift;
   private ArrayList<EmojiGroupInfo> mData;
+  private DragSortListView oCA;
+  private s oCB;
+  private DragSortListView.h oCC;
+  private DragSortListView.l oCD;
+  private e oCz;
   
   public EmojiSortUI()
   {
-    AppMethodBeat.i(53413);
+    AppMethodBeat.i(108974);
     this.mData = new ArrayList();
-    this.lmn = new EmojiSortUI.4(this);
-    this.lmo = new EmojiSortUI.5(this);
-    AppMethodBeat.o(53413);
+    this.oCC = new DragSortListView.h()
+    {
+      public final void eg(int paramAnonymousInt1, int paramAnonymousInt2)
+      {
+        AppMethodBeat.i(108972);
+        EmojiGroupInfo localEmojiGroupInfo = (EmojiGroupInfo)EmojiSortUI.b(EmojiSortUI.this).getItem(paramAnonymousInt1);
+        EmojiSortUI.b(EmojiSortUI.this).remove(localEmojiGroupInfo);
+        EmojiSortUI.b(EmojiSortUI.this).insert(localEmojiGroupInfo, paramAnonymousInt2);
+        AppMethodBeat.o(108972);
+      }
+    };
+    this.oCD = new DragSortListView.l()
+    {
+      public final void remove(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(108973);
+        EmojiSortUI.b(EmojiSortUI.this).remove(EmojiSortUI.b(EmojiSortUI.this).getItem(paramAnonymousInt));
+        AppMethodBeat.o(108973);
+      }
+    };
+    AppMethodBeat.o(108974);
   }
   
-  public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
+  public final void a(String paramString, m paramm)
   {
-    AppMethodBeat.i(53417);
-    if ((paramString != null) && (paramString.equals("event_update_group")) && (this.lmk != null))
+    AppMethodBeat.i(108978);
+    if ((paramString != null) && (paramString.equals("event_update_group")) && (this.oCz != null))
     {
-      paramString = this.lmk;
-      paramm = i.getEmojiStorageMgr().yNo.dzh();
+      paramString = this.oCz;
+      paramm = k.getEmojiStorageMgr().FyZ.eNt();
       paramString.clear();
       paramm = paramm.iterator();
       while (paramm.hasNext()) {
@@ -60,69 +86,108 @@ public class EmojiSortUI
       }
       paramString.notifyDataSetChanged();
     }
-    AppMethodBeat.o(53417);
+    AppMethodBeat.o(108978);
   }
   
   public int getLayoutId()
   {
-    return 2130969379;
+    return 2131493790;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(53416);
-    setBackBtn(new EmojiSortUI.1(this));
-    setMMTitle(getString(2131303244));
-    addTextOptionMenu(0, getString(2131296964), new EmojiSortUI.2(this));
-    ((TextView)findViewById(16908310)).setText(2131299209);
-    AppMethodBeat.o(53416);
+    AppMethodBeat.i(108977);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(108969);
+        EmojiSortUI.this.finish();
+        AppMethodBeat.o(108969);
+        return true;
+      }
+    });
+    setMMTitle(getString(2131763213));
+    addTextOptionMenu(0, getString(2131755779), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(108970);
+        if (!ay.isConnected(aj.getContext())) {
+          EmojiSortUI.a(EmojiSortUI.this);
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(108970);
+          return true;
+          paramAnonymousMenuItem = EmojiSortUI.this;
+          paramAnonymousMenuItem.getString(2131755906);
+          paramAnonymousMenuItem.ift = h.b(paramAnonymousMenuItem, paramAnonymousMenuItem.getString(2131755936), true, new EmojiSortUI.3(paramAnonymousMenuItem));
+          paramAnonymousMenuItem = new ArrayList();
+          if ((EmojiSortUI.b(EmojiSortUI.this) != null) && (EmojiSortUI.b(EmojiSortUI.this).otO != null))
+          {
+            Iterator localIterator = EmojiSortUI.b(EmojiSortUI.this).otO.iterator();
+            while (localIterator.hasNext()) {
+              paramAnonymousMenuItem.add(((EmojiGroupInfo)localIterator.next()).field_productID);
+            }
+          }
+          EmojiSortUI.a(EmojiSortUI.this, new s(paramAnonymousMenuItem, 2));
+          com.tencent.mm.kernel.g.afA().gcy.a(EmojiSortUI.c(EmojiSortUI.this), 0);
+        }
+      }
+    });
+    ((TextView)findViewById(16908310)).setText(2131758335);
+    AppMethodBeat.o(108977);
   }
+  
+  public final void l(Message paramMessage) {}
   
   public final void m(Message paramMessage) {}
   
-  public final void n(Message paramMessage) {}
-  
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(53414);
+    AppMethodBeat.i(108975);
     super.onCreate(paramBundle);
     initView();
-    this.mData = i.getEmojiStorageMgr().yNo.dzh();
-    this.lml = ((DragSortListView)findViewById(16908298));
-    this.lml.setDropListener(this.lmn);
-    this.lml.setRemoveListener(this.lmo);
-    this.lmk = new e(getContext(), this.mData);
-    this.lml.setAdapter(this.lmk);
-    i.getEmojiStorageMgr().yNo.add(this);
-    g.RK().eHt.a(717, this);
-    AppMethodBeat.o(53414);
+    this.mData = k.getEmojiStorageMgr().FyZ.eNt();
+    this.oCA = ((DragSortListView)findViewById(16908298));
+    this.oCA.setDropListener(this.oCC);
+    this.oCA.setRemoveListener(this.oCD);
+    this.oCz = new e(getContext(), this.mData);
+    this.oCA.setAdapter(this.oCz);
+    k.getEmojiStorageMgr().FyZ.add(this);
+    com.tencent.mm.kernel.g.afA().gcy.a(717, this);
+    AppMethodBeat.o(108975);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(53415);
-    i.getEmojiStorageMgr().yNo.remove(this);
-    g.RK().eHt.b(717, this);
+    AppMethodBeat.i(108976);
+    k.getEmojiStorageMgr().FyZ.remove(this);
+    com.tencent.mm.kernel.g.afA().gcy.b(717, this);
     super.onDestroy();
-    AppMethodBeat.o(53415);
+    AppMethodBeat.o(108976);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(53418);
-    ab.d("MicroMsg.emoji.EmojiSortUI", "ErrType:" + paramInt1 + "   errCode:" + paramInt2);
-    if (this.gsr != null) {
-      this.gsr.dismiss();
+    AppMethodBeat.i(108979);
+    ad.d("MicroMsg.emoji.EmojiSortUI", "ErrType:" + paramInt1 + "   errCode:" + paramInt2);
+    if (this.ift != null) {
+      this.ift.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt1 == 0))
     {
-      this.lmk.bkF();
+      this.oCz.bUu();
       finish();
-      AppMethodBeat.o(53418);
+      AppMethodBeat.o(108979);
       return;
     }
-    h.a(this, getString(2131299177), "", new EmojiSortUI.6(this));
-    AppMethodBeat.o(53418);
+    h.d(this, getString(2131758303), "", new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
+    });
+    AppMethodBeat.o(108979);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

@@ -11,12 +11,12 @@ public final class j
 {
   public j(String paramString)
   {
-    AppMethodBeat.i(43399);
+    AppMethodBeat.i(66298);
     HashMap localHashMap = new HashMap();
     localHashMap.put("passwd", paramString);
-    localHashMap.put("device_id", com.tencent.mm.compatible.e.q.LK());
+    localHashMap.put("device_id", com.tencent.mm.compatible.deviceinfo.q.Xa());
     setRequestData(localHashMap);
-    AppMethodBeat.o(43399);
+    AppMethodBeat.o(66298);
   }
   
   public final int getFuncId()
@@ -36,16 +36,16 @@ public final class j
   
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(43400);
+    AppMethodBeat.i(66299);
     super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
-    AppMethodBeat.o(43400);
+    AppMethodBeat.o(66299);
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.j
  * JD-Core Version:    0.7.0.1
  */

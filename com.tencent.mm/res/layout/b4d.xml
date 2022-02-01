@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/bb" android:paddingTop="@dimen/gc" android:paddingBottom="@dimen/gc" android:layout_width="@dimen/g6" android:layout_height="@dimen/fy"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/gc" android:layout_marginBottom="@dimen/gc" android:layout_weight="1.0">
-        <ImageView android:id="@id/fa2" android:background="@color/s" android:layout_width="1.0dip" android:layout_height="fill_parent" />
-        <ImageView android:id="@id/fa3" android:background="@color/d6" android:layout_width="1.0dip" android:layout_height="fill_parent" />
-    </FrameLayout>
-    <ImageView android:id="@id/fa4" android:layout_width="@dimen/fc" android:layout_height="@dimen/fc" android:src="@raw/seek_bar_horn" />
+    <ImageView android:gravity="center" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="20.0dip" android:src="@raw/fix_tools_logo" />
+    <TextView android:textSize="@dimen/i" android:gravity="center" android:id="@id/ao" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/uo" style="@style/le" />
 </LinearLayout>

@@ -11,52 +11,52 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RoomGrantPreference
   extends Preference
 {
-  TextView ehx;
-  String ehy;
+  TextView ful;
+  String fum;
   
   public RoomGrantPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.ehx = null;
-    this.ehy = "";
+    this.ful = null;
+    this.fum = "";
   }
   
   public RoomGrantPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(104182);
-    this.ehx = null;
-    this.ehy = "";
-    setLayoutResource(2130970179);
-    setWidgetLayoutResource(2130970254);
-    AppMethodBeat.o(104182);
+    AppMethodBeat.i(12731);
+    this.ful = null;
+    this.fum = "";
+    setLayoutResource(2131494804);
+    setWidgetLayoutResource(2131494884);
+    AppMethodBeat.o(12731);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(104184);
-    if (this.ehx == null) {
-      this.ehx = ((TextView)paramView.findViewById(2131823022));
+    AppMethodBeat.i(12733);
+    if (this.ful == null) {
+      this.ful = ((TextView)paramView.findViewById(2131298778));
     }
-    this.ehx.setText(this.ehy);
+    this.ful.setText(this.fum);
     super.onBindView(paramView);
-    AppMethodBeat.o(104184);
+    AppMethodBeat.o(12733);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(104183);
+    AppMethodBeat.i(12732);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2130970218, localViewGroup);
-    AppMethodBeat.o(104183);
+    View.inflate(this.mContext, 2131494845, localViewGroup);
+    AppMethodBeat.o(12732);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.RoomGrantPreference
  * JD-Core Version:    0.7.0.1
  */

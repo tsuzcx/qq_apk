@@ -6,23 +6,23 @@ import java.util.Iterator;
 
 public class ViewModelStore
 {
-  final HashMap<String, ViewModel> dw = new HashMap();
+  final HashMap<String, ViewModel> dz = new HashMap();
   
   final void a(String paramString, ViewModel paramViewModel)
   {
-    paramString = (ViewModel)this.dw.put(paramString, paramViewModel);
+    paramString = (ViewModel)this.dz.put(paramString, paramViewModel);
     if (paramString != null) {
-      paramString.au();
+      paramString.ae();
     }
   }
   
   public final void clear()
   {
-    Iterator localIterator = this.dw.values().iterator();
+    Iterator localIterator = this.dz.values().iterator();
     while (localIterator.hasNext()) {
-      ((ViewModel)localIterator.next()).au();
+      ((ViewModel)localIterator.next()).ae();
     }
-    this.dw.clear();
+    this.dz.clear();
   }
 }
 

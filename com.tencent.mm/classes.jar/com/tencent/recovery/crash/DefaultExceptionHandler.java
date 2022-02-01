@@ -3,18 +3,18 @@ package com.tencent.recovery.crash;
 public class DefaultExceptionHandler
   extends RecoveryExceptionHandler
 {
-  private Thread.UncaughtExceptionHandler Bin;
+  private Thread.UncaughtExceptionHandler origin;
   
   public DefaultExceptionHandler(Thread.UncaughtExceptionHandler paramUncaughtExceptionHandler)
   {
-    this.Bin = paramUncaughtExceptionHandler;
+    this.origin = paramUncaughtExceptionHandler;
   }
   
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
     super.uncaughtException(paramThread, paramThrowable);
-    if (this.Bin != null) {
-      this.Bin.uncaughtException(paramThread, paramThrowable);
+    if (this.origin != null) {
+      this.origin.uncaughtException(paramThread, paramThrowable);
     }
   }
 }

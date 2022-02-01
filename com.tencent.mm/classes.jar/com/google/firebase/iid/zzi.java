@@ -15,40 +15,40 @@ public class zzi
   implements Parcelable
 {
   public static final Parcelable.Creator<zzi> CREATOR;
-  private Messenger bgh;
-  private zze bgi;
+  private Messenger bEg;
+  private zze bEh;
   
   static
   {
-    AppMethodBeat.i(108791);
+    AppMethodBeat.i(4227);
     CREATOR = new z();
-    AppMethodBeat.o(108791);
+    AppMethodBeat.o(4227);
   }
   
   public zzi(IBinder paramIBinder)
   {
-    AppMethodBeat.i(108785);
+    AppMethodBeat.i(4221);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.bgh = new Messenger(paramIBinder);
-      AppMethodBeat.o(108785);
+      this.bEg = new Messenger(paramIBinder);
+      AppMethodBeat.o(4221);
       return;
     }
-    this.bgi = zzf.zza(paramIBinder);
-    AppMethodBeat.o(108785);
+    this.bEh = zzf.zza(paramIBinder);
+    AppMethodBeat.o(4221);
   }
   
   private final IBinder getBinder()
   {
-    AppMethodBeat.i(108787);
-    if (this.bgh != null)
+    AppMethodBeat.i(4223);
+    if (this.bEg != null)
     {
-      localIBinder = this.bgh.getBinder();
-      AppMethodBeat.o(108787);
+      localIBinder = this.bEg.getBinder();
+      AppMethodBeat.o(4223);
       return localIBinder;
     }
-    IBinder localIBinder = this.bgi.asBinder();
-    AppMethodBeat.o(108787);
+    IBinder localIBinder = this.bEh.asBinder();
+    AppMethodBeat.o(4223);
     return localIBinder;
   }
   
@@ -59,62 +59,62 @@ public class zzi
   
   public boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(108788);
+    AppMethodBeat.i(4224);
     if (paramObject == null)
     {
-      AppMethodBeat.o(108788);
+      AppMethodBeat.o(4224);
       return false;
     }
     try
     {
       boolean bool = getBinder().equals(((zzi)paramObject).getBinder());
-      AppMethodBeat.o(108788);
+      AppMethodBeat.o(4224);
       return bool;
     }
     catch (ClassCastException paramObject)
     {
-      AppMethodBeat.o(108788);
+      AppMethodBeat.o(4224);
     }
     return false;
   }
   
   public int hashCode()
   {
-    AppMethodBeat.i(108789);
+    AppMethodBeat.i(4225);
     int i = getBinder().hashCode();
-    AppMethodBeat.o(108789);
+    AppMethodBeat.o(4225);
     return i;
   }
   
   public final void send(Message paramMessage)
   {
-    AppMethodBeat.i(108786);
-    if (this.bgh != null)
+    AppMethodBeat.i(4222);
+    if (this.bEg != null)
     {
-      this.bgh.send(paramMessage);
-      AppMethodBeat.o(108786);
+      this.bEg.send(paramMessage);
+      AppMethodBeat.o(4222);
       return;
     }
-    this.bgi.send(paramMessage);
-    AppMethodBeat.o(108786);
+    this.bEh.send(paramMessage);
+    AppMethodBeat.o(4222);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(108790);
-    if (this.bgh != null)
+    AppMethodBeat.i(4226);
+    if (this.bEg != null)
     {
-      paramParcel.writeStrongBinder(this.bgh.getBinder());
-      AppMethodBeat.o(108790);
+      paramParcel.writeStrongBinder(this.bEg.getBinder());
+      AppMethodBeat.o(4226);
       return;
     }
-    paramParcel.writeStrongBinder(this.bgi.asBinder());
-    AppMethodBeat.o(108790);
+    paramParcel.writeStrongBinder(this.bEh.asBinder());
+    AppMethodBeat.o(4226);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.firebase.iid.zzi
  * JD-Core Version:    0.7.0.1
  */

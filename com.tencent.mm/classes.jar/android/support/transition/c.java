@@ -1,24 +1,15 @@
 package android.support.transition;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.animation.TypeEvaluator;
 
 final class c
-  implements d
+  implements TypeEvaluator<float[]>
 {
-  public final void a(Animator paramAnimator, AnimatorListenerAdapter paramAnimatorListenerAdapter)
-  {
-    paramAnimator.addPauseListener(paramAnimatorListenerAdapter);
-  }
+  private float[] xY;
   
-  public final void b(Animator paramAnimator)
+  c(float[] paramArrayOfFloat)
   {
-    paramAnimator.pause();
-  }
-  
-  public final void c(Animator paramAnimator)
-  {
-    paramAnimator.resume();
+    this.xY = paramArrayOfFloat;
   }
 }
 

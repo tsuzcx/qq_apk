@@ -2,16 +2,16 @@ package com.tencent.soter.a.f;
 
 public final class d$a
 {
-  public String Bnj;
+  public String IvJ;
   
   public d$a(String paramString)
   {
-    this.Bnj = paramString;
+    this.IvJ = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.soter.a.f.d.a
  * JD-Core Version:    0.7.0.1
  */

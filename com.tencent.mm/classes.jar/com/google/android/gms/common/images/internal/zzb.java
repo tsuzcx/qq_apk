@@ -14,15 +14,15 @@ final class zzb
   
   public final Drawable newDrawable()
   {
-    AppMethodBeat.i(61297);
+    AppMethodBeat.i(11789);
     CrossFadingDrawable.zza localzza = CrossFadingDrawable.zza.zzcp();
-    AppMethodBeat.o(61297);
+    AppMethodBeat.o(11789);
     return localzza;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.common.images.internal.zzb
  * JD-Core Version:    0.7.0.1
  */

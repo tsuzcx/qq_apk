@@ -9,13 +9,13 @@ public class YogaConstants
   
   public static boolean isUndefined(float paramFloat)
   {
-    AppMethodBeat.i(144040);
+    AppMethodBeat.i(18063);
     if ((Float.compare(paramFloat, 1.0E+009F) >= 0) || (Float.compare(paramFloat, -1.0E+009F) <= 0))
     {
-      AppMethodBeat.o(144040);
+      AppMethodBeat.o(18063);
       return true;
     }
-    AppMethodBeat.o(144040);
+    AppMethodBeat.o(18063);
     return false;
   }
   
@@ -26,7 +26,7 @@ public class YogaConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.facebook.yoga.YogaConstants
  * JD-Core Version:    0.7.0.1
  */

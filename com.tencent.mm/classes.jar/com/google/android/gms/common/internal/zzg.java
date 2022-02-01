@@ -11,9 +11,9 @@ final class zzg
   
   public final void onConnectionFailed(ConnectionResult paramConnectionResult)
   {
-    AppMethodBeat.i(61406);
+    AppMethodBeat.i(11898);
     this.zzte.onConnectionFailed(paramConnectionResult);
-    AppMethodBeat.o(61406);
+    AppMethodBeat.o(11898);
   }
 }
 

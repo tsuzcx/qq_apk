@@ -2,21 +2,21 @@ package com.tencent.mm.ui;
 
 public abstract interface m
 {
-  public abstract void dAF();
+  public abstract void ePb();
   
-  public abstract void dAG();
+  public abstract void ePc();
   
-  public abstract void dAH();
+  public abstract void ePd();
   
-  public abstract void dAI();
+  public abstract void ePe();
   
-  public abstract void dAJ();
+  public abstract void ePf();
   
-  public abstract void dAL();
+  public abstract void ePh();
   
-  public abstract void dBC();
+  public abstract void eQa();
   
-  public abstract void dBD();
+  public abstract void eQb();
 }
 
 

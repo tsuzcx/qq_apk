@@ -1,75 +1,33 @@
 package com.tencent.mm.plugin.appbrand.luggage.b;
 
-import a.f.b.j;
-import a.l;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appstorage.n;
-import java.io.InputStream;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProcessProxyUI;
+import com.tencent.mm.plugin.appbrand.jsapi.ac;
+import com.tencent.mm.protocal.protobuf.ctr;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/luggage/customize/CustomizeCommLibReaderWrapper;", "Lcom/tencent/mm/plugin/appbrand/appstorage/ICommLibReader;", "()V", "info", "Lcom/tencent/mm/plugin/appbrand/appcache/WxaPkgWrappingInfo;", "init", "", "openRead", "Ljava/io/InputStream;", "fileName", "", "readAsString", "versionBuildInfo", "versionName", "plugin-appbrand-integration_release"})
 public final class a
-  implements n
+  implements ac
 {
-  public static final a iom;
-  
-  static
+  public final void a(Context paramContext, String paramString, ctr paramctr)
   {
-    AppMethodBeat.i(134723);
-    iom = new a();
-    AppMethodBeat.o(134723);
-  }
-  
-  public final String avc()
-  {
-    AppMethodBeat.i(134721);
-    String str = WxaCommLibRuntimeReader.avH().avc();
-    j.p(str, "WxaCommLibRuntimeReader.getReader().versionName()");
-    AppMethodBeat.o(134721);
-    return str;
-  }
-  
-  public final String avd()
-  {
-    AppMethodBeat.i(134722);
-    String str = WxaCommLibRuntimeReader.avH().avd();
-    j.p(str, "WxaCommLibRuntimeReader.…ader().versionBuildInfo()");
-    AppMethodBeat.o(134722);
-    return str;
-  }
-  
-  public final WxaPkgWrappingInfo ave()
-  {
-    AppMethodBeat.i(134720);
-    WxaPkgWrappingInfo localWxaPkgWrappingInfo = WxaCommLibRuntimeReader.avH().ave();
-    j.p(localWxaPkgWrappingInfo, "WxaCommLibRuntimeReader.getReader().info()");
-    AppMethodBeat.o(134720);
-    return localWxaPkgWrappingInfo;
-  }
-  
-  public final void init() {}
-  
-  public final InputStream openRead(String paramString)
-  {
-    AppMethodBeat.i(134719);
-    paramString = WxaCommLibRuntimeReader.avH().openRead(paramString);
-    AppMethodBeat.o(134719);
-    return paramString;
-  }
-  
-  public final String yl(String paramString)
-  {
-    AppMethodBeat.i(143903);
-    paramString = WxaCommLibRuntimeReader.yt(paramString);
-    j.p(paramString, "WxaCommLibRuntimeReader.readFileContent(fileName)");
-    AppMethodBeat.o(143903);
-    return paramString;
+    AppMethodBeat.i(47476);
+    Intent localIntent = new Intent().putExtra("rawUrl", paramString).putExtra(AppBrandProcessProxyUI.juv, paramString);
+    localIntent.putExtra("rawUrl", paramString);
+    if (paramctr != null)
+    {
+      localIntent.putExtra("show_native_web_view", paramctr.Elk);
+      localIntent.putExtra("KRightBtn", paramctr.Ell);
+    }
+    d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
+    AppMethodBeat.o(47476);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.a
  * JD-Core Version:    0.7.0.1
  */

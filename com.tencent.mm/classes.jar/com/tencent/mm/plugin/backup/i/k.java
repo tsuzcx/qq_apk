@@ -1,91 +1,91 @@
 package com.tencent.mm.plugin.backup.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import e.a.a.b;
+import f.a.a.b;
 
 public final class k
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String jJA;
-  public int jJy;
-  public int jJz;
+  public int mAO;
+  public int mAP;
+  public String mAQ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(18057);
+    AppMethodBeat.i(22114);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.jJA == null)
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.mAQ == null)
       {
         paramVarArgs = new b("Not all required fields were included: UserName");
-        AppMethodBeat.o(18057);
+        AppMethodBeat.o(22114);
         throw paramVarArgs;
       }
-      paramVarArgs.aO(1, this.jJy);
-      paramVarArgs.aO(2, this.jJz);
-      if (this.jJA != null) {
-        paramVarArgs.e(3, this.jJA);
+      paramVarArgs.aR(1, this.mAO);
+      paramVarArgs.aR(2, this.mAP);
+      if (this.mAQ != null) {
+        paramVarArgs.d(3, this.mAQ);
       }
-      AppMethodBeat.o(18057);
+      AppMethodBeat.o(22114);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = e.a.a.b.b.a.bl(1, this.jJy) + 0 + e.a.a.b.b.a.bl(2, this.jJz);
+      int i = f.a.a.b.b.a.bA(1, this.mAO) + 0 + f.a.a.b.b.a.bA(2, this.mAP);
       paramInt = i;
-      if (this.jJA != null) {
-        paramInt = i + e.a.a.b.b.a.f(3, this.jJA);
+      if (this.mAQ != null) {
+        paramInt = i + f.a.a.b.b.a.e(3, this.mAQ);
       }
-      AppMethodBeat.o(18057);
+      AppMethodBeat.o(22114);
       return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      if (this.jJA == null)
+      if (this.mAQ == null)
       {
         paramVarArgs = new b("Not all required fields were included: UserName");
-        AppMethodBeat.o(18057);
+        AppMethodBeat.o(22114);
         throw paramVarArgs;
       }
-      AppMethodBeat.o(18057);
+      AppMethodBeat.o(22114);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       k localk = (k)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(18057);
+        AppMethodBeat.o(22114);
         return -1;
       case 1: 
-        localk.jJy = locala.CLY.sl();
-        AppMethodBeat.o(18057);
+        localk.mAO = locala.KhF.xS();
+        AppMethodBeat.o(22114);
         return 0;
       case 2: 
-        localk.jJz = locala.CLY.sl();
-        AppMethodBeat.o(18057);
+        localk.mAP = locala.KhF.xS();
+        AppMethodBeat.o(22114);
         return 0;
       }
-      localk.jJA = locala.CLY.readString();
-      AppMethodBeat.o(18057);
+      localk.mAQ = locala.KhF.readString();
+      AppMethodBeat.o(22114);
       return 0;
     }
-    AppMethodBeat.o(18057);
+    AppMethodBeat.o(22114);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.k
  * JD-Core Version:    0.7.0.1
  */

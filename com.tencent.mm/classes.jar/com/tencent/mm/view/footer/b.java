@@ -9,295 +9,295 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.e;
-import com.tencent.mm.api.r;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.api.g;
+import com.tencent.mm.api.w;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.f;
 
 public final class b
   extends a
 {
-  private Bitmap ATA;
-  private Bitmap ATB;
-  private Bitmap ATC;
-  private Bitmap ATD;
-  private Bitmap ATE;
-  private Bitmap ATF;
-  private Rect[] ATG;
-  private Rect[] ATH;
-  private boolean ATI;
-  private boolean ATJ;
-  private boolean ATK;
-  private boolean ATL;
-  private boolean ATM;
-  private int ATN;
-  private Bitmap ATs;
-  private Bitmap ATt;
-  private Bitmap ATu;
-  private Bitmap ATv;
-  private Bitmap ATw;
-  private Bitmap ATx;
-  private Bitmap ATy;
-  private Bitmap ATz;
-  private Paint oqV;
+  private Bitmap HZG;
+  private Bitmap HZH;
+  private Bitmap HZI;
+  private Bitmap HZJ;
+  private Bitmap HZK;
+  private Bitmap HZL;
+  private Bitmap HZM;
+  private Bitmap HZN;
+  private Bitmap HZO;
+  private Bitmap HZP;
+  private Bitmap HZQ;
+  private Bitmap HZR;
+  private Bitmap HZS;
+  private Bitmap HZT;
+  private Rect[] HZU;
+  private Rect[] HZV;
+  private boolean HZW;
+  private boolean HZX;
+  private boolean HZY;
+  private boolean HZZ;
+  private boolean Iaa;
+  private int Iab;
+  private Paint tju;
   
-  public b(Context paramContext, com.tencent.mm.bs.b paramb)
+  public b(Context paramContext, com.tencent.mm.bu.b paramb)
   {
     super(paramContext, paramb);
-    AppMethodBeat.i(116427);
-    this.ATG = new Rect[2];
-    this.ATH = new Rect[4];
-    this.ATM = true;
-    this.ATN = -1;
-    AppMethodBeat.o(116427);
+    AppMethodBeat.i(9405);
+    this.HZU = new Rect[2];
+    this.HZV = new Rect[4];
+    this.Iaa = true;
+    this.Iab = -1;
+    AppMethodBeat.o(9405);
   }
   
-  private void dRb()
+  private void fiZ()
   {
-    AppMethodBeat.i(116436);
-    if (this.ATG == null) {
-      this.ATG = new Rect[2];
+    AppMethodBeat.i(9414);
+    if (this.HZU == null) {
+      this.HZU = new Rect[2];
     }
-    if (this.ATj == null) {
-      this.ATj = new Rect();
+    if (this.HZw == null) {
+      this.HZw = new Rect();
     }
-    float f1 = (getMeasuredWidth() - getPaddingLeftAndRight() - this.ATd.getWidth() - this.ATz.getWidth() - this.ATw.getWidth()) / 3.0F;
-    int k = (int)(this.ATy.getWidth() / 2 + f1);
-    int i = (getDetailHeight() - this.ATy.getWidth()) / 2 + this.ATy.getWidth() / 2;
-    int j = this.ATy.getWidth() * 2;
-    this.ATG[0] = new Rect(k - j, i - j, k + j, i + j);
+    float f1 = (getMeasuredWidth() - getPaddingLeftAndRight() - this.HZq.getWidth() - this.HZN.getWidth() - this.HZK.getWidth()) / 3.0F;
+    int k = (int)(this.HZM.getWidth() / 2 + f1);
+    int i = (getDetailHeight() - this.HZM.getWidth()) / 2 + this.HZM.getWidth() / 2;
+    int j = this.HZM.getWidth() * 2;
+    this.HZU[0] = new Rect(k - j, i - j, k + j, i + j);
     float f2 = k;
-    k = (int)(f1 + this.ATy.getWidth() + f2);
-    this.ATG[1] = new Rect(k - j, i - j, k + j, i + j);
-    i = getMeasuredWidth() - getPaddingLeftAndRight() / 2 - this.ATd.getWidth() / 2;
-    this.ATj.set(i - this.ATd.getWidth(), 0, i + this.ATd.getWidth(), getDetailHeight());
-    AppMethodBeat.o(116436);
+    k = (int)(f1 + this.HZM.getWidth() + f2);
+    this.HZU[1] = new Rect(k - j, i - j, k + j, i + j);
+    i = getMeasuredWidth() - getPaddingLeftAndRight() / 2 - this.HZq.getWidth() / 2;
+    this.HZw.set(i - this.HZq.getWidth(), 0, i + this.HZq.getWidth(), getDetailHeight());
+    AppMethodBeat.o(9414);
   }
   
-  private void dRc()
+  private void fja()
   {
-    AppMethodBeat.i(116437);
-    if (this.ATH == null) {
-      this.ATH = new Rect[4];
+    AppMethodBeat.i(9415);
+    if (this.HZV == null) {
+      this.HZV = new Rect[4];
     }
-    int i = (int)getResources().getDimension(2131428268);
-    float f1 = i / 2 - this.ATB.getHeight() / 2;
-    float f2 = getResources().getDimension(2131428423) / 2.0F;
-    float f3 = this.ATF.getHeight() / 2;
+    int i = (int)getResources().getDimension(2131166083);
+    float f1 = i / 2 - this.HZP.getHeight() / 2;
+    float f2 = getResources().getDimension(2131166289) / 2.0F;
+    float f3 = this.HZT.getHeight() / 2;
     float f4 = i;
     float f5 = 1.0F * getPaddingLeftAndRight() / 2.0F;
-    int j = (int)(f1 + this.ATF.getHeight() / 2);
-    int k = (int)(f5 + this.ATF.getHeight() / 2);
-    i = this.ATF.getHeight();
-    this.ATH[0] = new Rect(k - i, j - i, k + i, j + i);
-    j = (int)(f4 + (f2 - f3) + this.ATF.getHeight() / 2);
-    this.ATH[1] = new Rect(k - i, j - i, k + i, j + i);
-    k = getMeasuredWidth() - getPaddingLeftAndRight() / 2 - this.ATF.getHeight() / 2;
-    this.ATH[2] = new Rect(k - i, j - i, k + i, j + i);
+    int j = (int)(f1 + this.HZT.getHeight() / 2);
+    int k = (int)(f5 + this.HZT.getHeight() / 2);
+    i = this.HZT.getHeight();
+    this.HZV[0] = new Rect(k - i, j - i, k + i, j + i);
+    j = (int)(f4 + (f2 - f3) + this.HZT.getHeight() / 2);
+    this.HZV[1] = new Rect(k - i, j - i, k + i, j + i);
+    k = getMeasuredWidth() - getPaddingLeftAndRight() / 2 - this.HZT.getHeight() / 2;
+    this.HZV[2] = new Rect(k - i, j - i, k + i, j + i);
     k = getMeasuredWidth() / 2;
-    this.ATH[3] = new Rect(k - i, j - i, k + i, j + i);
-    AppMethodBeat.o(116437);
+    this.HZV[3] = new Rect(k - i, j - i, k + i, j + i);
+    AppMethodBeat.o(9415);
   }
   
-  protected final boolean RM(int paramInt)
+  protected final Bitmap a(g paramg, boolean paramBoolean)
+  {
+    Bitmap localBitmap = null;
+    if (paramg == g.cJw) {
+      if (paramBoolean) {
+        localBitmap = this.HZJ;
+      }
+    }
+    while (paramg != g.cJv)
+    {
+      return localBitmap;
+      return this.HZI;
+    }
+    if (paramBoolean) {
+      return this.HZG;
+    }
+    return this.HZH;
+  }
+  
+  protected final boolean abl(int paramInt)
   {
     boolean bool1 = true;
-    AppMethodBeat.i(116432);
-    boolean bool2 = super.RM(paramInt);
-    switch (1.whp[RL(paramInt).ordinal()])
+    AppMethodBeat.i(9410);
+    boolean bool2 = super.abl(paramInt);
+    switch (1.Cpr[abk(paramInt).ordinal()])
     {
     default: 
       bool1 = bool2;
     }
-    AppMethodBeat.o(116432);
+    AppMethodBeat.o(9410);
     return bool1;
   }
   
-  protected final Bitmap a(e parame, boolean paramBoolean)
+  protected final void fiT()
   {
-    Bitmap localBitmap = null;
-    if (parame == e.bWa) {
-      if (paramBoolean) {
-        localBitmap = this.ATv;
-      }
-    }
-    while (parame != e.bVZ)
-    {
-      return localBitmap;
-      return this.ATu;
-    }
-    if (paramBoolean) {
-      return this.ATs;
-    }
-    return this.ATt;
+    AppMethodBeat.i(9406);
+    super.fiT();
+    this.tju = new Paint(1);
+    this.tju.setTextSize(getResources().getDimension(2131166082));
+    this.HZK = BitmapFactory.decodeResource(getResources(), 2131233346);
+    this.HZL = BitmapFactory.decodeResource(getResources(), 2131233345);
+    this.HZM = BitmapFactory.decodeResource(getResources(), 2131233348);
+    this.HZN = BitmapFactory.decodeResource(getResources(), 2131233347);
+    this.HZH = f.B(getResources().getDrawable(2131690855));
+    this.HZG = f.B(getResources().getDrawable(2131690854));
+    this.HZI = f.B(getResources().getDrawable(2131690008));
+    this.HZJ = f.B(getResources().getDrawable(2131690007));
+    this.HZO = f.B(getResources().getDrawable(2131691102));
+    this.HZP = f.B(getResources().getDrawable(2131691103));
+    this.HZR = f.B(getResources().getDrawable(2131691268));
+    this.HZQ = f.B(getResources().getDrawable(2131691267));
+    this.HZS = f.B(getResources().getDrawable(2131689858));
+    this.HZT = f.B(getResources().getDrawable(2131689857));
+    AppMethodBeat.o(9406);
   }
   
-  protected final void dQV()
+  protected final void fiV()
   {
-    AppMethodBeat.i(116428);
-    super.dQV();
-    this.oqV = new Paint(1);
-    this.oqV.setTextSize(getResources().getDimension(2131428267));
-    this.ATw = BitmapFactory.decodeResource(getResources(), 2130839721);
-    this.ATx = BitmapFactory.decodeResource(getResources(), 2130839720);
-    this.ATy = BitmapFactory.decodeResource(getResources(), 2130839723);
-    this.ATz = BitmapFactory.decodeResource(getResources(), 2130839722);
-    this.ATt = d.u(getResources().getDrawable(2131231695));
-    this.ATs = d.u(getResources().getDrawable(2131231694));
-    this.ATu = d.u(getResources().getDrawable(2131231203));
-    this.ATv = d.u(getResources().getDrawable(2131231202));
-    this.ATA = d.u(getResources().getDrawable(2131231928));
-    this.ATB = d.u(getResources().getDrawable(2131231929));
-    this.ATD = d.u(getResources().getDrawable(2131232068));
-    this.ATC = d.u(getResources().getDrawable(2131232067));
-    this.ATE = d.u(getResources().getDrawable(2131231067));
-    this.ATF = d.u(getResources().getDrawable(2131231066));
-    AppMethodBeat.o(116428);
-  }
-  
-  protected final void dQX()
-  {
-    AppMethodBeat.i(116435);
-    super.dQX();
-    if (getCurFeatureType() == e.bVZ)
+    AppMethodBeat.i(9413);
+    super.fiV();
+    if (getCurFeatureType() == g.cJv)
     {
-      dRb();
-      AppMethodBeat.o(116435);
+      fiZ();
+      AppMethodBeat.o(9413);
       return;
     }
-    if (getCurFeatureType() == e.bWa) {
-      dRc();
+    if (getCurFeatureType() == g.cJw) {
+      fja();
     }
-    AppMethodBeat.o(116435);
+    AppMethodBeat.o(9413);
   }
   
   protected final int getDetailHeight()
   {
-    AppMethodBeat.i(116431);
+    AppMethodBeat.i(9409);
     int i = super.getDetailHeight();
     if (i == 0)
     {
-      if (getCurFeatureType() == e.bVZ)
+      if (getCurFeatureType() == g.cJv)
       {
-        i = (int)getResources().getDimension(2131428422);
-        AppMethodBeat.o(116431);
+        i = (int)getResources().getDimension(2131166288);
+        AppMethodBeat.o(9409);
         return i;
       }
-      if (getCurFeatureType() == e.bWa)
+      if (getCurFeatureType() == g.cJw)
       {
-        i = (int)(getResources().getDimension(2131428423) + getResources().getDimension(2131428268));
-        AppMethodBeat.o(116431);
+        i = (int)(getResources().getDimension(2131166289) + getResources().getDimension(2131166083));
+        AppMethodBeat.o(9409);
         return i;
       }
     }
-    AppMethodBeat.o(116431);
+    AppMethodBeat.o(9409);
     return i;
   }
   
-  protected final void ib(int paramInt1, int paramInt2)
+  protected final void jV(int paramInt1, int paramInt2)
   {
     int i = 0;
-    AppMethodBeat.i(116433);
-    super.ib(paramInt1, paramInt2);
-    switch (1.whp[RL(this.jwK).ordinal()])
+    AppMethodBeat.i(9411);
+    super.jV(paramInt1, paramInt2);
+    switch (1.Cpr[abk(this.mmW).ordinal()])
     {
     }
     do
     {
-      AppMethodBeat.o(116433);
+      AppMethodBeat.o(9411);
       return;
       i = 0;
       Rect localRect;
-      while (i < this.ATG.length)
+      while (i < this.HZU.length)
       {
-        localRect = this.ATG[i];
+        localRect = this.HZU[i];
         if (localRect == null) {
-          ab.e("PhotoFooterView", "[onDetailTouchDispatch] detailRect is null! %s", new Object[] { Integer.valueOf(i) });
+          ad.e("PhotoFooterView", "[onDetailTouchDispatch] detailRect is null! %s", new Object[] { Integer.valueOf(i) });
         }
         if ((localRect != null) && (localRect.contains(paramInt1, paramInt2)))
         {
-          this.ATN = i;
-          AppMethodBeat.o(116433);
+          this.Iab = i;
+          AppMethodBeat.o(9411);
           return;
         }
         i += 1;
       }
-      AppMethodBeat.o(116433);
+      AppMethodBeat.o(9411);
       return;
       do
       {
         i += 1;
-        if (i >= this.ATH.length) {
+        if (i >= this.HZV.length) {
           break;
         }
-        localRect = this.ATH[i];
+        localRect = this.HZV[i];
       } while ((localRect == null) || (!localRect.contains(paramInt1, paramInt2)));
       if (i == 0)
       {
-        this.ATJ = true;
-        AppMethodBeat.o(116433);
+        this.HZX = true;
+        AppMethodBeat.o(9411);
         return;
       }
       if (i == 1)
       {
-        this.ATI = true;
-        AppMethodBeat.o(116433);
+        this.HZW = true;
+        AppMethodBeat.o(9411);
         return;
       }
       if (i == 2)
       {
-        this.ATK = true;
-        AppMethodBeat.o(116433);
+        this.HZY = true;
+        AppMethodBeat.o(9411);
         return;
       }
     } while (i != 3);
-    this.ATL = true;
-    AppMethodBeat.o(116433);
+    this.HZZ = true;
+    AppMethodBeat.o(9411);
   }
   
-  protected final void ic(int paramInt1, int paramInt2)
+  protected final void jW(int paramInt1, int paramInt2)
   {
     int i = 0;
-    AppMethodBeat.i(116434);
-    super.ic(paramInt1, paramInt2);
-    switch (1.whp[RL(this.jwK).ordinal()])
+    AppMethodBeat.i(9412);
+    super.jW(paramInt1, paramInt2);
+    switch (1.Cpr[abk(this.mmW).ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(116434);
+      AppMethodBeat.o(9412);
       return;
       Rect localRect;
       do
       {
         i += 1;
-        if ((this.ATG == null) || (i >= this.ATG.length)) {
+        if ((this.HZU == null) || (i >= this.HZU.length)) {
           break;
         }
-        localRect = this.ATG[i];
-      } while ((localRect == null) || (!localRect.contains(paramInt1, paramInt2)) || (i != this.ATN));
-      getPresenter().getSelectedFeatureListener().a(e.bVZ, i);
-      this.ATf = this.jwK;
-      AppMethodBeat.o(116434);
+        localRect = this.HZU[i];
+      } while ((localRect == null) || (!localRect.contains(paramInt1, paramInt2)) || (i != this.Iab));
+      getPresenter().getSelectedFeatureListener().a(g.cJv, i, null);
+      this.HZs = this.mmW;
+      AppMethodBeat.o(9412);
       return;
-      AppMethodBeat.o(116434);
+      AppMethodBeat.o(9412);
       return;
       i = 0;
-      while ((this.ATH != null) && (i < this.ATH.length))
+      while ((this.HZV != null) && (i < this.HZV.length))
       {
-        localRect = this.ATH[i];
+        localRect = this.HZV[i];
         if ((localRect != null) && (localRect.contains(paramInt1, paramInt2)))
         {
-          if (((i == 0) && (this.ATJ)) || ((i == 1) && (this.ATI)) || ((i == 2) && (this.ATK)) || ((i == 3) && (this.ATL)))
+          if (((i == 0) && (this.HZX)) || ((i == 1) && (this.HZW)) || ((i == 2) && (this.HZY)) || ((i == 3) && (this.HZZ)))
           {
-            getPresenter().getSelectedFeatureListener().a(e.bWa, i);
-            this.ATf = this.jwK;
+            getPresenter().getSelectedFeatureListener().a(g.cJw, i, null);
+            this.HZs = this.mmW;
           }
-          this.ATJ = false;
-          this.ATI = false;
-          this.ATK = false;
-          this.ATL = false;
-          AppMethodBeat.o(116434);
+          this.HZX = false;
+          this.HZW = false;
+          this.HZY = false;
+          this.HZZ = false;
+          AppMethodBeat.o(9412);
           return;
         }
         i += 1;
@@ -305,29 +305,13 @@ public final class b
     }
   }
   
-  protected final void o(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(116430);
-    if (!this.ATn)
-    {
-      if (getCurFeatureType() != e.bWa)
-      {
-        super.o(paramCanvas);
-        AppMethodBeat.o(116430);
-        return;
-      }
-      p(paramCanvas);
-    }
-    AppMethodBeat.o(116430);
-  }
-  
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(116429);
-    if (getCurFeatureType() != e.bWa)
+    AppMethodBeat.i(9407);
+    if (getCurFeatureType() != g.cJw)
     {
       super.onMeasure(paramInt1, paramInt2);
-      AppMethodBeat.o(116429);
+      AppMethodBeat.o(9407);
       return;
     }
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
@@ -335,122 +319,138 @@ public final class b
     int i = getPaddingRight();
     int j = View.MeasureSpec.makeMeasureSpec(getDetailHeight(), 1073741824);
     setMeasuredDimension(View.MeasureSpec.makeMeasureSpec(paramInt1 - paramInt2 - i, 1073741824), j);
-    dQX();
-    AppMethodBeat.o(116429);
+    fiV();
+    AppMethodBeat.o(9407);
   }
   
-  protected final void p(Canvas paramCanvas)
+  protected final void r(Canvas paramCanvas)
   {
-    AppMethodBeat.i(116438);
-    super.p(paramCanvas);
+    AppMethodBeat.i(9408);
+    if (!this.HZB)
+    {
+      if (getCurFeatureType() != g.cJw)
+      {
+        super.r(paramCanvas);
+        AppMethodBeat.o(9408);
+        return;
+      }
+      s(paramCanvas);
+    }
+    AppMethodBeat.o(9408);
+  }
+  
+  protected final void s(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(9416);
+    super.s(paramCanvas);
     float f1;
     float f2;
-    if (getCurFeatureType() == e.bVZ)
+    if (getCurFeatureType() == g.cJv)
     {
       Paint localPaint = new Paint();
-      if (CE())
+      if (Mg())
       {
         localPaint.setAlpha(255);
-        if ((!this.ATk) || (!CE())) {
+        if ((!this.HZx) || (!Mg())) {
           break label239;
         }
       }
       label239:
-      for (Bitmap localBitmap = this.ATe;; localBitmap = this.ATd)
+      for (Bitmap localBitmap = this.HZr;; localBitmap = this.HZq)
       {
-        paramCanvas.drawBitmap(localBitmap, getMeasuredWidth() - getPaddingLeftAndRight() / 2 - this.ATd.getWidth(), (getDetailHeight() - this.ATd.getHeight()) / 2, localPaint);
-        f1 = (getMeasuredWidth() - getPaddingLeftAndRight() - this.ATd.getWidth() - this.ATz.getWidth() - this.ATw.getWidth()) / 3.0F;
-        f2 = 1.0F * (getDetailHeight() - this.ATz.getHeight()) / 2.0F;
-        if (this.ATM)
+        paramCanvas.drawBitmap(localBitmap, getMeasuredWidth() - getPaddingLeftAndRight() / 2 - this.HZq.getWidth(), (getDetailHeight() - this.HZq.getHeight()) / 2, localPaint);
+        f1 = (getMeasuredWidth() - getPaddingLeftAndRight() - this.HZq.getWidth() - this.HZN.getWidth() - this.HZK.getWidth()) / 3.0F;
+        f2 = 1.0F * (getDetailHeight() - this.HZN.getHeight()) / 2.0F;
+        if (this.Iaa)
         {
-          this.ATN = 0;
-          this.ATM = false;
+          this.Iab = 0;
+          this.Iaa = false;
         }
-        if (this.ATN != 0) {
+        if (this.Iab != 0) {
           break label248;
         }
-        paramCanvas.drawBitmap(this.ATx, f1, f2, null);
-        paramCanvas.drawBitmap(this.ATy, f1 + f1 + this.ATz.getWidth(), f2, null);
-        AppMethodBeat.o(116438);
+        paramCanvas.drawBitmap(this.HZL, f1, f2, null);
+        paramCanvas.drawBitmap(this.HZM, f1 + f1 + this.HZN.getWidth(), f2, null);
+        AppMethodBeat.o(9416);
         return;
         localPaint.setAlpha(160);
         break;
       }
       label248:
-      if (this.ATN == 1)
+      if (this.Iab == 1)
       {
-        paramCanvas.drawBitmap(this.ATw, f1, f2, null);
-        paramCanvas.drawBitmap(this.ATz, f1 + f1 + this.ATz.getWidth(), f2, null);
-        AppMethodBeat.o(116438);
+        paramCanvas.drawBitmap(this.HZK, f1, f2, null);
+        paramCanvas.drawBitmap(this.HZN, f1 + f1 + this.HZN.getWidth(), f2, null);
+        AppMethodBeat.o(9416);
         return;
       }
-      paramCanvas.drawBitmap(this.ATw, f1, f2, null);
-      paramCanvas.drawBitmap(this.ATy, f1 + f1 + this.ATz.getWidth(), f2, null);
-      AppMethodBeat.o(116438);
+      paramCanvas.drawBitmap(this.HZK, f1, f2, null);
+      paramCanvas.drawBitmap(this.HZM, f1 + f1 + this.HZN.getWidth(), f2, null);
+      AppMethodBeat.o(9416);
       return;
     }
-    if (getCurFeatureType() == e.bWa)
+    if (getCurFeatureType() == g.cJw)
     {
-      int i = (int)getResources().getDimension(2131428268);
-      paramCanvas.drawLine(0.0F, i, getMeasuredWidth(), i, this.ATl);
-      f1 = getResources().getDimension(2131428423) / 2.0F - this.ATF.getHeight() / 2 + i;
+      int i = (int)getResources().getDimension(2131166083);
+      paramCanvas.drawLine(0.0F, i, getMeasuredWidth(), i, this.HZz);
+      f1 = getResources().getDimension(2131166289) / 2.0F - this.HZT.getHeight() / 2 + i;
       f2 = 1.0F * getPaddingLeftAndRight() / 2.0F;
-      float f3 = i / 2 - this.ATB.getHeight() / 2;
-      if (this.ATJ)
+      float f3 = i / 2 - this.HZP.getHeight() / 2;
+      if (this.HZX)
       {
-        paramCanvas.drawBitmap(this.ATB, f2, f3, null);
-        if (!this.ATK) {
+        paramCanvas.drawBitmap(this.HZP, f2, f3, null);
+        if (!this.HZY) {
           break label633;
         }
-        paramCanvas.drawBitmap(this.ATD, getMeasuredWidth() - f2 - this.ATF.getWidth(), f1, null);
+        paramCanvas.drawBitmap(this.HZR, getMeasuredWidth() - f2 - this.HZT.getWidth(), f1, null);
         label484:
-        if (!this.ATI) {
+        if (!this.HZW) {
           break label662;
         }
-        paramCanvas.drawBitmap(this.ATE, f2, f1, null);
+        paramCanvas.drawBitmap(this.HZS, f2, f1, null);
       }
       for (;;)
       {
-        f1 = getResources().getDimension(2131428267) * 2.0F;
-        f2 = getResources().getDimension(2131428267);
-        f3 = getResources().getDimension(2131428423) / 2.0F;
+        f1 = getResources().getDimension(2131166082) * 2.0F;
+        f2 = getResources().getDimension(2131166082);
+        f3 = getResources().getDimension(2131166289) / 2.0F;
         f2 = (f2 - 8.0F) / 2.0F + f3 + i;
         f3 = getMeasuredWidth() / 2;
-        if (!this.ATL) {
+        if (!this.HZZ) {
           break label676;
         }
-        this.oqV.setColor(-1);
-        this.oqV.setAlpha(160);
-        paramCanvas.drawText(getResources().getString(2131298886), f3 - f1 / 2.0F, f2, this.oqV);
-        AppMethodBeat.o(116438);
+        this.tju.setColor(-1);
+        this.tju.setAlpha(160);
+        paramCanvas.drawText(getResources().getString(2131757966), f3 - f1 / 2.0F, f2, this.tju);
+        AppMethodBeat.o(9416);
         return;
-        paramCanvas.drawBitmap(this.ATA, f2, f3, null);
+        paramCanvas.drawBitmap(this.HZO, f2, f3, null);
         break;
         label633:
-        paramCanvas.drawBitmap(this.ATC, getMeasuredWidth() - f2 - this.ATF.getWidth(), f1, null);
+        paramCanvas.drawBitmap(this.HZQ, getMeasuredWidth() - f2 - this.HZT.getWidth(), f1, null);
         break label484;
         label662:
-        paramCanvas.drawBitmap(this.ATF, f2, f1, null);
+        paramCanvas.drawBitmap(this.HZT, f2, f1, null);
       }
       label676:
-      if (CE())
+      if (Mg())
       {
-        this.oqV.setColor(-1);
-        this.oqV.setAlpha(255);
-        paramCanvas.drawText(getResources().getString(2131298886), f3 - f1 / 2.0F, f2, this.oqV);
-        AppMethodBeat.o(116438);
+        this.tju.setColor(-1);
+        this.tju.setAlpha(255);
+        paramCanvas.drawText(getResources().getString(2131757966), f3 - f1 / 2.0F, f2, this.tju);
+        AppMethodBeat.o(9416);
         return;
       }
-      this.oqV.setColor(-1);
-      this.oqV.setAlpha(100);
-      paramCanvas.drawText(getResources().getString(2131298886), f3 - f1 / 2.0F, f2, this.oqV);
+      this.tju.setColor(-1);
+      this.tju.setAlpha(100);
+      paramCanvas.drawText(getResources().getString(2131757966), f3 - f1 / 2.0F, f2, this.tju);
     }
-    AppMethodBeat.o(116438);
+    AppMethodBeat.o(9416);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.view.footer.b
  * JD-Core Version:    0.7.0.1
  */

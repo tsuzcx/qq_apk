@@ -4,62 +4,62 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class p
 {
-  public static final p axk;
-  public final int axl;
+  public static final p aSC;
+  public final float aSD;
+  public final int aSE;
   public final float pitch;
-  public final float speed;
   
   static
   {
-    AppMethodBeat.i(95390);
-    axk = new p(1.0F, 1.0F);
-    AppMethodBeat.o(95390);
+    AppMethodBeat.i(92512);
+    aSC = new p(1.0F, 1.0F);
+    AppMethodBeat.o(92512);
   }
   
   public p(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(95387);
-    this.speed = paramFloat1;
+    AppMethodBeat.i(92509);
+    this.aSD = paramFloat1;
     this.pitch = paramFloat2;
-    this.axl = Math.round(1000.0F * paramFloat1);
-    AppMethodBeat.o(95387);
+    this.aSE = Math.round(1000.0F * paramFloat1);
+    AppMethodBeat.o(92509);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(95388);
+    AppMethodBeat.i(92510);
     if (this == paramObject)
     {
-      AppMethodBeat.o(95388);
+      AppMethodBeat.o(92510);
       return true;
     }
     if ((paramObject == null) || (getClass() != paramObject.getClass()))
     {
-      AppMethodBeat.o(95388);
+      AppMethodBeat.o(92510);
       return false;
     }
     paramObject = (p)paramObject;
-    if ((this.speed == paramObject.speed) && (this.pitch == paramObject.pitch))
+    if ((this.aSD == paramObject.aSD) && (this.pitch == paramObject.pitch))
     {
-      AppMethodBeat.o(95388);
+      AppMethodBeat.o(92510);
       return true;
     }
-    AppMethodBeat.o(95388);
+    AppMethodBeat.o(92510);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(95389);
-    int i = Float.floatToRawIntBits(this.speed);
+    AppMethodBeat.i(92511);
+    int i = Float.floatToRawIntBits(this.aSD);
     int j = Float.floatToRawIntBits(this.pitch);
-    AppMethodBeat.o(95389);
+    AppMethodBeat.o(92511);
     return (i + 527) * 31 + j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.p
  * JD-Core Version:    0.7.0.1
  */

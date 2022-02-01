@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="@dimen/a1e" style="@style/mc"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/bpu" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/nh" android:textColor="@color/o7" android:gravity="center" android:id="@id/bpv" android:background="@drawable/ny" android:layout_width="@dimen/a27" android:layout_height="@dimen/a27" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/bpw" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <View android:background="@color/o7" android:layout_width="97.0dip" android:layout_height="1.0dip" />
-        <View android:id="@id/bpx" android:background="@android:color/white" android:visibility="gone" android:layout_width="97.0dip" android:layout_height="1.0dip" />
+    <RelativeLayout android:id="@id/bjo" android:layout_width="fill_parent" android:layout_height="@dimen/a1e">
+        <ImageView android:id="@id/blb" android:paddingRight="@dimen/a1k" android:layout_width="@dimen/a1e" android:layout_height="@dimen/a1e" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <TextView android:gravity="center_vertical" android:id="@id/blc" android:background="@drawable/amv" android:layout_width="wrap_content" android:layout_height="@dimen/a1e" android:layout_toLeftOf="@id/bld" android:layout_toRightOf="@id/blb" android:layout_alignParentTop="true" style="@style/m3" />
+        <ImageView android:id="@id/bld" android:background="@drawable/amv" android:paddingLeft="@dimen/he" android:paddingRight="@dimen/i_" android:layout_width="wrap_content" android:layout_height="@dimen/a1e" android:src="@raw/emotionstore_emotionalign_icon" android:maxHeight="@dimen/a1e" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
     </RelativeLayout>
 </LinearLayout>

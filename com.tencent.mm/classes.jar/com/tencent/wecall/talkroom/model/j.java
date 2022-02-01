@@ -2,60 +2,60 @@ package com.tencent.wecall.talkroom.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.c.c;
+import com.tencent.pb.common.c.b;
 
 public final class j
 {
-  public static boolean axD(String paramString)
+  public static boolean aOD(String paramString)
   {
-    AppMethodBeat.i(128001);
+    AppMethodBeat.i(62717);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(128001);
+      AppMethodBeat.o(62717);
       return false;
     }
     boolean bool = paramString.startsWith("client_");
-    AppMethodBeat.o(128001);
+    AppMethodBeat.o(62717);
     return bool;
   }
   
-  public static int dXV()
+  public static int fqm()
   {
-    AppMethodBeat.i(128002);
+    AppMethodBeat.i(62718);
     try
     {
-      int i = a.dXg().nTj;
-      AppMethodBeat.o(128002);
+      int i = a.fpu().sHe;
+      AppMethodBeat.o(62718);
       return i;
     }
     catch (Exception localException)
     {
-      c.w("tagorewang:VoiceGroupUtil", new Object[] { "getActiveRoomId err: ", localException });
-      AppMethodBeat.o(128002);
+      b.w("tagorewang:VoiceGroupUtil", new Object[] { "getActiveRoomId err: ", localException });
+      AppMethodBeat.o(62718);
     }
     return 0;
   }
   
-  public static long dXW()
+  public static long fqn()
   {
-    AppMethodBeat.i(128003);
+    AppMethodBeat.i(62719);
     try
     {
-      long l = a.dXg().tFh;
-      AppMethodBeat.o(128003);
+      long l = a.fpu().ztl;
+      AppMethodBeat.o(62719);
       return l;
     }
     catch (Exception localException)
     {
-      c.w("tagorewang:VoiceGroupUtil", new Object[] { "getActiveRoomKey err: ", localException });
-      AppMethodBeat.o(128003);
+      b.w("tagorewang:VoiceGroupUtil", new Object[] { "getActiveRoomKey err: ", localException });
+      AppMethodBeat.o(62719);
     }
     return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.j
  * JD-Core Version:    0.7.0.1
  */

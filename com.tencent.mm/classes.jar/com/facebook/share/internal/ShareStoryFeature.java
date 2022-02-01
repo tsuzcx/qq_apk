@@ -10,10 +10,10 @@ public enum ShareStoryFeature
   
   static
   {
-    AppMethodBeat.i(97310);
+    AppMethodBeat.i(8334);
     SHARE_STORY_ASSET = new ShareStoryFeature("SHARE_STORY_ASSET", 0, 20170417);
     $VALUES = new ShareStoryFeature[] { SHARE_STORY_ASSET };
-    AppMethodBeat.o(97310);
+    AppMethodBeat.o(8334);
   }
   
   private ShareStoryFeature(int paramInt)
@@ -33,7 +33,7 @@ public enum ShareStoryFeature
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.facebook.share.internal.ShareStoryFeature
  * JD-Core Version:    0.7.0.1
  */

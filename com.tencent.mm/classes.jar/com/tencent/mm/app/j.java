@@ -1,76 +1,27 @@
 package com.tencent.mm.app;
 
-import android.os.Handler;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Method;
 
-public abstract interface j
+public final class j
 {
-  public abstract void onAppBackground(String paramString);
-  
-  public abstract void onAppForeground(String paramString);
-  
-  public static abstract class a
-    implements j
+  static boolean bn(Context paramContext)
   {
-    j wrapper = new j()
+    AppMethodBeat.i(189178);
+    try
     {
-      public final void onAppBackground(final String paramAnonymousString)
-      {
-        AppMethodBeat.i(146098);
-        if (j.a.this.getHandler() != null)
-        {
-          j.a.this.getHandler().post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(146096);
-              j.a.this.onAppBackground(paramAnonymousString);
-              AppMethodBeat.o(146096);
-            }
-          });
-          AppMethodBeat.o(146098);
-          return;
-        }
-        j.a.this.onAppBackground(paramAnonymousString);
-        AppMethodBeat.o(146098);
-      }
-      
-      public final void onAppForeground(final String paramAnonymousString)
-      {
-        AppMethodBeat.i(146097);
-        if (j.a.this.getHandler() != null)
-        {
-          j.a.this.getHandler().post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(146095);
-              j.a.this.onAppForeground(paramAnonymousString);
-              AppMethodBeat.o(146095);
-            }
-          });
-          AppMethodBeat.o(146097);
-          return;
-        }
-        j.a.this.onAppForeground(paramAnonymousString);
-        AppMethodBeat.o(146097);
-      }
-    };
-    
-    public void alive()
-    {
-      AppForegroundDelegate.bXk.a(this.wrapper);
+      Method localMethod = Class.forName("com.tencent.mm.sdcard_migrate.ExtStorageMigrateRoutine").getDeclaredMethod("triggerOnDemand", new Class[] { Context.class });
+      localMethod.setAccessible(true);
+      boolean bool = ((Boolean)localMethod.invoke(null, new Object[] { paramContext })).booleanValue();
+      AppMethodBeat.o(189178);
+      return bool;
     }
-    
-    public void dead()
+    catch (Throwable paramContext)
     {
-      AppForegroundDelegate.bXk.b(this.wrapper);
+      AppMethodBeat.o(189178);
     }
-    
-    Handler getHandler()
-    {
-      return null;
-    }
+    return false;
   }
 }
 

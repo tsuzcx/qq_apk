@@ -2,8 +2,8 @@ package android.support.v4.view;
 
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.view.a.b;
 import android.support.v4.view.a.c;
+import android.support.v4.view.a.d;
 import android.view.View;
 import android.view.View.AccessibilityDelegate;
 import android.view.ViewGroup;
@@ -21,13 +21,13 @@ public class a
     return DEFAULT_DELEGATE.dispatchPopulateAccessibilityEvent(paramView, paramAccessibilityEvent);
   }
   
-  public c getAccessibilityNodeProvider(View paramView)
+  public d getAccessibilityNodeProvider(View paramView)
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
       paramView = DEFAULT_DELEGATE.getAccessibilityNodeProvider(paramView);
       if (paramView != null) {
-        return new c(paramView);
+        return new d(paramView);
       }
     }
     return null;
@@ -43,9 +43,9 @@ public class a
     DEFAULT_DELEGATE.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
   }
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, b paramb)
+  public void onInitializeAccessibilityNodeInfo(View paramView, c paramc)
   {
-    DEFAULT_DELEGATE.onInitializeAccessibilityNodeInfo(paramView, paramb.Hq);
+    DEFAULT_DELEGATE.onInitializeAccessibilityNodeInfo(paramView, paramc.Op);
   }
   
   public void onPopulateAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
@@ -79,60 +79,60 @@ public class a
   static final class a
     extends View.AccessibilityDelegate
   {
-    private final a Fp;
+    private final a Mn;
     
     a(a parama)
     {
-      this.Fp = parama;
+      this.Mn = parama;
     }
     
     public final boolean dispatchPopulateAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
     {
-      return this.Fp.dispatchPopulateAccessibilityEvent(paramView, paramAccessibilityEvent);
+      return this.Mn.dispatchPopulateAccessibilityEvent(paramView, paramAccessibilityEvent);
     }
     
     public final AccessibilityNodeProvider getAccessibilityNodeProvider(View paramView)
     {
-      paramView = this.Fp.getAccessibilityNodeProvider(paramView);
+      paramView = this.Mn.getAccessibilityNodeProvider(paramView);
       if (paramView != null) {
-        return (AccessibilityNodeProvider)paramView.Ib;
+        return (AccessibilityNodeProvider)paramView.Pc;
       }
       return null;
     }
     
     public final void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
     {
-      this.Fp.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
+      this.Mn.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
     }
     
     public final void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
     {
-      this.Fp.onInitializeAccessibilityNodeInfo(paramView, b.a(paramAccessibilityNodeInfo));
+      this.Mn.onInitializeAccessibilityNodeInfo(paramView, c.a(paramAccessibilityNodeInfo));
     }
     
     public final void onPopulateAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
     {
-      this.Fp.onPopulateAccessibilityEvent(paramView, paramAccessibilityEvent);
+      this.Mn.onPopulateAccessibilityEvent(paramView, paramAccessibilityEvent);
     }
     
     public final boolean onRequestSendAccessibilityEvent(ViewGroup paramViewGroup, View paramView, AccessibilityEvent paramAccessibilityEvent)
     {
-      return this.Fp.onRequestSendAccessibilityEvent(paramViewGroup, paramView, paramAccessibilityEvent);
+      return this.Mn.onRequestSendAccessibilityEvent(paramViewGroup, paramView, paramAccessibilityEvent);
     }
     
     public final boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
     {
-      return this.Fp.performAccessibilityAction(paramView, paramInt, paramBundle);
+      return this.Mn.performAccessibilityAction(paramView, paramInt, paramBundle);
     }
     
     public final void sendAccessibilityEvent(View paramView, int paramInt)
     {
-      this.Fp.sendAccessibilityEvent(paramView, paramInt);
+      this.Mn.sendAccessibilityEvent(paramView, paramInt);
     }
     
     public final void sendAccessibilityEventUnchecked(View paramView, AccessibilityEvent paramAccessibilityEvent)
     {
-      this.Fp.sendAccessibilityEventUnchecked(paramView, paramAccessibilityEvent);
+      this.Mn.sendAccessibilityEventUnchecked(paramView, paramAccessibilityEvent);
     }
   }
 }

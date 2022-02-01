@@ -2,7 +2,7 @@ package com.google.android.gms.common.api;
 
 public abstract class z<R extends w, S extends w>
 {
-  public abstract t<S> gD();
+  public abstract t<S> gN();
 }
 
 

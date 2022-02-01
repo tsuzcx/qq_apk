@@ -1,52 +1,95 @@
 package com.tencent.mm.plugin.appbrand;
 
+import android.system.ErrnoException;
+import com.tencent.e.h;
+import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.task.e.b;
-import com.tencent.mm.plugin.appbrand.widget.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.Set;
+import com.tencent.mm.g.a.d;
+import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.sdk.platformtools.ad;
 
-final class j
-  extends i.c
+public final class j
 {
-  private final o gQn;
-  volatile boolean gQo = false;
-  private volatile e.b gQp;
+  private static final com.tencent.mm.sdk.b.c<d> iDr;
   
-  j(o paramo)
+  static
   {
-    this.gQn = paramo;
+    AppMethodBeat.i(43798);
+    iDr = new com.tencent.mm.sdk.b.c() {};
+    AppMethodBeat.o(43798);
   }
   
-  final void a(e.b paramb)
+  public static void aLG()
   {
-    AppMethodBeat.i(128958);
-    if (this.gQo)
-    {
-      ab.i("MicroMsg.AppBrand.AppBrandRuntimeBoostStrategy[preload]", "tryPreloadBeforeResourceDone hasPreload=TRUE, preloadReasonBefore[%s], preloadReasonNow[%s]", new Object[] { this.gQp, paramb });
-      AppMethodBeat.o(128958);
-      return;
-    }
-    this.gQo = true;
-    this.gQp = paramb;
-    o localo = this.gQn;
-    d locald = localo.gPC;
-    paramb = new j.1(this, localo, this, paramb);
-    if (locald.getAnimation() == null)
-    {
-      paramb.run();
-      AppMethodBeat.o(128958);
-      return;
-    }
-    locald.jam.add(paramb);
-    AppMethodBeat.o(128958);
+    AppMethodBeat.i(195519);
+    h.Iye.f(new a(new j.2()), "MicroMsg.AppBrandPruner");
+    AppMethodBeat.o(195519);
   }
   
-  public final void prepare() {}
+  public static void release()
+  {
+    AppMethodBeat.i(43797);
+    iDr.dead();
+    AppMethodBeat.o(43797);
+  }
+  
+  public static void setup()
+  {
+    AppMethodBeat.i(43796);
+    iDr.alive();
+    AppMethodBeat.o(43796);
+  }
+  
+  final class a
+    implements com.tencent.mm.kernel.api.c, Runnable
+  {
+    private volatile boolean iDs;
+    
+    a()
+    {
+      AppMethodBeat.i(195516);
+      this.iDs = false;
+      com.tencent.mm.kernel.a.c.afO().add(this);
+      AppMethodBeat.o(195516);
+    }
+    
+    public final void onAccountInitialized(e.c paramc) {}
+    
+    public final void onAccountRelease()
+    {
+      this.iDs = true;
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(195517);
+      try
+      {
+        j.this.run();
+        AppMethodBeat.o(195517);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        if ((localThrowable instanceof ErrnoException))
+        {
+          AppMethodBeat.o(195517);
+          return;
+        }
+        ad.printErrStackTrace("MicroMsg.AppBrandPruner", localThrowable, "caught exception while prune", new Object[0]);
+        if (!this.iDs)
+        {
+          AppMethodBeat.o(195517);
+          throw localThrowable;
+        }
+        AppMethodBeat.o(195517);
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.j
  * JD-Core Version:    0.7.0.1
  */

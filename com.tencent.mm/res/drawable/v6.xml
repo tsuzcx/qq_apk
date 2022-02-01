@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@raw/mall_order_detail_good_selected" />
-    <item android:drawable="@raw/mall_order_detail_good_unselected" />
-</selector>
+    <solid android:color="@color/BW_97" />
+    <corners android:radius="@dimen/c0" />
+</shape>

@@ -1,0 +1,32 @@
+{
+  "emoticon_main_ui": {
+    "title": "EmoticonStore",
+    "friend_emoticon": "FriendEmoticon",
+    "friend_add_recent": "FriendRecentAdd",
+    "more_emoticon": "MoreEmoticon",
+    "animate": "Animate",
+    "hot_rank": "HotRank",
+    "new_command": "NewCommand"
+  },
+  "emoticon_detail_ui": {
+    "animate": "Animate",
+    "artist_homepage": "ArtistHomePage",
+    "people_donor": "People Donor",
+    "service": "Service",
+    "complain": "Complain",
+    "sendToFriend": "sendToFriend",
+    "shareToMoment": "shareToMoment",
+    "source": "-FromEmoticonStore"
+  },
+  "common_action": {
+    "add": "Add",
+    "send_emoticon": "SendEmoticon",
+    "donor": "Donor",
+    "use": "Use"
+  },
+  "emoticon_status": {
+    "added": "Added",
+    "expired": "Expired"
+
+  }
+}

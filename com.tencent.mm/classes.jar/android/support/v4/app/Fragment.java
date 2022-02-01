@@ -23,7 +23,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.ClassLoaderCreator;
 import android.os.Parcelable.Creator;
-import android.support.v4.e.m;
+import android.support.v4.e.e;
+import android.support.v4.e.n;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.ContextMenu;
@@ -50,7 +51,8 @@ public class Fragment
   static final int RESUMED = 4;
   static final int STARTED = 3;
   static final Object USE_DEFAULT_TRANSITION = new Object();
-  private static final m<String, Class<?>> sClassMap = new m();
+  private static final n<String, Class<?>> sClassMap = new n();
+  private byte _hellAccFlag_;
   boolean mAdded;
   a mAnimationInfo;
   Bundle mArguments;
@@ -179,12 +181,12 @@ public class Fragment
     for (;;)
     {
       if (localc != null) {
-        localc.cA();
+        localc.dD();
       }
       return;
-      this.mAnimationInfo.wb = false;
-      localc = this.mAnimationInfo.wc;
-      this.mAnimationInfo.wc = null;
+      this.mAnimationInfo.Cy = false;
+      localc = this.mAnimationInfo.Cz;
+      this.mAnimationInfo.Cz = null;
     }
   }
   
@@ -345,18 +347,18 @@ public class Fragment
   
   public boolean getAllowEnterTransitionOverlap()
   {
-    if ((this.mAnimationInfo == null) || (this.mAnimationInfo.vY == null)) {
+    if ((this.mAnimationInfo == null) || (this.mAnimationInfo.Cv == null)) {
       return true;
     }
-    return this.mAnimationInfo.vY.booleanValue();
+    return this.mAnimationInfo.Cv.booleanValue();
   }
   
   public boolean getAllowReturnTransitionOverlap()
   {
-    if ((this.mAnimationInfo == null) || (this.mAnimationInfo.vX == null)) {
+    if ((this.mAnimationInfo == null) || (this.mAnimationInfo.Cu == null)) {
       return true;
     }
-    return this.mAnimationInfo.vX.booleanValue();
+    return this.mAnimationInfo.Cu.booleanValue();
   }
   
   View getAnimatingAway()
@@ -364,7 +366,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.vL;
+    return this.mAnimationInfo.Ci;
   }
   
   Animator getAnimator()
@@ -372,7 +374,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.vM;
+    return this.mAnimationInfo.Cj;
   }
   
   public final Bundle getArguments()
@@ -417,7 +419,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.vR;
+    return this.mAnimationInfo.Co;
   }
   
   z getEnterTransitionCallback()
@@ -425,7 +427,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.vZ;
+    return this.mAnimationInfo.Cw;
   }
   
   public Object getExitTransition()
@@ -433,7 +435,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.vT;
+    return this.mAnimationInfo.Cq;
   }
   
   z getExitTransitionCallback()
@@ -441,7 +443,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.wa;
+    return this.mAnimationInfo.Cx;
   }
   
   public final g getFragmentManager()
@@ -498,7 +500,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return 0;
     }
-    return this.mAnimationInfo.vO;
+    return this.mAnimationInfo.Cl;
   }
   
   int getNextTransition()
@@ -506,7 +508,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return 0;
     }
-    return this.mAnimationInfo.vP;
+    return this.mAnimationInfo.Cm;
   }
   
   int getNextTransitionStyle()
@@ -514,7 +516,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return 0;
     }
-    return this.mAnimationInfo.vQ;
+    return this.mAnimationInfo.Cn;
   }
   
   public final Fragment getParentFragment()
@@ -527,10 +529,10 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    if (this.mAnimationInfo.vU == USE_DEFAULT_TRANSITION) {
+    if (this.mAnimationInfo.Cr == USE_DEFAULT_TRANSITION) {
       return getExitTransition();
     }
-    return this.mAnimationInfo.vU;
+    return this.mAnimationInfo.Cr;
   }
   
   public final Resources getResources()
@@ -548,10 +550,10 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    if (this.mAnimationInfo.vS == USE_DEFAULT_TRANSITION) {
+    if (this.mAnimationInfo.Cp == USE_DEFAULT_TRANSITION) {
       return getEnterTransition();
     }
-    return this.mAnimationInfo.vS;
+    return this.mAnimationInfo.Cp;
   }
   
   public Object getSharedElementEnterTransition()
@@ -559,7 +561,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.vV;
+    return this.mAnimationInfo.Cs;
   }
   
   public Object getSharedElementReturnTransition()
@@ -567,10 +569,10 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return null;
     }
-    if (this.mAnimationInfo.vW == USE_DEFAULT_TRANSITION) {
+    if (this.mAnimationInfo.Ct == USE_DEFAULT_TRANSITION) {
       return getSharedElementEnterTransition();
     }
-    return this.mAnimationInfo.vW;
+    return this.mAnimationInfo.Ct;
   }
   
   int getStateAfterAnimating()
@@ -578,7 +580,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return 0;
     }
-    return this.mAnimationInfo.vN;
+    return this.mAnimationInfo.Ck;
   }
   
   public final String getString(int paramInt)
@@ -724,7 +726,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return false;
     }
-    return this.mAnimationInfo.wd;
+    return this.mAnimationInfo.CA;
   }
   
   final boolean isInBackStack()
@@ -747,7 +749,7 @@ public class Fragment
     if (this.mAnimationInfo == null) {
       return false;
     }
-    return this.mAnimationInfo.wb;
+    return this.mAnimationInfo.Cy;
   }
   
   public final boolean isRemoving()
@@ -1096,7 +1098,7 @@ public class Fragment
     if (!this.mCalled) {
       throw new aa("Fragment " + this + " did not call through to super.onDestroyView()");
     }
-    p.d(this).cH();
+    p.d(this).dK();
     this.mPerformedCreateView = false;
   }
   
@@ -1291,7 +1293,7 @@ public class Fragment
   
   public void postponeEnterTransition()
   {
-    ensureAnimationInfo().wb = true;
+    ensureAnimationInfo().Cy = true;
   }
   
   public void registerForContextMenu(View paramView)
@@ -1379,22 +1381,22 @@ public class Fragment
   
   public void setAllowEnterTransitionOverlap(boolean paramBoolean)
   {
-    ensureAnimationInfo().vY = Boolean.valueOf(paramBoolean);
+    ensureAnimationInfo().Cv = Boolean.valueOf(paramBoolean);
   }
   
   public void setAllowReturnTransitionOverlap(boolean paramBoolean)
   {
-    ensureAnimationInfo().vX = Boolean.valueOf(paramBoolean);
+    ensureAnimationInfo().Cu = Boolean.valueOf(paramBoolean);
   }
   
   void setAnimatingAway(View paramView)
   {
-    ensureAnimationInfo().vL = paramView;
+    ensureAnimationInfo().Ci = paramView;
   }
   
   void setAnimator(Animator paramAnimator)
   {
-    ensureAnimationInfo().vM = paramAnimator;
+    ensureAnimationInfo().Cj = paramAnimator;
   }
   
   public void setArguments(Bundle paramBundle)
@@ -1407,22 +1409,22 @@ public class Fragment
   
   public void setEnterSharedElementCallback(z paramz)
   {
-    ensureAnimationInfo().vZ = paramz;
+    ensureAnimationInfo().Cw = paramz;
   }
   
   public void setEnterTransition(Object paramObject)
   {
-    ensureAnimationInfo().vR = paramObject;
+    ensureAnimationInfo().Co = paramObject;
   }
   
   public void setExitSharedElementCallback(z paramz)
   {
-    ensureAnimationInfo().wa = paramz;
+    ensureAnimationInfo().Cx = paramz;
   }
   
   public void setExitTransition(Object paramObject)
   {
-    ensureAnimationInfo().vT = paramObject;
+    ensureAnimationInfo().Cq = paramObject;
   }
   
   public void setHasOptionsMenu(boolean paramBoolean)
@@ -1431,14 +1433,14 @@ public class Fragment
     {
       this.mHasMenu = paramBoolean;
       if ((isAdded()) && (!isHidden())) {
-        this.mHost.cC();
+        this.mHost.dF();
       }
     }
   }
   
   void setHideReplaced(boolean paramBoolean)
   {
-    ensureAnimationInfo().wd = paramBoolean;
+    ensureAnimationInfo().CA = paramBoolean;
   }
   
   final void setIndex(int paramInt, Fragment paramFragment)
@@ -1457,8 +1459,8 @@ public class Fragment
     if (this.mIndex >= 0) {
       throw new IllegalStateException("Fragment already active");
     }
-    if ((paramSavedState != null) && (paramSavedState.we != null)) {}
-    for (paramSavedState = paramSavedState.we;; paramSavedState = null)
+    if ((paramSavedState != null) && (paramSavedState.CB != null)) {}
+    for (paramSavedState = paramSavedState.CB;; paramSavedState = null)
     {
       this.mSavedFragmentState = paramSavedState;
       return;
@@ -1471,7 +1473,7 @@ public class Fragment
     {
       this.mMenuVisible = paramBoolean;
       if ((this.mHasMenu) && (isAdded()) && (!isHidden())) {
-        this.mHost.cC();
+        this.mHost.dF();
       }
     }
   }
@@ -1481,7 +1483,7 @@ public class Fragment
     if ((this.mAnimationInfo == null) && (paramInt == 0)) {
       return;
     }
-    ensureAnimationInfo().vO = paramInt;
+    ensureAnimationInfo().Cl = paramInt;
   }
   
   void setNextTransition(int paramInt1, int paramInt2)
@@ -1490,22 +1492,22 @@ public class Fragment
       return;
     }
     ensureAnimationInfo();
-    this.mAnimationInfo.vP = paramInt1;
-    this.mAnimationInfo.vQ = paramInt2;
+    this.mAnimationInfo.Cm = paramInt1;
+    this.mAnimationInfo.Cn = paramInt2;
   }
   
   void setOnStartEnterTransitionListener(c paramc)
   {
     ensureAnimationInfo();
-    if (paramc == this.mAnimationInfo.wc) {}
+    if (paramc == this.mAnimationInfo.Cz) {}
     do
     {
       return;
-      if ((paramc != null) && (this.mAnimationInfo.wc != null)) {
+      if ((paramc != null) && (this.mAnimationInfo.Cz != null)) {
         throw new IllegalStateException("Trying to set a replacement startPostponedEnterTransition on ".concat(String.valueOf(this)));
       }
-      if (this.mAnimationInfo.wb) {
-        this.mAnimationInfo.wc = paramc;
+      if (this.mAnimationInfo.Cy) {
+        this.mAnimationInfo.Cz = paramc;
       }
     } while (paramc == null);
     paramc.startListening();
@@ -1513,7 +1515,7 @@ public class Fragment
   
   public void setReenterTransition(Object paramObject)
   {
-    ensureAnimationInfo().vU = paramObject;
+    ensureAnimationInfo().Cr = paramObject;
   }
   
   public void setRetainInstance(boolean paramBoolean)
@@ -1523,22 +1525,22 @@ public class Fragment
   
   public void setReturnTransition(Object paramObject)
   {
-    ensureAnimationInfo().vS = paramObject;
+    ensureAnimationInfo().Cp = paramObject;
   }
   
   public void setSharedElementEnterTransition(Object paramObject)
   {
-    ensureAnimationInfo().vV = paramObject;
+    ensureAnimationInfo().Cs = paramObject;
   }
   
   public void setSharedElementReturnTransition(Object paramObject)
   {
-    ensureAnimationInfo().vW = paramObject;
+    ensureAnimationInfo().Ct = paramObject;
   }
   
   void setStateAfterAnimating(int paramInt)
   {
-    ensureAnimationInfo().vN = paramInt;
+    ensureAnimationInfo().Ck = paramInt;
   }
   
   public void setTargetFragment(Fragment paramFragment, int paramInt)
@@ -1577,14 +1579,17 @@ public class Fragment
   public boolean shouldShowRequestPermissionRationale(String paramString)
   {
     if (this.mHost != null) {
-      return this.mHost.G(paramString);
+      return this.mHost.q(paramString);
     }
     return false;
   }
   
   public void startActivity(Intent paramIntent)
   {
-    startActivity(paramIntent, null);
+    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(null).bd(paramIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramIntent.adn(), "android/support/v4/app/Fragment", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
+    startActivity((Intent)paramIntent.lS(0), (Bundle)paramIntent.lS(1));
+    com.tencent.mm.hellhoundlib.a.a.a(this, "android/support/v4/app/Fragment", "startActivity", "(Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;Landroid/os/Bundle;)V");
   }
   
   public void startActivity(Intent paramIntent, Bundle paramBundle)
@@ -1620,7 +1625,7 @@ public class Fragment
   {
     if ((this.mFragmentManager == null) || (this.mFragmentManager.mHost == null))
     {
-      ensureAnimationInfo().wb = false;
+      ensureAnimationInfo().Cy = false;
       return;
     }
     if (Looper.myLooper() != this.mFragmentManager.mHost.mHandler.getLooper())
@@ -1640,7 +1645,7 @@ public class Fragment
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(128);
-    android.support.v4.e.d.a(this, localStringBuilder);
+    e.a(this, localStringBuilder);
     if (this.mIndex >= 0)
     {
       localStringBuilder.append(" #");
@@ -1669,18 +1674,18 @@ public class Fragment
     implements Parcelable
   {
     public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator() {};
-    final Bundle we;
+    final Bundle CB;
     
     SavedState(Bundle paramBundle)
     {
-      this.we = paramBundle;
+      this.CB = paramBundle;
     }
     
     SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
     {
-      this.we = paramParcel.readBundle();
-      if ((paramClassLoader != null) && (this.we != null)) {
-        this.we.setClassLoader(paramClassLoader);
+      this.CB = paramParcel.readBundle();
+      if ((paramClassLoader != null) && (this.CB != null)) {
+        this.CB.setClassLoader(paramClassLoader);
       }
     }
     
@@ -1691,31 +1696,31 @@ public class Fragment
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      paramParcel.writeBundle(this.we);
+      paramParcel.writeBundle(this.CB);
     }
   }
   
   static final class a
   {
-    View vL;
-    Animator vM;
-    int vN;
-    int vO;
-    int vP;
-    int vQ;
-    Object vR = null;
-    Object vS = Fragment.USE_DEFAULT_TRANSITION;
-    Object vT = null;
-    Object vU = Fragment.USE_DEFAULT_TRANSITION;
-    Object vV = null;
-    Object vW = Fragment.USE_DEFAULT_TRANSITION;
-    Boolean vX;
-    Boolean vY;
-    z vZ = null;
-    z wa = null;
-    boolean wb;
-    Fragment.c wc;
-    boolean wd;
+    boolean CA;
+    View Ci;
+    Animator Cj;
+    int Ck;
+    int Cl;
+    int Cm;
+    int Cn;
+    Object Co = null;
+    Object Cp = Fragment.USE_DEFAULT_TRANSITION;
+    Object Cq = null;
+    Object Cr = Fragment.USE_DEFAULT_TRANSITION;
+    Object Cs = null;
+    Object Ct = Fragment.USE_DEFAULT_TRANSITION;
+    Boolean Cu;
+    Boolean Cv;
+    z Cw = null;
+    z Cx = null;
+    boolean Cy;
+    Fragment.c Cz;
   }
   
   public static final class b
@@ -1729,7 +1734,7 @@ public class Fragment
   
   static abstract interface c
   {
-    public abstract void cA();
+    public abstract void dD();
     
     public abstract void startListening();
   }

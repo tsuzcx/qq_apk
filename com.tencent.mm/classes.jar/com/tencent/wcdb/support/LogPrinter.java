@@ -17,9 +17,9 @@ public class LogPrinter
   
   public void println(String paramString)
   {
-    AppMethodBeat.i(12724);
+    AppMethodBeat.i(3410);
     Log.println(this.mPriority, this.mTag, paramString);
-    AppMethodBeat.o(12724);
+    AppMethodBeat.o(3410);
   }
 }
 

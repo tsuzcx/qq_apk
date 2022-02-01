@@ -11,32 +11,33 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.emoji.view.EmojiStatusView.b;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
 import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.k;
 import com.tencent.mm.pluginsdk.a.d;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.storage.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ar;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public class RTChattingEmojiView
   extends FrameLayout
 {
-  private EmojiInfo lkU;
+  private int ChF;
+  private int ChG;
+  private int ChH;
+  private int ChI;
+  private int ChJ;
+  public ChattingEmojiView ChK;
+  private ProgressBar ChL;
+  private FrameLayout.LayoutParams ChM;
+  private FrameLayout.LayoutParams ChN;
   private int mStatus = -1;
-  private boolean nxs = true;
-  private TextView tsa;
-  private int waf;
-  private int wag;
-  private int wah;
-  private int wai;
-  private int waj;
-  public ChattingEmojiView wak;
-  private ProgressBar wal;
-  private FrameLayout.LayoutParams wam;
-  private FrameLayout.LayoutParams wan;
+  private EmojiInfo oBl;
+  private boolean sgS = true;
+  private TextView zel;
   
   public RTChattingEmojiView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -48,206 +49,231 @@ public class RTChattingEmojiView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void Mr(int paramInt)
+  private void Vl(int paramInt)
   {
-    AppMethodBeat.i(62497);
+    AppMethodBeat.i(104732);
     this.mStatus = paramInt;
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(62497);
+      AppMethodBeat.o(104732);
       return;
-      this.wal.setVisibility(0);
-      this.tsa.setVisibility(4);
-      this.wak.setVisibility(4);
-      setBackgroundResource(2130840999);
-      AppMethodBeat.o(62497);
+      this.ChL.setVisibility(0);
+      this.zel.setVisibility(4);
+      this.ChK.setVisibility(4);
+      setBackgroundResource(2131234429);
+      AppMethodBeat.o(104732);
       return;
-      this.wal.setVisibility(0);
-      this.tsa.setVisibility(4);
-      this.wak.setVisibility(4);
-      setBackgroundResource(2130838323);
-      AppMethodBeat.o(62497);
+      this.ChL.setVisibility(0);
+      this.zel.setVisibility(4);
+      this.ChK.setVisibility(4);
+      setBackgroundResource(2131231680);
+      AppMethodBeat.o(104732);
       return;
-      Drawable localDrawable = getResources().getDrawable(2130838615);
-      localDrawable.setBounds(0, 0, this.wah, this.wah);
-      ab.d("MicroMsg.emoji.RTChattingEmojiView", "iconSize:%d hashcode:%d", new Object[] { Integer.valueOf(this.wah), Integer.valueOf(hashCode()) });
-      this.tsa.setCompoundDrawables(null, localDrawable, null, null);
-      this.tsa.setText(2131299168);
-      this.tsa.setVisibility(0);
-      this.wal.setVisibility(4);
-      this.wak.setVisibility(4);
-      setBackgroundResource(2130838323);
-      AppMethodBeat.o(62497);
+      Drawable localDrawable = getResources().getDrawable(2131232026);
+      localDrawable.setBounds(0, 0, this.ChH, this.ChH);
+      ad.d("MicroMsg.emoji.RTChattingEmojiView", "iconSize:%d hashcode:%d", new Object[] { Integer.valueOf(this.ChH), Integer.valueOf(hashCode()) });
+      this.zel.setCompoundDrawables(null, localDrawable, null, null);
+      this.zel.setText(2131758294);
+      this.zel.setVisibility(0);
+      this.ChL.setVisibility(4);
+      this.ChK.setVisibility(4);
+      setBackgroundResource(2131231680);
+      AppMethodBeat.o(104732);
       return;
-      this.wak.setVisibility(0);
-      this.wal.setVisibility(4);
-      this.tsa.setVisibility(4);
-      setBackgroundResource(2130840999);
+      this.ChK.setVisibility(0);
+      this.ChL.setVisibility(4);
+      this.zel.setVisibility(4);
+      setBackgroundResource(2131234429);
     }
   }
   
   public final void a(EmojiInfo paramEmojiInfo, long paramLong)
   {
-    AppMethodBeat.i(62493);
-    a(paramEmojiInfo, paramLong, new ap(""));
-    AppMethodBeat.o(62493);
+    AppMethodBeat.i(104728);
+    a(paramEmojiInfo, paramLong, new ar(""));
+    AppMethodBeat.o(104728);
   }
   
-  public final void a(EmojiInfo paramEmojiInfo, long paramLong, ap paramap)
+  public final void a(EmojiInfo paramEmojiInfo, long paramLong, ar paramar)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(62494);
-    ab.i("MicroMsg.emoji.RTChattingEmojiView", "setEmojiInfo %s msgId %s", new Object[] { paramEmojiInfo.field_md5, Long.valueOf(paramLong) });
-    this.lkU = paramEmojiInfo;
-    if (this.lkU.vY())
+    AppMethodBeat.i(104729);
+    ad.i("MicroMsg.emoji.RTChattingEmojiView", "setEmojiInfo %s msgId %s", new Object[] { paramEmojiInfo.field_md5, Long.valueOf(paramLong) });
+    this.oBl = paramEmojiInfo;
+    if (this.oBl.CZ())
     {
-      this.wak.setStatus(1);
-      Mr(2);
-      Object localObject = ((j)g.E(j.class)).bPQ().kB(paramLong);
-      if ((((dd)localObject).field_status == 2) || (((dd)localObject).field_status == 3) || (((dd)localObject).field_status == 5)) {}
+      this.ChK.setStatus(1);
+      Vl(2);
+      Object localObject = ((k)g.ab(k.class)).cOI().rm(paramLong);
+      if ((((du)localObject).field_status == 2) || (((du)localObject).field_status == 3) || (((du)localObject).field_status == 5)) {}
       for (boolean bool1 = true;; bool1 = false)
       {
-        localObject = this.wak;
-        if (!paramap.fXr) {
+        localObject = this.ChK;
+        if (!paramar.hAc) {
           bool2 = true;
         }
-        ((ChattingEmojiView)localObject).a(bool2, bool1, ((PluginEmoji)g.G(PluginEmoji.class)).getEmojiMgr().o(paramEmojiInfo), ((PluginEmoji)g.G(PluginEmoji.class)).getEmojiMgr().p(paramEmojiInfo), paramEmojiInfo.getName(), String.valueOf(paramLong + paramEmojiInfo.getName()));
-        AppMethodBeat.o(62494);
+        ((ChattingEmojiView)localObject).a(bool2, bool1, ((PluginEmoji)g.ad(PluginEmoji.class)).getEmojiMgr().q(paramEmojiInfo), ((PluginEmoji)g.ad(PluginEmoji.class)).getEmojiMgr().r(paramEmojiInfo), paramEmojiInfo.getName(), String.valueOf(paramLong + paramEmojiInfo.getName()));
+        AppMethodBeat.o(104729);
         return;
       }
     }
-    this.nxs = true;
-    this.wak.setStatusListener(new RTChattingEmojiView.1(this));
-    this.wak.a(this.lkU, paramLong);
-    AppMethodBeat.o(62494);
+    this.sgS = true;
+    this.ChK.setStatusListener(new EmojiStatusView.b()
+    {
+      public final void lG(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(104724);
+        if (paramAnonymousInt == 0)
+        {
+          RTChattingEmojiView localRTChattingEmojiView = RTChattingEmojiView.this;
+          if (RTChattingEmojiView.a(RTChattingEmojiView.this)) {}
+          for (paramAnonymousInt = 0;; paramAnonymousInt = 1)
+          {
+            RTChattingEmojiView.a(localRTChattingEmojiView, paramAnonymousInt);
+            AppMethodBeat.o(104724);
+            return;
+          }
+        }
+        if (paramAnonymousInt == -1)
+        {
+          RTChattingEmojiView.a(RTChattingEmojiView.this, 3);
+          AppMethodBeat.o(104724);
+          return;
+        }
+        RTChattingEmojiView.a(RTChattingEmojiView.this, 2);
+        AppMethodBeat.o(104724);
+      }
+    });
+    this.ChK.a(this.oBl, paramLong);
+    AppMethodBeat.o(104729);
   }
   
-  public final void dpa()
+  public final void eAf()
   {
-    AppMethodBeat.i(62491);
-    this.wan.gravity = 3;
-    addView(this.wak, this.wan);
-    AppMethodBeat.o(62491);
+    AppMethodBeat.i(104726);
+    this.ChN.gravity = 3;
+    addView(this.ChK, this.ChN);
+    AppMethodBeat.o(104726);
   }
   
-  public final void dpb()
+  public final void eAg()
   {
-    AppMethodBeat.i(62492);
-    this.wan.gravity = 5;
-    addView(this.wak, this.wan);
-    AppMethodBeat.o(62492);
+    AppMethodBeat.i(104727);
+    this.ChN.gravity = 5;
+    addView(this.ChK, this.ChN);
+    AppMethodBeat.o(104727);
   }
   
   public void initView()
   {
-    AppMethodBeat.i(62490);
-    this.waf = getContext().getResources().getDimensionPixelSize(2131428398);
-    this.wag = getContext().getResources().getDimensionPixelSize(2131428395);
-    this.wai = getContext().getResources().getDimensionPixelSize(2131428401);
-    this.waj = getContext().getResources().getDimensionPixelSize(2131428400);
-    this.wak = new ChattingEmojiView(getContext());
-    this.wal = new ProgressBar(getContext());
-    this.wal.setIndeterminateDrawable(getResources().getDrawable(2130840009));
-    this.tsa = new TextView(getContext());
-    this.tsa.setText(2131299168);
-    this.tsa.setTextColor(getResources().getColor(2131689981));
-    this.wam = new FrameLayout.LayoutParams(-2, -2);
-    this.wan = new FrameLayout.LayoutParams(-2, -2);
-    this.wam.gravity = 17;
-    addView(this.wal, this.wam);
-    addView(this.tsa, this.wam);
-    AppMethodBeat.o(62490);
+    AppMethodBeat.i(104725);
+    this.ChF = getContext().getResources().getDimensionPixelSize(2131166264);
+    this.ChG = getContext().getResources().getDimensionPixelSize(2131166261);
+    this.ChI = getContext().getResources().getDimensionPixelSize(2131166267);
+    this.ChJ = getContext().getResources().getDimensionPixelSize(2131166266);
+    this.ChK = new ChattingEmojiView(getContext());
+    this.ChL = new ProgressBar(getContext());
+    this.ChL.setIndeterminateDrawable(getResources().getDrawable(2131233684));
+    this.zel = new TextView(getContext());
+    this.zel.setText(2131758294);
+    this.zel.setTextColor(getResources().getColor(2131100275));
+    this.ChM = new FrameLayout.LayoutParams(-2, -2);
+    this.ChN = new FrameLayout.LayoutParams(-2, -2);
+    this.ChM.gravity = 17;
+    addView(this.ChL, this.ChM);
+    addView(this.zel, this.ChM);
+    AppMethodBeat.o(104725);
   }
   
   protected void onAttachedToWindow()
   {
-    AppMethodBeat.i(62499);
+    AppMethodBeat.i(104734);
     super.onAttachedToWindow();
-    AppMethodBeat.o(62499);
+    AppMethodBeat.o(104734);
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(62500);
+    AppMethodBeat.i(104735);
     super.onDetachedFromWindow();
-    AppMethodBeat.o(62500);
+    AppMethodBeat.o(104735);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(62498);
+    AppMethodBeat.i(104733);
     if ((this.mStatus == 0) || (this.mStatus == 1) || (this.mStatus == 3))
     {
-      if ((this.lkU != null) && (this.lkU.field_height != 0))
+      if ((this.oBl != null) && (this.oBl.field_height != 0))
       {
-        paramInt1 = (int)(this.lkU.field_height * this.wak.getEmojiDensityScale());
-        if (paramInt1 < this.wag) {}
+        paramInt1 = (int)(this.oBl.field_height * this.ChK.getEmojiDensityScale());
+        if (paramInt1 < this.ChG) {}
       }
       for (;;)
       {
         paramInt2 = paramInt1;
-        if (paramInt1 > this.waf) {
-          paramInt2 = this.waf;
+        if (paramInt1 > this.ChF) {
+          paramInt2 = this.ChF;
         }
-        this.wah = this.wai;
-        if ((paramInt2 >= this.wag) && (paramInt2 < this.wag + (this.wai - this.waj))) {
-          this.wah = (this.waj + (paramInt2 - this.wag));
+        this.ChH = this.ChI;
+        if ((paramInt2 >= this.ChG) && (paramInt2 < this.ChG + (this.ChI - this.ChJ))) {
+          this.ChH = (this.ChJ + (paramInt2 - this.ChG));
         }
-        paramInt1 = this.waf;
+        paramInt1 = this.ChF;
         setMeasuredDimension(paramInt1, paramInt2);
         super.onMeasure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824));
-        Mr(this.mStatus);
-        AppMethodBeat.o(62498);
+        Vl(this.mStatus);
+        AppMethodBeat.o(104733);
         return;
-        paramInt1 = this.wag;
+        paramInt1 = this.ChG;
         continue;
-        paramInt1 = this.waf;
+        paramInt1 = this.ChF;
       }
     }
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(62498);
+    AppMethodBeat.o(104733);
   }
   
   public boolean performClick()
   {
-    AppMethodBeat.i(62496);
-    ab.i("MicroMsg.emoji.RTChattingEmojiView", "performClick: %s", new Object[] { Integer.valueOf(this.mStatus) });
+    AppMethodBeat.i(104731);
+    ad.i("MicroMsg.emoji.RTChattingEmojiView", "performClick: %s", new Object[] { Integer.valueOf(this.mStatus) });
     if (this.mStatus == 3)
     {
-      this.nxs = false;
-      this.wak.reload();
-      AppMethodBeat.o(62496);
+      this.sgS = false;
+      this.ChK.reload();
+      AppMethodBeat.o(104731);
       return true;
     }
     if (this.mStatus == 2)
     {
       boolean bool = super.performClick();
-      AppMethodBeat.o(62496);
+      AppMethodBeat.o(104731);
       return bool;
     }
-    ab.d("MicroMsg.emoji.RTChattingEmojiView", "do nothing when loading");
-    AppMethodBeat.o(62496);
+    ad.d("MicroMsg.emoji.RTChattingEmojiView", "do nothing when loading");
+    AppMethodBeat.o(104731);
     return true;
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(62495);
-    Mr(2);
-    if ((this.wak != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
+    AppMethodBeat.i(104730);
+    Vl(2);
+    if ((this.ChK != null) && (paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      paramBitmap.setDensity(this.wak.getEmojiDensity());
-      this.wak.setImageBitmap(paramBitmap);
+      paramBitmap.setDensity(this.ChK.getEmojiDensity());
+      this.ChK.setImageBitmap(paramBitmap);
     }
-    AppMethodBeat.o(62495);
+    AppMethodBeat.o(104730);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiView
  * JD-Core Version:    0.7.0.1
  */

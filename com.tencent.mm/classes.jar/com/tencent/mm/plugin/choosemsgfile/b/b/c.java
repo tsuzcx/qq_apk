@@ -4,43 +4,42 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
-import com.tencent.mm.plugin.choosemsgfile.b.d.b;
 
 public class c
   extends a<l>
 {
-  private final long mTimeStamp;
+  private final long nLM;
   
   public c(g paramg, long paramLong)
   {
     super(paramg);
-    this.mTimeStamp = paramLong;
+    this.nLM = paramLong;
   }
   
-  public void a(l paraml, int paramInt)
+  public void a(l paraml, int paramInt, a parama)
   {
-    AppMethodBeat.i(54292);
-    if ((paramInt == this.kEI.getItemCount() - 1) || (b.io(this.kEI.ty(paramInt + 1).getTimeStamp()) != b.io(this.mTimeStamp)))
+    AppMethodBeat.i(162325);
+    if ((paramInt == this.nLI.getItemCount() - 1) || (com.tencent.mm.plugin.choosemsgfile.b.d.c.nW(this.nLI.zs(paramInt + 1).getTimeStamp()) != com.tencent.mm.plugin.choosemsgfile.b.d.c.nW(this.nLM)))
     {
-      paraml.gpp.setVisibility(8);
-      AppMethodBeat.o(54292);
+      paraml.ibF.setVisibility(8);
+      AppMethodBeat.o(162325);
       return;
     }
-    paraml.gpp.setVisibility(0);
-    paraml.gpp.setText(b.in(this.mTimeStamp));
-    if (this.kEI.bgx())
+    paraml.ibF.setVisibility(0);
+    paraml.ibF.setText(com.tencent.mm.plugin.choosemsgfile.b.d.c.nV(this.nLM));
+    if (this.nLI.bNI())
     {
-      paraml.kFd.setVisibility(0);
-      AppMethodBeat.o(54292);
+      paraml.nMe.setVisibility(0);
+      AppMethodBeat.o(162325);
       return;
     }
-    paraml.kFd.setVisibility(8);
-    AppMethodBeat.o(54292);
+    paraml.nMe.setVisibility(8);
+    AppMethodBeat.o(162325);
   }
   
   public final long getTimeStamp()
   {
-    return this.mTimeStamp;
+    return this.nLM;
   }
   
   public final int getType()
@@ -50,7 +49,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -17,15 +17,15 @@ public class SupportErrorDialogFragment
   
   public static SupportErrorDialogFragment newInstance(Dialog paramDialog)
   {
-    AppMethodBeat.i(60474);
+    AppMethodBeat.i(10966);
     paramDialog = newInstance(paramDialog, null);
-    AppMethodBeat.o(60474);
+    AppMethodBeat.o(10966);
     return paramDialog;
   }
   
   public static SupportErrorDialogFragment newInstance(Dialog paramDialog, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(60475);
+    AppMethodBeat.i(10967);
     SupportErrorDialogFragment localSupportErrorDialogFragment = new SupportErrorDialogFragment();
     paramDialog = (Dialog)Preconditions.checkNotNull(paramDialog, "Cannot display null dialog");
     paramDialog.setOnCancelListener(null);
@@ -34,35 +34,35 @@ public class SupportErrorDialogFragment
     if (paramOnCancelListener != null) {
       localSupportErrorDialogFragment.zzap = paramOnCancelListener;
     }
-    AppMethodBeat.o(60475);
+    AppMethodBeat.o(10967);
     return localSupportErrorDialogFragment;
   }
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(60473);
+    AppMethodBeat.i(10965);
     if (this.zzap != null) {
       this.zzap.onCancel(paramDialogInterface);
     }
-    AppMethodBeat.o(60473);
+    AppMethodBeat.o(10965);
   }
   
   public Dialog onCreateDialog(Bundle paramBundle)
   {
-    AppMethodBeat.i(60472);
+    AppMethodBeat.i(10964);
     if (this.mDialog == null) {
       setShowsDialog(false);
     }
     paramBundle = this.mDialog;
-    AppMethodBeat.o(60472);
+    AppMethodBeat.o(10964);
     return paramBundle;
   }
   
   public void show(g paramg, String paramString)
   {
-    AppMethodBeat.i(60476);
+    AppMethodBeat.i(10968);
     super.show(paramg, paramString);
-    AppMethodBeat.o(60476);
+    AppMethodBeat.o(10968);
   }
 }
 

@@ -2,14 +2,15 @@ package com.tencent.mm.plugin.webview.luggage.c;
 
 import android.os.Build.VERSION;
 import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static int b(Window paramWindow, boolean paramBoolean)
+  public static int a(Window paramWindow, boolean paramBoolean)
   {
-    AppMethodBeat.i(6496);
+    AppMethodBeat.i(78762);
     int i = paramWindow.getDecorView().getSystemUiVisibility();
     int j;
     if (paramBoolean)
@@ -27,7 +28,7 @@ public final class a
     }
     for (;;)
     {
-      AppMethodBeat.o(6496);
+      AppMethodBeat.o(78762);
       return i;
       j = i & 0xFFFFFBFF & 0xFFFFFEFF;
       i = j;
@@ -42,28 +43,38 @@ public final class a
     }
   }
   
-  public static void c(Window paramWindow, boolean paramBoolean)
+  public static void b(Window paramWindow, final boolean paramBoolean)
   {
-    AppMethodBeat.i(6495);
+    AppMethodBeat.i(78761);
     if (paramBoolean)
     {
-      i = b(paramWindow, paramBoolean);
+      i = a(paramWindow, paramBoolean);
       paramWindow.getDecorView().setSystemUiVisibility(i);
       paramWindow.setFlags(1024, 1024);
-      paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new a.1(paramWindow, paramBoolean));
-      AppMethodBeat.o(6495);
+      paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
+      {
+        public final void onSystemUiVisibilityChange(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(78760);
+          if ((paramAnonymousInt & 0x4) == 0) {
+            this.klX.getDecorView().setSystemUiVisibility(a.a(this.klX, paramBoolean));
+          }
+          AppMethodBeat.o(78760);
+        }
+      });
+      AppMethodBeat.o(78761);
       return;
     }
-    int i = b(paramWindow, paramBoolean);
+    int i = a(paramWindow, paramBoolean);
     paramWindow.getDecorView().setSystemUiVisibility(i);
     paramWindow.clearFlags(1024);
     paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(null);
-    AppMethodBeat.o(6495);
+    AppMethodBeat.o(78761);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,12 @@
 package com.tencent.mm.plugin.qqmail.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.io.File;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.i;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.security.InvalidParameterException;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,63 +19,64 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
 
 public final class l
   extends n
 {
   private static final String BOUNDARY;
-  private HttpPost pIS;
+  private HttpPost uLl;
   
   static
   {
-    AppMethodBeat.i(67954);
+    AppMethodBeat.i(122688);
     BOUNDARY = "WEIXIN" + System.currentTimeMillis();
-    AppMethodBeat.o(67954);
+    AppMethodBeat.o(122688);
   }
   
   private static String a(n.b paramb)
   {
-    AppMethodBeat.i(67953);
+    AppMethodBeat.i(122687);
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = paramb.pJb.keySet().iterator();
+    Object localObject = paramb.uLu.keySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
       localStringBuilder.append("------" + BOUNDARY + "\r\n");
       localStringBuilder.append("Content-Disposition: form-data; name=\"" + str + "\"\r\n");
       localStringBuilder.append("\r\n");
-      localStringBuilder.append((String)paramb.pJb.get(str));
+      localStringBuilder.append((String)paramb.uLu.get(str));
       localStringBuilder.append("\r\n");
     }
-    localObject = new File(paramb.pJd.filePath);
-    if (!((File)localObject).isFile())
+    localObject = new e(paramb.uLw.filePath);
+    if (!((e)localObject).isFile())
     {
       paramb = new InvalidParameterException("The path to upload isnot a file.");
-      AppMethodBeat.o(67953);
+      AppMethodBeat.o(122687);
       throw paramb;
     }
-    localObject = ((File)localObject).getName();
+    localObject = ((e)localObject).getName();
     localStringBuilder.append("------" + BOUNDARY + "\r\n");
-    localStringBuilder.append("Content-Disposition: form-data; name=\"" + paramb.pJd.cvO + "\"; filename=\"" + (String)localObject + "\"\r\n");
+    localStringBuilder.append("Content-Disposition: form-data; name=\"" + paramb.uLw.dln + "\"; filename=\"" + (String)localObject + "\"\r\n");
     localStringBuilder.append("\r\n");
     paramb = localStringBuilder.toString();
-    AppMethodBeat.o(67953);
+    AppMethodBeat.o(122687);
     return paramb;
   }
   
   public final n.c a(String paramString1, String paramString2, n.b paramb, n.a parama)
   {
     int j = 0;
-    AppMethodBeat.i(67951);
-    ab.d("MicroMsg.HttpClientUtil", "uri=" + paramString2 + ", " + paramb);
+    AppMethodBeat.i(122685);
+    ad.d("MicroMsg.HttpClientUtil", "uri=" + paramString2 + ", " + paramb);
     parama = new DefaultHttpClient();
     int i = j;
     try
     {
       Object localObject = a(paramb);
       i = j;
-      String str = paramb.pJd.filePath;
+      String str = paramb.uLw.filePath;
       i = j;
       StringBuilder localStringBuilder = new StringBuilder();
       i = j;
@@ -79,23 +84,23 @@ public final class l
       i = j;
       localStringBuilder.append("------" + BOUNDARY + "--\r\n");
       i = j;
-      localObject = new l.a(this, (String)localObject, str, localStringBuilder.toString());
+      localObject = new a((String)localObject, str, localStringBuilder.toString());
       i = j;
-      this.pIS = new HttpPost(f(paramString1, paramString2, paramb.pJb));
+      this.uLl = new HttpPost(d(paramString1, paramString2, paramb.uLu));
       i = j;
-      this.pIS.setHeader("User-Agent", userAgent);
+      this.uLl.setHeader("User-Agent", userAgent);
       i = j;
-      this.pIS.setHeader("Host", host);
+      this.uLl.setHeader("Host", host);
       i = j;
-      this.pIS.setHeader("Connection", "Keep-Alive");
+      this.uLl.setHeader("Connection", "Keep-Alive");
       i = j;
-      this.pIS.setHeader("Accept-Charset", "utf-8");
+      this.uLl.setHeader("Accept-Charset", "utf-8");
       i = j;
-      this.pIS.setHeader("Cookie", W(paramb.pJc));
+      this.uLl.setHeader("Cookie", as(paramb.uLv));
       i = j;
-      this.pIS.setEntity((HttpEntity)localObject);
+      this.uLl.setEntity((HttpEntity)localObject);
       i = j;
-      paramb = parama.execute(this.pIS);
+      paramb = parama.execute(this.uLl);
       i = j;
       j = paramb.getStatusLine().getStatusCode();
       i = j;
@@ -105,14 +110,14 @@ public final class l
       i = j;
       paramString1 = EntityUtils.toString(paramString1);
       i = j;
-      paramString1 = new n.c(j, Xr(paramb), paramString1);
+      paramString1 = new n.c(j, akU(paramb), paramString1);
       i = j;
-      ab.d("MicroMsg.HttpClientUtil", "uri=" + paramString2 + ", " + paramString1);
+      ad.d("MicroMsg.HttpClientUtil", "uri=" + paramString2 + ", " + paramString1);
       return paramString1;
     }
     catch (Exception paramString1)
     {
-      ab.printErrStackTrace("MicroMsg.HttpClientUtil", paramString1, "", new Object[0]);
+      ad.printErrStackTrace("MicroMsg.HttpClientUtil", paramString1, "", new Object[0]);
       j = i;
       if (i == 0) {
         j = 503;
@@ -123,23 +128,148 @@ public final class l
     finally
     {
       parama.getConnectionManager().shutdown();
-      AppMethodBeat.o(67951);
+      AppMethodBeat.o(122685);
     }
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(67952);
-    ab.d("MicroMsg.HttpClientUtil", "cancel conection.");
-    if ((this.pIS != null) && (!this.pIS.isAborted())) {
-      this.pIS.abort();
+    AppMethodBeat.i(122686);
+    ad.d("MicroMsg.HttpClientUtil", "cancel conection.");
+    if ((this.uLl != null) && (!this.uLl.isAborted())) {
+      this.uLl.abort();
     }
-    AppMethodBeat.o(67952);
+    AppMethodBeat.o(122686);
+  }
+  
+  final class a
+    implements HttpEntity
+  {
+    private e kot;
+    private int length;
+    private String uLm;
+    private String uLn;
+    
+    public a(String paramString1, String paramString2, String paramString3)
+    {
+      AppMethodBeat.i(122678);
+      this.uLm = paramString1;
+      this.kot = new e(paramString2);
+      this.uLn = paramString3;
+      this.length = (paramString1.length() + (int)this.kot.length() + paramString3.length());
+      AppMethodBeat.o(122678);
+    }
+    
+    public final void consumeContent()
+    {
+      AppMethodBeat.i(122684);
+      if (isStreaming())
+      {
+        UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Streaming entity does not implement #consumeContent()");
+        AppMethodBeat.o(122684);
+        throw localUnsupportedOperationException;
+      }
+      AppMethodBeat.o(122684);
+    }
+    
+    public final InputStream getContent()
+    {
+      AppMethodBeat.i(122682);
+      UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("Multipart form entity does not implement #getContent()");
+      AppMethodBeat.o(122682);
+      throw localUnsupportedOperationException;
+    }
+    
+    public final Header getContentEncoding()
+    {
+      return null;
+    }
+    
+    public final long getContentLength()
+    {
+      return this.length;
+    }
+    
+    public final Header getContentType()
+    {
+      AppMethodBeat.i(122681);
+      BasicHeader localBasicHeader = new BasicHeader("Content-Type", "multipart/form-data; boundary=----" + l.BOUNDARY);
+      AppMethodBeat.o(122681);
+      return localBasicHeader;
+    }
+    
+    public final boolean isChunked()
+    {
+      AppMethodBeat.i(122679);
+      if (!isRepeatable())
+      {
+        AppMethodBeat.o(122679);
+        return true;
+      }
+      AppMethodBeat.o(122679);
+      return false;
+    }
+    
+    public final boolean isRepeatable()
+    {
+      return true;
+    }
+    
+    public final boolean isStreaming()
+    {
+      AppMethodBeat.i(122680);
+      if (!isRepeatable())
+      {
+        AppMethodBeat.o(122680);
+        return true;
+      }
+      AppMethodBeat.o(122680);
+      return false;
+    }
+    
+    public final void writeTo(OutputStream paramOutputStream)
+    {
+      AppMethodBeat.i(122683);
+      DataOutputStream localDataOutputStream = new DataOutputStream(paramOutputStream);
+      localDataOutputStream.writeBytes(this.uLm);
+      InputStream localInputStream = null;
+      paramOutputStream = localInputStream;
+      try
+      {
+        byte[] arrayOfByte = new byte[1024];
+        paramOutputStream = localInputStream;
+        localInputStream = i.ah(this.kot);
+        for (;;)
+        {
+          paramOutputStream = localInputStream;
+          int i = localInputStream.read(arrayOfByte);
+          if (i <= 0) {
+            break;
+          }
+          paramOutputStream = localInputStream;
+          localDataOutputStream.write(arrayOfByte, 0, i);
+        }
+        paramOutputStream = localObject;
+      }
+      finally
+      {
+        if (paramOutputStream != null) {
+          paramOutputStream.close();
+        }
+        AppMethodBeat.o(122683);
+      }
+      localDataOutputStream.flush();
+      if (localObject != null) {
+        localObject.close();
+      }
+      localDataOutputStream.writeBytes(this.uLn);
+      AppMethodBeat.o(122683);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.l
  * JD-Core Version:    0.7.0.1
  */

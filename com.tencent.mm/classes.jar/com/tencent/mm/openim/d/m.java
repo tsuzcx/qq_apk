@@ -1,27 +1,27 @@
 package com.tencent.mm.openim.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bip;
+import com.tencent.mm.protocal.protobuf.bvy;
 
 public final class m
   extends i
 {
-  bip ggv;
+  bvy hOr;
   
   public m(String paramString, int paramInt)
   {
     super(6);
-    AppMethodBeat.i(78932);
-    this.ggv = new bip();
-    this.ggv.gfL = paramString;
-    this.ggv.xxu = paramInt;
-    this.oDZ = this.ggv;
-    AppMethodBeat.o(78932);
+    AppMethodBeat.i(151276);
+    this.hOr = new bvy();
+    this.hOr.hNH = paramString;
+    this.hOr.DSS = paramInt;
+    this.tyM = this.hOr;
+    AppMethodBeat.o(151276);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.openim.d.m
  * JD-Core Version:    0.7.0.1
  */

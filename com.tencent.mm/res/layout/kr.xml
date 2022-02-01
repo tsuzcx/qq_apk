@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="@dimen/l2" android:layout_width="255.0dip" android:layout_height="wrap_content" android:minHeight="220.0dip"
+<RelativeLayout android:orientation="vertical" android:background="@drawable/js" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="84.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/b1r" android:layout_width="220.0dip" android:layout_height="106.599976dip" />
-    <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l2" android:text="@string/ait" />
-</LinearLayout>
+    <com.tencent.mm.plugin.card.widget.MemberCardTopCropImageView android:id="@id/aqq" android:layout_width="fill_parent" android:layout_height="84.0dip" android:src="#ffdc6f49" android:scaleType="centerCrop" android:minHeight="84.0dip" />
+    <ImageView android:id="@id/aqr" android:background="@drawable/bdn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="84.0dip" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_centerVertical="true">
+        <TextView android:textSize="22.0dip" android:textColor="@color/a_u" android:id="@id/aqv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/a_u" android:id="@id/aqt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="" android:layout_below="@id/aqv" android:layout_alignLeft="@id/aqv" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/aqu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <ImageView android:background="@drawable/jw" android:layout_width="fill_parent" android:layout_height="84.0dip" />
+</RelativeLayout>

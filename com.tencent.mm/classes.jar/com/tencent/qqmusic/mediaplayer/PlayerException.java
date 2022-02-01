@@ -3,6 +3,7 @@ package com.tencent.qqmusic.mediaplayer;
 public class PlayerException
 {
   public static final int EXCEPTION_FILE_READ_EMPTY = 100;
+  public static final int EXCEPTION_FILE_READ_EMPTY_INTERNAL_STORAGE = 200;
   public static final int EXCEPTION_IN_BASEMETHOD = 99;
   public static final int EXCEPTION_IN_CHECK_STATE = 89;
   public static final int EXCEPTION_IN_PAUSE = 93;
@@ -18,6 +19,7 @@ public class PlayerException
   public static final int EXCEPTION_TYPE_CREATAUDIOTRACK = 66;
   public static final int EXCEPTION_TYPE_CREATE_BUFFER_FILE = 103;
   public static final int EXCEPTION_TYPE_DECODE = 67;
+  public static final int EXCEPTION_TYPE_DECODE_EXTERNAL_STORAGE = 68;
   public static final int EXCEPTION_TYPE_ERROR_CREATE_JAVA_DATASOURCE = 82;
   public static final int EXCEPTION_TYPE_ERROR_CREATE_NATIVE_DATASOURCE = 81;
   public static final int EXCEPTION_TYPE_ERROR_FILE = 70;
@@ -37,12 +39,13 @@ public class PlayerException
   public static final int EXCEPTION_TYPE_RECOGNTION_ERROR = 101;
   public static final int EXCEPTION_TYPE_SO_NOT_FOUND = 69;
   public static final int EXCEPTION_TYPE_UNKNOWFORMAT = 55;
+  public static final int EXCEPTION_TYPE_UNKNOWFORMAT_EXTERNAL_STORAGE = 56;
   public static final int EXCEPTION_TYPE_UNSUPPORTAUDIOINFO = 65;
   public static final int EXCEPTION_TYPE_WRITE_AUDIOTRACK = 102;
   
   public static boolean isDecodeError(int paramInt)
   {
-    return (paramInt == 67) || (paramInt == 62) || (paramInt == 63) || (paramInt == 64) || (paramInt == 101) || (paramInt == 74);
+    return (paramInt == 67) || (paramInt == 62) || (paramInt == 63) || (paramInt == 64) || (paramInt == 101) || (paramInt == 74) || (paramInt == 55);
   }
   
   public static boolean isIOError(int paramInt)
@@ -62,7 +65,7 @@ public class PlayerException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.PlayerException
  * JD-Core Version:    0.7.0.1
  */

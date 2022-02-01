@@ -7,25 +7,25 @@ import com.tencent.mm.sdk.e.j;
 public final class g
   extends j<f>
 {
-  public static final String[] fkl;
-  public static final String[] fkm;
+  public static final String[] gLs;
+  public static final String[] gLt;
   
   static
   {
-    AppMethodBeat.i(70650);
-    fkl = new String[] { j.getCreateSQLs(f.fkk, "DynamicMsgCacheData") };
-    fkm = new String[0];
-    AppMethodBeat.o(70650);
+    AppMethodBeat.i(76399);
+    gLs = new String[] { j.getCreateSQLs(f.gLr, "DynamicMsgCacheData") };
+    gLt = new String[0];
+    AppMethodBeat.o(76399);
   }
   
   public g(e parame)
   {
-    super(parame, f.fkk, "DynamicMsgCacheData", fkm);
+    super(parame, f.gLr, "DynamicMsgCacheData", gLt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.g
  * JD-Core Version:    0.7.0.1
  */

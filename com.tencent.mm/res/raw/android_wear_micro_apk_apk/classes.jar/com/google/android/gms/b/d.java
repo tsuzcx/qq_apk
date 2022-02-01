@@ -5,24 +5,24 @@ import java.util.concurrent.Executor;
 final class d<TResult>
   implements e<TResult>
 {
-  private final Object Jv = new Object();
-  private final Executor RX;
-  private a<TResult> RY;
+  private final Object Lk = new Object();
+  private final Executor TM;
+  private a<TResult> TN;
   
   public d(Executor paramExecutor, a<TResult> parama)
   {
-    this.RX = paramExecutor;
-    this.RY = parama;
+    this.TM = paramExecutor;
+    this.TN = parama;
   }
   
   public final void a(final b<TResult> paramb)
   {
-    synchronized (this.Jv)
+    synchronized (this.Lk)
     {
-      if (this.RY == null) {
+      if (this.TN == null) {
         return;
       }
-      this.RX.execute(new Runnable()
+      this.TM.execute(new Runnable()
       {
         public final void run()
         {

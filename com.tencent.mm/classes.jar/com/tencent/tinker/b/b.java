@@ -5,7 +5,7 @@ import java.io.InputStream;
 
 public final class b
 {
-  public static byte[] H(InputStream paramInputStream)
+  public static byte[] S(InputStream paramInputStream)
   {
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     byte[] arrayOfByte = new byte[8192];
@@ -36,7 +36,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.b.b
  * JD-Core Version:    0.7.0.1
  */

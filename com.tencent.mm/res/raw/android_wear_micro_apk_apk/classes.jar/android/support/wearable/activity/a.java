@@ -10,10 +10,10 @@ class a
   
   public void g(Bundle paramBundle)
   {
-    WearableActivity.a(this.yF);
-    this.yF.eE();
-    if (!WearableActivity.b(this.yF)) {
-      throw new IllegalStateException("Activity " + this.yF.toString() + " did not call through to super.onEnterAmbient()");
+    WearableActivity.a(this.Au);
+    this.Au.eU();
+    if (!WearableActivity.b(this.Au)) {
+      throw new IllegalStateException("Activity " + this.Au.toString() + " did not call through to super.onEnterAmbient()");
     }
   }
 }

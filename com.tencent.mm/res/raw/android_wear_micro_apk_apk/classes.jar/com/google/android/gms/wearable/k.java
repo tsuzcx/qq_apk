@@ -9,20 +9,20 @@ public final class k
   extends i<j>
   implements w
 {
-  private final Status HS;
+  private final Status JH;
   
   public k(DataHolder paramDataHolder)
   {
     super(paramDataHolder);
-    this.HS = new Status(paramDataHolder.getStatusCode());
+    this.JH = new Status(paramDataHolder.getStatusCode());
   }
   
-  public final Status gC()
+  public final Status gM()
   {
-    return this.HS;
+    return this.JH;
   }
   
-  protected final String gP()
+  protected final String gZ()
   {
     return "path";
   }

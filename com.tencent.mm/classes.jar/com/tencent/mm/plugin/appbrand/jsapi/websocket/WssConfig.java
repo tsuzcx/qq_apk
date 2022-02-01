@@ -17,16 +17,6 @@ public class WssConfig
   @Keep
   boolean tcp_no_delay;
   
-  public WssConfig()
-  {
-    this.pong_timeout = -1;
-    this.handshake_timeout = -1;
-    this.tcp_no_delay = false;
-    this.skip_domain_check = false;
-    this.bz_type = 0;
-    this.per_message_deflate = false;
-  }
-  
   public WssConfig(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, int paramInt3, boolean paramBoolean3)
   {
     this.pong_timeout = paramInt1;
@@ -39,7 +29,7 @@ public class WssConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.websocket.WssConfig
  * JD-Core Version:    0.7.0.1
  */

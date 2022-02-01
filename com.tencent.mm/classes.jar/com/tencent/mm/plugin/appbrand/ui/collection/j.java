@@ -1,87 +1,49 @@
 package com.tencent.mm.plugin.appbrand.ui.collection;
 
-import android.support.v7.widget.RecyclerView.a;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import d.l;
 
-@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder;", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "Lkotlin/collections/ArrayList;", "listener", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder$IEnterWxaListener;", "(Ljava/util/ArrayList;Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder$IEnterWxaListener;)V", "getDataList", "()Ljava/util/ArrayList;", "mListener", "cloneList", "getItemCount", "", "getItemId", "", "position", "getItemViewType", "onBindViewHolder", "", "holder", "payloads", "", "", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "replaceList", "list", "", "plugin-appbrand-integration_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionSortViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder;", "root", "Landroid/view/View;", "(Landroid/view/View;)V", "canShowLongClickTestMenu", "", "getCanShowLongClickTestMenu", "()Z", "deleteHandle", "kotlin.jvm.PlatformType", "getDeleteHandle", "()Landroid/view/View;", "rightExtraBottomLine", "getRightExtraBottomLine", "sortHandle", "getSortHandle", "setBottomLineVisibility", "", "visibility", "", "plugin-appbrand-integration_release"})
 final class j
-  extends RecyclerView.a<l>
+  extends m
 {
-  final ArrayList<LocalUsageInfo> iRT;
-  private final l.a iSe;
+  private final View lGB;
+  final View lGC;
+  final View lGD;
+  private final boolean lGE;
   
-  public j(ArrayList<LocalUsageInfo> paramArrayList, l.a parama)
+  public j(View paramView)
   {
-    AppMethodBeat.i(135113);
-    this.iRT = paramArrayList;
-    this.iSe = parama;
-    AppMethodBeat.o(135113);
-  }
-  
-  private void a(l paraml, int paramInt)
-  {
-    AppMethodBeat.i(135109);
-    a.f.b.j.q(paraml, "holder");
-    Object localObject = this.iRT.get(paramInt);
-    a.f.b.j.p(localObject, "dataList[position]");
-    paraml.f((LocalUsageInfo)localObject);
-    AppMethodBeat.o(135109);
-  }
-  
-  public final void aL(List<? extends LocalUsageInfo> paramList)
-  {
-    AppMethodBeat.i(135106);
-    a.f.b.j.q(paramList, "list");
-    synchronized (this.iRT)
-    {
-      this.iRT.clear();
-      this.iRT.addAll((Collection)paramList);
-      AppMethodBeat.o(135106);
-      return;
+    super(paramView);
+    AppMethodBeat.i(51269);
+    this.lGB = paramView.findViewById(2131296691);
+    this.lGC = paramView.findViewById(2131296692);
+    this.lGD = paramView.findViewById(2131299635);
+    ViewGroup.LayoutParams localLayoutParams = this.lGI.getLayoutParams();
+    paramView = localLayoutParams;
+    if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      paramView = null;
     }
-  }
-  
-  public final ArrayList<LocalUsageInfo> aMZ()
-  {
-    AppMethodBeat.i(135105);
-    synchronized (this.iRT)
-    {
-      ArrayList localArrayList2 = new ArrayList(this.iRT.size());
-      localArrayList2.addAll((Collection)this.iRT);
-      AppMethodBeat.o(135105);
-      return localArrayList2;
+    paramView = (ViewGroup.MarginLayoutParams)paramView;
+    if (paramView != null) {
+      paramView.leftMargin = 0;
     }
+    this.lGI.requestLayout();
+    AppMethodBeat.o(51269);
   }
   
-  public final int getItemCount()
+  public final boolean bpp()
   {
-    AppMethodBeat.i(135107);
-    int i = this.iRT.size();
-    AppMethodBeat.o(135107);
-    return i;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    AppMethodBeat.i(135112);
-    LocalUsageInfo localLocalUsageInfo = (LocalUsageInfo)this.iRT.get(paramInt);
-    long l = (localLocalUsageInfo.username + localLocalUsageInfo.hcr).hashCode();
-    AppMethodBeat.o(135112);
-    return l;
-  }
-  
-  public final int getItemViewType(int paramInt)
-  {
-    return 1;
+    return this.lGE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.j
  * JD-Core Version:    0.7.0.1
  */

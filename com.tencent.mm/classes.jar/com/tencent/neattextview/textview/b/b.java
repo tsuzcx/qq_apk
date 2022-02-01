@@ -15,39 +15,39 @@ import java.util.List;
 public abstract class b<T extends CharacterStyle>
   implements Serializable
 {
-  protected LinkedList<RectF> Bbi;
-  public CharacterStyle Bbj;
-  private int Fe;
-  private int akX;
+  protected LinkedList<RectF> IhX;
+  public CharacterStyle IhY;
+  private int Mc;
+  private int asw;
   
   b(int paramInt1, int paramInt2, CharacterStyle paramCharacterStyle)
   {
-    this.akX = paramInt1;
-    this.Fe = paramInt2;
-    this.Bbj = paramCharacterStyle;
+    this.asw = paramInt1;
+    this.Mc = paramInt2;
+    this.IhY = paramCharacterStyle;
   }
   
   private void readObject(ObjectInputStream paramObjectInputStream)
   {
-    this.akX = paramObjectInputStream.readInt();
-    this.Fe = paramObjectInputStream.readInt();
+    this.asw = paramObjectInputStream.readInt();
+    this.Mc = paramObjectInputStream.readInt();
     int j = paramObjectInputStream.readInt();
-    this.Bbi = new LinkedList();
+    this.IhX = new LinkedList();
     int i = 0;
     while (i < j)
     {
       RectF localRectF = new RectF(paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat(), paramObjectInputStream.readFloat());
-      this.Bbi.add(localRectF);
+      this.IhX.add(localRectF);
       i += 1;
     }
   }
   
   private void writeObject(ObjectOutputStream paramObjectOutputStream)
   {
-    paramObjectOutputStream.writeInt(this.akX);
-    paramObjectOutputStream.writeInt(this.Fe);
-    paramObjectOutputStream.writeInt(this.Bbi.size());
-    Iterator localIterator = this.Bbi.iterator();
+    paramObjectOutputStream.writeInt(this.asw);
+    paramObjectOutputStream.writeInt(this.Mc);
+    paramObjectOutputStream.writeInt(this.IhX.size());
+    Iterator localIterator = this.IhX.iterator();
     while (localIterator.hasNext())
     {
       RectF localRectF = (RectF)localIterator.next();
@@ -60,12 +60,12 @@ public abstract class b<T extends CharacterStyle>
   
   public abstract void a(Canvas paramCanvas, TextPaint paramTextPaint, List<d> paramList);
   
-  public final boolean aq(float paramFloat1, float paramFloat2)
+  public final boolean al(float paramFloat1, float paramFloat2)
   {
-    if (this.Bbi == null) {
+    if (this.IhX == null) {
       return false;
     }
-    Iterator localIterator = this.Bbi.iterator();
+    Iterator localIterator = this.IhX.iterator();
     while (localIterator.hasNext()) {
       if (((RectF)localIterator.next()).contains(paramFloat1, paramFloat2)) {
         return true;
@@ -84,14 +84,14 @@ public abstract class b<T extends CharacterStyle>
         return false;
       } while (!(paramObject instanceof b));
       paramObject = (b)paramObject;
-    } while ((paramObject.akX != this.akX) || (paramObject.Fe != this.Fe));
+    } while ((paramObject.asw != this.asw) || (paramObject.Mc != this.Mc));
     int i = 0;
     for (;;)
     {
-      if (i >= this.Bbi.size()) {
+      if (i >= this.IhX.size()) {
         break label88;
       }
-      if (!((RectF)this.Bbi.get(i)).equals((RectF)paramObject.Bbi.get(i))) {
+      if (!((RectF)this.IhX.get(i)).equals((RectF)paramObject.IhX.get(i))) {
         break;
       }
       i += 1;
@@ -100,11 +100,23 @@ public abstract class b<T extends CharacterStyle>
     return true;
   }
   
-  final void fH(List<d> paramList)
+  public int hashCode()
   {
-    if (this.Bbi == null)
+    int i = 0;
+    int j = 0;
+    while (i < this.IhX.size())
     {
-      this.Bbi = new LinkedList();
+      j += ((RectF)this.IhX.get(i)).hashCode();
+      i += 1;
+    }
+    return this.asw + this.Mc + j;
+  }
+  
+  final void in(List<d> paramList)
+  {
+    if (this.IhX == null)
+    {
+      this.IhX = new LinkedList();
       paramList = paramList.iterator();
     }
     for (;;)
@@ -113,47 +125,35 @@ public abstract class b<T extends CharacterStyle>
       if (paramList.hasNext())
       {
         locald = (d)paramList.next();
-        if ((locald.akX <= this.akX) && (this.Fe < locald.Fe)) {
-          this.Bbi.add(locald.ij(this.akX, this.Fe));
+        if ((locald.asw <= this.asw) && (this.Mc < locald.Mc)) {
+          this.IhX.add(locald.kg(this.asw, this.Mc));
         }
       }
       else
       {
         return;
       }
-      if ((locald.akX <= this.akX) && (this.akX < locald.Fe) && (locald.Fe <= this.Fe))
+      if ((locald.asw <= this.asw) && (this.asw < locald.Mc) && (locald.Mc <= this.Mc))
       {
-        this.Bbi.add(locald.ij(this.akX, locald.Fe));
+        this.IhX.add(locald.kg(this.asw, locald.Mc));
       }
       else
       {
-        if ((this.akX < locald.akX) && (this.Fe < locald.Fe) && (this.Fe >= locald.akX))
+        if ((this.asw < locald.asw) && (this.Mc < locald.Mc) && (this.Mc >= locald.asw))
         {
-          this.Bbi.add(locald.ij(locald.akX, this.Fe));
+          this.IhX.add(locald.kg(locald.asw, this.Mc));
           return;
         }
-        if ((this.akX < locald.akX) && (this.Fe >= locald.Fe)) {
-          this.Bbi.add(locald.ij(locald.akX, locald.Fe));
+        if ((this.asw < locald.asw) && (this.Mc >= locald.Mc)) {
+          this.IhX.add(locald.kg(locald.asw, locald.Mc));
         }
       }
     }
-  }
-  
-  public int hashCode()
-  {
-    int i = 0;
-    int j = 0;
-    while (i < this.Bbi.size())
-    {
-      j += ((RectF)this.Bbi.get(i)).hashCode();
-      i += 1;
-    }
-    return this.akX + this.Fe + j;
   }
   
   public String toString()
   {
-    return "CharacterBgStyle{mRectFList=" + this.Bbi + ", mStart=" + this.akX + ", mEnd=" + this.Fe + '}';
+    return "CharacterBgStyle{mRectFList=" + this.IhX + ", mStart=" + this.asw + ", mEnd=" + this.Mc + '}';
   }
 }
 

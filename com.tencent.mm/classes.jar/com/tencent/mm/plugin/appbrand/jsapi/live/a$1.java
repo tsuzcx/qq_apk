@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.bc;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.page.bv;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class a$1
-  implements bc
+  implements bv
 {
   a$1(a parama, AppBrandLivePlayerView paramAppBrandLivePlayerView) {}
   
-  public final void aDk()
+  public final void Cx()
   {
-    AppMethodBeat.i(96070);
-    AppBrandLivePlayerView localAppBrandLivePlayerView = this.hNC;
-    ab.i("MicroMsg.AppBrandLivePlayerView", "onExitFullScreen");
-    localAppBrandLivePlayerView.eg(false);
-    AppMethodBeat.o(96070);
+    AppMethodBeat.i(145844);
+    AppBrandLivePlayerView localAppBrandLivePlayerView = this.jSS;
+    ad.i("MicroMsg.AppBrandLivePlayerView", "onExitFullScreen");
+    localAppBrandLivePlayerView.fV(false);
+    AppMethodBeat.o(145844);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.a.1
  * JD-Core Version:    0.7.0.1
  */

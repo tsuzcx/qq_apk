@@ -1,7 +1,7 @@
 package com.tencent.mm.audio.mix.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.b.d;
+import com.tencent.mm.audio.mix.b.e;
 import com.tencent.mm.audio.mix.h.a;
 import java.util.ArrayList;
 
@@ -15,29 +15,29 @@ public final class b
     this.appId = paramString;
   }
   
-  public final void Dh()
+  public final void MQ()
   {
-    AppMethodBeat.i(137002);
+    AppMethodBeat.i(136750);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmDataTrackCleanTask", "runTask, appId:%s", new Object[] { this.appId });
-    d.De().clearCache();
+    e.MN().clearCache();
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmDataTrackCleanTask", "delete all pcm cache File");
-    ArrayList localArrayList = d.De().Dg();
+    ArrayList localArrayList = e.MN().MP();
     if (localArrayList.size() > 0) {
       a.b(this.appId, localArrayList);
     }
-    AppMethodBeat.o(137002);
+    AppMethodBeat.o(136750);
   }
   
   public final void end()
   {
-    AppMethodBeat.i(137003);
+    AppMethodBeat.i(136751);
     com.tencent.mm.audio.mix.h.b.i("MicroMsg.Mix.AudioPcmDataTrackCleanTask", "end task");
-    AppMethodBeat.o(137003);
+    AppMethodBeat.o(136751);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.b.a.b
  * JD-Core Version:    0.7.0.1
  */

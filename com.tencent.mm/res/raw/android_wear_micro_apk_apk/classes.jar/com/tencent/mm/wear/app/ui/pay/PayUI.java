@@ -24,21 +24,21 @@ import java.io.IOException;
 public class PayUI
   extends MMActivity
 {
-  private Vibrator agp;
-  private GridViewPager ahB;
-  private DotsPageIndicator ahC;
-  private a ahD;
-  private View ahE;
-  private View ahF;
-  private View ahG;
-  private View ahH;
-  private View ahI;
-  private View ahJ;
-  private TextView ahK;
-  private TextView ahL;
-  private ImageButton ahM;
-  private e ahN = new e() {};
-  private Runnable ahO = new Runnable()
+  private Vibrator ajR;
+  private GridViewPager ald;
+  private DotsPageIndicator ale;
+  private a alf;
+  private View alg;
+  private View alh;
+  private View ali;
+  private View alj;
+  private View alk;
+  private View all;
+  private TextView alm;
+  private TextView aln;
+  private ImageButton alo;
+  private e alp = new e() {};
+  private Runnable alq = new Runnable()
   {
     public final void run()
     {
@@ -46,16 +46,11 @@ public class PayUI
     }
   };
   
-  private void mY()
+  private void nK()
   {
-    this.ahE.setVisibility(0);
-    this.ahF.setVisibility(0);
-    this.ahG.setVisibility(8);
-    this.ahI.setVisibility(8);
-    this.ahH.setVisibility(8);
-    this.ahJ.setVisibility(8);
+    ol();
     com.tencent.mm.wear.app.f.b localb = new com.tencent.mm.wear.app.f.b(11032, new byte[] { 1 });
-    localb.F(true);
+    localb.I(true);
     localb.a(new d()
     {
       public final void b(int paramAnonymousInt1, int paramAnonymousInt2, byte[] paramAnonymousArrayOfByte)
@@ -68,29 +63,29 @@ public class PayUI
         {
           localaa.h(paramAnonymousArrayOfByte);
           label20:
-          if (localaa.Wi == 0)
+          if (localaa.Yd == 0)
           {
-            paramAnonymousArrayOfByte = com.tencent.mm.wear.a.f.b.c(localaa.Wk.toByteArray(), MMActivity.nc(), MMActivity.nb());
-            Bitmap localBitmap = com.tencent.mm.wear.a.f.b.c(localaa.Wl.toByteArray(), MMActivity.nc(), MMActivity.nb());
+            paramAnonymousArrayOfByte = com.tencent.mm.wear.a.f.b.c(localaa.Yf.toByteArray(), MMActivity.nP(), MMActivity.nO());
+            Bitmap localBitmap = com.tencent.mm.wear.a.f.b.c(localaa.Yg.toByteArray(), MMActivity.nP(), MMActivity.nO());
             PayUI.a(PayUI.this, new a(PayUI.this));
-            PayUI.b(PayUI.this).a(localaa.Wm, localaa.Wn, paramAnonymousArrayOfByte, localBitmap);
+            PayUI.b(PayUI.this).a(localaa.Yh, localaa.Yi, paramAnonymousArrayOfByte, localBitmap);
             PayUI.c(PayUI.this).a(PayUI.b(PayUI.this));
             PayUI.d(PayUI.this).a(PayUI.c(PayUI.this));
-            PayUI.d(PayUI.this).eW();
-            PayUI.d(PayUI.this).eX();
+            PayUI.d(PayUI.this).fm();
+            PayUI.d(PayUI.this).fn();
             PayUI.e(PayUI.this);
-            com.tencent.mm.wear.app.d.a.bL(2);
+            com.tencent.mm.wear.app.d.a.ch(2);
           }
           for (;;)
           {
             PayUI.i(PayUI.this).vibrate(new long[] { 0L, 150L, 100L, 400L }, -1);
             return;
-            PayUI.f(PayUI.this).setText(localaa.Wj);
+            PayUI.f(PayUI.this).setText(localaa.Ye);
             PayUI.g(PayUI.this);
-            com.tencent.mm.wear.app.d.a.ah(3, localaa.Wi);
+            com.tencent.mm.wear.app.d.a.ak(3, localaa.Yd);
             continue;
             PayUI.h(PayUI.this);
-            com.tencent.mm.wear.app.d.a.ah(3, 2);
+            com.tencent.mm.wear.app.d.a.ak(3, 2);
           }
         }
         catch (IOException paramAnonymousArrayOfByte)
@@ -99,7 +94,17 @@ public class PayUI
         }
       }
     });
-    h.mc().a(localb);
+    h.mP().a(localb);
+  }
+  
+  private void ol()
+  {
+    this.alg.setVisibility(0);
+    this.alh.setVisibility(0);
+    this.ali.setVisibility(8);
+    this.alk.setVisibility(8);
+    this.alj.setVisibility(8);
+    this.all.setVisibility(8);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -111,40 +116,40 @@ public class PayUI
     for (;;)
     {
       getWindow().addFlags(128);
-      this.agp = ((Vibrator)getSystemService("vibrator"));
-      this.ahE = findViewById(2131558498);
-      this.ahF = findViewById(2131558504);
-      this.ahG = findViewById(2131558505);
-      this.ahH = findViewById(2131558508);
-      this.ahI = findViewById(2131558501);
-      this.ahJ = findViewById(2131558511);
-      this.ahJ.setOnClickListener(new View.OnClickListener()
+      this.ajR = ((Vibrator)getSystemService("vibrator"));
+      this.alg = findViewById(2131558499);
+      this.alh = findViewById(2131558505);
+      this.ali = findViewById(2131558506);
+      this.alj = findViewById(2131558509);
+      this.alk = findViewById(2131558502);
+      this.all = findViewById(2131558512);
+      this.all.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           PayUI.a(PayUI.this);
         }
       });
-      this.ahB = ((GridViewPager)findViewById(2131558502));
-      this.ahC = ((DotsPageIndicator)findViewById(2131558503));
-      this.ahK = ((TextView)findViewById(2131558507));
-      this.ahL = ((TextView)findViewById(2131558510));
-      this.ahM = ((ImageButton)findViewById(2131558509));
-      this.ahM.setOnClickListener(new View.OnClickListener()
+      this.ald = ((GridViewPager)findViewById(2131558503));
+      this.ale = ((DotsPageIndicator)findViewById(2131558504));
+      this.alm = ((TextView)findViewById(2131558508));
+      this.aln = ((TextView)findViewById(2131558511));
+      this.alo = ((ImageButton)findViewById(2131558510));
+      this.alo.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           paramAnonymousView = new aj();
-          paramAnonymousView.Wv = "offline";
-          paramAnonymousView.Ww = ".ui.WalletOfflineEntranceUI";
+          paramAnonymousView.Yq = "offline";
+          paramAnonymousView.Yr = ".ui.WalletOfflineEntranceUI";
           try
           {
             paramAnonymousView = new com.tencent.mm.wear.app.f.b(11034, paramAnonymousView.toByteArray());
-            h.mc().a(paramAnonymousView);
-            com.tencent.mm.wear.app.d.a.bL(6);
+            h.mP().a(paramAnonymousView);
+            com.tencent.mm.wear.app.d.a.ch(6);
             label47:
             PayUI.this.finish();
-            Toast.makeText(MMApplication.getContext(), 2131165245, 0).show();
+            Toast.makeText(MMApplication.getContext(), 2131165248, 0).show();
             return;
           }
           catch (IOException paramAnonymousView)
@@ -153,8 +158,8 @@ public class PayUI
           }
         }
       });
-      mY();
-      com.tencent.mm.wear.app.d.a.bL(1);
+      nK();
+      com.tencent.mm.wear.app.d.a.ch(1);
       return;
       setContentView(2130903096);
     }
@@ -163,13 +168,13 @@ public class PayUI
   protected void onStart()
   {
     super.onStart();
-    com.tencent.mm.sdk.a.a.WJ.a(this.ahN);
+    com.tencent.mm.sdk.a.a.YM.a(this.alp);
   }
   
   protected void onStop()
   {
-    com.tencent.mm.sdk.a.a.WJ.b(this.ahN);
-    com.tencent.mm.wear.a.b.a.aiT.removeCallbacks(this.ahO);
+    com.tencent.mm.sdk.a.a.YM.b(this.alp);
+    com.tencent.mm.wear.a.b.a.amv.removeCallbacks(this.alq);
     super.onStop();
   }
 }

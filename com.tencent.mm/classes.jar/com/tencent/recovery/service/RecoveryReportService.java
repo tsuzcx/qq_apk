@@ -10,12 +10,14 @@ import com.tencent.recovery.util.Util;
 public class RecoveryReportService
   extends IntentService
 {
+  private static final String TAG = "Recovery.RecoveryReportService";
+  
   public RecoveryReportService()
   {
     super(RecoveryReportService.class.getName());
   }
   
-  private void aY(Intent paramIntent)
+  private void handle(Intent paramIntent)
   {
     int i = 0;
     for (;;)
@@ -51,9 +53,9 @@ public class RecoveryReportService
         {
           i = 1;
           break label175;
-          RecoveryReporter.c(this, str2, paramIntent.getParcelableArrayListExtra("KeyReportItem"));
+          RecoveryReporter.addItemList(this, str2, paramIntent.getParcelableArrayListExtra("KeyReportItem"));
           continue;
-          RecoveryReporter.a(this, str2, (RecoveryStatusItem)paramIntent.getParcelableExtra("KeyReportItem"));
+          RecoveryReporter.addItem(this, str2, (RecoveryStatusItem)paramIntent.getParcelableExtra("KeyReportItem"));
           continue;
         }
       }
@@ -67,13 +69,13 @@ public class RecoveryReportService
   
   public void onDestroy()
   {
-    RecoveryLog.dUp();
+    RecoveryLog.appendLog();
     super.onDestroy();
   }
   
   protected void onHandleIntent(Intent paramIntent)
   {
-    aY(paramIntent);
+    handle(paramIntent);
   }
 }
 

@@ -1,87 +1,42 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import android.util.Pair;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.config.r;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.appcache.bh.a;
+import com.tencent.mm.sdk.platformtools.ad;
 
-final class al
-  extends ag<Pair<WxaAttributes, Boolean>>
+abstract class al
+  implements bh.a
 {
-  private String appId;
-  private final int cxS;
-  private final int hcr;
-  private final String hiw;
-  private final int imL;
-  private boolean imM = false;
-  private boolean imN = false;
-  private z.a imO = z.a.ilR;
-  private int imP = -1;
-  private String username;
+  final boolean fQA;
+  final int gXn;
   
-  al(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3)
+  al(int paramInt)
   {
-    this.username = paramString1;
-    this.appId = paramString2;
-    this.hcr = paramInt1;
-    this.imL = paramInt2;
-    this.cxS = paramInt3;
-    this.hiw = paramString3;
+    this(paramInt, true);
   }
   
-  private WxaAttributes aHj()
+  al(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(131987);
-    if (!bo.isNullOrNil(this.username))
-    {
-      localWxaAttributes = g.auF().d(this.username, new String[0]);
-      AppMethodBeat.o(131987);
-      return localWxaAttributes;
-    }
-    WxaAttributes localWxaAttributes = g.auF().e(this.appId, new String[0]);
-    AppMethodBeat.o(131987);
-    return localWxaAttributes;
+    this.gXn = paramInt;
+    this.fQA = paramBoolean;
   }
   
-  private static boolean f(WxaAttributes paramWxaAttributes)
+  private void Kj(String paramString)
   {
-    AppMethodBeat.i(131988);
-    if (bo.isNullOrNil(paramWxaAttributes.field_appId))
+    if (this.fQA)
     {
-      ab.e("MicroMsg.AppBrand.PrepareStepGetWxaAttrs", "invalid appID in contact(%s)", new Object[] { paramWxaAttributes.field_username });
-      AppMethodBeat.o(131988);
-      return true;
+      bc.Kj(paramString);
+      return;
     }
-    if (paramWxaAttributes.ayE() == null)
-    {
-      ab.e("MicroMsg.AppBrand.PrepareStepGetWxaAttrs", "NULL versionInfo(%s) in contact(%s)", new Object[] { paramWxaAttributes.field_versionInfo, paramWxaAttributes.field_username });
-      AppMethodBeat.o(131988);
-      return true;
-    }
-    if (paramWxaAttributes.ayC() == null)
-    {
-      ab.e("MicroMsg.AppBrand.PrepareStepGetWxaAttrs", "NULL appInfo(%s) in contact(%s)", new Object[] { paramWxaAttributes.field_appInfo, paramWxaAttributes.field_username });
-      AppMethodBeat.o(131988);
-      return true;
-    }
-    if ((paramWxaAttributes.ayE().bDd == 0) && (bo.isNullOrNil(paramWxaAttributes.ayE().hkd)))
-    {
-      ab.e("MicroMsg.AppBrand.PrepareStepGetWxaAttrs", "invalid versionMD5 in contact(%s)", new Object[] { paramWxaAttributes.field_username });
-      AppMethodBeat.o(131988);
-      return true;
-    }
-    AppMethodBeat.o(131988);
-    return false;
+    ad.e("MicroMsg.AppBrand.LaunchCommonDownloadCallback", "silent toast: %s", new Object[] { paramString });
   }
   
-  final String getTag()
-  {
-    return "MicroMsg.AppBrand.PrepareStepGetWxaAttrs";
-  }
+  abstract String bgJ();
+  
+  protected void c(WxaPkgLoadProgress paramWxaPkgLoadProgress) {}
+  
+  abstract void e(WxaPkgWrappingInfo paramWxaPkgWrappingInfo);
 }
 
 

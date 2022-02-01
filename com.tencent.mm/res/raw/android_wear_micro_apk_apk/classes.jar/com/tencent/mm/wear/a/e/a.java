@@ -5,20 +5,20 @@ import com.tencent.mm.wear.a.c.d;
 public final class a
   implements Thread.UncaughtExceptionHandler
 {
-  private static a ajj;
-  private boolean ajk = false;
+  private static a amL;
+  private boolean amM = false;
   
   private a()
   {
     d.c("MicroMsg.MMUncaughtExceptionHandler", "Create MMUncaughtExceptionHandler", new Object[0]);
   }
   
-  public static a nM()
+  public static a oA()
   {
-    if (ajj == null) {
-      ajj = new a();
+    if (amL == null) {
+      amL = new a();
     }
-    return ajj;
+    return amL;
   }
   
   /* Error */
@@ -26,11 +26,11 @@ public final class a
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 16	com/tencent/mm/wear/a/e/a:ajk	Z
+    //   1: getfield 16	com/tencent/mm/wear/a/e/a:amM	Z
     //   4: ifne +483 -> 487
     //   7: aload_0
     //   8: iconst_1
-    //   9: putfield 16	com/tencent/mm/wear/a/e/a:ajk	Z
+    //   9: putfield 16	com/tencent/mm/wear/a/e/a:amM	Z
     //   12: new 40	java/util/HashMap
     //   15: dup
     //   16: invokespecial 41	java/util/HashMap:<init>	()V
@@ -96,7 +96,7 @@ public final class a
     //   146: pop
     //   147: aload_3
     //   148: ldc 130
-    //   150: invokestatic 135	com/tencent/mm/wear/a/a:nH	()Ljava/lang/String;
+    //   150: invokestatic 135	com/tencent/mm/wear/a/a:ov	()Ljava/lang/String;
     //   153: invokevirtual 91	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   156: pop
     //   157: aload_3
@@ -202,7 +202,7 @@ public final class a
     //   375: astore_3
     //   376: new 222	java/io/File
     //   379: dup
-    //   380: invokestatic 228	com/tencent/mm/wear/app/b/h:mj	()Ljava/io/File;
+    //   380: invokestatic 228	com/tencent/mm/wear/app/b/h:mV	()Ljava/io/File;
     //   383: ldc 230
     //   385: invokespecial 233	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   388: astore_1
@@ -257,7 +257,7 @@ public final class a
     //   480: invokevirtual 277	java/io/FileOutputStream:write	([B)V
     //   483: aload_2
     //   484: invokevirtual 278	java/io/FileOutputStream:close	()V
-    //   487: invokestatic 281	com/tencent/mm/wear/a/c/d:nK	()V
+    //   487: invokestatic 281	com/tencent/mm/wear/a/c/d:oy	()V
     //   490: invokestatic 287	android/os/Process:myPid	()I
     //   493: invokestatic 291	android/os/Process:killProcess	(I)V
     //   496: iconst_0

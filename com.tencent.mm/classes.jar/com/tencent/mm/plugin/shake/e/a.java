@@ -1,28 +1,29 @@
 package com.tencent.mm.plugin.shake.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public final class a
 {
-  public LinkedList<a.a> fQb;
+  public LinkedList<a> kGU;
   
   public a()
   {
-    AppMethodBeat.i(24945);
-    this.fQb = new LinkedList();
-    AppMethodBeat.o(24945);
+    AppMethodBeat.i(28614);
+    this.kGU = new LinkedList();
+    AppMethodBeat.o(28614);
   }
   
-  private static a.a a(Map<String, String> paramMap, int paramInt, String paramString)
+  private static a a(Map<String, String> paramMap, int paramInt, String paramString)
   {
-    AppMethodBeat.i(24947);
-    a.a locala = new a.a(paramInt);
-    locala.title = bo.nullAsNil((String)paramMap.get(paramString + ".title"));
-    locala.summary = bo.nullAsNil((String)paramMap.get(paramString + ".summary"));
+    AppMethodBeat.i(28616);
+    a locala = new a(paramInt);
+    locala.title = bt.nullAsNil((String)paramMap.get(paramString + ".title"));
+    locala.summary = bt.nullAsNil((String)paramMap.get(paramString + ".summary"));
     String str = paramString + ".thumburl";
     int i = 0;
     if (i < 100)
@@ -32,10 +33,10 @@ public final class a
       for (Object localObject = Integer.valueOf(i);; localObject = "")
       {
         localObject = (String)paramMap.get(localObject);
-        if (bo.isNullOrNil((String)localObject)) {
+        if (bt.isNullOrNil((String)localObject)) {
           break label197;
         }
-        locala.qRX.add(localObject);
+        locala.wqM.add(localObject);
         i += 1;
         break;
       }
@@ -46,24 +47,24 @@ public final class a
     }
     for (;;)
     {
-      AppMethodBeat.o(24947);
+      AppMethodBeat.o(28616);
       return locala;
-      locala.qRW = bo.nullAsNil((String)paramMap.get(paramString + ".h5url.link"));
-      locala.qRY = bo.nullAsNil((String)paramMap.get(paramString + ".h5url.title"));
-      locala.qRZ = bo.nullAsNil((String)paramMap.get(paramString + ".h5url.username"));
+      locala.cBp = bt.nullAsNil((String)paramMap.get(paramString + ".h5url.link"));
+      locala.wqN = bt.nullAsNil((String)paramMap.get(paramString + ".h5url.title"));
+      locala.wqO = bt.nullAsNil((String)paramMap.get(paramString + ".h5url.username"));
       continue;
-      locala.qRW = bo.nullAsNil((String)paramMap.get(paramString + ".bizprofile.username"));
-      locala.qRY = bo.nullAsNil((String)paramMap.get(paramString + ".bizprofile.showchat"));
+      locala.cBp = bt.nullAsNil((String)paramMap.get(paramString + ".bizprofile.username"));
+      locala.wqN = bt.nullAsNil((String)paramMap.get(paramString + ".bizprofile.showchat"));
       continue;
-      locala.qRW = bo.nullAsNil((String)paramMap.get(paramString + ".nativepay.wx_pay_url"));
+      locala.cBp = bt.nullAsNil((String)paramMap.get(paramString + ".nativepay.wx_pay_url"));
       continue;
-      locala.qRW = bo.nullAsNil((String)paramMap.get(paramString + ".product.product_id"));
+      locala.cBp = bt.nullAsNil((String)paramMap.get(paramString + ".product.product_id"));
     }
   }
   
-  public static LinkedList<a> l(Map<String, String> paramMap, String paramString)
+  public static LinkedList<a> m(Map<String, String> paramMap, String paramString)
   {
-    AppMethodBeat.i(24946);
+    AppMethodBeat.i(28615);
     LinkedList localLinkedList = new LinkedList();
     int j = 0;
     int i = 0;
@@ -94,19 +95,19 @@ public final class a
       for (localObject1 = Integer.valueOf(k);; localObject1 = "")
       {
         localObject3 = localObject1;
-        if (!bo.isNullOrNil((String)paramMap.get((String)localObject3 + ".type"))) {
+        if (!bt.isNullOrNil((String)paramMap.get((String)localObject3 + ".type"))) {
           break label224;
         }
         if (i == 0) {
           break label200;
         }
-        AppMethodBeat.o(24946);
+        AppMethodBeat.o(28615);
         return localLinkedList;
         localObject1 = "";
         break;
       }
       label200:
-      locala1.fQb = ((LinkedList)localObject2);
+      locala1.kGU = ((LinkedList)localObject2);
       i = 1;
     }
     label209:
@@ -127,9 +128,9 @@ public final class a
           if (m != 2) {
             break label424;
           }
-          localObject1 = new a.a(m);
-          ((a.a)localObject1).qRW = bo.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.id"));
-          ((a.a)localObject1).title = bo.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.title"));
+          localObject1 = new a(m);
+          ((a)localObject1).cBp = bt.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.id"));
+          ((a)localObject1).title = bt.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.title"));
           if (localObject1 != null) {
             ((LinkedList)localObject2).add(localObject1);
           }
@@ -141,14 +142,14 @@ public final class a
           new StringBuilder("Exception in parseActionList: ").append(localException.getMessage());
           if (i != 0)
           {
-            AppMethodBeat.o(24946);
+            AppMethodBeat.o(28615);
             return localLinkedList;
           }
-          locala1.fQb = ((LinkedList)localObject2);
+          locala1.kGU = ((LinkedList)localObject2);
           i = 1;
         }
         break label209;
-        a.a locala;
+        a locala;
         if (m == 3) {
           locala = a(paramMap, m, (String)localObject3);
         } else if (m == 4) {
@@ -159,8 +160,38 @@ public final class a
           locala = a(paramMap, m, (String)localObject3);
         }
       }
-      AppMethodBeat.o(24946);
+      AppMethodBeat.o(28615);
       return localLinkedList;
+    }
+  }
+  
+  public static final class a
+  {
+    public String cBp;
+    public String summary;
+    public String title;
+    public int type;
+    public List<String> wqM;
+    public String wqN;
+    public String wqO;
+    
+    public a()
+    {
+      AppMethodBeat.i(28612);
+      this.wqM = new ArrayList();
+      this.wqN = "";
+      this.wqO = "";
+      AppMethodBeat.o(28612);
+    }
+    
+    public a(int paramInt)
+    {
+      AppMethodBeat.i(28613);
+      this.wqM = new ArrayList();
+      this.wqN = "";
+      this.wqO = "";
+      this.type = paramInt;
+      AppMethodBeat.o(28613);
     }
   }
 }

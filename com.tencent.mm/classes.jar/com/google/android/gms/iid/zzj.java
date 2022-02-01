@@ -10,16 +10,16 @@ final class zzj
   
   public final void run()
   {
-    AppMethodBeat.i(57568);
+    AppMethodBeat.i(2522);
     Log.isLoggable("EnhancedIntentService", 3);
     zzi.zzd(this.zzbk).handleIntent(this.zzbj.intent);
     this.zzbj.finish();
-    AppMethodBeat.o(57568);
+    AppMethodBeat.o(2522);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.iid.zzj
  * JD-Core Version:    0.7.0.1
  */

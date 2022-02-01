@@ -11,15 +11,15 @@ final class SnsLuckyMoneyPrepareUI$9
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(42516);
-    SnsLuckyMoneyPrepareUI.l(this.oqN).setVisibility(8);
-    SnsLuckyMoneyPrepareUI.o(this.oqN);
-    AppMethodBeat.o(42516);
+    AppMethodBeat.i(65371);
+    SnsLuckyMoneyPrepareUI.l(this.tgR).setVisibility(8);
+    SnsLuckyMoneyPrepareUI.o(this.tgR);
+    AppMethodBeat.o(65371);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.sns.SnsLuckyMoneyPrepareUI.9
  * JD-Core Version:    0.7.0.1
  */

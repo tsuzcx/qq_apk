@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class at
   extends b
 {
-  public at.a coe;
+  public a dcR;
   
   public at()
   {
@@ -15,16 +15,22 @@ public final class at
   
   private at(byte paramByte)
   {
-    AppMethodBeat.i(128340);
-    this.coe = new at.a();
-    this.ymq = false;
+    AppMethodBeat.i(120830);
+    this.dcR = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(128340);
+    AppMethodBeat.o(120830);
+  }
+  
+  public static final class a
+  {
+    public int dcS;
+    public int scene = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.at
  * JD-Core Version:    0.7.0.1
  */

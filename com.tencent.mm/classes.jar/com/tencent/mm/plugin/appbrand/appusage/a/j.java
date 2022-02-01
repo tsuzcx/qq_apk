@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.a;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.protocal.protobuf.aam;
-import com.tencent.mm.protocal.protobuf.buk;
-import com.tencent.mm.protocal.protobuf.bul;
-import com.tencent.mm.protocal.protobuf.tr;
-import com.tencent.mm.protocal.protobuf.ts;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.c;
+import com.tencent.mm.protocal.protobuf.aeb;
+import com.tencent.mm.protocal.protobuf.ckb;
+import com.tencent.mm.protocal.protobuf.ckc;
+import com.tencent.mm.protocal.protobuf.wn;
+import com.tencent.mm.protocal.protobuf.wq;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 
 public class j
-  extends a<bul>
+  extends c<ckc>
 {
-  public j(long paramLong, LinkedList<aam> paramLinkedList, LinkedList<tr> paramLinkedList1, int paramInt1, int paramInt2, int paramInt3, ts paramts)
+  public j(long paramLong, LinkedList<aeb> paramLinkedList, LinkedList<wn> paramLinkedList1, int paramInt1, int paramInt2, int paramInt3, wq paramwq)
   {
-    AppMethodBeat.i(129758);
-    ab.i("MicroMsg.Recommend.CgiReportRecommendWxa", "sessionId:%d, action_scene:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1) });
+    AppMethodBeat.i(44689);
+    ad.i("MicroMsg.Recommend.CgiReportRecommendWxa", "sessionId:%d, action_scene:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1) });
     b.a locala = new b.a();
-    buk localbuk = new buk();
-    localbuk.bqN = paramLong;
-    localbuk.xHC = paramLinkedList;
-    localbuk.xHF = paramLinkedList1;
-    localbuk.xHD = paramInt1;
-    localbuk.xHE = paramInt2;
-    localbuk.xHG = paramInt3;
-    localbuk.xfd = paramts;
-    locala.fsX = localbuk;
-    locala.fsY = new bul();
+    ckb localckb = new ckb();
+    localckb.bTj = paramLong;
+    localckb.EeU = paramLinkedList;
+    localckb.EeX = paramLinkedList1;
+    localckb.EeV = paramInt1;
+    localckb.EeW = paramInt2;
+    localckb.EeY = paramInt3;
+    localckb.Dya = paramwq;
+    locala.gUU = localckb;
+    locala.gUV = new ckc();
     locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/reportrecommendwxa";
     locala.funcId = 2564;
-    this.rr = locala.ado();
-    AppMethodBeat.o(129758);
+    this.rr = locala.atI();
+    AppMethodBeat.o(44689);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.a.j
  * JD-Core Version:    0.7.0.1
  */

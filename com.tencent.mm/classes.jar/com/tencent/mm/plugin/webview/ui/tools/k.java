@@ -1,270 +1,181 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import android.os.Bundle;
+import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.platformtools.ae;
-import com.tencent.mm.plugin.webview.modeltools.c;
-import com.tencent.mm.protocal.GeneralControlWrapper;
-import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.protocal.protobuf.afc;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.modelsns.f;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.webview.model.ax;
+import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class k
 {
-  Map<String, k.a> uUM;
-  private JsapiPermissionWrapper uUN;
-  private GeneralControlWrapper uUO;
-  private final JsapiPermissionWrapper uUP;
-  private final GeneralControlWrapper uUQ;
-  private b vcT;
+  public static k BfO;
+  private String BfP;
+  private String bssid;
+  boolean gPQ = false;
+  private e kxf = null;
+  private int networkType;
+  private String sessionId;
+  private String ssid;
+  String wSh;
   
-  public k(JsapiPermissionWrapper paramJsapiPermissionWrapper, GeneralControlWrapper paramGeneralControlWrapper, b paramb)
+  static
   {
-    AppMethodBeat.i(7688);
-    this.uUP = new JsapiPermissionWrapper(2);
-    this.uUQ = GeneralControlWrapper.whY;
-    this.uUN = paramJsapiPermissionWrapper;
-    if ((ae.gkF == null) || (ae.gkF.length() == 0))
-    {
-      ab.i("MicroMsg.WebViewPermission", "setHardcodeJsPermission, Test.jsapiPermission is null");
-      this.uUO = paramGeneralControlWrapper;
-      if ((ae.gkG != null) && (ae.gkG.length() != 0)) {
-        break label235;
-      }
-      ab.i("MicroMsg.WebViewPermission", "setHardcodeGeneralCtrl, Test.generalCtrl is null");
-    }
-    for (;;)
-    {
-      int i;
-      for (;;)
-      {
-        this.vcT = paramb;
-        ab.i("MicroMsg.WebViewPermission", "edw <init> hardcodeJsPerm = " + paramJsapiPermissionWrapper + ", hardcodeGenCtrl = " + paramGeneralControlWrapper);
-        this.uUM = new HashMap();
-        AppMethodBeat.o(7688);
-        return;
-        try
-        {
-          i = bo.getInt(ae.gkF, 0);
-          if (i < 0) {
-            ab.w("MicroMsg.WebViewPermission", "setHardcodeJsPermission, Test.jsapiPermission wrong");
-          }
-        }
-        catch (Exception localException1)
-        {
-          ab.e("MicroMsg.WebViewPermission", "setHardcodeJsPermission, parse jsapi fail, ex = " + localException1.getMessage());
-          this.uUN = null;
-        }
-      }
-      for (;;)
-      {
-        ab.i("MicroMsg.WebViewPermission", "setHardcodeJsPermission, hardcodeJsPerm = " + this.uUN);
-        break;
-        this.uUN = new JsapiPermissionWrapper(i);
-      }
-      try
-      {
-        label235:
-        i = bo.getInt(ae.gkG, 0);
-        ab.i("MicroMsg.WebViewPermission", "setHardcodeGeneralCtrl, permission = %d", new Object[] { Integer.valueOf(i) });
-        afc localafc = new afc();
-        localafc.wXX = i;
-        this.uUO = new GeneralControlWrapper(localafc);
-        ab.i("MicroMsg.WebViewPermission", "setHardcodeGeneralCtrl, hardcodeGenCtrl = " + this.uUO);
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          ab.e("MicroMsg.WebViewPermission", "setHardcodeGeneralCtrl fail, ex = %s", new Object[] { localException2.getMessage() });
-          this.uUO = null;
-        }
-      }
-    }
+    AppMethodBeat.i(79943);
+    BfO = new k();
+    AppMethodBeat.o(79943);
   }
   
-  private static String agP(String paramString)
+  private void m(int paramInt1, String paramString, int paramInt2)
   {
-    AppMethodBeat.i(7695);
-    int i = paramString.indexOf("#");
-    if (i < 0)
+    AppMethodBeat.i(79942);
+    f localf = new f();
+    localf.o("20adInfo", this.wSh + ",");
+    localf.o("21optype", paramInt1 + ",");
+    localf.o("22sessionId", this.sessionId + ",");
+    localf.o("23currURL", this.BfP + ",");
+    localf.o("24referURL", paramString + ",");
+    localf.o("25errCode", paramInt2 + ",");
+    localf.o("26networkType", this.networkType + ",");
+    localf.o("27timeStamp", bt.eGO() + ",");
+    localf.o("28ssid", this.ssid + ",");
+    localf.o("29bssid", this.bssid + ",");
+    ad.i("MicroMsg.WebViewReportUtil", "report logbuffer adPageOp(13791): optype:%d, sessionId:%s, currUrl:%s, referUrl:%s, errCode:%d, networkType:%d", new Object[] { Integer.valueOf(paramInt1), this.sessionId, this.BfP, paramString, Integer.valueOf(paramInt2), Integer.valueOf(this.networkType) });
+    h.vKh.f(13791, new Object[] { localf });
+    if (this.kxf == null)
     {
-      AppMethodBeat.o(7695);
-      return paramString;
-    }
-    paramString = paramString.substring(0, i);
-    AppMethodBeat.o(7695);
-    return paramString;
-  }
-  
-  private GeneralControlWrapper agT(String paramString)
-  {
-    AppMethodBeat.i(7694);
-    if (this.uUO != null)
-    {
-      ab.i("MicroMsg.WebViewPermission", "getGenCtrl, return hardcodeGenCtrl = " + this.uUO);
-      paramString = this.uUO;
-      AppMethodBeat.o(7694);
-      return paramString;
-    }
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.e("MicroMsg.WebViewPermission", "getGenCtrl fail, url = ".concat(String.valueOf(paramString)));
-      paramString = this.uUQ;
-      AppMethodBeat.o(7694);
-      return paramString;
-    }
-    String str = agP(paramString);
-    k.a locala = (k.a)this.uUM.get(str);
-    StringBuilder localStringBuilder = new StringBuilder("edw getGenCtrl, genCtrl = ");
-    if (locala == null) {}
-    for (paramString = null;; paramString = locala.uUS)
-    {
-      ab.i("MicroMsg.WebViewPermission", paramString + ", url = " + str);
-      if (locala != null) {
-        break;
-      }
-      paramString = this.uUQ;
-      AppMethodBeat.o(7694);
-      return paramString;
-    }
-    paramString = locala.uUS;
-    AppMethodBeat.o(7694);
-    return paramString;
-  }
-  
-  public final void a(String paramString, JsapiPermissionWrapper paramJsapiPermissionWrapper, GeneralControlWrapper paramGeneralControlWrapper)
-  {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    AppMethodBeat.i(7689);
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.e("MicroMsg.WebViewPermission", "update fail, url is null");
-      AppMethodBeat.o(7689);
+      ad.e("MicroMsg.WebViewReportUtil", "report invoker null");
+      AppMethodBeat.o(79942);
       return;
     }
-    if (paramGeneralControlWrapper != null)
+    paramString = new Bundle();
+    paramString.putString("ad_report_data_str", localf.toString());
+    try
     {
-      bool1 = bool2;
-      if ((paramGeneralControlWrapper.whZ & 0x80000) != 0) {
-        bool1 = true;
+      this.kxf.w(1295, paramString);
+      AppMethodBeat.o(79942);
+      return;
+    }
+    catch (RemoteException paramString)
+    {
+      ad.e("MicroMsg.WebViewReportUtil", "report: exp:%s", new Object[] { paramString });
+      AppMethodBeat.o(79942);
+    }
+  }
+  
+  public final void Bx()
+  {
+    AppMethodBeat.i(187949);
+    ad.v("MicroMsg.WebViewReportUtil", "onPageFinished traceid %s", new Object[] { this.wSh });
+    if (bt.isNullOrNil(this.wSh))
+    {
+      AppMethodBeat.o(187949);
+      return;
+    }
+    lI(2);
+    AppMethodBeat.o(187949);
+  }
+  
+  public final void TA(int paramInt)
+  {
+    AppMethodBeat.i(79939);
+    ad.v("MicroMsg.WebViewReportUtil", "onReceivedError traceid %s", new Object[] { this.wSh });
+    if (bt.isNullOrNil(this.wSh))
+    {
+      AppMethodBeat.o(79939);
+      return;
+    }
+    m(3, "", paramInt);
+    AppMethodBeat.o(79939);
+  }
+  
+  public final void b(e parame)
+  {
+    this.kxf = parame;
+  }
+  
+  public final void bU(String paramString)
+  {
+    AppMethodBeat.i(187948);
+    ad.v("MicroMsg.WebViewReportUtil", "onPageStarted url %s, currUrl %s, traceid %s", new Object[] { paramString, this.BfP, this.wSh });
+    String str = this.BfP;
+    this.BfP = paramString;
+    if (bt.isNullOrNil(this.wSh))
+    {
+      AppMethodBeat.o(187948);
+      return;
+    }
+    m(1, str, 0);
+    AppMethodBeat.o(187948);
+  }
+  
+  public final void close()
+  {
+    AppMethodBeat.i(79940);
+    ad.v("MicroMsg.WebViewReportUtil", "close traceid %s", new Object[] { this.wSh });
+    this.gPQ = true;
+    if (bt.isNullOrNil(this.wSh))
+    {
+      AppMethodBeat.o(79940);
+      return;
+    }
+    lI(4);
+    this.wSh = null;
+    AppMethodBeat.o(79940);
+  }
+  
+  public final void kg(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(79938);
+    ad.i("MicroMsg.WebViewReportUtil", "setting traceid " + paramString1 + ",usename " + paramString2);
+    this.wSh = paramString1;
+    this.networkType = ax.baS();
+    this.sessionId = ai.du(paramString2 + bt.eGO());
+    this.ssid = ay.iA(aj.getContext());
+    this.bssid = ay.iB(aj.getContext());
+    this.gPQ = false;
+    AppMethodBeat.o(79938);
+  }
+  
+  final void lI(int paramInt)
+  {
+    AppMethodBeat.i(79941);
+    m(paramInt, "", 0);
+    AppMethodBeat.o(79941);
+  }
+  
+  public final void setTraceId(String paramString)
+  {
+    AppMethodBeat.i(187947);
+    String str3 = "";
+    String str1 = str3;
+    if (this.kxf != null) {}
+    try
+    {
+      str1 = this.kxf.j(23, null).getString("config_info_username");
+      kg(paramString, str1);
+      AppMethodBeat.o(187947);
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        ad.e("MicroMsg.WebViewReportUtil", "setTraceId getConfigInfo exp:%s", new Object[] { localRemoteException });
+        String str2 = str3;
       }
-      ab.d("MicroMsg.GeneralControlWrapper", "needClearData, ret = ".concat(String.valueOf(bool1)));
     }
-    c.bM(paramString, bool1);
-    String str = agP(paramString);
-    paramString = paramJsapiPermissionWrapper;
-    if (paramJsapiPermissionWrapper == null) {
-      paramString = this.uUP;
-    }
-    paramJsapiPermissionWrapper = paramGeneralControlWrapper;
-    if (paramGeneralControlWrapper == null) {
-      paramJsapiPermissionWrapper = this.uUQ;
-    }
-    ab.i("MicroMsg.WebViewPermission", "edw update, jsPerm = " + paramString + ", genCtrl = " + paramJsapiPermissionWrapper + ", url = " + str);
-    this.uUM.put(str, new k.a(paramString, paramJsapiPermissionWrapper));
-    AppMethodBeat.o(7689);
-  }
-  
-  public final JsapiPermissionWrapper agS(String paramString)
-  {
-    AppMethodBeat.i(7692);
-    if (this.uUN != null)
-    {
-      ab.i("MicroMsg.WebViewPermission", "getJsPerm, return hardcodeJsPerm = " + this.uUN);
-      paramString = this.uUN;
-      AppMethodBeat.o(7692);
-      return paramString;
-    }
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.e("MicroMsg.WebViewPermission", "getJsPerm fail, url = ".concat(String.valueOf(paramString)));
-      paramString = this.uUP;
-      AppMethodBeat.o(7692);
-      return paramString;
-    }
-    paramString = agP(paramString);
-    if (this.uUM == null)
-    {
-      ab.e("MicroMsg.WebViewPermission", "getJsPerm fail, permMap is null");
-      paramString = this.uUP;
-      AppMethodBeat.o(7692);
-      return paramString;
-    }
-    paramString = (k.a)this.uUM.get(paramString);
-    if (paramString == null)
-    {
-      paramString = this.uUP;
-      AppMethodBeat.o(7692);
-      return paramString;
-    }
-    paramString = paramString.uUR;
-    AppMethodBeat.o(7692);
-    return paramString;
-  }
-  
-  public final JsapiPermissionWrapper ddV()
-  {
-    AppMethodBeat.i(7691);
-    if (this.uUN != null)
-    {
-      ab.i("MicroMsg.WebViewPermission", "getJsPerm, return hardcodeJsPerm = " + this.uUN);
-      localObject = this.uUN;
-      AppMethodBeat.o(7691);
-      return localObject;
-    }
-    if (this.vcT != null) {}
-    for (Object localObject = this.vcT.aYZ();; localObject = null)
-    {
-      localObject = agS((String)localObject);
-      AppMethodBeat.o(7691);
-      return localObject;
-    }
-  }
-  
-  public final GeneralControlWrapper ddW()
-  {
-    AppMethodBeat.i(7693);
-    if (this.vcT != null) {}
-    for (Object localObject = this.vcT.aYZ();; localObject = null)
-    {
-      localObject = agT((String)localObject);
-      AppMethodBeat.o(7693);
-      return localObject;
-    }
-  }
-  
-  public final boolean has(String paramString)
-  {
-    AppMethodBeat.i(7690);
-    if (bo.isNullOrNil(paramString))
-    {
-      ab.e("MicroMsg.WebViewPermission", "has fail, url is null");
-      AppMethodBeat.o(7690);
-      return false;
-    }
-    paramString = agP(paramString);
-    paramString = (k.a)this.uUM.get(paramString);
-    if ((paramString != null) && (paramString.uUR != this.uUP) && (paramString.uUS != this.uUQ))
-    {
-      AppMethodBeat.o(7690);
-      return true;
-    }
-    AppMethodBeat.o(7690);
-    return false;
-  }
-  
-  public static abstract interface b
-  {
-    public abstract String aYZ();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.k
  * JD-Core Version:    0.7.0.1
  */

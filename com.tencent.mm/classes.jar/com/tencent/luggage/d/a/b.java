@@ -6,19 +6,19 @@ public enum b
 {
   static
   {
-    AppMethodBeat.i(90863);
-    bzA = new b("PENDING", 0);
-    bzB = new b("PASS", 1);
-    bzC = new b("REJECT", 2);
-    bzD = new b[] { bzA, bzB, bzC };
-    AppMethodBeat.o(90863);
+    AppMethodBeat.i(140465);
+    caP = new b("PENDING", 0);
+    caQ = new b("PASS", 1);
+    caR = new b("REJECT", 2);
+    caS = new b[] { caP, caQ, caR };
+    AppMethodBeat.o(140465);
   }
   
   private b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.luggage.d.a.b
  * JD-Core Version:    0.7.0.1
  */

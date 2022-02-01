@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tencentmap.mapsdk.a.h;
+import com.tencent.tencentmap.mapsdk.a.a;
 
 public class QSupportMapFragment
   extends Fragment
@@ -17,9 +17,9 @@ public class QSupportMapFragment
   
   public static QSupportMapFragment newInstance()
   {
-    AppMethodBeat.i(101317);
+    AppMethodBeat.i(87487);
     QSupportMapFragment localQSupportMapFragment = new QSupportMapFragment();
-    AppMethodBeat.o(101317);
+    AppMethodBeat.o(87487);
     return localQSupportMapFragment;
   }
   
@@ -30,21 +30,21 @@ public class QSupportMapFragment
   
   public void onAttach(Activity paramActivity)
   {
-    AppMethodBeat.i(101318);
+    AppMethodBeat.i(87488);
     super.onAttach(paramActivity);
-    AppMethodBeat.o(101318);
+    AppMethodBeat.o(87488);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(101320);
+    AppMethodBeat.i(87490);
     super.onCreate(paramBundle);
-    AppMethodBeat.o(101320);
+    AppMethodBeat.o(87490);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    AppMethodBeat.i(101321);
+    AppMethodBeat.i(87491);
     paramViewGroup = paramBundle;
     if (paramBundle == null) {
       paramViewGroup = getArguments();
@@ -54,69 +54,69 @@ public class QSupportMapFragment
       this.mapView = new MapView(paramLayoutInflater.getContext());
       this.mapView.onCreate(paramViewGroup);
     }
-    h.a("js", "QSupportMapFragment onCreateView ");
+    a.b("js", "QSupportMapFragment onCreateView ");
     paramLayoutInflater = this.mapView;
-    AppMethodBeat.o(101321);
+    AppMethodBeat.o(87491);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(101325);
+    AppMethodBeat.i(87495);
     this.mapView.onDestroy();
     super.onDestroy();
-    AppMethodBeat.o(101325);
+    AppMethodBeat.o(87495);
   }
   
   public void onDestroyView()
   {
-    AppMethodBeat.i(101324);
+    AppMethodBeat.i(87494);
     this.mapView.onDestroyView();
     super.onDestroyView();
-    AppMethodBeat.o(101324);
+    AppMethodBeat.o(87494);
   }
   
   public void onInflate(Activity paramActivity, AttributeSet paramAttributeSet, Bundle paramBundle)
   {
-    AppMethodBeat.i(101319);
+    AppMethodBeat.i(87489);
     super.onInflate(paramActivity, paramAttributeSet, paramBundle);
-    AppMethodBeat.o(101319);
+    AppMethodBeat.o(87489);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(101323);
+    AppMethodBeat.i(87493);
     super.onPause();
     this.mapView.onPause();
-    AppMethodBeat.o(101323);
+    AppMethodBeat.o(87493);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(101322);
+    AppMethodBeat.i(87492);
     super.onResume();
     this.mapView.onResume();
-    AppMethodBeat.o(101322);
+    AppMethodBeat.o(87492);
   }
   
   public void onSaveInstanceState(Bundle paramBundle)
   {
-    AppMethodBeat.i(101326);
+    AppMethodBeat.i(87496);
     this.mapView.onSaveInstanceState(paramBundle);
     super.onSaveInstanceState(paramBundle);
-    AppMethodBeat.o(101326);
+    AppMethodBeat.o(87496);
   }
   
   public void setArguments(Bundle paramBundle)
   {
-    AppMethodBeat.i(101327);
+    AppMethodBeat.i(87497);
     super.setArguments(paramBundle);
-    AppMethodBeat.o(101327);
+    AppMethodBeat.o(87497);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.map.QSupportMapFragment
  * JD-Core Version:    0.7.0.1
  */

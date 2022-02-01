@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class nt
   extends b
 {
-  public nt.a cEm;
+  public a dsQ;
   
   public nt()
   {
@@ -15,16 +15,24 @@ public final class nt
   
   private nt(byte paramByte)
   {
-    AppMethodBeat.i(56569);
-    this.cEm = new nt.a();
-    this.ymq = false;
+    AppMethodBeat.i(42655);
+    this.dsQ = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(56569);
+    AppMethodBeat.o(42655);
+  }
+  
+  public static final class a
+  {
+    public int count;
+    public String dsR;
+    public String dsS;
+    public int ret;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.nt
  * JD-Core Version:    0.7.0.1
  */

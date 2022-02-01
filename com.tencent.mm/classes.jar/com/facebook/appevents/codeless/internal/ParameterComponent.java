@@ -18,7 +18,7 @@ public final class ParameterComponent
   
   public ParameterComponent(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(72101);
+    AppMethodBeat.i(17537);
     this.name = paramJSONObject.getString("name");
     this.value = paramJSONObject.optString("value");
     ArrayList localArrayList = new ArrayList();
@@ -34,12 +34,12 @@ public final class ParameterComponent
     }
     this.path = localArrayList;
     this.pathType = paramJSONObject.optString("path_type", "absolute");
-    AppMethodBeat.o(72101);
+    AppMethodBeat.o(17537);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.codeless.internal.ParameterComponent
  * JD-Core Version:    0.7.0.1
  */

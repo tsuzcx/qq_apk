@@ -5,21 +5,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 
 public class VideoActivity
-  extends Activity
+  extends HellActivity
 {
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(64678);
+    AppMethodBeat.i(55103);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    bh.a(this).a(paramInt1, paramInt2, paramIntent);
-    AppMethodBeat.o(64678);
+    r.a(this).a(paramInt1, paramInt2, paramIntent);
+    AppMethodBeat.o(55103);
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(64673);
+    AppMethodBeat.i(55098);
     super.onCreate(paramBundle);
     super.requestWindowFeature(1);
     super.getWindow().setFormat(-3);
@@ -30,43 +31,43 @@ public class VideoActivity
       if (paramBundle != null)
       {
         paramBundle.putInt("callMode", 1);
-        bh.a(super.getApplicationContext()).a(null, paramBundle, null);
+        r.a(super.getApplicationContext()).a(null, paramBundle, null);
       }
-      AppMethodBeat.o(64673);
+      AppMethodBeat.o(55098);
       return;
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    AppMethodBeat.i(64677);
+    AppMethodBeat.i(55102);
     super.onDestroy();
-    bh.a(this).a(this, 4);
-    AppMethodBeat.o(64677);
+    r.a(this).a(this, 4);
+    AppMethodBeat.o(55102);
   }
   
-  protected void onPause()
+  public void onPause()
   {
-    AppMethodBeat.i(64676);
+    AppMethodBeat.i(55101);
     super.onPause();
-    bh.a(this).a(this, 3);
-    AppMethodBeat.o(64676);
+    r.a(this).a(this, 3);
+    AppMethodBeat.o(55101);
   }
   
-  protected void onResume()
+  public void onResume()
   {
-    AppMethodBeat.i(64674);
+    AppMethodBeat.i(55099);
     super.onResume();
-    bh.a(this).a(this, 2);
-    AppMethodBeat.o(64674);
+    r.a(this).a(this, 2);
+    AppMethodBeat.o(55099);
   }
   
-  protected void onStop()
+  public void onStop()
   {
-    AppMethodBeat.i(64675);
+    AppMethodBeat.i(55100);
     super.onStop();
-    bh.a(this).a(this, 1);
-    AppMethodBeat.o(64675);
+    r.a(this).a(this, 1);
+    AppMethodBeat.o(55100);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -77,7 +78,7 @@ public class VideoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.VideoActivity
  * JD-Core Version:    0.7.0.1
  */

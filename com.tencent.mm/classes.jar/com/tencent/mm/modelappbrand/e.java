@@ -1,36 +1,24 @@
 package com.tencent.mm.modelappbrand;
 
-import android.content.Context;
-import android.os.Bundle;
 import android.view.View;
-import com.tencent.mm.kernel.c.a;
+import java.util.Map;
+import java.util.Set;
 
 public abstract interface e
-  extends a
 {
-  public abstract String a(String paramString, View paramView, Bundle paramBundle, ab paramab);
+  public abstract Map<Object, Set<View>> atJ();
   
-  public abstract void a(String paramString, View paramView);
+  public abstract Set<View> bX(Object paramObject);
   
-  public abstract d ack();
+  public abstract Set<View> bY(Object paramObject);
   
-  public abstract l acl();
+  public abstract boolean d(Object paramObject, View paramView);
   
-  public abstract View bX(Context paramContext);
-  
-  public abstract void cl(View paramView);
-  
-  public abstract n cm(View paramView);
-  
-  public abstract void initialize();
-  
-  public abstract void qi(String paramString);
-  
-  public abstract void shutdown();
+  public abstract boolean e(Object paramObject, View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.e
  * JD-Core Version:    0.7.0.1
  */

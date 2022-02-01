@@ -11,10 +11,10 @@ import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 public class CheckBoxWithTipIconPreference
   extends CheckBoxPreference
 {
-  private TextView ubi;
-  private int ubj;
-  private String ubk;
-  private int ubl;
+  private TextView zVJ;
+  private int zVK;
+  private String zVL;
+  private int zVM;
   
   public CheckBoxWithTipIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,49 +24,49 @@ public class CheckBoxWithTipIconPreference
   public CheckBoxWithTipIconPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(46448);
-    this.ubj = -1;
-    this.ubk = "";
-    this.ubl = 8;
-    setLayoutResource(2130970261);
-    AppMethodBeat.o(46448);
+    AppMethodBeat.i(69843);
+    this.zVK = -1;
+    this.zVL = "";
+    this.zVM = 8;
+    setLayoutResource(2131494891);
+    AppMethodBeat.o(69843);
   }
   
-  public final void Iu(int paramInt)
+  public final void Ru(int paramInt)
   {
-    AppMethodBeat.i(46451);
-    this.ubl = paramInt;
-    if (this.ubi != null) {
-      this.ubi.setVisibility(paramInt);
+    AppMethodBeat.i(69846);
+    this.zVM = paramInt;
+    if (this.zVJ != null) {
+      this.zVJ.setVisibility(paramInt);
     }
-    AppMethodBeat.o(46451);
+    AppMethodBeat.o(69846);
   }
   
-  public final void dE(String paramString, int paramInt)
+  public final void eM(String paramString, int paramInt)
   {
-    AppMethodBeat.i(46450);
-    this.ubj = paramInt;
-    this.ubk = paramString;
-    if (this.ubi != null)
+    AppMethodBeat.i(69845);
+    this.zVK = paramInt;
+    this.zVL = paramString;
+    if (this.zVJ != null)
     {
-      if (this.ubj > 0) {
-        this.ubi.setBackgroundResource(this.ubj);
+      if (this.zVK > 0) {
+        this.zVJ.setBackgroundResource(this.zVK);
       }
-      if (!TextUtils.isEmpty(this.ubk)) {
-        this.ubi.setText(this.ubk);
+      if (!TextUtils.isEmpty(this.zVL)) {
+        this.zVJ.setText(this.zVL);
       }
     }
-    AppMethodBeat.o(46450);
+    AppMethodBeat.o(69845);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(46449);
+    AppMethodBeat.i(69844);
     super.onBindView(paramView);
-    this.ubi = ((TextView)paramView.findViewById(2131826257));
-    dE(this.ubk, this.ubj);
-    Iu(this.ubl);
-    AppMethodBeat.o(46449);
+    this.zVJ = ((TextView)paramView.findViewById(2131305883));
+    eM(this.zVL, this.zVK);
+    Ru(this.zVM);
+    AppMethodBeat.o(69844);
   }
 }
 

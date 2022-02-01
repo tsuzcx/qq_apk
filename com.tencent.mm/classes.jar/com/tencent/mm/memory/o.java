@@ -6,39 +6,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class o
   extends e<Bitmap, o.b>
 {
-  public static o fdX;
+  public static o gEi;
   
   static
   {
-    AppMethodBeat.i(115417);
-    fdX = new o();
-    AppMethodBeat.o(115417);
+    AppMethodBeat.i(156463);
+    gEi = new o();
+    AppMethodBeat.o(156463);
   }
   
   private static Bitmap b(o.b paramb)
   {
-    AppMethodBeat.i(115410);
-    paramb = Bitmap.createBitmap(paramb.width, paramb.height, k.fdK);
-    AppMethodBeat.o(115410);
+    AppMethodBeat.i(156456);
+    paramb = Bitmap.createBitmap(paramb.width, paramb.height, k.gDV);
+    AppMethodBeat.o(156456);
     return paramb;
-  }
-  
-  protected final long XH()
-  {
-    return 1228800L;
-  }
-  
-  protected final long XI()
-  {
-    return 307200L;
   }
   
   public final Bitmap a(o.b paramb)
   {
     try
     {
-      AppMethodBeat.i(115408);
-      Bitmap localBitmap2 = (Bitmap)super.d(paramb);
+      AppMethodBeat.i(156454);
+      Bitmap localBitmap2 = (Bitmap)super.a(paramb);
       Bitmap localBitmap1;
       if (localBitmap2 != null)
       {
@@ -49,29 +39,48 @@ public final class o
       {
         localBitmap1 = b(paramb);
       }
-      AppMethodBeat.o(115408);
+      AppMethodBeat.o(156454);
       return localBitmap1;
     }
     finally {}
   }
   
-  public final void t(Bitmap paramBitmap)
+  protected final long aoQ()
+  {
+    return 1228800L;
+  }
+  
+  protected final long aoR()
+  {
+    return 307200L;
+  }
+  
+  public final void f(Bitmap paramBitmap)
   {
     try
     {
-      AppMethodBeat.i(115409);
+      AppMethodBeat.i(156455);
       if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-        super.aG(paramBitmap);
+        super.bL(paramBitmap);
       }
-      AppMethodBeat.o(115409);
+      AppMethodBeat.o(156455);
       return;
     }
     finally {}
   }
+  
+  static final class a
+    extends d<Bitmap, o.b>
+  {
+    public a(o.b paramb)
+    {
+      super();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView android:layout_gravity="center|right" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="2.0dip" android:src="@raw/contact_info_qzone_icon"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="@color/kh" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/hu">
+        <EditText android:id="@id/cra" android:layout_width="100.0dip" android:layout_marginRight="10.0dip" android:hint="logId" android:inputType="number" style="@style/lp" />
+        <Button android:id="@id/ayd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="confirm" />
+        <Button android:id="@id/d5f" android:layout_marginRight="10.0dip" android:text="select log" style="@style/of" />
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/b8q" android:layout_width="100.0dip" android:layout_height="@dimen/jz" app:off_color="#ff999999" app:off_text="off" app:on_color="@color/a_j" app:on_text="on" app:slide_color="#ff76fef3" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/hu">
+        <TextView android:textSize="@dimen/ia" android:id="@id/fai" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ListView android:id="@id/cy2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/hu" android:divider="@color/a_j" android:dividerHeight="1.0dip" />
+</LinearLayout>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/a13" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="3.0" android:minHeight="@dimen/l1"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/col" android:background="@color/c9" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ToggleButton android:id="@id/ddm" android:textOn="@string/dxq" android:textOff="@string/dxq" android:drawableTop="@drawable/j9" style="@style/g1" />
-    <ToggleButton android:id="@id/ddn" android:textOn="@string/dx9" android:textOff="@string/dx9" android:drawableTop="@drawable/j9" style="@style/g1" />
-    <ToggleButton android:id="@id/ddo" android:textOn="@string/dyb" android:textOff="@string/dyb" android:drawableTop="@drawable/j9" style="@style/g1" />
+    <ImageView android:id="@id/bew" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/image_download_fail_icon" />
+    <TextView android:textSize="@dimen/ia" android:textColor="@color/cd" android:id="@id/bex" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/d2i" />
 </LinearLayout>

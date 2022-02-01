@@ -24,16 +24,16 @@ public class zzn
   
   protected final Parcel obtainAndWriteInterfaceToken()
   {
-    AppMethodBeat.i(3522);
+    AppMethodBeat.i(40312);
     Parcel localParcel = Parcel.obtain();
     localParcel.writeInterfaceToken(this.zzqj);
-    AppMethodBeat.o(3522);
+    AppMethodBeat.o(40312);
     return localParcel;
   }
   
   protected final Parcel transactAndReadException(int paramInt, Parcel paramParcel)
   {
-    AppMethodBeat.i(3523);
+    AppMethodBeat.i(40313);
     Parcel localParcel = Parcel.obtain();
     try
     {
@@ -48,13 +48,13 @@ public class zzn
     finally
     {
       paramParcel.recycle();
-      AppMethodBeat.o(3523);
+      AppMethodBeat.o(40313);
     }
   }
   
   protected final void transactAndReadExceptionReturnVoid(int paramInt, Parcel paramParcel)
   {
-    AppMethodBeat.i(3524);
+    AppMethodBeat.i(40314);
     Parcel localParcel = Parcel.obtain();
     try
     {
@@ -66,13 +66,13 @@ public class zzn
     {
       paramParcel.recycle();
       localParcel.recycle();
-      AppMethodBeat.o(3524);
+      AppMethodBeat.o(40314);
     }
   }
   
   protected final void transactOneway(int paramInt, Parcel paramParcel)
   {
-    AppMethodBeat.i(3525);
+    AppMethodBeat.i(40315);
     try
     {
       this.zzqi.transact(1, paramParcel, null, 1);
@@ -81,7 +81,7 @@ public class zzn
     finally
     {
       paramParcel.recycle();
-      AppMethodBeat.o(3525);
+      AppMethodBeat.o(40315);
     }
   }
 }

@@ -3,97 +3,97 @@ package com.tencent.mm.protocal.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
+  public int Crn;
+  public com.tencent.mm.bx.b Crw;
+  public int Crx;
   public int count;
-  public int qNK;
-  public int wjb;
-  public com.tencent.mm.bv.b wjk;
-  public int wjl;
+  public int wmA;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72819);
+    AppMethodBeat.i(143943);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wjk == null)
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.Crw == null)
       {
-        paramVarArgs = new e.a.a.b("Not all required fields were included: value");
-        AppMethodBeat.o(72819);
+        paramVarArgs = new f.a.a.b("Not all required fields were included: value");
+        AppMethodBeat.o(143943);
         throw paramVarArgs;
       }
-      paramVarArgs.aO(1, this.wjb);
-      if (this.wjk != null) {
-        paramVarArgs.c(2, this.wjk);
+      paramVarArgs.aR(1, this.Crn);
+      if (this.Crw != null) {
+        paramVarArgs.c(2, this.Crw);
       }
-      paramVarArgs.aO(3, this.wjl);
-      paramVarArgs.aO(4, this.qNK);
-      paramVarArgs.aO(5, this.count);
-      AppMethodBeat.o(72819);
+      paramVarArgs.aR(3, this.Crx);
+      paramVarArgs.aR(4, this.wmA);
+      paramVarArgs.aR(5, this.count);
+      AppMethodBeat.o(143943);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = e.a.a.b.b.a.bl(1, this.wjb) + 0;
+      int i = f.a.a.b.b.a.bA(1, this.Crn) + 0;
       paramInt = i;
-      if (this.wjk != null) {
-        paramInt = i + e.a.a.b.b.a.b(2, this.wjk);
+      if (this.Crw != null) {
+        paramInt = i + f.a.a.b.b.a.b(2, this.Crw);
       }
-      i = e.a.a.b.b.a.bl(3, this.wjl);
-      int j = e.a.a.b.b.a.bl(4, this.qNK);
-      int k = e.a.a.b.b.a.bl(5, this.count);
-      AppMethodBeat.o(72819);
+      i = f.a.a.b.b.a.bA(3, this.Crx);
+      int j = f.a.a.b.b.a.bA(4, this.wmA);
+      int k = f.a.a.b.b.a.bA(5, this.count);
+      AppMethodBeat.o(143943);
       return paramInt + i + j + k;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      if (this.wjk == null)
+      if (this.Crw == null)
       {
-        paramVarArgs = new e.a.a.b("Not all required fields were included: value");
-        AppMethodBeat.o(72819);
+        paramVarArgs = new f.a.a.b("Not all required fields were included: value");
+        AppMethodBeat.o(143943);
         throw paramVarArgs;
       }
-      AppMethodBeat.o(72819);
+      AppMethodBeat.o(143943);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       d locald = (d)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(72819);
+        AppMethodBeat.o(143943);
         return -1;
       case 1: 
-        locald.wjb = locala.CLY.sl();
-        AppMethodBeat.o(72819);
+        locald.Crn = locala.KhF.xS();
+        AppMethodBeat.o(143943);
         return 0;
       case 2: 
-        locald.wjk = locala.CLY.eqS();
-        AppMethodBeat.o(72819);
+        locald.Crw = locala.KhF.fMu();
+        AppMethodBeat.o(143943);
         return 0;
       case 3: 
-        locald.wjl = locala.CLY.sl();
-        AppMethodBeat.o(72819);
+        locald.Crx = locala.KhF.xS();
+        AppMethodBeat.o(143943);
         return 0;
       case 4: 
-        locald.qNK = locala.CLY.sl();
-        AppMethodBeat.o(72819);
+        locald.wmA = locala.KhF.xS();
+        AppMethodBeat.o(143943);
         return 0;
       }
-      locald.count = locala.CLY.sl();
-      AppMethodBeat.o(72819);
+      locald.count = locala.KhF.xS();
+      AppMethodBeat.o(143943);
       return 0;
     }
-    AppMethodBeat.o(72819);
+    AppMethodBeat.o(143943);
     return -1;
   }
 }

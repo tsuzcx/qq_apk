@@ -1,79 +1,79 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class d
-  implements f
+  extends j<c>
 {
-  Map<Integer, Set<t>> ftE;
+  public static final String[] SQL_CREATE;
+  e db;
   
-  public d()
+  static
   {
-    AppMethodBeat.i(79237);
-    this.ftE = new HashMap();
-    g.RK().eHt.a(452, this);
-    AppMethodBeat.o(79237);
+    AppMethodBeat.i(151657);
+    SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "appattach") };
+    AppMethodBeat.o(151657);
   }
   
-  public static void a(int paramInt, x paramx)
+  public d(e parame)
   {
-    AppMethodBeat.i(79240);
-    paramx = new y(paramInt, paramx);
-    g.RK().eHt.a(paramx, 0);
-    AppMethodBeat.o(79240);
+    super(parame, c.info, "appattach", null);
+    this.db = parame;
   }
   
-  public final void a(int paramInt, t paramt)
+  public final boolean a(c paramc, String... paramVarArgs)
   {
-    AppMethodBeat.i(79238);
-    al.d(new d.1(this, paramInt, paramt));
-    AppMethodBeat.o(79238);
+    AppMethodBeat.i(151654);
+    boolean bool = super.update(paramc, paramVarArgs);
+    ad.d("MicroMsg.AppAttachInfoStorage", "update AppAttachInfo field_mediaId %s field_mediaSvrId %s ret %s %s", new Object[] { paramc.field_mediaId, paramc.field_mediaSvrId, Boolean.valueOf(bool), "" });
+    AppMethodBeat.o(151654);
+    return bool;
   }
   
-  public final void b(int paramInt, t paramt)
+  public final c aAL(String paramString)
   {
-    AppMethodBeat.i(79239);
-    al.d(new d.2(this, paramInt, paramt));
-    AppMethodBeat.o(79239);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    AppMethodBeat.i(79241);
-    if (!(paramm instanceof y))
+    AppMethodBeat.i(151653);
+    c localc = new c();
+    localc.field_mediaSvrId = paramString;
+    if (get(localc, new String[] { "mediaSvrId" }))
     {
-      ab.i("MicroMsg.AppCenterNetSceneService", "onSceneEnd, the scene is not a instance of NetSceneAppCenter");
-      AppMethodBeat.o(79241);
-      return;
+      AppMethodBeat.o(151653);
+      return localc;
     }
-    paramm = (y)paramm;
-    Set localSet = (Set)this.ftE.get(Integer.valueOf(paramm.vLw));
-    if ((localSet != null) && (localSet.size() > 0))
+    if (get(localc, new String[] { "mediaId" }))
     {
-      Object localObject = new HashSet();
-      ((Set)localObject).addAll(localSet);
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        t localt = (t)((Iterator)localObject).next();
-        if ((localt != null) && (localSet.contains(localt))) {
-          localt.a(paramInt1, paramInt2, paramString, paramm.vLx);
-        }
-      }
+      AppMethodBeat.o(151653);
+      return localc;
     }
-    AppMethodBeat.o(79241);
+    AppMethodBeat.o(151653);
+    return null;
+  }
+  
+  public final void vi(long paramLong)
+  {
+    AppMethodBeat.i(151652);
+    String str = " update appattach set status = 198 , lastModifyTime = " + bt.aGK() + " where rowid = " + paramLong;
+    this.db.execSQL("appattach", str);
+    doNotify();
+    AppMethodBeat.o(151652);
+  }
+  
+  public final c vj(long paramLong)
+  {
+    AppMethodBeat.i(151655);
+    c localc = new c();
+    localc.field_msgInfoId = paramLong;
+    if (get(localc, new String[] { "msgInfoId" }))
+    {
+      AppMethodBeat.o(151655);
+      return localc;
+    }
+    AppMethodBeat.o(151655);
+    return null;
   }
 }
 

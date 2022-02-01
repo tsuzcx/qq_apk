@@ -1,10 +1,23 @@
 package a;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lkotlin/Function;", "R", "", "kotlin-stdlib"})
-public abstract interface c<R> {}
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Locale;
+
+public final class c
+{
+  final e ayY;
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(52982);
+    String str = String.format(Locale.US, "%s@%s[cancellationRequested=%s]", new Object[] { getClass().getName(), Integer.toHexString(hashCode()), Boolean.toString(this.ayY.isCancellationRequested()) });
+    AppMethodBeat.o(52982);
+    return str;
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     a.c
  * JD-Core Version:    0.7.0.1
  */

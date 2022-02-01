@@ -1,67 +1,97 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import f.a.a.b;
+import java.util.LinkedList;
 
 public final class og
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public String wDI;
+  public String CIQ;
+  public LinkedList<String> CLT;
+  
+  public og()
+  {
+    AppMethodBeat.i(124465);
+    this.CLT = new LinkedList();
+    AppMethodBeat.o(124465);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(94512);
+    AppMethodBeat.i(124466);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      if (this.wDI != null) {
-        paramVarArgs.e(1, this.wDI);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.CIQ == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: brand_user_name");
+        AppMethodBeat.o(124466);
+        throw paramVarArgs;
       }
-      AppMethodBeat.o(94512);
+      if (this.CIQ != null) {
+        paramVarArgs.d(2, this.CIQ);
+      }
+      paramVarArgs.e(3, 1, this.CLT);
+      AppMethodBeat.o(124466);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.wDI == null) {
-        break label213;
+      if (this.CIQ == null) {
+        break label322;
       }
     }
-    label213:
-    for (paramInt = e.a.a.b.b.a.f(1, this.wDI) + 0;; paramInt = 0)
+    label322:
+    for (paramInt = f.a.a.b.b.a.e(2, this.CIQ) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(94512);
-      return paramInt;
+      int i = f.a.a.a.c(3, 1, this.CLT);
+      AppMethodBeat.o(124466);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.CLT.clear();
+        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.eqQ();
+            paramVarArgs.fMq();
           }
         }
-        AppMethodBeat.o(94512);
+        if (this.CIQ == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: brand_user_name");
+          AppMethodBeat.o(124466);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(124466);
         return 0;
       }
       if (paramInt == 3)
       {
-        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
         og localog = (og)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(94512);
+          AppMethodBeat.o(124466);
           return -1;
+        case 2: 
+          localog.CIQ = locala.KhF.readString();
+          AppMethodBeat.o(124466);
+          return 0;
         }
-        localog.wDI = locala.CLY.readString();
-        AppMethodBeat.o(94512);
+        localog.CLT.add(locala.KhF.readString());
+        AppMethodBeat.o(124466);
         return 0;
       }
-      AppMethodBeat.o(94512);
+      AppMethodBeat.o(124466);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.og
  * JD-Core Version:    0.7.0.1
  */

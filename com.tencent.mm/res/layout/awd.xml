@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/emk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/dl"
+<FrameLayout android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:layout_marginLeft="@dimen/c5"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.QDisFadeImageView android:id="@id/eml" android:layout_width="80.0dip" android:layout_height="80.0dip" android:scaleType="centerCrop" />
-    <ImageView android:id="@id/emm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <ImageView android:id="@id/ed5" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:scaleType="centerCrop" />
+    <View android:id="@id/ed7" android:background="@color/BW_0_Alpha_0_3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="10.0dip" android:textColor="@color/a_r" android:gravity="center" android:layout_gravity="bottom" android:id="@id/ed8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="@string/e7t" />
+</FrameLayout>

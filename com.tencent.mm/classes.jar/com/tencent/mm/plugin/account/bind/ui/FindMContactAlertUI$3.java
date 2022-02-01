@@ -11,14 +11,14 @@ final class FindMContactAlertUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(13565);
+    AppMethodBeat.i(109989);
     paramDialogInterface.dismiss();
-    AppMethodBeat.o(13565);
+    AppMethodBeat.o(109989);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.FindMContactAlertUI.3
  * JD-Core Version:    0.7.0.1
  */

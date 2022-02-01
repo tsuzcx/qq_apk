@@ -11,9 +11,9 @@ final class FreeWifiEntryUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(20953);
-    this.mNk.finish();
-    AppMethodBeat.o(20953);
+    AppMethodBeat.i(25012);
+    this.rkc.finish();
+    AppMethodBeat.o(25012);
   }
 }
 

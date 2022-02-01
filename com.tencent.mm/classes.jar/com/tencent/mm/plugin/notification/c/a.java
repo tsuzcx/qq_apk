@@ -4,14 +4,16 @@ import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Looper;
 import android.support.v4.app.s.c;
-import com.tencent.mm.g.a.ky;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.md;
 import com.tencent.mm.plugin.notification.d.b.a;
 import com.tencent.mm.plugin.notification.d.f;
 import com.tencent.mm.plugin.notification.ui.FailSendMsgNotification;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -19,143 +21,180 @@ public abstract class a<T>
   implements c
 {
   protected Context mContext = null;
-  protected b piK = null;
-  protected FailSendMsgNotification piL = null;
-  protected boolean piM = false;
-  protected ArrayList<Long> piN = null;
-  protected ArrayList<Long> piO = null;
-  protected ArrayList<Long> piP = null;
-  private ArrayList<ap> piQ = new ArrayList();
-  private ap piR = null;
-  private com.tencent.mm.sdk.b.c piS = new a.1(this);
+  protected b uhn = null;
+  protected FailSendMsgNotification uho = null;
+  protected boolean uhp = false;
+  protected ArrayList<Long> uhq = null;
+  protected ArrayList<Long> uhr = null;
+  protected ArrayList<Long> uhs = null;
+  private ArrayList<av> uht = new ArrayList();
+  private av uhu = null;
+  private com.tencent.mm.sdk.b.c uhv = new a.1(this);
   
   public a()
   {
-    this.piL.pjE = new a.2(this);
-    this.piL.pjF = new a.3(this);
-    this.piL.pjG = new a.4(this);
-    bXM();
-  }
-  
-  private void aEa()
-  {
-    this.piK.clear();
-    this.piM = false;
-    this.piN.clear();
-    this.piO.clear();
-    bXW();
-  }
-  
-  private void bXM()
-  {
-    this.piR = new ap(Looper.getMainLooper(), new a.5(this), true);
-  }
-  
-  private void bXN()
-  {
-    if (this.piR != null)
+    this.uho.uih = new com.tencent.mm.plugin.notification.ui.a()
     {
-      this.piR.stopTimer();
+      public final void cXQ()
+      {
+        AppMethodBeat.i(26728);
+        ad.d("MicroMsg.AbstractSendMsgFailNotification", "onClickResendButton");
+        aq.f(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(26726);
+            h.vKh.f(11425, new Object[] { Integer.valueOf(a.this.getType()), Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0) });
+            a.this.cXN();
+            a.a(a.this);
+            a.this.cXE();
+            AppMethodBeat.o(26726);
+          }
+        });
+        AppMethodBeat.o(26728);
+      }
+      
+      public final void cXR()
+      {
+        AppMethodBeat.i(26729);
+        ad.d("MicroMsg.AbstractSendMsgFailNotification", "onClickOmitButton");
+        aq.f(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(26727);
+            h.vKh.f(11425, new Object[] { Integer.valueOf(a.this.getType()), Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(0) });
+            a.this.cXN();
+            a.this.cXJ();
+            a.b(a.this);
+            a.this.uho.dismiss();
+            AppMethodBeat.o(26727);
+          }
+        });
+        AppMethodBeat.o(26729);
+      }
+    };
+    this.uho.uii = new com.tencent.mm.plugin.notification.ui.b()
+    {
+      public final void cXS()
+      {
+        AppMethodBeat.i(26730);
+        h.vKh.f(11425, new Object[] { Integer.valueOf(a.this.getType()), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0) });
+        a.this.cXN();
+        a.this.cXP();
+        if (!a.this.uhp) {
+          a.this.uho.dismiss();
+        }
+        AppMethodBeat.o(26730);
+      }
+    };
+    this.uho.uij = new com.tencent.mm.plugin.notification.ui.c()
+    {
+      public final void onDismiss()
+      {
+        AppMethodBeat.i(26731);
+        a.b(a.this);
+        AppMethodBeat.o(26731);
+      }
+    };
+    cXy();
+  }
+  
+  private void cXA()
+  {
+    ad.d("MicroMsg.AbstractSendMsgFailNotification", "showInitNotification, isInForeground:%b", new Object[] { Boolean.valueOf(f.bjz()) });
+    this.uho.uil = IB(this.uhn.uhy.size());
+    this.uho.cYe();
+    if ((!f.bjz()) && (!this.uho.uir))
+    {
+      this.uho.uik = IB(this.uhn.uhy.size());
+      this.uho.cYd();
+      this.uho.cYc();
+      ad.d("MicroMsg.AbstractSendMsgFailNotification", "showInitNotification, first show notification");
+      this.uho.show();
+      com.tencent.mm.sdk.b.a.ESL.d(this.uhv);
+      com.tencent.mm.sdk.b.a.ESL.c(this.uhv);
       return;
     }
-    ab.e("MicroMsg.AbstractSendMsgFailNotification", "stopCheckMsgExistTimer error, timer is null");
-  }
-  
-  private void bXO()
-  {
-    ab.d("MicroMsg.AbstractSendMsgFailNotification", "showInitNotification, isInForeground:%b", new Object[] { Boolean.valueOf(f.aJh()) });
-    this.piL.pjI = AS(this.piK.piV.size());
-    this.piL.bYs();
-    if ((!f.aJh()) && (!this.piL.pjN))
+    if (this.uho.uir)
     {
-      this.piL.pjH = AS(this.piK.piV.size());
-      this.piL.bYr();
-      this.piL.bYq();
-      ab.d("MicroMsg.AbstractSendMsgFailNotification", "showInitNotification, first show notification");
-      this.piL.show();
-      com.tencent.mm.sdk.b.a.ymk.d(this.piS);
-      com.tencent.mm.sdk.b.a.ymk.c(this.piS);
+      this.uho.cYd();
+      this.uho.cYc();
+      ad.d("MicroMsg.AbstractSendMsgFailNotification", "showInitNotification, update notification content text");
+      this.uho.ajC(IB(this.uhn.uhy.size()));
+      com.tencent.mm.sdk.b.a.ESL.d(this.uhv);
+      com.tencent.mm.sdk.b.a.ESL.c(this.uhv);
       return;
     }
-    if (this.piL.pjN)
-    {
-      this.piL.bYr();
-      this.piL.bYq();
-      ab.d("MicroMsg.AbstractSendMsgFailNotification", "showInitNotification, update notification content text");
-      this.piL.Wi(AS(this.piK.piV.size()));
-      com.tencent.mm.sdk.b.a.ymk.d(this.piS);
-      com.tencent.mm.sdk.b.a.ymk.c(this.piS);
-      return;
-    }
-    ab.d("MicroMsg.AbstractSendMsgFailNotification", "showInitNotification, not show or update notification, isForeground:%b", new Object[] { Boolean.valueOf(f.aJh()) });
+    ad.d("MicroMsg.AbstractSendMsgFailNotification", "showInitNotification, not show or update notification, isForeground:%b", new Object[] { Boolean.valueOf(f.bjz()) });
   }
   
-  private void bXP()
+  private void cXB()
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
-      this.piL.pjI = AS(this.piK.piV.size());
-      if (this.piO.size() <= 0) {
-        this.piL.Wi(eU(this.piK.piV.size(), this.piN.size() + this.piO.size()));
+      this.uho.uil = IB(this.uhn.uhy.size());
+      if (this.uhr.size() <= 0) {
+        this.uho.ajC(gq(this.uhn.uhy.size(), this.uhq.size() + this.uhr.size()));
       }
     }
     else
     {
       return;
     }
-    this.piL.Wi(ae(this.piK.piV.size(), this.piN.size() + this.piO.size(), this.piO.size()));
+    this.uho.ajC(an(this.uhn.uhy.size(), this.uhq.size() + this.uhr.size(), this.uhr.size()));
   }
   
-  private void bXQ()
+  private void cXC()
   {
-    this.piM = false;
-    ab.d("MicroMsg.AbstractSendMsgFailNotification", "finish resend, msgList.size:%d, mFailList.size:%d, mSuccessList.size:%d", new Object[] { Integer.valueOf(this.piK.piV.size()), Integer.valueOf(this.piO.size()), Integer.valueOf(this.piN.size()) });
-    bXT();
-    if ((this.piO.size() <= 0) || (Build.VERSION.SDK_INT < 16)) {
-      com.tencent.mm.plugin.notification.d.b.AU(getType());
+    this.uhp = false;
+    ad.d("MicroMsg.AbstractSendMsgFailNotification", "finish resend, msgList.size:%d, mFailList.size:%d, mSuccessList.size:%d", new Object[] { Integer.valueOf(this.uhn.uhy.size()), Integer.valueOf(this.uhr.size()), Integer.valueOf(this.uhq.size()) });
+    cXF();
+    if ((this.uhr.size() <= 0) || (Build.VERSION.SDK_INT < 16)) {
+      com.tencent.mm.plugin.notification.d.b.ID(getType());
     }
-    h.qsU.e(11425, new Object[] { Integer.valueOf(getType()), Integer.valueOf(0), Integer.valueOf(this.piN.size()), Integer.valueOf(this.piO.size()) });
+    h.vKh.f(11425, new Object[] { Integer.valueOf(getType()), Integer.valueOf(0), Integer.valueOf(this.uhq.size()), Integer.valueOf(this.uhr.size()) });
     if (Build.VERSION.SDK_INT >= 16)
     {
-      this.piL.bYr();
-      this.piL.pjI = AS(this.piK.piV.size());
-      localObject = this.piL;
-      this.piK.piV.size();
-      ((FailSendMsgNotification)localObject).Wi(eV(this.piN.size(), this.piO.size()));
-      this.piL.bYq();
-      if (this.piO.size() > 0)
+      this.uho.cYd();
+      this.uho.uil = IB(this.uhn.uhy.size());
+      localObject = this.uho;
+      this.uhn.uhy.size();
+      ((FailSendMsgNotification)localObject).ajC(gr(this.uhq.size(), this.uhr.size()));
+      this.uho.cYc();
+      if (this.uhr.size() > 0)
       {
-        this.piL.bYs();
-        this.piL.show();
-        bYa();
-        bYc();
+        this.uho.cYe();
+        this.uho.show();
+        cXM();
+        cXO();
       }
     }
-    Object localObject = new ky();
-    ((ky)localObject).cBf.type = getType();
-    com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
-    bXN();
-    bXW();
-    com.tencent.mm.sdk.b.a.ymk.d(this.piS);
-    bXR();
+    Object localObject = new md();
+    ((md)localObject).dro.type = getType();
+    com.tencent.mm.sdk.b.a.ESL.l((com.tencent.mm.sdk.b.b)localObject);
+    cXz();
+    cXI();
+    com.tencent.mm.sdk.b.a.ESL.d(this.uhv);
+    cXD();
   }
   
-  private void bXT()
+  private void cXF()
   {
-    ab.d("MicroMsg.AbstractSendMsgFailNotification", "checkMsgExistAfterResend, before check, mMsgList.size:%d, mSuccessList.size:%d, mFailList.size:%d", new Object[] { Integer.valueOf(this.piK.piV.size()), Integer.valueOf(this.piN.size()), Integer.valueOf(this.piO.size()) });
-    bXU();
-    bXV();
-    ab.d("MicroMsg.AbstractSendMsgFailNotification", "checkMsgExistAfterResend, after check, mMsgList.size:%d, mSuccessList.size:%d, mFailList.size:%d", new Object[] { Integer.valueOf(this.piK.piV.size()), Integer.valueOf(this.piN.size()), Integer.valueOf(this.piO.size()) });
+    ad.d("MicroMsg.AbstractSendMsgFailNotification", "checkMsgExistAfterResend, before check, mMsgList.size:%d, mSuccessList.size:%d, mFailList.size:%d", new Object[] { Integer.valueOf(this.uhn.uhy.size()), Integer.valueOf(this.uhq.size()), Integer.valueOf(this.uhr.size()) });
+    cXG();
+    cXH();
+    ad.d("MicroMsg.AbstractSendMsgFailNotification", "checkMsgExistAfterResend, after check, mMsgList.size:%d, mSuccessList.size:%d, mFailList.size:%d", new Object[] { Integer.valueOf(this.uhn.uhy.size()), Integer.valueOf(this.uhq.size()), Integer.valueOf(this.uhr.size()) });
   }
   
-  private void bXU()
+  private void cXG()
   {
     Object localObject = new ArrayList();
     int i = 0;
-    while (i < this.piK.piV.size())
+    while (i < this.uhn.uhy.size())
     {
-      long l = this.piK.get(i);
-      if (!kN(l)) {
+      long l = this.uhn.get(i);
+      if (!rD(l)) {
         ((ArrayList)localObject).add(Long.valueOf(l));
       }
       i += 1;
@@ -166,20 +205,20 @@ public abstract class a<T>
       while (((Iterator)localObject).hasNext())
       {
         Long localLong = (Long)((Iterator)localObject).next();
-        this.piK.remove(localLong.longValue());
+        this.uhn.remove(localLong.longValue());
       }
     }
   }
   
-  private void bXV()
+  private void cXH()
   {
     Object localObject1 = new ArrayList();
-    Object localObject2 = this.piN.iterator();
+    Object localObject2 = this.uhq.iterator();
     Long localLong;
     while (((Iterator)localObject2).hasNext())
     {
       localLong = (Long)((Iterator)localObject2).next();
-      if (!kN(localLong.longValue())) {
+      if (!rD(localLong.longValue())) {
         ((ArrayList)localObject1).add(localLong);
       }
     }
@@ -187,14 +226,14 @@ public abstract class a<T>
     while (((Iterator)localObject2).hasNext())
     {
       localLong = (Long)((Iterator)localObject2).next();
-      this.piN.remove(localLong);
+      this.uhq.remove(localLong);
     }
     ((ArrayList)localObject1).clear();
-    localObject2 = this.piO.iterator();
+    localObject2 = this.uhr.iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localLong = (Long)((Iterator)localObject2).next();
-      if (!kN(localLong.longValue())) {
+      if (!rD(localLong.longValue())) {
         ((ArrayList)localObject1).add(localLong);
       }
     }
@@ -202,285 +241,336 @@ public abstract class a<T>
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (Long)((Iterator)localObject1).next();
-      this.piO.remove(localObject2);
+      this.uhr.remove(localObject2);
     }
   }
   
-  private void bXW()
+  private void cXI()
   {
-    Iterator localIterator = this.piQ.iterator();
+    Iterator localIterator = this.uht.iterator();
     while (localIterator.hasNext()) {
-      ((ap)localIterator.next()).stopTimer();
+      ((av)localIterator.next()).stopTimer();
     }
-    this.piQ.clear();
-    this.piP.clear();
+    this.uht.clear();
+    this.uhs.clear();
   }
   
-  private String bXY()
+  private String cXK()
   {
     StringBuilder localStringBuilder = new StringBuilder("");
     int i = 0;
-    while (i < this.piK.piV.size())
+    while (i < this.uhn.uhy.size())
     {
-      long l = this.piK.get(i);
+      long l = this.uhn.get(i);
       localStringBuilder.append(l + ", ");
       i += 1;
     }
     return localStringBuilder.toString();
   }
   
-  private void bYa()
+  private void cXM()
   {
-    this.piK.currentIndex = 0;
-    if (this.piN.size() > 0)
+    this.uhn.currentIndex = 0;
+    if (this.uhq.size() > 0)
     {
-      Iterator localIterator = this.piN.iterator();
+      Iterator localIterator = this.uhq.iterator();
       while (localIterator.hasNext())
       {
         Long localLong = (Long)localIterator.next();
-        this.piK.remove(localLong.longValue());
+        this.uhn.remove(localLong.longValue());
       }
     }
-    this.piN.clear();
-    this.piO.clear();
+    this.uhq.clear();
+    this.uhr.clear();
   }
   
-  private void bYc()
+  private void cXO()
   {
-    b.a locala = new b.a(this.piK, this.piK.currentIndex, this.piN, this.piO);
+    b.a locala = new b.a(this.uhn, this.uhn.currentIndex, this.uhq, this.uhr);
     com.tencent.mm.plugin.notification.d.b.a(getType(), locala);
   }
   
-  protected abstract String AS(int paramInt);
-  
-  protected abstract void M(ArrayList<Long> paramArrayList);
-  
-  protected abstract String ae(int paramInt1, int paramInt2, int paramInt3);
-  
-  protected void bXR() {}
-  
-  public final void bXS()
+  private void cXy()
   {
-    ab.d("MicroMsg.AbstractSendMsgFailNotification", "resendAllMsg, mMsgList.size:%d", new Object[] { Integer.valueOf(this.piK.piV.size()) });
-    this.piM = true;
-    if (Build.VERSION.SDK_INT >= 16)
+    this.uhu = new av(Looper.getMainLooper(), new av.a()
     {
-      FailSendMsgNotification localFailSendMsgNotification = this.piL;
-      localFailSendMsgNotification.pjP = false;
-      localFailSendMsgNotification.pjB = com.tencent.mm.bp.a.br(localFailSendMsgNotification.mContext, com.tencent.mm.bp.a.dkN());
-      localFailSendMsgNotification.bYp();
-      localFailSendMsgNotification.show();
-      ab.d("MicroMsg.FailSendMsgNotification", "FailSendMsgNotification, removeActionButton");
-      localFailSendMsgNotification = this.piL;
-      localFailSendMsgNotification.pjB.g(2, true);
-      localFailSendMsgNotification.pjO = true;
-      localFailSendMsgNotification.show();
-      ab.d("MicroMsg.FailSendMsgNotification", "FailSendMsgNotification, setLockInNotificationBar");
-      this.piL.Wi(eU(this.piK.piV.size(), 0));
-    }
-    this.piK.currentIndex = 0;
-    bXW();
-    com.tencent.mm.sdk.b.a.ymk.d(this.piS);
-    com.tencent.mm.sdk.b.a.ymk.c(this.piS);
-    kL(this.piK.bYh());
-    if (this.piR != null)
-    {
-      this.piR.ag(300000L, 300000L);
-      return;
-    }
-    ab.e("MicroMsg.AbstractSendMsgFailNotification", "startCheckMsgExistTimer error, timer is null");
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(26732);
+        if (a.this.uhp)
+        {
+          ad.i("MicroMsg.AbstractSendMsgFailNotification", "mCheckMsgExistTimer, before check msgList.size:%d, successList.size:%d, failedList.size:%d", new Object[] { Integer.valueOf(a.this.uhn.uhy.size()), Integer.valueOf(a.this.uhq.size()), Integer.valueOf(a.this.uhr.size()) });
+          a.c(a.this);
+          ad.i("MicroMsg.AbstractSendMsgFailNotification", "mCheckMsgExistTimer, after check msgList.size:%d, successList.size:%d, failedList.size:%d", new Object[] { Integer.valueOf(a.this.uhn.uhy.size()), Integer.valueOf(a.this.uhq.size()), Integer.valueOf(a.this.uhr.size()) });
+          if (a.this.uhn.uhy.size() > 0) {
+            a.d(a.this);
+          }
+          for (;;)
+          {
+            AppMethodBeat.o(26732);
+            return true;
+            a.e(a.this);
+          }
+        }
+        AppMethodBeat.o(26732);
+        return false;
+      }
+    }, true);
   }
   
-  public final void bXX()
+  private void cXz()
   {
-    ab.d("MicroMsg.AbstractSendMsgFailNotification", "omitFailMsg, size:%d", new Object[] { Integer.valueOf(this.piK.piV.size()) });
-    if (this.piK.piV.size() > 0)
+    if (this.uhu != null)
     {
-      Object localObject = this.piK;
+      this.uhu.stopTimer();
+      return;
+    }
+    ad.e("MicroMsg.AbstractSendMsgFailNotification", "stopCheckMsgExistTimer error, timer is null");
+  }
+  
+  private void resetStatus()
+  {
+    this.uhn.clear();
+    this.uhp = false;
+    this.uhq.clear();
+    this.uhr.clear();
+    cXI();
+  }
+  
+  protected abstract String IB(int paramInt);
+  
+  protected abstract void af(ArrayList<Long> paramArrayList);
+  
+  protected abstract String an(int paramInt1, int paramInt2, int paramInt3);
+  
+  protected void cXD() {}
+  
+  public final void cXE()
+  {
+    ad.d("MicroMsg.AbstractSendMsgFailNotification", "resendAllMsg, mMsgList.size:%d", new Object[] { Integer.valueOf(this.uhn.uhy.size()) });
+    this.uhp = true;
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      FailSendMsgNotification localFailSendMsgNotification = this.uho;
+      localFailSendMsgNotification.uit = false;
+      localFailSendMsgNotification.uif = com.tencent.mm.br.a.bD(localFailSendMsgNotification.mContext, com.tencent.mm.br.a.euy());
+      localFailSendMsgNotification.cYb();
+      localFailSendMsgNotification.show();
+      ad.d("MicroMsg.FailSendMsgNotification", "FailSendMsgNotification, removeActionButton");
+      localFailSendMsgNotification = this.uho;
+      localFailSendMsgNotification.uif.f(2, true);
+      localFailSendMsgNotification.uis = true;
+      localFailSendMsgNotification.show();
+      ad.d("MicroMsg.FailSendMsgNotification", "FailSendMsgNotification, setLockInNotificationBar");
+      this.uho.ajC(gq(this.uhn.uhy.size(), 0));
+    }
+    this.uhn.currentIndex = 0;
+    cXI();
+    com.tencent.mm.sdk.b.a.ESL.d(this.uhv);
+    com.tencent.mm.sdk.b.a.ESL.c(this.uhv);
+    rB(this.uhn.cXT());
+    if (this.uhu != null)
+    {
+      this.uhu.av(300000L, 300000L);
+      return;
+    }
+    ad.e("MicroMsg.AbstractSendMsgFailNotification", "startCheckMsgExistTimer error, timer is null");
+  }
+  
+  public final void cXJ()
+  {
+    ad.d("MicroMsg.AbstractSendMsgFailNotification", "omitFailMsg, size:%d", new Object[] { Integer.valueOf(this.uhn.uhy.size()) });
+    if (this.uhn.uhy.size() > 0)
+    {
+      Object localObject = this.uhn;
       ArrayList localArrayList = new ArrayList();
-      localObject = ((b)localObject).piV.iterator();
+      localObject = ((b)localObject).uhy.iterator();
       while (((Iterator)localObject).hasNext()) {
         localArrayList.add(Long.valueOf(((Long)((Iterator)localObject).next()).longValue()));
       }
-      M(localArrayList);
+      af(localArrayList);
     }
   }
   
-  public final FailSendMsgNotification bXZ()
+  public final FailSendMsgNotification cXL()
   {
-    return this.piL;
+    return this.uho;
   }
   
-  protected final void bYb()
+  protected final void cXN()
   {
     b.a locala;
-    if ((this.piK == null) || (this.piK.piV.size() == 0))
+    if ((this.uhn == null) || (this.uhn.uhy.size() == 0))
     {
-      ab.d("MicroMsg.AbstractSendMsgFailNotification", "autoResumeFromCrash");
-      locala = com.tencent.mm.plugin.notification.d.b.AT(getType());
+      ad.d("MicroMsg.AbstractSendMsgFailNotification", "autoResumeFromCrash");
+      locala = com.tencent.mm.plugin.notification.d.b.IC(getType());
       if (locala == null) {
-        ab.e("MicroMsg.AbstractSendMsgFailNotification", "resetNotificationAfterCrash, cacheObj is null");
+        ad.e("MicroMsg.AbstractSendMsgFailNotification", "resetNotificationAfterCrash, cacheObj is null");
       }
     }
     else
     {
       return;
     }
-    if (this.piR == null) {
-      bXM();
+    if (this.uhu == null) {
+      cXy();
     }
-    b localb = locala.piX;
-    ArrayList localArrayList1 = locala.piZ;
-    ArrayList localArrayList2 = locala.pja;
-    int i = locala.piY;
+    b localb = locala.uhA;
+    ArrayList localArrayList1 = locala.uhC;
+    ArrayList localArrayList2 = locala.uhD;
+    int i = locala.uhB;
     if ((localArrayList1.size() == 0) && (localArrayList2.size() == 0) && (i == 0))
     {
-      ab.d("MicroMsg.AbstractSendMsgFailNotification", "resetNotificationAfterCrash, not start resend");
-      this.piK.clear();
-      this.piK = localb;
-      this.piN.clear();
-      this.piO.clear();
-      bXO();
+      ad.d("MicroMsg.AbstractSendMsgFailNotification", "resetNotificationAfterCrash, not start resend");
+      this.uhn.clear();
+      this.uhn = localb;
+      this.uhq.clear();
+      this.uhr.clear();
+      cXA();
       return;
     }
-    if (localArrayList1.size() + localArrayList2.size() >= localb.piV.size())
+    if (localArrayList1.size() + localArrayList2.size() >= localb.uhy.size())
     {
-      ab.d("MicroMsg.AbstractSendMsgFailNotification", "resetNotificationAfterCrash, resendFinish");
-      bXQ();
+      ad.d("MicroMsg.AbstractSendMsgFailNotification", "resetNotificationAfterCrash, resendFinish");
+      cXC();
       return;
     }
-    ab.d("MicroMsg.AbstractSendMsgFailNotification", "resetNotificationAfterCrash, currently resending");
-    this.piK.clear();
-    this.piK = localb;
-    this.piK.currentIndex = i;
-    this.piN.clear();
-    this.piN.addAll(localArrayList1);
-    this.piO.clear();
-    this.piO.addAll(localArrayList2);
-    bXP();
+    ad.d("MicroMsg.AbstractSendMsgFailNotification", "resetNotificationAfterCrash, currently resending");
+    this.uhn.clear();
+    this.uhn = localb;
+    this.uhn.currentIndex = i;
+    this.uhq.clear();
+    this.uhq.addAll(localArrayList1);
+    this.uhr.clear();
+    this.uhr.addAll(localArrayList2);
+    cXB();
   }
   
-  protected abstract void bYd();
+  protected abstract void cXP();
   
-  public final void bZ(T paramT)
+  public final void du(T paramT)
   {
     if (paramT == null) {
       return;
     }
-    ab.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgFail, msgId:%d, msgList:%s, isResending:%b", new Object[] { Long.valueOf(cc(paramT)), bXY(), Boolean.valueOf(this.piM) });
-    if (!this.piM)
+    ad.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgFail, msgId:%d, msgList:%s, isResending:%b", new Object[] { Long.valueOf(dw(paramT)), cXK(), Boolean.valueOf(this.uhp) });
+    if (!this.uhp)
     {
-      if (!this.piP.contains(Long.valueOf(cc(paramT))))
+      if (!this.uhs.contains(Long.valueOf(dw(paramT))))
       {
         if (paramT == null)
         {
-          ab.e("MicroMsg.AbstractSendMsgFailNotification", "showNotificationAfterSendFail, msgObj is null");
+          ad.e("MicroMsg.AbstractSendMsgFailNotification", "showNotificationAfterSendFail, msgObj is null");
           return;
         }
-        paramT = cd(paramT);
+        paramT = dx(paramT);
         if ((paramT == null) || (paramT.size() <= 0))
         {
-          ab.e("MicroMsg.AbstractSendMsgFailNotification", "showNotificationAfterSendFail, cannot get history fail msg");
+          ad.e("MicroMsg.AbstractSendMsgFailNotification", "showNotificationAfterSendFail, cannot get history fail msg");
           return;
         }
-        aEa();
-        b localb = this.piK;
+        resetStatus();
+        b localb = this.uhn;
         if ((paramT != null) && (paramT.size() > 0)) {
-          localb.piV.addAll(paramT);
+          localb.uhy.addAll(paramT);
         }
-        bYc();
-        ab.d("MicroMsg.AbstractSendMsgFailNotification", "showNotificationAfterSendFail, msgList.size:%d, msgList:%s", new Object[] { Integer.valueOf(this.piK.piV.size()), bXY() });
-        h.qsU.e(11426, new Object[] { Integer.valueOf(getType()) });
-        al.p(new a.6(this), 1000L);
+        cXO();
+        ad.d("MicroMsg.AbstractSendMsgFailNotification", "showNotificationAfterSendFail, msgList.size:%d, msgList:%s", new Object[] { Integer.valueOf(this.uhn.uhy.size()), cXK() });
+        h.vKh.f(11426, new Object[] { Integer.valueOf(getType()) });
+        aq.n(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(26733);
+            a.f(a.this);
+            AppMethodBeat.o(26733);
+          }
+        }, 1000L);
         return;
       }
-      this.piP.remove(Long.valueOf(cc(paramT)));
+      this.uhs.remove(Long.valueOf(dw(paramT)));
       return;
     }
-    if ((this.piK.contains(cc(paramT))) && (!this.piO.contains(Long.valueOf(cc(paramT))))) {
-      this.piO.add(Long.valueOf(cc(paramT)));
+    if ((this.uhn.contains(dw(paramT))) && (!this.uhr.contains(Long.valueOf(dw(paramT))))) {
+      this.uhr.add(Long.valueOf(dw(paramT)));
     }
-    if (!this.piK.contains(cc(paramT)))
+    if (!this.uhn.contains(dw(paramT)))
     {
-      ab.d("MicroMsg.AbstractSendMsgFailNotification", "sending msg, another fail msg");
-      this.piK.kO(cc(paramT));
+      ad.d("MicroMsg.AbstractSendMsgFailNotification", "sending msg, another fail msg");
+      this.uhn.rE(dw(paramT));
     }
-    bXP();
-    ab.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgFail, successlist.size:%d, faillist.size:%d", new Object[] { Integer.valueOf(this.piN.size()), Integer.valueOf(this.piO.size()) });
-    if (this.piN.size() + this.piO.size() < this.piK.piV.size())
+    cXB();
+    ad.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgFail, successlist.size:%d, faillist.size:%d", new Object[] { Integer.valueOf(this.uhq.size()), Integer.valueOf(this.uhr.size()) });
+    if (this.uhq.size() + this.uhr.size() < this.uhn.uhy.size())
     {
-      long l = this.piK.bYh();
+      long l = this.uhn.cXT();
       if (l == -1L)
       {
-        ab.e("TAG", "resend error, next msg id is -1");
+        ad.e("TAG", "resend error, next msg id is -1");
         return;
       }
-      ab.d("MicroMsg.AbstractSendMsgFailNotification", "continue resend, nextId:%d", new Object[] { Long.valueOf(l) });
-      bYc();
-      kL(l);
+      ad.d("MicroMsg.AbstractSendMsgFailNotification", "continue resend, nextId:%d", new Object[] { Long.valueOf(l) });
+      cXO();
+      rB(l);
       return;
     }
-    bXQ();
+    cXC();
   }
   
-  public final void ca(T paramT)
+  public final void dv(T paramT)
   {
-    ab.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgSucess, msgId:%d, msgList:%s", new Object[] { Long.valueOf(cc(paramT)), bXY() });
+    ad.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgSucess, msgId:%d, msgList:%s", new Object[] { Long.valueOf(dw(paramT)), cXK() });
     long l;
-    if (this.piK.contains(cc(paramT)))
+    if (this.uhn.contains(dw(paramT)))
     {
-      l = cc(paramT);
-      if ((this.piP.contains(Long.valueOf(l))) && (this.piO.contains(Long.valueOf(l))))
+      l = dw(paramT);
+      if ((this.uhs.contains(Long.valueOf(l))) && (this.uhr.contains(Long.valueOf(l))))
       {
-        ab.i("MicroMsg.AbstractSendMsgFailNotification", "receive send msg success event from a timout message, remvoe it from the fail list");
-        this.piP.remove(Long.valueOf(l));
-        this.piO.remove(Long.valueOf(l));
+        ad.i("MicroMsg.AbstractSendMsgFailNotification", "receive send msg success event from a timout message, remvoe it from the fail list");
+        this.uhs.remove(Long.valueOf(l));
+        this.uhr.remove(Long.valueOf(l));
       }
-      if (!this.piM) {
+      if (!this.uhp) {
         break label260;
       }
-      this.piN.add(Long.valueOf(l));
-      bXP();
-      ab.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgSuccess, successlist.size:%d, faillist.size:%d", new Object[] { Integer.valueOf(this.piN.size()), Integer.valueOf(this.piO.size()) });
-      if (this.piN.size() + this.piO.size() >= this.piK.piV.size()) {
+      this.uhq.add(Long.valueOf(l));
+      cXB();
+      ad.d("MicroMsg.AbstractSendMsgFailNotification", "processSendMsgSuccess, successlist.size:%d, faillist.size:%d", new Object[] { Integer.valueOf(this.uhq.size()), Integer.valueOf(this.uhr.size()) });
+      if (this.uhq.size() + this.uhr.size() >= this.uhn.uhy.size()) {
         break label255;
       }
-      l = this.piK.bYh();
+      l = this.uhn.cXT();
       if (l == -1L) {
-        ab.e("TAG", "resend error, next msg id is -1");
+        ad.e("TAG", "resend error, next msg id is -1");
       }
     }
     else
     {
       return;
     }
-    ab.d("MicroMsg.AbstractSendMsgFailNotification", "continue resend, nextId:%d", new Object[] { Long.valueOf(l) });
-    bYc();
-    kL(l);
+    ad.d("MicroMsg.AbstractSendMsgFailNotification", "continue resend, nextId:%d", new Object[] { Long.valueOf(l) });
+    cXO();
+    rB(l);
     return;
     label255:
-    bXQ();
+    cXC();
     return;
     label260:
-    this.piK.remove(cc(paramT));
-    if (this.piK.piV.size() == 0)
+    this.uhn.remove(dw(paramT));
+    if (this.uhn.uhy.size() == 0)
     {
-      this.piL.dismiss();
-      aEa();
-      com.tencent.mm.plugin.notification.d.b.AU(getType());
+      this.uho.dismiss();
+      resetStatus();
+      com.tencent.mm.plugin.notification.d.b.ID(getType());
       return;
     }
-    ab.d("MicroMsg.AbstractSendMsgFailNotification", "maybe the user manually resend the message, update init wording");
-    this.piL.Wi(AS(this.piK.piV.size()));
+    ad.d("MicroMsg.AbstractSendMsgFailNotification", "maybe the user manually resend the message, update init wording");
+    this.uho.ajC(IB(this.uhn.uhy.size()));
   }
   
-  protected abstract long cc(T paramT);
+  protected abstract long dw(T paramT);
   
-  protected abstract ArrayList<Long> cd(T paramT);
-  
-  protected abstract String eU(int paramInt1, int paramInt2);
-  
-  protected abstract String eV(int paramInt1, int paramInt2);
+  protected abstract ArrayList<Long> dx(T paramT);
   
   protected final Context getContext()
   {
@@ -489,18 +579,30 @@ public abstract class a<T>
   
   protected abstract int getType();
   
-  final void kL(long paramLong)
+  protected abstract String gq(int paramInt1, int paramInt2);
+  
+  protected abstract String gr(int paramInt1, int paramInt2);
+  
+  final void rB(final long paramLong)
   {
-    al.p(new a.7(this, paramLong), 200L);
+    aq.n(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(26734);
+        a.a(a.this, paramLong);
+        AppMethodBeat.o(26734);
+      }
+    }, 200L);
   }
   
-  public abstract void kM(long paramLong);
+  public abstract void rC(long paramLong);
   
-  public abstract boolean kN(long paramLong);
+  public abstract boolean rD(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.c.a
  * JD-Core Version:    0.7.0.1
  */

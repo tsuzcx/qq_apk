@@ -19,14 +19,14 @@ public final class ah
   extends ListPopupWindow
   implements ag
 {
-  private static Method ahv;
-  public ag ahw;
+  private static Method aoC;
+  public ag aoD;
   
   static
   {
     try
     {
-      ahv = PopupWindow.class.getDeclaredMethod("setTouchModal", new Class[] { Boolean.TYPE });
+      aoC = PopupWindow.class.getDeclaredMethod("setTouchModal", new Class[] { Boolean.TYPE });
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException) {}
@@ -39,38 +39,38 @@ public final class ah
   
   public final void b(h paramh, MenuItem paramMenuItem)
   {
-    if (this.ahw != null) {
-      this.ahw.b(paramh, paramMenuItem);
+    if (this.aoD != null) {
+      this.aoD.b(paramh, paramMenuItem);
     }
   }
   
   public final void c(h paramh, MenuItem paramMenuItem)
   {
-    if (this.ahw != null) {
-      this.ahw.c(paramh, paramMenuItem);
+    if (this.aoD != null) {
+      this.aoD.c(paramh, paramMenuItem);
     }
   }
   
-  final y h(Context paramContext, boolean paramBoolean)
+  final y i(Context paramContext, boolean paramBoolean)
   {
     paramContext = new a(paramContext, paramBoolean);
     paramContext.setHoverListener(this);
     return paramContext;
   }
   
-  public final void iF()
+  public final void ka()
   {
     if (Build.VERSION.SDK_INT >= 23) {
-      this.aht.setEnterTransition(null);
+      this.aoA.setEnterTransition(null);
     }
   }
   
-  public final void iG()
+  public final void kb()
   {
-    if (ahv != null) {}
+    if (aoC != null) {}
     try
     {
-      ahv.invoke(this.aht, new Object[] { Boolean.FALSE });
+      aoC.invoke(this.aoA, new Object[] { Boolean.FALSE });
       return;
     }
     catch (Exception localException) {}
@@ -79,10 +79,10 @@ public final class ah
   public static final class a
     extends y
   {
-    private ag ahw;
-    final int ahx;
-    final int ahy;
-    private MenuItem ahz;
+    private ag aoD;
+    final int aoE;
+    final int aoF;
+    private MenuItem aoG;
     
     public a(Context paramContext, boolean paramBoolean)
     {
@@ -90,19 +90,19 @@ public final class ah
       paramContext = paramContext.getResources().getConfiguration();
       if ((Build.VERSION.SDK_INT >= 17) && (1 == paramContext.getLayoutDirection()))
       {
-        this.ahx = 21;
-        this.ahy = 22;
+        this.aoE = 21;
+        this.aoF = 22;
         return;
       }
-      this.ahx = 22;
-      this.ahy = 21;
+      this.aoE = 22;
+      this.aoF = 21;
     }
     
     public final boolean onHoverEvent(MotionEvent paramMotionEvent)
     {
       Object localObject;
       int i;
-      if (this.ahw != null)
+      if (this.aoD != null)
       {
         localObject = getAdapter();
         if (!(localObject instanceof HeaderViewListAdapter)) {
@@ -125,18 +125,18 @@ public final class ah
       }
       label166:
       label178:
-      for (j localj = ((g)localObject).bb(i);; localj = null)
+      for (j localj = ((g)localObject).bu(i);; localj = null)
       {
-        MenuItem localMenuItem = this.ahz;
+        MenuItem localMenuItem = this.aoG;
         if (localMenuItem != localj)
         {
-          localObject = ((g)localObject).Wi;
+          localObject = ((g)localObject).ado;
           if (localMenuItem != null) {
-            this.ahw.b((h)localObject, localMenuItem);
+            this.aoD.b((h)localObject, localMenuItem);
           }
-          this.ahz = localj;
+          this.aoG = localj;
           if (localj != null) {
-            this.ahw.c((h)localObject, localj);
+            this.aoD.c((h)localObject, localj);
           }
         }
         return super.onHoverEvent(paramMotionEvent);
@@ -149,17 +149,17 @@ public final class ah
     public final boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
     {
       ListMenuItemView localListMenuItemView = (ListMenuItemView)getSelectedView();
-      if ((localListMenuItemView != null) && (paramInt == this.ahx))
+      if ((localListMenuItemView != null) && (paramInt == this.aoE))
       {
         if ((localListMenuItemView.isEnabled()) && (localListMenuItemView.getItemData().hasSubMenu())) {
           performItemClick(localListMenuItemView, getSelectedItemPosition(), getSelectedItemId());
         }
         return true;
       }
-      if ((localListMenuItemView != null) && (paramInt == this.ahy))
+      if ((localListMenuItemView != null) && (paramInt == this.aoF))
       {
         setSelection(-1);
-        ((g)getAdapter()).Wi.V(false);
+        ((g)getAdapter()).ado.ab(false);
         return true;
       }
       return super.onKeyDown(paramInt, paramKeyEvent);
@@ -167,7 +167,7 @@ public final class ah
     
     public final void setHoverListener(ag paramag)
     {
-      this.ahw = paramag;
+      this.aoD = paramag;
     }
   }
 }

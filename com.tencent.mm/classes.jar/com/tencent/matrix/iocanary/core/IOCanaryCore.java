@@ -1,12 +1,10 @@
 package com.tencent.matrix.iocanary.core;
 
-import com.tencent.matrix.e.b;
-import com.tencent.matrix.e.c.a;
-import com.tencent.matrix.g.c;
+import com.tencent.matrix.report.d.a;
 import java.util.List;
 
 public class IOCanaryCore
-  implements c.a, OnJniIssuePublishListener
+  implements OnJniIssuePublishListener, d.a
 {
   private static final String TAG = "Matrix.IOCanaryCore";
   private com.tencent.matrix.iocanary.b.a mCloseGuardHooker;
@@ -33,18 +31,18 @@ public class IOCanaryCore
   private void initDetectorsAndHookers(com.tencent.matrix.iocanary.a.a parama)
   {
     assert (parama != null);
-    if ((parama.yU()) || (parama.yW()) || (parama.yV())) {
+    if ((parama.Hi()) || (parama.Hk()) || (parama.Hj())) {
       IOCanaryJniBridge.install(parama, this);
     }
-    if (parama.yX())
+    if (parama.Hl())
     {
       this.mCloseGuardHooker = new com.tencent.matrix.iocanary.b.a(this);
       parama = this.mCloseGuardHooker;
-      c.i("Matrix.CloseGuardHooker", "hook sIsTryHook=%b", new Object[] { Boolean.valueOf(parama.bNF) });
-      if (!parama.bNF)
+      com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "hook sIsTryHook=%b", new Object[] { Boolean.valueOf(parama.cvU) });
+      if (!parama.cvU)
       {
-        c.i("Matrix.CloseGuardHooker", "hook hookRet=%b", new Object[] { Boolean.valueOf(parama.yY()) });
-        parama.bNF = true;
+        com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "hook hookRet=%b", new Object[] { Boolean.valueOf(parama.Hm()) });
+        parama.cvU = true;
       }
     }
   }
@@ -63,9 +61,9 @@ public class IOCanaryCore
     }
   }
   
-  public void onDetectIssue(b paramb)
+  public void onDetectIssue(com.tencent.matrix.report.c paramc)
   {
-    this.mIoCanaryPlugin.onDetectIssue(paramb);
+    this.mIoCanaryPlugin.onDetectIssue(paramc);
   }
   
   public void onIssuePublish(List<IOIssue> paramList)
@@ -102,8 +100,8 @@ public class IOCanaryCore
       if (this.mCloseGuardHooker != null)
       {
         com.tencent.matrix.iocanary.b.a locala = this.mCloseGuardHooker;
-        c.i("Matrix.CloseGuardHooker", "unHook unHookRet=%b", new Object[] { Boolean.valueOf(com.tencent.matrix.iocanary.b.a.yZ()) });
-        locala.bNF = false;
+        com.tencent.matrix.g.c.i("Matrix.CloseGuardHooker", "unHook unHookRet=%b", new Object[] { Boolean.valueOf(com.tencent.matrix.iocanary.b.a.Hn()) });
+        locala.cvU = false;
       }
       IOCanaryJniBridge.uninstall();
       return;
@@ -113,7 +111,7 @@ public class IOCanaryCore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.iocanary.core.IOCanaryCore
  * JD-Core Version:    0.7.0.1
  */

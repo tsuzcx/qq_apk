@@ -3,11 +3,11 @@ package com.tencent.mm.e.a;
 public final class i
   extends com.tencent.mm.d.a
 {
-  public String Vo;
-  public String Vp;
-  public int Vv;
-  public String Vx;
-  public com.tencent.mm.d.b Vy;
+  public String Xj;
+  public String Xk;
+  public int Xq;
+  public String Xs;
+  public com.tencent.mm.d.b Xt;
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
@@ -15,27 +15,27 @@ public final class i
     if (paramInt == 0)
     {
       paramVarArgs = (a.a.a.c.a)paramVarArgs[0];
-      if (this.Vo == null) {
+      if (this.Xj == null) {
         throw new a.a.a.b("Not all required fields were included: UserName");
       }
-      if (this.Vp == null) {
+      if (this.Xk == null) {
         throw new a.a.a.b("Not all required fields were included: NickName");
       }
-      if (this.Vx == null) {
+      if (this.Xs == null) {
         throw new a.a.a.b("Not all required fields were included: Content");
       }
-      paramVarArgs.aq(1, this.Vv);
-      if (this.Vo != null) {
-        paramVarArgs.d(2, this.Vo);
+      paramVarArgs.at(1, this.Xq);
+      if (this.Xj != null) {
+        paramVarArgs.d(2, this.Xj);
       }
-      if (this.Vp != null) {
-        paramVarArgs.d(3, this.Vp);
+      if (this.Xk != null) {
+        paramVarArgs.d(3, this.Xk);
       }
-      if (this.Vx != null) {
-        paramVarArgs.d(4, this.Vx);
+      if (this.Xs != null) {
+        paramVarArgs.d(4, this.Xs);
       }
-      if (this.Vy != null) {
-        paramVarArgs.c(5, this.Vy);
+      if (this.Xt != null) {
+        paramVarArgs.c(5, this.Xt);
       }
       i = 0;
     }
@@ -45,37 +45,37 @@ public final class i
       if (paramInt != 1) {
         break;
       }
-      i = a.a.a.a.ak(1, this.Vv) + 0;
+      i = a.a.a.a.an(1, this.Xq) + 0;
       paramInt = i;
-      if (this.Vo != null) {
-        paramInt = i + a.a.a.b.b.a.e(2, this.Vo);
+      if (this.Xj != null) {
+        paramInt = i + a.a.a.b.b.a.e(2, this.Xj);
       }
       i = paramInt;
-      if (this.Vp != null) {
-        i = paramInt + a.a.a.b.b.a.e(3, this.Vp);
+      if (this.Xk != null) {
+        i = paramInt + a.a.a.b.b.a.e(3, this.Xk);
       }
       paramInt = i;
-      if (this.Vx != null) {
-        paramInt = i + a.a.a.b.b.a.e(4, this.Vx);
+      if (this.Xs != null) {
+        paramInt = i + a.a.a.b.b.a.e(4, this.Xs);
       }
       i = paramInt;
-    } while (this.Vy == null);
-    return paramInt + a.a.a.a.a(5, this.Vy);
+    } while (this.Xt == null);
+    return paramInt + a.a.a.b.b.a.b(5, this.Xt);
     if (paramInt == 2)
     {
-      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      paramVarArgs = new a.a.a.a.a((byte[])paramVarArgs[0], Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
-      if (this.Vo == null) {
+      if (this.Xj == null) {
         throw new a.a.a.b("Not all required fields were included: UserName");
       }
-      if (this.Vp == null) {
+      if (this.Xk == null) {
         throw new a.a.a.b("Not all required fields were included: NickName");
       }
-      if (this.Vx == null) {
+      if (this.Xs == null) {
         throw new a.a.a.b("Not all required fields were included: Content");
       }
       return 0;
@@ -89,19 +89,19 @@ public final class i
       default: 
         return -1;
       case 1: 
-        locali.Vv = locala.ot();
+        locali.Xq = locala.pg();
         return 0;
       case 2: 
-        locali.Vo = locala.ou();
+        locali.Xj = locala.ph();
         return 0;
       case 3: 
-        locali.Vp = locala.ou();
+        locali.Xk = locala.ph();
         return 0;
       case 4: 
-        locali.Vx = locala.ou();
+        locali.Xs = locala.ph();
         return 0;
       }
-      locali.Vy = locala.ox();
+      locali.Xt = locala.pk();
       return 0;
     }
     return -1;

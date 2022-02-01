@@ -15,66 +15,56 @@ class g
   extends Drawable
   implements Drawable.Callback, e, f
 {
-  static final PorterDuff.Mode nL = PorterDuff.Mode.SRC_IN;
-  private int Bi;
-  private PorterDuff.Mode Bj;
-  private boolean Bk;
-  a Bl;
+  static final PorterDuff.Mode um = PorterDuff.Mode.SRC_IN;
+  private int HE;
+  private PorterDuff.Mode HF;
+  private boolean HG;
+  a HH;
   Drawable mDrawable;
-  private boolean nP;
+  private boolean uq;
   
   g(Drawable paramDrawable)
   {
-    this.Bl = cV();
-    g(paramDrawable);
+    this.HH = ea();
+    l(paramDrawable);
   }
   
   g(a parama, Resources paramResources)
   {
-    this.Bl = parama;
-    if ((this.Bl != null) && (this.Bl.Bm != null)) {
-      g(this.Bl.Bm.newDrawable(paramResources));
+    this.HH = parama;
+    if ((this.HH != null) && (this.HH.HI != null)) {
+      l(this.HH.HI.newDrawable(paramResources));
     }
   }
   
   private boolean f(int[] paramArrayOfInt)
   {
-    if (!cW()) {}
+    if (!eb()) {}
     PorterDuff.Mode localMode;
     int i;
     do
     {
       return false;
-      ColorStateList localColorStateList = this.Bl.oL;
-      localMode = this.Bl.oM;
+      ColorStateList localColorStateList = this.HH.vn;
+      localMode = this.HH.vo;
       if ((localColorStateList == null) || (localMode == null)) {
         break;
       }
       i = localColorStateList.getColorForState(paramArrayOfInt, localColorStateList.getDefaultColor());
-    } while ((this.Bk) && (i == this.Bi) && (localMode == this.Bj));
+    } while ((this.HG) && (i == this.HE) && (localMode == this.HF));
     setColorFilter(i, localMode);
-    this.Bi = i;
-    this.Bj = localMode;
-    this.Bk = true;
+    this.HE = i;
+    this.HF = localMode;
+    this.HG = true;
     return true;
-    this.Bk = false;
+    this.HG = false;
     clearColorFilter();
     return false;
   }
   
-  public final Drawable cU()
+  public final Drawable dZ()
   {
     return this.mDrawable;
-  }
-  
-  a cV()
-  {
-    return new b(this.Bl);
-  }
-  
-  protected boolean cW()
-  {
-    return true;
   }
   
   public void draw(Canvas paramCanvas)
@@ -82,44 +72,34 @@ class g
     this.mDrawable.draw(paramCanvas);
   }
   
-  public final void g(Drawable paramDrawable)
+  a ea()
   {
-    if (this.mDrawable != null) {
-      this.mDrawable.setCallback(null);
-    }
-    this.mDrawable = paramDrawable;
-    if (paramDrawable != null)
-    {
-      paramDrawable.setCallback(this);
-      setVisible(paramDrawable.isVisible(), true);
-      setState(paramDrawable.getState());
-      setLevel(paramDrawable.getLevel());
-      setBounds(paramDrawable.getBounds());
-      if (this.Bl != null) {
-        this.Bl.Bm = paramDrawable.getConstantState();
-      }
-    }
-    invalidateSelf();
+    return new b(this.HH);
+  }
+  
+  protected boolean eb()
+  {
+    return true;
   }
   
   public int getChangingConfigurations()
   {
     int j = super.getChangingConfigurations();
-    if (this.Bl != null) {}
-    for (int i = this.Bl.getChangingConfigurations();; i = 0) {
+    if (this.HH != null) {}
+    for (int i = this.HH.getChangingConfigurations();; i = 0) {
       return i | j | this.mDrawable.getChangingConfigurations();
     }
   }
   
   public Drawable.ConstantState getConstantState()
   {
-    if (this.Bl != null)
+    if (this.HH != null)
     {
-      if (this.Bl.Bm != null) {}
+      if (this.HH.HI != null) {}
       for (int i = 1; i != 0; i = 0)
       {
-        this.Bl.mChangingConfigurations = getChangingConfigurations();
-        return this.Bl;
+        this.HH.mChangingConfigurations = getChangingConfigurations();
+        return this.HH;
       }
     }
     return null;
@@ -182,8 +162,8 @@ class g
   
   public boolean isStateful()
   {
-    if ((cW()) && (this.Bl != null)) {}
-    for (ColorStateList localColorStateList = this.Bl.oL; ((localColorStateList != null) && (localColorStateList.isStateful())) || (this.mDrawable.isStateful()); localColorStateList = null) {
+    if ((eb()) && (this.HH != null)) {}
+    for (ColorStateList localColorStateList = this.HH.vn; ((localColorStateList != null) && (localColorStateList.isStateful())) || (this.mDrawable.isStateful()); localColorStateList = null) {
       return true;
     }
     return false;
@@ -194,18 +174,38 @@ class g
     this.mDrawable.jumpToCurrentState();
   }
   
+  public final void l(Drawable paramDrawable)
+  {
+    if (this.mDrawable != null) {
+      this.mDrawable.setCallback(null);
+    }
+    this.mDrawable = paramDrawable;
+    if (paramDrawable != null)
+    {
+      paramDrawable.setCallback(this);
+      setVisible(paramDrawable.isVisible(), true);
+      setState(paramDrawable.getState());
+      setLevel(paramDrawable.getLevel());
+      setBounds(paramDrawable.getBounds());
+      if (this.HH != null) {
+        this.HH.HI = paramDrawable.getConstantState();
+      }
+    }
+    invalidateSelf();
+  }
+  
   public Drawable mutate()
   {
     a locala;
-    if ((!this.nP) && (super.mutate() == this))
+    if ((!this.uq) && (super.mutate() == this))
     {
-      this.Bl = cV();
+      this.HH = ea();
       if (this.mDrawable != null) {
         this.mDrawable.mutate();
       }
-      if (this.Bl != null)
+      if (this.HH != null)
       {
-        locala = this.Bl;
+        locala = this.HH;
         if (this.mDrawable == null) {
           break label77;
         }
@@ -214,8 +214,8 @@ class g
     label77:
     for (Drawable.ConstantState localConstantState = this.mDrawable.getConstantState();; localConstantState = null)
     {
-      locala.Bm = localConstantState;
-      this.nP = true;
+      locala.HI = localConstantState;
+      this.uq = true;
       return this;
     }
   }
@@ -280,13 +280,13 @@ class g
   
   public void setTintList(ColorStateList paramColorStateList)
   {
-    this.Bl.oL = paramColorStateList;
+    this.HH.vn = paramColorStateList;
     f(getState());
   }
   
   public void setTintMode(PorterDuff.Mode paramMode)
   {
-    this.Bl.oM = paramMode;
+    this.HH.vo = paramMode;
     f(getState());
   }
   
@@ -303,27 +303,27 @@ class g
   protected static abstract class a
     extends Drawable.ConstantState
   {
-    Drawable.ConstantState Bm;
+    Drawable.ConstantState HI;
     int mChangingConfigurations;
-    ColorStateList oL = null;
-    PorterDuff.Mode oM = g.nL;
+    ColorStateList vn = null;
+    PorterDuff.Mode vo = g.um;
     
     a(a parama)
     {
       if (parama != null)
       {
         this.mChangingConfigurations = parama.mChangingConfigurations;
-        this.Bm = parama.Bm;
-        this.oL = parama.oL;
-        this.oM = parama.oM;
+        this.HI = parama.HI;
+        this.vn = parama.vn;
+        this.vo = parama.vo;
       }
     }
     
     public int getChangingConfigurations()
     {
       int j = this.mChangingConfigurations;
-      if (this.Bm != null) {}
-      for (int i = this.Bm.getChangingConfigurations();; i = 0) {
+      if (this.HI != null) {}
+      for (int i = this.HI.getChangingConfigurations();; i = 0) {
         return i | j;
       }
     }

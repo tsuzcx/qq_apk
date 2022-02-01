@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<inset android:insetLeft="@dimen/ph" android:insetRight="@dimen/ph" android:insetTop="@dimen/ph" android:insetBottom="@dimen/ph"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <selector>
-        <item android:state_checked="false" android:state_pressed="false">
-            <layer-list>
-                <item android:drawable="@drawable/aaw" />
-                <item android:drawable="@drawable/aam" />
-            </layer-list>
-        </item>
-        <item>
-            <layer-list>
-                <item android:drawable="@drawable/aav" />
-                <item android:drawable="@drawable/aam" />
-            </layer-list>
-        </item>
-    </selector>
-</inset>
+    <item android:id="@android:id/background" android:drawable="@drawable/akv" />
+    <item android:id="@android:id/secondaryProgress" android:drawable="@drawable/aky" />
+    <item android:id="@android:id/progress">
+        <bitmap android:src="@drawable/akv" android:tileModeX="repeat" />
+    </item>
+</layer-list>

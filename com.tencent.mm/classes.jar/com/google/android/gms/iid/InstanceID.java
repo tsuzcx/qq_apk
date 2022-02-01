@@ -35,27 +35,27 @@ public class InstanceID
   
   static
   {
-    AppMethodBeat.i(57518);
+    AppMethodBeat.i(2472);
     zzbq = new a();
     zzbr = TimeUnit.DAYS.toSeconds(7L);
-    AppMethodBeat.o(57518);
+    AppMethodBeat.o(2472);
   }
   
   private InstanceID(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(57502);
+    AppMethodBeat.i(2456);
     this.zzbv = "";
     this.zzk = paramContext.getApplicationContext();
     this.zzbv = paramString;
-    AppMethodBeat.o(57502);
+    AppMethodBeat.o(2456);
   }
   
   @Deprecated
   public static InstanceID getInstance(Context paramContext)
   {
-    AppMethodBeat.i(57505);
+    AppMethodBeat.i(2459);
     paramContext = getInstance(paramContext, null);
-    AppMethodBeat.o(57505);
+    AppMethodBeat.o(2459);
     return paramContext;
   }
   
@@ -66,11 +66,11 @@ public class InstanceID
     {
       try
       {
-        AppMethodBeat.i(57506);
+        AppMethodBeat.i(2460);
         if (paramBundle == null)
         {
           paramBundle = "";
-          break label167;
+          break label169;
           Context localContext = paramContext.getApplicationContext();
           if (zzbs == null)
           {
@@ -87,7 +87,7 @@ public class InstanceID
             paramContext = new InstanceID(localContext, paramBundle);
             zzbq.put(paramBundle, paramContext);
           }
-          AppMethodBeat.o(57506);
+          AppMethodBeat.o(2460);
           return paramContext;
         }
         else
@@ -96,7 +96,7 @@ public class InstanceID
         }
       }
       finally {}
-      label167:
+      label169:
       while (paramBundle != null) {
         break;
       }
@@ -106,63 +106,63 @@ public class InstanceID
   
   private final KeyPair getKeyPair()
   {
-    AppMethodBeat.i(57507);
+    AppMethodBeat.i(2461);
     KeyPair localKeyPair = zzbs.zzj(this.zzbv).getKeyPair();
-    AppMethodBeat.o(57507);
+    AppMethodBeat.o(2461);
     return localKeyPair;
   }
   
   static String zzd(KeyPair paramKeyPair)
   {
-    AppMethodBeat.i(57509);
+    AppMethodBeat.i(2463);
     paramKeyPair = paramKeyPair.getPublic().getEncoded();
     try
     {
       paramKeyPair = MessageDigest.getInstance("SHA1").digest(paramKeyPair);
       paramKeyPair[0] = ((byte)((paramKeyPair[0] & 0xF) + 112));
       paramKeyPair = Base64.encodeToString(paramKeyPair, 0, 8, 11);
-      AppMethodBeat.o(57509);
+      AppMethodBeat.o(2463);
       return paramKeyPair;
     }
     catch (NoSuchAlgorithmException paramKeyPair)
     {
-      AppMethodBeat.o(57509);
+      AppMethodBeat.o(2463);
     }
     return null;
   }
   
   static int zzg(Context paramContext)
   {
-    AppMethodBeat.i(57503);
+    AppMethodBeat.i(2457);
     try
     {
       int i = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
-      AppMethodBeat.o(57503);
+      AppMethodBeat.o(2457);
       return i;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
       paramContext = String.valueOf(paramContext);
       new StringBuilder(String.valueOf(paramContext).length() + 38).append("Never happens: can't find own package ").append(paramContext);
-      AppMethodBeat.o(57503);
+      AppMethodBeat.o(2457);
     }
     return 0;
   }
   
   static String zzh(Context paramContext)
   {
-    AppMethodBeat.i(57504);
+    AppMethodBeat.i(2458);
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
-      AppMethodBeat.o(57504);
+      AppMethodBeat.o(2458);
       return paramContext;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
       paramContext = String.valueOf(paramContext);
       new StringBuilder(String.valueOf(paramContext).length() + 38).append("Never happens: can't find own package ").append(paramContext);
-      AppMethodBeat.o(57504);
+      AppMethodBeat.o(2458);
     }
     return null;
   }
@@ -175,35 +175,35 @@ public class InstanceID
   @Deprecated
   public void deleteInstanceID()
   {
-    AppMethodBeat.i(57511);
+    AppMethodBeat.i(2465);
     zzd("*", "*", null);
     zzm();
-    AppMethodBeat.o(57511);
+    AppMethodBeat.o(2465);
   }
   
   @Deprecated
   public void deleteToken(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(57513);
+    AppMethodBeat.i(2467);
     zzd(paramString1, paramString2, null);
-    AppMethodBeat.o(57513);
+    AppMethodBeat.o(2467);
   }
   
   @Deprecated
   public long getCreationTime()
   {
-    AppMethodBeat.i(57510);
+    AppMethodBeat.i(2464);
     long l = zzbs.zzj(this.zzbv).getCreationTime();
-    AppMethodBeat.o(57510);
+    AppMethodBeat.o(2464);
     return l;
   }
   
   @Deprecated
   public String getId()
   {
-    AppMethodBeat.i(57508);
+    AppMethodBeat.i(2462);
     String str = zzd(getKeyPair());
-    AppMethodBeat.o(57508);
+    AppMethodBeat.o(2462);
     return str;
   }
   
@@ -216,9 +216,9 @@ public class InstanceID
   @Deprecated
   public String getToken(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(57515);
+    AppMethodBeat.i(2469);
     paramString1 = getToken(paramString1, paramString2, null);
-    AppMethodBeat.o(57515);
+    AppMethodBeat.o(2469);
     return paramString1;
   }
   
@@ -226,11 +226,11 @@ public class InstanceID
   public String getToken(String paramString1, String paramString2, Bundle paramBundle)
   {
     int j = 1;
-    AppMethodBeat.i(57516);
+    AppMethodBeat.i(2470);
     if (Looper.getMainLooper() == Looper.myLooper())
     {
       paramString1 = new IOException("MAIN_THREAD");
-      AppMethodBeat.o(57516);
+      AppMethodBeat.o(2470);
       throw paramString1;
     }
     Object localObject1 = null;
@@ -263,7 +263,7 @@ public class InstanceID
           localObject2 = paramBundle;
         }
       }
-      AppMethodBeat.o(57516);
+      AppMethodBeat.o(2470);
       return localObject2;
       label162:
       localObject2 = zzbs.get("lastToken");
@@ -281,11 +281,11 @@ public class InstanceID
   
   public final void zzd(String paramString1, String paramString2, Bundle paramBundle)
   {
-    AppMethodBeat.i(57514);
+    AppMethodBeat.i(2468);
     if (Looper.getMainLooper() == Looper.myLooper())
     {
       paramString1 = new IOException("MAIN_THREAD");
-      AppMethodBeat.o(57514);
+      AppMethodBeat.o(2468);
       throw paramString1;
     }
     zzbs.zzf(this.zzbv, paramString1, paramString2);
@@ -312,7 +312,7 @@ public class InstanceID
     {
       localBundle.putString("X-subtype", paramString1);
       zzaf.zzi(zzbt.zzd(localBundle, getKeyPair()));
-      AppMethodBeat.o(57514);
+      AppMethodBeat.o(2468);
       return;
       paramString2 = this.zzbv;
       break;
@@ -323,7 +323,7 @@ public class InstanceID
   
   public final String zze(String paramString1, String paramString2, Bundle paramBundle)
   {
-    AppMethodBeat.i(57517);
+    AppMethodBeat.i(2471);
     if (paramString2 != null) {
       paramBundle.putString("scope", paramString2);
     }
@@ -344,23 +344,23 @@ public class InstanceID
       }
       InstanceIDListenerService.zzd(this.zzk, zzbs);
       paramString1 = new IOException("SERVICE_NOT_AVAILABLE");
-      AppMethodBeat.o(57517);
+      AppMethodBeat.o(2471);
       throw paramString1;
     }
-    AppMethodBeat.o(57517);
+    AppMethodBeat.o(2471);
     return paramString1;
   }
   
   final void zzm()
   {
-    AppMethodBeat.i(57512);
+    AppMethodBeat.i(2466);
     zzbs.zzk(this.zzbv);
-    AppMethodBeat.o(57512);
+    AppMethodBeat.o(2466);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.iid.InstanceID
  * JD-Core Version:    0.7.0.1
  */

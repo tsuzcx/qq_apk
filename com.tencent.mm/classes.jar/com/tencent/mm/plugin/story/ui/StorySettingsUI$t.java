@@ -1,31 +1,40 @@
 package com.tencent.mm.plugin.story.ui;
 
-import a.l;
-import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.story.model.i;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class StorySettingsUI$t
   implements View.OnClickListener
 {
-  StorySettingsUI$t(StorySettingsUI paramStorySettingsUI) {}
+  public static final t yqr;
+  
+  static
+  {
+    AppMethodBeat.i(119691);
+    yqr = new t();
+    AppMethodBeat.o(119691);
+  }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(156676);
-    paramView = i.suJ;
-    i.cAq();
-    h.J((Context)this.sHQ.getContext(), "ok！", "");
-    AppMethodBeat.o(156676);
+    AppMethodBeat.i(119690);
+    paramView = g.afB();
+    k.g(paramView, "MMKernel.storage()");
+    paramView.afk().set(ae.a.FuR, Boolean.FALSE);
+    AppMethodBeat.o(119690);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.StorySettingsUI.t
  * JD-Core Version:    0.7.0.1
  */

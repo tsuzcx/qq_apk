@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Build.VERSION;
 import android.os.CancellationSignal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.soter.a.g.f;
 import com.tencent.soter.a.g.g;
 import com.tencent.soter.core.c.d;
 import junit.framework.Assert;
@@ -11,50 +12,79 @@ import junit.framework.Assert;
 @Deprecated
 public final class a
 {
-  public CancellationSignal APY;
+  public CancellationSignal EQJ;
   
   public a()
   {
-    AppMethodBeat.i(10470);
-    this.APY = null;
+    AppMethodBeat.i(21);
+    this.EQJ = null;
     if (Build.VERSION.SDK_INT >= 16) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      dVt();
-      AppMethodBeat.o(10470);
+      fnn();
+      AppMethodBeat.o(21);
       return;
     }
   }
   
   @SuppressLint({"NewApi"})
-  public final void dVt()
+  public final void fnn()
   {
-    AppMethodBeat.i(10472);
-    this.APY = new CancellationSignal();
-    AppMethodBeat.o(10472);
+    AppMethodBeat.i(23);
+    this.EQJ = new CancellationSignal();
+    AppMethodBeat.o(23);
   }
   
   @SuppressLint({"NewApi"})
-  public final boolean rX(boolean paramBoolean)
+  public final boolean xw(final boolean paramBoolean)
   {
-    AppMethodBeat.i(10471);
+    AppMethodBeat.i(22);
     d.v("Soter.SoterFingerprintCanceller", "soter: publishing cancellation. should publish: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (!this.APY.isCanceled())
+    if (!this.EQJ.isCanceled())
     {
       if (Build.VERSION.SDK_INT < 23) {
-        g.dVG().O(new a.1(this, paramBoolean));
+        g.fnz().ae(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(18);
+            d.v("Soter.SoterFingerprintCanceller", "soter: enter worker thread. perform cancel", new Object[0]);
+            a.this.EQJ.cancel();
+            if (paramBoolean) {
+              f.fnw().fny();
+            }
+            AppMethodBeat.o(18);
+          }
+        });
       }
       for (;;)
       {
-        AppMethodBeat.o(10471);
+        AppMethodBeat.o(22);
         return true;
-        g.dVG().O(new a.2(this));
-        g.dVG().t(new a.3(this), 350L);
+        g.fnz().ae(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(19);
+            a.this.EQJ.cancel();
+            AppMethodBeat.o(19);
+          }
+        });
+        g.fnz().o(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(20);
+            d.w("Soter.SoterFingerprintCanceller", "hy: waiting for %s ms not callback to system callback. cancel manually", new Object[] { Long.valueOf(350L) });
+            f.fnw().fny();
+            AppMethodBeat.o(20);
+          }
+        }, 350L);
       }
     }
     d.i("Soter.SoterFingerprintCanceller", "soter: cancellation signal already expired.", new Object[0]);
-    AppMethodBeat.o(10471);
+    AppMethodBeat.o(22);
     return false;
   }
 }

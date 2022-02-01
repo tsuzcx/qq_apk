@@ -11,11 +11,11 @@ final class zzc
   
   public final void redirect()
   {
-    AppMethodBeat.i(61402);
+    AppMethodBeat.i(11894);
     if (this.zzsh != null) {
       this.val$fragment.startActivityForResult(this.zzsh, this.val$requestCode);
     }
-    AppMethodBeat.o(61402);
+    AppMethodBeat.o(11894);
   }
 }
 

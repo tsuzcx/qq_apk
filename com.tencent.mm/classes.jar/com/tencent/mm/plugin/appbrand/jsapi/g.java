@@ -2,92 +2,129 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-public final class g
+public class g
   implements f
 {
-  public final Set<f.e> hwQ;
-  public final Set<f.b> hwR;
-  public final Set<f.d> hwS;
-  public final Set<f.c> hwT;
-  public final Set<f.a> hwU;
-  public final Set<f.f> hwV;
+  public final Set<f.f> jvM;
+  public final Set<f.b> jvN;
+  public final Set<f.d> jvO;
+  public final Set<f.c> jvP;
+  public final Set<f.a> jvQ;
+  public final Set<Object> jvR;
+  public final Set<f.e> jvS;
+  public final Set<Object> jvT;
+  private boolean jvU;
   
   public g()
   {
-    AppMethodBeat.i(91017);
-    this.hwQ = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.hwR = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.hwS = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.hwT = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.hwU = Collections.newSetFromMap(new ConcurrentHashMap());
-    this.hwV = Collections.newSetFromMap(new ConcurrentHashMap());
-    AppMethodBeat.o(91017);
+    AppMethodBeat.i(140627);
+    this.jvM = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jvN = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jvO = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jvP = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jvQ = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jvR = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jvS = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jvT = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.jvU = true;
+    AppMethodBeat.o(140627);
   }
   
   public final void a(f.b paramb)
   {
-    AppMethodBeat.i(91021);
-    this.hwR.add(paramb);
-    AppMethodBeat.o(91021);
+    AppMethodBeat.i(140630);
+    this.jvN.add(paramb);
+    AppMethodBeat.o(140630);
   }
   
   public final void a(f.c paramc)
   {
-    AppMethodBeat.i(91025);
-    this.hwT.add(paramc);
-    AppMethodBeat.o(91025);
+    AppMethodBeat.i(140634);
+    this.jvP.add(paramc);
+    AppMethodBeat.o(140634);
   }
   
   public final void a(f.d paramd)
   {
-    AppMethodBeat.i(91023);
-    this.hwS.add(paramd);
-    AppMethodBeat.o(91023);
+    AppMethodBeat.i(140632);
+    this.jvO.add(paramd);
+    AppMethodBeat.o(140632);
   }
   
   public final void a(f.e parame)
   {
-    AppMethodBeat.i(91019);
-    this.hwQ.add(parame);
-    AppMethodBeat.o(91019);
+    AppMethodBeat.i(174622);
+    this.jvS.add(parame);
+    AppMethodBeat.o(174622);
   }
   
   public final void a(f.f paramf)
   {
-    AppMethodBeat.i(91018);
-    this.hwV.add(paramf);
-    AppMethodBeat.o(91018);
+    AppMethodBeat.i(140628);
+    this.jvM.add(paramf);
+    AppMethodBeat.o(140628);
   }
   
   public final void b(f.b paramb)
   {
-    AppMethodBeat.i(91022);
-    this.hwR.remove(paramb);
-    AppMethodBeat.o(91022);
+    AppMethodBeat.i(140631);
+    this.jvN.remove(paramb);
+    AppMethodBeat.o(140631);
   }
   
   public final void b(f.c paramc)
   {
-    AppMethodBeat.i(91026);
-    this.hwT.remove(paramc);
-    AppMethodBeat.o(91026);
+    AppMethodBeat.i(140635);
+    this.jvP.remove(paramc);
+    AppMethodBeat.o(140635);
   }
   
   public final void b(f.d paramd)
   {
-    AppMethodBeat.i(91024);
-    this.hwS.remove(paramd);
-    AppMethodBeat.o(91024);
+    AppMethodBeat.i(140633);
+    this.jvO.remove(paramd);
+    AppMethodBeat.o(140633);
   }
   
   public final void b(f.e parame)
   {
-    AppMethodBeat.i(91020);
-    this.hwQ.remove(parame);
-    AppMethodBeat.o(91020);
+    AppMethodBeat.i(174623);
+    this.jvS.remove(parame);
+    AppMethodBeat.o(174623);
+  }
+  
+  public final void b(f.f paramf)
+  {
+    AppMethodBeat.i(140629);
+    this.jvM.remove(paramf);
+    AppMethodBeat.o(140629);
+  }
+  
+  public final void fL(boolean paramBoolean)
+  {
+    AppMethodBeat.i(174621);
+    Iterator localIterator;
+    if ((this.jvU == true) && (!paramBoolean)) {
+      localIterator = this.jvT.iterator();
+    }
+    while (localIterator.hasNext())
+    {
+      localIterator.next();
+      continue;
+      if ((!this.jvU) && (paramBoolean == true))
+      {
+        localIterator = this.jvS.iterator();
+        while (localIterator.hasNext()) {
+          ((f.e)localIterator.next()).Dv();
+        }
+      }
+    }
+    this.jvU = paramBoolean;
+    AppMethodBeat.o(174621);
   }
 }
 

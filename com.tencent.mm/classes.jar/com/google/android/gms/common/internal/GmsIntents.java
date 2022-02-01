@@ -42,60 +42,60 @@ public class GmsIntents
   
   static
   {
-    AppMethodBeat.i(89641);
+    AppMethodBeat.i(4663);
     Uri localUri = Uri.parse("https://plus.google.com/");
     zztz = localUri;
     zzua = localUri.buildUpon().appendPath("circles").appendPath("find").build();
-    AppMethodBeat.o(89641);
+    AppMethodBeat.o(4663);
   }
   
   public static Intent createAndroidWearUpdateIntent()
   {
-    AppMethodBeat.i(89628);
+    AppMethodBeat.i(4650);
     Intent localIntent = new Intent("com.google.android.clockwork.home.UPDATE_ANDROID_WEAR_ACTION");
     localIntent.setPackage("com.google.android.wearable.app");
-    AppMethodBeat.o(89628);
+    AppMethodBeat.o(4650);
     return localIntent;
   }
   
   public static Intent createChooseGmsAccountIntent()
   {
-    AppMethodBeat.i(89636);
+    AppMethodBeat.i(4658);
     Intent localIntent = AccountPicker.newChooseAccountIntent(null, null, new String[] { "com.google" }, true, null, null, null, null, true);
-    AppMethodBeat.o(89636);
+    AppMethodBeat.o(4658);
     return localIntent;
   }
   
   public static Intent createChooseGmsAccountWithConsentIntent(String paramString, Scope[] paramArrayOfScope, boolean paramBoolean)
   {
-    AppMethodBeat.i(89637);
+    AppMethodBeat.i(4659);
     Intent localIntent = new Intent("com.google.android.gms.signin.action.SIGN_IN");
     localIntent.putExtra("SIGN_IN_PACKAGE_NAME", paramString);
     localIntent.putExtra("SIGN_IN_SCOPE_ARRAY", paramArrayOfScope);
     localIntent.putExtra("SIGN_IN_SAVE_DEFAULT_ACCOUNT", paramBoolean);
-    AppMethodBeat.o(89637);
+    AppMethodBeat.o(4659);
     return localIntent;
   }
   
   public static Intent createDateSettingsIntent()
   {
-    AppMethodBeat.i(89622);
+    AppMethodBeat.i(4644);
     Intent localIntent = new Intent("android.settings.DATE_SETTINGS");
-    AppMethodBeat.o(89622);
+    AppMethodBeat.o(4644);
     return localIntent;
   }
   
   public static Intent createFindPeopleIntent(Context paramContext)
   {
-    AppMethodBeat.i(89632);
+    AppMethodBeat.i(4654);
     paramContext = zza(paramContext, zzua);
-    AppMethodBeat.o(89632);
+    AppMethodBeat.o(4654);
     return paramContext;
   }
   
   public static Intent createPlayStoreGamesIntent(Context paramContext)
   {
-    AppMethodBeat.i(89627);
+    AppMethodBeat.i(4649);
     Intent localIntent = new Intent("android.intent.action.VIEW");
     localIntent.setData(Uri.parse("http://play.google.com/store/apps/category/GAME"));
     localIntent.addFlags(524288);
@@ -104,24 +104,24 @@ public class GmsIntents
     {
       paramContext = new Intent(localIntent.getAction(), localIntent.getData());
       paramContext.setFlags(localIntent.getFlags());
-      AppMethodBeat.o(89627);
+      AppMethodBeat.o(4649);
       return paramContext;
     }
-    AppMethodBeat.o(89627);
+    AppMethodBeat.o(4649);
     return localIntent;
   }
   
   public static Intent createPlayStoreIntent(String paramString)
   {
-    AppMethodBeat.i(89624);
+    AppMethodBeat.i(4646);
     paramString = createPlayStoreIntent(paramString, null);
-    AppMethodBeat.o(89624);
+    AppMethodBeat.o(4646);
     return paramString;
   }
   
   public static Intent createPlayStoreIntent(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(89625);
+    AppMethodBeat.i(4647);
     Intent localIntent = new Intent("android.intent.action.VIEW");
     paramString1 = Uri.parse("market://details").buildUpon().appendQueryParameter("id", paramString1);
     if (!TextUtils.isEmpty(paramString2)) {
@@ -130,13 +130,13 @@ public class GmsIntents
     localIntent.setData(paramString1.build());
     localIntent.setPackage("com.android.vending");
     localIntent.addFlags(524288);
-    AppMethodBeat.o(89625);
+    AppMethodBeat.o(4647);
     return localIntent;
   }
   
   public static Intent createPlayStoreLightPurchaseFlowIntent(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(89626);
+    AppMethodBeat.i(4648);
     Intent localIntent = new Intent("com.android.vending.billing.PURCHASE");
     localIntent.addCategory("android.intent.category.DEFAULT");
     localIntent.setPackage("com.android.vending");
@@ -156,64 +156,64 @@ public class GmsIntents
       paramString1.setPackage("com.android.vending");
       paramString1.putExtra("use_direct_purchase", true);
     }
-    AppMethodBeat.o(89626);
+    AppMethodBeat.o(4648);
     return paramString1;
   }
   
   public static Intent createSettingsIntent(String paramString)
   {
-    AppMethodBeat.i(89621);
+    AppMethodBeat.i(4643);
     paramString = Uri.fromParts("package", paramString, null);
     Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
     localIntent.setData(paramString);
-    AppMethodBeat.o(89621);
+    AppMethodBeat.o(4643);
     return localIntent;
   }
   
   public static Intent createShareOnPlusIntent(Activity paramActivity, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(89635);
+    AppMethodBeat.i(4657);
     y.a locala = new y.a(paramActivity);
     locala.mIntent.putExtra("android.intent.extra.SUBJECT", paramString1);
     locala.mIntent.putExtra("android.intent.extra.TEXT", paramString2);
     locala.mIntent.setType("text/plain");
-    if (locala.zt != null)
+    if (locala.FM != null)
     {
-      locala.a("android.intent.extra.EMAIL", locala.zt);
-      locala.zt = null;
+      locala.a("android.intent.extra.EMAIL", locala.FM);
+      locala.FM = null;
     }
-    if (locala.zu != null)
+    if (locala.FN != null)
     {
-      locala.a("android.intent.extra.CC", locala.zu);
-      locala.zu = null;
+      locala.a("android.intent.extra.CC", locala.FN);
+      locala.FN = null;
     }
-    if (locala.zv != null)
+    if (locala.FO != null)
     {
-      locala.a("android.intent.extra.BCC", locala.zv);
-      locala.zv = null;
+      locala.a("android.intent.extra.BCC", locala.FO);
+      locala.FO = null;
     }
     int i;
-    if ((locala.zw != null) && (locala.zw.size() > 1))
+    if ((locala.FP != null) && (locala.FP.size() > 1))
     {
       i = 1;
       boolean bool = locala.mIntent.getAction().equals("android.intent.action.SEND_MULTIPLE");
       if ((i == 0) && (bool))
       {
         locala.mIntent.setAction("android.intent.action.SEND");
-        if ((locala.zw == null) || (locala.zw.isEmpty())) {
+        if ((locala.FP == null) || (locala.FP.isEmpty())) {
           break label338;
         }
-        locala.mIntent.putExtra("android.intent.extra.STREAM", (Parcelable)locala.zw.get(0));
+        locala.mIntent.putExtra("android.intent.extra.STREAM", (Parcelable)locala.FP.get(0));
         label237:
-        locala.zw = null;
+        locala.FP = null;
       }
       if ((i != 0) && (!bool))
       {
         locala.mIntent.setAction("android.intent.action.SEND_MULTIPLE");
-        if ((locala.zw == null) || (locala.zw.isEmpty())) {
+        if ((locala.FP == null) || (locala.FP.isEmpty())) {
           break label352;
         }
-        locala.mIntent.putParcelableArrayListExtra("android.intent.extra.STREAM", locala.zw);
+        locala.mIntent.putParcelableArrayListExtra("android.intent.extra.STREAM", locala.FP);
       }
     }
     for (;;)
@@ -223,7 +223,7 @@ public class GmsIntents
       if (!isIntentResolvable(paramActivity.getPackageManager(), paramString1)) {
         break label366;
       }
-      AppMethodBeat.o(89635);
+      AppMethodBeat.o(4657);
       return paramString1;
       i = 0;
       break;
@@ -235,54 +235,54 @@ public class GmsIntents
     }
     label366:
     paramActivity = createPlayStoreIntent("com.google.android.apps.plus");
-    AppMethodBeat.o(89635);
+    AppMethodBeat.o(4657);
     return paramActivity;
   }
   
   public static Intent createShowProfileIntent(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(89633);
+    AppMethodBeat.i(4655);
     paramContext = zza(paramContext, Uri.parse(String.format("https://plus.google.com/%s/about", new Object[] { paramString })));
-    AppMethodBeat.o(89633);
+    AppMethodBeat.o(4655);
     return paramContext;
   }
   
   public static Intent getFitnessAppDisconnectedIntent(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(89640);
+    AppMethodBeat.i(4662);
     Intent localIntent = new Intent();
     localIntent.setPackage("com.google.android.gms");
     localIntent.setAction("com.google.android.gms.fitness.app_disconnected");
     localIntent.setType("vnd.google.android.fitness/app_disconnect");
     localIntent.putExtra("com.google.android.gms.fitness.disconnected_app", paramString1);
     localIntent.putExtra("com.google.android.gms.fitness.disconnected_account", paramString2);
-    AppMethodBeat.o(89640);
+    AppMethodBeat.o(4662);
     return localIntent;
   }
   
   public static Uri getPlayStoreUri(String paramString)
   {
-    AppMethodBeat.i(89623);
+    AppMethodBeat.i(4645);
     paramString = Uri.parse("https://play.google.com/store/apps/details").buildUpon().appendQueryParameter("id", paramString).build();
-    AppMethodBeat.o(89623);
+    AppMethodBeat.o(4645);
     return paramString;
   }
   
   public static boolean isIntentResolvable(PackageManager paramPackageManager, Intent paramIntent)
   {
-    AppMethodBeat.i(89639);
+    AppMethodBeat.i(4661);
     if (paramPackageManager.resolveActivity(paramIntent, 65536) != null)
     {
-      AppMethodBeat.o(89639);
+      AppMethodBeat.o(4661);
       return true;
     }
-    AppMethodBeat.o(89639);
+    AppMethodBeat.o(4661);
     return false;
   }
   
   public static void sendIcingContactChangedBroadcast(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(89631);
+    AppMethodBeat.i(4653);
     Intent localIntent = new Intent("com.google.android.gms.icing.action.CONTACT_CHANGED").setPackage("com.google.android.gms").putExtra("com.google.android.gms.icing.extra.isSignificant", paramBoolean);
     if (Log.isLoggable("GmsIntents", 2))
     {
@@ -290,53 +290,53 @@ public class GmsIntents
       new StringBuilder(String.valueOf(str).length() + 98).append("Icing detected contact change, broadcasting it with intent action: ").append(str).append(" and isSignificant extra: ").append(paramBoolean);
     }
     paramContext.sendBroadcast(localIntent);
-    AppMethodBeat.o(89631);
+    AppMethodBeat.o(4653);
   }
   
   public static void sendSetGmsAccountIntent(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(89638);
+    AppMethodBeat.i(4660);
     Intent localIntent = new Intent("com.google.android.gms.common.SET_GMS_ACCOUNT");
     localIntent.putExtra("ACCOUNT_NAME", paramString1);
     localIntent.putExtra("PACKAGE_NAME", paramString2);
     localIntent.setPackage("com.google.android.gms");
     paramContext.sendBroadcast(localIntent, "com.google.android.gms.permission.INTERNAL_BROADCAST");
-    AppMethodBeat.o(89638);
+    AppMethodBeat.o(4660);
   }
   
   public static void sendUdcSettingsChangedBroadcast(Context paramContext, String paramString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(89629);
+    AppMethodBeat.i(4651);
     zza("com.google.android.gms", paramContext, paramString, paramArrayOfInt);
     if (!GoogleSignatureVerifier.getInstance(paramContext).isPackageGoogleSigned("com.google.android.googlequicksearchbox"))
     {
       Log.isLoggable("GmsIntents", 5);
-      AppMethodBeat.o(89629);
+      AppMethodBeat.o(4651);
       return;
     }
     zza("com.google.android.googlequicksearchbox", paramContext, paramString, paramArrayOfInt);
-    AppMethodBeat.o(89629);
+    AppMethodBeat.o(4651);
   }
   
   private static Intent zza(Context paramContext, Uri paramUri)
   {
-    AppMethodBeat.i(89634);
+    AppMethodBeat.i(4656);
     Intent localIntent = new Intent("android.intent.action.VIEW");
     localIntent.setData(paramUri);
     localIntent.setPackage("com.google.android.apps.plus");
     if (isIntentResolvable(paramContext.getPackageManager(), localIntent))
     {
-      AppMethodBeat.o(89634);
+      AppMethodBeat.o(4656);
       return localIntent;
     }
     paramContext = createPlayStoreIntent("com.google.android.apps.plus");
-    AppMethodBeat.o(89634);
+    AppMethodBeat.o(4656);
     return paramContext;
   }
   
   private static void zza(String paramString1, Context paramContext, String paramString2, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(89630);
+    AppMethodBeat.i(4652);
     paramString2 = new Intent("com.google.android.gms.udc.action.SETTING_CHANGED").setPackage(paramString1).putExtra("com.google.android.gms.udc.extra.accountName", paramString2).putExtra("com.google.android.gms.udc.extra.settingIdList", paramArrayOfInt);
     if (Log.isLoggable("GmsIntents", 3))
     {
@@ -344,7 +344,7 @@ public class GmsIntents
       new StringBuilder(String.valueOf(paramString1).length() + 72 + String.valueOf(paramArrayOfInt).length()).append("UDC settings changed, sending broadcast to package ").append(paramString1).append(" with intent action: ").append(paramArrayOfInt);
     }
     paramContext.sendBroadcast(paramString2);
-    AppMethodBeat.o(89630);
+    AppMethodBeat.o(4652);
   }
 }
 

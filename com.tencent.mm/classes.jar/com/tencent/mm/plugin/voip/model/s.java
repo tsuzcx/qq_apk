@@ -1,185 +1,379 @@
 package com.tencent.mm.plugin.voip.model;
 
-import a.l;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.al.q;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.g.a.ww;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.model.bi;
+import com.tencent.mm.plugin.voip.ui.InviteRemindDialog;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.bl;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/voip/model/VoipRenderIDKeyStat;", "", "()V", "ID", "", "TAG", "", "markDestroySurfaceTexture", "", "markDestroySurfaceTextureFailedException", "markHardToSoftDecode", "markHardToSoftEncode", "markInitSurfaceTexture", "markInitSurfaceTextureFailed", "markInitSurfaceTextureFailedException", "markNv21RenderDataInvalid", "markRemoteSoftDecSampleDataZero", "markSmallWindowCreate", "markSmallWindowUninit", "markSoftToHardDecode", "markSoftToHardEncode", "markSurfaceTextureAttachGLContext", "markSurfaceTextureAttachGLContextFailed", "markSurfaceTextureDetachGLContext", "markSurfaceTextureDetachGLContextFailed", "markVideoActivityOnCreate", "markVideoActivityOnDestroy", "markYv12RenderDataInvalid", "plugin-voip_release"})
 public final class s
 {
-  public static final s tyN;
+  private static boolean zlL;
+  private static DialogInterface.OnClickListener zlM;
   
   static
   {
-    AppMethodBeat.i(140303);
-    tyN = new s();
-    AppMethodBeat.o(140303);
+    AppMethodBeat.i(115100);
+    zlL = false;
+    zlM = new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(115089);
+        s.access$000();
+        AppMethodBeat.o(115089);
+      }
+    };
+    AppMethodBeat.o(115100);
   }
   
-  public static void cNA()
+  public static long a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, boolean paramBoolean)
   {
-    AppMethodBeat.i(140286);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markInitSurfaceTextureFailed");
-    h.qsU.j(1060L, 4L, 1L);
-    AppMethodBeat.o(140286);
+    AppMethodBeat.i(115091);
+    bl localbl = new bl();
+    localbl.kY(bi.uj(paramString1));
+    localbl.jV(paramInt1);
+    localbl.setType(50);
+    localbl.nY(paramString1);
+    localbl.mZ(paramString3);
+    localbl.setContent(paramString2);
+    localbl.setStatus(paramInt2);
+    if (paramBoolean) {
+      localbl.eMs();
+    }
+    long l = ((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).cOI().an(localbl);
+    if (l < 0L) {
+      ad.e("MicroMsg.VoipPluginManager", "inset voip  failed!");
+    }
+    ad.d("MicroMsg.VoipPluginManager", "inset voip  msgId ".concat(String.valueOf(l)));
+    AppMethodBeat.o(115091);
+    return l;
   }
   
-  public static void cNB()
+  public static void bi(Context paramContext, final String paramString)
   {
-    AppMethodBeat.i(140287);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markInitSurfaceTextureFailedException");
-    h.qsU.j(1060L, 5L, 1L);
-    AppMethodBeat.o(140287);
+    AppMethodBeat.i(115094);
+    paramContext.getResources().getString(2131764795);
+    zlL = false;
+    try
+    {
+      if (((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).cOI().agr(paramString) != null) {
+        zlL = com.tencent.mm.plugin.voip.b.k.dWM();
+      }
+      if (bt.isNullOrNil(paramString))
+      {
+        ad.e("MicroMsg.VoipPluginManager", "talker is null");
+        AppMethodBeat.o(115094);
+        return;
+      }
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.VoipPluginManager", localException1, "", new Object[0]);
+      }
+      int i = com.tencent.mm.kernel.g.aeS().auR();
+      ad.d("MicroMsg.VoipPluginManager", "startVoipVideoCall getNowStatus ".concat(String.valueOf(i)));
+      if ((i != 4) && (i != 6))
+      {
+        com.tencent.mm.plugin.report.service.h.vKh.a(11518, true, true, new Object[] { Integer.valueOf(com.tencent.mm.plugin.voip.c.dRQ().zlR.zfA.ziZ.roomId), Long.valueOf(com.tencent.mm.plugin.voip.c.dRQ().zlR.zfA.ziZ.sAY), Long.valueOf(com.tencent.mm.plugin.voip.c.dRQ().zlR.zfA.dTa()), Integer.valueOf(4), Integer.valueOf(0) });
+        com.tencent.mm.ui.base.h.a(paramContext, 2131764895, 2131764899, zlM);
+        AppMethodBeat.o(115094);
+        return;
+      }
+      if (!zlL)
+      {
+        Object localObject3;
+        i.a locala;
+        try
+        {
+          Object localObject1 = i.a.ate((String)com.tencent.mm.kernel.g.afB().afk().get(77829, null));
+          if (localObject1 != null) {
+            if ((localObject1 != null) && (((Map)localObject1).size() > 0))
+            {
+              if (((Map)localObject1).containsKey(paramString))
+              {
+                localObject3 = (i.a)((Map)localObject1).get(paramString);
+                ((i.a)localObject3).hitCount += 1;
+                ((Map)localObject1).put(paramString, localObject3);
+              }
+            }
+            else
+            {
+              com.tencent.mm.kernel.g.afB().afk().set(77829, i.a.aJ((Map)localObject1));
+              localObject1 = ((Map)localObject1).entrySet().iterator();
+              while (((Iterator)localObject1).hasNext())
+              {
+                localObject3 = (Map.Entry)((Iterator)localObject1).next();
+                locala = (i.a)((Map.Entry)localObject3).getValue();
+                ad.d("MicroMsg.VoipPluginManager", "val1 " + locala.hitCount + " " + locala.hpi + "name " + (String)((Map.Entry)localObject3).getKey());
+              }
+              InviteRemindDialog.p(paramContext, paramString, 0);
+            }
+          }
+        }
+        catch (Exception localException2)
+        {
+          ad.printErrStackTrace("MicroMsg.VoipPluginManager", localException2, "", new Object[0]);
+        }
+        for (;;)
+        {
+          dTY();
+          AppMethodBeat.o(115094);
+          return;
+          localObject3 = new i.a();
+          ((i.a)localObject3).hitCount += 1;
+          localException2.put(paramString, localObject3);
+          break;
+          Object localObject2 = new HashMap();
+          localObject3 = new i.a();
+          ((i.a)localObject3).hitCount += 1;
+          ((Map)localObject2).put(paramString, localObject3);
+          com.tencent.mm.kernel.g.afB().afk().set(77829, i.a.aJ((Map)localObject2));
+          localObject2 = ((Map)localObject2).entrySet().iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (Map.Entry)((Iterator)localObject2).next();
+            locala = (i.a)((Map.Entry)localObject3).getValue();
+            ad.d("MicroMsg.VoipPluginManager", "val2 " + locala.hitCount + " " + locala.hpi + "  name " + (String)((Map.Entry)localObject3).getKey());
+          }
+        }
+      }
+      if ((ay.isWifi(paramContext)) || (dTX()))
+      {
+        com.tencent.mm.plugin.voip.c.dRQ().bn(paramContext, paramString);
+        AppMethodBeat.o(115094);
+        return;
+      }
+      com.tencent.mm.ui.base.h.a(paramContext, 2131764898, 2131764899, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(115088);
+          s.dTW();
+          com.tencent.mm.plugin.voip.c.dRQ().bn(this.val$context, paramString);
+          AppMethodBeat.o(115088);
+        }
+      }, zlM);
+      AppMethodBeat.o(115094);
+    }
   }
   
-  public static void cNC()
+  public static void bj(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(140288);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markDestroySurfaceTexture");
-    h.qsU.j(1060L, 6L, 1L);
-    AppMethodBeat.o(140288);
+    AppMethodBeat.i(115096);
+    com.tencent.mm.m.g.Ze();
+    int i;
+    if (com.tencent.mm.m.c.YO() == 2) {
+      i = 1;
+    }
+    for (;;)
+    {
+      d.eBj();
+      if (i == 0) {
+        ad.i("MicroMsg.VoipPluginManager", "showDouble %b, isLiteVersion: %b", new Object[] { Boolean.FALSE, Boolean.FALSE });
+      }
+      zlL = false;
+      try
+      {
+        if (((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).cOI().agr(paramString) != null) {
+          zlL = com.tencent.mm.plugin.voip.b.k.dWM();
+        }
+        bl(paramContext, paramString);
+        AppMethodBeat.o(115096);
+        return;
+        i = 0;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ad.printErrStackTrace("MicroMsg.VoipPluginManager", localException, "", new Object[0]);
+        }
+      }
+    }
   }
   
-  public static void cND()
+  public static void bk(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(140289);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markDestroySurfaceTextureFailedException");
-    h.qsU.j(1060L, 7L, 1L);
-    AppMethodBeat.o(140289);
+    AppMethodBeat.i(115097);
+    zlL = false;
+    try
+    {
+      if (((com.tencent.mm.plugin.messenger.foundation.a.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.k.class)).cOI().agr(paramString) != null) {
+        zlL = com.tencent.mm.plugin.voip.b.k.dWM();
+      }
+      bl(paramContext, paramString);
+      AppMethodBeat.o(115097);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ad.printErrStackTrace("MicroMsg.VoipPluginManager", localException, "", new Object[0]);
+      }
+    }
   }
   
-  public static void cNE()
+  private static void bl(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(140290);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markSurfaceTextureAttachGLContext");
-    h.qsU.j(1060L, 10L, 1L);
-    AppMethodBeat.o(140290);
+    AppMethodBeat.i(115098);
+    if (bt.isNullOrNil(paramString))
+    {
+      ad.e("MicroMsg.VoipPluginManager", "talker is null");
+      AppMethodBeat.o(115098);
+      return;
+    }
+    int i = com.tencent.mm.kernel.g.aeS().auR();
+    ad.d("MicroMsg.VoipPluginManager", "startVoipVideoCall getNowStatus ".concat(String.valueOf(i)));
+    if ((i != 4) && (i != 6))
+    {
+      com.tencent.mm.plugin.report.service.h.vKh.a(11518, true, true, new Object[] { Integer.valueOf(com.tencent.mm.plugin.voip.c.dRQ().zlR.zfA.ziZ.roomId), Long.valueOf(com.tencent.mm.plugin.voip.c.dRQ().zlR.zfA.ziZ.sAY), Long.valueOf(com.tencent.mm.plugin.voip.c.dRQ().zlR.zfA.dTa()), Integer.valueOf(4), Integer.valueOf(0) });
+      com.tencent.mm.ui.base.h.a(paramContext, 2131764895, 2131764899, zlM);
+      AppMethodBeat.o(115098);
+      return;
+    }
+    if (!zlL)
+    {
+      Object localObject3;
+      i.a locala;
+      try
+      {
+        Object localObject1 = i.a.ate((String)com.tencent.mm.kernel.g.afB().afk().get(77829, null));
+        if (localObject1 != null) {
+          if ((localObject1 != null) && (((Map)localObject1).size() > 0))
+          {
+            if (((Map)localObject1).containsKey(paramString))
+            {
+              localObject3 = (i.a)((Map)localObject1).get(paramString);
+              ((i.a)localObject3).hitCount += 1;
+              ((Map)localObject1).put(paramString, localObject3);
+            }
+          }
+          else
+          {
+            com.tencent.mm.kernel.g.afB().afk().set(77829, i.a.aJ((Map)localObject1));
+            localObject1 = ((Map)localObject1).entrySet().iterator();
+            while (((Iterator)localObject1).hasNext())
+            {
+              localObject3 = (Map.Entry)((Iterator)localObject1).next();
+              locala = (i.a)((Map.Entry)localObject3).getValue();
+              ad.d("MicroMsg.VoipPluginManager", "val1 " + locala.hitCount + " " + locala.hpi + "name " + (String)((Map.Entry)localObject3).getKey());
+            }
+            InviteRemindDialog.p(paramContext, paramString, 1);
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        ad.printErrStackTrace("MicroMsg.VoipPluginManager", localException, "", new Object[0]);
+      }
+      for (;;)
+      {
+        dTY();
+        AppMethodBeat.o(115098);
+        return;
+        localObject3 = new i.a();
+        ((i.a)localObject3).hitCount += 1;
+        localException.put(paramString, localObject3);
+        break;
+        Object localObject2 = new HashMap();
+        localObject3 = new i.a();
+        ((i.a)localObject3).hitCount += 1;
+        ((Map)localObject2).put(paramString, localObject3);
+        com.tencent.mm.kernel.g.afB().afk().set(77829, i.a.aJ((Map)localObject2));
+        localObject2 = ((Map)localObject2).entrySet().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (Map.Entry)((Iterator)localObject2).next();
+          locala = (i.a)((Map.Entry)localObject3).getValue();
+          ad.d("MicroMsg.VoipPluginManager", "val2 " + locala.hitCount + " " + locala.hpi + "  name " + (String)((Map.Entry)localObject3).getKey());
+        }
+      }
+    }
+    if ((ay.isWifi(paramContext)) || (dTX()))
+    {
+      com.tencent.mm.plugin.voip.c.dRQ().bm(paramContext, paramString);
+      AppMethodBeat.o(115098);
+      return;
+    }
+    com.tencent.mm.plugin.voip.c.dRQ().bm(paramContext, paramString);
+    AppMethodBeat.o(115098);
   }
   
-  public static void cNF()
+  public static long c(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
   {
-    AppMethodBeat.i(140291);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markSurfaceTextureAttachGLContextFailed");
-    h.qsU.j(1060L, 11L, 1L);
-    AppMethodBeat.o(140291);
+    AppMethodBeat.i(115090);
+    long l = a(paramString1, paramString2, paramInt1, paramInt2, paramString3, false);
+    AppMethodBeat.o(115090);
+    return l;
   }
   
-  public static void cNG()
+  public static void dTW()
   {
-    AppMethodBeat.i(140292);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markSurfaceTextureDetachGLContext");
-    h.qsU.j(1060L, 12L, 1L);
-    AppMethodBeat.o(140292);
+    AppMethodBeat.i(115092);
+    com.tencent.mm.kernel.g.afB().afk().set(20480, Long.valueOf(System.currentTimeMillis()));
+    AppMethodBeat.o(115092);
   }
   
-  public static void cNH()
+  public static boolean dTX()
   {
-    AppMethodBeat.i(140293);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markSurfaceTextureDetachGLContextFailed");
-    h.qsU.j(1060L, 13L, 1L);
-    AppMethodBeat.o(140293);
+    AppMethodBeat.i(115093);
+    try
+    {
+      long l1 = System.currentTimeMillis();
+      long l2 = ((Long)com.tencent.mm.kernel.g.afB().afk().get(20480, Integer.valueOf(-1))).longValue();
+      if (l2 < 0L)
+      {
+        AppMethodBeat.o(115093);
+        return false;
+      }
+      l1 -= l2;
+      ad.d("MicroMsg.VoipPluginManager", "diff is".concat(String.valueOf(l1)));
+      if (l1 < 21600000L)
+      {
+        AppMethodBeat.o(115093);
+        return true;
+      }
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(115093);
+    }
+    return false;
   }
   
-  public static void cNI()
+  private static void dTY()
   {
-    AppMethodBeat.i(140294);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markSoftToHardDecode");
-    h.qsU.j(1060L, 15L, 1L);
-    AppMethodBeat.o(140294);
-  }
-  
-  public static void cNJ()
-  {
-    AppMethodBeat.i(140295);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markHardToSoftDecode");
-    h.qsU.j(1060L, 16L, 1L);
-    AppMethodBeat.o(140295);
-  }
-  
-  public static void cNK()
-  {
-    AppMethodBeat.i(140296);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markSoftToHardEncode");
-    h.qsU.j(1060L, 19L, 1L);
-    AppMethodBeat.o(140296);
-  }
-  
-  public static void cNL()
-  {
-    AppMethodBeat.i(140297);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markHardToSoftEncode");
-    h.qsU.j(1060L, 20L, 1L);
-    AppMethodBeat.o(140297);
-  }
-  
-  public static void cNM()
-  {
-    AppMethodBeat.i(140298);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markSmallWindowCreate");
-    h.qsU.j(1060L, 24L, 1L);
-    AppMethodBeat.o(140298);
-  }
-  
-  public static void cNN()
-  {
-    AppMethodBeat.i(140299);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markSmallWindowUninit");
-    h.qsU.j(1060L, 25L, 1L);
-    AppMethodBeat.o(140299);
-  }
-  
-  public static void cNO()
-  {
-    AppMethodBeat.i(140300);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markNv21RenderDataInvalid");
-    h.qsU.j(1060L, 28L, 1L);
-    AppMethodBeat.o(140300);
-  }
-  
-  public static void cNP()
-  {
-    AppMethodBeat.i(140301);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markYv12RenderDataInvalid");
-    h.qsU.j(1060L, 29L, 1L);
-    AppMethodBeat.o(140301);
-  }
-  
-  public static void cNQ()
-  {
-    AppMethodBeat.i(140302);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markRemoteSoftDecSampleDataZero");
-    h.qsU.j(1060L, 31L, 0L);
-    AppMethodBeat.o(140302);
-  }
-  
-  public static void cNx()
-  {
-    AppMethodBeat.i(140283);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markVideoActivityOnCreate");
-    h.qsU.j(1060L, 0L, 1L);
-    AppMethodBeat.o(140283);
-  }
-  
-  public static void cNy()
-  {
-    AppMethodBeat.i(140284);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markVideoActivityOnDestroy");
-    h.qsU.j(1060L, 1L, 1L);
-    AppMethodBeat.o(140284);
-  }
-  
-  public static void cNz()
-  {
-    AppMethodBeat.i(140285);
-    ab.i("MicroMsg.VoipRenderIDKeyStat", "markInitSurfaceTexture");
-    h.qsU.j(1060L, 3L, 1L);
-    AppMethodBeat.o(140285);
+    AppMethodBeat.i(115095);
+    ww localww = new ww();
+    localww.dCp.djq = 8;
+    a.ESL.l(localww);
+    AppMethodBeat.o(115095);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.s
  * JD-Core Version:    0.7.0.1
  */

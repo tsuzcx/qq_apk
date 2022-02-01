@@ -64,19 +64,19 @@ public class v2encoder
   
   static
   {
-    AppMethodBeat.i(35413);
+    AppMethodBeat.i(40791);
     streamqueuesize = 100;
     frameID = 0;
     path = Environment.getExternalStorageDirectory().getAbsolutePath();
     SizeFormat2WH = new short[] { 128, 96, 240, 160, 320, 240, 480, 360, 640, 480 };
     supportedH264HwCodecPrefixes = new String[] { "OMX.qcom.", "OMX.Exynos.", "OMX.hisi" };
     EMethodGetQosPara = 25;
-    AppMethodBeat.o(35413);
+    AppMethodBeat.o(40791);
   }
   
   public v2encoder(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, v2service paramv2service)
   {
-    AppMethodBeat.i(35402);
+    AppMethodBeat.i(40780);
     this.ENCODING = "hevc";
     this.TIMEOUT_USEC = 12000;
     this.mediaCodec = null;
@@ -97,17 +97,17 @@ public class v2encoder
     frameID = 0;
     this.mGeneratedIdx = 0L;
     this.stQoS = new v2stqos();
-    AppMethodBeat.o(35402);
+    AppMethodBeat.o(40780);
   }
   
   private void NV21ToNV12(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3)
   {
     int i = 0;
     int j = 0;
-    AppMethodBeat.i(35412);
+    AppMethodBeat.i(40790);
     if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null))
     {
-      AppMethodBeat.o(35412);
+      AppMethodBeat.o(40790);
       return;
     }
     int k = paramInt1 * paramInt2;
@@ -137,13 +137,13 @@ public class v2encoder
       paramArrayOfByte2[(k + paramInt2)] = paramArrayOfByte1[(k / 2 + k - 1 - paramInt2)];
       paramInt2 += 1;
     }
-    AppMethodBeat.o(35412);
+    AppMethodBeat.o(40790);
   }
   
   @SuppressLint({"NewApi"})
   private void StopEncoder()
   {
-    AppMethodBeat.i(35405);
+    AppMethodBeat.i(40783);
     try
     {
       if (this.mediaCodec != null)
@@ -151,20 +151,20 @@ public class v2encoder
         this.mediaCodec.stop();
         this.mediaCodec.release();
       }
-      AppMethodBeat.o(35405);
+      AppMethodBeat.o(40783);
       return;
     }
     catch (Exception localException)
     {
       new StringBuilder(" error523:").append(localException.toString());
-      AppMethodBeat.o(35405);
+      AppMethodBeat.o(40783);
     }
   }
   
   @SuppressLint({"NewApi"})
   private boolean SupportAvcCodec(String paramString, int paramInt)
   {
-    AppMethodBeat.i(35397);
+    AppMethodBeat.i(40775);
     boolean bool2 = false;
     boolean bool1 = false;
     if (Build.VERSION.SDK_INT >= 18)
@@ -244,7 +244,7 @@ public class v2encoder
         bool1 = bool2;
       }
     }
-    AppMethodBeat.o(35397);
+    AppMethodBeat.o(40775);
     return bool2;
   }
   
@@ -255,7 +255,7 @@ public class v2encoder
   
   private void createfile(String paramString)
   {
-    AppMethodBeat.i(35404);
+    AppMethodBeat.i(40782);
     paramString = new File(paramString);
     if (paramString.exists()) {
       paramString.delete();
@@ -263,13 +263,13 @@ public class v2encoder
     try
     {
       this.outputStream = new BufferedOutputStream(new FileOutputStream(paramString));
-      AppMethodBeat.o(35404);
+      AppMethodBeat.o(40782);
       return;
     }
     catch (Exception paramString)
     {
       new StringBuilder(" error510:").append(paramString.toString());
-      AppMethodBeat.o(35404);
+      AppMethodBeat.o(40782);
     }
   }
   
@@ -285,7 +285,7 @@ public class v2encoder
   
   private MediaCodecInfo selectCodec(String paramString)
   {
-    AppMethodBeat.i(35398);
+    AppMethodBeat.i(40776);
     int k = MediaCodecList.getCodecCount();
     int i = 0;
     while (i < k)
@@ -302,7 +302,7 @@ public class v2encoder
           {
             paramString = localMediaCodecInfo.getName();
             new StringBuilder("selectCodec two : ").append(j).append(paramString);
-            AppMethodBeat.o(35398);
+            AppMethodBeat.o(40776);
             return localMediaCodecInfo;
           }
           j += 1;
@@ -310,14 +310,14 @@ public class v2encoder
       }
       i += 1;
     }
-    AppMethodBeat.o(35398);
+    AppMethodBeat.o(40776);
     return null;
   }
   
   @SuppressLint({"NewApi"})
   private void trySetBitRateMode(MediaCodecInfo paramMediaCodecInfo)
   {
-    AppMethodBeat.i(35400);
+    AppMethodBeat.i(40778);
     try
     {
       if (Build.VERSION.SDK_INT > 21)
@@ -331,7 +331,7 @@ public class v2encoder
             if (paramMediaCodecInfo.isBitrateModeSupported(2))
             {
               this.mediaFormat.setInteger("bitrate-mode", 2);
-              AppMethodBeat.o(35400);
+              AppMethodBeat.o(40778);
               return;
             }
             if (paramMediaCodecInfo.isBitrateModeSupported(1)) {
@@ -340,20 +340,20 @@ public class v2encoder
           }
         }
       }
-      AppMethodBeat.o(35400);
+      AppMethodBeat.o(40778);
       return;
     }
     catch (Exception paramMediaCodecInfo)
     {
       new StringBuilder("trySetBitRateMode error: ").append(paramMediaCodecInfo.getMessage());
-      AppMethodBeat.o(35400);
+      AppMethodBeat.o(40778);
     }
   }
   
   private void trySetProfile(MediaCodecInfo paramMediaCodecInfo)
   {
     int i = 0;
-    AppMethodBeat.i(35399);
+    AppMethodBeat.i(40777);
     if (Build.VERSION.SDK_INT >= 23) {}
     for (;;)
     {
@@ -390,14 +390,14 @@ public class v2encoder
             }
           }
         }
-        AppMethodBeat.o(35399);
+        AppMethodBeat.o(40777);
         return;
       }
       catch (Exception paramMediaCodecInfo)
       {
         new StringBuilder("trySetProfile error: ").append(paramMediaCodecInfo.getMessage());
       }
-      AppMethodBeat.o(35399);
+      AppMethodBeat.o(40777);
       return;
       label272:
       i += 1;
@@ -407,7 +407,7 @@ public class v2encoder
   public int DoMediacodecEnc(byte[] paramArrayOfByte, int paramInt)
   {
     int j = 0;
-    AppMethodBeat.i(35407);
+    AppMethodBeat.i(40785);
     Object localObject1 = null;
     new StringBuilder("steve: m_framerate: ").append(this.m_framerate).append(", m_br_kbps:").append(this.m_br_kbps).append(" cwh ").append(this.m_CapW).append(this.m_CapH).append(" ewh ").append(this.m_width).append(this.m_height);
     int i = j;
@@ -432,7 +432,7 @@ public class v2encoder
           if (paramInt < 0)
           {
             UninitHWEncoder();
-            AppMethodBeat.o(35407);
+            AppMethodBeat.o(40785);
             return paramInt;
           }
         }
@@ -483,7 +483,7 @@ public class v2encoder
           frameID += 1;
           this.mediaCodec.releaseOutputBuffer(i, false);
         }
-        AppMethodBeat.o(35407);
+        AppMethodBeat.o(40785);
       }
       catch (Exception paramArrayOfByte)
       {
@@ -500,7 +500,7 @@ public class v2encoder
   
   public void DoQosSvrCtrl()
   {
-    AppMethodBeat.i(35408);
+    AppMethodBeat.i(40786);
     if (this.mProtocol != null)
     {
       if (this.mProtocol.setAppCmd(EMethodGetQosPara, this.stQoS.s2p, this.stQoS.s2p.length) >= 0)
@@ -523,12 +523,12 @@ public class v2encoder
         this.m_framerate = this.stQoS.cFps;
       }
     }
-    AppMethodBeat.o(35408);
+    AppMethodBeat.o(40786);
   }
   
   public int InitHWEncoder(boolean paramBoolean)
   {
-    AppMethodBeat.i(35403);
+    AppMethodBeat.i(40781);
     if (paramBoolean) {}
     for (Object localObject = "video/avc";; localObject = "video/hevc")
     {
@@ -543,12 +543,12 @@ public class v2encoder
       if (((localObject[0] & 0x1) != 0) || ((localObject[0] & 0x8) != 0)) {
         break label137;
       }
-      AppMethodBeat.o(35403);
+      AppMethodBeat.o(40781);
       return -2;
     }
     if (((localObject[0] & 0x10) == 0) && ((localObject[0] & 0x4) == 0))
     {
-      AppMethodBeat.o(35403);
+      AppMethodBeat.o(40781);
       return -3;
     }
     label137:
@@ -558,7 +558,7 @@ public class v2encoder
       i = StartEncoder();
       if (i < 0)
       {
-        AppMethodBeat.o(35403);
+        AppMethodBeat.o(40781);
         return i;
       }
     }
@@ -570,7 +570,7 @@ public class v2encoder
         i = -2003;
       }
       createfile(path + "/AVLog/mediacodec.h264");
-      AppMethodBeat.o(35403);
+      AppMethodBeat.o(40781);
     }
     return i;
   }
@@ -578,20 +578,20 @@ public class v2encoder
   @SuppressLint({"NewApi"})
   public void MakeIFrame()
   {
-    AppMethodBeat.i(35410);
+    AppMethodBeat.i(40788);
     if (this.mediaCodec != null)
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("request-sync", 0);
       this.mediaCodec.setParameters(localBundle);
     }
-    AppMethodBeat.o(35410);
+    AppMethodBeat.o(40788);
   }
   
   @SuppressLint({"NewApi"})
   public boolean SetBitRate(int paramInt)
   {
-    AppMethodBeat.i(35409);
+    AppMethodBeat.i(40787);
     try
     {
       if (this.mediaCodec != null)
@@ -599,14 +599,14 @@ public class v2encoder
         Bundle localBundle = new Bundle();
         localBundle.putInt("video-bitrate", paramInt * 1000);
         this.mediaCodec.setParameters(localBundle);
-        AppMethodBeat.o(35409);
+        AppMethodBeat.o(40787);
         return true;
       }
     }
     catch (Exception localException)
     {
       new StringBuilder("steve: setRates failed:").append(localException);
-      AppMethodBeat.o(35409);
+      AppMethodBeat.o(40787);
     }
     return false;
   }
@@ -614,7 +614,7 @@ public class v2encoder
   @SuppressLint({"NewApi"})
   public int StartEncoder()
   {
-    AppMethodBeat.i(35401);
+    AppMethodBeat.i(40779);
     if (this.mediaCodec != null) {
       StopEncoder();
     }
@@ -622,7 +622,7 @@ public class v2encoder
     if (localMediaCodecInfo == null)
     {
       new StringBuilder("steve: Unable to find an appropriate codec for ").append(this.ENCODING);
-      AppMethodBeat.o(35401);
+      AppMethodBeat.o(40779);
       return -2001;
     }
     new StringBuilder("steve: found HW codec: ").append(localMediaCodecInfo.getName());
@@ -655,14 +655,14 @@ public class v2encoder
         new StringBuilder("steve: mediaFormat: ").append(this.mediaFormat);
         this.mediaCodec.configure(this.mediaFormat, null, null, 1);
         this.mediaCodec.start();
-        AppMethodBeat.o(35401);
+        AppMethodBeat.o(40779);
         return 2000;
       }
       catch (Exception localException)
       {
         label287:
         new StringBuilder(" error392:").append(localException.toString());
-        AppMethodBeat.o(35401);
+        AppMethodBeat.o(40779);
       }
       i = 0;
       break;
@@ -676,7 +676,7 @@ public class v2encoder
   
   public void UninitHWEncoder()
   {
-    AppMethodBeat.i(35406);
+    AppMethodBeat.i(40784);
     this.isRuning = false;
     try
     {
@@ -686,19 +686,19 @@ public class v2encoder
         this.outputStream.flush();
         this.outputStream.close();
       }
-      AppMethodBeat.o(35406);
+      AppMethodBeat.o(40784);
       return;
     }
     catch (Exception localException)
     {
       new StringBuilder(" error401:").append(localException.toString());
-      AppMethodBeat.o(35406);
+      AppMethodBeat.o(40784);
     }
   }
   
   public void putH2645Data(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(35411);
+    AppMethodBeat.i(40789);
     if ((paramArrayOfByte != null) && (this.mProtocol != null))
     {
       int i = 18;
@@ -707,12 +707,12 @@ public class v2encoder
       }
       this.mProtocol.videoEncodeToSend(paramArrayOfByte, paramInt2, this.m_width, paramInt1, i);
     }
-    AppMethodBeat.o(35411);
+    AppMethodBeat.o(40789);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wxmm.v2encoder
  * JD-Core Version:    0.7.0.1
  */

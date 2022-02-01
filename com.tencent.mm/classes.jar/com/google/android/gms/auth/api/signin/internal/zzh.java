@@ -22,7 +22,7 @@ public final class zzh
   public zzh(Context paramContext, Looper paramLooper, ClientSettings paramClientSettings, GoogleSignInOptions paramGoogleSignInOptions, GoogleApiClient.ConnectionCallbacks paramConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener paramOnConnectionFailedListener)
   {
     super(paramContext, paramLooper, 91, paramClientSettings, paramConnectionCallbacks, paramOnConnectionFailedListener);
-    AppMethodBeat.i(50432);
+    AppMethodBeat.i(88327);
     if (paramGoogleSignInOptions != null) {}
     for (;;)
     {
@@ -40,7 +40,7 @@ public final class zzh
     paramContext = paramContext.build();
     label108:
     this.zzev = paramContext;
-    AppMethodBeat.o(50432);
+    AppMethodBeat.o(88327);
   }
   
   public final int getMinApkVersion()
@@ -55,9 +55,9 @@ public final class zzh
   
   public final Intent getSignInIntent()
   {
-    AppMethodBeat.i(50433);
+    AppMethodBeat.i(88328);
     Intent localIntent = zzi.zzd(getContext(), this.zzev);
-    AppMethodBeat.o(50433);
+    AppMethodBeat.o(88328);
     return localIntent;
   }
   

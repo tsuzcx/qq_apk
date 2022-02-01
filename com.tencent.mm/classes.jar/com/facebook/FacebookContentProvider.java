@@ -20,16 +20,16 @@ public class FacebookContentProvider
   
   static
   {
-    AppMethodBeat.i(71578);
+    AppMethodBeat.i(17014);
     TAG = FacebookContentProvider.class.getName();
-    AppMethodBeat.o(71578);
+    AppMethodBeat.o(17014);
   }
   
   public static String getAttachmentUrl(String paramString1, UUID paramUUID, String paramString2)
   {
-    AppMethodBeat.i(71575);
+    AppMethodBeat.i(17011);
     paramString1 = String.format("%s%s/%s/%s", new Object[] { "content://com.facebook.app.FacebookContentProvider", paramString1, paramUUID.toString(), paramString2 });
-    AppMethodBeat.o(71575);
+    AppMethodBeat.o(17011);
     return paramString1;
   }
   
@@ -55,12 +55,12 @@ public class FacebookContentProvider
   
   public ParcelFileDescriptor openFile(Uri paramUri, String paramString)
   {
-    AppMethodBeat.i(71576);
+    AppMethodBeat.i(17012);
     paramUri = parseCallIdAndAttachmentName(paramUri);
     if (paramUri == null)
     {
       paramUri = new FileNotFoundException();
-      AppMethodBeat.o(71576);
+      AppMethodBeat.o(17012);
       throw paramUri;
     }
     try
@@ -69,24 +69,24 @@ public class FacebookContentProvider
       if (paramUri == null)
       {
         paramUri = new FileNotFoundException();
-        AppMethodBeat.o(71576);
+        AppMethodBeat.o(17012);
         throw paramUri;
       }
     }
     catch (FileNotFoundException paramUri)
     {
       new StringBuilder("Got unexpected exception:").append(paramUri);
-      AppMethodBeat.o(71576);
+      AppMethodBeat.o(17012);
       throw paramUri;
     }
     paramUri = ParcelFileDescriptor.open(paramUri, 268435456);
-    AppMethodBeat.o(71576);
+    AppMethodBeat.o(17012);
     return paramUri;
   }
   
   Pair<UUID, String> parseCallIdAndAttachmentName(Uri paramUri)
   {
-    AppMethodBeat.i(71577);
+    AppMethodBeat.i(17013);
     Object localObject;
     try
     {
@@ -96,17 +96,17 @@ public class FacebookContentProvider
       if (("..".contentEquals(paramUri)) || ("..".contentEquals((CharSequence)localObject)))
       {
         paramUri = new Exception();
-        AppMethodBeat.o(71577);
+        AppMethodBeat.o(17013);
         throw paramUri;
       }
     }
     catch (Exception paramUri)
     {
-      AppMethodBeat.o(71577);
+      AppMethodBeat.o(17013);
       return null;
     }
     paramUri = new Pair(UUID.fromString(paramUri), localObject);
-    AppMethodBeat.o(71577);
+    AppMethodBeat.o(17013);
     return paramUri;
   }
   
@@ -122,7 +122,7 @@ public class FacebookContentProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.FacebookContentProvider
  * JD-Core Version:    0.7.0.1
  */

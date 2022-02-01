@@ -1,241 +1,157 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.b.a;
-import com.tencent.mm.ai.b.b;
-import com.tencent.mm.ai.b.c;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.network.e;
+import com.tencent.mm.al.b;
+import com.tencent.mm.al.b.a;
+import com.tencent.mm.al.b.b;
+import com.tencent.mm.al.b.c;
+import com.tencent.mm.al.g;
 import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.sns.storage.f;
+import com.tencent.mm.plugin.sns.storage.p;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
 import com.tencent.mm.protocal.protobuf.SnsObject;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.cdq;
-import com.tencent.mm.protocal.protobuf.cdr;
-import com.tencent.mm.protocal.protobuf.vi;
-import com.tencent.mm.sdk.platformtools.ab;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mm.protocal.protobuf.cby;
+import com.tencent.mm.protocal.protobuf.cmf;
+import com.tencent.mm.protocal.protobuf.cui;
+import com.tencent.mm.protocal.protobuf.cuj;
+import com.tencent.mm.protocal.protobuf.cuo;
+import com.tencent.mm.protocal.protobuf.cup;
+import com.tencent.mm.protocal.protobuf.cuq;
+import com.tencent.mm.protocal.protobuf.cvi;
 import java.util.LinkedList;
-import java.util.Vector;
+import java.util.Locale;
 
 public final class n
-  extends m
+  extends com.tencent.mm.al.n
   implements k
 {
-  private static Vector<String> rez;
-  public f callback;
-  private ArrayList<com.tencent.mm.plugin.sns.storage.n> ceo;
-  final int cpG;
-  private String desc;
-  private boolean eRq;
-  public int reA;
-  public int reB;
-  private boolean rew;
-  private long rex;
-  private long rey;
-  private com.tencent.mm.ai.b rr;
+  public g callback;
+  private b rr;
+  private int type;
+  private String wEN;
+  private cuj wEO;
   
-  static
+  public n(cuj paramcuj, String paramString)
   {
-    AppMethodBeat.i(36260);
-    rez = new Vector();
-    AppMethodBeat.o(36260);
-  }
-  
-  public n(String paramString)
-  {
-    AppMethodBeat.i(36256);
-    this.rex = 0L;
-    this.rey = 0L;
-    this.eRq = false;
-    this.ceo = new ArrayList();
-    this.reA = 0;
-    this.reB = 0;
-    this.desc = "";
+    AppMethodBeat.i(95586);
     Object localObject = new b.a();
-    ((b.a)localObject).fsX = new cdq();
-    ((b.a)localObject).fsY = new cdr();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/mmsnsclassifytimeline";
-    ((b.a)localObject).funcId = 601;
-    ((b.a)localObject).reqCmdId = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).ado();
-    this.rex = 0L;
-    if (0L == 0L) {}
-    for (boolean bool = true;; bool = false)
+    ((b.a)localObject).gUU = new cup();
+    ((b.a)localObject).gUV = new cuq();
+    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/mmsnscomment";
+    ((b.a)localObject).funcId = 213;
+    ((b.a)localObject).reqCmdId = 100;
+    ((b.a)localObject).respCmdId = 1000000100;
+    this.rr = ((b.a)localObject).atI();
+    localObject = (cup)this.rr.gUS.gUX;
+    ((cup)localObject).ElL = paramcuj;
+    this.type = paramcuj.Emi.mBH;
+    this.wEO = paramcuj;
+    ((cup)localObject).gKn = paramString;
+    this.wEN = paramString;
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneSnsComment", paramcuj.Emi.DZr + " " + paramcuj.Emi.DdY);
+    AppMethodBeat.o(95586);
+  }
+  
+  public final int doScene(com.tencent.mm.network.e parame, g paramg)
+  {
+    AppMethodBeat.i(95587);
+    Object localObject2 = af.dtu().th(this.wEO.Id);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      this.rew = bool;
-      this.cpG = 2;
-      localObject = (cdq)this.rr.fsV.fta;
-      ((cdq)localObject).xOk = "";
-      ((cdq)localObject).xOl = 0L;
-      ((cdq)localObject).xOm = paramString;
-      ((cdq)localObject).xOn = 1;
-      ab.d("MicroMsg.NetSceneSnsClassifyTimeLine", "maxid %s classifyid %s classifyType %d", new Object[] { i.lq(0L), paramString, Integer.valueOf(0) });
-      AppMethodBeat.o(36256);
-      return;
+      com.tencent.mm.plugin.sns.storage.e locale = af.dtx().sY(this.wEO.Id);
+      localObject1 = localObject2;
+      if (locale != null) {
+        localObject1 = locale.dxE();
+      }
     }
-  }
-  
-  /* Error */
-  public static boolean aan(String paramString)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: ldc 160
-    //   5: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: getstatic 44	com/tencent/mm/plugin/sns/model/n:rez	Ljava/util/Vector;
-    //   11: aload_0
-    //   12: invokevirtual 164	java/util/Vector:contains	(Ljava/lang/Object;)Z
-    //   15: ifeq +15 -> 30
-    //   18: iconst_0
-    //   19: istore_1
-    //   20: ldc 160
-    //   22: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   25: ldc 2
-    //   27: monitorexit
-    //   28: iload_1
-    //   29: ireturn
-    //   30: getstatic 44	com/tencent/mm/plugin/sns/model/n:rez	Ljava/util/Vector;
-    //   33: aload_0
-    //   34: invokevirtual 167	java/util/Vector:add	(Ljava/lang/Object;)Z
-    //   37: pop
-    //   38: iconst_1
-    //   39: istore_1
-    //   40: ldc 160
-    //   42: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   45: goto -20 -> 25
-    //   48: astore_0
-    //   49: ldc 2
-    //   51: monitorexit
-    //   52: aload_0
-    //   53: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	54	0	paramString	String
-    //   19	21	1	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   3	18	48	finally
-    //   20	25	48	finally
-    //   30	38	48	finally
-    //   40	45	48	finally
-  }
-  
-  public static boolean aao(String paramString)
-  {
+    if (localObject1 != null) {}
     try
     {
-      AppMethodBeat.i(36255);
-      rez.remove(paramString);
-      AppMethodBeat.o(36255);
-      return true;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  private com.tencent.mm.plugin.sns.storage.n b(SnsObject paramSnsObject)
-  {
-    AppMethodBeat.i(36257);
-    com.tencent.mm.plugin.sns.storage.n localn = new com.tencent.mm.plugin.sns.storage.n();
-    Object localObject = new String(paramSnsObject.ObjectDesc.getBuffer().toByteArray());
-    ab.d("MicroMsg.NetSceneSnsClassifyTimeLine", "from server %d ", new Object[] { Long.valueOf(paramSnsObject.Id) });
-    if (!localn.abt((String)localObject))
-    {
-      AppMethodBeat.o(36257);
-      return null;
-    }
-    paramSnsObject.ObjectDesc.setBuffer(new byte[0]);
-    localn.field_userName = paramSnsObject.Username;
-    localn.lp(paramSnsObject.CreateTime);
-    localn.field_likeFlag = paramSnsObject.LikeFlag;
-    localn.lV(paramSnsObject.Id);
-    localn.lX(paramSnsObject.Id);
-    localn.Eu(this.cpG);
-    try
-    {
-      localn.bj(paramSnsObject.toByteArray());
-      localObject = localn.csh();
-      ((TimeLineObject)localObject).jJA = paramSnsObject.Username;
-      localn.field_pravited = ((TimeLineObject)localObject).xrU;
-      ab.d("MicroMsg.NetSceneSnsClassifyTimeLine", "ext flag " + paramSnsObject.ExtFlag);
-      localn.csE();
-      localn.c((TimeLineObject)localObject);
-      localn.field_type = ((TimeLineObject)localObject).xTS.wNZ;
-      localn.field_subType = ((TimeLineObject)localObject).xTS.wOb;
-      AppMethodBeat.o(36257);
-      return localn;
+      localObject1 = (SnsObject)new SnsObject().parseFrom(((p)localObject1).field_attrBuf);
+      if ((((SnsObject)localObject1).ObjectOperations != null) && (((SnsObject)localObject1).ObjectOperations.hasBuffer()))
+      {
+        localObject2 = (cvi)new cvi().parseFrom(((SnsObject)localObject1).ObjectOperations.getBufferToBytes());
+        localObject1 = (cup)this.rr.gUS.gUX;
+        if (((cvi)localObject2).EmU != null)
+        {
+          localObject2 = String.format(Locale.US, "preloadLayerId=%d&preloadExpId=%d", new Object[] { Integer.valueOf(((cvi)localObject2).EmU.DbH), Integer.valueOf(((cvi)localObject2).EmU.DbI) });
+          com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetSceneSnsComment", "doScene(sight_autodownload) snsStatExt:%s", new Object[] { localObject2 });
+          ((cup)localObject1).ElM = new cmf().aEE((String)localObject2);
+        }
+      }
+      this.callback = paramg;
+      int i = dispatch(parame, this.rr, this);
+      AppMethodBeat.o(95587);
+      return i;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ab.printErrStackTrace("MicroMsg.NetSceneSnsClassifyTimeLine", localException, "", new Object[0]);
+        com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.NetSceneSnsComment", localException, "", new Object[0]);
       }
     }
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(36259);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(36259);
-    return i;
   }
   
   public final int getType()
   {
-    return 601;
+    return 213;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(36258);
-    ab.d("MicroMsg.NetSceneSnsClassifyTimeLine", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
-    paramArrayOfByte = (cdr)((com.tencent.mm.ai.b)paramq).fsW.fta;
-    if ((paramq.getRespObj().getRetCode() != 207) && (paramq.getRespObj().getRetCode() != 0) && (paramq.getRespObj().getRetCode() != 212))
+    AppMethodBeat.i(95588);
+    com.tencent.mm.sdk.platformtools.ad.d("MicroMsg.NetSceneSnsComment", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      aao("@__classify_timeline");
+      if (paramInt2 == 4) {
+        af.dtt().e(this.wEO.Id, this.type, this.wEN);
+      }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(36258);
+      AppMethodBeat.o(95588);
       return;
     }
-    if (paramq.getRespObj().getRetCode() == 212) {}
-    for (boolean bool = true;; bool = false)
+    af.dtt().e(this.wEO.Id, this.type, this.wEN);
+    paramq = this.wEO.Emi;
+    if ((paramq.mBH == 1) || (paramq.mBH == 2) || (paramq.mBH == 3) || (paramq.mBH == 5))
     {
-      this.eRq = bool;
-      this.reA = paramArrayOfByte.xOo;
-      this.desc = paramArrayOfByte.woO;
-      i.lr(this.rex);
-      ab.d("MicroMsg.NetSceneSnsClassifyTimeLine", "resp objCount %d desc %s", new Object[] { Integer.valueOf(paramArrayOfByte.xtO), this.desc });
-      paramq = paramArrayOfByte.wuP.iterator();
-      while (paramq.hasNext())
-      {
-        paramArrayOfByte = b((SnsObject)paramq.next());
-        if (paramArrayOfByte != null) {
-          this.ceo.add(paramArrayOfByte);
-        }
-      }
+      paramArrayOfByte = new cuo();
+      paramArrayOfByte.CreateTime = paramq.CreateTime;
+      paramArrayOfByte.mBH = paramq.mBH;
+      paramArrayOfByte.rNz = paramq.rNz;
+      paramArrayOfByte.Username = paramq.DZr;
+      paramArrayOfByte.Nickname = paramq.ElX;
+      paramArrayOfByte.gKr = paramq.gKr;
+      paramArrayOfByte.Eme = paramq.Eme;
     }
-    aao("@__classify_timeline");
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(36258);
+    for (;;)
+    {
+      try
+      {
+        paramArrayOfByte = ((cuq)this.rr.gUT.gUX).ElO;
+        if ((paramq.mBH != 1) && (paramq.mBH != 5)) {
+          continue;
+        }
+        com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetSceneSnsComment", "snsComment:" + paramArrayOfByte.Id + " " + z.b(paramArrayOfByte.ObjectDesc) + " " + paramArrayOfByte.LikeUserList.size() + " " + paramArrayOfByte.CommentUserList.size());
+        aj.d(paramArrayOfByte);
+      }
+      catch (Exception paramq)
+      {
+        com.tencent.mm.sdk.platformtools.ad.printErrStackTrace("MicroMsg.NetSceneSnsComment", paramq, "", new Object[0]);
+        continue;
+      }
+      af.dtt().dsV();
+      break;
+      com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.NetSceneSnsComment", "snsComment:" + paramArrayOfByte.Id + " " + paramArrayOfByte.LikeUserList.size() + " " + paramArrayOfByte.CommentUserList.size());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.n
  * JD-Core Version:    0.7.0.1
  */

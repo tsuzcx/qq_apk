@@ -5,12 +5,12 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.a.b.f;
-import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.modelappbrand.a.b.h;
+import com.tencent.mm.sdk.platformtools.f;
 import junit.framework.Assert;
 
 public final class b
-  implements b.f
+  implements b.h
 {
   private int mHeight;
   private int mWidth;
@@ -19,7 +19,7 @@ public final class b
   
   public b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(86979);
+    AppMethodBeat.i(134893);
     if (paramInt3 == 0)
     {
       bool1 = true;
@@ -36,27 +36,27 @@ public final class b
       this.mY = paramInt2;
       this.mWidth = paramInt3;
       this.mHeight = paramInt4;
-      AppMethodBeat.o(86979);
+      AppMethodBeat.o(134893);
       return;
       bool1 = false;
       break;
     }
   }
   
-  public final String tX()
+  public final String AL()
   {
-    AppMethodBeat.i(86981);
+    AppMethodBeat.i(134895);
     String str = String.format("Transformation_x%s_y%s_w%s_h%s", new Object[] { Integer.valueOf(this.mX), Integer.valueOf(this.mY), Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
-    AppMethodBeat.o(86981);
+    AppMethodBeat.o(134895);
     return str;
   }
   
-  public final Bitmap x(Bitmap paramBitmap)
+  public final Bitmap F(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(86980);
+    AppMethodBeat.i(134894);
     if ((paramBitmap == null) || (paramBitmap.isRecycled()))
     {
-      AppMethodBeat.o(86980);
+      AppMethodBeat.o(134894);
       return paramBitmap;
     }
     int n = paramBitmap.getWidth();
@@ -88,8 +88,8 @@ public final class b
     {
       if ((k <= 0) || (m <= 0))
       {
-        paramBitmap = d.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
-        AppMethodBeat.o(86980);
+        paramBitmap = f.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
+        AppMethodBeat.o(134894);
         return paramBitmap;
         if (this.mX <= n) {
           break;
@@ -103,9 +103,9 @@ public final class b
         j = m;
         break label63;
       }
-      Bitmap localBitmap = d.createBitmap(k, m, Bitmap.Config.ARGB_8888);
+      Bitmap localBitmap = f.createBitmap(k, m, Bitmap.Config.ARGB_8888);
       new Canvas(localBitmap).drawBitmap(paramBitmap, new Rect(i, j, i + k, j + m), new Rect(0, 0, k, m), null);
-      AppMethodBeat.o(86980);
+      AppMethodBeat.o(134894);
       return localBitmap;
       label243:
       m = i1;
@@ -114,7 +114,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.a.b
  * JD-Core Version:    0.7.0.1
  */

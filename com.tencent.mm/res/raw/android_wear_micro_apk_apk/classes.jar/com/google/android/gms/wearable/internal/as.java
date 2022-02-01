@@ -13,44 +13,44 @@ import java.util.Set;
 
 final class as<T>
 {
-  private final Map<T, bz<T>> Tz = new HashMap();
+  private final Map<T, bz<T>> Vo = new HashMap();
   
   public final void a(by paramby, h<Status> paramh, T paramT)
   {
-    synchronized (this.Tz)
+    synchronized (this.Vo)
     {
-      bz localbz = (bz)this.Tz.remove(paramT);
+      bz localbz = (bz)this.Vo.remove(paramT);
       if (localbz == null)
       {
-        paramh.x(new Status(4002));
+        paramh.G(new Status(4002));
         return;
       }
       localbz.clear();
-      ((ap)paramby.hh()).a(new au(this.Tz, paramT, paramh), new zzck(localbz));
+      ((ap)paramby.hr()).a(new au(this.Vo, paramT, paramh), new zzck(localbz));
       return;
     }
   }
   
   public final void a(by paramby, h<Status> paramh, T paramT, bz<T> parambz)
   {
-    synchronized (this.Tz)
+    synchronized (this.Vo)
     {
-      if (this.Tz.get(paramT) != null)
+      if (this.Vo.get(paramT) != null)
       {
-        paramh.x(new Status(4001));
+        paramh.G(new Status(4001));
         return;
       }
-      this.Tz.put(paramT, parambz);
+      this.Vo.put(paramT, parambz);
     }
   }
   
   public final void r(IBinder paramIBinder)
   {
-    synchronized (this.Tz)
+    synchronized (this.Vo)
     {
       paramIBinder = aq.q(paramIBinder);
       bt localbt = new bt();
-      Iterator localIterator = this.Tz.entrySet().iterator();
+      Iterator localIterator = this.Vo.entrySet().iterator();
       for (;;)
       {
         if (localIterator.hasNext())

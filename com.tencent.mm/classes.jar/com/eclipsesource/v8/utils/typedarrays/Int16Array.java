@@ -10,8 +10,8 @@ public class Int16Array
   public Int16Array(ArrayBuffer paramArrayBuffer)
   {
     this(paramArrayBuffer.getByteBuffer());
-    AppMethodBeat.i(75056);
-    AppMethodBeat.o(75056);
+    AppMethodBeat.i(61680);
+    AppMethodBeat.o(61680);
   }
   
   public Int16Array(ByteBuffer paramByteBuffer)
@@ -21,9 +21,9 @@ public class Int16Array
   
   public short get(int paramInt)
   {
-    AppMethodBeat.i(75057);
+    AppMethodBeat.i(61681);
     short s = this.buffer.asShortBuffer().get(paramInt);
-    AppMethodBeat.o(75057);
+    AppMethodBeat.o(61681);
     return s;
   }
   
@@ -34,22 +34,22 @@ public class Int16Array
   
   public int length()
   {
-    AppMethodBeat.i(75058);
+    AppMethodBeat.i(61682);
     int i = this.buffer.asShortBuffer().limit();
-    AppMethodBeat.o(75058);
+    AppMethodBeat.o(61682);
     return i;
   }
   
   public void put(int paramInt, short paramShort)
   {
-    AppMethodBeat.i(75059);
+    AppMethodBeat.i(61683);
     this.buffer.asShortBuffer().put(paramInt, paramShort);
-    AppMethodBeat.o(75059);
+    AppMethodBeat.o(61683);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.utils.typedarrays.Int16Array
  * JD-Core Version:    0.7.0.1
  */

@@ -1,90 +1,91 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class gy
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public int jJu;
-  public LinkedList<gx> jJv;
-  
-  public gy()
-  {
-    AppMethodBeat.i(28335);
-    this.jJv = new LinkedList();
-    AppMethodBeat.o(28335);
-  }
+  public String doh;
+  public String omO;
+  public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(28336);
+    AppMethodBeat.i(123552);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aO(1, this.jJu);
-      paramVarArgs.e(2, 8, this.jJv);
-      AppMethodBeat.o(28336);
-      return 0;
-    }
-    int i;
-    if (paramInt == 1)
-    {
-      paramInt = e.a.a.b.b.a.bl(1, this.jJu);
-      i = e.a.a.a.c(2, 8, this.jJv);
-      AppMethodBeat.o(28336);
-      return paramInt + 0 + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.jJv.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
-        }
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      if (this.doh != null) {
+        paramVarArgs.d(1, this.doh);
       }
-      AppMethodBeat.o(28336);
+      if (this.omO != null) {
+        paramVarArgs.d(2, this.omO);
+      }
+      if (this.title != null) {
+        paramVarArgs.d(3, this.title);
+      }
+      AppMethodBeat.o(123552);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.doh == null) {
+        break label334;
+      }
+    }
+    label334:
+    for (int i = f.a.a.b.b.a.e(1, this.doh) + 0;; i = 0)
     {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
-      gy localgy = (gy)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      paramInt = i;
+      if (this.omO != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.omO);
+      }
+      i = paramInt;
+      if (this.title != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.title);
+      }
+      AppMethodBeat.o(123552);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(28336);
-        return -1;
-      case 1: 
-        localgy.jJu = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(28336);
+        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.fMq();
+          }
+        }
+        AppMethodBeat.o(123552);
         return 0;
       }
-      paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
-      i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
+      if (paramInt == 3)
       {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new gx();
-        localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((gx)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
-        localgy.jJv.add(localObject1);
-        paramInt += 1;
+        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        gy localgy = (gy)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(123552);
+          return -1;
+        case 1: 
+          localgy.doh = locala.KhF.readString();
+          AppMethodBeat.o(123552);
+          return 0;
+        case 2: 
+          localgy.omO = locala.KhF.readString();
+          AppMethodBeat.o(123552);
+          return 0;
+        }
+        localgy.title = locala.KhF.readString();
+        AppMethodBeat.o(123552);
+        return 0;
       }
-      AppMethodBeat.o(28336);
-      return 0;
+      AppMethodBeat.o(123552);
+      return -1;
     }
-    AppMethodBeat.o(28336);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.gy
  * JD-Core Version:    0.7.0.1
  */

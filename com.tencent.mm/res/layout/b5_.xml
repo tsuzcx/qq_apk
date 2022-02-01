@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckedTextView android:textAppearance="@style/n8" android:textColor="@android:color/black" android:ellipsize="marquee" android:gravity="center_vertical" android:id="@id/fet" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:checkMark="@drawable/a0c" android:maxHeight="48.0dip" android:minHeight="48.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:layout_gravity="center" android:id="@id/fex" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/bzg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:textColor="@color/y4" android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/fej" android:drawablePadding="10.0dip" style="@style/t3" />
+        <TextView android:textColor="@color/y4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="15.0dip" android:text="@string/feh" style="@style/t2" />
+        <TextView android:textColor="@color/y4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip" android:text="@string/fei" style="@style/t2" />
+        <Button android:id="@id/few" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="12.0dip" android:text="@string/fef" style="@style/o6" />
+    </LinearLayout>
+</RelativeLayout>

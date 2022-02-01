@@ -1,3 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/bh6" android:background="@drawable/a_a" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<android.support.design.internal.NavigationMenuItemView android:paddingLeft="?rb" android:paddingRight="?rc" android:focusable="true" android:layout_width="fill_parent" android:layout_height="?ra" android:foreground="?wh"
   xmlns:android="http://schemas.android.com/apk/res/android" />

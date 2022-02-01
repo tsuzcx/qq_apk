@@ -9,36 +9,36 @@ public final class e
 {
   public static String a(Context paramContext, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(40930);
+    AppMethodBeat.i(63780);
     paramLong = 1000L * paramLong;
     if (paramInt == 0)
     {
-      paramContext = new SimpleDateFormat(paramContext.getString(2131298420)).format(new Date(paramLong));
-      AppMethodBeat.o(40930);
+      paramContext = new SimpleDateFormat(paramContext.getString(2131757432)).format(new Date(paramLong));
+      AppMethodBeat.o(63780);
       return paramContext;
     }
     if (paramInt == 1)
     {
-      paramContext = new SimpleDateFormat(paramContext.getString(2131298421)).format(new Date(paramLong));
-      AppMethodBeat.o(40930);
+      paramContext = new SimpleDateFormat(paramContext.getString(2131757433)).format(new Date(paramLong));
+      AppMethodBeat.o(63780);
       return paramContext;
     }
-    paramContext = new SimpleDateFormat(paramContext.getString(2131298422)).format(new Date(paramLong));
-    AppMethodBeat.o(40930);
+    paramContext = new SimpleDateFormat(paramContext.getString(2131757434)).format(new Date(paramLong));
+    AppMethodBeat.o(63780);
     return paramContext;
   }
   
-  public static String tN(int paramInt)
+  public static String zG(int paramInt)
   {
-    AppMethodBeat.i(40931);
+    AppMethodBeat.i(63781);
     String str = String.format("%.2f", new Object[] { Double.valueOf(paramInt / 100.0D) });
-    AppMethodBeat.o(40931);
+    AppMethodBeat.o(63781);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.e
  * JD-Core Version:    0.7.0.1
  */

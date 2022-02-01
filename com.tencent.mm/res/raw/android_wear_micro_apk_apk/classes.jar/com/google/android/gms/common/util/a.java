@@ -8,14 +8,14 @@ import java.util.Set;
 public final class a<E>
   extends AbstractSet<E>
 {
-  private final android.support.v4.b.a<E, E> Ld = new android.support.v4.b.a();
+  private final android.support.v4.b.a<E, E> MS = new android.support.v4.b.a();
   
   public final boolean add(E paramE)
   {
-    if (this.Ld.containsKey(paramE)) {
+    if (this.MS.containsKey(paramE)) {
       return false;
     }
-    this.Ld.put(paramE, paramE);
+    this.MS.put(paramE, paramE);
     return true;
   }
   
@@ -25,7 +25,7 @@ public final class a<E>
     {
       paramCollection = (a)paramCollection;
       int i = size();
-      this.Ld.b(paramCollection.Ld);
+      this.MS.a(paramCollection.MS);
       return size() > i;
     }
     return super.addAll(paramCollection);
@@ -33,31 +33,31 @@ public final class a<E>
   
   public final void clear()
   {
-    this.Ld.clear();
+    this.MS.clear();
   }
   
   public final boolean contains(Object paramObject)
   {
-    return this.Ld.containsKey(paramObject);
+    return this.MS.containsKey(paramObject);
   }
   
   public final Iterator<E> iterator()
   {
-    return this.Ld.keySet().iterator();
+    return this.MS.keySet().iterator();
   }
   
   public final boolean remove(Object paramObject)
   {
-    if (!this.Ld.containsKey(paramObject)) {
+    if (!this.MS.containsKey(paramObject)) {
       return false;
     }
-    this.Ld.remove(paramObject);
+    this.MS.remove(paramObject);
     return true;
   }
   
   public final int size()
   {
-    return this.Ld.size();
+    return this.MS.size();
   }
 }
 

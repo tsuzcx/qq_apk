@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.appbrand.jsapi.appdownload;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.g.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class JsApiAddDownloadTask
-  extends a<r>
+  extends a<q>
 {
   public static final int CTRL_INDEX = 474;
   public static final String NAME = "addDownloadTask";
@@ -25,160 +25,160 @@ public final class JsApiAddDownloadTask
     extends MainProcessTask
   {
     public static final Parcelable.Creator<AddDownloadTask> CREATOR;
-    private int bxX;
-    private r gPA;
-    private boolean hAU;
-    private int hAV;
-    private m hyA;
-    private String hyB;
-    private String hyC;
-    private String hyD;
-    private long hyF;
-    private String hyG;
-    private String hyH;
-    private boolean hyI;
-    private String hyJ;
-    private long hyK;
-    private boolean hzD;
+    private int bZo;
+    private q iDy;
+    private boolean jAy;
+    private int jAz;
+    private m jxX;
+    private String jxY;
+    private String jxZ;
+    private String jya;
+    private long jyc;
+    private String jyd;
+    private String jye;
+    private boolean jyf;
+    private String jyg;
+    private long jyh;
+    private boolean jzk;
     private String mAppId;
     private String mPackageName;
     
     static
     {
-      AppMethodBeat.i(130658);
-      CREATOR = new JsApiAddDownloadTask.AddDownloadTask.1();
-      AppMethodBeat.o(130658);
+      AppMethodBeat.i(45750);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(45750);
     }
     
     public AddDownloadTask(Parcel paramParcel)
     {
-      AppMethodBeat.i(130653);
-      f(paramParcel);
-      AppMethodBeat.o(130653);
+      AppMethodBeat.i(45745);
+      e(paramParcel);
+      AppMethodBeat.o(45745);
     }
     
-    public AddDownloadTask(m paramm, r paramr, int paramInt, JSONObject paramJSONObject)
+    public AddDownloadTask(m paramm, q paramq, int paramInt, JSONObject paramJSONObject)
     {
-      AppMethodBeat.i(130652);
-      aBj();
-      this.hyA = paramm;
-      this.gPA = paramr;
-      this.bxX = paramInt;
-      this.hyB = paramJSONObject.optString("taskName");
-      this.hyC = paramJSONObject.optString("taskUrl");
-      this.hyD = paramJSONObject.optString("fileMd5");
-      this.hyF = paramJSONObject.optInt("taskSize", 0);
-      this.hyG = paramJSONObject.optString("extInfo");
-      this.hyH = paramJSONObject.optString("fileType");
+      AppMethodBeat.i(45744);
+      aXm();
+      this.jxX = paramm;
+      this.iDy = paramq;
+      this.bZo = paramInt;
+      this.jxY = paramJSONObject.optString("taskName");
+      this.jxZ = paramJSONObject.optString("taskUrl");
+      this.jya = paramJSONObject.optString("fileMd5");
+      this.jyc = paramJSONObject.optInt("taskSize", 0);
+      this.jyd = paramJSONObject.optString("extInfo");
+      this.jye = paramJSONObject.optString("fileType");
       this.mAppId = paramJSONObject.optString("appId");
       this.mPackageName = paramJSONObject.optString("packageName");
-      this.hzD = paramJSONObject.optBoolean("downloadInWifi", false);
-      this.hAU = paramJSONObject.optBoolean("showNotification", false);
-      this.hAV = paramJSONObject.optInt("downloaderType", 0);
-      this.hyI = true;
-      AppMethodBeat.o(130652);
+      this.jzk = paramJSONObject.optBoolean("downloadInWifi", false);
+      this.jAy = paramJSONObject.optBoolean("showNotification", false);
+      this.jAz = paramJSONObject.optInt("downloaderType", 0);
+      this.jyf = true;
+      AppMethodBeat.o(45744);
     }
     
-    public final void ata()
+    public final void aEA()
     {
-      AppMethodBeat.i(130654);
-      com.tencent.mm.kernel.g.RM();
-      if (!com.tencent.mm.kernel.g.RL().isSDCardAvailable()) {
-        this.hyJ = "fail_sdcard_not_ready";
-      }
-      for (;;)
+      AppMethodBeat.i(45747);
+      aXn();
+      if (this.jyf)
       {
-        aBp();
-        AppMethodBeat.o(130654);
-        return;
-        if ((this.hyF > 0L) && (!com.tencent.mm.compatible.util.f.gc(this.hyF)))
+        if (bt.isNullOrNil(this.jyg)) {}
+        for (localObject = "fail";; localObject = String.format("fail:%s", new Object[] { this.jyg }))
         {
-          this.hyJ = "fail_sdcard_has_not_enough_space";
-        }
-        else if (bo.isNullOrNil(this.hyC))
-        {
-          this.hyJ = "fail_invalid_url";
-        }
-        else
-        {
-          ab.i("MicroMsg.JsApiAddDownloadTask", "runInMainProcess taskUrl:%s md5:%s", new Object[] { this.hyC, this.hyD });
-          Object localObject = new g.a();
-          ((g.a)localObject).JJ(this.hyC);
-          ((g.a)localObject).iR(this.hyF);
-          ((g.a)localObject).JL(this.hyB);
-          ((g.a)localObject).JM(this.hyD);
-          ((g.a)localObject).setAppId(this.mAppId);
-          ((g.a)localObject).dC(this.mPackageName);
-          ((g.a)localObject).gr(true);
-          ((g.a)localObject).tV(bo.getInt(this.hyH, 1));
-          ((g.a)localObject).setScene(6001);
-          ((g.a)localObject).JN(this.hyG);
-          ((g.a)localObject).gs(this.hAU);
-          ((g.a)localObject).gt(this.hzD);
-          ((g.a)localObject).gr(false);
-          ((g.a)localObject).bju();
-          localObject = ((g.a)localObject).kYR;
-          if (this.hAV == 1) {}
-          for (long l = com.tencent.mm.plugin.downloader.model.f.bjl().b((com.tencent.mm.plugin.downloader.model.g)localObject);; l = com.tencent.mm.plugin.downloader.model.f.bjl().a((com.tencent.mm.plugin.downloader.model.g)localObject))
-          {
-            ab.i("MicroMsg.JsApiAddDownloadTask", "doAddDownloadTaskStraight, downloadId = ".concat(String.valueOf(l)));
-            if (l > 0L) {
-              break label297;
-            }
-            ab.e("MicroMsg.JsApiAddDownloadTask", "doAddDownloadTaskStraight fail, downloadId = ".concat(String.valueOf(l)));
-            this.hyJ = "";
-            break;
-          }
-          label297:
-          this.hyI = false;
-          this.hyK = l;
-        }
-      }
-    }
-    
-    public final void atb()
-    {
-      AppMethodBeat.i(130655);
-      aBk();
-      if (this.hyI)
-      {
-        if (bo.isNullOrNil(this.hyJ)) {}
-        for (localObject = "fail";; localObject = String.format("fail:%s", new Object[] { this.hyJ }))
-        {
-          this.gPA.h(this.bxX, this.hyA.j((String)localObject, null));
-          AppMethodBeat.o(130655);
+          this.iDy.h(this.bZo, this.jxX.e((String)localObject, null));
+          AppMethodBeat.o(45747);
           return;
         }
       }
       Object localObject = new HashMap();
-      ((Map)localObject).put("downloadId", Long.valueOf(this.hyK));
-      this.gPA.h(this.bxX, this.hyA.j("ok", (Map)localObject));
-      AppMethodBeat.o(130655);
+      ((Map)localObject).put("downloadId", Long.valueOf(this.jyh));
+      this.iDy.h(this.bZo, this.jxX.k("ok", (Map)localObject));
+      AppMethodBeat.o(45747);
     }
     
-    public final void f(Parcel paramParcel)
+    public final void aEz()
+    {
+      AppMethodBeat.i(45746);
+      com.tencent.mm.kernel.g.afC();
+      if (!com.tencent.mm.kernel.g.afB().isSDCardAvailable()) {
+        this.jyg = "fail_sdcard_not_ready";
+      }
+      for (;;)
+      {
+        aXw();
+        AppMethodBeat.o(45746);
+        return;
+        if ((this.jyc > 0L) && (!com.tencent.mm.compatible.util.e.lo(this.jyc)))
+        {
+          this.jyg = "fail_sdcard_has_not_enough_space";
+        }
+        else if (bt.isNullOrNil(this.jxZ))
+        {
+          this.jyg = "fail_invalid_url";
+        }
+        else
+        {
+          ad.i("MicroMsg.JsApiAddDownloadTask", "runInMainProcess taskUrl:%s md5:%s", new Object[] { this.jxZ, this.jya });
+          Object localObject = new g.a();
+          ((g.a)localObject).Sr(this.jxZ);
+          ((g.a)localObject).oy(this.jyc);
+          ((g.a)localObject).St(this.jxY);
+          ((g.a)localObject).Su(this.jya);
+          ((g.a)localObject).setAppId(this.mAppId);
+          ((g.a)localObject).eI(this.mPackageName);
+          ((g.a)localObject).jc(true);
+          ((g.a)localObject).zO(bt.getInt(this.jye, 1));
+          ((g.a)localObject).setScene(6001);
+          ((g.a)localObject).Sv(this.jyd);
+          ((g.a)localObject).jd(this.jAy);
+          ((g.a)localObject).jf(this.jzk);
+          ((g.a)localObject).jc(false);
+          ((g.a)localObject).bQB();
+          localObject = ((g.a)localObject).ofF;
+          if (this.jAz == 1) {}
+          for (long l = f.bQt().b((com.tencent.mm.plugin.downloader.model.g)localObject);; l = f.bQt().a((com.tencent.mm.plugin.downloader.model.g)localObject))
+          {
+            ad.i("MicroMsg.JsApiAddDownloadTask", "doAddDownloadTaskStraight, downloadId = ".concat(String.valueOf(l)));
+            if (l > 0L) {
+              break label298;
+            }
+            ad.e("MicroMsg.JsApiAddDownloadTask", "doAddDownloadTaskStraight fail, downloadId = ".concat(String.valueOf(l)));
+            this.jyg = "";
+            break;
+          }
+          label298:
+          this.jyf = false;
+          this.jyh = l;
+        }
+      }
+    }
+    
+    public final void e(Parcel paramParcel)
     {
       boolean bool2 = true;
-      AppMethodBeat.i(130656);
-      this.hyB = paramParcel.readString();
-      this.hyC = paramParcel.readString();
-      this.hyD = paramParcel.readString();
-      this.hyF = paramParcel.readLong();
-      this.hyG = paramParcel.readString();
-      this.hyH = paramParcel.readString();
+      AppMethodBeat.i(45748);
+      this.jxY = paramParcel.readString();
+      this.jxZ = paramParcel.readString();
+      this.jya = paramParcel.readString();
+      this.jyc = paramParcel.readLong();
+      this.jyd = paramParcel.readString();
+      this.jye = paramParcel.readString();
       this.mAppId = paramParcel.readString();
       this.mPackageName = paramParcel.readString();
       if (paramParcel.readByte() == 1)
       {
         bool1 = true;
-        this.hzD = bool1;
+        this.jzk = bool1;
         if (paramParcel.readByte() != 1) {
           break label153;
         }
         bool1 = true;
         label97:
-        this.hAU = bool1;
-        this.hAV = paramParcel.readInt();
+        this.jAy = bool1;
+        this.jAz = paramParcel.readInt();
         if (paramParcel.readInt() != 1) {
           break label158;
         }
@@ -187,10 +187,10 @@ public final class JsApiAddDownloadTask
       label158:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.hyI = bool1;
-        this.hyJ = paramParcel.readString();
-        this.hyK = paramParcel.readLong();
-        AppMethodBeat.o(130656);
+        this.jyf = bool1;
+        this.jyg = paramParcel.readString();
+        this.jyh = paramParcel.readLong();
+        AppMethodBeat.o(45748);
         return;
         bool1 = false;
         break;
@@ -202,37 +202,37 @@ public final class JsApiAddDownloadTask
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       paramInt = 1;
-      AppMethodBeat.i(130657);
-      paramParcel.writeString(this.hyB);
-      paramParcel.writeString(this.hyC);
-      paramParcel.writeString(this.hyD);
-      paramParcel.writeLong(this.hyF);
-      paramParcel.writeString(this.hyG);
-      paramParcel.writeString(this.hyH);
+      AppMethodBeat.i(45749);
+      paramParcel.writeString(this.jxY);
+      paramParcel.writeString(this.jxZ);
+      paramParcel.writeString(this.jya);
+      paramParcel.writeLong(this.jyc);
+      paramParcel.writeString(this.jyd);
+      paramParcel.writeString(this.jye);
       paramParcel.writeString(this.mAppId);
       paramParcel.writeString(this.mPackageName);
       byte b;
-      if (this.hzD)
+      if (this.jzk)
       {
         b = 1;
         paramParcel.writeByte(b);
-        if (!this.hAU) {
+        if (!this.jAy) {
           break label148;
         }
         b = 1;
         label95:
         paramParcel.writeByte(b);
-        paramParcel.writeInt(this.hAV);
-        if (!this.hyI) {
+        paramParcel.writeInt(this.jAz);
+        if (!this.jyf) {
           break label153;
         }
       }
       for (;;)
       {
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.hyJ);
-        paramParcel.writeLong(this.hyK);
-        AppMethodBeat.o(130657);
+        paramParcel.writeString(this.jyg);
+        paramParcel.writeLong(this.jyh);
+        AppMethodBeat.o(45749);
         return;
         b = 0;
         break;

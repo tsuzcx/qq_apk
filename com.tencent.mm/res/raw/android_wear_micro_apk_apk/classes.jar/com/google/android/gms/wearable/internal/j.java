@@ -8,12 +8,12 @@ public final class j
   extends g
   implements com.google.android.gms.wearable.j
 {
-  private final int Tj;
+  private final int UY;
   
   public j(DataHolder paramDataHolder, int paramInt1, int paramInt2)
   {
     super(paramDataHolder, paramInt1);
-    this.Tj = paramInt2;
+    this.UY = paramInt2;
   }
   
   public final int getType()
@@ -21,9 +21,9 @@ public final class j
     return getInteger("event_type");
   }
   
-  public final l ku()
+  public final l kD()
   {
-    return new p(this.Ia, this.Iu, this.Tj);
+    return new p(this.JP, this.Kj, this.UY);
   }
   
   public final String toString()
@@ -34,7 +34,7 @@ public final class j
     }
     for (;;)
     {
-      String str2 = String.valueOf(ku());
+      String str2 = String.valueOf(kD());
       return String.valueOf(str1).length() + 32 + String.valueOf(str2).length() + "DataEventRef{ type=" + str1 + ", dataitem=" + str2 + " }";
       if (getInteger("event_type") == 2) {
         str1 = "deleted";

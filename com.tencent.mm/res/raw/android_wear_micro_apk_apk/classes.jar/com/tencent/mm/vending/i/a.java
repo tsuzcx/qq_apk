@@ -1,46 +1,29 @@
 package com.tencent.mm.vending.i;
 
-public class a
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+
+public final class a
 {
-  private Object[] aap;
+  private static a adO = new a();
+  private HandlerThread adM = new HandlerThread("Vending-HeavyWorkThread", 10);
+  private Handler adN;
   
-  public static <$1> b<$1> Q($1 param$1)
+  private a()
   {
-    b localb = new b();
-    localb.aap = new Object[] { param$1 };
-    return (b)localb;
+    this.adM.start();
+    this.adN = new Handler(this.adM.getLooper());
   }
   
-  public final <T> T lK()
+  public static a mv()
   {
-    if (this.aap.length <= 0) {
-      return null;
-    }
-    return this.aap[0];
+    return adO;
   }
   
-  public String toString()
+  public final Looper getLooper()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int j = 1;
-    Object[] arrayOfObject = this.aap;
-    int k = arrayOfObject.length;
-    int i = 0;
-    if (i < k)
-    {
-      Object localObject = arrayOfObject[i];
-      if (j != 0) {
-        j = 0;
-      }
-      for (;;)
-      {
-        localStringBuilder.append(localObject);
-        i += 1;
-        break;
-        localStringBuilder.append(",");
-      }
-    }
-    return localStringBuilder.toString();
+    return this.adM.getLooper();
   }
 }
 

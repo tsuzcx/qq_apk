@@ -4,102 +4,112 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.h;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ab;
 import com.tencent.mm.ui.MMActivity;
-import java.io.File;
+import com.tencent.mm.vfs.q;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 
 public class FileExplorerUI
   extends MMActivity
 {
-  private int web = 0;
-  private ListView wec;
-  private FileExplorerUI.a wed;
-  private TextView wee;
-  private TextView wef;
-  private View weg;
-  private View weh;
-  private String wei;
-  private String wej;
-  private File wek;
-  private File wel;
+  private int ClT = 0;
+  private ListView ClU;
+  private a ClV;
+  private TextView ClW;
+  private TextView ClX;
+  private View ClY;
+  private View ClZ;
+  private String Cma;
+  private String Cmb;
+  private com.tencent.mm.vfs.e Cmc;
+  private com.tencent.mm.vfs.e Cmd;
   
-  private void Mv(int paramInt)
+  private void Vp(int paramInt)
   {
-    AppMethodBeat.i(105857);
+    AppMethodBeat.i(141177);
     if (1 == paramInt)
     {
-      this.web = 1;
-      this.wef.setTextColor(getResources().getColor(2131690139));
-      this.wee.setTextColor(getResources().getColor(2131690322));
-      this.weg.setVisibility(4);
-      this.weh.setVisibility(0);
-      AppMethodBeat.o(105857);
+      this.ClT = 1;
+      this.ClX.setTextColor(getResources().getColor(2131100464));
+      this.ClW.setTextColor(getResources().getColor(2131100711));
+      this.ClY.setVisibility(4);
+      this.ClZ.setVisibility(0);
+      AppMethodBeat.o(141177);
       return;
     }
-    this.web = 0;
-    this.wee.setTextColor(getResources().getColor(2131690139));
-    this.wef.setTextColor(getResources().getColor(2131690322));
-    this.weg.setVisibility(0);
-    this.weh.setVisibility(4);
-    AppMethodBeat.o(105857);
+    this.ClT = 0;
+    this.ClW.setTextColor(getResources().getColor(2131100464));
+    this.ClX.setTextColor(getResources().getColor(2131100711));
+    this.ClY.setVisibility(0);
+    this.ClZ.setVisibility(4);
+    AppMethodBeat.o(141177);
   }
   
-  public static int amF(String paramString)
+  public static int aCv(String paramString)
   {
     int j = 0;
-    AppMethodBeat.i(105862);
+    AppMethodBeat.i(141178);
     paramString = paramString.toLowerCase();
-    String str = bo.nullAsNil(paramString).toLowerCase();
+    String str = bt.nullAsNil(paramString).toLowerCase();
     if ((str.endsWith(".doc")) || (str.endsWith(".docx")) || (str.endsWith("wps"))) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(105862);
-      return 2131230830;
+      AppMethodBeat.o(141178);
+      return 2131689585;
     }
-    if (amG(paramString))
+    if (aCw(paramString))
     {
-      AppMethodBeat.o(105862);
-      return 2130840020;
+      AppMethodBeat.o(141178);
+      return 2131233696;
     }
-    str = bo.nullAsNil(paramString).toLowerCase();
+    str = bt.nullAsNil(paramString).toLowerCase();
     if ((str.endsWith(".rar")) || (str.endsWith(".zip")) || (str.endsWith(".7z")) || (str.endsWith("tar")) || (str.endsWith(".iso"))) {}
     for (i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(105862);
-      return 2131230818;
+      AppMethodBeat.o(141178);
+      return 2131689573;
     }
-    str = bo.nullAsNil(paramString).toLowerCase();
+    str = bt.nullAsNil(paramString).toLowerCase();
     if ((str.endsWith(".txt")) || (str.endsWith(".rtf"))) {}
     for (i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(105862);
-      return 2131230821;
+      AppMethodBeat.o(141178);
+      return 2131689576;
     }
-    if (bo.nullAsNil(paramString).toLowerCase().endsWith(".pdf"))
+    if (bt.nullAsNil(paramString).toLowerCase().endsWith(".pdf"))
     {
-      AppMethodBeat.o(105862);
-      return 2131230813;
+      AppMethodBeat.o(141178);
+      return 2131689568;
     }
-    str = bo.nullAsNil(paramString).toLowerCase();
+    str = bt.nullAsNil(paramString).toLowerCase();
     if ((str.endsWith(".ppt")) || (str.endsWith(".pptx"))) {}
     for (i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(105862);
-      return 2131230816;
+      AppMethodBeat.o(141178);
+      return 2131689571;
     }
-    paramString = bo.nullAsNil(paramString).toLowerCase();
+    paramString = bt.nullAsNil(paramString).toLowerCase();
     if (!paramString.endsWith(".xls"))
     {
       i = j;
@@ -111,201 +121,287 @@ public class FileExplorerUI
     }
     if (i != 0)
     {
-      AppMethodBeat.o(105862);
-      return 2131230802;
+      AppMethodBeat.o(141178);
+      return 2131689557;
     }
-    AppMethodBeat.o(105862);
-    return 2131230822;
+    AppMethodBeat.o(141178);
+    return 2131689577;
   }
   
-  public static boolean amG(String paramString)
+  public static boolean aCw(String paramString)
   {
-    AppMethodBeat.i(105863);
-    paramString = bo.nullAsNil(paramString).toLowerCase();
+    AppMethodBeat.i(141179);
+    paramString = bt.nullAsNil(paramString).toLowerCase();
     if ((paramString.endsWith(".bmp")) || (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".jpeg")) || (paramString.endsWith(".gif")))
     {
-      AppMethodBeat.o(105863);
+      AppMethodBeat.o(141179);
       return true;
     }
-    AppMethodBeat.o(105863);
+    AppMethodBeat.o(141179);
     return false;
   }
   
-  public static boolean amH(String paramString)
+  public static boolean aCx(String paramString)
   {
-    AppMethodBeat.i(105864);
-    paramString = bo.nullAsNil(paramString).toLowerCase();
+    AppMethodBeat.i(141180);
+    paramString = bt.nullAsNil(paramString).toLowerCase();
     if ((paramString.endsWith(".mp3")) || (paramString.endsWith(".wma")) || (paramString.endsWith(".mp4")) || (paramString.endsWith(".rm")))
     {
-      AppMethodBeat.o(105864);
+      AppMethodBeat.o(141180);
       return true;
     }
-    AppMethodBeat.o(105864);
+    AppMethodBeat.o(141180);
     return false;
   }
   
   public int getLayoutId()
   {
-    return 2130970063;
+    return 2131494677;
   }
   
   public void initView()
   {
     boolean bool2 = true;
     Object localObject2 = null;
-    AppMethodBeat.i(105856);
-    this.wec = ((ListView)findViewById(2131825874));
-    this.wee = ((TextView)findViewById(2131825870));
-    this.weg = findViewById(2131825871);
-    this.wef = ((TextView)findViewById(2131825872));
-    this.weh = findViewById(2131825873);
-    setBackBtn(new FileExplorerUI.1(this));
-    this.wei = getString(2131302138);
-    this.wej = getString(2131302139);
-    File localFile1 = h.getRootDirectory();
-    final File localFile2;
-    label126:
-    Object localObject1;
-    if (localFile1.canRead())
+    AppMethodBeat.i(141176);
+    this.ClU = ((ListView)findViewById(2131303599));
+    this.ClW = ((TextView)findViewById(2131304249));
+    this.ClY = findViewById(2131304250);
+    this.ClX = ((TextView)findViewById(2131304381));
+    this.ClZ = findViewById(2131304382);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
-      if (!g.RL().isSDCardAvailable()) {
-        break label471;
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(141160);
+        if (FileExplorerUI.a.a(FileExplorerUI.a(FileExplorerUI.this)) != null)
+        {
+          if (1 == FileExplorerUI.b(FileExplorerUI.this)) {
+            FileExplorerUI.a(FileExplorerUI.this, FileExplorerUI.a.a(FileExplorerUI.a(FileExplorerUI.this)));
+          }
+          for (;;)
+          {
+            FileExplorerUI.a(FileExplorerUI.this).c(FileExplorerUI.a.a(FileExplorerUI.a(FileExplorerUI.this)).fhT(), FileExplorerUI.a.a(FileExplorerUI.a(FileExplorerUI.this)));
+            FileExplorerUI.a(FileExplorerUI.this).notifyDataSetChanged();
+            FileExplorerUI.c(FileExplorerUI.this).setSelection(0);
+            FileExplorerUI.eAE();
+            AppMethodBeat.o(141160);
+            return true;
+            if (FileExplorerUI.b(FileExplorerUI.this) == 0) {
+              FileExplorerUI.b(FileExplorerUI.this, FileExplorerUI.a.a(FileExplorerUI.a(FileExplorerUI.this)));
+            }
+          }
+        }
+        com.tencent.mm.kernel.g.afB().afk().set(131074, q.B(FileExplorerUI.d(FileExplorerUI.this).fhU()));
+        com.tencent.mm.kernel.g.afB().afk().set(131073, q.B(FileExplorerUI.e(FileExplorerUI.this).fhU()));
+        FileExplorerUI.this.finish();
+        AppMethodBeat.o(141160);
+        return true;
       }
-      localFile2 = h.getExternalStorageDirectory();
-      z localz = g.RL().Ru();
-      if (localFile1 != null) {
-        break label502;
+    });
+    this.Cma = getString(2131761977);
+    this.Cmb = getString(2131761978);
+    final com.tencent.mm.vfs.e locale1 = com.tencent.mm.vfs.e.R(com.tencent.mm.compatible.util.g.getRootDirectory());
+    final com.tencent.mm.vfs.e locale2;
+    label132:
+    Object localObject1;
+    if (locale1.canRead())
+    {
+      if (!com.tencent.mm.kernel.g.afB().isSDCardAvailable()) {
+        break label489;
+      }
+      locale2 = com.tencent.mm.vfs.e.R(com.tencent.mm.compatible.util.g.getExternalStorageDirectory());
+      ab localab = com.tencent.mm.kernel.g.afB().afk();
+      if (locale1 != null) {
+        break label523;
       }
       localObject1 = null;
-      label141:
-      localObject1 = (String)localz.get(131073, localObject1);
-      if ((localObject1 == null) || (localFile1 == null) || (localFile1.getAbsolutePath().equals(localObject1))) {
-        break label511;
+      label147:
+      localObject1 = (String)localab.get(131073, localObject1);
+      if ((localObject1 == null) || (locale1 == null) || (q.B(locale1.fhU()).equals(localObject1))) {
+        break label535;
       }
-      localObject1 = new File((String)localObject1);
-      if (!((File)localObject1).exists()) {
-        break label511;
+      localObject1 = new com.tencent.mm.vfs.e((String)localObject1);
+      if (!((com.tencent.mm.vfs.e)localObject1).exists()) {
+        break label535;
       }
-      label196:
-      this.wek = ((File)localObject1);
-      localz = g.RL().Ru();
-      if (localFile2 != null) {
-        break label517;
+      label205:
+      this.Cmc = ((com.tencent.mm.vfs.e)localObject1);
+      localab = com.tencent.mm.kernel.g.afB().afk();
+      if (locale2 != null) {
+        break label541;
       }
       localObject1 = localObject2;
-      label219:
-      localObject1 = (String)localz.get(131074, localObject1);
-      if ((localObject1 == null) || (localFile2 == null) || (localFile2.getAbsolutePath().equals(localObject1))) {
-        break label527;
+      label228:
+      localObject1 = (String)localab.get(131074, localObject1);
+      if ((localObject1 == null) || (locale2 == null) || (q.B(locale2.fhU()).equals(localObject1))) {
+        break label554;
       }
-      localObject1 = new File((String)localObject1);
-      if (!((File)localObject1).exists()) {
-        break label527;
+      localObject1 = new com.tencent.mm.vfs.e((String)localObject1);
+      if (!((com.tencent.mm.vfs.e)localObject1).exists()) {
+        break label554;
       }
-      label276:
-      this.wel = ((File)localObject1);
-      this.wed = new FileExplorerUI.a(this, (byte)0);
-      if (localFile2 == null) {
-        break label534;
+      label288:
+      this.Cmd = ((com.tencent.mm.vfs.e)localObject1);
+      this.ClV = new a((byte)0);
+      if (locale2 == null) {
+        break label561;
       }
-      Mv(1);
-      this.wed.fVd = localFile2.getPath();
-      this.wed.g(this.wel.getParentFile(), this.wel);
-      label335:
-      localObject1 = this.wee;
-      if (localFile1 == null) {
-        break label590;
+      Vp(1);
+      this.ClV.hxI = q.B(locale2.mUri);
+      this.ClV.c(this.Cmd.fhT(), this.Cmd);
+      label350:
+      localObject1 = this.ClW;
+      if (locale1 == null) {
+        break label620;
       }
       bool1 = true;
-      label347:
+      label362:
       ((TextView)localObject1).setEnabled(bool1);
-      localObject1 = this.wef;
-      if (localFile2 == null) {
-        break label595;
+      localObject1 = this.ClX;
+      if (locale2 == null) {
+        break label625;
       }
     }
-    label517:
-    label527:
-    label534:
-    label590:
-    label595:
+    label489:
+    label620:
+    label625:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       ((TextView)localObject1).setEnabled(bool1);
-      this.wec.setAdapter(this.wed);
-      this.wed.notifyDataSetChanged();
-      this.wec.setOnItemClickListener(new FileExplorerUI.2(this));
-      this.wee.setOnClickListener(new FileExplorerUI.3(this, localFile1));
-      this.wef.setOnClickListener(new View.OnClickListener()
+      this.ClU.setAdapter(this.ClV);
+      this.ClV.notifyDataSetChanged();
+      this.ClU.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      {
+        public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+        {
+          AppMethodBeat.i(141161);
+          paramAnonymousAdapterView = (com.tencent.mm.vfs.e)FileExplorerUI.a(FileExplorerUI.this).getItem(paramAnonymousInt);
+          if (1 == FileExplorerUI.b(FileExplorerUI.this)) {
+            if (paramAnonymousAdapterView.isFile())
+            {
+              com.tencent.mm.kernel.g.afB().afk().set(131074, q.B(FileExplorerUI.a.b(FileExplorerUI.a(FileExplorerUI.this)).fhU()));
+              com.tencent.mm.kernel.g.afB().afk().set(131073, q.B(FileExplorerUI.e(FileExplorerUI.this).fhU()));
+              if (paramAnonymousAdapterView != FileExplorerUI.a.a(FileExplorerUI.a(FileExplorerUI.this))) {
+                break label261;
+              }
+              FileExplorerUI.a(FileExplorerUI.this).c(FileExplorerUI.a.a(FileExplorerUI.a(FileExplorerUI.this)).fhT(), FileExplorerUI.a.a(FileExplorerUI.a(FileExplorerUI.this)));
+            }
+          }
+          for (;;)
+          {
+            FileExplorerUI.eAE();
+            FileExplorerUI.a(FileExplorerUI.this).notifyDataSetChanged();
+            FileExplorerUI.c(FileExplorerUI.this).setSelection(0);
+            AppMethodBeat.o(141161);
+            return;
+            FileExplorerUI.a(FileExplorerUI.this, paramAnonymousAdapterView);
+            break;
+            if (FileExplorerUI.b(FileExplorerUI.this) != 0) {
+              break;
+            }
+            if (paramAnonymousAdapterView.isFile())
+            {
+              com.tencent.mm.kernel.g.afB().afk().set(131073, q.B(FileExplorerUI.a.b(FileExplorerUI.a(FileExplorerUI.this)).fhU()));
+              com.tencent.mm.kernel.g.afB().afk().set(131074, q.B(FileExplorerUI.d(FileExplorerUI.this).fhU()));
+              break;
+            }
+            FileExplorerUI.b(FileExplorerUI.this, paramAnonymousAdapterView);
+            break;
+            label261:
+            if (paramAnonymousAdapterView.isDirectory())
+            {
+              FileExplorerUI.a(FileExplorerUI.this).c(FileExplorerUI.a.b(FileExplorerUI.a(FileExplorerUI.this)), paramAnonymousAdapterView);
+            }
+            else if (paramAnonymousAdapterView.isFile())
+            {
+              FileExplorerUI.this.setResult(-1, new Intent().putExtra("choosed_file_path", q.B(paramAnonymousAdapterView.fhU())));
+              FileExplorerUI.this.finish();
+            }
+          }
+        }
+      });
+      this.ClW.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(105843);
-          FileExplorerUI.a(FileExplorerUI.this, 1);
-          FileExplorerUI.a(FileExplorerUI.this).fVd = localFile2.getPath();
-          FileExplorerUI.a(FileExplorerUI.this).g(FileExplorerUI.d(FileExplorerUI.this).getParentFile(), FileExplorerUI.d(FileExplorerUI.this));
+          AppMethodBeat.i(141162);
+          FileExplorerUI.a(FileExplorerUI.this, 0);
+          FileExplorerUI.a(FileExplorerUI.this).hxI = q.B(locale1.mUri);
+          FileExplorerUI.a(FileExplorerUI.this).c(FileExplorerUI.e(FileExplorerUI.this).fhT(), FileExplorerUI.e(FileExplorerUI.this));
           FileExplorerUI.a(FileExplorerUI.this).notifyDataSetInvalidated();
           FileExplorerUI.a(FileExplorerUI.this).notifyDataSetChanged();
           FileExplorerUI.c(FileExplorerUI.this).setSelection(0);
-          AppMethodBeat.o(105843);
+          AppMethodBeat.o(141162);
         }
       });
-      AppMethodBeat.o(105856);
-      return;
-      localFile1 = h.getDataDirectory();
-      if (localFile1.canRead())
+      this.ClX.setOnClickListener(new View.OnClickListener()
       {
-        this.wei = localFile1.getName();
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(141163);
+          FileExplorerUI.a(FileExplorerUI.this, 1);
+          FileExplorerUI.a(FileExplorerUI.this).hxI = q.B(locale2.mUri);
+          FileExplorerUI.a(FileExplorerUI.this).c(FileExplorerUI.d(FileExplorerUI.this).fhT(), FileExplorerUI.d(FileExplorerUI.this));
+          FileExplorerUI.a(FileExplorerUI.this).notifyDataSetInvalidated();
+          FileExplorerUI.a(FileExplorerUI.this).notifyDataSetChanged();
+          FileExplorerUI.c(FileExplorerUI.this).setSelection(0);
+          AppMethodBeat.o(141163);
+        }
+      });
+      AppMethodBeat.o(141176);
+      return;
+      locale1 = com.tencent.mm.vfs.e.R(com.tencent.mm.compatible.util.g.getDataDirectory());
+      if (locale1.canRead())
+      {
+        this.Cma = locale1.getName();
         break;
       }
-      localFile1 = null;
+      locale1 = null;
       break;
-      label471:
-      localFile2 = h.getDownloadCacheDirectory();
-      if (localFile2.canRead())
+      locale2 = com.tencent.mm.vfs.e.R(com.tencent.mm.compatible.util.g.getDownloadCacheDirectory());
+      if (locale2.canRead())
       {
-        this.wej = localFile2.getName();
-        break label126;
+        this.Cmb = locale2.getName();
+        break label132;
       }
-      localFile2 = null;
-      break label126;
-      label502:
-      localObject1 = localFile1.getAbsolutePath();
-      break label141;
-      label511:
-      localObject1 = localFile1;
-      break label196;
-      localObject1 = localFile2.getAbsolutePath();
-      break label219;
-      localObject1 = localFile2;
-      break label276;
-      if (localFile1 != null)
+      locale2 = null;
+      break label132;
+      localObject1 = q.B(locale1.fhU());
+      break label147;
+      localObject1 = locale1;
+      break label205;
+      localObject1 = q.B(locale2.fhU());
+      break label228;
+      localObject1 = locale2;
+      break label288;
+      if (locale1 != null)
       {
-        Mv(0);
-        this.wed.fVd = localFile1.getPath();
-        this.wed.g(this.wek.getParentFile(), this.wek);
-        break label335;
+        Vp(0);
+        this.ClV.hxI = q.B(locale1.mUri);
+        this.ClV.c(this.Cmc.fhT(), this.Cmc);
+        break label350;
       }
-      ab.d("MicroMsg.FileExplorerUI", "left and right tag disabled in the same time.");
-      AppMethodBeat.o(105856);
+      ad.d("MicroMsg.FileExplorerUI", "left and right tag disabled in the same time.");
+      AppMethodBeat.o(141176);
       return;
       bool1 = false;
-      break label347;
+      break label362;
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(105851);
+    AppMethodBeat.i(141171);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("key_title");
-    if (bo.isNullOrNil(paramBundle)) {
-      setMMTitle(2131302140);
+    if (bt.isNullOrNil(paramBundle)) {
+      setMMTitle(2131761979);
     }
     for (;;)
     {
       initView();
-      AppMethodBeat.o(105851);
+      AppMethodBeat.o(141171);
       return;
       setMMTitle(paramBundle);
     }
@@ -313,54 +409,54 @@ public class FileExplorerUI
   
   public void onDestroy()
   {
-    AppMethodBeat.i(105854);
+    AppMethodBeat.i(141174);
     super.onDestroy();
-    AppMethodBeat.o(105854);
+    AppMethodBeat.o(141174);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(105855);
-    if ((paramInt == 4) && (FileExplorerUI.a.a(this.wed) != null))
+    AppMethodBeat.i(141175);
+    if ((paramInt == 4) && (a.a(this.ClV) != null))
     {
-      if (1 == this.web) {
-        this.wel = FileExplorerUI.a.a(this.wed);
+      if (1 == this.ClT) {
+        this.Cmd = a.a(this.ClV);
       }
       for (;;)
       {
-        this.wed.g(FileExplorerUI.a.a(this.wed).getParentFile(), FileExplorerUI.a.a(this.wed));
-        this.wed.notifyDataSetChanged();
-        this.wec.setSelection(0);
-        AppMethodBeat.o(105855);
+        this.ClV.c(a.a(this.ClV).fhT(), a.a(this.ClV));
+        this.ClV.notifyDataSetChanged();
+        this.ClU.setSelection(0);
+        AppMethodBeat.o(141175);
         return true;
-        if (this.web == 0) {
-          this.wek = FileExplorerUI.a.a(this.wed);
+        if (this.ClT == 0) {
+          this.Cmc = a.a(this.ClV);
         }
       }
     }
-    if (this.wel != null) {
-      g.RL().Ru().set(131074, this.wel.getAbsolutePath());
+    if (this.Cmd != null) {
+      com.tencent.mm.kernel.g.afB().afk().set(131074, q.B(this.Cmd.fhU()));
     }
-    if (this.wek != null) {
-      g.RL().Ru().set(131073, this.wek.getAbsolutePath());
+    if (this.Cmc != null) {
+      com.tencent.mm.kernel.g.afB().afk().set(131073, q.B(this.Cmc.fhU()));
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(105855);
+    AppMethodBeat.o(141175);
     return bool;
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(105853);
+    AppMethodBeat.i(141173);
     super.onPause();
-    AppMethodBeat.o(105853);
+    AppMethodBeat.o(141173);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(105852);
+    AppMethodBeat.i(141172);
     super.onResume();
-    AppMethodBeat.o(105852);
+    AppMethodBeat.o(141172);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -368,10 +464,198 @@ public class FileExplorerUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  final class a
+    extends BaseAdapter
+  {
+    private com.tencent.mm.vfs.e Cmh;
+    private com.tencent.mm.vfs.e Cmi;
+    private com.tencent.mm.vfs.e[] Cmj;
+    String hxI;
+    
+    private a() {}
+    
+    private void a(com.tencent.mm.vfs.e[] paramArrayOfe)
+    {
+      AppMethodBeat.i(175955);
+      if ((paramArrayOfe == null) || (paramArrayOfe.length == 0))
+      {
+        AppMethodBeat.o(175955);
+        return;
+      }
+      Object localObject2 = new ArrayList();
+      Object localObject1 = new ArrayList();
+      int j = paramArrayOfe.length;
+      int i = 0;
+      if (i < j)
+      {
+        com.tencent.mm.vfs.e locale = paramArrayOfe[i];
+        FileExplorerUI.b localb = new FileExplorerUI.b(FileExplorerUI.this, (byte)0);
+        localb.kot = locale;
+        localb.Cml = f.Br(locale.getName()).toUpperCase();
+        if (locale.isDirectory()) {
+          ((List)localObject2).add(localb);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          ((List)localObject1).add(localb);
+        }
+      }
+      Collections.sort((List)localObject2, new Comparator() {});
+      Collections.sort((List)localObject1, new Comparator() {});
+      localObject2 = ((List)localObject2).iterator();
+      i = 0;
+      while (((Iterator)localObject2).hasNext())
+      {
+        paramArrayOfe[i] = ((FileExplorerUI.b)((Iterator)localObject2).next()).kot;
+        i += 1;
+      }
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        paramArrayOfe[i] = ((FileExplorerUI.b)((Iterator)localObject1).next()).kot;
+        i += 1;
+      }
+      AppMethodBeat.o(175955);
+    }
+    
+    public final void c(com.tencent.mm.vfs.e parame1, com.tencent.mm.vfs.e parame2)
+    {
+      AppMethodBeat.i(175954);
+      this.Cmh = parame1;
+      if (q.B(parame2.fhU()).equalsIgnoreCase(this.hxI)) {
+        this.Cmh = null;
+      }
+      this.Cmi = parame2;
+      if ((this.Cmi.canRead()) && (this.Cmi.isDirectory()))
+      {
+        this.Cmj = this.Cmi.a(new com.tencent.mm.vfs.g()
+        {
+          public final boolean accept(com.tencent.mm.vfs.e paramAnonymouse)
+          {
+            AppMethodBeat.i(175953);
+            if (paramAnonymouse.isHidden())
+            {
+              AppMethodBeat.o(175953);
+              return false;
+            }
+            AppMethodBeat.o(175953);
+            return true;
+          }
+        });
+        if (this.Cmj == null) {
+          this.Cmj = new com.tencent.mm.vfs.e[0];
+        }
+        if (this.Cmj.length > 0)
+        {
+          a(this.Cmj);
+          AppMethodBeat.o(175954);
+        }
+      }
+      else
+      {
+        this.Cmj = new com.tencent.mm.vfs.e[0];
+      }
+      AppMethodBeat.o(175954);
+    }
+    
+    public final int getCount()
+    {
+      int i = 0;
+      if (this.Cmj == null) {
+        return 0;
+      }
+      int j = this.Cmj.length;
+      if (this.Cmh != null) {
+        i = 1;
+      }
+      return i + j;
+    }
+    
+    public final Object getItem(int paramInt)
+    {
+      AppMethodBeat.i(141168);
+      if ((this.Cmh != null) && (paramInt == 0))
+      {
+        localObject = this.Cmh;
+        AppMethodBeat.o(141168);
+        return localObject;
+      }
+      ad.d("FileExplorer", "pos:" + paramInt + ", subFile length:" + this.Cmj.length);
+      Object localObject = this.Cmj;
+      if (this.Cmh == null) {}
+      for (;;)
+      {
+        localObject = localObject[paramInt];
+        AppMethodBeat.o(141168);
+        return localObject;
+        paramInt -= 1;
+      }
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return 0L;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(141169);
+      paramViewGroup = paramView;
+      if (paramView == null)
+      {
+        paramViewGroup = View.inflate(FileExplorerUI.this, 2131494678, null);
+        paramView = new FileExplorerUI.c(FileExplorerUI.this, (byte)0);
+        paramView.kXS = ((ImageView)paramViewGroup.findViewById(2131299919));
+        paramView.imt = ((TextView)paramViewGroup.findViewById(2131299925));
+        paramView.Cmm = ((TextView)paramViewGroup.findViewById(2131299931));
+        paramViewGroup.setTag(paramView);
+      }
+      Object localObject = (FileExplorerUI.c)paramViewGroup.getTag();
+      paramView = (com.tencent.mm.vfs.e)getItem(paramInt);
+      if (paramView == this.Cmh)
+      {
+        ((FileExplorerUI.c)localObject).imt.setText(paramView.getName());
+        ((FileExplorerUI.c)localObject).kXS.setImageResource(2131233694);
+        ((FileExplorerUI.c)localObject).Cmm.setVisibility(0);
+        AppMethodBeat.o(141169);
+        return paramViewGroup;
+      }
+      ((FileExplorerUI.c)localObject).kXS.setImageResource(FileExplorerUI.W(paramView));
+      ((FileExplorerUI.c)localObject).imt.setText(paramView.getName());
+      localObject = ((FileExplorerUI.c)localObject).Cmm;
+      StringBuilder localStringBuilder = new StringBuilder().append(DateFormat.format("yyyy-MM-dd hh:mm:ss", paramView.lastModified()).toString());
+      if (paramView.isDirectory()) {}
+      for (paramView = "";; paramView = "  " + bt.mK(paramView.length()))
+      {
+        ((TextView)localObject).setText(paramView);
+        break;
+      }
+    }
+  }
+  
+  final class b
+  {
+    String Cml;
+    com.tencent.mm.vfs.e kot;
+    
+    private b() {}
+  }
+  
+  final class c
+  {
+    TextView Cmm;
+    TextView imt;
+    ImageView kXS;
+    
+    private c() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.FileExplorerUI
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import android.widget.ImageView.ScaleType;
 public class TopCropImageView
   extends ImageView
 {
-  private float agb;
+  private float ajD;
   
   public TopCropImageView(Context paramContext)
   {
@@ -30,9 +30,9 @@ public class TopCropImageView
     setScaleType(ImageView.ScaleType.MATRIX);
   }
   
-  public final float np()
+  public final float oc()
   {
-    return this.agb;
+    return this.ajD;
   }
   
   protected boolean setFrame(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -46,9 +46,9 @@ public class TopCropImageView
     int k = getDrawable().getIntrinsicWidth();
     int m = getDrawable().getIntrinsicHeight();
     if (k * j > m * i) {}
-    for (this.agb = (j / m);; this.agb = (i / k))
+    for (this.ajD = (j / m);; this.ajD = (i / k))
     {
-      localMatrix.setScale(this.agb, this.agb);
+      localMatrix.setScale(this.ajD, this.ajD);
       setImageMatrix(localMatrix);
       return super.setFrame(paramInt1, paramInt2, paramInt3, paramInt4);
     }

@@ -12,17 +12,17 @@ public final class WebImage
   extends zza
 {
   public static final Parcelable.Creator<WebImage> CREATOR = new h();
-  final int Hc;
-  private final Uri IN;
-  private final int IO;
-  private final int IP;
+  final int IR;
+  private final Uri KC;
+  private final int KD;
+  private final int KE;
   
   WebImage(int paramInt1, Uri paramUri, int paramInt2, int paramInt3)
   {
-    this.Hc = paramInt1;
-    this.IN = paramUri;
-    this.IO = paramInt2;
-    this.IP = paramInt3;
+    this.IR = paramInt1;
+    this.KC = paramUri;
+    this.KD = paramInt2;
+    this.KE = paramInt3;
   }
   
   public final boolean equals(Object paramObject)
@@ -35,33 +35,33 @@ public final class WebImage
         return false;
       }
       paramObject = (WebImage)paramObject;
-    } while ((b.b(this.IN, paramObject.IN)) && (this.IO == paramObject.IO) && (this.IP == paramObject.IP));
+    } while ((b.c(this.KC, paramObject.KC)) && (this.KD == paramObject.KD) && (this.KE == paramObject.KE));
     return false;
   }
   
   public final int getHeight()
   {
-    return this.IP;
+    return this.KE;
   }
   
   public final Uri getUrl()
   {
-    return this.IN;
+    return this.KC;
   }
   
   public final int getWidth()
   {
-    return this.IO;
+    return this.KD;
   }
   
   public final int hashCode()
   {
-    return Arrays.hashCode(new Object[] { this.IN, Integer.valueOf(this.IO), Integer.valueOf(this.IP) });
+    return Arrays.hashCode(new Object[] { this.KC, Integer.valueOf(this.KD), Integer.valueOf(this.KE) });
   }
   
   public final String toString()
   {
-    return String.format(Locale.US, "Image %dx%d %s", new Object[] { Integer.valueOf(this.IO), Integer.valueOf(this.IP), this.IN.toString() });
+    return String.format(Locale.US, "Image %dx%d %s", new Object[] { Integer.valueOf(this.KD), Integer.valueOf(this.KE), this.KC.toString() });
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)

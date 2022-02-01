@@ -1,48 +1,69 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class h
+  implements com.tencent.mapsdk.raster.model.CustomLayer
 {
-  private static Boolean a;
+  private com.tencent.tencentmap.mapsdk.maps.model.CustomLayer a;
   
-  static
+  public h(com.tencent.tencentmap.mapsdk.maps.model.CustomLayer paramCustomLayer)
   {
-    AppMethodBeat.i(101149);
-    a = Boolean.FALSE;
-    AppMethodBeat.o(101149);
+    this.a = paramCustomLayer;
   }
   
-  public static void a(String paramString)
+  public void clearDiskCache()
   {
-    AppMethodBeat.i(150433);
-    a(null, paramString, 'e');
-    AppMethodBeat.o(150433);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(150432);
-    a(paramString1, paramString2, 'v');
-    AppMethodBeat.o(150432);
-  }
-  
-  private static void a(String paramString1, String paramString2, char paramChar)
-  {
-    AppMethodBeat.i(150434);
-    if (!a.booleanValue())
+    AppMethodBeat.i(186293);
+    if (this.a == null)
     {
-      AppMethodBeat.o(150434);
+      AppMethodBeat.o(186293);
       return;
     }
-    TextUtils.isEmpty(paramString1);
-    AppMethodBeat.o(150434);
+    this.a.clearDiskCache();
+    AppMethodBeat.o(186293);
+  }
+  
+  public String getId()
+  {
+    AppMethodBeat.i(186294);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(186294);
+      return null;
+    }
+    String str = this.a.getId();
+    AppMethodBeat.o(186294);
+    return str;
+  }
+  
+  public void reload()
+  {
+    AppMethodBeat.i(186291);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(186291);
+      return;
+    }
+    this.a.reload();
+    AppMethodBeat.o(186291);
+  }
+  
+  public void remove()
+  {
+    AppMethodBeat.i(186292);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(186292);
+      return;
+    }
+    this.a.remove();
+    AppMethodBeat.o(186292);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.h
  * JD-Core Version:    0.7.0.1
  */

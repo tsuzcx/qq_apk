@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.dbbackup;
 
+import com.tencent.mm.pluginsdk.k;
+import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.pluginsdk.o;
 
 public final class a
-  implements o
+  implements m
 {
-  public final void a(m paramm) {}
+  public final void a(k paramk) {}
   
-  public final void a(n paramn) {}
+  public final void a(l paraml) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.dbbackup.a
  * JD-Core Version:    0.7.0.1
  */

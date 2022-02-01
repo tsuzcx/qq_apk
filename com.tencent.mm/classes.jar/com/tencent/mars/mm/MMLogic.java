@@ -1,14 +1,15 @@
 package com.tencent.mars.mm;
 
 import android.util.Xml;
-import com.tencent.mm.network.ac;
+import com.tencent.mm.network.ab;
+import com.tencent.mm.network.ae;
 import com.tencent.mm.network.u;
-import com.tencent.mm.protocal.protobuf.cfv;
-import com.tencent.mm.protocal.protobuf.cfx;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.protocal.protobuf.cwv;
+import com.tencent.mm.protocal.protobuf.cwx;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -44,11 +45,13 @@ public class MMLogic
   
   public static native void clearLocalHostCache();
   
+  public static native void forceUseV6(boolean paramBoolean);
+  
   private static String getCurLanguage()
   {
     try
     {
-      String str = aa.dsG();
+      String str = ac.eFu();
       return str;
     }
     catch (Exception localException) {}
@@ -58,7 +61,7 @@ public class MMLogic
   public static int getHostByName(String paramString, List<String> paramList)
   {
     long l1 = System.currentTimeMillis();
-    MMLogic.GetDnsReturn localGetDnsReturn = new MMLogic.GetDnsReturn(null);
+    GetDnsReturn localGetDnsReturn = new GetDnsReturn(null);
     getHostIps(paramString, localGetDnsReturn);
     int i = 0;
     while (i < localGetDnsReturn.length)
@@ -67,7 +70,7 @@ public class MMLogic
       i += 1;
     }
     long l2 = System.currentTimeMillis();
-    paramList = new MMLogic.ReportInfo();
+    paramList = new ReportInfo();
     paramList.actionId = 11L;
     paramList.beginTime = l1;
     paramList.endTime = l2;
@@ -81,7 +84,7 @@ public class MMLogic
     }
   }
   
-  private static native void getHostIps(String paramString, MMLogic.GetDnsReturn paramGetDnsReturn);
+  private static native void getHostIps(String paramString, GetDnsReturn paramGetDnsReturn);
   
   public static native String[] getIPsString(boolean paramBoolean);
   
@@ -121,12 +124,12 @@ public class MMLogic
   
   public static native String getNetworkServerIp();
   
-  private static native void getSnsIps(boolean paramBoolean, MMLogic.GetDnsReturn paramGetDnsReturn);
+  private static native void getSnsIps(boolean paramBoolean, GetDnsReturn paramGetDnsReturn);
   
   public static int getSnsIpsForScene(List<String> paramList, boolean paramBoolean)
   {
     long l1 = System.currentTimeMillis();
-    MMLogic.GetDnsReturn localGetDnsReturn = new MMLogic.GetDnsReturn(null);
+    GetDnsReturn localGetDnsReturn = new GetDnsReturn(null);
     getSnsIps(paramBoolean, localGetDnsReturn);
     int i = 0;
     while (i < localGetDnsReturn.length)
@@ -135,7 +138,7 @@ public class MMLogic
       i += 1;
     }
     long l2 = System.currentTimeMillis();
-    MMLogic.ReportInfo localReportInfo = new MMLogic.ReportInfo();
+    ReportInfo localReportInfo = new ReportInfo();
     localReportInfo.actionId = 11L;
     localReportInfo.beginTime = l1;
     localReportInfo.endTime = l2;
@@ -152,7 +155,7 @@ public class MMLogic
   public static int getSnsIpsForSceneWithHostName(List<String> paramList, String paramString, boolean paramBoolean)
   {
     long l1 = System.currentTimeMillis();
-    MMLogic.GetDnsReturn localGetDnsReturn = new MMLogic.GetDnsReturn(null);
+    GetDnsReturn localGetDnsReturn = new GetDnsReturn(null);
     getSnsIpsWithHostName(paramString, paramBoolean, localGetDnsReturn);
     int i = 0;
     while (i < localGetDnsReturn.length)
@@ -161,7 +164,7 @@ public class MMLogic
       i += 1;
     }
     long l2 = System.currentTimeMillis();
-    MMLogic.ReportInfo localReportInfo = new MMLogic.ReportInfo();
+    ReportInfo localReportInfo = new ReportInfo();
     localReportInfo.actionId = 11L;
     localReportInfo.beginTime = l1;
     localReportInfo.endTime = l2;
@@ -175,13 +178,13 @@ public class MMLogic
     }
   }
   
-  private static native void getSnsIpsWithHostName(String paramString, boolean paramBoolean, MMLogic.GetDnsReturn paramGetDnsReturn);
+  private static native void getSnsIpsWithHostName(String paramString, boolean paramBoolean, GetDnsReturn paramGetDnsReturn);
   
   private static String getUserIDCLocale()
   {
     try
     {
-      if (bo.hl(ah.getContext())) {
+      if (bt.iP(aj.getContext())) {
         return "HK";
       }
       return "CN";
@@ -192,48 +195,54 @@ public class MMLogic
   
   private static void notifyNewSpeedTestReport(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2, int paramInt6, int paramInt7)
   {
-    if (com.tencent.mm.network.ab.anH() == null)
+    if (com.tencent.mm.network.ad.aFq() == null)
     {
-      com.tencent.mm.sdk.platformtools.ab.e("C2Java", "notifyNewSpeedTestReport failed");
+      com.tencent.mm.sdk.platformtools.ad.e("C2Java", "notifyNewSpeedTestReport failed");
       return;
     }
-    cfx localcfx = new cfx();
-    localcfx.xQC = paramInt1;
-    localcfx.xQD = paramInt2;
-    localcfx.xQE = paramInt3;
-    localcfx.xQF = paramInt4;
-    localcfx.xpR = com.tencent.mm.bv.b.bL(paramArrayOfByte);
-    localcfx.xQA = "";
-    localcfx.xQz = "";
-    localcfx.xQB = "";
+    cwx localcwx = new cwx();
+    localcwx.EoX = paramInt1;
+    localcwx.EoY = paramInt2;
+    localcwx.EoZ = paramInt3;
+    localcwx.Epa = paramInt4;
+    localcwx.DKa = com.tencent.mm.bx.b.cd(paramArrayOfByte);
+    localcwx.EoV = "";
+    localcwx.EoU = "";
+    localcwx.EoW = "";
     if (paramInt7 == 3) {
-      localcfx.xQz = "dual";
+      localcwx.EoU = "dual";
     }
-    cfv localcfv1 = new cfv();
-    cfv localcfv2 = new cfv();
-    localcfv1.ip = paramString1;
-    localcfv1.port = paramInt5;
-    localcfv2.ip = paramString2;
-    localcfv2.port = paramInt6;
-    localcfx.xQH = localcfv1;
-    localcfx.xQG = localcfv2;
+    cwv localcwv1 = new cwv();
+    cwv localcwv2 = new cwv();
+    localcwv1.ip = paramString1;
+    localcwv1.port = paramInt5;
+    localcwv2.ip = paramString2;
+    localcwv2.port = paramInt6;
+    localcwx.Epc = localcwv1;
+    localcwx.Epb = localcwv2;
     paramString1 = new String(paramArrayOfByte);
-    com.tencent.mm.sdk.platformtools.ab.d("C2Java", "notifyNewSpeedTestReport origin cookie: " + paramString1 + ", origin size : " + paramArrayOfByte.length + ", covert cookie size " + localcfx.xpR.pW.length);
+    com.tencent.mm.sdk.platformtools.ad.d("C2Java", "notifyNewSpeedTestReport origin cookie: " + paramString1 + ", origin size : " + paramArrayOfByte.length + ", covert cookie size " + localcwx.DKa.wA.length);
     try
     {
-      paramArrayOfByte = localcfx.toByteArray();
-      com.tencent.mm.network.ab.anD().post(new MMLogic.4(paramArrayOfByte));
+      paramArrayOfByte = localcwx.toByteArray();
+      com.tencent.mm.network.ad.aFm().post(new Runnable()
+      {
+        public final void run()
+        {
+          com.tencent.mm.network.ad.aFq().j(271, this.val$cookieByte);
+        }
+      });
       return;
     }
     catch (Exception paramArrayOfByte)
     {
-      com.tencent.mm.sdk.platformtools.ab.e("C2Java", "notifyNewSpeedTestReport :%s", new Object[] { bo.l(paramArrayOfByte) });
+      com.tencent.mm.sdk.platformtools.ad.e("C2Java", "notifyNewSpeedTestReport :%s", new Object[] { bt.m(paramArrayOfByte) });
     }
   }
   
   private static void onDisasterNodeNotify(String paramString)
   {
-    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.MMDisasterInfoHandle", "onDisasterNodeNotify:\n".concat(String.valueOf(paramString)));
+    com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMDisasterInfoHandle", "onDisasterNodeNotify:\n".concat(String.valueOf(paramString)));
     XmlPullParser localXmlPullParser = Xml.newPullParser();
     ArrayList localArrayList = new ArrayList();
     for (;;)
@@ -245,7 +254,7 @@ public class MMLogic
       }
       catch (Exception paramString)
       {
-        com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.MMDisasterInfoHandle", "exception:%s", new Object[] { bo.l(paramString) });
+        com.tencent.mm.sdk.platformtools.ad.e("MicroMsg.MMDisasterInfoHandle", "exception:%s", new Object[] { bt.m(paramString) });
         return;
       }
       int i = localXmlPullParser.next();
@@ -256,9 +265,9 @@ public class MMLogic
         {
           paramString = localArrayList.iterator();
           while (paramString.hasNext()) {
-            com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.MMDisasterInfoHandle", "host ".concat(String.valueOf((String)paramString.next())));
+            com.tencent.mm.sdk.platformtools.ad.i("MicroMsg.MMDisasterInfoHandle", "host ".concat(String.valueOf((String)paramString.next())));
           }
-          u.ak(localArrayList);
+          u.aF(localArrayList);
           return;
         }
         switch (i)
@@ -270,20 +279,32 @@ public class MMLogic
   
   private static void onOOBNotify(String paramString)
   {
-    com.tencent.mm.sdk.platformtools.ab.i("C2Java", "onOOBNotify:".concat(String.valueOf(paramString)));
-    if (com.tencent.mm.network.ab.anH() == null)
+    com.tencent.mm.sdk.platformtools.ad.i("C2Java", "onOOBNotify:".concat(String.valueOf(paramString)));
+    if (com.tencent.mm.network.ad.aFq() == null)
     {
       Assert.assertTrue(false);
       return;
     }
     try
     {
-      com.tencent.mm.network.ab.anD().post(new MMLogic.3(paramString));
+      com.tencent.mm.network.ad.aFm().post(new Runnable()
+      {
+        public final void run()
+        {
+          ab localab = com.tencent.mm.network.ad.aFq();
+          if (bt.isNullOrNil(this.val$_info)) {}
+          for (byte[] arrayOfByte = null;; arrayOfByte = this.val$_info.getBytes())
+          {
+            localab.j(268369923, arrayOfByte);
+            return;
+          }
+        }
+      });
       return;
     }
     catch (Exception paramString)
     {
-      com.tencent.mm.sdk.platformtools.ab.e("C2Java", "onOOBNotify :%s", new Object[] { bo.l(paramString) });
+      com.tencent.mm.sdk.platformtools.ad.e("C2Java", "onOOBNotify :%s", new Object[] { bt.m(paramString) });
     }
   }
   
@@ -293,20 +314,20 @@ public class MMLogic
   
   public static native void reportFailIp(String paramString);
   
-  private static void reportFlow(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private static void reportFlow(final int paramInt1, final int paramInt2, final int paramInt3, final int paramInt4)
   {
     totalWifiRecv += paramInt1;
     totalWifiSend += paramInt2;
     totalMobileRecv += paramInt3;
     totalMobileSend += paramInt4;
     int i = totalMobileRecv + totalMobileSend + totalWifiRecv + totalWifiSend;
-    com.tencent.mm.network.a.b localb = com.tencent.mm.network.ab.anB().geK;
-    com.tencent.mm.sdk.platformtools.ab.i("C2Java", "reportNetFlow time[%d,%d] sum:%d wr[%d,%d] ws[%d,%d] mr[%d,%d] ms[%d,%d] fgbg:%b Moniter:%s", new Object[] { Long.valueOf(lastReportTime), Long.valueOf(bo.gz(lastReportTime)), Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(totalWifiRecv), Integer.valueOf(paramInt2), Integer.valueOf(totalWifiSend), Integer.valueOf(paramInt3), Integer.valueOf(totalMobileRecv), Integer.valueOf(paramInt4), Integer.valueOf(totalMobileSend), Boolean.valueOf(com.tencent.mm.sdk.a.b.foreground), localb });
+    com.tencent.mm.network.a.b localb = com.tencent.mm.network.ad.aFk().hMF;
+    com.tencent.mm.sdk.platformtools.ad.i("C2Java", "reportNetFlow time[%d,%d] sum:%d wr[%d,%d] ws[%d,%d] mr[%d,%d] ms[%d,%d] fgbg:%b Moniter:%s", new Object[] { Long.valueOf(lastReportTime), Long.valueOf(bt.lZ(lastReportTime)), Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(totalWifiRecv), Integer.valueOf(paramInt2), Integer.valueOf(totalWifiSend), Integer.valueOf(paramInt3), Integer.valueOf(totalMobileRecv), Integer.valueOf(paramInt4), Integer.valueOf(totalMobileSend), Boolean.valueOf(com.tencent.mm.sdk.a.b.foreground), localb });
     if (localb == null) {}
-    while ((i < 102400) && (bo.gz(lastReportTime) < 30L)) {
+    while ((i < 102400) && (bt.lZ(lastReportTime) < 30L)) {
       return;
     }
-    lastReportTime = bo.aox();
+    lastReportTime = bt.aGK();
     paramInt1 = totalWifiRecv;
     totalWifiRecv = 0;
     paramInt2 = totalWifiSend;
@@ -317,30 +338,62 @@ public class MMLogic
     totalMobileSend = 0;
     try
     {
-      com.tencent.mm.network.ab.anD().post(new MMLogic.2(localb, paramInt1, paramInt2, paramInt3, paramInt4));
+      com.tencent.mm.network.ad.aFm().post(new Runnable()
+      {
+        public final void run()
+        {
+          try
+          {
+            this.val$monitor.u(paramInt1, paramInt2, paramInt3, paramInt4);
+            return;
+          }
+          catch (Throwable localThrowable)
+          {
+            com.tencent.mm.sdk.platformtools.ad.e("C2Java", "reportFlowData :%s", new Object[] { bt.m(localThrowable) });
+          }
+        }
+      });
       return;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.mm.sdk.platformtools.ab.e("C2Java", "reportFlowData :%s", new Object[] { bo.l(localThrowable) });
+      com.tencent.mm.sdk.platformtools.ad.e("C2Java", "reportFlowData :%s", new Object[] { bt.m(localThrowable) });
     }
   }
   
-  public static void reportStat(MMLogic.ReportInfo paramReportInfo)
+  public static void reportStat(ReportInfo paramReportInfo)
   {
     try
     {
-      com.tencent.mm.network.ab.anD().post(new MMLogic.1(paramReportInfo));
+      com.tencent.mm.network.ad.aFm().post(new Runnable()
+      {
+        public final void run()
+        {
+          int i = MMLogic.getJavaActionId(this.val$item.actionId);
+          if (i == 0)
+          {
+            com.tencent.mm.sdk.platformtools.ad.e("C2Java", "ActionId Can not convert");
+            return;
+          }
+          this.val$item.actionId = i;
+        }
+      });
       return;
     }
     catch (Exception paramReportInfo) {}
   }
   
+  public static native void reportV6Status(boolean paramBoolean);
+  
   public static native void saveAuthLongIPs(String paramString, String[] paramArrayOfString);
+  
+  public static native void saveAuthLongList(Object paramObject, int[] paramArrayOfInt);
   
   public static native void saveAuthPorts(int[] paramArrayOfInt1, int[] paramArrayOfInt2);
   
   public static native void saveAuthShortIPs(String paramString, String[] paramArrayOfString);
+  
+  public static native void saveAuthShortList(Object paramObject, int[] paramArrayOfInt);
   
   public static native void setDebugIP(String paramString1, String paramString2, String paramString3, String paramString4);
   
@@ -350,9 +403,65 @@ public class MMLogic
   
   public static native void setNewDnsDebugHost(String paramString1, String paramString2);
   
+  public static native void switchProcessActiveState(boolean paramBoolean);
+  
   public static native void uploadFile(String paramString1, String paramString2, String paramString3);
   
   public static native void uploadLog(int[] paramArrayOfInt, boolean paramBoolean, String paramString1, String paramString2);
+  
+  static class GetDnsReturn
+  {
+    public String[] aryIps = new String[50];
+    public int length;
+    public int type = 0;
+  }
+  
+  public static class ReportInfo
+  {
+    public long actionId = 0L;
+    public long beginTime = 0L;
+    public String clientIp = "";
+    public long connCostTime = 0L;
+    public long connTotalCostTime = 0L;
+    public long dnsCostTime = 0L;
+    public int dnsErrType = 0;
+    public String dnsSvrIp = "";
+    public int endFlag = 0;
+    public int endStep = 0;
+    public long endTime = 0L;
+    public int errCode = 0;
+    public int errType = 0;
+    public long expand1 = 0L;
+    public long expand2 = 0L;
+    public String extraInfo = "";
+    public long firstPkgTime = 0L;
+    public String host = "";
+    public String ip = "";
+    public int ipType = 0;
+    public boolean isSocket = false;
+    public int localIp = 0;
+    public long netSignal = 0L;
+    public int netType = 0;
+    public int newNetType = 0;
+    public long newdnsCostTime = 0L;
+    public int newdnsErrCode = 0;
+    public int newdnsErrType = 0;
+    public int port = 0;
+    public long recvSize = 0L;
+    public int refTime1 = 0;
+    public int refTime2 = 0;
+    public int refTime3 = 0;
+    public int retryCount = 0;
+    public long rtType = 0L;
+    public long sendSize = 0L;
+    public int subNetType = 0;
+    public int usedIpIndex = 0;
+    
+    public String toString()
+    {
+      return String.format("actionId:%d, rtType:%d, begin:%d, end:%d, cost:%d, ip:%s, port:%d, isSocket:%b, netType:%d, ipType:%d, sendSize:%d, recvSize:%d, errType:%d, errCode:%d, netSignal:%d, retryCount:%d, expand1:%d, clientip:%s, expand2:%d, newNetType:%d, subNetType:%d, extraInfo:%s, host:%s, endStep:%d, endFlag:%d", new Object[] { Long.valueOf(this.actionId), Long.valueOf(this.rtType), Long.valueOf(this.beginTime), Long.valueOf(this.endTime), Long.valueOf(this.endTime - this.beginTime), this.ip, Integer.valueOf(this.port), Boolean.valueOf(this.isSocket), Integer.valueOf(this.netType), Integer.valueOf(this.ipType), Long.valueOf(this.sendSize), Long.valueOf(this.recvSize), Integer.valueOf(this.errType), Integer.valueOf(this.errCode), Long.valueOf(this.netSignal), Integer.valueOf(this.retryCount), Long.valueOf(this.expand1), this.clientIp, Long.valueOf(this.expand2), Integer.valueOf(this.newNetType), Integer.valueOf(this.subNetType), this.extraInfo, this.host, Integer.valueOf(this.endStep), Integer.valueOf(this.endFlag) });
+    }
+  }
 }
 
 

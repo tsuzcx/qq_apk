@@ -2,98 +2,116 @@ package com.samsung.android.sdk.look.smartclip;
 
 import android.view.View;
 import com.samsung.android.sdk.look.Slook;
+import com.samsung.android.smartclip.SmartClipDataExtractionListener;
 import com.samsung.android.smartclip.SmartClipMetaUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class SlookSmartClip
 {
   private static final String TAG = "SmartClip";
-  private SlookSmartClip.DataExtractionListener mDataExtractionListener;
+  private DataExtractionListener mDataExtractionListener;
   private Slook mSlook;
   private View mView;
   
   public SlookSmartClip(View paramView)
   {
-    AppMethodBeat.i(117214);
+    AppMethodBeat.i(76256);
     this.mSlook = new Slook();
     this.mView = null;
     this.mDataExtractionListener = null;
     this.mView = paramView;
-    AppMethodBeat.o(117214);
+    AppMethodBeat.o(76256);
   }
   
   private boolean isSupport(int paramInt)
   {
-    AppMethodBeat.i(117220);
+    AppMethodBeat.i(76262);
     if (this.mSlook.isFeatureEnabled(2))
     {
-      AppMethodBeat.o(117220);
+      AppMethodBeat.o(76262);
       return true;
     }
-    AppMethodBeat.o(117220);
+    AppMethodBeat.o(76262);
     return false;
   }
   
   public final void addMetaTag(SlookSmartClipMetaTag paramSlookSmartClipMetaTag)
   {
-    AppMethodBeat.i(117215);
+    AppMethodBeat.i(76257);
     if (!isSupport(1))
     {
-      AppMethodBeat.o(117215);
+      AppMethodBeat.o(76257);
       return;
     }
     SmartClipMetaUtils.addMetaTag(this.mView, paramSlookSmartClipMetaTag);
-    AppMethodBeat.o(117215);
+    AppMethodBeat.o(76257);
   }
   
   public final void clearAllMetaTag()
   {
-    AppMethodBeat.i(117217);
+    AppMethodBeat.i(76259);
     if (!isSupport(1))
     {
-      AppMethodBeat.o(117217);
+      AppMethodBeat.o(76259);
       return;
     }
     SmartClipMetaUtils.clearAllMetaTag(this.mView);
-    AppMethodBeat.o(117217);
+    AppMethodBeat.o(76259);
   }
   
   public final int extractDefaultSmartClipData(SlookSmartClipDataElement paramSlookSmartClipDataElement, SlookSmartClipCroppedArea paramSlookSmartClipCroppedArea)
   {
-    AppMethodBeat.i(117219);
+    AppMethodBeat.i(76261);
     if (!isSupport(1))
     {
-      AppMethodBeat.o(117219);
+      AppMethodBeat.o(76261);
       return 0;
     }
     int i = SmartClipMetaUtils.extractDefaultSmartClipData(this.mView, paramSlookSmartClipDataElement, paramSlookSmartClipCroppedArea);
-    AppMethodBeat.o(117219);
+    AppMethodBeat.o(76261);
     return i;
   }
   
   public final void removeMetaTag(String paramString)
   {
-    AppMethodBeat.i(117216);
+    AppMethodBeat.i(76258);
     if (!isSupport(1))
     {
-      AppMethodBeat.o(117216);
+      AppMethodBeat.o(76258);
       return;
     }
     SmartClipMetaUtils.removeMetaTag(this.mView, paramString);
-    AppMethodBeat.o(117216);
+    AppMethodBeat.o(76258);
   }
   
-  public final void setDataExtractionListener(SlookSmartClip.DataExtractionListener paramDataExtractionListener)
+  public final void setDataExtractionListener(DataExtractionListener paramDataExtractionListener)
   {
-    AppMethodBeat.i(117218);
+    AppMethodBeat.i(76260);
     if (!isSupport(1))
     {
-      AppMethodBeat.o(117218);
+      AppMethodBeat.o(76260);
       return;
     }
     this.mDataExtractionListener = paramDataExtractionListener;
-    SmartClipMetaUtils.setDataExtractionListener(this.mView, new SlookSmartClip.1(this));
-    AppMethodBeat.o(117218);
+    SmartClipMetaUtils.setDataExtractionListener(this.mView, new SmartClipDataExtractionListener()
+    {
+      public int onExtractSmartClipData(View paramAnonymousView, SlookSmartClipDataElement paramAnonymousSlookSmartClipDataElement, SlookSmartClipCroppedArea paramAnonymousSlookSmartClipCroppedArea)
+      {
+        AppMethodBeat.i(76255);
+        int i = SlookSmartClip.this.mDataExtractionListener.onExtractSmartClipData(paramAnonymousView, paramAnonymousSlookSmartClipDataElement, paramAnonymousSlookSmartClipCroppedArea);
+        AppMethodBeat.o(76255);
+        return i;
+      }
+    });
+    AppMethodBeat.o(76260);
+  }
+  
+  public static abstract interface DataExtractionListener
+  {
+    public static final int EXTRACTION_DEFAULT = 1;
+    public static final int EXTRACTION_DISCARD = 0;
+    
+    public abstract int onExtractSmartClipData(View paramView, SlookSmartClipDataElement paramSlookSmartClipDataElement, SlookSmartClipCroppedArea paramSlookSmartClipCroppedArea);
   }
 }
 

@@ -3,65 +3,88 @@ package com.tencent.mm.plugin.freewifi.ui;
 import android.app.Activity;
 import android.net.NetworkInfo.State;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.freewifi.d.a;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.d;
 import com.tencent.mm.plugin.freewifi.model.j;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 @Deprecated
 public class FreewifiActivateWeChatNoAuthStateUI
   extends FreeWifiActivateNoAuthStateUI
 {
-  private int csT;
-  private String mOR;
-  private String mOS;
+  private int dhP;
+  private String rlJ;
+  private String rlK;
   
   public final void a(NetworkInfo.State paramState)
   {
-    AppMethodBeat.i(21113);
-    ab.i("MicroMsg.FreeWifi.FreewifiActivateWeChatNoAuthStateUI", "now network state : %s", new Object[] { paramState.toString() });
-    if ((paramState == NetworkInfo.State.CONNECTED) && (d.OC(this.ssid)) && (this.mMy))
+    AppMethodBeat.i(25173);
+    ad.i("MicroMsg.FreeWifi.FreewifiActivateWeChatNoAuthStateUI", "now network state : %s", new Object[] { paramState.toString() });
+    if ((paramState == NetworkInfo.State.CONNECTED) && (d.aaA(this.ssid)) && (this.rjC))
     {
-      bBq();
-      this.mMy = false;
-      this.mOR = d.bAy();
-      this.mOS = d.bAC();
-      this.csT = d.bAz();
-      ab.i("MicroMsg.FreeWifi.FreewifiActivateWeChatNoAuthStateUI", "now has connect the ap, check from server rssi is :  %d, mac : %s, ssid is : %s", new Object[] { Integer.valueOf(this.csT), this.mOR, this.mOS });
-      new a(this.kdt, this.mOR, this.mOS, this.csT, this.bWu, m.U(getIntent())).c(new FreewifiActivateWeChatNoAuthStateUI.1(this));
+      cwE();
+      this.rjC = false;
+      this.rlJ = d.cvM();
+      this.rlK = d.cvQ();
+      this.dhP = d.cvN();
+      ad.i("MicroMsg.FreeWifi.FreewifiActivateWeChatNoAuthStateUI", "now has connect the ap, check from server rssi is :  %d, mac : %s, ssid is : %s", new Object[] { Integer.valueOf(this.dhP), this.rlJ, this.rlK });
+      new a(this.nha, this.rlJ, this.rlK, this.dhP, this.cJR, m.ai(getIntent())).c(new g()
+      {
+        public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+        {
+          AppMethodBeat.i(25171);
+          az.aeS().b(640, this);
+          ad.i("MicroMsg.FreeWifi.FreewifiActivateWeChatNoAuthStateUI", "onSceneEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+          {
+            ad.i("MicroMsg.FreeWifi.FreewifiActivateWeChatNoAuthStateUI", "check ap ok");
+            d.a(FreewifiActivateWeChatNoAuthStateUI.this.ssid, 2, FreewifiActivateWeChatNoAuthStateUI.this.getIntent());
+            AppMethodBeat.o(25171);
+            return;
+          }
+          ad.e("MicroMsg.FreeWifi.FreewifiActivateWeChatNoAuthStateUI", "check ap failed ： rssi is :  %d, mac : %s, ssid is : %s", new Object[] { Integer.valueOf(FreewifiActivateWeChatNoAuthStateUI.a(FreewifiActivateWeChatNoAuthStateUI.this)), FreewifiActivateWeChatNoAuthStateUI.b(FreewifiActivateWeChatNoAuthStateUI.this), FreewifiActivateWeChatNoAuthStateUI.c(FreewifiActivateWeChatNoAuthStateUI.this) });
+          FreewifiActivateWeChatNoAuthStateUI.this.Bg(-2014);
+          d.aaC(FreewifiActivateWeChatNoAuthStateUI.c(FreewifiActivateWeChatNoAuthStateUI.this));
+          AppMethodBeat.o(25171);
+        }
+      });
     }
-    AppMethodBeat.o(21113);
+    AppMethodBeat.o(25173);
   }
   
-  protected final int bBm()
+  protected final int cwA()
   {
-    AppMethodBeat.i(21115);
-    j.bAJ();
-    int i = d.OB(this.ssid);
-    ab.i("MicroMsg.FreeWifi.FreewifiActivateWeChatNoAuthStateUI", "get connect state = %d", new Object[] { Integer.valueOf(i) });
+    AppMethodBeat.i(25175);
+    j.cvX();
+    int i = d.aaz(this.ssid);
+    ad.i("MicroMsg.FreeWifi.FreewifiActivateWeChatNoAuthStateUI", "get connect state = %d", new Object[] { Integer.valueOf(i) });
     if (i == 0)
     {
-      AppMethodBeat.o(21115);
+      AppMethodBeat.o(25175);
       return -2014;
     }
-    AppMethodBeat.o(21115);
+    AppMethodBeat.o(25175);
     return i;
   }
   
-  protected final String bBn()
+  protected final String cwB()
   {
-    AppMethodBeat.i(21112);
-    String str = getString(2131300181);
-    AppMethodBeat.o(21112);
+    AppMethodBeat.i(25172);
+    String str = getString(2131759653);
+    AppMethodBeat.o(25172);
     return str;
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(21114);
+    AppMethodBeat.i(25174);
     super.onDestroy();
-    AppMethodBeat.o(21114);
+    AppMethodBeat.o(25174);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

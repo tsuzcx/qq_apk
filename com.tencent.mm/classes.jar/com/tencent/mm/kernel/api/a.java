@@ -1,11 +1,11 @@
 package com.tencent.mm.kernel.api;
 
-import com.tencent.mm.cg.h.d;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public abstract interface a
 {
-  public abstract HashMap<Integer, h.d> collectDatabaseFactory();
+  public abstract HashMap<Integer, h.b> collectDatabaseFactory();
 }
 
 

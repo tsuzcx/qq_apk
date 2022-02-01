@@ -1,204 +1,180 @@
 package android.support.design.widget;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.view.t;
-import android.view.ViewGroup;
-import android.view.accessibility.AccessibilityManager;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.content.res.ColorStateList;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.LinearGradient;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Shader.TileMode;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
 
-public abstract class b<B extends b<B>>
+public class b
+  extends Drawable
 {
-  private static final boolean fP;
-  static final Handler sHandler;
-  final ViewGroup fQ;
-  final b.e fR;
-  private final b.b fS;
-  private List<Object<B>> fT;
-  private final AccessibilityManager fU;
-  final l.a fV;
+  float borderWidth;
+  final RectF eU = new RectF();
+  final a lI = new a((byte)0);
+  private int lJ;
+  private int lK;
+  private int lL;
+  private int lM;
+  private ColorStateList lN;
+  private int lO;
+  private boolean lP = true;
+  final Paint paint = new Paint(1);
+  final Rect rect = new Rect();
+  float rotation;
   
-  static
+  public b()
   {
-    if ((Build.VERSION.SDK_INT >= 16) && (Build.VERSION.SDK_INT <= 19)) {}
-    for (boolean bool = true;; bool = false)
+    this.paint.setStyle(Paint.Style.STROKE);
+  }
+  
+  public final void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.lJ = paramInt1;
+    this.lK = paramInt2;
+    this.lL = paramInt3;
+    this.lM = paramInt4;
+  }
+  
+  public final void c(ColorStateList paramColorStateList)
+  {
+    if (paramColorStateList != null) {
+      this.lO = paramColorStateList.getColorForState(getState(), this.lO);
+    }
+    this.lN = paramColorStateList;
+    this.lP = true;
+    invalidateSelf();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if (this.lP)
     {
-      fP = bool;
-      sHandler = new Handler(Looper.getMainLooper(), new Handler.Callback()
+      localObject1 = this.paint;
+      Object localObject2 = this.rect;
+      copyBounds((Rect)localObject2);
+      f1 = this.borderWidth / ((Rect)localObject2).height();
+      int i = android.support.v4.graphics.b.o(this.lJ, this.lO);
+      int j = android.support.v4.graphics.b.o(this.lK, this.lO);
+      int k = android.support.v4.graphics.b.o(android.support.v4.graphics.b.q(this.lK, 0), this.lO);
+      int m = android.support.v4.graphics.b.o(android.support.v4.graphics.b.q(this.lM, 0), this.lO);
+      int n = android.support.v4.graphics.b.o(this.lM, this.lO);
+      int i1 = android.support.v4.graphics.b.o(this.lL, this.lO);
+      float f2 = ((Rect)localObject2).top;
+      float f3 = ((Rect)localObject2).bottom;
+      localObject2 = Shader.TileMode.CLAMP;
+      ((Paint)localObject1).setShader(new LinearGradient(0.0F, f2, 0.0F, f3, new int[] { i, j, k, m, n, i1 }, new float[] { 0.0F, f1, 0.5F, 0.5F, 1.0F - f1, 1.0F }, (Shader.TileMode)localObject2));
+      this.lP = false;
+    }
+    float f1 = this.paint.getStrokeWidth() / 2.0F;
+    Object localObject1 = this.eU;
+    copyBounds(this.rect);
+    ((RectF)localObject1).set(this.rect);
+    ((RectF)localObject1).left += f1;
+    ((RectF)localObject1).top += f1;
+    ((RectF)localObject1).right -= f1;
+    ((RectF)localObject1).bottom -= f1;
+    paramCanvas.save();
+    paramCanvas.rotate(this.rotation, ((RectF)localObject1).centerX(), ((RectF)localObject1).centerY());
+    paramCanvas.drawOval((RectF)localObject1, this.paint);
+    paramCanvas.restore();
+  }
+  
+  public Drawable.ConstantState getConstantState()
+  {
+    return this.lI;
+  }
+  
+  public int getOpacity()
+  {
+    if (this.borderWidth > 0.0F) {
+      return -3;
+    }
+    return -2;
+  }
+  
+  public boolean getPadding(Rect paramRect)
+  {
+    int i = Math.round(this.borderWidth);
+    paramRect.set(i, i, i, i);
+    return true;
+  }
+  
+  public boolean isStateful()
+  {
+    return ((this.lN != null) && (this.lN.isStateful())) || (super.isStateful());
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    this.lP = true;
+  }
+  
+  protected boolean onStateChange(int[] paramArrayOfInt)
+  {
+    if (this.lN != null)
+    {
+      int i = this.lN.getColorForState(paramArrayOfInt, this.lO);
+      if (i != this.lO)
       {
-        public final boolean handleMessage(Message paramAnonymousMessage)
-        {
-          switch (paramAnonymousMessage.what)
-          {
-          default: 
-            return false;
-          case 0: 
-            paramAnonymousMessage = (b)paramAnonymousMessage.obj;
-            if (paramAnonymousMessage.fR.getParent() == null)
-            {
-              localObject = paramAnonymousMessage.fR.getLayoutParams();
-              if ((localObject instanceof CoordinatorLayout.d))
-              {
-                localObject = (CoordinatorLayout.d)localObject;
-                b.a locala = new b.a(paramAnonymousMessage);
-                locala.kV = SwipeDismissBehavior.o(0.1F);
-                locala.kW = SwipeDismissBehavior.o(0.6F);
-                locala.kT = 0;
-                locala.kP = new b.5(paramAnonymousMessage);
-                ((CoordinatorLayout.d)localObject).a(locala);
-                ((CoordinatorLayout.d)localObject).iQ = 80;
-              }
-              paramAnonymousMessage.fQ.addView(paramAnonymousMessage.fR);
-            }
-            paramAnonymousMessage.fR.setOnAttachStateChangeListener(new b.6(paramAnonymousMessage));
-            if (t.as(paramAnonymousMessage.fR)) {
-              if (paramAnonymousMessage.aT()) {
-                paramAnonymousMessage.aQ();
-              }
-            }
-            for (;;)
-            {
-              return true;
-              paramAnonymousMessage.aR();
-              continue;
-              paramAnonymousMessage.fR.setOnLayoutChangeListener(new b.7(paramAnonymousMessage));
-            }
-          }
-          Object localObject = (b)paramAnonymousMessage.obj;
-          int i = paramAnonymousMessage.arg1;
-          if ((((b)localObject).aT()) && (((b)localObject).fR.getVisibility() == 0)) {
-            if (Build.VERSION.SDK_INT >= 12)
-            {
-              paramAnonymousMessage = new ValueAnimator();
-              paramAnonymousMessage.setIntValues(new int[] { 0, ((b)localObject).fR.getHeight() });
-              paramAnonymousMessage.setInterpolator(a.fj);
-              paramAnonymousMessage.setDuration(250L);
-              paramAnonymousMessage.addListener(new b.2((b)localObject, i));
-              paramAnonymousMessage.addUpdateListener(new b.3((b)localObject));
-              paramAnonymousMessage.start();
-            }
-          }
-          for (;;)
-          {
-            return true;
-            paramAnonymousMessage = AnimationUtils.loadAnimation(((b)localObject).fR.getContext(), 2131034158);
-            paramAnonymousMessage.setInterpolator(a.fj);
-            paramAnonymousMessage.setDuration(250L);
-            paramAnonymousMessage.setAnimationListener(new b.4((b)localObject, i));
-            ((b)localObject).fR.startAnimation(paramAnonymousMessage);
-            continue;
-            ((b)localObject).aS();
-          }
-        }
-      });
-      return;
+        this.lP = true;
+        this.lO = i;
+      }
+    }
+    if (this.lP) {
+      invalidateSelf();
+    }
+    return this.lP;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    this.paint.setAlpha(paramInt);
+    invalidateSelf();
+  }
+  
+  public final void setBorderWidth(float paramFloat)
+  {
+    if (this.borderWidth != paramFloat)
+    {
+      this.borderWidth = paramFloat;
+      this.paint.setStrokeWidth(1.3333F * paramFloat);
+      this.lP = true;
+      invalidateSelf();
     }
   }
   
-  final void aQ()
+  public void setColorFilter(ColorFilter paramColorFilter)
   {
-    if (Build.VERSION.SDK_INT >= 12)
-    {
-      int i = this.fR.getHeight();
-      if (fP) {
-        t.q(this.fR, i);
-      }
-      for (;;)
-      {
-        localObject = new ValueAnimator();
-        ((ValueAnimator)localObject).setIntValues(new int[] { i, 0 });
-        ((ValueAnimator)localObject).setInterpolator(a.fj);
-        ((ValueAnimator)localObject).setDuration(250L);
-        ((ValueAnimator)localObject).addListener(new b.8(this));
-        ((ValueAnimator)localObject).addUpdateListener(new b.9(this, i));
-        ((ValueAnimator)localObject).start();
-        return;
-        this.fR.setTranslationY(i);
-      }
-    }
-    Object localObject = AnimationUtils.loadAnimation(this.fR.getContext(), 2131034157);
-    ((Animation)localObject).setInterpolator(a.fj);
-    ((Animation)localObject).setDuration(250L);
-    ((Animation)localObject).setAnimationListener(new b.10(this));
-    this.fR.startAnimation((Animation)localObject);
+    this.paint.setColorFilter(paramColorFilter);
+    invalidateSelf();
   }
   
-  final void aR()
+  final class a
+    extends Drawable.ConstantState
   {
-    l locall = l.bD();
-    l.a locala = this.fV;
-    synchronized (locall.mLock)
+    private a() {}
+    
+    public final int getChangingConfigurations()
     {
-      if (locall.d(locala)) {
-        locall.b(locall.kD);
-      }
-      if (this.fT != null)
-      {
-        int i = this.fT.size() - 1;
-        if (i >= 0)
-        {
-          this.fT.get(i);
-          i -= 1;
-        }
-      }
+      return 0;
     }
-  }
-  
-  final void aS()
-  {
-    l locall = l.bD();
-    l.a locala = this.fV;
-    synchronized (locall.mLock)
+    
+    public final Drawable newDrawable()
     {
-      if (locall.d(locala))
-      {
-        locall.kD = null;
-        if ((locall.kE != null) && (locall.kE != null))
-        {
-          locall.kD = locall.kE;
-          locall.kE = null;
-          if ((l.a)locall.kD.kG.get() == null) {
-            locall.kD = null;
-          }
-        }
-      }
-      if (this.fT != null)
-      {
-        int i = this.fT.size() - 1;
-        if (i >= 0)
-        {
-          this.fT.get(i);
-          i -= 1;
-        }
-      }
+      return b.this;
     }
-    if (Build.VERSION.SDK_INT < 11) {
-      this.fR.setVisibility(8);
-    }
-    ??? = this.fR.getParent();
-    if ((??? instanceof ViewGroup)) {
-      ((ViewGroup)???).removeView(this.fR);
-    }
-  }
-  
-  final boolean aT()
-  {
-    return !this.fU.isEnabled();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.design.widget.b
  * JD-Core Version:    0.7.0.1
  */

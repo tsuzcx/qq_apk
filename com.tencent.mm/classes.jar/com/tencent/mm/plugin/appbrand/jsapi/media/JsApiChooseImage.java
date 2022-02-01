@@ -2,32 +2,35 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory.Options;
-import android.widget.Toast;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
+import android.support.v4.app.a.a;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.Exif;
-import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager;
+import com.tencent.mm.plugin.appbrand.aa.l;
+import com.tencent.mm.plugin.appbrand.g.c;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.al;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.d;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.base.t;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.n;
+import com.tencent.mm.plugin.appbrand.permission.o;
+import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.mmsight.SightParams;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.widget.a.e.a;
+import com.tencent.mm.ui.widget.a.e.b;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -36,475 +39,329 @@ public final class JsApiChooseImage
 {
   public static final int CTRL_INDEX = 29;
   public static final String NAME = "chooseImage";
+  private static Boolean jWr = null;
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
+  private static boolean baH()
   {
-    AppMethodBeat.i(131151);
-    if (com.tencent.mm.plugin.appbrand.n.yc(paramc.getAppId()).gRb)
+    AppMethodBeat.i(195916);
+    if (jWr == null)
     {
-      paramc.h(paramInt, j("cancel", null));
-      AppMethodBeat.o(131151);
+      ad.i("MicroMsg.JsApiChooseImage", "inti wx style field");
+      jWr = Boolean.valueOf(((com.tencent.mm.plugin.expt.a.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.a.b.class)).a(b.a.poY, false));
+    }
+    if (jWr == null)
+    {
+      ad.e("MicroMsg.JsApiChooseImage", "get shoot style fail, use default style");
+      AppMethodBeat.o(195916);
+      return false;
+    }
+    ad.i("MicroMsg.JsApiChooseImage", "isWxStyleShoot, flag: %b", new Object[] { jWr });
+    boolean bool = jWr.booleanValue();
+    AppMethodBeat.o(195916);
+    return bool;
+  }
+  
+  public final void a(final c paramc, final JSONObject paramJSONObject, final int paramInt)
+  {
+    AppMethodBeat.i(46425);
+    if (paramc.getAppId() == null)
+    {
+      paramc.h(paramInt, e("fail", null));
+      AppMethodBeat.o(46425);
       return;
     }
-    Context localContext = paramc.getContext();
+    if (n.Do(paramc.getAppId()).iFR)
+    {
+      paramc.h(paramInt, e("cancel", null));
+      AppMethodBeat.o(46425);
+      return;
+    }
+    final Context localContext = paramc.getContext();
     if ((localContext == null) || (!(localContext instanceof Activity)))
     {
-      paramc.h(paramInt, j("fail", null));
-      AppMethodBeat.o(131151);
+      paramc.h(paramInt, e("fail", null));
+      AppMethodBeat.o(46425);
       return;
     }
-    JsApiChooseImage.ChooseRequest localChooseRequest = new JsApiChooseImage.ChooseRequest();
+    final ChooseRequest localChooseRequest = new ChooseRequest();
     JSONArray localJSONArray = paramJSONObject.optJSONArray("sourceType");
     String str1 = paramJSONObject.optString("sizeType");
     String str2 = paramJSONObject.optString("count");
-    ab.i("MicroMsg.JsApiChooseImage", "doChooseImage sourceType = %s, sizeType = %s, count = %s", new Object[] { localJSONArray, str1, str2 });
+    ad.i("MicroMsg.JsApiChooseImage", "doChooseImage sourceType = %s, sizeType = %s, count = %s", new Object[] { localJSONArray, str1, str2 });
     int i;
     if ((localJSONArray == null) || (localJSONArray.length() == 0))
     {
-      localChooseRequest.hQD = true;
-      localChooseRequest.hQE = true;
-      if (!localChooseRequest.hQD) {
-        break label314;
+      localChooseRequest.jWw = true;
+      localChooseRequest.jWx = true;
+      if (!localChooseRequest.jWw) {
+        break label343;
       }
-      com.tencent.mm.plugin.appbrand.permission.n.b(paramc.getAppId(), new JsApiChooseImage.3(this, paramc, paramJSONObject, paramInt));
+      o.b(paramc.getAppId(), new a.a()
+      {
+        public final void onRequestPermissionsResult(int paramAnonymousInt, String[] paramAnonymousArrayOfString, int[] paramAnonymousArrayOfInt)
+        {
+          AppMethodBeat.i(195899);
+          if (paramAnonymousInt != 113)
+          {
+            AppMethodBeat.o(195899);
+            return;
+          }
+          if ((paramAnonymousArrayOfInt != null) && (paramAnonymousArrayOfInt.length > 0) && (paramAnonymousArrayOfInt[0] == 0))
+          {
+            JsApiChooseImage.this.a(paramc, paramJSONObject, paramInt);
+            AppMethodBeat.o(195899);
+            return;
+          }
+          paramc.h(paramInt, JsApiChooseImage.this.e("fail:system permission denied", null));
+          AppMethodBeat.o(195899);
+        }
+      });
       paramJSONObject = paramc.getContext();
       if ((paramJSONObject != null) && ((paramJSONObject instanceof Activity))) {
-        break label272;
+        break label301;
       }
-      paramc.h(paramInt, j("fail", null));
+      paramc.h(paramInt, e("fail", null));
       i = 0;
     }
     for (;;)
     {
       if (i != 0) {
-        break label314;
+        break label343;
       }
-      AppMethodBeat.o(131151);
+      AppMethodBeat.o(46425);
       return;
-      localChooseRequest.hQD = localJSONArray.toString().contains("camera");
-      localChooseRequest.hQE = localJSONArray.toString().contains("album");
+      localChooseRequest.jWw = localJSONArray.toString().contains("camera");
+      localChooseRequest.jWx = localJSONArray.toString().contains("album");
       break;
-      label272:
+      label301:
       boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)paramJSONObject, "android.permission.CAMERA", 113, "", "");
       i = bool;
       if (bool)
       {
-        com.tencent.mm.plugin.appbrand.permission.n.EA(paramc.getAppId());
+        o.Mi(paramc.getAppId());
         i = bool;
       }
     }
-    label314:
-    com.tencent.mm.plugin.appbrand.n.yd(paramc.getAppId()).gRb = true;
-    com.tencent.mm.plugin.appbrand.e.a(paramc.getAppId(), new JsApiChooseImage.1(this, paramc));
-    if (bo.isNullOrNil(str1)) {}
+    label343:
+    n.Dp(paramc.getAppId()).iFR = true;
+    com.tencent.mm.plugin.appbrand.g.a(paramc.getAppId(), new g.c()
+    {
+      public final void onDestroy()
+      {
+        AppMethodBeat.i(180217);
+        if (paramc.getAppId() != null) {
+          n.Dp(paramc.getAppId()).iFR = false;
+        }
+        com.tencent.mm.plugin.appbrand.g.b(paramc.getAppId(), this);
+        AppMethodBeat.o(180217);
+      }
+    });
+    if (bt.isNullOrNil(str1)) {}
     for (paramJSONObject = "compressed";; paramJSONObject = str1)
     {
-      localChooseRequest.hQF = paramJSONObject.contains("compressed");
-      localChooseRequest.hQG = paramJSONObject.contains("original");
-      localChooseRequest.count = bo.getInt(str2, 9);
+      localChooseRequest.jWy = paramJSONObject.contains("compressed");
+      localChooseRequest.jWz = paramJSONObject.contains("original");
+      localChooseRequest.count = bt.getInt(str2, 9);
       localChooseRequest.appId = paramc.getAppId();
-      com.tencent.mm.plugin.appbrand.ipc.a.b(localContext, localChooseRequest, new JsApiChooseImage.2(this, paramc, paramInt));
-      AppMethodBeat.o(131151);
+      paramJSONObject = new AppBrandProxyUIProcessTask.b() {};
+      if ((localChooseRequest.jWw) && (localChooseRequest.jWx) && (baH()))
+      {
+        l.runOnUiThread(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(195898);
+            JsApiChooseImage.a(JsApiChooseImage.this, paramc.getContext(), new n.d()new DialogInterface.OnCancelListener
+            {
+              public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
+              {
+                AppMethodBeat.i(195896);
+                switch (paramAnonymous2MenuItem.getItemId())
+                {
+                }
+                for (;;)
+                {
+                  ad.i("MicroMsg.JsApiChooseImage", "start select after source choose");
+                  com.tencent.mm.plugin.appbrand.ipc.a.b(JsApiChooseImage.3.this.jQI, JsApiChooseImage.3.this.jWt, JsApiChooseImage.3.this.jWu);
+                  AppMethodBeat.o(195896);
+                  return;
+                  JsApiChooseImage.3.this.jWt.jWx = false;
+                  continue;
+                  JsApiChooseImage.3.this.jWt.jWw = false;
+                }
+              }
+            }, new DialogInterface.OnCancelListener()
+            {
+              public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
+              {
+                AppMethodBeat.i(195897);
+                ad.i("MicroMsg.JsApiChooseImage", "cancel when select source from");
+                n.Dp(JsApiChooseImage.3.this.cgw.getAppId()).iFR = false;
+                JsApiChooseImage.3.this.cgw.h(JsApiChooseImage.3.this.ccB, JsApiChooseImage.this.e("cancel", null));
+                AppMethodBeat.o(195897);
+              }
+            });
+            AppMethodBeat.o(195898);
+          }
+        });
+        AppMethodBeat.o(46425);
+        return;
+      }
+      ad.i("MicroMsg.JsApiChooseImage", "start select");
+      com.tencent.mm.plugin.appbrand.ipc.a.b(localContext, localChooseRequest, paramJSONObject);
+      AppMethodBeat.o(46425);
       return;
     }
   }
   
-  static final class a
-    extends AppBrandProxyUIProcessTask
+  static final class ChooseRequest
+    extends AppBrandProxyUIProcessTask.ProcessRequest
   {
-    private p ehb;
-    JsApiChooseImage.ChooseRequest hQI;
-    JsApiChooseImage.ChooseResult hQJ;
-    int hQK;
-    private DialogInterface.OnCancelListener hQL;
+    public static final Parcelable.Creator<ChooseRequest> CREATOR;
+    String appId;
+    int count;
+    boolean jWA;
+    boolean jWw;
+    boolean jWx;
+    boolean jWy;
+    boolean jWz;
     
-    private a()
+    static
     {
-      AppMethodBeat.i(131139);
-      this.hQJ = new JsApiChooseImage.ChooseResult();
-      AppMethodBeat.o(131139);
+      AppMethodBeat.i(46403);
+      CREATOR = new Parcelable.Creator() {};
+      AppMethodBeat.o(46403);
     }
     
-    private static String Cn(String paramString)
+    ChooseRequest()
     {
-      AppMethodBeat.i(131142);
-      int i = Exif.fromFile(paramString).getOrientationInDegree();
-      if (i != 0) {
-        try
-        {
-          BitmapFactory.Options localOptions = new BitmapFactory.Options();
-          Object localObject1 = MMBitmapFactory.decodeFile(paramString, localOptions);
-          if (localObject1 == null)
-          {
-            ab.e("MicroMsg.JsApiChooseImage", "rotate image, get null bmp");
-            AppMethodBeat.o(131142);
-            return paramString;
-          }
-          float f = i % 360;
-          Bitmap localBitmap = d.b((Bitmap)localObject1, f);
-          Object localObject2 = new StringBuilder().append(com.tencent.mm.compatible.util.e.esr).append("microMsg.tmp.").append(System.currentTimeMillis());
-          if (com.tencent.mm.plugin.appbrand.t.c.b(localOptions))
-          {
-            localObject1 = ".jpg";
-            localObject2 = (String)localObject1;
-            if (!com.tencent.mm.plugin.appbrand.t.c.b(localOptions)) {
-              break label164;
-            }
-          }
-          for (localObject1 = Bitmap.CompressFormat.JPEG;; localObject1 = Bitmap.CompressFormat.PNG)
-          {
-            try
-            {
-              d.a(localBitmap, 80, (Bitmap.CompressFormat)localObject1, (String)localObject2, true);
-              if (com.tencent.mm.plugin.appbrand.t.c.b(localOptions)) {
-                com.tencent.mm.plugin.appbrand.h.b.bZ(paramString, (String)localObject2);
-              }
-              AppMethodBeat.o(131142);
-              return localObject2;
-            }
-            catch (Exception localException)
-            {
-              label164:
-              ab.e("MicroMsg.JsApiChooseImage", "rotate image, exception occurred when saving | %s", new Object[] { localException });
-              com.tencent.mm.a.e.deleteFile((String)localObject2);
-              AppMethodBeat.o(131142);
-              return paramString;
-            }
-            localObject1 = ".png";
-            break;
-          }
-          AppMethodBeat.o(131142);
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          AppMethodBeat.o(131142);
-          return paramString;
-        }
-        catch (NullPointerException localNullPointerException)
-        {
-          AppMethodBeat.o(131142);
-          return paramString;
-        }
-      }
-      return paramString;
+      this.jWA = true;
     }
     
-    private static String Co(String paramString)
+    ChooseRequest(Parcel paramParcel)
     {
-      AppMethodBeat.i(131143);
-      String str = com.tencent.mm.compatible.util.e.esr + "microMsg." + System.currentTimeMillis() + ".jpg";
-      try
-      {
-        Bitmap localBitmap1 = MMBitmapFactory.decodeFile(paramString);
-        if (localBitmap1 == null)
-        {
-          ab.e("MicroMsg.JsApiChooseImage", "doCompressImage, decode bmp return null");
-          AppMethodBeat.o(131143);
-          return null;
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        for (;;)
-        {
-          ab.e("MicroMsg.JsApiChooseImage", "doCompressImage, decode bmp oom");
-          try
-          {
-            Bitmap localBitmap2 = d.decodeFile(paramString, null);
-          }
-          catch (OutOfMemoryError localOutOfMemoryError2)
-          {
-            ab.e("MicroMsg.JsApiChooseImage", "doCompressImage, decode bmp oom retry, oom again");
-            Object localObject1 = null;
-          }
-          catch (Exception localException1)
-          {
-            ab.e("MicroMsg.JsApiChooseImage", "doCompressImage, decode bmp oom retry, e ".concat(String.valueOf(localException1)));
-            Object localObject2 = null;
-          }
-        }
-      }
-      catch (NullPointerException localNullPointerException)
-      {
-        for (;;)
-        {
-          try
-          {
-            Bitmap localBitmap3 = d.decodeFile(paramString, null);
-          }
-          catch (Exception localException2)
-          {
-            ab.e("MicroMsg.JsApiChooseImage", "doCompressImage, decode bmp npe retry, e ".concat(String.valueOf(localException2)));
-            Object localObject3 = null;
-          }
-        }
-      }
-      catch (Exception localException3)
-      {
-        Object localObject4;
-        for (;;)
-        {
-          ab.e("MicroMsg.JsApiChooseImage", "doCompressImage, decode bmp e ".concat(String.valueOf(localException3)));
-          localObject4 = null;
-        }
-        localObject4.recycle();
-        long l = bo.aoy();
-        try
-        {
-          boolean bool = com.tencent.mm.plugin.appbrand.t.c.cW(str, paramString);
-          ab.i("MicroMsg.JsApiChooseImage", "doCompressImage, ret = %b, cost = %d, %s (%d) -> %s (%d)", new Object[] { Boolean.valueOf(bool), Long.valueOf(bo.aoy() - l), paramString, Long.valueOf(new File(paramString).length()), str, Long.valueOf(new File(str).length()) });
-          if (bool)
-          {
-            AppMethodBeat.o(131143);
-            return str;
-          }
-          AppMethodBeat.o(131143);
-          return paramString;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError3)
-        {
-          ab.e("MicroMsg.JsApiChooseImage", "compressImage, oom");
-          AppMethodBeat.o(131143);
-        }
-      }
-      return paramString;
+      AppMethodBeat.i(46402);
+      this.jWA = true;
+      j(paramParcel);
+      AppMethodBeat.o(46402);
     }
     
-    private void of(int paramInt)
+    public final Class<? extends AppBrandProxyUIProcessTask> aWl()
     {
-      AppMethodBeat.i(131141);
-      this.hQL = new JsApiChooseImage.a.1(this);
-      MMActivity localMMActivity = aBf();
-      ah.getResources().getString(2131297087);
-      this.ehb = h.b(localMMActivity, ah.getResources().getString(paramInt), true, this.hQL);
-      AppMethodBeat.o(131141);
+      return JsApiChooseImage.a.class;
     }
     
-    public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
+    public final boolean aXq()
     {
-      AppMethodBeat.i(131140);
-      this.hQI = ((JsApiChooseImage.ChooseRequest)paramProcessRequest);
-      this.hQI.count = Math.max(1, Math.min(9, this.hQI.count));
-      int i;
-      if ((this.hQI.hQF & this.hQI.hQG))
+      boolean bool = true;
+      if (!this.jWA)
       {
-        i = 8;
-        this.hQK = i;
-        if (bo.hg(aBf()) <= 200L) {
-          break label202;
+        this.jWA = true;
+        bool = false;
+      }
+      return bool;
+    }
+    
+    public final String aXr()
+    {
+      return "GalleryChooseImage";
+    }
+    
+    public final int describeContents()
+    {
+      return 0;
+    }
+    
+    public final void j(Parcel paramParcel)
+    {
+      boolean bool2 = true;
+      AppMethodBeat.i(46400);
+      this.appId = paramParcel.readString();
+      this.count = paramParcel.readInt();
+      if (paramParcel.readByte() != 0)
+      {
+        bool1 = true;
+        this.jWw = bool1;
+        if (paramParcel.readByte() == 0) {
+          break label90;
         }
-        i = 1;
-        label79:
-        if (i == 0) {
-          t.makeText(aBf(), ah.getResources().getString(2131296593), 1).show();
+        bool1 = true;
+        label46:
+        this.jWx = bool1;
+        if (paramParcel.readByte() == 0) {
+          break label95;
         }
-        aBf().mmSetOnActivityResultCallback(this);
-        paramProcessRequest = new Intent();
-        if (this.hQI.hQF) {
-          break label207;
+        bool1 = true;
+        label60:
+        this.jWy = bool1;
+        if (paramParcel.readByte() == 0) {
+          break label100;
         }
       }
-      label202:
-      label207:
-      for (boolean bool = true;; bool = false)
+      label90:
+      label95:
+      label100:
+      for (boolean bool1 = bool2;; bool1 = false)
       {
-        paramProcessRequest.putExtra("key_send_raw_image", bool);
-        paramProcessRequest.putExtra("query_media_type", 1);
-        if ((!this.hQI.hQD) || (!this.hQI.hQE)) {
-          break label212;
-        }
-        com.tencent.mm.pluginsdk.ui.tools.n.a(aBf(), 1, this.hQI.count, this.hQK, paramProcessRequest);
-        AppMethodBeat.o(131140);
+        this.jWz = bool1;
+        AppMethodBeat.o(46400);
         return;
-        i = 7;
+        bool1 = false;
         break;
-        i = 0;
-        break label79;
+        bool1 = false;
+        break label46;
+        bool1 = false;
+        break label60;
       }
-      label212:
-      if (this.hQI.hQE)
-      {
-        paramProcessRequest.putExtra("show_header_view", false);
-        com.tencent.mm.pluginsdk.ui.tools.n.a(aBf(), 1, this.hQI.count, this.hQK, paramProcessRequest);
-        AppMethodBeat.o(131140);
-        return;
-      }
-      if (this.hQI.hQD)
-      {
-        com.tencent.mm.pluginsdk.ui.tools.n.c(aBf(), com.tencent.mm.compatible.util.e.esr, "microMsg." + System.currentTimeMillis() + ".jpg", 2);
-        AppMethodBeat.o(131140);
-        return;
-      }
-      ab.e("MicroMsg.JsApiChooseImage", "unknown scene, ignore this request");
-      this.hQJ.bpE = -2;
-      a(this.hQJ);
-      AppMethodBeat.o(131140);
     }
     
-    public final void aBl()
+    public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(131144);
-      super.aBl();
-      if (this.ehb != null)
+      byte b2 = 1;
+      AppMethodBeat.i(46401);
+      paramParcel.writeString(this.appId);
+      paramParcel.writeInt(this.count);
+      if (this.jWw)
       {
-        this.ehb.dismiss();
-        this.ehb = null;
-      }
-      AppMethodBeat.o(131144);
-    }
-    
-    public final void c(int paramInt1, int paramInt2, Intent paramIntent)
-    {
-      final boolean bool2 = true;
-      AppMethodBeat.i(131145);
-      if (paramInt2 == 0)
-      {
-        this.hQJ.bpE = 0;
-        a(this.hQJ);
-        AppMethodBeat.o(131145);
-        return;
-      }
-      switch (paramInt1)
-      {
-      default: 
-        this.hQJ.bpE = -2;
-        a(this.hQJ);
-        AppMethodBeat.o(131145);
-        return;
-      case 1: 
-      case 3: 
-        if (paramIntent == null)
-        {
-          this.hQJ.bpE = 0;
-          a(this.hQJ);
-          AppMethodBeat.o(131145);
-          return;
+        b1 = 1;
+        paramParcel.writeByte(b1);
+        if (!this.jWx) {
+          break label92;
         }
-        final ArrayList localArrayList = paramIntent.getStringArrayListExtra("CropImage_OutputPath_List");
-        boolean bool3 = paramIntent.getBooleanExtra("CropImage_Compress_Img", false);
-        final int i = this.hQI.hQF;
-        label186:
-        final boolean bool1;
-        if (!this.hQI.hQG)
-        {
-          paramInt1 = 1;
-          if (((paramInt1 & i) == 0) && (!(this.hQI.hQF & this.hQI.hQG & bool3))) {
-            break label386;
-          }
-          i = 1;
-          if ((!paramIntent.getBooleanExtra("isTakePhoto", false)) && (!paramIntent.getBooleanExtra("isPreviewPhoto", false))) {
-            break label392;
-          }
-          bool1 = true;
-          label211:
-          ab.d("MicroMsg.JsApiChooseImage", "onActivityResult, fromCamera = %b, canCompress = %b, canOriginal = %b, CropImageUI.KCompressImg = %b, doCompress = %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(this.hQI.hQF), Boolean.valueOf(this.hQI.hQG), Boolean.valueOf(bool3), Boolean.valueOf(i) });
-          if (i != 0) {
-            of(2131296594);
-          }
-          if (i != 0) {
-            break label403;
-          }
-          if (bo.es(localArrayList)) {
-            break label398;
-          }
-          paramIntent = localArrayList.iterator();
-          while (paramIntent.hasNext()) {
-            if (Exif.fromFile((String)paramIntent.next()).getOrientationInDegree() != 0)
-            {
-              paramInt1 = 1;
-              label335:
-              if (paramInt1 == 0) {
-                break label403;
-              }
-            }
-          }
+        b1 = 1;
+        label47:
+        paramParcel.writeByte(b1);
+        if (!this.jWy) {
+          break label97;
         }
-        for (;;)
-        {
-          if (bool2) {
-            of(2131296700);
-          }
-          com.tencent.mm.plugin.appbrand.s.m.aNS().ac(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(131137);
-              ArrayList localArrayList = new ArrayList(localArrayList.size());
-              Iterator localIterator = localArrayList.iterator();
-              Object localObject1;
-              boolean bool;
-              if (localIterator.hasNext())
-              {
-                localObject1 = (String)localIterator.next();
-                bool = bool1;
-                if (i)
-                {
-                  localObject1 = JsApiChooseImage.a.Cp((String)localObject1);
-                  bool |= true;
-                }
-              }
-              label172:
-              for (;;)
-              {
-                Object localObject2 = AppBrandLocalMediaObjectManager.j(JsApiChooseImage.a.this.hQI.appId, (String)localObject1, bool);
-                if (localObject2 != null)
-                {
-                  localArrayList.add(localObject2);
-                  break;
-                  if (!bool2) {
-                    break label172;
-                  }
-                  localObject2 = JsApiChooseImage.a.Cq((String)localObject1);
-                  if (((String)localObject2).equals(localObject1)) {
-                    break label172;
-                  }
-                  bool |= true;
-                  localObject1 = localObject2;
-                  continue;
-                }
-                ab.e("MicroMsg.JsApiChooseImage", "handle chosen list from gallery, get null obj from path: %s", new Object[] { localObject1 });
-                break;
-                al.d(new JsApiChooseImage.a.2.1(this, localArrayList));
-                AppMethodBeat.o(131137);
-                return;
-              }
-            }
-          });
-          AppMethodBeat.o(131145);
-          return;
-          paramInt1 = 0;
-          break;
-          label386:
-          i = 0;
-          break label186;
-          label392:
-          bool1 = false;
-          break label211;
-          label398:
-          paramInt1 = 0;
-          break label335;
-          label403:
-          bool2 = false;
+        b1 = 1;
+        label61:
+        paramParcel.writeByte(b1);
+        if (!this.jWz) {
+          break label102;
         }
       }
-      paramIntent = com.tencent.mm.pluginsdk.ui.tools.n.h(aBf().getApplicationContext(), paramIntent, com.tencent.mm.compatible.util.e.esr);
-      if (bo.isNullOrNil(paramIntent))
+      label92:
+      label97:
+      label102:
+      for (byte b1 = b2;; b1 = 0)
       {
-        ab.w("MicroMsg.JsApiChooseImage", "take photo, but result is null");
-        this.hQJ.bpE = -2;
-        a(this.hQJ);
-        AppMethodBeat.o(131145);
+        paramParcel.writeByte(b1);
+        AppMethodBeat.o(46401);
         return;
+        b1 = 0;
+        break;
+        b1 = 0;
+        break label47;
+        b1 = 0;
+        break label61;
       }
-      ab.i("MicroMsg.JsApiChooseImage", "take photo, result[%s]", new Object[] { paramIntent });
-      al.d(new JsApiChooseImage.a.3(this, paramIntent));
-      AppMethodBeat.o(131145);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.JsApiChooseImage
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="fill_parent" android:onClick="onClickNoCheck"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <RelativeLayout android:layout_width="217.0dip" android:layout_height="220.0dip">
+            <ImageView android:id="@id/tw" android:background="@drawable/c33" android:layout_width="@dimen/g" android:layout_height="@dimen/g" android:layout_marginTop="64.0dip" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/tx" android:background="@drawable/c33" android:layout_width="@dimen/g" android:layout_height="@dimen/g" android:layout_marginTop="64.0dip" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/ty" android:background="@drawable/c33" android:layout_width="@dimen/g" android:layout_height="@dimen/g" android:layout_marginTop="64.0dip" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/tm" android:layout_width="@dimen/g" android:layout_height="@dimen/g" android:layout_marginTop="64.0dip" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/e3x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="{nickname}" android:layout_below="@id/tm" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:id="@id/b_l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/h7w" android:layout_below="@id/e3x" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <View android:background="#ffe0e0e0" android:layout_width="217.0dip" android:layout_height="1.0px" />
+        <ImageButton android:id="@id/ezp" android:background="@drawable/aim" android:layout_width="217.0dip" android:layout_height="44.0dip" android:src="@drawable/c32" android:onClick="onClickCheck" />
+    </LinearLayout>
+</RelativeLayout>

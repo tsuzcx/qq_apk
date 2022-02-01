@@ -8,26 +8,26 @@ import java.lang.reflect.Field;
 public class HandlerMessageInterceptor
   extends Interceptor<Handler.Callback>
 {
-  private static Field Buz = null;
-  private final Handler Bux;
-  private final MessageHandler Buy;
+  private static Field sMCallbackField = null;
+  private final MessageHandler mMessageHandler;
+  private final Handler mTarget;
   
   /* Error */
   static
   {
     // Byte code:
     //   0: aconst_null
-    //   1: putstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:Buz	Ljava/lang/reflect/Field;
+    //   1: putstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:sMCallbackField	Ljava/lang/reflect/Field;
     //   4: ldc 2
     //   6: monitorenter
-    //   7: getstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:Buz	Ljava/lang/reflect/Field;
+    //   7: getstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:sMCallbackField	Ljava/lang/reflect/Field;
     //   10: astore_0
     //   11: aload_0
     //   12: ifnonnull +13 -> 25
     //   15: ldc 25
     //   17: ldc 27
-    //   19: invokestatic 33	com/tencent/tinker/loader/shareutil/ShareReflectUtil:g	(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   22: putstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:Buz	Ljava/lang/reflect/Field;
+    //   19: invokestatic 33	com/tencent/tinker/loader/shareutil/ShareReflectUtil:findField	(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   22: putstatic 23	com/tencent/tinker/loader/hotplug/interceptor/HandlerMessageInterceptor:sMCallbackField	Ljava/lang/reflect/Field;
     //   25: ldc 2
     //   27: monitorexit
     //   28: return
@@ -54,36 +54,59 @@ public class HandlerMessageInterceptor
   
   public HandlerMessageInterceptor(Handler paramHandler, MessageHandler paramMessageHandler)
   {
-    this.Bux = paramHandler;
-    this.Buy = paramMessageHandler;
+    this.mTarget = paramHandler;
+    this.mMessageHandler = paramMessageHandler;
+  }
+  
+  protected Handler.Callback decorate(Handler.Callback paramCallback)
+  {
+    if ((paramCallback != null) && (Interceptor.ITinkerHotplugProxy.class.isAssignableFrom(paramCallback.getClass()))) {
+      return paramCallback;
+    }
+    return new CallbackWrapper(this.mMessageHandler, paramCallback);
+  }
+  
+  protected Handler.Callback fetchTarget()
+  {
+    return (Handler.Callback)sMCallbackField.get(this.mTarget);
+  }
+  
+  protected void inject(Handler.Callback paramCallback)
+  {
+    sMCallbackField.set(this.mTarget, paramCallback);
   }
   
   static class CallbackWrapper
     implements Handler.Callback, Interceptor.ITinkerHotplugProxy
   {
-    private final Handler.Callback BuA;
-    private volatile boolean BuB;
-    private final HandlerMessageInterceptor.MessageHandler Buy;
+    private volatile boolean mIsInHandleMethod;
+    private final HandlerMessageInterceptor.MessageHandler mMessageHandler;
+    private final Handler.Callback mOrigCallback;
     
     CallbackWrapper(HandlerMessageInterceptor.MessageHandler paramMessageHandler, Handler.Callback paramCallback)
     {
-      this.Buy = paramMessageHandler;
-      this.BuA = paramCallback;
-      this.BuB = false;
+      this.mMessageHandler = paramMessageHandler;
+      this.mOrigCallback = paramCallback;
+      this.mIsInHandleMethod = false;
     }
     
     public boolean handleMessage(Message paramMessage)
     {
-      if (this.BuB) {
+      boolean bool = true;
+      if (this.mIsInHandleMethod) {
         return false;
       }
-      this.BuB = true;
-      this.Buy.handleMessage(paramMessage);
-      if (this.BuA != null) {}
-      for (boolean bool = this.BuA.handleMessage(paramMessage);; bool = false)
+      this.mIsInHandleMethod = true;
+      if (this.mMessageHandler.handleMessage(paramMessage)) {}
+      for (;;)
       {
-        this.BuB = false;
+        this.mIsInHandleMethod = false;
         return bool;
+        if (this.mOrigCallback != null) {
+          bool = this.mOrigCallback.handleMessage(paramMessage);
+        } else {
+          bool = false;
+        }
       }
     }
   }

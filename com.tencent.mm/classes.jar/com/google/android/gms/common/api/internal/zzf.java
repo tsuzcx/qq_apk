@@ -25,66 +25,66 @@ public final class zzf<ResultT>
   
   public final Feature[] getRequiredFeatures()
   {
-    AppMethodBeat.i(60912);
+    AppMethodBeat.i(11404);
     Feature[] arrayOfFeature = this.zzdy.zzca();
-    AppMethodBeat.o(60912);
+    AppMethodBeat.o(11404);
     return arrayOfFeature;
   }
   
   public final boolean shouldAutoResolveMissingFeatures()
   {
-    AppMethodBeat.i(60913);
+    AppMethodBeat.i(11405);
     boolean bool = this.zzdy.shouldAutoResolveMissingFeatures();
-    AppMethodBeat.o(60913);
+    AppMethodBeat.o(11405);
     return bool;
   }
   
   public final void zza(Status paramStatus)
   {
-    AppMethodBeat.i(60909);
+    AppMethodBeat.i(11401);
     this.zzdu.trySetException(this.zzdz.getException(paramStatus));
-    AppMethodBeat.o(60909);
+    AppMethodBeat.o(11401);
   }
   
   public final void zza(GoogleApiManager.zza<?> paramzza)
   {
-    AppMethodBeat.i(60908);
+    AppMethodBeat.i(11400);
     try
     {
       this.zzdy.doExecute(paramzza.zzae(), this.zzdu);
-      AppMethodBeat.o(60908);
+      AppMethodBeat.o(11400);
       return;
     }
     catch (DeadObjectException paramzza)
     {
-      AppMethodBeat.o(60908);
+      AppMethodBeat.o(11400);
       throw paramzza;
     }
     catch (RemoteException paramzza)
     {
       zza(zzb.zzb(paramzza));
-      AppMethodBeat.o(60908);
+      AppMethodBeat.o(11400);
       return;
     }
     catch (RuntimeException paramzza)
     {
       zza(paramzza);
-      AppMethodBeat.o(60908);
+      AppMethodBeat.o(11400);
     }
   }
   
   public final void zza(zzaa paramzzaa, boolean paramBoolean)
   {
-    AppMethodBeat.i(60911);
+    AppMethodBeat.i(11403);
     paramzzaa.zza(this.zzdu, paramBoolean);
-    AppMethodBeat.o(60911);
+    AppMethodBeat.o(11403);
   }
   
   public final void zza(RuntimeException paramRuntimeException)
   {
-    AppMethodBeat.i(60910);
+    AppMethodBeat.i(11402);
     this.zzdu.trySetException(paramRuntimeException);
-    AppMethodBeat.o(60910);
+    AppMethodBeat.o(11402);
   }
 }
 

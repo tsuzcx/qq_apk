@@ -1,225 +1,163 @@
 package com.tencent.mm.loader.b.a;
 
-import a.f.b.j;
-import a.l;
-import a.l.m;
-import a.v;
 import android.graphics.Bitmap;
 import com.tencent.mm.loader.c.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "T", "Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "Landroid/graphics/Bitmap;", "()V", "mFileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "delete", "", "exists", "save", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "source", "Lcom/tencent/mm/loader/model/Resource;", "resource", "Companion", "libimageloader_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache;", "T", "Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "Landroid/graphics/Bitmap;", "()V", "mFileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "buildFilePath", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "delete", "", "exists", "save", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "source", "Lcom/tencent/mm/loader/model/Resource;", "resource", "Companion", "libimageloader_release"})
 public abstract class a<T>
   extends d<T, Bitmap>
 {
   private static final String TAG = "MicroMsg.Loader.IDiskCache";
-  public static final a eNl = new a((byte)0);
-  private com.tencent.mm.loader.f.f eNk;
-  
-  public String a(com.tencent.mm.loader.h.a.a<T> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
-  {
-    j.q(parama, "url");
-    j.q(parame, "opts");
-    j.q(paramf, "reaper");
-    String str1 = parame.Tu();
-    if (str1 != null)
-    {
-      paramf = str1;
-      if (str1.length() != 0) {}
-    }
-    else
-    {
-      String str2 = parame.Ts();
-      paramf = str1;
-      if (str2 != null)
-      {
-        paramf = str1;
-        if (str2.length() > 0)
-        {
-          parame = parame.Tt();
-          if ((parame == null) || (parame.length() == 0) || (!m.jw(str2, parame)))
-          {
-            ab.e(TAG, "[johnw] SFS can't deal with absolute path: %s", new Object[] { str2 });
-            throw ((Throwable)new IllegalArgumentException("SFS can't deal with absolute path: ".concat(String.valueOf(str2))));
-          }
-          parame = str2.substring(parame.length());
-          j.p(parame, "(this as java.lang.String).substring(startIndex)");
-          paramf = parame;
-          if (m.jw(parame, "/"))
-          {
-            if (parame == null) {
-              throw new v("null cannot be cast to non-null type java.lang.String");
-            }
-            paramf = parame.substring(1);
-            j.p(paramf, "(this as java.lang.String).substring(startIndex)");
-          }
-        }
-      }
-    }
-    if (paramf != null)
-    {
-      parame = paramf;
-      if (paramf.length() != 0) {}
-    }
-    else
-    {
-      parame = this.eNk;
-      if (parame == null) {
-        j.ebi();
-      }
-      parame = parame.b(parama);
-    }
-    if (parame != null)
-    {
-      parama = parame;
-      if (parame.length() != 0) {}
-    }
-    else
-    {
-      parama = "";
-    }
-    return parama;
-  }
+  public static final a giC = new a((byte)0);
+  private com.tencent.mm.loader.f.f giB = (com.tencent.mm.loader.f.f)new com.tencent.mm.loader.e.a();
   
   /* Error */
-  public final boolean a(com.tencent.mm.loader.h.a.a<T> parama, com.tencent.mm.loader.h.f<?> paramf, com.tencent.mm.loader.h.e<Bitmap> parame1, com.tencent.mm.loader.h.e<Bitmap> parame2, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf1)
+  public boolean a(com.tencent.mm.loader.h.a.a<T> parama, com.tencent.mm.loader.h.f<?> paramf, com.tencent.mm.loader.h.e<Bitmap> parame1, com.tencent.mm.loader.h.e<Bitmap> parame2, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf1)
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore 8
     //   3: aload_1
-    //   4: ldc 62
-    //   6: invokestatic 68	a/f/b/j:q	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   4: ldc 71
+    //   6: invokestatic 77	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   9: aload_2
-    //   10: ldc 153
-    //   12: invokestatic 68	a/f/b/j:q	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   10: ldc 78
+    //   12: invokestatic 77	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   15: aload_3
-    //   16: ldc 154
-    //   18: invokestatic 68	a/f/b/j:q	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   16: ldc 79
+    //   18: invokestatic 77	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   21: aload 5
-    //   23: ldc 69
-    //   25: invokestatic 68	a/f/b/j:q	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   23: ldc 80
+    //   25: invokestatic 77	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   28: aload 6
-    //   30: ldc 70
-    //   32: invokestatic 68	a/f/b/j:q	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   30: ldc 81
+    //   32: invokestatic 77	d/g/b/k:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   35: aload_0
     //   36: aload_1
     //   37: aload_2
     //   38: aload 5
     //   40: aload 6
-    //   42: invokevirtual 157	com/tencent/mm/loader/b/a/a:a	(Lcom/tencent/mm/loader/h/a/a;Lcom/tencent/mm/loader/h/f;Lcom/tencent/mm/loader/c/e;Lcom/tencent/mm/loader/f;)Z
-    //   45: pop
-    //   46: aload_0
-    //   47: aload_1
-    //   48: aload 5
-    //   50: aload 6
-    //   52: invokevirtual 159	com/tencent/mm/loader/b/a/a:a	(Lcom/tencent/mm/loader/h/a/a;Lcom/tencent/mm/loader/c/e;Lcom/tencent/mm/loader/f;)Ljava/lang/String;
-    //   55: astore_3
-    //   56: getstatic 57	com/tencent/mm/loader/b/a/a:TAG	Ljava/lang/String;
-    //   59: new 161	java/lang/StringBuilder
-    //   62: dup
-    //   63: ldc 163
-    //   65: invokespecial 164	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   68: aload_1
-    //   69: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   72: ldc 170
-    //   74: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: aload_3
-    //   78: invokevirtual 173	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   84: invokestatic 180	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   87: getstatic 186	com/tencent/mm/loader/b/a/c:eNn	Lcom/tencent/mm/loader/b/a/c;
-    //   90: astore 9
-    //   92: aload_3
-    //   93: aload 5
-    //   95: invokevirtual 190	com/tencent/mm/loader/c/e:TC	()Lcom/tencent/mm/modelsfs/SFSContext;
-    //   98: invokestatic 193	com/tencent/mm/loader/b/a/c:a	(Ljava/lang/String;Lcom/tencent/mm/modelsfs/SFSContext;)Ljava/io/OutputStream;
-    //   101: astore 9
-    //   103: aload 9
-    //   105: ifnull +80 -> 185
-    //   108: aload 9
-    //   110: checkcast 195	java/io/Closeable
-    //   113: astore_3
-    //   114: iconst_0
-    //   115: istore 7
-    //   117: aload 4
-    //   119: ifnull +36 -> 155
-    //   122: getstatic 186	com/tencent/mm/loader/b/a/c:eNn	Lcom/tencent/mm/loader/b/a/c;
-    //   125: astore 10
-    //   127: aload 4
-    //   129: invokevirtual 201	com/tencent/mm/loader/h/e:value	()Ljava/lang/Object;
-    //   132: astore 4
-    //   134: aload 4
-    //   136: ldc 203
-    //   138: invokestatic 130	a/f/b/j:p	(Ljava/lang/Object;Ljava/lang/String;)V
-    //   141: aload 4
-    //   143: checkcast 205	android/graphics/Bitmap
-    //   146: aload 9
-    //   148: invokestatic 208	com/tencent/mm/loader/b/a/c:a	(Landroid/graphics/Bitmap;Ljava/io/OutputStream;)Z
-    //   151: pop
-    //   152: iconst_1
-    //   153: istore 7
-    //   155: iload 7
-    //   157: ifne +9 -> 166
-    //   160: aload_2
-    //   161: aload 9
-    //   163: invokevirtual 213	com/tencent/mm/loader/h/f:b	(Ljava/io/OutputStream;)V
-    //   166: aload_0
-    //   167: aload_1
-    //   168: aload 5
-    //   170: aload 6
-    //   172: invokevirtual 216	com/tencent/mm/loader/b/a/a:b	(Lcom/tencent/mm/loader/h/a/a;Lcom/tencent/mm/loader/c/e;Lcom/tencent/mm/loader/f;)Z
-    //   175: pop
-    //   176: getstatic 222	a/y:BMg	La/y;
-    //   179: astore_1
-    //   180: aload_3
-    //   181: aconst_null
-    //   182: invokestatic 227	a/e/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   185: iconst_1
-    //   186: ireturn
-    //   187: astore_2
-    //   188: aload_2
-    //   189: athrow
-    //   190: astore_1
-    //   191: aload_3
-    //   192: aload_2
-    //   193: invokestatic 227	a/e/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
-    //   196: aload_1
-    //   197: athrow
-    //   198: astore_1
-    //   199: aload 8
-    //   201: astore_2
-    //   202: goto -11 -> 191
+    //   42: invokevirtual 84	com/tencent/mm/loader/b/a/a:a	(Lcom/tencent/mm/loader/h/a/a;Lcom/tencent/mm/loader/h/f;Lcom/tencent/mm/loader/c/e;Lcom/tencent/mm/loader/f;)Z
+    //   45: ifeq +137 -> 182
+    //   48: aload_0
+    //   49: aload_1
+    //   50: aload 5
+    //   52: aload 6
+    //   54: invokevirtual 88	com/tencent/mm/loader/b/a/a:c	(Lcom/tencent/mm/loader/h/a/a;Lcom/tencent/mm/loader/c/e;Lcom/tencent/mm/loader/f;)Ljava/lang/String;
+    //   57: astore_3
+    //   58: getstatic 57	com/tencent/mm/loader/b/a/a:TAG	Ljava/lang/String;
+    //   61: new 90	java/lang/StringBuilder
+    //   64: dup
+    //   65: ldc 92
+    //   67: invokespecial 95	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   70: aload_1
+    //   71: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   74: ldc 101
+    //   76: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: aload_3
+    //   80: invokevirtual 104	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   86: invokestatic 114	com/tencent/mm/sdk/platformtools/ad:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   89: getstatic 120	com/tencent/mm/loader/b/a/c:giE	Lcom/tencent/mm/loader/b/a/c;
+    //   92: astore 9
+    //   94: aload_3
+    //   95: invokestatic 124	com/tencent/mm/loader/b/a/c:re	(Ljava/lang/String;)Ljava/io/OutputStream;
+    //   98: astore 9
+    //   100: aload 9
+    //   102: ifnull +80 -> 182
+    //   105: aload 9
+    //   107: checkcast 126	java/io/Closeable
+    //   110: astore_3
+    //   111: iconst_0
+    //   112: istore 7
+    //   114: aload 4
+    //   116: ifnull +36 -> 152
+    //   119: getstatic 120	com/tencent/mm/loader/b/a/c:giE	Lcom/tencent/mm/loader/b/a/c;
+    //   122: astore 10
+    //   124: aload 4
+    //   126: invokevirtual 132	com/tencent/mm/loader/h/e:value	()Ljava/lang/Object;
+    //   129: astore 4
+    //   131: aload 4
+    //   133: ldc 134
+    //   135: invokestatic 137	d/g/b/k:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   138: aload 4
+    //   140: checkcast 139	android/graphics/Bitmap
+    //   143: aload 9
+    //   145: invokestatic 142	com/tencent/mm/loader/b/a/c:a	(Landroid/graphics/Bitmap;Ljava/io/OutputStream;)Z
+    //   148: pop
+    //   149: iconst_1
+    //   150: istore 7
+    //   152: iload 7
+    //   154: ifne +9 -> 163
+    //   157: aload_2
+    //   158: aload 9
+    //   160: invokevirtual 148	com/tencent/mm/loader/h/f:b	(Ljava/io/OutputStream;)V
+    //   163: aload_0
+    //   164: aload_1
+    //   165: aload 5
+    //   167: aload 6
+    //   169: invokevirtual 151	com/tencent/mm/loader/b/a/a:a	(Lcom/tencent/mm/loader/h/a/a;Lcom/tencent/mm/loader/c/e;Lcom/tencent/mm/loader/f;)Z
+    //   172: pop
+    //   173: getstatic 157	d/y:JfV	Ld/y;
+    //   176: astore_1
+    //   177: aload_3
+    //   178: aconst_null
+    //   179: invokestatic 162	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   182: iconst_1
+    //   183: ireturn
+    //   184: astore_2
+    //   185: aload_2
+    //   186: athrow
+    //   187: astore_1
+    //   188: aload_3
+    //   189: aload_2
+    //   190: invokestatic 162	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   193: aload_1
+    //   194: athrow
+    //   195: astore_1
+    //   196: aload 8
+    //   198: astore_2
+    //   199: goto -11 -> 188
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	205	0	this	a
-    //   0	205	1	parama	com.tencent.mm.loader.h.a.a<T>
-    //   0	205	2	paramf	com.tencent.mm.loader.h.f<?>
-    //   0	205	3	parame1	com.tencent.mm.loader.h.e<Bitmap>
-    //   0	205	4	parame2	com.tencent.mm.loader.h.e<Bitmap>
-    //   0	205	5	parame	e
-    //   0	205	6	paramf1	com.tencent.mm.loader.f<?, Bitmap>
-    //   115	41	7	i	int
-    //   1	199	8	localObject1	Object
-    //   90	72	9	localObject2	Object
-    //   125	1	10	localc	c
+    //   0	202	0	this	a
+    //   0	202	1	parama	com.tencent.mm.loader.h.a.a<T>
+    //   0	202	2	paramf	com.tencent.mm.loader.h.f<?>
+    //   0	202	3	parame1	com.tencent.mm.loader.h.e<Bitmap>
+    //   0	202	4	parame2	com.tencent.mm.loader.h.e<Bitmap>
+    //   0	202	5	parame	e
+    //   0	202	6	paramf1	com.tencent.mm.loader.f<?, Bitmap>
+    //   112	41	7	i	int
+    //   1	196	8	localObject1	Object
+    //   92	67	9	localObject2	Object
+    //   122	1	10	localc	c
     // Exception table:
     //   from	to	target	type
-    //   122	152	187	java/lang/Throwable
-    //   160	166	187	java/lang/Throwable
-    //   166	180	187	java/lang/Throwable
-    //   188	190	190	finally
-    //   122	152	198	finally
-    //   160	166	198	finally
-    //   166	180	198	finally
+    //   119	149	184	java/lang/Throwable
+    //   157	163	184	java/lang/Throwable
+    //   163	177	184	java/lang/Throwable
+    //   185	187	187	finally
+    //   119	149	195	finally
+    //   157	163	195	finally
+    //   163	177	195	finally
   }
   
-  @l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache$Companion;", "", "()V", "TAG", "", "libimageloader_release"})
+  public String c(com.tencent.mm.loader.h.a.a<T> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
+  {
+    k.h(parama, "url");
+    k.h(parame, "opts");
+    k.h(paramf, "reaper");
+    return super.c(parama, parame, paramf);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/loader/cache/disk/BitmapDiskCache$Companion;", "", "()V", "TAG", "", "libimageloader_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.b.a.a
  * JD-Core Version:    0.7.0.1
  */

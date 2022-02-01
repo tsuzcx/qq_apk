@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.game.report.c;
+import com.tencent.mm.game.report.e;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMDotView;
 import com.tencent.mm.ui.base.a;
@@ -17,28 +17,28 @@ public class GameGalleryUI
   implements ViewPager.OnPageChangeListener
 {
   private String appId = "";
-  private MMDotView jpZ;
-  private ViewPager lz;
-  private int mhr = -1;
-  private int nzF = 0;
+  private MMDotView mfR;
+  private ViewPager oEa;
+  private int pOf = -1;
+  private int sjf = 0;
   
   public int getLayoutId()
   {
-    return 2130969756;
+    return 2131494310;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(111967);
+    AppMethodBeat.i(42151);
     super.onCreate(paramBundle);
     hideTitleView();
-    this.lz = ((ViewPager)findViewById(2131824637));
-    this.jpZ = ((MMDotView)findViewById(2131824638));
+    this.oEa = ((ViewPager)findViewById(2131300450));
+    this.mfR = ((MMDotView)findViewById(2131300454));
     paramBundle = getIntent().getStringArrayExtra("URLS");
     if (paramBundle == null)
     {
       finish();
-      AppMethodBeat.o(111967);
+      AppMethodBeat.o(42151);
       return;
     }
     int j = getIntent().getIntExtra("CURRENT", 0);
@@ -53,19 +53,19 @@ public class GameGalleryUI
       i = 0;
     }
     this.appId = getIntent().getStringExtra("REPORT_APPID");
-    this.mhr = getIntent().getIntExtra("REPORT_SCENE", -1);
-    this.nzF = getIntent().getIntExtra("SOURCE_SCENE", 0);
+    this.pOf = getIntent().getIntExtra("REPORT_SCENE", -1);
+    this.sjf = getIntent().getIntExtra("SOURCE_SCENE", 0);
     GameGalleryUI.a locala = new GameGalleryUI.a(this, paramBundle);
-    this.lz.setAdapter(locala);
-    this.lz.setOnPageChangeListener(this);
-    this.lz.setCurrentItem(i, false);
-    this.jpZ.setInvertedStyle(true);
-    this.jpZ.setDotCount(paramBundle.length);
-    this.jpZ.setSelectedDot(i);
+    this.oEa.setAdapter(locala);
+    this.oEa.setOnPageChangeListener(this);
+    this.oEa.setCurrentItem(i, false);
+    this.mfR.setInvertedStyle(true);
+    this.mfR.setDotCount(paramBundle.length);
+    this.mfR.setSelectedDot(i);
     if (i == 0) {
-      c.a(this, this.mhr, 1202, 1, 12, this.appId, this.nzF, null);
+      e.a(this, this.pOf, 1202, 1, 12, this.appId, this.sjf, null);
     }
-    AppMethodBeat.o(111967);
+    AppMethodBeat.o(42151);
   }
   
   public void onPageScrollStateChanged(int paramInt) {}
@@ -74,10 +74,10 @@ public class GameGalleryUI
   
   public void onPageSelected(int paramInt)
   {
-    AppMethodBeat.i(111968);
-    this.jpZ.setSelectedDot(paramInt);
-    c.a(this, this.mhr, 1202, paramInt + 1, 12, this.appId, this.nzF, null);
-    AppMethodBeat.o(111968);
+    AppMethodBeat.i(42152);
+    this.mfR.setSelectedDot(paramInt);
+    e.a(this, this.pOf, 1202, paramInt + 1, 12, this.appId, this.sjf, null);
+    AppMethodBeat.o(42152);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -88,7 +88,7 @@ public class GameGalleryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameGalleryUI
  * JD-Core Version:    0.7.0.1
  */

@@ -2,35 +2,33 @@ package com.tencent.xweb.sys;
 
 import android.net.Uri;
 import android.os.Build.VERSION;
-import android.webkit.WebResourceRequest;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.a.a;
-import com.tencent.xweb.r;
 import java.util.Map;
 
 public final class c$e
-  implements r
+  implements com.tencent.xweb.WebResourceRequest
 {
-  private boolean BHm;
-  private boolean BHn;
-  a BHo;
+  private Map<String, String> BTs;
+  private boolean IQX;
+  private boolean IQY;
+  a IQZ;
   private String method;
   private Uri url;
-  private Map<String, String> vOs;
   
-  public c$e(WebResourceRequest paramWebResourceRequest)
+  public c$e(android.webkit.WebResourceRequest paramWebResourceRequest)
   {
-    AppMethodBeat.i(84658);
+    AppMethodBeat.i(153666);
     if (Build.VERSION.SDK_INT >= 21)
     {
       this.url = paramWebResourceRequest.getUrl();
-      this.BHm = paramWebResourceRequest.isForMainFrame();
-      this.BHn = paramWebResourceRequest.hasGesture();
+      this.IQX = paramWebResourceRequest.isForMainFrame();
+      this.IQY = paramWebResourceRequest.hasGesture();
       this.method = paramWebResourceRequest.getMethod();
-      this.vOs = paramWebResourceRequest.getRequestHeaders();
-      this.BHo = new a(this);
+      this.BTs = paramWebResourceRequest.getRequestHeaders();
+      this.IQZ = new a(this);
     }
-    AppMethodBeat.o(84658);
+    AppMethodBeat.o(153666);
   }
   
   public final String getMethod()
@@ -40,7 +38,7 @@ public final class c$e
   
   public final Map<String, String> getRequestHeaders()
   {
-    return this.vOs;
+    return this.BTs;
   }
   
   public final Uri getUrl()
@@ -50,17 +48,17 @@ public final class c$e
   
   public final boolean hasGesture()
   {
-    return this.BHn;
+    return this.IQY;
   }
   
   public final boolean isForMainFrame()
   {
-    return this.BHm;
+    return this.IQX;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.sys.c.e
  * JD-Core Version:    0.7.0.1
  */

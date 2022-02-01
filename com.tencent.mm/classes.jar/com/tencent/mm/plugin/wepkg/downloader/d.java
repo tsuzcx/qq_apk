@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wepkg.downloader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.util.HashMap;
@@ -9,91 +9,91 @@ import java.util.concurrent.Future;
 
 public final class d
 {
+  private static volatile d BHM;
   private static Object lock;
-  private static volatile d vFa;
-  HashMap<String, c> vFb;
+  HashMap<String, c> BHN;
   
   static
   {
-    AppMethodBeat.i(63430);
+    AppMethodBeat.i(110601);
     lock = new Object();
-    AppMethodBeat.o(63430);
+    AppMethodBeat.o(110601);
   }
   
   private d()
   {
-    AppMethodBeat.i(63427);
-    this.vFb = new HashMap();
-    AppMethodBeat.o(63427);
+    AppMethodBeat.i(110598);
+    this.BHN = new HashMap();
+    AppMethodBeat.o(110598);
   }
   
-  public static d dkx()
+  public static d etG()
   {
-    AppMethodBeat.i(63426);
-    if (vFa == null) {}
+    AppMethodBeat.i(110597);
+    if (BHM == null) {}
     synchronized (lock)
     {
-      if (vFa == null) {
-        vFa = new d();
+      if (BHM == null) {
+        BHM = new d();
       }
-      ??? = vFa;
-      AppMethodBeat.o(63426);
+      ??? = BHM;
+      AppMethodBeat.o(110597);
       return ???;
     }
   }
   
   final boolean a(c paramc)
   {
-    AppMethodBeat.i(63429);
-    if (this.vFb.containsKey(paramc.vER.vFr))
+    AppMethodBeat.i(110600);
+    if (this.BHN.containsKey(paramc.BHD.BId))
     {
-      paramc.vEX = true;
+      paramc.BHJ = true;
       for (;;)
       {
         try
         {
-          HttpURLConnection localHttpURLConnection = paramc.vET;
+          HttpURLConnection localHttpURLConnection = paramc.BHF;
           if (localHttpURLConnection == null) {}
         }
         catch (Exception localException2)
         {
-          ab.i("MicroMsg.Wepkg.WePkgDownloadTask", "stop, " + localException2.getMessage());
+          ad.i("MicroMsg.Wepkg.WePkgDownloadTask", "stop, " + localException2.getMessage());
           continue;
         }
         try
         {
-          paramc.vET.getInputStream().close();
-          paramc.vET.disconnect();
-          if (paramc.vES != null) {
-            paramc.vES.cancel(false);
+          paramc.BHF.getInputStream().close();
+          paramc.BHF.disconnect();
+          if (paramc.BHE != null) {
+            paramc.BHE.cancel(false);
           }
-          this.vFb.remove(paramc.vER.vFr);
-          AppMethodBeat.o(63429);
+          this.BHN.remove(paramc.BHD.BId);
+          AppMethodBeat.o(110600);
           return true;
         }
         catch (Exception localException1)
         {
-          ab.e("MicroMsg.Wepkg.WePkgDownloadTask", localException1.getMessage());
+          ad.e("MicroMsg.Wepkg.WePkgDownloadTask", localException1.getMessage());
         }
       }
     }
-    AppMethodBeat.o(63429);
+    AppMethodBeat.o(110600);
     return false;
   }
   
-  public final boolean akx(String paramString)
+  public final boolean azQ(String paramString)
   {
-    AppMethodBeat.i(63428);
-    if (this.vFb.containsKey(paramString)) {
-      this.vFb.remove(paramString);
+    AppMethodBeat.i(110599);
+    if (this.BHN.containsKey(paramString)) {
+      this.BHN.remove(paramString);
     }
-    AppMethodBeat.o(63428);
+    AppMethodBeat.o(110599);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.downloader.d
  * JD-Core Version:    0.7.0.1
  */

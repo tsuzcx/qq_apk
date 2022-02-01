@@ -1,156 +1,185 @@
 package com.tencent.mm.plugin.music.e;
 
 import android.os.Looper;
-import com.tencent.mm.g.a.ki;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.az.f;
+import com.tencent.mm.g.a.ln;
+import com.tencent.mm.plugin.music.f.e;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aq;
 
 public abstract class h
   implements c
 {
-  private com.tencent.mm.plugin.music.f.d oYZ = new com.tencent.mm.plugin.music.f.d();
-  private com.tencent.mm.plugin.music.f.e oZa = new com.tencent.mm.plugin.music.f.e();
-  private com.tencent.mm.plugin.music.d.a oZb = new com.tencent.mm.plugin.music.d.a();
-  private Runnable oZc = new h.1(this);
-  
-  private void bVF()
+  private com.tencent.mm.plugin.music.f.d tWf = new com.tencent.mm.plugin.music.f.d();
+  private e tWg = new e();
+  private com.tencent.mm.plugin.music.d.a tWh = new com.tencent.mm.plugin.music.d.a();
+  private Runnable tWi = new Runnable()
   {
-    if (this.oYZ.aiw()) {
-      this.oYZ.stopPlay();
+    public final void run()
+    {
+      AppMethodBeat.i(137281);
+      boolean bool1 = h.this.cUV().azH();
+      boolean bool2 = h.this.cUV().azF();
+      ad.i("MicroMsg.Music.MusicBasePlayEngine", "stopMusicDelayRunnable, isStartPlayMusic:%b, isPlayingMusic:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      if ((bool1) && (!bool2)) {
+        h.this.cUV().stopPlay();
+      }
+      AppMethodBeat.o(137281);
     }
-    if (this.oZa.aiw()) {
-      this.oZa.stopPlay();
+  };
+  
+  private void cVg()
+  {
+    if (this.tWf.azF()) {
+      this.tWf.stopPlay();
     }
-    if (this.oZb.aiw()) {
-      this.oZb.stopPlay();
+    if (this.tWg.azF()) {
+      this.tWg.stopPlay();
+    }
+    if (this.tWh.azF()) {
+      this.tWh.stopPlay();
     }
   }
   
-  public static void bVG()
+  public static void cVh()
   {
-    ab.i("MicroMsg.Music.MusicBasePlayEngine", "sendPreemptedEvent");
-    ki localki = new ki();
-    localki.cAc.action = 10;
-    localki.cAc.state = "preempted";
-    localki.cAc.appId = "not from app brand appid";
-    localki.cAc.cAe = true;
-    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
+    ad.i("MicroMsg.Music.MusicBasePlayEngine", "sendPreemptedEvent");
+    ln localln = new ln();
+    localln.dql.action = 10;
+    localln.dql.state = "preempted";
+    localln.dql.appId = "not from app brand appid";
+    localln.dql.dqn = true;
+    com.tencent.mm.sdk.b.a.ESL.a(localln, Looper.getMainLooper());
   }
   
-  public void Ai(int paramInt)
+  public void HM(int paramInt)
   {
-    ab.i("MicroMsg.Music.MusicBasePlayEngine", "stopMusicDelayIfPaused, delay_ms:%d", new Object[] { Integer.valueOf(paramInt) });
-    al.ae(this.oZc);
-    al.p(this.oZc, paramInt);
+    ad.i("MicroMsg.Music.MusicBasePlayEngine", "stopMusicDelayIfPaused, delay_ms:%d", new Object[] { Integer.valueOf(paramInt) });
+    aq.az(this.tWi);
+    aq.n(this.tWi, paramInt);
   }
   
-  public void aiu()
+  public void azD()
   {
-    this.oYZ.stopPlay();
-    if (this.oZa != null) {
-      this.oZa.stopPlay();
+    this.tWf.stopPlay();
+    if (this.tWg != null) {
+      this.tWg.stopPlay();
     }
-    if (this.oZb != null) {
-      this.oZb.stopPlay();
+    if (this.tWh != null) {
+      this.tWh.stopPlay();
     }
-    al.ae(this.oZc);
+    aq.az(this.tWi);
   }
   
-  public com.tencent.mm.aw.e bVs()
+  public f cUT()
   {
     return null;
   }
   
-  public com.tencent.mm.plugin.music.f.a.d bVu()
+  public com.tencent.mm.plugin.music.f.a.d cUV()
   {
-    com.tencent.mm.aw.e locale = bVs();
-    if (com.tencent.mm.plugin.music.h.c.M(locale)) {
-      return this.oZb;
+    f localf = cUT();
+    if (com.tencent.mm.plugin.music.h.c.P(localf)) {
+      return this.tWh;
     }
-    if ((locale != null) && (com.tencent.mm.plugin.music.h.c.Az(locale.fKh))) {
-      return this.oZa;
+    if ((localf != null) && (com.tencent.mm.plugin.music.h.c.Ic(localf.hnn))) {
+      return this.tWg;
     }
-    return this.oYZ;
+    return this.tWf;
   }
   
   public void finish()
   {
-    aiu();
+    azD();
     release();
   }
   
-  public void jL(boolean paramBoolean)
+  public void m(f paramf)
   {
-    if (this.oYZ.aiw()) {
-      this.oYZ.cAf = paramBoolean;
+    if (this.tWf.azF()) {
+      this.tWf.m(paramf);
     }
-    if (this.oZa.aiw()) {
-      this.oZa.cAf = paramBoolean;
+    if (this.tWg.azF()) {
+      this.tWg.m(paramf);
     }
-    if (this.oZb.aiw()) {
-      this.oZb.cAf = paramBoolean;
+    if (this.tWh.azF()) {
+      this.tWh.m(paramf);
     }
   }
   
-  public final void q(com.tencent.mm.aw.e parame)
+  public void nJ(boolean paramBoolean)
   {
-    if (com.tencent.mm.plugin.music.h.c.M(parame))
-    {
-      ab.i("MicroMsg.Music.MusicBasePlayEngine", "use exoMusicPlayer");
-      bVF();
-      this.oZb.f(parame);
+    if (this.tWf.azF()) {
+      this.tWf.dqo = paramBoolean;
     }
-    for (;;)
-    {
-      if (parame.fKh != 11) {
-        bVG();
-      }
-      return;
-      if (com.tencent.mm.plugin.music.h.c.Az(parame.fKh))
-      {
-        ab.i("MicroMsg.Music.MusicBasePlayEngine", "use qqMusicPlayer");
-        bVF();
-        this.oZa.f(parame);
-      }
-      else
-      {
-        ab.i("MicroMsg.Music.MusicBasePlayEngine", "use musicPlayer");
-        bVF();
-        this.oYZ.f(parame);
-      }
+    if (this.tWg.azF()) {
+      this.tWg.dqo = paramBoolean;
     }
-  }
-  
-  public final void r(com.tencent.mm.aw.e parame)
-  {
-    if (com.tencent.mm.plugin.music.h.c.M(parame))
-    {
-      this.oZb.H(parame);
-      return;
+    if (this.tWh.azF()) {
+      this.tWh.dqo = paramBoolean;
     }
-    if ((parame != null) && (com.tencent.mm.plugin.music.h.c.Az(parame.fKh)))
-    {
-      this.oZa.H(parame);
-      return;
-    }
-    this.oYZ.H(parame);
   }
   
   public void release()
   {
-    ab.i("MicroMsg.Music.MusicBasePlayEngine", "release");
-    if (this.oZa != null) {
-      this.oZa.release();
+    ad.i("MicroMsg.Music.MusicBasePlayEngine", "release");
+    if (this.tWg != null) {
+      this.tWg.release();
     }
-    if (this.oZb != null) {
-      this.oZb.release();
+    if (this.tWh != null) {
+      this.tWh.release();
     }
-    al.ae(this.oZc);
+    aq.az(this.tWi);
+  }
+  
+  public final void t(f paramf)
+  {
+    if (com.tencent.mm.plugin.music.h.c.P(paramf))
+    {
+      ad.i("MicroMsg.Music.MusicBasePlayEngine", "use exoMusicPlayer");
+      cVg();
+      this.tWh.h(paramf);
+    }
+    for (;;)
+    {
+      if (paramf.hnn != 11) {
+        cVh();
+      }
+      return;
+      if (com.tencent.mm.plugin.music.h.c.Ic(paramf.hnn))
+      {
+        ad.i("MicroMsg.Music.MusicBasePlayEngine", "use qqMusicPlayer");
+        cVg();
+        this.tWg.h(paramf);
+      }
+      else
+      {
+        ad.i("MicroMsg.Music.MusicBasePlayEngine", "use musicPlayer");
+        cVg();
+        this.tWf.h(paramf);
+      }
+    }
+  }
+  
+  public final void u(f paramf)
+  {
+    if (com.tencent.mm.plugin.music.h.c.P(paramf))
+    {
+      this.tWh.K(paramf);
+      return;
+    }
+    if ((paramf != null) && (com.tencent.mm.plugin.music.h.c.Ic(paramf.hnn)))
+    {
+      this.tWg.K(paramf);
+      return;
+    }
+    this.tWf.K(paramf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.e.h
  * JD-Core Version:    0.7.0.1
  */

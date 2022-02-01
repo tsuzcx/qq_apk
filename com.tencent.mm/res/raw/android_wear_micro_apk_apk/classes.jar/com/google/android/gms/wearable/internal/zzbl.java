@@ -9,13 +9,13 @@ public class zzbl
   extends zza
 {
   public static final Parcelable.Creator<zzbl> CREATOR = new ac();
-  public final List<zzcc> Tv;
+  public final List<zzcc> Vk;
   public final int statusCode;
   
   public zzbl(int paramInt, List<zzcc> paramList)
   {
     this.statusCode = paramInt;
-    this.Tv = paramList;
+    this.Vk = paramList;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

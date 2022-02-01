@@ -1,21 +1,23 @@
 package com.tencent.mm.plugin.topstory.ui.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.m;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.plugin.topstory.a.c.f;
 import com.tencent.mm.plugin.topstory.ui.home.a;
-import com.tencent.mm.protocal.protobuf.ckr;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.protobuf.dcq;
+import com.tencent.mm.sdk.platformtools.ad;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 final class c$1
-  implements com.tencent.mm.ai.f
+  implements g
 {
   c$1(c paramc) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
   {
-    AppMethodBeat.i(2148);
+    AppMethodBeat.i(126553);
     JSONObject localJSONObject = new JSONObject();
     for (;;)
     {
@@ -26,23 +28,23 @@ final class c$1
         if ((paramInt1 == 0) && (paramInt2 == 0)) {
           continue;
         }
-        ab.w("MicroMsg.TopStory.TopStoryWebData", "NetSceneTopStoryPostComment response, errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        ad.w("MicroMsg.TopStory.TopStoryWebData", "NetSceneTopStoryPostComment response, errType:%s, errCode:%s, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       }
       catch (JSONException paramString)
       {
         continue;
       }
-      if (this.tmb.tlT != null) {
-        this.tmb.tlT.ael(localJSONObject.toString());
+      if (this.ySN.ySH != null) {
+        this.ySN.ySH.asF(localJSONObject.toString());
       }
-      AppMethodBeat.o(2148);
+      AppMethodBeat.o(126553);
       return;
-      if (this.tmb.tlT != null)
+      if (this.ySN.ySH != null)
       {
-        paramString = ((com.tencent.mm.plugin.topstory.a.c.f)paramm).cIE().xUF;
-        paramm = ((com.tencent.mm.plugin.topstory.a.c.f)paramm).cIE().xHX;
+        paramString = ((f)paramn).dOf().Eud;
+        paramn = ((f)paramn).dOf().DVb;
         localJSONObject.put("commentId", paramString);
-        localJSONObject.put("requestId", paramm);
+        localJSONObject.put("requestId", paramn);
       }
     }
   }

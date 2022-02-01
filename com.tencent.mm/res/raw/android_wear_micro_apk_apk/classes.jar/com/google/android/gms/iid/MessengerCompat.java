@@ -11,25 +11,25 @@ public class MessengerCompat
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<MessengerCompat> CREATOR = new Parcelable.Creator() {};
-  Messenger LV;
-  a LW;
+  Messenger NK;
+  a NL;
   
   public MessengerCompat(IBinder paramIBinder)
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.LV = new Messenger(paramIBinder);
+      this.NK = new Messenger(paramIBinder);
       return;
     }
-    this.LW = b.k(paramIBinder);
+    this.NL = b.k(paramIBinder);
   }
   
   private IBinder getBinder()
   {
-    if (this.LV != null) {
-      return this.LV.getBinder();
+    if (this.NK != null) {
+      return this.NK.getBinder();
     }
-    return this.LW.asBinder();
+    return this.NL.asBinder();
   }
   
   public int describeContents()
@@ -58,12 +58,12 @@ public class MessengerCompat
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.LV != null)
+    if (this.NK != null)
     {
-      paramParcel.writeStrongBinder(this.LV.getBinder());
+      paramParcel.writeStrongBinder(this.NK.getBinder());
       return;
     }
-    paramParcel.writeStrongBinder(this.LW.asBinder());
+    paramParcel.writeStrongBinder(this.NL.asBinder());
   }
 }
 

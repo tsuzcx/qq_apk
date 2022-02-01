@@ -14,14 +14,14 @@ public final class MediaSessionCompat$QueueItem
   implements Parcelable
 {
   public static final Parcelable.Creator<QueueItem> CREATOR = new Parcelable.Creator() {};
-  private final MediaDescriptionCompat gJ;
-  private final long in;
-  private Object io;
+  private final MediaDescriptionCompat iH;
+  private final long kl;
+  private Object km;
   
   MediaSessionCompat$QueueItem(Parcel paramParcel)
   {
-    this.gJ = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
-    this.in = paramParcel.readLong();
+    this.iH = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
+    this.kl = paramParcel.readLong();
   }
   
   private MediaSessionCompat$QueueItem(Object paramObject, MediaDescriptionCompat paramMediaDescriptionCompat, long paramLong)
@@ -32,9 +32,9 @@ public final class MediaSessionCompat$QueueItem
     if (paramLong == -1L) {
       throw new IllegalArgumentException("Id cannot be QueueItem.UNKNOWN_ID");
     }
-    this.gJ = paramMediaDescriptionCompat;
-    this.in = paramLong;
-    this.io = paramObject;
+    this.iH = paramMediaDescriptionCompat;
+    this.kl = paramLong;
+    this.km = paramObject;
   }
   
   public static List<QueueItem> f(List<?> paramList)
@@ -48,7 +48,7 @@ public final class MediaSessionCompat$QueueItem
     {
       paramList = localIterator.next();
       if ((paramList == null) || (Build.VERSION.SDK_INT < 21)) {}
-      for (paramList = null;; paramList = new QueueItem(paramList, MediaDescriptionCompat.c(((MediaSession.QueueItem)paramList).getDescription()), ((MediaSession.QueueItem)paramList).getQueueId()))
+      for (paramList = null;; paramList = new QueueItem(paramList, MediaDescriptionCompat.i(((MediaSession.QueueItem)paramList).getDescription()), ((MediaSession.QueueItem)paramList).getQueueId()))
       {
         localArrayList.add(paramList);
         break;
@@ -64,13 +64,13 @@ public final class MediaSessionCompat$QueueItem
   
   public final String toString()
   {
-    return "MediaSession.QueueItem {Description=" + this.gJ + ", Id=" + this.in + " }";
+    return "MediaSession.QueueItem {Description=" + this.iH + ", Id=" + this.kl + " }";
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    this.gJ.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeLong(this.in);
+    this.iH.writeToParcel(paramParcel, paramInt);
+    paramParcel.writeLong(this.kl);
   }
 }
 

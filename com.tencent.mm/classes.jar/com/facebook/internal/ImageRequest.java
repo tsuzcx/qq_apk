@@ -16,37 +16,37 @@ public class ImageRequest
   public static final int UNSPECIFIED_DIMENSION = 0;
   private static final String WIDTH_PARAM = "width";
   private boolean allowCachedRedirects;
-  private ImageRequest.Callback callback;
+  private Callback callback;
   private Object callerTag;
   private Context context;
   private Uri imageUri;
   
-  private ImageRequest(ImageRequest.Builder paramBuilder)
+  private ImageRequest(Builder paramBuilder)
   {
-    AppMethodBeat.i(72391);
-    this.context = ImageRequest.Builder.access$000(paramBuilder);
-    this.imageUri = ImageRequest.Builder.access$100(paramBuilder);
-    this.callback = ImageRequest.Builder.access$200(paramBuilder);
-    this.allowCachedRedirects = ImageRequest.Builder.access$300(paramBuilder);
-    if (ImageRequest.Builder.access$400(paramBuilder) == null) {}
-    for (paramBuilder = new Object();; paramBuilder = ImageRequest.Builder.access$400(paramBuilder))
+    AppMethodBeat.i(17827);
+    this.context = paramBuilder.context;
+    this.imageUri = paramBuilder.imageUrl;
+    this.callback = paramBuilder.callback;
+    this.allowCachedRedirects = paramBuilder.allowCachedRedirects;
+    if (paramBuilder.callerTag == null) {}
+    for (paramBuilder = new Object();; paramBuilder = paramBuilder.callerTag)
     {
       this.callerTag = paramBuilder;
-      AppMethodBeat.o(72391);
+      AppMethodBeat.o(17827);
       return;
     }
   }
   
   public static Uri getProfilePictureUri(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(72390);
+    AppMethodBeat.i(17826);
     Validate.notNullOrEmpty(paramString, "userId");
     paramInt1 = Math.max(paramInt1, 0);
     paramInt2 = Math.max(paramInt2, 0);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       paramString = new IllegalArgumentException("Either width or height must be greater than 0");
-      AppMethodBeat.o(72390);
+      AppMethodBeat.o(17826);
       throw paramString;
     }
     paramString = Uri.parse(ServerProtocol.getGraphUrlBase()).buildUpon().path(String.format(Locale.US, "%s/%s/picture", new Object[] { FacebookSdk.getGraphApiVersion(), paramString }));
@@ -58,11 +58,11 @@ public class ImageRequest
     }
     paramString.appendQueryParameter("migration_overrides", "{october_2012:true}");
     paramString = paramString.build();
-    AppMethodBeat.o(72390);
+    AppMethodBeat.o(17826);
     return paramString;
   }
   
-  public ImageRequest.Callback getCallback()
+  public Callback getCallback()
   {
     return this.callback;
   }
@@ -86,10 +86,59 @@ public class ImageRequest
   {
     return this.allowCachedRedirects;
   }
+  
+  public static class Builder
+  {
+    private boolean allowCachedRedirects;
+    private ImageRequest.Callback callback;
+    private Object callerTag;
+    private Context context;
+    private Uri imageUrl;
+    
+    public Builder(Context paramContext, Uri paramUri)
+    {
+      AppMethodBeat.i(17824);
+      Validate.notNull(paramUri, "imageUri");
+      this.context = paramContext;
+      this.imageUrl = paramUri;
+      AppMethodBeat.o(17824);
+    }
+    
+    public ImageRequest build()
+    {
+      AppMethodBeat.i(17825);
+      ImageRequest localImageRequest = new ImageRequest(this, null);
+      AppMethodBeat.o(17825);
+      return localImageRequest;
+    }
+    
+    public Builder setAllowCachedRedirects(boolean paramBoolean)
+    {
+      this.allowCachedRedirects = paramBoolean;
+      return this;
+    }
+    
+    public Builder setCallback(ImageRequest.Callback paramCallback)
+    {
+      this.callback = paramCallback;
+      return this;
+    }
+    
+    public Builder setCallerTag(Object paramObject)
+    {
+      this.callerTag = paramObject;
+      return this;
+    }
+  }
+  
+  public static abstract interface Callback
+  {
+    public abstract void onCompleted(ImageResponse paramImageResponse);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.internal.ImageRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -4,126 +4,108 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private static a eCG = null;
+  private static a fXP = null;
   
   public static void a(a.b paramb)
   {
-    AppMethodBeat.i(93932);
-    int n = (int)(paramb.eBL - paramb.eBS);
-    int j;
-    int i1;
-    int k;
-    label42:
-    int i2;
-    long l1;
-    int i3;
-    int i4;
-    int[] arrayOfInt1;
-    int i5;
-    int i6;
+    AppMethodBeat.i(62479);
+    int m = (int)(paramb.fXp - paramb.fXv);
     int i;
+    int n;
     if (HardCoderJNI.isHcEnable())
     {
-      j = 1;
-      i1 = HardCoderJNI.isRunning();
-      if (n - paramb.delay > 0) {
-        break label228;
+      i = 1;
+      n = HardCoderJNI.isRunning();
+      if (m - paramb.delay > 0) {
+        break label172;
       }
-      k = 1;
-      i2 = paramb.scene;
-      l1 = paramb.eBR;
-      i3 = paramb.eBN;
-      i4 = paramb.eBP;
-      arrayOfInt1 = paramb.eBZ;
-      i5 = (int)(paramb.eBT - paramb.startTime);
-      i6 = paramb.eCd;
-      i = 0;
-      if (paramb.eCf != null) {
-        i = (int)(0L + paramb.eCf.eCN);
-      }
-      if (paramb.eCg == null) {
-        break label619;
-      }
-      i = (int)(i + paramb.eCg.eCN);
     }
-    label228:
-    label619:
-    for (;;)
+    int i1;
+    long l;
+    int i2;
+    int i3;
+    int[] arrayOfInt1;
+    int i4;
+    int i5;
+    int[] arrayOfInt2;
+    int[] arrayOfInt3;
+    StringBuilder localStringBuilder1;
+    int i6;
+    int k;
+    int i7;
+    label172:
+    for (int j = 1;; j = 0)
     {
-      int i7 = HardCoderJNI.tickRate;
-      long l2 = paramb.eCe;
-      int[] arrayOfInt2 = paramb.eBX;
-      int[] arrayOfInt3 = paramb.eBY;
-      StringBuilder localStringBuilder1 = new StringBuilder();
-      int i8;
-      int m;
-      int i9;
-      if (arrayOfInt1 != null)
+      i1 = paramb.scene;
+      l = paramb.fXu;
+      i2 = paramb.fXq;
+      i3 = paramb.fXs;
+      arrayOfInt1 = paramb.fXC;
+      i4 = (int)(paramb.fXw - paramb.startTime);
+      i5 = HardCoderJNI.tickRate;
+      arrayOfInt2 = paramb.fXA;
+      arrayOfInt3 = paramb.fXB;
+      localStringBuilder1 = new StringBuilder();
+      if (arrayOfInt1 == null) {
+        break label177;
+      }
+      i6 = arrayOfInt1.length;
+      k = 0;
+      while (k < i6)
       {
-        i8 = arrayOfInt1.length;
-        m = 0;
-        for (;;)
-        {
-          if (m < i8)
-          {
-            i9 = arrayOfInt1[m];
-            localStringBuilder1.append(i9 + "#");
-            m += 1;
-            continue;
-            j = 0;
-            break;
-            k = 0;
-            break label42;
-          }
-        }
+        i7 = arrayOfInt1[k];
+        localStringBuilder1.append(i7 + "#");
+        k += 1;
       }
-      StringBuilder localStringBuilder2 = new StringBuilder();
-      if (arrayOfInt2 != null)
-      {
-        i8 = arrayOfInt2.length;
-        m = 0;
-        while (m < i8)
-        {
-          i9 = arrayOfInt2[m];
-          localStringBuilder2.append(i9 + "#");
-          m += 1;
-        }
-      }
-      StringBuilder localStringBuilder3 = new StringBuilder();
-      if (arrayOfInt3 != null)
-      {
-        i8 = arrayOfInt3.length;
-        m = 0;
-        while (m < i8)
-        {
-          i9 = arrayOfInt3[m];
-          localStringBuilder3.append(i9 + "#");
-          m += 1;
-        }
-      }
-      c.d("HardCoder.HardCoderReporter", String.format("[oneliang]performance report,hash:%s,threadId:%s,enable:%s, engineStatus:%s,cancelInDelay:%s,scene:%s,action:%s,lastCpuLevel:%s,cpuLevel:%s,lastIoLevel:%s,ioLevel:%s,bindCoreIds:%s,executeTime:%s,runtime:%s,threadJiffies:%s, phonePower:%s, phoneHZ:%s, processJiffies:%s,cpuLevelTimeArray:%s, ioLevelTimeArray:%s", new Object[] { Integer.valueOf(paramb.hashCode()), paramb.PD(), Integer.valueOf(j), Integer.valueOf(i1), Integer.valueOf(k), Integer.valueOf(i2), Long.valueOf(l1), Integer.valueOf(paramb.eBV), Integer.valueOf(i3), Integer.valueOf(paramb.eBW), Integer.valueOf(i4), localStringBuilder1.toString(), Integer.valueOf(i5), Integer.valueOf(n), Integer.valueOf(i6), Integer.valueOf(i), Integer.valueOf(i7), Long.valueOf(l2), localStringBuilder2.toString(), localStringBuilder3.toString() }));
-      if (eCG != null) {
-        eCG.a(paramb.eBQ, j, i1, k, i2, l1, i3, i4, arrayOfInt1, i5, n, i6, i, i7, l2, arrayOfInt2, arrayOfInt3);
-      }
-      AppMethodBeat.o(93932);
-      return;
+      i = 0;
+      break;
     }
+    label177:
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    if (arrayOfInt2 != null)
+    {
+      i6 = arrayOfInt2.length;
+      k = 0;
+      while (k < i6)
+      {
+        i7 = arrayOfInt2[k];
+        localStringBuilder2.append(i7 + "#");
+        k += 1;
+      }
+    }
+    StringBuilder localStringBuilder3 = new StringBuilder();
+    if (arrayOfInt3 != null)
+    {
+      i6 = arrayOfInt3.length;
+      k = 0;
+      while (k < i6)
+      {
+        i7 = arrayOfInt3[k];
+        localStringBuilder3.append(i7 + "#");
+        k += 1;
+      }
+    }
+    d.d("Hardcoder.HardCoderReporter", String.format("performanceReport, hash:%s, threadId:%s, enable:%s, engineStatus:%s, cancelInDelay:%s, scene:%s, action:%s, lastCpuLevel:%s, cpuLevel:%s, lastIoLevel:%s, ioLevel:%s, bindCoreIds:%s, executeTime:%s, runtime:%s, phoneHZ:%s, cpuLevelTimeArray:%s, ioLevelTimeArray:%s", new Object[] { Integer.valueOf(paramb.hashCode()), paramb.adk(), Integer.valueOf(i), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i1), Long.valueOf(l), Integer.valueOf(paramb.fXy), Integer.valueOf(i2), Integer.valueOf(paramb.fXz), Integer.valueOf(i3), localStringBuilder1.toString(), Integer.valueOf(i4), Integer.valueOf(m), Integer.valueOf(i5), localStringBuilder2.toString(), localStringBuilder3.toString() }));
+    if (fXP != null) {
+      fXP.a(paramb.fXt, i, n, j, i1, l, i2, i3, arrayOfInt1, i4, m, i5, arrayOfInt2, arrayOfInt3);
+    }
+    AppMethodBeat.o(62479);
   }
   
   public static void a(a parama)
   {
-    AppMethodBeat.i(93931);
-    if (eCG == null)
+    AppMethodBeat.i(62478);
+    if (fXP == null)
     {
-      c.i("HardCoder.HardCoderReporter", String.format("hardcoder setReporter[%s]", new Object[] { parama }));
-      eCG = parama;
+      d.i("Hardcoder.HardCoderReporter", String.format("setReporter[%s]", new Object[] { parama }));
+      fXP = parama;
     }
-    AppMethodBeat.o(93931);
+    AppMethodBeat.o(62478);
   }
   
   public static abstract interface a
   {
-    public abstract void a(int[] paramArrayOfInt1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, int paramInt5, int paramInt6, int[] paramArrayOfInt2, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, long paramLong2, int[] paramArrayOfInt3, int[] paramArrayOfInt4);
+    public abstract void a(int[] paramArrayOfInt1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong, int paramInt5, int paramInt6, int[] paramArrayOfInt2, int paramInt7, int paramInt8, int paramInt9, int[] paramArrayOfInt3, int[] paramArrayOfInt4);
   }
 }
 

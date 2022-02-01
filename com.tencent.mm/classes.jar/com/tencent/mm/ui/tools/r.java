@@ -1,350 +1,676 @@
 package com.tencent.mm.ui.tools;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.res.Resources;
-import android.graphics.Rect;
-import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.view.Display;
+import android.os.IBinder;
+import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.h;
+import android.support.v4.view.h.a;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.View.OnKeyListener;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.FrameLayout;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.ui.al;
-import com.tencent.mm.ui.base.MMListPopupWindow;
-import com.tencent.mm.ui.base.o;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.am;
+import com.tencent.mm.ui.ao;
+import java.util.ArrayList;
 
-public abstract class r
-  implements View.OnKeyListener, ViewTreeObserver.OnGlobalLayoutListener, AdapterView.OnItemClickListener, PopupWindow.OnDismissListener
+public class r
 {
-  private ViewGroup AxR;
-  private PopupWindow.OnDismissListener AxS;
-  private boolean AxT = true;
-  private View AxU;
-  private int AxV;
-  private int AxW = 0;
-  private int AxX = 0;
-  private int AxY = 0;
-  private float AxZ = 0.0F;
-  private float Aya = 0.0F;
-  private ViewTreeObserver VF;
-  private int Xf;
-  private int dividerHeight;
-  private View iU;
-  private boolean jpt = false;
-  private BaseAdapter krV;
-  protected Context mContext;
-  private boolean vnS = false;
-  private DialogInterface.OnCancelListener yTy;
-  private MMListPopupWindow zxr;
-  private int zxs = 2131493189;
+  boolean Htj;
+  public boolean Htk;
+  private boolean Htl;
+  private boolean Htm;
+  boolean Htn;
+  public d Hto;
+  public b Htp;
+  private SearchViewNotRealTimeHelper.a Htq;
+  private boolean Htr;
+  private ArrayList<String> Hts;
+  private boolean Htt;
+  public int Htu;
+  private int Htv;
+  a Htw;
+  final String TAG;
+  ap gAC;
+  MenuItem qeS;
   
-  public r(Context paramContext)
+  public r()
   {
-    this.mContext = paramContext;
-    paramContext = paramContext.getResources();
-    this.Xf = Math.min(paramContext.getDisplayMetrics().widthPixels * 4 / 5, paramContext.getDimensionPixelSize(2131427813));
-    ViewGroup localViewGroup;
-    if ((this.mContext instanceof Activity))
-    {
-      localViewGroup = (ViewGroup)((Activity)this.mContext).getWindow().getDecorView();
-      if (localViewGroup.getChildCount() <= 0) {
-        break label183;
-      }
-    }
-    label183:
-    for (this.iU = localViewGroup.getChildAt(0);; this.iU = localViewGroup)
-    {
-      this.dividerHeight = BackwardSupportUtil.b.b(this.mContext, 1.0F);
-      this.AxW = (paramContext.getDimensionPixelSize(2131427808) * 2);
-      this.AxX = paramContext.getDimensionPixelSize(2131427562);
-      this.AxY = BackwardSupportUtil.b.b(this.mContext, 36.0F);
-      this.krV = Kp();
-      return;
-    }
+    AppMethodBeat.i(143240);
+    this.Htj = false;
+    this.Htk = false;
+    this.Htl = false;
+    this.Htm = true;
+    this.Htn = true;
+    this.qeS = null;
+    this.gAC = new ap(Looper.getMainLooper());
+    this.Hto = null;
+    this.Htr = true;
+    this.Htu = 2131755726;
+    this.Htv = 0;
+    this.Htr = true;
+    this.Htj = false;
+    this.TAG = ("MicroMsg.SearchViewHelper-" + String.valueOf(System.currentTimeMillis()));
+    AppMethodBeat.o(143240);
   }
   
-  private int b(ListAdapter paramListAdapter)
+  public r(byte paramByte)
   {
-    int n = View.MeasureSpec.makeMeasureSpec(0, 0);
-    int i1 = View.MeasureSpec.makeMeasureSpec(0, 0);
-    int i2 = paramListAdapter.getCount();
-    int j = 0;
-    int i = 0;
-    View localView = null;
-    int k = 0;
-    if (j < i2)
+    AppMethodBeat.i(143241);
+    this.Htj = false;
+    this.Htk = false;
+    this.Htl = false;
+    this.Htm = true;
+    this.Htn = true;
+    this.qeS = null;
+    this.gAC = new ap(Looper.getMainLooper());
+    this.Hto = null;
+    this.Htr = true;
+    this.Htu = 2131755726;
+    this.Htv = 0;
+    this.Htr = true;
+    this.Htj = true;
+    this.TAG = ("MicroMsg.SearchViewHelper-" + String.valueOf(System.currentTimeMillis()));
+    AppMethodBeat.o(143241);
+  }
+  
+  private void b(final Activity paramActivity, Menu paramMenu)
+  {
+    AppMethodBeat.i(143249);
+    if ((this.Htm) && ((this.Htk) || (this.Htl)))
     {
-      int m = paramListAdapter.getItemViewType(j);
-      if (m == i) {
-        break label127;
+      this.Htl = false;
+      if ((paramActivity instanceof MMActivity)) {
+        ((MMActivity)paramActivity).setActionbarColor(ao.aD(paramActivity, 2130968577));
       }
-      localView = null;
-      i = m;
+      if (paramMenu != null)
+      {
+        int i = 0;
+        while (i < paramMenu.size())
+        {
+          MenuItem localMenuItem = paramMenu.getItem(i);
+          if (localMenuItem.getItemId() != 2131302248) {
+            localMenuItem.setVisible(false);
+          }
+          i += 1;
+        }
+      }
+      this.gAC.postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(143237);
+          if (r.this.qeS == null)
+          {
+            ad.w(r.this.TAG, "on post expand search menu, but item is null");
+            AppMethodBeat.o(143237);
+            return;
+          }
+          ad.i(r.this.TAG, "try to expand action view, searchViewExpand %B", new Object[] { Boolean.valueOf(r.this.Htk) });
+          if (r.this.Htj) {
+            if (!r.this.Htk) {
+              r.this.qeS.expandActionView();
+            }
+          }
+          for (;;)
+          {
+            final View localView = r.this.qeS.getActionView();
+            if ((localView != null) && (r.this.Htk))
+            {
+              localView.findViewById(2131299306).requestFocus();
+              if (r.this.Htn) {
+                r.this.gAC.postDelayed(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(143236);
+                    ((InputMethodManager)r.10.this.val$activity.getSystemService("input_method")).showSoftInput(localView.findViewById(2131299306), 0);
+                    AppMethodBeat.o(143236);
+                  }
+                }, 128L);
+              }
+            }
+            AppMethodBeat.o(143237);
+            return;
+            if (r.this.Htw != null) {
+              r.this.Htw.fdX();
+            }
+          }
+        }
+      }, 128L);
     }
-    label127:
+    AppMethodBeat.o(143249);
+  }
+  
+  public void a(Activity paramActivity, Menu paramMenu)
+  {
+    AppMethodBeat.i(143248);
+    ad.v(this.TAG, "on prepare options menu, searchViewExpand %B, triggerExpand %B, canExpand %B", new Object[] { Boolean.valueOf(this.Htk), Boolean.valueOf(this.Htl), Boolean.valueOf(this.Htm) });
+    if (paramActivity == null)
+    {
+      ad.w(this.TAG, "on hanle status fail, activity is null");
+      AppMethodBeat.o(143248);
+      return;
+    }
+    this.qeS = paramMenu.findItem(2131302248);
+    if (this.qeS == null)
+    {
+      ad.w(this.TAG, "can not find search menu, error");
+      AppMethodBeat.o(143248);
+      return;
+    }
+    this.qeS.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        return false;
+      }
+    });
+    b(paramActivity, paramMenu);
+    AppMethodBeat.o(143248);
+  }
+  
+  public void a(final FragmentActivity paramFragmentActivity, final Menu paramMenu)
+  {
+    AppMethodBeat.i(143247);
+    ad.v(this.TAG, "on create options menu");
+    if (paramFragmentActivity == null)
+    {
+      ad.w(this.TAG, "on add search menu, activity is null");
+      AppMethodBeat.o(143247);
+      return;
+    }
+    if (this.Hto == null)
+    {
+      if (this.Htr)
+      {
+        this.Hto = new ActionBarSearchView(paramFragmentActivity);
+        this.Hto.setAutoMatchKeywords(this.Htt);
+        this.Hto.setKeywords(this.Hts);
+      }
+    }
+    else
+    {
+      this.Hto.setCallBack(new ActionBarSearchView.b()
+      {
+        public final void aBF(String paramAnonymousString)
+        {
+          AppMethodBeat.i(143225);
+          if (!r.this.Htk)
+          {
+            ad.v(r.this.TAG, "onSearchTextChange %s, but not in searching", new Object[] { paramAnonymousString });
+            AppMethodBeat.o(143225);
+            return;
+          }
+          if (r.this.Htp != null) {
+            r.this.Htp.BY(paramAnonymousString);
+          }
+          AppMethodBeat.o(143225);
+        }
+        
+        public final void aIl()
+        {
+          AppMethodBeat.i(143226);
+          if (r.this.Htp != null) {
+            r.this.Htp.aIl();
+          }
+          AppMethodBeat.o(143226);
+        }
+        
+        public final void fdA()
+        {
+          AppMethodBeat.i(143223);
+          if (!r.this.Htk)
+          {
+            ad.v(r.this.TAG, "onVoiceSearchRequired, but not in searching");
+            AppMethodBeat.o(143223);
+            return;
+          }
+          r.this.aEg();
+          AppMethodBeat.o(143223);
+        }
+        
+        public final void fdz()
+        {
+          AppMethodBeat.i(143224);
+          if (r.this.Htp != null) {
+            r.this.Htp.aIm();
+          }
+          AppMethodBeat.o(143224);
+        }
+      });
+      this.Hto.wE(aEf());
+      this.Hto.setOnEditorActionListener(new TextView.OnEditorActionListener()
+      {
+        public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
+        {
+          AppMethodBeat.i(143230);
+          if ((3 == paramAnonymousInt) && (r.this.Htp != null))
+          {
+            boolean bool = r.this.Htp.BX(r.this.getSearchContent());
+            AppMethodBeat.o(143230);
+            return bool;
+          }
+          AppMethodBeat.o(143230);
+          return false;
+        }
+      });
+      if (this.Htv != 0) {
+        this.Hto.setSearchTipIcon(this.Htv);
+      }
+      this.qeS = paramMenu.add(0, 2131302248, 0, this.Htu);
+      this.qeS.setEnabled(this.Htm);
+      this.qeS.setIcon(am.i(paramFragmentActivity, 2131689494, paramFragmentActivity.getResources().getColor(2131099732)));
+      this.qeS.setActionView((View)this.Hto);
+      if (!this.Htj) {
+        break label322;
+      }
+      this.qeS.setShowAsAction(9);
+      label246:
+      if (!this.Htj) {
+        break label335;
+      }
+      h.a(this.qeS, new h.a()
+      {
+        public final boolean eV()
+        {
+          AppMethodBeat.i(143231);
+          r.this.a(paramFragmentActivity, false, paramMenu);
+          AppMethodBeat.o(143231);
+          return true;
+        }
+        
+        public final boolean eW()
+        {
+          AppMethodBeat.i(143232);
+          r.this.b(paramFragmentActivity, false, paramMenu);
+          AppMethodBeat.o(143232);
+          return true;
+        }
+      });
+    }
     for (;;)
     {
-      if (this.AxR == null) {
-        this.AxR = new FrameLayout(this.mContext);
-      }
-      localView = paramListAdapter.getView(j, localView, this.AxR);
-      localView.measure(n, i1);
-      k = Math.max(k, localView.getMeasuredWidth());
-      j += 1;
+      this.Hto.setBackClickCallback(new ActionBarSearchView.a()
+      {
+        public final void fdy()
+        {
+          AppMethodBeat.i(143235);
+          if (r.this.Htj)
+          {
+            if (r.this.qeS != null)
+            {
+              r.this.qeS.collapseActionView();
+              AppMethodBeat.o(143235);
+            }
+          }
+          else if (r.this.Htw != null) {
+            r.this.Htw.collapseActionView();
+          }
+          AppMethodBeat.o(143235);
+        }
+      });
+      AppMethodBeat.o(143247);
+      return;
+      this.Hto = new SearchViewNotRealTimeHelper(paramFragmentActivity);
+      this.Hto.setNotRealCallBack(this.Htq);
       break;
-      return k;
-    }
-  }
-  
-  private boolean isLandscape()
-  {
-    DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
-    return localDisplayMetrics.widthPixels > localDisplayMetrics.heightPixels;
-  }
-  
-  protected abstract BaseAdapter Kp();
-  
-  public final void dismiss()
-  {
-    if (isShowing()) {
-      this.zxr.dismiss();
-    }
-  }
-  
-  public boolean gr()
-  {
-    Object localObject1 = new Rect();
-    int i;
-    int k;
-    int j;
-    Object localObject2;
-    label143:
-    boolean bool;
-    if ((this.mContext instanceof AppCompatActivity))
-    {
-      i = ((AppCompatActivity)this.mContext).getSupportActionBar().getHeight();
-      k = al.ap(this.mContext, 2131427598);
-      j = i;
-      if ((this.mContext instanceof Activity))
+      label322:
+      this.qeS.setShowAsAction(2);
+      break label246;
+      label335:
+      this.Htw = new a()
       {
-        ((Activity)this.mContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject1);
-        j = ((Activity)this.mContext).getWindow().getDecorView().getHeight();
-        localObject2 = new int[2];
-        ((Activity)this.mContext).getWindow().getDecorView().getLocationOnScreen((int[])localObject2);
-        if ((j - ((Rect)localObject1).height() < 0) || (localObject2[1] <= 200)) {
-          break label858;
-        }
-        j = i + (j - ((Rect)localObject1).height());
-      }
-      this.vnS = isLandscape();
-      if (this.zxr == null) {
-        this.zxr = new MMListPopupWindow(this.mContext, null, 0);
-      }
-      this.zxr.setOnDismissListener(this);
-      this.zxr.ahl = this;
-      this.zxr.setAdapter(this.krV);
-      this.zxr.setModal(true);
-      this.zxr.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130839858));
-      this.zxr.setAnimationStyle(this.zxs);
-      this.zxr.agY = k;
-      this.zxr.ahj = this.iU;
-      if (this.iU != null)
-      {
-        if (this.VF != null) {
-          break label869;
-        }
-        bool = true;
-        label276:
-        this.VF = this.iU.getViewTreeObserver();
-        ab.v("MicroMsg.SubMenuHelperBase", "tryshow addGlobalListener:%b", new Object[] { Boolean.valueOf(bool) });
-        if (bool) {
-          this.VF.addOnGlobalLayoutListener(this);
-        }
-      }
-      this.zxr.setVerticalOffset(j);
-      this.zxr.jpt = this.jpt;
-      this.zxr.setContentWidth(Math.min(b(this.krV), this.Xf));
-      this.zxr.iD();
-      if ((this.AxZ != 0.0F) && (this.Aya != 0.0F))
-      {
-        localObject1 = new DisplayMetrics();
-        ((Activity)this.mContext).getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
-        if (((DisplayMetrics)localObject1).widthPixels <= ((DisplayMetrics)localObject1).heightPixels) {
-          break label875;
-        }
-        i = 1;
-        label431:
-        localObject1 = new Rect();
-        ((Activity)this.mContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject1);
-        j = ((Activity)this.mContext).getWindow().getDecorView().getHeight();
-        if (j <= ((Rect)localObject1).height()) {
-          break label945;
-        }
-        j = ((Rect)localObject1).height();
-      }
-    }
-    label933:
-    label945:
-    for (;;)
-    {
-      if (i != 0)
-      {
-        i = (int)(this.Aya * j);
-        label503:
-        ab.d("MicroMsg.SubMenuHelperBase", "menuHeightPercentPort(%f), menuHeightPercentLand(%f), frameHeight(%d), decorViewHeight(%d), menuHeight(%d)", new Object[] { Float.valueOf(this.AxZ), Float.valueOf(this.Aya), Integer.valueOf(((Rect)localObject1).height()), Integer.valueOf(j), Integer.valueOf(i) });
-        i = Math.round(i / this.AxX);
-        if ((i <= 0) || (this.krV == null)) {
-          break label933;
-        }
-        j = this.AxX * i + this.AxW;
-        if ((j == 0) || (j >= this.krV.getCount() * this.AxX)) {
-          break label892;
-        }
-        j = this.AxX;
-        k = this.AxW;
-        int m = this.AxY;
-        this.zxr.agX = ((i - 1) * j + k + m);
-      }
-      for (;;)
-      {
-        if ((this.zxr != null) && (this.AxU != null))
+        public final void collapseActionView()
         {
-          localObject1 = this.zxr;
-          localObject2 = this.AxU;
-          bool = ((MMListPopupWindow)localObject1).gMK.isShowing();
-          if (bool) {
-            ((MMListPopupWindow)localObject1).iC();
-          }
-          ((MMListPopupWindow)localObject1).ahh = ((View)localObject2);
-          if (bool) {
-            ((MMListPopupWindow)localObject1).show();
-          }
-          this.zxr.ahi = this.AxV;
+          AppMethodBeat.i(143234);
+          r.this.b(paramFragmentActivity, true, paramMenu);
+          AppMethodBeat.o(143234);
         }
-        this.zxr.show();
-        this.zxr.zkP.setOnKeyListener(this);
-        this.zxr.zkP.setSelector(new ColorDrawable(this.mContext.getResources().getColor(2131690605)));
-        this.zxr.zkP.setDividerHeight(0);
-        this.zxr.zkP.setVerticalScrollBarEnabled(true);
-        this.zxr.zkP.setHorizontalScrollBarEnabled(false);
-        return true;
-        localObject2 = this.mContext.getResources().getDisplayMetrics();
-        if (((DisplayMetrics)localObject2).widthPixels > ((DisplayMetrics)localObject2).heightPixels)
+        
+        public final void fdX()
         {
-          i = BackwardSupportUtil.b.b(this.mContext, 40.0F);
-          break;
+          AppMethodBeat.i(143233);
+          r.this.a(paramFragmentActivity, true, paramMenu);
+          AppMethodBeat.o(143233);
         }
-        i = BackwardSupportUtil.b.b(this.mContext, 49.0F);
-        break;
-        label858:
-        j = i + ((Rect)localObject1).top;
-        break label143;
-        label869:
-        bool = false;
-        break label276;
-        label875:
-        i = 0;
-        break label431;
-        i = (int)(this.AxZ * j);
-        break label503;
-        label892:
-        ab.w("MicroMsg.SubMenuHelperBase", "[cpan] menuheight:%d,listHeight:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(this.krV.getCount() * this.AxX) });
-        continue;
-        ab.e("MicroMsg.SubMenuHelperBase", "[cpan] setpopuHeight error.");
+      };
+    }
+  }
+  
+  public final void a(final FragmentActivity paramFragmentActivity, final boolean paramBoolean, Menu paramMenu)
+  {
+    AppMethodBeat.i(143255);
+    ad.d(this.TAG, "doNewExpand, searchViewExpand " + this.Htk);
+    if (!this.Htk)
+    {
+      this.Htk = true;
+      b(paramFragmentActivity, paramMenu);
+      this.gAC.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(143239);
+          if ((paramFragmentActivity == null) || (paramFragmentActivity.isFinishing()))
+          {
+            ad.w(r.this.TAG, "want to expand search view, but activity status error");
+            AppMethodBeat.o(143239);
+            return;
+          }
+          if (paramBoolean) {
+            paramFragmentActivity.supportInvalidateOptionsMenu();
+          }
+          AppMethodBeat.o(143239);
+        }
+      });
+      if (this.Htp != null) {
+        this.Htp.aIk();
       }
     }
+    AppMethodBeat.o(143255);
   }
   
-  public final boolean isShowing()
+  protected boolean aEf()
   {
-    return (this.zxr != null) && (this.zxr.gMK.isShowing());
-  }
-  
-  public void onDismiss()
-  {
-    if (this.VF != null)
-    {
-      if (!this.VF.isAlive()) {
-        this.VF = this.iU.getViewTreeObserver();
-      }
-      this.VF.removeGlobalOnLayoutListener(this);
-      this.VF = null;
-    }
-    if (this.yTy != null) {
-      this.yTy.onCancel(null);
-    }
-    if (this.AxS != null) {
-      this.AxS.onDismiss();
-    }
-  }
-  
-  public void onGlobalLayout()
-  {
-    ab.v("MicroMsg.SubMenuHelperBase", "onGlobalLayout showing:%b, anchorshown:%b", new Object[] { Boolean.valueOf(isShowing()), Boolean.valueOf(this.iU.isShown()) });
-    if (isShowing())
-    {
-      View localView = this.iU;
-      if ((localView != null) && (localView.isShown())) {
-        break label64;
-      }
-      dismiss();
-    }
-    label64:
-    while ((!isShowing()) || (this.vnS == isLandscape())) {
-      return;
-    }
-    this.zxr.dismiss();
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    dismiss();
-  }
-  
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    ab.v("MicroMsg.SubMenuHelperBase", "onKey");
-    if ((paramKeyEvent.getAction() == 1) && (paramInt == 82))
-    {
-      dismiss();
-      return true;
-    }
     return false;
   }
   
-  public final void rv(boolean paramBoolean)
+  protected void aEg() {}
+  
+  public final void b(final FragmentActivity paramFragmentActivity, final boolean paramBoolean, Menu paramMenu)
   {
-    this.jpt = paramBoolean;
-    if (paramBoolean)
+    AppMethodBeat.i(143256);
+    ad.d(this.TAG, "doNewCollapse, searchViewExpand " + this.Htk);
+    if (this.Htk)
     {
-      this.zxs = 2131493136;
+      this.Htk = false;
+      c(paramMenu);
+      if (this.Hto != null) {
+        this.Hto.wF(false);
+      }
+      this.gAC.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(143227);
+          if ((paramFragmentActivity == null) || (paramFragmentActivity.isFinishing()))
+          {
+            ad.w(r.this.TAG, "want to collapse search view, but activity status error");
+            AppMethodBeat.o(143227);
+            return;
+          }
+          if (paramBoolean) {
+            paramFragmentActivity.supportInvalidateOptionsMenu();
+          }
+          AppMethodBeat.o(143227);
+        }
+      });
+      if (this.Htp != null) {
+        this.gAC.post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(143228);
+            if (r.this.Htp != null) {
+              r.this.Htp.aIj();
+            }
+            AppMethodBeat.o(143228);
+          }
+        });
+      }
+    }
+    this.gAC.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(143229);
+        if (r.this.qeS == null)
+        {
+          ad.w(r.this.TAG, "want to collapse search view, but search menu item is null");
+          AppMethodBeat.o(143229);
+          return;
+        }
+        if ((paramFragmentActivity != null) && (!paramFragmentActivity.isFinishing()))
+        {
+          Object localObject2 = paramFragmentActivity;
+          localObject1 = (InputMethodManager)((FragmentActivity)localObject2).getSystemService("input_method");
+          if (localObject1 != null)
+          {
+            localObject2 = ((FragmentActivity)localObject2).getCurrentFocus();
+            if (localObject2 != null)
+            {
+              localObject2 = ((View)localObject2).getWindowToken();
+              if (localObject2 != null) {
+                ((InputMethodManager)localObject1).hideSoftInputFromWindow((IBinder)localObject2, 0);
+              }
+            }
+          }
+        }
+        Object localObject1 = r.this.qeS.getActionView();
+        if (localObject1 != null)
+        {
+          localObject1 = ((View)localObject1).findViewById(2131299306);
+          if (localObject1 != null) {
+            ((View)localObject1).clearFocus();
+          }
+        }
+        AppMethodBeat.o(143229);
+      }
+    });
+    AppMethodBeat.o(143256);
+  }
+  
+  protected void c(Menu paramMenu)
+  {
+    AppMethodBeat.i(143246);
+    if (paramMenu != null)
+    {
+      int i = 0;
+      while (i < paramMenu.size())
+      {
+        MenuItem localMenuItem = paramMenu.getItem(i);
+        if (localMenuItem.getItemId() != 2131302248) {
+          localMenuItem.setVisible(true);
+        }
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(143246);
+  }
+  
+  public final void clearFocus()
+  {
+    AppMethodBeat.i(143245);
+    if (this.Hto != null) {
+      this.Hto.fdv();
+    }
+    AppMethodBeat.o(143245);
+  }
+  
+  public final void fdW()
+  {
+    AppMethodBeat.i(143252);
+    ad.d(this.TAG, "do collapse");
+    if ((this.Htk) && (this.qeS != null))
+    {
+      if (this.Htj)
+      {
+        this.qeS.collapseActionView();
+        AppMethodBeat.o(143252);
+        return;
+      }
+      if (this.Htw != null) {
+        this.Htw.collapseActionView();
+      }
+    }
+    AppMethodBeat.o(143252);
+  }
+  
+  public final boolean fdw()
+  {
+    AppMethodBeat.i(143253);
+    if (this.Hto != null)
+    {
+      boolean bool = this.Hto.fdw();
+      AppMethodBeat.o(143253);
+      return bool;
+    }
+    AppMethodBeat.o(143253);
+    return false;
+  }
+  
+  public final boolean fdx()
+  {
+    AppMethodBeat.i(143254);
+    if (this.Hto != null)
+    {
+      boolean bool = this.Hto.fdx();
+      AppMethodBeat.o(143254);
+      return bool;
+    }
+    AppMethodBeat.o(143254);
+    return false;
+  }
+  
+  public final String getSearchContent()
+  {
+    AppMethodBeat.i(143242);
+    if (this.Hto != null)
+    {
+      String str = this.Hto.getSearchContent();
+      AppMethodBeat.o(143242);
+      return str;
+    }
+    AppMethodBeat.o(143242);
+    return "";
+  }
+  
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(143250);
+    ad.v(this.TAG, "on key down, key code %d, expand %B", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.Htk) });
+    if ((4 == paramInt) && (this.Htk))
+    {
+      fdW();
+      AppMethodBeat.o(143250);
+      return true;
+    }
+    AppMethodBeat.o(143250);
+    return false;
+  }
+  
+  public final void setHint(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(143244);
+    if (this.Hto == null)
+    {
+      AppMethodBeat.o(143244);
       return;
     }
-    this.zxs = 2131493189;
+    this.Hto.setHint(paramCharSequence);
+    AppMethodBeat.o(143244);
+  }
+  
+  public void setSearchContent(String paramString)
+  {
+    AppMethodBeat.i(143243);
+    if (this.Hto == null)
+    {
+      AppMethodBeat.o(143243);
+      return;
+    }
+    this.Hto.setSearchContent(paramString);
+    AppMethodBeat.o(143243);
+  }
+  
+  public final void wH(boolean paramBoolean)
+  {
+    boolean bool1 = false;
+    AppMethodBeat.i(143251);
+    String str = this.TAG;
+    boolean bool2 = this.Htk;
+    if (this.qeS == null) {
+      bool1 = true;
+    }
+    ad.d(str, "do expand, expanded[%B], search menu item null[%B]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+    if (this.Htk)
+    {
+      AppMethodBeat.o(143251);
+      return;
+    }
+    if (!this.Htm)
+    {
+      ad.w(this.TAG, "can not expand now");
+      AppMethodBeat.o(143251);
+      return;
+    }
+    this.Htn = paramBoolean;
+    if (this.qeS != null)
+    {
+      this.gAC.post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(143238);
+          if (r.this.qeS == null)
+          {
+            ad.w(r.this.TAG, "post do expand search menu, but search menu item is null");
+            AppMethodBeat.o(143238);
+            return;
+          }
+          if (r.this.Htj)
+          {
+            r.this.qeS.expandActionView();
+            AppMethodBeat.o(143238);
+            return;
+          }
+          if (r.this.Htw != null) {
+            r.this.Htw.fdX();
+          }
+          AppMethodBeat.o(143238);
+        }
+      });
+      AppMethodBeat.o(143251);
+      return;
+    }
+    this.Htl = true;
+    AppMethodBeat.o(143251);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void collapseActionView();
+    
+    public abstract void fdX();
+  }
+  
+  public static abstract interface b
+  {
+    public abstract boolean BX(String paramString);
+    
+    public abstract void BY(String paramString);
+    
+    public abstract void aIj();
+    
+    public abstract void aIk();
+    
+    public abstract void aIl();
+    
+    public abstract void aIm();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.tools.r
  * JD-Core Version:    0.7.0.1
  */

@@ -33,9 +33,9 @@ final class AppBrandSharedMessageUI$b
   
   public final int getItemViewType(int paramInt)
   {
-    AppMethodBeat.i(133096);
+    AppMethodBeat.i(48787);
     paramInt = super.getItemViewType(paramInt);
-    AppMethodBeat.o(133096);
+    AppMethodBeat.o(48787);
     return paramInt;
   }
   

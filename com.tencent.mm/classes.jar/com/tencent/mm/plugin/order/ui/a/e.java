@@ -13,43 +13,43 @@ public final class e
 {
   public View.OnClickListener mOnClickListener;
   private View mView;
-  public String prC;
+  public String uqC;
   
   public e(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(43904);
+    AppMethodBeat.i(66811);
     this.mView = null;
     this.mOnClickListener = null;
-    setLayoutResource(2130970094);
-    AppMethodBeat.o(43904);
+    setLayoutResource(2131494708);
+    AppMethodBeat.o(66811);
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(43905);
+    AppMethodBeat.i(66812);
     if (this.mView == null) {
       this.mView = onCreateView(paramViewGroup);
     }
     onBindView(this.mView);
     paramView = this.mView;
-    AppMethodBeat.o(43905);
+    AppMethodBeat.o(66812);
     return paramView;
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(43906);
+    AppMethodBeat.i(66813);
     super.onBindView(paramView);
-    paramView = (TextView)paramView.findViewById(2131825976);
-    paramView.setText(this.prC);
+    paramView = (TextView)paramView.findViewById(2131302031);
+    paramView.setText(this.uqC);
     paramView.setOnClickListener(this.mOnClickListener);
-    AppMethodBeat.o(43906);
+    AppMethodBeat.o(66813);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.e
  * JD-Core Version:    0.7.0.1
  */

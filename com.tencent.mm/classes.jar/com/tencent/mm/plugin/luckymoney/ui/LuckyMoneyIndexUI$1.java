@@ -11,15 +11,15 @@ final class LuckyMoneyIndexUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(42721);
-    this.otI.finish();
-    AppMethodBeat.o(42721);
+    AppMethodBeat.i(65598);
+    this.tms.finish();
+    AppMethodBeat.o(65598);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyIndexUI.1
  * JD-Core Version:    0.7.0.1
  */

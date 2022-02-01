@@ -7,99 +7,99 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.f;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.h;
 import junit.framework.Assert;
 
 public final class d
   extends e
 {
+  public static final String CpE;
+  public static final String CpF;
+  public static String CpG;
+  public static final String CpH;
+  public static String CpI;
+  public static long CpJ;
+  public static int CpK;
+  public static boolean CpL;
+  public static boolean CpM;
+  public static boolean CpN;
+  public static boolean CpO;
+  public static int CpP;
+  public static final byte[] CpQ;
+  public static final byte[] CpR;
+  public static final byte[] CpS;
   public static final String DEVICE_NAME;
-  public static String eQs;
-  public static final String whB;
-  public static final String whC;
-  public static String whD;
-  public static final String whE;
-  public static String whF;
-  public static long whG;
-  public static int whH;
-  public static boolean whI;
-  public static boolean whJ;
-  public static boolean whK;
-  public static boolean whL;
-  public static int whM;
-  public static final byte[] whN;
-  public static final byte[] whO;
-  public static final byte[] whP;
+  public static String glX;
   
   static
   {
-    AppMethodBeat.i(58789);
-    eQs = "android-" + Build.VERSION.SDK_INT;
-    whB = Build.BRAND;
-    whC = Build.MODEL + Build.CPU_ABI;
-    whD = "android-" + Build.VERSION.SDK_INT;
-    whE = "android-" + Build.MANUFACTURER;
-    whF = Build.VERSION.SDK_INT;
+    AppMethodBeat.i(133039);
+    glX = "android-" + Build.VERSION.SDK_INT;
+    CpE = Build.BRAND;
+    CpF = Build.MODEL + Build.CPU_ABI;
+    CpG = "android-" + Build.VERSION.SDK_INT;
+    CpH = "android-" + Build.MANUFACTURER;
+    CpI = Build.VERSION.SDK_INT;
     DEVICE_NAME = Build.MANUFACTURER + "-" + Build.MODEL;
-    whG = 0L;
-    whH = Integer.decode(f.CLIENT_VERSION).intValue();
-    Assert.assertNotNull(f.CLIENT_VERSION);
+    CpJ = 0L;
+    CpK = Integer.decode(h.glW).intValue();
+    Assert.assertNotNull(h.glW);
     try
     {
-      int i = ah.getContext().getPackageManager().getApplicationInfo(ah.getPackageName(), 128).metaData.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION");
-      if ((i > whH) && (i - whH < 255) && ((i & 0xFF) >= 48)) {
-        whH = i;
+      int i = aj.getContext().getPackageManager().getApplicationInfo(aj.getPackageName(), 128).metaData.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION");
+      if ((i > CpK) && (i - CpK < 255) && ((i & 0xFF) >= 48)) {
+        CpK = i;
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ab.a("MicroMsg.ConstantsProtocal", "", new Object[] { localException });
+        ad.l("MicroMsg.ConstantsProtocal", "", new Object[] { localException });
       }
     }
-    whI = dqr();
-    whJ = dqq();
-    whK = dqo();
-    whL = dqp();
-    whM = 5;
-    whN = null;
-    whO = null;
-    whP = null;
-    AppMethodBeat.o(58789);
+    CpL = eBI();
+    CpM = eBH();
+    CpN = eBF();
+    CpO = eBG();
+    CpP = 5;
+    CpQ = null;
+    CpR = null;
+    CpS = null;
+    AppMethodBeat.o(133039);
   }
   
-  public static void MA(int paramInt)
+  public static void Vv(int paramInt)
   {
-    AppMethodBeat.i(58788);
-    whH = paramInt;
-    whK = dqo();
-    whI = dqr();
-    whJ = dqq();
-    whL = dqp();
-    AppMethodBeat.o(58788);
+    AppMethodBeat.i(133038);
+    CpK = paramInt;
+    CpN = eBF();
+    CpL = eBI();
+    CpM = eBH();
+    CpO = eBG();
+    AppMethodBeat.o(133038);
   }
   
-  private static boolean dqo()
+  private static boolean eBF()
   {
-    return ((whH & 0xFF) >= 0) && ((whH & 0xFF) <= 47);
+    return ((CpK & 0xFF) >= 0) && ((CpK & 0xFF) <= 47);
   }
   
-  private static boolean dqp()
+  private static boolean eBG()
   {
-    return ((whH & 0xFF) >= 0) && ((whH & 0xFF) <= 15);
+    return ((CpK & 0xFF) >= 0) && ((CpK & 0xFF) <= 15);
   }
   
-  private static boolean dqq()
+  private static boolean eBH()
   {
-    return ((whH & 0xFF) >= 96) && ((whH & 0xFF) <= 255);
+    return ((CpK & 0xFF) >= 96) && ((CpK & 0xFF) <= 255);
   }
   
-  private static boolean dqr()
+  private static boolean eBI()
   {
-    return ((whH & 0xFF) >= 48) && ((whH & 0xFF) <= 95);
+    return ((CpK & 0xFF) >= 48) && ((CpK & 0xFF) <= 95);
   }
 }
 

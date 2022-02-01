@@ -4,18 +4,23 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aq;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.plugin.sns.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.af;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
-import com.tencent.mm.ui.contact.n;
 import com.tencent.mm.ui.contact.o;
 import com.tencent.mm.ui.contact.p;
-import com.tencent.mm.ui.q.b;
+import com.tencent.mm.ui.contact.q;
+import com.tencent.mm.ui.r.b;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -25,173 +30,172 @@ import java.util.List;
 public class SnsSelectChatRoomUI
   extends MMBaseSelectContactUI
 {
-  private HashSet<String> gpQ;
+  private HashSet<String> icg;
   
   public SnsSelectChatRoomUI()
   {
-    AppMethodBeat.i(145554);
-    this.gpQ = new HashSet();
-    AppMethodBeat.o(145554);
+    AppMethodBeat.i(98988);
+    this.icg = new HashSet();
+    AppMethodBeat.o(98988);
   }
   
-  private void Km()
+  private void VV()
   {
-    AppMethodBeat.i(145555);
-    if (this.gpQ.size() > 0)
+    AppMethodBeat.i(98989);
+    if (this.icg.size() > 0)
     {
       enableOptionMenu(1, true);
-      AppMethodBeat.o(145555);
+      AppMethodBeat.o(98989);
       return;
     }
     enableOptionMenu(1, false);
-    AppMethodBeat.o(145555);
+    AppMethodBeat.o(98989);
   }
   
-  private ArrayList<String> cvJ()
+  private ArrayList<String> dBH()
   {
-    AppMethodBeat.i(145556);
+    AppMethodBeat.i(98990);
     ArrayList localArrayList = new ArrayList();
     HashSet localHashSet = new HashSet();
-    Iterator localIterator = this.gpQ.iterator();
+    Iterator localIterator = this.icg.iterator();
     while (localIterator.hasNext()) {
       localHashSet.add((String)localIterator.next());
     }
     localArrayList.addAll(localHashSet);
-    AppMethodBeat.o(145556);
+    AppMethodBeat.o(98990);
     return localArrayList;
   }
   
-  public final void Kc()
+  public final void N(int paramInt, String paramString)
   {
-    AppMethodBeat.i(145558);
-    super.Kc();
-    Object localObject = getIntent().getStringExtra("already_select_contact");
-    if (!bo.isNullOrNil((String)localObject))
+    AppMethodBeat.i(98997);
+    if (paramInt == 1)
     {
-      localObject = bo.ih((String)localObject, ",");
-      if (!bo.es((List)localObject)) {
-        this.gpQ.addAll((Collection)localObject);
+      this.icg.remove(paramString);
+      fbz().notifyDataSetChanged();
+      VV();
+    }
+    AppMethodBeat.o(98997);
+  }
+  
+  public final void VL()
+  {
+    AppMethodBeat.i(98992);
+    super.VL();
+    Object localObject = getIntent().getStringExtra("already_select_contact");
+    if (!bt.isNullOrNil((String)localObject))
+    {
+      localObject = bt.kS((String)localObject, ",");
+      if (!bt.gL((List)localObject)) {
+        this.icg.addAll((Collection)localObject);
       }
     }
-    AppMethodBeat.o(145558);
+    AppMethodBeat.o(98992);
   }
   
   public final void a(ListView paramListView, int paramInt)
   {
-    AppMethodBeat.i(145562);
+    AppMethodBeat.i(98996);
     super.a(paramListView, paramInt);
-    AppMethodBeat.o(145562);
+    AppMethodBeat.o(98996);
   }
   
   public final boolean a(com.tencent.mm.ui.contact.a.a parama)
   {
-    AppMethodBeat.i(145565);
-    if ((parama.Adl) && (parama.contact != null))
+    AppMethodBeat.i(98999);
+    if ((parama.GVT) && (parama.contact != null))
     {
-      boolean bool = this.gpQ.contains(parama.contact.field_username);
-      AppMethodBeat.o(145565);
+      boolean bool = this.icg.contains(parama.contact.field_username);
+      AppMethodBeat.o(98999);
       return bool;
     }
-    AppMethodBeat.o(145565);
+    AppMethodBeat.o(98999);
     return false;
   }
   
-  public final boolean apa()
+  public final boolean aHt()
   {
     return false;
   }
   
-  public final boolean apb()
+  public final boolean aHu()
   {
     return false;
   }
   
-  public final String apc()
+  public final String aHv()
   {
-    AppMethodBeat.i(145559);
-    String str = getContext().getString(2131303855);
-    AppMethodBeat.o(145559);
+    AppMethodBeat.i(98993);
+    String str = getContext().getString(2131763864);
+    AppMethodBeat.o(98993);
     return str;
   }
   
-  public final p apd()
+  public final q aHw()
   {
-    AppMethodBeat.i(145560);
+    AppMethodBeat.i(98994);
     com.tencent.mm.plugin.sns.ui.a.a locala = new com.tencent.mm.plugin.sns.ui.a.a(this);
-    locala.sdq = new SnsSelectChatRoomUI.2(this);
-    AppMethodBeat.o(145560);
+    locala.xMw = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(98986);
+        if ((paramAnonymousView.getTag() != null) && ((paramAnonymousView.getTag() instanceof af)))
+        {
+          paramAnonymousView = (af)paramAnonymousView.getTag();
+          SnsSelectChatRoomUI.a(SnsSelectChatRoomUI.this, paramAnonymousView);
+        }
+        AppMethodBeat.o(98986);
+      }
+    };
+    AppMethodBeat.o(98994);
     return locala;
   }
   
-  public final n ape()
+  public final o aHx()
   {
-    AppMethodBeat.i(145561);
+    AppMethodBeat.i(98995);
     b localb = new b(this);
-    localb.sdq = new SnsSelectChatRoomUI.3(this);
-    AppMethodBeat.o(145561);
+    localb.xMw = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(98987);
+        if ((paramAnonymousView.getTag() != null) && ((paramAnonymousView.getTag() instanceof af)))
+        {
+          paramAnonymousView = (af)paramAnonymousView.getTag();
+          SnsSelectChatRoomUI.a(SnsSelectChatRoomUI.this, paramAnonymousView);
+        }
+        AppMethodBeat.o(98987);
+      }
+    };
+    AppMethodBeat.o(98995);
     return localb;
   }
   
-  public final int[] bOp()
+  public final int[] cMQ()
   {
     return new int[] { 131075 };
   }
   
-  public final void mL(int paramInt)
-  {
-    AppMethodBeat.i(145564);
-    int i = paramInt - getContentLV().getHeaderViewsCount();
-    if (i < 0)
-    {
-      ab.i("MicroMsg.SnsSelectChatRoomUI", "offsetPosition is Smaller than 0, offsetPosition=%d | position=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(145564);
-      return;
-    }
-    Object localObject = dLW().Qt(i);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(145564);
-      return;
-    }
-    if (((com.tencent.mm.ui.contact.a.a)localObject).contact == null)
-    {
-      AppMethodBeat.o(145564);
-      return;
-    }
-    if (((com.tencent.mm.ui.contact.a.a)localObject).contact.field_deleteFlag == 1)
-    {
-      AppMethodBeat.o(145564);
-      return;
-    }
-    localObject = ((com.tencent.mm.ui.contact.a.a)localObject).contact.field_username;
-    dMc();
-    this.oCs.ama((String)localObject);
-    if (this.gpQ.contains(localObject)) {
-      this.gpQ.remove(localObject);
-    }
-    for (;;)
-    {
-      dLX().notifyDataSetChanged();
-      Km();
-      AppMethodBeat.o(145564);
-      return;
-      this.gpQ.add(localObject);
-    }
-  }
-  
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(145557);
+    AppMethodBeat.i(98991);
     super.onCreate(paramBundle);
-    addTextOptionMenu(1, getString(2131297018), new SnsSelectChatRoomUI.1(this), null, q.b.zby);
-    Km();
-    paramBundle = this.gpQ.iterator();
-    while (paramBundle.hasNext())
+    addTextOptionMenu(1, getString(2131755835), new MenuItem.OnMenuItemClickListener()
     {
-      String str = (String)paramBundle.next();
-      this.oCs.amc(str);
-    }
-    AppMethodBeat.o(145557);
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(98985);
+        SnsSelectChatRoomUI.a(SnsSelectChatRoomUI.this, SnsSelectChatRoomUI.a(SnsSelectChatRoomUI.this));
+        AppMethodBeat.o(98985);
+        return true;
+      }
+    }, null, r.b.FOB);
+    VV();
+    paramBundle = new ArrayList(this.icg);
+    this.twW.gG(paramBundle);
+    AppMethodBeat.o(98991);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -200,18 +204,51 @@ public class SnsSelectChatRoomUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void wK(String paramString)
+  public final void pT(int paramInt)
   {
-    AppMethodBeat.i(145563);
-    this.gpQ.remove(paramString);
-    dLW().notifyDataSetChanged();
-    Km();
-    AppMethodBeat.o(145563);
+    AppMethodBeat.i(98998);
+    int i = paramInt - getContentLV().getHeaderViewsCount();
+    if (i < 0)
+    {
+      ad.i("MicroMsg.SnsSelectChatRoomUI", "offsetPosition is Smaller than 0, offsetPosition=%d | position=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(98998);
+      return;
+    }
+    Object localObject = fbz().ZC(i);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(98998);
+      return;
+    }
+    if (((com.tencent.mm.ui.contact.a.a)localObject).contact == null)
+    {
+      AppMethodBeat.o(98998);
+      return;
+    }
+    if (((com.tencent.mm.ui.contact.a.a)localObject).contact.field_deleteFlag == 1)
+    {
+      AppMethodBeat.o(98998);
+      return;
+    }
+    localObject = ((com.tencent.mm.ui.contact.a.a)localObject).contact.field_username;
+    fbG();
+    this.twW.aBC((String)localObject);
+    if (this.icg.contains(localObject)) {
+      this.icg.remove(localObject);
+    }
+    for (;;)
+    {
+      fbA().notifyDataSetChanged();
+      VV();
+      AppMethodBeat.o(98998);
+      return;
+      this.icg.add(localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsSelectChatRoomUI
  * JD-Core Version:    0.7.0.1
  */

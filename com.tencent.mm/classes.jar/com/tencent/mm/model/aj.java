@@ -1,10 +1,32 @@
 package com.tencent.mm.model;
 
+import com.tencent.mm.sdk.e.d;
+import com.tencent.mm.sdk.e.g;
+import com.tencent.mm.storage.w;
 import java.util.List;
 
 public abstract interface aj
+  extends d<w>, g
 {
-  public abstract List<ai> getDataTransferList();
+  public abstract String sh(String paramString);
+  
+  public abstract w tH(String paramString);
+  
+  public abstract w tI(String paramString);
+  
+  public abstract String tJ(String paramString);
+  
+  public abstract String tK(String paramString);
+  
+  public abstract List<String> tL(String paramString);
+  
+  public abstract boolean tM(String paramString);
+  
+  public abstract boolean tN(String paramString);
+  
+  public abstract int tO(String paramString);
+  
+  public abstract void v(String paramString, long paramLong);
 }
 
 

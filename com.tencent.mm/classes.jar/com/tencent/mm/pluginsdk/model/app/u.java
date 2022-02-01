@@ -1,15 +1,12 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-import android.os.Bundle;
-import com.tencent.mm.ipcinvoker.a;
-import com.tencent.mm.ipcinvoker.type.IPCBoolean;
-
-public class u
-  implements a<Bundle, IPCBoolean>
-{}
+public abstract interface u
+{
+  public abstract void a(int paramInt1, int paramInt2, String paramString, aa paramaa);
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.u
  * JD-Core Version:    0.7.0.1
  */

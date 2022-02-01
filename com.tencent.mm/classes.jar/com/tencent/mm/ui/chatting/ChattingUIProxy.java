@@ -1,10 +1,15 @@
 package com.tencent.mm.ui.chatting;
 
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.g;
 import android.support.v4.app.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.matrix.trace.f.c;
+import com.tencent.mm.plugin.report.service.i;
+import com.tencent.mm.plugin.report.service.i.2;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.IChattingUIProxy;
 import com.tencent.mm.ui.MMFragmentActivity;
 import java.util.Iterator;
@@ -13,80 +18,99 @@ import java.util.List;
 public class ChattingUIProxy
   implements IChattingUIProxy
 {
-  private MMFragmentActivity jdB;
-  private BaseChattingUIFragment zee;
+  private BaseChattingUIFragment FRm;
+  private MMFragmentActivity lTx;
   
   public ChattingUIProxy(MMFragmentActivity paramMMFragmentActivity, BaseChattingUIFragment paramBaseChattingUIFragment)
   {
-    this.zee = paramBaseChattingUIFragment;
-    this.jdB = paramMMFragmentActivity;
+    this.FRm = paramBaseChattingUIFragment;
+    this.lTx = paramMMFragmentActivity;
   }
   
   public void onEnterBegin()
   {
-    AppMethodBeat.i(30912);
-    ab.i("MicroMsg.ChattingUIProxy", "[onEnterBegin]");
-    this.zee.dFQ();
-    this.zee.onEnterBegin();
-    this.zee.dFR();
-    AppMethodBeat.o(30912);
+    AppMethodBeat.i(34786);
+    ad.i("MicroMsg.ChattingUIProxy", "[onEnterBegin]");
+    i locali = i.vKx;
+    locali.vKD = SystemClock.uptimeMillis();
+    locali.oS(false);
+    if (locali.cBu != null) {
+      locali.cBu.a(locali.vKG);
+    }
+    this.FRm.eUL();
+    this.FRm.onEnterBegin();
+    this.FRm.eUM();
+    AppMethodBeat.o(34786);
   }
   
   public void onEnterEnd()
   {
-    AppMethodBeat.i(30913);
-    ab.i("MicroMsg.ChattingUIProxy", "[onEnterEnd]");
-    if (this.zee.Pi(256))
+    AppMethodBeat.i(34787);
+    ad.i("MicroMsg.ChattingUIProxy", "[onEnterEnd]");
+    if (this.FRm.Yo(256))
     {
-      this.zee.dFS();
-      this.zee.onEnterEnd();
+      this.FRm.eUN();
+      this.FRm.onEnterEnd();
     }
-    AppMethodBeat.o(30913);
+    i locali = i.vKx;
+    locali.vKD = (SystemClock.uptimeMillis() - locali.vKD);
+    ad.i("MicroMsg.SceneFpsReportService", "[onChattingEnterEnd] enterChattingDuration=" + locali.vKD + "ms");
+    locali.vKF[(locali.vKC % 20)] = locali.vKD;
+    long[] arrayOfLong = locali.vKF;
+    arrayOfLong[20] += locali.vKD;
+    locali.vKC += 1;
+    if (locali.cBu == null)
+    {
+      AppMethodBeat.o(34787);
+      return;
+    }
+    locali.hbq.post(new i.2(locali));
+    AppMethodBeat.o(34787);
   }
   
   public void onExitBegin()
   {
-    AppMethodBeat.i(30914);
-    ab.i("MicroMsg.ChattingUIProxy", "[onExitBegin]");
-    if (!this.zee.dFY()) {
-      this.zee.onExitBegin();
+    AppMethodBeat.i(34788);
+    ad.i("MicroMsg.ChattingUIProxy", "[onExitBegin]");
+    if (!this.FRm.eUT()) {
+      this.FRm.onExitBegin();
     }
-    AppMethodBeat.o(30914);
+    AppMethodBeat.o(34788);
   }
   
   public void onExitEnd()
   {
-    AppMethodBeat.i(30915);
-    ab.i("MicroMsg.ChattingUIProxy", "[onExitEnd]");
-    this.zee.dFT();
-    this.zee.dFU();
-    this.zee.dFV();
-    this.zee.onExitEnd();
-    AppMethodBeat.o(30915);
+    AppMethodBeat.i(34789);
+    ad.i("MicroMsg.ChattingUIProxy", "[onExitEnd]");
+    this.FRm.eUO();
+    this.FRm.eUP();
+    this.FRm.eUQ();
+    this.FRm.onExitEnd();
+    AppMethodBeat.o(34789);
   }
   
   public void onInit(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(30911);
+    AppMethodBeat.i(34785);
     if (paramBoolean) {
-      ah.dGU().zBY = 4;
+      ah.eWb().Gqo = 4;
     }
-    this.zee.zwO = true;
-    Object localObject = this.jdB.getSupportFragmentManager().getFragments();
-    label49:
+    this.FRm.Glb = true;
+    Object localObject = this.lTx.getSupportFragmentManager().getFragments();
+    label48:
     boolean bool;
     if (localObject == null)
     {
-      ab.i("MicroMsg.ChattingUIProxy", "fragments is null");
-      break label184;
+      ad.i("MicroMsg.ChattingUIProxy", "fragments is null");
+      break label182;
       bool = true;
-      label51:
-      ab.i("MicroMsg.ChattingUIProxy", "[onInit] isPreload：%s ok:%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
+      label50:
+      ad.i("MicroMsg.ChattingUIProxy", "[onInit] isPreload：%s ok:%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
       if (!bool) {
         break label249;
       }
-      this.jdB.getSupportFragmentManager().beginTransaction().a(paramInt, this.zee).commitAllowingStateLoss();
-      this.jdB.getSupportFragmentManager().executePendingTransactions();
+      this.lTx.getSupportFragmentManager().beginTransaction().a(paramInt, this.FRm).commitAllowingStateLoss();
+      this.lTx.getSupportFragmentManager().executePendingTransactions();
     }
     for (;;)
     {
@@ -95,34 +119,34 @@ public class ChattingUIProxy
         onExitBegin();
         onExitEnd();
       }
-      this.zee.zwO = false;
-      AppMethodBeat.o(30911);
+      this.FRm.Glb = false;
+      AppMethodBeat.o(34785);
       return;
       if (((List)localObject).size() >= 5)
       {
-        ab.e("MicroMsg.ChattingUIProxy", "fragments more than 5! %s", new Object[] { Integer.valueOf(((List)localObject).size()) });
+        ad.e("MicroMsg.ChattingUIProxy", "fragments more than 5! %s", new Object[] { Integer.valueOf(((List)localObject).size()) });
         localObject = ((List)localObject).iterator();
-        label184:
+        label182:
         if (!((Iterator)localObject).hasNext()) {
-          break label49;
+          break label48;
         }
         if (!((Fragment)((Iterator)localObject).next() instanceof ChattingUIFragment)) {
           break;
         }
-        ab.e("MicroMsg.ChattingUIProxy", "fragments more than 5 and find a ChattingUIFragment!!");
+        ad.e("MicroMsg.ChattingUIProxy", "fragments more than 5 and find a ChattingUIFragment!!");
         bool = false;
-        break label51;
+        break label50;
       }
-      ab.i("MicroMsg.ChattingUIProxy", "fragments size %s", new Object[] { Integer.valueOf(((List)localObject).size()) });
-      break label49;
+      ad.i("MicroMsg.ChattingUIProxy", "fragments size %s", new Object[] { Integer.valueOf(((List)localObject).size()) });
+      break label48;
       label249:
-      this.jdB.getSupportFragmentManager().beginTransaction().b(paramInt, this.zee).commitAllowingStateLoss();
+      this.lTx.getSupportFragmentManager().beginTransaction().b(paramInt, this.FRm).commitAllowingStateLoss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ChattingUIProxy
  * JD-Core Version:    0.7.0.1
  */

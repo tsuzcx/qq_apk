@@ -5,7 +5,7 @@ import android.os.IInterface;
 public abstract interface ag
   extends IInterface
 {
-  public abstract void ae(int paramInt1, int paramInt2);
+  public abstract void ag(int paramInt1, int paramInt2);
 }
 
 

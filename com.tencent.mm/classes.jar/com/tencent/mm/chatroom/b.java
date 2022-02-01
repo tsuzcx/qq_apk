@@ -1,118 +1,143 @@
 package com.tencent.mm.chatroom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cg.h.d;
-import com.tencent.mm.g.a.kn;
-import com.tencent.mm.g.a.ko;
-import com.tencent.mm.g.a.kp;
-import com.tencent.mm.g.a.kq;
-import com.tencent.mm.g.a.ku;
+import com.tencent.mm.g.a.ls;
+import com.tencent.mm.g.a.lt;
+import com.tencent.mm.g.a.lu;
+import com.tencent.mm.g.a.lv;
+import com.tencent.mm.g.a.lz;
+import com.tencent.mm.g.a.vb;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.bz;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.messenger.a.e;
-import com.tencent.mm.plugin.messenger.foundation.a.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.cc;
+import com.tencent.mm.model.t;
+import com.tencent.mm.plugin.messenger.a.f;
+import com.tencent.mm.plugin.messenger.foundation.a.q;
+import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class b
-  implements at
+  implements aw
 {
-  private static com.tencent.mm.chatroom.b.a edX;
-  private com.tencent.mm.pluginsdk.c.c<kn> edR;
-  private com.tencent.mm.pluginsdk.c.c<kq> edS;
-  private com.tencent.mm.pluginsdk.c.c<kp> edT;
-  private com.tencent.mm.pluginsdk.c.c<ku> edU;
-  private com.tencent.mm.pluginsdk.c.c<ko> edV;
-  private com.tencent.mm.sdk.b.c edW;
+  private static com.tencent.mm.chatroom.c.a foq;
+  private com.tencent.mm.pluginsdk.c.c<ls> fok;
+  private com.tencent.mm.pluginsdk.c.c<lv> fol;
+  private com.tencent.mm.pluginsdk.c.c<lu> fom;
+  private com.tencent.mm.pluginsdk.c.c<lz> fon;
+  private com.tencent.mm.pluginsdk.c.c<lt> foo;
+  private com.tencent.mm.sdk.b.c fop;
   
   public b()
   {
-    AppMethodBeat.i(103886);
-    this.edR = new b.1(this);
-    this.edS = new b.2(this);
-    this.edT = new b.3(this);
-    this.edU = new com.tencent.mm.pluginsdk.c.c()
+    AppMethodBeat.i(12431);
+    this.fok = new com.tencent.mm.pluginsdk.c.c()
     {
-      public final int Jx()
+      public final int UO()
+      {
+        return 181;
+      }
+    };
+    this.fol = new com.tencent.mm.pluginsdk.c.c()
+    {
+      public final int UO()
+      {
+        return 551;
+      }
+    };
+    this.fom = new com.tencent.mm.pluginsdk.c.c()
+    {
+      public final int UO()
+      {
+        return 179;
+      }
+    };
+    this.fon = new com.tencent.mm.pluginsdk.c.c()
+    {
+      public final int UO()
       {
         return 700;
       }
     };
-    this.edV = new b.5(this);
-    this.edW = new b.6(this);
-    AppMethodBeat.o(103886);
+    this.foo = new com.tencent.mm.pluginsdk.c.c()
+    {
+      public final int UO()
+      {
+        return 119;
+      }
+    };
+    this.fop = new com.tencent.mm.sdk.b.c() {};
+    AppMethodBeat.o(12431);
   }
   
-  private static b Jv()
+  private static b UM()
   {
-    AppMethodBeat.i(103887);
-    b localb = (b)q.S(b.class);
-    AppMethodBeat.o(103887);
+    AppMethodBeat.i(12432);
+    b localb = (b)t.ap(b.class);
+    AppMethodBeat.o(12432);
     return localb;
   }
   
-  private static com.tencent.mm.chatroom.b.a Jw()
+  private static com.tencent.mm.chatroom.c.a UN()
   {
-    AppMethodBeat.i(103888);
-    g.RJ().QQ();
-    Jv();
-    if (edX == null)
+    AppMethodBeat.i(12433);
+    g.afz().aeD();
+    UM();
+    if (foq == null)
     {
-      Jv();
-      edX = new com.tencent.mm.chatroom.b.a();
+      UM();
+      foq = new com.tencent.mm.chatroom.c.a();
     }
-    Jv();
-    com.tencent.mm.chatroom.b.a locala = edX;
-    AppMethodBeat.o(103888);
+    UM();
+    com.tencent.mm.chatroom.c.a locala = foq;
+    AppMethodBeat.o(12433);
     return locala;
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public HashMap<Integer, h.d> getBaseDBFactories()
+  public HashMap<Integer, h.b> getBaseDBFactories()
   {
     return null;
   }
   
   public void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(103889);
+    AppMethodBeat.i(12434);
     com.tencent.mm.roomsdk.a.b.a("@chatroom", new a());
-    com.tencent.mm.sdk.b.a.ymk.c(this.edW);
-    com.tencent.mm.sdk.b.a.ymk.c(this.edR);
-    com.tencent.mm.sdk.b.a.ymk.c(this.edV);
-    com.tencent.mm.sdk.b.a.ymk.c(this.edS);
-    com.tencent.mm.sdk.b.a.ymk.c(this.edT);
-    com.tencent.mm.sdk.b.a.ymk.c(this.edU);
-    com.tencent.mm.chatroom.b.a locala = Jw();
-    ((p)g.G(p.class)).getSysCmdMsgExtension().a("NewXmlChatRoomAccessVerifyApplication", locala.eei, true);
-    ((p)g.G(p.class)).getSysCmdMsgExtension().a("NewXmlChatRoomAccessVerifyApproval", locala.eei, true);
-    ((e)g.E(e.class)).a("link_admin_explain", locala);
-    AppMethodBeat.o(103889);
+    com.tencent.mm.sdk.b.a.ESL.c(this.fop);
+    com.tencent.mm.sdk.b.a.ESL.c(this.fok);
+    com.tencent.mm.sdk.b.a.ESL.c(this.foo);
+    com.tencent.mm.sdk.b.a.ESL.c(this.fol);
+    com.tencent.mm.sdk.b.a.ESL.c(this.fom);
+    com.tencent.mm.sdk.b.a.ESL.c(this.fon);
+    com.tencent.mm.chatroom.c.a locala = UN();
+    ((q)g.ad(q.class)).getSysCmdMsgExtension().a("NewXmlChatRoomAccessVerifyApplication", locala.foB, true);
+    ((q)g.ad(q.class)).getSysCmdMsgExtension().a("NewXmlChatRoomAccessVerifyApproval", locala.foB, true);
+    ((f)g.ab(f.class)).a("link_admin_explain", locala);
+    AppMethodBeat.o(12434);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(103890);
-    com.tencent.mm.sdk.b.a.ymk.d(this.edW);
-    com.tencent.mm.sdk.b.a.ymk.d(this.edR);
-    com.tencent.mm.sdk.b.a.ymk.d(this.edV);
-    com.tencent.mm.sdk.b.a.ymk.d(this.edS);
-    com.tencent.mm.sdk.b.a.ymk.d(this.edT);
-    com.tencent.mm.sdk.b.a.ymk.d(this.edU);
-    com.tencent.mm.chatroom.b.a locala = Jw();
-    ((p)g.G(p.class)).getSysCmdMsgExtension().b("NewXmlChatRoomAccessVerifyApplication", locala.eei, true);
-    ((p)g.G(p.class)).getSysCmdMsgExtension().b("NewXmlChatRoomAccessVerifyApproval", locala.eei, true);
-    ((e)g.E(e.class)).SM("link_admin_explain");
-    AppMethodBeat.o(103890);
+    AppMethodBeat.i(12435);
+    com.tencent.mm.sdk.b.a.ESL.d(this.fop);
+    com.tencent.mm.sdk.b.a.ESL.d(this.fok);
+    com.tencent.mm.sdk.b.a.ESL.d(this.foo);
+    com.tencent.mm.sdk.b.a.ESL.d(this.fol);
+    com.tencent.mm.sdk.b.a.ESL.d(this.fom);
+    com.tencent.mm.sdk.b.a.ESL.d(this.fon);
+    com.tencent.mm.chatroom.c.a locala = UN();
+    ((q)g.ad(q.class)).getSysCmdMsgExtension().b("NewXmlChatRoomAccessVerifyApplication", locala.foB, true);
+    ((q)g.ad(q.class)).getSysCmdMsgExtension().b("NewXmlChatRoomAccessVerifyApproval", locala.foB, true);
+    ((f)g.ab(f.class)).afO("link_admin_explain");
+    AppMethodBeat.o(12435);
   }
   
   public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.b
  * JD-Core Version:    0.7.0.1
  */

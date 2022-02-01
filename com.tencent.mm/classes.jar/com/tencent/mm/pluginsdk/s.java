@@ -1,55 +1,46 @@
 package com.tencent.mm.pluginsdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.ad;
 
-public class s
+public final class s
 {
-  private LinkedList<s.a> vJE;
+  private static boolean BNC = false;
+  public boolean BNB = false;
+  public String mTag = "";
   
-  public s()
+  public s(String paramString)
   {
-    AppMethodBeat.i(105834);
-    this.vJE = new LinkedList();
-    AppMethodBeat.o(105834);
+    this.mTag = paramString;
   }
   
-  private void d(String paramString1, long paramLong, String paramString2)
+  public static void euR()
   {
-    AppMethodBeat.i(105836);
-    this.vJE.add(new s.a(this, paramString1, paramLong, paramString2));
-    AppMethodBeat.o(105836);
+    BNC = true;
   }
   
-  public final void aX(String paramString, long paramLong)
+  public final boolean em(String paramString)
   {
-    AppMethodBeat.i(105835);
-    d(paramString, paramLong, "");
-    AppMethodBeat.o(105835);
-  }
-  
-  public final long alb(String paramString)
-  {
-    AppMethodBeat.i(105837);
-    Iterator localIterator = this.vJE.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(141158);
+    if (BNC)
     {
-      s.a locala = (s.a)localIterator.next();
-      if (locala.key.equals(paramString))
-      {
-        long l = locala.time;
-        AppMethodBeat.o(105837);
-        return l;
-      }
+      ad.i("MicroMsg.SplashOptimizing", "[%s], check cancel", new Object[] { this.mTag });
+      AppMethodBeat.o(141158);
+      return false;
     }
-    AppMethodBeat.o(105837);
-    return 0L;
+    if (this.BNB)
+    {
+      ad.i("MicroMsg.SplashOptimizing", "[%s], recreate activity, skip this %s", new Object[] { this.mTag, paramString });
+      AppMethodBeat.o(141158);
+      return true;
+    }
+    AppMethodBeat.o(141158);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.s
  * JD-Core Version:    0.7.0.1
  */

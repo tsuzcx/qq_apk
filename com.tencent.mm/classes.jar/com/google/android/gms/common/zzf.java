@@ -12,9 +12,9 @@ final class zzf
   
   protected final byte[] zzf()
   {
-    AppMethodBeat.i(90334);
+    AppMethodBeat.i(5355);
     byte[] arrayOfByte = GoogleCertificates.CertData.zzd("");
-    AppMethodBeat.o(90334);
+    AppMethodBeat.o(5355);
     return arrayOfByte;
   }
 }

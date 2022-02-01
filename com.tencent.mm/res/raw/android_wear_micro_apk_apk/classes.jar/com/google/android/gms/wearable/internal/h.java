@@ -10,20 +10,20 @@ import java.io.InputStream;
 public final class h
   implements i
 {
-  private final Status HS;
-  private volatile ParcelFileDescriptor Th;
-  private volatile InputStream Ti;
+  private final Status JH;
+  private volatile ParcelFileDescriptor UW;
+  private volatile InputStream UX;
   private volatile boolean mClosed = false;
   
   public h(Status paramStatus, ParcelFileDescriptor paramParcelFileDescriptor)
   {
-    this.HS = paramStatus;
-    this.Th = paramParcelFileDescriptor;
+    this.JH = paramStatus;
+    this.UW = paramParcelFileDescriptor;
   }
   
-  public final Status gC()
+  public final Status gM()
   {
-    return this.HS;
+    return this.JH;
   }
   
   public final InputStream getInputStream()
@@ -31,18 +31,18 @@ public final class h
     if (this.mClosed) {
       throw new IllegalStateException("Cannot access the input stream after release().");
     }
-    if (this.Th == null) {
+    if (this.UW == null) {
       return null;
     }
-    if (this.Ti == null) {
-      this.Ti = new ParcelFileDescriptor.AutoCloseInputStream(this.Th);
+    if (this.UX == null) {
+      this.UX = new ParcelFileDescriptor.AutoCloseInputStream(this.UW);
     }
-    return this.Ti;
+    return this.UX;
   }
   
   public final void release()
   {
-    if (this.Th == null) {
+    if (this.UW == null) {
       return;
     }
     if (this.mClosed) {
@@ -50,16 +50,16 @@ public final class h
     }
     try
     {
-      if (this.Ti != null) {
-        this.Ti.close();
+      if (this.UX != null) {
+        this.UX.close();
       }
       for (;;)
       {
         this.mClosed = true;
-        this.Th = null;
-        this.Ti = null;
+        this.UW = null;
+        this.UX = null;
         return;
-        this.Th.close();
+        this.UW.close();
       }
       return;
     }

@@ -10,8 +10,8 @@ public final class df
   static void a(zzbau paramzzbau, Parcel paramParcel, int paramInt)
   {
     int i = c.b(paramParcel);
-    c.c(paramParcel, 1, paramzzbau.Hc);
-    c.a(paramParcel, 2, paramzzbau.QK, paramInt);
+    c.c(paramParcel, 1, paramzzbau.IR);
+    c.a(paramParcel, 2, paramzzbau.Sz, paramInt);
     c.v(paramParcel, i);
   }
 }

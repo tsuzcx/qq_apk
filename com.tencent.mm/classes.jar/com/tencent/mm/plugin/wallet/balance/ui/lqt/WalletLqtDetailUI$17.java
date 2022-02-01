@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.bfx;
+import com.tencent.mm.protocal.protobuf.blm;
+import com.tencent.mm.protocal.protobuf.bsy;
+import com.tencent.mm.protocal.protobuf.cer;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletLqtDetailUI$17
   implements View.OnClickListener
 {
-  WalletLqtDetailUI$17(WalletLqtDetailUI paramWalletLqtDetailUI, ViewGroup paramViewGroup, bfx parambfx) {}
+  WalletLqtDetailUI$17(WalletLqtDetailUI paramWalletLqtDetailUI) {}
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(45541);
-    paramView = (String)this.tPX.getTag();
-    e.m(this.tPQ, paramView, false);
-    h.qsU.e(16807, new Object[] { Integer.valueOf(2), Integer.valueOf(2), this.tPW.wPJ });
-    AppMethodBeat.o(45541);
+    AppMethodBeat.i(187115);
+    e.v(WalletLqtDetailUI.d(this.zIT).Ebi.DJp.CRC, WalletLqtDetailUI.d(this.zIT).Ebi.DJp.DcE, 0, 1061);
+    h.vKh.f(17084, new Object[] { Integer.valueOf(11) });
+    AppMethodBeat.o(187115);
   }
 }
 

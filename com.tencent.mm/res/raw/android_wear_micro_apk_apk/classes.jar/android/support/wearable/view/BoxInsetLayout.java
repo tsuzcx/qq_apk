@@ -18,10 +18,10 @@ import android.widget.FrameLayout;
 public class BoxInsetLayout
   extends FrameLayout
 {
-  private static float Ar = 0.146467F;
-  private Rect As;
-  private boolean At;
-  private Rect Au;
+  private static float Cg = 0.146467F;
+  private Rect Ch;
+  private boolean Ci;
+  private Rect Cj;
   
   public BoxInsetLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,11 +31,11 @@ public class BoxInsetLayout
   public BoxInsetLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    if (this.As == null) {
-      this.As = new Rect();
+    if (this.Ch == null) {
+      this.Ch = new Rect();
     }
-    if (this.Au == null) {
-      this.Au = new Rect();
+    if (this.Cj == null) {
+      this.Cj = new Rect();
     }
   }
   
@@ -60,12 +60,12 @@ public class BoxInsetLayout
     if (Build.VERSION.SDK_INT < 23)
     {
       boolean bool = paramWindowInsets.isRound();
-      if (bool != this.At)
+      if (bool != this.Ci)
       {
-        this.At = bool;
+        this.Ci = bool;
         requestLayout();
       }
-      this.Au.set(paramWindowInsets.getSystemWindowInsetLeft(), paramWindowInsets.getSystemWindowInsetTop(), paramWindowInsets.getSystemWindowInsetRight(), paramWindowInsets.getSystemWindowInsetBottom());
+      this.Cj.set(paramWindowInsets.getSystemWindowInsetLeft(), paramWindowInsets.getSystemWindowInsetTop(), paramWindowInsets.getSystemWindowInsetRight(), paramWindowInsets.getSystemWindowInsetBottom());
     }
     return paramWindowInsets;
   }
@@ -78,18 +78,18 @@ public class BoxInsetLayout
       requestApplyInsets();
       return;
     }
-    this.At = getResources().getConfiguration().isScreenRound();
+    this.Ci = getResources().getConfiguration().isScreenRound();
     WindowInsets localWindowInsets = getRootWindowInsets();
-    this.Au.set(localWindowInsets.getSystemWindowInsetLeft(), localWindowInsets.getSystemWindowInsetTop(), localWindowInsets.getSystemWindowInsetRight(), localWindowInsets.getSystemWindowInsetBottom());
+    this.Cj.set(localWindowInsets.getSystemWindowInsetLeft(), localWindowInsets.getSystemWindowInsetTop(), localWindowInsets.getSystemWindowInsetRight(), localWindowInsets.getSystemWindowInsetBottom());
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = getChildCount();
-    int j = getPaddingLeft() + this.As.left;
-    int k = paramInt3 - paramInt1 - getPaddingRight() - this.As.right;
-    int m = getPaddingTop() + this.As.top;
-    paramInt4 = paramInt4 - paramInt2 - getPaddingBottom() - this.As.bottom;
+    int j = getPaddingLeft() + this.Ch.left;
+    int k = paramInt3 - paramInt1 - getPaddingRight() - this.Ch.right;
+    int m = getPaddingTop() + this.Ch.top;
+    paramInt4 = paramInt4 - paramInt2 - getPaddingBottom() - this.Ch.bottom;
     paramInt3 = 0;
     if (paramInt3 < i)
     {
@@ -164,18 +164,18 @@ public class BoxInsetLayout
       i = 0;
       j = 0;
       k = 0;
-      if (this.At)
+      if (this.Ci)
       {
-        if ((localLayoutParams.Av & 0x1) == 0) {
+        if ((localLayoutParams.Ck & 0x1) == 0) {
           i = localLayoutParams.leftMargin;
         }
-        if ((localLayoutParams.Av & 0x4) == 0) {
+        if ((localLayoutParams.Ck & 0x4) == 0) {
           j = localLayoutParams.rightMargin;
         }
-        if ((localLayoutParams.Av & 0x2) == 0) {
+        if ((localLayoutParams.Ck & 0x2) == 0) {
           k = localLayoutParams.topMargin;
         }
-        if ((localLayoutParams.Av & 0x8) != 0) {
+        if ((localLayoutParams.Ck & 0x8) != 0) {
           break label915;
         }
         i5 = localLayoutParams.bottomMargin;
@@ -206,10 +206,10 @@ public class BoxInsetLayout
       i = localLayoutParams.bottomMargin;
       break label154;
       i = getPaddingLeft();
-      j = this.As.left;
+      j = this.Ch.left;
       i2 = getPaddingRight();
-      i3 = this.As.right;
-      k = Math.max(getPaddingTop() + this.As.top + getPaddingBottom() + this.As.bottom + i1, getSuggestedMinimumHeight());
+      i3 = this.Ch.right;
+      k = Math.max(getPaddingTop() + this.Ch.top + getPaddingBottom() + this.Ch.bottom + i1, getSuggestedMinimumHeight());
       n = Math.max(n + (i + j + i2 + i3), getSuggestedMinimumWidth());
       localObject = getForeground();
       j = k;
@@ -220,7 +220,7 @@ public class BoxInsetLayout
         i = Math.max(n, ((Drawable)localObject).getMinimumWidth());
       }
       setMeasuredDimension(resolveSizeAndState(i, paramInt1, m), resolveSizeAndState(j, paramInt2, m << 16));
-      i2 = (int)(Ar * Math.max(getMeasuredWidth(), getMeasuredHeight()));
+      i2 = (int)(Cg * Math.max(getMeasuredWidth(), getMeasuredHeight()));
       i = 0;
       while (i < i6)
       {
@@ -233,19 +233,19 @@ public class BoxInsetLayout
         }
         i3 = j & 0x70;
         int i9 = j & 0x7;
-        int i7 = localLayoutParams.leftMargin + getPaddingLeft() + this.As.left;
-        int i8 = localLayoutParams.rightMargin + getPaddingRight() + this.As.right;
-        i4 = localLayoutParams.topMargin + getPaddingTop() + this.As.top;
-        i5 = localLayoutParams.bottomMargin + getPaddingBottom() + this.As.bottom;
+        int i7 = localLayoutParams.leftMargin + getPaddingLeft() + this.Ch.left;
+        int i8 = localLayoutParams.rightMargin + getPaddingRight() + this.Ch.right;
+        i4 = localLayoutParams.topMargin + getPaddingTop() + this.Ch.top;
+        i5 = localLayoutParams.bottomMargin + getPaddingBottom() + this.Ch.bottom;
         k = ((View)localObject).getPaddingLeft();
         m = ((View)localObject).getPaddingRight();
         i1 = ((View)localObject).getPaddingBottom();
         n = ((View)localObject).getPaddingTop();
         j = k;
-        if (this.At)
+        if (this.Ci)
         {
           j = k;
-          if ((localLayoutParams.Av & 0x1) != 0) {
+          if ((localLayoutParams.Ck & 0x1) != 0) {
             if (localLayoutParams.width != -1)
             {
               j = k;
@@ -258,10 +258,10 @@ public class BoxInsetLayout
           }
         }
         k = m;
-        if (this.At)
+        if (this.Ci)
         {
           k = m;
-          if ((localLayoutParams.Av & 0x4) != 0) {
+          if ((localLayoutParams.Ck & 0x4) != 0) {
             if (localLayoutParams.width != -1)
             {
               k = m;
@@ -275,10 +275,10 @@ public class BoxInsetLayout
         }
         i7 = getChildMeasureSpec(paramInt1, i7 + 0 + i8, localLayoutParams.width);
         m = n;
-        if (this.At)
+        if (this.Ci)
         {
           m = n;
-          if ((localLayoutParams.Av & 0x2) != 0) {
+          if ((localLayoutParams.Ck & 0x2) != 0) {
             if (localLayoutParams.height != -1)
             {
               m = n;
@@ -291,10 +291,10 @@ public class BoxInsetLayout
           }
         }
         n = i1;
-        if (this.At)
+        if (this.Ci)
         {
           n = i1;
-          if ((localLayoutParams.Av & 0x8) != 0) {
+          if ((localLayoutParams.Ck & 0x8) != 0) {
             if (localLayoutParams.height != -1)
             {
               n = i1;
@@ -331,10 +331,10 @@ public class BoxInsetLayout
   public void setForeground(Drawable paramDrawable)
   {
     super.setForeground(paramDrawable);
-    if (this.As == null) {
-      this.As = new Rect();
+    if (this.Ch == null) {
+      this.Ch = new Rect();
     }
-    paramDrawable.getPadding(this.As);
+    paramDrawable.getPadding(this.Ch);
   }
 }
 

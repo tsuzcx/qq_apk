@@ -14,78 +14,78 @@ import android.widget.PopupWindow.OnDismissListener;
 
 public class n
 {
-  private boolean VD;
-  private o.a VE;
-  PopupWindow.OnDismissListener VG;
-  private final int Vm;
-  private final int Vn;
-  private final boolean Vo;
-  protected int Vw = 8388611;
-  private m Xb;
-  private final PopupWindow.OnDismissListener Xc = new PopupWindow.OnDismissListener()
+  private final h XT;
+  protected int acB = 8388611;
+  private boolean acI;
+  private o.a acJ;
+  PopupWindow.OnDismissListener acL;
+  private final int acr;
+  private final int acs;
+  private final boolean act;
+  private m aeg;
+  private final PopupWindow.OnDismissListener aeh = new PopupWindow.OnDismissListener()
   {
     public final void onDismiss()
     {
       n.this.onDismiss();
     }
   };
-  private final h eq;
-  protected View iU;
   private final Context mContext;
+  protected View nO;
   
   public n(Context paramContext, h paramh, View paramView, boolean paramBoolean)
   {
-    this(paramContext, paramh, paramView, paramBoolean, 2130772137, 0);
+    this(paramContext, paramh, paramView, paramBoolean, 2130968627, 0);
   }
   
   public n(Context paramContext, h paramh, View paramView, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     this.mContext = paramContext;
-    this.eq = paramh;
-    this.iU = paramView;
-    this.Vo = paramBoolean;
-    this.Vm = paramInt1;
-    this.Vn = paramInt2;
+    this.XT = paramh;
+    this.nO = paramView;
+    this.act = paramBoolean;
+    this.acr = paramInt1;
+    this.acs = paramInt2;
   }
   
   final void b(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    m localm = gq();
+    m localm = hL();
     localm.setShowTitle(paramBoolean2);
     if (paramBoolean1)
     {
       int i = paramInt1;
-      if ((d.getAbsoluteGravity(this.Vw, android.support.v4.view.t.T(this.iU)) & 0x7) == 5) {
-        i = paramInt1 - this.iU.getWidth();
+      if ((d.getAbsoluteGravity(this.acB, android.support.v4.view.t.Y(this.nO)) & 0x7) == 5) {
+        i = paramInt1 - this.nO.getWidth();
       }
       localm.setHorizontalOffset(i);
       localm.setVerticalOffset(paramInt2);
       paramInt1 = (int)(this.mContext.getResources().getDisplayMetrics().density * 48.0F / 2.0F);
-      localm.Xa = new Rect(i - paramInt1, paramInt2 - paramInt1, i + paramInt1, paramInt1 + paramInt2);
+      localm.aef = new Rect(i - paramInt1, paramInt2 - paramInt1, i + paramInt1, paramInt1 + paramInt2);
     }
     localm.show();
   }
   
   public final void c(o.a parama)
   {
-    this.VE = parama;
-    if (this.Xb != null) {
-      this.Xb.a(parama);
+    this.acJ = parama;
+    if (this.aeg != null) {
+      this.aeg.a(parama);
     }
   }
   
   public final void dismiss()
   {
     if (isShowing()) {
-      this.Xb.dismiss();
+      this.aeg.dismiss();
     }
   }
   
-  public final m gq()
+  public final m hL()
   {
     Point localPoint;
     int i;
-    if (this.Xb == null)
+    if (this.aeg == null)
     {
       localObject = ((WindowManager)this.mContext.getSystemService("window")).getDefaultDisplay();
       localPoint = new Point();
@@ -93,7 +93,7 @@ public class n
         break label164;
       }
       ((Display)localObject).getRealSize(localPoint);
-      if (Math.min(localPoint.x, localPoint.y) < this.mContext.getResources().getDimensionPixelSize(2131427934)) {
+      if (Math.min(localPoint.x, localPoint.y) < this.mContext.getResources().getDimensionPixelSize(2131165654)) {
         break label172;
       }
       i = 1;
@@ -105,16 +105,16 @@ public class n
     label164:
     label172:
     label177:
-    for (Object localObject = new e(this.mContext, this.iU, this.Vm, this.Vn, this.Vo);; localObject = new t(this.mContext, this.eq, this.iU, this.Vm, this.Vn, this.Vo))
+    for (Object localObject = new e(this.mContext, this.nO, this.acr, this.acs, this.act);; localObject = new t(this.mContext, this.XT, this.nO, this.acr, this.acs, this.act))
     {
-      ((m)localObject).f(this.eq);
-      ((m)localObject).setOnDismissListener(this.Xc);
-      ((m)localObject).setAnchorView(this.iU);
-      ((m)localObject).a(this.VE);
-      ((m)localObject).setForceShowIcon(this.VD);
-      ((m)localObject).setGravity(this.Vw);
-      this.Xb = ((m)localObject);
-      return this.Xb;
+      ((m)localObject).f(this.XT);
+      ((m)localObject).setOnDismissListener(this.aeh);
+      ((m)localObject).setAnchorView(this.nO);
+      ((m)localObject).a(this.acJ);
+      ((m)localObject).setForceShowIcon(this.acI);
+      ((m)localObject).setGravity(this.acB);
+      this.aeg = ((m)localObject);
+      return this.aeg;
       ((Display)localObject).getSize(localPoint);
       break;
       i = 0;
@@ -122,12 +122,12 @@ public class n
     }
   }
   
-  public final boolean gr()
+  public final boolean hM()
   {
     if (isShowing()) {
       return true;
     }
-    if (this.iU == null) {
+    if (this.nO == null) {
       return false;
     }
     b(0, 0, false, false);
@@ -136,22 +136,22 @@ public class n
   
   public final boolean isShowing()
   {
-    return (this.Xb != null) && (this.Xb.isShowing());
+    return (this.aeg != null) && (this.aeg.isShowing());
   }
   
   protected void onDismiss()
   {
-    this.Xb = null;
-    if (this.VG != null) {
-      this.VG.onDismiss();
+    this.aeg = null;
+    if (this.acL != null) {
+      this.acL.onDismiss();
     }
   }
   
   public final void setForceShowIcon(boolean paramBoolean)
   {
-    this.VD = paramBoolean;
-    if (this.Xb != null) {
-      this.Xb.setForceShowIcon(paramBoolean);
+    this.acI = paramBoolean;
+    if (this.aeg != null) {
+      this.aeg.setForceShowIcon(paramBoolean);
     }
   }
 }

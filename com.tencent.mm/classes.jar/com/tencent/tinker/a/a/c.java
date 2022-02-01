@@ -3,24 +3,24 @@ package com.tencent.tinker.a.a;
 import java.util.Arrays;
 
 public final class c
-  extends t.a.a<c>
+  extends s.a.a<c>
 {
-  public int[] Boy;
+  public int[] IAt;
   
   public c(int paramInt, int[] paramArrayOfInt)
   {
     super(paramInt);
-    this.Boy = paramArrayOfInt;
+    this.IAt = paramArrayOfInt;
   }
   
   private int a(c paramc)
   {
     int k = 0;
-    int m = this.Boy.length;
-    int i = paramc.Boy.length;
+    int m = this.IAt.length;
+    int i = paramc.IAt.length;
     if (m != i)
     {
-      i = com.tencent.tinker.a.a.b.c.ip(m, i);
+      i = com.tencent.tinker.a.a.b.c.ks(m, i);
       return i;
     }
     int j = 0;
@@ -30,8 +30,8 @@ public final class c
       if (j >= m) {
         break;
       }
-      if (this.Boy[j] != paramc.Boy[j]) {
-        return com.tencent.tinker.a.a.b.c.ip(this.Boy[j], paramc.Boy[j]);
+      if (this.IAt[j] != paramc.IAt[j]) {
+        return com.tencent.tinker.a.a.b.c.ks(this.IAt[j], paramc.IAt[j]);
       }
       j += 1;
     }
@@ -48,12 +48,12 @@ public final class c
   
   public final int hashCode()
   {
-    return Arrays.hashCode(this.Boy);
+    return Arrays.hashCode(this.IAt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tinker.a.a.c
  * JD-Core Version:    0.7.0.1
  */

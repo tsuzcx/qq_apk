@@ -3,7 +3,8 @@ package android.support.v4.content;
 import android.content.Context;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.support.v4.e.o;
+import android.support.v4.e.p;
+import android.support.v4.os.b;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.concurrent.CountDownLatch;
@@ -77,7 +78,7 @@ public abstract class a<D>
       paramPrintWriter.print("mTask=");
       paramPrintWriter.print(this.mTask);
       paramPrintWriter.print(" waiting=");
-      paramPrintWriter.println(this.mTask.zA);
+      paramPrintWriter.println(this.mTask.FT);
     }
     if (this.mCancellingTask != null)
     {
@@ -85,15 +86,15 @@ public abstract class a<D>
       paramPrintWriter.print("mCancellingTask=");
       paramPrintWriter.print(this.mCancellingTask);
       paramPrintWriter.print(" waiting=");
-      paramPrintWriter.println(this.mCancellingTask.zA);
+      paramPrintWriter.println(this.mCancellingTask.FT);
     }
     if (this.mUpdateThrottle != 0L)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mUpdateThrottle=");
-      o.b(this.mUpdateThrottle, paramPrintWriter);
+      p.b(this.mUpdateThrottle, paramPrintWriter);
       paramPrintWriter.print(" mLastLoadCompleteTime=");
-      o.a(this.mLastLoadCompleteTime, SystemClock.uptimeMillis(), paramPrintWriter);
+      p.a(this.mLastLoadCompleteTime, SystemClock.uptimeMillis(), paramPrintWriter);
       paramPrintWriter.println();
     }
   }
@@ -102,14 +103,14 @@ public abstract class a<D>
   {
     if ((this.mCancellingTask == null) && (this.mTask != null))
     {
-      if (this.mTask.zA)
+      if (this.mTask.FT)
       {
-        this.mTask.zA = false;
+        this.mTask.FT = false;
         this.mHandler.removeCallbacks(this.mTask);
       }
       if ((this.mUpdateThrottle > 0L) && (SystemClock.uptimeMillis() < this.mLastLoadCompleteTime + this.mUpdateThrottle))
       {
-        this.mTask.zA = true;
+        this.mTask.FT = true;
         this.mHandler.postAtTime(this.mTask, this.mLastLoadCompleteTime + this.mUpdateThrottle);
       }
     }
@@ -117,11 +118,11 @@ public abstract class a<D>
     {
       return;
     }
-    a.a locala = this.mTask;
+    a locala = this.mTask;
     Executor localExecutor = this.mExecutor;
-    if (locala.zT != e.c.Aa)
+    if (locala.Go != e.c.Gw)
     {
-      switch (e.4.zX[locala.zT.ordinal()])
+      switch (e.4.Gt[locala.Go.ordinal()])
       {
       default: 
         throw new IllegalStateException("We should never reach this state");
@@ -130,9 +131,9 @@ public abstract class a<D>
       }
       throw new IllegalStateException("Cannot execute task: the task has already been executed (a task can be executed only once)");
     }
-    locala.zT = e.c.Ab;
-    locala.zR.Ae = null;
-    localExecutor.execute(locala.zS);
+    locala.Go = e.c.Gx;
+    locala.Gm.GA = null;
+    localExecutor.execute(locala.Gn);
   }
   
   public boolean isLoadInBackgroundCanceled()
@@ -151,9 +152,9 @@ public abstract class a<D>
       }
       if (this.mCancellingTask != null)
       {
-        if (this.mTask.zA)
+        if (this.mTask.FT)
         {
-          this.mTask.zA = false;
+          this.mTask.FT = false;
           this.mHandler.removeCallbacks(this.mTask);
         }
         this.mTask = null;
@@ -163,16 +164,16 @@ public abstract class a<D>
     {
       return false;
     }
-    if (this.mTask.zA)
+    if (this.mTask.FT)
     {
-      this.mTask.zA = false;
+      this.mTask.FT = false;
       this.mHandler.removeCallbacks(this.mTask);
       this.mTask = null;
       return false;
     }
-    a.a locala = this.mTask;
-    locala.zU.set(true);
-    boolean bool = locala.zS.cancel(false);
+    a locala = this.mTask;
+    locala.Gp.set(true);
+    boolean bool = locala.Gn.cancel(false);
     if (bool)
     {
       this.mCancellingTask = this.mTask;
@@ -188,7 +189,7 @@ public abstract class a<D>
   {
     super.onForceLoad();
     cancelLoad();
-    this.mTask = new a.a(this);
+    this.mTask = new a();
     executePendingTask();
   }
   
@@ -207,19 +208,77 @@ public abstract class a<D>
   
   public void waitForLoader()
   {
-    a.a locala = this.mTask;
+    a locala = this.mTask;
     if (locala != null) {}
     try
     {
-      locala.zz.await();
+      locala.FS.await();
       return;
     }
     catch (InterruptedException localInterruptedException) {}
   }
+  
+  final class a
+    extends e<Void, Void, D>
+    implements Runnable
+  {
+    final CountDownLatch FS = new CountDownLatch(1);
+    boolean FT;
+    
+    a() {}
+    
+    private D dP()
+    {
+      try
+      {
+        Object localObject = a.this.onLoadInBackground();
+        return localObject;
+      }
+      catch (b localb)
+      {
+        if (!this.Gp.get()) {
+          throw localb;
+        }
+      }
+      return null;
+    }
+    
+    protected final void onCancelled(D paramD)
+    {
+      try
+      {
+        a.this.dispatchOnCancelled(this, paramD);
+        return;
+      }
+      finally
+      {
+        this.FS.countDown();
+      }
+    }
+    
+    protected final void onPostExecute(D paramD)
+    {
+      try
+      {
+        a.this.dispatchOnLoadComplete(this, paramD);
+        return;
+      }
+      finally
+      {
+        this.FS.countDown();
+      }
+    }
+    
+    public final void run()
+    {
+      this.FT = false;
+      a.this.executePendingTask();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v4.content.a
  * JD-Core Version:    0.7.0.1
  */

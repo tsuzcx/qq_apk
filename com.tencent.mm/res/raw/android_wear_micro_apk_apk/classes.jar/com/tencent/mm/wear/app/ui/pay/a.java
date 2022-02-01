@@ -13,10 +13,10 @@ import com.tencent.mm.wear.app.ui.MMActivity;
 public final class a
   extends i
 {
-  private Bitmap ahA;
-  private String ahx;
-  private String ahy;
-  private Bitmap ahz;
+  private String akZ;
+  private String ala;
+  private Bitmap alb;
+  private Bitmap alc;
   private Context context;
   
   public a(Context paramContext)
@@ -33,12 +33,12 @@ public final class a
       if (MMActivity.isRect())
       {
         localView = LayoutInflater.from(this.context).inflate(2130903092, paramViewGroup, false);
-        localObject = (TextView)localView.findViewById(2131558500);
-        localTextView = (TextView)localView.findViewById(2131558499);
-        localImageView = (ImageView)localView.findViewById(2131558448);
-        ((TextView)localObject).setText(this.ahy);
-        localImageView.setImageBitmap(this.ahz);
-        localTextView.setText(this.ahx);
+        localObject = (TextView)localView.findViewById(2131558501);
+        localTextView = (TextView)localView.findViewById(2131558500);
+        localImageView = (ImageView)localView.findViewById(2131558449);
+        ((TextView)localObject).setText(this.ala);
+        localImageView.setImageBitmap(this.alb);
+        localTextView.setText(this.akZ);
         paramViewGroup.addView(localView);
       }
     }
@@ -53,10 +53,10 @@ public final class a
     if (MMActivity.isRect()) {}
     for (localView = LayoutInflater.from(this.context).inflate(2130903094, paramViewGroup, false);; localView = LayoutInflater.from(this.context).inflate(2130903095, paramViewGroup, false))
     {
-      localObject = (ImageView)localView.findViewById(2131558448);
-      localTextView = (TextView)localView.findViewById(2131558500);
-      ((ImageView)localObject).setImageBitmap(this.ahA);
-      localTextView.setText(this.ahy);
+      localObject = (ImageView)localView.findViewById(2131558449);
+      localTextView = (TextView)localView.findViewById(2131558501);
+      ((ImageView)localObject).setImageBitmap(this.alc);
+      localTextView.setText(this.ala);
       paramViewGroup.addView(localView);
       return localView;
     }
@@ -64,10 +64,10 @@ public final class a
   
   public final void a(String paramString1, String paramString2, Bitmap paramBitmap1, Bitmap paramBitmap2)
   {
-    this.ahx = paramString1;
-    this.ahy = paramString2;
-    this.ahz = paramBitmap1;
-    this.ahA = paramBitmap2;
+    this.akZ = paramString1;
+    this.ala = paramString2;
+    this.alb = paramBitmap1;
+    this.alc = paramBitmap2;
   }
   
   public final boolean a(View paramView, Object paramObject)
@@ -78,16 +78,6 @@ public final class a
   public final void b(ViewGroup paramViewGroup, Object paramObject)
   {
     paramViewGroup.removeView((View)paramObject);
-  }
-  
-  public final int fa()
-  {
-    return 2;
-  }
-  
-  public final int getRowCount()
-  {
-    return 1;
   }
 }
 

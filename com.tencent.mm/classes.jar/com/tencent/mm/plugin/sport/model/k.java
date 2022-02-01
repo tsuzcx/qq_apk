@@ -4,103 +4,103 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.sport.PluginSport;
 import com.tencent.mm.plugin.sport.a.a;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public final class k
 {
-  public static void acx(String paramString)
+  public static void ara(String paramString)
   {
-    AppMethodBeat.i(93692);
-    if (ah.brt())
+    AppMethodBeat.i(149334);
+    if (aj.cbe())
     {
-      ((PluginSport)g.G(PluginSport.class)).getSportFileStorage().setString(2, paramString);
-      AppMethodBeat.o(93692);
+      ((PluginSport)g.ad(PluginSport.class)).getSportFileStorage().setString(2, paramString);
+      AppMethodBeat.o(149334);
       return;
     }
-    paramString = new RuntimeException(String.format("not support set value in %s process", new Object[] { ah.getProcessName() }));
-    AppMethodBeat.o(93692);
+    paramString = new RuntimeException(String.format("not support set value in %s process", new Object[] { aj.getProcessName() }));
+    AppMethodBeat.o(149334);
     throw paramString;
   }
   
-  public static void acy(String paramString)
+  public static void arb(String paramString)
   {
-    AppMethodBeat.i(93693);
-    if (ah.dsU())
+    AppMethodBeat.i(149335);
+    if (aj.eFH())
     {
-      ((PluginSport)g.G(PluginSport.class)).getSportFileStorage().setString(301, paramString);
-      AppMethodBeat.o(93693);
+      ((PluginSport)g.ad(PluginSport.class)).getSportFileStorage().setString(301, paramString);
+      AppMethodBeat.o(149335);
       return;
     }
-    paramString = new RuntimeException(String.format("not support set value in %s process", new Object[] { ah.getProcessName() }));
-    AppMethodBeat.o(93693);
+    paramString = new RuntimeException(String.format("not support set value in %s process", new Object[] { aj.getProcessName() }));
+    AppMethodBeat.o(149335);
     throw paramString;
   }
   
-  public static long ae(int paramInt, long paramLong)
+  public static long aw(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(93690);
-    if (ah.brt())
+    AppMethodBeat.i(149332);
+    if (aj.cbe())
     {
-      paramLong = ((PluginSport)g.G(PluginSport.class)).getSportFileStorage().getLong(paramInt, paramLong);
-      AppMethodBeat.o(93690);
+      paramLong = ((PluginSport)g.ad(PluginSport.class)).getSportFileStorage().getLong(paramInt, paramLong);
+      AppMethodBeat.o(149332);
       return paramLong;
     }
-    paramLong = new j(a.spj).getLong(paramInt, paramLong);
-    AppMethodBeat.o(93690);
+    paramLong = new j(a.ybE).getLong(paramInt, paramLong);
+    AppMethodBeat.o(149332);
     return paramLong;
   }
   
-  public static void af(int paramInt, long paramLong)
+  public static void ax(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(93691);
-    if (ah.brt())
+    AppMethodBeat.i(149333);
+    if (aj.cbe())
     {
-      ((PluginSport)g.G(PluginSport.class)).getSportFileStorage().setLong(paramInt, paramLong);
-      AppMethodBeat.o(93691);
+      ((PluginSport)g.ad(PluginSport.class)).getSportFileStorage().setLong(paramInt, paramLong);
+      AppMethodBeat.o(149333);
       return;
     }
-    RuntimeException localRuntimeException = new RuntimeException(String.format("not support set value in %s process", new Object[] { ah.getProcessName() }));
-    AppMethodBeat.o(93691);
+    RuntimeException localRuntimeException = new RuntimeException(String.format("not support set value in %s process", new Object[] { aj.getProcessName() }));
+    AppMethodBeat.o(149333);
     throw localRuntimeException;
   }
   
-  public static j cyT()
+  public static j dFF()
   {
-    AppMethodBeat.i(93688);
+    AppMethodBeat.i(149330);
     j localj;
-    if (ah.brt())
+    if (aj.cbe())
     {
-      localj = new j(a.spj);
-      AppMethodBeat.o(93688);
+      localj = new j(a.ybE);
+      AppMethodBeat.o(149330);
       return localj;
     }
-    if (ah.dsU())
+    if (aj.eFH())
     {
-      localj = new j(a.spk);
-      AppMethodBeat.o(93688);
+      localj = new j(a.ybF);
+      AppMethodBeat.o(149330);
       return localj;
     }
-    AppMethodBeat.o(93688);
+    AppMethodBeat.o(149330);
     return null;
   }
   
-  public static String cyU()
+  public static String dFG()
   {
-    AppMethodBeat.i(93689);
-    if (ah.dsU())
+    AppMethodBeat.i(149331);
+    if (aj.eFH())
     {
-      str = ((PluginSport)g.G(PluginSport.class)).getSportFileStorage().getString(301, "");
-      AppMethodBeat.o(93689);
+      str = ((PluginSport)g.ad(PluginSport.class)).getSportFileStorage().getString(301, "");
+      AppMethodBeat.o(149331);
       return str;
     }
-    String str = new j(a.spk).getString(301, "");
-    AppMethodBeat.o(93689);
+    String str = new j(a.ybF).getString(301, "");
+    AppMethodBeat.o(149331);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.k
  * JD-Core Version:    0.7.0.1
  */

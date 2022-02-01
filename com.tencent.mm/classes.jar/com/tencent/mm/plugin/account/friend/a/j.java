@@ -5,43 +5,43 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
 {
-  int bsY;
-  public String city;
-  public int dqC;
-  public int dqL;
-  public String province;
+  int dtM;
+  public String evA;
+  public int evp;
+  public int evy;
+  public String evz;
   public String signature;
   public String username;
   
   public j()
   {
-    AppMethodBeat.i(108356);
-    this.bsY = -1;
+    AppMethodBeat.i(131017);
+    this.dtM = -1;
     this.username = "";
-    this.dqC = 0;
-    this.dqL = 0;
-    this.province = "";
-    this.city = "";
+    this.evp = 0;
+    this.evy = 0;
+    this.evz = "";
+    this.evA = "";
     this.signature = "";
-    AppMethodBeat.o(108356);
+    AppMethodBeat.o(131017);
   }
   
   public final ContentValues convertTo()
   {
-    AppMethodBeat.i(108357);
+    AppMethodBeat.i(131018);
     ContentValues localContentValues = new ContentValues();
-    if ((this.bsY & 0x1) != 0) {
+    if ((this.dtM & 0x1) != 0) {
       localContentValues.put("username", getUsername());
     }
-    if ((this.bsY & 0x2) != 0) {
-      localContentValues.put("sex", Integer.valueOf(this.dqC));
+    if ((this.dtM & 0x2) != 0) {
+      localContentValues.put("sex", Integer.valueOf(this.evp));
     }
-    if ((this.bsY & 0x4) != 0) {
-      localContentValues.put("personalcard", Integer.valueOf(this.dqL));
+    if ((this.dtM & 0x4) != 0) {
+      localContentValues.put("personalcard", Integer.valueOf(this.evy));
     }
-    if ((this.bsY & 0x8) != 0)
+    if ((this.dtM & 0x8) != 0)
     {
-      if (this.province == null)
+      if (this.evz == null)
       {
         str = "";
         localContentValues.put("province", str);
@@ -49,16 +49,16 @@ public final class j
     }
     else
     {
-      if ((this.bsY & 0x10) != 0)
+      if ((this.dtM & 0x10) != 0)
       {
-        if (this.city != null) {
+        if (this.evA != null) {
           break label172;
         }
         str = "";
         label123:
         localContentValues.put("city", str);
       }
-      if ((this.bsY & 0x20) != 0) {
+      if ((this.dtM & 0x20) != 0) {
         if (this.signature != null) {
           break label180;
         }
@@ -69,11 +69,11 @@ public final class j
     for (String str = "";; str = this.signature)
     {
       localContentValues.put("signature", str);
-      AppMethodBeat.o(108357);
+      AppMethodBeat.o(131018);
       return localContentValues;
-      str = this.province;
+      str = this.evz;
       break;
-      str = this.city;
+      str = this.evA;
       break label123;
     }
   }

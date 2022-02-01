@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.p;
+import android.support.v4.app.p.a;
+import android.support.v4.content.c;
 import android.view.accessibility.AccessibilityEvent;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.SignInAccount;
 import com.google.android.gms.common.annotation.KeepName;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Status;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
@@ -27,22 +30,22 @@ public class SignInHubActivity
   
   private final void zzd(int paramInt)
   {
-    AppMethodBeat.i(50413);
+    AppMethodBeat.i(88308);
     Status localStatus = new Status(paramInt);
     Intent localIntent = new Intent();
     localIntent.putExtra("googleSignInStatus", localStatus);
     setResult(0, localIntent);
     finish();
     zzfg = false;
-    AppMethodBeat.o(50413);
+    AppMethodBeat.o(88308);
   }
   
   private final void zzu()
   {
-    AppMethodBeat.i(50412);
-    getSupportLoaderManager().a(new SignInHubActivity.zzd(this, null));
+    AppMethodBeat.i(88307);
+    getSupportLoaderManager().a(new zzd(null));
     zzfg = false;
-    AppMethodBeat.o(50412);
+    AppMethodBeat.o(88307);
   }
   
   public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
@@ -52,10 +55,10 @@ public class SignInHubActivity
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(50411);
+    AppMethodBeat.i(88306);
     if (this.zzfh)
     {
-      AppMethodBeat.o(50411);
+      AppMethodBeat.o(88306);
       return;
     }
     setResult(0);
@@ -64,7 +67,7 @@ public class SignInHubActivity
     }
     for (;;)
     {
-      AppMethodBeat.o(50411);
+      AppMethodBeat.o(88306);
       return;
       if (paramIntent != null)
       {
@@ -79,13 +82,13 @@ public class SignInHubActivity
           this.zzfk = paramInt2;
           this.zzfl = paramIntent;
           zzu();
-          AppMethodBeat.o(50411);
+          AppMethodBeat.o(88306);
           return;
         }
         if (paramIntent.hasExtra("errorCode"))
         {
           zzd(paramIntent.getIntExtra("errorCode", 8));
-          AppMethodBeat.o(50411);
+          AppMethodBeat.o(88306);
           return;
         }
       }
@@ -95,14 +98,14 @@ public class SignInHubActivity
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(50409);
+    AppMethodBeat.i(88304);
     super.onCreate(paramBundle);
     Intent localIntent = getIntent();
     String str = localIntent.getAction();
     if ("com.google.android.gms.auth.NO_IMPL".equals(str))
     {
       zzd(12500);
-      AppMethodBeat.o(50409);
+      AppMethodBeat.o(88304);
       return;
     }
     if ((!str.equals("com.google.android.gms.auth.GOOGLE_SIGN_IN")) && (!str.equals("com.google.android.gms.auth.APPAUTH_SIGN_IN")))
@@ -114,7 +117,7 @@ public class SignInHubActivity
       for (;;)
       {
         finish();
-        AppMethodBeat.o(50409);
+        AppMethodBeat.o(88304);
         return;
         new String("Unknown action: ");
       }
@@ -124,7 +127,7 @@ public class SignInHubActivity
     {
       setResult(0);
       finish();
-      AppMethodBeat.o(50409);
+      AppMethodBeat.o(88304);
       return;
     }
     int i;
@@ -136,7 +139,7 @@ public class SignInHubActivity
       {
         setResult(0);
         zzd(12502);
-        AppMethodBeat.o(50409);
+        AppMethodBeat.o(88304);
         return;
         i = 0;
       }
@@ -153,14 +156,14 @@ public class SignInHubActivity
           try
           {
             startActivityForResult(paramBundle, 40962);
-            AppMethodBeat.o(50409);
+            AppMethodBeat.o(88304);
             return;
           }
           catch (ActivityNotFoundException paramBundle)
           {
             this.zzfh = true;
             zzd(17);
-            AppMethodBeat.o(50409);
+            AppMethodBeat.o(88304);
             return;
           }
           paramBundle.setPackage(getPackageName());
@@ -174,12 +177,12 @@ public class SignInHubActivity
       this.zzfl = ((Intent)paramBundle.getParcelable("signInResultData"));
       zzu();
     }
-    AppMethodBeat.o(50409);
+    AppMethodBeat.o(88304);
   }
   
   public void onSaveInstanceState(Bundle paramBundle)
   {
-    AppMethodBeat.i(50410);
+    AppMethodBeat.i(88305);
     super.onSaveInstanceState(paramBundle);
     paramBundle.putBoolean("signingInGoogleApiClients", this.zzfj);
     if (this.zzfj)
@@ -187,7 +190,7 @@ public class SignInHubActivity
       paramBundle.putInt("signInResultCode", this.zzfk);
       paramBundle.putParcelable("signInResultData", this.zzfl);
     }
-    AppMethodBeat.o(50410);
+    AppMethodBeat.o(88305);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -195,10 +198,26 @@ public class SignInHubActivity
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  final class zzd
+    implements p.a<Void>
+  {
+    private zzd() {}
+    
+    public final c<Void> onCreateLoader(int paramInt, Bundle paramBundle)
+    {
+      AppMethodBeat.i(88302);
+      paramBundle = new zzf(SignInHubActivity.this, GoogleApiClient.getAllClients());
+      AppMethodBeat.o(88302);
+      return paramBundle;
+    }
+    
+    public final void onLoaderReset(c<Void> paramc) {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.signin.internal.SignInHubActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,77 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.api.c;
-import com.tencent.mm.plugin.game.luggage.d.f;
-import com.tencent.mm.plugin.webview.luggage.c.b;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bh.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bi;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mm.br.a;
+import com.tencent.mm.compatible.d.b;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bn;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bn.a;
+import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog;
+import com.tencent.mm.pluginsdk.permission.RequestFloatWindowPermissionDialog.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 
 public class d
-  extends bi<f>
+  extends bn
 {
-  public final void a(Context paramContext, String paramString, bh.a parama)
+  public final void a(Context paramContext, String paramString, bn.a parama) {}
+  
+  public final void b(final a.a parama)
   {
-    AppMethodBeat.i(154139);
-    paramContext = b.BJ(paramString);
-    if (paramContext == null)
+    AppMethodBeat.i(190162);
+    if (b.bZ(aj.getContext()))
     {
-      parama.c("empty_postId", null);
-      AppMethodBeat.o(154139);
+      parama.a("", null);
+      AppMethodBeat.o(190162);
       return;
     }
-    if (paramContext.optBoolean("cancelAll")) {
-      ((c)g.E(c.class)).c(null, true);
-    }
-    for (;;)
+    parama = new RequestFloatWindowPermissionDialog.a()
     {
-      parama.c(null, null);
-      AppMethodBeat.o(154139);
-      return;
-      paramContext = paramContext.optJSONArray("postIdList");
-      if ((paramContext == null) || (paramContext.length() == 0))
+      public final void a(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
       {
-        parama.c("empty_postId", null);
-        AppMethodBeat.o(154139);
-        return;
+        AppMethodBeat.i(190159);
+        ad.w("MicroMsg.JsApiBookDownloadGame", "float window permission granted");
+        paramAnonymousRequestFloatWindowPermissionDialog.finish();
+        parama.a("", null);
+        AppMethodBeat.o(190159);
       }
-      ((c)g.E(c.class)).c(paramContext, false);
-    }
+      
+      public final void b(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
+      {
+        AppMethodBeat.i(190160);
+        ad.w("MicroMsg.JsApiBookDownloadGame", "float window permission refused");
+        paramAnonymousRequestFloatWindowPermissionDialog.finish();
+        parama.a("", null);
+        AppMethodBeat.o(190160);
+      }
+      
+      public final void c(RequestFloatWindowPermissionDialog paramAnonymousRequestFloatWindowPermissionDialog)
+      {
+        AppMethodBeat.i(190161);
+        ad.w("MicroMsg.JsApiBookDownloadGame", "onResultCancel ok:%b", new Object[] { Boolean.valueOf(b.bZ(aj.getContext())) });
+        paramAnonymousRequestFloatWindowPermissionDialog.finish();
+        parama.a("", null);
+        AppMethodBeat.o(190161);
+      }
+    };
+    RequestFloatWindowPermissionDialog.a(aj.getContext(), aj.getContext().getString(2131759453), parama, true, a.Ye());
+    AppMethodBeat.o(190162);
   }
   
-  public final void b(a<f>.a parama) {}
-  
-  public final int bjL()
+  public final int bQV()
   {
-    return 1;
+    return 0;
   }
   
   public final String name()
   {
-    return "cancelHaowanPublish";
+    return "bookDownloadGame";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.b.d
  * JD-Core Version:    0.7.0.1
  */

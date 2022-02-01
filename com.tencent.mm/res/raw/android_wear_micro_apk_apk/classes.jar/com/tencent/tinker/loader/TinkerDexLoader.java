@@ -10,7 +10,7 @@ import com.tencent.tinker.loader.a.f;
 import com.tencent.tinker.loader.a.j;
 import com.tencent.tinker.loader.a.k;
 import com.tencent.tinker.loader.app.TinkerApplication;
-import dalvik.system.PathClassLoader;
+import dalvik.system.BaseDexClassLoader;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,44 +22,36 @@ import java.util.regex.Pattern;
 
 public class TinkerDexLoader
 {
-  private static final ArrayList<c> akw = new ArrayList();
-  private static HashSet<c> akx = new HashSet();
-  private static boolean aky = k.on();
-  
-  private static void Z(String paramString)
-  {
-    f.ah(paramString + "/odex/");
-    if (k.oo()) {
-      f.ah(paramString + "/dex/oat" + "/");
-    }
-  }
+  private static final ArrayList<c> anW = new ArrayList();
+  private static HashSet<c> anX = new HashSet();
+  private static boolean anY = k.pa();
   
   private static String a(c paramc)
   {
-    if (aky) {
-      return paramc.alX;
+    if (anY) {
+      return paramc.apx;
     }
-    return paramc.alW;
+    return paramc.apw;
   }
   
   @TargetApi(14)
-  public static boolean a(TinkerApplication paramTinkerApplication, String paramString1, String paramString2, Intent paramIntent, boolean paramBoolean)
+  public static boolean a(TinkerApplication paramTinkerApplication, String paramString1, String paramString2, Intent paramIntent, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((akw.isEmpty()) && (akx.isEmpty()))
+    if ((anW.isEmpty()) && (anX.isEmpty()))
     {
       Log.w("Tinker.TinkerDexLoader", "there is no dex to load");
       return true;
     }
-    PathClassLoader localPathClassLoader = (PathClassLoader)TinkerDexLoader.class.getClassLoader();
+    BaseDexClassLoader localBaseDexClassLoader = (BaseDexClassLoader)TinkerDexLoader.class.getClassLoader();
     Object localObject1;
     ArrayList localArrayList;
     Object localObject2;
-    if (localPathClassLoader != null)
+    if (localBaseDexClassLoader != null)
     {
-      Log.i("Tinker.TinkerDexLoader", "classloader: " + localPathClassLoader.toString());
+      Log.i("Tinker.TinkerDexLoader", "classloader: " + localBaseDexClassLoader.toString());
       localObject1 = paramString1 + "/dex/";
       localArrayList = new ArrayList();
-      localObject2 = akw.iterator();
+      localObject2 = anW.iterator();
     }
     Object localObject3;
     long l;
@@ -68,7 +60,7 @@ public class TinkerDexLoader
       localObject3 = (c)((Iterator)localObject2).next();
       if (!b((c)localObject3))
       {
-        File localFile = new File((String)localObject1 + ((c)localObject3).amd);
+        File localFile = new File((String)localObject1 + ((c)localObject3).apD);
         if (paramTinkerApplication.isTinkerLoadVerifyFlag())
         {
           l = System.currentTimeMillis();
@@ -86,17 +78,17 @@ public class TinkerDexLoader
         localArrayList.add(localFile);
       }
     }
-    if ((aky) && (!akx.isEmpty()))
+    if ((anY) && (!anX.isEmpty()))
     {
       localObject1 = new File((String)localObject1 + "tinker_classN.apk");
       l = System.currentTimeMillis();
       if (paramTinkerApplication.isTinkerLoadVerifyFlag())
       {
-        localObject2 = akx.iterator();
+        localObject2 = anX.iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (c)((Iterator)localObject2).next();
-          if (!f.a((File)localObject1, ((c)localObject3).alV, ((c)localObject3).alX))
+          if (!f.a((File)localObject1, ((c)localObject3).apv, ((c)localObject3).apx))
           {
             e.a(paramIntent, -13);
             paramIntent.putExtra("intent_patch_mismatch_dex_path", ((File)localObject1).getAbsolutePath());
@@ -108,37 +100,37 @@ public class TinkerDexLoader
       localArrayList.add(localObject1);
     }
     paramString2 = new File(paramString1 + "/" + paramString2);
-    if (paramBoolean)
+    if (paramBoolean1)
     {
       localObject1 = new boolean[1];
       localObject1[0] = 1;
       localObject2 = new Throwable[1];
       try
       {
-        localObject3 = k.op();
-        Z(paramString1);
-        Log.w("Tinker.TinkerDexLoader", "systemOTA, try parallel oat dexes, targetISA:" + (String)localObject3);
+        localObject3 = k.pc();
+        ad(paramString1);
+        Log.w("Tinker.TinkerDexLoader", "systemOTA, try parallel oat dexes, targetISA:".concat(String.valueOf(localObject3)));
         paramString2 = new File(paramString1 + "/interpet");
         TinkerDexOptimizer.a(localArrayList, paramString2, (String)localObject3, new TinkerDexOptimizer.ResultCallback()
         {
-          long aia;
+          long alC;
           
           public final void b(File paramAnonymousFile, Throwable paramAnonymousThrowable)
           {
             TinkerDexLoader.this[0] = false;
-            this.akA[0] = paramAnonymousThrowable;
-            Log.i("Tinker.TinkerDexLoader", "fail to optimize dex " + paramAnonymousFile.getPath() + ", use time " + (System.currentTimeMillis() - this.aia));
+            this.aoa[0] = paramAnonymousThrowable;
+            Log.i("Tinker.TinkerDexLoader", "fail to optimize dex " + paramAnonymousFile.getPath() + ", use time " + (System.currentTimeMillis() - this.alC));
           }
           
           public final void g(File paramAnonymousFile)
           {
-            this.aia = System.currentTimeMillis();
+            this.alC = System.currentTimeMillis();
             Log.i("Tinker.TinkerDexLoader", "start to optimize dex:" + paramAnonymousFile.getPath());
           }
           
           public final void h(File paramAnonymousFile)
           {
-            Log.i("Tinker.TinkerDexLoader", "success to optimize dex " + paramAnonymousFile.getPath() + ", use time " + (System.currentTimeMillis() - this.aia));
+            Log.i("Tinker.TinkerDexLoader", "success to optimize dex " + paramAnonymousFile.getPath() + ", use time " + (System.currentTimeMillis() - this.alC));
           }
         });
         if (localObject1[0] == 0)
@@ -151,8 +143,8 @@ public class TinkerDexLoader
       }
       catch (Throwable paramTinkerApplication)
       {
-        Log.i("Tinker.TinkerDexLoader", "getCurrentInstructionSet fail:" + paramTinkerApplication);
-        Z(paramString1);
+        Log.i("Tinker.TinkerDexLoader", "getCurrentInstructionSet fail:".concat(String.valueOf(paramTinkerApplication)));
+        ad(paramString1);
         paramIntent.putExtra("intent_patch_interpret_exception", paramTinkerApplication);
         e.a(paramIntent, -15);
         return false;
@@ -160,7 +152,7 @@ public class TinkerDexLoader
     }
     try
     {
-      SystemClassLoaderAdder.a(paramTinkerApplication, localPathClassLoader, paramString2, localArrayList);
+      SystemClassLoaderAdder.a(paramTinkerApplication, localBaseDexClassLoader, paramString2, localArrayList, paramBoolean2);
       return true;
     }
     catch (Throwable paramTinkerApplication)
@@ -174,12 +166,12 @@ public class TinkerDexLoader
   
   public static boolean a(String paramString1, j paramj, String paramString2, Intent paramIntent)
   {
-    Object localObject = (String)paramj.ol().get("assets/dex_meta.txt");
+    Object localObject = (String)paramj.oY().get("assets/dex_meta.txt");
     if (localObject == null) {
       return true;
     }
-    akw.clear();
-    akx.clear();
+    anW.clear();
+    anX.clear();
     paramj = new ArrayList();
     c.c((String)localObject, paramj);
     if (paramj.isEmpty()) {
@@ -202,9 +194,9 @@ public class TinkerDexLoader
           paramIntent.putExtra("intent_patch_package_patch_check", -3);
           e.a(paramIntent, -8);
           return false;
-          String str = localc.alV;
-          if (k.on()) {}
-          for (localObject = localc.alX;; localObject = localc.alW)
+          String str = localc.apv;
+          if (k.pa()) {}
+          for (localObject = localc.apx;; localObject = localc.apw)
           {
             if ((str != null) && (str.length() > 0) && (localObject != null) && (((String)localObject).length() == 32)) {
               break label198;
@@ -215,25 +207,25 @@ public class TinkerDexLoader
           label198:
           i = 1;
         }
-        if ((aky) && (localc.alV.startsWith("test.dex")))
+        if ((anY) && (localc.apv.startsWith("test.dex")))
         {
           paramj = localc;
         }
-        else if ((aky) && (b.alU.matcher(localc.amd).matches()))
+        else if ((anY) && (b.apu.matcher(localc.apD).matches()))
         {
-          akx.add(localc);
+          anX.add(localc);
         }
         else
         {
-          localHashMap.put(localc.amd, a(localc));
-          akw.add(localc);
+          localHashMap.put(localc.apD, a(localc));
+          anW.add(localc);
         }
       }
     }
-    if ((aky) && ((paramj != null) || (!akx.isEmpty())))
+    if ((anY) && ((paramj != null) || (!anX.isEmpty())))
     {
       if (paramj != null) {
-        akx.add(k.a(paramj, akx.size() + 1));
+        anX.add(k.a(paramj, anX.size() + 1));
       }
       localHashMap.put("tinker_classN.apk", "");
     }
@@ -268,10 +260,18 @@ public class TinkerDexLoader
     return true;
   }
   
+  private static void ad(String paramString)
+  {
+    f.al(paramString + "/odex/");
+    if (k.pb()) {
+      f.al(paramString + "/dex/oat" + "/");
+    }
+  }
+  
   private static boolean b(c paramc)
   {
-    if (aky) {}
-    while (!paramc.alW.equals("0")) {
+    if (anY) {}
+    while (!paramc.apw.equals("0")) {
       return false;
     }
     return true;

@@ -1,8 +1,8 @@
 package android.support.v4.view;
 
 import android.os.Bundle;
-import android.support.v4.view.a.e;
-import android.support.v4.view.a.r;
+import android.support.v4.view.a.b;
+import android.support.v4.view.a.f;
 import android.view.View;
 import android.view.View.AccessibilityDelegate;
 import android.view.ViewGroup;
@@ -11,7 +11,7 @@ import android.view.accessibility.AccessibilityNodeInfo;
 
 class c
 {
-  public r a(View.AccessibilityDelegate paramAccessibilityDelegate, View paramView)
+  public f a(View.AccessibilityDelegate paramAccessibilityDelegate, View paramView)
   {
     return null;
   }
@@ -32,7 +32,7 @@ class c
       
       public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfo paramAnonymousAccessibilityNodeInfo)
       {
-        parama.a(paramAnonymousView, e.a(paramAnonymousAccessibilityNodeInfo));
+        parama.a(paramAnonymousView, b.a(paramAnonymousAccessibilityNodeInfo));
       }
       
       public final void onPopulateAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)

@@ -23,21 +23,21 @@ public class AvailabilityException
   
   public ConnectionResult getConnectionResult(GoogleApi<? extends Api.ApiOptions> paramGoogleApi)
   {
-    AppMethodBeat.i(60481);
+    AppMethodBeat.i(10973);
     paramGoogleApi = paramGoogleApi.zzm();
     if (this.zzcc.get(paramGoogleApi) != null) {}
     for (boolean bool = true;; bool = false)
     {
       Preconditions.checkArgument(bool, "The given API was not part of the availability request.");
       paramGoogleApi = (ConnectionResult)this.zzcc.get(paramGoogleApi);
-      AppMethodBeat.o(60481);
+      AppMethodBeat.o(10973);
       return paramGoogleApi;
     }
   }
   
   public String getMessage()
   {
-    AppMethodBeat.i(60482);
+    AppMethodBeat.i(10974);
     Object localObject1 = new ArrayList();
     Object localObject2 = this.zzcc.keySet().iterator();
     int i = 1;
@@ -60,7 +60,7 @@ public class AvailabilityException
     {
       ((StringBuilder)localObject2).append(TextUtils.join("; ", (Iterable)localObject1));
       localObject1 = ((StringBuilder)localObject2).toString();
-      AppMethodBeat.o(60482);
+      AppMethodBeat.o(10974);
       return localObject1;
       ((StringBuilder)localObject2).append("Some of the queried APIs are unavailable. ");
     }

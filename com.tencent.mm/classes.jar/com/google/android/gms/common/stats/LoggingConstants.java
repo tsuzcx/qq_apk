@@ -23,7 +23,7 @@ public final class LoggingConstants
   
   static
   {
-    AppMethodBeat.i(89960);
+    AppMethodBeat.i(4982);
     STATS_SERVICE_COMPONENT_NAME = new ComponentName("com.google.android.gms", "com.google.android.gms.common.stats.GmsCoreStatsService");
     LOG_LEVEL_OFF = 0;
     LOG_TOO_LONG_EVENTS = 1;
@@ -33,12 +33,12 @@ public final class LoggingConstants
     IGNORE_INTRA_PROCESS = 16;
     LOG_MEM_INFO = 32;
     LOG_WAKEFUL_ALARMS = 1;
-    AppMethodBeat.o(89960);
+    AppMethodBeat.o(4982);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.stats.LoggingConstants
  * JD-Core Version:    0.7.0.1
  */

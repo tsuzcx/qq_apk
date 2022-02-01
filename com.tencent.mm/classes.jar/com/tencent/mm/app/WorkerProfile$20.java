@@ -1,32 +1,22 @@
 package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lp;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.g.a.su;
 import com.tencent.mm.sdk.b.c;
 
 final class WorkerProfile$20
-  extends c<lp>
+  extends c<su>
 {
   WorkerProfile$20(WorkerProfile paramWorkerProfile)
   {
-    AppMethodBeat.i(15505);
-    this.__eventId = lp.class.getName().hashCode();
-    AppMethodBeat.o(15505);
-  }
-  
-  private boolean BZ()
-  {
-    AppMethodBeat.i(15506);
-    aw.Rc().a(1145, new WorkerProfile.20.1(this));
-    aw.Rc().a(new com.tencent.mm.modelappbrand.p(5), 0);
-    AppMethodBeat.o(15506);
-    return true;
+    AppMethodBeat.i(161249);
+    this.__eventId = su.class.getName().hashCode();
+    AppMethodBeat.o(161249);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.app.WorkerProfile.20
  * JD-Core Version:    0.7.0.1
  */

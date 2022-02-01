@@ -1,11 +1,46 @@
 package com.github.henryye.nativeiv.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a
-  implements com.github.henryye.nativeiv.a.a.a
-{}
+{
+  private static a aQk;
+  
+  static
+  {
+    AppMethodBeat.i(127379);
+    aQk = new a()
+    {
+      public final void loadLibrary(String paramAnonymousString)
+      {
+        AppMethodBeat.i(127377);
+        System.loadLibrary(paramAnonymousString);
+        AppMethodBeat.o(127377);
+      }
+    };
+    AppMethodBeat.o(127379);
+  }
+  
+  public static void a(a parama)
+  {
+    aQk = parama;
+  }
+  
+  public static void loadLibrary(String paramString)
+  {
+    AppMethodBeat.i(127378);
+    aQk.loadLibrary(paramString);
+    AppMethodBeat.o(127378);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void loadLibrary(String paramString);
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.github.henryye.nativeiv.a.a
  * JD-Core Version:    0.7.0.1
  */

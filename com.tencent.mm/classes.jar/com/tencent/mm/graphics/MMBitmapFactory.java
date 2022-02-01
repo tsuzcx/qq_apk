@@ -13,8 +13,8 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.support.annotation.Keep;
 import android.util.TypedValue;
-import com.tencent.f.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.stubs.logger.Log;
 import java.io.BufferedInputStream;
 import java.io.Closeable;
 import java.io.FileDescriptor;
@@ -31,111 +31,123 @@ public class MMBitmapFactory
   private static final int REWIND_BUFFER_SIZE = 8388608;
   private static final String TAG = "MicroMsg.MMBitmapFactory";
   private static final int TEMP_STORAGE_SIZE = 4096;
+  private static a sDecodeCanary;
+  private static boolean sForceUsingSystemDecoderOpt;
   private static b sStreamProvider;
   
   static
   {
-    AppMethodBeat.i(57658);
+    AppMethodBeat.i(1011);
     sStreamProvider = null;
+    sForceUsingSystemDecoderOpt = false;
+    sDecodeCanary = null;
     loadNativeModule("mmimgcodec");
-    AppMethodBeat.o(57658);
+    AppMethodBeat.o(1011);
   }
   
   private MMBitmapFactory()
   {
-    AppMethodBeat.i(57657);
+    AppMethodBeat.i(1010);
     UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException();
-    AppMethodBeat.o(57657);
+    AppMethodBeat.o(1010);
     throw localUnsupportedOperationException;
   }
   
   public static void addExternalCodecLibDir(String paramString)
   {
-    AppMethodBeat.i(57633);
-    b.i("MicroMsg.MMBitmapFactory", "[+] add external codec library path: %s", new Object[] { paramString });
+    AppMethodBeat.i(980);
+    Log.i("MicroMsg.MMBitmapFactory", "[+] add external codec library path: %s", new Object[] { paramString });
     nativeAddExternalLibDir(paramString);
-    AppMethodBeat.o(57633);
+    AppMethodBeat.o(980);
   }
   
   private static void announceDecodeResult(BitmapFactory.Options paramOptions, Bitmap paramBitmap, boolean paramBoolean)
   {
-    AppMethodBeat.i(138193);
+    AppMethodBeat.i(999);
     assertNotNull(paramOptions, "[-] opts is null.");
     if (paramBoolean) {}
     for (String str = "system"; ((paramBitmap != null) || (paramOptions.outMimeType != null)) && (paramOptions.outWidth > 0) && (paramOptions.outHeight > 0); str = "mmcodec")
     {
-      b.i("MicroMsg.MMBitmapFactory", "[+] decode success by %s, w:%s, h:%s, mime-type:%s, sampleSize:%s", new Object[] { str, Integer.valueOf(paramOptions.outWidth), Integer.valueOf(paramOptions.outHeight), paramOptions.outMimeType, Integer.valueOf(paramOptions.inSampleSize) });
-      AppMethodBeat.o(138193);
+      Log.i("MicroMsg.MMBitmapFactory", "[+] decode success by %s, boundsOnly:%s, w:%s, h:%s, mime-type:%s, sampleSize:%s", new Object[] { str, Boolean.valueOf(paramOptions.inJustDecodeBounds), Integer.valueOf(paramOptions.outWidth), Integer.valueOf(paramOptions.outHeight), paramOptions.outMimeType, Integer.valueOf(paramOptions.inSampleSize) });
+      if ((sDecodeCanary == null) || (paramBitmap == null) || (paramOptions.inJustDecodeBounds)) {
+        break label180;
+      }
+      int i = paramBitmap.getByteCount();
+      if (i >= 20971520L) {
+        sDecodeCanary.a(paramOptions, i);
+      }
+      AppMethodBeat.o(999);
       return;
     }
-    b.e("MicroMsg.MMBitmapFactory", "[+] fail to decode by %s", new Object[] { str });
-    AppMethodBeat.o(138193);
+    Log.e("MicroMsg.MMBitmapFactory", "[+] fail to decode by %s", new Object[] { str });
+    label180:
+    AppMethodBeat.o(999);
   }
   
   private static void assertNotNull(Object paramObject, String paramString)
   {
-    AppMethodBeat.i(57652);
+    AppMethodBeat.i(1003);
     if (paramObject == null)
     {
       paramObject = new IllegalArgumentException(paramString);
-      AppMethodBeat.o(57652);
+      AppMethodBeat.o(1003);
       throw paramObject;
     }
-    AppMethodBeat.o(57652);
+    AppMethodBeat.o(1003);
   }
   
   private static void closeQuietly(Closeable paramCloseable)
   {
-    AppMethodBeat.i(57653);
+    AppMethodBeat.i(1004);
     if (paramCloseable == null)
     {
-      AppMethodBeat.o(57653);
+      AppMethodBeat.o(1004);
       return;
     }
     try
     {
       paramCloseable.close();
-      AppMethodBeat.o(57653);
+      AppMethodBeat.o(1004);
       return;
     }
     catch (Throwable paramCloseable)
     {
-      AppMethodBeat.o(57653);
+      AppMethodBeat.o(1004);
     }
   }
   
   public static Bitmap decodeByteArray(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(57643);
+    AppMethodBeat.i(992);
     assertNotNull(paramArrayOfByte, "'data' is null.");
     paramArrayOfByte = decodeByteArrayInternal(paramArrayOfByte, paramInt1, paramInt2, null);
-    AppMethodBeat.o(57643);
+    AppMethodBeat.o(992);
     return paramArrayOfByte;
   }
   
   public static Bitmap decodeByteArray(byte[] paramArrayOfByte, int paramInt1, int paramInt2, BitmapFactory.Options paramOptions)
   {
-    AppMethodBeat.i(57644);
+    AppMethodBeat.i(993);
     assertNotNull(paramArrayOfByte, "'data' is null.");
     paramArrayOfByte = decodeByteArrayInternal(paramArrayOfByte, paramInt1, paramInt2, paramOptions);
-    AppMethodBeat.o(57644);
+    AppMethodBeat.o(993);
     return paramArrayOfByte;
   }
   
   private static Bitmap decodeByteArrayInternal(byte[] paramArrayOfByte, int paramInt1, int paramInt2, BitmapFactory.Options paramOptions)
   {
     int i = 0;
-    AppMethodBeat.i(57645);
+    AppMethodBeat.i(994);
     BitmapFactory.Options localOptions = paramOptions;
     if (paramOptions == null) {
       localOptions = new BitmapFactory.Options();
     }
     if (isForceSystemDecoder(localOptions))
     {
-      b.w("MicroMsg.MMBitmapFactory", "[!] force decoding data by system codec.");
+      Log.w("MicroMsg.MMBitmapFactory", "[!] force decoding data by system codec.");
       paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, paramInt1, paramInt2, localOptions);
       announceDecodeResult(localOptions, paramArrayOfByte, true);
-      AppMethodBeat.o(57645);
+      AppMethodBeat.o(994);
       return paramArrayOfByte;
     }
     try
@@ -149,56 +161,56 @@ public class MMBitmapFactory
         announceDecodeResult(localOptions, paramOptions, false);
         setDensityFromOptions(paramOptions, localOptions);
         paramArrayOfByte = scaleBitmapOnDemand(paramOptions, localOptions);
-        AppMethodBeat.o(57645);
+        AppMethodBeat.o(994);
         return paramArrayOfByte;
       }
-      b.w("MicroMsg.MMBitmapFactory", "[!] unsupported image format, try to decode with system codec.");
+      Log.w("MicroMsg.MMBitmapFactory", "[!] unsupported image format, try to decode with system codec.");
       paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, paramInt1, paramInt2, localOptions);
       announceDecodeResult(localOptions, paramArrayOfByte, true);
-      AppMethodBeat.o(57645);
+      AppMethodBeat.o(994);
       return paramArrayOfByte;
     }
     catch (Throwable paramArrayOfByte)
     {
-      b.b("MicroMsg.MMBitmapFactory", paramArrayOfByte, "decode failed.");
-      AppMethodBeat.o(57645);
+      Log.e("MicroMsg.MMBitmapFactory", paramArrayOfByte, "decode failed.");
+      AppMethodBeat.o(994);
     }
     return null;
   }
   
   public static Bitmap decodeFile(String paramString)
   {
-    AppMethodBeat.i(57637);
+    AppMethodBeat.i(985);
     assertNotNull(paramString, "'pathName' is null.");
     paramString = decodeFileInternal(paramString, null);
-    AppMethodBeat.o(57637);
+    AppMethodBeat.o(985);
     return paramString;
   }
   
   public static Bitmap decodeFile(String paramString, BitmapFactory.Options paramOptions)
   {
-    AppMethodBeat.i(57638);
+    AppMethodBeat.i(986);
     assertNotNull(paramString, "'pathName' is null.");
     paramString = decodeFileInternal(paramString, paramOptions);
-    AppMethodBeat.o(57638);
+    AppMethodBeat.o(986);
     return paramString;
   }
   
   public static Bitmap decodeFileDescriptor(FileDescriptor paramFileDescriptor)
   {
-    AppMethodBeat.i(57640);
+    AppMethodBeat.i(989);
     assertNotNull(paramFileDescriptor, "'fd' is null.");
     paramFileDescriptor = decodeFileDescriptorInternal(paramFileDescriptor, null, null);
-    AppMethodBeat.o(57640);
+    AppMethodBeat.o(989);
     return paramFileDescriptor;
   }
   
   public static Bitmap decodeFileDescriptor(FileDescriptor paramFileDescriptor, Rect paramRect, BitmapFactory.Options paramOptions)
   {
-    AppMethodBeat.i(57641);
+    AppMethodBeat.i(990);
     assertNotNull(paramFileDescriptor, "'fd' is null.");
     paramFileDescriptor = decodeFileDescriptorInternal(paramFileDescriptor, paramRect, paramOptions);
-    AppMethodBeat.o(57641);
+    AppMethodBeat.o(990);
     return paramFileDescriptor;
   }
   
@@ -208,166 +220,166 @@ public class MMBitmapFactory
     // Byte code:
     //   0: iconst_0
     //   1: istore_3
-    //   2: ldc 189
-    //   4: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_2
-    //   8: astore 4
-    //   10: aload_2
-    //   11: ifnonnull +12 -> 23
-    //   14: new 80	android/graphics/BitmapFactory$Options
-    //   17: dup
-    //   18: invokespecial 134	android/graphics/BitmapFactory$Options:<init>	()V
-    //   21: astore 4
-    //   23: aload 4
-    //   25: invokestatic 138	com/tencent/mm/graphics/MMBitmapFactory:isForceSystemDecoder	(Landroid/graphics/BitmapFactory$Options;)Z
-    //   28: ifeq +40 -> 68
-    //   31: ldc 23
-    //   33: ldc 191
-    //   35: iconst_1
-    //   36: anewarray 4	java/lang/Object
-    //   39: dup
-    //   40: iconst_0
-    //   41: aload_0
-    //   42: aastore
-    //   43: invokestatic 193	com/tencent/f/a/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   46: aload_0
-    //   47: aload_1
-    //   48: aload 4
-    //   50: invokestatic 195	android/graphics/BitmapFactory:decodeFileDescriptor	(Ljava/io/FileDescriptor;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   53: astore_0
-    //   54: aload 4
-    //   56: aload_0
-    //   57: iconst_1
-    //   58: invokestatic 150	com/tencent/mm/graphics/MMBitmapFactory:announceDecodeResult	(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Bitmap;Z)V
-    //   61: ldc 189
-    //   63: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   66: aload_0
-    //   67: areturn
+    //   2: sipush 991
+    //   5: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_2
+    //   9: astore 4
+    //   11: aload_2
+    //   12: ifnonnull +12 -> 24
+    //   15: new 83	android/graphics/BitmapFactory$Options
+    //   18: dup
+    //   19: invokespecial 153	android/graphics/BitmapFactory$Options:<init>	()V
+    //   22: astore 4
+    //   24: aload 4
+    //   26: invokestatic 157	com/tencent/mm/graphics/MMBitmapFactory:isForceSystemDecoder	(Landroid/graphics/BitmapFactory$Options;)Z
+    //   29: ifeq +41 -> 70
+    //   32: ldc 22
+    //   34: ldc 205
+    //   36: iconst_1
+    //   37: anewarray 4	java/lang/Object
+    //   40: dup
+    //   41: iconst_0
+    //   42: aload_0
+    //   43: aastore
+    //   44: invokestatic 207	com/tencent/stubs/logger/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   47: aload_0
+    //   48: aload_1
+    //   49: aload 4
+    //   51: invokestatic 209	android/graphics/BitmapFactory:decodeFileDescriptor	(Ljava/io/FileDescriptor;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   54: astore_0
+    //   55: aload 4
+    //   57: aload_0
+    //   58: iconst_1
+    //   59: invokestatic 169	com/tencent/mm/graphics/MMBitmapFactory:announceDecodeResult	(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Bitmap;Z)V
+    //   62: sipush 991
+    //   65: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   68: aload_0
-    //   69: invokestatic 199	com/tencent/mm/graphics/MMBitmapFactory:nativeIsSeekable	(Ljava/io/FileDescriptor;)Z
-    //   72: ifeq +102 -> 174
-    //   75: aload_0
-    //   76: aload 4
-    //   78: invokestatic 203	com/tencent/mm/graphics/MMBitmapFactory:getOrCreateStorageBuffer	(Landroid/graphics/BitmapFactory$Options;)[B
-    //   81: aload_1
-    //   82: aload 4
-    //   84: invokestatic 207	com/tencent/mm/graphics/MMBitmapFactory:nativeDecodeFileDescriptor	(Ljava/io/FileDescriptor;[BLandroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   87: astore_2
-    //   88: aload 4
-    //   90: getfield 83	android/graphics/BitmapFactory$Options:outMimeType	Ljava/lang/String;
-    //   93: ifnull +5 -> 98
-    //   96: iconst_1
-    //   97: istore_3
-    //   98: iload_3
-    //   99: ifeq +30 -> 129
-    //   102: aload 4
-    //   104: aload_2
-    //   105: iconst_0
-    //   106: invokestatic 150	com/tencent/mm/graphics/MMBitmapFactory:announceDecodeResult	(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Bitmap;Z)V
-    //   109: aload_2
-    //   110: aload 4
-    //   112: invokestatic 157	com/tencent/mm/graphics/MMBitmapFactory:setDensityFromOptions	(Landroid/graphics/Bitmap;Landroid/graphics/BitmapFactory$Options;)V
-    //   115: aload_2
-    //   116: aload 4
-    //   118: invokestatic 161	com/tencent/mm/graphics/MMBitmapFactory:scaleBitmapOnDemand	(Landroid/graphics/Bitmap;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   121: astore_0
-    //   122: ldc 189
-    //   124: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   127: aload_0
-    //   128: areturn
-    //   129: ldc 23
-    //   131: ldc 163
-    //   133: invokestatic 144	com/tencent/f/a/b:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   136: aload_0
-    //   137: aload_1
-    //   138: aload 4
-    //   140: invokestatic 195	android/graphics/BitmapFactory:decodeFileDescriptor	(Ljava/io/FileDescriptor;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   143: astore_0
-    //   144: aload 4
-    //   146: aload_0
-    //   147: iconst_1
-    //   148: invokestatic 150	com/tencent/mm/graphics/MMBitmapFactory:announceDecodeResult	(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Bitmap;Z)V
-    //   151: ldc 189
-    //   153: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   156: aload_0
-    //   157: areturn
-    //   158: astore_0
-    //   159: ldc 23
-    //   161: aload_0
-    //   162: ldc 165
-    //   164: invokestatic 168	com/tencent/f/a/b:b	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
-    //   167: ldc 189
-    //   169: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   172: aconst_null
-    //   173: areturn
-    //   174: new 209	java/io/FileInputStream
-    //   177: dup
-    //   178: aload_0
-    //   179: invokespecial 212	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
-    //   182: astore_2
-    //   183: aload_2
-    //   184: astore_0
-    //   185: aload_2
-    //   186: aload_1
-    //   187: aload 4
-    //   189: invokestatic 216	com/tencent/mm/graphics/MMBitmapFactory:decodeStreamInternal	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   192: astore_1
-    //   193: aload_2
-    //   194: invokestatic 218	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
-    //   197: ldc 189
-    //   199: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   202: aload_1
-    //   203: areturn
-    //   204: astore 4
-    //   206: aconst_null
-    //   207: astore_1
+    //   69: areturn
+    //   70: aload_0
+    //   71: invokestatic 213	com/tencent/mm/graphics/MMBitmapFactory:nativeIsSeekable	(Ljava/io/FileDescriptor;)Z
+    //   74: ifeq +105 -> 179
+    //   77: aload_0
+    //   78: aload 4
+    //   80: invokestatic 217	com/tencent/mm/graphics/MMBitmapFactory:getOrCreateStorageBuffer	(Landroid/graphics/BitmapFactory$Options;)[B
+    //   83: aload_1
+    //   84: aload 4
+    //   86: invokestatic 221	com/tencent/mm/graphics/MMBitmapFactory:nativeDecodeFileDescriptor	(Ljava/io/FileDescriptor;[BLandroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   89: astore_2
+    //   90: aload 4
+    //   92: getfield 86	android/graphics/BitmapFactory$Options:outMimeType	Ljava/lang/String;
+    //   95: ifnull +5 -> 100
+    //   98: iconst_1
+    //   99: istore_3
+    //   100: iload_3
+    //   101: ifeq +31 -> 132
+    //   104: aload 4
+    //   106: aload_2
+    //   107: iconst_0
+    //   108: invokestatic 169	com/tencent/mm/graphics/MMBitmapFactory:announceDecodeResult	(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Bitmap;Z)V
+    //   111: aload_2
+    //   112: aload 4
+    //   114: invokestatic 176	com/tencent/mm/graphics/MMBitmapFactory:setDensityFromOptions	(Landroid/graphics/Bitmap;Landroid/graphics/BitmapFactory$Options;)V
+    //   117: aload_2
+    //   118: aload 4
+    //   120: invokestatic 180	com/tencent/mm/graphics/MMBitmapFactory:scaleBitmapOnDemand	(Landroid/graphics/Bitmap;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   123: astore_0
+    //   124: sipush 991
+    //   127: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   130: aload_0
+    //   131: areturn
+    //   132: ldc 22
+    //   134: ldc 182
+    //   136: invokestatic 163	com/tencent/stubs/logger/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   139: aload_0
+    //   140: aload_1
+    //   141: aload 4
+    //   143: invokestatic 209	android/graphics/BitmapFactory:decodeFileDescriptor	(Ljava/io/FileDescriptor;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   146: astore_0
+    //   147: aload 4
+    //   149: aload_0
+    //   150: iconst_1
+    //   151: invokestatic 169	com/tencent/mm/graphics/MMBitmapFactory:announceDecodeResult	(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Bitmap;Z)V
+    //   154: sipush 991
+    //   157: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   160: aload_0
+    //   161: areturn
+    //   162: astore_0
+    //   163: ldc 22
+    //   165: aload_0
+    //   166: ldc 184
+    //   168: invokestatic 187	com/tencent/stubs/logger/Log:e	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   171: sipush 991
+    //   174: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   177: aconst_null
+    //   178: areturn
+    //   179: new 223	java/io/FileInputStream
+    //   182: dup
+    //   183: aload_0
+    //   184: invokespecial 226	java/io/FileInputStream:<init>	(Ljava/io/FileDescriptor;)V
+    //   187: astore_2
+    //   188: aload_2
+    //   189: astore_0
+    //   190: aload_2
+    //   191: aload_1
+    //   192: aload 4
+    //   194: invokestatic 230	com/tencent/mm/graphics/MMBitmapFactory:decodeStreamInternal	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   197: astore_1
+    //   198: aload_2
+    //   199: invokestatic 232	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
+    //   202: sipush 991
+    //   205: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   208: aload_1
-    //   209: astore_0
-    //   210: ldc 23
-    //   212: aload 4
-    //   214: ldc 165
-    //   216: invokestatic 168	com/tencent/f/a/b:b	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
-    //   219: aload_1
-    //   220: invokestatic 218	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
-    //   223: ldc 189
-    //   225: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   228: aconst_null
-    //   229: areturn
-    //   230: astore_1
-    //   231: aconst_null
-    //   232: astore_0
-    //   233: aload_0
-    //   234: invokestatic 218	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
-    //   237: ldc 189
-    //   239: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   242: aload_1
-    //   243: athrow
-    //   244: astore_1
-    //   245: goto -12 -> 233
-    //   248: astore 4
-    //   250: aload_2
-    //   251: astore_1
-    //   252: goto -44 -> 208
+    //   209: areturn
+    //   210: astore 4
+    //   212: aconst_null
+    //   213: astore_1
+    //   214: aload_1
+    //   215: astore_0
+    //   216: ldc 22
+    //   218: aload 4
+    //   220: ldc 184
+    //   222: invokestatic 187	com/tencent/stubs/logger/Log:e	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   225: aload_1
+    //   226: invokestatic 232	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
+    //   229: sipush 991
+    //   232: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   235: aconst_null
+    //   236: areturn
+    //   237: astore_1
+    //   238: aconst_null
+    //   239: astore_0
+    //   240: aload_0
+    //   241: invokestatic 232	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
+    //   244: sipush 991
+    //   247: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   250: aload_1
+    //   251: athrow
+    //   252: astore_1
+    //   253: goto -13 -> 240
+    //   256: astore 4
+    //   258: aload_2
+    //   259: astore_1
+    //   260: goto -46 -> 214
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	255	0	paramFileDescriptor	FileDescriptor
-    //   0	255	1	paramRect	Rect
-    //   0	255	2	paramOptions	BitmapFactory.Options
-    //   1	98	3	i	int
-    //   8	180	4	localOptions	BitmapFactory.Options
-    //   204	9	4	localThrowable1	Throwable
-    //   248	1	4	localThrowable2	Throwable
+    //   0	263	0	paramFileDescriptor	FileDescriptor
+    //   0	263	1	paramRect	Rect
+    //   0	263	2	paramOptions	BitmapFactory.Options
+    //   1	100	3	i	int
+    //   9	184	4	localOptions	BitmapFactory.Options
+    //   210	9	4	localThrowable1	Throwable
+    //   256	1	4	localThrowable2	Throwable
     // Exception table:
     //   from	to	target	type
-    //   75	88	158	java/lang/Throwable
-    //   88	96	158	java/lang/Throwable
-    //   102	122	158	java/lang/Throwable
-    //   129	151	158	java/lang/Throwable
-    //   174	183	204	java/lang/Throwable
-    //   174	183	230	finally
-    //   185	193	244	finally
-    //   210	219	244	finally
-    //   185	193	248	java/lang/Throwable
+    //   77	90	162	java/lang/Throwable
+    //   90	98	162	java/lang/Throwable
+    //   104	124	162	java/lang/Throwable
+    //   132	154	162	java/lang/Throwable
+    //   179	188	210	java/lang/Throwable
+    //   179	188	237	finally
+    //   190	198	252	finally
+    //   216	225	252	finally
+    //   190	198	256	java/lang/Throwable
   }
   
   /* Error */
@@ -376,315 +388,315 @@ public class MMBitmapFactory
     // Byte code:
     //   0: iconst_1
     //   1: istore_2
-    //   2: ldc 219
-    //   4: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_1
-    //   8: astore 4
-    //   10: aload_1
-    //   11: ifnonnull +12 -> 23
-    //   14: new 80	android/graphics/BitmapFactory$Options
-    //   17: dup
-    //   18: invokespecial 134	android/graphics/BitmapFactory$Options:<init>	()V
-    //   21: astore 4
-    //   23: aload 4
-    //   25: invokestatic 138	com/tencent/mm/graphics/MMBitmapFactory:isForceSystemDecoder	(Landroid/graphics/BitmapFactory$Options;)Z
-    //   28: ifeq +32 -> 60
-    //   31: ldc 23
-    //   33: ldc 221
-    //   35: iconst_1
-    //   36: anewarray 4	java/lang/Object
-    //   39: dup
-    //   40: iconst_0
-    //   41: aload_0
-    //   42: aastore
-    //   43: invokestatic 193	com/tencent/f/a/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   46: aload_0
-    //   47: aload 4
-    //   49: invokestatic 224	com/tencent/mm/graphics/MMBitmapFactory:decodeFileWithStreamBySystemInternal	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   52: astore_0
-    //   53: ldc 219
-    //   55: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   58: aload_0
-    //   59: areturn
+    //   2: sipush 987
+    //   5: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_1
+    //   9: astore 4
+    //   11: aload_1
+    //   12: ifnonnull +12 -> 24
+    //   15: new 83	android/graphics/BitmapFactory$Options
+    //   18: dup
+    //   19: invokespecial 153	android/graphics/BitmapFactory$Options:<init>	()V
+    //   22: astore 4
+    //   24: aload 4
+    //   26: invokestatic 157	com/tencent/mm/graphics/MMBitmapFactory:isForceSystemDecoder	(Landroid/graphics/BitmapFactory$Options;)Z
+    //   29: ifeq +33 -> 62
+    //   32: ldc 22
+    //   34: ldc 234
+    //   36: iconst_1
+    //   37: anewarray 4	java/lang/Object
+    //   40: dup
+    //   41: iconst_0
+    //   42: aload_0
+    //   43: aastore
+    //   44: invokestatic 207	com/tencent/stubs/logger/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   47: aload_0
+    //   48: aload 4
+    //   50: invokestatic 237	com/tencent/mm/graphics/MMBitmapFactory:decodeFileWithStreamBySystemInternal	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   53: astore_0
+    //   54: sipush 987
+    //   57: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   60: aload_0
-    //   61: invokestatic 228	com/tencent/mm/graphics/MMBitmapFactory:getStreamFromPath	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   64: invokestatic 232	com/tencent/mm/graphics/MMBitmapFactory:wrapUnResetableStreamOnDemand	(Ljava/io/InputStream;)Ljava/io/InputStream;
-    //   67: astore_3
-    //   68: aload_3
-    //   69: astore_1
+    //   61: areturn
+    //   62: aload_0
+    //   63: invokestatic 241	com/tencent/mm/graphics/MMBitmapFactory:getStreamFromPath	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   66: invokestatic 245	com/tencent/mm/graphics/MMBitmapFactory:wrapUnResetableStreamOnDemand	(Ljava/io/InputStream;)Ljava/io/InputStream;
+    //   69: astore_3
     //   70: aload_3
-    //   71: invokestatic 236	com/tencent/mm/graphics/MMBitmapFactory:getCompatibleRewindBufferSize	()I
-    //   74: invokevirtual 241	java/io/InputStream:mark	(I)V
-    //   77: aload_3
-    //   78: astore_1
+    //   71: astore_1
+    //   72: aload_3
+    //   73: invokestatic 248	com/tencent/mm/graphics/MMBitmapFactory:getCompatibleRewindBufferSize	()I
+    //   76: invokevirtual 253	java/io/InputStream:mark	(I)V
     //   79: aload_3
-    //   80: aconst_null
-    //   81: aload 4
-    //   83: invokestatic 244	com/tencent/mm/graphics/MMBitmapFactory:nativeDecodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   86: astore 5
-    //   88: aload_3
-    //   89: astore_1
-    //   90: aload 4
-    //   92: getfield 83	android/graphics/BitmapFactory$Options:outMimeType	Ljava/lang/String;
-    //   95: ifnull +47 -> 142
-    //   98: iload_2
-    //   99: ifeq +48 -> 147
-    //   102: aload_3
-    //   103: astore_1
-    //   104: aload 4
-    //   106: aload 5
-    //   108: iconst_0
-    //   109: invokestatic 150	com/tencent/mm/graphics/MMBitmapFactory:announceDecodeResult	(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Bitmap;Z)V
-    //   112: aload_3
-    //   113: astore_1
-    //   114: aload 5
-    //   116: aload 4
-    //   118: invokestatic 157	com/tencent/mm/graphics/MMBitmapFactory:setDensityFromOptions	(Landroid/graphics/Bitmap;Landroid/graphics/BitmapFactory$Options;)V
-    //   121: aload_3
-    //   122: astore_1
-    //   123: aload 5
-    //   125: aload 4
-    //   127: invokestatic 161	com/tencent/mm/graphics/MMBitmapFactory:scaleBitmapOnDemand	(Landroid/graphics/Bitmap;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   130: astore_0
-    //   131: aload_3
-    //   132: invokestatic 218	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
-    //   135: ldc 219
-    //   137: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   140: aload_0
-    //   141: areturn
-    //   142: iconst_0
-    //   143: istore_2
-    //   144: goto -46 -> 98
-    //   147: aload_3
-    //   148: astore_1
-    //   149: ldc 23
-    //   151: ldc 163
-    //   153: invokestatic 144	com/tencent/f/a/b:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   156: aload_3
-    //   157: astore_1
-    //   158: aload_0
-    //   159: aload 4
-    //   161: invokestatic 224	com/tencent/mm/graphics/MMBitmapFactory:decodeFileWithStreamBySystemInternal	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   164: astore_0
-    //   165: aload_3
-    //   166: invokestatic 218	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
-    //   169: ldc 219
-    //   171: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   174: aload_0
-    //   175: areturn
-    //   176: astore_0
-    //   177: aconst_null
-    //   178: astore_3
-    //   179: aload_3
-    //   180: astore_1
-    //   181: ldc 23
-    //   183: aload_0
-    //   184: ldc 165
-    //   186: invokestatic 168	com/tencent/f/a/b:b	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
-    //   189: aload_3
-    //   190: invokestatic 218	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
-    //   193: ldc 219
-    //   195: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   198: aconst_null
-    //   199: areturn
-    //   200: astore_0
-    //   201: aconst_null
-    //   202: astore_1
-    //   203: aload_1
-    //   204: invokestatic 218	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
-    //   207: ldc 219
-    //   209: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   212: aload_0
-    //   213: athrow
-    //   214: astore_0
-    //   215: goto -12 -> 203
-    //   218: astore_0
-    //   219: goto -40 -> 179
+    //   80: astore_1
+    //   81: aload_3
+    //   82: aconst_null
+    //   83: aload 4
+    //   85: invokestatic 256	com/tencent/mm/graphics/MMBitmapFactory:nativeDecodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   88: astore 5
+    //   90: aload_3
+    //   91: astore_1
+    //   92: aload 4
+    //   94: getfield 86	android/graphics/BitmapFactory$Options:outMimeType	Ljava/lang/String;
+    //   97: ifnull +48 -> 145
+    //   100: iload_2
+    //   101: ifeq +49 -> 150
+    //   104: aload_3
+    //   105: astore_1
+    //   106: aload 4
+    //   108: aload 5
+    //   110: iconst_0
+    //   111: invokestatic 169	com/tencent/mm/graphics/MMBitmapFactory:announceDecodeResult	(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Bitmap;Z)V
+    //   114: aload_3
+    //   115: astore_1
+    //   116: aload 5
+    //   118: aload 4
+    //   120: invokestatic 176	com/tencent/mm/graphics/MMBitmapFactory:setDensityFromOptions	(Landroid/graphics/Bitmap;Landroid/graphics/BitmapFactory$Options;)V
+    //   123: aload_3
+    //   124: astore_1
+    //   125: aload 5
+    //   127: aload 4
+    //   129: invokestatic 180	com/tencent/mm/graphics/MMBitmapFactory:scaleBitmapOnDemand	(Landroid/graphics/Bitmap;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   132: astore_0
+    //   133: aload_3
+    //   134: invokestatic 232	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
+    //   137: sipush 987
+    //   140: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   143: aload_0
+    //   144: areturn
+    //   145: iconst_0
+    //   146: istore_2
+    //   147: goto -47 -> 100
+    //   150: aload_3
+    //   151: astore_1
+    //   152: ldc 22
+    //   154: ldc 182
+    //   156: invokestatic 163	com/tencent/stubs/logger/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   159: aload_3
+    //   160: astore_1
+    //   161: aload_0
+    //   162: aload 4
+    //   164: invokestatic 237	com/tencent/mm/graphics/MMBitmapFactory:decodeFileWithStreamBySystemInternal	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   167: astore_0
+    //   168: aload_3
+    //   169: invokestatic 232	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
+    //   172: sipush 987
+    //   175: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   178: aload_0
+    //   179: areturn
+    //   180: astore_0
+    //   181: aconst_null
+    //   182: astore_3
+    //   183: aload_3
+    //   184: astore_1
+    //   185: ldc 22
+    //   187: aload_0
+    //   188: ldc 184
+    //   190: invokestatic 187	com/tencent/stubs/logger/Log:e	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   193: aload_3
+    //   194: invokestatic 232	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
+    //   197: sipush 987
+    //   200: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   203: aconst_null
+    //   204: areturn
+    //   205: astore_0
+    //   206: aconst_null
+    //   207: astore_1
+    //   208: aload_1
+    //   209: invokestatic 232	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
+    //   212: sipush 987
+    //   215: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   218: aload_0
+    //   219: athrow
+    //   220: astore_0
+    //   221: goto -13 -> 208
+    //   224: astore_0
+    //   225: goto -42 -> 183
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	222	0	paramString	String
-    //   0	222	1	paramOptions	BitmapFactory.Options
-    //   1	143	2	i	int
-    //   67	123	3	localInputStream	InputStream
-    //   8	152	4	localOptions	BitmapFactory.Options
-    //   86	38	5	localBitmap	Bitmap
+    //   0	228	0	paramString	String
+    //   0	228	1	paramOptions	BitmapFactory.Options
+    //   1	146	2	i	int
+    //   69	125	3	localInputStream	InputStream
+    //   9	154	4	localOptions	BitmapFactory.Options
+    //   88	38	5	localBitmap	Bitmap
     // Exception table:
     //   from	to	target	type
-    //   60	68	176	java/lang/Throwable
-    //   60	68	200	finally
-    //   70	77	214	finally
-    //   79	88	214	finally
-    //   90	98	214	finally
-    //   104	112	214	finally
-    //   114	121	214	finally
-    //   123	131	214	finally
-    //   149	156	214	finally
-    //   158	165	214	finally
-    //   181	189	214	finally
-    //   70	77	218	java/lang/Throwable
-    //   79	88	218	java/lang/Throwable
-    //   90	98	218	java/lang/Throwable
-    //   104	112	218	java/lang/Throwable
-    //   114	121	218	java/lang/Throwable
-    //   123	131	218	java/lang/Throwable
-    //   149	156	218	java/lang/Throwable
-    //   158	165	218	java/lang/Throwable
+    //   62	70	180	java/lang/Throwable
+    //   62	70	205	finally
+    //   72	79	220	finally
+    //   81	90	220	finally
+    //   92	100	220	finally
+    //   106	114	220	finally
+    //   116	123	220	finally
+    //   125	133	220	finally
+    //   152	159	220	finally
+    //   161	168	220	finally
+    //   185	193	220	finally
+    //   72	79	224	java/lang/Throwable
+    //   81	90	224	java/lang/Throwable
+    //   92	100	224	java/lang/Throwable
+    //   106	114	224	java/lang/Throwable
+    //   116	123	224	java/lang/Throwable
+    //   125	133	224	java/lang/Throwable
+    //   152	159	224	java/lang/Throwable
+    //   161	168	224	java/lang/Throwable
   }
   
   /* Error */
   private static Bitmap decodeFileWithStreamBySystemInternal(String paramString, BitmapFactory.Options paramOptions)
   {
     // Byte code:
-    //   0: ldc 245
-    //   2: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: getstatic 38	com/tencent/mm/graphics/MMBitmapFactory:sStreamProvider	Lcom/tencent/mm/graphics/MMBitmapFactory$b;
-    //   8: ifnull +86 -> 94
-    //   11: aload_0
-    //   12: invokestatic 228	com/tencent/mm/graphics/MMBitmapFactory:getStreamFromPath	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   15: invokestatic 232	com/tencent/mm/graphics/MMBitmapFactory:wrapUnResetableStreamOnDemand	(Ljava/io/InputStream;)Ljava/io/InputStream;
-    //   18: astore_2
-    //   19: aload_2
-    //   20: astore_0
-    //   21: aload_2
-    //   22: invokestatic 236	com/tencent/mm/graphics/MMBitmapFactory:getCompatibleRewindBufferSize	()I
-    //   25: invokevirtual 241	java/io/InputStream:mark	(I)V
-    //   28: aload_2
-    //   29: astore_0
-    //   30: aload_2
-    //   31: aconst_null
-    //   32: aload_1
-    //   33: invokestatic 248	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   36: astore_3
-    //   37: aload_2
-    //   38: astore_0
-    //   39: aload_1
-    //   40: aload_3
-    //   41: iconst_1
-    //   42: invokestatic 150	com/tencent/mm/graphics/MMBitmapFactory:announceDecodeResult	(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Bitmap;Z)V
-    //   45: aload_2
-    //   46: invokestatic 218	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
-    //   49: ldc 245
-    //   51: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   54: aload_3
-    //   55: areturn
-    //   56: astore_1
-    //   57: aconst_null
-    //   58: astore_2
-    //   59: aload_2
-    //   60: astore_0
-    //   61: ldc 23
-    //   63: aload_1
-    //   64: ldc 250
-    //   66: invokestatic 168	com/tencent/f/a/b:b	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
-    //   69: aload_2
-    //   70: invokestatic 218	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
-    //   73: ldc 245
-    //   75: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   78: aconst_null
-    //   79: areturn
-    //   80: astore_1
-    //   81: aconst_null
-    //   82: astore_0
-    //   83: aload_0
-    //   84: invokestatic 218	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
-    //   87: ldc 245
-    //   89: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   92: aload_1
-    //   93: athrow
-    //   94: aload_0
-    //   95: aload_1
-    //   96: invokestatic 252	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   99: astore_0
+    //   0: sipush 988
+    //   3: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: getstatic 40	com/tencent/mm/graphics/MMBitmapFactory:sStreamProvider	Lcom/tencent/mm/graphics/MMBitmapFactory$b;
+    //   9: ifnull +90 -> 99
+    //   12: aload_0
+    //   13: invokestatic 241	com/tencent/mm/graphics/MMBitmapFactory:getStreamFromPath	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   16: invokestatic 245	com/tencent/mm/graphics/MMBitmapFactory:wrapUnResetableStreamOnDemand	(Ljava/io/InputStream;)Ljava/io/InputStream;
+    //   19: astore_2
+    //   20: aload_2
+    //   21: astore_0
+    //   22: aload_2
+    //   23: invokestatic 248	com/tencent/mm/graphics/MMBitmapFactory:getCompatibleRewindBufferSize	()I
+    //   26: invokevirtual 253	java/io/InputStream:mark	(I)V
+    //   29: aload_2
+    //   30: astore_0
+    //   31: aload_2
+    //   32: aconst_null
+    //   33: aload_1
+    //   34: invokestatic 259	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   37: astore_3
+    //   38: aload_2
+    //   39: astore_0
+    //   40: aload_1
+    //   41: aload_3
+    //   42: iconst_1
+    //   43: invokestatic 169	com/tencent/mm/graphics/MMBitmapFactory:announceDecodeResult	(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Bitmap;Z)V
+    //   46: aload_2
+    //   47: invokestatic 232	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
+    //   50: sipush 988
+    //   53: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   56: aload_3
+    //   57: areturn
+    //   58: astore_1
+    //   59: aconst_null
+    //   60: astore_2
+    //   61: aload_2
+    //   62: astore_0
+    //   63: ldc 22
+    //   65: aload_1
+    //   66: ldc_w 261
+    //   69: invokestatic 187	com/tencent/stubs/logger/Log:e	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   72: aload_2
+    //   73: invokestatic 232	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
+    //   76: sipush 988
+    //   79: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   82: aconst_null
+    //   83: areturn
+    //   84: astore_1
+    //   85: aconst_null
+    //   86: astore_0
+    //   87: aload_0
+    //   88: invokestatic 232	com/tencent/mm/graphics/MMBitmapFactory:closeQuietly	(Ljava/io/Closeable;)V
+    //   91: sipush 988
+    //   94: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: aload_1
+    //   98: athrow
+    //   99: aload_0
     //   100: aload_1
-    //   101: aload_0
-    //   102: iconst_1
-    //   103: invokestatic 150	com/tencent/mm/graphics/MMBitmapFactory:announceDecodeResult	(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Bitmap;Z)V
-    //   106: ldc 245
-    //   108: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   111: aload_0
-    //   112: areturn
-    //   113: astore_0
-    //   114: ldc 23
-    //   116: aload_0
-    //   117: ldc 250
-    //   119: invokestatic 168	com/tencent/f/a/b:b	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
-    //   122: ldc 245
-    //   124: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   127: aconst_null
-    //   128: areturn
-    //   129: astore_1
-    //   130: goto -47 -> 83
-    //   133: astore_1
-    //   134: goto -75 -> 59
+    //   101: invokestatic 263	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   104: astore_0
+    //   105: aload_1
+    //   106: aload_0
+    //   107: iconst_1
+    //   108: invokestatic 169	com/tencent/mm/graphics/MMBitmapFactory:announceDecodeResult	(Landroid/graphics/BitmapFactory$Options;Landroid/graphics/Bitmap;Z)V
+    //   111: sipush 988
+    //   114: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: aload_0
+    //   118: areturn
+    //   119: astore_0
+    //   120: ldc 22
+    //   122: aload_0
+    //   123: ldc_w 261
+    //   126: invokestatic 187	com/tencent/stubs/logger/Log:e	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;)V
+    //   129: sipush 988
+    //   132: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   135: aconst_null
+    //   136: areturn
+    //   137: astore_1
+    //   138: goto -51 -> 87
+    //   141: astore_1
+    //   142: goto -81 -> 61
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	137	0	paramString	String
-    //   0	137	1	paramOptions	BitmapFactory.Options
-    //   18	52	2	localInputStream	InputStream
-    //   36	19	3	localBitmap	Bitmap
+    //   0	145	0	paramString	String
+    //   0	145	1	paramOptions	BitmapFactory.Options
+    //   19	54	2	localInputStream	InputStream
+    //   37	20	3	localBitmap	Bitmap
     // Exception table:
     //   from	to	target	type
-    //   11	19	56	java/lang/Throwable
-    //   11	19	80	finally
-    //   94	106	113	java/lang/Throwable
-    //   21	28	129	finally
-    //   30	37	129	finally
-    //   39	45	129	finally
-    //   61	69	129	finally
-    //   21	28	133	java/lang/Throwable
-    //   30	37	133	java/lang/Throwable
-    //   39	45	133	java/lang/Throwable
+    //   12	20	58	java/lang/Throwable
+    //   12	20	84	finally
+    //   99	111	119	java/lang/Throwable
+    //   22	29	137	finally
+    //   31	38	137	finally
+    //   40	46	137	finally
+    //   63	72	137	finally
+    //   22	29	141	java/lang/Throwable
+    //   31	38	141	java/lang/Throwable
+    //   40	46	141	java/lang/Throwable
   }
   
   public static Bitmap decodeResource(Resources paramResources, int paramInt)
   {
-    AppMethodBeat.i(57634);
-    b.d("MicroMsg.MMBitmapFactory", "[*] transfer invocation to BitmapFactory.decodeResource, res: %s, id: %s", new Object[] { paramResources, Integer.valueOf(paramInt) });
+    AppMethodBeat.i(982);
+    Log.d("MicroMsg.MMBitmapFactory", "[*] transfer invocation to BitmapFactory.decodeResource, res: %s, id: %s", new Object[] { paramResources, Integer.valueOf(paramInt) });
     paramResources = BitmapFactory.decodeResource(paramResources, paramInt);
-    AppMethodBeat.o(57634);
+    AppMethodBeat.o(982);
     return paramResources;
   }
   
   public static Bitmap decodeResource(Resources paramResources, int paramInt, BitmapFactory.Options paramOptions)
   {
-    AppMethodBeat.i(57635);
-    b.d("MicroMsg.MMBitmapFactory", "[*] transfer invocation to BitmapFactory.decodeResource, res: %s, id: %s, opts: %s", new Object[] { paramResources, Integer.valueOf(paramInt), paramOptions });
+    AppMethodBeat.i(983);
+    Log.d("MicroMsg.MMBitmapFactory", "[*] transfer invocation to BitmapFactory.decodeResource, res: %s, id: %s, opts: %s", new Object[] { paramResources, Integer.valueOf(paramInt), paramOptions });
     paramResources = BitmapFactory.decodeResource(paramResources, paramInt, paramOptions);
-    AppMethodBeat.o(57635);
+    AppMethodBeat.o(983);
     return paramResources;
   }
   
   public static Bitmap decodeResourceStream(Resources paramResources, TypedValue paramTypedValue, InputStream paramInputStream, Rect paramRect, BitmapFactory.Options paramOptions)
   {
-    AppMethodBeat.i(57636);
-    b.d("MicroMsg.MMBitmapFactory", "[*] transfer invocation to BitmapFactory.decodeResourceStream, res: %s, value: %s, is: %s, pad: %s, opts: %s", new Object[] { paramResources, paramTypedValue, paramInputStream, paramRect, paramOptions });
+    AppMethodBeat.i(984);
+    Log.d("MicroMsg.MMBitmapFactory", "[*] transfer invocation to BitmapFactory.decodeResourceStream, res: %s, value: %s, is: %s, pad: %s, opts: %s", new Object[] { paramResources, paramTypedValue, paramInputStream, paramRect, paramOptions });
     paramResources = BitmapFactory.decodeResourceStream(paramResources, paramTypedValue, paramInputStream, paramRect, paramOptions);
-    AppMethodBeat.o(57636);
+    AppMethodBeat.o(984);
     return paramResources;
   }
   
   public static Bitmap decodeStream(InputStream paramInputStream)
   {
-    AppMethodBeat.i(57646);
+    AppMethodBeat.i(995);
     assertNotNull(paramInputStream, "'is' is null.");
     paramInputStream = decodeStreamInternal(paramInputStream, null, null);
-    AppMethodBeat.o(57646);
+    AppMethodBeat.o(995);
     return paramInputStream;
   }
   
   public static Bitmap decodeStream(InputStream paramInputStream, Rect paramRect, BitmapFactory.Options paramOptions)
   {
-    AppMethodBeat.i(57647);
+    AppMethodBeat.i(996);
     assertNotNull(paramInputStream, "'is' is null.");
     paramInputStream = decodeStreamInternal(paramInputStream, paramRect, paramOptions);
-    AppMethodBeat.o(57647);
+    AppMethodBeat.o(996);
     return paramInputStream;
   }
   
   private static Bitmap decodeStreamInternal(InputStream paramInputStream, Rect paramRect, BitmapFactory.Options paramOptions)
   {
     int j = 0;
-    AppMethodBeat.i(57648);
+    AppMethodBeat.i(997);
     BitmapFactory.Options localOptions = paramOptions;
     if (paramOptions == null) {
       localOptions = new BitmapFactory.Options();
@@ -692,7 +704,7 @@ public class MMBitmapFactory
     int i;
     if ((paramInputStream instanceof AssetManager.AssetInputStream))
     {
-      b.w("MicroMsg.MMBitmapFactory", "[!] force decoding stream by system codec since it's asset stream.");
+      Log.w("MicroMsg.MMBitmapFactory", "[!] force decoding stream by system codec since it's asset stream.");
       i = 1;
     }
     for (;;)
@@ -701,11 +713,11 @@ public class MMBitmapFactory
       {
         paramInputStream = BitmapFactory.decodeStream(paramInputStream, paramRect, localOptions);
         announceDecodeResult(localOptions, paramInputStream, true);
-        AppMethodBeat.o(57648);
+        AppMethodBeat.o(997);
         return paramInputStream;
         if (isForceSystemDecoder(localOptions))
         {
-          b.w("MicroMsg.MMBitmapFactory", "[!] force decoding stream by system codec since specific options.");
+          Log.w("MicroMsg.MMBitmapFactory", "[!] force decoding stream by system codec since specific options.");
           i = 1;
         }
       }
@@ -725,21 +737,21 @@ public class MMBitmapFactory
             announceDecodeResult(localOptions, paramOptions, false);
             setDensityFromOptions(paramOptions, localOptions);
             paramInputStream = scaleBitmapOnDemand(paramOptions, localOptions);
-            AppMethodBeat.o(57648);
+            AppMethodBeat.o(997);
             return paramInputStream;
           }
-          b.w("MicroMsg.MMBitmapFactory", "[!] unsupported image format, try to decode with system codec.");
+          Log.w("MicroMsg.MMBitmapFactory", "[!] unsupported image format, try to decode with system codec.");
           paramInputStream.reset();
           paramInputStream.mark(getCompatibleRewindBufferSize());
           paramInputStream = BitmapFactory.decodeStream(paramInputStream, paramRect, localOptions);
           announceDecodeResult(localOptions, paramInputStream, true);
-          AppMethodBeat.o(57648);
+          AppMethodBeat.o(997);
           return paramInputStream;
         }
         catch (Throwable paramInputStream)
         {
-          b.b("MicroMsg.MMBitmapFactory", paramInputStream, "decode failed.");
-          AppMethodBeat.o(57648);
+          Log.e("MicroMsg.MMBitmapFactory", paramInputStream, "decode failed.");
+          AppMethodBeat.o(997);
           return null;
         }
       }
@@ -749,13 +761,13 @@ public class MMBitmapFactory
   
   private static int getCompatibleRewindBufferSize()
   {
-    AppMethodBeat.i(138505);
+    AppMethodBeat.i(1007);
     if ("HUAWEI".equals(Build.MANUFACTURER))
     {
-      AppMethodBeat.o(138505);
+      AppMethodBeat.o(1007);
       return 8388608;
     }
-    AppMethodBeat.o(138505);
+    AppMethodBeat.o(1007);
     return 8388608;
   }
   
@@ -770,50 +782,56 @@ public class MMBitmapFactory
   
   private static InputStream getStreamFromPath(String paramString)
   {
-    AppMethodBeat.i(142693);
+    AppMethodBeat.i(998);
     if (sStreamProvider != null)
     {
-      paramString = new FileInputStream(paramString);
-      AppMethodBeat.o(142693);
+      paramString = sStreamProvider.getStreamFromPath(paramString);
+      if (paramString == null)
+      {
+        paramString = new IllegalArgumentException("Injected stream provider returned null in getStreamFromPath.");
+        AppMethodBeat.o(998);
+        throw paramString;
+      }
+      AppMethodBeat.o(998);
       return paramString;
     }
     paramString = new FileInputStream(paramString);
-    AppMethodBeat.o(142693);
+    AppMethodBeat.o(998);
     return paramString;
   }
   
   public static String getVersion()
   {
-    return "0.2.24";
+    return "0.2.26";
   }
   
   private static boolean isForceSystemDecoder(BitmapFactory.Options paramOptions)
   {
-    AppMethodBeat.i(57651);
-    if ((paramOptions != null) && (Build.VERSION.SDK_INT >= 26) && (Bitmap.Config.HARDWARE.equals(paramOptions.inPreferredConfig)))
+    AppMethodBeat.i(1002);
+    if ((sForceUsingSystemDecoderOpt) || ((paramOptions != null) && (Build.VERSION.SDK_INT >= 26) && (Bitmap.Config.HARDWARE.equals(paramOptions.inPreferredConfig))))
     {
-      AppMethodBeat.o(57651);
+      AppMethodBeat.o(1002);
       return true;
     }
-    AppMethodBeat.o(57651);
+    AppMethodBeat.o(1002);
     return false;
   }
   
   private static void loadNativeModule(String paramString)
   {
-    AppMethodBeat.i(57656);
+    AppMethodBeat.i(1009);
     try
     {
       System.loadLibrary(paramString);
-      b.i("MicroMsg.MMBitmapFactory", "Successfully load native module: %s", new Object[] { paramString });
-      AppMethodBeat.o(57656);
+      Log.i("MicroMsg.MMBitmapFactory", "Successfully load native module: %s", new Object[] { paramString });
+      AppMethodBeat.o(1009);
       return;
     }
     catch (Throwable localThrowable)
     {
-      b.a("MicroMsg.MMBitmapFactory", localThrowable, "Fail to load native module: %s", new Object[] { paramString });
+      Log.e("MicroMsg.MMBitmapFactory", localThrowable, "Fail to load native module: %s", new Object[] { paramString });
       paramString = new RuntimeException(localThrowable);
-      AppMethodBeat.o(57656);
+      AppMethodBeat.o(1009);
       throw paramString;
     }
   }
@@ -834,30 +852,30 @@ public class MMBitmapFactory
   
   public static Bitmap pinBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(57649);
+    AppMethodBeat.i(1000);
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      b.i("MicroMsg.MMBitmapFactory", "[tomys] Try to pin bmp (%s), [w: %s, h: %s, config: %s, size: %s]", new Object[] { paramBitmap, Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), paramBitmap.getConfig(), Integer.valueOf(paramBitmap.getByteCount()) });
+      Log.i("MicroMsg.MMBitmapFactory", "[tomys] Try to pin bmp (%s), [w: %s, h: %s, config: %s, size: %s]", new Object[] { paramBitmap, Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), paramBitmap.getConfig(), Integer.valueOf(paramBitmap.getByteCount()) });
       int i = nativePinBitmap(paramBitmap);
       if (i < 0) {
-        b.e("MicroMsg.MMBitmapFactory", "pinBitmap failed, ret: %s", new Object[] { Integer.valueOf(i) });
+        Log.e("MicroMsg.MMBitmapFactory", "pinBitmap failed, ret: %s", new Object[] { Integer.valueOf(i) });
       }
     }
-    AppMethodBeat.o(57649);
+    AppMethodBeat.o(1000);
     return paramBitmap;
   }
   
   private static Bitmap scaleBitmapOnDemand(Bitmap paramBitmap, BitmapFactory.Options paramOptions)
   {
-    AppMethodBeat.i(57654);
+    AppMethodBeat.i(1005);
     if ((paramBitmap == null) || (paramOptions == null))
     {
-      AppMethodBeat.o(57654);
+      AppMethodBeat.o(1005);
       return paramBitmap;
     }
     if (!paramOptions.inScaled)
     {
-      AppMethodBeat.o(57654);
+      AppMethodBeat.o(1005);
       return paramBitmap;
     }
     int i = paramOptions.inDensity;
@@ -868,31 +886,36 @@ public class MMBitmapFactory
     {
       if (f1 == 1.0F)
       {
-        AppMethodBeat.o(57654);
+        AppMethodBeat.o(1005);
         return paramBitmap;
       }
       i = (int)(paramBitmap.getWidth() * f1 + 0.5F);
       j = (int)(f1 * paramBitmap.getHeight() + 0.5F);
       f1 = i / paramBitmap.getWidth();
       float f2 = j / paramBitmap.getHeight();
-      b.d("MicroMsg.MMBitmapFactory", "[+] Bmp to scale: [sw: %s, sh: %s, dw: %s, dh: %s, scX: %s, scY: %s]", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Integer.valueOf(i), Integer.valueOf(j), Float.valueOf(f1), Float.valueOf(f2) });
+      Log.d("MicroMsg.MMBitmapFactory", "[+] Bmp to scale: [sw: %s, sh: %s, dw: %s, dh: %s, scX: %s, scY: %s]", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Integer.valueOf(i), Integer.valueOf(j), Float.valueOf(f1), Float.valueOf(f2) });
       paramOptions = new Matrix();
       paramOptions.setScale(f1, f2);
       paramOptions = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), paramOptions, true);
       if (paramOptions != paramBitmap) {
         paramBitmap.recycle();
       }
-      AppMethodBeat.o(57654);
+      AppMethodBeat.o(1005);
       return paramOptions;
     }
   }
   
+  public static void setDecodeCanary(a parama)
+  {
+    sDecodeCanary = parama;
+  }
+  
   private static void setDensityFromOptions(Bitmap paramBitmap, BitmapFactory.Options paramOptions)
   {
-    AppMethodBeat.i(57655);
+    AppMethodBeat.i(1006);
     if ((paramBitmap == null) || (paramOptions == null))
     {
-      AppMethodBeat.o(57655);
+      AppMethodBeat.o(1006);
       return;
     }
     int i = paramOptions.inDensity;
@@ -902,7 +925,7 @@ public class MMBitmapFactory
       int j = paramOptions.inTargetDensity;
       if ((j == 0) || (i == j) || (i == paramOptions.inScreenDensity))
       {
-        AppMethodBeat.o(57655);
+        AppMethodBeat.o(1006);
         return;
       }
       byte[] arrayOfByte = paramBitmap.getNinePatchChunk();
@@ -912,14 +935,22 @@ public class MMBitmapFactory
         if ((paramOptions.inScaled) || (i != 0)) {
           paramBitmap.setDensity(j);
         }
-        AppMethodBeat.o(57655);
+        AppMethodBeat.o(1006);
         return;
       }
     }
     if (paramOptions.inBitmap != null) {
       paramBitmap.setDensity(160);
     }
-    AppMethodBeat.o(57655);
+    AppMethodBeat.o(1006);
+  }
+  
+  public static void setForceUsingSystemDecoder(boolean paramBoolean)
+  {
+    AppMethodBeat.i(981);
+    Log.w("MicroMsg.MMBitmapFactory", "[!] setForceUsingSystemDecoder, value: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    sForceUsingSystemDecoderOpt = paramBoolean;
+    AppMethodBeat.o(981);
   }
   
   public static void setStreamProvider(b paramb)
@@ -929,50 +960,42 @@ public class MMBitmapFactory
   
   public static Bitmap unPinBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(57650);
+    AppMethodBeat.i(1001);
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      b.i("MicroMsg.MMBitmapFactory", "[tomys] Try to unpin bmp (%s), [w: %s, h: %s, config: %s, size: %s]", new Object[] { paramBitmap, Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), paramBitmap.getConfig(), Integer.valueOf(paramBitmap.getByteCount()) });
+      Log.i("MicroMsg.MMBitmapFactory", "[tomys] Try to unpin bmp (%s), [w: %s, h: %s, config: %s, size: %s]", new Object[] { paramBitmap, Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), paramBitmap.getConfig(), Integer.valueOf(paramBitmap.getByteCount()) });
       int i = nativeUnPinBitmap(paramBitmap);
       if (i < 0) {
-        b.e("MicroMsg.MMBitmapFactory", "unPinBitmap failed, ret: %s", new Object[] { Integer.valueOf(i) });
+        Log.e("MicroMsg.MMBitmapFactory", "unPinBitmap failed, ret: %s", new Object[] { Integer.valueOf(i) });
       }
     }
-    AppMethodBeat.o(57650);
+    AppMethodBeat.o(1001);
     return paramBitmap;
   }
   
   private static InputStream wrapUnResetableStreamOnDemand(InputStream paramInputStream)
   {
-    AppMethodBeat.i(138506);
+    AppMethodBeat.i(1008);
     if (paramInputStream.markSupported())
     {
-      AppMethodBeat.o(138506);
+      AppMethodBeat.o(1008);
       return paramInputStream;
     }
     if ((paramInputStream instanceof FileInputStream))
     {
       paramInputStream = new a((FileInputStream)paramInputStream);
-      AppMethodBeat.o(138506);
+      AppMethodBeat.o(1008);
       return paramInputStream;
     }
     paramInputStream = new BufferedInputStream(paramInputStream);
-    AppMethodBeat.o(138506);
+    AppMethodBeat.o(1008);
     return paramInputStream;
-  }
-  
-  @Keep
-  public static class Options
-    extends BitmapFactory.Options
-  {
-    @Keep
-    public boolean inUseSmoothSample = true;
   }
   
   static final class a
     extends FilterInputStream
   {
-    private long eAy = 0L;
+    private long fWb = 0L;
     
     public a(FileInputStream paramFileInputStream)
     {
@@ -983,19 +1006,19 @@ public class MMBitmapFactory
     {
       try
       {
-        AppMethodBeat.i(138503);
+        AppMethodBeat.i(978);
         try
         {
-          this.eAy = ((FileInputStream)this.in).getChannel().position();
-          AppMethodBeat.o(138503);
+          this.fWb = ((FileInputStream)this.in).getChannel().position();
+          AppMethodBeat.o(978);
         }
         catch (IOException localIOException)
         {
           for (;;)
           {
-            b.b("MicroMsg.MMBitmapFactory", localIOException, "fail to mark position.");
-            this.eAy = -1L;
-            AppMethodBeat.o(138503);
+            Log.e("MicroMsg.MMBitmapFactory", localIOException, "fail to mark position.");
+            this.fWb = -1L;
+            AppMethodBeat.o(978);
           }
         }
         return;
@@ -1012,21 +1035,27 @@ public class MMBitmapFactory
     {
       try
       {
-        AppMethodBeat.i(138504);
-        if (this.eAy < 0L)
+        AppMethodBeat.i(979);
+        if (this.fWb < 0L)
         {
-          IOException localIOException = new IOException("Illegal marked position: " + this.eAy);
-          AppMethodBeat.o(138504);
+          IOException localIOException = new IOException("Illegal marked position: " + this.fWb);
+          AppMethodBeat.o(979);
           throw localIOException;
         }
       }
       finally {}
-      ((FileInputStream)this.in).getChannel().position(this.eAy);
-      AppMethodBeat.o(138504);
+      ((FileInputStream)this.in).getChannel().position(this.fWb);
+      AppMethodBeat.o(979);
     }
   }
   
-  public static abstract class b {}
+  public static abstract class b
+  {
+    public InputStream getStreamFromPath(String paramString)
+    {
+      return new FileInputStream(paramString);
+    }
+  }
 }
 
 

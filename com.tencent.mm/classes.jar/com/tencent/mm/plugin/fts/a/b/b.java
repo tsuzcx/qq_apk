@@ -10,45 +10,45 @@ import java.util.Queue;
 
 public final class b
 {
-  private HashSet<String> mTo;
-  public c mTp;
+  private HashSet<String> rqi;
+  public c rqj;
   
   public b()
   {
-    AppMethodBeat.i(114284);
-    this.mTp = new c(' ');
-    this.mTo = new HashSet();
-    AppMethodBeat.o(114284);
+    AppMethodBeat.i(131720);
+    this.rqj = new c(' ');
+    this.rqi = new HashSet();
+    AppMethodBeat.o(131720);
   }
   
-  public final void Pi(String paramString)
+  public final void abh(String paramString)
   {
-    AppMethodBeat.i(114285);
-    if (!this.mTo.add(paramString))
+    AppMethodBeat.i(131721);
+    if (!this.rqi.add(paramString))
     {
-      AppMethodBeat.o(114285);
+      AppMethodBeat.o(131721);
       return;
     }
-    c localc = this.mTp;
+    c localc = this.rqj;
     char[] arrayOfChar = paramString.toLowerCase().toCharArray();
     int i = 0;
     paramString = localc;
     while (i < arrayOfChar.length)
     {
       int j = arrayOfChar[i] - 'a';
-      if (paramString.mTq[j] == null) {
-        paramString.mTq[j] = new c(arrayOfChar[i]);
+      if (paramString.rqk[j] == null) {
+        paramString.rqk[j] = new c(arrayOfChar[i]);
       }
-      paramString = paramString.mTq[j];
+      paramString = paramString.rqk[j];
       i += 1;
     }
-    paramString.mTn = true;
-    AppMethodBeat.o(114285);
+    paramString.rqh = true;
+    AppMethodBeat.o(131721);
   }
   
-  public final List<List<String>> Pj(String paramString)
+  public final List<List<String>> abi(String paramString)
   {
-    AppMethodBeat.i(114286);
+    AppMethodBeat.i(131722);
     ArrayDeque localArrayDeque = new ArrayDeque();
     localArrayDeque.offer(new a(0, 0, null));
     char[] arrayOfChar = paramString.toLowerCase().toCharArray();
@@ -60,33 +60,33 @@ public final class b
         break;
       }
       int i = locala.end;
-      Object localObject1 = this.mTp;
+      Object localObject1 = this.rqj;
       Object localObject2;
       while (i < arrayOfChar.length)
       {
         int j = arrayOfChar[i] - 'a';
-        if (localObject1.mTq[j] == null) {
+        if (localObject1.rqk[j] == null) {
           break;
         }
-        localObject1 = localObject1.mTq[j];
-        if ((((c)localObject1).mTn) || (i == arrayOfChar.length - 1))
+        localObject1 = localObject1.rqk[j];
+        if ((((c)localObject1).rqh) || (i == arrayOfChar.length - 1))
         {
-          if (locala.aWy == null) {
-            locala.aWy = new ArrayList();
+          if (locala.buB == null) {
+            locala.buB = new ArrayList();
           }
           localObject2 = new a(locala.end, i + 1, locala);
-          locala.aWy.add(localObject2);
+          locala.buB.add(localObject2);
           if (((a)localObject2).end == arrayOfChar.length) {
-            ((a)localObject2).mTn = true;
+            ((a)localObject2).rqh = true;
           }
           localArrayDeque.offer(localObject2);
         }
         i += 1;
       }
-      if (locala.mTn)
+      if (locala.rqh)
       {
         localObject2 = new ArrayList();
-        for (localObject1 = locala; localObject1 != null; localObject1 = ((a)localObject1).mTm) {
+        for (localObject1 = locala; localObject1 != null; localObject1 = ((a)localObject1).rqg) {
           if (((a)localObject1).end > ((a)localObject1).start) {
             ((List)localObject2).add(paramString.substring(((a)localObject1).start, ((a)localObject1).end));
           }
@@ -95,13 +95,13 @@ public final class b
         localArrayList.add(localObject2);
       }
     }
-    AppMethodBeat.o(114286);
+    AppMethodBeat.o(131722);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.b.b
  * JD-Core Version:    0.7.0.1
  */

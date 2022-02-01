@@ -20,7 +20,7 @@ final class e
     int[] arrayOfInt = paramArrayOfInt;
     if (paramInt1 + 1 > paramArrayOfInt.length)
     {
-      arrayOfInt = new int[ad(paramInt1)];
+      arrayOfInt = new int[av(paramInt1)];
       System.arraycopy(paramArrayOfInt, 0, arrayOfInt, 0, paramInt1);
     }
     arrayOfInt[paramInt1] = paramInt2;
@@ -32,7 +32,7 @@ final class e
     assert (paramInt <= paramArrayOfT.length);
     if (paramInt + 1 > paramArrayOfT.length)
     {
-      Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), ad(paramInt));
+      Object[] arrayOfObject = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), av(paramInt));
       System.arraycopy(paramArrayOfT, 0, arrayOfObject, 0, paramInt);
       paramArrayOfT = arrayOfObject;
     }
@@ -43,7 +43,7 @@ final class e
     }
   }
   
-  private static int ad(int paramInt)
+  private static int av(int paramInt)
   {
     if (paramInt <= 4) {
       return 8;

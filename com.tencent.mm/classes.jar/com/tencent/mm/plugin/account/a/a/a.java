@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.account.a.a;
 import android.app.Activity;
 import android.content.Context;
 import com.tencent.mm.kernel.b.d;
+import com.tencent.mm.sdk.e.j;
 import com.tencent.mm.sdk.e.k;
 import com.tencent.mm.sdk.e.n;
 import java.util.LinkedList;
@@ -24,7 +25,7 @@ public abstract interface a
   
   public abstract k getInviteFriendOpenStg();
   
-  public abstract String getPhoneNum(Context paramContext, String paramString);
+  public abstract j getOldAccountFriendStorage();
   
   public abstract k getQQGroupStg();
   
@@ -46,7 +47,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.a.a.a
  * JD-Core Version:    0.7.0.1
  */

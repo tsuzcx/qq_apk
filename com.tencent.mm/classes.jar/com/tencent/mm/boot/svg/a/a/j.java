@@ -29,12 +29,12 @@ public final class j
       return 96;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      Object localObject1 = c.h(paramVarArgs);
-      Object localObject2 = c.g(paramVarArgs);
-      Object localObject3 = c.k(paramVarArgs);
+      Object localObject1 = c.j(paramVarArgs);
+      Object localObject2 = c.i(paramVarArgs);
+      Object localObject3 = c.m(paramVarArgs);
       ((Paint)localObject3).setFlags(385);
       ((Paint)localObject3).setStyle(Paint.Style.FILL);
-      Object localObject4 = c.k(paramVarArgs);
+      Object localObject4 = c.m(paramVarArgs);
       ((Paint)localObject4).setFlags(385);
       ((Paint)localObject4).setStyle(Paint.Style.STROKE);
       ((Paint)localObject3).setColor(-16777216);
@@ -46,7 +46,7 @@ public final class j
       c.a((Paint)localObject4, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
       localObject3 = c.a((Paint)localObject3, paramVarArgs);
-      ((Paint)localObject3).setColor(654311423);
+      ((Paint)localObject3).setColor(1090519039);
       localObject4 = c.a((float[])localObject2, 1.0F, 0.0F, 8.0F, 0.0F, 1.0F, 8.0F);
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues((float[])localObject4);
@@ -57,7 +57,7 @@ public final class j
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues((float[])localObject3);
       localCanvas.concat((Matrix)localObject1);
-      localObject1 = c.l(paramVarArgs);
+      localObject1 = c.n(paramVarArgs);
       ((Path)localObject1).moveTo(37.0F, 37.0F);
       ((Path)localObject1).lineTo(37.0F, 12.995752F);
       ((Path)localObject1).cubicTo(37.0F, 12.450768F, 37.443588F, 12.0F, 37.99078F, 12.0F);
@@ -85,13 +85,13 @@ public final class j
       localCanvas.drawPath((Path)localObject1, (Paint)localObject2);
       localCanvas.restore();
       localCanvas.restore();
-      c.j(paramVarArgs);
+      c.l(paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.j
  * JD-Core Version:    0.7.0.1
  */

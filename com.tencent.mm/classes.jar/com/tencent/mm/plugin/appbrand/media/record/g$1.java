@@ -8,23 +8,23 @@ import java.util.ArrayList;
 final class g$1
   implements j.b
 {
-  public final void hB(long paramLong)
+  public final void ln(long paramLong)
   {
-    AppMethodBeat.i(141589);
-    h.qsU.idkeyStat(689L, paramLong, 1L, true);
-    AppMethodBeat.o(141589);
+    AppMethodBeat.i(146149);
+    h.vKh.idkeyStat(689L, paramLong, 1L, true);
+    AppMethodBeat.o(146149);
   }
   
-  public final void n(ArrayList<IDKey> paramArrayList)
+  public final void y(ArrayList<IDKey> paramArrayList)
   {
-    AppMethodBeat.i(141590);
-    h.qsU.b(paramArrayList, true);
-    AppMethodBeat.o(141590);
+    AppMethodBeat.i(146150);
+    h.vKh.b(paramArrayList, true);
+    AppMethodBeat.o(146150);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.g.1
  * JD-Core Version:    0.7.0.1
  */

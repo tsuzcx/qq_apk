@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.remittance.bankcard.ui;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 
 final class BankRemitDetailUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -12,16 +12,16 @@ final class BankRemitDetailUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(44594);
-    ab.i("MicroMsg.BankRemitDetailUI", "back press");
-    this.qhE.finish();
-    AppMethodBeat.o(44594);
+    AppMethodBeat.i(67508);
+    ad.i("MicroMsg.BankRemitDetailUI", "back press");
+    this.vwc.finish();
+    AppMethodBeat.o(67508);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitDetailUI.1
  * JD-Core Version:    0.7.0.1
  */

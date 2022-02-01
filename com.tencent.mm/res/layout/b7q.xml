@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@android:color/white" android:paddingLeft="@dimen/l2" android:paddingTop="@dimen/l2" android:paddingRight="@dimen/l2" android:paddingBottom="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/t_" android:gravity="center|left" android:id="@id/fo6" android:layout_width="60.0dip" android:layout_height="wrap_content" android:text="@string/fsu" android:layout_alignBottom="@id/fmf" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-    <TextView android:textSize="@dimen/ko" android:textColor="#ff111111" android:gravity="center|right" android:id="@id/fmf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/fo6" />
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/t_" android:gravity="center|left" android:id="@id/fml" android:layout_width="90.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/fs2" android:layout_below="@id/fo6" android:layout_alignParentLeft="true" />
-    <TextView android:textSize="@dimen/ko" android:textColor="#ff111111" android:gravity="center|right" android:id="@id/fmm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/fml" android:layout_below="@id/fmf" android:layout_alignTop="@id/fml" android:lineSpacingExtra="6.0dip" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/fl_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:layout_centerInParent="true" />
+    <ProgressBar android:gravity="center" android:id="@id/ekz" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true" style="@style/a4p" />
 </RelativeLayout>

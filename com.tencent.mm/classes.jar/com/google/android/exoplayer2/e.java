@@ -6,37 +6,37 @@ import java.io.IOException;
 public final class e
   extends Exception
 {
-  public final int avt;
+  public final int aQL;
   public final int type;
   
   private e(int paramInt1, Throwable paramThrowable, int paramInt2)
   {
     super(null, paramThrowable);
     this.type = paramInt1;
-    this.avt = paramInt2;
+    this.aQL = paramInt2;
   }
   
   public static e a(IOException paramIOException)
   {
-    AppMethodBeat.i(94772);
+    AppMethodBeat.i(91884);
     paramIOException = new e(0, paramIOException, -1);
-    AppMethodBeat.o(94772);
+    AppMethodBeat.o(91884);
     return paramIOException;
   }
   
   static e a(RuntimeException paramRuntimeException)
   {
-    AppMethodBeat.i(94773);
+    AppMethodBeat.i(91885);
     paramRuntimeException = new e(2, paramRuntimeException, -1);
-    AppMethodBeat.o(94773);
+    AppMethodBeat.o(91885);
     return paramRuntimeException;
   }
   
   public static e b(Exception paramException, int paramInt)
   {
-    AppMethodBeat.i(94771);
+    AppMethodBeat.i(91883);
     paramException = new e(1, paramException, paramInt);
-    AppMethodBeat.o(94771);
+    AppMethodBeat.o(91883);
     return paramException;
   }
 }

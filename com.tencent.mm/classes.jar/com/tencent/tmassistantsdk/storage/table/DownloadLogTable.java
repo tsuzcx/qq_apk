@@ -14,12 +14,12 @@ public class DownloadLogTable
   {
     try
     {
-      AppMethodBeat.i(76203);
+      AppMethodBeat.i(102449);
       if (mInstance == null) {
         mInstance = new DownloadLogTable();
       }
       DownloadLogTable localDownloadLogTable = mInstance;
-      AppMethodBeat.o(76203);
+      AppMethodBeat.o(102449);
       return localDownloadLogTable;
     }
     finally {}
@@ -27,9 +27,9 @@ public class DownloadLogTable
   
   protected String[] getAlterSQL(int paramInt)
   {
-    AppMethodBeat.i(76204);
+    AppMethodBeat.i(102450);
     String str = getCreateTableSQL();
-    AppMethodBeat.o(76204);
+    AppMethodBeat.o(102450);
     return new String[] { str };
   }
   
@@ -50,7 +50,7 @@ public class DownloadLogTable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.table.DownloadLogTable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,47 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop.a;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.v;
-import android.view.View;
-import android.view.ViewParent;
-import com.tencent.mm.sdk.platformtools.ab;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.g.b.k;
+import d.l;
+import java.io.File;
 
-public abstract class b<T extends RecyclerView.v>
-  implements c<T>
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/widget/desktop/dynamicbackground/DynamicBackgroundManager;", "", "()V", "init", "", "context", "Landroid/content/Context;", "plugin-appbrand-integration_release"})
+public final class b
 {
-  public static float Q(RecyclerView.v paramv)
+  public static final b lWx;
+  
+  static
   {
-    if ((paramv != null) && (paramv.aku != null))
-    {
-      paramv = paramv.aku;
-      int[] arrayOfInt = new int[2];
-      paramv.getLocationOnScreen(arrayOfInt);
-      return arrayOfInt[1];
-    }
-    return 0.0F;
+    AppMethodBeat.i(51420);
+    lWx = new b();
+    AppMethodBeat.o(51420);
   }
   
-  public static float c(RecyclerView paramRecyclerView, RecyclerView.v paramv)
+  public static void init(Context paramContext)
   {
-    if (paramv != null) {
-      try
-      {
-        if (paramv.aku != null)
-        {
-          float f2 = paramv.aku.getLeft();
-          paramv = paramv.aku;
-          ViewParent localViewParent2 = paramv.getParent();
-          ViewParent localViewParent1 = localViewParent2;
-          float f1 = f2;
-          if ((localViewParent2 instanceof View))
-          {
-            paramv = (View)localViewParent2;
-            f1 = f2 + paramv.getLeft();
-            localViewParent1 = localViewParent2;
-          }
-          while ((paramv != paramRecyclerView) && (localViewParent1 != null))
-          {
-            localViewParent2 = paramv.getParent();
-            localViewParent1 = localViewParent2;
-            if ((localViewParent2 instanceof View))
-            {
-              paramv = (View)localViewParent2;
-              int i = paramv.getLeft();
-              f1 += i;
-              localViewParent1 = localViewParent2;
-            }
-          }
-          return f1;
-        }
-      }
-      catch (Exception paramRecyclerView)
-      {
-        ab.printErrStackTrace("alvinluo", paramRecyclerView, "alvinluo getTransX exception", new Object[0]);
-        return 0.0F;
-      }
+    AppMethodBeat.i(51419);
+    k.h(paramContext, "context");
+    Object localObject = com.tencent.mm.dynamicbackground.a.b.fID;
+    k.h(paramContext, "context");
+    localObject = new File(com.tencent.mm.dynamicbackground.a.b.cg(paramContext));
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
     }
-    return 0.0F;
+    com.tencent.mm.dynamicbackground.a.b.i(paramContext, "scene_shaderf.glsl", com.tencent.mm.dynamicbackground.a.b.cg(paramContext) + "scene_shaderf.glsl");
+    com.tencent.mm.dynamicbackground.a.b.i(paramContext, "scene_shaderv.glsl", com.tencent.mm.dynamicbackground.a.b.cg(paramContext) + "scene_shaderv.glsl");
+    com.tencent.mm.dynamicbackground.a.b.i(paramContext, "frag_framebuffer_plane.glsl", com.tencent.mm.dynamicbackground.a.b.cg(paramContext) + "frag_framebuffer_plane.glsl");
+    com.tencent.mm.dynamicbackground.a.b.i(paramContext, "vertex_framebuffer_plane.glsl", com.tencent.mm.dynamicbackground.a.b.cg(paramContext) + "vertex_framebuffer_plane.glsl");
+    com.tencent.mm.dynamicbackground.a.b.i(paramContext, "texture_vertex_shader.glsl", com.tencent.mm.dynamicbackground.a.b.cg(paramContext) + "texture_vertex_shader.glsl");
+    com.tencent.mm.dynamicbackground.a.b.i(paramContext, "texture_fragment_shader.glsl", com.tencent.mm.dynamicbackground.a.b.cg(paramContext) + "texture_fragment_shader.glsl");
+    com.tencent.mm.dynamicbackground.a.b.i(paramContext, "bg_gradient_vertex_shader.glsl", com.tencent.mm.dynamicbackground.a.b.cg(paramContext) + "bg_gradient_vertex_shader.glsl");
+    com.tencent.mm.dynamicbackground.a.b.i(paramContext, "bg_gradient_fragment_shader.glsl", com.tencent.mm.dynamicbackground.a.b.cg(paramContext) + "bg_gradient_fragment_shader.glsl");
+    AppMethodBeat.o(51419);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.a.b
  * JD-Core Version:    0.7.0.1
  */

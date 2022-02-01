@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.media.widget.camerarecordview.preview.CameraPreviewGLTextureView android:id="@id/ftq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <android.support.constraint.ConstraintLayout android:id="@id/fti" android:layout_width="@dimen/a0r" android:layout_height="@dimen/a0r" android:layout_marginTop="@dimen/c1" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8">
+        <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/fth" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+        <com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView android:id="@id/ftp" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/ftz" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.75" />
+        <com.tencent.mm.sticker.ui.view.CaptureStickerHint android:gravity="center" android:orientation="vertical" android:id="@id/fts" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
+        <com.tencent.mm.plugin.emojicapture.ui.editor.text.FontAnimTextView android:id="@id/fty" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:layout_marginStart="@dimen/ci" android:layout_marginEnd="@dimen/ci" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" />
+    </android.support.constraint.ConstraintLayout>
+    <View android:background="@drawable/ac8" android:layout_width="fill_parent" android:layout_height="@dimen/c1" app:layout_constraintTop_toTopOf="ea8" />
+    <View android:background="@drawable/ac8" android:layout_width="fill_parent" android:layout_height="@dimen/c1" android:rotation="180.0" app:layout_constraintBottom_toBottomOf="ea8" />
+    <android.support.constraint.Guideline android:orientation="vertical" android:id="@id/fu1" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.5" />
+    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/fu0" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_end="40.0dip" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ftm" android:layout_width="0.0dip" android:layout_height="wrap_content" app:layout_constraintBottom_toTopOf="@id/fu0" app:layout_constraintEnd_toEndOf="@id/fu1" app:layout_constraintStart_toStartOf="ea8">
+        <ImageView android:id="@id/ftn" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:src="@raw/icons_filled_change_size" />
+        <TextView android:textColor="@color/BW_100" android:id="@id/fto" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/fu1" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ftj" android:layout_width="0.0dip" android:layout_height="wrap_content" app:layout_constraintBottom_toTopOf="@id/fu0" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="@id/fu1">
+        <ImageView android:id="@id/ftk" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:src="@raw/icons_filled_camera_switch" />
+        <TextView android:textColor="@color/BW_100" android:id="@id/ftl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/fu0" />
+    </LinearLayout>
+</merge>

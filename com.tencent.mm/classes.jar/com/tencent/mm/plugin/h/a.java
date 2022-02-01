@@ -1,63 +1,61 @@
 package com.tencent.mm.plugin.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ba.r;
 import com.tencent.mm.kernel.api.bucket.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class a
-  extends q
+  extends com.tencent.mm.model.t
   implements b
 {
-  private static a kVe;
+  private static a obM;
   
   private a()
   {
-    super(r.class);
+    super(com.tencent.mm.bc.t.class);
   }
   
-  public static String YR()
+  public static String aqd()
   {
-    AppMethodBeat.i(79091);
+    AppMethodBeat.i(151486);
     Object localObject = new StringBuilder();
-    g.RM();
-    localObject = g.RL().eHR + "package/";
-    AppMethodBeat.o(79091);
+    g.afC();
+    localObject = g.afB().gcW + "package/";
+    AppMethodBeat.o(151486);
     return localObject;
   }
   
-  public static a bjc()
+  public static a bQg()
   {
     try
     {
-      AppMethodBeat.i(79089);
-      if (kVe == null) {
-        kVe = new a();
+      AppMethodBeat.i(151484);
+      if (obM == null) {
+        obM = new a();
       }
-      a locala = kVe;
-      AppMethodBeat.o(79089);
+      a locala = obM;
+      AppMethodBeat.o(151484);
       return locala;
     }
     finally {}
   }
   
-  public final List<String> RR()
+  public final List<String> afI()
   {
-    AppMethodBeat.i(79090);
+    AppMethodBeat.i(151485);
     LinkedList localLinkedList = new LinkedList();
     Collections.addAll(localLinkedList, new String[] { "package/" });
-    AppMethodBeat.o(79090);
+    AppMethodBeat.o(151485);
     return localLinkedList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.h.a
  * JD-Core Version:    0.7.0.1
  */

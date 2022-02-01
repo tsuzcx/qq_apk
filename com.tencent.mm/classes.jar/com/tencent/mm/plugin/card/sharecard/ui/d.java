@@ -10,41 +10,32 @@ import java.util.ArrayList;
 public final class d
   implements a
 {
-  private c krn;
+  private c nwG;
   
   public d(c paramc)
   {
-    this.krn = paramc;
-  }
-  
-  public final void aaK()
-  {
-    AppMethodBeat.i(88148);
-    if (this.krn != null) {
-      this.krn.a(null, null);
-    }
-    AppMethodBeat.o(88148);
+    this.nwG = paramc;
   }
   
   public final void onCreate()
   {
-    AppMethodBeat.i(88146);
-    if (this.krn != null) {
-      am.bcd().add(this.krn);
+    AppMethodBeat.i(113080);
+    if (this.nwG != null) {
+      am.bIV().add(this.nwG);
     }
-    AppMethodBeat.o(88146);
+    AppMethodBeat.o(113080);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(88147);
-    if (this.krn != null)
+    AppMethodBeat.i(113081);
+    if (this.nwG != null)
     {
-      am.bcd().remove(this.krn);
-      Object localObject = this.krn;
-      ((c)localObject).krl.release();
-      ((c)localObject).krl = null;
-      ((c)localObject).bKb();
+      am.bIV().remove(this.nwG);
+      Object localObject = this.nwG;
+      ((c)localObject).nwE.release();
+      ((c)localObject).nwE = null;
+      ((c)localObject).cHX();
       int i = (int)(((c)localObject).endTime - ((c)localObject).beginTime);
       localObject = new ArrayList();
       IDKey localIDKey1 = new IDKey();
@@ -57,15 +48,24 @@ public final class d
       localIDKey2.SetValue(i);
       ((ArrayList)localObject).add(localIDKey1);
       ((ArrayList)localObject).add(localIDKey2);
-      h.qsU.b((ArrayList)localObject, true);
-      this.krn = null;
+      h.vKh.b((ArrayList)localObject, true);
+      this.nwG = null;
     }
-    AppMethodBeat.o(88147);
+    AppMethodBeat.o(113081);
+  }
+  
+  public final void onNotify()
+  {
+    AppMethodBeat.i(113082);
+    if (this.nwG != null) {
+      this.nwG.a(null, null);
+    }
+    AppMethodBeat.o(113082);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.d
  * JD-Core Version:    0.7.0.1
  */

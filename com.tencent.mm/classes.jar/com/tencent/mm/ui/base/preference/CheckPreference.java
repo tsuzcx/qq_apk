@@ -13,13 +13,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class CheckPreference
   extends Preference
 {
-  private TextView ubi;
-  private int ubj;
-  private String ubk;
-  private int ubl;
-  public boolean vxW;
-  private CheckBox zqy;
-  public int zqz;
+  private CheckBox GdZ;
+  public int Gea;
+  public boolean lG;
+  private TextView zVJ;
+  private int zVK;
+  private String zVL;
+  private int zVM;
   
   public CheckPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,58 +29,58 @@ public class CheckPreference
   public CheckPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(107141);
-    this.vxW = false;
-    this.ubj = -1;
-    this.ubk = "";
-    this.ubl = 8;
-    this.zqz = -1;
-    setLayoutResource(2130970258);
-    AppMethodBeat.o(107141);
+    AppMethodBeat.i(142518);
+    this.lG = false;
+    this.zVK = -1;
+    this.zVL = "";
+    this.zVM = 8;
+    this.Gea = -1;
+    setLayoutResource(2131494888);
+    AppMethodBeat.o(142518);
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(107143);
+    AppMethodBeat.i(142520);
     super.onBindView(paramView);
-    this.zqy = ((CheckBox)paramView.findViewById(2131820950));
-    this.zqy.setChecked(this.vxW);
-    this.ubi = ((TextView)paramView.findViewById(2131826257));
-    paramView = this.ubk;
-    int i = this.ubj;
-    this.ubj = i;
-    this.ubk = paramView;
-    if (this.ubi != null)
+    this.GdZ = ((CheckBox)paramView.findViewById(2131298255));
+    this.GdZ.setChecked(this.lG);
+    this.zVJ = ((TextView)paramView.findViewById(2131305883));
+    paramView = this.zVL;
+    int i = this.zVK;
+    this.zVK = i;
+    this.zVL = paramView;
+    if (this.zVJ != null)
     {
       if (i > 0) {
-        this.ubi.setBackgroundResource(this.ubj);
+        this.zVJ.setBackgroundResource(this.zVK);
       }
-      if (!TextUtils.isEmpty(this.ubk)) {
-        this.ubi.setText(this.ubk);
+      if (!TextUtils.isEmpty(this.zVL)) {
+        this.zVJ.setText(this.zVL);
       }
     }
-    this.ubl = this.ubl;
-    if (this.ubi != null) {
-      this.ubi.setVisibility(this.ubl);
+    this.zVM = this.zVM;
+    if (this.zVJ != null) {
+      this.zVJ.setVisibility(this.zVM);
     }
-    paramView = (LinearLayout.LayoutParams)this.zqy.getLayoutParams();
-    if (-1 != this.zqz) {
-      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.zqz, paramView.bottomMargin);
+    paramView = (LinearLayout.LayoutParams)this.GdZ.getLayoutParams();
+    if (-1 != this.Gea) {
+      paramView.setMargins(paramView.leftMargin, paramView.topMargin, this.Gea, paramView.bottomMargin);
     }
-    AppMethodBeat.o(107143);
+    AppMethodBeat.o(142520);
   }
   
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(107142);
+    AppMethodBeat.i(142519);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    AppMethodBeat.o(107142);
+    AppMethodBeat.o(142519);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.CheckPreference
  * JD-Core Version:    0.7.0.1
  */

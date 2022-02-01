@@ -4,42 +4,43 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class c
   extends MMPluginProvider.a
 {
-  private static final Map<String, Object> jLy;
+  private static final Map<String, Object> mKg;
   
   static
   {
-    AppMethodBeat.i(18121);
+    AppMethodBeat.i(22176);
     HashMap localHashMap = new HashMap();
-    jLy = localHashMap;
-    localHashMap.put("_build_info_sdk_int_", Integer.valueOf(620954624));
-    jLy.put("_build_info_sdk_name_", "android 5.3.4");
-    jLy.put("_wxapp_pay_entry_classname_", "com.tencent.mm.plugin.base.stub.WXPayEntryActivity");
-    AppMethodBeat.o(18121);
+    mKg = localHashMap;
+    localHashMap.put("_build_info_sdk_int_", Integer.valueOf(d.CpK));
+    mKg.put("_build_info_sdk_name_", "android 6.6.0");
+    mKg.put("_wxapp_pay_entry_classname_", "com.tencent.mm.plugin.base.stub.WXPayEntryActivity");
+    AppMethodBeat.o(22176);
   }
   
-  public static Cursor a(String[] paramArrayOfString1, String[] paramArrayOfString2)
+  public static Cursor b(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    AppMethodBeat.i(18120);
+    AppMethodBeat.i(22175);
     paramArrayOfString2 = paramArrayOfString2[0];
-    Object localObject = jLy.get(paramArrayOfString2);
+    Object localObject = mKg.get(paramArrayOfString2);
     if (localObject == null)
     {
-      ab.w("MicroMsg.MMPluginProviderSharedPrefImpl", "not found value for key: ".concat(String.valueOf(paramArrayOfString2)));
-      AppMethodBeat.o(18120);
+      ad.w("MicroMsg.MMPluginProviderSharedPrefImpl", "not found value for key: ".concat(String.valueOf(paramArrayOfString2)));
+      AppMethodBeat.o(22175);
       return null;
     }
     int i;
     MatrixCursor localMatrixCursor;
     if (localObject == null)
     {
-      ab.e("MicroMsg.SDK.PluginProvider.Resolver", "unresolve failed, null value");
+      ad.e("MicroMsg.SDK.PluginProvider.Resolver", "unresolve failed, null value");
       i = 0;
       localMatrixCursor = new MatrixCursor(paramArrayOfString1);
       if (localObject != null) {
@@ -50,7 +51,7 @@ public final class c
     for (paramArrayOfString1 = null;; paramArrayOfString1 = localObject.toString())
     {
       localMatrixCursor.addRow(new Object[] { Integer.valueOf(0), paramArrayOfString2, Integer.valueOf(i), paramArrayOfString1 });
-      AppMethodBeat.o(18120);
+      AppMethodBeat.o(22175);
       return localMatrixCursor;
       if ((localObject instanceof Integer))
       {
@@ -82,23 +83,23 @@ public final class c
         i = 6;
         break;
       }
-      ab.e("MicroMsg.SDK.PluginProvider.Resolver", "unresolve failed, unknown type=" + localObject.getClass().toString());
+      ad.e("MicroMsg.SDK.PluginProvider.Resolver", "unresolve failed, unknown type=" + localObject.getClass().toString());
       i = 0;
       break;
     }
   }
   
-  public final boolean dy(Context paramContext)
+  public final boolean ee(Context paramContext)
   {
-    AppMethodBeat.i(18119);
-    super.dy(paramContext);
-    AppMethodBeat.o(18119);
+    AppMethodBeat.i(22174);
+    super.ee(paramContext);
+    AppMethodBeat.o(22174);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.c
  * JD-Core Version:    0.7.0.1
  */

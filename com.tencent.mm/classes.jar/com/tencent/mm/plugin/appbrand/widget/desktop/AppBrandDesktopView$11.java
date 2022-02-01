@@ -1,35 +1,17 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
-import android.content.Context;
-import android.graphics.PointF;
-import android.support.v7.widget.ae;
-import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandDesktopView$11
-  extends ae
+  implements Runnable
 {
-  AppBrandDesktopView$11(AppBrandDesktopView paramAppBrandDesktopView, Context paramContext)
-  {
-    super(paramContext);
-  }
+  AppBrandDesktopView$11(AppBrandDesktopView paramAppBrandDesktopView) {}
   
-  public final PointF bI(int paramInt)
+  public final void run()
   {
-    AppMethodBeat.i(154871);
-    PointF localPointF = AppBrandDesktopView.k(this.jfg).bI(paramInt);
-    AppMethodBeat.o(154871);
-    return localPointF;
-  }
-  
-  public final float c(DisplayMetrics paramDisplayMetrics)
-  {
-    return 20.0F / paramDisplayMetrics.densityDpi;
-  }
-  
-  public final int iB()
-  {
-    return -1;
+    AppMethodBeat.i(49578);
+    AppBrandDesktopView.q(this.lVl);
+    AppMethodBeat.o(49578);
   }
 }
 

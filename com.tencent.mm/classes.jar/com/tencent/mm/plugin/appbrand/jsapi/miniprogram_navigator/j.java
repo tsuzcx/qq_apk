@@ -1,39 +1,121 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
-import a.l;
-import android.content.Context;
-import com.tencent.luggage.sdk.customize.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.launching.precondition.f;
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.g;
+import com.tencent.mm.plugin.appbrand.g.c;
+import com.tencent.mm.plugin.appbrand.g.d;
+import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.report.model.AdReportCgiHelper;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/miniprogram_navigator/MiniProgramNavigatorUglyLogic;", "", "()V", "loadNewRuntimeUglyMaybe", "", "from", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "to", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "navigateToStandaloneActivity", "", "plugin-appbrand-integration_release"})
 public final class j
 {
-  public static final j hTu;
-  
-  static
+  private static void a(int paramInt, String paramString1, String paramString2, String paramString3, long paramLong)
   {
-    AppMethodBeat.i(134683);
-    hTu = new j();
-    AppMethodBeat.o(134683);
+    AppMethodBeat.i(46635);
+    long l = bt.eGO();
+    String str1 = ay.iA(aj.getContext());
+    String str2 = ay.iB(aj.getContext());
+    paramString1 = paramString3 + "," + paramString2 + "," + paramString1 + "," + l + "," + paramLong + "," + paramInt + "," + baS() + "," + str1 + "," + str2 + ",,";
+    ad.v("MicroMsg.MiniProgramNavigatorAdReportHelper", "closeType:%d stayTime:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    AdReportCgiHelper.a(16004, paramString1, null);
+    AppMethodBeat.o(46635);
   }
   
-  public static final boolean a(o paramo1, o paramo2, AppBrandInitConfigWC paramAppBrandInitConfigWC)
+  public static void a(String paramString1, final String paramString2, AppBrandStatObject paramAppBrandStatObject)
   {
-    AppMethodBeat.i(134682);
-    a.f.b.j.q(paramo1, "from");
-    a.f.b.j.q(paramo2, "to");
-    a.f.b.j.q(paramAppBrandInitConfigWC, "config");
-    if ((paramo1.vY()) && (paramAppBrandInitConfigWC.vY()))
+    AppMethodBeat.i(46633);
+    if (paramAppBrandStatObject == null)
     {
-      f.ioc.a((Context)paramo1.atV(), null, paramAppBrandInitConfigWC.appId, paramAppBrandInitConfigWC.hiw, paramAppBrandInitConfigWC.gXd, paramAppBrandInitConfigWC.bDc, paramAppBrandInitConfigWC.vX(), paramAppBrandInitConfigWC.hiz, null);
-      AppMethodBeat.o(134682);
-      return true;
+      AppMethodBeat.o(46633);
+      return;
     }
-    AppMethodBeat.o(134682);
-    return false;
+    final String str = paramAppBrandStatObject.jYX;
+    if (bt.isNullOrNil(str))
+    {
+      AppMethodBeat.o(46633);
+      return;
+    }
+    g.a(paramString1, new g.c()
+    {
+      private void a(g.d paramAnonymousd, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3)
+      {
+        AppMethodBeat.i(46631);
+        j.a(paramAnonymousd, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, bt.eGO() - this.hhs);
+        this.jZq.jYX = null;
+        g.b(paramAnonymousString1, this);
+        AppMethodBeat.o(46631);
+      }
+      
+      public final void a(g.d paramAnonymousd)
+      {
+        AppMethodBeat.i(46629);
+        a(paramAnonymousd, this.val$appId, paramString2, str);
+        AppMethodBeat.o(46629);
+      }
+      
+      public final void onDestroy()
+      {
+        AppMethodBeat.i(46630);
+        a(g.Dd(this.val$appId), this.val$appId, paramString2, str);
+        AppMethodBeat.o(46630);
+      }
+    });
+    AppMethodBeat.o(46633);
+  }
+  
+  public static void b(String paramString1, String paramString2, AppBrandStatObject paramAppBrandStatObject)
+  {
+    AppMethodBeat.i(46634);
+    if (paramAppBrandStatObject == null)
+    {
+      AppMethodBeat.o(46634);
+      return;
+    }
+    if (bt.isNullOrNil(paramAppBrandStatObject.jYX))
+    {
+      AppMethodBeat.o(46634);
+      return;
+    }
+    a(4, paramString1, paramString2, paramAppBrandStatObject.jYX, 0L);
+    AppMethodBeat.o(46634);
+  }
+  
+  private static int baS()
+  {
+    AppMethodBeat.i(46636);
+    switch (ay.getNetType(aj.getContext()))
+    {
+    case 9: 
+    default: 
+      AppMethodBeat.o(46636);
+      return 6;
+    case -1: 
+      AppMethodBeat.o(46636);
+      return 255;
+    case 0: 
+      AppMethodBeat.o(46636);
+      return 1;
+    case 3: 
+    case 4: 
+      AppMethodBeat.o(46636);
+      return 4;
+    case 2: 
+    case 5: 
+    case 7: 
+      AppMethodBeat.o(46636);
+      return 2;
+    case 1: 
+    case 6: 
+    case 8: 
+      AppMethodBeat.o(46636);
+      return 3;
+    }
+    AppMethodBeat.o(46636);
+    return 5;
   }
 }
 

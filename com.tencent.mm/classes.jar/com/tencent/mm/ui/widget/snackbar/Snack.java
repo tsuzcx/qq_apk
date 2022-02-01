@@ -9,40 +9,40 @@ class Snack
   implements Parcelable
 {
   public static final Parcelable.Creator<Snack> CREATOR;
-  final String AKn;
-  final int AKo;
-  final Parcelable AKp;
-  final short AKq;
-  final int AKr;
-  final String nGF;
+  final String HLd;
+  final int HLe;
+  final Parcelable HLf;
+  final short HLg;
+  final int HLh;
+  final String ste;
   
   static
   {
-    AppMethodBeat.i(112971);
-    CREATOR = new Snack.1();
-    AppMethodBeat.o(112971);
+    AppMethodBeat.i(159699);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(159699);
   }
   
   Snack(Parcel paramParcel)
   {
-    AppMethodBeat.i(112969);
-    this.nGF = paramParcel.readString();
-    this.AKn = paramParcel.readString();
-    this.AKo = paramParcel.readInt();
-    this.AKp = paramParcel.readParcelable(paramParcel.getClass().getClassLoader());
-    this.AKq = ((short)paramParcel.readInt());
-    this.AKr = paramParcel.readInt();
-    AppMethodBeat.o(112969);
+    AppMethodBeat.i(159697);
+    this.ste = paramParcel.readString();
+    this.HLd = paramParcel.readString();
+    this.HLe = paramParcel.readInt();
+    this.HLf = paramParcel.readParcelable(paramParcel.getClass().getClassLoader());
+    this.HLg = ((short)paramParcel.readInt());
+    this.HLh = paramParcel.readInt();
+    AppMethodBeat.o(159697);
   }
   
   Snack(String paramString1, String paramString2, int paramInt1, Parcelable paramParcelable, short paramShort, int paramInt2)
   {
-    this.nGF = paramString1;
-    this.AKn = paramString2;
-    this.AKo = paramInt1;
-    this.AKp = paramParcelable;
-    this.AKq = paramShort;
-    this.AKr = paramInt2;
+    this.ste = paramString1;
+    this.HLd = paramString2;
+    this.HLe = paramInt1;
+    this.HLf = paramParcelable;
+    this.HLg = paramShort;
+    this.HLh = paramInt2;
   }
   
   public int describeContents()
@@ -52,14 +52,14 @@ class Snack
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(112970);
-    paramParcel.writeString(this.nGF);
-    paramParcel.writeString(this.AKn);
-    paramParcel.writeInt(this.AKo);
-    paramParcel.writeParcelable(this.AKp, 0);
-    paramParcel.writeInt(this.AKq);
-    paramParcel.writeInt(this.AKr);
-    AppMethodBeat.o(112970);
+    AppMethodBeat.i(159698);
+    paramParcel.writeString(this.ste);
+    paramParcel.writeString(this.HLd);
+    paramParcel.writeInt(this.HLe);
+    paramParcel.writeParcelable(this.HLf, 0);
+    paramParcel.writeInt(this.HLg);
+    paramParcel.writeInt(this.HLh);
+    AppMethodBeat.o(159698);
   }
 }
 

@@ -1,17 +1,22 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
-import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.jsapi.u;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.q;
 
 public final class ad
-  extends u<d>
+  extends a<q>
 {
-  public static final int CTRL_INDEX = 150;
-  public static final String NAME = "switchTab";
+  public static final int CTRL_INDEX = -2;
+  public static final String NAME = "showTabBar";
+  
+  public final boolean aXA()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.l.ad
  * JD-Core Version:    0.7.0.1
  */

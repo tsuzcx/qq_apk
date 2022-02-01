@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v7.app.ActionBar;
 import android.text.ClipboardManager;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
@@ -17,439 +19,670 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.g.a.me;
+import com.tencent.mm.g.c.du;
+import com.tencent.mm.model.az;
 import com.tencent.mm.modelvoice.o;
-import com.tencent.mm.modelvoice.q;
 import com.tencent.mm.modelvoice.r;
-import com.tencent.mm.modelvoice.s;
 import com.tencent.mm.modelvoice.w;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.protocal.protobuf.bqi;
-import com.tencent.mm.protocal.protobuf.cox;
-import com.tencent.mm.protocal.protobuf.cri;
+import com.tencent.mm.protocal.protobuf.cfh;
+import com.tencent.mm.protocal.protobuf.did;
+import com.tencent.mm.protocal.protobuf.dld;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.sdk.platformtools.ap;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.cc;
+import com.tencent.mm.sdk.platformtools.av;
+import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.storage.cd;
+import com.tencent.mm.storage.ce;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h.c;
 
 public class VoiceTransTextUI
   extends MMActivity
-  implements View.OnClickListener, f
+  implements View.OnClickListener, g
 {
+  private int Ao;
   private final String TAG;
-  private long eaY;
-  private ScrollView hLr;
-  private int ixT;
-  private bi kEz;
-  private View ldP;
-  private ak mHandler;
+  private long fll;
+  private View iIW;
+  private ScrollView jPx;
+  private int ldE;
+  private ap mHandler;
   private int mTouchSlop;
-  private Button mkS;
-  private long pSw;
-  private cc sVM;
-  private a sVT;
-  private c sVU;
-  private b sVV;
-  private com.tencent.mm.modelvoice.b sVW;
-  private volatile boolean sVY;
-  private boolean sVZ;
-  private ap sWa;
-  private int tW;
-  private View.OnLongClickListener taA;
-  private View tam;
-  private View tan;
-  private LinearLayout tao;
-  private TextView tap;
-  private int taq;
-  private boolean tar;
-  private r tas;
-  private com.tencent.mm.sdk.b.c tat;
-  private boolean tau;
-  private boolean tav;
-  private int taw;
-  private View.OnTouchListener tax;
-  private View.OnClickListener tay;
-  private ClipboardManager taz;
+  private bl nLz;
+  private Button pRD;
+  private long uUr;
+  private boolean vQQ;
+  private a yBD;
+  private c yBE;
+  private b yBF;
+  private volatile boolean yBI;
+  private boolean yBJ;
+  private av yBK;
+  private cd yBw;
+  private View yGJ;
+  private View yGK;
+  private LinearLayout yGL;
+  private TextView yGM;
+  private int yGN;
+  private boolean yGO;
+  private r yGP;
+  private com.tencent.mm.sdk.b.c yGQ;
+  private boolean yGR;
+  private int yGS;
+  private View.OnTouchListener yGT;
+  private View.OnClickListener yGU;
+  private ClipboardManager yGV;
+  private View.OnLongClickListener yGW;
   
   public VoiceTransTextUI()
   {
-    AppMethodBeat.i(25609);
+    AppMethodBeat.i(29298);
     this.TAG = "MicroMsg.VoiceTransTextUI";
-    this.ldP = null;
-    this.tam = null;
-    this.tan = null;
-    this.tao = null;
-    this.tap = null;
-    this.mkS = null;
-    this.hLr = null;
-    this.sVY = false;
-    this.taq = 6;
-    this.sVZ = false;
-    this.tar = false;
-    this.tau = false;
-    this.tav = false;
-    this.pSw = 0L;
-    this.tay = new VoiceTransTextUI.1(this);
-    this.taA = new VoiceTransTextUI.2(this);
-    this.mHandler = new VoiceTransTextUI.6(this);
-    AppMethodBeat.o(25609);
+    this.iIW = null;
+    this.yGJ = null;
+    this.yGK = null;
+    this.yGL = null;
+    this.yGM = null;
+    this.pRD = null;
+    this.jPx = null;
+    this.yBI = false;
+    this.yGN = 6;
+    this.yBJ = false;
+    this.yGO = false;
+    this.vQQ = false;
+    this.yGR = false;
+    this.uUr = 0L;
+    this.yGU = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(29281);
+        VoiceTransTextUI.this.finish();
+        AppMethodBeat.o(29281);
+      }
+    };
+    this.yGW = new View.OnLongClickListener()
+    {
+      public final boolean onLongClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(29283);
+        ad.d("MicroMsg.VoiceTransTextUI", "onLongClick");
+        paramAnonymousView = VoiceTransTextUI.this;
+        String str = VoiceTransTextUI.this.getString(2131755701);
+        h.c local1 = new h.c()
+        {
+          public final void kM(int paramAnonymous2Int)
+          {
+            AppMethodBeat.i(29282);
+            if ((paramAnonymous2Int == 0) && (VoiceTransTextUI.a(VoiceTransTextUI.this) != null) && (VoiceTransTextUI.b(VoiceTransTextUI.this) != null)) {
+              VoiceTransTextUI.a(VoiceTransTextUI.this).setText(VoiceTransTextUI.b(VoiceTransTextUI.this).getText());
+            }
+            AppMethodBeat.o(29282);
+          }
+        };
+        com.tencent.mm.ui.base.h.a(paramAnonymousView, "", new String[] { str }, "", local1);
+        AppMethodBeat.o(29283);
+        return false;
+      }
+    };
+    this.mHandler = new ap()
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(29288);
+        int i = paramAnonymousMessage.what;
+        if (i == 1)
+        {
+          VoiceTransTextUI.b(VoiceTransTextUI.this, true);
+          AppMethodBeat.o(29288);
+          return;
+        }
+        if (i == 2) {
+          VoiceTransTextUI.b(VoiceTransTextUI.this, false);
+        }
+        AppMethodBeat.o(29288);
+      }
+    };
+    AppMethodBeat.o(29298);
   }
   
-  private long HA()
+  private long SG()
   {
-    if (this.tas == null) {
+    if (this.yGP == null) {
       return -1L;
     }
-    return this.tas.cFn;
+    return this.yGP.drA;
   }
   
-  private void a(VoiceTransTextUI.a parama)
+  private void a(a parama)
   {
-    AppMethodBeat.i(25612);
-    cHg();
-    switch (9.taF[parama.ordinal()])
+    AppMethodBeat.i(29301);
+    dMB();
+    switch (9.yHb[parama.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(25612);
+      AppMethodBeat.o(29301);
       return;
-      ab.i("MicroMsg.VoiceTransTextUI", "net check");
-      if (HA() > 0L) {
-        ab.i("MicroMsg.VoiceTransTextUI", "has msg svr id: %d", new Object[] { Long.valueOf(HA()) });
+      ad.i("MicroMsg.VoiceTransTextUI", "net check");
+      if (SG() > 0L) {
+        ad.i("MicroMsg.VoiceTransTextUI", "has msg svr id: %d", new Object[] { Long.valueOf(SG()) });
       }
-      for (this.sVT = new a(cHh(), cHi(), cHj().getFormat(), HA(), getFileName());; this.sVT = new a(cHh(), cHi(), getFileName()))
+      for (this.yBD = new a(dMC(), dMD(), dMA(), SG(), getFileName());; this.yBD = new a(dMC(), dMD(), getFileName()))
       {
-        aw.Rc().a(this.sVT, 0);
-        aw.Rc().a(this.sVT.getType(), this);
-        if (this.tat != null) {
+        az.aeS().a(this.yBD, 0);
+        az.aeS().a(this.yBD.getType(), this);
+        if (this.yGQ != null) {
           break;
         }
-        cHk();
-        AppMethodBeat.o(25612);
+        dME();
+        AppMethodBeat.o(29301);
         return;
-        ab.i("MicroMsg.VoiceTransTextUI", "not existex msg svr id: %d", new Object[] { Long.valueOf(HA()) });
+        ad.i("MicroMsg.VoiceTransTextUI", "not existex msg svr id: %d", new Object[] { Long.valueOf(SG()) });
       }
-      ab.i("MicroMsg.VoiceTransTextUI", "net upload");
-      if (this.sVT == null)
+      ad.i("MicroMsg.VoiceTransTextUI", "net upload");
+      if (this.yBD == null)
       {
-        ab.d("MicroMsg.VoiceTransTextUI", "request upload must after check!");
-        AppMethodBeat.o(25612);
+        ad.e("MicroMsg.VoiceTransTextUI", "request upload must after check!");
+        AppMethodBeat.o(29301);
         return;
       }
-      if (cHj() == null)
+      if (dMA() == -1)
       {
-        ab.d("MicroMsg.VoiceTransTextUI", "can't get FileOperator!");
-        AppMethodBeat.o(25612);
+        ad.e("MicroMsg.VoiceTransTextUI", "can't get format!");
+        AppMethodBeat.o(29301);
         return;
       }
-      this.sVU = new c(cHh(), this.sVT.tai, cHj().getFormat(), getFileName());
-      aw.Rc().a(this.sVU, 0);
-      aw.Rc().a(this.sVU.getType(), this);
-      AppMethodBeat.o(25612);
+      this.yBE = new c(dMC(), this.yBD.yGF, dMA(), getFileName());
+      az.aeS().a(this.yBE, 0);
+      az.aeS().a(this.yBE.getType(), this);
+      AppMethodBeat.o(29301);
       return;
-      ab.i("MicroMsg.VoiceTransTextUI", "net upload more");
-      if (this.sVU == null)
+      ad.i("MicroMsg.VoiceTransTextUI", "net upload more");
+      if (this.yBE == null)
       {
-        ab.d("MicroMsg.VoiceTransTextUI", "upload more need has upload netScene!");
-        AppMethodBeat.o(25612);
+        ad.d("MicroMsg.VoiceTransTextUI", "upload more need has upload netScene!");
+        AppMethodBeat.o(29301);
         return;
       }
-      this.sVU = new c(this.sVU);
-      aw.Rc().a(this.sVU, 0);
-      aw.Rc().a(this.sVU.getType(), this);
-      AppMethodBeat.o(25612);
+      this.yBE = new c(this.yBE);
+      az.aeS().a(this.yBE, 0);
+      az.aeS().a(this.yBE.getType(), this);
+      AppMethodBeat.o(29301);
       return;
-      this.tar = false;
-      if (this.sVY)
+      this.yGO = false;
+      if (this.yBI)
       {
-        ab.i("MicroMsg.VoiceTransTextUI", "pulling so pass");
-        AppMethodBeat.o(25612);
+        ad.i("MicroMsg.VoiceTransTextUI", "pulling so pass");
+        AppMethodBeat.o(29301);
         return;
       }
-      ab.i("MicroMsg.VoiceTransTextUI", "net get");
-      if (this.sVT == null)
+      ad.i("MicroMsg.VoiceTransTextUI", "net get");
+      if (this.yBD == null)
       {
-        ab.d("MicroMsg.VoiceTransTextUI", "request get must after check!");
-        AppMethodBeat.o(25612);
+        ad.d("MicroMsg.VoiceTransTextUI", "request get must after check!");
+        AppMethodBeat.o(29301);
         return;
       }
-      this.sVY = true;
-      this.sVV = new b(cHh());
-      aw.Rc().a(this.sVV, 0);
-      aw.Rc().a(this.sVV.getType(), this);
+      this.yBI = true;
+      this.yBF = new b(dMC());
+      az.aeS().a(this.yBF, 0);
+      az.aeS().a(this.yBF.getType(), this);
     }
   }
   
   private void a(b paramb, String paramString)
   {
-    AppMethodBeat.i(25613);
-    switch (9.taG[paramb.ordinal()])
+    AppMethodBeat.i(29302);
+    switch (9.yHc[paramb.ordinal()])
     {
     }
     for (;;)
     {
-      if ((paramb != b.taM) && (paramb != b.taO)) {
+      if ((paramb != b.yHi) && (paramb != b.yHk)) {
         break label239;
       }
-      this.hLr.setOnTouchListener(this.tax);
-      this.ldP.setOnClickListener(this.tay);
-      AppMethodBeat.o(25613);
+      this.jPx.setOnTouchListener(this.yGT);
+      this.iIW.setOnClickListener(this.yGU);
+      AppMethodBeat.o(29302);
       return;
-      if (bo.isNullOrNil(paramString))
+      if (bt.isNullOrNil(paramString))
       {
-        paramb = b.taO;
+        paramb = b.yHk;
         paramString = null;
         break;
       }
-      this.tao.setVisibility(0);
-      this.tam.setVisibility(8);
-      this.mkS.setVisibility(4);
-      this.tan.setVisibility(8);
-      this.tap.setText(paramString);
-      mx(true);
+      this.yGL.setVisibility(0);
+      this.yGJ.setVisibility(8);
+      this.pRD.setVisibility(4);
+      this.yGK.setVisibility(8);
+      this.yGM.setText(paramString);
+      rb(true);
       continue;
-      this.tao.setVisibility(0);
-      this.tam.setVisibility(0);
-      this.mkS.setVisibility(0);
+      this.yGL.setVisibility(0);
+      this.yGJ.setVisibility(0);
+      this.pRD.setVisibility(0);
       if (paramString != null)
       {
-        this.tap.setText(paramString);
-        mx(false);
+        this.yGM.setText(paramString);
+        rb(false);
         continue;
-        this.tao.setVisibility(8);
-        this.tam.setVisibility(8);
-        this.mkS.setHeight(0);
-        this.mkS.setVisibility(8);
-        this.tan.setVisibility(0);
+        this.yGL.setVisibility(8);
+        this.yGJ.setVisibility(8);
+        this.pRD.setHeight(0);
+        this.pRD.setVisibility(8);
+        this.yGK.setVisibility(0);
       }
     }
     label239:
-    this.hLr.setOnTouchListener(null);
-    this.ldP.setOnClickListener(null);
-    AppMethodBeat.o(25613);
+    this.jPx.setOnTouchListener(null);
+    this.iIW.setOnClickListener(null);
+    AppMethodBeat.o(29302);
   }
   
-  private cc adO(String paramString)
+  private cd asi(String paramString)
   {
-    AppMethodBeat.i(25616);
-    cc localcc = new cc();
-    localcc.field_msgId = this.eaY;
-    localcc.asH(cHh());
-    localcc.field_content = paramString;
-    AppMethodBeat.o(25616);
-    return localcc;
+    AppMethodBeat.i(29305);
+    cd localcd = new cd();
+    localcd.field_msgId = this.fll;
+    localcd.aJm(dMC());
+    localcd.field_content = paramString;
+    AppMethodBeat.o(29305);
+    return localcd;
   }
   
-  private void adY(String paramString)
+  private void asr(String paramString)
   {
-    AppMethodBeat.i(25620);
-    this.sVZ = true;
-    if (!bo.isNullOrNil(paramString)) {
-      o.amt().a(adO(paramString));
+    AppMethodBeat.i(29309);
+    this.yBJ = true;
+    if (!bt.isNullOrNil(paramString)) {
+      o.aDz().a(asi(paramString));
     }
-    a(b.taM, paramString);
-    AppMethodBeat.o(25620);
+    a(b.yHi, paramString);
+    AppMethodBeat.o(29309);
   }
   
-  private void cHg()
+  /* Error */
+  private int dMA()
   {
-    AppMethodBeat.i(25614);
-    ab.d("MicroMsg.VoiceTransTextUI", "cancel all net");
-    if (this.sVT != null)
-    {
-      aw.Rc().a(this.sVT);
-      aw.Rc().b(this.sVT.getType(), this);
-    }
-    if (this.sVU != null)
-    {
-      aw.Rc().a(this.sVU);
-      aw.Rc().b(this.sVU.getType(), this);
-    }
-    if (this.sVV != null)
-    {
-      aw.Rc().a(this.sVV);
-      aw.Rc().b(this.sVV.getType(), this);
-    }
-    AppMethodBeat.o(25614);
+    // Byte code:
+    //   0: iconst_m1
+    //   1: istore_1
+    //   2: ldc_w 395
+    //   5: invokestatic 101	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aconst_null
+    //   9: astore 5
+    //   11: aconst_null
+    //   12: astore 6
+    //   14: aconst_null
+    //   15: astore_2
+    //   16: aload 5
+    //   18: astore 4
+    //   20: aload 6
+    //   22: astore_3
+    //   23: aload_0
+    //   24: getfield 152	com/tencent/mm/plugin/subapp/ui/voicetranstext/VoiceTransTextUI:yGP	Lcom/tencent/mm/modelvoice/r;
+    //   27: ifnull +55 -> 82
+    //   30: aload 5
+    //   32: astore 4
+    //   34: aload 6
+    //   36: astore_3
+    //   37: aload_0
+    //   38: getfield 152	com/tencent/mm/plugin/subapp/ui/voicetranstext/VoiceTransTextUI:yGP	Lcom/tencent/mm/modelvoice/r;
+    //   41: getfield 398	com/tencent/mm/modelvoice/r:fileName	Ljava/lang/String;
+    //   44: invokestatic 404	com/tencent/mm/modelvoice/s:Ax	(Ljava/lang/String;)Lcom/tencent/mm/modelvoice/b;
+    //   47: astore_2
+    //   48: aload_2
+    //   49: ifnull +15 -> 64
+    //   52: aload_2
+    //   53: astore 4
+    //   55: aload_2
+    //   56: astore_3
+    //   57: aload_2
+    //   58: invokeinterface 409 1 0
+    //   63: istore_1
+    //   64: aload_2
+    //   65: ifnull +9 -> 74
+    //   68: aload_2
+    //   69: invokeinterface 412 1 0
+    //   74: ldc_w 395
+    //   77: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: iload_1
+    //   81: ireturn
+    //   82: aload 5
+    //   84: astore 4
+    //   86: aload 6
+    //   88: astore_3
+    //   89: aload_0
+    //   90: getfield 414	com/tencent/mm/plugin/subapp/ui/voicetranstext/VoiceTransTextUI:nLz	Lcom/tencent/mm/storage/bl;
+    //   93: ifnull +24 -> 117
+    //   96: aload 5
+    //   98: astore 4
+    //   100: aload 6
+    //   102: astore_3
+    //   103: aload_0
+    //   104: getfield 414	com/tencent/mm/plugin/subapp/ui/voicetranstext/VoiceTransTextUI:nLz	Lcom/tencent/mm/storage/bl;
+    //   107: getfield 419	com/tencent/mm/g/c/du:field_imgPath	Ljava/lang/String;
+    //   110: invokestatic 404	com/tencent/mm/modelvoice/s:Ax	(Ljava/lang/String;)Lcom/tencent/mm/modelvoice/b;
+    //   113: astore_2
+    //   114: goto -66 -> 48
+    //   117: aload 5
+    //   119: astore 4
+    //   121: aload 6
+    //   123: astore_3
+    //   124: ldc 103
+    //   126: ldc_w 421
+    //   129: invokestatic 274	com/tencent/mm/sdk/platformtools/ad:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   132: goto -84 -> 48
+    //   135: astore_2
+    //   136: aload 4
+    //   138: astore_3
+    //   139: ldc 103
+    //   141: aload_2
+    //   142: ldc_w 423
+    //   145: iconst_0
+    //   146: anewarray 190	java/lang/Object
+    //   149: invokestatic 427	com/tencent/mm/sdk/platformtools/ad:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   152: aload 4
+    //   154: ifnull +10 -> 164
+    //   157: aload 4
+    //   159: invokeinterface 412 1 0
+    //   164: ldc_w 395
+    //   167: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   170: iconst_m1
+    //   171: ireturn
+    //   172: astore_2
+    //   173: aload_3
+    //   174: ifnull +9 -> 183
+    //   177: aload_3
+    //   178: invokeinterface 412 1 0
+    //   183: ldc_w 395
+    //   186: invokestatic 147	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   189: aload_2
+    //   190: athrow
+    //   191: astore_2
+    //   192: goto -118 -> 74
+    //   195: astore_2
+    //   196: goto -32 -> 164
+    //   199: astore_3
+    //   200: goto -17 -> 183
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	203	0	this	VoiceTransTextUI
+    //   1	80	1	i	int
+    //   15	99	2	localb	com.tencent.mm.modelvoice.b
+    //   135	7	2	localThrowable1	java.lang.Throwable
+    //   172	18	2	localObject1	Object
+    //   191	1	2	localThrowable2	java.lang.Throwable
+    //   195	1	2	localThrowable3	java.lang.Throwable
+    //   22	156	3	localObject2	Object
+    //   199	1	3	localThrowable4	java.lang.Throwable
+    //   18	140	4	localObject3	Object
+    //   9	109	5	localObject4	Object
+    //   12	110	6	localObject5	Object
+    // Exception table:
+    //   from	to	target	type
+    //   23	30	135	java/lang/Throwable
+    //   37	48	135	java/lang/Throwable
+    //   57	64	135	java/lang/Throwable
+    //   89	96	135	java/lang/Throwable
+    //   103	114	135	java/lang/Throwable
+    //   124	132	135	java/lang/Throwable
+    //   23	30	172	finally
+    //   37	48	172	finally
+    //   57	64	172	finally
+    //   89	96	172	finally
+    //   103	114	172	finally
+    //   124	132	172	finally
+    //   139	152	172	finally
+    //   68	74	191	java/lang/Throwable
+    //   157	164	195	java/lang/Throwable
+    //   177	183	199	java/lang/Throwable
   }
   
-  private String cHh()
+  private void dMB()
   {
-    AppMethodBeat.i(25615);
-    if (this.tas != null)
+    AppMethodBeat.i(29303);
+    ad.d("MicroMsg.VoiceTransTextUI", "cancel all net");
+    if (this.yBD != null)
     {
-      str = this.tas.clientId;
-      AppMethodBeat.o(25615);
+      az.aeS().a(this.yBD);
+      az.aeS().b(this.yBD.getType(), this);
+    }
+    if (this.yBE != null)
+    {
+      az.aeS().a(this.yBE);
+      az.aeS().b(this.yBE.getType(), this);
+    }
+    if (this.yBF != null)
+    {
+      az.aeS().a(this.yBF);
+      az.aeS().b(this.yBF.getType(), this);
+    }
+    AppMethodBeat.o(29303);
+  }
+  
+  private String dMC()
+  {
+    AppMethodBeat.i(29304);
+    if (this.yGP != null)
+    {
+      str = this.yGP.clientId;
+      AppMethodBeat.o(29304);
       return str;
     }
-    String str = this.kEz.field_talker + this.kEz.field_msgId + "T" + this.kEz.field_createTime;
-    AppMethodBeat.o(25615);
+    String str = this.nLz.field_talker + this.nLz.field_msgId + "T" + this.nLz.field_createTime;
+    AppMethodBeat.o(29304);
     return str;
   }
   
-  private int cHi()
+  private int dMD()
   {
-    AppMethodBeat.i(25617);
-    if (this.tas != null)
+    AppMethodBeat.i(29306);
+    if (this.yGP != null)
     {
-      i = this.tas.fsd;
-      AppMethodBeat.o(25617);
+      i = this.yGP.gTY;
+      AppMethodBeat.o(29306);
       return i;
     }
-    int i = q.vh(this.kEz.field_imgPath);
-    AppMethodBeat.o(25617);
+    int i = com.tencent.mm.modelvoice.q.zS(this.nLz.field_imgPath);
+    AppMethodBeat.o(29306);
     return i;
   }
   
-  private com.tencent.mm.modelvoice.b cHj()
+  private void dME()
   {
-    AppMethodBeat.i(25618);
-    if (this.sVW == null)
-    {
-      if (this.tas == null) {
-        break label47;
-      }
-      this.sVW = s.vK(this.tas.fileName);
+    AppMethodBeat.i(29311);
+    if (this.yGQ == null) {
+      this.yGQ = new com.tencent.mm.sdk.b.c() {};
     }
-    for (;;)
-    {
-      com.tencent.mm.modelvoice.b localb = this.sVW;
-      AppMethodBeat.o(25618);
-      return localb;
-      label47:
-      if (this.kEz != null) {
-        this.sVW = s.vK(this.kEz.field_imgPath);
-      } else {
-        ab.d("MicroMsg.VoiceTransTextUI", "error why get fileOperator, already has transContent. ");
-      }
-    }
-  }
-  
-  private void cHk()
-  {
-    AppMethodBeat.i(25622);
-    if (this.tat == null) {
-      this.tat = new VoiceTransTextUI.5(this);
-    }
-    com.tencent.mm.sdk.b.a.ymk.c(this.tat);
-    AppMethodBeat.o(25622);
+    com.tencent.mm.sdk.b.a.ESL.c(this.yGQ);
+    AppMethodBeat.o(29311);
   }
   
   private String getFileName()
   {
-    if (this.tas != null) {
-      return this.tas.fileName;
+    if (this.yGP != null) {
+      return this.yGP.fileName;
     }
-    return this.kEz.field_imgPath;
+    return this.nLz.field_imgPath;
   }
   
-  private void mx(boolean paramBoolean)
+  private void rb(final boolean paramBoolean)
   {
-    AppMethodBeat.i(25624);
-    if ((this.hLr == null) || (this.tao == null))
+    AppMethodBeat.i(29313);
+    if ((this.jPx == null) || (this.yGL == null))
     {
-      AppMethodBeat.o(25624);
+      AppMethodBeat.o(29313);
       return;
     }
-    this.mHandler.postDelayed(new VoiceTransTextUI.7(this, paramBoolean), 5L);
-    AppMethodBeat.o(25624);
+    this.mHandler.postDelayed(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(29289);
+        if (VoiceTransTextUI.r(VoiceTransTextUI.this).getMeasuredHeight() >= VoiceTransTextUI.s(VoiceTransTextUI.this).getMeasuredHeight())
+        {
+          VoiceTransTextUI.r(VoiceTransTextUI.this).fullScroll(130);
+          int i = VoiceTransTextUI.r(VoiceTransTextUI.this).getScrollY();
+          VoiceTransTextUI.c(VoiceTransTextUI.this, VoiceTransTextUI.r(VoiceTransTextUI.this).getPaddingTop());
+          VoiceTransTextUI.c(VoiceTransTextUI.this, VoiceTransTextUI.t(VoiceTransTextUI.this) - i);
+          if (!paramBoolean)
+          {
+            if (VoiceTransTextUI.t(VoiceTransTextUI.this) > 0)
+            {
+              VoiceTransTextUI.r(VoiceTransTextUI.this).setPadding(0, VoiceTransTextUI.t(VoiceTransTextUI.this), 0, 0);
+              AppMethodBeat.o(29289);
+            }
+          }
+          else
+          {
+            VoiceTransTextUI.r(VoiceTransTextUI.this).setPadding(0, 0, 0, 0);
+            VoiceTransTextUI.u(VoiceTransTextUI.this).setVisibility(8);
+            VoiceTransTextUI.u(VoiceTransTextUI.this).setHeight(0);
+          }
+        }
+        AppMethodBeat.o(29289);
+      }
+    }, 5L);
+    AppMethodBeat.o(29313);
   }
   
   public int getLayoutId()
   {
-    return 2130971106;
+    return 2131495876;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(25611);
-    setMMTitle(2131304602);
-    this.mkS.setOnClickListener(this);
-    if ((this.sVM != null) && (!bo.isNullOrNil(this.sVM.field_content)))
+    AppMethodBeat.i(29300);
+    setMMTitle(2131764778);
+    this.pRD.setOnClickListener(this);
+    if ((this.yBw != null) && (!bt.isNullOrNil(this.yBw.field_content)))
     {
-      a(b.taM, this.sVM.field_content);
-      if ((this.hLr != null) && (this.tao != null)) {}
+      a(b.yHi, this.yBw.field_content);
+      if ((this.jPx != null) && (this.yGL != null)) {}
     }
     for (int i = 1;; i = 0)
     {
       if (i == 0) {
         break label109;
       }
-      AppMethodBeat.o(25611);
+      AppMethodBeat.o(29300);
       return;
-      this.mHandler.postDelayed(new VoiceTransTextUI.8(this), 5L);
+      this.mHandler.postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(29290);
+          VoiceTransTextUI.r(VoiceTransTextUI.this).setPadding(0, 0, 0, 0);
+          VoiceTransTextUI.s(VoiceTransTextUI.this).setGravity(17);
+          AppMethodBeat.o(29290);
+        }
+      }, 5L);
       break;
     }
     label109:
-    a(b.taN, null);
-    a(VoiceTransTextUI.a.taH);
-    AppMethodBeat.o(25611);
+    a(b.yHj, null);
+    a(a.yHd);
+    AppMethodBeat.o(29300);
   }
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(25623);
+    AppMethodBeat.i(29312);
     finish();
-    AppMethodBeat.o(25623);
+    AppMethodBeat.o(29312);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     Cursor localCursor = null;
-    AppMethodBeat.i(25610);
+    AppMethodBeat.i(29299);
     super.onCreate(paramBundle);
     this.mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.taz = ((ClipboardManager)ah.getContext().getSystemService("clipboard"));
-    this.ldP = findViewById(2131828807);
-    this.tam = findViewById(2131828812);
-    this.tan = findViewById(2131828814);
-    this.tap = ((TextView)findViewById(2131828811));
-    this.mkS = ((Button)findViewById(2131828809));
-    this.tao = ((LinearLayout)findViewById(2131828808));
-    this.hLr = ((ScrollView)findViewById(2131822700));
-    this.tax = new VoiceTransTextUI.3(this);
-    this.tap.setOnLongClickListener(this.taA);
-    this.tap.setOnClickListener(this.tay);
-    this.eaY = getIntent().getExtras().getLong("voice_trans_text_msg_id", -1L);
+    this.yGV = ((ClipboardManager)aj.getContext().getSystemService("clipboard"));
+    this.iIW = findViewById(2131306545);
+    this.yGJ = findViewById(2131306536);
+    this.yGK = findViewById(2131306542);
+    this.yGM = ((TextView)findViewById(2131306540));
+    this.pRD = ((Button)findViewById(2131306538));
+    this.yGL = ((LinearLayout)findViewById(2131306541));
+    this.jPx = ((ScrollView)findViewById(2131300328));
+    this.yGT = new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(29284);
+        switch (paramAnonymousMotionEvent.getAction())
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(29284);
+          return false;
+          VoiceTransTextUI.c(VoiceTransTextUI.this);
+          VoiceTransTextUI.a(VoiceTransTextUI.this, paramAnonymousView.getScrollY());
+          VoiceTransTextUI.b(VoiceTransTextUI.this, VoiceTransTextUI.d(VoiceTransTextUI.this));
+          VoiceTransTextUI.e(VoiceTransTextUI.this).removeMessages(0);
+          if (VoiceTransTextUI.f(VoiceTransTextUI.this))
+          {
+            VoiceTransTextUI.g(VoiceTransTextUI.this);
+            VoiceTransTextUI.a(VoiceTransTextUI.this, true);
+            continue;
+            if (Math.abs(VoiceTransTextUI.h(VoiceTransTextUI.this) - paramAnonymousView.getScrollY()) > VoiceTransTextUI.i(VoiceTransTextUI.this)) {
+              VoiceTransTextUI.e(VoiceTransTextUI.this).sendMessage(VoiceTransTextUI.e(VoiceTransTextUI.this).obtainMessage(0, paramAnonymousView));
+            }
+            if ((VoiceTransTextUI.j(VoiceTransTextUI.this) < 800L) && (Math.abs(VoiceTransTextUI.h(VoiceTransTextUI.this) - paramAnonymousView.getScrollY()) <= VoiceTransTextUI.i(VoiceTransTextUI.this)) && (!VoiceTransTextUI.k(VoiceTransTextUI.this)))
+            {
+              VoiceTransTextUI.e(VoiceTransTextUI.this).removeMessages(0);
+              VoiceTransTextUI.l(VoiceTransTextUI.this);
+              VoiceTransTextUI.this.finish();
+            }
+            VoiceTransTextUI.a(VoiceTransTextUI.this, false);
+          }
+        }
+      }
+    };
+    this.yGM.setOnLongClickListener(this.yGW);
+    this.yGM.setOnClickListener(this.yGU);
+    this.fll = getIntent().getExtras().getLong("voice_trans_text_msg_id", -1L);
     int i;
-    if (this.eaY < 0L) {
+    if (this.fll < 0L) {
       i = 0;
     }
     for (;;)
     {
       if (i == 0)
       {
-        ab.d("MicroMsg.VoiceTransTextUI", "error invalid msgId");
-        AppMethodBeat.o(25610);
+        ad.d("MicroMsg.VoiceTransTextUI", "error invalid msgId");
+        AppMethodBeat.o(29299);
         return;
-        ab.i("MicroMsg.VoiceTransTextUI", "msg Id:%d", new Object[] { Long.valueOf(this.eaY) });
-        cd localcd = o.amt();
-        long l = this.eaY;
+        ad.i("MicroMsg.VoiceTransTextUI", "msg Id:%d", new Object[] { Long.valueOf(this.fll) });
+        ce localce = o.aDz();
+        long l = this.fll;
         if (l < 0L) {
           paramBundle = localCursor;
         }
         for (;;)
         {
-          this.sVM = paramBundle;
-          if ((this.sVM == null) || (bo.isNullOrNil(this.sVM.field_content))) {
+          this.yBw = paramBundle;
+          if ((this.yBw == null) || (bt.isNullOrNil(this.yBw.field_content))) {
             break label364;
           }
-          ab.i("MicroMsg.VoiceTransTextUI", "get voiceTransText");
+          ad.i("MicroMsg.VoiceTransTextUI", "get voiceTransText");
           i = 1;
           break;
-          paramBundle = new cc();
-          localCursor = localcd.db.a("VoiceTransText", null, "msgId=?", new String[] { String.valueOf(l) }, null, null, null, 2);
+          paramBundle = new cd();
+          localCursor = localce.db.a("VoiceTransText", null, "msgId=?", new String[] { String.valueOf(l) }, null, null, null, 2);
           if (localCursor.moveToFirst()) {
             paramBundle.convertFrom(localCursor);
           }
@@ -457,23 +690,23 @@ public class VoiceTransTextUI
         }
         label364:
         paramBundle = getIntent().getExtras().getString("voice_trans_text_img_path");
-        if (bo.isNullOrNil(paramBundle))
+        if (bt.isNullOrNil(paramBundle))
         {
           i = 0;
           continue;
         }
-        this.tas = o.ams().vW(paramBundle);
-        if (this.tas != null)
+        this.yGP = o.aDy().AJ(paramBundle);
+        if (this.yGP != null)
         {
-          ab.i("MicroMsg.VoiceTransTextUI", "get voiceInfo");
+          ad.i("MicroMsg.VoiceTransTextUI", "get voiceInfo");
           i = 1;
           continue;
         }
-        aw.aaz();
-        this.kEz = com.tencent.mm.model.c.YC().kB(this.eaY);
-        if (this.kEz != null)
+        az.arV();
+        this.nLz = com.tencent.mm.model.c.apO().rm(this.fll);
+        if (this.nLz != null)
         {
-          ab.i("MicroMsg.VoiceTransTextUI", "get MsgInfo");
+          ad.i("MicroMsg.VoiceTransTextUI", "get MsgInfo");
           i = 1;
         }
       }
@@ -484,7 +717,7 @@ public class VoiceTransTextUI
           paramBundle.hide();
         }
         initView();
-        AppMethodBeat.o(25610);
+        AppMethodBeat.o(29299);
         return;
       }
       i = 0;
@@ -493,125 +726,140 @@ public class VoiceTransTextUI
   
   public void onDestroy()
   {
-    AppMethodBeat.i(25621);
-    cHg();
-    if (this.sWa != null) {
-      this.sWa.stopTimer();
+    AppMethodBeat.i(29310);
+    dMB();
+    if (this.yBK != null) {
+      this.yBK.stopTimer();
     }
-    if (this.tat != null)
+    if (this.yGQ != null)
     {
-      com.tencent.mm.sdk.b.a.ymk.d(this.tat);
-      this.tat = null;
+      com.tencent.mm.sdk.b.a.ESL.d(this.yGQ);
+      this.yGQ = null;
     }
     super.onDestroy();
-    AppMethodBeat.o(25621);
+    AppMethodBeat.o(29310);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(final int paramInt1, int paramInt2, String paramString, n paramn)
   {
     paramString = null;
     Object localObject = null;
-    AppMethodBeat.i(25619);
+    AppMethodBeat.i(29308);
     if ((paramInt1 == 0) && (paramInt2 == 0)) {}
-    switch (paramm.getType())
+    switch (paramn.getType())
     {
     default: 
-      AppMethodBeat.o(25619);
+      AppMethodBeat.o(29308);
       return;
     case 546: 
-      if (this.sVT.mState == a.taf)
+      if (this.yBD.mState == a.yGD)
       {
-        ab.i("MicroMsg.VoiceTransTextUI", "check result: done");
+        ad.i("MicroMsg.VoiceTransTextUI", "check result: done");
         paramString = localObject;
-        if (this.sVT.cHd()) {
-          paramString = this.sVT.tah.xZS;
+        if (this.yBD.dMx()) {
+          paramString = this.yBD.yGE.EAP;
         }
-        adY(paramString);
-        AppMethodBeat.o(25619);
+        asr(paramString);
+        AppMethodBeat.o(29308);
         return;
       }
-      if (this.sVT.mState == a.tae)
+      if (this.yBD.mState == a.yGC)
       {
-        if ((this.sVT.tah != null) && (bo.isNullOrNil(this.sVT.tah.xZS))) {
-          a(b.taN, this.sVT.tah.xZS);
+        if ((this.yBD.yGE != null) && (bt.isNullOrNil(this.yBD.yGE.EAP))) {
+          a(b.yHj, this.yBD.yGE.EAP);
         }
-        ab.i("MicroMsg.VoiceTransTextUI", "check result: processing");
-        a(VoiceTransTextUI.a.taK);
-        AppMethodBeat.o(25619);
+        ad.i("MicroMsg.VoiceTransTextUI", "check result: processing");
+        a(a.yHg);
+        AppMethodBeat.o(29308);
         return;
       }
-      if (this.sVT.mState == a.tad)
+      if (this.yBD.mState == a.yGB)
       {
-        ab.i("MicroMsg.VoiceTransTextUI", "check result: not exist");
-        a(VoiceTransTextUI.a.taI);
-        AppMethodBeat.o(25619);
+        ad.i("MicroMsg.VoiceTransTextUI", "check result: not exist");
+        a(a.yHe);
+        AppMethodBeat.o(29308);
         return;
       }
-      if (this.sVT.taj != null)
+      if (this.yBD.yGG != null)
       {
-        this.taq = this.sVT.taj.xEz;
-        AppMethodBeat.o(25619);
+        this.yGN = this.yBD.yGG.Ebx;
+        AppMethodBeat.o(29308);
         return;
       }
       break;
     case 547: 
-      if (this.sVU.cHf())
+      if (this.yBE.dMz())
       {
-        ab.i("MicroMsg.VoiceTransTextUI", "succeed upload");
-        a(VoiceTransTextUI.a.taK);
-        AppMethodBeat.o(25619);
+        ad.i("MicroMsg.VoiceTransTextUI", "succeed upload");
+        a(a.yHg);
+        AppMethodBeat.o(29308);
         return;
       }
-      ab.d("MicroMsg.VoiceTransTextUI", "start upload more: start:%d, len:%d", new Object[] { Integer.valueOf(this.sVU.tai.pIy), Integer.valueOf(this.sVU.tai.pIz) });
-      a(VoiceTransTextUI.a.taJ);
-      AppMethodBeat.o(25619);
+      ad.d("MicroMsg.VoiceTransTextUI", "start upload more: start:%d, len:%d", new Object[] { Integer.valueOf(this.yBE.yGF.uKR), Integer.valueOf(this.yBE.yGF.uKS) });
+      a(a.yHf);
+      AppMethodBeat.o(29308);
       return;
     case 548: 
-      this.taq = this.sVV.tal;
-      this.sVY = false;
-      if ((!this.sVV.isComplete()) && (this.sVV.cHd()))
+      this.yGN = this.yBF.yGI;
+      this.yBI = false;
+      if ((!this.yBF.isComplete()) && (this.yBF.dMx()))
       {
-        paramm = this.sVV.tah.xZS;
-        a(b.taN, paramm);
-        ab.d("MicroMsg.VoiceTransTextUI", "result valid:%s", new Object[] { this.sVV.tah.xZS });
+        paramn = this.yBF.yGE.EAP;
+        a(b.yHj, paramn);
+        ad.d("MicroMsg.VoiceTransTextUI", "result valid:%s", new Object[] { this.yBF.yGE.EAP });
       }
-      while (this.sVV.isComplete())
+      while (this.yBF.isComplete())
       {
-        ab.i("MicroMsg.VoiceTransTextUI", "succeed get");
-        if (this.sVV.cHd()) {
-          paramString = this.sVV.tah.xZS;
+        ad.i("MicroMsg.VoiceTransTextUI", "succeed get");
+        if (this.yBF.dMx()) {
+          paramString = this.yBF.yGE.EAP;
         }
-        adY(paramString);
-        AppMethodBeat.o(25619);
+        asr(paramString);
+        AppMethodBeat.o(29308);
         return;
-        if (!this.sVV.cHd()) {
-          ab.d("MicroMsg.VoiceTransTextUI", "result not valid");
+        if (!this.yBF.dMx()) {
+          ad.d("MicroMsg.VoiceTransTextUI", "result not valid");
         }
       }
-      if (this.tar)
+      if (this.yGO)
       {
-        ab.i("MicroMsg.VoiceTransTextUI", "do get now! --- Notify new result");
-        a(VoiceTransTextUI.a.taK);
-        AppMethodBeat.o(25619);
+        ad.i("MicroMsg.VoiceTransTextUI", "do get now! --- Notify new result");
+        a(a.yHg);
+        AppMethodBeat.o(29308);
         return;
       }
-      ab.i("MicroMsg.VoiceTransTextUI", "do get again after:%ds", new Object[] { Integer.valueOf(this.taq) });
-      paramInt1 = this.taq;
-      if (!this.sVZ)
+      ad.i("MicroMsg.VoiceTransTextUI", "do get again after:%ds", new Object[] { Integer.valueOf(this.yGN) });
+      paramInt1 = this.yGN;
+      if (!this.yBJ)
       {
-        if (this.sWa == null) {
-          this.sWa = new ap(new VoiceTransTextUI.4(this, paramInt1), false);
+        if (this.yBK == null) {
+          this.yBK = new av(new av.a()
+          {
+            public final boolean onTimerExpired()
+            {
+              AppMethodBeat.i(29285);
+              if (VoiceTransTextUI.m(VoiceTransTextUI.this))
+              {
+                AppMethodBeat.o(29285);
+                return false;
+              }
+              ad.d("MicroMsg.VoiceTransTextUI", "timmer get, delay:%d", new Object[] { Integer.valueOf(paramInt1) });
+              VoiceTransTextUI.a(VoiceTransTextUI.this, VoiceTransTextUI.a.yHg);
+              AppMethodBeat.o(29285);
+              return false;
+            }
+          }, false);
         }
-        paramString = this.sWa;
+        paramString = this.yBK;
         long l = paramInt1 * 1000;
-        paramString.ag(l, l);
+        paramString.av(l, l);
       }
-      AppMethodBeat.o(25619);
+      AppMethodBeat.o(29308);
       return;
-      this.sVZ = true;
-      a(b.taO, null);
+      this.yBJ = true;
+      a(b.yHk, null);
     }
-    AppMethodBeat.o(25619);
+    AppMethodBeat.o(29308);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -620,16 +868,32 @@ public class VoiceTransTextUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
+  static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(29294);
+      yHd = new a("CHECK", 0);
+      yHe = new a("UPLOAD", 1);
+      yHf = new a("UPLOAD_MORE", 2);
+      yHg = new a("GET", 3);
+      yHh = new a[] { yHd, yHe, yHf, yHg };
+      AppMethodBeat.o(29294);
+    }
+    
+    private a() {}
+  }
+  
   static enum b
   {
     static
     {
-      AppMethodBeat.i(25608);
-      taM = new b("done", 0);
-      taN = new b("loading", 1);
-      taO = new b("fail", 2);
-      taP = new b[] { taM, taN, taO };
-      AppMethodBeat.o(25608);
+      AppMethodBeat.i(29297);
+      yHi = new b("done", 0);
+      yHj = new b("loading", 1);
+      yHk = new b("fail", 2);
+      yHl = new b[] { yHi, yHj, yHk };
+      AppMethodBeat.o(29297);
     }
     
     private b() {}
@@ -637,7 +901,7 @@ public class VoiceTransTextUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.voicetranstext.VoiceTransTextUI
  * JD-Core Version:    0.7.0.1
  */

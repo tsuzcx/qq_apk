@@ -14,18 +14,18 @@ final class zzc
   
   private static Integer zza(Context paramContext, String paramString, Integer paramInteger)
   {
-    AppMethodBeat.i(89542);
+    AppMethodBeat.i(4564);
     paramContext = paramContext.getSharedPreferences("gservices-direboot-cache", 0).getString(paramString, null);
     if (paramContext != null) {
       try
       {
         int i = Integer.parseInt(paramContext);
-        AppMethodBeat.o(89542);
+        AppMethodBeat.o(4564);
         return Integer.valueOf(i);
       }
       catch (NumberFormatException paramContext) {}
     }
-    AppMethodBeat.o(89542);
+    AppMethodBeat.o(4564);
     return paramInteger;
   }
 }

@@ -26,18 +26,18 @@ class SessionEventsState
   
   public SessionEventsState(AttributionIdentifiers paramAttributionIdentifiers, String paramString)
   {
-    AppMethodBeat.i(72018);
+    AppMethodBeat.i(17454);
     this.accumulatedEvents = new ArrayList();
     this.inFlightEvents = new ArrayList();
     this.MAX_ACCUMULATED_LOG_EVENTS = 1000;
     this.attributionIdentifiers = paramAttributionIdentifiers;
     this.anonymousAppDeviceGUID = paramString;
-    AppMethodBeat.o(72018);
+    AppMethodBeat.o(17454);
   }
   
   private void populateRequest(GraphRequest paramGraphRequest, Context paramContext, int paramInt, JSONArray paramJSONArray, boolean paramBoolean)
   {
-    AppMethodBeat.i(72025);
+    AppMethodBeat.i(17461);
     try
     {
       localObject = AppEventsLoggerUtility.getJSONObjectForGraphAPICall(AppEventsLoggerUtility.GraphAPIActivityType.CUSTOM_APP_EVENTS, this.attributionIdentifiers, this.anonymousAppDeviceGUID, paramBoolean, paramContext);
@@ -69,16 +69,16 @@ class SessionEventsState
       paramGraphRequest.setTag(paramJSONArray);
     }
     paramGraphRequest.setParameters(paramContext);
-    AppMethodBeat.o(72025);
+    AppMethodBeat.o(17461);
   }
   
   public void accumulatePersistedEvents(List<AppEvent> paramList)
   {
     try
     {
-      AppMethodBeat.i(72024);
+      AppMethodBeat.i(17460);
       this.accumulatedEvents.addAll(paramList);
-      AppMethodBeat.o(72024);
+      AppMethodBeat.o(17460);
       return;
     }
     finally
@@ -94,62 +94,62 @@ class SessionEventsState
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 119
-    //   4: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: getfield 32	com/facebook/appevents/SessionEventsState:accumulatedEvents	Ljava/util/List;
-    //   11: invokeinterface 123 1 0
-    //   16: aload_0
-    //   17: getfield 34	com/facebook/appevents/SessionEventsState:inFlightEvents	Ljava/util/List;
-    //   20: invokeinterface 123 1 0
-    //   25: iadd
-    //   26: sipush 1000
-    //   29: if_icmplt +21 -> 50
-    //   32: aload_0
+    //   2: sipush 17455
+    //   5: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: getfield 31	com/facebook/appevents/SessionEventsState:accumulatedEvents	Ljava/util/List;
+    //   12: invokeinterface 119 1 0
+    //   17: aload_0
+    //   18: getfield 33	com/facebook/appevents/SessionEventsState:inFlightEvents	Ljava/util/List;
+    //   21: invokeinterface 119 1 0
+    //   26: iadd
+    //   27: sipush 1000
+    //   30: if_icmplt +22 -> 52
     //   33: aload_0
-    //   34: getfield 63	com/facebook/appevents/SessionEventsState:numSkippedEventsDueToFullBuffer	I
-    //   37: iconst_1
-    //   38: iadd
-    //   39: putfield 63	com/facebook/appevents/SessionEventsState:numSkippedEventsDueToFullBuffer	I
-    //   42: ldc 119
-    //   44: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: return
-    //   50: aload_0
-    //   51: getfield 32	com/facebook/appevents/SessionEventsState:accumulatedEvents	Ljava/util/List;
-    //   54: aload_1
-    //   55: invokeinterface 127 2 0
-    //   60: pop
-    //   61: ldc 119
-    //   63: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   66: goto -19 -> 47
-    //   69: astore_1
-    //   70: aload_0
-    //   71: monitorexit
-    //   72: aload_1
-    //   73: athrow
+    //   34: aload_0
+    //   35: getfield 61	com/facebook/appevents/SessionEventsState:numSkippedEventsDueToFullBuffer	I
+    //   38: iconst_1
+    //   39: iadd
+    //   40: putfield 61	com/facebook/appevents/SessionEventsState:numSkippedEventsDueToFullBuffer	I
+    //   43: sipush 17455
+    //   46: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   49: aload_0
+    //   50: monitorexit
+    //   51: return
+    //   52: aload_0
+    //   53: getfield 31	com/facebook/appevents/SessionEventsState:accumulatedEvents	Ljava/util/List;
+    //   56: aload_1
+    //   57: invokeinterface 123 2 0
+    //   62: pop
+    //   63: sipush 17455
+    //   66: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   69: goto -20 -> 49
+    //   72: astore_1
+    //   73: aload_0
+    //   74: monitorexit
+    //   75: aload_1
+    //   76: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	74	0	this	SessionEventsState
-    //   0	74	1	paramAppEvent	AppEvent
+    //   0	77	0	this	SessionEventsState
+    //   0	77	1	paramAppEvent	AppEvent
     // Exception table:
     //   from	to	target	type
-    //   2	47	69	finally
-    //   50	66	69	finally
+    //   2	49	72	finally
+    //   52	69	72	finally
   }
   
   public void clearInFlightAndStats(boolean paramBoolean)
   {
     try
     {
-      AppMethodBeat.i(72021);
+      AppMethodBeat.i(17457);
       if (paramBoolean) {
         this.accumulatedEvents.addAll(this.inFlightEvents);
       }
       this.inFlightEvents.clear();
       this.numSkippedEventsDueToFullBuffer = 0;
-      AppMethodBeat.o(72021);
+      AppMethodBeat.o(17457);
       return;
     }
     finally {}
@@ -159,9 +159,9 @@ class SessionEventsState
   {
     try
     {
-      AppMethodBeat.i(72020);
+      AppMethodBeat.i(17456);
       int i = this.accumulatedEvents.size();
-      AppMethodBeat.o(72020);
+      AppMethodBeat.o(17456);
       return i;
     }
     finally
@@ -175,10 +175,10 @@ class SessionEventsState
   {
     try
     {
-      AppMethodBeat.i(72023);
+      AppMethodBeat.i(17459);
       List localList = this.accumulatedEvents;
       this.accumulatedEvents = new ArrayList();
-      AppMethodBeat.o(72023);
+      AppMethodBeat.o(17459);
       return localList;
     }
     finally
@@ -190,7 +190,7 @@ class SessionEventsState
   
   public int populateRequest(GraphRequest paramGraphRequest, Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(72022);
+    AppMethodBeat.i(17458);
     JSONArray localJSONArray;
     for (;;)
     {
@@ -217,23 +217,23 @@ class SessionEventsState
       }
       finally
       {
-        AppMethodBeat.o(72022);
+        AppMethodBeat.o(17458);
       }
     }
     if (localJSONArray.length() == 0)
     {
-      AppMethodBeat.o(72022);
+      AppMethodBeat.o(17458);
       return 0;
     }
     populateRequest(paramGraphRequest, paramContext, i, localJSONArray, paramBoolean2);
     int i = localJSONArray.length();
-    AppMethodBeat.o(72022);
+    AppMethodBeat.o(17458);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.facebook.appevents.SessionEventsState
  * JD-Core Version:    0.7.0.1
  */

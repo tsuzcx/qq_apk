@@ -12,18 +12,18 @@ import java.io.PrintWriter;
 public class a
   extends i
 {
-  private final SparseArray<b> LX = new SparseArray();
+  private final SparseArray<b> NM = new SparseArray();
   
   private a(az paramaz)
   {
     super(paramaz);
-    this.OR.a("AutoManageHelper", this);
+    this.QG.a("AutoManageHelper", this);
   }
   
   public static a a(ax paramax)
   {
-    if (paramax.iY()) {}
-    for (paramax = bo.a(paramax.ja());; paramax = ba.b(paramax.iZ()))
+    if (paramax.jh()) {}
+    for (paramax = bo.a(paramax.jj());; paramax = ba.b(paramax.ji()))
     {
       a locala = (a)paramax.a("AutoManageHelper", a.class);
       if (locala == null) {
@@ -36,17 +36,17 @@ public class a
   
   public final void a(int paramInt, p paramp, s params)
   {
-    d.e(paramp, "GoogleApiClient instance cannot be null");
-    if (this.LX.indexOfKey(paramInt) < 0) {}
+    d.g(paramp, "GoogleApiClient instance cannot be null");
+    if (this.NM.indexOfKey(paramInt) < 0) {}
     for (boolean bool1 = true;; bool1 = false)
     {
       d.a(bool1, 54 + "Already managing a GoogleApiClient with id " + paramInt);
-      bool1 = this.ej;
-      boolean bool2 = this.Mk;
+      bool1 = this.hO;
+      boolean bool2 = this.NZ;
       Log.d("AutoManageHelper", 54 + "starting AutoManage for client " + paramInt + " " + bool1 + " " + bool2);
       params = new b(this, paramInt, paramp, params);
-      this.LX.put(paramInt, params);
-      if ((this.ej) && (!this.Mk))
+      this.NM.put(paramInt, params);
+      if ((this.hO) && (!this.NZ))
       {
         params = String.valueOf(paramp);
         Log.d("AutoManageHelper", String.valueOf(params).length() + 11 + "connecting " + params);
@@ -68,16 +68,16 @@ public class a
       do
       {
         return;
-        localObject = (b)this.LX.get(paramInt);
+        localObject = (b)this.NM.get(paramInt);
       } while (localObject == null);
-      b localb = (b)this.LX.get(paramInt);
-      this.LX.remove(paramInt);
+      b localb = (b)this.NM.get(paramInt);
+      this.NM.remove(paramInt);
       if (localb != null)
       {
-        localb.LZ.b(localb);
-        localb.LZ.disconnect();
+        localb.NO.b(localb);
+        localb.NO.disconnect();
       }
-      localObject = ((b)localObject).Ma;
+      localObject = ((b)localObject).NP;
     } while (localObject == null);
     ((s)localObject).a(paramConnectionResult);
   }
@@ -85,22 +85,22 @@ public class a
   public final void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
     int i = 0;
-    while (i < this.LX.size())
+    while (i < this.NM.size())
     {
-      b localb = (b)this.LX.valueAt(i);
-      paramPrintWriter.append(paramString).append("GoogleApiClient #").print(localb.LY);
+      b localb = (b)this.NM.valueAt(i);
+      paramPrintWriter.append(paramString).append("GoogleApiClient #").print(localb.NN);
       paramPrintWriter.println(":");
-      localb.LZ.dump(String.valueOf(paramString).concat("  "), paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+      localb.NO.dump(String.valueOf(paramString).concat("  "), paramFileDescriptor, paramPrintWriter, paramArrayOfString);
       i += 1;
     }
   }
   
-  protected final void hY()
+  protected final void ig()
   {
     int i = 0;
-    while (i < this.LX.size())
+    while (i < this.NM.size())
     {
-      ((b)this.LX.valueAt(i)).LZ.connect();
+      ((b)this.NM.valueAt(i)).NO.connect();
       i += 1;
     }
   }
@@ -108,15 +108,15 @@ public class a
   public final void onStart()
   {
     super.onStart();
-    boolean bool = this.ej;
-    String str = String.valueOf(this.LX);
+    boolean bool = this.hO;
+    String str = String.valueOf(this.NM);
     Log.d("AutoManageHelper", String.valueOf(str).length() + 14 + "onStart " + bool + " " + str);
-    if (!this.Mk)
+    if (!this.NZ)
     {
       int i = 0;
-      while (i < this.LX.size())
+      while (i < this.NM.size())
       {
-        ((b)this.LX.valueAt(i)).LZ.connect();
+        ((b)this.NM.valueAt(i)).NO.connect();
         i += 1;
       }
     }
@@ -126,9 +126,9 @@ public class a
   {
     super.onStop();
     int i = 0;
-    while (i < this.LX.size())
+    while (i < this.NM.size())
     {
-      ((b)this.LX.valueAt(i)).LZ.disconnect();
+      ((b)this.NM.valueAt(i)).NO.disconnect();
       i += 1;
     }
   }

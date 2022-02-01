@@ -21,15 +21,15 @@ public class IPCallPayButtonLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(22237);
+    AppMethodBeat.i(25856);
     setMeasuredDimension(getDefaultSize(0, paramInt1), getDefaultSize(0, paramInt2));
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec((int)(getMeasuredWidth() * 0.62D), 1073741824));
-    AppMethodBeat.o(22237);
+    AppMethodBeat.o(25856);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallPayButtonLayout
  * JD-Core Version:    0.7.0.1
  */

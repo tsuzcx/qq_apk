@@ -6,19 +6,19 @@ import com.tencent.mm.kernel.g;
 
 public final class b
 {
-  public static String YN()
+  public static String apZ()
   {
-    AppMethodBeat.i(111119);
+    AppMethodBeat.i(94807);
     Object localObject = new StringBuilder();
-    g.RM();
-    localObject = g.RL().eHR + "recbiz/";
-    AppMethodBeat.o(111119);
+    g.afC();
+    localObject = g.afB().gcW + "recbiz/";
+    AppMethodBeat.o(94807);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b
  * JD-Core Version:    0.7.0.1
  */

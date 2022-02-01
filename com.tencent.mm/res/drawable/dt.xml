@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:topLeftRadius="10.0dip" android:topRightRadius="10.0dip" android:bottomLeftRadius="10.0dip" android:bottomRightRadius="10.0dip" />
-    <solid android:color="#1affffff" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@raw/attach_send_stop_pressed" />
+    <item android:state_selected="true" android:drawable="@raw/attach_send_stop_pressed" />
+    <item android:drawable="@raw/attach_send_stop_normal" />
+</selector>

@@ -15,18 +15,18 @@ public class ListPlayerListenerCallback
   
   public ListPlayerListenerCallback()
   {
-    AppMethodBeat.i(104566);
+    AppMethodBeat.i(76526);
     this.mCallbacks = new CopyOnWriteArrayList();
-    AppMethodBeat.o(104566);
+    AppMethodBeat.o(76526);
   }
   
   public void add(PlayerListenerCallback paramPlayerListenerCallback)
   {
     try
     {
-      AppMethodBeat.i(104567);
+      AppMethodBeat.i(76527);
       this.mCallbacks.add(paramPlayerListenerCallback);
-      AppMethodBeat.o(104567);
+      AppMethodBeat.o(76527);
       return;
     }
     finally
@@ -40,9 +40,9 @@ public class ListPlayerListenerCallback
   {
     try
     {
-      AppMethodBeat.i(104568);
+      AppMethodBeat.i(76528);
       this.mCallbacks.addAll(paramListPlayerListenerCallback.toCollection());
-      AppMethodBeat.o(104568);
+      AppMethodBeat.o(76528);
       return;
     }
     finally
@@ -56,9 +56,9 @@ public class ListPlayerListenerCallback
   {
     try
     {
-      AppMethodBeat.i(104569);
+      AppMethodBeat.i(76529);
       this.mCallbacks.addAll(paramList);
-      AppMethodBeat.o(104569);
+      AppMethodBeat.o(76529);
       return;
     }
     finally
@@ -72,9 +72,9 @@ public class ListPlayerListenerCallback
   {
     try
     {
-      AppMethodBeat.i(104572);
+      AppMethodBeat.i(76532);
       this.mCallbacks.clear();
-      AppMethodBeat.o(104572);
+      AppMethodBeat.o(76532);
       return;
     }
     finally
@@ -86,81 +86,81 @@ public class ListPlayerListenerCallback
   
   public void onBufferingUpdate(BaseMediaPlayer paramBaseMediaPlayer, int paramInt)
   {
-    AppMethodBeat.i(104573);
+    AppMethodBeat.i(76533);
     Iterator localIterator = this.mCallbacks.iterator();
     while (localIterator.hasNext()) {
       ((PlayerListenerCallback)localIterator.next()).onBufferingUpdate(paramBaseMediaPlayer, paramInt);
     }
-    AppMethodBeat.o(104573);
+    AppMethodBeat.o(76533);
   }
   
   public void onCompletion(BaseMediaPlayer paramBaseMediaPlayer)
   {
-    AppMethodBeat.i(104574);
+    AppMethodBeat.i(76534);
     Iterator localIterator = this.mCallbacks.iterator();
     while (localIterator.hasNext()) {
       ((PlayerListenerCallback)localIterator.next()).onCompletion(paramBaseMediaPlayer);
     }
-    AppMethodBeat.o(104574);
+    AppMethodBeat.o(76534);
   }
   
   public void onError(BaseMediaPlayer paramBaseMediaPlayer, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(104576);
+    AppMethodBeat.i(76536);
     Iterator localIterator = this.mCallbacks.iterator();
     while (localIterator.hasNext()) {
       ((PlayerListenerCallback)localIterator.next()).onError(paramBaseMediaPlayer, paramInt1, paramInt2, paramInt3);
     }
-    AppMethodBeat.o(104576);
+    AppMethodBeat.o(76536);
   }
   
   public void onPrepared(BaseMediaPlayer paramBaseMediaPlayer)
   {
-    AppMethodBeat.i(104577);
+    AppMethodBeat.i(76537);
     Iterator localIterator = this.mCallbacks.iterator();
     while (localIterator.hasNext()) {
       ((PlayerListenerCallback)localIterator.next()).onPrepared(paramBaseMediaPlayer);
     }
-    AppMethodBeat.o(104577);
+    AppMethodBeat.o(76537);
   }
   
   public void onSeekComplete(BaseMediaPlayer paramBaseMediaPlayer, int paramInt)
   {
-    AppMethodBeat.i(104575);
+    AppMethodBeat.i(76535);
     Iterator localIterator = this.mCallbacks.iterator();
     while (localIterator.hasNext()) {
       ((PlayerListenerCallback)localIterator.next()).onSeekComplete(paramBaseMediaPlayer, paramInt);
     }
-    AppMethodBeat.o(104575);
+    AppMethodBeat.o(76535);
   }
   
   public void onStarted(BaseMediaPlayer paramBaseMediaPlayer)
   {
-    AppMethodBeat.i(104578);
+    AppMethodBeat.i(76538);
     Iterator localIterator = this.mCallbacks.iterator();
     while (localIterator.hasNext()) {
       ((PlayerListenerCallback)localIterator.next()).onStarted(paramBaseMediaPlayer);
     }
-    AppMethodBeat.o(104578);
+    AppMethodBeat.o(76538);
   }
   
   public void onStateChanged(BaseMediaPlayer paramBaseMediaPlayer, int paramInt)
   {
-    AppMethodBeat.i(104579);
+    AppMethodBeat.i(76539);
     Iterator localIterator = this.mCallbacks.iterator();
     while (localIterator.hasNext()) {
       ((PlayerListenerCallback)localIterator.next()).onStateChanged(paramBaseMediaPlayer, paramInt);
     }
-    AppMethodBeat.o(104579);
+    AppMethodBeat.o(76539);
   }
   
   public void remove(PlayerListenerCallback paramPlayerListenerCallback)
   {
     try
     {
-      AppMethodBeat.i(104571);
+      AppMethodBeat.i(76531);
       this.mCallbacks.remove(paramPlayerListenerCallback);
-      AppMethodBeat.o(104571);
+      AppMethodBeat.o(76531);
       return;
     }
     finally
@@ -174,10 +174,10 @@ public class ListPlayerListenerCallback
   {
     try
     {
-      AppMethodBeat.i(104570);
+      AppMethodBeat.i(76530);
       ArrayList localArrayList = new ArrayList();
       localArrayList.addAll(this.mCallbacks);
-      AppMethodBeat.o(104570);
+      AppMethodBeat.o(76530);
       return localArrayList;
     }
     finally
@@ -189,7 +189,7 @@ public class ListPlayerListenerCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.upstream.ListPlayerListenerCallback
  * JD-Core Version:    0.7.0.1
  */

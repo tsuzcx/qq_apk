@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animation-list android:oneshot="false"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:duration="80" android:drawable="@drawable/at8" />
-    <item android:duration="80" android:drawable="@drawable/at9" />
-    <item android:duration="80" android:drawable="@drawable/at_" />
-    <item android:duration="80" android:drawable="@drawable/ata" />
-    <item android:duration="80" android:drawable="@drawable/atb" />
-    <item android:duration="80" android:drawable="@drawable/atc" />
-    <item android:duration="80" android:drawable="@drawable/atd" />
-    <item android:duration="80" android:drawable="@drawable/ate" />
-    <item android:duration="80" android:drawable="@drawable/atf" />
-    <item android:duration="80" android:drawable="@drawable/atg" />
-</animation-list>
+    <item>
+        <shape android:shape="oval" android:useLevel="false">
+            <solid android:color="@color/a_j" />
+        </shape>
+    </item>
+</layer-list>

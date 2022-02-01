@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.q;
 
 public final class bm
-  extends a<z>
+  extends a<q>
 {
-  public static final int CTRL_INDEX = 66;
-  public static final String NAME = "reportSubmitForm";
+  public static final int CTRL_INDEX = 201;
+  public static final String NAME = "openUrl";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bm
  * JD-Core Version:    0.7.0.1
  */

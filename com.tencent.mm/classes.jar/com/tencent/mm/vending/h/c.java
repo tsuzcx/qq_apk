@@ -8,35 +8,35 @@ public final class c
 {
   public c()
   {
-    AppMethodBeat.i(126127);
-    a.printErrStackTrace("Vending.NoLooperScheduler", new Exception("This is not a handler thread!"), "This is not a handler thread!", new Object[0]);
-    AppMethodBeat.o(126127);
+    AppMethodBeat.i(74924);
+    a.w("Vending.NoLooperScheduler", "This is not a handler thread! %s", new Object[] { Thread.currentThread() });
+    AppMethodBeat.o(74924);
   }
   
   public final void cancel() {}
   
+  public final void f(Runnable paramRunnable, long paramLong)
+  {
+    AppMethodBeat.i(74926);
+    a.w("Vending.NoLooperScheduler", "This is not a handler thread!", new Object[0]);
+    paramRunnable.run();
+    AppMethodBeat.o(74926);
+  }
+  
   public final String getType()
   {
-    AppMethodBeat.i(126130);
+    AppMethodBeat.i(74927);
     String str = Thread.currentThread().toString();
-    AppMethodBeat.o(126130);
+    AppMethodBeat.o(74927);
     return str;
   }
   
-  public final void n(Runnable paramRunnable, long paramLong)
+  public final void v(Runnable paramRunnable)
   {
-    AppMethodBeat.i(126129);
+    AppMethodBeat.i(74925);
     a.w("Vending.NoLooperScheduler", "This is not a handler thread!", new Object[0]);
     paramRunnable.run();
-    AppMethodBeat.o(126129);
-  }
-  
-  public final void o(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(126128);
-    a.w("Vending.NoLooperScheduler", "This is not a handler thread!", new Object[0]);
-    paramRunnable.run();
-    AppMethodBeat.o(126128);
+    AppMethodBeat.o(74925);
   }
 }
 

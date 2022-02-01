@@ -5,7 +5,7 @@ public final class ap
 {
   public ap()
   {
-    this.CMD = 773;
+    this.Kik = 773;
   }
 }
 

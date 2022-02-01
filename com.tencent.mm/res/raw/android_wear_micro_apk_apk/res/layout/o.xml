@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/b" />
-    <ListView android:id="@id/au" android:background="@null" android:focusable="false" android:visibility="gone" android:scrollbars="none" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:dividerHeight="0.0dip" />
-    <include layout="@layout/b7" />
-</RelativeLayout>

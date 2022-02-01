@@ -7,6 +7,7 @@ import android.util.SparseArray;
 import com.google.android.gms.common.internal.d;
 import com.google.android.gms.common.internal.safeparcel.a;
 import com.google.android.gms.common.util.i;
+import com.google.android.gms.common.util.j;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,24 +20,24 @@ public class zzacz
   extends zzact
 {
   public static final Parcelable.Creator<zzacz> CREATOR = new cc();
-  private final int Hc;
-  private final zzacw PQ;
-  private final Parcel PY;
-  private final int PZ;
-  private int Qa;
-  private int Qb;
-  private final String dp;
+  private final int IR;
+  private final zzacw RF;
+  private final Parcel RN;
+  private final int RO;
+  private int RP;
+  private int RQ;
+  private final String fe;
   
   zzacz(int paramInt, Parcel paramParcel, zzacw paramzzacw)
   {
-    this.Hc = paramInt;
-    this.PY = ((Parcel)d.u(paramParcel));
-    this.PZ = 2;
-    this.PQ = paramzzacw;
-    if (this.PQ == null) {}
-    for (this.dp = null;; this.dp = this.PQ.jz())
+    this.IR = paramInt;
+    this.RN = ((Parcel)d.D(paramParcel));
+    this.RO = 2;
+    this.RF = paramzzacw;
+    if (this.RF == null) {}
+    for (this.fe = null;; this.fe = this.RF.jI())
     {
-      this.Qa = 2;
+      this.RP = 2;
       return;
     }
   }
@@ -67,32 +68,7 @@ public class zzacz
       paramStringBuilder.append("\"");
       return;
     case 10: 
-      paramObject = (HashMap)paramObject;
-      paramStringBuilder.append("{");
-      Iterator localIterator = paramObject.keySet().iterator();
-      paramInt = 1;
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        if (paramInt == 0) {
-          paramStringBuilder.append(",");
-        }
-        String str2;
-        for (;;)
-        {
-          str2 = (String)paramObject.get(str1);
-          paramStringBuilder.append("\"").append(str1).append("\":");
-          if (str2 != null) {
-            break label274;
-          }
-          paramStringBuilder.append("null");
-          break;
-          paramInt = 0;
-        }
-        label274:
-        paramStringBuilder.append("\"").append(str2).append("\"");
-      }
-      paramStringBuilder.append("}");
+      j.a(paramStringBuilder, (HashMap)paramObject);
       return;
     }
     throw new IllegalArgumentException("Method does not accept concrete type.");
@@ -108,11 +84,11 @@ public class zzacz
     String str = null;
     int j = 0;
     int i = 0;
-    if (paramzza.jq())
+    if (paramzza.jz())
     {
       paramStringBuilder.append("[");
       int k;
-      switch (paramzza.jp())
+      switch (paramzza.jy())
       {
       default: 
         throw new IllegalStateException("Unknown field type out.");
@@ -223,12 +199,12 @@ public class zzacz
             paramStringBuilder.append(",");
           }
           paramParcel[paramInt].setDataPosition(0);
-          a(paramStringBuilder, paramzza.jw(), paramParcel[paramInt]);
+          a(paramStringBuilder, paramzza.jF(), paramParcel[paramInt]);
           paramInt += 1;
         }
       }
     }
-    switch (paramzza.jp())
+    switch (paramzza.jy())
     {
     default: 
       throw new IllegalStateException("Unknown field type out");
@@ -287,29 +263,33 @@ public class zzacz
     }
     paramParcel = a.r(paramParcel, paramInt);
     paramParcel.setDataPosition(0);
-    a(paramStringBuilder, paramzza.jw(), paramParcel);
+    a(paramStringBuilder, paramzza.jF(), paramParcel);
   }
   
   private void a(StringBuilder paramStringBuilder, zzacs.zza<?, ?> paramzza, Object paramObject)
   {
-    if (paramzza.jo())
+    if (paramzza.jx())
     {
-      paramObject = (ArrayList)paramObject;
-      paramStringBuilder.append("[");
-      int j = paramObject.size();
-      int i = 0;
-      while (i < j)
-      {
-        if (i != 0) {
-          paramStringBuilder.append(",");
-        }
-        a(paramStringBuilder, paramzza.jn(), paramObject.get(i));
-        i += 1;
-      }
-      paramStringBuilder.append("]");
+      a(paramStringBuilder, paramzza, (ArrayList)paramObject);
       return;
     }
-    a(paramStringBuilder, paramzza.jn(), paramObject);
+    a(paramStringBuilder, paramzza.jw(), paramObject);
+  }
+  
+  private static void a(StringBuilder paramStringBuilder, zzacs.zza<?, ?> paramzza, ArrayList<?> paramArrayList)
+  {
+    paramStringBuilder.append("[");
+    int j = paramArrayList.size();
+    int i = 0;
+    while (i < j)
+    {
+      if (i != 0) {
+        paramStringBuilder.append(",");
+      }
+      a(paramStringBuilder, paramzza.jw(), paramArrayList.get(i));
+      i += 1;
+    }
+    paramStringBuilder.append("]");
   }
   
   private void a(StringBuilder paramStringBuilder, Map<String, zzacs.zza<?, ?>> paramMap, Parcel paramParcel)
@@ -320,7 +300,7 @@ public class zzacz
     while (paramMap.hasNext())
     {
       localObject = (Map.Entry)paramMap.next();
-      localSparseArray.put(((zzacs.zza)((Map.Entry)localObject).getValue()).js(), localObject);
+      localSparseArray.put(((zzacs.zza)((Map.Entry)localObject).getValue()).jB(), localObject);
     }
     paramStringBuilder.append('{');
     int j = a.a(paramParcel);
@@ -337,11 +317,11 @@ public class zzacz
         paramMap = (String)((Map.Entry)localObject).getKey();
         localObject = (zzacs.zza)((Map.Entry)localObject).getValue();
         paramStringBuilder.append("\"").append(paramMap).append("\":");
-        if (((zzacs.zza)localObject).ju()) {
-          switch (((zzacs.zza)localObject).jp())
+        if (((zzacs.zza)localObject).jD()) {
+          switch (((zzacs.zza)localObject).jy())
           {
           default: 
-            i = ((zzacs.zza)localObject).jp();
+            i = ((zzacs.zza)localObject).jy();
             throw new IllegalArgumentException(36 + "Unknown field out type = " + i);
           case 0: 
             a(paramStringBuilder, (zzacs.zza)localObject, a((zzacs.zza)localObject, Integer.valueOf(a.e(paramParcel, k))));
@@ -394,58 +374,58 @@ public class zzacz
   
   public final int getVersionCode()
   {
-    return this.Hc;
+    return this.IR;
   }
   
-  public final Parcel jB()
+  public final Parcel jK()
   {
-    switch (this.Qa)
+    switch (this.RP)
     {
     }
     for (;;)
     {
-      return this.PY;
-      this.Qb = com.google.android.gms.common.internal.safeparcel.c.b(this.PY);
-      com.google.android.gms.common.internal.safeparcel.c.v(this.PY, this.Qb);
-      this.Qa = 2;
+      return this.RN;
+      this.RQ = com.google.android.gms.common.internal.safeparcel.c.b(this.RN);
+      com.google.android.gms.common.internal.safeparcel.c.v(this.RN, this.RQ);
+      this.RP = 2;
     }
   }
   
-  final zzacw jC()
+  final zzacw jL()
   {
-    switch (this.PZ)
+    switch (this.RO)
     {
     default: 
-      int i = this.PZ;
+      int i = this.RO;
       throw new IllegalStateException(34 + "Invalid creation type: " + i);
     case 0: 
       return null;
     case 1: 
-      return this.PQ;
+      return this.RF;
     }
-    return this.PQ;
+    return this.RF;
   }
   
-  public final Map<String, zzacs.zza<?, ?>> jl()
+  public final Map<String, zzacs.zza<?, ?>> ju()
   {
-    if (this.PQ == null) {
+    if (this.RF == null) {
       return null;
     }
-    return this.PQ.p(this.dp);
+    return this.RF.p(this.fe);
   }
   
-  public final boolean jm()
+  public final boolean jv()
   {
     throw new UnsupportedOperationException("Converting to JSON does not require this method.");
   }
   
   public String toString()
   {
-    d.e(this.PQ, "Cannot convert to JSON on client side.");
-    Parcel localParcel = jB();
+    d.g(this.RF, "Cannot convert to JSON on client side.");
+    Parcel localParcel = jK();
     localParcel.setDataPosition(0);
     StringBuilder localStringBuilder = new StringBuilder(100);
-    a(localStringBuilder, this.PQ.p(this.dp), localParcel);
+    a(localStringBuilder, this.RF.p(this.fe), localParcel);
     return localStringBuilder.toString();
   }
   

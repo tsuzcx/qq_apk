@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="360.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/t6" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/t7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:layout_marginTop="25.0dip" android:src="@raw/actionbar_icon_dark_back" />
-        <TextView android:textSize="17.0dip" android:layout_gravity="center_horizontal" android:id="@id/t8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="20.0dip" android:text="@string/jd" />
-        <TextView android:textSize="16.0dip" android:layout_gravity="center_horizontal" android:id="@id/t9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/ja" />
-    </LinearLayout>
-</LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

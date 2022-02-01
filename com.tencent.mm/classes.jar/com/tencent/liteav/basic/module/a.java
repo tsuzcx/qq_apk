@@ -8,7 +8,7 @@ public class a
   
   public void clearID()
   {
-    AppMethodBeat.i(66078);
+    AppMethodBeat.i(14416);
     try
     {
       if (this.mID.length() != 0)
@@ -20,31 +20,31 @@ public class a
     }
     finally
     {
-      AppMethodBeat.o(66078);
+      AppMethodBeat.o(14416);
     }
   }
   
   public void finalize()
   {
-    AppMethodBeat.i(66076);
+    AppMethodBeat.i(14414);
     clearID();
     super.finalize();
-    AppMethodBeat.o(66076);
+    AppMethodBeat.o(14414);
   }
   
   public double getDoubleValue(int paramInt)
   {
-    AppMethodBeat.i(146460);
+    AppMethodBeat.i(14422);
     double d = TXCStatus.d(this.mID, paramInt);
-    AppMethodBeat.o(146460);
+    AppMethodBeat.o(14422);
     return d;
   }
   
   public double getDoubleValue(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(146464);
+    AppMethodBeat.i(14426);
     double d = TXCStatus.d(this.mID, paramInt1, paramInt2);
-    AppMethodBeat.o(146464);
+    AppMethodBeat.o(14426);
     return d;
   }
   
@@ -55,55 +55,55 @@ public class a
   
   public int getIntValue(int paramInt)
   {
-    AppMethodBeat.i(146459);
+    AppMethodBeat.i(14421);
     paramInt = TXCStatus.c(this.mID, paramInt);
-    AppMethodBeat.o(146459);
+    AppMethodBeat.o(14421);
     return paramInt;
   }
   
   public int getIntValue(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(146462);
+    AppMethodBeat.i(14424);
     paramInt1 = TXCStatus.c(this.mID, paramInt1, paramInt2);
-    AppMethodBeat.o(146462);
+    AppMethodBeat.o(14424);
     return paramInt1;
   }
   
   public long getLongValue(int paramInt)
   {
-    AppMethodBeat.i(146457);
+    AppMethodBeat.i(14419);
     long l = TXCStatus.a(this.mID, paramInt);
-    AppMethodBeat.o(146457);
+    AppMethodBeat.o(14419);
     return l;
   }
   
   public long getLongValue(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(146463);
+    AppMethodBeat.i(14425);
     long l = TXCStatus.a(this.mID, paramInt1, paramInt2);
-    AppMethodBeat.o(146463);
+    AppMethodBeat.o(14425);
     return l;
   }
   
   public String getStringValue(int paramInt)
   {
-    AppMethodBeat.i(146458);
+    AppMethodBeat.i(14420);
     String str = TXCStatus.b(this.mID, paramInt);
-    AppMethodBeat.o(146458);
+    AppMethodBeat.o(14420);
     return str;
   }
   
   public String getStringValue(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(146461);
+    AppMethodBeat.i(14423);
     String str = TXCStatus.b(this.mID, paramInt1, paramInt2);
-    AppMethodBeat.o(146461);
+    AppMethodBeat.o(14423);
     return str;
   }
   
   public void setID(String paramString)
   {
-    AppMethodBeat.i(66077);
+    AppMethodBeat.i(14415);
     clearID();
     try
     {
@@ -116,29 +116,29 @@ public class a
     }
     finally
     {
-      AppMethodBeat.o(66077);
+      AppMethodBeat.o(14415);
     }
   }
   
   public boolean setStatusValue(int paramInt1, int paramInt2, Object paramObject)
   {
-    AppMethodBeat.i(146456);
+    AppMethodBeat.i(14418);
     boolean bool = TXCStatus.a(this.mID, paramInt1, paramInt2, paramObject);
-    AppMethodBeat.o(146456);
+    AppMethodBeat.o(14418);
     return bool;
   }
   
   public boolean setStatusValue(int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(66079);
+    AppMethodBeat.i(14417);
     boolean bool = TXCStatus.a(this.mID, paramInt, paramObject);
-    AppMethodBeat.o(66079);
+    AppMethodBeat.o(14417);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.module.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/lx"
+<FrameLayout android:orientation="vertical" android:id="@id/c3s" android:background="@drawable/a9y" android:layout_width="fill_parent" android:layout_height="56.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/b9d" android:paddingTop="@dimen/n_" android:layout_width="fill_parent" android:layout_height="@dimen/aat" android:layout_marginBottom="@dimen/n_">
-        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/ko" android:textColorHint="@color/s3" android:layout_gravity="center_vertical" android:id="@id/lh" android:background="@null" android:paddingLeft="0.0dip" android:layout_width="0.0dip" android:layout_height="@dimen/n7" android:singleLine="true" android:layout_weight="1.0" android:imeOptions="actionDone" android:textCursorDrawable="@null" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/bb_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/si" android:contentDescription="@string/ask" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/ko" android:textColor="@color/y5" android:gravity="center_horizontal" android:id="@id/dey" android:paddingBottom="@dimen/n_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+    <ImageView android:layout_gravity="center|right" android:id="@id/cw3" android:paddingRight="24.0dip" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" />
+    <ProgressBar android:layout_gravity="center|right" android:id="@id/ebx" android:paddingRight="24.0dip" android:visibility="gone" android:layout_width="56.0dip" android:layout_height="56.0dip" style="@style/a4h" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/BW_0_Alpha_0_9" android:ellipsize="end" android:gravity="center|left" android:id="@id/ggi" android:background="@color/a_r" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="55.5dip" android:maxLines="1" android:backgroundTint="@color/a7c" />
+    <TextView android:textSize="@dimen/gx" android:textColor="@color/BW_0_Alpha_0_3" android:gravity="center" android:layout_gravity="center|right" android:id="@id/gga" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="56.0dip" android:layout_margin="24.0dip" android:text="投屏失败" />
+    <View android:layout_gravity="bottom" android:background="@color/ts" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" />
+</FrameLayout>

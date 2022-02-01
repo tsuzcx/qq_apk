@@ -7,7 +7,7 @@ public class Application
 {
   public Application()
   {
-    super(7, "com.tencent.mm.app.MMApplicationLike", "com.tencent.tinker.loader.TinkerLoader", true);
+    super(7, "com.tencent.mm.app.MMApplicationLike", "com.tencent.tinker.loader.TinkerLoader", true, 0, "com.tencent.mm.plugin.expansions.ExpansionsClassLoaderInitializer");
   }
 }
 

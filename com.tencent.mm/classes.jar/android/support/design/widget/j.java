@@ -1,269 +1,330 @@
 package android.support.design.widget;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.LinearGradient;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.Path.FillType;
-import android.graphics.RadialGradient;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.Shader.TileMode;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.b;
-import android.support.v7.d.a.c;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.Typeface;
+import android.support.design.a.a;
+import android.support.design.a.b;
+import android.support.v4.view.t;
+import android.support.v4.widget.Space;
+import android.support.v4.widget.q;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
 final class j
-  extends c
 {
-  static final double km = Math.cos(Math.toRadians(45.0D));
-  float gV;
-  boolean kA = true;
-  private boolean kB = false;
-  final Paint kn;
-  final Paint ko;
-  final RectF kp;
-  float kq;
-  Path kr;
-  float ks;
-  float kt;
-  float ku;
-  float kv;
-  private boolean kw = true;
-  private final int kx;
-  private final int ky;
-  private final int kz;
+  final Context context;
+  TextView pA;
+  int pB;
+  Typeface pC;
+  final TextInputLayout pl;
+  private LinearLayout pm;
+  private int pn;
+  private FrameLayout po;
+  private int pp;
+  Animator pq;
+  private final float pr;
+  int ps;
+  int pt;
+  CharSequence pu;
+  boolean pv;
+  TextView pw;
+  int px;
+  CharSequence py;
+  boolean pz;
   
-  public j(Context paramContext, Drawable paramDrawable, float paramFloat1, float paramFloat2, float paramFloat3)
+  public j(TextInputLayout paramTextInputLayout)
   {
-    super(paramDrawable);
-    this.kx = b.m(paramContext, 2131689933);
-    this.ky = b.m(paramContext, 2131689932);
-    this.kz = b.m(paramContext, 2131689931);
-    this.kn = new Paint(5);
-    this.kn.setStyle(Paint.Style.FILL);
-    this.kq = Math.round(paramFloat1);
-    this.kp = new RectF();
-    this.ko = new Paint(this.kn);
-    this.ko.setAntiAlias(false);
-    p(paramFloat2, paramFloat3);
+    this.context = paramTextInputLayout.getContext();
+    this.pl = paramTextInputLayout;
+    this.pr = this.context.getResources().getDimensionPixelSize(2131166135);
   }
   
-  public static float c(float paramFloat1, float paramFloat2, boolean paramBoolean)
+  private static boolean Y(int paramInt)
   {
-    if (paramBoolean) {
-      return (float)(1.5F * paramFloat1 + (1.0D - km) * paramFloat2);
-    }
-    return 1.5F * paramFloat1;
+    return (paramInt == 0) || (paramInt == 1);
   }
   
-  public static float d(float paramFloat1, float paramFloat2, boolean paramBoolean)
+  private TextView Z(int paramInt)
   {
-    float f = paramFloat1;
-    if (paramBoolean) {
-      f = (float)(paramFloat1 + (1.0D - km) * paramFloat2);
-    }
-    return f;
-  }
-  
-  private static int m(float paramFloat)
-  {
-    int j = Math.round(paramFloat);
-    int i = j;
-    if (j % 2 == 1) {
-      i = j - 1;
-    }
-    return i;
-  }
-  
-  public final void draw(Canvas paramCanvas)
-  {
-    float f1;
-    float f2;
-    float f3;
-    int i;
-    int k;
-    if (this.kw)
+    switch (paramInt)
     {
-      Object localObject = getBounds();
-      f1 = this.kt * 1.5F;
-      this.kp.set(((Rect)localObject).left + this.kt, ((Rect)localObject).top + f1, ((Rect)localObject).right - this.kt, ((Rect)localObject).bottom - f1);
-      this.mDrawable.setBounds((int)this.kp.left, (int)this.kp.top, (int)this.kp.right, (int)this.kp.bottom);
-      localObject = new RectF(-this.kq, -this.kq, this.kq, this.kq);
-      RectF localRectF = new RectF((RectF)localObject);
-      localRectF.inset(-this.ku, -this.ku);
-      if (this.kr == null)
+    default: 
+      return null;
+    case 1: 
+      return this.pw;
+    }
+    return this.pA;
+  }
+  
+  private ObjectAnimator a(TextView paramTextView)
+  {
+    paramTextView = ObjectAnimator.ofFloat(paramTextView, View.TRANSLATION_Y, new float[] { -this.pr, 0.0F });
+    paramTextView.setDuration(217L);
+    paramTextView.setInterpolator(a.dS);
+    return paramTextView;
+  }
+  
+  private static ObjectAnimator a(TextView paramTextView, boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (float f = 1.0F;; f = 0.0F)
+    {
+      paramTextView = ObjectAnimator.ofFloat(paramTextView, View.ALPHA, new float[] { f });
+      paramTextView.setDuration(167L);
+      paramTextView.setInterpolator(a.dP);
+      return paramTextView;
+    }
+  }
+  
+  static void a(TextView paramTextView, Typeface paramTypeface)
+  {
+    if (paramTextView != null) {
+      paramTextView.setTypeface(paramTypeface);
+    }
+  }
+  
+  private void a(List<Animator> paramList, boolean paramBoolean, TextView paramTextView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramTextView == null) || (!paramBoolean)) {
+      break label8;
+    }
+    label8:
+    while ((paramInt1 != paramInt3) && (paramInt1 != paramInt2)) {
+      return;
+    }
+    if (paramInt3 == paramInt1) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramList.add(a(paramTextView, paramBoolean));
+      if (paramInt3 != paramInt1) {
+        break;
+      }
+      paramList.add(a(paramTextView));
+      return;
+    }
+  }
+  
+  private static void b(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (paramInt == 0) {
+      paramViewGroup.setVisibility(8);
+    }
+  }
+  
+  private void i(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == paramInt2) {
+      return;
+    }
+    TextView localTextView;
+    if (paramInt2 != 0)
+    {
+      localTextView = Z(paramInt2);
+      if (localTextView != null)
       {
-        this.kr = new Path();
-        this.kr.setFillType(Path.FillType.EVEN_ODD);
-        this.kr.moveTo(-this.kq, 0.0F);
-        this.kr.rLineTo(-this.ku, 0.0F);
-        this.kr.arcTo(localRectF, 180.0F, 90.0F, false);
-        this.kr.arcTo((RectF)localObject, 270.0F, -90.0F, false);
-        this.kr.close();
-        f1 = -localRectF.top;
-        if (f1 > 0.0F)
-        {
-          f2 = this.kq / f1;
-          f3 = (1.0F - f2) / 2.0F;
-          localPaint = this.kn;
-          i = this.kx;
-          j = this.ky;
-          k = this.kz;
-          Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-          localPaint.setShader(new RadialGradient(0.0F, 0.0F, f1, new int[] { 0, i, j, k }, new float[] { 0.0F, f2, f2 + f3, 1.0F }, localTileMode));
+        localTextView.setVisibility(0);
+        localTextView.setAlpha(1.0F);
+      }
+    }
+    if (paramInt1 != 0)
+    {
+      localTextView = Z(paramInt1);
+      if (localTextView != null)
+      {
+        localTextView.setVisibility(4);
+        if (paramInt1 == 1) {
+          localTextView.setText(null);
         }
-        Paint localPaint = this.ko;
-        f1 = ((RectF)localObject).top;
-        f2 = localRectF.top;
-        i = this.kx;
-        j = this.ky;
-        k = this.kz;
-        localObject = Shader.TileMode.CLAMP;
-        localPaint.setShader(new LinearGradient(0.0F, f1, 0.0F, f2, new int[] { i, j, k }, new float[] { 0.0F, 0.5F, 1.0F }, (Shader.TileMode)localObject));
-        this.ko.setAntiAlias(false);
-        this.kw = false;
       }
     }
-    else
+    this.ps = paramInt2;
+  }
+  
+  final void a(final int paramInt1, final int paramInt2, boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      k = paramCanvas.save();
-      paramCanvas.rotate(this.gV, this.kp.centerX(), this.kp.centerY());
-      f1 = -this.kq - this.ku;
-      f2 = this.kq;
-      if (this.kp.width() - 2.0F * f2 <= 0.0F) {
-        break label1060;
-      }
-      i = 1;
-      label535:
-      if (this.kp.height() - 2.0F * f2 <= 0.0F) {
-        break label1066;
-      }
+      AnimatorSet localAnimatorSet = new AnimatorSet();
+      this.pq = localAnimatorSet;
+      ArrayList localArrayList = new ArrayList();
+      a(localArrayList, this.pz, this.pA, 2, paramInt1, paramInt2);
+      a(localArrayList, this.pv, this.pw, 1, paramInt1, paramInt2);
+      b.a(localAnimatorSet, localArrayList);
+      localAnimatorSet.addListener(new AnimatorListenerAdapter()
+      {
+        public final void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          j.this.ps = paramInt2;
+          j.this.pq = null;
+          if (this.pE != null)
+          {
+            this.pE.setVisibility(4);
+            if ((paramInt1 == 1) && (j.this.pw != null)) {
+              j.this.pw.setText(null);
+            }
+          }
+        }
+        
+        public final void onAnimationStart(Animator paramAnonymousAnimator)
+        {
+          if (this.pG != null) {
+            this.pG.setVisibility(0);
+          }
+        }
+      });
+      localAnimatorSet.start();
     }
-    label1060:
-    label1066:
-    for (int j = 1;; j = 0)
+    for (;;)
     {
-      float f6 = this.kv;
-      float f7 = this.kv;
-      f3 = this.kv;
-      float f8 = this.kv;
-      float f4 = this.kv;
-      float f5 = this.kv;
-      f3 = f2 / (f3 - f8 * 0.5F + f2);
-      f6 = f2 / (f6 - f7 * 0.25F + f2);
-      f4 = f2 / (f2 + (f4 - f5 * 1.0F));
-      int m = paramCanvas.save();
-      paramCanvas.translate(this.kp.left + f2, this.kp.top + f2);
-      paramCanvas.scale(f3, f6);
-      paramCanvas.drawPath(this.kr, this.kn);
-      if (i != 0)
-      {
-        paramCanvas.scale(1.0F / f3, 1.0F);
-        paramCanvas.drawRect(0.0F, f1, this.kp.width() - 2.0F * f2, -this.kq, this.ko);
-      }
-      paramCanvas.restoreToCount(m);
-      m = paramCanvas.save();
-      paramCanvas.translate(this.kp.right - f2, this.kp.bottom - f2);
-      paramCanvas.scale(f3, f4);
-      paramCanvas.rotate(180.0F);
-      paramCanvas.drawPath(this.kr, this.kn);
-      if (i != 0)
-      {
-        paramCanvas.scale(1.0F / f3, 1.0F);
-        f5 = this.kp.width();
-        f7 = -this.kq;
-        paramCanvas.drawRect(0.0F, f1, f5 - 2.0F * f2, this.ku + f7, this.ko);
-      }
-      paramCanvas.restoreToCount(m);
-      i = paramCanvas.save();
-      paramCanvas.translate(this.kp.left + f2, this.kp.bottom - f2);
-      paramCanvas.scale(f3, f4);
-      paramCanvas.rotate(270.0F);
-      paramCanvas.drawPath(this.kr, this.kn);
-      if (j != 0)
-      {
-        paramCanvas.scale(1.0F / f4, 1.0F);
-        paramCanvas.drawRect(0.0F, f1, this.kp.height() - 2.0F * f2, -this.kq, this.ko);
-      }
-      paramCanvas.restoreToCount(i);
-      i = paramCanvas.save();
-      paramCanvas.translate(this.kp.right - f2, this.kp.top + f2);
-      paramCanvas.scale(f3, f6);
-      paramCanvas.rotate(90.0F);
-      paramCanvas.drawPath(this.kr, this.kn);
-      if (j != 0)
-      {
-        paramCanvas.scale(1.0F / f6, 1.0F);
-        paramCanvas.drawRect(0.0F, f1, this.kp.height() - 2.0F * f2, -this.kq, this.ko);
-      }
-      paramCanvas.restoreToCount(i);
-      paramCanvas.restoreToCount(k);
-      super.draw(paramCanvas);
+      this.pl.cO();
+      this.pl.d(paramBoolean, false);
+      this.pl.cX();
       return;
-      this.kr.reset();
-      break;
-      i = 0;
-      break label535;
+      i(paramInt1, paramInt2);
     }
   }
   
-  public final int getOpacity()
+  final void a(TextView paramTextView, int paramInt)
   {
-    return -3;
-  }
-  
-  public final boolean getPadding(Rect paramRect)
-  {
-    int i = (int)Math.ceil(c(this.kt, this.kq, this.kA));
-    int j = (int)Math.ceil(d(this.kt, this.kq, this.kA));
-    paramRect.set(j, i, j, i);
-    return true;
-  }
-  
-  public final void n(float paramFloat)
-  {
-    p(paramFloat, this.kt);
-  }
-  
-  public final void onBoundsChange(Rect paramRect)
-  {
-    this.kw = true;
-  }
-  
-  final void p(float paramFloat1, float paramFloat2)
-  {
-    if ((paramFloat1 < 0.0F) || (paramFloat2 < 0.0F)) {
-      throw new IllegalArgumentException("invalid shadow size");
-    }
-    float f = m(paramFloat1);
-    paramFloat2 = m(paramFloat2);
-    paramFloat1 = f;
-    if (f > paramFloat2)
+    if ((this.pm == null) && (this.po == null))
     {
-      if (!this.kB) {
-        this.kB = true;
+      this.pm = new LinearLayout(this.context);
+      this.pm.setOrientation(0);
+      this.pl.addView(this.pm, -1, -2);
+      this.po = new FrameLayout(this.context);
+      this.pm.addView(this.po, -1, new FrameLayout.LayoutParams(-2, -2));
+      Space localSpace = new Space(this.context);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, 0, 1.0F);
+      this.pm.addView(localSpace, localLayoutParams);
+      if (this.pl.getEditText() != null) {
+        cr();
       }
-      paramFloat1 = paramFloat2;
     }
-    if ((this.kv == paramFloat1) && (this.kt == paramFloat2)) {
+    if (Y(paramInt))
+    {
+      this.po.setVisibility(0);
+      this.po.addView(paramTextView);
+      this.pp += 1;
+    }
+    for (;;)
+    {
+      this.pm.setVisibility(0);
+      this.pn += 1;
+      return;
+      this.pm.addView(paramTextView, paramInt);
+    }
+  }
+  
+  final boolean a(TextView paramTextView, CharSequence paramCharSequence)
+  {
+    return (t.ay(this.pl)) && (this.pl.isEnabled()) && ((this.pt != this.ps) || (paramTextView == null) || (!TextUtils.equals(paramTextView.getText(), paramCharSequence)));
+  }
+  
+  final void ab(int paramInt)
+  {
+    this.pB = paramInt;
+    if (this.pA != null) {
+      q.d(this.pA, paramInt);
+    }
+  }
+  
+  final void b(TextView paramTextView, int paramInt)
+  {
+    if (this.pm == null) {
       return;
     }
-    this.kv = paramFloat1;
-    this.kt = paramFloat2;
-    this.ku = Math.round(paramFloat1 * 1.5F);
-    this.ks = paramFloat2;
-    this.kw = true;
-    invalidateSelf();
+    if ((Y(paramInt)) && (this.po != null))
+    {
+      this.pp -= 1;
+      b(this.po, this.pp);
+      this.po.removeView(paramTextView);
+    }
+    for (;;)
+    {
+      this.pn -= 1;
+      b(this.pm, this.pn);
+      return;
+      this.pm.removeView(paramTextView);
+    }
   }
   
-  public final void setAlpha(int paramInt)
+  final void cp()
   {
-    super.setAlpha(paramInt);
-    this.kn.setAlpha(paramInt);
-    this.ko.setAlpha(paramInt);
+    this.pu = null;
+    cq();
+    if (this.ps == 1) {
+      if ((!this.pz) || (TextUtils.isEmpty(this.py))) {
+        break label61;
+      }
+    }
+    label61:
+    for (this.pt = 2;; this.pt = 0)
+    {
+      a(this.ps, this.pt, a(this.pw, null));
+      return;
+    }
+  }
+  
+  final void cq()
+  {
+    if (this.pq != null) {
+      this.pq.cancel();
+    }
+  }
+  
+  final void cr()
+  {
+    if ((this.pm != null) && (this.pl.getEditText() != null)) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        t.d(this.pm, t.ab(this.pl.getEditText()), 0, t.ac(this.pl.getEditText()), 0);
+      }
+      return;
+    }
+  }
+  
+  final boolean cs()
+  {
+    return (this.pt == 1) && (this.pw != null) && (!TextUtils.isEmpty(this.pu));
+  }
+  
+  final int ct()
+  {
+    if (this.pw != null) {
+      return this.pw.getCurrentTextColor();
+    }
+    return -1;
+  }
+  
+  final ColorStateList cu()
+  {
+    if (this.pw != null) {
+      return this.pw.getTextColors();
+    }
+    return null;
+  }
+  
+  final void setErrorTextAppearance(int paramInt)
+  {
+    this.px = paramInt;
+    if (this.pw != null) {
+      this.pl.c(this.pw, paramInt);
+    }
   }
 }
 

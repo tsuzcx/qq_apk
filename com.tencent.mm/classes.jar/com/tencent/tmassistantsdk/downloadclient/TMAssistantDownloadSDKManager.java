@@ -16,12 +16,12 @@ public class TMAssistantDownloadSDKManager
   
   static
   {
-    AppMethodBeat.i(75656);
+    AppMethodBeat.i(101902);
     mInstance = null;
     mSDKClientList = new ArrayList();
     mSDKSettingClient = null;
     mOpenSDKClientList = new ArrayList();
-    AppMethodBeat.o(75656);
+    AppMethodBeat.o(101902);
   }
   
   protected TMAssistantDownloadSDKManager(Context paramContext)
@@ -40,12 +40,12 @@ public class TMAssistantDownloadSDKManager
     {
       try
       {
-        AppMethodBeat.i(75655);
+        AppMethodBeat.i(101901);
         TMLog.i("TMAssistantDownloadSDKManager", "closeAllService method!");
         if (mInstance == null)
         {
           TMLog.i("TMAssistantDownloadSDKManager", "manager minstance == null");
-          AppMethodBeat.o(75655);
+          AppMethodBeat.o(101901);
           return;
         }
         if ((mSDKClientList != null) && (mSDKClientList.size() > 0))
@@ -70,7 +70,7 @@ public class TMAssistantDownloadSDKManager
         mSDKSettingClient = null;
       }
       mInstance = null;
-      AppMethodBeat.o(75655);
+      AppMethodBeat.o(101901);
     }
   }
   
@@ -78,12 +78,12 @@ public class TMAssistantDownloadSDKManager
   {
     try
     {
-      AppMethodBeat.i(75650);
+      AppMethodBeat.i(101896);
       if (mInstance == null) {
         mInstance = new TMAssistantDownloadSDKManager(paramContext);
       }
       paramContext = mInstance;
-      AppMethodBeat.o(75650);
+      AppMethodBeat.o(101896);
       return paramContext;
     }
     finally {}
@@ -95,7 +95,7 @@ public class TMAssistantDownloadSDKManager
     {
       try
       {
-        AppMethodBeat.i(75653);
+        AppMethodBeat.i(101899);
         Iterator localIterator = mOpenSDKClientList.iterator();
         if (localIterator.hasNext())
         {
@@ -103,7 +103,7 @@ public class TMAssistantDownloadSDKManager
           if (localTMAssistantDownloadOpenSDKClient.mClientKey.equals(paramString) != true) {
             continue;
           }
-          AppMethodBeat.o(75653);
+          AppMethodBeat.o(101899);
           paramString = localTMAssistantDownloadOpenSDKClient;
           return paramString;
         }
@@ -111,13 +111,13 @@ public class TMAssistantDownloadSDKManager
         if (paramString.initTMAssistantDownloadSDK())
         {
           mOpenSDKClientList.add(paramString);
-          AppMethodBeat.o(75653);
+          AppMethodBeat.o(101899);
           continue;
         }
         paramString = null;
       }
       finally {}
-      AppMethodBeat.o(75653);
+      AppMethodBeat.o(101899);
     }
   }
   
@@ -127,11 +127,11 @@ public class TMAssistantDownloadSDKManager
     {
       try
       {
-        AppMethodBeat.i(75651);
+        AppMethodBeat.i(101897);
         if ((paramString == null) || (paramString.length() <= 0))
         {
           paramString = null;
-          AppMethodBeat.o(75651);
+          AppMethodBeat.o(101897);
           return paramString;
         }
         Iterator localIterator = mSDKClientList.iterator();
@@ -141,7 +141,7 @@ public class TMAssistantDownloadSDKManager
           if (localTMAssistantDownloadSDKClient.mClientKey.equals(paramString) != true) {
             continue;
           }
-          AppMethodBeat.o(75651);
+          AppMethodBeat.o(101897);
           paramString = localTMAssistantDownloadSDKClient;
           continue;
         }
@@ -150,7 +150,7 @@ public class TMAssistantDownloadSDKManager
       finally {}
       paramString.initTMAssistantDownloadSDK();
       mSDKClientList.add(paramString);
-      AppMethodBeat.o(75651);
+      AppMethodBeat.o(101897);
     }
   }
   
@@ -158,7 +158,7 @@ public class TMAssistantDownloadSDKManager
   {
     try
     {
-      AppMethodBeat.i(75652);
+      AppMethodBeat.i(101898);
       if (mSDKSettingClient == null)
       {
         localTMAssistantDownloadSDKSettingClient = new TMAssistantDownloadSDKSettingClient(this.mContext, "TMAssistantDownloadSDKManager");
@@ -166,7 +166,7 @@ public class TMAssistantDownloadSDKManager
         localTMAssistantDownloadSDKSettingClient.initTMAssistantDownloadSDK();
       }
       TMAssistantDownloadSDKSettingClient localTMAssistantDownloadSDKSettingClient = mSDKSettingClient;
-      AppMethodBeat.o(75652);
+      AppMethodBeat.o(101898);
       return localTMAssistantDownloadSDKSettingClient;
     }
     finally {}
@@ -255,7 +255,7 @@ public class TMAssistantDownloadSDKManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKManager
  * JD-Core Version:    0.7.0.1
  */

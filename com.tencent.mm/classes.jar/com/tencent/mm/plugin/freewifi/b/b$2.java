@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiManufacturerLoadingUI;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.aj;
 
 final class b$2
   implements Runnable
@@ -13,19 +13,23 @@ final class b$2
   
   public final void run()
   {
-    AppMethodBeat.i(20669);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("ConstantsFreeWifi.FreeWifiManufacturerConnectWifiHelper_Ssid", this.mJG);
-    localIntent.putExtra("ConstantsFreeWifi.FreeWifiManufacturerConnectWifiHelper_Bssid", this.mJH);
-    localIntent.setClass(ah.getContext(), FreeWifiManufacturerLoadingUI.class);
-    localIntent.addFlags(268435456);
-    ah.getContext().startActivity(localIntent);
-    AppMethodBeat.o(20669);
+    AppMethodBeat.i(24746);
+    Object localObject = new Intent();
+    ((Intent)localObject).putExtra("ConstantsFreeWifi.FreeWifiManufacturerConnectWifiHelper_Ssid", this.rgM);
+    ((Intent)localObject).putExtra("ConstantsFreeWifi.FreeWifiManufacturerConnectWifiHelper_Bssid", this.rgN);
+    ((Intent)localObject).setClass(aj.getContext(), FreeWifiManufacturerLoadingUI.class);
+    ((Intent)localObject).addFlags(268435456);
+    Context localContext = aj.getContext();
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bd(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).adn(), "com/tencent/mm/plugin/freewifi/manufacturer/FreeWifiManufacturerConnectWifiHelper$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).lS(0));
+    com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/plugin/freewifi/manufacturer/FreeWifiManufacturerConnectWifiHelper$2", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(24746);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.b.b.2
  * JD-Core Version:    0.7.0.1
  */

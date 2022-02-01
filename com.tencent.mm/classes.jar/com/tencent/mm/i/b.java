@@ -8,11 +8,11 @@ public abstract interface b
   {
     public abstract int a(String paramString, c paramc, d paramd);
     
-    public abstract void a(String paramString, d paramd);
-    
     public abstract void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream);
     
-    public abstract byte[] l(String paramString, byte[] paramArrayOfByte);
+    public abstract int c(String paramString, d paramd);
+    
+    public abstract byte[] f(String paramString, byte[] paramArrayOfByte);
   }
 }
 

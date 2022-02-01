@@ -12,105 +12,106 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.v4.app.v;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.z;
-import com.tencent.mm.g.c.au;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.am.af;
+import com.tencent.mm.g.a.re;
+import com.tencent.mm.g.c.ay;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.model.aq;
-import com.tencent.mm.model.aw;
-import com.tencent.mm.model.bf;
-import com.tencent.mm.model.bf.b;
-import com.tencent.mm.model.t;
-import com.tencent.mm.model.u;
-import com.tencent.mm.platformtools.y.1;
-import com.tencent.mm.platformtools.y.2;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.bi;
+import com.tencent.mm.model.bi.b;
+import com.tencent.mm.model.w;
+import com.tencent.mm.model.x;
+import com.tencent.mm.platformtools.w.1;
+import com.tencent.mm.platformtools.w.2;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bl;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public final class b
-  implements com.tencent.mm.model.an, aq
+  implements aq, com.tencent.mm.model.at
 {
-  bi cEE;
   Context context;
-  private final com.tencent.mm.sdk.b.c eaA;
-  private final com.tencent.mm.sdk.b.c eaB;
-  private String eaq;
-  private String ear;
-  String eas;
-  Intent eat;
-  private boolean eau;
-  private boolean eav;
-  private long eaw;
-  f eax;
-  private com.tencent.mm.booter.notification.a.e eay;
+  bl drF;
+  private String fkE;
+  private String fkF;
+  String fkG;
+  Intent fkH;
+  private boolean fkI;
+  private boolean fkJ;
+  private long fkK;
+  f fkL;
+  private com.tencent.mm.booter.notification.a.e fkM;
   @SuppressLint({"HandlerLeak"})
-  ak eaz;
+  ap fkN;
+  private final com.tencent.mm.sdk.b.c fkO;
+  private final com.tencent.mm.sdk.b.c fkP;
   String talker;
   
   public b(Context paramContext)
   {
-    AppMethodBeat.i(15898);
+    AppMethodBeat.i(19930);
     this.context = null;
-    this.eax = f.a.IN();
-    this.eaz = new ak(Looper.getMainLooper())
+    this.fkL = f.a.Ub();
+    this.fkN = new ap(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
-        AppMethodBeat.i(15892);
+        AppMethodBeat.i(19926);
         super.handleMessage(paramAnonymousMessage);
         String str1 = paramAnonymousMessage.getData().getString("notification.show.talker");
         String str2 = paramAnonymousMessage.getData().getString("notification.show.message.content");
         int i = paramAnonymousMessage.getData().getInt("notification.show.message.type");
         int j = paramAnonymousMessage.getData().getInt("notification.show.tipsflag");
-        ab.i("MicroMsg.MMNotification", "notify need to deal: %s", new Object[] { str1 });
+        ad.i("MicroMsg.MMNotification", "notify need to deal: %s", new Object[] { str1 });
         try
         {
           if (paramAnonymousMessage.what == 1)
           {
             b.a(b.this, str1, str2, i, j, true);
-            AppMethodBeat.o(15892);
+            AppMethodBeat.o(19926);
             return;
           }
           b.a(b.this, str1, str2, i, j, false);
-          AppMethodBeat.o(15892);
+          AppMethodBeat.o(19926);
           return;
         }
         catch (Exception paramAnonymousMessage)
         {
-          ab.printErrStackTrace("MicroMsg.MMNotification", paramAnonymousMessage, "showNotifiHandler", new Object[0]);
-          AppMethodBeat.o(15892);
+          ad.printErrStackTrace("MicroMsg.MMNotification", paramAnonymousMessage, "showNotifiHandler", new Object[0]);
+          AppMethodBeat.o(19926);
         }
       }
     };
-    this.eaA = new b.2(this);
-    this.eaB = new b.3(this);
+    this.fkO = new com.tencent.mm.sdk.b.c() {};
+    this.fkP = new b.3(this);
     this.context = paramContext;
     this.talker = "";
-    this.eas = "";
-    this.eaq = "";
-    this.eaw = 0L;
-    this.eav = false;
-    this.eat = null;
-    this.eay = new com.tencent.mm.booter.notification.a.e();
+    this.fkG = "";
+    this.fkE = "";
+    this.fkK = 0L;
+    this.fkJ = false;
+    this.fkH = null;
+    this.fkM = new com.tencent.mm.booter.notification.a.e();
     com.tencent.mm.plugin.notification.d.a(this);
     com.tencent.mm.modelvoice.e.a(this);
     com.tencent.mm.plugin.base.stub.b.a(this);
-    com.tencent.mm.sdk.b.a.ymk.c(this.eaB);
-    com.tencent.mm.sdk.b.a.ymk.c(this.eaA);
-    AppMethodBeat.o(15898);
+    com.tencent.mm.sdk.b.a.ESL.c(this.fkP);
+    com.tencent.mm.sdk.b.a.ESL.c(this.fkO);
+    AppMethodBeat.o(19930);
   }
   
   static Message a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(15905);
-    ab.d("MicroMsg.MMNotification", "[wrapMessage] talker:%s msgType:%s stack:%s", new Object[] { paramString1, Integer.valueOf(paramInt1), bo.dtY().toString() });
+    AppMethodBeat.i(19937);
+    ad.d("MicroMsg.MMNotification", "[wrapMessage] talker:%s msgType:%s stack:%s", new Object[] { paramString1, Integer.valueOf(paramInt1), bt.eGN().toString() });
     Message localMessage = Message.obtain();
     Bundle localBundle = new Bundle();
     localBundle.putString("notification.show.talker", paramString1);
@@ -119,34 +120,34 @@ public final class b
     localBundle.putInt("notification.show.tipsflag", paramInt2);
     localMessage.setData(localBundle);
     localMessage.what = paramInt3;
-    AppMethodBeat.o(15905);
+    AppMethodBeat.o(19937);
     return localMessage;
   }
   
-  static int b(bi parambi)
+  static int b(bl parambl)
   {
     int j = 0;
-    AppMethodBeat.i(15923);
-    if (t.nU(parambi.field_talker)) {}
-    for (int i = 0; (parambi.field_bizChatId != -1L) && (com.tencent.mm.aj.f.lg(parambi.field_talker)); i = 3)
+    AppMethodBeat.i(19955);
+    if (w.sE(parambl.field_talker)) {}
+    for (int i = 0; (parambl.field_bizChatId != -1L) && (com.tencent.mm.am.f.pc(parambl.field_talker)); i = 3)
     {
-      com.tencent.mm.aj.a.c localc = z.afk().aG(parambi.field_bizChatId);
-      if ((localc.isGroup()) || (!localc.kY(1))) {
+      com.tencent.mm.am.a.c localc = af.awg().bg(parambl.field_bizChatId);
+      if ((localc.isGroup()) || (!localc.ht(1))) {
         break;
       }
-      AppMethodBeat.o(15923);
+      AppMethodBeat.o(19955);
       return i;
     }
-    parambi = parambi.dns;
-    if (bo.isNullOrNil(parambi))
+    parambl = parambl.esh;
+    if (bt.isNullOrNil(parambl))
     {
-      AppMethodBeat.o(15923);
+      AppMethodBeat.o(19955);
       return i;
     }
-    parambi = br.F(parambi, "msgsource");
-    if ((parambi == null) || (parambi.isEmpty()))
+    parambl = bw.K(parambl, "msgsource");
+    if ((parambl == null) || (parambl.isEmpty()))
     {
-      AppMethodBeat.o(15923);
+      AppMethodBeat.o(19955);
       return i;
     }
     for (;;)
@@ -154,17 +155,17 @@ public final class b
       int k;
       try
       {
-        k = bo.getInt((String)parambi.get(".msgsource.tips"), i);
+        k = bt.getInt((String)parambl.get(".msgsource.tips"), i);
         if (((k & 0x1) == 0) && ((k & 0x2) != 0))
         {
           i = j;
-          AppMethodBeat.o(15923);
+          AppMethodBeat.o(19955);
           return i;
         }
       }
-      catch (Exception parambi)
+      catch (Exception parambl)
       {
-        AppMethodBeat.o(15923);
+        AppMethodBeat.o(19955);
         return i;
       }
       i = k;
@@ -173,31 +174,31 @@ public final class b
   
   private void cancel()
   {
-    AppMethodBeat.i(15903);
-    this.eav = false;
+    AppMethodBeat.i(19935);
+    this.fkJ = false;
     e.cancel();
-    AppMethodBeat.o(15903);
+    AppMethodBeat.o(19935);
   }
   
-  public final void BR()
+  public final void Lo()
   {
-    AppMethodBeat.i(15902);
-    ab.d("MicroMsg.MMNotification", "force cancelNotification");
+    AppMethodBeat.i(19934);
+    ad.d("MicroMsg.MMNotification", "force cancelNotification");
     cancel();
-    AppMethodBeat.o(15902);
+    AppMethodBeat.o(19934);
   }
   
-  public final String IF()
+  public final String TT()
   {
-    return this.eaq;
+    return this.fkE;
   }
   
-  public final void IG()
+  public final void TU()
   {
-    AppMethodBeat.i(15901);
+    AppMethodBeat.i(19933);
     try
     {
-      Object localObject = ah.getContext().getSharedPreferences("notify_newfriend_prep", 0).getString("notify_newfriend_prep", null);
+      Object localObject = aj.getContext().getSharedPreferences("notify_newfriend_prep", 0).getString("notify_newfriend_prep", null);
       if (localObject != null)
       {
         localObject = ((String)localObject).split(",");
@@ -205,290 +206,290 @@ public final class b
         int i = 0;
         while (i < j)
         {
-          int k = bo.apV(localObject[i]);
+          int k = bt.aGh(localObject[i]);
           if (k > 0) {
-            aw.getNotification().cancel(k);
+            az.getNotification().cancel(k);
           }
           i += 1;
         }
       }
-      AppMethodBeat.o(15901);
+      AppMethodBeat.o(19933);
       return;
     }
     catch (Exception localException)
     {
-      ab.printErrStackTrace("MicroMsg.MMNotification", localException, "try cancel notification fail: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(15901);
+      ad.printErrStackTrace("MicroMsg.MMNotification", localException, "try cancel notification fail: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(19933);
     }
   }
   
-  public final void IH()
+  public final void TV()
   {
-    AppMethodBeat.i(15911);
-    f.a.IN();
-    c.IH();
-    AppMethodBeat.o(15911);
+    AppMethodBeat.i(19943);
+    f.a.Ub();
+    c.TV();
+    AppMethodBeat.o(19943);
   }
   
-  public final void J(List<bi> paramList)
+  public final void V(List<bl> paramList)
   {
     String str = null;
-    AppMethodBeat.i(15907);
+    AppMethodBeat.i(19939);
     if ((paramList == null) || (paramList.size() <= 0))
     {
       if (paramList == null) {}
       for (i = -1;; i = paramList.size())
       {
-        ab.w("MicroMsg.MMNotification", "notifyOther newMsgList:%d :%s", new Object[] { Integer.valueOf(i), bo.dtY() });
-        AppMethodBeat.o(15907);
+        ad.w("MicroMsg.MMNotification", "notifyOther newMsgList:%d :%s", new Object[] { Integer.valueOf(i), bt.eGN() });
+        AppMethodBeat.o(19939);
         return;
       }
     }
     int j = paramList.size() - 1;
     int i = 0;
-    bi localbi;
+    bl localbl;
     for (;;)
     {
       if (j < 0) {
         break label258;
       }
-      localbi = (bi)paramList.get(j);
-      i = b(localbi);
-      if (f.a(localbi.field_talker, localbi, i, false)) {
+      localbl = (bl)paramList.get(j);
+      i = b(localbl);
+      if (f.a(localbl.field_talker, localbl, i, false)) {
         break;
       }
       j -= 1;
     }
     label258:
-    for (paramList = localbi;; paramList = str)
+    for (paramList = localbl;; paramList = str)
     {
       if (paramList == null)
       {
-        ab.w("MicroMsg.MMNotification", "notifyOther msg == null");
-        AppMethodBeat.o(15907);
+        ad.w("MicroMsg.MMNotification", "notifyOther msg == null");
+        AppMethodBeat.o(19939);
         return;
       }
-      this.eas = "";
+      this.fkG = "";
       this.talker = paramList.field_talker;
       str = paramList.field_content;
       j = paramList.getType();
-      this.cEE = paramList;
-      ab.i("MicroMsg.MMNotification", "notifyOther talker:%s msgid:%d type:%d tipsFlag:%d content:%s", new Object[] { this.talker, Long.valueOf(paramList.field_msgSvrId), Integer.valueOf(j), Integer.valueOf(i), bo.aqg(str) });
-      this.eaz.sendMessageDelayed(a(this.talker, str, j, i, 0), 200L);
-      AppMethodBeat.o(15907);
+      this.drF = paramList;
+      ad.i("MicroMsg.MMNotification", "notifyOther talker:%s msgid:%d type:%d tipsFlag:%d content:%s", new Object[] { this.talker, Long.valueOf(paramList.field_msgSvrId), Integer.valueOf(j), Integer.valueOf(i), bt.aGs(str) });
+      this.fkN.sendMessageDelayed(a(this.talker, str, j, i, 0), 200L);
+      AppMethodBeat.o(19939);
       return;
     }
   }
   
   public final int a(Notification paramNotification, boolean paramBoolean)
   {
-    AppMethodBeat.i(15918);
-    int i = f.a.IN().b(new NotificationItem(paramNotification, paramBoolean));
-    AppMethodBeat.o(15918);
+    AppMethodBeat.i(19950);
+    int i = f.a.Ub().b(new NotificationItem(paramNotification, paramBoolean));
+    AppMethodBeat.o(19950);
     return i;
   }
   
   public final Notification a(Notification paramNotification, int paramInt1, int paramInt2, PendingIntent paramPendingIntent, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, String paramString4)
   {
-    AppMethodBeat.i(15922);
-    paramNotification = f.a.IN().a(paramNotification, paramInt1, paramInt2, paramPendingIntent, paramString1, paramString2, paramString3, paramBitmap, paramString4);
-    AppMethodBeat.o(15922);
+    AppMethodBeat.i(19954);
+    paramNotification = f.a.Ub().a(paramNotification, paramInt1, paramInt2, paramPendingIntent, paramString1, paramString2, paramString3, paramBitmap, paramString4);
+    AppMethodBeat.o(19954);
     return paramNotification;
   }
   
   public final Notification a(Notification paramNotification, int paramInt, PendingIntent paramPendingIntent1, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, String paramString4, PendingIntent paramPendingIntent2, String paramString5, PendingIntent paramPendingIntent3, String paramString6)
   {
-    AppMethodBeat.i(15909);
-    paramNotification = f.a.IN().ebd.eaV.a(paramNotification, paramInt, 1, paramPendingIntent1, paramString1, paramString2, paramString3, paramBitmap, 2130839849, paramString4, paramPendingIntent2, 2130839848, paramString5, paramPendingIntent3, paramString6);
-    AppMethodBeat.o(15909);
+    AppMethodBeat.i(19941);
+    paramNotification = f.a.Ub().flq.fli.a(paramNotification, paramInt, 1, paramPendingIntent1, paramString1, paramString2, paramString3, paramBitmap, 2131233504, paramString4, paramPendingIntent2, 2131233503, paramString5, paramPendingIntent3, paramString6);
+    AppMethodBeat.o(19941);
     return paramNotification;
   }
   
   public final Notification a(PendingIntent paramPendingIntent, String paramString1, String paramString2, String paramString3, Bitmap paramBitmap, String paramString4)
   {
-    AppMethodBeat.i(15921);
+    AppMethodBeat.i(19953);
     paramPendingIntent = a(null, -1, 0, paramPendingIntent, paramString1, paramString2, paramString3, paramBitmap, paramString4);
-    AppMethodBeat.o(15921);
+    AppMethodBeat.o(19953);
     return paramPendingIntent;
   }
   
   public final void a(int paramInt, Notification paramNotification, boolean paramBoolean)
   {
-    AppMethodBeat.i(15917);
-    f.a.IN().b(new NotificationItem(paramInt, paramNotification, paramBoolean));
-    AppMethodBeat.o(15917);
+    AppMethodBeat.i(19949);
+    f.a.Ub().b(new NotificationItem(paramInt, paramNotification, paramBoolean));
+    AppMethodBeat.o(19949);
   }
   
   public final void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle)
   {
-    AppMethodBeat.i(15908);
-    com.tencent.mm.bq.d.a("webview", new y.1(paramString3, paramString4, paramBundle, paramString1, paramString2, paramInt), new y.2());
-    AppMethodBeat.o(15908);
+    AppMethodBeat.i(19940);
+    com.tencent.mm.bs.d.a("webview", new w.1(paramString3, paramString4, paramBundle, paramString1, paramString2, paramInt), new w.2());
+    AppMethodBeat.o(19940);
   }
   
-  public final void a(bi parambi)
+  public final void a(bl parambl)
   {
-    AppMethodBeat.i(15904);
-    if (parambi == null)
+    AppMethodBeat.i(19936);
+    if (parambl == null)
     {
-      AppMethodBeat.o(15904);
+      AppMethodBeat.o(19936);
       return;
     }
-    if (parambi.field_isSend == 1)
+    if (parambl.field_isSend == 1)
     {
-      ab.w("MicroMsg.MMNotification", "notifyFirst is sender , msgid:%d ", new Object[] { Long.valueOf(parambi.field_msgSvrId) });
-      AppMethodBeat.o(15904);
+      ad.w("MicroMsg.MMNotification", "notifyFirst is sender , msgid:%d ", new Object[] { Long.valueOf(parambl.field_msgSvrId) });
+      AppMethodBeat.o(19936);
       return;
     }
-    Object localObject = bf.pA(parambi.dns);
-    if ((localObject != null) && (((bf.b)localObject).scene == 1))
+    Object localObject = bi.ul(parambl.esh);
+    if ((localObject != null) && (((bi.b)localObject).scene == 1))
     {
-      AppMethodBeat.o(15904);
+      AppMethodBeat.o(19936);
       return;
     }
-    int i = b(parambi);
-    this.cEE = parambi;
-    this.talker = parambi.field_talker;
-    localObject = parambi.field_content;
-    int j = parambi.getType();
-    this.eas = "";
-    this.eat = null;
-    ab.i("MicroMsg.MMNotification", "notifyFirst talker:%s msgid:%d type:%d tipsFlag:%d content:%s", new Object[] { this.talker, Long.valueOf(parambi.field_msgSvrId), Integer.valueOf(j), Integer.valueOf(i), bo.aqg((String)localObject) });
-    if (!f.a(this.talker, this.cEE, i, false))
+    int i = b(parambl);
+    this.drF = parambl;
+    this.talker = parambl.field_talker;
+    localObject = parambl.field_content;
+    int j = parambl.getType();
+    this.fkG = "";
+    this.fkH = null;
+    ad.i("MicroMsg.MMNotification", "notifyFirst talker:%s msgid:%d type:%d tipsFlag:%d content:%s", new Object[] { this.talker, Long.valueOf(parambl.field_msgSvrId), Integer.valueOf(j), Integer.valueOf(i), bt.aGs((String)localObject) });
+    if (!f.a(this.talker, this.drF, i, false))
     {
-      ab.w("MicroMsg.MMNotification", "[no notificaion], preNotificationCheck");
-      AppMethodBeat.o(15904);
+      ad.w("MicroMsg.MMNotification", "[no notificaion], preNotificationCheck");
+      AppMethodBeat.o(19936);
       return;
     }
-    this.eaz.sendMessageDelayed(a(this.talker, (String)localObject, j, i, 0), 200L);
-    AppMethodBeat.o(15904);
-  }
-  
-  public final void bE(boolean paramBoolean)
-  {
-    AppMethodBeat.i(15899);
-    this.eau = paramBoolean;
-    ab.i("MicroMsg.MMNotification", "set hideNotification: %s, stack[%s]", new Object[] { Boolean.valueOf(this.eau), bo.dtY() });
-    AppMethodBeat.o(15899);
-  }
-  
-  public final void bF(boolean paramBoolean)
-  {
-    AppMethodBeat.i(15914);
-    d.bG(paramBoolean);
-    AppMethodBeat.o(15914);
+    this.fkN.sendMessageDelayed(a(this.talker, (String)localObject, j, i, 0), 200L);
+    AppMethodBeat.o(19936);
   }
   
   public final int c(Notification paramNotification)
   {
-    AppMethodBeat.i(15919);
+    AppMethodBeat.i(19951);
     int i = a(paramNotification, true);
-    AppMethodBeat.o(15919);
+    AppMethodBeat.o(19951);
     return i;
   }
   
   public final void cancel(int paramInt)
   {
-    AppMethodBeat.i(15920);
-    f.a.IN();
-    com.tencent.mm.booter.notification.queue.b.IO().cancel(paramInt);
-    AppMethodBeat.o(15920);
+    AppMethodBeat.i(19952);
+    f.a.Ub();
+    com.tencent.mm.booter.notification.queue.b.Uc().cancel(paramInt);
+    AppMethodBeat.o(19952);
   }
   
   public final void cancelNotification(String paramString)
   {
-    AppMethodBeat.i(15900);
-    ab.v("MicroMsg.MMNotification", "cancel notification talker:" + paramString + " last talker:" + this.ear + "  curChattingTalker:" + this.eaq);
-    if (!this.eav)
+    AppMethodBeat.i(19932);
+    ad.v("MicroMsg.MMNotification", "cancel notification talker:" + paramString + " last talker:" + this.fkF + "  curChattingTalker:" + this.fkE);
+    if (!this.fkJ)
     {
-      AppMethodBeat.o(15900);
+      AppMethodBeat.o(19932);
       return;
     }
-    aw.aaz();
-    paramString = com.tencent.mm.model.c.YF().arH(paramString);
+    az.arV();
+    paramString = com.tencent.mm.model.c.apR().aIn(paramString);
     if ((paramString != null) && (paramString.field_unReadCount != 0))
     {
       cancel();
-      AppMethodBeat.o(15900);
+      AppMethodBeat.o(19932);
       return;
     }
-    if (u.oM(t.flc) == 0)
+    if (x.tz(w.gMn) == 0)
     {
       cancel();
-      AppMethodBeat.o(15900);
+      AppMethodBeat.o(19932);
       return;
     }
-    AppMethodBeat.o(15900);
+    AppMethodBeat.o(19932);
+  }
+  
+  public final void cw(boolean paramBoolean)
+  {
+    AppMethodBeat.i(19931);
+    this.fkI = paramBoolean;
+    ad.i("MicroMsg.MMNotification", "set hideNotification: %s, stack[%s]", new Object[] { Boolean.valueOf(this.fkI), bt.eGN() });
+    AppMethodBeat.o(19931);
+  }
+  
+  public final void cx(boolean paramBoolean)
+  {
+    AppMethodBeat.i(19946);
+    d.cy(paramBoolean);
+    AppMethodBeat.o(19946);
   }
   
   public final Looper getLooper()
   {
-    AppMethodBeat.i(15906);
+    AppMethodBeat.i(19938);
     Looper localLooper = Looper.getMainLooper();
-    AppMethodBeat.o(15906);
+    AppMethodBeat.o(19938);
     return localLooper;
   }
   
-  public final void ih(int paramInt)
+  public final void kt(int paramInt)
   {
-    AppMethodBeat.i(15912);
-    d.ik(paramInt);
-    AppMethodBeat.o(15912);
+    AppMethodBeat.i(19944);
+    d.kw(paramInt);
+    AppMethodBeat.o(19944);
   }
   
-  public final void ii(int paramInt)
+  public final void ku(int paramInt)
   {
-    AppMethodBeat.i(15915);
-    f.a.IN();
+    AppMethodBeat.i(19947);
+    f.a.Ub();
     if (paramInt != 0)
     {
-      Object localObject = com.tencent.mm.booter.notification.queue.b.IO().ebk.il(paramInt);
+      Object localObject = com.tencent.mm.booter.notification.queue.b.Uc().flw.kx(paramInt);
       if (((List)localObject).isEmpty())
       {
-        AppMethodBeat.o(15915);
+        AppMethodBeat.o(19947);
         return;
       }
-      v localv = v.K(ah.getContext());
+      v localv = v.M(aj.getContext());
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         Integer localInteger = (Integer)((Iterator)localObject).next();
-        com.tencent.mm.booter.notification.queue.b.IO().a(localv, localInteger.intValue());
+        com.tencent.mm.booter.notification.queue.b.Uc().a(localv, localInteger.intValue());
       }
     }
-    AppMethodBeat.o(15915);
-  }
-  
-  public final void kD(String paramString)
-  {
-    this.eaq = paramString;
-  }
-  
-  public final void n(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(15910);
-    f.a.IN();
-    e.n(paramInt, paramString);
-    AppMethodBeat.o(15910);
+    AppMethodBeat.o(19947);
   }
   
   public final void notify(int paramInt, Notification paramNotification)
   {
-    AppMethodBeat.i(15916);
+    AppMethodBeat.i(19948);
     a(paramInt, paramNotification, true);
-    AppMethodBeat.o(15916);
+    AppMethodBeat.o(19948);
+  }
+  
+  public final void ou(String paramString)
+  {
+    this.fkE = paramString;
+  }
+  
+  public final void p(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(19942);
+    f.a.Ub();
+    e.p(paramInt, paramString);
+    AppMethodBeat.o(19942);
   }
   
   public final void y(String paramString, int paramInt)
   {
-    AppMethodBeat.i(15913);
+    AppMethodBeat.i(19945);
     d.z(paramString, paramInt);
-    AppMethodBeat.o(15913);
+    AppMethodBeat.o(19945);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.booter.notification.b
  * JD-Core Version:    0.7.0.1
  */

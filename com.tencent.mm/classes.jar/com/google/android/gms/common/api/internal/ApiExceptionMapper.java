@@ -11,9 +11,9 @@ public class ApiExceptionMapper
 {
   public Exception getException(Status paramStatus)
   {
-    AppMethodBeat.i(60563);
+    AppMethodBeat.i(11055);
     paramStatus = ApiExceptionUtil.fromStatus(paramStatus);
-    AppMethodBeat.o(60563);
+    AppMethodBeat.o(11055);
     return paramStatus;
   }
 }

@@ -9,13 +9,13 @@ public class zzbj
   extends zza
 {
   public static final Parcelable.Creator<zzbj> CREATOR = new ab();
-  public final ConnectionConfiguration[] Tu;
+  public final ConnectionConfiguration[] Vj;
   public final int statusCode;
   
   public zzbj(int paramInt, ConnectionConfiguration[] paramArrayOfConnectionConfiguration)
   {
     this.statusCode = paramInt;
-    this.Tu = paramArrayOfConnectionConfiguration;
+    this.Vj = paramArrayOfConnectionConfiguration;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

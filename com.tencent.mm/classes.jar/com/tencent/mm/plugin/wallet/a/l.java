@@ -1,43 +1,46 @@
 package com.tencent.mm.plugin.wallet.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.a.uz;
-import com.tencent.mm.g.a.uz.a;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.a.wy;
+import com.tencent.mm.g.a.wy.a;
+import com.tencent.mm.g.a.wy.b;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.wallet_core.c.a.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 
 public final class l
-  extends c<uz>
+  extends c<wy>
 {
   public l()
   {
-    AppMethodBeat.i(45843);
-    this.__eventId = uz.class.getName().hashCode();
-    AppMethodBeat.o(45843);
+    AppMethodBeat.i(160862);
+    this.__eventId = wy.class.getName().hashCode();
+    AppMethodBeat.o(160862);
   }
   
-  private static void a(uz paramuz, f paramf)
+  private static void a(wy paramwy, com.tencent.mm.al.g paramg)
   {
-    AppMethodBeat.i(45844);
-    ab.i("MicroMsg.HandleWCPayWalletBufferListener", "do check pay jsapi");
-    g.RM();
-    g.RK().eHt.a(1767, paramf);
-    paramuz = paramuz.cLx;
-    ab.i("MicroMsg.HandleWCPayWalletBufferListener", "appId: %s, \nnonce: %s, \ntimestamp: %s, \npackage: %s, \nsign: %s, \nsignType: %s, \nurl: %s", new Object[] { paramuz.appId, paramuz.nonceStr, paramuz.cqf, paramuz.cLz, paramuz.cLA, paramuz.signType, paramuz.url });
-    paramuz = new a(paramuz.appId, paramuz.nonceStr, paramuz.cqf, paramuz.cLz, paramuz.cLA, paramuz.signType, paramuz.url);
-    g.RM();
-    g.RK().eHt.a(paramuz, 0);
-    AppMethodBeat.o(45844);
+    AppMethodBeat.i(69186);
+    ad.i("MicroMsg.HandleWCPayWalletBufferListener", "do check pay jsapi");
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a(1767, paramg);
+    paramwy = paramwy.dCu;
+    ad.i("MicroMsg.HandleWCPayWalletBufferListener", "appId: %s, \nnonce: %s, \ntimestamp: %s, \npackage: %s, \nsign: %s, \nsignType: %s, \nurl: %s", new Object[] { paramwy.appId, paramwy.nonceStr, paramwy.cMo, paramwy.dCw, paramwy.dCx, paramwy.signType, paramwy.url });
+    paramwy = new a(paramwy.appId, paramwy.nonceStr, paramwy.cMo, paramwy.dCw, paramwy.dCx, paramwy.signType, paramwy.url);
+    com.tencent.mm.kernel.g.afC();
+    com.tencent.mm.kernel.g.afA().gcy.a(paramwy, 0);
+    AppMethodBeat.o(69186);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a.l
  * JD-Core Version:    0.7.0.1
  */

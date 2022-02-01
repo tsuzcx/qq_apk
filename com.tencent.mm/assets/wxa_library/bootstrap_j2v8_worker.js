@@ -18,5 +18,8 @@
         }
         var w_ = global.WeixinWorker;
         typeof w_.appServiceMsgHandler !== 'undefined' && w_.appServiceMsgHandler(msg);
-    }
+    };
+
+    // add for invoke js apis
+   global.WeixinJSCore = {};
 })(this);

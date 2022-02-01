@@ -28,11 +28,11 @@ import java.util.Set;
 final class v$d
   implements ServiceConnection, Handler.Callback
 {
+  private final Map<ComponentName, a> FB = new HashMap();
+  private Set<String> FC = new HashSet();
   private final Context mContext;
   private final Handler mHandler;
   private final HandlerThread mHandlerThread;
-  private final Map<ComponentName, v.d.a> zg = new HashMap();
-  private Set<String> zi = new HashSet();
   
   v$d(Context paramContext)
   {
@@ -42,17 +42,17 @@ final class v$d
     this.mHandler = new Handler(this.mHandlerThread.getLooper(), this);
   }
   
-  private void a(v.d.a parama)
+  private void a(a parama)
   {
-    if (parama.zj)
+    if (parama.FD)
     {
       this.mContext.unbindService(this);
-      parama.zj = false;
+      parama.FD = false;
     }
-    parama.zk = null;
+    parama.FE = null;
   }
   
-  private void b(v.d.a parama)
+  private void b(a parama)
   {
     if (this.mHandler.hasMessages(3, parama.componentName)) {
       return;
@@ -60,8 +60,8 @@ final class v$d
     parama.retryCount += 1;
     if (parama.retryCount > 6)
     {
-      new StringBuilder("Giving up on delivering ").append(parama.zl.size()).append(" tasks to ").append(parama.componentName).append(" after ").append(parama.retryCount).append(" retries");
-      parama.zl.clear();
+      new StringBuilder("Giving up on delivering ").append(parama.FF.size()).append(" tasks to ").append(parama.componentName).append(" after ").append(parama.retryCount).append(" retries");
+      parama.FF.clear();
       return;
     }
     int i = (1 << parama.retryCount - 1) * 1000;
@@ -72,54 +72,54 @@ final class v$d
     this.mHandler.sendMessageDelayed(parama, i);
   }
   
-  private void c(v.d.a parama)
+  private void c(a parama)
   {
     if (Log.isLoggable("NotifManCompat", 3)) {
-      new StringBuilder("Processing component ").append(parama.componentName).append(", ").append(parama.zl.size()).append(" queued tasks");
+      new StringBuilder("Processing component ").append(parama.componentName).append(", ").append(parama.FF.size()).append(" queued tasks");
     }
-    if (parama.zl.isEmpty()) {}
+    if (parama.FF.isEmpty()) {}
     for (;;)
     {
       return;
       boolean bool;
-      if (parama.zj)
+      if (parama.FD)
       {
         bool = true;
-        if ((!bool) || (parama.zk == null)) {
+        if ((!bool) || (parama.FE == null)) {
           b(parama);
         }
       }
       else
       {
         localObject = new Intent("android.support.BIND_NOTIFICATION_SIDE_CHANNEL").setComponent(parama.componentName);
-        parama.zj = this.mContext.bindService((Intent)localObject, this, 33);
-        if (parama.zj) {
+        parama.FD = this.mContext.bindService((Intent)localObject, this, 33);
+        if (parama.FD) {
           parama.retryCount = 0;
         }
         for (;;)
         {
-          bool = parama.zj;
+          bool = parama.FD;
           break;
           new StringBuilder("Unable to bind to listener ").append(parama.componentName);
           this.mContext.unbindService(this);
         }
       }
-      Object localObject = (v.e)parama.zl.peek();
+      Object localObject = (v.e)parama.FF.peek();
       if (localObject != null) {}
       try
       {
         if (Log.isLoggable("NotifManCompat", 3)) {
           new StringBuilder("Sending task ").append(localObject);
         }
-        ((v.e)localObject).a(parama.zk);
-        parama.zl.remove();
+        ((v.e)localObject).a(parama.FE);
+        parama.FF.remove();
       }
       catch (DeadObjectException localDeadObjectException)
       {
         if (Log.isLoggable("NotifManCompat", 3)) {
           new StringBuilder("Remote service has died: ").append(parama.componentName);
         }
-        if (parama.zl.isEmpty()) {
+        if (parama.FF.isEmpty()) {
           continue;
         }
         b(parama);
@@ -149,10 +149,10 @@ final class v$d
       return false;
     case 0: 
       paramMessage = (v.e)paramMessage.obj;
-      Object localObject2 = v.L(this.mContext);
-      if (!((Set)localObject2).equals(this.zi))
+      Object localObject2 = v.N(this.mContext);
+      if (!((Set)localObject2).equals(this.FC))
       {
-        this.zi = ((Set)localObject2);
+        this.FC = ((Set)localObject2);
         Object localObject3 = this.mContext.getPackageManager().queryIntentServices(new Intent().setAction("android.support.BIND_NOTIFICATION_SIDE_CHANNEL"), 0);
         localObject1 = new HashSet();
         localObject3 = ((List)localObject3).iterator();
@@ -173,15 +173,15 @@ final class v$d
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (ComponentName)((Iterator)localObject2).next();
-          if (!this.zg.containsKey(localObject3))
+          if (!this.FB.containsKey(localObject3))
           {
             if (Log.isLoggable("NotifManCompat", 3)) {
               new StringBuilder("Adding listener record for ").append(localObject3);
             }
-            this.zg.put(localObject3, new v.d.a((ComponentName)localObject3));
+            this.FB.put(localObject3, new a((ComponentName)localObject3));
           }
         }
-        localObject2 = this.zg.entrySet().iterator();
+        localObject2 = this.FB.entrySet().iterator();
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (Map.Entry)((Iterator)localObject2).next();
@@ -190,41 +190,41 @@ final class v$d
             if (Log.isLoggable("NotifManCompat", 3)) {
               new StringBuilder("Removing listener record for ").append(((Map.Entry)localObject3).getKey());
             }
-            a((v.d.a)((Map.Entry)localObject3).getValue());
+            a((a)((Map.Entry)localObject3).getValue());
             ((Iterator)localObject2).remove();
           }
         }
       }
-      localObject1 = this.zg.values().iterator();
+      localObject1 = this.FB.values().iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (v.d.a)((Iterator)localObject1).next();
-        ((v.d.a)localObject2).zl.add(paramMessage);
-        c((v.d.a)localObject2);
+        localObject2 = (a)((Iterator)localObject1).next();
+        ((a)localObject2).FF.add(paramMessage);
+        c((a)localObject2);
       }
       return true;
     case 1: 
       localObject1 = (v.c)paramMessage.obj;
       paramMessage = ((v.c)localObject1).componentName;
-      localObject1 = ((v.c)localObject1).zf;
-      paramMessage = (v.d.a)this.zg.get(paramMessage);
+      localObject1 = ((v.c)localObject1).FA;
+      paramMessage = (a)this.FB.get(paramMessage);
       if (paramMessage != null)
       {
-        paramMessage.zk = o.a.b((IBinder)localObject1);
+        paramMessage.FE = o.a.b((IBinder)localObject1);
         paramMessage.retryCount = 0;
         c(paramMessage);
       }
       return true;
     case 2: 
       paramMessage = (ComponentName)paramMessage.obj;
-      paramMessage = (v.d.a)this.zg.get(paramMessage);
+      paramMessage = (a)this.FB.get(paramMessage);
       if (paramMessage != null) {
         a(paramMessage);
       }
       return true;
     }
     paramMessage = (ComponentName)paramMessage.obj;
-    paramMessage = (v.d.a)this.zg.get(paramMessage);
+    paramMessage = (a)this.FB.get(paramMessage);
     if (paramMessage != null) {
       c(paramMessage);
     }
@@ -246,10 +246,24 @@ final class v$d
     }
     this.mHandler.obtainMessage(2, paramComponentName).sendToTarget();
   }
+  
+  static final class a
+  {
+    boolean FD = false;
+    o FE;
+    ArrayDeque<v.e> FF = new ArrayDeque();
+    final ComponentName componentName;
+    int retryCount = 0;
+    
+    a(ComponentName paramComponentName)
+    {
+      this.componentName = paramComponentName;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.app.v.d
  * JD-Core Version:    0.7.0.1
  */

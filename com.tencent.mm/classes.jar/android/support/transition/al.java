@@ -1,43 +1,64 @@
 package android.support.transition;
 
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroupOverlay;
+import java.util.Map;
 
-final class al
-  implements am
+public abstract class al
+  extends s
 {
-  private final ViewGroupOverlay uc;
+  private static final String[] Bn = { "android:visibilityPropagation:visibility", "android:visibilityPropagation:center" };
   
-  al(ViewGroup paramViewGroup)
+  static int a(u paramu, int paramInt)
   {
-    this.uc = paramViewGroup.getOverlay();
+    if (paramu == null) {
+      return -1;
+    }
+    paramu = (int[])paramu.values.get("android:visibilityPropagation:center");
+    if (paramu == null) {
+      return -1;
+    }
+    return paramu[paramInt];
   }
   
-  public final void add(Drawable paramDrawable)
+  public static int e(u paramu)
   {
-    this.uc.add(paramDrawable);
+    if (paramu == null) {
+      return 8;
+    }
+    paramu = (Integer)paramu.values.get("android:visibilityPropagation:visibility");
+    if (paramu == null) {
+      return 8;
+    }
+    return paramu.intValue();
   }
   
-  public final void add(View paramView)
+  public final void c(u paramu)
   {
-    this.uc.add(paramView);
+    View localView = paramu.view;
+    Integer localInteger = (Integer)paramu.values.get("android:visibility:visibility");
+    Object localObject = localInteger;
+    if (localInteger == null) {
+      localObject = Integer.valueOf(localView.getVisibility());
+    }
+    paramu.values.put("android:visibilityPropagation:visibility", localObject);
+    localObject = new int[2];
+    localView.getLocationOnScreen((int[])localObject);
+    localObject[0] += Math.round(localView.getTranslationX());
+    localObject[0] += localView.getWidth() / 2;
+    localObject[1] += Math.round(localView.getTranslationY());
+    int i = localObject[1];
+    localObject[1] = (localView.getHeight() / 2 + i);
+    paramu.values.put("android:visibilityPropagation:center", localObject);
   }
   
-  public final void remove(Drawable paramDrawable)
+  public final String[] getPropagationProperties()
   {
-    this.uc.remove(paramDrawable);
-  }
-  
-  public final void remove(View paramView)
-  {
-    this.uc.remove(paramView);
+    return Bn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.al
  * JD-Core Version:    0.7.0.1
  */

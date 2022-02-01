@@ -2,41 +2,64 @@ package com.tencent.mm.wallet_core.c;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.a.p;
+import com.tencent.mm.b.p;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.an;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tenpay.ndk.CertUtil;
 import com.tenpay.ndk.CertUtil.EventListener;
 import com.tenpay.ndk.MessageDigestUtil;
 
 public final class b
 {
-  private static b AWF = null;
-  static boolean bRB = false;
-  private boolean AWG;
-  private CertUtil.EventListener AWH;
+  private static b Ida = null;
+  static boolean csX = false;
+  private boolean Idb;
+  private CertUtil.EventListener Idc;
   
   public b()
   {
-    AppMethodBeat.i(142652);
-    this.AWG = false;
-    this.AWH = new b.1(this);
-    AppMethodBeat.o(142652);
+    AppMethodBeat.i(72725);
+    this.Idb = false;
+    this.Idc = new CertUtil.EventListener()
+    {
+      public final String getUniqueID()
+      {
+        AppMethodBeat.i(72724);
+        String str = q.cG(false);
+        if (bt.isNullOrNil(str))
+        {
+          str = q.Xa();
+          AppMethodBeat.o(72724);
+          return str;
+        }
+        AppMethodBeat.o(72724);
+        return str;
+      }
+      
+      public final void onEvent(int paramAnonymousInt, String paramAnonymousString)
+      {
+        AppMethodBeat.i(72723);
+        ad.i("MicroMsg.CertUtilWx", "code ret: %s %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
+        AppMethodBeat.o(72723);
+      }
+    };
+    AppMethodBeat.o(72725);
   }
   
   public static boolean F(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(49029);
+    AppMethodBeat.i(72734);
     Object localObject1 = "";
     if (paramBoolean)
     {
       localObject1 = new MessageDigestUtil();
-      g.RM();
-      g.RJ();
+      g.afC();
+      g.afz();
       Object localObject2 = p.getString(a.getUin());
       String str = (String)localObject2 + "_pUI6cNqzLt2Z3mQSrYuF09XSGsBtTIcUgp9jcWZ7F7BBs8/DFVFMKiwbtaRPOiLE";
       localObject2 = new byte[16];
@@ -49,175 +72,175 @@ public final class b
       }
       localObject1 = new String((byte[])localObject2);
     }
-    ab.d("MicroMsg.CertUtilWx", "setTokens stack v2 useSm4 %s sm4Key %s %s", new Object[] { Boolean.valueOf(paramBoolean), localObject1, bo.dtY().toString() });
+    ad.d("MicroMsg.CertUtilWx", "setTokens stack v2 useSm4 %s sm4Key %s %s", new Object[] { Boolean.valueOf(paramBoolean), localObject1, bt.eGN().toString() });
     paramBoolean = CertUtil.getInstance().setTokens(paramString1, paramString2, paramBoolean, (String)localObject1);
-    ab.d("MicroMsg.CertUtilWx", "setTokens result ret:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(49029);
+    ad.d("MicroMsg.CertUtilWx", "setTokens result ret:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(72734);
     return paramBoolean;
   }
   
-  public static int avW(String paramString)
+  public static int aMY(String paramString)
   {
-    AppMethodBeat.i(49032);
+    AppMethodBeat.i(72737);
     int i = CertUtil.getInstance().getTokenCount(paramString);
-    ab.d("MicroMsg.CertUtilWx", "getTokenCount ret: %d stack %s", new Object[] { Integer.valueOf(i), bo.dtY().toString() });
-    AppMethodBeat.o(49032);
+    ad.d("MicroMsg.CertUtilWx", "getTokenCount ret: %d stack %s", new Object[] { Integer.valueOf(i), bt.eGN().toString() });
+    AppMethodBeat.o(72737);
     return i;
   }
   
   public static void clean()
   {
-    AppMethodBeat.i(49035);
-    ab.d("MicroMsg.CertUtilWx", "clean allcrt stack %s", new Object[] { bo.dtY().toString() });
+    AppMethodBeat.i(72740);
+    ad.d("MicroMsg.CertUtilWx", "clean allcrt stack %s", new Object[] { bt.eGN().toString() });
     CertUtil.getInstance().clearAllCert();
-    AppMethodBeat.o(49035);
+    AppMethodBeat.o(72740);
   }
   
   public static void clearCert(String paramString)
   {
-    AppMethodBeat.i(49034);
-    ab.d("MicroMsg.CertUtilWx", "clearCert stack %s", new Object[] { bo.dtY().toString() });
+    AppMethodBeat.i(72739);
+    ad.d("MicroMsg.CertUtilWx", "clearCert stack %s", new Object[] { bt.eGN().toString() });
     CertUtil.getInstance().clearCert(paramString);
-    AppMethodBeat.o(49034);
+    AppMethodBeat.o(72739);
   }
   
   public static void clearToken(String paramString)
   {
-    AppMethodBeat.i(49031);
-    ab.d("MicroMsg.CertUtilWx", "clearToken stack %s", new Object[] { bo.dtY().toString() });
+    AppMethodBeat.i(72736);
+    ad.d("MicroMsg.CertUtilWx", "clearToken stack %s", new Object[] { bt.eGN().toString() });
     CertUtil.getInstance().clearToken(paramString);
-    AppMethodBeat.o(49031);
+    AppMethodBeat.o(72736);
   }
   
-  public static b dSi()
+  public static b fjR()
   {
-    AppMethodBeat.i(49022);
-    if (AWF == null) {
-      AWF = new b();
+    AppMethodBeat.i(72726);
+    if (Ida == null) {
+      Ida = new b();
     }
-    b localb = AWF;
-    AppMethodBeat.o(49022);
+    b localb = Ida;
+    AppMethodBeat.o(72726);
     return localb;
   }
   
   public static String genUserSig(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(49028);
-    ab.d("MicroMsg.CertUtilWx", "genUserSig stack %s", new Object[] { bo.dtY().toString() });
+    AppMethodBeat.i(72733);
+    ad.d("MicroMsg.CertUtilWx", "genUserSig stack %s", new Object[] { bt.eGN().toString() });
     paramString1 = CertUtil.getInstance().genUserSig(paramString1, paramString2);
-    AppMethodBeat.o(49028);
+    AppMethodBeat.o(72733);
     return paramString1;
   }
   
   public static String genUserSig(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(155102);
-    ab.d("MicroMsg.CertUtilWx", "genUserSig stack %s", new Object[] { bo.dtY().toString() });
+    AppMethodBeat.i(72732);
+    ad.d("MicroMsg.CertUtilWx", "genUserSig stack %s", new Object[] { bt.eGN().toString() });
     paramString = CertUtil.getInstance().genUserSig(paramString, paramArrayOfByte);
-    AppMethodBeat.o(155102);
+    AppMethodBeat.o(72732);
     return paramString;
   }
   
   public static int getLastError()
   {
-    AppMethodBeat.i(49033);
-    ab.d("MicroMsg.CertUtilWx", "getLastError stack %s", new Object[] { bo.dtY().toString() });
+    AppMethodBeat.i(72738);
+    ad.d("MicroMsg.CertUtilWx", "getLastError stack %s", new Object[] { bt.eGN().toString() });
     int i = CertUtil.getInstance().getLastError();
-    AppMethodBeat.o(49033);
+    AppMethodBeat.o(72738);
     return i;
   }
   
   public static String getToken(String paramString)
   {
-    AppMethodBeat.i(49030);
-    ab.d("MicroMsg.CertUtilWx", "getToken stack %s", new Object[] { bo.dtY().toString() });
+    AppMethodBeat.i(72735);
+    ad.d("MicroMsg.CertUtilWx", "getToken stack %s", new Object[] { bt.eGN().toString() });
     paramString = CertUtil.getInstance().getToken(paramString);
-    AppMethodBeat.o(49030);
+    AppMethodBeat.o(72735);
     return paramString;
   }
   
   public static boolean isCertExist(String paramString)
   {
-    AppMethodBeat.i(49027);
-    ab.d("MicroMsg.CertUtilWx", "isCertExist stack %s", new Object[] { bo.dtY().toString() });
-    h.qsU.idkeyStat(414L, 5L, 1L, true);
+    AppMethodBeat.i(72731);
+    ad.d("MicroMsg.CertUtilWx", "isCertExist stack %s", new Object[] { bt.eGN().toString() });
+    h.vKh.idkeyStat(414L, 5L, 1L, true);
     boolean bool = CertUtil.getInstance().isCertExist(paramString);
-    h.qsU.idkeyStat(414L, 6L, 1L, true);
-    AppMethodBeat.o(49027);
+    h.vKh.idkeyStat(414L, 6L, 1L, true);
+    AppMethodBeat.o(72731);
     return bool;
   }
   
-  public final boolean dSj()
+  public final boolean fjS()
   {
-    AppMethodBeat.i(49026);
-    ab.d("MicroMsg.CertUtilWx", "importCertNone");
+    AppMethodBeat.i(72730);
+    ad.d("MicroMsg.CertUtilWx", "importCertNone");
     try
     {
-      this.AWG = false;
+      this.Idb = false;
       return false;
     }
     finally
     {
-      AppMethodBeat.o(49026);
+      AppMethodBeat.o(72730);
     }
   }
   
-  public final String eY(String paramString, int paramInt)
+  public final String gm(String paramString, int paramInt)
   {
-    AppMethodBeat.i(49024);
-    ab.i("MicroMsg.CertUtilWx", "getCertApplyCSR lock %s %s", new Object[] { bo.dtY().toString(), Integer.valueOf(paramInt) });
+    AppMethodBeat.i(72728);
+    ad.i("MicroMsg.CertUtilWx", "getCertApplyCSR lock %s %s", new Object[] { bt.eGN().toString(), Integer.valueOf(paramInt) });
     try
     {
-      if (this.AWG)
+      if (this.Idb)
       {
-        ab.i("MicroMsg.CertUtilWx", "isCert_Wating");
+        ad.i("MicroMsg.CertUtilWx", "isCert_Wating");
         return "";
       }
-      this.AWG = true;
+      this.Idb = true;
       paramString = CertUtil.getInstance().getCertApplyCSR(paramString, paramInt);
       return paramString;
     }
     finally
     {
-      AppMethodBeat.o(49024);
+      AppMethodBeat.o(72728);
     }
   }
   
   public final boolean importCert(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(49025);
-    ab.i("MicroMsg.CertUtilWx", "importCert  cid %s cert %s stack %s", new Object[] { paramString1, paramString2, bo.dtY().toString() });
+    AppMethodBeat.i(72729);
+    ad.i("MicroMsg.CertUtilWx", "importCert  cid %s cert %s stack %s", new Object[] { paramString1, paramString2, bt.eGN().toString() });
     try
     {
-      this.AWG = false;
+      this.Idb = false;
       boolean bool = CertUtil.getInstance().importCert(paramString1, paramString2);
-      ab.i("MicroMsg.CertUtilWx", "importCert %s", new Object[] { Boolean.valueOf(bool) });
-      AppMethodBeat.o(49025);
+      ad.i("MicroMsg.CertUtilWx", "importCert %s", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(72729);
       return bool;
     }
     finally
     {
-      AppMethodBeat.o(49025);
+      AppMethodBeat.o(72729);
     }
   }
   
   public final void init(Context paramContext)
   {
-    AppMethodBeat.i(49023);
-    if (bRB)
+    AppMethodBeat.i(72727);
+    if (csX)
     {
-      AppMethodBeat.o(49023);
+      AppMethodBeat.o(72727);
       return;
     }
-    ab.d("MicroMsg.CertUtilWx", "init  %s", new Object[] { bo.dtY().toString() });
-    CertUtil.getInstance().init(paramContext, this.AWH);
-    bRB = true;
-    AppMethodBeat.o(49023);
+    ad.d("MicroMsg.CertUtilWx", "init  %s", new Object[] { bt.eGN().toString() });
+    CertUtil.getInstance().init(paramContext, this.Idc);
+    csX = true;
+    AppMethodBeat.o(72727);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.b
  * JD-Core Version:    0.7.0.1
  */

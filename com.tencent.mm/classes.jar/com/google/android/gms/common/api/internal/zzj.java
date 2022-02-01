@@ -21,7 +21,7 @@ public final class zzj
   
   public zzj(Iterable<? extends GoogleApi<?>> paramIterable)
   {
-    AppMethodBeat.i(60935);
+    AppMethodBeat.i(11427);
     this.zzei = new a();
     this.zzej = new TaskCompletionSource();
     this.zzel = false;
@@ -33,20 +33,20 @@ public final class zzj
       this.zzcc.put(localGoogleApi.zzm(), null);
     }
     this.zzek = this.zzcc.keySet().size();
-    AppMethodBeat.o(60935);
+    AppMethodBeat.o(11427);
   }
   
   public final Task<Map<zzh<?>, String>> getTask()
   {
-    AppMethodBeat.i(60937);
+    AppMethodBeat.i(11429);
     Task localTask = this.zzej.getTask();
-    AppMethodBeat.o(60937);
+    AppMethodBeat.o(11429);
     return localTask;
   }
   
   public final void zza(zzh<?> paramzzh, ConnectionResult paramConnectionResult, String paramString)
   {
-    AppMethodBeat.i(60938);
+    AppMethodBeat.i(11430);
     this.zzcc.put(paramzzh, paramConnectionResult);
     this.zzei.put(paramzzh, paramString);
     this.zzek -= 1;
@@ -59,19 +59,19 @@ public final class zzj
       {
         paramzzh = new AvailabilityException(this.zzcc);
         this.zzej.setException(paramzzh);
-        AppMethodBeat.o(60938);
+        AppMethodBeat.o(11430);
         return;
       }
       this.zzej.setResult(this.zzei);
     }
-    AppMethodBeat.o(60938);
+    AppMethodBeat.o(11430);
   }
   
   public final Set<zzh<?>> zzs()
   {
-    AppMethodBeat.i(60936);
+    AppMethodBeat.i(11428);
     Set localSet = this.zzcc.keySet();
-    AppMethodBeat.o(60936);
+    AppMethodBeat.o(11428);
     return localSet;
   }
 }

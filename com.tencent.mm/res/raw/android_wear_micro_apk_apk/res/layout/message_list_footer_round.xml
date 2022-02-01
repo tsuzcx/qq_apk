@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:paddingBottom="25.0dip" style="@style/MessageActionArea"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" style="@style/MessageActionArea">
+        <LinearLayout android:id="@id/reply_emoji_btn" style="@style/MessageActionButtonBgRound" />
+        <LinearLayout android:id="@id/reply_voice_btn" style="@style/MessageActionButtonBgRound" />
+        <LinearLayout android:id="@id/reply_text_btn" style="@style/MessageActionButtonBgRound" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.wear.app.ui.widget.WearTextView android:text="@string/reply_history_emoji" android:drawableLeft="@drawable/message_action_emoji" style="@style/MessageActionButtonTextViewRound" />
+        <com.tencent.mm.wear.app.ui.widget.WearTextView android:text="@string/reply_history_voice" android:drawableLeft="@drawable/message_action_voice" style="@style/MessageActionButtonTextViewRound" />
+        <com.tencent.mm.wear.app.ui.widget.WearTextView android:text="@string/reply_history_text" android:drawableLeft="@drawable/message_action_text" style="@style/MessageActionButtonTextViewRound" />
+    </LinearLayout>
+</FrameLayout>

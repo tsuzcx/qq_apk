@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/qp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="16.0dip" android:textColor="@color/a_j" android:layout_gravity="center_horizontal" android:id="@id/gur" android:layout_width="wrap_content" android:layout_marginTop="@dimen/ha" android:text="@string/drs" style="@style/n2" />
+        <TextView android:textSize="16.0dip" android:layout_gravity="center_horizontal" android:id="@id/guq" android:layout_width="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/drr" style="@style/n2" />
+        <TextView android:textSize="28.0dip" android:textStyle="bold" android:textColor="@color/y4" android:layout_gravity="center_horizontal" android:id="@id/guo" android:layout_width="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginBottom="10.0dip" style="@style/pk" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="4.0dip">
+            <ProgressBar android:id="@id/gus" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/nr" />
+            <View android:layout_gravity="bottom" android:background="#ffd4d4d4" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        </FrameLayout>
+    </LinearLayout>
+    <ListView android:orientation="vertical" android:id="@id/gup" android:background="@null" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

@@ -15,14 +15,14 @@ final class zzf
   
   public final void onChange(boolean paramBoolean)
   {
-    AppMethodBeat.i(90475);
+    AppMethodBeat.i(5496);
     this.zzagr.zzagu.set(true);
-    AppMethodBeat.o(90475);
+    AppMethodBeat.o(5496);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.gms.internal.stable.zzf
  * JD-Core Version:    0.7.0.1
  */

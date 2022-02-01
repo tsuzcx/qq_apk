@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class JsInspector
 {
-  private static JsInspector.a bJv;
+  private static a cqh;
   
   static native int JniNotify(long paramLong1, long paramLong2, String paramString);
   
@@ -14,34 +14,41 @@ public class JsInspector
   @Keep
   public static int jniCallbackNotify(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(115883);
-    if (bJv == null)
+    AppMethodBeat.i(139988);
+    if (cqh == null)
     {
-      AppMethodBeat.o(115883);
+      AppMethodBeat.o(139988);
       return -1;
     }
-    int i = bJv.yr();
-    AppMethodBeat.o(115883);
+    int i = cqh.Gr();
+    AppMethodBeat.o(139988);
     return i;
   }
   
   @Keep
   public static int jniCallbackSendData(long paramLong, String paramString)
   {
-    AppMethodBeat.i(115882);
-    if (bJv == null)
+    AppMethodBeat.i(139987);
+    if (cqh == null)
     {
-      AppMethodBeat.o(115882);
+      AppMethodBeat.o(139987);
       return -1;
     }
-    int i = bJv.yq();
-    AppMethodBeat.o(115882);
+    int i = cqh.Gq();
+    AppMethodBeat.o(139987);
     return i;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract int Gq();
+    
+    public abstract int Gr();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.magicbrush.engine.JsInspector
  * JD-Core Version:    0.7.0.1
  */

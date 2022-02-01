@@ -7,81 +7,100 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.bt;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class RadioBelowSummarytAndIconPreference
   extends Preference
 {
-  int UM;
+  int abP;
   private View mView;
-  private LinearLayout tYh;
-  private ImageView tYi;
-  private View tYj;
-  View.OnClickListener tYk;
+  private LinearLayout zSB;
+  private ImageView zSC;
+  private View zSD;
+  View.OnClickListener zSE;
   
   public RadioBelowSummarytAndIconPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.UM = 0;
+    this.abP = 0;
   }
   
   public RadioBelowSummarytAndIconPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(142374);
-    this.UM = 0;
-    setLayoutResource(2130970179);
-    AppMethodBeat.o(142374);
+    AppMethodBeat.i(69580);
+    this.abP = 0;
+    setLayoutResource(2131494804);
+    AppMethodBeat.o(69580);
   }
   
-  public final void onBindView(View paramView)
+  public final void onBindView(final View paramView)
   {
-    AppMethodBeat.i(142376);
+    AppMethodBeat.i(69582);
     super.onBindView(paramView);
-    OW(8);
-    if ((this.tYi != null) && (this.tYk != null) && (!bo.hl(0, this.UM)))
+    Yb(8);
+    if ((this.zSC != null) && (this.zSE != null) && (!bt.iY(0, this.abP)))
     {
-      this.tYi.setImageResource(this.UM);
-      this.tYi.post(new RadioBelowSummarytAndIconPreference.1(this, paramView));
-      this.tYj.setOnClickListener(new RadioBelowSummarytAndIconPreference.2(this));
-    }
-    while (this.tYh != null) {
-      if (this.zsq != 0)
+      this.zSC.setImageResource(this.abP);
+      this.zSC.post(new Runnable()
       {
-        this.tYh.removeAllViews();
-        View.inflate(this.mContext, this.zsq, this.tYh);
-        AppMethodBeat.o(142376);
+        public final void run()
+        {
+          AppMethodBeat.i(69578);
+          RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)RadioBelowSummarytAndIconPreference.a(RadioBelowSummarytAndIconPreference.this).getLayoutParams();
+          localLayoutParams.leftMargin = paramView.findViewById(16908304).getWidth();
+          RadioBelowSummarytAndIconPreference.a(RadioBelowSummarytAndIconPreference.this).setLayoutParams(localLayoutParams);
+          AppMethodBeat.o(69578);
+        }
+      });
+      this.zSD.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(69579);
+          RadioBelowSummarytAndIconPreference.b(RadioBelowSummarytAndIconPreference.this).onClick(paramAnonymousView);
+          AppMethodBeat.o(69579);
+        }
+      });
+    }
+    while (this.zSB != null) {
+      if (this.Gge != 0)
+      {
+        this.zSB.removeAllViews();
+        View.inflate(this.mContext, this.Gge, this.zSB);
+        AppMethodBeat.o(69582);
         return;
-        if (this.tYi != null) {
-          this.tYi.setVisibility(8);
+        if (this.zSC != null) {
+          this.zSC.setVisibility(8);
         }
       }
       else
       {
-        this.tYh.setVisibility(8);
+        this.zSB.setVisibility(8);
       }
     }
-    AppMethodBeat.o(142376);
+    AppMethodBeat.o(69582);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(142375);
+    AppMethodBeat.i(69581);
     if (this.mView == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
       localViewGroup.removeAllViews();
-      this.tYh = ((LinearLayout)paramViewGroup.findViewById(16908312));
-      View.inflate(this.mContext, 2130970260, localViewGroup);
-      this.tYi = ((ImageView)localViewGroup.findViewById(2131826258));
-      this.tYj = localViewGroup.findViewById(2131826259);
+      this.zSB = ((LinearLayout)paramViewGroup.findViewById(16908312));
+      View.inflate(this.mContext, 2131494890, localViewGroup);
+      this.zSC = ((ImageView)localViewGroup.findViewById(2131305551));
+      this.zSD = localViewGroup.findViewById(2131305549);
       this.mView = paramViewGroup;
     }
     paramViewGroup = this.mView;
-    AppMethodBeat.o(142375);
+    AppMethodBeat.o(69581);
     return paramViewGroup;
   }
 }

@@ -5,26 +5,26 @@ import java.util.LinkedList;
 public final class g
   extends com.tencent.mm.d.a
 {
-  public LinkedList<String> Vu = new LinkedList();
+  public LinkedList<String> Xp = new LinkedList();
   
   protected final int a(int paramInt, Object... paramVarArgs)
   {
     if (paramInt == 0)
     {
-      ((a.a.a.c.a)paramVarArgs[0]).b(1, 1, this.Vu);
+      ((a.a.a.c.a)paramVarArgs[0]).b(1, 1, this.Xp);
       return 0;
     }
     if (paramInt == 1) {
-      return a.a.a.a.a(1, 1, this.Vu) + 0;
+      return a.a.a.a.a(1, 1, this.Xp) + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.Vu.clear();
-      paramVarArgs = new a.a.a.a.a(paramVarArgs, Vj);
-      for (paramInt = paramVarArgs.oy(); paramInt > 0; paramInt = paramVarArgs.oy()) {
+      this.Xp.clear();
+      paramVarArgs = new a.a.a.a.a(paramVarArgs, Xe);
+      for (paramInt = paramVarArgs.pl(); paramInt > 0; paramInt = paramVarArgs.pl()) {
         if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.oz();
+          paramVarArgs.pm();
         }
       }
       return 0;
@@ -38,7 +38,7 @@ public final class g
       default: 
         return -1;
       }
-      localg.Vu.add(locala.ou());
+      localg.Xp.add(locala.ph());
       return 0;
     }
     return -1;

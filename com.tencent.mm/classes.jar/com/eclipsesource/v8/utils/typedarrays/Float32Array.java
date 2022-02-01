@@ -10,8 +10,8 @@ public class Float32Array
   public Float32Array(ArrayBuffer paramArrayBuffer)
   {
     this(paramArrayBuffer.getByteBuffer());
-    AppMethodBeat.i(75048);
-    AppMethodBeat.o(75048);
+    AppMethodBeat.i(61672);
+    AppMethodBeat.o(61672);
   }
   
   public Float32Array(ByteBuffer paramByteBuffer)
@@ -21,9 +21,9 @@ public class Float32Array
   
   public float get(int paramInt)
   {
-    AppMethodBeat.i(75049);
+    AppMethodBeat.i(61673);
     float f = this.buffer.asFloatBuffer().get(paramInt);
-    AppMethodBeat.o(75049);
+    AppMethodBeat.o(61673);
     return f;
   }
   
@@ -34,22 +34,22 @@ public class Float32Array
   
   public int length()
   {
-    AppMethodBeat.i(75050);
+    AppMethodBeat.i(61674);
     int i = this.buffer.asFloatBuffer().limit();
-    AppMethodBeat.o(75050);
+    AppMethodBeat.o(61674);
     return i;
   }
   
   public void put(int paramInt, float paramFloat)
   {
-    AppMethodBeat.i(75051);
+    AppMethodBeat.i(61675);
     this.buffer.asFloatBuffer().put(paramInt, paramFloat);
-    AppMethodBeat.o(75051);
+    AppMethodBeat.o(61675);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.utils.typedarrays.Float32Array
  * JD-Core Version:    0.7.0.1
  */

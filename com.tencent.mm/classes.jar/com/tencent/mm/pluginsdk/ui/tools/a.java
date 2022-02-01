@@ -3,513 +3,608 @@ package com.tencent.mm.pluginsdk.ui.tools;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
-import android.content.res.AssetManager;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.webkit.MimeTypeMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.a.a.a;
-import com.tencent.mm.pluginsdk.model.o;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.k;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.model.ce;
+import com.tencent.mm.plugin.expt.a.b;
+import com.tencent.mm.plugin.expt.a.b.a;
+import com.tencent.mm.plugin.handoff.model.HandOff;
+import com.tencent.mm.plugin.handoff.model.HandOffFile;
+import com.tencent.mm.pluginsdk.model.q;
+import com.tencent.mm.pluginsdk.model.w.a;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.m;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.e.k;
-import com.tencent.xweb.d.a;
-import java.io.File;
+import com.tencent.mm.ui.MMActivity.a;
+import com.tencent.mm.ui.an;
+import com.tencent.mm.ui.e.l;
+import com.tencent.mm.ui.widget.a.f.c;
+import com.tencent.mm.vfs.i;
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public final class a
 {
-  private static Intent wdj;
-  private static WeakReference<Activity> wdk;
-  public static HashMap<String, String> wdl;
-  public static HashMap<String, String> wdm;
+  private static Intent Clb;
+  private static WeakReference<Activity> Clc;
+  public static HashMap<String, String> Cld;
+  public static HashMap<String, String> Cle;
   
   static
   {
-    int i = 0;
-    AppMethodBeat.i(125853);
-    wdl = new HashMap();
+    AppMethodBeat.i(109506);
+    Cld = new HashMap();
     long l = System.currentTimeMillis();
-    Object localObject4 = ah.getContext().getAssets();
-    Object localObject3 = null;
-    Object localObject1 = null;
     for (;;)
     {
+      int i;
       try
       {
-        localObject4 = ((AssetManager)localObject4).open("mimetype.txt");
-        localObject1 = localObject4;
-        localObject3 = localObject4;
-        arrayOfString1 = new String(com.tencent.mm.a.e.m((InputStream)localObject4)).split("\n");
-        localObject1 = localObject4;
-        localObject3 = localObject4;
+        String[] arrayOfString1 = i.aMP("assets:///mimetype.txt").split("\n");
         int j = arrayOfString1.length;
+        i = 0;
         if (i < j)
         {
           String str = arrayOfString1[i];
-          localObject1 = localObject4;
-          localObject3 = localObject4;
           String[] arrayOfString2 = str.split(",");
-          if (arrayOfString2 != null)
-          {
-            localObject1 = localObject4;
-            localObject3 = localObject4;
-            if (arrayOfString2.length > 1)
-            {
-              localObject1 = localObject4;
-              localObject3 = localObject4;
-              if (!bo.isNullOrNil(arrayOfString2[0]))
-              {
-                localObject1 = localObject4;
-                localObject3 = localObject4;
-                if (!bo.isNullOrNil(arrayOfString2[1]))
-                {
-                  localObject1 = localObject4;
-                  localObject3 = localObject4;
-                  wdl.put(arrayOfString2[0].trim(), arrayOfString2[1].trim());
-                  break label519;
-                }
-              }
-            }
+          if ((arrayOfString2 != null) && (arrayOfString2.length > 1) && (!bt.isNullOrNil(arrayOfString2[0])) && (!bt.isNullOrNil(arrayOfString2[1]))) {
+            Cld.put(arrayOfString2[0].trim(), arrayOfString2[1].trim());
+          } else {
+            ad.i("MicroMsg.AppChooserIntentUtil", "mimeType %s", new Object[] { str });
           }
-          localObject1 = localObject4;
-          localObject3 = localObject4;
-          ab.i("MicroMsg.AppChooserIntentUtil", "mimeType %s", new Object[] { str });
         }
       }
       catch (IOException localIOException)
       {
-        String[] arrayOfString1;
-        localObject3 = localObject1;
-        ab.printErrStackTrace("MicroMsg.AppChooserIntentUtil", localIOException, "read mimeType from asset", new Object[0]);
-        com.tencent.mm.a.e.l((InputStream)localObject1);
-        localObject1 = new HashMap();
-        wdm = (HashMap)localObject1;
-        ((HashMap)localObject1).put("txt", "mtt/txt");
-        wdm.put("epub", "mtt/epub");
-        wdm.put("pdf", "mtt/pdf");
-        wdm.put("doc", "mtt/doc");
-        wdm.put("xls", "mtt/xls");
-        wdm.put("ppt", "mtt/ppt");
-        wdm.put("docx", "mtt/docx");
-        wdm.put("xlsx", "mtt/xlsx");
-        wdm.put("pptx", "mtt/pptx");
-        wdm.put("chm", "mtt/chm");
-        wdm.put("ini", "mtt/ini");
-        wdm.put("log", "mtt/log");
-        wdm.put("bat", "mtt/bat");
-        wdm.put("php", "mtt/php");
-        wdm.put("lrc", "mtt/lrc");
-        wdm.put("js", "mtt/js");
-        AppMethodBeat.o(125853);
-        return;
-        localObject1 = localIOException;
-        localObject3 = localIOException;
-        ab.i("MicroMsg.AppChooserIntentUtil", "read from mimetype text %d %d %d", new Object[] { Integer.valueOf(arrayOfString1.length), Integer.valueOf(wdl.size()), Long.valueOf(System.currentTimeMillis() - l) });
-        com.tencent.mm.a.e.l(localIOException);
-        continue;
+        ad.printErrStackTrace("MicroMsg.AppChooserIntentUtil", localIOException, "read mimeType from asset", new Object[0]);
       }
-      finally
+      for (;;)
       {
-        com.tencent.mm.a.e.l((InputStream)localObject3);
-        AppMethodBeat.o(125853);
+        HashMap localHashMap = new HashMap();
+        Cle = localHashMap;
+        localHashMap.put("txt", "mtt/txt");
+        Cle.put("epub", "mtt/epub");
+        Cle.put("pdf", "mtt/pdf");
+        Cle.put("doc", "mtt/doc");
+        Cle.put("xls", "mtt/xls");
+        Cle.put("ppt", "mtt/ppt");
+        Cle.put("docx", "mtt/docx");
+        Cle.put("xlsx", "mtt/xlsx");
+        Cle.put("pptx", "mtt/pptx");
+        Cle.put("chm", "mtt/chm");
+        Cle.put("ini", "mtt/ini");
+        Cle.put("log", "mtt/log");
+        Cle.put("bat", "mtt/bat");
+        Cle.put("php", "mtt/php");
+        Cle.put("lrc", "mtt/lrc");
+        Cle.put("js", "mtt/js");
+        AppMethodBeat.o(109506);
+        return;
+        ad.i("MicroMsg.AppChooserIntentUtil", "read from mimetype text %d %d %d", new Object[] { Integer.valueOf(localHashMap.length), Integer.valueOf(Cld.size()), Long.valueOf(System.currentTimeMillis() - l) });
       }
-      label519:
       i += 1;
     }
   }
   
-  private static void D(Context paramContext, String paramString1, String paramString2)
+  private static Intent L(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(125843);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("file_path", paramString1);
-    localIntent.putExtra("file_ext", paramString2);
-    localIntent.addFlags(268435456);
-    localIntent.setComponent(new ComponentName(e.k.iXz, "com.tencent.mm.booter.MMReceivers$ToolsProcessReceiver"));
-    localIntent.putExtra("tools_process_action_code_key", "com.tencent.mm.intent.ACTION_CHECK_MINIQB_CAN_OPEN_FILE");
-    paramContext.sendBroadcast(localIntent);
-    AppMethodBeat.o(125843);
-  }
-  
-  private static Intent E(Context paramContext, String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(125846);
+    AppMethodBeat.i(109497);
     Intent localIntent = new Intent();
     localIntent.setAction("android.intent.action.VIEW");
     localIntent.addFlags(268435456);
-    k.a(paramContext, localIntent, new File(paramString2), paramString1);
+    m.a(paramContext, localIntent, new com.tencent.mm.vfs.e(paramString2), paramString1);
     try
     {
-      ab.i("MicroMsg.AppChooserIntentUtil", "createNormalIntent %s %s %s", new Object[] { paramString1, paramString2, localIntent.toString() });
-      label68:
-      AppMethodBeat.o(125846);
+      ad.i("MicroMsg.AppChooserIntentUtil", "createNormalIntent %s %s %s", new Object[] { paramString1, paramString2, localIntent.toString() });
+      label67:
+      AppMethodBeat.o(109497);
       return localIntent;
     }
     catch (Exception paramContext)
     {
-      break label68;
+      break label67;
     }
   }
   
-  private static Intent F(Context paramContext, String paramString1, String paramString2)
+  private static Intent M(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(125847);
+    AppMethodBeat.i(109498);
     Intent localIntent = new Intent();
     localIntent.setPackage("com.tencent.mtt");
     localIntent.addFlags(268435456);
     localIntent.setAction("android.intent.action.VIEW");
-    k.a(paramContext, localIntent, new File(paramString2), paramString1);
+    m.a(paramContext, localIntent, new com.tencent.mm.vfs.e(paramString2), paramString1);
     try
     {
-      ab.i("MicroMsg.AppChooserIntentUtil", "createQQBrowserIntent %s %s %s", new Object[] { paramString1, paramString2, localIntent.toString() });
-      label77:
-      AppMethodBeat.o(125847);
+      ad.i("MicroMsg.AppChooserIntentUtil", "createQQBrowserIntent %s %s %s", new Object[] { paramString1, paramString2, localIntent.toString() });
+      label74:
+      AppMethodBeat.o(109498);
       return localIntent;
     }
     catch (Exception paramContext)
     {
-      break label77;
+      break label74;
     }
   }
   
-  private static Intent G(Context paramContext, String paramString1, String paramString2)
+  private static Intent a(Intent paramIntent, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
-    AppMethodBeat.i(125848);
-    Intent localIntent = new Intent("com.tencent.QQBrowser.action.sdk.document");
-    localIntent.setPackage("com.tencent.mtt");
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("ChannelID", "com.tencent.mm");
-    localIntent.putExtra("PosID", 4);
-    localIntent.putExtra("key_reader_sdk_id", 1);
-    localIntent.putExtra("key_reader_sdk_type", 0);
-    localIntent.putExtra("key_reader_sdk_format", paramString2);
-    localIntent.putExtra("key_reader_sdk_path", paramString1);
-    String str2 = (String)wdm.get(paramString2);
-    String str1 = str2;
-    if (bo.isNullOrNil(str2)) {
-      str1 = amC(paramString2);
-    }
-    k.a(paramContext, localIntent, new File(paramString1), str1);
-    try
+    AppMethodBeat.i(109500);
+    String str;
+    boolean bool2;
+    Object localObject;
+    if (hk(paramContext))
     {
-      ab.i("MicroMsg.AppChooserIntentUtil", "createQQBrowserDocumentIntent %s %s %s %s", new Object[] { str1, paramString1, localIntent.toString(), paramString2 });
-      label172:
-      AppMethodBeat.o(125848);
-      return localIntent;
+      str = "";
+      bool2 = f.eAG().aCy(paramString1);
+      localObject = f.eAG();
+      ((f)localObject).onDestroy();
+      ((f)localObject).j(paramString1, paramString2, paramString3, paramInt);
+      paramString3 = str;
     }
-    catch (Exception paramContext)
+    for (;;)
     {
-      break label172;
-    }
-  }
-  
-  public static boolean R(String paramString1, String paramString2, int paramInt)
-  {
-    AppMethodBeat.i(125840);
-    Context localContext = ah.getContext();
-    Object localObject1 = new File(paramString1);
-    ab.i("MicroMsg.AppChooserIntentUtil", "path:%s, isExisted:%b, size:%d fileExt: %s", new Object[] { paramString1, Boolean.valueOf(((File)localObject1).exists()), Long.valueOf(((File)localObject1).length()), paramString2 });
-    if (!((File)localObject1).exists())
-    {
-      ab.e("MicroMsg.AppChooserIntentUtil", "Cannot open file not existed!");
-      AppMethodBeat.o(125840);
-      return true;
-    }
-    String str = amC(paramString2);
-    Object localObject2 = amz(str);
-    localObject1 = localObject2;
-    if (((String)localObject2).equals("com.baidu.searchbox"))
-    {
-      amA(str);
-      localObject1 = "";
-    }
-    if (!((String)localObject1).equals(""))
-    {
-      ab.i("MicroMsg.AppChooserIntentUtil", "User exist always config, package is %s", new Object[] { localObject1 });
-      localObject2 = E(localContext, str, paramString1);
-      ((Intent)localObject2).setPackage((String)localObject1);
-      if (bo.k(localContext, (Intent)localObject2))
+      try
       {
-        ab.i("MicroMsg.AppChooserIntentUtil", "Always package support mimeType %s", new Object[] { str });
-        com.tencent.xweb.d.iX(paramString1, paramString2);
-        com.tencent.xweb.d.iY(paramString2, "THIRDAPP");
-        localContext.startActivity((Intent)localObject2);
-        AppMethodBeat.o(125840);
-        return false;
-      }
-      ab.i("MicroMsg.AppChooserIntentUtil", "Always package do not support mimeType %s", new Object[] { str });
-    }
-    com.tencent.mm.cn.d.iO(ah.getContext());
-    if (com.tencent.xweb.d.a(paramString2, d.a.BDa, false, new Intent()) != d.a.BDb)
-    {
-      if (((com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lVz, true))
-      {
-        localObject1 = G(localContext, paramString1, paramString2);
-        if (bo.k(localContext, (Intent)localObject1))
-        {
-          com.tencent.xweb.d.iX(paramString1, paramString2);
-          com.tencent.xweb.d.iY(paramString2, "QQBROWSER");
-          ah.getContext().startActivity((Intent)localObject1);
-          com.tencent.mm.plugin.report.service.h.qsU.e(11168, new Object[] { Integer.valueOf(5), Integer.valueOf(paramInt) });
-          AppMethodBeat.o(125840);
-          return false;
+        localObject = new JSONObject();
+        paramString3 = str;
+        ((JSONObject)localObject).put("pkgName", paramContext.getPackageName());
+        paramString3 = str;
+        ((JSONObject)localObject).put("className", "com.tencent.mm.ui.tools.QbCallBackBroadcast");
+        paramString3 = str;
+        ((JSONObject)localObject).put("broadcast", true);
+        paramString3 = str;
+        JSONObject localJSONObject = new JSONObject();
+        paramString3 = str;
+        localJSONObject.put("type", "qb");
+        paramString3 = str;
+        localJSONObject.put("filePath", paramString1);
+        paramString3 = str;
+        localJSONObject.put("fileExt", paramString2);
+        paramString3 = str;
+        localJSONObject.put("sence", paramInt);
+        paramString3 = str;
+        localJSONObject.put("verify", paramString4);
+        paramString3 = str;
+        ((JSONObject)localObject).put("thirdCtx", localJSONObject);
+        paramString3 = str;
+        paramString1 = new JSONObject();
+        paramString3 = str;
+        paramString1.put("id", 1);
+        paramString3 = str;
+        paramString1.put("iconResId", 0);
+        paramString3 = str;
+        paramString1.put("text", paramContext.getString(2131759080));
+        if (bool2) {
+          continue;
         }
+        bool1 = true;
+        paramString3 = str;
+        paramString1.put("isShow", bool1);
+        paramString3 = str;
+        paramString1.put("idx", 1);
+        paramString3 = str;
+        paramString2 = new JSONObject();
+        paramString3 = str;
+        paramString2.put("id", 2);
+        paramString3 = str;
+        paramString2.put("iconResId", 1);
+        paramString3 = str;
+        paramString2.put("text", paramContext.getString(2131759079));
+        paramString3 = str;
+        paramString2.put("isShow", bool2);
+        paramString3 = str;
+        paramString2.put("idx", 1);
+        paramString3 = str;
+        paramString4 = new ArrayList();
+        paramString3 = str;
+        paramString4.add(paramString1);
+        paramString3 = str;
+        paramString4.add(paramString2);
+        paramString3 = str;
+        ((JSONObject)localObject).put("menuItems", new JSONArray(paramString4));
+        paramString3 = str;
+        paramString1 = new JSONObject();
+        paramString3 = str;
+        paramString1.put("id", 10);
+        paramString3 = str;
+        ((JSONObject)localObject).put("activityStatusItems", paramString1);
+        paramString3 = str;
+        paramString1 = new JSONObject();
+        paramString3 = str;
+        paramString1.put("id", 11);
+        paramString3 = str;
+        ((JSONObject)localObject).put("changeFileItems", paramString1);
+        paramString3 = str;
+        ((JSONObject)localObject).put("menuBottom", true);
+        paramString3 = str;
+        paramString1 = ((JSONObject)localObject).toString();
+        paramString3 = paramString1;
+        ad.i("MicroMsg.AppChooserIntentUtil", "createQQBrowserDocumentIntent menuData:%s", new Object[] { paramString1 });
+        paramString3 = paramString1;
       }
-      localObject1 = F(localContext, str, paramString1);
-      if (bo.k(localContext, (Intent)localObject1))
+      catch (Exception paramString1)
       {
-        com.tencent.xweb.d.iX(paramString1, paramString2);
-        com.tencent.xweb.d.iY(paramString2, "QQBROWSER");
-        ah.getContext().startActivity((Intent)localObject1);
-        com.tencent.mm.plugin.report.service.h.qsU.e(11168, new Object[] { Integer.valueOf(5), Integer.valueOf(paramInt) });
-        AppMethodBeat.o(125840);
-        return false;
+        boolean bool1;
+        ad.e("MicroMsg.AppChooserIntentUtil", "createQQBrowserDocumentIntent menuItems jsonObject error" + paramString1.getMessage());
+        continue;
+        byte b = 1;
+        continue;
       }
+      paramString1 = new ArrayList();
+      paramString2 = BitmapFactory.decodeResource(paramContext.getResources(), 2131232406);
+      paramContext = BitmapFactory.decodeResource(paramContext.getResources(), 2131232405);
+      paramString1.add(0, paramString2);
+      paramString1.add(1, paramContext);
+      paramContext = new Bundle();
+      paramContext.putParcelableArrayList("resArray", paramString1);
+      paramContext.putString("menuData", paramString3);
+      paramContext.putString("style", "0");
+      paramIntent.putExtra("key_reader_sdk_extrals", paramContext);
+      if (!bt.iY(paramInt, 9)) {
+        continue;
+      }
+      b = 3;
+      paramIntent.putExtra("key_reader_sdk_sub_id", b);
+      ad.d("MicroMsg.AppChooserIntentUtil", "subId:%s", new Object[] { Byte.valueOf(b) });
+      AppMethodBeat.o(109500);
+      return paramIntent;
+      bool1 = false;
     }
-    int i;
-    if (!bo.isNullOrNil(paramString2))
-    {
-      localObject1 = (String)g.RL().Ru().get(ac.a.yCB, "");
-      if ((!bo.isNullOrNil((String)localObject1)) && (((String)localObject1).contains(paramString2))) {
-        i = 1;
-      }
-    }
-    while (i != 0) {
-      if (paramInt == 7)
-      {
-        AppMethodBeat.o(125840);
-        return true;
-        i = 0;
-      }
-      else
-      {
-        D(localContext, paramString1, paramString2);
-        AppMethodBeat.o(125840);
-        return false;
-      }
-    }
-    AppMethodBeat.o(125840);
-    return true;
   }
   
   public static void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent, boolean paramBoolean, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(125845);
+    AppMethodBeat.i(109496);
     if (paramInt1 == 2)
     {
       if ((-1 == paramInt2) && (paramIntent != null))
       {
         String str = paramIntent.getStringExtra("selectpkg");
-        paramIntent = (Intent)paramIntent.getBundleExtra("transferback").getParcelable("targetintent");
-        if (paramIntent != null)
+        Intent localIntent = (Intent)paramIntent.getBundleExtra("transferback").getParcelable("targetintent");
+        if (localIntent != null)
         {
-          ab.i("MicroMsg.AppChooserIntentUtil", "AppChooserUI select package name %s and target intent is not null", new Object[] { str });
-          paramIntent = new Intent(paramIntent);
-          paramIntent.setPackage(str);
-          if (bo.k(paramActivity, paramIntent))
+          ad.i("MicroMsg.AppChooserIntentUtil", "AppChooserUI select package name %s and target intent is not null", new Object[] { str });
+          localIntent = new Intent(localIntent);
+          localIntent.setPackage(str);
+          if (bt.T(paramActivity, localIntent))
           {
-            paramActivity.startActivity(paramIntent);
+            paramIntent = new com.tencent.mm.hellhoundlib.b.a().bd(localIntent);
+            com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramIntent.adn(), "com/tencent/mm/pluginsdk/ui/tools/AppChooserIntentUtil", "handlerResultOfAppChooserUI", "(Landroid/app/Activity;IILandroid/content/Intent;ZIII)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramActivity.startActivity((Intent)paramIntent.lS(0));
+            com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/pluginsdk/ui/tools/AppChooserIntentUtil", "handlerResultOfAppChooserUI", "(Landroid/app/Activity;IILandroid/content/Intent;ZIII)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             if ("com.tencent.mtt".equals(str))
             {
-              com.tencent.mm.plugin.report.service.h.qsU.e(11168, new Object[] { Integer.valueOf(5), Integer.valueOf(paramInt5) });
-              AppMethodBeat.o(125845);
+              com.tencent.mm.plugin.report.service.h.vKh.f(11168, new Object[] { Integer.valueOf(5), Integer.valueOf(paramInt5) });
+              AppMethodBeat.o(109496);
             }
           }
           else
           {
-            ab.e("MicroMsg.AppChooserIntentUtil", "Always Intent is not support mimetype");
+            ad.e("MicroMsg.AppChooserIntentUtil", "Always Intent is not support mimetype");
             if (paramBoolean) {
-              com.tencent.mm.ui.base.h.h(paramActivity, paramInt3, paramInt4);
+              a(paramActivity, paramIntent, paramInt3, paramInt4);
             }
           }
-          AppMethodBeat.o(125845);
+          AppMethodBeat.o(109496);
           return;
         }
-        ab.e("MicroMsg.AppChooserIntentUtil", "AppChooserUI target intent is null in handlerResultOfAppChooserUI");
+        ad.e("MicroMsg.AppChooserIntentUtil", "AppChooserUI target intent is null in handlerResultOfAppChooserUI");
         if (paramBoolean) {
-          com.tencent.mm.ui.base.h.h(paramActivity, paramInt3, paramInt4);
+          a(paramActivity, paramIntent, paramInt3, paramInt4);
         }
-        AppMethodBeat.o(125845);
+        AppMethodBeat.o(109496);
         return;
       }
       if (4098 == paramInt2)
       {
-        ab.e("MicroMsg.AppChooserIntentUtil", "Not Found App Support media type");
+        ad.e("MicroMsg.AppChooserIntentUtil", "Not Found App Support media type");
         if (paramBoolean)
         {
-          com.tencent.mm.ui.base.h.h(paramActivity, paramInt3, paramInt4);
-          AppMethodBeat.o(125845);
+          a(paramActivity, paramIntent, paramInt3, paramInt4);
+          AppMethodBeat.o(109496);
         }
       }
       else if (4097 == paramInt2)
       {
-        ab.i("MicroMsg.AppChooserIntentUtil", "AppChooserUI result code is no choice");
+        ad.i("MicroMsg.AppChooserIntentUtil", "AppChooserUI result code is no choice");
         if (paramBoolean)
         {
-          com.tencent.mm.ui.base.h.h(paramActivity, paramInt3, paramInt4);
-          AppMethodBeat.o(125845);
+          a(paramActivity, paramIntent, paramInt3, paramInt4);
+          AppMethodBeat.o(109496);
         }
       }
       else
       {
-        ab.i("MicroMsg.AppChooserIntentUtil", "AppChooserUI result code is not ok or data is null");
+        ad.i("MicroMsg.AppChooserIntentUtil", "AppChooserUI result code is not ok or data is null");
       }
     }
-    AppMethodBeat.o(125845);
+    AppMethodBeat.o(109496);
   }
   
-  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
+  private static void a(Activity paramActivity, Intent paramIntent, int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    AppMethodBeat.i(125841);
-    Object localObject1 = new File(paramString1);
-    ab.i("MicroMsg.AppChooserIntentUtil", "path:%s, isExisted:%b, size:%d", new Object[] { paramString1, Boolean.valueOf(((File)localObject1).exists()), Long.valueOf(((File)localObject1).length()) });
-    if (!((File)localObject1).exists())
+    AppMethodBeat.i(184245);
+    if (paramIntent != null) {
+      paramIntent.getStringExtra("mimetype");
+    }
+    if (Cle.containsKey(""))
     {
-      ab.e("MicroMsg.AppChooserIntentUtil", "Cannot open file not existed!");
-      AppMethodBeat.o(125841);
+      if (!ay.isWifi(paramActivity))
+      {
+        paramIntent = new com.tencent.mm.ui.widget.a.f.a(aj.getContext());
+        paramIntent.aMo(paramActivity.getString(2131764386)).wZ(true).aaF(2131759571);
+        paramIntent.c(new f.c()
+        {
+          public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
+          {
+            AppMethodBeat.i(184243);
+            if (paramAnonymousBoolean)
+            {
+              paramAnonymousString = new com.tencent.mm.ui.widget.a.f.a(this.val$activity).aMo(this.val$activity.getString(2131764387));
+              paramAnonymousString.HFB = true;
+              paramAnonymousString.aaF(2131755792).b(new f.c()
+              {
+                public final void d(boolean paramAnonymous2Boolean, String paramAnonymous2String)
+                {
+                  AppMethodBeat.i(184242);
+                  w.a.tT(true);
+                  AppMethodBeat.o(184242);
+                }
+              }).show();
+            }
+            AppMethodBeat.o(184243);
+          }
+        }).b(new DialogInterface.OnDismissListener()
+        {
+          public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
+          {
+            AppMethodBeat.i(184241);
+            an.d("dancy", "OnDismissListener ", new Object[0]);
+            AppMethodBeat.o(184241);
+          }
+        }).show();
+        AppMethodBeat.o(184245);
+        return;
+      }
+      paramActivity = new com.tencent.mm.ui.widget.a.f.a(paramActivity).aMo(paramActivity.getString(2131764388));
+      paramActivity.HFB = true;
+      paramActivity.aaF(2131755792).b(new f.c()
+      {
+        public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
+        {
+          AppMethodBeat.i(184244);
+          w.a.tT(true);
+          AppMethodBeat.o(184244);
+        }
+      }).show();
+      AppMethodBeat.o(184245);
       return;
     }
-    Object localObject3 = ah.getContext();
-    Object localObject4 = amC(paramString2);
-    Object localObject2 = amz((String)localObject4);
+    com.tencent.mm.ui.base.h.j(paramActivity, paramInt1, paramInt2);
+    AppMethodBeat.o(184245);
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    AppMethodBeat.i(109489);
+    Object localObject1 = new com.tencent.mm.vfs.e(paramString1);
+    ad.i("MicroMsg.AppChooserIntentUtil", "path:%s, isExisted:%b, size:%d", new Object[] { paramString1, Boolean.valueOf(((com.tencent.mm.vfs.e)localObject1).exists()), Long.valueOf(((com.tencent.mm.vfs.e)localObject1).length()) });
+    if (!((com.tencent.mm.vfs.e)localObject1).exists())
+    {
+      ad.e("MicroMsg.AppChooserIntentUtil", "Cannot open file not existed!");
+      AppMethodBeat.o(109489);
+      return;
+    }
+    Context localContext = aj.getContext();
+    String str = aCs(paramString2);
+    Object localObject2 = aCp(str);
     localObject1 = localObject2;
     if (((String)localObject2).equals("com.baidu.searchbox"))
     {
-      amA((String)localObject4);
+      aCq(str);
       localObject1 = "";
     }
     if (!((String)localObject1).equals(""))
     {
-      ab.i("MicroMsg.AppChooserIntentUtil", "User exist always config, package is %s", new Object[] { localObject1 });
-      localObject2 = E(ah.getContext(), (String)localObject4, paramString1);
+      ad.i("MicroMsg.AppChooserIntentUtil", "User exist always config, package is %s", new Object[] { localObject1 });
+      localObject2 = L(aj.getContext(), str, paramString1);
       ((Intent)localObject2).setPackage((String)localObject1);
-      if (bo.k((Context)localObject3, (Intent)localObject2))
+      if (bt.T(localContext, (Intent)localObject2))
       {
-        ab.i("MicroMsg.AppChooserIntentUtil", "Always package support mimeType %s", new Object[] { localObject4 });
-        com.tencent.xweb.d.iX(paramString1, paramString2);
-        com.tencent.xweb.d.iY(paramString2, "THIRDAPP");
-        ((Context)localObject3).startActivity((Intent)localObject2);
-        AppMethodBeat.o(125841);
+        ad.i("MicroMsg.AppChooserIntentUtil", "Always package support mimeType %s", new Object[] { str });
+        com.tencent.xweb.f.lY(com.tencent.mm.cr.a.aNq(paramString1), paramString2);
+        com.tencent.xweb.f.lZ(paramString2, "THIRDAPP");
+        paramActivity = new com.tencent.mm.hellhoundlib.b.a().bd(localObject2);
+        com.tencent.mm.hellhoundlib.a.a.a(localContext, paramActivity.adn(), "com/tencent/mm/pluginsdk/ui/tools/AppChooserIntentUtil", "startAppChooser", "(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localContext.startActivity((Intent)paramActivity.lS(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/pluginsdk/ui/tools/AppChooserIntentUtil", "startAppChooser", "(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(109489);
         return;
       }
-      ab.i("MicroMsg.AppChooserIntentUtil", "Always package do not support mimeType %s", new Object[] { localObject4 });
+      ad.i("MicroMsg.AppChooserIntentUtil", "Always package do not support mimeType %s", new Object[] { str });
     }
-    com.tencent.mm.cn.d.iO(ah.getContext());
-    if (com.tencent.xweb.d.a(paramString2, d.a.BDa, false, new Intent()) != d.a.BDb)
+    if (!c(paramString1, paramString2, paramString3, str, paramInt))
     {
-      if (((com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lVz, true))
-      {
-        localObject1 = G((Context)localObject3, paramString1, paramString2);
-        if (bo.k((Context)localObject3, (Intent)localObject1))
-        {
-          com.tencent.xweb.d.iX(paramString1, paramString2);
-          com.tencent.xweb.d.iY(paramString2, "QQBROWSER");
-          ah.getContext().startActivity((Intent)localObject1);
-          com.tencent.mm.plugin.report.service.h.qsU.e(11168, new Object[] { Integer.valueOf(5), Integer.valueOf(paramInt) });
-          AppMethodBeat.o(125841);
-          return;
-        }
-      }
-      localObject1 = F((Context)localObject3, (String)localObject4, paramString1);
-      if (bo.k((Context)localObject3, (Intent)localObject1))
-      {
-        com.tencent.xweb.d.iX(paramString1, paramString2);
-        com.tencent.xweb.d.iY(paramString2, "QQBROWSER");
-        ah.getContext().startActivity((Intent)localObject1);
-        com.tencent.mm.plugin.report.service.h.qsU.e(11168, new Object[] { Integer.valueOf(5), Integer.valueOf(paramInt) });
-        AppMethodBeat.o(125841);
-        return;
-      }
-    }
-    localObject1 = E((Context)localObject3, (String)localObject4, paramString1);
-    int i;
-    if (!o.fM(ah.getContext()))
-    {
-      i = 1;
-      localObject2 = amC(paramString2);
-      localObject4 = Uri.fromFile(new File(paramString1));
-      localObject3 = new Bundle();
-      ((Bundle)localObject3).putString("targeturl", ((Uri)localObject4).toString());
-      ((Bundle)localObject3).putString("filepath", paramString1);
-      ((Bundle)localObject3).putString("fileext", paramString2);
-      ((Bundle)localObject3).putParcelable("targetintent", (Parcelable)localObject1);
-      localObject4 = new Intent();
-      ((Intent)localObject4).putExtra("type", 0);
-      ((Intent)localObject4).putExtra("title", paramActivity.getResources().getString(2131298352));
-      ((Intent)localObject4).putExtra("needupate", false);
-      if (i != 0) {
-        break label685;
-      }
-      label579:
-      ((Intent)localObject4).putExtra("not_show_recommend_app", bool);
-      ((Intent)localObject4).putExtra("mimetype", (String)localObject2);
-      ((Intent)localObject4).putExtra("targetintent", (Parcelable)localObject1);
-      ((Intent)localObject4).putExtra("transferback", (Bundle)localObject3);
-      ((Intent)localObject4).putExtra("scene", paramInt);
-      if (paramInt != 7) {
-        break label691;
-      }
-      ((com.tencent.mm.choosemsgfile.compat.a)g.E(com.tencent.mm.choosemsgfile.compat.a.class)).h(paramActivity, paramString1, paramString2);
-    }
-    for (;;)
-    {
-      wdj = (Intent)localObject4;
-      wdk = new WeakReference(paramActivity);
-      AppMethodBeat.o(125841);
+      ad.i("MicroMsg.AppChooserIntentUtil", "open file by qb");
+      AppMethodBeat.o(109489);
       return;
-      i = 0;
-      break;
-      label685:
-      bool = false;
-      break label579;
-      label691:
-      D(paramActivity, paramString1, paramString2);
+    }
+    localObject1 = L(localContext, str, paramString1);
+    if (!q.gY(aj.getContext())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(paramActivity, paramString1, paramString2, paramString3, (Intent)localObject1, paramInt, bool);
+      AppMethodBeat.o(109489);
+      return;
     }
   }
   
-  public static void aE(Intent paramIntent)
+  private static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, Intent paramIntent, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(125844);
+    boolean bool = false;
+    AppMethodBeat.i(109492);
+    String str = aCs(paramString2);
+    Object localObject = m.a(paramActivity, new com.tencent.mm.vfs.e(paramString1));
+    Bundle localBundle = new Bundle();
+    if (localObject != null) {
+      localBundle.putString("targeturl", ((Uri)localObject).toString());
+    }
+    localBundle.putString("filepath", paramString1);
+    localBundle.putString("fileext", paramString2);
+    localBundle.putParcelable("targetintent", paramIntent);
+    localObject = new Intent();
+    ((Intent)localObject).putExtra("type", 0);
+    ((Intent)localObject).putExtra("title", paramActivity.getResources().getString(2131757345));
+    ((Intent)localObject).putExtra("needupate", false);
+    if (!paramBoolean) {
+      bool = true;
+    }
+    ((Intent)localObject).putExtra("not_show_recommend_app", bool);
+    ((Intent)localObject).putExtra("mimetype", str);
+    ((Intent)localObject).putExtra("targetintent", paramIntent);
+    ((Intent)localObject).putExtra("transferback", localBundle);
+    ((Intent)localObject).putExtra("scene", paramInt);
+    if (paramInt == 7) {
+      ((com.tencent.mm.choosemsgfile.compat.a)g.ab(com.tencent.mm.choosemsgfile.compat.a.class)).g(paramActivity, paramString1, paramString2);
+    }
+    for (;;)
+    {
+      Clb = (Intent)localObject;
+      Clc = new WeakReference(paramActivity);
+      AppMethodBeat.o(109492);
+      return;
+      b(paramActivity, paramString1, paramString2, paramString3, paramInt);
+    }
+  }
+  
+  private static boolean aCo(String paramString)
+  {
+    AppMethodBeat.i(109495);
+    if (bt.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(109495);
+      return false;
+    }
+    String str = (String)g.afB().afk().get(ae.a.FkX, "");
+    if ((!bt.isNullOrNil(str)) && (str.contains(paramString)))
+    {
+      AppMethodBeat.o(109495);
+      return true;
+    }
+    AppMethodBeat.o(109495);
+    return false;
+  }
+  
+  private static String aCp(String paramString)
+  {
+    AppMethodBeat.i(109502);
+    paramString = (String)g.afB().afk().get(aCr(paramString), "");
+    AppMethodBeat.o(109502);
+    return paramString;
+  }
+  
+  private static void aCq(String paramString)
+  {
+    AppMethodBeat.i(109503);
+    if (!g.afw())
+    {
+      AppMethodBeat.o(109503);
+      return;
+    }
+    g.afB().afk().set(aCr(paramString), "");
+    AppMethodBeat.o(109503);
+  }
+  
+  private static int aCr(String paramString)
+  {
+    AppMethodBeat.i(109504);
+    if (paramString != null)
+    {
+      int i = paramString.hashCode();
+      AppMethodBeat.o(109504);
+      return 274528 + i;
+    }
+    AppMethodBeat.o(109504);
+    return 274528;
+  }
+  
+  private static String aCs(String paramString)
+  {
+    AppMethodBeat.i(109505);
+    Object localObject1;
+    if (bt.isNullOrNil(paramString)) {
+      localObject1 = "application/octet-stream";
+    }
+    for (;;)
+    {
+      ad.i("MicroMsg.AppChooserIntentUtil", "getMimeTypeByExt fileExt: %s mimeType: %s", new Object[] { paramString, localObject1 });
+      AppMethodBeat.o(109505);
+      return localObject1;
+      localObject1 = MimeTypeMap.getSingleton().getMimeTypeFromExtension(paramString);
+      Object localObject2 = localObject1;
+      if (bt.isNullOrNil((String)localObject1)) {
+        localObject2 = (String)Cld.get(paramString);
+      }
+      localObject1 = localObject2;
+      if (bt.isNullOrNil((String)localObject2)) {
+        if (paramString.startsWith("/")) {
+          localObject1 = "application/octet-stream";
+        } else {
+          localObject1 = "application/".concat(String.valueOf(paramString));
+        }
+      }
+    }
+  }
+  
+  public static void aW(Intent paramIntent)
+  {
+    AppMethodBeat.i(109494);
     try
     {
       boolean bool1 = paramIntent.getBooleanExtra("MINIQB_OPEN_RET_VAL", false);
       paramIntent.getStringExtra("file_path");
       String str2 = paramIntent.getStringExtra("file_ext");
-      ab.i("MicroMsg.AppChooserIntentUtil", "miniQB retVal:%b", new Object[] { Boolean.valueOf(bool1) });
-      boolean bool2 = g.RG();
+      ad.i("MicroMsg.AppChooserIntentUtil", "miniQB retVal:%b", new Object[] { Boolean.valueOf(bool1) });
+      boolean bool2 = g.afw();
       if (!bool2)
       {
-        AppMethodBeat.o(125844);
+        AppMethodBeat.o(109494);
         return;
       }
-      String str1 = (String)g.RL().Ru().get(ac.a.yCB, "");
+      String str1 = (String)g.afB().afk().get(ae.a.FkX, "");
       if (!bool1) {
         paramIntent = str1.replace(str2, "");
       }
       for (;;)
       {
-        g.RL().Ru().set(ac.a.yCB, paramIntent);
-        if ((!bool1) && (wdj != null) && (wdk != null) && (wdk.get() != null))
+        g.afB().afk().set(ae.a.FkX, paramIntent);
+        if ((!bool1) && (Clb != null) && (Clc != null) && (Clc.get() != null))
         {
-          wdj.setClass((Context)wdk.get(), AppChooserUI.class);
-          ((Activity)wdk.get()).startActivityForResult(wdj, 2);
+          Clb.setClass((Context)Clc.get(), AppChooserUI.class);
+          ((Activity)Clc.get()).startActivityForResult(Clb, 2);
         }
-        wdj = null;
-        AppMethodBeat.o(125844);
+        Clb = null;
+        AppMethodBeat.o(109494);
         return;
         paramIntent = str1;
         if (!str1.contains(str2)) {
@@ -520,122 +615,329 @@ public final class a
     }
     catch (Exception paramIntent)
     {
-      AppMethodBeat.o(125844);
+      AppMethodBeat.o(109494);
     }
   }
   
-  private static void amA(String paramString)
+  public static boolean ad(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(125850);
-    if (!g.RG())
+    AppMethodBeat.i(109485);
+    boolean bool = i(paramString1, paramString2, "", paramInt);
+    AppMethodBeat.o(109485);
+    return bool;
+  }
+  
+  private static Intent b(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    AppMethodBeat.i(109499);
+    Intent localIntent = new Intent("com.tencent.QQBrowser.action.sdk.document");
+    localIntent.setPackage("com.tencent.mtt");
+    localIntent.addFlags(268435456);
+    localIntent.putExtra("ChannelID", "com.tencent.mm");
+    localIntent.putExtra("PosID", 4);
+    localIntent.putExtra("key_reader_sdk_id", 1);
+    localIntent.putExtra("key_reader_sdk_type", 0);
+    localIntent.putExtra("key_reader_sdk_format", paramString2);
+    localIntent.putExtra("key_reader_sdk_path", paramString1);
+    a(localIntent, paramContext, paramString1, paramString2, paramString3, paramString4, paramInt);
+    paramString4 = (String)Cle.get(paramString2);
+    paramString3 = paramString4;
+    if (bt.isNullOrNil(paramString4)) {
+      paramString3 = aCs(paramString2);
+    }
+    m.a(paramContext, localIntent, new com.tencent.mm.vfs.e(paramString1), paramString3);
+    try
     {
-      AppMethodBeat.o(125850);
-      return;
+      ad.i("MicroMsg.AppChooserIntentUtil", "createQQBrowserDocumentIntent %s %s %s %s %s %s", new Object[] { paramString3, paramString1, localIntent.toString(), localIntent.getExtras(), paramString2, Integer.valueOf(paramInt) });
+      label202:
+      AppMethodBeat.o(109499);
+      return localIntent;
     }
-    g.RL().Ru().set(amB(paramString), "");
-    AppMethodBeat.o(125850);
-  }
-  
-  private static int amB(String paramString)
-  {
-    AppMethodBeat.i(125851);
-    if (paramString != null)
+    catch (Exception paramContext)
     {
-      int i = paramString.hashCode();
-      AppMethodBeat.o(125851);
-      return 274528 + i;
-    }
-    AppMethodBeat.o(125851);
-    return 274528;
-  }
-  
-  private static String amC(String paramString)
-  {
-    AppMethodBeat.i(125852);
-    Object localObject1;
-    if (bo.isNullOrNil(paramString)) {
-      localObject1 = "application/octet-stream";
-    }
-    for (;;)
-    {
-      ab.i("MicroMsg.AppChooserIntentUtil", "getMimeTypeByExt fileExt: %s mimeType: %s", new Object[] { paramString, localObject1 });
-      AppMethodBeat.o(125852);
-      return localObject1;
-      localObject1 = MimeTypeMap.getSingleton().getMimeTypeFromExtension(paramString);
-      Object localObject2 = localObject1;
-      if (bo.isNullOrNil((String)localObject1)) {
-        localObject2 = (String)wdl.get(paramString);
-      }
-      localObject1 = localObject2;
-      if (bo.isNullOrNil((String)localObject2)) {
-        if (paramString.startsWith("/")) {
-          localObject1 = "application/octet-stream";
-        } else {
-          localObject1 = "application/".concat(String.valueOf(paramString));
-        }
-      }
+      break label202;
     }
   }
   
-  private static String amz(String paramString)
+  public static void b(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(125849);
-    paramString = (String)g.RL().Ru().get(amB(paramString), "");
-    AppMethodBeat.o(125849);
-    return paramString;
+    AppMethodBeat.i(109488);
+    a(paramActivity, paramString1, paramString2, "", paramInt);
+    AppMethodBeat.o(109488);
+  }
+  
+  private static void b(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    AppMethodBeat.i(109493);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("file_path", paramString1);
+    localIntent.putExtra("file_ext", paramString2);
+    localIntent.putExtra("file_name", paramString3);
+    localIntent.putExtra("sence", paramInt);
+    localIntent.addFlags(268435456);
+    localIntent.setComponent(new ComponentName(e.l.FIi, "com.tencent.mm.booter.MMReceivers$ToolsProcessReceiver"));
+    localIntent.putExtra("tools_process_action_code_key", "com.tencent.mm.intent.ACTION_CHECK_MINIQB_CAN_OPEN_FILE");
+    paramContext.sendBroadcast(localIntent);
+    AppMethodBeat.o(109493);
   }
   
   public static void b(MMActivity paramMMActivity, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(141599);
-    String str = amC(paramString2);
-    amA(str);
-    Uri localUri = Uri.fromFile(new File(paramString1));
+    AppMethodBeat.i(109491);
+    String str = aCs(paramString2);
+    aCq(str);
+    Uri localUri = m.a(paramMMActivity, new com.tencent.mm.vfs.e(paramString1));
     Bundle localBundle = new Bundle();
-    Intent localIntent = E(paramMMActivity, str, paramString1);
+    Intent localIntent = L(paramMMActivity, str, paramString1);
     localBundle.putString("targeturl", localUri.toString());
     localBundle.putString("filepath", paramString1);
     localBundle.putString("fileext", paramString2);
     localBundle.putParcelable("targetintent", localIntent);
     paramString1 = new Intent();
     paramString1.putExtra("type", 0);
-    paramString1.putExtra("title", paramMMActivity.getResources().getString(2131298352));
+    paramString1.putExtra("title", paramMMActivity.getResources().getString(2131757345));
     paramString1.putExtra("mimetype", str);
     paramString1.putExtra("targetintent", localIntent);
     paramString1.putExtra("transferback", localBundle);
     paramString1.putExtra("scene", 8);
     paramString1.putExtra("openWay", true);
-    com.tencent.mm.bq.d.a(paramMMActivity, ".pluginsdk.ui.tools.AppChooserUI", paramString1, 2, new a.1(paramMMActivity));
-    AppMethodBeat.o(141599);
+    com.tencent.mm.bs.d.a(paramMMActivity, ".pluginsdk.ui.tools.AppChooserUI", paramString1, 2, new MMActivity.a()
+    {
+      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(109484);
+        a.a(this.val$activity, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent, true, 2131758111, 2131758112, this.fpl);
+        AppMethodBeat.o(109484);
+      }
+    });
+    AppMethodBeat.o(109491);
   }
   
-  public static boolean b(Activity paramActivity, String paramString1, String paramString2, int paramInt)
+  public static boolean c(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(125842);
-    String str = amC(paramString2);
-    Uri localUri = Uri.fromFile(new File(paramString1));
+    AppMethodBeat.i(109490);
+    String str = aCs(paramString2);
+    Uri localUri = m.a(paramActivity, new com.tencent.mm.vfs.e(paramString1));
     Bundle localBundle = new Bundle();
-    Intent localIntent = E(paramActivity, str, paramString1);
+    Intent localIntent = L(paramActivity, str, paramString1);
     localBundle.putString("targeturl", localUri.toString());
     localBundle.putString("filepath", paramString1);
     localBundle.putString("fileext", paramString2);
     localBundle.putParcelable("targetintent", localIntent);
     paramString1 = new Intent(paramActivity, AppChooserUI.class);
     paramString1.putExtra("type", 0);
-    paramString1.putExtra("title", paramActivity.getResources().getString(2131298352));
+    paramString1.putExtra("title", paramActivity.getResources().getString(2131757345));
     paramString1.putExtra("mimetype", str);
     paramString1.putExtra("targetintent", localIntent);
     paramString1.putExtra("transferback", localBundle);
     paramString1.putExtra("scene", paramInt);
     paramString1.putExtra("openWay", true);
     paramActivity.startActivityForResult(paramString1, 2);
-    AppMethodBeat.o(125842);
+    AppMethodBeat.o(109490);
+    return true;
+  }
+  
+  private static boolean c(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    AppMethodBeat.i(109487);
+    Context localContext = aj.getContext();
+    com.tencent.mm.cr.d.ks(aj.getContext());
+    f localf;
+    String str1;
+    String str2;
+    String str3;
+    int i;
+    String str4;
+    if (com.tencent.xweb.f.a(paramString2, com.tencent.xweb.f.a.IMt, false, new Intent()) != com.tencent.xweb.f.a.IMu) {
+      if (((b)g.ab(b.class)).a(b.a.ppu, true))
+      {
+        localf = f.eAG();
+        str1 = localf.mFilePath;
+        str2 = localf.joX;
+        str3 = localf.mFileName;
+        i = localf.nNu;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(ce.asQ());
+        str4 = i.aEN(paramString1);
+        if (!bt.isNullOrNil(str4))
+        {
+          ((StringBuilder)localObject).append("_");
+          ((StringBuilder)localObject).append(str4);
+        }
+        str4 = ((StringBuilder)localObject).toString();
+        if (localf.mDH == null) {
+          break label783;
+        }
+      }
+    }
+    label783:
+    for (Object localObject = HandOffFile.L(localf.mDH);; localObject = null)
+    {
+      paramString3 = b(localContext, paramString1, paramString2, paramString3, str4, paramInt);
+      if (bt.T(localContext, paramString3))
+      {
+        paramString4 = (String)g.afB().afk().get(ae.a.FvF, "");
+        if ((!bt.isNullOrNil(paramString4)) && (bt.kU(str1, paramString4)))
+        {
+          paramString4 = (String)g.afB().afk().get(ae.a.FvE, "");
+          localObject = new StringBuilder();
+          if (bt.isNullOrNil(paramString4))
+          {
+            ((StringBuilder)localObject).append(str4);
+            g.afB().afk().set(ae.a.FvE, ((StringBuilder)localObject).toString());
+          }
+        }
+        for (;;)
+        {
+          g.afB().afk().set(ae.a.FvG, Integer.valueOf(0));
+          com.tencent.xweb.f.lY(com.tencent.mm.cr.a.aNq(paramString1), paramString2);
+          com.tencent.xweb.f.lZ(paramString2, "QQBROWSER");
+          try
+          {
+            paramString1 = aj.getContext();
+            paramString2 = new com.tencent.mm.hellhoundlib.b.a().bd(paramString3);
+            com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramString2.adn(), "com/tencent/mm/pluginsdk/ui/tools/AppChooserIntentUtil", "startByQb", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramString1.startActivity((Intent)paramString2.lS(0));
+            com.tencent.mm.hellhoundlib.a.a.a(paramString1, "com/tencent/mm/pluginsdk/ui/tools/AppChooserIntentUtil", "startByQb", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            com.tencent.mm.plugin.report.service.h.vKh.f(11168, new Object[] { Integer.valueOf(5), Integer.valueOf(paramInt) });
+            paramString1 = ((com.tencent.mm.plugin.handoff.a.a)g.ab(com.tencent.mm.plugin.handoff.a.a.class)).cFu();
+            if (paramString1 != null)
+            {
+              paramString1.stk = 1;
+              paramString1.setKey(HandOff.ES(1));
+              ((HandOffFile)paramString1).K(localf.mDH);
+              ((com.tencent.mm.plugin.handoff.a.a)g.ab(com.tencent.mm.plugin.handoff.a.a.class)).i(paramString1);
+            }
+          }
+          catch (Exception paramString1)
+          {
+            for (;;)
+            {
+              ad.e("MicroMsg.AppChooserIntentUtil", "startByQb() (by QQBrowserDocumentIntent) Exception:%s %s", new Object[] { paramString1.getClass().getSimpleName(), paramString1.getMessage() });
+            }
+          }
+          AppMethodBeat.o(109487);
+          return false;
+          ((StringBuilder)localObject).append(paramString4).append(",").append(str4);
+          break;
+          g.afB().afk().set(ae.a.FvF, str1);
+          g.afB().afk().set(ae.a.FvE, str4);
+        }
+      }
+      paramString3 = f.eAG();
+      paramString3.onDestroy();
+      paramString3.j(str1, str2, str3, i);
+      if (localObject != null) {
+        ((HandOffFile)localObject).K(paramString3.mDH);
+      }
+      paramString3 = M(localContext, paramString4, paramString1);
+      if (bt.T(localContext, paramString3))
+      {
+        com.tencent.xweb.f.lY(com.tencent.mm.cr.a.aNq(paramString1), paramString2);
+        com.tencent.xweb.f.lZ(paramString2, "QQBROWSER");
+        try
+        {
+          paramString1 = aj.getContext();
+          paramString2 = new com.tencent.mm.hellhoundlib.b.a().bd(paramString3);
+          com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramString2.adn(), "com/tencent/mm/pluginsdk/ui/tools/AppChooserIntentUtil", "startByQb", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramString1.startActivity((Intent)paramString2.lS(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramString1, "com/tencent/mm/pluginsdk/ui/tools/AppChooserIntentUtil", "startByQb", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          com.tencent.mm.plugin.report.service.h.vKh.f(11168, new Object[] { Integer.valueOf(5), Integer.valueOf(paramInt) });
+          AppMethodBeat.o(109487);
+          return false;
+        }
+        catch (Exception paramString1)
+        {
+          ad.e("MicroMsg.AppChooserIntentUtil", "startByQb() (by QQBrowserIntent) Exception:%s %s", new Object[] { paramString1.getClass().getSimpleName(), paramString1.getMessage() });
+        }
+      }
+      AppMethodBeat.o(109487);
+      return true;
+    }
+  }
+  
+  private static boolean hk(Context paramContext)
+  {
+    AppMethodBeat.i(109501);
+    try
+    {
+      ComponentName localComponentName = new ComponentName("com.tencent.mtt", "com.tencent.mtt.external.reader.ReaderSdkReceive");
+      paramContext.getPackageManager().getReceiverInfo(localComponentName, 131072);
+      ad.i("MicroMsg.AppChooserIntentUtil", "ifSupportFloatBallInQb() true");
+      AppMethodBeat.o(109501);
+      return true;
+    }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      ad.i("MicroMsg.AppChooserIntentUtil", "ifSupportFloatBallInQb() Exception:%s %s", new Object[] { paramContext.getClass().getSimpleName(), paramContext.getMessage() });
+      AppMethodBeat.o(109501);
+    }
+    return false;
+  }
+  
+  public static boolean i(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    AppMethodBeat.i(109486);
+    Context localContext = aj.getContext();
+    Object localObject1 = new com.tencent.mm.vfs.e(paramString1);
+    ad.i("MicroMsg.AppChooserIntentUtil", "path:%s, isExisted:%b, size:%d fileExt: %s", new Object[] { paramString1, Boolean.valueOf(((com.tencent.mm.vfs.e)localObject1).exists()), Long.valueOf(((com.tencent.mm.vfs.e)localObject1).length()), paramString2 });
+    if (!((com.tencent.mm.vfs.e)localObject1).exists())
+    {
+      ad.e("MicroMsg.AppChooserIntentUtil", "Cannot open file not existed!");
+      AppMethodBeat.o(109486);
+      return true;
+    }
+    String str = aCs(paramString2);
+    Object localObject2 = aCp(str);
+    localObject1 = localObject2;
+    if (((String)localObject2).equals("com.baidu.searchbox"))
+    {
+      aCq(str);
+      localObject1 = "";
+    }
+    if (!((String)localObject1).equals(""))
+    {
+      ad.i("MicroMsg.AppChooserIntentUtil", "User exist always config, package is %s", new Object[] { localObject1 });
+      localObject2 = L(localContext, str, paramString1);
+      ((Intent)localObject2).setPackage((String)localObject1);
+      if (bt.T(localContext, (Intent)localObject2))
+      {
+        ad.i("MicroMsg.AppChooserIntentUtil", "Always package support mimeType %s", new Object[] { str });
+        com.tencent.xweb.f.lY(com.tencent.mm.cr.a.aNq(paramString1), paramString2);
+        com.tencent.xweb.f.lZ(paramString2, "THIRDAPP");
+        paramString1 = new com.tencent.mm.hellhoundlib.b.a().bd(localObject2);
+        com.tencent.mm.hellhoundlib.a.a.a(localContext, paramString1.adn(), "com/tencent/mm/pluginsdk/ui/tools/AppChooserIntentUtil", "startAppChooserWhenOnCreate", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localContext.startActivity((Intent)paramString1.lS(0));
+        com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/pluginsdk/ui/tools/AppChooserIntentUtil", "startAppChooserWhenOnCreate", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(109486);
+        return false;
+      }
+      ad.i("MicroMsg.AppChooserIntentUtil", "Always package do not support mimeType %s", new Object[] { str });
+    }
+    if (!c(paramString1, paramString2, paramString3, str, paramInt))
+    {
+      ad.i("MicroMsg.AppChooserIntentUtil", "open file by qb");
+      AppMethodBeat.o(109486);
+      return false;
+    }
+    if (aCo(paramString2))
+    {
+      if (paramInt == 7)
+      {
+        AppMethodBeat.o(109486);
+        return true;
+      }
+      b(localContext, paramString1, paramString2, paramString3, paramInt);
+      AppMethodBeat.o(109486);
+      return false;
+    }
+    AppMethodBeat.o(109486);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.a
  * JD-Core Version:    0.7.0.1
  */

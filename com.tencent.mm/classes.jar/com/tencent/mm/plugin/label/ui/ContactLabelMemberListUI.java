@@ -3,131 +3,198 @@ package com.tencent.mm.plugin.label.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.az;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.label.a.b;
+import com.tencent.mm.sdk.e.n;
 import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.bg;
 import com.tencent.mm.ui.MMActivity;
 
 public class ContactLabelMemberListUI
   extends MMActivity
 {
-  private TextView jCy;
-  private ak mHandler;
-  private n.b nYH;
-  private ListView nYW;
-  private a nYX;
-  private String nYY;
-  private String nYZ;
+  private ap mHandler;
+  private TextView mtT;
+  private n.b sMG;
+  private ListView sMV;
+  private a sMW;
+  private String sMX;
+  private String sMY;
   
   public ContactLabelMemberListUI()
   {
-    AppMethodBeat.i(22644);
-    this.mHandler = new ContactLabelMemberListUI.1(this);
-    this.nYH = new ContactLabelMemberListUI.2(this);
-    AppMethodBeat.o(22644);
+    AppMethodBeat.i(26266);
+    this.mHandler = new ap()
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(26261);
+        int i = paramAnonymousMessage.what;
+        ad.d("MicroMsg.Label.ContactLabelMemberListUI", "handleMessage:%d", new Object[] { Integer.valueOf(i) });
+        switch (i)
+        {
+        default: 
+          ad.w("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] unknow msg.");
+          AppMethodBeat.o(26261);
+          return;
+        }
+        ContactLabelMemberListUI.a(ContactLabelMemberListUI.this);
+        AppMethodBeat.o(26261);
+      }
+    };
+    this.sMG = new n.b()
+    {
+      public final void a(int paramAnonymousInt, n paramAnonymousn, Object paramAnonymousObject)
+      {
+        AppMethodBeat.i(26262);
+        ad.d("MicroMsg.Label.ContactLabelMemberListUI", "event:%d, obj:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousObject });
+        if (ContactLabelMemberListUI.b(ContactLabelMemberListUI.this) != null)
+        {
+          ContactLabelMemberListUI.b(ContactLabelMemberListUI.this).removeMessages(5001);
+          ContactLabelMemberListUI.b(ContactLabelMemberListUI.this).sendEmptyMessageDelayed(5001, 300L);
+        }
+        AppMethodBeat.o(26262);
+      }
+    };
+    AppMethodBeat.o(26266);
   }
   
-  private void bLd()
+  private void cJa()
   {
-    AppMethodBeat.i(22650);
-    if (this.nYX != null)
+    AppMethodBeat.i(26272);
+    if (this.sMW != null)
     {
-      this.nYX.nYS = com.tencent.mm.plugin.label.a.a.bKV().RR(this.nYY);
-      this.nYX.a(null, null);
+      this.sMW.sMR = com.tencent.mm.plugin.label.a.a.cIS().aeL(this.sMX);
+      this.sMW.a(null, null);
     }
-    this.nYZ = com.tencent.mm.plugin.label.a.a.bKV().RN(this.nYY);
-    if (!bo.isNullOrNil(this.nYZ)) {
-      setMMTitle(this.nYZ);
+    this.sMY = com.tencent.mm.plugin.label.a.a.cIS().aeH(this.sMX);
+    if (!bt.isNullOrNil(this.sMY)) {
+      setMMTitle(this.sMY);
     }
-    AppMethodBeat.o(22650);
+    AppMethodBeat.o(26272);
   }
   
   public int getLayoutId()
   {
-    return 2130969262;
+    return 2131493650;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(22649);
-    ab.i("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] onActivity result. requestcode:%d resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(26271);
+    ad.i("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] onActivity result. requestcode:%d resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     switch (paramInt1)
     {
     default: 
-      ab.e("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] onActivity result. unknow requestcode:%d", new Object[] { Integer.valueOf(paramInt1) });
-      AppMethodBeat.o(22649);
+      ad.e("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] onActivity result. unknow requestcode:%d", new Object[] { Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(26271);
       return;
     }
     if (paramInt2 == -1)
     {
       finish();
-      AppMethodBeat.o(22649);
+      AppMethodBeat.o(26271);
       return;
     }
-    bLd();
-    AppMethodBeat.o(22649);
+    cJa();
+    AppMethodBeat.o(26271);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(22645);
+    AppMethodBeat.i(26267);
     super.onCreate(paramBundle);
-    this.nYY = getIntent().getStringExtra("label_id");
-    this.nYZ = getIntent().getStringExtra("label_name");
-    setBackBtn(new ContactLabelMemberListUI.3(this));
-    addTextOptionMenu(0, getString(2131301005), new ContactLabelMemberListUI.4(this));
-    setMMTitle(this.nYZ);
-    this.nYW = ((ListView)findViewById(2131823174));
-    this.jCy = ((TextView)findViewById(2131821788));
-    if (bo.isNullOrNil(this.nYY))
+    this.sMX = getIntent().getStringExtra("label_id");
+    this.sMY = getIntent().getStringExtra("label_name");
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
-      ab.e("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] inite view");
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(26263);
+        ContactLabelMemberListUI.this.finish();
+        AppMethodBeat.o(26263);
+        return false;
+      }
+    });
+    addTextOptionMenu(0, getString(2131760608), new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(26264);
+        paramAnonymousMenuItem = new Intent();
+        paramAnonymousMenuItem.setClass(ContactLabelMemberListUI.this, ContactLabelEditUI.class);
+        paramAnonymousMenuItem.putExtra("label_id", ContactLabelMemberListUI.c(ContactLabelMemberListUI.this));
+        paramAnonymousMenuItem.putExtra("label_name", ContactLabelMemberListUI.d(ContactLabelMemberListUI.this));
+        ContactLabelMemberListUI.this.startActivityForResult(paramAnonymousMenuItem, 10001);
+        AppMethodBeat.o(26264);
+        return false;
+      }
+    });
+    setMMTitle(this.sMY);
+    this.sMV = ((ListView)findViewById(2131298671));
+    this.mtT = ((TextView)findViewById(2131299457));
+    if (bt.isNullOrNil(this.sMX))
+    {
+      ad.e("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] inite view");
       finish();
     }
-    this.nYX = new a(getContext());
-    this.nYW.setAdapter(this.nYX);
-    this.nYW.setOnItemClickListener(new ContactLabelMemberListUI.5(this));
-    this.nYW.setEmptyView(this.jCy);
-    AppMethodBeat.o(22645);
+    this.sMW = new a(getContext());
+    this.sMV.setAdapter(this.sMW);
+    this.sMV.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(26265);
+        ContactLabelMemberListUI.a(ContactLabelMemberListUI.this, paramAnonymousInt);
+        AppMethodBeat.o(26265);
+      }
+    });
+    this.sMV.setEmptyView(this.mtT);
+    AppMethodBeat.o(26267);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(22648);
-    if (this.nYX != null)
+    AppMethodBeat.i(26270);
+    if (this.sMW != null)
     {
-      this.nYX.bKb();
-      this.nYX.dAW();
+      this.sMW.cHX();
+      this.sMW.ePu();
     }
     super.onDestroy();
-    AppMethodBeat.o(22648);
+    AppMethodBeat.o(26270);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(22647);
-    aw.aaz();
-    c.YA().b(this.nYH);
+    AppMethodBeat.i(26269);
+    az.arV();
+    c.apM().b(this.sMG);
     super.onPause();
-    AppMethodBeat.o(22647);
+    AppMethodBeat.o(26269);
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(22646);
-    aw.aaz();
-    c.YA().a(this.nYH);
+    AppMethodBeat.i(26268);
+    az.arV();
+    c.apM().a(this.sMG);
     super.onResume();
-    bLd();
-    AppMethodBeat.o(22646);
+    cJa();
+    AppMethodBeat.o(26268);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

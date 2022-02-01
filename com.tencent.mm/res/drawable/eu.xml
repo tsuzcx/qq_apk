@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/et" />
-    <item android:drawable="@drawable/es" />
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="16.0dip" />
+            <solid android:color="@color/a_r" />
+        </shape>
+    </item>
+    <item>
+        <inset android:inset="4.0dip">
+            <shape android:shape="rectangle">
+                <corners android:radius="12.0dip" />
+                <solid android:color="@color/a_r" />
+            </shape>
+        </inset>
+    </item>
 </selector>

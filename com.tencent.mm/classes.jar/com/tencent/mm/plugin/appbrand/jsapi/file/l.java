@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class l
-  extends e<ap>
+  extends e<av>
 {
-  private static final int CTRL_INDEX = 462;
-  private static final String NAME = "fs_appendFileSync";
+  private static final int CTRL_INDEX = 461;
+  private static final String NAME = "fs_appendFile";
   
   public l()
   {
-    super(new ap());
-    AppMethodBeat.i(102779);
-    AppMethodBeat.o(102779);
+    super(new av());
+    AppMethodBeat.i(128868);
+    AppMethodBeat.o(128868);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.l
  * JD-Core Version:    0.7.0.1
  */

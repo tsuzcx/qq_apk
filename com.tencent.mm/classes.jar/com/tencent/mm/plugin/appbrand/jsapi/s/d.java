@@ -1,126 +1,129 @@
 package com.tencent.mm.plugin.appbrand.jsapi.s;
 
-import android.graphics.Matrix;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.e;
-import com.tencent.mm.plugin.appbrand.s.l;
-import com.tencent.mm.plugin.appbrand.widget.base.AppBrandViewMotionCompat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import org.json.JSONObject;
 
-public final class d
+public class d
+  extends a
 {
-  public static void a(ViewGroup paramViewGroup, MotionEvent paramMotionEvent)
+  private static final int CTRL_INDEX = 45;
+  private static final String NAME = "reportAction";
+  
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(91079);
-    int j = paramViewGroup.getChildCount();
-    int i = paramMotionEvent.getActionIndex();
-    if (paramViewGroup.isMotionEventSplittingEnabled())
+    AppMethodBeat.i(107801);
+    String str5 = paramJSONObject.optString("key");
+    String str7 = paramJSONObject.optString("value");
+    ad.i("MicroMsg.JsApiReportAction", "doReportActionInfo, actionKey =  %s, actionValue =  %s", new Object[] { str5, str7 });
+    if ((bt.isNullOrNil(str5)) || (bt.isNullOrNil(str7)))
     {
-      i = 1 << paramMotionEvent.getPointerId(i);
-      j -= 1;
+      ad.e("MicroMsg.JsApiReportAction", "doReportActionInfo, actionKey or actionValue is null");
+      paramc.h(paramInt, e("fail", null));
+      AppMethodBeat.o(107801);
+      return;
+    }
+    if ((str5.length() <= 0) || (str5.length() > 32) || (str7.length() <= 0) || (str7.length() > 1024))
+    {
+      ad.e("MicroMsg.JsApiReportAction", "doReportActionInfo, actionKey or actionValue size is bad");
+      paramc.h(paramInt, e("fail", null));
+      AppMethodBeat.o(107801);
+      return;
+    }
+    String str6 = paramc.getAppId();
+    if (TextUtils.isEmpty(str6))
+    {
+      ad.e("MicroMsg.JsApiReportAction", "doReportActionInfo, appId is empty");
+      paramc.h(paramInt, e("fail", null));
+      AppMethodBeat.o(107801);
+      return;
+    }
+    ad.i("MicroMsg.JsApiReportAction", "doReportActionInfo, appId %s", new Object[] { str6 });
+    int i = 0;
+    int j = 0;
+    if (ay.isConnected(paramc.getContext()))
+    {
+      if (!ay.isWifi(paramc.getContext())) {
+        break label535;
+      }
+      i = 1;
     }
     for (;;)
     {
-      if (j < 0) {
-        break label142;
-      }
-      View localView = paramViewGroup.getChildAt(j);
-      float f1 = paramMotionEvent.getX();
-      float f2 = paramMotionEvent.getY();
-      if ((AppBrandViewMotionCompat.cG(localView)) && (AppBrandViewMotionCompat.a(paramViewGroup, f1, f2, localView)) && (localView.isDuplicateParentStateEnabled()))
+      ad.i("MicroMsg.JsApiReportAction", "doReportActionInfo, get networkType %d", new Object[] { Integer.valueOf(i) });
+      long l = bt.aGK();
+      ad.d("MicroMsg.JsApiReportAction", "report(%s), clickTimestamp : %d, appID %s, networkType %d, userAgent %s, url : %s, sessionID : %s, actionKey : %s, actionValue : %s", new Object[] { Long.valueOf(l), Integer.valueOf(13579), str6, Integer.valueOf(i), "", "", "", str5, str7 });
+      Object localObject1 = "";
+      localObject3 = "";
+      String str3 = "";
+      str4 = "";
+      String str1 = str3;
+      paramJSONObject = (JSONObject)localObject3;
+      try
       {
-        a(paramViewGroup, paramMotionEvent, localView, i);
-        if (((localView instanceof e)) && (((e)localView).aCe()))
+        localObject2 = URLEncoder.encode(bt.nullAsNil(""), "UTF-8");
+        str1 = str3;
+        paramJSONObject = (JSONObject)localObject3;
+        localObject1 = localObject2;
+        localObject3 = URLEncoder.encode("", "UTF-8");
+        str1 = str3;
+        paramJSONObject = (JSONObject)localObject3;
+        localObject1 = localObject2;
+        str3 = URLEncoder.encode(str5, "UTF-8");
+        str1 = str3;
+        paramJSONObject = (JSONObject)localObject3;
+        localObject1 = localObject2;
+        str5 = URLEncoder.encode(str7, "UTF-8");
+        paramJSONObject = str5;
+        localObject1 = localObject2;
+        str1 = str3;
+        localObject2 = paramJSONObject;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        for (;;)
         {
-          AppMethodBeat.o(91079);
-          return;
-          i = -1;
-          break;
+          Object localObject2;
+          ad.printErrStackTrace("MicroMsg.JsApiReportAction", localUnsupportedEncodingException, "", new Object[0]);
+          String str2 = str4;
+          localObject3 = paramJSONObject;
         }
       }
-      j -= 1;
-    }
-    label142:
-    AppMethodBeat.o(91079);
-  }
-  
-  public static boolean a(ViewGroup paramViewGroup, MotionEvent paramMotionEvent, View paramView, int paramInt)
-  {
-    AppMethodBeat.i(91080);
-    if (paramView == null)
-    {
-      ab.v("MicroMsg.ViewMotionHelper", "child is null.");
-      AppMethodBeat.o(91080);
-      return false;
-    }
-    int i = paramMotionEvent.getAction();
-    if (i == 3)
-    {
-      paramMotionEvent.setAction(3);
-      bool = paramView.dispatchTouchEvent(paramMotionEvent);
-      paramMotionEvent.setAction(i);
-      AppMethodBeat.o(91080);
-      return bool;
-    }
-    i = ((Integer)l.a(MotionEvent.class, "getPointerIdBits", paramMotionEvent, new Class[0], new Object[0], Integer.valueOf(0))).intValue();
-    paramInt = i & paramInt;
-    if (paramInt == 0)
-    {
-      ab.v("MicroMsg.ViewMotionHelper", "newPointerIdBits is 0.");
-      AppMethodBeat.o(91080);
-      return false;
-    }
-    Object localObject = Boolean.FALSE;
-    boolean bool = ((Boolean)l.a(View.class, "hasIdentityMatrix", paramView, new Class[0], new Object[0], localObject)).booleanValue();
-    if (paramInt == i)
-    {
-      if (bool)
+      h.vKh.f(13579, new Object[] { str6, Integer.valueOf(i), localObject1, localObject3, "", str1, localObject2, Long.valueOf(l), Long.valueOf(l) });
+      paramc.h(paramInt, e("ok", null));
+      AppMethodBeat.o(107801);
+      return;
+      label535:
+      if (ay.is4G(paramc.getContext()))
       {
-        float f1 = paramViewGroup.getScrollX() - paramView.getLeft();
-        float f2 = paramViewGroup.getScrollY() - paramView.getTop();
-        paramMotionEvent.offsetLocation(f1, f2);
-        bool = paramView.dispatchTouchEvent(paramMotionEvent);
-        paramMotionEvent.offsetLocation(-f1, -f2);
-        AppMethodBeat.o(91080);
-        return bool;
+        i = 4;
       }
-      paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
-    }
-    for (;;)
-    {
-      paramMotionEvent.offsetLocation(paramViewGroup.getScrollX() - paramView.getLeft(), paramViewGroup.getScrollY() - paramView.getTop());
-      if (!bool) {
-        paramMotionEvent.transform((Matrix)l.a(View.class, "getInverseMatrix", paramView, new Class[0], new Object[0], null));
+      else if (ay.is3G(paramc.getContext()))
+      {
+        i = 3;
       }
-      bool = paramView.dispatchTouchEvent(paramMotionEvent);
-      paramMotionEvent.recycle();
-      AppMethodBeat.o(91080);
-      return bool;
-      localObject = (MotionEvent)l.a("split", paramMotionEvent, new Class[] { Integer.class }, new Object[] { Integer.valueOf(paramInt) });
-      if (localObject == null) {
-        paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
-      } else {
-        paramMotionEvent = (MotionEvent)localObject;
+      else
+      {
+        i = j;
+        if (ay.is2G(paramc.getContext())) {
+          i = 2;
+        }
       }
     }
-  }
-  
-  public static d.f cr(View paramView)
-  {
-    AppMethodBeat.i(91078);
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    paramView = new d.f(0, arrayOfInt[0], arrayOfInt[1]);
-    AppMethodBeat.o(91078);
-    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.s.d
  * JD-Core Version:    0.7.0.1
  */

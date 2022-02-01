@@ -2,7 +2,7 @@ package com.tencent.mm.wear.app.ui;
 
 public abstract interface c
 {
-  public abstract void mX();
+  public abstract void nJ();
 }
 
 

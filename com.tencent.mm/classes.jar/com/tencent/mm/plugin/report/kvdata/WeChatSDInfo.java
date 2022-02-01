@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class WeChatSDInfo
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
   public int depth_;
   public long dirCount_;
@@ -22,146 +22,146 @@ public class WeChatSDInfo
   
   public WeChatSDInfo()
   {
-    AppMethodBeat.i(79156);
+    AppMethodBeat.i(151542);
     this.subDirList_ = new LinkedList();
-    AppMethodBeat.o(79156);
+    AppMethodBeat.o(151542);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(79157);
+    AppMethodBeat.i(151543);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.am(1, this.totalSize_);
-      paramVarArgs.am(2, this.dirCount_);
-      paramVarArgs.am(3, this.fileCount_);
-      paramVarArgs.am(4, this.fileLenInvalidCount_);
-      paramVarArgs.aO(5, this.subDirResultsSize_);
-      paramVarArgs.am(6, this.totalTime_);
-      paramVarArgs.aO(7, this.depth_);
-      paramVarArgs.am(8, this.tempAccTotalSize_);
-      paramVarArgs.aO(9, this.tempAccDirResultsSize_);
-      paramVarArgs.am(10, this.tempAccDirCount_);
-      paramVarArgs.am(11, this.tempAccFileCount_);
-      paramVarArgs.am(12, this.tempAccFileLenInvalidCount_);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aG(1, this.totalSize_);
+      paramVarArgs.aG(2, this.dirCount_);
+      paramVarArgs.aG(3, this.fileCount_);
+      paramVarArgs.aG(4, this.fileLenInvalidCount_);
+      paramVarArgs.aR(5, this.subDirResultsSize_);
+      paramVarArgs.aG(6, this.totalTime_);
+      paramVarArgs.aR(7, this.depth_);
+      paramVarArgs.aG(8, this.tempAccTotalSize_);
+      paramVarArgs.aR(9, this.tempAccDirResultsSize_);
+      paramVarArgs.aG(10, this.tempAccDirCount_);
+      paramVarArgs.aG(11, this.tempAccFileCount_);
+      paramVarArgs.aG(12, this.tempAccFileLenInvalidCount_);
       paramVarArgs.e(13, 8, this.subDirList_);
-      AppMethodBeat.o(79157);
+      AppMethodBeat.o(151543);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.p(1, this.totalSize_);
-      i = e.a.a.b.b.a.p(2, this.dirCount_);
-      int j = e.a.a.b.b.a.p(3, this.fileCount_);
-      int k = e.a.a.b.b.a.p(4, this.fileLenInvalidCount_);
-      int m = e.a.a.b.b.a.bl(5, this.subDirResultsSize_);
-      int n = e.a.a.b.b.a.p(6, this.totalTime_);
-      int i1 = e.a.a.b.b.a.bl(7, this.depth_);
-      int i2 = e.a.a.b.b.a.p(8, this.tempAccTotalSize_);
-      int i3 = e.a.a.b.b.a.bl(9, this.tempAccDirResultsSize_);
-      int i4 = e.a.a.b.b.a.p(10, this.tempAccDirCount_);
-      int i5 = e.a.a.b.b.a.p(11, this.tempAccFileCount_);
-      int i6 = e.a.a.b.b.a.p(12, this.tempAccFileLenInvalidCount_);
-      int i7 = e.a.a.a.c(13, 8, this.subDirList_);
-      AppMethodBeat.o(79157);
+      paramInt = f.a.a.b.b.a.q(1, this.totalSize_);
+      i = f.a.a.b.b.a.q(2, this.dirCount_);
+      int j = f.a.a.b.b.a.q(3, this.fileCount_);
+      int k = f.a.a.b.b.a.q(4, this.fileLenInvalidCount_);
+      int m = f.a.a.b.b.a.bA(5, this.subDirResultsSize_);
+      int n = f.a.a.b.b.a.q(6, this.totalTime_);
+      int i1 = f.a.a.b.b.a.bA(7, this.depth_);
+      int i2 = f.a.a.b.b.a.q(8, this.tempAccTotalSize_);
+      int i3 = f.a.a.b.b.a.bA(9, this.tempAccDirResultsSize_);
+      int i4 = f.a.a.b.b.a.q(10, this.tempAccDirCount_);
+      int i5 = f.a.a.b.b.a.q(11, this.tempAccFileCount_);
+      int i6 = f.a.a.b.b.a.q(12, this.tempAccFileLenInvalidCount_);
+      int i7 = f.a.a.a.c(13, 8, this.subDirList_);
+      AppMethodBeat.o(151543);
       return paramInt + 0 + i + j + k + m + n + i1 + i2 + i3 + i4 + i5 + i6 + i7;
     }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
       this.subDirList_.clear();
-      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      AppMethodBeat.o(79157);
+      AppMethodBeat.o(151543);
       return 0;
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
       WeChatSDInfo localWeChatSDInfo = (WeChatSDInfo)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(79157);
+        AppMethodBeat.o(151543);
         return -1;
       case 1: 
-        localWeChatSDInfo.totalSize_ = ((e.a.a.a.a)localObject1).CLY.sm();
-        AppMethodBeat.o(79157);
+        localWeChatSDInfo.totalSize_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        AppMethodBeat.o(151543);
         return 0;
       case 2: 
-        localWeChatSDInfo.dirCount_ = ((e.a.a.a.a)localObject1).CLY.sm();
-        AppMethodBeat.o(79157);
+        localWeChatSDInfo.dirCount_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        AppMethodBeat.o(151543);
         return 0;
       case 3: 
-        localWeChatSDInfo.fileCount_ = ((e.a.a.a.a)localObject1).CLY.sm();
-        AppMethodBeat.o(79157);
+        localWeChatSDInfo.fileCount_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        AppMethodBeat.o(151543);
         return 0;
       case 4: 
-        localWeChatSDInfo.fileLenInvalidCount_ = ((e.a.a.a.a)localObject1).CLY.sm();
-        AppMethodBeat.o(79157);
+        localWeChatSDInfo.fileLenInvalidCount_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        AppMethodBeat.o(151543);
         return 0;
       case 5: 
-        localWeChatSDInfo.subDirResultsSize_ = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(79157);
+        localWeChatSDInfo.subDirResultsSize_ = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(151543);
         return 0;
       case 6: 
-        localWeChatSDInfo.totalTime_ = ((e.a.a.a.a)localObject1).CLY.sm();
-        AppMethodBeat.o(79157);
+        localWeChatSDInfo.totalTime_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        AppMethodBeat.o(151543);
         return 0;
       case 7: 
-        localWeChatSDInfo.depth_ = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(79157);
+        localWeChatSDInfo.depth_ = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(151543);
         return 0;
       case 8: 
-        localWeChatSDInfo.tempAccTotalSize_ = ((e.a.a.a.a)localObject1).CLY.sm();
-        AppMethodBeat.o(79157);
+        localWeChatSDInfo.tempAccTotalSize_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        AppMethodBeat.o(151543);
         return 0;
       case 9: 
-        localWeChatSDInfo.tempAccDirResultsSize_ = ((e.a.a.a.a)localObject1).CLY.sl();
-        AppMethodBeat.o(79157);
+        localWeChatSDInfo.tempAccDirResultsSize_ = ((f.a.a.a.a)localObject1).KhF.xS();
+        AppMethodBeat.o(151543);
         return 0;
       case 10: 
-        localWeChatSDInfo.tempAccDirCount_ = ((e.a.a.a.a)localObject1).CLY.sm();
-        AppMethodBeat.o(79157);
+        localWeChatSDInfo.tempAccDirCount_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        AppMethodBeat.o(151543);
         return 0;
       case 11: 
-        localWeChatSDInfo.tempAccFileCount_ = ((e.a.a.a.a)localObject1).CLY.sm();
-        AppMethodBeat.o(79157);
+        localWeChatSDInfo.tempAccFileCount_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        AppMethodBeat.o(151543);
         return 0;
       case 12: 
-        localWeChatSDInfo.tempAccFileLenInvalidCount_ = ((e.a.a.a.a)localObject1).CLY.sm();
-        AppMethodBeat.o(79157);
+        localWeChatSDInfo.tempAccFileLenInvalidCount_ = ((f.a.a.a.a)localObject1).KhF.xT();
+        AppMethodBeat.o(151543);
         return 0;
       }
-      paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+      paramVarArgs = ((f.a.a.a.a)localObject1).agn(paramInt);
       i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
       {
         Object localObject2 = (byte[])paramVarArgs.get(paramInt);
         localObject1 = new SubDirInfo();
-        localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((SubDirInfo)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
+        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((SubDirInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bx.a)localObject1, com.tencent.mm.bx.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
         localWeChatSDInfo.subDirList_.add(localObject1);
         paramInt += 1;
       }
-      AppMethodBeat.o(79157);
+      AppMethodBeat.o(151543);
       return 0;
     }
-    AppMethodBeat.o(79157);
+    AppMethodBeat.o(151543);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.report.kvdata.WeChatSDInfo
  * JD-Core Version:    0.7.0.1
  */

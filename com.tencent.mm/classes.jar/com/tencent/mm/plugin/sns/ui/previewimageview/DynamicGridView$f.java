@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.ui.previewimageview;
 
 public abstract interface DynamicGridView$f
 {
-  public abstract void cxd();
+  public abstract void dDy();
 }
 
 

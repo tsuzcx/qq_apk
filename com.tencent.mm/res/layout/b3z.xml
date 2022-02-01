@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView android:id="@id/f9l" android:background="@color/a05" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/b39" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hu" android:layout_marginRight="@dimen/hu" android:layout_centerInParent="true">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.tools.PressImageView android:id="@id/cn7" android:background="@color/a_r" android:layout_width="@dimen/i4" android:layout_height="@dimen/i4" android:src="@drawable/awu" />
+            <com.tencent.mm.ui.chatting.SendDataToDeviceProgressBar android:id="@id/fbo" android:visibility="invisible" android:layout_width="@dimen/i4" android:layout_height="@dimen/i4" />
+            <ImageView android:id="@id/kv" android:layout_width="@dimen/i4" android:layout_height="@dimen/i4" android:src="@raw/send_data_round_rect_shadow" android:layout_centerVertical="true" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/jv" android:textColor="@color/ef" android:ellipsize="end" android:gravity="center" android:id="@id/dy8" android:layout_width="@dimen/i4" android:layout_height="wrap_content" android:layout_marginTop="@dimen/af9" android:maxLines="2" android:singleLine="false" />
+        <TextView android:textSize="@dimen/jv" android:textColor="@color/ef" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/fbp" android:layout_width="@dimen/i4" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+</RelativeLayout>

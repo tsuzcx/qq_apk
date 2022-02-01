@@ -1,10 +1,27 @@
 package com.tencent.mm.hardcoder;
 
-public abstract class j
+public final class j
+  extends h
 {
-  public static abstract interface a
+  public final boolean dyW;
+  public final boolean fXR;
+  public final int key;
+  public final int value;
+  
+  public j(int paramInt)
   {
-    public abstract void reportInfo(j paramj);
+    this.fXR = false;
+    this.key = paramInt;
+    this.value = 1;
+    this.dyW = false;
+  }
+  
+  public j(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2)
+  {
+    this.fXR = paramBoolean1;
+    this.key = paramInt1;
+    this.value = paramInt2;
+    this.dyW = paramBoolean2;
   }
 }
 

@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.label;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.p;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.al.g;
+import com.tencent.mm.al.n;
+import com.tencent.mm.al.q;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.model.az;
+import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.label.b.a;
 import com.tencent.mm.plugin.label.b.d;
-import com.tencent.mm.protocal.protobuf.cpk;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.dit;
 import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.af;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.ak;
+import com.tencent.mm.storage.bg;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,30 +30,76 @@ import java.util.Set;
 public final class b
   implements com.tencent.mm.plugin.label.a.b
 {
-  ArrayList<String> nXQ;
-  ArrayList<String> nXR;
-  private f nXS;
+  ArrayList<String> sLO;
+  ArrayList<String> sLP;
+  private g sLQ;
   String username;
   
   public b()
   {
-    AppMethodBeat.i(22489);
-    this.nXS = new b.1(this);
-    AppMethodBeat.o(22489);
+    AppMethodBeat.i(26112);
+    this.sLQ = new g()
+    {
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+      {
+        AppMethodBeat.i(26111);
+        ad.e("MicroMsg.Label.ContactLabelManagerImpl", "onSceneEnd");
+        switch (paramAnonymousn.getType())
+        {
+        case 636: 
+        case 637: 
+        default: 
+          AppMethodBeat.o(26111);
+          return;
+        case 635: 
+          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+          {
+            b.h(b.this.username, b.this.sLO);
+            AppMethodBeat.o(26111);
+            return;
+          }
+          b.this.cIO();
+          ad.e("MicroMsg.Label.ContactLabelManagerImpl", "add contact lable faild");
+          AppMethodBeat.o(26111);
+          return;
+        }
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0)) {
+          if ((b.this.sLP == null) || (b.this.sLP.isEmpty())) {
+            break label281;
+          }
+        }
+        label281:
+        for (paramAnonymousInt1 = b.this.sLP.size();; paramAnonymousInt1 = 0)
+        {
+          if ((b.this.sLO != null) && (!b.this.sLO.isEmpty())) {}
+          for (paramAnonymousInt2 = b.this.sLO.size() - paramAnonymousInt1;; paramAnonymousInt2 = 0)
+          {
+            if ((paramAnonymousInt1 > 0) || (paramAnonymousInt2 > 0))
+            {
+              ad.d("MicroMsg.Label.ContactLabelManagerImpl", "cpan[saveContact]addLabelNum:%d,updateLabelNum:%d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+              h.vKh.f(11220, new Object[] { u.aqG(), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(0), Integer.valueOf(0) });
+            }
+            b.this.cIO();
+            break;
+          }
+        }
+      }
+    };
+    AppMethodBeat.o(26112);
   }
   
-  static void i(String paramString, ArrayList<String> paramArrayList)
+  static void h(String paramString, ArrayList<String> paramArrayList)
   {
-    AppMethodBeat.i(22500);
+    AppMethodBeat.i(26123);
     if (paramArrayList == null) {}
     for (Object localObject1 = "";; localObject1 = paramArrayList.toString())
     {
-      ab.d("MicroMsg.Label.ContactLabelManagerImpl", "cpan[saveContact] username:%s,list:%s", new Object[] { paramString, localObject1 });
-      if ((!bo.isNullOrNil(paramString)) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+      ad.d("MicroMsg.Label.ContactLabelManagerImpl", "cpan[saveContact] username:%s,list:%s", new Object[] { paramString, localObject1 });
+      if ((!bt.isNullOrNil(paramString)) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
         break;
       }
-      ab.e("MicroMsg.Label.ContactLabelManagerImpl", "add contact label faild.");
-      AppMethodBeat.o(22500);
+      ad.e("MicroMsg.Label.ContactLabelManagerImpl", "add contact label faild.");
+      AppMethodBeat.o(26123);
       return;
     }
     Object localObject2 = "";
@@ -59,42 +108,49 @@ public final class b
     {
       localObject1 = localObject2;
       if (paramArrayList.size() > 0) {
-        localObject1 = c.cd(e.bKU().aj(paramArrayList));
+        localObject1 = c.dU(e.cIR().aG(paramArrayList));
       }
     }
     paramArrayList = new LinkedList();
-    localObject2 = new cpk();
-    ((cpk)localObject2).wOV = ((String)localObject1);
-    ((cpk)localObject2).jJA = paramString;
+    localObject2 = new dit();
+    ((dit)localObject2).DbA = ((String)localObject1);
+    ((dit)localObject2).mAQ = paramString;
     paramArrayList.add(localObject2);
     paramString = new d(paramArrayList);
-    aw.Rc().a(paramString, 0);
-    AppMethodBeat.o(22500);
+    az.aeS().a(paramString, 0);
+    AppMethodBeat.o(26123);
   }
   
-  public final String RN(String paramString)
+  public final void a(k.a parama)
   {
-    AppMethodBeat.i(22491);
-    paramString = e.bKU().RN(paramString);
-    AppMethodBeat.o(22491);
+    AppMethodBeat.i(26116);
+    e.cIR().add(parama);
+    AppMethodBeat.o(26116);
+  }
+  
+  public final String aeH(String paramString)
+  {
+    AppMethodBeat.i(26114);
+    paramString = e.cIR().aeH(paramString);
+    AppMethodBeat.o(26114);
     return paramString;
   }
   
-  public final String RO(String paramString)
+  public final String aeI(String paramString)
   {
-    AppMethodBeat.i(22492);
-    paramString = e.bKU().RO(paramString);
-    AppMethodBeat.o(22492);
+    AppMethodBeat.i(26115);
+    paramString = e.cIR().aeI(paramString);
+    AppMethodBeat.o(26115);
     return paramString;
   }
   
-  public final List<String> RP(String paramString)
+  public final List<String> aeJ(String paramString)
   {
-    AppMethodBeat.i(22496);
-    if (bo.isNullOrNil(paramString))
+    AppMethodBeat.i(26119);
+    if (bt.isNullOrNil(paramString))
     {
-      ab.w("MicroMsg.Label.ContactLabelManagerImpl", "labels is null.");
-      AppMethodBeat.o(22496);
+      ad.w("MicroMsg.Label.ContactLabelManagerImpl", "labels is null.");
+      AppMethodBeat.o(26119);
       return null;
     }
     paramString = paramString.split(",");
@@ -102,79 +158,72 @@ public final class b
     {
       ArrayList localArrayList = new ArrayList();
       localArrayList.addAll(Arrays.asList(paramString));
-      AppMethodBeat.o(22496);
+      AppMethodBeat.o(26119);
       return localArrayList;
     }
-    AppMethodBeat.o(22496);
+    AppMethodBeat.o(26119);
     return null;
   }
   
-  public final void a(k.a parama)
+  public final void ayP()
   {
-    AppMethodBeat.i(22493);
-    e.bKU().add(parama);
-    AppMethodBeat.o(22493);
-  }
-  
-  public final void ahN()
-  {
-    AppMethodBeat.i(22490);
-    e.bKU().ahN();
-    AppMethodBeat.o(22490);
+    AppMethodBeat.i(26113);
+    e.cIR().ayP();
+    AppMethodBeat.o(26113);
   }
   
   public final void b(k.a parama)
   {
-    AppMethodBeat.i(22494);
-    e.bKU().remove(parama);
-    AppMethodBeat.o(22494);
+    AppMethodBeat.i(26117);
+    e.cIR().remove(parama);
+    AppMethodBeat.o(26117);
   }
   
-  public final List<String> bKQ()
+  public final List<String> cIN()
   {
-    AppMethodBeat.i(22495);
-    ai localai = e.bKU();
-    long l = bo.aoy();
-    ArrayList localArrayList1 = localai.dwH();
+    AppMethodBeat.i(26118);
+    ak localak = e.cIR();
+    long l = bt.eGO();
+    ArrayList localArrayList1 = localak.eKK();
     if (localArrayList1 == null)
     {
-      AppMethodBeat.o(22495);
+      AppMethodBeat.o(26118);
       return null;
     }
-    localai.dwI();
+    localak.eKL();
     ArrayList localArrayList2 = new ArrayList();
     int i = 0;
     while (i < localArrayList1.size())
     {
-      ArrayList localArrayList3 = (ArrayList)localai.yMe.get(Integer.valueOf(((af)localArrayList1.get(i)).field_labelID));
+      ArrayList localArrayList3 = (ArrayList)localak.FxL.get(Integer.valueOf(((ah)localArrayList1.get(i)).field_labelID));
       if ((localArrayList3 != null) && (localArrayList3.size() > 0)) {
-        localArrayList2.add(((af)localArrayList1.get(i)).field_labelName);
+        localArrayList2.add(((ah)localArrayList1.get(i)).field_labelName);
       }
       i += 1;
     }
-    ab.i("MicroMsg.Label.ContactLabelStorage", "getAllLabelHasContact time:%s all:%s hascontact:%s stack:%s", new Object[] { Long.valueOf(bo.hl(l)), Integer.valueOf(localArrayList1.size()), Integer.valueOf(localArrayList2.size()), bo.dtY() });
-    AppMethodBeat.o(22495);
+    ad.i("MicroMsg.Label.ContactLabelStorage", "getAllLabelHasContact time:%s all:%s hascontact:%s stack:%s", new Object[] { Long.valueOf(bt.vM(l)), Integer.valueOf(localArrayList1.size()), Integer.valueOf(localArrayList2.size()), bt.eGN() });
+    AppMethodBeat.o(26118);
     return localArrayList2;
   }
   
-  final void bKR()
+  final void cIO()
   {
-    AppMethodBeat.i(22499);
+    AppMethodBeat.i(26122);
     this.username = null;
-    this.nXQ = null;
-    this.nXR = null;
-    aw.Rc().b(635, this.nXS);
-    aw.Rc().b(638, this.nXS);
-    AppMethodBeat.o(22499);
+    this.sLO = null;
+    this.sLP = null;
+    az.aeS().b(635, this.sLQ);
+    az.aeS().b(638, this.sLQ);
+    AppMethodBeat.o(26122);
   }
   
-  public final String cb(List<String> paramList)
+  public final String dS(List<String> paramList)
   {
-    AppMethodBeat.i(22497);
+    AppMethodBeat.i(26120);
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      ab.w("MicroMsg.Label.ContactLabelManagerImpl", "labelList is empty");
-      AppMethodBeat.o(22497);
+      ad.w("MicroMsg.Label.ContactLabelManagerImpl", "labelList is empty");
+      AppMethodBeat.o(26120);
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -189,79 +238,79 @@ public final class b
       i += 1;
     }
     paramList = localStringBuilder.toString();
-    AppMethodBeat.o(22497);
+    AppMethodBeat.o(26120);
     return paramList;
   }
   
-  public final void cc(List<String> paramList)
+  public final void dT(List<String> paramList)
   {
-    AppMethodBeat.i(22501);
+    AppMethodBeat.i(26124);
     paramList = new a(paramList);
-    aw.Rc().a(paramList, 0);
-    AppMethodBeat.o(22501);
+    az.aeS().a(paramList, 0);
+    AppMethodBeat.o(26124);
   }
   
-  public final void eY(String paramString1, String paramString2)
+  public final void gZ(String paramString1, String paramString2)
   {
     try
     {
-      AppMethodBeat.i(22498);
-      ab.i("MicroMsg.Label.ContactLabelManagerImpl", "cpan[saveStrangerLabel] user:%s labels:%s", new Object[] { String.valueOf(paramString1), String.valueOf(paramString2) });
-      if (bo.isNullOrNil(paramString2))
+      AppMethodBeat.i(26121);
+      ad.i("MicroMsg.Label.ContactLabelManagerImpl", "cpan[saveStrangerLabel] user:%s labels:%s", new Object[] { String.valueOf(paramString1), String.valueOf(paramString2) });
+      if (bt.isNullOrNil(paramString2))
       {
-        ab.w("MicroMsg.Label.ContactLabelManagerImpl", "cpan[saveStrangerLabel] labels is null.");
-        AppMethodBeat.o(22498);
+        ad.w("MicroMsg.Label.ContactLabelManagerImpl", "cpan[saveStrangerLabel] labels is null.");
+        AppMethodBeat.o(26121);
       }
       for (;;)
       {
         return;
-        paramString2 = (ArrayList)RP(paramString2);
+        paramString2 = (ArrayList)aeJ(paramString2);
         if ((paramString2 != null) && (!paramString2.isEmpty())) {
           break;
         }
-        ab.w("MicroMsg.Label.ContactLabelManagerImpl", "cpan[saveStrangerLabel] labelList is null.");
-        AppMethodBeat.o(22498);
+        ad.w("MicroMsg.Label.ContactLabelManagerImpl", "cpan[saveStrangerLabel] labelList is null.");
+        AppMethodBeat.o(26121);
       }
       this.username = paramString1;
     }
     finally {}
-    this.nXQ = paramString2;
+    this.sLO = paramString2;
     int j = paramString2.size();
-    this.nXR = new ArrayList();
+    this.sLP = new ArrayList();
     int i = 0;
     for (;;)
     {
       if (i < j)
       {
-        af localaf = e.bKU().arm((String)paramString2.get(i));
-        if ((localaf != null) && (localaf.field_isTemporary)) {
-          this.nXR.add(paramString2.get(i));
+        ah localah = e.cIR().aHO((String)paramString2.get(i));
+        if ((localah != null) && (localah.field_isTemporary)) {
+          this.sLP.add(paramString2.get(i));
         }
       }
       else
       {
-        aw.Rc().a(635, this.nXS);
-        aw.Rc().a(638, this.nXS);
-        if ((this.nXR == null) || (this.nXR.isEmpty()))
+        az.aeS().a(635, this.sLQ);
+        az.aeS().a(638, this.sLQ);
+        if ((this.sLP == null) || (this.sLP.isEmpty()))
         {
-          i(paramString1, paramString2);
-          bKR();
-          AppMethodBeat.o(22498);
+          h(paramString1, paramString2);
+          cIO();
+          AppMethodBeat.o(26121);
           break;
         }
-        ab.i("MicroMsg.Label.ContactLabelManagerImpl", "cpan[saveStrangerLabel]addList:%s", new Object[] { this.nXR.toString() });
-        paramString1 = new a(this.nXR);
-        aw.Rc().a(paramString1, 0);
-        AppMethodBeat.o(22498);
+        ad.i("MicroMsg.Label.ContactLabelManagerImpl", "cpan[saveStrangerLabel]addList:%s", new Object[] { this.sLP.toString() });
+        paramString1 = new a(this.sLP);
+        az.aeS().a(paramString1, 0);
+        AppMethodBeat.o(26121);
         break;
       }
       i += 1;
     }
   }
   
-  public final void j(List<String> paramList1, List<String> paramList2)
+  public final void n(List<String> paramList1, List<String> paramList2)
   {
-    AppMethodBeat.i(22502);
+    AppMethodBeat.i(26125);
     Object localObject1 = new HashMap();
     LinkedList localLinkedList = new LinkedList();
     Object localObject2;
@@ -272,7 +321,7 @@ public final class b
       while (paramList1.hasNext())
       {
         localObject2 = (String)paramList1.next();
-        Object localObject3 = bo.P(((String)paramList2.next()).split(","));
+        Object localObject3 = bt.S(((String)paramList2.next()).split(","));
         if ((localObject3 != null) && (((List)localObject3).size() > 0))
         {
           localObject3 = ((List)localObject3).iterator();
@@ -284,19 +333,19 @@ public final class b
             if (((Map)localObject1).containsKey(str1))
             {
               localObject4 = (String)((Map)localObject1).get(str1);
-              str2 = c.eZ((String)localObject4, (String)localObject2);
+              str2 = c.ha((String)localObject4, (String)localObject2);
               if (!str2.equalsIgnoreCase((String)localObject4)) {
                 ((Map)localObject1).put(str1, str2);
               }
             }
             else
             {
-              aw.aaz();
-              localObject4 = com.tencent.mm.model.c.YA().arw(str1);
+              az.arV();
+              localObject4 = com.tencent.mm.model.c.apM().aHY(str1);
               if (localObject4 != null)
               {
-                localObject4 = ((aq)localObject4).field_contactLabelIds;
-                str2 = c.eZ((String)localObject4, (String)localObject2);
+                localObject4 = ((au)localObject4).field_contactLabelIds;
+                str2 = c.ha((String)localObject4, (String)localObject2);
                 if (!str2.equalsIgnoreCase((String)localObject4)) {
                   ((Map)localObject1).put(str1, str2);
                 }
@@ -312,22 +361,22 @@ public final class b
       localObject1 = (Map.Entry)paramList1.next();
       paramList2 = (String)((Map.Entry)localObject1).getKey();
       localObject1 = (String)((Map.Entry)localObject1).getValue();
-      localObject2 = new cpk();
-      ((cpk)localObject2).jJA = paramList2;
-      ((cpk)localObject2).wOV = ((String)localObject1);
+      localObject2 = new dit();
+      ((dit)localObject2).mAQ = paramList2;
+      ((dit)localObject2).DbA = ((String)localObject1);
       localLinkedList.add(localObject2);
     }
     if (localLinkedList.size() > 0)
     {
       paramList1 = new d(localLinkedList);
-      aw.Rc().a(paramList1, 0);
+      az.aeS().a(paramList1, 0);
     }
-    AppMethodBeat.o(22502);
+    AppMethodBeat.o(26125);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.label.b
  * JD-Core Version:    0.7.0.1
  */

@@ -14,54 +14,54 @@ public class zzzi
   
   static
   {
-    AppMethodBeat.i(3568);
+    AppMethodBeat.i(40358);
     zzbrm = false;
     zzbrn = zztd();
     zzbro = new zzzi(true);
-    AppMethodBeat.o(3568);
+    AppMethodBeat.o(40358);
   }
   
   zzzi()
   {
-    AppMethodBeat.i(3566);
+    AppMethodBeat.i(40356);
     this.zzbrp = new HashMap();
-    AppMethodBeat.o(3566);
+    AppMethodBeat.o(40356);
   }
   
   private zzzi(boolean paramBoolean)
   {
-    AppMethodBeat.i(3567);
+    AppMethodBeat.i(40357);
     this.zzbrp = Collections.emptyMap();
-    AppMethodBeat.o(3567);
+    AppMethodBeat.o(40357);
   }
   
   private static Class<?> zztd()
   {
-    AppMethodBeat.i(3564);
+    AppMethodBeat.i(40354);
     try
     {
       Class localClass = Class.forName("com.google.protobuf.Extension");
-      AppMethodBeat.o(3564);
+      AppMethodBeat.o(40354);
       return localClass;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      AppMethodBeat.o(3564);
+      AppMethodBeat.o(40354);
     }
     return null;
   }
   
   public static zzzi zzte()
   {
-    AppMethodBeat.i(3565);
+    AppMethodBeat.i(40355);
     zzzi localzzzi = zzzh.zztc();
-    AppMethodBeat.o(3565);
+    AppMethodBeat.o(40355);
     return localzzzi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzzi
  * JD-Core Version:    0.7.0.1
  */

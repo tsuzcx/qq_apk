@@ -13,8 +13,8 @@ import com.tencent.mm.svg.c;
 public final class hr
   extends c
 {
-  private final int height = 96;
-  private final int width = 96;
+  private final int height = 72;
+  private final int width = 72;
   
   public final int a(int paramInt, Object... paramVarArgs)
   {
@@ -24,16 +24,16 @@ public final class hr
     for (;;)
     {
       return 0;
-      return 96;
-      return 96;
+      return 72;
+      return 72;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      c.h(paramVarArgs);
-      c.g(paramVarArgs);
-      Paint localPaint = c.k(paramVarArgs);
+      c.j(paramVarArgs);
+      c.i(paramVarArgs);
+      Paint localPaint = c.m(paramVarArgs);
       localPaint.setFlags(385);
       localPaint.setStyle(Paint.Style.FILL);
-      Object localObject = c.k(paramVarArgs);
+      Object localObject = c.m(paramVarArgs);
       ((Paint)localObject).setFlags(385);
       ((Paint)localObject).setStyle(Paint.Style.STROKE);
       localPaint.setColor(-16777216);
@@ -44,31 +44,39 @@ public final class hr
       ((Paint)localObject).setPathEffect(null);
       c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
       localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-16777216);
+      localPaint.setColor(-7220480);
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
-      localObject = c.l(paramVarArgs);
-      ((Path)localObject).moveTo(48.054966F, 24.0F);
-      ((Path)localObject).cubicTo(49.474079F, 25.437006F, 50.893192F, 26.874012F, 52.292316F, 28.320997F);
-      ((Path)localObject).cubicTo(46.73579F, 33.869438F, 41.179264F, 39.407902F, 35.632729F, 44.956341F);
-      ((Path)localObject).cubicTo(47.755154F, 44.96632F, 59.877575F, 44.956341F, 72.0F, 44.96632F);
-      ((Path)localObject).lineTo(72.0F, 51.013721F);
-      ((Path)localObject).lineTo(35.58276F, 51.013721F);
-      ((Path)localObject).cubicTo(41.129295F, 56.612057F, 46.725796F, 62.15052F, 52.292316F, 67.728897F);
-      ((Path)localObject).cubicTo(50.873203F, 69.155922F, 49.444096F, 70.572975F, 48.014992F, 72.0F);
-      ((Path)localObject).cubicTo(40.009995F, 64.006653F, 32.004997F, 56.013306F, 24.0F, 48.019958F);
-      ((Path)localObject).cubicTo(32.014992F, 40.016632F, 40.02998F, 32.003326F, 48.054966F, 24.0F);
+      localObject = c.n(paramVarArgs);
+      ((Path)localObject).moveTo(54.0F, 6.0F);
+      ((Path)localObject).cubicTo(55.656853F, 6.0F, 57.0F, 7.343146F, 57.0F, 9.0F);
+      ((Path)localObject).lineTo(57.0F, 9.0F);
+      ((Path)localObject).lineTo(57.0F, 63.0F);
+      ((Path)localObject).cubicTo(57.0F, 64.656853F, 55.656853F, 66.0F, 54.0F, 66.0F);
+      ((Path)localObject).lineTo(54.0F, 66.0F);
+      ((Path)localObject).lineTo(18.0F, 66.0F);
+      ((Path)localObject).cubicTo(16.343145F, 66.0F, 15.0F, 64.656853F, 15.0F, 63.0F);
+      ((Path)localObject).lineTo(15.0F, 63.0F);
+      ((Path)localObject).lineTo(15.0F, 9.0F);
+      ((Path)localObject).cubicTo(15.0F, 7.343146F, 16.343145F, 6.0F, 18.0F, 6.0F);
+      ((Path)localObject).lineTo(18.0F, 6.0F);
       ((Path)localObject).close();
-      WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
+      ((Path)localObject).moveTo(36.0F, 54.0F);
+      ((Path)localObject).cubicTo(34.343147F, 54.0F, 33.0F, 55.343147F, 33.0F, 57.0F);
+      ((Path)localObject).cubicTo(33.0F, 58.656853F, 34.343147F, 60.0F, 36.0F, 60.0F);
+      ((Path)localObject).cubicTo(37.656853F, 60.0F, 39.0F, 58.656853F, 39.0F, 57.0F);
+      ((Path)localObject).cubicTo(39.0F, 55.343147F, 37.656853F, 54.0F, 36.0F, 54.0F);
+      ((Path)localObject).close();
+      WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
       localCanvas.drawPath((Path)localObject, localPaint);
       localCanvas.restore();
-      c.j(paramVarArgs);
+      c.l(paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.hr
  * JD-Core Version:    0.7.0.1
  */

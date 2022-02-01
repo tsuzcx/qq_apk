@@ -24,23 +24,23 @@ public class zzhp
   
   static
   {
-    AppMethodBeat.i(71442);
+    AppMethodBeat.i(101425);
     zzfu = zzd("");
     zzfv = zzd("");
-    AppMethodBeat.o(71442);
+    AppMethodBeat.o(101425);
   }
   
   @VisibleForTesting
   private zzhp(Context paramContext)
   {
-    AppMethodBeat.i(71435);
+    AppMethodBeat.i(101418);
     this.zzft = paramContext.getApplicationContext();
-    AppMethodBeat.o(71435);
+    AppMethodBeat.o(101418);
   }
   
   public static zzhp zza(Context paramContext)
   {
-    AppMethodBeat.i(71436);
+    AppMethodBeat.i(101419);
     Preconditions.checkNotNull(paramContext);
     try
     {
@@ -48,44 +48,44 @@ public class zzhp
         zzfs = new zzhp(paramContext);
       }
       paramContext = zzfs;
-      AppMethodBeat.o(71436);
+      AppMethodBeat.o(101419);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(71436);
+      AppMethodBeat.o(101419);
     }
   }
   
   @VisibleForTesting
   private static boolean zza(PackageInfo paramPackageInfo, boolean paramBoolean)
   {
-    AppMethodBeat.i(71440);
+    AppMethodBeat.i(101423);
     if (paramPackageInfo.signatures.length != 1)
     {
-      AppMethodBeat.o(71440);
+      AppMethodBeat.o(101423);
       return false;
     }
     paramPackageInfo.signatures[0].toByteArray();
     if (paramBoolean) {}
     for (paramBoolean = zza(paramPackageInfo, new byte[][] { zzfu, zzfv });; paramBoolean = zza(paramPackageInfo, new byte[][] { zzfu }))
     {
-      AppMethodBeat.o(71440);
+      AppMethodBeat.o(101423);
       return paramBoolean;
     }
   }
   
   private static boolean zza(PackageInfo paramPackageInfo, byte[]... paramVarArgs)
   {
-    AppMethodBeat.i(71441);
+    AppMethodBeat.i(101424);
     if (paramPackageInfo.signatures == null)
     {
-      AppMethodBeat.o(71441);
+      AppMethodBeat.o(101424);
       return false;
     }
     if (paramPackageInfo.signatures.length != 1)
     {
-      AppMethodBeat.o(71441);
+      AppMethodBeat.o(101424);
       return false;
     }
     paramPackageInfo = paramPackageInfo.signatures[0].toByteArray();
@@ -94,74 +94,74 @@ public class zzhp
     {
       if (Arrays.equals(paramVarArgs[i], paramPackageInfo))
       {
-        AppMethodBeat.o(71441);
+        AppMethodBeat.o(101424);
         return true;
       }
       i += 1;
     }
-    AppMethodBeat.o(71441);
+    AppMethodBeat.o(101424);
     return false;
   }
   
   private static byte[] zzd(String paramString)
   {
-    AppMethodBeat.i(71437);
+    AppMethodBeat.i(101420);
     try
     {
       paramString = paramString.getBytes("ISO-8859-1");
-      AppMethodBeat.o(71437);
+      AppMethodBeat.o(101420);
       return paramString;
     }
     catch (UnsupportedEncodingException paramString)
     {
       paramString = new AssertionError(paramString);
-      AppMethodBeat.o(71437);
+      AppMethodBeat.o(101420);
       throw paramString;
     }
   }
   
   private final PackageInfo zzf(String paramString)
   {
-    AppMethodBeat.i(71439);
+    AppMethodBeat.i(101422);
     try
     {
       paramString = Wrappers.packageManager(this.zzft).getPackageInfo(paramString, 64);
-      AppMethodBeat.o(71439);
+      AppMethodBeat.o(101422);
       return paramString;
     }
     catch (PackageManager.NameNotFoundException paramString)
     {
-      AppMethodBeat.o(71439);
+      AppMethodBeat.o(101422);
     }
     return null;
   }
   
   public final boolean zze(String paramString)
   {
-    AppMethodBeat.i(71438);
+    AppMethodBeat.i(101421);
     paramString = zzf(paramString);
     if (paramString == null)
     {
-      AppMethodBeat.o(71438);
+      AppMethodBeat.o(101421);
       return false;
     }
     if (GooglePlayServicesUtilLight.honorsDebugCertificates(this.zzft))
     {
       bool = zza(paramString, true);
-      AppMethodBeat.o(71438);
+      AppMethodBeat.o(101421);
       return bool;
     }
     boolean bool = zza(paramString, false);
     if (!bool) {
       zza(paramString, true);
     }
-    AppMethodBeat.o(71438);
+    AppMethodBeat.o(101421);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzhp
  * JD-Core Version:    0.7.0.1
  */

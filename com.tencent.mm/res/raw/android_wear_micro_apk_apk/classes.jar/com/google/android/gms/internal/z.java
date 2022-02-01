@@ -16,12 +16,12 @@ import java.util.Set;
 public final class z
   implements al
 {
-  private final am Ns;
-  private boolean Nt = false;
+  private final am Ph;
+  private boolean Pi = false;
   
   public z(am paramam)
   {
-    this.Ns = paramam;
+    this.Ph = paramam;
   }
   
   public final <A extends com.google.android.gms.common.api.g, R extends w, T extends g<R, A>> T a(T paramT)
@@ -35,54 +35,54 @@ public final class z
   {
     try
     {
-      this.Ns.MJ.Od.b(paramT);
-      Object localObject1 = this.Ns.MJ;
-      Object localObject2 = paramT.gr();
-      localObject2 = (j)((ai)localObject1).NX.get(localObject2);
-      d.e(localObject2, "Appropriate Api was not requested.");
-      if ((!((j)localObject2).isConnected()) && (this.Ns.Oj.containsKey(paramT.gr())))
+      this.Ph.Oy.PS.b(paramT);
+      Object localObject1 = this.Ph.Oy;
+      Object localObject2 = paramT.gB();
+      localObject2 = (j)((ai)localObject1).PM.get(localObject2);
+      d.g(localObject2, "Appropriate Api was not requested.");
+      if ((!((j)localObject2).isConnected()) && (this.Ph.PY.containsKey(paramT.gB())))
       {
         paramT.a(new Status(17));
         return paramT;
       }
       localObject1 = localObject2;
       if ((localObject2 instanceof i)) {
-        localObject1 = ((i)localObject2).hc();
+        localObject1 = ((i)localObject2).hm();
       }
       paramT.a((com.google.android.gms.common.api.g)localObject1);
       return paramT;
     }
     catch (DeadObjectException localDeadObjectException)
     {
-      this.Ns.a(new an(this)
+      this.Ph.a(new an(this)
       {
-        public final void iu()
+        public final void iC()
         {
-          z.this.bd(1);
+          z.this.bx(1);
         }
       });
     }
     return paramT;
   }
   
-  public final void bd(int paramInt)
-  {
-    this.Ns.j(null);
-    this.Ns.On.e(paramInt, this.Nt);
-  }
-  
   public final void begin() {}
+  
+  public final void bx(int paramInt)
+  {
+    this.Ph.k(null);
+    this.Ph.Qc.f(paramInt, this.Pi);
+  }
   
   public final void connect()
   {
-    if (this.Nt)
+    if (this.Pi)
     {
-      this.Nt = false;
-      this.Ns.a(new an(this)
+      this.Pi = false;
+      this.Ph.a(new an(this)
       {
-        public final void iu()
+        public final void iC()
         {
-          z.a(z.this).On.j(null);
+          z.a(z.this).Qc.j(null);
         }
       });
     }
@@ -90,30 +90,30 @@ public final class z
   
   public final boolean disconnect()
   {
-    if (this.Nt) {
+    if (this.Pi) {
       return false;
     }
-    if (this.Ns.MJ.iC())
+    if (this.Ph.Oy.iK())
     {
-      this.Nt = true;
-      Iterator localIterator = this.Ns.MJ.Oc.iterator();
+      this.Pi = true;
+      Iterator localIterator = this.Ph.Oy.PR.iterator();
       while (localIterator.hasNext()) {
-        ((bp)localIterator.next()).jf();
+        ((bp)localIterator.next()).jo();
       }
       return false;
     }
-    this.Ns.j(null);
+    this.Ph.k(null);
     return true;
   }
   
   public final void h(Bundle paramBundle) {}
   
-  final void it()
+  final void iB()
   {
-    if (this.Nt)
+    if (this.Pi)
     {
-      this.Nt = false;
-      this.Ns.MJ.Od.release();
+      this.Pi = false;
+      this.Ph.Oy.PS.release();
       disconnect();
     }
   }

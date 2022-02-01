@@ -10,8 +10,8 @@ import java.util.Map;
 abstract class c<T>
   extends d<T>
 {
-  Map<b, MenuItem> Vh;
-  Map<android.support.v4.a.a.c, SubMenu> Vi;
+  Map<b, MenuItem> acm;
+  Map<android.support.v4.a.a.c, SubMenu> acn;
   final Context mContext;
   
   c(Context paramContext, T paramT)
@@ -25,15 +25,15 @@ abstract class c<T>
     if ((paramSubMenu instanceof android.support.v4.a.a.c))
     {
       android.support.v4.a.a.c localc = (android.support.v4.a.a.c)paramSubMenu;
-      if (this.Vi == null) {
-        this.Vi = new a();
+      if (this.acn == null) {
+        this.acn = new a();
       }
-      SubMenu localSubMenu = (SubMenu)this.Vi.get(localc);
+      SubMenu localSubMenu = (SubMenu)this.acn.get(localc);
       paramSubMenu = localSubMenu;
       if (localSubMenu == null)
       {
         paramSubMenu = new v(this.mContext, localc);
-        this.Vi.put(localc, paramSubMenu);
+        this.acn.put(localc, paramSubMenu);
       }
       return paramSubMenu;
     }
@@ -45,15 +45,15 @@ abstract class c<T>
     if ((paramMenuItem instanceof b))
     {
       b localb = (b)paramMenuItem;
-      if (this.Vh == null) {
-        this.Vh = new a();
+      if (this.acm == null) {
+        this.acm = new a();
       }
-      MenuItem localMenuItem = (MenuItem)this.Vh.get(paramMenuItem);
+      MenuItem localMenuItem = (MenuItem)this.acm.get(paramMenuItem);
       paramMenuItem = localMenuItem;
       if (localMenuItem == null)
       {
         paramMenuItem = q.a(this.mContext, localb);
-        this.Vh.put(localb, paramMenuItem);
+        this.acm.put(localb, paramMenuItem);
       }
       return paramMenuItem;
     }

@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.CheckPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -14,77 +16,86 @@ import com.tencent.mm.ui.base.preference.f;
 public class UnfamiliarContactUI
   extends MMPreference
 {
-  private boolean qEM;
-  private boolean qEN;
-  private boolean qEO;
+  private boolean wdf;
+  private boolean wdg;
+  private boolean wdh;
   
   public int getResourceId()
   {
-    return 2131165295;
+    return 2131951739;
   }
   
   public void initView()
   {
-    AppMethodBeat.i(127687);
+    AppMethodBeat.i(74623);
     super.initView();
-    setMMTitle(2131303501);
-    setBackBtn(new UnfamiliarContactUI.1(this));
-    ((CheckPreference)getPreferenceScreen().atx("settings_half_year_not_chat")).zqz = 0;
-    ((CheckPreference)getPreferenceScreen().atx("settings_has_not_same_chatroom")).zqz = 0;
-    ((CheckPreference)getPreferenceScreen().atx("settings_half_year_not_response")).zqz = 0;
-    ((TextButtonPreference)getPreferenceScreen().atx("settings_next_step")).setEnabled(false);
+    setMMTitle(2131763483);
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(74620);
+        UnfamiliarContactUI.this.finish();
+        AppMethodBeat.o(74620);
+        return true;
+      }
+    });
+    ((CheckPreference)getPreferenceScreen().aKk("settings_half_year_not_chat")).Gea = 0;
+    ((CheckPreference)getPreferenceScreen().aKk("settings_has_not_same_chatroom")).Gea = 0;
+    ((CheckPreference)getPreferenceScreen().aKk("settings_half_year_not_response")).Gea = 0;
+    ((TextButtonPreference)getPreferenceScreen().aKk("settings_next_step")).setEnabled(false);
     getPreferenceScreen().notifyDataSetChanged();
-    AppMethodBeat.o(127687);
+    AppMethodBeat.o(74623);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(127685);
+    AppMethodBeat.i(74621);
     super.onCreate(paramBundle);
     initView();
-    AppMethodBeat.o(127685);
+    AppMethodBeat.o(74621);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(127688);
+    AppMethodBeat.i(74624);
     if (paramInt == 4)
     {
       onBackPressed();
-      AppMethodBeat.o(127688);
+      AppMethodBeat.o(74624);
       return true;
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
-    AppMethodBeat.o(127688);
+    AppMethodBeat.o(74624);
     return bool;
   }
   
   public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(127686);
+    AppMethodBeat.i(74622);
     CheckPreference localCheckPreference;
     boolean bool1;
     if ((paramPreference instanceof CheckPreference))
     {
       localCheckPreference = (CheckPreference)paramPreference;
       if (paramPreference.mKey.equals("settings_half_year_not_chat")) {
-        if (!this.qEM)
+        if (!this.wdf)
         {
           bool1 = true;
-          localCheckPreference.vxW = bool1;
-          if (this.qEM) {
+          localCheckPreference.lG = bool1;
+          if (this.wdf) {
             break label123;
           }
           bool1 = true;
           label57:
-          this.qEM = bool1;
+          this.wdf = bool1;
           label62:
-          paramPreference = (TextButtonPreference)paramf.atx("settings_next_step");
-          if ((!this.qEM) && (!this.qEO))
+          paramPreference = (TextButtonPreference)paramf.aKk("settings_next_step");
+          if ((!this.wdf) && (!this.wdh))
           {
             bool1 = bool2;
-            if (!this.qEN) {}
+            if (!this.wdg) {}
           }
           else
           {
@@ -97,7 +108,7 @@ public class UnfamiliarContactUI
     for (;;)
     {
       paramf.notifyDataSetChanged();
-      AppMethodBeat.o(127686);
+      AppMethodBeat.o(74622);
       return true;
       bool1 = false;
       break;
@@ -106,19 +117,19 @@ public class UnfamiliarContactUI
       break label57;
       if (paramPreference.mKey.equals("settings_has_not_same_chatroom"))
       {
-        if (!this.qEO)
+        if (!this.wdh)
         {
           bool1 = true;
           label149:
-          localCheckPreference.vxW = bool1;
-          if (this.qEO) {
+          localCheckPreference.lG = bool1;
+          if (this.wdh) {
             break label177;
           }
         }
         label177:
         for (bool1 = true;; bool1 = false)
         {
-          this.qEO = bool1;
+          this.wdh = bool1;
           break;
           bool1 = false;
           break label149;
@@ -127,19 +138,19 @@ public class UnfamiliarContactUI
       if (!paramPreference.mKey.equals("settings_half_year_not_response")) {
         break label62;
       }
-      if (!this.qEN)
+      if (!this.wdg)
       {
         bool1 = true;
         label203:
-        localCheckPreference.vxW = bool1;
-        if (this.qEN) {
+        localCheckPreference.lG = bool1;
+        if (this.wdg) {
           break label231;
         }
       }
       label231:
       for (bool1 = true;; bool1 = false)
       {
-        this.qEN = bool1;
+        this.wdg = bool1;
         break;
         bool1 = false;
         break label203;
@@ -147,9 +158,9 @@ public class UnfamiliarContactUI
       if (paramPreference.mKey.equals("settings_next_step"))
       {
         paramPreference = new Intent(this, UnfamiliarContactDetailUI.class);
-        paramPreference.putExtra("half_year_not_chat", this.qEM);
-        paramPreference.putExtra("half_year_not_response", this.qEN);
-        paramPreference.putExtra("has_not_same_chatroom", this.qEO);
+        paramPreference.putExtra("half_year_not_chat", this.wdf);
+        paramPreference.putExtra("half_year_not_response", this.wdg);
+        paramPreference.putExtra("has_not_same_chatroom", this.wdh);
         startActivityForResult(paramPreference, 291);
       }
     }
@@ -163,7 +174,7 @@ public class UnfamiliarContactUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.UnfamiliarContactUI
  * JD-Core Version:    0.7.0.1
  */

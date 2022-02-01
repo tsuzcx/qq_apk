@@ -8,28 +8,89 @@ public abstract class ak
   extends c
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int dnT = "card_id".hashCode();
-  private static final int dop = "lower_bound".hashCode();
-  private static final int doq = "need_insert_show_timestamp".hashCode();
-  private static final int dor = "show_timestamp_encrypt_key".hashCode();
-  private static final int dos = "expire_time_interval".hashCode();
-  private static final int dot = "show_expire_interval".hashCode();
-  private static final int dou = "fetch_time".hashCode();
+  private static final int ejR;
+  private static final int elJ;
+  private static final int eme = "username".hashCode();
+  private static final int emf;
+  private static final int eqa = "bitFlag".hashCode();
+  private static final int eri;
+  private static final int erj;
+  private static final int erk;
+  private static final int erl;
+  private static final int erm;
+  private static final int ern;
+  private static final int ero;
+  private static final int erp;
+  private static final int erq;
+  private static final int err;
+  private static final int ers;
+  private static final int ert;
+  private static final int eru;
+  private static final int erv;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean dnA = true;
-  private boolean doj = true;
-  private boolean dok = true;
-  private boolean dol = true;
-  private boolean dom = true;
-  private boolean don = true;
-  private boolean doo = true;
-  public String field_card_id;
-  public int field_expire_time_interval;
-  public long field_fetch_time;
-  public int field_lower_bound;
-  public boolean field_need_insert_show_timestamp;
-  public int field_show_expire_interval;
-  public String field_show_timestamp_encrypt_key;
+  private static final int type_HASHCODE;
+  private boolean __hadSettype = true;
+  private boolean ejO = true;
+  private boolean els = true;
+  private boolean emb = true;
+  private boolean emc = true;
+  private boolean epN = true;
+  private boolean eqU = true;
+  private boolean eqV = true;
+  private boolean eqW = true;
+  private boolean eqX = true;
+  private boolean eqY = true;
+  private boolean eqZ = true;
+  private boolean era = true;
+  private boolean erb = true;
+  private boolean erc = true;
+  private boolean erd = true;
+  private boolean ere = true;
+  private boolean erf = true;
+  private boolean erg = true;
+  private boolean erh = true;
+  public int field_acceptType;
+  public String field_appId;
+  public String field_attrSyncVersion;
+  public int field_bitFlag;
+  public int field_brandFlag;
+  public String field_brandIconURL;
+  public String field_brandInfo;
+  public String field_brandList;
+  public String field_brandListContent;
+  public String field_brandListVersion;
+  public String field_enterpriseFather;
+  public String field_extInfo;
+  public int field_hadAlert;
+  public long field_incrementUpdateTime;
+  public String field_kfWorkerId;
+  public int field_specialType;
+  public int field_status;
+  public int field_type;
+  public long field_updateTime;
+  public String field_username;
+  
+  static
+  {
+    elJ = "appId".hashCode();
+    eri = "brandList".hashCode();
+    erj = "brandListVersion".hashCode();
+    erk = "brandListContent".hashCode();
+    erl = "brandFlag".hashCode();
+    erm = "extInfo".hashCode();
+    ern = "brandInfo".hashCode();
+    ero = "brandIconURL".hashCode();
+    emf = "updateTime".hashCode();
+    erp = "hadAlert".hashCode();
+    erq = "acceptType".hashCode();
+    type_HASHCODE = "type".hashCode();
+    ejR = "status".hashCode();
+    err = "enterpriseFather".hashCode();
+    ers = "kfWorkerId".hashCode();
+    ert = "specialType".hashCode();
+    eru = "attrSyncVersion".hashCode();
+    erv = "incrementUpdateTime".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -37,18 +98,18 @@ public abstract class ak
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (dnT != k) {
+      if (eme != k) {
         break label65;
       }
-      this.field_card_id = paramCursor.getString(i);
-      this.dnA = true;
+      this.field_username = paramCursor.getString(i);
+      this.emb = true;
     }
     for (;;)
     {
@@ -56,32 +117,46 @@ public abstract class ak
       break label20;
       break;
       label65:
-      if (dop == k)
-      {
-        this.field_lower_bound = paramCursor.getInt(i);
-      }
-      else
-      {
-        if (doq == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_need_insert_show_timestamp = bool;
-            break;
-          }
-        }
-        if (dor == k) {
-          this.field_show_timestamp_encrypt_key = paramCursor.getString(i);
-        } else if (dos == k) {
-          this.field_expire_time_interval = paramCursor.getInt(i);
-        } else if (dot == k) {
-          this.field_show_expire_interval = paramCursor.getInt(i);
-        } else if (dou == k) {
-          this.field_fetch_time = paramCursor.getLong(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      if (elJ == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (eri == k) {
+        this.field_brandList = paramCursor.getString(i);
+      } else if (erj == k) {
+        this.field_brandListVersion = paramCursor.getString(i);
+      } else if (erk == k) {
+        this.field_brandListContent = paramCursor.getString(i);
+      } else if (erl == k) {
+        this.field_brandFlag = paramCursor.getInt(i);
+      } else if (erm == k) {
+        this.field_extInfo = paramCursor.getString(i);
+      } else if (ern == k) {
+        this.field_brandInfo = paramCursor.getString(i);
+      } else if (ero == k) {
+        this.field_brandIconURL = paramCursor.getString(i);
+      } else if (emf == k) {
+        this.field_updateTime = paramCursor.getLong(i);
+      } else if (erp == k) {
+        this.field_hadAlert = paramCursor.getInt(i);
+      } else if (erq == k) {
+        this.field_acceptType = paramCursor.getInt(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (ejR == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (err == k) {
+        this.field_enterpriseFather = paramCursor.getString(i);
+      } else if (ers == k) {
+        this.field_kfWorkerId = paramCursor.getString(i);
+      } else if (ert == k) {
+        this.field_specialType = paramCursor.getInt(i);
+      } else if (eru == k) {
+        this.field_attrSyncVersion = paramCursor.getString(i);
+      } else if (erv == k) {
+        this.field_incrementUpdateTime = paramCursor.getLong(i);
+      } else if (eqa == k) {
+        this.field_bitFlag = paramCursor.getInt(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -89,26 +164,68 @@ public abstract class ak
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.dnA) {
-      localContentValues.put("card_id", this.field_card_id);
+    if (this.emb) {
+      localContentValues.put("username", this.field_username);
     }
-    if (this.doj) {
-      localContentValues.put("lower_bound", Integer.valueOf(this.field_lower_bound));
+    if (this.els) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.dok) {
-      localContentValues.put("need_insert_show_timestamp", Boolean.valueOf(this.field_need_insert_show_timestamp));
+    if (this.field_brandList == null) {
+      this.field_brandList = "";
     }
-    if (this.dol) {
-      localContentValues.put("show_timestamp_encrypt_key", this.field_show_timestamp_encrypt_key);
+    if (this.eqU) {
+      localContentValues.put("brandList", this.field_brandList);
     }
-    if (this.dom) {
-      localContentValues.put("expire_time_interval", Integer.valueOf(this.field_expire_time_interval));
+    if (this.eqV) {
+      localContentValues.put("brandListVersion", this.field_brandListVersion);
     }
-    if (this.don) {
-      localContentValues.put("show_expire_interval", Integer.valueOf(this.field_show_expire_interval));
+    if (this.eqW) {
+      localContentValues.put("brandListContent", this.field_brandListContent);
     }
-    if (this.doo) {
-      localContentValues.put("fetch_time", Long.valueOf(this.field_fetch_time));
+    if (this.eqX) {
+      localContentValues.put("brandFlag", Integer.valueOf(this.field_brandFlag));
+    }
+    if (this.eqY) {
+      localContentValues.put("extInfo", this.field_extInfo);
+    }
+    if (this.eqZ) {
+      localContentValues.put("brandInfo", this.field_brandInfo);
+    }
+    if (this.era) {
+      localContentValues.put("brandIconURL", this.field_brandIconURL);
+    }
+    if (this.emc) {
+      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    }
+    if (this.erb) {
+      localContentValues.put("hadAlert", Integer.valueOf(this.field_hadAlert));
+    }
+    if (this.erc) {
+      localContentValues.put("acceptType", Integer.valueOf(this.field_acceptType));
+    }
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
+    }
+    if (this.ejO) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
+    }
+    if (this.erd) {
+      localContentValues.put("enterpriseFather", this.field_enterpriseFather);
+    }
+    if (this.ere) {
+      localContentValues.put("kfWorkerId", this.field_kfWorkerId);
+    }
+    if (this.erf) {
+      localContentValues.put("specialType", Integer.valueOf(this.field_specialType));
+    }
+    if (this.erg) {
+      localContentValues.put("attrSyncVersion", this.field_attrSyncVersion);
+    }
+    if (this.erh) {
+      localContentValues.put("incrementUpdateTime", Long.valueOf(this.field_incrementUpdateTime));
+    }
+    if (this.epN) {
+      localContentValues.put("bitFlag", Integer.valueOf(this.field_bitFlag));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -118,7 +235,7 @@ public abstract class ak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.c.ak
  * JD-Core Version:    0.7.0.1
  */

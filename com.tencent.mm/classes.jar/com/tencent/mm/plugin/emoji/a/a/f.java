@@ -4,47 +4,47 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.storage.ar;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.au;
 
 public final class f
 {
-  public f.a leZ;
-  public EmotionSummary lfa;
-  public EmotionBannerSet lfb;
-  public int lfc;
-  public String lfd;
-  public boolean lfe;
-  public boolean lff = true;
-  public boolean lfg = false;
+  public int EI;
   public int mStatus;
-  public int ym;
+  public f.a ouK;
+  public EmotionSummary ouL;
+  public EmotionBannerSet ouM;
+  public int ouN;
+  public String ouO;
+  public boolean ouP;
+  public boolean ouQ = true;
+  public boolean ouR = false;
   
   public f(EmotionBannerSet paramEmotionBannerSet)
   {
-    this.lfb = paramEmotionBannerSet;
-    this.leZ = f.a.lfi;
+    this.ouM = paramEmotionBannerSet;
+    this.ouK = f.a.ouT;
   }
   
   public f(EmotionSummary paramEmotionSummary)
   {
-    this.lfa = paramEmotionSummary;
-    this.leZ = f.a.lfh;
+    this.ouL = paramEmotionSummary;
+    this.ouK = f.a.ouS;
   }
   
-  public final void a(boolean paramBoolean1, ar paramar, boolean paramBoolean2)
+  public final void a(boolean paramBoolean1, au paramau, boolean paramBoolean2)
   {
-    AppMethodBeat.i(52806);
-    EmotionSummary localEmotionSummary = this.lfa;
+    AppMethodBeat.i(108382);
+    EmotionSummary localEmotionSummary = this.ouL;
     if (localEmotionSummary == null)
     {
-      AppMethodBeat.o(52806);
+      AppMethodBeat.o(108382);
       return;
     }
     if (paramBoolean2)
     {
       setStatus(7);
-      AppMethodBeat.o(52806);
+      AppMethodBeat.o(108382);
       return;
     }
     paramBoolean2 = e.a(localEmotionSummary);
@@ -56,36 +56,36 @@ public final class f
     }
     for (;;)
     {
-      if ((paramBoolean1) && (paramar != null) && (!bo.isNullOrNil(paramar.yNb)))
+      if ((paramBoolean1) && (paramau != null) && (!bt.isNullOrNil(paramau.FyM)))
       {
-        this.lfa.PackPrice = paramar.yNb;
-        this.lfa.PriceNum = paramar.yNa;
-        this.lfa.PriceType = paramar.yMZ;
+        this.ouL.PackPrice = paramau.FyM;
+        this.ouL.PriceNum = paramau.FyL;
+        this.ouL.PriceType = paramau.FyK;
       }
-      AppMethodBeat.o(52806);
+      AppMethodBeat.o(108382);
       return;
       if (paramBoolean2)
       {
         setStatus(3);
         if ((bool1) || ((!paramBoolean1) && (bool3))) {
-          this.lfc = 0;
+          this.ouN = 0;
         } else {
-          this.lfc = 1;
+          this.ouN = 1;
         }
       }
       else if ((bool1) || ((!paramBoolean1) && (bool3)))
       {
         setStatus(3);
-        this.lfc = 0;
+        this.ouN = 0;
       }
       else
       {
-        this.lfc = 1;
-        if ((paramBoolean1) && (paramar != null)) {}
-        switch (paramar.yMX)
+        this.ouN = 1;
+        if ((paramBoolean1) && (paramau != null)) {}
+        switch (paramau.FyI)
         {
         default: 
-          if ((paramar.yMV != 7) && (paramar.yMV != 6) && (paramar.yMV != 3)) {
+          if ((paramau.FyG != 7) && (paramau.FyG != 6) && (paramau.FyG != 3)) {
             setStatus(10);
           }
           break;
@@ -108,15 +108,15 @@ public final class f
   
   public final void setStatus(int paramInt)
   {
-    if ((paramInt == 7) && (this.mStatus == 6) && (this.lff)) {
-      this.lfe = true;
+    if ((paramInt == 7) && (this.mStatus == 6) && (this.ouQ)) {
+      this.ouP = true;
     }
     this.mStatus = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a.f
  * JD-Core Version:    0.7.0.1
  */

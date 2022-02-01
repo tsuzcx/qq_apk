@@ -12,62 +12,62 @@ import android.view.ViewParent;
 public abstract class ab
   implements View.OnAttachStateChangeListener, View.OnTouchListener
 {
-  private final float adD;
-  private final int adE;
-  private final int adF;
-  final View adG;
-  private Runnable adH;
-  private Runnable adI;
-  private boolean adJ;
-  private final int[] adK = new int[2];
+  private final float akK;
+  private final int akL;
+  private final int akM;
+  final View akN;
+  private Runnable akO;
+  private Runnable akP;
+  private boolean akQ;
+  private final int[] akR = new int[2];
   private int mActivePointerId;
   
   public ab(View paramView)
   {
-    this.adG = paramView;
+    this.akN = paramView;
     paramView.setLongClickable(true);
     paramView.addOnAttachStateChangeListener(this);
-    this.adD = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
-    this.adE = ViewConfiguration.getTapTimeout();
-    this.adF = ((this.adE + ViewConfiguration.getLongPressTimeout()) / 2);
+    this.akK = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
+    this.akL = ViewConfiguration.getTapTimeout();
+    this.akM = ((this.akL + ViewConfiguration.getLongPressTimeout()) / 2);
   }
   
-  private void hG()
+  private void jc()
   {
-    if (this.adI != null) {
-      this.adG.removeCallbacks(this.adI);
+    if (this.akP != null) {
+      this.akN.removeCallbacks(this.akP);
     }
-    if (this.adH != null) {
-      this.adG.removeCallbacks(this.adH);
+    if (this.akO != null) {
+      this.akN.removeCallbacks(this.akO);
     }
   }
   
-  public abstract s fL();
-  
-  protected boolean fM()
+  protected boolean hZ()
   {
-    s locals = fL();
-    if ((locals != null) && (!locals.isShowing())) {
-      locals.show();
-    }
-    return true;
-  }
-  
-  protected boolean gE()
-  {
-    s locals = fL();
+    s locals = hh();
     if ((locals != null) && (locals.isShowing())) {
       locals.dismiss();
     }
     return true;
   }
   
-  final void hH()
+  public abstract s hh();
+  
+  protected boolean hi()
   {
-    hG();
-    View localView = this.adG;
+    s locals = hh();
+    if ((locals != null) && (!locals.isShowing())) {
+      locals.show();
+    }
+    return true;
+  }
+  
+  final void jd()
+  {
+    jc();
+    View localView = this.akN;
     if ((!localView.isEnabled()) || (localView.isLongClickable())) {}
-    while (!fM()) {
+    while (!hi()) {
       return;
     }
     localView.getParent().requestDisallowInterceptTouchEvent(true);
@@ -75,22 +75,22 @@ public abstract class ab
     MotionEvent localMotionEvent = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
     localView.onTouchEvent(localMotionEvent);
     localMotionEvent.recycle();
-    this.adJ = true;
+    this.akQ = true;
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     boolean bool2 = false;
-    boolean bool3 = this.adJ;
+    boolean bool3 = this.akQ;
     int i;
     if (bool3)
     {
-      paramView = this.adG;
-      Object localObject = fL();
+      paramView = this.akN;
+      Object localObject = hh();
       if ((localObject == null) || (!((s)localObject).isShowing()))
       {
         i = 0;
-        if ((i == 0) && (gE())) {
+        if ((i == 0) && (hZ())) {
           break label241;
         }
       }
@@ -98,7 +98,7 @@ public abstract class ab
       label241:
       for (bool1 = true;; bool1 = false)
       {
-        this.adJ = bool1;
+        this.akQ = bool1;
         if (!bool1)
         {
           bool1 = bool2;
@@ -116,10 +116,10 @@ public abstract class ab
           break;
         }
         MotionEvent localMotionEvent = MotionEvent.obtainNoHistory(paramMotionEvent);
-        int[] arrayOfInt = this.adK;
+        int[] arrayOfInt = this.akR;
         paramView.getLocationOnScreen(arrayOfInt);
         localMotionEvent.offsetLocation(arrayOfInt[0], arrayOfInt[1]);
-        paramView = this.adK;
+        paramView = this.akR;
         ((View)localObject).getLocationOnScreen(paramView);
         localMotionEvent.offsetLocation(-paramView[0], -paramView[1]);
         bool1 = ((y)localObject).b(localMotionEvent, this.mActivePointerId);
@@ -138,7 +138,7 @@ public abstract class ab
         break;
       }
     }
-    paramView = this.adG;
+    paramView = this.akN;
     if (paramView.isEnabled()) {}
     switch (paramMotionEvent.getActionMasked())
     {
@@ -146,7 +146,7 @@ public abstract class ab
       label292:
       i = 0;
       label295:
-      if ((i == 0) || (!fM())) {
+      if ((i == 0) || (!hi())) {
         break;
       }
     }
@@ -156,19 +156,19 @@ public abstract class ab
       {
         long l = SystemClock.uptimeMillis();
         paramView = MotionEvent.obtain(l, l, 3, 0.0F, 0.0F, 0);
-        this.adG.onTouchEvent(paramView);
+        this.akN.onTouchEvent(paramView);
         paramView.recycle();
       }
       break;
       this.mActivePointerId = paramMotionEvent.getPointerId(0);
-      if (this.adH == null) {
-        this.adH = new a();
+      if (this.akO == null) {
+        this.akO = new a();
       }
-      paramView.postDelayed(this.adH, this.adE);
-      if (this.adI == null) {
-        this.adI = new b();
+      paramView.postDelayed(this.akO, this.akL);
+      if (this.akP == null) {
+        this.akP = new b();
       }
-      paramView.postDelayed(this.adI, this.adF);
+      paramView.postDelayed(this.akP, this.akM);
       break label292;
       i = paramMotionEvent.findPointerIndex(this.mActivePointerId);
       if (i < 0) {
@@ -176,16 +176,16 @@ public abstract class ab
       }
       float f1 = paramMotionEvent.getX(i);
       float f2 = paramMotionEvent.getY(i);
-      float f3 = this.adD;
+      float f3 = this.akK;
       if ((f1 >= -f3) && (f2 >= -f3) && (f1 < paramView.getRight() - paramView.getLeft() + f3) && (f2 < paramView.getBottom() - paramView.getTop() + f3)) {}
       for (i = 1; i == 0; i = 0)
       {
-        hG();
+        jc();
         paramView.getParent().requestDisallowInterceptTouchEvent(true);
         i = 1;
         break label295;
       }
-      hG();
+      jc();
       break label292;
     }
   }
@@ -194,10 +194,10 @@ public abstract class ab
   
   public void onViewDetachedFromWindow(View paramView)
   {
-    this.adJ = false;
+    this.akQ = false;
     this.mActivePointerId = -1;
-    if (this.adH != null) {
-      this.adG.removeCallbacks(this.adH);
+    if (this.akO != null) {
+      this.akN.removeCallbacks(this.akO);
     }
   }
   
@@ -208,7 +208,7 @@ public abstract class ab
     
     public final void run()
     {
-      ViewParent localViewParent = ab.this.adG.getParent();
+      ViewParent localViewParent = ab.this.akN.getParent();
       if (localViewParent != null) {
         localViewParent.requestDisallowInterceptTouchEvent(true);
       }
@@ -222,7 +222,7 @@ public abstract class ab
     
     public final void run()
     {
-      ab.this.hH();
+      ab.this.jd();
     }
   }
 }

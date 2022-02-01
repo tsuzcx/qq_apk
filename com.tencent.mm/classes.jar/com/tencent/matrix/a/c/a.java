@@ -1,77 +1,139 @@
 package com.tencent.matrix.a.c;
 
-import android.content.Context;
-import java.util.ArrayList;
+import android.app.Application;
+import com.tencent.matrix.a.c.a.b.a;
+import com.tencent.matrix.a.c.a.c.b;
+import com.tencent.matrix.e.c;
+import java.util.Comparator;
 import java.util.Iterator;
-import java.util.ListIterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public final class a
+public class a
+  extends com.tencent.matrix.e.b
 {
-  private static String bNv = null;
-  private static String sPackageName = null;
+  private boolean csU = com.tencent.matrix.a.csS.csU;
+  public volatile boolean cuT = false;
+  public b cuU;
   
-  public static String getPackageName()
+  public a(b paramb)
   {
-    return sPackageName;
-  }
-  
-  public static String getProcessName()
-  {
-    return bNv;
-  }
-  
-  public static String getThrowableStack(Throwable paramThrowable)
-  {
-    Object localObject = paramThrowable.getStackTrace();
-    if (localObject == null) {
-      return "";
+    this.cuU = paramb;
+    paramb = paramb.cvc.iterator();
+    while (paramb.hasNext()) {
+      ((com.tencent.matrix.a.c.a.a)paramb.next()).a(this);
     }
-    paramThrowable = new ArrayList(localObject.length);
-    int i = 0;
-    while (i < localObject.length)
+  }
+  
+  public final <T extends com.tencent.matrix.a.c.a.a> T W(Class<T> paramClass)
+  {
+    Iterator localIterator = this.cuU.cvc.iterator();
+    while (localIterator.hasNext())
     {
-      String str = localObject[i].getClassName();
-      if ((!str.contains("com.tencent.matrix")) && (!str.contains("java.lang.reflect")) && (!str.contains("$Proxy2")) && (!str.contains("android.os"))) {
-        paramThrowable.add(localObject[i]);
+      com.tencent.matrix.a.c.a.a locala = (com.tencent.matrix.a.c.a.a)localIterator.next();
+      if (paramClass.isAssignableFrom(locala.getClass())) {
+        return locala;
       }
-      i += 1;
     }
-    if ((paramThrowable.size() > 10) && (sPackageName != null))
+    return null;
+  }
+  
+  public String getTag()
+  {
+    return "BatteryMonitor";
+  }
+  
+  public void init(Application paramApplication, c paramc)
+  {
+    super.init(paramApplication, paramc);
+    if (this.cuU.cvb) {
+      com.tencent.matrix.a.csS.b(this);
+    }
+  }
+  
+  public boolean isForeground()
+  {
+    return this.csU;
+  }
+  
+  public void onForeground(boolean paramBoolean)
+  {
+    this.csU = paramBoolean;
+    Iterator localIterator = this.cuU.cvc.iterator();
+    while (localIterator.hasNext()) {
+      ((com.tencent.matrix.a.c.a.a)localIterator.next()).bS(paramBoolean);
+    }
+  }
+  
+  public void start()
+  {
+    super.start();
+    if (!this.cuT)
     {
-      localObject = paramThrowable.listIterator(paramThrowable.size());
-      do
+      Iterator localIterator = this.cuU.cvc.iterator();
+      while (localIterator.hasNext()) {
+        ((com.tencent.matrix.a.c.a.a)localIterator.next()).Hc();
+      }
+      this.cuT = true;
+    }
+  }
+  
+  public void stop()
+  {
+    super.stop();
+    if (this.cuT)
+    {
+      this.cuT = false;
+      Iterator localIterator = this.cuU.cvc.iterator();
+      while (localIterator.hasNext()) {
+        ((com.tencent.matrix.a.c.a.a)localIterator.next()).Hd();
+      }
+    }
+  }
+  
+  public static final class a
+  {
+    public a.b cuU = new a.b();
+    
+    public final a X(Class<? extends com.tencent.matrix.a.c.a.a> paramClass)
+    {
+      try
       {
-        if (!((ListIterator)localObject).hasPrevious()) {
-          break;
-        }
-        if (!((StackTraceElement)((ListIterator)localObject).previous()).getClassName().contains(sPackageName)) {
-          ((ListIterator)localObject).remove();
-        }
-      } while (paramThrowable.size() > 10);
-    }
-    localObject = new StringBuffer(paramThrowable.size());
-    paramThrowable = paramThrowable.iterator();
-    while (paramThrowable.hasNext()) {
-      ((StringBuffer)localObject).append((StackTraceElement)paramThrowable.next()).append('\n');
-    }
-    return ((StringBuffer)localObject).toString();
-  }
-  
-  public static void setPackageName(Context paramContext)
-  {
-    if (sPackageName == null) {
-      sPackageName = paramContext.getPackageName();
+        this.cuU.cvc.add(paramClass.newInstance());
+        return this;
+      }
+      catch (Exception paramClass) {}
+      return this;
     }
   }
   
-  public static void setProcessName(String paramString)
+  public static final class b
   {
-    bNv = paramString;
+    public a.c cuW = new b();
+    public long cuX;
+    public long cuY;
+    public long cuZ;
+    public boolean cva = false;
+    public boolean cvb = false;
+    public LinkedList<com.tencent.matrix.a.c.a.a> cvc = new LinkedList();
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void GZ();
+    
+    public abstract void Ha();
+    
+    public abstract void a(b.a parama);
+    
+    public abstract void a(Thread paramThread, List<c.b> paramList);
+    
+    public abstract void e(String paramString1, String paramString2, int paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.matrix.a.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -6,15 +6,48 @@ import android.os.Parcelable.Creator;
 public class RecoveryHandleItem
   extends RecoveryPersistentItem
 {
-  public static final Parcelable.Creator<RecoveryHandleItem> CREATOR = new Parcelable.Creator() {};
-  public String Biw;
+  public static final Parcelable.Creator<RecoveryHandleItem> CREATOR = new Parcelable.Creator()
+  {
+    public final RecoveryHandleItem createFromParcel(Parcel paramAnonymousParcel)
+    {
+      RecoveryHandleItem localRecoveryHandleItem = new RecoveryHandleItem();
+      localRecoveryHandleItem.uuid = paramAnonymousParcel.readString();
+      localRecoveryHandleItem.clientVersion = paramAnonymousParcel.readString();
+      localRecoveryHandleItem.key = paramAnonymousParcel.readString();
+      localRecoveryHandleItem.processName = paramAnonymousParcel.readString();
+      localRecoveryHandleItem.phoneStatus = paramAnonymousParcel.readString();
+      localRecoveryHandleItem.timestamp = paramAnonymousParcel.readLong();
+      return localRecoveryHandleItem;
+    }
+    
+    public final RecoveryHandleItem[] newArray(int paramAnonymousInt)
+    {
+      return new RecoveryHandleItem[paramAnonymousInt];
+    }
+  };
   public String clientVersion;
-  public String eAx;
   public String key;
+  public String phoneStatus;
   public String processName;
   public long timestamp;
+  public String uuid;
   
-  public final boolean awv(String paramString)
+  public int describeContents()
+  {
+    return 0;
+  }
+  
+  public String getClientVersion()
+  {
+    return this.clientVersion;
+  }
+  
+  public long getTimeStamp()
+  {
+    return this.timestamp;
+  }
+  
+  public boolean parseFromString(String paramString)
   {
     if ((paramString == null) || (paramString.length() == 0)) {
       return false;
@@ -22,11 +55,11 @@ public class RecoveryHandleItem
     try
     {
       paramString = paramString.split(",");
-      this.eAx = paramString[0];
+      this.uuid = paramString[0];
       this.clientVersion = paramString[1];
       this.key = paramString[2];
       this.processName = paramString[3];
-      this.Biw = paramString[4];
+      this.phoneStatus = paramString[4];
       this.timestamp = Long.valueOf(paramString[5]).longValue();
       return true;
     }
@@ -34,10 +67,10 @@ public class RecoveryHandleItem
     return false;
   }
   
-  public final String dUr()
+  public String toSaveString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(this.eAx);
+    localStringBuffer.append(this.uuid);
     localStringBuffer.append(",");
     localStringBuffer.append(this.clientVersion);
     localStringBuffer.append(",");
@@ -45,24 +78,19 @@ public class RecoveryHandleItem
     localStringBuffer.append(",");
     localStringBuffer.append(this.processName);
     localStringBuffer.append(",");
-    localStringBuffer.append(this.Biw);
+    localStringBuffer.append(this.phoneStatus);
     localStringBuffer.append(",");
     localStringBuffer.append(this.timestamp);
     return localStringBuffer.toString();
   }
   
-  public int describeContents()
-  {
-    return 0;
-  }
-  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.eAx);
+    paramParcel.writeString(this.uuid);
     paramParcel.writeString(this.clientVersion);
     paramParcel.writeString(this.key);
     paramParcel.writeString(this.processName);
-    paramParcel.writeString(this.Biw);
+    paramParcel.writeString(this.phoneStatus);
     paramParcel.writeLong(this.timestamp);
   }
 }

@@ -22,37 +22,37 @@ public class YTReflectLayout
   public YTReflectLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(123195);
+    AppMethodBeat.i(43406);
     this.mRect = new Rect();
     this.mPaint = new Paint(1);
     this.mPaint.setStyle(Paint.Style.FILL);
     this.mPaint.setColor(Color.argb(200, 0, 0, 0));
     this.mColorMatrixColorFilter = ReflectController.DEFAULT_MATRIX_COLOR_FILTER;
     setWillNotDraw(false);
-    AppMethodBeat.o(123195);
+    AppMethodBeat.o(43406);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(123197);
+    AppMethodBeat.i(43408);
     super.onDraw(paramCanvas);
     this.mPaint.setColorFilter(this.mColorMatrixColorFilter);
     this.mRect.set(0, 0, getWidth(), getHeight());
     paramCanvas.drawRect(this.mRect, this.mPaint);
-    AppMethodBeat.o(123197);
+    AppMethodBeat.o(43408);
   }
   
   public void setColorMatrixColorFilter(ColorMatrixColorFilter paramColorMatrixColorFilter)
   {
-    AppMethodBeat.i(123196);
+    AppMethodBeat.i(43407);
     this.mColorMatrixColorFilter = paramColorMatrixColorFilter;
     invalidate();
-    AppMethodBeat.o(123196);
+    AppMethodBeat.o(43407);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.ui.YTReflectLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,41 +13,41 @@ public class MiniProgramNavigationBackResult
   implements Parcelable
 {
   public static final Parcelable.Creator<MiniProgramNavigationBackResult> CREATOR;
-  public JSONObject gSe;
-  public JSONObject gSf;
+  public JSONObject iHT;
+  public JSONObject iHU;
   
   static
   {
-    AppMethodBeat.i(86795);
-    CREATOR = new MiniProgramNavigationBackResult.1();
-    AppMethodBeat.o(86795);
+    AppMethodBeat.i(134629);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(134629);
   }
   
   public MiniProgramNavigationBackResult() {}
   
   private MiniProgramNavigationBackResult(Parcel paramParcel)
   {
-    AppMethodBeat.i(86794);
+    AppMethodBeat.i(134628);
     try
     {
-      this.gSe = new JSONObject(bo.bf(paramParcel.readString(), "{}"));
-      this.gSf = new JSONObject(bo.bf(paramParcel.readString(), "{}"));
-      AppMethodBeat.o(86794);
+      this.iHT = new JSONObject(bt.by(paramParcel.readString(), "{}"));
+      this.iHU = new JSONObject(bt.by(paramParcel.readString(), "{}"));
+      AppMethodBeat.o(134628);
       return;
     }
     catch (JSONException paramParcel)
     {
-      ab.e("MicroMsg.AppBrand.MiniProgramNavigationBackResult", "readFromParcel, ex = %s", new Object[] { paramParcel });
-      AppMethodBeat.o(86794);
+      ad.e("MicroMsg.AppBrand.MiniProgramNavigationBackResult", "readFromParcel, ex = %s", new Object[] { paramParcel });
+      AppMethodBeat.o(134628);
     }
   }
   
   public static MiniProgramNavigationBackResult a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    AppMethodBeat.i(86792);
+    AppMethodBeat.i(134626);
     if ((paramJSONObject1 == null) && (paramJSONObject2 == null))
     {
-      AppMethodBeat.o(86792);
+      AppMethodBeat.o(134626);
       return null;
     }
     MiniProgramNavigationBackResult localMiniProgramNavigationBackResult = new MiniProgramNavigationBackResult();
@@ -55,7 +55,7 @@ public class MiniProgramNavigationBackResult
     if (paramJSONObject1 == null)
     {
       paramJSONObject1 = localJSONObject;
-      localMiniProgramNavigationBackResult.gSe = ((JSONObject)paramJSONObject1);
+      localMiniProgramNavigationBackResult.iHT = ((JSONObject)paramJSONObject1);
       paramJSONObject1 = new JSONObject();
       if (paramJSONObject2 != null) {
         break label80;
@@ -63,8 +63,8 @@ public class MiniProgramNavigationBackResult
     }
     for (;;)
     {
-      localMiniProgramNavigationBackResult.gSf = ((JSONObject)paramJSONObject1);
-      AppMethodBeat.o(86792);
+      localMiniProgramNavigationBackResult.iHU = ((JSONObject)paramJSONObject1);
+      AppMethodBeat.o(134626);
       return localMiniProgramNavigationBackResult;
       break;
       label80:
@@ -80,29 +80,29 @@ public class MiniProgramNavigationBackResult
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(86793);
-    if (this.gSe == null)
+    AppMethodBeat.i(134627);
+    if (this.iHT == null)
     {
       localObject1 = null;
       paramParcel.writeString((String)localObject1);
-      if (this.gSf != null) {
+      if (this.iHU != null) {
         break label54;
       }
     }
     label54:
-    for (Object localObject1 = localObject2;; localObject1 = this.gSf.toString())
+    for (Object localObject1 = localObject2;; localObject1 = this.iHU.toString())
     {
       paramParcel.writeString((String)localObject1);
-      AppMethodBeat.o(86793);
+      AppMethodBeat.o(134627);
       return;
-      localObject1 = this.gSe.toString();
+      localObject1 = this.iHT.toString();
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.MiniProgramNavigationBackResult
  * JD-Core Version:    0.7.0.1
  */

@@ -2,44 +2,44 @@ package com.tencent.mm.plugin.multitalk.model;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bg.e;
+import com.tencent.mm.bi.e;
 
 public final class i
 {
-  private boolean oUb;
-  private boolean oUc;
+  private boolean tPx;
+  private boolean tPy;
   
-  public final void W(Activity paramActivity)
+  public final void ao(Activity paramActivity)
   {
-    AppMethodBeat.i(54043);
-    if (!this.oUb)
+    AppMethodBeat.i(114574);
+    if (!this.tPx)
     {
-      this.oUb = true;
-      e.a(paramActivity, 2131301692, null);
+      this.tPx = true;
+      e.a(paramActivity, 2131761431, null);
     }
-    AppMethodBeat.o(54043);
+    AppMethodBeat.o(114574);
   }
   
-  public final void X(Activity paramActivity)
+  public final void ap(Activity paramActivity)
   {
-    AppMethodBeat.i(54044);
-    if (!this.oUc)
+    AppMethodBeat.i(114575);
+    if (!this.tPy)
     {
-      this.oUc = true;
-      e.a(paramActivity, 2131304716, null);
+      this.tPy = true;
+      e.a(paramActivity, 2131764898, null);
     }
-    AppMethodBeat.o(54044);
+    AppMethodBeat.o(114575);
   }
   
   public final void reset()
   {
-    this.oUc = false;
-    this.oUb = false;
+    this.tPy = false;
+    this.tPx = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.model.i
  * JD-Core Version:    0.7.0.1
  */

@@ -27,31 +27,31 @@ import java.util.ArrayList;
 public class WearableFrameLayout
   extends ViewGroup
 {
-  private boolean EA = false;
   @ViewDebug.ExportedProperty(category="measurement")
-  boolean Ek = false;
+  boolean FZ = false;
   @ViewDebug.ExportedProperty(category="drawing")
-  private Drawable El;
-  private ColorStateList Em = null;
-  private PorterDuff.Mode En = null;
-  private boolean Eo = false;
-  private boolean Ep = false;
+  private Drawable Ga;
+  private ColorStateList Gb = null;
+  private PorterDuff.Mode Gc = null;
+  private boolean Gd = false;
+  private boolean Ge = false;
   @ViewDebug.ExportedProperty(category="padding")
-  private int Eq = 0;
+  private int Gf = 0;
   @ViewDebug.ExportedProperty(category="padding")
-  private int Er = 0;
+  private int Gg = 0;
   @ViewDebug.ExportedProperty(category="padding")
-  private int Es = 0;
+  private int Gh = 0;
   @ViewDebug.ExportedProperty(category="padding")
-  private int Et = 0;
-  private final Rect Eu = new Rect();
-  private final Rect Ev = new Rect();
+  private int Gi = 0;
+  private final Rect Gj = new Rect();
+  private final Rect Gk = new Rect();
   @ViewDebug.ExportedProperty(category="drawing")
-  private int Ew = 119;
+  private int Gl = 119;
   @ViewDebug.ExportedProperty(category="drawing")
-  private boolean Ex = true;
-  boolean Ey = false;
-  private final ArrayList<View> Ez = new ArrayList(1);
+  private boolean Gm = true;
+  boolean Gn = false;
+  private final ArrayList<View> Go = new ArrayList(1);
+  private boolean Gp = false;
   
   public WearableFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -66,119 +66,119 @@ public class WearableFrameLayout
   private WearableFrameLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt, byte paramByte)
   {
     super(paramContext, paramAttributeSet, paramInt, 0);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, k.yi, paramInt, 0);
-    this.Ew = paramContext.getInt(k.yl, this.Ew);
-    paramAttributeSet = paramContext.getDrawable(k.yj);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, k.zX, paramInt, 0);
+    this.Gl = paramContext.getInt(k.Aa, this.Gl);
+    paramAttributeSet = paramContext.getDrawable(k.zY);
     if (paramAttributeSet != null) {
       setForeground(paramAttributeSet);
     }
-    if (paramContext.getBoolean(k.yk, false)) {
-      this.Ek = true;
+    if (paramContext.getBoolean(k.zZ, false)) {
+      this.FZ = true;
     }
-    if (paramContext.hasValue(k.ym))
+    if (paramContext.hasValue(k.Ab))
     {
-      this.Em = paramContext.getColorStateList(k.ym);
-      this.Eo = true;
+      this.Gb = paramContext.getColorStateList(k.Ab);
+      this.Gd = true;
     }
     paramContext.recycle();
-    fz();
+    fI();
   }
   
   private int a(WearableFrameLayout.LayoutParams paramLayoutParams)
   {
-    if (this.EA) {
-      return paramLayoutParams.EC;
+    if (this.Gp) {
+      return paramLayoutParams.Gr;
     }
     return paramLayoutParams.width;
   }
   
   private int b(WearableFrameLayout.LayoutParams paramLayoutParams)
   {
-    if (this.EA) {
-      return paramLayoutParams.ED;
+    if (this.Gp) {
+      return paramLayoutParams.Gs;
     }
     return paramLayoutParams.height;
   }
   
   private int c(WearableFrameLayout.LayoutParams paramLayoutParams)
   {
-    if (this.EA) {
-      return paramLayoutParams.EE;
+    if (this.Gp) {
+      return paramLayoutParams.Gt;
     }
     return paramLayoutParams.leftMargin;
   }
   
   private int d(WearableFrameLayout.LayoutParams paramLayoutParams)
   {
-    if (this.EA) {
-      return paramLayoutParams.EF;
+    if (this.Gp) {
+      return paramLayoutParams.Gu;
     }
     return paramLayoutParams.topMargin;
   }
   
   private int e(WearableFrameLayout.LayoutParams paramLayoutParams)
   {
-    if (this.EA) {
-      return paramLayoutParams.EG;
+    if (this.Gp) {
+      return paramLayoutParams.Gv;
     }
     return paramLayoutParams.rightMargin;
   }
   
   private int f(WearableFrameLayout.LayoutParams paramLayoutParams)
   {
-    if (this.EA) {
-      return paramLayoutParams.EH;
+    if (this.Gp) {
+      return paramLayoutParams.Gw;
     }
     return paramLayoutParams.bottomMargin;
   }
   
-  private int fA()
+  private void fI()
   {
-    if (this.Ex) {
-      return Math.max(getPaddingLeft(), this.Eq);
-    }
-    return getPaddingLeft() + this.Eq;
-  }
-  
-  private int fB()
-  {
-    if (this.Ex) {
-      return Math.max(getPaddingRight(), this.Es);
-    }
-    return getPaddingRight() + this.Es;
-  }
-  
-  private int fC()
-  {
-    if (this.Ex) {
-      return Math.max(getPaddingTop(), this.Er);
-    }
-    return getPaddingTop() + this.Er;
-  }
-  
-  private int fD()
-  {
-    if (this.Ex) {
-      return Math.max(getPaddingBottom(), this.Et);
-    }
-    return getPaddingBottom() + this.Et;
-  }
-  
-  private void fz()
-  {
-    if ((this.El != null) && ((this.Eo) || (this.Ep)))
+    if ((this.Ga != null) && ((this.Gd) || (this.Ge)))
     {
-      this.El = this.El.mutate();
-      if (this.Eo) {
-        this.El.setTintList(this.Em);
+      this.Ga = this.Ga.mutate();
+      if (this.Gd) {
+        this.Ga.setTintList(this.Gb);
       }
-      if (this.Ep) {
-        this.El.setTintMode(this.En);
+      if (this.Ge) {
+        this.Ga.setTintMode(this.Gc);
       }
-      if (this.El.isStateful()) {
-        this.El.setState(getDrawableState());
+      if (this.Ga.isStateful()) {
+        this.Ga.setState(getDrawableState());
       }
     }
+  }
+  
+  private int fJ()
+  {
+    if (this.Gm) {
+      return Math.max(getPaddingLeft(), this.Gf);
+    }
+    return getPaddingLeft() + this.Gf;
+  }
+  
+  private int fK()
+  {
+    if (this.Gm) {
+      return Math.max(getPaddingRight(), this.Gh);
+    }
+    return getPaddingRight() + this.Gh;
+  }
+  
+  private int fL()
+  {
+    if (this.Gm) {
+      return Math.max(getPaddingTop(), this.Gg);
+    }
+    return getPaddingTop() + this.Gg;
+  }
+  
+  private int fM()
+  {
+    if (this.Gm) {
+      return Math.max(getPaddingBottom(), this.Gi);
+    }
+    return getPaddingBottom() + this.Gi;
   }
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -194,17 +194,17 @@ public class WearableFrameLayout
     Rect localRect2;
     int i;
     int j;
-    if (this.El != null)
+    if (this.Ga != null)
     {
-      localDrawable = this.El;
-      if (this.Ey)
+      localDrawable = this.Ga;
+      if (this.Gn)
       {
-        this.Ey = false;
-        localRect1 = this.Eu;
-        localRect2 = this.Ev;
+        this.Gn = false;
+        localRect1 = this.Gj;
+        localRect2 = this.Gk;
         i = getRight() - getLeft();
         j = getBottom() - getTop();
-        if (!this.Ex) {
+        if (!this.Gm) {
           break label119;
         }
         localRect1.set(0, 0, i, j);
@@ -213,7 +213,7 @@ public class WearableFrameLayout
     for (;;)
     {
       i = getLayoutDirection();
-      Gravity.apply(this.Ew, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight(), localRect1, localRect2, i);
+      Gravity.apply(this.Gl, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight(), localRect1, localRect2, i);
       localDrawable.setBounds(localRect2);
       localDrawable.draw(paramCanvas);
       return;
@@ -225,16 +225,16 @@ public class WearableFrameLayout
   public void drawableHotspotChanged(float paramFloat1, float paramFloat2)
   {
     super.drawableHotspotChanged(paramFloat1, paramFloat2);
-    if (this.El != null) {
-      this.El.setHotspot(paramFloat1, paramFloat2);
+    if (this.Ga != null) {
+      this.Ga.setHotspot(paramFloat1, paramFloat2);
     }
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if ((this.El != null) && (this.El.isStateful())) {
-      this.El.setState(getDrawableState());
+    if ((this.Ga != null) && (this.Ga.isStateful())) {
+      this.Ga.setState(getDrawableState());
     }
   }
   
@@ -245,29 +245,29 @@ public class WearableFrameLayout
   
   public Drawable getForeground()
   {
-    return this.El;
+    return this.Ga;
   }
   
   public int getForegroundGravity()
   {
-    return this.Ew;
+    return this.Gl;
   }
   
   public ColorStateList getForegroundTintList()
   {
-    return this.Em;
+    return this.Gb;
   }
   
   public PorterDuff.Mode getForegroundTintMode()
   {
-    return this.En;
+    return this.Gc;
   }
   
   public void jumpDrawablesToCurrentState()
   {
     super.jumpDrawablesToCurrentState();
-    if (this.El != null) {
-      this.El.jumpToCurrentState();
+    if (this.Ga != null) {
+      this.Ga.jumpToCurrentState();
     }
   }
   
@@ -279,10 +279,10 @@ public class WearableFrameLayout
   
   public WindowInsets onApplyWindowInsets(WindowInsets paramWindowInsets)
   {
-    if (this.EA != paramWindowInsets.isRound()) {}
+    if (this.Gp != paramWindowInsets.isRound()) {}
     for (int i = 1;; i = 0)
     {
-      this.EA = paramWindowInsets.isRound();
+      this.Gp = paramWindowInsets.isRound();
       if (i != 0) {
         requestLayout();
       }
@@ -311,11 +311,11 @@ public class WearableFrameLayout
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i = getChildCount();
-    int j = fA();
-    int k = paramInt3 - paramInt1 - fB();
-    int m = fC();
-    int n = paramInt4 - paramInt2 - fD();
-    this.Ey = true;
+    int j = fJ();
+    int k = paramInt3 - paramInt1 - fK();
+    int m = fL();
+    int n = paramInt4 - paramInt2 - fM();
+    this.Gn = true;
     paramInt3 = 0;
     if (paramInt3 < i)
     {
@@ -328,10 +328,10 @@ public class WearableFrameLayout
         localLayoutParams = (WearableFrameLayout.LayoutParams)localView.getLayoutParams();
         i1 = localView.getMeasuredWidth();
         i2 = localView.getMeasuredHeight();
-        if (!this.EA) {
+        if (!this.Gp) {
           break label242;
         }
-        paramInt1 = localLayoutParams.EB;
+        paramInt1 = localLayoutParams.Gq;
         label110:
         paramInt4 = paramInt1;
         if (paramInt1 == -1) {
@@ -386,7 +386,7 @@ public class WearableFrameLayout
     if ((View.MeasureSpec.getMode(paramInt1) != 1073741824) || (View.MeasureSpec.getMode(paramInt2) != 1073741824))
     {
       m = 1;
-      this.Ez.clear();
+      this.Go.clear();
       j = 0;
       k = 0;
       i = 0;
@@ -395,7 +395,7 @@ public class WearableFrameLayout
         break label237;
       }
       localObject = getChildAt(n);
-      if ((!this.Ek) && (((View)localObject).getVisibility() == 8)) {
+      if ((!this.FZ) && (((View)localObject).getVisibility() == 8)) {
         break label582;
       }
       measureChildWithMargins((View)localObject, paramInt1, 0, paramInt2, 0);
@@ -404,7 +404,7 @@ public class WearableFrameLayout
       i2 = Math.max(j, ((View)localObject).getMeasuredHeight() + d(localLayoutParams) + f(localLayoutParams));
       k = combineMeasuredStates(i, ((View)localObject).getMeasuredState());
       if ((m != 0) && ((a(localLayoutParams) == -1) || (b(localLayoutParams) == -1))) {
-        this.Ez.add(localObject);
+        this.Go.add(localObject);
       }
       j = i1;
     }
@@ -420,9 +420,9 @@ public class WearableFrameLayout
       m = 0;
       break;
       label237:
-      n = fA();
-      i1 = fB();
-      m = Math.max(fC() + fD() + j, getSuggestedMinimumHeight());
+      n = fJ();
+      i1 = fK();
+      m = Math.max(fL() + fM() + j, getSuggestedMinimumHeight());
       n = Math.max(n + i1 + k, getSuggestedMinimumWidth());
       localObject = getForeground();
       k = n;
@@ -433,29 +433,29 @@ public class WearableFrameLayout
         k = Math.max(n, ((Drawable)localObject).getMinimumWidth());
       }
       setMeasuredDimension(resolveSizeAndState(k, paramInt1, i), resolveSizeAndState(j, paramInt2, i << 16));
-      m = this.Ez.size();
+      m = this.Go.size();
       if (m > 1)
       {
         i = 0;
         if (i < m)
         {
-          localObject = (View)this.Ez.get(i);
+          localObject = (View)this.Go.get(i);
           localLayoutParams = (WearableFrameLayout.LayoutParams)((View)localObject).getLayoutParams();
           if (a(localLayoutParams) == -1)
           {
-            j = View.MeasureSpec.makeMeasureSpec(getMeasuredWidth() - fA() - fB() - c(localLayoutParams) - e(localLayoutParams), 1073741824);
+            j = View.MeasureSpec.makeMeasureSpec(getMeasuredWidth() - fJ() - fK() - c(localLayoutParams) - e(localLayoutParams), 1073741824);
             label443:
             if (b(localLayoutParams) != -1) {
               break label543;
             }
           }
           label543:
-          for (k = View.MeasureSpec.makeMeasureSpec(getMeasuredHeight() - fC() - fD() - d(localLayoutParams) - f(localLayoutParams), 1073741824);; k = getChildMeasureSpec(paramInt2, fC() + fD() + d(localLayoutParams) + f(localLayoutParams), b(localLayoutParams)))
+          for (k = View.MeasureSpec.makeMeasureSpec(getMeasuredHeight() - fL() - fM() - d(localLayoutParams) - f(localLayoutParams), 1073741824);; k = getChildMeasureSpec(paramInt2, fL() + fM() + d(localLayoutParams) + f(localLayoutParams), b(localLayoutParams)))
           {
             ((View)localObject).measure(j, k);
             i += 1;
             break;
-            j = getChildMeasureSpec(paramInt1, fA() + fB() + c(localLayoutParams) + e(localLayoutParams), a(localLayoutParams));
+            j = getChildMeasureSpec(paramInt1, fJ() + fK() + c(localLayoutParams) + e(localLayoutParams), a(localLayoutParams));
             break label443;
           }
         }
@@ -472,23 +472,23 @@ public class WearableFrameLayout
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.Ey = true;
+    this.Gn = true;
   }
   
   public void setForeground(Drawable paramDrawable)
   {
-    if (this.El != paramDrawable)
+    if (this.Ga != paramDrawable)
     {
-      if (this.El != null)
+      if (this.Ga != null)
       {
-        this.El.setCallback(null);
-        unscheduleDrawable(this.El);
+        this.Ga.setCallback(null);
+        unscheduleDrawable(this.Ga);
       }
-      this.El = paramDrawable;
-      this.Eq = 0;
-      this.Er = 0;
-      this.Es = 0;
-      this.Et = 0;
+      this.Ga = paramDrawable;
+      this.Gf = 0;
+      this.Gg = 0;
+      this.Gh = 0;
+      this.Gi = 0;
       if (paramDrawable == null) {
         break label156;
       }
@@ -497,16 +497,16 @@ public class WearableFrameLayout
       if (paramDrawable.isStateful()) {
         paramDrawable.setState(getDrawableState());
       }
-      fz();
-      if (this.Ew == 119)
+      fI();
+      if (this.Gl == 119)
       {
         Rect localRect = new Rect();
         if (paramDrawable.getPadding(localRect))
         {
-          this.Eq = localRect.left;
-          this.Er = localRect.top;
-          this.Es = localRect.right;
-          this.Et = localRect.bottom;
+          this.Gf = localRect.left;
+          this.Gg = localRect.top;
+          this.Gh = localRect.right;
+          this.Gi = localRect.bottom;
         }
       }
     }
@@ -522,7 +522,7 @@ public class WearableFrameLayout
   
   public void setForegroundGravity(int paramInt)
   {
-    if (this.Ew != paramInt)
+    if (this.Gl != paramInt)
     {
       if ((0x800007 & paramInt) != 0) {
         break label136;
@@ -536,50 +536,50 @@ public class WearableFrameLayout
       if ((paramInt & 0x70) == 0) {
         i = paramInt | 0x30;
       }
-      this.Ew = i;
+      this.Gl = i;
       Rect localRect;
-      if ((this.Ew == 119) && (this.El != null))
+      if ((this.Gl == 119) && (this.Ga != null))
       {
         localRect = new Rect();
-        if (this.El.getPadding(localRect))
+        if (this.Ga.getPadding(localRect))
         {
-          this.Eq = localRect.left;
-          this.Er = localRect.top;
-          this.Es = localRect.right;
+          this.Gf = localRect.left;
+          this.Gg = localRect.top;
+          this.Gh = localRect.right;
         }
       }
-      for (this.Et = localRect.bottom;; this.Et = 0)
+      for (this.Gi = localRect.bottom;; this.Gi = 0)
       {
         requestLayout();
         return;
-        this.Eq = 0;
-        this.Er = 0;
-        this.Es = 0;
+        this.Gf = 0;
+        this.Gg = 0;
+        this.Gh = 0;
       }
     }
   }
   
   public void setForegroundTintList(ColorStateList paramColorStateList)
   {
-    this.Em = paramColorStateList;
-    this.Eo = true;
-    fz();
+    this.Gb = paramColorStateList;
+    this.Gd = true;
+    fI();
   }
   
   public void setForegroundTintMode(PorterDuff.Mode paramMode)
   {
-    this.En = paramMode;
-    this.Ep = true;
-    fz();
+    this.Gc = paramMode;
+    this.Ge = true;
+    fI();
   }
   
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
     Drawable localDrawable;
-    if (this.El != null)
+    if (this.Ga != null)
     {
-      localDrawable = this.El;
+      localDrawable = this.Ga;
       if (paramInt != 0) {
         break label31;
       }
@@ -599,7 +599,7 @@ public class WearableFrameLayout
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.El);
+    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.Ga);
   }
 }
 

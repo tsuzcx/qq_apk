@@ -6,7 +6,8 @@ import com.tencent.mm.sdk.b.b;
 public final class fw
   extends b
 {
-  public a cuj;
+  public a diH;
+  public b diI;
   
   public fw()
   {
@@ -15,21 +16,32 @@ public final class fw
   
   private fw(byte paramByte)
   {
-    AppMethodBeat.i(40553);
-    this.cuj = new a();
-    this.ymq = false;
+    AppMethodBeat.i(116808);
+    this.diH = new a();
+    this.diI = new b();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(40553);
+    AppMethodBeat.o(116808);
   }
   
   public static final class a
   {
-    public boolean cuk;
+    public int action;
+    public long bfb;
+    public long diJ;
+    public long diK;
+  }
+  
+  public static final class b
+  {
+    public String diL;
+    public boolean diM = false;
+    public int diN;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.fw
  * JD-Core Version:    0.7.0.1
  */

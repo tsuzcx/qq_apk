@@ -8,49 +8,54 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class am
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private final View joE;
-  private final am.a joF;
-  private boolean joG;
-  private int lastHeight;
-  private int lastWidth;
+  private final View meu;
+  private final a mev;
+  private int mew;
+  private int mex;
+  private boolean mey;
   
-  private am(View paramView, am.a parama)
+  private am(View paramView, a parama)
   {
-    this.joE = paramView;
-    this.joF = parama;
+    this.meu = paramView;
+    this.mev = parama;
   }
   
-  public static void a(View paramView, am.a parama)
+  public static void a(View paramView, a parama)
   {
-    AppMethodBeat.i(67826);
+    AppMethodBeat.i(133758);
     paramView = new am(paramView, parama);
-    paramView.joE.getViewTreeObserver().addOnGlobalLayoutListener(paramView);
-    AppMethodBeat.o(67826);
+    paramView.meu.getViewTreeObserver().addOnGlobalLayoutListener(paramView);
+    AppMethodBeat.o(133758);
   }
   
   public final void onGlobalLayout()
   {
-    AppMethodBeat.i(67827);
-    if (!this.joG)
+    AppMethodBeat.i(133759);
+    if (!this.mey)
     {
-      this.joG = true;
-      this.lastWidth = this.joE.getWidth();
-      this.lastHeight = this.joE.getHeight();
-      AppMethodBeat.o(67827);
+      this.mey = true;
+      this.mew = this.meu.getWidth();
+      this.mex = this.meu.getHeight();
+      AppMethodBeat.o(133759);
       return;
     }
-    if ((this.joE.getWidth() != this.lastWidth) || (this.joE.getHeight() != this.lastHeight))
+    if ((this.meu.getWidth() != this.mew) || (this.meu.getHeight() != this.mex))
     {
-      this.joF.aQs();
-      this.lastWidth = this.joE.getWidth();
-      this.lastHeight = this.joE.getHeight();
+      this.mev.bsI();
+      this.mew = this.meu.getWidth();
+      this.mex = this.meu.getHeight();
     }
-    AppMethodBeat.o(67827);
+    AppMethodBeat.o(133759);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void bsI();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.am
  * JD-Core Version:    0.7.0.1
  */

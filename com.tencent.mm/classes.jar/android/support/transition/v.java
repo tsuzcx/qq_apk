@@ -1,32 +1,20 @@
 package android.support.transition;
 
-import android.animation.PropertyValuesHolder;
-import android.graphics.Path;
-import android.graphics.PointF;
-import android.os.Build.VERSION;
-import android.util.Property;
+import android.support.v4.e.a;
+import android.support.v4.e.g;
+import android.util.SparseArray;
+import android.view.View;
 
 final class v
 {
-  private static final y so = new w();
-  
-  static
-  {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      so = new x();
-      return;
-    }
-  }
-  
-  static PropertyValuesHolder a(Property<?, PointF> paramProperty, Path paramPath)
-  {
-    return so.a(paramProperty, paramPath);
-  }
+  final a<View, u> Ah = new a();
+  final SparseArray<View> Ai = new SparseArray();
+  final g<View> Aj = new g();
+  final a<String, View> Ak = new a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.transition.v
  * JD-Core Version:    0.7.0.1
  */

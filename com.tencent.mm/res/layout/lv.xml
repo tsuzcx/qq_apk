@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@drawable/emoji_bubble" android:padding="@dimen/ll" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.HorizontalListView android:layout_gravity="center|right" android:id="@id/aoy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@drawable/l_" android:cacheColorHint="@color/a3x" />
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/a_r" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/eg0" android:padding="14.0dip" android:visibility="gone" android:persistentDrawingCache="all" android:alwaysDrawnWithCache="true" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/efz" android:layout_width="250.0dip" android:layout_height="250.0dip" android:scaleType="fitCenter" />
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:ellipsize="end" android:id="@id/eg2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:ellipsize="end" android:id="@id/eg1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hk" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/efw" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:visibility="visible" android:persistentDrawingCache="all" android:alwaysDrawnWithCache="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="53.0dip" android:layout_marginTop="53.0dip" android:layout_marginRight="53.0dip" android:layout_marginBottom="53.0dip">
+        <com.tencent.mm.ui.base.MMVerticalTextView android:id="@id/gl_" android:tag="1" android:focusable="true" android:clickable="true" android:layout_width="24.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/hk" app:direction="gjc" app:text="" app:textColor="@color/y4" app:textSize="@dimen/ia" />
+        <com.tencent.mm.ui.base.MMVerticalTextView android:id="@id/gl9" android:tag="1" android:focusable="true" android:clickable="true" android:layout_width="24.0dip" android:layout_height="fill_parent" android:layout_marginRight="@dimen/hk" app:direction="gjc" app:text="" app:textColor="@color/y4" app:textSize="@dimen/ia" />
+        <ImageView android:id="@id/efv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+    </LinearLayout>
 </LinearLayout>

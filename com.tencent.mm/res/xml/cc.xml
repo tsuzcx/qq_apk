@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/ej5" android:key="shake_item_default_bgimg" android:layout="@layout/afi" />
-    <Preference android:title="@string/ej4" android:key="shake_item_change_bgimg" android:layout="@layout/afi" />
-    <CheckBoxPreference android:persistent="false" android:title="@string/eje" android:key="shake_item_sound" android:layout="@layout/afi" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/e12" android:key="say_hi_list_shake_title" android:layout="@layout/afi" />
-    <Preference android:title="@string/ej6" android:key="shake_item_histoty_list" android:layout="@layout/afi" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/eks" android:key="shake_msg_list" android:layout="@layout/afi" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
+    <PreferenceTitleCategory mm:key="settings_netstat_info" />
+    <Preference mm:key="settings_netstat_mobile" mm:layout="@layout/aop" mm:title="@string/f8n" />
+    <com.tencent.mm.plugin.setting.ui.setting.NetStatPreference mm:key="settings_netstat_mobile_detail" mm:layout="@layout/aop" mm:srcType="dps" />
+    <PreferenceCategory />
+    <Preference mm:key="settings_netstat_wifi" mm:layout="@layout/aop" mm:title="@string/f8r" />
+    <com.tencent.mm.plugin.setting.ui.setting.NetStatPreference mm:key="settings_netstat_wifi_detail" mm:layout="@layout/aop" mm:srcType="geb" />
+    <Preference mm:key="settings_netstat_tip" mm:layout="@layout/aqa" mm:title="@string/fbh" />
 </PreferenceScreen>

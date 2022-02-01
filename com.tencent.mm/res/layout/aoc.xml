@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/dq" android:textColor="@color/lg" android:id="@id/e08" style="@style/qd"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:id="@id/gam" style="@style/m8" />
+    <com.tencent.mm.ui.base.MMClearEditText android:id="@id/bhn" android:imeOptions="actionDone" style="@style/m6" />
+</merge>

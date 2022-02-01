@@ -5,64 +5,64 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public final class a
 {
-  public static String awy()
+  public static void K(boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(123481);
-    String str = ah.getContext().getSharedPreferences(ah.dsP(), 0).getString("reg_last_exit_ui", "");
-    AppMethodBeat.o(123481);
-    return str;
-  }
-  
-  private static String awz()
-  {
-    AppMethodBeat.i(123483);
-    String str = ah.getContext().getSharedPreferences(ah.dsP(), 0).getString("reg_next_enter_ui", "");
-    AppMethodBeat.o(123483);
-    return str;
-  }
-  
-  public static void g(boolean paramBoolean, String paramString)
-  {
-    AppMethodBeat.i(123485);
+    AppMethodBeat.i(134217);
     if (paramBoolean) {}
-    for (paramString = paramString + "," + bo.aoy() + "," + awy();; paramString = paramString + "," + bo.aoy() + "," + awz())
+    for (paramString = paramString + "," + bt.eGO() + "," + fQQ();; paramString = paramString + "," + bt.eGO() + "," + fQR())
     {
-      e.qrI.a(10645, paramString, true, true);
-      AppMethodBeat.o(123485);
+      e.vIY.a(10645, paramString, true, true);
+      AppMethodBeat.o(134217);
       return;
     }
   }
   
-  public static void xC(String paramString)
+  public static void aUy(String paramString)
   {
-    AppMethodBeat.i(123480);
-    ah.getContext().getSharedPreferences(ah.dsP(), 0).edit().putString("reg_last_exit_ui", paramString).commit();
-    AppMethodBeat.o(123480);
+    AppMethodBeat.i(134212);
+    aj.getContext().getSharedPreferences(aj.eFD(), 0).edit().putString("reg_last_exit_ui", paramString).commit();
+    AppMethodBeat.o(134212);
   }
   
-  public static void xD(String paramString)
+  public static void aUz(String paramString)
   {
-    AppMethodBeat.i(123482);
-    ah.getContext().getSharedPreferences(ah.dsP(), 0).edit().putString("reg_next_enter_ui", paramString).commit();
-    AppMethodBeat.o(123482);
+    AppMethodBeat.i(134214);
+    aj.getContext().getSharedPreferences(aj.eFD(), 0).edit().putString("reg_next_enter_ui", paramString).commit();
+    AppMethodBeat.o(134214);
   }
   
-  public static void xE(String paramString)
+  public static String fQQ()
   {
-    AppMethodBeat.i(123484);
-    paramString = paramString + "," + bo.aoy() + "," + awy();
-    e.qrI.a(10645, paramString, true, true);
-    AppMethodBeat.o(123484);
+    AppMethodBeat.i(134213);
+    String str = aj.getContext().getSharedPreferences(aj.eFD(), 0).getString("reg_last_exit_ui", "");
+    AppMethodBeat.o(134213);
+    return str;
+  }
+  
+  private static String fQR()
+  {
+    AppMethodBeat.i(134215);
+    String str = aj.getContext().getSharedPreferences(aj.eFD(), 0).getString("reg_next_enter_ui", "");
+    AppMethodBeat.o(134215);
+    return str;
+  }
+  
+  public static void pj(String paramString)
+  {
+    AppMethodBeat.i(134216);
+    paramString = paramString + "," + bt.eGO() + "," + fQQ();
+    e.vIY.a(10645, paramString, true, true);
+    AppMethodBeat.o(134216);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.b.a
  * JD-Core Version:    0.7.0.1
  */

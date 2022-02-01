@@ -7,24 +7,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class d
   implements View.OnClickListener
 {
-  private long iHv = 0L;
-  private View.OnClickListener qaq;
+  private View.OnClickListener hs;
+  private long lrz = 0L;
   
   public void onClick(View paramView)
   {
-    AppMethodBeat.i(49240);
+    AppMethodBeat.i(72961);
     long l = System.currentTimeMillis();
-    if (l - this.iHv >= 500L)
+    if (l - this.lrz >= 500L)
     {
-      this.qaq.onClick(paramView);
-      this.iHv = l;
+      this.hs.onClick(paramView);
+      this.lrz = l;
     }
-    AppMethodBeat.o(49240);
+    AppMethodBeat.o(72961);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.d
  * JD-Core Version:    0.7.0.1
  */

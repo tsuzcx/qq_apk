@@ -15,10 +15,10 @@ import java.util.List;
 abstract class HeaderScrollingViewBehavior
   extends ViewOffsetBehavior<View>
 {
-  final Rect jW = new Rect();
-  final Rect jX = new Rect();
-  int jY = 0;
-  int jZ;
+  final Rect ph = new Rect();
+  final Rect pi = new Rect();
+  int pj = 0;
+  int pk;
   
   public HeaderScrollingViewBehavior() {}
   
@@ -32,13 +32,13 @@ abstract class HeaderScrollingViewBehavior
     int j = paramView.getLayoutParams().height;
     if ((j == -1) || (j == -2))
     {
-      View localView = f(paramCoordinatorLayout.o(paramView));
+      View localView = f(paramCoordinatorLayout.s(paramView));
       if (localView != null)
       {
-        if ((t.al(localView)) && (!t.al(paramView)))
+        if ((t.aq(localView)) && (!t.aq(paramView)))
         {
           t.e(paramView, true);
-          if (t.al(paramView))
+          if (t.aq(paramView))
           {
             paramView.requestLayout();
             return true;
@@ -50,7 +50,7 @@ abstract class HeaderScrollingViewBehavior
           paramInt3 = paramCoordinatorLayout.getHeight();
         }
         int k = localView.getMeasuredHeight();
-        int m = f(localView);
+        int m = i(localView);
         if (j == -1) {}
         for (i = 1073741824;; i = -2147483648)
         {
@@ -62,59 +62,59 @@ abstract class HeaderScrollingViewBehavior
     return false;
   }
   
-  protected final void d(CoordinatorLayout paramCoordinatorLayout, View paramView, int paramInt)
+  protected final void c(CoordinatorLayout paramCoordinatorLayout, View paramView, int paramInt)
   {
-    View localView = f(paramCoordinatorLayout.o(paramView));
+    View localView = f(paramCoordinatorLayout.s(paramView));
     if (localView != null)
     {
       CoordinatorLayout.d locald = (CoordinatorLayout.d)paramView.getLayoutParams();
-      Rect localRect = this.jW;
+      Rect localRect = this.ph;
       localRect.set(paramCoordinatorLayout.getPaddingLeft() + locald.leftMargin, localView.getBottom() + locald.topMargin, paramCoordinatorLayout.getWidth() - paramCoordinatorLayout.getPaddingRight() - locald.rightMargin, paramCoordinatorLayout.getHeight() + localView.getBottom() - paramCoordinatorLayout.getPaddingBottom() - locald.bottomMargin);
       ab localab = paramCoordinatorLayout.getLastWindowInsets();
-      if ((localab != null) && (t.al(paramCoordinatorLayout)) && (!t.al(paramView)))
+      if ((localab != null) && (t.aq(paramCoordinatorLayout)) && (!t.aq(paramView)))
       {
         localRect.left += localab.getSystemWindowInsetLeft();
         localRect.right -= localab.getSystemWindowInsetRight();
       }
-      paramCoordinatorLayout = this.jX;
+      paramCoordinatorLayout = this.pi;
       int j = locald.gravity;
       int i = j;
       if (j == 0) {
         i = 8388659;
       }
       d.apply(i, paramView.getMeasuredWidth(), paramView.getMeasuredHeight(), localRect, paramCoordinatorLayout, paramInt);
-      paramInt = q(localView);
+      paramInt = v(localView);
       paramView.layout(paramCoordinatorLayout.left, paramCoordinatorLayout.top - paramInt, paramCoordinatorLayout.right, paramCoordinatorLayout.bottom - paramInt);
-      this.jY = (paramCoordinatorLayout.top - localView.getBottom());
+      this.pj = (paramCoordinatorLayout.top - localView.getBottom());
       return;
     }
-    super.d(paramCoordinatorLayout, paramView, paramInt);
-    this.jY = 0;
-  }
-  
-  float e(View paramView)
-  {
-    return 1.0F;
-  }
-  
-  int f(View paramView)
-  {
-    return paramView.getMeasuredHeight();
+    super.c(paramCoordinatorLayout, paramView, paramInt);
+    this.pj = 0;
   }
   
   abstract View f(List<View> paramList);
   
-  final int q(View paramView)
+  float h(View paramView)
   {
-    if (this.jZ == 0) {
+    return 1.0F;
+  }
+  
+  int i(View paramView)
+  {
+    return paramView.getMeasuredHeight();
+  }
+  
+  final int v(View paramView)
+  {
+    if (this.pk == 0) {
       return 0;
     }
-    return a.clamp((int)(e(paramView) * this.jZ), 0, this.jZ);
+    return a.clamp((int)(h(paramView) * this.pk), 0, this.pk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.design.widget.HeaderScrollingViewBehavior
  * JD-Core Version:    0.7.0.1
  */

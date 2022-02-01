@@ -12,7 +12,7 @@ public class SafeParcelResponseCreator
   
   public SafeParcelResponse createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61623);
+    AppMethodBeat.i(12115);
     int j = SafeParcelReader.validateObjectHeader(paramParcel);
     int i = 0;
     FieldMappingDictionary localFieldMappingDictionary = null;
@@ -37,7 +37,7 @@ public class SafeParcelResponseCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, j);
     paramParcel = new SafeParcelResponse(i, localParcel, localFieldMappingDictionary);
-    AppMethodBeat.o(61623);
+    AppMethodBeat.o(12115);
     return paramParcel;
   }
   
@@ -48,7 +48,7 @@ public class SafeParcelResponseCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.server.response.SafeParcelResponseCreator
  * JD-Core Version:    0.7.0.1
  */

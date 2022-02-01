@@ -16,11 +16,11 @@ public class a
   
   public Object clone()
   {
-    AppMethodBeat.i(146740);
+    AppMethodBeat.i(14448);
     try
     {
       a locala = (a)super.clone();
-      AppMethodBeat.o(146740);
+      AppMethodBeat.o(14448);
       return locala;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
@@ -34,7 +34,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.basic.structs.a
  * JD-Core Version:    0.7.0.1
  */

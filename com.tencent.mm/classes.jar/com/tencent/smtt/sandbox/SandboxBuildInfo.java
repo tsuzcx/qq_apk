@@ -10,15 +10,15 @@ public class SandboxBuildInfo
   @CalledByNative
   public static String[] getAll()
   {
-    AppMethodBeat.i(139021);
+    AppMethodBeat.i(53816);
     if (mSandboxBuildInfo == null)
     {
       localObject = new RuntimeException("has not set SandboxBuildInfo");
-      AppMethodBeat.o(139021);
+      AppMethodBeat.o(53816);
       throw ((Throwable)localObject);
     }
     Object localObject = mSandboxBuildInfo;
-    AppMethodBeat.o(139021);
+    AppMethodBeat.o(53816);
     return localObject;
   }
   
@@ -29,7 +29,7 @@ public class SandboxBuildInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.smtt.sandbox.SandboxBuildInfo
  * JD-Core Version:    0.7.0.1
  */

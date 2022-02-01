@@ -1,135 +1,150 @@
 package com.tencent.mm.platformtools;
 
-import android.graphics.Bitmap;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.ApplicationInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bo;
-import java.lang.ref.WeakReference;
-import java.util.LinkedList;
-import java.util.Vector;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.ui.base.h;
 
 public final class x
 {
-  private static Vector<WeakReference<x.a>> gjA;
-  private static LinkedList<x.a> gjB;
+  private Runnable hUF;
+  private boolean hUG = false;
   
-  static
+  private void d(Activity paramActivity, Runnable paramRunnable)
   {
-    AppMethodBeat.i(79041);
-    gjA = new Vector();
-    gjB = new LinkedList();
-    AppMethodBeat.o(79041);
+    AppMethodBeat.i(169126);
+    boolean bool = b.a(paramActivity, "android.permission.READ_PHONE_STATE", 96, "", "");
+    ad.i("MicroMsg.PermissionCheckHelper", "check init, summerper checkPermission checkPhone[%b]", new Object[] { Boolean.valueOf(bool) });
+    if (!bool)
+    {
+      e.vIY.idkeyStat(462L, 20L, 1L, true);
+      this.hUF = paramRunnable;
+      AppMethodBeat.o(169126);
+      return;
+    }
+    q.WS();
+    if (paramRunnable != null) {
+      paramRunnable.run();
+    }
+    AppMethodBeat.o(169126);
   }
   
-  public static Bitmap a(v paramv)
+  public final boolean a(Activity paramActivity, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(79034);
-    if (!b(paramv))
+    AppMethodBeat.i(169127);
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      AppMethodBeat.o(79034);
-      return null;
+      if (paramArrayOfInt == null) {}
+      for (int i = -1;; i = paramArrayOfInt.length)
+      {
+        ad.w("MicroMsg.PermissionCheckHelper", "onRequestPermissionsResult, grantResults length is:%d requestCode:%d, permissions:%s, stack:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), paramArrayOfString, bt.eGN() });
+        AppMethodBeat.o(169127);
+        return true;
+      }
     }
-    if (!g.RL().Rx())
+    ad.i("MicroMsg.PermissionCheckHelper", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    switch (paramInt)
     {
-      paramv = paramv.aos();
-      AppMethodBeat.o(79034);
-      return paramv;
-    }
-    if (paramv.aor())
-    {
-      paramv = x.b.a(x.b.gjC, paramv);
-      AppMethodBeat.o(79034);
-      return paramv;
-    }
-    paramv = x.b.b(x.b.gjC, paramv);
-    AppMethodBeat.o(79034);
-    return paramv;
-  }
-  
-  public static boolean a(x.a parama)
-  {
-    AppMethodBeat.i(79031);
-    boolean bool = gjA.add(new WeakReference(parama));
-    AppMethodBeat.o(79031);
-    return bool;
-  }
-  
-  private static boolean b(v paramv)
-  {
-    AppMethodBeat.i(79038);
-    if ((paramv == null) || (bo.isNullOrNil(paramv.aoo())))
-    {
-      AppMethodBeat.o(79038);
+    default: 
+      AppMethodBeat.o(169127);
       return false;
     }
-    AppMethodBeat.o(79038);
-    return true;
-  }
-  
-  public static boolean b(x.a parama)
-  {
-    AppMethodBeat.i(79032);
-    gjB.remove(parama);
-    boolean bool = gjB.add(parama);
-    AppMethodBeat.o(79032);
-    return bool;
-  }
-  
-  public static boolean c(x.a parama)
-  {
-    AppMethodBeat.i(79033);
-    boolean bool = gjB.remove(parama);
-    AppMethodBeat.o(79033);
-    return bool;
-  }
-  
-  public static Bitmap wx(String paramString)
-  {
-    AppMethodBeat.i(79035);
-    paramString = x.b.wx(paramString);
-    AppMethodBeat.o(79035);
-    return paramString;
-  }
-  
-  public static Bitmap wy(String paramString)
-  {
-    AppMethodBeat.i(79037);
-    paramString = x.b.wy(paramString);
-    AppMethodBeat.o(79037);
-    return paramString;
-  }
-  
-  public static Bitmap y(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(79036);
-    paramString = x.b.y(paramString, paramInt1, paramInt2);
-    AppMethodBeat.o(79036);
-    return paramString;
-  }
-  
-  static final class b$c
-  {
-    boolean gjL;
-    int gjM;
-    int gjN;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(79015);
-      Object localObject = new StringBuilder();
-      ((StringBuilder)localObject).append("fail[").append(this.gjL).append("],");
-      ((StringBuilder)localObject).append("tryTimes[").append(this.gjM).append("],");
-      ((StringBuilder)localObject).append("lastTS[").append(this.gjN).append("]");
-      localObject = ((StringBuilder)localObject).toString();
-      AppMethodBeat.o(79015);
-      return localObject;
+    if (paramArrayOfInt[0] == 0) {
+      if (paramInt == 32)
+      {
+        e.vIY.idkeyStat(462L, 19L, 1L, true);
+        if (paramInt != 32) {
+          break label308;
+        }
+        d(paramActivity, this.hUF);
+      }
     }
+    for (;;)
+    {
+      AppMethodBeat.o(169127);
+      return true;
+      if (paramInt != 96) {
+        break;
+      }
+      e.vIY.idkeyStat(462L, 21L, 1L, true);
+      q.Xb();
+      q.WS();
+      break;
+      paramArrayOfInt = paramActivity.getSharedPreferences(aj.eFD(), 0);
+      SharedPreferences.Editor localEditor = paramArrayOfInt.edit();
+      if (paramInt == 32) {}
+      for (paramArrayOfString = "SP_PERMISSION_HAD_REQUEST_PERMISSION_STORAGE";; paramArrayOfString = "SP_PERMISSION_HAD_REQUEST_PERMISSION_PHONE")
+      {
+        localEditor.putBoolean(paramArrayOfString, true).apply();
+        paramArrayOfInt.edit().putInt("SP_PERMISSION_HAD_REQUEST_PERMISSION_UID", aj.getContext().getApplicationInfo().uid).apply();
+        break;
+      }
+      label308:
+      if (this.hUF != null) {
+        this.hUF.run();
+      }
+    }
+  }
+  
+  public final void b(final Activity paramActivity, final Runnable paramRunnable)
+  {
+    int i = 0;
+    AppMethodBeat.i(169124);
+    if (!this.hUG) {
+      if (!b.e(paramActivity, new String[] { "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_PHONE_STATE" }))
+      {
+        this.hUG = true;
+        h.a(paramActivity, paramActivity.getString(2131761867), paramActivity.getString(2131761885), paramActivity.getString(2131761868), new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(161688);
+            x.this.c(paramActivity, paramRunnable);
+            AppMethodBeat.o(161688);
+          }
+        });
+      }
+    }
+    while (i == 0)
+    {
+      AppMethodBeat.o(169124);
+      return;
+      i = 1;
+    }
+    c(paramActivity, paramRunnable);
+    AppMethodBeat.o(169124);
+  }
+  
+  final void c(Activity paramActivity, Runnable paramRunnable)
+  {
+    AppMethodBeat.i(169125);
+    boolean bool = b.a(paramActivity, "android.permission.WRITE_EXTERNAL_STORAGE", 32, "", "");
+    ad.i("MicroMsg.PermissionCheckHelper", "check init, summerper checkPermission checkStorage[%b]", new Object[] { Boolean.valueOf(bool) });
+    if (!bool)
+    {
+      e.vIY.idkeyStat(462L, 18L, 1L, true);
+      this.hUF = paramRunnable;
+      AppMethodBeat.o(169125);
+      return;
+    }
+    d(paramActivity, paramRunnable);
+    AppMethodBeat.o(169125);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.platformtools.x
  * JD-Core Version:    0.7.0.1
  */

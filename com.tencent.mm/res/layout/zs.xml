@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/pa" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/lh" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/buk" android:background="@color/pa" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
-    <ListView android:id="@id/bul" android:background="@color/pa" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/oz" android:dividerHeight="@dimen/hv" style="@style/mn" />
-    <include android:id="@id/bum" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/zm" />
-    <TextView android:gravity="center_horizontal" android:id="@id/bun" android:background="@color/a6q" android:paddingTop="@dimen/l6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/brs" />
-</FrameLayout>
+    <com.tencent.mm.plugin.brandservice.ui.EnterpriseBizContactListView android:id="@id/fqm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

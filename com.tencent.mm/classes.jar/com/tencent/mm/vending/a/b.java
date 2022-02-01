@@ -8,50 +8,55 @@ import junit.framework.Assert;
 public abstract class b<_Struct, _Item>
   extends com.tencent.mm.vending.base.b<_Struct, Cursor>
 {
-  public b.a ANH;
-  protected Cursor ANI = null;
-  protected _Item Dh;
-  protected Map<Integer, _Item> kln = null;
+  public a HOP;
+  protected _Item JW;
+  protected Cursor Qs = null;
   protected int mCount;
+  protected Map<Integer, _Item> nqs = null;
   
   public b(_Item param_Item)
   {
-    this.Dh = param_Item;
+    this.JW = param_Item;
     this.mCount = -1;
-    dQd();
+    fgY();
   }
   
   private Cursor getCursor()
   {
-    if ((this.ANI == null) || (this.ANI.isClosed())) {
-      Assert.assertNotNull(this.ANI);
+    if ((this.Qs == null) || (this.Qs.isClosed())) {
+      Assert.assertNotNull(this.Qs);
     }
-    return this.ANI;
+    return this.Qs;
   }
   
   public abstract _Item a(_Item param_Item, Cursor paramCursor);
   
-  public final void bKb()
+  public final void cHX()
   {
-    if (this.kln != null) {
-      this.kln.clear();
+    if (this.nqs != null) {
+      this.nqs.clear();
     }
-    if (this.ANI != null) {
-      this.ANI.close();
+    if (this.Qs != null) {
+      this.Qs.close();
     }
     this.mCount = -1;
   }
   
-  protected abstract Cursor cwQ();
+  protected abstract Cursor dDi();
   
-  public final void dQd()
+  public void destroyAsynchronous()
   {
-    if (this.kln == null) {
-      this.kln = new HashMap();
+    cHX();
+  }
+  
+  public final void fgY()
+  {
+    if (this.nqs == null) {
+      this.nqs = new HashMap();
     }
   }
   
-  public final int dQe()
+  public final int fgZ()
   {
     if (this.mCount < 0) {
       this.mCount = getCursor().getCount();
@@ -59,16 +64,11 @@ public abstract class b<_Struct, _Item>
     return this.mCount;
   }
   
-  public void destroyAsynchronous()
-  {
-    bKb();
-  }
-  
   public final _Item getItem(int paramInt)
   {
-    if (this.kln != null)
+    if (this.nqs != null)
     {
-      localObject = this.kln.get(Integer.valueOf(paramInt));
+      localObject = this.nqs.get(Integer.valueOf(paramInt));
       if (localObject != null) {
         return localObject;
       }
@@ -76,17 +76,24 @@ public abstract class b<_Struct, _Item>
     if ((paramInt < 0) || (!getCursor().moveToPosition(paramInt))) {
       return null;
     }
-    if (this.kln == null) {
-      return a(this.Dh, getCursor());
+    if (this.nqs == null) {
+      return a(this.JW, getCursor());
     }
     Object localObject = a(null, getCursor());
-    this.kln.put(Integer.valueOf(paramInt), localObject);
+    this.nqs.put(Integer.valueOf(paramInt), localObject);
     return localObject;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void dCr();
+    
+    public abstract void dCs();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.vending.a.b
  * JD-Core Version:    0.7.0.1
  */

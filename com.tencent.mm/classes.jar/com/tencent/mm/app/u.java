@@ -1,31 +1,28 @@
 package com.tencent.mm.app;
 
-import android.app.Activity;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.g.a.lc;
+import com.tencent.mm.sdk.b.c;
 
-final class u
-  extends Activity
+public final class u
+  extends c<lc>
 {
-  protected final void onCreate(Bundle paramBundle)
-  {
-    AppMethodBeat.i(137942);
-    super.onCreate(paramBundle);
-    ab.i("WxSplash.SuicideHackActivity", "onCreate");
-    finish();
-    AppMethodBeat.o(137942);
-  }
+  private static boolean cMd = false;
+  private int cMe;
+  private int cMf;
   
-  public void onWindowFocusChanged(boolean paramBoolean)
+  public u(int paramInt1, int paramInt2)
   {
-    super.onWindowFocusChanged(paramBoolean);
-    AppMethodBeat.at(this, paramBoolean);
+    AppMethodBeat.i(161231);
+    this.cMe = paramInt1;
+    this.cMf = paramInt2;
+    this.__eventId = lc.class.getName().hashCode();
+    AppMethodBeat.o(161231);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.app.u
  * JD-Core Version:    0.7.0.1
  */

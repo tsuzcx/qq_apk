@@ -10,16 +10,16 @@ final class x
   
   public final void run()
   {
-    AppMethodBeat.i(108777);
+    AppMethodBeat.i(4213);
     Log.isLoggable("EnhancedIntentService", 3);
-    w.a(this.bgb).g(this.bga.intent);
-    this.bga.finish();
-    AppMethodBeat.o(108777);
+    w.a(this.bEa).f(this.bDZ.intent);
+    this.bDZ.finish();
+    AppMethodBeat.o(4213);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.x
  * JD-Core Version:    0.7.0.1
  */

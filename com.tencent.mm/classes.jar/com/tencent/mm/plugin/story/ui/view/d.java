@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.story.ui.view;
 
-import a.f.b.j;
-import a.l;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.particles.a.b;
+import d.g.b.k;
+import d.l;
 import java.util.Random;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/story/ui/view/CommentSmallConfetti;", "Lcom/tencent/mm/particles/confetti/Confetti;", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "TAG", "", "getBitmap", "()Landroid/graphics/Bitmap;", "centerX", "", "centerY", "startX", "drawInternal", "", "canvas", "Landroid/graphics/Canvas;", "matrix", "Landroid/graphics/Matrix;", "paint", "Landroid/graphics/Paint;", "x", "", "y", "rotation", "percentAnimated", "getHeight", "getWidth", "reset", "plugin-story_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/story/ui/view/CommentSmallConfetti;", "Lcom/tencent/mm/particles/confetti/Confetti;", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "TAG", "", "getBitmap", "()Landroid/graphics/Bitmap;", "centerX", "", "centerY", "startX", "drawInternal", "", "canvas", "Landroid/graphics/Canvas;", "matrix", "Landroid/graphics/Matrix;", "paint", "Landroid/graphics/Paint;", "x", "", "y", "rotation", "percentAnimated", "getHeight", "getWidth", "reset", "plugin-story_release"})
 public final class d
   extends b
 {
@@ -22,7 +22,7 @@ public final class d
   
   public d(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(110361);
+    AppMethodBeat.i(120042);
     this.bitmap = paramBitmap;
     this.TAG = "MicroMsg.CommentSmallConfetti";
     this.centerX = (this.bitmap.getWidth() / 2);
@@ -31,7 +31,7 @@ public final class d
     for (int i = this.centerX;; i = -this.centerX)
     {
       this.startX = i;
-      AppMethodBeat.o(110361);
+      AppMethodBeat.o(120042);
       return;
     }
   }
@@ -39,10 +39,10 @@ public final class d
   public final void a(Canvas paramCanvas, Matrix paramMatrix, Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     paramFloat3 = 1.0F;
-    AppMethodBeat.i(110360);
-    j.q(paramCanvas, "canvas");
-    j.q(paramMatrix, "matrix");
-    j.q(paramPaint, "paint");
+    AppMethodBeat.i(120041);
+    k.h(paramCanvas, "canvas");
+    k.h(paramMatrix, "matrix");
+    k.h(paramPaint, "paint");
     if (paramFloat4 > 0.8D) {
       paramFloat3 = (1.0F - paramFloat4) / 0.2F;
     }
@@ -52,41 +52,41 @@ public final class d
     paramPaint.setAlpha((int)(paramFloat3 * 255.0F));
     paramCanvas.drawBitmap(this.bitmap, paramMatrix, paramPaint);
     paramPaint.setAlpha(i);
-    AppMethodBeat.o(110360);
+    AppMethodBeat.o(120041);
   }
   
   public final int getHeight()
   {
-    AppMethodBeat.i(110359);
+    AppMethodBeat.i(120040);
     int i = this.bitmap.getHeight();
-    AppMethodBeat.o(110359);
+    AppMethodBeat.o(120040);
     return i;
   }
   
   public final int getWidth()
   {
-    AppMethodBeat.i(110358);
+    AppMethodBeat.i(120039);
     int i = this.bitmap.getWidth();
-    AppMethodBeat.o(110358);
+    AppMethodBeat.o(120039);
     return i;
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(110357);
+    AppMethodBeat.i(120038);
     super.reset();
     if (new Random().nextBoolean()) {}
     for (int i = this.centerX;; i = -this.centerX)
     {
       this.startX = i;
-      AppMethodBeat.o(110357);
+      AppMethodBeat.o(120038);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.d
  * JD-Core Version:    0.7.0.1
  */

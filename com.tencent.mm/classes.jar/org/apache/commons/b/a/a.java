@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static volatile b CQK = b.CQN;
-  private final StringBuffer CQL;
-  private final b CQM;
+  private static volatile b KmC = b.KmF;
+  private final StringBuffer KmD;
+  private final b KmE;
   private final Object object;
   
   public a(Object paramObject, b paramb)
@@ -16,72 +16,72 @@ public final class a
   
   private a(Object paramObject, b paramb, byte paramByte)
   {
-    AppMethodBeat.i(142934);
+    AppMethodBeat.i(40695);
     b localb = paramb;
     if (paramb == null) {
-      localb = CQK;
+      localb = KmC;
     }
     paramb = new StringBuffer(512);
-    this.CQL = paramb;
-    this.CQM = localb;
+    this.KmD = paramb;
+    this.KmE = localb;
     this.object = paramObject;
     if (paramObject != null) {
-      if ((localb.CQU) && (paramObject != null))
+      if ((localb.KmM) && (paramObject != null))
       {
-        b.em(paramObject);
-        if (!localb.CQV) {
+        b.fR(paramObject);
+        if (!localb.KmN) {
           break label153;
         }
-        paramb.append(org.apache.commons.b.b.aX(paramObject.getClass()));
+        paramb.append(org.apache.commons.b.b.bz(paramObject.getClass()));
       }
     }
     for (;;)
     {
-      if ((localb.CQW) && (paramObject != null))
+      if ((localb.KmO) && (paramObject != null))
       {
-        b.em(paramObject);
+        b.fR(paramObject);
         paramb.append('@');
         paramb.append(Integer.toHexString(System.identityHashCode(paramObject)));
       }
-      paramb.append(localb.pLF);
-      if (localb.CQY) {
-        localb.b(paramb);
+      paramb.append(localb.uNS);
+      if (localb.KmQ) {
+        localb.c(paramb);
       }
-      AppMethodBeat.o(142934);
+      AppMethodBeat.o(40695);
       return;
       label153:
       paramb.append(paramObject.getClass().getName());
     }
   }
   
-  public final a ek(Object paramObject)
+  public final a fP(Object paramObject)
   {
-    AppMethodBeat.i(142935);
-    this.CQM.b(this.CQL, paramObject);
-    AppMethodBeat.o(142935);
+    AppMethodBeat.i(40696);
+    this.KmE.b(this.KmD, paramObject);
+    AppMethodBeat.o(40696);
     return this;
   }
   
   public final String toString()
   {
     int j = 0;
-    AppMethodBeat.i(142936);
+    AppMethodBeat.i(40697);
     if (this.object == null)
     {
-      this.CQL.append(this.CQM.CRg);
-      localObject1 = this.CQL.toString();
-      AppMethodBeat.o(142936);
+      this.KmD.append(this.KmE.KmY);
+      localObject1 = this.KmD.toString();
+      AppMethodBeat.o(40697);
       return localObject1;
     }
-    Object localObject1 = this.CQM;
-    StringBuffer localStringBuffer = this.CQL;
+    Object localObject1 = this.KmE;
+    StringBuffer localStringBuffer = this.KmD;
     Object localObject2 = this.object;
     int k;
     int m;
-    if (!((b)localObject1).CQZ)
+    if (!((b)localObject1).KmR)
     {
       k = localStringBuffer.length();
-      m = ((b)localObject1).CRa.length();
+      m = ((b)localObject1).KmS.length();
       if ((k > 0) && (m > 0) && (k >= m))
       {
         i = 0;
@@ -89,7 +89,7 @@ public final class a
         if (i >= m) {
           break label179;
         }
-        if (localStringBuffer.charAt(k - 1 - i) == ((b)localObject1).CRa.charAt(m - 1 - i)) {
+        if (localStringBuffer.charAt(k - 1 - i) == ((b)localObject1).KmS.charAt(m - 1 - i)) {
           break label172;
         }
       }
@@ -101,8 +101,8 @@ public final class a
       if (i != 0) {
         localStringBuffer.setLength(k - m);
       }
-      localStringBuffer.append(((b)localObject1).pLG);
-      b.en(localObject2);
+      localStringBuffer.append(((b)localObject1).uNT);
+      b.fS(localObject2);
       break;
       i += 1;
       break label105;
@@ -111,7 +111,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     org.apache.commons.b.a.a
  * JD-Core Version:    0.7.0.1
  */

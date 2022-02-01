@@ -6,27 +6,25 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.l;
-import com.tencent.mm.af.p;
-import com.tencent.mm.af.q;
-import com.tencent.mm.g.c.aq;
-import com.tencent.mm.g.c.dd;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.v;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.du;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.az;
 import com.tencent.mm.plugin.brandservice.a.b;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.s;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.sdk.platformtools.bw;
+import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.bg;
+import com.tencent.mm.storage.bh;
+import com.tencent.mm.storage.bl;
 import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.chatting.viewitems.az;
-import com.tencent.mm.ui.chatting.viewitems.x.b;
-import com.tencent.mm.ui.e.l;
+import com.tencent.mm.ui.chatting.viewitems.ag.b;
+import com.tencent.mm.ui.chatting.viewitems.bi;
+import com.tencent.mm.ui.e.m;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -38,141 +36,144 @@ public final class s$p
     super(parama);
   }
   
-  public final void a(View paramView, com.tencent.mm.ui.chatting.d.a parama, bi parambi)
+  public final void a(View paramView, com.tencent.mm.ui.chatting.d.a parama, bl parambl)
   {
-    AppMethodBeat.i(30734);
-    paramView = (az)paramView.getTag();
+    AppMethodBeat.i(34608);
+    paramView = (bi)paramView.getTag();
     int j = 0;
     long l = System.currentTimeMillis();
     int k = (int)(l / 1000L);
-    ab.i("MicroMsg.WebViewClickListener", "WebViewClickListener onClick = %d", new Object[] { Integer.valueOf(k) });
-    if (e.a(paramView.cMO, parama.zJz.getContext(), null, parama.getTalkerUserName()))
+    ad.i("MicroMsg.WebViewClickListener", "WebViewClickListener onClick = %d", new Object[] { Integer.valueOf(k) });
+    if (e.a(paramView.dDM, parama.GzJ.getContext(), null, parama.getTalkerUserName()))
     {
-      AppMethodBeat.o(30734);
+      AppMethodBeat.o(34608);
       return;
     }
     Object localObject1 = paramView.userName;
-    Object localObject2 = paramView.zYG;
+    Object localObject2 = paramView.GQQ;
     if ((localObject1 == null) || (((String)localObject1).equals("")))
     {
-      AppMethodBeat.o(30734);
+      AppMethodBeat.o(34608);
       return;
     }
-    Object localObject3 = l.c((String)localObject1, 0, parama.zJz.getIntExtra("KOpenArticleSceneFromScene", 10000), k);
-    localObject1 = new Intent();
-    ((Intent)localObject1).putExtra("rawUrl", (String)localObject3);
-    ((Intent)localObject1).putExtra("shortUrl", (String)localObject3);
-    ((Intent)localObject1).putExtra("webpageTitle", (String)localObject2);
+    localObject1 = m.d((String)localObject1, 0, parama.GzJ.getIntExtra("KOpenArticleSceneFromScene", 10000), k);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("rawUrl", (String)localObject1);
+    localIntent.putExtra("shortUrl", (String)localObject1);
+    localIntent.putExtra("webpageTitle", (String)localObject2);
     localObject2 = new Bundle();
     int i;
-    if (parambi != null)
+    if (parambl != null)
     {
-      if (parambi.dxP())
+      if (parambl.eLV())
       {
-        localObject3 = br.F(parambi.field_content, "msg");
+        localObject3 = bw.K(parambl.field_content, "msg");
         if (localObject3 != null)
         {
-          localObject3 = x.b.aY((Map)localObject3);
-          if (!bo.isNullOrNil(((x.b)localObject3).fhC))
+          localObject3 = ag.b.bM((Map)localObject3);
+          if (!bt.isNullOrNil(((ag.b)localObject3).gIj))
           {
-            ((Intent)localObject1).putExtra("KTemplateId", ((x.b)localObject3).fhC);
-            ab.d("MicroMsg.WebViewClickListener", "report template msg click action, templateId(%s). srcUsername(%s)", new Object[] { ((x.b)localObject3).fhC, paramView.cGN });
-            h.qsU.e(11608, new Object[] { ((x.b)localObject3).fhC, paramView.cGN, Integer.valueOf(0) });
+            localIntent.putExtra("KTemplateId", ((ag.b)localObject3).gIj);
+            ad.d("MicroMsg.WebViewClickListener", "report template msg click action, templateId(%s). srcUsername(%s)", new Object[] { ((ag.b)localObject3).gIj, paramView.dxz });
+            h.vKh.f(11608, new Object[] { ((ag.b)localObject3).gIj, paramView.dxz, Integer.valueOf(0) });
           }
         }
       }
-      aw.aaz();
-      localObject3 = com.tencent.mm.model.c.YA().arw(parambi.field_talker);
+      az.arV();
+      Object localObject3 = com.tencent.mm.model.c.apM().aHY(parambl.field_talker);
       i = j;
       if (localObject3 != null)
       {
         i = j;
-        if (((ad)localObject3).dwz())
+        if (((af)localObject3).eKB())
         {
           i = 4;
-          ab.d("MicroMsg.WebViewClickListener", "hakon click biz msg %s", new Object[] { ((aq)localObject3).field_username });
+          ad.d("MicroMsg.WebViewClickListener", "hakon click biz msg %s", new Object[] { ((au)localObject3).field_username });
+          localIntent.putExtra("geta8key_scene", 7);
         }
       }
-      ((Intent)localObject1).putExtra("msg_id", parambi.field_msgId);
-      ((Intent)localObject1).putExtra("KPublisherId", "msg_" + Long.toString(parambi.field_msgSvrId));
-      ((Intent)localObject1).putExtra("pre_username", parambi.field_talker);
-      localObject3 = (com.tencent.mm.ui.chatting.c.b.d)parama.ay(com.tencent.mm.ui.chatting.c.b.d.class);
-      ((Intent)localObject1).putExtra("prePublishId", "msg_" + Long.toString(parambi.field_msgSvrId));
-      ((Intent)localObject1).putExtra("preUsername", com.tencent.mm.ui.chatting.viewitems.c.a(parambi, paramView.zvB, ((com.tencent.mm.ui.chatting.c.b.d)localObject3).dHv()));
-      ((Intent)localObject1).putExtra("preChatName", parama.getTalkerUserName());
-      ((Intent)localObject1).putExtra("preMsgIndex", paramView.uXa);
-      localObject3 = paramView.zYL;
+      localIntent.putExtra("msg_id", parambl.field_msgId);
+      localIntent.putExtra("KPublisherId", "msg_" + Long.toString(parambl.field_msgSvrId));
+      localIntent.putExtra("pre_username", parambl.field_talker);
+      localObject3 = (com.tencent.mm.ui.chatting.c.b.d)parama.be(com.tencent.mm.ui.chatting.c.b.d.class);
+      localIntent.putExtra("prePublishId", "msg_" + Long.toString(parambl.field_msgSvrId));
+      localIntent.putExtra("preUsername", com.tencent.mm.ui.chatting.viewitems.c.a(parambl, paramView.GjM, ((com.tencent.mm.ui.chatting.c.b.d)localObject3).eWC()));
+      localIntent.putExtra("preChatName", parama.getTalkerUserName());
+      localIntent.putExtra("preMsgIndex", paramView.AYK);
+      localObject3 = paramView.GQV;
       j = i;
       if (localObject3 != null) {
-        ((Intent)localObject1).putExtras((Bundle)localObject3);
+        localIntent.putExtras((Bundle)localObject3);
       }
     }
     for (j = i;; j = 0)
     {
       ((Bundle)localObject2).putInt("snsWebSource", j);
-      ((Intent)localObject1).putExtra("jsapiargs", (Bundle)localObject2);
-      ((Intent)localObject1).putExtra("geta8key_username", parama.getTalkerUserName());
-      if (!bo.isNullOrNil(paramView.cGN))
+      localIntent.putExtra("jsapiargs", (Bundle)localObject2);
+      localIntent.putExtra("geta8key_username", parama.getTalkerUserName());
+      if (!bt.isNullOrNil(paramView.dxz))
       {
-        ((Intent)localObject1).putExtra("srcUsername", paramView.cGN);
-        ((Intent)localObject1).putExtra("srcDisplayname", paramView.cGO);
-        ((Intent)localObject1).putExtra("mode", 1);
+        localIntent.putExtra("srcUsername", paramView.dxz);
+        localIntent.putExtra("srcDisplayname", paramView.dxA);
+        localIntent.putExtra("mode", 1);
       }
-      ((Intent)localObject1).putExtra("message_id", paramView.uWZ);
-      ((Intent)localObject1).putExtra("message_index", paramView.uXa);
-      ((Intent)localObject1).putExtra("from_scence", 1);
-      ((Intent)localObject1).putExtra("start_activity_time", l);
-      ((Intent)localObject1).putExtra(e.l.yVt, paramView.zYN);
-      ((Intent)localObject1).addFlags(536870912);
-      i = parama.zJz.getContext().getIntent().getIntExtra("KOpenArticleSceneFromScene", 10000);
-      if ((((b)g.E(b.class)).rU(2)) && (((b)g.E(b.class)).a(parama.zJz.getContext(), paramView.userName, paramView.zYN, false, 0, i, (Intent)localObject1))) {
-        ab.i("MicroMsg.WebViewClickListener", "jump to TmplWebview");
+      localIntent.putExtra("message_id", paramView.AYJ);
+      localIntent.putExtra("message_index", paramView.AYK);
+      localIntent.putExtra("from_scence", 1);
+      localIntent.putExtra("start_activity_time", l);
+      localIntent.putExtra(e.m.FIt, paramView.GQX);
+      com.tencent.mm.ui.chatting.viewitems.c.t(localIntent, parama.getTalkerUserName());
+      localIntent.addFlags(536870912);
+      i = parama.GzJ.getContext().getIntent().getIntExtra("KOpenArticleSceneFromScene", 10000);
+      if ((((b)g.ab(b.class)).xA(2)) && (((b)g.ab(b.class)).a(parama.GzJ.getContext(), (String)localObject1, paramView.GQX, 0, i, localIntent))) {
+        ad.i("MicroMsg.WebViewClickListener", "jump to TmplWebview");
       }
       for (;;)
       {
-        if (!bo.isNullOrNil(parama.getTalkerUserName()))
+        if (!bt.isNullOrNil(parama.getTalkerUserName()))
         {
-          aw.aaz();
-          if (com.tencent.mm.model.c.YA().arw(parama.getTalkerUserName()).dqS == 1)
+          az.arV();
+          if (com.tencent.mm.model.c.apM().aHY(parama.getTalkerUserName()).evH == 1)
           {
-            aw.aaz();
-            com.tencent.mm.model.c.YF().arM(parama.getTalkerUserName());
+            az.arV();
+            com.tencent.mm.model.c.apR().aIs(parama.getTalkerUserName());
           }
         }
-        if ((parambi == null) || (!parambi.dvV())) {
-          break label1074;
+        if ((parambl == null) || (!parambl.eJL())) {
+          break label1098;
         }
-        localObject1 = ((com.tencent.mm.plugin.biz.a.a)g.E(com.tencent.mm.plugin.biz.a.a.class)).b(parambi.field_msgId, parambi.field_content);
-        if ((localObject1 != null) && (((p)localObject1).fjy != null) && (((p)localObject1).fjy.size() > paramView.uXa)) {
+        localObject1 = ((com.tencent.mm.plugin.biz.a.a)g.ab(com.tencent.mm.plugin.biz.a.a.class)).a(parambl.field_msgId, parambl.field_content);
+        if ((localObject1 != null) && (((com.tencent.mm.ai.u)localObject1).gKs != null) && (((com.tencent.mm.ai.u)localObject1).gKs.size() > paramView.AYK)) {
           break;
         }
-        AppMethodBeat.o(30734);
+        AppMethodBeat.o(34608);
         return;
-        com.tencent.mm.bq.d.b(parama.zJz.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
+        localIntent.putExtra("rawUrl", (String)localObject1);
+        com.tencent.mm.bs.d.b(parama.GzJ.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
       }
       i = 0;
-      paramView = (q)((p)localObject1).fjy.get(paramView.uXa);
-      if (!bo.isNullOrNil(paramView.url)) {}
+      paramView = (v)((com.tencent.mm.ai.u)localObject1).gKs.get(paramView.AYK);
+      if (!bt.isNullOrNil(paramView.url)) {}
       for (;;)
       {
         try
         {
           paramView = Uri.parse(paramView.url);
-          l = bo.getLong(paramView.getQueryParameter("mid"), 0L);
+          l = bt.getLong(paramView.getQueryParameter("mid"), 0L);
           int m;
-          label1074:
+          label1098:
           l = 0L;
         }
         catch (UnsupportedOperationException paramView)
         {
           try
           {
-            j = bo.getInt(paramView.getQueryParameter("idx"), 0);
+            j = bt.getInt(paramView.getQueryParameter("idx"), 0);
             i = j;
-            j = parama.zJz.getIntExtra("specific_chat_from_scene", 0);
-            m = s.getSessionId();
-            h.qsU.e(16243, new Object[] { parambi.field_talker, Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(m), Integer.valueOf(2), Integer.valueOf(k), Integer.valueOf(l.LZ()) });
-            AppMethodBeat.o(30734);
+            j = parama.GzJ.getIntExtra("specific_chat_from_scene", 0);
+            m = com.tencent.mm.storage.u.getSessionId();
+            h.vKh.f(16243, new Object[] { parambl.field_talker, Long.valueOf(l), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(m), Integer.valueOf(2), Integer.valueOf(k), Integer.valueOf(m.Xx()) });
+            AppMethodBeat.o(34608);
             return;
           }
           catch (Exception paramView)
@@ -185,12 +186,12 @@ public final class s$p
           }
           paramView = paramView;
           l = 0L;
-          ab.w("MicroMsg.WebViewClickListener", "Report 16243 exp %s", new Object[] { paramView.getMessage() });
+          ad.w("MicroMsg.WebViewClickListener", "Report 16243 exp %s", new Object[] { paramView.getMessage() });
         }
         catch (Exception paramView)
         {
           l = 0L;
-          ab.w("MicroMsg.WebViewClickListener", "Report 16243 exp %s", new Object[] { paramView.getMessage() });
+          ad.w("MicroMsg.WebViewClickListener", "Report 16243 exp %s", new Object[] { paramView.getMessage() });
         }
       }
     }
@@ -198,7 +199,7 @@ public final class s$p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.s.p
  * JD-Core Version:    0.7.0.1
  */

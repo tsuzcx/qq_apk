@@ -11,45 +11,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class F2fDynamicCodeItemLayout
   extends LinearLayout
 {
-  TextView ldI;
-  TextView qkT;
+  TextView ott;
+  TextView vCb;
   
   public F2fDynamicCodeItemLayout(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(44804);
+    AppMethodBeat.i(67917);
     init();
-    AppMethodBeat.o(44804);
+    AppMethodBeat.o(67917);
   }
   
   public F2fDynamicCodeItemLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(44805);
+    AppMethodBeat.i(67918);
     init();
-    AppMethodBeat.o(44805);
+    AppMethodBeat.o(67918);
   }
   
   public F2fDynamicCodeItemLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(44806);
+    AppMethodBeat.i(67919);
     init();
-    AppMethodBeat.o(44806);
+    AppMethodBeat.o(67919);
   }
   
   private void init()
   {
-    AppMethodBeat.i(44807);
-    View localView = LayoutInflater.from(getContext()).inflate(2130970571, this);
-    this.qkT = ((TextView)localView.findViewById(2131827285));
-    this.ldI = ((TextView)localView.findViewById(2131827286));
-    AppMethodBeat.o(44807);
+    AppMethodBeat.i(67920);
+    View localView = LayoutInflater.from(getContext()).inflate(2131495254, this);
+    this.vCb = ((TextView)localView.findViewById(2131304168));
+    this.ott = ((TextView)localView.findViewById(2131304169));
+    AppMethodBeat.o(67920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.F2fDynamicCodeItemLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -8,25 +8,25 @@ import java.util.List;
 
 public final class k
 {
-  public final m beF;
+  public final m bCF;
   public final Context mContext;
   
   public k(Context paramContext)
   {
     this(paramContext, new l((byte)0));
-    AppMethodBeat.i(10615);
-    AppMethodBeat.o(10615);
+    AppMethodBeat.i(4082);
+    AppMethodBeat.o(4082);
   }
   
   private k(Context paramContext, m paramm)
   {
     this.mContext = paramContext;
-    this.beF = paramm;
+    this.bCF = paramm;
   }
   
-  public static List<e> y(List<String> paramList)
+  public static List<e> E(List<String> paramList)
   {
-    AppMethodBeat.i(10616);
+    AppMethodBeat.i(4083);
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
@@ -54,13 +54,13 @@ public final class k
         String.format("Could not instantiate %s.", new Object[] { str });
       }
     }
-    AppMethodBeat.o(10616);
+    AppMethodBeat.o(4083);
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.firebase.components.k
  * JD-Core Version:    0.7.0.1
  */

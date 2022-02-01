@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:id="@id/dkz" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="bottom|center" android:id="@id/ej5" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/ne" android:layout_marginTop="@dimen/ng" android:src="@color/a6i" />
-    <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/a5f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</merge>
+    <include android:id="@id/ab1" layout="@layout/bgk" />
+    <ImageView android:id="@id/gr1" android:background="@drawable/b8f" android:layout_width="@dimen/w4" android:layout_height="@dimen/w4" android:layout_marginTop="@dimen/he" android:layout_below="@id/ab1" android:layout_centerHorizontal="true" />
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/he" android:layout_below="@id/gr1" android:layout_centerHorizontal="true">
+        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/e4l" android:layout_width="30.0dip" android:layout_height="30.0dip" />
+        <TextView android:textSize="@dimen/i" android:textColor="@color/y4" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/e4k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/g9x" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/p" android:textColor="@color/gb" android:id="@id/e4m" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="80.0dip" android:text="@string/w7" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

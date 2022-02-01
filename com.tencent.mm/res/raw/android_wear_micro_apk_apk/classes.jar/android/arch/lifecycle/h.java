@@ -1,11 +1,6 @@
 package android.arch.lifecycle;
 
-@Deprecated
-public abstract interface h
-  extends e
-{
-  public abstract f g();
-}
+public abstract interface h {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\res\raw\android_wear_micro_apk_apk\classes.jar

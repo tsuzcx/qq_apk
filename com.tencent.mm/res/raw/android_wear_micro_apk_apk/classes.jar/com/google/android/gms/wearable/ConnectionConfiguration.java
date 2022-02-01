@@ -12,27 +12,27 @@ public class ConnectionConfiguration
   implements ReflectedParcelable
 {
   public static final Parcelable.Creator<ConnectionConfiguration> CREATOR = new aj();
-  private final int GT;
-  private final String Sk;
-  private final int Sl;
-  private final boolean Sm;
-  private boolean Sn;
-  private String So;
-  private boolean Sp;
-  private String Sq;
+  private final int II;
+  private final String TZ;
+  private final int Ua;
+  private final boolean Ub;
+  private boolean Uc;
+  private String Ud;
+  private boolean Ue;
+  private String Uf;
   private final String mName;
   
   ConnectionConfiguration(String paramString1, String paramString2, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString3, boolean paramBoolean3, String paramString4)
   {
     this.mName = paramString1;
-    this.Sk = paramString2;
-    this.GT = paramInt1;
-    this.Sl = paramInt2;
-    this.Sm = paramBoolean1;
-    this.Sn = paramBoolean2;
-    this.So = paramString3;
-    this.Sp = paramBoolean3;
-    this.Sq = paramString4;
+    this.TZ = paramString2;
+    this.II = paramInt1;
+    this.Ua = paramInt2;
+    this.Ub = paramBoolean1;
+    this.Uc = paramBoolean2;
+    this.Ud = paramString3;
+    this.Ue = paramBoolean3;
+    this.Uf = paramString4;
   }
   
   public boolean equals(Object paramObject)
@@ -42,13 +42,13 @@ public class ConnectionConfiguration
     {
       return false;
       paramObject = (ConnectionConfiguration)paramObject;
-    } while ((!b.b(this.mName, paramObject.mName)) || (!b.b(this.Sk, paramObject.Sk)) || (!b.b(Integer.valueOf(this.GT), Integer.valueOf(paramObject.GT))) || (!b.b(Integer.valueOf(this.Sl), Integer.valueOf(paramObject.Sl))) || (!b.b(Boolean.valueOf(this.Sm), Boolean.valueOf(paramObject.Sm))) || (!b.b(Boolean.valueOf(this.Sp), Boolean.valueOf(paramObject.Sp))));
+    } while ((!b.c(this.mName, paramObject.mName)) || (!b.c(this.TZ, paramObject.TZ)) || (!b.c(Integer.valueOf(this.II), Integer.valueOf(paramObject.II))) || (!b.c(Integer.valueOf(this.Ua), Integer.valueOf(paramObject.Ua))) || (!b.c(Boolean.valueOf(this.Ub), Boolean.valueOf(paramObject.Ub))) || (!b.c(Boolean.valueOf(this.Ue), Boolean.valueOf(paramObject.Ue))));
     return true;
   }
   
   public final String getAddress()
   {
-    return this.Sk;
+    return this.TZ;
   }
   
   public final String getName()
@@ -58,42 +58,42 @@ public class ConnectionConfiguration
   
   public final int getRole()
   {
-    return this.Sl;
+    return this.Ua;
   }
   
   public final int getType()
   {
-    return this.GT;
+    return this.II;
   }
   
   public int hashCode()
   {
-    return Arrays.hashCode(new Object[] { this.mName, this.Sk, Integer.valueOf(this.GT), Integer.valueOf(this.Sl), Boolean.valueOf(this.Sm), Boolean.valueOf(this.Sp) });
+    return Arrays.hashCode(new Object[] { this.mName, this.TZ, Integer.valueOf(this.II), Integer.valueOf(this.Ua), Boolean.valueOf(this.Ub), Boolean.valueOf(this.Ue) });
   }
   
   public final boolean isConnected()
   {
-    return this.Sn;
+    return this.Uc;
   }
   
   public final boolean isEnabled()
   {
-    return this.Sm;
+    return this.Ub;
   }
   
-  public final String kq()
+  public final String kB()
   {
-    return this.Sq;
+    return this.Ud;
   }
   
-  public final String ks()
+  public final boolean kC()
   {
-    return this.So;
+    return this.Ue;
   }
   
-  public final boolean kt()
+  public final String kz()
   {
-    return this.Sp;
+    return this.Uf;
   }
   
   public String toString()
@@ -104,31 +104,31 @@ public class ConnectionConfiguration
     {
       str = "mName=".concat(str);
       localStringBuilder.append(str);
-      str = String.valueOf(this.Sk);
+      str = String.valueOf(this.TZ);
       if (str.length() == 0) {
         break label314;
       }
       str = ", mAddress=".concat(str);
       label62:
       localStringBuilder.append(str);
-      int i = this.GT;
+      int i = this.II;
       localStringBuilder.append(19 + ", mType=" + i);
-      i = this.Sl;
+      i = this.Ua;
       localStringBuilder.append(19 + ", mRole=" + i);
-      boolean bool = this.Sm;
+      boolean bool = this.Ub;
       localStringBuilder.append(16 + ", mEnabled=" + bool);
-      bool = this.Sn;
+      bool = this.Uc;
       localStringBuilder.append(20 + ", mIsConnected=" + bool);
-      str = String.valueOf(this.So);
+      str = String.valueOf(this.Ud);
       if (str.length() == 0) {
         break label327;
       }
       str = ", mPeerNodeId=".concat(str);
       label219:
       localStringBuilder.append(str);
-      bool = this.Sp;
+      bool = this.Ue;
       localStringBuilder.append(21 + ", mBtlePriority=" + bool);
-      str = String.valueOf(this.Sq);
+      str = String.valueOf(this.Uf);
       if (str.length() == 0) {
         break label340;
       }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/avatar_iv" style="@style/ConversationItemAvatar" />
+    <com.tencent.mm.wear.app.ui.widget.WearTextView android:id="@id/nickname_tv" android:layout_marginRight="8.0dip" style="@style/ConversationItemNickName" />
+</LinearLayout>

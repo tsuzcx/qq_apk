@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class sh
   extends b
 {
-  public sh.a cIC;
+  public a dxP;
   
   public sh()
   {
@@ -15,16 +15,23 @@ public final class sh
   
   private sh(byte paramByte)
   {
-    AppMethodBeat.i(94448);
-    this.cIC = new sh.a();
-    this.ymq = false;
+    AppMethodBeat.i(121035);
+    this.dxP = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(94448);
+    AppMethodBeat.o(121035);
+  }
+  
+  public static final class a
+  {
+    public String dlu;
+    public Boolean dxQ;
+    public Boolean dxR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.sh
  * JD-Core Version:    0.7.0.1
  */

@@ -16,32 +16,33 @@ public class NetworkSignalUtil
   
   public static void InitNetworkSignalUtil(Context paramContext)
   {
-    AppMethodBeat.i(92746);
+    AppMethodBeat.i(55583);
     context = paramContext;
+    paramContext = (TelephonyManager)paramContext.getSystemService("phone");
     try
     {
-      ((TelephonyManager)context.getSystemService("phone")).listen(new PhoneStateListener()
+      paramContext.listen(new PhoneStateListener()
       {
         public final void onSignalStrengthsChanged(SignalStrength paramAnonymousSignalStrength)
         {
-          AppMethodBeat.i(92789);
+          AppMethodBeat.i(55626);
           super.onSignalStrengthsChanged(paramAnonymousSignalStrength);
           NetworkSignalUtil.access$000(paramAnonymousSignalStrength);
-          AppMethodBeat.o(92789);
+          AppMethodBeat.o(55626);
         }
       }, 256);
-      AppMethodBeat.o(92746);
+      AppMethodBeat.o(55583);
       return;
     }
     catch (ArrayIndexOutOfBoundsException paramContext)
     {
-      AppMethodBeat.o(92746);
+      AppMethodBeat.o(55583);
     }
   }
   
   private static void calSignalStrength(SignalStrength paramSignalStrength)
   {
-    AppMethodBeat.i(92748);
+    AppMethodBeat.i(55585);
     int i;
     long l;
     if (paramSignalStrength.isGsm())
@@ -55,7 +56,7 @@ public class NetworkSignalUtil
     for (;;)
     {
       strength = l;
-      AppMethodBeat.o(92748);
+      AppMethodBeat.o(55585);
       return;
       i = (paramSignalStrength.getCdmaDbm() + 113) / 2;
       break;
@@ -89,7 +90,7 @@ public class NetworkSignalUtil
   
   public static long getWifiSignalStrength()
   {
-    AppMethodBeat.i(92747);
+    AppMethodBeat.i(55584);
     WifiInfo localWifiInfo = ((WifiManager)context.getSystemService("wifi")).getConnectionInfo();
     if ((localWifiInfo != null) && (localWifiInfo.getBSSID() != null))
     {
@@ -103,10 +104,10 @@ public class NetworkSignalUtil
         j = 0;
       }
       long l = j * 10;
-      AppMethodBeat.o(92747);
+      AppMethodBeat.o(55584);
       return l;
     }
-    AppMethodBeat.o(92747);
+    AppMethodBeat.o(55584);
     return 0L;
   }
 }

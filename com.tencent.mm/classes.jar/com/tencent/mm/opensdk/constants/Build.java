@@ -10,6 +10,7 @@ public final class Build
   public static final int FAVORITE_SUPPPORTED_SDK_INT = 570425345;
   public static final int INVOICE_AUTH_INSERT_SDK_INT = 620823552;
   public static final int LAUNCH_MINIPROGRAM_SUPPORTED_SDK_INT = 620757000;
+  public static final int LAUNCH_MINIPROGRAM_WITH_TOKEN_SUPPORTED_SDK_INT = 621086464;
   public static final int MESSAGE_ACTION_SUPPPORTED_SDK_INT = 570490883;
   public static final int MINIPROGRAM_SUPPORTED_SDK_INT = 620756993;
   public static final int MIN_SDK_INT = 553713665;
@@ -22,13 +23,16 @@ public final class Build
   public static final int PAY_INSURANCE_SDK_INT = 620823552;
   public static final int PAY_SUPPORTED_SDK_INT = 570425345;
   public static final int SCAN_QRCODE_AUTH_SUPPORTED_SDK_INT = 587268097;
-  public static final int SDK_INT = 620954624;
-  public static final String SDK_VERSION_NAME = "android 5.3.4";
+  public static final int SDK_INT = 637927424;
+  public static final String SDK_VERSION_NAME = "android 6.6.0";
   public static final int SEND_25M_IMAGE_SDK_INT = 620889088;
+  public static final int SEND_AUTH_SCOPE_SNSAPI_WXAAPP_INFO_SUPPORTED_SDK_INT = 621086464;
   public static final int SEND_BUSINESS_CARD_SDK_INT = 620889344;
   public static final int SEND_TO_SPECIFIED_CONTACT_SDK_INT = 620824064;
   public static final int SUBSCRIBE_MESSAGE_SUPPORTED_SDK_INT = 620756998;
   public static final int SUBSCRIBE_MINI_PROGRAM_MSG_SUPPORTED_SDK_INT = 620823808;
+  public static final int SUPPORTED_JOINT_PAY = 621021440;
+  public static final int SUPPORTED_PRELOAD_MINI_PROGRAM = 621085952;
   public static final int SUPPORTED_SEND_WX_WEWORK_OBJECT = 620954624;
   public static final int TIMELINE_SUPPORTED_SDK_INT = 553779201;
   public static final int VIDEO_FILE_SUPPORTED_SDK_INT = 620756996;
@@ -36,25 +40,25 @@ public final class Build
   
   private Build()
   {
-    AppMethodBeat.i(128032);
+    AppMethodBeat.i(3718);
     RuntimeException localRuntimeException = new RuntimeException(getClass().getSimpleName() + " should not be instantiated");
-    AppMethodBeat.o(128032);
+    AppMethodBeat.o(3718);
     throw localRuntimeException;
   }
   
   public static int getMajorVersion()
   {
-    return 5;
+    return 6;
   }
   
   public static int getMinorVersion()
   {
-    return 3;
+    return 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.constants.Build
  * JD-Core Version:    0.7.0.1
  */

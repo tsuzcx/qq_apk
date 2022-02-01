@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@drawable/l8" android:layout_width="0.0px" android:layout_height="fill_parent" android:layout_weight="1.0"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center|left" android:id="@id/pm" android:background="@color/e1" android:layout_width="@dimen/fq" android:layout_height="@dimen/g6" />
-    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:id="@id/aoo" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:id="@id/aop" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/n_" android:scaleType="centerCrop" />
-        <TextView android:layout_gravity="center" android:id="@id/aoq" android:layout_width="wrap_content" style="@style/mw" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ah8" android:background="@drawable/jy" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/ho">
+        <TextView android:textSize="@dimen/i" android:textColor="@color/fj" android:ellipsize="end" android:gravity="center" android:id="@id/afs" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hd" android:layout_marginRight="@dimen/hd" android:minWidth="160.0dip" android:singleLine="true" />
+        <TextView android:textSize="@dimen/jt" android:textColor="@color/y0" android:ellipsize="end" android:gravity="center" android:id="@id/afq" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hd" android:layout_marginRight="@dimen/hd" android:singleLine="true" />
     </LinearLayout>
-    <ImageView android:layout_gravity="bottom|center|right" android:background="@raw/mmfooter_textmenuicon_normal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/lb" android:layout_marginBottom="@dimen/lb" />
-</FrameLayout>
+    <View android:id="@id/aft" android:background="@color/a2u" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" android:layerType="software" />
+</LinearLayout>

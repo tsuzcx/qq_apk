@@ -7,16 +7,16 @@ import android.text.style.MetricAffectingSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.ac;
-import com.tencent.mm.compatible.e.k;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.k;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public class SnsTextView
   extends TextView
 {
-  private String odL = "";
-  private char rWN = '\000';
+  private String sSy = "";
+  private char xFo = '\000';
   
   public SnsTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,58 +25,58 @@ public class SnsTextView
   
   public int getBaseline()
   {
-    AppMethodBeat.i(39397);
+    AppMethodBeat.i(99220);
     try
     {
       int i = super.getBaseline();
-      AppMethodBeat.o(39397);
+      AppMethodBeat.o(99220);
       return i;
     }
     catch (Throwable localThrowable)
     {
-      ab.printErrStackTrace("MicroMsg.SnsTextView", localThrowable, "", new Object[0]);
-      AppMethodBeat.o(39397);
+      ad.printErrStackTrace("MicroMsg.SnsTextView", localThrowable, "", new Object[0]);
+      AppMethodBeat.o(99220);
     }
     return -1;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(39396);
+    AppMethodBeat.i(99219);
     try
     {
       super.onDraw(paramCanvas);
-      AppMethodBeat.o(39396);
+      AppMethodBeat.o(99219);
       return;
     }
     catch (Throwable paramCanvas)
     {
-      ab.printErrStackTrace("MicroMsg.SnsTextView", paramCanvas, "", new Object[0]);
-      AppMethodBeat.o(39396);
+      ad.printErrStackTrace("MicroMsg.SnsTextView", paramCanvas, "", new Object[0]);
+      AppMethodBeat.o(99219);
     }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(39394);
+    AppMethodBeat.i(99217);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    AppMethodBeat.o(39394);
+    AppMethodBeat.o(99217);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(39395);
-    if ((ac.erF.epi == 1) || (ac.erF.epi == -1)) {
+    AppMethodBeat.i(99218);
+    if ((ae.fFH.fCn == 1) || (ae.fFH.fCn == -1)) {
       try
       {
         super.onMeasure(paramInt1, paramInt2);
-        this.rWN = '\000';
-        AppMethodBeat.o(39395);
+        this.xFo = '\000';
+        AppMethodBeat.o(99218);
         return;
       }
       catch (IndexOutOfBoundsException localIndexOutOfBoundsException1)
       {
-        if (this.rWN < '\003')
+        if (this.xFo < '\003')
         {
           try
           {
@@ -85,77 +85,77 @@ public class SnsTextView
             if ((arrayOfMetricAffectingSpan != null) && (arrayOfMetricAffectingSpan.length > 0)) {
               localSpannableStringBuilder.insert(localSpannableStringBuilder.getSpanStart(arrayOfMetricAffectingSpan[0]) - 1, " ");
             }
-            for (this.rWN = ((char)(this.rWN + '\001'));; this.rWN = 'd')
+            for (this.xFo = ((char)(this.xFo + '\001'));; this.xFo = 'd')
             {
               setText(localSpannableStringBuilder);
               onMeasure(paramInt1, paramInt2);
-              AppMethodBeat.o(39395);
+              AppMethodBeat.o(99218);
               return;
             }
-            if (this.rWN != '\003') {
+            if (this.xFo != '\003') {
               break label269;
             }
           }
           catch (IndexOutOfBoundsException localIndexOutOfBoundsException2)
           {
-            ab.i("MicroMsg.SnsTextView", "tryToFix error set origintext " + bo.isNullOrNil(this.odL));
-            setText(this.odL);
+            ad.i("MicroMsg.SnsTextView", "tryToFix error set origintext " + bt.isNullOrNil(this.sSy));
+            setText(this.sSy);
             onMeasure(paramInt1, paramInt2);
-            this.rWN = ((char)(this.rWN + '\001'));
-            AppMethodBeat.o(39395);
+            this.xFo = ((char)(this.xFo + '\001'));
+            AppMethodBeat.o(99218);
             return;
           }
         }
         else
         {
-          ab.i("MicroMsg.SnsTextView", "fix error set origintext " + bo.isNullOrNil(this.odL));
-          setText(this.odL);
+          ad.i("MicroMsg.SnsTextView", "fix error set origintext " + bt.isNullOrNil(this.sSy));
+          setText(this.sSy);
           onMeasure(paramInt1, paramInt2);
-          this.rWN = ((char)(this.rWN + '\001'));
-          AppMethodBeat.o(39395);
+          this.xFo = ((char)(this.xFo + '\001'));
+          AppMethodBeat.o(99218);
           return;
         }
         label269:
-        AppMethodBeat.o(39395);
+        AppMethodBeat.o(99218);
         throw localIndexOutOfBoundsException2;
       }
     }
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(39395);
+    AppMethodBeat.o(99218);
   }
   
   public boolean onPreDraw()
   {
-    AppMethodBeat.i(39398);
+    AppMethodBeat.i(99221);
     try
     {
       boolean bool = super.onPreDraw();
-      AppMethodBeat.o(39398);
+      AppMethodBeat.o(99221);
       return bool;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(39398);
+      AppMethodBeat.o(99221);
     }
     return true;
   }
   
   public boolean onTextContextMenuItem(int paramInt)
   {
-    AppMethodBeat.i(39393);
+    AppMethodBeat.i(99216);
     boolean bool = super.onTextContextMenuItem(paramInt);
-    AppMethodBeat.o(39393);
+    AppMethodBeat.o(99216);
     return bool;
   }
   
   public void setOriginText(String paramString)
   {
-    this.odL = paramString;
+    this.sSy = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTextView
  * JD-Core Version:    0.7.0.1
  */

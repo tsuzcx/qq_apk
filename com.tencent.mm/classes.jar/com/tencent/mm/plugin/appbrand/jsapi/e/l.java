@@ -1,34 +1,111 @@
 package com.tencent.mm.plugin.appbrand.jsapi.e;
 
 import android.os.Bundle;
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.d.d;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.utils.b.a.a;
+import com.tencent.mm.plugin.appbrand.utils.b.a.b;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
 
-final class l
-  extends d
+public class l<CONTEXT extends c>
+  extends a<CONTEXT>
 {
-  Bundle fPG;
-  final b hNj;
-  public l.a hNk;
-  final com.tencent.mm.sdk.d.c hNl;
-  final com.tencent.mm.sdk.d.c hNm;
-  final com.tencent.mm.sdk.d.c hNn;
+  public static final int CTRL_INDEX = 37;
+  public static final String NAME = "getLocation";
   
-  l(com.tencent.mm.plugin.appbrand.jsapi.c paramc)
+  protected void bab() {}
+  
+  public final void d(final CONTEXT paramCONTEXT, JSONObject paramJSONObject, final int paramInt)
   {
-    super("RuntimeLocationUpdateStateManager[" + paramc.getAppId() + "]", Looper.getMainLooper());
-    AppMethodBeat.i(93837);
-    this.hNl = new l.1(this);
-    this.hNm = new l.2(this);
-    this.hNn = new l.3(this);
-    this.hNj = new b(paramc);
-    a(this.hNl);
-    a(this.hNm);
-    a(this.hNn);
-    b(this.hNl);
-    AppMethodBeat.o(93837);
+    AppMethodBeat.i(143632);
+    Object localObject2 = bt.nullAsNil(paramJSONObject.optString("type", "wgs84")).trim();
+    Object localObject1 = localObject2;
+    if (bt.isNullOrNil((String)localObject2)) {
+      localObject1 = "wgs84";
+    }
+    final boolean bool = paramJSONObject.optBoolean("altitude", false);
+    ad.i("MicroMsg.JsApiGetLocation", "getLocation data:%s", new Object[] { paramJSONObject });
+    if ((!"wgs84".equals(localObject1)) && (!"gcj02".equals(localObject1)))
+    {
+      ad.e("MicroMsg.JsApiGetLocation", "doGeoLocation fail, unsupported type = %s", new Object[] { localObject1 });
+      paramJSONObject = new HashMap(1);
+      paramJSONObject.put("errCode", Integer.valueOf(-1));
+      paramCONTEXT.h(paramInt, k("fail:invalid data", paramJSONObject));
+      AppMethodBeat.o(143632);
+      return;
+    }
+    if (!q(paramCONTEXT))
+    {
+      paramJSONObject = new HashMap(1);
+      paramJSONObject.put("errCode", Integer.valueOf(-2));
+      paramCONTEXT.h(paramInt, k("fail:system permission denied", paramJSONObject));
+      AppMethodBeat.o(143632);
+      return;
+    }
+    s(paramCONTEXT);
+    paramJSONObject = g(paramCONTEXT, paramJSONObject);
+    localObject2 = (com.tencent.mm.plugin.appbrand.utils.b.a)paramCONTEXT.K(com.tencent.mm.plugin.appbrand.utils.b.a.class);
+    if (localObject2 != null) {
+      ((com.tencent.mm.plugin.appbrand.utils.b.a)localObject2).a((String)localObject1, new a.b()
+      {
+        public final void a(int paramAnonymousInt, String paramAnonymousString, a.a paramAnonymousa)
+        {
+          AppMethodBeat.i(143631);
+          ad.i("MicroMsg.JsApiGetLocation", "errCode:%d, errStr:%s, location:%s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString, paramAnonymousa });
+          l.this.bab();
+          if (paramAnonymousInt == 0)
+          {
+            paramAnonymousString = new HashMap(4);
+            paramAnonymousString.put("type", this.jSp);
+            paramAnonymousString.put("latitude", Double.valueOf(paramAnonymousa.latitude));
+            paramAnonymousString.put("longitude", Double.valueOf(paramAnonymousa.longitude));
+            paramAnonymousString.put("speed", Double.valueOf(paramAnonymousa.cWS));
+            paramAnonymousString.put("accuracy", Double.valueOf(paramAnonymousa.lNk));
+            if (bool) {
+              paramAnonymousString.put("altitude", Double.valueOf(paramAnonymousa.altitude));
+            }
+            paramAnonymousString.put("provider", paramAnonymousa.provider);
+            paramAnonymousString.put("verticalAccuracy", Integer.valueOf(0));
+            paramAnonymousString.put("horizontalAccuracy", Double.valueOf(paramAnonymousa.lNk));
+            if (!bt.isNullOrNil(paramAnonymousa.buildingId))
+            {
+              paramAnonymousString.put("buildingId", paramAnonymousa.buildingId);
+              paramAnonymousString.put("floorName", paramAnonymousa.floorName);
+            }
+            paramAnonymousString.put("indoorLocationType", Integer.valueOf(paramAnonymousa.lNl));
+            paramAnonymousString.put("direction", Float.valueOf(paramAnonymousa.lNm));
+            paramAnonymousString.put("steps", Double.valueOf(paramAnonymousa.lNn));
+            paramCONTEXT.h(paramInt, l.this.k("ok", paramAnonymousString));
+            AppMethodBeat.o(143631);
+            return;
+          }
+          paramAnonymousa = new HashMap(1);
+          paramAnonymousa.put("errCode", Integer.valueOf(paramAnonymousInt));
+          paramCONTEXT.h(paramInt, l.this.k("fail:".concat(String.valueOf(paramAnonymousString)), paramAnonymousa));
+          AppMethodBeat.o(143631);
+        }
+      }, paramJSONObject);
+    }
+    AppMethodBeat.o(143632);
   }
+  
+  protected Bundle g(CONTEXT paramCONTEXT, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(143633);
+    paramCONTEXT = new Bundle();
+    boolean bool = paramJSONObject.optBoolean("isHighAccuracy", false);
+    int i = paramJSONObject.optInt("highAccuracyExpireTime", 3000);
+    paramCONTEXT.putBoolean("isHighAccuracy", bool);
+    paramCONTEXT.putInt("highAccuracyExpireTime", i);
+    AppMethodBeat.o(143633);
+    return paramCONTEXT;
+  }
+  
+  protected void s(CONTEXT paramCONTEXT) {}
 }
 
 

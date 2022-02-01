@@ -13,29 +13,29 @@ public final class e
   e(Context paramContext)
   {
     super(paramContext, null, 0);
-    AppMethodBeat.i(123905);
+    AppMethodBeat.i(136645);
     this.mContext = paramContext;
-    this.aht.setInputMethodMode(2);
-    paramContext = paramContext.getResources().getDrawable(2130837574);
-    this.aht.setBackgroundDrawable(paramContext);
-    this.ahs = true;
-    this.aht.setFocusable(false);
-    this.ahe = false;
-    this.ahf = true;
-    this.aht.setAnimationStyle(2131034136);
-    AppMethodBeat.o(123905);
+    this.aoA.setInputMethodMode(2);
+    paramContext = paramContext.getResources().getDrawable(2131230797);
+    this.aoA.setBackgroundDrawable(paramContext);
+    this.aoz = true;
+    this.aoA.setFocusable(false);
+    this.aol = false;
+    this.aom = true;
+    this.aoA.setAnimationStyle(2130771996);
+    AppMethodBeat.o(136645);
   }
   
   public final void show()
   {
-    AppMethodBeat.i(123906);
+    AppMethodBeat.i(136646);
     super.show();
-    AppMethodBeat.o(123906);
+    AppMethodBeat.o(136646);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.e
  * JD-Core Version:    0.7.0.1
  */

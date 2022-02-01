@@ -3,304 +3,284 @@ package com.tencent.mm.blink;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.j;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.aj;
 import java.util.ArrayList;
 
 public final class a
 {
-  public static final int[] dXC;
-  public static final int[] dXD;
-  public static final int[] dXE;
-  public static final int[] dXF;
-  public static final int[] dXG;
-  public static final int[] dXH;
-  public static final int[] dXI;
-  public static final int[] dXJ;
-  public static final int[] dXK;
-  public static final int[] dXL;
-  public static final int[] dXM;
-  public static final int[] dXN;
-  private static final int[] dXO;
-  private static final int[] dXP;
-  private static final int[] dXQ;
-  private static final int[] dXR;
-  private static final int[] dXS;
-  private static final int[] dXT;
-  private static final int[] dXU;
-  private static final int[] dXV;
-  private static final ArrayList<long[]> dXW;
-  private static final ArrayList<Object[]> dXX;
-  private static long dXY;
-  private static boolean dXZ;
-  private static long dYa;
-  private static long dYb;
-  private static long dYc;
-  private static long dYd;
-  private static byte dYe;
+  private static final int[] fhA;
+  private static final int[] fhB;
+  private static final int[] fhC;
+  private static final int[] fhD;
+  private static final int[] fhE;
+  private static final int[] fhF;
+  private static final int[] fhG;
+  private static final ArrayList<long[]> fhH;
+  private static final ArrayList<Object[]> fhI;
+  private static long fhJ;
+  private static boolean fhK;
+  private static long fhL;
+  private static long fhM;
+  private static long fhN;
+  private static long fhO;
+  private static byte fhP;
+  public static final int[] fhn;
+  public static final int[] fho;
+  public static final int[] fhp;
+  public static final int[] fhq;
+  public static final int[] fhr;
+  public static final int[] fhs;
+  public static final int[] fht;
+  public static final int[] fhu;
+  public static final int[] fhv;
+  public static final int[] fhw;
+  public static final int[] fhx;
+  public static final int[] fhy;
+  private static final int[] fhz;
   
   static
   {
-    AppMethodBeat.i(57701);
-    dXC = new int[] { 0, 1, 2 };
-    dXD = new int[] { 3, 13, 23 };
-    dXE = new int[] { 4, 14, 24 };
-    dXF = new int[] { 5, 15, 25 };
-    dXG = new int[] { 6, 16, 26 };
-    dXH = new int[] { 7, 17, 27 };
-    dXI = new int[] { 8, 18, 28 };
-    dXJ = new int[] { 9, 19, 29 };
-    dXK = new int[] { 63, 69, 75 };
-    dXL = new int[] { 64, 70, 76 };
-    dXM = new int[] { 65, 71, 77 };
-    dXN = new int[] { 66, 72, 78 };
-    dXO = new int[] { 0 };
-    dXP = new int[] { 3 };
-    dXQ = new int[] { 9 };
-    dXR = new int[] { 10 };
-    dXS = new int[] { 11 };
-    dXT = new int[] { 12 };
-    dXU = new int[] { 13 };
-    dXV = new int[] { 14 };
-    dXW = new ArrayList();
-    dXX = new ArrayList();
-    dXY = 0L;
-    dXZ = false;
-    dYa = 0L;
-    dYb = 0L;
-    dYc = 0L;
-    dYd = 0L;
-    dYe = 0;
-    AppMethodBeat.o(57701);
+    AppMethodBeat.i(131814);
+    fhn = new int[] { 0, 1, 2 };
+    fho = new int[] { 3, 13, 23 };
+    fhp = new int[] { 4, 14, 24 };
+    fhq = new int[] { 5, 15, 25 };
+    fhr = new int[] { 6, 16, 26 };
+    fhs = new int[] { 7, 17, 27 };
+    fht = new int[] { 8, 18, 28 };
+    fhu = new int[] { 9, 19, 29 };
+    fhv = new int[] { 63, 69, 75 };
+    fhw = new int[] { 64, 70, 76 };
+    fhx = new int[] { 65, 71, 77 };
+    fhy = new int[] { 66, 72, 78 };
+    fhz = new int[] { 0 };
+    fhA = new int[] { 3 };
+    fhB = new int[] { 9 };
+    fhC = new int[] { 10 };
+    fhD = new int[] { 11 };
+    fhE = new int[] { 12 };
+    fhF = new int[] { 13 };
+    fhG = new int[] { 14 };
+    fhH = new ArrayList();
+    fhI = new ArrayList();
+    fhJ = 0L;
+    fhK = false;
+    fhL = 0L;
+    fhM = 0L;
+    fhN = 0L;
+    fhO = 0L;
+    fhP = 0;
+    AppMethodBeat.o(131814);
   }
   
-  public static void BK()
+  public static void Lg()
   {
-    AppMethodBeat.i(57691);
-    ic(512);
-    AppMethodBeat.o(57691);
+    AppMethodBeat.i(131804);
+    ko(512);
+    AppMethodBeat.o(131804);
   }
   
-  public static void HI()
+  public static void SQ()
   {
-    AppMethodBeat.i(57688);
-    dXY = System.currentTimeMillis();
-    AppMethodBeat.o(57688);
+    AppMethodBeat.i(131801);
+    fhJ = System.currentTimeMillis();
+    AppMethodBeat.o(131801);
   }
   
-  public static void HJ()
+  public static void SR()
   {
-    AppMethodBeat.i(57689);
-    if (ic(1024))
+    AppMethodBeat.i(131802);
+    if (ko(1024))
     {
-      u(1L, System.currentTimeMillis() - dXY);
-      u(2L, 1L);
+      w(1L, System.currentTimeMillis() - fhJ);
+      w(2L, 1L);
     }
-    AppMethodBeat.o(57689);
+    AppMethodBeat.o(131802);
   }
   
-  public static void HK()
+  public static void SS()
   {
-    AppMethodBeat.i(156836);
-    ic(512);
-    dXZ = false;
-    AppMethodBeat.o(156836);
+    AppMethodBeat.i(202259);
+    ko(512);
+    fhK = false;
+    AppMethodBeat.o(202259);
   }
   
-  public static boolean HL()
+  public static boolean ST()
   {
-    AppMethodBeat.i(57696);
-    if (!dXZ)
+    AppMethodBeat.i(131809);
+    if (!fhK)
     {
-      AppMethodBeat.o(57696);
+      AppMethodBeat.o(131809);
       return false;
     }
-    boolean bool = ic(256);
-    AppMethodBeat.o(57696);
+    boolean bool = ko(256);
+    AppMethodBeat.o(131809);
     return bool;
   }
   
-  public static void HM()
+  public static void SU()
   {
-    AppMethodBeat.i(57700);
-    long l = System.currentTimeMillis() - dYa;
-    a(dXJ, l);
+    AppMethodBeat.i(131813);
+    long l = System.currentTimeMillis() - fhL;
+    a(fhu, l);
     if (l <= 3000L)
     {
-      a(dXK, 1L);
-      a(dXC, 1L);
-      l = SystemClock.elapsedRealtime() - dYb;
-      b(dXP, l);
+      a(fhv, 1L);
+      a(fhn, 1L);
+      l = SystemClock.elapsedRealtime() - fhM;
+      b(fhA, l);
       if (l > 2000L) {
         break label181;
       }
-      b(dXQ, 1L);
+      b(fhB, 1L);
     }
     for (;;)
     {
-      b(dXO, 1L);
-      dXX.add(new Object[] { Integer.valueOf(15854), { Long.valueOf(l) } });
-      AppMethodBeat.o(57700);
+      b(fhz, 1L);
+      fhI.add(new Object[] { Integer.valueOf(15854), { Long.valueOf(l) } });
+      AppMethodBeat.o(131813);
       return;
       if ((l > 3000L) && (l <= 6000L))
       {
-        a(dXL, 1L);
+        a(fhw, 1L);
         break;
       }
       if ((l > 6000L) && (l <= 10000L))
       {
-        a(dXM, 1L);
+        a(fhx, 1L);
         break;
       }
-      a(dXN, 1L);
+      a(fhy, 1L);
       break;
       label181:
       if ((l > 2000L) && (l <= 4000L)) {
-        b(dXR, 1L);
+        b(fhC, 1L);
       } else if ((l > 4000L) && (l <= 6000L)) {
-        b(dXS, 1L);
+        b(fhD, 1L);
       } else if ((l > 6000L) && (l <= 8000L)) {
-        b(dXT, 1L);
+        b(fhE, 1L);
       } else if ((l > 8000L) && (l <= 10000L)) {
-        b(dXU, 1L);
+        b(fhF, 1L);
       } else {
-        b(dXV, 1L);
+        b(fhG, 1L);
       }
     }
   }
   
-  public static ArrayList<long[]> HN()
+  public static ArrayList<long[]> SV()
   {
-    return dXW;
+    return fhH;
   }
   
-  public static ArrayList<Object[]> HO()
+  public static ArrayList<Object[]> SW()
   {
-    return dXX;
+    return fhI;
   }
   
   private static void a(int[] paramArrayOfInt, long paramLong)
   {
-    AppMethodBeat.i(57694);
-    ab.i("MicroMsg.BlinkStartup", "%s %s", new Object[] { Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(paramLong) });
-    t(paramArrayOfInt[0], paramLong);
-    if (com.tencent.mm.f.a.qd)
+    AppMethodBeat.i(131807);
+    ad.i("MicroMsg.BlinkStartup", "%s %s", new Object[] { Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(paramLong) });
+    v(paramArrayOfInt[0], paramLong);
+    if (com.tencent.mm.f.a.wH)
     {
-      t(paramArrayOfInt[1], paramLong);
-      AppMethodBeat.o(57694);
+      v(paramArrayOfInt[1], paramLong);
+      AppMethodBeat.o(131807);
       return;
     }
-    t(paramArrayOfInt[2], paramLong);
-    AppMethodBeat.o(57694);
+    v(paramArrayOfInt[2], paramLong);
+    AppMethodBeat.o(131807);
   }
   
   private static void b(int[] paramArrayOfInt, long paramLong)
   {
-    AppMethodBeat.i(57695);
-    ab.i("MicroMsg.BlinkStartup", "%s %s", new Object[] { Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(paramLong) });
+    AppMethodBeat.i(131808);
+    ad.i("MicroMsg.BlinkStartup", "%s %s", new Object[] { Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(paramLong) });
     long l = paramArrayOfInt[0];
-    dXW.add(new long[] { 910L, l, paramLong });
-    AppMethodBeat.o(57695);
+    fhH.add(new long[] { 910L, l, paramLong });
+    AppMethodBeat.o(131808);
   }
   
-  public static void dD(String paramString)
+  public static void eJ(String paramString)
   {
-    AppMethodBeat.i(57690);
-    if ((ic(512)) && (ah.dsN().equals(paramString)))
+    AppMethodBeat.i(131803);
+    if ((ko(512)) && (aj.eFB().equals(paramString)))
     {
-      dXZ = true;
-      ab.i("MicroMsg.BlinkStartup", "report this time");
+      fhK = true;
+      ad.i("MicroMsg.BlinkStartup", "report this time");
     }
-    AppMethodBeat.o(57690);
+    AppMethodBeat.o(131803);
   }
   
-  public static void fT(long paramLong)
+  private static boolean ko(int paramInt)
   {
-    AppMethodBeat.i(57692);
-    if (System.currentTimeMillis() - paramLong > 200L)
+    AppMethodBeat.i(131810);
+    if ((fhP & paramInt) == 0)
     {
-      ic(512);
-      dXZ = false;
-    }
-    AppMethodBeat.o(57692);
-  }
-  
-  private static void fU(long paramLong)
-  {
-    AppMethodBeat.i(57698);
-    if (paramLong > 10000L) {
-      HK();
-    }
-    AppMethodBeat.o(57698);
-  }
-  
-  private static boolean ic(int paramInt)
-  {
-    AppMethodBeat.i(57697);
-    if ((dYe & paramInt) == 0)
-    {
-      dYe = (byte)(dYe | paramInt);
-      ab.i("MicroMsg.BlinkStartup", "checkAndMark bit 0x%x", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(57697);
+      fhP = (byte)(fhP | paramInt);
+      ad.i("MicroMsg.BlinkStartup", "checkAndMark bit 0x%x", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(131810);
       return true;
     }
-    AppMethodBeat.o(57697);
+    AppMethodBeat.o(131810);
     return false;
   }
   
-  public static void id(int paramInt)
+  public static void kp(int paramInt)
   {
-    AppMethodBeat.i(57699);
-    if (dYc == 0L)
+    AppMethodBeat.i(131812);
+    if (fhN == 0L)
     {
-      ab.e("MicroMsg.BlinkStartup", "sLastPhaseTimestamp is 0");
-      AppMethodBeat.o(57699);
+      ad.e("MicroMsg.BlinkStartup", "sLastPhaseTimestamp is 0");
+      AppMethodBeat.o(131812);
       return;
     }
-    long l = System.currentTimeMillis() - dYc;
+    long l = System.currentTimeMillis() - fhN;
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(57699);
+      AppMethodBeat.o(131812);
       return;
-      if (ic(1))
+      if (ko(1))
       {
-        a(dXD, l);
-        dYc = System.currentTimeMillis();
-        AppMethodBeat.o(57699);
+        a(fho, l);
+        fhN = System.currentTimeMillis();
+        AppMethodBeat.o(131812);
         return;
-        if (ic(2))
+        if (ko(2))
         {
-          a(dXE, l);
-          dYc = System.currentTimeMillis();
-          AppMethodBeat.o(57699);
+          a(fhp, l);
+          fhN = System.currentTimeMillis();
+          AppMethodBeat.o(131812);
           return;
-          if (ic(4))
+          if (ko(4))
           {
-            a(dXF, l);
-            dYc = System.currentTimeMillis();
-            AppMethodBeat.o(57699);
+            a(fhq, l);
+            fhN = System.currentTimeMillis();
+            AppMethodBeat.o(131812);
             return;
-            if (ic(8))
+            if (ko(8))
             {
-              a(dXG, l);
-              dYc = System.currentTimeMillis();
-              AppMethodBeat.o(57699);
+              a(fhr, l);
+              fhN = System.currentTimeMillis();
+              AppMethodBeat.o(131812);
               return;
-              if (ic(16))
+              if (ko(16))
               {
-                fU(l);
-                a(dXH, l);
-                dYc = System.currentTimeMillis();
-                AppMethodBeat.o(57699);
+                lc(l);
+                a(fhs, l);
+                fhN = System.currentTimeMillis();
+                AppMethodBeat.o(131812);
                 return;
-                if (ic(32))
+                if (ko(32))
                 {
-                  fU(l);
-                  a(dXI, l);
-                  dYc = System.currentTimeMillis();
+                  lc(l);
+                  a(fht, l);
+                  fhN = System.currentTimeMillis();
                 }
               }
             }
@@ -310,47 +290,67 @@ public final class a
     }
   }
   
-  public static void ks(String paramString)
+  public static void lb(long paramLong)
   {
-    AppMethodBeat.i(57685);
-    j.ks(paramString);
-    AppMethodBeat.o(57685);
+    AppMethodBeat.i(131805);
+    if (System.currentTimeMillis() - paramLong > 200L)
+    {
+      ko(512);
+      fhK = false;
+    }
+    AppMethodBeat.o(131805);
+  }
+  
+  private static void lc(long paramLong)
+  {
+    AppMethodBeat.i(131811);
+    if (paramLong > 10000L) {
+      SS();
+    }
+    AppMethodBeat.o(131811);
+  }
+  
+  public static void oj(String paramString)
+  {
+    AppMethodBeat.i(131798);
+    j.qV(paramString);
+    AppMethodBeat.o(131798);
   }
   
   public static void p(String paramString, long paramLong)
   {
-    AppMethodBeat.i(57684);
+    AppMethodBeat.i(131797);
     j.p(paramString, paramLong);
-    AppMethodBeat.o(57684);
-  }
-  
-  public static void s(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(57683);
-    j.s(paramLong1, paramLong2);
-    AppMethodBeat.o(57683);
-  }
-  
-  public static void t(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(57686);
-    dXW.add(new long[] { 709L, paramLong1, paramLong2 });
-    AppMethodBeat.o(57686);
+    AppMethodBeat.o(131797);
   }
   
   public static void u(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(57687);
-    dXW.add(new long[] { 783L, paramLong1, paramLong2 });
-    AppMethodBeat.o(57687);
+    AppMethodBeat.i(131796);
+    j.u(paramLong1, paramLong2);
+    AppMethodBeat.o(131796);
   }
   
   public static void v(long paramLong1, long paramLong2)
   {
-    dYa = paramLong1;
-    dYb = paramLong2;
-    dYc = dYa;
-    dYd = dYb;
+    AppMethodBeat.i(131799);
+    fhH.add(new long[] { 709L, paramLong1, paramLong2 });
+    AppMethodBeat.o(131799);
+  }
+  
+  public static void w(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(131800);
+    fhH.add(new long[] { 783L, paramLong1, paramLong2 });
+    AppMethodBeat.o(131800);
+  }
+  
+  public static void x(long paramLong1, long paramLong2)
+  {
+    fhL = paramLong1;
+    fhM = paramLong2;
+    fhN = fhL;
+    fhO = fhM;
   }
 }
 

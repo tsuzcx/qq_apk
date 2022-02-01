@@ -10,7 +10,7 @@ public class MapUtils
 {
   public static <K, V> K getKeyFromMap(Map<K, V> paramMap, K paramK)
   {
-    AppMethodBeat.i(90250);
+    AppMethodBeat.i(5272);
     if (paramMap.containsKey(paramK))
     {
       paramMap = paramMap.keySet().iterator();
@@ -19,18 +19,18 @@ public class MapUtils
         Object localObject = paramMap.next();
         if (localObject.equals(paramK))
         {
-          AppMethodBeat.o(90250);
+          AppMethodBeat.o(5272);
           return localObject;
         }
       }
     }
-    AppMethodBeat.o(90250);
+    AppMethodBeat.o(5272);
     return null;
   }
   
   public static void writeStringMapToJson(StringBuilder paramStringBuilder, HashMap<String, String> paramHashMap)
   {
-    AppMethodBeat.i(90249);
+    AppMethodBeat.i(5271);
     paramStringBuilder.append("{");
     Iterator localIterator = paramHashMap.keySet().iterator();
     int i = 1;
@@ -46,22 +46,22 @@ public class MapUtils
         str2 = (String)paramHashMap.get(str1);
         paramStringBuilder.append("\"").append(str1).append("\":");
         if (str2 != null) {
-          break label103;
+          break label104;
         }
         paramStringBuilder.append("null");
         break;
         i = 0;
       }
-      label103:
+      label104:
       paramStringBuilder.append("\"").append(str2).append("\"");
     }
     paramStringBuilder.append("}");
-    AppMethodBeat.o(90249);
+    AppMethodBeat.o(5271);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.common.util.MapUtils
  * JD-Core Version:    0.7.0.1
  */

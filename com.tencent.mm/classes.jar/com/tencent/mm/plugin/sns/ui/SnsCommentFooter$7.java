@@ -1,12 +1,15 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.bs.d;
+import com.tencent.mm.model.u;
+import com.tencent.mm.storage.ab;
+import com.tencent.mm.storage.ae.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.widget.MMEditText;
 
 final class SnsCommentFooter$7
   implements View.OnClickListener
@@ -15,32 +18,23 @@ final class SnsCommentFooter$7
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(38885);
-    this.rQk.setModeClick(true);
-    ab.i("MicroMsg.SnsCommentFooter", "state onClick" + SnsCommentFooter.i(this.rQk));
-    if (SnsCommentFooter.i(this.rQk) == 0)
-    {
-      this.rQk.cmc.hideVKB();
-      SnsCommentFooter.b(this.rQk).requestFocus();
-      SnsCommentFooter.a(this.rQk, 1);
-      SnsCommentFooter.j(this.rQk);
-      SnsCommentFooter.k(this.rQk).setImageResource(2130838350);
-      SnsCommentFooter.l(this.rQk);
-      AppMethodBeat.o(38885);
-      return;
+    AppMethodBeat.i(98643);
+    if (com.tencent.mm.m.g.Zd().getInt("SnsAdAtFriendRedDot", 0) == 1) {
+      com.tencent.mm.kernel.g.afB().afk().set(ae.a.FuL, Boolean.FALSE);
     }
-    SnsCommentFooter.m(this.rQk);
-    SnsCommentFooter.l(this.rQk);
-    SnsCommentFooter.b(this.rQk).requestFocus();
-    this.rQk.cmc.showVKB();
-    SnsCommentFooter.k(this.rQk).setImageResource(2130838345);
-    SnsCommentFooter.a(this.rQk, 0);
-    AppMethodBeat.o(38885);
+    SnsCommentFooter.g(this.xyx).setVisibility(8);
+    paramView = new Intent();
+    paramView.putExtra("list_attr", 16391);
+    paramView.putExtra("block_contact", u.aqG());
+    paramView.putExtra("max_limit_num", 1);
+    paramView.putExtra("titile", SnsCommentFooter.h(this.xyx).getString(2131763747));
+    d.c(SnsCommentFooter.h(this.xyx), ".ui.contact.SelectContactUI", paramView, 2333);
+    AppMethodBeat.o(98643);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentFooter.7
  * JD-Core Version:    0.7.0.1
  */

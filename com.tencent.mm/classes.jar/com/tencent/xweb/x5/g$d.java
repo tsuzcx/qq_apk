@@ -2,60 +2,60 @@ package com.tencent.xweb.x5;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
-import com.tencent.xweb.p.a;
+import com.tencent.xweb.w.a;
 
 public final class g$d
-  extends p.a
+  extends w.a
 {
-  public WebChromeClient.FileChooserParams BHZ;
+  public WebChromeClient.FileChooserParams IRY;
   
   public g$d(WebChromeClient.FileChooserParams paramFileChooserParams)
   {
-    this.BHZ = paramFileChooserParams;
+    this.IRY = paramFileChooserParams;
   }
   
   public final String[] getAcceptTypes()
   {
-    AppMethodBeat.i(84827);
-    if (this.BHZ != null)
+    AppMethodBeat.i(153851);
+    if (this.IRY != null)
     {
-      String[] arrayOfString = this.BHZ.getAcceptTypes();
-      AppMethodBeat.o(84827);
+      String[] arrayOfString = this.IRY.getAcceptTypes();
+      AppMethodBeat.o(153851);
       return arrayOfString;
     }
-    AppMethodBeat.o(84827);
+    AppMethodBeat.o(153851);
     return new String[0];
   }
   
   public final int getMode()
   {
-    AppMethodBeat.i(84826);
-    if (this.BHZ != null)
+    AppMethodBeat.i(153850);
+    if (this.IRY != null)
     {
-      int i = this.BHZ.getMode();
-      AppMethodBeat.o(84826);
+      int i = this.IRY.getMode();
+      AppMethodBeat.o(153850);
       return i;
     }
-    AppMethodBeat.o(84826);
+    AppMethodBeat.o(153850);
     return 0;
   }
   
   public final boolean isCaptureEnabled()
   {
-    AppMethodBeat.i(84828);
-    if (this.BHZ != null)
+    AppMethodBeat.i(153852);
+    if (this.IRY != null)
     {
-      boolean bool = this.BHZ.isCaptureEnabled();
-      AppMethodBeat.o(84828);
+      boolean bool = this.IRY.isCaptureEnabled();
+      AppMethodBeat.o(153852);
       return bool;
     }
-    AppMethodBeat.o(84828);
+    AppMethodBeat.o(153852);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.x5.g.d
  * JD-Core Version:    0.7.0.1
  */

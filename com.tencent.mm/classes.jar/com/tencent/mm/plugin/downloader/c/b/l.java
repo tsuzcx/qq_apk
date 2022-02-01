@@ -3,66 +3,102 @@ package com.tencent.mm.plugin.downloader.c.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class l
-  extends com.tencent.mm.bv.a
+  extends com.tencent.mm.bx.a
 {
-  public long duration;
-  public long interval;
-  public long kXg;
+  public boolean odQ;
+  public String odR;
+  public String odS;
+  public String odT;
+  public int odU;
+  public boolean odV;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(35538);
+    AppMethodBeat.i(153072);
     if (paramInt == 0)
     {
-      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.am(1, this.duration);
-      paramVarArgs.am(2, this.interval);
-      paramVarArgs.am(3, this.kXg);
-      AppMethodBeat.o(35538);
+      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bg(1, this.odQ);
+      if (this.odR != null) {
+        paramVarArgs.d(2, this.odR);
+      }
+      if (this.odS != null) {
+        paramVarArgs.d(3, this.odS);
+      }
+      if (this.odT != null) {
+        paramVarArgs.d(4, this.odT);
+      }
+      paramVarArgs.aR(5, this.odU);
+      paramVarArgs.bg(6, this.odV);
+      AppMethodBeat.o(153072);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = e.a.a.b.b.a.p(1, this.duration);
-      int i = e.a.a.b.b.a.p(2, this.interval);
-      int j = e.a.a.b.b.a.p(3, this.kXg);
-      AppMethodBeat.o(35538);
-      return paramInt + 0 + i + j;
+      int i = f.a.a.b.b.a.fY(1) + 1 + 0;
+      paramInt = i;
+      if (this.odR != null) {
+        paramInt = i + f.a.a.b.b.a.e(2, this.odR);
+      }
+      i = paramInt;
+      if (this.odS != null) {
+        i = paramInt + f.a.a.b.b.a.e(3, this.odS);
+      }
+      paramInt = i;
+      if (this.odT != null) {
+        paramInt = i + f.a.a.b.b.a.e(4, this.odT);
+      }
+      i = f.a.a.b.b.a.bA(5, this.odU);
+      int j = f.a.a.b.b.a.fY(6);
+      AppMethodBeat.o(153072);
+      return paramInt + i + (j + 1);
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bx.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.eqQ();
+          paramVarArgs.fMq();
         }
       }
-      AppMethodBeat.o(35538);
+      AppMethodBeat.o(153072);
       return 0;
     }
     if (paramInt == 3)
     {
-      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
       l locall = (l)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(35538);
+        AppMethodBeat.o(153072);
         return -1;
       case 1: 
-        locall.duration = locala.CLY.sm();
-        AppMethodBeat.o(35538);
+        locall.odQ = locala.KhF.fHu();
+        AppMethodBeat.o(153072);
         return 0;
       case 2: 
-        locall.interval = locala.CLY.sm();
-        AppMethodBeat.o(35538);
+        locall.odR = locala.KhF.readString();
+        AppMethodBeat.o(153072);
+        return 0;
+      case 3: 
+        locall.odS = locala.KhF.readString();
+        AppMethodBeat.o(153072);
+        return 0;
+      case 4: 
+        locall.odT = locala.KhF.readString();
+        AppMethodBeat.o(153072);
+        return 0;
+      case 5: 
+        locall.odU = locala.KhF.xS();
+        AppMethodBeat.o(153072);
         return 0;
       }
-      locall.kXg = locala.CLY.sm();
-      AppMethodBeat.o(35538);
+      locall.odV = locala.KhF.fHu();
+      AppMethodBeat.o(153072);
       return 0;
     }
-    AppMethodBeat.o(35538);
+    AppMethodBeat.o(153072);
     return -1;
   }
 }

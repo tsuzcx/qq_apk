@@ -6,8 +6,7 @@ import com.tencent.mm.sdk.b.b;
 public final class dr
   extends b
 {
-  public dr.a crt;
-  public dr.b cru;
+  public a dfU;
   
   public dr()
   {
@@ -16,17 +15,21 @@ public final class dr
   
   private dr(byte paramByte)
   {
-    AppMethodBeat.i(70153);
-    this.crt = new dr.a();
-    this.cru = new dr.b();
-    this.ymq = false;
+    AppMethodBeat.i(115983);
+    this.dfU = new a();
+    this.ESR = false;
     this.callback = null;
-    AppMethodBeat.o(70153);
+    AppMethodBeat.o(115983);
+  }
+  
+  public static final class a
+  {
+    public boolean dfV = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.dr
  * JD-Core Version:    0.7.0.1
  */

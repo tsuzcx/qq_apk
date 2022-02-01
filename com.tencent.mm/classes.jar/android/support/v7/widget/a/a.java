@@ -3,25 +3,28 @@ package android.support.v7.widget.a;
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
-import android.support.v4.view.c;
 import android.support.v4.view.t;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.d;
+import android.support.v7.widget.RecyclerView.f;
 import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.RecyclerView.j;
 import android.support.v7.widget.RecyclerView.l;
 import android.support.v7.widget.RecyclerView.s;
 import android.support.v7.widget.RecyclerView.v;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
+import android.view.animation.Interpolator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,40 +32,300 @@ public final class a
   extends RecyclerView.h
   implements RecyclerView.j
 {
-  RecyclerView adt;
-  private RecyclerView.d aiS = null;
-  private int amw;
-  final List<View> apT = new ArrayList();
-  private final float[] apU = new float[2];
-  RecyclerView.v apV = null;
-  float apW;
-  float apX;
-  float apY;
-  float apZ;
-  float aqa;
-  float aqb;
-  float aqc;
-  float aqd;
-  a.a aqe;
-  int aqf = 0;
-  int aqg;
-  List<c> aqh = new ArrayList();
-  final Runnable aqi = new a.1(this);
-  private List<RecyclerView.v> aqj;
-  private List<Integer> aqk;
-  View aql = null;
-  int aqm = -1;
-  c aqn;
-  private a.b aqo;
-  private final RecyclerView.l aqp = new a.2(this);
-  long aqq;
-  Rect hV;
+  Rect Rm;
+  public RecyclerView akA;
+  private RecyclerView.d aqb = null;
+  private int atV;
+  private float axA;
+  private float axB;
+  public float axC;
+  public float axD;
+  float axE;
+  float axF;
+  public a axG;
+  private int axH = 0;
+  int axI;
+  List<c> axJ = new ArrayList();
+  final Runnable axK = new Runnable()
+  {
+    public final void run()
+    {
+      int k = 0;
+      a locala;
+      long l2;
+      long l1;
+      Object localObject;
+      int j;
+      int i;
+      label149:
+      int m;
+      label206:
+      RecyclerView localRecyclerView;
+      if (a.this.axx != null)
+      {
+        locala = a.this;
+        if (locala.axx == null) {
+          break label550;
+        }
+        l2 = System.currentTimeMillis();
+        if (locala.axS != -9223372036854775808L) {
+          break label409;
+        }
+        l1 = 0L;
+        localObject = locala.akA.getLayoutManager();
+        if (locala.Rm == null) {
+          locala.Rm = new Rect();
+        }
+        ((RecyclerView.i)localObject).f(locala.axx.arI, locala.Rm);
+        if (!((RecyclerView.i)localObject).jE()) {
+          break label479;
+        }
+        j = (int)(locala.axE + locala.axC);
+        i = j - locala.Rm.left - locala.akA.getPaddingLeft();
+        if ((locala.axC >= 0.0F) || (i >= 0)) {
+          break label422;
+        }
+        if (!((RecyclerView.i)localObject).jF()) {
+          break label545;
+        }
+        m = (int)(locala.axF + locala.axD);
+        j = m - locala.Rm.top - locala.akA.getPaddingTop();
+        if ((locala.axD >= 0.0F) || (j >= 0)) {
+          break label484;
+        }
+        if (i == 0) {
+          break label566;
+        }
+        localObject = locala.axG;
+        localRecyclerView = locala.akA;
+        m = locala.axx.arI.getWidth();
+        locala.akA.getWidth();
+        i = ((a.a)localObject).a(localRecyclerView, m, i, l1);
+      }
+      label409:
+      label422:
+      label550:
+      label566:
+      for (;;)
+      {
+        if (j != 0)
+        {
+          localObject = locala.axG;
+          localRecyclerView = locala.akA;
+          m = locala.axx.arI.getHeight();
+          locala.akA.getHeight();
+          j = ((a.a)localObject).a(localRecyclerView, m, j, l1);
+        }
+        for (;;)
+        {
+          if ((i != 0) || (j != 0))
+          {
+            if (locala.axS == -9223372036854775808L) {
+              locala.axS = l2;
+            }
+            locala.akA.scrollBy(i, j);
+          }
+          for (i = 1;; i = k)
+          {
+            if (i != 0)
+            {
+              if (a.this.axx != null) {
+                a.this.J(a.this.axx);
+              }
+              a.this.akA.removeCallbacks(a.this.axK);
+              t.b(a.this.akA, this);
+            }
+            return;
+            l1 = l2 - locala.axS;
+            break;
+            if (locala.axC > 0.0F)
+            {
+              j = j + locala.axx.arI.getWidth() + locala.Rm.right - (locala.akA.getWidth() - locala.akA.getPaddingRight());
+              i = j;
+              if (j > 0) {
+                break label149;
+              }
+            }
+            label479:
+            i = 0;
+            break label149;
+            label484:
+            if (locala.axD > 0.0F)
+            {
+              m = m + locala.axx.arI.getHeight() + locala.Rm.bottom - (locala.akA.getHeight() - locala.akA.getPaddingBottom());
+              j = m;
+              if (m > 0) {
+                break label206;
+              }
+            }
+            j = 0;
+            break label206;
+            locala.axS = -9223372036854775808L;
+          }
+        }
+      }
+    }
+  };
+  private List<RecyclerView.v> axL;
+  private List<Integer> axM;
+  View axN = null;
+  int axO = -1;
+  android.support.v4.view.c axP;
+  private b axQ;
+  private final RecyclerView.l axR = new RecyclerView.l()
+  {
+    public final boolean a(RecyclerView paramAnonymousRecyclerView, MotionEvent paramAnonymousMotionEvent)
+    {
+      a.this.axP.onTouchEvent(paramAnonymousMotionEvent);
+      int i = paramAnonymousMotionEvent.getActionMasked();
+      if (i == 0)
+      {
+        a.this.mActivePointerId = paramAnonymousMotionEvent.getPointerId(0);
+        a.this.axy = paramAnonymousMotionEvent.getX();
+        a.this.axz = paramAnonymousMotionEvent.getY();
+        a.this.mK();
+        if (a.this.axx == null)
+        {
+          a locala = a.this;
+          if (locala.axJ.isEmpty()) {
+            break label315;
+          }
+          View localView = locala.l(paramAnonymousMotionEvent);
+          i = locala.axJ.size() - 1;
+          if (i < 0) {
+            break label315;
+          }
+          paramAnonymousRecyclerView = (a.c)locala.axJ.get(i);
+          if (paramAnonymousRecyclerView.aqL.arI != localView) {
+            break label308;
+          }
+          label143:
+          if (paramAnonymousRecyclerView != null)
+          {
+            locala = a.this;
+            locala.axy -= paramAnonymousRecyclerView.mX;
+            locala = a.this;
+            locala.axz -= paramAnonymousRecyclerView.mY;
+            a.this.b(paramAnonymousRecyclerView.aqL, true);
+            if (a.this.axv.remove(paramAnonymousRecyclerView.aqL.arI)) {
+              a.this.axG.d(a.this.akA, paramAnonymousRecyclerView.aqL);
+            }
+            a.this.e(paramAnonymousRecyclerView.aqL, paramAnonymousRecyclerView.axH);
+            a.this.a(paramAnonymousMotionEvent, a.this.axI, 0);
+          }
+        }
+      }
+      for (;;)
+      {
+        if (a.this.mVelocityTracker != null) {
+          a.this.mVelocityTracker.addMovement(paramAnonymousMotionEvent);
+        }
+        if (a.this.axx == null) {
+          break label393;
+        }
+        return true;
+        label308:
+        i -= 1;
+        break;
+        label315:
+        paramAnonymousRecyclerView = null;
+        break label143;
+        if ((i == 3) || (i == 1))
+        {
+          a.this.mActivePointerId = -1;
+          a.this.e(null, 0);
+        }
+        else if (a.this.mActivePointerId != -1)
+        {
+          int j = paramAnonymousMotionEvent.findPointerIndex(a.this.mActivePointerId);
+          if (j >= 0) {
+            a.this.a(i, paramAnonymousMotionEvent, j);
+          }
+        }
+      }
+      label393:
+      return false;
+    }
+    
+    public final void ai(boolean paramAnonymousBoolean)
+    {
+      if (!paramAnonymousBoolean) {
+        return;
+      }
+      a.this.e(null, 0);
+    }
+    
+    public final void b(RecyclerView paramAnonymousRecyclerView, MotionEvent paramAnonymousMotionEvent)
+    {
+      int i = 0;
+      a.this.axP.onTouchEvent(paramAnonymousMotionEvent);
+      if (a.this.mVelocityTracker != null) {
+        a.this.mVelocityTracker.addMovement(paramAnonymousMotionEvent);
+      }
+      if (a.this.mActivePointerId == -1) {}
+      int j;
+      do
+      {
+        int k;
+        do
+        {
+          return;
+          j = paramAnonymousMotionEvent.getActionMasked();
+          k = paramAnonymousMotionEvent.findPointerIndex(a.this.mActivePointerId);
+          if (k >= 0) {
+            a.this.a(j, paramAnonymousMotionEvent, k);
+          }
+          paramAnonymousRecyclerView = a.this.axx;
+        } while (paramAnonymousRecyclerView == null);
+        switch (j)
+        {
+        case 4: 
+        case 5: 
+        default: 
+          return;
+        case 1: 
+        case 2: 
+        case 3: 
+          for (;;)
+          {
+            a.this.e(null, 0);
+            a.this.mActivePointerId = -1;
+            return;
+            if (k < 0) {
+              break;
+            }
+            a.this.a(paramAnonymousMotionEvent, a.this.axI, k);
+            a.this.J(paramAnonymousRecyclerView);
+            a.this.akA.removeCallbacks(a.this.axK);
+            a.this.axK.run();
+            a.this.akA.invalidate();
+            return;
+            if (a.this.mVelocityTracker != null) {
+              a.this.mVelocityTracker.clear();
+            }
+          }
+        }
+        j = paramAnonymousMotionEvent.getActionIndex();
+      } while (paramAnonymousMotionEvent.getPointerId(j) != a.this.mActivePointerId);
+      if (j == 0) {
+        i = 1;
+      }
+      a.this.mActivePointerId = paramAnonymousMotionEvent.getPointerId(i);
+      a.this.a(paramAnonymousMotionEvent, a.this.axI, j);
+    }
+  };
+  long axS;
+  final List<View> axv = new ArrayList();
+  private final float[] axw = new float[2];
+  RecyclerView.v axx = null;
+  float axy;
+  float axz;
   int mActivePointerId = -1;
   VelocityTracker mVelocityTracker;
   
-  public a(a.a parama)
+  public a(a parama)
   {
-    this.aqe = parama;
+    this.axG = parama;
   }
   
   private static boolean a(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
@@ -70,21 +333,103 @@ public final class a
     return (paramFloat1 >= paramFloat3) && (paramFloat1 <= paramView.getWidth() + paramFloat3) && (paramFloat2 >= paramFloat4) && (paramFloat2 <= paramView.getHeight() + paramFloat4);
   }
   
-  private void f(float[] paramArrayOfFloat)
+  private int dg(int paramInt)
   {
-    if ((this.aqg & 0xC) != 0) {
-      paramArrayOfFloat[0] = (this.aqc + this.aqa - this.apV.aku.getLeft());
-    }
-    while ((this.aqg & 0x3) != 0)
+    int j = 8;
+    if ((paramInt & 0xC) != 0)
     {
-      paramArrayOfFloat[1] = (this.aqd + this.aqb - this.apV.aku.getTop());
-      return;
-      paramArrayOfFloat[0] = this.apV.aku.getTranslationX();
+      int i;
+      float f2;
+      if (this.axC > 0.0F)
+      {
+        i = 8;
+        if ((this.mVelocityTracker == null) || (this.mActivePointerId < 0)) {
+          break label140;
+        }
+        this.mVelocityTracker.computeCurrentVelocity(1000, a.N(this.axB));
+        f2 = this.mVelocityTracker.getXVelocity(this.mActivePointerId);
+        f1 = this.mVelocityTracker.getYVelocity(this.mActivePointerId);
+        if (f2 <= 0.0F) {
+          break label134;
+        }
+      }
+      for (;;)
+      {
+        f2 = Math.abs(f2);
+        if (((j & paramInt) == 0) || (i != j) || (f2 < a.M(this.axA)) || (f2 <= Math.abs(f1))) {
+          break label140;
+        }
+        return j;
+        i = 4;
+        break;
+        label134:
+        j = 4;
+      }
+      label140:
+      float f1 = this.akA.getWidth();
+      if (((paramInt & i) != 0) && (Math.abs(this.axC) > f1 * 0.5F)) {
+        return i;
+      }
     }
-    paramArrayOfFloat[1] = this.apV.aku.getTranslationY();
+    return 0;
   }
   
-  private void ld()
+  private int dh(int paramInt)
+  {
+    int j = 2;
+    if ((paramInt & 0x3) != 0)
+    {
+      int i;
+      float f2;
+      if (this.axD > 0.0F)
+      {
+        i = 2;
+        if ((this.mVelocityTracker == null) || (this.mActivePointerId < 0)) {
+          break label137;
+        }
+        this.mVelocityTracker.computeCurrentVelocity(1000, a.N(this.axB));
+        f1 = this.mVelocityTracker.getXVelocity(this.mActivePointerId);
+        f2 = this.mVelocityTracker.getYVelocity(this.mActivePointerId);
+        if (f2 <= 0.0F) {
+          break label131;
+        }
+      }
+      for (;;)
+      {
+        f2 = Math.abs(f2);
+        if (((j & paramInt) == 0) || (j != i) || (f2 < a.M(this.axA)) || (f2 <= Math.abs(f1))) {
+          break label137;
+        }
+        return j;
+        i = 1;
+        break;
+        label131:
+        j = 1;
+      }
+      label137:
+      float f1 = this.akA.getHeight();
+      if (((paramInt & i) != 0) && (Math.abs(this.axD) > f1 * 0.5F)) {
+        return i;
+      }
+    }
+    return 0;
+  }
+  
+  private void g(float[] paramArrayOfFloat)
+  {
+    if ((this.axI & 0xC) != 0) {
+      paramArrayOfFloat[0] = (this.axE + this.axC - this.axx.arI.getLeft());
+    }
+    while ((this.axI & 0x3) != 0)
+    {
+      paramArrayOfFloat[1] = (this.axF + this.axD - this.axx.arI.getTop());
+      return;
+      paramArrayOfFloat[0] = this.axx.arI.getTranslationX();
+    }
+    paramArrayOfFloat[1] = this.axx.arI.getTranslationY();
+  }
+  
+  private void mL()
   {
     if (this.mVelocityTracker != null)
     {
@@ -93,177 +438,235 @@ public final class a
     }
   }
   
-  final void M(RecyclerView.v paramv)
+  final void J(RecyclerView.v paramv)
   {
-    if (this.adt.isLayoutRequested()) {}
-    int m;
-    int n;
-    label483:
+    if (this.akA.isLayoutRequested()) {}
+    label10:
+    Object localObject;
+    int i;
+    label484:
     do
     {
-      float f;
+      int m;
+      int n;
+      do
+      {
+        float f;
+        do
+        {
+          break label10;
+          do
+          {
+            return;
+          } while (this.axH != 2);
+          f = this.axG.K(paramv);
+          m = (int)(this.axE + this.axC);
+          n = (int)(this.axF + this.axD);
+        } while ((Math.abs(n - paramv.arI.getTop()) < paramv.arI.getHeight() * f) && (Math.abs(m - paramv.arI.getLeft()) < f * paramv.arI.getWidth()));
+        int i1;
+        int i2;
+        int i3;
+        int i4;
+        int i5;
+        int i6;
+        int i7;
+        if (this.axL == null)
+        {
+          this.axL = new ArrayList();
+          this.axM = new ArrayList();
+          i1 = Math.round(this.axE + this.axC) + 0;
+          i2 = Math.round(this.axF + this.axD) + 0;
+          i3 = paramv.arI.getWidth() + i1 + 0;
+          i4 = paramv.arI.getHeight() + i2 + 0;
+          i5 = (i1 + i3) / 2;
+          i6 = (i2 + i4) / 2;
+          localObject = this.akA.getLayoutManager();
+          i7 = ((RecyclerView.i)localObject).getChildCount();
+          i = 0;
+        }
+        for (;;)
+        {
+          if (i >= i7) {
+            break label484;
+          }
+          View localView = ((RecyclerView.i)localObject).getChildAt(i);
+          if ((localView != paramv.arI) && (localView.getBottom() >= i2) && (localView.getTop() <= i4) && (localView.getRight() >= i1) && (localView.getLeft() <= i3))
+          {
+            RecyclerView.v localv = this.akA.bh(localView);
+            int j = Math.abs(i5 - (localView.getLeft() + localView.getRight()) / 2);
+            int k = localView.getTop();
+            k = Math.abs(i6 - (localView.getBottom() + k) / 2);
+            int i8 = j * j + k * k;
+            k = 0;
+            int i9 = this.axL.size();
+            j = 0;
+            for (;;)
+            {
+              if ((j < i9) && (i8 > ((Integer)this.axM.get(j)).intValue()))
+              {
+                k += 1;
+                j += 1;
+                continue;
+                this.axL.clear();
+                this.axM.clear();
+                break;
+              }
+            }
+            this.axL.add(k, localv);
+            this.axM.add(k, Integer.valueOf(i8));
+          }
+          i += 1;
+        }
+        localObject = this.axL;
+      } while (((List)localObject).size() == 0);
+      localObject = a.a(paramv, (List)localObject, m, n);
+      if (localObject == null)
+      {
+        this.axL.clear();
+        this.axM.clear();
+        return;
+      }
+      i = ((RecyclerView.v)localObject).ln();
+      paramv.ln();
+    } while (!this.axG.a(this.akA, paramv, (RecyclerView.v)localObject));
+    a.a(this.akA, paramv, (RecyclerView.v)localObject, i);
+  }
+  
+  final void a(int paramInt1, MotionEvent paramMotionEvent, int paramInt2)
+  {
+    Object localObject2 = null;
+    if ((this.axx != null) || (paramInt1 != 2) || (this.axH == 2) || (!this.axG.mN())) {}
+    label33:
+    Object localObject3;
+    Object localObject1;
+    label66:
+    float f1;
+    float f2;
+    float f3;
+    float f4;
+    do
+    {
       do
       {
         do
         {
-          return;
-        } while (this.aqf != 2);
-        f = this.aqe.lf();
-        m = (int)(this.aqc + this.aqa);
-        n = (int)(this.aqd + this.aqb);
-      } while ((Math.abs(n - paramv.aku.getTop()) < paramv.aku.getHeight() * f) && (Math.abs(m - paramv.aku.getLeft()) < f * paramv.aku.getWidth()));
-      int i1;
-      int i2;
-      int i3;
-      int i4;
-      int i5;
-      int i6;
-      int i7;
-      int i;
-      if (this.aqj == null)
-      {
-        this.aqj = new ArrayList();
-        this.aqk = new ArrayList();
-        i1 = Math.round(this.aqc + this.aqa) + 0;
-        i2 = Math.round(this.aqd + this.aqb) + 0;
-        i3 = paramv.aku.getWidth() + i1 + 0;
-        i4 = paramv.aku.getHeight() + i2 + 0;
-        i5 = (i1 + i3) / 2;
-        i6 = (i2 + i4) / 2;
-        localObject = this.adt.getLayoutManager();
-        i7 = ((RecyclerView.i)localObject).getChildCount();
-        i = 0;
-      }
-      for (;;)
-      {
-        if (i >= i7) {
-          break label483;
-        }
-        View localView = ((RecyclerView.i)localObject).getChildAt(i);
-        if ((localView != paramv.aku) && (localView.getBottom() >= i2) && (localView.getTop() <= i4) && (localView.getRight() >= i1) && (localView.getLeft() <= i3))
-        {
-          RecyclerView.v localv = this.adt.bb(localView);
-          int j = Math.abs(i5 - (localView.getLeft() + localView.getRight()) / 2);
-          int k = localView.getTop();
-          k = Math.abs(i6 - (localView.getBottom() + k) / 2);
-          int i8 = j * j + k * k;
-          k = 0;
-          int i9 = this.aqj.size();
-          j = 0;
-          for (;;)
+          break label33;
+          break label33;
+          do
           {
-            if ((j < i9) && (i8 > ((Integer)this.aqk.get(j)).intValue()))
-            {
-              k += 1;
-              j += 1;
-              continue;
-              this.aqj.clear();
-              this.aqk.clear();
-              break;
-            }
+            return;
+          } while (this.akA.getScrollState() == 1);
+          localObject3 = this.akA.getLayoutManager();
+          if (this.mActivePointerId != -1) {
+            break;
           }
-          this.aqj.add(k, localv);
-          this.aqk.add(k, Integer.valueOf(i8));
-        }
-        i += 1;
+          localObject1 = localObject2;
+          if (localObject1 == null) {
+            break label375;
+          }
+          paramInt1 = (this.axG.b(this.akA, (RecyclerView.v)localObject1) & 0xFF00) >> 8;
+        } while (paramInt1 == 0);
+        f1 = paramMotionEvent.getX(paramInt2);
+        f2 = paramMotionEvent.getY(paramInt2);
+        f1 -= this.axy;
+        f2 -= this.axz;
+        f3 = Math.abs(f1);
+        f4 = Math.abs(f2);
+      } while ((f3 < this.atV) && (f4 < this.atV));
+      if (f3 <= f4) {
+        break label377;
       }
-      localObject = this.aqj;
-    } while (((List)localObject).size() == 0);
-    Object localObject = a.a.a(paramv, (List)localObject, m, n);
-    if (localObject == null)
+    } while (((f1 < 0.0F) && ((paramInt1 & 0x4) == 0)) || ((f1 > 0.0F) && ((paramInt1 & 0x8) == 0)));
+    label375:
+    label377:
+    do
     {
-      this.aqj.clear();
-      this.aqk.clear();
+      this.axD = 0.0F;
+      this.axC = 0.0F;
+      this.mActivePointerId = paramMotionEvent.getPointerId(0);
+      e((RecyclerView.v)localObject1, 1);
       return;
-    }
-    ((RecyclerView.v)localObject).jN();
-    paramv.jN();
-    this.aqe.a(paramv, (RecyclerView.v)localObject);
-  }
-  
-  public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView)
-  {
-    int k = 0;
-    if (this.apV != null) {
-      f(this.apU);
-    }
-    RecyclerView.v localv = this.apV;
-    List localList = this.aqh;
-    int j = localList.size();
-    int i = 0;
-    while (i < j)
-    {
-      localList.get(i);
-      paramCanvas.restoreToCount(paramCanvas.save());
-      i += 1;
-    }
-    if (localv != null) {
-      paramCanvas.restoreToCount(paramCanvas.save());
-    }
-    j -= 1;
-    i = k;
-    if (j >= 0)
-    {
-      paramCanvas = (c)localList.get(j);
-      if ((paramCanvas.tn) && (!paramCanvas.aqG)) {
-        localList.remove(j);
-      }
-    }
-    for (;;)
-    {
-      j -= 1;
-      break;
-      if (!paramCanvas.tn)
+      paramInt1 = paramMotionEvent.findPointerIndex(this.mActivePointerId);
+      f3 = paramMotionEvent.getX(paramInt1);
+      f4 = this.axy;
+      f1 = paramMotionEvent.getY(paramInt1);
+      f2 = this.axz;
+      f3 = Math.abs(f3 - f4);
+      f1 = Math.abs(f1 - f2);
+      if (f3 < this.atV)
       {
-        i = 1;
-        continue;
-        if (i != 0) {
-          paramRecyclerView.invalidate();
+        localObject1 = localObject2;
+        if (f1 < this.atV) {
+          break label66;
         }
-        return;
       }
-    }
+      if (f3 > f1)
+      {
+        localObject1 = localObject2;
+        if (((RecyclerView.i)localObject3).jE()) {
+          break label66;
+        }
+      }
+      if (f1 > f3)
+      {
+        localObject1 = localObject2;
+        if (((RecyclerView.i)localObject3).jF()) {
+          break label66;
+        }
+      }
+      localObject3 = l(paramMotionEvent);
+      localObject1 = localObject2;
+      if (localObject3 == null) {
+        break label66;
+      }
+      localObject1 = this.akA.bh((View)localObject3);
+      break label66;
+      break label33;
+      if ((f2 < 0.0F) && ((paramInt1 & 0x1) == 0)) {
+        break;
+      }
+    } while ((f2 <= 0.0F) || ((paramInt1 & 0x2) != 0));
   }
   
   public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    this.aqm = -1;
+    this.axO = -1;
     float f2;
     float f1;
-    if (this.apV != null)
+    if (this.axx != null)
     {
-      f(this.apU);
-      f2 = this.apU[0];
-      f1 = this.apU[1];
+      g(this.axw);
+      f2 = this.axw[0];
+      f1 = this.axw[1];
     }
     for (;;)
     {
-      params = this.aqe;
-      RecyclerView.v localv = this.apV;
-      List localList = this.aqh;
-      int j = this.aqf;
+      params = this.axG;
+      RecyclerView.v localv = this.axx;
+      List localList = this.axJ;
+      int j = this.axH;
       int k = localList.size();
       int i = 0;
       if (i < k)
       {
         c localc = (c)localList.get(i);
-        if (localc.aqA == localc.aqC)
+        if (localc.ayb == localc.ayd)
         {
-          localc.mX = localc.ajy.aku.getTranslationX();
+          localc.mX = localc.aqL.arI.getTranslationX();
           label122:
-          if (localc.aqB != localc.aqD) {
+          if (localc.ayc != localc.aye) {
             break label231;
           }
         }
         label231:
-        for (localc.mY = localc.ajy.aku.getTranslationY();; localc.mY = (localc.aqB + localc.aqI * (localc.aqD - localc.aqB)))
+        for (localc.mY = localc.aqL.arI.getTranslationY();; localc.mY = (localc.ayc + localc.ayj * (localc.aye - localc.ayc)))
         {
           int m = paramCanvas.save();
-          params.a(paramCanvas, paramRecyclerView, localc.ajy, localc.mX, localc.mY, localc.aqf, false);
+          params.a(paramCanvas, paramRecyclerView, localc.aqL, localc.mX, localc.mY, localc.axH, false);
           paramCanvas.restoreToCount(m);
           i += 1;
           break;
-          localc.mX = (localc.aqA + localc.aqI * (localc.aqC - localc.aqA));
+          localc.mX = (localc.ayb + localc.ayj * (localc.ayd - localc.ayb));
           break label122;
         }
       }
@@ -288,331 +691,795 @@ public final class a
   {
     float f1 = paramMotionEvent.getX(paramInt2);
     float f2 = paramMotionEvent.getY(paramInt2);
-    this.aqa = (f1 - this.apW);
-    this.aqb = (f2 - this.apX);
+    this.axC = (f1 - this.axy);
+    this.axD = (f2 - this.axz);
     if ((paramInt1 & 0x4) == 0) {
-      this.aqa = Math.max(0.0F, this.aqa);
+      this.axC = Math.max(0.0F, this.axC);
     }
     if ((paramInt1 & 0x8) == 0) {
-      this.aqa = Math.min(0.0F, this.aqa);
+      this.axC = Math.min(0.0F, this.axC);
     }
     if ((paramInt1 & 0x1) == 0) {
-      this.aqb = Math.max(0.0F, this.aqb);
+      this.axD = Math.max(0.0F, this.axD);
     }
     if ((paramInt1 & 0x2) == 0) {
-      this.aqb = Math.min(0.0F, this.aqb);
+      this.axD = Math.min(0.0F, this.axD);
     }
   }
   
-  final boolean a(int paramInt1, MotionEvent paramMotionEvent, int paramInt2)
+  public final void b(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
-    Object localObject2 = null;
-    if ((this.apV != null) || (paramInt1 != 2) || (this.aqf == 2) || (!this.aqe.le())) {}
+    int k = 0;
+    if (this.axx != null) {
+      g(this.axw);
+    }
+    RecyclerView.v localv = this.axx;
+    params = this.axJ;
+    int j = params.size();
+    int i = 0;
+    while (i < j)
+    {
+      params.get(i);
+      int m = paramCanvas.save();
+      a.mO();
+      paramCanvas.restoreToCount(m);
+      i += 1;
+    }
+    if (localv != null)
+    {
+      i = paramCanvas.save();
+      a.mO();
+      paramCanvas.restoreToCount(i);
+    }
+    j -= 1;
+    i = k;
+    if (j >= 0)
+    {
+      paramCanvas = (c)params.get(j);
+      if ((paramCanvas.zF) && (!paramCanvas.ayh)) {
+        params.remove(j);
+      }
+    }
     for (;;)
     {
-      return false;
-      if (this.adt.getScrollState() != 1)
+      j -= 1;
+      break;
+      if (!paramCanvas.zF)
       {
-        RecyclerView.i locali = this.adt.getLayoutManager();
-        Object localObject1;
-        if (this.mActivePointerId == -1) {
-          localObject1 = localObject2;
+        i = 1;
+        continue;
+        if (i != 0) {
+          paramRecyclerView.invalidate();
         }
-        while (localObject1 != null)
-        {
-          a.a.j(this.adt);
-          return false;
-          paramInt1 = paramMotionEvent.findPointerIndex(this.mActivePointerId);
-          float f3 = paramMotionEvent.getX(paramInt1);
-          float f4 = this.apW;
-          float f1 = paramMotionEvent.getY(paramInt1);
-          float f2 = this.apX;
-          f3 = Math.abs(f3 - f4);
-          f1 = Math.abs(f1 - f2);
-          if (f3 < this.amw)
-          {
-            localObject1 = localObject2;
-            if (f1 < this.amw) {}
-          }
-          else if (f3 > f1)
-          {
-            localObject1 = localObject2;
-            if (locali.ij()) {}
-          }
-          else if (f1 > f3)
-          {
-            localObject1 = localObject2;
-            if (locali.ik()) {}
-          }
-          else
-          {
-            paramMotionEvent = k(paramMotionEvent);
-            localObject1 = localObject2;
-            if (paramMotionEvent != null) {
-              localObject1 = this.adt.bb(paramMotionEvent);
-            }
-          }
-        }
+        return;
       }
     }
   }
   
-  final int b(RecyclerView.v paramv, boolean paramBoolean)
+  final void b(RecyclerView.v paramv, boolean paramBoolean)
   {
-    int i = this.aqh.size() - 1;
-    while (i >= 0)
+    int i = this.axJ.size() - 1;
+    for (;;)
     {
-      c localc = (c)this.aqh.get(i);
-      if (localc.ajy == paramv)
+      if (i >= 0)
       {
-        localc.aqH |= paramBoolean;
-        if (!localc.tn) {
-          localc.aqE.cancel();
+        c localc = (c)this.axJ.get(i);
+        if (localc.aqL == paramv)
+        {
+          localc.ayi |= paramBoolean;
+          if (!localc.zF) {
+            localc.ayf.cancel();
+          }
+          this.axJ.remove(i);
         }
-        this.aqh.remove(i);
-        return localc.aqF;
+      }
+      else
+      {
+        return;
       }
       i -= 1;
     }
-    return 0;
   }
   
-  public final void bJ(View paramView)
+  public final void bQ(View paramView) {}
+  
+  public final void bR(View paramView)
   {
-    ca(paramView);
-    paramView = this.adt.bb(paramView);
+    ch(paramView);
+    paramView = this.akA.bh(paramView);
     if (paramView == null) {}
     do
     {
       return;
-      if ((this.apV != null) && (paramView == this.apV))
+      if ((this.axx != null) && (paramView == this.axx))
       {
         e(null, 0);
         return;
       }
       b(paramView, false);
-    } while (!this.apT.remove(paramView.aku));
-    this.aqe.a(this.adt, paramView);
+    } while (!this.axv.remove(paramView.arI));
+    this.axG.d(this.akA, paramView);
   }
   
-  final void ca(View paramView)
+  final void ch(View paramView)
   {
-    if (paramView == this.aql)
+    if (paramView == this.axN)
     {
-      this.aql = null;
-      if (this.aiS != null) {
-        this.adt.setChildDrawingOrderCallback(null);
+      this.axN = null;
+      if (this.aqb != null) {
+        this.akA.setChildDrawingOrderCallback(null);
       }
     }
   }
   
-  final void e(RecyclerView.v paramv, int paramInt)
+  public final void e(RecyclerView.v paramv, int paramInt)
   {
-    if ((paramv == this.apV) && (paramInt == this.aqf)) {
+    if ((paramv == this.axx) && (paramInt == this.axH)) {
       return;
     }
-    this.aqq = -9223372036854775808L;
-    int k = this.aqf;
+    this.axS = -9223372036854775808L;
+    int k = this.axH;
     b(paramv, true);
-    this.aqf = paramInt;
+    this.axH = paramInt;
     if (paramInt == 2)
     {
-      this.aql = paramv.aku;
+      if (paramv == null) {
+        throw new IllegalArgumentException("Must pass a ViewHolder when dragging");
+      }
+      this.axN = paramv.arI;
       if (Build.VERSION.SDK_INT < 21)
       {
-        if (this.aiS == null) {
-          this.aiS = new a.5(this);
+        if (this.aqb == null) {
+          this.aqb = new RecyclerView.d()
+          {
+            public final int av(int paramAnonymousInt1, int paramAnonymousInt2)
+            {
+              if (a.this.axN == null) {}
+              int i;
+              do
+              {
+                return paramAnonymousInt2;
+                int j = a.this.axO;
+                i = j;
+                if (j == -1)
+                {
+                  i = a.this.akA.indexOfChild(a.this.axN);
+                  a.this.axO = i;
+                }
+                if (paramAnonymousInt2 == paramAnonymousInt1 - 1) {
+                  return i;
+                }
+              } while (paramAnonymousInt2 < i);
+              return paramAnonymousInt2 + 1;
+            }
+          };
         }
-        this.adt.setChildDrawingOrderCallback(this.aiS);
+        this.akA.setChildDrawingOrderCallback(this.aqb);
       }
     }
-    int i = 0;
+    final int i = 0;
     int j = 0;
     Object localObject;
-    if (this.apV != null)
+    int m;
+    int n;
+    float f1;
+    float f2;
+    if (this.axx != null)
     {
-      localObject = this.apV;
-      if (((RecyclerView.v)localObject).aku.getParent() == null) {
-        break label411;
+      localObject = this.axx;
+      if (((RecyclerView.v)localObject).arI.getParent() == null) {
+        break label740;
       }
-      if ((k != 2) && (this.aqf != 2)) {
-        a.a.cL(t.T(this.adt));
+      if ((k == 2) || (this.axH == 2)) {
+        break label612;
       }
-      ld();
-      if (k == 2)
+      i = this.axG.a(this.akA, (RecyclerView.v)localObject);
+      m = (a.aQ(i, t.Y(this.akA)) & 0xFF00) >> 8;
+      if (m == 0) {
+        break label612;
+      }
+      n = (i & 0xFF00) >> 8;
+      if (Math.abs(this.axC) <= Math.abs(this.axD)) {
+        break label618;
+      }
+      j = dg(m);
+      if (j > 0)
       {
-        i = 8;
-        f(this.apU);
-        localObject = new a.3(this, (RecyclerView.v)localObject, i, k, this.apU[0], this.apU[1], 0.0F, 0.0F, 0, (RecyclerView.v)localObject);
-        long l = a.a.d(this.adt, i);
-        ((c)localObject).aqE.setDuration(l);
-        this.aqh.add(localObject);
-        ((c)localObject).ajy.ap(false);
-        ((c)localObject).aqE.start();
-        i = 1;
-        label252:
-        this.apV = null;
+        i = j;
+        if ((n & j) == 0) {
+          i = a.aP(j, t.Y(this.akA));
+        }
+        mL();
       }
     }
     else
     {
-      if (paramv != null)
+      switch (i)
       {
-        this.aqg = ((a.a.j(this.adt) & (1 << paramInt * 8 + 8) - 1) >> this.aqf * 8);
-        this.aqc = paramv.aku.getLeft();
-        this.aqd = paramv.aku.getTop();
-        this.apV = paramv;
-        if (paramInt == 2) {
-          this.apV.aku.performHapticFeedback(0);
+      default: 
+        f1 = 0.0F;
+        f2 = 0.0F;
+        label329:
+        if (k == 2)
+        {
+          j = 8;
+          label339:
+          g(this.axw);
+          localObject = new c((RecyclerView.v)localObject, j, k, this.axw[0], this.axw[1], f1, f2)
+          {
+            public final void onAnimationEnd(Animator paramAnonymousAnimator)
+            {
+              super.onAnimationEnd(paramAnonymousAnimator);
+              if (this.ayi) {}
+              for (;;)
+              {
+                return;
+                if (i <= 0) {
+                  a.this.axG.d(a.this.akA, this.axV);
+                }
+                while (a.this.axN == this.axV.arI)
+                {
+                  a.this.ch(this.axV.arI);
+                  return;
+                  a.this.axv.add(this.axV.arI);
+                  this.ayh = true;
+                  if (i > 0)
+                  {
+                    paramAnonymousAnimator = a.this;
+                    int i = i;
+                    paramAnonymousAnimator.akA.post(new a.4(paramAnonymousAnimator, this, i));
+                  }
+                }
+              }
+            }
+          };
+          long l = a.c(this.akA, j);
+          ((c)localObject).ayf.setDuration(l);
+          this.axJ.add(localObject);
+          ((c)localObject).aqL.ax(false);
+          ((c)localObject).ayf.start();
+          i = 1;
+          this.axx = null;
+          if (paramv != null)
+          {
+            this.axI = ((this.axG.b(this.akA, paramv) & (1 << paramInt * 8 + 8) - 1) >> this.axH * 8);
+            this.axE = paramv.arI.getLeft();
+            this.axF = paramv.arI.getTop();
+            this.axx = paramv;
+            if (paramInt == 2) {
+              this.axx.arI.performHapticFeedback(0);
+            }
+          }
+          paramv = this.akA.getParent();
+          if (paramv != null) {
+            if (this.axx == null) {
+              break label769;
+            }
+          }
         }
-      }
-      paramv = this.adt.getParent();
-      if (paramv != null) {
-        if (this.apV == null) {
-          break label439;
-        }
+        label436:
+        break;
       }
     }
-    label411:
-    label439:
+    label769:
     for (boolean bool = true;; bool = false)
     {
       paramv.requestDisallowInterceptTouchEvent(bool);
       if (i == 0) {
-        this.adt.getLayoutManager().ajp = true;
+        this.akA.getLayoutManager().la();
       }
-      this.aqe.f(this.apV, this.aqf);
-      this.adt.invalidate();
+      this.axG.f(this.axx, this.axH);
+      this.akA.invalidate();
       return;
-      i = 4;
-      break;
-      ca(((RecyclerView.v)localObject).aku);
-      this.aqe.a(this.adt, (RecyclerView.v)localObject);
+      j = dh(m);
       i = j;
-      break label252;
+      if (j > 0) {
+        break;
+      }
+      label612:
+      label618:
+      do
+      {
+        i = 0;
+        break;
+        j = dh(m);
+        i = j;
+        if (j > 0) {
+          break;
+        }
+        j = dg(m);
+      } while (j <= 0);
+      i = j;
+      if ((n & j) != 0) {
+        break;
+      }
+      i = a.aP(j, t.Y(this.akA));
+      break;
+      f2 = 0.0F;
+      f1 = Math.signum(this.axC) * this.akA.getWidth();
+      break label329;
+      f1 = 0.0F;
+      f2 = Math.signum(this.axD) * this.akA.getHeight();
+      break label329;
+      if (i > 0)
+      {
+        j = 2;
+        break label339;
+      }
+      j = 4;
+      break label339;
+      label740:
+      ch(((RecyclerView.v)localObject).arI);
+      this.axG.d(this.akA, (RecyclerView.v)localObject);
+      i = j;
+      break label436;
     }
   }
   
-  public final void i(RecyclerView paramRecyclerView)
+  public final void j(RecyclerView paramRecyclerView)
   {
-    if (this.adt == paramRecyclerView) {}
+    if (this.akA == paramRecyclerView) {}
     do
     {
       return;
-      if (this.adt != null)
+      if (this.akA != null)
       {
-        this.adt.c(this);
-        this.adt.b(this.aqp);
-        Object localObject = this.adt;
-        if (((RecyclerView)localObject).ail != null) {
-          ((RecyclerView)localObject).ail.remove(this);
+        this.akA.c(this);
+        this.akA.b(this.axR);
+        Object localObject = this.akA;
+        if (((RecyclerView)localObject).apu != null) {
+          ((RecyclerView)localObject).apu.remove(this);
         }
-        int i = this.aqh.size() - 1;
+        int i = this.axJ.size() - 1;
         while (i >= 0)
         {
-          localObject = (c)this.aqh.get(0);
-          this.aqe.a(this.adt, ((c)localObject).ajy);
+          localObject = (c)this.axJ.get(0);
+          this.axG.d(this.akA, ((c)localObject).aqL);
           i -= 1;
         }
-        this.aqh.clear();
-        this.aql = null;
-        this.aqm = -1;
-        ld();
-        if (this.aqo != null)
+        this.axJ.clear();
+        this.axN = null;
+        this.axO = -1;
+        mL();
+        if (this.axQ != null)
         {
-          this.aqo.aqz = false;
-          this.aqo = null;
+          this.axQ.aya = false;
+          this.axQ = null;
         }
-        if (this.aqn != null) {
-          this.aqn = null;
+        if (this.axP != null) {
+          this.axP = null;
         }
       }
-      this.adt = paramRecyclerView;
+      this.akA = paramRecyclerView;
     } while (paramRecyclerView == null);
     paramRecyclerView = paramRecyclerView.getResources();
-    this.apY = paramRecyclerView.getDimension(2131428480);
-    this.apZ = paramRecyclerView.getDimension(2131428479);
-    this.amw = ViewConfiguration.get(this.adt.getContext()).getScaledTouchSlop();
-    this.adt.a(this);
-    this.adt.a(this.aqp);
-    paramRecyclerView = this.adt;
-    if (paramRecyclerView.ail == null) {
-      paramRecyclerView.ail = new ArrayList();
-    }
-    paramRecyclerView.ail.add(this);
-    this.aqo = new a.b(this);
-    this.aqn = new c(this.adt.getContext(), this.aqo);
+    this.axA = paramRecyclerView.getDimension(2131166464);
+    this.axB = paramRecyclerView.getDimension(2131166463);
+    this.atV = ViewConfiguration.get(this.akA.getContext()).getScaledTouchSlop();
+    this.akA.a(this);
+    this.akA.a(this.axR);
+    this.akA.a(this);
+    this.axQ = new b();
+    this.axP = new android.support.v4.view.c(this.akA.getContext(), this.axQ);
   }
   
-  final View k(MotionEvent paramMotionEvent)
+  final View l(MotionEvent paramMotionEvent)
   {
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    if (this.apV != null)
+    if (this.axx != null)
     {
-      paramMotionEvent = this.apV.aku;
-      if (a(paramMotionEvent, f1, f2, this.aqc + this.aqa, this.aqd + this.aqb)) {
+      paramMotionEvent = this.axx.arI;
+      if (a(paramMotionEvent, f1, f2, this.axE + this.axC, this.axF + this.axD)) {
         return paramMotionEvent;
       }
     }
-    int i = this.aqh.size() - 1;
+    int i = this.axJ.size() - 1;
     while (i >= 0)
     {
-      paramMotionEvent = (c)this.aqh.get(i);
-      View localView = paramMotionEvent.ajy.aku;
+      paramMotionEvent = (c)this.axJ.get(i);
+      View localView = paramMotionEvent.aqL.arI;
       if (a(localView, f1, f2, paramMotionEvent.mX, paramMotionEvent.mY)) {
         return localView;
       }
       i -= 1;
     }
-    return this.adt.x(f1, f2);
+    return this.akA.o(f1, f2);
+  }
+  
+  public final void mK()
+  {
+    if (this.mVelocityTracker != null) {
+      this.mVelocityTracker.recycle();
+    }
+    this.mVelocityTracker = VelocityTracker.obtain();
+  }
+  
+  public static abstract class a
+  {
+    private static final Interpolator axX = new Interpolator()
+    {
+      public final float getInterpolation(float paramAnonymousFloat)
+      {
+        return paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat;
+      }
+    };
+    private static final Interpolator axY = new Interpolator()
+    {
+      public final float getInterpolation(float paramAnonymousFloat)
+      {
+        paramAnonymousFloat -= 1.0F;
+        return paramAnonymousFloat * (paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat * paramAnonymousFloat) + 1.0F;
+      }
+    };
+    private int axZ = -1;
+    
+    public static float M(float paramFloat)
+    {
+      return paramFloat;
+    }
+    
+    public static float N(float paramFloat)
+    {
+      return paramFloat;
+    }
+    
+    public static RecyclerView.v a(RecyclerView.v paramv, List<RecyclerView.v> paramList, int paramInt1, int paramInt2)
+    {
+      int m = paramv.arI.getWidth();
+      int n = paramv.arI.getHeight();
+      int i = -1;
+      int i1 = paramInt1 - paramv.arI.getLeft();
+      int i2 = paramInt2 - paramv.arI.getTop();
+      int i3 = paramList.size();
+      int j = 0;
+      Object localObject2 = null;
+      Object localObject1;
+      int k;
+      if (j < i3)
+      {
+        localObject1 = (RecyclerView.v)paramList.get(j);
+        if (i1 <= 0) {
+          break label343;
+        }
+        k = ((RecyclerView.v)localObject1).arI.getRight() - (paramInt1 + m);
+        if ((k >= 0) || (((RecyclerView.v)localObject1).arI.getRight() <= paramv.arI.getRight())) {
+          break label343;
+        }
+        k = Math.abs(k);
+        if (k <= i) {
+          break label343;
+        }
+        localObject2 = localObject1;
+        i = k;
+        label142:
+        if (i1 >= 0) {
+          break label356;
+        }
+        k = ((RecyclerView.v)localObject1).arI.getLeft() - paramInt1;
+        if ((k <= 0) || (((RecyclerView.v)localObject1).arI.getLeft() >= paramv.arI.getLeft())) {
+          break label356;
+        }
+        k = Math.abs(k);
+        if (k <= i) {
+          break label356;
+        }
+        localObject2 = localObject1;
+        i = k;
+      }
+      label343:
+      label356:
+      for (;;)
+      {
+        if (i2 < 0)
+        {
+          k = ((RecyclerView.v)localObject1).arI.getTop() - paramInt2;
+          if ((k > 0) && (((RecyclerView.v)localObject1).arI.getTop() < paramv.arI.getTop()))
+          {
+            k = Math.abs(k);
+            if (k > i)
+            {
+              localObject2 = localObject1;
+              i = k;
+            }
+          }
+        }
+        for (;;)
+        {
+          if (i2 > 0)
+          {
+            k = ((RecyclerView.v)localObject1).arI.getBottom() - (paramInt2 + n);
+            if ((k < 0) && (((RecyclerView.v)localObject1).arI.getBottom() > paramv.arI.getBottom()))
+            {
+              k = Math.abs(k);
+              if (k > i) {
+                i = k;
+              }
+            }
+          }
+          for (;;)
+          {
+            j += 1;
+            localObject2 = localObject1;
+            break;
+            return localObject2;
+            break label142;
+            localObject1 = localObject2;
+          }
+        }
+      }
+    }
+    
+    public static void a(RecyclerView paramRecyclerView, RecyclerView.v paramv1, RecyclerView.v paramv2, int paramInt)
+    {
+      RecyclerView.i locali = paramRecyclerView.getLayoutManager();
+      if ((locali instanceof a.d)) {
+        ((a.d)locali).e(paramv1.arI, paramv2.arI);
+      }
+      do
+      {
+        do
+        {
+          return;
+          if (locali.jE())
+          {
+            if (RecyclerView.i.bG(paramv2.arI) <= paramRecyclerView.getPaddingLeft())
+            {
+              paramv1 = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
+              com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, paramv1.adn(), "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
+              paramRecyclerView.ca(((Integer)paramv1.lS(0)).intValue());
+              com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
+            }
+            if (RecyclerView.i.bI(paramv2.arI) >= paramRecyclerView.getWidth() - paramRecyclerView.getPaddingRight())
+            {
+              paramv1 = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
+              com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, paramv1.adn(), "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
+              paramRecyclerView.ca(((Integer)paramv1.lS(0)).intValue());
+              com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
+            }
+          }
+        } while (!locali.jF());
+        if (RecyclerView.i.bH(paramv2.arI) <= paramRecyclerView.getPaddingTop())
+        {
+          paramv1 = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
+          com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, paramv1.adn(), "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
+          paramRecyclerView.ca(((Integer)paramv1.lS(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
+        }
+      } while (RecyclerView.i.bJ(paramv2.arI) < paramRecyclerView.getHeight() - paramRecyclerView.getPaddingBottom());
+      paramv1 = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
+      com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, paramv1.adn(), "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
+      paramRecyclerView.ca(((Integer)paramv1.lS(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(paramRecyclerView, "android/support/v7/widget/helper/ItemTouchHelper$Callback", "onMoved", "(Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$ViewHolder;ILandroid/support/v7/widget/RecyclerView$ViewHolder;III)V", "Undefined", "scrollToPosition", "(I)V");
+    }
+    
+    public static int aP(int paramInt1, int paramInt2)
+    {
+      int i = paramInt1 & 0xC0C0C;
+      if (i == 0) {
+        return paramInt1;
+      }
+      paramInt1 = (i ^ 0xFFFFFFFF) & paramInt1;
+      if (paramInt2 == 0) {
+        return paramInt1 | i << 2;
+      }
+      return paramInt1 | i << 1 & 0xFFF3F3F3 | (i << 1 & 0xC0C0C) << 2;
+    }
+    
+    public static int aQ(int paramInt1, int paramInt2)
+    {
+      int i = paramInt1 & 0x303030;
+      if (i == 0) {
+        return paramInt1;
+      }
+      paramInt1 = (i ^ 0xFFFFFFFF) & paramInt1;
+      if (paramInt2 == 0) {
+        return paramInt1 | i >> 2;
+      }
+      return paramInt1 | i >> 1 & 0xFFCFCFCF | (i >> 1 & 0x303030) >> 2;
+    }
+    
+    public static long c(RecyclerView paramRecyclerView, int paramInt)
+    {
+      paramRecyclerView = paramRecyclerView.getItemAnimator();
+      if (paramRecyclerView == null)
+      {
+        if (paramInt == 8) {
+          return 200L;
+        }
+        return 250L;
+      }
+      if (paramInt == 8) {
+        return paramRecyclerView.aqr;
+      }
+      return paramRecyclerView.kQ();
+    }
+    
+    public static int di(int paramInt)
+    {
+      return (paramInt | 0x0) << 0 | 0x0 | paramInt << 16;
+    }
+    
+    private int k(RecyclerView paramRecyclerView)
+    {
+      if (this.axZ == -1) {
+        this.axZ = paramRecyclerView.getResources().getDimensionPixelSize(2131166462);
+      }
+      return this.axZ;
+    }
+    
+    public static void mO()
+    {
+      b localb = c.ayl;
+    }
+    
+    public float K(RecyclerView.v paramv)
+    {
+      return 0.5F;
+    }
+    
+    public abstract void L(RecyclerView.v paramv);
+    
+    public final int a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2, long paramLong)
+    {
+      float f1 = 1.0F;
+      int i = k(paramRecyclerView);
+      int j = Math.abs(paramInt2);
+      int k = (int)Math.signum(paramInt2);
+      float f2 = Math.min(1.0F, j * 1.0F / paramInt1);
+      paramInt1 = (int)(i * k * axY.getInterpolation(f2));
+      if (paramLong > 2000L) {}
+      for (;;)
+      {
+        f2 = paramInt1;
+        i = (int)(axX.getInterpolation(f1) * f2);
+        paramInt1 = i;
+        if (i == 0)
+        {
+          if (paramInt2 <= 0) {
+            break;
+          }
+          paramInt1 = 1;
+        }
+        return paramInt1;
+        f1 = (float)paramLong / 2000.0F;
+      }
+      return -1;
+    }
+    
+    public abstract int a(RecyclerView paramRecyclerView, RecyclerView.v paramv);
+    
+    public void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.v paramv, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
+    {
+      c.ayl.a(paramRecyclerView, paramv.arI, paramFloat1, paramFloat2, paramBoolean);
+    }
+    
+    public abstract boolean a(RecyclerView paramRecyclerView, RecyclerView.v paramv1, RecyclerView.v paramv2);
+    
+    final int b(RecyclerView paramRecyclerView, RecyclerView.v paramv)
+    {
+      return aQ(a(paramRecyclerView, paramv), t.Y(paramRecyclerView));
+    }
+    
+    public final boolean c(RecyclerView paramRecyclerView, RecyclerView.v paramv)
+    {
+      return (b(paramRecyclerView, paramv) & 0xFF0000) != 0;
+    }
+    
+    public void d(RecyclerView paramRecyclerView, RecyclerView.v paramv)
+    {
+      c.ayl.ci(paramv.arI);
+    }
+    
+    public void f(RecyclerView.v paramv, int paramInt)
+    {
+      if (paramv != null) {
+        paramv = c.ayl;
+      }
+    }
+    
+    public boolean mM()
+    {
+      return true;
+    }
+    
+    public boolean mN()
+    {
+      return true;
+    }
+  }
+  
+  final class b
+    extends GestureDetector.SimpleOnGestureListener
+  {
+    boolean aya = true;
+    
+    b() {}
+    
+    public final boolean onDown(MotionEvent paramMotionEvent)
+    {
+      return true;
+    }
+    
+    public final void onLongPress(MotionEvent paramMotionEvent)
+    {
+      if (!this.aya) {}
+      Object localObject;
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            localObject = a.this.l(paramMotionEvent);
+          } while (localObject == null);
+          localObject = a.this.akA.bh((View)localObject);
+        } while ((localObject == null) || (!a.this.axG.c(a.this.akA, (RecyclerView.v)localObject)) || (paramMotionEvent.getPointerId(0) != a.this.mActivePointerId));
+        int i = paramMotionEvent.findPointerIndex(a.this.mActivePointerId);
+        float f1 = paramMotionEvent.getX(i);
+        float f2 = paramMotionEvent.getY(i);
+        a.this.axy = f1;
+        a.this.axz = f2;
+        paramMotionEvent = a.this;
+        a.this.axD = 0.0F;
+        paramMotionEvent.axC = 0.0F;
+      } while (!a.this.axG.mM());
+      a.this.e((RecyclerView.v)localObject, 2);
+    }
   }
   
   static class c
     implements Animator.AnimatorListener
   {
-    final RecyclerView.v ajy;
-    final float aqA;
-    final float aqB;
-    final float aqC;
-    final float aqD;
-    final ValueAnimator aqE;
-    final int aqF;
-    public boolean aqG;
-    boolean aqH = false;
-    float aqI;
-    final int aqf;
+    final RecyclerView.v aqL;
+    final int axH;
+    final float ayb;
+    final float ayc;
+    final float ayd;
+    final float aye;
+    final ValueAnimator ayf;
+    final int ayg;
+    boolean ayh;
+    boolean ayi = false;
+    float ayj;
     float mX;
     float mY;
-    boolean tn = false;
+    boolean zF = false;
     
     c(RecyclerView.v paramv, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
     {
-      this.aqf = paramInt2;
-      this.aqF = paramInt1;
-      this.ajy = paramv;
-      this.aqA = paramFloat1;
-      this.aqB = paramFloat2;
-      this.aqC = paramFloat3;
-      this.aqD = paramFloat4;
-      this.aqE = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      this.aqE.addUpdateListener(new a.c.1(this));
-      this.aqE.setTarget(paramv.aku);
-      this.aqE.addListener(this);
-      this.aqI = 0.0F;
+      this.axH = paramInt2;
+      this.ayg = paramInt1;
+      this.aqL = paramv;
+      this.ayb = paramFloat1;
+      this.ayc = paramFloat2;
+      this.ayd = paramFloat3;
+      this.aye = paramFloat4;
+      this.ayf = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.ayf.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      {
+        public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+        {
+          a.c.this.ayj = paramAnonymousValueAnimator.getAnimatedFraction();
+        }
+      });
+      this.ayf.setTarget(paramv.arI);
+      this.ayf.addListener(this);
+      this.ayj = 0.0F;
     }
     
     public void onAnimationCancel(Animator paramAnimator)
     {
-      this.aqI = 1.0F;
+      this.ayj = 1.0F;
     }
     
     public void onAnimationEnd(Animator paramAnimator)
     {
-      if (!this.tn) {
-        this.ajy.ap(true);
+      if (!this.zF) {
+        this.aqL.ax(true);
       }
-      this.tn = true;
+      this.zF = true;
     }
     
     public void onAnimationRepeat(Animator paramAnimator) {}
@@ -622,7 +1489,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v7.widget.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.os.Build.VERSION;
 
 public final class a
 {
-  public static int d(Bitmap paramBitmap)
+  public static int c(Bitmap paramBitmap)
   {
     if (Build.VERSION.SDK_INT >= 19) {
       return paramBitmap.getAllocationByteCount();
@@ -15,7 +15,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v4.graphics.a
  * JD-Core Version:    0.7.0.1
  */

@@ -32,11 +32,13 @@ public class V8
   private static ILoadLibraryDelegate sLoadLibraryDelegate;
   private static V8Value undefined;
   private static String v8Flags;
+  JavaTaskScheduler _javaTaskScheduler;
   private Map<String, Object> data;
   private V8Map<V8Executor> executors;
   private boolean forceTerminateExecutors;
-  private Map<Long, V8.MethodDescriptor> functionRegistry;
+  private Map<Long, MethodDescriptor> functionRegistry;
   private final V8Locker locker;
+  Runnable nativeJavaCallback_;
   private long objectReferences;
   private LinkedList<ReferenceHandler> referenceHandlers;
   private LinkedList<V8Runnable> releaseHandlers;
@@ -46,10 +48,10 @@ public class V8
   
   static
   {
-    AppMethodBeat.i(75343);
+    AppMethodBeat.i(61968);
     lock = new Object();
     runtimeCounter = 0;
-    v8Flags = null;
+    v8Flags = "";
     initialized = false;
     nativeLibraryLoaded = false;
     nativeLoadError = null;
@@ -57,7 +59,7 @@ public class V8
     undefined = new V8Object.Undefined();
     invalid = new Object();
     sLoadLibraryDelegate = new V8.1();
-    AppMethodBeat.o(75343);
+    AppMethodBeat.o(61968);
   }
   
   protected V8()
@@ -68,7 +70,7 @@ public class V8
   protected V8(String paramString, boolean paramBoolean)
   {
     super(null);
-    AppMethodBeat.i(75182);
+    AppMethodBeat.i(61806);
     this.v8WeakReferences = new HashMap();
     this.data = null;
     this.objectReferences = 0L;
@@ -79,6 +81,7 @@ public class V8
     this.functionRegistry = new HashMap();
     this.referenceHandlers = new LinkedList();
     this.releaseHandlers = new LinkedList();
+    this._javaTaskScheduler = null;
     this.released = false;
     this.v8RuntimePtr = _createIsolate(paramString, paramBoolean);
     this.locker = new V8Locker(this);
@@ -86,7 +89,7 @@ public class V8
     if (paramBoolean) {
       this.objectHandle = _getGlobalObject(this.v8RuntimePtr);
     }
-    AppMethodBeat.o(75182);
+    AppMethodBeat.o(61806);
   }
   
   private native void _acquireLock(long paramLong);
@@ -167,17 +170,19 @@ public class V8
   
   private static native void _debugMessageLoop(long paramLong);
   
+  private static native void _enableNativeTrans(long paramLong);
+  
   private native boolean _equals(long paramLong1, long paramLong2, long paramLong3);
   
   private native boolean _executeBooleanFunction(long paramLong1, long paramLong2, String paramString, long paramLong3);
   
-  private native boolean _executeBooleanScript(long paramLong, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4);
+  private native boolean _executeBooleanScript(long paramLong, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails);
   
   private static native String _executeDebugScript(long paramLong, String paramString1, String paramString2);
   
   private native double _executeDoubleFunction(long paramLong1, long paramLong2, String paramString, long paramLong3);
   
-  private native double _executeDoubleScript(long paramLong, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4);
+  private native double _executeDoubleScript(long paramLong, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails);
   
   private native Object _executeFunction(long paramLong1, int paramInt, long paramLong2, String paramString, long paramLong3);
   
@@ -185,17 +190,19 @@ public class V8
   
   private native int _executeIntegerFunction(long paramLong1, long paramLong2, String paramString, long paramLong3);
   
-  private native int _executeIntegerScript(long paramLong, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4);
+  private native int _executeIntegerScript(long paramLong, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails);
   
-  private native Object _executeScript(long paramLong, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4);
+  private native Object _executeScript(long paramLong, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, int paramInt3, ExecuteDetails paramExecuteDetails);
   
   private native String _executeStringFunction(long paramLong1, long paramLong2, String paramString, long paramLong3);
   
-  private native String _executeStringScript(long paramLong, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4);
+  private native String _executeStringScript(long paramLong, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails);
   
   private native void _executeVoidFunction(long paramLong1, long paramLong2, String paramString, long paramLong3);
   
-  private native void _executeVoidScript(long paramLong, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4);
+  private native void _executeVoidScript(long paramLong, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails);
+  
+  private native Object _executeWxaScript(long paramLong, ArrayList<ScriptPartObject> paramArrayList, int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3, int paramInt3, ExecuteDetails paramExecuteDetails);
   
   private native Object _get(long paramLong1, int paramInt, long paramLong2, String paramString);
   
@@ -215,6 +222,8 @@ public class V8
   
   private native String[] _getKeys(long paramLong1, long paramLong2);
   
+  private static native long _getNativeTransManager();
+  
   private native String _getString(long paramLong1, long paramLong2, String paramString);
   
   private native int _getType(long paramLong1, long paramLong2);
@@ -224,6 +233,8 @@ public class V8
   private native int _getType(long paramLong1, long paramLong2, int paramInt1, int paramInt2);
   
   private native int _getType(long paramLong1, long paramLong2, String paramString);
+  
+  private native long _getUVLoopPtr(long paramLong);
   
   private static native String _getVersion();
   
@@ -267,6 +278,20 @@ public class V8
   
   private native void _memoryPressureNotification(long paramLong, int paramInt);
   
+  private static native void _nativeDispatch(long paramLong);
+  
+  private static native void _nativeLoopStop(long paramLong);
+  
+  private static native void _nativeMessageLoop(long paramLong);
+  
+  private static native void _nativeTransBroadcastMessage(int paramInt, String paramString);
+  
+  private static native void _nativeTransHandleMessage(long paramLong);
+  
+  private static native void _nativeTransPostMessage(int paramInt, String paramString);
+  
+  private static native void _nativeTransSetJavaSchedule(long paramLong);
+  
   private static native boolean _pumpMessageLoop(long paramLong);
   
   private native long _registerJavaMethod(long paramLong1, long paramLong2, String paramString, boolean paramBoolean);
@@ -307,9 +332,16 @@ public class V8
   
   private native void _wakeUpUVLoop(long paramLong);
   
+  public static void broadcastMessage(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(190137);
+    _nativeTransBroadcastMessage(paramInt, paramString);
+    AppMethodBeat.o(190137);
+  }
+  
   private void checkArgs(Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(75237);
+    AppMethodBeat.i(61861);
     int j = paramArrayOfObject.length;
     int i = 0;
     while (i < j)
@@ -317,55 +349,55 @@ public class V8
       if (paramArrayOfObject[i] == invalid)
       {
         paramArrayOfObject = new IllegalArgumentException("argument type mismatch");
-        AppMethodBeat.o(75237);
+        AppMethodBeat.o(61861);
         throw paramArrayOfObject;
       }
       i += 1;
     }
-    AppMethodBeat.o(75237);
+    AppMethodBeat.o(61861);
   }
   
   private static void checkNativeLibraryLoaded()
   {
-    AppMethodBeat.i(75181);
+    AppMethodBeat.i(61805);
     if (!nativeLibraryLoaded)
     {
       if (nativeLoadError != null)
       {
         localIllegalStateException = new IllegalStateException("J2V8 native library not loaded", nativeLoadError);
-        AppMethodBeat.o(75181);
+        AppMethodBeat.o(61805);
         throw localIllegalStateException;
       }
       if (nativeLoadException != null)
       {
         localIllegalStateException = new IllegalStateException("J2V8 native library not loaded", nativeLoadException);
-        AppMethodBeat.o(75181);
+        AppMethodBeat.o(61805);
         throw localIllegalStateException;
       }
       IllegalStateException localIllegalStateException = new IllegalStateException("J2V8 native library not loaded");
-      AppMethodBeat.o(75181);
+      AppMethodBeat.o(61805);
       throw localIllegalStateException;
     }
-    AppMethodBeat.o(75181);
+    AppMethodBeat.o(61805);
   }
   
   private Object checkResult(Object paramObject)
   {
-    AppMethodBeat.i(75235);
+    AppMethodBeat.i(61859);
     if (paramObject == null)
     {
-      AppMethodBeat.o(75235);
+      AppMethodBeat.o(61859);
       return paramObject;
     }
     if ((paramObject instanceof Float))
     {
       double d = ((Float)paramObject).doubleValue();
-      AppMethodBeat.o(75235);
+      AppMethodBeat.o(61859);
       return Double.valueOf(d);
     }
     if (((paramObject instanceof Integer)) || ((paramObject instanceof Double)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof String)))
     {
-      AppMethodBeat.o(75235);
+      AppMethodBeat.o(61859);
       return paramObject;
     }
     if ((paramObject instanceof V8Value))
@@ -373,58 +405,58 @@ public class V8
       if (((V8Value)paramObject).isReleased())
       {
         paramObject = new V8RuntimeException("V8Value already released");
-        AppMethodBeat.o(75235);
+        AppMethodBeat.o(61859);
         throw paramObject;
       }
-      AppMethodBeat.o(75235);
+      AppMethodBeat.o(61859);
       return paramObject;
     }
     paramObject = new V8RuntimeException("Unknown return type: " + paramObject.getClass());
-    AppMethodBeat.o(75235);
+    AppMethodBeat.o(61859);
     throw paramObject;
   }
   
   static void checkScript(String paramString)
   {
-    AppMethodBeat.i(75225);
+    AppMethodBeat.i(61849);
     if (paramString == null)
     {
       paramString = new NullPointerException("Script is null");
-      AppMethodBeat.o(75225);
+      AppMethodBeat.o(61849);
       throw paramString;
     }
-    AppMethodBeat.o(75225);
+    AppMethodBeat.o(61849);
   }
   
   public static V8 createV8Runtime()
   {
-    AppMethodBeat.i(75162);
+    AppMethodBeat.i(61786);
     V8 localV8 = createV8Runtime(null, null);
-    AppMethodBeat.o(75162);
+    AppMethodBeat.o(61786);
     return localV8;
   }
   
   public static V8 createV8Runtime(String paramString)
   {
-    AppMethodBeat.i(75163);
+    AppMethodBeat.i(61787);
     paramString = createV8Runtime(paramString, null);
-    AppMethodBeat.o(75163);
+    AppMethodBeat.o(61787);
     return paramString;
   }
   
   public static V8 createV8Runtime(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(75164);
+    AppMethodBeat.i(61788);
     paramString1 = createV8Runtime(paramString1, paramString2, true, null, null);
-    AppMethodBeat.o(75164);
+    AppMethodBeat.o(61788);
     return paramString1;
   }
   
   protected static V8 createV8Runtime(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(75165);
+    AppMethodBeat.i(61789);
     paramString1 = createV8Runtime(paramString1, paramString2, paramBoolean, null, null);
-    AppMethodBeat.o(75165);
+    AppMethodBeat.o(61789);
     return paramString1;
   }
   
@@ -432,100 +464,98 @@ public class V8
   protected static V8 createV8Runtime(String arg0, String paramString2, boolean paramBoolean, String paramString3, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: ldc_w 401
-    //   3: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: getstatic 78	com/eclipsesource/v8/V8:nativeLibraryLoaded	Z
+    //   0: ldc_w 438
+    //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: getstatic 90	com/eclipsesource/v8/V8:nativeLibraryLoaded	Z
     //   9: ifne +24 -> 33
-    //   12: getstatic 70	com/eclipsesource/v8/V8:lock	Ljava/lang/Object;
+    //   12: getstatic 80	com/eclipsesource/v8/V8:lock	Ljava/lang/Object;
     //   15: astore 5
     //   17: aload 5
     //   19: monitorenter
-    //   20: getstatic 78	com/eclipsesource/v8/V8:nativeLibraryLoaded	Z
+    //   20: getstatic 90	com/eclipsesource/v8/V8:nativeLibraryLoaded	Z
     //   23: ifne +7 -> 30
     //   26: aload_1
-    //   27: invokestatic 404	com/eclipsesource/v8/V8:load	(Ljava/lang/String;)V
+    //   27: invokestatic 441	com/eclipsesource/v8/V8:load	(Ljava/lang/String;)V
     //   30: aload 5
     //   32: monitorexit
-    //   33: invokestatic 406	com/eclipsesource/v8/V8:checkNativeLibraryLoaded	()V
-    //   36: getstatic 76	com/eclipsesource/v8/V8:initialized	Z
-    //   39: ifne +39 -> 78
-    //   42: getstatic 74	com/eclipsesource/v8/V8:v8Flags	Ljava/lang/String;
-    //   45: invokestatic 408	com/eclipsesource/v8/V8:_setFlags	(Ljava/lang/String;)V
-    //   48: getstatic 70	com/eclipsesource/v8/V8:lock	Ljava/lang/Object;
-    //   51: astore_1
-    //   52: aload_1
-    //   53: monitorenter
-    //   54: aload_3
-    //   55: ifnull +7 -> 62
-    //   58: aload_3
-    //   59: invokestatic 410	com/eclipsesource/v8/V8:_setCodeCacheDir	(Ljava/lang/String;)V
-    //   62: aload 4
-    //   64: ifnull +8 -> 72
-    //   67: aload 4
-    //   69: invokestatic 412	com/eclipsesource/v8/V8:_setSnapshotBlob	([B)V
-    //   72: aload_1
-    //   73: monitorexit
-    //   74: iconst_1
-    //   75: putstatic 76	com/eclipsesource/v8/V8:initialized	Z
-    //   78: new 2	com/eclipsesource/v8/V8
-    //   81: dup
-    //   82: aload_0
-    //   83: iload_2
-    //   84: invokespecial 101	com/eclipsesource/v8/V8:<init>	(Ljava/lang/String;Z)V
-    //   87: astore_1
-    //   88: getstatic 70	com/eclipsesource/v8/V8:lock	Ljava/lang/Object;
-    //   91: astore_0
-    //   92: aload_0
-    //   93: monitorenter
-    //   94: getstatic 72	com/eclipsesource/v8/V8:runtimeCounter	I
-    //   97: iconst_1
-    //   98: iadd
-    //   99: putstatic 72	com/eclipsesource/v8/V8:runtimeCounter	I
-    //   102: aload_0
-    //   103: monitorexit
-    //   104: ldc_w 401
-    //   107: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   110: aload_1
-    //   111: areturn
-    //   112: astore_0
-    //   113: aload 5
-    //   115: monitorexit
-    //   116: ldc_w 401
-    //   119: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   122: aload_0
-    //   123: athrow
-    //   124: astore_0
-    //   125: aload_1
-    //   126: monitorexit
-    //   127: ldc_w 401
-    //   130: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   133: aload_0
-    //   134: athrow
-    //   135: astore_1
-    //   136: aload_0
-    //   137: monitorexit
-    //   138: ldc_w 401
-    //   141: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   144: aload_1
-    //   145: athrow
+    //   33: invokestatic 443	com/eclipsesource/v8/V8:checkNativeLibraryLoaded	()V
+    //   36: getstatic 88	com/eclipsesource/v8/V8:initialized	Z
+    //   39: ifne +33 -> 72
+    //   42: getstatic 80	com/eclipsesource/v8/V8:lock	Ljava/lang/Object;
+    //   45: astore_1
+    //   46: aload_1
+    //   47: monitorenter
+    //   48: aload_3
+    //   49: ifnull +7 -> 56
+    //   52: aload_3
+    //   53: invokestatic 445	com/eclipsesource/v8/V8:_setCodeCacheDir	(Ljava/lang/String;)V
+    //   56: aload 4
+    //   58: ifnull +8 -> 66
+    //   61: aload 4
+    //   63: invokestatic 447	com/eclipsesource/v8/V8:_setSnapshotBlob	([B)V
+    //   66: aload_1
+    //   67: monitorexit
+    //   68: iconst_1
+    //   69: putstatic 88	com/eclipsesource/v8/V8:initialized	Z
+    //   72: new 2	com/eclipsesource/v8/V8
+    //   75: dup
+    //   76: aload_0
+    //   77: iload_2
+    //   78: invokespecial 113	com/eclipsesource/v8/V8:<init>	(Ljava/lang/String;Z)V
+    //   81: astore_1
+    //   82: getstatic 80	com/eclipsesource/v8/V8:lock	Ljava/lang/Object;
+    //   85: astore_0
+    //   86: aload_0
+    //   87: monitorenter
+    //   88: getstatic 82	com/eclipsesource/v8/V8:runtimeCounter	I
+    //   91: iconst_1
+    //   92: iadd
+    //   93: putstatic 82	com/eclipsesource/v8/V8:runtimeCounter	I
+    //   96: aload_0
+    //   97: monitorexit
+    //   98: ldc_w 438
+    //   101: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   104: aload_1
+    //   105: areturn
+    //   106: astore_0
+    //   107: aload 5
+    //   109: monitorexit
+    //   110: ldc_w 438
+    //   113: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   116: aload_0
+    //   117: athrow
+    //   118: astore_0
+    //   119: aload_1
+    //   120: monitorexit
+    //   121: ldc_w 438
+    //   124: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   127: aload_0
+    //   128: athrow
+    //   129: astore_1
+    //   130: aload_0
+    //   131: monitorexit
+    //   132: ldc_w 438
+    //   135: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   138: aload_1
+    //   139: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	146	1	paramString2	String
-    //   0	146	2	paramBoolean	boolean
-    //   0	146	3	paramString3	String
-    //   0	146	4	paramArrayOfByte	byte[]
-    //   15	99	5	localObject	Object
+    //   0	140	1	paramString2	String
+    //   0	140	2	paramBoolean	boolean
+    //   0	140	3	paramString3	String
+    //   0	140	4	paramArrayOfByte	byte[]
+    //   15	93	5	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   20	30	112	finally
-    //   30	33	112	finally
-    //   113	116	112	finally
-    //   58	62	124	finally
-    //   67	72	124	finally
-    //   72	74	124	finally
-    //   125	127	124	finally
-    //   94	104	135	finally
-    //   136	138	135	finally
+    //   20	30	106	finally
+    //   30	33	106	finally
+    //   107	110	106	finally
+    //   52	56	118	finally
+    //   61	66	118	finally
+    //   66	68	118	finally
+    //   119	121	118	finally
+    //   88	98	129	finally
+    //   130	132	129	finally
   }
   
   public static int getActiveRuntimes()
@@ -533,9 +563,9 @@ public class V8
     return runtimeCounter;
   }
   
-  private Object[] getArgs(V8Object paramV8Object, V8.MethodDescriptor paramMethodDescriptor, V8Array paramV8Array, boolean paramBoolean)
+  private Object[] getArgs(V8Object paramV8Object, MethodDescriptor paramMethodDescriptor, V8Array paramV8Array, boolean paramBoolean)
   {
-    AppMethodBeat.i(75239);
+    AppMethodBeat.i(61863);
     int j = paramMethodDescriptor.method.getParameterTypes().length;
     if (paramBoolean) {}
     for (int i = j - 1;; i = j)
@@ -549,14 +579,14 @@ public class V8
         System.arraycopy(localArrayList.toArray(), 0, paramMethodDescriptor, 0, localArrayList.size());
         paramV8Object[i] = paramMethodDescriptor;
       }
-      AppMethodBeat.o(75239);
+      AppMethodBeat.o(61863);
       return paramV8Object;
     }
   }
   
   private Object getArrayItem(V8Array paramV8Array, int paramInt)
   {
-    AppMethodBeat.i(75243);
+    AppMethodBeat.i(61867);
     try
     {
       int i = paramV8Array.getType(paramInt);
@@ -571,55 +601,68 @@ public class V8
       boolean bool;
       break label104;
     }
-    AppMethodBeat.o(75243);
+    AppMethodBeat.o(61867);
     return null;
     paramInt = paramV8Array.getInteger(paramInt);
-    AppMethodBeat.o(75243);
+    AppMethodBeat.o(61867);
     return Integer.valueOf(paramInt);
     d = paramV8Array.getDouble(paramInt);
-    AppMethodBeat.o(75243);
+    AppMethodBeat.o(61867);
     return Double.valueOf(d);
     bool = paramV8Array.getBoolean(paramInt);
-    AppMethodBeat.o(75243);
+    AppMethodBeat.o(61867);
     return Boolean.valueOf(bool);
     paramV8Array = paramV8Array.getString(paramInt);
-    AppMethodBeat.o(75243);
+    AppMethodBeat.o(61867);
     return paramV8Array;
     paramV8Array = paramV8Array.getArray(paramInt);
-    AppMethodBeat.o(75243);
+    AppMethodBeat.o(61867);
     return paramV8Array;
     paramV8Array = paramV8Array.getObject(paramInt);
-    AppMethodBeat.o(75243);
+    AppMethodBeat.o(61867);
     return paramV8Array;
     paramV8Array = paramV8Array.getObject(paramInt);
-    AppMethodBeat.o(75243);
+    AppMethodBeat.o(61867);
     return paramV8Array;
     paramV8Array = paramV8Array.get(paramInt);
-    AppMethodBeat.o(75243);
+    AppMethodBeat.o(61867);
     return paramV8Array;
     paramV8Array = getUndefined();
-    AppMethodBeat.o(75243);
+    AppMethodBeat.o(61867);
     return paramV8Array;
   }
   
   private Object getDefaultValue(Class<?> paramClass)
   {
-    AppMethodBeat.i(75231);
+    AppMethodBeat.i(61855);
     if (paramClass.equals(V8Object.class))
     {
       paramClass = new V8Object.Undefined();
-      AppMethodBeat.o(75231);
+      AppMethodBeat.o(61855);
       return paramClass;
     }
     if (paramClass.equals(V8Array.class))
     {
       paramClass = new V8Array.Undefined();
-      AppMethodBeat.o(75231);
+      AppMethodBeat.o(61855);
       return paramClass;
     }
     paramClass = invalid;
-    AppMethodBeat.o(75231);
+    AppMethodBeat.o(61855);
     return paramClass;
+  }
+  
+  public static String getFlags()
+  {
+    return v8Flags;
+  }
+  
+  public static long getNativeTransManager()
+  {
+    AppMethodBeat.i(190135);
+    long l = _getNativeTransManager();
+    AppMethodBeat.o(190135);
+    return l;
   }
   
   public static String getSCMRevision()
@@ -634,22 +677,22 @@ public class V8
   
   public static String getV8Version()
   {
-    AppMethodBeat.i(75184);
+    AppMethodBeat.i(61808);
     String str = _getVersion();
-    AppMethodBeat.o(75184);
+    AppMethodBeat.o(61808);
     return str;
   }
   
   private Object getVarArgContainer(Class<?>[] paramArrayOfClass, int paramInt)
   {
-    AppMethodBeat.i(75240);
+    AppMethodBeat.i(61864);
     Class<?> localClass = paramArrayOfClass[(paramArrayOfClass.length - 1)];
     paramArrayOfClass = localClass;
     if (localClass.isArray()) {
       paramArrayOfClass = localClass.getComponentType();
     }
     paramArrayOfClass = Array.newInstance(paramArrayOfClass, paramInt);
-    AppMethodBeat.o(75240);
+    AppMethodBeat.o(61864);
     return paramArrayOfClass;
   }
   
@@ -660,13 +703,13 @@ public class V8
   
   private boolean isVoidMethod(Method paramMethod)
   {
-    AppMethodBeat.i(75230);
+    AppMethodBeat.i(61854);
     if (paramMethod.getReturnType().equals(Void.TYPE))
     {
-      AppMethodBeat.o(75230);
+      AppMethodBeat.o(61854);
       return true;
     }
-    AppMethodBeat.o(75230);
+    AppMethodBeat.o(61854);
     return false;
   }
   
@@ -676,23 +719,23 @@ public class V8
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc_w 561
-    //   6: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: getstatic 94	com/eclipsesource/v8/V8:sLoadLibraryDelegate	Lcom/eclipsesource/v8/ILoadLibraryDelegate;
+    //   3: ldc_w 601
+    //   6: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: getstatic 106	com/eclipsesource/v8/V8:sLoadLibraryDelegate	Lcom/eclipsesource/v8/ILoadLibraryDelegate;
     //   12: aload_0
-    //   13: invokeinterface 566 2 0
+    //   13: invokeinterface 606 2 0
     //   18: iconst_1
-    //   19: putstatic 78	com/eclipsesource/v8/V8:nativeLibraryLoaded	Z
-    //   22: ldc_w 561
-    //   25: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: putstatic 90	com/eclipsesource/v8/V8:nativeLibraryLoaded	Z
+    //   22: ldc_w 601
+    //   25: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: ldc 2
     //   30: monitorexit
     //   31: return
     //   32: astore_0
     //   33: aload_0
-    //   34: putstatic 80	com/eclipsesource/v8/V8:nativeLoadError	Ljava/lang/Error;
-    //   37: ldc_w 561
-    //   40: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   34: putstatic 92	com/eclipsesource/v8/V8:nativeLoadError	Ljava/lang/Error;
+    //   37: ldc_w 601
+    //   40: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   43: goto -15 -> 28
     //   46: astore_0
     //   47: ldc 2
@@ -701,9 +744,9 @@ public class V8
     //   51: athrow
     //   52: astore_0
     //   53: aload_0
-    //   54: putstatic 82	com/eclipsesource/v8/V8:nativeLoadException	Ljava/lang/Exception;
-    //   57: ldc_w 561
-    //   60: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   54: putstatic 94	com/eclipsesource/v8/V8:nativeLoadException	Ljava/lang/Exception;
+    //   57: ldc_w 601
+    //   60: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   63: goto -35 -> 28
     // Local variable table:
     //   start	length	slot	name	signature
@@ -721,37 +764,37 @@ public class V8
   
   private void notifyReferenceCreated(V8Value paramV8Value)
   {
-    AppMethodBeat.i(75179);
+    AppMethodBeat.i(61803);
     Iterator localIterator = this.referenceHandlers.iterator();
     while (localIterator.hasNext()) {
       ((ReferenceHandler)localIterator.next()).v8HandleCreated(paramV8Value);
     }
-    AppMethodBeat.o(75179);
+    AppMethodBeat.o(61803);
   }
   
   private void notifyReferenceDisposed(V8Value paramV8Value)
   {
-    AppMethodBeat.i(75180);
+    AppMethodBeat.i(61804);
     Iterator localIterator = this.referenceHandlers.iterator();
     while (localIterator.hasNext()) {
       ((ReferenceHandler)localIterator.next()).v8HandleDisposed(paramV8Value);
     }
-    AppMethodBeat.o(75180);
+    AppMethodBeat.o(61804);
   }
   
   private void notifyReleaseHandlers(V8 paramV8)
   {
-    AppMethodBeat.i(75178);
+    AppMethodBeat.i(61802);
     Iterator localIterator = this.releaseHandlers.iterator();
     while (localIterator.hasNext()) {
       ((V8Runnable)localIterator.next()).run(paramV8);
     }
-    AppMethodBeat.o(75178);
+    AppMethodBeat.o(61802);
   }
   
   private void populateParamters(V8Array paramV8Array, int paramInt, Object[] paramArrayOfObject, List<Object> paramList, boolean paramBoolean)
   {
-    AppMethodBeat.i(75241);
+    AppMethodBeat.i(61865);
     int i = 0;
     if (paramBoolean) {
       i = 1;
@@ -769,12 +812,19 @@ public class V8
         paramArrayOfObject[j] = getArrayItem(paramV8Array, j - i);
       }
     }
-    AppMethodBeat.o(75241);
+    AppMethodBeat.o(61865);
+  }
+  
+  public static void postMessage(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(190136);
+    _nativeTransPostMessage(paramInt, paramString);
+    AppMethodBeat.o(190136);
   }
   
   private void releaseArguments(Object[] paramArrayOfObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(75238);
+    AppMethodBeat.i(61862);
     Object localObject1;
     if ((paramBoolean) && (paramArrayOfObject.length > 0) && ((paramArrayOfObject[(paramArrayOfObject.length - 1)] instanceof Object[])))
     {
@@ -800,24 +850,24 @@ public class V8
       }
       i += 1;
     }
-    AppMethodBeat.o(75238);
+    AppMethodBeat.o(61862);
   }
   
   private void releaseNativeMethodDescriptors()
   {
-    AppMethodBeat.i(75188);
+    AppMethodBeat.i(61812);
     Iterator localIterator = this.functionRegistry.keySet().iterator();
     while (localIterator.hasNext())
     {
       Long localLong = (Long)localIterator.next();
       releaseMethodDescriptor(this.v8RuntimePtr, localLong.longValue());
     }
-    AppMethodBeat.o(75188);
+    AppMethodBeat.o(61812);
   }
   
   private void releaseResources()
   {
-    AppMethodBeat.i(75189);
+    AppMethodBeat.i(61813);
     if (this.resources != null)
     {
       Iterator localIterator = this.resources.iterator();
@@ -827,12 +877,12 @@ public class V8
       this.resources.clear();
       this.resources = null;
     }
-    AppMethodBeat.o(75189);
+    AppMethodBeat.o(61813);
   }
   
   private Object[] setDefaultValues(Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass, V8Object paramV8Object, boolean paramBoolean)
   {
-    AppMethodBeat.i(75242);
+    AppMethodBeat.i(61866);
     int i;
     if (paramBoolean)
     {
@@ -848,7 +898,7 @@ public class V8
       }
       else
       {
-        AppMethodBeat.o(75242);
+        AppMethodBeat.o(61866);
         return paramArrayOfObject;
         i = 0;
       }
@@ -858,284 +908,283 @@ public class V8
   public static void setFlags(String paramString)
   {
     v8Flags = paramString;
-    initialized = false;
   }
   
   public static void setLoadLibraryDelegate(ILoadLibraryDelegate paramILoadLibraryDelegate)
   {
-    AppMethodBeat.i(75339);
+    AppMethodBeat.i(61964);
     if (paramILoadLibraryDelegate == null)
     {
       paramILoadLibraryDelegate = new IllegalArgumentException("setLoadLibraryDelegate: param delegate null");
-      AppMethodBeat.o(75339);
+      AppMethodBeat.o(61964);
       throw paramILoadLibraryDelegate;
     }
     sLoadLibraryDelegate = paramILoadLibraryDelegate;
-    AppMethodBeat.o(75339);
+    AppMethodBeat.o(61964);
   }
   
   protected void acquireLock(long paramLong)
   {
-    AppMethodBeat.i(75249);
+    AppMethodBeat.i(61873);
     _acquireLock(paramLong);
-    AppMethodBeat.o(75249);
+    AppMethodBeat.o(61873);
   }
   
   protected void add(long paramLong1, long paramLong2, String paramString, double paramDouble)
   {
-    AppMethodBeat.i(75284);
+    AppMethodBeat.i(61908);
     _add(paramLong1, paramLong2, paramString, paramDouble);
-    AppMethodBeat.o(75284);
+    AppMethodBeat.o(61908);
   }
   
   protected void add(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    AppMethodBeat.i(75281);
+    AppMethodBeat.i(61905);
     _add(paramLong1, paramLong2, paramString, paramInt);
-    AppMethodBeat.o(75281);
+    AppMethodBeat.o(61905);
   }
   
   protected void add(long paramLong1, long paramLong2, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(75285);
+    AppMethodBeat.i(61909);
     _add(paramLong1, paramLong2, paramString1, paramString2);
-    AppMethodBeat.o(75285);
+    AppMethodBeat.o(61909);
   }
   
   protected void add(long paramLong1, long paramLong2, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(75283);
+    AppMethodBeat.i(61907);
     _add(paramLong1, paramLong2, paramString, paramBoolean);
-    AppMethodBeat.o(75283);
+    AppMethodBeat.o(61907);
   }
   
   protected void addArrayBooleanItem(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    AppMethodBeat.i(75312);
+    AppMethodBeat.i(61936);
     _addArrayBooleanItem(paramLong1, paramLong2, paramBoolean);
-    AppMethodBeat.o(75312);
+    AppMethodBeat.o(61936);
   }
   
   protected void addArrayDoubleItem(long paramLong1, long paramLong2, double paramDouble)
   {
-    AppMethodBeat.i(75313);
+    AppMethodBeat.i(61937);
     _addArrayDoubleItem(paramLong1, paramLong2, paramDouble);
-    AppMethodBeat.o(75313);
+    AppMethodBeat.o(61937);
   }
   
   protected void addArrayIntItem(long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(75311);
+    AppMethodBeat.i(61935);
     _addArrayIntItem(paramLong1, paramLong2, paramInt);
-    AppMethodBeat.o(75311);
+    AppMethodBeat.o(61935);
   }
   
   protected void addArrayNullItem(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75317);
+    AppMethodBeat.i(61941);
     _addArrayNullItem(paramLong1, paramLong2);
-    AppMethodBeat.o(75317);
+    AppMethodBeat.o(61941);
   }
   
   protected void addArrayObjectItem(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(75315);
+    AppMethodBeat.i(61939);
     _addArrayObjectItem(paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(75315);
+    AppMethodBeat.o(61939);
   }
   
   protected void addArrayStringItem(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(75314);
+    AppMethodBeat.i(61938);
     _addArrayStringItem(paramLong1, paramLong2, paramString);
-    AppMethodBeat.o(75314);
+    AppMethodBeat.o(61938);
   }
   
   protected void addArrayUndefinedItem(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75316);
+    AppMethodBeat.i(61940);
     _addArrayUndefinedItem(paramLong1, paramLong2);
-    AppMethodBeat.o(75316);
+    AppMethodBeat.o(61940);
   }
   
   protected void addNull(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(75287);
+    AppMethodBeat.i(61911);
     _addNull(paramLong1, paramLong2, paramString);
-    AppMethodBeat.o(75287);
+    AppMethodBeat.o(61911);
   }
   
   void addObjRef(V8Value paramV8Value)
   {
-    AppMethodBeat.i(75337);
+    AppMethodBeat.i(61962);
     this.objectReferences += 1L;
     if (!this.referenceHandlers.isEmpty()) {
       notifyReferenceCreated(paramV8Value);
     }
-    AppMethodBeat.o(75337);
+    AppMethodBeat.o(61962);
   }
   
   protected void addObject(long paramLong1, long paramLong2, String paramString, long paramLong3)
   {
-    AppMethodBeat.i(75282);
+    AppMethodBeat.i(61906);
     _addObject(paramLong1, paramLong2, paramString, paramLong3);
-    AppMethodBeat.o(75282);
+    AppMethodBeat.o(61906);
   }
   
   public void addReferenceHandler(ReferenceHandler paramReferenceHandler)
   {
-    AppMethodBeat.i(75172);
+    AppMethodBeat.i(61796);
     this.referenceHandlers.add(0, paramReferenceHandler);
-    AppMethodBeat.o(75172);
+    AppMethodBeat.o(61796);
   }
   
   public void addReleaseHandler(V8Runnable paramV8Runnable)
   {
-    AppMethodBeat.i(75173);
+    AppMethodBeat.i(61797);
     this.releaseHandlers.add(paramV8Runnable);
-    AppMethodBeat.o(75173);
+    AppMethodBeat.o(61797);
   }
   
   protected void addUndefined(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(75286);
+    AppMethodBeat.i(61910);
     _addUndefined(paramLong1, paramLong2, paramString);
-    AppMethodBeat.o(75286);
+    AppMethodBeat.o(61910);
   }
   
   protected Object arrayGet(long paramLong1, int paramInt1, long paramLong2, int paramInt2)
   {
-    AppMethodBeat.i(75310);
+    AppMethodBeat.i(61934);
     Object localObject = _arrayGet(paramLong1, paramInt1, paramLong2, paramInt2);
-    AppMethodBeat.o(75310);
+    AppMethodBeat.o(61934);
     return localObject;
   }
   
   protected boolean arrayGetBoolean(long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(75306);
+    AppMethodBeat.i(61930);
     boolean bool = _arrayGetBoolean(paramLong1, paramLong2, paramInt);
-    AppMethodBeat.o(75306);
+    AppMethodBeat.o(61930);
     return bool;
   }
   
   protected int arrayGetBooleans(long paramLong1, long paramLong2, int paramInt1, int paramInt2, boolean[] paramArrayOfBoolean)
   {
-    AppMethodBeat.i(75331);
+    AppMethodBeat.i(61955);
     paramInt1 = _arrayGetBooleans(paramLong1, paramLong2, paramInt1, paramInt2, paramArrayOfBoolean);
-    AppMethodBeat.o(75331);
+    AppMethodBeat.o(61955);
     return paramInt1;
   }
   
   protected boolean[] arrayGetBooleans(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75326);
+    AppMethodBeat.i(61950);
     boolean[] arrayOfBoolean = _arrayGetBooleans(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75326);
+    AppMethodBeat.o(61950);
     return arrayOfBoolean;
   }
   
   protected byte arrayGetByte(long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(75307);
+    AppMethodBeat.i(61931);
     byte b = _arrayGetByte(paramLong1, paramLong2, paramInt);
-    AppMethodBeat.o(75307);
+    AppMethodBeat.o(61931);
     return b;
   }
   
   protected int arrayGetBytes(long paramLong1, long paramLong2, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(75332);
+    AppMethodBeat.i(61956);
     paramInt1 = _arrayGetBytes(paramLong1, paramLong2, paramInt1, paramInt2, paramArrayOfByte);
-    AppMethodBeat.o(75332);
+    AppMethodBeat.o(61956);
     return paramInt1;
   }
   
   protected byte[] arrayGetBytes(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75327);
+    AppMethodBeat.i(61951);
     byte[] arrayOfByte = _arrayGetBytes(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75327);
+    AppMethodBeat.o(61951);
     return arrayOfByte;
   }
   
   protected double arrayGetDouble(long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(75308);
+    AppMethodBeat.i(61932);
     double d = _arrayGetDouble(paramLong1, paramLong2, paramInt);
-    AppMethodBeat.o(75308);
+    AppMethodBeat.o(61932);
     return d;
   }
   
   protected int arrayGetDoubles(long paramLong1, long paramLong2, int paramInt1, int paramInt2, double[] paramArrayOfDouble)
   {
-    AppMethodBeat.i(75330);
+    AppMethodBeat.i(61954);
     paramInt1 = _arrayGetDoubles(paramLong1, paramLong2, paramInt1, paramInt2, paramArrayOfDouble);
-    AppMethodBeat.o(75330);
+    AppMethodBeat.o(61954);
     return paramInt1;
   }
   
   protected double[] arrayGetDoubles(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75325);
+    AppMethodBeat.i(61949);
     double[] arrayOfDouble = _arrayGetDoubles(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75325);
+    AppMethodBeat.o(61949);
     return arrayOfDouble;
   }
   
   protected int arrayGetInteger(long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(75305);
+    AppMethodBeat.i(61929);
     paramInt = _arrayGetInteger(paramLong1, paramLong2, paramInt);
-    AppMethodBeat.o(75305);
+    AppMethodBeat.o(61929);
     return paramInt;
   }
   
   protected int arrayGetIntegers(long paramLong1, long paramLong2, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(75329);
+    AppMethodBeat.i(61953);
     paramInt1 = _arrayGetIntegers(paramLong1, paramLong2, paramInt1, paramInt2, paramArrayOfInt);
-    AppMethodBeat.o(75329);
+    AppMethodBeat.o(61953);
     return paramInt1;
   }
   
   protected int[] arrayGetIntegers(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75324);
+    AppMethodBeat.i(61948);
     int[] arrayOfInt = _arrayGetIntegers(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75324);
+    AppMethodBeat.o(61948);
     return arrayOfInt;
   }
   
   protected int arrayGetSize(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75304);
+    AppMethodBeat.i(61928);
     int i = _arrayGetSize(paramLong1, paramLong2);
-    AppMethodBeat.o(75304);
+    AppMethodBeat.o(61928);
     return i;
   }
   
   protected String arrayGetString(long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(75309);
+    AppMethodBeat.i(61933);
     String str = _arrayGetString(paramLong1, paramLong2, paramInt);
-    AppMethodBeat.o(75309);
+    AppMethodBeat.o(61933);
     return str;
   }
   
   protected int arrayGetStrings(long paramLong1, long paramLong2, int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(75333);
+    AppMethodBeat.i(61957);
     paramInt1 = _arrayGetStrings(paramLong1, paramLong2, paramInt1, paramInt2, paramArrayOfString);
-    AppMethodBeat.o(75333);
+    AppMethodBeat.o(61957);
     return paramInt1;
   }
   
   protected String[] arrayGetStrings(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75328);
+    AppMethodBeat.i(61952);
     String[] arrayOfString = _arrayGetStrings(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75328);
+    AppMethodBeat.o(61952);
     return arrayOfString;
   }
   
@@ -1143,86 +1192,86 @@ public class V8
   protected Object callObjectJavaMethod(long paramLong, V8Object paramV8Object, V8Array paramV8Array)
   {
     // Byte code:
-    //   0: ldc_w 798
-    //   3: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 842
+    //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 124	com/eclipsesource/v8/V8:functionRegistry	Ljava/util/Map;
+    //   7: getfield 136	com/eclipsesource/v8/V8:functionRegistry	Ljava/util/Map;
     //   10: lload_1
-    //   11: invokestatic 801	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   14: invokeinterface 803 2 0
-    //   19: checkcast 6	com/eclipsesource/v8/V8$MethodDescriptor
+    //   11: invokestatic 845	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   14: invokeinterface 847 2 0
+    //   19: checkcast 11	com/eclipsesource/v8/V8$MethodDescriptor
     //   22: astore 6
     //   24: aload 6
-    //   26: getfield 807	com/eclipsesource/v8/V8$MethodDescriptor:callback	Lcom/eclipsesource/v8/JavaCallback;
+    //   26: getfield 851	com/eclipsesource/v8/V8$MethodDescriptor:callback	Lcom/eclipsesource/v8/JavaCallback;
     //   29: ifnull +29 -> 58
     //   32: aload_0
     //   33: aload 6
-    //   35: getfield 807	com/eclipsesource/v8/V8$MethodDescriptor:callback	Lcom/eclipsesource/v8/JavaCallback;
+    //   35: getfield 851	com/eclipsesource/v8/V8$MethodDescriptor:callback	Lcom/eclipsesource/v8/JavaCallback;
     //   38: aload_3
     //   39: aload 4
-    //   41: invokeinterface 813 3 0
-    //   46: invokespecial 815	com/eclipsesource/v8/V8:checkResult	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   41: invokeinterface 857 3 0
+    //   46: invokespecial 859	com/eclipsesource/v8/V8:checkResult	(Ljava/lang/Object;)Ljava/lang/Object;
     //   49: astore_3
-    //   50: ldc_w 798
-    //   53: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   50: ldc_w 842
+    //   53: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   56: aload_3
     //   57: areturn
     //   58: aload 6
-    //   60: getfield 421	com/eclipsesource/v8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
-    //   63: invokevirtual 818	java/lang/reflect/Method:isVarArgs	()Z
+    //   60: getfield 456	com/eclipsesource/v8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
+    //   63: invokevirtual 862	java/lang/reflect/Method:isVarArgs	()Z
     //   66: istore 5
     //   68: aload_0
     //   69: aload_3
     //   70: aload 6
     //   72: aload 4
     //   74: iload 5
-    //   76: invokespecial 820	com/eclipsesource/v8/V8:getArgs	(Lcom/eclipsesource/v8/V8Object;Lcom/eclipsesource/v8/V8$MethodDescriptor;Lcom/eclipsesource/v8/V8Array;Z)[Ljava/lang/Object;
+    //   76: invokespecial 864	com/eclipsesource/v8/V8:getArgs	(Lcom/eclipsesource/v8/V8Object;Lcom/eclipsesource/v8/V8$MethodDescriptor;Lcom/eclipsesource/v8/V8Array;Z)[Ljava/lang/Object;
     //   79: astore_3
     //   80: aload_0
     //   81: aload_3
-    //   82: invokespecial 822	com/eclipsesource/v8/V8:checkArgs	([Ljava/lang/Object;)V
+    //   82: invokespecial 866	com/eclipsesource/v8/V8:checkArgs	([Ljava/lang/Object;)V
     //   85: aload_0
     //   86: aload 6
-    //   88: getfield 421	com/eclipsesource/v8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
+    //   88: getfield 456	com/eclipsesource/v8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
     //   91: aload 6
-    //   93: getfield 825	com/eclipsesource/v8/V8$MethodDescriptor:object	Ljava/lang/Object;
+    //   93: getfield 869	com/eclipsesource/v8/V8$MethodDescriptor:object	Ljava/lang/Object;
     //   96: aload_3
-    //   97: invokevirtual 828	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   100: invokespecial 815	com/eclipsesource/v8/V8:checkResult	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   97: invokevirtual 872	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   100: invokespecial 859	com/eclipsesource/v8/V8:checkResult	(Ljava/lang/Object;)Ljava/lang/Object;
     //   103: astore 4
     //   105: aload_0
     //   106: aload_3
     //   107: iload 5
-    //   109: invokespecial 830	com/eclipsesource/v8/V8:releaseArguments	([Ljava/lang/Object;Z)V
-    //   112: ldc_w 798
-    //   115: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   109: invokespecial 874	com/eclipsesource/v8/V8:releaseArguments	([Ljava/lang/Object;Z)V
+    //   112: ldc_w 842
+    //   115: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   118: aload 4
     //   120: areturn
     //   121: astore 4
     //   123: aload 4
-    //   125: invokevirtual 834	java/lang/reflect/InvocationTargetException:getTargetException	()Ljava/lang/Throwable;
+    //   125: invokevirtual 878	java/lang/reflect/InvocationTargetException:getTargetException	()Ljava/lang/Throwable;
     //   128: astore 4
-    //   130: ldc_w 798
-    //   133: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   130: ldc_w 842
+    //   133: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   136: aload 4
     //   138: athrow
     //   139: astore 4
     //   141: aload_0
     //   142: aload_3
     //   143: iload 5
-    //   145: invokespecial 830	com/eclipsesource/v8/V8:releaseArguments	([Ljava/lang/Object;Z)V
-    //   148: ldc_w 798
-    //   151: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   145: invokespecial 874	com/eclipsesource/v8/V8:releaseArguments	([Ljava/lang/Object;Z)V
+    //   148: ldc_w 842
+    //   151: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   154: aload 4
     //   156: athrow
     //   157: astore 4
-    //   159: ldc_w 798
-    //   162: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   159: ldc_w 842
+    //   162: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   165: aload 4
     //   167: athrow
     //   168: astore 4
-    //   170: ldc_w 798
-    //   173: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   170: ldc_w 842
+    //   173: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   176: aload 4
     //   178: athrow
     // Local variable table:
@@ -1232,7 +1281,7 @@ public class V8
     //   0	179	3	paramV8Object	V8Object
     //   0	179	4	paramV8Array	V8Array
     //   66	78	5	bool	boolean
-    //   22	70	6	localMethodDescriptor	V8.MethodDescriptor
+    //   22	70	6	localMethodDescriptor	MethodDescriptor
     // Exception table:
     //   from	to	target	type
     //   85	105	121	java/lang/reflect/InvocationTargetException
@@ -1248,79 +1297,79 @@ public class V8
   protected void callVoidJavaMethod(long paramLong, V8Object paramV8Object, V8Array paramV8Array)
   {
     // Byte code:
-    //   0: ldc_w 837
-    //   3: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 881
+    //   3: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
-    //   7: getfield 124	com/eclipsesource/v8/V8:functionRegistry	Ljava/util/Map;
+    //   7: getfield 136	com/eclipsesource/v8/V8:functionRegistry	Ljava/util/Map;
     //   10: lload_1
-    //   11: invokestatic 801	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   14: invokeinterface 803 2 0
-    //   19: checkcast 6	com/eclipsesource/v8/V8$MethodDescriptor
+    //   11: invokestatic 845	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   14: invokeinterface 847 2 0
+    //   19: checkcast 11	com/eclipsesource/v8/V8$MethodDescriptor
     //   22: astore 6
     //   24: aload 6
-    //   26: getfield 841	com/eclipsesource/v8/V8$MethodDescriptor:voidCallback	Lcom/eclipsesource/v8/JavaVoidCallback;
+    //   26: getfield 885	com/eclipsesource/v8/V8$MethodDescriptor:voidCallback	Lcom/eclipsesource/v8/JavaVoidCallback;
     //   29: ifnull +23 -> 52
     //   32: aload 6
-    //   34: getfield 841	com/eclipsesource/v8/V8$MethodDescriptor:voidCallback	Lcom/eclipsesource/v8/JavaVoidCallback;
+    //   34: getfield 885	com/eclipsesource/v8/V8$MethodDescriptor:voidCallback	Lcom/eclipsesource/v8/JavaVoidCallback;
     //   37: aload_3
     //   38: aload 4
-    //   40: invokeinterface 846 3 0
-    //   45: ldc_w 837
-    //   48: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   40: invokeinterface 890 3 0
+    //   45: ldc_w 881
+    //   48: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   51: return
     //   52: aload 6
-    //   54: getfield 421	com/eclipsesource/v8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
-    //   57: invokevirtual 818	java/lang/reflect/Method:isVarArgs	()Z
+    //   54: getfield 456	com/eclipsesource/v8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
+    //   57: invokevirtual 862	java/lang/reflect/Method:isVarArgs	()Z
     //   60: istore 5
     //   62: aload_0
     //   63: aload_3
     //   64: aload 6
     //   66: aload 4
     //   68: iload 5
-    //   70: invokespecial 820	com/eclipsesource/v8/V8:getArgs	(Lcom/eclipsesource/v8/V8Object;Lcom/eclipsesource/v8/V8$MethodDescriptor;Lcom/eclipsesource/v8/V8Array;Z)[Ljava/lang/Object;
+    //   70: invokespecial 864	com/eclipsesource/v8/V8:getArgs	(Lcom/eclipsesource/v8/V8Object;Lcom/eclipsesource/v8/V8$MethodDescriptor;Lcom/eclipsesource/v8/V8Array;Z)[Ljava/lang/Object;
     //   73: astore_3
     //   74: aload_0
     //   75: aload_3
-    //   76: invokespecial 822	com/eclipsesource/v8/V8:checkArgs	([Ljava/lang/Object;)V
+    //   76: invokespecial 866	com/eclipsesource/v8/V8:checkArgs	([Ljava/lang/Object;)V
     //   79: aload 6
-    //   81: getfield 421	com/eclipsesource/v8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
+    //   81: getfield 456	com/eclipsesource/v8/V8$MethodDescriptor:method	Ljava/lang/reflect/Method;
     //   84: aload 6
-    //   86: getfield 825	com/eclipsesource/v8/V8$MethodDescriptor:object	Ljava/lang/Object;
+    //   86: getfield 869	com/eclipsesource/v8/V8$MethodDescriptor:object	Ljava/lang/Object;
     //   89: aload_3
-    //   90: invokevirtual 828	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   90: invokevirtual 872	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     //   93: pop
     //   94: aload_0
     //   95: aload_3
     //   96: iload 5
-    //   98: invokespecial 830	com/eclipsesource/v8/V8:releaseArguments	([Ljava/lang/Object;Z)V
-    //   101: ldc_w 837
-    //   104: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: invokespecial 874	com/eclipsesource/v8/V8:releaseArguments	([Ljava/lang/Object;Z)V
+    //   101: ldc_w 881
+    //   104: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   107: return
     //   108: astore 4
     //   110: aload 4
-    //   112: invokevirtual 834	java/lang/reflect/InvocationTargetException:getTargetException	()Ljava/lang/Throwable;
+    //   112: invokevirtual 878	java/lang/reflect/InvocationTargetException:getTargetException	()Ljava/lang/Throwable;
     //   115: astore 4
-    //   117: ldc_w 837
-    //   120: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: ldc_w 881
+    //   120: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   123: aload 4
     //   125: athrow
     //   126: astore 4
     //   128: aload_0
     //   129: aload_3
     //   130: iload 5
-    //   132: invokespecial 830	com/eclipsesource/v8/V8:releaseArguments	([Ljava/lang/Object;Z)V
-    //   135: ldc_w 837
-    //   138: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   132: invokespecial 874	com/eclipsesource/v8/V8:releaseArguments	([Ljava/lang/Object;Z)V
+    //   135: ldc_w 881
+    //   138: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   141: aload 4
     //   143: athrow
     //   144: astore 4
-    //   146: ldc_w 837
-    //   149: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   146: ldc_w 881
+    //   149: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   152: aload 4
     //   154: athrow
     //   155: astore 4
-    //   157: ldc_w 837
-    //   160: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   157: ldc_w 881
+    //   160: invokestatic 109	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   163: aload 4
     //   165: athrow
     // Local variable table:
@@ -1330,7 +1379,7 @@ public class V8
     //   0	166	3	paramV8Object	V8Object
     //   0	166	4	paramV8Array	V8Array
     //   60	71	5	bool	boolean
-    //   22	63	6	localMethodDescriptor	V8.MethodDescriptor
+    //   22	63	6	localMethodDescriptor	MethodDescriptor
     // Exception table:
     //   from	to	target	type
     //   79	94	108	java/lang/reflect/InvocationTargetException
@@ -1344,545 +1393,569 @@ public class V8
   
   void checkRuntime(V8Value paramV8Value)
   {
-    AppMethodBeat.i(75223);
+    AppMethodBeat.i(61847);
     if ((paramV8Value == null) || (paramV8Value.isUndefined()))
     {
-      AppMethodBeat.o(75223);
+      AppMethodBeat.o(61847);
       return;
     }
     paramV8Value = paramV8Value.getRuntime();
     if ((paramV8Value == null) || (paramV8Value.isReleased()) || (paramV8Value != this))
     {
       paramV8Value = new Error("Invalid target runtime");
-      AppMethodBeat.o(75223);
+      AppMethodBeat.o(61847);
       throw paramV8Value;
     }
-    AppMethodBeat.o(75223);
+    AppMethodBeat.o(61847);
   }
   
   void checkThread()
   {
-    AppMethodBeat.i(75224);
+    AppMethodBeat.i(61848);
     this.locker.checkThread();
     if (isReleased())
     {
       Error localError = new Error("Runtime disposed error");
-      AppMethodBeat.o(75224);
+      AppMethodBeat.o(61848);
       throw localError;
     }
-    AppMethodBeat.o(75224);
+    AppMethodBeat.o(61848);
   }
   
   protected void closeUVLoop()
   {
-    AppMethodBeat.i(75170);
+    AppMethodBeat.i(61794);
     _closeUVLoop(this.v8RuntimePtr);
-    AppMethodBeat.o(75170);
+    AppMethodBeat.o(61794);
   }
   
   protected boolean contains(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(75262);
+    AppMethodBeat.i(61886);
     boolean bool = _contains(paramLong1, paramLong2, paramString);
-    AppMethodBeat.o(75262);
+    AppMethodBeat.o(61886);
     return bool;
   }
   
   void createAndRegisterMethodDescriptor(JavaCallback paramJavaCallback, long paramLong)
   {
-    AppMethodBeat.i(75229);
-    V8.MethodDescriptor localMethodDescriptor = new V8.MethodDescriptor(this, null);
+    AppMethodBeat.i(61853);
+    MethodDescriptor localMethodDescriptor = new MethodDescriptor(null);
     localMethodDescriptor.callback = paramJavaCallback;
     this.functionRegistry.put(Long.valueOf(paramLong), localMethodDescriptor);
-    AppMethodBeat.o(75229);
+    AppMethodBeat.o(61853);
   }
   
   void createNodeRuntime(String paramString)
   {
-    AppMethodBeat.i(75244);
+    AppMethodBeat.i(61868);
     _startNodeJS(this.v8RuntimePtr, paramString);
-    AppMethodBeat.o(75244);
+    AppMethodBeat.o(61868);
   }
   
   protected void createTwin(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(75252);
+    AppMethodBeat.i(61876);
     _createTwin(paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(75252);
+    AppMethodBeat.o(61876);
   }
   
   protected void createTwin(V8Value paramV8Value1, V8Value paramV8Value2)
   {
-    AppMethodBeat.i(75198);
+    AppMethodBeat.i(61822);
     checkThread();
     createTwin(this.v8RuntimePtr, paramV8Value1.getHandle(), paramV8Value2.getHandle());
-    AppMethodBeat.o(75198);
+    AppMethodBeat.o(61822);
   }
   
   protected ByteBuffer createV8ArrayBufferBackingStore(long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(75301);
+    AppMethodBeat.i(61925);
     ByteBuffer localByteBuffer = _createV8ArrayBufferBackingStore(paramLong1, paramLong2, paramInt);
-    AppMethodBeat.o(75301);
+    AppMethodBeat.o(61925);
     return localByteBuffer;
   }
   
   protected long createV8Context(int paramInt)
   {
-    AppMethodBeat.i(75167);
+    AppMethodBeat.i(61791);
     long l = _createContext(this.v8RuntimePtr, paramInt);
-    AppMethodBeat.o(75167);
+    AppMethodBeat.o(61791);
     return l;
   }
   
   public void debuggerMessageLoop()
   {
-    AppMethodBeat.i(75342);
+    AppMethodBeat.i(61967);
     checkThread();
     _debugMessageLoop(this.v8RuntimePtr);
-    AppMethodBeat.o(75342);
+    AppMethodBeat.o(61967);
   }
   
   protected void disposeMethodID(long paramLong)
   {
-    AppMethodBeat.i(75232);
+    AppMethodBeat.i(61856);
     this.functionRegistry.remove(Long.valueOf(paramLong));
-    AppMethodBeat.o(75232);
+    AppMethodBeat.o(61856);
+  }
+  
+  public void enableNativeTrans()
+  {
+    AppMethodBeat.i(190134);
+    _enableNativeTrans(this.v8RuntimePtr);
+    AppMethodBeat.o(190134);
   }
   
   protected boolean equals(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(75276);
+    AppMethodBeat.i(61900);
     boolean bool = _equals(paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(75276);
+    AppMethodBeat.o(61900);
     return bool;
   }
   
   public V8Array executeArrayScript(String paramString)
   {
-    AppMethodBeat.i(75208);
-    paramString = executeArrayScript(paramString, null, 0, null, null);
-    AppMethodBeat.o(75208);
+    AppMethodBeat.i(61832);
+    paramString = executeArrayScript(paramString, null, 0, null, null, 0, null);
+    AppMethodBeat.o(61832);
     return paramString;
   }
   
   public V8Array executeArrayScript(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(75209);
-    paramString1 = executeArrayScript(paramString1, paramString2, paramInt, null, null);
-    AppMethodBeat.o(75209);
+    AppMethodBeat.i(61833);
+    paramString1 = executeArrayScript(paramString1, paramString2, paramInt, null, null, 0, null);
+    AppMethodBeat.o(61833);
     return paramString1;
   }
   
-  public V8Array executeArrayScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public V8Array executeArrayScript(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails)
   {
-    AppMethodBeat.i(75210);
+    AppMethodBeat.i(61834);
     checkThread();
-    paramString1 = executeScript(paramString1, paramString2, paramInt, paramString3, paramString4);
+    paramString1 = executeScript(paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, paramExecuteDetails);
     if ((paramString1 instanceof V8Array))
     {
       paramString1 = (V8Array)paramString1;
-      AppMethodBeat.o(75210);
+      AppMethodBeat.o(61834);
       return paramString1;
     }
     paramString1 = new V8ResultUndefined();
-    AppMethodBeat.o(75210);
+    AppMethodBeat.o(61834);
     throw paramString1;
   }
   
   protected boolean executeBooleanFunction(long paramLong1, long paramLong2, String paramString, long paramLong3)
   {
-    AppMethodBeat.i(75272);
+    AppMethodBeat.i(61896);
     boolean bool = _executeBooleanFunction(paramLong1, paramLong2, paramString, paramLong3);
-    AppMethodBeat.o(75272);
+    AppMethodBeat.o(61896);
     return bool;
   }
   
-  protected boolean executeBooleanScript(long paramLong, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  protected boolean executeBooleanScript(long paramLong, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails)
   {
-    AppMethodBeat.i(75256);
-    boolean bool = _executeBooleanScript(paramLong, paramString1, paramString2, paramInt, paramString3, paramString4);
-    AppMethodBeat.o(75256);
+    AppMethodBeat.i(61880);
+    boolean bool = _executeBooleanScript(paramLong, paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, paramExecuteDetails);
+    AppMethodBeat.o(61880);
     return bool;
   }
   
   public boolean executeBooleanScript(String paramString)
   {
-    AppMethodBeat.i(75205);
-    boolean bool = executeBooleanScript(paramString, null, 0, null, null);
-    AppMethodBeat.o(75205);
+    AppMethodBeat.i(61829);
+    boolean bool = executeBooleanScript(paramString, null, 0, null, null, 0, null);
+    AppMethodBeat.o(61829);
     return bool;
   }
   
   public boolean executeBooleanScript(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(75206);
-    boolean bool = executeBooleanScript(paramString1, paramString2, paramInt, null, null);
-    AppMethodBeat.o(75206);
+    AppMethodBeat.i(61830);
+    boolean bool = executeBooleanScript(paramString1, paramString2, paramInt, null, null, 0, null);
+    AppMethodBeat.o(61830);
     return bool;
   }
   
-  public boolean executeBooleanScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public boolean executeBooleanScript(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails)
   {
-    AppMethodBeat.i(75207);
+    AppMethodBeat.i(61831);
     checkThread();
     checkScript(paramString1);
-    boolean bool = executeBooleanScript(this.v8RuntimePtr, paramString1, paramString2, paramInt, paramString3, paramString4);
-    AppMethodBeat.o(75207);
+    boolean bool = executeBooleanScript(this.v8RuntimePtr, paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, paramExecuteDetails);
+    AppMethodBeat.o(61831);
     return bool;
   }
   
   public String executeDebugScript(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(75340);
+    AppMethodBeat.i(61965);
     checkThread();
     checkScript(paramString1);
     paramString1 = _executeDebugScript(this.v8RuntimePtr, paramString1, paramString2);
-    AppMethodBeat.o(75340);
+    AppMethodBeat.o(61965);
     return paramString1;
   }
   
   protected double executeDoubleFunction(long paramLong1, long paramLong2, String paramString, long paramLong3)
   {
-    AppMethodBeat.i(75270);
+    AppMethodBeat.i(61894);
     double d = _executeDoubleFunction(paramLong1, paramLong2, paramString, paramLong3);
-    AppMethodBeat.o(75270);
+    AppMethodBeat.o(61894);
     return d;
   }
   
-  protected double executeDoubleScript(long paramLong, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  protected double executeDoubleScript(long paramLong, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails)
   {
-    AppMethodBeat.i(75254);
-    double d = _executeDoubleScript(paramLong, paramString1, paramString2, paramInt, paramString3, paramString4);
-    AppMethodBeat.o(75254);
+    AppMethodBeat.i(61878);
+    double d = _executeDoubleScript(paramLong, paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, paramExecuteDetails);
+    AppMethodBeat.o(61878);
     return d;
   }
   
   public double executeDoubleScript(String paramString)
   {
-    AppMethodBeat.i(75199);
-    double d = executeDoubleScript(paramString, null, 0, null, null);
-    AppMethodBeat.o(75199);
+    AppMethodBeat.i(61823);
+    double d = executeDoubleScript(paramString, null, 0, null, null, 0, null);
+    AppMethodBeat.o(61823);
     return d;
   }
   
   public double executeDoubleScript(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(75200);
-    double d = executeDoubleScript(paramString1, paramString2, paramInt, null, null);
-    AppMethodBeat.o(75200);
+    AppMethodBeat.i(61824);
+    double d = executeDoubleScript(paramString1, paramString2, paramInt, null, null, 0, null);
+    AppMethodBeat.o(61824);
     return d;
   }
   
-  public double executeDoubleScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public double executeDoubleScript(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails)
   {
-    AppMethodBeat.i(75201);
+    AppMethodBeat.i(61825);
     checkThread();
     checkScript(paramString1);
-    double d = executeDoubleScript(this.v8RuntimePtr, paramString1, paramString2, paramInt, paramString3, paramString4);
-    AppMethodBeat.o(75201);
+    double d = executeDoubleScript(this.v8RuntimePtr, paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, paramExecuteDetails);
+    AppMethodBeat.o(61825);
     return d;
   }
   
   protected Object executeFunction(long paramLong1, int paramInt, long paramLong2, String paramString, long paramLong3)
   {
-    AppMethodBeat.i(75273);
+    AppMethodBeat.i(61897);
     paramString = _executeFunction(paramLong1, paramInt, paramLong2, paramString, paramLong3);
-    AppMethodBeat.o(75273);
+    AppMethodBeat.o(61897);
     return paramString;
   }
   
   protected Object executeFunction(long paramLong1, long paramLong2, long paramLong3, long paramLong4)
   {
-    AppMethodBeat.i(75274);
+    AppMethodBeat.i(61898);
     Object localObject = _executeFunction(paramLong1, paramLong2, paramLong3, paramLong4);
-    AppMethodBeat.o(75274);
+    AppMethodBeat.o(61898);
     return localObject;
   }
   
   protected int executeIntegerFunction(long paramLong1, long paramLong2, String paramString, long paramLong3)
   {
-    AppMethodBeat.i(75269);
+    AppMethodBeat.i(61893);
     int i = _executeIntegerFunction(paramLong1, paramLong2, paramString, paramLong3);
-    AppMethodBeat.o(75269);
+    AppMethodBeat.o(61893);
     return i;
   }
   
-  protected int executeIntegerScript(long paramLong, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  protected int executeIntegerScript(long paramLong, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails)
   {
-    AppMethodBeat.i(75253);
-    paramInt = _executeIntegerScript(paramLong, paramString1, paramString2, paramInt, paramString3, paramString4);
-    AppMethodBeat.o(75253);
-    return paramInt;
+    AppMethodBeat.i(61877);
+    paramInt1 = _executeIntegerScript(paramLong, paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, paramExecuteDetails);
+    AppMethodBeat.o(61877);
+    return paramInt1;
   }
   
   public int executeIntegerScript(String paramString)
   {
-    AppMethodBeat.i(75195);
-    int i = executeIntegerScript(paramString, null, 0, null, null);
-    AppMethodBeat.o(75195);
+    AppMethodBeat.i(61819);
+    int i = executeIntegerScript(paramString, null, 0, null, null, 0, null);
+    AppMethodBeat.o(61819);
     return i;
   }
   
   public int executeIntegerScript(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(75196);
-    paramInt = executeIntegerScript(paramString1, paramString2, paramInt, null, null);
-    AppMethodBeat.o(75196);
+    AppMethodBeat.i(61820);
+    paramInt = executeIntegerScript(paramString1, paramString2, paramInt, null, null, 0, null);
+    AppMethodBeat.o(61820);
     return paramInt;
   }
   
-  public int executeIntegerScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public int executeIntegerScript(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails)
   {
-    AppMethodBeat.i(75197);
+    AppMethodBeat.i(61821);
     checkThread();
     checkScript(paramString1);
-    paramInt = executeIntegerScript(this.v8RuntimePtr, paramString1, paramString2, paramInt, paramString3, paramString4);
-    AppMethodBeat.o(75197);
-    return paramInt;
+    paramInt1 = executeIntegerScript(this.v8RuntimePtr, paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, paramExecuteDetails);
+    AppMethodBeat.o(61821);
+    return paramInt1;
   }
   
   public V8Object executeObjectScript(String paramString)
   {
-    AppMethodBeat.i(75214);
-    paramString = executeObjectScript(paramString, null, 0, null, null);
-    AppMethodBeat.o(75214);
+    AppMethodBeat.i(61838);
+    paramString = executeObjectScript(paramString, null, 0, null, null, 0, null);
+    AppMethodBeat.o(61838);
     return paramString;
   }
   
   public V8Object executeObjectScript(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(75215);
-    paramString1 = executeObjectScript(paramString1, paramString2, paramInt, null, null);
-    AppMethodBeat.o(75215);
+    AppMethodBeat.i(61839);
+    paramString1 = executeObjectScript(paramString1, paramString2, paramInt, null, null, 0, null);
+    AppMethodBeat.o(61839);
     return paramString1;
   }
   
-  public V8Object executeObjectScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public V8Object executeObjectScript(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails)
   {
-    AppMethodBeat.i(75216);
+    AppMethodBeat.i(61840);
     checkThread();
-    paramString1 = executeScript(paramString1, paramString2, paramInt, paramString3, paramString4);
+    paramString1 = executeScript(paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, paramExecuteDetails);
     if ((paramString1 instanceof V8Object))
     {
       paramString1 = (V8Object)paramString1;
-      AppMethodBeat.o(75216);
+      AppMethodBeat.o(61840);
       return paramString1;
     }
     paramString1 = new V8ResultUndefined();
-    AppMethodBeat.o(75216);
+    AppMethodBeat.o(61840);
     throw paramString1;
   }
   
-  protected Object executeScript(long paramLong, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4)
+  protected Object executeScript(long paramLong, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, int paramInt3, ExecuteDetails paramExecuteDetails)
   {
-    AppMethodBeat.i(75257);
-    paramString1 = _executeScript(paramLong, paramInt1, paramString1, paramString2, paramInt2, paramString3, paramString4);
-    AppMethodBeat.o(75257);
+    AppMethodBeat.i(61881);
+    paramString1 = _executeScript(paramLong, paramInt1, paramString1, paramString2, paramInt2, paramString3, paramString4, paramInt3, paramExecuteDetails);
+    AppMethodBeat.o(61881);
     return paramString1;
   }
   
   public Object executeScript(String paramString)
   {
-    AppMethodBeat.i(75211);
-    paramString = executeScript(paramString, null, 0, null, null);
-    AppMethodBeat.o(75211);
+    AppMethodBeat.i(61835);
+    paramString = executeScript(paramString, null, 0, null, null, 0, null);
+    AppMethodBeat.o(61835);
     return paramString;
   }
   
   public Object executeScript(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(75212);
-    paramString1 = executeScript(paramString1, paramString2, paramInt, null, null);
-    AppMethodBeat.o(75212);
+    AppMethodBeat.i(61836);
+    paramString1 = executeScript(paramString1, paramString2, paramInt, null, null, 0, null);
+    AppMethodBeat.o(61836);
     return paramString1;
   }
   
-  public Object executeScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public Object executeScript(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails)
   {
-    AppMethodBeat.i(75213);
+    AppMethodBeat.i(61837);
     checkThread();
     checkScript(paramString1);
-    paramString1 = executeScript(getV8RuntimePtr(), 0, paramString1, paramString2, paramInt, paramString3, paramString4);
-    AppMethodBeat.o(75213);
+    paramString1 = executeScript(getV8RuntimePtr(), 0, paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, paramExecuteDetails);
+    AppMethodBeat.o(61837);
     return paramString1;
   }
   
   protected String executeStringFunction(long paramLong1, long paramLong2, String paramString, long paramLong3)
   {
-    AppMethodBeat.i(75271);
+    AppMethodBeat.i(61895);
     paramString = _executeStringFunction(paramLong1, paramLong2, paramString, paramLong3);
-    AppMethodBeat.o(75271);
+    AppMethodBeat.o(61895);
     return paramString;
   }
   
-  protected String executeStringScript(long paramLong, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  protected String executeStringScript(long paramLong, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails)
   {
-    AppMethodBeat.i(75255);
-    paramString1 = _executeStringScript(paramLong, paramString1, paramString2, paramInt, paramString3, paramString4);
-    AppMethodBeat.o(75255);
+    AppMethodBeat.i(61879);
+    paramString1 = _executeStringScript(paramLong, paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, paramExecuteDetails);
+    AppMethodBeat.o(61879);
     return paramString1;
   }
   
   public String executeStringScript(String paramString)
   {
-    AppMethodBeat.i(75202);
-    paramString = executeStringScript(paramString, null, 0, null, null);
-    AppMethodBeat.o(75202);
+    AppMethodBeat.i(61826);
+    paramString = executeStringScript(paramString, null, 0, null, null, 0, null);
+    AppMethodBeat.o(61826);
     return paramString;
   }
   
   public String executeStringScript(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(75203);
-    paramString1 = executeStringScript(paramString1, paramString2, paramInt, null, null);
-    AppMethodBeat.o(75203);
+    AppMethodBeat.i(61827);
+    paramString1 = executeStringScript(paramString1, paramString2, paramInt, null, null, 0, null);
+    AppMethodBeat.o(61827);
     return paramString1;
   }
   
-  public String executeStringScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public String executeStringScript(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails)
   {
-    AppMethodBeat.i(75204);
+    AppMethodBeat.i(61828);
     checkThread();
     checkScript(paramString1);
-    paramString1 = executeStringScript(this.v8RuntimePtr, paramString1, paramString2, paramInt, paramString3, paramString4);
-    AppMethodBeat.o(75204);
+    paramString1 = executeStringScript(this.v8RuntimePtr, paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, paramExecuteDetails);
+    AppMethodBeat.o(61828);
     return paramString1;
   }
   
   protected void executeVoidFunction(long paramLong1, long paramLong2, String paramString, long paramLong3)
   {
-    AppMethodBeat.i(75275);
+    AppMethodBeat.i(61899);
     _executeVoidFunction(paramLong1, paramLong2, paramString, paramLong3);
-    AppMethodBeat.o(75275);
+    AppMethodBeat.o(61899);
   }
   
-  protected void executeVoidScript(long paramLong, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  protected void executeVoidScript(long paramLong, String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails)
   {
-    AppMethodBeat.i(75258);
-    _executeVoidScript(paramLong, paramString1, paramString2, paramInt, paramString3, paramString4);
-    AppMethodBeat.o(75258);
+    AppMethodBeat.i(61882);
+    _executeVoidScript(paramLong, paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, paramExecuteDetails);
+    AppMethodBeat.o(61882);
   }
   
   public void executeVoidScript(String paramString)
   {
-    AppMethodBeat.i(75217);
-    executeVoidScript(paramString, null, 0, null, null);
-    AppMethodBeat.o(75217);
+    AppMethodBeat.i(61841);
+    executeVoidScript(paramString, null, 0, null, null, 0, null);
+    AppMethodBeat.o(61841);
   }
   
   public void executeVoidScript(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(75218);
-    executeVoidScript(paramString1, paramString2, paramInt, null, null);
-    AppMethodBeat.o(75218);
+    AppMethodBeat.i(61842);
+    executeVoidScript(paramString1, paramString2, paramInt, null, null, 0, null);
+    AppMethodBeat.o(61842);
   }
   
-  public void executeVoidScript(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public void executeVoidScript(String paramString1, String paramString2, int paramInt1, String paramString3, String paramString4, int paramInt2, ExecuteDetails paramExecuteDetails)
   {
-    AppMethodBeat.i(75219);
+    AppMethodBeat.i(61843);
     checkThread();
     checkScript(paramString1);
-    executeVoidScript(this.v8RuntimePtr, paramString1, paramString2, paramInt, paramString3, paramString4);
-    AppMethodBeat.o(75219);
+    executeVoidScript(this.v8RuntimePtr, paramString1, paramString2, paramInt1, paramString3, paramString4, paramInt2, paramExecuteDetails);
+    AppMethodBeat.o(61843);
+  }
+  
+  protected Object executeWxaScript(long paramLong, ArrayList<ScriptPartObject> paramArrayList, int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3, int paramInt3, ExecuteDetails paramExecuteDetails)
+  {
+    AppMethodBeat.i(175413);
+    paramArrayList = _executeWxaScript(paramLong, paramArrayList, paramInt1, paramString1, paramInt2, paramString2, paramString3, paramInt3, paramExecuteDetails);
+    AppMethodBeat.o(175413);
+    return paramArrayList;
+  }
+  
+  public Object executeWxaScript(ArrayList<ScriptPartObject> paramArrayList, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, ExecuteDetails paramExecuteDetails)
+  {
+    AppMethodBeat.i(175412);
+    checkThread();
+    paramArrayList = executeWxaScript(this.v8RuntimePtr, paramArrayList, 0, paramString1, paramInt1, paramString2, paramString3, paramInt2, paramExecuteDetails);
+    AppMethodBeat.o(175412);
+    return paramArrayList;
   }
   
   protected Object get(long paramLong1, int paramInt, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(75268);
+    AppMethodBeat.i(61892);
     paramString = _get(paramLong1, paramInt, paramLong2, paramString);
-    AppMethodBeat.o(75268);
+    AppMethodBeat.o(61892);
     return paramString;
   }
   
   protected int getArrayType(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75321);
+    AppMethodBeat.i(61945);
     int i = _getArrayType(paramLong1, paramLong2);
-    AppMethodBeat.o(75321);
+    AppMethodBeat.o(61945);
     return i;
   }
   
   protected boolean getBoolean(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(75265);
+    AppMethodBeat.i(61889);
     boolean bool = _getBoolean(paramLong1, paramLong2, paramString);
-    AppMethodBeat.o(75265);
+    AppMethodBeat.o(61889);
     return bool;
   }
   
   public long getBuildID()
   {
-    AppMethodBeat.i(75220);
+    AppMethodBeat.i(61844);
     long l = _getBuildID();
-    AppMethodBeat.o(75220);
+    AppMethodBeat.o(61844);
     return l;
   }
   
   public Object getData(String paramString)
   {
-    AppMethodBeat.i(75177);
+    AppMethodBeat.i(61801);
     if (this.data == null)
     {
-      AppMethodBeat.o(75177);
+      AppMethodBeat.o(61801);
       return null;
     }
     paramString = this.data.get(paramString);
-    AppMethodBeat.o(75177);
+    AppMethodBeat.o(61801);
     return paramString;
   }
   
   protected double getDouble(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(75266);
+    AppMethodBeat.i(61890);
     double d = _getDouble(paramLong1, paramLong2, paramString);
-    AppMethodBeat.o(75266);
+    AppMethodBeat.o(61890);
     return d;
   }
   
   public V8Executor getExecutor(V8Object paramV8Object)
   {
-    AppMethodBeat.i(75192);
+    AppMethodBeat.i(61816);
     checkThread();
     if (this.executors == null)
     {
-      AppMethodBeat.o(75192);
+      AppMethodBeat.o(61816);
       return null;
     }
     paramV8Object = (V8Executor)this.executors.get(paramV8Object);
-    AppMethodBeat.o(75192);
+    AppMethodBeat.o(61816);
     return paramV8Object;
   }
   
   protected long getGlobalObject()
   {
-    AppMethodBeat.i(75248);
+    AppMethodBeat.i(61872);
     long l = _getGlobalObject(this.v8RuntimePtr);
-    AppMethodBeat.o(75248);
+    AppMethodBeat.o(61872);
     return l;
   }
   
   protected int getInteger(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(75264);
+    AppMethodBeat.i(61888);
     int i = _getInteger(paramLong1, paramLong2, paramString);
-    AppMethodBeat.o(75264);
+    AppMethodBeat.o(61888);
     return i;
   }
   
   protected long getIsolatePtr()
   {
-    AppMethodBeat.i(75336);
+    AppMethodBeat.i(61960);
     long l = _getIsolatePtr(this.v8RuntimePtr);
-    AppMethodBeat.o(75336);
+    AppMethodBeat.o(61960);
     return l;
   }
   
   protected String[] getKeys(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75263);
+    AppMethodBeat.i(61887);
     String[] arrayOfString = _getKeys(paramLong1, paramLong2);
-    AppMethodBeat.o(75263);
+    AppMethodBeat.o(61887);
     return arrayOfString;
   }
   
@@ -1893,51 +1966,59 @@ public class V8
   
   public long getObjectReferenceCount()
   {
-    AppMethodBeat.i(75183);
+    AppMethodBeat.i(61807);
     long l1 = this.objectReferences;
     long l2 = this.v8WeakReferences.size();
-    AppMethodBeat.o(75183);
+    AppMethodBeat.o(61807);
     return l1 - l2;
   }
   
   protected String getString(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(75267);
+    AppMethodBeat.i(61891);
     paramString = _getString(paramLong1, paramLong2, paramString);
-    AppMethodBeat.o(75267);
+    AppMethodBeat.o(61891);
     return paramString;
   }
   
   protected int getType(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75318);
+    AppMethodBeat.i(61942);
     int i = _getType(paramLong1, paramLong2);
-    AppMethodBeat.o(75318);
+    AppMethodBeat.o(61942);
     return i;
   }
   
   protected int getType(long paramLong1, long paramLong2, int paramInt)
   {
-    AppMethodBeat.i(75320);
+    AppMethodBeat.i(61944);
     paramInt = _getType(paramLong1, paramLong2, paramInt);
-    AppMethodBeat.o(75320);
+    AppMethodBeat.o(61944);
     return paramInt;
   }
   
   protected int getType(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75322);
+    AppMethodBeat.i(61946);
     paramInt1 = _getType(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75322);
+    AppMethodBeat.o(61946);
     return paramInt1;
   }
   
   protected int getType(long paramLong1, long paramLong2, String paramString)
   {
-    AppMethodBeat.i(75319);
+    AppMethodBeat.i(61943);
     int i = _getType(paramLong1, paramLong2, paramString);
-    AppMethodBeat.o(75319);
+    AppMethodBeat.o(61943);
     return i;
+  }
+  
+  protected long getUVLoopPtr()
+  {
+    AppMethodBeat.i(61961);
+    long l = _getUVLoopPtr(this.v8RuntimePtr);
+    AppMethodBeat.o(61961);
+    return l;
   }
   
   protected long getV8RuntimePtr()
@@ -1947,258 +2028,305 @@ public class V8
   
   protected int identityHash(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75280);
+    AppMethodBeat.i(61904);
     int i = _identityHash(paramLong1, paramLong2);
-    AppMethodBeat.o(75280);
+    AppMethodBeat.o(61904);
     return i;
   }
   
   protected long initNewSharedV8ArrayBuffer(long paramLong, ByteBuffer paramByteBuffer, int paramInt)
   {
-    AppMethodBeat.i(75290);
+    AppMethodBeat.i(61914);
     paramLong = _initNewSharedV8ArrayBuffer(paramLong, paramByteBuffer, paramInt);
-    AppMethodBeat.o(75290);
+    AppMethodBeat.o(61914);
     return paramLong;
   }
   
   protected long initNewV8Array(long paramLong)
   {
-    AppMethodBeat.i(75302);
+    AppMethodBeat.i(61926);
     paramLong = _initNewV8Array(paramLong);
-    AppMethodBeat.o(75302);
+    AppMethodBeat.o(61926);
     return paramLong;
   }
   
   protected long initNewV8ArrayBuffer(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(75291);
+    AppMethodBeat.i(61915);
     paramLong = _initNewV8ArrayBuffer(paramLong, paramInt);
-    AppMethodBeat.o(75291);
+    AppMethodBeat.o(61915);
     return paramLong;
   }
   
   protected long initNewV8ArrayBuffer(long paramLong, ByteBuffer paramByteBuffer, int paramInt)
   {
-    AppMethodBeat.i(75289);
+    AppMethodBeat.i(61913);
     paramLong = _initNewV8ArrayBuffer(paramLong, paramByteBuffer, paramInt);
-    AppMethodBeat.o(75289);
+    AppMethodBeat.o(61913);
     return paramLong;
   }
   
   public long initNewV8Float32Array(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75293);
+    AppMethodBeat.i(61917);
     paramLong1 = _initNewV8Float32Array(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75293);
+    AppMethodBeat.o(61917);
     return paramLong1;
   }
   
   public long initNewV8Float64Array(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75294);
+    AppMethodBeat.i(61918);
     paramLong1 = _initNewV8Float64Array(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75294);
+    AppMethodBeat.o(61918);
     return paramLong1;
   }
   
   protected long[] initNewV8Function(long paramLong)
   {
-    AppMethodBeat.i(75303);
+    AppMethodBeat.i(61927);
     checkThread();
     long[] arrayOfLong = _initNewV8Function(paramLong);
-    AppMethodBeat.o(75303);
+    AppMethodBeat.o(61927);
     return arrayOfLong;
   }
   
   public long initNewV8Int16Array(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75297);
+    AppMethodBeat.i(61921);
     paramLong1 = _initNewV8Int16Array(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75297);
+    AppMethodBeat.o(61921);
     return paramLong1;
   }
   
   public long initNewV8Int32Array(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75292);
+    AppMethodBeat.i(61916);
     paramLong1 = _initNewV8Int32Array(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75292);
+    AppMethodBeat.o(61916);
     return paramLong1;
   }
   
   public long initNewV8Int8Array(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75299);
+    AppMethodBeat.i(61923);
     paramLong1 = _initNewV8Int8Array(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75299);
+    AppMethodBeat.o(61923);
     return paramLong1;
   }
   
   protected long initNewV8Object(long paramLong)
   {
-    AppMethodBeat.i(75247);
+    AppMethodBeat.i(61871);
     paramLong = _initNewV8Object(paramLong);
-    AppMethodBeat.o(75247);
+    AppMethodBeat.o(61871);
     return paramLong;
   }
   
   public long initNewV8UInt16Array(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75296);
+    AppMethodBeat.i(61920);
     paramLong1 = _initNewV8UInt16Array(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75296);
+    AppMethodBeat.o(61920);
     return paramLong1;
   }
   
   public long initNewV8UInt32Array(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75295);
+    AppMethodBeat.i(61919);
     paramLong1 = _initNewV8UInt32Array(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75295);
+    AppMethodBeat.o(61919);
     return paramLong1;
   }
   
   public long initNewV8UInt8Array(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75298);
+    AppMethodBeat.i(61922);
     paramLong1 = _initNewV8UInt8Array(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75298);
+    AppMethodBeat.o(61922);
     return paramLong1;
   }
   
   public long initNewV8UInt8ClampedArray(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(75300);
+    AppMethodBeat.i(61924);
     paramLong1 = _initNewV8UInt8ClampedArray(paramLong1, paramLong2, paramInt1, paramInt2);
-    AppMethodBeat.o(75300);
+    AppMethodBeat.o(61924);
     return paramLong1;
   }
   
   boolean isRunning()
   {
-    AppMethodBeat.i(75246);
+    AppMethodBeat.i(61870);
     boolean bool = _isRunning(this.v8RuntimePtr);
-    AppMethodBeat.o(75246);
+    AppMethodBeat.o(61870);
     return bool;
   }
   
   protected boolean isWeak(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75260);
+    AppMethodBeat.i(61884);
     boolean bool = _isWeak(paramLong1, paramLong2);
-    AppMethodBeat.o(75260);
+    AppMethodBeat.o(61884);
     return bool;
   }
   
   public void lowMemoryNotification()
   {
-    AppMethodBeat.i(75221);
+    AppMethodBeat.i(61845);
     checkThread();
     lowMemoryNotification(getV8RuntimePtr());
-    AppMethodBeat.o(75221);
+    AppMethodBeat.o(61845);
   }
   
   protected void lowMemoryNotification(long paramLong)
   {
-    AppMethodBeat.i(75251);
+    AppMethodBeat.i(61875);
     _lowMemoryNotification(paramLong);
-    AppMethodBeat.o(75251);
+    AppMethodBeat.o(61875);
   }
   
   public void memoryPressureNotification(int paramInt)
   {
-    AppMethodBeat.i(75222);
+    AppMethodBeat.i(61846);
     _memoryPressureNotification(this.v8RuntimePtr, paramInt);
-    AppMethodBeat.o(75222);
+    AppMethodBeat.o(61846);
+  }
+  
+  public void nativeDispatch()
+  {
+    AppMethodBeat.i(190129);
+    _nativeDispatch(this.v8RuntimePtr);
+    AppMethodBeat.o(190129);
+  }
+  
+  public void nativeLoopStop()
+  {
+    AppMethodBeat.i(190130);
+    _nativeLoopStop(this.v8RuntimePtr);
+    AppMethodBeat.o(190130);
+  }
+  
+  public void nativeMessageLoop()
+  {
+    AppMethodBeat.i(190128);
+    _nativeMessageLoop(this.v8RuntimePtr);
+    AppMethodBeat.o(190128);
+  }
+  
+  protected void onNativeRunJavaTask()
+  {
+    AppMethodBeat.i(190131);
+    if (this.nativeJavaCallback_ != null) {
+      this.nativeJavaCallback_.run();
+    }
+    AppMethodBeat.o(190131);
+  }
+  
+  protected void onNativeTransMsgDispatchByJava()
+  {
+    AppMethodBeat.i(190133);
+    if (this._javaTaskScheduler != null) {
+      this._javaTaskScheduler.Schedule(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(190127);
+          V8.access$200(V8.this.v8RuntimePtr);
+          AppMethodBeat.o(190127);
+        }
+      });
+    }
+    AppMethodBeat.o(190133);
   }
   
   boolean pumpMessageLoop()
   {
-    AppMethodBeat.i(75245);
+    AppMethodBeat.i(61869);
     boolean bool = _pumpMessageLoop(this.v8RuntimePtr);
-    AppMethodBeat.o(75245);
+    AppMethodBeat.o(61869);
     return bool;
   }
   
   void registerCallback(JavaCallback paramJavaCallback, long paramLong, String paramString)
   {
-    AppMethodBeat.i(75228);
+    AppMethodBeat.i(61852);
     createAndRegisterMethodDescriptor(paramJavaCallback, registerJavaMethod(getV8RuntimePtr(), paramLong, paramString, false));
-    AppMethodBeat.o(75228);
+    AppMethodBeat.o(61852);
   }
   
   void registerCallback(Object paramObject, Method paramMethod, long paramLong, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(75226);
-    V8.MethodDescriptor localMethodDescriptor = new V8.MethodDescriptor(this, null);
+    AppMethodBeat.i(61850);
+    MethodDescriptor localMethodDescriptor = new MethodDescriptor(null);
     localMethodDescriptor.object = paramObject;
     localMethodDescriptor.method = paramMethod;
     localMethodDescriptor.includeReceiver = paramBoolean;
     paramLong = registerJavaMethod(getV8RuntimePtr(), paramLong, paramString, isVoidMethod(paramMethod));
     this.functionRegistry.put(Long.valueOf(paramLong), localMethodDescriptor);
-    AppMethodBeat.o(75226);
+    AppMethodBeat.o(61850);
   }
   
   protected long registerJavaMethod(long paramLong1, long paramLong2, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(75288);
+    AppMethodBeat.i(61912);
     paramLong1 = _registerJavaMethod(paramLong1, paramLong2, paramString, paramBoolean);
-    AppMethodBeat.o(75288);
+    AppMethodBeat.o(61912);
     return paramLong1;
   }
   
   public void registerResource(Releasable paramReleasable)
   {
-    AppMethodBeat.i(75194);
+    AppMethodBeat.i(61818);
     checkThread();
     if (this.resources == null) {
       this.resources = new ArrayList();
     }
     this.resources.add(paramReleasable);
-    AppMethodBeat.o(75194);
+    AppMethodBeat.o(61818);
   }
   
   public void registerV8Executor(V8Object paramV8Object, V8Executor paramV8Executor)
   {
-    AppMethodBeat.i(75190);
+    AppMethodBeat.i(61814);
     checkThread();
     if (this.executors == null) {
       this.executors = new V8Map();
     }
     this.executors.put(paramV8Object, paramV8Executor);
-    AppMethodBeat.o(75190);
+    AppMethodBeat.o(61814);
   }
   
   void registerVoidCallback(JavaVoidCallback paramJavaVoidCallback, long paramLong, String paramString)
   {
-    AppMethodBeat.i(75227);
-    V8.MethodDescriptor localMethodDescriptor = new V8.MethodDescriptor(this, null);
+    AppMethodBeat.i(61851);
+    MethodDescriptor localMethodDescriptor = new MethodDescriptor(null);
     localMethodDescriptor.voidCallback = paramJavaVoidCallback;
     paramLong = registerJavaMethod(getV8RuntimePtr(), paramLong, paramString, true);
     this.functionRegistry.put(Long.valueOf(paramLong), localMethodDescriptor);
-    AppMethodBeat.o(75227);
+    AppMethodBeat.o(61851);
   }
   
   public void release()
   {
-    AppMethodBeat.i(75185);
+    AppMethodBeat.i(61809);
     release(true);
-    AppMethodBeat.o(75185);
+    AppMethodBeat.o(61809);
   }
   
   protected void release(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75261);
+    AppMethodBeat.i(61885);
     _release(paramLong1, paramLong2);
-    AppMethodBeat.o(75261);
+    AppMethodBeat.o(61885);
   }
   
   public void release(boolean paramBoolean)
   {
-    AppMethodBeat.i(75187);
+    AppMethodBeat.i(61811);
     if (isReleased())
     {
-      AppMethodBeat.o(75187);
+      AppMethodBeat.o(61811);
       return;
     }
     checkThread();
@@ -2214,17 +2342,18 @@ public class V8
       synchronized (lock)
       {
         runtimeCounter -= 1;
+        this.locker.release();
         _releaseRuntime(this.v8RuntimePtr);
         this.v8RuntimePtr = 0L;
         this.released = true;
         if ((paramBoolean) && (getObjectReferenceCount() > 0L))
         {
           ??? = new IllegalStateException(this.objectReferences + " Object(s) still exist in runtime");
-          AppMethodBeat.o(75187);
+          AppMethodBeat.o(61811);
           throw ((Throwable)???);
         }
       }
-      AppMethodBeat.o(75187);
+      AppMethodBeat.o(61811);
     }
     finally
     {
@@ -2237,84 +2366,85 @@ public class V8
       synchronized (lock)
       {
         runtimeCounter -= 1;
+        this.locker.release();
         _releaseRuntime(this.v8RuntimePtr);
         this.v8RuntimePtr = 0L;
         this.released = true;
         if ((paramBoolean) && (getObjectReferenceCount() > 0L))
         {
           ??? = new IllegalStateException(this.objectReferences + " Object(s) still exist in runtime");
-          AppMethodBeat.o(75187);
+          AppMethodBeat.o(61811);
           throw ((Throwable)???);
         }
       }
-      AppMethodBeat.o(75187);
+      AppMethodBeat.o(61811);
     }
   }
   
   protected void releaseLock(long paramLong)
   {
-    AppMethodBeat.i(75250);
+    AppMethodBeat.i(61874);
     _releaseLock(paramLong);
-    AppMethodBeat.o(75250);
+    AppMethodBeat.o(61874);
   }
   
   protected void releaseMethodDescriptor(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75335);
+    AppMethodBeat.i(61959);
     _releaseMethodDescriptor(paramLong1, paramLong2);
-    AppMethodBeat.o(75335);
+    AppMethodBeat.o(61959);
   }
   
   void releaseObjRef(V8Value paramV8Value)
   {
-    AppMethodBeat.i(75338);
+    AppMethodBeat.i(61963);
     if (!this.referenceHandlers.isEmpty()) {
       notifyReferenceDisposed(paramV8Value);
     }
     this.objectReferences -= 1L;
-    AppMethodBeat.o(75338);
+    AppMethodBeat.o(61963);
   }
   
   protected void releaseV8Context(long paramLong)
   {
-    AppMethodBeat.i(75171);
+    AppMethodBeat.i(61795);
     _releaseContext(this.v8RuntimePtr, paramLong);
-    AppMethodBeat.o(75171);
+    AppMethodBeat.o(61795);
   }
   
   public V8Executor removeExecutor(V8Object paramV8Object)
   {
-    AppMethodBeat.i(75191);
+    AppMethodBeat.i(61815);
     checkThread();
     if (this.executors == null)
     {
-      AppMethodBeat.o(75191);
+      AppMethodBeat.o(61815);
       return null;
     }
     paramV8Object = (V8Executor)this.executors.remove(paramV8Object);
-    AppMethodBeat.o(75191);
+    AppMethodBeat.o(61815);
     return paramV8Object;
   }
   
   public void removeReferenceHandler(ReferenceHandler paramReferenceHandler)
   {
-    AppMethodBeat.i(75174);
+    AppMethodBeat.i(61798);
     this.referenceHandlers.remove(paramReferenceHandler);
-    AppMethodBeat.o(75174);
+    AppMethodBeat.o(61798);
   }
   
   public void removeReleaseHandler(V8Runnable paramV8Runnable)
   {
-    AppMethodBeat.i(75175);
+    AppMethodBeat.i(61799);
     this.releaseHandlers.remove(paramV8Runnable);
-    AppMethodBeat.o(75175);
+    AppMethodBeat.o(61799);
   }
   
   protected boolean sameValue(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(75279);
+    AppMethodBeat.i(61903);
     boolean bool = _sameValue(paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(75279);
+    AppMethodBeat.o(61903);
     return bool;
   }
   
@@ -2322,38 +2452,51 @@ public class V8
   {
     try
     {
-      AppMethodBeat.i(75176);
+      AppMethodBeat.i(61800);
       if (this.data == null) {
         this.data = new HashMap();
       }
       this.data.put(paramString, paramObject);
-      AppMethodBeat.o(75176);
+      AppMethodBeat.o(61800);
       return;
     }
     finally {}
   }
   
+  public void setJavaTaskScheduler(JavaTaskScheduler paramJavaTaskScheduler)
+  {
+    AppMethodBeat.i(190132);
+    this._javaTaskScheduler = paramJavaTaskScheduler;
+    _nativeTransSetJavaSchedule(1L);
+    AppMethodBeat.o(190132);
+  }
+  
+  public void setNativeJavaCallback(Runnable paramRunnable)
+  {
+    this.nativeJavaCallback_ = paramRunnable;
+  }
+  
   protected void setPrototype(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(75323);
+    AppMethodBeat.i(61947);
     _setPrototype(paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(75323);
+    AppMethodBeat.o(61947);
   }
   
   protected void setWeak(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75259);
+    AppMethodBeat.i(61883);
     _setWeak(paramLong1, paramLong2);
-    AppMethodBeat.o(75259);
+    AppMethodBeat.o(61883);
   }
   
   public void shutdownExecutors(boolean paramBoolean)
   {
-    AppMethodBeat.i(75193);
+    AppMethodBeat.i(61817);
     checkThread();
     if (this.executors == null)
     {
-      AppMethodBeat.o(75193);
+      AppMethodBeat.o(61817);
       return;
     }
     Iterator localIterator = this.executors.values().iterator();
@@ -2366,65 +2509,65 @@ public class V8
         localV8Executor.shutdown();
       }
     }
-    AppMethodBeat.o(75193);
+    AppMethodBeat.o(61817);
   }
   
   protected boolean strictEquals(long paramLong1, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(75278);
+    AppMethodBeat.i(61902);
     boolean bool = _strictEquals(paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(75278);
+    AppMethodBeat.o(61902);
     return bool;
   }
   
   protected void switchV8Context(long paramLong)
   {
-    AppMethodBeat.i(75168);
+    AppMethodBeat.i(61792);
     _switchContext(this.v8RuntimePtr, paramLong);
-    AppMethodBeat.o(75168);
+    AppMethodBeat.o(61792);
   }
   
   public void terminateExecution()
   {
-    AppMethodBeat.i(75186);
+    AppMethodBeat.i(61810);
     this.forceTerminateExecutors = true;
     terminateExecution(this.v8RuntimePtr);
-    AppMethodBeat.o(75186);
+    AppMethodBeat.o(61810);
   }
   
   protected void terminateExecution(long paramLong)
   {
-    AppMethodBeat.i(75334);
+    AppMethodBeat.i(61958);
     _terminateExecution(paramLong);
-    AppMethodBeat.o(75334);
+    AppMethodBeat.o(61958);
   }
   
   protected String toString(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(75277);
+    AppMethodBeat.i(61901);
     String str = _toString(paramLong1, paramLong2);
-    AppMethodBeat.o(75277);
+    AppMethodBeat.o(61901);
     return str;
   }
   
   public void waitForDebugger(String paramString)
   {
-    AppMethodBeat.i(75341);
+    AppMethodBeat.i(61966);
     checkThread();
     _waitForDebuger(this.v8RuntimePtr, paramString);
-    AppMethodBeat.o(75341);
+    AppMethodBeat.o(61966);
   }
   
   protected void wakeUpUVLoop()
   {
-    AppMethodBeat.i(75169);
+    AppMethodBeat.i(61793);
     _wakeUpUVLoop(this.v8RuntimePtr);
-    AppMethodBeat.o(75169);
+    AppMethodBeat.o(61793);
   }
   
   protected void weakReferenceReleased(long paramLong)
   {
-    AppMethodBeat.i(75233);
+    AppMethodBeat.i(61857);
     V8Value localV8Value = (V8Value)this.v8WeakReferences.get(Long.valueOf(paramLong));
     if (localV8Value != null)
     {
@@ -2432,17 +2575,33 @@ public class V8
       try
       {
         localV8Value.release();
-        AppMethodBeat.o(75233);
+        AppMethodBeat.o(61857);
         return;
       }
       catch (Exception localException) {}
     }
-    AppMethodBeat.o(75233);
+    AppMethodBeat.o(61857);
+  }
+  
+  public static abstract interface JavaTaskScheduler
+  {
+    public abstract void Schedule(Runnable paramRunnable);
+  }
+  
+  class MethodDescriptor
+  {
+    JavaCallback callback;
+    boolean includeReceiver;
+    Method method;
+    Object object;
+    JavaVoidCallback voidCallback;
+    
+    private MethodDescriptor() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.eclipsesource.v8.V8
  * JD-Core Version:    0.7.0.1
  */

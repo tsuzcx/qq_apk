@@ -1,27 +1,28 @@
 package com.tencent.mm.plugin.aa.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.List;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.widget.a.e;
 
 final class LaunchAAUI$5
-  implements View.OnClickListener
+  implements n.c
 {
-  LaunchAAUI$5(LaunchAAUI paramLaunchAAUI, List paramList) {}
+  LaunchAAUI$5(LaunchAAUI paramLaunchAAUI, e parame, View paramView) {}
   
-  public final void onClick(View paramView)
+  public final void onCreateMMMenu(l paraml)
   {
-    AppMethodBeat.i(40827);
-    this.grm.hideTenpayKB();
-    this.grm.hideVKB();
-    LaunchAAUI.a(this.grm, this.grn);
-    AppMethodBeat.o(40827);
+    AppMethodBeat.i(63632);
+    paraml.clear();
+    this.idS.setFooterView(null);
+    this.idS.setFooterView(this.idT);
+    AppMethodBeat.o(63632);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAUI.5
  * JD-Core Version:    0.7.0.1
  */

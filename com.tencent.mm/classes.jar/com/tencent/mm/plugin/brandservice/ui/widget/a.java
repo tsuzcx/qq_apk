@@ -15,54 +15,54 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class a
 {
-  private View ivh;
-  private final Set<b> ivp;
-  private int kjt;
+  private View lmD;
+  private final Set<b> lmI;
   private Context mContext;
   private int mOrientation;
+  private int nnT;
   
   public a(Context paramContext)
   {
-    AppMethodBeat.i(14459);
-    this.kjt = 0;
-    this.ivp = Collections.newSetFromMap(new ConcurrentHashMap());
+    AppMethodBeat.i(6269);
+    this.nnT = 0;
+    this.lmI = Collections.newSetFromMap(new ConcurrentHashMap());
     this.mContext = paramContext;
-    AppMethodBeat.o(14459);
+    AppMethodBeat.o(6269);
   }
   
-  private void aIK()
+  private void blJ()
   {
-    AppMethodBeat.i(14464);
-    Iterator localIterator = this.ivp.iterator();
+    AppMethodBeat.i(6274);
+    Iterator localIterator = this.lmI.iterator();
     while (localIterator.hasNext()) {
       localIterator.next();
     }
-    AppMethodBeat.o(14464);
+    AppMethodBeat.o(6274);
   }
   
-  private void aIL()
+  private void blK()
   {
-    AppMethodBeat.i(14465);
-    Iterator localIterator = this.ivp.iterator();
+    AppMethodBeat.i(6275);
+    Iterator localIterator = this.lmI.iterator();
     while (localIterator.hasNext()) {
-      ((b)localIterator.next()).aDk();
+      ((b)localIterator.next()).Cx();
     }
-    AppMethodBeat.o(14465);
+    AppMethodBeat.o(6275);
   }
   
-  public final void J(View paramView, int paramInt)
+  public final void O(View paramView, int paramInt)
   {
-    AppMethodBeat.i(14460);
-    aIJ();
-    this.ivh = paramView;
+    AppMethodBeat.i(6270);
+    aNT();
+    this.lmD = paramView;
     Activity localActivity = (Activity)this.mContext;
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
     ViewGroup localViewGroup = (ViewGroup)localActivity.getWindow().getDecorView();
-    this.kjt = localViewGroup.getSystemUiVisibility();
+    this.nnT = localViewGroup.getSystemUiVisibility();
     localViewGroup.addView(paramView, localLayoutParams);
     paramView.setX(0.0F);
     paramView.setY(0.0F);
-    if (d.fw(19))
+    if (d.lg(19))
     {
       localViewGroup.setSystemUiVisibility(2);
       localActivity.getWindow().addFlags(1024);
@@ -75,8 +75,8 @@ public final class a
     }
     for (;;)
     {
-      aIK();
-      AppMethodBeat.o(14460);
+      blJ();
+      AppMethodBeat.o(6270);
       return;
       localViewGroup.setSystemUiVisibility(4102);
       break;
@@ -90,38 +90,38 @@ public final class a
   
   public final void a(b paramb)
   {
-    AppMethodBeat.i(14462);
-    if (!this.ivp.contains(paramb)) {
-      this.ivp.add(paramb);
+    AppMethodBeat.i(6272);
+    if (!this.lmI.contains(paramb)) {
+      this.lmI.add(paramb);
     }
-    AppMethodBeat.o(14462);
+    AppMethodBeat.o(6272);
   }
   
-  public final boolean aIJ()
+  public final boolean aNT()
   {
-    AppMethodBeat.i(14461);
-    if (this.ivh == null)
+    AppMethodBeat.i(6271);
+    if (this.lmD == null)
     {
-      AppMethodBeat.o(14461);
+      AppMethodBeat.o(6271);
       return false;
     }
     Activity localActivity = (Activity)this.mContext;
     ViewGroup localViewGroup = (ViewGroup)localActivity.getWindow().getDecorView();
-    localViewGroup.setSystemUiVisibility(this.kjt);
-    localViewGroup.removeView(this.ivh);
+    localViewGroup.setSystemUiVisibility(this.nnT);
+    localViewGroup.removeView(this.lmD);
     localActivity.getWindow().clearFlags(1024);
     localActivity.setRequestedOrientation(this.mOrientation);
-    this.ivh = null;
-    aIL();
-    AppMethodBeat.o(14461);
+    this.lmD = null;
+    blK();
+    AppMethodBeat.o(6271);
     return true;
   }
   
   public final void b(b paramb)
   {
-    AppMethodBeat.i(14463);
-    this.ivp.remove(paramb);
-    AppMethodBeat.o(14463);
+    AppMethodBeat.i(6273);
+    this.lmI.remove(paramb);
+    AppMethodBeat.o(6273);
   }
 }
 

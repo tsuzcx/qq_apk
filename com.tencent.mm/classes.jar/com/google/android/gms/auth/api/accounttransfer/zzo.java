@@ -37,21 +37,21 @@ public final class zzo
   
   static
   {
-    AppMethodBeat.i(77009);
+    AppMethodBeat.i(10668);
     CREATOR = new zzp();
     HashMap localHashMap = new HashMap();
     zzbk = localHashMap;
     localHashMap.put("authenticatorData", FastJsonResponse.Field.forConcreteTypeArray("authenticatorData", 2, zzu.class));
     zzbk.put("progress", FastJsonResponse.Field.forConcreteType("progress", 4, zzr.class));
-    AppMethodBeat.o(77009);
+    AppMethodBeat.o(10668);
   }
   
   public zzo()
   {
-    AppMethodBeat.i(77003);
+    AppMethodBeat.i(10662);
     this.zzbl = new HashSet(1);
     this.zzy = 1;
-    AppMethodBeat.o(77003);
+    AppMethodBeat.o(10662);
   }
   
   @SafeParcelable.Constructor
@@ -66,39 +66,39 @@ public final class zzo
   
   public final <T extends FastJsonResponse> void addConcreteTypeArrayInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, ArrayList<T> paramArrayList)
   {
-    AppMethodBeat.i(77007);
+    AppMethodBeat.i(10666);
     int i = paramField.getSafeParcelableFieldId();
     switch (i)
     {
     default: 
       paramField = new IllegalArgumentException(String.format("Field with id=%d is not a known ConcreteTypeArray type. Found %s", new Object[] { Integer.valueOf(i), paramArrayList.getClass().getCanonicalName() }));
-      AppMethodBeat.o(77007);
+      AppMethodBeat.o(10666);
       throw paramField;
     }
     this.zzbm = paramArrayList;
     this.zzbl.add(Integer.valueOf(i));
-    AppMethodBeat.o(77007);
+    AppMethodBeat.o(10666);
   }
   
   public final <T extends FastJsonResponse> void addConcreteTypeInternal(FastJsonResponse.Field<?, ?> paramField, String paramString, T paramT)
   {
-    AppMethodBeat.i(77008);
+    AppMethodBeat.i(10667);
     int i = paramField.getSafeParcelableFieldId();
     switch (i)
     {
     default: 
       paramField = new IllegalArgumentException(String.format("Field with id=%d is not a known custom type. Found %s", new Object[] { Integer.valueOf(i), paramT.getClass().getCanonicalName() }));
-      AppMethodBeat.o(77008);
+      AppMethodBeat.o(10667);
       throw paramField;
     }
     this.zzbo = ((zzr)paramT);
     this.zzbl.add(Integer.valueOf(i));
-    AppMethodBeat.o(77008);
+    AppMethodBeat.o(10667);
   }
   
   public final Object getFieldValue(FastJsonResponse.Field paramField)
   {
-    AppMethodBeat.i(77006);
+    AppMethodBeat.i(10665);
     int i;
     switch (paramField.getSafeParcelableFieldId())
     {
@@ -106,33 +106,33 @@ public final class zzo
     default: 
       i = paramField.getSafeParcelableFieldId();
       paramField = new IllegalStateException(37 + "Unknown SafeParcelable id=" + i);
-      AppMethodBeat.o(77006);
+      AppMethodBeat.o(10665);
       throw paramField;
     case 1: 
       i = this.zzy;
-      AppMethodBeat.o(77006);
+      AppMethodBeat.o(10665);
       return Integer.valueOf(i);
     case 2: 
       paramField = this.zzbm;
-      AppMethodBeat.o(77006);
+      AppMethodBeat.o(10665);
       return paramField;
     }
     paramField = this.zzbo;
-    AppMethodBeat.o(77006);
+    AppMethodBeat.o(10665);
     return paramField;
   }
   
   public final boolean isFieldSet(FastJsonResponse.Field paramField)
   {
-    AppMethodBeat.i(77005);
+    AppMethodBeat.i(10664);
     boolean bool = this.zzbl.contains(Integer.valueOf(paramField.getSafeParcelableFieldId()));
-    AppMethodBeat.o(77005);
+    AppMethodBeat.o(10664);
     return bool;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(77004);
+    AppMethodBeat.i(10663);
     int i = SafeParcelWriter.beginObjectHeader(paramParcel);
     Set localSet = this.zzbl;
     if (localSet.contains(Integer.valueOf(1))) {
@@ -148,12 +148,12 @@ public final class zzo
       SafeParcelWriter.writeParcelable(paramParcel, 4, this.zzbo, paramInt, true);
     }
     SafeParcelWriter.finishObjectHeader(paramParcel, i);
-    AppMethodBeat.o(77004);
+    AppMethodBeat.o(10663);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.auth.api.accounttransfer.zzo
  * JD-Core Version:    0.7.0.1
  */

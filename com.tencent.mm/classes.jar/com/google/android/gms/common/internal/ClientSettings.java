@@ -35,7 +35,7 @@ public final class ClientSettings
   
   public ClientSettings(Account paramAccount, Set<Scope> paramSet, Map<Api<?>, OptionalApiSettings> paramMap, int paramInt, View paramView, String paramString1, String paramString2, SignInOptions paramSignInOptions)
   {
-    AppMethodBeat.i(61321);
+    AppMethodBeat.i(11813);
     this.zzs = paramAccount;
     if (paramSet == null) {}
     for (paramAccount = Collections.EMPTY_SET;; paramAccount = Collections.unmodifiableSet(paramSet))
@@ -58,14 +58,14 @@ public final class ClientSettings
       }
     }
     this.zzrz = Collections.unmodifiableSet(paramAccount);
-    AppMethodBeat.o(61321);
+    AppMethodBeat.o(11813);
   }
   
   public static ClientSettings createDefault(Context paramContext)
   {
-    AppMethodBeat.i(61320);
+    AppMethodBeat.i(11812);
     paramContext = new GoogleApiClient.Builder(paramContext).buildClientSettings();
-    AppMethodBeat.o(61320);
+    AppMethodBeat.o(11812);
     return paramContext;
   }
   
@@ -87,15 +87,15 @@ public final class ClientSettings
   
   public final Account getAccountOrDefault()
   {
-    AppMethodBeat.i(61322);
+    AppMethodBeat.i(11814);
     if (this.zzs != null)
     {
       localAccount = this.zzs;
-      AppMethodBeat.o(61322);
+      AppMethodBeat.o(11814);
       return localAccount;
     }
     Account localAccount = new Account("<<default account>>", "com.google");
-    AppMethodBeat.o(61322);
+    AppMethodBeat.o(11814);
     return localAccount;
   }
   
@@ -106,17 +106,17 @@ public final class ClientSettings
   
   public final Set<Scope> getApplicableScopes(Api<?> paramApi)
   {
-    AppMethodBeat.i(61323);
+    AppMethodBeat.i(11815);
     paramApi = (OptionalApiSettings)this.zzsa.get(paramApi);
     if ((paramApi == null) || (paramApi.mScopes.isEmpty()))
     {
       paramApi = this.zzcv;
-      AppMethodBeat.o(61323);
+      AppMethodBeat.o(11815);
       return paramApi;
     }
     HashSet localHashSet = new HashSet(this.zzcv);
     localHashSet.addAll(paramApi.mScopes);
-    AppMethodBeat.o(61323);
+    AppMethodBeat.o(11815);
     return localHashSet;
   }
   
@@ -183,31 +183,31 @@ public final class ClientSettings
     
     public final Builder addAllRequiredScopes(Collection<Scope> paramCollection)
     {
-      AppMethodBeat.i(61317);
+      AppMethodBeat.i(11809);
       if (this.zzsd == null) {
         this.zzsd = new b();
       }
       this.zzsd.addAll(paramCollection);
-      AppMethodBeat.o(61317);
+      AppMethodBeat.o(11809);
       return this;
     }
     
     public final Builder addRequiredScope(Scope paramScope)
     {
-      AppMethodBeat.i(61316);
+      AppMethodBeat.i(11808);
       if (this.zzsd == null) {
         this.zzsd = new b();
       }
       this.zzsd.add(paramScope);
-      AppMethodBeat.o(61316);
+      AppMethodBeat.o(11808);
       return this;
     }
     
     public final ClientSettings build()
     {
-      AppMethodBeat.i(61318);
+      AppMethodBeat.i(11810);
       ClientSettings localClientSettings = new ClientSettings(this.zzs, this.zzsd, this.zzsa, this.zzcx, this.zzcy, this.zzcz, this.zzda, this.zzsb);
-      AppMethodBeat.o(61318);
+      AppMethodBeat.o(11810);
       return localClientSettings;
     }
     
@@ -260,10 +260,10 @@ public final class ClientSettings
     
     public OptionalApiSettings(Set<Scope> paramSet)
     {
-      AppMethodBeat.i(61319);
+      AppMethodBeat.i(11811);
       Preconditions.checkNotNull(paramSet);
       this.mScopes = Collections.unmodifiableSet(paramSet);
-      AppMethodBeat.o(61319);
+      AppMethodBeat.o(11811);
     }
   }
 }

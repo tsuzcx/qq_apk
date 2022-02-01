@@ -1,6 +1,6 @@
 package com.tencent.mm.pluginsdk.c;
 
-import com.tencent.mm.g.a.js;
+import com.tencent.mm.g.a.kv;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
 import com.tencent.mm.sdk.e.k;
@@ -10,50 +10,50 @@ import com.tencent.mm.sdk.e.m;
 public abstract class d
   implements k.a
 {
-  public int vJQ = 0;
+  public int BNK = 0;
   
-  public abstract b PL(String paramString);
-  
-  public final void a(String paramString, m paramm)
+  public final void Bu()
   {
-    paramm = new js();
-    paramm.czj.czk = PL(paramString);
-    a.ymk.l(paramm);
-  }
-  
-  public abstract k bEO();
-  
-  public final void uD()
-  {
-    if (this.vJQ == 0)
+    if (this.BNK == 0)
     {
-      k localk = bEO();
+      k localk = cBa();
       if (localk != null) {
         localk.add(this);
       }
     }
-    this.vJQ += 1;
+    this.BNK += 1;
   }
+  
+  public final void a(String paramString, m paramm)
+  {
+    paramm = new kv();
+    paramm.dpp.dpq = abU(paramString);
+    a.ESL.l(paramm);
+  }
+  
+  public abstract b abU(String paramString);
+  
+  public abstract k cBa();
   
   public final void unregister()
   {
-    if (this.vJQ == 0) {}
+    if (this.BNK == 0) {}
     k localk;
     do
     {
       do
       {
         return;
-        this.vJQ -= 1;
-      } while (this.vJQ != 0);
-      localk = bEO();
+        this.BNK -= 1;
+      } while (this.BNK != 0);
+      localk = cBa();
     } while (localk == null);
     localk.remove(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.c.d
  * JD-Core Version:    0.7.0.1
  */

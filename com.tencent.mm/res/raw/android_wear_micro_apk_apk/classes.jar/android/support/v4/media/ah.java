@@ -6,65 +6,65 @@ import android.os.Bundle;
 
 public final class ah
 {
-  private Bundle ew;
-  private CharSequence hA;
-  private CharSequence hB;
-  private Bitmap hC;
-  private Uri hD;
-  private Uri hE;
-  private String hy;
-  private CharSequence hz;
+  private Bundle gl;
+  private CharSequence jA;
+  private Bitmap jB;
+  private Uri jC;
+  private Uri jD;
+  private String jx;
+  private CharSequence jy;
+  private CharSequence jz;
   
-  public final ah a(Bitmap paramBitmap)
+  public final ah b(Bitmap paramBitmap)
   {
-    this.hC = paramBitmap;
+    this.jB = paramBitmap;
     return this;
-  }
-  
-  public final MediaDescriptionCompat aO()
-  {
-    return new MediaDescriptionCompat(this.hy, this.hz, this.hA, this.hB, this.hC, this.hD, this.ew, this.hE);
   }
   
   public final ah b(Uri paramUri)
   {
-    this.hD = paramUri;
+    this.jC = paramUri;
     return this;
+  }
+  
+  public final MediaDescriptionCompat be()
+  {
+    return new MediaDescriptionCompat(this.jx, this.jy, this.jz, this.jA, this.jB, this.jC, this.gl, this.jD);
   }
   
   public final ah c(Uri paramUri)
   {
-    this.hE = paramUri;
+    this.jD = paramUri;
     return this;
   }
   
   public final ah e(String paramString)
   {
-    this.hy = paramString;
+    this.jx = paramString;
     return this;
   }
   
   public final ah f(Bundle paramBundle)
   {
-    this.ew = paramBundle;
+    this.gl = paramBundle;
     return this;
   }
   
   public final ah f(CharSequence paramCharSequence)
   {
-    this.hz = paramCharSequence;
+    this.jy = paramCharSequence;
     return this;
   }
   
   public final ah g(CharSequence paramCharSequence)
   {
-    this.hA = paramCharSequence;
+    this.jz = paramCharSequence;
     return this;
   }
   
   public final ah h(CharSequence paramCharSequence)
   {
-    this.hB = paramCharSequence;
+    this.jA = paramCharSequence;
     return this;
   }
 }

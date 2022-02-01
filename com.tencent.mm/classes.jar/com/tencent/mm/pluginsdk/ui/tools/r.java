@@ -1,169 +1,129 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.webkit.MimeTypeMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.h.d;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.vfs.e;
+import com.tencent.mm.vfs.q;
 
 public final class r
 {
-  int iiW;
-  int iiX;
-  int iiY;
-  int iiZ;
-  h.d ryj = h.d.vQI;
-  int videoHeight;
-  int videoWidth;
-  boolean wfC;
+  public Context context;
+  public String filePath;
+  public int fileType;
+  public Uri uri;
   
-  private void al(float paramFloat1, float paramFloat2)
+  public r(Context paramContext, Uri paramUri)
   {
-    AppMethodBeat.i(118047);
-    if (!this.wfC)
+    AppMethodBeat.i(152425);
+    this.fileType = 0;
+    this.context = paramContext;
+    this.uri = paramUri;
+    if (paramUri == null)
     {
-      if (this.iiW < this.iiX)
+      ad.e("MicroMsg.UriFileHelper", "initFileTypeAndPath uri == null");
+      AppMethodBeat.o(152425);
+      return;
+    }
+    if (this.context == null)
+    {
+      ad.e("MicroMsg.UriFileHelper", "initFileTypeAndPath context == null");
+      AppMethodBeat.o(152425);
+      return;
+    }
+    Object localObject2 = MimeTypeMap.getSingleton();
+    paramContext = this.context.getContentResolver().getType(paramUri);
+    int i;
+    if ((paramContext == null) || (paramContext.length() <= 0))
+    {
+      if (paramUri.getPath() != null)
       {
-        this.iiZ = ((int)(this.iiW / paramFloat1));
-        this.iiY = this.iiW;
-        AppMethodBeat.o(118047);
-        return;
-      }
-      this.iiY = ((int)(this.iiX * paramFloat1));
-      this.iiZ = this.iiX;
-      AppMethodBeat.o(118047);
-      return;
-    }
-    if (Math.abs(paramFloat1 - paramFloat2) > 0.05D)
-    {
-      if (this.iiW < this.iiX)
-      {
-        this.iiZ = ((int)(this.iiW / paramFloat1));
-        this.iiY = this.iiW;
-        AppMethodBeat.o(118047);
-        return;
-      }
-      this.iiY = ((int)(this.iiX * paramFloat1));
-      this.iiZ = this.iiX;
-      AppMethodBeat.o(118047);
-      return;
-    }
-    if (this.iiW > this.iiX)
-    {
-      this.iiZ = ((int)(this.iiW / paramFloat1));
-      this.iiY = this.iiW;
-      AppMethodBeat.o(118047);
-      return;
-    }
-    this.iiY = ((int)(this.iiX * paramFloat1));
-    this.iiZ = this.iiX;
-    AppMethodBeat.o(118047);
-  }
-  
-  private void bq(float paramFloat)
-  {
-    if (this.iiW < this.iiX)
-    {
-      this.iiZ = ((int)(this.iiW / paramFloat));
-      this.iiY = this.iiW;
-      if (this.iiZ > this.iiX)
-      {
-        this.iiY = ((int)(this.iiX * paramFloat));
-        this.iiZ = this.iiX;
+        localObject1 = new e(paramUri.getPath());
+        if (!((e)localObject1).exists())
+        {
+          ad.e("MicroMsg.UriFileHelper", "File is null");
+          this.fileType = 0;
+          AppMethodBeat.o(152425);
+          return;
+        }
+        this.filePath = q.B(((e)localObject1).fhU());
+        i = this.filePath.lastIndexOf(".");
+        if ((i == -1) || (i >= this.filePath.length() - 1)) {
+          this.fileType = 1;
+        }
+        while ((paramContext == null) || (this.filePath == null))
+        {
+          this.fileType = 0;
+          AppMethodBeat.o(152425);
+          return;
+          paramContext = ((MimeTypeMap)localObject2).getMimeTypeFromExtension(this.filePath.substring(i + 1));
+        }
       }
     }
-    do
+    else
     {
-      return;
-      this.iiY = ((int)(this.iiX * paramFloat));
-      this.iiZ = this.iiX;
-    } while (this.iiY <= this.iiW);
-    this.iiZ = ((int)(this.iiW / paramFloat));
-    this.iiY = this.iiW;
-  }
-  
-  private void br(float paramFloat)
-  {
-    if (this.iiW > this.iiX)
-    {
-      this.iiZ = ((int)(this.iiW / paramFloat));
-      this.iiY = this.iiW;
-      if (this.iiZ < this.iiX)
-      {
-        this.iiY = ((int)(this.iiX * paramFloat));
-        this.iiZ = this.iiX;
+      if (this.context != null) {
+        break label247;
       }
-    }
-    do
-    {
-      return;
-      this.iiY = ((int)(this.iiX * paramFloat));
-      this.iiZ = this.iiX;
-    } while (this.iiY >= this.iiW);
-    this.iiZ = ((int)(this.iiW / paramFloat));
-    this.iiY = this.iiW;
-  }
-  
-  private void dpJ()
-  {
-    this.iiZ = this.iiX;
-    this.iiY = this.iiW;
-  }
-  
-  final boolean H(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    AppMethodBeat.i(118046);
-    if ((this.iiW == paramInt1) && (this.iiX == paramInt2) && (this.videoWidth == paramInt3) && (this.videoHeight == paramInt4))
-    {
-      AppMethodBeat.o(118046);
-      return true;
-    }
-    this.iiW = paramInt1;
-    this.iiX = paramInt2;
-    this.videoWidth = paramInt3;
-    this.videoHeight = paramInt4;
-    float f1 = this.videoWidth * 1.0F / this.videoHeight;
-    float f2 = this.iiW * 1.0F / this.iiX;
-    if (this.ryj != h.d.vQI) {
-      if (this.ryj == h.d.vQK) {
-        bq(f1);
-      }
+      ad.e("MicroMsg.UriFileHelper", "getFilePath context == null");
     }
     for (;;)
     {
-      ab.d("MicroMsg.ViewSizeCache", "screen[%d, %d], video[%d, %d], measure[%d, %d] scale[%f, %f]", new Object[] { Integer.valueOf(this.iiW), Integer.valueOf(this.iiX), Integer.valueOf(this.videoWidth), Integer.valueOf(this.videoHeight), Integer.valueOf(this.iiY), Integer.valueOf(this.iiZ), Float.valueOf(f2), Float.valueOf(f1) });
-      AppMethodBeat.o(118046);
-      return false;
-      if (this.ryj == h.d.vQJ) {
-        dpJ();
-      } else if (this.ryj == h.d.vQL) {
-        br(f1);
-      } else {
-        al(f1, f2);
+      this.filePath = ((String)localObject1);
+      break;
+      label247:
+      localObject2 = this.context.getContentResolver().query(paramUri, null, null, null, null);
+      if (localObject2 == null)
+      {
+        ad.e("MicroMsg.UriFileHelper", "getFilePath : fail, cursor is null");
+      }
+      else if ((((Cursor)localObject2).getCount() <= 0) || (!((Cursor)localObject2).moveToFirst()))
+      {
+        ((Cursor)localObject2).close();
+        ad.e("MicroMsg.UriFileHelper", "getFilePath : fail, cursor getCount is 0 or moveToFirst fail");
+      }
+      else
+      {
+        i = ((Cursor)localObject2).getColumnIndex("_data");
+        if (i == -1)
+        {
+          ((Cursor)localObject2).close();
+          ad.e("MicroMsg.UriFileHelper", "getFilePath : columnIdx is -1, column with columnName = _data does not exist");
+        }
+        else
+        {
+          localObject1 = ((Cursor)localObject2).getString(i);
+          ((Cursor)localObject2).close();
+        }
       }
     }
-  }
-  
-  final void reset()
-  {
-    this.iiX = 0;
-    this.iiW = 0;
-    this.videoHeight = 0;
-    this.videoWidth = 0;
-    this.iiZ = 0;
-    this.iiY = 0;
-  }
-  
-  public final void setScaleType(h.d paramd)
-  {
-    AppMethodBeat.i(118045);
-    ab.i("MicroMsg.ViewSizeCache", "set scale type old[%s] new[%s]", new Object[] { this.ryj, paramd });
-    this.ryj = paramd;
-    reset();
-    AppMethodBeat.o(118045);
+    if (paramContext.contains("image")) {
+      this.fileType = 3;
+    }
+    for (;;)
+    {
+      ad.d("MicroMsg.UriFileHelper", "MimeType[%s], filePath = [%s], fileType = [%s], type = [%s], Uri[%s]", new Object[] { paramContext, this.filePath, Integer.valueOf(this.fileType), paramContext, paramUri.toString() });
+      AppMethodBeat.o(152425);
+      return;
+      if (paramContext.contains("video")) {
+        this.fileType = 4;
+      } else if (paramContext.contains("audio")) {
+        this.fileType = 5;
+      } else if (paramContext.contains("mm_item")) {
+        this.fileType = 2;
+      } else {
+        this.fileType = 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.r
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.l;
 
-import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.plugin.appbrand.widget.i.c;
-import com.tencent.mm.plugin.appbrand.widget.i.d;
-import java.util.LinkedList;
+import d.l;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiSetPageOrientation;", "Lcom/tencent/mm/plugin/appbrand/jsapi/page/PrivateJsApiSetPageOrientation;", "()V", "Companion", "luggage-wechat-full-sdk_release"})
 public final class w
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
+  extends aj
 {
-  public static final int CTRL_INDEX = 418;
-  public static final String NAME = "setTabBarItem";
+  public static final int CTRL_INDEX = 582;
+  public static final String NAME = "setPageOrientation";
+  @Deprecated
+  public static final a keO;
+  
+  static
+  {
+    AppMethodBeat.i(147947);
+    keO = new a((byte)0);
+    AppMethodBeat.o(147947);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiSetPageOrientation$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wechat-full-sdk_release"})
+  static final class a {}
 }
 
 

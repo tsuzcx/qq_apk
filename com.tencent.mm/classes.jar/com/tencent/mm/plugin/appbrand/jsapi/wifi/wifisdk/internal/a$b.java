@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
@@ -12,15 +12,15 @@ final class a$b
   
   public final Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(94391);
-    ab.i("MicroMsg.WiFiConnector", "Method:" + paramMethod + " getName:" + paramMethod.getName() + " ,Args:" + paramArrayOfObject);
-    AppMethodBeat.o(94391);
+    AppMethodBeat.i(144706);
+    ad.i("MicroMsg.WiFiConnector", "Method:" + paramMethod + " getName:" + paramMethod.getName() + " ,Args:" + paramArrayOfObject);
+    AppMethodBeat.o(144706);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.a.b
  * JD-Core Version:    0.7.0.1
  */

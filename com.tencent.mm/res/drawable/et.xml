@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:topLeftRadius="8.0dip" android:topRightRadius="8.0dip" />
-    <solid android:color="@color/a1" />
-</shape>
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="16.0dip" />
+            <solid android:color="@color/fc" />
+            <stroke android:width="2.0dip" android:color="@color/a_r" />
+        </shape>
+    </item>
+    <item>
+        <inset android:inset="4.0dip">
+            <shape android:shape="rectangle">
+                <corners android:radius="12.0dip" />
+                <solid android:color="@color/fc" />
+                <stroke android:width="2.0dip" android:color="@color/a_r" />
+            </shape>
+        </inset>
+    </item>
+</selector>

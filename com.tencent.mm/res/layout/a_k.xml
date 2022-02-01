@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/a9o" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/crh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="24.0dip" android:text="@string/a9s" />
-    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="32.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/a7z" android:gravity="center_horizontal" android:id="@id/cri" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/a9p" />
-    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/a7z" android:gravity="center_horizontal" android:id="@id/crj" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/a9r" />
-    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/a7k" android:gravity="center_horizontal" android:id="@id/crk" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/a9n" />
-</LinearLayout>
+    <com.tencent.mm.plugin.game.ui.GameBestSellingMore android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/g4" android:textColor="@color/ql" android:layout_gravity="center_vertical" android:id="@id/dt8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/g5" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/dt7" android:visibility="gone" android:layout_width="6.0dip" android:layout_height="12.0dip" android:src="@drawable/at5" android:scaleType="fitXY" />
+    </com.tencent.mm.plugin.game.ui.GameBestSellingMore>
+</FrameLayout>

@@ -1,174 +1,257 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.a;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewStub;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.af.q;
-import com.tencent.mm.plugin.brandservice.ui.timeline.a;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.v;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.plugin.brandservice.a.b;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.pluginsdk.ui.applet.m.a;
+import com.tencent.mm.protocal.protobuf.dap;
+import com.tencent.mm.protocal.protobuf.daq;
+import com.tencent.mm.sdk.platformtools.bt;
+import com.tencent.mm.storage.s;
+import d.a.j;
+import d.g.b.k;
+import d.g.b.z;
+import d.l;
+import java.util.Arrays;
+import java.util.Iterator;
 
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardFinder;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardItem;", "adapter", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTimeLineAdapter;Landroid/content/Context;)V", "item", "Landroid/view/View;", "viewVideos", "", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardFinder$BizTLRecCardVideo;", "[Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardFinder$BizTLRecCardVideo;", "filling", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "position", "", "convertView", "parent", "hide", "inflate", "BizTLRecCardVideo", "plugin-brandservice_release"})
 public final class f
-  extends e
+  extends g
 {
-  public LinearLayout jXp;
-  public LinearLayout jXq;
-  public LinearLayout jYa;
-  public LinearLayout jYb;
-  public TextView jYc;
-  public List<b> jYd;
-  public l jYe;
-  public n jYf;
-  public j jYg;
-  public k jYh;
-  public o jYi;
-  public i jYj;
-  public m jYk;
-  public View.OnClickListener jYl;
+  private View mYI;
+  private a[] mYX;
   
-  public f()
+  public f(com.tencent.mm.plugin.brandservice.ui.timeline.c paramc, Context paramContext)
   {
-    AppMethodBeat.i(14259);
-    this.jYd = new ArrayList();
-    this.jYe = new l();
-    this.jYf = new n();
-    this.jYg = new j();
-    this.jYh = new k();
-    this.jYi = new o();
-    this.jYj = new i();
-    this.jYk = new m();
-    this.jYl = new f.1(this);
-    AppMethodBeat.o(14259);
+    super(paramContext, paramc);
+    AppMethodBeat.i(193059);
+    AppMethodBeat.o(193059);
   }
   
-  public static void R(View paramView, int paramInt)
+  public final void a(s params, int paramInt, View paramView1, View paramView2)
   {
-    AppMethodBeat.i(14263);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    localLayoutParams.rightMargin = paramInt;
-    paramView.setLayoutParams(localLayoutParams);
-    AppMethodBeat.o(14263);
-  }
-  
-  private void a(View paramView, c paramc, boolean paramBoolean)
-  {
-    AppMethodBeat.i(14260);
-    if (paramBoolean)
+    AppMethodBeat.i(193056);
+    k.h(params, "info");
+    k.h(paramView1, "convertView");
+    k.h(paramView2, "parent");
+    super.a(params, paramInt, paramView1, paramView2);
+    paramView2 = params.eJR();
+    if (paramView2 != null) {}
+    for (paramView1 = paramView2.Esm; paramView1 == null; paramView1 = null)
     {
-      if (paramc.jXr == null) {
-        paramc.a(paramView, this.jXV);
-      }
-      if (paramc.jXr != null)
+      AppMethodBeat.o(193056);
+      return;
+    }
+    paramView1 = this.mYI;
+    if (paramView1 != null) {
+      paramView1.setVisibility(0);
+    }
+    paramView1 = paramView2.Eso;
+    if (paramView1 != null)
+    {
+      paramView1 = (Iterable)paramView1;
+      paramInt = 0;
+      Iterator localIterator = paramView1.iterator();
+      while (localIterator.hasNext())
       {
-        paramc.jXr.setVisibility(0);
-        AppMethodBeat.o(14260);
-      }
-    }
-    else if (paramc.jXr != null)
-    {
-      paramc.jXr.setVisibility(8);
-    }
-    AppMethodBeat.o(14260);
-  }
-  
-  public static void c(q paramq)
-  {
-    if (paramq.type == 6) {
-      paramq.type = 7;
-    }
-  }
-  
-  public static void s(View paramView, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(14262);
-    paramView.setPadding(0, paramInt1 - a.jVC, 0, paramInt2 - a.jVC);
-    AppMethodBeat.o(14262);
-  }
-  
-  public final void a(f paramf, int paramInt1, int paramInt2)
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(14261);
-    boolean bool1;
-    if (paramInt1 == 5)
-    {
-      bool1 = true;
-      a(paramf.jYa, paramf.jYf, bool1);
-      if (!bool1) {
-        break label247;
-      }
-    }
-    label48:
-    label79:
-    label110:
-    label244:
-    label247:
-    for (int i = 1;; i = 0)
-    {
-      if (paramInt1 == 8)
-      {
-        bool1 = true;
-        a(paramf.jYa, paramf.jYh, bool1);
-        if (bool1) {
-          i = 1;
+        paramView1 = localIterator.next();
+        int i = paramInt + 1;
+        if (paramInt < 0) {
+          j.fvx();
         }
-        if (paramInt1 != 7) {
-          break label220;
-        }
-        bool1 = true;
-        a(paramf.jYa, paramf.jYi, bool1);
-        if (bool1) {
-          i = 1;
-        }
-        if (paramInt1 != 6) {
-          break label226;
-        }
-        bool1 = true;
-        a(paramf.jYa, paramf.jYj, bool1);
-        if (bool1) {
-          i = 1;
-        }
-        if (paramInt1 != 10) {
-          break label232;
-        }
-        bool1 = true;
-        a(paramf.jYa, paramf.jYk, bool1);
-        if (!bool1) {
-          break label244;
-        }
-        i = 1;
-      }
-      for (;;)
-      {
-        LinearLayout localLinearLayout = paramf.jYa;
-        paramf = paramf.jYe;
-        if ((i == 0) && (paramInt2 > 0) && (paramInt1 != -1)) {}
-        for (bool1 = bool2;; bool1 = false)
+        Object localObject = (daq)paramView1;
+        if ((localObject != null) && ((((daq)localObject).Cxm & 0x1) == 0))
         {
-          a(localLinearLayout, paramf, bool1);
-          AppMethodBeat.o(14261);
-          return;
-          bool1 = false;
-          break;
-          bool1 = false;
-          break label48;
-          bool1 = false;
-          break label79;
-          bool1 = false;
-          break label110;
-          bool1 = false;
-          break label141;
+          paramView1 = this.mYX;
+          if (paramView1 != null)
+          {
+            a locala = paramView1[paramInt];
+            if (locala != null)
+            {
+              k.h(params, "info");
+              k.h(paramView2, "recCard");
+              k.h(localObject, "appMsg");
+              String str2 = ((daq)localObject).Title;
+              String str3 = ((daq)localObject).CHL;
+              int j = ((daq)localObject).gKq;
+              String str1 = ((daq)localObject).CHN;
+              long l = ((daq)localObject).Ess;
+              String str4 = m.mV(((daq)localObject).CHZ);
+              paramView1 = "";
+              label264:
+              TextView localTextView;
+              if (l > 0L)
+              {
+                if (l < 10000L) {
+                  paramView1 = String.valueOf(l);
+                }
+              }
+              else
+              {
+                localTextView = locala.mYZ;
+                if (!k.g(paramView1, "")) {
+                  break label708;
+                }
+              }
+              label708:
+              for (paramView1 = (CharSequence)"";; paramView1 = (CharSequence)locala.mZf.context.getString(2131760255, new Object[] { paramView1 }))
+              {
+                localTextView.setText(paramView1);
+                locala.mYZ.setShadowLayer(2.0F, 0.0F, 0.0F, locala.mZf.context.getResources().getColor(2131099663));
+                locala.mZa.setText((CharSequence)str4);
+                locala.mZa.setShadowLayer(2.0F, 0.0F, 0.0F, locala.mZf.context.getResources().getColor(2131099663));
+                locala.mZb.setText((CharSequence)str2);
+                locala.mZe.setOnClickListener((View.OnClickListener)new f.a.a(locala, params, (daq)localObject, paramInt));
+                if ((((b)com.tencent.mm.kernel.g.ab(b.class)).xA(1)) && (!bt.isNullOrNil(str3))) {
+                  ((b)com.tencent.mm.kernel.g.ab(b.class)).a(str3, j, 90, new Object[0]);
+                }
+                float f = (com.tencent.mm.plugin.brandservice.ui.timeline.c.mWz * 2.35F - a.g(locala.mZf.context, 40.0F)) / 2.0F;
+                j = (int)(f / 1.77D);
+                paramView1 = locala.mZe.getLayoutParams();
+                localObject = locala.mZc.getLayoutParams();
+                paramView1.width = ((int)f);
+                ((ViewGroup.LayoutParams)localObject).height = j;
+                locala.mZe.setLayoutParams(paramView1);
+                locala.mZc.setLayoutParams((ViewGroup.LayoutParams)localObject);
+                locala.mYY.setVisibility(0);
+                locala.mZd.gKD = str1;
+                locala.mZd.url = str1;
+                locala.mZd.type = 5;
+                locala.mZf.mXW.mWO.a(params.field_msgId, paramInt, locala.mZd, m.a(locala.mZd), locala.mYY, (int)f, j, false, (m.a)new f.a.b(), params.nah + paramInt, a.g(locala.mZf.context, 4.0F));
+                paramInt = i;
+                break;
+                if (l < 100000L)
+                {
+                  paramView1 = z.Jhz;
+                  paramView1 = String.format("%.1f万", Arrays.copyOf(new Object[] { Float.valueOf((float)l / 10000.0F) }, 1));
+                  k.g(paramView1, "java.lang.String.format(format, *args)");
+                  break label264;
+                }
+                paramView1 = "10万+";
+                break label264;
+              }
+            }
+          }
+          paramInt = i;
+        }
+        else
+        {
+          h.vKh.idkeyStat(1149L, 6L, 1L, false);
+          paramInt = i;
         }
       }
+    }
+    com.tencent.mm.plugin.brandservice.ui.b.c.h(params);
+    AppMethodBeat.o(193056);
+  }
+  
+  public final void dy(View paramView)
+  {
+    AppMethodBeat.i(193057);
+    k.h(paramView, "parent");
+    if (this.mYI == null)
+    {
+      paramView = ((ViewStub)paramView.findViewById(2131307257)).inflate();
+      k.g(paramView, "this");
+      dz(paramView);
+      Object localObject = paramView.findViewById(2131307156);
+      k.g(localObject, "this.findViewById(R.id.biz_rec_card_finder_video1)");
+      localObject = new a((View)localObject);
+      View localView = paramView.findViewById(2131307157);
+      k.g(localView, "this.findViewById(R.id.biz_rec_card_finder_video2)");
+      this.mYX = new a[] { localObject, new a(localView) };
+      this.mYI = paramView;
+    }
+    AppMethodBeat.o(193057);
+  }
+  
+  public final void hide()
+  {
+    AppMethodBeat.i(193058);
+    View localView = this.mYI;
+    if (localView != null)
+    {
+      localView.setVisibility(8);
+      AppMethodBeat.o(193058);
+      return;
+    }
+    AppMethodBeat.o(193058);
+  }
+  
+  @l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardFinder$BizTLRecCardVideo;", "", "parent", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardFinder;Landroid/view/View;)V", "bizReaderItem", "Lcom/tencent/mm/message/BizReaderItem;", "getBizReaderItem", "()Lcom/tencent/mm/message/BizReaderItem;", "coverRl", "Landroid/widget/RelativeLayout;", "getCoverRl", "()Landroid/widget/RelativeLayout;", "imgCover", "Landroid/widget/ImageView;", "getImgCover", "()Landroid/widget/ImageView;", "getParent", "()Landroid/view/View;", "txtDesc", "Landroid/widget/TextView;", "getTxtDesc", "()Landroid/widget/TextView;", "txtDuration", "getTxtDuration", "txtTime", "getTxtTime", "refreshUI", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "recCard", "Lcom/tencent/mm/protocal/protobuf/TLRecCard;", "appMsg", "Lcom/tencent/mm/protocal/protobuf/TLRecCardAppMsg;", "index", "", "plugin-brandservice_release"})
+  public final class a
+  {
+    final ImageView mYY;
+    final TextView mYZ;
+    final TextView mZa;
+    final TextView mZb;
+    final RelativeLayout mZc;
+    final v mZd;
+    final View mZe;
+    
+    public a()
+    {
+      AppMethodBeat.i(193055);
+      this.mZe = localObject;
+      this$1 = this.mZe.findViewById(2131307158);
+      k.g(f.this, "parent.findViewById(R.id…_card_finder_video_cover)");
+      this.mYY = ((ImageView)f.this);
+      this$1 = this.mZe.findViewById(2131307161);
+      k.g(f.this, "parent.findViewById(R.id…rd_finder_video_playtime)");
+      this.mYZ = ((TextView)f.this);
+      this$1 = this.mZe.findViewById(2131307160);
+      k.g(f.this, "parent.findViewById(R.id…rd_finder_video_duration)");
+      this.mZa = ((TextView)f.this);
+      this$1 = this.mZe.findViewById(2131307159);
+      k.g(f.this, "parent.findViewById(R.id…c_card_finder_video_desc)");
+      this.mZb = ((TextView)f.this);
+      this$1 = this.mZe.findViewById(2131307155);
+      k.g(f.this, "parent.findViewById(R.id.biz_rec_card_finder_rl)");
+      this.mZc = ((RelativeLayout)f.this);
+      this.mZd = new v();
+      AppMethodBeat.o(193055);
+    }
+    
+    @l(fvt={1, 1, 16}, fvu={""}, fvv={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    static final class a
+      implements View.OnClickListener
+    {
+      a(f.a parama, s params, daq paramdaq, int paramInt) {}
+      
+      public final void onClick(View paramView)
+      {
+        AppMethodBeat.i(193054);
+        this.mZg.mZf.a(this.mYQ, this.mYR, paramView, this.mYS);
+        AppMethodBeat.o(193054);
+      }
+    }
+    
+    @l(fvt={1, 1, 16}, fvu={""}, fvv={"com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLRecCardFinder$BizTLRecCardVideo$refreshUI$2", "Lcom/tencent/mm/pluginsdk/ui/applet/ChattingBizImageDownloadListener$LoadTitleBitmapCallback;", "onFinish", "", "onStart", "plugin-brandservice_release"})
+    public static final class b
+      implements m.a
+    {
+      public final void onFinish() {}
+      
+      public final void onStart() {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -16,11 +16,11 @@ public final class ObjectWrapper<T>
   
   public static <T> T unwrap(IObjectWrapper paramIObjectWrapper)
   {
-    AppMethodBeat.i(90397);
+    AppMethodBeat.i(5418);
     if ((paramIObjectWrapper instanceof ObjectWrapper))
     {
       paramIObjectWrapper = ((ObjectWrapper)paramIObjectWrapper).zzabn;
-      AppMethodBeat.o(90397);
+      AppMethodBeat.o(5418);
       return paramIObjectWrapper;
     }
     IBinder localIBinder = paramIObjectWrapper.asBinder();
@@ -33,12 +33,12 @@ public final class ObjectWrapper<T>
     {
       Field localField = arrayOfField[i];
       if (localField.isSynthetic()) {
-        break label214;
+        break label221;
       }
       j += 1;
       paramIObjectWrapper = localField;
     }
-    label214:
+    label221:
     for (;;)
     {
       i += 1;
@@ -51,38 +51,38 @@ public final class ObjectWrapper<T>
           try
           {
             paramIObjectWrapper = paramIObjectWrapper.get(localIBinder);
-            AppMethodBeat.o(90397);
+            AppMethodBeat.o(5418);
             return paramIObjectWrapper;
           }
           catch (NullPointerException paramIObjectWrapper)
           {
             paramIObjectWrapper = new IllegalArgumentException("Binder object is null.", paramIObjectWrapper);
-            AppMethodBeat.o(90397);
+            AppMethodBeat.o(5418);
             throw paramIObjectWrapper;
           }
           catch (IllegalAccessException paramIObjectWrapper)
           {
             paramIObjectWrapper = new IllegalArgumentException("Could not access the field in remoteBinder.", paramIObjectWrapper);
-            AppMethodBeat.o(90397);
+            AppMethodBeat.o(5418);
             throw paramIObjectWrapper;
           }
         }
         paramIObjectWrapper = new IllegalArgumentException("IObjectWrapper declared field not private!");
-        AppMethodBeat.o(90397);
+        AppMethodBeat.o(5418);
         throw paramIObjectWrapper;
       }
       i = arrayOfField.length;
       paramIObjectWrapper = new IllegalArgumentException(64 + "Unexpected number of IObjectWrapper declared fields: " + i);
-      AppMethodBeat.o(90397);
+      AppMethodBeat.o(5418);
       throw paramIObjectWrapper;
     }
   }
   
   public static <T> IObjectWrapper wrap(T paramT)
   {
-    AppMethodBeat.i(90396);
+    AppMethodBeat.i(5417);
     paramT = new ObjectWrapper(paramT);
-    AppMethodBeat.o(90396);
+    AppMethodBeat.o(5417);
     return paramT;
   }
 }

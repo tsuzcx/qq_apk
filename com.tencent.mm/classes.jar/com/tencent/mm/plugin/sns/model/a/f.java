@@ -2,32 +2,33 @@ package com.tencent.mm.plugin.sns.model.a;
 
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.mm.compatible.e.ac;
-import com.tencent.mm.compatible.e.k;
-import com.tencent.mm.compatible.e.n;
+import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.k;
+import com.tencent.mm.compatible.deviceinfo.n;
 import com.tencent.mm.m.e;
 import com.tencent.mm.m.g;
-import com.tencent.mm.platformtools.ae;
+import com.tencent.mm.platformtools.ab;
 import com.tencent.mm.plugin.sns.lucky.a.b;
-import com.tencent.mm.plugin.sns.model.ag;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.protocal.protobuf.bpi;
+import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.bt;
 
 public abstract class f
   extends c
 {
-  protected boolean rki = false;
-  protected boolean rkj = false;
-  protected boolean rkk = false;
-  protected boolean rkl = false;
+  protected boolean wMa = false;
+  protected boolean wMb = false;
+  protected boolean wMc = false;
+  protected boolean wMd = false;
+  protected boolean wMe = false;
   
   public f(c.a parama, a parama1)
   {
     super(parama, parama1);
   }
   
-  private static String l(String paramString, String... paramVarArgs)
+  private static String m(String paramString, String... paramVarArgs)
   {
     StringBuilder localStringBuilder = new StringBuilder(paramString);
     int i;
@@ -62,52 +63,59 @@ public abstract class f
     return localStringBuilder.toString();
   }
   
-  public final String aaW(String paramString)
+  public final String apd(String paramString)
   {
-    int m = 2;
-    int n = 0;
+    int n = 2;
+    int i1 = 0;
     Object localObject1 = paramString;
     for (;;)
     {
       int i;
       try
       {
-        localObject2 = g.Nq().getValue("SnsCloseDownloadWebp");
+        localObject2 = g.Zd().getValue("SnsCloseDownloadWebp");
         localObject1 = paramString;
-        if (bo.isNullOrNil((String)localObject2)) {
-          break label854;
+        if (bt.isNullOrNil((String)localObject2)) {
+          break label964;
         }
         localObject1 = paramString;
-        i = bo.apV((String)localObject2);
+        i = bt.aGh((String)localObject2);
       }
       catch (Exception localException1)
       {
         Object localObject2;
+        int m;
         Object localObject3;
         paramString = (String)localObject1;
-        ab.e("MicroMsg.SnsDownloadImageBase", "error get dyna by webp " + localException1.getMessage());
+        ad.e("MicroMsg.SnsDownloadImageBase", "error get dyna by webp " + localException1.getMessage());
         return paramString;
       }
       localObject1 = paramString;
       int j;
-      if (!n.Lv())
+      int k;
+      if (!n.WM())
       {
         j = 0;
         localObject1 = paramString;
-        if (!n.Lv())
+        if (!n.WM())
         {
-          k = n;
+          k = 0;
           localObject1 = paramString;
-          if (bo.isNullOrNil(ae.glw))
+          if (n.WM()) {
+            continue;
+          }
+          m = i1;
+          localObject1 = paramString;
+          if (bt.isNullOrNil(ab.hWt))
           {
             localObject1 = paramString;
-            if (bo.isNullOrNil(ae.glx)) {
+            if (bt.isNullOrNil(ab.hWu)) {
               continue;
             }
           }
           localObject3 = paramString;
           localObject1 = paramString;
-          if (bo.isNullOrNil(ae.glw)) {
+          if (bt.isNullOrNil(ab.hWt)) {
             continue;
           }
           localObject1 = paramString;
@@ -115,8 +123,8 @@ public abstract class f
           localObject1 = paramString;
           localObject3 = new StringBuilder();
           localObject1 = paramString;
-          ((StringBuilder)localObject3).append(localObject2[0]).append("//").append(ae.glw);
-          i = m;
+          ((StringBuilder)localObject3).append(localObject2[0]).append("//").append(ab.hWt);
+          i = n;
           localObject1 = paramString;
           if (i >= localObject2.length) {
             continue;
@@ -132,14 +140,14 @@ public abstract class f
             continue;
           }
           localObject1 = paramString;
-          if (ac.erF.epF == 2)
+          if (ae.fFH.fCV == 2)
           {
             i = 0;
             continue;
           }
           localObject1 = paramString;
-          if (bo.isNullOrNil(ae.glx)) {
-            break label849;
+          if (bt.isNullOrNil(ab.hWu)) {
+            break label959;
           }
           i = 0;
         }
@@ -147,79 +155,93 @@ public abstract class f
       else
       {
         localObject1 = paramString;
-        if (!ag.cpq())
+        if (!af.dtJ())
         {
           j = 0;
           continue;
         }
         localObject1 = paramString;
-        if (bo.isNullOrNil(ae.glx)) {
-          break label844;
+        if (bt.isNullOrNil(ab.hWu)) {
+          break label954;
         }
         j = 0;
         continue;
       }
-      int k = n;
       localObject1 = paramString;
-      if (ag.cpp())
+      if (!af.dtG())
       {
-        k = n;
+        k = 0;
+      }
+      else
+      {
         localObject1 = paramString;
-        if (bo.isNullOrNil(ae.glx))
+        if (!bt.isNullOrNil(ab.hWu))
         {
-          k = 1;
+          k = 0;
+          continue;
+          m = i1;
+          localObject1 = paramString;
+          if (!af.dtH()) {
+            continue;
+          }
+          m = i1;
+          localObject1 = paramString;
+          if (!bt.isNullOrNil(ab.hWu)) {
+            continue;
+          }
+          m = 1;
           continue;
           localObject1 = paramString;
           localObject3 = ((StringBuilder)localObject3).toString();
           localObject1 = localObject3;
-          ab.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject3)));
+          ad.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject3)));
           localObject2 = localObject3;
           localObject1 = localObject3;
-          if (!bo.isNullOrNil(ae.glx))
+          if (!bt.isNullOrNil(ab.hWu))
           {
             localObject1 = localObject3;
-            localObject2 = l((String)localObject3, new String[] { "tp=" + ae.glx });
+            localObject2 = m((String)localObject3, new String[] { "tp=" + ab.hWu });
             localObject1 = localObject2;
-            ab.i("MicroMsg.SnsDownloadImageBase", "(dbg) new url  ".concat(String.valueOf(localObject2)));
+            ad.i("MicroMsg.SnsDownloadImageBase", "(dbg) new url  ".concat(String.valueOf(localObject2)));
           }
           paramString = (String)localObject2;
           localObject1 = localObject2;
-          if (this.rjH != null)
+          if (this.wLz != null)
           {
             paramString = (String)localObject2;
             localObject1 = localObject2;
-            if (this.rjH.reH.xse != 0)
+            if (this.wLz.wFd.DNc != 0)
             {
               localObject1 = localObject2;
-              paramString = l((String)localObject2, new String[] { "enc=1" });
+              paramString = m((String)localObject2, new String[] { "enc=1" });
               localObject1 = paramString;
-              ab.i("MicroMsg.SnsDownloadImageBase", "test for enckey " + this.rjH.reH.xsf + " " + this.rjH.reH.xse + " " + paramString);
+              ad.i("MicroMsg.SnsDownloadImageBase", "test for enckey " + this.wLz.wFd.DNd + " " + this.wLz.wFd.DNc + " " + paramString);
               localObject1 = paramString;
-              b.kS(136);
+              b.lI(136);
               localObject1 = paramString;
-              this.rkl = true;
+              this.wMe = true;
             }
           }
           localObject2 = paramString;
           try
           {
-            if (this.rjH != null)
+            if (this.wLz != null)
             {
               localObject2 = paramString;
-              if (this.rjH.reH != null)
+              if (this.wLz.wFd != null)
               {
-                localObject2 = this.rjH.reH;
-                if (!this.rjH.rjA) {
-                  break label820;
+                localObject2 = this.wLz.wFd;
+                if (!this.wLz.wLs) {
+                  break label924;
                 }
-                localObject1 = ((bcs)localObject2).xsk;
-                if (!this.rjH.rjA) {
-                  break label830;
+                localObject1 = ((bpi)localObject2).DNi;
+                if (!this.wLz.wLs) {
+                  break label934;
                 }
-                i = ((bcs)localObject2).xsl;
+                i = ((bpi)localObject2).DNj;
                 localObject2 = paramString;
                 if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                  localObject2 = l(paramString, new String[] { "token=".concat(String.valueOf(localObject1)), "idx=".concat(String.valueOf(i)) });
+                  localObject2 = m(paramString, new String[] { "token=".concat(String.valueOf(localObject1)), "idx=".concat(String.valueOf(i)) });
                 }
               }
             }
@@ -228,110 +250,128 @@ public abstract class f
           catch (Exception localException2)
           {
             String str;
-            label820:
-            label830:
+            continue;
+          }
+          if (m != 0)
+          {
+            localObject1 = paramString;
+            this.wLz.wFd.mediaType = 4;
+            localObject1 = paramString;
+            localObject2 = m(paramString, new String[] { "tp=wxpic" });
+            localObject1 = localObject2;
+            ad.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
             continue;
           }
           if (j != 0)
           {
             localObject1 = paramString;
-            localObject2 = l(paramString, new String[] { "tp=wxpc" });
-            localObject1 = localObject2;
-            ab.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
+            str = m(paramString, new String[] { "tp=wxpc" });
+            localObject1 = str;
+            ad.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(str)));
+            continue;
           }
-          else if (k != 0)
+          if (k != 0)
           {
             localObject1 = paramString;
-            str = l(paramString, new String[] { "tp=hevc" });
+            str = m(paramString, new String[] { "tp=hevc" });
             localObject1 = str;
-            ab.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(str)));
+            ad.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(str)));
+            continue;
           }
-          else
-          {
-            str = paramString;
-            if (i != 0)
-            {
-              localObject1 = paramString;
-              str = l(paramString, new String[] { "tp=webp" });
-              localObject1 = str;
-              ab.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(str)));
-              continue;
-              localObject1 = str.xsh;
-              continue;
-              i = str.xsi;
-              continue;
-              label844:
-              j = 1;
-              continue;
-              label849:
-              i = 1;
-              continue;
-              label854:
-              i = 0;
-              if (i != 0) {
-                i = 0;
-              }
-            }
+          str = paramString;
+          if (i == 0) {
+            continue;
           }
+          localObject1 = paramString;
+          str = m(paramString, new String[] { "tp=webp" });
+          localObject1 = str;
+          ad.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(str)));
+          continue;
+          label924:
+          localObject1 = str.DNf;
+          continue;
+          label934:
+          i = str.DNg;
+          continue;
+        }
+        k = 1;
+        continue;
+        label954:
+        j = 1;
+        continue;
+        label959:
+        i = 1;
+        continue;
+        label964:
+        i = 0;
+        if (i != 0) {
+          i = 0;
         }
       }
     }
   }
   
-  public final String b(String paramString, bcs parambcs)
+  public final String b(String paramString, bpi parambpi)
   {
-    int m = 2;
-    int n = 0;
-    if (parambcs == null)
+    int n = 2;
+    int i1 = 0;
+    if (parambpi == null)
     {
-      ab.i("MicroMsg.SnsDownloadImageBase", "appendUrlArg, media is null.");
-      parambcs = aaW(paramString);
-      return parambcs;
+      ad.i("MicroMsg.SnsDownloadImageBase", "appendUrlArg, media is null.");
+      parambpi = apd(paramString);
+      return parambpi;
     }
     Object localObject1 = paramString;
     for (;;)
     {
       int i;
       int j;
+      int k;
       for (;;)
       {
         Object localObject2;
         try
         {
-          localObject2 = g.Nq().getValue("SnsCloseDownloadWebp");
+          localObject2 = g.Zd().getValue("SnsCloseDownloadWebp");
           localObject1 = paramString;
-          if (bo.isNullOrNil((String)localObject2)) {
-            break label804;
+          if (bt.isNullOrNil((String)localObject2)) {
+            break label900;
           }
           localObject1 = paramString;
-          i = bo.apV((String)localObject2);
+          i = bt.aGh((String)localObject2);
         }
-        catch (Exception parambcs)
+        catch (Exception parambpi)
         {
+          int m;
           Object localObject3;
           paramString = (String)localObject1;
-          ab.e("MicroMsg.SnsDownloadImageBase", "error get dyna by webp " + parambcs.getMessage());
+          ad.e("MicroMsg.SnsDownloadImageBase", "error get dyna by webp " + parambpi.getMessage());
           return paramString;
         }
         localObject1 = paramString;
-        if (!n.Lv())
+        if (!n.WM())
         {
           j = 0;
           localObject1 = paramString;
-          if (!n.Lv())
+          if (!n.WM())
           {
-            k = n;
+            k = 0;
             localObject1 = paramString;
-            if (bo.isNullOrNil(ae.glw))
+            if (n.WM()) {
+              continue;
+            }
+            m = i1;
+            localObject1 = paramString;
+            if (bt.isNullOrNil(ab.hWt))
             {
               localObject1 = paramString;
-              if (bo.isNullOrNil(ae.glx)) {
+              if (bt.isNullOrNil(ab.hWu)) {
                 continue;
               }
             }
             localObject3 = paramString;
             localObject1 = paramString;
-            if (bo.isNullOrNil(ae.glw)) {
+            if (bt.isNullOrNil(ab.hWt)) {
               continue;
             }
             localObject1 = paramString;
@@ -339,8 +379,8 @@ public abstract class f
             localObject1 = paramString;
             localObject3 = new StringBuilder();
             localObject1 = paramString;
-            ((StringBuilder)localObject3).append(localObject2[0]).append("//").append(ae.glw);
-            i = m;
+            ((StringBuilder)localObject3).append(localObject2[0]).append("//").append(ab.hWt);
+            i = n;
             localObject1 = paramString;
             if (i >= localObject2.length) {
               continue;
@@ -356,14 +396,14 @@ public abstract class f
               continue;
             }
             localObject1 = paramString;
-            if (ac.erF.epF == 2)
+            if (ae.fFH.fCV == 2)
             {
               i = 0;
               continue;
             }
             localObject1 = paramString;
-            if (bo.isNullOrNil(ae.glx)) {
-              break label799;
+            if (bt.isNullOrNil(ab.hWu)) {
+              break label895;
             }
             i = 0;
           }
@@ -371,90 +411,111 @@ public abstract class f
         else
         {
           localObject1 = paramString;
-          if (!ag.cpq())
+          if (!af.dtJ())
           {
             j = 0;
             continue;
           }
           localObject1 = paramString;
-          if (bo.isNullOrNil(ae.glx)) {
-            break label793;
+          if (bt.isNullOrNil(ab.hWu)) {
+            break label889;
           }
           j = 0;
           continue;
         }
-        int k = n;
         localObject1 = paramString;
-        if (ag.cpp())
+        if (!af.dtG())
         {
-          k = n;
+          k = 0;
+        }
+        else
+        {
           localObject1 = paramString;
-          if (bo.isNullOrNil(ae.glx))
+          if (bt.isNullOrNil(ab.hWu)) {
+            break label883;
+          }
+          k = 0;
+          continue;
+          m = i1;
+          localObject1 = paramString;
+          if (af.dtH())
           {
-            k = 1;
-            continue;
+            m = i1;
             localObject1 = paramString;
-            localObject3 = ((StringBuilder)localObject3).toString();
-            localObject1 = localObject3;
-            ab.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject3)));
-            localObject2 = localObject3;
-            localObject1 = localObject3;
-            if (!bo.isNullOrNil(ae.glx))
+            if (bt.isNullOrNil(ab.hWu))
             {
+              m = 1;
+              continue;
+              localObject1 = paramString;
+              localObject3 = ((StringBuilder)localObject3).toString();
               localObject1 = localObject3;
-              localObject2 = l((String)localObject3, new String[] { "tp=" + ae.glx });
+              ad.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject3)));
+              localObject2 = localObject3;
+              localObject1 = localObject3;
+              if (!bt.isNullOrNil(ab.hWu))
+              {
+                localObject1 = localObject3;
+                localObject2 = m((String)localObject3, new String[] { "tp=" + ab.hWu });
+                localObject1 = localObject2;
+                ad.i("MicroMsg.SnsDownloadImageBase", "(dbg) new url  ".concat(String.valueOf(localObject2)));
+              }
+              paramString = (String)localObject2;
               localObject1 = localObject2;
-              ab.i("MicroMsg.SnsDownloadImageBase", "(dbg) new url  ".concat(String.valueOf(localObject2)));
-            }
-            paramString = (String)localObject2;
-            localObject1 = localObject2;
-            if (parambcs.xse != 0)
-            {
-              localObject1 = localObject2;
-              paramString = l((String)localObject2, new String[] { "enc=1" });
-              localObject1 = paramString;
-              ab.i("MicroMsg.SnsDownloadImageBase", "test for enckey " + parambcs.xsf + " " + parambcs.xse + " " + paramString);
-              localObject1 = paramString;
-              b.kS(136);
-              localObject1 = paramString;
-              this.rkl = true;
+              if (parambpi.DNc != 0)
+              {
+                localObject1 = localObject2;
+                paramString = m((String)localObject2, new String[] { "enc=1" });
+                localObject1 = paramString;
+                ad.i("MicroMsg.SnsDownloadImageBase", "test for enckey " + parambpi.DNd + " " + parambpi.DNc + " " + paramString);
+                localObject1 = paramString;
+                b.lI(136);
+                localObject1 = paramString;
+                this.wMe = true;
+              }
             }
           }
         }
-        label772:
-        label781:
+        label862:
+        label871:
         try
         {
-          if (!this.rjH.rjA) {
-            break label772;
+          if (!this.wLz.wLs) {
+            break label862;
           }
-          localObject1 = parambcs.xsk;
-          if (!this.rjH.rjA) {
-            break label781;
+          localObject1 = parambpi.DNi;
+          if (!this.wLz.wLs) {
+            break label871;
           }
-          i = parambcs.xsl;
-          parambcs = paramString;
+          i = parambpi.DNj;
+          parambpi = paramString;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
             break;
           }
-          parambcs = l(paramString, new String[] { "token=".concat(String.valueOf(localObject1)), "idx=".concat(String.valueOf(i)) });
-          return parambcs;
+          parambpi = m(paramString, new String[] { "token=".concat(String.valueOf(localObject1)), "idx=".concat(String.valueOf(i)) });
+          return parambpi;
         }
-        catch (Exception parambcs) {}
+        catch (Exception parambpi) {}
       }
-      if (j != 0)
+      if (m != 0)
       {
         localObject1 = paramString;
-        localObject2 = l(paramString, new String[] { "tp=wxpc" });
+        localObject2 = m(paramString, new String[] { "tp=wxpic" });
         localObject1 = localObject2;
-        ab.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
+        ad.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
+      }
+      else if (j != 0)
+      {
+        localObject1 = paramString;
+        localObject2 = m(paramString, new String[] { "tp=wxpc" });
+        localObject1 = localObject2;
+        ad.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
       }
       else if (k != 0)
       {
         localObject1 = paramString;
-        localObject2 = l(paramString, new String[] { "tp=hevc" });
+        localObject2 = m(paramString, new String[] { "tp=hevc" });
         localObject1 = localObject2;
-        ab.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
+        ad.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
       }
       else
       {
@@ -462,21 +523,24 @@ public abstract class f
         if (i != 0)
         {
           localObject1 = paramString;
-          localObject2 = l(paramString, new String[] { "tp=webp" });
+          localObject2 = m(paramString, new String[] { "tp=webp" });
           localObject1 = localObject2;
-          ab.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
+          ad.i("MicroMsg.SnsDownloadImageBase", "new url  ".concat(String.valueOf(localObject2)));
           continue;
-          localObject1 = parambcs.xsh;
+          localObject1 = parambpi.DNf;
           continue;
-          i = parambcs.xsi;
+          i = parambpi.DNg;
           continue;
-          label793:
+          label883:
+          k = 1;
+          continue;
+          label889:
           j = 1;
           continue;
-          label799:
+          label895:
           i = 1;
           continue;
-          label804:
+          label900:
           i = 0;
           if (i != 0) {
             i = 0;
@@ -488,7 +552,7 @@ public abstract class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.a.f
  * JD-Core Version:    0.7.0.1
  */

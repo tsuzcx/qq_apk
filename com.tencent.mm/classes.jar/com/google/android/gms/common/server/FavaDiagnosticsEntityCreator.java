@@ -12,7 +12,7 @@ public class FavaDiagnosticsEntityCreator
   
   public FavaDiagnosticsEntity createFromParcel(Parcel paramParcel)
   {
-    AppMethodBeat.i(61438);
+    AppMethodBeat.i(11930);
     int k = SafeParcelReader.validateObjectHeader(paramParcel);
     String str = null;
     int j = 0;
@@ -37,7 +37,7 @@ public class FavaDiagnosticsEntityCreator
     }
     SafeParcelReader.ensureAtEnd(paramParcel, k);
     paramParcel = new FavaDiagnosticsEntity(i, str, j);
-    AppMethodBeat.o(61438);
+    AppMethodBeat.o(11930);
     return paramParcel;
   }
   
@@ -48,7 +48,7 @@ public class FavaDiagnosticsEntityCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.common.server.FavaDiagnosticsEntityCreator
  * JD-Core Version:    0.7.0.1
  */

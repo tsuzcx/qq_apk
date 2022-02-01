@@ -6,11 +6,11 @@ public enum KindaJSEventType
 {
   static
   {
-    AppMethodBeat.i(141428);
+    AppMethodBeat.i(135947);
     WEB = new KindaJSEventType("WEB", 0);
     TINYAPP = new KindaJSEventType("TINYAPP", 1);
     $VALUES = new KindaJSEventType[] { WEB, TINYAPP };
-    AppMethodBeat.o(141428);
+    AppMethodBeat.o(135947);
   }
   
   private KindaJSEventType() {}

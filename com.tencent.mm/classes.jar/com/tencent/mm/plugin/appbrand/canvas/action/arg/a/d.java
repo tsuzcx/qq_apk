@@ -3,31 +3,32 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionWrapper;
 import com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg;
+import com.tencent.mm.sdk.c;
 
 public final class d
 {
-  private static d hfw;
-  public com.tencent.mm.sdk.d<DrawCanvasArg> hfu;
-  public com.tencent.mm.sdk.d<DrawActionWrapper> hfv;
+  private static d iZH;
+  public c<DrawCanvasArg> iZF;
+  public c<DrawActionWrapper> iZG;
   
   static
   {
-    AppMethodBeat.i(103637);
-    hfw = new d();
-    AppMethodBeat.o(103637);
+    AppMethodBeat.i(145320);
+    iZH = new d();
+    AppMethodBeat.o(145320);
   }
   
   private d()
   {
-    AppMethodBeat.i(103636);
-    this.hfu = new com.tencent.mm.sdk.d(5);
-    this.hfv = new com.tencent.mm.sdk.d(500);
-    AppMethodBeat.o(103636);
+    AppMethodBeat.i(145319);
+    this.iZF = new c(5);
+    this.iZG = new c(500);
+    AppMethodBeat.o(145319);
   }
   
-  public static d ayb()
+  public static d aSU()
   {
-    return hfw;
+    return iZH;
   }
 }
 

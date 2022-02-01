@@ -1,34 +1,34 @@
 package com.tencent.mm.emoji.loader.f;
 
-import a.f.b.j;
-import a.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.loader.c.h;
+import com.tencent.mm.emoji.loader.c.i;
 import com.tencent.mm.storage.emotion.EmojiInfo;
+import d.g.b.k;
+import d.l;
 
-@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyFactory;", "", "()V", "createVerifyConfig", "Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyConfig;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "verify", "", "plugin-emojisdk_release"})
+@l(fvt={1, 1, 16}, fvu={""}, fvv={"Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyFactory;", "", "()V", "createVerifyConfig", "Lcom/tencent/mm/emoji/loader/verify/EmojiVerifyConfig;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "verify", "", "plugin-emojisdk_release"})
 public final class c
 {
-  public static final c ewl;
+  public static final c fMy;
   
   static
   {
-    AppMethodBeat.i(63236);
-    ewl = new c();
-    AppMethodBeat.o(63236);
+    AppMethodBeat.i(105492);
+    fMy = new c();
+    AppMethodBeat.o(105492);
   }
   
-  public static boolean i(EmojiInfo paramEmojiInfo)
+  public static boolean k(EmojiInfo paramEmojiInfo)
   {
-    AppMethodBeat.i(63235);
-    j.q(paramEmojiInfo, "emojiInfo");
+    AppMethodBeat.i(105491);
+    k.h(paramEmojiInfo, "emojiInfo");
     a locala = new a();
-    j.q(paramEmojiInfo, "emojiInfo");
-    Object localObject1 = paramEmojiInfo.Al();
-    String str2 = paramEmojiInfo.dQB() + "_temp";
+    k.h(paramEmojiInfo, "emojiInfo");
+    Object localObject1 = paramEmojiInfo.JS();
+    String str2 = paramEmojiInfo.gaa() + "_temp";
     int i;
     boolean bool;
-    if (h.f(paramEmojiInfo))
+    if (i.h(paramEmojiInfo))
     {
       i = 3;
       bool = true;
@@ -44,21 +44,21 @@ public final class c
       if (localObject3 == null) {
         localObject1 = "";
       }
-      String str1 = paramEmojiInfo.dQB();
+      String str1 = paramEmojiInfo.gaa();
       localObject3 = str1;
       if (str1 == null) {
         localObject3 = "";
       }
       bool = locala.a(new b(paramEmojiInfo, (String)localObject2, bool, (String)localObject1, (String)localObject3, str2, i));
-      AppMethodBeat.o(63235);
+      AppMethodBeat.o(105491);
       return bool;
-      if (h.g(paramEmojiInfo))
+      if (i.i(paramEmojiInfo))
       {
         localObject1 = paramEmojiInfo.field_externMd5;
         i = 2;
         bool = true;
       }
-      else if (h.h(paramEmojiInfo))
+      else if (i.j(paramEmojiInfo))
       {
         i = 1;
         bool = true;
@@ -73,7 +73,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.f.c
  * JD-Core Version:    0.7.0.1
  */

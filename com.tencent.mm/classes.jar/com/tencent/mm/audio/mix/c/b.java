@@ -6,27 +6,27 @@ import java.util.Arrays;
 
 public final class b
 {
-  public static boolean ceJ = false;
+  public static boolean cTI = false;
   
-  public static void Di()
+  public static void MR()
   {
-    AppMethodBeat.i(137008);
+    AppMethodBeat.i(136756);
     if (ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN)
     {
-      ceJ = true;
-      AppMethodBeat.o(137008);
+      cTI = true;
+      AppMethodBeat.o(136756);
       return;
     }
-    ceJ = false;
-    AppMethodBeat.o(137008);
+    cTI = false;
+    AppMethodBeat.o(136756);
   }
   
   public static void a(int paramInt, byte[] paramArrayOfByte, byte[][] paramArrayOfByte1)
   {
-    AppMethodBeat.i(137011);
+    AppMethodBeat.i(136759);
     if (paramArrayOfByte1.length <= 1)
     {
-      AppMethodBeat.o(137011);
+      AppMethodBeat.o(136759);
       return;
     }
     int j = paramArrayOfByte.length / 2;
@@ -37,7 +37,7 @@ public final class b
     }
     for (;;)
     {
-      AppMethodBeat.o(137011);
+      AppMethodBeat.o(136759);
       return;
       int i = 0;
       paramInt = 0;
@@ -48,7 +48,7 @@ public final class b
         i += 1;
         paramInt += 2;
       }
-      AppMethodBeat.o(137011);
+      AppMethodBeat.o(136759);
       return;
       paramInt = 0;
       while (paramInt < j)
@@ -62,21 +62,72 @@ public final class b
     }
   }
   
+  public static byte[] a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    AppMethodBeat.i(136757);
+    if (paramInt1 == paramInt2)
+    {
+      AppMethodBeat.o(136757);
+      return paramArrayOfByte;
+    }
+    int j = paramArrayOfByte.length;
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(136757);
+      return paramArrayOfByte;
+      switch (paramInt2)
+      {
+      default: 
+        break;
+      case 2: 
+        arrayOfByte1 = new byte[j * 2];
+        paramInt1 = 0;
+        while (paramInt1 < j)
+        {
+          byte[] arrayOfByte2 = a.getBytes((short)(paramArrayOfByte[paramInt1] * 256), cTI);
+          arrayOfByte1[(paramInt1 * 2)] = arrayOfByte2[0];
+          arrayOfByte1[(paramInt1 * 2 + 1)] = arrayOfByte2[1];
+          paramInt1 += 1;
+        }
+        AppMethodBeat.o(136757);
+        return arrayOfByte1;
+        switch (paramInt2)
+        {
+        }
+        break;
+      }
+    }
+    paramInt2 = j / 2;
+    byte[] arrayOfByte1 = new byte[paramInt2];
+    paramInt1 = i;
+    while (paramInt1 < paramInt2)
+    {
+      arrayOfByte1[paramInt1] = ((byte)(a.a(paramArrayOfByte[(paramInt1 * 2)], paramArrayOfByte[(paramInt1 * 2 + 1)], cTI) / 256));
+      paramInt1 += 1;
+    }
+    AppMethodBeat.o(136757);
+    return arrayOfByte1;
+  }
+  
   public static byte[] a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     int j = 0;
     int i = 0;
-    AppMethodBeat.i(137012);
+    AppMethodBeat.i(136760);
     if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null) || (paramArrayOfByte1.length == 0) || (paramArrayOfByte2.length == 0))
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioConvertHelper", "sourceFirstByteArray or sourceSecondByteArray is null");
-      AppMethodBeat.o(137012);
+      AppMethodBeat.o(136760);
       return null;
     }
     if (paramArrayOfByte1.length != paramArrayOfByte2.length)
     {
       com.tencent.mm.audio.mix.h.b.e("MicroMsg.Mix.AudioConvertHelper", "sourceFirstByteArray and sourceSecondByteArray length is not same");
-      AppMethodBeat.o(137012);
+      AppMethodBeat.o(136760);
       return null;
     }
     int k = paramArrayOfByte1.length;
@@ -86,7 +137,7 @@ public final class b
     }
     for (;;)
     {
-      AppMethodBeat.o(137012);
+      AppMethodBeat.o(136760);
       return arrayOfByte;
       while (i < k)
       {
@@ -105,77 +156,26 @@ public final class b
     }
   }
   
-  public static byte[] b(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
-  {
-    int i = 0;
-    AppMethodBeat.i(137009);
-    if (paramInt1 == paramInt2)
-    {
-      AppMethodBeat.o(137009);
-      return paramArrayOfByte;
-    }
-    int j = paramArrayOfByte.length;
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(137009);
-      return paramArrayOfByte;
-      switch (paramInt2)
-      {
-      default: 
-        break;
-      case 2: 
-        arrayOfByte1 = new byte[j * 2];
-        paramInt1 = 0;
-        while (paramInt1 < j)
-        {
-          byte[] arrayOfByte2 = a.getBytes((short)(paramArrayOfByte[paramInt1] * 256), ceJ);
-          arrayOfByte1[(paramInt1 * 2)] = arrayOfByte2[0];
-          arrayOfByte1[(paramInt1 * 2 + 1)] = arrayOfByte2[1];
-          paramInt1 += 1;
-        }
-        AppMethodBeat.o(137009);
-        return arrayOfByte1;
-        switch (paramInt2)
-        {
-        }
-        break;
-      }
-    }
-    paramInt2 = j / 2;
-    byte[] arrayOfByte1 = new byte[paramInt2];
-    paramInt1 = i;
-    while (paramInt1 < paramInt2)
-    {
-      arrayOfByte1[paramInt1] = ((byte)(a.a(paramArrayOfByte[(paramInt1 * 2)], paramArrayOfByte[(paramInt1 * 2 + 1)], ceJ) / 256));
-      paramInt1 += 1;
-    }
-    AppMethodBeat.o(137009);
-    return arrayOfByte1;
-  }
-  
-  public static byte[] c(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
+  public static byte[] b(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
   {
     int i = 0;
     int j = 0;
     int k = 0;
-    AppMethodBeat.i(137010);
+    AppMethodBeat.i(136758);
     if (paramArrayOfByte == null)
     {
-      AppMethodBeat.o(137010);
+      AppMethodBeat.o(136758);
       return paramArrayOfByte;
     }
     if (paramInt1 == paramInt2)
     {
-      AppMethodBeat.o(137010);
+      AppMethodBeat.o(136758);
       return paramArrayOfByte;
     }
     switch (paramInt3)
     {
     default: 
-      AppMethodBeat.o(137010);
+      AppMethodBeat.o(136758);
       return paramArrayOfByte;
     }
     int m = paramArrayOfByte.length;
@@ -186,7 +186,7 @@ public final class b
     byte b2;
     for (;;)
     {
-      AppMethodBeat.o(137010);
+      AppMethodBeat.o(136758);
       return paramArrayOfByte;
       switch (paramInt2)
       {
@@ -201,7 +201,7 @@ public final class b
         }
         for (;;)
         {
-          AppMethodBeat.o(137010);
+          AppMethodBeat.o(136758);
           return arrayOfByte1;
           while (paramInt1 < m)
           {
@@ -235,7 +235,7 @@ public final class b
     }
     for (;;)
     {
-      AppMethodBeat.o(137010);
+      AppMethodBeat.o(136758);
       return arrayOfByte1;
       while (paramInt1 < paramInt2)
       {
@@ -249,7 +249,7 @@ public final class b
         b2 = paramArrayOfByte[(paramInt1 * 2 + 1)];
         byte b3 = paramArrayOfByte[(paramInt1 * 2 + 2)];
         byte b4 = paramArrayOfByte[(paramInt1 * 2 + 3)];
-        boolean bool = ceJ;
+        boolean bool = cTI;
         paramInt3 = a.a(b1, b2, bool);
         i = a.a(b3, b4, bool);
         byte[] arrayOfByte2 = a.getBytes((short)(paramInt3 / 2 + i / 2), bool);
@@ -262,7 +262,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.audio.mix.c.b
  * JD-Core Version:    0.7.0.1
  */

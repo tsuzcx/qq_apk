@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.report.a;
 
 public final class c
 {
-  public static boolean qrL = false;
-  public static boolean qrM = true;
-  public static boolean qrN = true;
-  public static boolean qrO = true;
+  public static boolean vJb = false;
+  public static boolean vJc = true;
+  public static boolean vJd = true;
+  public static boolean vJe = true;
   
-  public static void c(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public static void d(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    qrL = paramBoolean1;
-    qrM = paramBoolean2;
-    qrN = paramBoolean3;
-    qrO = paramBoolean4;
+    vJb = paramBoolean1;
+    vJc = paramBoolean2;
+    vJd = paramBoolean3;
+    vJe = paramBoolean4;
   }
 }
 

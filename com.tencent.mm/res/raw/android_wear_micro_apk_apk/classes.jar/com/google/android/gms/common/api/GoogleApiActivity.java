@@ -17,7 +17,7 @@ public class GoogleApiActivity
   extends Activity
   implements DialogInterface.OnCancelListener
 {
-  protected int Hr = 0;
+  protected int Jg = 0;
   
   public static PendingIntent a(Context paramContext, PendingIntent paramPendingIntent, int paramInt)
   {
@@ -39,11 +39,11 @@ public class GoogleApiActivity
     if (paramInt1 == 1)
     {
       boolean bool = getIntent().getBooleanExtra("notify_manager", true);
-      this.Hr = 0;
+      this.Jg = 0;
       setResult(paramInt2);
       if (bool)
       {
-        paramIntent = aq.s(this);
+        paramIntent = aq.t(this);
         switch (paramInt2)
         {
         }
@@ -55,11 +55,11 @@ public class GoogleApiActivity
       return;
       paramIntent.a(new ConnectionResult(13, null), getIntent().getIntExtra("failing_client_id", -1));
       continue;
-      paramIntent.hY();
+      paramIntent.ig();
       continue;
       if (paramInt1 == 2)
       {
-        this.Hr = 0;
+        this.Jg = 0;
         setResult(paramInt2);
       }
     }
@@ -67,7 +67,7 @@ public class GoogleApiActivity
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.Hr = 0;
+    this.Jg = 0;
     setResult(0);
     finish();
   }
@@ -76,9 +76,9 @@ public class GoogleApiActivity
   {
     super.onCreate(paramBundle);
     if (paramBundle != null) {
-      this.Hr = paramBundle.getInt("resolution");
+      this.Jg = paramBundle.getInt("resolution");
     }
-    if (this.Hr != 1)
+    if (this.Jg != 1)
     {
       localObject = getIntent().getExtras();
       if (localObject == null)
@@ -103,7 +103,7 @@ public class GoogleApiActivity
       try
       {
         startIntentSenderForResult(paramBundle.getIntentSender(), 1, null, 0, 0, 0);
-        this.Hr = 1;
+        this.Jg = 1;
         return;
       }
       catch (IntentSender.SendIntentException paramBundle)
@@ -113,13 +113,13 @@ public class GoogleApiActivity
         return;
       }
     }
-    b.gp().a(this, ((Integer)localObject).intValue(), this);
-    this.Hr = 1;
+    b.gz().a(this, ((Integer)localObject).intValue(), this);
+    this.Jg = 1;
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
   {
-    paramBundle.putInt("resolution", this.Hr);
+    paramBundle.putInt("resolution", this.Jg);
     super.onSaveInstanceState(paramBundle);
   }
 }

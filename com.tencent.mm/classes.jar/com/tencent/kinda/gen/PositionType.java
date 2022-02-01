@@ -6,18 +6,18 @@ public enum PositionType
 {
   static
   {
-    AppMethodBeat.i(141451);
+    AppMethodBeat.i(135970);
     RELATIVE = new PositionType("RELATIVE", 0);
     ABSOLUTE = new PositionType("ABSOLUTE", 1);
     $VALUES = new PositionType[] { RELATIVE, ABSOLUTE };
-    AppMethodBeat.o(141451);
+    AppMethodBeat.o(135970);
   }
   
   private PositionType() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.kinda.gen.PositionType
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.record.a.g;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ad;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,19 +20,19 @@ public final class m
     this.db = parame;
   }
   
-  public final void Cl(int paramInt)
+  public final void Kb(int paramInt)
   {
-    AppMethodBeat.i(135695);
-    ab.d("MicroMsg.RecordMsgStorage", "delete record msg item, local id %d, result %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.db.delete("RecordMessageInfo", "localId=?", new String[] { String.valueOf(paramInt) })) });
-    AppMethodBeat.o(135695);
+    AppMethodBeat.i(9517);
+    ad.d("MicroMsg.RecordMsgStorage", "delete record msg item, local id %d, result %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.db.delete("RecordMessageInfo", "localId=?", new String[] { String.valueOf(paramInt) })) });
+    AppMethodBeat.o(9517);
   }
   
-  public final com.tencent.mm.plugin.record.a.j Cm(int paramInt)
+  public final com.tencent.mm.plugin.record.a.j Kc(int paramInt)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(135696);
+    AppMethodBeat.i(9518);
     Object localObject1 = "SELECT * FROM RecordMessageInfo WHERE localId=".concat(String.valueOf(paramInt));
-    ab.d("MicroMsg.RecordMsgStorage", "get by local id, sql[%s], local[%d]", new Object[] { localObject1, Integer.valueOf(paramInt) });
+    ad.d("MicroMsg.RecordMsgStorage", "get by local id, sql[%s], local[%d]", new Object[] { localObject1, Integer.valueOf(paramInt) });
     Cursor localCursor = this.db.a((String)localObject1, null, 2);
     localObject1 = localObject2;
     if (localCursor != null)
@@ -47,13 +47,13 @@ public final class m
     if (localCursor != null) {
       localCursor.close();
     }
-    AppMethodBeat.o(135696);
+    AppMethodBeat.o(9518);
     return localObject1;
   }
   
-  public final List<com.tencent.mm.plugin.record.a.j> cfN()
+  public final List<com.tencent.mm.plugin.record.a.j> dgd()
   {
-    AppMethodBeat.i(135694);
+    AppMethodBeat.i(9516);
     LinkedList localLinkedList = new LinkedList();
     Cursor localCursor = getAll();
     if (localCursor != null)
@@ -74,21 +74,21 @@ public final class m
           {
             for (;;)
             {
-              ab.e("MicroMsg.RecordMsgStorage", "convert recordInfo Exception: " + localException.getMessage());
+              ad.e("MicroMsg.RecordMsgStorage", "convert recordInfo Exception: " + localException.getMessage());
             }
           }
         }
       }
       localCursor.close();
     }
-    ab.d("MicroMsg.RecordMsgStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
-    AppMethodBeat.o(135694);
+    ad.d("MicroMsg.RecordMsgStorage", "get all finish, result count %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+    AppMethodBeat.o(9516);
     return localLinkedList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.m
  * JD-Core Version:    0.7.0.1
  */
